@@ -6,10 +6,10 @@
   <PropertyGroup Label="UserMacros">
     <GtkBinaryVersion>3.0.0</GtkBinaryVersion>
     <GtkDummyPrefix>/dummy</GtkDummyPrefix>
-    <GtkPrefixDefine>GTK_PREFIX=\"$(GtkDummyPrefix)\"</GtkPrefixDefine>
+    <GtkPrefixDefine>CTK_PREFIX=\"$(GtkDummyPrefix)\"</GtkPrefixDefine>
     <GdkDefines>GDK_COMPILATION;G_LOG_DOMAIN="Gdk"</GdkDefines>
     <GtkIncludedImmodulesDefines>INCLUDE_IM_am_et;INCLUDE_IM_cedilla;INCLUDE_IM_cyrillic_translit;INCLUDE_IM_ime;INCLUDE_IM_inuktitut;INCLUDE_IM_ipa;INCLUDE_IM_multipress;INCLUDE_IM_thai;INCLUDE_IM_ti_er;INCLUDE_IM_ti_et;INCLUDE_IM_viqr</GtkIncludedImmodulesDefines>
-    <GtkDefines>GTK_COMPILATION;G_LOG_DOMAIN="Gtk";GTK_HOST="i686-pc-vs$(VSVer)";GTK_PRINT_BACKENDS="file";GTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(GtkIncludedImmodulesDefines);GTK_LIBDIR="$(GtkDummyPrefix)/lib";GTK_DATADIR="$(GtkDummyPrefix)/share";GTK_DATA_PREFIX="$(GtkDummyPrefix)";GTK_SYSCONFDIR="$(GtkDummyPrefix)/etc";MULTIPRESS_CONFDIR="$(GtkDummyPrefix)/etc/gtk-$(ApiVersion)";MULTIPRESS_LOCALEDIR="$(GtkDummyPrefix)/share/locale";GTK_VERSION="$(GtkVersion)/etc";GTK_BINARY_VERSION="$(GtkBinaryVersion)/etc";GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED</GtkDefines>
+    <GtkDefines>CTK_COMPILATION;G_LOG_DOMAIN="Gtk";CTK_HOST="i686-pc-vs$(VSVer)";CTK_PRINT_BACKENDS="file";CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(GtkIncludedImmodulesDefines);CTK_LIBDIR="$(GtkDummyPrefix)/lib";CTK_DATADIR="$(GtkDummyPrefix)/share";CTK_DATA_PREFIX="$(GtkDummyPrefix)";CTK_SYSCONFDIR="$(GtkDummyPrefix)/etc";MULTIPRESS_CONFDIR="$(GtkDummyPrefix)/etc/gtk-$(ApiVersion)";MULTIPRESS_LOCALEDIR="$(GtkDummyPrefix)/share/locale";CTK_VERSION="$(GtkVersion)/etc";CTK_BINARY_VERSION="$(GtkBinaryVersion)/etc";GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED</GtkDefines>
     <GtkGdkCommonLibs>pangowin32-1.0.lib;fribidi.lib;imm32.lib</GtkGdkCommonLibs>
     <GdkAdditionalLibs>winmm.lib;dwmapi.lib;setupapi.lib;$(GtkGdkCommonLibs)</GdkAdditionalLibs>
     <GdkBroadwayAdditionalLibs>ws2_32.lib</GdkBroadwayAdditionalLibs>
@@ -27,7 +27,7 @@ nmake -f gtk-introspection-msvc.mak CFG=$(Configuration) PREFIX=$(GlibEtcInstall
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>..\..;$(GlibEtcInstallRoot)\include\gdk-pixbuf-2.0;$(GlibEtcInstallRoot)\include\pango-1.0;$(GlibEtcInstallRoot)\include\atk-1.0;$(GlibEtcInstallRoot)\include\cairo;$(GlibEtcInstallRoot)\include\gio-win32-2.0;$(GlibEtcInstallRoot)\include\glib-2.0;$(GlibEtcInstallRoot)\lib\glib-2.0\include;$(GlibEtcInstallRoot)\include\fribidi;$(GlibEtcInstallRoot)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>HAVE_CONFIG_H;G_DISABLE_SINGLE_INCLUDES;ATK_DISABLE_SINGLE_INCLUDES;GDK_PIXBUF_DISABLE_SINGLE_INCLUDES;GTK_DISABLE_SINGLE_INCLUDES;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;G_DISABLE_SINGLE_INCLUDES;ATK_DISABLE_SINGLE_INCLUDES;GDK_PIXBUF_DISABLE_SINGLE_INCLUDES;CTK_DISABLE_SINGLE_INCLUDES;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ForcedIncludeFiles>msvc_recommended_pragmas.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>/d2Zi+ %(AdditionalOptions)</AdditionalOptions>

@@ -393,10 +393,10 @@ msgstr "സുപ്രധാനമാണ്"
 #: gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "പ്രവര്‍ത്തനം പ്രാധാന്യമുളളതായി കരുതുന്നുവോ എന്ന്. TRUE ആണേല്‍, ഈ പ്രവര്‍ത്തനത്തിനുളള ടൂള്‍ഐറ്റം "
-"പ്രോക്സികള്‍ GTK_TOOLBAR_BOTH_HORIZ രീതിയില്‍ കാണിക്കുന്നു."
+"പ്രോക്സികള്‍ CTK_TOOLBAR_BOTH_HORIZ രീതിയില്‍ കാണിക്കുന്നു."
 
 #: gtk/gtkaction.c:374
 msgid "Hide if empty"
@@ -919,7 +919,7 @@ msgstr "സഹജമായ വിടവു്"
 
 #: gtk/gtkbutton.c:461
 #, fuzzy
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "CAN_DEFAULT ബട്ടണുകള്‍ക്ക് ചേര്‍ക്കേണ്ട അധിക സ്പെയിസ്"
 
 #: gtk/gtkbutton.c:475
@@ -929,7 +929,7 @@ msgstr "സഹജമായ പുറത്തേക്കുളള വിടവ�
 #: gtk/gtkbutton.c:476
 #, fuzzy
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr "അതിരിന് പുറത്ത് വരയ്ക്കേണ്ട CAN_DEFAULT ബട്ടണുകള്‍ക്കായവശ്യമായ അധിക സ്ഥലം"
 
@@ -6093,10 +6093,10 @@ msgstr "ചിഹ്നവും ലേബലും തമ്മിലുള്�
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "ടൂള്‍ബാര്‍ വസ്തു പ്രധാനമായി കണക്കാക്കണമോ എന്നു്. TRUE ആകുമ്പോള്‍, ടൂള്‍ബാര്‍ ബട്ടണുകള്‍ "
-"GTK_TOOLBAR_BOTH_HORIZ മോഡില്‍ വാചകം കാണിക്കുക."
+"CTK_TOOLBAR_BOTH_HORIZ മോഡില്‍ വാചകം കാണിക്കുക."
 
 #: gtk/gtktoolitemgroup.c:1572
 #, fuzzy

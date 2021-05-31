@@ -308,9 +308,9 @@ gdk_pre_parse (void)
       _gdk_debug_flags = g_parse_debug_string (debug_string,
                                               (GDebugKey *) gdk_debug_keys,
                                               G_N_ELEMENTS (gdk_debug_keys));
-    if (g_getenv ("GTK_TRACE_FD"))
-      gdk_profiler_start (atoi (g_getenv ("GTK_TRACE_FD")));
-    else if (g_getenv ("GTK_TRACE"))
+    if (g_getenv ("CTK_TRACE_FD"))
+      gdk_profiler_start (atoi (g_getenv ("CTK_TRACE_FD")));
+    else if (g_getenv ("CTK_TRACE"))
       gdk_profiler_start (-1);
   }
 #endif  /* G_ENABLE_DEBUG */
@@ -486,7 +486,7 @@ gdk_should_use_portal (void)
         use_portal = "1";
       else
         {
-          use_portal = g_getenv ("GTK_USE_PORTAL");
+          use_portal = g_getenv ("CTK_USE_PORTAL");
           if (!use_portal)
             use_portal = "";
         }

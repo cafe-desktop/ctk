@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_GTK_ONLY_H__
-#define __GDK_QUARTZ_GTK_ONLY_H__
+#ifndef __GDK_QUARTZ_CTK_ONLY_H__
+#define __GDK_QUARTZ_CTK_ONLY_H__
 
-#if !(defined (GTK_COMPILATION) || defined (GDK_COMPILATION))
+#if !(defined (CTK_COMPILATION) || defined (GDK_COMPILATION))
 #error "This API is for use only in Gtk internal code."
 #endif
 

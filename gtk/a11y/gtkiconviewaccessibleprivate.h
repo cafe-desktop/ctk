@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ICON_VIEW_ACCESSIBLE_PRIVATE_H__
-#define __GTK_ICON_VIEW_ACCESSIBLE_PRIVATE_H__
+#ifndef __CTK_ICON_VIEW_ACCESSIBLE_PRIVATE_H__
+#define __CTK_ICON_VIEW_ACCESSIBLE_PRIVATE_H__
 
 #include <gtk/a11y/gtkiconviewaccessible.h>
 
@@ -26,4 +26,4 @@ void _ctk_icon_view_accessible_adjustment_changed  (GtkIconView *icon_view);
 
 G_END_DECLS
 
-#endif /* __GTK_ICON_VIEW_ACCESSIBLE_PRIVATE_H__ */
+#endif /* __CTK_ICON_VIEW_ACCESSIBLE_PRIVATE_H__ */

@@ -48,7 +48,7 @@ GParamSpec *properties[LAST_PROPERTY] = { NULL };
 
 GType size_group_row_get_type (void);
 
-G_DEFINE_TYPE (SizeGroupRow, size_group_row, GTK_TYPE_LIST_BOX_ROW)
+G_DEFINE_TYPE (SizeGroupRow, size_group_row, CTK_TYPE_LIST_BOX_ROW)
 
 static void
 size_group_row_init (SizeGroupRow *row)
@@ -79,9 +79,9 @@ size_group_row_widget_destroyed (GtkWidget *widget, SizeGroupRow *row)
 {
   GtkWidget *parent;
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (row));
+  parent = ctk_widget_get_parent (CTK_WIDGET (row));
   if (parent)
-    ctk_container_remove (GTK_CONTAINER (parent), GTK_WIDGET (row));
+    ctk_container_remove (CTK_CONTAINER (parent), CTK_WIDGET (row));
 }
 
 static void
@@ -137,9 +137,9 @@ size_group_state_flags_changed (GtkWidget     *widget,
     return;
 
   state = ctk_widget_get_state_flags (widget);
-  if ((state & GTK_STATE_FLAG_PRELIGHT) != (old_state & GTK_STATE_FLAG_PRELIGHT))
+  if ((state & CTK_STATE_FLAG_PRELIGHT) != (old_state & CTK_STATE_FLAG_PRELIGHT))
     {
-      if (state & GTK_STATE_FLAG_PRELIGHT)
+      if (state & CTK_STATE_FLAG_PRELIGHT)
         ctk_inspector_start_highlight (row->widget);
       else
         ctk_inspector_stop_highlight (row->widget);
@@ -150,7 +150,7 @@ static void
 size_group_row_class_init (SizeGroupRowClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->finalize = size_group_row_finalize;
   object_class->get_property = size_group_row_get_property;
@@ -165,7 +165,7 @@ size_group_row_class_init (SizeGroupRowClass *class)
 
 }
 
-G_DEFINE_TYPE (GtkInspectorSizeGroups, ctk_inspector_size_groups, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GtkInspectorSizeGroups, ctk_inspector_size_groups, CTK_TYPE_BOX)
 
 static void
 clear_view (GtkInspectorSizeGroups *sl)
@@ -173,11 +173,11 @@ clear_view (GtkInspectorSizeGroups *sl)
   GList *children, *l;
   GtkWidget *child;
 
-  children = ctk_container_get_children (GTK_CONTAINER (sl));
+  children = ctk_container_get_children (CTK_CONTAINER (sl));
   for (l = children; l; l = l->next)
     {
       child = l->data;
-      ctk_container_remove (GTK_CONTAINER (sl), child);
+      ctk_container_remove (CTK_CONTAINER (sl), child);
     }
   g_list_free (children);
 }
@@ -196,11 +196,11 @@ add_widget (GtkInspectorSizeGroups *sl,
   label = ctk_label_new (text);
   g_free (text);
   g_object_set (label, "margin", 10, NULL);
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
   ctk_widget_show (label);
-  ctk_container_add (GTK_CONTAINER (row), label);
-  ctk_container_add (GTK_CONTAINER (listbox), row);
+  ctk_container_add (CTK_CONTAINER (row), label);
+  ctk_container_add (CTK_CONTAINER (listbox), row);
 }
 
 static void
@@ -213,58 +213,58 @@ add_size_group (GtkInspectorSizeGroups *sl,
   GtkWidget *listbox;
 
   frame = ctk_frame_new (NULL);
-  ctk_container_add (GTK_CONTAINER (sl), frame);
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_style_context_add_class (ctk_widget_get_style_context (box), GTK_STYLE_CLASS_VIEW);
-  ctk_container_add (GTK_CONTAINER (frame), box);
+  ctk_container_add (CTK_CONTAINER (sl), frame);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_style_context_add_class (ctk_widget_get_style_context (box), CTK_STYLE_CLASS_VIEW);
+  ctk_container_add (CTK_CONTAINER (frame), box);
 
-  box2 = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-  ctk_container_add (GTK_CONTAINER (box), box2);
+  box2 = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+  ctk_container_add (CTK_CONTAINER (box), box2);
 
   label = ctk_label_new (_("Ignore hidden"));
   g_object_set (label, "margin", 10, NULL);
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
-  ctk_box_pack_start (GTK_BOX (box2), label, TRUE, TRUE, 0);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
+  ctk_box_pack_start (CTK_BOX (box2), label, TRUE, TRUE, 0);
 
   sw = ctk_switch_new ();
   g_object_set (sw, "margin", 10, NULL);
-  ctk_widget_set_halign (sw, GTK_ALIGN_END);
-  ctk_widget_set_valign (sw, GTK_ALIGN_BASELINE);
+  ctk_widget_set_halign (sw, CTK_ALIGN_END);
+  ctk_widget_set_valign (sw, CTK_ALIGN_BASELINE);
   g_object_bind_property (group, "ignore-hidden",
                           sw, "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  ctk_box_pack_start (GTK_BOX (box2), sw, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box2), sw, FALSE, FALSE, 0);
 
-  box2 = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-  ctk_container_add (GTK_CONTAINER (box), box2);
+  box2 = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+  ctk_container_add (CTK_CONTAINER (box), box2);
 
   label = ctk_label_new (_("Mode"));
   g_object_set (label, "margin", 10, NULL);
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
-  ctk_box_pack_start (GTK_BOX (box2), label, TRUE, TRUE, 0);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
+  ctk_box_pack_start (CTK_BOX (box2), label, TRUE, TRUE, 0);
 
   combo = ctk_combo_box_text_new ();
   g_object_set (combo, "margin", 10, NULL);
-  ctk_widget_set_halign (combo, GTK_ALIGN_END);
-  ctk_widget_set_valign (combo, GTK_ALIGN_BASELINE);
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), C_("sizegroup mode", "None"));
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), C_("sizegroup mode", "Horizontal"));
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), C_("sizegroup mode", "Vertical"));
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), C_("sizegroup mode", "Both"));
+  ctk_widget_set_halign (combo, CTK_ALIGN_END);
+  ctk_widget_set_valign (combo, CTK_ALIGN_BASELINE);
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), C_("sizegroup mode", "None"));
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), C_("sizegroup mode", "Horizontal"));
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), C_("sizegroup mode", "Vertical"));
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), C_("sizegroup mode", "Both"));
   g_object_bind_property (group, "mode",
                           combo, "active",
                           G_BINDING_BIDIRECTIONAL | G_BINDING_SYNC_CREATE);
-  ctk_box_pack_start (GTK_BOX (box2), combo, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box2), combo, FALSE, FALSE, 0);
 
   listbox = ctk_list_box_new ();
-  ctk_container_add (GTK_CONTAINER (box), listbox);
-  ctk_list_box_set_selection_mode (GTK_LIST_BOX (listbox), GTK_SELECTION_NONE);
+  ctk_container_add (CTK_CONTAINER (box), listbox);
+  ctk_list_box_set_selection_mode (CTK_LIST_BOX (listbox), CTK_SELECTION_NONE);
 
   widgets = ctk_size_group_get_widgets (group);
   for (l = widgets; l; l = l->next)
-    add_widget (sl, GTK_LIST_BOX (listbox), GTK_WIDGET (l->data));
+    add_widget (sl, CTK_LIST_BOX (listbox), CTK_WIDGET (l->data));
 
   ctk_widget_show_all (frame);
 }
@@ -277,15 +277,15 @@ ctk_inspector_size_groups_set_object (GtkInspectorSizeGroups *sl,
 
   clear_view (sl);
 
-  if (!GTK_IS_WIDGET (object))
+  if (!CTK_IS_WIDGET (object))
     {
-      ctk_widget_hide (GTK_WIDGET (sl));
+      ctk_widget_hide (CTK_WIDGET (sl));
       return;
     }
 
-  groups = _ctk_widget_get_sizegroups (GTK_WIDGET (object));
+  groups = _ctk_widget_get_sizegroups (CTK_WIDGET (object));
   if (groups)
-    ctk_widget_show (GTK_WIDGET (sl));
+    ctk_widget_show (CTK_WIDGET (sl));
   for (l = groups; l; l = l->next)
     {
       GtkSizeGroup *group = l->data;
@@ -297,7 +297,7 @@ static void
 ctk_inspector_size_groups_init (GtkInspectorSizeGroups *sl)
 {
   g_object_set (sl,
-                "orientation", GTK_ORIENTATION_VERTICAL,
+                "orientation", CTK_ORIENTATION_VERTICAL,
                 "margin-start", 60,
                 "margin-end", 60,
                 "margin-bottom", 60,

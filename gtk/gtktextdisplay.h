@@ -73,8 +73,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TEXT_DISPLAY_H__
-#define __GTK_TEXT_DISPLAY_H__
+#ifndef __CTK_TEXT_DISPLAY_H__
+#define __CTK_TEXT_DISPLAY_H__
 
 #include <gtk/gtktextlayout.h>
 
@@ -99,4 +99,4 @@ void ctk_text_layout_draw (GtkTextLayout        *layout,
 
 G_END_DECLS
 
-#endif  /* __GTK_TEXT_DISPLAY_H__ */
+#endif  /* __CTK_TEXT_DISPLAY_H__ */

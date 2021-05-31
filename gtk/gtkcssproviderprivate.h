@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_PROVIDER_PRIVATE_H__
-#define __GTK_CSS_PROVIDER_PRIVATE_H__
+#ifndef __CTK_CSS_PROVIDER_PRIVATE_H__
+#define __CTK_CSS_PROVIDER_PRIVATE_H__
 
 #include "gtkcssprovider.h"
 
@@ -34,4 +34,4 @@ void   ctk_css_provider_set_keep_css_sections (void);
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_PROVIDER_PRIVATE_H__ */
+#endif /* __CTK_CSS_PROVIDER_PRIVATE_H__ */

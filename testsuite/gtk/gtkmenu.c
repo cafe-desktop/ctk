@@ -219,14 +219,14 @@ static void assert_menu_equality (GtkContainer *container, GMenuModel   *model);
 static const gchar *
 get_label (GtkMenuItem *item)
 {
-  GList *children = ctk_container_get_children (GTK_CONTAINER (item));
+  GList *children = ctk_container_get_children (CTK_CONTAINER (item));
   const gchar *label = NULL;
 
   while (children)
     {
-      if (GTK_IS_CONTAINER (children->data))
+      if (CTK_IS_CONTAINER (children->data))
         children = g_list_concat (children, ctk_container_get_children (children->data));
-      else if (GTK_IS_LABEL (children->data))
+      else if (CTK_IS_LABEL (children->data))
         label = ctk_label_get_text (children->data);
 
       children = g_list_delete_link (children, children);
@@ -279,7 +279,7 @@ assert_section_equality (GSList      **children,
    * for by a following section.
    */
   our_children = *children;
-  if (needs_separator && GTK_IS_SEPARATOR_MENU_ITEM (our_children->data))
+  if (needs_separator && CTK_IS_SEPARATOR_MENU_ITEM (our_children->data))
     {
        /* We accounted for the separator, at least for now, so remove it
        * from the list.
@@ -332,7 +332,7 @@ assert_section_equality (GSList      **children,
           if (submenu)
             {
               g_assert (submenu_widget != NULL);
-              assert_menu_equality (GTK_CONTAINER (submenu_widget), submenu);
+              assert_menu_equality (CTK_CONTAINER (submenu_widget), submenu);
               g_object_unref (submenu);
             }
           else
@@ -370,8 +370,8 @@ assert_section_equality (GSList      **children,
        * Make sure that separator was valid.
        */
       contents = ctk_bin_get_child ((*children)->data);
-      if (GTK_IS_LABEL (contents))
-        label = ctk_label_get_label (GTK_LABEL (contents));
+      if (CTK_IS_LABEL (contents))
+        label = ctk_label_get_label (CTK_LABEL (contents));
       else
         label = "";
 
@@ -428,12 +428,12 @@ test_bind_menu (void)
   model = random_menu_new (rand, TOP_ORDER);
   menu = ctk_menu_new_from_model (G_MENU_MODEL (model));
   g_object_ref_sink (menu);
-  assert_menu_equality (GTK_CONTAINER (menu), G_MENU_MODEL (model));
+  assert_menu_equality (CTK_CONTAINER (menu), G_MENU_MODEL (model));
   for (i = 0; i < 100; i++)
     {
       random_menu_change (model, rand);
       while (g_main_context_iteration (NULL, FALSE));
-      assert_menu_equality (GTK_CONTAINER (menu), G_MENU_MODEL (model));
+      assert_menu_equality (CTK_CONTAINER (menu), G_MENU_MODEL (model));
     }
   g_object_unref (model);
   g_object_unref (menu);

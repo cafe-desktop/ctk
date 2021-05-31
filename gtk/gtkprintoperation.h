@@ -16,11 +16,11 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINT_OPERATION_H__
-#define __GTK_PRINT_OPERATION_H__
+#ifndef __CTK_PRINT_OPERATION_H__
+#define __CTK_PRINT_OPERATION_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -35,12 +35,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINT_OPERATION                (ctk_print_operation_get_type ())
-#define GTK_PRINT_OPERATION(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_OPERATION, GtkPrintOperation))
-#define GTK_PRINT_OPERATION_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINT_OPERATION, GtkPrintOperationClass))
-#define GTK_IS_PRINT_OPERATION(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_OPERATION))
-#define GTK_IS_PRINT_OPERATION_CLASS(klass)     (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PRINT_OPERATION))
-#define GTK_PRINT_OPERATION_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PRINT_OPERATION, GtkPrintOperationClass))
+#define CTK_TYPE_PRINT_OPERATION                (ctk_print_operation_get_type ())
+#define CTK_PRINT_OPERATION(obj)                (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_OPERATION, GtkPrintOperation))
+#define CTK_PRINT_OPERATION_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_OPERATION, GtkPrintOperationClass))
+#define CTK_IS_PRINT_OPERATION(obj)             (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_OPERATION))
+#define CTK_IS_PRINT_OPERATION_CLASS(klass)     (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINT_OPERATION))
+#define CTK_PRINT_OPERATION_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_OPERATION, GtkPrintOperationClass))
 
 typedef struct _GtkPrintOperationClass   GtkPrintOperationClass;
 typedef struct _GtkPrintOperationPrivate GtkPrintOperationPrivate;
@@ -48,72 +48,72 @@ typedef struct _GtkPrintOperation        GtkPrintOperation;
 
 /**
  * GtkPrintStatus:
- * @GTK_PRINT_STATUS_INITIAL: The printing has not started yet; this
+ * @CTK_PRINT_STATUS_INITIAL: The printing has not started yet; this
  *     status is set initially, and while the print dialog is shown.
- * @GTK_PRINT_STATUS_PREPARING: This status is set while the begin-print
+ * @CTK_PRINT_STATUS_PREPARING: This status is set while the begin-print
  *     signal is emitted and during pagination.
- * @GTK_PRINT_STATUS_GENERATING_DATA: This status is set while the
+ * @CTK_PRINT_STATUS_GENERATING_DATA: This status is set while the
  *     pages are being rendered.
- * @GTK_PRINT_STATUS_SENDING_DATA: The print job is being sent off to the
+ * @CTK_PRINT_STATUS_SENDING_DATA: The print job is being sent off to the
  *     printer.
- * @GTK_PRINT_STATUS_PENDING: The print job has been sent to the printer,
+ * @CTK_PRINT_STATUS_PENDING: The print job has been sent to the printer,
  *     but is not printed for some reason, e.g. the printer may be stopped.
- * @GTK_PRINT_STATUS_PENDING_ISSUE: Some problem has occurred during
+ * @CTK_PRINT_STATUS_PENDING_ISSUE: Some problem has occurred during
  *     printing, e.g. a paper jam.
- * @GTK_PRINT_STATUS_PRINTING: The printer is processing the print job.
- * @GTK_PRINT_STATUS_FINISHED: The printing has been completed successfully.
- * @GTK_PRINT_STATUS_FINISHED_ABORTED: The printing has been aborted.
+ * @CTK_PRINT_STATUS_PRINTING: The printer is processing the print job.
+ * @CTK_PRINT_STATUS_FINISHED: The printing has been completed successfully.
+ * @CTK_PRINT_STATUS_FINISHED_ABORTED: The printing has been aborted.
  *
  * The status gives a rough indication of the completion of a running
  * print operation.
  */
 typedef enum {
-  GTK_PRINT_STATUS_INITIAL,
-  GTK_PRINT_STATUS_PREPARING,
-  GTK_PRINT_STATUS_GENERATING_DATA,
-  GTK_PRINT_STATUS_SENDING_DATA,
-  GTK_PRINT_STATUS_PENDING,
-  GTK_PRINT_STATUS_PENDING_ISSUE,
-  GTK_PRINT_STATUS_PRINTING,
-  GTK_PRINT_STATUS_FINISHED,
-  GTK_PRINT_STATUS_FINISHED_ABORTED
+  CTK_PRINT_STATUS_INITIAL,
+  CTK_PRINT_STATUS_PREPARING,
+  CTK_PRINT_STATUS_GENERATING_DATA,
+  CTK_PRINT_STATUS_SENDING_DATA,
+  CTK_PRINT_STATUS_PENDING,
+  CTK_PRINT_STATUS_PENDING_ISSUE,
+  CTK_PRINT_STATUS_PRINTING,
+  CTK_PRINT_STATUS_FINISHED,
+  CTK_PRINT_STATUS_FINISHED_ABORTED
 } GtkPrintStatus;
 
 /**
  * GtkPrintOperationResult:
- * @GTK_PRINT_OPERATION_RESULT_ERROR: An error has occurred.
- * @GTK_PRINT_OPERATION_RESULT_APPLY: The print settings should be stored.
- * @GTK_PRINT_OPERATION_RESULT_CANCEL: The print operation has been canceled,
+ * @CTK_PRINT_OPERATION_RESULT_ERROR: An error has occurred.
+ * @CTK_PRINT_OPERATION_RESULT_APPLY: The print settings should be stored.
+ * @CTK_PRINT_OPERATION_RESULT_CANCEL: The print operation has been canceled,
  *     the print settings should not be stored.
- * @GTK_PRINT_OPERATION_RESULT_IN_PROGRESS: The print operation is not complete
+ * @CTK_PRINT_OPERATION_RESULT_IN_PROGRESS: The print operation is not complete
  *     yet. This value will only be returned when running asynchronously.
  *
  * A value of this type is returned by ctk_print_operation_run().
  */
 typedef enum {
-  GTK_PRINT_OPERATION_RESULT_ERROR,
-  GTK_PRINT_OPERATION_RESULT_APPLY,
-  GTK_PRINT_OPERATION_RESULT_CANCEL,
-  GTK_PRINT_OPERATION_RESULT_IN_PROGRESS
+  CTK_PRINT_OPERATION_RESULT_ERROR,
+  CTK_PRINT_OPERATION_RESULT_APPLY,
+  CTK_PRINT_OPERATION_RESULT_CANCEL,
+  CTK_PRINT_OPERATION_RESULT_IN_PROGRESS
 } GtkPrintOperationResult;
 
 /**
  * GtkPrintOperationAction:
- * @GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG: Show the print dialog.
- * @GTK_PRINT_OPERATION_ACTION_PRINT: Start to print without showing
+ * @CTK_PRINT_OPERATION_ACTION_PRINT_DIALOG: Show the print dialog.
+ * @CTK_PRINT_OPERATION_ACTION_PRINT: Start to print without showing
  *     the print dialog, based on the current print settings.
- * @GTK_PRINT_OPERATION_ACTION_PREVIEW: Show the print preview.
- * @GTK_PRINT_OPERATION_ACTION_EXPORT: Export to a file. This requires
+ * @CTK_PRINT_OPERATION_ACTION_PREVIEW: Show the print preview.
+ * @CTK_PRINT_OPERATION_ACTION_EXPORT: Export to a file. This requires
  *     the export-filename property to be set.
  *
  * The @action parameter to ctk_print_operation_run()
  * determines what action the print operation should perform.
  */
 typedef enum {
-  GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
-  GTK_PRINT_OPERATION_ACTION_PRINT,
-  GTK_PRINT_OPERATION_ACTION_PREVIEW,
-  GTK_PRINT_OPERATION_ACTION_EXPORT
+  CTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
+  CTK_PRINT_OPERATION_ACTION_PRINT,
+  CTK_PRINT_OPERATION_ACTION_PREVIEW,
+  CTK_PRINT_OPERATION_ACTION_EXPORT
 } GtkPrintOperationAction;
 
 
@@ -198,18 +198,18 @@ struct _GtkPrintOperationClass
 };
 
 /**
- * GTK_PRINT_ERROR:
+ * CTK_PRINT_ERROR:
  *
  * The error domain for #GtkPrintError errors.
  */
-#define GTK_PRINT_ERROR ctk_print_error_quark ()
+#define CTK_PRINT_ERROR ctk_print_error_quark ()
 
 /**
  * GtkPrintError:
- * @GTK_PRINT_ERROR_GENERAL: An unspecified error occurred.
- * @GTK_PRINT_ERROR_INTERNAL_ERROR: An internal error occurred.
- * @GTK_PRINT_ERROR_NOMEM: A memory allocation failed.
- * @GTK_PRINT_ERROR_INVALID_FILE: An error occurred while loading a page setup
+ * @CTK_PRINT_ERROR_GENERAL: An unspecified error occurred.
+ * @CTK_PRINT_ERROR_INTERNAL_ERROR: An internal error occurred.
+ * @CTK_PRINT_ERROR_NOMEM: A memory allocation failed.
+ * @CTK_PRINT_ERROR_INVALID_FILE: An error occurred while loading a page setup
  *     or paper size from a key file.
  *
  * Error codes that identify various errors that can occur while
@@ -217,10 +217,10 @@ struct _GtkPrintOperationClass
  */
 typedef enum
 {
-  GTK_PRINT_ERROR_GENERAL,
-  GTK_PRINT_ERROR_INTERNAL_ERROR,
-  GTK_PRINT_ERROR_NOMEM,
-  GTK_PRINT_ERROR_INVALID_FILE
+  CTK_PRINT_ERROR_GENERAL,
+  CTK_PRINT_ERROR_INTERNAL_ERROR,
+  CTK_PRINT_ERROR_NOMEM,
+  CTK_PRINT_ERROR_INVALID_FILE
 } GtkPrintError;
 
 GDK_AVAILABLE_IN_ALL
@@ -337,4 +337,4 @@ void                    ctk_print_run_page_setup_dialog_async      (GtkWindow   
 
 G_END_DECLS
 
-#endif /* __GTK_PRINT_OPERATION_H__ */
+#endif /* __CTK_PRINT_OPERATION_H__ */

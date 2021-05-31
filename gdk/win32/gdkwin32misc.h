@@ -87,7 +87,7 @@ void          gdk_win32_selection_add_targets (GdkWindow  *owner,
 					       gint	   n_targets,
 					       GdkAtom    *targets);
 
-#if defined (GTK_COMPILATION) || defined (GDK_COMPILATION)
+#if defined (CTK_COMPILATION) || defined (GDK_COMPILATION)
 #define gdk_win32_selection_clear_targets gdk_win32_selection_clear_targets_libctk_only
 GDK_AVAILABLE_IN_ALL
 void          gdk_win32_selection_clear_targets (GdkDisplay *display,
@@ -101,7 +101,7 @@ GDK_AVAILABLE_IN_ALL
 GdkWindow *   gdk_win32_window_lookup_for_display (GdkDisplay *display,
                                                    HWND        anid);
 
-#if defined (INSIDE_GDK_WIN32) || defined (GDK_COMPILATION) || defined (GTK_COMPILATION)
+#if defined (INSIDE_GDK_WIN32) || defined (GDK_COMPILATION) || defined (CTK_COMPILATION)
 
 /* For internal GTK use only */
 GDK_AVAILABLE_IN_ALL

@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ICON_VIEW_H__
-#define __GTK_ICON_VIEW_H__
+#ifndef __CTK_ICON_VIEW_H__
+#define __CTK_ICON_VIEW_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ICON_VIEW            (ctk_icon_view_get_type ())
-#define GTK_ICON_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ICON_VIEW, GtkIconView))
-#define GTK_ICON_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ICON_VIEW, GtkIconViewClass))
-#define GTK_IS_ICON_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ICON_VIEW))
-#define GTK_IS_ICON_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ICON_VIEW))
-#define GTK_ICON_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ICON_VIEW, GtkIconViewClass))
+#define CTK_TYPE_ICON_VIEW            (ctk_icon_view_get_type ())
+#define CTK_ICON_VIEW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_VIEW, GtkIconView))
+#define CTK_ICON_VIEW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ICON_VIEW, GtkIconViewClass))
+#define CTK_IS_ICON_VIEW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ICON_VIEW))
+#define CTK_IS_ICON_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ICON_VIEW))
+#define CTK_ICON_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ICON_VIEW, GtkIconViewClass))
 
 typedef struct _GtkIconView           GtkIconView;
 typedef struct _GtkIconViewClass      GtkIconViewClass;
@@ -57,23 +57,23 @@ typedef void (* GtkIconViewForeachFunc)     (GtkIconView      *icon_view,
 
 /**
  * GtkIconViewDropPosition:
- * @GTK_ICON_VIEW_NO_DROP: no drop possible
- * @GTK_ICON_VIEW_DROP_INTO: dropped item replaces the item
- * @GTK_ICON_VIEW_DROP_LEFT: droppped item is inserted to the left
- * @GTK_ICON_VIEW_DROP_RIGHT: dropped item is inserted to the right
- * @GTK_ICON_VIEW_DROP_ABOVE: dropped item is inserted above
- * @GTK_ICON_VIEW_DROP_BELOW: dropped item is inserted below
+ * @CTK_ICON_VIEW_NO_DROP: no drop possible
+ * @CTK_ICON_VIEW_DROP_INTO: dropped item replaces the item
+ * @CTK_ICON_VIEW_DROP_LEFT: droppped item is inserted to the left
+ * @CTK_ICON_VIEW_DROP_RIGHT: dropped item is inserted to the right
+ * @CTK_ICON_VIEW_DROP_ABOVE: dropped item is inserted above
+ * @CTK_ICON_VIEW_DROP_BELOW: dropped item is inserted below
  *
  * An enum for determining where a dropped item goes.
  */
 typedef enum
 {
-  GTK_ICON_VIEW_NO_DROP,
-  GTK_ICON_VIEW_DROP_INTO,
-  GTK_ICON_VIEW_DROP_LEFT,
-  GTK_ICON_VIEW_DROP_RIGHT,
-  GTK_ICON_VIEW_DROP_ABOVE,
-  GTK_ICON_VIEW_DROP_BELOW
+  CTK_ICON_VIEW_NO_DROP,
+  CTK_ICON_VIEW_DROP_INTO,
+  CTK_ICON_VIEW_DROP_LEFT,
+  CTK_ICON_VIEW_DROP_RIGHT,
+  CTK_ICON_VIEW_DROP_ABOVE,
+  CTK_ICON_VIEW_DROP_BELOW
 } GtkIconViewDropPosition;
 
 struct _GtkIconView
@@ -330,4 +330,4 @@ gint     ctk_icon_view_get_tooltip_column                     (GtkIconView      
 
 G_END_DECLS
 
-#endif /* __GTK_ICON_VIEW_H__ */
+#endif /* __CTK_ICON_VIEW_H__ */

@@ -27,7 +27,7 @@
 /* repeated API */
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   int value;
   const char *name;
 };
@@ -73,7 +73,7 @@ ctk_css_value_enum_print (const GtkCssValue *value,
 
 /* GtkBorderStyle */
 
-static const GtkCssValueClass GTK_CSS_VALUE_BORDER_STYLE = {
+static const GtkCssValueClass CTK_CSS_VALUE_BORDER_STYLE = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -82,16 +82,16 @@ static const GtkCssValueClass GTK_CSS_VALUE_BORDER_STYLE = {
 };
 
 static GtkCssValue border_style_values[] = {
-  { &GTK_CSS_VALUE_BORDER_STYLE, 1, GTK_BORDER_STYLE_NONE, "none" },
-  { &GTK_CSS_VALUE_BORDER_STYLE, 1, GTK_BORDER_STYLE_SOLID, "solid" },
-  { &GTK_CSS_VALUE_BORDER_STYLE, 1, GTK_BORDER_STYLE_INSET, "inset" },
-  { &GTK_CSS_VALUE_BORDER_STYLE, 1, GTK_BORDER_STYLE_OUTSET, "outset" },
-  { &GTK_CSS_VALUE_BORDER_STYLE, 1, GTK_BORDER_STYLE_HIDDEN, "hidden" },
-  { &GTK_CSS_VALUE_BORDER_STYLE, 1, GTK_BORDER_STYLE_DOTTED, "dotted" },
-  { &GTK_CSS_VALUE_BORDER_STYLE, 1, GTK_BORDER_STYLE_DASHED, "dashed" },
-  { &GTK_CSS_VALUE_BORDER_STYLE, 1, GTK_BORDER_STYLE_DOUBLE, "double" },
-  { &GTK_CSS_VALUE_BORDER_STYLE, 1, GTK_BORDER_STYLE_GROOVE, "groove" },
-  { &GTK_CSS_VALUE_BORDER_STYLE, 1, GTK_BORDER_STYLE_RIDGE, "ridge" }
+  { &CTK_CSS_VALUE_BORDER_STYLE, 1, CTK_BORDER_STYLE_NONE, "none" },
+  { &CTK_CSS_VALUE_BORDER_STYLE, 1, CTK_BORDER_STYLE_SOLID, "solid" },
+  { &CTK_CSS_VALUE_BORDER_STYLE, 1, CTK_BORDER_STYLE_INSET, "inset" },
+  { &CTK_CSS_VALUE_BORDER_STYLE, 1, CTK_BORDER_STYLE_OUTSET, "outset" },
+  { &CTK_CSS_VALUE_BORDER_STYLE, 1, CTK_BORDER_STYLE_HIDDEN, "hidden" },
+  { &CTK_CSS_VALUE_BORDER_STYLE, 1, CTK_BORDER_STYLE_DOTTED, "dotted" },
+  { &CTK_CSS_VALUE_BORDER_STYLE, 1, CTK_BORDER_STYLE_DASHED, "dashed" },
+  { &CTK_CSS_VALUE_BORDER_STYLE, 1, CTK_BORDER_STYLE_DOUBLE, "double" },
+  { &CTK_CSS_VALUE_BORDER_STYLE, 1, CTK_BORDER_STYLE_GROOVE, "groove" },
+  { &CTK_CSS_VALUE_BORDER_STYLE, 1, CTK_BORDER_STYLE_RIDGE, "ridge" }
 };
 
 GtkCssValue *
@@ -121,14 +121,14 @@ _ctk_css_border_style_value_try_parse (GtkCssParser *parser)
 GtkBorderStyle
 _ctk_css_border_style_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_BORDER_STYLE, GTK_BORDER_STYLE_NONE);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_BORDER_STYLE, CTK_BORDER_STYLE_NONE);
 
   return value->value;
 }
 
 /* GtkCssBlendMode */
 
-static const GtkCssValueClass GTK_CSS_VALUE_BLEND_MODE = {
+static const GtkCssValueClass CTK_CSS_VALUE_BLEND_MODE = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -137,22 +137,22 @@ static const GtkCssValueClass GTK_CSS_VALUE_BLEND_MODE = {
 };
 
 static GtkCssValue blend_mode_values[] = {
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_COLOR_BURN, "color-burn" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_COLOR_DODGE, "color-dodge" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_COLOR, "color" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_DARKEN, "darken" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_DIFFERENCE, "difference" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_EXCLUSION, "exclusion" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_HARD_LIGHT, "hard-light" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_HUE, "hue" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_LIGHTEN, "lighten" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_LUMINOSITY, "luminosity" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_MULTIPLY, "multiply" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_NORMAL, "normal" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_OVERLAY, "overlay" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_SATURATE, "saturate" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_SCREEN, "screen" },
-  { &GTK_CSS_VALUE_BLEND_MODE, 1, GTK_CSS_BLEND_MODE_SOFT_LIGHT, "soft-light" }
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_COLOR_BURN, "color-burn" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_COLOR_DODGE, "color-dodge" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_COLOR, "color" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_DARKEN, "darken" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_DIFFERENCE, "difference" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_EXCLUSION, "exclusion" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_HARD_LIGHT, "hard-light" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_HUE, "hue" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_LIGHTEN, "lighten" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_LUMINOSITY, "luminosity" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_MULTIPLY, "multiply" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_NORMAL, "normal" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_OVERLAY, "overlay" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_SATURATE, "saturate" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_SCREEN, "screen" },
+  { &CTK_CSS_VALUE_BLEND_MODE, 1, CTK_CSS_BLEND_MODE_SOFT_LIGHT, "soft-light" }
 };
 
 GtkCssValue *
@@ -182,7 +182,7 @@ _ctk_css_blend_mode_value_try_parse (GtkCssParser *parser)
 GtkCssBlendMode
 _ctk_css_blend_mode_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_BLEND_MODE, GTK_CSS_BLEND_MODE_NORMAL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_BLEND_MODE, CTK_CSS_BLEND_MODE_NORMAL);
 
   return value->value;
 }
@@ -192,7 +192,7 @@ _ctk_css_blend_mode_value_get (const GtkCssValue *value)
 static double
 get_dpi (GtkCssStyle *style)
 {
-  return _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_DPI), 96);
+  return _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_DPI), 96);
 }
 
 /* XXX: Kinda bad to have that machinery here, nobody expects vital font
@@ -231,41 +231,41 @@ ctk_css_value_font_size_compute (GtkCssValue             *value,
 
   switch (value->value)
     {
-    case GTK_CSS_FONT_SIZE_XX_SMALL:
+    case CTK_CSS_FONT_SIZE_XX_SMALL:
       font_size = ctk_css_font_size_get_default_px (provider, style) * 3. / 5;
       break;
-    case GTK_CSS_FONT_SIZE_X_SMALL:
+    case CTK_CSS_FONT_SIZE_X_SMALL:
       font_size = ctk_css_font_size_get_default_px (provider, style) * 3. / 4;
       break;
-    case GTK_CSS_FONT_SIZE_SMALL:
+    case CTK_CSS_FONT_SIZE_SMALL:
       font_size = ctk_css_font_size_get_default_px (provider, style) * 8. / 9;
       break;
     default:
       g_assert_not_reached ();
       /* fall thru */
-    case GTK_CSS_FONT_SIZE_MEDIUM:
+    case CTK_CSS_FONT_SIZE_MEDIUM:
       font_size = ctk_css_font_size_get_default_px (provider, style);
       break;
-    case GTK_CSS_FONT_SIZE_LARGE:
+    case CTK_CSS_FONT_SIZE_LARGE:
       font_size = ctk_css_font_size_get_default_px (provider, style) * 6. / 5;
       break;
-    case GTK_CSS_FONT_SIZE_X_LARGE:
+    case CTK_CSS_FONT_SIZE_X_LARGE:
       font_size = ctk_css_font_size_get_default_px (provider, style) * 3. / 2;
       break;
-    case GTK_CSS_FONT_SIZE_XX_LARGE:
+    case CTK_CSS_FONT_SIZE_XX_LARGE:
       font_size = ctk_css_font_size_get_default_px (provider, style) * 2;
       break;
-    case GTK_CSS_FONT_SIZE_SMALLER:
+    case CTK_CSS_FONT_SIZE_SMALLER:
       if (parent_style)
-        font_size = _ctk_css_number_value_get (ctk_css_style_get_value (parent_style, GTK_CSS_PROPERTY_FONT_SIZE), 100);
+        font_size = _ctk_css_number_value_get (ctk_css_style_get_value (parent_style, CTK_CSS_PROPERTY_FONT_SIZE), 100);
       else
         font_size = ctk_css_font_size_get_default_px (provider, style);
       /* XXX: This is what WebKit does... */
       font_size /= 1.2;
       break;
-    case GTK_CSS_FONT_SIZE_LARGER:
+    case CTK_CSS_FONT_SIZE_LARGER:
       if (parent_style)
-        font_size = _ctk_css_number_value_get (ctk_css_style_get_value (parent_style, GTK_CSS_PROPERTY_FONT_SIZE), 100);
+        font_size = _ctk_css_number_value_get (ctk_css_style_get_value (parent_style, CTK_CSS_PROPERTY_FONT_SIZE), 100);
       else
         font_size = ctk_css_font_size_get_default_px (provider, style);
       /* XXX: This is what WebKit does... */
@@ -273,10 +273,10 @@ ctk_css_value_font_size_compute (GtkCssValue             *value,
       break;
   }
 
-  return _ctk_css_number_value_new (font_size, GTK_CSS_PX);
+  return _ctk_css_number_value_new (font_size, CTK_CSS_PX);
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_FONT_SIZE = {
+static const GtkCssValueClass CTK_CSS_VALUE_FONT_SIZE = {
   ctk_css_value_enum_free,
   ctk_css_value_font_size_compute,
   ctk_css_value_enum_equal,
@@ -285,15 +285,15 @@ static const GtkCssValueClass GTK_CSS_VALUE_FONT_SIZE = {
 };
 
 static GtkCssValue font_size_values[] = {
-  { &GTK_CSS_VALUE_FONT_SIZE, 1, GTK_CSS_FONT_SIZE_SMALLER, "smaller" },
-  { &GTK_CSS_VALUE_FONT_SIZE, 1, GTK_CSS_FONT_SIZE_LARGER, "larger" },
-  { &GTK_CSS_VALUE_FONT_SIZE, 1, GTK_CSS_FONT_SIZE_XX_SMALL, "xx-small" },
-  { &GTK_CSS_VALUE_FONT_SIZE, 1, GTK_CSS_FONT_SIZE_X_SMALL, "x-small" },
-  { &GTK_CSS_VALUE_FONT_SIZE, 1, GTK_CSS_FONT_SIZE_SMALL, "small" },
-  { &GTK_CSS_VALUE_FONT_SIZE, 1, GTK_CSS_FONT_SIZE_MEDIUM, "medium" },
-  { &GTK_CSS_VALUE_FONT_SIZE, 1, GTK_CSS_FONT_SIZE_LARGE, "large" },
-  { &GTK_CSS_VALUE_FONT_SIZE, 1, GTK_CSS_FONT_SIZE_X_LARGE, "x-large" },
-  { &GTK_CSS_VALUE_FONT_SIZE, 1, GTK_CSS_FONT_SIZE_XX_LARGE, "xx-large" }
+  { &CTK_CSS_VALUE_FONT_SIZE, 1, CTK_CSS_FONT_SIZE_SMALLER, "smaller" },
+  { &CTK_CSS_VALUE_FONT_SIZE, 1, CTK_CSS_FONT_SIZE_LARGER, "larger" },
+  { &CTK_CSS_VALUE_FONT_SIZE, 1, CTK_CSS_FONT_SIZE_XX_SMALL, "xx-small" },
+  { &CTK_CSS_VALUE_FONT_SIZE, 1, CTK_CSS_FONT_SIZE_X_SMALL, "x-small" },
+  { &CTK_CSS_VALUE_FONT_SIZE, 1, CTK_CSS_FONT_SIZE_SMALL, "small" },
+  { &CTK_CSS_VALUE_FONT_SIZE, 1, CTK_CSS_FONT_SIZE_MEDIUM, "medium" },
+  { &CTK_CSS_VALUE_FONT_SIZE, 1, CTK_CSS_FONT_SIZE_LARGE, "large" },
+  { &CTK_CSS_VALUE_FONT_SIZE, 1, CTK_CSS_FONT_SIZE_X_LARGE, "x-large" },
+  { &CTK_CSS_VALUE_FONT_SIZE, 1, CTK_CSS_FONT_SIZE_XX_LARGE, "xx-large" }
 };
 
 GtkCssValue *
@@ -323,14 +323,14 @@ _ctk_css_font_size_value_try_parse (GtkCssParser *parser)
 GtkCssFontSize
 _ctk_css_font_size_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_FONT_SIZE, GTK_CSS_FONT_SIZE_MEDIUM);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_FONT_SIZE, CTK_CSS_FONT_SIZE_MEDIUM);
 
   return value->value;
 }
 
 /* PangoStyle */
 
-static const GtkCssValueClass GTK_CSS_VALUE_FONT_STYLE = {
+static const GtkCssValueClass CTK_CSS_VALUE_FONT_STYLE = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -339,9 +339,9 @@ static const GtkCssValueClass GTK_CSS_VALUE_FONT_STYLE = {
 };
 
 static GtkCssValue font_style_values[] = {
-  { &GTK_CSS_VALUE_FONT_STYLE, 1, PANGO_STYLE_NORMAL, "normal" },
-  { &GTK_CSS_VALUE_FONT_STYLE, 1, PANGO_STYLE_OBLIQUE, "oblique" },
-  { &GTK_CSS_VALUE_FONT_STYLE, 1, PANGO_STYLE_ITALIC, "italic" }
+  { &CTK_CSS_VALUE_FONT_STYLE, 1, PANGO_STYLE_NORMAL, "normal" },
+  { &CTK_CSS_VALUE_FONT_STYLE, 1, PANGO_STYLE_OBLIQUE, "oblique" },
+  { &CTK_CSS_VALUE_FONT_STYLE, 1, PANGO_STYLE_ITALIC, "italic" }
 };
 
 GtkCssValue *
@@ -371,14 +371,14 @@ _ctk_css_font_style_value_try_parse (GtkCssParser *parser)
 PangoStyle
 _ctk_css_font_style_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_FONT_STYLE, PANGO_STYLE_NORMAL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_FONT_STYLE, PANGO_STYLE_NORMAL);
 
   return value->value;
 }
 
 /* PangoVariant */
 
-static const GtkCssValueClass GTK_CSS_VALUE_FONT_VARIANT = {
+static const GtkCssValueClass CTK_CSS_VALUE_FONT_VARIANT = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -387,8 +387,8 @@ static const GtkCssValueClass GTK_CSS_VALUE_FONT_VARIANT = {
 };
 
 static GtkCssValue font_variant_values[] = {
-  { &GTK_CSS_VALUE_FONT_VARIANT, 1, PANGO_VARIANT_NORMAL, "normal" },
-  { &GTK_CSS_VALUE_FONT_VARIANT, 1, PANGO_VARIANT_SMALL_CAPS, "small-caps" }
+  { &CTK_CSS_VALUE_FONT_VARIANT, 1, PANGO_VARIANT_NORMAL, "normal" },
+  { &CTK_CSS_VALUE_FONT_VARIANT, 1, PANGO_VARIANT_SMALL_CAPS, "small-caps" }
 };
 
 GtkCssValue *
@@ -418,7 +418,7 @@ _ctk_css_font_variant_value_try_parse (GtkCssParser *parser)
 PangoVariant
 _ctk_css_font_variant_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_FONT_VARIANT, PANGO_VARIANT_NORMAL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_FONT_VARIANT, PANGO_VARIANT_NORMAL);
 
   return value->value;
 }
@@ -489,7 +489,7 @@ ctk_css_value_font_weight_transition (GtkCssValue *start,
   return _ctk_css_font_weight_value_new (new_weight);
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_FONT_WEIGHT = {
+static const GtkCssValueClass CTK_CSS_VALUE_FONT_WEIGHT = {
   ctk_css_value_enum_free,
   ctk_css_value_font_weight_compute,
   ctk_css_value_enum_equal,
@@ -498,18 +498,18 @@ static const GtkCssValueClass GTK_CSS_VALUE_FONT_WEIGHT = {
 };
 
 static GtkCssValue font_weight_values[] = {
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, BOLDER, "bolder" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, LIGHTER, "lighter" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_THIN, "100" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_ULTRALIGHT, "200" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_LIGHT, "300" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_NORMAL, "normal" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_MEDIUM, "500" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_SEMIBOLD, "600" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_BOLD, "bold" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_ULTRABOLD, "800" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_HEAVY, "900" },
-  { &GTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_ULTRAHEAVY, "1000" }
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, BOLDER, "bolder" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, LIGHTER, "lighter" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_THIN, "100" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_ULTRALIGHT, "200" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_LIGHT, "300" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_NORMAL, "normal" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_MEDIUM, "500" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_SEMIBOLD, "600" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_BOLD, "bold" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_ULTRABOLD, "800" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_HEAVY, "900" },
+  { &CTK_CSS_VALUE_FONT_WEIGHT, 1, PANGO_WEIGHT_ULTRAHEAVY, "1000" }
 };
 
 GtkCssValue *
@@ -553,7 +553,7 @@ _ctk_css_font_weight_value_try_parse (GtkCssParser *parser)
 PangoWeight
 _ctk_css_font_weight_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_FONT_WEIGHT, PANGO_WEIGHT_NORMAL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_FONT_WEIGHT, PANGO_WEIGHT_NORMAL);
 
   return value->value;
 }
@@ -563,7 +563,7 @@ _ctk_css_font_weight_value_get (const GtkCssValue *value)
 
 /* PangoStretch */
 
-static const GtkCssValueClass GTK_CSS_VALUE_FONT_STRETCH = {
+static const GtkCssValueClass CTK_CSS_VALUE_FONT_STRETCH = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -572,15 +572,15 @@ static const GtkCssValueClass GTK_CSS_VALUE_FONT_STRETCH = {
 };
 
 static GtkCssValue font_stretch_values[] = {
-  { &GTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_ULTRA_CONDENSED, "ultra-condensed" },
-  { &GTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_EXTRA_CONDENSED, "extra-condensed" },
-  { &GTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_CONDENSED, "condensed" },
-  { &GTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_SEMI_CONDENSED, "semi-condensed" },
-  { &GTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_NORMAL, "normal" },
-  { &GTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_SEMI_EXPANDED, "semi-expanded" },
-  { &GTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_EXPANDED, "expanded" },
-  { &GTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_EXTRA_EXPANDED, "extra-expanded" },
-  { &GTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_ULTRA_EXPANDED, "ultra-expanded" },
+  { &CTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_ULTRA_CONDENSED, "ultra-condensed" },
+  { &CTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_EXTRA_CONDENSED, "extra-condensed" },
+  { &CTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_CONDENSED, "condensed" },
+  { &CTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_SEMI_CONDENSED, "semi-condensed" },
+  { &CTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_NORMAL, "normal" },
+  { &CTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_SEMI_EXPANDED, "semi-expanded" },
+  { &CTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_EXPANDED, "expanded" },
+  { &CTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_EXTRA_EXPANDED, "extra-expanded" },
+  { &CTK_CSS_VALUE_FONT_STRETCH, 1, PANGO_STRETCH_ULTRA_EXPANDED, "ultra-expanded" },
 };
 
 GtkCssValue *
@@ -610,14 +610,14 @@ _ctk_css_font_stretch_value_try_parse (GtkCssParser *parser)
 PangoStretch
 _ctk_css_font_stretch_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_FONT_STRETCH, PANGO_STRETCH_NORMAL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_FONT_STRETCH, PANGO_STRETCH_NORMAL);
 
   return value->value;
 }
 
 /* GtkTextDecorationLine */
 
-static const GtkCssValueClass GTK_CSS_VALUE_TEXT_DECORATION_LINE = {
+static const GtkCssValueClass CTK_CSS_VALUE_TEXT_DECORATION_LINE = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -626,9 +626,9 @@ static const GtkCssValueClass GTK_CSS_VALUE_TEXT_DECORATION_LINE = {
 };
 
 static GtkCssValue text_decoration_line_values[] = {
-  { &GTK_CSS_VALUE_TEXT_DECORATION_LINE, 1, GTK_CSS_TEXT_DECORATION_LINE_NONE, "none" },
-  { &GTK_CSS_VALUE_TEXT_DECORATION_LINE, 1, GTK_CSS_TEXT_DECORATION_LINE_UNDERLINE, "underline" },
-  { &GTK_CSS_VALUE_TEXT_DECORATION_LINE, 1, GTK_CSS_TEXT_DECORATION_LINE_LINE_THROUGH, "line-through" },
+  { &CTK_CSS_VALUE_TEXT_DECORATION_LINE, 1, CTK_CSS_TEXT_DECORATION_LINE_NONE, "none" },
+  { &CTK_CSS_VALUE_TEXT_DECORATION_LINE, 1, CTK_CSS_TEXT_DECORATION_LINE_UNDERLINE, "underline" },
+  { &CTK_CSS_VALUE_TEXT_DECORATION_LINE, 1, CTK_CSS_TEXT_DECORATION_LINE_LINE_THROUGH, "line-through" },
 };
 
 GtkCssValue *
@@ -658,14 +658,14 @@ _ctk_css_text_decoration_line_value_try_parse (GtkCssParser *parser)
 GtkTextDecorationLine
 _ctk_css_text_decoration_line_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_TEXT_DECORATION_LINE, GTK_CSS_TEXT_DECORATION_LINE_NONE);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_TEXT_DECORATION_LINE, CTK_CSS_TEXT_DECORATION_LINE_NONE);
 
   return value->value;
 }
 
 /* GtkTextDecorationStyle */
 
-static const GtkCssValueClass GTK_CSS_VALUE_TEXT_DECORATION_STYLE = {
+static const GtkCssValueClass CTK_CSS_VALUE_TEXT_DECORATION_STYLE = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -674,9 +674,9 @@ static const GtkCssValueClass GTK_CSS_VALUE_TEXT_DECORATION_STYLE = {
 };
 
 static GtkCssValue text_decoration_style_values[] = {
-  { &GTK_CSS_VALUE_TEXT_DECORATION_STYLE, 1, GTK_CSS_TEXT_DECORATION_STYLE_SOLID, "solid" },
-  { &GTK_CSS_VALUE_TEXT_DECORATION_STYLE, 1, GTK_CSS_TEXT_DECORATION_STYLE_DOUBLE, "double" },
-  { &GTK_CSS_VALUE_TEXT_DECORATION_STYLE, 1, GTK_CSS_TEXT_DECORATION_STYLE_WAVY, "wavy" },
+  { &CTK_CSS_VALUE_TEXT_DECORATION_STYLE, 1, CTK_CSS_TEXT_DECORATION_STYLE_SOLID, "solid" },
+  { &CTK_CSS_VALUE_TEXT_DECORATION_STYLE, 1, CTK_CSS_TEXT_DECORATION_STYLE_DOUBLE, "double" },
+  { &CTK_CSS_VALUE_TEXT_DECORATION_STYLE, 1, CTK_CSS_TEXT_DECORATION_STYLE_WAVY, "wavy" },
 };
 
 GtkCssValue *
@@ -706,14 +706,14 @@ _ctk_css_text_decoration_style_value_try_parse (GtkCssParser *parser)
 GtkTextDecorationStyle
 _ctk_css_text_decoration_style_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_TEXT_DECORATION_STYLE, GTK_CSS_TEXT_DECORATION_STYLE_SOLID);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_TEXT_DECORATION_STYLE, CTK_CSS_TEXT_DECORATION_STYLE_SOLID);
 
   return value->value;
 }
 
 /* GtkCssArea */
 
-static const GtkCssValueClass GTK_CSS_VALUE_AREA = {
+static const GtkCssValueClass CTK_CSS_VALUE_AREA = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -722,9 +722,9 @@ static const GtkCssValueClass GTK_CSS_VALUE_AREA = {
 };
 
 static GtkCssValue area_values[] = {
-  { &GTK_CSS_VALUE_AREA, 1, GTK_CSS_AREA_BORDER_BOX, "border-box" },
-  { &GTK_CSS_VALUE_AREA, 1, GTK_CSS_AREA_PADDING_BOX, "padding-box" },
-  { &GTK_CSS_VALUE_AREA, 1, GTK_CSS_AREA_CONTENT_BOX, "content-box" }
+  { &CTK_CSS_VALUE_AREA, 1, CTK_CSS_AREA_BORDER_BOX, "border-box" },
+  { &CTK_CSS_VALUE_AREA, 1, CTK_CSS_AREA_PADDING_BOX, "padding-box" },
+  { &CTK_CSS_VALUE_AREA, 1, CTK_CSS_AREA_CONTENT_BOX, "content-box" }
 };
 
 GtkCssValue *
@@ -760,14 +760,14 @@ _ctk_css_area_value_try_parse (GtkCssParser *parser)
 GtkCssArea
 _ctk_css_area_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_AREA, GTK_CSS_AREA_BORDER_BOX);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_AREA, CTK_CSS_AREA_BORDER_BOX);
 
   return value->value;
 }
 
 /* GtkCssDirection */
 
-static const GtkCssValueClass GTK_CSS_VALUE_DIRECTION = {
+static const GtkCssValueClass CTK_CSS_VALUE_DIRECTION = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -776,10 +776,10 @@ static const GtkCssValueClass GTK_CSS_VALUE_DIRECTION = {
 };
 
 static GtkCssValue direction_values[] = {
-  { &GTK_CSS_VALUE_DIRECTION, 1, GTK_CSS_DIRECTION_NORMAL, "normal" },
-  { &GTK_CSS_VALUE_DIRECTION, 1, GTK_CSS_DIRECTION_REVERSE, "reverse" },
-  { &GTK_CSS_VALUE_DIRECTION, 1, GTK_CSS_DIRECTION_ALTERNATE, "alternate" },
-  { &GTK_CSS_VALUE_DIRECTION, 1, GTK_CSS_DIRECTION_ALTERNATE_REVERSE, "alternate-reverse" }
+  { &CTK_CSS_VALUE_DIRECTION, 1, CTK_CSS_DIRECTION_NORMAL, "normal" },
+  { &CTK_CSS_VALUE_DIRECTION, 1, CTK_CSS_DIRECTION_REVERSE, "reverse" },
+  { &CTK_CSS_VALUE_DIRECTION, 1, CTK_CSS_DIRECTION_ALTERNATE, "alternate" },
+  { &CTK_CSS_VALUE_DIRECTION, 1, CTK_CSS_DIRECTION_ALTERNATE_REVERSE, "alternate-reverse" }
 };
 
 GtkCssValue *
@@ -818,14 +818,14 @@ _ctk_css_direction_value_try_parse (GtkCssParser *parser)
 GtkCssDirection
 _ctk_css_direction_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_DIRECTION, GTK_CSS_DIRECTION_NORMAL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_DIRECTION, CTK_CSS_DIRECTION_NORMAL);
 
   return value->value;
 }
 
 /* GtkCssPlayState */
 
-static const GtkCssValueClass GTK_CSS_VALUE_PLAY_STATE = {
+static const GtkCssValueClass CTK_CSS_VALUE_PLAY_STATE = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -834,8 +834,8 @@ static const GtkCssValueClass GTK_CSS_VALUE_PLAY_STATE = {
 };
 
 static GtkCssValue play_state_values[] = {
-  { &GTK_CSS_VALUE_PLAY_STATE, 1, GTK_CSS_PLAY_STATE_RUNNING, "running" },
-  { &GTK_CSS_VALUE_PLAY_STATE, 1, GTK_CSS_PLAY_STATE_PAUSED, "paused" }
+  { &CTK_CSS_VALUE_PLAY_STATE, 1, CTK_CSS_PLAY_STATE_RUNNING, "running" },
+  { &CTK_CSS_VALUE_PLAY_STATE, 1, CTK_CSS_PLAY_STATE_PAUSED, "paused" }
 };
 
 GtkCssValue *
@@ -871,14 +871,14 @@ _ctk_css_play_state_value_try_parse (GtkCssParser *parser)
 GtkCssPlayState
 _ctk_css_play_state_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_PLAY_STATE, GTK_CSS_PLAY_STATE_RUNNING);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_PLAY_STATE, CTK_CSS_PLAY_STATE_RUNNING);
 
   return value->value;
 }
 
 /* GtkCssFillMode */
 
-static const GtkCssValueClass GTK_CSS_VALUE_FILL_MODE = {
+static const GtkCssValueClass CTK_CSS_VALUE_FILL_MODE = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -887,10 +887,10 @@ static const GtkCssValueClass GTK_CSS_VALUE_FILL_MODE = {
 };
 
 static GtkCssValue fill_mode_values[] = {
-  { &GTK_CSS_VALUE_FILL_MODE, 1, GTK_CSS_FILL_NONE, "none" },
-  { &GTK_CSS_VALUE_FILL_MODE, 1, GTK_CSS_FILL_FORWARDS, "forwards" },
-  { &GTK_CSS_VALUE_FILL_MODE, 1, GTK_CSS_FILL_BACKWARDS, "backwards" },
-  { &GTK_CSS_VALUE_FILL_MODE, 1, GTK_CSS_FILL_BOTH, "both" }
+  { &CTK_CSS_VALUE_FILL_MODE, 1, CTK_CSS_FILL_NONE, "none" },
+  { &CTK_CSS_VALUE_FILL_MODE, 1, CTK_CSS_FILL_FORWARDS, "forwards" },
+  { &CTK_CSS_VALUE_FILL_MODE, 1, CTK_CSS_FILL_BACKWARDS, "backwards" },
+  { &CTK_CSS_VALUE_FILL_MODE, 1, CTK_CSS_FILL_BOTH, "both" }
 };
 
 GtkCssValue *
@@ -926,14 +926,14 @@ _ctk_css_fill_mode_value_try_parse (GtkCssParser *parser)
 GtkCssFillMode
 _ctk_css_fill_mode_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_FILL_MODE, GTK_CSS_FILL_NONE);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_FILL_MODE, CTK_CSS_FILL_NONE);
 
   return value->value;
 }
 
 /* GtkCssIconEffect */
 
-static const GtkCssValueClass GTK_CSS_VALUE_ICON_EFFECT = {
+static const GtkCssValueClass CTK_CSS_VALUE_ICON_EFFECT = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -942,9 +942,9 @@ static const GtkCssValueClass GTK_CSS_VALUE_ICON_EFFECT = {
 };
 
 static GtkCssValue image_effect_values[] = {
-  { &GTK_CSS_VALUE_ICON_EFFECT, 1, GTK_CSS_ICON_EFFECT_NONE, "none" },
-  { &GTK_CSS_VALUE_ICON_EFFECT, 1, GTK_CSS_ICON_EFFECT_HIGHLIGHT, "highlight" },
-  { &GTK_CSS_VALUE_ICON_EFFECT, 1, GTK_CSS_ICON_EFFECT_DIM, "dim" }
+  { &CTK_CSS_VALUE_ICON_EFFECT, 1, CTK_CSS_ICON_EFFECT_NONE, "none" },
+  { &CTK_CSS_VALUE_ICON_EFFECT, 1, CTK_CSS_ICON_EFFECT_HIGHLIGHT, "highlight" },
+  { &CTK_CSS_VALUE_ICON_EFFECT, 1, CTK_CSS_ICON_EFFECT_DIM, "dim" }
 };
 
 GtkCssValue *
@@ -980,7 +980,7 @@ _ctk_css_icon_effect_value_try_parse (GtkCssParser *parser)
 GtkCssIconEffect
 _ctk_css_icon_effect_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_ICON_EFFECT, GTK_CSS_ICON_EFFECT_NONE);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_ICON_EFFECT, CTK_CSS_ICON_EFFECT_NONE);
 
   return value->value;
 }
@@ -993,7 +993,7 @@ ctk_css_icon_effect_apply (GtkCssIconEffect  icon_effect,
 
   switch (icon_effect)
     {
-    case GTK_CSS_ICON_EFFECT_DIM:
+    case CTK_CSS_ICON_EFFECT_DIM:
       cr = cairo_create (surface);
       cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
       cairo_set_source_rgba (cr, 0, 0, 0, 0); /* transparent */
@@ -1001,7 +1001,7 @@ ctk_css_icon_effect_apply (GtkCssIconEffect  icon_effect,
       cairo_destroy (cr);
       break;
 
-    case GTK_CSS_ICON_EFFECT_HIGHLIGHT:
+    case CTK_CSS_ICON_EFFECT_HIGHLIGHT:
       cr = cairo_create (surface);
       cairo_set_source_rgb (cr, 0.1, 0.1, 0.1);
       cairo_set_operator (cr, CAIRO_OPERATOR_COLOR_DODGE);
@@ -1013,14 +1013,14 @@ ctk_css_icon_effect_apply (GtkCssIconEffect  icon_effect,
     default:
       g_warn_if_reached ();
       /* fall through */
-    case GTK_CSS_ICON_EFFECT_NONE:
+    case CTK_CSS_ICON_EFFECT_NONE:
       break;
     }
 }
 
 /* GtkCssIconStyle */
 
-static const GtkCssValueClass GTK_CSS_VALUE_ICON_STYLE = {
+static const GtkCssValueClass CTK_CSS_VALUE_ICON_STYLE = {
   ctk_css_value_enum_free,
   ctk_css_value_enum_compute,
   ctk_css_value_enum_equal,
@@ -1029,9 +1029,9 @@ static const GtkCssValueClass GTK_CSS_VALUE_ICON_STYLE = {
 };
 
 static GtkCssValue icon_style_values[] = {
-  { &GTK_CSS_VALUE_ICON_STYLE, 1, GTK_CSS_ICON_STYLE_REQUESTED, "requested" },
-  { &GTK_CSS_VALUE_ICON_STYLE, 1, GTK_CSS_ICON_STYLE_REGULAR, "regular" },
-  { &GTK_CSS_VALUE_ICON_STYLE, 1, GTK_CSS_ICON_STYLE_SYMBOLIC, "symbolic" }
+  { &CTK_CSS_VALUE_ICON_STYLE, 1, CTK_CSS_ICON_STYLE_REQUESTED, "requested" },
+  { &CTK_CSS_VALUE_ICON_STYLE, 1, CTK_CSS_ICON_STYLE_REGULAR, "regular" },
+  { &CTK_CSS_VALUE_ICON_STYLE, 1, CTK_CSS_ICON_STYLE_SYMBOLIC, "symbolic" }
 };
 
 GtkCssValue *
@@ -1067,7 +1067,7 @@ _ctk_css_icon_style_value_try_parse (GtkCssParser *parser)
 GtkCssIconStyle
 _ctk_css_icon_style_value_get (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_ICON_STYLE, GTK_CSS_ICON_STYLE_REQUESTED);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_ICON_STYLE, CTK_CSS_ICON_STYLE_REQUESTED);
 
   return value->value;
 }

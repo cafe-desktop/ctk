@@ -705,10 +705,10 @@ msgstr "ముఖ్యమైనది"
 #: ../gtk/gtkaction.c:364
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "ఈ క్రియ ముఖ్యమైనదిగా ఆలోచింపతగినదో కాదో. నిజమైనపుడు, ఈ క్రియ పాఠమును "
-"GTK_TOOLBAR_BOTH_HORIZ "
+"CTK_TOOLBAR_BOTH_HORIZ "
 "విధములో చూపుటకు పనిముట్లపట్టీ అంశము ప్రాతినిధ్యము వహించును."
 
 #: ../gtk/gtkaction.c:372
@@ -1393,8 +1393,8 @@ msgid "Default Spacing"
 msgstr "అప్రమేయంగా ఖాళీఉంచుట"
 
 #: ../gtk/gtkbutton.c:477
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "GTK_CAN_DEFAULT బొత్తాముల కోసం జోడించడానికి అదనపు ఖాళీ "
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "CTK_CAN_DEFAULT బొత్తాముల కోసం జోడించడానికి అదనపు ఖాళీ "
 
 #: ../gtk/gtkbutton.c:491
 msgid "Default Outside Spacing"
@@ -1402,10 +1402,10 @@ msgstr "అప్రమేయ బయటవైపు ఖాళీ"
 
 #: ../gtk/gtkbutton.c:492
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"ఎల్లపుడూ సరిహద్దు బయట వైపు గీయబడిన GTK_CAN_DEFAULT బొత్తాముల కొరకు చేర్చవలసిన "
+"ఎల్లపుడూ సరిహద్దు బయట వైపు గీయబడిన CTK_CAN_DEFAULT బొత్తాముల కొరకు చేర్చవలసిన "
 "అదనపు "
 "ఖాళీసరిహద్దు"
 
@@ -7134,11 +7134,11 @@ msgstr "ప్రతిమ మరియు లేబుల్ మద్యన �
 #: ../gtk/gtktoolitem.c:206
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "సాధనపట్టీ అంశము ప్రాముఖ్యంగా పట్టించుకొనవలెనా. నిజమైతే, సాధనపట్టీ బటన్లు "
 "పాఠమును "
-"GTK_TOOLBAR_BOTH_HORIZ రీతినందు చూపుతాయి"
+"CTK_TOOLBAR_BOTH_HORIZ రీతినందు చూపుతాయి"
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

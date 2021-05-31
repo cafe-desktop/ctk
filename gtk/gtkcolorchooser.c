@@ -67,7 +67,7 @@ ctk_color_chooser_default_init (GtkColorChooserInterface *iface)
                           P_("Color"),
                           P_("Current color, as a GdkRGBA"),
                           GDK_TYPE_RGBA,
-                          GTK_PARAM_READWRITE));
+                          CTK_PARAM_READWRITE));
 
   /**
    * GtkColorChooser:use-alpha:
@@ -87,7 +87,7 @@ ctk_color_chooser_default_init (GtkColorChooserInterface *iface)
                             P_("Use alpha"),
                             P_("Whether alpha should be shown"),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkColorChooser::color-activated:
@@ -103,7 +103,7 @@ ctk_color_chooser_default_init (GtkColorChooserInterface *iface)
    */
   signals[COLOR_ACTIVATED] =
     g_signal_new (I_("color-activated"),
-                  GTK_TYPE_COLOR_CHOOSER,
+                  CTK_TYPE_COLOR_CHOOSER,
                   G_SIGNAL_RUN_FIRST,
                   G_STRUCT_OFFSET (GtkColorChooserInterface, color_activated),
                   NULL, NULL,
@@ -132,9 +132,9 @@ void
 ctk_color_chooser_get_rgba (GtkColorChooser *chooser,
                             GdkRGBA         *color)
 {
-  g_return_if_fail (GTK_IS_COLOR_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_COLOR_CHOOSER (chooser));
 
-  GTK_COLOR_CHOOSER_GET_IFACE (chooser)->get_rgba (chooser, color);
+  CTK_COLOR_CHOOSER_GET_IFACE (chooser)->get_rgba (chooser, color);
 }
 
 /**
@@ -150,10 +150,10 @@ void
 ctk_color_chooser_set_rgba (GtkColorChooser *chooser,
                             const GdkRGBA   *color)
 {
-  g_return_if_fail (GTK_IS_COLOR_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_COLOR_CHOOSER (chooser));
   g_return_if_fail (color != NULL);
 
-  GTK_COLOR_CHOOSER_GET_IFACE (chooser)->set_rgba (chooser, color);
+  CTK_COLOR_CHOOSER_GET_IFACE (chooser)->set_rgba (chooser, color);
 }
 
 /**
@@ -172,7 +172,7 @@ ctk_color_chooser_get_use_alpha (GtkColorChooser *chooser)
 {
   gboolean use_alpha;
 
-  g_return_val_if_fail (GTK_IS_COLOR_CHOOSER (chooser), TRUE);
+  g_return_val_if_fail (CTK_IS_COLOR_CHOOSER (chooser), TRUE);
 
   g_object_get (chooser, "use-alpha", &use_alpha, NULL);
 
@@ -193,7 +193,7 @@ ctk_color_chooser_set_use_alpha (GtkColorChooser *chooser,
                                  gboolean         use_alpha)
 {
 
-  g_return_if_fail (GTK_IS_COLOR_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_COLOR_CHOOSER (chooser));
 
   g_object_set (chooser, "use-alpha", use_alpha, NULL);
 }
@@ -201,8 +201,8 @@ ctk_color_chooser_set_use_alpha (GtkColorChooser *chooser,
 /**
  * ctk_color_chooser_add_palette:
  * @chooser: a #GtkColorChooser
- * @orientation: %GTK_ORIENTATION_HORIZONTAL if the palette should
- *     be displayed in rows, %GTK_ORIENTATION_VERTICAL for columns
+ * @orientation: %CTK_ORIENTATION_HORIZONTAL if the palette should
+ *     be displayed in rows, %CTK_ORIENTATION_VERTICAL for columns
  * @colors_per_line: the number of colors to show in each row/column
  * @n_colors: the total number of elements in @colors
  * @colors: (allow-none) (array length=n_colors): the colors of the palette, or %NULL
@@ -234,10 +234,10 @@ ctk_color_chooser_add_palette (GtkColorChooser *chooser,
                                gint             n_colors,
                                GdkRGBA         *colors)
 {
-  g_return_if_fail (GTK_IS_COLOR_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_COLOR_CHOOSER (chooser));
 
-  if (GTK_COLOR_CHOOSER_GET_IFACE (chooser)->add_palette)
-    GTK_COLOR_CHOOSER_GET_IFACE (chooser)->add_palette (chooser, orientation, colors_per_line, n_colors, colors);
+  if (CTK_COLOR_CHOOSER_GET_IFACE (chooser)->add_palette)
+    CTK_COLOR_CHOOSER_GET_IFACE (chooser)->add_palette (chooser, orientation, colors_per_line, n_colors, colors);
 }
 
 cairo_pattern_t *

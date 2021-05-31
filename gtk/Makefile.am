@@ -2,26 +2,26 @@ AUTOMAKE_OPTIONS = subdir-objects
 
 include $(top_srcdir)/Makefile.decl
 
-GTK_BASE_CFLAGS_DEFINES =				\
+CTK_BASE_CFLAGS_DEFINES =				\
 	-DG_LOG_USE_STRUCTURED=1			\
-	-DGTK_VERSION=\"$(GTK_VERSION)\"		\
-	-DGTK_BINARY_VERSION=\"$(GTK_BINARY_VERSION)\"	\
-	-DGTK_COMPILATION				\
-	-DGTK_PRINT_BACKEND_ENABLE_UNSUPPORTED
+	-DCTK_VERSION=\"$(CTK_VERSION)\"		\
+	-DCTK_BINARY_VERSION=\"$(CTK_BINARY_VERSION)\"	\
+	-DCTK_COMPILATION				\
+	-DCTK_PRINT_BACKEND_ENABLE_UNSUPPORTED
 
-GTK_PLAT_CFLAGS_DEFINES =				\
-	-DGTK_LIBDIR=\"$(libdir)\"			\
-	-DGTK_LOCALEDIR=\"$(localedir)\"		\
-	-DGTK_DATADIR=\"$(datadir)\"			\
-	-DGTK_DATA_PREFIX=\"$(prefix)\"			\
-	-DGTK_SYSCONFDIR=\"$(sysconfdir)\"		\
-	-DGTK_HOST=\"$(host)\"				\
-	-DGTK_PRINT_BACKENDS=\"$(GTK_PRINT_BACKENDS)\"
+CTK_PLAT_CFLAGS_DEFINES =				\
+	-DCTK_LIBDIR=\"$(libdir)\"			\
+	-DCTK_LOCALEDIR=\"$(localedir)\"		\
+	-DCTK_DATADIR=\"$(datadir)\"			\
+	-DCTK_DATA_PREFIX=\"$(prefix)\"			\
+	-DCTK_SYSCONFDIR=\"$(sysconfdir)\"		\
+	-DCTK_HOST=\"$(host)\"				\
+	-DCTK_PRINT_BACKENDS=\"$(CTK_PRINT_BACKENDS)\"
 
 AM_CPPFLAGS =						\
 	-DG_LOG_DOMAIN=\"Gtk\"				\
-	$(GTK_BASE_CFLAGS_DEFINES)			\
-	$(GTK_PLAT_CFLAGS_DEFINES)			\
+	$(CTK_BASE_CFLAGS_DEFINES)			\
+	$(CTK_PLAT_CFLAGS_DEFINES)			\
 	-DX11_DATA_PREFIX=\"$(X11_PREFIX)\"		\
 	-DISO_CODES_PREFIX=\"$(ISO_CODES_PREFIX)\"	\
 	-I$(top_builddir)				\
@@ -29,8 +29,8 @@ AM_CPPFLAGS =						\
 	-I$(top_srcdir) 				\
 	-I$(top_srcdir)/gdk				\
 	$(GMODULE_CFLAGS)				\
-	$(GTK_DEBUG_FLAGS)				\
-	$(GTK_DEP_CFLAGS)				\
+	$(CTK_DEBUG_FLAGS)				\
+	$(CTK_DEP_CFLAGS)				\
 	$(INCLUDED_IMMODULE_DEFINE)
 
 if OS_WIN32
@@ -49,9 +49,9 @@ gtk-win32.rc: gtk-win32.rc.body
 	echo "ISOLATIONAWARE_MANIFEST_RESOURCE_ID RT_MANIFEST libgtk3.manifest" >>$@
 
 gtk.def: libgtk-3.la
-	echo "LIBRARY libgtk-$(GTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@" >$@
+	echo "LIBRARY libgtk-$(CTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@" >$@
 	echo "EXPORTS" >>$@
-	objdump -p .libs/libgtk-$(GTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@.dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
+	objdump -p .libs/libgtk-$(CTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@.dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
 
 install-def-file: gtk.def
 	$(INSTALL) gtk.def $(DESTDIR)$(libdir)/gtk-win32-3.0.def
@@ -63,16 +63,16 @@ uninstall-def-file:
 endif
 
 if MS_LIB_AVAILABLE
-noinst_DATA = gtk-win32-$(GTK_API_VERSION).lib
+noinst_DATA = gtk-win32-$(CTK_API_VERSION).lib
 
-gtk-win32-$(GTK_API_VERSION).lib: libgtk-3.la gtk.def
-	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libgtk-win32-$(GTK_API_VERSION)-@LT_CURRENT_MINUS_AGE@.dll -def:gtk.def -out:$@
+gtk-win32-$(CTK_API_VERSION).lib: libgtk-3.la gtk.def
+	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libgtk-win32-$(CTK_API_VERSION)-@LT_CURRENT_MINUS_AGE@.dll -def:gtk.def -out:$@
 
 install-ms-lib:
-	$(INSTALL) gtk-win32-$(GTK_API_VERSION).lib $(DESTDIR)$(libdir)
+	$(INSTALL) gtk-win32-$(CTK_API_VERSION).lib $(DESTDIR)$(libdir)
 
 uninstall-ms-lib:
-	-rm $(DESTDIR)$(libdir)/gtk-win32-$(GTK_API_VERSION).lib
+	-rm $(DESTDIR)$(libdir)/gtk-win32-$(CTK_API_VERSION).lib
 else
 install-ms-lib:
 uninstall-ms-lib:
@@ -81,7 +81,7 @@ endif
 libadd = 				\
 	$(top_builddir)/gdk/libgdk-3.la	\
 	$(GMODULE_LIBS) 		\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 deps = 					\
 	$(top_builddir)/gdk/libgdk-3.la
 
@@ -89,7 +89,7 @@ deps = 					\
 # since automake doesn't support conditionalized libsomething_la_LDFLAGS
 # we use the general approach here
 libtool_opts =							\
-  $(GTK_LINK_FLAGS)						\
+  $(CTK_LINK_FLAGS)						\
   -version-info $(LT_VERSION_INFO)				\
   -export-dynamic $(no_undefined)				\
   -rpath $(libdir)
@@ -1195,7 +1195,7 @@ EXTRA_DIST += $(ctk_all_private_h_sources) $(ctk_extra_sources)
 EXTRA_DIST += $(ctk_built_sources)
 
 
-pkgdatadir = $(datadir)/gtk-$(GTK_API_VERSION)
+pkgdatadir = $(datadir)/gtk-$(CTK_API_VERSION)
 pkgdata_DATA = gtkbuilder.rng
 
 EXTRA_DIST += gtkbuilder.rnc gtkbuilder.rng
@@ -1450,7 +1450,7 @@ gtkprivatetypebuiltins.c: $(ctk_private_type_h_sources)  gtkprivatetypebuiltins.
 
 gtktypefuncs.inc: stamp-gtktypebuiltins.h stamp-gtkprivatetypebuiltins.h $(top_srcdir)/gtk/*.h $(top_srcdir)/gtk/a11y/*.h $(top_srcdir)/gtk/deprecated/*.h $(top_srcdir)/gdk/*.h Makefile
 	$(AM_V_GEN) export LC_ALL=C ; \
-	  (echo '#undef GTK_COMPILATION' && echo '#include <gtk/gtkx.h>') > xgen-gtfsrc.c && \
+	  (echo '#undef CTK_COMPILATION' && echo '#include <gtk/gtkx.h>') > xgen-gtfsrc.c && \
 	  echo 'G_GNUC_BEGIN_IGNORE_DEPRECATIONS' > xgen-gtf && \
 	  ${CPP} $(DEFS) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) xgen-gtfsrc.c | \
 	  $(GREP) -o '\bg[td]k_[a-zA-Z0-9_]*_get_type\b' | \
@@ -1533,14 +1533,14 @@ if HAVE_INTROSPECTION
 # Introspection Items for MSVC
 MSVC_INTROSPECT_GIRS = Gtk-3.0.gir
 
-GTK_MSVC_GIR_CFLAGS =						\
-	$(GTK_BASE_CFLAGS_DEFINES)				\
-	-DGTK_LIBDIR=\\\"/dummy/lib\\\"				\
-	-DGTK_DATADIR=\\\"/dummy/share\\\"			\
-	-DGTK_DATA_PREFIX=\\\"/dummy\\\"			\
-	-DGTK_SYSCONFDIR=\\\"/dummy/etc\\\"			\
-	-DGTK_HOST=\\\"'$$$$(AT_PLAT)'-pc-vs'$$$$(VSVER)'\\\"	\
-	-DGTK_PRINT_BACKENDS=\\\"file\\\"			\
+CTK_MSVC_GIR_CFLAGS =						\
+	$(CTK_BASE_CFLAGS_DEFINES)				\
+	-DCTK_LIBDIR=\\\"/dummy/lib\\\"				\
+	-DCTK_DATADIR=\\\"/dummy/share\\\"			\
+	-DCTK_DATA_PREFIX=\\\"/dummy\\\"			\
+	-DCTK_SYSCONFDIR=\\\"/dummy/etc\\\"			\
+	-DCTK_HOST=\\\"'$$$$(AT_PLAT)'-pc-vs'$$$$(VSVER)'\\\"	\
+	-DCTK_PRINT_BACKENDS=\\\"file\\\"			\
 	-DINCLUDE_IM_am_et			\
 	-DINCLUDE_IM_cedilla			\
 	-DINCLUDE_IM_cyrillic_translit		\
@@ -1552,7 +1552,7 @@ GTK_MSVC_GIR_CFLAGS =						\
 	-DINCLUDE_IM_ti_er			\
 	-DINCLUDE_IM_ti_et			\
 	-DINCLUDE_IM_viqr			\
-	-DGTK_TEXT_USE_INTERNAL_UNSUPPORTED_API	\
+	-DCTK_TEXT_USE_INTERNAL_UNSUPPORTED_API	\
 	-I.. -I../gtk -I../gdk
 
 INTROSPECTION_INTERMEDIATE_ITEMS = \
@@ -1569,7 +1569,7 @@ Gtk_3_0_gir_MSVC_FILES =		\
 Gtk_3_0_gir_MSVC_EXPORT_PACKAGES = $(Gtk_3_0_gir_EXPORT_PACKAGES)
 Gtk_3_0_gir_MSVC_INCLUDE_GIRS = Atk-1.0
 Gtk_3_0_gir_MSVC_LIBS = gtk-3.0 gdk-3.0
-Gtk_3_0_gir_MSVC_CFLAGS = $(GTK_MSVC_GIR_CFLAGS)
+Gtk_3_0_gir_MSVC_CFLAGS = $(CTK_MSVC_GIR_CFLAGS)
 Gtk_3_0_gir_MSVC_SCANNERFLAGS = --warn-all --include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Gdk-3.0.gir'
 
 include $(top_srcdir)/win32/Makefile.msvc-introspection
@@ -1639,7 +1639,7 @@ Gtk_3_0_gir_C_INCLUDES += gtk/gtkx.h
 endif
 Gtk_3_0_gir_CFLAGS = \
 		$(AM_CPPFLAGS) \
-		-DGTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
+		-DCTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 Gtk_3_0_gir_FILES = $(introspection_files)
 Gtk_3_0_gir_LIBS = libgtk-3.la $(top_builddir)/gdk/libgdk-3.la
 Gtk_3_0_gir_EXPORT_PACKAGES = gtk+-3.0
@@ -1670,7 +1670,7 @@ ctk_query_immodules_3_0_LDADD = 		\
 	libgtk-3.la				\
 	$(top_builddir)/gdk/libgdk-3.la		\
 	$(GMODULE_LIBS)				\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
 ctk_update_icon_cache_SOURCES = updateiconcache.c
 ctk_update_icon_cache_LDADD = $(GDK_PIXBUF_LIBS)
@@ -1679,25 +1679,25 @@ ctk_encode_symbolic_svg_SOURCES = encodesymbolic.c
 ctk_encode_symbolic_svg_LDADD =			\
 	$(GDK_PIXBUF_LIBS)			\
 	$(top_builddir)/gdk/libgdk-3.la		\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
 ctk_builder_tool_SOURCES = gtk-builder-tool.c
 ctk_builder_tool_LDADD =			\
 	libgtk-3.la				\
 	$(top_builddir)/gdk/libgdk-3.la		\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
 ctk_query_settings_SOURCES = gtk-query-settings.c
 ctk_query_settings_LDADD= 			\
 	libgtk-3.la				\
 	$(top_builddir)/gdk/libgdk-3.la		\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
 ctk_launch_SOURCES = gtk-launch.c
 ctk_launch_LDADD =				\
 	libgtk-3.la				\
 	$(top_builddir)/gdk/libgdk-3.la		\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
 if OS_WIN32
 
@@ -1706,11 +1706,11 @@ if OS_WIN32
 # used... Embed a manifest file into executable to tell Windows that
 # gtk-update-icon-cache.exe doesn't require any special privileges.
 
-GTK_UPDATE_ICON_CACHE_MANIFEST = gtk-update-icon-cache.exe.manifest
-GTK_UPDATE_ICON_CACHE_RC = gtk-update-icon-cache.rc
-GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT = gtk-update-icon-cache_manifest.o
+CTK_UPDATE_ICON_CACHE_MANIFEST = gtk-update-icon-cache.exe.manifest
+CTK_UPDATE_ICON_CACHE_RC = gtk-update-icon-cache.rc
+CTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT = gtk-update-icon-cache_manifest.o
 
-$(GTK_UPDATE_ICON_CACHE_MANIFEST):
+$(CTK_UPDATE_ICON_CACHE_MANIFEST):
 	(echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' ; \
 	 echo '<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">' ; \
 	 echo '  <assemblyIdentity version="1.0.0.0"' ; \
@@ -1729,13 +1729,13 @@ $(GTK_UPDATE_ICON_CACHE_MANIFEST):
 	 echo '  </trustInfo>' ; \
 	 echo '</assembly>' ) >$@
 
-$(GTK_UPDATE_ICON_CACHE_RC):
-	(echo -e '#include <winuser.h>\nCREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST '$(GTK_UPDATE_ICON_CACHE_MANIFEST)) >$@
+$(CTK_UPDATE_ICON_CACHE_RC):
+	(echo -e '#include <winuser.h>\nCREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST '$(CTK_UPDATE_ICON_CACHE_MANIFEST)) >$@
 
-$(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT): $(GTK_UPDATE_ICON_CACHE_RC) $(GTK_UPDATE_ICON_CACHE_MANIFEST)
+$(CTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT): $(CTK_UPDATE_ICON_CACHE_RC) $(CTK_UPDATE_ICON_CACHE_MANIFEST)
 	$(WINDRES) --input $< --output $@ --output-format=coff
 
-ctk_update_icon_cache_LDADD += $(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT)
+ctk_update_icon_cache_LDADD += $(CTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT)
 
 endif
 

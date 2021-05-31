@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SIZE_GROUP_H__
-#define __GTK_SIZE_GROUP_H__
+#ifndef __CTK_SIZE_GROUP_H__
+#define __CTK_SIZE_GROUP_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -27,12 +27,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SIZE_GROUP            (ctk_size_group_get_type ())
-#define GTK_SIZE_GROUP(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SIZE_GROUP, GtkSizeGroup))
-#define GTK_SIZE_GROUP_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SIZE_GROUP, GtkSizeGroupClass))
-#define GTK_IS_SIZE_GROUP(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SIZE_GROUP))
-#define GTK_IS_SIZE_GROUP_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SIZE_GROUP))
-#define GTK_SIZE_GROUP_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SIZE_GROUP, GtkSizeGroupClass))
+#define CTK_TYPE_SIZE_GROUP            (ctk_size_group_get_type ())
+#define CTK_SIZE_GROUP(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SIZE_GROUP, GtkSizeGroup))
+#define CTK_SIZE_GROUP_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SIZE_GROUP, GtkSizeGroupClass))
+#define CTK_IS_SIZE_GROUP(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SIZE_GROUP))
+#define CTK_IS_SIZE_GROUP_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SIZE_GROUP))
+#define CTK_SIZE_GROUP_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SIZE_GROUP, GtkSizeGroupClass))
 
 
 typedef struct _GtkSizeGroup              GtkSizeGroup;
@@ -84,4 +84,4 @@ GSList *         ctk_size_group_get_widgets   (GtkSizeGroup     *size_group);
 
 G_END_DECLS
 
-#endif /* __GTK_SIZE_GROUP_H__ */
+#endif /* __CTK_SIZE_GROUP_H__ */

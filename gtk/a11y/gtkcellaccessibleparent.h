@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CELL_ACCESSIBLE_PARENT_H__
-#define __GTK_CELL_ACCESSIBLE_PARENT_H__
+#ifndef __CTK_CELL_ACCESSIBLE_PARENT_H__
+#define __CTK_CELL_ACCESSIBLE_PARENT_H__
 
-#if !defined (__GTK_A11Y_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_A11Y_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk-a11y.h> can be included directly."
 #endif
 
@@ -36,10 +36,10 @@ G_BEGIN_DECLS
  * implement atk_component_get_extents().
  */
 
-#define GTK_TYPE_CELL_ACCESSIBLE_PARENT            (ctk_cell_accessible_parent_get_type ())
-#define GTK_IS_CELL_ACCESSIBLE_PARENT(obj)         G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_ACCESSIBLE_PARENT)
-#define GTK_CELL_ACCESSIBLE_PARENT(obj)            G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_ACCESSIBLE_PARENT, GtkCellAccessibleParent)
-#define GTK_CELL_ACCESSIBLE_PARENT_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_CELL_ACCESSIBLE_PARENT, GtkCellAccessibleParentIface))
+#define CTK_TYPE_CELL_ACCESSIBLE_PARENT            (ctk_cell_accessible_parent_get_type ())
+#define CTK_IS_CELL_ACCESSIBLE_PARENT(obj)         G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_ACCESSIBLE_PARENT)
+#define CTK_CELL_ACCESSIBLE_PARENT(obj)            G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_ACCESSIBLE_PARENT, GtkCellAccessibleParent)
+#define CTK_CELL_ACCESSIBLE_PARENT_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_CELL_ACCESSIBLE_PARENT, GtkCellAccessibleParentIface))
 
 typedef struct _GtkCellAccessibleParent GtkCellAccessibleParent;
 typedef struct _GtkCellAccessibleParentIface GtkCellAccessibleParentIface;
@@ -137,4 +137,4 @@ GPtrArray   *ctk_cell_accessible_parent_get_row_header_cells    (GtkCellAccessib
 
 G_END_DECLS
 
-#endif /* __GTK_CELL_ACCESSIBLE_PARENT_H__ */
+#endif /* __CTK_CELL_ACCESSIBLE_PARENT_H__ */

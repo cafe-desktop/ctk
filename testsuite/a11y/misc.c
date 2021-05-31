@@ -37,7 +37,7 @@ test_popover_parent (void)
   g_assert (a != NULL);
   g_assert (atk_object_get_parent (a) == NULL);
 
-  ctk_popover_set_relative_to (GTK_POPOVER (p), w);
+  ctk_popover_set_relative_to (CTK_POPOVER (p), w);
 
   g_assert (atk_object_get_parent (a) != NULL);
 

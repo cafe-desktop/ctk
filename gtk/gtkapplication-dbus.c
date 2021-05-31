@@ -28,7 +28,7 @@
 
 #include "gdk/gdk-private.h"
 
-G_DEFINE_TYPE (GtkApplicationImplDBus, ctk_application_impl_dbus, GTK_TYPE_APPLICATION_IMPL)
+G_DEFINE_TYPE (GtkApplicationImplDBus, ctk_application_impl_dbus, CTK_TYPE_APPLICATION_IMPL)
 
 #define GNOME_DBUS_NAME             "org.gnome.SessionManager"
 #define GNOME_DBUS_OBJECT_PATH      "/org/gnome/SessionManager"
@@ -525,11 +525,11 @@ ctk_application_impl_dbus_window_added (GtkApplicationImpl *impl,
   gchar *path;
   guint id;
 
-  if (!dbus->session || !GTK_IS_APPLICATION_WINDOW (window))
+  if (!dbus->session || !CTK_IS_APPLICATION_WINDOW (window))
     return;
 
   /* Export the action group of this window, based on its id */
-  actions = ctk_application_window_get_action_group (GTK_APPLICATION_WINDOW (window));
+  actions = ctk_application_window_get_action_group (CTK_APPLICATION_WINDOW (window));
 
   path = ctk_application_impl_dbus_get_window_path (dbus, window);
   id = g_dbus_connection_export_action_group (dbus->session, path, actions, NULL);
@@ -627,7 +627,7 @@ static GVariant *
 ctk_application_impl_dbus_get_window_system_id (GtkApplicationImplDBus *dbus,
                                                 GtkWindow              *window)
 {
-  return GTK_APPLICATION_IMPL_DBUS_GET_CLASS (dbus)->get_window_system_id (dbus, window);
+  return CTK_APPLICATION_IMPL_DBUS_GET_CLASS (dbus)->get_window_system_id (dbus, window);
 }
 
 static int next_cookie;
@@ -890,7 +890,7 @@ ctk_application_impl_dbus_finalize (GObject *object)
 static void
 ctk_application_impl_dbus_class_init (GtkApplicationImplDBusClass *class)
 {
-  GtkApplicationImplClass *impl_class = GTK_APPLICATION_IMPL_CLASS (class);
+  GtkApplicationImplClass *impl_class = CTK_APPLICATION_IMPL_CLASS (class);
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
   class->get_window_system_id = ctk_application_impl_dbus_real_get_window_system_id;
@@ -914,10 +914,10 @@ gchar *
 ctk_application_impl_dbus_get_window_path (GtkApplicationImplDBus *dbus,
                                            GtkWindow *window)
 {
-  if (dbus->session && GTK_IS_APPLICATION_WINDOW (window))
+  if (dbus->session && CTK_IS_APPLICATION_WINDOW (window))
     return g_strdup_printf ("%s/window/%d",
                             dbus->object_path,
-                            ctk_application_window_get_id (GTK_APPLICATION_WINDOW (window)));
+                            ctk_application_window_get_id (CTK_APPLICATION_WINDOW (window)));
   else
     return NULL;
 }

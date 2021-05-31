@@ -86,9 +86,9 @@ static GObject * ctk_color_selection_dialog_buildable_get_internal_child (GtkBui
 									  GtkBuilder   *builder,
 									  const gchar  *childname);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorSelectionDialog, ctk_color_selection_dialog, GTK_TYPE_DIALOG,
+G_DEFINE_TYPE_WITH_CODE (GtkColorSelectionDialog, ctk_color_selection_dialog, CTK_TYPE_DIALOG,
                          G_ADD_PRIVATE (GtkColorSelectionDialog)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_color_selection_dialog_buildable_interface_init))
 
 static GtkBuildableIface *parent_buildable_iface;
@@ -99,7 +99,7 @@ ctk_color_selection_dialog_get_property (GObject         *object,
 					 GValue          *value,
 					 GParamSpec      *pspec)
 {
-  GtkColorSelectionDialog *colorsel = GTK_COLOR_SELECTION_DIALOG (object);
+  GtkColorSelectionDialog *colorsel = CTK_COLOR_SELECTION_DIALOG (object);
   GtkColorSelectionDialogPrivate *priv = colorsel->priv;
 
   switch (prop_id)
@@ -126,7 +126,7 @@ static void
 ctk_color_selection_dialog_class_init (GtkColorSelectionDialogClass *klass)
 {
   GObjectClass   *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   gobject_class->get_property = ctk_color_selection_dialog_get_property;
 
@@ -135,28 +135,28 @@ ctk_color_selection_dialog_class_init (GtkColorSelectionDialogClass *klass)
 				   g_param_spec_object ("color-selection",
 						     P_("Color Selection"),
 						     P_("The color selection embedded in the dialog."),
-						     GTK_TYPE_WIDGET,
+						     CTK_TYPE_WIDGET,
 						     G_PARAM_READABLE));
   g_object_class_install_property (gobject_class,
 				   PROP_OK_BUTTON,
 				   g_param_spec_object ("ok-button",
 						     P_("OK Button"),
 						     P_("The OK button of the dialog."),
-						     GTK_TYPE_WIDGET,
+						     CTK_TYPE_WIDGET,
 						     G_PARAM_READABLE));
   g_object_class_install_property (gobject_class,
 				   PROP_CANCEL_BUTTON,
 				   g_param_spec_object ("cancel-button",
 						     P_("Cancel Button"),
 						     P_("The cancel button of the dialog."),
-						     GTK_TYPE_WIDGET,
+						     CTK_TYPE_WIDGET,
 						     G_PARAM_READABLE));
   g_object_class_install_property (gobject_class,
 				   PROP_HELP_BUTTON,
 				   g_param_spec_object ("help-button",
 						     P_("Help Button"),
 						     P_("The help button of the dialog."),
-						     GTK_TYPE_WIDGET,
+						     CTK_TYPE_WIDGET,
 						     G_PARAM_READABLE));
 
   ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_COLOR_CHOOSER);
@@ -166,7 +166,7 @@ static void
 ctk_color_selection_dialog_init (GtkColorSelectionDialog *colorseldiag)
 {
   GtkColorSelectionDialogPrivate *priv;
-  GtkDialog *dialog = GTK_DIALOG (colorseldiag);
+  GtkDialog *dialog = CTK_DIALOG (colorseldiag);
   GtkWidget *action_area, *content_area;
 
   colorseldiag->priv = ctk_color_selection_dialog_get_instance_private (colorseldiag);
@@ -175,41 +175,41 @@ ctk_color_selection_dialog_init (GtkColorSelectionDialog *colorseldiag)
   content_area = ctk_dialog_get_content_area (dialog);
   action_area = ctk_dialog_get_action_area (dialog);
 
-  ctk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-  ctk_box_set_spacing (GTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
-  ctk_container_set_border_width (GTK_CONTAINER (action_area), 5);
-  ctk_box_set_spacing (GTK_BOX (action_area), 6);
+  ctk_container_set_border_width (CTK_CONTAINER (dialog), 5);
+  ctk_box_set_spacing (CTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
+  ctk_container_set_border_width (CTK_CONTAINER (action_area), 5);
+  ctk_box_set_spacing (CTK_BOX (action_area), 6);
 
   priv->colorsel = ctk_color_selection_new ();
-  ctk_container_set_border_width (GTK_CONTAINER (priv->colorsel), 5);
-  ctk_color_selection_set_has_palette (GTK_COLOR_SELECTION (priv->colorsel), FALSE);
-  ctk_color_selection_set_has_opacity_control (GTK_COLOR_SELECTION (priv->colorsel), FALSE);
-  ctk_container_add (GTK_CONTAINER (content_area), priv->colorsel);
+  ctk_container_set_border_width (CTK_CONTAINER (priv->colorsel), 5);
+  ctk_color_selection_set_has_palette (CTK_COLOR_SELECTION (priv->colorsel), FALSE);
+  ctk_color_selection_set_has_opacity_control (CTK_COLOR_SELECTION (priv->colorsel), FALSE);
+  ctk_container_add (CTK_CONTAINER (content_area), priv->colorsel);
   ctk_widget_show (priv->colorsel);
 
   priv->cancel_button = ctk_dialog_add_button (dialog,
                                                _("_Cancel"),
-                                               GTK_RESPONSE_CANCEL);
+                                               CTK_RESPONSE_CANCEL);
 
   priv->ok_button = ctk_dialog_add_button (dialog,
                                            _("_Select"),
-                                           GTK_RESPONSE_OK);
+                                           CTK_RESPONSE_OK);
 
   ctk_widget_grab_default (priv->ok_button);
 
   priv->help_button = ctk_dialog_add_button (dialog,
                                              _("_Help"),
-                                             GTK_RESPONSE_HELP);
+                                             CTK_RESPONSE_HELP);
 
   ctk_widget_hide (priv->help_button);
 
   ctk_dialog_set_alternative_button_order (dialog,
-					   GTK_RESPONSE_OK,
-					   GTK_RESPONSE_CANCEL,
-					   GTK_RESPONSE_HELP,
+					   CTK_RESPONSE_OK,
+					   CTK_RESPONSE_CANCEL,
+					   CTK_RESPONSE_HELP,
 					   -1);
 
-  ctk_window_set_title (GTK_WINDOW (colorseldiag),
+  ctk_window_set_title (CTK_WINDOW (colorseldiag),
                         _("Color Selection"));
 }
 
@@ -226,14 +226,14 @@ ctk_color_selection_dialog_new (const gchar *title)
 {
   GtkColorSelectionDialog *colorseldiag;
   
-  colorseldiag = g_object_new (GTK_TYPE_COLOR_SELECTION_DIALOG, NULL);
+  colorseldiag = g_object_new (CTK_TYPE_COLOR_SELECTION_DIALOG, NULL);
 
   if (title)
-    ctk_window_set_title (GTK_WINDOW (colorseldiag), title);
+    ctk_window_set_title (CTK_WINDOW (colorseldiag), title);
 
-  ctk_window_set_resizable (GTK_WINDOW (colorseldiag), FALSE);
+  ctk_window_set_resizable (CTK_WINDOW (colorseldiag), FALSE);
   
-  return GTK_WIDGET (colorseldiag);
+  return CTK_WIDGET (colorseldiag);
 }
 
 /**
@@ -249,7 +249,7 @@ ctk_color_selection_dialog_new (const gchar *title)
 GtkWidget*
 ctk_color_selection_dialog_get_color_selection (GtkColorSelectionDialog *colorsel)
 {
-  g_return_val_if_fail (GTK_IS_COLOR_SELECTION_DIALOG (colorsel), NULL);
+  g_return_val_if_fail (CTK_IS_COLOR_SELECTION_DIALOG (colorsel), NULL);
 
   return colorsel->priv->colorsel;
 }
@@ -266,7 +266,7 @@ ctk_color_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable
 							 GtkBuilder   *builder,
 							 const gchar  *childname)
 {
-  GtkColorSelectionDialog *selection_dialog = GTK_COLOR_SELECTION_DIALOG (buildable);
+  GtkColorSelectionDialog *selection_dialog = CTK_COLOR_SELECTION_DIALOG (buildable);
   GtkColorSelectionDialogPrivate *priv = selection_dialog->priv;
 
   if (g_strcmp0 (childname, "ok_button") == 0)

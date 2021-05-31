@@ -274,11 +274,11 @@ msgstr "গুৰুত্বপূৰ্ণ হয়"
 #: ../gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "কামটোক গুৰুত্বপূৰ্ণ বিবেচনা কৰা হয় নে নহয়।  ইয়াৰ মান TRUE হ'লে টুল-বস্তু "
 "নিযুক্তক "
-"GTK_TOOLBAR_BOTH_HORIZ অৱস্থাত লিখনি প্ৰদৰ্শন কৰি।"
+"CTK_TOOLBAR_BOTH_HORIZ অৱস্থাত লিখনি প্ৰদৰ্শন কৰি।"
 
 #: ../gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1751,8 +1751,8 @@ msgid "Default Spacing"
 msgstr "অবিকল্পিত ৰিক্ত ঠাই"
 
 #: ../gtk/gtkbutton.c:494
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr " GTK_CAN_DEFAULT বুটামসমূহৰ বাবে যোগ কৰিব লগা অতিৰিক্ত ঠাই"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr " CTK_CAN_DEFAULT বুটামসমূহৰ বাবে যোগ কৰিব লগা অতিৰিক্ত ঠাই"
 
 #: ../gtk/gtkbutton.c:510
 msgid "Default Outside Spacing"
@@ -1760,10 +1760,10 @@ msgstr "অবিকল্পিত বহিস্থ স্থান স্থ
 
 #: ../gtk/gtkbutton.c:511
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"সৰ্বদা সিমাৰ বাহিৰে অঙ্কিত GTK_CAN_DEFAULT বুটামৰসমূহৰ বাবে যোগ কৰিব লগিয়া "
+"সৰ্বদা সিমাৰ বাহিৰে অঙ্কিত CTK_CAN_DEFAULT বুটামৰসমূহৰ বাবে যোগ কৰিব লগিয়া "
 "অতিৰিক্ত ঠাই"
 
 #: ../gtk/gtkbutton.c:516
@@ -4141,8 +4141,8 @@ msgid "Baseline Row"
 msgstr "ভিত্তি শাৰী"
 
 #: ../gtk/gtkgrid.c:1763
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
-msgstr "valign ৰ মান GTK_ALIGN_BASELINE থাকোতে ভিত্তিলৈ সংৰেখন কৰিব লগিয়া শাৰী"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
+msgstr "valign ৰ মান CTK_ALIGN_BASELINE থাকোতে ভিত্তিলৈ সংৰেখন কৰিব লগিয়া শাৰী"
 
 #: ../gtk/gtkgrid.c:1781
 msgid "The row number to attach the top side of a child widget to"
@@ -7784,11 +7784,11 @@ msgstr "মধ্যবৰ্তী স্থান পিকসেল"
 #: ../gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "টুলবাৰ বস্তুকে গুৰুত্বপূৰ্ণ বিবেচনা কৰা হয় নে।  ইয়াৰ মান সত্য (TRUE) হলে, "
 "টুলবাৰ বুটাম "
-"GTK_TOOLBAR_BOTH_HORIZ মোডে লিখনি প্ৰদৰ্শন কৰে"
+"CTK_TOOLBAR_BOTH_HORIZ মোডে লিখনি প্ৰদৰ্শন কৰে"
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_ASPECT_FRAME_H__
-#define __GTK_ASPECT_FRAME_H__
+#ifndef __CTK_ASPECT_FRAME_H__
+#define __CTK_ASPECT_FRAME_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -35,12 +35,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ASPECT_FRAME            (ctk_aspect_frame_get_type ())
-#define GTK_ASPECT_FRAME(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ASPECT_FRAME, GtkAspectFrame))
-#define GTK_ASPECT_FRAME_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ASPECT_FRAME, GtkAspectFrameClass))
-#define GTK_IS_ASPECT_FRAME(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ASPECT_FRAME))
-#define GTK_IS_ASPECT_FRAME_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ASPECT_FRAME))
-#define GTK_ASPECT_FRAME_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ASPECT_FRAME, GtkAspectFrameClass))
+#define CTK_TYPE_ASPECT_FRAME            (ctk_aspect_frame_get_type ())
+#define CTK_ASPECT_FRAME(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ASPECT_FRAME, GtkAspectFrame))
+#define CTK_ASPECT_FRAME_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ASPECT_FRAME, GtkAspectFrameClass))
+#define CTK_IS_ASPECT_FRAME(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ASPECT_FRAME))
+#define CTK_IS_ASPECT_FRAME_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ASPECT_FRAME))
+#define CTK_ASPECT_FRAME_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ASPECT_FRAME, GtkAspectFrameClass))
 
 typedef struct _GtkAspectFrame              GtkAspectFrame;
 typedef struct _GtkAspectFramePrivate       GtkAspectFramePrivate;
@@ -90,4 +90,4 @@ void       ctk_aspect_frame_set        (GtkAspectFrame  *aspect_frame,
 
 G_END_DECLS
 
-#endif /* __GTK_ASPECT_FRAME_H__ */
+#endif /* __CTK_ASPECT_FRAME_H__ */

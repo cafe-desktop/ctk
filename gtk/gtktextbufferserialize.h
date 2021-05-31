@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TEXT_BUFFER_SERIALIZE_H__
-#define __GTK_TEXT_BUFFER_SERIALIZE_H__
+#ifndef __CTK_TEXT_BUFFER_SERIALIZE_H__
+#define __CTK_TEXT_BUFFER_SERIALIZE_H__
 
 #include <gtk/gtktextbuffer.h>
 
@@ -38,4 +38,4 @@ gboolean _ctk_text_buffer_deserialize_rich_text (GtkTextBuffer     *register_buf
                                                  GError           **error);
 
 
-#endif /* __GTK_TEXT_BUFFER_SERIALIZE_H__ */
+#endif /* __CTK_TEXT_BUFFER_SERIALIZE_H__ */

@@ -15,19 +15,19 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FISHBOWL_H__
-#define __GTK_FISHBOWL_H__
+#ifndef __CTK_FISHBOWL_H__
+#define __CTK_FISHBOWL_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FISHBOWL                  (ctk_fishbowl_get_type ())
-#define GTK_FISHBOWL(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FISHBOWL, GtkFishbowl))
-#define GTK_FISHBOWL_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FISHBOWL, GtkFishbowlClass))
-#define GTK_IS_FISHBOWL(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FISHBOWL))
-#define GTK_IS_FISHBOWL_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_FISHBOWL))
-#define GTK_FISHBOWL_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_FISHBOWL, GtkFishbowlClass))
+#define CTK_TYPE_FISHBOWL                  (ctk_fishbowl_get_type ())
+#define CTK_FISHBOWL(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FISHBOWL, GtkFishbowl))
+#define CTK_FISHBOWL_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FISHBOWL, GtkFishbowlClass))
+#define CTK_IS_FISHBOWL(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FISHBOWL))
+#define CTK_IS_FISHBOWL_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FISHBOWL))
+#define CTK_FISHBOWL_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FISHBOWL, GtkFishbowlClass))
 
 typedef struct _GtkFishbowl              GtkFishbowl;
 typedef struct _GtkFishbowlClass         GtkFishbowlClass;
@@ -66,4 +66,4 @@ void       ctk_fishbowl_set_creation_func (GtkFishbowl       *fishbowl,
 
 G_END_DECLS
 
-#endif /* __GTK_FISHBOWL_H__ */
+#endif /* __CTK_FISHBOWL_H__ */

@@ -17,8 +17,8 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_BITMASK_PRIVATE_H__
-#define __GTK_BITMASK_PRIVATE_H__
+#ifndef __CTK_BITMASK_PRIVATE_H__
+#define __CTK_BITMASK_PRIVATE_H__
 
 #include <glib.h>
 #include "gtkallocatedbitmaskprivate.h"
@@ -66,4 +66,4 @@ static inline gboolean          _ctk_bitmask_intersects           (const GtkBitm
 
 G_END_DECLS
 
-#endif /* __GTK_BITMASK_PRIVATE_H__ */
+#endif /* __CTK_BITMASK_PRIVATE_H__ */

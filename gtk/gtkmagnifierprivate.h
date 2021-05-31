@@ -15,17 +15,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_MAGNIFIER_H__
-#define __GTK_MAGNIFIER_H__
+#ifndef __CTK_MAGNIFIER_H__
+#define __CTK_MAGNIFIER_H__
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MAGNIFIER           (_ctk_magnifier_get_type ())
-#define GTK_MAGNIFIER(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_MAGNIFIER, GtkMagnifier))
-#define GTK_MAGNIFIER_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), GTK_TYPE_MAGNIFIER, GtkMagnifierClass))
-#define GTK_IS_MAGNIFIER(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_MAGNIFIER))
-#define GTK_IS_MAGNIFIER_CLASS(o)    (G_TYPE_CHECK_CLASS_TYPE ((o), GTK_TYPE_MAGNIFIER))
-#define GTK_MAGNIFIER_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_MAGNIFIER, GtkMagnifierClass))
+#define CTK_TYPE_MAGNIFIER           (_ctk_magnifier_get_type ())
+#define CTK_MAGNIFIER(o)             (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MAGNIFIER, GtkMagnifier))
+#define CTK_MAGNIFIER_CLASS(c)       (G_TYPE_CHECK_CLASS_CAST ((c), CTK_TYPE_MAGNIFIER, GtkMagnifierClass))
+#define CTK_IS_MAGNIFIER(o)          (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_MAGNIFIER))
+#define CTK_IS_MAGNIFIER_CLASS(o)    (G_TYPE_CHECK_CLASS_TYPE ((o), CTK_TYPE_MAGNIFIER))
+#define CTK_MAGNIFIER_GET_CLASS(o)   (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_MAGNIFIER, GtkMagnifierClass))
 
 typedef struct _GtkMagnifier GtkMagnifier;
 typedef struct _GtkMagnifierClass GtkMagnifierClass;
@@ -65,4 +65,4 @@ gboolean    _ctk_magnifier_get_resize        (GtkMagnifier *magnifier);
 
 G_END_DECLS
 
-#endif /* __GTK_MAGNIFIER_H__ */
+#endif /* __CTK_MAGNIFIER_H__ */

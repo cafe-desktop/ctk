@@ -38,13 +38,13 @@ ctk_window_move():
    unless the last configure request we sent was for the same
    position being moved to
  - position may be negative to move windows offscreen
- - if GTK_WIN_POS_CENTER_ALWAYS (or other future position 
+ - if CTK_WIN_POS_CENTER_ALWAYS (or other future position 
    constraints we may add) is in effect, the move
    request is clamped to obey the constraints. thus
    calling ctk_window_move() on a CENTER_ALWAYS window 
    may trigger the window to bounce back to center if it 
    wasn't there
- - overrides all GTK_WIN_POS_ except CENTER_ALWAYS
+ - overrides all CTK_WIN_POS_ except CENTER_ALWAYS
 
 ctk_window_get_size():
  - obtains the client-side known size of widget->window, 

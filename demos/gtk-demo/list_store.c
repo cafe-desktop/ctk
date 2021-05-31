@@ -70,7 +70,7 @@ spinner_timeout (gpointer data)
   else
     pulse++;
 
-  ctk_list_store_set (GTK_LIST_STORE (model),
+  ctk_list_store_set (CTK_LIST_STORE (model),
                       &iter,
                       COLUMN_PULSE, pulse,
                       COLUMN_ACTIVE, TRUE,
@@ -124,7 +124,7 @@ create_model (void)
                           -1);
     }
 
-  return GTK_TREE_MODEL (store);
+  return CTK_TREE_MODEL (store);
 }
 
 static void
@@ -145,7 +145,7 @@ fixed_toggled (GtkCellRendererToggle *cell,
   fixed ^= 1;
 
   /* set new value */
-  ctk_list_store_set (GTK_LIST_STORE (model), &iter, COLUMN_FIXED, fixed, -1);
+  ctk_list_store_set (CTK_LIST_STORE (model), &iter, COLUMN_FIXED, fixed, -1);
 
   /* clean up */
   ctk_tree_path_free (path);
@@ -169,9 +169,9 @@ add_columns (GtkTreeView *treeview)
                                                      NULL);
 
   /* set this column to a fixed sizing (of 50 pixels) */
-  ctk_tree_view_column_set_sizing (GTK_TREE_VIEW_COLUMN (column),
-                                   GTK_TREE_VIEW_COLUMN_FIXED);
-  ctk_tree_view_column_set_fixed_width (GTK_TREE_VIEW_COLUMN (column), 50);
+  ctk_tree_view_column_set_sizing (CTK_TREE_VIEW_COLUMN (column),
+                                   CTK_TREE_VIEW_COLUMN_FIXED);
+  ctk_tree_view_column_set_fixed_width (CTK_TREE_VIEW_COLUMN (column), 50);
   ctk_tree_view_append_column (treeview, column);
 
   /* column for bug numbers */
@@ -255,46 +255,46 @@ do_list_store (GtkWidget *do_widget)
       GtkWidget *treeview;
 
       /* create window, etc */
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "List Store");
+      ctk_window_set_title (CTK_WINDOW (window), "List Store");
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
-      ctk_container_set_border_width (GTK_CONTAINER (window), 8);
+      ctk_container_set_border_width (CTK_CONTAINER (window), 8);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
 
       label = ctk_label_new ("This is the bug list (note: not based on real data, it would be nice to have a nice ODBC interface to bugzilla or so, though).");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (sw),
-                                           GTK_SHADOW_ETCHED_IN);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_NEVER,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_box_pack_start (GTK_BOX (vbox), sw, TRUE, TRUE, 0);
+      ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (sw),
+                                           CTK_SHADOW_ETCHED_IN);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_NEVER,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_box_pack_start (CTK_BOX (vbox), sw, TRUE, TRUE, 0);
 
       /* create tree model */
       model = create_model ();
 
       /* create tree view */
       treeview = ctk_tree_view_new_with_model (model);
-      ctk_tree_view_set_search_column (GTK_TREE_VIEW (treeview),
+      ctk_tree_view_set_search_column (CTK_TREE_VIEW (treeview),
                                        COLUMN_DESCRIPTION);
 
       g_object_unref (model);
 
-      ctk_container_add (GTK_CONTAINER (sw), treeview);
+      ctk_container_add (CTK_CONTAINER (sw), treeview);
 
       /* add columns to the tree view */
-      add_columns (GTK_TREE_VIEW (treeview));
+      add_columns (CTK_TREE_VIEW (treeview));
 
       /* finish & show */
-      ctk_window_set_default_size (GTK_WINDOW (window), 280, 250);
+      ctk_window_set_default_size (CTK_WINDOW (window), 280, 250);
       g_signal_connect (window, "delete-event",
                         G_CALLBACK (window_closed), NULL);
     }

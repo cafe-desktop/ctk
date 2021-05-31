@@ -303,9 +303,9 @@ static gboolean      ctk_range_render                   (GtkCssGadget *gadget,
                                                          int           height,
                                                          gpointer      user_data);
 
-G_DEFINE_ABSTRACT_TYPE_WITH_CODE (GtkRange, ctk_range, GTK_TYPE_WIDGET,
+G_DEFINE_ABSTRACT_TYPE_WITH_CODE (GtkRange, ctk_range, CTK_TYPE_WIDGET,
                                   G_ADD_PRIVATE (GtkRange)
-                                  G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE,
+                                  G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE,
                                                          NULL))
 
 static guint signals[LAST_SIGNAL];
@@ -390,7 +390,7 @@ ctk_range_class_init (GtkRangeClass *class)
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GTK_TYPE_SCROLL_TYPE);
+                  CTK_TYPE_SCROLL_TYPE);
 
   /**
    * GtkRange::change-value:
@@ -424,7 +424,7 @@ ctk_range_class_init (GtkRangeClass *class)
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__ENUM_DOUBLE,
                   G_TYPE_BOOLEAN, 2,
-                  GTK_TYPE_SCROLL_TYPE,
+                  CTK_TYPE_SCROLL_TYPE,
                   G_TYPE_DOUBLE);
 
   g_object_class_override_property (gobject_class, PROP_ORIENTATION, "orientation");
@@ -433,31 +433,31 @@ ctk_range_class_init (GtkRangeClass *class)
       g_param_spec_object ("adjustment",
                            P_("Adjustment"),
                            P_("The GtkAdjustment that contains the current value of this range object"),
-                           GTK_TYPE_ADJUSTMENT,
-                           GTK_PARAM_READWRITE|G_PARAM_CONSTRUCT);
+                           CTK_TYPE_ADJUSTMENT,
+                           CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT);
 
   properties[PROP_INVERTED] =
       g_param_spec_boolean ("inverted",
                             P_("Inverted"),
                             P_("Invert direction slider moves to increase range value"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   properties[PROP_LOWER_STEPPER_SENSITIVITY] =
       g_param_spec_enum ("lower-stepper-sensitivity",
                          P_("Lower stepper sensitivity"),
                          P_("The sensitivity policy for the stepper that points to the adjustment's lower side"),
-                         GTK_TYPE_SENSITIVITY_TYPE,
-                         GTK_SENSITIVITY_AUTO,
-                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
+                         CTK_TYPE_SENSITIVITY_TYPE,
+                         CTK_SENSITIVITY_AUTO,
+                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   properties[PROP_UPPER_STEPPER_SENSITIVITY] =
       g_param_spec_enum ("upper-stepper-sensitivity",
                          P_("Upper stepper sensitivity"),
                          P_("The sensitivity policy for the stepper that points to the adjustment's upper side"),
-                         GTK_TYPE_SENSITIVITY_TYPE,
-                         GTK_SENSITIVITY_AUTO,
-                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
+                         CTK_TYPE_SENSITIVITY_TYPE,
+                         CTK_SENSITIVITY_AUTO,
+                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
    * GtkRange:show-fill-level:
@@ -473,7 +473,7 @@ ctk_range_class_init (GtkRangeClass *class)
                             P_("Show Fill Level"),
                             P_("Whether to display a fill level indicator graphics on trough."),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkRange:restrict-to-fill-level:
@@ -489,7 +489,7 @@ ctk_range_class_init (GtkRangeClass *class)
                             P_("Restrict to Fill Level"),
                             P_("Whether to restrict the upper boundary to the fill level."),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkRange:fill-level:
@@ -505,7 +505,7 @@ ctk_range_class_init (GtkRangeClass *class)
                            P_("The fill level."),
                            -G_MAXDOUBLE, G_MAXDOUBLE,
                            G_MAXDOUBLE,
-                           GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkRange:round-digits:
@@ -521,7 +521,7 @@ ctk_range_class_init (GtkRangeClass *class)
                         P_("The number of digits to round the value to."),
                         -1, G_MAXINT,
                         -1,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   g_object_class_install_properties (gobject_class, LAST_PROP, properties);
 
@@ -540,7 +540,7 @@ ctk_range_class_init (GtkRangeClass *class)
 							     0,
 							     G_MAXINT,
 							     14,
-							     GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
   /**
    * GtkRange:trough-border:
    *
@@ -556,7 +556,7 @@ ctk_range_class_init (GtkRangeClass *class)
                                                              0,
                                                              G_MAXINT,
                                                              1,
-                                                             GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
   /**
    * GtkRange:stepper-size:
    *
@@ -572,7 +572,7 @@ ctk_range_class_init (GtkRangeClass *class)
 							     0,
 							     G_MAXINT,
 							     14,
-							     GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
   /**
    * GtkRange:stepper-spacing:
    *
@@ -589,7 +589,7 @@ ctk_range_class_init (GtkRangeClass *class)
                                                              0,
 							     G_MAXINT,
 							     0,
-							     GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkRange:arrow-displacement-x:
@@ -605,7 +605,7 @@ ctk_range_class_init (GtkRangeClass *class)
 							     G_MININT,
 							     G_MAXINT,
 							     0,
-							     GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkRange:arrow-displacement-y:
@@ -621,7 +621,7 @@ ctk_range_class_init (GtkRangeClass *class)
 							     G_MININT,
 							     G_MAXINT,
 							     0,
-							     GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkRange:trough-under-steppers:
@@ -639,7 +639,7 @@ ctk_range_class_init (GtkRangeClass *class)
                                                                  P_("Trough Under Steppers"),
                                                                  P_("Whether to draw trough for full length of range or exclude the steppers and spacing"),
                                                                  TRUE,
-                                                                 GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                                 CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkRange:arrow-scaling:
@@ -656,9 +656,9 @@ ctk_range_class_init (GtkRangeClass *class)
 							       P_("Arrow scaling"),
 							       P_("Arrow scaling with regard to scroll button size"),
 							       0.0, 1.0, 0.5,
-							       GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_RANGE_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_RANGE_ACCESSIBLE);
 }
 
 static void
@@ -667,9 +667,9 @@ ctk_range_sync_orientation (GtkRange *range)
   GtkRangePrivate *priv = range->priv;
   GtkOrientation orientation;
 
-  orientation = ctk_orientable_get_orientation (GTK_ORIENTABLE (range));
-  _ctk_orientable_set_style_classes (GTK_ORIENTABLE (range));
-  ctk_box_gadget_set_orientation (GTK_BOX_GADGET (priv->contents_gadget), orientation);
+  orientation = ctk_orientable_get_orientation (CTK_ORIENTABLE (range));
+  _ctk_orientable_set_style_classes (CTK_ORIENTABLE (range));
+  ctk_box_gadget_set_orientation (CTK_BOX_GADGET (priv->contents_gadget), orientation);
 }
 
 static void
@@ -678,7 +678,7 @@ ctk_range_set_property (GObject      *object,
 			const GValue *value,
 			GParamSpec   *pspec)
 {
-  GtkRange *range = GTK_RANGE (object);
+  GtkRange *range = CTK_RANGE (object);
   GtkRangePrivate *priv = range->priv;
 
   switch (prop_id)
@@ -688,7 +688,7 @@ ctk_range_set_property (GObject      *object,
         {
           priv->orientation = g_value_get_enum (value);
           ctk_range_sync_orientation (range);
-          ctk_widget_queue_resize (GTK_WIDGET (range));
+          ctk_widget_queue_resize (CTK_WIDGET (range));
           g_object_notify_by_pspec (object, pspec);
         }
       break;
@@ -728,7 +728,7 @@ ctk_range_get_property (GObject      *object,
 			GValue       *value,
 			GParamSpec   *pspec)
 {
-  GtkRange *range = GTK_RANGE (object);
+  GtkRange *range = CTK_RANGE (object);
   GtkRangePrivate *priv = range->priv;
 
   switch (prop_id)
@@ -775,9 +775,9 @@ ctk_range_init (GtkRange *range)
   range->priv = ctk_range_get_instance_private (range);
   priv = range->priv;
 
-  ctk_widget_set_has_window (GTK_WIDGET (range), FALSE);
+  ctk_widget_set_has_window (CTK_WIDGET (range), FALSE);
 
-  priv->orientation = GTK_ORIENTATION_HORIZONTAL;
+  priv->orientation = CTK_ORIENTATION_HORIZONTAL;
   priv->adjustment = NULL;
   priv->inverted = FALSE;
   priv->flippable = FALSE;
@@ -785,8 +785,8 @@ ctk_range_init (GtkRange *range)
   priv->round_digits = -1;
   priv->mouse_x = G_MININT;
   priv->mouse_y = G_MININT;
-  priv->lower_sensitivity = GTK_SENSITIVITY_AUTO;
-  priv->upper_sensitivity = GTK_SENSITIVITY_AUTO;
+  priv->lower_sensitivity = CTK_SENSITIVITY_AUTO;
+  priv->upper_sensitivity = CTK_SENSITIVITY_AUTO;
   priv->lower_sensitive = TRUE;
   priv->upper_sensitive = TRUE;
   priv->has_origin = FALSE;
@@ -795,20 +795,20 @@ ctk_range_init (GtkRange *range)
   priv->fill_level = G_MAXDOUBLE;
   priv->timer = NULL;
 
-  _ctk_orientable_set_style_classes (GTK_ORIENTABLE (range));
+  _ctk_orientable_set_style_classes (CTK_ORIENTABLE (range));
 
-  widget_node = ctk_widget_get_css_node (GTK_WIDGET (range));
+  widget_node = ctk_widget_get_css_node (CTK_WIDGET (range));
   priv->gadget = ctk_css_custom_gadget_new_for_node (widget_node,
-                                                     GTK_WIDGET (range),
+                                                     CTK_WIDGET (range),
                                                      ctk_range_measure,
                                                      ctk_range_allocate,
                                                      ctk_range_render,
                                                      NULL, NULL);
   priv->contents_gadget = ctk_box_gadget_new ("contents",
-                                              GTK_WIDGET (range),
+                                              CTK_WIDGET (range),
                                               priv->gadget, NULL);
   priv->trough_gadget = ctk_css_custom_gadget_new ("trough",
-                                                   GTK_WIDGET (range),
+                                                   CTK_WIDGET (range),
                                                    NULL, NULL,
                                                    ctk_range_measure_trough,
                                                    ctk_range_allocate_trough,
@@ -816,11 +816,11 @@ ctk_range_init (GtkRange *range)
                                                    NULL, NULL);
   ctk_css_gadget_set_state (priv->trough_gadget,
                             ctk_css_node_get_state (widget_node));
-  ctk_box_gadget_insert_gadget (GTK_BOX_GADGET (priv->contents_gadget), -1, priv->trough_gadget,
-                                TRUE, GTK_ALIGN_CENTER);
+  ctk_box_gadget_insert_gadget (CTK_BOX_GADGET (priv->contents_gadget), -1, priv->trough_gadget,
+                                TRUE, CTK_ALIGN_CENTER);
 
   priv->slider_gadget = ctk_builtin_icon_new ("slider",
-                                              GTK_WIDGET (range),
+                                              CTK_WIDGET (range),
                                               priv->trough_gadget, NULL);
   ctk_css_gadget_set_state (priv->slider_gadget,
                             ctk_css_node_get_state (widget_node));
@@ -831,22 +831,22 @@ ctk_range_init (GtkRange *range)
    * in the oppposite order in which they are added to their
    * widget.
    */
-  priv->drag_gesture = ctk_gesture_drag_new (GTK_WIDGET (range));
-  ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (priv->drag_gesture), 0);
+  priv->drag_gesture = ctk_gesture_drag_new (CTK_WIDGET (range));
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->drag_gesture), 0);
   g_signal_connect (priv->drag_gesture, "drag-begin",
                     G_CALLBACK (ctk_range_drag_gesture_begin), range);
   g_signal_connect (priv->drag_gesture, "drag-update",
                     G_CALLBACK (ctk_range_drag_gesture_update), range);
 
-  priv->multipress_gesture = ctk_gesture_multi_press_new (GTK_WIDGET (range));
-  ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (priv->multipress_gesture), 0);
+  priv->multipress_gesture = ctk_gesture_multi_press_new (CTK_WIDGET (range));
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->multipress_gesture), 0);
   ctk_gesture_group (priv->drag_gesture, priv->multipress_gesture);
   g_signal_connect (priv->multipress_gesture, "pressed",
                     G_CALLBACK (ctk_range_multipress_gesture_pressed), range);
   g_signal_connect (priv->multipress_gesture, "released",
                     G_CALLBACK (ctk_range_multipress_gesture_released), range);
 
-  priv->long_press_gesture = ctk_gesture_long_press_new (GTK_WIDGET (range));
+  priv->long_press_gesture = ctk_gesture_long_press_new (CTK_WIDGET (range));
   g_object_set (priv->long_press_gesture, "delay-factor", 2.0, NULL);
   ctk_gesture_group (priv->drag_gesture, priv->long_press_gesture);
   g_signal_connect (priv->long_press_gesture, "pressed",
@@ -869,7 +869,7 @@ ctk_range_get_adjustment (GtkRange *range)
 {
   GtkRangePrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_RANGE (range), NULL);
+  g_return_val_if_fail (CTK_IS_RANGE (range), NULL);
 
   priv = range->priv;
 
@@ -898,14 +898,14 @@ ctk_range_set_adjustment (GtkRange      *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
   if (!adjustment)
     adjustment = ctk_adjustment_new (0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
   else
-    g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+    g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
   if (priv->adjustment != adjustment)
     {
@@ -940,11 +940,11 @@ should_invert (GtkRange *range)
 {
   GtkRangePrivate *priv = range->priv;
 
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     return
       (priv->inverted && !priv->flippable) ||
-      (priv->inverted && priv->flippable && ctk_widget_get_direction (GTK_WIDGET (range)) == GTK_TEXT_DIR_LTR) ||
-      (!priv->inverted && priv->flippable && ctk_widget_get_direction (GTK_WIDGET (range)) == GTK_TEXT_DIR_RTL);
+      (priv->inverted && priv->flippable && ctk_widget_get_direction (CTK_WIDGET (range)) == CTK_TEXT_DIR_LTR) ||
+      (!priv->inverted && priv->flippable && ctk_widget_get_direction (CTK_WIDGET (range)) == CTK_TEXT_DIR_RTL);
   else
     return priv->inverted;
 }
@@ -960,7 +960,7 @@ should_invert_move (GtkRange       *range,
     return should_invert (range);
 
   /* H scale/V move: Always invert, so down/up always dec/increase the value */
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL && GTK_IS_SCALE (range))
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL && CTK_IS_SCALE (range))
     return TRUE;
 
   /* V range/H move: Left/right always dec/increase the value */
@@ -977,13 +977,13 @@ update_highlight_position (GtkRange *range)
 
   if (should_invert (range))
     {
-      ctk_css_gadget_remove_class (priv->highlight_gadget, GTK_STYLE_CLASS_TOP);
-      ctk_css_gadget_add_class (priv->highlight_gadget, GTK_STYLE_CLASS_BOTTOM);
+      ctk_css_gadget_remove_class (priv->highlight_gadget, CTK_STYLE_CLASS_TOP);
+      ctk_css_gadget_add_class (priv->highlight_gadget, CTK_STYLE_CLASS_BOTTOM);
     }
   else
     {
-      ctk_css_gadget_remove_class (priv->highlight_gadget, GTK_STYLE_CLASS_BOTTOM);
-      ctk_css_gadget_add_class (priv->highlight_gadget, GTK_STYLE_CLASS_TOP);
+      ctk_css_gadget_remove_class (priv->highlight_gadget, CTK_STYLE_CLASS_BOTTOM);
+      ctk_css_gadget_add_class (priv->highlight_gadget, CTK_STYLE_CLASS_TOP);
     }
 }
 
@@ -997,13 +997,13 @@ update_fill_position (GtkRange *range)
 
   if (should_invert (range))
     {
-      ctk_css_gadget_remove_class (priv->fill_gadget, GTK_STYLE_CLASS_TOP);
-      ctk_css_gadget_add_class (priv->fill_gadget, GTK_STYLE_CLASS_BOTTOM);
+      ctk_css_gadget_remove_class (priv->fill_gadget, CTK_STYLE_CLASS_TOP);
+      ctk_css_gadget_add_class (priv->fill_gadget, CTK_STYLE_CLASS_BOTTOM);
     }
   else
     {
-      ctk_css_gadget_remove_class (priv->fill_gadget, GTK_STYLE_CLASS_BOTTOM);
-      ctk_css_gadget_add_class (priv->fill_gadget, GTK_STYLE_CLASS_TOP);
+      ctk_css_gadget_remove_class (priv->fill_gadget, CTK_STYLE_CLASS_BOTTOM);
+      ctk_css_gadget_add_class (priv->fill_gadget, CTK_STYLE_CLASS_TOP);
     }
 }
 
@@ -1015,7 +1015,7 @@ update_stepper_state (GtkRange     *range,
   GtkStateFlags state;
   gboolean arrow_sensitive;
 
-  state = ctk_widget_get_state_flags (GTK_WIDGET (range));
+  state = ctk_widget_get_state_flags (CTK_WIDGET (range));
 
   if ((!priv->inverted &&
        (gadget == priv->stepper_a_gadget || gadget == priv->stepper_c_gadget)) ||
@@ -1025,18 +1025,18 @@ update_stepper_state (GtkRange     *range,
   else
     arrow_sensitive = priv->upper_sensitive;
 
-  state &= ~(GTK_STATE_FLAG_ACTIVE | GTK_STATE_FLAG_PRELIGHT);
+  state &= ~(CTK_STATE_FLAG_ACTIVE | CTK_STATE_FLAG_PRELIGHT);
 
-  if ((state & GTK_STATE_FLAG_INSENSITIVE) || !arrow_sensitive)
+  if ((state & CTK_STATE_FLAG_INSENSITIVE) || !arrow_sensitive)
     {
-      state |= GTK_STATE_FLAG_INSENSITIVE;
+      state |= CTK_STATE_FLAG_INSENSITIVE;
     }
   else
     {
       if (priv->grab_location == gadget)
-        state |= GTK_STATE_FLAG_ACTIVE;
+        state |= CTK_STATE_FLAG_ACTIVE;
       if (priv->mouse_location == gadget)
-        state |= GTK_STATE_FLAG_PRELIGHT;
+        state |= CTK_STATE_FLAG_PRELIGHT;
     }
 
   ctk_css_gadget_set_state (gadget, state);
@@ -1073,7 +1073,7 @@ ctk_range_set_inverted (GtkRange *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
@@ -1087,7 +1087,7 @@ ctk_range_set_inverted (GtkRange *range,
       update_fill_position (range);
       update_highlight_position (range);
 
-      ctk_widget_queue_resize (GTK_WIDGET (range));
+      ctk_widget_queue_resize (CTK_WIDGET (range));
 
       g_object_notify_by_pspec (G_OBJECT (range), properties[PROP_INVERTED]);
     }
@@ -1104,7 +1104,7 @@ ctk_range_set_inverted (GtkRange *range,
 gboolean
 ctk_range_get_inverted (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), FALSE);
+  g_return_val_if_fail (CTK_IS_RANGE (range), FALSE);
 
   return range->priv->inverted;
 }
@@ -1115,7 +1115,7 @@ ctk_range_get_inverted (GtkRange *range)
  * @flippable: %TRUE to make the range flippable
  *
  * If a range is flippable, it will switch its direction if it is
- * horizontal and its direction is %GTK_TEXT_DIR_RTL.
+ * horizontal and its direction is %CTK_TEXT_DIR_RTL.
  *
  * See ctk_widget_get_direction().
  *
@@ -1127,7 +1127,7 @@ ctk_range_set_flippable (GtkRange *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
@@ -1139,7 +1139,7 @@ ctk_range_set_flippable (GtkRange *range,
       update_fill_position (range);
       update_highlight_position (range);
 
-      ctk_widget_queue_allocate (GTK_WIDGET (range));
+      ctk_widget_queue_allocate (CTK_WIDGET (range));
     }
 }
 
@@ -1156,7 +1156,7 @@ ctk_range_set_flippable (GtkRange *range,
 gboolean
 ctk_range_get_flippable (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), FALSE);
+  g_return_val_if_fail (CTK_IS_RANGE (range), FALSE);
 
   return range->priv->flippable;
 }
@@ -1192,7 +1192,7 @@ ctk_range_set_slider_size_fixed (GtkRange *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
@@ -1200,7 +1200,7 @@ ctk_range_set_slider_size_fixed (GtkRange *range,
     {
       priv->slider_size_fixed = size_fixed ? TRUE : FALSE;
 
-      if (priv->adjustment && ctk_widget_get_mapped (GTK_WIDGET (range)))
+      if (priv->adjustment && ctk_widget_get_mapped (CTK_WIDGET (range)))
         ctk_css_gadget_queue_allocate (priv->slider_gadget);
     }
 }
@@ -1220,7 +1220,7 @@ ctk_range_set_slider_size_fixed (GtkRange *range,
 gboolean
 ctk_range_get_slider_size_fixed (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), FALSE);
+  g_return_val_if_fail (CTK_IS_RANGE (range), FALSE);
 
   return range->priv->slider_size_fixed;
 }
@@ -1245,7 +1245,7 @@ ctk_range_set_min_slider_size (GtkRange *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
   g_return_if_fail (min_size > 0);
 
   priv = range->priv;
@@ -1254,7 +1254,7 @@ ctk_range_set_min_slider_size (GtkRange *range,
     {
       priv->min_slider_size = min_size;
 
-      ctk_widget_queue_resize (GTK_WIDGET (range));
+      ctk_widget_queue_resize (CTK_WIDGET (range));
     }
 }
 
@@ -1276,7 +1276,7 @@ ctk_range_set_min_slider_size (GtkRange *range,
 gint
 ctk_range_get_min_slider_size (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), FALSE);
+  g_return_val_if_fail (CTK_IS_RANGE (range), FALSE);
 
   return range->priv->min_slider_size;
 }
@@ -1287,11 +1287,11 @@ measure_one_gadget (GtkCssGadget *gadget,
                     int          *height_out)
 {
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_HORIZONTAL, -1,
+                                     CTK_ORIENTATION_HORIZONTAL, -1,
                                      width_out, NULL,
                                      NULL, NULL);
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_VERTICAL, -1,
+                                     CTK_ORIENTATION_VERTICAL, -1,
                                      height_out, NULL,
                                      NULL, NULL);
 }
@@ -1314,7 +1314,7 @@ ctk_range_get_range_rect (GtkRange     *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
   g_return_if_fail (range_rect != NULL);
 
   priv = range->priv;
@@ -1345,13 +1345,13 @@ ctk_range_get_slider_range (GtkRange *range,
   GtkRangePrivate *priv;
   GtkAllocation slider_alloc;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
   ctk_css_gadget_get_margin_box (priv->slider_gadget, &slider_alloc);
 
-  if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+  if (priv->orientation == CTK_ORIENTATION_VERTICAL)
     {
       if (slider_start)
         *slider_start = slider_alloc.y;
@@ -1383,7 +1383,7 @@ ctk_range_set_lower_stepper_sensitivity (GtkRange           *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
@@ -1411,7 +1411,7 @@ ctk_range_set_lower_stepper_sensitivity (GtkRange           *range,
 GtkSensitivityType
 ctk_range_get_lower_stepper_sensitivity (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), GTK_SENSITIVITY_AUTO);
+  g_return_val_if_fail (CTK_IS_RANGE (range), CTK_SENSITIVITY_AUTO);
 
   return range->priv->lower_sensitivity;
 }
@@ -1432,7 +1432,7 @@ ctk_range_set_upper_stepper_sensitivity (GtkRange           *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
@@ -1460,7 +1460,7 @@ ctk_range_set_upper_stepper_sensitivity (GtkRange           *range,
 GtkSensitivityType
 ctk_range_get_upper_stepper_sensitivity (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), GTK_SENSITIVITY_AUTO);
+  g_return_val_if_fail (CTK_IS_RANGE (range), CTK_SENSITIVITY_AUTO);
 
   return range->priv->upper_sensitivity;
 }
@@ -1483,7 +1483,7 @@ ctk_range_set_increments (GtkRange *range,
 {
   GtkAdjustment *adjustment;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   adjustment = range->priv->adjustment;
 
@@ -1515,7 +1515,7 @@ ctk_range_set_range (GtkRange *range,
   GtkAdjustment *adjustment;
   gdouble value;
   
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
   g_return_if_fail (min <= max);
 
   priv = range->priv;
@@ -1551,7 +1551,7 @@ ctk_range_set_value (GtkRange *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
@@ -1573,7 +1573,7 @@ ctk_range_set_value (GtkRange *range,
 gdouble
 ctk_range_get_value (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), 0.0);
+  g_return_val_if_fail (CTK_IS_RANGE (range), 0.0);
 
   return ctk_adjustment_get_value (range->priv->adjustment);
 }
@@ -1595,7 +1595,7 @@ ctk_range_set_show_fill_level (GtkRange *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
@@ -1609,7 +1609,7 @@ ctk_range_set_show_fill_level (GtkRange *range,
   if (show_fill_level)
     {
       priv->fill_gadget = ctk_css_custom_gadget_new ("fill",
-                                                     GTK_WIDGET (range),
+                                                     CTK_WIDGET (range),
                                                      priv->trough_gadget, NULL,
                                                      NULL, NULL, NULL,
                                                      NULL, NULL);
@@ -1625,7 +1625,7 @@ ctk_range_set_show_fill_level (GtkRange *range,
     }
 
   g_object_notify_by_pspec (G_OBJECT (range), properties[PROP_SHOW_FILL_LEVEL]);
-  ctk_widget_queue_allocate (GTK_WIDGET (range));
+  ctk_widget_queue_allocate (CTK_WIDGET (range));
 }
 
 /**
@@ -1641,7 +1641,7 @@ ctk_range_set_show_fill_level (GtkRange *range,
 gboolean
 ctk_range_get_show_fill_level (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), FALSE);
+  g_return_val_if_fail (CTK_IS_RANGE (range), FALSE);
 
   return range->priv->show_fill_level;
 }
@@ -1663,7 +1663,7 @@ ctk_range_set_restrict_to_fill_level (GtkRange *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
@@ -1691,7 +1691,7 @@ ctk_range_set_restrict_to_fill_level (GtkRange *range,
 gboolean
 ctk_range_get_restrict_to_fill_level (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), FALSE);
+  g_return_val_if_fail (CTK_IS_RANGE (range), FALSE);
 
   return range->priv->restrict_to_fill_level;
 }
@@ -1727,7 +1727,7 @@ ctk_range_set_fill_level (GtkRange *range,
 {
   GtkRangePrivate *priv;
 
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
 
   priv = range->priv;
 
@@ -1737,7 +1737,7 @@ ctk_range_set_fill_level (GtkRange *range,
       g_object_notify_by_pspec (G_OBJECT (range), properties[PROP_FILL_LEVEL]);
 
       if (priv->show_fill_level)
-        ctk_widget_queue_allocate (GTK_WIDGET (range));
+        ctk_widget_queue_allocate (CTK_WIDGET (range));
 
       if (priv->restrict_to_fill_level)
         ctk_range_set_value (range, ctk_range_get_value (range));
@@ -1757,7 +1757,7 @@ ctk_range_set_fill_level (GtkRange *range,
 gdouble
 ctk_range_get_fill_level (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), 0.0);
+  g_return_val_if_fail (CTK_IS_RANGE (range), 0.0);
 
   return range->priv->fill_level;
 }
@@ -1765,7 +1765,7 @@ ctk_range_get_fill_level (GtkRange *range)
 static void
 ctk_range_destroy (GtkWidget *widget)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
 
   ctk_range_remove_step_timer (range);
@@ -1791,13 +1791,13 @@ ctk_range_destroy (GtkWidget *widget)
       priv->n_marks = 0;
     }
 
-  GTK_WIDGET_CLASS (ctk_range_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (ctk_range_parent_class)->destroy (widget);
 }
 
 static void
 ctk_range_finalize (GObject *object)
 {
-  GtkRange *range = GTK_RANGE (object);
+  GtkRange *range = CTK_RANGE (object);
   GtkRangePrivate *priv = range->priv;
 
   g_clear_object (&priv->drag_gesture);
@@ -1829,7 +1829,7 @@ ctk_range_measure_trough (GtkCssGadget   *gadget,
                           gpointer        user_data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
   gint min, nat;
 
@@ -1870,7 +1870,7 @@ ctk_range_measure (GtkCssGadget   *gadget,
                    gpointer        user_data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
   GtkBorder border = { 0 };
 
@@ -1881,11 +1881,11 @@ ctk_range_measure (GtkCssGadget   *gadget,
                                      minimum, natural,
                                      NULL, NULL);
 
-  if (GTK_RANGE_GET_CLASS (range)->get_range_border)
-    GTK_RANGE_GET_CLASS (range)->get_range_border (range, &border);
+  if (CTK_RANGE_GET_CLASS (range)->get_range_border)
+    CTK_RANGE_GET_CLASS (range)->get_range_border (range, &border);
 
   /* Add the border */
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       *minimum += border.left + border.right;
       *natural += border.left + border.right;
@@ -1903,18 +1903,18 @@ ctk_range_size_request (GtkWidget      *widget,
                         gint           *minimum,
                         gint           *natural)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
 
   ctk_css_gadget_get_preferred_size (priv->gadget, orientation, -1,
                                      minimum, natural,
                                      NULL, NULL);
 
-  if (GTK_RANGE_GET_CLASS (range)->get_range_size_request)
+  if (CTK_RANGE_GET_CLASS (range)->get_range_size_request)
     {
       gint min, nat;
 
-      GTK_RANGE_GET_CLASS (range)->get_range_size_request (range, orientation,
+      CTK_RANGE_GET_CLASS (range)->get_range_size_request (range, orientation,
                                                            &min, &nat);
 
       *minimum = MAX (*minimum, min);
@@ -1927,7 +1927,7 @@ ctk_range_get_preferred_width (GtkWidget *widget,
                                gint      *minimum,
                                gint      *natural)
 {
-  ctk_range_size_request (widget, GTK_ORIENTATION_HORIZONTAL,
+  ctk_range_size_request (widget, CTK_ORIENTATION_HORIZONTAL,
                           minimum, natural);
 }
 
@@ -1936,7 +1936,7 @@ ctk_range_get_preferred_height (GtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
-  ctk_range_size_request (widget, GTK_ORIENTATION_VERTICAL,
+  ctk_range_size_request (widget, CTK_ORIENTATION_VERTICAL,
                           minimum, natural);
 }
 
@@ -1948,7 +1948,7 @@ ctk_range_allocate_trough (GtkCssGadget        *gadget,
                            gpointer             data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
   GtkAllocation slider_alloc, widget_alloc;
 
@@ -1987,7 +1987,7 @@ ctk_range_allocate_trough (GtkCssGadget        *gadget,
          ctk_adjustment_get_lower (priv->adjustment) -
          ctk_adjustment_get_page_size (priv->adjustment));
 
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           fill_alloc.width *= fill;
 
@@ -2021,7 +2021,7 @@ ctk_range_allocate_trough (GtkCssGadget        *gadget,
 
       highlight_alloc = *allocation;
 
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           int x = slider_alloc.x + slider_alloc.width / 2;
 
@@ -2155,18 +2155,18 @@ ctk_range_allocate (GtkCssGadget        *gadget,
                     gpointer             data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
   GtkBorder border = { 0 };
   GtkAllocation box_alloc;
   int box_min_width, box_min_height;
 
-  if (GTK_RANGE_GET_CLASS (range)->get_range_border)
-    GTK_RANGE_GET_CLASS (range)->get_range_border (range, &border);
+  if (CTK_RANGE_GET_CLASS (range)->get_range_border)
+    CTK_RANGE_GET_CLASS (range)->get_range_border (range, &border);
 
   measure_one_gadget (priv->contents_gadget, &box_min_width, &box_min_height);
 
-  if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+  if (priv->orientation == CTK_ORIENTATION_VERTICAL)
     clamp_dimensions (allocation, &box_min_width, &box_min_height, &border, TRUE);
   else
     clamp_dimensions (allocation, &box_min_width, &box_min_height, &border, FALSE);
@@ -2191,7 +2191,7 @@ static void
 ctk_range_size_allocate (GtkWidget     *widget,
                          GtkAllocation *allocation)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
   GtkAllocation clip;
 
@@ -2213,7 +2213,7 @@ static void
 ctk_range_realize (GtkWidget *widget)
 {
   GtkAllocation allocation;
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
   GdkWindow *window;
   GdkWindowAttr attributes;
@@ -2252,7 +2252,7 @@ ctk_range_realize (GtkWidget *widget)
 static void
 ctk_range_unrealize (GtkWidget *widget)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
 
   ctk_range_remove_step_timer (range);
@@ -2261,31 +2261,31 @@ ctk_range_unrealize (GtkWidget *widget)
   gdk_window_destroy (priv->event_window);
   priv->event_window = NULL;
 
-  GTK_WIDGET_CLASS (ctk_range_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_range_parent_class)->unrealize (widget);
 }
 
 static void
 ctk_range_map (GtkWidget *widget)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
 
   gdk_window_show (priv->event_window);
 
-  GTK_WIDGET_CLASS (ctk_range_parent_class)->map (widget);
+  CTK_WIDGET_CLASS (ctk_range_parent_class)->map (widget);
 }
 
 static void
 ctk_range_unmap (GtkWidget *widget)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
 
   stop_scrolling (range);
 
   gdk_window_hide (priv->event_window);
 
-  GTK_WIDGET_CLASS (ctk_range_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (ctk_range_parent_class)->unmap (widget);
 }
 
 static void
@@ -2294,16 +2294,16 @@ update_slider_state (GtkRange *range)
   GtkRangePrivate *priv = range->priv;
   GtkStateFlags state;
 
-  state = ctk_widget_get_state_flags (GTK_WIDGET (range));
+  state = ctk_widget_get_state_flags (CTK_WIDGET (range));
 
-  state &= ~(GTK_STATE_FLAG_PRELIGHT | GTK_STATE_FLAG_ACTIVE);
+  state &= ~(CTK_STATE_FLAG_PRELIGHT | CTK_STATE_FLAG_ACTIVE);
 
   if (priv->mouse_location == priv->slider_gadget &&
-      !(state & GTK_STATE_FLAG_INSENSITIVE))
-    state |= GTK_STATE_FLAG_PRELIGHT;
+      !(state & CTK_STATE_FLAG_INSENSITIVE))
+    state |= CTK_STATE_FLAG_PRELIGHT;
 
   if (priv->grab_location == priv->slider_gadget)
-    state |= GTK_STATE_FLAG_ACTIVE;
+    state |= CTK_STATE_FLAG_ACTIVE;
 
   ctk_css_gadget_set_state (priv->slider_gadget, state);
 }
@@ -2314,18 +2314,18 @@ update_trough_state (GtkRange *range)
   GtkRangePrivate *priv = range->priv;
   GtkStateFlags state;
 
-  state = ctk_widget_get_state_flags (GTK_WIDGET (range));
+  state = ctk_widget_get_state_flags (CTK_WIDGET (range));
 
-  state &= ~(GTK_STATE_FLAG_PRELIGHT | GTK_STATE_FLAG_ACTIVE);
+  state &= ~(CTK_STATE_FLAG_PRELIGHT | CTK_STATE_FLAG_ACTIVE);
 
   ctk_css_gadget_set_state (priv->contents_gadget, state);
 
   if (priv->mouse_location == priv->trough_gadget &&
-      !(state & GTK_STATE_FLAG_INSENSITIVE))
-    state |= GTK_STATE_FLAG_PRELIGHT;
+      !(state & CTK_STATE_FLAG_INSENSITIVE))
+    state |= CTK_STATE_FLAG_PRELIGHT;
 
   if (priv->grab_location == priv->trough_gadget)
-    state |= GTK_STATE_FLAG_ACTIVE;
+    state |= CTK_STATE_FLAG_ACTIVE;
 
   ctk_css_gadget_set_state (priv->trough_gadget, state);
   if (priv->highlight_gadget)
@@ -2338,25 +2338,25 @@ static void
 ctk_range_direction_changed (GtkWidget        *widget,
                              GtkTextDirection  previous_direction)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
 
   update_fill_position (range);
   update_highlight_position (range);
 
-  GTK_WIDGET_CLASS (ctk_range_parent_class)->direction_changed (widget, previous_direction);
+  CTK_WIDGET_CLASS (ctk_range_parent_class)->direction_changed (widget, previous_direction);
 }
 
 static void
 ctk_range_state_flags_changed (GtkWidget     *widget,
                                GtkStateFlags  previous_state)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
 
   update_trough_state (range);
   update_slider_state (range);
   update_steppers_state (range);
 
-  GTK_WIDGET_CLASS (ctk_range_parent_class)->state_flags_changed (widget, previous_state);
+  CTK_WIDGET_CLASS (ctk_range_parent_class)->state_flags_changed (widget, previous_state);
 }
 
 static gboolean
@@ -2369,14 +2369,14 @@ ctk_range_render_trough (GtkCssGadget *gadget,
                          gpointer      user_data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
 
   /* HACK: GtkColorScale wants to draw its own trough
    * so we let it...
    */
-  if (GTK_IS_COLOR_SCALE (widget))
-    ctk_color_scale_draw_trough (GTK_COLOR_SCALE (widget), cr, x, y, width, height);
+  if (CTK_IS_COLOR_SCALE (widget))
+    ctk_color_scale_draw_trough (CTK_COLOR_SCALE (widget), cr, x, y, width, height);
 
   if (priv->show_fill_level &&
       ctk_adjustment_get_upper (priv->adjustment) - ctk_adjustment_get_page_size (priv->adjustment) -
@@ -2399,7 +2399,7 @@ ctk_range_render (GtkCssGadget *gadget,
                   gpointer      user_data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
 
   ctk_css_gadget_draw (priv->contents_gadget, cr);
@@ -2414,7 +2414,7 @@ static gboolean
 ctk_range_draw (GtkWidget *widget,
                 cairo_t   *cr)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
 
   ctk_css_gadget_draw (priv->gadget, cr);
@@ -2429,7 +2429,7 @@ range_grab_add (GtkRange      *range,
   GtkRangePrivate *priv = range->priv;
   GtkStyleContext *context;
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (range));
+  context = ctk_widget_get_style_context (CTK_WIDGET (range));
 
   /* Don't perform any GDK/GTK+ grab here. Since a button
    * is down, there's an ongoing implicit grab on
@@ -2445,7 +2445,7 @@ range_grab_add (GtkRange      *range,
 
   ctk_style_context_add_class (context, "dragging");
 
-  ctk_grab_add (GTK_WIDGET (range));
+  ctk_grab_add (CTK_WIDGET (range));
 }
 
 static void
@@ -2454,7 +2454,7 @@ update_zoom_state (GtkRange *range,
 {
   GtkStyleContext *context;
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (range));
+  context = ctk_widget_get_style_context (CTK_WIDGET (range));
 
   if (enabled)
     ctk_style_context_add_class (context, "fine-tune");
@@ -2473,8 +2473,8 @@ range_grab_remove (GtkRange *range)
   if (!priv->grab_location)
     return;
 
-  ctk_grab_remove (GTK_WIDGET (range));
-  context = ctk_widget_get_style_context (GTK_WIDGET (range));
+  ctk_grab_remove (CTK_WIDGET (range));
+  context = ctk_widget_get_style_context (CTK_WIDGET (range));
 
   ctk_css_gadget_queue_allocate (priv->grab_location);
   priv->grab_location = NULL;
@@ -2496,10 +2496,10 @@ range_get_scroll_for_grab (GtkRange *range)
   gboolean invert;
 
   invert = should_invert (range);
-  grab_button = ctk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (range->priv->multipress_gesture));
+  grab_button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (range->priv->multipress_gesture));
 
   if (!priv->grab_location)
-    return GTK_SCROLL_NONE;
+    return CTK_SCROLL_NONE;
 
   /* Backward stepper */
   if (priv->grab_location == priv->stepper_a_gadget ||
@@ -2508,16 +2508,16 @@ range_get_scroll_for_grab (GtkRange *range)
       switch (grab_button)
         {
         case GDK_BUTTON_PRIMARY:
-          return invert ? GTK_SCROLL_STEP_FORWARD : GTK_SCROLL_STEP_BACKWARD;
+          return invert ? CTK_SCROLL_STEP_FORWARD : CTK_SCROLL_STEP_BACKWARD;
           break;
         case GDK_BUTTON_SECONDARY:
-          return invert ? GTK_SCROLL_PAGE_FORWARD : GTK_SCROLL_PAGE_BACKWARD;
+          return invert ? CTK_SCROLL_PAGE_FORWARD : CTK_SCROLL_PAGE_BACKWARD;
           break;
         case GDK_BUTTON_MIDDLE:
-          return invert ? GTK_SCROLL_END : GTK_SCROLL_START;
+          return invert ? CTK_SCROLL_END : CTK_SCROLL_START;
           break;
         default:
-          return GTK_SCROLL_NONE;
+          return CTK_SCROLL_NONE;
         }
     }
 
@@ -2528,16 +2528,16 @@ range_get_scroll_for_grab (GtkRange *range)
       switch (grab_button)
         {
         case GDK_BUTTON_PRIMARY:
-          return invert ? GTK_SCROLL_STEP_BACKWARD : GTK_SCROLL_STEP_FORWARD;
+          return invert ? CTK_SCROLL_STEP_BACKWARD : CTK_SCROLL_STEP_FORWARD;
           break;
         case GDK_BUTTON_SECONDARY:
-          return invert ? GTK_SCROLL_PAGE_BACKWARD : GTK_SCROLL_PAGE_FORWARD;
+          return invert ? CTK_SCROLL_PAGE_BACKWARD : CTK_SCROLL_PAGE_FORWARD;
           break;
         case GDK_BUTTON_MIDDLE:
-          return invert ? GTK_SCROLL_START : GTK_SCROLL_END;
+          return invert ? CTK_SCROLL_START : CTK_SCROLL_END;
           break;
         default:
-          return GTK_SCROLL_NONE;
+          return CTK_SCROLL_NONE;
         }
     }
 
@@ -2545,12 +2545,12 @@ range_get_scroll_for_grab (GtkRange *range)
   if (priv->grab_location == priv->trough_gadget)
     {
       if (priv->trough_click_forward)
-        return GTK_SCROLL_PAGE_FORWARD;
+        return CTK_SCROLL_PAGE_FORWARD;
       else
-        return GTK_SCROLL_PAGE_BACKWARD;
+        return CTK_SCROLL_PAGE_BACKWARD;
     }
 
-  return GTK_SCROLL_NONE;
+  return CTK_SCROLL_NONE;
 }
 
 static gdouble
@@ -2568,7 +2568,7 @@ coord_to_value (GtkRange *range,
   ctk_css_gadget_get_margin_box (priv->slider_gadget, &slider_alloc);
   ctk_css_gadget_get_content_box (priv->trough_gadget, &trough_alloc);
 
-  if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+  if (priv->orientation == CTK_ORIENTATION_VERTICAL)
     {
       trough_length = trough_alloc.height;
       trough_start  = trough_alloc.y;
@@ -2601,7 +2601,7 @@ ctk_range_key_press (GtkWidget   *widget,
 		     GdkEventKey *event)
 {
   GdkDevice *device;
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
 
   device = gdk_event_get_device ((GdkEvent *) event);
@@ -2624,7 +2624,7 @@ ctk_range_key_press (GtkWidget   *widget,
 
       ctk_css_gadget_get_margin_box (priv->slider_gadget, &slider_alloc);
 
-      if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+      if (priv->orientation == CTK_ORIENTATION_VERTICAL)
         priv->slide_initial_slider_position = slider_alloc.y;
       else
         priv->slide_initial_slider_position = slider_alloc.x;
@@ -2633,7 +2633,7 @@ ctk_range_key_press (GtkWidget   *widget,
       return GDK_EVENT_STOP;
     }
 
-  return GTK_WIDGET_CLASS (ctk_range_parent_class)->key_press_event (widget, event);
+  return CTK_WIDGET_CLASS (ctk_range_parent_class)->key_press_event (widget, event);
 }
 
 static void
@@ -2644,7 +2644,7 @@ update_initial_slider_position (GtkRange      *range,
 {
   GtkRangePrivate *priv = range->priv;
 
-  if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+  if (priv->orientation == CTK_ORIENTATION_VERTICAL)
     {
       priv->slide_initial_slider_position = MAX (0, slider_alloc->y);
       priv->slide_initial_coordinate_delta = y - priv->slide_initial_slider_position;
@@ -2683,7 +2683,7 @@ ctk_range_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
                                       gdouble               y,
                                       GtkRange             *range)
 {
-  GtkWidget *widget = GTK_WIDGET (range);
+  GtkWidget *widget = CTK_WIDGET (range);
   GtkRangePrivate *priv = range->priv;
   GdkDevice *source_device;
   GdkEventSequence *sequence;
@@ -2698,9 +2698,9 @@ ctk_range_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
   if (!ctk_widget_has_focus (widget))
     ctk_widget_grab_focus (widget);
 
-  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
-  button = ctk_gesture_single_get_current_button (GTK_GESTURE_SINGLE (gesture));
-  event = ctk_gesture_get_last_event (GTK_GESTURE (gesture), sequence);
+  sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
+  button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (gesture));
+  event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
   gdk_event_get_state (event, &state_mask);
   shift_pressed = (state_mask & GDK_SHIFT_MASK) != 0;
 
@@ -2722,7 +2722,7 @@ ctk_range_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
     {
       gboolean handled;
 
-      ctk_gesture_set_state (priv->multipress_gesture, GTK_EVENT_SEQUENCE_CLAIMED);
+      ctk_gesture_set_state (priv->multipress_gesture, CTK_EVENT_SEQUENCE_CLAIMED);
       g_signal_emit_by_name (widget, "popup-menu", &handled);
       return;
     }
@@ -2748,9 +2748,9 @@ ctk_range_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
       range_grab_add (range, priv->mouse_location);
 
       scroll = range_get_scroll_for_grab (range);
-      if (scroll == GTK_SCROLL_START || scroll == GTK_SCROLL_END)
+      if (scroll == CTK_SCROLL_START || scroll == CTK_SCROLL_END)
         ctk_range_scroll (range, scroll);
-      else if (scroll != GTK_SCROLL_NONE)
+      else if (scroll != CTK_SCROLL_NONE)
         {
           remove_autoscroll (range);
           range->priv->autoscroll_mode = scroll;
@@ -2769,11 +2769,11 @@ ctk_range_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
 
       slider_high_value =
         coord_to_value (range,
-                        priv->orientation == GTK_ORIENTATION_VERTICAL ?
+                        priv->orientation == CTK_ORIENTATION_VERTICAL ?
                         y : x);
       slider_low_value =
         coord_to_value (range,
-                        priv->orientation == GTK_ORIENTATION_VERTICAL ?
+                        priv->orientation == CTK_ORIENTATION_VERTICAL ?
                         y - slider_alloc.height :
                         x - slider_alloc.width);
 
@@ -2799,7 +2799,7 @@ ctk_range_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
       gdouble click_value;
 
       click_value = coord_to_value (range,
-                                    priv->orientation == GTK_ORIENTATION_VERTICAL ?
+                                    priv->orientation == CTK_ORIENTATION_VERTICAL ?
                                     y : x);
 
       priv->trough_click_forward = click_value > ctk_adjustment_get_value (priv->adjustment);
@@ -2815,21 +2815,21 @@ ctk_range_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
       gdouble click_value;
 
       click_value = coord_to_value (range,
-                                    priv->orientation == GTK_ORIENTATION_VERTICAL ?
+                                    priv->orientation == CTK_ORIENTATION_VERTICAL ?
                                     y : x);
 
       priv->trough_click_forward = click_value > ctk_adjustment_get_value (priv->adjustment);
       range_grab_add (range, priv->trough_gadget);
 
       remove_autoscroll (range);
-      range->priv->autoscroll_mode = priv->trough_click_forward ? GTK_SCROLL_END : GTK_SCROLL_START;
+      range->priv->autoscroll_mode = priv->trough_click_forward ? CTK_SCROLL_END : CTK_SCROLL_START;
       add_autoscroll (range);
     }
 
   if (priv->grab_location == priv->slider_gadget);
     /* leave it to ::drag-begin to claim the sequence */
   else if (priv->grab_location != NULL)
-    ctk_gesture_set_state (priv->multipress_gesture, GTK_EVENT_SEQUENCE_CLAIMED);
+    ctk_gesture_set_state (priv->multipress_gesture, CTK_EVENT_SEQUENCE_CLAIMED);
 }
 
 static void
@@ -2870,7 +2870,7 @@ update_slider_position (GtkRange *range,
 
       ctk_css_gadget_get_margin_box (priv->trough_gadget, &trough_alloc);
 
-      zoom = MIN(1.0, (priv->orientation == GTK_ORIENTATION_VERTICAL ?
+      zoom = MIN(1.0, (priv->orientation == CTK_ORIENTATION_VERTICAL ?
                        trough_alloc.height : trough_alloc.width) /
                        (ctk_adjustment_get_upper (priv->adjustment) -
                         ctk_adjustment_get_lower (priv->adjustment) -
@@ -2889,13 +2889,13 @@ update_slider_position (GtkRange *range,
 
       ctk_css_gadget_get_margin_box (priv->slider_gadget, &slider_alloc);
 
-      if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+      if (priv->orientation == CTK_ORIENTATION_VERTICAL)
         priv->slide_initial_slider_position = (zoom * (mouse_y - priv->slide_initial_coordinate_delta) - slider_alloc.y) / (zoom - 1.0);
       else
         priv->slide_initial_slider_position = (zoom * (mouse_x - priv->slide_initial_coordinate_delta) - slider_alloc.x) / (zoom - 1.0);
     }
 
-  if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+  if (priv->orientation == CTK_ORIENTATION_VERTICAL)
     delta = mouse_y - (priv->slide_initial_coordinate_delta + priv->slide_initial_slider_position);
   else
     delta = mouse_x - (priv->slide_initial_coordinate_delta + priv->slide_initial_slider_position);
@@ -2920,7 +2920,7 @@ update_slider_position (GtkRange *range,
         }
     }
 
-  g_signal_emit (range, signals[CHANGE_VALUE], 0, GTK_SCROLL_JUMP, new_value, &handled);
+  g_signal_emit (range, signals[CHANGE_VALUE], 0, CTK_SCROLL_JUMP, new_value, &handled);
 }
 
 static void
@@ -2928,7 +2928,7 @@ remove_autoscroll (GtkRange *range)
 {
   if (range->priv->autoscroll_id)
     {
-      ctk_widget_remove_tick_callback (GTK_WIDGET (range),
+      ctk_widget_remove_tick_callback (CTK_WIDGET (range),
                                        range->priv->autoscroll_id);
       range->priv->autoscroll_id = 0;
     }
@@ -2936,7 +2936,7 @@ remove_autoscroll (GtkRange *range)
   /* unset initial position so it can be calculated */
   range->priv->slide_initial_slider_position = -1;
 
-  range->priv->autoscroll_mode = GTK_SCROLL_NONE;
+  range->priv->autoscroll_mode = CTK_SCROLL_NONE;
 }
 
 static gboolean
@@ -2944,7 +2944,7 @@ autoscroll_cb (GtkWidget     *widget,
                GdkFrameClock *frame_clock,
                gpointer       data)
 {
-  GtkRange *range = GTK_RANGE (data);
+  GtkRange *range = CTK_RANGE (data);
   GtkRangePrivate *priv = range->priv;
   GtkAdjustment *adj = priv->adjustment;
   gdouble increment;
@@ -2957,20 +2957,20 @@ autoscroll_cb (GtkWidget     *widget,
 
   switch (priv->autoscroll_mode)
     {
-    case GTK_SCROLL_STEP_FORWARD:
+    case CTK_SCROLL_STEP_FORWARD:
       increment = step / AUTOSCROLL_FACTOR;
       break;
-    case GTK_SCROLL_PAGE_FORWARD:
+    case CTK_SCROLL_PAGE_FORWARD:
       increment = page / AUTOSCROLL_FACTOR;
       break;
-    case GTK_SCROLL_STEP_BACKWARD:
+    case CTK_SCROLL_STEP_BACKWARD:
       increment = - step / AUTOSCROLL_FACTOR;
       break;
-    case GTK_SCROLL_PAGE_BACKWARD:
+    case CTK_SCROLL_PAGE_BACKWARD:
       increment = - page / AUTOSCROLL_FACTOR;
       break;
-    case GTK_SCROLL_START:
-    case GTK_SCROLL_END:
+    case CTK_SCROLL_START:
+    case CTK_SCROLL_END:
       {
         gdouble x, y;
         gdouble distance, t;
@@ -2980,19 +2980,19 @@ autoscroll_cb (GtkWidget     *widget,
          * speeding up if the pointer moves at least 20 pixels away, and
          * we reach maximum speed when it is 220 pixels away.
          */
-        if (!ctk_gesture_drag_get_offset (GTK_GESTURE_DRAG (priv->drag_gesture), &x, &y))
+        if (!ctk_gesture_drag_get_offset (CTK_GESTURE_DRAG (priv->drag_gesture), &x, &y))
           {
             x = 0.0;
             y = 0.0;
           }
-        if (ctk_orientable_get_orientation (GTK_ORIENTABLE (range)) == GTK_ORIENTATION_HORIZONTAL)
+        if (ctk_orientable_get_orientation (CTK_ORIENTABLE (range)) == CTK_ORIENTATION_HORIZONTAL)
           distance = fabs (y);
         else
           distance = fabs (x);
         distance = CLAMP (distance - 20, 0.0, 200);
         t = distance / 100.0;
         step = (1 - t) * step + t * page;
-        if (priv->autoscroll_mode == GTK_SCROLL_END)
+        if (priv->autoscroll_mode == CTK_SCROLL_END)
           increment = step / AUTOSCROLL_FACTOR;
         else
           increment = - step / AUTOSCROLL_FACTOR;
@@ -3006,7 +3006,7 @@ autoscroll_cb (GtkWidget     *widget,
   value = ctk_adjustment_get_value (adj);
   value += increment;
 
-  g_signal_emit (range, signals[CHANGE_VALUE], 0, GTK_SCROLL_JUMP, value, &handled);
+  g_signal_emit (range, signals[CHANGE_VALUE], 0, CTK_SCROLL_JUMP, value, &handled);
 
   return G_SOURCE_CONTINUE;
 }
@@ -3017,10 +3017,10 @@ add_autoscroll (GtkRange *range)
   GtkRangePrivate *priv = range->priv;
 
   if (priv->autoscroll_id != 0 ||
-      priv->autoscroll_mode == GTK_SCROLL_NONE)
+      priv->autoscroll_mode == CTK_SCROLL_NONE)
     return;
 
-  priv->autoscroll_id = ctk_widget_add_tick_callback (GTK_WIDGET (range),
+  priv->autoscroll_id = ctk_widget_add_tick_callback (CTK_WIDGET (range),
                                                       autoscroll_cb, range, NULL);
 }
 
@@ -3060,7 +3060,7 @@ _ctk_range_get_wheel_delta (GtkRange       *range,
   page_size = ctk_adjustment_get_page_size (adjustment);
   page_increment = ctk_adjustment_get_page_increment (adjustment);
 
-  if (GTK_IS_SCROLLBAR (range))
+  if (CTK_IS_SCROLLBAR (range))
     {
       gdouble pow_unit = pow (page_size, 2.0 / 3.0);
 
@@ -3081,23 +3081,23 @@ _ctk_range_get_wheel_delta (GtkRange       *range,
       scroll_unit = 1;
 #endif
 
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL && dx != 0)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL && dx != 0)
         {
-          move_orientation = GTK_ORIENTATION_HORIZONTAL;
+          move_orientation = CTK_ORIENTATION_HORIZONTAL;
           delta = dx * scroll_unit;
         }
       else
         {
-          move_orientation = GTK_ORIENTATION_VERTICAL;
+          move_orientation = CTK_ORIENTATION_VERTICAL;
           delta = dy * scroll_unit;
         }
     }
   else if (gdk_event_get_scroll_direction ((GdkEvent *) event, &direction))
     {
       if (direction == GDK_SCROLL_LEFT || direction == GDK_SCROLL_RIGHT)
-        move_orientation = GTK_ORIENTATION_HORIZONTAL;
+        move_orientation = CTK_ORIENTATION_HORIZONTAL;
       else
-        move_orientation = GTK_ORIENTATION_VERTICAL;
+        move_orientation = CTK_ORIENTATION_VERTICAL;
 
       if (direction == GDK_SCROLL_LEFT || direction == GDK_SCROLL_UP)
         delta = - scroll_unit;
@@ -3115,13 +3115,13 @@ static gboolean
 ctk_range_scroll_event (GtkWidget      *widget,
 			GdkEventScroll *event)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
   double delta = _ctk_range_get_wheel_delta (range, event);
   gboolean handled;
 
   g_signal_emit (range, signals[CHANGE_VALUE], 0,
-                 GTK_SCROLL_JUMP, ctk_adjustment_get_value (priv->adjustment) + delta,
+                 CTK_SCROLL_JUMP, ctk_adjustment_get_value (priv->adjustment) + delta,
                  &handled);
 
   return GDK_EVENT_STOP;
@@ -3130,16 +3130,16 @@ ctk_range_scroll_event (GtkWidget      *widget,
 static void
 update_autoscroll_mode (GtkRange *range)
 {
-  GtkScrollType mode = GTK_SCROLL_NONE;
+  GtkScrollType mode = CTK_SCROLL_NONE;
 
   if (range->priv->zoom)
     {
       GtkAllocation allocation;
       gint size, pos;
 
-      ctk_widget_get_allocation (GTK_WIDGET (range), &allocation);
+      ctk_widget_get_allocation (CTK_WIDGET (range), &allocation);
 
-      if (range->priv->orientation == GTK_ORIENTATION_VERTICAL)
+      if (range->priv->orientation == CTK_ORIENTATION_VERTICAL)
         {
           size = allocation.height;
           pos = range->priv->mouse_y;
@@ -3151,9 +3151,9 @@ update_autoscroll_mode (GtkRange *range)
         }
 
       if (pos < SCROLL_EDGE_SIZE)
-        mode = range->priv->inverted ? GTK_SCROLL_STEP_FORWARD : GTK_SCROLL_STEP_BACKWARD;
+        mode = range->priv->inverted ? CTK_SCROLL_STEP_FORWARD : CTK_SCROLL_STEP_BACKWARD;
       else if (pos > (size - SCROLL_EDGE_SIZE))
-        mode = range->priv->inverted ? GTK_SCROLL_STEP_BACKWARD : GTK_SCROLL_STEP_FORWARD;
+        mode = range->priv->inverted ? CTK_SCROLL_STEP_BACKWARD : CTK_SCROLL_STEP_FORWARD;
     }
 
   if (mode != range->priv->autoscroll_mode)
@@ -3181,7 +3181,7 @@ ctk_range_drag_gesture_update (GtkGestureDrag *gesture,
       priv->in_drag = TRUE;
       update_autoscroll_mode (range);
 
-      if (priv->autoscroll_mode == GTK_SCROLL_NONE)
+      if (priv->autoscroll_mode == CTK_SCROLL_NONE)
         update_slider_position (range, priv->mouse_x, priv->mouse_y);
     }
 }
@@ -3195,14 +3195,14 @@ ctk_range_drag_gesture_begin (GtkGestureDrag *gesture,
   GtkRangePrivate *priv = range->priv;
 
   if (priv->grab_location == priv->slider_gadget)
-    ctk_gesture_set_state (priv->drag_gesture, GTK_EVENT_SEQUENCE_CLAIMED);
+    ctk_gesture_set_state (priv->drag_gesture, CTK_EVENT_SEQUENCE_CLAIMED);
 }
 
 static gboolean
 ctk_range_event (GtkWidget *widget,
                  GdkEvent  *event)
 {
-  GtkRange *range = GTK_RANGE (widget);
+  GtkRange *range = CTK_RANGE (widget);
   GtkRangePrivate *priv = range->priv;
   gdouble x, y;
 
@@ -3226,7 +3226,7 @@ static void
 ctk_range_adjustment_changed (GtkAdjustment *adjustment,
 			      gpointer       data)
 {
-  GtkRange *range = GTK_RANGE (data);
+  GtkRange *range = CTK_RANGE (data);
 
   ctk_range_calc_slider (range);
   ctk_range_calc_stepper_sensitivity (range);
@@ -3244,15 +3244,15 @@ static void
 ctk_range_adjustment_value_changed (GtkAdjustment *adjustment,
 				    gpointer       data)
 {
-  GtkRange *range = GTK_RANGE (data);
+  GtkRange *range = CTK_RANGE (data);
 
   ctk_range_calc_slider (range);
   ctk_range_calc_stepper_sensitivity (range);
   
   /* now check whether the layout changed  */
-  if (GTK_IS_SCALE (range) && ctk_scale_get_draw_value (GTK_SCALE (range)))
+  if (CTK_IS_SCALE (range) && ctk_scale_get_draw_value (CTK_SCALE (range)))
     {
-      ctk_widget_queue_draw (GTK_WIDGET (range));
+      ctk_widget_queue_draw (CTK_WIDGET (range));
     }
 
   /* Note that we don't round off to priv->round_digits here.
@@ -3297,7 +3297,7 @@ step_back (GtkRange *range)
   newval = ctk_adjustment_get_value (priv->adjustment) - ctk_adjustment_get_step_increment (priv->adjustment);
   apply_marks (range, ctk_adjustment_get_value (priv->adjustment), &newval);
   g_signal_emit (range, signals[CHANGE_VALUE], 0,
-                 GTK_SCROLL_STEP_BACKWARD, newval, &handled);
+                 CTK_SCROLL_STEP_BACKWARD, newval, &handled);
 }
 
 static void
@@ -3310,7 +3310,7 @@ step_forward (GtkRange *range)
   newval = ctk_adjustment_get_value (priv->adjustment) + ctk_adjustment_get_step_increment (priv->adjustment);
   apply_marks (range, ctk_adjustment_get_value (priv->adjustment), &newval);
   g_signal_emit (range, signals[CHANGE_VALUE], 0,
-                 GTK_SCROLL_STEP_FORWARD, newval, &handled);
+                 CTK_SCROLL_STEP_FORWARD, newval, &handled);
 }
 
 
@@ -3324,7 +3324,7 @@ page_back (GtkRange *range)
   newval = ctk_adjustment_get_value (priv->adjustment) - ctk_adjustment_get_page_increment (priv->adjustment);
   apply_marks (range, ctk_adjustment_get_value (priv->adjustment), &newval);
   g_signal_emit (range, signals[CHANGE_VALUE], 0,
-                 GTK_SCROLL_PAGE_BACKWARD, newval, &handled);
+                 CTK_SCROLL_PAGE_BACKWARD, newval, &handled);
 }
 
 static void
@@ -3337,7 +3337,7 @@ page_forward (GtkRange *range)
   newval = ctk_adjustment_get_value (priv->adjustment) + ctk_adjustment_get_page_increment (priv->adjustment);
   apply_marks (range, ctk_adjustment_get_value (priv->adjustment), &newval);
   g_signal_emit (range, signals[CHANGE_VALUE], 0,
-                 GTK_SCROLL_PAGE_FORWARD, newval, &handled);
+                 CTK_SCROLL_PAGE_FORWARD, newval, &handled);
 }
 
 static void
@@ -3347,7 +3347,7 @@ scroll_begin (GtkRange *range)
   gboolean handled;
 
   g_signal_emit (range, signals[CHANGE_VALUE], 0,
-                 GTK_SCROLL_START, ctk_adjustment_get_lower (priv->adjustment),
+                 CTK_SCROLL_START, ctk_adjustment_get_lower (priv->adjustment),
                  &handled);
 }
 
@@ -3359,7 +3359,7 @@ scroll_end (GtkRange *range)
   gboolean handled;
 
   newval = ctk_adjustment_get_upper (priv->adjustment) - ctk_adjustment_get_page_size (priv->adjustment);
-  g_signal_emit (range, signals[CHANGE_VALUE], 0, GTK_SCROLL_END, newval,
+  g_signal_emit (range, signals[CHANGE_VALUE], 0, CTK_SCROLL_END, newval,
                  &handled);
 }
 
@@ -3372,91 +3372,91 @@ ctk_range_scroll (GtkRange     *range,
 
   switch (scroll)
     {
-    case GTK_SCROLL_STEP_LEFT:
+    case CTK_SCROLL_STEP_LEFT:
       if (should_invert (range))
         step_forward (range);
       else
         step_back (range);
       break;
                     
-    case GTK_SCROLL_STEP_UP:
+    case CTK_SCROLL_STEP_UP:
       if (should_invert (range))
         step_forward (range);
       else
         step_back (range);
       break;
 
-    case GTK_SCROLL_STEP_RIGHT:
+    case CTK_SCROLL_STEP_RIGHT:
       if (should_invert (range))
         step_back (range);
       else
         step_forward (range);
       break;
                     
-    case GTK_SCROLL_STEP_DOWN:
+    case CTK_SCROLL_STEP_DOWN:
       if (should_invert (range))
         step_back (range);
       else
         step_forward (range);
       break;
                   
-    case GTK_SCROLL_STEP_BACKWARD:
+    case CTK_SCROLL_STEP_BACKWARD:
       step_back (range);
       break;
                   
-    case GTK_SCROLL_STEP_FORWARD:
+    case CTK_SCROLL_STEP_FORWARD:
       step_forward (range);
       break;
 
-    case GTK_SCROLL_PAGE_LEFT:
+    case CTK_SCROLL_PAGE_LEFT:
       if (should_invert (range))
         page_forward (range);
       else
         page_back (range);
       break;
                     
-    case GTK_SCROLL_PAGE_UP:
+    case CTK_SCROLL_PAGE_UP:
       if (should_invert (range))
         page_forward (range);
       else
         page_back (range);
       break;
 
-    case GTK_SCROLL_PAGE_RIGHT:
+    case CTK_SCROLL_PAGE_RIGHT:
       if (should_invert (range))
         page_back (range);
       else
         page_forward (range);
       break;
                     
-    case GTK_SCROLL_PAGE_DOWN:
+    case CTK_SCROLL_PAGE_DOWN:
       if (should_invert (range))
         page_back (range);
       else
         page_forward (range);
       break;
                   
-    case GTK_SCROLL_PAGE_BACKWARD:
+    case CTK_SCROLL_PAGE_BACKWARD:
       page_back (range);
       break;
                   
-    case GTK_SCROLL_PAGE_FORWARD:
+    case CTK_SCROLL_PAGE_FORWARD:
       page_forward (range);
       break;
 
-    case GTK_SCROLL_START:
+    case CTK_SCROLL_START:
       scroll_begin (range);
       break;
 
-    case GTK_SCROLL_END:
+    case CTK_SCROLL_END:
       scroll_end (range);
       break;
 
-    case GTK_SCROLL_JUMP:
+    case CTK_SCROLL_JUMP:
       /* Used by CList, range doesn't use it. */
       break;
 
-    case GTK_SCROLL_NONE:
+    case CTK_SCROLL_NONE:
       break;
     }
 
@@ -3468,7 +3468,7 @@ ctk_range_move_slider (GtkRange     *range,
                        GtkScrollType scroll)
 {
   if (! ctk_range_scroll (range, scroll))
-    ctk_widget_error_bell (GTK_WIDGET (range));
+    ctk_widget_error_bell (CTK_WIDGET (range));
 }
 
 static gboolean
@@ -3487,7 +3487,7 @@ ctk_range_update_mouse_location (GtkRange *range)
   GtkRangePrivate *priv = range->priv;
   gint x, y;
   GtkCssGadget *old_location;
-  GtkWidget *widget = GTK_WIDGET (range);
+  GtkWidget *widget = CTK_WIDGET (range);
   GdkRectangle trough_alloc, slider_alloc, slider_trace;
 
   old_location = priv->mouse_location;
@@ -3529,12 +3529,12 @@ ctk_range_update_mouse_location (GtkRange *range)
 
       if (priv->mouse_location != NULL)
         {
-          ctk_widget_set_state_flags (widget, GTK_STATE_FLAG_PRELIGHT, FALSE);
+          ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_PRELIGHT, FALSE);
           ctk_css_gadget_queue_allocate (priv->mouse_location);
         }
       else
         {
-          ctk_widget_unset_state_flags (widget, GTK_STATE_FLAG_PRELIGHT);
+          ctk_widget_unset_state_flags (widget, CTK_STATE_FLAG_PRELIGHT);
         }
 
       update_trough_state (range);
@@ -3557,7 +3557,7 @@ ctk_range_compute_slider_position (GtkRange     *range,
 
   min_slider_size = priv->min_slider_size;
 
-  if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+  if (priv->orientation == CTK_ORIENTATION_VERTICAL)
     {
       gint y, bottom, top, height;
         
@@ -3575,7 +3575,7 @@ ctk_range_compute_slider_position (GtkRange     *range,
       bottom = top + trough_content_alloc.height;
 
       /* Scale slider half extends over the trough edge */
-      if (GTK_IS_SCALE (range))
+      if (CTK_IS_SCALE (range))
         {
           top -= min_slider_size / 2;
           bottom += min_slider_size / 2;
@@ -3629,7 +3629,7 @@ ctk_range_compute_slider_position (GtkRange     *range,
       right = left + trough_content_alloc.width;
 
       /* Scale slider half extends over the trough edge */
-      if (GTK_IS_SCALE (range))
+      if (CTK_IS_SCALE (range))
         {
           left -= min_slider_size / 2;
           right += min_slider_size / 2;
@@ -3673,7 +3673,7 @@ ctk_range_calc_slider (GtkRange *range)
   GtkRangePrivate *priv = range->priv;
   gboolean visible;
 
-  if (GTK_IS_SCALE (range) &&
+  if (CTK_IS_SCALE (range) &&
       ctk_adjustment_get_upper (priv->adjustment) == ctk_adjustment_get_lower (priv->adjustment))
     visible = FALSE;
   else
@@ -3698,17 +3698,17 @@ ctk_range_calc_stepper_sensitivity (GtkRange *range)
   was_upper_sensitive = priv->upper_sensitive;
   switch (priv->upper_sensitivity)
     {
-    case GTK_SENSITIVITY_AUTO:
+    case CTK_SENSITIVITY_AUTO:
       priv->upper_sensitive =
         (ctk_adjustment_get_value (priv->adjustment) <
          (ctk_adjustment_get_upper (priv->adjustment) - ctk_adjustment_get_page_size (priv->adjustment)));
       break;
 
-    case GTK_SENSITIVITY_ON:
+    case CTK_SENSITIVITY_ON:
       priv->upper_sensitive = TRUE;
       break;
 
-    case GTK_SENSITIVITY_OFF:
+    case CTK_SENSITIVITY_OFF:
       priv->upper_sensitive = FALSE;
       break;
     }
@@ -3716,16 +3716,16 @@ ctk_range_calc_stepper_sensitivity (GtkRange *range)
   was_lower_sensitive = priv->lower_sensitive;
   switch (priv->lower_sensitivity)
     {
-    case GTK_SENSITIVITY_AUTO:
+    case CTK_SENSITIVITY_AUTO:
       priv->lower_sensitive =
         (ctk_adjustment_get_value (priv->adjustment) > ctk_adjustment_get_lower (priv->adjustment));
       break;
 
-    case GTK_SENSITIVITY_ON:
+    case CTK_SENSITIVITY_ON:
       priv->lower_sensitive = TRUE;
       break;
 
-    case GTK_SENSITIVITY_OFF:
+    case CTK_SENSITIVITY_OFF:
       priv->lower_sensitive = FALSE;
       break;
     }
@@ -3760,7 +3760,7 @@ ctk_range_calc_marks (GtkRange *range)
     {
       ctk_range_compute_slider_position (range, priv->marks[i], &slider);
 
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         priv->mark_pos[i] = slider.x + slider.width / 2;
       else
         priv->mark_pos[i] = slider.y + slider.height / 2;
@@ -3814,7 +3814,7 @@ struct _GtkRangeStepTimer
 static gboolean
 second_timeout (gpointer data)
 {
-  GtkRange *range = GTK_RANGE (data);
+  GtkRange *range = CTK_RANGE (data);
   GtkRangePrivate *priv = range->priv;
 
   ctk_range_scroll (range, priv->timer->step);
@@ -3825,7 +3825,7 @@ second_timeout (gpointer data)
 static gboolean
 initial_timeout (gpointer data)
 {
-  GtkRange *range = GTK_RANGE (data);
+  GtkRange *range = CTK_RANGE (data);
   GtkRangePrivate *priv = range->priv;
 
   priv->timer->timeout_id = gdk_threads_add_timeout (TIMEOUT_REPEAT,
@@ -3842,7 +3842,7 @@ ctk_range_add_step_timer (GtkRange      *range,
   GtkRangePrivate *priv = range->priv;
 
   g_return_if_fail (priv->timer == NULL);
-  g_return_if_fail (step != GTK_SCROLL_NONE);
+  g_return_if_fail (step != CTK_SCROLL_NONE);
 
   priv->timer = g_new (GtkRangeStepTimer, 1);
 
@@ -3882,7 +3882,7 @@ _ctk_range_set_has_origin (GtkRange *range,
   if (has_origin)
     {
       priv->highlight_gadget = ctk_css_custom_gadget_new ("highlight",
-                                                          GTK_WIDGET (range),
+                                                          CTK_WIDGET (range),
                                                           priv->trough_gadget, NULL,
                                                           NULL, NULL, NULL,
                                                           NULL, NULL);
@@ -3954,7 +3954,7 @@ void
 ctk_range_set_round_digits (GtkRange *range,
                             gint      round_digits)
 {
-  g_return_if_fail (GTK_IS_RANGE (range));
+  g_return_if_fail (CTK_IS_RANGE (range));
   g_return_if_fail (round_digits >= -1);
 
   if (range->priv->round_digits != round_digits)
@@ -3978,7 +3978,7 @@ ctk_range_set_round_digits (GtkRange *range,
 gint
 ctk_range_get_round_digits (GtkRange *range)
 {
-  g_return_val_if_fail (GTK_IS_RANGE (range), -1);
+  g_return_val_if_fail (CTK_IS_RANGE (range), -1);
 
   return range->priv->round_digits;
 }
@@ -4010,23 +4010,23 @@ sync_stepper_gadget (GtkRange                *range,
           if (*gadget_ptr == priv->mouse_location)
             priv->mouse_location = NULL;
           ctk_css_node_set_parent (ctk_css_gadget_get_node (*gadget_ptr), NULL);
-          ctk_box_gadget_remove_gadget (GTK_BOX_GADGET (priv->contents_gadget), *gadget_ptr);
+          ctk_box_gadget_remove_gadget (CTK_BOX_GADGET (priv->contents_gadget), *gadget_ptr);
         }
       g_clear_object (gadget_ptr);
       return;
     }
 
-  widget = GTK_WIDGET (range);
+  widget = CTK_WIDGET (range);
   widget_node = ctk_widget_get_css_node (widget);
   gadget = ctk_builtin_icon_new ("button",
                                  widget,
                                  NULL, NULL);
-  ctk_builtin_icon_set_image (GTK_BUILTIN_ICON (gadget), image_type);
+  ctk_builtin_icon_set_image (CTK_BUILTIN_ICON (gadget), image_type);
   ctk_css_gadget_add_class (gadget, class);
   ctk_css_gadget_set_state (gadget, ctk_css_node_get_state (widget_node));
 
-  ctk_box_gadget_insert_gadget_after (GTK_BOX_GADGET (priv->contents_gadget), prev_sibling,
-                                      gadget, FALSE, GTK_ALIGN_FILL);
+  ctk_box_gadget_insert_gadget_after (CTK_BOX_GADGET (priv->contents_gadget), prev_sibling,
+                                      gadget, FALSE, CTK_ALIGN_FILL);
   *gadget_ptr = gadget;
 }
 
@@ -4042,32 +4042,32 @@ _ctk_range_set_steppers (GtkRange *range,
   sync_stepper_gadget (range,
                        has_a, &priv->stepper_a_gadget,
                        "up",
-                       priv->orientation == GTK_ORIENTATION_VERTICAL ?
-                       GTK_CSS_IMAGE_BUILTIN_ARROW_UP : GTK_CSS_IMAGE_BUILTIN_ARROW_LEFT,
+                       priv->orientation == CTK_ORIENTATION_VERTICAL ?
+                       CTK_CSS_IMAGE_BUILTIN_ARROW_UP : CTK_CSS_IMAGE_BUILTIN_ARROW_LEFT,
                        NULL);
 
   sync_stepper_gadget (range,
                        has_b, &priv->stepper_b_gadget,
                        "down",
-                       priv->orientation == GTK_ORIENTATION_VERTICAL ?
-                       GTK_CSS_IMAGE_BUILTIN_ARROW_DOWN : GTK_CSS_IMAGE_BUILTIN_ARROW_RIGHT,
+                       priv->orientation == CTK_ORIENTATION_VERTICAL ?
+                       CTK_CSS_IMAGE_BUILTIN_ARROW_DOWN : CTK_CSS_IMAGE_BUILTIN_ARROW_RIGHT,
                        priv->stepper_a_gadget);
 
   sync_stepper_gadget (range,
                        has_c, &priv->stepper_c_gadget,
                        "up",
-                       priv->orientation == GTK_ORIENTATION_VERTICAL ?
-                       GTK_CSS_IMAGE_BUILTIN_ARROW_UP : GTK_CSS_IMAGE_BUILTIN_ARROW_LEFT,
+                       priv->orientation == CTK_ORIENTATION_VERTICAL ?
+                       CTK_CSS_IMAGE_BUILTIN_ARROW_UP : CTK_CSS_IMAGE_BUILTIN_ARROW_LEFT,
                        priv->trough_gadget);
 
   sync_stepper_gadget (range,
                        has_d, &priv->stepper_d_gadget,
                        "down",
-                       priv->orientation == GTK_ORIENTATION_VERTICAL ?
-                       GTK_CSS_IMAGE_BUILTIN_ARROW_DOWN : GTK_CSS_IMAGE_BUILTIN_ARROW_RIGHT,
+                       priv->orientation == CTK_ORIENTATION_VERTICAL ?
+                       CTK_CSS_IMAGE_BUILTIN_ARROW_DOWN : CTK_CSS_IMAGE_BUILTIN_ARROW_RIGHT,
                        priv->stepper_c_gadget ? priv->stepper_c_gadget : priv->trough_gadget);
 
-  ctk_widget_queue_resize (GTK_WIDGET (range));
+  ctk_widget_queue_resize (CTK_WIDGET (range));
 }
 
 GtkCssGadget *

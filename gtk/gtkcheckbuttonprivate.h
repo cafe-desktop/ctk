@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_CHECK_BUTTON_PRIVATE_H__
-#define __GTK_CHECK_BUTTON_PRIVATE_H__
+#ifndef __CTK_CHECK_BUTTON_PRIVATE_H__
+#define __CTK_CHECK_BUTTON_PRIVATE_H__
 
 
 #include "gtkcheckbutton.h"
@@ -37,4 +37,4 @@ GtkCssNode *ctk_check_button_get_indicator_node (GtkCheckButton *check_button);
 G_END_DECLS
 
 
-#endif /* __GTK_CHECK_BUTTON_PRIVATE_H__ */
+#endif /* __CTK_CHECK_BUTTON_PRIVATE_H__ */

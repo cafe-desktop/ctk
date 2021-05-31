@@ -17,20 +17,20 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_CSS_IMAGE_ICON_THEME_PRIVATE_H__
-#define __GTK_CSS_IMAGE_ICON_THEME_PRIVATE_H__
+#ifndef __CTK_CSS_IMAGE_ICON_THEME_PRIVATE_H__
+#define __CTK_CSS_IMAGE_ICON_THEME_PRIVATE_H__
 
 #include "gtk/gtkcssimageprivate.h"
 #include "gtk/gtkicontheme.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_ICON_THEME           (_ctk_css_image_icon_theme_get_type ())
-#define GTK_CSS_IMAGE_ICON_THEME(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_ICON_THEME, GtkCssImageIconTheme))
-#define GTK_CSS_IMAGE_ICON_THEME_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_ICON_THEME, GtkCssImageIconThemeClass))
-#define GTK_IS_CSS_IMAGE_ICON_THEME(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_ICON_THEME))
-#define GTK_IS_CSS_IMAGE_ICON_THEME_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_IMAGE_ICON_THEME))
-#define GTK_CSS_IMAGE_ICON_THEME_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_IMAGE_ICON_THEME, GtkCssImageIconThemeClass))
+#define CTK_TYPE_CSS_IMAGE_ICON_THEME           (_ctk_css_image_icon_theme_get_type ())
+#define CTK_CSS_IMAGE_ICON_THEME(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_ICON_THEME, GtkCssImageIconTheme))
+#define CTK_CSS_IMAGE_ICON_THEME_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_ICON_THEME, GtkCssImageIconThemeClass))
+#define CTK_IS_CSS_IMAGE_ICON_THEME(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_ICON_THEME))
+#define CTK_IS_CSS_IMAGE_ICON_THEME_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_ICON_THEME))
+#define CTK_CSS_IMAGE_ICON_THEME_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_ICON_THEME, GtkCssImageIconThemeClass))
 
 typedef struct _GtkCssImageIconTheme           GtkCssImageIconTheme;
 typedef struct _GtkCssImageIconThemeClass      GtkCssImageIconThemeClass;
@@ -57,4 +57,4 @@ GType          _ctk_css_image_icon_theme_get_type             (void) G_GNUC_CONS
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_IMAGE_ICON_THEME_PRIVATE_H__ */
+#endif /* __CTK_CSS_IMAGE_ICON_THEME_PRIVATE_H__ */

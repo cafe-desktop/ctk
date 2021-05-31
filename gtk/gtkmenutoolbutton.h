@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_MENU_TOOL_BUTTON_H__
-#define __GTK_MENU_TOOL_BUTTON_H__
+#ifndef __CTK_MENU_TOOL_BUTTON_H__
+#define __CTK_MENU_TOOL_BUTTON_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MENU_TOOL_BUTTON         (ctk_menu_tool_button_get_type ())
-#define GTK_MENU_TOOL_BUTTON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_MENU_TOOL_BUTTON, GtkMenuToolButton))
-#define GTK_MENU_TOOL_BUTTON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), GTK_TYPE_MENU_TOOL_BUTTON, GtkMenuToolButtonClass))
-#define GTK_IS_MENU_TOOL_BUTTON(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_MENU_TOOL_BUTTON))
-#define GTK_IS_MENU_TOOL_BUTTON_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GTK_TYPE_MENU_TOOL_BUTTON))
-#define GTK_MENU_TOOL_BUTTON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_MENU_TOOL_BUTTON, GtkMenuToolButtonClass))
+#define CTK_TYPE_MENU_TOOL_BUTTON         (ctk_menu_tool_button_get_type ())
+#define CTK_MENU_TOOL_BUTTON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MENU_TOOL_BUTTON, GtkMenuToolButton))
+#define CTK_MENU_TOOL_BUTTON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), CTK_TYPE_MENU_TOOL_BUTTON, GtkMenuToolButtonClass))
+#define CTK_IS_MENU_TOOL_BUTTON(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_MENU_TOOL_BUTTON))
+#define CTK_IS_MENU_TOOL_BUTTON_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_MENU_TOOL_BUTTON))
+#define CTK_MENU_TOOL_BUTTON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_MENU_TOOL_BUTTON, GtkMenuToolButtonClass))
 
 typedef struct _GtkMenuToolButtonClass   GtkMenuToolButtonClass;
 typedef struct _GtkMenuToolButton        GtkMenuToolButton;
@@ -92,4 +92,4 @@ void          ctk_menu_tool_button_set_arrow_tooltip_markup (GtkMenuToolButton *
 
 G_END_DECLS
 
-#endif /* __GTK_MENU_TOOL_BUTTON_H__ */
+#endif /* __CTK_MENU_TOOL_BUTTON_H__ */

@@ -16,17 +16,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FILE_CHOOSER_EMBED_H__
-#define __GTK_FILE_CHOOSER_EMBED_H__
+#ifndef __CTK_FILE_CHOOSER_EMBED_H__
+#define __CTK_FILE_CHOOSER_EMBED_H__
 
 #include <gtk/gtkwidget.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_CHOOSER_EMBED             (_ctk_file_chooser_embed_get_type ())
-#define GTK_FILE_CHOOSER_EMBED(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FILE_CHOOSER_EMBED, GtkFileChooserEmbed))
-#define GTK_IS_FILE_CHOOSER_EMBED(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FILE_CHOOSER_EMBED))
-#define GTK_FILE_CHOOSER_EMBED_GET_IFACE(obj)   (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_FILE_CHOOSER_EMBED, GtkFileChooserEmbedIface))
+#define CTK_TYPE_FILE_CHOOSER_EMBED             (_ctk_file_chooser_embed_get_type ())
+#define CTK_FILE_CHOOSER_EMBED(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_CHOOSER_EMBED, GtkFileChooserEmbed))
+#define CTK_IS_FILE_CHOOSER_EMBED(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FILE_CHOOSER_EMBED))
+#define CTK_FILE_CHOOSER_EMBED_GET_IFACE(obj)   (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_FILE_CHOOSER_EMBED, GtkFileChooserEmbedIface))
 
 typedef struct _GtkFileChooserEmbed      GtkFileChooserEmbed;
 typedef struct _GtkFileChooserEmbedIface GtkFileChooserEmbedIface;
@@ -66,4 +66,4 @@ void _ctk_file_chooser_embed_set_delegate         (GtkFileChooserEmbed *receiver
 
 G_END_DECLS
 
-#endif /* __GTK_FILE_CHOOSER_EMBED_H__ */
+#endif /* __CTK_FILE_CHOOSER_EMBED_H__ */

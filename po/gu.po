@@ -3726,16 +3726,16 @@ msgid "Location"
 msgstr "સ્થાન"
 
 #: ../gtk/inspector/visual.c:243 ../gtk/inspector/visual.c:269
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "થીમ એ GTK_THEME દ્દારા હાર્ડકોડ થયેલ છે"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "થીમ એ CTK_THEME દ્દારા હાર્ડકોડ થયેલ છે"
 
 #: ../gtk/inspector/visual.c:387
 msgid "Backend does not support window scaling"
 msgstr "બેકએન્ડ વિન્ડો માપનને આધાર આપતુ નથી"
 
 #: ../gtk/inspector/visual.c:426
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "સુયોજન GTK_TEST_TOUCHSCREEN દ્દારા હાર્ડકોડ થયેલ છે"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "સુયોજન CTK_TEST_TOUCHSCREEN દ્દારા હાર્ડકોડ થયેલ છે"
 
 #. vim: set et sw=2 ts=2:
 #: ../gtk/inspector/visual.ui.h:1

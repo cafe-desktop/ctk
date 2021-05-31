@@ -147,7 +147,7 @@ _ctk_xembed_send_message (GdkWindow        *recipient,
   g_return_if_fail (GDK_IS_WINDOW (recipient));
 
   display = gdk_window_get_display (recipient);
-  GTK_NOTE (PLUGSOCKET,
+  CTK_NOTE (PLUGSOCKET,
 	    g_message ("Sending %s", _ctk_xembed_message_name (message)));
 
   memset (&xclient, 0, sizeof (xclient));
@@ -232,8 +232,8 @@ _ctk_xembed_message_name (XEmbedMessageType message)
       CASE (UNGRAB_KEY);
       CASE (MODALITY_ON);
       CASE (MODALITY_OFF);
-      CASE (GTK_GRAB_KEY);
-      CASE (GTK_UNGRAB_KEY);
+      CASE (CTK_GRAB_KEY);
+      CASE (CTK_UNGRAB_KEY);
 #undef CASE
     default:
       snprintf (unk, 24, "UNKNOWN(%d)", message);

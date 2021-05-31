@@ -25,14 +25,14 @@
 #include "gtkwin32embed.h"
 
 
-static guint message_type[GTK_WIN32_EMBED_LAST];
+static guint message_type[CTK_WIN32_EMBED_LAST];
 
 static GSList *current_messages;
 
 guint
 _ctk_win32_embed_message_type (GtkWin32EmbedMessageType type)
 {
-  if (type < 0 || type >= GTK_WIN32_EMBED_LAST)
+  if (type < 0 || type >= CTK_WIN32_EMBED_LAST)
     return 0;
 
   if (message_type[type] == 0)
@@ -87,17 +87,17 @@ _ctk_win32_embed_send_focus_message (GdkWindow               *recipient,
     return;
   
   g_return_if_fail (GDK_IS_WINDOW (recipient));
-  g_return_if_fail (message == GTK_WIN32_EMBED_FOCUS_IN ||
-		    message == GTK_WIN32_EMBED_FOCUS_NEXT ||
-		    message == GTK_WIN32_EMBED_FOCUS_PREV);
+  g_return_if_fail (message == CTK_WIN32_EMBED_FOCUS_IN ||
+		    message == CTK_WIN32_EMBED_FOCUS_NEXT ||
+		    message == CTK_WIN32_EMBED_FOCUS_PREV);
 		    
   if (current_messages)
     {
       MSG *msg = current_messages->data;
-      if (msg->message == _ctk_win32_embed_message_type (GTK_WIN32_EMBED_FOCUS_IN) ||
-	  msg->message == _ctk_win32_embed_message_type (GTK_WIN32_EMBED_FOCUS_NEXT) ||
-	  msg->message == _ctk_win32_embed_message_type (GTK_WIN32_EMBED_FOCUS_PREV))
-	lparam = (msg->lParam & GTK_WIN32_EMBED_FOCUS_WRAPAROUND);
+      if (msg->message == _ctk_win32_embed_message_type (CTK_WIN32_EMBED_FOCUS_IN) ||
+	  msg->message == _ctk_win32_embed_message_type (CTK_WIN32_EMBED_FOCUS_NEXT) ||
+	  msg->message == _ctk_win32_embed_message_type (CTK_WIN32_EMBED_FOCUS_PREV))
+	lparam = (msg->lParam & CTK_WIN32_EMBED_FOCUS_WRAPAROUND);
     }
 
   _ctk_win32_embed_send (recipient, message, wparam, lparam);
@@ -112,10 +112,10 @@ _ctk_win32_embed_set_focus_wrapped (void)
 
   msg = current_messages->data;
 
-  g_return_if_fail (msg->message == _ctk_win32_embed_message_type (GTK_WIN32_EMBED_FOCUS_PREV) ||
-		    msg->message == _ctk_win32_embed_message_type (GTK_WIN32_EMBED_FOCUS_NEXT));
+  g_return_if_fail (msg->message == _ctk_win32_embed_message_type (CTK_WIN32_EMBED_FOCUS_PREV) ||
+		    msg->message == _ctk_win32_embed_message_type (CTK_WIN32_EMBED_FOCUS_NEXT));
   
-  msg->lParam |= GTK_WIN32_EMBED_FOCUS_WRAPAROUND;
+  msg->lParam |= CTK_WIN32_EMBED_FOCUS_WRAPAROUND;
 }
 
 gboolean
@@ -127,5 +127,5 @@ _ctk_win32_embed_get_focus_wrapped (void)
 
   msg = current_messages->data;
 
-  return (msg->lParam & GTK_WIN32_EMBED_FOCUS_WRAPAROUND) != 0;
+  return (msg->lParam & CTK_WIN32_EMBED_FOCUS_WRAPAROUND) != 0;
 }

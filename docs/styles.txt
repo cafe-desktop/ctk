@@ -76,18 +76,18 @@ GtkWidget::style_set
 
 Flag indications:
 
-!GTK_RC_STYLE && !GTK_USER_STYLE:
+!CTK_RC_STYLE && !CTK_USER_STYLE:
   The widget has its default style set, no rc lookup has been
   performed, the widget has not been size requested yet and is
   therefore not yet realized.
 
-GTK_USER_STYLE:
-  GTK_RC_STYLE is not set.
+CTK_USER_STYLE:
+  CTK_RC_STYLE is not set.
   The widget has a user style assigned, and its default style has been
   saved.
 
-GTK_RC_STYLE:
-  GTK_USER_STYLE is not set.
+CTK_RC_STYLE:
+  CTK_USER_STYLE is not set.
   If the widget has a saved default style, it has been assigned an
   rc style. If the widget does not have a saved default style, it still
   has its default style but an rc lookup has already been performed.

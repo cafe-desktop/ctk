@@ -4530,16 +4530,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "Povolte statistiky pomocí GOBJECT_DEBUG=instance-count"
 
 #: gtk/inspector/visual.c:432 gtk/inspector/visual.c:447
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "Motiv je napevno nastaven pomocí GTK_THEME"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "Motiv je napevno nastaven pomocí CTK_THEME"
 
 #: gtk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "Podpůrná vrstva nepodporuje škálování oken"
 
 #: gtk/inspector/visual.c:752
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "Nastavení je napevno zadáno pomocí GTK_TEST_TOUCHSCREEN"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "Nastavení je napevno zadáno pomocí CTK_TEST_TOUCHSCREEN"
 
 #: gtk/inspector/visual.c:817
 msgid ""

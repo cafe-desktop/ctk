@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CELL_RENDERER_H__
-#define __GTK_CELL_RENDERER_H__
+#ifndef __CTK_CELL_RENDERER_H__
+#define __CTK_CELL_RENDERER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,53 +29,53 @@ G_BEGIN_DECLS
 
 /**
  * GtkCellRendererState:
- * @GTK_CELL_RENDERER_SELECTED: The cell is currently selected, and
+ * @CTK_CELL_RENDERER_SELECTED: The cell is currently selected, and
  *  probably has a selection colored background to render to.
- * @GTK_CELL_RENDERER_PRELIT: The mouse is hovering over the cell.
- * @GTK_CELL_RENDERER_INSENSITIVE: The cell is drawn in an insensitive manner
- * @GTK_CELL_RENDERER_SORTED: The cell is in a sorted row
- * @GTK_CELL_RENDERER_FOCUSED: The cell is in the focus row.
- * @GTK_CELL_RENDERER_EXPANDABLE: The cell is in a row that can be expanded. Since 3.4
- * @GTK_CELL_RENDERER_EXPANDED: The cell is in a row that is expanded. Since 3.4
+ * @CTK_CELL_RENDERER_PRELIT: The mouse is hovering over the cell.
+ * @CTK_CELL_RENDERER_INSENSITIVE: The cell is drawn in an insensitive manner
+ * @CTK_CELL_RENDERER_SORTED: The cell is in a sorted row
+ * @CTK_CELL_RENDERER_FOCUSED: The cell is in the focus row.
+ * @CTK_CELL_RENDERER_EXPANDABLE: The cell is in a row that can be expanded. Since 3.4
+ * @CTK_CELL_RENDERER_EXPANDED: The cell is in a row that is expanded. Since 3.4
  *
  * Tells how a cell is to be rendered.
  */
 typedef enum
 {
-  GTK_CELL_RENDERER_SELECTED    = 1 << 0,
-  GTK_CELL_RENDERER_PRELIT      = 1 << 1,
-  GTK_CELL_RENDERER_INSENSITIVE = 1 << 2,
+  CTK_CELL_RENDERER_SELECTED    = 1 << 0,
+  CTK_CELL_RENDERER_PRELIT      = 1 << 1,
+  CTK_CELL_RENDERER_INSENSITIVE = 1 << 2,
   /* this flag means the cell is in the sort column/row */
-  GTK_CELL_RENDERER_SORTED      = 1 << 3,
-  GTK_CELL_RENDERER_FOCUSED     = 1 << 4,
-  GTK_CELL_RENDERER_EXPANDABLE  = 1 << 5,
-  GTK_CELL_RENDERER_EXPANDED    = 1 << 6
+  CTK_CELL_RENDERER_SORTED      = 1 << 3,
+  CTK_CELL_RENDERER_FOCUSED     = 1 << 4,
+  CTK_CELL_RENDERER_EXPANDABLE  = 1 << 5,
+  CTK_CELL_RENDERER_EXPANDED    = 1 << 6
 } GtkCellRendererState;
 
 /**
  * GtkCellRendererMode:
- * @GTK_CELL_RENDERER_MODE_INERT: The cell is just for display
+ * @CTK_CELL_RENDERER_MODE_INERT: The cell is just for display
  *  and cannot be interacted with.  Note that this doesn’t mean that eg. the
  *  row being drawn can’t be selected -- just that a particular element of
  *  it cannot be individually modified.
- * @GTK_CELL_RENDERER_MODE_ACTIVATABLE: The cell can be clicked.
- * @GTK_CELL_RENDERER_MODE_EDITABLE: The cell can be edited or otherwise modified.
+ * @CTK_CELL_RENDERER_MODE_ACTIVATABLE: The cell can be clicked.
+ * @CTK_CELL_RENDERER_MODE_EDITABLE: The cell can be edited or otherwise modified.
  *
  * Identifies how the user can interact with a particular cell.
  */
 typedef enum
 {
-  GTK_CELL_RENDERER_MODE_INERT,
-  GTK_CELL_RENDERER_MODE_ACTIVATABLE,
-  GTK_CELL_RENDERER_MODE_EDITABLE
+  CTK_CELL_RENDERER_MODE_INERT,
+  CTK_CELL_RENDERER_MODE_ACTIVATABLE,
+  CTK_CELL_RENDERER_MODE_EDITABLE
 } GtkCellRendererMode;
 
-#define GTK_TYPE_CELL_RENDERER		  (ctk_cell_renderer_get_type ())
-#define GTK_CELL_RENDERER(obj)		  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_RENDERER, GtkCellRenderer))
-#define GTK_CELL_RENDERER_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CELL_RENDERER, GtkCellRendererClass))
-#define GTK_IS_CELL_RENDERER(obj)	  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_RENDERER))
-#define GTK_IS_CELL_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_CELL_RENDERER))
-#define GTK_CELL_RENDERER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CELL_RENDERER, GtkCellRendererClass))
+#define CTK_TYPE_CELL_RENDERER		  (ctk_cell_renderer_get_type ())
+#define CTK_CELL_RENDERER(obj)		  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER, GtkCellRenderer))
+#define CTK_CELL_RENDERER_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER, GtkCellRendererClass))
+#define CTK_IS_CELL_RENDERER(obj)	  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER))
+#define CTK_IS_CELL_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER))
+#define CTK_CELL_RENDERER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER, GtkCellRendererClass))
 
 typedef struct _GtkCellRenderer              GtkCellRenderer;
 typedef struct _GtkCellRendererPrivate       GtkCellRendererPrivate;
@@ -323,4 +323,4 @@ GType           _ctk_cell_renderer_get_accessible_type
 
 G_END_DECLS
 
-#endif /* __GTK_CELL_RENDERER_H__ */
+#endif /* __CTK_CELL_RENDERER_H__ */

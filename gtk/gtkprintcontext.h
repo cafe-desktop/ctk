@@ -16,11 +16,11 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINT_CONTEXT_H__
-#define __GTK_PRINT_CONTEXT_H__
+#ifndef __CTK_PRINT_CONTEXT_H__
+#define __CTK_PRINT_CONTEXT_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -32,9 +32,9 @@ G_BEGIN_DECLS
 
 typedef struct _GtkPrintContext GtkPrintContext;
 
-#define GTK_TYPE_PRINT_CONTEXT    (ctk_print_context_get_type ())
-#define GTK_PRINT_CONTEXT(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_CONTEXT, GtkPrintContext))
-#define GTK_IS_PRINT_CONTEXT(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_CONTEXT))
+#define CTK_TYPE_PRINT_CONTEXT    (ctk_print_context_get_type ())
+#define CTK_PRINT_CONTEXT(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_CONTEXT, GtkPrintContext))
+#define CTK_IS_PRINT_CONTEXT(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_CONTEXT))
 
 GDK_AVAILABLE_IN_ALL
 GType          ctk_print_context_get_type (void) G_GNUC_CONST;
@@ -78,4 +78,4 @@ void         ctk_print_context_set_cairo_context     (GtkPrintContext *context,
 
 G_END_DECLS
 
-#endif /* __GTK_PRINT_CONTEXT_H__ */
+#endif /* __CTK_PRINT_CONTEXT_H__ */

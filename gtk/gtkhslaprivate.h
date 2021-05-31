@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_HSLA_PRIVATE_H__
-#define __GTK_HSLA_PRIVATE_H__
+#ifndef __CTK_HSLA_PRIVATE_H__
+#define __CTK_HSLA_PRIVATE_H__
 
 #include <gdk/gdk.h>
 
@@ -48,4 +48,4 @@ void            _ctk_hsla_shade             (GtkHSLA          *dest,
 
 G_END_DECLS
 
-#endif /* __GTK_HSLA_PRIVATE_H__ */
+#endif /* __CTK_HSLA_PRIVATE_H__ */

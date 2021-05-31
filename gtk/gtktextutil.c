@@ -27,7 +27,7 @@
 #include "gtktextview.h"
 #include "gtktextutil.h"
 
-#define GTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
+#define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 
 #include "gtktextdisplay.h"
 #include "gtktextbuffer.h"
@@ -297,8 +297,8 @@ _ctk_text_util_create_rich_drag_icon (GtkWidget     *widget,
   GtkTextIter        iter;
   cairo_t           *cr;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (end != NULL, NULL);
 
@@ -328,15 +328,15 @@ _ctk_text_util_create_rich_drag_icon (GtkWidget     *widget,
 
   set_attributes_from_style (ctk_widget_get_style_context (widget), style);
 
-  if (GTK_IS_TEXT_VIEW (widget))
+  if (CTK_IS_TEXT_VIEW (widget))
     {
       layout_width = layout_width
-        - ctk_text_view_get_border_window_size (GTK_TEXT_VIEW (widget), GTK_TEXT_WINDOW_LEFT)
-        - ctk_text_view_get_border_window_size (GTK_TEXT_VIEW (widget), GTK_TEXT_WINDOW_RIGHT);
+        - ctk_text_view_get_border_window_size (CTK_TEXT_VIEW (widget), CTK_TEXT_WINDOW_LEFT)
+        - ctk_text_view_get_border_window_size (CTK_TEXT_VIEW (widget), CTK_TEXT_WINDOW_RIGHT);
     }
 
   style->direction = ctk_widget_get_direction (widget);
-  style->wrap_mode = GTK_WRAP_WORD_CHAR;
+  style->wrap_mode = CTK_WRAP_WORD_CHAR;
 
   ctk_text_layout_set_default_style (layout, style);
   ctk_text_attributes_unref (style);

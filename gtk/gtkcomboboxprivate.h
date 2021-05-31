@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_COMBO_BOX_PRIVATE_H__
-#define __GTK_COMBO_BOX_PRIVATE_H__
+#ifndef __CTK_COMBO_BOX_PRIVATE_H__
+#define __CTK_COMBO_BOX_PRIVATE_H__
 
 #include "gtkcombobox.h"
 
@@ -26,4 +26,4 @@ GtkWidget *ctk_combo_box_get_popup (GtkComboBox *combo_box);
 
 G_END_DECLS
 
-#endif /* __GTK_COMBO_BOX_PRIVATE_H__ */
+#endif /* __CTK_COMBO_BOX_PRIVATE_H__ */

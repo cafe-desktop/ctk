@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_VSCROLLBAR_H__
-#define __GTK_VSCROLLBAR_H__
+#ifndef __CTK_VSCROLLBAR_H__
+#define __CTK_VSCROLLBAR_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_VSCROLLBAR            (ctk_vscrollbar_get_type ())
-#define GTK_VSCROLLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_VSCROLLBAR, GtkVScrollbar))
-#define GTK_VSCROLLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_VSCROLLBAR, GtkVScrollbarClass))
-#define GTK_IS_VSCROLLBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_VSCROLLBAR))
-#define GTK_IS_VSCROLLBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_VSCROLLBAR))
-#define GTK_VSCROLLBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_VSCROLLBAR, GtkVScrollbarClass))
+#define CTK_TYPE_VSCROLLBAR            (ctk_vscrollbar_get_type ())
+#define CTK_VSCROLLBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VSCROLLBAR, GtkVScrollbar))
+#define CTK_VSCROLLBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VSCROLLBAR, GtkVScrollbarClass))
+#define CTK_IS_VSCROLLBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VSCROLLBAR))
+#define CTK_IS_VSCROLLBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VSCROLLBAR))
+#define CTK_VSCROLLBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VSCROLLBAR, GtkVScrollbarClass))
 
 
 typedef struct _GtkVScrollbar       GtkVScrollbar;
@@ -68,4 +68,4 @@ GtkWidget* ctk_vscrollbar_new      (GtkAdjustment *adjustment);
 
 G_END_DECLS
 
-#endif /* __GTK_VSCROLLBAR_H__ */
+#endif /* __CTK_VSCROLLBAR_H__ */

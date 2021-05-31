@@ -44,7 +44,7 @@ NULL=
 !if [call create-lists.bat footer resources_sources.mak]
 !endif
 
-!if [call create-lists.bat header resources_sources.mak GTK_RESOURCES]
+!if [call create-lists.bat header resources_sources.mak CTK_RESOURCES]
 !endif
 
 !if [for %f in (..\gtk\theme\Adwaita\gtk.css ..\gtk\theme\Adwaita\gtk-dark.css ..\gtk\theme\Adwaita\gtk-contained.css ..\gtk\theme\Adwaita\gtk-contained-dark.css) do @call create-lists.bat file resources_sources.mak %f]
@@ -77,7 +77,7 @@ NULL=
 !if [call create-lists.bat footer resources_sources.mak]
 !endif
 
-!if [call create-lists.bat header resources_sources.mak GTK_DEMO_RESOURCES]
+!if [call create-lists.bat header resources_sources.mak CTK_DEMO_RESOURCES]
 !endif
 
 !if [for /f %f in ('$(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir=..\demos\gtk-demo ..\demos\gtk-demo\demo.gresource.xml') do @call create-lists.bat file resources_sources.mak %f]

@@ -514,14 +514,14 @@ section of <ulink url="https://developer.gnome.org/pango/stable/">Pango manual</
 <qandaentry>
 <question>
 <para>
-Why are types not registered if I use their <literal>GTK_TYPE_BLAH</literal>
+Why are types not registered if I use their <literal>CTK_TYPE_BLAH</literal>
 macro ?
 </para>
 </question>
 
 <answer>
 <para>
-The <literal>GTK_TYPE_BLAH</literal> macros are defined as calls to
+The <literal>CTK_TYPE_BLAH</literal> macros are defined as calls to
 <literal>ctk_blah_get_type(<!-- -->)</literal>, and the <literal>_get_type(<!-- -->)</literal>
 functions are declared as %G_GNUC_CONST which allows the compiler to optimize
 the call away if it appears that the value is not being used.
@@ -531,7 +531,7 @@ the call away if it appears that the value is not being used.
 A common workaround for this problem is to store the result in a volatile
 variable, which keeps the compiler from optimizing the call away.
 <informalexample><programlisting>
-volatile GType dummy = GTK_TYPE_BLAH;
+volatile GType dummy = CTK_TYPE_BLAH;
 </programlisting></informalexample>
 </para>
 </answer>
@@ -561,7 +561,7 @@ visual = gdk_screen_get_rgba_visual (screen);
 if (visual == NULL)
   visual = gdk_screen_get_system_visual (screen);
 
-ctk_widget_set_visual (GTK_WIDGET (window), visual);
+ctk_widget_set_visual (CTK_WIDGET (window), visual);
 </programlisting></informalexample>
 To fill the alpha channel on the window simply use cairos
 RGBA drawing capabilities.
@@ -737,7 +737,7 @@ or ctk_text_iter_get_text().
   GtkTextBuffer *buffer;
   char *text;
 
-  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (text_view));
+  buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view));
   ctk_text_buffer_get_bounds (buffer, &amp;start, &amp;end);
   text = ctk_text_iter_get_text (&amp;start, &amp;end);
   /* use text */
@@ -892,7 +892,7 @@ set_up_new_columns (GtkTreeView *myview)
 
   /* Create the data model and associate it with the given TreeView */
   mycolumns = ctk_list_store_new (N_COLUMNS, G_TYPE_DOUBLE);
-  ctk_tree_view_set_model (myview, GTK_TREE_MODEL (mycolumns));
+  ctk_tree_view_set_model (myview, CTK_TREE_MODEL (mycolumns));
 
   /* Create a GtkCellRendererText */
   renderer = ctk_cell_renderer_text_new (<!-- -->);
@@ -907,7 +907,7 @@ set_up_new_columns (GtkTreeView *myview)
   ctk_tree_view_column_pack_start (column, renderer, TRUE);
 
   /* Append the new column after the GtkTreeView's previous columns. */
-  ctk_tree_view_append_column (GTK_TREE_VIEW (myview), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (myview), column);
   /* Since we created the column by hand, we can set it up for our
    * needs, e.g. set its minimum and maximum width, etc.
    */

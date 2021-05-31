@@ -115,7 +115,7 @@ enum {
   CHILD_PROP_POSITION
 };
 
-G_DEFINE_TYPE (GtkPopoverMenu, ctk_popover_menu, GTK_TYPE_POPOVER)
+G_DEFINE_TYPE (GtkPopoverMenu, ctk_popover_menu, CTK_TYPE_POPOVER)
 
 static void
 visible_submenu_changed (GObject        *object,
@@ -132,30 +132,30 @@ ctk_popover_menu_init (GtkPopoverMenu *popover)
   GtkStyleContext *style_context;
 
   stack = ctk_stack_new ();
-  ctk_stack_set_vhomogeneous (GTK_STACK (stack), FALSE);
-  ctk_stack_set_transition_type (GTK_STACK (stack), GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT);
-  ctk_stack_set_interpolate_size (GTK_STACK (stack), TRUE);
+  ctk_stack_set_vhomogeneous (CTK_STACK (stack), FALSE);
+  ctk_stack_set_transition_type (CTK_STACK (stack), CTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT);
+  ctk_stack_set_interpolate_size (CTK_STACK (stack), TRUE);
   ctk_widget_show (stack);
-  ctk_container_add (GTK_CONTAINER (popover), stack);
+  ctk_container_add (CTK_CONTAINER (popover), stack);
   g_signal_connect (stack, "notify::visible-child-name",
                     G_CALLBACK (visible_submenu_changed), popover);
 
-  style_context = ctk_widget_get_style_context (GTK_WIDGET (popover));
-  ctk_style_context_add_class (style_context, GTK_STYLE_CLASS_MENU);
+  style_context = ctk_widget_get_style_context (CTK_WIDGET (popover));
+  ctk_style_context_add_class (style_context, CTK_STYLE_CLASS_MENU);
 }
 
 static void
 ctk_popover_menu_map (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (ctk_popover_menu_parent_class)->map (widget);
-  ctk_popover_menu_open_submenu (GTK_POPOVER_MENU (widget), "main");
+  CTK_WIDGET_CLASS (ctk_popover_menu_parent_class)->map (widget);
+  ctk_popover_menu_open_submenu (CTK_POPOVER_MENU (widget), "main");
 }
 
 static void
 ctk_popover_menu_unmap (GtkWidget *widget)
 {
-  ctk_popover_menu_open_submenu (GTK_POPOVER_MENU (widget), "main");
-  GTK_WIDGET_CLASS (ctk_popover_menu_parent_class)->unmap (widget);
+  ctk_popover_menu_open_submenu (CTK_POPOVER_MENU (widget), "main");
+  CTK_WIDGET_CLASS (ctk_popover_menu_parent_class)->unmap (widget);
 }
 
 static void
@@ -164,23 +164,23 @@ ctk_popover_menu_add (GtkContainer *container,
 {
   GtkWidget *stack;
 
-  stack = ctk_bin_get_child (GTK_BIN (container));
+  stack = ctk_bin_get_child (CTK_BIN (container));
 
   if (stack == NULL)
     {
-      ctk_widget_set_parent (child, GTK_WIDGET (container));
-      _ctk_bin_set_child (GTK_BIN (container), child);
+      ctk_widget_set_parent (child, CTK_WIDGET (container));
+      _ctk_bin_set_child (CTK_BIN (container), child);
     }
   else
     {
       gchar *name;
 
-      if (ctk_stack_get_child_by_name (GTK_STACK (stack), "main"))
+      if (ctk_stack_get_child_by_name (CTK_STACK (stack), "main"))
         name = "submenu";
       else
         name = "main";
 
-      ctk_stack_add_named (GTK_STACK (stack), child, name);
+      ctk_stack_add_named (CTK_STACK (stack), child, name);
     }
 }
 
@@ -190,12 +190,12 @@ ctk_popover_menu_remove (GtkContainer *container,
 {
   GtkWidget *stack;
 
-  stack = ctk_bin_get_child (GTK_BIN (container));
+  stack = ctk_bin_get_child (CTK_BIN (container));
 
   if (child == stack)
-    GTK_CONTAINER_CLASS (ctk_popover_menu_parent_class)->remove (container, child);
+    CTK_CONTAINER_CLASS (ctk_popover_menu_parent_class)->remove (container, child);
   else
-    ctk_container_remove (GTK_CONTAINER (stack), child);
+    ctk_container_remove (CTK_CONTAINER (stack), child);
 }
 
 static void
@@ -206,12 +206,12 @@ ctk_popover_menu_forall (GtkContainer *container,
 {
   GtkWidget *stack;
 
-  stack = ctk_bin_get_child (GTK_BIN (container));
+  stack = ctk_bin_get_child (CTK_BIN (container));
 
   if (include_internals)
     (* callback) (stack, callback_data);
 
-  ctk_container_forall (GTK_CONTAINER (stack), callback, callback_data);
+  ctk_container_forall (CTK_CONTAINER (stack), callback, callback_data);
 }
 
 static void
@@ -223,7 +223,7 @@ ctk_popover_menu_get_child_property (GtkContainer *container,
 {
   GtkWidget *stack;
 
-  stack = ctk_bin_get_child (GTK_BIN (container));
+  stack = ctk_bin_get_child (CTK_BIN (container));
 
   if (child == stack)
     return;
@@ -233,7 +233,7 @@ ctk_popover_menu_get_child_property (GtkContainer *container,
     case CHILD_PROP_SUBMENU:
       {
         gchar *name;
-        ctk_container_child_get (GTK_CONTAINER (stack), child, "name", &name, NULL);
+        ctk_container_child_get (CTK_CONTAINER (stack), child, "name", &name, NULL);
         g_value_set_string (value, name);
       }
       break;
@@ -241,13 +241,13 @@ ctk_popover_menu_get_child_property (GtkContainer *container,
     case CHILD_PROP_POSITION:
       {
         gint position;
-        ctk_container_child_get (GTK_CONTAINER (stack), child, "position", &position, NULL);
+        ctk_container_child_get (CTK_CONTAINER (stack), child, "position", &position, NULL);
         g_value_set_int (value, position);
       }
       break;
 
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec); 
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec); 
       break;
     }
 }
@@ -261,7 +261,7 @@ ctk_popover_menu_set_child_property (GtkContainer *container,
 {
   GtkWidget *stack;
 
-  stack = ctk_bin_get_child (GTK_BIN (container));
+  stack = ctk_bin_get_child (CTK_BIN (container));
 
   if (child == stack)
     return;
@@ -272,7 +272,7 @@ ctk_popover_menu_set_child_property (GtkContainer *container,
       {
         const gchar *name;
         name = g_value_get_string (value);
-        ctk_container_child_set (GTK_CONTAINER (stack), child, "name", name, NULL);
+        ctk_container_child_set (CTK_CONTAINER (stack), child, "name", name, NULL);
       }
       break;
 
@@ -280,12 +280,12 @@ ctk_popover_menu_set_child_property (GtkContainer *container,
       {
         gint position;
         position = g_value_get_int (value);
-        ctk_container_child_set (GTK_CONTAINER (stack), child, "position", position, NULL);
+        ctk_container_child_set (CTK_CONTAINER (stack), child, "position", position, NULL);
       }
       break;
 
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec); 
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec); 
       break;
     }
 }
@@ -298,12 +298,12 @@ ctk_popover_menu_get_property (GObject    *object,
 {
   GtkWidget *stack;
 
-  stack = ctk_bin_get_child (GTK_BIN (object));
+  stack = ctk_bin_get_child (CTK_BIN (object));
 
   switch (property_id)
     {
     case PROP_VISIBLE_SUBMENU:
-      g_value_set_string (value, ctk_stack_get_visible_child_name (GTK_STACK (stack)));
+      g_value_set_string (value, ctk_stack_get_visible_child_name (CTK_STACK (stack)));
       break;
 
     default:
@@ -320,12 +320,12 @@ ctk_popover_menu_set_property (GObject      *object,
 {
   GtkWidget *stack;
 
-  stack = ctk_bin_get_child (GTK_BIN (object));
+  stack = ctk_bin_get_child (CTK_BIN (object));
 
   switch (property_id)
     {
     case PROP_VISIBLE_SUBMENU:
-      ctk_stack_set_visible_child_name (GTK_STACK (stack), g_value_get_string (value));
+      ctk_stack_set_visible_child_name (CTK_STACK (stack), g_value_get_string (value));
       break;
 
     default:
@@ -337,8 +337,8 @@ ctk_popover_menu_set_property (GObject      *object,
 static void
 ctk_popover_menu_class_init (GtkPopoverMenuClass *klass)
 {
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->set_property = ctk_popover_menu_set_property;
@@ -399,7 +399,7 @@ ctk_popover_menu_class_init (GtkPopoverMenuClass *klass)
 GtkWidget *
 ctk_popover_menu_new (void)
 {
-  return g_object_new (GTK_TYPE_POPOVER_MENU, NULL);
+  return g_object_new (CTK_TYPE_POPOVER_MENU, NULL);
 }
 
 /**
@@ -425,8 +425,8 @@ ctk_popover_menu_open_submenu (GtkPopoverMenu *popover,
 {
   GtkWidget *stack;
 
-  g_return_if_fail (GTK_IS_POPOVER_MENU (popover));
+  g_return_if_fail (CTK_IS_POPOVER_MENU (popover));
 
-  stack = ctk_bin_get_child (GTK_BIN (popover));
-  ctk_stack_set_visible_child_name (GTK_STACK (stack), name);
+  stack = ctk_bin_get_child (CTK_BIN (popover));
+  ctk_stack_set_visible_child_name (CTK_STACK (stack), name);
 }

@@ -20,18 +20,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-#ifndef _GTK_INSPECTOR_WINDOW_H_
-#define _GTK_INSPECTOR_WINDOW_H_
+#ifndef _CTK_INSPECTOR_WINDOW_H_
+#define _CTK_INSPECTOR_WINDOW_H_
 
 
 #include <gtk/gtkwindow.h>
 
-#define GTK_TYPE_INSPECTOR_WINDOW            (ctk_inspector_window_get_type())
-#define GTK_INSPECTOR_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindow))
-#define GTK_INSPECTOR_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindowClass))
-#define GTK_INSPECTOR_IS_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_WINDOW))
-#define GTK_INSPECTOR_IS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), GTK_TYPE_INSPECTOR_WINDOW))
-#define GTK_INSPECTOR_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindowClass))
+#define CTK_TYPE_INSPECTOR_WINDOW            (ctk_inspector_window_get_type())
+#define CTK_INSPECTOR_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindow))
+#define CTK_INSPECTOR_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindowClass))
+#define CTK_INSPECTOR_IS_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_WINDOW))
+#define CTK_INSPECTOR_IS_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_WINDOW))
+#define CTK_INSPECTOR_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindowClass))
 
 
 #define TREE_TEXT_SCALE 0.8
@@ -108,6 +108,6 @@ void       ctk_inspector_window_rescan     (GtkWidget          *iw);
 G_END_DECLS
 
 
-#endif // _GTK_INSPECTOR_WINDOW_H_
+#endif // _CTK_INSPECTOR_WINDOW_H_
 
 // vim: set et sw=2 ts=2:

@@ -27,7 +27,7 @@
 
 static void atk_image_interface_init (AtkImageIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkSpinnerAccessible, ctk_spinner_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkSpinnerAccessible, ctk_spinner_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_IMAGE, atk_image_interface_init));
 
 static void
@@ -61,7 +61,7 @@ ctk_spinner_accessible_image_get_size (AtkImage *image,
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (image));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
   if (widget == NULL)
     {
       *width = 0;

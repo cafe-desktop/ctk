@@ -300,11 +300,11 @@ ctk_symbolic_color_resolve (GtkSymbolicColor   *color,
 
   g_return_val_if_fail (color != NULL, FALSE);
   g_return_val_if_fail (resolved_color != NULL, FALSE);
-  g_return_val_if_fail (props == NULL || GTK_IS_STYLE_PROPERTIES (props), FALSE);
+  g_return_val_if_fail (props == NULL || CTK_IS_STYLE_PROPERTIES (props), FALSE);
 
   current = _ctk_css_rgba_value_new_from_rgba (&pink);
   v = _ctk_css_color_value_resolve (color->value,
-                                    GTK_STYLE_PROVIDER_PRIVATE (props),
+                                    CTK_STYLE_PROVIDER_PRIVATE (props),
                                     current,
                                     NULL);
   _ctk_css_value_unref (current);

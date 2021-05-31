@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_COLOR_CHOOSER_PRIVATE_H__
-#define __GTK_COLOR_CHOOSER_PRIVATE_H__
+#ifndef __CTK_COLOR_CHOOSER_PRIVATE_H__
+#define __CTK_COLOR_CHOOSER_PRIVATE_H__
 
 #include "gtkcolorchooser.h"
 
@@ -29,4 +29,4 @@ cairo_pattern_t * _ctk_color_chooser_get_checkered_pattern (void);
 
 G_END_DECLS
 
-#endif /* ! __GTK_COLOR_CHOOSER_PRIVATE_H__ */
+#endif /* ! __CTK_COLOR_CHOOSER_PRIVATE_H__ */

@@ -56,7 +56,7 @@ ti_et_register_type (GTypeModule *module)
 
   type_ti_et_translit = 
     g_type_module_register_type (module,
-				 GTK_TYPE_IM_CONTEXT_SIMPLE,
+				 CTK_TYPE_IM_CONTEXT_SIMPLE,
 				 "GtkIMContextTigrignaEthiopia",
 				 &object_info, 0);
 }
@@ -450,7 +450,7 @@ static const GtkIMContextInfo ti_et_info = {
   "ti_et",		   /* ID */
   NC_("input method menu", "Tigrigna-Ethiopian (EZ+)"), /* Human readable name */
   GETTEXT_PACKAGE,	   /* Translation domain */
-   GTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+   CTK_LOCALEDIR,	   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
   "ti"			   /* Languages for which this module is the default */
 };
 

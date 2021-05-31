@@ -16,10 +16,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GTK_PLACES_VIEW_H
-#define GTK_PLACES_VIEW_H
+#ifndef CTK_PLACES_VIEW_H
+#define CTK_PLACES_VIEW_H
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,12 +28,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PLACES_VIEW        (ctk_places_view_get_type ())
-#define GTK_PLACES_VIEW(obj)        (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PLACES_VIEW, GtkPlacesView))
-#define GTK_PLACES_VIEW_CLASS(klass)(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PLACES_VIEW, GtkPlacesViewClass))
-#define GTK_IS_PLACES_VIEW(obj)     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PLACES_VIEW))
-#define GTK_IS_PLACES_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PLACES_VIEW))
-#define GTK_PLACES_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PLACES_VIEW, GtkPlacesViewClass))
+#define CTK_TYPE_PLACES_VIEW        (ctk_places_view_get_type ())
+#define CTK_PLACES_VIEW(obj)        (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PLACES_VIEW, GtkPlacesView))
+#define CTK_PLACES_VIEW_CLASS(klass)(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PLACES_VIEW, GtkPlacesViewClass))
+#define CTK_IS_PLACES_VIEW(obj)     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PLACES_VIEW))
+#define CTK_IS_PLACES_VIEW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PLACES_VIEW))
+#define CTK_PLACES_VIEW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PLACES_VIEW, GtkPlacesViewClass))
 
 typedef struct _GtkPlacesView GtkPlacesView;
 typedef struct _GtkPlacesViewClass GtkPlacesViewClass;
@@ -83,4 +83,4 @@ GtkWidget *        ctk_places_view_new                           (void);
 
 G_END_DECLS
 
-#endif /* GTK_PLACES_VIEW_H */
+#endif /* CTK_PLACES_VIEW_H */

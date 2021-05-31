@@ -15,17 +15,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _GTK_INSPECTOR_STATISTICS_H_
-#define _GTK_INSPECTOR_STATISTICS_H_
+#ifndef _CTK_INSPECTOR_STATISTICS_H_
+#define _CTK_INSPECTOR_STATISTICS_H_
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_STATISTICS            (ctk_inspector_statistics_get_type())
-#define GTK_INSPECTOR_STATISTICS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatistics))
-#define GTK_INSPECTOR_STATISTICS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatisticsClass))
-#define GTK_INSPECTOR_IS_STATISTICS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_STATISTICS))
-#define GTK_INSPECTOR_IS_STATISTICS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), GTK_TYPE_INSPECTOR_STATISTICS))
-#define GTK_INSPECTOR_STATISTICS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatisticsClass))
+#define CTK_TYPE_INSPECTOR_STATISTICS            (ctk_inspector_statistics_get_type())
+#define CTK_INSPECTOR_STATISTICS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatistics))
+#define CTK_INSPECTOR_STATISTICS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatisticsClass))
+#define CTK_INSPECTOR_IS_STATISTICS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_STATISTICS))
+#define CTK_INSPECTOR_IS_STATISTICS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_STATISTICS))
+#define CTK_INSPECTOR_STATISTICS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_STATISTICS, GtkInspectorStatisticsClass))
 
 
 typedef struct _GtkInspectorStatisticsPrivate GtkInspectorStatisticsPrivate;
@@ -47,6 +47,6 @@ GType      ctk_inspector_statistics_get_type   (void);
 
 G_END_DECLS
 
-#endif // _GTK_INSPECTOR_STATISTICS_H_
+#endif // _CTK_INSPECTOR_STATISTICS_H_
 
 // vim: set et sw=2 ts=2:

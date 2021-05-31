@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_PRIVATE_H__
-#define __GTK_TREE_PRIVATE_H__
+#ifndef __CTK_TREE_PRIVATE_H__
+#define __CTK_TREE_PRIVATE_H__
 
 
 #include <gtk/gtktreeview.h>
@@ -29,8 +29,8 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-  GTK_TREE_SELECT_MODE_TOGGLE = 1 << 0,
-  GTK_TREE_SELECT_MODE_EXTEND = 1 << 1
+  CTK_TREE_SELECT_MODE_TOGGLE = 1 << 0,
+  CTK_TREE_SELECT_MODE_EXTEND = 1 << 1
 }
 GtkTreeSelectMode;
 
@@ -147,5 +147,5 @@ GtkCellAreaContext *_ctk_tree_view_column_get_context         (GtkTreeViewColumn
 G_END_DECLS
 
 
-#endif /* __GTK_TREE_PRIVATE_H__ */
+#endif /* __CTK_TREE_PRIVATE_H__ */
 

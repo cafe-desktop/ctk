@@ -100,9 +100,9 @@
 typedef struct _GtkIMModule      GtkIMModule;
 typedef struct _GtkIMModuleClass GtkIMModuleClass;
 
-#define GTK_TYPE_IM_MODULE          (ctk_im_module_get_type ())
-#define GTK_IM_MODULE(im_module)    (G_TYPE_CHECK_INSTANCE_CAST ((im_module), GTK_TYPE_IM_MODULE, GtkIMModule))
-#define GTK_IS_IM_MODULE(im_module) (G_TYPE_CHECK_INSTANCE_TYPE ((im_module), GTK_TYPE_IM_MODULE))
+#define CTK_TYPE_IM_MODULE          (ctk_im_module_get_type ())
+#define CTK_IM_MODULE(im_module)    (G_TYPE_CHECK_INSTANCE_CAST ((im_module), CTK_TYPE_IM_MODULE, GtkIMModule))
+#define CTK_IS_IM_MODULE(im_module) (G_TYPE_CHECK_INSTANCE_TYPE ((im_module), CTK_TYPE_IM_MODULE))
 
 struct _GtkIMModule
 {
@@ -138,7 +138,7 @@ static GSList *modules_list = NULL;
 static gboolean
 ctk_im_module_load (GTypeModule *module)
 {
-  GtkIMModule *im_module = GTK_IM_MODULE (module);
+  GtkIMModule *im_module = CTK_IM_MODULE (module);
   
   if (!im_module->builtin)
     {
@@ -176,7 +176,7 @@ ctk_im_module_load (GTypeModule *module)
 static void
 ctk_im_module_unload (GTypeModule *module)
 {
-  GtkIMModule *im_module = GTK_IM_MODULE (module);
+  GtkIMModule *im_module = CTK_IM_MODULE (module);
   
   im_module->exit();
 
@@ -200,7 +200,7 @@ G_DEFINE_TYPE (GtkIMModule, ctk_im_module, G_TYPE_TYPE_MODULE)
 static void
 ctk_im_module_finalize (GObject *object)
 {
-  GtkIMModule *module = GTK_IM_MODULE (object);
+  GtkIMModule *module = CTK_IM_MODULE (object);
 
   g_free (module->path);
 
@@ -271,8 +271,8 @@ add_module (GtkIMModule *module, GSList *infos)
 static void
 correct_libdir_prefix (gchar **path)
 {
-  /* GTK_LIBDIR is the build-time libdir */
-  if (strncmp (*path, GTK_LIBDIR, strlen (GTK_LIBDIR)) == 0)
+  /* CTK_LIBDIR is the build-time libdir */
+  if (strncmp (*path, CTK_LIBDIR, strlen (CTK_LIBDIR)) == 0)
     {
       /* This is an entry put there by make install on the
        * packager's system. On Windows a prebuilt GTK+
@@ -283,7 +283,7 @@ correct_libdir_prefix (gchar **path)
        * one on this machine.
        */
       gchar *tem = *path;
-      *path = g_strconcat (_ctk_get_libdir (), tem + strlen (GTK_LIBDIR), NULL);
+      *path = g_strconcat (_ctk_get_libdir (), tem + strlen (CTK_LIBDIR), NULL);
       g_free (tem);
     }
 }
@@ -292,10 +292,10 @@ static void
 correct_localedir_prefix (gchar **path)
 {
   /* See above */
-  if (strncmp (*path, GTK_LOCALEDIR, strlen (GTK_LOCALEDIR)) == 0)
+  if (strncmp (*path, CTK_LOCALEDIR, strlen (CTK_LOCALEDIR)) == 0)
     {
       gchar *tem = *path;
-      *path = g_strconcat (_ctk_get_localedir (), tem + strlen (GTK_LOCALEDIR), NULL);
+      *path = g_strconcat (_ctk_get_localedir (), tem + strlen (CTK_LOCALEDIR), NULL);
       g_free (tem);
     }
 }
@@ -307,7 +307,7 @@ add_builtin_module (const gchar             *module_name,
 		    const GtkIMContextInfo **contexts,
 		    int                      n_contexts)
 {
-  GtkIMModule *module = g_object_new (GTK_TYPE_IM_MODULE, NULL);
+  GtkIMModule *module = g_object_new (CTK_TYPE_IM_MODULE, NULL);
   GSList *infos = NULL;
   int i;
 
@@ -445,7 +445,7 @@ ctk_im_module_initialize (void)
 	{
 	  /* Read a module location
 	   */
-	  module = g_object_new (GTK_TYPE_IM_MODULE, NULL);
+	  module = g_object_new (CTK_TYPE_IM_MODULE, NULL);
 
 	  if (!ctk_scan_string (&p, tmp_buf) || ctk_skip_space (&p))
 	    {
@@ -546,8 +546,8 @@ _ctk_im_module_list (const GtkIMContextInfo ***contexts,
     SIMPLE_ID,
     NC_("input method menu", "Simple"),
     GETTEXT_PACKAGE,
-#ifdef GTK_LOCALEDIR
-    GTK_LOCALEDIR,
+#ifdef CTK_LOCALEDIR
+    CTK_LOCALEDIR,
 #else
     "",
 #endif
@@ -562,8 +562,8 @@ _ctk_im_module_list (const GtkIMContextInfo ***contexts,
     NONE_ID,
     NC_("input method menu", "None"),
     GETTEXT_PACKAGE,
-#ifdef GTK_LOCALEDIR
-    GTK_LOCALEDIR,
+#ifdef CTK_LOCALEDIR
+    CTK_LOCALEDIR,
 #else
     "",
 #endif
@@ -840,7 +840,7 @@ _ctk_im_module_get_default_context_id (void)
   if (!contexts_hash)
     ctk_im_module_initialize ();
 
-  envvar = g_getenv ("GTK_IM_MODULE");
+  envvar = g_getenv ("CTK_IM_MODULE");
   if (envvar)
     {
         immodules = g_strsplit (envvar, ":", 0);

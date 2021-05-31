@@ -57,7 +57,7 @@ struct _GtkShortcutsGroupClass
   GtkBoxClass parent_class;
 };
 
-G_DEFINE_TYPE (GtkShortcutsGroup, ctk_shortcuts_group, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GtkShortcutsGroup, ctk_shortcuts_group, CTK_TYPE_BOX)
 
 enum {
   PROP_0,
@@ -75,7 +75,7 @@ static void
 ctk_shortcuts_group_apply_accel_size_group (GtkShortcutsGroup *group,
                                             GtkWidget         *child)
 {
-  if (GTK_IS_SHORTCUTS_SHORTCUT (child))
+  if (CTK_IS_SHORTCUTS_SHORTCUT (child))
     g_object_set (child, "accel-size-group", group->accel_size_group, NULL);
 }
 
@@ -83,7 +83,7 @@ static void
 ctk_shortcuts_group_apply_title_size_group (GtkShortcutsGroup *group,
                                             GtkWidget         *child)
 {
-  if (GTK_IS_SHORTCUTS_SHORTCUT (child))
+  if (CTK_IS_SHORTCUTS_SHORTCUT (child))
     g_object_set (child, "title-size-group", group->title_size_group, NULL);
 }
 
@@ -95,9 +95,9 @@ ctk_shortcuts_group_set_accel_size_group (GtkShortcutsGroup *group,
 
   g_set_object (&group->accel_size_group, size_group);
 
-  children = ctk_container_get_children (GTK_CONTAINER (group));
+  children = ctk_container_get_children (CTK_CONTAINER (group));
   for (l = children; l; l = l->next)
-    ctk_shortcuts_group_apply_accel_size_group (group, GTK_WIDGET (l->data));
+    ctk_shortcuts_group_apply_accel_size_group (group, CTK_WIDGET (l->data));
   g_list_free (children);
 }
 
@@ -109,9 +109,9 @@ ctk_shortcuts_group_set_title_size_group (GtkShortcutsGroup *group,
 
   g_set_object (&group->title_size_group, size_group);
 
-  children = ctk_container_get_children (GTK_CONTAINER (group));
+  children = ctk_container_get_children (CTK_CONTAINER (group));
   for (l = children; l; l = l->next)
-    ctk_shortcuts_group_apply_title_size_group (group, GTK_WIDGET (l->data));
+    ctk_shortcuts_group_apply_title_size_group (group, CTK_WIDGET (l->data));
   g_list_free (children);
 }
 
@@ -123,14 +123,14 @@ ctk_shortcuts_group_get_height (GtkShortcutsGroup *group)
 
   height = 1;
 
-  children = ctk_container_get_children (GTK_CONTAINER (group));
+  children = ctk_container_get_children (CTK_CONTAINER (group));
   for (l = children; l; l = l->next)
     {
       GtkWidget *child = l->data;
 
       if (!ctk_widget_get_visible (child))
         continue;
-      else if (GTK_IS_SHORTCUTS_SHORTCUT (child))
+      else if (CTK_IS_SHORTCUTS_SHORTCUT (child))
         height += 1;
     }
   g_list_free (children);
@@ -142,11 +142,11 @@ static void
 ctk_shortcuts_group_add (GtkContainer *container,
                          GtkWidget    *widget)
 {
-  if (GTK_IS_SHORTCUTS_SHORTCUT (widget))
+  if (CTK_IS_SHORTCUTS_SHORTCUT (widget))
     {
-      GTK_CONTAINER_CLASS (ctk_shortcuts_group_parent_class)->add (container, widget);
-      ctk_shortcuts_group_apply_accel_size_group (GTK_SHORTCUTS_GROUP (container), widget);
-      ctk_shortcuts_group_apply_title_size_group (GTK_SHORTCUTS_GROUP (container), widget);
+      CTK_CONTAINER_CLASS (ctk_shortcuts_group_parent_class)->add (container, widget);
+      ctk_shortcuts_group_apply_accel_size_group (CTK_SHORTCUTS_GROUP (container), widget);
+      ctk_shortcuts_group_apply_title_size_group (CTK_SHORTCUTS_GROUP (container), widget);
     }
   else
     g_warning ("Can't add children of type %s to %s",
@@ -166,7 +166,7 @@ forall_cb (GtkWidget *widget, gpointer data)
   GtkShortcutsGroup *self;
   CallbackData *cbdata = data;
 
-  self = GTK_SHORTCUTS_GROUP (ctk_widget_get_parent (widget));
+  self = CTK_SHORTCUTS_GROUP (ctk_widget_get_parent (widget));
   if (cbdata->include_internal || widget != (GtkWidget*)self->title)
     cbdata->callback (widget, cbdata->data);
 }
@@ -183,7 +183,7 @@ ctk_shortcuts_group_forall (GtkContainer *container,
   cbdata.callback = callback;
   cbdata.data = callback_data;
 
-  GTK_CONTAINER_CLASS (ctk_shortcuts_group_parent_class)->forall (container, include_internal, forall_cb, &cbdata);
+  CTK_CONTAINER_CLASS (ctk_shortcuts_group_parent_class)->forall (container, include_internal, forall_cb, &cbdata);
 }
 
 static void
@@ -192,7 +192,7 @@ ctk_shortcuts_group_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  GtkShortcutsGroup *self = GTK_SHORTCUTS_GROUP (object);
+  GtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
 
   switch (prop_id)
     {
@@ -217,7 +217,7 @@ static void
 ctk_shortcuts_group_direction_changed (GtkWidget        *widget,
                                        GtkTextDirection  previous_dir)
 {
-  GTK_WIDGET_CLASS (ctk_shortcuts_group_parent_class)->direction_changed (widget, previous_dir);
+  CTK_WIDGET_CLASS (ctk_shortcuts_group_parent_class)->direction_changed (widget, previous_dir);
   g_object_notify (G_OBJECT (widget), "height");
 }
 
@@ -227,7 +227,7 @@ ctk_shortcuts_group_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  GtkShortcutsGroup *self = GTK_SHORTCUTS_GROUP (object);
+  GtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
 
   switch (prop_id)
     {
@@ -241,11 +241,11 @@ ctk_shortcuts_group_set_property (GObject      *object,
       break;
 
     case PROP_ACCEL_SIZE_GROUP:
-      ctk_shortcuts_group_set_accel_size_group (self, GTK_SIZE_GROUP (g_value_get_object (value)));
+      ctk_shortcuts_group_set_accel_size_group (self, CTK_SIZE_GROUP (g_value_get_object (value)));
       break;
 
     case PROP_TITLE_SIZE_GROUP:
-      ctk_shortcuts_group_set_title_size_group (self, GTK_SIZE_GROUP (g_value_get_object (value)));
+      ctk_shortcuts_group_set_title_size_group (self, CTK_SIZE_GROUP (g_value_get_object (value)));
       break;
 
     default:
@@ -256,7 +256,7 @@ ctk_shortcuts_group_set_property (GObject      *object,
 static void
 ctk_shortcuts_group_finalize (GObject *object)
 {
-  GtkShortcutsGroup *self = GTK_SHORTCUTS_GROUP (object);
+  GtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
 
   g_free (self->view);
   g_set_object (&self->accel_size_group, NULL);
@@ -268,7 +268,7 @@ ctk_shortcuts_group_finalize (GObject *object)
 static void
 ctk_shortcuts_group_dispose (GObject *object)
 {
-  GtkShortcutsGroup *self = GTK_SHORTCUTS_GROUP (object);
+  GtkShortcutsGroup *self = CTK_SHORTCUTS_GROUP (object);
 
   /*
    * Since we overload forall(), the inherited destroy() won't work as normal.
@@ -276,7 +276,7 @@ ctk_shortcuts_group_dispose (GObject *object)
    */
   if (self->title)
     {
-      ctk_widget_destroy (GTK_WIDGET (self->title));
+      ctk_widget_destroy (CTK_WIDGET (self->title));
       self->title = NULL;
     }
 
@@ -287,8 +287,8 @@ static void
 ctk_shortcuts_group_class_init (GtkShortcutsGroupClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
 
   object_class->finalize = ctk_shortcuts_group_finalize;
   object_class->get_property = ctk_shortcuts_group_get_property;
@@ -334,7 +334,7 @@ ctk_shortcuts_group_class_init (GtkShortcutsGroupClass *klass)
     g_param_spec_object ("accel-size-group",
                          P_("Accelerator Size Group"),
                          P_("Accelerator Size Group"),
-                         GTK_TYPE_SIZE_GROUP,
+                         CTK_TYPE_SIZE_GROUP,
                          (G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS));
 
   /**
@@ -348,7 +348,7 @@ ctk_shortcuts_group_class_init (GtkShortcutsGroupClass *klass)
     g_param_spec_object ("title-size-group",
                          P_("Title Size Group"),
                          P_("Title Size Group"),
-                         GTK_TYPE_SIZE_GROUP,
+                         CTK_TYPE_SIZE_GROUP,
                          (G_PARAM_WRITABLE | G_PARAM_STATIC_STRINGS));
 
   /**
@@ -371,17 +371,17 @@ ctk_shortcuts_group_init (GtkShortcutsGroup *self)
 {
   PangoAttrList *attrs;
 
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (self), GTK_ORIENTATION_VERTICAL);
-  ctk_box_set_spacing (GTK_BOX (self), 10);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (self), CTK_ORIENTATION_VERTICAL);
+  ctk_box_set_spacing (CTK_BOX (self), 10);
 
   attrs = pango_attr_list_new ();
   pango_attr_list_insert (attrs, pango_attr_weight_new (PANGO_WEIGHT_BOLD));
-  self->title = g_object_new (GTK_TYPE_LABEL,
+  self->title = g_object_new (CTK_TYPE_LABEL,
                               "attributes", attrs,
                               "visible", TRUE,
                               "xalign", 0.0f,
                               NULL);
   pango_attr_list_unref (attrs);
 
-  GTK_CONTAINER_CLASS (ctk_shortcuts_group_parent_class)->add (GTK_CONTAINER (self), GTK_WIDGET (self->title));
+  CTK_CONTAINER_CLASS (ctk_shortcuts_group_parent_class)->add (CTK_CONTAINER (self), CTK_WIDGET (self->title));
 }

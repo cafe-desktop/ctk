@@ -19,8 +19,8 @@ test_init_of_theme (void)
    * (This could actually fail if style classes change, so if this test
    *  fails, make sure to have this path represent something sane.)
    */
-  ctk_widget_path_append_type (path, GTK_TYPE_WINDOW);
-  ctk_widget_path_iter_add_class (path, -1, GTK_STYLE_CLASS_BACKGROUND);
+  ctk_widget_path_append_type (path, CTK_TYPE_WINDOW);
+  ctk_widget_path_iter_add_class (path, -1, CTK_STYLE_CLASS_BACKGROUND);
   ctk_style_context_set_path (context, path);
   ctk_widget_path_free (path);
 
@@ -36,8 +36,8 @@ test_init_of_theme (void)
   provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_data (provider, css, -1, NULL);
   ctk_style_context_add_provider (context,
-                                  GTK_STYLE_PROVIDER (provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_FALLBACK + 1);
+                                  CTK_STYLE_PROVIDER (provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_FALLBACK + 1);
   g_object_unref (provider);
 
   /* Get the color again. */

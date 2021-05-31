@@ -62,7 +62,7 @@
  * The interface vtable for #GtkActionable.
  **/
 
-G_DEFINE_INTERFACE (GtkActionable, ctk_actionable, GTK_TYPE_WIDGET)
+G_DEFINE_INTERFACE (GtkActionable, ctk_actionable, CTK_TYPE_WIDGET)
 
 static void
 ctk_actionable_default_init (GtkActionableInterface *iface)
@@ -93,9 +93,9 @@ ctk_actionable_default_init (GtkActionableInterface *iface)
 const gchar *
 ctk_actionable_get_action_name (GtkActionable *actionable)
 {
-  g_return_val_if_fail (GTK_IS_ACTIONABLE (actionable), NULL);
+  g_return_val_if_fail (CTK_IS_ACTIONABLE (actionable), NULL);
 
-  return GTK_ACTIONABLE_GET_IFACE (actionable)
+  return CTK_ACTIONABLE_GET_IFACE (actionable)
     ->get_action_name (actionable);
 }
 
@@ -122,9 +122,9 @@ void
 ctk_actionable_set_action_name (GtkActionable *actionable,
                                 const gchar   *action_name)
 {
-  g_return_if_fail (GTK_IS_ACTIONABLE (actionable));
+  g_return_if_fail (CTK_IS_ACTIONABLE (actionable));
 
-  GTK_ACTIONABLE_GET_IFACE (actionable)
+  CTK_ACTIONABLE_GET_IFACE (actionable)
     ->set_action_name (actionable, action_name);
 }
 
@@ -143,9 +143,9 @@ ctk_actionable_set_action_name (GtkActionable *actionable,
 GVariant *
 ctk_actionable_get_action_target_value (GtkActionable *actionable)
 {
-  g_return_val_if_fail (GTK_IS_ACTIONABLE (actionable), NULL);
+  g_return_val_if_fail (CTK_IS_ACTIONABLE (actionable), NULL);
 
-  return GTK_ACTIONABLE_GET_IFACE (actionable)
+  return CTK_ACTIONABLE_GET_IFACE (actionable)
     ->get_action_target_value (actionable);
 }
 
@@ -180,9 +180,9 @@ void
 ctk_actionable_set_action_target_value (GtkActionable *actionable,
                                         GVariant      *target_value)
 {
-  g_return_if_fail (GTK_IS_ACTIONABLE (actionable));
+  g_return_if_fail (CTK_IS_ACTIONABLE (actionable));
 
-  GTK_ACTIONABLE_GET_IFACE (actionable)
+  CTK_ACTIONABLE_GET_IFACE (actionable)
     ->set_action_target_value (actionable, target_value);
 }
 

@@ -38,7 +38,7 @@ filter_modify_func (GtkTreeModel *model,
                     gint          column,
                     gpointer      data)
 {
-  GtkTreeModelFilter *filter_model = GTK_TREE_MODEL_FILTER (model);
+  GtkTreeModelFilter *filter_model = CTK_TREE_MODEL_FILTER (model);
   gint width, height;
   GtkTreeModel *child_model;
   GtkTreeIter child_iter;
@@ -96,7 +96,7 @@ cell_edited (GtkCellRendererSpin *cell,
   int column;
 
   path = ctk_tree_path_new_from_string (path_string);
-  ctk_tree_model_get_iter (GTK_TREE_MODEL (store), &iter, path);
+  ctk_tree_model_get_iter (CTK_TREE_MODEL (store), &iter, path);
   ctk_tree_path_free (path);
 
   column = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (cell), "column"));
@@ -123,8 +123,8 @@ do_filtermodel (GtkWidget *do_widget)
 
       builder = ctk_builder_new_from_resource ("/filtermodel/filtermodel.ui");
       ctk_builder_connect_signals (builder, NULL);
-      window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = CTK_WIDGET (ctk_builder_get_object (builder, "window1"));
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
@@ -170,12 +170,12 @@ do_filtermodel (GtkWidget *do_widget)
       types[HEIGHT_COLUMN] = G_TYPE_INT;
       types[AREA_COLUMN] = G_TYPE_INT;
       types[SQUARE_COLUMN] = G_TYPE_BOOLEAN;
-      model = ctk_tree_model_filter_new (GTK_TREE_MODEL (store), NULL);
-      ctk_tree_model_filter_set_modify_func (GTK_TREE_MODEL_FILTER (model),
+      model = ctk_tree_model_filter_new (CTK_TREE_MODEL (store), NULL);
+      ctk_tree_model_filter_set_modify_func (CTK_TREE_MODEL_FILTER (model),
                                              G_N_ELEMENTS (types), types,
                                              filter_modify_func, NULL, NULL);
 
-      ctk_tree_view_set_model (GTK_TREE_VIEW (tree), model);
+      ctk_tree_view_set_model (CTK_TREE_VIEW (tree), model);
 
       column = (GtkTreeViewColumn*)ctk_builder_get_object (builder, "treeviewcolumn7");
       cell = (GtkCellRenderer*)ctk_builder_get_object (builder, "cellrenderertext6");
@@ -189,10 +189,10 @@ do_filtermodel (GtkWidget *do_widget)
 
       tree = (GtkWidget*)ctk_builder_get_object (builder, "treeview3");
 
-      model = ctk_tree_model_filter_new (GTK_TREE_MODEL (store), NULL);
-      ctk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (model),
+      model = ctk_tree_model_filter_new (CTK_TREE_MODEL (store), NULL);
+      ctk_tree_model_filter_set_visible_func (CTK_TREE_MODEL_FILTER (model),
                                               visible_func, NULL, NULL);
-      ctk_tree_view_set_model (GTK_TREE_VIEW (tree), model);
+      ctk_tree_view_set_model (CTK_TREE_VIEW (tree), model);
 
       g_object_unref (builder);
     }

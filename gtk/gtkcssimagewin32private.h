@@ -17,20 +17,20 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_CSS_IMAGE_WIN32_PRIVATE_H__
-#define __GTK_CSS_IMAGE_WIN32_PRIVATE_H__
+#ifndef __CTK_CSS_IMAGE_WIN32_PRIVATE_H__
+#define __CTK_CSS_IMAGE_WIN32_PRIVATE_H__
 
 #include "gtk/gtkcssimageprivate.h"
 #include "gtk/gtkwin32themeprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_WIN32           (_ctk_css_image_win32_get_type ())
-#define GTK_CSS_IMAGE_WIN32(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_WIN32, GtkCssImageWin32))
-#define GTK_CSS_IMAGE_WIN32_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_WIN32, GtkCssImageWin32Class))
-#define GTK_IS_CSS_IMAGE_WIN32(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_WIN32))
-#define GTK_IS_CSS_IMAGE_WIN32_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_IMAGE_WIN32))
-#define GTK_CSS_IMAGE_WIN32_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_IMAGE_WIN32, GtkCssImageWin32Class))
+#define CTK_TYPE_CSS_IMAGE_WIN32           (_ctk_css_image_win32_get_type ())
+#define CTK_CSS_IMAGE_WIN32(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_WIN32, GtkCssImageWin32))
+#define CTK_CSS_IMAGE_WIN32_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_WIN32, GtkCssImageWin32Class))
+#define CTK_IS_CSS_IMAGE_WIN32(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_WIN32))
+#define CTK_IS_CSS_IMAGE_WIN32_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_WIN32))
+#define CTK_CSS_IMAGE_WIN32_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_WIN32, GtkCssImageWin32Class))
 
 typedef struct _GtkCssImageWin32           GtkCssImageWin32;
 typedef struct _GtkCssImageWin32Class      GtkCssImageWin32Class;
@@ -61,4 +61,4 @@ GType          _ctk_css_image_win32_get_type             (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_IMAGE_WIN32_PRIVATE_H__ */
+#endif /* __CTK_CSS_IMAGE_WIN32_PRIVATE_H__ */

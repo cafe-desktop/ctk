@@ -19,10 +19,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ORIENTABLE_H__
-#define __GTK_ORIENTABLE_H__
+#ifndef __CTK_ORIENTABLE_H__
+#define __CTK_ORIENTABLE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -30,12 +30,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ORIENTABLE             (ctk_orientable_get_type ())
-#define GTK_ORIENTABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ORIENTABLE, GtkOrientable))
-#define GTK_ORIENTABLE_CLASS(vtable)    (G_TYPE_CHECK_CLASS_CAST ((vtable), GTK_TYPE_ORIENTABLE, GtkOrientableIface))
-#define GTK_IS_ORIENTABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ORIENTABLE))
-#define GTK_IS_ORIENTABLE_CLASS(vtable) (G_TYPE_CHECK_CLASS_TYPE ((vtable), GTK_TYPE_ORIENTABLE))
-#define GTK_ORIENTABLE_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_ORIENTABLE, GtkOrientableIface))
+#define CTK_TYPE_ORIENTABLE             (ctk_orientable_get_type ())
+#define CTK_ORIENTABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ORIENTABLE, GtkOrientable))
+#define CTK_ORIENTABLE_CLASS(vtable)    (G_TYPE_CHECK_CLASS_CAST ((vtable), CTK_TYPE_ORIENTABLE, GtkOrientableIface))
+#define CTK_IS_ORIENTABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ORIENTABLE))
+#define CTK_IS_ORIENTABLE_CLASS(vtable) (G_TYPE_CHECK_CLASS_TYPE ((vtable), CTK_TYPE_ORIENTABLE))
+#define CTK_ORIENTABLE_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_ORIENTABLE, GtkOrientableIface))
 
 
 typedef struct _GtkOrientable       GtkOrientable;         /* Dummy typedef */
@@ -58,4 +58,4 @@ GtkOrientation ctk_orientable_get_orientation (GtkOrientable  *orientable);
 
 G_END_DECLS
 
-#endif /* __GTK_ORIENTABLE_H__ */
+#endif /* __CTK_ORIENTABLE_H__ */

@@ -36,9 +36,9 @@
  * allowed to include gtkx.h directly during GTK compilation.
  * So....
  */
-#undef GTK_COMPILATION
+#undef CTK_COMPILATION
 #include <gtk/gtkx.h>
-#define GTK_COMPILATION
+#define CTK_COMPILATION
 
 /**
  * SECTION:gtktesting
@@ -84,7 +84,7 @@ ctk_test_init (int    *argcp,
    * FUTURE TODO:
    * - this function could install a mock object around GtkSettings
    */
-  g_setenv ("GTK_MODULES", "", TRUE);
+  g_setenv ("CTK_MODULES", "", TRUE);
   ctk_disable_setlocale();
   setlocale (LC_ALL, "C");
   g_test_bug_base ("http://bugzilla.gnome.org/show_bug.cgi?id=%s");
@@ -150,7 +150,7 @@ quit_main_loop_callback (GtkWidget     *widget,
 void
 ctk_test_widget_wait_for_draw (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   /* We can do this here because the whole tick procedure does not
    * reenter the main loop. Otherwise we'd need to manually get the
@@ -299,18 +299,18 @@ ctk_test_find_label (GtkWidget    *widget,
 {
   GtkWidget *label = NULL;
 
-  if (GTK_IS_LABEL (widget))
+  if (CTK_IS_LABEL (widget))
     {
-      const gchar *text = ctk_label_get_text (GTK_LABEL (widget));
+      const gchar *text = ctk_label_get_text (CTK_LABEL (widget));
       if (g_pattern_match_simple (label_pattern, text))
         return widget;
     }
 
-  if (GTK_IS_CONTAINER (widget))
+  if (CTK_IS_CONTAINER (widget))
     {
       GList *node, *list;
 
-      list = ctk_container_get_children (GTK_CONTAINER (widget));
+      list = ctk_container_get_children (CTK_CONTAINER (widget));
       for (node = list; node; node = node->next)
         {
           label = ctk_test_find_label (node->data, label_pattern);
@@ -327,9 +327,9 @@ test_list_descendants (GtkWidget *widget,
                        GType      widget_type)
 {
   GList *results = NULL;
-  if (GTK_IS_CONTAINER (widget))
+  if (CTK_IS_CONTAINER (widget))
     {
-      GList *node, *list = ctk_container_get_children (GTK_CONTAINER (widget));
+      GList *node, *list = ctk_container_get_children (CTK_CONTAINER (widget));
       for (node = list; node; node = node->next)
         {
           if (!widget_type || g_type_is_a (G_OBJECT_TYPE (node->data), widget_type))
@@ -476,10 +476,10 @@ ctk_test_slider_set_perc (GtkWidget      *widget,
                           double          percentage)
 {
   GtkAdjustment *adjustment = NULL;
-  if (GTK_IS_RANGE (widget))
-    adjustment = ctk_range_get_adjustment (GTK_RANGE (widget));
-  else if (GTK_IS_SPIN_BUTTON (widget))
-    adjustment = ctk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget));
+  if (CTK_IS_RANGE (widget))
+    adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
+  else if (CTK_IS_SPIN_BUTTON (widget))
+    adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
   if (adjustment)
     ctk_adjustment_set_value (adjustment, 
                               ctk_adjustment_get_lower (adjustment) 
@@ -509,10 +509,10 @@ double
 ctk_test_slider_get_value (GtkWidget *widget)
 {
   GtkAdjustment *adjustment = NULL;
-  if (GTK_IS_RANGE (widget))
-    adjustment = ctk_range_get_adjustment (GTK_RANGE (widget));
-  else if (GTK_IS_SPIN_BUTTON (widget))
-    adjustment = ctk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget));
+  if (CTK_IS_RANGE (widget))
+    adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
+  else if (CTK_IS_SPIN_BUTTON (widget))
+    adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
   return adjustment ? ctk_adjustment_get_value (adjustment) : 0;
 }
 
@@ -532,17 +532,17 @@ void
 ctk_test_text_set (GtkWidget   *widget,
                    const gchar *string)
 {
-  if (GTK_IS_LABEL (widget))
-    ctk_label_set_text (GTK_LABEL (widget), string);
-  else if (GTK_IS_EDITABLE (widget))
+  if (CTK_IS_LABEL (widget))
+    ctk_label_set_text (CTK_LABEL (widget), string);
+  else if (CTK_IS_EDITABLE (widget))
     {
       int pos = 0;
-      ctk_editable_delete_text (GTK_EDITABLE (widget), 0, -1);
-      ctk_editable_insert_text (GTK_EDITABLE (widget), string, -1, &pos);
+      ctk_editable_delete_text (CTK_EDITABLE (widget), 0, -1);
+      ctk_editable_insert_text (CTK_EDITABLE (widget), string, -1, &pos);
     }
-  else if (GTK_IS_TEXT_VIEW (widget))
+  else if (CTK_IS_TEXT_VIEW (widget))
     {
-      GtkTextBuffer *tbuffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (widget));
+      GtkTextBuffer *tbuffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget));
       ctk_text_buffer_set_text (tbuffer, string, -1);
     }
 }
@@ -563,15 +563,15 @@ ctk_test_text_set (GtkWidget   *widget,
 gchar*
 ctk_test_text_get (GtkWidget *widget)
 {
-  if (GTK_IS_LABEL (widget))
-    return g_strdup (ctk_label_get_text (GTK_LABEL (widget)));
-  else if (GTK_IS_EDITABLE (widget))
+  if (CTK_IS_LABEL (widget))
+    return g_strdup (ctk_label_get_text (CTK_LABEL (widget)));
+  else if (CTK_IS_EDITABLE (widget))
     {
-      return g_strdup (ctk_editable_get_chars (GTK_EDITABLE (widget), 0, -1));
+      return g_strdup (ctk_editable_get_chars (CTK_EDITABLE (widget), 0, -1));
     }
-  else if (GTK_IS_TEXT_VIEW (widget))
+  else if (CTK_IS_TEXT_VIEW (widget))
     {
-      GtkTextBuffer *tbuffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (widget));
+      GtkTextBuffer *tbuffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget));
       GtkTextIter start, end;
       ctk_text_buffer_get_start_iter (tbuffer, &start);
       ctk_text_buffer_get_end_iter (tbuffer, &end);
@@ -605,13 +605,13 @@ ctk_test_create_widget (GType        widget_type,
 {
   GtkWidget *widget;
   va_list var_args;
-  g_return_val_if_fail (g_type_is_a (widget_type, GTK_TYPE_WIDGET), NULL);
+  g_return_val_if_fail (g_type_is_a (widget_type, CTK_TYPE_WIDGET), NULL);
   va_start (var_args, first_property_name);
   widget = (GtkWidget*) g_object_new_valist (widget_type, first_property_name, var_args);
   va_end (var_args);
   if (widget)
     {
-      if (!GTK_IS_WINDOW (widget))
+      if (!CTK_IS_WINDOW (widget))
         ctk_widget_show (widget);
       g_object_ref_sink (widget);
       g_test_queue_unref (widget);
@@ -667,9 +667,9 @@ ctk_test_display_button_window (const gchar *window_title,
   GtkWidget *window, *vbox;
   const char *arg1;
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  window = ctk_test_create_widget (GTK_TYPE_WINDOW, "title", window_title, NULL);
-  vbox = ctk_test_create_widget (GTK_TYPE_BOX, "parent", window, "orientation", GTK_ORIENTATION_VERTICAL, NULL);
-  ctk_test_create_widget (GTK_TYPE_LABEL, "label", dialog_text, "parent", vbox, NULL);
+  window = ctk_test_create_widget (CTK_TYPE_WINDOW, "title", window_title, NULL);
+  vbox = ctk_test_create_widget (CTK_TYPE_BOX, "parent", window, "orientation", CTK_ORIENTATION_VERTICAL, NULL);
+  ctk_test_create_widget (CTK_TYPE_LABEL, "label", dialog_text, "parent", vbox, NULL);
 G_GNUC_END_IGNORE_DEPRECATIONS;
   g_signal_connect (window, "destroy", G_CALLBACK (try_main_quit), NULL);
   va_start (var_args, dialog_text);
@@ -679,7 +679,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
       int *arg2 = va_arg (var_args, int*);
       GtkWidget *button;
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      button = ctk_test_create_widget (GTK_TYPE_BUTTON, "label", arg1, "parent", vbox, NULL);
+      button = ctk_test_create_widget (CTK_TYPE_BUTTON, "label", arg1, "parent", vbox, NULL);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       g_signal_connect_swapped (button, "clicked", G_CALLBACK (test_increment_intp), arg2);
       arg1 = va_arg (var_args, const char*);
@@ -714,9 +714,9 @@ ctk_test_create_simple_window (const gchar *window_title,
 {
   GtkWidget *window, *vbox;
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  window = ctk_test_create_widget (GTK_TYPE_WINDOW, "title", window_title, NULL);
-  vbox = ctk_test_create_widget (GTK_TYPE_BOX, "parent", window, "orientation", GTK_ORIENTATION_VERTICAL, NULL);
-  ctk_test_create_widget (GTK_TYPE_LABEL, "label", dialog_text, "parent", vbox, NULL);
+  window = ctk_test_create_widget (CTK_TYPE_WINDOW, "title", window_title, NULL);
+  vbox = ctk_test_create_widget (CTK_TYPE_BOX, "parent", window, "orientation", CTK_ORIENTATION_VERTICAL, NULL);
+  ctk_test_create_widget (CTK_TYPE_LABEL, "label", dialog_text, "parent", vbox, NULL);
 G_GNUC_END_IGNORE_DEPRECATIONS;
   g_signal_connect (window, "destroy", G_CALLBACK (try_main_quit), NULL);
   ctk_widget_show_all (vbox);

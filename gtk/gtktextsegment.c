@@ -50,7 +50,7 @@
  *
  */
 
-#define GTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
+#define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
 #include "gtktextbtree.h"
 #include <string.h>
@@ -103,7 +103,7 @@ ctk_text_line_segment_split (const GtkTextIter *iter)
 
   count = ctk_text_iter_get_line_index (iter);
 
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_iter_check (iter);
   
   prev = NULL;
@@ -203,7 +203,7 @@ _ctk_char_segment_new (const gchar *text, guint len)
 
   seg->char_count = g_utf8_strlen (seg->body.chars, seg->byte_count);
 
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     char_segment_self_check (seg);
 
   return seg;
@@ -232,7 +232,7 @@ _ctk_char_segment_new_from_two_strings (const gchar *text1,
 
   seg->char_count = chars1 + chars2;
 
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     char_segment_self_check (seg);
 
   return seg;
@@ -274,7 +274,7 @@ char_segment_split_func (GtkTextLineSegment *seg, int index)
 
   g_assert (index < seg->byte_count);
 
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     {
       char_segment_self_check (seg);
     }
@@ -290,7 +290,7 @@ char_segment_split_func (GtkTextLineSegment *seg, int index)
   new1->next = new2;
   new2->next = seg->next;
 
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     {
       char_segment_self_check (new1);
       char_segment_self_check (new2);
@@ -329,7 +329,7 @@ char_segment_cleanup_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
 {
   GtkTextLineSegment *segPtr2, *newPtr;
 
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     char_segment_self_check (segPtr);
 
   segPtr2 = segPtr->next;
@@ -348,7 +348,7 @@ char_segment_cleanup_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
 
   newPtr->next = segPtr2->next;
 
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     char_segment_self_check (newPtr);
 
   _ctk_char_segment_free (segPtr);

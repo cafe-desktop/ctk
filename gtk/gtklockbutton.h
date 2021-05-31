@@ -16,20 +16,20 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_LOCK_BUTTON_H__
-#define __GTK_LOCK_BUTTON_H__
+#ifndef __CTK_LOCK_BUTTON_H__
+#define __CTK_LOCK_BUTTON_H__
 
 #include <gtk/gtkbutton.h>
 #include <gio/gio.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_LOCK_BUTTON         (ctk_lock_button_get_type ())
-#define GTK_LOCK_BUTTON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_LOCK_BUTTON, GtkLockButton))
-#define GTK_LOCK_BUTTON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_LOCK_BUTTON,  GtkLockButtonClass))
-#define GTK_IS_LOCK_BUTTON(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_LOCK_BUTTON))
-#define GTK_IS_LOCK_BUTTON_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GTK_TYPE_LOCK_BUTTON))
-#define GTK_LOCK_BUTTON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_LOCK_BUTTON, GtkLockButtonClass))
+#define CTK_TYPE_LOCK_BUTTON         (ctk_lock_button_get_type ())
+#define CTK_LOCK_BUTTON(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_LOCK_BUTTON, GtkLockButton))
+#define CTK_LOCK_BUTTON_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_LOCK_BUTTON,  GtkLockButtonClass))
+#define CTK_IS_LOCK_BUTTON(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_LOCK_BUTTON))
+#define CTK_IS_LOCK_BUTTON_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_LOCK_BUTTON))
+#define CTK_LOCK_BUTTON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_LOCK_BUTTON, GtkLockButtonClass))
 
 typedef struct _GtkLockButton        GtkLockButton;
 typedef struct _GtkLockButtonClass   GtkLockButtonClass;
@@ -75,4 +75,4 @@ void         ctk_lock_button_set_permission (GtkLockButton *button,
 
 G_END_DECLS
 
-#endif  /* __GTK_LOCK_BUTTON_H__ */
+#endif  /* __CTK_LOCK_BUTTON_H__ */

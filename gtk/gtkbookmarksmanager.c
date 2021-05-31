@@ -46,8 +46,8 @@ set_error_bookmark_doesnt_exist (GFile *file, GError **error)
   gchar *uri = g_file_get_uri (file);
 
   g_set_error (error,
-               GTK_FILE_CHOOSER_ERROR,
-               GTK_FILE_CHOOSER_ERROR_NONEXISTENT,
+               CTK_FILE_CHOOSER_ERROR,
+               CTK_FILE_CHOOSER_ERROR_NONEXISTENT,
                _("%s does not exist in the bookmarks list"),
                uri);
 
@@ -357,8 +357,8 @@ _ctk_bookmarks_manager_insert_bookmark (GtkBookmarksManager *manager,
       uri = g_file_get_uri (bookmark->file);
 
       g_set_error (error,
-		   GTK_FILE_CHOOSER_ERROR,
-		   GTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS,
+		   CTK_FILE_CHOOSER_ERROR,
+		   CTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS,
 		   _("%s already exists in the bookmarks list"),
 		   uri);
 

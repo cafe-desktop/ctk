@@ -20,10 +20,10 @@
  * by Christian Hergert <christian.hergert@gmail.com>
  */
 
-#ifndef __GTK_SPINNER_H__
-#define __GTK_SPINNER_H__
+#ifndef __CTK_SPINNER_H__
+#define __CTK_SPINNER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SPINNER           (ctk_spinner_get_type ())
-#define GTK_SPINNER(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SPINNER, GtkSpinner))
-#define GTK_SPINNER_CLASS(obj)     (G_TYPE_CHECK_CLASS_CAST ((obj), GTK_TYPE_SPINNER,  GtkSpinnerClass))
-#define GTK_IS_SPINNER(obj)        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SPINNER))
-#define GTK_IS_SPINNER_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE ((obj), GTK_TYPE_SPINNER))
-#define GTK_SPINNER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SPINNER, GtkSpinnerClass))
+#define CTK_TYPE_SPINNER           (ctk_spinner_get_type ())
+#define CTK_SPINNER(obj)           (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SPINNER, GtkSpinner))
+#define CTK_SPINNER_CLASS(obj)     (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_SPINNER,  GtkSpinnerClass))
+#define CTK_IS_SPINNER(obj)        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SPINNER))
+#define CTK_IS_SPINNER_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE ((obj), CTK_TYPE_SPINNER))
+#define CTK_SPINNER_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SPINNER, GtkSpinnerClass))
 
 typedef struct _GtkSpinner      GtkSpinner;
 typedef struct _GtkSpinnerClass GtkSpinnerClass;
@@ -72,4 +72,4 @@ void       ctk_spinner_stop       (GtkSpinner *spinner);
 
 G_END_DECLS
 
-#endif /* __GTK_SPINNER_H__ */
+#endif /* __CTK_SPINNER_H__ */

@@ -699,10 +699,10 @@ msgstr "Važno je"
 #: ../gtk/gtkaction.c:364
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Da li se akcija smatra važnom. Kada je TRUE, proxy-ji stavki alata za ovu "
-"akciju pokazuju tekst koristeći GTK_TOOLBAR_BOTH_HORIZ način."
+"akciju pokazuju tekst koristeći CTK_TOOLBAR_BOTH_HORIZ način."
 
 #: ../gtk/gtkaction.c:372
 msgid "Hide if empty"
@@ -1384,8 +1384,8 @@ msgid "Default Spacing"
 msgstr "Uobičajeni prostor"
 
 #: ../gtk/gtkbutton.c:477
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Razmak koji treba dodati za „GTK_CAN_DEFAULT“ dugmiće"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Razmak koji treba dodati za „CTK_CAN_DEFAULT“ dugmiće"
 
 #: ../gtk/gtkbutton.c:491
 msgid "Default Outside Spacing"
@@ -1393,10 +1393,10 @@ msgstr "Uobičajeni vanjski prostor"
 
 #: ../gtk/gtkbutton.c:492
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Razmak koji treba dodati oko „GTK_CAN_DEFAULT“ dugmića i koji se iscrtava "
+"Razmak koji treba dodati oko „CTK_CAN_DEFAULT“ dugmića i koji se iscrtava "
 "oko granice"
 
 #: ../gtk/gtkbutton.c:497
@@ -7155,10 +7155,10 @@ msgstr "Razmak između ikonice i oznake, u pikselima"
 #: ../gtk/gtktoolitem.c:206
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Da li se stavka trake s alatima smatra važnom. Kada je TRUE, dugmad trake s "
-"alatima pokazuju tekst u GTK_TOOLBAR_BOTH_HORIZ modu"
+"alatima pokazuju tekst u CTK_TOOLBAR_BOTH_HORIZ modu"
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

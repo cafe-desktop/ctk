@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_CONTAINER_H__
-#define __GTK_CONTAINER_H__
+#ifndef __CTK_CONTAINER_H__
+#define __CTK_CONTAINER_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -34,12 +34,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CONTAINER              (ctk_container_get_type ())
-#define GTK_CONTAINER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CONTAINER, GtkContainer))
-#define GTK_CONTAINER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CONTAINER, GtkContainerClass))
-#define GTK_IS_CONTAINER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CONTAINER))
-#define GTK_IS_CONTAINER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_CONTAINER))
-#define GTK_CONTAINER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CONTAINER, GtkContainerClass))
+#define CTK_TYPE_CONTAINER              (ctk_container_get_type ())
+#define CTK_CONTAINER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CONTAINER, GtkContainer))
+#define CTK_CONTAINER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CONTAINER, GtkContainerClass))
+#define CTK_IS_CONTAINER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CONTAINER))
+#define CTK_IS_CONTAINER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CONTAINER))
+#define CTK_CONTAINER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CONTAINER, GtkContainerClass))
 
 
 typedef struct _GtkContainer              GtkContainer;
@@ -124,15 +124,15 @@ struct _GtkContainerClass
 
 /**
  * GtkResizeMode:
- * @GTK_RESIZE_PARENT: Pass resize request to the parent
- * @GTK_RESIZE_QUEUE: Queue resizes on this widget
- * @GTK_RESIZE_IMMEDIATE: Resize immediately. Deprecated.
+ * @CTK_RESIZE_PARENT: Pass resize request to the parent
+ * @CTK_RESIZE_QUEUE: Queue resizes on this widget
+ * @CTK_RESIZE_IMMEDIATE: Resize immediately. Deprecated.
  */
 typedef enum
 {
-  GTK_RESIZE_PARENT,
-  GTK_RESIZE_QUEUE,
-  GTK_RESIZE_IMMEDIATE
+  CTK_RESIZE_PARENT,
+  CTK_RESIZE_QUEUE,
+  CTK_RESIZE_IMMEDIATE
 } GtkResizeMode;
 
 
@@ -182,8 +182,8 @@ gboolean ctk_container_get_focus_chain  (GtkContainer   *container,
 GDK_DEPRECATED_IN_3_24
 void     ctk_container_unset_focus_chain (GtkContainer  *container);
 
-#define GTK_IS_RESIZE_CONTAINER(widget) (GTK_IS_CONTAINER (widget) && \
-                                        (ctk_container_get_resize_mode (GTK_CONTAINER (widget)) != GTK_RESIZE_PARENT))
+#define CTK_IS_RESIZE_CONTAINER(widget) (CTK_IS_CONTAINER (widget) && \
+                                        (ctk_container_get_resize_mode (CTK_CONTAINER (widget)) != CTK_RESIZE_PARENT))
 
 /* Widget-level methods */
 
@@ -275,7 +275,7 @@ void ctk_container_child_notify_by_pspec (GtkContainer *container,
                                           GParamSpec   *pspec);
 
 /**
- * GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID:
+ * CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID:
  * @object: the #GObject on which set_child_property() or get_child_property()
  *  was called
  * @property_id: the numeric id of the property
@@ -284,7 +284,7 @@ void ctk_container_child_notify_by_pspec (GtkContainer *container,
  * This macro should be used to emit a standard warning about unexpected
  * properties in set_child_property() and get_child_property() implementations.
  */
-#define GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID(object, property_id, pspec) \
+#define CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID(object, property_id, pspec) \
     G_OBJECT_WARN_INVALID_PSPEC ((object), "child property", (property_id), (pspec))
 
 
@@ -304,4 +304,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkContainer, g_object_unref)
 
 G_END_DECLS
 
-#endif /* __GTK_CONTAINER_H__ */
+#endif /* __CTK_CONTAINER_H__ */

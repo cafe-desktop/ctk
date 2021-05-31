@@ -32,7 +32,7 @@
  * Progress tracker will handle translating frame clock timestamps to a
  * fractional progress value for interpolating between animation targets.
  *
- * Progress tracker will use the GTK_SLOWDOWN environment variable to control
+ * Progress tracker will use the CTK_SLOWDOWN environment variable to control
  * the speed of animations. This can be useful for debugging.
  */
 
@@ -158,7 +158,7 @@ ctk_progress_tracker_skip_frame (GtkProgressTracker *tracker,
  * Returns whether the tracker is before, during or after the currently started
  * animation. The tracker will only ever be in the before state if the animation
  * was started with a delay. If no animation has been started, returns
- * %GTK_PROGRESS_STATE_AFTER.
+ * %CTK_PROGRESS_STATE_AFTER.
  *
  * Returns: A GtkProgressState
  **/
@@ -166,10 +166,10 @@ GtkProgressState
 ctk_progress_tracker_get_state (GtkProgressTracker *tracker)
 {
   if (!tracker->is_running || tracker->iteration > tracker->iteration_count)
-    return GTK_PROGRESS_STATE_AFTER;
+    return CTK_PROGRESS_STATE_AFTER;
   if (tracker->iteration < 0)
-    return GTK_PROGRESS_STATE_BEFORE;
-  return GTK_PROGRESS_STATE_DURING;
+    return CTK_PROGRESS_STATE_BEFORE;
+  return CTK_PROGRESS_STATE_DURING;
 }
 
 /**

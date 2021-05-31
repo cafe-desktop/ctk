@@ -18,8 +18,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_MENU_BUTTON_PRIVATE_H__
-#define __GTK_MENU_BUTTON_PRIVATE_H__
+#ifndef __CTK_MENU_BUTTON_PRIVATE_H__
+#define __CTK_MENU_BUTTON_PRIVATE_H__
 
 #include <gtk/gtkmenubutton.h>
 
@@ -34,4 +34,4 @@ void       _ctk_menu_button_set_popup_with_func (GtkMenuButton                 *
 
 G_END_DECLS
 
-#endif /* __GTK_MENU_BUTTON_PRIVATE_H__ */
+#endif /* __CTK_MENU_BUTTON_PRIVATE_H__ */

@@ -31,35 +31,35 @@ main (int argc,
   ctk_init (&argc, &argv);
 
   pixbuf = gdk_pixbuf_new_from_file ("apple-red.png", NULL);
-  toplevel = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-  ctk_container_add (GTK_CONTAINER (toplevel), hbox);
+  toplevel = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
+  ctk_container_add (CTK_CONTAINER (toplevel), hbox);
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-  ctk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 0);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 12);
+  ctk_box_pack_start (CTK_BOX (hbox), vbox, FALSE, FALSE, 0);
 
-  image = ctk_image_new_from_gicon (G_ICON (pixbuf), GTK_ICON_SIZE_DIALOG);
-  ctk_box_pack_start (GTK_BOX (vbox), image, FALSE, FALSE, 0);
+  image = ctk_image_new_from_gicon (G_ICON (pixbuf), CTK_ICON_SIZE_DIALOG);
+  ctk_box_pack_start (CTK_BOX (vbox), image, FALSE, FALSE, 0);
 
   label = ctk_label_new (NULL);
   str = g_strdup_printf ("Normal icon, hash %u", g_icon_hash (G_ICON (pixbuf)));
-  ctk_label_set_label (GTK_LABEL (label), str);
-  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_label_set_label (CTK_LABEL (label), str);
+  ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
   otherpix = gdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
   emblem = g_emblem_new (G_ICON (otherpix));
   emblemed = g_emblemed_icon_new (G_ICON (pixbuf), emblem);
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 12);
-  ctk_box_pack_start (GTK_BOX (hbox), vbox, FALSE, FALSE, 0);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 12);
+  ctk_box_pack_start (CTK_BOX (hbox), vbox, FALSE, FALSE, 0);
   
-  image2 = ctk_image_new_from_gicon (emblemed, GTK_ICON_SIZE_DIALOG);
-  ctk_box_pack_start (GTK_BOX (vbox), image2, FALSE, FALSE, 0);
+  image2 = ctk_image_new_from_gicon (emblemed, CTK_ICON_SIZE_DIALOG);
+  ctk_box_pack_start (CTK_BOX (vbox), image2, FALSE, FALSE, 0);
 
   label = ctk_label_new (NULL);
   str = g_strdup_printf ("Emblemed icon, hash %u", g_icon_hash (emblemed));
-  ctk_label_set_label (GTK_LABEL (label), str);
-  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_label_set_label (CTK_LABEL (label), str);
+  ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
   ctk_widget_show_all (toplevel);
 

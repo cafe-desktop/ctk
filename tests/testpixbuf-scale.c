@@ -17,7 +17,7 @@ set_interp_type (GtkWidget *widget, gpointer data)
                     GDK_INTERP_TILES,
                     GDK_INTERP_HYPER };
 
-  interp_type = types[ctk_combo_box_get_active (GTK_COMBO_BOX (widget))];
+  interp_type = types[ctk_combo_box_get_active (CTK_COMBO_BOX (widget))];
   ctk_widget_queue_draw (darea);
 }
 
@@ -89,42 +89,42 @@ main(int argc, char **argv)
         if (creator)
                 g_print ("%s was created by '%s'\n", argv[1], creator);
 
-	window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+	window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 	g_signal_connect (window, "destroy",
 			  G_CALLBACK (ctk_main_quit), NULL);
 	
-	vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-	ctk_container_add (GTK_CONTAINER (window), vbox);
+	vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+	ctk_container_add (CTK_CONTAINER (window), vbox);
 
         combo_box = ctk_combo_box_text_new ();
 
-        ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), "NEAREST");
-        ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), "BILINEAR");
-        ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), "TILES");
-        ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), "HYPER");
+        ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo_box), "NEAREST");
+        ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo_box), "BILINEAR");
+        ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo_box), "TILES");
+        ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo_box), "HYPER");
 
-        ctk_combo_box_set_active (GTK_COMBO_BOX (combo_box), 1);
+        ctk_combo_box_set_active (CTK_COMBO_BOX (combo_box), 1);
 
         g_signal_connect (combo_box, "changed",
                           G_CALLBACK (set_interp_type),
                           NULL);
 	
-        ctk_widget_set_halign (combo_box, GTK_ALIGN_START);
-	ctk_box_pack_start (GTK_BOX (vbox), combo_box, FALSE, FALSE, 0);
+        ctk_widget_set_halign (combo_box, CTK_ALIGN_START);
+	ctk_box_pack_start (CTK_BOX (vbox), combo_box, FALSE, FALSE, 0);
 
-	hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 4);
-	ctk_box_pack_start (GTK_BOX (vbox), hbox, FALSE, FALSE, 0);
+	hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 4);
+	ctk_box_pack_start (CTK_BOX (vbox), hbox, FALSE, FALSE, 0);
 
 	label = ctk_label_new ("Overall Alpha:");
-	ctk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+	ctk_box_pack_start (CTK_BOX (hbox), label, FALSE, FALSE, 0);
 
 	adjustment = ctk_adjustment_new (overall_alpha, 0, 255, 1, 10, 0);
 	g_signal_connect (adjustment, "value_changed",
 			  G_CALLBACK (overall_changed_cb), NULL);
 	
-	hscale = ctk_scale_new (GTK_ORIENTATION_HORIZONTAL, adjustment);
-	ctk_scale_set_digits (GTK_SCALE (hscale), 0);
-	ctk_box_pack_start (GTK_BOX (hbox), hscale, TRUE, TRUE, 0);
+	hscale = ctk_scale_new (CTK_ORIENTATION_HORIZONTAL, adjustment);
+	ctk_scale_set_digits (CTK_SCALE (hscale), 0);
+	ctk_box_pack_start (CTK_BOX (hbox), hscale, TRUE, TRUE, 0);
 
 	ctk_widget_show_all (vbox);
 
@@ -133,12 +133,12 @@ main(int argc, char **argv)
                                    &scratch_requisition, NULL);
 
 	darea = ctk_drawing_area_new ();
-	ctk_box_pack_start (GTK_BOX (vbox), darea, TRUE, TRUE, 0);
+	ctk_box_pack_start (CTK_BOX (vbox), darea, TRUE, TRUE, 0);
 
 	g_signal_connect (darea, "draw",
 			  G_CALLBACK (draw_cb), NULL);
 
-	ctk_window_set_default_size (GTK_WINDOW (window),
+	ctk_window_set_default_size (CTK_WINDOW (window),
 				     gdk_pixbuf_get_width (pixbuf),
 				     scratch_requisition.height + gdk_pixbuf_get_height (pixbuf));
 	

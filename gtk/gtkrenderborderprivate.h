@@ -19,8 +19,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_RENDER_BORDER_H__
-#define __GTK_RENDER_BORDER_H__
+#ifndef __CTK_RENDER_BORDER_H__
+#define __CTK_RENDER_BORDER_H__
 
 #include "gtkborder.h"
 #include "gtkcssimageprivate.h"
@@ -61,4 +61,4 @@ gboolean        ctk_css_style_render_outline_get_clip   (GtkCssStyle            
 
 G_END_DECLS
 
-#endif /* __GTK_RENDER_BORDER_H__ */
+#endif /* __CTK_RENDER_BORDER_H__ */

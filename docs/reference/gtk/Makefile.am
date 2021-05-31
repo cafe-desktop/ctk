@@ -9,7 +9,7 @@ DOC_MODULE=gtk3
 DOC_MAIN_SGML_FILE=gtk-docs.sgml
 
 # Extra options to supply to gtkdoc-scan
-SCAN_OPTIONS=--deprecated-guards="GTK_ENABLE_BROKEN|GTK_DISABLE_DEPRECATED"
+SCAN_OPTIONS=--deprecated-guards="CTK_ENABLE_BROKEN|CTK_DISABLE_DEPRECATED"
 
 # The directory containing the source code. Relative to $(srcdir)
 DOC_SOURCE_DIR=$(top_srcdir)/gtk
@@ -261,18 +261,18 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir) 	\
 	-I$(top_builddir) 	\
 	-I$(top_builddir)/gdk	\
-	-DGTK_ENABLE_BROKEN	\
+	-DCTK_ENABLE_BROKEN	\
 	-Wno-deprecated-declarations \
-	$(GTK_DEBUG_FLAGS)	\
-	$(GTK_DEP_CFLAGS)
+	$(CTK_DEBUG_FLAGS)	\
+	$(CTK_DEP_CFLAGS)
 
 CPPFLAGS += \
-	-UGTK_DISABLE_SINGLE_INCLUDES
+	-UCTK_DISABLE_SINGLE_INCLUDES
 
 GTKDOC_LIBS = \
 	$(top_builddir)/gdk/libgdk-3.la \
 	$(top_builddir)/gtk/libgtk-3.la	\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
 
 # Extra options to supply to gtkdoc-mkdb
@@ -547,7 +547,7 @@ EXTRA_DIST += \
 	$(man_MANS) \
 	meson.build
 
-if ENABLE_GTK_DOC
+if ENABLE_CTK_DOC
 TESTS_ENVIRONMENT = cd $(srcdir) && \
   DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
   SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)

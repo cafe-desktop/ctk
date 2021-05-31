@@ -125,12 +125,12 @@ static void ctk_drawing_area_size_allocate (GtkWidget           *widget,
                                             GtkAllocation       *allocation);
 static void ctk_drawing_area_send_configure (GtkDrawingArea     *darea);
 
-G_DEFINE_TYPE (GtkDrawingArea, ctk_drawing_area, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE (GtkDrawingArea, ctk_drawing_area, CTK_TYPE_WIDGET)
 
 static void
 ctk_drawing_area_class_init (GtkDrawingAreaClass *class)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   widget_class->realize = ctk_drawing_area_realize;
   widget_class->size_allocate = ctk_drawing_area_size_allocate;
@@ -154,7 +154,7 @@ ctk_drawing_area_init (GtkDrawingArea *darea)
 GtkWidget*
 ctk_drawing_area_new (void)
 {
-  return g_object_new (GTK_TYPE_DRAWING_AREA, NULL);
+  return g_object_new (CTK_TYPE_DRAWING_AREA, NULL);
 }
 
 static void
@@ -179,7 +179,7 @@ set_background (GtkWidget *widget)
 static void
 ctk_drawing_area_style_updated (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (ctk_drawing_area_parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (ctk_drawing_area_parent_class)->style_updated (widget);
 
   set_background (widget);
 }
@@ -194,7 +194,7 @@ ctk_drawing_area_realize (GtkWidget *widget)
 
   if (!ctk_widget_get_has_window (widget))
     {
-      GTK_WIDGET_CLASS (ctk_drawing_area_parent_class)->realize (widget);
+      CTK_WIDGET_CLASS (ctk_drawing_area_parent_class)->realize (widget);
     }
   else
     {
@@ -221,14 +221,14 @@ ctk_drawing_area_realize (GtkWidget *widget)
       set_background (widget);
     }
 
-  ctk_drawing_area_send_configure (GTK_DRAWING_AREA (widget));
+  ctk_drawing_area_send_configure (CTK_DRAWING_AREA (widget));
 }
 
 static void
 ctk_drawing_area_size_allocate (GtkWidget     *widget,
                                 GtkAllocation *allocation)
 {
-  g_return_if_fail (GTK_IS_DRAWING_AREA (widget));
+  g_return_if_fail (CTK_IS_DRAWING_AREA (widget));
   g_return_if_fail (allocation != NULL);
 
   ctk_widget_set_allocation (widget, allocation);
@@ -240,7 +240,7 @@ ctk_drawing_area_size_allocate (GtkWidget     *widget,
                                 allocation->x, allocation->y,
                                 allocation->width, allocation->height);
 
-      ctk_drawing_area_send_configure (GTK_DRAWING_AREA (widget));
+      ctk_drawing_area_send_configure (CTK_DRAWING_AREA (widget));
     }
 }
 
@@ -251,7 +251,7 @@ ctk_drawing_area_send_configure (GtkDrawingArea *darea)
   GtkWidget *widget;
   GdkEvent *event = gdk_event_new (GDK_CONFIGURE);
 
-  widget = GTK_WIDGET (darea);
+  widget = CTK_WIDGET (darea);
   ctk_widget_get_allocation (widget, &allocation);
 
   event->configure.window = g_object_ref (ctk_widget_get_window (widget));

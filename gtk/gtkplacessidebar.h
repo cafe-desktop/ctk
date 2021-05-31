@@ -21,10 +21,10 @@
  *           Federico Mena Quintero <federico@gnome.org>
  */
 
-#ifndef __GTK_PLACES_SIDEBAR_H__
-#define __GTK_PLACES_SIDEBAR_H__
+#ifndef __CTK_PLACES_SIDEBAR_H__
+#define __CTK_PLACES_SIDEBAR_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -32,26 +32,26 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PLACES_SIDEBAR			(ctk_places_sidebar_get_type ())
-#define GTK_PLACES_SIDEBAR(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PLACES_SIDEBAR, GtkPlacesSidebar))
-#define GTK_PLACES_SIDEBAR_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PLACES_SIDEBAR, GtkPlacesSidebarClass))
-#define GTK_IS_PLACES_SIDEBAR(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PLACES_SIDEBAR))
-#define GTK_IS_PLACES_SIDEBAR_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PLACES_SIDEBAR))
-#define GTK_PLACES_SIDEBAR_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PLACES_SIDEBAR, GtkPlacesSidebarClass))
+#define CTK_TYPE_PLACES_SIDEBAR			(ctk_places_sidebar_get_type ())
+#define CTK_PLACES_SIDEBAR(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PLACES_SIDEBAR, GtkPlacesSidebar))
+#define CTK_PLACES_SIDEBAR_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PLACES_SIDEBAR, GtkPlacesSidebarClass))
+#define CTK_IS_PLACES_SIDEBAR(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PLACES_SIDEBAR))
+#define CTK_IS_PLACES_SIDEBAR_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PLACES_SIDEBAR))
+#define CTK_PLACES_SIDEBAR_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PLACES_SIDEBAR, GtkPlacesSidebarClass))
 
 typedef struct _GtkPlacesSidebar GtkPlacesSidebar;
 typedef struct _GtkPlacesSidebarClass GtkPlacesSidebarClass;
 
 /**
  * GtkPlacesOpenFlags:
- * @GTK_PLACES_OPEN_NORMAL: This is the default mode that #GtkPlacesSidebar uses if no other flags
+ * @CTK_PLACES_OPEN_NORMAL: This is the default mode that #GtkPlacesSidebar uses if no other flags
  *  are specified.  It indicates that the calling application should open the selected location
  *  in the normal way, for example, in the folder view beside the sidebar.
- * @GTK_PLACES_OPEN_NEW_TAB: When passed to ctk_places_sidebar_set_open_flags(), this indicates
+ * @CTK_PLACES_OPEN_NEW_TAB: When passed to ctk_places_sidebar_set_open_flags(), this indicates
  *  that the application can open folders selected from the sidebar in new tabs.  This value
  *  will be passed to the #GtkPlacesSidebar::open-location signal when the user selects
  *  that a location be opened in a new tab instead of in the standard fashion.
- * @GTK_PLACES_OPEN_NEW_WINDOW: Similar to @GTK_PLACES_OPEN_NEW_TAB, but indicates that the application
+ * @CTK_PLACES_OPEN_NEW_WINDOW: Similar to @CTK_PLACES_OPEN_NEW_TAB, but indicates that the application
  *  can open folders in new windows.
  *
  * These flags serve two purposes.  First, the application can call ctk_places_sidebar_set_open_flags()
@@ -66,13 +66,13 @@ typedef struct _GtkPlacesSidebarClass GtkPlacesSidebarClass;
  * based on the modifier keys that the user is pressing at the time the selection is made.
  *
  * If the application never calls ctk_places_sidebar_set_open_flags(), then the sidebar will only
- * use #GTK_PLACES_OPEN_NORMAL in the #GtkPlacesSidebar::open-location signal.  This is the
+ * use #CTK_PLACES_OPEN_NORMAL in the #GtkPlacesSidebar::open-location signal.  This is the
  * default mode of operation.
  */
 typedef enum {
-  GTK_PLACES_OPEN_NORMAL     = 1 << 0,
-  GTK_PLACES_OPEN_NEW_TAB    = 1 << 1,
-  GTK_PLACES_OPEN_NEW_WINDOW = 1 << 2
+  CTK_PLACES_OPEN_NORMAL     = 1 << 0,
+  CTK_PLACES_OPEN_NEW_TAB    = 1 << 1,
+  CTK_PLACES_OPEN_NEW_WINDOW = 1 << 2
 } GtkPlacesOpenFlags;
 
 GDK_AVAILABLE_IN_3_10
@@ -157,4 +157,4 @@ GDK_AVAILABLE_IN_3_22
 gboolean             ctk_places_sidebar_get_show_starred_location (GtkPlacesSidebar   *sidebar);
 G_END_DECLS
 
-#endif /* __GTK_PLACES_SIDEBAR_H__ */
+#endif /* __CTK_PLACES_SIDEBAR_H__ */

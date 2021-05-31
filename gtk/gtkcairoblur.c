@@ -197,7 +197,7 @@ _boxblur (guchar      *buffer,
 
   flipped_buffer = g_malloc (width * height);
 
-  if (flags & GTK_BLUR_Y)
+  if (flags & CTK_BLUR_Y)
     {
       /* Step 1: swap rows and columns */
       flip_buffer (flipped_buffer, buffer, width, height);
@@ -209,7 +209,7 @@ _boxblur (guchar      *buffer,
       flip_buffer (buffer, flipped_buffer, height, width);
     }
 
-  if (flags & GTK_BLUR_X)
+  if (flags & CTK_BLUR_X)
     {
       /* Step 4: blur rows */
       blur_rows (buffer, flipped_buffer, width, height, d);
@@ -241,7 +241,7 @@ _ctk_cairo_blur_surface (cairo_surface_t* surface,
   if (radius <= 1)
     return;
 
-  if ((flags & (GTK_BLUR_X|GTK_BLUR_Y)) == 0)
+  if ((flags & (CTK_BLUR_X|CTK_BLUR_Y)) == 0)
     return;
 
   /* Before we mess with the surface, execute any pending drawing. */

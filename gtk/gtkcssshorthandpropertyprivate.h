@@ -17,8 +17,8 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_CSS_SHORTHAND_PROPERTY_PRIVATE_H__
-#define __GTK_CSS_SHORTHAND_PROPERTY_PRIVATE_H__
+#ifndef __CTK_CSS_SHORTHAND_PROPERTY_PRIVATE_H__
+#define __CTK_CSS_SHORTHAND_PROPERTY_PRIVATE_H__
 
 #include <glib-object.h>
 
@@ -28,12 +28,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_SHORTHAND_PROPERTY           (_ctk_css_shorthand_property_get_type ())
-#define GTK_CSS_SHORTHAND_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandProperty))
-#define GTK_CSS_SHORTHAND_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandPropertyClass))
-#define GTK_IS_CSS_SHORTHAND_PROPERTY(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_SHORTHAND_PROPERTY))
-#define GTK_IS_CSS_SHORTHAND_PROPERTY_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_SHORTHAND_PROPERTY))
-#define GTK_CSS_SHORTHAND_PROPERTY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandPropertyClass))
+#define CTK_TYPE_CSS_SHORTHAND_PROPERTY           (_ctk_css_shorthand_property_get_type ())
+#define CTK_CSS_SHORTHAND_PROPERTY(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandProperty))
+#define CTK_CSS_SHORTHAND_PROPERTY_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandPropertyClass))
+#define CTK_IS_CSS_SHORTHAND_PROPERTY(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_SHORTHAND_PROPERTY))
+#define CTK_IS_CSS_SHORTHAND_PROPERTY_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_SHORTHAND_PROPERTY))
+#define CTK_CSS_SHORTHAND_PROPERTY_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_SHORTHAND_PROPERTY, GtkCssShorthandPropertyClass))
 
 typedef struct _GtkCssShorthandProperty           GtkCssShorthandProperty;
 typedef struct _GtkCssShorthandPropertyClass      GtkCssShorthandPropertyClass;
@@ -77,4 +77,4 @@ guint                   _ctk_css_shorthand_property_get_n_subproperties (GtkCssS
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_SHORTHAND_PROPERTY_PRIVATE_H__ */
+#endif /* __CTK_CSS_SHORTHAND_PROPERTY_PRIVATE_H__ */

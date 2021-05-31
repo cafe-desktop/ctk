@@ -141,9 +141,9 @@ static void viewport_set_adjustment               (GtkViewport      *viewport,
 static void ctk_viewport_queue_draw_region        (GtkWidget        *widget,
 						   const cairo_region_t *region);
 
-G_DEFINE_TYPE_WITH_CODE (GtkViewport, ctk_viewport, GTK_TYPE_BIN,
+G_DEFINE_TYPE_WITH_CODE (GtkViewport, ctk_viewport, CTK_TYPE_BIN,
                          G_ADD_PRIVATE (GtkViewport)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_SCROLLABLE, NULL))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_SCROLLABLE, NULL))
 
 static void
 ctk_viewport_measure (GtkCssGadget   *gadget,
@@ -160,7 +160,7 @@ ctk_viewport_measure (GtkCssGadget   *gadget,
 
   *minimum = *natural = 0;
 
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
   if (child && ctk_widget_get_visible (child))
     _ctk_widget_get_preferred_size_for_size (child,
                                              orientation,
@@ -172,7 +172,7 @@ ctk_viewport_measure (GtkCssGadget   *gadget,
 static void
 viewport_set_hadjustment_values (GtkViewport *viewport)
 {
-  GtkBin *bin = GTK_BIN (viewport);
+  GtkBin *bin = CTK_BIN (viewport);
   GtkAllocation view_allocation;
   GtkAdjustment *hadjustment = viewport->priv->hadjustment;
   GtkWidget *child;
@@ -187,7 +187,7 @@ viewport_set_hadjustment_values (GtkViewport *viewport)
       gint minimum_width, natural_width;
       gint scroll_height;
 
-      if (viewport->priv->vscroll_policy == GTK_SCROLL_MINIMUM)
+      if (viewport->priv->vscroll_policy == CTK_SCROLL_MINIMUM)
 	ctk_widget_get_preferred_height (child, &scroll_height, NULL);
       else
 	ctk_widget_get_preferred_height (child, NULL, &scroll_height);
@@ -197,7 +197,7 @@ viewport_set_hadjustment_values (GtkViewport *viewport)
                                                  &minimum_width,
                                                  &natural_width);
 
-      if (viewport->priv->hscroll_policy == GTK_SCROLL_MINIMUM)
+      if (viewport->priv->hscroll_policy == CTK_SCROLL_MINIMUM)
 	upper = MAX (minimum_width, view_allocation.width);
       else
 	upper = MAX (natural_width, view_allocation.width);
@@ -207,7 +207,7 @@ viewport_set_hadjustment_values (GtkViewport *viewport)
 
   value = ctk_adjustment_get_value (hadjustment);
   /* We clamp to the left in RTL mode */
-  if (ctk_widget_get_direction (GTK_WIDGET (viewport)) == GTK_TEXT_DIR_RTL)
+  if (ctk_widget_get_direction (CTK_WIDGET (viewport)) == CTK_TEXT_DIR_RTL)
     {
       gdouble dist = ctk_adjustment_get_upper (hadjustment)
                      - value
@@ -227,7 +227,7 @@ viewport_set_hadjustment_values (GtkViewport *viewport)
 static void
 viewport_set_vadjustment_values (GtkViewport *viewport)
 {
-  GtkBin *bin = GTK_BIN (viewport);
+  GtkBin *bin = CTK_BIN (viewport);
   GtkAllocation view_allocation;
   GtkAdjustment *vadjustment = viewport->priv->vadjustment;
   GtkWidget *child;
@@ -242,7 +242,7 @@ viewport_set_vadjustment_values (GtkViewport *viewport)
       gint minimum_height, natural_height;
       gint scroll_width;
 
-      if (viewport->priv->hscroll_policy == GTK_SCROLL_MINIMUM)
+      if (viewport->priv->hscroll_policy == CTK_SCROLL_MINIMUM)
 	ctk_widget_get_preferred_width (child, &scroll_width, NULL);
       else
 	ctk_widget_get_preferred_width (child, NULL, &scroll_width);
@@ -252,7 +252,7 @@ viewport_set_vadjustment_values (GtkViewport *viewport)
                                                  &minimum_height,
                                                  &natural_height);
 
-      if (viewport->priv->vscroll_policy == GTK_SCROLL_MINIMUM)
+      if (viewport->priv->vscroll_policy == CTK_SCROLL_MINIMUM)
 	upper = MAX (minimum_height, view_allocation.height);
       else
 	upper = MAX (natural_height, view_allocation.height);
@@ -277,7 +277,7 @@ ctk_viewport_allocate (GtkCssGadget        *gadget,
                        gpointer             data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkViewport *viewport = GTK_VIEWPORT (widget);
+  GtkViewport *viewport = CTK_VIEWPORT (widget);
   GtkViewportPrivate *priv = viewport->priv;
   GtkAdjustment *hadjustment = priv->hadjustment;
   GtkAdjustment *vadjustment = priv->vadjustment;
@@ -303,7 +303,7 @@ ctk_viewport_allocate (GtkCssGadget        *gadget,
                               ctk_adjustment_get_upper (vadjustment));
     }
 
-  child = ctk_bin_get_child (GTK_BIN (widget));
+  child = ctk_bin_get_child (CTK_BIN (widget));
   if (child && ctk_widget_get_visible (child))
     {
       GtkAllocation child_allocation;
@@ -324,8 +324,8 @@ static void
 draw_bin (cairo_t *cr,
 	  gpointer user_data)
 {
-  GtkWidget *widget = GTK_WIDGET (user_data);
-  GTK_WIDGET_CLASS (ctk_viewport_parent_class)->draw (widget, cr);
+  GtkWidget *widget = CTK_WIDGET (user_data);
+  CTK_WIDGET_CLASS (ctk_viewport_parent_class)->draw (widget, cr);
 }
 
 static gboolean
@@ -338,7 +338,7 @@ ctk_viewport_render (GtkCssGadget *gadget,
                      gpointer      data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkViewport *viewport = GTK_VIEWPORT (widget);
+  GtkViewport *viewport = CTK_VIEWPORT (widget);
   GtkViewportPrivate *priv = viewport->priv;
 
   if (ctk_cairo_should_draw_window (cr, priv->bin_window))
@@ -407,9 +407,9 @@ ctk_viewport_class_init (GtkViewportClass *class)
                                    g_param_spec_enum ("shadow-type",
 						      P_("Shadow type"),
 						      P_("Determines how the shadowed box around the viewport is drawn"),
-						      GTK_TYPE_SHADOW_TYPE,
-						      GTK_SHADOW_IN,
-						      GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						      CTK_TYPE_SHADOW_TYPE,
+						      CTK_SHADOW_IN,
+						      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   ctk_widget_class_set_css_name (widget_class, "viewport");
 }
@@ -422,21 +422,21 @@ ctk_viewport_set_property (GObject         *object,
 {
   GtkViewport *viewport;
 
-  viewport = GTK_VIEWPORT (object);
+  viewport = CTK_VIEWPORT (object);
 
   switch (prop_id)
     {
     case PROP_HADJUSTMENT:
-      viewport_set_adjustment (viewport, GTK_ORIENTATION_HORIZONTAL, g_value_get_object (value));
+      viewport_set_adjustment (viewport, CTK_ORIENTATION_HORIZONTAL, g_value_get_object (value));
       break;
     case PROP_VADJUSTMENT:
-      viewport_set_adjustment (viewport, GTK_ORIENTATION_VERTICAL, g_value_get_object (value));
+      viewport_set_adjustment (viewport, CTK_ORIENTATION_VERTICAL, g_value_get_object (value));
       break;
     case PROP_HSCROLL_POLICY:
       if (viewport->priv->hscroll_policy != g_value_get_enum (value))
         {
           viewport->priv->hscroll_policy = g_value_get_enum (value);
-          ctk_widget_queue_resize (GTK_WIDGET (viewport));
+          ctk_widget_queue_resize (CTK_WIDGET (viewport));
           g_object_notify_by_pspec (object, pspec);
         }
       break;
@@ -444,7 +444,7 @@ ctk_viewport_set_property (GObject         *object,
       if (viewport->priv->vscroll_policy != g_value_get_enum (value))
         {
           viewport->priv->vscroll_policy = g_value_get_enum (value);
-          ctk_widget_queue_resize (GTK_WIDGET (viewport));
+          ctk_widget_queue_resize (CTK_WIDGET (viewport));
           g_object_notify_by_pspec (object, pspec);
         }
       break;
@@ -463,7 +463,7 @@ ctk_viewport_get_property (GObject         *object,
 			   GValue          *value,
 			   GParamSpec      *pspec)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (object);
+  GtkViewport *viewport = CTK_VIEWPORT (object);
   GtkViewportPrivate *priv = viewport->priv;
 
   switch (prop_id)
@@ -498,11 +498,11 @@ ctk_viewport_init (GtkViewport *viewport)
 
   viewport->priv = ctk_viewport_get_instance_private (viewport);
   priv = viewport->priv;
-  widget = GTK_WIDGET (viewport);
+  widget = CTK_WIDGET (viewport);
 
   ctk_widget_set_has_window (widget, TRUE);
 
-  priv->shadow_type = GTK_SHADOW_IN;
+  priv->shadow_type = CTK_SHADOW_IN;
   priv->view_window = NULL;
   priv->bin_window = NULL;
   priv->hadjustment = NULL;
@@ -518,9 +518,9 @@ ctk_viewport_init (GtkViewport *viewport)
                                                      ctk_viewport_render,
                                                      NULL, NULL);
 
-  ctk_css_gadget_add_class (priv->gadget, GTK_STYLE_CLASS_FRAME);
-  viewport_set_adjustment (viewport, GTK_ORIENTATION_HORIZONTAL, NULL);
-  viewport_set_adjustment (viewport, GTK_ORIENTATION_VERTICAL, NULL);
+  ctk_css_gadget_add_class (priv->gadget, CTK_STYLE_CLASS_FRAME);
+  viewport_set_adjustment (viewport, CTK_ORIENTATION_HORIZONTAL, NULL);
+  viewport_set_adjustment (viewport, CTK_ORIENTATION_VERTICAL, NULL);
 }
 
 /**
@@ -539,7 +539,7 @@ ctk_viewport_new (GtkAdjustment *hadjustment,
 {
   GtkWidget *viewport;
 
-  viewport = g_object_new (GTK_TYPE_VIEWPORT,
+  viewport = g_object_new (CTK_TYPE_VIEWPORT,
                            "hadjustment", hadjustment,
                            "vadjustment", vadjustment,
                            NULL);
@@ -548,7 +548,7 @@ ctk_viewport_new (GtkAdjustment *hadjustment,
 }
 
 #define ADJUSTMENT_POINTER(viewport, orientation)         \
-  (((orientation) == GTK_ORIENTATION_HORIZONTAL) ?        \
+  (((orientation) == CTK_ORIENTATION_HORIZONTAL) ?        \
      &(viewport)->priv->hadjustment : &(viewport)->priv->vadjustment)
 
 static void
@@ -570,13 +570,13 @@ viewport_disconnect_adjustment (GtkViewport    *viewport,
 static void
 ctk_viewport_destroy (GtkWidget *widget)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (widget);
+  GtkViewport *viewport = CTK_VIEWPORT (widget);
   GtkViewportPrivate *priv = viewport->priv;
 
-  viewport_disconnect_adjustment (viewport, GTK_ORIENTATION_HORIZONTAL);
-  viewport_disconnect_adjustment (viewport, GTK_ORIENTATION_VERTICAL);
+  viewport_disconnect_adjustment (viewport, CTK_ORIENTATION_HORIZONTAL);
+  viewport_disconnect_adjustment (viewport, CTK_ORIENTATION_VERTICAL);
 
-  GTK_WIDGET_CLASS (ctk_viewport_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (ctk_viewport_parent_class)->destroy (widget);
 
   g_clear_pointer (&priv->pixel_cache, _ctk_pixel_cache_free);
 }
@@ -584,7 +584,7 @@ ctk_viewport_destroy (GtkWidget *widget)
 static void
 ctk_viewport_finalize (GObject *object)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (object);
+  GtkViewport *viewport = CTK_VIEWPORT (object);
   GtkViewportPrivate *priv = viewport->priv;
 
   g_clear_object (&priv->gadget);
@@ -605,7 +605,7 @@ ctk_viewport_finalize (GObject *object)
 GtkAdjustment*
 ctk_viewport_get_hadjustment (GtkViewport *viewport)
 {
-  g_return_val_if_fail (GTK_IS_VIEWPORT (viewport), NULL);
+  g_return_val_if_fail (CTK_IS_VIEWPORT (viewport), NULL);
 
   return viewport->priv->hadjustment;
 }
@@ -623,7 +623,7 @@ ctk_viewport_get_hadjustment (GtkViewport *viewport)
 GtkAdjustment*
 ctk_viewport_get_vadjustment (GtkViewport *viewport)
 {
-  g_return_val_if_fail (GTK_IS_VIEWPORT (viewport), NULL);
+  g_return_val_if_fail (CTK_IS_VIEWPORT (viewport), NULL);
 
   return viewport->priv->vadjustment;
 }
@@ -644,7 +644,7 @@ viewport_set_adjustment (GtkViewport    *viewport,
   *adjustmentp = adjustment;
   g_object_ref_sink (adjustment);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     viewport_set_hadjustment_values (viewport);
   else
     viewport_set_vadjustment_values (viewport);
@@ -669,11 +669,11 @@ void
 ctk_viewport_set_hadjustment (GtkViewport   *viewport,
 			      GtkAdjustment *adjustment)
 {
-  g_return_if_fail (GTK_IS_VIEWPORT (viewport));
+  g_return_if_fail (CTK_IS_VIEWPORT (viewport));
   if (adjustment)
-    g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+    g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
-  viewport_set_adjustment (viewport, GTK_ORIENTATION_HORIZONTAL, adjustment);
+  viewport_set_adjustment (viewport, CTK_ORIENTATION_HORIZONTAL, adjustment);
 
   g_object_notify (G_OBJECT (viewport), "hadjustment");
 }
@@ -691,11 +691,11 @@ void
 ctk_viewport_set_vadjustment (GtkViewport   *viewport,
 			      GtkAdjustment *adjustment)
 {
-  g_return_if_fail (GTK_IS_VIEWPORT (viewport));
+  g_return_if_fail (CTK_IS_VIEWPORT (viewport));
   if (adjustment)
-    g_return_if_fail (GTK_IS_ADJUSTMENT (adjustment));
+    g_return_if_fail (CTK_IS_ADJUSTMENT (adjustment));
 
-  viewport_set_adjustment (viewport, GTK_ORIENTATION_VERTICAL, adjustment);
+  viewport_set_adjustment (viewport, CTK_ORIENTATION_VERTICAL, adjustment);
 
   g_object_notify (G_OBJECT (viewport), "vadjustment");
 }
@@ -715,9 +715,9 @@ ctk_viewport_set_shadow_type (GtkViewport   *viewport,
   GtkWidget *widget;
   GtkStyleContext *context;
 
-  g_return_if_fail (GTK_IS_VIEWPORT (viewport));
+  g_return_if_fail (CTK_IS_VIEWPORT (viewport));
 
-  widget = GTK_WIDGET (viewport);
+  widget = CTK_WIDGET (viewport);
   priv = viewport->priv;
 
   if ((GtkShadowType) priv->shadow_type != type)
@@ -725,10 +725,10 @@ ctk_viewport_set_shadow_type (GtkViewport   *viewport,
       priv->shadow_type = type;
 
       context = ctk_widget_get_style_context (widget);
-      if (type != GTK_SHADOW_NONE)
-        ctk_style_context_add_class (context, GTK_STYLE_CLASS_FRAME);
+      if (type != CTK_SHADOW_NONE)
+        ctk_style_context_add_class (context, CTK_STYLE_CLASS_FRAME);
       else
-        ctk_style_context_remove_class (context, GTK_STYLE_CLASS_FRAME);
+        ctk_style_context_remove_class (context, CTK_STYLE_CLASS_FRAME);
  
       ctk_widget_queue_resize (widget);
 
@@ -748,7 +748,7 @@ ctk_viewport_set_shadow_type (GtkViewport   *viewport,
 GtkShadowType
 ctk_viewport_get_shadow_type (GtkViewport *viewport)
 {
-  g_return_val_if_fail (GTK_IS_VIEWPORT (viewport), GTK_SHADOW_NONE);
+  g_return_val_if_fail (CTK_IS_VIEWPORT (viewport), CTK_SHADOW_NONE);
 
   return viewport->priv->shadow_type;
 }
@@ -766,7 +766,7 @@ ctk_viewport_get_shadow_type (GtkViewport *viewport)
 GdkWindow*
 ctk_viewport_get_bin_window (GtkViewport *viewport)
 {
-  g_return_val_if_fail (GTK_IS_VIEWPORT (viewport), NULL);
+  g_return_val_if_fail (CTK_IS_VIEWPORT (viewport), NULL);
 
   return viewport->priv->bin_window;
 }
@@ -784,7 +784,7 @@ ctk_viewport_get_bin_window (GtkViewport *viewport)
 GdkWindow*
 ctk_viewport_get_view_window (GtkViewport *viewport)
 {
-  g_return_val_if_fail (GTK_IS_VIEWPORT (viewport), NULL);
+  g_return_val_if_fail (CTK_IS_VIEWPORT (viewport), NULL);
 
   return viewport->priv->view_window;
 }
@@ -798,7 +798,7 @@ ctk_viewport_bin_window_invalidate_handler (GdkWindow *window,
   GtkViewportPrivate *priv;
 
   gdk_window_get_user_data (window, &widget);
-  viewport = GTK_VIEWPORT (widget);
+  viewport = CTK_VIEWPORT (widget);
   priv = viewport->priv;
 
   _ctk_pixel_cache_invalidate (priv->pixel_cache, region);
@@ -808,7 +808,7 @@ static void
 ctk_viewport_queue_draw_region (GtkWidget *widget,
 				const cairo_region_t *region)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (widget);
+  GtkViewport *viewport = CTK_VIEWPORT (widget);
   GtkViewportPrivate *priv = viewport->priv;
 
   /* There is no way we can know if a region targets the
@@ -818,7 +818,7 @@ ctk_viewport_queue_draw_region (GtkWidget *widget,
      in normal scrolling cases anyway. */
   _ctk_pixel_cache_invalidate (priv->pixel_cache, NULL);
 
-  GTK_WIDGET_CLASS (ctk_viewport_parent_class)->queue_draw_region (widget,
+  CTK_WIDGET_CLASS (ctk_viewport_parent_class)->queue_draw_region (widget,
 								   region);
 }
 
@@ -826,9 +826,9 @@ ctk_viewport_queue_draw_region (GtkWidget *widget,
 static void
 ctk_viewport_realize (GtkWidget *widget)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (widget);
+  GtkViewport *viewport = CTK_VIEWPORT (widget);
   GtkViewportPrivate *priv = viewport->priv;
-  GtkBin *bin = GTK_BIN (widget);
+  GtkBin *bin = CTK_BIN (widget);
   GtkAdjustment *hadjustment = priv->hadjustment;
   GtkAdjustment *vadjustment = priv->vadjustment;
   GtkAllocation allocation;
@@ -898,7 +898,7 @@ ctk_viewport_realize (GtkWidget *widget)
 static void
 ctk_viewport_unrealize (GtkWidget *widget)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (widget);
+  GtkViewport *viewport = CTK_VIEWPORT (widget);
   GtkViewportPrivate *priv = viewport->priv;
 
   ctk_widget_unregister_window (widget, priv->view_window);
@@ -909,27 +909,27 @@ ctk_viewport_unrealize (GtkWidget *widget)
   gdk_window_destroy (priv->bin_window);
   priv->bin_window = NULL;
 
-  GTK_WIDGET_CLASS (ctk_viewport_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_viewport_parent_class)->unrealize (widget);
 }
 
 static void
 ctk_viewport_map (GtkWidget *widget)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (widget);
+  GtkViewport *viewport = CTK_VIEWPORT (widget);
   GtkViewportPrivate *priv = viewport->priv;
 
   _ctk_pixel_cache_map (priv->pixel_cache);
 
-  GTK_WIDGET_CLASS (ctk_viewport_parent_class)->map (widget);
+  CTK_WIDGET_CLASS (ctk_viewport_parent_class)->map (widget);
 }
 
 static void
 ctk_viewport_unmap (GtkWidget *widget)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (widget);
+  GtkViewport *viewport = CTK_VIEWPORT (widget);
   GtkViewportPrivate *priv = viewport->priv;
 
-  GTK_WIDGET_CLASS (ctk_viewport_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (ctk_viewport_parent_class)->unmap (widget);
 
   _ctk_pixel_cache_unmap (priv->pixel_cache);
 }
@@ -938,7 +938,7 @@ static gint
 ctk_viewport_draw (GtkWidget *widget,
                    cairo_t   *cr)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (widget);
+  GtkViewport *viewport = CTK_VIEWPORT (widget);
   GtkViewportPrivate *priv = viewport->priv;
 
   if (ctk_cairo_should_draw_window (cr, ctk_widget_get_window (widget)) ||
@@ -964,7 +964,7 @@ static void
 ctk_viewport_remove (GtkContainer *container,
 		     GtkWidget    *child)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (container);
+  GtkViewport *viewport = CTK_VIEWPORT (container);
   GtkViewportPrivate *priv = viewport->priv;
 
   if (g_signal_handlers_disconnect_by_func (child, ctk_viewport_update_pixelcache_opacity, viewport) != 1)
@@ -972,7 +972,7 @@ ctk_viewport_remove (GtkContainer *container,
       g_assert_not_reached ();
     }
 
-  GTK_CONTAINER_CLASS (ctk_viewport_parent_class)->remove (container, child);
+  CTK_CONTAINER_CLASS (ctk_viewport_parent_class)->remove (container, child);
 
   ctk_pixel_cache_set_is_opaque (priv->pixel_cache, FALSE);
 }
@@ -981,15 +981,15 @@ static void
 ctk_viewport_add (GtkContainer *container,
 		  GtkWidget    *child)
 {
-  GtkBin *bin = GTK_BIN (container);
-  GtkViewport *viewport = GTK_VIEWPORT (bin);
+  GtkBin *bin = CTK_BIN (container);
+  GtkViewport *viewport = CTK_VIEWPORT (bin);
   GtkViewportPrivate *priv = viewport->priv;
 
   g_return_if_fail (ctk_bin_get_child (bin) == NULL);
 
   ctk_widget_set_parent_window (child, priv->bin_window);
   
-  GTK_CONTAINER_CLASS (ctk_viewport_parent_class)->add (container, child);
+  CTK_CONTAINER_CLASS (ctk_viewport_parent_class)->add (container, child);
 
   g_signal_connect (child, "style-updated", G_CALLBACK (ctk_viewport_update_pixelcache_opacity), viewport);
   ctk_viewport_update_pixelcache_opacity (child, viewport);
@@ -999,7 +999,7 @@ static void
 ctk_viewport_size_allocate (GtkWidget     *widget,
 			    GtkAllocation *allocation)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (widget);
+  GtkViewport *viewport = CTK_VIEWPORT (widget);
   GtkViewportPrivate *priv = viewport->priv;
   GtkAllocation clip, content_allocation, widget_allocation;
 
@@ -1008,7 +1008,7 @@ ctk_viewport_size_allocate (GtkWidget     *widget,
    */
   ctk_widget_get_allocation (widget, &widget_allocation);
   if (ctk_widget_get_mapped (widget) &&
-      priv->shadow_type != GTK_SHADOW_NONE &&
+      priv->shadow_type != CTK_SHADOW_NONE &&
       (widget_allocation.width != allocation->width ||
        widget_allocation.height != allocation->height))
     gdk_window_invalidate_rect (ctk_widget_get_window (widget), NULL, FALSE);
@@ -1038,14 +1038,14 @@ static void
 ctk_viewport_adjustment_value_changed (GtkAdjustment *adjustment,
 				       gpointer       data)
 {
-  GtkViewport *viewport = GTK_VIEWPORT (data);
+  GtkViewport *viewport = CTK_VIEWPORT (data);
   GtkViewportPrivate *priv = viewport->priv;
-  GtkBin *bin = GTK_BIN (data);
+  GtkBin *bin = CTK_BIN (data);
   GtkWidget *child;
 
   child = ctk_bin_get_child (bin);
   if (child && ctk_widget_get_visible (child) &&
-      ctk_widget_get_realized (GTK_WIDGET (viewport)))
+      ctk_widget_get_realized (CTK_WIDGET (viewport)))
     {
       GtkAdjustment *hadjustment = priv->hadjustment;
       GtkAdjustment *vadjustment = priv->vadjustment;
@@ -1066,8 +1066,8 @@ ctk_viewport_get_preferred_width (GtkWidget *widget,
                                   gint      *minimum_size,
                                   gint      *natural_size)
 {
-  ctk_css_gadget_get_preferred_size (GTK_VIEWPORT (widget)->priv->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+  ctk_css_gadget_get_preferred_size (CTK_VIEWPORT (widget)->priv->gadget,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum_size, natural_size,
                                      NULL, NULL);
@@ -1078,8 +1078,8 @@ ctk_viewport_get_preferred_height (GtkWidget *widget,
                                    gint      *minimum_size,
                                    gint      *natural_size)
 {
-  ctk_css_gadget_get_preferred_size (GTK_VIEWPORT (widget)->priv->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+  ctk_css_gadget_get_preferred_size (CTK_VIEWPORT (widget)->priv->gadget,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum_size, natural_size,
                                      NULL, NULL);
@@ -1091,8 +1091,8 @@ ctk_viewport_get_preferred_width_for_height (GtkWidget *widget,
                                              gint      *minimum_size,
                                              gint      *natural_size)
 {
-  ctk_css_gadget_get_preferred_size (GTK_VIEWPORT (widget)->priv->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+  ctk_css_gadget_get_preferred_size (CTK_VIEWPORT (widget)->priv->gadget,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      height,
                                      minimum_size, natural_size,
                                      NULL, NULL);
@@ -1104,8 +1104,8 @@ ctk_viewport_get_preferred_height_for_width (GtkWidget *widget,
                                              gint      *minimum_size,
                                              gint      *natural_size)
 {
-  ctk_css_gadget_get_preferred_size (GTK_VIEWPORT (widget)->priv->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+  ctk_css_gadget_get_preferred_size (CTK_VIEWPORT (widget)->priv->gadget,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum_size, natural_size,
                                      NULL, NULL);

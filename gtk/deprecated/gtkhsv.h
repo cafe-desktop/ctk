@@ -27,10 +27,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_HSV_H__
-#define __GTK_HSV_H__
+#ifndef __CTK_HSV_H__
+#define __CTK_HSV_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -38,12 +38,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HSV            (ctk_hsv_get_type ())
-#define GTK_HSV(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HSV, GtkHSV))
-#define GTK_HSV_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HSV, GtkHSVClass))
-#define GTK_IS_HSV(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HSV))
-#define GTK_IS_HSV_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_HSV))
-#define GTK_HSV_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_HSV, GtkHSVClass))
+#define CTK_TYPE_HSV            (ctk_hsv_get_type ())
+#define CTK_HSV(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HSV, GtkHSV))
+#define CTK_HSV_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HSV, GtkHSVClass))
+#define CTK_IS_HSV(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_HSV))
+#define CTK_IS_HSV_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_HSV))
+#define CTK_HSV_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HSV, GtkHSVClass))
 
 
 typedef struct _GtkHSV              GtkHSV;
@@ -104,4 +104,4 @@ gboolean   ctk_hsv_is_adjusting (GtkHSV    *hsv);
 
 G_END_DECLS
 
-#endif /* __GTK_HSV_H__ */
+#endif /* __CTK_HSV_H__ */

@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ACCEL_MAP_PRIVATE_H__
-#define __GTK_ACCEL_MAP_PRIVATE_H__
+#ifndef __CTK_ACCEL_MAP_PRIVATE_H__
+#define __CTK_ACCEL_MAP_PRIVATE_H__
 
 
 #include <gtk/gtkaccelmap.h>
@@ -36,4 +36,4 @@ gchar         * _ctk_accel_path_for_action  (const gchar   *action_name,
 
 G_END_DECLS
 
-#endif /* __GTK_ACCEL_MAP_PRIVATE_H__ */
+#endif /* __CTK_ACCEL_MAP_PRIVATE_H__ */

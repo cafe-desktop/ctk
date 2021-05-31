@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SHADOW_H__
-#define __GTK_SHADOW_H__
+#ifndef __CTK_SHADOW_H__
+#define __CTK_SHADOW_H__
 
 #include <cairo.h>
 #include <pango/pango.h>
@@ -56,4 +56,4 @@ void            _ctk_css_shadow_value_paint_box       (const GtkCssValue        
 
 G_END_DECLS
 
-#endif /* __GTK_SHADOW_H__ */
+#endif /* __CTK_SHADOW_H__ */

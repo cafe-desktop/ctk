@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_BUILDER_H__
-#define __GTK_BUILDER_H__
+#ifndef __CTK_BUILDER_H__
+#define __CTK_BUILDER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,63 +28,63 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_BUILDER                 (ctk_builder_get_type ())
-#define GTK_BUILDER(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_BUILDER, GtkBuilder))
-#define GTK_BUILDER_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_BUILDER, GtkBuilderClass))
-#define GTK_IS_BUILDER(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_BUILDER))
-#define GTK_IS_BUILDER_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_BUILDER))
-#define GTK_BUILDER_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_BUILDER, GtkBuilderClass))
+#define CTK_TYPE_BUILDER                 (ctk_builder_get_type ())
+#define CTK_BUILDER(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BUILDER, GtkBuilder))
+#define CTK_BUILDER_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_BUILDER, GtkBuilderClass))
+#define CTK_IS_BUILDER(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_BUILDER))
+#define CTK_IS_BUILDER_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_BUILDER))
+#define CTK_BUILDER_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BUILDER, GtkBuilderClass))
 
-#define GTK_BUILDER_ERROR                (ctk_builder_error_quark ())
+#define CTK_BUILDER_ERROR                (ctk_builder_error_quark ())
 
 typedef struct _GtkBuilderClass   GtkBuilderClass;
 typedef struct _GtkBuilderPrivate GtkBuilderPrivate;
 
 /**
  * GtkBuilderError:
- * @GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION: A type-func attribute didn’t name
+ * @CTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION: A type-func attribute didn’t name
  *  a function that returns a #GType.
- * @GTK_BUILDER_ERROR_UNHANDLED_TAG: The input contained a tag that #GtkBuilder
+ * @CTK_BUILDER_ERROR_UNHANDLED_TAG: The input contained a tag that #GtkBuilder
  *  can’t handle.
- * @GTK_BUILDER_ERROR_MISSING_ATTRIBUTE: An attribute that is required by
+ * @CTK_BUILDER_ERROR_MISSING_ATTRIBUTE: An attribute that is required by
  *  #GtkBuilder was missing.
- * @GTK_BUILDER_ERROR_INVALID_ATTRIBUTE: #GtkBuilder found an attribute that
+ * @CTK_BUILDER_ERROR_INVALID_ATTRIBUTE: #GtkBuilder found an attribute that
  *  it doesn’t understand.
- * @GTK_BUILDER_ERROR_INVALID_TAG: #GtkBuilder found a tag that
+ * @CTK_BUILDER_ERROR_INVALID_TAG: #GtkBuilder found a tag that
  *  it doesn’t understand.
- * @GTK_BUILDER_ERROR_MISSING_PROPERTY_VALUE: A required property value was
+ * @CTK_BUILDER_ERROR_MISSING_PROPERTY_VALUE: A required property value was
  *  missing.
- * @GTK_BUILDER_ERROR_INVALID_VALUE: #GtkBuilder couldn’t parse
+ * @CTK_BUILDER_ERROR_INVALID_VALUE: #GtkBuilder couldn’t parse
  *  some attribute value.
- * @GTK_BUILDER_ERROR_VERSION_MISMATCH: The input file requires a newer version
+ * @CTK_BUILDER_ERROR_VERSION_MISMATCH: The input file requires a newer version
  *  of GTK+.
- * @GTK_BUILDER_ERROR_DUPLICATE_ID: An object id occurred twice.
- * @GTK_BUILDER_ERROR_OBJECT_TYPE_REFUSED: A specified object type is of the same type or
+ * @CTK_BUILDER_ERROR_DUPLICATE_ID: An object id occurred twice.
+ * @CTK_BUILDER_ERROR_OBJECT_TYPE_REFUSED: A specified object type is of the same type or
  *  derived from the type of the composite class being extended with builder XML.
- * @GTK_BUILDER_ERROR_TEMPLATE_MISMATCH: The wrong type was specified in a composite class’s template XML
- * @GTK_BUILDER_ERROR_INVALID_PROPERTY: The specified property is unknown for the object class.
- * @GTK_BUILDER_ERROR_INVALID_SIGNAL: The specified signal is unknown for the object class.
- * @GTK_BUILDER_ERROR_INVALID_ID: An object id is unknown
+ * @CTK_BUILDER_ERROR_TEMPLATE_MISMATCH: The wrong type was specified in a composite class’s template XML
+ * @CTK_BUILDER_ERROR_INVALID_PROPERTY: The specified property is unknown for the object class.
+ * @CTK_BUILDER_ERROR_INVALID_SIGNAL: The specified signal is unknown for the object class.
+ * @CTK_BUILDER_ERROR_INVALID_ID: An object id is unknown
  *
  * Error codes that identify various errors that can occur while using
  * #GtkBuilder.
  */
 typedef enum
 {
-  GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION,
-  GTK_BUILDER_ERROR_UNHANDLED_TAG,
-  GTK_BUILDER_ERROR_MISSING_ATTRIBUTE,
-  GTK_BUILDER_ERROR_INVALID_ATTRIBUTE,
-  GTK_BUILDER_ERROR_INVALID_TAG,
-  GTK_BUILDER_ERROR_MISSING_PROPERTY_VALUE,
-  GTK_BUILDER_ERROR_INVALID_VALUE,
-  GTK_BUILDER_ERROR_VERSION_MISMATCH,
-  GTK_BUILDER_ERROR_DUPLICATE_ID,
-  GTK_BUILDER_ERROR_OBJECT_TYPE_REFUSED,
-  GTK_BUILDER_ERROR_TEMPLATE_MISMATCH,
-  GTK_BUILDER_ERROR_INVALID_PROPERTY,
-  GTK_BUILDER_ERROR_INVALID_SIGNAL,
-  GTK_BUILDER_ERROR_INVALID_ID
+  CTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION,
+  CTK_BUILDER_ERROR_UNHANDLED_TAG,
+  CTK_BUILDER_ERROR_MISSING_ATTRIBUTE,
+  CTK_BUILDER_ERROR_INVALID_ATTRIBUTE,
+  CTK_BUILDER_ERROR_INVALID_TAG,
+  CTK_BUILDER_ERROR_MISSING_PROPERTY_VALUE,
+  CTK_BUILDER_ERROR_INVALID_VALUE,
+  CTK_BUILDER_ERROR_VERSION_MISMATCH,
+  CTK_BUILDER_ERROR_DUPLICATE_ID,
+  CTK_BUILDER_ERROR_OBJECT_TYPE_REFUSED,
+  CTK_BUILDER_ERROR_TEMPLATE_MISMATCH,
+  CTK_BUILDER_ERROR_INVALID_PROPERTY,
+  CTK_BUILDER_ERROR_INVALID_SIGNAL,
+  CTK_BUILDER_ERROR_INVALID_ID
 } GtkBuilderError;
 
 GDK_AVAILABLE_IN_ALL
@@ -216,14 +216,14 @@ GtkApplication * ctk_builder_get_application     (GtkBuilder     *builder);
 
 
 /**
- * GTK_BUILDER_WARN_INVALID_CHILD_TYPE:
+ * CTK_BUILDER_WARN_INVALID_CHILD_TYPE:
  * @object: the #GtkBuildable on which the warning ocurred
  * @type: the unexpected type value
  *
  * This macro should be used to emit a warning about and unexpected @type value
  * in a #GtkBuildable add_child implementation.
  */
-#define GTK_BUILDER_WARN_INVALID_CHILD_TYPE(object, type) \
+#define CTK_BUILDER_WARN_INVALID_CHILD_TYPE(object, type) \
   g_warning ("'%s' is not a valid child type of '%s'", type, g_type_name (G_OBJECT_TYPE (object)))
 
 GDK_AVAILABLE_IN_3_18
@@ -235,4 +235,4 @@ guint     ctk_builder_extend_with_template  (GtkBuilder    *builder,
 
 G_END_DECLS
 
-#endif /* __GTK_BUILDER_H__ */
+#endif /* __CTK_BUILDER_H__ */

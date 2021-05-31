@@ -10,16 +10,16 @@ get_image_pixbuf (GtkImage *image)
 
   switch (ctk_image_get_storage_type (image))
     {
-    case GTK_IMAGE_PIXBUF:
+    case CTK_IMAGE_PIXBUF:
       return g_object_ref (ctk_image_get_pixbuf (image));
-    case GTK_IMAGE_ICON_NAME:
+    case CTK_IMAGE_ICON_NAME:
       ctk_image_get_icon_name (image, &icon_name, &size);
-      icon_theme = ctk_icon_theme_get_for_screen (ctk_widget_get_screen (GTK_WIDGET (image)));
+      icon_theme = ctk_icon_theme_get_for_screen (ctk_widget_get_screen (CTK_WIDGET (image)));
       ctk_icon_size_lookup (size, &width, NULL);
       return ctk_icon_theme_load_icon (icon_theme,
                                        icon_name,
                                        width,
-                                       GTK_ICON_LOOKUP_GENERIC_FALLBACK,
+                                       CTK_ICON_LOOKUP_GENERIC_FALLBACK,
                                        NULL);
     default:
       g_warning ("Image storage type %d not handled",
@@ -48,7 +48,7 @@ image_drag_begin (GtkWidget      *widget,
   gint hotspot;
   gint hot_x, hot_y;
 
-  pixbuf = get_image_pixbuf (GTK_IMAGE (data));
+  pixbuf = get_image_pixbuf (CTK_IMAGE (data));
   hotspot = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (data), "hotspot"));
   switch (hotspot)
     {
@@ -104,13 +104,13 @@ window_drag_begin (GtkWidget      *widget,
   window = g_object_get_data (G_OBJECT (widget), "drag window");
   if (window == NULL)
     {
-      window = ctk_window_new (GTK_WINDOW_POPUP);
+      window = ctk_window_new (CTK_WINDOW_POPUP);
       g_print ("creating new drag widget\n");
-      pixbuf = get_image_pixbuf (GTK_IMAGE (data));
+      pixbuf = get_image_pixbuf (CTK_IMAGE (data));
       image = ctk_image_new_from_pixbuf (pixbuf);
       g_object_unref (pixbuf);
       ctk_widget_show (image);
-      ctk_container_add (GTK_CONTAINER (window), image);
+      ctk_container_add (CTK_CONTAINER (window), image);
       g_object_ref (window);
       g_object_set_data (G_OBJECT (widget), "drag window", window);
       g_signal_connect (window, "destroy", G_CALLBACK (window_destroyed), widget);
@@ -132,7 +132,7 @@ update_source_target_list (GtkWidget *ebox, GtkWidget *image)
   target_list = ctk_target_list_new (NULL, 0);
 
   ctk_target_list_add_image_targets (target_list, TARGET_IMAGE, FALSE);
-  if (ctk_image_get_storage_type (GTK_IMAGE (image)) == GTK_IMAGE_ICON_NAME)
+  if (ctk_image_get_storage_type (CTK_IMAGE (image)) == CTK_IMAGE_ICON_NAME)
     ctk_target_list_add_text_targets (target_list, TARGET_TEXT);
 
   ctk_drag_source_set_target_list (ebox, target_list);
@@ -169,13 +169,13 @@ image_drag_data_get (GtkWidget        *widget,
   switch (info)
     {
     case TARGET_IMAGE:
-      pixbuf = get_image_pixbuf (GTK_IMAGE (data));
+      pixbuf = get_image_pixbuf (CTK_IMAGE (data));
       ctk_selection_data_set_pixbuf (selection_data, pixbuf);
       g_object_unref (pixbuf);
       break;
     case TARGET_TEXT:
-      if (ctk_image_get_storage_type (GTK_IMAGE (data)) == GTK_IMAGE_ICON_NAME)
-        ctk_image_get_icon_name (GTK_IMAGE (data), &name, NULL);
+      if (ctk_image_get_storage_type (CTK_IMAGE (data)) == CTK_IMAGE_ICON_NAME)
+        ctk_image_get_icon_name (CTK_IMAGE (data), &name, NULL);
       else
         name = "Boo!";
       ctk_selection_data_set_text (selection_data, name, -1);
@@ -205,12 +205,12 @@ image_drag_data_received (GtkWidget        *widget,
     {
     case TARGET_IMAGE:
       pixbuf = ctk_selection_data_get_pixbuf (selection_data);
-      ctk_image_set_from_pixbuf (GTK_IMAGE (data), pixbuf);
+      ctk_image_set_from_pixbuf (CTK_IMAGE (data), pixbuf);
       g_object_unref (pixbuf);
       break;
     case TARGET_TEXT:
       text = (gchar *)ctk_selection_data_get_text (selection_data);
-      ctk_image_set_from_icon_name (GTK_IMAGE (data), text, GTK_ICON_SIZE_DIALOG);
+      ctk_image_set_from_icon_name (CTK_IMAGE (data), text, CTK_ICON_SIZE_DIALOG);
       g_free (text);
       break;
     default:
@@ -224,7 +224,7 @@ make_image (const gchar *icon_name, int hotspot)
 {
   GtkWidget *image, *ebox;
 
-  image = ctk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DIALOG);
+  image = ctk_image_new_from_icon_name (icon_name, CTK_ICON_SIZE_DIALOG);
   ebox = ctk_event_box_new ();
 
   ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
@@ -235,11 +235,11 @@ make_image (const gchar *icon_name, int hotspot)
   g_signal_connect (ebox, "drag-begin", G_CALLBACK (image_drag_begin), image);
   g_signal_connect (ebox, "drag-data-get", G_CALLBACK (image_drag_data_get), image);
 
-  ctk_drag_dest_set (ebox, GTK_DEST_DEFAULT_ALL, NULL, 0, GDK_ACTION_COPY);
+  ctk_drag_dest_set (ebox, CTK_DEST_DEFAULT_ALL, NULL, 0, GDK_ACTION_COPY);
   g_signal_connect (ebox, "drag-data-received", G_CALLBACK (image_drag_data_received), image);
   update_dest_target_list (ebox);
 
-  ctk_container_add (GTK_CONTAINER (ebox), image);
+  ctk_container_add (CTK_CONTAINER (ebox), image);
 
   return ebox;
 }
@@ -249,7 +249,7 @@ make_image2 (const gchar *icon_name, int hotspot)
 {
   GtkWidget *image, *ebox;
 
-  image = ctk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_DIALOG);
+  image = ctk_image_new_from_icon_name (icon_name, CTK_ICON_SIZE_DIALOG);
   ebox = ctk_event_box_new ();
 
   ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
@@ -260,11 +260,11 @@ make_image2 (const gchar *icon_name, int hotspot)
   g_signal_connect (ebox, "drag-begin", G_CALLBACK (window_drag_begin), image);
   g_signal_connect (ebox, "drag-data-get", G_CALLBACK (image_drag_data_get), image);
 
-  ctk_drag_dest_set (ebox, GTK_DEST_DEFAULT_ALL, NULL, 0, GDK_ACTION_COPY);
+  ctk_drag_dest_set (ebox, CTK_DEST_DEFAULT_ALL, NULL, 0, GDK_ACTION_COPY);
   g_signal_connect (ebox, "drag-data-received", G_CALLBACK (image_drag_data_received), image);
   update_dest_target_list (ebox);
 
-  ctk_container_add (GTK_CONTAINER (ebox), image);
+  ctk_container_add (CTK_CONTAINER (ebox), image);
 
   return ebox;
 }
@@ -277,7 +277,7 @@ spinner_drag_begin (GtkWidget      *widget,
   GtkWidget *spinner;
 
   g_print ("GtkWidget::drag-begin\n");
-  spinner = g_object_new (GTK_TYPE_SPINNER,
+  spinner = g_object_new (CTK_TYPE_SPINNER,
                           "visible", TRUE,
                           "active",  TRUE,
                           NULL);
@@ -306,7 +306,7 @@ spinner_drag_failed (GtkWidget      *widget,
   GTypeClass *class;
   GEnumValue *value;
 
-  class = g_type_class_ref (GTK_TYPE_DRAG_RESULT);
+  class = g_type_class_ref (CTK_TYPE_DRAG_RESULT);
   value = g_enum_get_value (G_ENUM_CLASS (class), result);
   g_print ("GtkWidget::drag-failed %s\n", value->value_nick);
   g_type_class_unref (class);
@@ -332,7 +332,7 @@ make_spinner (void)
   GtkWidget *spinner, *ebox;
 
   spinner = ctk_spinner_new ();
-  ctk_spinner_start (GTK_SPINNER (spinner));
+  ctk_spinner_start (CTK_SPINNER (spinner));
   ebox = ctk_event_box_new ();
 
   ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
@@ -343,7 +343,7 @@ make_spinner (void)
   g_signal_connect (ebox, "drag-failed", G_CALLBACK (spinner_drag_failed), spinner);
   g_signal_connect (ebox, "drag-data-get", G_CALLBACK (spinner_drag_data_get), spinner);
 
-  ctk_container_add (GTK_CONTAINER (ebox), spinner);
+  ctk_container_add (CTK_CONTAINER (ebox), spinner);
 
   return ebox;
 }
@@ -357,9 +357,9 @@ main (int argc, char *Argv[])
 
   ctk_init (NULL, NULL);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (window), "Drag And Drop");
-  ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (window), "Drag And Drop");
+  ctk_window_set_resizable (CTK_WINDOW (window), FALSE);
 
   grid = ctk_grid_new ();
   g_object_set (grid,
@@ -367,19 +367,19 @@ main (int argc, char *Argv[])
                 "row-spacing", 20,
                 "column-spacing", 20,
                 NULL);
-  ctk_container_add (GTK_CONTAINER (window), grid);
-  ctk_grid_attach (GTK_GRID (grid), make_image ("dialog-warning", TOP_LEFT), 0, 0, 1, 1);
-  ctk_grid_attach (GTK_GRID (grid), make_image ("process-stop", BOTTOM_RIGHT), 1, 0, 1, 1);
+  ctk_container_add (CTK_CONTAINER (window), grid);
+  ctk_grid_attach (CTK_GRID (grid), make_image ("dialog-warning", TOP_LEFT), 0, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), make_image ("process-stop", BOTTOM_RIGHT), 1, 0, 1, 1);
 
   entry = ctk_entry_new ();
-  ctk_grid_attach (GTK_GRID (grid), entry, 0, 1, 2, 1);
+  ctk_grid_attach (CTK_GRID (grid), entry, 0, 1, 2, 1);
 
-  ctk_grid_attach (GTK_GRID (grid), make_spinner (), 0, 2, 1, 1);
-  ctk_grid_attach (GTK_GRID (grid), make_image ("weather-clear", CENTER), 1, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), make_spinner (), 0, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), make_image ("weather-clear", CENTER), 1, 2, 1, 1);
 
-  ctk_grid_attach (GTK_GRID (grid), make_image2 ("dialog-question", TOP_LEFT), 0, 3, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), make_image2 ("dialog-question", TOP_LEFT), 0, 3, 1, 1);
 
-  ctk_grid_attach (GTK_GRID (grid), make_image2 ("dialog-information", CENTER), 1, 3, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), make_image2 ("dialog-information", CENTER), 1, 3, 1, 1);
 
   ctk_widget_show_all (window);
   ctk_main ();

@@ -63,10 +63,10 @@ ctk_buildable_set_name (GtkBuildable *buildable,
 {
   GtkBuildableIface *iface;
 
-  g_return_if_fail (GTK_IS_BUILDABLE (buildable));
+  g_return_if_fail (CTK_IS_BUILDABLE (buildable));
   g_return_if_fail (name != NULL);
 
-  iface = GTK_BUILDABLE_GET_IFACE (buildable);
+  iface = CTK_BUILDABLE_GET_IFACE (buildable);
 
   if (iface->set_name)
     (* iface->set_name) (buildable, name);
@@ -96,9 +96,9 @@ ctk_buildable_get_name (GtkBuildable *buildable)
 {
   GtkBuildableIface *iface;
 
-  g_return_val_if_fail (GTK_IS_BUILDABLE (buildable), NULL);
+  g_return_val_if_fail (CTK_IS_BUILDABLE (buildable), NULL);
 
-  iface = GTK_BUILDABLE_GET_IFACE (buildable);
+  iface = CTK_BUILDABLE_GET_IFACE (buildable);
 
   if (iface->get_name)
     return (* iface->get_name) (buildable);
@@ -127,10 +127,10 @@ ctk_buildable_add_child (GtkBuildable *buildable,
 {
   GtkBuildableIface *iface;
 
-  g_return_if_fail (GTK_IS_BUILDABLE (buildable));
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDABLE (buildable));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
 
-  iface = GTK_BUILDABLE_GET_IFACE (buildable);
+  iface = CTK_BUILDABLE_GET_IFACE (buildable);
   g_return_if_fail (iface->add_child != NULL);
 
   (* iface->add_child) (buildable, builder, child, type);
@@ -155,12 +155,12 @@ ctk_buildable_set_buildable_property (GtkBuildable *buildable,
 {
   GtkBuildableIface *iface;
 
-  g_return_if_fail (GTK_IS_BUILDABLE (buildable));
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDABLE (buildable));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
   g_return_if_fail (name != NULL);
   g_return_if_fail (value != NULL);
 
-  iface = GTK_BUILDABLE_GET_IFACE (buildable);
+  iface = CTK_BUILDABLE_GET_IFACE (buildable);
   if (iface->set_buildable_property)
     (* iface->set_buildable_property) (buildable, builder, name, value);
   else
@@ -186,10 +186,10 @@ ctk_buildable_parser_finished (GtkBuildable *buildable,
 {
   GtkBuildableIface *iface;
 
-  g_return_if_fail (GTK_IS_BUILDABLE (buildable));
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDABLE (buildable));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
 
-  iface = GTK_BUILDABLE_GET_IFACE (buildable);
+  iface = CTK_BUILDABLE_GET_IFACE (buildable);
   if (iface->parser_finished)
     (* iface->parser_finished) (buildable, builder);
 }
@@ -216,11 +216,11 @@ ctk_buildable_construct_child (GtkBuildable *buildable,
 {
   GtkBuildableIface *iface;
 
-  g_return_val_if_fail (GTK_IS_BUILDABLE (buildable), NULL);
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), NULL);
+  g_return_val_if_fail (CTK_IS_BUILDABLE (buildable), NULL);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), NULL);
   g_return_val_if_fail (name != NULL, NULL);
 
-  iface = GTK_BUILDABLE_GET_IFACE (buildable);
+  iface = CTK_BUILDABLE_GET_IFACE (buildable);
   g_return_val_if_fail (iface->construct_child != NULL, NULL);
 
   return (* iface->construct_child) (buildable, builder, name);
@@ -253,11 +253,11 @@ ctk_buildable_custom_tag_start (GtkBuildable  *buildable,
 {
   GtkBuildableIface *iface;
 
-  g_return_val_if_fail (GTK_IS_BUILDABLE (buildable), FALSE);
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), FALSE);
+  g_return_val_if_fail (CTK_IS_BUILDABLE (buildable), FALSE);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), FALSE);
   g_return_val_if_fail (tagname != NULL, FALSE);
 
-  iface = GTK_BUILDABLE_GET_IFACE (buildable);
+  iface = CTK_BUILDABLE_GET_IFACE (buildable);
   g_return_val_if_fail (iface->custom_tag_start != NULL, FALSE);
 
   return (* iface->custom_tag_start) (buildable, builder, child,
@@ -286,11 +286,11 @@ ctk_buildable_custom_tag_end (GtkBuildable  *buildable,
 {
   GtkBuildableIface *iface;
 
-  g_return_if_fail (GTK_IS_BUILDABLE (buildable));
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDABLE (buildable));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
   g_return_if_fail (tagname != NULL);
 
-  iface = GTK_BUILDABLE_GET_IFACE (buildable);
+  iface = CTK_BUILDABLE_GET_IFACE (buildable);
   if (iface->custom_tag_end)
     (* iface->custom_tag_end) (buildable, builder, child, tagname, data);
 }
@@ -317,10 +317,10 @@ ctk_buildable_custom_finished (GtkBuildable  *buildable,
 {
   GtkBuildableIface *iface;
 
-  g_return_if_fail (GTK_IS_BUILDABLE (buildable));
-  g_return_if_fail (GTK_IS_BUILDER (builder));
+  g_return_if_fail (CTK_IS_BUILDABLE (buildable));
+  g_return_if_fail (CTK_IS_BUILDER (builder));
 
-  iface = GTK_BUILDABLE_GET_IFACE (buildable);
+  iface = CTK_BUILDABLE_GET_IFACE (buildable);
   if (iface->custom_finished)
     (* iface->custom_finished) (buildable, builder, child, tagname, data);
 }
@@ -344,11 +344,11 @@ ctk_buildable_get_internal_child (GtkBuildable *buildable,
 {
   GtkBuildableIface *iface;
 
-  g_return_val_if_fail (GTK_IS_BUILDABLE (buildable), NULL);
-  g_return_val_if_fail (GTK_IS_BUILDER (builder), NULL);
+  g_return_val_if_fail (CTK_IS_BUILDABLE (buildable), NULL);
+  g_return_val_if_fail (CTK_IS_BUILDER (builder), NULL);
   g_return_val_if_fail (childname != NULL, NULL);
 
-  iface = GTK_BUILDABLE_GET_IFACE (buildable);
+  iface = CTK_BUILDABLE_GET_IFACE (buildable);
   if (!iface->get_internal_child)
     return NULL;
 

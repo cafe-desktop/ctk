@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SEPARATOR_TOOL_ITEM_H__
-#define __GTK_SEPARATOR_TOOL_ITEM_H__
+#ifndef __CTK_SEPARATOR_TOOL_ITEM_H__
+#define __CTK_SEPARATOR_TOOL_ITEM_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,12 +28,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEPARATOR_TOOL_ITEM            (ctk_separator_tool_item_get_type ())
-#define GTK_SEPARATOR_TOOL_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SEPARATOR_TOOL_ITEM, GtkSeparatorToolItem))
-#define GTK_SEPARATOR_TOOL_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SEPARATOR_TOOL_ITEM, GtkSeparatorToolItemClass))
-#define GTK_IS_SEPARATOR_TOOL_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SEPARATOR_TOOL_ITEM))
-#define GTK_IS_SEPARATOR_TOOL_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SEPARATOR_TOOL_ITEM))
-#define GTK_SEPARATOR_TOOL_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_SEPARATOR_TOOL_ITEM, GtkSeparatorToolItemClass))
+#define CTK_TYPE_SEPARATOR_TOOL_ITEM            (ctk_separator_tool_item_get_type ())
+#define CTK_SEPARATOR_TOOL_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEPARATOR_TOOL_ITEM, GtkSeparatorToolItem))
+#define CTK_SEPARATOR_TOOL_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEPARATOR_TOOL_ITEM, GtkSeparatorToolItemClass))
+#define CTK_IS_SEPARATOR_TOOL_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEPARATOR_TOOL_ITEM))
+#define CTK_IS_SEPARATOR_TOOL_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEPARATOR_TOOL_ITEM))
+#define CTK_SEPARATOR_TOOL_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_SEPARATOR_TOOL_ITEM, GtkSeparatorToolItemClass))
 
 typedef struct _GtkSeparatorToolItem        GtkSeparatorToolItem;
 typedef struct _GtkSeparatorToolItemClass   GtkSeparatorToolItemClass;
@@ -77,4 +77,4 @@ void         ctk_separator_tool_item_set_draw (GtkSeparatorToolItem *item,
 
 G_END_DECLS
 
-#endif /* __GTK_SEPARATOR_TOOL_ITEM_H__ */
+#endif /* __CTK_SEPARATOR_TOOL_ITEM_H__ */

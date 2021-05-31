@@ -73,13 +73,13 @@ ctk_print_operation_preview_base_init (gpointer g_iface)
        * A handler for this signal can be used for setup tasks.
        */
       g_signal_new (I_("ready"),
-		    GTK_TYPE_PRINT_OPERATION_PREVIEW,
+		    CTK_TYPE_PRINT_OPERATION_PREVIEW,
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkPrintOperationPreviewIface, ready),
 		    NULL, NULL,
 		    NULL,
 		    G_TYPE_NONE, 1,
-		    GTK_TYPE_PRINT_CONTEXT);
+		    CTK_TYPE_PRINT_CONTEXT);
 
       /**
        * GtkPrintOperationPreview::got-page-size:
@@ -95,14 +95,14 @@ ctk_print_operation_preview_base_init (gpointer g_iface)
        * context, using ctk_print_context_set_cairo_context().
        */
       g_signal_new (I_("got-page-size"),
-		    GTK_TYPE_PRINT_OPERATION_PREVIEW,
+		    CTK_TYPE_PRINT_OPERATION_PREVIEW,
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkPrintOperationPreviewIface, got_page_size),
 		    NULL, NULL,
 		    _ctk_marshal_VOID__OBJECT_OBJECT,
 		    G_TYPE_NONE, 2,
-		    GTK_TYPE_PRINT_CONTEXT,
-		    GTK_TYPE_PAGE_SETUP);
+		    CTK_TYPE_PRINT_CONTEXT,
+		    CTK_TYPE_PAGE_SETUP);
 
       initialized = TRUE;
     }
@@ -129,9 +129,9 @@ void
 ctk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
 					 gint			   page_nr)
 {
-  g_return_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (preview));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION_PREVIEW (preview));
 
-  GTK_PRINT_OPERATION_PREVIEW_GET_IFACE (preview)->render_page (preview,
+  CTK_PRINT_OPERATION_PREVIEW_GET_IFACE (preview)->render_page (preview,
 								page_nr);
 }
 
@@ -148,9 +148,9 @@ ctk_print_operation_preview_render_page (GtkPrintOperationPreview *preview,
 void
 ctk_print_operation_preview_end_preview (GtkPrintOperationPreview *preview)
 {
-  g_return_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (preview));
+  g_return_if_fail (CTK_IS_PRINT_OPERATION_PREVIEW (preview));
 
-  GTK_PRINT_OPERATION_PREVIEW_GET_IFACE (preview)->end_preview (preview);
+  CTK_PRINT_OPERATION_PREVIEW_GET_IFACE (preview)->end_preview (preview);
 }
 
 /**
@@ -169,7 +169,7 @@ gboolean
 ctk_print_operation_preview_is_selected (GtkPrintOperationPreview *preview,
 					 gint                      page_nr)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION_PREVIEW (preview), FALSE);
+  g_return_val_if_fail (CTK_IS_PRINT_OPERATION_PREVIEW (preview), FALSE);
 
-  return GTK_PRINT_OPERATION_PREVIEW_GET_IFACE (preview)->is_selected (preview, page_nr);
+  return CTK_PRINT_OPERATION_PREVIEW_GET_IFACE (preview)->is_selected (preview, page_nr);
 }

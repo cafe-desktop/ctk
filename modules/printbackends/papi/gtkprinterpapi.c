@@ -43,7 +43,7 @@ ctk_printer_papi_register_type (GTypeModule *module)
   };
 
  ctk_printer_papi_type = g_type_module_register_type (module,
-                                                      GTK_TYPE_PRINTER,
+                                                      CTK_TYPE_PRINTER,
                                                       "GtkPrinterPapi",
                                                       &object_info, 0);
 }
@@ -77,7 +77,7 @@ ctk_printer_papi_finalize (GObject *object)
 
   g_return_if_fail (object != NULL);
 
-  printer = GTK_PRINTER_PAPI (object);
+  printer = CTK_PRINTER_PAPI (object);
 
   g_free(printer->printer_name);
 
@@ -100,12 +100,12 @@ ctk_printer_papi_new (const char      *name,
   GObject *result;
   GtkPrinterPapi *pp;
   
-  result = g_object_new (GTK_TYPE_PRINTER_PAPI,
+  result = g_object_new (CTK_TYPE_PRINTER_PAPI,
 			 "name", name,
 			 "backend", backend,
 			 "is-virtual", TRUE,
                          NULL);
-  pp = GTK_PRINTER_PAPI(result);
+  pp = CTK_PRINTER_PAPI(result);
 
   pp->printer_name = g_strdup (name);
 

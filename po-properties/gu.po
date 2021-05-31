@@ -302,10 +302,10 @@ msgstr "જરુરી છે"
 #: ../gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "શું ક્રિયા મહત્વની હોય એ જરૂરી છે. જ્યારે સાચું હોય, ત્યારે આ ક્રિયા માટેની સાધનવસ્તુ "
-"પ્રોક્સીઓ GTK_TOOLBAR_BOTH_HORIZ સ્થિતિમાં લખાણ બતાવે છે."
+"પ્રોક્સીઓ CTK_TOOLBAR_BOTH_HORIZ સ્થિતિમાં લખાણ બતાવે છે."
 
 #: ../gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1726,8 +1726,8 @@ msgid "Default Spacing"
 msgstr "છોડાયેલી મૂળભૂત જગ્યા"
 
 #: ../gtk/gtkbutton.c:494
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "GTK_CAN_DEFAULT બટનો માટે ઉમેરવાની વધારાની જગ્યા"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "CTK_CAN_DEFAULT બટનો માટે ઉમેરવાની વધારાની જગ્યા"
 
 #: ../gtk/gtkbutton.c:510
 msgid "Default Outside Spacing"
@@ -1735,9 +1735,9 @@ msgstr "છોડાયેલી મૂળભૂત બહારની જગ્
 
 #: ../gtk/gtkbutton.c:511
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
-msgstr "GTK_CAN_DEFAULT બટનો માટે વધારાની જગ્યા હંમેશા કિનારીની બહારના વિસ્તારમાં મૂકવી"
+msgstr "CTK_CAN_DEFAULT બટનો માટે વધારાની જગ્યા હંમેશા કિનારીની બહારના વિસ્તારમાં મૂકવી"
 
 #: ../gtk/gtkbutton.c:516
 msgid "Child X Displacement"
@@ -4049,7 +4049,7 @@ msgid "Baseline Row"
 msgstr ""
 
 #: ../gtk/gtkgrid.c:1763
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
 
 #: ../gtk/gtkgrid.c:1781
@@ -7649,10 +7649,10 @@ msgstr "ચિહ્ન અને લેબલ વચ્ચેની જગ્�
 #: ../gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "શું સાધનપટ્ટી વસ્તુ એ મહત્વની તરીકે સમજાયેલ છે. જ્યારે સાચું હોય, તો સાધનપટ્ટી બટનો "
-"GTK_TOOLBAR_BOTH_HORIZ સ્થિતિમાં બતાવો"
+"CTK_TOOLBAR_BOTH_HORIZ સ્થિતિમાં બતાવો"
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

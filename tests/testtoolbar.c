@@ -27,25 +27,25 @@ change_orientation (GtkWidget *button, GtkWidget *toolbar)
   GtkOrientation orientation;
 
   grid = ctk_widget_get_parent (toolbar);
-  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
-    orientation = GTK_ORIENTATION_VERTICAL;
+  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
+    orientation = CTK_ORIENTATION_VERTICAL;
   else
-    orientation = GTK_ORIENTATION_HORIZONTAL;
+    orientation = CTK_ORIENTATION_HORIZONTAL;
 
   g_object_ref (toolbar);
-  ctk_container_remove (GTK_CONTAINER (grid), toolbar);
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (toolbar), orientation);
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  ctk_container_remove (CTK_CONTAINER (grid), toolbar);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (toolbar), orientation);
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       ctk_widget_set_hexpand (toolbar, TRUE);
       ctk_widget_set_vexpand (toolbar, FALSE);
-      ctk_grid_attach (GTK_GRID (grid), toolbar, 0, 0, 2, 1);
+      ctk_grid_attach (CTK_GRID (grid), toolbar, 0, 0, 2, 1);
     }
   else
     {
       ctk_widget_set_hexpand (toolbar, FALSE);
       ctk_widget_set_vexpand (toolbar, TRUE);
-      ctk_grid_attach (GTK_GRID (grid), toolbar, 0, 0, 1, 5);
+      ctk_grid_attach (CTK_GRID (grid), toolbar, 0, 0, 1, 5);
     }
   g_object_unref (toolbar);
 }
@@ -53,8 +53,8 @@ change_orientation (GtkWidget *button, GtkWidget *toolbar)
 static void
 change_show_arrow (GtkWidget *button, GtkWidget *toolbar)
 {
-  ctk_toolbar_set_show_arrow (GTK_TOOLBAR (toolbar),
-		ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)));
+  ctk_toolbar_set_show_arrow (CTK_TOOLBAR (toolbar),
+		ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)));
 }
 
 static void
@@ -65,9 +65,9 @@ set_toolbar_style_toggled (GtkCheckButton *button, GtkToolbar *toolbar)
   
   option_menu = g_object_get_data (G_OBJECT (button), "option-menu");
 
-  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
+  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
-      style = ctk_combo_box_get_active (GTK_COMBO_BOX (option_menu));
+      style = ctk_combo_box_get_active (CTK_COMBO_BOX (option_menu));
 
       ctk_toolbar_set_style (toolbar, style);
       ctk_widget_set_sensitive (option_menu, TRUE);
@@ -84,8 +84,8 @@ change_toolbar_style (GtkWidget *option_menu, GtkWidget *toolbar)
 {
   GtkToolbarStyle style;
 
-  style = ctk_combo_box_get_active (GTK_COMBO_BOX (option_menu));
-  ctk_toolbar_set_style (GTK_TOOLBAR (toolbar), style);
+  style = ctk_combo_box_get_active (CTK_COMBO_BOX (option_menu));
+  ctk_toolbar_set_style (CTK_TOOLBAR (toolbar), style);
 }
 
 static void
@@ -224,11 +224,11 @@ create_items_list (GtkWidget **tree_view_p)
   GtkListStore *list_store;
   GtkCellRenderer *cell;
   
-  list_store = ctk_list_store_new (2, GTK_TYPE_TOOL_ITEM, G_TYPE_STRING);
+  list_store = ctk_list_store_new (2, CTK_TYPE_TOOL_ITEM, G_TYPE_STRING);
   
-  tree_view = ctk_tree_view_new_with_model (GTK_TREE_MODEL (list_store));
+  tree_view = ctk_tree_view_new_with_model (CTK_TREE_MODEL (list_store));
 
-  ctk_tree_view_insert_column_with_attributes (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_attributes (CTK_TREE_VIEW (tree_view),
 					       -1, "Tool Item",
 					       ctk_cell_renderer_text_new (),
 					       "text", 1, NULL);
@@ -236,7 +236,7 @@ create_items_list (GtkWidget **tree_view_p)
   cell = ctk_cell_renderer_toggle_new ();
   g_signal_connect (cell, "toggled", G_CALLBACK (visibile_toggled),
 		    list_store);
-  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_data_func (CTK_TREE_VIEW (tree_view),
 					      -1, "Visible",
 					      cell,
 					      set_visible_func, NULL, NULL);
@@ -244,7 +244,7 @@ create_items_list (GtkWidget **tree_view_p)
   cell = ctk_cell_renderer_toggle_new ();
   g_signal_connect (cell, "toggled", G_CALLBACK (expand_toggled),
 		    list_store);
-  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_data_func (CTK_TREE_VIEW (tree_view),
 					      -1, "Expand",
 					      cell,
 					      set_expand_func, NULL, NULL);
@@ -252,7 +252,7 @@ create_items_list (GtkWidget **tree_view_p)
   cell = ctk_cell_renderer_toggle_new ();
   g_signal_connect (cell, "toggled", G_CALLBACK (homogeneous_toggled),
 		    list_store);
-  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_data_func (CTK_TREE_VIEW (tree_view),
 					      -1, "Homogeneous",
 					      cell,
 					      set_homogeneous_func, NULL,NULL);
@@ -260,7 +260,7 @@ create_items_list (GtkWidget **tree_view_p)
   cell = ctk_cell_renderer_toggle_new ();
   g_signal_connect (cell, "toggled", G_CALLBACK (important_toggled),
 		    list_store);
-  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_data_func (CTK_TREE_VIEW (tree_view),
 					      -1, "Important",
 					      cell,
 					      set_important_func, NULL,NULL);
@@ -300,12 +300,12 @@ set_icon_size_toggled (GtkCheckButton *button, GtkToolbar *toolbar)
   
   option_menu = g_object_get_data (G_OBJECT (button), "option-menu");
 
-  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
+  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
-      if (ctk_combo_box_get_active (GTK_COMBO_BOX (option_menu)) == 0)
-        icon_size = GTK_ICON_SIZE_SMALL_TOOLBAR;
+      if (ctk_combo_box_get_active (CTK_COMBO_BOX (option_menu)) == 0)
+        icon_size = CTK_ICON_SIZE_SMALL_TOOLBAR;
       else
-        icon_size = GTK_ICON_SIZE_LARGE_TOOLBAR;
+        icon_size = CTK_ICON_SIZE_LARGE_TOOLBAR;
 
       ctk_toolbar_set_icon_size (toolbar, icon_size);
       ctk_widget_set_sensitive (option_menu, TRUE);
@@ -323,9 +323,9 @@ icon_size_history_changed (GtkComboBox *menu, GtkToolbar *toolbar)
   int icon_size;
 
   if (ctk_combo_box_get_active (menu) == 0)
-    icon_size = GTK_ICON_SIZE_SMALL_TOOLBAR;
+    icon_size = CTK_ICON_SIZE_SMALL_TOOLBAR;
   else
-    icon_size = GTK_ICON_SIZE_LARGE_TOOLBAR;
+    icon_size = CTK_ICON_SIZE_LARGE_TOOLBAR;
 
   ctk_toolbar_set_icon_size (toolbar, icon_size);
 }
@@ -337,8 +337,8 @@ toolbar_drag_drop (GtkWidget *widget, GdkDragContext *context,
   gchar buf[32];
 
   g_snprintf(buf, sizeof(buf), "%d",
-	     ctk_toolbar_get_drop_index (GTK_TOOLBAR (widget), x, y));
-  ctk_label_set_label (GTK_LABEL (label), buf);
+	     ctk_toolbar_get_drop_index (CTK_TOOLBAR (widget), x, y));
+  ctk_label_set_label (CTK_LABEL (label), buf);
 
   return TRUE;
 }
@@ -350,10 +350,10 @@ static GtkTargetEntry target_table[] = {
 static void
 rtl_toggled (GtkCheckButton *check)
 {
-  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check)))
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (check)))
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
   else
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_LTR);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_LTR);
 }
 
 typedef struct
@@ -384,7 +384,7 @@ popup_context_menu (GtkToolbar *toolbar, gint x, gint y, gint button_number)
 {
   MenuPositionData position_data;
   
-  GtkMenu *menu = GTK_MENU (ctk_menu_new ());
+  GtkMenu *menu = CTK_MENU (ctk_menu_new ());
   int i;
 
   for (i = 0; i < 5; i++)
@@ -392,9 +392,9 @@ popup_context_menu (GtkToolbar *toolbar, gint x, gint y, gint button_number)
       GtkWidget *item;
       gchar *label = g_strdup_printf ("Item _%d", i);
       item = ctk_menu_item_new_with_mnemonic (label);
-      ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+      ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
     }
-  ctk_widget_show_all (GTK_WIDGET (menu));
+  ctk_widget_show_all (CTK_WIDGET (menu));
 
   if (button_number != -1)
     {
@@ -492,80 +492,80 @@ main (gint argc, gchar **argv)
   
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   g_signal_connect (window, "destroy", G_CALLBACK(ctk_main_quit), NULL);
 
   grid = ctk_grid_new ();
-  ctk_container_add (GTK_CONTAINER (window), grid);
+  ctk_container_add (CTK_CONTAINER (window), grid);
 
   toolbar = ctk_toolbar_new ();
-  ctk_grid_attach (GTK_GRID (grid), toolbar, 0, 0, 2, 1);
+  ctk_grid_attach (CTK_GRID (grid), toolbar, 0, 0, 2, 1);
 
-  hbox1 = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 3);
-  ctk_container_set_border_width (GTK_CONTAINER (hbox1), 5);
-  ctk_grid_attach (GTK_GRID (grid), hbox1, 1, 1, 1, 1);
+  hbox1 = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 3);
+  ctk_container_set_border_width (CTK_CONTAINER (hbox1), 5);
+  ctk_grid_attach (CTK_GRID (grid), hbox1, 1, 1, 1, 1);
 
-  hbox2 = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-  ctk_container_set_border_width (GTK_CONTAINER (hbox2), 5);
-  ctk_grid_attach (GTK_GRID (grid), hbox2, 1, 2, 1, 1);
+  hbox2 = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 2);
+  ctk_container_set_border_width (CTK_CONTAINER (hbox2), 5);
+  ctk_grid_attach (CTK_GRID (grid), hbox2, 1, 2, 1, 1);
 
   checkbox = ctk_check_button_new_with_mnemonic("_Vertical");
-  ctk_box_pack_start (GTK_BOX (hbox1), checkbox, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox1), checkbox, FALSE, FALSE, 0);
   g_signal_connect (checkbox, "toggled",
 		    G_CALLBACK (change_orientation), toolbar);
 
   checkbox = ctk_check_button_new_with_mnemonic("_Show Arrow");
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), TRUE);
-  ctk_box_pack_start (GTK_BOX (hbox1), checkbox, FALSE, FALSE, 0);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (checkbox), TRUE);
+  ctk_box_pack_start (CTK_BOX (hbox1), checkbox, FALSE, FALSE, 0);
   g_signal_connect (checkbox, "toggled",
 		    G_CALLBACK (change_show_arrow), toolbar);
 
   checkbox = ctk_check_button_new_with_mnemonic("_Set Toolbar Style:");
   g_signal_connect (checkbox, "toggled", G_CALLBACK (set_toolbar_style_toggled), toolbar);
-  ctk_box_pack_start (GTK_BOX (hbox1), checkbox, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox1), checkbox, FALSE, FALSE, 0);
 
   option_menu = ctk_combo_box_text_new ();
   ctk_widget_set_sensitive (option_menu, FALSE);  
   g_object_set_data (G_OBJECT (checkbox), "option-menu", option_menu);
   
   for (i = 0; i < G_N_ELEMENTS (toolbar_styles); i++)
-    ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (option_menu), toolbar_styles[i]);
-  ctk_combo_box_set_active (GTK_COMBO_BOX (option_menu),
-                            ctk_toolbar_get_style (GTK_TOOLBAR (toolbar)));
-  ctk_box_pack_start (GTK_BOX (hbox2), option_menu, FALSE, FALSE, 0);
+    ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (option_menu), toolbar_styles[i]);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (option_menu),
+                            ctk_toolbar_get_style (CTK_TOOLBAR (toolbar)));
+  ctk_box_pack_start (CTK_BOX (hbox2), option_menu, FALSE, FALSE, 0);
   g_signal_connect (option_menu, "changed",
 		    G_CALLBACK (change_toolbar_style), toolbar);
 
   checkbox = ctk_check_button_new_with_mnemonic("_Set Icon Size:"); 
   g_signal_connect (checkbox, "toggled", G_CALLBACK (set_icon_size_toggled), toolbar);
-  ctk_box_pack_start (GTK_BOX (hbox2), checkbox, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox2), checkbox, FALSE, FALSE, 0);
 
   option_menu = ctk_combo_box_text_new ();
   g_object_set_data (G_OBJECT (checkbox), "option-menu", option_menu);
   ctk_widget_set_sensitive (option_menu, FALSE);
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (option_menu), "small toolbar");
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (option_menu), "large toolbar");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (option_menu), "small toolbar");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (option_menu), "large toolbar");
 
-  ctk_box_pack_start (GTK_BOX (hbox2), option_menu, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox2), option_menu, FALSE, FALSE, 0);
   g_signal_connect (option_menu, "changed",
 		    G_CALLBACK (icon_size_history_changed), toolbar);
   
   scrolled_window = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
-				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_window),
+				  CTK_POLICY_AUTOMATIC, CTK_POLICY_AUTOMATIC);
   ctk_widget_set_hexpand (scrolled_window, TRUE);
   ctk_widget_set_vexpand (scrolled_window, TRUE);
-  ctk_grid_attach (GTK_GRID (grid), scrolled_window, 1, 3, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), scrolled_window, 1, 3, 1, 1);
 
   store = create_items_list (&treeview);
-  ctk_container_add (GTK_CONTAINER (scrolled_window), treeview);
+  ctk_container_add (CTK_CONTAINER (scrolled_window), treeview);
   
   item = ctk_tool_button_new (NULL, NULL);
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "document-new");
-  ctk_tool_button_set_label (GTK_TOOL_BUTTON (item), "Custom label");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "document-new");
+  ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), "Custom label");
   add_item_to_list (store, item, "New");
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
   gdk_threads_add_timeout (3000, (GSourceFunc) timeout_cb, item);
   ctk_tool_item_set_expand (item, TRUE);
 
@@ -577,15 +577,15 @@ main (gint argc, gchar **argv)
       menuitem = ctk_menu_item_new_with_label (text);
       g_free (text);
       ctk_widget_show (menuitem);
-      ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+      ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
     }
 
   item = ctk_menu_tool_button_new (NULL, NULL);
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "document-open");
-  ctk_tool_button_set_label (GTK_TOOL_BUTTON (item), "Open");
-  ctk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (item), menu);
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "document-open");
+  ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), "Open");
+  ctk_menu_tool_button_set_menu (CTK_MENU_TOOL_BUTTON (item), menu);
   add_item_to_list (store, item, "Open");
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
   gdk_threads_add_timeout (3000, (GSourceFunc) timeout_cb1, item);
  
   menu = ctk_menu_new ();
@@ -596,129 +596,129 @@ main (gint argc, gchar **argv)
       menuitem = ctk_menu_item_new_with_label (text);
       g_free (text);
       ctk_widget_show (menuitem);
-      ctk_menu_shell_append (GTK_MENU_SHELL (menu), menuitem);
+      ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
     }
 
   item = ctk_menu_tool_button_new (NULL, NULL);
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "go-previous");
-  ctk_tool_button_set_label (GTK_TOOL_BUTTON (item), "Back");
-  ctk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (item), menu);
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "go-previous");
+  ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), "Back");
+  ctk_menu_tool_button_set_menu (CTK_MENU_TOOL_BUTTON (item), menu);
   add_item_to_list (store, item, "BackWithHistory");
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
  
   item = ctk_separator_tool_item_new ();
   add_item_to_list (store, item, "-----");    
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
   
-  image = ctk_image_new_from_icon_name ("dialog-warning", GTK_ICON_SIZE_DIALOG);
+  image = ctk_image_new_from_icon_name ("dialog-warning", CTK_ICON_SIZE_DIALOG);
   item = ctk_tool_item_new ();
   ctk_widget_show (image);
-  ctk_container_add (GTK_CONTAINER (item), image);
+  ctk_container_add (CTK_CONTAINER (item), image);
   add_item_to_list (store, item, "(Custom Item)");    
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
   
   item = ctk_tool_button_new (NULL, NULL);
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "go-previous");
-  ctk_tool_button_set_label (GTK_TOOL_BUTTON (item), "Back");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "go-previous");
+  ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), "Back");
   add_item_to_list (store, item, "Back");    
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
 
   item = ctk_separator_tool_item_new ();
   add_item_to_list (store, item, "-----");  
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
   
   item = ctk_tool_button_new (NULL, NULL);
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "go-next");
-  ctk_tool_button_set_label (GTK_TOOL_BUTTON (item), "Forward");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "go-next");
+  ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), "Forward");
   add_item_to_list (store, item, "Forward");  
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
 
   item = ctk_toggle_tool_button_new ();
-  ctk_tool_button_set_label (GTK_TOOL_BUTTON (item), "Bold");
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "format-text-bold");
+  ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), "Bold");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "format-text-bold");
   g_signal_connect (item, "toggled", G_CALLBACK (bold_toggled), NULL);
   add_item_to_list (store, item, "Bold");  
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
-  ctk_widget_set_sensitive (GTK_WIDGET (item), FALSE);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
+  ctk_widget_set_sensitive (CTK_WIDGET (item), FALSE);
 
   item = ctk_separator_tool_item_new ();
   add_item_to_list (store, item, "-----");  
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
   ctk_tool_item_set_expand (item, TRUE);
-  ctk_separator_tool_item_set_draw (GTK_SEPARATOR_TOOL_ITEM (item), FALSE);
-  g_assert (ctk_toolbar_get_nth_item (GTK_TOOLBAR (toolbar), 0) != 0);
+  ctk_separator_tool_item_set_draw (CTK_SEPARATOR_TOOL_ITEM (item), FALSE);
+  g_assert (ctk_toolbar_get_nth_item (CTK_TOOLBAR (toolbar), 0) != 0);
   
   item = ctk_radio_tool_button_new (NULL);
-  ctk_tool_button_set_label (GTK_TOOL_BUTTON (item), "Left");
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "format-justify-left");
-  group = ctk_radio_tool_button_get_group (GTK_RADIO_TOOL_BUTTON (item));
+  ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), "Left");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "format-justify-left");
+  group = ctk_radio_tool_button_get_group (CTK_RADIO_TOOL_BUTTON (item));
   add_item_to_list (store, item, "Left");
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
   
   
   item = ctk_radio_tool_button_new (group);
-  ctk_tool_button_set_label (GTK_TOOL_BUTTON (item), "Center");
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "format-justify-center");
-  group = ctk_radio_tool_button_get_group (GTK_RADIO_TOOL_BUTTON (item));
+  ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), "Center");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "format-justify-center");
+  group = ctk_radio_tool_button_get_group (CTK_RADIO_TOOL_BUTTON (item));
   add_item_to_list (store, item, "Center");
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
 
   item = ctk_radio_tool_button_new (group);
-  ctk_tool_button_set_label (GTK_TOOL_BUTTON (item), "Right");
-  ctk_tool_button_set_icon_name (GTK_TOOL_BUTTON (item), "format-justify-right");
+  ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), "Right");
+  ctk_tool_button_set_icon_name (CTK_TOOL_BUTTON (item), "format-justify-right");
   add_item_to_list (store, item, "Right");
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
 
   item = ctk_tool_button_new (ctk_image_new_from_file ("apple-red.png"), "_Apple");
   add_item_to_list (store, item, "Apple");
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
-  ctk_tool_button_set_use_underline (GTK_TOOL_BUTTON (item), TRUE);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
+  ctk_tool_button_set_use_underline (CTK_TOOL_BUTTON (item), TRUE);
 
   gicon = g_content_type_get_icon ("video/ogg");
-  image = ctk_image_new_from_gicon (gicon, GTK_ICON_SIZE_LARGE_TOOLBAR);
+  image = ctk_image_new_from_gicon (gicon, CTK_ICON_SIZE_LARGE_TOOLBAR);
   g_object_unref (gicon);
   item = ctk_tool_button_new (image, "Video");
   add_item_to_list (store, item, "Video");
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
 
-  image = ctk_image_new_from_icon_name ("utilities-terminal", GTK_ICON_SIZE_LARGE_TOOLBAR);
+  image = ctk_image_new_from_icon_name ("utilities-terminal", CTK_ICON_SIZE_LARGE_TOOLBAR);
   item = ctk_tool_button_new (image, "Terminal");
   add_item_to_list (store, item, "Terminal");
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
 
   image = ctk_spinner_new ();
-  ctk_spinner_start (GTK_SPINNER (image));
+  ctk_spinner_start (CTK_SPINNER (image));
   item = ctk_tool_button_new (image, "Spinner");
   add_item_to_list (store, item, "Spinner");
-  ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, -1);
+  ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
 
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
-  ctk_container_set_border_width (GTK_CONTAINER (hbox), 5);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 5);
+  ctk_container_set_border_width (CTK_CONTAINER (hbox), 5);
   ctk_widget_set_hexpand (hbox, TRUE);
-  ctk_grid_attach (GTK_GRID (grid), hbox, 1, 4, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), hbox, 1, 4, 1, 1);
 
   button = ctk_button_new_with_label ("Drag me to the toolbar");
-  ctk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), button, FALSE, FALSE, 0);
 
   label = ctk_label_new ("Drop index:");
-  ctk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), label, FALSE, FALSE, 0);
 
   label = ctk_label_new ("");
-  ctk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), label, FALSE, FALSE, 0);
 
   checkbox = ctk_check_button_new_with_mnemonic("_Right to left");
-  if (ctk_widget_get_default_direction () == GTK_TEXT_DIR_RTL)
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), TRUE);
+  if (ctk_widget_get_default_direction () == CTK_TEXT_DIR_RTL)
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (checkbox), TRUE);
   else
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbox), FALSE);
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (checkbox), FALSE);
   g_signal_connect (checkbox, "toggled", G_CALLBACK (rtl_toggled), NULL);
 
-  ctk_box_pack_end (GTK_BOX (hbox), checkbox, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (hbox), checkbox, FALSE, FALSE, 0);
   
   ctk_drag_source_set (button, GDK_BUTTON1_MASK,
 		       target_table, G_N_ELEMENTS (target_table),
 		       GDK_ACTION_MOVE);
-  ctk_drag_dest_set (toolbar, GTK_DEST_DEFAULT_DROP,
+  ctk_drag_dest_set (toolbar, CTK_DEST_DEFAULT_DROP,
 		     target_table, G_N_ELEMENTS (target_table),
 		     GDK_ACTION_MOVE);
   g_signal_connect (toolbar, "drag_motion",

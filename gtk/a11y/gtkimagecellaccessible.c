@@ -27,14 +27,14 @@ struct _GtkImageCellAccessiblePrivate
 
 static void atk_image_interface_init (AtkImageIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkImageCellAccessible, ctk_image_cell_accessible, GTK_TYPE_RENDERER_CELL_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkImageCellAccessible, ctk_image_cell_accessible, CTK_TYPE_RENDERER_CELL_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkImageCellAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_IMAGE, atk_image_interface_init))
 
 static void
 ctk_image_cell_accessible_finalize (GObject *object)
 {
-  GtkImageCellAccessible *image_cell = GTK_IMAGE_CELL_ACCESSIBLE (object);
+  GtkImageCellAccessible *image_cell = CTK_IMAGE_CELL_ACCESSIBLE (object);
 
   g_free (image_cell->priv->image_description);
   G_OBJECT_CLASS (ctk_image_cell_accessible_parent_class)->finalize (object);
@@ -57,7 +57,7 @@ ctk_image_cell_accessible_init (GtkImageCellAccessible *image_cell)
 static const gchar *
 ctk_image_cell_accessible_get_image_description (AtkImage *image)
 {
-  GtkImageCellAccessible *image_cell = GTK_IMAGE_CELL_ACCESSIBLE (image);
+  GtkImageCellAccessible *image_cell = CTK_IMAGE_CELL_ACCESSIBLE (image);
 
   return image_cell->priv->image_description;
 }
@@ -66,7 +66,7 @@ static gboolean
 ctk_image_cell_accessible_set_image_description (AtkImage    *image,
                                                  const gchar *description)
 {
-  GtkImageCellAccessible *image_cell = GTK_IMAGE_CELL_ACCESSIBLE (image);
+  GtkImageCellAccessible *image_cell = CTK_IMAGE_CELL_ACCESSIBLE (image);
 
   g_free (image_cell->priv->image_description);
   image_cell->priv->image_description = g_strdup (description);
@@ -92,7 +92,7 @@ ctk_image_cell_accessible_get_image_size (AtkImage *image,
                                           gint     *width,
                                           gint     *height)
 {
-  GtkImageCellAccessible *cell = GTK_IMAGE_CELL_ACCESSIBLE (image);
+  GtkImageCellAccessible *cell = CTK_IMAGE_CELL_ACCESSIBLE (image);
   GtkCellRenderer *cell_renderer;
   GdkPixbuf *pixbuf = NULL;
 

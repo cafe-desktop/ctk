@@ -129,8 +129,8 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                        g_param_spec_object ("recent-manager",
                                                             P_("Recent Manager"),
                                                             P_("The RecentManager object to use"),
-                                                            GTK_TYPE_RECENT_MANAGER,
-                                                            GTK_PARAM_WRITABLE|G_PARAM_CONSTRUCT_ONLY));
+                                                            CTK_TYPE_RECENT_MANAGER,
+                                                            CTK_PARAM_WRITABLE|G_PARAM_CONSTRUCT_ONLY));
 
   /**
    * GtkRecentManager:show-private:
@@ -146,7 +146,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              P_("Show Private"),
                                                              P_("Whether the private items should be displayed"),
                                                              FALSE,
-                                                             GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkRecentChooser:show-tips:
@@ -161,7 +161,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              P_("Show Tooltips"),
                                                              P_("Whether there should be a tooltip on the item"),
                                                              FALSE,
-                                                             GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkRecentChooser:show-icons:
@@ -175,7 +175,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              P_("Show Icons"),
                                                              P_("Whether there should be an icon near the item"),
                                                              TRUE,
-                                                             GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkRecentChooser:show-not-found:
@@ -192,7 +192,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              P_("Show Not Found"),
                                                              P_("Whether the items pointing to unavailable resources should be displayed"),
                                                              TRUE,
-                                                             GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkRecentChooser:select-multiple:
@@ -206,7 +206,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              P_("Select Multiple"),
                                                              P_("Whether to allow multiple items to be selected"),
                                                              FALSE,
-                                                             GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkRecentChooser:local-only:
@@ -221,7 +221,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                              P_("Local only"),
                                                              P_("Whether the selected resource(s) should be limited to local file: URIs"),
                                                              TRUE,
-                                                             GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                             CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkRecentChooser:limit:
@@ -236,7 +236,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                                          P_("Limit"),
                                                          P_("The maximum number of items to be displayed"),
                                                          -1, G_MAXINT, 50,
-                                                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkRecentChooser:sort-type:
@@ -249,9 +249,9 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                        g_param_spec_enum ("sort-type",
                                                           P_("Sort Type"),
                                                           P_("The sorting order of the items displayed"),
-                                                          GTK_TYPE_RECENT_SORT_TYPE,
-                                                          GTK_RECENT_SORT_NONE,
-                                                          GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                          CTK_TYPE_RECENT_SORT_TYPE,
+                                                          CTK_RECENT_SORT_NONE,
+                                                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkRecentChooser:filter:
@@ -265,8 +265,8 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
                                        g_param_spec_object ("filter",
                                                             P_("Filter"),
                                                             P_("The current filter for selecting which resources are displayed"),
-                                                            GTK_TYPE_RECENT_FILTER,
-                                                            GTK_PARAM_READWRITE));
+                                                            CTK_TYPE_RECENT_FILTER,
+                                                            CTK_PARAM_READWRITE));
 }
 
 GQuark
@@ -288,9 +288,9 @@ ctk_recent_chooser_error_quark (void)
 GtkRecentManager *
 _ctk_recent_chooser_get_recent_manager (GtkRecentChooser *chooser)
 {
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), NULL);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
-  return GTK_RECENT_CHOOSER_GET_IFACE (chooser)->get_recent_manager (chooser);
+  return CTK_RECENT_CHOOSER_GET_IFACE (chooser)->get_recent_manager (chooser);
 }
 
 /**
@@ -306,7 +306,7 @@ void
 ctk_recent_chooser_set_show_private (GtkRecentChooser *chooser,
 				     gboolean          show_private)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
   g_object_set (chooser, "show-private", show_private, NULL);
 }
@@ -328,7 +328,7 @@ ctk_recent_chooser_get_show_private (GtkRecentChooser *chooser)
 {
   gboolean show_private;
   
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), FALSE);
   
   g_object_get (chooser, "show-private", &show_private, NULL);
   
@@ -349,7 +349,7 @@ void
 ctk_recent_chooser_set_show_not_found (GtkRecentChooser *chooser,
 				       gboolean          show_not_found)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
   g_object_set (chooser, "show-not-found", show_not_found, NULL);
 }
@@ -371,7 +371,7 @@ ctk_recent_chooser_get_show_not_found (GtkRecentChooser *chooser)
 {
   gboolean show_not_found;
   
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), FALSE);
   
   g_object_get (chooser, "show-not-found", &show_not_found, NULL);
   
@@ -392,7 +392,7 @@ void
 ctk_recent_chooser_set_show_icons (GtkRecentChooser *chooser,
 				   gboolean          show_icons)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
   g_object_set (chooser, "show-icons", show_icons, NULL);
 }
@@ -412,7 +412,7 @@ ctk_recent_chooser_get_show_icons (GtkRecentChooser *chooser)
 {
   gboolean show_icons;
   
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), FALSE);
   
   g_object_get (chooser, "show-icons", &show_icons, NULL);
   
@@ -432,7 +432,7 @@ void
 ctk_recent_chooser_set_select_multiple (GtkRecentChooser *chooser,
 					gboolean          select_multiple)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
   g_object_set (chooser, "select-multiple", select_multiple, NULL);
 }
@@ -452,7 +452,7 @@ ctk_recent_chooser_get_select_multiple (GtkRecentChooser *chooser)
 {
   gboolean select_multiple;
   
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), FALSE);
   
   g_object_get (chooser, "select-multiple", &select_multiple, NULL);
   
@@ -475,7 +475,7 @@ void
 ctk_recent_chooser_set_local_only (GtkRecentChooser *chooser,
 				   gboolean          local_only)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
 
   g_object_set (chooser, "local-only", local_only, NULL);
 }
@@ -496,7 +496,7 @@ ctk_recent_chooser_get_local_only (GtkRecentChooser *chooser)
 {
   gboolean local_only;
 
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), FALSE);
 
   g_object_get (chooser, "local-only", &local_only, NULL);
 
@@ -517,7 +517,7 @@ void
 ctk_recent_chooser_set_limit (GtkRecentChooser *chooser,
 			      gint              limit)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
   g_object_set (chooser, "limit", limit, NULL);
 }
@@ -539,7 +539,7 @@ ctk_recent_chooser_get_limit (GtkRecentChooser *chooser)
 {
   gint limit;
   
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), 10);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), 10);
   
   g_object_get (chooser, "limit", &limit, NULL);
   
@@ -560,7 +560,7 @@ void
 ctk_recent_chooser_set_show_tips (GtkRecentChooser *chooser,
 				  gboolean          show_tips)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
   g_object_set (chooser, "show-tips", show_tips, NULL);
 }
@@ -582,7 +582,7 @@ ctk_recent_chooser_get_show_tips (GtkRecentChooser *chooser)
 {
   gboolean show_tips;
   
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), FALSE);
   
   g_object_get (chooser, "show-tips", &show_tips, NULL);
   
@@ -622,7 +622,7 @@ void
 ctk_recent_chooser_set_sort_type (GtkRecentChooser  *chooser,
 				  GtkRecentSortType  sort_type)
 {  
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
   g_object_set (chooser, "sort-type", sort_type, NULL);
 }
@@ -642,7 +642,7 @@ ctk_recent_chooser_get_sort_type (GtkRecentChooser *chooser)
 {
   GtkRecentSortType sort_type;
   
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), GTK_RECENT_SORT_NONE);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), CTK_RECENT_SORT_NONE);
   
   g_object_get (chooser, "sort-type", &sort_type, NULL);
 
@@ -657,7 +657,7 @@ ctk_recent_chooser_get_sort_type (GtkRecentChooser *chooser)
  * @data_destroy: (allow-none): destroy notifier for @sort_data, or %NULL
  *
  * Sets the comparison function used when sorting to be @sort_func.  If
- * the @chooser has the sort type set to #GTK_RECENT_SORT_CUSTOM then
+ * the @chooser has the sort type set to #CTK_RECENT_SORT_CUSTOM then
  * the chooser will sort using this function.
  *
  * To the comparison function will be passed two #GtkRecentInfo structs and
@@ -673,9 +673,9 @@ ctk_recent_chooser_set_sort_func  (GtkRecentChooser  *chooser,
 				   gpointer           sort_data,
 				   GDestroyNotify     data_destroy)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
-  GTK_RECENT_CHOOSER_GET_IFACE (chooser)->set_sort_func (chooser,
+  CTK_RECENT_CHOOSER_GET_IFACE (chooser)->set_sort_func (chooser,
   							 sort_func,
   							 sort_data,
   							 data_destroy);
@@ -698,9 +698,9 @@ ctk_recent_chooser_set_current_uri (GtkRecentChooser  *chooser,
 				    const gchar       *uri,
 				    GError           **error)
 {
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), FALSE);
   
-  return GTK_RECENT_CHOOSER_GET_IFACE (chooser)->set_current_uri (chooser, uri, error);
+  return CTK_RECENT_CHOOSER_GET_IFACE (chooser)->set_current_uri (chooser, uri, error);
 }
 
 /**
@@ -716,9 +716,9 @@ ctk_recent_chooser_set_current_uri (GtkRecentChooser  *chooser,
 gchar *
 ctk_recent_chooser_get_current_uri (GtkRecentChooser *chooser)
 {
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), NULL);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
-  return GTK_RECENT_CHOOSER_GET_IFACE (chooser)->get_current_uri (chooser);
+  return CTK_RECENT_CHOOSER_GET_IFACE (chooser)->get_current_uri (chooser);
 }
 
 /**
@@ -739,7 +739,7 @@ ctk_recent_chooser_get_current_item (GtkRecentChooser *chooser)
   GtkRecentInfo *retval;
   gchar *uri;
   
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), NULL);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
   uri = ctk_recent_chooser_get_current_uri (chooser);
   if (!uri)
@@ -769,9 +769,9 @@ ctk_recent_chooser_select_uri (GtkRecentChooser  *chooser,
 			       const gchar       *uri,
 			       GError           **error)
 {
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), FALSE);
   
-  return GTK_RECENT_CHOOSER_GET_IFACE (chooser)->select_uri (chooser, uri, error);
+  return CTK_RECENT_CHOOSER_GET_IFACE (chooser)->select_uri (chooser, uri, error);
 }
 
 /**
@@ -787,9 +787,9 @@ void
 ctk_recent_chooser_unselect_uri (GtkRecentChooser *chooser,
 				 const gchar      *uri)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
-  GTK_RECENT_CHOOSER_GET_IFACE (chooser)->unselect_uri (chooser, uri);
+  CTK_RECENT_CHOOSER_GET_IFACE (chooser)->unselect_uri (chooser, uri);
 }
 
 /**
@@ -804,9 +804,9 @@ ctk_recent_chooser_unselect_uri (GtkRecentChooser *chooser,
 void
 ctk_recent_chooser_select_all (GtkRecentChooser *chooser)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
-  GTK_RECENT_CHOOSER_GET_IFACE (chooser)->select_all (chooser);
+  CTK_RECENT_CHOOSER_GET_IFACE (chooser)->select_all (chooser);
 }
 
 /**
@@ -820,9 +820,9 @@ ctk_recent_chooser_select_all (GtkRecentChooser *chooser)
 void
 ctk_recent_chooser_unselect_all (GtkRecentChooser *chooser)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
-  GTK_RECENT_CHOOSER_GET_IFACE (chooser)->unselect_all (chooser);
+  CTK_RECENT_CHOOSER_GET_IFACE (chooser)->unselect_all (chooser);
 }
 
 /**
@@ -844,9 +844,9 @@ ctk_recent_chooser_unselect_all (GtkRecentChooser *chooser)
 GList *
 ctk_recent_chooser_get_items (GtkRecentChooser *chooser)
 {
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), NULL);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
-  return GTK_RECENT_CHOOSER_GET_IFACE (chooser)->get_items (chooser);
+  return CTK_RECENT_CHOOSER_GET_IFACE (chooser)->get_items (chooser);
 }
 
 /**
@@ -919,10 +919,10 @@ void
 ctk_recent_chooser_add_filter (GtkRecentChooser *chooser,
 			       GtkRecentFilter  *filter)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
-  g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
   
-  GTK_RECENT_CHOOSER_GET_IFACE (chooser)->add_filter (chooser, filter);
+  CTK_RECENT_CHOOSER_GET_IFACE (chooser)->add_filter (chooser, filter);
 }
 
 /**
@@ -938,10 +938,10 @@ void
 ctk_recent_chooser_remove_filter (GtkRecentChooser *chooser,
 				  GtkRecentFilter  *filter)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
-  g_return_if_fail (GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_FILTER (filter));
   
-  GTK_RECENT_CHOOSER_GET_IFACE (chooser)->remove_filter (chooser, filter);
+  CTK_RECENT_CHOOSER_GET_IFACE (chooser)->remove_filter (chooser, filter);
 }
 
 /**
@@ -959,9 +959,9 @@ ctk_recent_chooser_remove_filter (GtkRecentChooser *chooser,
 GSList *
 ctk_recent_chooser_list_filters (GtkRecentChooser *chooser)
 {
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), NULL);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
-  return GTK_RECENT_CHOOSER_GET_IFACE (chooser)->list_filters (chooser);
+  return CTK_RECENT_CHOOSER_GET_IFACE (chooser)->list_filters (chooser);
 }
 
 /**
@@ -978,8 +978,8 @@ void
 ctk_recent_chooser_set_filter (GtkRecentChooser *chooser,
 			       GtkRecentFilter  *filter)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
-  g_return_if_fail (filter == NULL || GTK_IS_RECENT_FILTER (filter));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (filter == NULL || CTK_IS_RECENT_FILTER (filter));
   
   g_object_set (G_OBJECT (chooser), "filter", filter, NULL);
 }
@@ -1000,7 +1000,7 @@ ctk_recent_chooser_get_filter (GtkRecentChooser *chooser)
 {
   GtkRecentFilter *filter;
   
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER (chooser), NULL);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER (chooser), NULL);
   
   g_object_get (G_OBJECT (chooser), "filter", &filter, NULL);
   
@@ -1017,7 +1017,7 @@ ctk_recent_chooser_get_filter (GtkRecentChooser *chooser)
 void
 _ctk_recent_chooser_item_activated (GtkRecentChooser *chooser)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
   
   g_signal_emit (chooser, chooser_signals[ITEM_ACTIVATED], 0);
 }
@@ -1025,7 +1025,7 @@ _ctk_recent_chooser_item_activated (GtkRecentChooser *chooser)
 void
 _ctk_recent_chooser_selection_changed (GtkRecentChooser *chooser)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER (chooser));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER (chooser));
 
   g_signal_emit (chooser, chooser_signals[SELECTION_CHANGED], 0);
 }
@@ -1040,9 +1040,9 @@ _ctk_recent_chooser_update (GtkActivatable *activatable,
   GtkRecentAction  *recent_action;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  recent_chooser = GTK_RECENT_CHOOSER (activatable);
-  action_chooser = GTK_RECENT_CHOOSER (action);
-  recent_action  = GTK_RECENT_ACTION (action);
+  recent_chooser = CTK_RECENT_CHOOSER (activatable);
+  action_chooser = CTK_RECENT_CHOOSER (action);
+  recent_action  = CTK_RECENT_ACTION (action);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (strcmp (property_name, "show-numbers") == 0 && recent_chooser_has_show_numbers (recent_chooser))
@@ -1078,8 +1078,8 @@ _ctk_recent_chooser_sync_action_properties (GtkActivatable *activatable,
   GtkRecentChooser *action_chooser;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  recent_chooser = GTK_RECENT_CHOOSER (activatable);
-  action_chooser = GTK_RECENT_CHOOSER (action);
+  recent_chooser = CTK_RECENT_CHOOSER (activatable);
+  action_chooser = CTK_RECENT_CHOOSER (action);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (!action)
@@ -1089,7 +1089,7 @@ _ctk_recent_chooser_sync_action_properties (GtkActivatable *activatable,
     {
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       g_object_set (recent_chooser, "show-numbers", 
-                    ctk_recent_action_get_show_numbers (GTK_RECENT_ACTION (action)),
+                    ctk_recent_action_get_show_numbers (CTK_RECENT_ACTION (action)),
                     NULL);
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
@@ -1115,7 +1115,7 @@ _ctk_recent_chooser_set_related_action (GtkRecentChooser *recent_chooser,
     return;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  ctk_activatable_do_set_related_action (GTK_ACTIVATABLE (recent_chooser), action);
+  ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (recent_chooser), action);
   G_GNUC_END_IGNORE_DEPRECATIONS;
   g_object_set_qdata (G_OBJECT (recent_chooser), quark_ctk_related_action, action);
 }
@@ -1145,7 +1145,7 @@ _ctk_recent_chooser_set_use_action_appearance (GtkRecentChooser *recent_chooser,
       g_object_set_qdata (G_OBJECT (recent_chooser), quark_ctk_use_action_appearance, GINT_TO_POINTER (!use_appearance));
  
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      ctk_activatable_sync_action_properties (GTK_ACTIVATABLE (recent_chooser), action);
+      ctk_activatable_sync_action_properties (CTK_ACTIVATABLE (recent_chooser), action);
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }

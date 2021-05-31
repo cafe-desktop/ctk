@@ -78,7 +78,7 @@ struct _GtkInspectorGeneralPrivate
   GtkAdjustment *focus_adjustment;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorGeneral, ctk_inspector_general, GTK_TYPE_SCROLLED_WINDOW)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorGeneral, ctk_inspector_general, CTK_TYPE_SCROLLED_WINDOW)
 
 static void
 init_version (GtkInspectorGeneral *gen)
@@ -115,8 +115,8 @@ init_version (GtkInspectorGeneral *gen)
 #endif
     backend = "Unknown";
 
-  ctk_label_set_text (GTK_LABEL (gen->priv->ctk_version), GTK_VERSION);
-  ctk_label_set_text (GTK_LABEL (gen->priv->gdk_backend), backend);
+  ctk_label_set_text (CTK_LABEL (gen->priv->ctk_version), CTK_VERSION);
+  ctk_label_set_text (CTK_LABEL (gen->priv->gdk_backend), backend);
 }
 
 static G_GNUC_UNUSED void
@@ -128,32 +128,32 @@ add_check_row (GtkInspectorGeneral *gen,
 {
   GtkWidget *row, *box, *label, *check;
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 40);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 40);
   g_object_set (box,
                 "margin", 10,
                 "margin-start", 10 + indent,
                 NULL);
 
   label = ctk_label_new (name);
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
-  ctk_label_set_xalign (GTK_LABEL (label), 0.0);
-  ctk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
+  ctk_label_set_xalign (CTK_LABEL (label), 0.0);
+  ctk_box_pack_start (CTK_BOX (box), label, FALSE, FALSE, 0);
 
-  check = ctk_image_new_from_icon_name ("object-select-symbolic", GTK_ICON_SIZE_MENU);
-  ctk_widget_set_halign (check, GTK_ALIGN_END);
-  ctk_widget_set_valign (check, GTK_ALIGN_BASELINE);
+  check = ctk_image_new_from_icon_name ("object-select-symbolic", CTK_ICON_SIZE_MENU);
+  ctk_widget_set_halign (check, CTK_ALIGN_END);
+  ctk_widget_set_valign (check, CTK_ALIGN_BASELINE);
   ctk_widget_set_opacity (check, value ? 1.0 : 0.0);
-  ctk_box_pack_start (GTK_BOX (box), check, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), check, TRUE, TRUE, 0);
 
   row = ctk_list_box_row_new ();
-  ctk_container_add (GTK_CONTAINER (row), box);
-  ctk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
+  ctk_container_add (CTK_CONTAINER (row), box);
+  ctk_list_box_row_set_activatable (CTK_LIST_BOX_ROW (row), FALSE);
   ctk_widget_show_all (row);
 
   ctk_list_box_insert (list, row, -1);
 
-  ctk_size_group_add_widget (GTK_SIZE_GROUP (gen->priv->labels), label);
+  ctk_size_group_add_widget (CTK_SIZE_GROUP (gen->priv->labels), label);
 }
 
 static void
@@ -167,33 +167,33 @@ add_label_row (GtkInspectorGeneral *gen,
   GtkWidget *label;
   GtkWidget *row;
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 40);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 40);
   g_object_set (box,
                 "margin", 10,
                 "margin-start", 10 + indent,
                 NULL);
 
   label = ctk_label_new (name);
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
-  ctk_label_set_xalign (GTK_LABEL (label), 0.0);
-  ctk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
+  ctk_label_set_xalign (CTK_LABEL (label), 0.0);
+  ctk_box_pack_start (CTK_BOX (box), label, FALSE, FALSE, 0);
 
   label = ctk_label_new (value);
-  ctk_label_set_selectable (GTK_LABEL (label), TRUE);
-  ctk_widget_set_halign (label, GTK_ALIGN_END);
-  ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
-  ctk_label_set_xalign (GTK_LABEL (label), 1.0);
-  ctk_box_pack_start (GTK_BOX (box), label, TRUE, TRUE, 0);
+  ctk_label_set_selectable (CTK_LABEL (label), TRUE);
+  ctk_widget_set_halign (label, CTK_ALIGN_END);
+  ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
+  ctk_label_set_xalign (CTK_LABEL (label), 1.0);
+  ctk_box_pack_start (CTK_BOX (box), label, TRUE, TRUE, 0);
 
   row = ctk_list_box_row_new ();
-  ctk_container_add (GTK_CONTAINER (row), box);
-  ctk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
+  ctk_container_add (CTK_CONTAINER (row), box);
+  ctk_list_box_row_set_activatable (CTK_LIST_BOX_ROW (row), FALSE);
   ctk_widget_show_all (row);
 
-  ctk_list_box_insert (GTK_LIST_BOX (list), row, -1);
+  ctk_list_box_insert (CTK_LIST_BOX (list), row, -1);
 
-  ctk_size_group_add_widget (GTK_SIZE_GROUP (gen->priv->labels), label);
+  ctk_size_group_add_widget (CTK_SIZE_GROUP (gen->priv->labels), label);
 }
 
 #ifdef GDK_WINDOWING_X11
@@ -202,7 +202,7 @@ append_glx_extension_row (GtkInspectorGeneral *gen,
                           Display             *dpy,
                           const gchar         *ext)
 {
-  add_check_row (gen, GTK_LIST_BOX (gen->priv->gl_box), ext, epoxy_has_glx_extension (dpy, 0, ext), 0);
+  add_check_row (gen, CTK_LIST_BOX (gen->priv->gl_box), ext, epoxy_has_glx_extension (dpy, 0, ext), 0);
 }
 #endif
 
@@ -212,7 +212,7 @@ append_egl_extension_row (GtkInspectorGeneral *gen,
                           EGLDisplay          dpy,
                           const gchar         *ext)
 {
-  add_check_row (gen, GTK_LIST_BOX (gen->priv->gl_box), ext, epoxy_has_egl_extension (dpy, ext), 0);
+  add_check_row (gen, CTK_LIST_BOX (gen->priv->gl_box), ext, epoxy_has_egl_extension (dpy, ext), 0);
 }
 
 static EGLDisplay
@@ -265,9 +265,9 @@ init_gl (GtkInspectorGeneral *gen)
         return;
 
       version = g_strconcat ("GLX ", glXGetClientString (dpy, GLX_VERSION), NULL);
-      ctk_label_set_text (GTK_LABEL (gen->priv->gl_version), version);
+      ctk_label_set_text (CTK_LABEL (gen->priv->gl_version), version);
       g_free (version);
-      ctk_label_set_text (GTK_LABEL (gen->priv->gl_vendor), glXGetClientString (dpy, GLX_VENDOR));
+      ctk_label_set_text (CTK_LABEL (gen->priv->gl_vendor), glXGetClientString (dpy, GLX_VENDOR));
 
       append_glx_extension_row (gen, dpy, "GLX_ARB_create_context_profile");
       append_glx_extension_row (gen, dpy, "GLX_SGI_swap_control");
@@ -294,9 +294,9 @@ init_gl (GtkInspectorGeneral *gen)
         return;
 
       version = g_strconcat ("EGL ", eglQueryString (dpy, EGL_VERSION), NULL);
-      ctk_label_set_text (GTK_LABEL (gen->priv->gl_version), version);
+      ctk_label_set_text (CTK_LABEL (gen->priv->gl_version), version);
       g_free (version);
-      ctk_label_set_text (GTK_LABEL (gen->priv->gl_vendor), eglQueryString (dpy, EGL_VENDOR));
+      ctk_label_set_text (CTK_LABEL (gen->priv->gl_vendor), eglQueryString (dpy, EGL_VENDOR));
 
       append_egl_extension_row (gen, dpy, "EGL_KHR_create_context");
       append_egl_extension_row (gen, dpy, "EGL_EXT_buffer_age");
@@ -306,8 +306,8 @@ init_gl (GtkInspectorGeneral *gen)
   else
 #endif
     {
-      ctk_label_set_text (GTK_LABEL (gen->priv->gl_version), C_("GL version", "None"));
-      ctk_label_set_text (GTK_LABEL (gen->priv->gl_vendor), C_("GL vendor", "None"));
+      ctk_label_set_text (CTK_LABEL (gen->priv->gl_version), C_("GL version", "None"));
+      ctk_label_set_text (CTK_LABEL (gen->priv->gl_vendor), C_("GL vendor", "None"));
     }
 }
 
@@ -319,7 +319,7 @@ set_monospace_font (GtkWidget *w)
   attrs = pango_attr_list_new ();
   pango_attr_list_insert (attrs, pango_attr_fallback_new (FALSE));
   pango_attr_list_insert (attrs, pango_attr_family_new ("Monospace"));
-  ctk_label_set_attributes (GTK_LABEL (w), attrs);
+  ctk_label_set_attributes (CTK_LABEL (w), attrs);
   pango_attr_list_unref (attrs);
 }
 
@@ -333,12 +333,12 @@ set_path_label (GtkWidget   *w,
   if (v != NULL)
     {
       set_monospace_font (w);
-      ctk_label_set_text (GTK_LABEL (w), v);
+      ctk_label_set_text (CTK_LABEL (w), v);
     }
   else
     {
        GtkWidget *r;
-       r = ctk_widget_get_ancestor (w, GTK_TYPE_LIST_BOX_ROW);
+       r = ctk_widget_get_ancestor (w, CTK_TYPE_LIST_BOX_ROW);
        ctk_widget_hide (r);
     }
 }
@@ -347,12 +347,12 @@ static void
 init_env (GtkInspectorGeneral *gen)
 {
   set_monospace_font (gen->priv->prefix);
-  ctk_label_set_text (GTK_LABEL (gen->priv->prefix), _ctk_get_data_prefix ());
+  ctk_label_set_text (CTK_LABEL (gen->priv->prefix), _ctk_get_data_prefix ());
   set_path_label (gen->priv->xdg_data_home, "XDG_DATA_HOME");
   set_path_label (gen->priv->xdg_data_dirs, "XDG_DATA_DIRS");
-  set_path_label (gen->priv->ctk_path, "GTK_PATH");
-  set_path_label (gen->priv->ctk_exe_prefix, "GTK_EXE_PREFIX");
-  set_path_label (gen->priv->ctk_data_prefix, "GTK_DATA_PREFIX");
+  set_path_label (gen->priv->ctk_path, "CTK_PATH");
+  set_path_label (gen->priv->ctk_exe_prefix, "CTK_EXE_PREFIX");
+  set_path_label (gen->priv->ctk_data_prefix, "CTK_DATA_PREFIX");
   set_path_label (gen->priv->gsettings_schema_dir, "GSETTINGS_SCHEMA_DIR");
 }
 
@@ -382,8 +382,8 @@ populate_display (GdkScreen *screen, GtkInspectorGeneral *gen)
   int n_monitors;
   GtkListBox *list;
 
-  list = GTK_LIST_BOX (gen->priv->display_box);
-  children = ctk_container_get_children (GTK_CONTAINER (list));
+  list = CTK_LIST_BOX (gen->priv->display_box);
+  children = ctk_container_get_children (CTK_CONTAINER (list));
   for (l = children; l; l = l->next)
     {
       child = l->data;
@@ -399,7 +399,7 @@ populate_display (GdkScreen *screen, GtkInspectorGeneral *gen)
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   name = gdk_screen_make_display_name (screen);
 G_GNUC_END_IGNORE_DEPRECATIONS
-  ctk_label_set_label (GTK_LABEL (gen->priv->display_name), name);
+  ctk_label_set_label (CTK_LABEL (gen->priv->display_name), name);
   g_free (name);
 
   if (gdk_screen_get_rgba_visual (screen) != NULL)
@@ -517,7 +517,7 @@ add_device (GtkInspectorGeneral *gen,
 
   name = gdk_device_get_name (device);
   value = source_name[gdk_device_get_source (device)];
-  add_label_row (gen, GTK_LIST_BOX (gen->priv->device_box), name, value, 10);
+  add_label_row (gen, CTK_LIST_BOX (gen->priv->device_box), name, value, 10);
 
   str = g_string_new ("");
 
@@ -533,7 +533,7 @@ add_device (GtkInspectorGeneral *gen,
     }
 
   if (str->len > 0)
-    add_label_row (gen, GTK_LIST_BOX (gen->priv->device_box), "Axes", str->str, 20);
+    add_label_row (gen, CTK_LIST_BOX (gen->priv->device_box), "Axes", str->str, 20);
 
   g_string_free (str, TRUE);
 
@@ -541,7 +541,7 @@ add_device (GtkInspectorGeneral *gen,
   if (n_touches > 0)
     {
       text = g_strdup_printf ("%d", n_touches);
-      add_label_row (gen, GTK_LIST_BOX (gen->priv->device_box), "Touches", text, 20);
+      add_label_row (gen, CTK_LIST_BOX (gen->priv->device_box), "Touches", text, 20);
       g_free (text);
     }
 }
@@ -597,7 +597,7 @@ add_seat (GtkInspectorGeneral *gen,
   text = g_strdup_printf ("Seat %d", num);
   caps = get_seat_capabilities (seat);
 
-  add_label_row (gen, GTK_LIST_BOX (gen->priv->device_box), text, caps, 0);
+  add_label_row (gen, CTK_LIST_BOX (gen->priv->device_box), text, caps, 0);
   g_free (text);
   g_free (caps);
 
@@ -616,9 +616,9 @@ populate_seats (GtkInspectorGeneral *gen)
   GList *list, *l;
   int i;
 
-  list = ctk_container_get_children (GTK_CONTAINER (gen->priv->device_box));
+  list = ctk_container_get_children (CTK_CONTAINER (gen->priv->device_box));
   for (l = list; l; l = l->next)
-    ctk_widget_destroy (GTK_WIDGET (l->data));
+    ctk_widget_destroy (CTK_WIDGET (l->data));
   g_list_free (list);
 
   list = gdk_display_list_seats (display);
@@ -644,7 +644,7 @@ static void
 ctk_inspector_general_init (GtkInspectorGeneral *gen)
 {
   gen->priv = ctk_inspector_general_get_instance_private (gen);
-  ctk_widget_init_template (GTK_WIDGET (gen));
+  ctk_widget_init_template (CTK_WIDGET (gen));
   init_version (gen);
   init_env (gen);
   init_display (gen);
@@ -658,21 +658,21 @@ keynav_failed (GtkWidget *widget, GtkDirectionType direction, GtkInspectorGenera
   GtkWidget *next;
   gdouble value, lower, upper, page;
 
-  if (direction == GTK_DIR_DOWN && widget == gen->priv->version_box)
+  if (direction == CTK_DIR_DOWN && widget == gen->priv->version_box)
     next = gen->priv->env_box;
-  else if (direction == GTK_DIR_DOWN && widget == gen->priv->env_box)
+  else if (direction == CTK_DIR_DOWN && widget == gen->priv->env_box)
     next = gen->priv->display_box;
-  else if (direction == GTK_DIR_DOWN && widget == gen->priv->display_box)
+  else if (direction == CTK_DIR_DOWN && widget == gen->priv->display_box)
     next = gen->priv->gl_box;
-  else if (direction == GTK_DIR_DOWN && widget == gen->priv->gl_box)
+  else if (direction == CTK_DIR_DOWN && widget == gen->priv->gl_box)
     next = gen->priv->device_box;
-  else if (direction == GTK_DIR_UP && widget == gen->priv->device_box)
+  else if (direction == CTK_DIR_UP && widget == gen->priv->device_box)
     next = gen->priv->gl_box;
-  else if (direction == GTK_DIR_UP && widget == gen->priv->gl_box)
+  else if (direction == CTK_DIR_UP && widget == gen->priv->gl_box)
     next = gen->priv->display_box;
-  else if (direction == GTK_DIR_UP && widget == gen->priv->display_box)
+  else if (direction == CTK_DIR_UP && widget == gen->priv->display_box)
     next = gen->priv->env_box;
-  else if (direction == GTK_DIR_UP && widget == gen->priv->env_box)
+  else if (direction == CTK_DIR_UP && widget == gen->priv->env_box)
     next = gen->priv->version_box;
   else
     next = NULL;
@@ -688,12 +688,12 @@ keynav_failed (GtkWidget *widget, GtkDirectionType direction, GtkInspectorGenera
   upper = ctk_adjustment_get_upper (gen->priv->focus_adjustment);
   page  = ctk_adjustment_get_page_size (gen->priv->focus_adjustment);
 
-  if (direction == GTK_DIR_UP && value > lower)
+  if (direction == CTK_DIR_UP && value > lower)
     {
       ctk_adjustment_set_value (gen->priv->focus_adjustment, lower);
       return TRUE;
     }
-  else if (direction == GTK_DIR_DOWN && value < upper - page)
+  else if (direction == CTK_DIR_DOWN && value < upper - page)
     {
       ctk_adjustment_set_value (gen->priv->focus_adjustment, upper - page);
       return TRUE;
@@ -705,12 +705,12 @@ keynav_failed (GtkWidget *widget, GtkDirectionType direction, GtkInspectorGenera
 static void
 ctk_inspector_general_constructed (GObject *object)
 {
-  GtkInspectorGeneral *gen = GTK_INSPECTOR_GENERAL (object);
+  GtkInspectorGeneral *gen = CTK_INSPECTOR_GENERAL (object);
 
   G_OBJECT_CLASS (ctk_inspector_general_parent_class)->constructed (object);
 
-  gen->priv->focus_adjustment = ctk_scrolled_window_get_vadjustment (GTK_SCROLLED_WINDOW (gen));
-  ctk_container_set_focus_vadjustment (GTK_CONTAINER (ctk_bin_get_child (GTK_BIN (gen))),
+  gen->priv->focus_adjustment = ctk_scrolled_window_get_vadjustment (CTK_SCROLLED_WINDOW (gen));
+  ctk_container_set_focus_vadjustment (CTK_CONTAINER (ctk_bin_get_child (CTK_BIN (gen))),
                                        gen->priv->focus_adjustment);
 
    g_signal_connect (gen->priv->version_box, "keynav-failed", G_CALLBACK (keynav_failed), gen);
@@ -724,7 +724,7 @@ static void
 ctk_inspector_general_class_init (GtkInspectorGeneralClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->constructed = ctk_inspector_general_constructed;
 

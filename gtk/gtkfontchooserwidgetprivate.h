@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FONT_CHOOSER_WIDGET_PRIVATE_H__
-#define __GTK_FONT_CHOOSER_WIDGET_PRIVATE_H__
+#ifndef __CTK_FONT_CHOOSER_WIDGET_PRIVATE_H__
+#define __CTK_FONT_CHOOSER_WIDGET_PRIVATE_H__
 
 #include "gtkfontchooserwidget.h"
 
@@ -29,4 +29,4 @@ GAction *ctk_font_chooser_widget_get_tweak_action (GtkWidget *fontchooser);
 
 G_END_DECLS
 
-#endif /* __GTK_FONT_CHOOSER_WIDGET_PRIVATE_H__ */
+#endif /* __CTK_FONT_CHOOSER_WIDGET_PRIVATE_H__ */

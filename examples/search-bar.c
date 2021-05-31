@@ -22,22 +22,22 @@ activate_cb (GtkApplication *app,
   ctk_widget_show (window);
 
   search_bar = ctk_search_bar_new ();
-  ctk_container_add (GTK_CONTAINER (window), search_bar);
+  ctk_container_add (CTK_CONTAINER (window), search_bar);
   ctk_widget_show (search_bar);
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  ctk_container_add (GTK_CONTAINER (search_bar), box);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
+  ctk_container_add (CTK_CONTAINER (search_bar), box);
   ctk_widget_show (box);
 
   entry = ctk_search_entry_new ();
-  ctk_box_pack_start (GTK_BOX (box), entry, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), entry, TRUE, TRUE, 0);
   ctk_widget_show (entry);
 
   menu_button = ctk_menu_button_new ();
-  ctk_box_pack_start (GTK_BOX (box), menu_button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), menu_button, FALSE, FALSE, 0);
   ctk_widget_show (menu_button);
 
-  ctk_search_bar_connect_entry (GTK_SEARCH_BAR (search_bar), GTK_ENTRY (entry));
+  ctk_search_bar_connect_entry (CTK_SEARCH_BAR (search_bar), CTK_ENTRY (entry));
 
   g_signal_connect (window, "key-press-event",
       G_CALLBACK (window_key_press_event_cb), search_bar);

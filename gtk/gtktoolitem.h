@@ -18,10 +18,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TOOL_ITEM_H__
-#define __GTK_TOOL_ITEM_H__
+#ifndef __CTK_TOOL_ITEM_H__
+#define __CTK_TOOL_ITEM_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOOL_ITEM            (ctk_tool_item_get_type ())
-#define GTK_TOOL_ITEM(o)              (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_TOOL_ITEM, GtkToolItem))
-#define GTK_TOOL_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TOOL_ITEM, GtkToolItemClass))
-#define GTK_IS_TOOL_ITEM(o)           (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_TOOL_ITEM))
-#define GTK_IS_TOOL_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TOOL_ITEM))
-#define GTK_TOOL_ITEM_GET_CLASS(o)    (G_TYPE_INSTANCE_GET_CLASS((o), GTK_TYPE_TOOL_ITEM, GtkToolItemClass))
+#define CTK_TYPE_TOOL_ITEM            (ctk_tool_item_get_type ())
+#define CTK_TOOL_ITEM(o)              (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_TOOL_ITEM, GtkToolItem))
+#define CTK_TOOL_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOOL_ITEM, GtkToolItemClass))
+#define CTK_IS_TOOL_ITEM(o)           (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_TOOL_ITEM))
+#define CTK_IS_TOOL_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TOOL_ITEM))
+#define CTK_TOOL_ITEM_GET_CLASS(o)    (G_TYPE_INSTANCE_GET_CLASS((o), CTK_TYPE_TOOL_ITEM, GtkToolItemClass))
 
 typedef struct _GtkToolItem        GtkToolItem;
 typedef struct _GtkToolItemClass   GtkToolItemClass;
@@ -162,4 +162,4 @@ gboolean       _ctk_tool_item_create_menu_proxy        (GtkToolItem *tool_item);
 
 G_END_DECLS
 
-#endif /* __GTK_TOOL_ITEM_H__ */
+#endif /* __CTK_TOOL_ITEM_H__ */

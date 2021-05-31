@@ -18,10 +18,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TOOL_BUTTON_H__
-#define __GTK_TOOL_BUTTON_H__
+#ifndef __CTK_TOOL_BUTTON_H__
+#define __CTK_TOOL_BUTTON_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOOL_BUTTON            (ctk_tool_button_get_type ())
-#define GTK_TOOL_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TOOL_BUTTON, GtkToolButton))
-#define GTK_TOOL_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TOOL_BUTTON, GtkToolButtonClass))
-#define GTK_IS_TOOL_BUTTON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TOOL_BUTTON))
-#define GTK_IS_TOOL_BUTTON_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TOOL_BUTTON))
-#define GTK_TOOL_BUTTON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_TOOL_BUTTON, GtkToolButtonClass))
+#define CTK_TYPE_TOOL_BUTTON            (ctk_tool_button_get_type ())
+#define CTK_TOOL_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOOL_BUTTON, GtkToolButton))
+#define CTK_TOOL_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TOOL_BUTTON, GtkToolButtonClass))
+#define CTK_IS_TOOL_BUTTON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TOOL_BUTTON))
+#define CTK_IS_TOOL_BUTTON_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TOOL_BUTTON))
+#define CTK_TOOL_BUTTON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_TOOL_BUTTON, GtkToolButtonClass))
 
 typedef struct _GtkToolButton        GtkToolButton;
 typedef struct _GtkToolButtonClass   GtkToolButtonClass;
@@ -120,4 +120,4 @@ GtkWidget *_ctk_tool_button_get_button (GtkToolButton *button);
 
 G_END_DECLS
 
-#endif /* __GTK_TOOL_BUTTON_H__ */
+#endif /* __CTK_TOOL_BUTTON_H__ */

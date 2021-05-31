@@ -132,7 +132,7 @@ ctk_editable_base_init (gpointer g_class)
        */
       signals[INSERT_TEXT] =
         g_signal_new (I_("insert-text"),
-                      GTK_TYPE_EDITABLE,
+                      CTK_TYPE_EDITABLE,
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (GtkEditableInterface, insert_text),
                       NULL, NULL,
@@ -163,7 +163,7 @@ ctk_editable_base_init (gpointer g_class)
        */
       signals[DELETE_TEXT] =
         g_signal_new (I_("delete-text"),
-                      GTK_TYPE_EDITABLE,
+                      CTK_TYPE_EDITABLE,
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (GtkEditableInterface, delete_text),
                       NULL, NULL,
@@ -189,7 +189,7 @@ ctk_editable_base_init (gpointer g_class)
        */ 
       signals[CHANGED] =
         g_signal_new (I_("changed"),
-                      GTK_TYPE_EDITABLE,
+                      CTK_TYPE_EDITABLE,
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (GtkEditableInterface, changed),
                       NULL, NULL,
@@ -219,13 +219,13 @@ ctk_editable_insert_text (GtkEditable *editable,
 			  gint         new_text_length,
 			  gint        *position)
 {
-  g_return_if_fail (GTK_IS_EDITABLE (editable));
+  g_return_if_fail (CTK_IS_EDITABLE (editable));
   g_return_if_fail (position != NULL);
 
   if (new_text_length < 0)
     new_text_length = strlen (new_text);
   
-  GTK_EDITABLE_GET_IFACE (editable)->do_insert_text (editable, new_text, new_text_length, position);
+  CTK_EDITABLE_GET_IFACE (editable)->do_insert_text (editable, new_text, new_text_length, position);
 }
 
 /**
@@ -246,9 +246,9 @@ ctk_editable_delete_text (GtkEditable *editable,
 			  gint         start_pos,
 			  gint         end_pos)
 {
-  g_return_if_fail (GTK_IS_EDITABLE (editable));
+  g_return_if_fail (CTK_IS_EDITABLE (editable));
 
-  GTK_EDITABLE_GET_IFACE (editable)->do_delete_text (editable, start_pos, end_pos);
+  CTK_EDITABLE_GET_IFACE (editable)->do_delete_text (editable, start_pos, end_pos);
 }
 
 /**
@@ -273,9 +273,9 @@ ctk_editable_get_chars (GtkEditable *editable,
 			gint         start_pos,
 			gint         end_pos)
 {
-  g_return_val_if_fail (GTK_IS_EDITABLE (editable), NULL);
+  g_return_val_if_fail (CTK_IS_EDITABLE (editable), NULL);
 
-  return GTK_EDITABLE_GET_IFACE (editable)->get_chars (editable, start_pos, end_pos);
+  return CTK_EDITABLE_GET_IFACE (editable)->get_chars (editable, start_pos, end_pos);
 }
 
 /**
@@ -295,9 +295,9 @@ void
 ctk_editable_set_position (GtkEditable      *editable,
 			   gint              position)
 {
-  g_return_if_fail (GTK_IS_EDITABLE (editable));
+  g_return_if_fail (CTK_IS_EDITABLE (editable));
 
-  GTK_EDITABLE_GET_IFACE (editable)->set_position (editable, position);
+  CTK_EDITABLE_GET_IFACE (editable)->set_position (editable, position);
 }
 
 /**
@@ -314,9 +314,9 @@ ctk_editable_set_position (GtkEditable      *editable,
 gint
 ctk_editable_get_position (GtkEditable *editable)
 {
-  g_return_val_if_fail (GTK_IS_EDITABLE (editable), 0);
+  g_return_val_if_fail (CTK_IS_EDITABLE (editable), 0);
 
-  return GTK_EDITABLE_GET_IFACE (editable)->get_position (editable);
+  return CTK_EDITABLE_GET_IFACE (editable)->get_position (editable);
 }
 
 /**
@@ -341,9 +341,9 @@ ctk_editable_get_selection_bounds (GtkEditable *editable,
   gint tmp_start, tmp_end;
   gboolean result;
   
-  g_return_val_if_fail (GTK_IS_EDITABLE (editable), FALSE);
+  g_return_val_if_fail (CTK_IS_EDITABLE (editable), FALSE);
 
-  result = GTK_EDITABLE_GET_IFACE (editable)->get_selection_bounds (editable, &tmp_start, &tmp_end);
+  result = CTK_EDITABLE_GET_IFACE (editable)->get_selection_bounds (editable, &tmp_start, &tmp_end);
 
   if (start_pos)
     *start_pos = MIN (tmp_start, tmp_end);
@@ -365,7 +365,7 @@ ctk_editable_delete_selection (GtkEditable *editable)
 {
   gint start, end;
 
-  g_return_if_fail (GTK_IS_EDITABLE (editable));
+  g_return_if_fail (CTK_IS_EDITABLE (editable));
 
   if (ctk_editable_get_selection_bounds (editable, &start, &end))
     ctk_editable_delete_text (editable, start, end);
@@ -390,9 +390,9 @@ ctk_editable_select_region (GtkEditable *editable,
 			    gint         start_pos,
 			    gint         end_pos)
 {
-  g_return_if_fail (GTK_IS_EDITABLE (editable));
+  g_return_if_fail (CTK_IS_EDITABLE (editable));
   
-  GTK_EDITABLE_GET_IFACE (editable)->set_selection_bounds (editable, start_pos, end_pos);
+  CTK_EDITABLE_GET_IFACE (editable)->set_selection_bounds (editable, start_pos, end_pos);
 }
 
 /**
@@ -405,7 +405,7 @@ ctk_editable_select_region (GtkEditable *editable,
 void
 ctk_editable_cut_clipboard (GtkEditable *editable)
 {
-  g_return_if_fail (GTK_IS_EDITABLE (editable));
+  g_return_if_fail (CTK_IS_EDITABLE (editable));
   
   g_signal_emit_by_name (editable, "cut-clipboard");
 }
@@ -420,7 +420,7 @@ ctk_editable_cut_clipboard (GtkEditable *editable)
 void
 ctk_editable_copy_clipboard (GtkEditable *editable)
 {
-  g_return_if_fail (GTK_IS_EDITABLE (editable));
+  g_return_if_fail (CTK_IS_EDITABLE (editable));
   
   g_signal_emit_by_name (editable, "copy-clipboard");
 }
@@ -435,7 +435,7 @@ ctk_editable_copy_clipboard (GtkEditable *editable)
 void
 ctk_editable_paste_clipboard (GtkEditable *editable)
 {
-  g_return_if_fail (GTK_IS_EDITABLE (editable));
+  g_return_if_fail (CTK_IS_EDITABLE (editable));
   
   g_signal_emit_by_name (editable, "paste-clipboard");
 }
@@ -453,7 +453,7 @@ void
 ctk_editable_set_editable (GtkEditable    *editable,
 			   gboolean        is_editable)
 {
-  g_return_if_fail (GTK_IS_EDITABLE (editable));
+  g_return_if_fail (CTK_IS_EDITABLE (editable));
 
   g_object_set (editable,
 		"editable", is_editable != FALSE,
@@ -474,7 +474,7 @@ ctk_editable_get_editable (GtkEditable *editable)
 {
   gboolean value;
 
-  g_return_val_if_fail (GTK_IS_EDITABLE (editable), FALSE);
+  g_return_val_if_fail (CTK_IS_EDITABLE (editable), FALSE);
 
   g_object_get (editable, "editable", &value, NULL);
 

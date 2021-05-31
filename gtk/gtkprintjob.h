@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINT_JOB_H__
-#define __GTK_PRINT_JOB_H__
+#ifndef __CTK_PRINT_JOB_H__
+#define __CTK_PRINT_JOB_H__
 
-#if !defined (__GTK_UNIX_PRINT_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_UNIX_PRINT_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtkunixprint.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINT_JOB                  (ctk_print_job_get_type ())
-#define GTK_PRINT_JOB(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_JOB, GtkPrintJob))
-#define GTK_PRINT_JOB_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINT_JOB, GtkPrintJobClass))
-#define GTK_IS_PRINT_JOB(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_JOB))
-#define GTK_IS_PRINT_JOB_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PRINT_JOB))
-#define GTK_PRINT_JOB_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PRINT_JOB, GtkPrintJobClass))
+#define CTK_TYPE_PRINT_JOB                  (ctk_print_job_get_type ())
+#define CTK_PRINT_JOB(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_JOB, GtkPrintJob))
+#define CTK_PRINT_JOB_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_JOB, GtkPrintJobClass))
+#define CTK_IS_PRINT_JOB(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_JOB))
+#define CTK_IS_PRINT_JOB_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINT_JOB))
+#define CTK_PRINT_JOB_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_JOB, GtkPrintJobClass))
 
 typedef struct _GtkPrintJob          GtkPrintJob;
 typedef struct _GtkPrintJobClass     GtkPrintJobClass;
@@ -168,4 +168,4 @@ void              ctk_print_job_set_reverse     (GtkPrintJob       *job,
 
 G_END_DECLS
 
-#endif /* __GTK_PRINT_JOB_H__ */
+#endif /* __CTK_PRINT_JOB_H__ */

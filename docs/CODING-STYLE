@@ -435,15 +435,15 @@ It is also possible to align the columns to the next tab:
 
 Public headers should never be included directly:
 
-  #if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+  #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
   #error "Only <gtk/gtk.h> can be included directly."
   #endif
 
 All headers should have inclusion guards (for internal usage)
 and C++ guards:
 
-  #ifndef __GTK_FOO_H__
-  #define __GTK_FOO_H__
+  #ifndef __CTK_FOO_H__
+  #define __CTK_FOO_H__
 
   #include <gtk/gtk-bar.h>
 
@@ -453,7 +453,7 @@ and C++ guards:
 
   G_END_DECLS
 
-  #endif /* __GTK_FOO_H__ */
+  #endif /* __CTK_FOO_H__ */
 
 + Includes
 
@@ -490,8 +490,8 @@ This includes enumeration types:
 
   typedef enum
   {
-    GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT,
-    GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH
+    CTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT,
+    CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH
   } GtkSizeRequestMode;
 
 And callback types:
@@ -542,10 +542,10 @@ The interface structure should have "Interface" postfixed to the dummy typedef:
 Interfaces must have the following macros:
 
         - Macro:                                - Expands to:
-        • GTK_TYPE_<iface_name>             <iface_name>_get_type
-        • GTK_<iface_name>                  G_TYPE_CHECK_INSTANCE_CAST
-        • GTK_IS_<iface_name>               G_TYPE_CHECK_INSTANCE_TYPE
-        • GTK_<iface_name>_GET_IFACE        G_TYPE_INSTANCE_GET_INTERFACE
+        • CTK_TYPE_<iface_name>             <iface_name>_get_type
+        • CTK_<iface_name>                  G_TYPE_CHECK_INSTANCE_CAST
+        • CTK_IS_<iface_name>               G_TYPE_CHECK_INSTANCE_TYPE
+        • CTK_<iface_name>_GET_IFACE        G_TYPE_INSTANCE_GET_INTERFACE
 
 + Memory allocation
 

@@ -303,11 +303,11 @@ msgstr "Là quan trọng"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Nếu hành động này được xem là quan trọng hay không. Khi ĐÚNG thì ủy nhiệm "
 "mục công cụ cho hành động này hiển thị văn bản trong chế độ "
-"“GTK_TOOLBAR_BOTH_HORIZ” (gtk thanh công cụ cả hai ngang)."
+"“CTK_TOOLBAR_BOTH_HORIZ” (gtk thanh công cụ cả hai ngang)."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1775,9 +1775,9 @@ msgid "Default Spacing"
 msgstr "Khoảng cách mặc định"
 
 #: gtk/gtkbutton.c:496
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr ""
-"Khoảng cách phụ thêm cho các nút kiểu “GTK_CAN_DEFAULT” (có thể là mặc định)"
+"Khoảng cách phụ thêm cho các nút kiểu “CTK_CAN_DEFAULT” (có thể là mặc định)"
 
 #: gtk/gtkbutton.c:512
 msgid "Default Outside Spacing"
@@ -1785,10 +1785,10 @@ msgstr "Khoảng cách bên ngoài mặc định"
 
 #: gtk/gtkbutton.c:513
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Khoảng cách phụ thêm cho các nút kiểu “GTK_CAN_DEFAULT” mà lúc nào cũng được "
+"Khoảng cách phụ thêm cho các nút kiểu “CTK_CAN_DEFAULT” mà lúc nào cũng được "
 "vẽ bên ngoài viền"
 
 #: gtk/gtkbutton.c:518
@@ -4149,8 +4149,8 @@ msgid "Baseline Row"
 msgstr "Hàng dòng cơ sở"
 
 #: gtk/gtkgrid.c:1767
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
-msgstr "Hàng để căn chỉnh với dòng cơ sở khi căn chỉnh là GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
+msgstr "Hàng để căn chỉnh với dòng cơ sở khi căn chỉnh là CTK_ALIGN_BASELINE"
 
 #: gtk/gtkgrid.c:1785
 msgid "The row number to attach the top side of a child widget to"
@@ -8109,11 +8109,11 @@ msgstr "Khoảng cách giữa biểu tượng và nhãn, theo điểm ảnh"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Có nên xem như mục thanh công cụ là quan trọng hay không. Khi ĐÚNG thì các "
 "cái nút của thanh công cụ sẽ hiển thị chữ trong chế độ "
-"“GTK_TOOLBAR_BOTH_HORIZ” (Gtk thanh công cụ cả hai nằm ngang)"
+"“CTK_TOOLBAR_BOTH_HORIZ” (Gtk thanh công cụ cả hai nằm ngang)"
 
 #: gtk/gtktoolitemgroup.c:1606
 msgid "The human-readable title of this item group"

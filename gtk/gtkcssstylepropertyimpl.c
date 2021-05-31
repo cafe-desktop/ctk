@@ -67,8 +67,8 @@
 /*** REGISTRATION ***/
 
 typedef enum {
-  GTK_STYLE_PROPERTY_INHERIT = (1 << 0),
-  GTK_STYLE_PROPERTY_ANIMATED = (1 << 1),
+  CTK_STYLE_PROPERTY_INHERIT = (1 << 0),
+  CTK_STYLE_PROPERTY_ANIMATED = (1 << 1),
 } GtkStylePropertyFlags;
 
 static void
@@ -89,11 +89,11 @@ ctk_css_style_property_register (const char *                   name,
   g_assert (value_type == G_TYPE_NONE || query_value != NULL);
   g_assert (assign_value == NULL || query_value != NULL);
 
-  node = g_object_new (GTK_TYPE_CSS_STYLE_PROPERTY,
+  node = g_object_new (CTK_TYPE_CSS_STYLE_PROPERTY,
                        "value-type", value_type,
                        "affects", affects,
-                       "animated", (flags & GTK_STYLE_PROPERTY_ANIMATED) ? TRUE : FALSE,
-                       "inherit", (flags & GTK_STYLE_PROPERTY_INHERIT) ? TRUE : FALSE,
+                       "animated", (flags & CTK_STYLE_PROPERTY_ANIMATED) ? TRUE : FALSE,
+                       "inherit", (flags & CTK_STYLE_PROPERTY_INHERIT) ? TRUE : FALSE,
                        "initial-value", initial_value,
                        "name", name,
                        NULL);
@@ -122,7 +122,7 @@ static GtkCssValue *
 assign_length_from_int (GtkCssStyleProperty *property,
                         const GValue        *value)
 {
-  return _ctk_css_number_value_new (g_value_get_int (value), GTK_CSS_PX);
+  return _ctk_css_number_value_new (g_value_get_int (value), CTK_CSS_PX);
 }
 
 static void
@@ -138,7 +138,7 @@ static GtkCssValue *
 assign_font_size (GtkCssStyleProperty *property,
                   const GValue        *value)
 {
-  return _ctk_css_number_value_new (g_value_get_double (value), GTK_CSS_PX);
+  return _ctk_css_number_value_new (g_value_get_double (value), CTK_CSS_PX);
 }
 
 static void
@@ -148,7 +148,7 @@ query_border (GtkCssStyleProperty *property,
 {
   GtkBorder border;
 
-  g_value_init (value, GTK_TYPE_BORDER);
+  g_value_init (value, CTK_TYPE_BORDER);
   
   border.top = round (_ctk_css_number_value_get (_ctk_css_border_value_get_top (css_value), 100));
   border.right = round (_ctk_css_number_value_get (_ctk_css_border_value_get_right (css_value), 100));
@@ -167,10 +167,10 @@ assign_border (GtkCssStyleProperty *property,
   if (border == NULL)
     return _ctk_css_initial_value_new ();
   else
-    return _ctk_css_border_value_new (_ctk_css_number_value_new (border->top, GTK_CSS_PX),
-                                      _ctk_css_number_value_new (border->right, GTK_CSS_PX),
-                                      _ctk_css_number_value_new (border->bottom, GTK_CSS_PX),
-                                      _ctk_css_number_value_new (border->left, GTK_CSS_PX));
+    return _ctk_css_border_value_new (_ctk_css_number_value_new (border->top, CTK_CSS_PX),
+                                      _ctk_css_number_value_new (border->right, CTK_CSS_PX),
+                                      _ctk_css_number_value_new (border->bottom, CTK_CSS_PX),
+                                      _ctk_css_number_value_new (border->left, CTK_CSS_PX));
 }
 
 static GtkCssValue *
@@ -408,7 +408,7 @@ query_border_style (GtkCssStyleProperty *property,
                     const GtkCssValue   *css_value,
                     GValue              *value)
 {
-  g_value_init (value, GTK_TYPE_BORDER_STYLE);
+  g_value_init (value, CTK_TYPE_BORDER_STYLE);
   g_value_set_enum (value, _ctk_css_border_style_value_get (css_value));
 }
 
@@ -459,7 +459,7 @@ static GtkCssValue *
 opacity_parse (GtkCssStyleProperty *property,
 	       GtkCssParser        *parser)
 {
-  return _ctk_css_number_value_parse (parser, GTK_CSS_PARSE_NUMBER);
+  return _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_NUMBER);
 }
 
 static void
@@ -642,7 +642,7 @@ static GtkCssValue *
 parse_letter_spacing (GtkCssStyleProperty *property,
                       GtkCssParser        *parser)
 {
-  return _ctk_css_number_value_parse (parser, GTK_CSS_PARSE_LENGTH);
+  return _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_LENGTH);
 }
 
 static GtkCssValue *
@@ -737,8 +737,8 @@ css_image_value_query (GtkCssStyleProperty *property,
   
   g_value_init (value, CAIRO_GOBJECT_TYPE_PATTERN);
 
-  if (GTK_IS_CSS_IMAGE_GRADIENT (image))
-    g_value_set_boxed (value, GTK_CSS_IMAGE_GRADIENT (image)->pattern);
+  if (CTK_IS_CSS_IMAGE_GRADIENT (image))
+    g_value_set_boxed (value, CTK_CSS_IMAGE_GRADIENT (image)->pattern);
   else if (image != NULL)
     {
       double width, height;
@@ -794,7 +794,7 @@ static GtkCssValue *
 dpi_parse (GtkCssStyleProperty *property,
 	   GtkCssParser        *parser)
 {
-  return _ctk_css_number_value_parse (parser, GTK_CSS_PARSE_NUMBER);
+  return _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_NUMBER);
 }
 
 GtkCssValue *
@@ -807,10 +807,10 @@ ctk_css_font_size_value_parse (GtkCssParser *parser)
     return value;
 
   return _ctk_css_number_value_parse (parser,
-                                      GTK_CSS_PARSE_LENGTH
-                                      | GTK_CSS_PARSE_PERCENT
-                                      | GTK_CSS_POSITIVE_ONLY
-                                      | GTK_CSS_NUMBER_AS_PIXELS);
+                                      CTK_CSS_PARSE_LENGTH
+                                      | CTK_CSS_PARSE_PERCENT
+                                      | CTK_CSS_POSITIVE_ONLY
+                                      | CTK_CSS_NUMBER_AS_PIXELS);
 }
 
 static GtkCssValue *
@@ -825,8 +825,8 @@ outline_parse (GtkCssStyleProperty *property,
                GtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser,
-                                      GTK_CSS_NUMBER_AS_PIXELS
-                                      | GTK_CSS_PARSE_LENGTH);
+                                      CTK_CSS_NUMBER_AS_PIXELS
+                                      | CTK_CSS_PARSE_LENGTH);
 }
 
 static GtkCssValue *
@@ -849,9 +849,9 @@ border_image_slice_parse (GtkCssStyleProperty *property,
                           GtkCssParser        *parser)
 {
   return _ctk_css_border_value_parse (parser,
-                                      GTK_CSS_PARSE_PERCENT
-                                      | GTK_CSS_PARSE_NUMBER
-                                      | GTK_CSS_POSITIVE_ONLY,
+                                      CTK_CSS_PARSE_PERCENT
+                                      | CTK_CSS_PARSE_NUMBER
+                                      | CTK_CSS_POSITIVE_ONLY,
                                       FALSE,
                                       TRUE);
 }
@@ -861,10 +861,10 @@ border_image_width_parse (GtkCssStyleProperty *property,
                           GtkCssParser        *parser)
 {
   return _ctk_css_border_value_parse (parser,
-                                      GTK_CSS_PARSE_PERCENT
-                                      | GTK_CSS_PARSE_LENGTH
-                                      | GTK_CSS_PARSE_NUMBER
-                                      | GTK_CSS_POSITIVE_ONLY,
+                                      CTK_CSS_PARSE_PERCENT
+                                      | CTK_CSS_PARSE_LENGTH
+                                      | CTK_CSS_PARSE_NUMBER
+                                      | CTK_CSS_POSITIVE_ONLY,
                                       TRUE,
                                       FALSE);
 }
@@ -874,8 +874,8 @@ minmax_parse (GtkCssStyleProperty *property,
               GtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser,
-                                      GTK_CSS_PARSE_LENGTH
-                                      | GTK_CSS_POSITIVE_ONLY);
+                                      CTK_CSS_PARSE_LENGTH
+                                      | CTK_CSS_POSITIVE_ONLY);
 }
 
 static GtkCssValue *
@@ -904,7 +904,7 @@ transition_property_parse (GtkCssStyleProperty *property,
 static GtkCssValue *
 transition_time_parse_one (GtkCssParser *parser)
 {
-  return _ctk_css_number_value_parse (parser, GTK_CSS_PARSE_TIME);
+  return _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_TIME);
 }
 
 static GtkCssValue *
@@ -925,9 +925,9 @@ static GtkCssValue *
 iteration_count_parse_one (GtkCssParser *parser)
 {
   if (_ctk_css_parser_try (parser, "infinite", TRUE))
-    return _ctk_css_number_value_new (HUGE_VAL, GTK_CSS_NUMBER);
+    return _ctk_css_number_value_new (HUGE_VAL, CTK_CSS_NUMBER);
 
-  return _ctk_css_number_value_parse (parser, GTK_CSS_PARSE_NUMBER | GTK_CSS_POSITIVE_ONLY);
+  return _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_NUMBER | CTK_CSS_POSITIVE_ONLY);
 }
 
 static GtkCssValue *
@@ -950,7 +950,7 @@ engine_query (GtkCssStyleProperty *property,
               GValue              *value)
 {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  g_value_init (value, GTK_TYPE_THEMING_ENGINE);
+  g_value_init (value, CTK_TYPE_THEMING_ENGINE);
   g_value_set_object (value, _ctk_css_engine_value_get_engine (css_value));
 G_GNUC_END_IGNORE_DEPRECATIONS
 }
@@ -967,8 +967,8 @@ parse_margin (GtkCssStyleProperty *property,
               GtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser,
-                                      GTK_CSS_NUMBER_AS_PIXELS
-                                      | GTK_CSS_PARSE_LENGTH);
+                                      CTK_CSS_NUMBER_AS_PIXELS
+                                      | CTK_CSS_PARSE_LENGTH);
 }
 
 static GtkCssValue *
@@ -976,9 +976,9 @@ parse_padding (GtkCssStyleProperty *property,
                GtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser,
-                                      GTK_CSS_POSITIVE_ONLY
-                                      | GTK_CSS_NUMBER_AS_PIXELS
-                                      | GTK_CSS_PARSE_LENGTH);
+                                      CTK_CSS_POSITIVE_ONLY
+                                      | CTK_CSS_NUMBER_AS_PIXELS
+                                      | CTK_CSS_PARSE_LENGTH);
 }
 
 static GtkCssValue *
@@ -986,9 +986,9 @@ parse_border_width (GtkCssStyleProperty *property,
                     GtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser,
-                                      GTK_CSS_POSITIVE_ONLY
-                                      | GTK_CSS_NUMBER_AS_PIXELS
-                                      | GTK_CSS_PARSE_LENGTH);
+                                      CTK_CSS_POSITIVE_ONLY
+                                      | CTK_CSS_NUMBER_AS_PIXELS
+                                      | CTK_CSS_PARSE_LENGTH);
 }
 
 static GtkCssValue *
@@ -1061,46 +1061,46 @@ _ctk_css_style_property_init_properties (void)
    * done first. That way, 'currentColor' and font
    * sizes in em can be looked up properly */
   ctk_css_style_property_register        ("color",
-                                          GTK_CSS_PROPERTY_COLOR,
+                                          CTK_CSS_PROPERTY_COLOR,
                                           GDK_TYPE_RGBA,
-                                          GTK_STYLE_PROPERTY_INHERIT | GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_FOREGROUND | GTK_CSS_AFFECTS_TEXT | GTK_CSS_AFFECTS_SYMBOLIC_ICON,
+                                          CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_FOREGROUND | CTK_CSS_AFFECTS_TEXT | CTK_CSS_AFFECTS_SYMBOLIC_ICON,
                                           color_parse,
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_rgba (1, 1, 1, 1));
   ctk_css_style_property_register        ("-gtk-dpi",
-                                          GTK_CSS_PROPERTY_DPI,
+                                          CTK_CSS_PROPERTY_DPI,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_INHERIT | GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_FONT | GTK_CSS_AFFECTS_TEXT | GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_FONT | CTK_CSS_AFFECTS_TEXT | CTK_CSS_AFFECTS_SIZE,
                                           dpi_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_number_value_new (96.0, GTK_CSS_NUMBER));
+                                          _ctk_css_number_value_new (96.0, CTK_CSS_NUMBER));
   ctk_css_style_property_register        ("font-size",
-                                          GTK_CSS_PROPERTY_FONT_SIZE,
+                                          CTK_CSS_PROPERTY_FONT_SIZE,
                                           G_TYPE_DOUBLE,
-                                          GTK_STYLE_PROPERTY_INHERIT | GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_FONT | GTK_CSS_AFFECTS_TEXT | GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_FONT | CTK_CSS_AFFECTS_TEXT | CTK_CSS_AFFECTS_SIZE,
                                           font_size_parse,
                                           query_font_size,
                                           assign_font_size,
-                                          _ctk_css_font_size_value_new (GTK_CSS_FONT_SIZE_MEDIUM));
+                                          _ctk_css_font_size_value_new (CTK_CSS_FONT_SIZE_MEDIUM));
   ctk_css_style_property_register        ("-gtk-icon-theme",
-                                          GTK_CSS_PROPERTY_ICON_THEME,
+                                          CTK_CSS_PROPERTY_ICON_THEME,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_INHERIT,
-                                          GTK_CSS_AFFECTS_ICON | GTK_CSS_AFFECTS_SYMBOLIC_ICON,
+                                          CTK_STYLE_PROPERTY_INHERIT,
+                                          CTK_CSS_AFFECTS_ICON | CTK_CSS_AFFECTS_SYMBOLIC_ICON,
                                           icon_theme_value_parse,
                                           NULL,
                                           NULL,
                                           ctk_css_icon_theme_value_new (NULL));
   ctk_css_style_property_register        ("-gtk-icon-palette",
-					  GTK_CSS_PROPERTY_ICON_PALETTE,
+					  CTK_CSS_PROPERTY_ICON_PALETTE,
 					  G_TYPE_NONE,
-					  GTK_STYLE_PROPERTY_ANIMATED | GTK_STYLE_PROPERTY_INHERIT,
-                                          GTK_CSS_AFFECTS_SYMBOLIC_ICON,
+					  CTK_STYLE_PROPERTY_ANIMATED | CTK_STYLE_PROPERTY_INHERIT,
+                                          CTK_CSS_AFFECTS_SYMBOLIC_ICON,
 					  icon_palette_parse,
 					  NULL,
 					  NULL,
@@ -1110,599 +1110,599 @@ _ctk_css_style_property_init_properties (void)
   /* properties that aren't referenced when computing values
    * start here */
   ctk_css_style_property_register        ("background-color",
-                                          GTK_CSS_PROPERTY_BACKGROUND_COLOR,
+                                          CTK_CSS_PROPERTY_BACKGROUND_COLOR,
                                           GDK_TYPE_RGBA,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BACKGROUND,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BACKGROUND,
                                           color_parse,
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_rgba (0, 0, 0, 0));
 
   ctk_css_style_property_register        ("font-family",
-                                          GTK_CSS_PROPERTY_FONT_FAMILY,
+                                          CTK_CSS_PROPERTY_FONT_FAMILY,
                                           G_TYPE_STRV,
-                                          GTK_STYLE_PROPERTY_INHERIT,
-                                          GTK_CSS_AFFECTS_FONT | GTK_CSS_AFFECTS_TEXT,
+                                          CTK_STYLE_PROPERTY_INHERIT,
+                                          CTK_CSS_AFFECTS_FONT | CTK_CSS_AFFECTS_TEXT,
                                           font_family_parse,
                                           font_family_query,
                                           font_family_assign,
                                           _ctk_css_array_value_new (_ctk_css_string_value_new ("Sans")));
   ctk_css_style_property_register        ("font-style",
-                                          GTK_CSS_PROPERTY_FONT_STYLE,
+                                          CTK_CSS_PROPERTY_FONT_STYLE,
                                           PANGO_TYPE_STYLE,
-                                          GTK_STYLE_PROPERTY_INHERIT,
-                                          GTK_CSS_AFFECTS_FONT | GTK_CSS_AFFECTS_TEXT,
+                                          CTK_STYLE_PROPERTY_INHERIT,
+                                          CTK_CSS_AFFECTS_FONT | CTK_CSS_AFFECTS_TEXT,
                                           font_style_parse,
                                           font_style_query,
                                           font_style_assign,
                                           _ctk_css_font_style_value_new (PANGO_STYLE_NORMAL));
   ctk_css_style_property_register        ("font-variant",
-                                          GTK_CSS_PROPERTY_FONT_VARIANT,
+                                          CTK_CSS_PROPERTY_FONT_VARIANT,
                                           PANGO_TYPE_VARIANT,
-                                          GTK_STYLE_PROPERTY_INHERIT,
-                                          GTK_CSS_AFFECTS_FONT | GTK_CSS_AFFECTS_TEXT,
+                                          CTK_STYLE_PROPERTY_INHERIT,
+                                          CTK_CSS_AFFECTS_FONT | CTK_CSS_AFFECTS_TEXT,
                                           font_variant_parse,
                                           font_variant_query,
                                           font_variant_assign,
                                           _ctk_css_font_variant_value_new (PANGO_VARIANT_NORMAL));
   ctk_css_style_property_register        ("font-weight",
-                                          GTK_CSS_PROPERTY_FONT_WEIGHT,
+                                          CTK_CSS_PROPERTY_FONT_WEIGHT,
                                           PANGO_TYPE_WEIGHT,
-                                          GTK_STYLE_PROPERTY_INHERIT | GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_FONT | GTK_CSS_AFFECTS_TEXT,
+                                          CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_FONT | CTK_CSS_AFFECTS_TEXT,
                                           font_weight_parse,
                                           font_weight_query,
                                           font_weight_assign,
                                           _ctk_css_font_weight_value_new (PANGO_WEIGHT_NORMAL));
   ctk_css_style_property_register        ("font-stretch",
-                                          GTK_CSS_PROPERTY_FONT_STRETCH,
+                                          CTK_CSS_PROPERTY_FONT_STRETCH,
                                           PANGO_TYPE_STRETCH,
-                                          GTK_STYLE_PROPERTY_INHERIT,
-                                          GTK_CSS_AFFECTS_FONT | GTK_CSS_AFFECTS_TEXT,
+                                          CTK_STYLE_PROPERTY_INHERIT,
+                                          CTK_CSS_AFFECTS_FONT | CTK_CSS_AFFECTS_TEXT,
                                           font_stretch_parse,
                                           font_stretch_query,
                                           font_stretch_assign,
                                           _ctk_css_font_stretch_value_new (PANGO_STRETCH_NORMAL));
 
   ctk_css_style_property_register        ("letter-spacing",
-                                          GTK_CSS_PROPERTY_LETTER_SPACING,
+                                          CTK_CSS_PROPERTY_LETTER_SPACING,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_INHERIT | GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_TEXT | GTK_CSS_AFFECTS_TEXT_ATTRS,
+                                          CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_TEXT | CTK_CSS_AFFECTS_TEXT_ATTRS,
                                           parse_letter_spacing,
                                           NULL,
                                           NULL,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
 
   ctk_css_style_property_register        ("text-decoration-line",
-                                          GTK_CSS_PROPERTY_TEXT_DECORATION_LINE,
+                                          CTK_CSS_PROPERTY_TEXT_DECORATION_LINE,
                                           G_TYPE_NONE,
                                           0,
-                                          GTK_CSS_AFFECTS_TEXT | GTK_CSS_AFFECTS_TEXT_ATTRS,
+                                          CTK_CSS_AFFECTS_TEXT | CTK_CSS_AFFECTS_TEXT_ATTRS,
                                           parse_text_decoration_line,
                                           NULL,
                                           NULL,
-                                          _ctk_css_text_decoration_line_value_new (GTK_CSS_TEXT_DECORATION_LINE_NONE));
+                                          _ctk_css_text_decoration_line_value_new (CTK_CSS_TEXT_DECORATION_LINE_NONE));
   ctk_css_style_property_register        ("text-decoration-color",
-                                          GTK_CSS_PROPERTY_TEXT_DECORATION_COLOR,
+                                          CTK_CSS_PROPERTY_TEXT_DECORATION_COLOR,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_TEXT | GTK_CSS_AFFECTS_TEXT_ATTRS,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_TEXT | CTK_CSS_AFFECTS_TEXT_ATTRS,
                                           color_parse,
                                           NULL,
                                           NULL,
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("text-decoration-style",
-                                          GTK_CSS_PROPERTY_TEXT_DECORATION_STYLE,
+                                          CTK_CSS_PROPERTY_TEXT_DECORATION_STYLE,
                                           G_TYPE_NONE,
                                           0,
-                                          GTK_CSS_AFFECTS_TEXT | GTK_CSS_AFFECTS_TEXT_ATTRS,
+                                          CTK_CSS_AFFECTS_TEXT | CTK_CSS_AFFECTS_TEXT_ATTRS,
                                           parse_text_decoration_style,
                                           NULL,
                                           NULL,
-                                          _ctk_css_text_decoration_style_value_new (GTK_CSS_TEXT_DECORATION_STYLE_SOLID));
+                                          _ctk_css_text_decoration_style_value_new (CTK_CSS_TEXT_DECORATION_STYLE_SOLID));
 
   ctk_css_style_property_register        ("text-shadow",
-                                          GTK_CSS_PROPERTY_TEXT_SHADOW,
+                                          CTK_CSS_PROPERTY_TEXT_SHADOW,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_INHERIT | GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_TEXT | GTK_CSS_AFFECTS_CLIP,
+                                          CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_TEXT | CTK_CSS_AFFECTS_CLIP,
                                           shadow_value_parse,
                                           NULL,
                                           NULL,
                                           _ctk_css_shadows_value_new_none ());
 
   ctk_css_style_property_register        ("box-shadow",
-                                          GTK_CSS_PROPERTY_BOX_SHADOW,
+                                          CTK_CSS_PROPERTY_BOX_SHADOW,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BACKGROUND | GTK_CSS_AFFECTS_CLIP,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BACKGROUND | CTK_CSS_AFFECTS_CLIP,
                                           box_shadow_value_parse,
                                           NULL,
                                           NULL,
                                           _ctk_css_shadows_value_new_none ());
 
   ctk_css_style_property_register        ("margin-top",
-                                          GTK_CSS_PROPERTY_MARGIN_TOP,
+                                          CTK_CSS_PROPERTY_MARGIN_TOP,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_SIZE,
                                           parse_margin,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("margin-left",
-                                          GTK_CSS_PROPERTY_MARGIN_LEFT,
+                                          CTK_CSS_PROPERTY_MARGIN_LEFT,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_SIZE,
                                           parse_margin,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("margin-bottom",
-                                          GTK_CSS_PROPERTY_MARGIN_BOTTOM,
+                                          CTK_CSS_PROPERTY_MARGIN_BOTTOM,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_SIZE,
                                           parse_margin,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("margin-right",
-                                          GTK_CSS_PROPERTY_MARGIN_RIGHT,
+                                          CTK_CSS_PROPERTY_MARGIN_RIGHT,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_SIZE,
                                           parse_margin,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("padding-top",
-                                          GTK_CSS_PROPERTY_PADDING_TOP,
+                                          CTK_CSS_PROPERTY_PADDING_TOP,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_SIZE,
                                           parse_padding,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("padding-left",
-                                          GTK_CSS_PROPERTY_PADDING_LEFT,
+                                          CTK_CSS_PROPERTY_PADDING_LEFT,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_SIZE,
                                           parse_padding,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("padding-bottom",
-                                          GTK_CSS_PROPERTY_PADDING_BOTTOM,
+                                          CTK_CSS_PROPERTY_PADDING_BOTTOM,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_SIZE,
                                           parse_padding,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("padding-right",
-                                          GTK_CSS_PROPERTY_PADDING_RIGHT,
+                                          CTK_CSS_PROPERTY_PADDING_RIGHT,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_SIZE,
                                           parse_padding,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   /* IMPORTANT: the border-width properties must come after border-style properties,
    * they depend on them for their value computation.
    */
   ctk_css_style_property_register        ("border-top-style",
-                                          GTK_CSS_PROPERTY_BORDER_TOP_STYLE,
-                                          GTK_TYPE_BORDER_STYLE,
+                                          CTK_CSS_PROPERTY_BORDER_TOP_STYLE,
+                                          CTK_TYPE_BORDER_STYLE,
                                           0,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           parse_border_style,
                                           query_border_style,
                                           assign_border_style,
-                                          _ctk_css_border_style_value_new (GTK_BORDER_STYLE_NONE));
+                                          _ctk_css_border_style_value_new (CTK_BORDER_STYLE_NONE));
   ctk_css_style_property_register        ("border-top-width",
-                                          GTK_CSS_PROPERTY_BORDER_TOP_WIDTH,
+                                          CTK_CSS_PROPERTY_BORDER_TOP_WIDTH,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BORDER | GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BORDER | CTK_CSS_AFFECTS_SIZE,
                                           parse_border_width,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("border-left-style",
-                                          GTK_CSS_PROPERTY_BORDER_LEFT_STYLE,
-                                          GTK_TYPE_BORDER_STYLE,
+                                          CTK_CSS_PROPERTY_BORDER_LEFT_STYLE,
+                                          CTK_TYPE_BORDER_STYLE,
                                           0,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           parse_border_style,
                                           query_border_style,
                                           assign_border_style,
-                                          _ctk_css_border_style_value_new (GTK_BORDER_STYLE_NONE));
+                                          _ctk_css_border_style_value_new (CTK_BORDER_STYLE_NONE));
   ctk_css_style_property_register        ("border-left-width",
-                                          GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH,
+                                          CTK_CSS_PROPERTY_BORDER_LEFT_WIDTH,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BORDER | GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BORDER | CTK_CSS_AFFECTS_SIZE,
                                           parse_border_width,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("border-bottom-style",
-                                          GTK_CSS_PROPERTY_BORDER_BOTTOM_STYLE,
-                                          GTK_TYPE_BORDER_STYLE,
+                                          CTK_CSS_PROPERTY_BORDER_BOTTOM_STYLE,
+                                          CTK_TYPE_BORDER_STYLE,
                                           0,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           parse_border_style,
                                           query_border_style,
                                           assign_border_style,
-                                          _ctk_css_border_style_value_new (GTK_BORDER_STYLE_NONE));
+                                          _ctk_css_border_style_value_new (CTK_BORDER_STYLE_NONE));
   ctk_css_style_property_register        ("border-bottom-width",
-                                          GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH,
+                                          CTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BORDER | GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BORDER | CTK_CSS_AFFECTS_SIZE,
                                           parse_border_width,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("border-right-style",
-                                          GTK_CSS_PROPERTY_BORDER_RIGHT_STYLE,
-                                          GTK_TYPE_BORDER_STYLE,
+                                          CTK_CSS_PROPERTY_BORDER_RIGHT_STYLE,
+                                          CTK_TYPE_BORDER_STYLE,
                                           0,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           parse_border_style,
                                           query_border_style,
                                           assign_border_style,
-                                          _ctk_css_border_style_value_new (GTK_BORDER_STYLE_NONE));
+                                          _ctk_css_border_style_value_new (CTK_BORDER_STYLE_NONE));
   ctk_css_style_property_register        ("border-right-width",
-                                          GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH,
+                                          CTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BORDER | GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BORDER | CTK_CSS_AFFECTS_SIZE,
                                           parse_border_width,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
 
   ctk_css_style_property_register        ("border-top-left-radius",
-                                          GTK_CSS_PROPERTY_BORDER_TOP_LEFT_RADIUS,
+                                          CTK_CSS_PROPERTY_BORDER_TOP_LEFT_RADIUS,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BACKGROUND | GTK_CSS_AFFECTS_BORDER,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BACKGROUND | CTK_CSS_AFFECTS_BORDER,
                                           border_corner_radius_value_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, GTK_CSS_PX),
-                                                                     _ctk_css_number_value_new (0, GTK_CSS_PX)));
+                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
+                                                                     _ctk_css_number_value_new (0, CTK_CSS_PX)));
   ctk_css_style_property_register        ("border-top-right-radius",
-                                          GTK_CSS_PROPERTY_BORDER_TOP_RIGHT_RADIUS,
+                                          CTK_CSS_PROPERTY_BORDER_TOP_RIGHT_RADIUS,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BACKGROUND | GTK_CSS_AFFECTS_BORDER,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BACKGROUND | CTK_CSS_AFFECTS_BORDER,
                                           border_corner_radius_value_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, GTK_CSS_PX),
-                                                                     _ctk_css_number_value_new (0, GTK_CSS_PX)));
+                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
+                                                                     _ctk_css_number_value_new (0, CTK_CSS_PX)));
   ctk_css_style_property_register        ("border-bottom-right-radius",
-                                          GTK_CSS_PROPERTY_BORDER_BOTTOM_RIGHT_RADIUS,
+                                          CTK_CSS_PROPERTY_BORDER_BOTTOM_RIGHT_RADIUS,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BACKGROUND | GTK_CSS_AFFECTS_BORDER,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BACKGROUND | CTK_CSS_AFFECTS_BORDER,
                                           border_corner_radius_value_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, GTK_CSS_PX),
-                                                                     _ctk_css_number_value_new (0, GTK_CSS_PX)));
+                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
+                                                                     _ctk_css_number_value_new (0, CTK_CSS_PX)));
   ctk_css_style_property_register        ("border-bottom-left-radius",
-                                          GTK_CSS_PROPERTY_BORDER_BOTTOM_LEFT_RADIUS,
+                                          CTK_CSS_PROPERTY_BORDER_BOTTOM_LEFT_RADIUS,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BACKGROUND | GTK_CSS_AFFECTS_BORDER,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BACKGROUND | CTK_CSS_AFFECTS_BORDER,
                                           border_corner_radius_value_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, GTK_CSS_PX),
-                                                                     _ctk_css_number_value_new (0, GTK_CSS_PX)));
+                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
+                                                                     _ctk_css_number_value_new (0, CTK_CSS_PX)));
 
   ctk_css_style_property_register        ("outline-style",
-                                          GTK_CSS_PROPERTY_OUTLINE_STYLE,
-                                          GTK_TYPE_BORDER_STYLE,
+                                          CTK_CSS_PROPERTY_OUTLINE_STYLE,
+                                          CTK_TYPE_BORDER_STYLE,
                                           0,
-                                          GTK_CSS_AFFECTS_OUTLINE | GTK_CSS_AFFECTS_CLIP,
+                                          CTK_CSS_AFFECTS_OUTLINE | CTK_CSS_AFFECTS_CLIP,
                                           parse_border_style,
                                           query_border_style,
                                           assign_border_style,
-                                          _ctk_css_border_style_value_new (GTK_BORDER_STYLE_NONE));
+                                          _ctk_css_border_style_value_new (CTK_BORDER_STYLE_NONE));
   ctk_css_style_property_register        ("outline-width",
-                                          GTK_CSS_PROPERTY_OUTLINE_WIDTH,
+                                          CTK_CSS_PROPERTY_OUTLINE_WIDTH,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_OUTLINE | GTK_CSS_AFFECTS_CLIP,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_OUTLINE | CTK_CSS_AFFECTS_CLIP,
                                           parse_border_width,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
   ctk_css_style_property_register        ("outline-offset",
-                                          GTK_CSS_PROPERTY_OUTLINE_OFFSET,
+                                          CTK_CSS_PROPERTY_OUTLINE_OFFSET,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_OUTLINE | GTK_CSS_AFFECTS_CLIP,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_OUTLINE | CTK_CSS_AFFECTS_CLIP,
                                           outline_parse,
                                           query_length_as_int,
                                           assign_length_from_int,
-                                          _ctk_css_number_value_new (0.0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0.0, CTK_CSS_PX));
 
   ctk_css_style_property_register        ("-gtk-outline-top-left-radius",
-                                          GTK_CSS_PROPERTY_OUTLINE_TOP_LEFT_RADIUS,
+                                          CTK_CSS_PROPERTY_OUTLINE_TOP_LEFT_RADIUS,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_OUTLINE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_OUTLINE,
                                           border_corner_radius_value_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, GTK_CSS_PX),
-                                                                     _ctk_css_number_value_new (0, GTK_CSS_PX)));
+                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
+                                                                     _ctk_css_number_value_new (0, CTK_CSS_PX)));
   _ctk_style_property_add_alias ("-gtk-outline-top-left-radius", "outline-top-left-radius");
   ctk_css_style_property_register        ("-gtk-outline-top-right-radius",
-                                          GTK_CSS_PROPERTY_OUTLINE_TOP_RIGHT_RADIUS,
+                                          CTK_CSS_PROPERTY_OUTLINE_TOP_RIGHT_RADIUS,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_OUTLINE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_OUTLINE,
                                           border_corner_radius_value_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, GTK_CSS_PX),
-                                                                     _ctk_css_number_value_new (0, GTK_CSS_PX)));
+                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
+                                                                     _ctk_css_number_value_new (0, CTK_CSS_PX)));
   _ctk_style_property_add_alias ("-gtk-outline-top-right-radius", "outline-top-right-radius");
   ctk_css_style_property_register        ("-gtk-outline-bottom-right-radius",
-                                          GTK_CSS_PROPERTY_OUTLINE_BOTTOM_RIGHT_RADIUS,
+                                          CTK_CSS_PROPERTY_OUTLINE_BOTTOM_RIGHT_RADIUS,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_OUTLINE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_OUTLINE,
                                           border_corner_radius_value_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, GTK_CSS_PX),
-                                                                     _ctk_css_number_value_new (0, GTK_CSS_PX)));
+                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
+                                                                     _ctk_css_number_value_new (0, CTK_CSS_PX)));
   _ctk_style_property_add_alias ("-gtk-outline-bottom-right-radius", "outline-bottom-right-radius");
   ctk_css_style_property_register        ("-gtk-outline-bottom-left-radius",
-                                          GTK_CSS_PROPERTY_OUTLINE_BOTTOM_LEFT_RADIUS,
+                                          CTK_CSS_PROPERTY_OUTLINE_BOTTOM_LEFT_RADIUS,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_OUTLINE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_OUTLINE,
                                           border_corner_radius_value_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, GTK_CSS_PX),
-                                                                     _ctk_css_number_value_new (0, GTK_CSS_PX)));
+                                          _ctk_css_corner_value_new (_ctk_css_number_value_new (0, CTK_CSS_PX),
+                                                                     _ctk_css_number_value_new (0, CTK_CSS_PX)));
   _ctk_style_property_add_alias ("-gtk-outline-bottom-left-radius", "outline-bottom-left-radius");
 
   ctk_css_style_property_register        ("background-clip",
-                                          GTK_CSS_PROPERTY_BACKGROUND_CLIP,
+                                          CTK_CSS_PROPERTY_BACKGROUND_CLIP,
                                           G_TYPE_NONE,
                                           0,
-                                          GTK_CSS_AFFECTS_BACKGROUND,
+                                          CTK_CSS_AFFECTS_BACKGROUND,
                                           parse_css_area,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_area_value_new (GTK_CSS_AREA_BORDER_BOX)));
+                                          _ctk_css_array_value_new (_ctk_css_area_value_new (CTK_CSS_AREA_BORDER_BOX)));
   ctk_css_style_property_register        ("background-origin",
-                                          GTK_CSS_PROPERTY_BACKGROUND_ORIGIN,
+                                          CTK_CSS_PROPERTY_BACKGROUND_ORIGIN,
                                           G_TYPE_NONE,
                                           0,
-                                          GTK_CSS_AFFECTS_BACKGROUND,
+                                          CTK_CSS_AFFECTS_BACKGROUND,
                                           parse_css_area,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_area_value_new (GTK_CSS_AREA_PADDING_BOX)));
+                                          _ctk_css_array_value_new (_ctk_css_area_value_new (CTK_CSS_AREA_PADDING_BOX)));
   ctk_css_style_property_register        ("background-size",
-                                          GTK_CSS_PROPERTY_BACKGROUND_SIZE,
+                                          CTK_CSS_PROPERTY_BACKGROUND_SIZE,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BACKGROUND,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BACKGROUND,
                                           background_size_parse,
                                           NULL,
                                           NULL,
                                           _ctk_css_array_value_new (_ctk_css_bg_size_value_new (NULL, NULL)));
   ctk_css_style_property_register        ("background-position",
-                                          GTK_CSS_PROPERTY_BACKGROUND_POSITION,
+                                          CTK_CSS_PROPERTY_BACKGROUND_POSITION,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BACKGROUND,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BACKGROUND,
                                           background_position_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_position_value_new (_ctk_css_number_value_new (0, GTK_CSS_PERCENT),
-                                                                                                 _ctk_css_number_value_new (0, GTK_CSS_PERCENT))));
+                                          _ctk_css_array_value_new (_ctk_css_position_value_new (_ctk_css_number_value_new (0, CTK_CSS_PERCENT),
+                                                                                                 _ctk_css_number_value_new (0, CTK_CSS_PERCENT))));
 
   ctk_css_style_property_register        ("border-top-color",
-                                          GTK_CSS_PROPERTY_BORDER_TOP_COLOR,
+                                          CTK_CSS_PROPERTY_BORDER_TOP_COLOR,
                                           GDK_TYPE_RGBA,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           color_parse,
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("border-right-color",
-                                          GTK_CSS_PROPERTY_BORDER_RIGHT_COLOR,
+                                          CTK_CSS_PROPERTY_BORDER_RIGHT_COLOR,
                                           GDK_TYPE_RGBA,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           color_parse,
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("border-bottom-color",
-                                          GTK_CSS_PROPERTY_BORDER_BOTTOM_COLOR,
+                                          CTK_CSS_PROPERTY_BORDER_BOTTOM_COLOR,
                                           GDK_TYPE_RGBA,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           color_parse,
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("border-left-color",
-                                          GTK_CSS_PROPERTY_BORDER_LEFT_COLOR,
+                                          CTK_CSS_PROPERTY_BORDER_LEFT_COLOR,
                                           GDK_TYPE_RGBA,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           color_parse,
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("outline-color",
-                                          GTK_CSS_PROPERTY_OUTLINE_COLOR,
+                                          CTK_CSS_PROPERTY_OUTLINE_COLOR,
                                           GDK_TYPE_RGBA,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_OUTLINE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_OUTLINE,
                                           color_parse,
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_current_color ());
 
   ctk_css_style_property_register        ("background-repeat",
-                                          GTK_CSS_PROPERTY_BACKGROUND_REPEAT,
+                                          CTK_CSS_PROPERTY_BACKGROUND_REPEAT,
                                           G_TYPE_NONE,
                                           0,
-                                          GTK_CSS_AFFECTS_BACKGROUND,
+                                          CTK_CSS_AFFECTS_BACKGROUND,
                                           background_repeat_value_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_background_repeat_value_new (GTK_CSS_REPEAT_STYLE_REPEAT,
-                                                                                                          GTK_CSS_REPEAT_STYLE_REPEAT)));
+                                          _ctk_css_array_value_new (_ctk_css_background_repeat_value_new (CTK_CSS_REPEAT_STYLE_REPEAT,
+                                                                                                          CTK_CSS_REPEAT_STYLE_REPEAT)));
   ctk_css_style_property_register        ("background-image",
-                                          GTK_CSS_PROPERTY_BACKGROUND_IMAGE,
+                                          CTK_CSS_PROPERTY_BACKGROUND_IMAGE,
                                           CAIRO_GOBJECT_TYPE_PATTERN,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BACKGROUND,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BACKGROUND,
                                           background_image_value_parse,
                                           background_image_value_query,
                                           background_image_value_assign,
                                           _ctk_css_array_value_new (_ctk_css_image_value_new (NULL)));
 
   ctk_css_style_property_register        ("background-blend-mode",
-                                          GTK_CSS_PROPERTY_BACKGROUND_BLEND_MODE,
+                                          CTK_CSS_PROPERTY_BACKGROUND_BLEND_MODE,
                                           G_TYPE_NONE,
                                           0,
-                                          GTK_CSS_AFFECTS_BACKGROUND,
+                                          CTK_CSS_AFFECTS_BACKGROUND,
                                           blend_mode_value_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_blend_mode_value_new (GTK_CSS_BLEND_MODE_NORMAL)));
+                                          _ctk_css_array_value_new (_ctk_css_blend_mode_value_new (CTK_CSS_BLEND_MODE_NORMAL)));
 
   ctk_css_style_property_register        ("border-image-source",
-                                          GTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE,
+                                          CTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE,
                                           CAIRO_GOBJECT_TYPE_PATTERN,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           css_image_value_parse,
                                           css_image_value_query,
                                           css_image_value_assign,
                                           _ctk_css_image_value_new (NULL));
   ctk_css_style_property_register        ("border-image-repeat",
-                                          GTK_CSS_PROPERTY_BORDER_IMAGE_REPEAT,
+                                          CTK_CSS_PROPERTY_BORDER_IMAGE_REPEAT,
                                           G_TYPE_NONE,
                                           0,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           border_image_repeat_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_border_repeat_value_new (GTK_CSS_REPEAT_STYLE_STRETCH,
-                                                                            GTK_CSS_REPEAT_STYLE_STRETCH));
+                                          _ctk_css_border_repeat_value_new (CTK_CSS_REPEAT_STYLE_STRETCH,
+                                                                            CTK_CSS_REPEAT_STYLE_STRETCH));
 
   ctk_css_style_property_register        ("border-image-slice",
-                                          GTK_CSS_PROPERTY_BORDER_IMAGE_SLICE,
-                                          GTK_TYPE_BORDER,
+                                          CTK_CSS_PROPERTY_BORDER_IMAGE_SLICE,
+                                          CTK_TYPE_BORDER,
                                           0,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           border_image_slice_parse,
                                           query_border,
                                           assign_border,
-                                          _ctk_css_border_value_new (_ctk_css_number_value_new (100, GTK_CSS_PERCENT),
-                                                                     _ctk_css_number_value_new (100, GTK_CSS_PERCENT),
-                                                                     _ctk_css_number_value_new (100, GTK_CSS_PERCENT),
-                                                                     _ctk_css_number_value_new (100, GTK_CSS_PERCENT)));
+                                          _ctk_css_border_value_new (_ctk_css_number_value_new (100, CTK_CSS_PERCENT),
+                                                                     _ctk_css_number_value_new (100, CTK_CSS_PERCENT),
+                                                                     _ctk_css_number_value_new (100, CTK_CSS_PERCENT),
+                                                                     _ctk_css_number_value_new (100, CTK_CSS_PERCENT)));
   ctk_css_style_property_register        ("border-image-width",
-                                          GTK_CSS_PROPERTY_BORDER_IMAGE_WIDTH,
-                                          GTK_TYPE_BORDER,
+                                          CTK_CSS_PROPERTY_BORDER_IMAGE_WIDTH,
+                                          CTK_TYPE_BORDER,
                                           0,
-                                          GTK_CSS_AFFECTS_BORDER,
+                                          CTK_CSS_AFFECTS_BORDER,
                                           border_image_width_parse,
                                           query_border,
                                           assign_border,
-                                          _ctk_css_border_value_new (_ctk_css_number_value_new (1, GTK_CSS_NUMBER),
-                                                                     _ctk_css_number_value_new (1, GTK_CSS_NUMBER),
-                                                                     _ctk_css_number_value_new (1, GTK_CSS_NUMBER),
-                                                                     _ctk_css_number_value_new (1, GTK_CSS_NUMBER)));
+                                          _ctk_css_border_value_new (_ctk_css_number_value_new (1, CTK_CSS_NUMBER),
+                                                                     _ctk_css_number_value_new (1, CTK_CSS_NUMBER),
+                                                                     _ctk_css_number_value_new (1, CTK_CSS_NUMBER),
+                                                                     _ctk_css_number_value_new (1, CTK_CSS_NUMBER)));
 
   ctk_css_style_property_register        ("-gtk-icon-source",
-                                          GTK_CSS_PROPERTY_ICON_SOURCE,
+                                          CTK_CSS_PROPERTY_ICON_SOURCE,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_ICON | GTK_CSS_AFFECTS_SYMBOLIC_ICON,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_ICON | CTK_CSS_AFFECTS_SYMBOLIC_ICON,
                                           css_image_value_parse_with_builtin,
                                           NULL,
                                           NULL,
                                           _ctk_css_image_value_new (ctk_css_image_builtin_new ()));
   ctk_css_style_property_register        ("-gtk-icon-shadow",
-                                          GTK_CSS_PROPERTY_ICON_SHADOW,
+                                          CTK_CSS_PROPERTY_ICON_SHADOW,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_INHERIT | GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_ICON | GTK_CSS_AFFECTS_SYMBOLIC_ICON | GTK_CSS_AFFECTS_CLIP,
+                                          CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_ICON | CTK_CSS_AFFECTS_SYMBOLIC_ICON | CTK_CSS_AFFECTS_CLIP,
                                           shadow_value_parse,
                                           NULL,
                                           NULL,
                                           _ctk_css_shadows_value_new_none ());
   _ctk_style_property_add_alias ("-gtk-icon-shadow", "icon-shadow");
   ctk_css_style_property_register        ("-gtk-icon-style",
-                                          GTK_CSS_PROPERTY_ICON_STYLE,
+                                          CTK_CSS_PROPERTY_ICON_STYLE,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_INHERIT,
-                                          GTK_CSS_AFFECTS_ICON | GTK_CSS_AFFECTS_SYMBOLIC_ICON,
+                                          CTK_STYLE_PROPERTY_INHERIT,
+                                          CTK_CSS_AFFECTS_ICON | CTK_CSS_AFFECTS_SYMBOLIC_ICON,
                                           icon_style_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_icon_style_value_new (GTK_CSS_ICON_STYLE_REQUESTED));
+                                          _ctk_css_icon_style_value_new (CTK_CSS_ICON_STYLE_REQUESTED));
   ctk_css_style_property_register        ("-gtk-icon-transform",
-                                          GTK_CSS_PROPERTY_ICON_TRANSFORM,
+                                          CTK_CSS_PROPERTY_ICON_TRANSFORM,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_ICON | GTK_CSS_AFFECTS_SYMBOLIC_ICON | GTK_CSS_AFFECTS_CLIP,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_ICON | CTK_CSS_AFFECTS_SYMBOLIC_ICON | CTK_CSS_AFFECTS_CLIP,
                                           transform_value_parse,
                                           NULL,
                                           NULL,
                                           _ctk_css_transform_value_new_none ());
 
   ctk_css_style_property_register        ("min-width",
-                                          GTK_CSS_PROPERTY_MIN_WIDTH,
+                                          CTK_CSS_PROPERTY_MIN_WIDTH,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_SIZE,
                                           minmax_parse,
                                           query_length_as_int,
                                           NULL,
-                                          _ctk_css_number_value_new (0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0, CTK_CSS_PX));
   ctk_css_style_property_register        ("min-height",
-                                          GTK_CSS_PROPERTY_MIN_HEIGHT,
+                                          CTK_CSS_PROPERTY_MIN_HEIGHT,
                                           G_TYPE_INT,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_SIZE,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_SIZE,
                                           minmax_parse,
                                           query_length_as_int,
                                           NULL,
-                                          _ctk_css_number_value_new (0, GTK_CSS_PX));
+                                          _ctk_css_number_value_new (0, CTK_CSS_PX));
 
   ctk_css_style_property_register        ("transition-property",
-                                          GTK_CSS_PROPERTY_TRANSITION_PROPERTY,
+                                          CTK_CSS_PROPERTY_TRANSITION_PROPERTY,
                                           G_TYPE_NONE,
                                           0,
                                           0,
@@ -1711,16 +1711,16 @@ _ctk_css_style_property_init_properties (void)
                                           NULL,
                                           _ctk_css_array_value_new (_ctk_css_ident_value_new ("all")));
   ctk_css_style_property_register        ("transition-duration",
-                                          GTK_CSS_PROPERTY_TRANSITION_DURATION,
+                                          CTK_CSS_PROPERTY_TRANSITION_DURATION,
                                           G_TYPE_NONE,
                                           0,
                                           0,
                                           transition_time_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_number_value_new (0, GTK_CSS_S)));
+                                          _ctk_css_array_value_new (_ctk_css_number_value_new (0, CTK_CSS_S)));
   ctk_css_style_property_register        ("transition-timing-function",
-                                          GTK_CSS_PROPERTY_TRANSITION_TIMING_FUNCTION,
+                                          CTK_CSS_PROPERTY_TRANSITION_TIMING_FUNCTION,
                                           G_TYPE_NONE,
                                           0,
                                           0,
@@ -1730,17 +1730,17 @@ _ctk_css_style_property_init_properties (void)
                                           _ctk_css_array_value_new (
                                             _ctk_css_ease_value_new_cubic_bezier (0.25, 0.1, 0.25, 1.0)));
   ctk_css_style_property_register        ("transition-delay",
-                                          GTK_CSS_PROPERTY_TRANSITION_DELAY,
+                                          CTK_CSS_PROPERTY_TRANSITION_DELAY,
                                           G_TYPE_NONE,
                                           0,
                                           0,
                                           transition_time_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_number_value_new (0, GTK_CSS_S)));
+                                          _ctk_css_array_value_new (_ctk_css_number_value_new (0, CTK_CSS_S)));
 
   ctk_css_style_property_register        ("animation-name",
-                                          GTK_CSS_PROPERTY_ANIMATION_NAME,
+                                          CTK_CSS_PROPERTY_ANIMATION_NAME,
                                           G_TYPE_NONE,
                                           0,
                                           0,
@@ -1749,16 +1749,16 @@ _ctk_css_style_property_init_properties (void)
                                           NULL,
                                           _ctk_css_array_value_new (_ctk_css_ident_value_new ("none")));
   ctk_css_style_property_register        ("animation-duration",
-                                          GTK_CSS_PROPERTY_ANIMATION_DURATION,
+                                          CTK_CSS_PROPERTY_ANIMATION_DURATION,
                                           G_TYPE_NONE,
                                           0,
                                           0,
                                           transition_time_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_number_value_new (0, GTK_CSS_S)));
+                                          _ctk_css_array_value_new (_ctk_css_number_value_new (0, CTK_CSS_S)));
   ctk_css_style_property_register        ("animation-timing-function",
-                                          GTK_CSS_PROPERTY_ANIMATION_TIMING_FUNCTION,
+                                          CTK_CSS_PROPERTY_ANIMATION_TIMING_FUNCTION,
                                           G_TYPE_NONE,
                                           0,
                                           0,
@@ -1768,75 +1768,75 @@ _ctk_css_style_property_init_properties (void)
                                           _ctk_css_array_value_new (
                                             _ctk_css_ease_value_new_cubic_bezier (0.25, 0.1, 0.25, 1.0)));
   ctk_css_style_property_register        ("animation-iteration-count",
-                                          GTK_CSS_PROPERTY_ANIMATION_ITERATION_COUNT,
+                                          CTK_CSS_PROPERTY_ANIMATION_ITERATION_COUNT,
                                           G_TYPE_NONE,
                                           0,
                                           0,
                                           iteration_count_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_number_value_new (1, GTK_CSS_NUMBER)));
+                                          _ctk_css_array_value_new (_ctk_css_number_value_new (1, CTK_CSS_NUMBER)));
   ctk_css_style_property_register        ("animation-direction",
-                                          GTK_CSS_PROPERTY_ANIMATION_DIRECTION,
+                                          CTK_CSS_PROPERTY_ANIMATION_DIRECTION,
                                           G_TYPE_NONE,
                                           0,
                                           0,
                                           parse_css_direction,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_direction_value_new (GTK_CSS_DIRECTION_NORMAL)));
+                                          _ctk_css_array_value_new (_ctk_css_direction_value_new (CTK_CSS_DIRECTION_NORMAL)));
   ctk_css_style_property_register        ("animation-play-state",
-                                          GTK_CSS_PROPERTY_ANIMATION_PLAY_STATE,
+                                          CTK_CSS_PROPERTY_ANIMATION_PLAY_STATE,
                                           G_TYPE_NONE,
                                           0,
                                           0,
                                           parse_css_play_state,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_play_state_value_new (GTK_CSS_PLAY_STATE_RUNNING)));
+                                          _ctk_css_array_value_new (_ctk_css_play_state_value_new (CTK_CSS_PLAY_STATE_RUNNING)));
   ctk_css_style_property_register        ("animation-delay",
-                                          GTK_CSS_PROPERTY_ANIMATION_DELAY,
+                                          CTK_CSS_PROPERTY_ANIMATION_DELAY,
                                           G_TYPE_NONE,
                                           0,
                                           0,
                                           transition_time_parse,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_number_value_new (0, GTK_CSS_S)));
+                                          _ctk_css_array_value_new (_ctk_css_number_value_new (0, CTK_CSS_S)));
   ctk_css_style_property_register        ("animation-fill-mode",
-                                          GTK_CSS_PROPERTY_ANIMATION_FILL_MODE,
+                                          CTK_CSS_PROPERTY_ANIMATION_FILL_MODE,
                                           G_TYPE_NONE,
                                           0,
                                           0,
                                           parse_css_fill_mode,
                                           NULL,
                                           NULL,
-                                          _ctk_css_array_value_new (_ctk_css_fill_mode_value_new (GTK_CSS_FILL_NONE)));
+                                          _ctk_css_array_value_new (_ctk_css_fill_mode_value_new (CTK_CSS_FILL_NONE)));
 
   ctk_css_style_property_register        ("opacity",
-                                          GTK_CSS_PROPERTY_OPACITY,
+                                          CTK_CSS_PROPERTY_OPACITY,
                                           G_TYPE_DOUBLE,
-                                          GTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_STYLE_PROPERTY_ANIMATED,
                                           0,
                                           opacity_parse,
                                           opacity_query,
                                           NULL,
-                                          _ctk_css_number_value_new (1, GTK_CSS_NUMBER));
+                                          _ctk_css_number_value_new (1, CTK_CSS_NUMBER));
   ctk_css_style_property_register        ("-gtk-icon-effect",
-					  GTK_CSS_PROPERTY_ICON_EFFECT,
+					  CTK_CSS_PROPERTY_ICON_EFFECT,
 					  G_TYPE_NONE,
-					  GTK_STYLE_PROPERTY_INHERIT,
-                                          GTK_CSS_AFFECTS_ICON,
+					  CTK_STYLE_PROPERTY_INHERIT,
+                                          CTK_CSS_AFFECTS_ICON,
 					  image_effect_parse,
 					  NULL,
 					  NULL,
-					  _ctk_css_icon_effect_value_new (GTK_CSS_ICON_EFFECT_NONE));
+					  _ctk_css_icon_effect_value_new (CTK_CSS_ICON_EFFECT_NONE));
   _ctk_style_property_add_alias ("-gtk-icon-effect", "-gtk-image-effect");
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_css_style_property_register        ("engine",
-                                          GTK_CSS_PROPERTY_ENGINE,
-                                          GTK_TYPE_THEMING_ENGINE,
+                                          CTK_CSS_PROPERTY_ENGINE,
+                                          CTK_TYPE_THEMING_ENGINE,
                                           0,
                                           0,
                                           engine_parse,
@@ -1847,7 +1847,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* Private property holding the binding sets */
   ctk_css_style_property_register        ("-gtk-key-bindings",
-                                          GTK_CSS_PROPERTY_GTK_KEY_BINDINGS,
+                                          CTK_CSS_PROPERTY_CTK_KEY_BINDINGS,
                                           G_TYPE_PTR_ARRAY,
                                           0,
                                           0,
@@ -1858,28 +1858,28 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   _ctk_style_property_add_alias ("-gtk-key-bindings", "gtk-key-bindings");
 
   ctk_css_style_property_register        ("caret-color",
-                                          GTK_CSS_PROPERTY_CARET_COLOR,
+                                          CTK_CSS_PROPERTY_CARET_COLOR,
                                           GDK_TYPE_RGBA,
-                                          GTK_STYLE_PROPERTY_INHERIT | GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_TEXT,
+                                          CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_TEXT,
                                           color_parse,
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("-gtk-secondary-caret-color",
-                                          GTK_CSS_PROPERTY_SECONDARY_CARET_COLOR,
+                                          CTK_CSS_PROPERTY_SECONDARY_CARET_COLOR,
                                           GDK_TYPE_RGBA,
-                                          GTK_STYLE_PROPERTY_INHERIT | GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_TEXT,
+                                          CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_TEXT,
                                           color_parse,
                                           color_query,
                                           color_assign,
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("font-feature-settings",
-                                          GTK_CSS_PROPERTY_FONT_FEATURE_SETTINGS,
+                                          CTK_CSS_PROPERTY_FONT_FEATURE_SETTINGS,
                                           G_TYPE_NONE,
-                                          GTK_STYLE_PROPERTY_INHERIT | GTK_STYLE_PROPERTY_ANIMATED,
-                                          GTK_CSS_AFFECTS_TEXT | GTK_CSS_AFFECTS_TEXT_ATTRS,
+                                          CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
+                                          CTK_CSS_AFFECTS_TEXT | CTK_CSS_AFFECTS_TEXT_ATTRS,
                                           parse_font_feature_settings,
                                           NULL,
                                           NULL,

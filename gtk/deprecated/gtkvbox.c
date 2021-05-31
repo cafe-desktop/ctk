@@ -46,17 +46,17 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * All children are allocated the same width.
  *
  * GtkVBox has been deprecated. You can use #GtkBox with a #GtkOrientable:orientation
- * set to %GTK_ORIENTATION_VERTICAL instead when calling ctk_box_new(),
+ * set to %CTK_ORIENTATION_VERTICAL instead when calling ctk_box_new(),
  * which is a very quick and easy change.
  *
  * If you have derived your own classes from GtkVBox, you can change the
  * inheritance to derive directly from #GtkBox, and set the #GtkOrientable:orientation
- * property to %GTK_ORIENTATION_VERTICAL in your instance init function,
+ * property to %CTK_ORIENTATION_VERTICAL in your instance init function,
  * with a call like:
  *
  * |[<!-- language="C" -->
- *   ctk_orientable_set_orientation (GTK_ORIENTABLE (object),
- *                                   GTK_ORIENTATION_VERTICAL);
+ *   ctk_orientable_set_orientation (CTK_ORIENTABLE (object),
+ *                                   CTK_ORIENTATION_VERTICAL);
  * ]|
  *
  * If you have a grid-like layout composed of nested boxes, and you don’t
@@ -65,7 +65,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * [Migrating from other containers to GtkGrid][gtk-migrating-GtkGrid].
  */
 
-G_DEFINE_TYPE (GtkVBox, ctk_vbox, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GtkVBox, ctk_vbox, CTK_TYPE_BOX)
 
 static void
 ctk_vbox_class_init (GtkVBoxClass *class)
@@ -75,10 +75,10 @@ ctk_vbox_class_init (GtkVBoxClass *class)
 static void
 ctk_vbox_init (GtkVBox *vbox)
 {
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (vbox),
-                                  GTK_ORIENTATION_VERTICAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (vbox),
+                                  CTK_ORIENTATION_VERTICAL);
 
-  _ctk_box_set_old_defaults (GTK_BOX (vbox));
+  _ctk_box_set_old_defaults (CTK_BOX (vbox));
 }
 
 /**
@@ -90,7 +90,7 @@ ctk_vbox_init (GtkVBox *vbox)
  *
  * Returns: a new #GtkVBox.
  *
- * Deprecated: 3.2: You can use ctk_box_new() with %GTK_ORIENTATION_VERTICAL instead,
+ * Deprecated: 3.2: You can use ctk_box_new() with %CTK_ORIENTATION_VERTICAL instead,
  *   which is a quick and easy change. But the recommendation is to switch to
  *   #GtkGrid, since #GtkBox is going to go away eventually.
  *   See [Migrating from other containers to GtkGrid][gtk-migrating-GtkGrid].
@@ -99,7 +99,7 @@ GtkWidget *
 ctk_vbox_new (gboolean homogeneous,
 	      gint     spacing)
 {
-  return g_object_new (GTK_TYPE_VBOX,
+  return g_object_new (CTK_TYPE_VBOX,
                        "spacing",     spacing,
                        "homogeneous", homogeneous ? TRUE : FALSE,
                        NULL);

@@ -17,17 +17,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINT_BACKEND_LPR_H__
-#define __GTK_PRINT_BACKEND_LPR_H__
+#ifndef __CTK_PRINT_BACKEND_LPR_H__
+#define __CTK_PRINT_BACKEND_LPR_H__
 
 #include <glib-object.h>
 #include "gtkprintbackend.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINT_BACKEND_LPR            (ctk_print_backend_lpr_get_type ())
-#define GTK_PRINT_BACKEND_LPR(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_BACKEND_LPR, GtkPrintBackendLpr))
-#define GTK_IS_PRINT_BACKEND_LPR(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_BACKEND_LPR))
+#define CTK_TYPE_PRINT_BACKEND_LPR            (ctk_print_backend_lpr_get_type ())
+#define CTK_PRINT_BACKEND_LPR(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_BACKEND_LPR, GtkPrintBackendLpr))
+#define CTK_IS_PRINT_BACKEND_LPR(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_BACKEND_LPR))
 
 typedef struct _GtkPrintBackendLpr      GtkPrintBackendLpr;
 
@@ -36,6 +36,6 @@ GType          ctk_print_backend_lpr_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __GTK_PRINT_BACKEND_LPR_H__ */
+#endif /* __CTK_PRINT_BACKEND_LPR_H__ */
 
 

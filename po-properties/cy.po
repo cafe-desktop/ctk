@@ -397,10 +397,10 @@ msgstr "Yn bwysig"
 #: gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "A ydi'r weithred yn bwysig ai peidio. Pan yn WIR, mae dirprwyon toolitem ar "
-"gyfer y weithred hon yn dangos testun yn y modd GTK_TOOLBAR_BOTH_HORIZ."
+"gyfer y weithred hon yn dangos testun yn y modd CTK_TOOLBAR_BOTH_HORIZ."
 
 #: gtk/gtkaction.c:374
 msgid "Hide if empty"
@@ -929,8 +929,8 @@ msgid "Default Spacing"
 msgstr "Rhagosodiad Bylchu"
 
 #: gtk/gtkbutton.c:461
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Gofod ychwanegol i'w ychwanegu ar gyfer botymau GTK_CAN_DEFAULT"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Gofod ychwanegol i'w ychwanegu ar gyfer botymau CTK_CAN_DEFAULT"
 
 #: gtk/gtkbutton.c:475
 msgid "Default Outside Spacing"
@@ -938,10 +938,10 @@ msgstr "Gofod Allanol Rhagosodedig"
 
 #: gtk/gtkbutton.c:476
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Lle ychwanegol ar gyfer botymau GTK_CAN_DEFAULT sydd wastad wedi ei lunio y "
+"Lle ychwanegol ar gyfer botymau CTK_CAN_DEFAULT sydd wastad wedi ei lunio y "
 "tu allan i'r border"
 
 #: gtk/gtkbutton.c:481
@@ -6354,10 +6354,10 @@ msgstr "Bwlch mewn picseli rhwng yr eicon a'r label"
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "A ydy'r eitem bar offer yn bwysig. Pan yn wir, mae botymau bar offer yn "
-"dangos testun yn y modd GTK_TOOLBAR_BOTH_HORIZ"
+"dangos testun yn y modd CTK_TOOLBAR_BOTH_HORIZ"
 
 #: gtk/gtktoolitemgroup.c:1572
 #, fuzzy

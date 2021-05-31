@@ -23,7 +23,7 @@
 #include "gtkcssrgbavalueprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   GHashTable *colors;
 };
 
@@ -172,7 +172,7 @@ ctk_css_value_palette_print (const GtkCssValue *value,
     }
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_PALETTE = {
+static const GtkCssValueClass CTK_CSS_VALUE_PALETTE = {
   ctk_css_value_palette_free,
   ctk_css_value_palette_compute,
   ctk_css_value_palette_equal,
@@ -185,7 +185,7 @@ ctk_css_palette_value_new_empty (void)
 {
   GtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_PALETTE);
+  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_PALETTE);
   result->colors = g_hash_table_new_full (g_str_hash, g_str_equal,
                                           g_free,
                                           (GDestroyNotify) _ctk_css_value_unref);
@@ -248,7 +248,7 @@ ctk_css_palette_value_get_color (GtkCssValue *value,
 {
   GtkCssValue *color;
 
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_PALETTE, NULL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_PALETTE, NULL);
 
   color = g_hash_table_lookup (value->colors, name);
   if (color == NULL)

@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_PRIVATE_H__
-#define __GTK_PRIVATE_H__
+#ifndef __CTK_PRIVATE_H__
+#define __CTK_PRIVATE_H__
 
 #include <glib-object.h>
 #include <gdk/gdk.h>
@@ -33,9 +33,9 @@
 
 G_BEGIN_DECLS
 
-#define GTK_PARAM_READABLE G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB
-#define GTK_PARAM_WRITABLE G_PARAM_WRITABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB
-#define GTK_PARAM_READWRITE G_PARAM_READWRITE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB
+#define CTK_PARAM_READABLE G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB
+#define CTK_PARAM_WRITABLE G_PARAM_WRITABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB
+#define CTK_PARAM_READWRITE G_PARAM_READWRITE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB
 
 #define OPPOSITE_ORIENTATION(_orientation) (1 - (_orientation))
 
@@ -113,14 +113,14 @@ guint ctk_get_display_debug_flags (GdkDisplay *display);
 
 #ifdef G_ENABLE_DEBUG
 
-#define GTK_DISPLAY_DEBUG_CHECK(display,type) G_UNLIKELY (ctk_get_display_debug_flags (display) & GTK_DEBUG_##type)
+#define CTK_DISPLAY_DEBUG_CHECK(display,type) G_UNLIKELY (ctk_get_display_debug_flags (display) & CTK_DEBUG_##type)
 
 #else
 
-#define GTK_DISPLAY_DEBUG_CHECK(display,type) 0
+#define CTK_DISPLAY_DEBUG_CHECK(display,type) 0
 
 #endif /* G_ENABLE_DEBUG */
 
 G_END_DECLS
 
-#endif /* __GTK_PRIVATE_H__ */
+#endif /* __CTK_PRIVATE_H__ */

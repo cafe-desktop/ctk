@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FILE_CHOOSER_NATIVE_PRIVATE_H__
-#define __GTK_FILE_CHOOSER_NATIVE_PRIVATE_H__
+#ifndef __CTK_FILE_CHOOSER_NATIVE_PRIVATE_H__
+#define __CTK_FILE_CHOOSER_NATIVE_PRIVATE_H__
 
 #include <gtk/gtkfilechoosernative.h>
 #ifdef GDK_WINDOWING_QUARTZ
@@ -71,4 +71,4 @@ void ctk_file_chooser_native_portal_hide (GtkFileChooserNative *self);
 
 G_END_DECLS
 
-#endif /* __GTK_FILE_CHOOSER_NATIVE_PRIVATE_H__ */
+#endif /* __CTK_FILE_CHOOSER_NATIVE_PRIVATE_H__ */

@@ -15,19 +15,19 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CELL_RENDERER_GRAPH_H__
-#define __GTK_CELL_RENDERER_GRAPH_H__
+#ifndef __CTK_CELL_RENDERER_GRAPH_H__
+#define __CTK_CELL_RENDERER_GRAPH_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CELL_RENDERER_GRAPH            (ctk_cell_renderer_graph_get_type ())
-#define GTK_CELL_RENDERER_GRAPH(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_RENDERER_GRAPH, GtkCellRendererGraph))
-#define GTK_CELL_RENDERER_GRAPH_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CELL_RENDERER_GRAPH, GtkCellRendererGraphClass))
-#define GTK_IS_CELL_RENDERER_GRAPH(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_RENDERER_GRAPH))
-#define GTK_IS_CELL_RENDERER_GRAPH_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_CELL_RENDERER_GRAPH))
-#define GTK_CELL_RENDERER_GRAPH_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CELL_RENDERER_GRAPH, GtkCellRendererGraphClass))
+#define CTK_TYPE_CELL_RENDERER_GRAPH            (ctk_cell_renderer_graph_get_type ())
+#define CTK_CELL_RENDERER_GRAPH(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_GRAPH, GtkCellRendererGraph))
+#define CTK_CELL_RENDERER_GRAPH_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_GRAPH, GtkCellRendererGraphClass))
+#define CTK_IS_CELL_RENDERER_GRAPH(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_GRAPH))
+#define CTK_IS_CELL_RENDERER_GRAPH_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_GRAPH))
+#define CTK_CELL_RENDERER_GRAPH_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_GRAPH, GtkCellRendererGraphClass))
 
 typedef struct _GtkCellRendererGraph        GtkCellRendererGraph;
 typedef struct _GtkCellRendererGraphClass   GtkCellRendererGraphClass;
@@ -59,4 +59,4 @@ GtkCellRenderer *ctk_cell_renderer_graph_new      (void);
 
 G_END_DECLS
 
-#endif /* __GTK_CELL_RENDERER_GRAPH_H__ */
+#endif /* __CTK_CELL_RENDERER_GRAPH_H__ */

@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_HSEPARATOR_H__
-#define __GTK_HSEPARATOR_H__
+#ifndef __CTK_HSEPARATOR_H__
+#define __CTK_HSEPARATOR_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_HSEPARATOR                  (ctk_hseparator_get_type ())
-#define GTK_HSEPARATOR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_HSEPARATOR, GtkHSeparator))
-#define GTK_HSEPARATOR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_HSEPARATOR, GtkHSeparatorClass))
-#define GTK_IS_HSEPARATOR(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_HSEPARATOR))
-#define GTK_IS_HSEPARATOR_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_HSEPARATOR))
-#define GTK_HSEPARATOR_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_HSEPARATOR, GtkHSeparatorClass))
+#define CTK_TYPE_HSEPARATOR                  (ctk_hseparator_get_type ())
+#define CTK_HSEPARATOR(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_HSEPARATOR, GtkHSeparator))
+#define CTK_HSEPARATOR_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_HSEPARATOR, GtkHSeparatorClass))
+#define CTK_IS_HSEPARATOR(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_HSEPARATOR))
+#define CTK_IS_HSEPARATOR_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_HSEPARATOR))
+#define CTK_HSEPARATOR_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_HSEPARATOR, GtkHSeparatorClass))
 
 
 typedef struct _GtkHSeparator       GtkHSeparator;
@@ -62,4 +62,4 @@ GtkWidget* ctk_hseparator_new      (void);
 
 G_END_DECLS
 
-#endif /* __GTK_HSEPARATOR_H__ */
+#endif /* __CTK_HSEPARATOR_H__ */

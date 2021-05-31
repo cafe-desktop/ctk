@@ -60,7 +60,7 @@ ctk_accessible_set_property (GObject      *object,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkAccessible *accessible = GTK_ACCESSIBLE (object);
+  GtkAccessible *accessible = CTK_ACCESSIBLE (object);
 
   switch (prop_id)
     {
@@ -79,7 +79,7 @@ ctk_accessible_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkAccessible *accessible = GTK_ACCESSIBLE (object);
+  GtkAccessible *accessible = CTK_ACCESSIBLE (object);
   GtkAccessiblePrivate *priv = accessible->priv;
 
   switch (prop_id)
@@ -102,7 +102,7 @@ ctk_accessible_init (GtkAccessible *accessible)
 static AtkStateSet *
 ctk_accessible_ref_state_set (AtkObject *object)
 {
-  GtkAccessible *accessible = GTK_ACCESSIBLE (object);
+  GtkAccessible *accessible = CTK_ACCESSIBLE (object);
   AtkStateSet *state_set;
 
   state_set = ATK_OBJECT_CLASS (ctk_accessible_parent_class)->ref_state_set (object);
@@ -128,7 +128,7 @@ ctk_accessible_real_widget_unset (GtkAccessible *accessible)
 static void
 ctk_accessible_dispose (GObject *object)
 {
-  GtkAccessible *accessible = GTK_ACCESSIBLE (object);
+  GtkAccessible *accessible = CTK_ACCESSIBLE (object);
   
   ctk_accessible_set_widget (accessible, NULL);
 
@@ -155,7 +155,7 @@ ctk_accessible_class_init (GtkAccessibleClass *klass)
 				   g_param_spec_object ("widget",
 							P_("Widget"),
 							P_("The widget referenced by this accessible."),
-							GTK_TYPE_WIDGET,
+							CTK_TYPE_WIDGET,
 							G_PARAM_READWRITE));
 }
 
@@ -180,10 +180,10 @@ ctk_accessible_set_widget (GtkAccessible *accessible,
   GtkAccessiblePrivate *priv;
   GtkAccessibleClass *klass;
 
-  g_return_if_fail (GTK_IS_ACCESSIBLE (accessible));
+  g_return_if_fail (CTK_IS_ACCESSIBLE (accessible));
 
   priv = accessible->priv;
-  klass = GTK_ACCESSIBLE_GET_CLASS (accessible);
+  klass = CTK_ACCESSIBLE_GET_CLASS (accessible);
 
   if (priv->widget == widget)
     return;
@@ -215,7 +215,7 @@ ctk_accessible_set_widget (GtkAccessible *accessible,
 GtkWidget*
 ctk_accessible_get_widget (GtkAccessible *accessible)
 {
-  g_return_val_if_fail (GTK_IS_ACCESSIBLE (accessible), NULL);
+  g_return_val_if_fail (CTK_IS_ACCESSIBLE (accessible), NULL);
 
   return accessible->priv->widget;
 }
@@ -234,9 +234,9 @@ ctk_accessible_connect_widget_destroyed (GtkAccessible *accessible)
 {
   GtkAccessibleClass *class;
 
-  g_return_if_fail (GTK_IS_ACCESSIBLE (accessible));
+  g_return_if_fail (CTK_IS_ACCESSIBLE (accessible));
 
-  class = GTK_ACCESSIBLE_GET_CLASS (accessible);
+  class = CTK_ACCESSIBLE_GET_CLASS (accessible);
 
   if (class->connect_widget_destroyed)
     class->connect_widget_destroyed (accessible);

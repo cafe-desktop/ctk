@@ -81,9 +81,9 @@ on_resize_clicked (GtkWidget *button,
   GdkWindowHints mask = GPOINTER_TO_UINT(data);
 
   if ((mask & GDK_HINT_RESIZE_INC) != 0)
-    ctk_window_resize_to_geometry (GTK_WINDOW (window), 8, 8);
+    ctk_window_resize_to_geometry (CTK_WINDOW (window), 8, 8);
   else
-    ctk_window_resize_to_geometry (GTK_WINDOW (window), 8 * GRID_SIZE, 8 * GRID_SIZE);
+    ctk_window_resize_to_geometry (CTK_WINDOW (window), 8 * GRID_SIZE, 8 * GRID_SIZE);
 }
 
 static void
@@ -116,19 +116,19 @@ create_window (GdkWindowHints  mask)
   else
     g_string_append (label_text, "No Options");
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "destroy",
 		    G_CALLBACK (on_window_destroy), NULL);
 
   grid = ctk_grid_new ();
-  ctk_container_set_border_width (GTK_CONTAINER (grid), 10);
+  ctk_container_set_border_width (CTK_CONTAINER (grid), 10);
 
   label = ctk_label_new (label_text->str);
   ctk_widget_set_hexpand (label, TRUE);
-  ctk_grid_attach (GTK_GRID (grid), label, 0, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), label, 0, 0, 1, 1);
 
   label = ctk_label_new ("A\nB\nC\nD\nE");
-  ctk_grid_attach (GTK_GRID (grid), label, 1, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), label, 1, 1, 1, 1);
 
   drawing_area = ctk_drawing_area_new ();
   g_signal_connect (drawing_area, "draw",
@@ -136,16 +136,16 @@ create_window (GdkWindowHints  mask)
 		    GUINT_TO_POINTER (mask));
   ctk_widget_set_hexpand (drawing_area, TRUE);
   ctk_widget_set_vexpand (drawing_area, TRUE);
-  ctk_grid_attach (GTK_GRID (grid), drawing_area, 0, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), drawing_area, 0, 1, 1, 1);
 
   button = ctk_button_new_with_label ("Resize");
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (on_resize_clicked),
 		    GUINT_TO_POINTER (mask));
   ctk_widget_set_hexpand (button, TRUE);
-  ctk_grid_attach (GTK_GRID (grid), button, 0, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), button, 0, 2, 1, 1);
 
-  ctk_container_add (GTK_CONTAINER (window), grid);
+  ctk_container_add (CTK_CONTAINER (window), grid);
 
   if ((mask & GDK_HINT_BASE_SIZE) != 0)
     {
@@ -175,7 +175,7 @@ create_window (GdkWindowHints  mask)
   /* Contents must be set up before ctk_window_parse_geometry() */
   ctk_widget_show_all (grid);
 
-  ctk_window_set_geometry_hints (GTK_WINDOW (window),
+  ctk_window_set_geometry_hints (CTK_WINDOW (window),
 				 drawing_area,
 				 &geometry,
 				 mask);
@@ -183,13 +183,13 @@ create_window (GdkWindowHints  mask)
   if ((mask & GDK_HINT_RESIZE_INC) != 0)
     {
       if (geometry_string)
-	ctk_window_parse_geometry (GTK_WINDOW (window), geometry_string);
+	ctk_window_parse_geometry (CTK_WINDOW (window), geometry_string);
       else
-	ctk_window_set_default_geometry (GTK_WINDOW (window), 10, 10);
+	ctk_window_set_default_geometry (CTK_WINDOW (window), 10, 10);
     }
   else
     {
-      ctk_window_set_default_geometry (GTK_WINDOW (window), 10 * GRID_SIZE, 10 * GRID_SIZE);
+      ctk_window_set_default_geometry (CTK_WINDOW (window), 10 * GRID_SIZE, 10 * GRID_SIZE);
     }
 
   ctk_widget_show (window);

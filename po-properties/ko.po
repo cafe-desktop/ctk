@@ -325,10 +325,10 @@ msgstr "중요함"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "이 동작이 중요하다고 여겨지는지 여부. 참이면, 이 동작의 도구 항목 프록시가 "
-"GTK_TOOLBAR_BOTH_HORIZ 모드로 텍스트를 표시합니다."
+"CTK_TOOLBAR_BOTH_HORIZ 모드로 텍스트를 표시합니다."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1777,7 +1777,7 @@ msgid "Default Spacing"
 msgstr "기본 간격"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "CAN_DEFAULT 단추에 더할 추가 간격"
 
 #: gtk/gtkbutton.c:541
@@ -1786,7 +1786,7 @@ msgstr "기본 외부 간격"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr "CAN_DEFAULT 단추의 외부에 더할 테두리 바깥에 언제나 그려지는 추가 간격"
 
@@ -4225,8 +4225,8 @@ msgid "Baseline Row"
 msgstr "베이스라인 행"
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
-msgstr "정렬 방식이 GTK_ALIGN_BASELINE일 경우 베이스라인에 정렬할 행"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
+msgstr "정렬 방식이 CTK_ALIGN_BASELINE일 경우 베이스라인에 정렬할 행"
 
 #: gtk/gtkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -8332,9 +8332,9 @@ msgstr "아이콘과 레이블 사이의 간격(픽셀 단위)"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
-"도구 모음 항목이 중요한지 여부. 참이면, GTK_TOOLBAR_BOTH_HORIZ 모드에서 도구 "
+"도구 모음 항목이 중요한지 여부. 참이면, CTK_TOOLBAR_BOTH_HORIZ 모드에서 도구 "
 "모음 단추에 텍스트를 표시합니다"
 
 #: gtk/gtktoolitemgroup.c:1640

@@ -720,11 +720,11 @@ msgstr "ଟି ଦରକାରୀ"
 #: ../gtk/gtkaction.c:364
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "ଏହି କାର୍ଯ୍ୟଟିକୁ ଆବଶ୍ୟକୀୟ ମନେକରାଯିବ କି ନାହିଁ। ଯଦି TRUE, ତେବେ ଏହି କାର୍ଯ୍ୟ ପାଇଁ "
 "ସାଧନ ବସ୍ତୁ "
-"ପ୍ରକ୍ସିଗୁଡ଼ିକ GTK_TOOLBAR_BOTH_HORIZ ଧାରାରେ ପାଠ୍ୟ ଦର୍ଶାଇଥାନ୍ତି।"
+"ପ୍ରକ୍ସିଗୁଡ଼ିକ CTK_TOOLBAR_BOTH_HORIZ ଧାରାରେ ପାଠ୍ୟ ଦର୍ଶାଇଥାନ୍ତି।"
 
 #: ../gtk/gtkaction.c:372
 msgid "Hide if empty"
@@ -1409,8 +1409,8 @@ msgid "Default Spacing"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅନ୍ତରାଳ"
 
 #: ../gtk/gtkbutton.c:461
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "GTK_CAN_DEFAULT ବଟନଗୁଡ଼ିକରେ ଯୋଗ କରିବା ପାଇଁ ଅଧିକ ସ୍ଥାନ"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "CTK_CAN_DEFAULT ବଟନଗୁଡ଼ିକରେ ଯୋଗ କରିବା ପାଇଁ ଅଧିକ ସ୍ଥାନ"
 
 #: ../gtk/gtkbutton.c:475
 msgid "Default Outside Spacing"
@@ -1418,10 +1418,10 @@ msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ବାହ୍ୟ ଅନ�
 
 #: ../gtk/gtkbutton.c:476
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"GTK_CAN_DEFAULT ବଟନଗୁଡ଼ିକରେ ଯୋଗ କରିବା ପାଇଁ ଅଧିକ ସ୍ଥାନ ଯ।ହାକି ସର୍ବଦା ଧାର "
+"CTK_CAN_DEFAULT ବଟନଗୁଡ଼ିକରେ ଯୋଗ କରିବା ପାଇଁ ଅଧିକ ସ୍ଥାନ ଯ।ହାକି ସର୍ବଦା ଧାର "
 "ବାହାରେ "
 "ଅଙ୍କାଯାଇଥାଏ"
 
@@ -7082,11 +7082,11 @@ msgstr "ଚିତ୍ରସଙ୍କେତ ଏବଂ ସୂଚକ ମଧ୍ଯର
 #: ../gtk/gtktoolitem.c:206
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "ସାଧନପଟି ବସ୍ତୁଟି ଆବଶ୍ୟକୀୟ କି ନୁହଁ ତାହା ଗ୍ରହଣ କରାଯାଇଛି କି ନାହିଁ। ଯେତେବେଳେ TRUE, "
 "ସେତେବେଳେ "
-"ସାଧନପଟି ବଟନଗୁଡ଼ିକ GTK_TOOLBAR_BOTH_HORIZ ଧାରାରେ ପାଠ୍ୟ ଦର୍ଶାଇଥାଏ"
+"ସାଧନପଟି ବଟନଗୁଡ଼ିକ CTK_TOOLBAR_BOTH_HORIZ ଧାରାରେ ପାଠ୍ୟ ଦର୍ଶାଇଥାଏ"
 
 #: ../gtk/gtktoolitemgroup.c:1593
 #, fuzzy

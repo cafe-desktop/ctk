@@ -50,9 +50,9 @@ update_display (void)
   GtkTreeIter iter;
   const char *lang;
 
-  text = ctk_entry_get_text (GTK_ENTRY (entry));
+  text = ctk_entry_get_text (CTK_ENTRY (entry));
 
-  font_desc = ctk_font_chooser_get_font (GTK_FONT_CHOOSER (font));
+  font_desc = ctk_font_chooser_get_font (CTK_FONT_CHOOSER (font));
 
   s = g_string_new ("");
 
@@ -62,13 +62,13 @@ update_display (void)
       if (!ctk_widget_is_sensitive (toggle[i]))
         continue;
 
-      if (GTK_IS_RADIO_BUTTON (toggle[i]))
+      if (CTK_IS_RADIO_BUTTON (toggle[i]))
         {
-          if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (toggle[i])))
+          if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (toggle[i])))
             {
               if (has_feature)
                 g_string_append (s, ", ");
-              g_string_append (s, ctk_buildable_get_name (GTK_BUILDABLE (toggle[i])));
+              g_string_append (s, ctk_buildable_get_name (CTK_BUILDABLE (toggle[i])));
               g_string_append (s, " 1");
               has_feature = TRUE;
             }
@@ -77,8 +77,8 @@ update_display (void)
         {
           if (has_feature)
             g_string_append (s, ", ");
-          g_string_append (s, ctk_buildable_get_name (GTK_BUILDABLE (toggle[i])));
-          if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (toggle[i])))
+          g_string_append (s, ctk_buildable_get_name (CTK_BUILDABLE (toggle[i])));
+          if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (toggle[i])))
             g_string_append (s, " 1");
           else
             g_string_append (s, " 0");
@@ -88,12 +88,12 @@ update_display (void)
 
   font_settings = g_string_free (s, FALSE);
 
-  ctk_label_set_text (GTK_LABEL (settings), font_settings);
+  ctk_label_set_text (CTK_LABEL (settings), font_settings);
 
 
-  if (ctk_combo_box_get_active_iter (GTK_COMBO_BOX (script_lang), &iter))
+  if (ctk_combo_box_get_active_iter (CTK_COMBO_BOX (script_lang), &iter))
     {
-      model = ctk_combo_box_get_model (GTK_COMBO_BOX (script_lang));
+      model = ctk_combo_box_get_model (CTK_COMBO_BOX (script_lang));
       ctk_tree_model_get (model, &iter,
                           3, &lang_tag,
                           -1);
@@ -109,7 +109,7 @@ update_display (void)
     g_string_append_printf (s, " lang='%s'", lang);
   g_string_append_printf (s, ">%s</span>", text);
 
-  ctk_label_set_markup (GTK_LABEL (label), s->str);
+  ctk_label_set_markup (CTK_LABEL (label), s->str);
 
   g_string_free (s, TRUE);
 
@@ -124,7 +124,7 @@ get_pango_font (void)
   PangoContext *context;
   PangoFontMap *map;
 
-  desc = ctk_font_chooser_get_font_desc (GTK_FONT_CHOOSER (font));
+  desc = ctk_font_chooser_get_font_desc (CTK_FONT_CHOOSER (font));
   context = ctk_widget_get_pango_context (font);
   map = pango_context_get_font_map (context);
 
@@ -334,8 +334,8 @@ update_script_combo (void)
 
   g_hash_table_destroy (tags);
 
-  ctk_combo_box_set_model (GTK_COMBO_BOX (script_lang), GTK_TREE_MODEL (store));
-  ctk_combo_box_set_active (GTK_COMBO_BOX (script_lang), 0);
+  ctk_combo_box_set_model (CTK_COMBO_BOX (script_lang), CTK_TREE_MODEL (store));
+  ctk_combo_box_set_active (CTK_COMBO_BOX (script_lang), 0);
 }
 
 static void
@@ -354,10 +354,10 @@ update_features (void)
 
   /* set feature presence checks from the font features */
 
-  if (!ctk_combo_box_get_active_iter (GTK_COMBO_BOX (script_lang), &iter))
+  if (!ctk_combo_box_get_active_iter (CTK_COMBO_BOX (script_lang), &iter))
     return;
 
-  model = ctk_combo_box_get_model (GTK_COMBO_BOX (script_lang));
+  model = ctk_combo_box_get_model (CTK_COMBO_BOX (script_lang));
   ctk_tree_model_get (model, &iter,
                       1, &script_index,
                       2, &lang_index,
@@ -422,14 +422,14 @@ reset_features (void)
 {
   int i;
 
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (numcasedefault), TRUE);
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (numspacedefault), TRUE);
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (fractiondefault), TRUE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (numcasedefault), TRUE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (numspacedefault), TRUE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (fractiondefault), TRUE);
   for (i = 0; i < num_features; i++)
     {
-      if (!GTK_IS_RADIO_BUTTON (toggle[i]))
+      if (!CTK_IS_RADIO_BUTTON (toggle[i]))
         {
-          ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (toggle[i]), FALSE);
+          ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (toggle[i]), FALSE);
           ctk_widget_set_sensitive (toggle[i], FALSE);
         }
     }
@@ -440,8 +440,8 @@ static char *text;
 static void
 switch_to_entry (void)
 {
-  text = g_strdup (ctk_entry_get_text (GTK_ENTRY (entry)));
-  ctk_stack_set_visible_child_name (GTK_STACK (stack), "entry");
+  text = g_strdup (ctk_entry_get_text (CTK_ENTRY (entry)));
+  ctk_stack_set_visible_child_name (CTK_STACK (stack), "entry");
 }
 
 static void
@@ -449,7 +449,7 @@ switch_to_label (void)
 {
   g_free (text);
   text = NULL;
-  ctk_stack_set_visible_child_name (GTK_STACK (stack), "label");
+  ctk_stack_set_visible_child_name (CTK_STACK (stack), "label");
   update_display ();
 }
 
@@ -458,7 +458,7 @@ entry_key_press (GtkEntry *entry, GdkEventKey *event)
 {
   if (event->keyval == GDK_KEY_Escape)
     {
-      ctk_entry_set_text (GTK_ENTRY (entry), text);
+      ctk_entry_set_text (CTK_ENTRY (entry), text);
       switch_to_label ();
       return GDK_EVENT_STOP;
     }
@@ -487,25 +487,25 @@ do_font_features (GtkWidget *do_widget)
       ctk_builder_add_callback_symbol (builder, "entry_key_press", G_CALLBACK (entry_key_press));
       ctk_builder_connect_signals (builder, NULL);
 
-      window = GTK_WIDGET (ctk_builder_get_object (builder, "window"));
-      label = GTK_WIDGET (ctk_builder_get_object (builder, "label"));
-      settings = GTK_WIDGET (ctk_builder_get_object (builder, "settings"));
-      resetbutton = GTK_WIDGET (ctk_builder_get_object (builder, "reset"));
-      font = GTK_WIDGET (ctk_builder_get_object (builder, "font"));
-      script_lang = GTK_WIDGET (ctk_builder_get_object (builder, "script_lang"));
-      numcasedefault = GTK_WIDGET (ctk_builder_get_object (builder, "numcasedefault"));
-      numspacedefault = GTK_WIDGET (ctk_builder_get_object (builder, "numspacedefault"));
-      fractiondefault = GTK_WIDGET (ctk_builder_get_object (builder, "fractiondefault"));
-      stack = GTK_WIDGET (ctk_builder_get_object (builder, "stack"));
-      entry = GTK_WIDGET (ctk_builder_get_object (builder, "entry"));
+      window = CTK_WIDGET (ctk_builder_get_object (builder, "window"));
+      label = CTK_WIDGET (ctk_builder_get_object (builder, "label"));
+      settings = CTK_WIDGET (ctk_builder_get_object (builder, "settings"));
+      resetbutton = CTK_WIDGET (ctk_builder_get_object (builder, "reset"));
+      font = CTK_WIDGET (ctk_builder_get_object (builder, "font"));
+      script_lang = CTK_WIDGET (ctk_builder_get_object (builder, "script_lang"));
+      numcasedefault = CTK_WIDGET (ctk_builder_get_object (builder, "numcasedefault"));
+      numspacedefault = CTK_WIDGET (ctk_builder_get_object (builder, "numspacedefault"));
+      fractiondefault = CTK_WIDGET (ctk_builder_get_object (builder, "fractiondefault"));
+      stack = CTK_WIDGET (ctk_builder_get_object (builder, "stack"));
+      entry = CTK_WIDGET (ctk_builder_get_object (builder, "entry"));
 
       for (i = 0; i < num_features; i++)
         {
           char *iname;
 
-          toggle[i] = GTK_WIDGET (ctk_builder_get_object (builder, feature_names[i]));
+          toggle[i] = CTK_WIDGET (ctk_builder_get_object (builder, feature_names[i]));
           iname = g_strconcat (feature_names[i], "_pres", NULL);
-          icon[i] = GTK_WIDGET (ctk_builder_get_object (builder, iname));
+          icon[i] = CTK_WIDGET (ctk_builder_get_object (builder, iname));
           g_free (iname);
         }
 
@@ -518,7 +518,7 @@ do_font_features (GtkWidget *do_widget)
     }
 
   if (!ctk_widget_get_visible (window))
-    ctk_window_present (GTK_WINDOW (window));
+    ctk_window_present (CTK_WINDOW (window));
   else
     ctk_widget_destroy (window);
 

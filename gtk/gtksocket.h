@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_SOCKET_H__
-#define __GTK_SOCKET_H__
+#ifndef __CTK_SOCKET_H__
+#define __CTK_SOCKET_H__
 
-#if !defined (__GTKX_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__GTKX_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtkx.h> can be included directly."
 #endif
 
@@ -37,12 +37,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SOCKET            (ctk_socket_get_type ())
-#define GTK_SOCKET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SOCKET, GtkSocket))
-#define GTK_SOCKET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SOCKET, GtkSocketClass))
-#define GTK_IS_SOCKET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SOCKET))
-#define GTK_IS_SOCKET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SOCKET))
-#define GTK_SOCKET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SOCKET, GtkSocketClass))
+#define CTK_TYPE_SOCKET            (ctk_socket_get_type ())
+#define CTK_SOCKET(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SOCKET, GtkSocket))
+#define CTK_SOCKET_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SOCKET, GtkSocketClass))
+#define CTK_IS_SOCKET(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SOCKET))
+#define CTK_IS_SOCKET_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SOCKET))
+#define CTK_SOCKET_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SOCKET, GtkSocketClass))
 
 
 typedef struct _GtkSocket        GtkSocket;
@@ -86,4 +86,4 @@ G_END_DECLS
 
 #endif /* GDK_WINDOWING_X11 */
 
-#endif /* __GTK_SOCKET_H__ */
+#endif /* __CTK_SOCKET_H__ */

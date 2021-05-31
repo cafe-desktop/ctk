@@ -71,7 +71,7 @@ _ctk_mnemonic_hash_add (GtkMnemonicHash *mnemonic_hash,
   gpointer key = GUINT_TO_POINTER (keyval);
   GSList *targets, *new_targets;
   
-  g_return_if_fail (GTK_IS_WIDGET (target));
+  g_return_if_fail (CTK_IS_WIDGET (target));
   
   targets = g_hash_table_lookup (mnemonic_hash->hash, key);
   g_return_if_fail (g_slist_find (targets, target) == NULL);
@@ -89,7 +89,7 @@ _ctk_mnemonic_hash_remove (GtkMnemonicHash *mnemonic_hash,
   gpointer key = GUINT_TO_POINTER (keyval);
   GSList *targets, *new_targets;
   
-  g_return_if_fail (GTK_IS_WIDGET (target));
+  g_return_if_fail (CTK_IS_WIDGET (target));
   
   targets = g_hash_table_lookup (mnemonic_hash->hash, key);
 
@@ -123,7 +123,7 @@ _ctk_mnemonic_hash_activate (GtkMnemonicHash *mnemonic_hash,
   chosen_widget = NULL;
   for (list = targets; list; list = list->next)
     {
-      widget = GTK_WIDGET (list->data);
+      widget = CTK_WIDGET (list->data);
       window = ctk_widget_get_window (widget);
 
       if (ctk_widget_is_sensitive (widget) &&

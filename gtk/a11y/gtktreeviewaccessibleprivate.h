@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_VIEW_ACCESSIBLE_PRIVATE_H__
-#define __GTK_TREE_VIEW_ACCESSIBLE_PRIVATE_H__
+#ifndef __CTK_TREE_VIEW_ACCESSIBLE_PRIVATE_H__
+#define __CTK_TREE_VIEW_ACCESSIBLE_PRIVATE_H__
 
 #include <gtk/a11y/gtktreeviewaccessible.h>
 
@@ -62,4 +62,4 @@ void            _ctk_tree_view_accessible_remove_state  (GtkTreeView       *tree
 
 G_END_DECLS
 
-#endif /* __GTK_TREE_VIEW_ACCESSIBLE_PRIVATE_H__ */
+#endif /* __CTK_TREE_VIEW_ACCESSIBLE_PRIVATE_H__ */

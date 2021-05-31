@@ -24,9 +24,9 @@ test_9d6da33ff5c5e41e3521e1afd63d2d67bc915753 (void)
 {
   GtkWidget *window, *label;
 
-  window = ctk_window_new (GTK_WINDOW_POPUP);
+  window = ctk_window_new (CTK_WINDOW_POPUP);
   label = ctk_label_new ("I am sensitive.");
-  ctk_container_add (GTK_CONTAINER (window), label);
+  ctk_container_add (CTK_CONTAINER (window), label);
 
   ctk_widget_set_sensitive (label, FALSE);
   ctk_widget_set_sensitive (window, FALSE);
@@ -43,9 +43,9 @@ test_94f00eb04dd1433cf1cc9a3341f485124e38abd1 (void)
 {
   GtkWidget *window, *label;
 
-  window = ctk_window_new (GTK_WINDOW_POPUP);
+  window = ctk_window_new (CTK_WINDOW_POPUP);
   label = ctk_label_new ("I am insensitive.");
-  ctk_container_add (GTK_CONTAINER (window), label);
+  ctk_container_add (CTK_CONTAINER (window), label);
 
   ctk_widget_set_sensitive (window, FALSE);
   ctk_widget_set_sensitive (label, FALSE);

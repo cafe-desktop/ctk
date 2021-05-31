@@ -38,9 +38,9 @@ dialog_response (GtkDialog *d,
 
   g_print ("Response: %d\n", response_id);
 
-  if (response_id == GTK_RESPONSE_OK)
+  if (response_id == CTK_RESPONSE_OK)
     {
-      app_info = ctk_app_chooser_get_app_info (GTK_APP_CHOOSER (d));
+      app_info = ctk_app_chooser_get_app_info (CTK_APP_CHOOSER (d));
       if (app_info)
         {
           name = g_app_info_get_name (app_info);
@@ -51,7 +51,7 @@ dialog_response (GtkDialog *d,
         g_print ("No application selected\n");
     }
 
-  ctk_widget_destroy (GTK_WIDGET (d));
+  ctk_widget_destroy (CTK_WIDGET (d));
   dialog = NULL;
 }
 
@@ -81,14 +81,14 @@ prepare_dialog (void)
   gboolean use_file = FALSE;
   gchar *content_type = NULL;
 
-  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (radio_file)))
+  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (radio_file)))
     use_file = TRUE;
-  else if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (radio_content)))
+  else if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (radio_content)))
     use_file = FALSE;
 
   if (use_file)
     {
-      dialog = ctk_app_chooser_dialog_new (GTK_WINDOW (toplevel), 0, file);
+      dialog = ctk_app_chooser_dialog_new (CTK_WINDOW (toplevel), 0, file);
     }
   else
     {
@@ -101,18 +101,18 @@ prepare_dialog (void)
 
       g_object_unref (info);
 
-      dialog = ctk_app_chooser_dialog_new_for_content_type (GTK_WINDOW (toplevel),
+      dialog = ctk_app_chooser_dialog_new_for_content_type (CTK_WINDOW (toplevel),
                                                             0, content_type);
     }
 
-  ctk_app_chooser_dialog_set_heading (GTK_APP_CHOOSER_DIALOG (dialog), "Select one already, you <i>fool</i>");
+  ctk_app_chooser_dialog_set_heading (CTK_APP_CHOOSER_DIALOG (dialog), "Select one already, you <i>fool</i>");
 
   g_signal_connect (dialog, "response",
                     G_CALLBACK (dialog_response), NULL);
 
   g_free (content_type);
 
-  app_chooser_widget = ctk_app_chooser_dialog_get_widget (GTK_APP_CHOOSER_DIALOG (dialog));
+  app_chooser_widget = ctk_app_chooser_dialog_get_widget (CTK_APP_CHOOSER_DIALOG (dialog));
   bind_props ();
 }
 
@@ -133,16 +133,16 @@ button_clicked (GtkButton *b,
   gchar *path;
 
   w = ctk_file_chooser_dialog_new ("Select file",
-                                   GTK_WINDOW (toplevel),
-                                   GTK_FILE_CHOOSER_ACTION_OPEN,
-                                   "_Cancel", GTK_RESPONSE_CANCEL,
-                                   "_Open", GTK_RESPONSE_ACCEPT,
+                                   CTK_WINDOW (toplevel),
+                                   CTK_FILE_CHOOSER_ACTION_OPEN,
+                                   "_Cancel", CTK_RESPONSE_CANCEL,
+                                   "_Open", CTK_RESPONSE_ACCEPT,
                                    NULL);
 
-  ctk_dialog_run (GTK_DIALOG (w));
-  file = ctk_file_chooser_get_file (GTK_FILE_CHOOSER (w));
+  ctk_dialog_run (CTK_DIALOG (w));
+  file = ctk_file_chooser_get_file (CTK_FILE_CHOOSER (w));
   path = g_file_get_path (file);
-  ctk_button_set_label (GTK_BUTTON (file_l), path);
+  ctk_button_set_label (CTK_BUTTON (file_l), path);
 
   ctk_widget_destroy (w);
 
@@ -159,67 +159,67 @@ main (int argc, char **argv)
 
   ctk_init (&argc, &argv);
 
-  toplevel = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_container_set_border_width (GTK_CONTAINER (toplevel), 12);
+  toplevel = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_container_set_border_width (CTK_CONTAINER (toplevel), 12);
   grid = ctk_grid_new ();
 
   w1 = ctk_label_new ("File:");
-  ctk_widget_set_halign (w1, GTK_ALIGN_START);
-  ctk_grid_attach (GTK_GRID (grid),
+  ctk_widget_set_halign (w1, CTK_ALIGN_START);
+  ctk_grid_attach (CTK_GRID (grid),
                    w1, 0, 0, 1, 1);
 
   file_l = ctk_button_new ();
   path = g_build_filename (g_get_current_dir (), "apple-red.png", NULL);
   file = g_file_new_for_path (path);
-  ctk_button_set_label (GTK_BUTTON (file_l), path);
+  ctk_button_set_label (CTK_BUTTON (file_l), path);
   g_free (path);
 
-  ctk_widget_set_halign (file_l, GTK_ALIGN_START);
-  ctk_grid_attach_next_to (GTK_GRID (grid), file_l,
-                           w1, GTK_POS_RIGHT, 3, 1);
+  ctk_widget_set_halign (file_l, CTK_ALIGN_START);
+  ctk_grid_attach_next_to (CTK_GRID (grid), file_l,
+                           w1, CTK_POS_RIGHT, 3, 1);
   g_signal_connect (file_l, "clicked",
                     G_CALLBACK (button_clicked), NULL);
 
   radio_file = ctk_radio_button_new_with_label (NULL, "Use GFile");
-  radio_content = ctk_radio_button_new_with_label_from_widget (GTK_RADIO_BUTTON (radio_file),
+  radio_content = ctk_radio_button_new_with_label_from_widget (CTK_RADIO_BUTTON (radio_file),
                                                                "Use content type");
 
-  ctk_grid_attach (GTK_GRID (grid), radio_file,
+  ctk_grid_attach (CTK_GRID (grid), radio_file,
                    0, 1, 1, 1);
-  ctk_grid_attach_next_to (GTK_GRID (grid), radio_content,
-                           radio_file, GTK_POS_BOTTOM, 1, 1);
+  ctk_grid_attach_next_to (CTK_GRID (grid), radio_content,
+                           radio_file, CTK_POS_BOTTOM, 1, 1);
 
   open = ctk_button_new_with_label ("Trigger App Chooser dialog");
-  ctk_grid_attach_next_to (GTK_GRID (grid), open,
-                           radio_content, GTK_POS_BOTTOM, 1, 1);
+  ctk_grid_attach_next_to (CTK_GRID (grid), open,
+                           radio_content, CTK_POS_BOTTOM, 1, 1);
 
   recommended = ctk_check_button_new_with_label ("Show recommended");
-  ctk_grid_attach_next_to (GTK_GRID (grid), recommended,
-                           open, GTK_POS_BOTTOM, 1, 1);
+  ctk_grid_attach_next_to (CTK_GRID (grid), recommended,
+                           open, CTK_POS_BOTTOM, 1, 1);
   g_object_set (recommended, "active", TRUE, NULL);
 
   fallback = ctk_check_button_new_with_label ("Show fallback");
-  ctk_grid_attach_next_to (GTK_GRID (grid), fallback,
-                           recommended, GTK_POS_RIGHT, 1, 1);
+  ctk_grid_attach_next_to (CTK_GRID (grid), fallback,
+                           recommended, CTK_POS_RIGHT, 1, 1);
 
   other = ctk_check_button_new_with_label ("Show other");
-  ctk_grid_attach_next_to (GTK_GRID (grid), other,
-                           fallback, GTK_POS_RIGHT, 1, 1);
+  ctk_grid_attach_next_to (CTK_GRID (grid), other,
+                           fallback, CTK_POS_RIGHT, 1, 1);
 
   all = ctk_check_button_new_with_label ("Show all");
-  ctk_grid_attach_next_to (GTK_GRID (grid), all,
-                           other, GTK_POS_RIGHT, 1, 1);
+  ctk_grid_attach_next_to (CTK_GRID (grid), all,
+                           other, CTK_POS_RIGHT, 1, 1);
 
   def = ctk_check_button_new_with_label ("Show default");
-  ctk_grid_attach_next_to (GTK_GRID (grid), def,
-                           all, GTK_POS_RIGHT, 1, 1);
+  ctk_grid_attach_next_to (CTK_GRID (grid), def,
+                           all, CTK_POS_RIGHT, 1, 1);
 
   g_object_set (recommended, "active", TRUE, NULL);
   prepare_dialog ();
   g_signal_connect (open, "clicked",
                     G_CALLBACK (display_dialog), NULL);
 
-  ctk_container_add (GTK_CONTAINER (toplevel), grid);
+  ctk_container_add (CTK_CONTAINER (toplevel), grid);
 
   ctk_widget_show_all (toplevel);
   g_signal_connect (toplevel, "delete-event",

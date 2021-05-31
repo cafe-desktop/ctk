@@ -19,10 +19,10 @@
  * Authors: Cosimo Cecchi <ccecchi@redhat.com>
  */
 
-#ifndef __GTK_APP_CHOOSER_BUTTON_H__
-#define __GTK_APP_CHOOSER_BUTTON_H__
+#ifndef __CTK_APP_CHOOSER_BUTTON_H__
+#define __CTK_APP_CHOOSER_BUTTON_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_APP_CHOOSER_BUTTON            (ctk_app_chooser_button_get_type ())
-#define GTK_APP_CHOOSER_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_APP_CHOOSER_BUTTON, GtkAppChooserButton))
-#define GTK_APP_CHOOSER_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_APP_CHOOSER_BUTTON, GtkAppChooserButtonClass))
-#define GTK_IS_APP_CHOOSER_BUTTON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_APP_CHOOSER_BUTTON))
-#define GTK_IS_APP_CHOOSER_BUTTON_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_APP_CHOOSER_BUTTON))
-#define GTK_APP_CHOOSER_BUTTON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_APP_CHOOSER_BUTTON, GtkAppChooserButtonClass))
+#define CTK_TYPE_APP_CHOOSER_BUTTON            (ctk_app_chooser_button_get_type ())
+#define CTK_APP_CHOOSER_BUTTON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_APP_CHOOSER_BUTTON, GtkAppChooserButton))
+#define CTK_APP_CHOOSER_BUTTON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_APP_CHOOSER_BUTTON, GtkAppChooserButtonClass))
+#define CTK_IS_APP_CHOOSER_BUTTON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_APP_CHOOSER_BUTTON))
+#define CTK_IS_APP_CHOOSER_BUTTON_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_APP_CHOOSER_BUTTON))
+#define CTK_APP_CHOOSER_BUTTON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_APP_CHOOSER_BUTTON, GtkAppChooserButtonClass))
 
 typedef struct _GtkAppChooserButton        GtkAppChooserButton;
 typedef struct _GtkAppChooserButtonClass   GtkAppChooserButtonClass;
@@ -106,4 +106,4 @@ gboolean ctk_app_chooser_button_get_show_default_item (GtkAppChooserButton *self
 
 G_END_DECLS
 
-#endif /* __GTK_APP_CHOOSER_BUTTON_H__ */
+#endif /* __CTK_APP_CHOOSER_BUTTON_H__ */

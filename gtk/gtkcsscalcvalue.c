@@ -22,7 +22,7 @@
 #include <string.h>
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   gsize                 n_terms;
   GtkCssValue *         terms[1];
 };
@@ -185,10 +185,10 @@ ctk_css_value_calc_get (const GtkCssValue *value,
 static GtkCssDimension
 ctk_css_value_calc_get_dimension (const GtkCssValue *value)
 {
-  GtkCssDimension dimension = GTK_CSS_DIMENSION_PERCENTAGE;
+  GtkCssDimension dimension = CTK_CSS_DIMENSION_PERCENTAGE;
   gsize i;
 
-  for (i = 0; i < value->n_terms && dimension == GTK_CSS_DIMENSION_PERCENTAGE; i++)
+  for (i = 0; i < value->n_terms && dimension == CTK_CSS_DIMENSION_PERCENTAGE; i++)
     {
       dimension = ctk_css_number_value_get_dimension (value->terms[i]);
     }
@@ -243,7 +243,7 @@ ctk_css_value_calc_get_calc_term_order (const GtkCssValue *value)
   return 0;
 }
 
-static const GtkCssNumberValueClass GTK_CSS_VALUE_CALC = {
+static const GtkCssNumberValueClass CTK_CSS_VALUE_CALC = {
   {
     ctk_css_value_calc_free,
     ctk_css_value_calc_compute,
@@ -264,7 +264,7 @@ ctk_css_calc_value_new (gsize n_terms)
 {
   GtkCssValue *result;
 
-  result = _ctk_css_value_alloc (&GTK_CSS_VALUE_CALC.value_class,
+  result = _ctk_css_value_alloc (&CTK_CSS_VALUE_CALC.value_class,
                                  ctk_css_value_calc_get_size (n_terms));
   result->n_terms = n_terms;
 
@@ -280,7 +280,7 @@ ctk_css_calc_value_new_sum (GtkCssValue *value1,
 
   array = g_ptr_array_new ();
 
-  if (value1->class == &GTK_CSS_VALUE_CALC.value_class)
+  if (value1->class == &CTK_CSS_VALUE_CALC.value_class)
     {
       for (i = 0; i < value1->n_terms; i++)
         {
@@ -292,7 +292,7 @@ ctk_css_calc_value_new_sum (GtkCssValue *value1,
       ctk_css_calc_array_add (array, _ctk_css_value_ref (value1));
     }
 
-  if (value2->class == &GTK_CSS_VALUE_CALC.value_class)
+  if (value2->class == &CTK_CSS_VALUE_CALC.value_class)
     {
       for (i = 0; i < value2->n_terms; i++)
         {
@@ -342,7 +342,7 @@ ctk_css_calc_value_parse_value (GtkCssParser           *parser,
 static gboolean
 is_number (GtkCssValue *value)
 {
-  return ctk_css_number_value_get_dimension (value) == GTK_CSS_DIMENSION_NUMBER
+  return ctk_css_number_value_get_dimension (value) == CTK_CSS_DIMENSION_NUMBER
       && !ctk_css_number_value_has_percent (value);
 }
 
@@ -353,7 +353,7 @@ ctk_css_calc_value_parse_product (GtkCssParser           *parser,
   GtkCssValue *result, *value, *temp;
   GtkCssNumberParseFlags actual_flags;
 
-  actual_flags = flags | GTK_CSS_PARSE_NUMBER;
+  actual_flags = flags | CTK_CSS_PARSE_NUMBER;
 
   result = ctk_css_calc_value_parse_value (parser, actual_flags);
   if (result == NULL)
@@ -361,8 +361,8 @@ ctk_css_calc_value_parse_product (GtkCssParser           *parser,
 
   while (_ctk_css_parser_begins_with (parser, '*') || _ctk_css_parser_begins_with (parser, '/'))
     {
-      if (actual_flags != GTK_CSS_PARSE_NUMBER && !is_number (result))
-        actual_flags = GTK_CSS_PARSE_NUMBER;
+      if (actual_flags != CTK_CSS_PARSE_NUMBER && !is_number (result))
+        actual_flags = CTK_CSS_PARSE_NUMBER;
 
       if (_ctk_css_parser_try (parser, "*", TRUE))
         {
@@ -379,7 +379,7 @@ ctk_css_calc_value_parse_product (GtkCssParser           *parser,
         }
       else if (_ctk_css_parser_try (parser, "/", TRUE))
         {
-          value = ctk_css_calc_value_parse_product (parser, GTK_CSS_PARSE_NUMBER);
+          value = ctk_css_calc_value_parse_product (parser, CTK_CSS_PARSE_NUMBER);
           if (value == NULL)
             goto fail;
           temp = ctk_css_number_value_multiply (result, 1.0 / _ctk_css_number_value_get (value, 100));
@@ -394,7 +394,7 @@ ctk_css_calc_value_parse_product (GtkCssParser           *parser,
         }
     }
 
-  if (is_number (result) && !(flags & GTK_CSS_PARSE_NUMBER))
+  if (is_number (result) && !(flags & CTK_CSS_PARSE_NUMBER))
     {
       _ctk_css_parser_error (parser, "calc() product term has no units");
       goto fail;
@@ -461,9 +461,9 @@ ctk_css_calc_value_parse (GtkCssParser           *parser,
   GtkCssValue *value;
 
   /* This confuses '*' and '/' so we disallow backwards compat. */
-  flags &= ~GTK_CSS_NUMBER_AS_PIXELS;
+  flags &= ~CTK_CSS_NUMBER_AS_PIXELS;
   /* This can only be handled at compute time, we allow '-' after all */
-  flags &= ~GTK_CSS_POSITIVE_ONLY;
+  flags &= ~CTK_CSS_POSITIVE_ONLY;
 
   if (!_ctk_css_parser_try (parser, "calc(", TRUE))
     {

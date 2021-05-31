@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TOOLTIP_WINDOW_PRIVATE_H__
-#define __GTK_TOOLTIP_WINDOW_PRIVATE_H__
+#ifndef __CTK_TOOLTIP_WINDOW_PRIVATE_H__
+#define __CTK_TOOLTIP_WINDOW_PRIVATE_H__
 
 #include <gio/gio.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
@@ -31,7 +31,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOOLTIP_WINDOW (ctk_tooltip_window_get_type ())
+#define CTK_TYPE_TOOLTIP_WINDOW (ctk_tooltip_window_get_type ())
 
 G_DECLARE_FINAL_TYPE (GtkTooltipWindow, ctk_tooltip_window, GTK, TOOLTIP_WINDOW, GtkWindow)
 
@@ -57,4 +57,4 @@ void            ctk_tooltip_window_set_custom_widget            (GtkTooltipWindo
 
 G_END_DECLS
 
-#endif /* __GTK_TOOLTIP_WINDOW_PRIVATE_H__ */
+#endif /* __CTK_TOOLTIP_WINDOW_PRIVATE_H__ */

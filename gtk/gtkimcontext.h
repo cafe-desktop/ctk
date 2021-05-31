@@ -15,11 +15,11 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_IM_CONTEXT_H__
-#define __GTK_IM_CONTEXT_H__
+#ifndef __CTK_IM_CONTEXT_H__
+#define __CTK_IM_CONTEXT_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,12 +28,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_IM_CONTEXT              (ctk_im_context_get_type ())
-#define GTK_IM_CONTEXT(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_IM_CONTEXT, GtkIMContext))
-#define GTK_IM_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_IM_CONTEXT, GtkIMContextClass))
-#define GTK_IS_IM_CONTEXT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_IM_CONTEXT))
-#define GTK_IS_IM_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_IM_CONTEXT))
-#define GTK_IM_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_IM_CONTEXT, GtkIMContextClass))
+#define CTK_TYPE_IM_CONTEXT              (ctk_im_context_get_type ())
+#define CTK_IM_CONTEXT(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT, GtkIMContext))
+#define CTK_IM_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT, GtkIMContextClass))
+#define CTK_IS_IM_CONTEXT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IM_CONTEXT))
+#define CTK_IS_IM_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IM_CONTEXT))
+#define CTK_IM_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT, GtkIMContextClass))
 
 
 typedef struct _GtkIMContext       GtkIMContext;
@@ -135,4 +135,4 @@ gboolean ctk_im_context_delete_surrounding  (GtkIMContext       *context,
 
 G_END_DECLS
 
-#endif /* __GTK_IM_CONTEXT_H__ */
+#endif /* __CTK_IM_CONTEXT_H__ */

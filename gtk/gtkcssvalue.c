@@ -24,7 +24,7 @@
 #include "gtkstyleproviderprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
 };
 
 G_DEFINE_BOXED_TYPE (GtkCssValue, _ctk_css_value, _ctk_css_value_ref, _ctk_css_value_unref)
@@ -90,9 +90,9 @@ _ctk_css_value_compute (GtkCssValue             *value,
 {
 
   ctk_internal_return_val_if_fail (value != NULL, NULL);
-  ctk_internal_return_val_if_fail (GTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
-  ctk_internal_return_val_if_fail (parent_style == NULL || GTK_IS_CSS_STYLE (parent_style), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
+  ctk_internal_return_val_if_fail (parent_style == NULL || CTK_IS_CSS_STYLE (parent_style), NULL);
 
   return value->class->compute (value, property_id, provider, style, parent_style);
 }

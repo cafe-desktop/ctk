@@ -17,18 +17,18 @@
  * Author: Ryan Lortie <desrt@desrt.ca>
  */
 
-#ifndef __GTK_ACTION_MUXER_H__
-#define __GTK_ACTION_MUXER_H__
+#ifndef __CTK_ACTION_MUXER_H__
+#define __CTK_ACTION_MUXER_H__
 
 #include <gio/gio.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTION_MUXER                               (ctk_action_muxer_get_type ())
-#define GTK_ACTION_MUXER(inst)                              (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
-                                                             GTK_TYPE_ACTION_MUXER, GtkActionMuxer))
-#define GTK_IS_ACTION_MUXER(inst)                           (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
-                                                             GTK_TYPE_ACTION_MUXER))
+#define CTK_TYPE_ACTION_MUXER                               (ctk_action_muxer_get_type ())
+#define CTK_ACTION_MUXER(inst)                              (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
+                                                             CTK_TYPE_ACTION_MUXER, GtkActionMuxer))
+#define CTK_IS_ACTION_MUXER(inst)                           (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
+                                                             CTK_TYPE_ACTION_MUXER))
 
 typedef struct _GtkActionMuxer                              GtkActionMuxer;
 
@@ -65,4 +65,4 @@ gchar *                 ctk_normalise_detailed_action_name              (const g
 
 G_END_DECLS
 
-#endif /* __GTK_ACTION_MUXER_H__ */
+#endif /* __CTK_ACTION_MUXER_H__ */

@@ -97,7 +97,7 @@ _ctk_rbtree_test_height (GtkRBTree *tree,
   if (node->children && !_ctk_rbtree_is_nil (node->children->root))
     computed_offset += node->children->root->offset;
 
-  if (GTK_RBNODE_GET_HEIGHT (node) + computed_offset != node->offset)
+  if (CTK_RBNODE_GET_HEIGHT (node) + computed_offset != node->offset)
     g_error ("node has broken offset");
 
   if (!_ctk_rbtree_is_nil (node->left))
@@ -118,30 +118,30 @@ _ctk_rbtree_test_dirty (GtkRBTree *tree,
 
   if (expected_dirtyness)
     {
-      g_assert (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_COLUMN_INVALID) ||
-		GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID) ||
-		GTK_RBNODE_FLAG_SET (node->left, GTK_RBNODE_DESCENDANTS_INVALID) ||
-		GTK_RBNODE_FLAG_SET (node->right, GTK_RBNODE_DESCENDANTS_INVALID) ||
-		(node->children && GTK_RBNODE_FLAG_SET (node->children->root, GTK_RBNODE_DESCENDANTS_INVALID)));
+      g_assert (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_COLUMN_INVALID) ||
+		CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID) ||
+		CTK_RBNODE_FLAG_SET (node->left, CTK_RBNODE_DESCENDANTS_INVALID) ||
+		CTK_RBNODE_FLAG_SET (node->right, CTK_RBNODE_DESCENDANTS_INVALID) ||
+		(node->children && CTK_RBNODE_FLAG_SET (node->children->root, CTK_RBNODE_DESCENDANTS_INVALID)));
     }
   else
     {
-      g_assert (! GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_COLUMN_INVALID) &&
-		! GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID));
+      g_assert (! CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_COLUMN_INVALID) &&
+		! CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID));
       if (!_ctk_rbtree_is_nil (node->left))
-	g_assert (! GTK_RBNODE_FLAG_SET (node->left, GTK_RBNODE_DESCENDANTS_INVALID));
+	g_assert (! CTK_RBNODE_FLAG_SET (node->left, CTK_RBNODE_DESCENDANTS_INVALID));
       if (!_ctk_rbtree_is_nil (node->right))
-	g_assert (! GTK_RBNODE_FLAG_SET (node->right, GTK_RBNODE_DESCENDANTS_INVALID));
+	g_assert (! CTK_RBNODE_FLAG_SET (node->right, CTK_RBNODE_DESCENDANTS_INVALID));
       if (node->children != NULL)
-	g_assert (! GTK_RBNODE_FLAG_SET (node->children->root, GTK_RBNODE_DESCENDANTS_INVALID));
+	g_assert (! CTK_RBNODE_FLAG_SET (node->children->root, CTK_RBNODE_DESCENDANTS_INVALID));
     }
 
   if (!_ctk_rbtree_is_nil (node->left))
-    _ctk_rbtree_test_dirty (tree, node->left, GTK_RBNODE_FLAG_SET (node->left, GTK_RBNODE_DESCENDANTS_INVALID));
+    _ctk_rbtree_test_dirty (tree, node->left, CTK_RBNODE_FLAG_SET (node->left, CTK_RBNODE_DESCENDANTS_INVALID));
   if (!_ctk_rbtree_is_nil (node->right))
-    _ctk_rbtree_test_dirty (tree, node->right, GTK_RBNODE_FLAG_SET (node->right, GTK_RBNODE_DESCENDANTS_INVALID));
+    _ctk_rbtree_test_dirty (tree, node->right, CTK_RBNODE_FLAG_SET (node->right, CTK_RBNODE_DESCENDANTS_INVALID));
   if (node->children != NULL && !_ctk_rbtree_is_nil (node->children->root))
-    _ctk_rbtree_test_dirty (node->children, node->children->root, GTK_RBNODE_FLAG_SET (node->children->root, GTK_RBNODE_DESCENDANTS_INVALID));
+    _ctk_rbtree_test_dirty (node->children, node->children->root, CTK_RBNODE_FLAG_SET (node->children->root, CTK_RBNODE_DESCENDANTS_INVALID));
 }
 
 static void _ctk_rbtree_test_structure (GtkRBTree *tree);
@@ -184,7 +184,7 @@ _ctk_rbtree_test_structure_helper (GtkRBTree *tree,
 
   g_assert (left_blacks == right_blacks);
 
-  return left_blacks + (GTK_RBNODE_GET_COLOR (node) == GTK_RBNODE_BLACK ? 1 : 0);
+  return left_blacks + (CTK_RBNODE_GET_COLOR (node) == CTK_RBNODE_BLACK ? 1 : 0);
 }
 
 static void
@@ -220,7 +220,7 @@ _ctk_rbtree_test (GtkRBTree *tree)
 	     _count_nodes (tmp_tree, tmp_tree->root->right) + 1) == tmp_tree->root->count);
       
   _ctk_rbtree_test_height (tmp_tree, tmp_tree->root);
-  _ctk_rbtree_test_dirty (tmp_tree, tmp_tree->root, GTK_RBNODE_FLAG_SET (tmp_tree->root, GTK_RBNODE_DESCENDANTS_INVALID));
+  _ctk_rbtree_test_dirty (tmp_tree, tmp_tree->root, CTK_RBNODE_FLAG_SET (tmp_tree->root, CTK_RBNODE_DESCENDANTS_INVALID));
   g_assert (count_total (tmp_tree, tmp_tree->root) == tmp_tree->root->total_count);
 }
 
@@ -237,12 +237,12 @@ ctk_rbtree_print_node (GtkRBTree *tree,
 
   g_print ("(%p - %s) (Offset %d) (Parity %d) (Validity %d%d%d)\n",
 	   node,
-	   (GTK_RBNODE_GET_COLOR (node) == GTK_RBNODE_BLACK)?"BLACK":" RED ",
+	   (CTK_RBNODE_GET_COLOR (node) == CTK_RBNODE_BLACK)?"BLACK":" RED ",
 	   node->offset,
 	   node->total_count,
-	   (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_DESCENDANTS_INVALID))?1:0,
-	   (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID))?1:0,
-	   (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_COLUMN_INVALID))?1:0);
+	   (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_DESCENDANTS_INVALID))?1:0,
+	   (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID))?1:0,
+	   (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_COLUMN_INVALID))?1:0);
   if (node->children != NULL)
     {
       g_print ("Looking at child.\n");
@@ -500,7 +500,7 @@ test_reorder (void)
        node != NULL;
        node = _ctk_rbtree_next (tree, node), i++)
     {
-      g_assert (GTK_RBNODE_GET_HEIGHT (node) == i);
+      g_assert (CTK_RBNODE_GET_HEIGHT (node) == i);
     }
   g_assert (i == n);
 

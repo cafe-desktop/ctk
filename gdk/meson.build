@@ -175,12 +175,12 @@ gdkconfig = configure_file(
 
 
 gdkversion_cdata = configuration_data()
-gdkversion_cdata.set('GTK_MAJOR_VERSION', ctk_major_version)
-gdkversion_cdata.set('GTK_MINOR_VERSION', ctk_minor_version)
-gdkversion_cdata.set('GTK_MICRO_VERSION', ctk_micro_version)
-gdkversion_cdata.set('GTK_API_VERSION', ctk_api_version)
-gdkversion_cdata.set('GTK_BINARY_VERSION', ctk_binary_version)
-gdkversion_cdata.set('GTK_VERSION', meson.project_version())
+gdkversion_cdata.set('CTK_MAJOR_VERSION', ctk_major_version)
+gdkversion_cdata.set('CTK_MINOR_VERSION', ctk_minor_version)
+gdkversion_cdata.set('CTK_MICRO_VERSION', ctk_micro_version)
+gdkversion_cdata.set('CTK_API_VERSION', ctk_api_version)
+gdkversion_cdata.set('CTK_BINARY_VERSION', ctk_binary_version)
+gdkversion_cdata.set('CTK_VERSION', meson.project_version())
 gdkversion_cdata.set('LT_CURRENT_MINUS_AGE', ctk_soversion)
 
 gdkversionmacros = configure_file(

@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ACCESSIBILITY_H__
-#define __GTK_ACCESSIBILITY_H__
+#ifndef __CTK_ACCESSIBILITY_H__
+#define __CTK_ACCESSIBILITY_H__
 
 #include <glib.h>
 #include "gtk/gtkwidget.h"
@@ -30,4 +30,4 @@ gboolean  _ctk_accessibility_key_snooper (GtkWidget   *widget,
 
 G_END_DECLS
 
-#endif /* __GTK_ACCESSIBILITY_H__ */
+#endif /* __CTK_ACCESSIBILITY_H__ */

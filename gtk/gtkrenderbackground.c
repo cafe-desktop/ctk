@@ -64,7 +64,7 @@ _ctk_theming_background_paint_color (GtkThemingBackground *bg,
   gint n_values = _ctk_css_array_value_get_n_values (background_image);
   GtkCssArea clip = _ctk_css_area_value_get 
     (_ctk_css_array_value_get_nth 
-     (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BACKGROUND_CLIP), 
+     (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BACKGROUND_CLIP), 
       n_values - 1));
 
   _ctk_rounded_box_path (&bg->boxes[clip], cr);
@@ -78,7 +78,7 @@ _ctk_theming_background_needs_push_group (GtkCssStyle *style)
   GtkCssValue *blend_modes;
   gint i;
 
-  blend_modes = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BACKGROUND_BLEND_MODE);
+  blend_modes = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BACKGROUND_BLEND_MODE);
 
   /*
    * If we have any blend mode different than NORMAL, we'll need to
@@ -90,7 +90,7 @@ _ctk_theming_background_needs_push_group (GtkCssStyle *style)
 
       blend_mode = _ctk_css_blend_mode_value_get (_ctk_css_array_value_get_nth (blend_modes, i - 1));
 
-      if (blend_mode != GTK_CSS_BLEND_MODE_NORMAL)
+      if (blend_mode != CTK_CSS_BLEND_MODE_NORMAL)
         return TRUE;
     }
 
@@ -110,18 +110,18 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
   double image_width, image_height;
   double width, height;
 
-  pos = _ctk_css_array_value_get_nth (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BACKGROUND_POSITION), idx);
-  repeat = _ctk_css_array_value_get_nth (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BACKGROUND_REPEAT), idx);
+  pos = _ctk_css_array_value_get_nth (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BACKGROUND_POSITION), idx);
+  repeat = _ctk_css_array_value_get_nth (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BACKGROUND_REPEAT), idx);
   hrepeat = _ctk_css_background_repeat_value_get_x (repeat);
   vrepeat = _ctk_css_background_repeat_value_get_y (repeat);
   image = _ctk_css_image_value_get_image (
               _ctk_css_array_value_get_nth (
-                  ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BACKGROUND_IMAGE),
+                  ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BACKGROUND_IMAGE),
                   idx));
   origin = &bg->boxes[
                _ctk_css_area_value_get (
                    _ctk_css_array_value_get_nth (
-                       ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BACKGROUND_ORIGIN),
+                       ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BACKGROUND_ORIGIN),
                        idx))];
   width = origin->box.width;
   height = origin->box.height;
@@ -129,7 +129,7 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
   if (image == NULL || width <= 0 || height <= 0)
     return;
 
-  _ctk_css_bg_size_value_compute_size (_ctk_css_array_value_get_nth (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BACKGROUND_SIZE), idx),
+  _ctk_css_bg_size_value_compute_size (_ctk_css_array_value_get_nth (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BACKGROUND_SIZE), idx),
                                        image,
                                        width,
                                        height,
@@ -141,9 +141,9 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
 
   /* optimization */
   if (image_width == width)
-    hrepeat = GTK_CSS_REPEAT_STYLE_NO_REPEAT;
+    hrepeat = CTK_CSS_REPEAT_STYLE_NO_REPEAT;
   if (image_height == height)
-    vrepeat = GTK_CSS_REPEAT_STYLE_NO_REPEAT;
+    vrepeat = CTK_CSS_REPEAT_STYLE_NO_REPEAT;
 
 
   cairo_save (cr);
@@ -152,7 +152,7 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
       &bg->boxes[
           _ctk_css_area_value_get (
               _ctk_css_array_value_get_nth (
-                  ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BACKGROUND_CLIP),
+                  ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BACKGROUND_CLIP),
                   idx))],
       cr);
   cairo_clip (cr);
@@ -167,7 +167,7 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
     cairo_set_operator (cr, _ctk_css_blend_mode_get_operator (blend_mode));
 
 
-  if (hrepeat == GTK_CSS_REPEAT_STYLE_NO_REPEAT && vrepeat == GTK_CSS_REPEAT_STYLE_NO_REPEAT)
+  if (hrepeat == CTK_CSS_REPEAT_STYLE_NO_REPEAT && vrepeat == CTK_CSS_REPEAT_STYLE_NO_REPEAT)
     {
       cairo_translate (cr,
                        _ctk_css_position_value_get_x (pos, width - image_width),
@@ -198,24 +198,24 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
        * a third step: that other dimension is scaled so that the original
        * aspect ratio is restored. 
        */
-      if (hrepeat == GTK_CSS_REPEAT_STYLE_ROUND)
+      if (hrepeat == CTK_CSS_REPEAT_STYLE_ROUND)
         {
           double n = round (width / image_width);
 
           n = MAX (1, n);
 
-          if (vrepeat != GTK_CSS_REPEAT_STYLE_ROUND
+          if (vrepeat != CTK_CSS_REPEAT_STYLE_ROUND
               /* && vsize == auto (it is by default) */)
             image_height *= width / (image_width * n);
           image_width = width / n;
         }
-      if (vrepeat == GTK_CSS_REPEAT_STYLE_ROUND)
+      if (vrepeat == CTK_CSS_REPEAT_STYLE_ROUND)
         {
           double n = round (height / image_height);
 
           n = MAX (1, n);
 
-          if (hrepeat != GTK_CSS_REPEAT_STYLE_ROUND
+          if (hrepeat != CTK_CSS_REPEAT_STYLE_ROUND
               /* && hsize == auto (it is by default) */)
             image_width *= height / (image_height * n);
           image_height = height / n;
@@ -223,7 +223,7 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
 
       /* if hrepeat or vrepeat is 'space', we create a somewhat larger surface
        * to store the extra space. */
-      if (hrepeat == GTK_CSS_REPEAT_STYLE_SPACE)
+      if (hrepeat == CTK_CSS_REPEAT_STYLE_SPACE)
         {
           double n = floor (width / image_width);
           surface_width = n ? round (width / n) : 0;
@@ -231,7 +231,7 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
       else
         surface_width = round (image_width);
 
-      if (vrepeat == GTK_CSS_REPEAT_STYLE_SPACE)
+      if (vrepeat == CTK_CSS_REPEAT_STYLE_SPACE)
         {
           double n = floor (height / image_height);
           surface_height = n ? round (height / n) : 0;
@@ -255,7 +255,7 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
       cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
       cairo_surface_destroy (surface);
 
-      if (hrepeat == GTK_CSS_REPEAT_STYLE_NO_REPEAT)
+      if (hrepeat == CTK_CSS_REPEAT_STYLE_NO_REPEAT)
         {
           fill_rect.x = _ctk_css_position_value_get_x (pos, width - image_width);
           fill_rect.width = image_width;
@@ -266,7 +266,7 @@ _ctk_theming_background_paint_layer (GtkThemingBackground *bg,
           fill_rect.width = width;
         }
 
-      if (vrepeat == GTK_CSS_REPEAT_STYLE_NO_REPEAT)
+      if (vrepeat == CTK_CSS_REPEAT_STYLE_NO_REPEAT)
         {
           fill_rect.y = _ctk_css_position_value_get_y (pos, height - image_height);
           fill_rect.height = image_height;
@@ -300,14 +300,14 @@ _ctk_theming_background_init_style (GtkThemingBackground *bg,
 {
   GtkBorder border, padding;
 
-  border.top = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100);
-  border.right = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100);
-  border.bottom = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100);
-  border.left = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100);
-  padding.top = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_PADDING_TOP), 100);
-  padding.right = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_PADDING_RIGHT), 100);
-  padding.bottom = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_PADDING_BOTTOM), 100);
-  padding.left = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, GTK_CSS_PROPERTY_PADDING_LEFT), 100);
+  border.top = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BORDER_TOP_WIDTH), 100);
+  border.right = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH), 100);
+  border.bottom = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH), 100);
+  border.left = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_BORDER_LEFT_WIDTH), 100);
+  padding.top = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_PADDING_TOP), 100);
+  padding.right = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_PADDING_RIGHT), 100);
+  padding.bottom = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_PADDING_BOTTOM), 100);
+  padding.left = _ctk_css_number_value_get (ctk_css_style_get_value (bg->style, CTK_CSS_PROPERTY_PADDING_LEFT), 100);
 
   /* In the CSS box model, by default the background positioning area is
    * the padding-box, i.e. all the border-box minus the borders themselves,
@@ -317,16 +317,16 @@ _ctk_theming_background_init_style (GtkThemingBackground *bg,
    * In the future we might want to support different origins or clips, but
    * right now we just shrink to the default.
    */
-  _ctk_rounded_box_init_rect (&bg->boxes[GTK_CSS_AREA_BORDER_BOX], 0, 0, width, height);
-  _ctk_rounded_box_apply_border_radius_for_style (&bg->boxes[GTK_CSS_AREA_BORDER_BOX], bg->style, junction);
+  _ctk_rounded_box_init_rect (&bg->boxes[CTK_CSS_AREA_BORDER_BOX], 0, 0, width, height);
+  _ctk_rounded_box_apply_border_radius_for_style (&bg->boxes[CTK_CSS_AREA_BORDER_BOX], bg->style, junction);
 
-  bg->boxes[GTK_CSS_AREA_PADDING_BOX] = bg->boxes[GTK_CSS_AREA_BORDER_BOX];
-  _ctk_rounded_box_shrink (&bg->boxes[GTK_CSS_AREA_PADDING_BOX],
+  bg->boxes[CTK_CSS_AREA_PADDING_BOX] = bg->boxes[CTK_CSS_AREA_BORDER_BOX];
+  _ctk_rounded_box_shrink (&bg->boxes[CTK_CSS_AREA_PADDING_BOX],
 			   border.top, border.right,
 			   border.bottom, border.left);
 
-  bg->boxes[GTK_CSS_AREA_CONTENT_BOX] = bg->boxes[GTK_CSS_AREA_PADDING_BOX];
-  _ctk_rounded_box_shrink (&bg->boxes[GTK_CSS_AREA_CONTENT_BOX],
+  bg->boxes[CTK_CSS_AREA_CONTENT_BOX] = bg->boxes[CTK_CSS_AREA_PADDING_BOX];
+  _ctk_rounded_box_shrink (&bg->boxes[CTK_CSS_AREA_CONTENT_BOX],
 			   padding.top, padding.right,
 			   padding.bottom, padding.left);
 }
@@ -349,10 +349,10 @@ ctk_css_style_render_background (GtkCssStyle      *style,
   gboolean needs_push_group;
   gint number_of_layers;
 
-  background_image = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BACKGROUND_IMAGE);
-  blend_modes = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BACKGROUND_BLEND_MODE);
-  bg_color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BACKGROUND_COLOR));
-  box_shadow = ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BOX_SHADOW);
+  background_image = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BACKGROUND_IMAGE);
+  blend_modes = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BACKGROUND_BLEND_MODE);
+  bg_color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BACKGROUND_COLOR));
+  box_shadow = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BOX_SHADOW);
 
   /* This is the common default case of no background */
   if (ctk_rgba_is_clear (bg_color) &&
@@ -370,7 +370,7 @@ ctk_css_style_render_background (GtkCssStyle      *style,
   /* Outset shadows */
   _ctk_css_shadows_value_paint_box (box_shadow,
                                     cr,
-                                    &bg.boxes[GTK_CSS_AREA_BORDER_BOX],
+                                    &bg.boxes[CTK_CSS_AREA_BORDER_BOX],
                                     FALSE);
 
   /*
@@ -413,7 +413,7 @@ ctk_css_style_render_background (GtkCssStyle      *style,
   /* Inset shadows */
   _ctk_css_shadows_value_paint_box (box_shadow,
                                     cr,
-                                    &bg.boxes[GTK_CSS_AREA_PADDING_BOX],
+                                    &bg.boxes[CTK_CSS_AREA_PADDING_BOX],
                                     TRUE);
 
   cairo_restore (cr);
@@ -431,11 +431,11 @@ ctk_css_style_render_background_is_opaque (GtkCssStyle *style)
 {
   const GdkRGBA *color;
 
-  color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BACKGROUND_COLOR));
+  color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BACKGROUND_COLOR));
 
   return color->alpha >= 1.0
-      && corner_value_is_right_angle (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_LEFT_RADIUS))
-      && corner_value_is_right_angle (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_TOP_RIGHT_RADIUS))
-      && corner_value_is_right_angle (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_RIGHT_RADIUS))
-      && corner_value_is_right_angle (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_BORDER_BOTTOM_LEFT_RADIUS));
+      && corner_value_is_right_angle (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_TOP_LEFT_RADIUS))
+      && corner_value_is_right_angle (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_TOP_RIGHT_RADIUS))
+      && corner_value_is_right_angle (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_BOTTOM_RIGHT_RADIUS))
+      && corner_value_is_right_angle (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BORDER_BOTTOM_LEFT_RADIUS));
 }

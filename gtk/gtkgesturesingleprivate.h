@@ -18,8 +18,8 @@
  * Author(s): Carlos Garnacho <carlosg@gnome.org>
  */
 
-#ifndef __GTK_GESTURE_SINGLE_PRIVATE_H__
-#define __GTK_GESTURE_SINGLE_PRIVATE_H__
+#ifndef __CTK_GESTURE_SINGLE_PRIVATE_H__
+#define __CTK_GESTURE_SINGLE_PRIVATE_H__
 
 #include "gtkgestureprivate.h"
 #include "gtkgesturesingle.h"
@@ -37,4 +37,4 @@ struct _GtkGestureSingleClass
   gpointer padding[10];
 };
 
-#endif /* __GTK_GESTURE_SINGLE_PRIVATE_H__ */
+#endif /* __CTK_GESTURE_SINGLE_PRIVATE_H__ */

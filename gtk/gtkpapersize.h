@@ -16,11 +16,11 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PAPER_SIZE_H__
-#define __GTK_PAPER_SIZE_H__
+#ifndef __CTK_PAPER_SIZE_H__
+#define __CTK_PAPER_SIZE_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -32,57 +32,57 @@ G_BEGIN_DECLS
 
 typedef struct _GtkPaperSize GtkPaperSize;
 
-#define GTK_TYPE_PAPER_SIZE    (ctk_paper_size_get_type ())
+#define CTK_TYPE_PAPER_SIZE    (ctk_paper_size_get_type ())
 
 /* Common names, from PWG 5101.1-2002 PWG: Standard for Media Standardized Names */
 /**
- * GTK_PAPER_NAME_A3:
+ * CTK_PAPER_NAME_A3:
  *
  * Name for the A3 paper size.
  */
-#define GTK_PAPER_NAME_A3 "iso_a3"
+#define CTK_PAPER_NAME_A3 "iso_a3"
 
 /**
- * GTK_PAPER_NAME_A4:
+ * CTK_PAPER_NAME_A4:
  *
  * Name for the A4 paper size.
  */
-#define GTK_PAPER_NAME_A4 "iso_a4"
+#define CTK_PAPER_NAME_A4 "iso_a4"
 
 /**
- * GTK_PAPER_NAME_A5:
+ * CTK_PAPER_NAME_A5:
  *
  * Name for the A5 paper size.
  */
-#define GTK_PAPER_NAME_A5 "iso_a5"
+#define CTK_PAPER_NAME_A5 "iso_a5"
 
 /**
- * GTK_PAPER_NAME_B5:
+ * CTK_PAPER_NAME_B5:
  *
  * Name for the B5 paper size.
  */
-#define GTK_PAPER_NAME_B5 "iso_b5"
+#define CTK_PAPER_NAME_B5 "iso_b5"
 
 /**
- * GTK_PAPER_NAME_LETTER:
+ * CTK_PAPER_NAME_LETTER:
  *
  * Name for the Letter paper size.
  */
-#define GTK_PAPER_NAME_LETTER "na_letter"
+#define CTK_PAPER_NAME_LETTER "na_letter"
 
 /**
- * GTK_PAPER_NAME_EXECUTIVE:
+ * CTK_PAPER_NAME_EXECUTIVE:
  *
  * Name for the Executive paper size.
  */
-#define GTK_PAPER_NAME_EXECUTIVE "na_executive"
+#define CTK_PAPER_NAME_EXECUTIVE "na_executive"
 
 /**
- * GTK_PAPER_NAME_LEGAL:
+ * CTK_PAPER_NAME_LEGAL:
  *
  * Name for the Legal paper size.
  */
-#define GTK_PAPER_NAME_LEGAL "na_legal"
+#define CTK_PAPER_NAME_LEGAL "na_legal"
 
 GDK_AVAILABLE_IN_ALL
 GType ctk_paper_size_get_type (void) G_GNUC_CONST;
@@ -171,4 +171,4 @@ GVariant     *ctk_paper_size_to_gvariant       (GtkPaperSize *paper_size);
 
 G_END_DECLS
 
-#endif /* __GTK_PAPER_SIZE_H__ */
+#endif /* __CTK_PAPER_SIZE_H__ */

@@ -8,7 +8,7 @@ struct _ExampleApp
   GtkApplication parent;
 };
 
-G_DEFINE_TYPE(ExampleApp, example_app, GTK_TYPE_APPLICATION);
+G_DEFINE_TYPE(ExampleApp, example_app, CTK_TYPE_APPLICATION);
 
 static void
 example_app_init (ExampleApp *app)
@@ -21,7 +21,7 @@ example_app_activate (GApplication *app)
   ExampleAppWindow *win;
 
   win = example_app_window_new (EXAMPLE_APP (app));
-  ctk_window_present (GTK_WINDOW (win));
+  ctk_window_present (CTK_WINDOW (win));
 }
 
 static void
@@ -34,7 +34,7 @@ example_app_open (GApplication  *app,
   ExampleAppWindow *win;
   int i;
 
-  windows = ctk_application_get_windows (GTK_APPLICATION (app));
+  windows = ctk_application_get_windows (CTK_APPLICATION (app));
   if (windows)
     win = EXAMPLE_APP_WINDOW (windows->data);
   else
@@ -43,7 +43,7 @@ example_app_open (GApplication  *app,
   for (i = 0; i < n_files; i++)
     example_app_window_open (win, files[i]);
 
-  ctk_window_present (GTK_WINDOW (win));
+  ctk_window_present (CTK_WINDOW (win));
 }
 
 static void

@@ -113,15 +113,15 @@ static GtkPageOrientation
 orientation_from_win32 (short orientation)
 {
   if (orientation == DMORIENT_LANDSCAPE)
-    return GTK_PAGE_ORIENTATION_LANDSCAPE;
-  return GTK_PAGE_ORIENTATION_PORTRAIT;
+    return CTK_PAGE_ORIENTATION_LANDSCAPE;
+  return CTK_PAGE_ORIENTATION_PORTRAIT;
 }
 
 static short
 orientation_to_win32 (GtkPageOrientation orientation)
 {
-  if (orientation == GTK_PAGE_ORIENTATION_LANDSCAPE ||
-      orientation == GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE)
+  if (orientation == CTK_PAGE_ORIENTATION_LANDSCAPE ||
+      orientation == CTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE)
     return DMORIENT_LANDSCAPE;
   return DMORIENT_PORTRAIT;
 }
@@ -426,10 +426,10 @@ page_setup_is_equal (GtkPageSetup *a,
   return
     ctk_paper_size_is_equal (ctk_page_setup_get_paper_size (a),
                              ctk_page_setup_get_paper_size (b)) &&
-    ctk_page_setup_get_top_margin (a, GTK_UNIT_MM) == ctk_page_setup_get_top_margin (b, GTK_UNIT_MM) &&
-    ctk_page_setup_get_bottom_margin (a, GTK_UNIT_MM) == ctk_page_setup_get_bottom_margin (b, GTK_UNIT_MM) &&
-    ctk_page_setup_get_left_margin (a, GTK_UNIT_MM) == ctk_page_setup_get_left_margin (b, GTK_UNIT_MM) &&
-    ctk_page_setup_get_right_margin (a, GTK_UNIT_MM) == ctk_page_setup_get_right_margin (b, GTK_UNIT_MM);
+    ctk_page_setup_get_top_margin (a, CTK_UNIT_MM) == ctk_page_setup_get_top_margin (b, CTK_UNIT_MM) &&
+    ctk_page_setup_get_bottom_margin (a, CTK_UNIT_MM) == ctk_page_setup_get_bottom_margin (b, CTK_UNIT_MM) &&
+    ctk_page_setup_get_left_margin (a, CTK_UNIT_MM) == ctk_page_setup_get_left_margin (b, CTK_UNIT_MM) &&
+    ctk_page_setup_get_right_margin (a, CTK_UNIT_MM) == ctk_page_setup_get_right_margin (b, CTK_UNIT_MM);
 }
 
 static gchar*
@@ -494,8 +494,8 @@ win32_start_page (GtkPrintOperation *op,
       devmode->dmFields |= DM_PAPERWIDTH | DM_PAPERLENGTH;
 
       /* Lengths in DEVMODE are in tenths of a millimeter */
-      devmode->dmPaperWidth = ctk_paper_size_get_width (paper_size, GTK_UNIT_MM) * 10.0;
-      devmode->dmPaperLength = ctk_paper_size_get_height (paper_size, GTK_UNIT_MM) * 10.0;
+      devmode->dmPaperWidth = ctk_paper_size_get_width (paper_size, CTK_UNIT_MM) * 10.0;
+      devmode->dmPaperLength = ctk_paper_size_get_height (paper_size, CTK_UNIT_MM) * 10.0;
     }
   
   ResetDCW (op_win32->hdc, devmode);
@@ -584,7 +584,7 @@ win32_end_run (GtkPrintOperation *op,
     }
   else
     /* Dunno what happened, pretend its finished */
-    _ctk_print_operation_set_status (op, GTK_PRINT_STATUS_FINISHED, NULL);
+    _ctk_print_operation_set_status (op, CTK_PRINT_STATUS_FINISHED, NULL);
 }
 
 static void
@@ -617,14 +617,14 @@ win32_poll_status (GtkPrintOperation *op)
      
       if (win32_status &
 	  (JOB_STATUS_COMPLETE | JOB_STATUS_PRINTED))
-	status = GTK_PRINT_STATUS_FINISHED;
+	status = CTK_PRINT_STATUS_FINISHED;
       else if (win32_status &
 	       (JOB_STATUS_OFFLINE |
 		JOB_STATUS_PAPEROUT |
 		JOB_STATUS_PAUSED |
 		JOB_STATUS_USER_INTERVENTION))
 	{
-	  status = GTK_PRINT_STATUS_PENDING_ISSUE;
+	  status = CTK_PRINT_STATUS_PENDING_ISSUE;
 	  if (status_str == NULL)
 	    {
 	      if (win32_status & JOB_STATUS_OFFLINE)
@@ -641,18 +641,18 @@ win32_poll_status (GtkPrintOperation *op)
 	       (JOB_STATUS_BLOCKED_DEVQ |
 		JOB_STATUS_DELETED |
 		JOB_STATUS_ERROR))
-	status = GTK_PRINT_STATUS_FINISHED_ABORTED;
+	status = CTK_PRINT_STATUS_FINISHED_ABORTED;
       else if (win32_status &
 	       (JOB_STATUS_SPOOLING |
 		JOB_STATUS_DELETING))
-	status = GTK_PRINT_STATUS_PENDING;
+	status = CTK_PRINT_STATUS_PENDING;
       else if (win32_status & JOB_STATUS_PRINTING)
-	status = GTK_PRINT_STATUS_PRINTING;
+	status = CTK_PRINT_STATUS_PRINTING;
       else
-	status = GTK_PRINT_STATUS_FINISHED;
+	status = CTK_PRINT_STATUS_FINISHED;
     }
   else
-    status = GTK_PRINT_STATUS_FINISHED;
+    status = CTK_PRINT_STATUS_FINISHED;
 
   g_free (data);
 
@@ -696,14 +696,14 @@ devmode_to_settings (GtkPrintSettings *settings,
 
   devmode = GlobalLock (hDevMode);
   
-  ctk_print_settings_set_int (settings, GTK_PRINT_SETTINGS_WIN32_DRIVER_VERSION,
+  ctk_print_settings_set_int (settings, CTK_PRINT_SETTINGS_WIN32_DRIVER_VERSION,
 			      devmode->dmDriverVersion);
   if (devmode->dmDriverExtra != 0)
     {
       char *extra = g_base64_encode (((const guchar *)devmode) + sizeof (DEVMODEW),
 				     devmode->dmDriverExtra);
       ctk_print_settings_set (settings,
-			      GTK_PRINT_SETTINGS_WIN32_DRIVER_EXTRA,
+			      CTK_PRINT_SETTINGS_WIN32_DRIVER_EXTRA,
 			      extra);
       g_free (extra);
     }
@@ -746,7 +746,7 @@ devmode_to_settings (GtkPrintSettings *settings,
 					      form_name,
 					      devmode->dmPaperWidth / 10.0,
 					      devmode->dmPaperLength / 10.0,
-					      GTK_UNIT_MM);
+					      CTK_UNIT_MM);
       ctk_print_settings_set_paper_size (settings, paper_size);
       ctk_paper_size_free (paper_size);
     }
@@ -814,17 +814,17 @@ devmode_to_settings (GtkPrintSettings *settings,
       switch (devmode->dmPrintQuality)
 	{
 	case DMRES_LOW:
-	  quality = GTK_PRINT_QUALITY_LOW;
+	  quality = CTK_PRINT_QUALITY_LOW;
 	  break;
 	case DMRES_MEDIUM:
-	  quality = GTK_PRINT_QUALITY_NORMAL;
+	  quality = CTK_PRINT_QUALITY_NORMAL;
 	  break;
 	default:
 	case DMRES_HIGH:
-	  quality = GTK_PRINT_QUALITY_HIGH;
+	  quality = CTK_PRINT_QUALITY_HIGH;
 	  break;
 	case DMRES_DRAFT:
-	  quality = GTK_PRINT_QUALITY_DRAFT;
+	  quality = CTK_PRINT_QUALITY_DRAFT;
 	  break;
 	}
       ctk_print_settings_set_quality (settings, quality);
@@ -841,13 +841,13 @@ devmode_to_settings (GtkPrintSettings *settings,
 	{
 	default:
 	case DMDUP_SIMPLEX:
-	  duplex = GTK_PRINT_DUPLEX_SIMPLEX;
+	  duplex = CTK_PRINT_DUPLEX_SIMPLEX;
 	  break;
 	case DMDUP_HORIZONTAL:
-	  duplex = GTK_PRINT_DUPLEX_HORIZONTAL;
+	  duplex = CTK_PRINT_DUPLEX_HORIZONTAL;
 	  break;
 	case DMDUP_VERTICAL:
-	  duplex = GTK_PRINT_DUPLEX_VERTICAL;
+	  duplex = CTK_PRINT_DUPLEX_VERTICAL;
 	  break;
 	}
       
@@ -922,13 +922,13 @@ dialog_to_print_settings (GtkPrintOperation *op,
   settings = ctk_print_settings_new ();
 
   ctk_print_settings_set_print_pages (settings,
-				      GTK_PRINT_PAGES_ALL);
+				      CTK_PRINT_PAGES_ALL);
   if (printdlgex->Flags & PD_CURRENTPAGE)
     ctk_print_settings_set_print_pages (settings,
-					GTK_PRINT_PAGES_CURRENT);
+					CTK_PRINT_PAGES_CURRENT);
   else if (printdlgex->Flags & PD_PAGENUMS)
     ctk_print_settings_set_print_pages (settings,
-					GTK_PRINT_PAGES_RANGES);
+					CTK_PRINT_PAGES_RANGES);
 
   if (printdlgex->nPageRanges > 0)
     {
@@ -989,7 +989,7 @@ devmode_from_settings (GtkPrintSettings *settings,
       gunichar2 *device_name;
       extras = NULL;
       extras_len = 0;
-      extras_base64 = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_WIN32_DRIVER_EXTRA);
+      extras_base64 = ctk_print_settings_get (settings, CTK_PRINT_SETTINGS_WIN32_DRIVER_EXTRA);
       if (extras_base64)
         extras = g_base64_decode (extras_base64, &extras_len);
   
@@ -1021,14 +1021,14 @@ devmode_from_settings (GtkPrintSettings *settings,
         }
       g_free (extras);
 
-      if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_WIN32_DRIVER_VERSION))
+      if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_WIN32_DRIVER_VERSION))
         {
-          devmode->dmDriverVersion = ctk_print_settings_get_int (settings, GTK_PRINT_SETTINGS_WIN32_DRIVER_VERSION);
+          devmode->dmDriverVersion = ctk_print_settings_get_int (settings, CTK_PRINT_SETTINGS_WIN32_DRIVER_VERSION);
         }
     }
   
   if (page_setup ||
-      ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_ORIENTATION))
+      ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_ORIENTATION))
     {
       GtkPageOrientation orientation = ctk_print_settings_get_orientation (settings);
       if (page_setup)
@@ -1062,19 +1062,19 @@ devmode_from_settings (GtkPrintSettings *settings,
 	  devmode->dmFields |= DM_PAPERWIDTH | DM_PAPERLENGTH;
 
           /* Lengths in DEVMODE are in tenths of a millimeter */
-	  devmode->dmPaperWidth = ctk_paper_size_get_width (paper_size, GTK_UNIT_MM) * 10.0;
-	  devmode->dmPaperLength = ctk_paper_size_get_height (paper_size, GTK_UNIT_MM) * 10.0;
+	  devmode->dmPaperWidth = ctk_paper_size_get_width (paper_size, CTK_UNIT_MM) * 10.0;
+	  devmode->dmPaperLength = ctk_paper_size_get_height (paper_size, CTK_UNIT_MM) * 10.0;
 	}
       ctk_paper_size_free (paper_size);
     }
 
-  if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_SCALE))
+  if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_SCALE))
     {
       devmode->dmFields |= DM_SCALE;
       devmode->dmScale = ctk_print_settings_get_scale (settings);
     }
   
-  if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_N_COPIES))
+  if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_N_COPIES))
     {
       devmode->dmFields |= DM_COPIES;
       devmode->dmCopies = ctk_print_settings_get_n_copies (settings);
@@ -1085,7 +1085,7 @@ devmode_from_settings (GtkPrintSettings *settings,
       devmode->dmFields |= DM_DEFAULTSOURCE;
       devmode->dmDefaultSource = ctk_print_settings_get_int (settings, "win32-default-source");
     }
-  else if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_DEFAULT_SOURCE))
+  else if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_DEFAULT_SOURCE))
     {
       devmode->dmFields |= DM_DEFAULTSOURCE;
       devmode->dmDefaultSource = DMBIN_AUTO;
@@ -1124,33 +1124,33 @@ devmode_from_settings (GtkPrintSettings *settings,
       devmode->dmFields |= DM_PRINTQUALITY;
       devmode->dmPrintQuality = ctk_print_settings_get_int (settings, "win32-print-quality");
     }
-  else if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_RESOLUTION))
+  else if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_RESOLUTION))
     {
       devmode->dmFields |= DM_PRINTQUALITY;
       devmode->dmPrintQuality = ctk_print_settings_get_resolution (settings);
     } 
-  else if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_QUALITY))
+  else if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_QUALITY))
     {
       devmode->dmFields |= DM_PRINTQUALITY;
       switch (ctk_print_settings_get_quality (settings))
 	{
-	case GTK_PRINT_QUALITY_LOW:
+	case CTK_PRINT_QUALITY_LOW:
 	  devmode->dmPrintQuality = DMRES_LOW;
 	  break;
-	case GTK_PRINT_QUALITY_DRAFT:
+	case CTK_PRINT_QUALITY_DRAFT:
 	  devmode->dmPrintQuality = DMRES_DRAFT;
 	  break;
 	default:
-	case GTK_PRINT_QUALITY_NORMAL:
+	case CTK_PRINT_QUALITY_NORMAL:
 	  devmode->dmPrintQuality = DMRES_MEDIUM;
 	  break;
-	case GTK_PRINT_QUALITY_HIGH:
+	case CTK_PRINT_QUALITY_HIGH:
 	  devmode->dmPrintQuality = DMRES_HIGH;
 	  break;
 	}
     }
 
-  if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_USE_COLOR))
+  if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_USE_COLOR))
     {
       devmode->dmFields |= DM_COLOR;
       if (ctk_print_settings_get_use_color (settings))
@@ -1159,25 +1159,25 @@ devmode_from_settings (GtkPrintSettings *settings,
 	devmode->dmColor = DMCOLOR_MONOCHROME;
     }
 
-  if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_DUPLEX))
+  if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_DUPLEX))
     {
       devmode->dmFields |= DM_DUPLEX;
       switch (ctk_print_settings_get_duplex (settings))
 	{
 	default:
-	case GTK_PRINT_DUPLEX_SIMPLEX:
+	case CTK_PRINT_DUPLEX_SIMPLEX:
 	  devmode->dmDuplex = DMDUP_SIMPLEX;
 	  break;
-	case GTK_PRINT_DUPLEX_HORIZONTAL:
+	case CTK_PRINT_DUPLEX_HORIZONTAL:
 	  devmode->dmDuplex = DMDUP_HORIZONTAL;
 	  break;
-	case GTK_PRINT_DUPLEX_VERTICAL:
+	case CTK_PRINT_DUPLEX_VERTICAL:
 	  devmode->dmDuplex = DMDUP_VERTICAL;
 	  break;
 	}
     }
 
-  if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_COLLATE))
+  if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_COLLATE))
     {
       devmode->dmFields |= DM_COLLATE;
       if (ctk_print_settings_get_collate (settings))
@@ -1191,7 +1191,7 @@ devmode_from_settings (GtkPrintSettings *settings,
       devmode->dmFields |= DM_MEDIATYPE;
       devmode->dmMediaType = ctk_print_settings_get_int (settings, "win32-media-type");
     }
-  else if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_MEDIA_TYPE))
+  else if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_MEDIA_TYPE))
     {
       devmode->dmFields |= DM_MEDIATYPE;
       devmode->dmMediaType = DMMEDIA_STANDARD;
@@ -1208,7 +1208,7 @@ devmode_from_settings (GtkPrintSettings *settings,
       devmode->dmFields |= DM_DITHERTYPE;
       devmode->dmDitherType = ctk_print_settings_get_int (settings, "win32-dither-type");
     }
-  else if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_DITHER))
+  else if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_DITHER))
     {
       devmode->dmFields |= DM_DITHERTYPE;
       devmode->dmDitherType = DMDITHER_FINE;
@@ -1243,25 +1243,25 @@ dialog_from_print_settings (GtkPrintOperation *op,
   if (settings == NULL)
     return;
 
-  if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_PRINT_PAGES))
+  if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_PRINT_PAGES))
     {
       GtkPrintPages print_pages = ctk_print_settings_get_print_pages (settings);
 
       switch (print_pages)
 	{
 	default:
-	case GTK_PRINT_PAGES_ALL:
+	case CTK_PRINT_PAGES_ALL:
 	  printdlgex->Flags |= PD_ALLPAGES;
 	  break;
-	case GTK_PRINT_PAGES_CURRENT:
+	case CTK_PRINT_PAGES_CURRENT:
 	  printdlgex->Flags |= PD_CURRENTPAGE;
 	  break;
-	case GTK_PRINT_PAGES_RANGES:
+	case CTK_PRINT_PAGES_RANGES:
 	  printdlgex->Flags |= PD_PAGENUMS;
 	  break;
 	}
     }
-  if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_PAGE_RANGES))
+  if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_PAGE_RANGES))
     {
       GtkPageRange *ranges;
       int num_ranges, i;
@@ -1429,15 +1429,15 @@ pageDlgProc (HWND wnd, UINT message, WPARAM wparam, LPARAM lparam)
       PROPSHEETPAGEW *page = (PROPSHEETPAGEW *)lparam;
       GtkWidget *plug;
 
-      op = GTK_PRINT_OPERATION ((gpointer)page->lParam);
+      op = CTK_PRINT_OPERATION ((gpointer)page->lParam);
       op_win32 = op->priv->platform_data;
 
       SetWindowLongPtrW (wnd, GWLP_USERDATA, (LONG_PTR)op);
       
       plug = _ctk_win32_embed_widget_new (wnd);
-      ctk_window_set_modal (GTK_WINDOW (plug), TRUE);
+      ctk_window_set_modal (CTK_WINDOW (plug), TRUE);
       op_win32->embed_widget = plug;
-      ctk_container_add (GTK_CONTAINER (plug), op->priv->custom_widget);
+      ctk_container_add (CTK_CONTAINER (plug), op->priv->custom_widget);
       ctk_widget_show (op->priv->custom_widget);
       ctk_widget_show (plug);
       gdk_window_focus (ctk_widget_get_window (plug), GDK_CURRENT_TIME);
@@ -1451,7 +1451,7 @@ pageDlgProc (HWND wnd, UINT message, WPARAM wparam, LPARAM lparam)
     }
   else if (message == WM_DESTROY)
     {
-      op = GTK_PRINT_OPERATION (GetWindowLongPtrW (wnd, GWLP_USERDATA));
+      op = CTK_PRINT_OPERATION (GetWindowLongPtrW (wnd, GWLP_USERDATA));
       op_win32 = op->priv->platform_data;
       
       g_signal_emit_by_name (op, "custom-widget-apply", op->priv->custom_widget);
@@ -1461,10 +1461,10 @@ pageDlgProc (HWND wnd, UINT message, WPARAM wparam, LPARAM lparam)
     }
   else 
     {
-      op = GTK_PRINT_OPERATION (GetWindowLongPtrW (wnd, GWLP_USERDATA));
+      op = CTK_PRINT_OPERATION (GetWindowLongPtrW (wnd, GWLP_USERDATA));
       op_win32 = op->priv->platform_data;
 
-      return _ctk_win32_embed_widget_dialog_procedure (GTK_WIN32_EMBED_WIDGET (op_win32->embed_widget),
+      return _ctk_win32_embed_widget_dialog_procedure (CTK_WIN32_EMBED_WIDGET (op_win32->embed_widget),
 						       wnd, message, wparam, lparam);
     }
   
@@ -1550,7 +1550,7 @@ create_page_setup (GtkPrintOperation *op)
     {
       GtkPaperSize *paper_size;
       
-      if (ctk_print_settings_has_key (settings, GTK_PRINT_SETTINGS_ORIENTATION))
+      if (ctk_print_settings_has_key (settings, CTK_PRINT_SETTINGS_ORIENTATION))
 	ctk_page_setup_set_orientation (page_setup,
 					ctk_print_settings_get_orientation (settings));
 
@@ -1606,10 +1606,10 @@ ctk_print_operation_run_without_dialog (GtkPrintOperation *op,
       gchar *tmp_printer = get_default_printer ();
       if (!tmp_printer)
 	{
-	  result = GTK_PRINT_OPERATION_RESULT_ERROR;
+	  result = CTK_PRINT_OPERATION_RESULT_ERROR;
 	  g_set_error_literal (&priv->error,
-			       GTK_PRINT_ERROR,
-			       GTK_PRINT_ERROR_INTERNAL_ERROR,
+			       CTK_PRINT_ERROR,
+			       CTK_PRINT_ERROR_INTERNAL_ERROR,
 			       _("No printer found"));
 	  goto out;
 	}
@@ -1633,10 +1633,10 @@ ctk_print_operation_run_without_dialog (GtkPrintOperation *op,
 
   if (!hDC)
     {
-      result = GTK_PRINT_OPERATION_RESULT_ERROR;
+      result = CTK_PRINT_OPERATION_RESULT_ERROR;
       g_set_error_literal (&priv->error,
-			   GTK_PRINT_ERROR,
-			   GTK_PRINT_ERROR_INTERNAL_ERROR,
+			   CTK_PRINT_ERROR,
+			   CTK_PRINT_ERROR_INTERNAL_ERROR,
 			   _("Invalid argument to CreateDC"));
       goto out;
     }
@@ -1669,10 +1669,10 @@ ctk_print_operation_run_without_dialog (GtkPrintOperation *op,
   g_free ((void *)docinfo.lpszDocName);
   if (job_id <= 0)
     { 
-      result = GTK_PRINT_OPERATION_RESULT_ERROR;
+      result = CTK_PRINT_OPERATION_RESULT_ERROR;
       g_set_error_literal (&priv->error,
-			   GTK_PRINT_ERROR,
-			   GTK_PRINT_ERROR_GENERAL,
+			   CTK_PRINT_ERROR,
+			   CTK_PRINT_ERROR_GENERAL,
 			   _("Error from StartDoc"));
       *do_print = FALSE;
       cairo_surface_destroy (op_win32->surface);
@@ -1680,14 +1680,14 @@ ctk_print_operation_run_without_dialog (GtkPrintOperation *op,
       goto out; 
     }
 
-  result = GTK_PRINT_OPERATION_RESULT_APPLY;
+  result = CTK_PRINT_OPERATION_RESULT_APPLY;
   op_win32->hdc = hDC;
   op_win32->devmode = hDevMode;
   op_win32->devnames = hDevNames;
   op_win32->job_id = job_id;
   op->priv->print_pages = ctk_print_settings_get_print_pages (op->priv->print_settings);
   op->priv->num_page_ranges = 0;
-  if (op->priv->print_pages == GTK_PRINT_PAGES_RANGES)
+  if (op->priv->print_pages == CTK_PRINT_PAGES_RANGES)
     op->priv->page_ranges = ctk_print_settings_get_page_ranges (op->priv->print_settings,
 								&op->priv->num_page_ranges);
   op->priv->manual_num_copies = 1;
@@ -1695,9 +1695,9 @@ ctk_print_operation_run_without_dialog (GtkPrintOperation *op,
   op->priv->manual_reverse = FALSE;
   op->priv->manual_orientation = FALSE;
   op->priv->manual_scale = 1.0;
-  op->priv->manual_page_set = GTK_PAGE_SET_ALL;
+  op->priv->manual_page_set = CTK_PAGE_SET_ALL;
   op->priv->manual_number_up = 1;
-  op->priv->manual_number_up_layout = GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
+  op->priv->manual_number_up_layout = CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
 
   op->priv->start_page = win32_start_page;
   op->priv->end_page = win32_end_page;
@@ -1765,15 +1765,15 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
       parentHWnd = get_parent_hwnd (invisible);
     }
   else 
-    parentHWnd = get_parent_hwnd (GTK_WIDGET (parent));
+    parentHWnd = get_parent_hwnd (CTK_WIDGET (parent));
 
   printdlgex = (LPPRINTDLGEXW)GlobalAlloc (GPTR, sizeof (PRINTDLGEXW));
   if (!printdlgex)
     {
-      result = GTK_PRINT_OPERATION_RESULT_ERROR;
+      result = CTK_PRINT_OPERATION_RESULT_ERROR;
       g_set_error_literal (&priv->error,
-                           GTK_PRINT_ERROR,
-                           GTK_PRINT_ERROR_NOMEM,
+                           CTK_PRINT_ERROR,
+                           CTK_PRINT_ERROR_NOMEM,
                            _("Not enough free memory"));
       goto out;
     }      
@@ -1793,10 +1793,10 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
 						MAX_PAGE_RANGES * sizeof (PRINTPAGERANGE));
   if (!page_ranges) 
     {
-      result = GTK_PRINT_OPERATION_RESULT_ERROR;
+      result = CTK_PRINT_OPERATION_RESULT_ERROR;
       g_set_error_literal (&priv->error,
-                           GTK_PRINT_ERROR,
-                           GTK_PRINT_ERROR_NOMEM,
+                           CTK_PRINT_ERROR,
+                           CTK_PRINT_ERROR_NOMEM,
                            _("Not enough free memory"));
       goto out;
     }
@@ -1840,31 +1840,31 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
 
   if (hResult != S_OK) 
     {
-      result = GTK_PRINT_OPERATION_RESULT_ERROR;
+      result = CTK_PRINT_OPERATION_RESULT_ERROR;
       if (hResult == E_OUTOFMEMORY)
 	g_set_error_literal (&priv->error,
-                             GTK_PRINT_ERROR,
-                             GTK_PRINT_ERROR_NOMEM,
+                             CTK_PRINT_ERROR,
+                             CTK_PRINT_ERROR_NOMEM,
                              _("Not enough free memory"));
       else if (hResult == E_INVALIDARG)
 	g_set_error_literal (&priv->error,
-                             GTK_PRINT_ERROR,
-                             GTK_PRINT_ERROR_INTERNAL_ERROR,
+                             CTK_PRINT_ERROR,
+                             CTK_PRINT_ERROR_INTERNAL_ERROR,
                              _("Invalid argument to PrintDlgEx"));
       else if (hResult == E_POINTER)
 	g_set_error_literal (&priv->error,
-                             GTK_PRINT_ERROR,
-                             GTK_PRINT_ERROR_INTERNAL_ERROR,
+                             CTK_PRINT_ERROR,
+                             CTK_PRINT_ERROR_INTERNAL_ERROR,
                              _("Invalid pointer to PrintDlgEx"));
       else if (hResult == E_HANDLE)
 	g_set_error_literal (&priv->error,
-                             GTK_PRINT_ERROR,
-                             GTK_PRINT_ERROR_INTERNAL_ERROR,
+                             CTK_PRINT_ERROR,
+                             CTK_PRINT_ERROR_INTERNAL_ERROR,
                              _("Invalid handle to PrintDlgEx"));
       else /* E_FAIL */
 	g_set_error_literal (&priv->error,
-                             GTK_PRINT_ERROR,
-                             GTK_PRINT_ERROR_GENERAL,
+                             CTK_PRINT_ERROR,
+                             CTK_PRINT_ERROR_GENERAL,
                              _("Unspecified error"));
       goto out;
     }
@@ -1872,11 +1872,11 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
   if (printdlgex->dwResultAction == PD_RESULT_PRINT ||
       printdlgex->dwResultAction == PD_RESULT_APPLY)
     {
-      result = GTK_PRINT_OPERATION_RESULT_APPLY;
+      result = CTK_PRINT_OPERATION_RESULT_APPLY;
       dialog_to_print_settings (op, printdlgex);
     }
   else
-    result = GTK_PRINT_OPERATION_RESULT_CANCEL;
+    result = CTK_PRINT_OPERATION_RESULT_CANCEL;
   
   if (printdlgex->dwResultAction == PD_RESULT_PRINT)
     {
@@ -1915,10 +1915,10 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
       g_free ((void *)docinfo.lpszDocName);
       if (job_id <= 0) 
 	{
-	  result = GTK_PRINT_OPERATION_RESULT_ERROR;
+	  result = CTK_PRINT_OPERATION_RESULT_ERROR;
 	  g_set_error_literal (&priv->error,
-                               GTK_PRINT_ERROR,
-                               GTK_PRINT_ERROR_GENERAL,
+                               CTK_PRINT_ERROR,
+                               CTK_PRINT_ERROR_GENERAL,
                                _("Error from StartDoc"));
 	  *do_print = FALSE;
 	  cairo_surface_destroy (op_win32->surface);
@@ -1933,7 +1933,7 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
       
       op->priv->print_pages = ctk_print_settings_get_print_pages (op->priv->print_settings);
       op->priv->num_page_ranges = 0;
-      if (op->priv->print_pages == GTK_PRINT_PAGES_RANGES)
+      if (op->priv->print_pages == CTK_PRINT_PAGES_RANGES)
 	op->priv->page_ranges = ctk_print_settings_get_page_ranges (op->priv->print_settings,
 								    &op->priv->num_page_ranges);
       op->priv->manual_num_copies = printdlgex->nCopies;
@@ -1941,9 +1941,9 @@ ctk_print_operation_run_with_dialog (GtkPrintOperation *op,
       op->priv->manual_reverse = FALSE;
       op->priv->manual_orientation = FALSE;
       op->priv->manual_scale = 1.0;
-      op->priv->manual_page_set = GTK_PAGE_SET_ALL;
+      op->priv->manual_page_set = CTK_PAGE_SET_ALL;
       op->priv->manual_number_up = 1;
-      op->priv->manual_number_up_layout = GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
+      op->priv->manual_number_up_layout = CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
     }
 
   op->priv->start_page = win32_start_page;
@@ -2054,9 +2054,9 @@ _ctk_print_operation_platform_backend_create_preview_surface (GtkPrintOperation 
 
   /* The rectangle dimensions are given in hundredths of a millimeter */
   rect.left = 0;
-  rect.right = 100.0 * ctk_paper_size_get_width (paper_size, GTK_UNIT_MM);
+  rect.right = 100.0 * ctk_paper_size_get_width (paper_size, CTK_UNIT_MM);
   rect.top = 0;
-  rect.bottom = 100.0 * ctk_paper_size_get_height (paper_size, GTK_UNIT_MM);
+  rect.bottom = 100.0 * ctk_paper_size_get_height (paper_size, CTK_UNIT_MM);
   
   metafile_dc = CreateEnhMetaFileW (NULL, filename_utf16,
 				    &rect, L"Gtk+\0Print Preview\0\0");
@@ -2112,7 +2112,7 @@ ctk_print_run_page_setup_dialog (GtkWindow        *parent,
   pagesetupdlg->lStructSize = sizeof (PAGESETUPDLGW);
 
   if (parent != NULL)
-    pagesetupdlg->hwndOwner = get_parent_hwnd (GTK_WIDGET (parent));
+    pagesetupdlg->hwndOwner = get_parent_hwnd (CTK_WIDGET (parent));
   else
     pagesetupdlg->hwndOwner = NULL;
 
@@ -2129,13 +2129,13 @@ ctk_print_run_page_setup_dialog (GtkWindow        *parent,
   if (measure_system == 0)
     {
       pagesetupdlg->Flags |= PSD_INHUNDREDTHSOFMILLIMETERS;
-      unit = GTK_UNIT_MM;
+      unit = CTK_UNIT_MM;
       scale = 100;
     }
   else
     {
       pagesetupdlg->Flags |= PSD_INTHOUSANDTHSOFINCHES;
-      unit = GTK_UNIT_INCH;
+      unit = CTK_UNIT_INCH;
       scale = 1000;
     }
 
@@ -2185,12 +2185,12 @@ ctk_print_run_page_setup_dialog (GtkWindow        *parent,
 
       if (pagesetupdlg->Flags & PSD_INHUNDREDTHSOFMILLIMETERS)
 	{
-	  unit = GTK_UNIT_MM;
+	  unit = CTK_UNIT_MM;
 	  scale = 100;
 	}
       else
 	{
-	  unit = GTK_UNIT_INCH;
+	  unit = CTK_UNIT_INCH;
 	  scale = 1000;
 	}
 

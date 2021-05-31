@@ -79,7 +79,7 @@ ctk_text_buffer_register_serialize_format (GtkTextBuffer              *buffer,
   GList   *formats;
   GdkAtom  atom;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
   g_return_val_if_fail (mime_type != NULL && *mime_type != '\0', GDK_NONE);
   g_return_val_if_fail (function != NULL, GDK_NONE);
 
@@ -133,7 +133,7 @@ ctk_text_buffer_register_serialize_tagset (GtkTextBuffer *buffer,
   gchar   *mime_type = "application/x-gtk-text-buffer-rich-text";
   GdkAtom  format;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
   g_return_val_if_fail (tagset_name == NULL || *tagset_name != '\0', GDK_NONE);
 
   if (tagset_name)
@@ -177,7 +177,7 @@ ctk_text_buffer_register_deserialize_format (GtkTextBuffer                *buffe
   GList   *formats;
   GdkAtom  atom;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
   g_return_val_if_fail (mime_type != NULL && *mime_type != '\0', GDK_NONE);
   g_return_val_if_fail (function != NULL, GDK_NONE);
 
@@ -217,7 +217,7 @@ ctk_text_buffer_register_deserialize_tagset (GtkTextBuffer *buffer,
   gchar   *mime_type = "application/x-gtk-text-buffer-rich-text";
   GdkAtom  format;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
   g_return_val_if_fail (tagset_name == NULL || *tagset_name != '\0', GDK_NONE);
 
   if (tagset_name)
@@ -252,7 +252,7 @@ ctk_text_buffer_unregister_serialize_format (GtkTextBuffer *buffer,
 {
   GList *formats;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (format != GDK_NONE);
 
   formats = g_object_steal_qdata (G_OBJECT (buffer), serialize_quark ());
@@ -282,7 +282,7 @@ ctk_text_buffer_unregister_deserialize_format (GtkTextBuffer *buffer,
 {
   GList *formats;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (format != GDK_NONE);
 
   formats = g_object_steal_qdata (G_OBJECT (buffer), deserialize_quark ());
@@ -330,7 +330,7 @@ ctk_text_buffer_deserialize_set_can_create_tags (GtkTextBuffer *buffer,
   GList *list;
   gchar *format_name;
 
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (format != GDK_NONE);
 
   formats = g_object_get_qdata (G_OBJECT (buffer), deserialize_quark ());
@@ -373,7 +373,7 @@ ctk_text_buffer_deserialize_get_can_create_tags (GtkTextBuffer *buffer,
   GList *list;
   gchar *format_name;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
   g_return_val_if_fail (format != GDK_NONE, FALSE);
 
   formats = g_object_get_qdata (G_OBJECT (buffer), deserialize_quark ());
@@ -417,7 +417,7 @@ ctk_text_buffer_get_serialize_formats (GtkTextBuffer *buffer,
 {
   GList *formats;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
   g_return_val_if_fail (n_formats != NULL, NULL);
 
   formats = g_object_get_qdata (G_OBJECT (buffer), serialize_quark ());
@@ -445,7 +445,7 @@ ctk_text_buffer_get_deserialize_formats (GtkTextBuffer *buffer,
 {
   GList *formats;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
   g_return_val_if_fail (n_formats != NULL, NULL);
 
   formats = g_object_get_qdata (G_OBJECT (buffer), deserialize_quark ());
@@ -485,8 +485,8 @@ ctk_text_buffer_serialize (GtkTextBuffer     *register_buffer,
   GList *formats;
   GList *list;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (register_buffer), NULL);
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (content_buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (register_buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (content_buffer), NULL);
   g_return_val_if_fail (format != GDK_NONE, NULL);
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (end != NULL, NULL);
@@ -546,8 +546,8 @@ ctk_text_buffer_deserialize (GtkTextBuffer  *register_buffer,
   GList *formats;
   GList *l;
 
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (register_buffer), FALSE);
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (content_buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (register_buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (content_buffer), FALSE);
   g_return_val_if_fail (format != GDK_NONE, FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (data != NULL, FALSE);

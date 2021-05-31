@@ -15,11 +15,11 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_IM_CONTEXT_INFO_H__
-#define __GTK_IM_CONTEXT_INFO_H__
+#ifndef __CTK_IM_CONTEXT_INFO_H__
+#define __CTK_IM_CONTEXT_INFO_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -41,4 +41,4 @@ struct _GtkIMContextInfo
 
 G_END_DECLS
 
-#endif /* __GTK_IM_CONTEXT_INFO_H__ */
+#endif /* __CTK_IM_CONTEXT_INFO_H__ */

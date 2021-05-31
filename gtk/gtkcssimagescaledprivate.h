@@ -17,19 +17,19 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_IMAGE_SCALED_PRIVATE_H__
-#define __GTK_CSS_IMAGE_SCALED_PRIVATE_H__
+#ifndef __CTK_CSS_IMAGE_SCALED_PRIVATE_H__
+#define __CTK_CSS_IMAGE_SCALED_PRIVATE_H__
 
 #include "gtk/gtkcssimageprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_SCALED           (_ctk_css_image_scaled_get_type ())
-#define GTK_CSS_IMAGE_SCALED(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_SCALED, GtkCssImageScaled))
-#define GTK_CSS_IMAGE_SCALED_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_SCALED, GtkCssImageScaledClass))
-#define GTK_IS_CSS_IMAGE_SCALED(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_SCALED))
-#define GTK_IS_CSS_IMAGE_SCALED_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_IMAGE_SCALED))
-#define GTK_CSS_IMAGE_SCALED_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_IMAGE_SCALED, GtkCssImageScaledClass))
+#define CTK_TYPE_CSS_IMAGE_SCALED           (_ctk_css_image_scaled_get_type ())
+#define CTK_CSS_IMAGE_SCALED(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_SCALED, GtkCssImageScaled))
+#define CTK_CSS_IMAGE_SCALED_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_SCALED, GtkCssImageScaledClass))
+#define CTK_IS_CSS_IMAGE_SCALED(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_SCALED))
+#define CTK_IS_CSS_IMAGE_SCALED_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_SCALED))
+#define CTK_CSS_IMAGE_SCALED_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_SCALED, GtkCssImageScaledClass))
 
 typedef struct _GtkCssImageScaled           GtkCssImageScaled;
 typedef struct _GtkCssImageScaledClass      GtkCssImageScaledClass;
@@ -53,4 +53,4 @@ GType          _ctk_css_image_scaled_get_type             (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_IMAGE_SCALED_PRIVATE_H__ */
+#endif /* __CTK_CSS_IMAGE_SCALED_PRIVATE_H__ */

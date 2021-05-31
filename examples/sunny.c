@@ -8,28 +8,28 @@ new_window (GApplication *app,
   GtkWidget *window, *scrolled, *view, *overlay;
   GtkWidget *header;
 
-  window = ctk_application_window_new (GTK_APPLICATION (app));
-  ctk_application_window_set_show_menubar (GTK_APPLICATION_WINDOW (window), FALSE);
+  window = ctk_application_window_new (CTK_APPLICATION (app));
+  ctk_application_window_set_show_menubar (CTK_APPLICATION_WINDOW (window), FALSE);
   ctk_window_set_default_size ((GtkWindow*)window, 640, 480);
-  ctk_window_set_title (GTK_WINDOW (window), "Sunny");
-  ctk_window_set_icon_name (GTK_WINDOW (window), "sunny");
+  ctk_window_set_title (CTK_WINDOW (window), "Sunny");
+  ctk_window_set_icon_name (CTK_WINDOW (window), "sunny");
 
   header = ctk_header_bar_new ();
   ctk_widget_show (header);
-  ctk_header_bar_set_title (GTK_HEADER_BAR (header), "Sunny");
-  ctk_header_bar_set_show_close_button (GTK_HEADER_BAR (header), TRUE);
-  ctk_window_set_titlebar (GTK_WINDOW (window), header);
+  ctk_header_bar_set_title (CTK_HEADER_BAR (header), "Sunny");
+  ctk_header_bar_set_show_close_button (CTK_HEADER_BAR (header), TRUE);
+  ctk_window_set_titlebar (CTK_WINDOW (window), header);
 
   overlay = ctk_overlay_new ();
-  ctk_container_add (GTK_CONTAINER (window), overlay);
+  ctk_container_add (CTK_CONTAINER (window), overlay);
 
   scrolled = ctk_scrolled_window_new (NULL, NULL);
   ctk_widget_set_hexpand (scrolled, TRUE);
   ctk_widget_set_vexpand (scrolled, TRUE);
   view = ctk_text_view_new ();
 
-  ctk_container_add (GTK_CONTAINER (scrolled), view);
-  ctk_container_add (GTK_CONTAINER (overlay), scrolled);
+  ctk_container_add (CTK_CONTAINER (scrolled), view);
+  ctk_container_add (CTK_CONTAINER (overlay), scrolled);
 
   if (file != NULL)
     {
@@ -40,13 +40,13 @@ new_window (GApplication *app,
         {
           GtkTextBuffer *buffer;
 
-          buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+          buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
           ctk_text_buffer_set_text (buffer, contents, length);
           g_free (contents);
         }
     }
 
-  ctk_widget_show_all (GTK_WIDGET (window));
+  ctk_widget_show_all (CTK_WIDGET (window));
 }
 
 static void
@@ -70,7 +70,7 @@ open (GApplication  *application,
 typedef GtkApplication MenuButton;
 typedef GtkApplicationClass MenuButtonClass;
 
-G_DEFINE_TYPE (MenuButton, menu_button, GTK_TYPE_APPLICATION)
+G_DEFINE_TYPE (MenuButton, menu_button, CTK_TYPE_APPLICATION)
 
 static void
 show_about (GSimpleAction *action,
@@ -96,13 +96,13 @@ quit_app (GSimpleAction *action,
 
   g_print ("Going down...\n");
 
-  list = ctk_application_get_windows (GTK_APPLICATION (g_application_get_default ()));
+  list = ctk_application_get_windows (CTK_APPLICATION (g_application_get_default ()));
   while (list)
     {
       win = list->data;
       next = list->next;
 
-      ctk_widget_destroy (GTK_WIDGET (win));
+      ctk_widget_destroy (CTK_WIDGET (win));
 
       list = next;
     }
@@ -157,7 +157,7 @@ startup (GApplication *application)
                                "    </section>"
                                "  </menu>"
                                "</interface>", -1, NULL);
-  ctk_application_set_app_menu (GTK_APPLICATION (application), G_MENU_MODEL (ctk_builder_get_object (builder, "app-menu")));
+  ctk_application_set_app_menu (CTK_APPLICATION (application), G_MENU_MODEL (ctk_builder_get_object (builder, "app-menu")));
   g_object_unref (builder);
 }
 

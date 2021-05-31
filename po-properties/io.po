@@ -364,7 +364,7 @@ msgstr ""
 #: gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 
 #: gtk/gtkaction.c:374
@@ -868,7 +868,7 @@ msgid "Default Spacing"
 msgstr ""
 
 #: gtk/gtkbutton.c:461
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr ""
 
 #: gtk/gtkbutton.c:475
@@ -877,7 +877,7 @@ msgstr ""
 
 #: gtk/gtkbutton.c:476
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
 
@@ -5912,7 +5912,7 @@ msgstr ""
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 
 #: gtk/gtktoolitemgroup.c:1572

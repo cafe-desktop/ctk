@@ -175,7 +175,7 @@ static const gchar* ctk_action_buildable_get_name (GtkBuildable *buildable);
 
 G_DEFINE_TYPE_WITH_CODE (GtkAction, ctk_action, G_TYPE_OBJECT,
                          G_ADD_PRIVATE (GtkAction)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
 						ctk_action_buildable_init))
 
 static void ctk_action_finalize     (GObject *object);
@@ -224,9 +224,9 @@ ctk_action_class_init (GtkActionClass *klass)
   klass->create_tool_item  = create_tool_item;
   klass->create_menu       = NULL;
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  klass->menu_item_type    = GTK_TYPE_IMAGE_MENU_ITEM;
+  klass->menu_item_type    = CTK_TYPE_IMAGE_MENU_ITEM;
   G_GNUC_END_IGNORE_DEPRECATIONS;
-  klass->toolbar_item_type = GTK_TYPE_TOOL_BUTTON;
+  klass->toolbar_item_type = CTK_TYPE_TOOL_BUTTON;
   klass->connect_proxy    = connect_proxy;
   klass->disconnect_proxy = disconnect_proxy;
 
@@ -243,7 +243,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							P_("Name"),
 							P_("A unique name for the action."),
 							NULL,
-							GTK_PARAM_READWRITE | 
+							CTK_PARAM_READWRITE | 
 							G_PARAM_CONSTRUCT_ONLY));
 
   /**
@@ -265,7 +265,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							P_("The label used for menu items and buttons "
 							   "that activate this action."),
 							NULL,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
 
   /**
    * GtkAction:short-label:
@@ -284,7 +284,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							P_("Short label"),
 							P_("A shorter label that may be used on toolbar buttons."),
 							NULL,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
 
 
   /**
@@ -300,7 +300,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							P_("Tooltip"),
 							P_("A tooltip for this action."),
 							NULL,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
 
   /**
    * GtkAction:stock-id:
@@ -320,7 +320,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							P_("The stock icon displayed in widgets representing "
 							   "this action."),
 							NULL,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
   /**
    * GtkAction:gicon:
    *
@@ -342,7 +342,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							P_("GIcon"),
 							P_("The GIcon being displayed"),
 							G_TYPE_ICON,
- 							GTK_PARAM_READWRITE));							
+ 							CTK_PARAM_READWRITE));							
   /**
    * GtkAction:icon-name:
    *
@@ -365,7 +365,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							P_("Icon Name"),
 							P_("The name of the icon from the icon theme"),
 							NULL,
- 							GTK_PARAM_READWRITE));
+ 							CTK_PARAM_READWRITE));
 
   /**
    * GtkAction:visible-horizontal:
@@ -382,7 +382,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							 P_("Whether the toolbar item is visible when the toolbar "
 							    "is in a horizontal orientation."),
 							 TRUE,
-							 GTK_PARAM_READWRITE));
+							 CTK_PARAM_READWRITE));
   /**
    * GtkAction:visible-overflown:
    *
@@ -401,7 +401,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							 P_("When TRUE, toolitem proxies for this action "
 							    "are represented in the toolbar overflow menu."),
 							 TRUE,
-							 GTK_PARAM_READWRITE));
+							 CTK_PARAM_READWRITE));
 
   /**
    * GtkAction:visible-vertical:
@@ -418,12 +418,12 @@ ctk_action_class_init (GtkActionClass *klass)
 							 P_("Whether the toolbar item is visible when the toolbar "
 							    "is in a vertical orientation."),
 							 TRUE,
-							 GTK_PARAM_READWRITE));
+							 CTK_PARAM_READWRITE));
   /**
    * GtkAction:is-important:
    *
    * Whether the action is considered important. When TRUE, toolitem
-   * proxies for this action show text in GTK_TOOLBAR_BOTH_HORIZ mode.
+   * proxies for this action show text in CTK_TOOLBAR_BOTH_HORIZ mode.
    *
    * Deprecated: 3.10: There is no corresponding replacement when using
    * #GAction
@@ -434,9 +434,9 @@ ctk_action_class_init (GtkActionClass *klass)
 							 P_("Is important"),
 							 P_("Whether the action is considered important. "
 							    "When TRUE, toolitem proxies for this action "
-							    "show text in GTK_TOOLBAR_BOTH_HORIZ mode."),
+							    "show text in CTK_TOOLBAR_BOTH_HORIZ mode."),
 							 FALSE,
-							 GTK_PARAM_READWRITE));
+							 CTK_PARAM_READWRITE));
   /**
    * GtkAction:hide-if-empty:
    *
@@ -451,7 +451,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							 P_("Hide if empty"),
 							 P_("When TRUE, empty menu proxies for this action are hidden."),
 							 TRUE,
-							 GTK_PARAM_READWRITE));
+							 CTK_PARAM_READWRITE));
   /**
    * GtkAction:sensitive:
    *
@@ -466,7 +466,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							 P_("Sensitive"),
 							 P_("Whether the action is enabled."),
 							 TRUE,
-							 GTK_PARAM_READWRITE));
+							 CTK_PARAM_READWRITE));
   /**
    * GtkAction:visible:
    *
@@ -481,7 +481,7 @@ ctk_action_class_init (GtkActionClass *klass)
 							 P_("Visible"),
 							 P_("Whether the action is visible."),
 							 TRUE,
-							 GTK_PARAM_READWRITE));
+							 CTK_PARAM_READWRITE));
   /**
    * GtkAction:action-group:
    *
@@ -496,8 +496,8 @@ ctk_action_class_init (GtkActionClass *klass)
 				   g_param_spec_object ("action-group",
 							 P_("Action Group"),
 							 P_("The GtkActionGroup this GtkAction is associated with, or NULL (for internal use)."),
-							 GTK_TYPE_ACTION_GROUP,
-							 GTK_PARAM_READWRITE));
+							 CTK_TYPE_ACTION_GROUP,
+							 CTK_PARAM_READWRITE));
 
   /**
    * GtkAction:always-show-image:
@@ -519,7 +519,7 @@ ctk_action_class_init (GtkActionClass *klass)
                                                          P_("Always show image"),
                                                          P_("Whether the image will always be shown"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT));
+                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 
   /**
    * GtkAction::activate:
@@ -593,7 +593,7 @@ static void
 ctk_action_buildable_set_name (GtkBuildable *buildable,
 			       const gchar  *name)
 {
-  GtkAction *action = GTK_ACTION (buildable);
+  GtkAction *action = CTK_ACTION (buildable);
 
   action->private_data->name = g_intern_string (name);
 }
@@ -601,7 +601,7 @@ ctk_action_buildable_set_name (GtkBuildable *buildable,
 static const gchar *
 ctk_action_buildable_get_name (GtkBuildable *buildable)
 {
-  GtkAction *action = GTK_ACTION (buildable);
+  GtkAction *action = CTK_ACTION (buildable);
 
   return action->private_data->name;
 }
@@ -636,7 +636,7 @@ ctk_action_new (const gchar *name,
 {
   g_return_val_if_fail (name != NULL, NULL);
 
-  return g_object_new (GTK_TYPE_ACTION,
+  return g_object_new (CTK_TYPE_ACTION,
                        "name", name,
 		       "label", label,
 		       "tooltip", tooltip,
@@ -648,7 +648,7 @@ static void
 ctk_action_finalize (GObject *object)
 {
   GtkAction *action;
-  action = GTK_ACTION (object);
+  action = CTK_ACTION (object);
 
   g_free (action->private_data->label);
   g_free (action->private_data->short_label);
@@ -674,7 +674,7 @@ ctk_action_set_property (GObject         *object,
 {
   GtkAction *action;
   
-  action = GTK_ACTION (object);
+  action = CTK_ACTION (object);
 
   switch (prop_id)
     {
@@ -740,7 +740,7 @@ ctk_action_get_property (GObject    *object,
 {
   GtkAction *action;
 
-  action = GTK_ACTION (object);
+  action = CTK_ACTION (object);
 
   switch (prop_id)
     {
@@ -803,7 +803,7 @@ create_menu_item (GtkAction *action)
 {
   GType menu_item_type;
 
-  menu_item_type = GTK_ACTION_GET_CLASS (action)->menu_item_type;
+  menu_item_type = CTK_ACTION_GET_CLASS (action)->menu_item_type;
 
   return g_object_new (menu_item_type, NULL);
 }
@@ -813,7 +813,7 @@ create_tool_item (GtkAction *action)
 {
   GType toolbar_item_type;
 
-  toolbar_item_type = GTK_ACTION_GET_CLASS (action)->toolbar_item_type;
+  toolbar_item_type = CTK_ACTION_GET_CLASS (action)->toolbar_item_type;
 
   return g_object_new (toolbar_item_type, NULL);
 }
@@ -875,11 +875,11 @@ _ctk_action_sync_menu_visible (GtkAction *action,
   gboolean visible = TRUE;
   gboolean hide_if_empty = TRUE;
 
-  g_return_if_fail (GTK_IS_MENU_ITEM (proxy));
-  g_return_if_fail (action == NULL || GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_MENU_ITEM (proxy));
+  g_return_if_fail (action == NULL || CTK_IS_ACTION (action));
 
   if (action == NULL)
-    action = ctk_activatable_get_related_action (GTK_ACTIVATABLE (proxy));
+    action = ctk_activatable_get_related_action (CTK_ACTIVATABLE (proxy));
 
   if (action)
     {
@@ -933,7 +933,7 @@ _ctk_action_emit_activate (GtkAction *action)
 void
 ctk_action_activate (GtkAction *action)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
   
   if (action->private_data->activate_blocked)
     return;
@@ -961,7 +961,7 @@ ctk_action_activate (GtkAction *action)
 void
 ctk_action_block_activate (GtkAction *action)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   action->private_data->activate_blocked = TRUE;
 }
@@ -980,7 +980,7 @@ ctk_action_block_activate (GtkAction *action)
 void
 ctk_action_unblock_activate (GtkAction *action)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   action->private_data->activate_blocked = FALSE;
 }
@@ -1006,7 +1006,7 @@ ctk_action_create_icon (GtkAction *action, GtkIconSize icon_size)
 {
   GtkWidget *widget = NULL;
 
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -1041,12 +1041,12 @@ ctk_action_create_menu_item (GtkAction *action)
 {
   GtkWidget *menu_item;
 
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
-  menu_item = GTK_ACTION_GET_CLASS (action)->create_menu_item (action);
+  menu_item = CTK_ACTION_GET_CLASS (action)->create_menu_item (action);
 
-  ctk_activatable_set_use_action_appearance (GTK_ACTIVATABLE (menu_item), TRUE);
-  ctk_activatable_set_related_action (GTK_ACTIVATABLE (menu_item), action);
+  ctk_activatable_set_use_action_appearance (CTK_ACTIVATABLE (menu_item), TRUE);
+  ctk_activatable_set_related_action (CTK_ACTIVATABLE (menu_item), action);
 
   return menu_item;
 }
@@ -1069,12 +1069,12 @@ ctk_action_create_tool_item (GtkAction *action)
 {
   GtkWidget *button;
 
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
-  button = GTK_ACTION_GET_CLASS (action)->create_tool_item (action);
+  button = CTK_ACTION_GET_CLASS (action)->create_tool_item (action);
 
-  ctk_activatable_set_use_action_appearance (GTK_ACTIVATABLE (button), TRUE);
-  ctk_activatable_set_related_action (GTK_ACTIVATABLE (button), action);
+  ctk_activatable_set_use_action_appearance (CTK_ACTIVATABLE (button), TRUE);
+  ctk_activatable_set_related_action (CTK_ACTIVATABLE (button), action);
 
   return button;
 }
@@ -1083,20 +1083,20 @@ void
 _ctk_action_add_to_proxy_list (GtkAction     *action,
 			       GtkWidget     *proxy)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
-  g_return_if_fail (GTK_IS_WIDGET (proxy));
+  g_return_if_fail (CTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_WIDGET (proxy));
  
-  GTK_ACTION_GET_CLASS (action)->connect_proxy (action, proxy);
+  CTK_ACTION_GET_CLASS (action)->connect_proxy (action, proxy);
 }
 
 void
 _ctk_action_remove_from_proxy_list (GtkAction     *action,
 				    GtkWidget     *proxy)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
-  g_return_if_fail (GTK_IS_WIDGET (proxy));
+  g_return_if_fail (CTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_WIDGET (proxy));
 
-  GTK_ACTION_GET_CLASS (action)->disconnect_proxy (action, proxy);
+  CTK_ACTION_GET_CLASS (action)->disconnect_proxy (action, proxy);
 }
 
 /**
@@ -1116,7 +1116,7 @@ _ctk_action_remove_from_proxy_list (GtkAction     *action,
 GSList*
 ctk_action_get_proxies (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   return action->private_data->proxies;
 }
@@ -1137,7 +1137,7 @@ ctk_action_get_proxies (GtkAction *action)
 const gchar *
 ctk_action_get_name (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   return action->private_data->name;
 }
@@ -1160,7 +1160,7 @@ gboolean
 ctk_action_is_sensitive (GtkAction *action)
 {
   GtkActionPrivate *priv;
-  g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION (action), FALSE);
 
   priv = action->private_data;
   return priv->sensitive &&
@@ -1186,7 +1186,7 @@ ctk_action_is_sensitive (GtkAction *action)
 gboolean
 ctk_action_get_sensitive (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION (action), FALSE);
 
   return action->private_data->sensitive;
 }
@@ -1210,7 +1210,7 @@ void
 ctk_action_set_sensitive (GtkAction *action,
 			  gboolean   sensitive)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   sensitive = sensitive != FALSE;
   
@@ -1240,7 +1240,7 @@ gboolean
 ctk_action_is_visible (GtkAction *action)
 {
   GtkActionPrivate *priv;
-  g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION (action), FALSE);
 
   priv = action->private_data;
   return priv->visible &&
@@ -1266,7 +1266,7 @@ ctk_action_is_visible (GtkAction *action)
 gboolean
 ctk_action_get_visible (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION (action), FALSE);
 
   return action->private_data->visible;
 }
@@ -1290,7 +1290,7 @@ void
 ctk_action_set_visible (GtkAction *action,
 			gboolean   visible)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   visible = visible != FALSE;
   
@@ -1319,7 +1319,7 @@ void
 ctk_action_set_is_important (GtkAction *action,
 			     gboolean   is_important)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   is_important = is_important != FALSE;
   
@@ -1347,7 +1347,7 @@ ctk_action_set_is_important (GtkAction *action,
 gboolean 
 ctk_action_get_is_important (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION (action), FALSE);
 
   return action->private_data->is_important;
 }
@@ -1374,7 +1374,7 @@ ctk_action_set_always_show_image (GtkAction *action,
 {
   GtkActionPrivate *priv;
 
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   priv = action->private_data;
 
@@ -1405,7 +1405,7 @@ ctk_action_set_always_show_image (GtkAction *action,
 gboolean
 ctk_action_get_always_show_image  (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION (action), FALSE);
 
   return action->private_data->always_show_image;
 }
@@ -1429,7 +1429,7 @@ ctk_action_set_label (GtkAction	  *action,
 {
   gchar *tmp;
   
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
   
   tmp = action->private_data->label;
   action->private_data->label = g_strdup (label);
@@ -1475,7 +1475,7 @@ ctk_action_set_label (GtkAction	  *action,
 const gchar *
 ctk_action_get_label (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   return action->private_data->label;
 }
@@ -1498,7 +1498,7 @@ ctk_action_set_short_label (GtkAction   *action,
 {
   gchar *tmp;
 
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   tmp = action->private_data->short_label;
   action->private_data->short_label = g_strdup (short_label);
@@ -1527,7 +1527,7 @@ ctk_action_set_short_label (GtkAction   *action,
 const gchar *
 ctk_action_get_short_label (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   return action->private_data->short_label;
 }
@@ -1548,9 +1548,9 @@ void
 ctk_action_set_visible_horizontal (GtkAction *action,
 				   gboolean   visible_horizontal)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   visible_horizontal = visible_horizontal != FALSE;
   
@@ -1578,7 +1578,7 @@ ctk_action_set_visible_horizontal (GtkAction *action,
 gboolean 
 ctk_action_get_visible_horizontal (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION (action), FALSE);
 
   return action->private_data->visible_horizontal;
 }
@@ -1599,9 +1599,9 @@ void
 ctk_action_set_visible_vertical (GtkAction *action,
 				 gboolean   visible_vertical)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   visible_vertical = visible_vertical != FALSE;
   
@@ -1629,7 +1629,7 @@ ctk_action_set_visible_vertical (GtkAction *action,
 gboolean 
 ctk_action_get_visible_vertical (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION (action), FALSE);
 
   return action->private_data->visible_vertical;
 }
@@ -1652,7 +1652,7 @@ ctk_action_set_tooltip (GtkAction   *action,
 {
   gchar *tmp;
 
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   tmp = action->private_data->tooltip;
   action->private_data->tooltip = g_strdup (tooltip);
@@ -1677,7 +1677,7 @@ ctk_action_set_tooltip (GtkAction   *action,
 const gchar *
 ctk_action_get_tooltip (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   return action->private_data->tooltip;
 }
@@ -1700,9 +1700,9 @@ ctk_action_set_stock_id (GtkAction   *action,
 {
   gchar *tmp;
 
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   tmp = action->private_data->stock_id;
   action->private_data->stock_id = g_strdup (stock_id);
@@ -1745,7 +1745,7 @@ ctk_action_set_stock_id (GtkAction   *action,
 const gchar *
 ctk_action_get_stock_id (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   return action->private_data->stock_id;
 }
@@ -1769,7 +1769,7 @@ ctk_action_set_icon_name (GtkAction   *action,
 {
   gchar *tmp;
 
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   tmp = action->private_data->icon_name;
   action->private_data->icon_name = g_strdup (icon_name);
@@ -1795,7 +1795,7 @@ ctk_action_set_icon_name (GtkAction   *action,
 const gchar *
 ctk_action_get_icon_name (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   return action->private_data->icon_name;
 }
@@ -1817,7 +1817,7 @@ void
 ctk_action_set_gicon (GtkAction *action,
                       GIcon     *icon)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   if (action->private_data->gicon)
     g_object_unref (action->private_data->gicon);
@@ -1847,7 +1847,7 @@ ctk_action_set_gicon (GtkAction *action,
 GIcon *
 ctk_action_get_gicon (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   return action->private_data->gicon;
 }
@@ -1860,9 +1860,9 @@ closure_accel_activate (GClosure     *closure,
                         gpointer      invocation_hint,
                         gpointer      marshal_data)
 {
-  if (ctk_action_is_sensitive (GTK_ACTION (closure->data)))
+  if (ctk_action_is_sensitive (CTK_ACTION (closure->data)))
     {
-      _ctk_action_emit_activate (GTK_ACTION (closure->data));
+      _ctk_action_emit_activate (CTK_ACTION (closure->data));
       
       /* we handled the accelerator */
       g_value_set_boolean (return_value, TRUE);
@@ -1874,7 +1874,7 @@ ctk_action_set_action_group (GtkAction	    *action,
 			     GtkActionGroup *action_group)
 {
   if (action->private_data->action_group == NULL)
-    g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+    g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
   else
     g_return_if_fail (action_group == NULL);
 
@@ -1903,7 +1903,7 @@ void
 ctk_action_set_accel_path (GtkAction   *action, 
 			   const gchar *accel_path)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   action->private_data->accel_quark = g_quark_from_string (accel_path);
 }
@@ -1926,7 +1926,7 @@ ctk_action_set_accel_path (GtkAction   *action,
 const gchar *
 ctk_action_get_accel_path (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   if (action->private_data->accel_quark)
     return g_quark_to_string (action->private_data->accel_quark);
@@ -1952,7 +1952,7 @@ ctk_action_get_accel_path (GtkAction *action)
 GClosure *
 ctk_action_get_accel_closure (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
   return action->private_data->accel_closure;
 }
@@ -1975,8 +1975,8 @@ void
 ctk_action_set_accel_group (GtkAction     *action,
 			    GtkAccelGroup *accel_group)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
-  g_return_if_fail (accel_group == NULL || GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_ACTION (action));
+  g_return_if_fail (accel_group == NULL || CTK_IS_ACCEL_GROUP (accel_group));
   
   if (accel_group)
     g_object_ref (accel_group);
@@ -2007,7 +2007,7 @@ ctk_action_set_accel_group (GtkAction     *action,
 void 
 ctk_action_connect_accelerator (GtkAction *action)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   if (!action->private_data->accel_quark ||
       !action->private_data->accel_group)
@@ -2040,7 +2040,7 @@ ctk_action_connect_accelerator (GtkAction *action)
 void 
 ctk_action_disconnect_accelerator (GtkAction *action)
 {
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   if (!action->private_data->accel_quark ||
       !action->private_data->accel_group)
@@ -2072,10 +2072,10 @@ ctk_action_disconnect_accelerator (GtkAction *action)
 GtkWidget *
 ctk_action_create_menu (GtkAction *action)
 {
-  g_return_val_if_fail (GTK_IS_ACTION (action), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
-  if (GTK_ACTION_GET_CLASS (action)->create_menu)
-    return GTK_ACTION_GET_CLASS (action)->create_menu (action);
+  if (CTK_ACTION_GET_CLASS (action)->create_menu)
+    return CTK_ACTION_GET_CLASS (action)->create_menu (action);
 
   return NULL;
 }

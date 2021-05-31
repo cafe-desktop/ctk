@@ -23,13 +23,13 @@
 #include "gtkwidgetprivate.h"
 
 
-G_DEFINE_TYPE (GtkStackAccessible, ctk_stack_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (GtkStackAccessible, ctk_stack_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static AtkObject*
 ctk_stack_accessible_ref_child (AtkObject *obj,
                                 int        i)
 {
-  GtkWidget *stack = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  GtkWidget *stack = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   GtkWidget *visible_child;
 
   if (stack == NULL)
@@ -38,7 +38,7 @@ ctk_stack_accessible_ref_child (AtkObject *obj,
   if (i != 0)
     return NULL;
 
-  visible_child = ctk_stack_get_visible_child (GTK_STACK (stack));
+  visible_child = ctk_stack_get_visible_child (CTK_STACK (stack));
 
   if (visible_child == NULL)
     return NULL;
@@ -49,12 +49,12 @@ ctk_stack_accessible_ref_child (AtkObject *obj,
 static int
 ctk_stack_accessible_get_n_children (AtkObject *obj)
 {
-  GtkWidget *stack = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  GtkWidget *stack = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
 
   if (stack == NULL)
     return 0;
 
-  if (ctk_stack_get_visible_child (GTK_STACK (stack)))
+  if (ctk_stack_get_visible_child (CTK_STACK (stack)))
     return 1;
 
   return 0;
@@ -85,7 +85,7 @@ ctk_stack_accessible_update_visible_child (GtkStack  *stack,
                                            GtkWidget *old_visible_child,
                                            GtkWidget *new_visible_child)
 {
-  AtkObject *stack_accessible = _ctk_widget_peek_accessible (GTK_WIDGET (stack));
+  AtkObject *stack_accessible = _ctk_widget_peek_accessible (CTK_WIDGET (stack));
 
   if (stack_accessible == NULL)
     return;

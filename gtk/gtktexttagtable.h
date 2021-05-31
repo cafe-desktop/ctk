@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TEXT_TAG_TABLE_H__
-#define __GTK_TEXT_TAG_TABLE_H__
+#ifndef __CTK_TEXT_TAG_TABLE_H__
+#define __CTK_TEXT_TAG_TABLE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -40,12 +40,12 @@ G_BEGIN_DECLS
  */
 typedef void (* GtkTextTagTableForeach) (GtkTextTag *tag, gpointer data);
 
-#define GTK_TYPE_TEXT_TAG_TABLE            (ctk_text_tag_table_get_type ())
-#define GTK_TEXT_TAG_TABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTable))
-#define GTK_TEXT_TAG_TABLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTableClass))
-#define GTK_IS_TEXT_TAG_TABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TEXT_TAG_TABLE))
-#define GTK_IS_TEXT_TAG_TABLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TEXT_TAG_TABLE))
-#define GTK_TEXT_TAG_TABLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTableClass))
+#define CTK_TYPE_TEXT_TAG_TABLE            (ctk_text_tag_table_get_type ())
+#define CTK_TEXT_TAG_TABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTable))
+#define CTK_TEXT_TAG_TABLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTableClass))
+#define CTK_IS_TEXT_TAG_TABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TEXT_TAG_TABLE))
+#define CTK_IS_TEXT_TAG_TABLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_TAG_TABLE))
+#define CTK_TEXT_TAG_TABLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_TAG_TABLE, GtkTextTagTableClass))
 
 typedef struct _GtkTextTagTablePrivate       GtkTextTagTablePrivate;
 typedef struct _GtkTextTagTableClass         GtkTextTagTableClass;

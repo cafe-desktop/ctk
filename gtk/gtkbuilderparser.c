@@ -75,8 +75,8 @@ error_missing_attribute (ParserData   *data,
   g_markup_parse_context_get_position (data->ctx, &line, &col);
 
   g_set_error (error,
-               GTK_BUILDER_ERROR,
-               GTK_BUILDER_ERROR_MISSING_ATTRIBUTE,
+               CTK_BUILDER_ERROR,
+               CTK_BUILDER_ERROR_MISSING_ATTRIBUTE,
                "%s:%d:%d <%s> requires attribute '%s'",
                data->filename, line, col, tag, attribute);
 }
@@ -93,14 +93,14 @@ error_invalid_tag (ParserData   *data,
 
   if (expected)
     g_set_error (error,
-                 GTK_BUILDER_ERROR,
-                 GTK_BUILDER_ERROR_INVALID_TAG,
+                 CTK_BUILDER_ERROR,
+                 CTK_BUILDER_ERROR_INVALID_TAG,
                  "%s:%d:%d <%s> is not a valid tag here, expected a <%s> tag",
                  data->filename, line, col, tag, expected);
   else
     g_set_error (error,
-                 GTK_BUILDER_ERROR,
-                 GTK_BUILDER_ERROR_INVALID_TAG,
+                 CTK_BUILDER_ERROR,
+                 CTK_BUILDER_ERROR_INVALID_TAG,
                  "%s:%d:%d <%s> is not a valid tag here",
                  data->filename, line, col, tag);
 }
@@ -114,8 +114,8 @@ error_unhandled_tag (ParserData   *data,
 
   g_markup_parse_context_get_position (data->ctx, &line, &col);
   g_set_error (error,
-               GTK_BUILDER_ERROR,
-               GTK_BUILDER_ERROR_UNHANDLED_TAG,
+               CTK_BUILDER_ERROR,
+               CTK_BUILDER_ERROR_UNHANDLED_TAG,
                "%s:%d:%d Unhandled tag: <%s>",
                data->filename, line, col, tag);
 }
@@ -199,8 +199,8 @@ parse_requires (ParserData   *data,
   if (!(split = g_strsplit (version, ".", 2)) || !split[0] || !split[1])
     {
       g_set_error (error,
-                   GTK_BUILDER_ERROR,
-                   GTK_BUILDER_ERROR_INVALID_VALUE,
+                   CTK_BUILDER_ERROR,
+                   CTK_BUILDER_ERROR_INVALID_VALUE,
                    "'version' attribute has malformed value '%s'", version);
       _ctk_builder_prefix_error (data->builder, data->ctx, error);
       return;
@@ -277,8 +277,8 @@ parse_object (GMarkupParseContext  *context,
       if (object_type == G_TYPE_INVALID)
         {
           g_set_error (error,
-                       GTK_BUILDER_ERROR,
-                       GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION,
+                       CTK_BUILDER_ERROR,
+                       CTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION,
                        "Invalid type function '%s'", type_func);
           _ctk_builder_prefix_error (data->builder, context, error);
           return;
@@ -290,8 +290,8 @@ parse_object (GMarkupParseContext  *context,
       if (object_type == G_TYPE_INVALID)
         {
           g_set_error (error,
-                       GTK_BUILDER_ERROR,
-                       GTK_BUILDER_ERROR_INVALID_VALUE,
+                       CTK_BUILDER_ERROR,
+                       CTK_BUILDER_ERROR_INVALID_VALUE,
                        "Invalid object type '%s'", object_class);
           _ctk_builder_prefix_error (data->builder, context, error);
           return;
@@ -318,7 +318,7 @@ parse_object (GMarkupParseContext  *context,
         {
           data->requested_object_level = data->cur_object_level;
 
-          GTK_NOTE (BUILDER,
+          CTK_NOTE (BUILDER,
                     g_message ("requested object \"%s\" found at level %d",
                                object_id, data->requested_object_level));
 
@@ -344,8 +344,8 @@ parse_object (GMarkupParseContext  *context,
   if (line != 0)
     {
       g_set_error (error,
-                   GTK_BUILDER_ERROR,
-                   GTK_BUILDER_ERROR_DUPLICATE_ID,
+                   CTK_BUILDER_ERROR,
+                   CTK_BUILDER_ERROR_DUPLICATE_ID,
                    "Duplicate object ID '%s' (previously on line %d)",
                    object_id, line);
       _ctk_builder_prefix_error (data->builder, context, error);
@@ -385,8 +385,8 @@ parse_template (GMarkupParseContext  *context,
   if (template_type == 0)
     {
       g_set_error (error,
-                   GTK_BUILDER_ERROR,
-                   GTK_BUILDER_ERROR_UNHANDLED_TAG,
+                   CTK_BUILDER_ERROR,
+                   CTK_BUILDER_ERROR_UNHANDLED_TAG,
                    "Not expecting to handle a template (class '%s', parent '%s')",
                    object_class, parent_class ? parent_class : "GtkWidget");
       _ctk_builder_prefix_error (data->builder, context, error);
@@ -402,8 +402,8 @@ parse_template (GMarkupParseContext  *context,
   if (template_type != parsed_type)
     {
       g_set_error (error,
-                   GTK_BUILDER_ERROR,
-                   GTK_BUILDER_ERROR_TEMPLATE_MISMATCH,
+                   CTK_BUILDER_ERROR,
+                   CTK_BUILDER_ERROR_TEMPLATE_MISMATCH,
                    "Parsed template definition for type '%s', expected type '%s'",
                    object_class, g_type_name (template_type));
       _ctk_builder_prefix_error (data->builder, context, error);
@@ -417,16 +417,16 @@ parse_template (GMarkupParseContext  *context,
 
       if (parent_type == G_TYPE_INVALID)
         {
-          g_set_error (error, GTK_BUILDER_ERROR,
-                       GTK_BUILDER_ERROR_INVALID_VALUE,
+          g_set_error (error, CTK_BUILDER_ERROR,
+                       CTK_BUILDER_ERROR_INVALID_VALUE,
                        "Invalid template parent type '%s'", parent_class);
           _ctk_builder_prefix_error (data->builder, context, error);
           return;
         }
       if (parent_type != expected_type)
         {
-          g_set_error (error, GTK_BUILDER_ERROR,
-                       GTK_BUILDER_ERROR_TEMPLATE_MISMATCH,
+          g_set_error (error, CTK_BUILDER_ERROR,
+                       CTK_BUILDER_ERROR_TEMPLATE_MISMATCH,
                        "Template parent type '%s' does not match instance parent type '%s'.",
                        parent_class, g_type_name (expected_type));
           _ctk_builder_prefix_error (data->builder, context, error);
@@ -448,8 +448,8 @@ parse_template (GMarkupParseContext  *context,
   if (line != 0)
     {
       g_set_error (error,
-                   GTK_BUILDER_ERROR,
-                   GTK_BUILDER_ERROR_DUPLICATE_ID,
+                   CTK_BUILDER_ERROR,
+                   CTK_BUILDER_ERROR_DUPLICATE_ID,
                    "Duplicate object ID '%s' (previously on line %d)",
                    object_class, line);
       _ctk_builder_prefix_error (data->builder, context, error);
@@ -577,8 +577,8 @@ parse_property (ParserData   *data,
   if (!pspec)
     {
       g_set_error (error,
-                   GTK_BUILDER_ERROR,
-                   GTK_BUILDER_ERROR_INVALID_PROPERTY,
+                   CTK_BUILDER_ERROR,
+                   CTK_BUILDER_ERROR_INVALID_PROPERTY,
                    "Invalid property: %s.%s",
                    g_type_name (object_info->type), name);
       _ctk_builder_prefix_error (data->builder, data->ctx, error);
@@ -682,8 +682,8 @@ parse_signal (ParserData   *data,
   if (!g_signal_parse_name (name, object_info->type, &id, &detail, FALSE))
     {
       g_set_error (error,
-                   GTK_BUILDER_ERROR,
-                   GTK_BUILDER_ERROR_INVALID_SIGNAL,
+                   CTK_BUILDER_ERROR,
+                   CTK_BUILDER_ERROR_INVALID_SIGNAL,
                    "Invalid signal '%s' for type '%s'",
                    name, g_type_name (object_info->type));
       _ctk_builder_prefix_error (data->builder, data->ctx, error);
@@ -831,7 +831,7 @@ subparser_end (GMarkupParseContext  *context,
   if (strcmp (data->subparser->start, element_name) != 0)
     return;
 
-  ctk_buildable_custom_tag_end (GTK_BUILDABLE (data->subparser->object),
+  ctk_buildable_custom_tag_end (CTK_BUILDABLE (data->subparser->object),
                                 data->builder,
                                 data->subparser->child,
                                 element_name,
@@ -841,7 +841,7 @@ subparser_end (GMarkupParseContext  *context,
   if (_ctk_builder_lookup_failed (data->builder, error))
     return;
 
-  if (GTK_BUILDABLE_GET_IFACE (data->subparser->object)->custom_finished)
+  if (CTK_BUILDABLE_GET_IFACE (data->subparser->object)->custom_finished)
     data->custom_finalizers = g_slist_prepend (data->custom_finalizers,
                                                data->subparser);
   else
@@ -897,7 +897,7 @@ parse_custom (GMarkupParseContext  *context,
   else
     return FALSE;
 
-  if (!ctk_buildable_custom_tag_start (GTK_BUILDABLE (object),
+  if (!ctk_buildable_custom_tag_start (CTK_BUILDABLE (object),
                                        data->builder,
                                        child,
                                        element_name,
@@ -926,7 +926,7 @@ start_element (GMarkupParseContext  *context,
   ParserData *data = (ParserData*)user_data;
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (BUILDER))
+  if (CTK_DEBUG_CHECK (BUILDER))
     {
       GString *tags = g_string_new ("");
       int i;
@@ -1009,7 +1009,7 @@ end_element (GMarkupParseContext  *context,
 {
   ParserData *data = (ParserData*)user_data;
 
-  GTK_NOTE (BUILDER, g_message ("</%s>", element_name));
+  CTK_NOTE (BUILDER, g_message ("</%s>", element_name));
 
   if (data->subparser && data->subparser->start)
     {
@@ -1027,15 +1027,15 @@ end_element (GMarkupParseContext  *context,
        */
       if (!strcmp (req_info->library, "gtk+"))
         {
-          if (!GTK_CHECK_VERSION (req_info->major, req_info->minor, 0))
+          if (!CTK_CHECK_VERSION (req_info->major, req_info->minor, 0))
             {
               g_set_error (error,
-                           GTK_BUILDER_ERROR,
-                           GTK_BUILDER_ERROR_VERSION_MISMATCH,
+                           CTK_BUILDER_ERROR,
+                           CTK_BUILDER_ERROR_VERSION_MISMATCH,
                            "Required %s version %d.%d, current version is %d.%d",
                            req_info->library,
                            req_info->major, req_info->minor,
-                           GTK_MAJOR_VERSION, GTK_MINOR_VERSION);
+                           CTK_MAJOR_VERSION, CTK_MINOR_VERSION);
               _ctk_builder_prefix_error (data->builder, context, error);
            }
         }
@@ -1061,7 +1061,7 @@ end_element (GMarkupParseContext  *context,
       if (data->requested_objects && data->inside_requested_object &&
           (data->cur_object_level == data->requested_object_level))
         {
-          GTK_NOTE (BUILDER,
+          CTK_NOTE (BUILDER,
                     g_message ("requested object end found at level %d",
                                data->requested_object_level));
 
@@ -1081,8 +1081,8 @@ end_element (GMarkupParseContext  *context,
       if (child_info)
         child_info->object = object_info->object;
 
-      if (GTK_IS_BUILDABLE (object_info->object) &&
-          GTK_BUILDABLE_GET_IFACE (object_info->object)->parser_finished)
+      if (CTK_IS_BUILDABLE (object_info->object) &&
+          CTK_BUILDABLE_GET_IFACE (object_info->object)->parser_finished)
         data->finalizers = g_slist_prepend (data->finalizers, object_info->object);
       _ctk_builder_add_signals (data->builder, object_info->signals);
 
@@ -1139,8 +1139,8 @@ end_element (GMarkupParseContext  *context,
   else
     {
       g_set_error (error,
-                   GTK_BUILDER_ERROR,
-                   GTK_BUILDER_ERROR_UNHANDLED_TAG,
+                   CTK_BUILDER_ERROR,
+                   CTK_BUILDER_ERROR_UNHANDLED_TAG,
                    "Unhandled tag: <%s>", element_name);
       _ctk_builder_prefix_error (data->builder, context, error);
     }
@@ -1272,7 +1272,7 @@ _ctk_builder_parser_parse_buffer (GtkBuilder   *builder,
     {
       SubParser *sub = (SubParser*)l->data;
 
-      ctk_buildable_custom_finished (GTK_BUILDABLE (sub->object),
+      ctk_buildable_custom_finished (CTK_BUILDABLE (sub->object),
                                      builder,
                                      sub->child,
                                      sub->tagname,
@@ -1287,7 +1287,7 @@ _ctk_builder_parser_parse_buffer (GtkBuilder   *builder,
     {
       GtkBuildable *buildable = (GtkBuildable*)l->data;
 
-      ctk_buildable_parser_finished (GTK_BUILDABLE (buildable), builder);
+      ctk_buildable_parser_finished (CTK_BUILDABLE (buildable), builder);
       if (_ctk_builder_lookup_failed (builder, error))
         goto out;
     }

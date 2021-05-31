@@ -91,9 +91,9 @@ static void ctk_search_entry_editable_init (GtkEditableInterface *iface);
 
 static GtkEditableInterface *parent_editable_iface;
 
-G_DEFINE_TYPE_WITH_CODE (GtkSearchEntry, ctk_search_entry, GTK_TYPE_ENTRY,
+G_DEFINE_TYPE_WITH_CODE (GtkSearchEntry, ctk_search_entry, CTK_TYPE_ENTRY,
                          G_ADD_PRIVATE (GtkSearchEntry)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_EDITABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_EDITABLE,
                                                 ctk_search_entry_editable_init))
 
 /* 150 mseconds of delay */
@@ -156,11 +156,11 @@ ctk_search_entry_class_init (GtkSearchEntryClass *klass)
   klass->stop_search = ctk_search_entry_stop_search;
 
   g_signal_override_class_handler ("icon-release",
-                                   GTK_TYPE_SEARCH_ENTRY,
+                                   CTK_TYPE_SEARCH_ENTRY,
                                    G_CALLBACK (ctk_search_entry_icon_release));
 
   g_signal_override_class_handler ("preedit-changed",
-                                   GTK_TYPE_SEARCH_ENTRY,
+                                   CTK_TYPE_SEARCH_ENTRY,
                                    G_CALLBACK (ctk_search_entry_preedit_changed));
 
   /**
@@ -282,7 +282,7 @@ static void
 ctk_search_entry_icon_release (GtkEntry             *entry,
                                GtkEntryIconPosition  icon_pos)
 {
-  if (icon_pos == GTK_ENTRY_ICON_SECONDARY)
+  if (icon_pos == CTK_ENTRY_ICON_SECONDARY)
     ctk_entry_set_text (entry, "");
 }
 
@@ -314,13 +314,13 @@ reset_timeout (GtkSearchEntry *entry)
 static void
 ctk_search_entry_changed (GtkEditable *editable)
 {
-  GtkSearchEntry *entry = GTK_SEARCH_ENTRY (editable);
+  GtkSearchEntry *entry = CTK_SEARCH_ENTRY (editable);
   GtkSearchEntryPrivate *priv = GET_PRIV (entry);
   const char *str, *icon_name;
   gboolean cleared;
 
   /* Update the icons first */
-  str = ctk_entry_get_text (GTK_ENTRY (entry));
+  str = ctk_entry_get_text (CTK_ENTRY (entry));
 
   if (str == NULL || *str == '\0')
     {
@@ -366,11 +366,11 @@ ctk_search_entry_init (GtkSearchEntry *entry)
                 "primary-icon-sensitive", FALSE,
                 NULL);
 
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (entry));
-  if (GTK_IS_ACCESSIBLE (atk_obj))
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (entry));
+  if (CTK_IS_ACCESSIBLE (atk_obj))
     atk_object_set_name (atk_obj, _("Search"));
 
-  ctk_style_context_add_class (ctk_widget_get_style_context (GTK_WIDGET (entry)), "search");
+  ctk_style_context_add_class (ctk_widget_get_style_context (CTK_WIDGET (entry)), "search");
 }
 
 /**
@@ -386,7 +386,7 @@ ctk_search_entry_init (GtkSearchEntry *entry)
 GtkWidget *
 ctk_search_entry_new (void)
 {
-  return GTK_WIDGET (g_object_new (GTK_TYPE_SEARCH_ENTRY, NULL));
+  return CTK_WIDGET (g_object_new (CTK_TYPE_SEARCH_ENTRY, NULL));
 }
 
 gboolean
@@ -448,8 +448,8 @@ ctk_search_entry_handle_event (GtkSearchEntry *entry,
   GtkSearchEntryPrivate *priv = GET_PRIV (entry);
   gboolean handled;
 
-  if (!ctk_widget_get_realized (GTK_WIDGET (entry)))
-    ctk_widget_realize (GTK_WIDGET (entry));
+  if (!ctk_widget_get_realized (CTK_WIDGET (entry)))
+    ctk_widget_realize (CTK_WIDGET (entry));
 
   if (ctk_search_entry_is_keynav_event (event) ||
       event->key.keyval == GDK_KEY_space ||
@@ -459,7 +459,7 @@ ctk_search_entry_handle_event (GtkSearchEntry *entry,
   priv->content_changed = FALSE;
   priv->search_stopped = FALSE;
 
-  handled = ctk_widget_event (GTK_WIDGET (entry), event);
+  handled = ctk_widget_event (CTK_WIDGET (entry), event);
 
   return handled && priv->content_changed && !priv->search_stopped ? GDK_EVENT_STOP : GDK_EVENT_PROPAGATE;
 }

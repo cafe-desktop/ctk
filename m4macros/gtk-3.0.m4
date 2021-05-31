@@ -5,12 +5,12 @@
 # Increment on every change.
 #serial 1
 
-dnl AM_PATH_GTK_3_0([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND [, MODULES]]]])
-dnl Test for GTK+, and define GTK_CFLAGS and GTK_LIBS, if gthread is specified in MODULES, 
+dnl AM_PATH_CTK_3_0([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND [, MODULES]]]])
+dnl Test for GTK+, and define CTK_CFLAGS and CTK_LIBS, if gthread is specified in MODULES, 
 dnl pass to pkg-config
 dnl
-AC_DEFUN([AM_PATH_GTK_3_0],
-[m4_warn([obsolete], [AM_PATH_GTK_3_0 is deprecated, use PKG_CHECK_MODULES([GTK], [gtk+-3.0]) instead])
+AC_DEFUN([AM_PATH_CTK_3_0],
+[m4_warn([obsolete], [AM_PATH_CTK_3_0 is deprecated, use PKG_CHECK_MODULES([GTK], [gtk+-3.0]) instead])
 dnl Get the cflags and libraries from pkg-config
 dnl
 AC_ARG_ENABLE(gtktest, [  --disable-gtktest       do not try to compile and run a test GTK+ program],
@@ -52,8 +52,8 @@ AC_ARG_ENABLE(gtktest, [  --disable-gtktest       do not try to compile and run 
   fi
 
   if test x"$no_gtk" = x ; then
-    GTK_CFLAGS=`$PKG_CONFIG $pkg_config_args --cflags`
-    GTK_LIBS=`$PKG_CONFIG $pkg_config_args --libs`
+    CTK_CFLAGS=`$PKG_CONFIG $pkg_config_args --cflags`
+    CTK_LIBS=`$PKG_CONFIG $pkg_config_args --libs`
     ctk_config_major_version=`$PKG_CONFIG --modversion gtk+-3.0 | \
            sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
     ctk_config_minor_version=`$PKG_CONFIG --modversion gtk+-3.0 | \
@@ -63,8 +63,8 @@ AC_ARG_ENABLE(gtktest, [  --disable-gtktest       do not try to compile and run 
     if test "x$enable_gtktest" = "xyes" ; then
       ac_save_CFLAGS="$CFLAGS"
       ac_save_LIBS="$LIBS"
-      CFLAGS="$CFLAGS $GTK_CFLAGS"
-      LIBS="$GTK_LIBS $LIBS"
+      CFLAGS="$CFLAGS $CTK_CFLAGS"
+      LIBS="$CTK_LIBS $LIBS"
 dnl
 dnl Now check if the installed GTK+ is sufficiently new. (Also sanity
 dnl checks the results of pkg-config to some extent)
@@ -102,12 +102,12 @@ main ()
       printf("*** If pkg-config was wrong, set the environment variable PKG_CONFIG_PATH\n");
       printf("*** to point to the correct configuration files\n");
     } 
-  else if ((ctk_major_version != GTK_MAJOR_VERSION) ||
-	   (ctk_minor_version != GTK_MINOR_VERSION) ||
-           (ctk_micro_version != GTK_MICRO_VERSION))
+  else if ((ctk_major_version != CTK_MAJOR_VERSION) ||
+	   (ctk_minor_version != CTK_MINOR_VERSION) ||
+           (ctk_micro_version != CTK_MICRO_VERSION))
     {
       printf("*** GTK+ header files (version %d.%d.%d) do not match\n",
-	     GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
+	     CTK_MAJOR_VERSION, CTK_MINOR_VERSION, CTK_MICRO_VERSION);
       printf("*** library (version %d.%d.%d)\n",
 	     ctk_major_version, ctk_minor_version, ctk_micro_version);
     }
@@ -158,8 +158,8 @@ main ()
           echo "*** Could not run GTK+ test program, checking why..."
 	  ac_save_CFLAGS="$CFLAGS"
 	  ac_save_LIBS="$LIBS"
-          CFLAGS="$CFLAGS $GTK_CFLAGS"
-          LIBS="$LIBS $GTK_LIBS"
+          CFLAGS="$CFLAGS $CTK_CFLAGS"
+          LIBS="$LIBS $CTK_LIBS"
           AC_TRY_LINK([
 #include <gtk/gtk.h>
 #include <stdio.h>
@@ -179,20 +179,20 @@ main ()
           LIBS="$ac_save_LIBS"
        fi
      fi
-     GTK_CFLAGS=""
-     GTK_LIBS=""
+     CTK_CFLAGS=""
+     CTK_LIBS=""
      ifelse([$3], , :, [$3])
   fi
-  AC_SUBST(GTK_CFLAGS)
-  AC_SUBST(GTK_LIBS)
+  AC_SUBST(CTK_CFLAGS)
+  AC_SUBST(CTK_LIBS)
   rm -f conf.gtktest
 ])
 
-dnl GTK_CHECK_BACKEND(BACKEND-NAME [, MINIMUM-VERSION [, ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
+dnl CTK_CHECK_BACKEND(BACKEND-NAME [, MINIMUM-VERSION [, ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
 dnl   Tests for BACKEND-NAME in the GTK targets list
 dnl
-AC_DEFUN([GTK_CHECK_BACKEND],
-[m4_warn([obsolete], [GTK_CHECK_BACKEND is deprecated, use PKG_CHECK_MODULES([GTK_X11], [gtk+-x11-3.0]) or similar instead])
+AC_DEFUN([CTK_CHECK_BACKEND],
+[m4_warn([obsolete], [CTK_CHECK_BACKEND is deprecated, use PKG_CHECK_MODULES([CTK_X11], [gtk+-x11-3.0]) or similar instead])
   pkg_config_args=ifelse([$1],,gtk+-3.0, gtk+-$1-3.0)
   min_ctk_version=ifelse([$2],,3.0.0,$2)
   pkg_config_args="$pkg_config_args >= $min_ctk_version"

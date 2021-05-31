@@ -29,7 +29,7 @@
 #include <string.h>
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   guint         len;
   GtkCssValue  *values[1];
 };
@@ -199,7 +199,7 @@ ctk_css_value_shadows_print (const GtkCssValue *value,
     }
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_SHADOWS = {
+static const GtkCssValueClass CTK_CSS_VALUE_SHADOWS = {
   ctk_css_value_shadows_free,
   ctk_css_value_shadows_compute,
   ctk_css_value_shadows_equal,
@@ -207,7 +207,7 @@ static const GtkCssValueClass GTK_CSS_VALUE_SHADOWS = {
   ctk_css_value_shadows_print
 };
 
-static GtkCssValue none_singleton = { &GTK_CSS_VALUE_SHADOWS, 1, 0, { NULL } };
+static GtkCssValue none_singleton = { &CTK_CSS_VALUE_SHADOWS, 1, 0, { NULL } };
 
 GtkCssValue *
 _ctk_css_shadows_value_new_none (void)
@@ -224,7 +224,7 @@ ctk_css_shadows_value_new (GtkCssValue **values,
   g_return_val_if_fail (values != NULL, NULL);
   g_return_val_if_fail (len > 0, NULL);
          
-  result = _ctk_css_value_alloc (&GTK_CSS_VALUE_SHADOWS, sizeof (GtkCssValue) + sizeof (GtkCssValue *) * (len - 1));
+  result = _ctk_css_value_alloc (&CTK_CSS_VALUE_SHADOWS, sizeof (GtkCssValue) + sizeof (GtkCssValue *) * (len - 1));
   result->len = len;
   memcpy (&result->values[0], values, sizeof (GtkCssValue *) * len);
             
@@ -264,7 +264,7 @@ _ctk_css_shadows_value_parse (GtkCssParser *parser,
 gboolean
 _ctk_css_shadows_value_is_none (const GtkCssValue *shadows)
 {
-  g_return_val_if_fail (shadows->class == &GTK_CSS_VALUE_SHADOWS, TRUE);
+  g_return_val_if_fail (shadows->class == &CTK_CSS_VALUE_SHADOWS, TRUE);
 
   return shadows->len == 0;
 }
@@ -276,7 +276,7 @@ _ctk_css_shadows_value_paint_layout (const GtkCssValue *shadows,
 {
   guint i;
 
-  g_return_if_fail (shadows->class == &GTK_CSS_VALUE_SHADOWS);
+  g_return_if_fail (shadows->class == &CTK_CSS_VALUE_SHADOWS);
 
   for (i = 0; i < shadows->len; i++)
     {
@@ -290,7 +290,7 @@ _ctk_css_shadows_value_paint_icon (const GtkCssValue *shadows,
 {
   guint i;
 
-  g_return_if_fail (shadows->class == &GTK_CSS_VALUE_SHADOWS);
+  g_return_if_fail (shadows->class == &CTK_CSS_VALUE_SHADOWS);
 
   for (i = 0; i < shadows->len; i++)
     {
@@ -306,7 +306,7 @@ _ctk_css_shadows_value_paint_box (const GtkCssValue   *shadows,
 {
   guint i;
 
-  g_return_if_fail (shadows->class == &GTK_CSS_VALUE_SHADOWS);
+  g_return_if_fail (shadows->class == &CTK_CSS_VALUE_SHADOWS);
 
   for (i = 0; i < shadows->len; i++)
     {
@@ -324,7 +324,7 @@ _ctk_css_shadows_value_get_extents (const GtkCssValue *shadows,
   const GtkCssValue *shadow;
   gdouble hoffset, voffset, spread, radius, clip_radius;
 
-  g_return_if_fail (shadows->class == &GTK_CSS_VALUE_SHADOWS);
+  g_return_if_fail (shadows->class == &CTK_CSS_VALUE_SHADOWS);
 
   *border = b;
 

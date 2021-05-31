@@ -41,7 +41,7 @@ complete_cb (GtkWidget *check,
   PageData *pdata = data;
   gboolean complete;
 
-  complete = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check));
+  complete = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (check));
 
   ctk_assistant_set_page_complete (pdata->assistant,
 				   pdata->page,
@@ -58,16 +58,16 @@ add_completion_test_page (GtkWidget   *assistant,
   GtkWidget *check;
   PageData *pdata;
 
-  page = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  page = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   check = ctk_check_button_new_with_label ("Complete");
 
-  ctk_container_add (GTK_CONTAINER (page), ctk_label_new (text));
-  ctk_container_add (GTK_CONTAINER (page), check);
+  ctk_container_add (CTK_CONTAINER (page), ctk_label_new (text));
+  ctk_container_add (CTK_CONTAINER (page), check);
   
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), complete);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (check), complete);
 
   pdata = g_new (PageData, 1);
-  pdata->assistant = GTK_ASSISTANT (assistant);
+  pdata->assistant = CTK_ASSISTANT (assistant);
   pdata->page = page;
   g_signal_connect (G_OBJECT (check), "toggled", 
 		    G_CALLBACK (complete_cb), pdata);
@@ -76,9 +76,9 @@ add_completion_test_page (GtkWidget   *assistant,
   if (visible)
     ctk_widget_show_all (page);
 
-  ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-  ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, text);
-  ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, complete);
+  ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+  ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, text);
+  ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, complete);
 
   return page;
 }
@@ -112,16 +112,16 @@ progress_timeout (GtkWidget *assistant)
   gint current_page;
   gdouble value;
 
-  current_page = ctk_assistant_get_current_page (GTK_ASSISTANT (assistant));
-  progress = ctk_assistant_get_nth_page (GTK_ASSISTANT (assistant), current_page);
+  current_page = ctk_assistant_get_current_page (CTK_ASSISTANT (assistant));
+  progress = ctk_assistant_get_nth_page (CTK_ASSISTANT (assistant), current_page);
 
-  value  = ctk_progress_bar_get_fraction (GTK_PROGRESS_BAR (progress));
+  value  = ctk_progress_bar_get_fraction (CTK_PROGRESS_BAR (progress));
   value += 0.1;
-  ctk_progress_bar_set_fraction (GTK_PROGRESS_BAR (progress), value);
+  ctk_progress_bar_set_fraction (CTK_PROGRESS_BAR (progress), value);
 
   if (value >= 1.0)
     {
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), progress, TRUE);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), progress, TRUE);
       return FALSE;
     }
 
@@ -131,16 +131,16 @@ progress_timeout (GtkWidget *assistant)
 static void
 prepare_callback (GtkWidget *widget, GtkWidget *page)
 {
-  if (GTK_IS_LABEL (page))
-    g_print ("prepare: %s\n", ctk_label_get_text (GTK_LABEL (page)));
-  else if (ctk_assistant_get_page_type (GTK_ASSISTANT (widget), page) == GTK_ASSISTANT_PAGE_PROGRESS)
+  if (CTK_IS_LABEL (page))
+    g_print ("prepare: %s\n", ctk_label_get_text (CTK_LABEL (page)));
+  else if (ctk_assistant_get_page_type (CTK_ASSISTANT (widget), page) == CTK_ASSISTANT_PAGE_PROGRESS)
     {
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (widget), page, FALSE);
-      ctk_progress_bar_set_fraction (GTK_PROGRESS_BAR (page), 0.0);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (widget), page, FALSE);
+      ctk_progress_bar_set_fraction (CTK_PROGRESS_BAR (page), 0.0);
       gdk_threads_add_timeout (300, (GSourceFunc) progress_timeout, widget);
     }
   else
-    g_print ("prepare: %d\n", ctk_assistant_get_current_page (GTK_ASSISTANT (widget)));
+    g_print ("prepare: %d\n", ctk_assistant_get_current_page (CTK_ASSISTANT (widget)));
 }
 
 static void
@@ -153,7 +153,7 @@ create_simple_assistant (GtkWidget *widget)
       GtkWidget *page;
 
       assistant = ctk_assistant_new ();
-      ctk_window_set_default_size (GTK_WINDOW (assistant), 400, 300);
+      ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
 
       g_signal_connect (G_OBJECT (assistant), "cancel",
 			G_CALLBACK (cancel_callback), NULL);
@@ -166,16 +166,16 @@ create_simple_assistant (GtkWidget *widget)
 
       page = get_test_page ("Page 1");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 1");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 1");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = get_test_page ("Page 2");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 2");
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_CONFIRM);
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 2");
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_CONFIRM);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
     }
 
   if (!ctk_widget_get_visible (assistant))
@@ -197,7 +197,7 @@ create_anonymous_assistant (GtkWidget *widget)
       GtkWidget *page;
 
       assistant = ctk_assistant_new ();
-      ctk_window_set_default_size (GTK_WINDOW (assistant), 400, 300);
+      ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
 
       g_signal_connect (G_OBJECT (assistant), "cancel",
 			G_CALLBACK (cancel_callback), NULL);
@@ -210,14 +210,14 @@ create_anonymous_assistant (GtkWidget *widget)
 
       page = get_test_page ("Page 1");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = get_test_page ("Page 2");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_CONFIRM);
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_CONFIRM);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
     }
 
   if (!ctk_widget_get_visible (assistant))
@@ -236,7 +236,7 @@ visible_cb (GtkWidget *check,
   GtkWidget *page = data;
   gboolean visible;
 
-  visible = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (check));
+  visible = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (check));
 
   g_object_set (G_OBJECT (page), "visible", visible, NULL);
 }
@@ -252,7 +252,7 @@ create_generous_assistant (GtkWidget *widget)
       PageData  *pdata;
 
       assistant = ctk_assistant_new ();
-      ctk_window_set_default_size (GTK_WINDOW (assistant), 400, 300);
+      ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
 
       g_signal_connect (G_OBJECT (assistant), "cancel",
 			G_CALLBACK (cancel_callback), NULL);
@@ -265,52 +265,52 @@ create_generous_assistant (GtkWidget *widget)
 
       page = get_test_page ("Introduction");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Introduction");
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_INTRO);
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Introduction");
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_INTRO);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = add_completion_test_page (assistant, "Content", TRUE, FALSE);
       next = add_completion_test_page (assistant, "More Content", TRUE, TRUE);
 
       check = ctk_check_button_new_with_label ("Next page visible");
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check), TRUE);
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (check), TRUE);
       g_signal_connect (G_OBJECT (check), "toggled", 
 			G_CALLBACK (visible_cb), next);
       ctk_widget_show (check);
-      ctk_container_add (GTK_CONTAINER (page), check);
+      ctk_container_add (CTK_CONTAINER (page), check);
       
       add_completion_test_page (assistant, "Even More Content", TRUE, TRUE);
 
       page = get_test_page ("Confirmation");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Confirmation");
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_CONFIRM);
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Confirmation");
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_CONFIRM);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = ctk_progress_bar_new ();
-      ctk_widget_set_halign (page, GTK_ALIGN_FILL);
-      ctk_widget_set_valign (page, GTK_ALIGN_CENTER);
+      ctk_widget_set_halign (page, CTK_ALIGN_FILL);
+      ctk_widget_set_valign (page, CTK_ALIGN_CENTER);
       ctk_widget_set_margin_start (page, 20);
       ctk_widget_set_margin_end (page, 20);
       ctk_widget_show_all (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Progress");
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_PROGRESS);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Progress");
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_PROGRESS);
 
       page = ctk_check_button_new_with_label ("Summary complete");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Summary");
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_SUMMARY);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Summary");
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_SUMMARY);
 
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (page),
-                                    ctk_assistant_get_page_complete (GTK_ASSISTANT (assistant),
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (page),
+                                    ctk_assistant_get_page_complete (CTK_ASSISTANT (assistant),
                                                                      page));
 
       pdata = g_new (PageData, 1);
-      pdata->assistant = GTK_ASSISTANT (assistant);
+      pdata->assistant = CTK_ASSISTANT (assistant);
       pdata->page = page;
       g_signal_connect (page, "toggled",
                       G_CALLBACK (complete_cb), pdata);
@@ -361,7 +361,7 @@ create_nonlinear_assistant (GtkWidget *widget)
       GtkWidget *page, *button;
 
       assistant = ctk_assistant_new ();
-      ctk_window_set_default_size (GTK_WINDOW (assistant), 400, 300);
+      ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
 
       g_signal_connect (G_OBJECT (assistant), "cancel",
 			G_CALLBACK (cancel_callback), NULL);
@@ -372,45 +372,45 @@ create_nonlinear_assistant (GtkWidget *widget)
       g_signal_connect (G_OBJECT (assistant), "prepare",
 			G_CALLBACK (prepare_callback), NULL);
 
-      ctk_assistant_set_forward_page_func (GTK_ASSISTANT (assistant),
+      ctk_assistant_set_forward_page_func (CTK_ASSISTANT (assistant),
 					   nonlinear_assistant_forward_page,
 					   NULL, NULL);
 
-      page = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+      page = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
 
       button = ctk_radio_button_new_with_label (NULL, "branch A");
-      ctk_box_pack_start (GTK_BOX (page), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (page), button, FALSE, FALSE, 0);
       g_signal_connect (G_OBJECT (button), "toggled", G_CALLBACK (select_branch), GINT_TO_POINTER ('A'));
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (button), TRUE);
       
-      button = ctk_radio_button_new_with_label (ctk_radio_button_get_group (GTK_RADIO_BUTTON (button)),
+      button = ctk_radio_button_new_with_label (ctk_radio_button_get_group (CTK_RADIO_BUTTON (button)),
 						"branch B");
-      ctk_box_pack_start (GTK_BOX (page), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (page), button, FALSE, FALSE, 0);
       g_signal_connect (G_OBJECT (button), "toggled", G_CALLBACK (select_branch), GINT_TO_POINTER ('B'));
 
       ctk_widget_show_all (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 1");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 1");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
       
       page = get_test_page ("Page 2A");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 2");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 2");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = get_test_page ("Page 2B");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 2");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 2");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = get_test_page ("Confirmation");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Confirmation");
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_CONFIRM);
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Confirmation");
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_CONFIRM);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
     }
 
   if (!ctk_widget_get_visible (assistant))
@@ -441,7 +441,7 @@ looping_assistant_forward_page (gint current_page, gpointer data)
 	assistant = (GtkAssistant*) data;
 	page = ctk_assistant_get_nth_page (assistant, current_page);
 
-	if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (page)))
+	if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (page)))
 	  return 0;
 	else
 	  return 4;
@@ -462,7 +462,7 @@ create_looping_assistant (GtkWidget *widget)
       GtkWidget *page;
 
       assistant = ctk_assistant_new ();
-      ctk_window_set_default_size (GTK_WINDOW (assistant), 400, 300);
+      ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
 
       g_signal_connect (G_OBJECT (assistant), "cancel",
 			G_CALLBACK (cancel_callback), NULL);
@@ -473,41 +473,41 @@ create_looping_assistant (GtkWidget *widget)
       g_signal_connect (G_OBJECT (assistant), "prepare",
 			G_CALLBACK (prepare_callback), NULL);
 
-      ctk_assistant_set_forward_page_func (GTK_ASSISTANT (assistant),
+      ctk_assistant_set_forward_page_func (CTK_ASSISTANT (assistant),
 					   looping_assistant_forward_page,
 					   assistant, NULL);
 
       page = get_test_page ("Introduction");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Introduction");
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_INTRO);
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Introduction");
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_INTRO);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = get_test_page ("Content");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Content");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Content");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = get_test_page ("More content");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "More content");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "More content");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = ctk_check_button_new_with_label ("Loop?");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Loop?");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Loop?");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
       
       page = get_test_page ("Confirmation");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Confirmation");
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_CONFIRM);
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Confirmation");
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_CONFIRM);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
     }
 
   if (!ctk_widget_get_visible (assistant))
@@ -539,12 +539,12 @@ create_full_featured_assistant (GtkWidget *widget)
       GtkWidget *page, *button;
 
       assistant = ctk_assistant_new ();
-      ctk_window_set_default_size (GTK_WINDOW (assistant), 400, 300);
+      ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
 
       button = ctk_button_new_with_label ("_Stop");
-      ctk_button_set_use_underline (GTK_BUTTON (button), TRUE);
+      ctk_button_set_use_underline (CTK_BUTTON (button), TRUE);
       ctk_widget_show (button);
-      ctk_assistant_add_action_widget (GTK_ASSISTANT (assistant), button);
+      ctk_assistant_add_action_widget (CTK_ASSISTANT (assistant), button);
       g_signal_connect (button, "clicked",
                         G_CALLBACK (toggle_invisible), assistant);
 
@@ -559,28 +559,28 @@ create_full_featured_assistant (GtkWidget *widget)
 
       page = get_test_page ("Page 1");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 1");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 1");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = get_test_page ("Invisible page");
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 2");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 2");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
-      page = ctk_file_chooser_widget_new (GTK_FILE_CHOOSER_ACTION_OPEN);
+      page = ctk_file_chooser_widget_new (CTK_FILE_CHOOSER_ACTION_OPEN);
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Filechooser");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
-      ctk_assistant_set_page_has_padding (GTK_ASSISTANT (assistant), page, FALSE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Filechooser");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_set_page_has_padding (CTK_ASSISTANT (assistant), page, FALSE);
 
       page = get_test_page ("Page 3");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 3");
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_CONFIRM);
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 3");
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_CONFIRM);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
     }
 
   if (!ctk_widget_get_visible (assistant))
@@ -608,8 +608,8 @@ flip_pages (GtkButton *button, GtkAssistant *assistant)
   ctk_assistant_insert_page (assistant, page, 2);
 
   ctk_widget_show_all (page);
-  ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, title);
-  ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+  ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, title);
+  ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
   g_object_unref (page);
   g_free (title);
@@ -626,12 +626,12 @@ create_page_flipping_assistant (GtkWidget *widget)
       GtkWidget *page, *button;
 
       assistant = ctk_assistant_new ();
-      ctk_window_set_default_size (GTK_WINDOW (assistant), 400, 300);
+      ctk_window_set_default_size (CTK_WINDOW (assistant), 400, 300);
 
       button = ctk_button_new_with_label ("_Flip");
-      ctk_button_set_use_underline (GTK_BUTTON (button), TRUE);
+      ctk_button_set_use_underline (CTK_BUTTON (button), TRUE);
       ctk_widget_show (button);
-      ctk_assistant_add_action_widget (GTK_ASSISTANT (assistant), button);
+      ctk_assistant_add_action_widget (CTK_ASSISTANT (assistant), button);
       g_signal_connect (button, "clicked",
                         G_CALLBACK (flip_pages), assistant);
 
@@ -646,33 +646,33 @@ create_page_flipping_assistant (GtkWidget *widget)
 
       page = get_test_page ("Page 1");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 1");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 1");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
-      page = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-      ctk_box_pack_start (GTK_BOX (page),
+      page = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+      ctk_box_pack_start (CTK_BOX (page),
                           get_test_page ("Page 2"),
                           TRUE,
                           TRUE,
                           0);
       ctk_widget_show_all (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 2");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 2");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = get_test_page ("Page 3");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Page 3");
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Page 3");
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
 
       page = get_test_page ("Summary");
       ctk_widget_show (page);
-      ctk_assistant_append_page (GTK_ASSISTANT (assistant), page);
-      ctk_assistant_set_page_title (GTK_ASSISTANT (assistant), page, "Summary");
-      ctk_assistant_set_page_type  (GTK_ASSISTANT (assistant), page, GTK_ASSISTANT_PAGE_SUMMARY);
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (assistant), page, TRUE);
+      ctk_assistant_append_page (CTK_ASSISTANT (assistant), page);
+      ctk_assistant_set_page_title (CTK_ASSISTANT (assistant), page, "Summary");
+      ctk_assistant_set_page_type  (CTK_ASSISTANT (assistant), page, CTK_ASSISTANT_PAGE_SUMMARY);
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (assistant), page, TRUE);
     }
 
   if (!ctk_widget_get_visible (assistant))
@@ -707,17 +707,17 @@ main (int argc, gchar *argv[])
   ctk_init (&argc, &argv);
 
   if (g_getenv ("RTL"))
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   g_signal_connect (G_OBJECT (window), "destroy",
 		    G_CALLBACK (ctk_main_quit), NULL);
   g_signal_connect (G_OBJECT (window), "delete-event",
 		    G_CALLBACK (ctk_false), NULL);
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   for (i = 0; i < G_N_ELEMENTS (buttons); i++)
     {
@@ -727,7 +727,7 @@ main (int argc, gchar *argv[])
 	g_signal_connect (G_OBJECT (button), "clicked",
 			  G_CALLBACK (buttons[i].func), NULL);
 
-      ctk_box_pack_start (GTK_BOX (box), button, TRUE, TRUE, 0);
+      ctk_box_pack_start (CTK_BOX (box), button, TRUE, TRUE, 0);
     }
 
   ctk_widget_show_all (window);

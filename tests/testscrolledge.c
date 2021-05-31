@@ -29,7 +29,7 @@ populate_list (GtkListBox *list)
   gint n;
   GList *l;
 
-  l = ctk_container_get_children (GTK_CONTAINER (list));
+  l = ctk_container_get_children (CTK_CONTAINER (list));
   n = g_list_length (l);
   g_list_free (l);
 
@@ -41,10 +41,10 @@ populate_list (GtkListBox *list)
       g_free (text);
 
       g_object_set (label, "margin", 10, NULL);
-      ctk_widget_set_halign (label, GTK_ALIGN_START);
-      ctk_container_add (GTK_CONTAINER (row), label);
+      ctk_widget_set_halign (label, CTK_ALIGN_START);
+      ctk_container_add (CTK_CONTAINER (row), label);
       ctk_widget_show_all (row);
-      ctk_container_add (GTK_CONTAINER (list), row);
+      ctk_container_add (CTK_CONTAINER (list), row);
     }
 }
 
@@ -57,7 +57,7 @@ add_rows (gpointer data)
   GtkListBox *list = data;
 
   ctk_widget_hide (popup);
-  ctk_spinner_stop (GTK_SPINNER (spinner));
+  ctk_spinner_stop (CTK_SPINNER (spinner));
 
   populate_list (list);
   add_rows_id = 0;
@@ -70,9 +70,9 @@ edge_overshot (GtkScrolledWindow *sw,
                GtkPositionType    pos,
                GtkListBox        *list)
 {
-  if (pos == GTK_POS_BOTTOM)
+  if (pos == CTK_POS_BOTTOM)
     {
-      ctk_spinner_start (GTK_SPINNER (spinner));
+      ctk_spinner_start (CTK_SPINNER (spinner));
       ctk_widget_show (popup);
 
       if (add_rows_id == 0)
@@ -99,33 +99,33 @@ main (int argc, char *argv[])
 
   ctk_init (NULL, NULL);
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_default_size (GTK_WINDOW (win), 600, 400);
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (CTK_WINDOW (win), 600, 400);
 
   overlay = ctk_overlay_new ();
-  popup = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-  ctk_widget_set_halign (popup, GTK_ALIGN_CENTER);
-  ctk_widget_set_valign (popup, GTK_ALIGN_END);
+  popup = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+  ctk_widget_set_halign (popup, CTK_ALIGN_CENTER);
+  ctk_widget_set_valign (popup, CTK_ALIGN_END);
   g_object_set (popup, "margin", 40, NULL);
   label = ctk_label_new ("Getting more rows...");
   spinner = ctk_spinner_new ();
   ctk_widget_show (spinner);
   ctk_widget_show (label);
-  ctk_container_add (GTK_CONTAINER (popup), label);
-  ctk_container_add (GTK_CONTAINER (popup), spinner);
+  ctk_container_add (CTK_CONTAINER (popup), label);
+  ctk_container_add (CTK_CONTAINER (popup), spinner);
 
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), popup);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), popup);
   ctk_widget_set_no_show_all (popup, TRUE);
 
   sw = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw), GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw), CTK_POLICY_NEVER, CTK_POLICY_AUTOMATIC);
   list = ctk_list_box_new ();
-  ctk_list_box_set_selection_mode (GTK_LIST_BOX (list), GTK_SELECTION_NONE);
+  ctk_list_box_set_selection_mode (CTK_LIST_BOX (list), CTK_SELECTION_NONE);
 
-  ctk_container_add (GTK_CONTAINER (win), overlay);
-  ctk_container_add (GTK_CONTAINER (overlay), sw);
-  ctk_container_add (GTK_CONTAINER (sw), list);
-  populate_list (GTK_LIST_BOX (list));
+  ctk_container_add (CTK_CONTAINER (win), overlay);
+  ctk_container_add (CTK_CONTAINER (overlay), sw);
+  ctk_container_add (CTK_CONTAINER (sw), list);
+  populate_list (CTK_LIST_BOX (list));
 
   g_signal_connect (sw, "edge-overshot", G_CALLBACK (edge_overshot), list);
   g_signal_connect (sw, "edge-reached", G_CALLBACK (edge_reached), list);

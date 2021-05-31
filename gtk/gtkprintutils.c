@@ -25,14 +25,14 @@ _ctk_print_convert_to_mm (gdouble len,
 {
   switch (unit)
     {
-    case GTK_UNIT_MM:
+    case CTK_UNIT_MM:
       return len;
-    case GTK_UNIT_INCH:
+    case CTK_UNIT_INCH:
       return len * MM_PER_INCH;
     default:
       g_warning ("Unsupported unit");
       /* Fall through */
-    case GTK_UNIT_POINTS:
+    case CTK_UNIT_POINTS:
       return len * (MM_PER_INCH / POINTS_PER_INCH);
       break;
     }
@@ -44,14 +44,14 @@ _ctk_print_convert_from_mm (gdouble len,
 {
   switch (unit)
     {
-    case GTK_UNIT_MM:
+    case CTK_UNIT_MM:
       return len;
-    case GTK_UNIT_INCH:
+    case CTK_UNIT_INCH:
       return len / MM_PER_INCH;
     default:
       g_warning ("Unsupported unit");
       /* Fall through */
-    case GTK_UNIT_POINTS:
+    case CTK_UNIT_POINTS:
       return len / (MM_PER_INCH / POINTS_PER_INCH);
       break;
     }

@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_MISC_H__
-#define __GTK_MISC_H__
+#ifndef __CTK_MISC_H__
+#define __CTK_MISC_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -35,12 +35,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MISC		       (ctk_misc_get_type ())
-#define GTK_MISC(obj)		       (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MISC, GtkMisc))
-#define GTK_MISC_CLASS(klass)	       (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MISC, GtkMiscClass))
-#define GTK_IS_MISC(obj)	       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MISC))
-#define GTK_IS_MISC_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_MISC))
-#define GTK_MISC_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_MISC, GtkMiscClass))
+#define CTK_TYPE_MISC		       (ctk_misc_get_type ())
+#define CTK_MISC(obj)		       (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MISC, GtkMisc))
+#define CTK_MISC_CLASS(klass)	       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MISC, GtkMiscClass))
+#define CTK_IS_MISC(obj)	       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MISC))
+#define CTK_IS_MISC_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MISC))
+#define CTK_MISC_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MISC, GtkMiscClass))
 
 
 typedef struct _GtkMisc              GtkMisc;
@@ -90,4 +90,4 @@ void   _ctk_misc_get_padding_and_border	(GtkMisc   *misc,
 
 G_END_DECLS
 
-#endif /* __GTK_MISC_H__ */
+#endif /* __CTK_MISC_H__ */

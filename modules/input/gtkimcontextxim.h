@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_IM_CONTEXT_XIM_H__
-#define __GTK_IM_CONTEXT_XIM_H__
+#ifndef __CTK_IM_CONTEXT_XIM_H__
+#define __CTK_IM_CONTEXT_XIM_H__
 
 #include <gtk/gtk.h>
 #include "x11/gdkx.h"
@@ -25,12 +25,12 @@ G_BEGIN_DECLS
 
 extern GType ctk_type_im_context_xim;
 
-#define GTK_TYPE_IM_CONTEXT_XIM            (ctk_type_im_context_xim)
-#define GTK_IM_CONTEXT_XIM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_IM_CONTEXT_XIM, GtkIMContextXIM))
-#define GTK_IM_CONTEXT_XIM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_IM_CONTEXT_XIM, GtkIMContextXIMClass))
-#define GTK_IS_IM_CONTEXT_XIM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_IM_CONTEXT_XIM))
-#define GTK_IS_IM_CONTEXT_XIM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_IM_CONTEXT_XIM))
-#define GTK_IM_CONTEXT_XIM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_IM_CONTEXT_XIM, GtkIMContextXIMClass))
+#define CTK_TYPE_IM_CONTEXT_XIM            (ctk_type_im_context_xim)
+#define CTK_IM_CONTEXT_XIM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_IM_CONTEXT_XIM, GtkIMContextXIM))
+#define CTK_IM_CONTEXT_XIM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_IM_CONTEXT_XIM, GtkIMContextXIMClass))
+#define CTK_IS_IM_CONTEXT_XIM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_IM_CONTEXT_XIM))
+#define CTK_IS_IM_CONTEXT_XIM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_IM_CONTEXT_XIM))
+#define CTK_IM_CONTEXT_XIM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_IM_CONTEXT_XIM, GtkIMContextXIMClass))
 
 
 typedef struct _GtkIMContextXIM       GtkIMContextXIM;
@@ -48,4 +48,4 @@ void ctk_im_context_xim_shutdown (void);
 
 G_END_DECLS
 
-#endif /* __GTK_IM_CONTEXT_XIM_H__ */
+#endif /* __CTK_IM_CONTEXT_XIM_H__ */

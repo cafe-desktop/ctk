@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ADJUSTMENT_PRIVATE_H__
-#define __GTK_ADJUSTMENT_PRIVATE_H__
+#ifndef __CTK_ADJUSTMENT_PRIVATE_H__
+#define __CTK_ADJUSTMENT_PRIVATE_H__
 
 
 #include <gtk/gtkadjustment.h>
@@ -37,4 +37,4 @@ gboolean ctk_adjustment_is_animating (GtkAdjustment *adjustment);
 G_END_DECLS
 
 
-#endif /* __GTK_ADJUSTMENT_PRIVATE_H__ */
+#endif /* __CTK_ADJUSTMENT_PRIVATE_H__ */

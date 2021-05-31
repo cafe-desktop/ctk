@@ -4632,16 +4632,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "Activer les statistiques avec GOBJECT_DEBUG=instance-count"
 
 #: gtk/inspector/visual.c:432 gtk/inspector/visual.c:447
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "Le thème est figé par GTK_THEME"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "Le thème est figé par CTK_THEME"
 
 #: gtk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "Le moteur ne gère pas la mise à l’échelle des fenêtres"
 
 #: gtk/inspector/visual.c:752
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "Le paramètre est figé par GTK_TEST_TOUCHSCREEN"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "Le paramètre est figé par CTK_TEST_TOUCHSCREEN"
 
 #: gtk/inspector/visual.c:817
 msgid ""

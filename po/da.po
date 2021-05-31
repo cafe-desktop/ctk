@@ -4192,10 +4192,10 @@ msgstr "Ingen"
 
 # Fra kildefilen:
 #
-# ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_NONE, _("None"));
-# ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_CAPTURE, _("Capture"));
-# ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_BUBBLE, _("Bubble"));
-# ctk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (combo), GTK_PHASE_TARGET, _("Target"));
+# ctk_combo_box_text_insert_text (CTK_COMBO_BOX_TEXT (combo), CTK_PHASE_NONE, _("None"));
+# ctk_combo_box_text_insert_text (CTK_COMBO_BOX_TEXT (combo), CTK_PHASE_CAPTURE, _("Capture"));
+# ctk_combo_box_text_insert_text (CTK_COMBO_BOX_TEXT (combo), CTK_PHASE_BUBBLE, _("Bubble"));
+# ctk_combo_box_text_insert_text (CTK_COMBO_BOX_TEXT (combo), CTK_PHASE_TARGET, _("Target"));
 #
 # Tyder på at capture er en fase, dvs. substantiv (indfangning) snarere end imperativ
 #: gtk/inspector/gestures.c:130
@@ -4536,16 +4536,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "Aktivér statistik med GOBJECT_DEBUG=instance-count"
 
 #: gtk/inspector/visual.c:432 gtk/inspector/visual.c:447
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "Tema fast angivet ved GTK_THEME"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "Tema fast angivet ved CTK_THEME"
 
 #: gtk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "Motoren understøtter ikke vinduesskalering"
 
 #: gtk/inspector/visual.c:752
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "Indstillingen er fast angivet ved GTK_TEST_TOUCHSCREEN"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "Indstillingen er fast angivet ved CTK_TEST_TOUCHSCREEN"
 
 #: gtk/inspector/visual.c:817
 msgid ""

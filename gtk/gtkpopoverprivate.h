@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_POPOVER_PRIVATE_H__
-#define __GTK_POPOVER_PRIVATE_H__
+#ifndef __CTK_POPOVER_PRIVATE_H__
+#define __CTK_POPOVER_PRIVATE_H__
 
 #include "gtkpopover.h"
 
@@ -27,4 +27,4 @@ GtkWidget *ctk_popover_get_prev_default (GtkPopover *popover);
 
 G_END_DECLS
 
-#endif /* __GTK_POPOVER_PRIVATE_H__ */
+#endif /* __CTK_POPOVER_PRIVATE_H__ */

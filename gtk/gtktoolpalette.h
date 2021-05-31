@@ -18,10 +18,10 @@
  *      Mathias Hasselmann
  */
 
-#ifndef __GTK_TOOL_PALETTE_H__
-#define __GTK_TOOL_PALETTE_H__
+#ifndef __CTK_TOOL_PALETTE_H__
+#define __CTK_TOOL_PALETTE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TOOL_PALETTE           (ctk_tool_palette_get_type ())
-#define GTK_TOOL_PALETTE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_TOOL_PALETTE, GtkToolPalette))
-#define GTK_TOOL_PALETTE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_TOOL_PALETTE, GtkToolPaletteClass))
-#define GTK_IS_TOOL_PALETTE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_TOOL_PALETTE))
-#define GTK_IS_TOOL_PALETTE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_TOOL_PALETTE))
-#define GTK_TOOL_PALETTE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TOOL_PALETTE, GtkToolPaletteClass))
+#define CTK_TYPE_TOOL_PALETTE           (ctk_tool_palette_get_type ())
+#define CTK_TOOL_PALETTE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_TOOL_PALETTE, GtkToolPalette))
+#define CTK_TOOL_PALETTE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_TOOL_PALETTE, GtkToolPaletteClass))
+#define CTK_IS_TOOL_PALETTE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_TOOL_PALETTE))
+#define CTK_IS_TOOL_PALETTE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_TOOL_PALETTE))
+#define CTK_TOOL_PALETTE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TOOL_PALETTE, GtkToolPaletteClass))
 
 typedef struct _GtkToolPalette           GtkToolPalette;
 typedef struct _GtkToolPaletteClass      GtkToolPaletteClass;
@@ -44,15 +44,15 @@ typedef struct _GtkToolPalettePrivate    GtkToolPalettePrivate;
 
 /**
  * GtkToolPaletteDragTargets:
- * @GTK_TOOL_PALETTE_DRAG_ITEMS: Support drag of items.
- * @GTK_TOOL_PALETTE_DRAG_GROUPS: Support drag of groups.
+ * @CTK_TOOL_PALETTE_DRAG_ITEMS: Support drag of items.
+ * @CTK_TOOL_PALETTE_DRAG_GROUPS: Support drag of groups.
  *
  * Flags used to specify the supported drag targets.
  */
 typedef enum /*< flags >*/
 {
-  GTK_TOOL_PALETTE_DRAG_ITEMS = (1 << 0),
-  GTK_TOOL_PALETTE_DRAG_GROUPS = (1 << 1)
+  CTK_TOOL_PALETTE_DRAG_ITEMS = (1 << 0),
+  CTK_TOOL_PALETTE_DRAG_GROUPS = (1 << 1)
 }
 GtkToolPaletteDragTargets;
 
@@ -164,4 +164,4 @@ const GtkTargetEntry*          ctk_tool_palette_get_drag_target_group (void) G_G
 
 G_END_DECLS
 
-#endif /* __GTK_TOOL_PALETTE_H__ */
+#endif /* __CTK_TOOL_PALETTE_H__ */

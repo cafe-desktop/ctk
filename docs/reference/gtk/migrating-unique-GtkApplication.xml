@@ -43,7 +43,7 @@ main (int argc, char *argv[])
 
   window = create_my_window ();
 
-  unique_app_watch_window (app, GTK_WINDOW (window));
+  unique_app_watch_window (app, CTK_WINDOW (window));
 
   ctk_widget_show (window);
 
@@ -66,12 +66,12 @@ activate (GtkApplication *app)
 
   if (list)
     {
-      ctk_window_present (GTK_WINDOW (list->data));
+      ctk_window_present (CTK_WINDOW (list->data));
     }
   else
     {
       window = create_my_window ();
-      ctk_window_set_application (GTK_WINDOW (window), app);
+      ctk_window_set_application (CTK_WINDOW (window), app);
       ctk_widget_show (window);
     }
 }

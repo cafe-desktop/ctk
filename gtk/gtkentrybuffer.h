@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ENTRY_BUFFER_H__
-#define __GTK_ENTRY_BUFFER_H__
+#ifndef __CTK_ENTRY_BUFFER_H__
+#define __CTK_ENTRY_BUFFER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,14 +28,14 @@
 G_BEGIN_DECLS
 
 /* Maximum size of text buffer, in bytes */
-#define GTK_ENTRY_BUFFER_MAX_SIZE        G_MAXUSHORT
+#define CTK_ENTRY_BUFFER_MAX_SIZE        G_MAXUSHORT
 
-#define GTK_TYPE_ENTRY_BUFFER            (ctk_entry_buffer_get_type ())
-#define GTK_ENTRY_BUFFER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ENTRY_BUFFER, GtkEntryBuffer))
-#define GTK_ENTRY_BUFFER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ENTRY_BUFFER, GtkEntryBufferClass))
-#define GTK_IS_ENTRY_BUFFER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ENTRY_BUFFER))
-#define GTK_IS_ENTRY_BUFFER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ENTRY_BUFFER))
-#define GTK_ENTRY_BUFFER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ENTRY_BUFFER, GtkEntryBufferClass))
+#define CTK_TYPE_ENTRY_BUFFER            (ctk_entry_buffer_get_type ())
+#define CTK_ENTRY_BUFFER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ENTRY_BUFFER, GtkEntryBuffer))
+#define CTK_ENTRY_BUFFER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ENTRY_BUFFER, GtkEntryBufferClass))
+#define CTK_IS_ENTRY_BUFFER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ENTRY_BUFFER))
+#define CTK_IS_ENTRY_BUFFER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ENTRY_BUFFER))
+#define CTK_ENTRY_BUFFER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ENTRY_BUFFER, GtkEntryBufferClass))
 
 typedef struct _GtkEntryBuffer            GtkEntryBuffer;
 typedef struct _GtkEntryBufferClass       GtkEntryBufferClass;
@@ -143,4 +143,4 @@ void                      ctk_entry_buffer_emit_deleted_text      (GtkEntryBuffe
 
 G_END_DECLS
 
-#endif /* __GTK_ENTRY_BUFFER_H__ */
+#endif /* __CTK_ENTRY_BUFFER_H__ */

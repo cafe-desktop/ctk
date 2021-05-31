@@ -291,11 +291,11 @@ msgstr "முக்கியமானது"
 #: ../gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "இந்த செயல் முக்கியமானதாக கருதப்படுகிறது. உண்மை எனில் இந்த செயலுக்கான கருவி "
 "உருப்படி "
-"பதிலாள்கள் உரையை GTK_TOOLBAR_BOTH_HORIZ யாங்கில்ன் காட்டப்படும்"
+"பதிலாள்கள் உரையை CTK_TOOLBAR_BOTH_HORIZ யாங்கில்ன் காட்டப்படும்"
 
 #: ../gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1766,8 +1766,8 @@ msgid "Default Spacing"
 msgstr "கொடா நிலை இடைவெளி"
 
 #: ../gtk/gtkbutton.c:494
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "GTK_CAN_DEFAULT  பொத்தான்களுக்கு கூடுதல் இடைவெளிக்காக சேர்க்கிறது "
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "CTK_CAN_DEFAULT  பொத்தான்களுக்கு கூடுதல் இடைவெளிக்காக சேர்க்கிறது "
 
 #: ../gtk/gtkbutton.c:510
 msgid "Default Outside Spacing"
@@ -1775,10 +1775,10 @@ msgstr "முன்னிருப்பு வெளிப்பக்க இ�
 
 #: ../gtk/gtkbutton.c:511
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"எல்லைக்கு வெளியே எப்போதும் வரையப்படும்  GTK_CAN_DEFAULT  பொத்தான்களுக்கு "
+"எல்லைக்கு வெளியே எப்போதும் வரையப்படும்  CTK_CAN_DEFAULT  பொத்தான்களுக்கு "
 "கூடுதல் "
 "இடைவெளிக்காக சேர்க்கிறது "
 
@@ -4140,9 +4140,9 @@ msgid "Baseline Row"
 msgstr "அடிவரி வரிசை"
 
 #: ../gtk/gtkgrid.c:1763
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
-"valign பண்புக்கு GTK_ALIGN_BASELINE என்ற மதிப்பு அமைந்திருக்கையில் "
+"valign பண்புக்கு CTK_ALIGN_BASELINE என்ற மதிப்பு அமைந்திருக்கையில் "
 "அடிவரியுடன் சீரமைக்கப்பட வேண்டிய வரிசை"
 
 #: ../gtk/gtkgrid.c:1781
@@ -7817,10 +7817,10 @@ msgstr "சின்னம் மற்றும் பெயருக்கு 
 #: ../gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "கருவிப்பட்டை உருப்படி முக்கியமானதாக கருதப்படுகிறதா. TRUE எனில், கருவிப்பட்டை "
-"பொத்தான்கள் GTK_TOOLBAR_BOTH_HORIZ முறையை காட்டும்"
+"பொத்தான்கள் CTK_TOOLBAR_BOTH_HORIZ முறையை காட்டும்"
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

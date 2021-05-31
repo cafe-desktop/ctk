@@ -46,15 +46,15 @@ enum {
   PROP_INITIAL
 };
 
-G_DEFINE_TYPE (GtkCssStyleProperty, _ctk_css_style_property, GTK_TYPE_STYLE_PROPERTY)
+G_DEFINE_TYPE (GtkCssStyleProperty, _ctk_css_style_property, CTK_TYPE_STYLE_PROPERTY)
 
 static GtkCssStylePropertyClass *ctk_css_style_property_class = NULL;
 
 static void
 ctk_css_style_property_constructed (GObject *object)
 {
-  GtkCssStyleProperty *property = GTK_CSS_STYLE_PROPERTY (object);
-  GtkCssStylePropertyClass *klass = GTK_CSS_STYLE_PROPERTY_GET_CLASS (property);
+  GtkCssStyleProperty *property = CTK_CSS_STYLE_PROPERTY (object);
+  GtkCssStylePropertyClass *klass = CTK_CSS_STYLE_PROPERTY_GET_CLASS (property);
 
   property->id = klass->style_properties->len;
   g_ptr_array_add (klass->style_properties, property);
@@ -68,7 +68,7 @@ ctk_css_style_property_set_property (GObject      *object,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
-  GtkCssStyleProperty *property = GTK_CSS_STYLE_PROPERTY (object);
+  GtkCssStyleProperty *property = CTK_CSS_STYLE_PROPERTY (object);
 
   switch (prop_id)
     {
@@ -97,7 +97,7 @@ ctk_css_style_property_get_property (GObject    *object,
                                      GValue     *value,
                                      GParamSpec *pspec)
 {
-  GtkCssStyleProperty *property = GTK_CSS_STYLE_PROPERTY (object);
+  GtkCssStyleProperty *property = CTK_CSS_STYLE_PROPERTY (object);
 
   switch (prop_id)
     {
@@ -131,7 +131,7 @@ _ctk_css_style_property_assign (GtkStyleProperty   *property,
   GtkCssStyleProperty *style;
   GtkCssValue *css_value;
   
-  style = GTK_CSS_STYLE_PROPERTY (property);
+  style = CTK_CSS_STYLE_PROPERTY (property);
   css_value = style->assign_value (style, value);
 
   _ctk_style_properties_set_property_by_property (props,
@@ -147,10 +147,10 @@ _ctk_css_style_property_query (GtkStyleProperty   *property,
                                GtkStyleQueryFunc   query_func,
                                gpointer            query_data)
 {
-  GtkCssStyleProperty *style_property = GTK_CSS_STYLE_PROPERTY (property);
+  GtkCssStyleProperty *style_property = CTK_CSS_STYLE_PROPERTY (property);
   GtkCssValue *css_value;
 
-  css_value = (* query_func) (GTK_CSS_STYLE_PROPERTY (property)->id, query_data);
+  css_value = (* query_func) (CTK_CSS_STYLE_PROPERTY (property)->id, query_data);
   if (css_value == NULL)
     css_value =_ctk_css_style_property_get_initial_value (style_property);
 
@@ -161,7 +161,7 @@ static GtkCssValue *
 ctk_css_style_property_parse_value (GtkStyleProperty *property,
                                     GtkCssParser     *parser)
 {
-  GtkCssStyleProperty *style_property = GTK_CSS_STYLE_PROPERTY (property);
+  GtkCssStyleProperty *style_property = CTK_CSS_STYLE_PROPERTY (property);
 
   if (_ctk_css_parser_try (parser, "initial", TRUE))
     {
@@ -196,7 +196,7 @@ static void
 _ctk_css_style_property_class_init (GtkCssStylePropertyClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkStylePropertyClass *property_class = GTK_STYLE_PROPERTY_CLASS (klass);
+  GtkStylePropertyClass *property_class = CTK_STYLE_PROPERTY_CLASS (klass);
 
   object_class->constructed = ctk_css_style_property_constructed;
   object_class->set_property = ctk_css_style_property_set_property;
@@ -214,7 +214,7 @@ _ctk_css_style_property_class_init (GtkCssStylePropertyClass *klass)
                                    g_param_spec_flags ("affects",
                                                        P_("Affects"),
                                                        P_("Set if the value affects the sizing of elements"),
-                                                       GTK_TYPE_CSS_AFFECTS,
+                                                       CTK_TYPE_CSS_AFFECTS,
                                                        0,
                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
   g_object_class_install_property (object_class,
@@ -236,7 +236,7 @@ _ctk_css_style_property_class_init (GtkCssStylePropertyClass *klass)
                                    g_param_spec_boxed ("initial-value",
                                                        P_("Initial value"),
                                                        P_("The initial specified value used for this property"),
-                                                       GTK_TYPE_CSS_VALUE,
+                                                       CTK_TYPE_CSS_VALUE,
                                                        G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   property_class->assign = _ctk_css_style_property_assign;
@@ -320,7 +320,7 @@ _ctk_css_style_property_lookup_by_id (guint id)
 gboolean
 _ctk_css_style_property_is_inherit (GtkCssStyleProperty *property)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), FALSE);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE_PROPERTY (property), FALSE);
 
   return property->inherit;
 }
@@ -338,7 +338,7 @@ _ctk_css_style_property_is_inherit (GtkCssStyleProperty *property)
 gboolean
 _ctk_css_style_property_is_animated (GtkCssStyleProperty *property)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), FALSE);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE_PROPERTY (property), FALSE);
 
   return property->animated;
 }
@@ -355,7 +355,7 @@ _ctk_css_style_property_is_animated (GtkCssStyleProperty *property)
 GtkCssAffects
 _ctk_css_style_property_get_affects (GtkCssStyleProperty *property)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), 0);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE_PROPERTY (property), 0);
 
   return property->affects;
 }
@@ -372,7 +372,7 @@ _ctk_css_style_property_get_affects (GtkCssStyleProperty *property)
 guint
 _ctk_css_style_property_get_id (GtkCssStyleProperty *property)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), 0);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE_PROPERTY (property), 0);
 
   return property->id;
 }
@@ -390,7 +390,7 @@ _ctk_css_style_property_get_id (GtkCssStyleProperty *property)
 GtkCssValue *
 _ctk_css_style_property_get_initial_value (GtkCssStyleProperty *property)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_CSS_STYLE_PROPERTY (property), NULL);
+  ctk_internal_return_val_if_fail (CTK_IS_CSS_STYLE_PROPERTY (property), NULL);
 
   return property->initial_value;
 }

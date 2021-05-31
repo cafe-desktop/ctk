@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SETTINGS_PRIVATE_H__
-#define __GTK_SETTINGS_PRIVATE_H__
+#ifndef __CTK_SETTINGS_PRIVATE_H__
+#define __CTK_SETTINGS_PRIVATE_H__
 
 #include <gtk/gtksettings.h>
 #include "gtkstylecascadeprivate.h"
@@ -43,10 +43,10 @@ GtkStyleCascade    *_ctk_settings_get_style_cascade          (GtkSettings       
 
 typedef enum
 {
-  GTK_SETTINGS_SOURCE_DEFAULT,
-  GTK_SETTINGS_SOURCE_THEME,
-  GTK_SETTINGS_SOURCE_XSETTING,
-  GTK_SETTINGS_SOURCE_APPLICATION
+  CTK_SETTINGS_SOURCE_DEFAULT,
+  CTK_SETTINGS_SOURCE_THEME,
+  CTK_SETTINGS_SOURCE_XSETTING,
+  CTK_SETTINGS_SOURCE_APPLICATION
 } GtkSettingsSource;
 
 GtkSettingsSource  _ctk_settings_get_setting_source (GtkSettings *settings,
@@ -60,4 +60,4 @@ gboolean     ctk_settings_get_font_size_is_absolute (GtkSettings *settings);
 
 G_END_DECLS
 
-#endif /* __GTK_SETTINGS_PRIVATE_H__ */
+#endif /* __CTK_SETTINGS_PRIVATE_H__ */

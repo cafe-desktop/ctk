@@ -36,9 +36,9 @@
 
 typedef struct _GtkFileChooserEntryClass GtkFileChooserEntryClass;
 
-#define GTK_FILE_CHOOSER_ENTRY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FILE_CHOOSER_ENTRY, GtkFileChooserEntryClass))
-#define GTK_IS_FILE_CHOOSER_ENTRY_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_FILE_CHOOSER_ENTRY))
-#define GTK_FILE_CHOOSER_ENTRY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_FILE_CHOOSER_ENTRY, GtkFileChooserEntryClass))
+#define CTK_FILE_CHOOSER_ENTRY_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FILE_CHOOSER_ENTRY, GtkFileChooserEntryClass))
+#define CTK_IS_FILE_CHOOSER_ENTRY_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FILE_CHOOSER_ENTRY))
+#define CTK_FILE_CHOOSER_ENTRY_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FILE_CHOOSER_ENTRY, GtkFileChooserEntryClass))
 
 struct _GtkFileChooserEntryClass
 {
@@ -116,12 +116,12 @@ static void finished_loading_cb (GtkFileSystemModel  *model,
                                  GError              *error,
 		                 GtkFileChooserEntry *chooser_entry);
 
-G_DEFINE_TYPE (GtkFileChooserEntry, _ctk_file_chooser_entry, GTK_TYPE_ENTRY)
+G_DEFINE_TYPE (GtkFileChooserEntry, _ctk_file_chooser_entry, CTK_TYPE_ENTRY)
 
 static char *
 ctk_file_chooser_entry_get_completion_text (GtkFileChooserEntry *chooser_entry)
 {
-  GtkEditable *editable = GTK_EDITABLE (chooser_entry);
+  GtkEditable *editable = CTK_EDITABLE (chooser_entry);
   int start, end;
 
   ctk_editable_get_selection_bounds (editable, &start, &end);
@@ -133,13 +133,13 @@ ctk_file_chooser_entry_dispatch_properties_changed (GObject     *object,
                                                     guint        n_pspecs,
                                                     GParamSpec **pspecs)
 {
-  GtkFileChooserEntry *chooser_entry = GTK_FILE_CHOOSER_ENTRY (object);
+  GtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (object);
   guint i;
 
   G_OBJECT_CLASS (_ctk_file_chooser_entry_parent_class)->dispatch_properties_changed (object, n_pspecs, pspecs);
 
   /* Don't do this during or after disposal */
-  if (ctk_widget_get_parent (GTK_WIDGET (object)) != NULL)
+  if (ctk_widget_get_parent (CTK_WIDGET (object)) != NULL)
     {
       /* What we are after: The text in front of the cursor was modified.
        * Unfortunately, there's no other way to catch this.
@@ -162,7 +162,7 @@ static void
 _ctk_file_chooser_entry_class_init (GtkFileChooserEntryClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   gobject_class->finalize = ctk_file_chooser_entry_finalize;
   gobject_class->dispose = ctk_file_chooser_entry_dispose;
@@ -201,9 +201,9 @@ match_func (GtkEntryCompletion *compl,
       GtkFileFilterInfo filter_info;
       GtkFileFilterFlags needed_flags;
 
-      file = _ctk_file_system_model_get_file (GTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
+      file = _ctk_file_system_model_get_file (CTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
                                               iter);
-      file_info = _ctk_file_system_model_get_info (GTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
+      file_info = _ctk_file_system_model_get_info (CTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
                                                    iter);
 
       /* We always allow navigating into subfolders, so don't ever filter directories */
@@ -213,9 +213,9 @@ match_func (GtkEntryCompletion *compl,
       needed_flags = ctk_file_filter_get_needed (chooser_entry->current_filter);
 
       filter_info.display_name = g_file_info_get_display_name (file_info);
-      filter_info.contains = GTK_FILE_FILTER_DISPLAY_NAME;
+      filter_info.contains = CTK_FILE_FILTER_DISPLAY_NAME;
 
-      if (needed_flags & GTK_FILE_FILTER_MIME_TYPE)
+      if (needed_flags & CTK_FILE_FILTER_MIME_TYPE)
         {
           const char *s = g_file_info_get_content_type (file_info);
           if (s != NULL)
@@ -224,28 +224,28 @@ match_func (GtkEntryCompletion *compl,
               if (mime_type != NULL)
                 {
                   filter_info.mime_type = mime_type;
-                  filter_info.contains |= GTK_FILE_FILTER_MIME_TYPE;
+                  filter_info.contains |= CTK_FILE_FILTER_MIME_TYPE;
                 }
             }
         }
 
-      if (needed_flags & GTK_FILE_FILTER_FILENAME)
+      if (needed_flags & CTK_FILE_FILTER_FILENAME)
         {
           const char *path = g_file_get_path (file);
           if (path != NULL)
             {
               filter_info.filename = path;
-              filter_info.contains |= GTK_FILE_FILTER_FILENAME;
+              filter_info.contains |= CTK_FILE_FILTER_FILENAME;
             }
         }
 
-      if (needed_flags & GTK_FILE_FILTER_URI)
+      if (needed_flags & CTK_FILE_FILTER_URI)
         {
           const char *uri = g_file_get_uri (file);
           if (uri)
             {
               filter_info.uri = uri;
-              filter_info.contains |= GTK_FILE_FILTER_URI;
+              filter_info.contains |= CTK_FILE_FILTER_URI;
             }
         }
 
@@ -282,16 +282,16 @@ _ctk_file_chooser_entry_init (GtkFileChooserEntry *chooser_entry)
                                        NULL);
 
   cell = ctk_cell_renderer_text_new ();
-  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (comp),
+  ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (comp),
                               cell, TRUE);
-  ctk_cell_layout_add_attribute (GTK_CELL_LAYOUT (comp),
+  ctk_cell_layout_add_attribute (CTK_CELL_LAYOUT (comp),
                                  cell,
                                  "text", DISPLAY_NAME_COLUMN);
 
   g_signal_connect (comp, "match-selected",
 		    G_CALLBACK (match_selected_callback), chooser_entry);
 
-  ctk_entry_set_completion (GTK_ENTRY (chooser_entry), comp);
+  ctk_entry_set_completion (CTK_ENTRY (chooser_entry), comp);
   g_object_unref (comp);
   /* NB: This needs to happen after the completion is set, so this handler
    * runs before the handler installed by entrycompletion */
@@ -309,7 +309,7 @@ _ctk_file_chooser_entry_init (GtkFileChooserEntry *chooser_entry)
 static void
 ctk_file_chooser_entry_finalize (GObject *object)
 {
-  GtkFileChooserEntry *chooser_entry = GTK_FILE_CHOOSER_ENTRY (object);
+  GtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (object);
 
   if (chooser_entry->base_folder)
     g_object_unref (chooser_entry->base_folder);
@@ -326,7 +326,7 @@ ctk_file_chooser_entry_finalize (GObject *object)
 static void
 ctk_file_chooser_entry_dispose (GObject *object)
 {
-  GtkFileChooserEntry *chooser_entry = GTK_FILE_CHOOSER_ENTRY (object);
+  GtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (object);
 
   set_completion_folder (chooser_entry, NULL, NULL);
 
@@ -347,16 +347,16 @@ match_selected_callback (GtkEntryCompletion  *completion,
                       FULL_PATH_COLUMN, &path,
                       -1);
 
-  ctk_editable_delete_text (GTK_EDITABLE (chooser_entry),
+  ctk_editable_delete_text (CTK_EDITABLE (chooser_entry),
                             0,
-                            ctk_editable_get_position (GTK_EDITABLE (chooser_entry)));
+                            ctk_editable_get_position (CTK_EDITABLE (chooser_entry)));
   pos = 0;
-  ctk_editable_insert_text (GTK_EDITABLE (chooser_entry),
+  ctk_editable_insert_text (CTK_EDITABLE (chooser_entry),
                             path,
                             -1,
                             &pos);
 
-  ctk_editable_set_position (GTK_EDITABLE (chooser_entry), pos);
+  ctk_editable_set_position (CTK_EDITABLE (chooser_entry), pos);
 
   g_free (path);
 
@@ -371,7 +371,7 @@ set_complete_on_load (GtkFileChooserEntry *chooser_entry,
    * So no text was inserted when pressing tab, so we beep
    */
   if (chooser_entry->complete_on_load && !complete_on_load)
-    ctk_widget_error_bell (GTK_WIDGET (chooser_entry));
+    ctk_widget_error_bell (CTK_WIDGET (chooser_entry));
 
   chooser_entry->complete_on_load = complete_on_load;
 }
@@ -459,12 +459,12 @@ explicitly_complete (GtkFileChooserEntry *chooser_entry)
 
       text = ctk_file_chooser_entry_get_completion_text (chooser_entry);
       text_len = strlen (text);
-      completion = ctk_entry_completion_compute_prefix (ctk_entry_get_completion (GTK_ENTRY (chooser_entry)), text);
+      completion = ctk_entry_completion_compute_prefix (ctk_entry_get_completion (CTK_ENTRY (chooser_entry)), text);
       completion_len = completion ? strlen (completion) : 0;
 
       if (completion_len > text_len)
         {
-          GtkEditable *editable = GTK_EDITABLE (chooser_entry);
+          GtkEditable *editable = CTK_EDITABLE (chooser_entry);
           int pos = ctk_editable_get_position (editable);
 
           ctk_editable_insert_text (editable,
@@ -476,14 +476,14 @@ explicitly_complete (GtkFileChooserEntry *chooser_entry)
         }
     }
 
-  ctk_widget_error_bell (GTK_WIDGET (chooser_entry));
+  ctk_widget_error_bell (CTK_WIDGET (chooser_entry));
 }
 
 static void
 ctk_file_chooser_entry_grab_focus (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (_ctk_file_chooser_entry_parent_class)->grab_focus (widget);
-  _ctk_file_chooser_entry_select_filename (GTK_FILE_CHOOSER_ENTRY (widget));
+  CTK_WIDGET_CLASS (_ctk_file_chooser_entry_parent_class)->grab_focus (widget);
+  _ctk_file_chooser_entry_select_filename (CTK_FILE_CHOOSER_ENTRY (widget));
 }
 
 static void
@@ -504,8 +504,8 @@ ctk_file_chooser_entry_tab_handler (GtkWidget *widget,
   GdkModifierType state;
   gint start, end;
 
-  chooser_entry = GTK_FILE_CHOOSER_ENTRY (widget);
-  editable = GTK_EDITABLE (widget);
+  chooser_entry = CTK_FILE_CHOOSER_ENTRY (widget);
+  editable = CTK_EDITABLE (widget);
 
   if (event->keyval == GDK_KEY_Escape &&
       chooser_entry->eat_escape)
@@ -540,17 +540,17 @@ static gboolean
 ctk_file_chooser_entry_focus_out_event (GtkWidget     *widget,
 					GdkEventFocus *event)
 {
-  GtkFileChooserEntry *chooser_entry = GTK_FILE_CHOOSER_ENTRY (widget);
+  GtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (widget);
 
   set_complete_on_load (chooser_entry, FALSE);
  
-  return GTK_WIDGET_CLASS (_ctk_file_chooser_entry_parent_class)->focus_out_event (widget, event);
+  return CTK_WIDGET_CLASS (_ctk_file_chooser_entry_parent_class)->focus_out_event (widget, event);
 }
 
 static void
 update_inline_completion (GtkFileChooserEntry *chooser_entry)
 {
-  GtkEntryCompletion *completion = ctk_entry_get_completion (GTK_ENTRY (chooser_entry));
+  GtkEntryCompletion *completion = ctk_entry_get_completion (CTK_ENTRY (chooser_entry));
 
   if (!chooser_entry->current_folder_loaded)
     {
@@ -560,12 +560,12 @@ update_inline_completion (GtkFileChooserEntry *chooser_entry)
 
   switch (chooser_entry->action)
     {
-    case GTK_FILE_CHOOSER_ACTION_OPEN:
-    case GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER:
+    case CTK_FILE_CHOOSER_ACTION_OPEN:
+    case CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER:
       ctk_entry_completion_set_inline_completion (completion, TRUE);
       break;
-    case GTK_FILE_CHOOSER_ACTION_SAVE:
-    case GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER:
+    case CTK_FILE_CHOOSER_ACTION_SAVE:
+    case CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER:
       ctk_entry_completion_set_inline_completion (completion, FALSE);
       break;
     }
@@ -577,7 +577,7 @@ discard_completion_store (GtkFileChooserEntry *chooser_entry)
   if (!chooser_entry->completion_store)
     return;
 
-  ctk_entry_completion_set_model (ctk_entry_get_completion (GTK_ENTRY (chooser_entry)), NULL);
+  ctk_entry_completion_set_model (ctk_entry_get_completion (CTK_ENTRY (chooser_entry)), NULL);
   update_inline_completion (chooser_entry);
   g_object_unref (chooser_entry->completion_store);
   chooser_entry->completion_store = NULL;
@@ -623,7 +623,7 @@ completion_store_set (GtkFileSystemModel  *model,
 static void
 populate_completion_store (GtkFileChooserEntry *chooser_entry)
 {
-  chooser_entry->completion_store = GTK_TREE_MODEL (
+  chooser_entry->completion_store = CTK_TREE_MODEL (
       _ctk_file_system_model_new_for_directory (chooser_entry->current_folder_file,
                                                 "standard::name,standard::display-name,standard::type,"
                                                 "standard::content-type",
@@ -635,15 +635,15 @@ populate_completion_store (GtkFileChooserEntry *chooser_entry)
   g_signal_connect (chooser_entry->completion_store, "finished-loading",
 		    G_CALLBACK (finished_loading_cb), chooser_entry);
 
-  _ctk_file_system_model_set_filter_folders (GTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
+  _ctk_file_system_model_set_filter_folders (CTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
                                              TRUE);
-  _ctk_file_system_model_set_show_files (GTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
-                                         chooser_entry->action == GTK_FILE_CHOOSER_ACTION_OPEN ||
-                                         chooser_entry->action == GTK_FILE_CHOOSER_ACTION_SAVE);
-  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (chooser_entry->completion_store),
-					DISPLAY_NAME_COLUMN, GTK_SORT_ASCENDING);
+  _ctk_file_system_model_set_show_files (CTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
+                                         chooser_entry->action == CTK_FILE_CHOOSER_ACTION_OPEN ||
+                                         chooser_entry->action == CTK_FILE_CHOOSER_ACTION_SAVE);
+  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (chooser_entry->completion_store),
+					DISPLAY_NAME_COLUMN, CTK_SORT_ASCENDING);
 
-  ctk_entry_completion_set_model (ctk_entry_get_completion (GTK_ENTRY (chooser_entry)),
+  ctk_entry_completion_set_model (ctk_entry_get_completion (CTK_ENTRY (chooser_entry)),
 				  chooser_entry->completion_store);
 }
 
@@ -667,12 +667,12 @@ finished_loading_cb (GtkFileSystemModel  *model,
   if (chooser_entry->complete_on_load)
     explicitly_complete (chooser_entry);
 
-  ctk_widget_set_tooltip_text (GTK_WIDGET (chooser_entry), NULL);
+  ctk_widget_set_tooltip_text (CTK_WIDGET (chooser_entry), NULL);
 
-  completion = ctk_entry_get_completion (GTK_ENTRY (chooser_entry));
+  completion = ctk_entry_get_completion (CTK_ENTRY (chooser_entry));
   update_inline_completion (chooser_entry);
 
-  if (ctk_widget_has_focus (GTK_WIDGET (chooser_entry)))
+  if (ctk_widget_has_focus (CTK_WIDGET (chooser_entry)))
     {
       ctk_entry_completion_complete (completion);
       ctk_entry_completion_insert_prefix (completion);
@@ -760,7 +760,7 @@ refresh_current_folder_and_file_part (GtkFileChooserEntry *chooser_entry)
       pattern = g_strconcat (chooser_entry->file_part, "*", NULL);
       ctk_file_filter_add_pattern (filter, pattern);
 
-      _ctk_file_system_model_set_filter (GTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
+      _ctk_file_system_model_set_filter (CTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
                                          filter);
 
       g_free (pattern);
@@ -802,10 +802,10 @@ insert_text_callback (GtkFileChooserEntry *chooser_entry,
        *position + (colon - new_text) != 1) ||
       (new_text_length > 0 &&
        *position <= 1 &&
-       ctk_entry_get_text_length (GTK_ENTRY (chooser_entry)) >= 2 &&
-       ctk_entry_get_text (GTK_ENTRY (chooser_entry))[1] == ':'))
+       ctk_entry_get_text_length (CTK_ENTRY (chooser_entry)) >= 2 &&
+       ctk_entry_get_text (CTK_ENTRY (chooser_entry))[1] == ':'))
     {
-      ctk_widget_error_bell (GTK_WIDGET (chooser_entry));
+      ctk_widget_error_bell (CTK_WIDGET (chooser_entry));
       g_signal_stop_emission_by_name (chooser_entry, "insert_text");
       return FALSE;
     }
@@ -821,13 +821,13 @@ delete_text_callback (GtkFileChooserEntry *chooser_entry,
 {
   /* If deleting a drive letter, delete the colon, too */
   if (start_pos == 0 && end_pos == 1 &&
-      ctk_entry_get_text_length (GTK_ENTRY (chooser_entry)) >= 2 &&
-      ctk_entry_get_text (GTK_ENTRY (chooser_entry))[1] == ':')
+      ctk_entry_get_text_length (CTK_ENTRY (chooser_entry)) >= 2 &&
+      ctk_entry_get_text (CTK_ENTRY (chooser_entry))[1] == ':')
     {
       g_signal_handlers_block_by_func (chooser_entry,
 				       G_CALLBACK (delete_text_callback),
 				       user_data);
-      ctk_editable_delete_text (GTK_EDITABLE (chooser_entry), 0, 1);
+      ctk_editable_delete_text (CTK_EDITABLE (chooser_entry), 0, 1);
       g_signal_handlers_unblock_by_func (chooser_entry,
 					 G_CALLBACK (delete_text_callback),
 					 user_data);
@@ -853,11 +853,11 @@ _ctk_file_chooser_entry_new (gboolean eat_tabs,
 {
   GtkFileChooserEntry *chooser_entry;
 
-  chooser_entry = g_object_new (GTK_TYPE_FILE_CHOOSER_ENTRY, NULL);
+  chooser_entry = g_object_new (CTK_TYPE_FILE_CHOOSER_ENTRY, NULL);
   chooser_entry->eat_tabs = (eat_tabs != FALSE);
   chooser_entry->eat_escape = (eat_escape != FALSE);
 
-  return GTK_WIDGET (chooser_entry);
+  return CTK_WIDGET (chooser_entry);
 }
 
 /**
@@ -871,7 +871,7 @@ void
 _ctk_file_chooser_entry_set_base_folder (GtkFileChooserEntry *chooser_entry,
 					 GFile               *file)
 {
-  g_return_if_fail (GTK_IS_FILE_CHOOSER_ENTRY (chooser_entry));
+  g_return_if_fail (CTK_IS_FILE_CHOOSER_ENTRY (chooser_entry));
   g_return_if_fail (file == NULL || G_IS_FILE (file));
 
   if (chooser_entry->base_folder == file ||
@@ -907,10 +907,10 @@ _ctk_file_chooser_entry_set_base_folder (GtkFileChooserEntry *chooser_entry,
 GFile *
 _ctk_file_chooser_entry_get_current_folder (GtkFileChooserEntry *chooser_entry)
 {
-  g_return_val_if_fail (GTK_IS_FILE_CHOOSER_ENTRY (chooser_entry), NULL);
+  g_return_val_if_fail (CTK_IS_FILE_CHOOSER_ENTRY (chooser_entry), NULL);
 
   return ctk_file_chooser_get_directory_for_text (chooser_entry,
-                                                  ctk_entry_get_text (GTK_ENTRY (chooser_entry)));
+                                                  ctk_entry_get_text (CTK_ENTRY (chooser_entry)));
 }
 
 /**
@@ -930,9 +930,9 @@ _ctk_file_chooser_entry_get_file_part (GtkFileChooserEntry *chooser_entry)
 {
   const char *last_slash, *text;
 
-  g_return_val_if_fail (GTK_IS_FILE_CHOOSER_ENTRY (chooser_entry), NULL);
+  g_return_val_if_fail (CTK_IS_FILE_CHOOSER_ENTRY (chooser_entry), NULL);
 
-  text = ctk_entry_get_text (GTK_ENTRY (chooser_entry));
+  text = ctk_entry_get_text (CTK_ENTRY (chooser_entry));
   last_slash = strrchr (text, G_DIR_SEPARATOR);
   if (last_slash)
     return last_slash + 1;
@@ -955,7 +955,7 @@ void
 _ctk_file_chooser_entry_set_action (GtkFileChooserEntry *chooser_entry,
 				    GtkFileChooserAction action)
 {
-  g_return_if_fail (GTK_IS_FILE_CHOOSER_ENTRY (chooser_entry));
+  g_return_if_fail (CTK_IS_FILE_CHOOSER_ENTRY (chooser_entry));
   
   if (chooser_entry->action != action)
     {
@@ -963,26 +963,26 @@ _ctk_file_chooser_entry_set_action (GtkFileChooserEntry *chooser_entry,
 
       chooser_entry->action = action;
 
-      comp = ctk_entry_get_completion (GTK_ENTRY (chooser_entry));
+      comp = ctk_entry_get_completion (CTK_ENTRY (chooser_entry));
 
       /* FIXME: do we need to actually set the following? */
 
       switch (action)
 	{
-	case GTK_FILE_CHOOSER_ACTION_OPEN:
-	case GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER:
+	case CTK_FILE_CHOOSER_ACTION_OPEN:
+	case CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER:
 	  ctk_entry_completion_set_popup_single_match (comp, FALSE);
 	  break;
-	case GTK_FILE_CHOOSER_ACTION_SAVE:
-	case GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER:
+	case CTK_FILE_CHOOSER_ACTION_SAVE:
+	case CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER:
 	  ctk_entry_completion_set_popup_single_match (comp, TRUE);
 	  break;
 	}
 
       if (chooser_entry->completion_store)
-        _ctk_file_system_model_set_show_files (GTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
-                                               action == GTK_FILE_CHOOSER_ACTION_OPEN ||
-                                               action == GTK_FILE_CHOOSER_ACTION_SAVE);
+        _ctk_file_system_model_set_show_files (CTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
+                                               action == CTK_FILE_CHOOSER_ACTION_OPEN ||
+                                               action == CTK_FILE_CHOOSER_ACTION_SAVE);
 
       update_inline_completion (chooser_entry);
     }
@@ -1000,8 +1000,8 @@ _ctk_file_chooser_entry_set_action (GtkFileChooserEntry *chooser_entry,
 GtkFileChooserAction
 _ctk_file_chooser_entry_get_action (GtkFileChooserEntry *chooser_entry)
 {
-  g_return_val_if_fail (GTK_IS_FILE_CHOOSER_ENTRY (chooser_entry),
-			GTK_FILE_CHOOSER_ACTION_OPEN);
+  g_return_val_if_fail (CTK_IS_FILE_CHOOSER_ENTRY (chooser_entry),
+			CTK_FILE_CHOOSER_ACTION_OPEN);
   
   return chooser_entry->action;
 }
@@ -1014,12 +1014,12 @@ _ctk_file_chooser_entry_get_is_folder (GtkFileChooserEntry *chooser_entry,
   GFileInfo *info;
 
   if (chooser_entry->completion_store == NULL ||
-      !_ctk_file_system_model_get_iter_for_file (GTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
+      !_ctk_file_system_model_get_iter_for_file (CTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
                                                  &iter,
                                                  file))
     return FALSE;
 
-  info = _ctk_file_system_model_get_info (GTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
+  info = _ctk_file_system_model_get_info (CTK_FILE_SYSTEM_MODEL (chooser_entry->completion_store),
                                           &iter);
 
   return _ctk_file_info_consider_as_directory (info);
@@ -1038,16 +1038,16 @@ _ctk_file_chooser_entry_select_filename (GtkFileChooserEntry *chooser_entry)
   const gchar *str, *ext;
   glong len = -1;
 
-  if (chooser_entry->action == GTK_FILE_CHOOSER_ACTION_SAVE)
+  if (chooser_entry->action == CTK_FILE_CHOOSER_ACTION_SAVE)
     {
-      str = ctk_entry_get_text (GTK_ENTRY (chooser_entry));
+      str = ctk_entry_get_text (CTK_ENTRY (chooser_entry));
       ext = g_strrstr (str, ".");
 
       if (ext)
        len = g_utf8_pointer_to_offset (str, ext);
     }
 
-  ctk_editable_select_region (GTK_EDITABLE (chooser_entry), 0, (gint) len);
+  ctk_editable_select_region (CTK_EDITABLE (chooser_entry), 0, (gint) len);
 }
 
 void

@@ -101,7 +101,7 @@
  * 
  *   if (priv->action)
  *     {
- *       ctk_activatable_do_set_related_action (GTK_ACTIVATABLE (bar), NULL);
+ *       ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (bar), NULL);
  *       priv->action = NULL;
  *     }
  *   G_OBJECT_CLASS (foo_bar_parent_class)->dispose (object);
@@ -172,7 +172,7 @@
  *     {
  *       priv->use_action_appearance = use_appearance;
  *       
- *       ctk_activatable_sync_action_properties (GTK_ACTIVATABLE (bar), priv->action);
+ *       ctk_activatable_sync_action_properties (CTK_ACTIVATABLE (bar), priv->action);
  *     }
  * }
  * 
@@ -188,7 +188,7 @@
  *   if (priv->action == action)
  *     return;
  * 
- *   ctk_activatable_do_set_related_action (GTK_ACTIVATABLE (bar), action);
+ *   ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (bar), action);
  * 
  *   priv->action = action;
  * }
@@ -198,17 +198,17 @@
  * ctk_button_activatable_sync_action_properties (GtkActivatable       *activatable,
  * 		                                  GtkAction            *action)
  * {
- *   GtkButtonPrivate *priv = GTK_BUTTON_GET_PRIVATE (activatable);
+ *   GtkButtonPrivate *priv = CTK_BUTTON_GET_PRIVATE (activatable);
  * 
  *   if (!action)
  *     return;
  * 
  *   if (ctk_action_is_visible (action))
- *     ctk_widget_show (GTK_WIDGET (activatable));
+ *     ctk_widget_show (CTK_WIDGET (activatable));
  *   else
- *     ctk_widget_hide (GTK_WIDGET (activatable));
+ *     ctk_widget_hide (CTK_WIDGET (activatable));
  *   
- *   ctk_widget_set_sensitive (GTK_WIDGET (activatable), ctk_action_is_sensitive (action));
+ *   ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
  * 
  *   ...
  *   
@@ -234,12 +234,12 @@
  *   if (strcmp (property_name, "visible") == 0)
  *     {
  *       if (ctk_action_is_visible (action))
- * 	ctk_widget_show (GTK_WIDGET (activatable));
+ * 	ctk_widget_show (CTK_WIDGET (activatable));
  *       else
- * 	ctk_widget_hide (GTK_WIDGET (activatable));
+ * 	ctk_widget_hide (CTK_WIDGET (activatable));
  *     }
  *   else if (strcmp (property_name, "sensitive") == 0)
- *     ctk_widget_set_sensitive (GTK_WIDGET (activatable), ctk_action_is_sensitive (action));
+ *     ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
  * 
  *   ...
  * 
@@ -289,8 +289,8 @@ ctk_activatable_default_init (GtkActivatableInterface *iface)
 				       g_param_spec_object ("related-action",
 							    P_("Related Action"),
 							    P_("The action this activatable will activate and receive updates from"),
-							    GTK_TYPE_ACTION,
-							    GTK_PARAM_READWRITE));
+							    CTK_TYPE_ACTION,
+							    CTK_PARAM_READWRITE));
 
   /**
    * GtkActivatable:use-action-appearance:
@@ -315,7 +315,7 @@ ctk_activatable_default_init (GtkActivatableInterface *iface)
 							     P_("Use Action Appearance"),
 							     P_("Whether to use the related actions appearance properties"),
 							     TRUE,
-							     GTK_PARAM_READWRITE));
+							     CTK_PARAM_READWRITE));
 
 
 }
@@ -327,9 +327,9 @@ ctk_activatable_update (GtkActivatable *activatable,
 {
   GtkActivatableIface *iface;
 
-  g_return_if_fail (GTK_IS_ACTIVATABLE (activatable));
+  g_return_if_fail (CTK_IS_ACTIVATABLE (activatable));
 
-  iface = GTK_ACTIVATABLE_GET_IFACE (activatable);
+  iface = CTK_ACTIVATABLE_GET_IFACE (activatable);
   if (iface->update)
     iface->update (activatable, action, property_name);
   else
@@ -357,9 +357,9 @@ ctk_activatable_sync_action_properties (GtkActivatable *activatable,
 {
   GtkActivatableIface *iface;
 
-  g_return_if_fail (GTK_IS_ACTIVATABLE (activatable));
+  g_return_if_fail (CTK_IS_ACTIVATABLE (activatable));
 
-  iface = GTK_ACTIVATABLE_GET_IFACE (activatable);
+  iface = CTK_ACTIVATABLE_GET_IFACE (activatable);
   if (iface->sync_action_properties)
     iface->sync_action_properties (activatable, action);
   else
@@ -386,8 +386,8 @@ void
 ctk_activatable_set_related_action (GtkActivatable *activatable,
 				    GtkAction      *action)
 {
-  g_return_if_fail (GTK_IS_ACTIVATABLE (activatable));
-  g_return_if_fail (action == NULL || GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTIVATABLE (activatable));
+  g_return_if_fail (action == NULL || CTK_IS_ACTION (action));
 
   g_object_set (activatable, "related-action", action, NULL);
 }
@@ -440,8 +440,8 @@ ctk_activatable_do_set_related_action (GtkActivatable *activatable,
 	  g_signal_handlers_disconnect_by_func (prev_action, ctk_activatable_action_notify, activatable);
 	  
           /* Check the type so that actions can be activatable too. */
-          if (GTK_IS_WIDGET (activatable))
-            _ctk_action_remove_from_proxy_list (prev_action, GTK_WIDGET (activatable));
+          if (CTK_IS_WIDGET (activatable))
+            _ctk_action_remove_from_proxy_list (prev_action, CTK_WIDGET (activatable));
 	  
           /* Some apps are using the object data directly...
            * so continue to set it for a bit longer
@@ -473,8 +473,8 @@ ctk_activatable_do_set_related_action (GtkActivatable *activatable,
 
 	  g_signal_connect (G_OBJECT (action), "notify", G_CALLBACK (ctk_activatable_action_notify), activatable);
 
-          if (GTK_IS_WIDGET (activatable))
-            _ctk_action_add_to_proxy_list (action, GTK_WIDGET (activatable));
+          if (CTK_IS_WIDGET (activatable))
+            _ctk_action_add_to_proxy_list (action, CTK_WIDGET (activatable));
 
           g_object_set_data (G_OBJECT (activatable), "gtk-action", action);
 	}
@@ -498,7 +498,7 @@ ctk_activatable_get_related_action (GtkActivatable *activatable)
 {
   GtkAction *action;
 
-  g_return_val_if_fail (GTK_IS_ACTIVATABLE (activatable), NULL);
+  g_return_val_if_fail (CTK_IS_ACTIVATABLE (activatable), NULL);
 
   g_object_get (activatable, "related-action", &action, NULL);
 

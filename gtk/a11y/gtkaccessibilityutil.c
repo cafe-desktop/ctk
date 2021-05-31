@@ -77,7 +77,7 @@ get_root (void)
 
   if (!root)
     {
-      root = g_object_new (GTK_TYPE_TOPLEVEL_ACCESSIBLE, NULL);
+      root = g_object_new (CTK_TYPE_TOPLEVEL_ACCESSIBLE, NULL);
       atk_object_initialize (root, NULL);
     }
 
@@ -93,7 +93,7 @@ get_toolkit_name (void)
 static const gchar *
 get_toolkit_version (void)
 {
-  return GTK_VERSION;
+  return CTK_VERSION;
 }
 
 void

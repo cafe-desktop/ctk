@@ -14,40 +14,40 @@ test_nonzerox (void)
   GtkWidget *child;
   GdkRGBA color;
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (win), "Non-zero X");
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (win), "Non-zero X");
 
   grid = ctk_grid_new ();
   g_object_set (grid, "margin", 5, NULL);
-  ctk_container_add (GTK_CONTAINER (win), grid);
-  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Above"), 1, 0, 1, 1);
-  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Below"), 1, 2, 1, 1);
-  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Left"), 0, 1, 1, 1);
-  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Right"), 2, 1, 1, 1);
+  ctk_container_add (CTK_CONTAINER (win), grid);
+  ctk_grid_attach (CTK_GRID (grid), ctk_label_new ("Above"), 1, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), ctk_label_new ("Below"), 1, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), ctk_label_new ("Left"), 0, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), ctk_label_new ("Right"), 2, 1, 1, 1);
 
   overlay = ctk_overlay_new ();
   gdk_rgba_parse (&color, "red");
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_override_background_color (overlay, 0, &color);
 G_GNUC_END_IGNORE_DEPRECATIONS
-  ctk_grid_attach (GTK_GRID (grid), overlay, 1, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), overlay, 1, 1, 1, 1);
 
   text = ctk_text_view_new ();
   ctk_widget_set_size_request (text, 200, 200);
   ctk_widget_set_hexpand (text, TRUE);
   ctk_widget_set_vexpand (text, TRUE);
-  ctk_container_add (GTK_CONTAINER (overlay), text);
+  ctk_container_add (CTK_CONTAINER (overlay), text);
 
   child = ctk_label_new ("I'm the overlay");
-  ctk_widget_set_halign (child, GTK_ALIGN_START);
-  ctk_widget_set_valign (child, GTK_ALIGN_START);
+  ctk_widget_set_halign (child, CTK_ALIGN_START);
+  ctk_widget_set_valign (child, CTK_ALIGN_START);
   g_object_set (child, "margin", 3, NULL);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
 
   child = ctk_label_new ("No, I'm the overlay");
-  ctk_widget_set_halign (child, GTK_ALIGN_END);
-  ctk_widget_set_valign (child, GTK_ALIGN_END);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_END);
+  ctk_widget_set_valign (child, CTK_ALIGN_END);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
   g_object_set (child, "margin", 3, NULL);
 
   return win;
@@ -64,7 +64,7 @@ get_child_position (GtkOverlay    *overlay,
   GtkAllocation main_alloc;
   gint x, y;
 
-  child = ctk_bin_get_child (GTK_BIN (overlay));
+  child = ctk_bin_get_child (CTK_BIN (overlay));
 
   ctk_widget_translate_coordinates (relative, child, 0, 0, &x, &y);
   main_alloc.x = x;
@@ -76,12 +76,12 @@ get_child_position (GtkOverlay    *overlay,
 
   alloc->x = main_alloc.x;
   alloc->width = MIN (main_alloc.width, req.width);
-  if (ctk_widget_get_halign (widget) == GTK_ALIGN_END)
+  if (ctk_widget_get_halign (widget) == CTK_ALIGN_END)
     alloc->x += main_alloc.width - req.width;
 
   alloc->y = main_alloc.y;
   alloc->height = MIN (main_alloc.height, req.height);
-  if (ctk_widget_get_valign (widget) == GTK_ALIGN_END)
+  if (ctk_widget_get_valign (widget) == CTK_ALIGN_END)
     alloc->y += main_alloc.height - req.height;
 
   return TRUE;
@@ -98,48 +98,48 @@ test_relative (void)
   GtkWidget *child;
   GdkRGBA color;
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (win), "Custom positioning");
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (win), "Custom positioning");
 
   overlay = ctk_overlay_new ();
   gdk_rgba_parse (&color, "yellow");
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_override_background_color (overlay, 0, &color);
 G_GNUC_END_IGNORE_DEPRECATIONS
-  ctk_container_add (GTK_CONTAINER (win), overlay);
+  ctk_container_add (CTK_CONTAINER (win), overlay);
 
   grid = ctk_grid_new ();
-  ctk_container_add (GTK_CONTAINER (overlay), grid);
-  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Above"), 1, 0, 1, 1);
-  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Below"), 1, 2, 1, 1);
-  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Left"), 0, 1, 1, 1);
-  ctk_grid_attach (GTK_GRID (grid), ctk_label_new ("Right"), 2, 1, 1, 1);
+  ctk_container_add (CTK_CONTAINER (overlay), grid);
+  ctk_grid_attach (CTK_GRID (grid), ctk_label_new ("Above"), 1, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), ctk_label_new ("Below"), 1, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), ctk_label_new ("Left"), 0, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), ctk_label_new ("Right"), 2, 1, 1, 1);
 
   text = ctk_text_view_new ();
   ctk_widget_set_size_request (text, 200, 200);
   g_object_set (text, "margin", 5, NULL);
   ctk_widget_set_hexpand (text, TRUE);
   ctk_widget_set_vexpand (text, TRUE);
-  ctk_grid_attach (GTK_GRID (grid), text, 1, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), text, 1, 1, 1, 1);
   g_signal_connect (overlay, "get-child-position",
                     G_CALLBACK (get_child_position), text);
 
   child = ctk_label_new ("Top left overlay");
-  ctk_widget_set_halign (child, GTK_ALIGN_START);
-  ctk_widget_set_valign (child, GTK_ALIGN_START);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_START);
+  ctk_widget_set_valign (child, CTK_ALIGN_START);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
   g_object_set (child, "margin", 1, NULL);
 
   child = ctk_label_new ("Bottom right overlay");
-  ctk_widget_set_halign (child, GTK_ALIGN_END);
-  ctk_widget_set_valign (child, GTK_ALIGN_END);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_END);
+  ctk_widget_set_valign (child, CTK_ALIGN_END);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
   g_object_set (child, "margin", 1, NULL);
 
   return win;
 }
 
-/* test GTK_ALIGN_FILL handling */
+/* test CTK_ALIGN_FILL handling */
 static GtkWidget *
 test_fullwidth (void)
 {
@@ -148,22 +148,22 @@ test_fullwidth (void)
   GtkWidget *text;
   GtkWidget *child;
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (win), "Full-width");
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (win), "Full-width");
 
   overlay = ctk_overlay_new ();
-  ctk_container_add (GTK_CONTAINER (win), overlay);
+  ctk_container_add (CTK_CONTAINER (win), overlay);
 
   text = ctk_text_view_new ();
   ctk_widget_set_size_request (text, 200, 200);
   ctk_widget_set_hexpand (text, TRUE);
   ctk_widget_set_vexpand (text, TRUE);
-  ctk_container_add (GTK_CONTAINER (overlay), text);
+  ctk_container_add (CTK_CONTAINER (overlay), text);
 
   child = ctk_label_new ("Fullwidth top overlay");
-  ctk_widget_set_halign (child, GTK_ALIGN_FILL);
-  ctk_widget_set_valign (child, GTK_ALIGN_START);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_FILL);
+  ctk_widget_set_valign (child, CTK_ALIGN_START);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
   g_object_set (child, "margin", 4, NULL);
 
   return win;
@@ -182,16 +182,16 @@ test_scrolling (void)
   gchar *contents;
   gsize len;
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (win), "Scrolling");
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (win), "Scrolling");
 
   overlay = ctk_overlay_new ();
-  ctk_container_add (GTK_CONTAINER (win), overlay);
+  ctk_container_add (CTK_CONTAINER (win), overlay);
 
   sw = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_min_content_width (GTK_SCROLLED_WINDOW (sw), 200);
-  ctk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (sw), 200);
-  ctk_container_add (GTK_CONTAINER (overlay), sw);
+  ctk_scrolled_window_set_min_content_width (CTK_SCROLLED_WINDOW (sw), 200);
+  ctk_scrolled_window_set_min_content_height (CTK_SCROLLED_WINDOW (sw), 200);
+  ctk_container_add (CTK_CONTAINER (overlay), sw);
 
   text = ctk_text_view_new ();
   buffer = ctk_text_buffer_new (NULL);
@@ -202,16 +202,16 @@ test_scrolling (void)
     }
   ctk_text_buffer_set_text (buffer, contents, len);
   g_free (contents);
-  ctk_text_view_set_buffer (GTK_TEXT_VIEW (text), buffer);
+  ctk_text_view_set_buffer (CTK_TEXT_VIEW (text), buffer);
 
   ctk_widget_set_hexpand (text, TRUE);
   ctk_widget_set_vexpand (text, TRUE);
-  ctk_container_add (GTK_CONTAINER (sw), text);
+  ctk_container_add (CTK_CONTAINER (sw), text);
 
   child = ctk_label_new ("This should be visible");
-  ctk_widget_set_halign (child, GTK_ALIGN_CENTER);
-  ctk_widget_set_valign (child, GTK_ALIGN_END);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_CENTER);
+  ctk_widget_set_valign (child, CTK_ALIGN_END);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
   g_object_set (child, "margin", 4, NULL);
 
   return win;
@@ -302,10 +302,10 @@ on_enter (GtkWidget *overlay, GdkEventCrossing *event, GtkWidget *child)
   if (event->window != ctk_widget_get_window (child))
     return;
 
-  if (ctk_widget_get_halign (child) == GTK_ALIGN_START)
-    ctk_widget_set_halign (child, GTK_ALIGN_END);
+  if (ctk_widget_get_halign (child) == CTK_ALIGN_START)
+    ctk_widget_set_halign (child, CTK_ALIGN_END);
   else
-    ctk_widget_set_halign (child, GTK_ALIGN_START);
+    ctk_widget_set_halign (child, CTK_ALIGN_START);
 
   ctk_widget_queue_resize (overlay);
 }
@@ -322,17 +322,17 @@ test_chase (void)
   gchar *contents;
   gsize len;
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (win), "Chase");
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (win), "Chase");
 
   overlay = ctk_overlay_new ();
   ctk_widget_set_events (overlay, GDK_ENTER_NOTIFY_MASK|GDK_LEAVE_NOTIFY_MASK);
-  ctk_container_add (GTK_CONTAINER (win), overlay);
+  ctk_container_add (CTK_CONTAINER (win), overlay);
 
   sw = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_min_content_width (GTK_SCROLLED_WINDOW (sw), 200);
-  ctk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (sw), 200);
-  ctk_container_add (GTK_CONTAINER (overlay), sw);
+  ctk_scrolled_window_set_min_content_width (CTK_SCROLLED_WINDOW (sw), 200);
+  ctk_scrolled_window_set_min_content_height (CTK_SCROLLED_WINDOW (sw), 200);
+  ctk_container_add (CTK_CONTAINER (overlay), sw);
 
   text = ctk_text_view_new ();
   buffer = ctk_text_buffer_new (NULL);
@@ -343,16 +343,16 @@ test_chase (void)
     }
   ctk_text_buffer_set_text (buffer, contents, len);
   g_free (contents);
-  ctk_text_view_set_buffer (GTK_TEXT_VIEW (text), buffer);
+  ctk_text_view_set_buffer (CTK_TEXT_VIEW (text), buffer);
 
   ctk_widget_set_hexpand (text, TRUE);
   ctk_widget_set_vexpand (text, TRUE);
-  ctk_container_add (GTK_CONTAINER (sw), text);
+  ctk_container_add (CTK_CONTAINER (sw), text);
 
   child = ctk_label_new ("Try to enter");
-  ctk_widget_set_halign (child, GTK_ALIGN_START);
-  ctk_widget_set_valign (child, GTK_ALIGN_END);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
+  ctk_widget_set_halign (child, CTK_ALIGN_START);
+  ctk_widget_set_valign (child, CTK_ALIGN_END);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
   g_object_set (child, "margin", 4, NULL);
 
   g_signal_connect (overlay, "enter-notify-event",
@@ -373,8 +373,8 @@ test_stacking (void)
   GtkWidget *check2;
   GdkRGBA color;
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (win), "Stacking");
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (win), "Stacking");
 
   grid = ctk_grid_new ();
   overlay = ctk_overlay_new ();
@@ -387,25 +387,25 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_widget_set_vexpand (main_child, TRUE);
   label = ctk_label_new ("Main child");
   child = ctk_label_new ("Overlay");
-  ctk_widget_set_halign (child, GTK_ALIGN_END);
-  ctk_widget_set_valign (child, GTK_ALIGN_END);
+  ctk_widget_set_halign (child, CTK_ALIGN_END);
+  ctk_widget_set_valign (child, CTK_ALIGN_END);
 
   check1 = ctk_check_button_new_with_label ("Show main");
   g_object_bind_property (main_child, "visible", check1, "active", G_BINDING_BIDIRECTIONAL);
 
   check2 = ctk_check_button_new_with_label ("Show overlay");
   g_object_bind_property (child, "visible", check2, "active", G_BINDING_BIDIRECTIONAL);
-  ctk_container_add (GTK_CONTAINER (main_child), label);
-  ctk_container_add (GTK_CONTAINER (overlay), main_child);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), child);
-  ctk_grid_attach (GTK_GRID (grid), overlay, 1, 0, 1, 3);
-  ctk_container_add (GTK_CONTAINER (win), grid);
+  ctk_container_add (CTK_CONTAINER (main_child), label);
+  ctk_container_add (CTK_CONTAINER (overlay), main_child);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), child);
+  ctk_grid_attach (CTK_GRID (grid), overlay, 1, 0, 1, 3);
+  ctk_container_add (CTK_CONTAINER (win), grid);
 
-  ctk_grid_attach (GTK_GRID (grid), check1, 0, 0, 1, 1);
-  ctk_grid_attach (GTK_GRID (grid), check2, 0, 1, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), check1, 0, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), check2, 0, 1, 1, 1);
   child = ctk_label_new ("");
   ctk_widget_set_vexpand (child, TRUE);
-  ctk_grid_attach (GTK_GRID (grid), child, 0, 2, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), child, 0, 2, 1, 1);
 
   return win;
 }
@@ -421,12 +421,12 @@ test_input_stacking (void)
   GtkWidget *vbox;
   int i,j;
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (win), "Input Stacking");
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (win), "Input Stacking");
 
   overlay = ctk_overlay_new ();
   grid = ctk_grid_new ();
-  ctk_container_add (GTK_CONTAINER (overlay), grid);
+  ctk_container_add (CTK_CONTAINER (overlay), grid);
 
   for (j = 0; j < 5; j++)
     {
@@ -435,26 +435,26 @@ test_input_stacking (void)
 	  button = ctk_button_new_with_label ("     ");
 	  ctk_widget_set_hexpand (button, TRUE);
 	  ctk_widget_set_vexpand (button, TRUE);
-	  ctk_grid_attach (GTK_GRID (grid), button, i, j, 1, 1);
+	  ctk_grid_attach (CTK_GRID (grid), button, i, j, 1, 1);
 	}
     }
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 10);
-  ctk_overlay_add_overlay (GTK_OVERLAY (overlay), vbox);
-  ctk_overlay_set_overlay_pass_through (GTK_OVERLAY (overlay), vbox, TRUE);
-  ctk_widget_set_halign (vbox, GTK_ALIGN_CENTER);
-  ctk_widget_set_valign (vbox, GTK_ALIGN_CENTER);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 10);
+  ctk_overlay_add_overlay (CTK_OVERLAY (overlay), vbox);
+  ctk_overlay_set_overlay_pass_through (CTK_OVERLAY (overlay), vbox, TRUE);
+  ctk_widget_set_halign (vbox, CTK_ALIGN_CENTER);
+  ctk_widget_set_valign (vbox, CTK_ALIGN_CENTER);
 
   label = ctk_label_new ("This is some overlaid text\n"
 			 "It does not get input\n"
 			 "But the entry does");
-  ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 8);
+  ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 8);
 
   entry = ctk_entry_new ();
-  ctk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 8);
+  ctk_box_pack_start (CTK_BOX (vbox), entry, FALSE, FALSE, 8);
 
 
-  ctk_container_add (GTK_CONTAINER (win), overlay);
+  ctk_container_add (CTK_CONTAINER (win), overlay);
 
   return win;
 }
@@ -462,7 +462,7 @@ test_input_stacking (void)
 static void
 reorder_overlay (GtkButton *button, GtkOverlay *overlay)
 {
-  ctk_overlay_reorder_overlay (overlay, ctk_widget_get_parent (GTK_WIDGET (button)), -1);
+  ctk_overlay_reorder_overlay (overlay, ctk_widget_get_parent (CTK_WIDGET (button)), -1);
 }
 
 static GtkWidget *
@@ -476,11 +476,11 @@ test_child_order (void)
   GdkRGBA color;
   int i;
 
-  win = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (win), "Child Order");
+  win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (win), "Child Order");
 
   overlay = ctk_overlay_new ();
-  ctk_container_add (GTK_CONTAINER (win), overlay);
+  ctk_container_add (CTK_CONTAINER (win), overlay);
 
   for (i = 0; i < 4; i++)
     {
@@ -495,15 +495,15 @@ test_child_order (void)
       ctk_widget_set_margin_top (button, 10);
       ctk_widget_set_margin_bottom (button, 10);
 
-      ctk_container_add (GTK_CONTAINER (ebox), button);
+      ctk_container_add (CTK_CONTAINER (ebox), button);
 
       gdk_rgba_parse (&color, colors[i]);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_widget_override_background_color (ebox, 0, &color);
  G_GNUC_END_IGNORE_DEPRECATIONS
-      ctk_widget_set_halign (ebox, (i == 0 || i == 3) ? GTK_ALIGN_START : GTK_ALIGN_END);
-      ctk_widget_set_valign (ebox, i < 2 ? GTK_ALIGN_START : GTK_ALIGN_END);
-      ctk_overlay_add_overlay (GTK_OVERLAY (overlay), ebox);
+      ctk_widget_set_halign (ebox, (i == 0 || i == 3) ? CTK_ALIGN_START : CTK_ALIGN_END);
+      ctk_widget_set_valign (ebox, i < 2 ? CTK_ALIGN_START : CTK_ALIGN_END);
+      ctk_overlay_add_overlay (CTK_OVERLAY (overlay), ebox);
     }
 
   ebox = ctk_event_box_new ();
@@ -516,8 +516,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 			 "Main\n"
 			 "Main\n"
 			 "Main\n");
-  ctk_container_add (GTK_CONTAINER (ebox), label);
-  ctk_container_add (GTK_CONTAINER (overlay), ebox);
+  ctk_container_add (CTK_CONTAINER (ebox), label);
+  ctk_container_add (CTK_CONTAINER (overlay), ebox);
 
   return win;
 }
@@ -539,7 +539,7 @@ main (int argc, char *argv[])
   ctk_init (&argc, &argv);
 
   if (g_getenv ("RTL"))
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
   win1 = test_nonzerox ();
   ctk_widget_show_all (win1);

@@ -16,32 +16,32 @@ state_changed (GtkWidget *widget)
 
   flags = ctk_widget_get_state_flags (widget);
   sep = "";
-  if (flags & GTK_STATE_FLAG_ACTIVE)
+  if (flags & CTK_STATE_FLAG_ACTIVE)
     {
       g_print ("%sactive", sep);
       sep = "|";
     }
-  if (flags & GTK_STATE_FLAG_PRELIGHT)
+  if (flags & CTK_STATE_FLAG_PRELIGHT)
     {
       g_print ("%sprelight", sep);
       sep = "|";
     }
-  if (flags & GTK_STATE_FLAG_SELECTED)
+  if (flags & CTK_STATE_FLAG_SELECTED)
     {
       g_print ("%sselected", sep);
       sep = "|";
     }
-  if (flags & GTK_STATE_FLAG_INSENSITIVE)
+  if (flags & CTK_STATE_FLAG_INSENSITIVE)
     {
       g_print ("%sinsensitive", sep);
       sep = "|";
     }
-  if (flags & GTK_STATE_FLAG_INCONSISTENT)
+  if (flags & CTK_STATE_FLAG_INCONSISTENT)
     {
       g_print ("%sinconsistent", sep);
       sep = "|";
     }
-  if (flags & GTK_STATE_FLAG_FOCUSED)
+  if (flags & CTK_STATE_FLAG_FOCUSED)
     {
       g_print ("%sfocused", sep);
       sep = "|";
@@ -60,20 +60,20 @@ int main (int argc, char *argv[])
 
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 5);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
-  w = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 15);
-  ctk_box_pack_start (GTK_BOX (box), w, TRUE, TRUE, 0);
-  ctk_box_pack_start (GTK_BOX (w), ctk_entry_new (), TRUE, TRUE, 0);
+  w = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 15);
+  ctk_box_pack_start (CTK_BOX (box), w, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (w), ctk_entry_new (), TRUE, TRUE, 0);
   bu = ctk_button_new_with_label ("Bu");
-  ctk_box_pack_start (GTK_BOX (w), bu, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (w), bu, TRUE, TRUE, 0);
   c = ctk_switch_new ();
-  ctk_switch_set_active (GTK_SWITCH (c), TRUE);
-  ctk_widget_set_halign (c, GTK_ALIGN_CENTER);
-  ctk_widget_set_valign (c, GTK_ALIGN_CENTER);
-  ctk_box_pack_start (GTK_BOX (box), c, TRUE, TRUE, 0);
+  ctk_switch_set_active (CTK_SWITCH (c), TRUE);
+  ctk_widget_set_halign (c, CTK_ALIGN_CENTER);
+  ctk_widget_set_valign (c, CTK_ALIGN_CENTER);
+  ctk_box_pack_start (CTK_BOX (box), c, TRUE, TRUE, 0);
   g_signal_connect (bu, "clicked", G_CALLBACK (set_insensitive), w);
   g_signal_connect (bu, "state-changed", G_CALLBACK (state_changed), NULL);
 

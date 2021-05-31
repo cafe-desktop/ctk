@@ -17,8 +17,8 @@
  *
  */
 
-#ifndef __GTK_HEADER_BAR_PRIVATE_H__
-#define __GTK_HEADER_BAR_PRIVATE_H__
+#ifndef __CTK_HEADER_BAR_PRIVATE_H__
+#define __CTK_HEADER_BAR_PRIVATE_H__
 
 G_BEGIN_DECLS
 
@@ -29,4 +29,4 @@ gboolean     _ctk_header_bar_update_window_icon    (GtkHeaderBar *bar,
 
 G_END_DECLS
 
-#endif /* __GTK_HEADER_BAR_PRIVATE_H__ */
+#endif /* __CTK_HEADER_BAR_PRIVATE_H__ */

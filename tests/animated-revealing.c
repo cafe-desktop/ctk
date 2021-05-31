@@ -37,21 +37,21 @@ main(int argc, char **argv)
       return 1;
     }
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "destroy", ctk_main_quit, NULL);
-  frame_stats_ensure (GTK_WINDOW (window));
+  frame_stats_ensure (CTK_WINDOW (window));
 
   revealer = ctk_revealer_new ();
-  ctk_widget_set_valign (revealer, GTK_ALIGN_START);
-  ctk_revealer_set_transition_type (GTK_REVEALER (revealer), GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
-  ctk_revealer_set_transition_duration (GTK_REVEALER (revealer), reveal_time * 1000);
-  ctk_revealer_set_reveal_child (GTK_REVEALER (revealer), TRUE);
+  ctk_widget_set_valign (revealer, CTK_ALIGN_START);
+  ctk_revealer_set_transition_type (CTK_REVEALER (revealer), CTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN);
+  ctk_revealer_set_transition_duration (CTK_REVEALER (revealer), reveal_time * 1000);
+  ctk_revealer_set_reveal_child (CTK_REVEALER (revealer), TRUE);
   g_signal_connect_after (revealer, "map", G_CALLBACK (toggle_reveal), NULL);
   g_signal_connect_after (revealer, "notify::child-revealed", G_CALLBACK (toggle_reveal), NULL);
-  ctk_container_add (GTK_CONTAINER (window), revealer);
+  ctk_container_add (CTK_CONTAINER (window), revealer);
 
   grid = ctk_grid_new ();
-  ctk_container_add (GTK_CONTAINER (revealer), grid);
+  ctk_container_add (CTK_CONTAINER (revealer), grid);
 
   cssprovider = ctk_css_provider_new ();
   ctk_css_provider_load_from_data (cssprovider, "* { padding: 2px; text-shadow: 5px 5px 2px grey; }", -1, NULL);
@@ -62,9 +62,9 @@ main(int argc, char **argv)
         {
           widget = ctk_label_new ("Hello World");
           ctk_style_context_add_provider (ctk_widget_get_style_context (widget),
-                                          GTK_STYLE_PROVIDER (cssprovider),
-                                          GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-          ctk_grid_attach (GTK_GRID (grid), widget, x, y, 1, 1);
+                                          CTK_STYLE_PROVIDER (cssprovider),
+                                          CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+          ctk_grid_attach (CTK_GRID (grid), widget, x, y, 1, 1);
         }
     }
 

@@ -22,12 +22,12 @@
 #include <math.h>
 
 typedef enum {
-  GTK_CSS_EASE_CUBIC_BEZIER,
-  GTK_CSS_EASE_STEPS
+  CTK_CSS_EASE_CUBIC_BEZIER,
+  CTK_CSS_EASE_STEPS
 } GtkCssEaseType;
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   GtkCssEaseType type;
   union {
     struct {
@@ -68,12 +68,12 @@ ctk_css_value_ease_equal (const GtkCssValue *ease1,
   
   switch (ease1->type)
     {
-    case GTK_CSS_EASE_CUBIC_BEZIER:
+    case CTK_CSS_EASE_CUBIC_BEZIER:
       return ease1->u.cubic.x1 == ease2->u.cubic.x1 &&
              ease1->u.cubic.y1 == ease2->u.cubic.y1 &&
              ease1->u.cubic.x2 == ease2->u.cubic.x2 &&
              ease1->u.cubic.y2 == ease2->u.cubic.y2;
-    case GTK_CSS_EASE_STEPS:
+    case CTK_CSS_EASE_STEPS:
       return ease1->u.steps.steps == ease2->u.steps.steps &&
              ease1->u.steps.start == ease2->u.steps.start;
     default:
@@ -97,7 +97,7 @@ ctk_css_value_ease_print (const GtkCssValue *ease,
 {
   switch (ease->type)
     {
-    case GTK_CSS_EASE_CUBIC_BEZIER:
+    case CTK_CSS_EASE_CUBIC_BEZIER:
       if (ease->u.cubic.x1 == 0.25 && ease->u.cubic.y1 == 0.1 &&
           ease->u.cubic.x2 == 0.25 && ease->u.cubic.y2 == 1.0)
         g_string_append (string, "ease");
@@ -118,7 +118,7 @@ ctk_css_value_ease_print (const GtkCssValue *ease,
                                 ease->u.cubic.x1, ease->u.cubic.y1,
                                 ease->u.cubic.x2, ease->u.cubic.y2);
       break;
-    case GTK_CSS_EASE_STEPS:
+    case CTK_CSS_EASE_STEPS:
       if (ease->u.steps.steps == 1)
         {
           g_string_append (string, ease->u.steps.start ? "step-start" : "step-end");
@@ -134,7 +134,7 @@ ctk_css_value_ease_print (const GtkCssValue *ease,
     }
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_EASE = {
+static const GtkCssValueClass CTK_CSS_VALUE_EASE = {
   ctk_css_value_ease_free,
   ctk_css_value_ease_compute,
   ctk_css_value_ease_equal,
@@ -155,9 +155,9 @@ _ctk_css_ease_value_new_cubic_bezier (double x1,
   g_return_val_if_fail (x2 >= 0.0, NULL);
   g_return_val_if_fail (x2 <= 1.0, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_EASE);
+  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_EASE);
   
-  value->type = GTK_CSS_EASE_CUBIC_BEZIER;
+  value->type = CTK_CSS_EASE_CUBIC_BEZIER;
   value->u.cubic.x1 = x1;
   value->u.cubic.y1 = y1;
   value->u.cubic.x2 = x2;
@@ -174,9 +174,9 @@ _ctk_css_ease_value_new_steps (guint n_steps,
 
   g_return_val_if_fail (n_steps > 0, NULL);
 
-  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_EASE);
+  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_EASE);
   
-  value->type = GTK_CSS_EASE_STEPS;
+  value->type = CTK_CSS_EASE_STEPS;
   value->u.steps.steps = n_steps;
   value->u.steps.start = start;
 
@@ -331,7 +331,7 @@ double
 _ctk_css_ease_value_transform (const GtkCssValue *ease,
                                double             progress)
 {
-  g_return_val_if_fail (ease->class == &GTK_CSS_VALUE_EASE, 1.0);
+  g_return_val_if_fail (ease->class == &CTK_CSS_VALUE_EASE, 1.0);
 
   if (progress <= 0)
     return 0;
@@ -340,7 +340,7 @@ _ctk_css_ease_value_transform (const GtkCssValue *ease,
 
   switch (ease->type)
     {
-    case GTK_CSS_EASE_CUBIC_BEZIER:
+    case CTK_CSS_EASE_CUBIC_BEZIER:
       {
         static const double epsilon = 0.00001;
         double tmin, t, tmax;
@@ -369,7 +369,7 @@ _ctk_css_ease_value_transform (const GtkCssValue *ease,
                 +      -6 * ease->u.cubic.y1 + 3 * ease->u.cubic.y2) * t
                 +       3 * ease->u.cubic.y1                       ) * t;
       }
-    case GTK_CSS_EASE_STEPS:
+    case CTK_CSS_EASE_STEPS:
       progress *= ease->u.steps.steps;
       progress = floor (progress) + (ease->u.steps.start ? 0 : 1);
       return progress / ease->u.steps.steps;

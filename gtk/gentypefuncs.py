@@ -5,7 +5,7 @@ import sys
 import re
 import os
 
-debug = os.getenv('GTK_GENTYPEFUNCS_DEBUG') is not None
+debug = os.getenv('CTK_GENTYPEFUNCS_DEBUG') is not None
 
 out_file = sys.argv[1]
 in_files = sys.argv[2:]

@@ -26,7 +26,7 @@
 static void atk_action_interface_init (AtkActionIface *iface);
 static void atk_image_interface_init  (AtkImageIface  *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkButtonAccessible, ctk_button_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkButtonAccessible, ctk_button_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_IMAGE, atk_image_interface_init))
 
@@ -38,8 +38,8 @@ ctk_button_accessible_initialize (AtkObject *obj,
 
   ATK_OBJECT_CLASS (ctk_button_accessible_parent_class)->initialize (obj, data);
 
-  parent = ctk_widget_get_parent (ctk_accessible_get_widget (GTK_ACCESSIBLE (obj)));
-  if (GTK_IS_TREE_VIEW (parent))
+  parent = ctk_widget_get_parent (ctk_accessible_get_widget (CTK_ACCESSIBLE (obj)));
+  if (CTK_IS_TREE_VIEW (parent))
     {
       /* Even though the accessible parent of the column header will
        * be reported as the table because the parent widget of the
@@ -60,8 +60,8 @@ get_image_from_button (GtkWidget *button)
 {
   GtkWidget *image;
 
-  image = ctk_button_get_image (GTK_BUTTON (button));
-  if (GTK_IS_IMAGE (image))
+  image = ctk_button_get_image (CTK_BUTTON (button));
+  if (CTK_IS_IMAGE (image))
     return image;
 
   return NULL;
@@ -78,14 +78,14 @@ find_label_child (GtkContainer *container)
   child = NULL;
   for (tmp_list = children; tmp_list != NULL; tmp_list = tmp_list->next)
     {
-      if (GTK_IS_LABEL (tmp_list->data))
+      if (CTK_IS_LABEL (tmp_list->data))
         {
-          child = GTK_WIDGET (tmp_list->data);
+          child = CTK_WIDGET (tmp_list->data);
           break;
         }
-      else if (GTK_IS_CONTAINER (tmp_list->data))
+      else if (CTK_IS_CONTAINER (tmp_list->data))
         {
-          child = find_label_child (GTK_CONTAINER (tmp_list->data));
+          child = find_label_child (CTK_CONTAINER (tmp_list->data));
           if (child)
             break;
         }
@@ -99,15 +99,15 @@ get_label_from_button (GtkWidget *button)
 {
   GtkWidget *child;
 
-  child = ctk_bin_get_child (GTK_BIN (button));
+  child = ctk_bin_get_child (CTK_BIN (button));
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (GTK_IS_ALIGNMENT (child))
-    child = ctk_bin_get_child (GTK_BIN (child));
+  if (CTK_IS_ALIGNMENT (child))
+    child = ctk_bin_get_child (CTK_BIN (child));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  if (GTK_IS_CONTAINER (child))
-    child = find_label_child (GTK_CONTAINER (child));
-  else if (!GTK_IS_LABEL (child))
+  if (CTK_IS_CONTAINER (child))
+    child = find_label_child (CTK_CONTAINER (child));
+  else if (!CTK_IS_LABEL (child))
     child = NULL;
 
   return child;
@@ -120,7 +120,7 @@ ctk_button_accessible_get_name (AtkObject *obj)
   GtkWidget *widget;
   GtkWidget *child;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
@@ -129,14 +129,14 @@ ctk_button_accessible_get_name (AtkObject *obj)
     return name;
 
   child = get_label_from_button (widget);
-  if (GTK_IS_LABEL (child))
-    name = ctk_label_get_text (GTK_LABEL (child));
+  if (CTK_IS_LABEL (child))
+    name = ctk_label_get_text (CTK_LABEL (child));
   else
     {
       GtkWidget *image;
 
       image = get_image_from_button (widget);
-      if (GTK_IS_IMAGE (image))
+      if (CTK_IS_IMAGE (image))
         {
           AtkObject *atk_obj;
 
@@ -167,13 +167,13 @@ ctk_button_accessible_ref_state_set (AtkObject *obj)
   AtkStateSet *state_set;
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
   state_set = ATK_OBJECT_CLASS (ctk_button_accessible_parent_class)->ref_state_set (obj);
 
-  if ((ctk_widget_get_state_flags (widget) & GTK_STATE_FLAG_ACTIVE) != 0)
+  if ((ctk_widget_get_state_flags (widget) & CTK_STATE_FLAG_ACTIVE) != 0)
     atk_state_set_add_state (state_set, ATK_STATE_ARMED);
 
   if (!ctk_widget_get_can_focus (widget))
@@ -186,7 +186,7 @@ static void
 ctk_button_accessible_notify_gtk (GObject    *obj,
                                   GParamSpec *pspec)
 {
-  GtkWidget *widget = GTK_WIDGET (obj);
+  GtkWidget *widget = CTK_WIDGET (obj);
   AtkObject *atk_obj = ctk_widget_get_accessible (widget);
 
   if (strcmp (pspec->name, "label") == 0)
@@ -197,7 +197,7 @@ ctk_button_accessible_notify_gtk (GObject    *obj,
       g_signal_emit_by_name (atk_obj, "visible-data-changed");
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_button_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_button_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 static void
@@ -230,7 +230,7 @@ ctk_button_accessible_do_action (AtkAction *action,
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (action));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)
     return FALSE;
 
@@ -240,7 +240,7 @@ ctk_button_accessible_do_action (AtkAction *action,
   if (!ctk_widget_is_sensitive (widget) || !ctk_widget_get_visible (widget))
     return FALSE;
 
-  ctk_button_clicked (GTK_BUTTON (widget));
+  ctk_button_clicked (CTK_BUTTON (widget));
   return TRUE;
 }
 
@@ -259,7 +259,7 @@ ctk_button_accessible_get_keybinding (AtkAction *action,
   GtkWidget *label;
   guint key_val;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (action));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)
     return NULL;
 
@@ -267,9 +267,9 @@ ctk_button_accessible_get_keybinding (AtkAction *action,
     return NULL;
 
   label = get_label_from_button (widget);
-  if (GTK_IS_LABEL (label))
+  if (CTK_IS_LABEL (label))
     {
-      key_val = ctk_label_get_mnemonic_keyval (GTK_LABEL (label));
+      key_val = ctk_label_get_mnemonic_keyval (CTK_LABEL (label));
       if (key_val != GDK_KEY_VoidSymbol)
         return_value = ctk_accelerator_name (key_val, GDK_MOD1_MASK);
     }
@@ -289,14 +289,14 @@ ctk_button_accessible_get_keybinding (AtkAction *action,
             {
               target = atk_relation_get_target (relation);
               target_object = g_ptr_array_index (target, 0);
-              label = ctk_accessible_get_widget (GTK_ACCESSIBLE (target_object));
+              label = ctk_accessible_get_widget (CTK_ACCESSIBLE (target_object));
             }
           g_object_unref (set);
         }
 
-      if (GTK_IS_LABEL (label))
+      if (CTK_IS_LABEL (label))
         {
-          key_val = ctk_label_get_mnemonic_keyval (GTK_LABEL (label));
+          key_val = ctk_label_get_mnemonic_keyval (CTK_LABEL (label));
           if (key_val != GDK_KEY_VoidSymbol)
             return_value = ctk_accelerator_name (key_val, GDK_MOD1_MASK);
         }
@@ -349,12 +349,12 @@ ctk_button_accessible_get_image_description (AtkImage *image)
   GtkWidget  *button_image;
   AtkObject *obj;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (image));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
   if (widget == NULL)
     return NULL;
 
   button_image = get_image_from_button (widget);
-  if (GTK_IS_IMAGE (button_image))
+  if (CTK_IS_IMAGE (button_image))
     {
       obj = ctk_widget_get_accessible (button_image);
       return atk_image_get_image_description (ATK_IMAGE (obj));
@@ -373,7 +373,7 @@ ctk_button_accessible_get_image_position (AtkImage     *image,
   GtkWidget *button_image;
   AtkObject *obj;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (image));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
   if (widget == NULL)
     {
       *x = G_MININT;
@@ -404,7 +404,7 @@ ctk_button_accessible_get_image_size (AtkImage *image,
   GtkWidget *button_image;
   AtkObject *obj;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (image));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
   if (widget == NULL)
     {
       *width = -1;
@@ -413,9 +413,9 @@ ctk_button_accessible_get_image_size (AtkImage *image,
     }
 
   button_image = get_image_from_button (widget);
-  if (GTK_IS_IMAGE (button_image))
+  if (CTK_IS_IMAGE (button_image))
     {
-      obj = ctk_widget_get_accessible (GTK_WIDGET (button_image));
+      obj = ctk_widget_get_accessible (CTK_WIDGET (button_image));
       atk_image_get_image_size (ATK_IMAGE (obj), width, height);
     }
   else
@@ -433,15 +433,15 @@ ctk_button_accessible_set_image_description (AtkImage    *image,
   GtkWidget *button_image;
   AtkObject *obj;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (image));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
 
   if (widget == NULL)
     return FALSE;
 
   button_image = get_image_from_button (widget);
-  if (GTK_IMAGE (button_image))
+  if (CTK_IMAGE (button_image))
     {
-      obj = ctk_widget_get_accessible (GTK_WIDGET (button_image));
+      obj = ctk_widget_get_accessible (CTK_WIDGET (button_image));
       return atk_image_set_image_description (ATK_IMAGE (obj), description);
     }
 

@@ -23,10 +23,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_STATUSBAR_H__
-#define __GTK_STATUSBAR_H__
+#ifndef __CTK_STATUSBAR_H__
+#define __CTK_STATUSBAR_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -34,12 +34,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STATUSBAR            (ctk_statusbar_get_type ())
-#define GTK_STATUSBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_STATUSBAR, GtkStatusbar))
-#define GTK_STATUSBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_STATUSBAR, GtkStatusbarClass))
-#define GTK_IS_STATUSBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_STATUSBAR))
-#define GTK_IS_STATUSBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_STATUSBAR))
-#define GTK_STATUSBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_STATUSBAR, GtkStatusbarClass))
+#define CTK_TYPE_STATUSBAR            (ctk_statusbar_get_type ())
+#define CTK_STATUSBAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_STATUSBAR, GtkStatusbar))
+#define CTK_STATUSBAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STATUSBAR, GtkStatusbarClass))
+#define CTK_IS_STATUSBAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_STATUSBAR))
+#define CTK_IS_STATUSBAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_STATUSBAR))
+#define CTK_STATUSBAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STATUSBAR, GtkStatusbarClass))
 
 
 typedef struct _GtkStatusbar              GtkStatusbar;
@@ -106,4 +106,4 @@ GtkWidget* ctk_statusbar_get_message_area  (GtkStatusbar *statusbar);
 
 G_END_DECLS
 
-#endif /* __GTK_STATUSBAR_H__ */
+#endif /* __CTK_STATUSBAR_H__ */

@@ -17,17 +17,17 @@
  * Author: Ryan Lortie <desrt@desrt.ca>
  */
 
-#ifndef __GTK_MODEL_MENU_ITEM_H__
-#define __GTK_MODEL_MENU_ITEM_H__
+#ifndef __CTK_MODEL_MENU_ITEM_H__
+#define __CTK_MODEL_MENU_ITEM_H__
 
 #include <gtk/gtkcheckmenuitem.h>
 #include <gtk/gtkmenutrackeritem.h>
 
-#define GTK_TYPE_MODEL_MENU_ITEM                            (ctk_model_menu_item_get_type ())
-#define GTK_MODEL_MENU_ITEM(inst)                           (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
-                                                             GTK_TYPE_MODEL_MENU_ITEM, GtkModelMenuItem))
-#define GTK_IS_MODEL_MENU_ITEM(inst)                        (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
-                                                             GTK_TYPE_MODEL_MENU_ITEM))
+#define CTK_TYPE_MODEL_MENU_ITEM                            (ctk_model_menu_item_get_type ())
+#define CTK_MODEL_MENU_ITEM(inst)                           (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
+                                                             CTK_TYPE_MODEL_MENU_ITEM, GtkModelMenuItem))
+#define CTK_IS_MODEL_MENU_ITEM(inst)                        (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
+                                                             CTK_TYPE_MODEL_MENU_ITEM))
 
 typedef struct _GtkModelMenuItem                            GtkModelMenuItem;
 
@@ -37,4 +37,4 @@ GType                   ctk_model_menu_item_get_type                    (void) G
 G_GNUC_INTERNAL
 GtkWidget *             ctk_model_menu_item_new                         (void);
 
-#endif /* __GTK_MODEL_MENU_ITEM_H__ */
+#endif /* __CTK_MODEL_MENU_ITEM_H__ */

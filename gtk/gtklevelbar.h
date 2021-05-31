@@ -18,10 +18,10 @@
  *
  */
 
-#ifndef __GTK_LEVEL_BAR_H__
-#define __GTK_LEVEL_BAR_H__
+#ifndef __CTK_LEVEL_BAR_H__
+#define __CTK_LEVEL_BAR_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,39 +29,39 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_LEVEL_BAR            (ctk_level_bar_get_type ())
-#define GTK_LEVEL_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LEVEL_BAR, GtkLevelBar))
-#define GTK_LEVEL_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LEVEL_BAR, GtkLevelBarClass))
-#define GTK_IS_LEVEL_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LEVEL_BAR))
-#define GTK_IS_LEVEL_BAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_LEVEL_BAR))
-#define GTK_LEVEL_BAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_LEVEL_BAR, GtkLevelBarClass))
+#define CTK_TYPE_LEVEL_BAR            (ctk_level_bar_get_type ())
+#define CTK_LEVEL_BAR(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LEVEL_BAR, GtkLevelBar))
+#define CTK_LEVEL_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LEVEL_BAR, GtkLevelBarClass))
+#define CTK_IS_LEVEL_BAR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LEVEL_BAR))
+#define CTK_IS_LEVEL_BAR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LEVEL_BAR))
+#define CTK_LEVEL_BAR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LEVEL_BAR, GtkLevelBarClass))
 
 /**
- * GTK_LEVEL_BAR_OFFSET_LOW:
+ * CTK_LEVEL_BAR_OFFSET_LOW:
  *
  * The name used for the stock low offset included by #GtkLevelBar.
  *
  * Since: 3.6
  */
-#define GTK_LEVEL_BAR_OFFSET_LOW  "low"
+#define CTK_LEVEL_BAR_OFFSET_LOW  "low"
 
 /**
- * GTK_LEVEL_BAR_OFFSET_HIGH:
+ * CTK_LEVEL_BAR_OFFSET_HIGH:
  *
  * The name used for the stock high offset included by #GtkLevelBar.
  *
  * Since: 3.6
  */
-#define GTK_LEVEL_BAR_OFFSET_HIGH "high"
+#define CTK_LEVEL_BAR_OFFSET_HIGH "high"
 
 /**
- * GTK_LEVEL_BAR_OFFSET_FULL:
+ * CTK_LEVEL_BAR_OFFSET_FULL:
  *
  * The name used for the stock full offset included by #GtkLevelBar.
  *
  * Since: 3.20
  */
-#define GTK_LEVEL_BAR_OFFSET_FULL "full"
+#define CTK_LEVEL_BAR_OFFSET_FULL "full"
 
 typedef struct _GtkLevelBarClass   GtkLevelBarClass;
 typedef struct _GtkLevelBar        GtkLevelBar;
@@ -140,4 +140,4 @@ gboolean   ctk_level_bar_get_offset_value   (GtkLevelBar *self,
 
 G_END_DECLS
 
-#endif /* __GTK_LEVEL_BAR_H__ */
+#endif /* __CTK_LEVEL_BAR_H__ */

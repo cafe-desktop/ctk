@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_VPANED_H__
-#define __GTK_VPANED_H__
+#ifndef __CTK_VPANED_H__
+#define __CTK_VPANED_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_VPANED            (ctk_vpaned_get_type ())
-#define GTK_VPANED(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_VPANED, GtkVPaned))
-#define GTK_VPANED_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_VPANED, GtkVPanedClass))
-#define GTK_IS_VPANED(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_VPANED))
-#define GTK_IS_VPANED_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_VPANED))
-#define GTK_VPANED_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_VPANED, GtkVPanedClass))
+#define CTK_TYPE_VPANED            (ctk_vpaned_get_type ())
+#define CTK_VPANED(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VPANED, GtkVPaned))
+#define CTK_VPANED_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VPANED, GtkVPanedClass))
+#define CTK_IS_VPANED(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VPANED))
+#define CTK_IS_VPANED_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VPANED))
+#define CTK_VPANED_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VPANED, GtkVPanedClass))
 
 
 typedef struct _GtkVPaned      GtkVPaned;
@@ -62,4 +62,4 @@ GtkWidget * ctk_vpaned_new      (void);
 
 G_END_DECLS
 
-#endif /* __GTK_VPANED_H__ */
+#endif /* __CTK_VPANED_H__ */

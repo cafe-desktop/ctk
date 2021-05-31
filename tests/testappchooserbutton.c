@@ -32,14 +32,14 @@ combo_changed_cb (GtkComboBox *cb,
 {
   GAppInfo *app_info;
 
-  app_info = ctk_app_chooser_get_app_info (GTK_APP_CHOOSER (cb));
+  app_info = ctk_app_chooser_get_app_info (CTK_APP_CHOOSER (cb));
 
   if (app_info == NULL)
     return;
 
-  ctk_image_set_from_gicon (GTK_IMAGE (sel_image), g_app_info_get_icon (app_info),
-                            GTK_ICON_SIZE_DIALOG);
-  ctk_label_set_text (GTK_LABEL (sel_name), g_app_info_get_display_name (app_info));
+  ctk_image_set_from_gicon (CTK_IMAGE (sel_image), g_app_info_get_icon (app_info),
+                            CTK_ICON_SIZE_DIALOG);
+  ctk_label_set_text (CTK_LABEL (sel_name), g_app_info_get_display_name (app_info));
 
   g_object_unref (app_info);
 }
@@ -49,9 +49,9 @@ special_item_activated_cb (GtkAppChooserButton *b,
                            const gchar *item_name,
                            gpointer user_data)
 {
-  ctk_image_set_from_gicon (GTK_IMAGE (sel_image), g_themed_icon_new ("face-smile"),
-                            GTK_ICON_SIZE_DIALOG);
-  ctk_label_set_text (GTK_LABEL (sel_name), "Special Item");
+  ctk_image_set_from_gicon (CTK_IMAGE (sel_image), g_themed_icon_new ("face-smile"),
+                            CTK_ICON_SIZE_DIALOG);
+  ctk_label_set_text (CTK_LABEL (sel_name), "Special Item");
 }
 
 static void
@@ -70,46 +70,46 @@ main (int argc,
 
   ctk_init (&argc, &argv);
 
-  toplevel = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_container_set_border_width (GTK_CONTAINER (toplevel), 12);
+  toplevel = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_container_set_border_width (CTK_CONTAINER (toplevel), 12);
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  ctk_container_add (GTK_CONTAINER (toplevel), box);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+  ctk_container_add (CTK_CONTAINER (toplevel), box);
 
   combobox = ctk_app_chooser_button_new ("image/jpeg");
-  ctk_box_pack_start (GTK_BOX (box), combobox, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), combobox, TRUE, TRUE, 0);
 
   g_signal_connect (combobox, "changed",
                     G_CALLBACK (combo_changed_cb), NULL);
 
   w = ctk_label_new (NULL);
-  ctk_label_set_markup (GTK_LABEL (w), "<b>Selected app info</b>");
-  ctk_box_pack_start (GTK_BOX (box), w, TRUE, TRUE, 0);
+  ctk_label_set_markup (CTK_LABEL (w), "<b>Selected app info</b>");
+  ctk_box_pack_start (CTK_BOX (box), w, TRUE, TRUE, 0);
 
-  w = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  ctk_box_pack_start (GTK_BOX (box), w, TRUE, TRUE, 0);
+  w = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
+  ctk_box_pack_start (CTK_BOX (box), w, TRUE, TRUE, 0);
 
   sel_image = ctk_image_new ();
-  ctk_box_pack_start (GTK_BOX (w), sel_image, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (w), sel_image, TRUE, TRUE, 0);
   sel_name = ctk_label_new (NULL);
-  ctk_box_pack_start (GTK_BOX (w), sel_name, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (w), sel_name, TRUE, TRUE, 0);
 
-  ctk_app_chooser_button_set_heading (GTK_APP_CHOOSER_BUTTON (combobox), "Choose one, <i>not</i> two");
-  ctk_app_chooser_button_append_separator (GTK_APP_CHOOSER_BUTTON (combobox));
-  ctk_app_chooser_button_append_custom_item (GTK_APP_CHOOSER_BUTTON (combobox),
+  ctk_app_chooser_button_set_heading (CTK_APP_CHOOSER_BUTTON (combobox), "Choose one, <i>not</i> two");
+  ctk_app_chooser_button_append_separator (CTK_APP_CHOOSER_BUTTON (combobox));
+  ctk_app_chooser_button_append_custom_item (CTK_APP_CHOOSER_BUTTON (combobox),
                                              CUSTOM_ITEM,
                                              "Hey, I'm special!",
                                              g_themed_icon_new ("face-smile"));
 
   /* this one will trigger a warning, and will not be added */
-  ctk_app_chooser_button_append_custom_item (GTK_APP_CHOOSER_BUTTON (combobox),
+  ctk_app_chooser_button_append_custom_item (CTK_APP_CHOOSER_BUTTON (combobox),
                                              CUSTOM_ITEM,
                                              "Hey, I'm fake!",
                                              g_themed_icon_new ("face-evil"));
 
-  ctk_app_chooser_button_set_show_dialog_item (GTK_APP_CHOOSER_BUTTON (combobox),
+  ctk_app_chooser_button_set_show_dialog_item (CTK_APP_CHOOSER_BUTTON (combobox),
                                                TRUE);
-  ctk_app_chooser_button_set_show_default_item (GTK_APP_CHOOSER_BUTTON (combobox),
+  ctk_app_chooser_button_set_show_default_item (CTK_APP_CHOOSER_BUTTON (combobox),
                                                 TRUE);
 
   /* connect to the detailed signal */
@@ -121,10 +121,10 @@ main (int argc,
                     G_CALLBACK (action_cb), NULL);
 
   /* test refresh on a combo */
-  ctk_app_chooser_refresh (GTK_APP_CHOOSER (combobox));
+  ctk_app_chooser_refresh (CTK_APP_CHOOSER (combobox));
 
 #if 0
-  ctk_app_chooser_button_set_active_custom_item (GTK_APP_CHOOSER_BUTTON (combobox),
+  ctk_app_chooser_button_set_active_custom_item (CTK_APP_CHOOSER_BUTTON (combobox),
                                                  CUSTOM_ITEM);
 #endif
   ctk_widget_show_all (toplevel);

@@ -22,7 +22,7 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#define GTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
+#define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
 #include "gtktextiter.h"
 #include "gtktextbtree.h"
@@ -372,7 +372,7 @@ is_segment_start (GtkTextRealIter *real)
 static void
 check_invariants (const GtkTextIter *iter)
 {
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_iter_check (iter);
 }
 #else
@@ -884,7 +884,7 @@ ctk_text_iter_get_char (const GtkTextIter *iter)
   else
     {
       /* Unicode "unknown character" 0xFFFC */
-      return GTK_TEXT_UNKNOWN_CHAR;
+      return CTK_TEXT_UNKNOWN_CHAR;
     }
 }
 
@@ -1336,7 +1336,7 @@ ctk_text_iter_has_tag (const GtkTextIter   *iter,
   GtkTextRealIter *real;
 
   g_return_val_if_fail (iter != NULL, FALSE);
-  g_return_val_if_fail (GTK_IS_TEXT_TAG (tag), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_TAG (tag), FALSE);
 
   real = ctk_text_iter_make_surreal (iter);
 
@@ -4488,7 +4488,7 @@ forward_chars_with_skipping (GtkTextIter *iter,
         return;
 
       if (skip_nontext &&
-          ctk_text_iter_get_char (iter) == GTK_TEXT_UNKNOWN_CHAR)
+          ctk_text_iter_get_char (iter) == CTK_TEXT_UNKNOWN_CHAR)
         ignored = TRUE;
 
       if (!ignored &&
@@ -4975,9 +4975,9 @@ ctk_text_iter_forward_search (const GtkTextIter *iter,
         return FALSE;
     }
 
-  visible_only = (flags & GTK_TEXT_SEARCH_VISIBLE_ONLY) != 0;
-  slice = (flags & GTK_TEXT_SEARCH_TEXT_ONLY) == 0;
-  case_insensitive = (flags & GTK_TEXT_SEARCH_CASE_INSENSITIVE) != 0;
+  visible_only = (flags & CTK_TEXT_SEARCH_VISIBLE_ONLY) != 0;
+  slice = (flags & CTK_TEXT_SEARCH_TEXT_ONLY) == 0;
+  case_insensitive = (flags & CTK_TEXT_SEARCH_CASE_INSENSITIVE) != 0;
 
   /* locate all lines */
 
@@ -5299,9 +5299,9 @@ ctk_text_iter_backward_search (const GtkTextIter *iter,
         return FALSE;
     }
 
-  visible_only = (flags & GTK_TEXT_SEARCH_VISIBLE_ONLY) != 0;
-  slice = (flags & GTK_TEXT_SEARCH_TEXT_ONLY) == 0;
-  case_insensitive = (flags & GTK_TEXT_SEARCH_CASE_INSENSITIVE) != 0;
+  visible_only = (flags & CTK_TEXT_SEARCH_VISIBLE_ONLY) != 0;
+  slice = (flags & CTK_TEXT_SEARCH_TEXT_ONLY) == 0;
+  case_insensitive = (flags & CTK_TEXT_SEARCH_CASE_INSENSITIVE) != 0;
 
   /* locate all lines */
 
@@ -5727,7 +5727,7 @@ _ctk_text_btree_get_iter_at_mark (GtkTextBTree *tree,
 
   g_return_if_fail (iter != NULL);
   g_return_if_fail (tree != NULL);
-  g_return_if_fail (GTK_IS_TEXT_MARK (mark));
+  g_return_if_fail (CTK_IS_TEXT_MARK (mark));
 
   seg = mark->segment;
 
@@ -5746,7 +5746,7 @@ _ctk_text_btree_get_iter_at_child_anchor (GtkTextBTree       *tree,
 
   g_return_if_fail (iter != NULL);
   g_return_if_fail (tree != NULL);
-  g_return_if_fail (GTK_IS_TEXT_CHILD_ANCHOR (anchor));
+  g_return_if_fail (CTK_IS_TEXT_CHILD_ANCHOR (anchor));
   
   seg = anchor->segment;  
 

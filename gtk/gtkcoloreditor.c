@@ -81,9 +81,9 @@ enum
 
 static void ctk_color_editor_iface_init (GtkColorChooserInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorEditor, ctk_color_editor, GTK_TYPE_BOX,
+G_DEFINE_TYPE_WITH_CODE (GtkColorEditor, ctk_color_editor, CTK_TYPE_BOX,
                          G_ADD_PRIVATE (GtkColorEditor)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_COLOR_CHOOSER,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_COLOR_CHOOSER,
                                                 ctk_color_editor_iface_init))
 
 static guint
@@ -105,7 +105,7 @@ entry_set_rgba (GtkColorEditor *editor,
                           scale_round (color->red, 255),
                           scale_round (color->green, 255),
                           scale_round (color->blue, 255));
-  ctk_entry_set_text (GTK_ENTRY (editor->priv->entry), text);
+  ctk_entry_set_text (CTK_ENTRY (editor->priv->entry), text);
   editor->priv->text_changed = FALSE;
   g_free (text);
 }
@@ -120,11 +120,11 @@ entry_apply (GtkWidget      *entry,
   if (!editor->priv->text_changed)
     return;
 
-  text = ctk_editable_get_chars (GTK_EDITABLE (editor->priv->entry), 0, -1);
+  text = ctk_editable_get_chars (CTK_EDITABLE (editor->priv->entry), 0, -1);
   if (gdk_rgba_parse (&color, text))
     {
       color.alpha = ctk_adjustment_get_value (editor->priv->a_adj);
-      ctk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (editor), &color);
+      ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (editor), &color);
     }
 
   editor->priv->text_changed = FALSE;
@@ -163,8 +163,8 @@ hsv_changed (GtkColorEditor *editor)
   ctk_hsv_to_rgb (h, s, v, &color.red, &color.green, &color.blue);
   color.alpha = a;
 
-  ctk_color_swatch_set_rgba (GTK_COLOR_SWATCH (editor->priv->swatch), &color);
-  ctk_color_scale_set_rgba (GTK_COLOR_SCALE (editor->priv->a_slider), &color);
+  ctk_color_swatch_set_rgba (CTK_COLOR_SWATCH (editor->priv->swatch), &color);
+  ctk_color_scale_set_rgba (CTK_COLOR_SCALE (editor->priv->a_slider), &color);
   entry_set_rgba (editor, &color);
 
   g_object_notify (G_OBJECT (editor), "rgba");
@@ -207,14 +207,14 @@ popup_edit (GtkWidget      *widget,
     {
       popup = editor->priv->h_popup;
       focus = editor->priv->h_entry;
-      ctk_range_get_slider_range (GTK_RANGE (editor->priv->h_slider), &s, &e);
+      ctk_range_get_slider_range (CTK_RANGE (editor->priv->h_slider), &s, &e);
       position = (s + e) / 2;
     }
   else if (widget == editor->priv->a_slider)
     {
       popup = editor->priv->a_popup;
       focus = editor->priv->a_entry;
-      ctk_range_get_slider_range (GTK_RANGE (editor->priv->a_slider), &s, &e);
+      ctk_range_get_slider_range (CTK_RANGE (editor->priv->a_slider), &s, &e);
       position = (s + e) / 2;
     }
 
@@ -223,8 +223,8 @@ popup_edit (GtkWidget      *widget,
   else if (popup)
     {
       dismiss_current_popup (editor);
-      toplevel = ctk_widget_get_toplevel (GTK_WIDGET (editor));
-      g_set_object (&editor->priv->popdown_focus, ctk_window_get_focus (GTK_WINDOW (toplevel)));
+      toplevel = ctk_widget_get_toplevel (CTK_WIDGET (editor));
+      g_set_object (&editor->priv->popdown_focus, ctk_window_get_focus (CTK_WINDOW (toplevel)));
       editor->priv->current_popup = popup;
       editor->priv->popup_position = position;
       ctk_widget_show (popup);
@@ -269,17 +269,17 @@ get_child_position (GtkOverlay     *overlay,
                                         ctk_widget_get_parent (editor->priv->grid),
                                         0, -6,
                                         &allocation->x, &allocation->y);
-      if (ctk_widget_get_direction (GTK_WIDGET (overlay)) == GTK_TEXT_DIR_RTL)
+      if (ctk_widget_get_direction (CTK_WIDGET (overlay)) == CTK_TEXT_DIR_RTL)
         allocation->x = 0;
       else
-        allocation->x = ctk_widget_get_allocated_width (GTK_WIDGET (overlay)) - req.width;
+        allocation->x = ctk_widget_get_allocated_width (CTK_WIDGET (overlay)) - req.width;
     }
   else if (widget == editor->priv->h_popup)
     {
       ctk_widget_get_allocation (editor->priv->h_slider, &alloc);
-      ctk_range_get_slider_range (GTK_RANGE (editor->priv->h_slider), &s, &e);
+      ctk_range_get_slider_range (CTK_RANGE (editor->priv->h_slider), &s, &e);
 
-      if (ctk_widget_get_direction (GTK_WIDGET (overlay)) == GTK_TEXT_DIR_RTL)
+      if (ctk_widget_get_direction (CTK_WIDGET (overlay)) == CTK_TEXT_DIR_RTL)
         ctk_widget_translate_coordinates (editor->priv->h_slider,
                                           ctk_widget_get_parent (editor->priv->grid),
                                           - req.width - 6, editor->priv->popup_position - req.height / 2,
@@ -293,7 +293,7 @@ get_child_position (GtkOverlay     *overlay,
   else if (widget == editor->priv->a_popup)
     {
       ctk_widget_get_allocation (editor->priv->a_slider, &alloc);
-      ctk_range_get_slider_range (GTK_RANGE (editor->priv->a_slider), &s, &e);
+      ctk_range_get_slider_range (CTK_RANGE (editor->priv->a_slider), &s, &e);
 
       ctk_widget_translate_coordinates (editor->priv->a_slider,
                                         ctk_widget_get_parent (editor->priv->grid),
@@ -303,8 +303,8 @@ get_child_position (GtkOverlay     *overlay,
   else
     return FALSE;
 
-  allocation->x = CLAMP (allocation->x, 0, ctk_widget_get_allocated_width (GTK_WIDGET (overlay)) - req.width);
-  allocation->y = CLAMP (allocation->y, 0, ctk_widget_get_allocated_height (GTK_WIDGET (overlay)) - req.height);
+  allocation->x = CLAMP (allocation->x, 0, ctk_widget_get_allocated_width (CTK_WIDGET (overlay)) - req.width);
+  allocation->y = CLAMP (allocation->y, 0, ctk_widget_get_allocated_height (CTK_WIDGET (overlay)) - req.height);
 
   return TRUE;
 }
@@ -363,7 +363,7 @@ color_picked (GObject      *source,
               GAsyncResult *res,
               gpointer      data)
 {
-  GtkColorPicker *picker = GTK_COLOR_PICKER (source);
+  GtkColorPicker *picker = CTK_COLOR_PICKER (source);
   GtkColorEditor *editor = data;
   GError *error = NULL;
   GdkRGBA *color;
@@ -375,7 +375,7 @@ color_picked (GObject      *source,
     }
   else
     {
-      ctk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (editor), color);
+      ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (editor), color);
       gdk_rgba_free (color);
     }
 }
@@ -393,10 +393,10 @@ ctk_color_editor_init (GtkColorEditor *editor)
   editor->priv = ctk_color_editor_get_instance_private (editor);
   editor->priv->use_alpha = TRUE;
 
-  g_type_ensure (GTK_TYPE_COLOR_SCALE);
-  g_type_ensure (GTK_TYPE_COLOR_PLANE);
-  g_type_ensure (GTK_TYPE_COLOR_SWATCH);
-  ctk_widget_init_template (GTK_WIDGET (editor));
+  g_type_ensure (CTK_TYPE_COLOR_SCALE);
+  g_type_ensure (CTK_TYPE_COLOR_PLANE);
+  g_type_ensure (CTK_TYPE_COLOR_SWATCH);
+  ctk_widget_init_template (CTK_WIDGET (editor));
 
   /* Some post processing is needed in code to set this up */
   ctk_widget_set_events (editor->priv->swatch,
@@ -406,7 +406,7 @@ ctk_color_editor_init (GtkColorEditor *editor)
                                      | GDK_KEY_PRESS_MASK
                                      | GDK_KEY_RELEASE_MASK));
 
-  if (ctk_widget_get_direction (editor->priv->h_slider) == GTK_TEXT_DIR_RTL)
+  if (ctk_widget_get_direction (editor->priv->h_slider) == CTK_TEXT_DIR_RTL)
     ctk_style_context_add_class (ctk_widget_get_style_context (editor->priv->h_slider),
                                  "marks-before");
   else
@@ -417,15 +417,15 @@ ctk_color_editor_init (GtkColorEditor *editor)
    * supported by template GtkBuilder xml (it would be possible to set this up in the xml
    * but require 4 separate callbacks and would be rather ugly).
    */
-  ctk_spin_button_set_adjustment (GTK_SPIN_BUTTON (editor->priv->h_entry), scaled_adjustment (editor->priv->h_adj, 100));
-  ctk_spin_button_set_adjustment (GTK_SPIN_BUTTON (editor->priv->s_entry), scaled_adjustment (editor->priv->s_adj, 100));
-  ctk_spin_button_set_adjustment (GTK_SPIN_BUTTON (editor->priv->v_entry), scaled_adjustment (editor->priv->v_adj, 100));
-  ctk_spin_button_set_adjustment (GTK_SPIN_BUTTON (editor->priv->a_entry), scaled_adjustment (editor->priv->a_adj, 100));
+  ctk_spin_button_set_adjustment (CTK_SPIN_BUTTON (editor->priv->h_entry), scaled_adjustment (editor->priv->h_adj, 100));
+  ctk_spin_button_set_adjustment (CTK_SPIN_BUTTON (editor->priv->s_entry), scaled_adjustment (editor->priv->s_adj, 100));
+  ctk_spin_button_set_adjustment (CTK_SPIN_BUTTON (editor->priv->v_entry), scaled_adjustment (editor->priv->v_adj, 100));
+  ctk_spin_button_set_adjustment (CTK_SPIN_BUTTON (editor->priv->a_entry), scaled_adjustment (editor->priv->a_adj, 100));
 
   /* This can be setup in the .ui file, but requires work in Glade otherwise it cannot be edited there */
-  ctk_overlay_add_overlay (GTK_OVERLAY (editor->priv->overlay), editor->priv->sv_popup);
-  ctk_overlay_add_overlay (GTK_OVERLAY (editor->priv->overlay), editor->priv->h_popup);
-  ctk_overlay_add_overlay (GTK_OVERLAY (editor->priv->overlay), editor->priv->a_popup);
+  ctk_overlay_add_overlay (CTK_OVERLAY (editor->priv->overlay), editor->priv->sv_popup);
+  ctk_overlay_add_overlay (CTK_OVERLAY (editor->priv->overlay), editor->priv->h_popup);
+  ctk_overlay_add_overlay (CTK_OVERLAY (editor->priv->overlay), editor->priv->a_popup);
 
   ctk_style_context_remove_class (ctk_widget_get_style_context (editor->priv->swatch), "activatable");
 
@@ -437,7 +437,7 @@ ctk_color_editor_init (GtkColorEditor *editor)
 static void
 ctk_color_editor_dispose (GObject *object)
 {
-  GtkColorEditor *editor = GTK_COLOR_EDITOR (object);
+  GtkColorEditor *editor = CTK_COLOR_EDITOR (object);
 
   dismiss_current_popup (editor);
   g_clear_object (&editor->priv->picker);
@@ -451,8 +451,8 @@ ctk_color_editor_get_property (GObject    *object,
                                GValue     *value,
                                GParamSpec *pspec)
 {
-  GtkColorEditor *ce = GTK_COLOR_EDITOR (object);
-  GtkColorChooser *cc = GTK_COLOR_CHOOSER (object);
+  GtkColorEditor *ce = CTK_COLOR_EDITOR (object);
+  GtkColorChooser *cc = CTK_COLOR_CHOOSER (object);
 
   switch (prop_id)
     {
@@ -480,7 +480,7 @@ ctk_color_editor_set_use_alpha (GtkColorEditor *editor,
     {
       editor->priv->use_alpha = use_alpha;
       ctk_widget_set_visible (editor->priv->a_slider, use_alpha);
-      ctk_color_swatch_set_use_alpha (GTK_COLOR_SWATCH (editor->priv->swatch), use_alpha);
+      ctk_color_swatch_set_use_alpha (CTK_COLOR_SWATCH (editor->priv->swatch), use_alpha);
     }
 }
 
@@ -490,8 +490,8 @@ ctk_color_editor_set_property (GObject      *object,
                                const GValue *value,
                                GParamSpec   *pspec)
 {
-  GtkColorEditor *ce = GTK_COLOR_EDITOR (object);
-  GtkColorChooser *cc = GTK_COLOR_CHOOSER (object);
+  GtkColorEditor *ce = CTK_COLOR_EDITOR (object);
+  GtkColorChooser *cc = CTK_COLOR_CHOOSER (object);
 
   switch (prop_id)
     {
@@ -511,7 +511,7 @@ static void
 ctk_color_editor_class_init (GtkColorEditorClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->dispose = ctk_color_editor_dispose;
   object_class->get_property = ctk_color_editor_get_property;
@@ -561,7 +561,7 @@ static void
 ctk_color_editor_get_rgba (GtkColorChooser *chooser,
                            GdkRGBA         *color)
 {
-  GtkColorEditor *editor = GTK_COLOR_EDITOR (chooser);
+  GtkColorEditor *editor = CTK_COLOR_EDITOR (chooser);
   gdouble h, s, v;
 
   h = ctk_adjustment_get_value (editor->priv->h_adj);
@@ -575,7 +575,7 @@ static void
 ctk_color_editor_set_rgba (GtkColorChooser *chooser,
                            const GdkRGBA   *color)
 {
-  GtkColorEditor *editor = GTK_COLOR_EDITOR (chooser);
+  GtkColorEditor *editor = CTK_COLOR_EDITOR (chooser);
   gdouble h, s, v;
 
   ctk_rgb_to_hsv (color->red, color->green, color->blue, &h, &s, &v);
@@ -585,8 +585,8 @@ ctk_color_editor_set_rgba (GtkColorChooser *chooser,
   ctk_adjustment_set_value (editor->priv->v_adj, v);
   ctk_adjustment_set_value (editor->priv->a_adj, color->alpha);
 
-  ctk_color_swatch_set_rgba (GTK_COLOR_SWATCH (editor->priv->swatch), color);
-  ctk_color_scale_set_rgba (GTK_COLOR_SCALE (editor->priv->a_slider), color);
+  ctk_color_swatch_set_rgba (CTK_COLOR_SWATCH (editor->priv->swatch), color);
+  ctk_color_scale_set_rgba (CTK_COLOR_SCALE (editor->priv->a_slider), color);
   entry_set_rgba (editor, color);
 
   g_object_notify (G_OBJECT (editor), "rgba");
@@ -602,5 +602,5 @@ ctk_color_editor_iface_init (GtkColorChooserInterface *iface)
 GtkWidget *
 ctk_color_editor_new (void)
 {
-  return (GtkWidget *) g_object_new (GTK_TYPE_COLOR_EDITOR, NULL);
+  return (GtkWidget *) g_object_new (CTK_TYPE_COLOR_EDITOR, NULL);
 }

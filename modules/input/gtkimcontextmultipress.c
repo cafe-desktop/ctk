@@ -78,7 +78,7 @@ ctk_im_context_multipress_register_type (GTypeModule* type_module)
 
   im_context_multipress_type =
     g_type_module_register_type (type_module,
-                                 GTK_TYPE_IM_CONTEXT,
+                                 CTK_TYPE_IM_CONTEXT,
                                  "GtkImContextMultipress",
                                  &im_context_multipress_info, 0);
 }
@@ -112,7 +112,7 @@ im_context_multipress_class_init (GtkImContextMultipressClass *klass)
   im_context_multipress_parent_class = g_type_class_peek_parent (klass);
 
   /* Specify our vfunc implementations: */
-  im_context_class = GTK_IM_CONTEXT_CLASS (klass);
+  im_context_class = CTK_IM_CONTEXT_CLASS (klass);
   im_context_class->filter_keypress = &vfunc_filter_keypress;
   im_context_class->reset = &vfunc_reset;
   im_context_class->get_preedit_string = &vfunc_get_preedit_string;
@@ -133,7 +133,7 @@ im_context_multipress_finalize (GObject *obj)
 {
   GtkImContextMultipress *self;
 
-  self = GTK_IM_CONTEXT_MULTIPRESS (obj);
+  self = CTK_IM_CONTEXT_MULTIPRESS (obj);
 
   /* Release the configuration data: */
   if (self->key_sequences != NULL)
@@ -149,7 +149,7 @@ im_context_multipress_finalize (GObject *obj)
 GtkIMContext *
 ctk_im_context_multipress_new (void)
 {
-  return (GtkIMContext *)g_object_new (GTK_TYPE_IM_CONTEXT_MULTIPRESS, NULL);
+  return (GtkIMContext *)g_object_new (CTK_TYPE_IM_CONTEXT_MULTIPRESS, NULL);
 }
 
 static void
@@ -203,7 +203,7 @@ on_timeout (gpointer data)
 
   gdk_threads_enter ();
 
-  multipress_context = GTK_IM_CONTEXT_MULTIPRESS (data);
+  multipress_context = CTK_IM_CONTEXT_MULTIPRESS (data);
 
   /* A certain amount of time has passed, so we will assume that the user
    * really wants the currently chosen character */
@@ -222,7 +222,7 @@ vfunc_filter_keypress (GtkIMContext *context, GdkEventKey *event)
   GtkIMContextClass      *parent;
   GtkImContextMultipress *multipress_context;
 
-  multipress_context = GTK_IM_CONTEXT_MULTIPRESS (context);
+  multipress_context = CTK_IM_CONTEXT_MULTIPRESS (context);
 
   if (event->type == GDK_KEY_PRESS)
     {
@@ -323,7 +323,7 @@ vfunc_filter_keypress (GtkIMContext *context, GdkEventKey *event)
 static void
 vfunc_reset (GtkIMContext *context)
 {
-  clear_compose_buffer (GTK_IM_CONTEXT_MULTIPRESS (context));
+  clear_compose_buffer (CTK_IM_CONTEXT_MULTIPRESS (context));
 }
 
 static void
@@ -340,7 +340,7 @@ vfunc_get_preedit_string (GtkIMContext   *context,
     {
       const gchar *match;
 
-      match = GTK_IM_CONTEXT_MULTIPRESS (context)->tentative_match;
+      match = CTK_IM_CONTEXT_MULTIPRESS (context)->tentative_match;
 
       if (match == NULL)
         match = ""; /* *str must not be NUL */

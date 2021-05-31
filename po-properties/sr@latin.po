@@ -332,10 +332,10 @@ msgstr "Važno je"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Da li se radnja smatra važnom. Ako je postavljeno, posrednici za stavke alata "
-"ove radnje prikazuju tekst u režimu „GTK_TOOLBAR_BOTH_HORIZ“."
+"ove radnje prikazuju tekst u režimu „CTK_TOOLBAR_BOTH_HORIZ“."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1798,8 +1798,8 @@ msgid "Default Spacing"
 msgstr "Razmak podrazumevanih"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Razmak koji treba dodati za „GTK_CAN_DEFAULT“ dugmiće"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Razmak koji treba dodati za „CTK_CAN_DEFAULT“ dugmiće"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1807,10 +1807,10 @@ msgstr "Razmak oko podrazumevanih"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Razmak koji treba dodati oko „GTK_CAN_DEFAULT“ dugmića i koji se iscrtava "
+"Razmak koji treba dodati oko „CTK_CAN_DEFAULT“ dugmića i koji se iscrtava "
 "oko granice"
 
 #: gtk/gtkbutton.c:556
@@ -4241,10 +4241,10 @@ msgid "Baseline Row"
 msgstr "Red linije osnove"
 
 #: gtk/gtkgrid.c:1787
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
 "Red za poravnanje sa linijom osnove kada je uspravno poravnanje "
-"„GTK_ALIGN_BASELINE“"
+"„CTK_ALIGN_BASELINE“"
 
 #: gtk/gtkgrid.c:1805
 msgid "The row number to attach the top side of a child widget to"
@@ -8395,10 +8395,10 @@ msgstr "Razmak između ikonice i oznake, u pikselima"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Da li se stavka alatki smatra važnom. Ako je postavljeno, dugmad alatke "
-"prikazuju i tekst u režimu GTK_TOOLBAR_BOTH_HORIZ"
+"prikazuju i tekst u režimu CTK_TOOLBAR_BOTH_HORIZ"
 
 #: gtk/gtktoolitemgroup.c:1642
 msgid "The human-readable title of this item group"

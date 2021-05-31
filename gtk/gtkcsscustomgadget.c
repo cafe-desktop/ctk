@@ -106,7 +106,7 @@ struct _GtkCssCustomGadgetPrivate {
   GDestroyNotify                   destroy_func;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkCssCustomGadget, ctk_css_custom_gadget, GTK_TYPE_CSS_GADGET,
+G_DEFINE_TYPE_WITH_CODE (GtkCssCustomGadget, ctk_css_custom_gadget, CTK_TYPE_CSS_GADGET,
                          G_ADD_PRIVATE (GtkCssCustomGadget))
 
 static void
@@ -118,7 +118,7 @@ ctk_css_custom_gadget_get_preferred_size (GtkCssGadget   *gadget,
                                           gint           *minimum_baseline,
                                           gint           *natural_baseline)
 {
-  GtkCssCustomGadgetPrivate *priv = ctk_css_custom_gadget_get_instance_private (GTK_CSS_CUSTOM_GADGET (gadget));
+  GtkCssCustomGadgetPrivate *priv = ctk_css_custom_gadget_get_instance_private (CTK_CSS_CUSTOM_GADGET (gadget));
 
   if (priv->preferred_size_func)
     return priv->preferred_size_func (gadget, orientation, for_size, 
@@ -126,7 +126,7 @@ ctk_css_custom_gadget_get_preferred_size (GtkCssGadget   *gadget,
                                       minimum_baseline, natural_baseline,
                                       priv->data);
   else
-    return GTK_CSS_GADGET_CLASS (ctk_css_custom_gadget_parent_class)->get_preferred_size (gadget, orientation, for_size, 
+    return CTK_CSS_GADGET_CLASS (ctk_css_custom_gadget_parent_class)->get_preferred_size (gadget, orientation, for_size, 
                                                                                           minimum, natural,
                                                                                           minimum_baseline, natural_baseline);
 }
@@ -137,12 +137,12 @@ ctk_css_custom_gadget_allocate (GtkCssGadget        *gadget,
                                 int                  baseline,
                                 GtkAllocation       *out_clip)
 {
-  GtkCssCustomGadgetPrivate *priv = ctk_css_custom_gadget_get_instance_private (GTK_CSS_CUSTOM_GADGET (gadget));
+  GtkCssCustomGadgetPrivate *priv = ctk_css_custom_gadget_get_instance_private (CTK_CSS_CUSTOM_GADGET (gadget));
 
   if (priv->allocate_func)
     return priv->allocate_func (gadget, allocation, baseline, out_clip, priv->data);
   else
-    return GTK_CSS_GADGET_CLASS (ctk_css_custom_gadget_parent_class)->allocate (gadget, allocation, baseline, out_clip);
+    return CTK_CSS_GADGET_CLASS (ctk_css_custom_gadget_parent_class)->allocate (gadget, allocation, baseline, out_clip);
 }
 
 static gboolean
@@ -153,18 +153,18 @@ ctk_css_custom_gadget_draw (GtkCssGadget *gadget,
                             int           width,
                             int           height)
 {
-  GtkCssCustomGadgetPrivate *priv = ctk_css_custom_gadget_get_instance_private (GTK_CSS_CUSTOM_GADGET (gadget));
+  GtkCssCustomGadgetPrivate *priv = ctk_css_custom_gadget_get_instance_private (CTK_CSS_CUSTOM_GADGET (gadget));
 
   if (priv->draw_func)
     return priv->draw_func (gadget, cr, x, y, width, height, priv->data);
   else
-    return GTK_CSS_GADGET_CLASS (ctk_css_custom_gadget_parent_class)->draw (gadget, cr, x, y, width, height);
+    return CTK_CSS_GADGET_CLASS (ctk_css_custom_gadget_parent_class)->draw (gadget, cr, x, y, width, height);
 }
 
 static void
 ctk_css_custom_gadget_finalize (GObject *object)
 {
-  GtkCssCustomGadgetPrivate *priv = ctk_css_custom_gadget_get_instance_private (GTK_CSS_CUSTOM_GADGET (object));
+  GtkCssCustomGadgetPrivate *priv = ctk_css_custom_gadget_get_instance_private (CTK_CSS_CUSTOM_GADGET (object));
 
   if (priv->destroy_func)
     priv->destroy_func (priv->data);
@@ -175,7 +175,7 @@ ctk_css_custom_gadget_finalize (GObject *object)
 static void
 ctk_css_custom_gadget_class_init (GtkCssCustomGadgetClass *klass)
 {
-  GtkCssGadgetClass *gadget_class = GTK_CSS_GADGET_CLASS (klass);
+  GtkCssGadgetClass *gadget_class = CTK_CSS_GADGET_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = ctk_css_custom_gadget_finalize;
@@ -224,12 +224,12 @@ ctk_css_custom_gadget_new_for_node (GtkCssNode                 *node,
   GtkCssCustomGadgetPrivate *priv;
   GtkCssGadget *result;
 
-  result = g_object_new (GTK_TYPE_CSS_CUSTOM_GADGET,
+  result = g_object_new (CTK_TYPE_CSS_CUSTOM_GADGET,
                          "node", node,
                          "owner", owner,
                          NULL);
 
-  priv = ctk_css_custom_gadget_get_instance_private (GTK_CSS_CUSTOM_GADGET (result));
+  priv = ctk_css_custom_gadget_get_instance_private (CTK_CSS_CUSTOM_GADGET (result));
 
   priv->preferred_size_func = preferred_size_func;
   priv->allocate_func = allocate_func;

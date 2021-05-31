@@ -48,11 +48,11 @@ change_transition_state (GSimpleAction *action,
   GtkStackTransitionType transition;
 
   if (g_variant_get_boolean (state))
-    transition = GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT;
+    transition = CTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT;
   else
-    transition = GTK_STACK_TRANSITION_TYPE_NONE;
+    transition = CTK_STACK_TRANSITION_TYPE_NONE;
 
-  ctk_stack_set_transition_type (GTK_STACK (page_stack), transition);
+  ctk_stack_set_transition_type (CTK_STACK (page_stack), transition);
 
   g_simple_action_set_state (action, state);
 }
@@ -61,7 +61,7 @@ static gboolean
 get_idle (gpointer data)
 {
   GtkWidget *window = data;
-  GtkApplication *app = ctk_window_get_application (GTK_WINDOW (window));
+  GtkApplication *app = ctk_window_get_application (CTK_WINDOW (window));
 
   ctk_widget_set_sensitive (window, TRUE);
   gdk_window_set_cursor (ctk_widget_get_window (window), NULL);
@@ -77,7 +77,7 @@ get_busy (GSimpleAction *action,
 {
   GtkWidget *window = user_data;
   GdkCursor *cursor;
-  GtkApplication *app = ctk_window_get_application (GTK_WINDOW (window));
+  GtkApplication *app = ctk_window_get_application (CTK_WINDOW (window));
 
   g_application_mark_busy (G_APPLICATION (app));
   cursor = gdk_cursor_new_from_name (ctk_widget_get_display (window), "wait");
@@ -106,8 +106,8 @@ activate_search (GSimpleAction *action,
   if (!on_page (2))
     return;
 
-  searchbar = GTK_WIDGET (g_object_get_data (G_OBJECT (window), "searchbar"));
-  ctk_search_bar_set_search_mode (GTK_SEARCH_BAR (searchbar), TRUE);
+  searchbar = CTK_WIDGET (g_object_get_data (G_OBJECT (window), "searchbar"));
+  ctk_search_bar_set_search_mode (CTK_SEARCH_BAR (searchbar), TRUE);
 }
 
 static void
@@ -121,7 +121,7 @@ activate_delete (GSimpleAction *action,
   if (!on_page (2))
     return;
 
-  infobar = GTK_WIDGET (g_object_get_data (G_OBJECT (window), "infobar"));
+  infobar = CTK_WIDGET (g_object_get_data (G_OBJECT (window), "infobar"));
   ctk_widget_show (infobar);
 }
 
@@ -139,8 +139,8 @@ activate_background (GSimpleAction *action,
   if (!on_page (2))
     return;
 
-  dialog = GTK_WIDGET (g_object_get_data (G_OBJECT (window), "selection_dialog"));
-  flowbox = GTK_WIDGET (g_object_get_data (G_OBJECT (window), "selection_flowbox"));
+  dialog = CTK_WIDGET (g_object_get_data (G_OBJECT (window), "selection_dialog"));
+  flowbox = CTK_WIDGET (g_object_get_data (G_OBJECT (window), "selection_flowbox"));
 
   ctk_widget_show (dialog);
   populate_flowbox (flowbox);
@@ -157,8 +157,8 @@ activate_open (GSimpleAction *action,
   if (!on_page (3))
     return;
 
-  button = GTK_WIDGET (g_object_get_data (G_OBJECT (window), "open_menubutton"));
-  ctk_button_clicked (GTK_BUTTON (button));
+  button = CTK_WIDGET (g_object_get_data (G_OBJECT (window), "open_menubutton"));
+  ctk_button_clicked (CTK_BUTTON (button));
 }
 
 static void
@@ -172,8 +172,8 @@ activate_record (GSimpleAction *action,
   if (!on_page (3))
     return;
 
-  button = GTK_WIDGET (g_object_get_data (G_OBJECT (window), "record_button"));
-  ctk_button_clicked (GTK_BUTTON (button));
+  button = CTK_WIDGET (g_object_get_data (G_OBJECT (window), "record_button"));
+  ctk_button_clicked (CTK_BUTTON (button));
 }
 
 static void
@@ -187,8 +187,8 @@ activate_lock (GSimpleAction *action,
   if (!on_page (3))
     return;
 
-  button = GTK_WIDGET (g_object_get_data (G_OBJECT (window), "lockbutton"));
-  ctk_button_clicked (GTK_BUTTON (button));
+  button = CTK_WIDGET (g_object_get_data (G_OBJECT (window), "lockbutton"));
+  ctk_button_clicked (CTK_BUTTON (button));
 }
 
 static void
@@ -210,11 +210,11 @@ activate_about (GSimpleAction *action,
                              ctk_get_minor_version (),
                              ctk_get_micro_version ());
 
-  ctk_show_about_dialog (GTK_WINDOW (ctk_application_get_active_window (app)),
+  ctk_show_about_dialog (CTK_WINDOW (ctk_application_get_active_window (app)),
                          "program-name", "GTK Widget Factory",
                          "version", version,
                          "copyright", "© 1997—2019 The GTK Team",
-                         "license-type", GTK_LICENSE_LGPL_2_1,
+                         "license-type", CTK_LICENSE_LGPL_2_1,
                          "website", "http://www.gtk.org",
                          "comments", "Program to demonstrate GTK themes and widgets",
                          "authors", authors,
@@ -240,7 +240,7 @@ activate_quit (GSimpleAction *action,
       win = list->data;
       next = list->next;
 
-      ctk_widget_destroy (GTK_WIDGET (win));
+      ctk_widget_destroy (CTK_WIDGET (win));
 
       list = next;
     }
@@ -266,12 +266,12 @@ spin_value_changed (GtkAdjustment *adjustment, GtkWidget *label)
   if ((v % 3) == 0)
     {
       text = g_strdup_printf ("%d is a multiple of 3", v);
-      ctk_label_set_label (GTK_LABEL (label), text);
+      ctk_label_set_label (CTK_LABEL (label), text);
       g_free (text);
     }
 
-  w = ctk_widget_get_ancestor (label, GTK_TYPE_REVEALER);
-  ctk_revealer_set_reveal_child (GTK_REVEALER (w), (v % 3) == 0);
+  w = ctk_widget_get_ancestor (label, CTK_TYPE_REVEALER);
+  ctk_revealer_set_reveal_child (CTK_REVEALER (w), (v % 3) == 0);
 }
 
 static void
@@ -279,8 +279,8 @@ dismiss (GtkWidget *button)
 {
   GtkWidget *w;
 
-  w = ctk_widget_get_ancestor (button, GTK_TYPE_REVEALER);
-  ctk_revealer_set_reveal_child (GTK_REVEALER (w), FALSE);
+  w = ctk_widget_get_ancestor (button, CTK_TYPE_REVEALER);
+  ctk_revealer_set_reveal_child (CTK_REVEALER (w), FALSE);
 }
 
 static void
@@ -304,10 +304,10 @@ pulse_it (GtkWidget *widget)
 {
   guint pulse_id;
 
-  if (GTK_IS_ENTRY (widget))
-    ctk_entry_progress_pulse (GTK_ENTRY (widget));
+  if (CTK_IS_ENTRY (widget))
+    ctk_entry_progress_pulse (CTK_ENTRY (widget));
   else
-    ctk_progress_bar_pulse (GTK_PROGRESS_BAR (widget));
+    ctk_progress_bar_pulse (CTK_PROGRESS_BAR (widget));
 
   pulse_id = g_timeout_add (pulse_time, (GSourceFunc)pulse_it, widget);
   g_object_set_data_full (G_OBJECT (widget), "pulse_id", GUINT_TO_POINTER (pulse_id), remove_pulse);
@@ -334,7 +334,7 @@ update_pulse_time (GtkAdjustment *adjustment, GtkWidget *widget)
     }
   else if (value < 100)
     {
-      if (pulse_id == 0 && (GTK_IS_PROGRESS_BAR (widget) || pulse_entry_mode % 3 == 2))
+      if (pulse_id == 0 && (CTK_IS_PROGRESS_BAR (widget) || pulse_entry_mode % 3 == 2))
         {
           pulse_id = g_timeout_add (pulse_time, (GSourceFunc)pulse_it, widget);
           g_object_set_data_full (G_OBJECT (widget), "pulse_id", GUINT_TO_POINTER (pulse_id), remove_pulse);
@@ -348,7 +348,7 @@ on_entry_icon_release (GtkEntry            *entry,
                        GdkEvent            *event,
                        gpointer             user_data)
 {
-  if (icon_pos != GTK_ENTRY_ICON_SECONDARY)
+  if (icon_pos != CTK_ENTRY_ICON_SECONDARY)
     return;
 
   pulse_entry_mode++;
@@ -365,7 +365,7 @@ on_entry_icon_release (GtkEntry            *entry,
       if (pulse_time - 50 < 400)
         {
           ctk_entry_set_progress_pulse_step (entry, 0.1);
-          pulse_it (GTK_WIDGET (entry));
+          pulse_it (CTK_WIDGET (entry));
         }
     }
 }
@@ -380,7 +380,7 @@ on_scale_button_query_tooltip (GtkWidget  *button,
                                GtkTooltip *tooltip,
                                gpointer    user_data)
 {
-  GtkScaleButton *scale_button = GTK_SCALE_BUTTON (button);
+  GtkScaleButton *scale_button = CTK_SCALE_BUTTON (button);
   GtkAdjustment *adjustment;
   gdouble val;
   gchar *str;
@@ -420,7 +420,7 @@ on_scale_button_value_changed (GtkScaleButton *button,
                                gdouble         value,
                                gpointer        user_data)
 {
-  ctk_widget_trigger_tooltip_query (GTK_WIDGET (button));
+  ctk_widget_trigger_tooltip_query (CTK_WIDGET (button));
 }
 
 static void
@@ -429,7 +429,7 @@ on_record_button_toggled (GtkToggleButton *button,
 {
   GtkStyleContext *context;
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (button));
+  context = ctk_widget_get_style_context (CTK_WIDGET (button));
   if (ctk_toggle_button_get_active (button))
     ctk_style_context_remove_class (context, "destructive-action");
   else
@@ -444,9 +444,9 @@ on_page_combo_changed (GtkComboBox *combo,
   GtkWidget *to;
   GtkWidget *print;
 
-  from = GTK_WIDGET (g_object_get_data (G_OBJECT (combo), "range_from_spin"));
-  to = GTK_WIDGET (g_object_get_data (G_OBJECT (combo), "range_to_spin"));
-  print = GTK_WIDGET (g_object_get_data (G_OBJECT (combo), "print_button"));
+  from = CTK_WIDGET (g_object_get_data (G_OBJECT (combo), "range_from_spin"));
+  to = CTK_WIDGET (g_object_get_data (G_OBJECT (combo), "range_to_spin"));
+  print = CTK_WIDGET (g_object_get_data (G_OBJECT (combo), "print_button"));
 
   switch (ctk_combo_box_get_active (combo))
     {
@@ -458,15 +458,15 @@ on_page_combo_changed (GtkComboBox *combo,
     case 1: /* All */
       ctk_widget_set_sensitive (from, FALSE);
       ctk_widget_set_sensitive (to, FALSE);
-      ctk_spin_button_set_value (GTK_SPIN_BUTTON (from), 1);
-      ctk_spin_button_set_value (GTK_SPIN_BUTTON (to), 99);
+      ctk_spin_button_set_value (CTK_SPIN_BUTTON (from), 1);
+      ctk_spin_button_set_value (CTK_SPIN_BUTTON (to), 99);
       ctk_widget_set_sensitive (print, TRUE);
       break;
     case 2: /* Current */
       ctk_widget_set_sensitive (from, FALSE);
       ctk_widget_set_sensitive (to, FALSE);
-      ctk_spin_button_set_value (GTK_SPIN_BUTTON (from), 7);
-      ctk_spin_button_set_value (GTK_SPIN_BUTTON (to), 7);
+      ctk_spin_button_set_value (CTK_SPIN_BUTTON (from), 7);
+      ctk_spin_button_set_value (CTK_SPIN_BUTTON (to), 7);
       ctk_widget_set_sensitive (print, TRUE);
       break;
     case 4:
@@ -484,7 +484,7 @@ on_range_from_changed (GtkSpinButton *from)
   GtkSpinButton *to;
   gint v1, v2;
 
-  to = GTK_SPIN_BUTTON (g_object_get_data (G_OBJECT (from), "range_to_spin"));
+  to = CTK_SPIN_BUTTON (g_object_get_data (G_OBJECT (from), "range_to_spin"));
 
   v1 = ctk_spin_button_get_value_as_int (from);
   v2 = ctk_spin_button_get_value_as_int (to);
@@ -499,7 +499,7 @@ on_range_to_changed (GtkSpinButton *to)
   GtkSpinButton *from;
   gint v1, v2;
 
-  from = GTK_SPIN_BUTTON (g_object_get_data (G_OBJECT (to), "range_from_spin"));
+  from = CTK_SPIN_BUTTON (g_object_get_data (G_OBJECT (to), "range_from_spin"));
 
   v1 = ctk_spin_button_get_value_as_int (from);
   v2 = ctk_spin_button_get_value_as_int (to);
@@ -518,7 +518,7 @@ update_header (GtkListBoxRow *row,
     {
       GtkWidget *separator;
 
-      separator = ctk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+      separator = ctk_separator_new (CTK_ORIENTATION_HORIZONTAL);
       ctk_widget_show (separator);
       ctk_list_box_row_set_header (row, separator);
     }
@@ -527,7 +527,7 @@ update_header (GtkListBoxRow *row,
 static void
 info_bar_response (GtkWidget *infobar, gint response_id)
 {
-  if (response_id == GTK_RESPONSE_CLOSE)
+  if (response_id == CTK_RESPONSE_CLOSE)
     ctk_widget_hide (infobar);
 }
 
@@ -549,7 +549,7 @@ set_needs_attention (GtkWidget *page, gboolean needs_attention)
   GtkWidget *stack;
 
   stack = ctk_widget_get_parent (page);
-  ctk_container_child_set (GTK_CONTAINER (stack), page,
+  ctk_container_child_set (CTK_CONTAINER (stack), page,
                            "needs-attention", needs_attention,
                            NULL);
 }
@@ -559,7 +559,7 @@ demand_attention (gpointer stack)
 {
   GtkWidget *page;
 
-  page = ctk_stack_get_child_by_name (GTK_STACK (stack), "page3");
+  page = ctk_stack_get_child_by_name (CTK_STACK (stack), "page3");
   set_needs_attention (page, TRUE);
 
   return G_SOURCE_REMOVE;
@@ -581,10 +581,10 @@ page_changed_cb (GtkWidget *stack, GParamSpec *pspec, gpointer data)
   if (ctk_widget_in_destruction (stack))
     return;
 
-  name = ctk_stack_get_visible_child_name (GTK_STACK (stack));
+  name = ctk_stack_get_visible_child_name (CTK_STACK (stack));
 
-  window = ctk_widget_get_ancestor (stack, GTK_TYPE_APPLICATION_WINDOW);
-  g_object_set (ctk_application_window_get_help_overlay (GTK_APPLICATION_WINDOW (window)),
+  window = ctk_widget_get_ancestor (stack, CTK_TYPE_APPLICATION_WINDOW);
+  g_object_set (ctk_application_window_get_help_overlay (CTK_APPLICATION_WINDOW (window)),
                 "view-name", name,
                 NULL);
 
@@ -595,8 +595,8 @@ page_changed_cb (GtkWidget *stack, GParamSpec *pspec, gpointer data)
   if (g_str_equal (name, "page3"))
     {
       current_page = 3;
-      page = ctk_stack_get_visible_child (GTK_STACK (stack));
-      set_needs_attention (GTK_WIDGET (page), FALSE);
+      page = ctk_stack_get_visible_child (CTK_STACK (stack));
+      set_needs_attention (CTK_WIDGET (page), FALSE);
     }
 }
 
@@ -733,8 +733,8 @@ update_title_header (GtkListBoxRow *row,
       title = g_strdup_printf ("<b>%s</b>", title);
 
       header = ctk_label_new (title);
-      ctk_label_set_use_markup (GTK_LABEL (header), TRUE);
-      ctk_widget_set_halign (header, GTK_ALIGN_START);
+      ctk_label_set_use_markup (CTK_LABEL (header), TRUE);
+      ctk_widget_set_halign (header, CTK_ALIGN_START);
       ctk_widget_set_margin_top (header, 12);
       ctk_widget_set_margin_start (header, 6);
       ctk_widget_set_margin_end (header, 6);
@@ -757,19 +757,19 @@ overshot (GtkScrolledWindow *sw, GtkPositionType pos, GtkWidget *widget)
   GtkWidget *silver;
   GtkWidget *gold;
 
-  silver = GTK_WIDGET (g_object_get_data (G_OBJECT (widget), "Silver"));
-  gold = GTK_WIDGET (g_object_get_data (G_OBJECT (widget), "Gold"));
+  silver = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "Silver"));
+  gold = CTK_WIDGET (g_object_get_data (G_OBJECT (widget), "Gold"));
 
-  if (pos == GTK_POS_TOP)
+  if (pos == CTK_POS_TOP)
     {
       if (silver)
         {
-          ctk_container_remove (GTK_CONTAINER (widget), silver);
+          ctk_container_remove (CTK_CONTAINER (widget), silver);
           g_object_set_data (G_OBJECT (widget), "Silver", NULL);
         }
       if (gold)
         {
-          ctk_container_remove (GTK_CONTAINER (widget), gold);
+          ctk_container_remove (CTK_CONTAINER (widget), gold);
           g_object_set_data (G_OBJECT (widget), "Gold", NULL);
         }
 
@@ -784,34 +784,34 @@ overshot (GtkScrolledWindow *sw, GtkPositionType pos, GtkWidget *widget)
   else
     color = "Silver";
 
-  row = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 20);
+  row = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 20);
   text = g_strconcat ("<b>", color, "</b>", NULL);
   label = ctk_label_new (text);
   g_free (text);
   g_object_set (label,
                 "use-markup", TRUE,
-                "halign", GTK_ALIGN_START,
-                "valign", GTK_ALIGN_CENTER,
+                "halign", CTK_ALIGN_START,
+                "valign", CTK_ALIGN_CENTER,
                 "margin", 6,
                 "xalign", 0.0,
                 NULL);
-  ctk_box_pack_start (GTK_BOX (row), label, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (row), label, TRUE, TRUE, 0);
   gdk_rgba_parse (&rgba, color);
   swatch = g_object_new (g_type_from_name ("GtkColorSwatch"),
                          "rgba", &rgba,
                          "selectable", FALSE,
-                         "halign", GTK_ALIGN_END,
-                         "valign", GTK_ALIGN_CENTER,
+                         "halign", CTK_ALIGN_END,
+                         "valign", CTK_ALIGN_CENTER,
                          "margin", 6,
                          "height-request", 24,
                          NULL);
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-  ctk_container_add (GTK_CONTAINER (box), swatch);
-  ctk_box_pack_start (GTK_BOX (row), box, FALSE, FALSE, 0);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+  ctk_container_add (CTK_CONTAINER (box), swatch);
+  ctk_box_pack_start (CTK_BOX (row), box, FALSE, FALSE, 0);
   ctk_widget_show_all (row);
-  ctk_list_box_insert (GTK_LIST_BOX (widget), row, -1);
+  ctk_list_box_insert (CTK_LIST_BOX (widget), row, -1);
   row = ctk_widget_get_parent (row);
-  ctk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
+  ctk_list_box_row_set_activatable (CTK_LIST_BOX_ROW (row), FALSE);
   g_object_set_data (G_OBJECT (widget), color, row);
   g_object_set_data (G_OBJECT (row), "color", (gpointer)color);
 }
@@ -894,35 +894,35 @@ populate_colors (GtkWidget *widget, GtkWidget *chooser)
   GtkWidget *sw;
   GdkRGBA rgba;
 
-  ctk_list_box_set_header_func (GTK_LIST_BOX (widget), update_title_header, NULL, NULL);
+  ctk_list_box_set_header_func (CTK_LIST_BOX (widget), update_title_header, NULL, NULL);
 
   for (i = 0; i < G_N_ELEMENTS (colors); i++)
     {
-      row = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 20);
+      row = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 20);
       label = ctk_label_new (colors[i].name);
       g_object_set (label,
-                    "halign", GTK_ALIGN_START,
-                    "valign", GTK_ALIGN_CENTER,
+                    "halign", CTK_ALIGN_START,
+                    "valign", CTK_ALIGN_CENTER,
                     "margin", 6,
                     "xalign", 0.0,
                     NULL);
-      ctk_box_pack_start (GTK_BOX (row), label, TRUE, TRUE, 0);
+      ctk_box_pack_start (CTK_BOX (row), label, TRUE, TRUE, 0);
       gdk_rgba_parse (&rgba, colors[i].color);
       swatch = g_object_new (g_type_from_name ("GtkColorSwatch"),
                              "rgba", &rgba,
                              "selectable", FALSE,
-                             "halign", GTK_ALIGN_END,
-                             "valign", GTK_ALIGN_CENTER,
+                             "halign", CTK_ALIGN_END,
+                             "valign", CTK_ALIGN_CENTER,
                              "margin", 6,
                              "height-request", 24,
                              NULL);
-      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-      ctk_container_add (GTK_CONTAINER (box), swatch);
-      ctk_box_pack_start (GTK_BOX (row), box, FALSE, FALSE, 0);
+      box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+      ctk_container_add (CTK_CONTAINER (box), swatch);
+      ctk_box_pack_start (CTK_BOX (row), box, FALSE, FALSE, 0);
       ctk_widget_show_all (row);
-      ctk_list_box_insert (GTK_LIST_BOX (widget), row, -1);
+      ctk_list_box_insert (CTK_LIST_BOX (widget), row, -1);
       row = ctk_widget_get_parent (row);
-      ctk_list_box_row_set_activatable (GTK_LIST_BOX_ROW (row), FALSE);
+      ctk_list_box_row_set_activatable (CTK_LIST_BOX_ROW (row), FALSE);
       g_object_set_data (G_OBJECT (row), "color", (gpointer)colors[i].color);
       if (colors[i].title)
         g_object_set_data (G_OBJECT (row), "title", (gpointer)colors[i].title);
@@ -930,9 +930,9 @@ populate_colors (GtkWidget *widget, GtkWidget *chooser)
 
   g_signal_connect (widget, "row-selected", G_CALLBACK (set_color), chooser);
 
-  ctk_list_box_invalidate_headers (GTK_LIST_BOX (widget));
+  ctk_list_box_invalidate_headers (CTK_LIST_BOX (widget));
 
-  sw = ctk_widget_get_ancestor (widget, GTK_TYPE_SCROLLED_WINDOW);
+  sw = ctk_widget_get_ancestor (widget, CTK_TYPE_SCROLLED_WINDOW);
   g_signal_connect (sw, "edge-overshot", G_CALLBACK (overshot), widget);
 }
 
@@ -961,7 +961,7 @@ background_loaded_cb (GObject      *source,
 
   child = ctk_image_new_from_pixbuf (pixbuf);
   ctk_widget_show (child);
-  ctk_flow_box_insert (GTK_FLOW_BOX (bd->flowbox), child, -1);
+  ctk_flow_box_insert (CTK_FLOW_BOX (bd->flowbox), child, -1);
   child = ctk_widget_get_parent (child);
   g_object_set_data_full (G_OBJECT (child), "filename", bd->filename, g_free);
   g_free (bd);
@@ -990,7 +990,7 @@ populate_flowbox (GtkWidget *flowbox)
   gdk_pixbuf_fill (pixbuf, 0xffffffff);
   child = ctk_image_new_from_pixbuf (pixbuf);
   ctk_widget_show (child);
-  ctk_flow_box_insert (GTK_FLOW_BOX (flowbox), child, -1);
+  ctk_flow_box_insert (CTK_FLOW_BOX (flowbox), child, -1);
 
   location = "/usr/share/backgrounds/gnome";
   dir = g_dir_open (location, 0, &error);
@@ -1046,7 +1046,7 @@ row_activated (GtkListBox *box, GtkListBoxRow *row)
     }
   else if (dialog)
     {
-      ctk_window_present (GTK_WINDOW (dialog));
+      ctk_window_present (CTK_WINDOW (dialog));
     }
 }
 
@@ -1059,14 +1059,14 @@ set_accel (GtkApplication *app, GtkWidget *widget)
   guint key;
   GdkModifierType mods;
 
-  accel_label = ctk_bin_get_child (GTK_BIN (widget));
-  g_assert (GTK_IS_ACCEL_LABEL (accel_label));
+  accel_label = ctk_bin_get_child (CTK_BIN (widget));
+  g_assert (CTK_IS_ACCEL_LABEL (accel_label));
 
-  action = ctk_actionable_get_action_name (GTK_ACTIONABLE (widget));
+  action = ctk_actionable_get_action_name (CTK_ACTIONABLE (widget));
   accels = ctk_application_get_accels_for_action (app, action);
 
   ctk_accelerator_parse (accels[0], &key, &mods);
-  ctk_accel_label_set_accel (GTK_ACCEL_LABEL (accel_label), key, mods);
+  ctk_accel_label_set_accel (CTK_ACCEL_LABEL (accel_label), key, mods);
 
   g_strfreev (accels);
 }
@@ -1079,7 +1079,7 @@ typedef struct
 
 typedef GtkTextViewClass MyTextViewClass;
 
-G_DEFINE_TYPE (MyTextView, my_text_view, GTK_TYPE_TEXT_VIEW)
+G_DEFINE_TYPE (MyTextView, my_text_view, CTK_TYPE_TEXT_VIEW)
 
 static void
 my_text_view_init (MyTextView *tv)
@@ -1093,7 +1093,7 @@ my_tv_draw_layer (GtkTextView      *widget,
 {
   MyTextView *tv = (MyTextView *)widget;
 
-  if (layer == GTK_TEXT_VIEW_LAYER_BELOW_TEXT && tv->surface)
+  if (layer == CTK_TEXT_VIEW_LAYER_BELOW_TEXT && tv->surface)
     {
       cairo_save (cr);
       cairo_set_source_surface (cr, tv->surface, 0.0, 0.0);
@@ -1116,7 +1116,7 @@ my_tv_finalize (GObject *object)
 static void
 my_text_view_class_init (MyTextViewClass *class)
 {
-  GtkTextViewClass *tv_class = GTK_TEXT_VIEW_CLASS (class);
+  GtkTextViewClass *tv_class = CTK_TEXT_VIEW_CLASS (class);
   GObjectClass *o_class = G_OBJECT_CLASS (class);
 
   o_class->finalize = my_tv_finalize;
@@ -1149,7 +1149,7 @@ my_text_view_set_background (MyTextView *tv, const gchar *filename)
 
   g_object_unref (pixbuf);
 
-  ctk_widget_queue_draw (GTK_WIDGET (tv));
+  ctk_widget_queue_draw (CTK_WIDGET (tv));
 }
 
 static void
@@ -1162,15 +1162,15 @@ close_selection_dialog (GtkWidget *dialog, gint response, GtkWidget *tv)
 
   ctk_widget_hide (dialog);
 
-  if (response == GTK_RESPONSE_CANCEL)
+  if (response == CTK_RESPONSE_CANCEL)
     return;
 
-  box = ctk_dialog_get_content_area (GTK_DIALOG (dialog));
-  children = ctk_container_get_children (GTK_CONTAINER (box));
+  box = ctk_dialog_get_content_area (CTK_DIALOG (dialog));
+  children = ctk_container_get_children (CTK_CONTAINER (box));
   box = children->data;
   g_list_free (children);
-  g_assert (GTK_IS_FLOW_BOX (box));
-  children = ctk_flow_box_get_selected_children (GTK_FLOW_BOX (box));
+  g_assert (CTK_IS_FLOW_BOX (box));
+  children = ctk_flow_box_get_selected_children (CTK_FLOW_BOX (box));
 
   if (!children)
     return;
@@ -1189,9 +1189,9 @@ toggle_selection_mode (GtkSwitch  *sw,
                        GtkListBox *listbox)
 {
   if (ctk_switch_get_active (sw))
-    ctk_list_box_set_selection_mode (listbox, GTK_SELECTION_SINGLE);
+    ctk_list_box_set_selection_mode (listbox, CTK_SELECTION_SINGLE);
   else
-    ctk_list_box_set_selection_mode (listbox, GTK_SELECTION_NONE);
+    ctk_list_box_set_selection_mode (listbox, CTK_SELECTION_NONE);
 
   ctk_list_box_set_activate_on_single_click (listbox, !ctk_switch_get_active (sw));
 }
@@ -1203,7 +1203,7 @@ handle_insert (GtkWidget *button, GtkWidget *textview)
   const gchar *id;
   const gchar *text;
 
-  id = ctk_buildable_get_name (GTK_BUILDABLE (button));
+  id = ctk_buildable_get_name (CTK_BUILDABLE (button));
 
   if (strcmp (id, "toolbutton1") == 0)
     text = "⌘";
@@ -1216,7 +1216,7 @@ handle_insert (GtkWidget *button, GtkWidget *textview)
   else
     text = "";
 
-  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (textview));
+  buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (textview));
   ctk_text_buffer_insert_at_cursor (buffer, text, -1);
 }
 
@@ -1228,8 +1228,8 @@ handle_cutcopypaste (GtkWidget *button, GtkWidget *textview)
   const gchar *id;
 
   clipboard = ctk_widget_get_clipboard (textview, GDK_SELECTION_CLIPBOARD);
-  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (textview));
-  id = ctk_buildable_get_name (GTK_BUILDABLE (button));
+  buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (textview));
+  id = ctk_buildable_get_name (CTK_BUILDABLE (button));
 
   if (strcmp (id, "cutbutton") == 0)
     ctk_text_buffer_cut_clipboard (buffer, clipboard, TRUE);
@@ -1247,7 +1247,7 @@ clipboard_owner_change (GtkClipboard *clipboard, GdkEvent *event, GtkWidget *but
   const gchar *id;
   gboolean has_text;
 
-  id = ctk_buildable_get_name (GTK_BUILDABLE (button));
+  id = ctk_buildable_get_name (CTK_BUILDABLE (button));
   has_text = ctk_clipboard_wait_is_text_available (clipboard);
 
   if (strcmp (id, "pastebutton") == 0)
@@ -1260,8 +1260,8 @@ textbuffer_notify_selection (GObject *object, GParamSpec *pspec, GtkWidget *butt
   const gchar *id;
   gboolean has_selection;
 
-  id = ctk_buildable_get_name (GTK_BUILDABLE (button));
-  has_selection = ctk_text_buffer_get_has_selection (GTK_TEXT_BUFFER (object));
+  id = ctk_buildable_get_name (CTK_BUILDABLE (button));
+  has_selection = ctk_text_buffer_get_has_selection (CTK_TEXT_BUFFER (object));
 
   if (strcmp (id, "cutbutton") == 0 ||
       strcmp (id, "copybutton") == 0 ||
@@ -1322,28 +1322,28 @@ add_item (GtkTextView *tv,
 {
   GtkWidget *item, *label;
 
-  if (GTK_IS_MENU (popup))
+  if (CTK_IS_MENU (popup))
     {
       item = ctk_check_menu_item_new ();
-      ctk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), set);
+      ctk_check_menu_item_set_active (CTK_CHECK_MENU_ITEM (item), set);
       g_signal_connect (item, "toggled", G_CALLBACK (activate_item), tv);
     }
   else
     {
       item = ctk_check_button_new ();
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (item), set);
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (item), set);
       ctk_widget_set_focus_on_click (item, FALSE);
       g_signal_connect (item, "clicked", G_CALLBACK (activate_item), tv);
     }
 
   label = ctk_label_new ("");
-  ctk_label_set_xalign (GTK_LABEL (label), 0);
-  ctk_label_set_markup (GTK_LABEL (label), text);
+  ctk_label_set_xalign (CTK_LABEL (label), 0);
+  ctk_label_set_markup (CTK_LABEL (label), text);
   ctk_widget_show (label);
-  ctk_container_add (GTK_CONTAINER (item), label);
+  ctk_container_add (CTK_CONTAINER (item), label);
   g_object_set_data (G_OBJECT (item), "tag", (gpointer)tag);
   ctk_widget_show (item);
-  ctk_container_add (GTK_CONTAINER (popup), item);
+  ctk_container_add (CTK_CONTAINER (popup), item);
 }
 
 static void
@@ -1378,11 +1378,11 @@ populate_popup (GtkTextView *tv,
       ctk_text_iter_forward_char (&iter);
     }
 
-  if (GTK_IS_MENU (popup))
+  if (CTK_IS_MENU (popup))
     {
       item = ctk_separator_menu_item_new ();
       ctk_widget_show (item);
-      ctk_container_add (GTK_CONTAINER (popup), item);
+      ctk_container_add (CTK_CONTAINER (popup), item);
     }
 
   add_item (tv, popup, "<b>Bold</b>", "bold", all_bold);
@@ -1402,7 +1402,7 @@ open_popover_text_changed (GtkEntry *entry, GParamSpec *pspec, GtkWidget *button
 static gboolean
 show_page_again (gpointer data)
 {
-  ctk_widget_show (GTK_WIDGET (data));
+  ctk_widget_show (CTK_WIDGET (data));
   return G_SOURCE_REMOVE;
 }
 
@@ -1560,9 +1560,9 @@ update_buttons (GtkWidget *iv, int pos)
 {
   GtkWidget *button;
 
-  button = GTK_WIDGET (g_object_get_data (G_OBJECT (iv), "increase_button"));
+  button = CTK_WIDGET (g_object_get_data (G_OBJECT (iv), "increase_button"));
   ctk_widget_set_sensitive (button, pos + 1 < G_N_ELEMENTS (icon_sizes));
-  button = GTK_WIDGET (g_object_get_data (G_OBJECT (iv), "decrease_button"));
+  button = CTK_WIDGET (g_object_get_data (G_OBJECT (iv), "decrease_button"));
   ctk_widget_set_sensitive (button, pos > 0);
 }
 
@@ -1574,7 +1574,7 @@ increase_icon_size (GtkWidget *iv)
   GtkIconSize size;
   int i;
 
-  cells = ctk_cell_layout_get_cells (GTK_CELL_LAYOUT (iv));
+  cells = ctk_cell_layout_get_cells (CTK_CELL_LAYOUT (iv));
   cell = cells->data;
   g_list_free (cells);
 
@@ -1599,7 +1599,7 @@ decrease_icon_size (GtkWidget *iv)
   GtkIconSize size;
   int i;
 
-  cells = ctk_cell_layout_get_cells (GTK_CELL_LAYOUT (iv));
+  cells = ctk_cell_layout_get_cells (CTK_CELL_LAYOUT (iv));
   cell = cells->data;
   g_list_free (cells);
 
@@ -1622,7 +1622,7 @@ reset_icon_size (GtkWidget *iv)
   GList *cells;
   GtkCellRendererPixbuf *cell;
 
-  cells = ctk_cell_layout_get_cells (GTK_CELL_LAYOUT (iv));
+  cells = ctk_cell_layout_get_cells (CTK_CELL_LAYOUT (iv));
   cell = cells->data;
   g_list_free (cells);
 
@@ -1663,25 +1663,25 @@ validate_more_details (GtkEntry   *entry,
   if (strlen (ctk_entry_get_text (entry)) > 0 &&
       strlen (ctk_entry_get_text (details)) == 0)
     {
-      ctk_widget_set_tooltip_text (GTK_WIDGET (entry), "Must have details first");
-      ctk_style_context_add_class (ctk_widget_get_style_context (GTK_WIDGET (entry)), "error");
+      ctk_widget_set_tooltip_text (CTK_WIDGET (entry), "Must have details first");
+      ctk_style_context_add_class (ctk_widget_get_style_context (CTK_WIDGET (entry)), "error");
     }
   else
     {
-      ctk_widget_set_tooltip_text (GTK_WIDGET (entry), "");
-      ctk_style_context_remove_class (ctk_widget_get_style_context (GTK_WIDGET (entry)), "error");
+      ctk_widget_set_tooltip_text (CTK_WIDGET (entry), "");
+      ctk_style_context_remove_class (ctk_widget_get_style_context (CTK_WIDGET (entry)), "error");
     }
 }
 
 static gboolean
 mode_switch_state_set (GtkSwitch *sw, gboolean state)
 {
-  GtkWidget *dialog = ctk_widget_get_ancestor (GTK_WIDGET (sw), GTK_TYPE_DIALOG);
-  GtkWidget *scale = GTK_WIDGET (g_object_get_data (G_OBJECT (dialog), "level_scale"));
-  GtkWidget *label = GTK_WIDGET (g_object_get_data (G_OBJECT (dialog), "error_label"));
+  GtkWidget *dialog = ctk_widget_get_ancestor (CTK_WIDGET (sw), CTK_TYPE_DIALOG);
+  GtkWidget *scale = CTK_WIDGET (g_object_get_data (G_OBJECT (dialog), "level_scale"));
+  GtkWidget *label = CTK_WIDGET (g_object_get_data (G_OBJECT (dialog), "error_label"));
 
   if (!state ||
-      (ctk_range_get_value (GTK_RANGE (scale)) > 50))
+      (ctk_range_get_value (CTK_RANGE (scale)) > 50))
     {
       ctk_widget_hide (label);
       ctk_switch_set_state (sw, state);
@@ -1697,21 +1697,21 @@ mode_switch_state_set (GtkSwitch *sw, gboolean state)
 static void
 level_scale_value_changed (GtkRange *range)
 {
-  GtkWidget *dialog = ctk_widget_get_ancestor (GTK_WIDGET (range), GTK_TYPE_DIALOG);
-  GtkWidget *sw = GTK_WIDGET (g_object_get_data (G_OBJECT (dialog), "mode_switch"));
-  GtkWidget *label = GTK_WIDGET (g_object_get_data (G_OBJECT (dialog), "error_label"));
+  GtkWidget *dialog = ctk_widget_get_ancestor (CTK_WIDGET (range), CTK_TYPE_DIALOG);
+  GtkWidget *sw = CTK_WIDGET (g_object_get_data (G_OBJECT (dialog), "mode_switch"));
+  GtkWidget *label = CTK_WIDGET (g_object_get_data (G_OBJECT (dialog), "error_label"));
 
-  if (ctk_switch_get_active (GTK_SWITCH (sw)) &&
-      !ctk_switch_get_state (GTK_SWITCH (sw)) &&
+  if (ctk_switch_get_active (CTK_SWITCH (sw)) &&
+      !ctk_switch_get_state (CTK_SWITCH (sw)) &&
       (ctk_range_get_value (range) > 50))
     {
       ctk_widget_hide (label);
-      ctk_switch_set_state (GTK_SWITCH (sw), TRUE);
+      ctk_switch_set_state (CTK_SWITCH (sw), TRUE);
     }
-  else if (ctk_switch_get_state (GTK_SWITCH (sw)) &&
+  else if (ctk_switch_get_state (CTK_SWITCH (sw)) &&
           (ctk_range_get_value (range) <= 50))
     {
-      ctk_switch_set_state (GTK_SWITCH (sw), FALSE);
+      ctk_switch_set_state (CTK_SWITCH (sw), FALSE);
     }
 }
 
@@ -1763,8 +1763,8 @@ activate (GApplication *app)
   provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_resource (provider, "/org/gtk/WidgetFactory/widget-factory.css");
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                             CTK_STYLE_PROVIDER (provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
   g_object_unref (provider);
 
   builder = ctk_builder_new_from_resource ("/org/gtk/WidgetFactory/widget-factory.ui");
@@ -1789,16 +1789,16 @@ activate (GApplication *app)
   ctk_builder_connect_signals (builder, NULL);
 
   window = (GtkWindow *)ctk_builder_get_object (builder, "window");
-  ctk_application_add_window (GTK_APPLICATION (app), window);
+  ctk_application_add_window (CTK_APPLICATION (app), window);
   g_action_map_add_action_entries (G_ACTION_MAP (window),
                                    win_entries, G_N_ELEMENTS (win_entries),
                                    window);
 
   for (i = 0; i < G_N_ELEMENTS (accels); i++)
-    ctk_application_set_accels_for_action (GTK_APPLICATION (app), accels[i].action_and_target, accels[i].accelerators);
+    ctk_application_set_accels_for_action (CTK_APPLICATION (app), accels[i].action_and_target, accels[i].accelerators);
 
   widget = (GtkWidget *)ctk_builder_get_object (builder, "statusbar");
-  ctk_statusbar_push (GTK_STATUSBAR (widget), 0, "All systems are operating normally.");
+  ctk_statusbar_push (CTK_STATUSBAR (widget), 0, "All systems are operating normally.");
   action = G_ACTION (g_property_action_new ("statusbar", widget, "visible"));
   g_action_map_add_action (G_ACTION_MAP (window), action);
   g_object_unref (G_OBJECT (action));
@@ -1830,7 +1830,7 @@ activate (GApplication *app)
   g_signal_connect (adj, "value-changed", G_CALLBACK (spin_value_changed), widget);
 
   widget = (GtkWidget *)ctk_builder_get_object (builder, "listbox");
-  ctk_list_box_set_header_func (GTK_LIST_BOX (widget), update_header, NULL, NULL);
+  ctk_list_box_set_header_func (CTK_LIST_BOX (widget), update_header, NULL, NULL);
   g_signal_connect (widget, "row-activated", G_CALLBACK (row_activated), NULL);
 
   widget2 = (GtkWidget *)ctk_builder_get_object (builder, "listboxrow1switch");
@@ -1902,18 +1902,18 @@ activate (GApplication *app)
   g_signal_connect_swapped (widget, "clicked", G_CALLBACK (populate_flowbox), widget2);
 
   widget = (GtkWidget *)ctk_builder_get_object (builder, "charletree");
-  populate_model ((GtkTreeStore *)ctk_tree_view_get_model (GTK_TREE_VIEW (widget)));
-  ctk_tree_view_set_row_separator_func (GTK_TREE_VIEW (widget), row_separator_func, NULL, NULL);
-  ctk_tree_view_expand_all (GTK_TREE_VIEW (widget));
+  populate_model ((GtkTreeStore *)ctk_tree_view_get_model (CTK_TREE_VIEW (widget)));
+  ctk_tree_view_set_row_separator_func (CTK_TREE_VIEW (widget), row_separator_func, NULL, NULL);
+  ctk_tree_view_expand_all (CTK_TREE_VIEW (widget));
 
-  widget = GTK_WIDGET (ctk_builder_get_object (builder, "munsell"));
-  widget2 = GTK_WIDGET (ctk_builder_get_object (builder, "cchooser"));
+  widget = CTK_WIDGET (ctk_builder_get_object (builder, "munsell"));
+  widget2 = CTK_WIDGET (ctk_builder_get_object (builder, "cchooser"));
 
   populate_colors (widget, widget2);
   g_signal_connect (widget2, "notify::rgba", G_CALLBACK (rgba_changed), widget);
 
   widget = (GtkWidget *)ctk_builder_get_object (builder, "page_combo");
-  ctk_combo_box_set_row_separator_func (GTK_COMBO_BOX (widget), page_combo_separator_func, NULL, NULL);
+  ctk_combo_box_set_row_separator_func (CTK_COMBO_BOX (widget), page_combo_separator_func, NULL, NULL);
   widget2 = (GtkWidget *)ctk_builder_get_object (builder, "range_from_spin");
   widget3 = (GtkWidget *)ctk_builder_get_object (builder, "range_to_spin");
   widget4 = (GtkWidget *)ctk_builder_get_object (builder, "print_button");
@@ -1923,12 +1923,12 @@ activate (GApplication *app)
   g_object_set_data (G_OBJECT (widget2), "range_to_spin", widget3);
   g_object_set_data (G_OBJECT (widget), "print_button", widget4);
 
-  set_accel (GTK_APPLICATION (app), GTK_WIDGET (ctk_builder_get_object (builder, "quitmenuitem")));
-  set_accel (GTK_APPLICATION (app), GTK_WIDGET (ctk_builder_get_object (builder, "deletemenuitem")));
-  set_accel (GTK_APPLICATION (app), GTK_WIDGET (ctk_builder_get_object (builder, "searchmenuitem")));
-  set_accel (GTK_APPLICATION (app), GTK_WIDGET (ctk_builder_get_object (builder, "darkmenuitem")));
-  set_accel (GTK_APPLICATION (app), GTK_WIDGET (ctk_builder_get_object (builder, "aboutmenuitem")));
-  set_accel (GTK_APPLICATION (app), GTK_WIDGET (ctk_builder_get_object (builder, "bgmenuitem")));
+  set_accel (CTK_APPLICATION (app), CTK_WIDGET (ctk_builder_get_object (builder, "quitmenuitem")));
+  set_accel (CTK_APPLICATION (app), CTK_WIDGET (ctk_builder_get_object (builder, "deletemenuitem")));
+  set_accel (CTK_APPLICATION (app), CTK_WIDGET (ctk_builder_get_object (builder, "searchmenuitem")));
+  set_accel (CTK_APPLICATION (app), CTK_WIDGET (ctk_builder_get_object (builder, "darkmenuitem")));
+  set_accel (CTK_APPLICATION (app), CTK_WIDGET (ctk_builder_get_object (builder, "aboutmenuitem")));
+  set_accel (CTK_APPLICATION (app), CTK_WIDGET (ctk_builder_get_object (builder, "bgmenuitem")));
 
   widget2 = (GtkWidget *)ctk_builder_get_object (builder, "tooltextview");
 
@@ -1942,15 +1942,15 @@ activate (GApplication *app)
   g_signal_connect (widget, "clicked", G_CALLBACK (handle_insert), widget2);
   widget = (GtkWidget *)ctk_builder_get_object (builder, "cutbutton");
   g_signal_connect (widget, "clicked", G_CALLBACK (handle_cutcopypaste), widget2);
-  g_signal_connect (ctk_text_view_get_buffer (GTK_TEXT_VIEW (widget2)), "notify::has-selection",
+  g_signal_connect (ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget2)), "notify::has-selection",
                     G_CALLBACK (textbuffer_notify_selection), widget);
   widget = (GtkWidget *)ctk_builder_get_object (builder, "copybutton");
   g_signal_connect (widget, "clicked", G_CALLBACK (handle_cutcopypaste), widget2);
-  g_signal_connect (ctk_text_view_get_buffer (GTK_TEXT_VIEW (widget2)), "notify::has-selection",
+  g_signal_connect (ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget2)), "notify::has-selection",
                     G_CALLBACK (textbuffer_notify_selection), widget);
   widget = (GtkWidget *)ctk_builder_get_object (builder, "deletebutton");
   g_signal_connect (widget, "clicked", G_CALLBACK (handle_cutcopypaste), widget2);
-  g_signal_connect (ctk_text_view_get_buffer (GTK_TEXT_VIEW (widget2)), "notify::has-selection",
+  g_signal_connect (ctk_text_view_get_buffer (CTK_TEXT_VIEW (widget2)), "notify::has-selection",
                     G_CALLBACK (textbuffer_notify_selection), widget);
   widget = (GtkWidget *)ctk_builder_get_object (builder, "pastebutton");
   g_signal_connect (widget, "clicked", G_CALLBACK (handle_cutcopypaste), widget2);
@@ -1968,7 +1968,7 @@ activate (GApplication *app)
   widget = (GtkWidget *)ctk_builder_get_object (builder, "open_popover");
   widget2 = (GtkWidget *)ctk_builder_get_object (builder, "open_popover_entry");
   widget3 = (GtkWidget *)ctk_builder_get_object (builder, "open_popover_button");
-  ctk_popover_set_default_widget (GTK_POPOVER (widget), widget3);
+  ctk_popover_set_default_widget (CTK_POPOVER (widget), widget3);
   g_signal_connect (widget2, "notify::text", G_CALLBACK (open_popover_text_changed), widget3);
   g_signal_connect_swapped (widget3, "clicked", G_CALLBACK (ctk_widget_hide), widget);
   widget = (GtkWidget *)ctk_builder_get_object (builder, "open_menubutton");
@@ -1991,7 +1991,7 @@ activate (GApplication *app)
   g_object_bind_property (permission, "allowed",
                           action, "enabled",
                           G_BINDING_SYNC_CREATE);
-  ctk_lock_button_set_permission (GTK_LOCK_BUTTON (widget2), permission);
+  ctk_lock_button_set_permission (CTK_LOCK_BUTTON (widget2), permission);
   g_object_unref (permission);
 
   widget = (GtkWidget *)ctk_builder_get_object (builder, "iconview1");
@@ -2006,7 +2006,7 @@ activate (GApplication *app)
   g_signal_connect (adj, "value-changed", G_CALLBACK (adjustment3_value_changed), widget);
   g_signal_connect (adj, "value-changed", G_CALLBACK (adjustment3_value_changed), widget2);
 
-  ctk_widget_show_all (GTK_WIDGET (window));
+  ctk_widget_show_all (CTK_WIDGET (window));
 
   g_object_unref (builder);
 }

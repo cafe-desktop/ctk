@@ -16,10 +16,10 @@
  *          Alexander Larsson <alexl@redhat.com>
  */
 
-#ifndef __GTK_OFFSCREEN_WINDOW_H__
-#define __GTK_OFFSCREEN_WINDOW_H__
+#ifndef __CTK_OFFSCREEN_WINDOW_H__
+#define __CTK_OFFSCREEN_WINDOW_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -27,12 +27,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_OFFSCREEN_WINDOW         (ctk_offscreen_window_get_type ())
-#define GTK_OFFSCREEN_WINDOW(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindow))
-#define GTK_OFFSCREEN_WINDOW_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindowClass))
-#define GTK_IS_OFFSCREEN_WINDOW(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_OFFSCREEN_WINDOW))
-#define GTK_IS_OFFSCREEN_WINDOW_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GTK_TYPE_OFFSCREEN_WINDOW))
-#define GTK_OFFSCREEN_WINDOW_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindowClass))
+#define CTK_TYPE_OFFSCREEN_WINDOW         (ctk_offscreen_window_get_type ())
+#define CTK_OFFSCREEN_WINDOW(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindow))
+#define CTK_OFFSCREEN_WINDOW_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindowClass))
+#define CTK_IS_OFFSCREEN_WINDOW(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_OFFSCREEN_WINDOW))
+#define CTK_IS_OFFSCREEN_WINDOW_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_OFFSCREEN_WINDOW))
+#define CTK_OFFSCREEN_WINDOW_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_OFFSCREEN_WINDOW, GtkOffscreenWindowClass))
 
 typedef struct _GtkOffscreenWindow      GtkOffscreenWindow;
 typedef struct _GtkOffscreenWindowClass GtkOffscreenWindowClass;
@@ -71,4 +71,4 @@ GdkPixbuf       *ctk_offscreen_window_get_pixbuf  (GtkOffscreenWindow *offscreen
 
 G_END_DECLS
 
-#endif /* __GTK_OFFSCREEN_WINDOW_H__ */
+#endif /* __CTK_OFFSCREEN_WINDOW_H__ */

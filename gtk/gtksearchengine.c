@@ -143,7 +143,7 @@ stop (GtkSearchEngine *engine)
 static void
 finalize (GObject *object)
 {
-  GtkSearchEngine *engine = GTK_SEARCH_ENGINE (object);
+  GtkSearchEngine *engine = CTK_SEARCH_ENGINE (object);
 
   g_clear_object (&engine->priv->native);
   g_free (engine->priv->native_error);
@@ -215,7 +215,7 @@ hits_added (GtkSearchEngine *engine,
             GList           *hits,
             gpointer         data)
 {
-  GtkSearchEngine *composite = GTK_SEARCH_ENGINE (data);
+  GtkSearchEngine *composite = CTK_SEARCH_ENGINE (data);
   GList *added, *l;
   GtkSearchHit *hit;
 
@@ -272,7 +272,7 @@ finished (GtkSearchEngine *engine,
           gboolean         got_results,
           gpointer         data)
 {
-  GtkSearchEngine *composite = GTK_SEARCH_ENGINE (data);
+  GtkSearchEngine *composite = CTK_SEARCH_ENGINE (data);
 
   if (engine == composite->priv->native)
     composite->priv->native_running = FALSE;
@@ -290,7 +290,7 @@ error (GtkSearchEngine *engine,
        const gchar     *message,
        gpointer         data)
 {
-  GtkSearchEngine *composite = GTK_SEARCH_ENGINE (data);
+  GtkSearchEngine *composite = CTK_SEARCH_ENGINE (data);
 
   if (engine == composite->priv->native)
     {
@@ -369,7 +369,7 @@ _ctk_search_engine_new (void)
 {
   GtkSearchEngine *engine;
 
-  engine = g_object_new (GTK_TYPE_SEARCH_ENGINE, NULL);
+  engine = g_object_new (CTK_TYPE_SEARCH_ENGINE, NULL);
 
   engine->priv->simple = _ctk_search_engine_simple_new ();
   g_debug ("Using simple search engine");
@@ -381,7 +381,7 @@ _ctk_search_engine_new (void)
     {
       g_debug ("Using Tracker3 search engine");
       connect_engine_signals (engine->priv->native, engine);
-      _ctk_search_engine_simple_set_indexed_cb (GTK_SEARCH_ENGINE_SIMPLE (engine->priv->simple),
+      _ctk_search_engine_simple_set_indexed_cb (CTK_SEARCH_ENGINE_SIMPLE (engine->priv->simple),
                                                 ctk_search_engine_tracker3_is_indexed,
                                                 g_object_ref (engine->priv->native),
                                                 g_object_unref);
@@ -396,7 +396,7 @@ _ctk_search_engine_new (void)
         {
           g_debug ("Using Tracker search engine");
           connect_engine_signals (engine->priv->native, engine);
-          _ctk_search_engine_simple_set_indexed_cb (GTK_SEARCH_ENGINE_SIMPLE (engine->priv->simple),
+          _ctk_search_engine_simple_set_indexed_cb (CTK_SEARCH_ENGINE_SIMPLE (engine->priv->simple),
                                                     _ctk_search_engine_tracker_is_indexed,
                                                     g_object_ref (engine->priv->native),
                                                     g_object_unref);
@@ -423,35 +423,35 @@ void
 _ctk_search_engine_set_query (GtkSearchEngine *engine,
                               GtkQuery        *query)
 {
-  g_return_if_fail (GTK_IS_SEARCH_ENGINE (engine));
-  g_return_if_fail (GTK_SEARCH_ENGINE_GET_CLASS (engine)->set_query != NULL);
+  g_return_if_fail (CTK_IS_SEARCH_ENGINE (engine));
+  g_return_if_fail (CTK_SEARCH_ENGINE_GET_CLASS (engine)->set_query != NULL);
 
-  GTK_SEARCH_ENGINE_GET_CLASS (engine)->set_query (engine, query);
+  CTK_SEARCH_ENGINE_GET_CLASS (engine)->set_query (engine, query);
 }
 
 void
 _ctk_search_engine_start (GtkSearchEngine *engine)
 {
-  g_return_if_fail (GTK_IS_SEARCH_ENGINE (engine));
-  g_return_if_fail (GTK_SEARCH_ENGINE_GET_CLASS (engine)->start != NULL);
+  g_return_if_fail (CTK_IS_SEARCH_ENGINE (engine));
+  g_return_if_fail (CTK_SEARCH_ENGINE_GET_CLASS (engine)->start != NULL);
 
-  GTK_SEARCH_ENGINE_GET_CLASS (engine)->start (engine);
+  CTK_SEARCH_ENGINE_GET_CLASS (engine)->start (engine);
 }
 
 void
 _ctk_search_engine_stop (GtkSearchEngine *engine)
 {
-  g_return_if_fail (GTK_IS_SEARCH_ENGINE (engine));
-  g_return_if_fail (GTK_SEARCH_ENGINE_GET_CLASS (engine)->stop != NULL);
+  g_return_if_fail (CTK_IS_SEARCH_ENGINE (engine));
+  g_return_if_fail (CTK_SEARCH_ENGINE_GET_CLASS (engine)->stop != NULL);
 
-  GTK_SEARCH_ENGINE_GET_CLASS (engine)->stop (engine);
+  CTK_SEARCH_ENGINE_GET_CLASS (engine)->stop (engine);
 }
 
 void
 _ctk_search_engine_hits_added (GtkSearchEngine *engine,
                                GList           *hits)
 {
-  g_return_if_fail (GTK_IS_SEARCH_ENGINE (engine));
+  g_return_if_fail (CTK_IS_SEARCH_ENGINE (engine));
 
   g_signal_emit (engine, signals[HITS_ADDED], 0, hits);
 }
@@ -460,7 +460,7 @@ void
 _ctk_search_engine_finished (GtkSearchEngine *engine,
                              gboolean         got_results)
 {
-  g_return_if_fail (GTK_IS_SEARCH_ENGINE (engine));
+  g_return_if_fail (CTK_IS_SEARCH_ENGINE (engine));
 
   g_signal_emit (engine, signals[FINISHED], 0, got_results);
 }
@@ -469,7 +469,7 @@ void
 _ctk_search_engine_error (GtkSearchEngine *engine,
                           const gchar     *error_message)
 {
-  g_return_if_fail (GTK_IS_SEARCH_ENGINE (engine));
+  g_return_if_fail (CTK_IS_SEARCH_ENGINE (engine));
 
   g_signal_emit (engine, signals[ERROR], 0, error_message);
 }
@@ -478,7 +478,7 @@ void
 _ctk_search_engine_set_recursive (GtkSearchEngine *engine,
                                   gboolean         recursive)
 {
-  g_return_if_fail (GTK_IS_SEARCH_ENGINE (engine));
+  g_return_if_fail (CTK_IS_SEARCH_ENGINE (engine));
 
   g_assert (!engine->priv->running);
 
@@ -494,7 +494,7 @@ _ctk_search_engine_set_recursive (GtkSearchEngine *engine,
 gboolean
 _ctk_search_engine_get_recursive (GtkSearchEngine *engine)
 {
-  g_return_val_if_fail (GTK_IS_SEARCH_ENGINE (engine), TRUE);
+  g_return_val_if_fail (CTK_IS_SEARCH_ENGINE (engine), TRUE);
 
   return engine->priv->recursive;
 }

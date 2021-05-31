@@ -38,31 +38,31 @@
 const gchar *
 _ctk_get_datadir (void)
 {
-  return GTK_DATADIR;
+  return CTK_DATADIR;
 }
 
 const gchar *
 _ctk_get_libdir (void)
 {
-  return GTK_LIBDIR;
+  return CTK_LIBDIR;
 }
 
 const gchar *
 _ctk_get_sysconfdir (void)
 {
-  return GTK_SYSCONFDIR;
+  return CTK_SYSCONFDIR;
 }
 
 const gchar *
 _ctk_get_localedir (void)
 {
-  return GTK_LOCALEDIR;
+  return CTK_LOCALEDIR;
 }
 
 const gchar *
 _ctk_get_data_prefix (void)
 {
-  return GTK_DATA_PREFIX;
+  return CTK_DATA_PREFIX;
 }
 
 #endif
@@ -282,7 +282,7 @@ ctk_should_use_portal (void)
         use_portal = "1";
       else
         {
-          use_portal = g_getenv ("GTK_USE_PORTAL");
+          use_portal = g_getenv ("CTK_USE_PORTAL");
           if (!use_portal)
             use_portal = "";
         }

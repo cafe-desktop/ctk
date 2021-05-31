@@ -42,7 +42,7 @@
  * GtkSeparatorMenuItem has a single CSS node with name separator.
  */
 
-G_DEFINE_TYPE (GtkSeparatorMenuItem, ctk_separator_menu_item, GTK_TYPE_MENU_ITEM)
+G_DEFINE_TYPE (GtkSeparatorMenuItem, ctk_separator_menu_item, CTK_TYPE_MENU_ITEM)
 
 
 static const char *
@@ -54,12 +54,12 @@ ctk_separator_menu_item_get_label (GtkMenuItem *item)
 static void
 ctk_separator_menu_item_class_init (GtkSeparatorMenuItemClass *class)
 {
-  GTK_CONTAINER_CLASS (class)->child_type = NULL;
+  CTK_CONTAINER_CLASS (class)->child_type = NULL;
 
-  GTK_MENU_ITEM_CLASS (class)->get_label = ctk_separator_menu_item_get_label;
+  CTK_MENU_ITEM_CLASS (class)->get_label = ctk_separator_menu_item_get_label;
 
-  ctk_widget_class_set_accessible_role (GTK_WIDGET_CLASS (class), ATK_ROLE_SEPARATOR);
-  ctk_widget_class_set_css_name (GTK_WIDGET_CLASS (class), "separator");
+  ctk_widget_class_set_accessible_role (CTK_WIDGET_CLASS (class), ATK_ROLE_SEPARATOR);
+  ctk_widget_class_set_css_name (CTK_WIDGET_CLASS (class), "separator");
 }
 
 static void
@@ -77,5 +77,5 @@ ctk_separator_menu_item_init (GtkSeparatorMenuItem *item)
 GtkWidget *
 ctk_separator_menu_item_new (void)
 {
-  return g_object_new (GTK_TYPE_SEPARATOR_MENU_ITEM, NULL);
+  return g_object_new (CTK_TYPE_SEPARATOR_MENU_ITEM, NULL);
 }

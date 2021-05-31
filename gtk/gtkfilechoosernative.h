@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FILE_CHOOSER_NATIVE_H__
-#define __GTK_FILE_CHOOSER_NATIVE_H__
+#ifndef __CTK_FILE_CHOOSER_NATIVE_H__
+#define __CTK_FILE_CHOOSER_NATIVE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,7 +28,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_CHOOSER_NATIVE             (ctk_file_chooser_native_get_type ())
+#define CTK_TYPE_FILE_CHOOSER_NATIVE             (ctk_file_chooser_native_get_type ())
 
 GDK_AVAILABLE_IN_3_20
 G_DECLARE_FINAL_TYPE (GtkFileChooserNative, ctk_file_chooser_native, GTK, FILE_CHOOSER_NATIVE, GtkNativeDialog)
@@ -53,4 +53,4 @@ void        ctk_file_chooser_native_set_cancel_label (GtkFileChooserNative *self
 
 G_END_DECLS
 
-#endif /* __GTK_FILE_CHOOSER_NATIVE_H__ */
+#endif /* __CTK_FILE_CHOOSER_NATIVE_H__ */

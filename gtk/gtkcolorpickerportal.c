@@ -41,14 +41,14 @@ static void ctk_color_picker_portal_iface_init (GtkColorPickerInterface *iface);
 
 G_DEFINE_TYPE_WITH_CODE (GtkColorPickerPortal, ctk_color_picker_portal, G_TYPE_OBJECT,
                          G_IMPLEMENT_INTERFACE (G_TYPE_INITABLE, ctk_color_picker_portal_initable_iface_init)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_COLOR_PICKER, ctk_color_picker_portal_iface_init))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_COLOR_PICKER, ctk_color_picker_portal_iface_init))
 
 static gboolean
 ctk_color_picker_portal_initable_init (GInitable     *initable,
                                        GCancellable  *cancellable,
                                        GError       **error)
 {
-  GtkColorPickerPortal *picker = GTK_COLOR_PICKER_PORTAL (initable);
+  GtkColorPickerPortal *picker = CTK_COLOR_PICKER_PORTAL (initable);
   char *owner;
   GVariant *ret;
   guint version = 0;
@@ -112,7 +112,7 @@ ctk_color_picker_portal_init (GtkColorPickerPortal *picker)
 static void
 ctk_color_picker_portal_finalize (GObject *object)
 {
-  GtkColorPickerPortal *picker = GTK_COLOR_PICKER_PORTAL (object);
+  GtkColorPickerPortal *picker = CTK_COLOR_PICKER_PORTAL (object);
 
   g_clear_object (&picker->portal_proxy);
 
@@ -130,7 +130,7 @@ ctk_color_picker_portal_class_init (GtkColorPickerPortalClass *class)
 GtkColorPicker *
 ctk_color_picker_portal_new (void)
 {
-  return GTK_COLOR_PICKER (g_initable_new (GTK_TYPE_COLOR_PICKER_PORTAL, NULL, NULL, NULL));
+  return CTK_COLOR_PICKER (g_initable_new (CTK_TYPE_COLOR_PICKER_PORTAL, NULL, NULL, NULL));
 }
 
 static void
@@ -180,7 +180,7 @@ ctk_color_picker_portal_pick (GtkColorPicker      *cp,
                               GAsyncReadyCallback  callback,
                               gpointer             user_data)
 {
-  GtkColorPickerPortal *picker = GTK_COLOR_PICKER_PORTAL (cp);
+  GtkColorPickerPortal *picker = CTK_COLOR_PICKER_PORTAL (cp);
   GVariantBuilder options;
   GDBusConnection *connection;
   char *token;

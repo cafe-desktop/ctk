@@ -18,8 +18,8 @@
 #include "gtk/gtkiconview.h"
 #include "gtk/gtkcssnodeprivate.h"
 
-#ifndef __GTK_ICON_VIEW_PRIVATE_H__
-#define __GTK_ICON_VIEW_PRIVATE_H__
+#ifndef __CTK_ICON_VIEW_PRIVATE_H__
+#define __CTK_ICON_VIEW_PRIVATE_H__
 
 typedef struct _GtkIconViewItem GtkIconViewItem;
 struct _GtkIconViewItem
@@ -149,4 +149,4 @@ void                 _ctk_icon_view_unselect_item                  (GtkIconView 
 
 G_END_DECLS
 
-#endif /* __GTK_ICON_VIEW_PRIVATE_H__ */
+#endif /* __CTK_ICON_VIEW_PRIVATE_H__ */

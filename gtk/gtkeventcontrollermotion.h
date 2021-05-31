@@ -17,10 +17,10 @@
  * Author(s): Matthias Clasen <mclasen@redhat.com>
  */
 
-#ifndef __GTK_EVENT_CONTROLLER_MOTION_H__
-#define __GTK_EVENT_CONTROLLER_MOTION_H__
+#ifndef __CTK_EVENT_CONTROLLER_MOTION_H__
+#define __CTK_EVENT_CONTROLLER_MOTION_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EVENT_CONTROLLER_MOTION         (ctk_event_controller_motion_get_type ())
-#define GTK_EVENT_CONTROLLER_MOTION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotion))
-#define GTK_EVENT_CONTROLLER_MOTION_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotionClass))
-#define GTK_IS_EVENT_CONTROLLER_MOTION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_EVENT_CONTROLLER_MOTION))
-#define GTK_IS_EVENT_CONTROLLER_MOTION_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GTK_TYPE_EVENT_CONTROLLER_MOTION))
-#define GTK_EVENT_CONTROLLER_MOTION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotionClass))
+#define CTK_TYPE_EVENT_CONTROLLER_MOTION         (ctk_event_controller_motion_get_type ())
+#define CTK_EVENT_CONTROLLER_MOTION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotion))
+#define CTK_EVENT_CONTROLLER_MOTION_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotionClass))
+#define CTK_IS_EVENT_CONTROLLER_MOTION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_EVENT_CONTROLLER_MOTION))
+#define CTK_IS_EVENT_CONTROLLER_MOTION_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_EVENT_CONTROLLER_MOTION))
+#define CTK_EVENT_CONTROLLER_MOTION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER_MOTION, GtkEventControllerMotionClass))
 
 typedef struct _GtkEventControllerMotion GtkEventControllerMotion;
 typedef struct _GtkEventControllerMotionClass GtkEventControllerMotionClass;
@@ -47,4 +47,4 @@ GtkEventController *ctk_event_controller_motion_new      (GtkWidget *widget);
 
 G_END_DECLS
 
-#endif /* __GTK_EVENT_CONTROLLER_MOTION_H__ */
+#endif /* __CTK_EVENT_CONTROLLER_MOTION_H__ */

@@ -34,7 +34,7 @@ accel_edited_callback (GtkCellRendererText *cell,
 
   g_print ("%u %d %u\n", keyval, mask, hardware_keycode);
   
-  ctk_list_store_set (GTK_LIST_STORE (model), &iter,
+  ctk_list_store_set (CTK_LIST_STORE (model), &iter,
 		      0, (gint)mask,
 		      1, keyval,
 		      2, hardware_keycode,
@@ -53,7 +53,7 @@ accel_cleared_callback (GtkCellRendererText *cell,
 
   path = ctk_tree_path_new_from_string (path_string);
   ctk_tree_model_get_iter (model, &iter, path);
-  ctk_list_store_set (GTK_LIST_STORE (model), &iter, 0, 0, 1, 0, 2, 0, -1);
+  ctk_list_store_set (CTK_LIST_STORE (model), &iter, 0, 0, 1, 0, 2, 0, -1);
   ctk_tree_path_free (path);
 }
 static GtkWidget *
@@ -67,22 +67,22 @@ key_test (void)
         GtkWidget *box, *entry;
 
 	/* create window */
-	window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-        ctk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+	window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+        ctk_window_set_default_size (CTK_WINDOW (window), 400, 400);
 
 	sw = ctk_scrolled_window_new (NULL, NULL);
-        box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 10);
+        box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 10);
         ctk_widget_show (box);
-	ctk_container_add (GTK_CONTAINER (window), box);
-        ctk_box_pack_start (GTK_BOX (box), sw, TRUE, TRUE, 0);
+	ctk_container_add (CTK_CONTAINER (window), box);
+        ctk_box_pack_start (CTK_BOX (box), sw, TRUE, TRUE, 0);
 
 	store = ctk_list_store_new (3, G_TYPE_INT, G_TYPE_UINT, G_TYPE_UINT);
-	tv = ctk_tree_view_new_with_model (GTK_TREE_MODEL (store));
-	ctk_container_add (GTK_CONTAINER (sw), tv);
+	tv = ctk_tree_view_new_with_model (CTK_TREE_MODEL (store));
+	ctk_container_add (CTK_CONTAINER (sw), tv);
 	column = ctk_tree_view_column_new ();
 	rend = ctk_cell_renderer_accel_new ();
 	g_object_set (G_OBJECT (rend), 
-		      "accel-mode", GTK_CELL_RENDERER_ACCEL_MODE_GTK, 
+		      "accel-mode", CTK_CELL_RENDERER_ACCEL_MODE_GTK, 
                       "editable", TRUE, 
 		      NULL);
 	g_signal_connect (G_OBJECT (rend),
@@ -101,7 +101,7 @@ key_test (void)
 					     "accel-key", 1,
 					     "keycode", 2,
 					     NULL);
-	ctk_tree_view_append_column (GTK_TREE_VIEW (tv), column);
+	ctk_tree_view_append_column (CTK_TREE_VIEW (tv), column);
 
 	for (i = 0; i < 10; i++) {
 		GtkTreeIter iter;
@@ -111,7 +111,7 @@ key_test (void)
 
         entry = ctk_entry_new ();
         ctk_widget_show (entry);
-        ctk_container_add (GTK_CONTAINER (box), entry);
+        ctk_container_add (CTK_CONTAINER (box), entry);
  
 	return window;
 }

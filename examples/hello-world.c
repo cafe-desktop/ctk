@@ -16,16 +16,16 @@ activate (GtkApplication *app,
   GtkWidget *button_box;
 
   window = ctk_application_window_new (app);
-  ctk_window_set_title (GTK_WINDOW (window), "Window");
-  ctk_window_set_default_size (GTK_WINDOW (window), 200, 200);
+  ctk_window_set_title (CTK_WINDOW (window), "Window");
+  ctk_window_set_default_size (CTK_WINDOW (window), 200, 200);
 
-  button_box = ctk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
-  ctk_container_add (GTK_CONTAINER (window), button_box);
+  button_box = ctk_button_box_new (CTK_ORIENTATION_HORIZONTAL);
+  ctk_container_add (CTK_CONTAINER (window), button_box);
 
   button = ctk_button_new_with_label ("Hello World");
   g_signal_connect (button, "clicked", G_CALLBACK (print_hello), NULL);
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (ctk_widget_destroy), window);
-  ctk_container_add (GTK_CONTAINER (button_box), button);
+  ctk_container_add (CTK_CONTAINER (button_box), button);
 
   ctk_widget_show_all (window);
 }

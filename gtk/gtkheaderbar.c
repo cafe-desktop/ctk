@@ -120,9 +120,9 @@ static GParamSpec *header_bar_props[LAST_PROP] = { NULL, };
 
 static void ctk_header_bar_buildable_init (GtkBuildableIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkHeaderBar, ctk_header_bar, GTK_TYPE_CONTAINER,
+G_DEFINE_TYPE_WITH_CODE (GtkHeaderBar, ctk_header_bar, CTK_TYPE_CONTAINER,
                          G_ADD_PRIVATE (GtkHeaderBar)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_header_bar_buildable_init));
 
 static void
@@ -137,27 +137,27 @@ init_sizing_box (GtkHeaderBar *bar)
    * the real label box with its actual size, to keep it center-aligned
    * in case we have only the title.
    */
-  w = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  w = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   ctk_widget_show (w);
   priv->label_sizing_box = g_object_ref_sink (w);
 
   w = ctk_label_new (NULL);
   ctk_widget_show (w);
   context = ctk_widget_get_style_context (w);
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_TITLE);
-  ctk_box_pack_start (GTK_BOX (priv->label_sizing_box), w, FALSE, FALSE, 0);
-  ctk_label_set_line_wrap (GTK_LABEL (w), FALSE);
-  ctk_label_set_single_line_mode (GTK_LABEL (w), TRUE);
-  ctk_label_set_ellipsize (GTK_LABEL (w), PANGO_ELLIPSIZE_END);
-  ctk_label_set_width_chars (GTK_LABEL (w), MIN_TITLE_CHARS);
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_TITLE);
+  ctk_box_pack_start (CTK_BOX (priv->label_sizing_box), w, FALSE, FALSE, 0);
+  ctk_label_set_line_wrap (CTK_LABEL (w), FALSE);
+  ctk_label_set_single_line_mode (CTK_LABEL (w), TRUE);
+  ctk_label_set_ellipsize (CTK_LABEL (w), PANGO_ELLIPSIZE_END);
+  ctk_label_set_width_chars (CTK_LABEL (w), MIN_TITLE_CHARS);
 
   w = ctk_label_new (NULL);
   context = ctk_widget_get_style_context (w);
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_SUBTITLE);
-  ctk_box_pack_start (GTK_BOX (priv->label_sizing_box), w, FALSE, FALSE, 0);
-  ctk_label_set_line_wrap (GTK_LABEL (w), FALSE);
-  ctk_label_set_single_line_mode (GTK_LABEL (w), TRUE);
-  ctk_label_set_ellipsize (GTK_LABEL (w), PANGO_ELLIPSIZE_END);
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_SUBTITLE);
+  ctk_box_pack_start (CTK_BOX (priv->label_sizing_box), w, FALSE, FALSE, 0);
+  ctk_label_set_line_wrap (CTK_LABEL (w), FALSE);
+  ctk_label_set_single_line_mode (CTK_LABEL (w), TRUE);
+  ctk_label_set_ellipsize (CTK_LABEL (w), PANGO_ELLIPSIZE_END);
   ctk_widget_set_visible (w, priv->has_subtitle || (priv->subtitle && priv->subtitle[0]));
   priv->subtitle_sizing_label = w;
 }
@@ -173,27 +173,27 @@ create_title_box (const char *title,
   GtkWidget *subtitle_label;
   GtkStyleContext *context;
 
-  label_box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_widget_set_valign (label_box, GTK_ALIGN_CENTER);
+  label_box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_widget_set_valign (label_box, CTK_ALIGN_CENTER);
   ctk_widget_show (label_box);
 
   title_label = ctk_label_new (title);
   context = ctk_widget_get_style_context (title_label);
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_TITLE);
-  ctk_label_set_line_wrap (GTK_LABEL (title_label), FALSE);
-  ctk_label_set_single_line_mode (GTK_LABEL (title_label), TRUE);
-  ctk_label_set_ellipsize (GTK_LABEL (title_label), PANGO_ELLIPSIZE_END);
-  ctk_box_pack_start (GTK_BOX (label_box), title_label, FALSE, FALSE, 0);
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_TITLE);
+  ctk_label_set_line_wrap (CTK_LABEL (title_label), FALSE);
+  ctk_label_set_single_line_mode (CTK_LABEL (title_label), TRUE);
+  ctk_label_set_ellipsize (CTK_LABEL (title_label), PANGO_ELLIPSIZE_END);
+  ctk_box_pack_start (CTK_BOX (label_box), title_label, FALSE, FALSE, 0);
   ctk_widget_show (title_label);
-  ctk_label_set_width_chars (GTK_LABEL (title_label), MIN_TITLE_CHARS);
+  ctk_label_set_width_chars (CTK_LABEL (title_label), MIN_TITLE_CHARS);
 
   subtitle_label = ctk_label_new (subtitle);
   context = ctk_widget_get_style_context (subtitle_label);
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_SUBTITLE);
-  ctk_label_set_line_wrap (GTK_LABEL (subtitle_label), FALSE);
-  ctk_label_set_single_line_mode (GTK_LABEL (subtitle_label), TRUE);
-  ctk_label_set_ellipsize (GTK_LABEL (subtitle_label), PANGO_ELLIPSIZE_END);
-  ctk_box_pack_start (GTK_BOX (label_box), subtitle_label, FALSE, FALSE, 0);
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_SUBTITLE);
+  ctk_label_set_line_wrap (CTK_LABEL (subtitle_label), FALSE);
+  ctk_label_set_single_line_mode (CTK_LABEL (subtitle_label), TRUE);
+  ctk_label_set_ellipsize (CTK_LABEL (subtitle_label), PANGO_ELLIPSIZE_END);
+  ctk_box_pack_start (CTK_BOX (label_box), subtitle_label, FALSE, FALSE, 0);
   ctk_widget_set_no_show_all (subtitle_label, TRUE);
   ctk_widget_set_visible (subtitle_label, subtitle && subtitle[0]);
 
@@ -217,7 +217,7 @@ _ctk_header_bar_update_window_icon (GtkHeaderBar *bar,
     return FALSE;
 
   scale = ctk_widget_get_scale_factor (priv->titlebar_icon);
-  if (GTK_IS_BUTTON (ctk_widget_get_parent (priv->titlebar_icon)))
+  if (CTK_IS_BUTTON (ctk_widget_get_parent (priv->titlebar_icon)))
     pixbuf = ctk_window_get_icon_for_size (window, scale * 16);
   else
     pixbuf = ctk_window_get_icon_for_size (window, scale * 20);
@@ -228,7 +228,7 @@ _ctk_header_bar_update_window_icon (GtkHeaderBar *bar,
 
       surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale, ctk_widget_get_window (priv->titlebar_icon));
 
-      ctk_image_set_from_surface (GTK_IMAGE (priv->titlebar_icon), surface);
+      ctk_image_set_from_surface (CTK_IMAGE (priv->titlebar_icon), surface);
       cairo_surface_destroy (surface);
       g_object_unref (pixbuf);
       ctk_widget_show (priv->titlebar_icon);
@@ -253,7 +253,7 @@ _ctk_header_bar_update_separator_visibility (GtkHeaderBar *bar)
 
       if (ctk_widget_get_visible (child->widget))
         {
-          if (child->pack_type == GTK_PACK_START)
+          if (child->pack_type == CTK_PACK_START)
             have_visible_at_start = TRUE;
           else
             have_visible_at_end = TRUE;
@@ -271,7 +271,7 @@ void
 _ctk_header_bar_update_window_buttons (GtkHeaderBar *bar)
 {
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
-  GtkWidget *widget = GTK_WIDGET (bar), *toplevel;
+  GtkWidget *widget = CTK_WIDGET (bar), *toplevel;
   GtkWindow *window;
   GtkTextDirection direction;
   gchar *layout_desc;
@@ -316,7 +316,7 @@ _ctk_header_bar_update_window_buttons (GtkHeaderBar *bar)
       layout_desc = g_strdup (priv->decoration_layout);
     }
 
-  window = GTK_WINDOW (toplevel);
+  window = CTK_WINDOW (toplevel);
 
   if (!shown_by_shell && ctk_window_get_application (window))
     menu = ctk_application_get_app_menu (ctk_window_get_application (window));
@@ -341,11 +341,11 @@ _ctk_header_bar_update_window_buttons (GtkHeaderBar *bar)
 
           t = g_strsplit (tokens[i], ",", -1);
 
-          separator = ctk_separator_new (GTK_ORIENTATION_VERTICAL);
+          separator = ctk_separator_new (CTK_ORIENTATION_VERTICAL);
           ctk_widget_set_no_show_all (separator, TRUE);
           ctk_style_context_add_class (ctk_widget_get_style_context (separator), "titlebutton");
 
-          box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, priv->spacing);
+          box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, priv->spacing);
 
           for (j = 0; t[j]; j++)
             {
@@ -357,7 +357,7 @@ _ctk_header_bar_update_window_buttons (GtkHeaderBar *bar)
                   is_sovereign_window)
                 {
                   button = ctk_image_new ();
-                  ctk_widget_set_valign (button, GTK_ALIGN_CENTER);
+                  ctk_widget_set_valign (button, CTK_ALIGN_CENTER);
                   priv->titlebar_icon = button;
                   ctk_style_context_add_class (ctk_widget_get_style_context (button), "titlebutton");
                   ctk_style_context_add_class (ctk_widget_get_style_context (button), "icon");
@@ -376,42 +376,42 @@ _ctk_header_bar_update_window_buttons (GtkHeaderBar *bar)
                        is_sovereign_window)
                 {
                   button = ctk_menu_button_new ();
-                  ctk_widget_set_valign (button, GTK_ALIGN_CENTER);
-                  ctk_menu_button_set_menu_model (GTK_MENU_BUTTON (button), menu);
-                  ctk_menu_button_set_use_popover (GTK_MENU_BUTTON (button), TRUE);
+                  ctk_widget_set_valign (button, CTK_ALIGN_CENTER);
+                  ctk_menu_button_set_menu_model (CTK_MENU_BUTTON (button), menu);
+                  ctk_menu_button_set_use_popover (CTK_MENU_BUTTON (button), TRUE);
                   ctk_style_context_add_class (ctk_widget_get_style_context (button), "titlebutton");
                   ctk_style_context_add_class (ctk_widget_get_style_context (button), "appmenu");
                   image = ctk_image_new ();
-                  ctk_container_add (GTK_CONTAINER (button), image);
+                  ctk_container_add (CTK_CONTAINER (button), image);
                   ctk_widget_set_can_focus (button, FALSE);
                   ctk_widget_show_all (button);
 
                   accessible = ctk_widget_get_accessible (button);
-                  if (GTK_IS_ACCESSIBLE (accessible))
+                  if (CTK_IS_ACCESSIBLE (accessible))
                     atk_object_set_name (accessible, _("Application menu"));
 
                   priv->titlebar_icon = image;
                   if (!_ctk_header_bar_update_window_icon (bar, window))
-                    ctk_image_set_from_icon_name (GTK_IMAGE (priv->titlebar_icon),
-                                                  "application-x-executable-symbolic", GTK_ICON_SIZE_MENU);
+                    ctk_image_set_from_icon_name (CTK_IMAGE (priv->titlebar_icon),
+                                                  "application-x-executable-symbolic", CTK_ICON_SIZE_MENU);
                 }
               else if (strcmp (t[j], "minimize") == 0 &&
                        is_sovereign_window)
                 {
                   button = ctk_button_new ();
-                  ctk_widget_set_valign (button, GTK_ALIGN_CENTER);
+                  ctk_widget_set_valign (button, CTK_ALIGN_CENTER);
                   ctk_style_context_add_class (ctk_widget_get_style_context (button), "titlebutton");
                   ctk_style_context_add_class (ctk_widget_get_style_context (button), "minimize");
-                  image = ctk_image_new_from_icon_name ("window-minimize-symbolic", GTK_ICON_SIZE_MENU);
+                  image = ctk_image_new_from_icon_name ("window-minimize-symbolic", CTK_ICON_SIZE_MENU);
                   g_object_set (image, "use-fallback", TRUE, NULL);
-                  ctk_container_add (GTK_CONTAINER (button), image);
+                  ctk_container_add (CTK_CONTAINER (button), image);
                   ctk_widget_set_can_focus (button, FALSE);
                   ctk_widget_show_all (button);
                   g_signal_connect_swapped (button, "clicked",
                                             G_CALLBACK (ctk_window_iconify), window);
 
                   accessible = ctk_widget_get_accessible (button);
-                  if (GTK_IS_ACCESSIBLE (accessible))
+                  if (CTK_IS_ACCESSIBLE (accessible))
                     atk_object_set_name (accessible, _("Minimize"));
                 }
               else if (strcmp (t[j], "maximize") == 0 &&
@@ -423,44 +423,44 @@ _ctk_header_bar_update_window_buttons (GtkHeaderBar *bar)
 
                   icon_name = maximized ? "window-restore-symbolic" : "window-maximize-symbolic";
                   button = ctk_button_new ();
-                  ctk_widget_set_valign (button, GTK_ALIGN_CENTER);
+                  ctk_widget_set_valign (button, CTK_ALIGN_CENTER);
                   ctk_style_context_add_class (ctk_widget_get_style_context (button), "titlebutton");
                   ctk_style_context_add_class (ctk_widget_get_style_context (button), "maximize");
-                  image = ctk_image_new_from_icon_name (icon_name, GTK_ICON_SIZE_MENU);
+                  image = ctk_image_new_from_icon_name (icon_name, CTK_ICON_SIZE_MENU);
                   g_object_set (image, "use-fallback", TRUE, NULL);
-                  ctk_container_add (GTK_CONTAINER (button), image);
+                  ctk_container_add (CTK_CONTAINER (button), image);
                   ctk_widget_set_can_focus (button, FALSE);
                   ctk_widget_show_all (button);
                   g_signal_connect_swapped (button, "clicked",
                                             G_CALLBACK (_ctk_window_toggle_maximized), window);
 
                   accessible = ctk_widget_get_accessible (button);
-                  if (GTK_IS_ACCESSIBLE (accessible))
+                  if (CTK_IS_ACCESSIBLE (accessible))
                     atk_object_set_name (accessible, maximized ? _("Restore") : _("Maximize"));
                 }
               else if (strcmp (t[j], "close") == 0 &&
                        ctk_window_get_deletable (window))
                 {
                   button = ctk_button_new ();
-                  ctk_widget_set_valign (button, GTK_ALIGN_CENTER);
-                  image = ctk_image_new_from_icon_name ("window-close-symbolic", GTK_ICON_SIZE_MENU);
+                  ctk_widget_set_valign (button, CTK_ALIGN_CENTER);
+                  image = ctk_image_new_from_icon_name ("window-close-symbolic", CTK_ICON_SIZE_MENU);
                   ctk_style_context_add_class (ctk_widget_get_style_context (button), "titlebutton");
                   ctk_style_context_add_class (ctk_widget_get_style_context (button), "close");
                   g_object_set (image, "use-fallback", TRUE, NULL);
-                  ctk_container_add (GTK_CONTAINER (button), image);
+                  ctk_container_add (CTK_CONTAINER (button), image);
                   ctk_widget_set_can_focus (button, FALSE);
                   ctk_widget_show_all (button);
                   g_signal_connect_swapped (button, "clicked",
                                             G_CALLBACK (ctk_window_close), window);
 
                   accessible = ctk_widget_get_accessible (button);
-                  if (GTK_IS_ACCESSIBLE (accessible))
+                  if (CTK_IS_ACCESSIBLE (accessible))
                     atk_object_set_name (accessible, _("Close"));
                 }
 
               if (button)
                 {
-                  ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+                  ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
                   n_children ++;
                 }
             }
@@ -475,28 +475,28 @@ _ctk_header_bar_update_window_buttons (GtkHeaderBar *bar)
               continue;
             }
 
-          ctk_box_pack_start (GTK_BOX (box), separator, FALSE, FALSE, 0);
+          ctk_box_pack_start (CTK_BOX (box), separator, FALSE, FALSE, 0);
           if (i == 1)
-            ctk_box_reorder_child (GTK_BOX (box), separator, 0);
+            ctk_box_reorder_child (CTK_BOX (box), separator, 0);
 
-          if ((direction == GTK_TEXT_DIR_LTR && i == 0) ||
-              (direction == GTK_TEXT_DIR_RTL && i == 1))
+          if ((direction == CTK_TEXT_DIR_LTR && i == 0) ||
+              (direction == CTK_TEXT_DIR_RTL && i == 1))
             {
-              ctk_style_context_add_class (ctk_widget_get_style_context (box), GTK_STYLE_CLASS_LEFT);
-              ctk_css_node_insert_after (ctk_widget_get_css_node (GTK_WIDGET (bar)),
+              ctk_style_context_add_class (ctk_widget_get_style_context (box), CTK_STYLE_CLASS_LEFT);
+              ctk_css_node_insert_after (ctk_widget_get_css_node (CTK_WIDGET (bar)),
                                          ctk_widget_get_css_node (box),
                                          NULL);
             }
           else
             {
-              ctk_style_context_add_class (ctk_widget_get_style_context (box), GTK_STYLE_CLASS_RIGHT);
-              ctk_css_node_insert_before (ctk_widget_get_css_node (GTK_WIDGET (bar)),
+              ctk_style_context_add_class (ctk_widget_get_style_context (box), CTK_STYLE_CLASS_RIGHT);
+              ctk_css_node_insert_before (ctk_widget_get_css_node (CTK_WIDGET (bar)),
                                           ctk_widget_get_css_node (box),
                                           NULL);
             }
 
           ctk_widget_show (box);
-          ctk_widget_set_parent (box, GTK_WIDGET (bar));
+          ctk_widget_set_parent (box, CTK_WIDGET (bar));
 
           if (i == 0)
             {
@@ -524,8 +524,8 @@ _ctk_header_bar_shows_app_menu (GtkHeaderBar *bar)
   gchar *layout_desc;
   gboolean ret;
 
-  window = GTK_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (bar)));
-  ctk_widget_style_get (GTK_WIDGET (window),
+  window = CTK_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (bar)));
+  ctk_widget_style_get (CTK_WIDGET (window),
                         "decoration-button-layout", &layout_desc,
                         NULL);
 
@@ -548,7 +548,7 @@ ctk_header_bar_reorder_css_node (GtkHeaderBar *bar,
   GtkWidget *previous_widget;
   GList *l;
   
-  if (pack_type == GTK_PACK_START)
+  if (pack_type == CTK_PACK_START)
     previous_widget = priv->titlebar_start_box;
   else
     previous_widget = priv->titlebar_end_box;
@@ -564,13 +564,13 @@ ctk_header_bar_reorder_css_node (GtkHeaderBar *bar,
         previous_widget = iter->widget;
     }
 
-  if ((pack_type == GTK_PACK_START)
-      ^ (ctk_widget_get_direction (GTK_WIDGET (bar)) == GTK_TEXT_DIR_LTR))
-    ctk_css_node_insert_after (ctk_widget_get_css_node (GTK_WIDGET (bar)),
+  if ((pack_type == CTK_PACK_START)
+      ^ (ctk_widget_get_direction (CTK_WIDGET (bar)) == CTK_TEXT_DIR_LTR))
+    ctk_css_node_insert_after (ctk_widget_get_css_node (CTK_WIDGET (bar)),
                                ctk_widget_get_css_node (widget),
                                previous_widget ? ctk_widget_get_css_node (previous_widget) : NULL);
   else
-    ctk_css_node_insert_before (ctk_widget_get_css_node (GTK_WIDGET (bar)),
+    ctk_css_node_insert_before (ctk_widget_get_css_node (CTK_WIDGET (bar)),
                                 ctk_widget_get_css_node (widget),
                                 previous_widget ? ctk_widget_get_css_node (previous_widget) : NULL);
 }
@@ -586,8 +586,8 @@ construct_label_box (GtkHeaderBar *bar)
                                       priv->subtitle,
                                       &priv->title_label,
                                       &priv->subtitle_label);
-  ctk_header_bar_reorder_css_node (bar, GTK_PACK_START, priv->label_box);
-  ctk_widget_set_parent (priv->label_box, GTK_WIDGET (bar));
+  ctk_header_bar_reorder_css_node (bar, CTK_PACK_START, priv->label_box);
+  ctk_widget_set_parent (priv->label_box, CTK_WIDGET (bar));
 }
 
 static gint
@@ -620,12 +620,12 @@ add_child_size (GtkWidget      *child,
   if (!ctk_widget_get_visible (child))
     return FALSE;
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     ctk_widget_get_preferred_width (child, &child_minimum, &child_natural);
   else
     ctk_widget_get_preferred_height (child, &child_minimum, &child_natural);
 
-  if (GTK_ORIENTATION_HORIZONTAL == orientation)
+  if (CTK_ORIENTATION_HORIZONTAL == orientation)
     {
       *minimum += child_minimum;
       *natural += child_natural;
@@ -645,7 +645,7 @@ ctk_header_bar_get_size (GtkWidget      *widget,
                          gint           *minimum_size,
                          gint           *natural_size)
 {
-  GtkHeaderBar *bar = GTK_HEADER_BAR (widget);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (widget);
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
   GList *l;
   gint nvis_children;
@@ -666,7 +666,7 @@ ctk_header_bar_get_size (GtkWidget      *widget,
   center_min = center_nat = 0;
   if (priv->label_box != NULL)
     {
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         add_child_size (priv->label_box, orientation, &center_min, &center_nat);
       else
         add_child_size (priv->label_sizing_box, orientation, &center_min, &center_nat);
@@ -693,7 +693,7 @@ ctk_header_bar_get_size (GtkWidget      *widget,
         nvis_children += 1;
     }
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       minimum += center_min;
       natural += center_nat;
@@ -704,7 +704,7 @@ ctk_header_bar_get_size (GtkWidget      *widget,
       natural = MAX (natural, center_nat);
     }
 
-  if (nvis_children > 0 && orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (nvis_children > 0 && orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       minimum += nvis_children * priv->spacing;
       natural += nvis_children * priv->spacing;
@@ -720,7 +720,7 @@ ctk_header_bar_compute_size_for_orientation (GtkWidget *widget,
                                              gint      *minimum_size,
                                              gint      *natural_size)
 {
-  GtkHeaderBar *bar = GTK_HEADER_BAR (widget);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (widget);
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
   GList *children;
   gint required_size = 0;
@@ -798,7 +798,7 @@ ctk_header_bar_compute_size_for_opposing_orientation (GtkWidget *widget,
                                                       gint      *minimum_size,
                                                       gint      *natural_size)
 {
-  GtkHeaderBar *bar = GTK_HEADER_BAR (widget);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (widget);
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
   Child *child;
   GList *children;
@@ -842,7 +842,7 @@ ctk_header_bar_compute_size_for_opposing_orientation (GtkWidget *widget,
   size = ctk_distribute_natural_allocation (MAX (0, avail_size), nvis_children, sizes);
 
   /* Allocate child positions. */
-  for (packing = GTK_PACK_START; packing <= GTK_PACK_END; ++packing)
+  for (packing = CTK_PACK_START; packing <= CTK_PACK_END; ++packing)
     {
       for (i = 0, children = priv->children; children; children = children->next)
         {
@@ -921,7 +921,7 @@ ctk_header_bar_get_content_size (GtkCssGadget   *gadget,
 
   if (for_size < 0)
     ctk_header_bar_get_size (widget, orientation, minimum, natural);
-  else if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  else if (orientation == CTK_ORIENTATION_HORIZONTAL)
     ctk_header_bar_compute_size_for_orientation (widget, for_size, minimum, natural);
   else
     ctk_header_bar_compute_size_for_opposing_orientation (widget, for_size, minimum, natural);
@@ -932,10 +932,10 @@ ctk_header_bar_get_preferred_width (GtkWidget *widget,
                                     gint      *minimum,
                                     gint      *natural)
 {
-  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (GTK_HEADER_BAR (widget));
+  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (CTK_HEADER_BAR (widget));
 
   ctk_css_gadget_get_preferred_size (priv->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -946,10 +946,10 @@ ctk_header_bar_get_preferred_height (GtkWidget *widget,
                                      gint      *minimum,
                                      gint      *natural)
 {
-  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (GTK_HEADER_BAR (widget));
+  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (CTK_HEADER_BAR (widget));
 
   ctk_css_gadget_get_preferred_size (priv->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -961,10 +961,10 @@ ctk_header_bar_get_preferred_width_for_height (GtkWidget *widget,
                                                gint      *minimum,
                                                gint      *natural)
 {
-  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (GTK_HEADER_BAR (widget));
+  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (CTK_HEADER_BAR (widget));
 
   ctk_css_gadget_get_preferred_size (priv->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      height,
                                      minimum, natural,
                                      NULL, NULL);
@@ -976,10 +976,10 @@ ctk_header_bar_get_preferred_height_for_width (GtkWidget *widget,
                                                gint      *minimum,
                                                gint      *natural)
 {
-  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (GTK_HEADER_BAR (widget));
+  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (CTK_HEADER_BAR (widget));
 
   ctk_css_gadget_get_preferred_size (priv->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum, natural,
                                      NULL, NULL);
@@ -989,7 +989,7 @@ static void
 ctk_header_bar_size_allocate (GtkWidget     *widget,
                               GtkAllocation *allocation)
 {
-  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (GTK_HEADER_BAR (widget));
+  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (CTK_HEADER_BAR (widget));
   GtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
@@ -1008,7 +1008,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   GtkWidget *title_widget;
-  GtkHeaderBar *bar = GTK_HEADER_BAR (widget);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (widget);
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
   GtkRequestedSize *sizes;
   gint width, height;
@@ -1044,7 +1044,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
       if (!ctk_widget_get_visible (child->widget))
         continue;
 
-      if (ctk_widget_compute_expand (child->widget, GTK_ORIENTATION_HORIZONTAL))
+      if (ctk_widget_compute_expand (child->widget, CTK_ORIENTATION_HORIZONTAL))
         nexpand_children[child->pack_type]++;
 
       ctk_widget_get_preferred_width_for_height (child->widget,
@@ -1074,7 +1074,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
                                                  &title_natural_size);
       width -= title_natural_size;
 
-      title_expands = ctk_widget_compute_expand (title_widget, GTK_ORIENTATION_HORIZONTAL);
+      title_expands = ctk_widget_compute_expand (title_widget, CTK_ORIENTATION_HORIZONTAL);
     }
 
   start_width = 0;
@@ -1106,7 +1106,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
    */
   side[0] = start_width;
   side[1] = end_width;
-  for (packing = GTK_PACK_START; packing <= GTK_PACK_END; packing++)
+  for (packing = CTK_PACK_START; packing <= CTK_PACK_END; packing++)
     {
       i = 0;
       for (l = priv->children; l != NULL; l = l->next)
@@ -1128,7 +1128,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
    * If the title itself is expanded, then it gets half the spoils
    * from each side.
    */
-  for (packing = GTK_PACK_START; packing <= GTK_PACK_END; packing++)
+  for (packing = CTK_PACK_START; packing <= CTK_PACK_END; packing++)
     {
       gint side_free_space;
 
@@ -1148,11 +1148,11 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
     }
 
   /* allocate the children on both sides of the title */
-  for (packing = GTK_PACK_START; packing <= GTK_PACK_END; packing++)
+  for (packing = CTK_PACK_START; packing <= CTK_PACK_END; packing++)
     {
       child_allocation.y = allocation->y;
       child_allocation.height = height;
-      if (packing == GTK_PACK_START)
+      if (packing == CTK_PACK_START)
         x = allocation->x + start_width;
       else
         x = allocation->x + allocation->width - end_width;
@@ -1170,7 +1170,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
           child_size = sizes[i].minimum_size;
 
           /* if this child is expanded, give it extra space from the reserves */
-          if (ctk_widget_compute_expand (child->widget, GTK_ORIENTATION_HORIZONTAL))
+          if (ctk_widget_compute_expand (child->widget, CTK_ORIENTATION_HORIZONTAL))
             {
               gint expand_bonus;
 
@@ -1187,7 +1187,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
 
           child_allocation.width = child_size;
 
-          if (packing == GTK_PACK_START)
+          if (packing == CTK_PACK_START)
             {
               child_allocation.x = x;
               x += child_size;
@@ -1200,7 +1200,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
               x -= priv->spacing;
             }
 
-          if (direction == GTK_TEXT_DIR_RTL)
+          if (direction == CTK_TEXT_DIR_RTL)
             child_allocation.x = allocation->x + allocation->width - (child_allocation.x - allocation->x) - child_allocation.width;
 
           ctk_widget_size_allocate (child->widget, &child_allocation);
@@ -1235,7 +1235,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
   else if (allocation->x + allocation->width - side[1] < child_allocation.x + child_allocation.width)
     child_allocation.x = allocation->x + allocation->width - side[1] - child_allocation.width;
 
-  if (direction == GTK_TEXT_DIR_RTL)
+  if (direction == CTK_TEXT_DIR_RTL)
     child_allocation.x = allocation->x + allocation->width - (child_allocation.x - allocation->x) - child_allocation.width;
 
   if (title_widget != NULL)
@@ -1246,7 +1246,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
 
   if (priv->titlebar_start_box)
     {
-      gboolean left = (direction == GTK_TEXT_DIR_LTR);
+      gboolean left = (direction == CTK_TEXT_DIR_LTR);
       if (left)
         child_allocation.x = allocation->x;
       else
@@ -1257,7 +1257,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
 
   if (priv->titlebar_end_box)
     {
-      gboolean left = (direction != GTK_TEXT_DIR_LTR);
+      gboolean left = (direction != CTK_TEXT_DIR_LTR);
       if (left)
         child_allocation.x = allocation->x;
       else
@@ -1266,7 +1266,7 @@ ctk_header_bar_allocate_contents (GtkCssGadget        *gadget,
       ctk_widget_size_allocate (priv->titlebar_end_box, &child_allocation);
     }
 
-  ctk_container_get_children_clip (GTK_CONTAINER (widget), out_clip);
+  ctk_container_get_children_clip (CTK_CONTAINER (widget), out_clip);
 }
 
 /**
@@ -1287,7 +1287,7 @@ ctk_header_bar_set_title (GtkHeaderBar *bar,
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
   gchar *new_title;
 
-  g_return_if_fail (GTK_IS_HEADER_BAR (bar));
+  g_return_if_fail (CTK_IS_HEADER_BAR (bar));
 
   new_title = g_strdup (title);
   g_free (priv->title);
@@ -1295,8 +1295,8 @@ ctk_header_bar_set_title (GtkHeaderBar *bar,
 
   if (priv->title_label != NULL)
     {
-      ctk_label_set_label (GTK_LABEL (priv->title_label), priv->title);
-      ctk_widget_queue_resize (GTK_WIDGET (bar));
+      ctk_label_set_label (CTK_LABEL (priv->title_label), priv->title);
+      ctk_widget_queue_resize (CTK_WIDGET (bar));
     }
 
   g_object_notify_by_pspec (G_OBJECT (bar), header_bar_props[PROP_TITLE]);
@@ -1319,7 +1319,7 @@ ctk_header_bar_get_title (GtkHeaderBar *bar)
 {
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
 
-  g_return_val_if_fail (GTK_IS_HEADER_BAR (bar), NULL);
+  g_return_val_if_fail (CTK_IS_HEADER_BAR (bar), NULL);
 
   return priv->title;
 }
@@ -1345,7 +1345,7 @@ ctk_header_bar_set_subtitle (GtkHeaderBar *bar,
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
   gchar *new_subtitle;
 
-  g_return_if_fail (GTK_IS_HEADER_BAR (bar));
+  g_return_if_fail (CTK_IS_HEADER_BAR (bar));
 
   new_subtitle = g_strdup (subtitle);
   g_free (priv->subtitle);
@@ -1353,9 +1353,9 @@ ctk_header_bar_set_subtitle (GtkHeaderBar *bar,
 
   if (priv->subtitle_label != NULL)
     {
-      ctk_label_set_label (GTK_LABEL (priv->subtitle_label), priv->subtitle);
+      ctk_label_set_label (CTK_LABEL (priv->subtitle_label), priv->subtitle);
       ctk_widget_set_visible (priv->subtitle_label, priv->subtitle && priv->subtitle[0]);
-      ctk_widget_queue_resize (GTK_WIDGET (bar));
+      ctk_widget_queue_resize (CTK_WIDGET (bar));
     }
 
   ctk_widget_set_visible (priv->subtitle_sizing_label, priv->has_subtitle || (priv->subtitle && priv->subtitle[0]));
@@ -1380,7 +1380,7 @@ ctk_header_bar_get_subtitle (GtkHeaderBar *bar)
 {
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
 
-  g_return_val_if_fail (GTK_IS_HEADER_BAR (bar), NULL);
+  g_return_val_if_fail (CTK_IS_HEADER_BAR (bar), NULL);
 
   return priv->subtitle;
 }
@@ -1409,9 +1409,9 @@ ctk_header_bar_set_custom_title (GtkHeaderBar *bar,
 {
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
 
-  g_return_if_fail (GTK_IS_HEADER_BAR (bar));
+  g_return_if_fail (CTK_IS_HEADER_BAR (bar));
   if (title_widget)
-    g_return_if_fail (GTK_IS_WIDGET (title_widget));
+    g_return_if_fail (CTK_IS_WIDGET (title_widget));
 
   /* No need to do anything if the custom widget stays the same */
   if (priv->custom_title == title_widget)
@@ -1429,9 +1429,9 @@ ctk_header_bar_set_custom_title (GtkHeaderBar *bar,
     {
       priv->custom_title = title_widget;
 
-      ctk_header_bar_reorder_css_node (bar, GTK_PACK_START, priv->custom_title);
-      ctk_widget_set_parent (priv->custom_title, GTK_WIDGET (bar));
-      ctk_widget_set_valign (priv->custom_title, GTK_ALIGN_CENTER);
+      ctk_header_bar_reorder_css_node (bar, CTK_PACK_START, priv->custom_title);
+      ctk_widget_set_parent (priv->custom_title, CTK_WIDGET (bar));
+      ctk_widget_set_valign (priv->custom_title, CTK_ALIGN_CENTER);
 
       if (priv->label_box != NULL)
         {
@@ -1450,7 +1450,7 @@ ctk_header_bar_set_custom_title (GtkHeaderBar *bar,
         construct_label_box (bar);
     }
 
-  ctk_widget_queue_resize (GTK_WIDGET (bar));
+  ctk_widget_queue_resize (CTK_WIDGET (bar));
 
   g_object_notify_by_pspec (G_OBJECT (bar), header_bar_props[PROP_CUSTOM_TITLE]);
 }
@@ -1472,7 +1472,7 @@ ctk_header_bar_get_custom_title (GtkHeaderBar *bar)
 {
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
 
-  g_return_val_if_fail (GTK_IS_HEADER_BAR (bar), NULL);
+  g_return_val_if_fail (CTK_IS_HEADER_BAR (bar), NULL);
 
   return priv->custom_title;
 }
@@ -1480,7 +1480,7 @@ ctk_header_bar_get_custom_title (GtkHeaderBar *bar)
 static void
 ctk_header_bar_destroy (GtkWidget *widget)
 {
-  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (GTK_HEADER_BAR (widget));
+  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (CTK_HEADER_BAR (widget));
 
   if (priv->label_sizing_box)
     {
@@ -1514,13 +1514,13 @@ ctk_header_bar_destroy (GtkWidget *widget)
       priv->titlebar_end_separator = NULL;
     }
 
-  GTK_WIDGET_CLASS (ctk_header_bar_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (ctk_header_bar_parent_class)->destroy (widget);
 }
 
 static void
 ctk_header_bar_finalize (GObject *object)
 {
-  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (GTK_HEADER_BAR (object));
+  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (CTK_HEADER_BAR (object));
 
   g_free (priv->title);
   g_free (priv->subtitle);
@@ -1537,7 +1537,7 @@ ctk_header_bar_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkHeaderBar *bar = GTK_HEADER_BAR (object);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (object);
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
 
   switch (prop_id)
@@ -1586,7 +1586,7 @@ ctk_header_bar_set_property (GObject      *object,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GtkHeaderBar *bar = GTK_HEADER_BAR (object);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (object);
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
 
   switch (prop_id)
@@ -1607,7 +1607,7 @@ ctk_header_bar_set_property (GObject      *object,
       if (priv->spacing != g_value_get_int (value))
         {
           priv->spacing = g_value_get_int (value);
-          ctk_widget_queue_resize (GTK_WIDGET (bar));
+          ctk_widget_queue_resize (CTK_WIDGET (bar));
           g_object_notify_by_pspec (object, pspec);
         }
       break;
@@ -1659,8 +1659,8 @@ ctk_header_bar_pack (GtkHeaderBar *bar,
   priv->children = g_list_append (priv->children, child);
 
   ctk_widget_freeze_child_notify (widget);
-  ctk_header_bar_reorder_css_node (bar, GTK_PACK_START, widget);
-  ctk_widget_set_parent (widget, GTK_WIDGET (bar));
+  ctk_header_bar_reorder_css_node (bar, CTK_PACK_START, widget);
+  ctk_widget_set_parent (widget, CTK_WIDGET (bar));
   g_signal_connect (widget, "notify::visible", G_CALLBACK (notify_child_cb), bar);
   ctk_widget_child_notify (widget, "pack-type");
   ctk_widget_child_notify (widget, "position");
@@ -1673,7 +1673,7 @@ static void
 ctk_header_bar_add (GtkContainer *container,
                     GtkWidget    *child)
 {
-  ctk_header_bar_pack (GTK_HEADER_BAR (container), child, GTK_PACK_START);
+  ctk_header_bar_pack (CTK_HEADER_BAR (container), child, CTK_PACK_START);
 }
 
 static GList *
@@ -1704,7 +1704,7 @@ static void
 ctk_header_bar_remove (GtkContainer *container,
                        GtkWidget    *widget)
 {
-  GtkHeaderBar *bar = GTK_HEADER_BAR (container);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (container);
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
   GList *l;
   Child *child;
@@ -1717,7 +1717,7 @@ ctk_header_bar_remove (GtkContainer *container,
       ctk_widget_unparent (child->widget);
       priv->children = g_list_delete_link (priv->children, l);
       g_free (child);
-      ctk_widget_queue_resize (GTK_WIDGET (container));
+      ctk_widget_queue_resize (CTK_WIDGET (container));
       _ctk_header_bar_update_separator_visibility (bar);
     }
 }
@@ -1728,7 +1728,7 @@ ctk_header_bar_forall (GtkContainer *container,
                        GtkCallback   callback,
                        gpointer      callback_data)
 {
-  GtkHeaderBar *bar = GTK_HEADER_BAR (container);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (container);
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
   Child *child;
   GList *children;
@@ -1741,7 +1741,7 @@ ctk_header_bar_forall (GtkContainer *container,
     {
       child = children->data;
       children = children->next;
-      if (child->pack_type == GTK_PACK_START)
+      if (child->pack_type == CTK_PACK_START)
         (* callback) (child->widget, callback_data);
     }
 
@@ -1756,7 +1756,7 @@ ctk_header_bar_forall (GtkContainer *container,
     {
       child = children->data;
       children = children->next;
-      if (child->pack_type == GTK_PACK_END)
+      if (child->pack_type == CTK_PACK_END)
         (* callback) (child->widget, callback_data);
     }
 
@@ -1799,7 +1799,7 @@ ctk_header_bar_reorder_child (GtkHeaderBar *bar,
 static GType
 ctk_header_bar_child_type (GtkContainer *container)
 {
-  return GTK_TYPE_WIDGET;
+  return CTK_TYPE_WIDGET;
 }
 
 static void
@@ -1809,7 +1809,7 @@ ctk_header_bar_get_child_property (GtkContainer *container,
                                    GValue       *value,
                                    GParamSpec   *pspec)
 {
-  GtkHeaderBar *bar = GTK_HEADER_BAR (container);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (container);
   GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
   GList *l;
   Child *child;
@@ -1834,7 +1834,7 @@ ctk_header_bar_get_child_property (GtkContainer *container,
       break;
 
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
 }
@@ -1846,7 +1846,7 @@ ctk_header_bar_set_child_property (GtkContainer *container,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-  GtkHeaderBar *bar = GTK_HEADER_BAR (container);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (container);
   GList *l;
   Child *child;
 
@@ -1869,7 +1869,7 @@ ctk_header_bar_set_child_property (GtkContainer *container,
       break;
 
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
 }
@@ -1878,7 +1878,7 @@ static gint
 ctk_header_bar_draw (GtkWidget *widget,
                      cairo_t   *cr)
 {
-  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (GTK_HEADER_BAR (widget));
+  GtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (CTK_HEADER_BAR (widget));
 
   ctk_css_gadget_draw (priv->gadget, cr);
 
@@ -1896,7 +1896,7 @@ ctk_header_bar_render_contents (GtkCssGadget *gadget,
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
 
-  GTK_WIDGET_CLASS (ctk_header_bar_parent_class)->draw (widget, cr);
+  CTK_WIDGET_CLASS (ctk_header_bar_parent_class)->draw (widget, cr);
 
   return FALSE;
 }
@@ -1906,14 +1906,14 @@ ctk_header_bar_realize (GtkWidget *widget)
 {
   GtkSettings *settings;
 
-  GTK_WIDGET_CLASS (ctk_header_bar_parent_class)->realize (widget);
+  CTK_WIDGET_CLASS (ctk_header_bar_parent_class)->realize (widget);
 
   settings = ctk_widget_get_settings (widget);
   g_signal_connect_swapped (settings, "notify::gtk-shell-shows-app-menu",
                             G_CALLBACK (_ctk_header_bar_update_window_buttons), widget);
   g_signal_connect_swapped (settings, "notify::gtk-decoration-layout",
                             G_CALLBACK (_ctk_header_bar_update_window_buttons), widget);
-  _ctk_header_bar_update_window_buttons (GTK_HEADER_BAR (widget));
+  _ctk_header_bar_update_window_buttons (CTK_HEADER_BAR (widget));
 }
 
 static void
@@ -1925,7 +1925,7 @@ ctk_header_bar_unrealize (GtkWidget *widget)
 
   g_signal_handlers_disconnect_by_func (settings, _ctk_header_bar_update_window_buttons, widget);
 
-  GTK_WIDGET_CLASS (ctk_header_bar_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_header_bar_parent_class)->unrealize (widget);
 }
 
 static gboolean
@@ -1933,7 +1933,7 @@ window_state_changed (GtkWidget           *window,
                       GdkEventWindowState *event,
                       gpointer             data)
 {
-  GtkHeaderBar *bar = GTK_HEADER_BAR (data);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (data);
 
   if (event->changed_mask & (GDK_WINDOW_STATE_FULLSCREEN |
                              GDK_WINDOW_STATE_MAXIMIZED |
@@ -1952,7 +1952,7 @@ ctk_header_bar_hierarchy_changed (GtkWidget *widget,
                                   GtkWidget *previous_toplevel)
 {
   GtkWidget *toplevel;
-  GtkHeaderBar *bar = GTK_HEADER_BAR (widget);
+  GtkHeaderBar *bar = CTK_HEADER_BAR (widget);
 
   toplevel = ctk_widget_get_toplevel (widget);
 
@@ -1971,7 +1971,7 @@ static void
 ctk_header_bar_direction_changed (GtkWidget        *widget,
                                   GtkTextDirection  previous_direction)
 {
-  GTK_WIDGET_CLASS (ctk_header_bar_parent_class)->direction_changed (widget, previous_direction);
+  CTK_WIDGET_CLASS (ctk_header_bar_parent_class)->direction_changed (widget, previous_direction);
 
   ctk_css_node_reverse_children (ctk_widget_get_css_node (widget));
 }
@@ -1980,8 +1980,8 @@ static void
 ctk_header_bar_class_init (GtkHeaderBarClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
 
   object_class->finalize = ctk_header_bar_finalize;
   object_class->get_property = ctk_header_bar_get_property;
@@ -2012,15 +2012,15 @@ ctk_header_bar_class_init (GtkHeaderBarClass *class)
                                               g_param_spec_enum ("pack-type",
                                                                  P_("Pack type"),
                                                                  P_("A GtkPackType indicating whether the child is packed with reference to the start or end of the parent"),
-                                                                 GTK_TYPE_PACK_TYPE, GTK_PACK_START,
-                                                                 GTK_PARAM_READWRITE));
+                                                                 CTK_TYPE_PACK_TYPE, CTK_PACK_START,
+                                                                 CTK_PARAM_READWRITE));
   ctk_container_class_install_child_property (container_class,
                                               CHILD_PROP_POSITION,
                                               g_param_spec_int ("position",
                                                                 P_("Position"),
                                                                 P_("The index of the child in the parent"),
                                                                 -1, G_MAXINT, 0,
-                                                                GTK_PARAM_READWRITE));
+                                                                CTK_PARAM_READWRITE));
 
   header_bar_props[PROP_TITLE] =
       g_param_spec_string ("title",
@@ -2040,7 +2040,7 @@ ctk_header_bar_class_init (GtkHeaderBarClass *class)
       g_param_spec_object ("custom-title",
                            P_("Custom Title"),
                            P_("Custom title widget to display"),
-                           GTK_TYPE_WIDGET,
+                           CTK_TYPE_WIDGET,
                            G_PARAM_READWRITE|G_PARAM_STATIC_STRINGS);
 
   header_bar_props[PROP_SPACING] =
@@ -2049,7 +2049,7 @@ ctk_header_bar_class_init (GtkHeaderBarClass *class)
                         P_("The amount of space between children"),
                         0, G_MAXINT,
                         DEFAULT_SPACING,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkHeaderBar:show-close-button:
@@ -2066,7 +2066,7 @@ ctk_header_bar_class_init (GtkHeaderBarClass *class)
                             P_("Show decorations"),
                             P_("Whether to show window decorations"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkHeaderBar:decoration-layout:
@@ -2085,7 +2085,7 @@ ctk_header_bar_class_init (GtkHeaderBarClass *class)
                            P_("Decoration Layout"),
                            P_("The layout for window decorations"),
                            NULL,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkHeaderBar:decoration-layout-set:
@@ -2099,7 +2099,7 @@ ctk_header_bar_class_init (GtkHeaderBarClass *class)
                             P_("Decoration Layout Set"),
                             P_("Whether the decoration-layout property has been set"),
                             FALSE,
-                            GTK_PARAM_READWRITE);
+                            CTK_PARAM_READWRITE);
 
   /**
    * GtkHeaderBar:has-subtitle:
@@ -2114,11 +2114,11 @@ ctk_header_bar_class_init (GtkHeaderBarClass *class)
                             P_("Has Subtitle"),
                             P_("Whether to reserve space for a subtitle"),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   g_object_class_install_properties (object_class, LAST_PROP, header_bar_props);
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_HEADER_BAR_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_HEADER_BAR_ACCESSIBLE);
   ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_PANEL);
   ctk_widget_class_set_css_name (widget_class, "headerbar");
 }
@@ -2131,7 +2131,7 @@ ctk_header_bar_init (GtkHeaderBar *bar)
 
   priv = ctk_header_bar_get_instance_private (bar);
 
-  ctk_widget_set_has_window (GTK_WIDGET (bar), FALSE);
+  ctk_widget_set_has_window (CTK_WIDGET (bar), FALSE);
 
   priv->title = NULL;
   priv->subtitle = NULL;
@@ -2145,9 +2145,9 @@ ctk_header_bar_init (GtkHeaderBar *bar)
   init_sizing_box (bar);
   construct_label_box (bar);
 
-  widget_node = ctk_widget_get_css_node (GTK_WIDGET (bar));
+  widget_node = ctk_widget_get_css_node (CTK_WIDGET (bar));
   priv->gadget = ctk_css_custom_gadget_new_for_node (widget_node,
-                                                     GTK_WIDGET (bar),
+                                                     CTK_WIDGET (bar),
                                                      ctk_header_bar_get_content_size,
                                                      ctk_header_bar_allocate_contents,
                                                      ctk_header_bar_render_contents,
@@ -2163,11 +2163,11 @@ ctk_header_bar_buildable_add_child (GtkBuildable *buildable,
                                     const gchar  *type)
 {
   if (type && strcmp (type, "title") == 0)
-    ctk_header_bar_set_custom_title (GTK_HEADER_BAR (buildable), GTK_WIDGET (child));
+    ctk_header_bar_set_custom_title (CTK_HEADER_BAR (buildable), CTK_WIDGET (child));
   else if (!type)
-    ctk_container_add (GTK_CONTAINER (buildable), GTK_WIDGET (child));
+    ctk_container_add (CTK_CONTAINER (buildable), CTK_WIDGET (child));
   else
-    GTK_BUILDER_WARN_INVALID_CHILD_TYPE (GTK_HEADER_BAR (buildable), type);
+    CTK_BUILDER_WARN_INVALID_CHILD_TYPE (CTK_HEADER_BAR (buildable), type);
 }
 
 static void
@@ -2190,7 +2190,7 @@ void
 ctk_header_bar_pack_start (GtkHeaderBar *bar,
                            GtkWidget    *child)
 {
-  ctk_header_bar_pack (bar, child, GTK_PACK_START);
+  ctk_header_bar_pack (bar, child, CTK_PACK_START);
 }
 
 /**
@@ -2207,7 +2207,7 @@ void
 ctk_header_bar_pack_end (GtkHeaderBar *bar,
                          GtkWidget    *child)
 {
-  ctk_header_bar_pack (bar, child, GTK_PACK_END);
+  ctk_header_bar_pack (bar, child, CTK_PACK_END);
 }
 
 /**
@@ -2222,7 +2222,7 @@ ctk_header_bar_pack_end (GtkHeaderBar *bar,
 GtkWidget *
 ctk_header_bar_new (void)
 {
-  return GTK_WIDGET (g_object_new (GTK_TYPE_HEADER_BAR, NULL));
+  return CTK_WIDGET (g_object_new (CTK_TYPE_HEADER_BAR, NULL));
 }
 
 /**
@@ -2241,7 +2241,7 @@ ctk_header_bar_get_show_close_button (GtkHeaderBar *bar)
 {
   GtkHeaderBarPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_HEADER_BAR (bar), FALSE);
+  g_return_val_if_fail (CTK_IS_HEADER_BAR (bar), FALSE);
 
   priv = ctk_header_bar_get_instance_private (bar);
 
@@ -2264,7 +2264,7 @@ ctk_header_bar_set_show_close_button (GtkHeaderBar *bar,
 {
   GtkHeaderBarPrivate *priv;
 
-  g_return_if_fail (GTK_IS_HEADER_BAR (bar));
+  g_return_if_fail (CTK_IS_HEADER_BAR (bar));
 
   priv = ctk_header_bar_get_instance_private (bar);
 
@@ -2294,7 +2294,7 @@ ctk_header_bar_set_has_subtitle (GtkHeaderBar *bar,
 {
   GtkHeaderBarPrivate *priv;
 
-  g_return_if_fail (GTK_IS_HEADER_BAR (bar));
+  g_return_if_fail (CTK_IS_HEADER_BAR (bar));
 
   priv = ctk_header_bar_get_instance_private (bar);
 
@@ -2306,7 +2306,7 @@ ctk_header_bar_set_has_subtitle (GtkHeaderBar *bar,
   priv->has_subtitle = setting;
   ctk_widget_set_visible (priv->subtitle_sizing_label, setting || (priv->subtitle && priv->subtitle[0]));
 
-  ctk_widget_queue_resize (GTK_WIDGET (bar));
+  ctk_widget_queue_resize (CTK_WIDGET (bar));
 
   g_object_notify_by_pspec (G_OBJECT (bar), header_bar_props[PROP_HAS_SUBTITLE]);
 }
@@ -2328,7 +2328,7 @@ ctk_header_bar_get_has_subtitle (GtkHeaderBar *bar)
 {
   GtkHeaderBarPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_HEADER_BAR (bar), FALSE);
+  g_return_val_if_fail (CTK_IS_HEADER_BAR (bar), FALSE);
 
   priv = ctk_header_bar_get_instance_private (bar);
 
@@ -2367,7 +2367,7 @@ ctk_header_bar_set_decoration_layout (GtkHeaderBar *bar,
 {
   GtkHeaderBarPrivate *priv;
 
-  g_return_if_fail (GTK_IS_HEADER_BAR (bar));
+  g_return_if_fail (CTK_IS_HEADER_BAR (bar));
 
   priv = ctk_header_bar_get_instance_private (bar);
 
@@ -2397,7 +2397,7 @@ ctk_header_bar_get_decoration_layout (GtkHeaderBar *bar)
 {
   GtkHeaderBarPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_HEADER_BAR (bar), NULL);
+  g_return_val_if_fail (CTK_IS_HEADER_BAR (bar), NULL);
 
   priv = ctk_header_bar_get_instance_private (bar);
 

@@ -27,7 +27,7 @@
 #endif
 
 /* There shall be no other styles */
-#define GTK_STYLE_PROVIDER_PRIORITY_FORCE G_MAXUINT
+#define CTK_STYLE_PROVIDER_PRIORITY_FORCE G_MAXUINT
 
 char *
 test_get_other_file (const char *ui_file, const char *extension)
@@ -118,18 +118,18 @@ load_ui_file (GFile *file, gboolean generate)
   ctk_css_provider_load_from_path (provider, css_file, &error);
   g_assert_no_error (error);
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_FORCE);
+                                             CTK_STYLE_PROVIDER (provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_FORCE);
 
   builder = ctk_builder_new_from_file (ui_file);
-  window = GTK_WIDGET (ctk_builder_get_object (builder, "window1"));
+  window = CTK_WIDGET (ctk_builder_get_object (builder, "window1"));
 
   g_assert (window != NULL);
 
   context = ctk_widget_get_style_context (window);
 
-  output = ctk_style_context_to_string (context, GTK_STYLE_CONTEXT_PRINT_RECURSE |
-                                                 GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE);
+  output = ctk_style_context_to_string (context, CTK_STYLE_CONTEXT_PRINT_RECURSE |
+                                                 CTK_STYLE_CONTEXT_PRINT_SHOW_STYLE);
 
   if (generate)
     {
@@ -152,7 +152,7 @@ load_ui_file (GFile *file, gboolean generate)
 
 out:
   ctk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
-                                                GTK_STYLE_PROVIDER (provider));
+                                                CTK_STYLE_PROVIDER (provider));
   g_object_unref (provider);
 
   g_free (output);
@@ -243,7 +243,7 @@ add_tests_for_files_in_directory (GFile *dir)
 int
 main (int argc, char **argv)
 {
-  g_setenv ("GTK_CSS_DEBUG", "1", TRUE);
+  g_setenv ("CTK_CSS_DEBUG", "1", TRUE);
 
   ctk_test_init (&argc, &argv);
 

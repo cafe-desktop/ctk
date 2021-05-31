@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_GRADIENT_H__
-#define __GTK_GRADIENT_H__
+#ifndef __CTK_GRADIENT_H__
+#define __CTK_GRADIENT_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GRADIENT (ctk_gradient_get_type ())
+#define CTK_TYPE_GRADIENT (ctk_gradient_get_type ())
 
 GDK_DEPRECATED_IN_3_8
 GType         ctk_gradient_get_type       (void) G_GNUC_CONST;
@@ -72,4 +72,4 @@ char *        ctk_gradient_to_string      (GtkGradient         *gradient);
 
 G_END_DECLS
 
-#endif /* __GTK_GRADIENT_H__ */
+#endif /* __CTK_GRADIENT_H__ */

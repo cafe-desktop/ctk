@@ -23,8 +23,8 @@
  *  http://msdn.microsoft.com/library/default.asp?url=/library/en-us/appendix/hh/appendix/imeimes2_35ph.asp
  */
 
-#ifdef GTK_DISABLE_DEPRECATED
-#undef GTK_DISABLE_DEPRECATED
+#ifdef CTK_DISABLE_DEPRECATED
+#undef CTK_DISABLE_DEPRECATED
 #endif
 
 #include "config.h"
@@ -54,12 +54,12 @@
 /* Determines what happens when focus is lost while preedit is in process. */
 typedef enum {
   /* Preedit is committed. */
-  GTK_WIN32_IME_FOCUS_BEHAVIOR_COMMIT,
+  CTK_WIN32_IME_FOCUS_BEHAVIOR_COMMIT,
   /* Preedit is discarded. */
-  GTK_WIN32_IME_FOCUS_BEHAVIOR_DISCARD,
+  CTK_WIN32_IME_FOCUS_BEHAVIOR_DISCARD,
   /* Preedit follows the cursor (that means it will appear in the widget
    * that receives the focus) */
-  GTK_WIN32_IME_FOCUS_BEHAVIOR_FOLLOW,
+  CTK_WIN32_IME_FOCUS_BEHAVIOR_FOLLOW,
 } GtkWin32IMEFocusBehavior;
 
 struct _GtkIMContextIMEPrivate
@@ -149,14 +149,14 @@ ctk_im_context_ime_register_type (GTypeModule *type_module)
 
   ctk_type_im_context_ime =
     g_type_module_register_type (type_module,
-                                 GTK_TYPE_IM_CONTEXT,
+                                 CTK_TYPE_IM_CONTEXT,
                                  "GtkIMContextIME", &im_context_ime_info, 0);
 }
 
 static void
 ctk_im_context_ime_class_init (GtkIMContextIMEClass *class)
 {
-  GtkIMContextClass *im_context_class = GTK_IM_CONTEXT_CLASS (class);
+  GtkIMContextClass *im_context_class = CTK_IM_CONTEXT_CLASS (class);
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
 
   parent_class = g_type_class_peek_parent (class);
@@ -192,15 +192,15 @@ ctk_im_context_ime_init (GtkIMContextIME *context_ime)
   context_ime->commit_string          = NULL;
 
   context_ime->priv = g_malloc0 (sizeof (GtkIMContextIMEPrivate));
-  context_ime->priv->focus_behavior = GTK_WIN32_IME_FOCUS_BEHAVIOR_COMMIT;
+  context_ime->priv->focus_behavior = CTK_WIN32_IME_FOCUS_BEHAVIOR_COMMIT;
 }
 
 
 static void
 ctk_im_context_ime_dispose (GObject *obj)
 {
-  GtkIMContext *context = GTK_IM_CONTEXT (obj);
-  GtkIMContextIME *context_ime = GTK_IM_CONTEXT_IME (obj);
+  GtkIMContext *context = CTK_IM_CONTEXT (obj);
+  GtkIMContextIME *context_ime = CTK_IM_CONTEXT_IME (obj);
 
   if (context_ime->client_window != NULL)
     ctk_im_context_ime_set_client_window (context, NULL);
@@ -213,7 +213,7 @@ ctk_im_context_ime_dispose (GObject *obj)
 static void
 ctk_im_context_ime_finalize (GObject *obj)
 {
-  GtkIMContextIME *context_ime = GTK_IM_CONTEXT_IME (obj);
+  GtkIMContextIME *context_ime = CTK_IM_CONTEXT_IME (obj);
 
   g_free (context_ime->priv);
   context_ime->priv = NULL;
@@ -228,9 +228,9 @@ ctk_im_context_ime_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  GtkIMContextIME *context_ime = GTK_IM_CONTEXT_IME (object);
+  GtkIMContextIME *context_ime = CTK_IM_CONTEXT_IME (object);
 
-  g_return_if_fail (GTK_IS_IM_CONTEXT_IME (context_ime));
+  g_return_if_fail (CTK_IS_IM_CONTEXT_IME (context_ime));
 
   switch (prop_id)
     {
@@ -246,9 +246,9 @@ ctk_im_context_ime_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkIMContextIME *context_ime = GTK_IM_CONTEXT_IME (object);
+  GtkIMContextIME *context_ime = CTK_IM_CONTEXT_IME (object);
 
-  g_return_if_fail (GTK_IS_IM_CONTEXT_IME (context_ime));
+  g_return_if_fail (CTK_IS_IM_CONTEXT_IME (context_ime));
 
   switch (prop_id)
     {
@@ -261,7 +261,7 @@ ctk_im_context_ime_get_property (GObject    *object,
 GtkIMContext *
 ctk_im_context_ime_new (void)
 {
-  return g_object_new (GTK_TYPE_IM_CONTEXT_IME, NULL);
+  return g_object_new (CTK_TYPE_IM_CONTEXT_IME, NULL);
 }
 
 
@@ -272,8 +272,8 @@ ctk_im_context_ime_set_client_window (GtkIMContext *context,
   GtkIMContextIME *context_ime;
   GdkWindow *toplevel = NULL;
 
-  g_return_if_fail (GTK_IS_IM_CONTEXT_IME (context));
-  context_ime = GTK_IM_CONTEXT_IME (context);
+  g_return_if_fail (CTK_IS_IM_CONTEXT_IME (context));
+  context_ime = CTK_IM_CONTEXT_IME (context);
 
   if (client_window != NULL && !GDK_IS_WINDOW (client_window))
     {
@@ -324,10 +324,10 @@ ctk_im_context_ime_filter_keypress (GtkIMContext *context,
   GdkEventPrivate *event_priv;
   gchar *utf8;
 
-  g_return_val_if_fail (GTK_IS_IM_CONTEXT_IME (context), FALSE);
+  g_return_val_if_fail (CTK_IS_IM_CONTEXT_IME (context), FALSE);
   g_return_val_if_fail (event, FALSE);
 
-  context_ime = GTK_IM_CONTEXT_IME (context);
+  context_ime = CTK_IM_CONTEXT_IME (context);
 
   g_return_val_if_fail (gdk_event_is_allocated ((GdkEvent*)event), FALSE);
 
@@ -346,7 +346,7 @@ ctk_im_context_ime_filter_keypress (GtkIMContext *context,
 static void
 ctk_im_context_ime_reset (GtkIMContext *context)
 {
-  GtkIMContextIME *context_ime = GTK_IM_CONTEXT_IME (context);
+  GtkIMContextIME *context_ime = CTK_IM_CONTEXT_IME (context);
   HWND hwnd;
   HIMC himc;
 
@@ -552,7 +552,7 @@ ctk_im_context_ime_get_preedit_string (GtkIMContext   *context,
   gint pos = 0;
   GtkIMContextIME *context_ime;
 
-  context_ime = GTK_IM_CONTEXT_IME (context);
+  context_ime = CTK_IM_CONTEXT_IME (context);
 
   if (!context_ime->focus || context_ime->priv->pretend_empty_preedit)
     utf8str = g_strdup ("");
@@ -575,7 +575,7 @@ ctk_im_context_ime_get_preedit_string (GtkIMContext   *context,
 static void
 ctk_im_context_ime_focus_in (GtkIMContext *context)
 {
-  GtkIMContextIME *context_ime = GTK_IM_CONTEXT_IME (context);
+  GtkIMContextIME *context_ime = CTK_IM_CONTEXT_IME (context);
   GdkWindow *toplevel = NULL;
   GtkWidget *widget = NULL;
   HWND hwnd;
@@ -606,7 +606,7 @@ ctk_im_context_ime_focus_in (GtkIMContext *context)
 
   /* trace reparenting (probably no need) */
   gdk_window_get_user_data (context_ime->client_window, (gpointer) & widget);
-  if (GTK_IS_WIDGET (widget))
+  if (CTK_IS_WIDGET (widget))
     {
       g_signal_connect (widget, "hierarchy-changed",
                         G_CALLBACK (cb_client_widget_hierarchy_changed),
@@ -621,12 +621,12 @@ ctk_im_context_ime_focus_in (GtkIMContext *context)
 
   switch (context_ime->priv->focus_behavior)
     {
-    case GTK_WIN32_IME_FOCUS_BEHAVIOR_COMMIT:
-    case GTK_WIN32_IME_FOCUS_BEHAVIOR_DISCARD:
+    case CTK_WIN32_IME_FOCUS_BEHAVIOR_COMMIT:
+    case CTK_WIN32_IME_FOCUS_BEHAVIOR_DISCARD:
       ctk_im_context_ime_reset (context);
       break;
 
-    case GTK_WIN32_IME_FOCUS_BEHAVIOR_FOLLOW:
+    case CTK_WIN32_IME_FOCUS_BEHAVIOR_FOLLOW:
       {
         gchar *utf8str = get_utf8_preedit_string (context_ime, GCS_COMPSTR, NULL);
         if (utf8str != NULL && strlen(utf8str) > 0)
@@ -649,7 +649,7 @@ ctk_im_context_ime_focus_in (GtkIMContext *context)
 static void
 ctk_im_context_ime_focus_out (GtkIMContext *context)
 {
-  GtkIMContextIME *context_ime = GTK_IM_CONTEXT_IME (context);
+  GtkIMContextIME *context_ime = CTK_IM_CONTEXT_IME (context);
   GtkWidget *widget = NULL;
   gboolean was_preediting;
 
@@ -664,7 +664,7 @@ ctk_im_context_ime_focus_out (GtkIMContext *context)
 
   switch (context_ime->priv->focus_behavior)
     {
-      case GTK_WIN32_IME_FOCUS_BEHAVIOR_COMMIT:
+      case CTK_WIN32_IME_FOCUS_BEHAVIOR_COMMIT:
         if (was_preediting)
           {
             gchar *utf8str = get_utf8_preedit_string (context_ime, GCS_COMPSTR, NULL);
@@ -683,7 +683,7 @@ ctk_im_context_ime_focus_out (GtkIMContext *context)
           }
         /* fallthrough */
 
-      case GTK_WIN32_IME_FOCUS_BEHAVIOR_DISCARD:
+      case CTK_WIN32_IME_FOCUS_BEHAVIOR_DISCARD:
         ctk_im_context_ime_reset (context);
 
         /* Callbacks triggered by im_context_ime_reset() could set the focus back to our
@@ -694,13 +694,13 @@ ctk_im_context_ime_focus_out (GtkIMContext *context)
 
         break;
 
-      case GTK_WIN32_IME_FOCUS_BEHAVIOR_FOLLOW:
+      case CTK_WIN32_IME_FOCUS_BEHAVIOR_FOLLOW:
         break;
     }
 
   /* remove signal handler */
   gdk_window_get_user_data (context_ime->client_window, (gpointer) & widget);
-  if (GTK_IS_WIDGET (widget))
+  if (CTK_IS_WIDGET (widget))
     {
       g_signal_handlers_disconnect_by_func
         (G_OBJECT (widget),
@@ -734,9 +734,9 @@ ctk_im_context_ime_set_cursor_location (GtkIMContext *context,
   HIMC himc;
   guint scale;
 
-  g_return_if_fail (GTK_IS_IM_CONTEXT_IME (context));
+  g_return_if_fail (CTK_IS_IM_CONTEXT_IME (context));
 
-  context_ime = GTK_IM_CONTEXT_IME (context);
+  context_ime = CTK_IM_CONTEXT_IME (context);
   if (area)
     context_ime->cursor_location = *area;
 
@@ -765,8 +765,8 @@ ctk_im_context_ime_set_use_preedit (GtkIMContext *context,
 {
   GtkIMContextIME *context_ime;
 
-  g_return_if_fail (GTK_IS_IM_CONTEXT_IME (context));
-  context_ime = GTK_IM_CONTEXT_IME (context);
+  g_return_if_fail (CTK_IS_IM_CONTEXT_IME (context));
+  context_ime = CTK_IM_CONTEXT_IME (context);
 
   context_ime->use_preedit = use_preedit;
   if (context_ime->preediting)
@@ -802,14 +802,14 @@ ctk_im_context_ime_set_preedit_font (GtkIMContext *context)
   GtkStyleContext *style;
   PangoFontDescription *font_desc;
 
-  g_return_if_fail (GTK_IS_IM_CONTEXT_IME (context));
+  g_return_if_fail (CTK_IS_IM_CONTEXT_IME (context));
 
-  context_ime = GTK_IM_CONTEXT_IME (context);
+  context_ime = CTK_IM_CONTEXT_IME (context);
   if (!context_ime->client_window)
     return;
 
   gdk_window_get_user_data (context_ime->client_window, (gpointer) &widget);
-  if (!GTK_IS_WIDGET (widget))
+  if (!CTK_IS_WIDGET (widget))
     return;
 
   hwnd = gdk_win32_window_get_impl_hwnd (context_ime->toplevel);
@@ -855,7 +855,7 @@ ctk_im_context_ime_set_preedit_font (GtkIMContext *context)
 
   style = ctk_widget_get_style_context (widget);
   ctk_style_context_save (style);
-  ctk_style_context_set_state (style, GTK_STATE_FLAG_NORMAL);
+  ctk_style_context_set_state (style, CTK_STATE_FLAG_NORMAL);
   ctk_style_context_get (style,
                          ctk_style_context_get_state (style),
                          "font",
@@ -921,10 +921,10 @@ ctk_im_context_ime_message_filter (GdkXEvent *xevent,
   MSG *msg = (MSG *) xevent;
   GdkFilterReturn retval = GDK_FILTER_CONTINUE;
 
-  g_return_val_if_fail (GTK_IS_IM_CONTEXT_IME (data), retval);
+  g_return_val_if_fail (CTK_IS_IM_CONTEXT_IME (data), retval);
 
-  context = GTK_IM_CONTEXT (data);
-  context_ime = GTK_IM_CONTEXT_IME (data);
+  context = CTK_IM_CONTEXT (data);
+  context_ime = CTK_IM_CONTEXT_IME (data);
 
   if (!context_ime->focus)
     return retval;
@@ -1064,8 +1064,8 @@ cb_client_widget_hierarchy_changed (GtkWidget       *widget,
 {
   GdkWindow *new_toplevel;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (GTK_IS_IM_CONTEXT_IME (context_ime));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_IM_CONTEXT_IME (context_ime));
 
   if (!context_ime->client_window)
     return;

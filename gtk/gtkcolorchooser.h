@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_COLOR_CHOOSER_H__
-#define __GTK_COLOR_CHOOSER_H__
+#ifndef __CTK_COLOR_CHOOSER_H__
+#define __CTK_COLOR_CHOOSER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -27,10 +27,10 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COLOR_CHOOSER                  (ctk_color_chooser_get_type ())
-#define GTK_COLOR_CHOOSER(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COLOR_CHOOSER, GtkColorChooser))
-#define GTK_IS_COLOR_CHOOSER(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COLOR_CHOOSER))
-#define GTK_COLOR_CHOOSER_GET_IFACE(inst)       (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_COLOR_CHOOSER, GtkColorChooserInterface))
+#define CTK_TYPE_COLOR_CHOOSER                  (ctk_color_chooser_get_type ())
+#define CTK_COLOR_CHOOSER(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COLOR_CHOOSER, GtkColorChooser))
+#define CTK_IS_COLOR_CHOOSER(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COLOR_CHOOSER))
+#define CTK_COLOR_CHOOSER_GET_IFACE(inst)       (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_COLOR_CHOOSER, GtkColorChooserInterface))
 
 typedef struct _GtkColorChooser          GtkColorChooser;
 typedef struct _GtkColorChooserInterface GtkColorChooserInterface;
@@ -84,4 +84,4 @@ void     ctk_color_chooser_add_palette    (GtkColorChooser *chooser,
 
 G_END_DECLS
 
-#endif /* __GTK_COLOR_CHOOSER_H__ */
+#endif /* __CTK_COLOR_CHOOSER_H__ */

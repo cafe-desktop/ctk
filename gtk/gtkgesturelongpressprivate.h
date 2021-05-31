@@ -17,8 +17,8 @@
  *
  * Author(s): Carlos Garnacho <carlosg@gnome.org>
  */
-#ifndef __GTK_GESTURE_LONG_PRESS_PRIVATE_H__
-#define __GTK_GESTURE_LONG_PRESS_PRIVATE_H__
+#ifndef __CTK_GESTURE_LONG_PRESS_PRIVATE_H__
+#define __CTK_GESTURE_LONG_PRESS_PRIVATE_H__
 
 #include "gtkgesturesingleprivate.h"
 #include "gtkgesturelongpress.h"
@@ -41,4 +41,4 @@ struct _GtkGestureLongPressClass
   gpointer padding[10];
 };
 
-#endif /* __GTK_GESTURE_LONG_PRESS_PRIVATE_H__ */
+#endif /* __CTK_GESTURE_LONG_PRESS_PRIVATE_H__ */

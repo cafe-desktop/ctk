@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_IM_MODULE_PRIVATE_H__
-#define __GTK_IM_MODULE_PRIVATE_H__
+#ifndef __CTK_IM_MODULE_PRIVATE_H__
+#define __CTK_IM_MODULE_PRIVATE_H__
 
 #include <gdk/gdk.h>
 #include <gtk/gtkimcontext.h>
@@ -31,4 +31,4 @@ const gchar  * _ctk_im_module_get_default_context_id (void);
 
 G_END_DECLS
 
-#endif /* __GTK_IM_MODULE_PRIVATE_H__ */
+#endif /* __CTK_IM_MODULE_PRIVATE_H__ */

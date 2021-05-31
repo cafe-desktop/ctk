@@ -30,14 +30,14 @@ static void
 test_init (void)
 {
   if (g_file_test ("../modules/input/immodules.cache", G_FILE_TEST_EXISTS))
-    g_setenv ("GTK_IM_MODULE_FILE", "../modules/input/immodules.cache", TRUE);
+    g_setenv ("CTK_IM_MODULE_FILE", "../modules/input/immodules.cache", TRUE);
 }
 
 static void
 combochange_log (const char *fmt,
      ...)
 {
-  GtkTextBuffer *buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (text_view));
+  GtkTextBuffer *buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view));
   GtkTextIter iter;
   va_list vap;
   char *msg;
@@ -64,7 +64,7 @@ combochange_log (const char *fmt,
   g_string_free (order_string, TRUE);
 
   tmp_mark = ctk_text_buffer_create_mark (buffer, NULL, &iter, FALSE);
-  ctk_text_view_scroll_mark_onscreen (GTK_TEXT_VIEW (text_view), tmp_mark);
+  ctk_text_view_scroll_mark_onscreen (CTK_TEXT_VIEW (text_view), tmp_mark);
   ctk_text_buffer_delete_mark (buffer, tmp_mark);
 
   g_free (msg);
@@ -80,10 +80,10 @@ create_combo (const char *name,
   GtkStyleContext *context;
   gchar *css_data;
 
-  combo = ctk_combo_box_new_with_model (GTK_TREE_MODEL (model));
+  combo = ctk_combo_box_new_with_model (CTK_TREE_MODEL (model));
   cell_renderer = ctk_cell_renderer_text_new ();
-  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), cell_renderer, TRUE);
-  ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), cell_renderer,
+  ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo), cell_renderer, TRUE);
+  ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (combo), cell_renderer,
 				  "text", 0, NULL);
 
   ctk_widget_set_name (combo, name);
@@ -97,8 +97,8 @@ create_combo (const char *name,
   g_free (css_data);
 
   ctk_style_context_add_provider (context,
-                                  GTK_STYLE_PROVIDER (provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                  CTK_STYLE_PROVIDER (provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 
   return combo;
 }
@@ -142,7 +142,7 @@ on_delete (void)
     return;
   
   delete_pos = g_random_int_range (0, contents->len);
-  ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (model), &iter, NULL, delete_pos);
+  ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (model), &iter, NULL, delete_pos);
   
   ctk_list_store_remove (model, &iter);
 
@@ -241,68 +241,68 @@ main (int argc, char **argv)
   
   dialog = ctk_dialog_new_with_buttons ("GtkComboBox model changes",
 					NULL, 0,
-					"_Close", GTK_RESPONSE_CLOSE,
+					"_Close", CTK_RESPONSE_CLOSE,
 					NULL);
 
-  content_area = ctk_dialog_get_content_area (GTK_DIALOG (dialog));
+  content_area = ctk_dialog_get_content_area (CTK_DIALOG (dialog));
 
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-  ctk_container_set_border_width (GTK_CONTAINER (hbox), 12);
-  ctk_box_pack_start (GTK_BOX (content_area), hbox, TRUE, TRUE, 0);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
+  ctk_container_set_border_width (CTK_CONTAINER (hbox), 12);
+  ctk_box_pack_start (CTK_BOX (content_area), hbox, TRUE, TRUE, 0);
 
-  combo_vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  ctk_box_pack_start (GTK_BOX (hbox), combo_vbox, FALSE, FALSE, 0);
+  combo_vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+  ctk_box_pack_start (CTK_BOX (hbox), combo_vbox, FALSE, FALSE, 0);
 
   label = ctk_label_new (NULL);
-  ctk_label_set_markup (GTK_LABEL (label), "<b>Menu mode</b>");
-  ctk_box_pack_start (GTK_BOX (combo_vbox), label, FALSE, FALSE, 0);
+  ctk_label_set_markup (CTK_LABEL (label), "<b>Menu mode</b>");
+  ctk_box_pack_start (CTK_BOX (combo_vbox), label, FALSE, FALSE, 0);
 
   menu_combo = create_combo ("menu-combo", FALSE);
   ctk_widget_set_margin_start (menu_combo, 12);
-  ctk_box_pack_start (GTK_BOX (combo_vbox), menu_combo, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (combo_vbox), menu_combo, FALSE, FALSE, 0);
 
   label = ctk_label_new (NULL);
-  ctk_label_set_markup (GTK_LABEL (label), "<b>List mode</b>");
-  ctk_box_pack_start (GTK_BOX (combo_vbox), label, FALSE, FALSE, 0);
+  ctk_label_set_markup (CTK_LABEL (label), "<b>List mode</b>");
+  ctk_box_pack_start (CTK_BOX (combo_vbox), label, FALSE, FALSE, 0);
 
   list_combo = create_combo ("list-combo", TRUE);
   ctk_widget_set_margin_start (list_combo, 12);
-  ctk_box_pack_start (GTK_BOX (combo_vbox), list_combo, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (combo_vbox), list_combo, FALSE, FALSE, 0);
 
   scrolled_window = ctk_scrolled_window_new (NULL, NULL);
-  ctk_box_pack_start (GTK_BOX (hbox), scrolled_window, TRUE, TRUE, 0);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window),
-				  GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+  ctk_box_pack_start (CTK_BOX (hbox), scrolled_window, TRUE, TRUE, 0);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_window),
+				  CTK_POLICY_AUTOMATIC, CTK_POLICY_AUTOMATIC);
 
   text_view = ctk_text_view_new ();
-  ctk_text_view_set_editable (GTK_TEXT_VIEW (text_view), FALSE);
-  ctk_text_view_set_cursor_visible (GTK_TEXT_VIEW (text_view), FALSE);
+  ctk_text_view_set_editable (CTK_TEXT_VIEW (text_view), FALSE);
+  ctk_text_view_set_cursor_visible (CTK_TEXT_VIEW (text_view), FALSE);
 
-  ctk_container_add (GTK_CONTAINER (scrolled_window), text_view);
+  ctk_container_add (CTK_CONTAINER (scrolled_window), text_view);
 
-  button_vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  ctk_box_pack_start (GTK_BOX (hbox), button_vbox, FALSE, FALSE, 0);
+  button_vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+  ctk_box_pack_start (CTK_BOX (hbox), button_vbox, FALSE, FALSE, 0);
   
-  ctk_window_set_default_size (GTK_WINDOW (dialog), 500, 300);
+  ctk_window_set_default_size (CTK_WINDOW (dialog), 500, 300);
 
   button = ctk_button_new_with_label ("Insert");
-  ctk_box_pack_start (GTK_BOX (button_vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (button_vbox), button, FALSE, FALSE, 0);
   g_signal_connect (button, "clicked", G_CALLBACK (on_insert), NULL);
   
   button = ctk_button_new_with_label ("Delete");
-  ctk_box_pack_start (GTK_BOX (button_vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (button_vbox), button, FALSE, FALSE, 0);
   g_signal_connect (button, "clicked", G_CALLBACK (on_delete), NULL);
 
   button = ctk_button_new_with_label ("Reorder");
-  ctk_box_pack_start (GTK_BOX (button_vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (button_vbox), button, FALSE, FALSE, 0);
   g_signal_connect (button, "clicked", G_CALLBACK (on_reorder), NULL);
 
   button = ctk_button_new_with_label ("Animate");
-  ctk_box_pack_start (GTK_BOX (button_vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (button_vbox), button, FALSE, FALSE, 0);
   g_signal_connect (button, "clicked", G_CALLBACK (on_animate), NULL);
 
   ctk_widget_show_all (dialog);
-  ctk_dialog_run (GTK_DIALOG (dialog));
+  ctk_dialog_run (CTK_DIALOG (dialog));
 
   return 0;
 }

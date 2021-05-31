@@ -62,7 +62,7 @@ create_icon_store (void)
         }
     }
 
-  return GTK_TREE_MODEL (store);
+  return CTK_TREE_MODEL (store);
 }
 
 /* A GtkCellLayoutDataFunc that demonstrates how one can control
@@ -193,7 +193,7 @@ create_capital_store (void)
         }
     }
 
-  return GTK_TREE_MODEL (store);
+  return CTK_TREE_MODEL (store);
 }
 
 static void
@@ -213,10 +213,10 @@ is_capital_sensitive (GtkCellLayout   *cell_layout,
 static void
 fill_combo_entry (GtkWidget *combo)
 {
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "One");
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Two");
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "2\302\275");
-  ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo), "Three");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), "One");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), "Two");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), "2\302\275");
+  ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo), "Three");
 }
 
 
@@ -246,8 +246,8 @@ struct _MaskEntryClass
 
 static void mask_entry_editable_init (GtkEditableInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (MaskEntry, mask_entry, GTK_TYPE_ENTRY,
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_EDITABLE,
+G_DEFINE_TYPE_WITH_CODE (MaskEntry, mask_entry, CTK_TYPE_ENTRY,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_EDITABLE,
                                                 mask_entry_editable_init));
 
 
@@ -256,19 +256,19 @@ mask_entry_set_background (MaskEntry *entry)
 {
   if (entry->mask)
     {
-      if (!g_regex_match_simple (entry->mask, ctk_entry_get_text (GTK_ENTRY (entry)), 0, 0))
+      if (!g_regex_match_simple (entry->mask, ctk_entry_get_text (CTK_ENTRY (entry)), 0, 0))
         {
           PangoAttrList *attrs;
 
           attrs = pango_attr_list_new ();
           pango_attr_list_insert (attrs, pango_attr_foreground_new (65535, 32767, 32767));
-          ctk_entry_set_attributes (GTK_ENTRY (entry), attrs);
+          ctk_entry_set_attributes (CTK_ENTRY (entry), attrs);
           pango_attr_list_unref (attrs);
           return;
         }
     }
 
-  ctk_entry_set_attributes (GTK_ENTRY (entry), NULL);
+  ctk_entry_set_attributes (CTK_ENTRY (entry), NULL);
 }
 
 
@@ -310,81 +310,81 @@ do_combobox (GtkWidget *do_widget)
 
   if (!window)
   {
-    window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-    ctk_window_set_screen (GTK_WINDOW (window),
+    window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+    ctk_window_set_screen (CTK_WINDOW (window),
                            ctk_widget_get_screen (do_widget));
-    ctk_window_set_title (GTK_WINDOW (window), "Combo Boxes");
+    ctk_window_set_title (CTK_WINDOW (window), "Combo Boxes");
 
     g_signal_connect (window, "destroy",
                       G_CALLBACK (ctk_widget_destroyed), &window);
 
-    ctk_container_set_border_width (GTK_CONTAINER (window), 10);
+    ctk_container_set_border_width (CTK_CONTAINER (window), 10);
 
-    vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-    ctk_container_add (GTK_CONTAINER (window), vbox);
+    vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 2);
+    ctk_container_add (CTK_CONTAINER (window), vbox);
 
     /* A combobox demonstrating cell renderers, separators and
      *  insensitive rows
      */
     frame = ctk_frame_new ("Items with icons");
-    ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+    ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-    box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    ctk_container_set_border_width (GTK_CONTAINER (box), 5);
-    ctk_container_add (GTK_CONTAINER (frame), box);
+    box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+    ctk_container_set_border_width (CTK_CONTAINER (box), 5);
+    ctk_container_add (CTK_CONTAINER (frame), box);
 
     model = create_icon_store ();
     combo = ctk_combo_box_new_with_model (model);
     g_object_unref (model);
-    ctk_container_add (GTK_CONTAINER (box), combo);
+    ctk_container_add (CTK_CONTAINER (box), combo);
 
     renderer = ctk_cell_renderer_pixbuf_new ();
-    ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, FALSE);
-    ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
+    ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo), renderer, FALSE);
+    ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (combo), renderer,
                                     "icon-name", ICON_NAME_COL,
                                     NULL);
 
-    ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo),
+    ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (combo),
                                         renderer,
                                         set_sensitive,
                                         NULL, NULL);
 
     renderer = ctk_cell_renderer_text_new ();
-    ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, TRUE);
-    ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
+    ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo), renderer, TRUE);
+    ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (combo), renderer,
                                     "text", TEXT_COL,
                                     NULL);
 
-    ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo),
+    ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (combo),
                                         renderer,
                                         set_sensitive,
                                         NULL, NULL);
 
-    ctk_combo_box_set_row_separator_func (GTK_COMBO_BOX (combo),
+    ctk_combo_box_set_row_separator_func (CTK_COMBO_BOX (combo),
                                           is_separator, NULL, NULL);
 
-    ctk_combo_box_set_active (GTK_COMBO_BOX (combo), 0);
+    ctk_combo_box_set_active (CTK_COMBO_BOX (combo), 0);
 
     /* A combobox demonstrating trees.
      */
     frame = ctk_frame_new ("Where are we ?");
-    ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+    ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-    box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    ctk_container_set_border_width (GTK_CONTAINER (box), 5);
-    ctk_container_add (GTK_CONTAINER (frame), box);
+    box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+    ctk_container_set_border_width (CTK_CONTAINER (box), 5);
+    ctk_container_add (CTK_CONTAINER (frame), box);
 
     model = create_capital_store ();
     combo = ctk_combo_box_new_with_model (model);
     g_object_unref (model);
-    ctk_container_add (GTK_CONTAINER (box), combo);
+    ctk_container_add (CTK_CONTAINER (box), combo);
 
     renderer = ctk_cell_renderer_text_new ();
-    ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), renderer, TRUE);
-    ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), renderer,
+    ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo), renderer, TRUE);
+    ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (combo), renderer,
                                     "text", 0,
                                     NULL);
-    ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo),
+    ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (combo),
                                         renderer,
                                         is_capital_sensitive,
                                         NULL, NULL);
@@ -392,45 +392,45 @@ do_combobox (GtkWidget *do_widget)
     path = ctk_tree_path_new_from_indices (0, 8, -1);
     ctk_tree_model_get_iter (model, &iter, path);
     ctk_tree_path_free (path);
-    ctk_combo_box_set_active_iter (GTK_COMBO_BOX (combo), &iter);
+    ctk_combo_box_set_active_iter (CTK_COMBO_BOX (combo), &iter);
 
     /* A GtkComboBoxEntry with validation */
     frame = ctk_frame_new ("Editable");
-    ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+    ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-    box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    ctk_container_set_border_width (GTK_CONTAINER (box), 5);
-    ctk_container_add (GTK_CONTAINER (frame), box);
+    box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+    ctk_container_set_border_width (CTK_CONTAINER (box), 5);
+    ctk_container_add (CTK_CONTAINER (frame), box);
 
     combo = ctk_combo_box_text_new_with_entry ();
     fill_combo_entry (combo);
-    ctk_container_add (GTK_CONTAINER (box), combo);
+    ctk_container_add (CTK_CONTAINER (box), combo);
 
     entry = g_object_new (TYPE_MASK_ENTRY, NULL);
     MASK_ENTRY (entry)->mask = "^([0-9]*|One|Two|2\302\275|Three)$";
 
-    ctk_container_remove (GTK_CONTAINER (combo), ctk_bin_get_child (GTK_BIN (combo)));
-    ctk_container_add (GTK_CONTAINER (combo), entry);
+    ctk_container_remove (CTK_CONTAINER (combo), ctk_bin_get_child (CTK_BIN (combo)));
+    ctk_container_add (CTK_CONTAINER (combo), entry);
 
     /* A combobox with string IDs */
     frame = ctk_frame_new ("String IDs");
-    ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+    ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-    box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-    ctk_container_set_border_width (GTK_CONTAINER (box), 5);
-    ctk_container_add (GTK_CONTAINER (frame), box);
+    box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+    ctk_container_set_border_width (CTK_CONTAINER (box), 5);
+    ctk_container_add (CTK_CONTAINER (frame), box);
 
     combo = ctk_combo_box_text_new ();
-    ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (combo), "never", "Not visible");
-    ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (combo), "when-active", "Visible when active");
-    ctk_combo_box_text_append (GTK_COMBO_BOX_TEXT (combo), "always", "Always visible");
-    ctk_container_add (GTK_CONTAINER (box), combo);
+    ctk_combo_box_text_append (CTK_COMBO_BOX_TEXT (combo), "never", "Not visible");
+    ctk_combo_box_text_append (CTK_COMBO_BOX_TEXT (combo), "when-active", "Visible when active");
+    ctk_combo_box_text_append (CTK_COMBO_BOX_TEXT (combo), "always", "Always visible");
+    ctk_container_add (CTK_CONTAINER (box), combo);
 
     entry = ctk_entry_new ();
     g_object_bind_property (combo, "active-id",
                             entry, "text",
                             G_BINDING_BIDIRECTIONAL);
-    ctk_container_add (GTK_CONTAINER (box), entry);
+    ctk_container_add (CTK_CONTAINER (box), entry);
   }
 
   if (!ctk_widget_get_visible (window))

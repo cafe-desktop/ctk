@@ -35,48 +35,48 @@ do_sidebar (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_resizable (GTK_WINDOW (window), TRUE);
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_resizable (CTK_WINDOW (window), TRUE);
       ctk_widget_set_size_request (window, 500, 350);
 
       header = ctk_header_bar_new ();
-      ctk_header_bar_set_show_close_button (GTK_HEADER_BAR(header), TRUE);
-      ctk_window_set_titlebar (GTK_WINDOW(window), header);
-      ctk_window_set_title (GTK_WINDOW(window), "Stack Sidebar");
+      ctk_header_bar_set_show_close_button (CTK_HEADER_BAR(header), TRUE);
+      ctk_window_set_titlebar (CTK_WINDOW(window), header);
+      ctk_window_set_title (CTK_WINDOW(window), "Stack Sidebar");
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+      box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
       sidebar = ctk_stack_sidebar_new ();
-      ctk_box_pack_start (GTK_BOX (box), sidebar, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (box), sidebar, FALSE, FALSE, 0);
 
       stack = ctk_stack_new ();
-      ctk_stack_set_transition_type (GTK_STACK (stack), GTK_STACK_TRANSITION_TYPE_SLIDE_UP_DOWN);
-      ctk_stack_sidebar_set_stack (GTK_STACK_SIDEBAR (sidebar), GTK_STACK (stack));
+      ctk_stack_set_transition_type (CTK_STACK (stack), CTK_STACK_TRANSITION_TYPE_SLIDE_UP_DOWN);
+      ctk_stack_sidebar_set_stack (CTK_STACK_SIDEBAR (sidebar), CTK_STACK (stack));
 
       /* Separator between sidebar and stack */
-      widget = ctk_separator_new (GTK_ORIENTATION_VERTICAL);
-      ctk_box_pack_start (GTK_BOX(box), widget, FALSE, FALSE, 0);
+      widget = ctk_separator_new (CTK_ORIENTATION_VERTICAL);
+      ctk_box_pack_start (CTK_BOX(box), widget, FALSE, FALSE, 0);
 
-      ctk_box_pack_start (GTK_BOX (box), stack, TRUE, TRUE, 0);
+      ctk_box_pack_start (CTK_BOX (box), stack, TRUE, TRUE, 0);
 
       for (i=0; (c = *(pages+i)) != NULL; i++ )
         {
           if (i == 0)
             {
-              widget = ctk_image_new_from_icon_name ("help-about", GTK_ICON_SIZE_MENU);
-              ctk_image_set_pixel_size (GTK_IMAGE (widget), 256);
+              widget = ctk_image_new_from_icon_name ("help-about", CTK_ICON_SIZE_MENU);
+              ctk_image_set_pixel_size (CTK_IMAGE (widget), 256);
             }
           else
             {
               widget = ctk_label_new (c);
             }
-          ctk_stack_add_named (GTK_STACK (stack), widget, c);
-          ctk_container_child_set (GTK_CONTAINER (stack), widget, "title", c, NULL);
+          ctk_stack_add_named (CTK_STACK (stack), widget, c);
+          ctk_container_child_set (CTK_CONTAINER (stack), widget, "title", c, NULL);
         }
 
-       ctk_container_add (GTK_CONTAINER (window), box);
+       ctk_container_add (CTK_CONTAINER (window), box);
     }
 
   if (!ctk_widget_get_visible (window))

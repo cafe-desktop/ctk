@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ACCEL_GROUP_PRIVATE_H__
-#define __GTK_ACCEL_GROUP_PRIVATE_H__
+#ifndef __CTK_ACCEL_GROUP_PRIVATE_H__
+#define __CTK_ACCEL_GROUP_PRIVATE_H__
 
 
 #include <gtk/gtkaccelgroup.h>
@@ -40,4 +40,4 @@ GSList* _ctk_accel_group_get_accelerables (GtkAccelGroup *accel_group);
 
 G_END_DECLS
 
-#endif /* __GTK_ACCEL_GROUP_PRIVATE_H__ */
+#endif /* __CTK_ACCEL_GROUP_PRIVATE_H__ */

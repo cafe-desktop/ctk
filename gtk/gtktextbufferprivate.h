@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TEXT_BUFFER_PRIVATE_H__
-#define __GTK_TEXT_BUFFER_PRIVATE_H__
+#ifndef __CTK_TEXT_BUFFER_PRIVATE_H__
+#define __CTK_TEXT_BUFFER_PRIVATE_H__
 
 #include <gtk/gtktextbuffer.h>
 

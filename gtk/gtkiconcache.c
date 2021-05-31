@@ -70,7 +70,7 @@ _ctk_icon_cache_unref (GtkIconCache *cache)
 
   if (cache->ref_count == 0)
     {
-      GTK_NOTE (ICONTHEME, g_message ("unmapping icon cache"));
+      CTK_NOTE (ICONTHEME, g_message ("unmapping icon cache"));
 
       if (cache->map)
 	g_mapped_file_unref (cache->map);
@@ -92,7 +92,7 @@ _ctk_icon_cache_new_for_path (const gchar *path)
    /* Check if we have a cache file */
   cache_filename = g_build_filename (path, "icon-theme.cache", NULL);
 
-  GTK_NOTE (ICONTHEME, g_message ("look for icon cache in %s", path));
+  CTK_NOTE (ICONTHEME, g_message ("look for icon cache in %s", path));
 
   if (g_stat (path, &path_st) < 0)
     goto done;
@@ -123,7 +123,7 @@ _ctk_icon_cache_new_for_path (const gchar *path)
   /* Verify cache is uptodate */
   if (st.st_mtime < path_st.st_mtime)
     {
-      GTK_NOTE (ICONTHEME, g_message ("icon cache outdated"));
+      CTK_NOTE (ICONTHEME, g_message ("icon cache outdated"));
       goto done; 
     }
 
@@ -133,7 +133,7 @@ _ctk_icon_cache_new_for_path (const gchar *path)
     goto done;
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (ICONTHEME))
+  if (CTK_DEBUG_CHECK (ICONTHEME))
     {
       CacheInfo info;
 
@@ -152,7 +152,7 @@ _ctk_icon_cache_new_for_path (const gchar *path)
     }
 #endif 
 
-  GTK_NOTE (ICONTHEME, g_message ("found icon cache for %s", path));
+  CTK_NOTE (ICONTHEME, g_message ("found icon cache for %s", path));
 
   cache = g_new0 (GtkIconCache, 1);
   cache->ref_count = 1;
@@ -503,7 +503,7 @@ _ctk_icon_cache_get_icon (GtkIconCache *cache,
 
   if (type != 0)
     {
-      GTK_NOTE (ICONTHEME, g_message ("invalid pixel data type %u", type));
+      CTK_NOTE (ICONTHEME, g_message ("invalid pixel data type %u", type));
       return NULL;
     }
 
@@ -514,7 +514,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 				(guchar *)(cache->buffer + pixel_data_offset + 8),
 				&error))
     {
-      GTK_NOTE (ICONTHEME, g_message ("could not deserialize data: %s", error->message));
+      CTK_NOTE (ICONTHEME, g_message ("could not deserialize data: %s", error->message));
       g_error_free (error);
 
       return NULL;
@@ -528,7 +528,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 				     cache);
   if (!pixbuf)
     {
-      GTK_NOTE (ICONTHEME, g_message ("could not convert pixdata to pixbuf: %s", error->message));
+      CTK_NOTE (ICONTHEME, g_message ("could not convert pixdata to pixbuf: %s", error->message));
       g_error_free (error);
 
       return NULL;

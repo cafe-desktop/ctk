@@ -13,7 +13,7 @@ struct _IconBrowserAppClass
   GtkApplicationClass parent_class;
 };
 
-G_DEFINE_TYPE(IconBrowserApp, icon_browser_app, GTK_TYPE_APPLICATION);
+G_DEFINE_TYPE(IconBrowserApp, icon_browser_app, CTK_TYPE_APPLICATION);
 
 static void
 icon_browser_app_init (IconBrowserApp *app)
@@ -43,7 +43,7 @@ icon_browser_app_startup (GApplication *app)
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),
                                    app);
-  ctk_application_set_accels_for_action (GTK_APPLICATION (app),
+  ctk_application_set_accels_for_action (CTK_APPLICATION (app),
                                          "app.quit",
                                          quit_accels);
 }
@@ -54,7 +54,7 @@ icon_browser_app_activate (GApplication *app)
   IconBrowserWindow *win;
 
   win = icon_browser_window_new (ICON_BROWSER_APP (app));
-  ctk_window_present (GTK_WINDOW (win));
+  ctk_window_present (CTK_WINDOW (win));
 }
 
 static void

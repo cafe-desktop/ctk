@@ -19,10 +19,10 @@
  *
  */
 
-#ifndef __GTK_LIST_BOX_H__
-#define __GTK_LIST_BOX_H__
+#ifndef __CTK_LIST_BOX_H__
+#define __CTK_LIST_BOX_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_LIST_BOX (ctk_list_box_get_type ())
-#define GTK_LIST_BOX(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LIST_BOX, GtkListBox))
-#define GTK_LIST_BOX_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LIST_BOX, GtkListBoxClass))
-#define GTK_IS_LIST_BOX(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LIST_BOX))
-#define GTK_IS_LIST_BOX_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_LIST_BOX))
-#define GTK_LIST_BOX_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_LIST_BOX, GtkListBoxClass))
+#define CTK_TYPE_LIST_BOX (ctk_list_box_get_type ())
+#define CTK_LIST_BOX(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LIST_BOX, GtkListBox))
+#define CTK_LIST_BOX_CLASS(klass) (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LIST_BOX, GtkListBoxClass))
+#define CTK_IS_LIST_BOX(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LIST_BOX))
+#define CTK_IS_LIST_BOX_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LIST_BOX))
+#define CTK_LIST_BOX_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LIST_BOX, GtkListBoxClass))
 
 typedef struct _GtkListBox        GtkListBox;
 typedef struct _GtkListBoxClass   GtkListBoxClass;
@@ -88,12 +88,12 @@ struct _GtkListBoxClass
   void (*_ctk_reserved3) (void);
 };
 
-#define GTK_TYPE_LIST_BOX_ROW            (ctk_list_box_row_get_type ())
-#define GTK_LIST_BOX_ROW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LIST_BOX_ROW, GtkListBoxRow))
-#define GTK_LIST_BOX_ROW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LIST_BOX_ROW, GtkListBoxRowClass))
-#define GTK_IS_LIST_BOX_ROW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LIST_BOX_ROW))
-#define GTK_IS_LIST_BOX_ROW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_LIST_BOX_ROW))
-#define GTK_LIST_BOX_ROW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_LIST_BOX_ROW, GtkListBoxRowClass))
+#define CTK_TYPE_LIST_BOX_ROW            (ctk_list_box_row_get_type ())
+#define CTK_LIST_BOX_ROW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LIST_BOX_ROW, GtkListBoxRow))
+#define CTK_LIST_BOX_ROW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LIST_BOX_ROW, GtkListBoxRowClass))
+#define CTK_IS_LIST_BOX_ROW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LIST_BOX_ROW))
+#define CTK_IS_LIST_BOX_ROW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LIST_BOX_ROW))
+#define CTK_LIST_BOX_ROW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LIST_BOX_ROW, GtkListBoxRowClass))
 
 struct _GtkListBoxRow
 {

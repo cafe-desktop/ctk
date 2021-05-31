@@ -15,17 +15,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _GTK_INSPECTOR_DATA_LIST_H_
-#define _GTK_INSPECTOR_DATA_LIST_H_
+#ifndef _CTK_INSPECTOR_DATA_LIST_H_
+#define _CTK_INSPECTOR_DATA_LIST_H_
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_DATA_LIST            (ctk_inspector_data_list_get_type())
-#define GTK_INSPECTOR_DATA_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_DATA_LIST, GtkInspectorDataList))
-#define GTK_INSPECTOR_DATA_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_DATA_LIST, GtkInspectorDataListClass))
-#define GTK_INSPECTOR_IS_DATA_LIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_DATA_LIST))
-#define GTK_INSPECTOR_IS_DATA_LIST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), GTK_TYPE_INSPECTOR_DATA_LIST))
-#define GTK_INSPECTOR_DATA_LIST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_INSPECTOR_DATA_LIST, GtkInspectorDataListClass))
+#define CTK_TYPE_INSPECTOR_DATA_LIST            (ctk_inspector_data_list_get_type())
+#define CTK_INSPECTOR_DATA_LIST(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_DATA_LIST, GtkInspectorDataList))
+#define CTK_INSPECTOR_DATA_LIST_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_DATA_LIST, GtkInspectorDataListClass))
+#define CTK_INSPECTOR_IS_DATA_LIST(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_DATA_LIST))
+#define CTK_INSPECTOR_IS_DATA_LIST_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_DATA_LIST))
+#define CTK_INSPECTOR_DATA_LIST_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_DATA_LIST, GtkInspectorDataListClass))
 
 
 typedef struct _GtkInspectorDataListPrivate GtkInspectorDataListPrivate;
@@ -49,6 +49,6 @@ void       ctk_inspector_data_list_set_object (GtkInspectorDataList *sl,
 
 G_END_DECLS
 
-#endif // _GTK_INSPECTOR_DATA_LIST_H_
+#endif // _CTK_INSPECTOR_DATA_LIST_H_
 
 // vim: set et sw=2 ts=2:

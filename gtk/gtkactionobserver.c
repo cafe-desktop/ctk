@@ -79,9 +79,9 @@ ctk_action_observer_action_added (GtkActionObserver   *observer,
                                   gboolean             enabled,
                                   GVariant            *state)
 {
-  g_return_if_fail (GTK_IS_ACTION_OBSERVER (observer));
+  g_return_if_fail (CTK_IS_ACTION_OBSERVER (observer));
 
-  GTK_ACTION_OBSERVER_GET_IFACE (observer)
+  CTK_ACTION_OBSERVER_GET_IFACE (observer)
     ->action_added (observer, observable, action_name, parameter_type, enabled, state);
 }
 
@@ -104,9 +104,9 @@ ctk_action_observer_action_enabled_changed (GtkActionObserver   *observer,
                                             const gchar         *action_name,
                                             gboolean             enabled)
 {
-  g_return_if_fail (GTK_IS_ACTION_OBSERVER (observer));
+  g_return_if_fail (CTK_IS_ACTION_OBSERVER (observer));
 
-  GTK_ACTION_OBSERVER_GET_IFACE (observer)
+  CTK_ACTION_OBSERVER_GET_IFACE (observer)
     ->action_enabled_changed (observer, observable, action_name, enabled);
 }
 
@@ -129,9 +129,9 @@ ctk_action_observer_action_state_changed (GtkActionObserver   *observer,
                                           const gchar         *action_name,
                                           GVariant            *state)
 {
-  g_return_if_fail (GTK_IS_ACTION_OBSERVER (observer));
+  g_return_if_fail (CTK_IS_ACTION_OBSERVER (observer));
 
-  GTK_ACTION_OBSERVER_GET_IFACE (observer)
+  CTK_ACTION_OBSERVER_GET_IFACE (observer)
     ->action_state_changed (observer, observable, action_name, state);
 }
 
@@ -152,9 +152,9 @@ ctk_action_observer_action_removed (GtkActionObserver   *observer,
                                     GtkActionObservable *observable,
                                     const gchar         *action_name)
 {
-  g_return_if_fail (GTK_IS_ACTION_OBSERVER (observer));
+  g_return_if_fail (CTK_IS_ACTION_OBSERVER (observer));
 
-  GTK_ACTION_OBSERVER_GET_IFACE (observer)
+  CTK_ACTION_OBSERVER_GET_IFACE (observer)
     ->action_removed (observer, observable, action_name);
 }
 
@@ -180,9 +180,9 @@ ctk_action_observer_primary_accel_changed (GtkActionObserver   *observer,
 {
   GtkActionObserverInterface *iface;
 
-  g_return_if_fail (GTK_IS_ACTION_OBSERVER (observer));
+  g_return_if_fail (CTK_IS_ACTION_OBSERVER (observer));
 
-  iface = GTK_ACTION_OBSERVER_GET_IFACE (observer);
+  iface = CTK_ACTION_OBSERVER_GET_IFACE (observer);
 
   if (iface->primary_accel_changed)
     iface->primary_accel_changed (observer, observable, action_name, action_and_target);

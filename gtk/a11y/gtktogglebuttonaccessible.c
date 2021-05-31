@@ -22,7 +22,7 @@
 #include "gtktogglebuttonaccessible.h"
 
 
-G_DEFINE_TYPE (GtkToggleButtonAccessible, ctk_toggle_button_accessible, GTK_TYPE_BUTTON_ACCESSIBLE)
+G_DEFINE_TYPE (GtkToggleButtonAccessible, ctk_toggle_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE)
 
 static void
 ctk_toggle_button_accessible_toggled (GtkWidget *widget)
@@ -30,7 +30,7 @@ ctk_toggle_button_accessible_toggled (GtkWidget *widget)
   AtkObject *accessible;
   GtkToggleButton *toggle_button;
 
-  toggle_button = GTK_TOGGLE_BUTTON (widget);
+  toggle_button = CTK_TOGGLE_BUTTON (widget);
 
   accessible = ctk_widget_get_accessible (widget);
   atk_object_notify_state_change (accessible, ATK_STATE_CHECKED,
@@ -53,13 +53,13 @@ static void
 ctk_toggle_button_accessible_notify_gtk (GObject    *obj,
                                          GParamSpec *pspec)
 {
-  GtkToggleButton *toggle_button = GTK_TOGGLE_BUTTON (obj);
+  GtkToggleButton *toggle_button = CTK_TOGGLE_BUTTON (obj);
   AtkObject *atk_obj;
   gboolean sensitive;
   gboolean inconsistent;
 
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (toggle_button));
-  sensitive = ctk_widget_get_sensitive (GTK_WIDGET (toggle_button));
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (toggle_button));
+  sensitive = ctk_widget_get_sensitive (CTK_WIDGET (toggle_button));
   inconsistent = ctk_toggle_button_get_inconsistent (toggle_button);
 
   if (strcmp (pspec->name, "inconsistent") == 0)
@@ -74,7 +74,7 @@ ctk_toggle_button_accessible_notify_gtk (GObject    *obj,
       atk_object_notify_state_change (atk_obj, ATK_STATE_ENABLED, (sensitive && !inconsistent));
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_toggle_button_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_toggle_button_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 static AtkStateSet*
@@ -84,12 +84,12 @@ ctk_toggle_button_accessible_ref_state_set (AtkObject *accessible)
   GtkToggleButton *toggle_button;
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
   state_set = ATK_OBJECT_CLASS (ctk_toggle_button_accessible_parent_class)->ref_state_set (accessible);
-  toggle_button = GTK_TOGGLE_BUTTON (widget);
+  toggle_button = CTK_TOGGLE_BUTTON (widget);
 
   if (ctk_toggle_button_get_active (toggle_button))
     atk_state_set_add_state (state_set, ATK_STATE_CHECKED);

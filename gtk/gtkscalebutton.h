@@ -31,10 +31,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_SCALE_BUTTON_H__
-#define __GTK_SCALE_BUTTON_H__
+#ifndef __CTK_SCALE_BUTTON_H__
+#define __CTK_SCALE_BUTTON_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -42,12 +42,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SCALE_BUTTON                 (ctk_scale_button_get_type ())
-#define GTK_SCALE_BUTTON(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SCALE_BUTTON, GtkScaleButton))
-#define GTK_SCALE_BUTTON_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SCALE_BUTTON, GtkScaleButtonClass))
-#define GTK_IS_SCALE_BUTTON(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SCALE_BUTTON))
-#define GTK_IS_SCALE_BUTTON_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SCALE_BUTTON))
-#define GTK_SCALE_BUTTON_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SCALE_BUTTON, GtkScaleButtonClass))
+#define CTK_TYPE_SCALE_BUTTON                 (ctk_scale_button_get_type ())
+#define CTK_SCALE_BUTTON(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCALE_BUTTON, GtkScaleButton))
+#define CTK_SCALE_BUTTON_CLASS(klass)         (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCALE_BUTTON, GtkScaleButtonClass))
+#define CTK_IS_SCALE_BUTTON(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SCALE_BUTTON))
+#define CTK_IS_SCALE_BUTTON_CLASS(klass)      (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SCALE_BUTTON))
+#define CTK_SCALE_BUTTON_GET_CLASS(obj)       (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCALE_BUTTON, GtkScaleButtonClass))
 
 typedef struct _GtkScaleButton        GtkScaleButton;
 typedef struct _GtkScaleButtonClass   GtkScaleButtonClass;
@@ -106,4 +106,4 @@ GtkWidget *      ctk_scale_button_get_popup        (GtkScaleButton  *button);
 
 G_END_DECLS
 
-#endif /* __GTK_SCALE_BUTTON_H__ */
+#endif /* __CTK_SCALE_BUTTON_H__ */

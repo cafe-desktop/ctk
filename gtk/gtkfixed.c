@@ -124,7 +124,7 @@ static void ctk_fixed_get_child_property (GtkContainer *container,
                                           GValue       *value,
                                           GParamSpec   *pspec);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkFixed, ctk_fixed, GTK_TYPE_CONTAINER)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkFixed, ctk_fixed, CTK_TYPE_CONTAINER)
 
 static void
 ctk_fixed_class_init (GtkFixedClass *class)
@@ -156,7 +156,7 @@ ctk_fixed_class_init (GtkFixedClass *class)
                                                                 P_("X position"),
                                                                 P_("X position of child widget"),
                                                                 G_MININT, G_MAXINT, 0,
-                                                                GTK_PARAM_READWRITE));
+                                                                CTK_PARAM_READWRITE));
 
   ctk_container_class_install_child_property (container_class,
                                               CHILD_PROP_Y,
@@ -164,13 +164,13 @@ ctk_fixed_class_init (GtkFixedClass *class)
                                                                 P_("Y position"),
                                                                 P_("Y position of child widget"),
                                                                 G_MININT, G_MAXINT, 0,
-                                                                GTK_PARAM_READWRITE));
+                                                                CTK_PARAM_READWRITE));
 }
 
 static GType
 ctk_fixed_child_type (GtkContainer *container)
 {
-  return GTK_TYPE_WIDGET;
+  return CTK_TYPE_WIDGET;
 }
 
 static void
@@ -178,7 +178,7 @@ ctk_fixed_init (GtkFixed *fixed)
 {
   fixed->priv = ctk_fixed_get_instance_private (fixed);
 
-  ctk_widget_set_has_window (GTK_WIDGET (fixed), FALSE);
+  ctk_widget_set_has_window (CTK_WIDGET (fixed), FALSE);
 
   fixed->priv->children = NULL;
 }
@@ -193,7 +193,7 @@ ctk_fixed_init (GtkFixed *fixed)
 GtkWidget*
 ctk_fixed_new (void)
 {
-  return g_object_new (GTK_TYPE_FIXED, NULL);
+  return g_object_new (CTK_TYPE_FIXED, NULL);
 }
 
 static GtkFixedChild*
@@ -234,8 +234,8 @@ ctk_fixed_put (GtkFixed  *fixed,
   GtkFixedPrivate *priv;
   GtkFixedChild *child_info;
 
-  g_return_if_fail (GTK_IS_FIXED (fixed));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_FIXED (fixed));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (_ctk_widget_get_parent (widget) == NULL);
 
   priv = fixed->priv;
@@ -245,7 +245,7 @@ ctk_fixed_put (GtkFixed  *fixed,
   child_info->x = x;
   child_info->y = y;
 
-  ctk_widget_set_parent (widget, GTK_WIDGET (fixed));
+  ctk_widget_set_parent (widget, CTK_WIDGET (fixed));
 
   priv->children = g_list_append (priv->children, child_info);
 }
@@ -256,8 +256,8 @@ ctk_fixed_move_internal (GtkFixed      *fixed,
                          gint           x,
                          gint           y)
 {
-  g_return_if_fail (GTK_IS_FIXED (fixed));
-  g_return_if_fail (ctk_widget_get_parent (child->widget) == GTK_WIDGET (fixed));
+  g_return_if_fail (CTK_IS_FIXED (fixed));
+  g_return_if_fail (ctk_widget_get_parent (child->widget) == CTK_WIDGET (fixed));
 
   ctk_widget_freeze_child_notify (child->widget);
 
@@ -276,8 +276,8 @@ ctk_fixed_move_internal (GtkFixed      *fixed,
   ctk_widget_thaw_child_notify (child->widget);
 
   if (ctk_widget_get_visible (child->widget) &&
-      ctk_widget_get_visible (GTK_WIDGET (fixed)))
-    ctk_widget_queue_resize (GTK_WIDGET (fixed));
+      ctk_widget_get_visible (CTK_WIDGET (fixed)))
+    ctk_widget_queue_resize (CTK_WIDGET (fixed));
 }
 
 /**
@@ -305,7 +305,7 @@ ctk_fixed_set_child_property (GtkContainer *container,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkFixed *fixed = GTK_FIXED (container);
+  GtkFixed *fixed = CTK_FIXED (container);
   GtkFixedChild *fixed_child;
 
   fixed_child = get_child (fixed, child);
@@ -325,7 +325,7 @@ ctk_fixed_set_child_property (GtkContainer *container,
                                g_value_get_int (value));
       break;
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
 }
@@ -339,7 +339,7 @@ ctk_fixed_get_child_property (GtkContainer *container,
 {
   GtkFixedChild *fixed_child;
 
-  fixed_child = get_child (GTK_FIXED (container), child);
+  fixed_child = get_child (CTK_FIXED (container), child);
   
   switch (property_id)
     {
@@ -350,7 +350,7 @@ ctk_fixed_get_child_property (GtkContainer *container,
       g_value_set_int (value, fixed_child->y);
       break;
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
 }
@@ -375,7 +375,7 @@ set_background (GtkWidget *widget)
 static void
 ctk_fixed_style_updated (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (ctk_fixed_parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (ctk_fixed_parent_class)->style_updated (widget);
 
   set_background (widget);
 }
@@ -389,7 +389,7 @@ ctk_fixed_realize (GtkWidget *widget)
   gint attributes_mask;
 
   if (!ctk_widget_get_has_window (widget))
-    GTK_WIDGET_CLASS (ctk_fixed_parent_class)->realize (widget);
+    CTK_WIDGET_CLASS (ctk_fixed_parent_class)->realize (widget);
   else
     {
       ctk_widget_set_realized (widget, TRUE);
@@ -422,7 +422,7 @@ ctk_fixed_get_preferred_width (GtkWidget *widget,
                                gint      *minimum,
                                gint      *natural)
 {
-  GtkFixed *fixed = GTK_FIXED (widget);
+  GtkFixed *fixed = CTK_FIXED (widget);
   GtkFixedPrivate *priv = fixed->priv;
   GtkFixedChild *child;
   GList *children;
@@ -450,7 +450,7 @@ ctk_fixed_get_preferred_height (GtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
-  GtkFixed *fixed = GTK_FIXED (widget);
+  GtkFixed *fixed = CTK_FIXED (widget);
   GtkFixedPrivate *priv = fixed->priv;
   GtkFixedChild *child;
   GList *children;
@@ -477,7 +477,7 @@ static void
 ctk_fixed_size_allocate (GtkWidget     *widget,
                          GtkAllocation *allocation)
 {
-  GtkFixed *fixed = GTK_FIXED (widget);
+  GtkFixed *fixed = CTK_FIXED (widget);
   GtkFixedPrivate *priv = fixed->priv;
   GtkFixedChild *child;
   GtkAllocation child_allocation;
@@ -523,17 +523,17 @@ static void
 ctk_fixed_add (GtkContainer *container,
                GtkWidget    *widget)
 {
-  ctk_fixed_put (GTK_FIXED (container), widget, 0, 0);
+  ctk_fixed_put (CTK_FIXED (container), widget, 0, 0);
 }
 
 static void
 ctk_fixed_remove (GtkContainer *container,
                   GtkWidget    *widget)
 {
-  GtkFixed *fixed = GTK_FIXED (container);
+  GtkFixed *fixed = CTK_FIXED (container);
   GtkFixedPrivate *priv = fixed->priv;
   GtkFixedChild *child;
-  GtkWidget *widget_container = GTK_WIDGET (container);
+  GtkWidget *widget_container = CTK_WIDGET (container);
   GList *children;
 
   for (children = priv->children; children; children = children->next)
@@ -564,7 +564,7 @@ ctk_fixed_forall (GtkContainer *container,
                   GtkCallback   callback,
                   gpointer      callback_data)
 {
-  GtkFixed *fixed = GTK_FIXED (container);
+  GtkFixed *fixed = CTK_FIXED (container);
   GtkFixedPrivate *priv = fixed->priv;
   GtkFixedChild *child;
   GList *children;
@@ -583,7 +583,7 @@ static gboolean
 ctk_fixed_draw (GtkWidget *widget,
                 cairo_t   *cr)
 {
-  GtkFixed *fixed = GTK_FIXED (widget);
+  GtkFixed *fixed = CTK_FIXED (widget);
   GtkFixedPrivate *priv = fixed->priv;
   GtkFixedChild *child;
   GList *list;
@@ -594,7 +594,7 @@ ctk_fixed_draw (GtkWidget *widget,
     {
       child = list->data;
 
-      ctk_container_propagate_draw (GTK_CONTAINER (fixed),
+      ctk_container_propagate_draw (CTK_CONTAINER (fixed),
                                     child->widget,
                                     cr);
     }

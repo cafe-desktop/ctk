@@ -154,7 +154,7 @@ ctk_allocated_bitmask_shrink (GtkBitmask *mask)
     }
 
   if (i == 0 ||
-      (i == 1 && mask->data[0] < VALUE_BIT (GTK_BITMASK_N_DIRECT_BITS)))
+      (i == 1 && mask->data[0] < VALUE_BIT (CTK_BITMASK_N_DIRECT_BITS)))
     {
       GtkBitmask *result = _ctk_bitmask_from_bits (i == 0 ? 0 : mask->data[0]);
       _ctk_allocated_bitmask_free (mask);

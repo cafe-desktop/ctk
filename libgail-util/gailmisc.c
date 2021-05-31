@@ -550,8 +550,8 @@ gail_misc_get_origins (GtkWidget *widget,
 {
   GdkWindow *window;
 
-  if (GTK_IS_TREE_VIEW (widget))
-    window = ctk_tree_view_get_bin_window (GTK_TREE_VIEW (widget));
+  if (CTK_IS_TREE_VIEW (widget))
+    window = ctk_tree_view_get_bin_window (CTK_TREE_VIEW (widget));
   else
     window = ctk_widget_get_window (widget);
 
@@ -601,7 +601,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "style-set", &val_set, NULL);
       if (val_set)
@@ -620,7 +620,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "variant-set", &val_set, NULL);
       if (val_set)
@@ -639,7 +639,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "stretch-set", &val_set, NULL);
       if (val_set)
@@ -658,7 +658,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "justification-set", &val_set, NULL);
       if (val_set)
@@ -677,12 +677,12 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
       GtkTextDirection direction;
 
       g_object_get (tag, "direction", &direction, NULL);
 
-      if (direction != GTK_TEXT_DIR_NONE)
+      if (direction != CTK_TEXT_DIR_NONE)
         {
           gchar *value;
           val_set = TRUE;
@@ -696,7 +696,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "wrap-mode-set", &val_set, NULL);
       if (val_set)
@@ -715,7 +715,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "foreground-set", &val_set, NULL);
       if (val_set)
@@ -738,7 +738,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "background-set", &val_set, NULL);
       if (val_set)
@@ -761,7 +761,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "family-set", &val_set, NULL);
 
@@ -778,7 +778,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "language-set", &val_set, NULL);
 
@@ -795,7 +795,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "weight-set", &val_set, NULL);
 
@@ -820,7 +820,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
       gboolean scale_set;
 
       g_object_get (tag, "scale-set", &scale_set, NULL);
@@ -846,7 +846,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "size-set", &val_set, NULL);
       if (val_set)
@@ -864,7 +864,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "strikethrough-set", &val_set, NULL);
       if (val_set)
@@ -882,7 +882,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "underline-set", &val_set, NULL);
       if (val_set)
@@ -900,7 +900,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "rise-set", &val_set, NULL);
       if (val_set)
@@ -918,7 +918,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "background-full-height-set", &val_set, NULL);
       if (val_set)
@@ -936,7 +936,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "pixels-inside-wrap-set", &val_set, NULL);
       if (val_set)
@@ -954,7 +954,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "pixels-below-lines-set", &val_set, NULL);
       if (val_set)
@@ -972,7 +972,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "pixels-above-lines-set", &val_set, NULL);
       if (val_set)
@@ -990,7 +990,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "editable-set", &val_set, NULL);
       if (val_set)
@@ -1008,7 +1008,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "invisible-set", &val_set, NULL);
       if (val_set)
@@ -1026,7 +1026,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "indent-set", &val_set, NULL);
       if (val_set)
@@ -1044,7 +1044,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "right-margin-set", &val_set, NULL);
       if (val_set)
@@ -1062,7 +1062,7 @@ gail_misc_buffer_get_run_attributes (GtkTextBuffer *buffer,
   temp_tags = tags;
   while (temp_tags && !val_set)
     {
-      GtkTextTag *tag = GTK_TEXT_TAG (temp_tags->data);
+      GtkTextTag *tag = CTK_TEXT_TAG (temp_tags->data);
 
       g_object_get (tag, "left-margin-set", &val_set, NULL);
       if (val_set)

@@ -22,7 +22,7 @@
 #include "gtkframeaccessible.h"
 
 
-G_DEFINE_TYPE (GtkFrameAccessible, ctk_frame_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (GtkFrameAccessible, ctk_frame_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
 ctk_frame_accessible_initialize (AtkObject *accessible,
@@ -39,7 +39,7 @@ ctk_frame_accessible_get_name (AtkObject *obj)
   const gchar *name;
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
       return NULL;
 
@@ -47,7 +47,7 @@ ctk_frame_accessible_get_name (AtkObject *obj)
   if (name != NULL)
     return name;
 
-  return ctk_frame_get_label (GTK_FRAME (widget));
+  return ctk_frame_get_label (CTK_FRAME (widget));
 }
 
 static void

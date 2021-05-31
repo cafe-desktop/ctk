@@ -17,10 +17,10 @@
  *
  * Author(s): Carlos Garnacho <carlosg@gnome.org>
  */
-#ifndef __GTK_EVENT_CONTROLLER_H__
-#define __GTK_EVENT_CONTROLLER_H__
+#ifndef __CTK_EVENT_CONTROLLER_H__
+#define __CTK_EVENT_CONTROLLER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@ typedef struct _GtkEventControllerClass GtkEventControllerClass;
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EVENT_CONTROLLER         (ctk_event_controller_get_type ())
-#define GTK_EVENT_CONTROLLER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_EVENT_CONTROLLER, GtkEventController))
-#define GTK_EVENT_CONTROLLER_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_EVENT_CONTROLLER, GtkEventControllerClass))
-#define GTK_IS_EVENT_CONTROLLER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_EVENT_CONTROLLER))
-#define GTK_IS_EVENT_CONTROLLER_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GTK_TYPE_EVENT_CONTROLLER))
-#define GTK_EVENT_CONTROLLER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_EVENT_CONTROLLER, GtkEventControllerClass))
+#define CTK_TYPE_EVENT_CONTROLLER         (ctk_event_controller_get_type ())
+#define CTK_EVENT_CONTROLLER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER, GtkEventController))
+#define CTK_EVENT_CONTROLLER_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER, GtkEventControllerClass))
+#define CTK_IS_EVENT_CONTROLLER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_EVENT_CONTROLLER))
+#define CTK_IS_EVENT_CONTROLLER_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_EVENT_CONTROLLER))
+#define CTK_EVENT_CONTROLLER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER, GtkEventControllerClass))
 
 
 GDK_AVAILABLE_IN_3_14
@@ -62,4 +62,4 @@ void                ctk_event_controller_set_propagation_phase (GtkEventControll
 
 G_END_DECLS
 
-#endif /* __GTK_EVENT_CONTROLLER_H__ */
+#endif /* __CTK_EVENT_CONTROLLER_H__ */

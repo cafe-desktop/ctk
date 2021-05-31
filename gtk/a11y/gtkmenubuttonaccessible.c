@@ -22,7 +22,7 @@
 #include "gtkmenubuttonaccessible.h"
 
 
-G_DEFINE_TYPE (GtkMenuButtonAccessible, ctk_menu_button_accessible, GTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE)
+G_DEFINE_TYPE (GtkMenuButtonAccessible, ctk_menu_button_accessible, CTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE)
 
 static void
 ctk_menu_button_accessible_initialize (AtkObject *accessible,
@@ -38,16 +38,16 @@ ctk_menu_button_accessible_get_n_children (AtkObject* obj)
   GtkWidget *submenu;
   gint count = 0;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return count;
 
-  submenu = GTK_WIDGET (ctk_menu_button_get_popup (GTK_MENU_BUTTON (widget)));
+  submenu = CTK_WIDGET (ctk_menu_button_get_popup (CTK_MENU_BUTTON (widget)));
   if (submenu)
     {
       GList *children;
 
-      children = ctk_container_get_children (GTK_CONTAINER (submenu));
+      children = ctk_container_get_children (CTK_CONTAINER (submenu));
       count = g_list_length (children);
       g_list_free (children);
     }
@@ -62,21 +62,21 @@ ctk_menu_button_accessible_ref_child (AtkObject *obj,
   GtkWidget *widget;
   GtkWidget *submenu;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
-  submenu = GTK_WIDGET (ctk_menu_button_get_popup (GTK_MENU_BUTTON (widget)));
+  submenu = CTK_WIDGET (ctk_menu_button_get_popup (CTK_MENU_BUTTON (widget)));
   if (submenu)
     {
       GList *children;
       GList *tmp_list;
 
-      children = ctk_container_get_children (GTK_CONTAINER (submenu));
+      children = ctk_container_get_children (CTK_CONTAINER (submenu));
       tmp_list = g_list_nth (children, i);
       if (tmp_list)
         {
-          accessible = ctk_widget_get_accessible (GTK_WIDGET (tmp_list->data));
+          accessible = ctk_widget_get_accessible (CTK_WIDGET (tmp_list->data));
           g_object_ref (accessible);
         }
       g_list_free (children);
@@ -91,7 +91,7 @@ ctk_menu_button_accessible_get_name (AtkObject *obj)
   const gchar *name = NULL;
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 

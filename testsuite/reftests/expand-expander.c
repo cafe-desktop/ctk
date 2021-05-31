@@ -35,6 +35,6 @@ G_MODULE_EXPORT void
 expand_expander (GtkWidget *widget)
 {
   reftest_inhibit_snapshot ();
-  ctk_expander_set_expanded (GTK_EXPANDER (widget), TRUE);
+  ctk_expander_set_expanded (CTK_EXPANDER (widget), TRUE);
   g_timeout_add (500, unblock, NULL);
 }

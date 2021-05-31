@@ -7,9 +7,9 @@ EXTRA_DIST += \
 if OS_WIN32
 export_symbols = -export-symbols $(srcdir)/gailutil.def
 gailutil.def: libgailutil-3.la
-	echo "LIBRARY libgailutil-$(GTK_MAJOR_VERSION)-$(GAIL_LT_CURRENT_MINUS_AGE)" >$@
+	echo "LIBRARY libgailutil-$(CTK_MAJOR_VERSION)-$(GAIL_LT_CURRENT_MINUS_AGE)" >$@
 	echo "EXPORTS" >>$@
-	objdump -p .libs/libgailutil-$(GTK_MAJOR_VERSION)-$(GAIL_LT_CURRENT_MINUS_AGE).dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
+	objdump -p .libs/libgailutil-$(CTK_MAJOR_VERSION)-$(GAIL_LT_CURRENT_MINUS_AGE).dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
 install-def-file: gailutil.def
 	$(INSTALL) gailutil.def $(DESTDIR)$(libdir)
 uninstall-def-file:
@@ -60,17 +60,17 @@ libgailutil_3_la_CPPFLAGS = \
 	-I$(top_builddir)/gtk	\
 	$(AM_CPPFLAGS) 		\
 	-DGDK_DISABLE_DEPRECATED\
-	-DGTK_DISABLE_DEPRECATED
+	-DCTK_DISABLE_DEPRECATED
 
 libgailutil_3_la_CFLAGS = \
-	$(GTK_DEP_CFLAGS)	\
-	$(GTK_DEBUG_FLAGS)	\
+	$(CTK_DEP_CFLAGS)	\
+	$(CTK_DEBUG_FLAGS)	\
 	$(AM_CFLAGS)
 
 libgailutil_3_la_LIBADD = \
 	$(top_builddir)/gtk/libgtk-3.la	\
 	$(top_builddir)/gdk/libgdk-3.la	\
-	$(GTK_DEP_LIBS)
+	$(CTK_DEP_LIBS)
 
 libgailutil_3_la_LDFLAGS = \
 	-version-info $(GAIL_LT_VERSION_INFO)	\

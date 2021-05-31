@@ -206,7 +206,7 @@ enabled_cell_func (GtkTreeViewColumn *column,
   enabled = g_action_group_get_action_enabled (group, name);
   g_free (name);
 
-  ctk_cell_renderer_toggle_set_active (GTK_CELL_RENDERER_TOGGLE (cell), enabled);
+  ctk_cell_renderer_toggle_set_active (CTK_CELL_RENDERER_TOGGLE (cell), enabled);
 }
 
 static void
@@ -225,24 +225,24 @@ state_cell_func (GtkTreeViewColumn *column,
   g_free (name);
 
   ctk_cell_renderer_set_visible (cell, FALSE);
-  g_object_set (cell, "mode", GTK_CELL_RENDERER_MODE_INERT, NULL);
+  g_object_set (cell, "mode", CTK_CELL_RENDERER_MODE_INERT, NULL);
 
   if (state == NULL)
     return;
 
   if (g_variant_is_of_type (state, G_VARIANT_TYPE_BOOLEAN) &&
-      GTK_IS_CELL_RENDERER_TOGGLE (cell))
+      CTK_IS_CELL_RENDERER_TOGGLE (cell))
     {
       ctk_cell_renderer_set_visible (cell, TRUE);
-      g_object_set (cell, "mode", GTK_CELL_RENDERER_MODE_ACTIVATABLE, NULL);
-      ctk_cell_renderer_toggle_set_active (GTK_CELL_RENDERER_TOGGLE (cell),
+      g_object_set (cell, "mode", CTK_CELL_RENDERER_MODE_ACTIVATABLE, NULL);
+      ctk_cell_renderer_toggle_set_active (CTK_CELL_RENDERER_TOGGLE (cell),
                                            g_variant_get_boolean (state));
     }
   else if (g_variant_is_of_type (state, G_VARIANT_TYPE_STRING) &&
-           GTK_IS_CELL_RENDERER_COMBO (cell))
+           CTK_IS_CELL_RENDERER_COMBO (cell))
     {
       ctk_cell_renderer_set_visible (cell, TRUE);
-      g_object_set (cell, "mode", GTK_CELL_RENDERER_MODE_EDITABLE, NULL);
+      g_object_set (cell, "mode", CTK_CELL_RENDERER_MODE_EDITABLE, NULL);
       g_object_set (cell, "text", g_variant_get_string (state, NULL), NULL);
     }
 
@@ -369,13 +369,13 @@ create_action_treeview (GActionGroup *group)
   g_signal_connect_swapped (group, "action-state-changed",
                             G_CALLBACK (ctk_widget_queue_draw), tv);
 
-  ctk_tree_view_set_model (GTK_TREE_VIEW (tv), GTK_TREE_MODEL (store));
+  ctk_tree_view_set_model (CTK_TREE_VIEW (tv), CTK_TREE_MODEL (store));
 
   cell = ctk_cell_renderer_text_new ();
   column = ctk_tree_view_column_new_with_attributes ("Action", cell,
                                                      "text", 0,
                                                      NULL);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (tv), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (tv), column);
 
   column = ctk_tree_view_column_new ();
   ctk_tree_view_column_set_title (column, "Enabled");
@@ -383,7 +383,7 @@ create_action_treeview (GActionGroup *group)
   ctk_tree_view_column_pack_start (column, cell, FALSE);
   ctk_tree_view_column_set_cell_data_func (column, cell, enabled_cell_func, group, NULL);
   g_signal_connect (cell, "toggled", G_CALLBACK (enabled_cell_toggled), store);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (tv), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (tv), column);
 
   column = ctk_tree_view_column_new ();
   ctk_tree_view_column_set_title (column, "State");
@@ -410,7 +410,7 @@ create_action_treeview (GActionGroup *group)
   ctk_tree_view_column_pack_start (column, cell, FALSE);
   ctk_tree_view_column_set_cell_data_func (column, cell, state_cell_func, group, NULL);
   g_signal_connect (cell, "edited", G_CALLBACK (state_cell_edited), store);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (tv), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (tv), column);
 
   return tv;
 }
@@ -442,8 +442,8 @@ action_list_add (GtkTreeModel *store,
 {
   GtkTreeIter iter;
 
-  ctk_list_store_append (GTK_LIST_STORE (store), &iter);
-  ctk_list_store_set (GTK_LIST_STORE (store), &iter, 0, action, -1);
+  ctk_list_store_append (CTK_LIST_STORE (store), &iter);
+  ctk_list_store_set (CTK_LIST_STORE (store), &iter, 0, action, -1);
 }
 
 static void
@@ -459,7 +459,7 @@ action_list_remove (GtkTreeModel *store,
     if (g_strcmp0 (action, text) == 0)
       {
         g_free (text);
-        ctk_list_store_remove (GTK_LIST_STORE (store), &iter);
+        ctk_list_store_remove (CTK_LIST_STORE (store), &iter);
         break;
       }
     g_free (text);
@@ -561,10 +561,10 @@ create_add_remove_buttons (GActionGroup *group,
   GtkWidget *box;
   GtkWidget *button;
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
 
   button = ctk_check_button_new_with_label ("Add Italic");
-  ctk_container_add (GTK_CONTAINER (box), button);
+  ctk_container_add (CTK_CONTAINER (box), button);
 
   g_object_set_data  (G_OBJECT (button), "group", group);
   g_object_set_data  (G_OBJECT (button), "model", model);
@@ -573,7 +573,7 @@ create_add_remove_buttons (GActionGroup *group,
                     G_CALLBACK (toggle_italic), treeview);
 
   button = ctk_check_button_new_with_label ("Add Sumerian");
-  ctk_container_add (GTK_CONTAINER (box), button);
+  ctk_container_add (CTK_CONTAINER (box), button);
 
   g_object_set_data  (G_OBJECT (button), "group", group);
   g_object_set_data  (G_OBJECT (button), "model", model);
@@ -582,7 +582,7 @@ create_add_remove_buttons (GActionGroup *group,
                     G_CALLBACK (toggle_sumerian), NULL);
 
   button = ctk_check_button_new_with_label ("Add Speed");
-  ctk_container_add (GTK_CONTAINER (box), button);
+  ctk_container_add (CTK_CONTAINER (box), button);
 
   g_object_set_data  (G_OBJECT (button), "group", group);
   g_object_set_data  (G_OBJECT (button), "model", model);
@@ -634,10 +634,10 @@ main (int argc, char *argv[])
        exit (1);
     }
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "delete-event", G_CALLBACK(on_delete_event), NULL);
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   bus = g_bus_get_sync (G_BUS_TYPE_SESSION, NULL, NULL);
 
@@ -654,9 +654,9 @@ main (int argc, char *argv[])
       model = get_model ();
 
       tv = create_action_treeview (group);
-      ctk_container_add (GTK_CONTAINER (box), tv);
+      ctk_container_add (CTK_CONTAINER (box), tv);
       buttons = create_add_remove_buttons (group, model, tv);
-      ctk_container_add (GTK_CONTAINER (box), buttons);
+      ctk_container_add (CTK_CONTAINER (box), buttons);
     }
 
   if (do_export)
@@ -678,11 +678,11 @@ main (int argc, char *argv[])
   else
     {
       button = ctk_menu_button_new ();
-      ctk_button_set_label (GTK_BUTTON (button), "Click here");
-      ctk_menu_button_set_use_popover (GTK_MENU_BUTTON (button), TRUE);
-      ctk_menu_button_set_menu_model (GTK_MENU_BUTTON (button), model);
+      ctk_button_set_label (CTK_BUTTON (button), "Click here");
+      ctk_menu_button_set_use_popover (CTK_MENU_BUTTON (button), TRUE);
+      ctk_menu_button_set_menu_model (CTK_MENU_BUTTON (button), model);
       ctk_widget_insert_action_group (button, "actions", group);
-      ctk_container_add (GTK_CONTAINER (box), button);
+      ctk_container_add (CTK_CONTAINER (box), button);
     }
 
   ctk_widget_show_all (window);

@@ -35,13 +35,13 @@ struct _GtkInspectorDataListPrivate
   gboolean show_data;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorDataList, ctk_inspector_data_list, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorDataList, ctk_inspector_data_list, CTK_TYPE_BOX)
 
 static void
 ctk_inspector_data_list_init (GtkInspectorDataList *sl)
 {
   sl->priv = ctk_inspector_data_list_get_instance_private (sl);
-  ctk_widget_init_template (GTK_WIDGET (sl));
+  ctk_widget_init_template (CTK_WIDGET (sl));
 }
 
 static void
@@ -120,18 +120,18 @@ ctk_inspector_data_list_set_object (GtkInspectorDataList *sl,
   sl->priv->object = NULL;
   sl->priv->show_data = FALSE;
 
-  if (!GTK_IS_TREE_MODEL (object))
+  if (!CTK_IS_TREE_MODEL (object))
     {
-      ctk_widget_hide (GTK_WIDGET (sl));
+      ctk_widget_hide (CTK_WIDGET (sl));
       return;
     }
 
   title = (const gchar *)g_object_get_data (object, "gtk-inspector-object-title");
-  ctk_label_set_label (GTK_LABEL (sl->priv->object_title), title);
+  ctk_label_set_label (CTK_LABEL (sl->priv->object_title), title);
 
-  ctk_widget_show (GTK_WIDGET (sl));
+  ctk_widget_show (CTK_WIDGET (sl));
 
-  sl->priv->object = GTK_TREE_MODEL (object);
+  sl->priv->object = CTK_TREE_MODEL (object);
   add_columns (sl);
   show_types (sl);
 }
@@ -152,7 +152,7 @@ toggle_show (GtkToggleButton      *button,
 static void
 ctk_inspector_data_list_class_init (GtkInspectorDataListClass *klass)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/data-list.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorDataList, view);

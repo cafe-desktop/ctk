@@ -17,19 +17,19 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_BUILTIN_ICON_PRIVATE_H__
-#define __GTK_BUILTIN_ICON_PRIVATE_H__
+#ifndef __CTK_BUILTIN_ICON_PRIVATE_H__
+#define __CTK_BUILTIN_ICON_PRIVATE_H__
 
 #include "gtk/gtkcssgadgetprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_BUILTIN_ICON           (ctk_builtin_icon_get_type ())
-#define GTK_BUILTIN_ICON(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_BUILTIN_ICON, GtkBuiltinIcon))
-#define GTK_BUILTIN_ICON_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_BUILTIN_ICON, GtkBuiltinIconClass))
-#define GTK_IS_BUILTIN_ICON(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_BUILTIN_ICON))
-#define GTK_IS_BUILTIN_ICON_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_BUILTIN_ICON))
-#define GTK_BUILTIN_ICON_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_BUILTIN_ICON, GtkBuiltinIconClass))
+#define CTK_TYPE_BUILTIN_ICON           (ctk_builtin_icon_get_type ())
+#define CTK_BUILTIN_ICON(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_BUILTIN_ICON, GtkBuiltinIcon))
+#define CTK_BUILTIN_ICON_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_BUILTIN_ICON, GtkBuiltinIconClass))
+#define CTK_IS_BUILTIN_ICON(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_BUILTIN_ICON))
+#define CTK_IS_BUILTIN_ICON_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_BUILTIN_ICON))
+#define CTK_BUILTIN_ICON_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BUILTIN_ICON, GtkBuiltinIconClass))
 
 typedef struct _GtkBuiltinIcon           GtkBuiltinIcon;
 typedef struct _GtkBuiltinIconClass      GtkBuiltinIconClass;
@@ -65,4 +65,4 @@ const char *            ctk_builtin_icon_get_default_size_property (GtkBuiltinIc
 
 G_END_DECLS
 
-#endif /* __GTK_BUILTIN_ICON_PRIVATE_H__ */
+#endif /* __CTK_BUILTIN_ICON_PRIVATE_H__ */

@@ -83,21 +83,21 @@ test_path (void)
   path = ctk_widget_path_new ();
   g_assert_cmpint (ctk_widget_path_length (path), ==, 0);
 
-  pos = ctk_widget_path_append_type (path, GTK_TYPE_WINDOW);
+  pos = ctk_widget_path_append_type (path, CTK_TYPE_WINDOW);
   g_assert_cmpint (pos, ==, 0);
   g_assert_cmpint (ctk_widget_path_length (path), ==, 1);
-  g_assert (ctk_widget_path_iter_get_object_type (path, 0) == GTK_TYPE_WINDOW);
-  g_assert (ctk_widget_path_is_type (path, GTK_TYPE_WIDGET));
+  g_assert (ctk_widget_path_iter_get_object_type (path, 0) == CTK_TYPE_WINDOW);
+  g_assert (ctk_widget_path_is_type (path, CTK_TYPE_WIDGET));
   g_assert (ctk_widget_path_iter_get_name (path, 0) == NULL);
 
-  pos = ctk_widget_path_append_type (path, GTK_TYPE_WIDGET);
+  pos = ctk_widget_path_append_type (path, CTK_TYPE_WIDGET);
   g_assert_cmpint (pos, ==, 1);
   g_assert_cmpint (ctk_widget_path_length (path), ==, 2);
-  ctk_widget_path_iter_set_object_type (path, pos, GTK_TYPE_BUTTON);
-  g_assert (ctk_widget_path_is_type (path, GTK_TYPE_BUTTON));
-  g_assert (ctk_widget_path_has_parent (path, GTK_TYPE_WIDGET));
-  g_assert (ctk_widget_path_has_parent (path, GTK_TYPE_WINDOW));
-  g_assert (!ctk_widget_path_has_parent (path, GTK_TYPE_DIALOG));
+  ctk_widget_path_iter_set_object_type (path, pos, CTK_TYPE_BUTTON);
+  g_assert (ctk_widget_path_is_type (path, CTK_TYPE_BUTTON));
+  g_assert (ctk_widget_path_has_parent (path, CTK_TYPE_WIDGET));
+  g_assert (ctk_widget_path_has_parent (path, CTK_TYPE_WINDOW));
+  g_assert (!ctk_widget_path_has_parent (path, CTK_TYPE_DIALOG));
   g_assert (ctk_widget_path_iter_get_name (path, 1) == NULL);
 
   ctk_widget_path_iter_set_name (path, 1, "name");
@@ -123,19 +123,19 @@ test_path (void)
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_path_iter_add_region (path, 1, "tab", 0);
-  ctk_widget_path_iter_add_region (path, 1, "title", GTK_REGION_EVEN | GTK_REGION_FIRST);
+  ctk_widget_path_iter_add_region (path, 1, "title", CTK_REGION_EVEN | CTK_REGION_FIRST);
 
   g_assert (ctk_widget_path_iter_has_region (path, 1, "tab", &flags) &&
             flags == 0);
   g_assert (ctk_widget_path_iter_has_region (path, 1, "title", &flags) &&
-            flags == (GTK_REGION_EVEN | GTK_REGION_FIRST));
+            flags == (CTK_REGION_EVEN | CTK_REGION_FIRST));
   g_assert (!ctk_widget_path_iter_has_region (path, 1, "extension", NULL));
 
   path2 = ctk_widget_path_copy (path);
   g_assert (ctk_widget_path_iter_has_region (path2, 1, "tab", &flags) &&
             flags == 0);
   g_assert (ctk_widget_path_iter_has_region (path2, 1, "title", &flags) &&
-            flags == (GTK_REGION_EVEN | GTK_REGION_FIRST));
+            flags == (CTK_REGION_EVEN | CTK_REGION_FIRST));
   g_assert (!ctk_widget_path_iter_has_region (path2, 1, "extension", NULL));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -163,20 +163,20 @@ test_match (void)
   context = ctk_style_context_new ();
 
   path = ctk_widget_path_new ();
-  ctk_widget_path_append_type (path, GTK_TYPE_WINDOW);
-  ctk_widget_path_append_type (path, GTK_TYPE_BOX);
-  ctk_widget_path_append_type (path, GTK_TYPE_BUTTON);
+  ctk_widget_path_append_type (path, CTK_TYPE_WINDOW);
+  ctk_widget_path_append_type (path, CTK_TYPE_BOX);
+  ctk_widget_path_append_type (path, CTK_TYPE_BUTTON);
   ctk_widget_path_iter_set_object_name (path, 0, "window");
   ctk_widget_path_iter_set_name (path, 0, "mywindow");
   ctk_widget_path_iter_set_object_name (path, 2, "button");
   ctk_widget_path_iter_add_class (path, 2, "button");
-  ctk_widget_path_iter_set_state (path, 0, GTK_STATE_FLAG_ACTIVE);
+  ctk_widget_path_iter_set_state (path, 0, CTK_STATE_FLAG_ACTIVE);
   ctk_style_context_set_path (context, path);
   ctk_widget_path_free (path);
 
   ctk_style_context_add_provider (context,
-                                  GTK_STYLE_PROVIDER (provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER);
+                                  CTK_STYLE_PROVIDER (provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER);
 
   data = "* { color: #fff }";
   ctk_css_provider_load_from_data (provider, data, -1, &error);
@@ -303,7 +303,7 @@ test_invalidate_saved (void)
   GtkWidget *window;
   GtkStyleContext *context;
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   context = ctk_widget_get_style_context (window);
   ctk_style_context_save (context);
@@ -388,7 +388,7 @@ test_style_priorities_setup (PrioritiesFixture *f,
   ctk_css_provider_load_from_data (f->green_provider, "* { color: green; }", -1, &error);
   g_assert_no_error (error);
 
-  ctk_widget_path_append_type (path, GTK_TYPE_WINDOW);
+  ctk_widget_path_append_type (path, CTK_TYPE_WINDOW);
   ctk_style_context_set_path (f->context, path);
 
   ctk_widget_path_free (path);
@@ -411,10 +411,10 @@ test_style_priorities_equal (PrioritiesFixture *f,
   GdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (f->blue_provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_USER);
-  ctk_style_context_add_provider (f->context, GTK_STYLE_PROVIDER (f->red_provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER);
+                                             CTK_STYLE_PROVIDER (f->blue_provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_USER);
+  ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER);
 
   /* When style providers are added to the screen as well as the style context
   the one specific to the style context should take priority */
@@ -432,8 +432,8 @@ test_style_priorities_screen_only (PrioritiesFixture *f,
   GdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (f->blue_provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_USER);
+                                             CTK_STYLE_PROVIDER (f->blue_provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_USER);
 
   gdk_rgba_parse (&ref_color, "blue");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
@@ -448,8 +448,8 @@ test_style_priorities_context_only (PrioritiesFixture *f,
 {
   GdkRGBA color, ref_color;
 
-  ctk_style_context_add_provider (f->context, GTK_STYLE_PROVIDER (f->red_provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER);
+  ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER);
 
   gdk_rgba_parse (&ref_color, "red");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
@@ -465,10 +465,10 @@ test_style_priorities_screen_higher (PrioritiesFixture *f,
   GdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (f->blue_provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_USER + 1);
-  ctk_style_context_add_provider (f->context, GTK_STYLE_PROVIDER (f->red_provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER);
+                                             CTK_STYLE_PROVIDER (f->blue_provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
+  ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER);
 
   gdk_rgba_parse (&ref_color, "blue");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
@@ -484,10 +484,10 @@ test_style_priorities_context_higher (PrioritiesFixture *f,
   GdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (f->blue_provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_USER);
-  ctk_style_context_add_provider (f->context, GTK_STYLE_PROVIDER (f->red_provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER + 1);
+                                             CTK_STYLE_PROVIDER (f->blue_provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_USER);
+  ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
 
   gdk_rgba_parse (&ref_color, "red");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
@@ -503,11 +503,11 @@ test_style_priorities_two_screen (PrioritiesFixture *f,
   GdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (f->blue_provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_USER);
+                                             CTK_STYLE_PROVIDER (f->blue_provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_USER);
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (f->red_provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_USER + 1);
+                                             CTK_STYLE_PROVIDER (f->red_provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
 
   gdk_rgba_parse (&ref_color, "red");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
@@ -522,10 +522,10 @@ test_style_priorities_two_context (PrioritiesFixture *f,
 {
   GdkRGBA color, ref_color;
 
-  ctk_style_context_add_provider (f->context, GTK_STYLE_PROVIDER (f->blue_provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER);
-  ctk_style_context_add_provider (f->context, GTK_STYLE_PROVIDER (f->red_provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER + 1);
+  ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->blue_provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER);
+  ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
 
   gdk_rgba_parse (&ref_color, "red");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
@@ -541,13 +541,13 @@ test_style_priorities_three_screen_higher (PrioritiesFixture *f,
   GdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (f->blue_provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_USER);
+                                             CTK_STYLE_PROVIDER (f->blue_provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_USER);
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (f->green_provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_USER + 1);
-  ctk_style_context_add_provider (f->context, GTK_STYLE_PROVIDER (f->red_provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER);
+                                             CTK_STYLE_PROVIDER (f->green_provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
+  ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER);
 
   gdk_rgba_parse (&ref_color, "green");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
@@ -563,12 +563,12 @@ test_style_priorities_three_context_higher (PrioritiesFixture *f,
   GdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
-                                             GTK_STYLE_PROVIDER (f->blue_provider),
-                                             GTK_STYLE_PROVIDER_PRIORITY_USER);
-  ctk_style_context_add_provider (f->context, GTK_STYLE_PROVIDER (f->red_provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER);
-  ctk_style_context_add_provider (f->context, GTK_STYLE_PROVIDER (f->green_provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_USER + 1);
+                                             CTK_STYLE_PROVIDER (f->blue_provider),
+                                             CTK_STYLE_PROVIDER_PRIORITY_USER);
+  ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER);
+  ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->green_provider),
+                                  CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
 
   gdk_rgba_parse (&ref_color, "green");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),

@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CHECK_MENU_ITEM_PRIVATE_H__
-#define __GTK_CHECK_MENU_ITEM_PRIVATE_H__
+#ifndef __CTK_CHECK_MENU_ITEM_PRIVATE_H__
+#define __CTK_CHECK_MENU_ITEM_PRIVATE_H__
 
 #include <gtk/gtkcheckmenuitem.h>
 #include <gtk/gtkcssgadgetprivate.h>
@@ -29,4 +29,4 @@ GtkCssGadget * _ctk_check_menu_item_get_indicator_gadget (GtkCheckMenuItem *chec
 
 G_END_DECLS
 
-#endif /* __GTK_CHECK_MENU_ITEM_PRIVATE_H__ */
+#endif /* __CTK_CHECK_MENU_ITEM_PRIVATE_H__ */

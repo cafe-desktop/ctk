@@ -49,7 +49,7 @@
  * modes and pad devices to an "invert-selection" action:
  * |[
  *   GtkPadActionEntry *pad_actions[] = {
- *     { GTK_PAD_ACTION_BUTTON, 1, -1, "Invert selection", "pad-actions.invert-selection" },
+ *     { CTK_PAD_ACTION_BUTTON, 1, -1, "Invert selection", "pad-actions.invert-selection" },
  *     …
  *   };
  *
@@ -100,7 +100,7 @@ enum {
 
 static GParamSpec *pspecs[N_PROPS] = { NULL };
 
-G_DEFINE_TYPE (GtkPadController, ctk_pad_controller, GTK_TYPE_EVENT_CONTROLLER)
+G_DEFINE_TYPE (GtkPadController, ctk_pad_controller, CTK_TYPE_EVENT_CONTROLLER)
 
 static GtkPadActionEntry *
 ctk_pad_action_entry_copy (const GtkPadActionEntry *entry)
@@ -180,7 +180,7 @@ ctk_pad_controller_handle_mode_switch (GtkPadController *controller,
       const GtkPadActionEntry *entry;
       gint elem, idx, n_features;
 
-      for (elem = GTK_PAD_ACTION_BUTTON; elem <= GTK_PAD_ACTION_STRIP; elem++)
+      for (elem = CTK_PAD_ACTION_BUTTON; elem <= CTK_PAD_ACTION_STRIP; elem++)
         {
           n_features = gdk_device_pad_get_n_features (GDK_DEVICE_PAD (pad),
                                                       elem);
@@ -210,7 +210,7 @@ static gboolean
 ctk_pad_controller_filter_event (GtkEventController *controller,
                                  const GdkEvent     *event)
 {
-  GtkPadController *pad_controller = GTK_PAD_CONTROLLER (controller);
+  GtkPadController *pad_controller = CTK_PAD_CONTROLLER (controller);
 
   if (event->type != GDK_PAD_BUTTON_PRESS &&
       event->type != GDK_PAD_BUTTON_RELEASE &&
@@ -230,7 +230,7 @@ static gboolean
 ctk_pad_controller_handle_event (GtkEventController *controller,
                                  const GdkEvent     *event)
 {
-  GtkPadController *pad_controller = GTK_PAD_CONTROLLER (controller);
+  GtkPadController *pad_controller = CTK_PAD_CONTROLLER (controller);
   const GtkPadActionEntry *entry;
   GtkPadActionType type;
   gint index, mode;
@@ -247,14 +247,14 @@ ctk_pad_controller_handle_event (GtkEventController *controller,
   switch (event->type)
     {
     case GDK_PAD_BUTTON_PRESS:
-      type = GTK_PAD_ACTION_BUTTON;
+      type = CTK_PAD_ACTION_BUTTON;
       index = event->pad_button.button;
       mode = event->pad_button.mode;
       break;
     case GDK_PAD_RING:
     case GDK_PAD_STRIP:
       type = event->type == GDK_PAD_RING ?
-        GTK_PAD_ACTION_RING : GTK_PAD_ACTION_STRIP;
+        CTK_PAD_ACTION_RING : CTK_PAD_ACTION_STRIP;
       index = event->pad_axis.index;
       mode = event->pad_axis.mode;
       break;
@@ -297,7 +297,7 @@ ctk_pad_controller_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  GtkPadController *controller = GTK_PAD_CONTROLLER (object);
+  GtkPadController *controller = CTK_PAD_CONTROLLER (object);
 
   switch (prop_id)
     {
@@ -318,7 +318,7 @@ ctk_pad_controller_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  GtkPadController *controller = GTK_PAD_CONTROLLER (object);
+  GtkPadController *controller = CTK_PAD_CONTROLLER (object);
 
   switch (prop_id)
     {
@@ -336,7 +336,7 @@ ctk_pad_controller_get_property (GObject    *object,
 static void
 ctk_pad_controller_dispose (GObject *object)
 {
-  GtkPadController *controller = GTK_PAD_CONTROLLER (object);
+  GtkPadController *controller = CTK_PAD_CONTROLLER (object);
 
   g_clear_object (&controller->action_group);
   g_clear_object (&controller->pad);
@@ -347,7 +347,7 @@ ctk_pad_controller_dispose (GObject *object)
 static void
 ctk_pad_controller_finalize (GObject *object)
 {
-  GtkPadController *controller = GTK_PAD_CONTROLLER (object);
+  GtkPadController *controller = CTK_PAD_CONTROLLER (object);
 
   g_list_free_full (controller->entries, (GDestroyNotify) ctk_pad_action_entry_free);
 
@@ -358,7 +358,7 @@ static void
 ctk_pad_controller_class_init (GtkPadControllerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkEventControllerClass *controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
+  GtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
 
   controller_class->filter_event = ctk_pad_controller_filter_event;
   controller_class->handle_event = ctk_pad_controller_handle_event;
@@ -373,13 +373,13 @@ ctk_pad_controller_class_init (GtkPadControllerClass *klass)
                          P_("Action group"),
                          P_("Action group to launch actions from"),
                          G_TYPE_ACTION_GROUP,
-                         GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
   pspecs[PROP_PAD] =
     g_param_spec_object ("pad",
                          P_("Pad device"),
                          P_("Pad device to control"),
                          GDK_TYPE_DEVICE,
-                         GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, N_PROPS, pspecs);
 }
@@ -414,13 +414,13 @@ ctk_pad_controller_new (GtkWindow    *window,
                         GActionGroup *group,
                         GdkDevice    *pad)
 {
-  g_return_val_if_fail (GTK_IS_WINDOW (window), NULL);
+  g_return_val_if_fail (CTK_IS_WINDOW (window), NULL);
   g_return_val_if_fail (G_IS_ACTION_GROUP (group), NULL);
   g_return_val_if_fail (!pad || GDK_IS_DEVICE (pad), NULL);
   g_return_val_if_fail (!pad || gdk_device_get_source (pad) == GDK_SOURCE_TABLET_PAD, NULL);
 
-  return g_object_new (GTK_TYPE_PAD_CONTROLLER,
-                       "propagation-phase", GTK_PHASE_CAPTURE,
+  return g_object_new (CTK_TYPE_PAD_CONTROLLER,
+                       "propagation-phase", CTK_PHASE_CAPTURE,
                        "widget", window,
                        "action-group", group,
                        "pad", pad,
@@ -474,7 +474,7 @@ ctk_pad_controller_set_action_entries (GtkPadController        *controller,
 {
   gint i;
 
-  g_return_if_fail (GTK_IS_PAD_CONTROLLER (controller));
+  g_return_if_fail (CTK_IS_PAD_CONTROLLER (controller));
   g_return_if_fail (entries != NULL);
 
   for (i = 0; i < n_entries; i++)
@@ -513,8 +513,8 @@ ctk_pad_controller_set_action (GtkPadController *controller,
   GtkPadActionEntry entry = { type, index, mode,
                               (gchar *) label, (gchar *) action_name };
 
-  g_return_if_fail (GTK_IS_PAD_CONTROLLER (controller));
-  g_return_if_fail (type <= GTK_PAD_ACTION_STRIP);
+  g_return_if_fail (CTK_IS_PAD_CONTROLLER (controller));
+  g_return_if_fail (type <= CTK_PAD_ACTION_STRIP);
 
   ctk_pad_controller_add_entry (controller, &entry);
 }

@@ -48,12 +48,12 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * GtkVScale has been deprecated, use #GtkScale instead.
  */
 
-G_DEFINE_TYPE (GtkVScale, ctk_vscale, GTK_TYPE_SCALE)
+G_DEFINE_TYPE (GtkVScale, ctk_vscale, CTK_TYPE_SCALE)
 
 static void
 ctk_vscale_class_init (GtkVScaleClass *class)
 {
-  GtkRangeClass *range_class = GTK_RANGE_CLASS (class);
+  GtkRangeClass *range_class = CTK_RANGE_CLASS (class);
 
   range_class->slider_detail = "vscale";
 }
@@ -61,8 +61,8 @@ ctk_vscale_class_init (GtkVScaleClass *class)
 static void
 ctk_vscale_init (GtkVScale *vscale)
 {
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (vscale),
-                                  GTK_ORIENTATION_VERTICAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (vscale),
+                                  CTK_ORIENTATION_VERTICAL);
 }
 /**
  * ctk_vscale_new:
@@ -72,15 +72,15 @@ ctk_vscale_init (GtkVScale *vscale)
  *
  * Returns: a new #GtkVScale.
  *
- * Deprecated: 3.2: Use ctk_scale_new() with %GTK_ORIENTATION_VERTICAL instead
+ * Deprecated: 3.2: Use ctk_scale_new() with %CTK_ORIENTATION_VERTICAL instead
  */
 GtkWidget *
 ctk_vscale_new (GtkAdjustment *adjustment)
 {
-  g_return_val_if_fail (adjustment == NULL || GTK_IS_ADJUSTMENT (adjustment),
+  g_return_val_if_fail (adjustment == NULL || CTK_IS_ADJUSTMENT (adjustment),
                         NULL);
 
-  return g_object_new (GTK_TYPE_VSCALE,
+  return g_object_new (CTK_TYPE_VSCALE,
                        "adjustment", adjustment,
                        NULL);
 }
@@ -102,7 +102,7 @@ ctk_vscale_new (GtkAdjustment *adjustment)
  *
  * Returns: a new #GtkVScale
  *
- * Deprecated: 3.2: Use ctk_scale_new_with_range() with %GTK_ORIENTATION_VERTICAL instead
+ * Deprecated: 3.2: Use ctk_scale_new_with_range() with %CTK_ORIENTATION_VERTICAL instead
  **/
 GtkWidget *
 ctk_vscale_new_with_range (gdouble min,
@@ -129,10 +129,10 @@ ctk_vscale_new_with_range (gdouble min,
         digits = 5;
     }
 
-  scale = g_object_new (GTK_TYPE_VSCALE,
+  scale = g_object_new (CTK_TYPE_VSCALE,
                         "adjustment", adj,
                         "digits", digits,
                         NULL);
 
-  return GTK_WIDGET (scale);
+  return CTK_WIDGET (scale);
 }

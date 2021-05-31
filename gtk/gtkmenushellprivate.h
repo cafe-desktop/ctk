@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_MENU_SHELL_PRIVATE_H__
-#define __GTK_MENU_SHELL_PRIVATE_H__
+#ifndef __CTK_MENU_SHELL_PRIVATE_H__
+#define __CTK_MENU_SHELL_PRIVATE_H__
 
 
 #include <gtk/gtkmenushell.h>
@@ -29,8 +29,8 @@ G_BEGIN_DECLS
 /* Placement of submenus */
 typedef enum
 {
-  GTK_TOP_BOTTOM,
-  GTK_LEFT_RIGHT
+  CTK_TOP_BOTTOM,
+  CTK_LEFT_RIGHT
 } GtkSubmenuPlacement;
 
 struct _GtkMenuShellPrivate
@@ -94,4 +94,4 @@ gboolean   _ctk_menu_shell_get_keyboard_mode (GtkMenuShell *menu_shell);
 
 G_END_DECLS
 
-#endif  /* __GTK_MENU_SHELL_PRIVATE_H__ */
+#endif  /* __CTK_MENU_SHELL_PRIVATE_H__ */

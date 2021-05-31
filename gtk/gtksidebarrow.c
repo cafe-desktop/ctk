@@ -61,7 +61,7 @@ struct _GtkSidebarRow
   GtkWidget *busy_spinner;
 };
 
-G_DEFINE_TYPE (GtkSidebarRow, ctk_sidebar_row, GTK_TYPE_LIST_BOX_ROW)
+G_DEFINE_TYPE (GtkSidebarRow, ctk_sidebar_row, CTK_TYPE_LIST_BOX_ROW)
 
 enum
 {
@@ -137,7 +137,7 @@ ctk_sidebar_row_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GtkSidebarRow *self = GTK_SIDEBAR_ROW (object);
+  GtkSidebarRow *self = CTK_SIDEBAR_ROW (object);
 
   switch (prop_id)
     {
@@ -212,7 +212,7 @@ ctk_sidebar_row_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GtkSidebarRow *self = GTK_SIDEBAR_ROW (object);
+  GtkSidebarRow *self = CTK_SIDEBAR_ROW (object);
   GtkStyleContext *context;
 
   switch (prop_id)
@@ -228,13 +228,13 @@ ctk_sidebar_row_set_property (GObject      *object,
         if (object != NULL)
           {
             self->start_icon = G_ICON (g_object_ref (object));
-            ctk_image_set_from_gicon (GTK_IMAGE (self->start_icon_widget),
+            ctk_image_set_from_gicon (CTK_IMAGE (self->start_icon_widget),
                                       self->start_icon,
-                                      GTK_ICON_SIZE_MENU);
+                                      CTK_ICON_SIZE_MENU);
           }
         else
           {
-            ctk_image_clear (GTK_IMAGE (self->start_icon_widget));
+            ctk_image_clear (CTK_IMAGE (self->start_icon_widget));
           }
         break;
       }
@@ -246,14 +246,14 @@ ctk_sidebar_row_set_property (GObject      *object,
         if (object != NULL)
           {
             self->end_icon = G_ICON (g_object_ref (object));
-            ctk_image_set_from_gicon (GTK_IMAGE (self->end_icon_widget),
+            ctk_image_set_from_gicon (CTK_IMAGE (self->end_icon_widget),
                                       self->end_icon,
-                                      GTK_ICON_SIZE_MENU);
+                                      CTK_ICON_SIZE_MENU);
             ctk_widget_show (self->end_icon_widget);
           }
         else
           {
-            ctk_image_clear (GTK_IMAGE (self->end_icon_widget));
+            ctk_image_clear (CTK_IMAGE (self->end_icon_widget));
             ctk_widget_hide (self->end_icon_widget);
           }
         break;
@@ -262,13 +262,13 @@ ctk_sidebar_row_set_property (GObject      *object,
     case PROP_LABEL:
       g_free (self->label);
       self->label = g_strdup (g_value_get_string (value));
-      ctk_label_set_text (GTK_LABEL (self->label_widget), self->label);
+      ctk_label_set_text (CTK_LABEL (self->label_widget), self->label);
       break;
 
     case PROP_TOOLTIP:
       g_free (self->tooltip);
       self->tooltip = g_strdup (g_value_get_string (value));
-      ctk_widget_set_tooltip_text (GTK_WIDGET (self), self->tooltip);
+      ctk_widget_set_tooltip_text (CTK_WIDGET (self), self->tooltip);
       break;
 
     case PROP_EJECTABLE:
@@ -287,9 +287,9 @@ ctk_sidebar_row_set_property (GObject      *object,
       self->section_type = g_value_get_int (value);
       if (self->section_type == SECTION_COMPUTER ||
           self->section_type == SECTION_OTHER_LOCATIONS)
-        ctk_label_set_ellipsize (GTK_LABEL (self->label_widget), PANGO_ELLIPSIZE_NONE);
+        ctk_label_set_ellipsize (CTK_LABEL (self->label_widget), PANGO_ELLIPSIZE_NONE);
       else
-        ctk_label_set_ellipsize (GTK_LABEL (self->label_widget), PANGO_ELLIPSIZE_END);
+        ctk_label_set_ellipsize (CTK_LABEL (self->label_widget), PANGO_ELLIPSIZE_END);
       break;
 
     case PROP_PLACE_TYPE:
@@ -343,7 +343,7 @@ ctk_sidebar_row_set_property (GObject      *object,
             self->label = NULL;
             g_free (self->tooltip);
             self->tooltip = NULL;
-            ctk_widget_set_tooltip_text (GTK_WIDGET (self), NULL);
+            ctk_widget_set_tooltip_text (CTK_WIDGET (self), NULL);
             self->ejectable = FALSE;
             self->section_type = SECTION_BOOKMARKS;
             self->place_type = PLACES_BOOKMARK_PLACEHOLDER;
@@ -354,11 +354,11 @@ ctk_sidebar_row_set_property (GObject      *object,
             g_clear_object (&self->mount);
             g_clear_object (&self->cloud_provider_account);
 
-            ctk_container_foreach (GTK_CONTAINER (self),
+            ctk_container_foreach (CTK_CONTAINER (self),
                                    (GtkCallback) ctk_widget_destroy,
                                    NULL);
 
-            context = ctk_widget_get_style_context (GTK_WIDGET (self));
+            context = ctk_widget_get_style_context (CTK_WIDGET (self));
             ctk_style_context_add_class (context, "sidebar-placeholder-row");
           }
 
@@ -378,15 +378,15 @@ on_child_revealed (GObject    *self,
  /* We need to hide the actual widget because if not the GtkListBoxRow will
   * still allocate the paddings, even if the revealer is not revealed, and
   * therefore the row will be still somewhat visible. */
-  if (!ctk_revealer_get_reveal_child (GTK_REVEALER (self)))
-    ctk_widget_hide (GTK_WIDGET (GTK_SIDEBAR_ROW (user_data)));
+  if (!ctk_revealer_get_reveal_child (CTK_REVEALER (self)))
+    ctk_widget_hide (CTK_WIDGET (CTK_SIDEBAR_ROW (user_data)));
 }
 
 void
 ctk_sidebar_row_reveal (GtkSidebarRow *self)
 {
-  ctk_widget_show_all (GTK_WIDGET (self));
-  ctk_revealer_set_reveal_child (GTK_REVEALER (self->revealer), TRUE);
+  ctk_widget_show_all (CTK_WIDGET (self));
+  ctk_revealer_set_reveal_child (CTK_REVEALER (self->revealer), TRUE);
 }
 
 void
@@ -395,29 +395,29 @@ ctk_sidebar_row_hide (GtkSidebarRow *self,
 {
   guint transition_duration;
 
-  transition_duration = ctk_revealer_get_transition_duration (GTK_REVEALER (self->revealer));
+  transition_duration = ctk_revealer_get_transition_duration (CTK_REVEALER (self->revealer));
   if (inmediate)
-      ctk_revealer_set_transition_duration (GTK_REVEALER (self->revealer), 0);
+      ctk_revealer_set_transition_duration (CTK_REVEALER (self->revealer), 0);
 
-  ctk_revealer_set_reveal_child (GTK_REVEALER (self->revealer), FALSE);
+  ctk_revealer_set_reveal_child (CTK_REVEALER (self->revealer), FALSE);
 
-  ctk_revealer_set_transition_duration (GTK_REVEALER (self->revealer), transition_duration);
+  ctk_revealer_set_transition_duration (CTK_REVEALER (self->revealer), transition_duration);
 }
 
 void
 ctk_sidebar_row_set_start_icon (GtkSidebarRow *self,
                                 GIcon         *icon)
 {
-  g_return_if_fail (GTK_IS_SIDEBAR_ROW (self));
+  g_return_if_fail (CTK_IS_SIDEBAR_ROW (self));
 
   if (self->start_icon != icon)
     {
       g_set_object (&self->start_icon, icon);
       if (self->start_icon != NULL)
-        ctk_image_set_from_gicon (GTK_IMAGE (self->start_icon_widget), self->start_icon,
-                                  GTK_ICON_SIZE_MENU);
+        ctk_image_set_from_gicon (CTK_IMAGE (self->start_icon_widget), self->start_icon,
+                                  CTK_ICON_SIZE_MENU);
       else
-        ctk_image_clear (GTK_IMAGE (self->start_icon_widget));
+        ctk_image_clear (CTK_IMAGE (self->start_icon_widget));
 
       g_object_notify_by_pspec (G_OBJECT (self), properties [PROP_START_ICON]);
     }
@@ -427,17 +427,17 @@ void
 ctk_sidebar_row_set_end_icon (GtkSidebarRow *self,
                               GIcon         *icon)
 {
-  g_return_if_fail (GTK_IS_SIDEBAR_ROW (self));
+  g_return_if_fail (CTK_IS_SIDEBAR_ROW (self));
 
   if (self->end_icon != icon)
     {
       g_set_object (&self->end_icon, icon);
       if (self->end_icon != NULL)
-        ctk_image_set_from_gicon (GTK_IMAGE (self->end_icon_widget), self->end_icon,
-                                  GTK_ICON_SIZE_MENU);
+        ctk_image_set_from_gicon (CTK_IMAGE (self->end_icon_widget), self->end_icon,
+                                  CTK_ICON_SIZE_MENU);
       else
         if (self->end_icon_widget != NULL)
-          ctk_image_clear (GTK_IMAGE (self->end_icon_widget));
+          ctk_image_clear (CTK_IMAGE (self->end_icon_widget));
 
       g_object_notify_by_pspec (G_OBJECT (self), properties [PROP_END_ICON]);
     }
@@ -446,7 +446,7 @@ ctk_sidebar_row_set_end_icon (GtkSidebarRow *self,
 static void
 ctk_sidebar_row_finalize (GObject *object)
 {
-  GtkSidebarRow *self = GTK_SIDEBAR_ROW (object);
+  GtkSidebarRow *self = CTK_SIDEBAR_ROW (object);
 
   g_clear_object (&self->start_icon);
   g_clear_object (&self->end_icon);
@@ -471,14 +471,14 @@ ctk_sidebar_row_finalize (GObject *object)
 static void
 ctk_sidebar_row_init (GtkSidebarRow *self)
 {
-  ctk_widget_init_template (GTK_WIDGET (self));
+  ctk_widget_init_template (CTK_WIDGET (self));
 }
 
 static void
 ctk_sidebar_row_class_init (GtkSidebarRowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->get_property = ctk_sidebar_row_get_property;
   object_class->set_property = ctk_sidebar_row_set_property;
@@ -488,7 +488,7 @@ ctk_sidebar_row_class_init (GtkSidebarRowClass *klass)
     g_param_spec_object ("sidebar",
                          "Sidebar",
                          "Sidebar",
-                         GTK_TYPE_PLACES_SIDEBAR,
+                         CTK_TYPE_PLACES_SIDEBAR,
                          (G_PARAM_READWRITE |
                           G_PARAM_CONSTRUCT_ONLY |
                           G_PARAM_STATIC_STRINGS));
@@ -632,7 +632,7 @@ ctk_sidebar_row_class_init (GtkSidebarRowClass *klass)
 GtkSidebarRow*
 ctk_sidebar_row_clone (GtkSidebarRow *self)
 {
- return g_object_new (GTK_TYPE_SIDEBAR_ROW,
+ return g_object_new (CTK_TYPE_SIDEBAR_ROW,
                       "sidebar", self->sidebar,
                       "start-icon", self->start_icon,
                       "end-icon", self->end_icon,
@@ -666,7 +666,7 @@ void
 ctk_sidebar_row_set_busy (GtkSidebarRow *row,
                           gboolean       is_busy)
 {
-  g_return_if_fail (GTK_IS_SIDEBAR_ROW (row));
+  g_return_if_fail (CTK_IS_SIDEBAR_ROW (row));
 
   ctk_widget_set_visible (row->busy_spinner, is_busy);
 }

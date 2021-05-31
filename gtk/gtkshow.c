@@ -144,7 +144,7 @@ ctk_show_uri_on_window (GtkWindow   *parent,
   g_return_val_if_fail (uri != NULL, FALSE);
 
   if (parent)
-    display = ctk_widget_get_display (GTK_WIDGET (parent));
+    display = ctk_widget_get_display (CTK_WIDGET (parent));
   else
     display = gdk_display_get_default ();
 

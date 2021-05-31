@@ -399,10 +399,10 @@ msgstr "གལ་ཅན་ཨིན།"
 #: gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "བྱ་བ་དེ་གལ་ཅན་ཨིན་ན། ངེས་བདེན་སྐབས་ བྱ་བ་འདི་གི་དོན་ལུ་ ལག་ཆས་རྣམ་གྲངས་ཀྱི་ པོརོག་སི་ཚུ་ "
-"GTK_TOOLBAR_BOTH_HORIZ ཐབས་ལམ་གྱི་ ཚིག་ཡིག་ནང་སྟོནམ་ཨིན།"
+"CTK_TOOLBAR_BOTH_HORIZ ཐབས་ལམ་གྱི་ ཚིག་ཡིག་ནང་སྟོནམ་ཨིན།"
 
 #: gtk/gtkaction.c:374
 msgid "Hide if empty"
@@ -944,7 +944,7 @@ msgstr "སྔོན་སྒྲིག་བར་སྟོང་བཞག་ཐ
 
 #: gtk/gtkbutton.c:461
 #, fuzzy
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "CAN_DEFAULT ཨེབ་རྟའི་དོན་ལུ་ བར་སྟོང་ཐེབས་ ཁ་སྐོང་བརྐྱབ་དགོཔ།"
 
 #: gtk/gtkbutton.c:475
@@ -954,7 +954,7 @@ msgstr "སྔོན་སྒྲིག་ཕྱི་ཁའི་བར་སྟ
 #: gtk/gtkbutton.c:476
 #, fuzzy
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
 "ཨ་རྟག་ར་ མཐའ་མཚམས་ཀྱི་ཕྱི་ཁར་འབྲི་མི་ CAN_DEFAULT ཨེབ་རྟའི་དོན་ལུ་ བར་སྟོང་ཐེབས་ ཁ་སྐོང་བརྐྱབ་"
@@ -6325,10 +6325,10 @@ msgstr "ངོས་དཔར་དང་ ཝཁ་ཡིག་གི་བར�
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "ལག་ཆས་ཕྲ་རིང་གི་རྣམ་གྲངས་དེ་ གལ་ཅན་སྦེ་བརྩིཝ་ཨིན་ན་མེན། ངེས་བདེན་གྱི་སྐབས་ ལག་ཆས་ཕྲ་རིང་གི་ ཨེབ་རྟ་"
-"ཚུ་གིས་ ཚིག་ཡིག་ཚུ་ GTK_TOOLBAR_BOTH_HORIZ ཐབས་ལམ་ནང་སྟོནམ་ཨིན།"
+"ཚུ་གིས་ ཚིག་ཡིག་ཚུ་ CTK_TOOLBAR_BOTH_HORIZ ཐབས་ལམ་ནང་སྟོནམ་ཨིན།"
 
 #: gtk/gtktoolitemgroup.c:1572
 #, fuzzy

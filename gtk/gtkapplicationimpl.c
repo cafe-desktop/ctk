@@ -67,69 +67,69 @@ void
 ctk_application_impl_startup (GtkApplicationImpl *impl,
                               gboolean            register_session)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->startup (impl, register_session);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->startup (impl, register_session);
 }
 
 void
 ctk_application_impl_shutdown (GtkApplicationImpl *impl)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->shutdown (impl);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->shutdown (impl);
 }
 
 void
 ctk_application_impl_before_emit (GtkApplicationImpl *impl,
                                   GVariant           *platform_data)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->before_emit (impl, platform_data);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->before_emit (impl, platform_data);
 }
 
 void
 ctk_application_impl_window_added (GtkApplicationImpl *impl,
                                    GtkWindow          *window)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->window_added (impl, window);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->window_added (impl, window);
 }
 
 void
 ctk_application_impl_window_removed (GtkApplicationImpl *impl,
                                      GtkWindow          *window)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->window_removed (impl, window);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->window_removed (impl, window);
 }
 
 void
 ctk_application_impl_active_window_changed (GtkApplicationImpl *impl,
                                             GtkWindow          *window)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->active_window_changed (impl, window);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->active_window_changed (impl, window);
 }
 
 void
 ctk_application_impl_handle_window_realize (GtkApplicationImpl *impl,
                                             GtkWindow          *window)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->handle_window_realize (impl, window);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->handle_window_realize (impl, window);
 }
 
 void
 ctk_application_impl_handle_window_map (GtkApplicationImpl *impl,
                                         GtkWindow          *window)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->handle_window_map (impl, window);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->handle_window_map (impl, window);
 }
 
 void
 ctk_application_impl_set_app_menu (GtkApplicationImpl *impl,
                                    GMenuModel         *app_menu)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->set_app_menu (impl, app_menu);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->set_app_menu (impl, app_menu);
 }
 
 void
 ctk_application_impl_set_menubar (GtkApplicationImpl *impl,
                                   GMenuModel         *menubar)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->set_menubar (impl, menubar);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->set_menubar (impl, menubar);
 }
 
 guint
@@ -138,27 +138,27 @@ ctk_application_impl_inhibit (GtkApplicationImpl         *impl,
                               GtkApplicationInhibitFlags  flags,
                               const gchar                *reason)
 {
-  return GTK_APPLICATION_IMPL_GET_CLASS (impl)->inhibit (impl, window, flags, reason);
+  return CTK_APPLICATION_IMPL_GET_CLASS (impl)->inhibit (impl, window, flags, reason);
 }
 
 void
 ctk_application_impl_uninhibit (GtkApplicationImpl *impl,
                                 guint               cookie)
 {
-  GTK_APPLICATION_IMPL_GET_CLASS (impl)->uninhibit (impl, cookie);
+  CTK_APPLICATION_IMPL_GET_CLASS (impl)->uninhibit (impl, cookie);
 }
 
 gboolean
 ctk_application_impl_is_inhibited (GtkApplicationImpl         *impl,
                                    GtkApplicationInhibitFlags  flags)
 {
-  return GTK_APPLICATION_IMPL_GET_CLASS (impl)->is_inhibited (impl, flags);
+  return CTK_APPLICATION_IMPL_GET_CLASS (impl)->is_inhibited (impl, flags);
 }
 
 gboolean
 ctk_application_impl_prefers_app_menu (GtkApplicationImpl *impl)
 {
-  return GTK_APPLICATION_IMPL_GET_CLASS (impl)->prefers_app_menu (impl);
+  return CTK_APPLICATION_IMPL_GET_CLASS (impl)->prefers_app_menu (impl);
 }
 
 GtkApplicationImpl *

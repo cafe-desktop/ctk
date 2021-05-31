@@ -17,21 +17,21 @@
  * Authors: Ryan Lortie <desrt@desrt.ca>
  */
 
-#ifndef __GTK_ACTIONABLE_H__
-#define __GTK_ACTIONABLE_H__
+#ifndef __CTK_ACTIONABLE_H__
+#define __CTK_ACTIONABLE_H__
 
 #include <glib-object.h>
 #include <gdk/gdk.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTIONABLE                                 (ctk_actionable_get_type ())
-#define GTK_ACTIONABLE(inst)                                (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
-                                                             GTK_TYPE_ACTIONABLE, GtkActionable))
-#define GTK_IS_ACTIONABLE(inst)                             (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
-                                                             GTK_TYPE_ACTIONABLE))
-#define GTK_ACTIONABLE_GET_IFACE(inst)                      (G_TYPE_INSTANCE_GET_INTERFACE ((inst),                  \
-                                                             GTK_TYPE_ACTIONABLE, GtkActionableInterface))
+#define CTK_TYPE_ACTIONABLE                                 (ctk_actionable_get_type ())
+#define CTK_ACTIONABLE(inst)                                (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
+                                                             CTK_TYPE_ACTIONABLE, GtkActionable))
+#define CTK_IS_ACTIONABLE(inst)                             (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
+                                                             CTK_TYPE_ACTIONABLE))
+#define CTK_ACTIONABLE_GET_IFACE(inst)                      (G_TYPE_INSTANCE_GET_INTERFACE ((inst),                  \
+                                                             CTK_TYPE_ACTIONABLE, GtkActionableInterface))
 
 typedef struct _GtkActionableInterface                      GtkActionableInterface;
 typedef struct _GtkActionable                               GtkActionable;
@@ -77,4 +77,4 @@ void                    ctk_actionable_set_detailed_action_name         (GtkActi
 
 G_END_DECLS
 
-#endif /* __GTK_ACTIONABLE_H__ */
+#endif /* __CTK_ACTIONABLE_H__ */

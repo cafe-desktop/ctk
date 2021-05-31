@@ -26,16 +26,16 @@ static void
 set_value (GtkWidget   *widget,
            gint value)
 {
-  if (GTK_IS_LEVEL_BAR (widget))
-    ctk_level_bar_set_value (GTK_LEVEL_BAR (widget), value);
-  else if (GTK_IS_RANGE (widget))
+  if (CTK_IS_LEVEL_BAR (widget))
+    ctk_level_bar_set_value (CTK_LEVEL_BAR (widget), value);
+  else if (CTK_IS_RANGE (widget))
     {
-      GtkAdjustment *adjustment = ctk_range_get_adjustment (GTK_RANGE (widget));
+      GtkAdjustment *adjustment = ctk_range_get_adjustment (CTK_RANGE (widget));
       ctk_adjustment_set_value (adjustment, value);
     }
-  else if (GTK_IS_SPIN_BUTTON (widget))
+  else if (CTK_IS_SPIN_BUTTON (widget))
     {
-      GtkAdjustment *adjustment = ctk_spin_button_get_adjustment (GTK_SPIN_BUTTON (widget));
+      GtkAdjustment *adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (widget));
       ctk_adjustment_set_value (adjustment, value);
     }
 }

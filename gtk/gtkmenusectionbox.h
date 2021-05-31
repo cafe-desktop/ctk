@@ -17,8 +17,8 @@
  * Author: Ryan Lortie <desrt@desrt.ca>
  */
 
-#ifndef __GTK_MENU_SECTION_BOX_H__
-#define __GTK_MENU_SECTION_BOX_H__
+#ifndef __CTK_MENU_SECTION_BOX_H__
+#define __CTK_MENU_SECTION_BOX_H__
 
 #include <gtk/gtkmenutrackeritem.h>
 #include <gtk/gtkstack.h>
@@ -27,17 +27,17 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MENU_SECTION_BOX                           (ctk_menu_section_box_get_type ())
-#define GTK_MENU_SECTION_BOX(inst)                          (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
-                                                             GTK_TYPE_MENU_SECTION_BOX, GtkMenuSectionBox))
-#define GTK_MENU_SECTION_BOX_CLASS(class)                   (G_TYPE_CHECK_CLASS_CAST ((class),                       \
-                                                             GTK_TYPE_MENU_SECTION_BOX, GtkMenuSectionBoxClass))
-#define GTK_IS_MENU_SECTION_BOX(inst)                       (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
-                                                             GTK_TYPE_MENU_SECTION_BOX))
-#define GTK_IS_MENU_SECTION_BOX_CLASS(class)                (G_TYPE_CHECK_CLASS_TYPE ((class),                       \
-                                                             GTK_TYPE_MENU_SECTION_BOX))
-#define GTK_MENU_SECTION_BOX_GET_CLASS(inst)                (G_TYPE_INSTANCE_GET_CLASS ((inst),                      \
-                                                             GTK_TYPE_MENU_SECTION_BOX, GtkMenuSectionBoxClass))
+#define CTK_TYPE_MENU_SECTION_BOX                           (ctk_menu_section_box_get_type ())
+#define CTK_MENU_SECTION_BOX(inst)                          (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
+                                                             CTK_TYPE_MENU_SECTION_BOX, GtkMenuSectionBox))
+#define CTK_MENU_SECTION_BOX_CLASS(class)                   (G_TYPE_CHECK_CLASS_CAST ((class),                       \
+                                                             CTK_TYPE_MENU_SECTION_BOX, GtkMenuSectionBoxClass))
+#define CTK_IS_MENU_SECTION_BOX(inst)                       (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
+                                                             CTK_TYPE_MENU_SECTION_BOX))
+#define CTK_IS_MENU_SECTION_BOX_CLASS(class)                (G_TYPE_CHECK_CLASS_TYPE ((class),                       \
+                                                             CTK_TYPE_MENU_SECTION_BOX))
+#define CTK_MENU_SECTION_BOX_GET_CLASS(inst)                (G_TYPE_INSTANCE_GET_CLASS ((inst),                      \
+                                                             CTK_TYPE_MENU_SECTION_BOX, GtkMenuSectionBoxClass))
 
 typedef struct _GtkMenuSectionBox                           GtkMenuSectionBox;
 
@@ -49,4 +49,4 @@ void                    ctk_menu_section_box_new_toplevel               (GtkStac
 
 G_END_DECLS
 
-#endif /* __GTK_MENU_SECTION_BOX_H__ */
+#endif /* __CTK_MENU_SECTION_BOX_H__ */

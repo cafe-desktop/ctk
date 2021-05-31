@@ -99,24 +99,24 @@
  * void create_radio_buttons (void) {
  *
  *    GtkWidget *window, *radio1, *radio2, *box, *entry;
- *    window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
- *    box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
- *    ctk_box_set_homogeneous (GTK_BOX (box), TRUE);
+ *    window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+ *    box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 2);
+ *    ctk_box_set_homogeneous (CTK_BOX (box), TRUE);
  *
  *    // Create a radio button with a GtkEntry widget
  *    radio1 = ctk_radio_button_new (NULL);
  *    entry = ctk_entry_new ();
- *    ctk_container_add (GTK_CONTAINER (radio1), entry);
+ *    ctk_container_add (CTK_CONTAINER (radio1), entry);
  *
  *
  *    // Create a radio button with a label
- *    radio2 = ctk_radio_button_new_with_label_from_widget (GTK_RADIO_BUTTON (radio1),
+ *    radio2 = ctk_radio_button_new_with_label_from_widget (CTK_RADIO_BUTTON (radio1),
  *                                                          "I’m the second radio button.");
  *
  *    // Pack them into a box, then show all the widgets
- *    ctk_box_pack_start (GTK_BOX (box), radio1);
- *    ctk_box_pack_start (GTK_BOX (box), radio2);
- *    ctk_container_add (GTK_CONTAINER (window), box);
+ *    ctk_box_pack_start (CTK_BOX (box), radio1);
+ *    ctk_box_pack_start (CTK_BOX (box), radio2);
+ *    ctk_container_add (CTK_CONTAINER (window), box);
  *    ctk_widget_show_all (window);
  *    return;
  * }
@@ -156,7 +156,7 @@ static void     ctk_radio_button_get_property   (GObject             *object,
 						 GValue              *value,
 						 GParamSpec          *pspec);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkRadioButton, ctk_radio_button, GTK_TYPE_CHECK_BUTTON)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkRadioButton, ctk_radio_button, CTK_TYPE_CHECK_BUTTON)
 
 static guint group_changed_signal = 0;
 
@@ -183,8 +183,8 @@ ctk_radio_button_class_init (GtkRadioButtonClass *class)
       g_param_spec_object ("group",
                            P_("Group"),
                            P_("The radio button whose group this widget belongs to."),
-                           GTK_TYPE_RADIO_BUTTON,
-                           GTK_PARAM_WRITABLE);
+                           CTK_TYPE_RADIO_BUTTON,
+                           CTK_PARAM_WRITABLE);
 
   g_object_class_install_properties (gobject_class, LAST_PROP, radio_button_props);
 
@@ -216,7 +216,7 @@ ctk_radio_button_class_init (GtkRadioButtonClass *class)
 				       NULL,
 				       G_TYPE_NONE, 0);
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_RADIO_BUTTON_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_RADIO_BUTTON_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "radiobutton");
 }
 
@@ -229,13 +229,13 @@ ctk_radio_button_init (GtkRadioButton *radio_button)
   radio_button->priv = ctk_radio_button_get_instance_private (radio_button);
   priv = radio_button->priv;
 
-  ctk_widget_set_receives_default (GTK_WIDGET (radio_button), FALSE);
+  ctk_widget_set_receives_default (CTK_WIDGET (radio_button), FALSE);
 
-  _ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (radio_button), TRUE);
+  _ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (radio_button), TRUE);
 
   priv->group = g_slist_prepend (NULL, radio_button);
 
-  css_node = ctk_check_button_get_indicator_node (GTK_CHECK_BUTTON (radio_button));
+  css_node = ctk_check_button_get_indicator_node (CTK_CHECK_BUTTON (radio_button));
   ctk_css_node_set_name (css_node, I_("radio"));
 }
 
@@ -247,7 +247,7 @@ ctk_radio_button_set_property (GObject      *object,
 {
   GtkRadioButton *radio_button;
 
-  radio_button = GTK_RADIO_BUTTON (object);
+  radio_button = CTK_RADIO_BUTTON (object);
 
   switch (prop_id)
     {
@@ -302,7 +302,7 @@ ctk_radio_button_set_group (GtkRadioButton *radio_button,
   GtkWidget *old_group_singleton = NULL;
   GtkWidget *new_group_singleton = NULL;
 
-  g_return_if_fail (GTK_IS_RADIO_BUTTON (radio_button));
+  g_return_if_fail (CTK_IS_RADIO_BUTTON (radio_button));
 
   if (g_slist_find (group, radio_button))
     return;
@@ -362,7 +362,7 @@ ctk_radio_button_set_group (GtkRadioButton *radio_button,
       g_object_unref (new_group_singleton);
     }
 
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (radio_button), group == NULL);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (radio_button), group == NULL);
 
   g_object_unref (radio_button);
 }
@@ -398,8 +398,8 @@ void
 ctk_radio_button_join_group (GtkRadioButton *radio_button, 
 			     GtkRadioButton *group_source)
 {
-  g_return_if_fail (GTK_IS_RADIO_BUTTON (radio_button));
-  g_return_if_fail (group_source == NULL || GTK_IS_RADIO_BUTTON (group_source));
+  g_return_if_fail (CTK_IS_RADIO_BUTTON (radio_button));
+  g_return_if_fail (group_source == NULL || CTK_IS_RADIO_BUTTON (group_source));
 
   if (group_source)
     {
@@ -437,12 +437,12 @@ ctk_radio_button_new (GSList *group)
 {
   GtkRadioButton *radio_button;
 
-  radio_button = g_object_new (GTK_TYPE_RADIO_BUTTON, NULL);
+  radio_button = g_object_new (CTK_TYPE_RADIO_BUTTON, NULL);
 
   if (group)
     ctk_radio_button_set_group (radio_button, group);
 
-  return GTK_WIDGET (radio_button);
+  return CTK_WIDGET (radio_button);
 }
 
 /**
@@ -461,10 +461,10 @@ ctk_radio_button_new_with_label (GSList      *group,
 {
   GtkWidget *radio_button;
 
-  radio_button = g_object_new (GTK_TYPE_RADIO_BUTTON, "label", label, NULL) ;
+  radio_button = g_object_new (CTK_TYPE_RADIO_BUTTON, "label", label, NULL) ;
 
   if (group)
-    ctk_radio_button_set_group (GTK_RADIO_BUTTON (radio_button), group);
+    ctk_radio_button_set_group (CTK_RADIO_BUTTON (radio_button), group);
 
   return radio_button;
 }
@@ -490,13 +490,13 @@ ctk_radio_button_new_with_mnemonic (GSList      *group,
 {
   GtkWidget *radio_button;
 
-  radio_button = g_object_new (GTK_TYPE_RADIO_BUTTON, 
+  radio_button = g_object_new (CTK_TYPE_RADIO_BUTTON, 
 			       "label", label, 
 			       "use-underline", TRUE, 
 			       NULL);
 
   if (group)
-    ctk_radio_button_set_group (GTK_RADIO_BUTTON (radio_button), group);
+    ctk_radio_button_set_group (CTK_RADIO_BUTTON (radio_button), group);
 
   return radio_button;
 }
@@ -577,7 +577,7 @@ ctk_radio_button_new_with_mnemonic_from_widget (GtkRadioButton *radio_group_memb
 GSList*
 ctk_radio_button_get_group (GtkRadioButton *radio_button)
 {
-  g_return_val_if_fail (GTK_IS_RADIO_BUTTON (radio_button), NULL);
+  g_return_val_if_fail (CTK_IS_RADIO_BUTTON (radio_button), NULL);
 
   return radio_button->priv->group;
 }
@@ -587,7 +587,7 @@ static void
 ctk_radio_button_destroy (GtkWidget *widget)
 {
   GtkWidget *old_group_singleton = NULL;
-  GtkRadioButton *radio_button = GTK_RADIO_BUTTON (widget);
+  GtkRadioButton *radio_button = CTK_RADIO_BUTTON (widget);
   GtkRadioButtonPrivate *priv = radio_button->priv;
   GtkRadioButton *tmp_button;
   GSList *tmp_list;
@@ -617,22 +617,22 @@ ctk_radio_button_destroy (GtkWidget *widget)
   if (was_in_group)
     g_signal_emit (radio_button, group_changed_signal, 0);
 
-  GTK_WIDGET_CLASS (ctk_radio_button_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (ctk_radio_button_parent_class)->destroy (widget);
 }
 
 static gboolean
 ctk_radio_button_focus (GtkWidget         *widget,
 			GtkDirectionType   direction)
 {
-  GtkRadioButton *radio_button = GTK_RADIO_BUTTON (widget);
+  GtkRadioButton *radio_button = CTK_RADIO_BUTTON (widget);
   GtkRadioButtonPrivate *priv = radio_button->priv;
   GSList *tmp_slist;
 
   /* Radio buttons with draw_indicator unset focus "normally", since
    * they look like buttons to the user.
    */
-  if (!ctk_toggle_button_get_mode (GTK_TOGGLE_BUTTON (widget)))
-    return GTK_WIDGET_CLASS (ctk_radio_button_parent_class)->focus (widget, direction);
+  if (!ctk_toggle_button_get_mode (CTK_TOGGLE_BUTTON (widget)))
+    return CTK_WIDGET_CLASS (ctk_radio_button_parent_class)->focus (widget, direction);
 
   if (ctk_widget_is_focus (widget))
     {
@@ -641,8 +641,8 @@ ctk_radio_button_focus (GtkWidget         *widget,
       GtkWidget *new_focus = NULL;
       GSList *l;
 
-      if (direction == GTK_DIR_TAB_FORWARD ||
-          direction == GTK_DIR_TAB_BACKWARD)
+      if (direction == CTK_DIR_TAB_FORWARD ||
+          direction == CTK_DIR_TAB_BACKWARD)
         return FALSE;
 
       toplevel = ctk_widget_get_toplevel (widget);
@@ -650,7 +650,7 @@ ctk_radio_button_focus (GtkWidget         *widget,
       for (l = priv->group; l; l = l->next)
         children = g_list_prepend (children, l->data);
 
-      focus_list = _ctk_container_focus_sort (GTK_CONTAINER (toplevel), children, direction, widget);
+      focus_list = _ctk_container_focus_sort (CTK_CONTAINER (toplevel), children, direction, widget);
       tmp_list = g_list_find (focus_list, widget);
 
       if (tmp_list)
@@ -696,7 +696,7 @@ ctk_radio_button_focus (GtkWidget         *widget,
 	{
 	  ctk_widget_grab_focus (new_focus);
 
-          ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (new_focus), TRUE);
+          ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (new_focus), TRUE);
 	}
 
       return TRUE;
@@ -712,7 +712,7 @@ ctk_radio_button_focus (GtkWidget         *widget,
       tmp_slist = priv->group;
       while (tmp_slist)
 	{
-	  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (tmp_slist->data)) &&
+	  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (tmp_slist->data)) &&
 	      ctk_widget_get_visible (tmp_slist->data))
 	    selected_button = tmp_slist->data;
 	  tmp_slist = tmp_slist->next;
@@ -729,16 +729,16 @@ ctk_radio_button_focus (GtkWidget         *widget,
 static void
 ctk_radio_button_clicked (GtkButton *button)
 {
-  GtkRadioButton *radio_button = GTK_RADIO_BUTTON (button);
+  GtkRadioButton *radio_button = CTK_RADIO_BUTTON (button);
   GtkRadioButtonPrivate *priv = radio_button->priv;
-  GtkToggleButton *toggle_button = GTK_TOGGLE_BUTTON (button);
+  GtkToggleButton *toggle_button = CTK_TOGGLE_BUTTON (button);
   GtkToggleButton *tmp_button;
   GSList *tmp_list;
   gint toggled;
 
   toggled = FALSE;
 
-  g_object_ref (GTK_WIDGET (button));
+  g_object_ref (CTK_WIDGET (button));
 
   if (ctk_toggle_button_get_active (toggle_button))
     {
@@ -778,7 +778,7 @@ ctk_radio_button_clicked (GtkButton *button)
 
 	  if (ctk_toggle_button_get_active (tmp_button) && (tmp_button != toggle_button))
 	    {
-	      ctk_button_clicked (GTK_BUTTON (tmp_button));
+	      ctk_button_clicked (CTK_BUTTON (tmp_button));
 	      break;
 	    }
 	}
@@ -791,7 +791,7 @@ ctk_radio_button_clicked (GtkButton *button)
       g_object_notify (G_OBJECT (toggle_button), "active");
     }
 
-  ctk_widget_queue_draw (GTK_WIDGET (button));
+  ctk_widget_queue_draw (CTK_WIDGET (button));
 
   g_object_unref (button);
 }

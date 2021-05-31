@@ -20,17 +20,17 @@
  * THE SOFTWARE.
  */
 
-#ifndef _GTK_INSPECTOR_SELECTOR_H_
-#define _GTK_INSPECTOR_SELECTOR_H_
+#ifndef _CTK_INSPECTOR_SELECTOR_H_
+#define _CTK_INSPECTOR_SELECTOR_H_
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_SELECTOR            (ctk_inspector_selector_get_type())
-#define GTK_INSPECTOR_SELECTOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_SELECTOR, GtkInspectorSelector))
-#define GTK_INSPECTOR_SELECTOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_SELECTOR, GtkInspectorSelectorClass))
-#define GTK_INSPECTOR_IS_SELECTOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_SELECTOR))
-#define GTK_INSPECTOR_IS_SELECTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), GTK_TYPE_INSPECTOR_SELECTOR))
-#define GTK_INSPECTOR_SELECTOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_INSPECTOR_SELECTOR, GtkInspectorSelectorClass))
+#define CTK_TYPE_INSPECTOR_SELECTOR            (ctk_inspector_selector_get_type())
+#define CTK_INSPECTOR_SELECTOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_SELECTOR, GtkInspectorSelector))
+#define CTK_INSPECTOR_SELECTOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_SELECTOR, GtkInspectorSelectorClass))
+#define CTK_INSPECTOR_IS_SELECTOR(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_SELECTOR))
+#define CTK_INSPECTOR_IS_SELECTOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_SELECTOR))
+#define CTK_INSPECTOR_SELECTOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_SELECTOR, GtkInspectorSelectorClass))
 
 
 typedef struct _GtkInspectorSelectorPrivate GtkInspectorSelectorPrivate;
@@ -54,6 +54,6 @@ void       ctk_inspector_selector_set_object (GtkInspectorSelector *oh,
 
 G_END_DECLS
 
-#endif // _GTK_INSPECTOR_SELECTOR_H_
+#endif // _CTK_INSPECTOR_SELECTOR_H_
 
 // vim: set et sw=2 ts=2:

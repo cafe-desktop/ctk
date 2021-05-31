@@ -251,12 +251,12 @@ realize (GtkWidget *widget)
   const char *fragment, *vertex;
   GdkGLContext *context;
 
-  ctk_gl_area_make_current (GTK_GL_AREA (widget));
+  ctk_gl_area_make_current (CTK_GL_AREA (widget));
 
-  if (ctk_gl_area_get_error (GTK_GL_AREA (widget)) != NULL)
+  if (ctk_gl_area_get_error (CTK_GL_AREA (widget)) != NULL)
     return;
 
-  context = ctk_gl_area_get_context (GTK_GL_AREA (widget));
+  context = ctk_gl_area_get_context (CTK_GL_AREA (widget));
   if (gdk_gl_context_get_use_es (context))
     {
       vertex = vertex_shader_code_gles;
@@ -283,9 +283,9 @@ realize (GtkWidget *widget)
 static void
 unrealize (GtkWidget *widget)
 {
-  ctk_gl_area_make_current (GTK_GL_AREA (widget));
+  ctk_gl_area_make_current (CTK_GL_AREA (widget));
 
-  if (ctk_gl_area_get_error (GTK_GL_AREA (widget)) != NULL)
+  if (ctk_gl_area_get_error (CTK_GL_AREA (widget)) != NULL)
     return;
 
   glDeleteBuffers (1, &position_buffer);
@@ -353,7 +353,7 @@ create_axis_slider (int axis)
   GtkAdjustment *adj;
   const char *text;
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, FALSE);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, FALSE);
 
   switch (axis)
     {
@@ -374,15 +374,15 @@ create_axis_slider (int axis)
     }
 
   label = ctk_label_new (text);
-  ctk_container_add (GTK_CONTAINER (box), label);
+  ctk_container_add (CTK_CONTAINER (box), label);
   ctk_widget_show (label);
 
   adj = ctk_adjustment_new (0.0, 0.0, 360.0, 1.0, 12.0, 0.0);
   g_signal_connect (adj, "value-changed",
                     G_CALLBACK (on_axis_value_change),
                     GINT_TO_POINTER (axis));
-  slider = ctk_scale_new (GTK_ORIENTATION_HORIZONTAL, adj);
-  ctk_container_add (GTK_CONTAINER (box), slider);
+  slider = ctk_scale_new (CTK_ORIENTATION_HORIZONTAL, adj);
+  ctk_container_add (CTK_CONTAINER (box), slider);
   ctk_widget_set_hexpand (slider, TRUE);
   ctk_widget_show (slider);
 
@@ -403,37 +403,37 @@ main (int argc, char *argv[])
    * GL context, and to check for features
    */
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (window), "GtkGLArea - Triangle");
-  ctk_window_set_default_size (GTK_WINDOW (window), 400, 600);
-  ctk_container_set_border_width (GTK_CONTAINER (window), 12);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (window), "GtkGLArea - Triangle");
+  ctk_window_set_default_size (CTK_WINDOW (window), 400, 600);
+  ctk_container_set_border_width (CTK_CONTAINER (window), 12);
   g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, FALSE);
-  ctk_box_set_spacing (GTK_BOX (box), 6);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, FALSE);
+  ctk_box_set_spacing (CTK_BOX (box), 6);
+  ctk_container_add (CTK_CONTAINER (window), box);
   ctk_widget_show (box);
 
   gl_area = ctk_gl_area_new ();
   ctk_widget_set_hexpand (gl_area, TRUE);
   ctk_widget_set_vexpand (gl_area, TRUE);
-  ctk_container_add (GTK_CONTAINER (box), gl_area);
+  ctk_container_add (CTK_CONTAINER (box), gl_area);
   g_signal_connect (gl_area, "realize", G_CALLBACK (realize), NULL);
   g_signal_connect (gl_area, "unrealize", G_CALLBACK (unrealize), NULL);
   g_signal_connect (gl_area, "render", G_CALLBACK (render), NULL);
   ctk_widget_show (gl_area);
 
-  controls = ctk_box_new (GTK_ORIENTATION_VERTICAL, FALSE);
-  ctk_container_add (GTK_CONTAINER (box), controls);
+  controls = ctk_box_new (CTK_ORIENTATION_VERTICAL, FALSE);
+  ctk_container_add (CTK_CONTAINER (box), controls);
   ctk_widget_set_hexpand (controls, TRUE);
   ctk_widget_show (controls);
 
   for (i = 0; i < N_AXIS; i++)
-    ctk_container_add (GTK_CONTAINER (controls), create_axis_slider (i));
+    ctk_container_add (CTK_CONTAINER (controls), create_axis_slider (i));
 
   button = ctk_button_new_with_label ("Quit");
   ctk_widget_set_hexpand (button, TRUE);
-  ctk_container_add (GTK_CONTAINER (box), button);
+  ctk_container_add (CTK_CONTAINER (box), button);
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (ctk_widget_destroy), window);
   ctk_widget_show (button);
 

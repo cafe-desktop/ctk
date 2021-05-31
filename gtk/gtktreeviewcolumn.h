@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_VIEW_COLUMN_H__
-#define __GTK_TREE_VIEW_COLUMN_H__
+#ifndef __CTK_TREE_VIEW_COLUMN_H__
+#define __CTK_TREE_VIEW_COLUMN_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_TREE_VIEW_COLUMN	     (ctk_tree_view_column_get_type ())
-#define GTK_TREE_VIEW_COLUMN(obj)	     (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_VIEW_COLUMN, GtkTreeViewColumn))
-#define GTK_TREE_VIEW_COLUMN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TREE_VIEW_COLUMN, GtkTreeViewColumnClass))
-#define GTK_IS_TREE_VIEW_COLUMN(obj)	     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_VIEW_COLUMN))
-#define GTK_IS_TREE_VIEW_COLUMN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TREE_VIEW_COLUMN))
-#define GTK_TREE_VIEW_COLUMN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TREE_VIEW_COLUMN, GtkTreeViewColumnClass))
+#define CTK_TYPE_TREE_VIEW_COLUMN	     (ctk_tree_view_column_get_type ())
+#define CTK_TREE_VIEW_COLUMN(obj)	     (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_VIEW_COLUMN, GtkTreeViewColumn))
+#define CTK_TREE_VIEW_COLUMN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TREE_VIEW_COLUMN, GtkTreeViewColumnClass))
+#define CTK_IS_TREE_VIEW_COLUMN(obj)	     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_VIEW_COLUMN))
+#define CTK_IS_TREE_VIEW_COLUMN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TREE_VIEW_COLUMN))
+#define CTK_TREE_VIEW_COLUMN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_VIEW_COLUMN, GtkTreeViewColumnClass))
 
 typedef struct _GtkTreeViewColumn        GtkTreeViewColumn;
 typedef struct _GtkTreeViewColumnClass   GtkTreeViewColumnClass;
@@ -44,19 +44,19 @@ typedef struct _GtkTreeViewColumnPrivate GtkTreeViewColumnPrivate;
 
 /**
  * GtkTreeViewColumnSizing:
- * @GTK_TREE_VIEW_COLUMN_GROW_ONLY: Columns only get bigger in reaction to changes in the model
- * @GTK_TREE_VIEW_COLUMN_AUTOSIZE: Columns resize to be the optimal size everytime the model changes.
- * @GTK_TREE_VIEW_COLUMN_FIXED: Columns are a fixed numbers of pixels wide.
+ * @CTK_TREE_VIEW_COLUMN_GROW_ONLY: Columns only get bigger in reaction to changes in the model
+ * @CTK_TREE_VIEW_COLUMN_AUTOSIZE: Columns resize to be the optimal size everytime the model changes.
+ * @CTK_TREE_VIEW_COLUMN_FIXED: Columns are a fixed numbers of pixels wide.
  *
  * The sizing method the column uses to determine its width.  Please note
- * that @GTK_TREE_VIEW_COLUMN_AUTOSIZE are inefficient for large views, and
+ * that @CTK_TREE_VIEW_COLUMN_AUTOSIZE are inefficient for large views, and
  * can make columns appear choppy.
  */
 typedef enum
 {
-  GTK_TREE_VIEW_COLUMN_GROW_ONLY,
-  GTK_TREE_VIEW_COLUMN_AUTOSIZE,
-  GTK_TREE_VIEW_COLUMN_FIXED
+  CTK_TREE_VIEW_COLUMN_GROW_ONLY,
+  CTK_TREE_VIEW_COLUMN_AUTOSIZE,
+  CTK_TREE_VIEW_COLUMN_FIXED
 } GtkTreeViewColumnSizing;
 
 /**
@@ -274,4 +274,4 @@ GtkWidget              *ctk_tree_view_column_get_button          (GtkTreeViewCol
 G_END_DECLS
 
 
-#endif /* __GTK_TREE_VIEW_COLUMN_H__ */
+#endif /* __CTK_TREE_VIEW_COLUMN_H__ */

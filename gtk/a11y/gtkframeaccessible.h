@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FRAME_ACCESSIBLE_H__
-#define __GTK_FRAME_ACCESSIBLE_H__
+#ifndef __CTK_FRAME_ACCESSIBLE_H__
+#define __CTK_FRAME_ACCESSIBLE_H__
 
-#if !defined (__GTK_A11Y_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_A11Y_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk-a11y.h> can be included directly."
 #endif
 
@@ -26,12 +26,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FRAME_ACCESSIBLE                      (ctk_frame_accessible_get_type ())
-#define GTK_FRAME_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FRAME_ACCESSIBLE, GtkFrameAccessible))
-#define GTK_FRAME_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FRAME_ACCESSIBLE, GtkFrameAccessibleClass))
-#define GTK_IS_FRAME_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FRAME_ACCESSIBLE))
-#define GTK_IS_FRAME_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_FRAME_ACCESSIBLE))
-#define GTK_FRAME_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_FRAME_ACCESSIBLE, GtkFrameAccessibleClass))
+#define CTK_TYPE_FRAME_ACCESSIBLE                      (ctk_frame_accessible_get_type ())
+#define CTK_FRAME_ACCESSIBLE(obj)                      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FRAME_ACCESSIBLE, GtkFrameAccessible))
+#define CTK_FRAME_ACCESSIBLE_CLASS(klass)              (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FRAME_ACCESSIBLE, GtkFrameAccessibleClass))
+#define CTK_IS_FRAME_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FRAME_ACCESSIBLE))
+#define CTK_IS_FRAME_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FRAME_ACCESSIBLE))
+#define CTK_FRAME_ACCESSIBLE_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FRAME_ACCESSIBLE, GtkFrameAccessibleClass))
 
 typedef struct _GtkFrameAccessible        GtkFrameAccessible;
 typedef struct _GtkFrameAccessibleClass   GtkFrameAccessibleClass;
@@ -54,4 +54,4 @@ GType ctk_frame_accessible_get_type (void);
 
 G_END_DECLS
 
-#endif /* __GTK_FRAME_ACCESSIBLE_H__ */
+#endif /* __CTK_FRAME_ACCESSIBLE_H__ */

@@ -88,7 +88,7 @@ static GParamSpec *ctk_action_helper_pspecs[N_PROPS];
 static void ctk_action_helper_observer_iface_init (GtkActionObserverInterface *iface);
 
 G_DEFINE_TYPE_WITH_CODE (GtkActionHelper, ctk_action_helper, G_TYPE_OBJECT,
-  G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTION_OBSERVER, ctk_action_helper_observer_iface_init))
+  G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTION_OBSERVER, ctk_action_helper_observer_iface_init))
 
 static void
 ctk_action_helper_report_change (GtkActionHelper *helper,
@@ -99,7 +99,7 @@ ctk_action_helper_report_change (GtkActionHelper *helper,
   switch (prop_id)
     {
     case PROP_ENABLED:
-      ctk_widget_set_sensitive (GTK_WIDGET (helper->widget), helper->enabled);
+      ctk_widget_set_sensitive (CTK_WIDGET (helper->widget), helper->enabled);
       break;
 
     case PROP_ACTIVE:
@@ -119,7 +119,7 @@ ctk_action_helper_report_change (GtkActionHelper *helper,
 
         pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (helper->widget), "role");
 
-        if (pspec && G_PARAM_SPEC_VALUE_TYPE (pspec) == GTK_TYPE_BUTTON_ROLE)
+        if (pspec && G_PARAM_SPEC_VALUE_TYPE (pspec) == CTK_TYPE_BUTTON_ROLE)
           g_object_set (G_OBJECT (helper->widget), "role", helper->role, NULL);
       }
       break;
@@ -139,7 +139,7 @@ ctk_action_helper_action_added (GtkActionHelper    *helper,
                                 GVariant           *state,
                                 gboolean            should_emit_signals)
 {
-  GTK_NOTE(ACTIONS, g_message("%s: action %s added", "actionhelper", helper->action_name));
+  CTK_NOTE(ACTIONS, g_message("%s: action %s added", "actionhelper", helper->action_name));
 
   /* we can only activate if we have the correct type of parameter */
   helper->can_activate = (helper->target == NULL && parameter_type == NULL) ||
@@ -157,25 +157,25 @@ ctk_action_helper_action_added (GtkActionHelper    *helper,
       return;
     }
 
-  GTK_NOTE(ACTIONS, g_message ("%s: %s can be activated", "actionhelper", helper->action_name));
+  CTK_NOTE(ACTIONS, g_message ("%s: %s can be activated", "actionhelper", helper->action_name));
 
   helper->enabled = enabled;
 
-  GTK_NOTE(ACTIONS, g_message ("%s: action %s is %s", "actionhelper", helper->action_name, enabled ? "enabled" : "disabled"));
+  CTK_NOTE(ACTIONS, g_message ("%s: action %s is %s", "actionhelper", helper->action_name, enabled ? "enabled" : "disabled"));
 
   if (helper->target != NULL && state != NULL)
     {
       helper->active = g_variant_equal (state, helper->target);
-      helper->role = GTK_BUTTON_ROLE_RADIO;
+      helper->role = CTK_BUTTON_ROLE_RADIO;
     }
   else if (state != NULL && g_variant_is_of_type (state, G_VARIANT_TYPE_BOOLEAN))
     {
       helper->active = g_variant_get_boolean (state);
-      helper->role = GTK_BUTTON_ROLE_CHECK;
+      helper->role = CTK_BUTTON_ROLE_CHECK;
     }
   else
     {
-      helper->role = GTK_BUTTON_ROLE_NORMAL;
+      helper->role = CTK_BUTTON_ROLE_NORMAL;
     }
 
   if (should_emit_signals)
@@ -194,7 +194,7 @@ static void
 ctk_action_helper_action_removed (GtkActionHelper *helper,
                                   gboolean         should_emit_signals)
 {
-  GTK_NOTE(ACTIONS, g_message ("%s: action %s was removed", "actionhelper", helper->action_name));
+  CTK_NOTE(ACTIONS, g_message ("%s: action %s was removed", "actionhelper", helper->action_name));
 
   if (!helper->can_activate)
     return;
@@ -222,7 +222,7 @@ static void
 ctk_action_helper_action_enabled_changed (GtkActionHelper *helper,
                                           gboolean         enabled)
 {
-  GTK_NOTE(ACTIONS, g_message ("%s: action %s: enabled changed to %d", "actionhelper",  helper->action_name, enabled));
+  CTK_NOTE(ACTIONS, g_message ("%s: action %s: enabled changed to %d", "actionhelper",  helper->action_name, enabled));
 
   if (!helper->can_activate)
     return;
@@ -240,7 +240,7 @@ ctk_action_helper_action_state_changed (GtkActionHelper *helper,
 {
   gboolean was_active;
 
-  GTK_NOTE(ACTIONS, g_message ("%s: %s state changed", "actionhelper", helper->action_name));
+  CTK_NOTE(ACTIONS, g_message ("%s: %s state changed", "actionhelper", helper->action_name));
 
   if (!helper->can_activate)
     return;
@@ -264,7 +264,7 @@ static void
 ctk_action_helper_get_property (GObject *object, guint prop_id,
                                 GValue *value, GParamSpec *pspec)
 {
-  GtkActionHelper *helper = GTK_ACTION_HELPER (object);
+  GtkActionHelper *helper = CTK_ACTION_HELPER (object);
 
   switch (prop_id)
     {
@@ -288,7 +288,7 @@ ctk_action_helper_get_property (GObject *object, guint prop_id,
 static void
 ctk_action_helper_finalize (GObject *object)
 {
-  GtkActionHelper *helper = GTK_ACTION_HELPER (object);
+  GtkActionHelper *helper = CTK_ACTION_HELPER (object);
 
   g_free (helper->action_name);
 
@@ -307,7 +307,7 @@ ctk_action_helper_observer_action_added (GtkActionObserver   *observer,
                                          gboolean             enabled,
                                          GVariant            *state)
 {
-  ctk_action_helper_action_added (GTK_ACTION_HELPER (observer), enabled, parameter_type, state, TRUE);
+  ctk_action_helper_action_added (CTK_ACTION_HELPER (observer), enabled, parameter_type, state, TRUE);
 }
 
 static void
@@ -316,7 +316,7 @@ ctk_action_helper_observer_action_enabled_changed (GtkActionObserver   *observer
                                                    const gchar         *action_name,
                                                    gboolean             enabled)
 {
-  ctk_action_helper_action_enabled_changed (GTK_ACTION_HELPER (observer), enabled);
+  ctk_action_helper_action_enabled_changed (CTK_ACTION_HELPER (observer), enabled);
 }
 
 static void
@@ -325,7 +325,7 @@ ctk_action_helper_observer_action_state_changed (GtkActionObserver   *observer,
                                                  const gchar         *action_name,
                                                  GVariant            *state)
 {
-  ctk_action_helper_action_state_changed (GTK_ACTION_HELPER (observer), state);
+  ctk_action_helper_action_state_changed (CTK_ACTION_HELPER (observer), state);
 }
 
 static void
@@ -333,7 +333,7 @@ ctk_action_helper_observer_action_removed (GtkActionObserver   *observer,
                                            GtkActionObservable *observable,
                                            const gchar         *action_name)
 {
-  ctk_action_helper_action_removed (GTK_ACTION_HELPER (observer), TRUE);
+  ctk_action_helper_action_removed (CTK_ACTION_HELPER (observer), TRUE);
 }
 
 static void
@@ -352,8 +352,8 @@ ctk_action_helper_class_init (GtkActionHelperClass *class)
   ctk_action_helper_pspecs[PROP_ACTIVE] = g_param_spec_boolean ("active", "active", "active", FALSE,
                                                                 G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
   ctk_action_helper_pspecs[PROP_ROLE] = g_param_spec_enum ("role", "role", "role",
-                                                           GTK_TYPE_BUTTON_ROLE,
-                                                           GTK_BUTTON_ROLE_NORMAL,
+                                                           CTK_TYPE_BUTTON_ROLE,
+                                                           CTK_BUTTON_ROLE_NORMAL,
                                                            G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
   g_object_class_install_properties (class, N_PROPS, ctk_action_helper_pspecs);
 }
@@ -389,17 +389,17 @@ ctk_action_helper_new (GtkActionable *widget)
   GtkActionHelper *helper;
   GParamSpec *pspec;
 
-  g_return_val_if_fail (GTK_IS_ACTIONABLE (widget), NULL);
-  helper = g_object_new (GTK_TYPE_ACTION_HELPER, NULL);
+  g_return_val_if_fail (CTK_IS_ACTIONABLE (widget), NULL);
+  helper = g_object_new (CTK_TYPE_ACTION_HELPER, NULL);
 
-  helper->widget = GTK_WIDGET (widget);
-  helper->enabled = ctk_widget_get_sensitive (GTK_WIDGET (helper->widget));
+  helper->widget = CTK_WIDGET (widget);
+  helper->enabled = ctk_widget_get_sensitive (CTK_WIDGET (helper->widget));
 
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (helper->widget), "active");
   if (pspec && G_PARAM_SPEC_VALUE_TYPE (pspec) == G_TYPE_BOOLEAN)
     g_object_get (G_OBJECT (helper->widget), "active", &helper->active, NULL);
 
-  helper->action_context = _ctk_widget_get_action_muxer (GTK_WIDGET (widget), TRUE);
+  helper->action_context = _ctk_widget_get_action_muxer (CTK_WIDGET (widget), TRUE);
 
   return helper;
 }
@@ -416,7 +416,7 @@ ctk_action_helper_set_action_name (GtkActionHelper *helper,
   if (g_strcmp0 (action_name, helper->action_name) == 0)
     return;
 
-  GTK_NOTE(ACTIONS,
+  CTK_NOTE(ACTIONS,
            if (action_name == NULL || !strchr (action_name, '.'))
              g_message ("%s: action name %s doesn't look like 'app.' or 'win.'; "
                         "it is unlikely to work",
@@ -431,9 +431,9 @@ ctk_action_helper_set_action_name (GtkActionHelper *helper,
   if (helper->action_name)
     {
       ctk_action_helper_action_removed (helper, FALSE);
-      ctk_action_observable_unregister_observer (GTK_ACTION_OBSERVABLE (helper->action_context),
+      ctk_action_observable_unregister_observer (CTK_ACTION_OBSERVABLE (helper->action_context),
                                                  helper->action_name,
-                                                 GTK_ACTION_OBSERVER (helper));
+                                                 CTK_ACTION_OBSERVER (helper));
       g_clear_pointer (&helper->action_name, g_free);
     }
 
@@ -441,14 +441,14 @@ ctk_action_helper_set_action_name (GtkActionHelper *helper,
     {
       helper->action_name = g_strdup (action_name);
 
-      ctk_action_observable_register_observer (GTK_ACTION_OBSERVABLE (helper->action_context),
+      ctk_action_observable_register_observer (CTK_ACTION_OBSERVABLE (helper->action_context),
                                                helper->action_name,
-                                               GTK_ACTION_OBSERVER (helper));
+                                               CTK_ACTION_OBSERVER (helper));
 
       if (g_action_group_query_action (G_ACTION_GROUP (helper->action_context), helper->action_name,
                                        &enabled, &parameter_type, NULL, NULL, &state))
         {
-          GTK_NOTE(ACTIONS, g_message ("%s: action %s existed from the start", "actionhelper", helper->action_name));
+          CTK_NOTE(ACTIONS, g_message ("%s: action %s existed from the start", "actionhelper", helper->action_name));
 
           ctk_action_helper_action_added (helper, enabled, parameter_type, state, FALSE);
 
@@ -457,7 +457,7 @@ ctk_action_helper_set_action_name (GtkActionHelper *helper,
         }
       else
         {
-          GTK_NOTE(ACTIONS, g_message ("%s: action %s missing from the start", "actionhelper", helper->action_name));
+          CTK_NOTE(ACTIONS, g_message ("%s: action %s missing from the start", "actionhelper", helper->action_name));
           helper->enabled = FALSE;
         }
     }
@@ -573,7 +573,7 @@ ctk_action_helper_get_action_target_value (GtkActionHelper *helper)
 gboolean
 ctk_action_helper_get_enabled (GtkActionHelper *helper)
 {
-  g_return_val_if_fail (GTK_IS_ACTION_HELPER (helper), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION_HELPER (helper), FALSE);
 
   return helper->enabled;
 }
@@ -581,7 +581,7 @@ ctk_action_helper_get_enabled (GtkActionHelper *helper)
 gboolean
 ctk_action_helper_get_active (GtkActionHelper *helper)
 {
-  g_return_val_if_fail (GTK_IS_ACTION_HELPER (helper), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION_HELPER (helper), FALSE);
 
   return helper->active;
 }
@@ -589,7 +589,7 @@ ctk_action_helper_get_active (GtkActionHelper *helper)
 void
 ctk_action_helper_activate (GtkActionHelper *helper)
 {
-  g_return_if_fail (GTK_IS_ACTION_HELPER (helper));
+  g_return_if_fail (CTK_IS_ACTION_HELPER (helper));
 
   if (!helper->can_activate || helper->reporting)
     return;

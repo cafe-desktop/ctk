@@ -81,8 +81,8 @@ enum {
   CHILD_PROP_NONHOMOGENEOUS
 };
 
-#define GTK_BOX_SECONDARY_CHILD "gtk-box-secondary-child"
-#define GTK_BOX_NON_HOMOGENEOUS "gtk-box-non-homogeneous"
+#define CTK_BOX_SECONDARY_CHILD "gtk-box-secondary-child"
+#define CTK_BOX_NON_HOMOGENEOUS "gtk-box-non-homogeneous"
 
 static void ctk_button_box_set_property       (GObject           *object,
                                                guint              prop_id,
@@ -155,21 +155,21 @@ static gboolean ctk_button_box_render          (GtkCssGadget        *gadget,
 #define DEFAULT_CHILD_MIN_HEIGHT 27
 #define DEFAULT_CHILD_IPAD_X 4
 #define DEFAULT_CHILD_IPAD_Y 0
-#define DEFAULT_LAYOUT_STYLE GTK_BUTTONBOX_EDGE
+#define DEFAULT_LAYOUT_STYLE CTK_BUTTONBOX_EDGE
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkButtonBox, ctk_button_box, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkButtonBox, ctk_button_box, CTK_TYPE_BOX)
 
 static void
 ctk_button_box_add (GtkContainer *container,
                     GtkWidget    *widget)
 {
-  ctk_box_pack_start (GTK_BOX (container), widget, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (container), widget, TRUE, TRUE, 0);
 }
 
 static void
 ctk_button_box_finalize (GObject *object)
 {
-  GtkButtonBox *button_box = GTK_BUTTON_BOX (object);
+  GtkButtonBox *button_box = CTK_BUTTON_BOX (object);
 
   g_clear_object (&button_box->priv->gadget);
 
@@ -219,7 +219,7 @@ ctk_button_box_class_init (GtkButtonBoxClass *class)
                                                              0,
                                                              G_MAXINT,
                                                              DEFAULT_CHILD_MIN_WIDTH,
-                                                             GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkButtonBox:child-min-height:
@@ -235,7 +235,7 @@ ctk_button_box_class_init (GtkButtonBoxClass *class)
                                                              0,
                                                              G_MAXINT,
                                                              DEFAULT_CHILD_MIN_HEIGHT,
-                                                             GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkButtonBox:child-internal-pad-x:
@@ -251,7 +251,7 @@ ctk_button_box_class_init (GtkButtonBoxClass *class)
                                                              0,
                                                              G_MAXINT,
                                                              DEFAULT_CHILD_IPAD_X,
-                                                             GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkButtonBox:child-internal-pad-y:
@@ -267,16 +267,16 @@ ctk_button_box_class_init (GtkButtonBoxClass *class)
                                                              0,
                                                              G_MAXINT,
                                                              DEFAULT_CHILD_IPAD_Y,
-                                                             GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   g_object_class_install_property (gobject_class,
                                    PROP_LAYOUT_STYLE,
                                    g_param_spec_enum ("layout-style",
                                                       P_("Layout style"),
                                                       P_("How to lay out the buttons in the box. Possible values are: spread, edge, start and end"),
-                                                      GTK_TYPE_BUTTON_BOX_STYLE,
+                                                      CTK_TYPE_BUTTON_BOX_STYLE,
                                                       DEFAULT_LAYOUT_STYLE,
-                                                      GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   ctk_container_class_install_child_property (container_class,
                                               CHILD_PROP_SECONDARY,
@@ -284,7 +284,7 @@ ctk_button_box_class_init (GtkButtonBoxClass *class)
                                                                     P_("Secondary"),
                                                                     P_("If TRUE, the child appears in a secondary group of children, suitable for, e.g., help buttons"),
                                                                     FALSE,
-                                                                    GTK_PARAM_READWRITE));
+                                                                    CTK_PARAM_READWRITE));
 
   ctk_container_class_install_child_property (container_class,
                                               CHILD_PROP_NONHOMOGENEOUS,
@@ -292,7 +292,7 @@ ctk_button_box_class_init (GtkButtonBoxClass *class)
                                                                     P_("Non-Homogeneous"),
                                                                     P_("If TRUE, the child will not be subject to homogeneous sizing"),
                                                                     FALSE,
-                                                                    GTK_PARAM_READWRITE));
+                                                                    CTK_PARAM_READWRITE));
 
   ctk_widget_class_set_css_name (widget_class, "buttonbox");
 }
@@ -310,13 +310,13 @@ ctk_button_box_render (GtkCssGadget *gadget,
   GList *children, *l;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  children = ctk_container_get_children (GTK_CONTAINER (widget));
+  children = ctk_container_get_children (CTK_CONTAINER (widget));
 
   for (l = children; l; l = l->next)
     {
       GtkWidget *child = l->data;
 
-      ctk_container_propagate_draw (GTK_CONTAINER (widget), child, cr);
+      ctk_container_propagate_draw (CTK_CONTAINER (widget), child, cr);
     }
 
   g_list_free (children);
@@ -329,11 +329,11 @@ static gboolean
 ctk_button_box_draw (GtkWidget *widget,
                      cairo_t   *cr)
 {
-  GtkButtonBoxPrivate *priv = GTK_BUTTON_BOX (widget)->priv;
+  GtkButtonBoxPrivate *priv = CTK_BUTTON_BOX (widget)->priv;
   GtkCssGadget *gadget;
 
-  if (priv->layout_style == GTK_BUTTONBOX_EXPAND)
-    gadget = ctk_box_get_gadget (GTK_BOX (widget));
+  if (priv->layout_style == CTK_BUTTONBOX_EXPAND)
+    gadget = ctk_box_get_gadget (CTK_BOX (widget));
   else
     gadget = priv->gadget;
 
@@ -348,10 +348,10 @@ ctk_button_box_init (GtkButtonBox *button_box)
   button_box->priv = ctk_button_box_get_instance_private (button_box);
   button_box->priv->layout_style = DEFAULT_LAYOUT_STYLE;
 
-  ctk_box_set_spacing (GTK_BOX (button_box), 0);
+  ctk_box_set_spacing (CTK_BOX (button_box), 0);
 
-  button_box->priv->gadget = ctk_css_custom_gadget_new_for_node (ctk_widget_get_css_node (GTK_WIDGET (button_box)),
-                                                         GTK_WIDGET (button_box),
+  button_box->priv->gadget = ctk_css_custom_gadget_new_for_node (ctk_widget_get_css_node (CTK_WIDGET (button_box)),
+                                                         CTK_WIDGET (button_box),
                                                          ctk_button_box_measure,
                                                          ctk_button_box_allocate,
                                                          ctk_button_box_render,
@@ -368,7 +368,7 @@ ctk_button_box_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_LAYOUT_STYLE:
-      ctk_button_box_set_layout (GTK_BUTTON_BOX (object),
+      ctk_button_box_set_layout (CTK_BUTTON_BOX (object),
                                  g_value_get_enum (value));
       break;
     default:
@@ -383,7 +383,7 @@ ctk_button_box_get_property (GObject    *object,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GtkButtonBoxPrivate *priv = GTK_BUTTON_BOX (object)->priv;
+  GtkButtonBoxPrivate *priv = CTK_BUTTON_BOX (object)->priv;
 
   switch (prop_id)
     {
@@ -406,15 +406,15 @@ ctk_button_box_set_child_property (GtkContainer *container,
   switch (property_id)
     {
     case CHILD_PROP_SECONDARY:
-      ctk_button_box_set_child_secondary (GTK_BUTTON_BOX (container), child,
+      ctk_button_box_set_child_secondary (CTK_BUTTON_BOX (container), child,
                                           g_value_get_boolean (value));
       break;
     case CHILD_PROP_NONHOMOGENEOUS:
-      ctk_button_box_set_child_non_homogeneous (GTK_BUTTON_BOX (container), child,
+      ctk_button_box_set_child_non_homogeneous (CTK_BUTTON_BOX (container), child,
                                                 g_value_get_boolean (value));
       break;
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
 }
@@ -430,16 +430,16 @@ ctk_button_box_get_child_property (GtkContainer *container,
     {
     case CHILD_PROP_SECONDARY:
       g_value_set_boolean (value,
-                           ctk_button_box_get_child_secondary (GTK_BUTTON_BOX (container),
+                           ctk_button_box_get_child_secondary (CTK_BUTTON_BOX (container),
                                                                child));
       break;
     case CHILD_PROP_NONHOMOGENEOUS:
       g_value_set_boolean (value,
-                           ctk_button_box_get_child_non_homogeneous (GTK_BUTTON_BOX (container),
+                           ctk_button_box_get_child_non_homogeneous (CTK_BUTTON_BOX (container),
                                                                      child));
       break;
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
 }
@@ -451,10 +451,10 @@ ctk_button_box_remove (GtkContainer *container,
   /* clear is_secondary and nonhomogeneous flag in case the widget
    * is added to another container
    */
-  ctk_button_box_set_child_secondary (GTK_BUTTON_BOX (container), widget, FALSE);
-  ctk_button_box_set_child_non_homogeneous (GTK_BUTTON_BOX (container), widget, FALSE);
+  ctk_button_box_set_child_secondary (CTK_BUTTON_BOX (container), widget, FALSE);
+  ctk_button_box_set_child_non_homogeneous (CTK_BUTTON_BOX (container), widget, FALSE);
 
-  GTK_CONTAINER_CLASS (ctk_button_box_parent_class)->remove (container, widget);
+  CTK_CONTAINER_CLASS (ctk_button_box_parent_class)->remove (container, widget);
 }
 
 /**
@@ -470,7 +470,7 @@ ctk_button_box_set_layout (GtkButtonBox      *widget,
 {
   GtkButtonBoxPrivate *priv;
 
-  g_return_if_fail (GTK_IS_BUTTON_BOX (widget));
+  g_return_if_fail (CTK_IS_BUTTON_BOX (widget));
 
   priv = widget->priv;
 
@@ -478,20 +478,20 @@ ctk_button_box_set_layout (GtkButtonBox      *widget,
     {
       priv->layout_style = layout_style;
 
-      if (priv->layout_style == GTK_BUTTONBOX_EXPAND)
+      if (priv->layout_style == CTK_BUTTONBOX_EXPAND)
         {
-          ctk_style_context_add_class (ctk_widget_get_style_context (GTK_WIDGET (widget)), "linked");
-          ctk_box_set_spacing (GTK_BOX (widget), 0);
-          ctk_box_set_homogeneous (GTK_BOX (widget), TRUE);
+          ctk_style_context_add_class (ctk_widget_get_style_context (CTK_WIDGET (widget)), "linked");
+          ctk_box_set_spacing (CTK_BOX (widget), 0);
+          ctk_box_set_homogeneous (CTK_BOX (widget), TRUE);
         }
       else
         {
-          ctk_style_context_remove_class (ctk_widget_get_style_context (GTK_WIDGET (widget)), "linked");
-          ctk_box_set_homogeneous (GTK_BOX (widget), FALSE);
+          ctk_style_context_remove_class (ctk_widget_get_style_context (CTK_WIDGET (widget)), "linked");
+          ctk_box_set_homogeneous (CTK_BOX (widget), FALSE);
         }
 
       g_object_notify (G_OBJECT (widget), "layout-style");
-      ctk_widget_queue_resize (GTK_WIDGET (widget));
+      ctk_widget_queue_resize (CTK_WIDGET (widget));
     }
 }
 
@@ -506,7 +506,7 @@ ctk_button_box_set_layout (GtkButtonBox      *widget,
 GtkButtonBoxStyle
 ctk_button_box_get_layout (GtkButtonBox *widget)
 {
-  g_return_val_if_fail (GTK_IS_BUTTON_BOX (widget), DEFAULT_LAYOUT_STYLE);
+  g_return_val_if_fail (CTK_IS_BUTTON_BOX (widget), DEFAULT_LAYOUT_STYLE);
 
   return widget->priv->layout_style;
 }
@@ -526,10 +526,10 @@ gboolean
 ctk_button_box_get_child_secondary (GtkButtonBox *widget,
                                     GtkWidget    *child)
 {
-  g_return_val_if_fail (GTK_IS_BUTTON_BOX (widget), FALSE);
-  g_return_val_if_fail (GTK_IS_WIDGET (child), FALSE);
+  g_return_val_if_fail (CTK_IS_BUTTON_BOX (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (child), FALSE);
 
-  return (g_object_get_data (G_OBJECT (child), GTK_BOX_SECONDARY_CHILD) != NULL);
+  return (g_object_get_data (G_OBJECT (child), CTK_BOX_SECONDARY_CHILD) != NULL);
 }
 
 /**
@@ -543,12 +543,12 @@ ctk_button_box_get_child_secondary (GtkButtonBox *widget,
  * A typical use of a secondary child is the help button in a dialog.
  *
  * This group appears after the other children if the style
- * is %GTK_BUTTONBOX_START, %GTK_BUTTONBOX_SPREAD or
- * %GTK_BUTTONBOX_EDGE, and before the other children if the style
- * is %GTK_BUTTONBOX_END. For horizontal button boxes, the definition
+ * is %CTK_BUTTONBOX_START, %CTK_BUTTONBOX_SPREAD or
+ * %CTK_BUTTONBOX_EDGE, and before the other children if the style
+ * is %CTK_BUTTONBOX_END. For horizontal button boxes, the definition
  * of before/after depends on direction of the widget (see
- * ctk_widget_set_direction()). If the style is %GTK_BUTTONBOX_START
- * or %GTK_BUTTONBOX_END, then the secondary children are aligned at
+ * ctk_widget_set_direction()). If the style is %CTK_BUTTONBOX_START
+ * or %CTK_BUTTONBOX_END, then the secondary children are aligned at
  * the other end of the button box from the main children. For the
  * other styles, they appear immediately next to the main children.
  **/
@@ -559,23 +559,23 @@ ctk_button_box_set_child_secondary (GtkButtonBox *widget,
 {
   GtkButtonBox *bbox;
 
-  g_return_if_fail (GTK_IS_BUTTON_BOX (widget));
-  g_return_if_fail (GTK_IS_WIDGET (child));
-  g_return_if_fail (ctk_widget_get_parent (child) == GTK_WIDGET (widget));
+  g_return_if_fail (CTK_IS_BUTTON_BOX (widget));
+  g_return_if_fail (CTK_IS_WIDGET (child));
+  g_return_if_fail (ctk_widget_get_parent (child) == CTK_WIDGET (widget));
 
-  bbox = GTK_BUTTON_BOX (widget);
+  bbox = CTK_BUTTON_BOX (widget);
 
   g_object_set_data (G_OBJECT (child),
-                     GTK_BOX_SECONDARY_CHILD,
+                     CTK_BOX_SECONDARY_CHILD,
                      is_secondary ? GINT_TO_POINTER (1) : NULL);
   ctk_widget_child_notify (child, "secondary");
 
-  if (bbox->priv->layout_style == GTK_BUTTONBOX_EXPAND)
+  if (bbox->priv->layout_style == CTK_BUTTONBOX_EXPAND)
     {
-      ctk_box_reorder_child (GTK_BOX (bbox), child, is_secondary ? 0 : -1);
+      ctk_box_reorder_child (CTK_BOX (bbox), child, is_secondary ? 0 : -1);
     }
 
-  if (ctk_widget_get_visible (GTK_WIDGET (widget)) &&
+  if (ctk_widget_get_visible (CTK_WIDGET (widget)) &&
       ctk_widget_get_visible (child))
     ctk_widget_queue_resize (child);
 }
@@ -615,12 +615,12 @@ ctk_button_box_child_requisition (GtkWidget  *widget,
   GtkOrientation orientation;
   gboolean have_baseline;
 
-  g_return_if_fail (GTK_IS_BUTTON_BOX (widget));
+  g_return_if_fail (CTK_IS_BUTTON_BOX (widget));
 
-  bbox = GTK_BUTTON_BOX (widget);
+  bbox = CTK_BUTTON_BOX (widget);
 
-  orientation = ctk_orientable_get_orientation (GTK_ORIENTABLE (widget));
-  homogeneous = ctk_box_get_homogeneous (GTK_BOX (widget));
+  orientation = ctk_orientable_get_orientation (CTK_ORIENTABLE (widget));
+  homogeneous = ctk_box_get_homogeneous (CTK_BOX (widget));
 
   ctk_widget_style_get (widget,
                         "child-min-width", &child_min_width,
@@ -631,7 +631,7 @@ ctk_button_box_child_requisition (GtkWidget  *widget,
 
   nchildren = 0;
   nsecondaries = 0;
-  list = children = _ctk_box_get_children (GTK_BOX (bbox));
+  list = children = _ctk_box_get_children (CTK_BOX (bbox));
   needed_width = child_min_width;
   needed_height = child_min_height;
   needed_above = 0;
@@ -653,8 +653,8 @@ ctk_button_box_child_requisition (GtkWidget  *widget,
           nchildren += 1;
           _ctk_widget_get_preferred_size_and_baseline (child,
                                                        &child_requisition, NULL, &child_baseline, NULL);
-	  if (orientation == GTK_ORIENTATION_HORIZONTAL &&
-	      ctk_widget_get_valign_with_baseline (child) == GTK_ALIGN_BASELINE &&
+	  if (orientation == CTK_ORIENTATION_HORIZONTAL &&
+	      ctk_widget_get_valign_with_baseline (child) == CTK_ALIGN_BASELINE &&
 	      child_baseline != -1)
 	    {
 	      have_baseline = TRUE;
@@ -718,8 +718,8 @@ ctk_button_box_child_requisition (GtkWidget  *widget,
             {
               (*heights)[i] = -1;
 
-	      if (orientation == GTK_ORIENTATION_HORIZONTAL &&
-		  ctk_widget_get_valign_with_baseline (child) == GTK_ALIGN_BASELINE &&
+	      if (orientation == CTK_ORIENTATION_HORIZONTAL &&
+		  ctk_widget_get_valign_with_baseline (child) == CTK_ALIGN_BASELINE &&
 		  child_baseline != -1)
 		{
 		  (*baselines)[i] = child_baseline + ipad_y;
@@ -739,8 +739,8 @@ ctk_button_box_child_requisition (GtkWidget  *widget,
             {
               (*heights)[i] = child_requisition.height + ipad_h;
 
-	      if (orientation == GTK_ORIENTATION_HORIZONTAL &&
-		  ctk_widget_get_valign_with_baseline (child) == GTK_ALIGN_BASELINE &&
+	      if (orientation == CTK_ORIENTATION_HORIZONTAL &&
+		  ctk_widget_get_valign_with_baseline (child) == CTK_ALIGN_BASELINE &&
 		  child_baseline != -1)
 		(*baselines)[i] = child_baseline + ipad_y;
             }
@@ -792,11 +792,11 @@ ctk_button_box_size_request (GtkWidget      *widget,
   if (baseline)
     *baseline = -1;
 
-  bbox = GTK_BUTTON_BOX (widget);
+  bbox = CTK_BUTTON_BOX (widget);
   priv = bbox->priv;
 
-  orientation = ctk_orientable_get_orientation (GTK_ORIENTABLE (widget));
-  spacing = ctk_box_get_spacing (GTK_BOX (widget));
+  orientation = ctk_orientable_get_orientation (CTK_ORIENTABLE (widget));
+  spacing = ctk_box_get_spacing (CTK_BOX (widget));
 
   ctk_button_box_child_requisition (widget,
                                     &nvis_children,
@@ -807,7 +807,7 @@ ctk_button_box_size_request (GtkWidget      *widget,
   total_size = 0;
   for (i = 0; i < nvis_children; i++)
     {
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           total_size += widths[i];
 	  if (baselines[i] == -1)
@@ -830,15 +830,15 @@ ctk_button_box_size_request (GtkWidget      *widget,
 
   max_size = MAX (max_size, max_above + max_below);
 
-  switch (ctk_box_get_baseline_position (GTK_BOX (widget)))
+  switch (ctk_box_get_baseline_position (CTK_BOX (widget)))
     {
-    case GTK_BASELINE_POSITION_TOP:
+    case CTK_BASELINE_POSITION_TOP:
       break;
-    case GTK_BASELINE_POSITION_CENTER:
+    case CTK_BASELINE_POSITION_CENTER:
       if (baseline != NULL && *baseline != -1)
 	*baseline += (max_size - (max_above + max_below)) / 2;
       break;
-    case GTK_BASELINE_POSITION_BOTTOM:
+    case CTK_BASELINE_POSITION_BOTTOM:
       if (baseline != NULL && *baseline != -1)
 	*baseline += max_size - (max_above + max_below);
       break;
@@ -853,19 +853,19 @@ ctk_button_box_size_request (GtkWidget      *widget,
     {
       switch (priv->layout_style)
         {
-          case GTK_BUTTONBOX_SPREAD:
-            if (orientation == GTK_ORIENTATION_HORIZONTAL)
+          case CTK_BUTTONBOX_SPREAD:
+            if (orientation == CTK_ORIENTATION_HORIZONTAL)
               requisition->width = total_size + ((nvis_children + 1)*spacing);
             else
               requisition->height = total_size + ((nvis_children + 1)*spacing);
 
             break;
-          case GTK_BUTTONBOX_EDGE:
-          case GTK_BUTTONBOX_START:
-          case GTK_BUTTONBOX_END:
-          case GTK_BUTTONBOX_CENTER:
-          case GTK_BUTTONBOX_EXPAND:
-            if (orientation == GTK_ORIENTATION_HORIZONTAL)
+          case CTK_BUTTONBOX_EDGE:
+          case CTK_BUTTONBOX_START:
+          case CTK_BUTTONBOX_END:
+          case CTK_BUTTONBOX_CENTER:
+          case CTK_BUTTONBOX_EXPAND:
+            if (orientation == CTK_ORIENTATION_HORIZONTAL)
               requisition->width = total_size + ((nvis_children - 1)*spacing);
             else
               requisition->height = total_size + ((nvis_children - 1)*spacing);
@@ -876,7 +876,7 @@ ctk_button_box_size_request (GtkWidget      *widget,
             break;
         }
 
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         requisition->height = max_size;
       else
         requisition->width = max_size;
@@ -906,7 +906,7 @@ ctk_button_box_measure (GtkCssGadget   *gadget,
   widget = ctk_css_gadget_get_owner (gadget);
   ctk_button_box_size_request (widget, &requisition, pb);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     *minimum = *natural = requisition.width;
   else
     *minimum = *natural = requisition.height;
@@ -922,16 +922,16 @@ ctk_button_box_get_preferred_width (GtkWidget *widget,
                                     gint      *minimum,
                                     gint      *natural)
 {
-  GtkButtonBoxPrivate *priv = GTK_BUTTON_BOX (widget)->priv;
+  GtkButtonBoxPrivate *priv = CTK_BUTTON_BOX (widget)->priv;
   GtkCssGadget *gadget;
 
-  if (priv->layout_style == GTK_BUTTONBOX_EXPAND)
-    gadget = ctk_box_get_gadget (GTK_BOX (widget));
+  if (priv->layout_style == CTK_BUTTONBOX_EXPAND)
+    gadget = ctk_box_get_gadget (CTK_BOX (widget));
   else
     gadget = priv->gadget;
 
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -942,16 +942,16 @@ ctk_button_box_get_preferred_height (GtkWidget *widget,
                                      gint      *minimum,
                                      gint      *natural)
 {
-  GtkButtonBoxPrivate *priv = GTK_BUTTON_BOX (widget)->priv;
+  GtkButtonBoxPrivate *priv = CTK_BUTTON_BOX (widget)->priv;
   GtkCssGadget *gadget;
 
-  if (priv->layout_style == GTK_BUTTONBOX_EXPAND)
-    gadget = ctk_box_get_gadget (GTK_BOX (widget));
+  if (priv->layout_style == CTK_BUTTONBOX_EXPAND)
+    gadget = ctk_box_get_gadget (CTK_BOX (widget));
   else
     gadget = priv->gadget;
 
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -963,16 +963,16 @@ ctk_button_box_get_preferred_width_for_height (GtkWidget *widget,
                                                gint      *minimum,
                                                gint      *natural)
 {
-  GtkButtonBoxPrivate *priv = GTK_BUTTON_BOX (widget)->priv;
+  GtkButtonBoxPrivate *priv = CTK_BUTTON_BOX (widget)->priv;
   GtkCssGadget *gadget;
 
-  if (priv->layout_style == GTK_BUTTONBOX_EXPAND)
-    gadget = ctk_box_get_gadget (GTK_BOX (widget));
+  if (priv->layout_style == CTK_BUTTONBOX_EXPAND)
+    gadget = ctk_box_get_gadget (CTK_BOX (widget));
   else
     gadget = priv->gadget;
 
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      height,
                                      minimum, natural,
                                      NULL, NULL);
@@ -984,16 +984,16 @@ ctk_button_box_get_preferred_height_for_width (GtkWidget *widget,
                                                gint      *minimum,
                                                gint      *natural)
 {
-  GtkButtonBoxPrivate *priv = GTK_BUTTON_BOX (widget)->priv;
+  GtkButtonBoxPrivate *priv = CTK_BUTTON_BOX (widget)->priv;
   GtkCssGadget *gadget;
 
-  if (priv->layout_style == GTK_BUTTONBOX_EXPAND)
-    gadget = ctk_box_get_gadget (GTK_BOX (widget));
+  if (priv->layout_style == CTK_BUTTONBOX_EXPAND)
+    gadget = ctk_box_get_gadget (CTK_BOX (widget));
   else
     gadget = priv->gadget;
 
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum, natural,
                                      NULL, NULL);
@@ -1007,16 +1007,16 @@ ctk_button_box_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 							    gint      *minimum_baseline,
 							    gint      *natural_baseline)
 {
-  GtkButtonBoxPrivate *priv = GTK_BUTTON_BOX (widget)->priv;
+  GtkButtonBoxPrivate *priv = CTK_BUTTON_BOX (widget)->priv;
   GtkCssGadget *gadget;
 
-  if (priv->layout_style == GTK_BUTTONBOX_EXPAND)
-    gadget = ctk_box_get_gadget (GTK_BOX (widget));
+  if (priv->layout_style == CTK_BUTTONBOX_EXPAND)
+    gadget = ctk_box_get_gadget (CTK_BOX (widget));
   else
     gadget = priv->gadget;
 
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum, natural,
                                      minimum_baseline, natural_baseline);
@@ -1026,12 +1026,12 @@ static void
 ctk_button_box_size_allocate (GtkWidget     *widget,
                               GtkAllocation *allocation)
 {
-  GtkButtonBoxPrivate *priv = GTK_BUTTON_BOX (widget)->priv;
+  GtkButtonBoxPrivate *priv = CTK_BUTTON_BOX (widget)->priv;
   GtkCssGadget *gadget;
   GdkRectangle clip;
 
-  if (priv->layout_style == GTK_BUTTONBOX_EXPAND)
-    gadget = ctk_box_get_gadget (GTK_BOX (widget));
+  if (priv->layout_style == CTK_BUTTONBOX_EXPAND)
+    gadget = ctk_box_get_gadget (CTK_BOX (widget));
   else
     gadget = priv->gadget;
 
@@ -1082,11 +1082,11 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
   gint i;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  bbox = GTK_BUTTON_BOX (widget);
+  bbox = CTK_BUTTON_BOX (widget);
   priv = bbox->priv;
 
-  orientation = ctk_orientable_get_orientation (GTK_ORIENTABLE (widget));
-  spacing = ctk_box_get_spacing (GTK_BOX (widget));
+  orientation = ctk_orientable_get_orientation (CTK_ORIENTABLE (widget));
+  spacing = ctk_box_get_spacing (CTK_BOX (widget));
 
   ctk_widget_style_get (widget,
                         "child-internal-pad-x", &ipad_x,
@@ -1100,15 +1100,15 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
   if (baseline != -1)
     {
       /* TODO: modify baseline based on baseline_pos && allocated_baseline*/
-      switch (ctk_box_get_baseline_position (GTK_BOX (widget)))
+      switch (ctk_box_get_baseline_position (CTK_BOX (widget)))
 	{
-	case GTK_BASELINE_POSITION_TOP:
+	case CTK_BASELINE_POSITION_TOP:
           /* keep baseline as is */
 	  break;
-	case GTK_BASELINE_POSITION_CENTER:
+	case CTK_BASELINE_POSITION_CENTER:
 	  baseline = baseline + (allocation->height - baseline_height) / 2;
 	  break;
-	case GTK_BASELINE_POSITION_BOTTOM:
+	case CTK_BASELINE_POSITION_BOTTOM:
 	  baseline = allocation->height - (baseline_height - baseline);
 	  break;
 	}
@@ -1117,13 +1117,13 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
   n_primaries = nvis_children - n_secondaries;
   primary_size = 0;
   secondary_size = 0;
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     sizes = widths;
   else
     sizes = heights;
 
   i = 0;
-  list = children = _ctk_box_get_children (GTK_BOX (widget));
+  list = children = _ctk_box_get_children (CTK_BOX (widget));
   while (children)
     {
       GtkWidget *child;
@@ -1142,16 +1142,16 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
     }
   total_size = primary_size + secondary_size;
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     width = allocation->width;
   else
     height = allocation->height;
 
   switch (priv->layout_style)
     {
-      case GTK_BUTTONBOX_SPREAD:
+      case CTK_BUTTONBOX_SPREAD:
 
-        if (orientation == GTK_ORIENTATION_HORIZONTAL)
+        if (orientation == CTK_ORIENTATION_HORIZONTAL)
           {
             childspacing = (width - total_size) / (nvis_children + 1);
             x = allocation->x + childspacing;
@@ -1166,9 +1166,9 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
 
         break;
 
-      case GTK_BUTTONBOX_EDGE:
+      case CTK_BUTTONBOX_EDGE:
 
-        if (orientation == GTK_ORIENTATION_HORIZONTAL)
+        if (orientation == CTK_ORIENTATION_HORIZONTAL)
           {
             if (nvis_children >= 2)
               {
@@ -1215,9 +1215,9 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
 
         break;
 
-      case GTK_BUTTONBOX_START:
+      case CTK_BUTTONBOX_START:
 
-        if (orientation == GTK_ORIENTATION_HORIZONTAL)
+        if (orientation == CTK_ORIENTATION_HORIZONTAL)
           {
             childspacing = spacing;
             x = allocation->x;
@@ -1234,9 +1234,9 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
 
         break;
 
-      case GTK_BUTTONBOX_END:
+      case CTK_BUTTONBOX_END:
 
-        if (orientation == GTK_ORIENTATION_HORIZONTAL)
+        if (orientation == CTK_ORIENTATION_HORIZONTAL)
           {
             childspacing = spacing;
             x = allocation->x + allocation->width
@@ -1253,9 +1253,9 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
 
         break;
 
-      case GTK_BUTTONBOX_CENTER:
+      case CTK_BUTTONBOX_CENTER:
 
-        if (orientation == GTK_ORIENTATION_HORIZONTAL)
+        if (orientation == CTK_ORIENTATION_HORIZONTAL)
           {
             childspacing = spacing;
             x = allocation->x +
@@ -1296,7 +1296,7 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
           child_allocation.height = heights[i];
 	  child_baseline = -1;
 
-          if (orientation == GTK_ORIENTATION_HORIZONTAL)
+          if (orientation == CTK_ORIENTATION_HORIZONTAL)
             {
 	      if (baselines[i] != -1)
 		{
@@ -1317,7 +1317,7 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
                   x += child_allocation.width + childspacing;
                 }
 
-              if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+              if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
                   child_allocation.x = (allocation->x + allocation->width)
                           - (child_allocation.x + child_allocation.width - allocation->x);
             }
@@ -1347,7 +1347,7 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
   g_free (heights);
   g_free (baselines);
 
-  ctk_container_get_children_clip (GTK_CONTAINER (widget), out_clip);
+  ctk_container_get_children_clip (CTK_CONTAINER (widget), out_clip);
 }
 
 /**
@@ -1363,7 +1363,7 @@ ctk_button_box_allocate (GtkCssGadget        *gadget,
 GtkWidget *
 ctk_button_box_new (GtkOrientation orientation)
 {
-  return g_object_new (GTK_TYPE_BUTTON_BOX,
+  return g_object_new (CTK_TYPE_BUTTON_BOX,
                        "orientation", orientation,
                        NULL);
 }
@@ -1384,10 +1384,10 @@ gboolean
 ctk_button_box_get_child_non_homogeneous (GtkButtonBox *widget,
                                           GtkWidget    *child)
 {
-  g_return_val_if_fail (GTK_IS_BUTTON_BOX (widget), FALSE);
-  g_return_val_if_fail (GTK_IS_WIDGET (child), FALSE);
+  g_return_val_if_fail (CTK_IS_BUTTON_BOX (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (child), FALSE);
 
-  return (g_object_get_data (G_OBJECT (child), GTK_BOX_NON_HOMOGENEOUS) != NULL);
+  return (g_object_get_data (G_OBJECT (child), CTK_BOX_NON_HOMOGENEOUS) != NULL);
 }
 
 /**
@@ -1405,16 +1405,16 @@ ctk_button_box_set_child_non_homogeneous (GtkButtonBox *widget,
                                           GtkWidget    *child,
                                           gboolean      non_homogeneous)
 {
-  g_return_if_fail (GTK_IS_BUTTON_BOX (widget));
-  g_return_if_fail (GTK_IS_WIDGET (child));
-  g_return_if_fail (ctk_widget_get_parent (child) == GTK_WIDGET (widget));
+  g_return_if_fail (CTK_IS_BUTTON_BOX (widget));
+  g_return_if_fail (CTK_IS_WIDGET (child));
+  g_return_if_fail (ctk_widget_get_parent (child) == CTK_WIDGET (widget));
 
   g_object_set_data (G_OBJECT (child),
-                     GTK_BOX_NON_HOMOGENEOUS,
+                     CTK_BOX_NON_HOMOGENEOUS,
                      non_homogeneous ? GINT_TO_POINTER (1) : NULL);
   ctk_widget_child_notify (child, "non-homogeneous");
 
-  if (ctk_widget_get_visible (GTK_WIDGET (widget)) &&
+  if (ctk_widget_get_visible (CTK_WIDGET (widget)) &&
       ctk_widget_get_visible (child))
     ctk_widget_queue_resize (child);
 }

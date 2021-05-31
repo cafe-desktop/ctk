@@ -22,7 +22,7 @@
 	/>
 	<UserMacro
 		Name="GtkVersion"
-		Value="@GTK_VERSION@"
+		Value="@CTK_VERSION@"
 	/>
 	<UserMacro
 		Name="GtkLibtoolCompatibleDllPrefix"

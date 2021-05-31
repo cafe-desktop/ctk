@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_MENU_BAR_H__
-#define __GTK_MENU_BAR_H__
+#ifndef __CTK_MENU_BAR_H__
+#define __CTK_MENU_BAR_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -36,12 +36,12 @@
 G_BEGIN_DECLS
 
 
-#define	GTK_TYPE_MENU_BAR               (ctk_menu_bar_get_type ())
-#define GTK_MENU_BAR(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MENU_BAR, GtkMenuBar))
-#define GTK_MENU_BAR_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MENU_BAR, GtkMenuBarClass))
-#define GTK_IS_MENU_BAR(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MENU_BAR))
-#define GTK_IS_MENU_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_MENU_BAR))
-#define GTK_MENU_BAR_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_MENU_BAR, GtkMenuBarClass))
+#define	CTK_TYPE_MENU_BAR               (ctk_menu_bar_get_type ())
+#define CTK_MENU_BAR(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_BAR, GtkMenuBar))
+#define CTK_MENU_BAR_CLASS(klass)       (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_BAR, GtkMenuBarClass))
+#define CTK_IS_MENU_BAR(obj)            (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MENU_BAR))
+#define CTK_IS_MENU_BAR_CLASS(klass)    (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MENU_BAR))
+#define CTK_MENU_BAR_GET_CLASS(obj)     (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_BAR, GtkMenuBarClass))
 
 typedef struct _GtkMenuBar         GtkMenuBar;
 typedef struct _GtkMenuBarPrivate  GtkMenuBarPrivate;
@@ -95,4 +95,4 @@ GList* _ctk_menu_bar_get_viewable_menu_bars (GtkWindow *window);
 G_END_DECLS
 
 
-#endif /* __GTK_MENU_BAR_H__ */
+#endif /* __CTK_MENU_BAR_H__ */

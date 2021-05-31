@@ -65,7 +65,7 @@ ctk_printer_cups_register_type (GTypeModule *module)
   };
 
  ctk_printer_cups_type = g_type_module_register_type (module,
-                                                      GTK_TYPE_PRINTER,
+                                                      CTK_TYPE_PRINTER,
                                                       "GtkPrinterCups",
                                                       &object_info, 0);
 }
@@ -151,7 +151,7 @@ ctk_printer_cups_finalize (GObject *object)
 
   g_return_if_fail (object != NULL);
 
-  printer = GTK_PRINTER_CUPS (object);
+  printer = CTK_PRINTER_CUPS (object);
 
   g_free (printer->device_uri);
   g_free (printer->original_device_uri);
@@ -233,7 +233,7 @@ ctk_printer_cups_get_property (GObject    *object,
                                GParamSpec *pspec)
 {
 #ifdef HAVE_COLORD
-  GtkPrinterCups *printer = GTK_PRINTER_CUPS (object);
+  GtkPrinterCups *printer = CTK_PRINTER_CUPS (object);
 #endif
 
   switch (prop_id)
@@ -317,7 +317,7 @@ colord_client_profile_connect_cb (GObject *source_object,
 {
   gboolean ret;
   GError *error = NULL;
-  GtkPrinterCups *printer = GTK_PRINTER_CUPS (user_data);
+  GtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
 
   ret = cd_profile_connect_finish (CD_PROFILE (source_object),
                                    res,
@@ -340,7 +340,7 @@ colord_client_device_get_profile_for_qualifiers_cb (GObject *source_object,
                                                     GAsyncResult *res,
                                                     gpointer user_data)
 {
-  GtkPrinterCups *printer = GTK_PRINTER_CUPS (user_data);
+  GtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
   GError *error = NULL;
 
   printer->colord_profile = cd_device_get_profile_for_qualifiers_finish (printer->colord_device,
@@ -441,7 +441,7 @@ colord_client_device_connect_cb (GObject *source_object,
                                  GAsyncResult *res,
                                  gpointer user_data)
 {
-  GtkPrinterCups *printer = GTK_PRINTER_CUPS (user_data);
+  GtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
   gboolean ret;
   GError *error = NULL;
 
@@ -466,7 +466,7 @@ colord_client_find_device_cb (GObject *source_object,
                               GAsyncResult *res,
                               gpointer user_data)
 {
-  GtkPrinterCups *printer = GTK_PRINTER_CUPS (user_data);
+  GtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
   GError *error = NULL;
 
   /* get the new device */
@@ -522,7 +522,7 @@ colord_update_device (GtkPrinterCups *printer)
     }
 
   /* generate a known ID */
-  colord_device_id = g_strdup_printf ("cups-%s", ctk_printer_get_name (GTK_PRINTER (printer)));
+  colord_device_id = g_strdup_printf ("cups-%s", ctk_printer_get_name (CTK_PRINTER (printer)));
 
   g_cancellable_reset (printer->colord_cancellable);
   cd_client_find_device (printer->colord_client,
@@ -544,7 +544,7 @@ colord_client_connect_cb (GObject *source_object,
 {
   gboolean ret;
   GError *error = NULL;
-  GtkPrinterCups *printer = GTK_PRINTER_CUPS (user_data);
+  GtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
   static gboolean colord_warned = FALSE;
 
   ret = cd_client_connect_finish (CD_CLIENT (source_object),
@@ -600,13 +600,13 @@ ctk_printer_cups_new (const char      *name,
   accepts_pdf = FALSE;
 #endif
 
-  result = g_object_new (GTK_TYPE_PRINTER_CUPS,
+  result = g_object_new (CTK_TYPE_PRINTER_CUPS,
 			 "name", name,
 			 "backend", backend,
 			 "is-virtual", FALSE,
 			 "accepts-pdf", accepts_pdf,
                          NULL);
-  printer = GTK_PRINTER_CUPS (result);
+  printer = CTK_PRINTER_CUPS (result);
 
 #ifdef HAVE_COLORD
   /* connect to colord */
@@ -650,7 +650,7 @@ ctk_printer_cups_get_ppd_name (GtkPrinterCups  *printer)
   result = printer->ppd_name;
 
   if (result == NULL)
-    result = ctk_printer_get_name (GTK_PRINTER (printer));
+    result = ctk_printer_get_name (CTK_PRINTER (printer));
 
   return result;
 }

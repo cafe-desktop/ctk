@@ -330,11 +330,11 @@ msgstr "Penting?"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Menentukan apakah aksi ini penting atau tidak. Jika diisi TRUE, proksi "
 "toolitem untuk aksi ini akan menampilkan teks pada moda "
-"GTK_TOOLBAR_BOTH_HORIZ."
+"CTK_TOOLBAR_BOTH_HORIZ."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1805,8 +1805,8 @@ msgid "Default Spacing"
 msgstr "Jarak default"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Ruangan tambahan untuk tombol GTK_CAN_DEFAULT"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Ruangan tambahan untuk tombol CTK_CAN_DEFAULT"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1814,10 +1814,10 @@ msgstr "Jarak luar default"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Ruang tambahan untuk tombol GTK_CAN_DEFAULT yang selalu digambar di luar "
+"Ruang tambahan untuk tombol CTK_CAN_DEFAULT yang selalu digambar di luar "
 "batas tombol"
 
 #: gtk/gtkbutton.c:556
@@ -4297,9 +4297,9 @@ msgid "Baseline Row"
 msgstr "Baris Baseline"
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
-"Baris untuk meratakan ke baseline ketika valign berisi GTK_ALIGN_BASELINE"
+"Baris untuk meratakan ke baseline ketika valign berisi CTK_ALIGN_BASELINE"
 
 #: gtk/gtkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -8498,11 +8498,11 @@ msgstr "Jarak dalam piksel antara ikon dan label"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Menentukan apakah isi batang alat ini penting atau tidak. Bila diisi TRUE, "
 "maka tombol dalam batang alat akan menampilkan teks dalam moda "
-"GTK_TOOLBAR_BOTH_HORIZ"
+"CTK_TOOLBAR_BOTH_HORIZ"
 
 #: gtk/gtktoolitemgroup.c:1640
 msgid "The human-readable title of this item group"

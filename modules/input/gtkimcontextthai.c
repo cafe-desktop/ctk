@@ -28,11 +28,11 @@ static void     ctk_im_context_thai_init                (GtkIMContextThai      *
 static gboolean ctk_im_context_thai_filter_keypress     (GtkIMContext          *context,
 						         GdkEventKey           *key);
 
-#ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
+#ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
 static void     forget_previous_chars (GtkIMContextThai *context_thai);
 static void     remember_previous_char (GtkIMContextThai *context_thai,
                                         gunichar new_char);
-#endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
+#endif /* !CTK_IM_CONTEXT_THAI_NO_FALLBACK */
 
 static GObjectClass *parent_class;
 
@@ -56,7 +56,7 @@ ctk_im_context_thai_register_type (GTypeModule *type_module)
 
   ctk_type_im_context_thai = 
     g_type_module_register_type (type_module,
-                                 GTK_TYPE_IM_CONTEXT,
+                                 CTK_TYPE_IM_CONTEXT,
                                  "GtkIMContextThai",
                                  &im_context_thai_info, 0);
 }
@@ -64,7 +64,7 @@ ctk_im_context_thai_register_type (GTypeModule *type_module)
 static void
 ctk_im_context_thai_class_init (GtkIMContextThaiClass *class)
 {
-  GtkIMContextClass *im_context_class = GTK_IM_CONTEXT_CLASS (class);
+  GtkIMContextClass *im_context_class = CTK_IM_CONTEXT_CLASS (class);
 
   parent_class = g_type_class_peek_parent (class);
 
@@ -74,9 +74,9 @@ ctk_im_context_thai_class_init (GtkIMContextThaiClass *class)
 static void
 ctk_im_context_thai_init (GtkIMContextThai *context_thai)
 {
-#ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
+#ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
   forget_previous_chars (context_thai);
-#endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
+#endif /* !CTK_IM_CONTEXT_THAI_NO_FALLBACK */
   context_thai->isc_mode = ISC_BASICCHECK;
 }
 
@@ -85,9 +85,9 @@ ctk_im_context_thai_new (void)
 {
   GtkIMContextThai *result;
 
-  result = GTK_IM_CONTEXT_THAI (g_object_new (GTK_TYPE_IM_CONTEXT_THAI, NULL));
+  result = CTK_IM_CONTEXT_THAI (g_object_new (CTK_TYPE_IM_CONTEXT_THAI, NULL));
 
-  return GTK_IM_CONTEXT (result);
+  return CTK_IM_CONTEXT (result);
 }
 
 GtkIMContextThaiISCMode
@@ -160,7 +160,7 @@ thai_is_accept (gunichar new_char, gunichar prev_char, gint isc_mode)
 
 #define thai_is_composible(n,p)  (TAC_compose_input ((p), (n)) == 'C')
 
-#ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
+#ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
 static void
 forget_previous_chars (GtkIMContextThai *context_thai)
 {
@@ -171,10 +171,10 @@ static void
 remember_previous_char (GtkIMContextThai *context_thai, gunichar new_char)
 {
   memmove (context_thai->char_buff + 1, context_thai->char_buff,
-           (GTK_IM_CONTEXT_THAI_BUFF_SIZE - 1) * sizeof (context_thai->char_buff[0]));
+           (CTK_IM_CONTEXT_THAI_BUFF_SIZE - 1) * sizeof (context_thai->char_buff[0]));
   context_thai->char_buff[0] = new_char;
 }
-#endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
+#endif /* !CTK_IM_CONTEXT_THAI_NO_FALLBACK */
 
 static gunichar
 get_previous_char (GtkIMContextThai *context_thai, gint offset)
@@ -201,14 +201,14 @@ get_previous_char (GtkIMContextThai *context_thai, gint offset)
       g_free (surrounding);
       return prev_char;
     }
-#ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
+#ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
   else
     {
       offset = -offset - 1;
-      if (0 <= offset && offset < GTK_IM_CONTEXT_THAI_BUFF_SIZE)
+      if (0 <= offset && offset < CTK_IM_CONTEXT_THAI_BUFF_SIZE)
         return context_thai->char_buff[offset];
     }
-#endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
+#endif /* !CTK_IM_CONTEXT_THAI_NO_FALLBACK */
 
     return 0;
 }
@@ -232,9 +232,9 @@ ctk_im_context_thai_commit_chars (GtkIMContextThai *context_thai,
 static gboolean
 accept_input (GtkIMContextThai *context_thai, gunichar new_char)
 {
-#ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
+#ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
   remember_previous_char (context_thai, new_char);
-#endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
+#endif /* !CTK_IM_CONTEXT_THAI_NO_FALLBACK */
 
   return ctk_im_context_thai_commit_chars (context_thai, &new_char, 1);
 }
@@ -245,14 +245,14 @@ reorder_input (GtkIMContextThai *context_thai,
 {
   gunichar buf[2];
 
-  if (!ctk_im_context_delete_surrounding (GTK_IM_CONTEXT (context_thai), -1, 1))
+  if (!ctk_im_context_delete_surrounding (CTK_IM_CONTEXT (context_thai), -1, 1))
     return FALSE;
 
-#ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
+#ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
   forget_previous_chars (context_thai);
   remember_previous_char (context_thai, new_char);
   remember_previous_char (context_thai, prev_char);
-#endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
+#endif /* !CTK_IM_CONTEXT_THAI_NO_FALLBACK */
 
   buf[0] = new_char;
   buf[1] = prev_char;
@@ -262,13 +262,13 @@ reorder_input (GtkIMContextThai *context_thai,
 static gboolean
 replace_input (GtkIMContextThai *context_thai, gunichar new_char)
 {
-  if (!ctk_im_context_delete_surrounding (GTK_IM_CONTEXT (context_thai), -1, 1))
+  if (!ctk_im_context_delete_surrounding (CTK_IM_CONTEXT (context_thai), -1, 1))
     return FALSE;
 
-#ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
+#ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
   forget_previous_chars (context_thai);
   remember_previous_char (context_thai, new_char);
-#endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
+#endif /* !CTK_IM_CONTEXT_THAI_NO_FALLBACK */
 
   return ctk_im_context_thai_commit_chars (context_thai, &new_char, 1);
 }
@@ -277,7 +277,7 @@ static gboolean
 ctk_im_context_thai_filter_keypress (GtkIMContext *context,
                                      GdkEventKey  *event)
 {
-  GtkIMContextThai *context_thai = GTK_IM_CONTEXT_THAI (context);
+  GtkIMContextThai *context_thai = CTK_IM_CONTEXT_THAI (context);
   gunichar prev_char, new_char;
   gboolean is_reject;
   GtkIMContextThaiISCMode isc_mode;
@@ -289,9 +289,9 @@ ctk_im_context_thai_filter_keypress (GtkIMContext *context,
                       & ~(GDK_SHIFT_MASK | GDK_LOCK_MASK | GDK_MOD2_MASK)) ||
       is_context_lost_key (event->keyval))
     {
-#ifndef GTK_IM_CONTEXT_THAI_NO_FALLBACK
+#ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
       forget_previous_chars (context_thai);
-#endif /* !GTK_IM_CONTEXT_THAI_NO_FALLBACK */
+#endif /* !CTK_IM_CONTEXT_THAI_NO_FALLBACK */
       return FALSE;
     }
   if (event->keyval == 0 || is_context_intact_key (event->keyval))

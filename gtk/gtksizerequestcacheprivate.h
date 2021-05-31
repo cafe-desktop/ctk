@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_SIZE_REQUEST_CACHE_PRIVATE_H__
-#define __GTK_SIZE_REQUEST_CACHE_PRIVATE_H__
+#ifndef __CTK_SIZE_REQUEST_CACHE_PRIVATE_H__
+#define __CTK_SIZE_REQUEST_CACHE_PRIVATE_H__
 
 #include <glib.h>
 #include <gtk/gtkenums.h>
@@ -36,7 +36,7 @@ G_BEGIN_DECLS
  * only wrap to 3 lines, only 3 caches will
  * ever be allocated for it.
  */
-#define GTK_SIZE_REQUEST_CACHED_SIZES   (5)
+#define CTK_SIZE_REQUEST_CACHED_SIZES   (5)
 
 typedef struct {
   gint minimum_size;
@@ -101,4 +101,4 @@ gboolean        _ctk_size_request_cache_lookup                  (SizeRequestCach
 
 G_END_DECLS
 
-#endif /* __GTK_SIZE_REQUEST_CACHE_PRIVATE_H__ */
+#endif /* __CTK_SIZE_REQUEST_CACHE_PRIVATE_H__ */

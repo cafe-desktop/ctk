@@ -103,7 +103,7 @@ ctk_style_cascade_get_style_property (GtkStyleProvider *provider,
                                       GParamSpec       *pspec,
                                       GValue           *value)
 {
-  GtkStyleCascade *cascade = GTK_STYLE_CASCADE (provider);
+  GtkStyleCascade *cascade = CTK_STYLE_CASCADE (provider);
   GtkStyleCascadeIter iter;
   GtkStyleProvider *item;
 
@@ -135,7 +135,7 @@ ctk_style_cascade_provider_iface_init (GtkStyleProviderIface *iface)
 static GtkSettings *
 ctk_style_cascade_get_settings (GtkStyleProviderPrivate *provider)
 {
-  GtkStyleCascade *cascade = GTK_STYLE_CASCADE (provider);
+  GtkStyleCascade *cascade = CTK_STYLE_CASCADE (provider);
   GtkStyleCascadeIter iter;
   GtkSettings *settings;
   GtkStyleProvider *item;
@@ -144,10 +144,10 @@ ctk_style_cascade_get_settings (GtkStyleProviderPrivate *provider)
        item;
        item = ctk_style_cascade_iter_next (cascade, &iter))
     {
-      if (!GTK_IS_STYLE_PROVIDER_PRIVATE (item))
+      if (!CTK_IS_STYLE_PROVIDER_PRIVATE (item))
         continue;
           
-      settings = _ctk_style_provider_private_get_settings (GTK_STYLE_PROVIDER_PRIVATE (item));
+      settings = _ctk_style_provider_private_get_settings (CTK_STYLE_PROVIDER_PRIVATE (item));
       if (settings)
         {
           ctk_style_cascade_iter_clear (&iter);
@@ -163,7 +163,7 @@ static GtkCssValue *
 ctk_style_cascade_get_color (GtkStyleProviderPrivate *provider,
                              const char              *name)
 {
-  GtkStyleCascade *cascade = GTK_STYLE_CASCADE (provider);
+  GtkStyleCascade *cascade = CTK_STYLE_CASCADE (provider);
   GtkStyleCascadeIter iter;
   GtkCssValue *color;
   GtkStyleProvider *item;
@@ -172,9 +172,9 @@ ctk_style_cascade_get_color (GtkStyleProviderPrivate *provider,
        item;
        item = ctk_style_cascade_iter_next (cascade, &iter))
     {
-      if (GTK_IS_STYLE_PROVIDER_PRIVATE (item))
+      if (CTK_IS_STYLE_PROVIDER_PRIVATE (item))
         {
-          color = _ctk_style_provider_private_get_color (GTK_STYLE_PROVIDER_PRIVATE (item), name);
+          color = _ctk_style_provider_private_get_color (CTK_STYLE_PROVIDER_PRIVATE (item), name);
           if (color)
             {
               ctk_style_cascade_iter_clear (&iter);
@@ -194,7 +194,7 @@ ctk_style_cascade_get_color (GtkStyleProviderPrivate *provider,
 static int
 ctk_style_cascade_get_scale (GtkStyleProviderPrivate *provider)
 {
-  GtkStyleCascade *cascade = GTK_STYLE_CASCADE (provider);
+  GtkStyleCascade *cascade = CTK_STYLE_CASCADE (provider);
 
   return cascade->scale;
 }
@@ -203,7 +203,7 @@ static GtkCssKeyframes *
 ctk_style_cascade_get_keyframes (GtkStyleProviderPrivate *provider,
                                  const char              *name)
 {
-  GtkStyleCascade *cascade = GTK_STYLE_CASCADE (provider);
+  GtkStyleCascade *cascade = CTK_STYLE_CASCADE (provider);
   GtkStyleCascadeIter iter;
   GtkCssKeyframes *keyframes;
   GtkStyleProvider *item;
@@ -212,10 +212,10 @@ ctk_style_cascade_get_keyframes (GtkStyleProviderPrivate *provider,
        item;
        item = ctk_style_cascade_iter_next (cascade, &iter))
     {
-      if (!GTK_IS_STYLE_PROVIDER_PRIVATE (item))
+      if (!CTK_IS_STYLE_PROVIDER_PRIVATE (item))
         continue;
           
-      keyframes = _ctk_style_provider_private_get_keyframes (GTK_STYLE_PROVIDER_PRIVATE (item), name);
+      keyframes = _ctk_style_provider_private_get_keyframes (CTK_STYLE_PROVIDER_PRIVATE (item), name);
       if (keyframes)
         {
           ctk_style_cascade_iter_clear (&iter);
@@ -233,7 +233,7 @@ ctk_style_cascade_lookup (GtkStyleProviderPrivate *provider,
                           GtkCssLookup            *lookup,
                           GtkCssChange            *change)
 {
-  GtkStyleCascade *cascade = GTK_STYLE_CASCADE (provider);
+  GtkStyleCascade *cascade = CTK_STYLE_CASCADE (provider);
   GtkStyleCascadeIter iter;
   GtkStyleProvider *item;
   GtkCssChange iter_change;
@@ -243,7 +243,7 @@ ctk_style_cascade_lookup (GtkStyleProviderPrivate *provider,
        item = ctk_style_cascade_iter_next (cascade, &iter))
     {
       GtkStyleProviderPrivate *sp = (GtkStyleProviderPrivate*)item;
-      if (GTK_IS_STYLE_PROVIDER_PRIVATE (sp))
+      if (CTK_IS_STYLE_PROVIDER_PRIVATE (sp))
         {
           _ctk_style_provider_private_lookup (sp, matcher, lookup,
                                               change ? &iter_change : NULL);
@@ -270,15 +270,15 @@ ctk_style_cascade_provider_private_iface_init (GtkStyleProviderPrivateInterface 
 }
 
 G_DEFINE_TYPE_EXTENDED (GtkStyleCascade, _ctk_style_cascade, G_TYPE_OBJECT, 0,
-                        G_IMPLEMENT_INTERFACE (GTK_TYPE_STYLE_PROVIDER,
+                        G_IMPLEMENT_INTERFACE (CTK_TYPE_STYLE_PROVIDER,
                                                ctk_style_cascade_provider_iface_init)
-                        G_IMPLEMENT_INTERFACE (GTK_TYPE_STYLE_PROVIDER_PRIVATE,
+                        G_IMPLEMENT_INTERFACE (CTK_TYPE_STYLE_PROVIDER_PRIVATE,
                                                ctk_style_cascade_provider_private_iface_init));
 
 static void
 ctk_style_cascade_dispose (GObject *object)
 {
-  GtkStyleCascade *cascade = GTK_STYLE_CASCADE (object);
+  GtkStyleCascade *cascade = CTK_STYLE_CASCADE (object);
 
   _ctk_style_cascade_set_parent (cascade, NULL);
   g_array_unref (cascade->providers);
@@ -315,15 +315,15 @@ _ctk_style_cascade_init (GtkStyleCascade *cascade)
 GtkStyleCascade *
 _ctk_style_cascade_new (void)
 {
-  return g_object_new (GTK_TYPE_STYLE_CASCADE, NULL);
+  return g_object_new (CTK_TYPE_STYLE_CASCADE, NULL);
 }
 
 void
 _ctk_style_cascade_set_parent (GtkStyleCascade *cascade,
                                GtkStyleCascade *parent)
 {
-  ctk_internal_return_if_fail (GTK_IS_STYLE_CASCADE (cascade));
-  ctk_internal_return_if_fail (parent == NULL || GTK_IS_STYLE_CASCADE (parent));
+  ctk_internal_return_if_fail (CTK_IS_STYLE_CASCADE (cascade));
+  ctk_internal_return_if_fail (parent == NULL || CTK_IS_STYLE_CASCADE (parent));
 
   if (cascade->parent == parent)
     return;
@@ -356,9 +356,9 @@ _ctk_style_cascade_add_provider (GtkStyleCascade  *cascade,
   GtkStyleProviderData data;
   guint i;
 
-  ctk_internal_return_if_fail (GTK_IS_STYLE_CASCADE (cascade));
-  ctk_internal_return_if_fail (GTK_IS_STYLE_PROVIDER (provider));
-  ctk_internal_return_if_fail (GTK_STYLE_PROVIDER (cascade) != provider);
+  ctk_internal_return_if_fail (CTK_IS_STYLE_CASCADE (cascade));
+  ctk_internal_return_if_fail (CTK_IS_STYLE_PROVIDER (provider));
+  ctk_internal_return_if_fail (CTK_STYLE_PROVIDER (cascade) != provider);
 
   data.provider = g_object_ref (provider);
   data.priority = priority;
@@ -377,7 +377,7 @@ _ctk_style_cascade_add_provider (GtkStyleCascade  *cascade,
     }
   g_array_insert_val (cascade->providers, i, data);
 
-  _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (cascade));
+  _ctk_style_provider_private_changed (CTK_STYLE_PROVIDER_PRIVATE (cascade));
 }
 
 void
@@ -386,8 +386,8 @@ _ctk_style_cascade_remove_provider (GtkStyleCascade  *cascade,
 {
   guint i;
 
-  ctk_internal_return_if_fail (GTK_IS_STYLE_CASCADE (cascade));
-  ctk_internal_return_if_fail (GTK_IS_STYLE_PROVIDER (provider));
+  ctk_internal_return_if_fail (CTK_IS_STYLE_CASCADE (cascade));
+  ctk_internal_return_if_fail (CTK_IS_STYLE_PROVIDER (provider));
 
   for (i = 0; i < cascade->providers->len; i++)
     {
@@ -397,7 +397,7 @@ _ctk_style_cascade_remove_provider (GtkStyleCascade  *cascade,
         {
           g_array_remove_index (cascade->providers, i);
   
-          _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (cascade));
+          _ctk_style_provider_private_changed (CTK_STYLE_PROVIDER_PRIVATE (cascade));
           break;
         }
     }
@@ -407,20 +407,20 @@ void
 _ctk_style_cascade_set_scale (GtkStyleCascade *cascade,
                               int              scale)
 {
-  ctk_internal_return_if_fail (GTK_IS_STYLE_CASCADE (cascade));
+  ctk_internal_return_if_fail (CTK_IS_STYLE_CASCADE (cascade));
 
   if (cascade->scale == scale)
     return;
 
   cascade->scale = scale;
 
-  _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (cascade));
+  _ctk_style_provider_private_changed (CTK_STYLE_PROVIDER_PRIVATE (cascade));
 }
 
 int
 _ctk_style_cascade_get_scale (GtkStyleCascade *cascade)
 {
-  ctk_internal_return_val_if_fail (GTK_IS_STYLE_CASCADE (cascade), 1);
+  ctk_internal_return_val_if_fail (CTK_IS_STYLE_CASCADE (cascade), 1);
 
   return cascade->scale;
 }

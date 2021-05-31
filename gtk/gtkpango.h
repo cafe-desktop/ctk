@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_PANGO_H__
-#define __GTK_PANGO_H__
+#ifndef __CTK_PANGO_H__
+#define __CTK_PANGO_H__
 
 
 #include <pango/pangocairo.h>
@@ -87,4 +87,4 @@ PangoDirection _ctk_pango_find_base_dir (const gchar *text,
 
 G_END_DECLS
 
-#endif /* __GTK_PANGO_H__ */
+#endif /* __CTK_PANGO_H__ */

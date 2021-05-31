@@ -51,7 +51,7 @@ static void hold_action (GtkGestureLongPress *gesture,
                          gdouble              y,
                          GtkColorScale       *scale);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkColorScale, ctk_color_scale, GTK_TYPE_SCALE)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkColorScale, ctk_color_scale, CTK_TYPE_SCALE)
 
 void
 ctk_color_scale_draw_trough (GtkColorScale  *scale,
@@ -69,18 +69,18 @@ ctk_color_scale_draw_trough (GtkColorScale  *scale,
   cairo_save (cr);
   cairo_translate (cr, x, y);
 
-  widget = GTK_WIDGET (scale);
+  widget = CTK_WIDGET (scale);
   cairo_rectangle (cr, 0, 0, width, height);
   cairo_clip (cr);
 
-  if (ctk_orientable_get_orientation (GTK_ORIENTABLE (widget)) == GTK_ORIENTATION_HORIZONTAL &&
-      ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+  if (ctk_orientable_get_orientation (CTK_ORIENTABLE (widget)) == CTK_ORIENTATION_HORIZONTAL &&
+      ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
     {
       cairo_translate (cr, width, 0);
       cairo_scale (cr, -1, 1);
     }
 
-  if (scale->priv->type == GTK_COLOR_SCALE_HUE)
+  if (scale->priv->type == CTK_COLOR_SCALE_HUE)
     {
       gint stride;
       cairo_surface_t *tmp;
@@ -119,7 +119,7 @@ ctk_color_scale_draw_trough (GtkColorScale  *scale,
       cairo_surface_destroy (tmp);
       g_free (data);
     }
-  else if (scale->priv->type == GTK_COLOR_SCALE_ALPHA)
+  else if (scale->priv->type == CTK_COLOR_SCALE_ALPHA)
     {
       cairo_pattern_t *pattern;
       cairo_matrix_t matrix;
@@ -155,22 +155,22 @@ ctk_color_scale_init (GtkColorScale *scale)
 
   scale->priv = ctk_color_scale_get_instance_private (scale);
 
-  ctk_widget_add_events (GTK_WIDGET (scale), GDK_TOUCH_MASK);
+  ctk_widget_add_events (CTK_WIDGET (scale), GDK_TOUCH_MASK);
 
-  scale->priv->long_press_gesture = ctk_gesture_long_press_new (GTK_WIDGET (scale));
+  scale->priv->long_press_gesture = ctk_gesture_long_press_new (CTK_WIDGET (scale));
   g_signal_connect (scale->priv->long_press_gesture, "pressed",
                     G_CALLBACK (hold_action), scale);
-  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (scale->priv->long_press_gesture),
-                                              GTK_PHASE_TARGET);
+  ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (scale->priv->long_press_gesture),
+                                              CTK_PHASE_TARGET);
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (scale));
+  context = ctk_widget_get_style_context (CTK_WIDGET (scale));
   ctk_style_context_add_class (context, "color");
 }
 
 static void
 scale_finalize (GObject *object)
 {
-  GtkColorScale *scale = GTK_COLOR_SCALE (object);
+  GtkColorScale *scale = CTK_COLOR_SCALE (object);
 
   g_clear_object (&scale->priv->long_press_gesture);
 
@@ -183,7 +183,7 @@ scale_get_property (GObject    *object,
                     GValue     *value,
                     GParamSpec *pspec)
 {
-  GtkColorScale *scale = GTK_COLOR_SCALE (object);
+  GtkColorScale *scale = CTK_COLOR_SCALE (object);
 
   switch (prop_id)
     {
@@ -204,12 +204,12 @@ scale_set_type (GtkColorScale     *scale,
 
   scale->priv->type = type;
 
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (scale));
-  if (GTK_IS_ACCESSIBLE (atk_obj))
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (scale));
+  if (CTK_IS_ACCESSIBLE (atk_obj))
     {
-      if (type == GTK_COLOR_SCALE_HUE)
+      if (type == CTK_COLOR_SCALE_HUE)
         atk_object_set_name (atk_obj, C_("Color channel", "Hue"));
-      else if (type == GTK_COLOR_SCALE_ALPHA)
+      else if (type == CTK_COLOR_SCALE_ALPHA)
         atk_object_set_name (atk_obj, C_("Color channel", "Alpha"));
       atk_object_set_role (atk_obj, ATK_ROLE_COLOR_CHOOSER);
     }
@@ -221,7 +221,7 @@ scale_set_property (GObject      *object,
                     const GValue *value,
                     GParamSpec   *pspec)
 {
-  GtkColorScale *scale = GTK_COLOR_SCALE (object);
+  GtkColorScale *scale = CTK_COLOR_SCALE (object);
 
   switch (prop_id)
     {
@@ -257,7 +257,7 @@ ctk_color_scale_class_init (GtkColorScaleClass *class)
   g_object_class_install_property (object_class, PROP_SCALE_TYPE,
       g_param_spec_int ("scale-type", P_("Scale type"), P_("Scale type"),
                         0, 1, 0,
-                        GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+                        CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
 void
@@ -265,14 +265,14 @@ ctk_color_scale_set_rgba (GtkColorScale *scale,
                           const GdkRGBA *color)
 {
   scale->priv->color = *color;
-  ctk_widget_queue_draw (GTK_WIDGET (scale));
+  ctk_widget_queue_draw (CTK_WIDGET (scale));
 }
 
 GtkWidget *
 ctk_color_scale_new (GtkAdjustment     *adjustment,
                      GtkColorScaleType  type)
 {
-  return g_object_new (GTK_TYPE_COLOR_SCALE,
+  return g_object_new (CTK_TYPE_COLOR_SCALE,
                        "adjustment", adjustment,
                        "draw-value", FALSE,
                        "scale-type", type,

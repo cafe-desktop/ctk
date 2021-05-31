@@ -17,19 +17,19 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_CSS_ANIMATED_STYLE_PRIVATE_H__
-#define __GTK_CSS_ANIMATED_STYLE_PRIVATE_H__
+#ifndef __CTK_CSS_ANIMATED_STYLE_PRIVATE_H__
+#define __CTK_CSS_ANIMATED_STYLE_PRIVATE_H__
 
 #include "gtk/gtkcssstyleprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_ANIMATED_STYLE           (ctk_css_animated_style_get_type ())
-#define GTK_CSS_ANIMATED_STYLE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_ANIMATED_STYLE, GtkCssAnimatedStyle))
-#define GTK_CSS_ANIMATED_STYLE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_ANIMATED_STYLE, GtkCssAnimatedStyleClass))
-#define GTK_IS_CSS_ANIMATED_STYLE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_ANIMATED_STYLE))
-#define GTK_IS_CSS_ANIMATED_STYLE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_ANIMATED_STYLE))
-#define GTK_CSS_ANIMATED_STYLE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_ANIMATED_STYLE, GtkCssAnimatedStyleClass))
+#define CTK_TYPE_CSS_ANIMATED_STYLE           (ctk_css_animated_style_get_type ())
+#define CTK_CSS_ANIMATED_STYLE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_ANIMATED_STYLE, GtkCssAnimatedStyle))
+#define CTK_CSS_ANIMATED_STYLE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_ANIMATED_STYLE, GtkCssAnimatedStyleClass))
+#define CTK_IS_CSS_ANIMATED_STYLE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_ANIMATED_STYLE))
+#define CTK_IS_CSS_ANIMATED_STYLE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_ANIMATED_STYLE))
+#define CTK_CSS_ANIMATED_STYLE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_ANIMATED_STYLE, GtkCssAnimatedStyleClass))
 
 typedef struct _GtkCssAnimatedStyle           GtkCssAnimatedStyle;
 typedef struct _GtkCssAnimatedStyleClass      GtkCssAnimatedStyleClass;
@@ -70,4 +70,4 @@ GtkCssValue *           ctk_css_animated_style_get_intrinsic_value (GtkCssAnimat
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_ANIMATED_STYLE_PRIVATE_H__ */
+#endif /* __CTK_CSS_ANIMATED_STYLE_PRIVATE_H__ */

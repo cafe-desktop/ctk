@@ -16,8 +16,8 @@
  *
  * Author(s): Carlos Garnacho <carlosg@gnome.org>
  */
-#ifndef __GTK_GESTURE_PRIVATE_H__
-#define __GTK_GESTURE_PRIVATE_H__
+#ifndef __CTK_GESTURE_PRIVATE_H__
+#define __CTK_GESTURE_PRIVATE_H__
 
 #include "gtkeventcontrollerprivate.h"
 #include "gtkgesture.h"
@@ -72,4 +72,4 @@ gboolean _ctk_gesture_get_last_update_time   (GtkGesture       *gesture,
 
 G_END_DECLS
 
-#endif /* __GTK_GESTURE_PRIVATE_H__ */
+#endif /* __CTK_GESTURE_PRIVATE_H__ */

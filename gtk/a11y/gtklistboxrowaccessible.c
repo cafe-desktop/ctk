@@ -22,7 +22,7 @@
 #include "gtk/gtklistbox.h"
 
 
-G_DEFINE_TYPE (GtkListBoxRowAccessible, ctk_list_box_row_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (GtkListBoxRowAccessible, ctk_list_box_row_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
 ctk_list_box_row_accessible_init (GtkListBoxRowAccessible *accessible)
@@ -46,16 +46,16 @@ ctk_list_box_row_accessible_ref_state_set (AtkObject *obj)
 
   state_set = ATK_OBJECT_CLASS (ctk_list_box_row_accessible_parent_class)->ref_state_set (obj);
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget != NULL)
     {
       parent = ctk_widget_get_parent (widget);
       if (parent != NULL && 
-          GTK_IS_LIST_BOX (parent) &&
-          ctk_list_box_get_selection_mode (GTK_LIST_BOX (parent)) != GTK_SELECTION_NONE)
+          CTK_IS_LIST_BOX (parent) &&
+          ctk_list_box_get_selection_mode (CTK_LIST_BOX (parent)) != CTK_SELECTION_NONE)
         atk_state_set_add_state (state_set, ATK_STATE_SELECTABLE);
 
-      if (ctk_list_box_row_is_selected (GTK_LIST_BOX_ROW (widget)))
+      if (ctk_list_box_row_is_selected (CTK_LIST_BOX_ROW (widget)))
         atk_state_set_add_state (state_set, ATK_STATE_SELECTED);
     }
 

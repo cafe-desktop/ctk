@@ -427,7 +427,7 @@ static guint ui_manager_signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE_WITH_CODE (GtkUIManager, ctk_ui_manager, G_TYPE_OBJECT,
                          G_ADD_PRIVATE (GtkUIManager)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
 						ctk_ui_manager_buildable_init))
 
 static void
@@ -463,7 +463,7 @@ ctk_ui_manager_class_init (GtkUIManagerClass *klass)
 							 P_("Add tearoffs to menus"),
 							 P_("Whether tearoff menu items should be added to menus"),
                                                          FALSE,
-							 GTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+							 CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 
   g_object_class_install_property (gobject_class,
 				   PROP_UI,
@@ -471,7 +471,7 @@ ctk_ui_manager_class_init (GtkUIManagerClass *klass)
  							P_("Merged UI definition"),
 							P_("An XML string describing the merged UI"),
 							"<ui>\n</ui>\n",
-							GTK_PARAM_READABLE));
+							CTK_PARAM_READABLE));
 
 
   /**
@@ -495,7 +495,7 @@ ctk_ui_manager_class_init (GtkUIManagerClass *klass)
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, 
-		  GTK_TYPE_WIDGET);
+		  CTK_TYPE_WIDGET);
 
   /**
    * GtkUIManager::actions-changed:
@@ -542,8 +542,8 @@ ctk_ui_manager_class_init (GtkUIManagerClass *klass)
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_OBJECT,
 		  G_TYPE_NONE, 2, 
-		  GTK_TYPE_ACTION,
-		  GTK_TYPE_WIDGET);
+		  CTK_TYPE_ACTION,
+		  CTK_TYPE_WIDGET);
 
   /**
    * GtkUIManager::disconnect-proxy:
@@ -566,8 +566,8 @@ ctk_ui_manager_class_init (GtkUIManagerClass *klass)
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_OBJECT,
 		  G_TYPE_NONE, 2,
-		  GTK_TYPE_ACTION,
-		  GTK_TYPE_WIDGET);
+		  CTK_TYPE_ACTION,
+		  CTK_TYPE_WIDGET);
 
   /**
    * GtkUIManager::pre-activate:
@@ -592,7 +592,7 @@ ctk_ui_manager_class_init (GtkUIManagerClass *klass)
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GTK_TYPE_ACTION);
+		  CTK_TYPE_ACTION);
 
   /**
    * GtkUIManager::post-activate:
@@ -617,7 +617,7 @@ ctk_ui_manager_class_init (GtkUIManagerClass *klass)
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GTK_TYPE_ACTION);
+		  CTK_TYPE_ACTION);
 
   klass->add_widget = NULL;
   klass->actions_changed = NULL;
@@ -652,7 +652,7 @@ ctk_ui_manager_init (GtkUIManager *manager)
 static void
 ctk_ui_manager_finalize (GObject *object)
 {
-  GtkUIManager *manager = GTK_UI_MANAGER (object);
+  GtkUIManager *manager = CTK_UI_MANAGER (object);
   
   if (manager->private_data->update_tag != 0)
     {
@@ -690,15 +690,15 @@ ctk_ui_manager_buildable_add_child (GtkBuildable  *buildable,
 				    GObject       *child,
 				    const gchar   *type)
 {
-  GtkUIManager *manager = GTK_UI_MANAGER (buildable);
+  GtkUIManager *manager = CTK_UI_MANAGER (buildable);
   guint pos;
 
-  g_return_if_fail (GTK_IS_ACTION_GROUP (child));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (child));
 
   pos = g_list_length (manager->private_data->action_groups);
 
   ctk_ui_manager_insert_action_group (manager,
-				      GTK_ACTION_GROUP (child),
+				      CTK_ACTION_GROUP (child),
 				      pos);
 }
 
@@ -712,13 +712,13 @@ child_hierarchy_changed_cb (GtkWidget *widget,
   GSList *groups;
 
   toplevel = ctk_widget_get_toplevel (widget);
-  if (!toplevel || !GTK_IS_WINDOW (toplevel))
+  if (!toplevel || !CTK_IS_WINDOW (toplevel))
     return;
   
   group = ctk_ui_manager_get_accel_group (uimgr);
   groups = ctk_accel_groups_from_object (G_OBJECT (toplevel));
   if (g_slist_find (groups, group) == NULL)
-    ctk_window_add_accel_group (GTK_WINDOW (toplevel), group);
+    ctk_window_add_accel_group (CTK_WINDOW (toplevel), group);
 
   g_signal_handlers_disconnect_by_func (widget,
 					child_hierarchy_changed_cb,
@@ -734,7 +734,7 @@ ctk_ui_manager_buildable_construct_child (GtkBuildable *buildable,
   char *name;
 
   name = g_strdup_printf ("ui/%s", id);
-  widget = ctk_ui_manager_get_widget (GTK_UI_MANAGER (buildable), name);
+  widget = ctk_ui_manager_get_widget (CTK_UI_MANAGER (buildable), name);
   if (!widget)
     {
       g_error ("Unknown ui manager child: %s", name);
@@ -745,7 +745,7 @@ ctk_ui_manager_buildable_construct_child (GtkBuildable *buildable,
 
   g_signal_connect (widget, "hierarchy-changed",
 		    G_CALLBACK (child_hierarchy_changed_cb),
-		    GTK_UI_MANAGER (buildable));
+		    CTK_UI_MANAGER (buildable));
   return G_OBJECT (g_object_ref (widget));
 }
 
@@ -755,7 +755,7 @@ ctk_ui_manager_set_property (GObject         *object,
 			     const GValue    *value,
 			     GParamSpec      *pspec)
 {
-  GtkUIManager *manager = GTK_UI_MANAGER (object);
+  GtkUIManager *manager = CTK_UI_MANAGER (object);
  
   switch (prop_id)
     {
@@ -774,7 +774,7 @@ ctk_ui_manager_get_property (GObject         *object,
 			     GValue          *value,
 			     GParamSpec      *pspec)
 {
-  GtkUIManager *manager = GTK_UI_MANAGER (object);
+  GtkUIManager *manager = CTK_UI_MANAGER (object);
 
   switch (prop_id)
     {
@@ -841,7 +841,7 @@ ctk_ui_manager_real_get_action (GtkUIManager *manager,
 GtkUIManager*
 ctk_ui_manager_new (void)
 {
-  return g_object_new (GTK_TYPE_UI_MANAGER, NULL);
+  return g_object_new (CTK_TYPE_UI_MANAGER, NULL);
 }
 
 
@@ -862,7 +862,7 @@ ctk_ui_manager_new (void)
 gboolean 
 ctk_ui_manager_get_add_tearoffs (GtkUIManager *manager)
 {
-  g_return_val_if_fail (GTK_IS_UI_MANAGER (manager), FALSE);
+  g_return_val_if_fail (CTK_IS_UI_MANAGER (manager), FALSE);
   
   return manager->private_data->add_tearoffs;
 }
@@ -888,7 +888,7 @@ void
 ctk_ui_manager_set_add_tearoffs (GtkUIManager *manager,
                                  gboolean      add_tearoffs)
 {
-  g_return_if_fail (GTK_IS_UI_MANAGER (manager));
+  g_return_if_fail (CTK_IS_UI_MANAGER (manager));
 
   ctk_ui_manager_do_set_add_tearoffs (manager, add_tearoffs);
 }
@@ -971,8 +971,8 @@ ctk_ui_manager_insert_action_group (GtkUIManager   *manager,
   const char *group_name;
 #endif 
 
-  g_return_if_fail (GTK_IS_UI_MANAGER (manager));
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_UI_MANAGER (manager));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
   g_return_if_fail (g_list_find (manager->private_data->action_groups, 
 				 action_group) == NULL);
 
@@ -1024,8 +1024,8 @@ void
 ctk_ui_manager_remove_action_group (GtkUIManager   *manager,
 				    GtkActionGroup *action_group)
 {
-  g_return_if_fail (GTK_IS_UI_MANAGER (manager));
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_UI_MANAGER (manager));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
   g_return_if_fail (g_list_find (manager->private_data->action_groups, 
 				 action_group) != NULL);
 
@@ -1063,7 +1063,7 @@ ctk_ui_manager_remove_action_group (GtkUIManager   *manager,
 GList *
 ctk_ui_manager_get_action_groups (GtkUIManager *manager)
 {
-  g_return_val_if_fail (GTK_IS_UI_MANAGER (manager), NULL);
+  g_return_val_if_fail (CTK_IS_UI_MANAGER (manager), NULL);
 
   return manager->private_data->action_groups;
 }
@@ -1083,7 +1083,7 @@ ctk_ui_manager_get_action_groups (GtkUIManager *manager)
 GtkAccelGroup *
 ctk_ui_manager_get_accel_group (GtkUIManager *manager)
 {
-  g_return_val_if_fail (GTK_IS_UI_MANAGER (manager), NULL);
+  g_return_val_if_fail (CTK_IS_UI_MANAGER (manager), NULL);
 
   return manager->private_data->accel_group;
 }
@@ -1119,10 +1119,10 @@ GtkWidget *
 ctk_ui_manager_get_widget (GtkUIManager *manager,
 			   const gchar  *path)
 {
-  g_return_val_if_fail (GTK_IS_UI_MANAGER (manager), NULL);
+  g_return_val_if_fail (CTK_IS_UI_MANAGER (manager), NULL);
   g_return_val_if_fail (path != NULL, NULL);
 
-  return GTK_UI_MANAGER_GET_CLASS (manager)->get_widget (manager, path);
+  return CTK_UI_MANAGER_GET_CLASS (manager)->get_widget (manager, path);
 }
 
 typedef struct {
@@ -1141,15 +1141,15 @@ collect_toplevels (GNode   *node,
       switch (NODE_INFO (node)->type) 
 	{
 	case NODE_TYPE_MENUBAR:
-	  if (data->types & GTK_UI_MANAGER_MENUBAR)
+	  if (data->types & CTK_UI_MANAGER_MENUBAR)
 	data->list = g_slist_prepend (data->list, NODE_INFO (node)->proxy);
 	  break;
 	case NODE_TYPE_TOOLBAR:
-      if (data->types & GTK_UI_MANAGER_TOOLBAR)
+      if (data->types & CTK_UI_MANAGER_TOOLBAR)
 	data->list = g_slist_prepend (data->list, NODE_INFO (node)->proxy);
       break;
 	case NODE_TYPE_POPUP:
-	  if (data->types & GTK_UI_MANAGER_POPUP)
+	  if (data->types & CTK_UI_MANAGER_POPUP)
 	    data->list = g_slist_prepend (data->list, NODE_INFO (node)->proxy);
 	  break;
 	default: ;
@@ -1161,8 +1161,8 @@ collect_toplevels (GNode   *node,
  * ctk_ui_manager_get_toplevels:
  * @manager: a #GtkUIManager
  * @types: specifies the types of toplevel widgets to include. Allowed
- *   types are #GTK_UI_MANAGER_MENUBAR, #GTK_UI_MANAGER_TOOLBAR and
- *   #GTK_UI_MANAGER_POPUP.
+ *   types are #CTK_UI_MANAGER_MENUBAR, #CTK_UI_MANAGER_TOOLBAR and
+ *   #CTK_UI_MANAGER_POPUP.
  * 
  * Obtains a list of all toplevel widgets of the requested types.
  *
@@ -1179,10 +1179,10 @@ ctk_ui_manager_get_toplevels (GtkUIManager         *manager,
 {
   ToplevelData data;
 
-  g_return_val_if_fail (GTK_IS_UI_MANAGER (manager), NULL);
-  g_return_val_if_fail ((~(GTK_UI_MANAGER_MENUBAR | 
-			   GTK_UI_MANAGER_TOOLBAR |
-			   GTK_UI_MANAGER_POPUP) & types) == 0, NULL);
+  g_return_val_if_fail (CTK_IS_UI_MANAGER (manager), NULL);
+  g_return_val_if_fail ((~(CTK_UI_MANAGER_MENUBAR | 
+			   CTK_UI_MANAGER_TOOLBAR |
+			   CTK_UI_MANAGER_POPUP) & types) == 0, NULL);
   
       
   data.types = types;
@@ -1215,10 +1215,10 @@ GtkAction *
 ctk_ui_manager_get_action (GtkUIManager *manager,
 			   const gchar  *path)
 {
-  g_return_val_if_fail (GTK_IS_UI_MANAGER (manager), NULL);
+  g_return_val_if_fail (CTK_IS_UI_MANAGER (manager), NULL);
   g_return_val_if_fail (path != NULL, NULL);
 
-  return GTK_UI_MANAGER_GET_CLASS (manager)->get_action (manager, path);
+  return CTK_UI_MANAGER_GET_CLASS (manager)->get_action (manager, path);
 }
 
 static gboolean
@@ -1958,7 +1958,7 @@ ctk_ui_manager_add_ui_from_string (GtkUIManager *manager,
   const gchar *p;
   const gchar *end;
 
-  g_return_val_if_fail (GTK_IS_UI_MANAGER (manager), 0);
+  g_return_val_if_fail (CTK_IS_UI_MANAGER (manager), 0);
   g_return_val_if_fail (buffer != NULL, 0);
 
   if (length < 0)
@@ -2001,7 +2001,7 @@ ctk_ui_manager_add_ui_from_file (GtkUIManager *manager,
   gsize length;
   guint res;
 
-  g_return_val_if_fail (GTK_IS_UI_MANAGER (manager), 0);
+  g_return_val_if_fail (CTK_IS_UI_MANAGER (manager), 0);
 
   if (!g_file_get_contents (filename, &buffer, &length, error))
     return 0;
@@ -2037,7 +2037,7 @@ ctk_ui_manager_add_ui_from_resource (GtkUIManager *manager,
   GBytes *data;
   guint res;
 
-  g_return_val_if_fail (GTK_IS_UI_MANAGER (manager), 0);
+  g_return_val_if_fail (CTK_IS_UI_MANAGER (manager), 0);
 
   data = g_resources_lookup_data (resource_path, 0, error);
   if (data == NULL)
@@ -2062,7 +2062,7 @@ ctk_ui_manager_add_ui_from_resource (GtkUIManager *manager,
  *
  * Adds a UI element to the current contents of @manager. 
  *
- * If @type is %GTK_UI_MANAGER_AUTO, GTK+ inserts a menuitem, toolitem or 
+ * If @type is %CTK_UI_MANAGER_AUTO, GTK+ inserts a menuitem, toolitem or 
  * separator if such an element can be inserted at the place determined by 
  * @path. Otherwise @type must indicate an element that can be inserted at 
  * the place determined by @path.
@@ -2089,9 +2089,9 @@ ctk_ui_manager_add_ui (GtkUIManager        *manager,
   NodeType node_type;
   GQuark action_quark = 0;
 
-  g_return_if_fail (GTK_IS_UI_MANAGER (manager));  
+  g_return_if_fail (CTK_IS_UI_MANAGER (manager));  
   g_return_if_fail (merge_id > 0);
-  g_return_if_fail (name != NULL || type == GTK_UI_MANAGER_SEPARATOR);
+  g_return_if_fail (name != NULL || type == CTK_UI_MANAGER_SEPARATOR);
 
   node = get_node (manager, path, NODE_TYPE_UNDECIDED, FALSE);
   sibling = NULL;
@@ -2116,22 +2116,22 @@ ctk_ui_manager_add_ui (GtkUIManager        *manager,
     case NODE_TYPE_MENU_PLACEHOLDER:
       switch (type) 
 	{
-	case GTK_UI_MANAGER_AUTO:
+	case CTK_UI_MANAGER_AUTO:
 	  if (action != NULL)
 	      node_type = NODE_TYPE_MENUITEM;
 	  else
 	      node_type = NODE_TYPE_SEPARATOR;
 	  break;
-	case GTK_UI_MANAGER_MENU:
+	case CTK_UI_MANAGER_MENU:
 	  node_type = NODE_TYPE_MENU;
 	  break;
-	case GTK_UI_MANAGER_MENUITEM:
+	case CTK_UI_MANAGER_MENUITEM:
 	  node_type = NODE_TYPE_MENUITEM;
 	  break;
-	case GTK_UI_MANAGER_SEPARATOR:
+	case CTK_UI_MANAGER_SEPARATOR:
 	  node_type = NODE_TYPE_SEPARATOR;
 	  break;
-	case GTK_UI_MANAGER_PLACEHOLDER:
+	case CTK_UI_MANAGER_PLACEHOLDER:
 	  node_type = NODE_TYPE_MENU_PLACEHOLDER;
 	  break;
 	default: ;
@@ -2142,19 +2142,19 @@ ctk_ui_manager_add_ui (GtkUIManager        *manager,
     case NODE_TYPE_TOOLBAR_PLACEHOLDER:
       switch (type) 
 	{
-	case GTK_UI_MANAGER_AUTO:
+	case CTK_UI_MANAGER_AUTO:
 	  if (action != NULL)
 	      node_type = NODE_TYPE_TOOLITEM;
 	  else
 	      node_type = NODE_TYPE_SEPARATOR;
 	  break;
-	case GTK_UI_MANAGER_TOOLITEM:
+	case CTK_UI_MANAGER_TOOLITEM:
 	  node_type = NODE_TYPE_TOOLITEM;
 	  break;
-	case GTK_UI_MANAGER_SEPARATOR:
+	case CTK_UI_MANAGER_SEPARATOR:
 	  node_type = NODE_TYPE_SEPARATOR;
 	  break;
-	case GTK_UI_MANAGER_PLACEHOLDER:
+	case CTK_UI_MANAGER_PLACEHOLDER:
 	  node_type = NODE_TYPE_TOOLBAR_PLACEHOLDER;
 	  break;
 	default: ;
@@ -2164,17 +2164,17 @@ ctk_ui_manager_add_ui (GtkUIManager        *manager,
     case NODE_TYPE_ROOT:
       switch (type) 
 	{
-	case GTK_UI_MANAGER_MENUBAR:
+	case CTK_UI_MANAGER_MENUBAR:
 	  node_type = NODE_TYPE_MENUBAR;
 	  break;
-	case GTK_UI_MANAGER_TOOLBAR:
+	case CTK_UI_MANAGER_TOOLBAR:
 	  node_type = NODE_TYPE_TOOLBAR;
 	  break;
-	case GTK_UI_MANAGER_POPUP:
-	case GTK_UI_MANAGER_POPUP_WITH_ACCELS:
+	case CTK_UI_MANAGER_POPUP:
+	case CTK_UI_MANAGER_POPUP_WITH_ACCELS:
 	  node_type = NODE_TYPE_POPUP;
 	  break;
-	case GTK_UI_MANAGER_ACCELERATOR:
+	case CTK_UI_MANAGER_ACCELERATOR:
 	  node_type = NODE_TYPE_ACCELERATOR;
 	  break;
 	default: ;
@@ -2195,7 +2195,7 @@ ctk_ui_manager_add_ui (GtkUIManager        *manager,
 			  name, name ? strlen (name) : 0,
 			  node_type, TRUE, top);
 
-  if (type == GTK_UI_MANAGER_POPUP_WITH_ACCELS)
+  if (type == CTK_UI_MANAGER_POPUP_WITH_ACCELS)
     NODE_INFO (child)->popup_accels = TRUE;
 
   if (action != NULL)
@@ -2237,7 +2237,7 @@ void
 ctk_ui_manager_remove_ui (GtkUIManager *manager, 
 			  guint         merge_id)
 {
-  g_return_if_fail (GTK_IS_UI_MANAGER (manager));
+  g_return_if_fail (CTK_IS_UI_MANAGER (manager));
 
   g_node_traverse (manager->private_data->root_node, 
 		   G_POST_ORDER, G_TRAVERSE_ALL, -1,
@@ -2307,13 +2307,13 @@ find_menu_position (GNode      *node,
 	  break;
 	case NODE_TYPE_MENU:
 	  menushell = NODE_INFO (parent)->proxy;
-	  if (GTK_IS_MENU_ITEM (menushell))
-	    menushell = ctk_menu_item_get_submenu (GTK_MENU_ITEM (menushell));
-	  siblings = ctk_container_get_children (GTK_CONTAINER (menushell));
+	  if (CTK_IS_MENU_ITEM (menushell))
+	    menushell = ctk_menu_item_get_submenu (CTK_MENU_ITEM (menushell));
+	  siblings = ctk_container_get_children (CTK_CONTAINER (menushell));
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
-	  if (siblings != NULL && GTK_IS_TEAROFF_MENU_ITEM (siblings->data))
+	  if (siblings != NULL && CTK_IS_TEAROFF_MENU_ITEM (siblings->data))
 	    pos = 1;
 	  else
 	    pos = 0;
@@ -2324,8 +2324,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	  break;
 	case NODE_TYPE_MENU_PLACEHOLDER:
 	  menushell = ctk_widget_get_parent (NODE_INFO (parent)->proxy);
-	  g_return_val_if_fail (GTK_IS_MENU_SHELL (menushell), FALSE);
-	  pos = g_list_index (GTK_MENU_SHELL (menushell)->priv->children,
+	  g_return_val_if_fail (CTK_IS_MENU_SHELL (menushell), FALSE);
+	  pos = g_list_index (CTK_MENU_SHELL (menushell)->priv->children,
 			      NODE_INFO (parent)->proxy) + 1;
 	  break;
 	default:
@@ -2345,14 +2345,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       else
 	prev_child = NODE_INFO (sibling)->proxy;
 
-      if (!GTK_IS_WIDGET (prev_child))
+      if (!CTK_IS_WIDGET (prev_child))
         return FALSE;
 
       menushell = ctk_widget_get_parent (prev_child);
-      if (!GTK_IS_MENU_SHELL (menushell))
+      if (!CTK_IS_MENU_SHELL (menushell))
         return FALSE;
 
-      pos = g_list_index (GTK_MENU_SHELL (menushell)->priv->children, prev_child) + 1;
+      pos = g_list_index (CTK_MENU_SHELL (menushell)->priv->children, prev_child) + 1;
     }
 
   if (menushell_p)
@@ -2392,9 +2392,9 @@ find_toolbar_position (GNode      *node,
 	  break;
 	case NODE_TYPE_TOOLBAR_PLACEHOLDER:
 	  toolbar = ctk_widget_get_parent (NODE_INFO (parent)->proxy);
-	  g_return_val_if_fail (GTK_IS_TOOLBAR (toolbar), FALSE);
-	  pos = ctk_toolbar_get_item_index (GTK_TOOLBAR (toolbar),
-					    GTK_TOOL_ITEM (NODE_INFO (parent)->proxy)) + 1;
+	  g_return_val_if_fail (CTK_IS_TOOLBAR (toolbar), FALSE);
+	  pos = ctk_toolbar_get_item_index (CTK_TOOLBAR (toolbar),
+					    CTK_TOOL_ITEM (NODE_INFO (parent)->proxy)) + 1;
 	  break;
 	default:
 	  g_warning ("%s: bad parent node type %d", G_STRLOC,
@@ -2413,15 +2413,15 @@ find_toolbar_position (GNode      *node,
       else
 	prev_child = NODE_INFO (sibling)->proxy;
 
-      if (!GTK_IS_WIDGET (prev_child))
+      if (!CTK_IS_WIDGET (prev_child))
         return FALSE;
 
       toolbar = ctk_widget_get_parent (prev_child);
-      if (!GTK_IS_TOOLBAR (toolbar))
+      if (!CTK_IS_TOOLBAR (toolbar))
         return FALSE;
 
-      pos = ctk_toolbar_get_item_index (GTK_TOOLBAR (toolbar),
-					GTK_TOOL_ITEM (prev_child)) + 1;
+      pos = ctk_toolbar_get_item_index (CTK_TOOLBAR (toolbar),
+					CTK_TOOL_ITEM (prev_child)) + 1;
     }
   
   if (toolbar_p)
@@ -2443,9 +2443,9 @@ update_smart_separators (GtkWidget *proxy)
 {
   GtkWidget *parent = NULL;
   
-  if (GTK_IS_MENU (proxy) || GTK_IS_TOOLBAR (proxy))
+  if (CTK_IS_MENU (proxy) || CTK_IS_TOOLBAR (proxy))
     parent = proxy;
-  else if (GTK_IS_MENU_ITEM (proxy) || GTK_IS_TOOL_ITEM (proxy))
+  else if (CTK_IS_MENU_ITEM (proxy) || CTK_IS_TOOL_ITEM (proxy))
     parent = ctk_widget_get_parent (proxy);
 
   if (parent) 
@@ -2455,7 +2455,7 @@ update_smart_separators (GtkWidget *proxy)
       GList *children, *cur, *last;
       GtkWidget *filler;
 
-      children = ctk_container_get_children (GTK_CONTAINER (parent));
+      children = ctk_container_get_children (CTK_CONTAINER (parent));
       
       visible = FALSE;
       last = NULL;
@@ -2469,8 +2469,8 @@ update_smart_separators (GtkWidget *proxy)
 	    {
 	      filler = cur->data;
 	    }
-	  else if (GTK_IS_SEPARATOR_MENU_ITEM (cur->data) ||
-		   GTK_IS_SEPARATOR_TOOL_ITEM (cur->data))
+	  else if (CTK_IS_SEPARATOR_MENU_ITEM (cur->data) ||
+		   CTK_IS_SEPARATOR_TOOL_ITEM (cur->data))
 	    {
 	      gint mode = 
 		GPOINTER_TO_INT (g_object_get_data (G_OBJECT (cur->data), 
@@ -2478,22 +2478,22 @@ update_smart_separators (GtkWidget *proxy)
 	      switch (mode) 
 		{
 		case SEPARATOR_MODE_VISIBLE:
-		  ctk_widget_show (GTK_WIDGET (cur->data));
+		  ctk_widget_show (CTK_WIDGET (cur->data));
 		  last = NULL;
 		  visible = FALSE;
 		  break;
 		case SEPARATOR_MODE_HIDDEN:
-		  ctk_widget_hide (GTK_WIDGET (cur->data));
+		  ctk_widget_hide (CTK_WIDGET (cur->data));
 		  break;
 		case SEPARATOR_MODE_SMART:
 		  if (visible)
 		    {
-		      ctk_widget_show (GTK_WIDGET (cur->data));
+		      ctk_widget_show (CTK_WIDGET (cur->data));
 		      last = cur;
 		      visible = FALSE;
 		    }
 		  else 
-		    ctk_widget_hide (GTK_WIDGET (cur->data));
+		    ctk_widget_hide (CTK_WIDGET (cur->data));
 		  break;
 		}
 	    }
@@ -2503,7 +2503,7 @@ update_smart_separators (GtkWidget *proxy)
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
-	      if (GTK_IS_TEAROFF_MENU_ITEM (cur->data) || cur->data == filler)
+	      if (CTK_IS_TEAROFF_MENU_ITEM (cur->data) || cur->data == filler)
 		visible = FALSE;
 	      else
 		{
@@ -2519,16 +2519,16 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	}
 
       if (last)
-	ctk_widget_hide (GTK_WIDGET (last->data));
+	ctk_widget_hide (CTK_WIDGET (last->data));
 
-      if (GTK_IS_MENU (parent)) 
+      if (CTK_IS_MENU (parent)) 
 	{
 	  GtkWidget *item;
 
-	  item = ctk_menu_get_attach_widget (GTK_MENU (parent));
-	  if (GTK_IS_MENU_ITEM (item))
+	  item = ctk_menu_get_attach_widget (CTK_MENU (parent));
+	  if (CTK_IS_MENU_ITEM (item))
 	    _ctk_action_sync_menu_visible (NULL, item, empty);
-	  if (GTK_IS_WIDGET (filler))
+	  if (CTK_IS_WIDGET (filler))
 	    {
 	      if (empty)
 		ctk_widget_show (filler);
@@ -2608,20 +2608,20 @@ update_node (GtkUIManager *manager,
 	  GtkWidget *menu;
 	  GList *siblings;
 
-	  if (GTK_IS_MENU (info->proxy))
+	  if (CTK_IS_MENU (info->proxy))
 	    menu = info->proxy;
 	  else
-	    menu = ctk_menu_item_get_submenu (GTK_MENU_ITEM (info->proxy));
-	  siblings = ctk_container_get_children (GTK_CONTAINER (menu));
+	    menu = ctk_menu_item_get_submenu (CTK_MENU_ITEM (info->proxy));
+	  siblings = ctk_container_get_children (CTK_CONTAINER (menu));
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
-	  if (siblings != NULL && GTK_IS_TEAROFF_MENU_ITEM (siblings->data))
+	  if (siblings != NULL && CTK_IS_TEAROFF_MENU_ITEM (siblings->data))
 	    {
 	      if (manager->private_data->add_tearoffs && !in_popup)
-		ctk_widget_show (GTK_WIDGET (siblings->data));
+		ctk_widget_show (CTK_WIDGET (siblings->data));
 	      else
-		ctk_widget_hide (GTK_WIDGET (siblings->data));
+		ctk_widget_hide (CTK_WIDGET (siblings->data));
 	    }
 
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -2660,20 +2660,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 	/* remove the proxy if it is of the wrong type ... */
 	if (info->proxy &&  
-	    G_OBJECT_TYPE (info->proxy) != GTK_ACTION_GET_CLASS (action)->menu_item_type)
+	    G_OBJECT_TYPE (info->proxy) != CTK_ACTION_GET_CLASS (action)->menu_item_type)
 	  {
-	    if (GTK_IS_MENU_ITEM (info->proxy))
+	    if (CTK_IS_MENU_ITEM (info->proxy))
 	      {
-		prev_submenu = ctk_menu_item_get_submenu (GTK_MENU_ITEM (info->proxy));
+		prev_submenu = ctk_menu_item_get_submenu (CTK_MENU_ITEM (info->proxy));
 		if (prev_submenu)
 		  {
 		    g_object_ref (prev_submenu);
-		    ctk_menu_item_set_submenu (GTK_MENU_ITEM (info->proxy), NULL);
+		    ctk_menu_item_set_submenu (CTK_MENU_ITEM (info->proxy), NULL);
 		}
 	      }
 
-            ctk_activatable_set_related_action (GTK_ACTIVATABLE (info->proxy), NULL);
-	    ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
+            ctk_activatable_set_related_action (CTK_ACTIVATABLE (info->proxy), NULL);
+	    ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
 				  info->proxy);
 	    g_object_unref (info->proxy);
 	    info->proxy = NULL;
@@ -2687,7 +2687,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
              */
             if ((NODE_INFO (node->parent)->type == NODE_TYPE_TOOLITEM ||
                  NODE_INFO (node->parent)->type == NODE_TYPE_MENUITEM) &&
-                GTK_ACTION_GET_CLASS (action)->create_menu)
+                CTK_ACTION_GET_CLASS (action)->create_menu)
               {
                 menu = ctk_action_create_menu (action);
               }
@@ -2705,21 +2705,21 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 
                 ctk_widget_set_no_show_all (tearoff, TRUE);
-                ctk_menu_shell_append (GTK_MENU_SHELL (menu), tearoff);
+                ctk_menu_shell_append (CTK_MENU_SHELL (menu), tearoff);
                 filler = ctk_menu_item_new_with_label (_("Empty"));
                 g_object_set_data (G_OBJECT (filler),
                                    I_("gtk-empty-menu-item"),
                                    GINT_TO_POINTER (TRUE));
                 ctk_widget_set_sensitive (filler, FALSE);
                 ctk_widget_set_no_show_all (filler, TRUE);
-                ctk_menu_shell_append (GTK_MENU_SHELL (menu), filler);
+                ctk_menu_shell_append (CTK_MENU_SHELL (menu), filler);
               }
 
             if (NODE_INFO (node->parent)->type == NODE_TYPE_TOOLITEM)
 	      {
 		info->proxy = menu;
 		g_object_ref_sink (info->proxy);
-		ctk_menu_tool_button_set_menu (GTK_MENU_TOOL_BUTTON (NODE_INFO (node->parent)->proxy),
+		ctk_menu_tool_button_set_menu (CTK_MENU_TOOL_BUTTON (NODE_INFO (node->parent)->proxy),
 					       menu);
 	      }
 	    else
@@ -2735,36 +2735,36 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		   		       G_CALLBACK (update_smart_separators), NULL);
 		     ctk_widget_set_name (info->proxy, info->name);
 
-		     ctk_menu_item_set_submenu (GTK_MENU_ITEM (info->proxy), menu);
-		     ctk_menu_shell_insert (GTK_MENU_SHELL (menushell), info->proxy, pos);
+		     ctk_menu_item_set_submenu (CTK_MENU_ITEM (info->proxy), menu);
+		     ctk_menu_shell_insert (CTK_MENU_SHELL (menushell), info->proxy, pos);
                  }
 	      }
 	  }
 	else
-          ctk_activatable_set_related_action (GTK_ACTIVATABLE (info->proxy), action);
+          ctk_activatable_set_related_action (CTK_ACTIVATABLE (info->proxy), action);
 
 	if (prev_submenu)
 	  {
-	    ctk_menu_item_set_submenu (GTK_MENU_ITEM (info->proxy),
+	    ctk_menu_item_set_submenu (CTK_MENU_ITEM (info->proxy),
 				       prev_submenu);
 	    g_object_unref (prev_submenu);
 	  }
 
-	if (GTK_IS_MENU (info->proxy))
+	if (CTK_IS_MENU (info->proxy))
 	  menu = info->proxy;
 	else
-	  menu = ctk_menu_item_get_submenu (GTK_MENU_ITEM (info->proxy));
+	  menu = ctk_menu_item_get_submenu (CTK_MENU_ITEM (info->proxy));
 
-	siblings = ctk_container_get_children (GTK_CONTAINER (menu));
+	siblings = ctk_container_get_children (CTK_CONTAINER (menu));
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
-	if (siblings != NULL && GTK_IS_TEAROFF_MENU_ITEM (siblings->data))
+	if (siblings != NULL && CTK_IS_TEAROFF_MENU_ITEM (siblings->data))
 	  {
 	    if (manager->private_data->add_tearoffs && !in_popup)
-	      ctk_widget_show (GTK_WIDGET (siblings->data));
+	      ctk_widget_show (CTK_WIDGET (siblings->data));
 	    else
-	      ctk_widget_hide (GTK_WIDGET (siblings->data));
+	      ctk_widget_hide (CTK_WIDGET (siblings->data));
 	  }
 
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -2789,19 +2789,19 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       break;
     case NODE_TYPE_MENU_PLACEHOLDER:
       /* create menu items for placeholders if necessary ... */
-      if (!GTK_IS_SEPARATOR_MENU_ITEM (info->proxy) ||
-	  !GTK_IS_SEPARATOR_MENU_ITEM (info->extra))
+      if (!CTK_IS_SEPARATOR_MENU_ITEM (info->proxy) ||
+	  !CTK_IS_SEPARATOR_MENU_ITEM (info->extra))
 	{
 	  if (info->proxy)
 	    {
-	      ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
+	      ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
 				    info->proxy);
 	      g_object_unref (info->proxy);
 	      info->proxy = NULL;
 	    }
 	  if (info->extra)
 	    {
-	      ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (info->extra)),
+	      ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (info->extra)),
 				    info->extra);
 	      g_object_unref (info->extra);
 	      info->extra = NULL;
@@ -2820,7 +2820,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	  		         I_("gtk-separator-mode"),
 			         GINT_TO_POINTER (SEPARATOR_MODE_HIDDEN));
 	      ctk_widget_set_no_show_all (info->proxy, TRUE);
-	      ctk_menu_shell_insert (GTK_MENU_SHELL (menushell),
+	      ctk_menu_shell_insert (CTK_MENU_SHELL (menushell),
 	 			     NODE_INFO (node)->proxy, pos);
 	  
 	      info->extra = ctk_separator_menu_item_new ();
@@ -2829,26 +2829,26 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 			         I_("gtk-separator-mode"),
 			         GINT_TO_POINTER (SEPARATOR_MODE_HIDDEN));
 	      ctk_widget_set_no_show_all (info->extra, TRUE);
-	      ctk_menu_shell_insert (GTK_MENU_SHELL (menushell),
+	      ctk_menu_shell_insert (CTK_MENU_SHELL (menushell),
 				     NODE_INFO (node)->extra, pos + 1);
             }
 	}
       break;
     case NODE_TYPE_TOOLBAR_PLACEHOLDER:
       /* create toolbar items for placeholders if necessary ... */
-      if (!GTK_IS_SEPARATOR_TOOL_ITEM (info->proxy) ||
-	  !GTK_IS_SEPARATOR_TOOL_ITEM (info->extra))
+      if (!CTK_IS_SEPARATOR_TOOL_ITEM (info->proxy) ||
+	  !CTK_IS_SEPARATOR_TOOL_ITEM (info->extra))
 	{
 	  if (info->proxy)
 	    {
-	      ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
+	      ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
 				    info->proxy);
 	      g_object_unref (info->proxy);
 	      info->proxy = NULL;
 	    }
 	  if (info->extra)
 	    {
-	      ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (info->extra)),
+	      ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (info->extra)),
 				    info->extra);
 	      g_object_unref (info->extra);
 	      info->extra = NULL;
@@ -2863,8 +2863,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	  if (find_toolbar_position (node, &toolbar, &pos))
             {
 	      item = ctk_separator_tool_item_new ();
-	      ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, pos);
-	      info->proxy = GTK_WIDGET (item);
+	      ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, pos);
+	      info->proxy = CTK_WIDGET (item);
 	      g_object_ref_sink (info->proxy);
 	      g_object_set_data (G_OBJECT (info->proxy),
 			         I_("gtk-separator-mode"),
@@ -2872,8 +2872,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	      ctk_widget_set_no_show_all (info->proxy, TRUE);
 	  
 	      item = ctk_separator_tool_item_new ();
-	      ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, pos+1);
-	      info->extra = GTK_WIDGET (item);
+	      ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, pos+1);
+	      info->extra = CTK_WIDGET (item);
 	      g_object_ref_sink (info->extra);
 	      g_object_set_data (G_OBJECT (info->extra),
 			         I_("gtk-separator-mode"),
@@ -2885,13 +2885,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     case NODE_TYPE_MENUITEM:
       /* remove the proxy if it is of the wrong type ... */
       if (info->proxy &&  
-	  G_OBJECT_TYPE (info->proxy) != GTK_ACTION_GET_CLASS (action)->menu_item_type)
+	  G_OBJECT_TYPE (info->proxy) != CTK_ACTION_GET_CLASS (action)->menu_item_type)
 	{
 	  g_signal_handlers_disconnect_by_func (info->proxy,
 						G_CALLBACK (update_smart_separators),
 						NULL);  
-          ctk_activatable_set_related_action (GTK_ACTIVATABLE (info->proxy), NULL);
-	  ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
+          ctk_activatable_set_related_action (CTK_ACTIVATABLE (info->proxy), NULL);
+	  ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
 				info->proxy);
 	  g_object_unref (info->proxy);
 	  info->proxy = NULL;
@@ -2911,13 +2911,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
               G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
               if (info->always_show_image_set &&
-                  GTK_IS_IMAGE_MENU_ITEM (info->proxy))
-                ctk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (info->proxy),
+                  CTK_IS_IMAGE_MENU_ITEM (info->proxy))
+                ctk_image_menu_item_set_always_show_image (CTK_IMAGE_MENU_ITEM (info->proxy),
                                                            info->always_show_image);
 
               G_GNUC_END_IGNORE_DEPRECATIONS;
 
-	      ctk_menu_shell_insert (GTK_MENU_SHELL (menushell),
+	      ctk_menu_shell_insert (CTK_MENU_SHELL (menushell),
 				     info->proxy, pos);
            }
 	}
@@ -2926,8 +2926,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	  g_signal_handlers_disconnect_by_func (info->proxy,
 						G_CALLBACK (update_smart_separators),
 						NULL);
-	  ctk_menu_item_set_submenu (GTK_MENU_ITEM (info->proxy), NULL);
-          ctk_activatable_set_related_action (GTK_ACTIVATABLE (info->proxy), action);
+	  ctk_menu_item_set_submenu (CTK_MENU_ITEM (info->proxy), NULL);
+          ctk_activatable_set_related_action (CTK_ACTIVATABLE (info->proxy), action);
 	}
 
       if (info->proxy)
@@ -2937,8 +2937,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
           if (in_popup && !popup_accels)
 	    {
 	      /* don't show accels in popups */
-	      GtkWidget *c = ctk_bin_get_child (GTK_BIN (info->proxy));
-	      if (GTK_IS_ACCEL_LABEL (c))
+	      GtkWidget *c = ctk_bin_get_child (CTK_BIN (info->proxy));
+	      if (CTK_IS_ACCEL_LABEL (c))
 	        g_object_set (c, "accel-closure", NULL, NULL);
 	    }
         }
@@ -2947,13 +2947,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     case NODE_TYPE_TOOLITEM:
       /* remove the proxy if it is of the wrong type ... */
       if (info->proxy && 
-	  G_OBJECT_TYPE (info->proxy) != GTK_ACTION_GET_CLASS (action)->toolbar_item_type)
+	  G_OBJECT_TYPE (info->proxy) != CTK_ACTION_GET_CLASS (action)->toolbar_item_type)
 	{
 	  g_signal_handlers_disconnect_by_func (info->proxy,
 						G_CALLBACK (update_smart_separators),
 						NULL);
-          ctk_activatable_set_related_action (GTK_ACTIVATABLE (info->proxy), NULL);
-	  ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
+          ctk_activatable_set_related_action (CTK_ACTIVATABLE (info->proxy), NULL);
+	  ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
 				info->proxy);
 	  g_object_unref (info->proxy);
 	  info->proxy = NULL;
@@ -2970,8 +2970,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	      g_object_ref_sink (info->proxy);
 	      ctk_widget_set_name (info->proxy, info->name);
 	      
-	      ctk_toolbar_insert (GTK_TOOLBAR (toolbar),
-	  		          GTK_TOOL_ITEM (info->proxy), pos);
+	      ctk_toolbar_insert (CTK_TOOLBAR (toolbar),
+	  		          CTK_TOOL_ITEM (info->proxy), pos);
             }
 	}
       else
@@ -2979,7 +2979,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	  g_signal_handlers_disconnect_by_func (info->proxy,
 						G_CALLBACK (update_smart_separators),
 						NULL);
-	  ctk_activatable_set_related_action (GTK_ACTIVATABLE (info->proxy), action);
+	  ctk_activatable_set_related_action (CTK_ACTIVATABLE (info->proxy), action);
 	}
 
       if (info->proxy)
@@ -2997,9 +2997,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	  gint separator_mode;
 	  GtkToolItem *item;
 
-	  if (GTK_IS_SEPARATOR_TOOL_ITEM (info->proxy))
+	  if (CTK_IS_SEPARATOR_TOOL_ITEM (info->proxy))
 	    {
-	      ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
+	      ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
 				    info->proxy);
 	      g_object_unref (info->proxy);
 	      info->proxy = NULL;
@@ -3008,14 +3008,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	  if (find_toolbar_position (node, &toolbar, &pos))
             {
 	      item  = ctk_separator_tool_item_new ();
-	      ctk_toolbar_insert (GTK_TOOLBAR (toolbar), item, pos);
-	      info->proxy = GTK_WIDGET (item);
+	      ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, pos);
+	      info->proxy = CTK_WIDGET (item);
 	      g_object_ref_sink (info->proxy);
 	      ctk_widget_set_no_show_all (info->proxy, TRUE);
 	      if (info->expand)
 	        {
-	          ctk_tool_item_set_expand (GTK_TOOL_ITEM (item), TRUE);
-	          ctk_separator_tool_item_set_draw (GTK_SEPARATOR_TOOL_ITEM (item), FALSE);
+	          ctk_tool_item_set_expand (CTK_TOOL_ITEM (item), TRUE);
+	          ctk_separator_tool_item_set_draw (CTK_SEPARATOR_TOOL_ITEM (item), FALSE);
 	          separator_mode = SEPARATOR_MODE_VISIBLE;
 	        }
 	      else
@@ -3032,9 +3032,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	  GtkWidget *menushell;
 	  gint pos;
 	  
-	  if (GTK_IS_SEPARATOR_MENU_ITEM (info->proxy))
+	  if (CTK_IS_SEPARATOR_MENU_ITEM (info->proxy))
 	    {
-	      ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
+	      ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (info->proxy)),
 				    info->proxy);
 	      g_object_unref (info->proxy);
 	      info->proxy = NULL;
@@ -3048,7 +3048,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	      g_object_set_data (G_OBJECT (info->proxy),
 			         I_("gtk-separator-mode"),
 			         GINT_TO_POINTER (SEPARATOR_MODE_SMART));
-	      ctk_menu_shell_insert (GTK_MENU_SHELL (menushell),
+	      ctk_menu_shell_insert (CTK_MENU_SHELL (menushell),
 				     info->proxy, pos);
 	      ctk_widget_show (info->proxy);
             }
@@ -3079,8 +3079,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   
   if (info->proxy) 
     {
-      if (info->type == NODE_TYPE_MENU && GTK_IS_MENU_ITEM (info->proxy)) 
-	update_smart_separators (ctk_menu_item_get_submenu (GTK_MENU_ITEM (info->proxy)));
+      if (info->type == NODE_TYPE_MENU && CTK_IS_MENU_ITEM (info->proxy)) 
+	update_smart_separators (ctk_menu_item_get_submenu (CTK_MENU_ITEM (info->proxy)));
       else if (info->type == NODE_TYPE_MENU || 
 	       info->type == NODE_TYPE_TOOLBAR || 
 	       info->type == NODE_TYPE_POPUP) 
@@ -3155,7 +3155,7 @@ queue_update (GtkUIManager *manager)
  * useful is to enforce that the menubar and toolbar have been added to 
  * the main window before showing it:
  * |[<!-- language="C" -->
- * ctk_container_add (GTK_CONTAINER (window), vbox); 
+ * ctk_container_add (CTK_CONTAINER (window), vbox); 
  * g_signal_connect (merge, "add-widget", 
  *                   G_CALLBACK (add_widget), vbox);
  * ctk_ui_manager_add_ui_from_file (merge, "my-menus");
@@ -3332,9 +3332,9 @@ ctk_ui_manager_buildable_custom_tag_start (GtkBuildable  *buildable,
 
       ctx = g_new0 (ParseContext, 1);
       ctx->state = STATE_START;
-      ctx->manager = GTK_UI_MANAGER (buildable);
+      ctx->manager = CTK_UI_MANAGER (buildable);
       ctx->current = NULL;
-      ctx->merge_id = ctk_ui_manager_new_merge_id (GTK_UI_MANAGER (buildable));
+      ctx->merge_id = ctk_ui_manager_new_merge_id (CTK_UI_MANAGER (buildable));
 
       *data = ctx;
       *parser = ui_parser;
@@ -3353,7 +3353,7 @@ ctk_ui_manager_buildable_custom_tag_end (GtkBuildable *buildable,
 					 const gchar  *tagname,
 					 gpointer     *data)
 {
-  queue_update (GTK_UI_MANAGER (buildable));
+  queue_update (CTK_UI_MANAGER (buildable));
   g_object_notify (G_OBJECT (buildable), "ui");
   g_free (data);
 }

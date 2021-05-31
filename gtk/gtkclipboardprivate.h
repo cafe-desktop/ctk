@@ -17,16 +17,16 @@
  * Global clipboard abstraction.
  */
 
-#ifndef __GTK_CLIPBOARD_PRIVATE_H__
-#define __GTK_CLIPBOARD_PRIVATE_H__
+#ifndef __CTK_CLIPBOARD_PRIVATE_H__
+#define __CTK_CLIPBOARD_PRIVATE_H__
 
 #include <gtk/gtkclipboard.h>
 
 G_BEGIN_DECLS
 
-#define GTK_CLIPBOARD_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CLIPBOARD, GtkClipboardClass))
-#define GTK_IS_CLIPBOARD_CLASS(klass)	        (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_CLIPBOARD))
-#define GTK_CLIPBOARD_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CLIPBOARD, GtkClipboardClass))
+#define CTK_CLIPBOARD_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CLIPBOARD, GtkClipboardClass))
+#define CTK_IS_CLIPBOARD_CLASS(klass)	        (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CLIPBOARD))
+#define CTK_CLIPBOARD_GET_CLASS(obj)            (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CLIPBOARD, GtkClipboardClass))
 
 typedef struct _GtkClipboardClass GtkClipboardClass;
 
@@ -90,4 +90,4 @@ void     _ctk_clipboard_store_all       (void);
 
 G_END_DECLS
 
-#endif /* __GTK_CLIPBOARD_PRIVATE_H__ */
+#endif /* __CTK_CLIPBOARD_PRIVATE_H__ */

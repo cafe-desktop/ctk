@@ -43,7 +43,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  */
 
 
-G_DEFINE_TYPE (GtkHPaned, ctk_hpaned, GTK_TYPE_PANED)
+G_DEFINE_TYPE (GtkHPaned, ctk_hpaned, CTK_TYPE_PANED)
 
 static void
 ctk_hpaned_class_init (GtkHPanedClass *class)
@@ -53,8 +53,8 @@ ctk_hpaned_class_init (GtkHPanedClass *class)
 static void
 ctk_hpaned_init (GtkHPaned *hpaned)
 {
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (hpaned),
-                                  GTK_ORIENTATION_HORIZONTAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (hpaned),
+                                  CTK_ORIENTATION_HORIZONTAL);
 }
 
 /**
@@ -64,10 +64,10 @@ ctk_hpaned_init (GtkHPaned *hpaned)
  *
  * Returns: the new #GtkHPaned
  *
- * Deprecated: 3.2: Use ctk_paned_new() with %GTK_ORIENTATION_HORIZONTAL instead
+ * Deprecated: 3.2: Use ctk_paned_new() with %CTK_ORIENTATION_HORIZONTAL instead
  */
 GtkWidget *
 ctk_hpaned_new (void)
 {
-  return g_object_new (GTK_TYPE_HPANED, NULL);
+  return g_object_new (CTK_TYPE_HPANED, NULL);
 }

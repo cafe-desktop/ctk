@@ -18,10 +18,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CELL_RENDERER_SPINNER_H__
-#define __GTK_CELL_RENDERER_SPINNER_H__
+#ifndef __CTK_CELL_RENDERER_SPINNER_H__
+#define __CTK_CELL_RENDERER_SPINNER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CELL_RENDERER_SPINNER            (ctk_cell_renderer_spinner_get_type ())
-#define GTK_CELL_RENDERER_SPINNER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_CELL_RENDERER_SPINNER, GtkCellRendererSpinner))
-#define GTK_CELL_RENDERER_SPINNER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CELL_RENDERER_SPINNER, GtkCellRendererSpinnerClass))
-#define GTK_IS_CELL_RENDERER_SPINNER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_CELL_RENDERER_SPINNER))
-#define GTK_IS_CELL_RENDERER_SPINNER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_CELL_RENDERER_SPINNER))
-#define GTK_CELL_RENDERER_SPINNER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CELL_RENDERER_SPINNER, GtkCellRendererSpinnerClass))
+#define CTK_TYPE_CELL_RENDERER_SPINNER            (ctk_cell_renderer_spinner_get_type ())
+#define CTK_CELL_RENDERER_SPINNER(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_CELL_RENDERER_SPINNER, GtkCellRendererSpinner))
+#define CTK_CELL_RENDERER_SPINNER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CELL_RENDERER_SPINNER, GtkCellRendererSpinnerClass))
+#define CTK_IS_CELL_RENDERER_SPINNER(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_CELL_RENDERER_SPINNER))
+#define CTK_IS_CELL_RENDERER_SPINNER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CELL_RENDERER_SPINNER))
+#define CTK_CELL_RENDERER_SPINNER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CELL_RENDERER_SPINNER, GtkCellRendererSpinnerClass))
 
 typedef struct _GtkCellRendererSpinner        GtkCellRendererSpinner;
 typedef struct _GtkCellRendererSpinnerClass   GtkCellRendererSpinnerClass;
@@ -66,4 +66,4 @@ GtkCellRenderer *ctk_cell_renderer_spinner_new      (void);
 
 G_END_DECLS
 
-#endif /* __GTK_CELL_RENDERER_SPINNER_H__ */
+#endif /* __CTK_CELL_RENDERER_SPINNER_H__ */

@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_MODIFIER_STYLE_H__
-#define __GTK_MODIFIER_STYLE_H__
+#ifndef __CTK_MODIFIER_STYLE_H__
+#define __CTK_MODIFIER_STYLE_H__
 
 #include <glib-object.h>
 #include <gdk/gdk.h>
@@ -24,12 +24,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MODIFIER_STYLE         (_ctk_modifier_style_get_type ())
-#define GTK_MODIFIER_STYLE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_MODIFIER_STYLE, GtkModifierStyle))
-#define GTK_MODIFIER_STYLE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), GTK_TYPE_MODIFIER_STYLE, GtkModifierStyleClass))
-#define GTK_IS_MODIFIER_STYLE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_MODIFIER_STYLE))
-#define GTK_IS_MODIFIER_STYLE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE    ((c), GTK_TYPE_MODIFIER_STYLE))
-#define GTK_MODIFIER_STYLE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), GTK_TYPE_MODIFIER_STYLE, GtkModifierStyleClass))
+#define CTK_TYPE_MODIFIER_STYLE         (_ctk_modifier_style_get_type ())
+#define CTK_MODIFIER_STYLE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MODIFIER_STYLE, GtkModifierStyle))
+#define CTK_MODIFIER_STYLE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_MODIFIER_STYLE, GtkModifierStyleClass))
+#define CTK_IS_MODIFIER_STYLE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_MODIFIER_STYLE))
+#define CTK_IS_MODIFIER_STYLE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE    ((c), CTK_TYPE_MODIFIER_STYLE))
+#define CTK_MODIFIER_STYLE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_MODIFIER_STYLE, GtkModifierStyleClass))
 
 typedef struct _GtkModifierStyle GtkModifierStyle;
 typedef struct _GtkModifierStyleClass GtkModifierStyleClass;
@@ -76,4 +76,4 @@ void _ctk_modifier_style_set_color_property   (GtkModifierStyle *style,
 
 G_END_DECLS
 
-#endif /* __GTK_MODIFIER_STYLE_H__ */
+#endif /* __CTK_MODIFIER_STYLE_H__ */

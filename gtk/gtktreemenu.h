@@ -19,10 +19,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_MENU_H__
-#define __GTK_TREE_MENU_H__
+#ifndef __CTK_TREE_MENU_H__
+#define __CTK_TREE_MENU_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TREE_MENU		  (_ctk_tree_menu_get_type ())
-#define GTK_TREE_MENU(obj)		  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_MENU, GtkTreeMenu))
-#define GTK_TREE_MENU_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TREE_MENU, GtkTreeMenuClass))
-#define GTK_IS_TREE_MENU(obj)	  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_MENU))
-#define GTK_IS_TREE_MENU_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TREE_MENU))
-#define GTK_TREE_MENU_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TREE_MENU, GtkTreeMenuClass))
+#define CTK_TYPE_TREE_MENU		  (_ctk_tree_menu_get_type ())
+#define CTK_TREE_MENU(obj)		  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_MENU, GtkTreeMenu))
+#define CTK_TREE_MENU_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TREE_MENU, GtkTreeMenuClass))
+#define CTK_IS_TREE_MENU(obj)	  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_MENU))
+#define CTK_IS_TREE_MENU_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TREE_MENU))
+#define CTK_TREE_MENU_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_MENU, GtkTreeMenuClass))
 
 typedef struct _GtkTreeMenu              GtkTreeMenu;
 typedef struct _GtkTreeMenuClass         GtkTreeMenuClass;
@@ -100,4 +100,4 @@ void                        _ctk_tree_menu_set_row_separator_func   (GtkTreeMenu
 
 G_END_DECLS
 
-#endif /* __GTK_TREE_MENU_H__ */
+#endif /* __CTK_TREE_MENU_H__ */

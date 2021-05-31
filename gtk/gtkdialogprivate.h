@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_DIALOG_PRIVATE_H__
-#define __GTK_DIALOG_PRIVATE_H__
+#ifndef __CTK_DIALOG_PRIVATE_H__
+#define __CTK_DIALOG_PRIVATE_H__
 
 #include "gtkdialog.h"
 
@@ -33,4 +33,4 @@ void ctk_dialog_set_use_header_bar_from_setting (GtkDialog *dialog);
 
 G_END_DECLS
 
-#endif /* __GTK_DIALOG_PRIVATE_H__ */
+#endif /* __CTK_DIALOG_PRIVATE_H__ */

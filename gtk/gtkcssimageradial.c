@@ -29,7 +29,7 @@
 #include "gtkcssrgbavalueprivate.h"
 #include "gtkcssprovider.h"
 
-G_DEFINE_TYPE (GtkCssImageRadial, _ctk_css_image_radial, GTK_TYPE_CSS_IMAGE)
+G_DEFINE_TYPE (GtkCssImageRadial, _ctk_css_image_radial, CTK_TYPE_CSS_IMAGE)
 
 static void
 ctk_css_image_radial_get_start_end (GtkCssImageRadial *radial,
@@ -79,7 +79,7 @@ ctk_css_image_radial_draw (GtkCssImage *image,
                            double       width,
                            double       height)
 {
-  GtkCssImageRadial *radial = GTK_CSS_IMAGE_RADIAL (image);
+  GtkCssImageRadial *radial = CTK_CSS_IMAGE_RADIAL (image);
   cairo_pattern_t *pattern;
   cairo_matrix_t matrix;
   double x, y;
@@ -96,22 +96,22 @@ ctk_css_image_radial_draw (GtkCssImage *image,
     {
       switch (radial->size)
         {
-        case GTK_CSS_EXPLICIT_SIZE:
+        case CTK_CSS_EXPLICIT_SIZE:
           radius = _ctk_css_number_value_get (radial->sizes[0], width);
           break;
-        case GTK_CSS_CLOSEST_SIDE:
+        case CTK_CSS_CLOSEST_SIDE:
           radius = MIN (MIN (x, width - x), MIN (y, height - y));
           break;
-        case GTK_CSS_FARTHEST_SIDE:
+        case CTK_CSS_FARTHEST_SIDE:
           radius = MAX (MAX (x, width - x), MAX (y, height - y));
           break;
-        case GTK_CSS_CLOSEST_CORNER:
-        case GTK_CSS_FARTHEST_CORNER:
+        case CTK_CSS_CLOSEST_CORNER:
+        case CTK_CSS_FARTHEST_CORNER:
           r1 = x*x + y*y;
           r2 = x*x + (height - y)*(height - y);
           r3 = (width - x)*(width - x) + y*y;
           r4 = (width - x)*(width - x) + (height - y)*(height - y);
-          if (radial->size == GTK_CSS_CLOSEST_CORNER)
+          if (radial->size == CTK_CSS_CLOSEST_CORNER)
             r = MIN ( MIN (r1, r2), MIN (r3, r4));
           else
             r = MAX ( MAX (r1, r2), MAX (r3, r4));
@@ -130,23 +130,23 @@ ctk_css_image_radial_draw (GtkCssImage *image,
 
       switch (radial->size)
         {
-        case GTK_CSS_EXPLICIT_SIZE:
+        case CTK_CSS_EXPLICIT_SIZE:
           hradius = _ctk_css_number_value_get (radial->sizes[0], width);
           vradius = _ctk_css_number_value_get (radial->sizes[1], height);
           break;
-        case GTK_CSS_CLOSEST_SIDE:
+        case CTK_CSS_CLOSEST_SIDE:
           hradius = MIN (x, width - x);
           vradius = MIN (y, height - y);
           break;
-        case GTK_CSS_FARTHEST_SIDE:
+        case CTK_CSS_FARTHEST_SIDE:
           hradius = MAX (x, width - x);
           vradius = MAX (y, height - y);
           break;
-        case GTK_CSS_CLOSEST_CORNER:
+        case CTK_CSS_CLOSEST_CORNER:
           hradius = M_SQRT2 * MIN (x, width - x);
           vradius = M_SQRT2 * MIN (y, height - y);
           break;
-        case GTK_CSS_FARTHEST_CORNER:
+        case CTK_CSS_FARTHEST_CORNER:
           hradius = M_SQRT2 * MAX (x, width - x);
           vradius = M_SQRT2 * MAX (y, height - y);
           break;
@@ -231,7 +231,7 @@ static gboolean
 ctk_css_image_radial_parse (GtkCssImage  *image,
                             GtkCssParser *parser)
 {
-  GtkCssImageRadial *radial = GTK_CSS_IMAGE_RADIAL (image);
+  GtkCssImageRadial *radial = CTK_CSS_IMAGE_RADIAL (image);
   gboolean has_shape = FALSE;
   gboolean has_size = FALSE;
   gboolean found_one = FALSE;
@@ -240,10 +240,10 @@ ctk_css_image_radial_parse (GtkCssImage  *image,
     const char *name;
     guint       value;
   } names[] = {
-    { "closest-side", GTK_CSS_CLOSEST_SIDE },
-    { "farthest-side", GTK_CSS_FARTHEST_SIDE },
-    { "closest-corner", GTK_CSS_CLOSEST_CORNER },
-    { "farthest-corner", GTK_CSS_FARTHEST_CORNER }
+    { "closest-side", CTK_CSS_CLOSEST_SIDE },
+    { "farthest-side", CTK_CSS_FARTHEST_SIDE },
+    { "closest-corner", CTK_CSS_CLOSEST_CORNER },
+    { "farthest-corner", CTK_CSS_FARTHEST_CORNER }
   };
 
   if (_ctk_css_parser_try (parser, "repeating-radial-gradient(", TRUE))
@@ -283,9 +283,9 @@ ctk_css_image_radial_parse (GtkCssImage  *image,
         if (!has_size)
           {
             if (ctk_css_number_value_can_parse (parser))
-              radial->sizes[0] = _ctk_css_number_value_parse (parser, GTK_CSS_PARSE_LENGTH | GTK_CSS_PARSE_PERCENT);
+              radial->sizes[0] = _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_LENGTH | CTK_CSS_PARSE_PERCENT);
             if (ctk_css_number_value_can_parse (parser))
-              radial->sizes[1] = _ctk_css_number_value_parse (parser, GTK_CSS_PARSE_LENGTH | GTK_CSS_PARSE_PERCENT);
+              radial->sizes[1] = _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_LENGTH | CTK_CSS_PARSE_PERCENT);
             found_one = has_size = radial->sizes[0] != NULL;
           }
       }
@@ -305,8 +305,8 @@ ctk_css_image_radial_parse (GtkCssImage  *image,
     }
   else
     {
-      radial->position = _ctk_css_position_value_new (_ctk_css_number_value_new (50, GTK_CSS_PERCENT),
-                                                      _ctk_css_number_value_new (50, GTK_CSS_PERCENT));
+      radial->position = _ctk_css_position_value_new (_ctk_css_number_value_new (50, CTK_CSS_PERCENT),
+                                                      _ctk_css_number_value_new (50, CTK_CSS_PERCENT));
 
       if ((has_shape || has_size) &&
           !_ctk_css_parser_try (parser, ",", TRUE))
@@ -318,7 +318,7 @@ ctk_css_image_radial_parse (GtkCssImage  *image,
 
   if (!has_size)
     {
-      radial->size = GTK_CSS_FARTHEST_CORNER;
+      radial->size = CTK_CSS_FARTHEST_CORNER;
     }
 
   if (!has_shape)
@@ -360,8 +360,8 @@ ctk_css_image_radial_parse (GtkCssImage  *image,
     if (ctk_css_number_value_can_parse (parser))
       {
         stop.offset = _ctk_css_number_value_parse (parser,
-                                                   GTK_CSS_PARSE_PERCENT
-                                                   | GTK_CSS_PARSE_LENGTH);
+                                                   CTK_CSS_PARSE_PERCENT
+                                                   | CTK_CSS_PARSE_LENGTH);
         if (stop.offset == NULL)
           {
             _ctk_css_value_unref (stop.color);
@@ -380,7 +380,7 @@ ctk_css_image_radial_parse (GtkCssImage  *image,
   if (radial->stops->len < 2)
     {
       _ctk_css_parser_error_full (parser,
-                                  GTK_CSS_PROVIDER_ERROR_DEPRECATED,
+                                  CTK_CSS_PROVIDER_ERROR_DEPRECATED,
                                   "Using one color stop with %s() is deprecated.",
                                   radial->repeating ? "repeating-radial-gradient" : "radial-gradient");
     }
@@ -398,7 +398,7 @@ static void
 ctk_css_image_radial_print (GtkCssImage *image,
                             GString     *string)
 {
-  GtkCssImageRadial *radial = GTK_CSS_IMAGE_RADIAL (image);
+  GtkCssImageRadial *radial = CTK_CSS_IMAGE_RADIAL (image);
   guint i;
   const gchar *names[] = {
     NULL,
@@ -464,11 +464,11 @@ ctk_css_image_radial_compute (GtkCssImage             *image,
                               GtkCssStyle             *style,
                               GtkCssStyle             *parent_style)
 {
-  GtkCssImageRadial *radial = GTK_CSS_IMAGE_RADIAL (image);
+  GtkCssImageRadial *radial = CTK_CSS_IMAGE_RADIAL (image);
   GtkCssImageRadial *copy;
   guint i;
 
-  copy = g_object_new (GTK_TYPE_CSS_IMAGE_RADIAL, NULL);
+  copy = g_object_new (CTK_TYPE_CSS_IMAGE_RADIAL, NULL);
   copy->repeating = radial->repeating;
   copy->circle = radial->circle;
   copy->size = radial->size;
@@ -501,7 +501,7 @@ ctk_css_image_radial_compute (GtkCssImage             *image,
         }
     }
 
-  return GTK_CSS_IMAGE (copy);
+  return CTK_CSS_IMAGE (copy);
 }
 
 static GtkCssImage *
@@ -513,23 +513,23 @@ ctk_css_image_radial_transition (GtkCssImage *start_image,
   GtkCssImageRadial *start, *end, *result;
   guint i;
 
-  start = GTK_CSS_IMAGE_RADIAL (start_image);
+  start = CTK_CSS_IMAGE_RADIAL (start_image);
 
   if (end_image == NULL)
-    return GTK_CSS_IMAGE_CLASS (_ctk_css_image_radial_parent_class)->transition (start_image, end_image, property_id, progress);
+    return CTK_CSS_IMAGE_CLASS (_ctk_css_image_radial_parent_class)->transition (start_image, end_image, property_id, progress);
 
-  if (!GTK_IS_CSS_IMAGE_RADIAL (end_image))
-    return GTK_CSS_IMAGE_CLASS (_ctk_css_image_radial_parent_class)->transition (start_image, end_image, property_id, progress);
+  if (!CTK_IS_CSS_IMAGE_RADIAL (end_image))
+    return CTK_CSS_IMAGE_CLASS (_ctk_css_image_radial_parent_class)->transition (start_image, end_image, property_id, progress);
 
-  end = GTK_CSS_IMAGE_RADIAL (end_image);
+  end = CTK_CSS_IMAGE_RADIAL (end_image);
 
   if (start->repeating != end->repeating ||
       start->stops->len != end->stops->len ||
       start->size != end->size ||
       start->circle != end->circle)
-    return GTK_CSS_IMAGE_CLASS (_ctk_css_image_radial_parent_class)->transition (start_image, end_image, property_id, progress);
+    return CTK_CSS_IMAGE_CLASS (_ctk_css_image_radial_parent_class)->transition (start_image, end_image, property_id, progress);
 
-  result = g_object_new (GTK_TYPE_CSS_IMAGE_RADIAL, NULL);
+  result = g_object_new (CTK_TYPE_CSS_IMAGE_RADIAL, NULL);
   result->repeating = start->repeating;
   result->circle = start->circle;
   result->size = start->size;
@@ -594,19 +594,19 @@ ctk_css_image_radial_transition (GtkCssImage *start_image,
       g_array_append_val (result->stops, stop);
     }
 
-  return GTK_CSS_IMAGE (result);
+  return CTK_CSS_IMAGE (result);
 
 fail:
   g_object_unref (result);
-  return GTK_CSS_IMAGE_CLASS (_ctk_css_image_radial_parent_class)->transition (start_image, end_image, property_id, progress);
+  return CTK_CSS_IMAGE_CLASS (_ctk_css_image_radial_parent_class)->transition (start_image, end_image, property_id, progress);
 }
 
 static gboolean
 ctk_css_image_radial_equal (GtkCssImage *image1,
                             GtkCssImage *image2)
 {
-  GtkCssImageRadial *radial1 = GTK_CSS_IMAGE_RADIAL (image1);
-  GtkCssImageRadial *radial2 = GTK_CSS_IMAGE_RADIAL (image2);
+  GtkCssImageRadial *radial1 = CTK_CSS_IMAGE_RADIAL (image1);
+  GtkCssImageRadial *radial2 = CTK_CSS_IMAGE_RADIAL (image2);
   guint i;
 
   if (radial1->repeating != radial2->repeating ||
@@ -637,7 +637,7 @@ ctk_css_image_radial_equal (GtkCssImage *image1,
 static void
 ctk_css_image_radial_dispose (GObject *object)
 {
-  GtkCssImageRadial *radial = GTK_CSS_IMAGE_RADIAL (object);
+  GtkCssImageRadial *radial = CTK_CSS_IMAGE_RADIAL (object);
   int i;
 
   if (radial->stops)
@@ -665,7 +665,7 @@ ctk_css_image_radial_dispose (GObject *object)
 static void
 _ctk_css_image_radial_class_init (GtkCssImageRadialClass *klass)
 {
-  GtkCssImageClass *image_class = GTK_CSS_IMAGE_CLASS (klass);
+  GtkCssImageClass *image_class = CTK_CSS_IMAGE_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   image_class->draw = ctk_css_image_radial_draw;

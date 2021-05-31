@@ -64,12 +64,12 @@ static int populate_completion (GtkEmojiCompletion *completion,
 
 #define MAX_ROWS 5
 
-G_DEFINE_TYPE (GtkEmojiCompletion, ctk_emoji_completion, GTK_TYPE_POPOVER)
+G_DEFINE_TYPE (GtkEmojiCompletion, ctk_emoji_completion, CTK_TYPE_POPOVER)
 
 static void
 ctk_emoji_completion_finalize (GObject *object)
 {
-  GtkEmojiCompletion *completion = GTK_EMOJI_COMPLETION (object);
+  GtkEmojiCompletion *completion = CTK_EMOJI_COMPLETION (object);
 
   disconnect_signals (completion);
 
@@ -90,7 +90,7 @@ update_completion (GtkEmojiCompletion *completion)
 
   n_matches = 0;
 
-  text = ctk_entry_get_text (GTK_ENTRY (completion->entry));
+  text = ctk_entry_get_text (CTK_ENTRY (completion->entry));
   length = strlen (text);
 
   if (length > 0)
@@ -123,9 +123,9 @@ next:
     }
 
   if (n_matches > 0)
-    ctk_popover_popup (GTK_POPOVER (completion));
+    ctk_popover_popup (CTK_POPOVER (completion));
   else
-    ctk_popover_popdown (GTK_POPOVER (completion));
+    ctk_popover_popdown (CTK_POPOVER (completion));
 }
 
 static void
@@ -141,7 +141,7 @@ emoji_activated (GtkWidget          *row,
   const char *emoji;
   guint length;
 
-  ctk_popover_popdown (GTK_POPOVER (completion));
+  ctk_popover_popdown (CTK_POPOVER (completion));
 
   emoji = (const char *)g_object_get_data (G_OBJECT (row), "text");
 
@@ -161,7 +161,7 @@ row_activated (GtkListBox    *list,
 {
   GtkEmojiCompletion *completion = data;
 
-  emoji_activated (GTK_WIDGET (row), completion);
+  emoji_activated (CTK_WIDGET (row), completion);
 }
 
 static void
@@ -171,7 +171,7 @@ child_activated (GtkFlowBox      *box,
 {
   GtkEmojiCompletion *completion = data;
 
-  emoji_activated (GTK_WIDGET (child), completion);
+  emoji_activated (CTK_WIDGET (child), completion);
 }
 
 static void
@@ -184,7 +184,7 @@ move_active_row (GtkEmojiCompletion *completion,
 
   active = NULL;
   last = NULL;
-  children = ctk_container_get_children (GTK_CONTAINER (completion->list));
+  children = ctk_container_get_children (CTK_CONTAINER (completion->list));
   for (l = children; l; l = l->next)
     {
       child = l->data;
@@ -195,9 +195,9 @@ move_active_row (GtkEmojiCompletion *completion,
       if (l->next == NULL)
         last = l;
 
-      ctk_widget_unset_state_flags (child, GTK_STATE_FLAG_PRELIGHT);
-      base = GTK_WIDGET (g_object_get_data (G_OBJECT (child), "base"));
-      ctk_widget_unset_state_flags (base, GTK_STATE_FLAG_PRELIGHT);
+      ctk_widget_unset_state_flags (child, CTK_STATE_FLAG_PRELIGHT);
+      base = CTK_WIDGET (g_object_get_data (G_OBJECT (child), "base"));
+      ctk_widget_unset_state_flags (base, CTK_STATE_FLAG_PRELIGHT);
     }
 
   if (completion->active != NULL)
@@ -217,11 +217,11 @@ move_active_row (GtkEmojiCompletion *completion,
     }
 
   if (completion->active != NULL)
-    ctk_widget_set_state_flags (completion->active, GTK_STATE_FLAG_PRELIGHT, FALSE);
+    ctk_widget_set_state_flags (completion->active, CTK_STATE_FLAG_PRELIGHT, FALSE);
 
   if (completion->active_variation)
     {
-      ctk_widget_unset_state_flags (completion->active_variation, GTK_STATE_FLAG_PRELIGHT);
+      ctk_widget_unset_state_flags (completion->active_variation, CTK_STATE_FLAG_PRELIGHT);
       completion->active_variation = NULL;
     }
 
@@ -231,7 +231,7 @@ move_active_row (GtkEmojiCompletion *completion,
 static void
 activate_active_row (GtkEmojiCompletion *completion)
 {
-  if (GTK_IS_FLOW_BOX_CHILD (completion->active_variation))
+  if (CTK_IS_FLOW_BOX_CHILD (completion->active_variation))
     emoji_activated (completion->active_variation, completion);
   else if (completion->active != NULL)
     emoji_activated (completion->active, completion);
@@ -249,24 +249,24 @@ show_variations (GtkEmojiCompletion *completion,
   if (!row)
     return;
 
-  stack = GTK_WIDGET (g_object_get_data (G_OBJECT (row), "stack"));
-  box = ctk_stack_get_child_by_name (GTK_STACK (stack), "variations");
+  stack = CTK_WIDGET (g_object_get_data (G_OBJECT (row), "stack"));
+  box = ctk_stack_get_child_by_name (CTK_STACK (stack), "variations");
   if (!box)
     return;
 
-  is_visible = ctk_stack_get_visible_child (GTK_STACK (stack)) == box;
+  is_visible = ctk_stack_get_visible_child (CTK_STACK (stack)) == box;
   if (is_visible == visible)
     return;
 
   if (visible)
-    ctk_widget_unset_state_flags (row, GTK_STATE_FLAG_PRELIGHT);
+    ctk_widget_unset_state_flags (row, CTK_STATE_FLAG_PRELIGHT);
   else
-    ctk_widget_set_state_flags (row, GTK_STATE_FLAG_PRELIGHT, FALSE);
+    ctk_widget_set_state_flags (row, CTK_STATE_FLAG_PRELIGHT, FALSE);
 
-  ctk_stack_set_visible_child_name (GTK_STACK (stack), visible ? "variations" : "text");
+  ctk_stack_set_visible_child_name (CTK_STACK (stack), visible ? "variations" : "text");
   if (completion->active_variation)
     {
-      ctk_widget_unset_state_flags (completion->active_variation, GTK_STATE_FLAG_PRELIGHT);
+      ctk_widget_unset_state_flags (completion->active_variation, CTK_STATE_FLAG_PRELIGHT);
       completion->active_variation = NULL;
     }
 }
@@ -284,17 +284,17 @@ move_active_variation (GtkEmojiCompletion *completion,
   if (!completion->active)
     return FALSE;
 
-  base = GTK_WIDGET (g_object_get_data (G_OBJECT (completion->active), "base"));
-  stack = GTK_WIDGET (g_object_get_data (G_OBJECT (completion->active), "stack"));
-  box = ctk_stack_get_child_by_name (GTK_STACK (stack), "variations");
+  base = CTK_WIDGET (g_object_get_data (G_OBJECT (completion->active), "base"));
+  stack = CTK_WIDGET (g_object_get_data (G_OBJECT (completion->active), "stack"));
+  box = ctk_stack_get_child_by_name (CTK_STACK (stack), "variations");
 
-  if (ctk_stack_get_visible_child (GTK_STACK (stack)) != box)
+  if (ctk_stack_get_visible_child (CTK_STACK (stack)) != box)
     return FALSE;
 
   next = NULL;
 
   active = NULL;
-  children = ctk_container_get_children (GTK_CONTAINER (box));
+  children = ctk_container_get_children (CTK_CONTAINER (box));
   for (l = children; l; l = l->next)
     {
       if (l->data == completion->active_variation)
@@ -315,9 +315,9 @@ move_active_variation (GtkEmojiCompletion *completion,
   if (next)
     {
       if (completion->active_variation)
-        ctk_widget_unset_state_flags (completion->active_variation, GTK_STATE_FLAG_PRELIGHT);
+        ctk_widget_unset_state_flags (completion->active_variation, CTK_STATE_FLAG_PRELIGHT);
       completion->active_variation = next;
-      ctk_widget_set_state_flags (completion->active_variation, GTK_STATE_FLAG_PRELIGHT, FALSE);
+      ctk_widget_set_state_flags (completion->active_variation, CTK_STATE_FLAG_PRELIGHT, FALSE);
     }
 
   g_list_free (children);
@@ -332,14 +332,14 @@ entry_key_press (GtkEntry           *entry,
 {
   guint keyval;
 
-  if (!ctk_widget_get_visible (GTK_WIDGET (completion)))
+  if (!ctk_widget_get_visible (CTK_WIDGET (completion)))
     return FALSE;
 
   gdk_event_get_keyval ((GdkEvent*)event, &keyval);
 
   if (keyval == GDK_KEY_Escape)
     {
-      ctk_popover_popdown (GTK_POPOVER (completion));
+      ctk_popover_popdown (CTK_POPOVER (completion));
       return TRUE;
     }
 
@@ -402,7 +402,7 @@ entry_focus_out (GtkWidget *entry,
                  GtkEmojiCompletion *completion)
 {
   if (!ctk_widget_has_focus (entry))
-    ctk_popover_popdown (GTK_POPOVER (completion));
+    ctk_popover_popdown (CTK_POPOVER (completion));
   return FALSE;
 }
 
@@ -494,7 +494,7 @@ add_emoji_variation (GtkWidget *box,
   ctk_widget_show (label);
   attrs = pango_attr_list_new ();
   pango_attr_list_insert (attrs, pango_attr_scale_new (PANGO_SCALE_X_LARGE));
-  ctk_label_set_attributes (GTK_LABEL (label), attrs);
+  ctk_label_set_attributes (CTK_LABEL (label), attrs);
   pango_attr_list_unref (attrs);
 
   child = ctk_flow_box_child_new ();
@@ -507,8 +507,8 @@ add_emoji_variation (GtkWidget *box,
   if (modifier != 0)
     g_object_set_data (G_OBJECT (child), "modifier", GUINT_TO_POINTER (modifier));
 
-  ctk_container_add (GTK_CONTAINER (child), label);
-  ctk_flow_box_insert (GTK_FLOW_BOX (box), child, -1);
+  ctk_container_add (CTK_CONTAINER (child), label);
+  ctk_flow_box_insert (CTK_FLOW_BOX (box), child, -1);
 }
 
 static void
@@ -531,47 +531,47 @@ add_emoji (GtkWidget          *list,
   ctk_widget_show (label);
   attrs = pango_attr_list_new ();
   pango_attr_list_insert (attrs, pango_attr_scale_new (PANGO_SCALE_X_LARGE));
-  ctk_label_set_attributes (GTK_LABEL (label), attrs);
+  ctk_label_set_attributes (CTK_LABEL (label), attrs);
   pango_attr_list_unref (attrs);
   ctk_style_context_add_class (ctk_widget_get_style_context (label), "emoji");
 
   child = ctk_list_box_row_new ();
   ctk_widget_show (child);
   ctk_widget_set_focus_on_click (child, FALSE);
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
   ctk_widget_show (box);
-  ctk_container_add (GTK_CONTAINER (child), box);
-  ctk_box_pack_start (GTK_BOX (box), label, FALSE, FALSE, 0);
+  ctk_container_add (CTK_CONTAINER (child), box);
+  ctk_box_pack_start (CTK_BOX (box), label, FALSE, FALSE, 0);
   g_object_set_data (G_OBJECT (child), "base", label);
 
   stack = ctk_stack_new ();
   ctk_widget_show (stack);
-  ctk_stack_set_homogeneous (GTK_STACK (stack), TRUE);
-  ctk_stack_set_transition_type (GTK_STACK (stack), GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT);
-  ctk_box_pack_start (GTK_BOX (box), stack, FALSE, FALSE, 0);
+  ctk_stack_set_homogeneous (CTK_STACK (stack), TRUE);
+  ctk_stack_set_transition_type (CTK_STACK (stack), CTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT);
+  ctk_box_pack_start (CTK_BOX (box), stack, FALSE, FALSE, 0);
   g_object_set_data (G_OBJECT (child), "stack", stack);
 
   g_variant_get_child (emoji_data, 2, "&s", &shortname);
   label = ctk_label_new (shortname);
   ctk_widget_show (label);
-  ctk_label_set_xalign (GTK_LABEL (label), 0);
+  ctk_label_set_xalign (CTK_LABEL (label), 0);
 
-  ctk_stack_add_named (GTK_STACK (stack), label, "text");
+  ctk_stack_add_named (CTK_STACK (stack), label, "text");
 
   if (has_variations (emoji_data))
     {
       box = ctk_flow_box_new ();
       ctk_widget_show (box);
-      ctk_flow_box_set_homogeneous (GTK_FLOW_BOX (box), TRUE);
-      ctk_flow_box_set_min_children_per_line (GTK_FLOW_BOX (box), 5);
-      ctk_flow_box_set_max_children_per_line (GTK_FLOW_BOX (box), 5);
-      ctk_flow_box_set_activate_on_single_click (GTK_FLOW_BOX (box), TRUE);
-      ctk_flow_box_set_selection_mode (GTK_FLOW_BOX (box), GTK_SELECTION_NONE);
+      ctk_flow_box_set_homogeneous (CTK_FLOW_BOX (box), TRUE);
+      ctk_flow_box_set_min_children_per_line (CTK_FLOW_BOX (box), 5);
+      ctk_flow_box_set_max_children_per_line (CTK_FLOW_BOX (box), 5);
+      ctk_flow_box_set_activate_on_single_click (CTK_FLOW_BOX (box), TRUE);
+      ctk_flow_box_set_selection_mode (CTK_FLOW_BOX (box), CTK_SELECTION_NONE);
       g_signal_connect (box, "child-activated", G_CALLBACK (child_activated), completion);
       for (modifier = 0x1f3fb; modifier <= 0x1f3ff; modifier++)
         add_emoji_variation (box, emoji_data, modifier);
 
-      ctk_stack_add_named (GTK_STACK (stack), box, "variations");
+      ctk_stack_add_named (CTK_STACK (stack), box, "variations");
     }
 
   g_object_set_data_full (G_OBJECT (child), "text", g_strdup (text), g_free);
@@ -579,7 +579,7 @@ add_emoji (GtkWidget          *list,
                           g_variant_ref (emoji_data), (GDestroyNotify)g_variant_unref);
   ctk_style_context_add_class (ctk_widget_get_style_context (child), "emoji-completion-row");
 
-  ctk_list_box_insert (GTK_LIST_BOX (list), child, -1);
+  ctk_list_box_insert (CTK_LIST_BOX (list), child, -1);
 }
 
 static int
@@ -598,9 +598,9 @@ populate_completion (GtkEmojiCompletion *completion,
   completion->length = g_utf8_strlen (text, -1);
   completion->offset = offset;
 
-  children = ctk_container_get_children (GTK_CONTAINER (completion->list));
+  children = ctk_container_get_children (CTK_CONTAINER (completion->list));
   for (l = children; l; l = l->next)
-    ctk_widget_destroy (GTK_WIDGET (l->data));
+    ctk_widget_destroy (CTK_WIDGET (l->data));
   g_list_free (children);
 
   completion->active = NULL;
@@ -631,10 +631,10 @@ populate_completion (GtkEmojiCompletion *completion,
     {
       GList *children;
 
-      children = ctk_container_get_children (GTK_CONTAINER (completion->list));
+      children = ctk_container_get_children (CTK_CONTAINER (completion->list));
       completion->active = children->data;
       g_list_free (children);
-      ctk_widget_set_state_flags (completion->active, GTK_STATE_FLAG_PRELIGHT, FALSE);
+      ctk_widget_set_state_flags (completion->active, CTK_STATE_FLAG_PRELIGHT, FALSE);
     }
 
   return n_added;
@@ -649,7 +649,7 @@ long_pressed_cb (GtkGesture *gesture,
   GtkEmojiCompletion *completion = data;
   GtkWidget *row;
 
-  row = GTK_WIDGET (ctk_list_box_get_row_at_y (GTK_LIST_BOX (completion->list), y));
+  row = CTK_WIDGET (ctk_list_box_get_row_at_y (CTK_LIST_BOX (completion->list), y));
   if (!row)
     return;
 
@@ -661,7 +661,7 @@ ctk_emoji_completion_init (GtkEmojiCompletion *completion)
 {
   GBytes *bytes = NULL;
 
-  ctk_widget_init_template (GTK_WIDGET (completion));
+  ctk_widget_init_template (CTK_WIDGET (completion));
 
   bytes = g_resources_lookup_data ("/org/gtk/libgtk/emoji/emoji.data", 0, NULL);
   completion->data = g_variant_ref_sink (g_variant_new_from_bytes (G_VARIANT_TYPE ("a(auss)"), bytes, TRUE));
@@ -675,7 +675,7 @@ static void
 ctk_emoji_completion_class_init (GtkEmojiCompletionClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   object_class->finalize = ctk_emoji_completion_finalize;
 
@@ -691,11 +691,11 @@ ctk_emoji_completion_new (GtkEntry *entry)
 {
   GtkEmojiCompletion *completion;
 
-  completion = GTK_EMOJI_COMPLETION (g_object_new (GTK_TYPE_EMOJI_COMPLETION,
+  completion = CTK_EMOJI_COMPLETION (g_object_new (CTK_TYPE_EMOJI_COMPLETION,
                                                    "relative-to", entry,
                                                    NULL));
 
   connect_signals (completion, entry);
 
-  return GTK_WIDGET (completion);
+  return CTK_WIDGET (completion);
 }

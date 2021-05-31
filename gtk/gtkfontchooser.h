@@ -18,10 +18,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FONT_CHOOSER_H__
-#define __GTK_FONT_CHOOSER_H__
+#ifndef __CTK_FONT_CHOOSER_H__
+#define __CTK_FONT_CHOOSER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -46,11 +46,11 @@ typedef gboolean (*GtkFontFilterFunc) (const PangoFontFamily *family,
 
 /**
  * GtkFontChooserLevel:
- * @GTK_FONT_CHOOSER_LEVEL_FAMILY: Allow selecting a font family
- * @GTK_FONT_CHOOSER_LEVEL_STYLE: Allow selecting a specific font face
- * @GTK_FONT_CHOOSER_LEVEL_SIZE: Allow selecting a specific font size
- * @GTK_FONT_CHOOSER_LEVEL_VARIATION: Allow changing OpenType font variation axes
- * @GTK_FONT_CHOOSER_LEVEL_FEATURES: Allow selecting specific OpenType font features
+ * @CTK_FONT_CHOOSER_LEVEL_FAMILY: Allow selecting a font family
+ * @CTK_FONT_CHOOSER_LEVEL_STYLE: Allow selecting a specific font face
+ * @CTK_FONT_CHOOSER_LEVEL_SIZE: Allow selecting a specific font size
+ * @CTK_FONT_CHOOSER_LEVEL_VARIATION: Allow changing OpenType font variation axes
+ * @CTK_FONT_CHOOSER_LEVEL_FEATURES: Allow selecting specific OpenType font features
  *
  * This enumeration specifies the granularity of font selection
  * that is desired in a font chooser.
@@ -59,17 +59,17 @@ typedef gboolean (*GtkFontFilterFunc) (const PangoFontFamily *family,
  * ignore unknown values.
  */
 typedef enum {
-  GTK_FONT_CHOOSER_LEVEL_FAMILY     = 0,
-  GTK_FONT_CHOOSER_LEVEL_STYLE      = 1 << 0,
-  GTK_FONT_CHOOSER_LEVEL_SIZE       = 1 << 1,
-  GTK_FONT_CHOOSER_LEVEL_VARIATIONS = 1 << 2,
-  GTK_FONT_CHOOSER_LEVEL_FEATURES   = 1 << 3
+  CTK_FONT_CHOOSER_LEVEL_FAMILY     = 0,
+  CTK_FONT_CHOOSER_LEVEL_STYLE      = 1 << 0,
+  CTK_FONT_CHOOSER_LEVEL_SIZE       = 1 << 1,
+  CTK_FONT_CHOOSER_LEVEL_VARIATIONS = 1 << 2,
+  CTK_FONT_CHOOSER_LEVEL_FEATURES   = 1 << 3
 } GtkFontChooserLevel;
 
-#define GTK_TYPE_FONT_CHOOSER			(ctk_font_chooser_get_type ())
-#define GTK_FONT_CHOOSER(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FONT_CHOOSER, GtkFontChooser))
-#define GTK_IS_FONT_CHOOSER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FONT_CHOOSER))
-#define GTK_FONT_CHOOSER_GET_IFACE(inst)	(G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_FONT_CHOOSER, GtkFontChooserIface))
+#define CTK_TYPE_FONT_CHOOSER			(ctk_font_chooser_get_type ())
+#define CTK_FONT_CHOOSER(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FONT_CHOOSER, GtkFontChooser))
+#define CTK_IS_FONT_CHOOSER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FONT_CHOOSER))
+#define CTK_FONT_CHOOSER_GET_IFACE(inst)	(G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_FONT_CHOOSER, GtkFontChooserIface))
 
 typedef struct _GtkFontChooser      GtkFontChooser; /* dummy */
 typedef struct _GtkFontChooserIface GtkFontChooserIface;
@@ -161,4 +161,4 @@ void             ctk_font_chooser_set_language             (GtkFontChooser   *fo
 
 G_END_DECLS
 
-#endif /* __GTK_FONT_CHOOSER_H__ */
+#endif /* __CTK_FONT_CHOOSER_H__ */

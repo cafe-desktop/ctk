@@ -53,7 +53,7 @@
 
 #ifdef GDK_WINDOWING_WIN32
 #include "gdk/win32/gdkwin32.h"
-#define WM_GTK_TRAY_NOTIFICATION (WM_USER+1)
+#define WM_CTK_TRAY_NOTIFICATION (WM_USER+1)
 #endif
 
 
@@ -234,7 +234,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 							P_("Pixbuf"),
 							P_("A GdkPixbuf to display"),
 							GDK_TYPE_PIXBUF,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
 				   PROP_FILE,
@@ -242,7 +242,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 							P_("Filename"),
 							P_("Filename to load and display"),
 							NULL,
-							GTK_PARAM_WRITABLE));
+							CTK_PARAM_WRITABLE));
 
   /**
    * GtkStatusIcon:stock:
@@ -255,7 +255,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 							P_("Stock ID"),
 							P_("Stock ID for a stock image to display"),
 							NULL,
-							GTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+							CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
   
   g_object_class_install_property (gobject_class,
                                    PROP_ICON_NAME,
@@ -263,7 +263,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
                                                         P_("Icon Name"),
                                                         P_("The name of the icon from the icon theme"),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 
   /**
    * GtkStatusIcon:gicon:
@@ -279,16 +279,16 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
                                                         P_("GIcon"),
                                                         P_("The GIcon being displayed"),
                                                         G_TYPE_ICON,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
 				   PROP_STORAGE_TYPE,
 				   g_param_spec_enum ("storage-type",
 						      P_("Storage type"),
 						      P_("The representation being used for image data"),
-						      GTK_TYPE_IMAGE_TYPE,
-						      GTK_IMAGE_EMPTY,
-						      GTK_PARAM_READABLE));
+						      CTK_TYPE_IMAGE_TYPE,
+						      CTK_IMAGE_EMPTY,
+						      CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
 				   PROP_SIZE,
@@ -298,7 +298,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 						     0,
 						     G_MAXINT,
 						     0,
-						     GTK_PARAM_READABLE));
+						     CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
 				   PROP_SCREEN,
@@ -306,7 +306,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
  							P_("Screen"),
  							P_("The screen where this status icon will be displayed"),
 							GDK_TYPE_SCREEN,
- 							GTK_PARAM_READWRITE));
+ 							CTK_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
 				   PROP_VISIBLE,
@@ -314,7 +314,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 							 P_("Visible"),
 							 P_("Whether the status icon is visible"),
 							 TRUE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
 
   /**
@@ -330,7 +330,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 							 P_("Embedded"),
 							 P_("Whether the status icon is embedded"),
 							 FALSE,
-							 GTK_PARAM_READABLE));
+							 CTK_PARAM_READABLE));
 
   /**
    * GtkStatusIcon:orientation:
@@ -345,9 +345,9 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 				   g_param_spec_enum ("orientation",
 						      P_("Orientation"),
 						      P_("The orientation of the tray"),
-						      GTK_TYPE_ORIENTATION,
-						      GTK_ORIENTATION_HORIZONTAL,
-						      GTK_PARAM_READABLE));
+						      CTK_TYPE_ORIENTATION,
+						      CTK_ORIENTATION_HORIZONTAL,
+						      CTK_PARAM_READABLE));
 
 /**
  * GtkStatusIcon:has-tooltip:
@@ -374,7 +374,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
  							 P_("Has tooltip"),
  							 P_("Whether this tray icon has a tooltip"),
  							 FALSE,
- 							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+ 							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkStatusIcon:tooltip-text:
@@ -401,7 +401,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
                                                         P_("Tooltip Text"),
                                                         P_("The contents of the tooltip for this widget"),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
   /**
    * GtkStatusIcon:tooltip-markup:
    *
@@ -425,7 +425,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
  							P_("Tooltip markup"),
 							P_("The contents of the tooltip for this tray icon"),
 							NULL,
-							GTK_PARAM_READWRITE));
+							CTK_PARAM_READWRITE));
 
 
   /**
@@ -443,7 +443,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
                                                         P_("Title"),
                                                         P_("The title of this tray icon"),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 
   /**
    * GtkStatusIcon::activate:
@@ -648,7 +648,7 @@ ctk_status_icon_class_init (GtkStatusIconClass *class)
 		  G_TYPE_INT,
 		  G_TYPE_INT,
 		  G_TYPE_BOOLEAN,
-		  GTK_TYPE_TOOLTIP);
+		  CTK_TYPE_TOOLTIP);
 }
 
 #ifdef GDK_WINDOWING_WIN32
@@ -710,7 +710,7 @@ find_status_icon (UINT id)
 
   for (rover = status_icons; rover != NULL; rover = rover->next)
     {
-      GtkStatusIcon *status_icon = GTK_STATUS_ICON (rover->data);
+      GtkStatusIcon *status_icon = CTK_STATUS_ICON (rover->data);
       GtkStatusIconPrivate *priv = status_icon->priv;
 
       if (priv->nid.uID == id)
@@ -732,7 +732,7 @@ wndproc (HWND   hwnd,
 
       for (rover = status_icons; rover != NULL; rover = rover->next)
 	{
-	  GtkStatusIcon *status_icon = GTK_STATUS_ICON (rover->data);
+	  GtkStatusIcon *status_icon = CTK_STATUS_ICON (rover->data);
 	  GtkStatusIconPrivate *priv = status_icon->priv;
 
           if (priv->visible)
@@ -758,7 +758,7 @@ wndproc (HWND   hwnd,
       return 0;
     }
 
-  if (message == WM_GTK_TRAY_NOTIFICATION)
+  if (message == WM_CTK_TRAY_NOTIFICATION)
     {
       ButtonCallbackData *bc;
       guint button;
@@ -880,9 +880,9 @@ ctk_status_icon_init (GtkStatusIcon *status_icon)
   if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
     {
       priv->size         = 0;
-      priv->tray_icon = GTK_WIDGET (_ctk_tray_icon_new (NULL));
+      priv->tray_icon = CTK_WIDGET (_ctk_tray_icon_new (NULL));
 
-      ctk_widget_add_events (GTK_WIDGET (priv->tray_icon),
+      ctk_widget_add_events (CTK_WIDGET (priv->tray_icon),
                              GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
                              GDK_SCROLL_MASK);
 
@@ -918,7 +918,7 @@ ctk_status_icon_init (GtkStatusIcon *status_icon)
                                 G_CALLBACK (ctk_status_icon_screen_changed), status_icon);
       priv->image = ctk_image_new ();
       ctk_widget_set_can_focus (priv->image, TRUE);
-      ctk_container_add (GTK_CONTAINER (priv->tray_icon), priv->image);
+      ctk_container_add (CTK_CONTAINER (priv->tray_icon), priv->image);
       ctk_widget_show (priv->image);
 
       /* Force-initialize the symbolic colors */
@@ -943,9 +943,9 @@ ctk_status_icon_init (GtkStatusIcon *status_icon)
     abd.cbSize = sizeof (abd);
     SHAppBarMessage (ABM_GETTASKBARPOS, &abd);
     if (abd.rc.bottom - abd.rc.top > abd.rc.right - abd.rc.left)
-      priv->orientation = GTK_ORIENTATION_VERTICAL;
+      priv->orientation = CTK_ORIENTATION_VERTICAL;
     else
-      priv->orientation = GTK_ORIENTATION_HORIZONTAL;
+      priv->orientation = CTK_ORIENTATION_HORIZONTAL;
 
     priv->taskbar_top = abd.rc.top;
   }
@@ -959,7 +959,7 @@ ctk_status_icon_init (GtkStatusIcon *status_icon)
 
   priv->nid.hWnd = create_tray_observer ();
   priv->nid.uID = status_icon_id++;
-  priv->nid.uCallbackMessage = WM_GTK_TRAY_NOTIFICATION;
+  priv->nid.uCallbackMessage = WM_CTK_TRAY_NOTIFICATION;
   priv->nid.uFlags = NIF_MESSAGE;
 
   /* To help win7 identify the icon create it with an application "unique" tip */
@@ -1001,7 +1001,7 @@ ctk_status_icon_constructed (GObject *object)
 
 #ifdef GDK_WINDOWING_X11
   {
-    GtkStatusIcon *status_icon = GTK_STATUS_ICON (object);
+    GtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
     GtkStatusIconPrivate *priv = status_icon->priv;
 
     if (priv->visible && priv->tray_icon)
@@ -1013,7 +1013,7 @@ ctk_status_icon_constructed (GObject *object)
 static void
 ctk_status_icon_finalize (GObject *object)
 {
-  GtkStatusIcon *status_icon = GTK_STATUS_ICON (object);
+  GtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
   GtkStatusIconPrivate *priv = status_icon->priv;
 
   ctk_status_icon_reset_image_data (status_icon);
@@ -1081,7 +1081,7 @@ ctk_status_icon_set_property (GObject      *object,
 			      const GValue *value,
 			      GParamSpec   *pspec)
 {
-  GtkStatusIcon *status_icon = GTK_STATUS_ICON (object);
+  GtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
 
   switch (prop_id)
     {
@@ -1130,7 +1130,7 @@ ctk_status_icon_get_property (GObject    *object,
 			      GValue     *value,
 			      GParamSpec *pspec)
 {
-  GtkStatusIcon *status_icon = GTK_STATUS_ICON (object);
+  GtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
 
   switch (prop_id)
     {
@@ -1164,9 +1164,9 @@ ctk_status_icon_get_property (GObject    *object,
     case PROP_ORIENTATION:
 #ifdef GDK_WINDOWING_X11
       if (status_icon->priv->tray_icon)
-        g_value_set_enum (value, _ctk_tray_icon_get_orientation (GTK_TRAY_ICON (status_icon->priv->tray_icon)));
+        g_value_set_enum (value, _ctk_tray_icon_get_orientation (CTK_TRAY_ICON (status_icon->priv->tray_icon)));
       else
-        g_value_set_enum (value, GTK_ORIENTATION_HORIZONTAL);
+        g_value_set_enum (value, CTK_ORIENTATION_HORIZONTAL);
 #endif
 #ifdef GDK_WINDOWING_WIN32
       g_value_set_enum (value, status_icon->priv->orientation);
@@ -1205,7 +1205,7 @@ ctk_status_icon_get_property (GObject    *object,
 GtkStatusIcon *
 ctk_status_icon_new (void)
 {
-  return g_object_new (GTK_TYPE_STATUS_ICON, NULL);
+  return g_object_new (CTK_TYPE_STATUS_ICON, NULL);
 }
 
 /**
@@ -1227,7 +1227,7 @@ ctk_status_icon_new (void)
 GtkStatusIcon *
 ctk_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
 {
-  return g_object_new (GTK_TYPE_STATUS_ICON,
+  return g_object_new (CTK_TYPE_STATUS_ICON,
 		       "pixbuf", pixbuf,
 		       NULL);
 }
@@ -1251,7 +1251,7 @@ ctk_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
 GtkStatusIcon *
 ctk_status_icon_new_from_file (const gchar *filename)
 {
-  return g_object_new (GTK_TYPE_STATUS_ICON,
+  return g_object_new (CTK_TYPE_STATUS_ICON,
 		       "file", filename,
 		       NULL);
 }
@@ -1261,7 +1261,7 @@ ctk_status_icon_new_from_file (const gchar *filename)
  * @stock_id: a stock icon id
  * 
  * Creates a status icon displaying a stock icon. Sample stock icon
- * names are #GTK_STOCK_OPEN, #GTK_STOCK_QUIT. You can register your 
+ * names are #CTK_STOCK_OPEN, #CTK_STOCK_QUIT. You can register your 
  * own stock icon names, see ctk_icon_factory_add_default() and 
  * ctk_icon_factory_add(). 
  *
@@ -1275,7 +1275,7 @@ ctk_status_icon_new_from_file (const gchar *filename)
 GtkStatusIcon *
 ctk_status_icon_new_from_stock (const gchar *stock_id)
 {
-  return g_object_new (GTK_TYPE_STATUS_ICON,
+  return g_object_new (CTK_TYPE_STATUS_ICON,
 		       "stock", stock_id,
 		       NULL);
 }
@@ -1298,7 +1298,7 @@ ctk_status_icon_new_from_stock (const gchar *stock_id)
 GtkStatusIcon *
 ctk_status_icon_new_from_icon_name (const gchar *icon_name)
 {
-  return g_object_new (GTK_TYPE_STATUS_ICON,
+  return g_object_new (CTK_TYPE_STATUS_ICON,
 		       "icon-name", icon_name,
 		       NULL);
 }
@@ -1320,7 +1320,7 @@ ctk_status_icon_new_from_icon_name (const gchar *icon_name)
 GtkStatusIcon *
 ctk_status_icon_new_from_gicon (GIcon *icon)
 {
-  return g_object_new (GTK_TYPE_STATUS_ICON,
+  return g_object_new (CTK_TYPE_STATUS_ICON,
 		       "gicon", icon,
 		       NULL);
 }
@@ -1372,7 +1372,7 @@ round_pixel_size (GtkWidget *widget,
   dist = G_MAXINT;
   size = 0;
 
-  for (s = GTK_ICON_SIZE_MENU; s <= GTK_ICON_SIZE_DIALOG; s++)
+  for (s = CTK_ICON_SIZE_MENU; s <= CTK_ICON_SIZE_DIALOG; s++)
     {
       if (ctk_icon_size_lookup (s, &w, &h))
 	{
@@ -1420,7 +1420,7 @@ ctk_status_icon_update_image (GtkStatusIcon *status_icon)
   icon_helper = ctk_icon_helper_new (ctk_style_context_get_node (ctk_widget_get_style_context (widget)), widget);
   _ctk_icon_helper_set_force_scale_pixbuf (icon_helper, TRUE);
   _ctk_icon_helper_set_definition (icon_helper, priv->image_def);
-  _ctk_icon_helper_set_icon_size (icon_helper, GTK_ICON_SIZE_SMALL_TOOLBAR);
+  _ctk_icon_helper_set_icon_size (icon_helper, CTK_ICON_SIZE_SMALL_TOOLBAR);
   _ctk_icon_helper_set_pixel_size (icon_helper, round_size);
   surface = ctk_icon_helper_load_surface (icon_helper, scale);
 
@@ -1429,12 +1429,12 @@ ctk_status_icon_update_image (GtkStatusIcon *status_icon)
 #ifdef GDK_WINDOWING_X11
   if (surface)
     {
-      ctk_image_set_from_surface (GTK_IMAGE (priv->image), surface);
+      ctk_image_set_from_surface (CTK_IMAGE (priv->image), surface);
       cairo_surface_destroy (surface);
     }
   else
     {
-      ctk_image_set_from_pixbuf (GTK_IMAGE (priv->image), NULL);
+      ctk_image_set_from_pixbuf (CTK_IMAGE (priv->image), NULL);
     }
 #endif
 
@@ -1503,9 +1503,9 @@ ctk_status_icon_size_allocate (GtkStatusIcon *status_icon,
   GtkOrientation orientation;
   gint size;
 
-  orientation = _ctk_tray_icon_get_orientation (GTK_TRAY_ICON (priv->tray_icon));
+  orientation = _ctk_tray_icon_get_orientation (CTK_TRAY_ICON (priv->tray_icon));
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     size = allocation->height;
   else
     size = allocation->width;
@@ -1540,10 +1540,10 @@ ctk_status_icon_padding_changed (GtkStatusIcon *status_icon)
   GtkOrientation orientation;
   gint padding;
 
-  orientation = _ctk_tray_icon_get_orientation (GTK_TRAY_ICON (priv->tray_icon));
-  padding = _ctk_tray_icon_get_padding (GTK_TRAY_ICON (priv->tray_icon));
+  orientation = _ctk_tray_icon_get_orientation (CTK_TRAY_ICON (priv->tray_icon));
+  padding = _ctk_tray_icon_get_padding (CTK_TRAY_ICON (priv->tray_icon));
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       ctk_widget_set_margin_start (priv->image, padding);
       ctk_widget_set_margin_end (priv->image, padding);
@@ -1561,12 +1561,12 @@ ctk_status_icon_icon_size_changed (GtkStatusIcon *status_icon)
   GtkStatusIconPrivate *priv = status_icon->priv;
   gint icon_size;
 
-  icon_size = _ctk_tray_icon_get_icon_size (GTK_TRAY_ICON (priv->tray_icon));
+  icon_size = _ctk_tray_icon_get_icon_size (CTK_TRAY_ICON (priv->tray_icon));
 
   if (icon_size != 0)
-    ctk_image_set_pixel_size (GTK_IMAGE (priv->image), icon_size);
+    ctk_image_set_pixel_size (CTK_IMAGE (priv->image), icon_size);
   else
-    ctk_image_set_pixel_size (GTK_IMAGE (priv->image), -1);
+    ctk_image_set_pixel_size (CTK_IMAGE (priv->image), -1);
 }
 
 static void
@@ -1592,7 +1592,7 @@ ctk_status_icon_fg_changed (GtkStatusIcon *status_icon)
 
   g_object_get (priv->tray_icon, "fg-color", &rgba, NULL);
 
-  ctk_widget_override_color (priv->image, GTK_STATE_FLAG_NORMAL, rgba);
+  ctk_widget_override_color (priv->image, CTK_STATE_FLAG_NORMAL, rgba);
 
   gdk_rgba_free (rgba);
 }
@@ -1737,19 +1737,19 @@ ctk_status_icon_reset_image_data (GtkStatusIcon *status_icon)
 
   switch (storage_type)
   {
-    case GTK_IMAGE_PIXBUF:
+    case CTK_IMAGE_PIXBUF:
       g_object_notify (G_OBJECT (status_icon), "pixbuf");
       break;
-    case GTK_IMAGE_STOCK:
+    case CTK_IMAGE_STOCK:
       g_object_notify (G_OBJECT (status_icon), "stock");
       break;    
-    case GTK_IMAGE_ICON_NAME:
+    case CTK_IMAGE_ICON_NAME:
       g_object_notify (G_OBJECT (status_icon), "icon-name");
       break;
-    case GTK_IMAGE_GICON:
+    case CTK_IMAGE_GICON:
       g_object_notify (G_OBJECT (status_icon), "gicon");
       break;
-    case GTK_IMAGE_EMPTY:
+    case CTK_IMAGE_EMPTY:
       break;
     default:
       g_assert_not_reached ();
@@ -1782,16 +1782,16 @@ ctk_status_icon_take_image (GtkStatusIcon      *status_icon,
        */
       switch (ctk_image_definition_get_storage_type (def))
         {
-        case GTK_IMAGE_PIXBUF:
+        case CTK_IMAGE_PIXBUF:
           g_object_notify (G_OBJECT (status_icon), "pixbuf");
           break;
-        case GTK_IMAGE_STOCK:
+        case CTK_IMAGE_STOCK:
           g_object_notify (G_OBJECT (status_icon), "stock");
           break;
-        case GTK_IMAGE_ICON_NAME:
+        case CTK_IMAGE_ICON_NAME:
           g_object_notify (G_OBJECT (status_icon), "icon-name");
           break;
-        case GTK_IMAGE_GICON:
+        case CTK_IMAGE_GICON:
           g_object_notify (G_OBJECT (status_icon), "gicon");
           break;
         default:
@@ -1823,7 +1823,7 @@ void
 ctk_status_icon_set_from_pixbuf (GtkStatusIcon *status_icon,
 				 GdkPixbuf     *pixbuf)
 {
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
 
   ctk_status_icon_take_image (status_icon,
@@ -1850,7 +1850,7 @@ ctk_status_icon_set_from_file (GtkStatusIcon *status_icon,
 {
   GdkPixbuf *pixbuf;
   
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (filename != NULL);
   
   pixbuf = gdk_pixbuf_new_from_file (filename, NULL);
@@ -1877,7 +1877,7 @@ void
 ctk_status_icon_set_from_stock (GtkStatusIcon *status_icon,
 				const gchar   *stock_id)
 {
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (stock_id != NULL);
 
   ctk_status_icon_take_image (status_icon,
@@ -1903,7 +1903,7 @@ void
 ctk_status_icon_set_from_icon_name (GtkStatusIcon *status_icon,
 				    const gchar   *icon_name)
 {
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (icon_name != NULL);
 
   ctk_status_icon_take_image (status_icon,
@@ -1928,7 +1928,7 @@ void
 ctk_status_icon_set_from_gicon (GtkStatusIcon *status_icon,
                                 GIcon         *icon)
 {
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (icon != NULL);
 
   ctk_status_icon_take_image (status_icon,
@@ -1941,7 +1941,7 @@ ctk_status_icon_set_from_gicon (GtkStatusIcon *status_icon,
  * 
  * Gets the type of representation being used by the #GtkStatusIcon
  * to store image data. If the #GtkStatusIcon has no image data,
- * the return value will be %GTK_IMAGE_EMPTY. 
+ * the return value will be %CTK_IMAGE_EMPTY. 
  * 
  * Returns: the image representation being used
  *
@@ -1955,7 +1955,7 @@ ctk_status_icon_set_from_gicon (GtkStatusIcon *status_icon,
 GtkImageType
 ctk_status_icon_get_storage_type (GtkStatusIcon *status_icon)
 {
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), GTK_IMAGE_EMPTY);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), CTK_IMAGE_EMPTY);
 
   return ctk_image_definition_get_storage_type (status_icon->priv->image_def);
 }
@@ -1964,8 +1964,8 @@ ctk_status_icon_get_storage_type (GtkStatusIcon *status_icon)
  * @status_icon: a #GtkStatusIcon
  * 
  * Gets the #GdkPixbuf being displayed by the #GtkStatusIcon.
- * The storage type of the status icon must be %GTK_IMAGE_EMPTY or
- * %GTK_IMAGE_PIXBUF (see ctk_status_icon_get_storage_type()).
+ * The storage type of the status icon must be %CTK_IMAGE_EMPTY or
+ * %CTK_IMAGE_PIXBUF (see ctk_status_icon_get_storage_type()).
  * The caller of this function does not own a reference to the
  * returned pixbuf.
  * 
@@ -1983,7 +1983,7 @@ ctk_status_icon_get_pixbuf (GtkStatusIcon *status_icon)
 {
   GtkStatusIconPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
   priv = status_icon->priv;
 
@@ -1995,8 +1995,8 @@ ctk_status_icon_get_pixbuf (GtkStatusIcon *status_icon)
  * @status_icon: a #GtkStatusIcon
  * 
  * Gets the id of the stock icon being displayed by the #GtkStatusIcon.
- * The storage type of the status icon must be %GTK_IMAGE_EMPTY or
- * %GTK_IMAGE_STOCK (see ctk_status_icon_get_storage_type()).
+ * The storage type of the status icon must be %CTK_IMAGE_EMPTY or
+ * %CTK_IMAGE_STOCK (see ctk_status_icon_get_storage_type()).
  * The returned string is owned by the #GtkStatusIcon and should not
  * be freed or modified.
  * 
@@ -2012,7 +2012,7 @@ ctk_status_icon_get_stock (GtkStatusIcon *status_icon)
 {
   GtkStatusIconPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
   priv = status_icon->priv;
 
@@ -2024,8 +2024,8 @@ ctk_status_icon_get_stock (GtkStatusIcon *status_icon)
  * @status_icon: a #GtkStatusIcon
  * 
  * Gets the name of the icon being displayed by the #GtkStatusIcon.
- * The storage type of the status icon must be %GTK_IMAGE_EMPTY or
- * %GTK_IMAGE_ICON_NAME (see ctk_status_icon_get_storage_type()).
+ * The storage type of the status icon must be %CTK_IMAGE_EMPTY or
+ * %CTK_IMAGE_ICON_NAME (see ctk_status_icon_get_storage_type()).
  * The returned string is owned by the #GtkStatusIcon and should not
  * be freed or modified.
  * 
@@ -2042,7 +2042,7 @@ ctk_status_icon_get_icon_name (GtkStatusIcon *status_icon)
 {
   GtkStatusIconPrivate *priv;
   
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
   priv = status_icon->priv;
 
@@ -2054,8 +2054,8 @@ ctk_status_icon_get_icon_name (GtkStatusIcon *status_icon)
  * @status_icon: a #GtkStatusIcon
  *
  * Retrieves the #GIcon being displayed by the #GtkStatusIcon.
- * The storage type of the status icon must be %GTK_IMAGE_EMPTY or
- * %GTK_IMAGE_GICON (see ctk_status_icon_get_storage_type()).
+ * The storage type of the status icon must be %CTK_IMAGE_EMPTY or
+ * %CTK_IMAGE_GICON (see ctk_status_icon_get_storage_type()).
  * The caller of this function does not own a reference to the
  * returned #GIcon.
  *
@@ -2074,7 +2074,7 @@ ctk_status_icon_get_gicon (GtkStatusIcon *status_icon)
 {
   GtkStatusIconPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
   priv = status_icon->priv;
 
@@ -2106,7 +2106,7 @@ ctk_status_icon_get_gicon (GtkStatusIcon *status_icon)
 gint
 ctk_status_icon_get_size (GtkStatusIcon *status_icon)
 {
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), 0);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), 0);
 
   return status_icon->priv->size;
 }
@@ -2135,7 +2135,7 @@ ctk_status_icon_set_screen (GtkStatusIcon *status_icon,
 
 #ifdef GDK_WINDOWING_X11
   if (status_icon->priv->tray_icon)
-    ctk_window_set_screen (GTK_WINDOW (status_icon->priv->tray_icon), screen);
+    ctk_window_set_screen (CTK_WINDOW (status_icon->priv->tray_icon), screen);
 #endif
 }
 
@@ -2156,11 +2156,11 @@ ctk_status_icon_set_screen (GtkStatusIcon *status_icon,
 GdkScreen *
 ctk_status_icon_get_screen (GtkStatusIcon *status_icon)
 {
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
 #ifdef GDK_WINDOWING_X11
   if (status_icon->priv->tray_icon)
-    return ctk_window_get_screen (GTK_WINDOW (status_icon->priv->tray_icon));
+    return ctk_window_get_screen (CTK_WINDOW (status_icon->priv->tray_icon));
   else
 #endif
   return gdk_screen_get_default ();
@@ -2185,7 +2185,7 @@ ctk_status_icon_set_visible (GtkStatusIcon *status_icon,
 {
   GtkStatusIconPrivate *priv;
 
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
   priv = status_icon->priv;
 
@@ -2245,7 +2245,7 @@ ctk_status_icon_set_visible (GtkStatusIcon *status_icon,
 gboolean
 ctk_status_icon_get_visible (GtkStatusIcon *status_icon)
 {
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), FALSE);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), FALSE);
 
   return status_icon->priv->visible;
 }
@@ -2269,11 +2269,11 @@ ctk_status_icon_get_visible (GtkStatusIcon *status_icon)
 gboolean
 ctk_status_icon_is_embedded (GtkStatusIcon *status_icon)
 {
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), FALSE);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), FALSE);
 
 #ifdef GDK_WINDOWING_X11
   if (status_icon->priv->tray_icon == NULL ||
-      !ctk_plug_get_embedded (GTK_PLUG (status_icon->priv->tray_icon)))
+      !ctk_plug_get_embedded (CTK_PLUG (status_icon->priv->tray_icon)))
     return FALSE;
 #endif
   return TRUE;
@@ -2306,7 +2306,7 @@ ctk_status_icon_position_menu (GtkMenu  *menu,
 			       gpointer  user_data)
 {
 #ifdef GDK_WINDOWING_X11
-  GtkStatusIcon *status_icon = GTK_STATUS_ICON (user_data);
+  GtkStatusIcon *status_icon = CTK_STATUS_ICON (user_data);
   GtkStatusIconPrivate *priv = status_icon->priv;
   GtkAllocation allocation;
   GtkTrayIcon *tray_icon;
@@ -2318,8 +2318,8 @@ ctk_status_icon_position_menu (GtkMenu  *menu,
   GdkWindow *window;
   gint monitor_num, height, width, xoffset, yoffset;
 
-  g_return_if_fail (GTK_IS_MENU (menu));
-  g_return_if_fail (GTK_IS_STATUS_ICON (user_data));
+  g_return_if_fail (CTK_IS_MENU (menu));
+  g_return_if_fail (CTK_IS_STATUS_ICON (user_data));
 
   if (priv->tray_icon == NULL)
     {
@@ -2328,7 +2328,7 @@ ctk_status_icon_position_menu (GtkMenu  *menu,
       return;
     }
 
-  tray_icon = GTK_TRAY_ICON (priv->tray_icon);
+  tray_icon = CTK_TRAY_ICON (priv->tray_icon);
   widget = priv->tray_icon;
 
   direction = ctk_widget_get_direction (widget);
@@ -2346,11 +2346,11 @@ ctk_status_icon_position_menu (GtkMenu  *menu,
 
   gdk_window_get_origin (window, x, y);
 
-  menu_req.width = ctk_widget_get_allocated_width (GTK_WIDGET (menu));
-  menu_req.height = ctk_widget_get_allocated_height (GTK_WIDGET (menu));
+  menu_req.width = ctk_widget_get_allocated_width (CTK_WIDGET (menu));
+  menu_req.height = ctk_widget_get_allocated_height (CTK_WIDGET (menu));
 
   ctk_widget_get_allocation (widget, &allocation);
-  if (_ctk_tray_icon_get_orientation (tray_icon) == GTK_ORIENTATION_VERTICAL)
+  if (_ctk_tray_icon_get_orientation (tray_icon) == CTK_ORIENTATION_VERTICAL)
     {
       width = 0;
       height = allocation.height;
@@ -2365,7 +2365,7 @@ ctk_status_icon_position_menu (GtkMenu  *menu,
       yoffset = allocation.height;
     }
 
-  if (direction == GTK_TEXT_DIR_RTL)
+  if (direction == CTK_TEXT_DIR_RTL)
     {
       if ((*x - (menu_req.width - width)) >= monitor.x)
         *x -= menu_req.width - width;
@@ -2405,13 +2405,13 @@ ctk_status_icon_position_menu (GtkMenu  *menu,
   GtkStatusIconPrivate *priv;
   GtkRequisition menu_req;
   
-  g_return_if_fail (GTK_IS_MENU (menu));
-  g_return_if_fail (GTK_IS_STATUS_ICON (user_data));
+  g_return_if_fail (CTK_IS_MENU (menu));
+  g_return_if_fail (CTK_IS_STATUS_ICON (user_data));
 
-  status_icon = GTK_STATUS_ICON (user_data);
+  status_icon = CTK_STATUS_ICON (user_data);
   priv = status_icon->priv;
 
-  ctk_widget_get_preferred_size (GTK_WIDGET (menu), &menu_req, NULL);
+  ctk_widget_get_preferred_size (CTK_WIDGET (menu), &menu_req, NULL);
 
   *x = priv->last_click_x;
   *y = priv->taskbar_top - menu_req.height;
@@ -2467,7 +2467,7 @@ ctk_status_icon_get_geometry (GtkStatusIcon    *status_icon,
   GtkWidget *widget;
   gint x, y;
 
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), FALSE);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), FALSE);
 
   if (priv->tray_icon == NULL)
     return FALSE;
@@ -2490,7 +2490,7 @@ ctk_status_icon_get_geometry (GtkStatusIcon    *status_icon,
     }
 
   if (orientation)
-    *orientation = _ctk_tray_icon_get_orientation (GTK_TRAY_ICON (widget));
+    *orientation = _ctk_tray_icon_get_orientation (CTK_TRAY_ICON (widget));
 
   return TRUE;
 #else
@@ -2520,7 +2520,7 @@ ctk_status_icon_set_has_tooltip (GtkStatusIcon *status_icon,
   GtkStatusIconPrivate *priv;
   gboolean changed = FALSE;
 
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
   priv = status_icon->priv;
 
@@ -2570,7 +2570,7 @@ ctk_status_icon_get_has_tooltip (GtkStatusIcon *status_icon)
   GtkStatusIconPrivate *priv;
   gboolean has_tooltip = FALSE;
 
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), FALSE);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), FALSE);
 
   priv = status_icon->priv;
 
@@ -2614,7 +2614,7 @@ ctk_status_icon_set_tooltip_text (GtkStatusIcon *status_icon,
 {
   GtkStatusIconPrivate *priv;
 
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
   priv = status_icon->priv;
 
@@ -2672,7 +2672,7 @@ ctk_status_icon_get_tooltip_text (GtkStatusIcon *status_icon)
   GtkStatusIconPrivate *priv;
   gchar *tooltip_text = NULL;
 
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
   priv = status_icon->priv;
 
@@ -2723,7 +2723,7 @@ ctk_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
   gchar *text = NULL;
 #endif
 
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
 #ifdef GDK_WINDOWING_X11
   priv = status_icon->priv;
@@ -2766,7 +2766,7 @@ ctk_status_icon_get_tooltip_markup (GtkStatusIcon *status_icon)
   GtkStatusIconPrivate *priv;
   gchar *markup = NULL;
 
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
   priv = status_icon->priv;
 
@@ -2817,8 +2817,8 @@ ctk_status_icon_get_x11_window_id (GtkStatusIcon *status_icon)
 #ifdef GDK_WINDOWING_X11
   if (status_icon->priv->tray_icon)
     {
-      ctk_widget_realize (GTK_WIDGET (status_icon->priv->tray_icon));
-      return GDK_WINDOW_XID (ctk_widget_get_window (GTK_WIDGET (status_icon->priv->tray_icon)));
+      ctk_widget_realize (CTK_WIDGET (status_icon->priv->tray_icon));
+      return GDK_WINDOW_XID (ctk_widget_get_window (CTK_WIDGET (status_icon->priv->tray_icon)));
     }
   else
 #endif
@@ -2847,13 +2847,13 @@ ctk_status_icon_set_title (GtkStatusIcon *status_icon,
 {
   GtkStatusIconPrivate *priv;
 
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
   priv = status_icon->priv;
 
 #ifdef GDK_WINDOWING_X11
   if (priv->tray_icon)
-    ctk_window_set_title (GTK_WINDOW (priv->tray_icon), title);
+    ctk_window_set_title (CTK_WINDOW (priv->tray_icon), title);
 #endif
 #ifdef GDK_WINDOWING_QUARTZ
   g_free (priv->title);
@@ -2887,13 +2887,13 @@ ctk_status_icon_get_title (GtkStatusIcon *status_icon)
   GtkStatusIconPrivate *priv;
   const gchar *title = NULL;
 
-  g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
+  g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
   priv = status_icon->priv;
 
 #ifdef GDK_WINDOWING_X11
   if (priv->tray_icon)
-    title = ctk_window_get_title (GTK_WINDOW (priv->tray_icon));
+    title = ctk_window_get_title (CTK_WINDOW (priv->tray_icon));
 #endif
 #ifdef GDK_WINDOWING_QUARTZ
   title = priv->title;
@@ -2931,7 +2931,7 @@ ctk_status_icon_set_name (GtkStatusIcon *status_icon,
   GtkStatusIconPrivate *priv;
 #endif
 
-  g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
+  g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
 #ifdef GDK_WINDOWING_X11
   priv = status_icon->priv;
@@ -2945,11 +2945,11 @@ ctk_status_icon_set_name (GtkStatusIcon *status_icon,
            */
           ctk_widget_hide (priv->tray_icon);
           ctk_widget_unrealize (priv->tray_icon);
-          ctk_window_set_wmclass (GTK_WINDOW (priv->tray_icon), name, name);
+          ctk_window_set_wmclass (CTK_WINDOW (priv->tray_icon), name, name);
           ctk_widget_show (priv->tray_icon);
         }
       else
-        ctk_window_set_wmclass (GTK_WINDOW (priv->tray_icon), name, name);
+        ctk_window_set_wmclass (CTK_WINDOW (priv->tray_icon), name, name);
     }
 #endif
 }

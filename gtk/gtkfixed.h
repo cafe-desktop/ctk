@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_FIXED_H__
-#define __GTK_FIXED_H__
+#ifndef __CTK_FIXED_H__
+#define __CTK_FIXED_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -35,12 +35,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FIXED                  (ctk_fixed_get_type ())
-#define GTK_FIXED(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FIXED, GtkFixed))
-#define GTK_FIXED_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FIXED, GtkFixedClass))
-#define GTK_IS_FIXED(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FIXED))
-#define GTK_IS_FIXED_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_FIXED))
-#define GTK_FIXED_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_FIXED, GtkFixedClass))
+#define CTK_TYPE_FIXED                  (ctk_fixed_get_type ())
+#define CTK_FIXED(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FIXED, GtkFixed))
+#define CTK_FIXED_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FIXED, GtkFixedClass))
+#define CTK_IS_FIXED(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FIXED))
+#define CTK_IS_FIXED_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FIXED))
+#define CTK_FIXED_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FIXED, GtkFixedClass))
 
 typedef struct _GtkFixed              GtkFixed;
 typedef struct _GtkFixedPrivate       GtkFixedPrivate;
@@ -92,4 +92,4 @@ void       ctk_fixed_move              (GtkFixed       *fixed,
 
 G_END_DECLS
 
-#endif /* __GTK_FIXED_H__ */
+#endif /* __CTK_FIXED_H__ */

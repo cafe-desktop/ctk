@@ -79,9 +79,9 @@
  * ctk_print_job_new().
  *
  * #GtkPrintUnixDialog uses the following response values:
- * - %GTK_RESPONSE_OK: for the “Print” button
- * - %GTK_RESPONSE_APPLY: for the “Preview” button
- * - %GTK_RESPONSE_CANCEL: for the “Cancel” button
+ * - %CTK_RESPONSE_OK: for the “Print” button
+ * - %CTK_RESPONSE_APPLY: for the “Preview” button
+ * - %CTK_RESPONSE_CANCEL: for the “Cancel” button
  *
  * Printing support was added in GTK+ 2.10.
  *
@@ -370,9 +370,9 @@ struct GtkPrintUnixDialogPrivate
   gint current_page;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkPrintUnixDialog, ctk_print_unix_dialog, GTK_TYPE_DIALOG,
+G_DEFINE_TYPE_WITH_CODE (GtkPrintUnixDialog, ctk_print_unix_dialog, CTK_TYPE_DIALOG,
                          G_ADD_PRIVATE (GtkPrintUnixDialog)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_print_unix_dialog_buildable_init))
 
 static GtkBuildableIface *parent_buildable_iface;
@@ -412,8 +412,8 @@ ctk_print_unix_dialog_class_init (GtkPrintUnixDialogClass *class)
                                    g_param_spec_object ("page-setup",
                                                         P_("Page Setup"),
                                                         P_("The GtkPageSetup to use"),
-                                                        GTK_TYPE_PAGE_SETUP,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_TYPE_PAGE_SETUP,
+                                                        CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_CURRENT_PAGE,
@@ -423,32 +423,32 @@ ctk_print_unix_dialog_class_init (GtkPrintUnixDialogClass *class)
                                                      -1,
                                                      G_MAXINT,
                                                      -1,
-                                                     GTK_PARAM_READWRITE));
+                                                     CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_PRINT_SETTINGS,
                                    g_param_spec_object ("print-settings",
                                                         P_("Print Settings"),
                                                         P_("The GtkPrintSettings used for initializing the dialog"),
-                                                        GTK_TYPE_PRINT_SETTINGS,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_TYPE_PRINT_SETTINGS,
+                                                        CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_SELECTED_PRINTER,
                                    g_param_spec_object ("selected-printer",
                                                         P_("Selected Printer"),
                                                         P_("The GtkPrinter which is selected"),
-                                                        GTK_TYPE_PRINTER,
-                                                        GTK_PARAM_READABLE));
+                                                        CTK_TYPE_PRINTER,
+                                                        CTK_PARAM_READABLE));
 
   g_object_class_install_property (object_class,
                                    PROP_MANUAL_CAPABILITIES,
                                    g_param_spec_flags ("manual-capabilities",
                                                        P_("Manual Capabilities"),
                                                        P_("Capabilities the application can handle"),
-                                                       GTK_TYPE_PRINT_CAPABILITIES,
+                                                       CTK_TYPE_PRINT_CAPABILITIES,
                                                        0,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_SUPPORT_SELECTION,
@@ -456,7 +456,7 @@ ctk_print_unix_dialog_class_init (GtkPrintUnixDialogClass *class)
                                                          P_("Support Selection"),
                                                          P_("Whether the dialog supports selection"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_HAS_SELECTION,
@@ -464,7 +464,7 @@ ctk_print_unix_dialog_class_init (GtkPrintUnixDialogClass *class)
                                                          P_("Has Selection"),
                                                          P_("Whether the application has a selection"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
 
    g_object_class_install_property (object_class,
                                    PROP_EMBED_PAGE_SETUP,
@@ -472,7 +472,7 @@ ctk_print_unix_dialog_class_init (GtkPrintUnixDialogClass *class)
                                                          P_("Embed Page Setup"),
                                                          P_("TRUE if page setup combos are embedded in GtkPrintUnixDialog"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE));
+                                                         CTK_PARAM_READWRITE));
 
   /* Bind class to template
    */
@@ -572,7 +572,7 @@ get_toplevel (GtkWidget *widget)
   if (!ctk_widget_is_toplevel (toplevel))
     return NULL;
   else
-    return GTK_WINDOW (toplevel);
+    return CTK_WINDOW (toplevel);
 }
 
 static void
@@ -584,8 +584,8 @@ set_busy_cursor (GtkPrintUnixDialog *dialog,
   GdkDisplay *display;
   GdkCursor *cursor;
 
-  toplevel = get_toplevel (GTK_WIDGET (dialog));
-  widget = GTK_WIDGET (toplevel);
+  toplevel = get_toplevel (CTK_WIDGET (dialog));
+  widget = CTK_WIDGET (toplevel);
 
   if (!toplevel || !ctk_widget_get_realized (widget))
     return;
@@ -621,7 +621,7 @@ error_dialogs (GtkPrintUnixDialog *print_dialog,
   gchar                     *dirname = NULL;
   int                        response;
 
-  if (print_dialog != NULL && print_dialog_response_id == GTK_RESPONSE_OK)
+  if (print_dialog != NULL && print_dialog_response_id == CTK_RESPONSE_OK)
     {
       printer = ctk_print_unix_dialog_get_selected_printer (print_dialog);
 
@@ -642,7 +642,7 @@ error_dialogs (GtkPrintUnixDialog *print_dialog,
                                                       "gtk-main-page-custom-input");
 
               if (option != NULL &&
-                  option->type == GTK_PRINTER_OPTION_TYPE_FILESAVE)
+                  option->type == CTK_PRINTER_OPTION_TYPE_FILESAVE)
                 {
                   file = g_file_new_for_uri (option->value);
 
@@ -650,7 +650,7 @@ error_dialogs (GtkPrintUnixDialog *print_dialog,
                     {
                       GFile *parent;
 
-                      toplevel = get_toplevel (GTK_WIDGET (print_dialog));
+                      toplevel = get_toplevel (CTK_WIDGET (print_dialog));
 
                       basename = g_file_get_basename (file);
                       parent = g_file_get_parent (file);
@@ -658,45 +658,45 @@ error_dialogs (GtkPrintUnixDialog *print_dialog,
                       g_object_unref (parent);
 
                       dialog = ctk_message_dialog_new (toplevel,
-                                                       GTK_DIALOG_MODAL |
-                                                       GTK_DIALOG_DESTROY_WITH_PARENT,
-                                                       GTK_MESSAGE_QUESTION,
-                                                       GTK_BUTTONS_NONE,
+                                                       CTK_DIALOG_MODAL |
+                                                       CTK_DIALOG_DESTROY_WITH_PARENT,
+                                                       CTK_MESSAGE_QUESTION,
+                                                       CTK_BUTTONS_NONE,
                                                        _("A file named “%s” already exists.  Do you want to replace it?"),
                                                        basename);
 
-                      ctk_message_dialog_format_secondary_text (GTK_MESSAGE_DIALOG (dialog),
+                      ctk_message_dialog_format_secondary_text (CTK_MESSAGE_DIALOG (dialog),
                                                                 _("The file already exists in “%s”.  Replacing it will "
                                                                 "overwrite its contents."),
                                                                 dirname);
 
-                      ctk_dialog_add_button (GTK_DIALOG (dialog),
+                      ctk_dialog_add_button (CTK_DIALOG (dialog),
                                              _("_Cancel"),
-                                             GTK_RESPONSE_CANCEL);
-                      ctk_dialog_add_button (GTK_DIALOG (dialog),
+                                             CTK_RESPONSE_CANCEL);
+                      ctk_dialog_add_button (CTK_DIALOG (dialog),
                                              _("_Replace"),
-                                             GTK_RESPONSE_ACCEPT);
+                                             CTK_RESPONSE_ACCEPT);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-                      ctk_dialog_set_alternative_button_order (GTK_DIALOG (dialog),
-                                                               GTK_RESPONSE_ACCEPT,
-                                                               GTK_RESPONSE_CANCEL,
+                      ctk_dialog_set_alternative_button_order (CTK_DIALOG (dialog),
+                                                               CTK_RESPONSE_ACCEPT,
+                                                               CTK_RESPONSE_CANCEL,
                                                                -1);
 G_GNUC_END_IGNORE_DEPRECATIONS
-                      ctk_dialog_set_default_response (GTK_DIALOG (dialog),
-                                                       GTK_RESPONSE_ACCEPT);
+                      ctk_dialog_set_default_response (CTK_DIALOG (dialog),
+                                                       CTK_RESPONSE_ACCEPT);
 
                       if (ctk_window_has_group (toplevel))
                         ctk_window_group_add_window (ctk_window_get_group (toplevel),
-                                                     GTK_WINDOW (dialog));
+                                                     CTK_WINDOW (dialog));
 
-                      response = ctk_dialog_run (GTK_DIALOG (dialog));
+                      response = ctk_dialog_run (CTK_DIALOG (dialog));
 
                       ctk_widget_destroy (dialog);
 
                       g_free (dirname);
                       g_free (basename);
 
-                      if (response != GTK_RESPONSE_ACCEPT)
+                      if (response != CTK_RESPONSE_ACCEPT)
                         {
                           g_signal_stop_emission_by_name (print_dialog, "response");
                           g_object_unref (file);
@@ -735,20 +735,20 @@ ctk_print_unix_dialog_init (GtkPrintUnixDialog *dialog)
   priv->support_selection = FALSE;
   priv->has_selection = FALSE;
 
-  g_type_ensure (GTK_TYPE_PRINTER);
-  g_type_ensure (GTK_TYPE_PRINTER_OPTION);
-  g_type_ensure (GTK_TYPE_PRINTER_OPTION_SET);
-  g_type_ensure (GTK_TYPE_PRINTER_OPTION_WIDGET);
+  g_type_ensure (CTK_TYPE_PRINTER);
+  g_type_ensure (CTK_TYPE_PRINTER_OPTION);
+  g_type_ensure (CTK_TYPE_PRINTER_OPTION_SET);
+  g_type_ensure (CTK_TYPE_PRINTER_OPTION_WIDGET);
 
-  ctk_widget_init_template (GTK_WIDGET (dialog));
-  ctk_dialog_set_use_header_bar_from_setting (GTK_DIALOG (dialog));
-  ctk_dialog_add_buttons (GTK_DIALOG (dialog),
-                          _("Pre_view"), GTK_RESPONSE_APPLY,
-                          _("_Cancel"), GTK_RESPONSE_CANCEL,
-                          _("_Print"), GTK_RESPONSE_OK,
+  ctk_widget_init_template (CTK_WIDGET (dialog));
+  ctk_dialog_set_use_header_bar_from_setting (CTK_DIALOG (dialog));
+  ctk_dialog_add_buttons (CTK_DIALOG (dialog),
+                          _("Pre_view"), CTK_RESPONSE_APPLY,
+                          _("_Cancel"), CTK_RESPONSE_CANCEL,
+                          _("_Print"), CTK_RESPONSE_OK,
                           NULL);
-  ctk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
-  widget = ctk_dialog_get_widget_for_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  ctk_dialog_set_default_response (CTK_DIALOG (dialog), CTK_RESPONSE_OK);
+  widget = ctk_dialog_get_widget_for_response (CTK_DIALOG (dialog), CTK_RESPONSE_OK);
   ctk_widget_set_sensitive (widget, FALSE);
 
   /* Treeview auxiliary functions need to be setup here */
@@ -757,17 +757,17 @@ ctk_print_unix_dialog_init (GtkPrintUnixDialog *dialog)
                                           dialog,
                                           NULL);
 
-  sort = GTK_TREE_SORTABLE (priv->printer_list);
+  sort = CTK_TREE_SORTABLE (priv->printer_list);
   ctk_tree_sortable_set_default_sort_func (sort,
                                            default_printer_list_sort_func,
                                            NULL,
                                            NULL);
 
   ctk_tree_sortable_set_sort_column_id (sort,
-                                        GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
-                                        GTK_SORT_ASCENDING);
+                                        CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID,
+                                        CTK_SORT_ASCENDING);
 
-  ctk_tree_view_set_search_equal_func (GTK_TREE_VIEW (priv->printer_treeview),
+  ctk_tree_view_set_search_equal_func (CTK_TREE_VIEW (priv->printer_treeview),
                                        printer_compare, NULL, NULL);
 
   ctk_tree_view_column_set_cell_data_func (priv->printer_icon_column,
@@ -788,9 +788,9 @@ ctk_print_unix_dialog_init (GtkPrintUnixDialog *dialog)
 
 
   /* Paper size combo auxilary funcs */
-  ctk_combo_box_set_row_separator_func (GTK_COMBO_BOX (priv->paper_size_combo),
+  ctk_combo_box_set_row_separator_func (CTK_COMBO_BOX (priv->paper_size_combo),
                                         paper_size_row_is_separator, NULL, NULL);
-  ctk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (priv->paper_size_combo),
+  ctk_cell_layout_set_cell_data_func (CTK_CELL_LAYOUT (priv->paper_size_combo),
 				      priv->paper_size_renderer,
                                       page_name_func, NULL, NULL);
 
@@ -819,26 +819,26 @@ ctk_print_unix_dialog_constructed (GObject *object)
     {
        /* Reorder the preview button */
        GtkWidget *button, *parent;
-       button = ctk_dialog_get_widget_for_response (GTK_DIALOG (object), GTK_RESPONSE_APPLY);
+       button = ctk_dialog_get_widget_for_response (CTK_DIALOG (object), CTK_RESPONSE_APPLY);
        g_object_ref (button);
        parent = ctk_widget_get_parent (button);
-       ctk_container_remove (GTK_CONTAINER (parent), button); 
-       ctk_header_bar_pack_end (GTK_HEADER_BAR (parent), button);
+       ctk_container_remove (CTK_CONTAINER (parent), button); 
+       ctk_header_bar_pack_end (CTK_HEADER_BAR (parent), button);
        g_object_unref (button);
     }
 
-  update_dialog_from_capabilities (GTK_PRINT_UNIX_DIALOG (object));
+  update_dialog_from_capabilities (CTK_PRINT_UNIX_DIALOG (object));
 }
 
 static void
 ctk_print_unix_dialog_destroy (GtkWidget *widget)
 {
-  GtkPrintUnixDialog *dialog = GTK_PRINT_UNIX_DIALOG (widget);
+  GtkPrintUnixDialog *dialog = CTK_PRINT_UNIX_DIALOG (widget);
 
   /* Make sure we don't destroy custom widgets owned by the backends */
   clear_per_printer_ui (dialog);
 
-  GTK_WIDGET_CLASS (ctk_print_unix_dialog_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (ctk_print_unix_dialog_parent_class)->destroy (widget);
 }
 
 static void
@@ -854,14 +854,14 @@ disconnect_printer_details_request (GtkPrintUnixDialog *dialog,
       priv->request_details_tag = 0;
       set_busy_cursor (dialog, FALSE);
       if (details_failed)
-        ctk_list_store_set (GTK_LIST_STORE (priv->printer_list),
+        ctk_list_store_set (CTK_LIST_STORE (priv->printer_list),
                             g_object_get_data (G_OBJECT (priv->request_details_printer),
                                                "gtk-print-tree-iter"),
                             PRINTER_LIST_COL_STATE,
                              _("Getting printer information failed"),
                             -1);
       else
-        ctk_list_store_set (GTK_LIST_STORE (priv->printer_list),
+        ctk_list_store_set (CTK_LIST_STORE (priv->printer_list),
                             g_object_get_data (G_OBJECT (priv->request_details_printer),
                                                "gtk-print-tree-iter"),
                             PRINTER_LIST_COL_STATE,
@@ -875,7 +875,7 @@ disconnect_printer_details_request (GtkPrintUnixDialog *dialog,
 static void
 ctk_print_unix_dialog_finalize (GObject *object)
 {
-  GtkPrintUnixDialog *dialog = GTK_PRINT_UNIX_DIALOG (object);
+  GtkPrintUnixDialog *dialog = CTK_PRINT_UNIX_DIALOG (object);
   GtkPrintUnixDialogPrivate *priv = dialog->priv;
   GtkPrintBackend *backend;
   GList *node;
@@ -906,7 +906,7 @@ ctk_print_unix_dialog_finalize (GObject *object)
 
   for (node = priv->print_backends; node != NULL; node = node->next)
     {
-      backend = GTK_PRINT_BACKEND (node->data);
+      backend = CTK_PRINT_BACKEND (node->data);
 
       g_signal_handlers_disconnect_by_func (backend, printer_added_cb, dialog);
       g_signal_handlers_disconnect_by_func (backend, printer_removed_cb, dialog);
@@ -933,7 +933,7 @@ printer_removed_cb (GtkPrintBackend    *backend,
   GtkTreeIter *iter;
 
   iter = g_object_get_data (G_OBJECT (printer), "gtk-print-tree-iter");
-  ctk_list_store_remove (GTK_LIST_STORE (priv->printer_list), iter);
+  ctk_list_store_remove (CTK_LIST_STORE (priv->printer_list), iter);
 }
 
 static void
@@ -950,7 +950,7 @@ ctk_print_unix_dialog_buildable_get_internal_child (GtkBuildable *buildable,
                                                     const gchar  *childname)
 {
   if (strcmp (childname, "notebook") == 0)
-    return G_OBJECT (GTK_PRINT_UNIX_DIALOG (buildable)->priv->notebook);
+    return G_OBJECT (CTK_PRINT_UNIX_DIALOG (buildable)->priv->notebook);
 
   return parent_buildable_iface->get_internal_child (buildable, builder, childname);
 }
@@ -992,7 +992,7 @@ printer_status_cb (GtkPrintBackend    *backend,
 
   icon = g_themed_icon_new ("printer");
   g_themed_icon_prepend_name (G_THEMED_ICON (icon), ctk_printer_get_icon_name (printer));
-  ctk_list_store_set (GTK_LIST_STORE (priv->printer_list), iter,
+  ctk_list_store_set (CTK_LIST_STORE (priv->printer_list), iter,
                       PRINTER_LIST_COL_ICON, icon,
                       PRINTER_LIST_COL_STATE, ctk_printer_get_state_message (printer),
                       PRINTER_LIST_COL_JOBS, ctk_printer_get_job_count (printer),
@@ -1001,9 +1001,9 @@ printer_status_cb (GtkPrintBackend    *backend,
   g_object_unref (icon);
 
   /* When the pause state change then we need to update sensitive property
-   * of GTK_RESPONSE_OK button inside of selected_printer_changed function.
+   * of CTK_RESPONSE_OK button inside of selected_printer_changed function.
    */
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->printer_treeview));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->printer_treeview));
   priv->internal_printer_change = TRUE;
   selected_printer_changed (selection, dialog);
   priv->internal_printer_change = FALSE;
@@ -1025,7 +1025,7 @@ printer_added_cb (GtkPrintBackend    *backend,
   GtkTreePath *path;
   GIcon *icon;
 
-  ctk_list_store_append (GTK_LIST_STORE (priv->printer_list), &iter);
+  ctk_list_store_append (CTK_LIST_STORE (priv->printer_list), &iter);
 
   g_object_set_data_full (G_OBJECT (printer),
                          "gtk-print-tree-iter",
@@ -1034,7 +1034,7 @@ printer_added_cb (GtkPrintBackend    *backend,
 
   icon = g_themed_icon_new ("printer");
   g_themed_icon_prepend_name (G_THEMED_ICON (icon), ctk_printer_get_icon_name (printer));
-  ctk_list_store_set (GTK_LIST_STORE (priv->printer_list), &iter,
+  ctk_list_store_set (CTK_LIST_STORE (priv->printer_list), &iter,
                       PRINTER_LIST_COL_ICON, icon,
                       PRINTER_LIST_COL_NAME, ctk_printer_get_name (printer),
                       PRINTER_LIST_COL_STATE, ctk_printer_get_state_message (printer),
@@ -1046,16 +1046,16 @@ printer_added_cb (GtkPrintBackend    *backend,
 
   ctk_tree_model_filter_convert_child_iter_to_iter (priv->printer_list_filter,
                                                     &filter_iter, &iter);
-  path = ctk_tree_model_get_path (GTK_TREE_MODEL (priv->printer_list_filter), &filter_iter);
+  path = ctk_tree_model_get_path (CTK_TREE_MODEL (priv->printer_list_filter), &filter_iter);
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->printer_treeview));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->printer_treeview));
 
   if (priv->waiting_for_printer != NULL &&
       strcmp (ctk_printer_get_name (printer), priv->waiting_for_printer) == 0)
     {
       priv->internal_printer_change = TRUE;
       ctk_tree_selection_select_iter (selection, &filter_iter);
-      ctk_tree_view_scroll_to_cell (GTK_TREE_VIEW (priv->printer_treeview),
+      ctk_tree_view_scroll_to_cell (CTK_TREE_VIEW (priv->printer_treeview),
                                     path, NULL, TRUE, 0.5, 0.0);
       priv->internal_printer_change = FALSE;
       g_free (priv->waiting_for_printer);
@@ -1066,7 +1066,7 @@ printer_added_cb (GtkPrintBackend    *backend,
     {
       priv->internal_printer_change = TRUE;
       ctk_tree_selection_select_iter (selection, &filter_iter);
-      ctk_tree_view_scroll_to_cell (GTK_TREE_VIEW (priv->printer_treeview),
+      ctk_tree_view_scroll_to_cell (CTK_TREE_VIEW (priv->printer_treeview),
                                     path, NULL, TRUE, 0.5, 0.0);
       priv->internal_printer_change = FALSE;
     }
@@ -1127,7 +1127,7 @@ ctk_print_unix_dialog_set_property (GObject      *object,
                                     GParamSpec   *pspec)
 
 {
-  GtkPrintUnixDialog *dialog = GTK_PRINT_UNIX_DIALOG (object);
+  GtkPrintUnixDialog *dialog = CTK_PRINT_UNIX_DIALOG (object);
 
   switch (prop_id)
     {
@@ -1164,7 +1164,7 @@ ctk_print_unix_dialog_get_property (GObject    *object,
                                     GValue     *value,
                                     GParamSpec *pspec)
 {
-  GtkPrintUnixDialog *dialog = GTK_PRINT_UNIX_DIALOG (object);
+  GtkPrintUnixDialog *dialog = CTK_PRINT_UNIX_DIALOG (object);
   GtkPrintUnixDialogPrivate *priv = dialog->priv;
 
   switch (prop_id)
@@ -1218,15 +1218,15 @@ is_printer_active (GtkTreeModel       *model,
   result = ctk_printer_is_active (printer);
 
   if (result &&
-      priv->manual_capabilities & (GTK_PRINT_CAPABILITY_GENERATE_PDF |
-                                   GTK_PRINT_CAPABILITY_GENERATE_PS))
+      priv->manual_capabilities & (CTK_PRINT_CAPABILITY_GENERATE_PDF |
+                                   CTK_PRINT_CAPABILITY_GENERATE_PS))
     {
        /* Check that the printer can handle at least one of the data
         * formats that the application supports.
         */
-       result = ((priv->manual_capabilities & GTK_PRINT_CAPABILITY_GENERATE_PDF) &&
+       result = ((priv->manual_capabilities & CTK_PRINT_CAPABILITY_GENERATE_PDF) &&
                  ctk_printer_accepts_pdf (printer)) ||
-                ((priv->manual_capabilities & GTK_PRINT_CAPABILITY_GENERATE_PS) &&
+                ((priv->manual_capabilities & CTK_PRINT_CAPABILITY_GENERATE_PS) &&
                  ctk_printer_accepts_ps (printer));
     }
 
@@ -1295,22 +1295,22 @@ wrap_in_frame (const gchar *label,
   gchar *bold_text;
 
   label_widget = ctk_label_new (NULL);
-  ctk_widget_set_halign (label_widget, GTK_ALIGN_START);
-  ctk_widget_set_valign (label_widget, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (label_widget, CTK_ALIGN_START);
+  ctk_widget_set_valign (label_widget, CTK_ALIGN_CENTER);
   ctk_widget_show (label_widget);
 
   bold_text = g_markup_printf_escaped ("<b>%s</b>", label);
-  ctk_label_set_markup (GTK_LABEL (label_widget), bold_text);
+  ctk_label_set_markup (CTK_LABEL (label_widget), bold_text);
   g_free (bold_text);
 
-  frame = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  ctk_box_pack_start (GTK_BOX (frame), label_widget, FALSE, FALSE, 0);
+  frame = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+  ctk_box_pack_start (CTK_BOX (frame), label_widget, FALSE, FALSE, 0);
 
   ctk_widget_set_margin_start (child, 12);
-  ctk_widget_set_halign (child, GTK_ALIGN_FILL);
-  ctk_widget_set_valign (child, GTK_ALIGN_FILL);
+  ctk_widget_set_halign (child, CTK_ALIGN_FILL);
+  ctk_widget_set_valign (child, CTK_ALIGN_FILL);
 
-  ctk_box_pack_start (GTK_BOX (frame), child, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (frame), child, FALSE, FALSE, 0);
 
   ctk_widget_show (frame);
 
@@ -1341,28 +1341,28 @@ add_option_to_extension_point (GtkPrinterOption *option,
   widget = ctk_printer_option_widget_new (option);
   ctk_widget_show (widget);
 
-  if (ctk_printer_option_widget_has_external_label (GTK_PRINTER_OPTION_WIDGET (widget)))
+  if (ctk_printer_option_widget_has_external_label (CTK_PRINTER_OPTION_WIDGET (widget)))
     {
       GtkWidget *label, *hbox;
 
-      ctk_widget_set_valign (widget, GTK_ALIGN_BASELINE);
+      ctk_widget_set_valign (widget, CTK_ALIGN_BASELINE);
 
-      label = ctk_printer_option_widget_get_external_label (GTK_PRINTER_OPTION_WIDGET (widget));
+      label = ctk_printer_option_widget_get_external_label (CTK_PRINTER_OPTION_WIDGET (widget));
       ctk_widget_show (label);
-      ctk_widget_set_halign (label, GTK_ALIGN_START);
-      ctk_widget_set_valign (label, GTK_ALIGN_BASELINE);
-      ctk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
+      ctk_widget_set_halign (label, CTK_ALIGN_START);
+      ctk_widget_set_valign (label, CTK_ALIGN_BASELINE);
+      ctk_label_set_mnemonic_widget (CTK_LABEL (label), widget);
 
-      hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-      ctk_widget_set_valign (hbox, GTK_ALIGN_BASELINE);
-      ctk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
-      ctk_box_pack_start (GTK_BOX (hbox), widget, FALSE, FALSE, 0);
+      hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
+      ctk_widget_set_valign (hbox, CTK_ALIGN_BASELINE);
+      ctk_box_pack_start (CTK_BOX (hbox), label, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (hbox), widget, FALSE, FALSE, 0);
       ctk_widget_show (hbox);
 
-      ctk_box_pack_start (GTK_BOX (extension_point), hbox, TRUE, TRUE, 0);
+      ctk_box_pack_start (CTK_BOX (extension_point), hbox, TRUE, TRUE, 0);
     }
   else
-    ctk_box_pack_start (GTK_BOX (extension_point), widget, TRUE, TRUE, 0);
+    ctk_box_pack_start (CTK_BOX (extension_point), widget, TRUE, TRUE, 0);
 }
 
 static gint
@@ -1371,11 +1371,11 @@ grid_rows (GtkGrid *table)
   gint t0, t1, t, h;
   GList *children, *c;
 
-  children = ctk_container_get_children (GTK_CONTAINER (table));
+  children = ctk_container_get_children (CTK_CONTAINER (table));
   t0 = t1 = 0;
   for (c = children; c; c = c->next)
     {
-      ctk_container_child_get (GTK_CONTAINER (table), c->data,
+      ctk_container_child_get (CTK_CONTAINER (table), c->data,
                                "top-attach", &t,
                                "height", &h,
                                NULL);
@@ -1405,7 +1405,7 @@ add_option_to_table (GtkPrinterOption *option,
   GtkWidget *label, *widget;
   guint row;
 
-  table = GTK_GRID (user_data);
+  table = CTK_GRID (user_data);
 
   if (g_str_has_prefix (option->name, "gtk-"))
     return;
@@ -1415,14 +1415,14 @@ add_option_to_table (GtkPrinterOption *option,
   widget = ctk_printer_option_widget_new (option);
   ctk_widget_show (widget);
 
-  if (ctk_printer_option_widget_has_external_label (GTK_PRINTER_OPTION_WIDGET (widget)))
+  if (ctk_printer_option_widget_has_external_label (CTK_PRINTER_OPTION_WIDGET (widget)))
     {
-      label = ctk_printer_option_widget_get_external_label (GTK_PRINTER_OPTION_WIDGET (widget));
+      label = ctk_printer_option_widget_get_external_label (CTK_PRINTER_OPTION_WIDGET (widget));
       ctk_widget_show (label);
 
-      ctk_widget_set_halign (label, GTK_ALIGN_START);
-      ctk_widget_set_valign (label, GTK_ALIGN_CENTER);
-      ctk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
+      ctk_widget_set_halign (label, CTK_ALIGN_START);
+      ctk_widget_set_valign (label, CTK_ALIGN_CENTER);
+      ctk_label_set_mnemonic_widget (CTK_LABEL (label), widget);
 
       ctk_grid_attach (table, label, 0, row - 1, 1, 1);
       ctk_grid_attach (table, widget, 1, row - 1, 1, 1);
@@ -1443,7 +1443,7 @@ setup_page_table (GtkPrinterOptionSet *options,
                                            add_option_to_table,
                                            table);
 
-  nrows = grid_rows (GTK_GRID (table));
+  nrows = grid_rows (CTK_GRID (table));
   if (nrows == 0)
     ctk_widget_hide (page);
   else
@@ -1464,9 +1464,9 @@ update_print_at_option (GtkPrintUnixDialog *dialog)
   if (priv->updating_print_at)
     return;
 
-  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->print_at_radio)))
+  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (priv->print_at_radio)))
     ctk_printer_option_set (option, "at");
-  else if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->print_hold_radio)))
+  else if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (priv->print_hold_radio)))
     ctk_printer_option_set (option, "on-hold");
   else
     ctk_printer_option_set (option, "now");
@@ -1476,7 +1476,7 @@ update_print_at_option (GtkPrintUnixDialog *dialog)
     {
       const gchar *text;
 
-      text = ctk_entry_get_text (GTK_ENTRY (priv->print_at_entry));
+      text = ctk_entry_get_text (CTK_ENTRY (priv->print_at_entry));
       ctk_printer_option_set (option, text);
     }
 }
@@ -1492,12 +1492,12 @@ setup_print_at (GtkPrintUnixDialog *dialog)
 
   if (option == NULL)
     {
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->print_now_radio),
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (priv->print_now_radio),
                                     TRUE);
       ctk_widget_set_sensitive (priv->print_at_radio, FALSE);
       ctk_widget_set_sensitive (priv->print_at_entry, FALSE);
       ctk_widget_set_sensitive (priv->print_hold_radio, FALSE);
-      ctk_entry_set_text (GTK_ENTRY (priv->print_at_entry), "");
+      ctk_entry_set_text (CTK_ENTRY (priv->print_at_entry), "");
       return FALSE;
     }
 
@@ -1513,18 +1513,18 @@ setup_print_at (GtkPrintUnixDialog *dialog)
   update_print_at_option (dialog);
 
   if (strcmp (option->value, "at") == 0)
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->print_at_radio),
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (priv->print_at_radio),
                                   TRUE);
   else if (strcmp (option->value, "on-hold") == 0)
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->print_hold_radio),
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (priv->print_hold_radio),
                                   TRUE);
   else
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->print_now_radio),
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (priv->print_now_radio),
                                   TRUE);
 
   option = ctk_printer_option_set_lookup (priv->options, "gtk-print-time-text");
   if (option != NULL)
-    ctk_entry_set_text (GTK_ENTRY (priv->print_at_entry), option->value);
+    ctk_entry_set_text (CTK_ENTRY (priv->print_at_entry), option->value);
 
   priv->updating_print_at = FALSE;
 
@@ -1550,7 +1550,7 @@ update_dialog_from_settings (GtkPrintUnixDialog *dialog)
        ctk_widget_hide (priv->image_quality_page);
        ctk_widget_hide (priv->finishing_page);
        ctk_widget_hide (priv->color_page);
-       ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog), GTK_RESPONSE_OK, FALSE);
+       ctk_dialog_set_response_sensitive (CTK_DIALOG (dialog), CTK_RESPONSE_OK, FALSE);
 
        return;
     }
@@ -1598,10 +1598,10 @@ update_dialog_from_settings (GtkPrintUnixDialog *dialog)
    * This keeps the file format radios from moving as the
    * filename changes.
    */
-  children = ctk_container_get_children (GTK_CONTAINER (priv->extension_point));
+  children = ctk_container_get_children (CTK_CONTAINER (priv->extension_point));
   l = g_list_last (children);
   if (l && l != children)
-    ctk_widget_set_halign (GTK_WIDGET (l->data), GTK_ALIGN_END);
+    ctk_widget_set_halign (CTK_WIDGET (l->data), CTK_ALIGN_END);
   g_list_free (children);
 
   /* Put the rest of the groups in the advanced page */
@@ -1622,15 +1622,15 @@ update_dialog_from_settings (GtkPrintUnixDialog *dialog)
         continue;
 
       table = ctk_grid_new ();
-      ctk_grid_set_row_spacing (GTK_GRID (table), 6);
-      ctk_grid_set_column_spacing (GTK_GRID (table), 12);
+      ctk_grid_set_row_spacing (CTK_GRID (table), 6);
+      ctk_grid_set_column_spacing (CTK_GRID (table), 12);
 
       ctk_printer_option_set_foreach_in_group (priv->options,
                                                group,
                                                add_option_to_table,
                                                table);
 
-      nrows = grid_rows (GTK_GRID (table));
+      nrows = grid_rows (CTK_GRID (table));
       if (nrows == 0)
         ctk_widget_destroy (table);
       else
@@ -1640,7 +1640,7 @@ update_dialog_from_settings (GtkPrintUnixDialog *dialog)
           ctk_widget_show (table);
           ctk_widget_show (frame);
 
-          ctk_box_pack_start (GTK_BOX (priv->advanced_vbox),
+          ctk_box_pack_start (CTK_BOX (priv->advanced_vbox),
                               frame, FALSE, FALSE, 0);
         }
     }
@@ -1662,27 +1662,27 @@ update_dialog_from_capabilities (GtkPrintUnixDialog *dialog)
   const gchar *copies;
   GtkWidget *button;
 
-  copies = ctk_entry_get_text (GTK_ENTRY (priv->copies_spin));
+  copies = ctk_entry_get_text (CTK_ENTRY (priv->copies_spin));
   can_collate = (*copies != '\0' && atoi (copies) > 1);
 
   caps = priv->manual_capabilities | priv->printer_capabilities;
 
   ctk_widget_set_sensitive (priv->page_set_combo,
-                            caps & GTK_PRINT_CAPABILITY_PAGE_SET);
+                            caps & CTK_PRINT_CAPABILITY_PAGE_SET);
   ctk_widget_set_sensitive (priv->copies_spin,
-                            caps & GTK_PRINT_CAPABILITY_COPIES);
+                            caps & CTK_PRINT_CAPABILITY_COPIES);
   ctk_widget_set_sensitive (priv->collate_check,
                             can_collate &&
-                            (caps & GTK_PRINT_CAPABILITY_COLLATE));
+                            (caps & CTK_PRINT_CAPABILITY_COLLATE));
   ctk_widget_set_sensitive (priv->reverse_check,
-                            caps & GTK_PRINT_CAPABILITY_REVERSE);
+                            caps & CTK_PRINT_CAPABILITY_REVERSE);
   ctk_widget_set_sensitive (priv->scale_spin,
-                            caps & GTK_PRINT_CAPABILITY_SCALE);
-  ctk_widget_set_sensitive (GTK_WIDGET (priv->pages_per_sheet),
-                            caps & GTK_PRINT_CAPABILITY_NUMBER_UP);
+                            caps & CTK_PRINT_CAPABILITY_SCALE);
+  ctk_widget_set_sensitive (CTK_WIDGET (priv->pages_per_sheet),
+                            caps & CTK_PRINT_CAPABILITY_NUMBER_UP);
 
-  button = ctk_dialog_get_widget_for_response (GTK_DIALOG (dialog), GTK_RESPONSE_APPLY);
-  ctk_widget_set_visible (button, (caps & GTK_PRINT_CAPABILITY_PREVIEW) != 0);
+  button = ctk_dialog_get_widget_for_response (CTK_DIALOG (dialog), CTK_RESPONSE_APPLY);
+  ctk_widget_set_visible (button, (caps & CTK_PRINT_CAPABILITY_PREVIEW) != 0);
 
   update_collate_icon (NULL, dialog);
 
@@ -1696,10 +1696,10 @@ page_setup_is_equal (GtkPageSetup *a,
   return
     ctk_paper_size_is_equal (ctk_page_setup_get_paper_size (a),
                              ctk_page_setup_get_paper_size (b)) &&
-    ctk_page_setup_get_top_margin (a, GTK_UNIT_MM) == ctk_page_setup_get_top_margin (b, GTK_UNIT_MM) &&
-    ctk_page_setup_get_bottom_margin (a, GTK_UNIT_MM) == ctk_page_setup_get_bottom_margin (b, GTK_UNIT_MM) &&
-    ctk_page_setup_get_left_margin (a, GTK_UNIT_MM) == ctk_page_setup_get_left_margin (b, GTK_UNIT_MM) &&
-    ctk_page_setup_get_right_margin (a, GTK_UNIT_MM) == ctk_page_setup_get_right_margin (b, GTK_UNIT_MM);
+    ctk_page_setup_get_top_margin (a, CTK_UNIT_MM) == ctk_page_setup_get_top_margin (b, CTK_UNIT_MM) &&
+    ctk_page_setup_get_bottom_margin (a, CTK_UNIT_MM) == ctk_page_setup_get_bottom_margin (b, CTK_UNIT_MM) &&
+    ctk_page_setup_get_left_margin (a, CTK_UNIT_MM) == ctk_page_setup_get_left_margin (b, CTK_UNIT_MM) &&
+    ctk_page_setup_get_right_margin (a, CTK_UNIT_MM) == ctk_page_setup_get_right_margin (b, CTK_UNIT_MM);
 }
 
 static gboolean
@@ -1727,13 +1727,13 @@ set_paper_size (GtkPrintUnixDialog *dialog,
   if (page_setup == NULL)
     return FALSE;
 
-  model = GTK_TREE_MODEL (priv->page_setup_list);
+  model = CTK_TREE_MODEL (priv->page_setup_list);
 
   if (ctk_tree_model_get_iter_first (model, &iter))
     {
       do
         {
-          ctk_tree_model_get (GTK_TREE_MODEL (priv->page_setup_list), &iter,
+          ctk_tree_model_get (CTK_TREE_MODEL (priv->page_setup_list), &iter,
                               PAGE_SETUP_LIST_COL_PAGE_SETUP, &list_page_setup,
                               -1);
           if (list_page_setup == NULL)
@@ -1742,9 +1742,9 @@ set_paper_size (GtkPrintUnixDialog *dialog,
           if ((size_only && page_setup_is_same_size (page_setup, list_page_setup)) ||
               (!size_only && page_setup_is_equal (page_setup, list_page_setup)))
             {
-              ctk_combo_box_set_active_iter (GTK_COMBO_BOX (priv->paper_size_combo),
+              ctk_combo_box_set_active_iter (CTK_COMBO_BOX (priv->paper_size_combo),
                                              &iter);
-              ctk_combo_box_set_active (GTK_COMBO_BOX (priv->orientation_combo),
+              ctk_combo_box_set_active (CTK_COMBO_BOX (priv->orientation_combo),
                                         ctk_page_setup_get_orientation (page_setup));
               g_object_unref (list_page_setup);
               return TRUE;
@@ -1765,9 +1765,9 @@ set_paper_size (GtkPrintUnixDialog *dialog,
       ctk_list_store_set (priv->page_setup_list, &iter,
                           PAGE_SETUP_LIST_COL_PAGE_SETUP, page_setup,
                           -1);
-      ctk_combo_box_set_active_iter (GTK_COMBO_BOX (priv->paper_size_combo),
+      ctk_combo_box_set_active_iter (CTK_COMBO_BOX (priv->paper_size_combo),
                                      &iter);
-      ctk_combo_box_set_active (GTK_COMBO_BOX (priv->orientation_combo),
+      ctk_combo_box_set_active (CTK_COMBO_BOX (priv->orientation_combo),
                                 ctk_page_setup_get_orientation (page_setup));
       return TRUE;
     }
@@ -1782,7 +1782,7 @@ fill_custom_paper_sizes (GtkPrintUnixDialog *dialog)
   GtkTreeIter iter, paper_iter;
   GtkTreeModel *model;
 
-  model = GTK_TREE_MODEL (priv->custom_paper_list);
+  model = CTK_TREE_MODEL (priv->custom_paper_list);
   if (ctk_tree_model_get_iter_first (model, &iter))
     {
       ctk_list_store_append (priv->page_setup_list, &paper_iter);
@@ -1984,15 +1984,15 @@ clear_per_printer_ui (GtkPrintUnixDialog *dialog)
   if (priv->finishing_table == NULL)
     return;
 
-  ctk_container_foreach (GTK_CONTAINER (priv->finishing_table),
+  ctk_container_foreach (CTK_CONTAINER (priv->finishing_table),
                          (GtkCallback)ctk_widget_destroy, NULL);
-  ctk_container_foreach (GTK_CONTAINER (priv->image_quality_table),
+  ctk_container_foreach (CTK_CONTAINER (priv->image_quality_table),
                          (GtkCallback)ctk_widget_destroy, NULL);
-  ctk_container_foreach (GTK_CONTAINER (priv->color_table),
+  ctk_container_foreach (CTK_CONTAINER (priv->color_table),
                          (GtkCallback)ctk_widget_destroy, NULL);
-  ctk_container_foreach (GTK_CONTAINER (priv->advanced_vbox),
+  ctk_container_foreach (CTK_CONTAINER (priv->advanced_vbox),
                          (GtkCallback)ctk_widget_destroy, NULL);
-  extension_point_clear_children (GTK_CONTAINER (priv->extension_point));
+  extension_point_clear_children (CTK_CONTAINER (priv->extension_point));
 }
 
 static void
@@ -2007,7 +2007,7 @@ printer_details_acquired (GtkPrinter         *printer,
   if (success)
     {
       GtkTreeSelection *selection;
-      selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->printer_treeview));
+      selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->printer_treeview));
 
       selected_printer_changed (selection, dialog);
     }
@@ -2045,28 +2045,28 @@ selected_printer_changed (GtkTreeSelection   *selection,
                           -1);
     }
 
-  /* sets GTK_RESPONSE_OK button sensitivity depending on whether the printer
+  /* sets CTK_RESPONSE_OK button sensitivity depending on whether the printer
    * accepts/rejects jobs
    */
   if (printer != NULL)
     {
       if (!ctk_printer_is_accepting_jobs (printer))
-        ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog), GTK_RESPONSE_OK, FALSE);
+        ctk_dialog_set_response_sensitive (CTK_DIALOG (dialog), CTK_RESPONSE_OK, FALSE);
       else if (priv->current_printer == printer && ctk_printer_has_details (printer))
 
-        ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog), GTK_RESPONSE_OK, TRUE);
+        ctk_dialog_set_response_sensitive (CTK_DIALOG (dialog), CTK_RESPONSE_OK, TRUE);
     }
 
   if (printer != NULL && !ctk_printer_has_details (printer))
     {
-      ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog), GTK_RESPONSE_OK, FALSE);
+      ctk_dialog_set_response_sensitive (CTK_DIALOG (dialog), CTK_RESPONSE_OK, FALSE);
       priv->request_details_tag =
         g_signal_connect (printer, "details-acquired",
                           G_CALLBACK (printer_details_acquired), dialog);
       /* take the reference */
       priv->request_details_printer = printer;
       set_busy_cursor (dialog, TRUE);
-      ctk_list_store_set (GTK_LIST_STORE (priv->printer_list),
+      ctk_list_store_set (CTK_LIST_STORE (priv->printer_list),
                           g_object_get_data (G_OBJECT (printer), "gtk-print-tree-iter"),
                           PRINTER_LIST_COL_STATE, _("Getting printer information…"),
                           -1);
@@ -2091,7 +2091,7 @@ selected_printer_changed (GtkTreeSelection   *selection,
   priv->printer_capabilities = 0;
 
   if (printer != NULL && ctk_printer_is_accepting_jobs (printer))
-    ctk_dialog_set_response_sensitive (GTK_DIALOG (dialog), GTK_RESPONSE_OK, TRUE);
+    ctk_dialog_set_response_sensitive (CTK_DIALOG (dialog), CTK_RESPONSE_OK, TRUE);
   priv->current_printer = printer;
 
   if (printer != NULL)
@@ -2265,7 +2265,7 @@ draw_collate_cb (GtkWidget          *widget,
   reverse = dialog_get_reverse (dialog);
   copies = dialog_get_n_copies (dialog);
 
-  rtl = (ctk_widget_get_direction (GTK_WIDGET (widget)) == GTK_TEXT_DIR_RTL);
+  rtl = (ctk_widget_get_direction (CTK_WIDGET (widget)) == CTK_TEXT_DIR_RTL);
 
   x = (ctk_widget_get_allocated_width (widget) - 30) / 2;
   y = (ctk_widget_get_allocated_height (widget) - 36) / 2;
@@ -2306,7 +2306,7 @@ draw_collate_cb (GtkWidget          *widget,
 static void
 ctk_print_unix_dialog_style_updated (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (ctk_print_unix_dialog_parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (ctk_print_unix_dialog_parent_class)->style_updated (widget);
 
   if (ctk_widget_has_screen (widget))
     {
@@ -2315,7 +2315,7 @@ ctk_print_unix_dialog_style_updated (GtkWidget *widget)
       gint size;
       gfloat scale;
 
-      ctk_icon_size_lookup (GTK_ICON_SIZE_DIALOG, &size, NULL);
+      ctk_icon_size_lookup (CTK_ICON_SIZE_DIALOG, &size, NULL);
       scale = size / 48.0;
 
       ctk_widget_set_size_request (priv->collate_image,
@@ -2331,7 +2331,7 @@ update_page_range_entry_sensitivity (GtkWidget *button,
   GtkPrintUnixDialogPrivate *priv = dialog->priv;
   gboolean active;
 
-  active = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+  active = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
 
   ctk_widget_set_sensitive (priv->page_range_entry, active);
 
@@ -2346,7 +2346,7 @@ update_print_at_entry_sensitivity (GtkWidget *button,
   GtkPrintUnixDialogPrivate *priv = dialog->priv;
   gboolean active;
 
-  active = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button));
+  active = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
 
   ctk_widget_set_sensitive (priv->print_at_entry, active);
 
@@ -2364,7 +2364,7 @@ emit_ok_response (GtkTreeView       *tree_view,
 
   print_dialog = (GtkPrintUnixDialog *) user_data;
 
-  ctk_dialog_response (GTK_DIALOG (print_dialog), GTK_RESPONSE_OK);
+  ctk_dialog_response (CTK_DIALOG (print_dialog), CTK_RESPONSE_OK);
 }
 
 static gboolean
@@ -2384,7 +2384,7 @@ dialog_get_page_ranges (GtkPrintUnixDialog *dialog,
   GtkPageRange *ranges;
   gint start, end;
 
-  text = ctk_entry_get_text (GTK_ENTRY (priv->page_range_entry));
+  text = ctk_entry_get_text (CTK_ENTRY (priv->page_range_entry));
 
   if (*text == 0)
     {
@@ -2475,7 +2475,7 @@ dialog_set_page_ranges (GtkPrintUnixDialog *dialog,
         g_string_append (s, ",");
     }
 
-  ctk_entry_set_text (GTK_ENTRY (priv->page_range_entry), s->str);
+  ctk_entry_set_text (CTK_ENTRY (priv->page_range_entry), s->str);
 
   g_string_free (s, TRUE);
 }
@@ -2485,14 +2485,14 @@ dialog_get_print_pages (GtkPrintUnixDialog *dialog)
 {
   GtkPrintUnixDialogPrivate *priv = dialog->priv;
 
-  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->all_pages_radio)))
-    return GTK_PRINT_PAGES_ALL;
-  else if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->current_page_radio)))
-    return GTK_PRINT_PAGES_CURRENT;
-  else if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (priv->selection_radio)))
-    return GTK_PRINT_PAGES_SELECTION;
+  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (priv->all_pages_radio)))
+    return CTK_PRINT_PAGES_ALL;
+  else if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (priv->current_page_radio)))
+    return CTK_PRINT_PAGES_CURRENT;
+  else if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (priv->selection_radio)))
+    return CTK_PRINT_PAGES_SELECTION;
   else
-    return GTK_PRINT_PAGES_RANGES;
+    return CTK_PRINT_PAGES_RANGES;
 }
 
 static void
@@ -2501,21 +2501,21 @@ dialog_set_print_pages (GtkPrintUnixDialog *dialog,
 {
   GtkPrintUnixDialogPrivate *priv = dialog->priv;
 
-  if (pages == GTK_PRINT_PAGES_RANGES)
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->page_range_radio), TRUE);
-  else if (pages == GTK_PRINT_PAGES_CURRENT)
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->current_page_radio), TRUE);
-  else if (pages == GTK_PRINT_PAGES_SELECTION)
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->selection_radio), TRUE);
+  if (pages == CTK_PRINT_PAGES_RANGES)
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (priv->page_range_radio), TRUE);
+  else if (pages == CTK_PRINT_PAGES_CURRENT)
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (priv->current_page_radio), TRUE);
+  else if (pages == CTK_PRINT_PAGES_SELECTION)
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (priv->selection_radio), TRUE);
   else
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (priv->all_pages_radio), TRUE);
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (priv->all_pages_radio), TRUE);
 }
 
 static gdouble
 dialog_get_scale (GtkPrintUnixDialog *dialog)
 {
   if (ctk_widget_is_sensitive (dialog->priv->scale_spin))
-    return ctk_spin_button_get_value (GTK_SPIN_BUTTON (dialog->priv->scale_spin));
+    return ctk_spin_button_get_value (CTK_SPIN_BUTTON (dialog->priv->scale_spin));
   else
     return 100.0;
 }
@@ -2524,23 +2524,23 @@ static void
 dialog_set_scale (GtkPrintUnixDialog *dialog,
                   gdouble             val)
 {
-  ctk_spin_button_set_value (GTK_SPIN_BUTTON (dialog->priv->scale_spin), val);
+  ctk_spin_button_set_value (CTK_SPIN_BUTTON (dialog->priv->scale_spin), val);
 }
 
 static GtkPageSet
 dialog_get_page_set (GtkPrintUnixDialog *dialog)
 {
   if (ctk_widget_is_sensitive (dialog->priv->page_set_combo))
-    return (GtkPageSet)ctk_combo_box_get_active (GTK_COMBO_BOX (dialog->priv->page_set_combo));
+    return (GtkPageSet)ctk_combo_box_get_active (CTK_COMBO_BOX (dialog->priv->page_set_combo));
   else
-    return GTK_PAGE_SET_ALL;
+    return CTK_PAGE_SET_ALL;
 }
 
 static void
 dialog_set_page_set (GtkPrintUnixDialog *dialog,
                      GtkPageSet          val)
 {
-  ctk_combo_box_set_active (GTK_COMBO_BOX (dialog->priv->page_set_combo),
+  ctk_combo_box_set_active (CTK_COMBO_BOX (dialog->priv->page_set_combo),
                             (int)val);
 }
 
@@ -2553,9 +2553,9 @@ dialog_get_n_copies (GtkPrintUnixDialog *dialog)
   gchar *endptr = NULL;
   gint n_copies;
 
-  adjustment = ctk_spin_button_get_adjustment (GTK_SPIN_BUTTON (priv->copies_spin));
+  adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (priv->copies_spin));
 
-  text = ctk_entry_get_text (GTK_ENTRY (priv->copies_spin));
+  text = ctk_entry_get_text (CTK_ENTRY (priv->copies_spin));
   n_copies = g_ascii_strtoull (text, &endptr, 0);
 
   if (ctk_widget_is_sensitive (dialog->priv->copies_spin))
@@ -2567,7 +2567,7 @@ dialog_get_n_copies (GtkPrintUnixDialog *dialog)
           return n_copies;
         }
 
-      return ctk_spin_button_get_value_as_int (GTK_SPIN_BUTTON (priv->copies_spin));
+      return ctk_spin_button_get_value_as_int (CTK_SPIN_BUTTON (priv->copies_spin));
     }
 
   return 1;
@@ -2577,7 +2577,7 @@ static void
 dialog_set_n_copies (GtkPrintUnixDialog *dialog,
                      gint                n_copies)
 {
-  ctk_spin_button_set_value (GTK_SPIN_BUTTON (dialog->priv->copies_spin),
+  ctk_spin_button_set_value (CTK_SPIN_BUTTON (dialog->priv->copies_spin),
                              n_copies);
 }
 
@@ -2585,7 +2585,7 @@ static gboolean
 dialog_get_collate (GtkPrintUnixDialog *dialog)
 {
   if (ctk_widget_is_sensitive (dialog->priv->collate_check))
-    return ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->collate_check));
+    return ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (dialog->priv->collate_check));
   return FALSE;
 }
 
@@ -2593,7 +2593,7 @@ static void
 dialog_set_collate (GtkPrintUnixDialog *dialog,
                     gboolean            collate)
 {
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->collate_check),
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dialog->priv->collate_check),
                                 collate);
 }
 
@@ -2601,7 +2601,7 @@ static gboolean
 dialog_get_reverse (GtkPrintUnixDialog *dialog)
 {
   if (ctk_widget_is_sensitive (dialog->priv->reverse_check))
-    return ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (dialog->priv->reverse_check));
+    return ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (dialog->priv->reverse_check));
   return FALSE;
 }
 
@@ -2609,7 +2609,7 @@ static void
 dialog_set_reverse (GtkPrintUnixDialog *dialog,
                     gboolean            reverse)
 {
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (dialog->priv->reverse_check),
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (dialog->priv->reverse_check),
                                 reverse);
 }
 
@@ -2648,13 +2648,13 @@ dialog_get_number_up_layout (GtkPrintUnixDialog *dialog)
 
   caps = priv->manual_capabilities | priv->printer_capabilities;
 
-  if ((caps & GTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT) == 0)
-    return GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
+  if ((caps & CTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT) == 0)
+    return CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
 
-  if (ctk_widget_get_direction (GTK_WIDGET (dialog)) == GTK_TEXT_DIR_LTR)
-    layout = GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
+  if (ctk_widget_get_direction (CTK_WIDGET (dialog)) == CTK_TEXT_DIR_LTR)
+    layout = CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM;
   else
-    layout = GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM;
+    layout = CTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM;
 
   if (val == NULL)
     return layout;
@@ -2666,7 +2666,7 @@ dialog_get_number_up_layout (GtkPrintUnixDialog *dialog)
         val = option->value;
     }
 
-  enum_class = g_type_class_ref (GTK_TYPE_NUMBER_UP_LAYOUT);
+  enum_class = g_type_class_ref (CTK_TYPE_NUMBER_UP_LAYOUT);
   enum_value = g_enum_get_value_by_nick (enum_class, val);
   if (enum_value)
     layout = enum_value->value;
@@ -2705,8 +2705,8 @@ draw_page_cb (GtkWidget          *widget,
 
   orientation = ctk_page_setup_get_orientation (priv->page_setup);
   landscape =
-    (orientation == GTK_PAGE_ORIENTATION_LANDSCAPE) ||
-    (orientation == GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE);
+    (orientation == CTK_PAGE_ORIENTATION_LANDSCAPE) ||
+    (orientation == CTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE);
 
   number_up_layout = dialog_get_number_up_layout (dialog);
   width = ctk_widget_get_allocated_width (widget);
@@ -2720,13 +2720,13 @@ draw_page_cb (GtkWidget          *widget,
     {
       if (!landscape)
         {
-          paper_width = ctk_page_setup_get_paper_width (page_setup, GTK_UNIT_MM);
-          paper_height = ctk_page_setup_get_paper_height (page_setup, GTK_UNIT_MM);
+          paper_width = ctk_page_setup_get_paper_width (page_setup, CTK_UNIT_MM);
+          paper_height = ctk_page_setup_get_paper_height (page_setup, CTK_UNIT_MM);
         }
       else
         {
-          paper_width = ctk_page_setup_get_paper_height (page_setup, GTK_UNIT_MM);
-          paper_height = ctk_page_setup_get_paper_width (page_setup, GTK_UNIT_MM);
+          paper_width = ctk_page_setup_get_paper_height (page_setup, CTK_UNIT_MM);
+          paper_height = ctk_page_setup_get_paper_width (page_setup, CTK_UNIT_MM);
         }
 
       if (paper_width < paper_height)
@@ -2834,7 +2834,7 @@ draw_page_cb (GtkWidget          *widget,
   switch (number_up_layout)
     {
       default:
-      case GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM:
+      case CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM:
         start_x = 0;
         end_x = pages_x - 1;
         start_y = 0;
@@ -2843,7 +2843,7 @@ draw_page_cb (GtkWidget          *widget,
         dy = 1;
         horizontal = TRUE;
         break;
-      case GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP:
+      case CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP:
         start_x = 0;
         end_x = pages_x - 1;
         start_y = pages_y - 1;
@@ -2852,7 +2852,7 @@ draw_page_cb (GtkWidget          *widget,
         dy = - 1;
         horizontal = TRUE;
         break;
-      case GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM:
+      case CTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM:
         start_x = pages_x - 1;
         end_x = 0;
         start_y = 0;
@@ -2861,7 +2861,7 @@ draw_page_cb (GtkWidget          *widget,
         dy = 1;
         horizontal = TRUE;
         break;
-      case GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP:
+      case CTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP:
         start_x = pages_x - 1;
         end_x = 0;
         start_y = pages_y - 1;
@@ -2870,7 +2870,7 @@ draw_page_cb (GtkWidget          *widget,
         dy = - 1;
         horizontal = TRUE;
         break;
-      case GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_LEFT_TO_RIGHT:
+      case CTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_LEFT_TO_RIGHT:
         start_x = 0;
         end_x = pages_x - 1;
         start_y = 0;
@@ -2879,7 +2879,7 @@ draw_page_cb (GtkWidget          *widget,
         dy = 1;
         horizontal = FALSE;
         break;
-      case GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT:
+      case CTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT:
         start_x = pages_x - 1;
         end_x = 0;
         start_y = 0;
@@ -2888,7 +2888,7 @@ draw_page_cb (GtkWidget          *widget,
         dy = 1;
         horizontal = FALSE;
         break;
-      case GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT:
+      case CTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT:
         start_x = 0;
         end_x = pages_x - 1;
         start_y = pages_y - 1;
@@ -2897,7 +2897,7 @@ draw_page_cb (GtkWidget          *widget,
         dy = - 1;
         horizontal = FALSE;
         break;
-      case GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT:
+      case CTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT:
         start_x = pages_x - 1;
         end_x = 0;
         start_y = pages_y - 1;
@@ -2990,7 +2990,7 @@ draw_page_cb (GtkWidget          *widget,
       pango_layout_set_width (layout, -1);
       pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
 
-      if (_ctk_print_get_default_user_units () == GTK_UNIT_MM)
+      if (_ctk_print_get_default_user_units () == CTK_UNIT_MM)
         text = g_strdup_printf ("%.1f mm", paper_height);
       else
         text = g_strdup_printf ("%.2f inch", paper_height);
@@ -2999,7 +2999,7 @@ draw_page_cb (GtkWidget          *widget,
       g_free (text);
       pango_layout_get_size (layout, &layout_w, &layout_h);
 
-      ltr = ctk_widget_get_direction (GTK_WIDGET (dialog)) == GTK_TEXT_DIR_LTR;
+      ltr = ctk_widget_get_direction (CTK_WIDGET (dialog)) == CTK_TEXT_DIR_LTR;
 
       if (ltr)
         cairo_translate (cr, pos_x - layout_w / PANGO_SCALE - 2 * RULER_DISTANCE,
@@ -3014,7 +3014,7 @@ draw_page_cb (GtkWidget          *widget,
       cairo_restore (cr);
       cairo_save (cr);
 
-      if (_ctk_print_get_default_user_units () == GTK_UNIT_MM)
+      if (_ctk_print_get_default_user_units () == CTK_UNIT_MM)
         text = g_strdup_printf ("%.1f mm", paper_width);
       else
         text = g_strdup_printf ("%.2f inch", paper_width);
@@ -3106,7 +3106,7 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
 
   caps = priv->manual_capabilities | priv->printer_capabilities;
 
-  if (caps & GTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT)
+  if (caps & CTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT)
     {
       if (priv->number_up_layout_n_option == NULL)
         {
@@ -3125,7 +3125,7 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
 
               priv->number_up_layout_n_option = ctk_printer_option_new ("gtk-n-up-layout",
                                                                         _("Page Ordering"),
-                                                                        GTK_PRINTER_OPTION_TYPE_PICKONE);
+                                                                        CTK_PRINTER_OPTION_TYPE_PICKONE);
               ctk_printer_option_allocate_choices (priv->number_up_layout_n_option, 8);
 
               for (i = 0; i < G_N_ELEMENTS (n_up_layout_display); i++)
@@ -3138,13 +3138,13 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
 
           priv->number_up_layout_2_option = ctk_printer_option_new ("gtk-n-up-layout",
                                                                     _("Page Ordering"),
-                                                                    GTK_PRINTER_OPTION_TYPE_PICKONE);
+                                                                    CTK_PRINTER_OPTION_TYPE_PICKONE);
           ctk_printer_option_allocate_choices (priv->number_up_layout_2_option, 2);
         }
 
       page_orientation = ctk_page_setup_get_orientation (priv->page_setup);
-      if (page_orientation == GTK_PAGE_ORIENTATION_PORTRAIT ||
-          page_orientation == GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
+      if (page_orientation == CTK_PAGE_ORIENTATION_PORTRAIT ||
+          page_orientation == CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
         {
           if (! (priv->number_up_layout_2_option->choices[0] == priv->number_up_layout_n_option->choices[0] &&
                  priv->number_up_layout_2_option->choices[1] == priv->number_up_layout_n_option->choices[2]))
@@ -3181,7 +3181,7 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
         {
           GEnumClass *enum_class;
           GEnumValue *enum_value;
-          enum_class = g_type_class_ref (GTK_TYPE_NUMBER_UP_LAYOUT);
+          enum_class = g_type_class_ref (CTK_TYPE_NUMBER_UP_LAYOUT);
 
           if (dialog_get_pages_per_sheet (dialog) == 2)
             {
@@ -3189,24 +3189,24 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
 
               switch (layout)
                 {
-                case GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM:
-                case GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_LEFT_TO_RIGHT:
-                  enum_value = g_enum_get_value (enum_class, GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM);
+                case CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM:
+                case CTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_LEFT_TO_RIGHT:
+                  enum_value = g_enum_get_value (enum_class, CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM);
                   break;
 
-                case GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP:
-                case GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT:
-                  enum_value = g_enum_get_value (enum_class, GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP);
+                case CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP:
+                case CTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT:
+                  enum_value = g_enum_get_value (enum_class, CTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP);
                   break;
 
-                case GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM:
-                case GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT:
-                  enum_value = g_enum_get_value (enum_class, GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM);
+                case CTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM:
+                case CTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT:
+                  enum_value = g_enum_get_value (enum_class, CTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM);
                   break;
 
-                case GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP:
-                case GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT:
-                  enum_value = g_enum_get_value (enum_class, GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP);
+                case CTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP:
+                case CTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT:
+                  enum_value = g_enum_get_value (enum_class, CTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP);
                   break;
 
                 default:
@@ -3232,8 +3232,8 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
   setup_option (dialog, "gtk-n-up-layout", priv->number_up_layout);
 
   if (priv->number_up_layout != NULL)
-    ctk_widget_set_sensitive (GTK_WIDGET (priv->number_up_layout),
-                              (caps & GTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT) &&
+    ctk_widget_set_sensitive (CTK_WIDGET (priv->number_up_layout),
+                              (caps & CTK_PRINT_CAPABILITY_NUMBER_UP_LAYOUT) &&
                               (dialog_get_pages_per_sheet (dialog) > 1));
 }
 
@@ -3242,7 +3242,7 @@ custom_paper_dialog_response_cb (GtkDialog *custom_paper_dialog,
                                  gint       response_id,
                                  gpointer   user_data)
 {
-  GtkPrintUnixDialog        *print_dialog = GTK_PRINT_UNIX_DIALOG (user_data);
+  GtkPrintUnixDialog        *print_dialog = CTK_PRINT_UNIX_DIALOG (user_data);
   GtkPrintUnixDialogPrivate *priv = print_dialog->priv;
   GtkTreeModel              *model;
   GtkTreeIter                iter;
@@ -3255,7 +3255,7 @@ custom_paper_dialog_response_cb (GtkDialog *custom_paper_dialog,
 
   if (priv->page_setup_set)
     {
-      model = GTK_TREE_MODEL (priv->custom_paper_list);
+      model = CTK_TREE_MODEL (priv->custom_paper_list);
       if (ctk_tree_model_get_iter_first (model, &iter))
         {
           do
@@ -3273,7 +3273,7 @@ custom_paper_dialog_response_cb (GtkDialog *custom_paper_dialog,
         }
     }
 
-  ctk_widget_destroy (GTK_WIDGET (custom_paper_dialog));
+  ctk_widget_destroy (CTK_WIDGET (custom_paper_dialog));
 }
 
 static void
@@ -3287,7 +3287,7 @@ orientation_changed (GtkComboBox        *combo_box,
   if (priv->internal_page_setup_change)
     return;
 
-  orientation = (GtkPageOrientation) ctk_combo_box_get_active (GTK_COMBO_BOX (priv->orientation_combo));
+  orientation = (GtkPageOrientation) ctk_combo_box_get_active (CTK_COMBO_BOX (priv->orientation_combo));
 
   if (priv->page_setup)
     {
@@ -3334,10 +3334,10 @@ paper_size_changed (GtkComboBox        *combo_box,
           g_object_unref (last_page_setup);
 
           /* And show the custom paper dialog */
-          custom_paper_dialog = _ctk_custom_paper_unix_dialog_new (GTK_WINDOW (dialog), _("Manage Custom Sizes"));
+          custom_paper_dialog = _ctk_custom_paper_unix_dialog_new (CTK_WINDOW (dialog), _("Manage Custom Sizes"));
           g_signal_connect (custom_paper_dialog, "response", G_CALLBACK (custom_paper_dialog_response_cb), dialog);
           G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-          ctk_window_present (GTK_WINDOW (custom_paper_dialog));
+          ctk_window_present (CTK_WINDOW (custom_paper_dialog));
           G_GNUC_END_IGNORE_DEPRECATIONS
 
           return;
@@ -3346,7 +3346,7 @@ paper_size_changed (GtkComboBox        *combo_box,
       if (priv->page_setup)
         orientation = ctk_page_setup_get_orientation (priv->page_setup);
       else
-        orientation = GTK_PAGE_ORIENTATION_PORTRAIT;
+        orientation = CTK_PAGE_ORIENTATION_PORTRAIT;
 
       ctk_page_setup_set_orientation (page_setup, orientation);
       ctk_print_unix_dialog_set_page_setup (dialog, page_setup);
@@ -3410,7 +3410,7 @@ ctk_print_unix_dialog_new (const gchar *title,
 {
   GtkWidget *result;
 
-  result = g_object_new (GTK_TYPE_PRINT_UNIX_DIALOG,
+  result = g_object_new (CTK_TYPE_PRINT_UNIX_DIALOG,
                          "transient-for", parent,
                          "title", title ? title : _("Print"),
                          NULL);
@@ -3431,7 +3431,7 @@ ctk_print_unix_dialog_new (const gchar *title,
 GtkPrinter *
 ctk_print_unix_dialog_get_selected_printer (GtkPrintUnixDialog *dialog)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog), NULL);
+  g_return_val_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog), NULL);
 
   return dialog->priv->current_printer;
 }
@@ -3451,8 +3451,8 @@ ctk_print_unix_dialog_set_page_setup (GtkPrintUnixDialog *dialog,
 {
   GtkPrintUnixDialogPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog));
-  g_return_if_fail (GTK_IS_PAGE_SETUP (page_setup));
+  g_return_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog));
+  g_return_if_fail (CTK_IS_PAGE_SETUP (page_setup));
 
   priv = dialog->priv;
 
@@ -3480,7 +3480,7 @@ ctk_print_unix_dialog_set_page_setup (GtkPrintUnixDialog *dialog,
 GtkPageSetup *
 ctk_print_unix_dialog_get_page_setup (GtkPrintUnixDialog *dialog)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog), NULL);
+  g_return_val_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog), NULL);
 
   return dialog->priv->page_setup;
 }
@@ -3498,7 +3498,7 @@ ctk_print_unix_dialog_get_page_setup (GtkPrintUnixDialog *dialog)
 gboolean
 ctk_print_unix_dialog_get_page_setup_set (GtkPrintUnixDialog *dialog)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog), FALSE);
+  g_return_val_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog), FALSE);
 
   return dialog->priv->page_setup_set;
 }
@@ -3519,7 +3519,7 @@ ctk_print_unix_dialog_set_current_page (GtkPrintUnixDialog *dialog,
 {
   GtkPrintUnixDialogPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog));
+  g_return_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog));
 
   priv = dialog->priv;
 
@@ -3547,7 +3547,7 @@ ctk_print_unix_dialog_set_current_page (GtkPrintUnixDialog *dialog,
 gint
 ctk_print_unix_dialog_get_current_page (GtkPrintUnixDialog *dialog)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog), -1);
+  g_return_val_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog), -1);
 
   return dialog->priv->current_page;
 }
@@ -3562,13 +3562,13 @@ set_active_printer (GtkPrintUnixDialog *dialog,
   GtkTreeSelection *selection;
   GtkPrinter *printer;
 
-  model = GTK_TREE_MODEL (priv->printer_list);
+  model = CTK_TREE_MODEL (priv->printer_list);
 
   if (ctk_tree_model_get_iter_first (model, &iter))
     {
       do
         {
-          ctk_tree_model_get (GTK_TREE_MODEL (priv->printer_list), &iter,
+          ctk_tree_model_get (CTK_TREE_MODEL (priv->printer_list), &iter,
                               PRINTER_LIST_COL_PRINTER_OBJ, &printer,
                               -1);
           if (printer == NULL)
@@ -3579,7 +3579,7 @@ set_active_printer (GtkPrintUnixDialog *dialog,
               ctk_tree_model_filter_convert_child_iter_to_iter (priv->printer_list_filter,
                                                                 &filter_iter, &iter);
 
-              selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->printer_treeview));
+              selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->printer_treeview));
               priv->internal_printer_change = TRUE;
               ctk_tree_selection_select_iter (selection, &filter_iter);
               priv->internal_printer_change = FALSE;
@@ -3618,8 +3618,8 @@ ctk_print_unix_dialog_set_settings (GtkPrintUnixDialog *dialog,
   GtkPageRange *ranges;
   gint num_ranges;
 
-  g_return_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog));
-  g_return_if_fail (settings == NULL || GTK_IS_PRINT_SETTINGS (settings));
+  g_return_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog));
+  g_return_if_fail (settings == NULL || CTK_IS_PRINT_SETTINGS (settings));
 
   priv = dialog->priv;
 
@@ -3685,7 +3685,7 @@ ctk_print_unix_dialog_get_settings (GtkPrintUnixDialog *dialog)
   GtkPageRange *ranges;
   gint n_ranges;
 
-  g_return_val_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog), NULL);
+  g_return_val_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog), NULL);
 
   priv = dialog->priv;
   settings = ctk_print_settings_new ();
@@ -3749,7 +3749,7 @@ ctk_print_unix_dialog_add_custom_tab (GtkPrintUnixDialog *dialog,
                                       GtkWidget          *child,
                                       GtkWidget          *tab_label)
 {
-  ctk_notebook_insert_page (GTK_NOTEBOOK (dialog->priv->notebook),
+  ctk_notebook_insert_page (CTK_NOTEBOOK (dialog->priv->notebook),
                             child, tab_label, 2);
   ctk_widget_show (child);
   ctk_widget_show (tab_label);
@@ -3762,7 +3762,7 @@ ctk_print_unix_dialog_add_custom_tab (GtkPrintUnixDialog *dialog,
  *
  * This lets you specify the printing capabilities your application
  * supports. For instance, if you can handle scaling the output then
- * you pass #GTK_PRINT_CAPABILITY_SCALE. If you don’t pass that, then
+ * you pass #CTK_PRINT_CAPABILITY_SCALE. If you don’t pass that, then
  * the dialog will only let you select the scale if the printing
  * system automatically handles scaling.
  *
@@ -3783,7 +3783,7 @@ ctk_print_unix_dialog_set_manual_capabilities (GtkPrintUnixDialog   *dialog,
         {
           GtkTreeSelection *selection;
 
-          selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->printer_treeview));
+          selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->printer_treeview));
           g_clear_object (&priv->current_printer);
           priv->internal_printer_change = TRUE;
           selected_printer_changed (selection, dialog);
@@ -3807,7 +3807,7 @@ ctk_print_unix_dialog_set_manual_capabilities (GtkPrintUnixDialog   *dialog,
 GtkPrintCapabilities
 ctk_print_unix_dialog_get_manual_capabilities (GtkPrintUnixDialog *dialog)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog), FALSE);
+  g_return_val_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog), FALSE);
 
   return dialog->priv->manual_capabilities;
 }
@@ -3827,7 +3827,7 @@ ctk_print_unix_dialog_set_support_selection (GtkPrintUnixDialog *dialog,
 {
   GtkPrintUnixDialogPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog));
+  g_return_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog));
 
   priv = dialog->priv;
 
@@ -3867,7 +3867,7 @@ ctk_print_unix_dialog_set_support_selection (GtkPrintUnixDialog *dialog,
 gboolean
 ctk_print_unix_dialog_get_support_selection (GtkPrintUnixDialog *dialog)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog), FALSE);
+  g_return_val_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog), FALSE);
 
   return dialog->priv->support_selection;
 }
@@ -3887,7 +3887,7 @@ ctk_print_unix_dialog_set_has_selection (GtkPrintUnixDialog *dialog,
 {
   GtkPrintUnixDialogPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog));
+  g_return_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog));
 
   priv = dialog->priv;
 
@@ -3921,7 +3921,7 @@ ctk_print_unix_dialog_set_has_selection (GtkPrintUnixDialog *dialog,
 gboolean
 ctk_print_unix_dialog_get_has_selection (GtkPrintUnixDialog *dialog)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog), FALSE);
+  g_return_val_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog), FALSE);
 
   return dialog->priv->has_selection;
 }
@@ -3941,7 +3941,7 @@ ctk_print_unix_dialog_set_embed_page_setup (GtkPrintUnixDialog *dialog,
 {
   GtkPrintUnixDialogPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog));
+  g_return_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog));
 
   priv = dialog->priv;
 
@@ -3989,7 +3989,7 @@ ctk_print_unix_dialog_set_embed_page_setup (GtkPrintUnixDialog *dialog,
 gboolean
 ctk_print_unix_dialog_get_embed_page_setup (GtkPrintUnixDialog *dialog)
 {
-  g_return_val_if_fail (GTK_IS_PRINT_UNIX_DIALOG (dialog), FALSE);
+  g_return_val_if_fail (CTK_IS_PRINT_UNIX_DIALOG (dialog), FALSE);
 
   return dialog->priv->embed_page_setup;
 }

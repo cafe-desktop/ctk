@@ -17,10 +17,10 @@
  * Author: Matthias Clasen
  */
 
-#ifndef __GTK_MODEL_BUTTON_H__
-#define __GTK_MODEL_BUTTON_H__
+#ifndef __CTK_MODEL_BUTTON_H__
+#define __CTK_MODEL_BUTTON_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,26 +28,26 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MODEL_BUTTON         (ctk_model_button_get_type ())
-#define GTK_MODEL_BUTTON(inst)        (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
-                                      GTK_TYPE_MODEL_BUTTON, GtkModelButton))
-#define GTK_IS_MODEL_BUTTON(inst)     (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
-                                      GTK_TYPE_MODEL_BUTTON))
+#define CTK_TYPE_MODEL_BUTTON         (ctk_model_button_get_type ())
+#define CTK_MODEL_BUTTON(inst)        (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \
+                                      CTK_TYPE_MODEL_BUTTON, GtkModelButton))
+#define CTK_IS_MODEL_BUTTON(inst)     (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                      \
+                                      CTK_TYPE_MODEL_BUTTON))
 
 typedef struct _GtkModelButton        GtkModelButton;
 
 /**
  * GtkButtonRole:
- * @GTK_BUTTON_ROLE_NORMAL: A plain button
- * @GTK_BUTTON_ROLE_CHECK: A check button
- * @GTK_BUTTON_ROLE_RADIO: A radio button
+ * @CTK_BUTTON_ROLE_NORMAL: A plain button
+ * @CTK_BUTTON_ROLE_CHECK: A check button
+ * @CTK_BUTTON_ROLE_RADIO: A radio button
  *
  * The role specifies the desired appearance of a #GtkModelButton.
  */
 typedef enum {
-  GTK_BUTTON_ROLE_NORMAL,
-  GTK_BUTTON_ROLE_CHECK,
-  GTK_BUTTON_ROLE_RADIO
+  CTK_BUTTON_ROLE_NORMAL,
+  CTK_BUTTON_ROLE_CHECK,
+  CTK_BUTTON_ROLE_RADIO
 } GtkButtonRole;
 
 GDK_AVAILABLE_IN_3_16
@@ -58,4 +58,4 @@ GtkWidget * ctk_model_button_new      (void);
 
 G_END_DECLS
 
-#endif /* __GTK_MODEL_BUTTON_H__ */
+#endif /* __CTK_MODEL_BUTTON_H__ */

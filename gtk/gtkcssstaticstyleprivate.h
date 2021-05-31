@@ -17,20 +17,20 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_CSS_STATIC_STYLE_PRIVATE_H__
-#define __GTK_CSS_STATIC_STYLE_PRIVATE_H__
+#ifndef __CTK_CSS_STATIC_STYLE_PRIVATE_H__
+#define __CTK_CSS_STATIC_STYLE_PRIVATE_H__
 
 #include "gtk/gtkcssmatcherprivate.h"
 #include "gtk/gtkcssstyleprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_STATIC_STYLE           (ctk_css_static_style_get_type ())
-#define GTK_CSS_STATIC_STYLE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyle))
-#define GTK_CSS_STATIC_STYLE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyleClass))
-#define GTK_IS_CSS_STATIC_STYLE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_STATIC_STYLE))
-#define GTK_IS_CSS_STATIC_STYLE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_STATIC_STYLE))
-#define GTK_CSS_STATIC_STYLE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyleClass))
+#define CTK_TYPE_CSS_STATIC_STYLE           (ctk_css_static_style_get_type ())
+#define CTK_CSS_STATIC_STYLE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyle))
+#define CTK_CSS_STATIC_STYLE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyleClass))
+#define CTK_IS_CSS_STATIC_STYLE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_STATIC_STYLE))
+#define CTK_IS_CSS_STATIC_STYLE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_STATIC_STYLE))
+#define CTK_CSS_STATIC_STYLE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_STATIC_STYLE, GtkCssStaticStyleClass))
 
 typedef struct _GtkCssStaticStyle           GtkCssStaticStyle;
 typedef struct _GtkCssStaticStyleClass      GtkCssStaticStyleClass;
@@ -39,7 +39,7 @@ struct _GtkCssStaticStyle
 {
   GtkCssStyle parent;
 
-  GtkCssValue           *values[GTK_CSS_PROPERTY_N_PROPERTIES]; /* the values */
+  GtkCssValue           *values[CTK_CSS_PROPERTY_N_PROPERTIES]; /* the values */
   GPtrArray             *sections;             /* sections the values are defined in */
 
   GtkCssChange           change;               /* change as returned by value lookup */
@@ -68,4 +68,4 @@ GtkCssChange            ctk_css_static_style_get_change         (GtkCssStaticSty
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_STATIC_STYLE_PRIVATE_H__ */
+#endif /* __CTK_CSS_STATIC_STYLE_PRIVATE_H__ */

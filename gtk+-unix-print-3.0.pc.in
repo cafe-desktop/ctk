@@ -4,11 +4,11 @@ libdir=@libdir@
 includedir=@includedir@
 targets=@GDK_BACKENDS@
 
-ctk_binary_version=@GTK_BINARY_VERSION@
+ctk_binary_version=@CTK_BINARY_VERSION@
 ctk_host=@host@
 
 Name: GTK+
 Description: GTK+ Unix print support
 Version: @VERSION@
-Requires: gtk+-@GTK_API_VERSION@ @GTK_PACKAGES@
-Cflags: -I${includedir}/gtk-@GTK_API_VERSION@/unix-print
+Requires: gtk+-@CTK_API_VERSION@ @CTK_PACKAGES@
+Cflags: -I${includedir}/gtk-@CTK_API_VERSION@/unix-print

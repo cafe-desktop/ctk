@@ -180,11 +180,11 @@ static void ctk_recent_chooser_sync_action_properties (GtkActivatable       *act
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 G_DEFINE_TYPE_WITH_CODE (GtkRecentChooserMenu,
 			 ctk_recent_chooser_menu,
-			 GTK_TYPE_MENU,
+			 CTK_TYPE_MENU,
                          G_ADD_PRIVATE (GtkRecentChooserMenu)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_RECENT_CHOOSER,
 				 		ctk_recent_chooser_iface_init)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 				 		ctk_recent_chooser_activatable_iface_init))
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -239,7 +239,7 @@ ctk_recent_chooser_menu_class_init (GtkRecentChooserMenuClass *klass)
 							 P_("Show Numbers"),
 							 P_("Whether the items should be displayed with a number"),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
 
   g_object_class_override_property (gobject_class, PROP_ACTIVATABLE_RELATED_ACTION, "related-action");
@@ -262,7 +262,7 @@ ctk_recent_chooser_menu_init (GtkRecentChooserMenu *menu)
   priv->local_only = TRUE;
   
   priv->limit = FALLBACK_ITEM_LIMIT;
-  priv->sort_type = GTK_RECENT_SORT_NONE;
+  priv->sort_type = CTK_RECENT_SORT_NONE;
   priv->label_width = DEFAULT_LABEL_WIDTH;
   
   priv->first_recent_item_pos = -1;
@@ -274,7 +274,7 @@ ctk_recent_chooser_menu_init (GtkRecentChooserMenu *menu)
 static void
 ctk_recent_chooser_menu_finalize (GObject *object)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (object);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (object);
   GtkRecentChooserMenuPrivate *priv = menu->priv;
   
   priv->manager = NULL;
@@ -294,7 +294,7 @@ ctk_recent_chooser_menu_finalize (GObject *object)
 static void
 ctk_recent_chooser_menu_dispose (GObject *object)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (object);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (object);
   GtkRecentChooserMenuPrivate *priv = menu->priv;
 
   if (priv->manager_changed_id)
@@ -323,7 +323,7 @@ ctk_recent_chooser_menu_dispose (GObject *object)
 static void
 ctk_recent_chooser_menu_constructed (GObject *object)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (object);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (object);
   GtkRecentChooserMenuPrivate *priv = menu->priv;
 
   G_OBJECT_CLASS (ctk_recent_chooser_menu_parent_class)->constructed (object);
@@ -346,7 +346,7 @@ ctk_recent_chooser_menu_constructed (GObject *object)
                      "gtk-recent-menu-placeholder",
                      GINT_TO_POINTER (TRUE));
 
-  ctk_menu_shell_insert (GTK_MENU_SHELL (menu), priv->placeholder, 0);
+  ctk_menu_shell_insert (CTK_MENU_SHELL (menu), priv->placeholder, 0);
   ctk_widget_set_no_show_all (priv->placeholder, TRUE);
   ctk_widget_show (priv->placeholder);
 
@@ -360,7 +360,7 @@ ctk_recent_chooser_menu_set_property (GObject      *object,
 				      const GValue *value,
 				      GParamSpec   *pspec)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (object);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (object);
   GtkRecentChooserMenuPrivate *priv = menu->priv;
   
   switch (prop_id)
@@ -372,67 +372,67 @@ ctk_recent_chooser_menu_set_property (GObject      *object,
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_RECENT_MANAGER:
+    case CTK_RECENT_CHOOSER_PROP_RECENT_MANAGER:
       set_recent_manager (menu, g_value_get_object (value));
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE:
       if (priv->show_private != g_value_get_boolean (value))
         {
           priv->show_private = g_value_get_boolean (value);
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND:
       if (priv->show_not_found != g_value_get_boolean (value))
         {
           priv->show_not_found = g_value_get_boolean (value);
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_TIPS:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_TIPS:
       ctk_recent_chooser_menu_set_show_tips (menu, g_value_get_boolean (value));
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_ICONS:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_ICONS:
       if (priv->show_icons != g_value_get_boolean (value))
         {
           priv->show_icons = g_value_get_boolean (value);
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE:
+    case CTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE:
       g_warning ("%s: Choosers of type '%s' do not support selecting multiple items.",
                  G_STRFUNC,
                  G_OBJECT_TYPE_NAME (object));
       break;
-    case GTK_RECENT_CHOOSER_PROP_LOCAL_ONLY:
+    case CTK_RECENT_CHOOSER_PROP_LOCAL_ONLY:
       if (priv->local_only != g_value_get_boolean (value))
         {
           priv->local_only = g_value_get_boolean (value);
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_LIMIT:
+    case CTK_RECENT_CHOOSER_PROP_LIMIT:
       if (priv->limit != g_value_get_int (value))
         {
           priv->limit = g_value_get_int (value);
           g_object_notify_by_pspec (object, pspec);
         }
       break;
-    case GTK_RECENT_CHOOSER_PROP_SORT_TYPE:
+    case CTK_RECENT_CHOOSER_PROP_SORT_TYPE:
       if (priv->sort_type != g_value_get_enum (value))
         {
           priv->sort_type = g_value_get_enum (value);
           g_object_notify_by_pspec (object, pspec);
         } 
       break;
-    case GTK_RECENT_CHOOSER_PROP_FILTER:
+    case CTK_RECENT_CHOOSER_PROP_FILTER:
       ctk_recent_chooser_menu_set_current_filter (menu, g_value_get_object (value));
       break;
     case PROP_ACTIVATABLE_RELATED_ACTION:
-      _ctk_recent_chooser_set_related_action (GTK_RECENT_CHOOSER (menu), g_value_get_object (value));
+      _ctk_recent_chooser_set_related_action (CTK_RECENT_CHOOSER (menu), g_value_get_object (value));
       break;
     case PROP_ACTIVATABLE_USE_ACTION_APPEARANCE: 
-      _ctk_recent_chooser_set_use_action_appearance (GTK_RECENT_CHOOSER (menu), g_value_get_boolean (value));
+      _ctk_recent_chooser_set_use_action_appearance (CTK_RECENT_CHOOSER (menu), g_value_get_boolean (value));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -446,7 +446,7 @@ ctk_recent_chooser_menu_get_property (GObject    *object,
 				      GValue     *value,
 				      GParamSpec *pspec)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (object);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (object);
   GtkRecentChooserMenuPrivate *priv = menu->priv;
   
   switch (prop_id)
@@ -454,38 +454,38 @@ ctk_recent_chooser_menu_get_property (GObject    *object,
     case PROP_SHOW_NUMBERS:
       g_value_set_boolean (value, priv->show_numbers);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_TIPS:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_TIPS:
       g_value_set_boolean (value, priv->show_tips);
       break;
-    case GTK_RECENT_CHOOSER_PROP_LIMIT:
+    case CTK_RECENT_CHOOSER_PROP_LIMIT:
       g_value_set_int (value, priv->limit);
       break;
-    case GTK_RECENT_CHOOSER_PROP_LOCAL_ONLY:
+    case CTK_RECENT_CHOOSER_PROP_LOCAL_ONLY:
       g_value_set_boolean (value, priv->local_only);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SORT_TYPE:
+    case CTK_RECENT_CHOOSER_PROP_SORT_TYPE:
       g_value_set_enum (value, priv->sort_type);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_PRIVATE:
       g_value_set_boolean (value, priv->show_private);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_NOT_FOUND:
       g_value_set_boolean (value, priv->show_not_found);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SHOW_ICONS:
+    case CTK_RECENT_CHOOSER_PROP_SHOW_ICONS:
       g_value_set_boolean (value, priv->show_icons);
       break;
-    case GTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE:
+    case CTK_RECENT_CHOOSER_PROP_SELECT_MULTIPLE:
       g_value_set_boolean (value, FALSE);
       break;
-    case GTK_RECENT_CHOOSER_PROP_FILTER:
+    case CTK_RECENT_CHOOSER_PROP_FILTER:
       g_value_set_object (value, priv->current_filter);
       break;
     case PROP_ACTIVATABLE_RELATED_ACTION:
-      g_value_set_object (value, _ctk_recent_chooser_get_related_action (GTK_RECENT_CHOOSER (menu)));
+      g_value_set_object (value, _ctk_recent_chooser_get_related_action (CTK_RECENT_CHOOSER (menu)));
       break;
     case PROP_ACTIVATABLE_USE_ACTION_APPEARANCE: 
-      g_value_set_boolean (value, _ctk_recent_chooser_get_use_action_appearance (GTK_RECENT_CHOOSER (menu)));
+      g_value_set_boolean (value, _ctk_recent_chooser_get_use_action_appearance (CTK_RECENT_CHOOSER (menu)));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -498,19 +498,19 @@ ctk_recent_chooser_menu_set_current_uri (GtkRecentChooser  *chooser,
 					 const gchar       *uri,
 					 GError           **error)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (chooser);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (chooser);
   GList *children, *l;
   GtkWidget *menu_item = NULL;
   gboolean found = FALSE;
   gint i = 0;
   
-  children = ctk_container_get_children (GTK_CONTAINER (menu));
+  children = ctk_container_get_children (CTK_CONTAINER (menu));
   
   for (l = children; l != NULL; l = l->next, i++)
     {
       GtkRecentInfo *info;
       
-      menu_item = GTK_WIDGET (l->data);
+      menu_item = CTK_WIDGET (l->data);
       
       info = g_object_get_data (G_OBJECT (menu_item), "gtk-recent-info");
       if (!info)
@@ -518,7 +518,7 @@ ctk_recent_chooser_menu_set_current_uri (GtkRecentChooser  *chooser,
       
       if (strcmp (uri, ctk_recent_info_get_uri (info)) == 0)
         {
-          ctk_menu_set_active (GTK_MENU (menu), i);
+          ctk_menu_set_active (CTK_MENU (menu), i);
 	  found = TRUE;
 
 	  break;
@@ -529,8 +529,8 @@ ctk_recent_chooser_menu_set_current_uri (GtkRecentChooser  *chooser,
   
   if (!found)  
     {
-      g_set_error (error, GTK_RECENT_CHOOSER_ERROR,
-      		   GTK_RECENT_CHOOSER_ERROR_NOT_FOUND,
+      g_set_error (error, CTK_RECENT_CHOOSER_ERROR,
+      		   CTK_RECENT_CHOOSER_ERROR_NOT_FOUND,
                    _("No recently used resource found with URI '%s'"),
       		   uri);
     }
@@ -541,11 +541,11 @@ ctk_recent_chooser_menu_set_current_uri (GtkRecentChooser  *chooser,
 static gchar *
 ctk_recent_chooser_menu_get_current_uri (GtkRecentChooser  *chooser)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (chooser);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (chooser);
   GtkWidget *menu_item;
   GtkRecentInfo *info;
   
-  menu_item = ctk_menu_get_active (GTK_MENU (menu));
+  menu_item = ctk_menu_get_active (CTK_MENU (menu));
   if (!menu_item)
     return NULL;
   
@@ -561,17 +561,17 @@ ctk_recent_chooser_menu_select_uri (GtkRecentChooser  *chooser,
 				    const gchar       *uri,
 				    GError           **error)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (chooser);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (chooser);
   GList *children, *l;
   GtkWidget *menu_item = NULL;
   gboolean found = FALSE;
   
-  children = ctk_container_get_children (GTK_CONTAINER (menu));
+  children = ctk_container_get_children (CTK_CONTAINER (menu));
   for (l = children; l != NULL; l = l->next)
     {
       GtkRecentInfo *info;
       
-      menu_item = GTK_WIDGET (l->data);
+      menu_item = CTK_WIDGET (l->data);
       
       info = g_object_get_data (G_OBJECT (menu_item), "gtk-recent-info");
       if (!info)
@@ -585,15 +585,15 @@ ctk_recent_chooser_menu_select_uri (GtkRecentChooser  *chooser,
   
   if (!found)  
     {
-      g_set_error (error, GTK_RECENT_CHOOSER_ERROR,
-      		   GTK_RECENT_CHOOSER_ERROR_NOT_FOUND,
+      g_set_error (error, CTK_RECENT_CHOOSER_ERROR,
+      		   CTK_RECENT_CHOOSER_ERROR_NOT_FOUND,
                    _("No recently used resource found with URI '%s'"),
       		   uri);
       return FALSE;
     }
   else
     {
-      ctk_menu_shell_select_item (GTK_MENU_SHELL (menu), menu_item);
+      ctk_menu_shell_select_item (CTK_MENU_SHELL (menu), menu_item);
 
       return TRUE;
     }
@@ -603,9 +603,9 @@ static void
 ctk_recent_chooser_menu_unselect_uri (GtkRecentChooser *chooser,
 				       const gchar     *uri)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (chooser);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (chooser);
   
-  ctk_menu_shell_deselect (GTK_MENU_SHELL (menu));
+  ctk_menu_shell_deselect (CTK_MENU_SHELL (menu));
 }
 
 static void
@@ -630,7 +630,7 @@ ctk_recent_chooser_menu_set_sort_func (GtkRecentChooser  *chooser,
 				       gpointer           sort_data,
 				       GDestroyNotify     data_destroy)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (chooser);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (chooser);
   GtkRecentChooserMenuPrivate *priv = menu->priv;
   
   if (priv->sort_data_destroy)
@@ -654,7 +654,7 @@ ctk_recent_chooser_menu_set_sort_func (GtkRecentChooser  *chooser,
 static GList *
 ctk_recent_chooser_menu_get_items (GtkRecentChooser *chooser)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (chooser);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (chooser);
   GtkRecentChooserMenuPrivate *priv = menu->priv;
 
   return _ctk_recent_chooser_get_items (chooser,
@@ -668,7 +668,7 @@ ctk_recent_chooser_menu_get_recent_manager (GtkRecentChooser *chooser)
 {
   GtkRecentChooserMenuPrivate *priv;
  
-  priv = GTK_RECENT_CHOOSER_MENU (chooser)->priv;
+  priv = CTK_RECENT_CHOOSER_MENU (chooser)->priv;
   
   return priv->manager;
 }
@@ -679,7 +679,7 @@ ctk_recent_chooser_menu_add_filter (GtkRecentChooser *chooser,
 {
   GtkRecentChooserMenu *menu;
 
-  menu = GTK_RECENT_CHOOSER_MENU (chooser);
+  menu = CTK_RECENT_CHOOSER_MENU (chooser);
   
   ctk_recent_chooser_menu_set_current_filter (menu, filter);
 }
@@ -690,7 +690,7 @@ ctk_recent_chooser_menu_remove_filter (GtkRecentChooser *chooser,
 {
   GtkRecentChooserMenu *menu;
 
-  menu = GTK_RECENT_CHOOSER_MENU (chooser);
+  menu = CTK_RECENT_CHOOSER_MENU (chooser);
   
   if (filter == menu->priv->current_filter)
     {
@@ -707,7 +707,7 @@ ctk_recent_chooser_menu_list_filters (GtkRecentChooser *chooser)
   GtkRecentChooserMenu *menu;
   GSList *retval = NULL;
 
-  menu = GTK_RECENT_CHOOSER_MENU (chooser);
+  menu = CTK_RECENT_CHOOSER_MENU (chooser);
  
   if (menu->priv->current_filter)
     retval = g_slist_prepend (retval, menu->priv->current_filter);
@@ -852,28 +852,28 @@ ctk_recent_chooser_menu_create_item (GtkRecentChooserMenu *menu,
   g_free (text);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  ctk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (item),
+  ctk_image_menu_item_set_always_show_image (CTK_IMAGE_MENU_ITEM (item),
                                              TRUE);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   /* ellipsize the menu item label, in case the recent document
    * display name is huge.
    */
-  label = ctk_bin_get_child (GTK_BIN (item));
-  if (GTK_IS_LABEL (label))
+  label = ctk_bin_get_child (CTK_BIN (item));
+  if (CTK_IS_LABEL (label))
     {
-      ctk_label_set_ellipsize (GTK_LABEL (label), PANGO_ELLIPSIZE_END);
-      ctk_label_set_max_width_chars (GTK_LABEL (label), priv->label_width);
+      ctk_label_set_ellipsize (CTK_LABEL (label), PANGO_ELLIPSIZE_END);
+      ctk_label_set_max_width_chars (CTK_LABEL (label), priv->label_width);
     }
   
   if (priv->show_icons)
     {
       icon = ctk_recent_info_get_gicon (info);
 
-      image = ctk_image_new_from_gicon (icon, GTK_ICON_SIZE_MENU);
+      image = ctk_image_new_from_gicon (icon, CTK_ICON_SIZE_MENU);
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      ctk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item), image);
-      ctk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (item), TRUE);
+      ctk_image_menu_item_set_image (CTK_IMAGE_MENU_ITEM (item), image);
+      ctk_image_menu_item_set_always_show_image (CTK_IMAGE_MENU_ITEM (item), TRUE);
       G_GNUC_END_IGNORE_DEPRECATIONS;
       if (icon)
         g_object_unref (icon);
@@ -898,7 +898,7 @@ ctk_recent_chooser_menu_insert_item (GtkRecentChooserMenu *menu,
     {
       GList *children, *l;
 
-      children = ctk_container_get_children (GTK_CONTAINER (menu));
+      children = ctk_container_get_children (CTK_CONTAINER (menu));
 
       for (real_position = 0, l = children;
            l != NULL;
@@ -920,7 +920,7 @@ ctk_recent_chooser_menu_insert_item (GtkRecentChooserMenu *menu,
   else
     real_position = priv->first_recent_item_pos;
 
-  ctk_menu_shell_insert (GTK_MENU_SHELL (menu), menuitem,
+  ctk_menu_shell_insert (CTK_MENU_SHELL (menu), menuitem,
                          real_position + position);
   ctk_widget_show (menuitem);
 }
@@ -931,10 +931,10 @@ ctk_recent_chooser_menu_dispose_items (GtkRecentChooserMenu *menu)
 {
   GList *children, *l;
  
-  children = ctk_container_get_children (GTK_CONTAINER (menu));
+  children = ctk_container_get_children (CTK_CONTAINER (menu));
   for (l = children; l != NULL; l = l->next)
     {
-      GtkWidget *menu_item = GTK_WIDGET (l->data);
+      GtkWidget *menu_item = CTK_WIDGET (l->data);
       gboolean has_mark = FALSE;
       
       /* check for our mark, in order to remove just the items we own */
@@ -952,7 +952,7 @@ ctk_recent_chooser_menu_dispose_items (GtkRecentChooserMenu *menu)
             			    NULL, NULL);
           
           /* and finally remove the item from the menu */
-          ctk_container_remove (GTK_CONTAINER (menu), menu_item);
+          ctk_container_remove (CTK_CONTAINER (menu), menu_item);
         }
     }
 
@@ -1010,7 +1010,7 @@ idle_populate_func (gpointer data)
 
   if (!pdata->items)
     {
-      pdata->items = ctk_recent_chooser_get_items (GTK_RECENT_CHOOSER (pdata->menu));
+      pdata->items = ctk_recent_chooser_get_items (CTK_RECENT_CHOOSER (pdata->menu));
       if (!pdata->items)
         {
           /* show the placeholder here */
@@ -1115,7 +1115,7 @@ static void
 item_activate_cb (GtkWidget *widget,
 		  gpointer   user_data)
 {
-  GtkRecentChooser *chooser = GTK_RECENT_CHOOSER (user_data);
+  GtkRecentChooser *chooser = CTK_RECENT_CHOOSER (user_data);
   GtkRecentInfo *info = g_object_get_data (G_OBJECT (widget), "gtk-recent-info");
 
   ctk_recent_chooser_menu_set_current_uri (chooser, ctk_recent_info_get_uri (info), NULL);
@@ -1127,7 +1127,7 @@ static void
 manager_changed_cb (GtkRecentManager *manager,
 		    gpointer          user_data)
 {
-  GtkRecentChooserMenu *menu = GTK_RECENT_CHOOSER_MENU (user_data);
+  GtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (user_data);
 
   ctk_recent_chooser_menu_populate (menu);
 }
@@ -1192,7 +1192,7 @@ ctk_recent_chooser_menu_set_show_tips (GtkRecentChooserMenu *menu,
     return;
   
   priv->show_tips = show_tips;
-  ctk_container_foreach (GTK_CONTAINER (menu), foreach_set_shot_tips, menu);
+  ctk_container_foreach (CTK_CONTAINER (menu), foreach_set_shot_tips, menu);
   g_object_notify (G_OBJECT (menu), "show-tips");
 }
 
@@ -1204,7 +1204,7 @@ ctk_recent_chooser_update (GtkActivatable *activatable,
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
   if (strcmp (property_name, "sensitive") == 0)
-    ctk_widget_set_sensitive (GTK_WIDGET (activatable), ctk_action_is_sensitive (action));
+    ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -1220,7 +1220,7 @@ ctk_recent_chooser_sync_action_properties (GtkActivatable *activatable,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  ctk_widget_set_sensitive (GTK_WIDGET (activatable), ctk_action_is_sensitive (action));
+  ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
 
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
@@ -1255,7 +1255,7 @@ ctk_recent_chooser_sync_action_properties (GtkActivatable *activatable,
 GtkWidget *
 ctk_recent_chooser_menu_new (void)
 {
-  return g_object_new (GTK_TYPE_RECENT_CHOOSER_MENU,
+  return g_object_new (CTK_TYPE_RECENT_CHOOSER_MENU,
   		       "recent-manager", NULL,
   		       NULL);
 }
@@ -1279,9 +1279,9 @@ ctk_recent_chooser_menu_new (void)
 GtkWidget *
 ctk_recent_chooser_menu_new_for_manager (GtkRecentManager *manager)
 {
-  g_return_val_if_fail (manager == NULL || GTK_IS_RECENT_MANAGER (manager), NULL);
+  g_return_val_if_fail (manager == NULL || CTK_IS_RECENT_MANAGER (manager), NULL);
   
-  return g_object_new (GTK_TYPE_RECENT_CHOOSER_MENU,
+  return g_object_new (CTK_TYPE_RECENT_CHOOSER_MENU,
   		       "recent-manager", manager,
   		       NULL);
 }
@@ -1299,7 +1299,7 @@ ctk_recent_chooser_menu_new_for_manager (GtkRecentManager *manager)
 gboolean
 ctk_recent_chooser_menu_get_show_numbers (GtkRecentChooserMenu *menu)
 {
-  g_return_val_if_fail (GTK_IS_RECENT_CHOOSER_MENU (menu), FALSE);
+  g_return_val_if_fail (CTK_IS_RECENT_CHOOSER_MENU (menu), FALSE);
 
   return menu->priv->show_numbers;
 }
@@ -1320,7 +1320,7 @@ void
 ctk_recent_chooser_menu_set_show_numbers (GtkRecentChooserMenu *menu,
 					  gboolean              show_numbers)
 {
-  g_return_if_fail (GTK_IS_RECENT_CHOOSER_MENU (menu));
+  g_return_if_fail (CTK_IS_RECENT_CHOOSER_MENU (menu));
 
   if (menu->priv->show_numbers == show_numbers)
     return;

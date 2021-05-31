@@ -157,11 +157,11 @@ create_text_view (GtkWidget *hbox,
   guint timeout;
 
   swindow = ctk_scrolled_window_new (NULL, NULL);
-  ctk_box_pack_start (GTK_BOX (hbox), swindow, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), swindow, TRUE, TRUE, 0);
   textview = ctk_text_view_new ();
-  ctk_container_add (GTK_CONTAINER (swindow), textview);
+  ctk_container_add (CTK_CONTAINER (swindow), textview);
 
-  timeout = setup_scroll (GTK_TEXT_VIEW (textview), to_end);
+  timeout = setup_scroll (CTK_TEXT_VIEW (textview), to_end);
 
   /* Remove the timeout in destroy handler, so we don't try to
    * scroll destroyed widget.
@@ -180,15 +180,15 @@ do_textscroll (GtkWidget *do_widget)
     {
       GtkWidget *hbox;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_title (GTK_WINDOW (window), "Automatic Scrolling");
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_title (CTK_WINDOW (window), "Automatic Scrolling");
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
-      ctk_window_set_default_size (GTK_WINDOW (window), 600, 400);
+      ctk_window_set_default_size (CTK_WINDOW (window), 600, 400);
 
-      hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-      ctk_box_set_homogeneous (GTK_BOX (hbox), TRUE);
-      ctk_container_add (GTK_CONTAINER (window), hbox);
+      hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
+      ctk_box_set_homogeneous (CTK_BOX (hbox), TRUE);
+      ctk_container_add (CTK_CONTAINER (window), hbox);
 
       create_text_view (hbox, TRUE);
       create_text_view (hbox, FALSE);

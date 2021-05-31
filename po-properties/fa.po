@@ -419,7 +419,7 @@ msgid "Is important"
 msgstr "مهم است"
 
 #: ../gtk/gtkaction.c:366
-msgid "Whether the action is considered important. When TRUE, toolitem proxies for this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+msgid "Whether the action is considered important. When TRUE, toolitem proxies for this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 
 #: ../gtk/gtkaction.c:374
@@ -1064,7 +1064,7 @@ msgid "Default Spacing"
 msgstr "فاصله‌گذاری پیش‌فرض"
 
 #: ../gtk/gtkbutton.c:450
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr ""
 
 #: ../gtk/gtkbutton.c:464
@@ -1072,7 +1072,7 @@ msgid "Default Outside Spacing"
 msgstr "فاصله‌گذاری پیش‌فرض خارجی"
 
 #: ../gtk/gtkbutton.c:465
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside the border"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside the border"
 msgstr ""
 
 #: ../gtk/gtkbutton.c:470
@@ -6931,7 +6931,7 @@ msgid "Spacing in pixels between the icon and label"
 msgstr "فاصله‌گذاری بین دکمه‌ها و ..."
 
 #: ../gtk/gtktoolitem.c:209
-msgid "Whether the toolbar item is considered important. When TRUE, toolbar buttons show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+msgid "Whether the toolbar item is considered important. When TRUE, toolbar buttons show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 
 #: ../gtk/gtktoolitemgroup.c:1593

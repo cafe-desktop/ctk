@@ -48,7 +48,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  */
 
 
-G_DEFINE_TYPE (GtkHSeparator, ctk_hseparator, GTK_TYPE_SEPARATOR)
+G_DEFINE_TYPE (GtkHSeparator, ctk_hseparator, CTK_TYPE_SEPARATOR)
 
 static void
 ctk_hseparator_class_init (GtkHSeparatorClass *class)
@@ -58,8 +58,8 @@ ctk_hseparator_class_init (GtkHSeparatorClass *class)
 static void
 ctk_hseparator_init (GtkHSeparator *hseparator)
 {
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (hseparator),
-                                  GTK_ORIENTATION_HORIZONTAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (hseparator),
+                                  CTK_ORIENTATION_HORIZONTAL);
 }
 
 /**
@@ -69,10 +69,10 @@ ctk_hseparator_init (GtkHSeparator *hseparator)
  *
  * Returns: a new #GtkHSeparator.
  *
- * Deprecated: 3.2: Use ctk_separator_new() with %GTK_ORIENTATION_HORIZONTAL instead
+ * Deprecated: 3.2: Use ctk_separator_new() with %CTK_ORIENTATION_HORIZONTAL instead
  */
 GtkWidget *
 ctk_hseparator_new (void)
 {
-  return g_object_new (GTK_TYPE_HSEPARATOR, NULL);
+  return g_object_new (CTK_TYPE_HSEPARATOR, NULL);
 }

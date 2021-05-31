@@ -217,7 +217,7 @@
                         <child>
                           <object class="GtkLabel" id="ctk_path_label">
                             <property name="visible">True</property>
-                            <property name="label">GTK_PATH</property>
+                            <property name="label">CTK_PATH</property>
                             <property name="halign">start</property>
                             <property name="valign">baseline</property>
                             <property name="xalign">0.0</property>
@@ -252,7 +252,7 @@
                         <child>
                           <object class="GtkLabel" id="ctk_exe_prefix_label">
                             <property name="visible">True</property>
-                            <property name="label">GTK_EXE_PREFIX</property>
+                            <property name="label">CTK_EXE_PREFIX</property>
                             <property name="halign">start</property>
                             <property name="valign">baseline</property>
                             <property name="xalign">0.0</property>
@@ -287,7 +287,7 @@
                         <child>
                           <object class="GtkLabel" id="ctk_data_prefix_label">
                             <property name="visible">True</property>
-                            <property name="label">GTK_DATA_PREFIX</property>
+                            <property name="label">CTK_DATA_PREFIX</property>
                             <property name="halign">start</property>
                             <property name="valign">baseline</property>
                             <property name="xalign">0.0</property>

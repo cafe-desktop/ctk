@@ -330,11 +330,11 @@ msgstr "Tha e cudromach"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Co-dhiù a bheil an gnìomh cudromach gus nach eil. Ma tha seo TRUE, seallaidh "
 "progsaidhean toolitem airson a’ ghnìomh seo an teacsa sa mhodh "
-"GTK_TOOLBAR_BOTH_HORIZ."
+"CTK_TOOLBAR_BOTH_HORIZ."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1834,8 +1834,8 @@ msgid "Default Spacing"
 msgstr "Am beàrnadh bunaiteach"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "An t-àite a bharrachd airson putanan GTK_CAN_DEFAULT"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "An t-àite a bharrachd airson putanan CTK_CAN_DEFAULT"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1843,10 +1843,10 @@ msgstr "Beàrnadh bunaiteach air an taobh a-muigh"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"An t-àite a bharrachd airson putanan GTK_CAN_DEFAULT a thèid a tharraing "
+"An t-àite a bharrachd airson putanan CTK_CAN_DEFAULT a thèid a tharraing "
 "taobh a-muigh an iomaill an-còmhnaidh"
 
 #: gtk/gtkbutton.c:556
@@ -4346,10 +4346,10 @@ msgid "Baseline Row"
 msgstr "Ràgh bun-loidhne"
 
 #: gtk/gtkgrid.c:1787
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
 "An ràgh a thèid a chleachdadh mar bhun-loidhne airson a’ cho-thaobhachaidh "
-"mas e GTK_ALIGN_BASELINE a tha sa valign"
+"mas e CTK_ALIGN_BASELINE a tha sa valign"
 
 #: gtk/gtkgrid.c:1805
 msgid "The row number to attach the top side of a child widget to"
@@ -8650,11 +8650,11 @@ msgstr "Am beàrnadh ann am piogsailean eadar an ìomhaigheag agus an leubail"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Co-dhiù a bheilear a’ beachdachadh air ball a’ bhàr-inneal mar rud "
 "cudromach. Ma tha seo TRUE, seallaidh putanan a’ bhàr-inneal teacsa sa mhodh "
-"GTK_TOOLBAR_BOTH_HORIZ"
+"CTK_TOOLBAR_BOTH_HORIZ"
 
 #: gtk/gtktoolitemgroup.c:1642
 msgid "The human-readable title of this item group"

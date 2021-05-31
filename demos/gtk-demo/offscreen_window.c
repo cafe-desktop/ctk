@@ -6,12 +6,12 @@
 #include <math.h>
 #include <gtk/gtk.h>
 
-#define GTK_TYPE_ROTATED_BIN              (ctk_rotated_bin_get_type ())
-#define GTK_ROTATED_BIN(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ROTATED_BIN, GtkRotatedBin))
-#define GTK_ROTATED_BIN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ROTATED_BIN, GtkRotatedBinClass))
-#define GTK_IS_ROTATED_BIN(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ROTATED_BIN))
-#define GTK_IS_ROTATED_BIN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ROTATED_BIN))
-#define GTK_ROTATED_BIN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ROTATED_BIN, GtkRotatedBinClass))
+#define CTK_TYPE_ROTATED_BIN              (ctk_rotated_bin_get_type ())
+#define CTK_ROTATED_BIN(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ROTATED_BIN, GtkRotatedBin))
+#define CTK_ROTATED_BIN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ROTATED_BIN, GtkRotatedBinClass))
+#define CTK_IS_ROTATED_BIN(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ROTATED_BIN))
+#define CTK_IS_ROTATED_BIN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ROTATED_BIN))
+#define CTK_ROTATED_BIN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ROTATED_BIN, GtkRotatedBinClass))
 
 typedef struct _GtkRotatedBin   GtkRotatedBin;
 typedef struct _GtkRotatedBinClass  GtkRotatedBinClass;
@@ -62,7 +62,7 @@ static void     ctk_rotated_bin_forall        (GtkContainer    *container,
                                                gpointer         callback_data);
 static GType    ctk_rotated_bin_child_type    (GtkContainer    *container);
 
-G_DEFINE_TYPE (GtkRotatedBin, ctk_rotated_bin, GTK_TYPE_CONTAINER);
+G_DEFINE_TYPE (GtkRotatedBin, ctk_rotated_bin, CTK_TYPE_CONTAINER);
 
 static void
 to_child (GtkRotatedBin *bin,
@@ -147,8 +147,8 @@ to_parent (GtkRotatedBin *bin,
 static void
 ctk_rotated_bin_class_init (GtkRotatedBinClass *klass)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
 
   widget_class->realize = ctk_rotated_bin_realize;
   widget_class->unrealize = ctk_rotated_bin_unrealize;
@@ -157,8 +157,8 @@ ctk_rotated_bin_class_init (GtkRotatedBinClass *klass)
   widget_class->size_allocate = ctk_rotated_bin_size_allocate;
   widget_class->draw = ctk_rotated_bin_draw;
 
-  g_signal_override_class_closure (g_signal_lookup ("damage-event", GTK_TYPE_WIDGET),
-                                   GTK_TYPE_ROTATED_BIN,
+  g_signal_override_class_closure (g_signal_lookup ("damage-event", CTK_TYPE_WIDGET),
+                                   CTK_TYPE_ROTATED_BIN,
                                    g_cclosure_new (G_CALLBACK (ctk_rotated_bin_damage),
                                                    NULL, NULL));
 
@@ -171,13 +171,13 @@ ctk_rotated_bin_class_init (GtkRotatedBinClass *klass)
 static void
 ctk_rotated_bin_init (GtkRotatedBin *bin)
 {
-  ctk_widget_set_has_window (GTK_WIDGET (bin), TRUE);
+  ctk_widget_set_has_window (CTK_WIDGET (bin), TRUE);
 }
 
 GtkWidget *
 ctk_rotated_bin_new (void)
 {
-  return g_object_new (GTK_TYPE_ROTATED_BIN, NULL);
+  return g_object_new (CTK_TYPE_ROTATED_BIN, NULL);
 }
 
 static GdkWindow *
@@ -228,7 +228,7 @@ offscreen_window_from_parent (GdkWindow     *window,
 static void
 ctk_rotated_bin_realize (GtkWidget *widget)
 {
-  GtkRotatedBin *bin = GTK_ROTATED_BIN (widget);
+  GtkRotatedBin *bin = CTK_ROTATED_BIN (widget);
   GtkAllocation allocation;
   GdkWindow *window;
   GdkWindowAttr attributes;
@@ -239,7 +239,7 @@ ctk_rotated_bin_realize (GtkWidget *widget)
   ctk_widget_set_realized (widget, TRUE);
 
   ctk_widget_get_allocation (widget, &allocation);
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
 
   attributes.x = allocation.x + border_width;
   attributes.y = allocation.y + border_width;
@@ -295,36 +295,36 @@ ctk_rotated_bin_realize (GtkWidget *widget)
 static void
 ctk_rotated_bin_unrealize (GtkWidget *widget)
 {
-  GtkRotatedBin *bin = GTK_ROTATED_BIN (widget);
+  GtkRotatedBin *bin = CTK_ROTATED_BIN (widget);
 
   gdk_window_set_user_data (bin->offscreen_window, NULL);
   gdk_window_destroy (bin->offscreen_window);
   bin->offscreen_window = NULL;
 
-  GTK_WIDGET_CLASS (ctk_rotated_bin_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_rotated_bin_parent_class)->unrealize (widget);
 }
 
 static GType
 ctk_rotated_bin_child_type (GtkContainer *container)
 {
-  GtkRotatedBin *bin = GTK_ROTATED_BIN (container);
+  GtkRotatedBin *bin = CTK_ROTATED_BIN (container);
 
   if (bin->child)
     return G_TYPE_NONE;
 
-  return GTK_TYPE_WIDGET;
+  return CTK_TYPE_WIDGET;
 }
 
 static void
 ctk_rotated_bin_add (GtkContainer *container,
                      GtkWidget    *widget)
 {
-  GtkRotatedBin *bin = GTK_ROTATED_BIN (container);
+  GtkRotatedBin *bin = CTK_ROTATED_BIN (container);
 
   if (!bin->child)
     {
       ctk_widget_set_parent_window (widget, bin->offscreen_window);
-      ctk_widget_set_parent (widget, GTK_WIDGET (bin));
+      ctk_widget_set_parent (widget, CTK_WIDGET (bin));
       bin->child = widget;
     }
   else
@@ -335,7 +335,7 @@ static void
 ctk_rotated_bin_remove (GtkContainer *container,
                         GtkWidget    *widget)
 {
-  GtkRotatedBin *bin = GTK_ROTATED_BIN (container);
+  GtkRotatedBin *bin = CTK_ROTATED_BIN (container);
   gboolean was_visible;
 
   was_visible = ctk_widget_get_visible (widget);
@@ -346,8 +346,8 @@ ctk_rotated_bin_remove (GtkContainer *container,
 
       bin->child = NULL;
 
-      if (was_visible && ctk_widget_get_visible (GTK_WIDGET (container)))
-        ctk_widget_queue_resize (GTK_WIDGET (container));
+      if (was_visible && ctk_widget_get_visible (CTK_WIDGET (container)))
+        ctk_widget_queue_resize (CTK_WIDGET (container));
     }
 }
 
@@ -357,7 +357,7 @@ ctk_rotated_bin_forall (GtkContainer *container,
                         GtkCallback   callback,
                         gpointer      callback_data)
 {
-  GtkRotatedBin *bin = GTK_ROTATED_BIN (container);
+  GtkRotatedBin *bin = CTK_ROTATED_BIN (container);
 
   g_return_if_fail (callback != NULL);
 
@@ -369,10 +369,10 @@ void
 ctk_rotated_bin_set_angle (GtkRotatedBin *bin,
                            gdouble        angle)
 {
-  g_return_if_fail (GTK_IS_ROTATED_BIN (bin));
+  g_return_if_fail (CTK_IS_ROTATED_BIN (bin));
 
   bin->angle = angle;
-  ctk_widget_queue_resize (GTK_WIDGET (bin));
+  ctk_widget_queue_resize (CTK_WIDGET (bin));
 
   gdk_window_geometry_changed (bin->offscreen_window);
 }
@@ -381,7 +381,7 @@ static void
 ctk_rotated_bin_size_request (GtkWidget      *widget,
                               GtkRequisition *requisition)
 {
-  GtkRotatedBin *bin = GTK_ROTATED_BIN (widget);
+  GtkRotatedBin *bin = CTK_ROTATED_BIN (widget);
   GtkRequisition child_requisition;
   double s, c;
   double w, h;
@@ -399,7 +399,7 @@ ctk_rotated_bin_size_request (GtkWidget      *widget,
   w = c * child_requisition.width + s * child_requisition.height;
   h = s * child_requisition.width + c * child_requisition.height;
 
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
   requisition->width = border_width * 2 + w;
   requisition->height = border_width * 2 + h;
 }
@@ -432,14 +432,14 @@ static void
 ctk_rotated_bin_size_allocate (GtkWidget     *widget,
                                GtkAllocation *allocation)
 {
-  GtkRotatedBin *bin = GTK_ROTATED_BIN (widget);
+  GtkRotatedBin *bin = CTK_ROTATED_BIN (widget);
   guint border_width;
   gint w, h;
   gdouble s, c;
 
   ctk_widget_set_allocation (widget, allocation);
 
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
 
   w = allocation->width - border_width * 2;
   h = allocation->height - border_width * 2;
@@ -497,7 +497,7 @@ static gboolean
 ctk_rotated_bin_draw (GtkWidget *widget,
                       cairo_t   *cr)
 {
-  GtkRotatedBin *bin = GTK_ROTATED_BIN (widget);
+  GtkRotatedBin *bin = CTK_ROTATED_BIN (widget);
   GdkWindow *window;
   gdouble s, c;
   gdouble w, h;
@@ -544,7 +544,7 @@ ctk_rotated_bin_draw (GtkWidget *widget,
                              gdk_window_get_height (bin->offscreen_window));
 
       if (bin->child)
-        ctk_container_propagate_draw (GTK_CONTAINER (widget),
+        ctk_container_propagate_draw (CTK_CONTAINER (widget),
                                       bin->child,
                                       cr);
     }
@@ -570,30 +570,30 @@ do_offscreen_window (GtkWidget *do_widget)
     {
       GtkWidget *bin, *vbox, *scale, *button;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Rotated Button");
+      ctk_window_set_title (CTK_WINDOW (window), "Rotated Button");
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      ctk_container_set_border_width (GTK_CONTAINER (window), 10);
+      ctk_container_set_border_width (CTK_CONTAINER (window), 10);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-      scale = ctk_scale_new_with_range (GTK_ORIENTATION_HORIZONTAL,
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+      scale = ctk_scale_new_with_range (CTK_ORIENTATION_HORIZONTAL,
                                         0, G_PI/2, 0.01);
-      ctk_scale_set_draw_value (GTK_SCALE (scale), FALSE);
+      ctk_scale_set_draw_value (CTK_SCALE (scale), FALSE);
 
       button = ctk_button_new_with_label ("A Button");
       bin = ctk_rotated_bin_new ();
 
       g_signal_connect (scale, "value-changed", G_CALLBACK (scale_changed), bin);
 
-      ctk_container_add (GTK_CONTAINER (window), vbox);
-      ctk_box_pack_start (GTK_BOX (vbox), scale, FALSE, FALSE, 0);
-      ctk_box_pack_start (GTK_BOX (vbox), bin, TRUE, TRUE, 0);
-      ctk_container_add (GTK_CONTAINER (bin), button);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
+      ctk_box_pack_start (CTK_BOX (vbox), scale, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), bin, TRUE, TRUE, 0);
+      ctk_container_add (CTK_CONTAINER (bin), button);
     }
 
   if (!ctk_widget_get_visible (window))

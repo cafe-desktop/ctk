@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_NOTEBOOK_ACCESSIBLE_H__
-#define __GTK_NOTEBOOK_ACCESSIBLE_H__
+#ifndef __CTK_NOTEBOOK_ACCESSIBLE_H__
+#define __CTK_NOTEBOOK_ACCESSIBLE_H__
 
-#if !defined (__GTK_A11Y_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_A11Y_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk-a11y.h> can be included directly."
 #endif
 
@@ -26,12 +26,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_NOTEBOOK_ACCESSIBLE                   (ctk_notebook_accessible_get_type ())
-#define GTK_NOTEBOOK_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_NOTEBOOK_ACCESSIBLE, GtkNotebookAccessible))
-#define GTK_NOTEBOOK_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_NOTEBOOK_ACCESSIBLE, GtkNotebookAccessibleClass))
-#define GTK_IS_NOTEBOOK_ACCESSIBLE(obj)                (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_NOTEBOOK_ACCESSIBLE))
-#define GTK_IS_NOTEBOOK_ACCESSIBLE_CLASS(klass)        (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_NOTEBOOK_ACCESSIBLE))
-#define GTK_NOTEBOOK_ACCESSIBLE_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_NOTEBOOK_ACCESSIBLE, GtkNotebookAccessibleClass))
+#define CTK_TYPE_NOTEBOOK_ACCESSIBLE                   (ctk_notebook_accessible_get_type ())
+#define CTK_NOTEBOOK_ACCESSIBLE(obj)                   (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_NOTEBOOK_ACCESSIBLE, GtkNotebookAccessible))
+#define CTK_NOTEBOOK_ACCESSIBLE_CLASS(klass)           (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NOTEBOOK_ACCESSIBLE, GtkNotebookAccessibleClass))
+#define CTK_IS_NOTEBOOK_ACCESSIBLE(obj)                (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_NOTEBOOK_ACCESSIBLE))
+#define CTK_IS_NOTEBOOK_ACCESSIBLE_CLASS(klass)        (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_NOTEBOOK_ACCESSIBLE))
+#define CTK_NOTEBOOK_ACCESSIBLE_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NOTEBOOK_ACCESSIBLE, GtkNotebookAccessibleClass))
 
 typedef struct _GtkNotebookAccessible        GtkNotebookAccessible;
 typedef struct _GtkNotebookAccessibleClass   GtkNotebookAccessibleClass;
@@ -54,4 +54,4 @@ GType ctk_notebook_accessible_get_type (void);
 
 G_END_DECLS
 
-#endif /* __GTK_NOTEBOOK_ACCESSIBLE_H__ */
+#endif /* __CTK_NOTEBOOK_ACCESSIBLE_H__ */

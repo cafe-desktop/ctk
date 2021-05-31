@@ -28,13 +28,13 @@ struct _GtkSocketAccessiblePrivate
   AtkObject *accessible_socket;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkSocketAccessible, ctk_socket_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkSocketAccessible, ctk_socket_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkSocketAccessible))
 
 static AtkObject*
 ctk_socket_accessible_ref_child (AtkObject *obj, int i)
 {
-  GtkSocketAccessible *socket = GTK_SOCKET_ACCESSIBLE (obj);
+  GtkSocketAccessible *socket = CTK_SOCKET_ACCESSIBLE (obj);
 
   if (i != 0)
     return NULL;
@@ -51,7 +51,7 @@ ctk_socket_accessible_get_n_children (AtkObject *obj)
 static void
 ctk_socket_accessible_finalize (GObject *object)
 {
-  GtkSocketAccessible *socket = GTK_SOCKET_ACCESSIBLE (object);
+  GtkSocketAccessible *socket = CTK_SOCKET_ACCESSIBLE (object);
   GtkSocketAccessiblePrivate *priv = socket->priv;
 
   g_clear_object (&priv->accessible_socket);
@@ -68,7 +68,7 @@ ctk_socket_accessible_initialize (AtkObject *socket, gpointer data)
 
   atk_socket = atk_socket_new ();
 
-  GTK_SOCKET_ACCESSIBLE(socket)->priv->accessible_socket = atk_socket;
+  CTK_SOCKET_ACCESSIBLE(socket)->priv->accessible_socket = atk_socket;
   atk_object_set_parent (atk_socket, socket);
 }
 

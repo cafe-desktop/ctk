@@ -73,7 +73,7 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#define GTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
+#define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
 #include "gtktextattributesprivate.h"
 #include "gtktextdisplay.h"
@@ -85,12 +85,12 @@
  * use the semi-public headers, as with gtktextview.c.
  */
 
-#define GTK_TYPE_TEXT_RENDERER            (_ctk_text_renderer_get_type())
-#define GTK_TEXT_RENDERER(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_TEXT_RENDERER, GtkTextRenderer))
-#define GTK_IS_TEXT_RENDERER(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_TEXT_RENDERER))
-#define GTK_TEXT_RENDERER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TEXT_RENDERER, GtkTextRendererClass))
-#define GTK_IS_TEXT_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TEXT_RENDERER))
-#define GTK_TEXT_RENDERER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TEXT_RENDERER, GtkTextRendererClass))
+#define CTK_TYPE_TEXT_RENDERER            (_ctk_text_renderer_get_type())
+#define CTK_TEXT_RENDERER(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_TEXT_RENDERER, GtkTextRenderer))
+#define CTK_IS_TEXT_RENDERER(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_TEXT_RENDERER))
+#define CTK_TEXT_RENDERER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TEXT_RENDERER, GtkTextRendererClass))
+#define CTK_IS_TEXT_RENDERER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TEXT_RENDERER))
+#define CTK_TEXT_RENDERER_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TEXT_RENDERER, GtkTextRendererClass))
 
 typedef struct _GtkTextRenderer      GtkTextRenderer;
 typedef struct _GtkTextRendererClass GtkTextRendererClass;
@@ -174,7 +174,7 @@ ctk_text_renderer_prepare_run (PangoRenderer  *renderer,
 			       PangoLayoutRun *run)
 {
   GtkStyleContext *context;
-  GtkTextRenderer *text_renderer = GTK_TEXT_RENDERER (renderer);
+  GtkTextRenderer *text_renderer = CTK_TEXT_RENDERER (renderer);
   GdkRGBA *bg_rgba = NULL;
   GdkRGBA *fg_rgba = NULL;
   GtkTextAppearance *appearance;
@@ -217,21 +217,21 @@ ctk_text_renderer_prepare_run (PangoRenderer  *renderer,
 
   text_renderer_set_rgba (text_renderer, PANGO_RENDER_PART_FOREGROUND, fg_rgba);
 
-  if (GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (appearance))
+  if (CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (appearance))
     {
       GdkRGBA rgba;
 
-      GTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (appearance, &rgba);
+      CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (appearance, &rgba);
       text_renderer_set_rgba (text_renderer, PANGO_RENDER_PART_STRIKETHROUGH, &rgba);
     }
   else
     text_renderer_set_rgba (text_renderer, PANGO_RENDER_PART_STRIKETHROUGH, fg_rgba);
 
-  if (GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (appearance))
+  if (CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (appearance))
     {
       GdkRGBA rgba;
 
-      GTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (appearance, &rgba);
+      CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (appearance, &rgba);
       text_renderer_set_rgba (text_renderer, PANGO_RENDER_PART_UNDERLINE, &rgba);
     }
   else if (appearance->underline == PANGO_UNDERLINE_ERROR)
@@ -309,7 +309,7 @@ ctk_text_renderer_draw_glyphs (PangoRenderer     *renderer,
                                int                x,
                                int                y)
 {
-  GtkTextRenderer *text_renderer = GTK_TEXT_RENDERER (renderer);
+  GtkTextRenderer *text_renderer = CTK_TEXT_RENDERER (renderer);
 
   set_color (text_renderer, PANGO_RENDER_PART_FOREGROUND);
 
@@ -326,7 +326,7 @@ ctk_text_renderer_draw_glyph_item (PangoRenderer     *renderer,
                                    int                x,
                                    int                y)
 {
-  GtkTextRenderer *text_renderer = GTK_TEXT_RENDERER (renderer);
+  GtkTextRenderer *text_renderer = CTK_TEXT_RENDERER (renderer);
 
   set_color (text_renderer, PANGO_RENDER_PART_FOREGROUND);
 
@@ -344,7 +344,7 @@ ctk_text_renderer_draw_rectangle (PangoRenderer     *renderer,
 				  int                width,
 				  int                height)
 {
-  GtkTextRenderer *text_renderer = GTK_TEXT_RENDERER (renderer);
+  GtkTextRenderer *text_renderer = CTK_TEXT_RENDERER (renderer);
 
   set_color (text_renderer, part);
 
@@ -366,7 +366,7 @@ ctk_text_renderer_draw_trapezoid (PangoRenderer     *renderer,
 				  double             x12,
 				  double             x22)
 {
-  GtkTextRenderer *text_renderer = GTK_TEXT_RENDERER (renderer);
+  GtkTextRenderer *text_renderer = CTK_TEXT_RENDERER (renderer);
   cairo_t *cr;
   cairo_matrix_t matrix;
 
@@ -397,7 +397,7 @@ ctk_text_renderer_draw_error_underline (PangoRenderer *renderer,
 					int            width,
 					int            height)
 {
-  GtkTextRenderer *text_renderer = GTK_TEXT_RENDERER (renderer);
+  GtkTextRenderer *text_renderer = CTK_TEXT_RENDERER (renderer);
 
   set_color (text_renderer, PANGO_RENDER_PART_UNDERLINE);
 
@@ -414,7 +414,7 @@ ctk_text_renderer_draw_shape (PangoRenderer   *renderer,
 			      int              x,
 			      int              y)
 {
-  GtkTextRenderer *text_renderer = GTK_TEXT_RENDERER (renderer);
+  GtkTextRenderer *text_renderer = CTK_TEXT_RENDERER (renderer);
 
   if (attr->data == NULL)
     {
@@ -465,11 +465,11 @@ ctk_text_renderer_draw_shape (PangoRenderer   *renderer,
 
       cairo_restore (cr);
     }
-  else if (GTK_IS_WIDGET (attr->data))
+  else if (CTK_IS_WIDGET (attr->data))
     {
       GtkWidget *widget;
       
-      widget = GTK_WIDGET (attr->data);
+      widget = CTK_WIDGET (attr->data);
 
       text_renderer->widgets = g_list_prepend (text_renderer->widgets,
 					       g_object_ref (widget));
@@ -745,8 +745,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
               /* Paint in the ends of the line */
               if (line_rect.x > line_display->left_margin * PANGO_SCALE &&
-                  ((line_display->direction == GTK_TEXT_DIR_LTR && selection_start_index < byte_offset) ||
-                   (line_display->direction == GTK_TEXT_DIR_RTL && selection_end_index > byte_offset + line->length)))
+                  ((line_display->direction == CTK_TEXT_DIR_LTR && selection_start_index < byte_offset) ||
+                   (line_display->direction == CTK_TEXT_DIR_RTL && selection_end_index > byte_offset + line->length)))
                 {
                   cairo_save (cr);
 
@@ -763,8 +763,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
               if (line_rect.x + line_rect.width <
                   (screen_width + line_display->left_margin) * PANGO_SCALE &&
-                  ((line_display->direction == GTK_TEXT_DIR_LTR && selection_end_index > byte_offset + line->length) ||
-                   (line_display->direction == GTK_TEXT_DIR_RTL && selection_start_index < byte_offset)))
+                  ((line_display->direction == CTK_TEXT_DIR_LTR && selection_end_index > byte_offset + line->length) ||
+                   (line_display->direction == CTK_TEXT_DIR_RTL && selection_start_index < byte_offset)))
                 {
                   int nonlayout_width;
 
@@ -848,7 +848,7 @@ get_text_renderer (void)
   static GtkTextRenderer *text_renderer = NULL;
 
   if (!text_renderer)
-    text_renderer = g_object_new (GTK_TYPE_TEXT_RENDERER, NULL);
+    text_renderer = g_object_new (CTK_TYPE_TEXT_RENDERER, NULL);
 
   return text_renderer;
 }
@@ -869,7 +869,7 @@ ctk_text_layout_draw (GtkTextLayout *layout,
   GList *tmp_widgets;
   GdkRectangle clip;
 
-  g_return_if_fail (GTK_IS_TEXT_LAYOUT (layout));
+  g_return_if_fail (CTK_IS_TEXT_LAYOUT (layout));
   g_return_if_fail (layout->default_style != NULL);
   g_return_if_fail (layout->buffer != NULL);
   g_return_if_fail (cr != NULL);
@@ -955,7 +955,7 @@ ctk_text_layout_draw (GtkTextLayout *layout,
                   PangoDirection dir;
 
                   index = g_array_index(line_display->cursors, int, i);
-                  dir = (line_display->direction == GTK_TEXT_DIR_RTL) ? PANGO_DIRECTION_RTL : PANGO_DIRECTION_LTR;
+                  dir = (line_display->direction == CTK_TEXT_DIR_RTL) ? PANGO_DIRECTION_RTL : PANGO_DIRECTION_LTR;
                   ctk_render_insertion_cursor (context, cr,
                                                line_display->x_offset, line_display->top_margin,
                                                line_display->layout, index, dir);

@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_QUARTZ_H__
-#define __GTK_QUARTZ_H__
+#ifndef __CTK_QUARTZ_H__
+#define __CTK_QUARTZ_H__
 
 #import <Cocoa/Cocoa.h>
 #include <gtk/gtkselection.h>
@@ -41,4 +41,4 @@ NSImage *_ctk_quartz_create_image_from_surface (cairo_surface_t *surface);
 
 G_END_DECLS
 
-#endif /* __GTK_QUARTZ_H__ */
+#endif /* __CTK_QUARTZ_H__ */

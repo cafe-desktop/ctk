@@ -4515,16 +4515,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "GOBJECT_DEBUG=instance-count 변수로 통계 기능 사용"
 
 #: gtk/inspector/visual.c:432 gtk/inspector/visual.c:447
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "테마가 GTK_THEME으로 하드 코딩되어 있습니다"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "테마가 CTK_THEME으로 하드 코딩되어 있습니다"
 
 #: gtk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "백엔드가 창 크기 조정을 지원하지 않습니다"
 
 #: gtk/inspector/visual.c:752
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "설정이 GTK_TEST_TOUCHSCREEN에서 하드 코딩되어 있습니다"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "설정이 CTK_TEST_TOUCHSCREEN에서 하드 코딩되어 있습니다"
 
 #: gtk/inspector/visual.c:817
 msgid ""

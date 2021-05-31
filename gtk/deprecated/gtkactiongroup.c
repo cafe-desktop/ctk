@@ -172,7 +172,7 @@ static guint         action_group_signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE_WITH_CODE (GtkActionGroup, ctk_action_group, G_TYPE_OBJECT,
                          G_ADD_PRIVATE (GtkActionGroup)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_action_group_buildable_init))
 
 static void
@@ -200,7 +200,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 							P_("Name"),
 							P_("A name for the action group."),
 							NULL,
-							GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+							CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
   /**
    * GtkActionGroup:sensitive:
    *
@@ -214,7 +214,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 							 P_("Sensitive"),
 							 P_("Whether the action group is enabled."),
 							 TRUE,
-							 GTK_PARAM_READWRITE));
+							 CTK_PARAM_READWRITE));
   /**
    * GtkActionGroup:visible:
    *
@@ -228,7 +228,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 							 P_("Visible"),
 							 P_("Whether the action group is visible."),
 							 TRUE,
-							 GTK_PARAM_READWRITE));
+							 CTK_PARAM_READWRITE));
   /**
    * GtkActionGroup:accel-group:
    *
@@ -241,8 +241,8 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 				   g_param_spec_object ("accel-group",
 							P_("Accelerator Group"),
 							P_("The accelerator group the actions of this group should use."),
-							GTK_TYPE_ACCEL_GROUP,
-							GTK_PARAM_READWRITE));
+							CTK_TYPE_ACCEL_GROUP,
+							CTK_PARAM_READWRITE));
 
   /**
    * GtkActionGroup::connect-proxy:
@@ -272,7 +272,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 		  0, 0, NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_OBJECT,
 		  G_TYPE_NONE, 2,
-		  GTK_TYPE_ACTION, GTK_TYPE_WIDGET);
+		  CTK_TYPE_ACTION, CTK_TYPE_WIDGET);
 
   /**
    * GtkActionGroup::disconnect-proxy:
@@ -297,7 +297,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 		  0, 0, NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_OBJECT,
 		  G_TYPE_NONE, 2, 
-		  GTK_TYPE_ACTION, GTK_TYPE_WIDGET);
+		  CTK_TYPE_ACTION, CTK_TYPE_WIDGET);
 
   /**
    * GtkActionGroup::pre-activate:
@@ -320,7 +320,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 		  0, 0, NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, 
-		  GTK_TYPE_ACTION);
+		  CTK_TYPE_ACTION);
 
   /**
    * GtkActionGroup::post-activate:
@@ -343,7 +343,7 @@ ctk_action_group_class_init (GtkActionGroupClass *klass)
 		  0, 0, NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1, 
-		  GTK_TYPE_ACTION);
+		  CTK_TYPE_ACTION);
 }
 
 
@@ -385,15 +385,15 @@ ctk_action_group_buildable_add_child (GtkBuildable  *buildable,
 				      GObject       *child,
 				      const gchar   *type)
 {
-  ctk_action_group_add_action_with_accel (GTK_ACTION_GROUP (buildable),
-					  GTK_ACTION (child), NULL);
+  ctk_action_group_add_action_with_accel (CTK_ACTION_GROUP (buildable),
+					  CTK_ACTION (child), NULL);
 }
 
 static void
 ctk_action_group_buildable_set_name (GtkBuildable *buildable,
 				     const gchar  *name)
 {
-  GtkActionGroup *self = GTK_ACTION_GROUP (buildable);
+  GtkActionGroup *self = CTK_ACTION_GROUP (buildable);
   GtkActionGroupPrivate *private = self->priv;
 
   private->name = g_strdup (name);
@@ -402,7 +402,7 @@ ctk_action_group_buildable_set_name (GtkBuildable *buildable,
 static const gchar *
 ctk_action_group_buildable_get_name (GtkBuildable *buildable)
 {
-  GtkActionGroup *self = GTK_ACTION_GROUP (buildable);
+  GtkActionGroup *self = CTK_ACTION_GROUP (buildable);
   GtkActionGroupPrivate *private = self->priv;
 
   return private->name;
@@ -498,9 +498,9 @@ ctk_action_group_buildable_custom_tag_end (GtkBuildable *buildable,
       gchar *accel_path;
       
       data = (AcceleratorParserData*)user_data;
-      action_group = GTK_ACTION_GROUP (buildable);
+      action_group = CTK_ACTION_GROUP (buildable);
       private = action_group->priv;
-      action = GTK_ACTION (child);
+      action = CTK_ACTION (child);
 	
       accel_path = g_strconcat ("<Actions>/",
 				private->name, "/",
@@ -538,7 +538,7 @@ ctk_action_group_new (const gchar *name)
   GtkActionGroup *self;
   GtkActionGroupPrivate *private;
 
-  self = g_object_new (GTK_TYPE_ACTION_GROUP, NULL);
+  self = g_object_new (CTK_TYPE_ACTION_GROUP, NULL);
   private = self->priv;
   private->name = g_strdup (name);
 
@@ -548,7 +548,7 @@ ctk_action_group_new (const gchar *name)
 static void
 ctk_action_group_finalize (GObject *object)
 {
-  GtkActionGroup *self = GTK_ACTION_GROUP (object);
+  GtkActionGroup *self = CTK_ACTION_GROUP (object);
 
   g_free (self->priv->name);
 
@@ -572,7 +572,7 @@ ctk_action_group_set_property (GObject         *object,
   GtkActionGroupPrivate *private;
   gchar *tmp;
   
-  self = GTK_ACTION_GROUP (object);
+  self = CTK_ACTION_GROUP (object);
   private = self->priv;
 
   switch (prop_id)
@@ -606,7 +606,7 @@ ctk_action_group_get_property (GObject    *object,
   GtkActionGroup *self;
   GtkActionGroupPrivate *private;
   
-  self = GTK_ACTION_GROUP (object);
+  self = CTK_ACTION_GROUP (object);
   private = self->priv;
 
   switch (prop_id)
@@ -657,7 +657,7 @@ ctk_action_group_get_name (GtkActionGroup *action_group)
 {
   GtkActionGroupPrivate *private;
 
-  g_return_val_if_fail (GTK_IS_ACTION_GROUP (action_group), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), NULL);
 
   private = action_group->priv;
 
@@ -684,7 +684,7 @@ ctk_action_group_get_sensitive (GtkActionGroup *action_group)
 {
   GtkActionGroupPrivate *private;
 
-  g_return_val_if_fail (GTK_IS_ACTION_GROUP (action_group), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), FALSE);
 
   private = action_group->priv;
 
@@ -718,7 +718,7 @@ ctk_action_group_set_sensitive (GtkActionGroup *action_group,
 {
   GtkActionGroupPrivate *private;
 
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
   private = action_group->priv;
   sensitive = sensitive != FALSE;
@@ -753,7 +753,7 @@ ctk_action_group_get_visible (GtkActionGroup *action_group)
 {
   GtkActionGroupPrivate *private;
 
-  g_return_val_if_fail (GTK_IS_ACTION_GROUP (action_group), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), FALSE);
 
   private = action_group->priv;
 
@@ -776,7 +776,7 @@ ctk_action_group_get_visible (GtkActionGroup *action_group)
 GtkAccelGroup *
 ctk_action_group_get_accel_group (GtkActionGroup *action_group)
 {
-  g_return_val_if_fail (GTK_IS_ACTION_GROUP (action_group), FALSE);
+  g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), FALSE);
 
   return action_group->priv->accel_group;
 }
@@ -807,7 +807,7 @@ ctk_action_group_set_visible (GtkActionGroup *action_group,
 {
   GtkActionGroupPrivate *private;
 
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
   private = action_group->priv;
   visible = visible != FALSE;
@@ -845,7 +845,7 @@ ctk_action_group_set_accel_group (GtkActionGroup *action_group,
 {
   GtkActionGroupPrivate *private;
 
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
   private = action_group->priv;
 
@@ -882,10 +882,10 @@ GtkAction *
 ctk_action_group_get_action (GtkActionGroup *action_group,
 			     const gchar    *action_name)
 {
-  g_return_val_if_fail (GTK_IS_ACTION_GROUP (action_group), NULL);
-  g_return_val_if_fail (GTK_ACTION_GROUP_GET_CLASS (action_group)->get_action != NULL, NULL);
+  g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), NULL);
+  g_return_val_if_fail (CTK_ACTION_GROUP_GET_CLASS (action_group)->get_action != NULL, NULL);
 
-  return GTK_ACTION_GROUP_GET_CLASS (action_group)->get_action (action_group,
+  return CTK_ACTION_GROUP_GET_CLASS (action_group)->get_action (action_group,
                                                                 action_name);
 }
 
@@ -931,8 +931,8 @@ ctk_action_group_add_action (GtkActionGroup *action_group,
   GtkActionGroupPrivate *private;
   const gchar *name;
 
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   name = ctk_action_get_name (action);
   g_return_if_fail (name != NULL);
@@ -1048,8 +1048,8 @@ ctk_action_group_remove_action (GtkActionGroup *action_group,
   GtkActionGroupPrivate *private;
   const gchar *name;
 
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
-  g_return_if_fail (GTK_IS_ACTION (action));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_ACTION (action));
 
   name = ctk_action_get_name (action);
   g_return_if_fail (name != NULL);
@@ -1087,7 +1087,7 @@ ctk_action_group_list_actions (GtkActionGroup *action_group)
   GtkActionGroupPrivate *private;
   GList *actions = NULL;
 
-  g_return_val_if_fail (GTK_IS_ACTION_GROUP (action_group), NULL);
+  g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), NULL);
 
   private = action_group->priv;
   
@@ -1178,7 +1178,7 @@ ctk_action_group_add_actions_full (GtkActionGroup       *action_group,
   guint i;
   SharedData *shared_data;
 
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
   shared_data = g_slice_new0 (SharedData);
   shared_data->ref_count = 1;
@@ -1288,7 +1288,7 @@ ctk_action_group_add_toggle_actions_full (GtkActionGroup             *action_gro
   guint i;
   SharedData *shared_data;
 
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
   shared_data = g_slice_new0 (SharedData);
   shared_data->ref_count = 1;
@@ -1339,7 +1339,7 @@ ctk_action_group_add_toggle_actions_full (GtkActionGroup             *action_gro
 	}
 	  
       ctk_action_group_add_action_with_accel (action_group, 
-					      GTK_ACTION (action),
+					      CTK_ACTION (action),
 					      entries[i].accelerator);
       g_object_unref (action);
     }
@@ -1416,7 +1416,7 @@ ctk_action_group_add_radio_actions_full (GtkActionGroup            *action_group
   GSList *group = NULL;
   GtkRadioAction *first_action = NULL;
 
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
   for (i = 0; i < n_entries; i++)
     {
@@ -1455,10 +1455,10 @@ ctk_action_group_add_radio_actions_full (GtkActionGroup            *action_group
       group = ctk_radio_action_get_group (action);
 
       if (value == entries[i].value)
-	ctk_toggle_action_set_active (GTK_TOGGLE_ACTION (action), TRUE);
+	ctk_toggle_action_set_active (CTK_TOGGLE_ACTION (action), TRUE);
 
       ctk_action_group_add_action_with_accel (action_group, 
-					      GTK_ACTION (action),
+					      CTK_ACTION (action),
 					      entries[i].accelerator);
       g_object_unref (action);
     }
@@ -1495,7 +1495,7 @@ ctk_action_group_set_translate_func (GtkActionGroup   *action_group,
 {
   GtkActionGroupPrivate *private;
 
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
   
   private = action_group->priv;
 
@@ -1539,7 +1539,7 @@ void
 ctk_action_group_set_translation_domain (GtkActionGroup *action_group,
 					 const gchar    *domain)
 {
-  g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
+  g_return_if_fail (CTK_IS_ACTION_GROUP (action_group));
 
   ctk_action_group_set_translate_func (action_group, 
 				       (GtkTranslateFunc)dgettext_swapped,
@@ -1571,7 +1571,7 @@ ctk_action_group_translate_string (GtkActionGroup *action_group,
   GtkTranslateFunc translate_func;
   gpointer translate_data;
   
-  g_return_val_if_fail (GTK_IS_ACTION_GROUP (action_group), string);
+  g_return_val_if_fail (CTK_IS_ACTION_GROUP (action_group), string);
   
   if (string == NULL)
     return NULL;

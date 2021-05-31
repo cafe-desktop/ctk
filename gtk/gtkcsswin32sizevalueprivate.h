@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_WIN32_SIZE_VALUE_PRIVATE_H__
-#define __GTK_CSS_WIN32_SIZE_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_WIN32_SIZE_VALUE_PRIVATE_H__
+#define __CTK_CSS_WIN32_SIZE_VALUE_PRIVATE_H__
 
 #include "gtkcssnumbervalueprivate.h"
 
@@ -29,4 +29,4 @@ GtkCssValue *   ctk_css_win32_size_value_parse      (GtkCssParser           *par
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_WIN32_SIZE_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_WIN32_SIZE_VALUE_PRIVATE_H__ */

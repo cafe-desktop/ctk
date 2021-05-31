@@ -24,7 +24,7 @@
 #include "gtkcssstylepropertyprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
 };
 
 static void
@@ -81,7 +81,7 @@ ctk_css_value_unset_print (const GtkCssValue *value,
   g_string_append (string, "unset");
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_UNSET = {
+static const GtkCssValueClass CTK_CSS_VALUE_UNSET = {
   ctk_css_value_unset_free,
   ctk_css_value_unset_compute,
   ctk_css_value_unset_equal,
@@ -89,7 +89,7 @@ static const GtkCssValueClass GTK_CSS_VALUE_UNSET = {
   ctk_css_value_unset_print
 };
 
-static GtkCssValue unset = { &GTK_CSS_VALUE_UNSET, 1 };
+static GtkCssValue unset = { &CTK_CSS_VALUE_UNSET, 1 };
 
 GtkCssValue *
 _ctk_css_unset_value_new (void)

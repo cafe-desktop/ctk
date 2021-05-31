@@ -19,8 +19,8 @@ place_popup (GtkWidget *parent,
   GdkEventMotion *ev_motion = (GdkEventMotion *) event;
   gint width, height;
 
-  ctk_window_get_size (GTK_WINDOW (popup), &width, &height);
-  ctk_window_move (GTK_WINDOW (popup),
+  ctk_window_get_size (CTK_WINDOW (popup), &width, &height);
+  ctk_window_move (CTK_WINDOW (popup),
                    (int) ev_motion->x_root - width / 2,
                    (int) ev_motion->y_root - height / 2);
 
@@ -34,11 +34,11 @@ on_map_event (GtkWidget *parent,
 {
   GtkWidget *popup;
 
-  popup = ctk_window_new (GTK_WINDOW_POPUP);
+  popup = ctk_window_new (CTK_WINDOW_POPUP);
 
-  ctk_widget_set_size_request (GTK_WIDGET (popup), 20, 20);
-  ctk_widget_set_app_paintable (GTK_WIDGET (popup), TRUE);
-  ctk_window_set_transient_for (GTK_WINDOW (popup), GTK_WINDOW (parent));
+  ctk_widget_set_size_request (CTK_WIDGET (popup), 20, 20);
+  ctk_widget_set_app_paintable (CTK_WIDGET (popup), TRUE);
+  ctk_window_set_transient_for (CTK_WINDOW (popup), CTK_WINDOW (parent));
   g_signal_connect (popup, "draw", G_CALLBACK (draw_popup), NULL);
   g_signal_connect (parent, "motion-notify-event", G_CALLBACK (place_popup), popup);
 
@@ -54,7 +54,7 @@ main (int argc, char *argv[])
 
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   ctk_widget_set_events (window, GDK_POINTER_MOTION_MASK);
   g_signal_connect (window, "destroy", ctk_main_quit, NULL);

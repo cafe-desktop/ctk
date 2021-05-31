@@ -1,10 +1,10 @@
 /*** BEGIN file-header ***/
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
-#ifndef __GTK_PRIVATE_TYPE_BUILTINS_H__
-#define __GTK_PRIVATE_TYPE_BUILTINS_H__
+#ifndef __CTK_PRIVATE_TYPE_BUILTINS_H__
+#define __CTK_PRIVATE_TYPE_BUILTINS_H__
 
 #include <glib-object.h>
 #include <gdk/gdk.h>
@@ -25,5 +25,5 @@ GType _@enum_name@_get_type (void) G_GNUC_CONST;
 /*** BEGIN file-tail ***/
 G_END_DECLS
 
-#endif /* __GTK_PRIVATE_TYPE_BUILTINS_H__ */
+#endif /* __CTK_PRIVATE_TYPE_BUILTINS_H__ */
 /*** END file-tail ***/

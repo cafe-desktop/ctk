@@ -403,10 +403,10 @@ msgstr "Është i rendësishëm"
 #: gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Kur ky veprim duhet konsideruar i rendësishëm. Nëse TRUE, proxies e toolitem "
-"për këtë veprim e shfaqin tekstin në modalitetin GTK_TOOLBAR_BOTH_HORIZ."
+"për këtë veprim e shfaqin tekstin në modalitetin CTK_TOOLBAR_BOTH_HORIZ."
 
 #: gtk/gtkaction.c:374
 msgid "Hide if empty"
@@ -953,7 +953,7 @@ msgstr "Hapësira e prezgjedhur"
 
 #: gtk/gtkbutton.c:461
 #, fuzzy
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "Hapësirë ekstra e shtueshme për butonat CAN_DEFAULT"
 
 #: gtk/gtkbutton.c:475
@@ -963,7 +963,7 @@ msgstr "Hapësira e jashtme e prezgjedhur"
 #: gtk/gtkbutton.c:476
 #, fuzzy
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
 "Hapësirë ekstra e shtueshme për butonat CAN_DEFAULT e vizatuar përherë "
@@ -6445,11 +6445,11 @@ msgstr "Hapësira në pixel midis ikonës dhe etiketës"
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Tregon nëse elementi i pllakës së instrumentëve konsiderohet i rendësishëm. "
 "Nëse TRUE, pulsantët e pllakës së istrumentëve shfaqin tekstin në "
-"modalitetin GTK_TOOLBAR_BOTH_HORIZ"
+"modalitetin CTK_TOOLBAR_BOTH_HORIZ"
 
 #: gtk/gtktoolitemgroup.c:1572
 #, fuzzy

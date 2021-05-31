@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_BUILDER_PRIVATE_H__
-#define __GTK_BUILDER_PRIVATE_H__
+#ifndef __CTK_BUILDER_PRIVATE_H__
+#define __CTK_BUILDER_PRIVATE_H__
 
 #include "gtkbuilder.h"
 
@@ -205,4 +205,4 @@ gboolean _ctk_builder_lookup_failed       (GtkBuilder           *builder,
                                            GError              **error);
 
 
-#endif /* __GTK_BUILDER_PRIVATE_H__ */
+#endif /* __CTK_BUILDER_PRIVATE_H__ */

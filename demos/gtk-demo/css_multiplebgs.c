@@ -25,7 +25,7 @@ show_parsing_error (GtkCssProvider *provider,
                                           ctk_css_section_get_end_line (section),
                                           ctk_css_section_get_end_position (section));
 
-  if (g_error_matches (error, GTK_CSS_PROVIDER_ERROR, GTK_CSS_PROVIDER_ERROR_DEPRECATED))
+  if (g_error_matches (error, CTK_CSS_PROVIDER_ERROR, CTK_CSS_PROVIDER_ERROR_DEPRECATED))
     tag_name = "warning";
   else
     tag_name = "error";
@@ -73,8 +73,8 @@ static void
 apply_css (GtkWidget *widget, GtkStyleProvider *provider)
 {
   ctk_style_context_add_provider (ctk_widget_get_style_context (widget), provider, G_MAXUINT);
-  if (GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget), (GtkCallback) apply_css, provider);
+  if (CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget), (GtkCallback) apply_css, provider);
 }
 
 GtkWidget *
@@ -89,10 +89,10 @@ do_css_multiplebgs (GtkWidget *do_widget)
       GtkTextBuffer *text;
       GBytes *bytes;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_title (GTK_WINDOW (window), "Multiple Backgrounds");
-      ctk_window_set_transient_for (GTK_WINDOW (window), GTK_WINDOW (do_widget));
-      ctk_window_set_default_size (GTK_WINDOW (window), 400, 300);
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_title (CTK_WINDOW (window), "Multiple Backgrounds");
+      ctk_window_set_transient_for (CTK_WINDOW (window), CTK_WINDOW (do_widget));
+      ctk_window_set_default_size (CTK_WINDOW (window), 400, 300);
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
@@ -101,31 +101,31 @@ do_css_multiplebgs (GtkWidget *do_widget)
                              GDK_ENTER_NOTIFY_MASK |
                              GDK_LEAVE_NOTIFY_MASK |
                              GDK_POINTER_MOTION_MASK);
-      ctk_container_add (GTK_CONTAINER (window), container);
+      ctk_container_add (CTK_CONTAINER (window), container);
 
       child = ctk_drawing_area_new ();
       ctk_widget_set_name (child, "canvas");
       g_signal_connect (child, "draw",
                         G_CALLBACK (drawing_area_draw), NULL);
-      ctk_container_add (GTK_CONTAINER (container), child);
+      ctk_container_add (CTK_CONTAINER (container), child);
 
       child = ctk_button_new ();
       ctk_widget_add_events (child,
                              GDK_ENTER_NOTIFY_MASK |
                              GDK_LEAVE_NOTIFY_MASK |
                              GDK_POINTER_MOTION_MASK);
-      ctk_overlay_add_overlay (GTK_OVERLAY (container), child);
+      ctk_overlay_add_overlay (CTK_OVERLAY (container), child);
       ctk_widget_set_name (child, "bricks-button");
-      ctk_widget_set_halign (child, GTK_ALIGN_CENTER);
-      ctk_widget_set_valign (child, GTK_ALIGN_CENTER);
+      ctk_widget_set_halign (child, CTK_ALIGN_CENTER);
+      ctk_widget_set_valign (child, CTK_ALIGN_CENTER);
       ctk_widget_set_size_request (child, 250, 84);
 
-      paned = ctk_paned_new (GTK_ORIENTATION_VERTICAL);
-      ctk_overlay_add_overlay (GTK_OVERLAY (container), paned);
+      paned = ctk_paned_new (CTK_ORIENTATION_VERTICAL);
+      ctk_overlay_add_overlay (CTK_OVERLAY (container), paned);
 
       /* Need a filler so we get a handle */
-      child = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-      ctk_container_add (GTK_CONTAINER (paned), child);
+      child = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+      ctk_container_add (CTK_CONTAINER (paned), child);
 
       text = ctk_text_buffer_new (NULL);
       ctk_text_buffer_create_tag (text,
@@ -137,12 +137,12 @@ do_css_multiplebgs (GtkWidget *do_widget)
                                   "underline", PANGO_UNDERLINE_ERROR,
                                   NULL);
 
-      provider = GTK_STYLE_PROVIDER (ctk_css_provider_new ());
+      provider = CTK_STYLE_PROVIDER (ctk_css_provider_new ());
 
       container = ctk_scrolled_window_new (NULL, NULL);
-      ctk_container_add (GTK_CONTAINER (paned), container);
+      ctk_container_add (CTK_CONTAINER (paned), container);
       child = ctk_text_view_new_with_buffer (text);
-      ctk_container_add (GTK_CONTAINER (container), child);
+      ctk_container_add (CTK_CONTAINER (container), child);
       g_signal_connect (text,
                         "changed",
                         G_CALLBACK (css_text_changed),
@@ -155,7 +155,7 @@ do_css_multiplebgs (GtkWidget *do_widget)
       g_signal_connect (provider,
                         "parsing-error",
                         G_CALLBACK (show_parsing_error),
-                        ctk_text_view_get_buffer (GTK_TEXT_VIEW (child)));
+                        ctk_text_view_get_buffer (CTK_TEXT_VIEW (child)));
 
       apply_css (window, provider);
     }

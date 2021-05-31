@@ -35,7 +35,7 @@ test_toolkit_version (void)
   const gchar *s;
 
   s = atk_get_toolkit_version ();
-  g_assert_cmpstr (s, ==, GTK_VERSION);
+  g_assert_cmpstr (s, ==, CTK_VERSION);
 }
 
 static void

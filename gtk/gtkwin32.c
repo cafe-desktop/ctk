@@ -152,7 +152,7 @@ _ctk_get_libdir (void)
       gchar *slash = strrchr (root, '\\');
       if (slash != NULL &&
           g_ascii_strcasecmp (slash + 1, ".libs") == 0)
-        ctk_libdir = GTK_LIBDIR;
+        ctk_libdir = CTK_LIBDIR;
       else
         ctk_libdir = g_build_filename (root, "lib", NULL);
       g_free (root);
@@ -170,10 +170,10 @@ _ctk_get_localedir (void)
       const gchar *p;
       gchar *root, *temp;
 
-      /* GTK_LOCALEDIR ends in either /lib/locale or
+      /* CTK_LOCALEDIR ends in either /lib/locale or
        * /share/locale. Scan for that slash.
        */
-      p = GTK_LOCALEDIR + strlen (GTK_LOCALEDIR);
+      p = CTK_LOCALEDIR + strlen (CTK_LOCALEDIR);
       while (*--p != '/')
         ;
       while (*--p != '/')

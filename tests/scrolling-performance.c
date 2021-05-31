@@ -17,7 +17,7 @@ typedef struct
 
 typedef GtkTextViewClass MyTextViewClass;
 
-G_DEFINE_TYPE (MyTextView, my_text_view, GTK_TYPE_TEXT_VIEW)
+G_DEFINE_TYPE (MyTextView, my_text_view, CTK_TYPE_TEXT_VIEW)
 
 static void
 my_text_view_init (MyTextView *tv) {}
@@ -42,9 +42,9 @@ create_widget_factory_content (void)
   if (error != NULL)
     g_error ("Failed to create widgets: %s", error->message);
 
-  result = GTK_WIDGET (ctk_builder_get_object (builder, "box1"));
+  result = CTK_WIDGET (ctk_builder_get_object (builder, "box1"));
   g_object_ref (result);
-  ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (result)),
+  ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (result)),
                         result);
   g_object_unref (builder);
 
@@ -79,8 +79,8 @@ scroll_viewport (GtkWidget     *viewport,
 
   elapsed = (now - start_time) / 1000000.;
 
-  hadjustment = ctk_scrollable_get_hadjustment (GTK_SCROLLABLE (viewport));
-  vadjustment = ctk_scrollable_get_vadjustment (GTK_SCROLLABLE (viewport));
+  hadjustment = ctk_scrollable_get_hadjustment (CTK_SCROLLABLE (viewport));
+  vadjustment = ctk_scrollable_get_vadjustment (CTK_SCROLLABLE (viewport));
 
   set_adjustment_to_fraction (hadjustment, 0.5 + 0.5 * sin (elapsed));
   set_adjustment_to_fraction (vadjustment, 0.5 + 0.5 * cos (elapsed));
@@ -114,23 +114,23 @@ main (int argc, char **argv)
       return 1;
     }
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  frame_stats_ensure (GTK_WINDOW (window));
-  ctk_window_set_default_size (GTK_WINDOW (window), 800, 600);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  frame_stats_ensure (CTK_WINDOW (window));
+  ctk_window_set_default_size (CTK_WINDOW (window), 800, 600);
 
   scrolled_window = ctk_scrolled_window_new (NULL, NULL);
-  ctk_container_add (GTK_CONTAINER (window), scrolled_window);
+  ctk_container_add (CTK_CONTAINER (window), scrolled_window);
 
   viewport = ctk_viewport_new (NULL, NULL);
-  ctk_container_add (GTK_CONTAINER (scrolled_window), viewport);
+  ctk_container_add (CTK_CONTAINER (scrolled_window), viewport);
 
   grid = ctk_grid_new ();
-  ctk_container_add (GTK_CONTAINER (viewport), grid);
+  ctk_container_add (CTK_CONTAINER (viewport), grid);
 
   for (i = 0; i < 4; i++)
     {
       GtkWidget *content = create_widget_factory_content ();
-      ctk_grid_attach (GTK_GRID (grid), content,
+      ctk_grid_attach (CTK_GRID (grid), content,
                        i % 2, i / 2, 1, 1);
       g_object_unref (content);
     }

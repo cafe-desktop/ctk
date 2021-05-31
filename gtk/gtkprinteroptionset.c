@@ -43,7 +43,7 @@ G_DEFINE_TYPE (GtkPrinterOptionSet, ctk_printer_option_set, G_TYPE_OBJECT)
 static void
 ctk_printer_option_set_finalize (GObject *object)
 {
-  GtkPrinterOptionSet *set = GTK_PRINTER_OPTION_SET (object);
+  GtkPrinterOptionSet *set = CTK_PRINTER_OPTION_SET (object);
 
   g_hash_table_destroy (set->hash);
   g_ptr_array_foreach (set->array, (GFunc)g_object_unref, NULL);
@@ -86,7 +86,7 @@ emit_changed (GtkPrinterOptionSet *set)
 GtkPrinterOptionSet *
 ctk_printer_option_set_new (void)
 {
-  return g_object_new (GTK_TYPE_PRINTER_OPTION_SET, NULL);
+  return g_object_new (CTK_TYPE_PRINTER_OPTION_SET, NULL);
 }
 
 void
@@ -131,7 +131,7 @@ ctk_printer_option_set_lookup (GtkPrinterOptionSet *set,
 
   ptr = g_hash_table_lookup (set->hash, name);
 
-  return GTK_PRINTER_OPTION (ptr);
+  return CTK_PRINTER_OPTION (ptr);
 }
 
 void

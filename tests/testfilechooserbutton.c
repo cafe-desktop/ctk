@@ -121,46 +121,46 @@ tests_button_clicked_cb (GtkButton *real_button,
     {
       GtkWidget *box, *button;
 
-      tests = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_title (GTK_WINDOW (tests),
+      tests = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_title (CTK_WINDOW (tests),
 			    "Tests - TestFileChooserButton");
-      ctk_container_set_border_width (GTK_CONTAINER (tests), 12);
-      ctk_window_set_transient_for (GTK_WINDOW (tests),
-				    GTK_WINDOW (ctk_widget_get_toplevel (user_data)));
+      ctk_container_set_border_width (CTK_CONTAINER (tests), 12);
+      ctk_window_set_transient_for (CTK_WINDOW (tests),
+				    CTK_WINDOW (ctk_widget_get_toplevel (user_data)));
 
-      box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-      ctk_container_add (GTK_CONTAINER (tests), box);
+      box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+      ctk_container_add (CTK_CONTAINER (tests), box);
       ctk_widget_show (box);
 
       button = ctk_button_new_with_label ("Print Selected Path");
       g_signal_connect (button, "clicked",
 			G_CALLBACK (print_selected_path_clicked_cb), user_data);
-      ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
       ctk_widget_show (button);
 
       button = ctk_button_new_with_label ("Add $PWD's Parent as Shortcut");
       g_signal_connect (button, "clicked",
 			G_CALLBACK (add_pwds_parent_as_shortcut_clicked_cb), user_data);
-      ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
       ctk_widget_show (button);
 
       button = ctk_button_new_with_label ("Remove $PWD's Parent as Shortcut");
       g_signal_connect (button, "clicked",
 			G_CALLBACK (del_pwds_parent_as_shortcut_clicked_cb), user_data);
-      ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
       ctk_widget_show (button);
 
       button = ctk_button_new_with_label ("Unselect all");
       g_signal_connect (button, "clicked",
 			G_CALLBACK (unselect_all_clicked_cb), user_data);
-      ctk_box_pack_start (GTK_BOX (box), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (box), button, FALSE, FALSE, 0);
       ctk_widget_show (button);
 
       g_signal_connect (tests, "delete-event", G_CALLBACK (delete_event_cb), NULL);
       g_object_set_data (user_data, "tests-dialog", tests);
     }
 
-  ctk_window_present (GTK_WINDOW (tests));
+  ctk_window_present (CTK_WINDOW (tests));
 }
 
 static void
@@ -239,93 +239,93 @@ main (int   argc,
 
   /* to test rtl layout, use "--right-to-left" */
   if (rtl)
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
   cwd = g_get_current_dir();
   ctk_src_dir = g_path_get_dirname (cwd);
   g_free (cwd);
 
   win = ctk_dialog_new_with_buttons ("TestFileChooserButton", NULL, 0,
-				     "_Quit", GTK_RESPONSE_CLOSE, NULL);
+				     "_Quit", CTK_RESPONSE_CLOSE, NULL);
   g_signal_connect (win, "response", G_CALLBACK (ctk_main_quit), NULL);
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 18);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 18);
   g_object_set (vbox, "margin", 6, NULL);
-  ctk_container_add (GTK_CONTAINER (ctk_dialog_get_content_area (GTK_DIALOG (win))), vbox);
+  ctk_container_add (CTK_CONTAINER (ctk_dialog_get_content_area (CTK_DIALOG (win))), vbox);
 
   frame = ctk_frame_new ("<b>GtkFileChooserButton</b>");
-  ctk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_NONE);
-  ctk_label_set_use_markup (GTK_LABEL (ctk_frame_get_label_widget (GTK_FRAME (frame))), TRUE);
-  ctk_box_pack_start (GTK_BOX (vbox), frame, FALSE, FALSE, 0);
+  ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_NONE);
+  ctk_label_set_use_markup (CTK_LABEL (ctk_frame_get_label_widget (CTK_FRAME (frame))), TRUE);
+  ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-  ctk_widget_set_halign (frame, GTK_ALIGN_FILL);
-  ctk_widget_set_valign (frame, GTK_ALIGN_FILL);
+  ctk_widget_set_halign (frame, CTK_ALIGN_FILL);
+  ctk_widget_set_valign (frame, CTK_ALIGN_FILL);
   g_object_set (frame, "margin-top", 6, "margin-start", 12, NULL);
   
-  label_group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+  label_group = ctk_size_group_new (CTK_SIZE_GROUP_HORIZONTAL);
   
-  group_box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-  ctk_container_add (GTK_CONTAINER (frame), group_box);
+  group_box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+  ctk_container_add (CTK_CONTAINER (frame), group_box);
 
   /* OPEN */
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-  ctk_box_pack_start (GTK_BOX (group_box), hbox, FALSE, FALSE, 0);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
+  ctk_box_pack_start (CTK_BOX (group_box), hbox, FALSE, FALSE, 0);
 
   label = ctk_label_new_with_mnemonic ("_Open:");
-  ctk_size_group_add_widget (GTK_SIZE_GROUP (label_group), label);
+  ctk_size_group_add_widget (CTK_SIZE_GROUP (label_group), label);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  ctk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  ctk_misc_set_alignment (CTK_MISC (label), 0.0, 0.5);
 G_GNUC_END_IGNORE_DEPRECATIONS
-  ctk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), label, FALSE, FALSE, 0);
 
   chooser = ctk_file_chooser_button_new ("Select A File - testfilechooserbutton",
-                                         GTK_FILE_CHOOSER_ACTION_OPEN);
-  ctk_file_chooser_add_shortcut_folder (GTK_FILE_CHOOSER (chooser), ctk_src_dir, NULL);
-  ctk_file_chooser_remove_shortcut_folder (GTK_FILE_CHOOSER (chooser), ctk_src_dir, NULL);
-  ctk_label_set_mnemonic_widget (GTK_LABEL (label), chooser);
+                                         CTK_FILE_CHOOSER_ACTION_OPEN);
+  ctk_file_chooser_add_shortcut_folder (CTK_FILE_CHOOSER (chooser), ctk_src_dir, NULL);
+  ctk_file_chooser_remove_shortcut_folder (CTK_FILE_CHOOSER (chooser), ctk_src_dir, NULL);
+  ctk_label_set_mnemonic_widget (CTK_LABEL (label), chooser);
   g_signal_connect (chooser, "current-folder-changed",
 		    G_CALLBACK (chooser_current_folder_changed_cb), NULL);
   g_signal_connect (chooser, "selection-changed", G_CALLBACK (chooser_selection_changed_cb), NULL);
   g_signal_connect (chooser, "file-activated", G_CALLBACK (chooser_file_activated_cb), NULL);
   g_signal_connect (chooser, "update-preview", G_CALLBACK (chooser_update_preview_cb), NULL);
-  ctk_box_pack_start (GTK_BOX (hbox), chooser, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), chooser, TRUE, TRUE, 0);
 
   button = ctk_button_new_with_label ("Tests");
   g_signal_connect (button, "clicked", G_CALLBACK (tests_button_clicked_cb), chooser);
-  ctk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), button, FALSE, FALSE, 0);
 
   /* SELECT_FOLDER */
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 12);
-  ctk_box_pack_start (GTK_BOX (group_box), hbox, FALSE, FALSE, 0);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
+  ctk_box_pack_start (CTK_BOX (group_box), hbox, FALSE, FALSE, 0);
 
   label = ctk_label_new_with_mnemonic ("Select _Folder:");
-  ctk_size_group_add_widget (GTK_SIZE_GROUP (label_group), label);
+  ctk_size_group_add_widget (CTK_SIZE_GROUP (label_group), label);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  ctk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
+  ctk_misc_set_alignment (CTK_MISC (label), 0.0, 0.5);
 G_GNUC_END_IGNORE_DEPRECATIONS
-  ctk_box_pack_start (GTK_BOX (hbox), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), label, FALSE, FALSE, 0);
 
   chooser = ctk_file_chooser_button_new ("Select A Folder - testfilechooserbutton",
-                                         GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
-  ctk_file_chooser_add_shortcut_folder (GTK_FILE_CHOOSER (chooser), ctk_src_dir, NULL);
-  ctk_file_chooser_remove_shortcut_folder (GTK_FILE_CHOOSER (chooser), ctk_src_dir, NULL);
-  ctk_file_chooser_add_shortcut_folder (GTK_FILE_CHOOSER (chooser), ctk_src_dir, NULL);
-  ctk_label_set_mnemonic_widget (GTK_LABEL (label), chooser);
+                                         CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
+  ctk_file_chooser_add_shortcut_folder (CTK_FILE_CHOOSER (chooser), ctk_src_dir, NULL);
+  ctk_file_chooser_remove_shortcut_folder (CTK_FILE_CHOOSER (chooser), ctk_src_dir, NULL);
+  ctk_file_chooser_add_shortcut_folder (CTK_FILE_CHOOSER (chooser), ctk_src_dir, NULL);
+  ctk_label_set_mnemonic_widget (CTK_LABEL (label), chooser);
   g_signal_connect (chooser, "current-folder-changed",
 		    G_CALLBACK (chooser_current_folder_changed_cb), NULL);
   g_signal_connect (chooser, "selection-changed", G_CALLBACK (chooser_selection_changed_cb), NULL);
   g_signal_connect (chooser, "file-activated", G_CALLBACK (chooser_file_activated_cb), NULL);
   g_signal_connect (chooser, "update-preview", G_CALLBACK (chooser_update_preview_cb), NULL);
-  ctk_box_pack_start (GTK_BOX (hbox), chooser, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), chooser, TRUE, TRUE, 0);
 
   button = ctk_button_new_with_label ("Tests");
   g_signal_connect (button, "clicked", G_CALLBACK (tests_button_clicked_cb), chooser);
-  ctk_box_pack_start (GTK_BOX (hbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (hbox), button, FALSE, FALSE, 0);
 
   g_object_unref (label_group);
 
   ctk_widget_show_all (win);
-  ctk_window_present (GTK_WINDOW (win));
+  ctk_window_present (CTK_WINDOW (win));
 
   ctk_main ();
 

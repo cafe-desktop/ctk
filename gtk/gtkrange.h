@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_RANGE_H__
-#define __GTK_RANGE_H__
+#ifndef __CTK_RANGE_H__
+#define __CTK_RANGE_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -36,12 +36,12 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_RANGE            (ctk_range_get_type ())
-#define GTK_RANGE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RANGE, GtkRange))
-#define GTK_RANGE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RANGE, GtkRangeClass))
-#define GTK_IS_RANGE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RANGE))
-#define GTK_IS_RANGE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_RANGE))
-#define GTK_RANGE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_RANGE, GtkRangeClass))
+#define CTK_TYPE_RANGE            (ctk_range_get_type ())
+#define CTK_RANGE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RANGE, GtkRange))
+#define CTK_RANGE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RANGE, GtkRangeClass))
+#define CTK_IS_RANGE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RANGE))
+#define CTK_IS_RANGE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RANGE))
+#define CTK_RANGE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RANGE, GtkRangeClass))
 
 typedef struct _GtkRange              GtkRange;
 typedef struct _GtkRangePrivate       GtkRangePrivate;
@@ -181,4 +181,4 @@ gint                ctk_range_get_round_digits              (GtkRange      *rang
 G_END_DECLS
 
 
-#endif /* __GTK_RANGE_H__ */
+#endif /* __CTK_RANGE_H__ */

@@ -30,7 +30,7 @@ static GtkFontChooser *
 get_delegate (GtkFontChooser *receiver)
 {
   return g_object_get_qdata (G_OBJECT (receiver),
-                             GTK_FONT_CHOOSER_DELEGATE_QUARK);
+                             CTK_FONT_CHOOSER_DELEGATE_QUARK);
 }
 
 static PangoFontFamily *
@@ -84,7 +84,7 @@ delegate_notify (GObject    *object,
   gpointer iface;
 
   iface = g_type_interface_peek (g_type_class_peek (G_OBJECT_TYPE (object)),
-                                 GTK_TYPE_FONT_CHOOSER);
+                                 CTK_TYPE_FONT_CHOOSER);
   if (g_object_interface_find_property (iface, pspec->name))
     g_object_notify_by_pspec (user_data, pspec);
 }
@@ -123,25 +123,25 @@ void
 _ctk_font_chooser_install_properties (GObjectClass *klass)
 {
   g_object_class_override_property (klass,
-                                    GTK_FONT_CHOOSER_PROP_FONT,
+                                    CTK_FONT_CHOOSER_PROP_FONT,
                                     "font");
   g_object_class_override_property (klass,
-                                    GTK_FONT_CHOOSER_PROP_FONT_DESC,
+                                    CTK_FONT_CHOOSER_PROP_FONT_DESC,
                                     "font-desc");
   g_object_class_override_property (klass,
-                                    GTK_FONT_CHOOSER_PROP_PREVIEW_TEXT,
+                                    CTK_FONT_CHOOSER_PROP_PREVIEW_TEXT,
                                     "preview-text");
   g_object_class_override_property (klass,
-                                    GTK_FONT_CHOOSER_PROP_SHOW_PREVIEW_ENTRY,
+                                    CTK_FONT_CHOOSER_PROP_SHOW_PREVIEW_ENTRY,
                                     "show-preview-entry");
   g_object_class_override_property (klass,
-                                    GTK_FONT_CHOOSER_PROP_LEVEL,
+                                    CTK_FONT_CHOOSER_PROP_LEVEL,
                                     "level");
   g_object_class_override_property (klass,
-                                    GTK_FONT_CHOOSER_PROP_FONT_FEATURES,
+                                    CTK_FONT_CHOOSER_PROP_FONT_FEATURES,
                                     "font-features");
   g_object_class_override_property (klass,
-                                    GTK_FONT_CHOOSER_PROP_LANGUAGE,
+                                    CTK_FONT_CHOOSER_PROP_LANGUAGE,
                                     "language");
 }
 
@@ -182,11 +182,11 @@ void
 _ctk_font_chooser_set_delegate (GtkFontChooser *receiver,
                                 GtkFontChooser *delegate)
 {
-  g_return_if_fail (GTK_IS_FONT_CHOOSER (receiver));
-  g_return_if_fail (GTK_IS_FONT_CHOOSER (delegate));
+  g_return_if_fail (CTK_IS_FONT_CHOOSER (receiver));
+  g_return_if_fail (CTK_IS_FONT_CHOOSER (delegate));
   
   g_object_set_qdata (G_OBJECT (receiver),
-                      GTK_FONT_CHOOSER_DELEGATE_QUARK,
+                      CTK_FONT_CHOOSER_DELEGATE_QUARK,
   		      delegate);
   
   g_signal_connect (delegate, "notify",

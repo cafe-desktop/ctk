@@ -20,10 +20,10 @@
    Author: Anders Carlsson <andersca@codefactory.se>
 */
 
-#ifndef __GTK_ABOUT_DIALOG_H__
-#define __GTK_ABOUT_DIALOG_H__
+#ifndef __CTK_ABOUT_DIALOG_H__
+#define __CTK_ABOUT_DIALOG_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -31,12 +31,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ABOUT_DIALOG            (ctk_about_dialog_get_type ())
-#define GTK_ABOUT_DIALOG(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_ABOUT_DIALOG, GtkAboutDialog))
-#define GTK_ABOUT_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ABOUT_DIALOG, GtkAboutDialogClass))
-#define GTK_IS_ABOUT_DIALOG(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_ABOUT_DIALOG))
-#define GTK_IS_ABOUT_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ABOUT_DIALOG))
-#define GTK_ABOUT_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ABOUT_DIALOG, GtkAboutDialogClass))
+#define CTK_TYPE_ABOUT_DIALOG            (ctk_about_dialog_get_type ())
+#define CTK_ABOUT_DIALOG(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_ABOUT_DIALOG, GtkAboutDialog))
+#define CTK_ABOUT_DIALOG_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ABOUT_DIALOG, GtkAboutDialogClass))
+#define CTK_IS_ABOUT_DIALOG(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_ABOUT_DIALOG))
+#define CTK_IS_ABOUT_DIALOG_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ABOUT_DIALOG))
+#define CTK_ABOUT_DIALOG_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ABOUT_DIALOG, GtkAboutDialogClass))
 
 typedef struct _GtkAboutDialog        GtkAboutDialog;
 typedef struct _GtkAboutDialogClass   GtkAboutDialogClass;
@@ -44,25 +44,25 @@ typedef struct _GtkAboutDialogPrivate GtkAboutDialogPrivate;
 
 /**
  * GtkLicense:
- * @GTK_LICENSE_UNKNOWN: No license specified
- * @GTK_LICENSE_CUSTOM: A license text is going to be specified by the
+ * @CTK_LICENSE_UNKNOWN: No license specified
+ * @CTK_LICENSE_CUSTOM: A license text is going to be specified by the
  *   developer
- * @GTK_LICENSE_GPL_2_0: The GNU General Public License, version 2.0 or later
- * @GTK_LICENSE_GPL_3_0: The GNU General Public License, version 3.0 or later
- * @GTK_LICENSE_LGPL_2_1: The GNU Lesser General Public License, version 2.1 or later
- * @GTK_LICENSE_LGPL_3_0: The GNU Lesser General Public License, version 3.0 or later
- * @GTK_LICENSE_BSD: The BSD standard license
- * @GTK_LICENSE_MIT_X11: The MIT/X11 standard license
- * @GTK_LICENSE_ARTISTIC: The Artistic License, version 2.0
- * @GTK_LICENSE_GPL_2_0_ONLY: The GNU General Public License, version 2.0 only. Since 3.12.
- * @GTK_LICENSE_GPL_3_0_ONLY: The GNU General Public License, version 3.0 only. Since 3.12.
- * @GTK_LICENSE_LGPL_2_1_ONLY: The GNU Lesser General Public License, version 2.1 only. Since 3.12.
- * @GTK_LICENSE_LGPL_3_0_ONLY: The GNU Lesser General Public License, version 3.0 only. Since 3.12.
- * @GTK_LICENSE_AGPL_3_0: The GNU Affero General Public License, version 3.0 or later. Since: 3.22.
- * @GTK_LICENSE_AGPL_3_0_ONLY: The GNU Affero General Public License, version 3.0 only. Since: 3.22.27.
- * @GTK_LICENSE_BSD_3: The 3-clause BSD licence. Since: 3.24.20.
- * @GTK_LICENSE_APACHE_2_0: The Apache License, version 2.0. Since: 3.24.20.
- * @GTK_LICENSE_MPL_2_0: The Mozilla Public License, version 2.0. Since: 3.24.20.
+ * @CTK_LICENSE_GPL_2_0: The GNU General Public License, version 2.0 or later
+ * @CTK_LICENSE_GPL_3_0: The GNU General Public License, version 3.0 or later
+ * @CTK_LICENSE_LGPL_2_1: The GNU Lesser General Public License, version 2.1 or later
+ * @CTK_LICENSE_LGPL_3_0: The GNU Lesser General Public License, version 3.0 or later
+ * @CTK_LICENSE_BSD: The BSD standard license
+ * @CTK_LICENSE_MIT_X11: The MIT/X11 standard license
+ * @CTK_LICENSE_ARTISTIC: The Artistic License, version 2.0
+ * @CTK_LICENSE_GPL_2_0_ONLY: The GNU General Public License, version 2.0 only. Since 3.12.
+ * @CTK_LICENSE_GPL_3_0_ONLY: The GNU General Public License, version 3.0 only. Since 3.12.
+ * @CTK_LICENSE_LGPL_2_1_ONLY: The GNU Lesser General Public License, version 2.1 only. Since 3.12.
+ * @CTK_LICENSE_LGPL_3_0_ONLY: The GNU Lesser General Public License, version 3.0 only. Since 3.12.
+ * @CTK_LICENSE_AGPL_3_0: The GNU Affero General Public License, version 3.0 or later. Since: 3.22.
+ * @CTK_LICENSE_AGPL_3_0_ONLY: The GNU Affero General Public License, version 3.0 only. Since: 3.22.27.
+ * @CTK_LICENSE_BSD_3: The 3-clause BSD licence. Since: 3.24.20.
+ * @CTK_LICENSE_APACHE_2_0: The Apache License, version 2.0. Since: 3.24.20.
+ * @CTK_LICENSE_MPL_2_0: The Mozilla Public License, version 2.0. Since: 3.24.20.
  *
  * The type of license for an application.
  *
@@ -71,31 +71,31 @@ typedef struct _GtkAboutDialogPrivate GtkAboutDialogPrivate;
  * Since: 3.0
  */
 typedef enum {
-  GTK_LICENSE_UNKNOWN,
-  GTK_LICENSE_CUSTOM,
+  CTK_LICENSE_UNKNOWN,
+  CTK_LICENSE_CUSTOM,
 
-  GTK_LICENSE_GPL_2_0,
-  GTK_LICENSE_GPL_3_0,
+  CTK_LICENSE_GPL_2_0,
+  CTK_LICENSE_GPL_3_0,
 
-  GTK_LICENSE_LGPL_2_1,
-  GTK_LICENSE_LGPL_3_0,
+  CTK_LICENSE_LGPL_2_1,
+  CTK_LICENSE_LGPL_3_0,
 
-  GTK_LICENSE_BSD,
-  GTK_LICENSE_MIT_X11,
+  CTK_LICENSE_BSD,
+  CTK_LICENSE_MIT_X11,
 
-  GTK_LICENSE_ARTISTIC,
+  CTK_LICENSE_ARTISTIC,
 
-  GTK_LICENSE_GPL_2_0_ONLY,
-  GTK_LICENSE_GPL_3_0_ONLY,
-  GTK_LICENSE_LGPL_2_1_ONLY,
-  GTK_LICENSE_LGPL_3_0_ONLY,
+  CTK_LICENSE_GPL_2_0_ONLY,
+  CTK_LICENSE_GPL_3_0_ONLY,
+  CTK_LICENSE_LGPL_2_1_ONLY,
+  CTK_LICENSE_LGPL_3_0_ONLY,
 
-  GTK_LICENSE_AGPL_3_0,
-  GTK_LICENSE_AGPL_3_0_ONLY,
+  CTK_LICENSE_AGPL_3_0,
+  CTK_LICENSE_AGPL_3_0_ONLY,
 
-  GTK_LICENSE_BSD_3,
-  GTK_LICENSE_APACHE_2_0,
-  GTK_LICENSE_MPL_2_0
+  CTK_LICENSE_BSD_3,
+  CTK_LICENSE_APACHE_2_0,
+  CTK_LICENSE_MPL_2_0
 } GtkLicense;
 
 /**
@@ -220,6 +220,6 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkAboutDialog, g_object_unref)
 
 G_END_DECLS
 
-#endif /* __GTK_ABOUT_DIALOG_H__ */
+#endif /* __CTK_ABOUT_DIALOG_H__ */
 
 

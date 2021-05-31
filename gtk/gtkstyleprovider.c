@@ -76,9 +76,9 @@ ctk_style_provider_get_style (GtkStyleProvider *provider,
 {
   GtkStyleProviderIface *iface;
 
-  g_return_val_if_fail (GTK_IS_STYLE_PROVIDER (provider), NULL);
+  g_return_val_if_fail (CTK_IS_STYLE_PROVIDER (provider), NULL);
 
-  iface = GTK_STYLE_PROVIDER_GET_IFACE (provider);
+  iface = CTK_STYLE_PROVIDER_GET_IFACE (provider);
 
   if (!iface->get_style)
     return NULL;
@@ -110,13 +110,13 @@ ctk_style_provider_get_style_property (GtkStyleProvider *provider,
 {
   GtkStyleProviderIface *iface;
 
-  g_return_val_if_fail (GTK_IS_STYLE_PROVIDER (provider), FALSE);
+  g_return_val_if_fail (CTK_IS_STYLE_PROVIDER (provider), FALSE);
   g_return_val_if_fail (G_IS_PARAM_SPEC (pspec), FALSE);
   g_return_val_if_fail (path != NULL, FALSE);
   g_return_val_if_fail (g_type_is_a (ctk_widget_path_get_object_type (path), pspec->owner_type), FALSE);
   g_return_val_if_fail (value != NULL, FALSE);
 
-  iface = GTK_STYLE_PROVIDER_GET_IFACE (provider);
+  iface = CTK_STYLE_PROVIDER_GET_IFACE (provider);
 
   if (!iface->get_style_property)
     return FALSE;
@@ -144,10 +144,10 @@ ctk_style_provider_get_icon_factory (GtkStyleProvider *provider,
 {
   GtkStyleProviderIface *iface;
 
-  g_return_val_if_fail (GTK_IS_STYLE_PROVIDER (provider), NULL);
+  g_return_val_if_fail (CTK_IS_STYLE_PROVIDER (provider), NULL);
   g_return_val_if_fail (path != NULL, NULL);
 
-  iface = GTK_STYLE_PROVIDER_GET_IFACE (provider);
+  iface = CTK_STYLE_PROVIDER_GET_IFACE (provider);
 
   if (!iface->get_icon_factory)
     return NULL;

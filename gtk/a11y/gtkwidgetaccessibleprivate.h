@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_WIDGET_ACCESSIBLE_PRIVATE_H__
-#define __GTK_WIDGET_ACCESSIBLE_PRIVATE_H__
+#ifndef __CTK_WIDGET_ACCESSIBLE_PRIVATE_H__
+#define __CTK_WIDGET_ACCESSIBLE_PRIVATE_H__
 
 #include <gtk/a11y/gtkwidgetaccessible.h>
 
@@ -27,4 +27,4 @@ void _ctk_widget_accessible_set_layer (GtkWidgetAccessible *accessible,
 
 G_END_DECLS
 
-#endif /* __GTK_WIDGET_ACCESSIBLE_PRIVATE_H__ */
+#endif /* __CTK_WIDGET_ACCESSIBLE_PRIVATE_H__ */

@@ -17,8 +17,8 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_CSS_IMAGE_GRADIENT_PRIVATE_H__
-#define __GTK_CSS_IMAGE_GRADIENT_PRIVATE_H__
+#ifndef __CTK_CSS_IMAGE_GRADIENT_PRIVATE_H__
+#define __CTK_CSS_IMAGE_GRADIENT_PRIVATE_H__
 
 #include "gtk/gtkcssimageprivate.h"
 
@@ -26,12 +26,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_GRADIENT           (_ctk_css_image_gradient_get_type ())
-#define GTK_CSS_IMAGE_GRADIENT(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradient))
-#define GTK_CSS_IMAGE_GRADIENT_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradientClass))
-#define GTK_IS_CSS_IMAGE_GRADIENT(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_GRADIENT))
-#define GTK_IS_CSS_IMAGE_GRADIENT_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_IMAGE_GRADIENT))
-#define GTK_CSS_IMAGE_GRADIENT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradientClass))
+#define CTK_TYPE_CSS_IMAGE_GRADIENT           (_ctk_css_image_gradient_get_type ())
+#define CTK_CSS_IMAGE_GRADIENT(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradient))
+#define CTK_CSS_IMAGE_GRADIENT_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradientClass))
+#define CTK_IS_CSS_IMAGE_GRADIENT(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_GRADIENT))
+#define CTK_IS_CSS_IMAGE_GRADIENT_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_GRADIENT))
+#define CTK_CSS_IMAGE_GRADIENT_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_GRADIENT, GtkCssImageGradientClass))
 
 typedef struct _GtkCssImageGradient           GtkCssImageGradient;
 typedef struct _GtkCssImageGradientClass      GtkCssImageGradientClass;
@@ -56,4 +56,4 @@ GtkGradient *  _ctk_gradient_parse                          (GtkCssParser *parse
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_IMAGE_GRADIENT_PRIVATE_H__ */
+#endif /* __CTK_CSS_IMAGE_GRADIENT_PRIVATE_H__ */

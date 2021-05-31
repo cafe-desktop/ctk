@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_VSCALE_H__
-#define __GTK_VSCALE_H__
+#ifndef __CTK_VSCALE_H__
+#define __CTK_VSCALE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_VSCALE            (ctk_vscale_get_type ())
-#define GTK_VSCALE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_VSCALE, GtkVScale))
-#define GTK_VSCALE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_VSCALE, GtkVScaleClass))
-#define GTK_IS_VSCALE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_VSCALE))
-#define GTK_IS_VSCALE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_VSCALE))
-#define GTK_VSCALE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_VSCALE, GtkVScaleClass))
+#define CTK_TYPE_VSCALE            (ctk_vscale_get_type ())
+#define CTK_VSCALE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VSCALE, GtkVScale))
+#define CTK_VSCALE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VSCALE, GtkVScaleClass))
+#define CTK_IS_VSCALE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VSCALE))
+#define CTK_IS_VSCALE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VSCALE))
+#define CTK_VSCALE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VSCALE, GtkVScaleClass))
 
 
 typedef struct _GtkVScale       GtkVScale;
@@ -72,4 +72,4 @@ GtkWidget* ctk_vscale_new_with_range (gdouble        min,
 
 G_END_DECLS
 
-#endif /* __GTK_VSCALE_H__ */
+#endif /* __CTK_VSCALE_H__ */

@@ -21,7 +21,7 @@
 
 #include "gtkcontainerprivate.h"
 
-G_DEFINE_TYPE (GtkHeaderBarAccessible, ctk_header_bar_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE)
+G_DEFINE_TYPE (GtkHeaderBarAccessible, ctk_header_bar_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
 count_widget (GtkWidget *widget,
@@ -36,11 +36,11 @@ ctk_header_bar_accessible_get_n_children (AtkObject* obj)
   GtkWidget *widget;
   gint count = 0;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return 0;
 
-  ctk_container_forall (GTK_CONTAINER (widget), (GtkCallback) count_widget, &count);
+  ctk_container_forall (CTK_CONTAINER (widget), (GtkCallback) count_widget, &count);
   return count;
 }
 
@@ -52,18 +52,18 @@ ctk_header_bar_accessible_ref_child (AtkObject *obj,
   AtkObject  *accessible;
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
-  children = ctk_container_get_all_children (GTK_CONTAINER (widget));
+  children = ctk_container_get_all_children (CTK_CONTAINER (widget));
   tmp_list = g_list_nth (children, i);
   if (!tmp_list)
     {
       g_list_free (children);
       return NULL;
     }
-  accessible = ctk_widget_get_accessible (GTK_WIDGET (tmp_list->data));
+  accessible = ctk_widget_get_accessible (CTK_WIDGET (tmp_list->data));
 
   g_list_free (children);
   g_object_ref (accessible);

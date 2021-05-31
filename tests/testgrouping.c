@@ -54,7 +54,7 @@ create_model (void)
   ctk_tree_store_insert_with_values (store, &iter, &parent, 0,
 				     0, "image3.jpg", -1);
 
-  return GTK_TREE_MODEL (store);
+  return CTK_TREE_MODEL (store);
 }
 
 static void
@@ -78,10 +78,10 @@ tree_view_row_activated (GtkTreeView       *tree_view,
   if (ctk_tree_path_get_depth (path) > 1)
     return;
 
-  if (ctk_tree_view_row_expanded (GTK_TREE_VIEW (tree_view), path))
-    ctk_tree_view_collapse_row (GTK_TREE_VIEW (tree_view), path);
+  if (ctk_tree_view_row_expanded (CTK_TREE_VIEW (tree_view), path))
+    ctk_tree_view_collapse_row (CTK_TREE_VIEW (tree_view), path);
   else
-    ctk_tree_view_expand_row (GTK_TREE_VIEW (tree_view), path, FALSE);
+    ctk_tree_view_expand_row (CTK_TREE_VIEW (tree_view), path, FALSE);
 }
 
 static gboolean
@@ -109,16 +109,16 @@ main (int argc, char **argv)
 
   model = create_model ();
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "delete_event",
 		    G_CALLBACK (ctk_main_quit), NULL);
-  ctk_window_set_default_size (GTK_WINDOW (window), 320, 480);
+  ctk_window_set_default_size (CTK_WINDOW (window), 320, 480);
 
   sw = ctk_scrolled_window_new (NULL, NULL);
-  ctk_container_add (GTK_CONTAINER (window), sw);
+  ctk_container_add (CTK_CONTAINER (window), sw);
 
   tv = ctk_tree_view_new_with_model (model);
-  ctk_container_add (GTK_CONTAINER (sw), tv);
+  ctk_container_add (CTK_CONTAINER (sw), tv);
 
   g_signal_connect (tv, "row-activated",
 		    G_CALLBACK (tree_view_row_activated), tv);
@@ -127,10 +127,10 @@ main (int argc, char **argv)
 		"level-indentation", 10,
 		NULL);
 
-  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (tv), FALSE);
-  ctk_tree_view_expand_all (GTK_TREE_VIEW (tv));
+  ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (tv), FALSE);
+  ctk_tree_view_expand_all (CTK_TREE_VIEW (tv));
 
-  ctk_tree_selection_set_select_function (ctk_tree_view_get_selection (GTK_TREE_VIEW (tv)),
+  ctk_tree_selection_set_select_function (ctk_tree_view_get_selection (CTK_TREE_VIEW (tv)),
 					  tree_view_select_func,
 					  NULL,
 					  NULL);
@@ -145,7 +145,7 @@ main (int argc, char **argv)
 					   set_color_func,
 					   NULL,
 					   NULL);
-  ctk_tree_view_insert_column (GTK_TREE_VIEW (tv), column, 0);
+  ctk_tree_view_insert_column (CTK_TREE_VIEW (tv), column, 0);
 
   ctk_widget_show_all (window);
 

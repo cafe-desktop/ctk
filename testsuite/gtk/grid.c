@@ -30,8 +30,8 @@ test_attach (void)
   g = (GtkGrid *)ctk_grid_new ();
 
   child = ctk_label_new ("a");
-  ctk_grid_attach_next_to (g, child, NULL, GTK_POS_LEFT, 1, 1);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_grid_attach_next_to (g, child, NULL, CTK_POS_LEFT, 1, 1);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -44,8 +44,8 @@ test_attach (void)
 
   sibling = child;
   child = ctk_label_new ("b");
-  ctk_grid_attach_next_to (g, child, sibling, GTK_POS_RIGHT, 2, 2);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_grid_attach_next_to (g, child, sibling, CTK_POS_RIGHT, 2, 2);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -61,8 +61,8 @@ test_attach (void)
   ctk_grid_attach (g, z, 4, 4, 1, 1);
 
   child = ctk_label_new ("c");
-  ctk_grid_attach_next_to (g, child, sibling, GTK_POS_BOTTOM, 3, 1);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_grid_attach_next_to (g, child, sibling, CTK_POS_BOTTOM, 3, 1);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -74,8 +74,8 @@ test_attach (void)
   g_assert_cmpint (height, ==, 1);
 
   child = ctk_label_new ("u");
-  ctk_grid_attach_next_to (g, child, z, GTK_POS_LEFT, 2, 1);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_grid_attach_next_to (g, child, z, CTK_POS_LEFT, 2, 1);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -87,8 +87,8 @@ test_attach (void)
   g_assert_cmpint (height, ==, 1);
 
   child = ctk_label_new ("v");
-  ctk_grid_attach_next_to (g, child, z, GTK_POS_RIGHT, 2, 1);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_grid_attach_next_to (g, child, z, CTK_POS_RIGHT, 2, 1);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -100,8 +100,8 @@ test_attach (void)
   g_assert_cmpint (height, ==, 1);
 
   child = ctk_label_new ("x");
-  ctk_grid_attach_next_to (g, child, z, GTK_POS_TOP, 1, 2);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_grid_attach_next_to (g, child, z, CTK_POS_TOP, 1, 2);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -113,8 +113,8 @@ test_attach (void)
   g_assert_cmpint (height, ==, 2);
 
   child = ctk_label_new ("x");
-  ctk_grid_attach_next_to (g, child, z, GTK_POS_TOP, 1, 2);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_grid_attach_next_to (g, child, z, CTK_POS_TOP, 1, 2);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -126,8 +126,8 @@ test_attach (void)
   g_assert_cmpint (height, ==, 2);
 
   child = ctk_label_new ("y");
-  ctk_grid_attach_next_to (g, child, z, GTK_POS_BOTTOM, 1, 2);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_grid_attach_next_to (g, child, z, CTK_POS_BOTTOM, 1, 2);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -144,8 +144,8 @@ test_attach (void)
   ctk_grid_attach (g, B, 10, 12, 1, 1);
 
   child  = ctk_label_new ("D");
-  ctk_grid_attach_next_to (g, child, A, GTK_POS_RIGHT, 1, 3);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_grid_attach_next_to (g, child, A, CTK_POS_RIGHT, 1, 3);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -166,11 +166,11 @@ test_add (void)
 
   g = (GtkGrid *)ctk_grid_new ();
 
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (g), GTK_ORIENTATION_HORIZONTAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (g), CTK_ORIENTATION_HORIZONTAL);
 
   child = ctk_label_new ("a");
-  ctk_container_add (GTK_CONTAINER (g), child);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_container_add (CTK_CONTAINER (g), child);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -182,8 +182,8 @@ test_add (void)
   g_assert_cmpint (height, ==, 1);
 
   child = ctk_label_new ("b");
-  ctk_container_add (GTK_CONTAINER (g), child);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_container_add (CTK_CONTAINER (g), child);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -195,8 +195,8 @@ test_add (void)
   g_assert_cmpint (height, ==, 1);
 
   child = ctk_label_new ("c");
-  ctk_container_add (GTK_CONTAINER (g), child);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_container_add (CTK_CONTAINER (g), child);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,
@@ -207,11 +207,11 @@ test_add (void)
   g_assert_cmpint (width,  ==, 1);
   g_assert_cmpint (height, ==, 1);
 
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (g), GTK_ORIENTATION_VERTICAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (g), CTK_ORIENTATION_VERTICAL);
 
   child = ctk_label_new ("d");
-  ctk_container_add (GTK_CONTAINER (g), child);
-  ctk_container_child_get (GTK_CONTAINER (g), child,
+  ctk_container_add (CTK_CONTAINER (g), child);
+  ctk_container_child_get (CTK_CONTAINER (g), child,
                            "left-attach", &left,
                            "top-attach", &top,
                            "width", &width,

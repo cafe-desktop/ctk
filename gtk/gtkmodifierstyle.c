@@ -36,9 +36,9 @@ static void ctk_modifier_style_finalize              (GObject                   
 
 G_DEFINE_TYPE_EXTENDED (GtkModifierStyle, _ctk_modifier_style, G_TYPE_OBJECT, 0,
                         G_ADD_PRIVATE (GtkModifierStyle)
-                        G_IMPLEMENT_INTERFACE (GTK_TYPE_STYLE_PROVIDER,
+                        G_IMPLEMENT_INTERFACE (CTK_TYPE_STYLE_PROVIDER,
                                                ctk_modifier_style_provider_init)
-                        G_IMPLEMENT_INTERFACE (GTK_TYPE_STYLE_PROVIDER_PRIVATE,
+                        G_IMPLEMENT_INTERFACE (CTK_TYPE_STYLE_PROVIDER_PRIVATE,
                                                ctk_modifier_style_provider_private_init));
 
 static void
@@ -81,7 +81,7 @@ ctk_modifier_style_get_style_property (GtkStyleProvider *provider,
   if (pspec->value_type != GDK_TYPE_COLOR)
     return FALSE;
 
-  priv = GTK_MODIFIER_STYLE (provider)->priv;
+  priv = CTK_MODIFIER_STYLE (provider)->priv;
   str = g_strdup_printf ("-%s-%s",
                          g_type_name (pspec->owner_type),
                          pspec->name);
@@ -110,9 +110,9 @@ static GtkCssValue *
 ctk_modifier_style_provider_get_color (GtkStyleProviderPrivate *provider,
                                        const char              *name)
 {
-  GtkModifierStyle *style = GTK_MODIFIER_STYLE (provider);
+  GtkModifierStyle *style = CTK_MODIFIER_STYLE (provider);
 
-  return _ctk_style_provider_private_get_color (GTK_STYLE_PROVIDER_PRIVATE (style->priv->style), name);
+  return _ctk_style_provider_private_get_color (CTK_STYLE_PROVIDER_PRIVATE (style->priv->style), name);
 }
 
 static void
@@ -121,9 +121,9 @@ ctk_modifier_style_provider_lookup (GtkStyleProviderPrivate *provider,
                                     GtkCssLookup            *lookup,
                                     GtkCssChange            *change)
 {
-  GtkModifierStyle *style = GTK_MODIFIER_STYLE (provider);
+  GtkModifierStyle *style = CTK_MODIFIER_STYLE (provider);
 
-  _ctk_style_provider_private_lookup (GTK_STYLE_PROVIDER_PRIVATE (style->priv->style),
+  _ctk_style_provider_private_lookup (CTK_STYLE_PROVIDER_PRIVATE (style->priv->style),
                                       matcher,
                                       lookup,
                                       change);
@@ -141,7 +141,7 @@ ctk_modifier_style_finalize (GObject *object)
 {
   GtkModifierStylePrivate *priv;
 
-  priv = GTK_MODIFIER_STYLE (object)->priv;
+  priv = CTK_MODIFIER_STYLE (object)->priv;
   g_hash_table_destroy (priv->color_properties);
   g_object_unref (priv->style);
 
@@ -151,7 +151,7 @@ ctk_modifier_style_finalize (GObject *object)
 GtkModifierStyle *
 _ctk_modifier_style_new (void)
 {
-  return g_object_new (GTK_TYPE_MODIFIER_STYLE, NULL);
+  return g_object_new (CTK_TYPE_MODIFIER_STYLE, NULL);
 }
 
 static void
@@ -162,7 +162,7 @@ modifier_style_set_color (GtkModifierStyle *style,
 {
   GtkModifierStylePrivate *priv;
 
-  g_return_if_fail (GTK_IS_MODIFIER_STYLE (style));
+  g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
 
   priv = style->priv;
 
@@ -173,7 +173,7 @@ modifier_style_set_color (GtkModifierStyle *style,
   else
     ctk_style_properties_unset_property (priv->style, prop, state);
 
-  _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
+  _ctk_style_provider_private_changed (CTK_STYLE_PROVIDER_PRIVATE (style));
 }
 
 void
@@ -181,7 +181,7 @@ _ctk_modifier_style_set_background_color (GtkModifierStyle *style,
                                           GtkStateFlags     state,
                                           const GdkRGBA    *color)
 {
-  g_return_if_fail (GTK_IS_MODIFIER_STYLE (style));
+  g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
 
   modifier_style_set_color (style, "background-color", state, color);
 }
@@ -191,7 +191,7 @@ _ctk_modifier_style_set_color (GtkModifierStyle *style,
                                GtkStateFlags     state,
                                const GdkRGBA    *color)
 {
-  g_return_if_fail (GTK_IS_MODIFIER_STYLE (style));
+  g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
 
   modifier_style_set_color (style, "color", state, color);
 }
@@ -202,7 +202,7 @@ _ctk_modifier_style_set_font (GtkModifierStyle           *style,
 {
   GtkModifierStylePrivate *priv;
 
-  g_return_if_fail (GTK_IS_MODIFIER_STYLE (style));
+  g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
 
   priv = style->priv;
 
@@ -213,7 +213,7 @@ _ctk_modifier_style_set_font (GtkModifierStyle           *style,
   else
     ctk_style_properties_unset_property (priv->style, "font", 0);
 
-  _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
+  _ctk_style_provider_private_changed (CTK_STYLE_PROVIDER_PRIVATE (style));
 }
 
 void
@@ -224,7 +224,7 @@ _ctk_modifier_style_map_color (GtkModifierStyle *style,
   GtkModifierStylePrivate *priv;
   GtkSymbolicColor *symbolic_color = NULL;
 
-  g_return_if_fail (GTK_IS_MODIFIER_STYLE (style));
+  g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
   g_return_if_fail (name != NULL);
 
   priv = style->priv;
@@ -235,7 +235,7 @@ _ctk_modifier_style_map_color (GtkModifierStyle *style,
   ctk_style_properties_map_color (priv->style,
                                   name, symbolic_color);
 
-  _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
+  _ctk_style_provider_private_changed (CTK_STYLE_PROVIDER_PRIVATE (style));
 }
 
 void
@@ -248,8 +248,8 @@ _ctk_modifier_style_set_color_property (GtkModifierStyle *style,
   const GdkRGBA *old_color;
   gchar *str;
 
-  g_return_if_fail (GTK_IS_MODIFIER_STYLE (style));
-  g_return_if_fail (g_type_is_a (widget_type, GTK_TYPE_WIDGET));
+  g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
+  g_return_if_fail (g_type_is_a (widget_type, CTK_TYPE_WIDGET));
   g_return_if_fail (prop_name != NULL);
 
   priv = style->priv;
@@ -275,7 +275,7 @@ _ctk_modifier_style_set_color_property (GtkModifierStyle *style,
       g_free (str);
     }
 
-  _ctk_style_provider_private_changed (GTK_STYLE_PROVIDER_PRIVATE (style));
+  _ctk_style_provider_private_changed (CTK_STYLE_PROVIDER_PRIVATE (style));
 }
 
 G_GNUC_END_IGNORE_DEPRECATIONS

@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_REPEAT_VALUE_PRIVATE_H__
-#define __GTK_CSS_REPEAT_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_REPEAT_VALUE_PRIVATE_H__
+#define __CTK_CSS_REPEAT_VALUE_PRIVATE_H__
 
 #include "gtkcssparserprivate.h"
 #include "gtkcssvalueprivate.h"
@@ -26,11 +26,11 @@
 G_BEGIN_DECLS
 
 typedef enum {
-  GTK_CSS_REPEAT_STYLE_NO_REPEAT,
-  GTK_CSS_REPEAT_STYLE_STRETCH = GTK_CSS_REPEAT_STYLE_NO_REPEAT,
-  GTK_CSS_REPEAT_STYLE_REPEAT,
-  GTK_CSS_REPEAT_STYLE_ROUND,
-  GTK_CSS_REPEAT_STYLE_SPACE
+  CTK_CSS_REPEAT_STYLE_NO_REPEAT,
+  CTK_CSS_REPEAT_STYLE_STRETCH = CTK_CSS_REPEAT_STYLE_NO_REPEAT,
+  CTK_CSS_REPEAT_STYLE_REPEAT,
+  CTK_CSS_REPEAT_STYLE_ROUND,
+  CTK_CSS_REPEAT_STYLE_SPACE
 } GtkCssRepeatStyle;
 
 GtkCssValue *       _ctk_css_background_repeat_value_new        (GtkCssRepeatStyle       x,
@@ -47,4 +47,4 @@ GtkCssRepeatStyle   _ctk_css_border_repeat_value_get_y          (const GtkCssVal
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_REPEAT_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_REPEAT_VALUE_PRIVATE_H__ */

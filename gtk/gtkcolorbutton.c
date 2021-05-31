@@ -134,9 +134,9 @@ static const GtkTargetEntry drop_types[] = { { "application/x-color", 0, 0 } };
 
 static void ctk_color_button_iface_init (GtkColorChooserInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorButton, ctk_color_button, GTK_TYPE_BUTTON,
+G_DEFINE_TYPE_WITH_CODE (GtkColorButton, ctk_color_button, CTK_TYPE_BUTTON,
                          G_ADD_PRIVATE (GtkColorButton)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_COLOR_CHOOSER,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_COLOR_CHOOSER,
                                                 ctk_color_button_iface_init))
 
 static void
@@ -146,7 +146,7 @@ ctk_color_button_class_init (GtkColorButtonClass *klass)
   GtkButtonClass *button_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
-  button_class = GTK_BUTTON_CLASS (klass);
+  button_class = CTK_BUTTON_CLASS (klass);
 
   gobject_class->get_property = ctk_color_button_get_property;
   gobject_class->set_property = ctk_color_button_set_property;
@@ -168,7 +168,7 @@ ctk_color_button_class_init (GtkColorButtonClass *klass)
                                    g_param_spec_boolean ("use-alpha", P_("Use alpha"),
                                                          P_("Whether to give the color an alpha value"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkColorButton:title:
@@ -183,7 +183,7 @@ ctk_color_button_class_init (GtkColorButtonClass *klass)
                                                         P_("Title"),
                                                         P_("The title of the color selection dialog"),
                                                         _("Pick a Color"),
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 
   /**
    * GtkColorButton:color:
@@ -201,7 +201,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                                                        P_("Current Color"),
                                                        P_("The selected color"),
                                                        GDK_TYPE_COLOR,
-                                                       GTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+                                                       CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /**
@@ -217,7 +217,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                       P_("Current Alpha"),
                                                       P_("The selected opacity value (0 fully transparent, 65535 fully opaque)"),
                                                       0, 65535, 65535,
-                                                      GTK_PARAM_READWRITE));
+                                                      CTK_PARAM_READWRITE));
 
   /**
    * GtkColorButton:rgba:
@@ -232,7 +232,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                        P_("Current RGBA Color"),
                                                        P_("The selected RGBA color"),
                                                        GDK_TYPE_RGBA,
-                                                       GTK_PARAM_READWRITE));
+                                                       CTK_PARAM_READWRITE));
 
 
   /**
@@ -274,7 +274,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                    g_param_spec_boolean ("show-editor", P_("Show Editor"),
                                                          P_("Whether to show the color editor right away"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 }
 
 static void
@@ -313,7 +313,7 @@ ctk_color_button_drag_data_received (GtkWidget        *widget,
   priv->rgba.blue = dropped[2] / 65535.;
   priv->rgba.alpha = dropped[3] / 65535.;
 
-  ctk_color_swatch_set_rgba (GTK_COLOR_SWATCH (priv->swatch), &priv->rgba);
+  ctk_color_swatch_set_rgba (CTK_COLOR_SWATCH (priv->swatch), &priv->rgba);
 
   g_signal_emit (button, color_button_signals[COLOR_SET], 0);
 
@@ -386,13 +386,13 @@ ctk_color_button_init (GtkColorButton *button)
   priv = button->priv = ctk_color_button_get_instance_private (button);
 
   priv->swatch = ctk_color_swatch_new ();
-  layout = ctk_widget_create_pango_layout (GTK_WIDGET (button), "Black");
+  layout = ctk_widget_create_pango_layout (CTK_WIDGET (button), "Black");
   pango_layout_get_pixel_extents (layout, NULL, &rect);
   g_object_unref (layout);
 
   ctk_widget_set_size_request (priv->swatch, rect.width, rect.height);
 
-  ctk_container_add (GTK_CONTAINER (button), priv->swatch);
+  ctk_container_add (CTK_CONTAINER (button), priv->swatch);
   ctk_widget_show (priv->swatch);
 
   button->priv->title = g_strdup (_("Pick a Color")); /* default title */
@@ -404,12 +404,12 @@ ctk_color_button_init (GtkColorButton *button)
   priv->rgba.alpha = 1;
   priv->use_alpha = FALSE;
 
-  ctk_drag_dest_set (GTK_WIDGET (button),
-                     GTK_DEST_DEFAULT_MOTION |
-                     GTK_DEST_DEFAULT_HIGHLIGHT |
-                     GTK_DEST_DEFAULT_DROP,
+  ctk_drag_dest_set (CTK_WIDGET (button),
+                     CTK_DEST_DEFAULT_MOTION |
+                     CTK_DEST_DEFAULT_HIGHLIGHT |
+                     CTK_DEST_DEFAULT_DROP,
                      drop_types, 1, GDK_ACTION_COPY);
-  ctk_drag_source_set (GTK_WIDGET (button),
+  ctk_drag_source_set (CTK_WIDGET (button),
                        GDK_BUTTON1_MASK|GDK_BUTTON3_MASK,
                        drop_types, 1,
                        GDK_ACTION_COPY);
@@ -420,14 +420,14 @@ ctk_color_button_init (GtkColorButton *button)
   g_signal_connect (button, "drag-data-get",
                     G_CALLBACK (ctk_color_button_drag_data_get), button);
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (button));
+  context = ctk_widget_get_style_context (CTK_WIDGET (button));
   ctk_style_context_add_class (context, "color");
 }
 
 static void
 ctk_color_button_finalize (GObject *object)
 {
-  GtkColorButton *button = GTK_COLOR_BUTTON (object);
+  GtkColorButton *button = CTK_COLOR_BUTTON (object);
   GtkColorButtonPrivate *priv = button->priv;
 
   if (priv->cs_dialog != NULL)
@@ -457,7 +457,7 @@ ctk_color_button_finalize (GObject *object)
 GtkWidget *
 ctk_color_button_new (void)
 {
-  return g_object_new (GTK_TYPE_COLOR_BUTTON, NULL);
+  return g_object_new (CTK_TYPE_COLOR_BUTTON, NULL);
 }
 
 /**
@@ -475,7 +475,7 @@ ctk_color_button_new (void)
 GtkWidget *
 ctk_color_button_new_with_color (const GdkColor *color)
 {
-  return g_object_new (GTK_TYPE_COLOR_BUTTON, "color", color, NULL);
+  return g_object_new (CTK_TYPE_COLOR_BUTTON, "color", color, NULL);
 }
 
 /**
@@ -491,7 +491,7 @@ ctk_color_button_new_with_color (const GdkColor *color)
 GtkWidget *
 ctk_color_button_new_with_rgba (const GdkRGBA *rgba)
 {
-  return g_object_new (GTK_TYPE_COLOR_BUTTON, "rgba", rgba, NULL);
+  return g_object_new (CTK_TYPE_COLOR_BUTTON, "rgba", rgba, NULL);
 }
 
 static gboolean
@@ -499,7 +499,7 @@ dialog_delete_event (GtkWidget *dialog,
                      GdkEvent  *event,
                      gpointer   user_data)
 {
-  g_signal_emit_by_name (dialog, "response", GTK_RESPONSE_CANCEL);
+  g_signal_emit_by_name (dialog, "response", CTK_RESPONSE_CANCEL);
 
   return TRUE;
 }
@@ -508,7 +508,7 @@ static gboolean
 dialog_destroy (GtkWidget *widget,
                 gpointer   data)
 {
-  GtkColorButton *button = GTK_COLOR_BUTTON (data);
+  GtkColorButton *button = CTK_COLOR_BUTTON (data);
 
   button->priv->cs_dialog = NULL;
 
@@ -520,17 +520,17 @@ dialog_response (GtkDialog *dialog,
                  gint       response,
                  gpointer   data)
 {
-  if (response == GTK_RESPONSE_CANCEL)
-    ctk_widget_hide (GTK_WIDGET (dialog));
-  else if (response == GTK_RESPONSE_OK)
+  if (response == CTK_RESPONSE_CANCEL)
+    ctk_widget_hide (CTK_WIDGET (dialog));
+  else if (response == CTK_RESPONSE_OK)
     {
-      GtkColorButton *button = GTK_COLOR_BUTTON (data);
+      GtkColorButton *button = CTK_COLOR_BUTTON (data);
       GtkColorButtonPrivate *priv = button->priv;
 
-      ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (dialog), &priv->rgba);
-      ctk_color_swatch_set_rgba (GTK_COLOR_SWATCH (priv->swatch), &priv->rgba);
+      ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (dialog), &priv->rgba);
+      ctk_color_swatch_set_rgba (CTK_COLOR_SWATCH (priv->swatch), &priv->rgba);
 
-      ctk_widget_hide (GTK_WIDGET (dialog));
+      ctk_widget_hide (CTK_WIDGET (dialog));
 
       g_object_ref (button);
       g_signal_emit (button, color_button_signals[COLOR_SET], 0);
@@ -554,17 +554,17 @@ ensure_dialog (GtkColorButton *button)
   if (priv->cs_dialog != NULL)
     return;
 
-  parent = ctk_widget_get_toplevel (GTK_WIDGET (button));
+  parent = ctk_widget_get_toplevel (CTK_WIDGET (button));
 
   priv->cs_dialog = dialog = ctk_color_chooser_dialog_new (priv->title, NULL);
 
-  if (ctk_widget_is_toplevel (parent) && GTK_IS_WINDOW (parent))
+  if (ctk_widget_is_toplevel (parent) && CTK_IS_WINDOW (parent))
   {
-    if (GTK_WINDOW (parent) != ctk_window_get_transient_for (GTK_WINDOW (dialog)))
-      ctk_window_set_transient_for (GTK_WINDOW (dialog), GTK_WINDOW (parent));
+    if (CTK_WINDOW (parent) != ctk_window_get_transient_for (CTK_WINDOW (dialog)))
+      ctk_window_set_transient_for (CTK_WINDOW (dialog), CTK_WINDOW (parent));
 
-    ctk_window_set_modal (GTK_WINDOW (dialog),
-                          ctk_window_get_modal (GTK_WINDOW (parent)));
+    ctk_window_set_modal (CTK_WINDOW (dialog),
+                          ctk_window_get_modal (CTK_WINDOW (parent)));
   }
 
   g_signal_connect (dialog, "response",
@@ -579,7 +579,7 @@ ensure_dialog (GtkColorButton *button)
 static void
 ctk_color_button_clicked (GtkButton *b)
 {
-  GtkColorButton *button = GTK_COLOR_BUTTON (b);
+  GtkColorButton *button = CTK_COLOR_BUTTON (b);
   GtkColorButtonPrivate *priv = button->priv;
 
   /* if dialog already exists, make sure it's shown and raised */
@@ -587,12 +587,12 @@ ctk_color_button_clicked (GtkButton *b)
 
   g_object_set (priv->cs_dialog, "show-editor", priv->show_editor, NULL);
 
-  ctk_color_chooser_set_use_alpha (GTK_COLOR_CHOOSER (priv->cs_dialog), priv->use_alpha);
+  ctk_color_chooser_set_use_alpha (CTK_COLOR_CHOOSER (priv->cs_dialog), priv->use_alpha);
 
-  ctk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (priv->cs_dialog), &priv->rgba);
+  ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (priv->cs_dialog), &priv->rgba);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  ctk_window_present (GTK_WINDOW (priv->cs_dialog));
+  ctk_window_present (CTK_WINDOW (priv->cs_dialog));
   G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
@@ -613,14 +613,14 @@ ctk_color_button_set_color (GtkColorButton *button,
 {
   GtkColorButtonPrivate *priv = button->priv;
 
-  g_return_if_fail (GTK_IS_COLOR_BUTTON (button));
+  g_return_if_fail (CTK_IS_COLOR_BUTTON (button));
   g_return_if_fail (color != NULL);
 
   priv->rgba.red = color->red / 65535.;
   priv->rgba.green = color->green / 65535.;
   priv->rgba.blue = color->blue / 65535.;
 
-  ctk_color_swatch_set_rgba (GTK_COLOR_SWATCH (priv->swatch), &priv->rgba);
+  ctk_color_swatch_set_rgba (CTK_COLOR_SWATCH (priv->swatch), &priv->rgba);
 
   g_object_notify (G_OBJECT (button), "color");
   g_object_notify (G_OBJECT (button), "rgba");
@@ -644,11 +644,11 @@ ctk_color_button_set_alpha (GtkColorButton *button,
 {
   GtkColorButtonPrivate *priv = button->priv;
 
-  g_return_if_fail (GTK_IS_COLOR_BUTTON (button));
+  g_return_if_fail (CTK_IS_COLOR_BUTTON (button));
 
   priv->rgba.alpha = alpha / 65535.;
 
-  ctk_color_swatch_set_rgba (GTK_COLOR_SWATCH (priv->swatch), &priv->rgba);
+  ctk_color_swatch_set_rgba (CTK_COLOR_SWATCH (priv->swatch), &priv->rgba);
 
   g_object_notify (G_OBJECT (button), "alpha");
   g_object_notify (G_OBJECT (button), "rgba");
@@ -671,7 +671,7 @@ ctk_color_button_get_color (GtkColorButton *button,
 {
   GtkColorButtonPrivate *priv = button->priv;
 
-  g_return_if_fail (GTK_IS_COLOR_BUTTON (button));
+  g_return_if_fail (CTK_IS_COLOR_BUTTON (button));
 
   color->red = (guint16) (priv->rgba.red * 65535);
   color->green = (guint16) (priv->rgba.green * 65535);
@@ -693,7 +693,7 @@ ctk_color_button_get_color (GtkColorButton *button,
 guint16
 ctk_color_button_get_alpha (GtkColorButton *button)
 {
-  g_return_val_if_fail (GTK_IS_COLOR_BUTTON (button), 0);
+  g_return_val_if_fail (CTK_IS_COLOR_BUTTON (button), 0);
 
   return (guint16) (button->priv->rgba.alpha * 65535);
 }
@@ -715,11 +715,11 @@ ctk_color_button_set_rgba (GtkColorButton *button,
 {
   GtkColorButtonPrivate *priv = button->priv;
 
-  g_return_if_fail (GTK_IS_COLOR_BUTTON (button));
+  g_return_if_fail (CTK_IS_COLOR_BUTTON (button));
   g_return_if_fail (rgba != NULL);
 
   priv->rgba = *rgba;
-  ctk_color_swatch_set_rgba (GTK_COLOR_SWATCH (priv->swatch), &priv->rgba);
+  ctk_color_swatch_set_rgba (CTK_COLOR_SWATCH (priv->swatch), &priv->rgba);
 
   g_object_notify (G_OBJECT (button), "color");
   g_object_notify (G_OBJECT (button), "alpha");
@@ -741,7 +741,7 @@ void
 ctk_color_button_get_rgba (GtkColorButton *button,
                            GdkRGBA        *rgba)
 {
-  g_return_if_fail (GTK_IS_COLOR_BUTTON (button));
+  g_return_if_fail (CTK_IS_COLOR_BUTTON (button));
   g_return_if_fail (rgba != NULL);
 
   *rgba = button->priv->rgba;
@@ -759,7 +759,7 @@ set_use_alpha (GtkColorButton *button,
     {
       priv->use_alpha = use_alpha;
 
-      ctk_color_swatch_set_use_alpha (GTK_COLOR_SWATCH (priv->swatch), use_alpha);
+      ctk_color_swatch_set_use_alpha (CTK_COLOR_SWATCH (priv->swatch), use_alpha);
 
       g_object_notify (G_OBJECT (button), "use-alpha");
     }
@@ -780,7 +780,7 @@ void
 ctk_color_button_set_use_alpha (GtkColorButton *button,
                                 gboolean        use_alpha)
 {
-  g_return_if_fail (GTK_IS_COLOR_BUTTON (button));
+  g_return_if_fail (CTK_IS_COLOR_BUTTON (button));
   set_use_alpha (button, use_alpha);
 }
 
@@ -799,7 +799,7 @@ ctk_color_button_set_use_alpha (GtkColorButton *button,
 gboolean
 ctk_color_button_get_use_alpha (GtkColorButton *button)
 {
-  g_return_val_if_fail (GTK_IS_COLOR_BUTTON (button), FALSE);
+  g_return_val_if_fail (CTK_IS_COLOR_BUTTON (button), FALSE);
 
   return button->priv->use_alpha;
 }
@@ -821,14 +821,14 @@ ctk_color_button_set_title (GtkColorButton *button,
   GtkColorButtonPrivate *priv = button->priv;
   gchar *old_title;
 
-  g_return_if_fail (GTK_IS_COLOR_BUTTON (button));
+  g_return_if_fail (CTK_IS_COLOR_BUTTON (button));
 
   old_title = priv->title;
   priv->title = g_strdup (title);
   g_free (old_title);
 
   if (priv->cs_dialog)
-    ctk_window_set_title (GTK_WINDOW (priv->cs_dialog), priv->title);
+    ctk_window_set_title (CTK_WINDOW (priv->cs_dialog), priv->title);
 
   g_object_notify (G_OBJECT (button), "title");
 }
@@ -846,7 +846,7 @@ ctk_color_button_set_title (GtkColorButton *button,
 const gchar *
 ctk_color_button_get_title (GtkColorButton *button)
 {
-  g_return_val_if_fail (GTK_IS_COLOR_BUTTON (button), NULL);
+  g_return_val_if_fail (CTK_IS_COLOR_BUTTON (button), NULL);
 
   return button->priv->title;
 }
@@ -857,7 +857,7 @@ ctk_color_button_set_property (GObject      *object,
                                const GValue *value,
                                GParamSpec   *pspec)
 {
-  GtkColorButton *button = GTK_COLOR_BUTTON (object);
+  GtkColorButton *button = CTK_COLOR_BUTTON (object);
 
   switch (param_id)
     {
@@ -879,7 +879,7 @@ ctk_color_button_set_property (GObject      *object,
         rgba.blue = color->blue / 65535.0;
         rgba.alpha = 1.0;
 
-        ctk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (button), &rgba);
+        ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (button), &rgba);
       }
       break;
     case PROP_ALPHA:
@@ -888,7 +888,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
       break;
     case PROP_RGBA:
-      ctk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (button), g_value_get_boxed (value));
+      ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (button), g_value_get_boxed (value));
       break;
     case PROP_SHOW_EDITOR:
       {
@@ -912,7 +912,7 @@ ctk_color_button_get_property (GObject    *object,
                                GValue     *value,
                                GParamSpec *pspec)
 {
-  GtkColorButton *button = GTK_COLOR_BUTTON (object);
+  GtkColorButton *button = CTK_COLOR_BUTTON (object);
 
   switch (param_id)
     {
@@ -927,7 +927,7 @@ ctk_color_button_get_property (GObject    *object,
         GdkColor color;
         GdkRGBA rgba;
 
-        ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (button), &rgba);
+        ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (button), &rgba);
 
         color.red = (guint16) (rgba.red * 65535 + 0.5);
         color.green = (guint16) (rgba.green * 65535 + 0.5);
@@ -949,7 +949,7 @@ ctk_color_button_get_property (GObject    *object,
       {
         GdkRGBA rgba;
 
-        ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (button), &rgba);
+        ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (button), &rgba);
         g_value_set_boxed (value, &rgba);
       }
       break;
@@ -969,11 +969,11 @@ ctk_color_button_add_palette (GtkColorChooser *chooser,
                               gint             n_colors,
                               GdkRGBA         *colors)
 {
-  GtkColorButton *button = GTK_COLOR_BUTTON (chooser);
+  GtkColorButton *button = CTK_COLOR_BUTTON (chooser);
 
   ensure_dialog (button);
 
-  ctk_color_chooser_add_palette (GTK_COLOR_CHOOSER (button->priv->cs_dialog),
+  ctk_color_chooser_add_palette (CTK_COLOR_CHOOSER (button->priv->cs_dialog),
                                  orientation, colors_per_line, n_colors, colors);
 }
 

@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_DND_PRIVATE_H__
-#define __GTK_DND_PRIVATE_H__
+#ifndef __CTK_DND_PRIVATE_H__
+#define __CTK_DND_PRIVATE_H__
 
 
 #include <gtk/gtkwidget.h>
@@ -61,4 +61,4 @@ void                    _ctk_drag_dest_handle_event     (GtkWidget              
 
 G_END_DECLS
 
-#endif /* __GTK_DND_PRIVATE_H__ */
+#endif /* __CTK_DND_PRIVATE_H__ */

@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_VBOX_H__
-#define __GTK_VBOX_H__
+#ifndef __CTK_VBOX_H__
+#define __CTK_VBOX_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_VBOX		 (ctk_vbox_get_type ())
-#define GTK_VBOX(obj)		 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_VBOX, GtkVBox))
-#define GTK_VBOX_CLASS(klass)	 (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_VBOX, GtkVBoxClass))
-#define GTK_IS_VBOX(obj)	 (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_VBOX))
-#define GTK_IS_VBOX_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_VBOX))
-#define GTK_VBOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_VBOX, GtkVBoxClass))
+#define CTK_TYPE_VBOX		 (ctk_vbox_get_type ())
+#define CTK_VBOX(obj)		 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_VBOX, GtkVBox))
+#define CTK_VBOX_CLASS(klass)	 (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_VBOX, GtkVBoxClass))
+#define CTK_IS_VBOX(obj)	 (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_VBOX))
+#define CTK_IS_VBOX_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_VBOX))
+#define CTK_VBOX_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_VBOX, GtkVBoxClass))
 
 
 typedef struct _GtkVBox	      GtkVBox;
@@ -63,4 +63,4 @@ GtkWidget * ctk_vbox_new      (gboolean homogeneous,
 
 G_END_DECLS
 
-#endif /* __GTK_VBOX_H__ */
+#endif /* __CTK_VBOX_H__ */

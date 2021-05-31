@@ -93,7 +93,7 @@ follow_if_link (GtkWidget   *text_view,
 
       if (page != 0)
         {
-          show_page (ctk_text_view_get_buffer (GTK_TEXT_VIEW (text_view)), page);
+          show_page (ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view)), page);
           break;
         }
     }
@@ -115,7 +115,7 @@ key_press_event (GtkWidget *text_view,
     {
       case GDK_KEY_Return:
       case GDK_KEY_KP_Enter:
-        buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (text_view));
+        buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view));
         ctk_text_buffer_get_iter_at_mark (buffer, &iter,
                                           ctk_text_buffer_get_insert (buffer));
         follow_if_link (text_view, &iter);
@@ -162,18 +162,18 @@ event_after (GtkWidget *text_view,
   else
     return FALSE;
 
-  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (text_view));
+  buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view));
 
   /* we shouldn't follow a link if the user has selected something */
   ctk_text_buffer_get_selection_bounds (buffer, &start, &end);
   if (ctk_text_iter_get_offset (&start) != ctk_text_iter_get_offset (&end))
     return FALSE;
 
-  ctk_text_view_window_to_buffer_coords (GTK_TEXT_VIEW (text_view),
-                                         GTK_TEXT_WINDOW_WIDGET,
+  ctk_text_view_window_to_buffer_coords (CTK_TEXT_VIEW (text_view),
+                                         CTK_TEXT_WINDOW_WIDGET,
                                          ex, ey, &x, &y);
 
-  if (ctk_text_view_get_iter_at_location (GTK_TEXT_VIEW (text_view), &iter, x, y))
+  if (ctk_text_view_get_iter_at_location (CTK_TEXT_VIEW (text_view), &iter, x, y))
     follow_if_link (text_view, &iter);
 
   return TRUE;
@@ -217,9 +217,9 @@ set_cursor_if_appropriate (GtkTextView    *text_view,
       hovering_over_link = hovering;
 
       if (hovering_over_link)
-        gdk_window_set_cursor (ctk_text_view_get_window (text_view, GTK_TEXT_WINDOW_TEXT), hand_cursor);
+        gdk_window_set_cursor (ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT), hand_cursor);
       else
-        gdk_window_set_cursor (ctk_text_view_get_window (text_view, GTK_TEXT_WINDOW_TEXT), regular_cursor);
+        gdk_window_set_cursor (ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT), regular_cursor);
     }
 
   if (tags)
@@ -234,11 +234,11 @@ motion_notify_event (GtkWidget      *text_view,
 {
   gint x, y;
 
-  ctk_text_view_window_to_buffer_coords (GTK_TEXT_VIEW (text_view),
-                                         GTK_TEXT_WINDOW_WIDGET,
+  ctk_text_view_window_to_buffer_coords (CTK_TEXT_VIEW (text_view),
+                                         CTK_TEXT_WINDOW_WIDGET,
                                          event->x, event->y, &x, &y);
 
-  set_cursor_if_appropriate (GTK_TEXT_VIEW (text_view), x, y);
+  set_cursor_if_appropriate (CTK_TEXT_VIEW (text_view), x, y);
 
   return FALSE;
 }
@@ -259,21 +259,21 @@ do_hypertext (GtkWidget *do_widget)
       hand_cursor = gdk_cursor_new_from_name (display, "pointer");
       regular_cursor = gdk_cursor_new_from_name (display, "text");
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_title (GTK_WINDOW (window), "Hypertext");
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_title (CTK_WINDOW (window), "Hypertext");
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_default_size (GTK_WINDOW (window), 450, 450);
+      ctk_window_set_default_size (CTK_WINDOW (window), 450, 450);
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      ctk_container_set_border_width (GTK_CONTAINER (window), 0);
+      ctk_container_set_border_width (CTK_CONTAINER (window), 0);
 
       view = ctk_text_view_new ();
-      ctk_text_view_set_wrap_mode (GTK_TEXT_VIEW (view), GTK_WRAP_WORD);
-      ctk_text_view_set_left_margin (GTK_TEXT_VIEW (view), 20);
-      ctk_text_view_set_right_margin (GTK_TEXT_VIEW (view), 20);
+      ctk_text_view_set_wrap_mode (CTK_TEXT_VIEW (view), CTK_WRAP_WORD);
+      ctk_text_view_set_left_margin (CTK_TEXT_VIEW (view), 20);
+      ctk_text_view_set_right_margin (CTK_TEXT_VIEW (view), 20);
       g_signal_connect (view, "key-press-event",
                         G_CALLBACK (key_press_event), NULL);
       g_signal_connect (view, "event-after",
@@ -281,14 +281,14 @@ do_hypertext (GtkWidget *do_widget)
       g_signal_connect (view, "motion-notify-event",
                         G_CALLBACK (motion_notify_event), NULL);
 
-      buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+      buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_container_add (GTK_CONTAINER (window), sw);
-      ctk_container_add (GTK_CONTAINER (sw), view);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_container_add (CTK_CONTAINER (window), sw);
+      ctk_container_add (CTK_CONTAINER (sw), view);
 
       show_page (buffer, 1);
 

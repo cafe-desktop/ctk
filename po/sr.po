@@ -4433,16 +4433,16 @@ msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "Омогући статистику уз „GOBJECT_DEBUG=instance-count“"
 
 #: gtk/inspector/visual.c:432 gtk/inspector/visual.c:447
-msgid "Theme is hardcoded by GTK_THEME"
-msgstr "Тема је стриктно кодирана са „GTK_THEME“"
+msgid "Theme is hardcoded by CTK_THEME"
+msgstr "Тема је стриктно кодирана са „CTK_THEME“"
 
 #: gtk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "Позадинац не подржава сразмеравање прозора"
 
 #: gtk/inspector/visual.c:752
-msgid "Setting is hardcoded by GTK_TEST_TOUCHSCREEN"
-msgstr "Подешавање је стриктно кодирано са „GTK_TEST_TOUCHSCREEN“"
+msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
+msgstr "Подешавање је стриктно кодирано са „CTK_TEST_TOUCHSCREEN“"
 
 #: gtk/inspector/visual.c:817
 msgid ""
@@ -8540,10 +8540,10 @@ msgstr "Штампај на пробном штампачу"
 
 #~ msgid ""
 #~ "Whether the action is considered important. When TRUE, toolitem proxies "
-#~ "for this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+#~ "for this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 #~ msgstr ""
 #~ "Да ли се радња сматра важном. Ако је постављено, посредници за ставке "
-#~ "алата ове радње приказују текст у режиму „GTK_TOOLBAR_BOTH_HORIZ“."
+#~ "алата ове радње приказују текст у режиму „CTK_TOOLBAR_BOTH_HORIZ“."
 
 #~ msgid "Hide if empty"
 #~ msgstr "Сакриј ако је празно"
@@ -9343,17 +9343,17 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "The position of the image relative to the text"
 #~ msgstr "Положај слике у односу на текст"
 
-#~ msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-#~ msgstr "Размак који треба додати за „GTK_CAN_DEFAULT“ дугмиће"
+#~ msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+#~ msgstr "Размак који треба додати за „CTK_CAN_DEFAULT“ дугмиће"
 
 #~ msgid "Default Outside Spacing"
 #~ msgstr "Размак око подразумеваних"
 
 #~ msgid ""
-#~ "Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn "
+#~ "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn "
 #~ "outside the border"
 #~ msgstr ""
-#~ "Размак који треба додати око „GTK_CAN_DEFAULT“ дугмића и који се исцртава "
+#~ "Размак који треба додати око „CTK_CAN_DEFAULT“ дугмића и који се исцртава "
 #~ "око границе"
 
 # Da li je "kada se pritisne" ili "kada se otpusti"?
@@ -10813,10 +10813,10 @@ msgstr "Штампај на пробном штампачу"
 #~ msgstr "Ако је постављено, онда све колоне имају исту висину"
 
 #~ msgid ""
-#~ "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+#~ "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 #~ msgstr ""
 #~ "Ред за поравнање са линијом основе када је усправно поравнање "
-#~ "„GTK_ALIGN_BASELINE“"
+#~ "„CTK_ALIGN_BASELINE“"
 
 #~ msgid "The row number to attach the top side of a child widget to"
 #~ msgstr "Број реда за који прикачити горњу страну садржаног елемента"
@@ -13310,10 +13310,10 @@ msgstr "Штампај на пробном штампачу"
 
 #~ msgid ""
 #~ "Whether the toolbar item is considered important. When TRUE, toolbar "
-#~ "buttons show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+#~ "buttons show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 #~ msgstr ""
 #~ "Да ли се ставка алатки сматра важном. Ако је постављено, дугмад алатке "
-#~ "приказују и текст у режиму GTK_TOOLBAR_BOTH_HORIZ"
+#~ "приказују и текст у режиму CTK_TOOLBAR_BOTH_HORIZ"
 
 #~ msgid "The human-readable title of this item group"
 #~ msgstr "Једноставни назив за ову групу ставки"

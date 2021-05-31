@@ -92,7 +92,7 @@ static void ctk_text_cell_accessible_update_cache       (GtkCellAccessible *cell
 
 static void atk_text_interface_init (AtkTextIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkTextCellAccessible, ctk_text_cell_accessible, GTK_TYPE_RENDERER_CELL_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkTextCellAccessible, ctk_text_cell_accessible, CTK_TYPE_RENDERER_CELL_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkTextCellAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_TEXT, atk_text_interface_init))
 
@@ -111,7 +111,7 @@ ctk_text_cell_accessible_ref_state_set (AtkObject *accessible)
 static void
 ctk_text_cell_accessible_finalize (GObject *object)
 {
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (object);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (object);
 
   g_free (text_cell->priv->cell_text);
 
@@ -124,7 +124,7 @@ ctk_text_cell_accessible_finalize (GObject *object)
 static const gchar *
 ctk_text_cell_accessible_get_name (AtkObject *atk_obj)
 {
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (atk_obj);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_obj);
 
   if (atk_obj->name)
     return atk_obj->name;
@@ -136,7 +136,7 @@ static void
 ctk_text_cell_accessible_update_cache (GtkCellAccessible *cell,
                                        gboolean           emit_signal)
 {
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (cell);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (cell);
   AtkObject *obj = ATK_OBJECT (cell);
   gint text_length;
   gchar *text;
@@ -184,7 +184,7 @@ ctk_text_cell_accessible_class_init (GtkTextCellAccessibleClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   AtkObjectClass *atk_object_class = ATK_OBJECT_CLASS (klass);
-  GtkCellAccessibleClass *cell_class = GTK_CELL_ACCESSIBLE_CLASS (klass);
+  GtkCellAccessibleClass *cell_class = CTK_CELL_ACCESSIBLE_CLASS (klass);
 
   cell_class->update_cache = ctk_text_cell_accessible_update_cache;
 
@@ -207,7 +207,7 @@ ctk_text_cell_accessible_get_text (AtkText *atk_text,
 {
   gchar *text;
 
-  text = GTK_TEXT_CELL_ACCESSIBLE (atk_text)->priv->cell_text;
+  text = CTK_TEXT_CELL_ACCESSIBLE (atk_text)->priv->cell_text;
   if (text)
     return g_utf8_substring (text, start_pos, end_pos > -1 ? end_pos : g_utf8_strlen (text, -1));
   else
@@ -221,7 +221,7 @@ ctk_text_cell_accessible_get_text_before_offset (AtkText         *atk_text,
                                                  gint            *start_offset,
                                                  gint            *end_offset)
 {
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (atk_text);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_text);
   gchar *text;
 
   text = _ctk_pango_get_text_before (text_cell->priv->layout, boundary_type, offset, start_offset, end_offset);
@@ -236,7 +236,7 @@ ctk_text_cell_accessible_get_text_at_offset (AtkText         *atk_text,
                                              gint            *start_offset,
                                              gint            *end_offset)
 {
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (atk_text);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_text);
   gchar *text;
 
   text = _ctk_pango_get_text_at (text_cell->priv->layout, boundary_type, offset, start_offset, end_offset);
@@ -251,7 +251,7 @@ ctk_text_cell_accessible_get_text_after_offset (AtkText         *atk_text,
                                                 gint            *start_offset,
                                                 gint            *end_offset)
 {
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (atk_text);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (atk_text);
   gchar *text;
 
   text = _ctk_pango_get_text_after (text_cell->priv->layout, boundary_type, offset, start_offset, end_offset);
@@ -262,8 +262,8 @@ ctk_text_cell_accessible_get_text_after_offset (AtkText         *atk_text,
 static gint
 ctk_text_cell_accessible_get_character_count (AtkText *text)
 {
-  if (GTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_text != NULL)
-    return GTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_length;
+  if (CTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_text != NULL)
+    return CTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_length;
   else
     return 0;
 }
@@ -271,14 +271,14 @@ ctk_text_cell_accessible_get_character_count (AtkText *text)
 static gint
 ctk_text_cell_accessible_get_caret_offset (AtkText *text)
 {
-  return GTK_TEXT_CELL_ACCESSIBLE (text)->priv->caret_pos;
+  return CTK_TEXT_CELL_ACCESSIBLE (text)->priv->caret_pos;
 }
 
 static gboolean
 ctk_text_cell_accessible_set_caret_offset (AtkText *text,
                                            gint     offset)
 {
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (text);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
 
   if (text_cell->priv->cell_text == NULL)
     return FALSE;
@@ -307,7 +307,7 @@ ctk_text_cell_accessible_get_run_attributes (AtkText *text,
                                              gint    *end_offset)
 {
   AtkAttributeSet *attrib_set = NULL;
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (text);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
 
   attrib_set = _ctk_pango_get_run_attributes  (NULL, text_cell->priv->layout, offset, start_offset, end_offset);
 
@@ -332,10 +332,10 @@ static AtkAttributeSet *
 ctk_text_cell_accessible_get_default_attributes (AtkText *text)
 {
   AtkAttributeSet *attrib_set = NULL;
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (text);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
   GtkWidget *widget;
 
-  widget = get_widget (GTK_TEXT_CELL_ACCESSIBLE (text));
+  widget = get_widget (CTK_TEXT_CELL_ACCESSIBLE (text));
 
   attrib_set = add_attribute (attrib_set, ATK_TEXT_ATTR_DIRECTION,
                    atk_text_attribute_get_value (ATK_TEXT_ATTR_DIRECTION,
@@ -355,10 +355,10 @@ get_widget (GtkTextCellAccessible *text)
   AtkObject *parent;
 
   parent = atk_object_get_parent (ATK_OBJECT (text));
-  if (GTK_IS_CONTAINER_CELL_ACCESSIBLE (parent))
+  if (CTK_IS_CONTAINER_CELL_ACCESSIBLE (parent))
     parent = atk_object_get_parent (parent);
 
-  return ctk_accessible_get_widget (GTK_ACCESSIBLE (parent));
+  return ctk_accessible_get_widget (CTK_ACCESSIBLE (parent));
 }
 
 /* This function is used by ctk_text_cell_accessible_get_offset_at_point()
@@ -382,7 +382,7 @@ create_pango_layout (GtkTextCellAccessible *text)
   GtkRendererCellAccessible *gail_renderer;
   GtkCellRendererText *ctk_renderer;
 
-  gail_renderer = GTK_RENDERER_CELL_ACCESSIBLE (text);
+  gail_renderer = CTK_RENDERER_CELL_ACCESSIBLE (text);
   g_object_get (gail_renderer, "renderer", &ctk_renderer, NULL);
 
   g_object_get (ctk_renderer,
@@ -487,8 +487,8 @@ get_origins (GtkWidget *widget,
 {
   GdkWindow *window;
 
-  if (GTK_IS_TREE_VIEW (widget))
-    window = ctk_tree_view_get_bin_window (GTK_TREE_VIEW (widget));
+  if (CTK_IS_TREE_VIEW (widget))
+    window = ctk_tree_view_get_bin_window (CTK_TREE_VIEW (widget));
   else
     window = ctk_widget_get_window (widget);
 
@@ -513,24 +513,24 @@ ctk_text_cell_accessible_get_character_extents (AtkText      *text,
   GtkWidget *widget;
   AtkObject *parent;
   PangoRectangle char_rect;
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (text);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
   gchar *renderer_text;
   gfloat xalign, yalign;
   gint x_offset, y_offset, index;
   gint xpad, ypad;
   gint x_window, y_window, x_toplevel, y_toplevel;
 
-  if (!GTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_text)
+  if (!CTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_text)
     {
       *x = *y = *height = *width = 0;
       return;
     }
-  if (offset < 0 || offset >= GTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_length)
+  if (offset < 0 || offset >= CTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_length)
     {
       *x = *y = *height = *width = 0;
       return;
     }
-  gail_renderer = GTK_RENDERER_CELL_ACCESSIBLE (text);
+  gail_renderer = CTK_RENDERER_CELL_ACCESSIBLE (text);
   g_object_get (gail_renderer, "renderer", &ctk_renderer, NULL);
   g_object_get (ctk_renderer, "text", &renderer_text, NULL);
   if (renderer_text == NULL)
@@ -540,20 +540,20 @@ ctk_text_cell_accessible_get_character_extents (AtkText      *text,
     }
 
   parent = atk_object_get_parent (ATK_OBJECT (text));
-  if (GTK_IS_CONTAINER_CELL_ACCESSIBLE (parent))
+  if (CTK_IS_CONTAINER_CELL_ACCESSIBLE (parent))
     parent = atk_object_get_parent (parent);
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (parent));
-  g_return_if_fail (GTK_IS_CELL_ACCESSIBLE_PARENT (parent));
-  ctk_cell_accessible_parent_get_cell_area (GTK_CELL_ACCESSIBLE_PARENT (parent),
-                                            GTK_CELL_ACCESSIBLE (text),
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (parent));
+  g_return_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent));
+  ctk_cell_accessible_parent_get_cell_area (CTK_CELL_ACCESSIBLE_PARENT (parent),
+                                            CTK_CELL_ACCESSIBLE (text),
                                             &rendered_rect);
 
-  ctk_cell_renderer_get_preferred_size (GTK_CELL_RENDERER (ctk_renderer),
+  ctk_cell_renderer_get_preferred_size (CTK_CELL_RENDERER (ctk_renderer),
                                         widget,
                                         &min_size, NULL);
 
-  ctk_cell_renderer_get_alignment (GTK_CELL_RENDERER (ctk_renderer), &xalign, &yalign);
-  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+  ctk_cell_renderer_get_alignment (CTK_CELL_RENDERER (ctk_renderer), &xalign, &yalign);
+  if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
     xalign = 1.0 - xalign;
   x_offset = MAX (0, xalign * (rendered_rect.width - min_size.width));
   y_offset = MAX (0, yalign * (rendered_rect.height - min_size.height));
@@ -561,7 +561,7 @@ ctk_text_cell_accessible_get_character_extents (AtkText      *text,
   index = g_utf8_offset_to_pointer (renderer_text, offset) - renderer_text;
   pango_layout_index_to_pos (text_cell->priv->layout, index, &char_rect);
 
-  ctk_cell_renderer_get_padding (GTK_CELL_RENDERER (ctk_renderer), &xpad, &ypad);
+  ctk_cell_renderer_get_padding (CTK_CELL_RENDERER (ctk_renderer), &xpad, &ypad);
 
   get_origins (widget, &x_window, &y_window, &x_toplevel, &y_toplevel);
 
@@ -599,7 +599,7 @@ ctk_text_cell_accessible_get_offset_at_point (AtkText      *text,
   GtkRequisition min_size;
   GtkWidget *widget;
   GdkRectangle rendered_rect;
-  GtkTextCellAccessible *text_cell = GTK_TEXT_CELL_ACCESSIBLE (text);
+  GtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
   gchar *renderer_text;
   gfloat xalign, yalign;
   gint x_offset, y_offset, index;
@@ -608,10 +608,10 @@ ctk_text_cell_accessible_get_offset_at_point (AtkText      *text,
   gint x_temp, y_temp;
   gboolean ret;
 
-  if (!GTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_text)
+  if (!CTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_text)
     return -1;
 
-  gail_renderer = GTK_RENDERER_CELL_ACCESSIBLE (text);
+  gail_renderer = CTK_RENDERER_CELL_ACCESSIBLE (text);
   g_object_get (gail_renderer, "renderer", &ctk_renderer, NULL);
   parent = atk_object_get_parent (ATK_OBJECT (text));
 
@@ -623,26 +623,26 @@ ctk_text_cell_accessible_get_offset_at_point (AtkText      *text,
       return -1;
     }
 
-  if (GTK_IS_CONTAINER_CELL_ACCESSIBLE (parent))
+  if (CTK_IS_CONTAINER_CELL_ACCESSIBLE (parent))
     parent = atk_object_get_parent (parent);
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (parent));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (parent));
 
-  g_return_val_if_fail (GTK_IS_CELL_ACCESSIBLE_PARENT (parent), -1);
-  ctk_cell_accessible_parent_get_cell_area (GTK_CELL_ACCESSIBLE_PARENT (parent),
-                                            GTK_CELL_ACCESSIBLE (text),
+  g_return_val_if_fail (CTK_IS_CELL_ACCESSIBLE_PARENT (parent), -1);
+  ctk_cell_accessible_parent_get_cell_area (CTK_CELL_ACCESSIBLE_PARENT (parent),
+                                            CTK_CELL_ACCESSIBLE (text),
                                             &rendered_rect);
 
-  ctk_cell_renderer_get_preferred_size (GTK_CELL_RENDERER (ctk_renderer),
+  ctk_cell_renderer_get_preferred_size (CTK_CELL_RENDERER (ctk_renderer),
                                         widget,
                                         &min_size, NULL);
-  ctk_cell_renderer_get_alignment (GTK_CELL_RENDERER (ctk_renderer), &xalign, &yalign);
-  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+  ctk_cell_renderer_get_alignment (CTK_CELL_RENDERER (ctk_renderer), &xalign, &yalign);
+  if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
     xalign = 1.0 - xalign;
   x_offset = MAX (0, xalign * (rendered_rect.width - min_size.width));
   y_offset = MAX (0, yalign * (rendered_rect.height - min_size.height));
 
-  ctk_cell_renderer_get_padding (GTK_CELL_RENDERER (ctk_renderer), &xpad, &ypad);
+  ctk_cell_renderer_get_padding (CTK_CELL_RENDERER (ctk_renderer), &xpad, &ypad);
 
   get_origins (widget, &x_window, &y_window, &x_toplevel, &y_toplevel);
 
@@ -705,7 +705,7 @@ ctk_text_cell_accessible_get_character_at_offset (AtkText *text,
   gchar *index;
   gchar *string;
 
-  string = GTK_TEXT_CELL_ACCESSIBLE(text)->priv->cell_text;
+  string = CTK_TEXT_CELL_ACCESSIBLE(text)->priv->cell_text;
 
   if (!string)
     return '\0';

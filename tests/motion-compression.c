@@ -41,22 +41,22 @@ main (int argc, char **argv)
 
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_default_size (GTK_WINDOW (window), 300, 300);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (CTK_WINDOW (window), 300, 300);
   ctk_widget_set_app_paintable (window, TRUE);
   ctk_widget_add_events (window, GDK_POINTER_MOTION_MASK);
   ctk_widget_set_app_paintable (window, TRUE);
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
 
   adjustment = ctk_adjustment_new (20, 0, 200, 1, 10, 0);
-  scale = ctk_scale_new (GTK_ORIENTATION_HORIZONTAL, adjustment);
-  ctk_box_pack_end (GTK_BOX (vbox), scale, FALSE, FALSE, 0);
+  scale = ctk_scale_new (CTK_ORIENTATION_HORIZONTAL, adjustment);
+  ctk_box_pack_end (CTK_BOX (vbox), scale, FALSE, FALSE, 0);
 
   label = ctk_label_new ("Event processing time (ms):");
-  ctk_widget_set_halign (label, GTK_ALIGN_CENTER);
-  ctk_box_pack_end (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+  ctk_widget_set_halign (label, CTK_ALIGN_CENTER);
+  ctk_box_pack_end (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
   g_signal_connect (window, "motion-notify-event",
                     G_CALLBACK (on_motion_notify), NULL);

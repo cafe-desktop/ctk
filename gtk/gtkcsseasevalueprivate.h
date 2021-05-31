@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_EASE_VALUE_PRIVATE_H__
-#define __GTK_CSS_EASE_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_EASE_VALUE_PRIVATE_H__
+#define __CTK_CSS_EASE_VALUE_PRIVATE_H__
 
 #include "gtkcssparserprivate.h"
 #include "gtkcssvalueprivate.h"
@@ -38,4 +38,4 @@ double          _ctk_css_ease_value_transform         (const GtkCssValue    *eas
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_EASE_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_EASE_VALUE_PRIVATE_H__ */

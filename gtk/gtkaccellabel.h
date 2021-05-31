@@ -25,10 +25,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_ACCEL_LABEL_H__
-#define __GTK_ACCEL_LABEL_H__
+#ifndef __CTK_ACCEL_LABEL_H__
+#define __CTK_ACCEL_LABEL_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -36,12 +36,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACCEL_LABEL		(ctk_accel_label_get_type ())
-#define GTK_ACCEL_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ACCEL_LABEL, GtkAccelLabel))
-#define GTK_ACCEL_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ACCEL_LABEL, GtkAccelLabelClass))
-#define GTK_IS_ACCEL_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ACCEL_LABEL))
-#define GTK_IS_ACCEL_LABEL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ACCEL_LABEL))
-#define GTK_ACCEL_LABEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ACCEL_LABEL, GtkAccelLabelClass))
+#define CTK_TYPE_ACCEL_LABEL		(ctk_accel_label_get_type ())
+#define CTK_ACCEL_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ACCEL_LABEL, GtkAccelLabel))
+#define CTK_ACCEL_LABEL_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ACCEL_LABEL, GtkAccelLabelClass))
+#define CTK_IS_ACCEL_LABEL(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ACCEL_LABEL))
+#define CTK_IS_ACCEL_LABEL_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ACCEL_LABEL))
+#define CTK_ACCEL_LABEL_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ACCEL_LABEL, GtkAccelLabelClass))
 
 
 typedef struct _GtkAccelLabel	     GtkAccelLabel;
@@ -113,4 +113,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkAccelLabel, g_object_unref)
 
 G_END_DECLS
 
-#endif /* __GTK_ACCEL_LABEL_H__ */
+#endif /* __CTK_ACCEL_LABEL_H__ */

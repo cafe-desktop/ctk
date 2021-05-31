@@ -210,13 +210,13 @@ do_edge_constraint_state_check (GdkWindow      *window,
   local_unset = *unset;
   edge_constraints = toplevel->edge_constraints;
 
-  /* If the WM doesn't support _GTK_EDGE_CONSTRAINTS, rely on the fallback
-   * implementation. If it supports _GTK_EDGE_CONSTRAINTS, arrange for
+  /* If the WM doesn't support _CTK_EDGE_CONSTRAINTS, rely on the fallback
+   * implementation. If it supports _CTK_EDGE_CONSTRAINTS, arrange for
    * GDK_WINDOW_STATE_TILED to be set if any edge is tiled, and cleared
    * if no edge is tiled.
    */
   if (!gdk_x11_screen_supports_net_wm_hint (screen,
-                                            gdk_atom_intern_static_string ("_GTK_EDGE_CONSTRAINTS")))
+                                            gdk_atom_intern_static_string ("_CTK_EDGE_CONSTRAINTS")))
     {
       /* FIXME: we rely on implementation details of mutter here:
        * mutter only tiles horizontally, and sets maxvert when it does
@@ -554,7 +554,7 @@ gdk_check_edge_constraints_changed (GdkWindow *window)
   gdk_x11_display_error_trap_push (display);
   XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
                       GDK_WINDOW_XID (window),
-                      gdk_x11_get_xatom_by_name_for_display (display, "_GTK_EDGE_CONSTRAINTS"),
+                      gdk_x11_get_xatom_by_name_for_display (display, "_CTK_EDGE_CONSTRAINTS"),
                       0, G_MAXLONG, False, XA_CARDINAL, &type,
                       &format, &nitems,
                       &bytes_after, &data);
@@ -1065,7 +1065,7 @@ gdk_x11_display_translate_event (GdkEventTranslator *translator,
 	  if (xevent->xproperty.atom == gdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_DESKTOP"))
 	    gdk_check_wm_desktop_changed (window);
 
-	  if (xevent->xproperty.atom == gdk_x11_get_xatom_by_name_for_display (display, "_GTK_EDGE_CONSTRAINTS"))
+	  if (xevent->xproperty.atom == gdk_x11_get_xatom_by_name_for_display (display, "_CTK_EDGE_CONSTRAINTS"))
 	    gdk_check_edge_constraints_changed (window);
 	}
 

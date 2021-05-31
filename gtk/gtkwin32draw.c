@@ -178,14 +178,14 @@ draw_edge (cairo_t      *cr,
     {
     case EDGE_RAISED_OUTER:
       draw_outline (cr,
-                    soft ? GTK_WIN32_SYS_COLOR_BTNHIGHLIGHT : GTK_WIN32_SYS_COLOR_3DLIGHT,
-                    GTK_WIN32_SYS_COLOR_3DDKSHADOW,
+                    soft ? CTK_WIN32_SYS_COLOR_BTNHIGHLIGHT : CTK_WIN32_SYS_COLOR_3DLIGHT,
+                    CTK_WIN32_SYS_COLOR_3DDKSHADOW,
                     x, y, width, height);
       break;
     case EDGE_SUNKEN_OUTER:
       draw_outline (cr,
-                    soft ? GTK_WIN32_SYS_COLOR_3DDKSHADOW : GTK_WIN32_SYS_COLOR_BTNSHADOW,
-                    GTK_WIN32_SYS_COLOR_BTNHIGHLIGHT,
+                    soft ? CTK_WIN32_SYS_COLOR_3DDKSHADOW : CTK_WIN32_SYS_COLOR_BTNSHADOW,
+                    CTK_WIN32_SYS_COLOR_BTNHIGHLIGHT,
                     x, y, width, height);
       break;
     case (EDGE_RAISED_OUTER | EDGE_SUNKEN_OUTER):
@@ -203,14 +203,14 @@ draw_edge (cairo_t      *cr,
     {
     case EDGE_RAISED_INNER:
       draw_outline (cr,
-                    soft ? GTK_WIN32_SYS_COLOR_3DLIGHT : GTK_WIN32_SYS_COLOR_BTNHIGHLIGHT,
-                    GTK_WIN32_SYS_COLOR_BTNSHADOW,
+                    soft ? CTK_WIN32_SYS_COLOR_3DLIGHT : CTK_WIN32_SYS_COLOR_BTNHIGHLIGHT,
+                    CTK_WIN32_SYS_COLOR_BTNSHADOW,
                     x, y, width, height);
       break;
     case EDGE_SUNKEN_INNER:
       draw_outline (cr,
-                    soft ? GTK_WIN32_SYS_COLOR_BTNSHADOW : GTK_WIN32_SYS_COLOR_3DDKSHADOW,
-                    GTK_WIN32_SYS_COLOR_3DLIGHT,
+                    soft ? CTK_WIN32_SYS_COLOR_BTNSHADOW : CTK_WIN32_SYS_COLOR_3DDKSHADOW,
+                    CTK_WIN32_SYS_COLOR_3DLIGHT,
                     x, y, width, height);
       break;
     case (EDGE_RAISED_INNER | EDGE_SUNKEN_INNER):
@@ -229,7 +229,7 @@ draw_button (cairo_t *cr,
 {
   draw_edge (cr, state == 3 ? EDGE_SUNKEN : EDGE_RAISED, TRUE, 0, 0, width, height);
 
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 2, width - 4, height - 4);
   cairo_fill (cr);
 }
@@ -243,7 +243,7 @@ draw_frame (cairo_t *cr,
 {
   draw_edge (cr, EDGE_ETCHED, FALSE, 0, 0, width, height);
 
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 2, width - 4, height - 4);
   cairo_fill (cr);
 }
@@ -255,7 +255,7 @@ draw_check (cairo_t *cr,
             int      width,
             int      height)
 {
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNHIGHLIGHT);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_BTNHIGHLIGHT);
   cairo_set_line_width (cr, 1.0);
   cairo_rectangle (cr, 0.5, 0.5, width - 1.0, height - 1.0);
   cairo_stroke (cr);
@@ -268,7 +268,7 @@ draw_radio (cairo_t *cr,
             int      width,
             int      height)
 {
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNHIGHLIGHT);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_BTNHIGHLIGHT);
   cairo_set_line_width (cr, 1.0);
   cairo_arc (cr, width / 2.0, height / 2.0, MIN (width, height) / 2.0 - 0.5, 0, G_PI * 2);
   cairo_stroke (cr);
@@ -281,17 +281,17 @@ draw_edit (cairo_t *cr,
            int      width,
            int      height)
 {
-  int xborder = ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CXBORDER);
-  int yborder = ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CYBORDER);
+  int xborder = ctk_win32_get_sys_metric (CTK_WIN32_SYS_METRIC_CXBORDER);
+  int yborder = ctk_win32_get_sys_metric (CTK_WIN32_SYS_METRIC_CYBORDER);
 
   cairo_rectangle (cr, 0, 0, width, height);
-  ctk_cairo_set_source_sys_color (cr, (state == 6 || state == 4) ? GTK_WIN32_SYS_COLOR_BTNFACE
-                                                                 : GTK_WIN32_SYS_COLOR_WINDOW);
+  ctk_cairo_set_source_sys_color (cr, (state == 6 || state == 4) ? CTK_WIN32_SYS_COLOR_BTNFACE
+                                                                 : CTK_WIN32_SYS_COLOR_WINDOW);
   cairo_fill_preserve (cr);
 
   cairo_rectangle (cr, width - xborder, yborder,
                    - (width - 2 * xborder), height - 2 * yborder);
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_WINDOWFRAME);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_WINDOWFRAME);
   cairo_fill (cr);
 }
 
@@ -304,8 +304,8 @@ draw_edit_noborder (cairo_t *cr,
 {
 
   cairo_rectangle (cr, 0, 0, width, height);
-  ctk_cairo_set_source_sys_color (cr, (state == 6 || state == 4) ? GTK_WIN32_SYS_COLOR_BTNFACE
-                                                                 : GTK_WIN32_SYS_COLOR_WINDOW);
+  ctk_cairo_set_source_sys_color (cr, (state == 6 || state == 4) ? CTK_WIN32_SYS_COLOR_BTNFACE
+                                                                 : CTK_WIN32_SYS_COLOR_WINDOW);
   cairo_fill (cr);
 }
 
@@ -318,8 +318,8 @@ draw_window (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, 0, 0, width, height + 2);
 
-  ctk_cairo_set_source_sys_color (cr, state == 2 ? GTK_WIN32_SYS_COLOR_INACTIVECAPTION
-                                                 : GTK_WIN32_SYS_COLOR_ACTIVECAPTION);
+  ctk_cairo_set_source_sys_color (cr, state == 2 ? CTK_WIN32_SYS_COLOR_INACTIVECAPTION
+                                                 : CTK_WIN32_SYS_COLOR_ACTIVECAPTION);
   cairo_rectangle (cr, 2, 2, width - 4, height - 2);
   cairo_fill (cr);
 }
@@ -333,7 +333,7 @@ draw_window_left (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, 0, -2, width + 2, height + 4);
 
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 0, width - 2, height);
   cairo_fill (cr);
 }
@@ -347,7 +347,7 @@ draw_window_right (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, -2, -2, width + 2, height + 4);
 
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 0, 0, width - 2, height);
   cairo_fill (cr);
 }
@@ -361,7 +361,7 @@ draw_window_bottom (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, 0, -2, width, height + 2);
 
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 0, width - 4, height - 2);
   cairo_fill (cr);
 }
@@ -396,8 +396,8 @@ draw_window_button (cairo_t *cr,
 
   draw_button (cr, 0, state, width, height);
 
-  ctk_cairo_set_source_sys_color (cr, state == 4 ? GTK_WIN32_SYS_COLOR_BTNSHADOW
-                                                 : GTK_WIN32_SYS_COLOR_BTNTEXT);
+  ctk_cairo_set_source_sys_color (cr, state == 4 ? CTK_WIN32_SYS_COLOR_BTNSHADOW
+                                                 : CTK_WIN32_SYS_COLOR_BTNTEXT);
   mask_icon (cr, icon, 1, 1, width - 2, height - 2);
 }
 
@@ -410,7 +410,7 @@ draw_tab_item (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, 0, 0, width, height + 2);
 
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 2, width - 4, height - 2);
   cairo_fill (cr);
 }
@@ -424,7 +424,7 @@ draw_tab_pane (cairo_t *cr,
 {
   draw_edge (cr, EDGE_RAISED, TRUE, 0, 0, width, height);
 
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_BTNFACE);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_BTNFACE);
   cairo_rectangle (cr, 2, 2, width - 4, height - 4);
   cairo_fill (cr);
 }
@@ -436,15 +436,15 @@ draw_tooltip (cairo_t *cr,
               int      width,
               int      height)
 {
-  int xborder = ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CXDLGFRAME) -
-                ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CXEDGE);
-  int yborder = ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CYDLGFRAME) -
-                ctk_win32_get_sys_metric (GTK_WIN32_SYS_METRIC_CYEDGE);
+  int xborder = ctk_win32_get_sys_metric (CTK_WIN32_SYS_METRIC_CXDLGFRAME) -
+                ctk_win32_get_sys_metric (CTK_WIN32_SYS_METRIC_CXEDGE);
+  int yborder = ctk_win32_get_sys_metric (CTK_WIN32_SYS_METRIC_CYDLGFRAME) -
+                ctk_win32_get_sys_metric (CTK_WIN32_SYS_METRIC_CYEDGE);
 
   cairo_rectangle (cr, 0, 0, width, height);
   cairo_rectangle (cr, width - xborder, yborder,
                    - (width - 2 * xborder), height - 2 * yborder);
-  ctk_cairo_set_source_sys_color (cr, GTK_WIN32_SYS_COLOR_WINDOWFRAME);
+  ctk_cairo_set_source_sys_color (cr, CTK_WIN32_SYS_COLOR_WINDOWFRAME);
   cairo_fill (cr);
 }
 

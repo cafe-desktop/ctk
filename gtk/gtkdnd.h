@@ -23,11 +23,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_DND_H__
-#define __GTK_DND_H__
+#ifndef __CTK_DND_H__
+#define __CTK_DND_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -121,4 +121,4 @@ gboolean ctk_drag_check_threshold (GtkWidget *widget,
 
 G_END_DECLS
 
-#endif /* __GTK_DND_H__ */
+#endif /* __CTK_DND_H__ */

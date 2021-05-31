@@ -31,9 +31,9 @@
 #define ACCOUNT_IFACE        "org.gnome.OnlineAccounts.Account"
 #define O_AUTH2_BASED_IFACE  "org.gnome.OnlineAccounts.OAuth2Based"
 
-#define GTK_CLOUDPRINT_ACCOUNT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_CLOUDPRINT_ACCOUNT, GtkCloudprintAccountClass))
-#define GTK_IS_CLOUDPRINT_ACCOUNT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_CLOUDPRINT_ACCOUNT))
-#define GTK_CLOUDPRINT_ACCOUNT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CLOUDPRINT_ACCOUNT, GtkCloudprintAccountClass))
+#define CTK_CLOUDPRINT_ACCOUNT_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_CLOUDPRINT_ACCOUNT, GtkCloudprintAccountClass))
+#define CTK_IS_CLOUDPRINT_ACCOUNT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_CLOUDPRINT_ACCOUNT))
+#define CTK_CLOUDPRINT_ACCOUNT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CLOUDPRINT_ACCOUNT, GtkCloudprintAccountClass))
 
 static GObjectClass *ctk_cloudprint_account_parent_class;
 static GType ctk_cloudprint_account_type = 0;
@@ -104,7 +104,7 @@ ctk_cloudprint_account_new (const gchar *id,
 			    const gchar *path,
 			    const gchar *presentation_identity)
 {
-  GtkCloudprintAccount *account = g_object_new (GTK_TYPE_CLOUDPRINT_ACCOUNT,
+  GtkCloudprintAccount *account = g_object_new (CTK_TYPE_CLOUDPRINT_ACCOUNT,
 						NULL);
   account->printer_id = g_strdup (id);
   account->goa_path = g_strdup (path);
@@ -129,7 +129,7 @@ ctk_cloudprint_account_init (GtkCloudprintAccount *account)
   account->rest_proxy = NULL;
   account->oauth2_access_token = NULL;
 
-  GTK_NOTE (PRINTING,
+  CTK_NOTE (PRINTING,
 	    g_print ("Cloud Print Backend: +GtkCloudprintAccount(%p)\n",
 		     account));
 }
@@ -139,9 +139,9 @@ ctk_cloudprint_account_finalize (GObject *object)
 {
   GtkCloudprintAccount *account;
 
-  account = GTK_CLOUDPRINT_ACCOUNT (object);
+  account = CTK_CLOUDPRINT_ACCOUNT (object);
 
-  GTK_NOTE (PRINTING,
+  CTK_NOTE (PRINTING,
 	    g_print ("Cloud Print Backend: -GtkCloudprintAccount(%p)\n",
 		     account));
 
@@ -176,7 +176,7 @@ cloudprint_json_parse (RestProxyCall *call, JsonObject **result, GError **error)
     {
       if (error != NULL)
 	*error = g_error_new_literal (ctk_print_error_quark (),
-				      GTK_PRINT_ERROR_INTERNAL_ERROR,
+				      CTK_PRINT_ERROR_INTERNAL_ERROR,
 				      "Bad reply");
 
       g_object_unref (json_parser);
@@ -194,13 +194,13 @@ cloudprint_json_parse (RestProxyCall *call, JsonObject **result, GError **error)
       if (json_object_has_member (json_object, "message"))
 	message = json_object_get_string_member (json_object, "message");
 
-      GTK_NOTE (PRINTING,
+      CTK_NOTE (PRINTING,
 		g_print ("Cloud Print Backend: unsuccessful submit: %s\n",
 			 message));
 
       if (error != NULL)
 	*error = g_error_new_literal (ctk_print_error_quark (),
-				      GTK_PRINT_ERROR_INTERNAL_ERROR,
+				      CTK_PRINT_ERROR_INTERNAL_ERROR,
 				      message);
 
       g_object_unref (json_parser);
@@ -229,7 +229,7 @@ ctk_cloudprint_account_search_rest_call_cb (RestProxyCall *call,
   {
     GtkCloudprintAccount *account = g_task_get_task_data (task);
 
-    GTK_NOTE (PRINTING,
+    CTK_NOTE (PRINTING,
               g_print ("Cloud Print Backend: (%p) 'search' REST call returned\n",
                        account));
   }
@@ -266,7 +266,7 @@ ctk_cloudprint_account_search_rest_call_cb (RestProxyCall *call,
     {
       g_task_return_new_error (task,
 			       ctk_print_error_quark (),
-			       GTK_PRINT_ERROR_INTERNAL_ERROR,
+			       CTK_PRINT_ERROR_INTERNAL_ERROR,
 			       "Bad reply to 'search' request");
       return;
     }
@@ -317,13 +317,13 @@ ctk_cloudprint_account_got_oauth2_access_token_cb (GObject *source,
     {
       g_task_return_new_error (task,
 			       ctk_print_error_quark (),
-			       GTK_PRINT_ERROR_INTERNAL_ERROR,
+			       CTK_PRINT_ERROR_INTERNAL_ERROR,
 			       "REST proxy creation failed");
       g_object_unref (task);
       return;
     }
 
-  GTK_NOTE (PRINTING,
+  CTK_NOTE (PRINTING,
 	    g_print ("Cloud Print Backend: (%p) 'search' REST call\n",
 		     account));
 
@@ -383,7 +383,7 @@ ctk_cloudprint_account_ensure_credentials_cb (GObject *source,
 		 &expires_in);
   g_variant_unref (output);
 
-  GTK_NOTE (PRINTING,
+  CTK_NOTE (PRINTING,
 	    g_print ("Cloud Print Backend: (%p) getting access token\n",
 		     account));
 
@@ -416,7 +416,7 @@ ctk_cloudprint_account_search (GtkCloudprintAccount *account,
 			g_object_ref (account),
 			(GDestroyNotify) g_object_unref);
 
-  GTK_NOTE (PRINTING,
+  CTK_NOTE (PRINTING,
 	    g_print ("Cloud Print Backend: (%p) ensuring credentials\n",
 		     account));
 
@@ -458,7 +458,7 @@ ctk_cloudprint_account_printer_rest_call_cb (RestProxyCall *call,
   {
     GtkCloudprintAccount *account = g_task_get_task_data (task);
 
-    GTK_NOTE (PRINTING,
+    CTK_NOTE (PRINTING,
               g_print ("Cloud Print Backend: (%p) 'printer' REST call returned\n",
                        account));
   }
@@ -503,7 +503,7 @@ ctk_cloudprint_account_printer (GtkCloudprintAccount *account,
   GTask *task;
   GError *error = NULL;
 
-  GTK_NOTE (PRINTING,
+  CTK_NOTE (PRINTING,
 	    g_print ("Cloud Print Backend: (%p) 'printer' REST call for "
 		     "printer id %s", account, printerid));
 
@@ -554,7 +554,7 @@ ctk_cloudprint_account_submit_rest_call_cb (RestProxyCall *call,
   {
     GtkCloudprintAccount *account = g_task_get_task_data (task);
 
-    GTK_NOTE (PRINTING,
+    CTK_NOTE (PRINTING,
               g_print ("Cloud Print Backend: (%p) 'submit' REST call returned\n",
                        account));
   }
@@ -610,7 +610,7 @@ ctk_cloudprint_account_submit (GtkCloudprintAccount *account,
 
   g_warn_if_fail (printerid != NULL);
 
-  GTK_NOTE (PRINTING,
+  CTK_NOTE (PRINTING,
 	    g_print ("Cloud Print Backend: (%p) 'submit' REST call for "
 		     "printer id %s\n", account, printerid));
 

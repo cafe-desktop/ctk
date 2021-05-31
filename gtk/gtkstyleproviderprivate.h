@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_STYLE_PROVIDER_PRIVATE_H__
-#define __GTK_STYLE_PROVIDER_PRIVATE_H__
+#ifndef __CTK_STYLE_PROVIDER_PRIVATE_H__
+#define __CTK_STYLE_PROVIDER_PRIVATE_H__
 
 #include <glib-object.h>
 #include "gtk/gtkcsskeyframesprivate.h"
@@ -27,10 +27,10 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STYLE_PROVIDER_PRIVATE          (_ctk_style_provider_private_get_type ())
-#define GTK_STYLE_PROVIDER_PRIVATE(o)            (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_STYLE_PROVIDER_PRIVATE, GtkStyleProviderPrivate))
-#define GTK_IS_STYLE_PROVIDER_PRIVATE(o)         (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_STYLE_PROVIDER_PRIVATE))
-#define GTK_STYLE_PROVIDER_PRIVATE_GET_INTERFACE(o)  (G_TYPE_INSTANCE_GET_INTERFACE ((o), GTK_TYPE_STYLE_PROVIDER_PRIVATE, GtkStyleProviderPrivateInterface))
+#define CTK_TYPE_STYLE_PROVIDER_PRIVATE          (_ctk_style_provider_private_get_type ())
+#define CTK_STYLE_PROVIDER_PRIVATE(o)            (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_STYLE_PROVIDER_PRIVATE, GtkStyleProviderPrivate))
+#define CTK_IS_STYLE_PROVIDER_PRIVATE(o)         (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_STYLE_PROVIDER_PRIVATE))
+#define CTK_STYLE_PROVIDER_PRIVATE_GET_INTERFACE(o)  (G_TYPE_INSTANCE_GET_INTERFACE ((o), CTK_TYPE_STYLE_PROVIDER_PRIVATE, GtkStyleProviderPrivateInterface))
 
 typedef struct _GtkStyleProviderPrivateInterface GtkStyleProviderPrivateInterface;
 /* typedef struct _GtkStyleProviderPrivate GtkStyleProviderPrivate; */ /* dummy typedef */
@@ -77,4 +77,4 @@ void                    _ctk_style_provider_private_emit_error   (GtkStyleProvid
 
 G_END_DECLS
 
-#endif /* __GTK_STYLE_PROVIDER_PRIVATE_H__ */
+#endif /* __CTK_STYLE_PROVIDER_PRIVATE_H__ */

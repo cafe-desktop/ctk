@@ -353,10 +353,10 @@ msgstr "Is belangrik"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Of die aksie as belangrik beskou word. Wanneer WAAR, wys nutsiteminstaners "
-"teks vir hierdie aksie in GTK_TOOLBAR_BOTH_HORIZ-modus."
+"teks vir hierdie aksie in CTK_TOOLBAR_BOTH_HORIZ-modus."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1957,7 +1957,7 @@ msgstr "Verstekspasiëring"
 
 #: gtk/gtkbutton.c:524
 #, fuzzy
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "Ekstra spasie vir byvoeg by CAN_DEFAULT-knoppies"
 
 #: gtk/gtkbutton.c:541
@@ -1967,7 +1967,7 @@ msgstr "Verstekbuitespasiëring"
 #: gtk/gtkbutton.c:542
 #, fuzzy
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
 "Ekstra spasie vir byvoeg by CAN_DEFAULT-knoppies wat altyd buite die grens "
@@ -4668,7 +4668,7 @@ msgid "Baseline Row"
 msgstr ""
 
 #: gtk/gtkgrid.c:1787
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
 
 #: gtk/gtkgrid.c:1805
@@ -9342,10 +9342,10 @@ msgstr "Spasiëring tussen stapknoppies en duimpie"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Of die nutsbalkitem as belangrik beskou word. Wanneer WAAR, wys "
-"nutsbalkknoppies teks vir hierdie aksie in GTK_TOOLBAR_BOTH_HORIZ-modus"
+"nutsbalkknoppies teks vir hierdie aksie in CTK_TOOLBAR_BOTH_HORIZ-modus"
 
 #: gtk/gtktoolitemgroup.c:1642
 #, fuzzy

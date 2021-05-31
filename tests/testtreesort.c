@@ -84,13 +84,13 @@ static void
 switch_search_method (GtkWidget *button,
 		      gpointer   tree_view)
 {
-  if (!ctk_tree_view_get_search_entry (GTK_TREE_VIEW (tree_view)))
+  if (!ctk_tree_view_get_search_entry (CTK_TREE_VIEW (tree_view)))
     {
       gpointer data = g_object_get_data (tree_view, "my-search-entry");
-      ctk_tree_view_set_search_entry (GTK_TREE_VIEW (tree_view), GTK_ENTRY (data));
+      ctk_tree_view_set_search_entry (CTK_TREE_VIEW (tree_view), CTK_ENTRY (data));
     }
   else
-    ctk_tree_view_set_search_entry (GTK_TREE_VIEW (tree_view), NULL);
+    ctk_tree_view_set_search_entry (CTK_TREE_VIEW (tree_view), NULL);
 }
 
 int
@@ -118,39 +118,39 @@ main (int argc, char *argv[])
    * First window - Just a GtkTreeStore
    */
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_title (GTK_WINDOW (window), "Words, words, words - Window 1");
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_title (CTK_WINDOW (window), "Words, words, words - Window 1");
   g_signal_connect (window, "destroy", ctk_main_quit, NULL);
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-  ctk_container_set_border_width (GTK_CONTAINER (vbox), 8);
-  ctk_box_pack_start (GTK_BOX (vbox), ctk_label_new ("Jonathan and Kristian's list of cool words. (And Anders' cool list of numbers) \n\nThis is just a GtkTreeStore"), FALSE, FALSE, 0);
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+  ctk_container_set_border_width (CTK_CONTAINER (vbox), 8);
+  ctk_box_pack_start (CTK_BOX (vbox), ctk_label_new ("Jonathan and Kristian's list of cool words. (And Anders' cool list of numbers) \n\nThis is just a GtkTreeStore"), FALSE, FALSE, 0);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
 
   entry = ctk_entry_new ();
-  ctk_box_pack_start (GTK_BOX (vbox), entry, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), entry, FALSE, FALSE, 0);
 
   button = ctk_button_new_with_label ("Switch search method");
-  ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   scrolled_window = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window), GTK_SHADOW_ETCHED_IN);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
-  ctk_box_pack_start (GTK_BOX (vbox), scrolled_window, TRUE, TRUE, 0);
+  ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (scrolled_window), CTK_SHADOW_ETCHED_IN);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_window), CTK_POLICY_AUTOMATIC, CTK_POLICY_AUTOMATIC);
+  ctk_box_pack_start (CTK_BOX (vbox), scrolled_window, TRUE, TRUE, 0);
 
   model = ctk_tree_store_new (NUM_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_INT);
 
 /*
-  smodel = ctk_tree_model_sort_new_with_model (GTK_TREE_MODEL (model));
-  ssmodel = ctk_tree_model_sort_new_with_model (GTK_TREE_MODEL (smodel));
+  smodel = ctk_tree_model_sort_new_with_model (CTK_TREE_MODEL (model));
+  ssmodel = ctk_tree_model_sort_new_with_model (CTK_TREE_MODEL (smodel));
 */
-  tree_view = ctk_tree_view_new_with_model (GTK_TREE_MODEL (model));
+  tree_view = ctk_tree_view_new_with_model (CTK_TREE_MODEL (model));
 
-  ctk_tree_view_set_search_entry (GTK_TREE_VIEW (tree_view), GTK_ENTRY (entry));
+  ctk_tree_view_set_search_entry (CTK_TREE_VIEW (tree_view), CTK_ENTRY (entry));
   g_object_set_data (G_OBJECT (tree_view), "my-search-entry", entry);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (switch_search_method), tree_view);
 
- /* ctk_tree_selection_set_select_function (ctk_tree_view_get_selection (GTK_TREE_VIEW (tree_view)), select_func, NULL, NULL);*/
+ /* ctk_tree_selection_set_select_function (ctk_tree_view_get_selection (CTK_TREE_VIEW (tree_view)), select_func, NULL, NULL);*/
 
   /* 12 iters now, 12 later... */
   for (i = 0; data[i].word_1 != NULL; i++)
@@ -159,8 +159,8 @@ main (int argc, char *argv[])
       GtkTreeIter child_iter;
 
 
-      ctk_tree_store_prepend (GTK_TREE_STORE (model), &iter, NULL);
-      ctk_tree_store_set (GTK_TREE_STORE (model), &iter,
+      ctk_tree_store_prepend (CTK_TREE_STORE (model), &iter, NULL);
+      ctk_tree_store_set (CTK_TREE_STORE (model), &iter,
 			  WORD_COLUMN_1, data[i].word_1,
 			  WORD_COLUMN_2, data[i].word_2,
 			  WORD_COLUMN_3, data[i].word_3,
@@ -168,8 +168,8 @@ main (int argc, char *argv[])
 			  NUMBER_COLUMN_1, data[i].number_1,
 			  -1);
 
-      ctk_tree_store_append (GTK_TREE_STORE (model), &child_iter, &iter);
-      ctk_tree_store_set (GTK_TREE_STORE (model), &child_iter,
+      ctk_tree_store_append (CTK_TREE_STORE (model), &child_iter, &iter);
+      ctk_tree_store_set (CTK_TREE_STORE (model), &child_iter,
 			  WORD_COLUMN_1, data[i].word_1,
 			  WORD_COLUMN_2, data[i].word_2,
 			  WORD_COLUMN_3, data[i].word_3,
@@ -179,8 +179,8 @@ main (int argc, char *argv[])
 
       for (k = 0; childdata[k].word_1 != NULL; k++)
 	{
-	  ctk_tree_store_append (GTK_TREE_STORE (model), &child_iter, &iter);
-	  ctk_tree_store_set (GTK_TREE_STORE (model), &child_iter,
+	  ctk_tree_store_append (CTK_TREE_STORE (model), &child_iter, &iter);
+	  ctk_tree_store_set (CTK_TREE_STORE (model), &child_iter,
 			      WORD_COLUMN_1, childdata[k].word_1,
 			      WORD_COLUMN_2, childdata[k].word_2,
 			      WORD_COLUMN_3, childdata[k].word_3,
@@ -192,15 +192,15 @@ main (int argc, char *argv[])
 
     }
   
-  smodel = ctk_tree_model_sort_new_with_model (GTK_TREE_MODEL (model));
-  ssmodel = ctk_tree_model_sort_new_with_model (GTK_TREE_MODEL (smodel));
+  smodel = ctk_tree_model_sort_new_with_model (CTK_TREE_MODEL (model));
+  ssmodel = ctk_tree_model_sort_new_with_model (CTK_TREE_MODEL (smodel));
   g_object_unref (model);
 
   renderer = ctk_cell_renderer_text_new ();
   column = ctk_tree_view_column_new_with_attributes ("First Word", renderer,
 						     "text", WORD_COLUMN_1,
 						     NULL);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), column);
   ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_1);
 
   renderer = ctk_cell_renderer_text_new ();
@@ -208,35 +208,35 @@ main (int argc, char *argv[])
 						     "text", WORD_COLUMN_2,
 						     NULL);
   ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_2);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), column);
 
   renderer = ctk_cell_renderer_text_new ();
   column = ctk_tree_view_column_new_with_attributes ("Third Word", renderer,
 						     "text", WORD_COLUMN_3,
 						     NULL);
   ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_3);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), column);
 
   renderer = ctk_cell_renderer_text_new ();
   column = ctk_tree_view_column_new_with_attributes ("Fourth Word", renderer,
 						     "text", WORD_COLUMN_4,
 						     NULL);
   ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_4);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), column);
   
   renderer = ctk_cell_renderer_text_new ();
   column = ctk_tree_view_column_new_with_attributes ("First Number", renderer,
 						     "text", NUMBER_COLUMN_1,
 						     NULL);
   ctk_tree_view_column_set_sort_column_id (column, NUMBER_COLUMN_1);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), column);
 
-  /*  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (smodel),
+  /*  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (smodel),
 					WORD_COLUMN_1,
-					GTK_SORT_ASCENDING);*/
+					CTK_SORT_ASCENDING);*/
 
-  ctk_container_add (GTK_CONTAINER (scrolled_window), tree_view);
-  ctk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+  ctk_container_add (CTK_CONTAINER (scrolled_window), tree_view);
+  ctk_window_set_default_size (CTK_WINDOW (window), 400, 400);
   ctk_widget_show_all (window);
 
   /**
@@ -245,24 +245,24 @@ main (int argc, char *argv[])
 
   if (smodel)
     {
-      window2 = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_title (GTK_WINDOW (window2), 
+      window2 = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_title (CTK_WINDOW (window2), 
 			    "Words, words, words - window 2");
       g_signal_connect (window2, "destroy", ctk_main_quit, NULL);
-      vbox2 = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-      ctk_container_set_border_width (GTK_CONTAINER (vbox2), 8);
-      ctk_box_pack_start (GTK_BOX (vbox2), 
+      vbox2 = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+      ctk_container_set_border_width (CTK_CONTAINER (vbox2), 8);
+      ctk_box_pack_start (CTK_BOX (vbox2), 
 			  ctk_label_new ("Jonathan and Kristian's list of words.\n\nA GtkTreeModelSort wrapping the GtkTreeStore of window 1"),
 			  FALSE, FALSE, 0);
-      ctk_container_add (GTK_CONTAINER (window2), vbox2);
+      ctk_container_add (CTK_CONTAINER (window2), vbox2);
       
       scrolled_window2 = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window2),
-					   GTK_SHADOW_ETCHED_IN);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window2),
-				      GTK_POLICY_AUTOMATIC,
-				      GTK_POLICY_AUTOMATIC);
-      ctk_box_pack_start (GTK_BOX (vbox2), scrolled_window2, TRUE, TRUE, 0);
+      ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (scrolled_window2),
+					   CTK_SHADOW_ETCHED_IN);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_window2),
+				      CTK_POLICY_AUTOMATIC,
+				      CTK_POLICY_AUTOMATIC);
+      ctk_box_pack_start (CTK_BOX (vbox2), scrolled_window2, TRUE, TRUE, 0);
       
       
       tree_view2 = ctk_tree_view_new_with_model (smodel);
@@ -271,7 +271,7 @@ main (int argc, char *argv[])
       column = ctk_tree_view_column_new_with_attributes ("First Word", renderer,
 							 "text", WORD_COLUMN_1,
 							 NULL);
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view2), column);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view2), column);
       ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_1);
       
       renderer = ctk_cell_renderer_text_new ();
@@ -279,32 +279,32 @@ main (int argc, char *argv[])
 							 "text", WORD_COLUMN_2,
 							 NULL);
       ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_2);
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view2), column);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view2), column);
       
       renderer = ctk_cell_renderer_text_new ();
       column = ctk_tree_view_column_new_with_attributes ("Third Word", renderer,
 							 "text", WORD_COLUMN_3,
 							 NULL);
       ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_3);
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view2), column);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view2), column);
       
       renderer = ctk_cell_renderer_text_new ();
       column = ctk_tree_view_column_new_with_attributes ("Fourth Word", renderer,
 							 "text", WORD_COLUMN_4,
 							 NULL);
       ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_4);
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view2), column);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view2), column);
       
-      /*      ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (smodel),
+      /*      ctk_tree_sortable_set_default_sort_func (CTK_TREE_SORTABLE (smodel),
 					       (GtkTreeIterCompareFunc)ctk_tree_data_list_compare_func,
 					       NULL, NULL);
-      ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (smodel),
+      ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (smodel),
 					    WORD_COLUMN_1,
-					    GTK_SORT_DESCENDING);*/
+					    CTK_SORT_DESCENDING);*/
       
       
-      ctk_container_add (GTK_CONTAINER (scrolled_window2), tree_view2);
-      ctk_window_set_default_size (GTK_WINDOW (window2), 400, 400);
+      ctk_container_add (CTK_CONTAINER (scrolled_window2), tree_view2);
+      ctk_window_set_default_size (CTK_WINDOW (window2), 400, 400);
       ctk_widget_show_all (window2);
     }
   
@@ -315,24 +315,24 @@ main (int argc, char *argv[])
   
   if (ssmodel)
     {
-      window3 = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_title (GTK_WINDOW (window3), 
+      window3 = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_title (CTK_WINDOW (window3), 
 			    "Words, words, words - Window 3");
       g_signal_connect (window3, "destroy", ctk_main_quit, NULL);
-      vbox3 = ctk_box_new (GTK_ORIENTATION_VERTICAL, 8);
-      ctk_container_set_border_width (GTK_CONTAINER (vbox3), 8);
-      ctk_box_pack_start (GTK_BOX (vbox3), 
+      vbox3 = ctk_box_new (CTK_ORIENTATION_VERTICAL, 8);
+      ctk_container_set_border_width (CTK_CONTAINER (vbox3), 8);
+      ctk_box_pack_start (CTK_BOX (vbox3), 
 			  ctk_label_new ("Jonathan and Kristian's list of words.\n\nA GtkTreeModelSort wrapping the GtkTreeModelSort of window 2"),
 			  FALSE, FALSE, 0);
-      ctk_container_add (GTK_CONTAINER (window3), vbox3);
+      ctk_container_add (CTK_CONTAINER (window3), vbox3);
       
       scrolled_window3 = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (scrolled_window3),
-					   GTK_SHADOW_ETCHED_IN);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (scrolled_window3),
-				      GTK_POLICY_AUTOMATIC,
-				      GTK_POLICY_AUTOMATIC);
-      ctk_box_pack_start (GTK_BOX (vbox3), scrolled_window3, TRUE, TRUE, 0);
+      ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (scrolled_window3),
+					   CTK_SHADOW_ETCHED_IN);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (scrolled_window3),
+				      CTK_POLICY_AUTOMATIC,
+				      CTK_POLICY_AUTOMATIC);
+      ctk_box_pack_start (CTK_BOX (vbox3), scrolled_window3, TRUE, TRUE, 0);
       
       
       tree_view3 = ctk_tree_view_new_with_model (ssmodel);
@@ -341,7 +341,7 @@ main (int argc, char *argv[])
       column = ctk_tree_view_column_new_with_attributes ("First Word", renderer,
 							 "text", WORD_COLUMN_1,
 							 NULL);
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view3), column);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view3), column);
       ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_1);
       
       renderer = ctk_cell_renderer_text_new ();
@@ -349,31 +349,31 @@ main (int argc, char *argv[])
 							 "text", WORD_COLUMN_2,
 							 NULL);
       ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_2);
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view3), column);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view3), column);
       
       renderer = ctk_cell_renderer_text_new ();
       column = ctk_tree_view_column_new_with_attributes ("Third Word", renderer,
 							 "text", WORD_COLUMN_3,
 							 NULL);
       ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_3);
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view3), column);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view3), column);
       
       renderer = ctk_cell_renderer_text_new ();
       column = ctk_tree_view_column_new_with_attributes ("Fourth Word", renderer,
 							 "text", WORD_COLUMN_4,
 							 NULL);
       ctk_tree_view_column_set_sort_column_id (column, WORD_COLUMN_4);
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view3), column);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view3), column);
       
-      /*      ctk_tree_sortable_set_default_sort_func (GTK_TREE_SORTABLE (ssmodel),
+      /*      ctk_tree_sortable_set_default_sort_func (CTK_TREE_SORTABLE (ssmodel),
 					       (GtkTreeIterCompareFunc)ctk_tree_data_list_compare_func,
 					       NULL, NULL);
-      ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (ssmodel),
+      ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (ssmodel),
 					    WORD_COLUMN_1,
-					    GTK_SORT_ASCENDING);*/
+					    CTK_SORT_ASCENDING);*/
       
-      ctk_container_add (GTK_CONTAINER (scrolled_window3), tree_view3);
-      ctk_window_set_default_size (GTK_WINDOW (window3), 400, 400);
+      ctk_container_add (CTK_CONTAINER (scrolled_window3), tree_view3);
+      ctk_window_set_default_size (CTK_WINDOW (window3), 400, 400);
       ctk_widget_show_all (window3);
     }
 
@@ -381,8 +381,8 @@ main (int argc, char *argv[])
     {
       gint k;
       
-      ctk_tree_store_prepend (GTK_TREE_STORE (model), &iter, NULL);
-      ctk_tree_store_set (GTK_TREE_STORE (model), &iter,
+      ctk_tree_store_prepend (CTK_TREE_STORE (model), &iter, NULL);
+      ctk_tree_store_set (CTK_TREE_STORE (model), &iter,
 			  WORD_COLUMN_1, data[i].word_1,
 			  WORD_COLUMN_2, data[i].word_2,
 			  WORD_COLUMN_3, data[i].word_3,
@@ -392,8 +392,8 @@ main (int argc, char *argv[])
 	{
 	  GtkTreeIter child_iter;
 	  
-	  ctk_tree_store_append (GTK_TREE_STORE (model), &child_iter, &iter);
-	  ctk_tree_store_set (GTK_TREE_STORE (model), &child_iter,
+	  ctk_tree_store_append (CTK_TREE_STORE (model), &child_iter, &iter);
+	  ctk_tree_store_set (CTK_TREE_STORE (model), &child_iter,
 			      WORD_COLUMN_1, childdata[k].word_1,
 			      WORD_COLUMN_2, childdata[k].word_2,
 			      WORD_COLUMN_3, childdata[k].word_3,

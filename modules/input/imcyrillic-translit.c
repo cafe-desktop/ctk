@@ -50,7 +50,7 @@ cyrillic_translit_register_type (GTypeModule *module)
 
   type_cyrillic_translit = 
     g_type_module_register_type (module,
-				 GTK_TYPE_IM_CONTEXT_SIMPLE,
+				 CTK_TYPE_IM_CONTEXT_SIMPLE,
 				 "GtkIMContextCyrillicTranslit",
 				 &object_info, 0);
 }
@@ -214,7 +214,7 @@ static const GtkIMContextInfo cyrillic_translit_info = {
   "cyrillic_translit",		   /* ID */
   NC_("input menthod menu", "Cyrillic (Transliterated)"), /* Human readable name */
   GETTEXT_PACKAGE,		   /* Translation domain */
-   GTK_LOCALEDIR,		   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+   CTK_LOCALEDIR,		   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
   ""			           /* Languages for which this module is the default */
 };
 

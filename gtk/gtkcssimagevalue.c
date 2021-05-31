@@ -22,7 +22,7 @@
 #include "gtkcssimagecrossfadeprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   GtkCssImage *image;
 };
 
@@ -91,7 +91,7 @@ ctk_css_value_image_print (const GtkCssValue *value,
     g_string_append (string, "none");
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_IMAGE = {
+static const GtkCssValueClass CTK_CSS_VALUE_IMAGE = {
   ctk_css_value_image_free,
   ctk_css_value_image_compute,
   ctk_css_value_image_equal,
@@ -102,13 +102,13 @@ static const GtkCssValueClass GTK_CSS_VALUE_IMAGE = {
 GtkCssValue *
 _ctk_css_image_value_new (GtkCssImage *image)
 {
-  static GtkCssValue none_singleton = { &GTK_CSS_VALUE_IMAGE, 1, NULL };
+  static GtkCssValue none_singleton = { &CTK_CSS_VALUE_IMAGE, 1, NULL };
   GtkCssValue *value;
 
   if (image == NULL)
     return _ctk_css_value_ref (&none_singleton);
 
-  value = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_IMAGE);
+  value = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_IMAGE);
   value->image = image;
 
   return value;
@@ -117,7 +117,7 @@ _ctk_css_image_value_new (GtkCssImage *image)
 GtkCssImage *
 _ctk_css_image_value_get_image (const GtkCssValue *value)
 {
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_IMAGE, NULL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_IMAGE, NULL);
 
   return value->image;
 }

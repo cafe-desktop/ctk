@@ -15,10 +15,10 @@
 /* #undef GLIB_DISABLE_DEPRECATION_WARNINGS */
 
 /* Define if debugging is enabled */
-#define GTK_COMPILED_WITH_DEBUGGING "yes"
+#define CTK_COMPILED_WITH_DEBUGGING "yes"
 
 /* Define the location where the catalogs will be installed */
-#define GTK_LOCALEDIR "NONE/share/locale"
+#define CTK_LOCALEDIR "NONE/share/locale"
 
 /* Define to 1 if you have the `bind_textdomain_codeset' function. */
 #define HAVE_BIND_TEXTDOMAIN_CODESET 1
@@ -263,7 +263,7 @@
 #define PACKAGE_NAME "gtk+"
 
 /* Define to the full name and version of this package. */
-#define PACKAGE_STRING "gtk+ @GTK_MAJOR_VERSION@.@GTK_MINOR_VERSION@.@GTK_MICRO_VERSION@"
+#define PACKAGE_STRING "gtk+ @CTK_MAJOR_VERSION@.@CTK_MINOR_VERSION@.@CTK_MICRO_VERSION@"
 
 /* Define to the one symbol short name of this package. */
 #define PACKAGE_TARNAME "gtk+"
@@ -272,7 +272,7 @@
 #define PACKAGE_URL ""
 
 /* Define to the version of this package. */
-#define PACKAGE_VERSION "@GTK_MAJOR_VERSION@.@GTK_MINOR_VERSION@.@GTK_MICRO_VERSION@"
+#define PACKAGE_VERSION "@CTK_MAJOR_VERSION@.@CTK_MINOR_VERSION@.@CTK_MICRO_VERSION@"
 
 /* Use NSBundle functions to determine load paths for libraries, translations,
    etc. */

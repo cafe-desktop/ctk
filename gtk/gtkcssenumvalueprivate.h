@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_ENUM_VALUE_PRIVATE_H__
-#define __GTK_CSS_ENUM_VALUE_PRIVATE_H__
+#ifndef __CTK_CSS_ENUM_VALUE_PRIVATE_H__
+#define __CTK_CSS_ENUM_VALUE_PRIVATE_H__
 
 #include "gtkenums.h"
 #include "gtkcssparserprivate.h"
@@ -93,4 +93,4 @@ GtkCssIconStyle _ctk_css_icon_style_value_get         (const GtkCssValue *value)
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_ENUM_VALUE_PRIVATE_H__ */
+#endif /* __CTK_CSS_ENUM_VALUE_PRIVATE_H__ */

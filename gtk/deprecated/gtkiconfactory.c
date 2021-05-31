@@ -134,11 +134,11 @@ struct _GtkIconFactoryPrivate
 };
 
 typedef enum {
-  GTK_ICON_SOURCE_EMPTY,
-  GTK_ICON_SOURCE_ICON_NAME,
-  GTK_ICON_SOURCE_STATIC_ICON_NAME,
-  GTK_ICON_SOURCE_FILENAME,
-  GTK_ICON_SOURCE_PIXBUF
+  CTK_ICON_SOURCE_EMPTY,
+  CTK_ICON_SOURCE_ICON_NAME,
+  CTK_ICON_SOURCE_STATIC_ICON_NAME,
+  CTK_ICON_SOURCE_FILENAME,
+  CTK_ICON_SOURCE_PIXBUF
 } GtkIconSourceType;
 
 struct _GtkIconSource
@@ -189,14 +189,14 @@ static GtkIconSize icon_size_register_intern (const gchar *name,
 					      gint         width,
 					      gint         height);
 
-#define GTK_ICON_SOURCE_INIT(any_direction, any_state, any_size)	\
-  { GTK_ICON_SOURCE_EMPTY, { NULL }, NULL,				\
+#define CTK_ICON_SOURCE_INIT(any_direction, any_state, any_size)	\
+  { CTK_ICON_SOURCE_EMPTY, { NULL }, NULL,				\
    0, 0, 0,								\
    any_direction, any_state, any_size }
 
 G_DEFINE_TYPE_WITH_CODE (GtkIconFactory, ctk_icon_factory, G_TYPE_OBJECT,
                          G_ADD_PRIVATE (GtkIconFactory)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
 						ctk_icon_factory_buildable_init))
 
 static void
@@ -236,7 +236,7 @@ free_icon_set (gpointer key, gpointer value, gpointer data)
 static void
 ctk_icon_factory_finalize (GObject *object)
 {
-  GtkIconFactory *factory = GTK_ICON_FACTORY (object);
+  GtkIconFactory *factory = CTK_ICON_FACTORY (object);
   GtkIconFactoryPrivate *priv = factory->priv;
 
   all_icon_factories = g_slist_remove (all_icon_factories, factory);
@@ -272,7 +272,7 @@ ctk_icon_factory_finalize (GObject *object)
 GtkIconFactory*
 ctk_icon_factory_new (void)
 {
-  return g_object_new (GTK_TYPE_ICON_FACTORY, NULL);
+  return g_object_new (CTK_TYPE_ICON_FACTORY, NULL);
 }
 
 /**
@@ -303,7 +303,7 @@ ctk_icon_factory_add (GtkIconFactory *factory,
   gpointer old_key = NULL;
   gpointer old_value = NULL;
 
-  g_return_if_fail (GTK_IS_ICON_FACTORY (factory));
+  g_return_if_fail (CTK_IS_ICON_FACTORY (factory));
   g_return_if_fail (stock_id != NULL);
   g_return_if_fail (icon_set != NULL);
 
@@ -346,7 +346,7 @@ ctk_icon_factory_lookup (GtkIconFactory *factory,
 {
   GtkIconFactoryPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_ICON_FACTORY (factory), NULL);
+  g_return_val_if_fail (CTK_IS_ICON_FACTORY (factory), NULL);
   g_return_val_if_fail (stock_id != NULL, NULL);
 
   priv = factory->priv;
@@ -372,7 +372,7 @@ static GSList *default_factories = NULL;
 void
 ctk_icon_factory_add_default (GtkIconFactory *factory)
 {
-  g_return_if_fail (GTK_IS_ICON_FACTORY (factory));
+  g_return_if_fail (CTK_IS_ICON_FACTORY (factory));
 
   g_object_ref (factory);
 
@@ -392,7 +392,7 @@ ctk_icon_factory_add_default (GtkIconFactory *factory)
 void
 ctk_icon_factory_remove_default (GtkIconFactory  *factory)
 {
-  g_return_if_fail (GTK_IS_ICON_FACTORY (factory));
+  g_return_if_fail (CTK_IS_ICON_FACTORY (factory));
 
   default_factories = g_slist_remove (default_factories, factory);
 
@@ -453,7 +453,7 @@ ctk_icon_factory_lookup_default (const gchar *stock_id)
   while (tmp_list != NULL)
     {
       GtkIconSet *icon_set =
-        ctk_icon_factory_lookup (GTK_ICON_FACTORY (tmp_list->data),
+        ctk_icon_factory_lookup (CTK_ICON_FACTORY (tmp_list->data),
                                  stock_id);
 
       if (icon_set)
@@ -475,11 +475,11 @@ register_stock_icon (GtkIconFactory *factory,
                      const gchar    *icon_name)
 {
   GtkIconSet *set = ctk_icon_set_new ();
-  GtkIconSource source = GTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
+  GtkIconSource source = CTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
 
-  source.type = GTK_ICON_SOURCE_STATIC_ICON_NAME;
+  source.type = CTK_ICON_SOURCE_STATIC_ICON_NAME;
   source.source.icon_name = (gchar *)icon_name;
-  source.direction = GTK_TEXT_DIR_NONE;
+  source.direction = CTK_TEXT_DIR_NONE;
   ctk_icon_set_add_source (set, &source);
 
   ctk_icon_factory_add (factory, stock_id, set);
@@ -492,16 +492,16 @@ register_bidi_stock_icon (GtkIconFactory *factory,
                           const gchar    *icon_name)
 {
   GtkIconSet *set = ctk_icon_set_new ();
-  GtkIconSource source = GTK_ICON_SOURCE_INIT (FALSE, TRUE, TRUE);
+  GtkIconSource source = CTK_ICON_SOURCE_INIT (FALSE, TRUE, TRUE);
 
-  source.type = GTK_ICON_SOURCE_STATIC_ICON_NAME;
+  source.type = CTK_ICON_SOURCE_STATIC_ICON_NAME;
   source.source.icon_name = (gchar *)icon_name;
-  source.direction = GTK_TEXT_DIR_LTR;
+  source.direction = CTK_TEXT_DIR_LTR;
   ctk_icon_set_add_source (set, &source);
 
-  source.type = GTK_ICON_SOURCE_STATIC_ICON_NAME;
+  source.type = CTK_ICON_SOURCE_STATIC_ICON_NAME;
   source.source.icon_name = (gchar *)icon_name;
-  source.direction = GTK_TEXT_DIR_RTL;
+  source.direction = CTK_TEXT_DIR_RTL;
   ctk_icon_set_add_source (set, &source);
 
   ctk_icon_factory_add (factory, stock_id, set);
@@ -513,110 +513,110 @@ get_default_icons (GtkIconFactory *factory)
 {
   /* KEEP IN SYNC with gtkstock.c */
 
-  register_stock_icon (factory, GTK_STOCK_DIALOG_AUTHENTICATION, "dialog-password");
-  register_stock_icon (factory, GTK_STOCK_DIALOG_ERROR, "dialog-error");
-  register_stock_icon (factory, GTK_STOCK_DIALOG_INFO, "dialog-information");
-  register_stock_icon (factory, GTK_STOCK_DIALOG_QUESTION, "dialog-question");
-  register_stock_icon (factory, GTK_STOCK_DIALOG_WARNING, "dialog-warning");
-  register_stock_icon (factory, GTK_STOCK_DND, GTK_STOCK_DND);
-  register_stock_icon (factory, GTK_STOCK_DND_MULTIPLE, GTK_STOCK_DND_MULTIPLE);
-  register_stock_icon (factory, GTK_STOCK_APPLY, GTK_STOCK_APPLY);
-  register_stock_icon (factory, GTK_STOCK_CANCEL, GTK_STOCK_CANCEL);
-  register_stock_icon (factory, GTK_STOCK_NO, GTK_STOCK_NO);
-  register_stock_icon (factory, GTK_STOCK_OK, GTK_STOCK_OK);
-  register_stock_icon (factory, GTK_STOCK_YES, GTK_STOCK_YES);
-  register_stock_icon (factory, GTK_STOCK_CLOSE, "window-close");
-  register_stock_icon (factory, GTK_STOCK_ADD, "list-add");
-  register_stock_icon (factory, GTK_STOCK_JUSTIFY_CENTER, "format-justify-center");
-  register_stock_icon (factory, GTK_STOCK_JUSTIFY_FILL, "format-justify-fill");
-  register_stock_icon (factory, GTK_STOCK_JUSTIFY_LEFT, "format-justify-left");
-  register_stock_icon (factory, GTK_STOCK_JUSTIFY_RIGHT, "format-justify-right");
-  register_stock_icon (factory, GTK_STOCK_GOTO_BOTTOM, "go-bottom");
-  register_stock_icon (factory, GTK_STOCK_CDROM, "media-optical");
-  register_stock_icon (factory, GTK_STOCK_CONVERT, GTK_STOCK_CONVERT);
-  register_stock_icon (factory, GTK_STOCK_COPY, "edit-copy");
-  register_stock_icon (factory, GTK_STOCK_CUT, "edit-cut");
-  register_stock_icon (factory, GTK_STOCK_GO_DOWN, "go-down");
-  register_stock_icon (factory, GTK_STOCK_EXECUTE, "system-run");
-  register_stock_icon (factory, GTK_STOCK_QUIT, "application-exit");
-  register_bidi_stock_icon (factory, GTK_STOCK_GOTO_FIRST, "go-first");
-  register_stock_icon (factory, GTK_STOCK_SELECT_FONT, GTK_STOCK_SELECT_FONT);
-  register_stock_icon (factory, GTK_STOCK_FULLSCREEN, "view-fullscreen");
-  register_stock_icon (factory, GTK_STOCK_LEAVE_FULLSCREEN, "view-restore");
-  register_stock_icon (factory, GTK_STOCK_HARDDISK, "drive-harddisk");
-  register_stock_icon (factory, GTK_STOCK_HELP, "help-contents");
-  register_stock_icon (factory, GTK_STOCK_HOME, "go-home");
-  register_stock_icon (factory, GTK_STOCK_INFO, "dialog-information");
-  register_bidi_stock_icon (factory, GTK_STOCK_JUMP_TO, "go-jump");
-  register_bidi_stock_icon (factory, GTK_STOCK_GOTO_LAST, "go-last");
-  register_bidi_stock_icon (factory, GTK_STOCK_GO_BACK, "go-previous");
-  register_stock_icon (factory, GTK_STOCK_MISSING_IMAGE, "image-missing");
-  register_stock_icon (factory, GTK_STOCK_NETWORK, "network-idle");
-  register_stock_icon (factory, GTK_STOCK_NEW, "document-new");
-  register_stock_icon (factory, GTK_STOCK_OPEN, "document-open");
-  register_stock_icon (factory, GTK_STOCK_ORIENTATION_PORTRAIT, GTK_STOCK_ORIENTATION_PORTRAIT);
-  register_stock_icon (factory, GTK_STOCK_ORIENTATION_LANDSCAPE, GTK_STOCK_ORIENTATION_LANDSCAPE);
-  register_stock_icon (factory, GTK_STOCK_ORIENTATION_REVERSE_PORTRAIT, GTK_STOCK_ORIENTATION_REVERSE_PORTRAIT);
-  register_stock_icon (factory, GTK_STOCK_ORIENTATION_REVERSE_LANDSCAPE, GTK_STOCK_ORIENTATION_REVERSE_LANDSCAPE);
-  register_stock_icon (factory, GTK_STOCK_PAGE_SETUP, GTK_STOCK_PAGE_SETUP);
-  register_stock_icon (factory, GTK_STOCK_PASTE, "edit-paste");
-  register_stock_icon (factory, GTK_STOCK_PREFERENCES, GTK_STOCK_PREFERENCES);
-  register_stock_icon (factory, GTK_STOCK_PRINT, "document-print");
-  register_stock_icon (factory, GTK_STOCK_PRINT_ERROR, "printer-error");
-  register_stock_icon (factory, GTK_STOCK_PRINT_PAUSED, "printer-paused");
-  register_stock_icon (factory, GTK_STOCK_PRINT_PREVIEW, "document-print-preview");
-  register_stock_icon (factory, GTK_STOCK_PRINT_REPORT, "printer-info");
-  register_stock_icon (factory, GTK_STOCK_PRINT_WARNING, "printer-warning");
-  register_stock_icon (factory, GTK_STOCK_PROPERTIES, "document-properties");
-  register_bidi_stock_icon (factory, GTK_STOCK_REDO, "edit-redo");
-  register_stock_icon (factory, GTK_STOCK_REMOVE, "list-remove");
-  register_stock_icon (factory, GTK_STOCK_REFRESH, "view-refresh");
-  register_bidi_stock_icon (factory, GTK_STOCK_REVERT_TO_SAVED, "document-revert");
-  register_bidi_stock_icon (factory, GTK_STOCK_GO_FORWARD, "go-next");
-  register_stock_icon (factory, GTK_STOCK_SAVE, "document-save");
-  register_stock_icon (factory, GTK_STOCK_FLOPPY, "media-floppy");
-  register_stock_icon (factory, GTK_STOCK_SAVE_AS, "document-save-as");
-  register_stock_icon (factory, GTK_STOCK_FIND, "edit-find");
-  register_stock_icon (factory, GTK_STOCK_FIND_AND_REPLACE, "edit-find-replace");
-  register_stock_icon (factory, GTK_STOCK_SORT_DESCENDING, "view-sort-descending");
-  register_stock_icon (factory, GTK_STOCK_SORT_ASCENDING, "view-sort-ascending");
-  register_stock_icon (factory, GTK_STOCK_SPELL_CHECK, "tools-check-spelling");
-  register_stock_icon (factory, GTK_STOCK_STOP, "process-stop");
-  register_stock_icon (factory, GTK_STOCK_BOLD, "format-text-bold");
-  register_stock_icon (factory, GTK_STOCK_ITALIC, "format-text-italic");
-  register_stock_icon (factory, GTK_STOCK_STRIKETHROUGH, "format-text-strikethrough");
-  register_stock_icon (factory, GTK_STOCK_UNDERLINE, "format-text-underline");
-  register_bidi_stock_icon (factory, GTK_STOCK_INDENT, "format-indent-more");
-  register_bidi_stock_icon (factory, GTK_STOCK_UNINDENT, "format-indent-less");
-  register_stock_icon (factory, GTK_STOCK_GOTO_TOP, "go-top");
-  register_stock_icon (factory, GTK_STOCK_DELETE, "edit-delete");
-  register_bidi_stock_icon (factory, GTK_STOCK_UNDELETE, GTK_STOCK_UNDELETE);
-  register_bidi_stock_icon (factory, GTK_STOCK_UNDO, "edit-undo");
-  register_stock_icon (factory, GTK_STOCK_GO_UP, "go-up");
-  register_stock_icon (factory, GTK_STOCK_FILE, "text-x-generic");
-  register_stock_icon (factory, GTK_STOCK_DIRECTORY, "folder");
-  register_stock_icon (factory, GTK_STOCK_ABOUT, "help-about");
-  register_stock_icon (factory, GTK_STOCK_CONNECT, GTK_STOCK_CONNECT);
-  register_stock_icon (factory, GTK_STOCK_DISCONNECT, GTK_STOCK_DISCONNECT);
-  register_stock_icon (factory, GTK_STOCK_EDIT, GTK_STOCK_EDIT);
-  register_stock_icon (factory, GTK_STOCK_CAPS_LOCK_WARNING, GTK_STOCK_CAPS_LOCK_WARNING);
-  register_bidi_stock_icon (factory, GTK_STOCK_MEDIA_FORWARD, "media-seek-forward");
-  register_bidi_stock_icon (factory, GTK_STOCK_MEDIA_NEXT, "media-skip-forward");
-  register_stock_icon (factory, GTK_STOCK_MEDIA_PAUSE, "media-playback-pause");
-  register_bidi_stock_icon (factory, GTK_STOCK_MEDIA_PLAY, "media-playback-start");
-  register_bidi_stock_icon (factory, GTK_STOCK_MEDIA_PREVIOUS, "media-skip-backward");
-  register_stock_icon (factory, GTK_STOCK_MEDIA_RECORD, "media-record");
-  register_bidi_stock_icon (factory, GTK_STOCK_MEDIA_REWIND, "media-seek-backward");
-  register_stock_icon (factory, GTK_STOCK_MEDIA_STOP, "media-playback-stop");
-  register_stock_icon (factory, GTK_STOCK_INDEX, GTK_STOCK_INDEX);
-  register_stock_icon (factory, GTK_STOCK_ZOOM_100, "zoom-original");
-  register_stock_icon (factory, GTK_STOCK_ZOOM_IN, "zoom-in");
-  register_stock_icon (factory, GTK_STOCK_ZOOM_OUT, "zoom-out");
-  register_stock_icon (factory, GTK_STOCK_ZOOM_FIT, "zoom-fit-best");
-  register_stock_icon (factory, GTK_STOCK_SELECT_ALL, "edit-select-all");
-  register_bidi_stock_icon (factory, GTK_STOCK_CLEAR, "edit-clear");
-  register_stock_icon (factory, GTK_STOCK_SELECT_COLOR, GTK_STOCK_SELECT_COLOR);
-  register_stock_icon (factory, GTK_STOCK_COLOR_PICKER, GTK_STOCK_COLOR_PICKER);
+  register_stock_icon (factory, CTK_STOCK_DIALOG_AUTHENTICATION, "dialog-password");
+  register_stock_icon (factory, CTK_STOCK_DIALOG_ERROR, "dialog-error");
+  register_stock_icon (factory, CTK_STOCK_DIALOG_INFO, "dialog-information");
+  register_stock_icon (factory, CTK_STOCK_DIALOG_QUESTION, "dialog-question");
+  register_stock_icon (factory, CTK_STOCK_DIALOG_WARNING, "dialog-warning");
+  register_stock_icon (factory, CTK_STOCK_DND, CTK_STOCK_DND);
+  register_stock_icon (factory, CTK_STOCK_DND_MULTIPLE, CTK_STOCK_DND_MULTIPLE);
+  register_stock_icon (factory, CTK_STOCK_APPLY, CTK_STOCK_APPLY);
+  register_stock_icon (factory, CTK_STOCK_CANCEL, CTK_STOCK_CANCEL);
+  register_stock_icon (factory, CTK_STOCK_NO, CTK_STOCK_NO);
+  register_stock_icon (factory, CTK_STOCK_OK, CTK_STOCK_OK);
+  register_stock_icon (factory, CTK_STOCK_YES, CTK_STOCK_YES);
+  register_stock_icon (factory, CTK_STOCK_CLOSE, "window-close");
+  register_stock_icon (factory, CTK_STOCK_ADD, "list-add");
+  register_stock_icon (factory, CTK_STOCK_JUSTIFY_CENTER, "format-justify-center");
+  register_stock_icon (factory, CTK_STOCK_JUSTIFY_FILL, "format-justify-fill");
+  register_stock_icon (factory, CTK_STOCK_JUSTIFY_LEFT, "format-justify-left");
+  register_stock_icon (factory, CTK_STOCK_JUSTIFY_RIGHT, "format-justify-right");
+  register_stock_icon (factory, CTK_STOCK_GOTO_BOTTOM, "go-bottom");
+  register_stock_icon (factory, CTK_STOCK_CDROM, "media-optical");
+  register_stock_icon (factory, CTK_STOCK_CONVERT, CTK_STOCK_CONVERT);
+  register_stock_icon (factory, CTK_STOCK_COPY, "edit-copy");
+  register_stock_icon (factory, CTK_STOCK_CUT, "edit-cut");
+  register_stock_icon (factory, CTK_STOCK_GO_DOWN, "go-down");
+  register_stock_icon (factory, CTK_STOCK_EXECUTE, "system-run");
+  register_stock_icon (factory, CTK_STOCK_QUIT, "application-exit");
+  register_bidi_stock_icon (factory, CTK_STOCK_GOTO_FIRST, "go-first");
+  register_stock_icon (factory, CTK_STOCK_SELECT_FONT, CTK_STOCK_SELECT_FONT);
+  register_stock_icon (factory, CTK_STOCK_FULLSCREEN, "view-fullscreen");
+  register_stock_icon (factory, CTK_STOCK_LEAVE_FULLSCREEN, "view-restore");
+  register_stock_icon (factory, CTK_STOCK_HARDDISK, "drive-harddisk");
+  register_stock_icon (factory, CTK_STOCK_HELP, "help-contents");
+  register_stock_icon (factory, CTK_STOCK_HOME, "go-home");
+  register_stock_icon (factory, CTK_STOCK_INFO, "dialog-information");
+  register_bidi_stock_icon (factory, CTK_STOCK_JUMP_TO, "go-jump");
+  register_bidi_stock_icon (factory, CTK_STOCK_GOTO_LAST, "go-last");
+  register_bidi_stock_icon (factory, CTK_STOCK_GO_BACK, "go-previous");
+  register_stock_icon (factory, CTK_STOCK_MISSING_IMAGE, "image-missing");
+  register_stock_icon (factory, CTK_STOCK_NETWORK, "network-idle");
+  register_stock_icon (factory, CTK_STOCK_NEW, "document-new");
+  register_stock_icon (factory, CTK_STOCK_OPEN, "document-open");
+  register_stock_icon (factory, CTK_STOCK_ORIENTATION_PORTRAIT, CTK_STOCK_ORIENTATION_PORTRAIT);
+  register_stock_icon (factory, CTK_STOCK_ORIENTATION_LANDSCAPE, CTK_STOCK_ORIENTATION_LANDSCAPE);
+  register_stock_icon (factory, CTK_STOCK_ORIENTATION_REVERSE_PORTRAIT, CTK_STOCK_ORIENTATION_REVERSE_PORTRAIT);
+  register_stock_icon (factory, CTK_STOCK_ORIENTATION_REVERSE_LANDSCAPE, CTK_STOCK_ORIENTATION_REVERSE_LANDSCAPE);
+  register_stock_icon (factory, CTK_STOCK_PAGE_SETUP, CTK_STOCK_PAGE_SETUP);
+  register_stock_icon (factory, CTK_STOCK_PASTE, "edit-paste");
+  register_stock_icon (factory, CTK_STOCK_PREFERENCES, CTK_STOCK_PREFERENCES);
+  register_stock_icon (factory, CTK_STOCK_PRINT, "document-print");
+  register_stock_icon (factory, CTK_STOCK_PRINT_ERROR, "printer-error");
+  register_stock_icon (factory, CTK_STOCK_PRINT_PAUSED, "printer-paused");
+  register_stock_icon (factory, CTK_STOCK_PRINT_PREVIEW, "document-print-preview");
+  register_stock_icon (factory, CTK_STOCK_PRINT_REPORT, "printer-info");
+  register_stock_icon (factory, CTK_STOCK_PRINT_WARNING, "printer-warning");
+  register_stock_icon (factory, CTK_STOCK_PROPERTIES, "document-properties");
+  register_bidi_stock_icon (factory, CTK_STOCK_REDO, "edit-redo");
+  register_stock_icon (factory, CTK_STOCK_REMOVE, "list-remove");
+  register_stock_icon (factory, CTK_STOCK_REFRESH, "view-refresh");
+  register_bidi_stock_icon (factory, CTK_STOCK_REVERT_TO_SAVED, "document-revert");
+  register_bidi_stock_icon (factory, CTK_STOCK_GO_FORWARD, "go-next");
+  register_stock_icon (factory, CTK_STOCK_SAVE, "document-save");
+  register_stock_icon (factory, CTK_STOCK_FLOPPY, "media-floppy");
+  register_stock_icon (factory, CTK_STOCK_SAVE_AS, "document-save-as");
+  register_stock_icon (factory, CTK_STOCK_FIND, "edit-find");
+  register_stock_icon (factory, CTK_STOCK_FIND_AND_REPLACE, "edit-find-replace");
+  register_stock_icon (factory, CTK_STOCK_SORT_DESCENDING, "view-sort-descending");
+  register_stock_icon (factory, CTK_STOCK_SORT_ASCENDING, "view-sort-ascending");
+  register_stock_icon (factory, CTK_STOCK_SPELL_CHECK, "tools-check-spelling");
+  register_stock_icon (factory, CTK_STOCK_STOP, "process-stop");
+  register_stock_icon (factory, CTK_STOCK_BOLD, "format-text-bold");
+  register_stock_icon (factory, CTK_STOCK_ITALIC, "format-text-italic");
+  register_stock_icon (factory, CTK_STOCK_STRIKETHROUGH, "format-text-strikethrough");
+  register_stock_icon (factory, CTK_STOCK_UNDERLINE, "format-text-underline");
+  register_bidi_stock_icon (factory, CTK_STOCK_INDENT, "format-indent-more");
+  register_bidi_stock_icon (factory, CTK_STOCK_UNINDENT, "format-indent-less");
+  register_stock_icon (factory, CTK_STOCK_GOTO_TOP, "go-top");
+  register_stock_icon (factory, CTK_STOCK_DELETE, "edit-delete");
+  register_bidi_stock_icon (factory, CTK_STOCK_UNDELETE, CTK_STOCK_UNDELETE);
+  register_bidi_stock_icon (factory, CTK_STOCK_UNDO, "edit-undo");
+  register_stock_icon (factory, CTK_STOCK_GO_UP, "go-up");
+  register_stock_icon (factory, CTK_STOCK_FILE, "text-x-generic");
+  register_stock_icon (factory, CTK_STOCK_DIRECTORY, "folder");
+  register_stock_icon (factory, CTK_STOCK_ABOUT, "help-about");
+  register_stock_icon (factory, CTK_STOCK_CONNECT, CTK_STOCK_CONNECT);
+  register_stock_icon (factory, CTK_STOCK_DISCONNECT, CTK_STOCK_DISCONNECT);
+  register_stock_icon (factory, CTK_STOCK_EDIT, CTK_STOCK_EDIT);
+  register_stock_icon (factory, CTK_STOCK_CAPS_LOCK_WARNING, CTK_STOCK_CAPS_LOCK_WARNING);
+  register_bidi_stock_icon (factory, CTK_STOCK_MEDIA_FORWARD, "media-seek-forward");
+  register_bidi_stock_icon (factory, CTK_STOCK_MEDIA_NEXT, "media-skip-forward");
+  register_stock_icon (factory, CTK_STOCK_MEDIA_PAUSE, "media-playback-pause");
+  register_bidi_stock_icon (factory, CTK_STOCK_MEDIA_PLAY, "media-playback-start");
+  register_bidi_stock_icon (factory, CTK_STOCK_MEDIA_PREVIOUS, "media-skip-backward");
+  register_stock_icon (factory, CTK_STOCK_MEDIA_RECORD, "media-record");
+  register_bidi_stock_icon (factory, CTK_STOCK_MEDIA_REWIND, "media-seek-backward");
+  register_stock_icon (factory, CTK_STOCK_MEDIA_STOP, "media-playback-stop");
+  register_stock_icon (factory, CTK_STOCK_INDEX, CTK_STOCK_INDEX);
+  register_stock_icon (factory, CTK_STOCK_ZOOM_100, "zoom-original");
+  register_stock_icon (factory, CTK_STOCK_ZOOM_IN, "zoom-in");
+  register_stock_icon (factory, CTK_STOCK_ZOOM_OUT, "zoom-out");
+  register_stock_icon (factory, CTK_STOCK_ZOOM_FIT, "zoom-fit-best");
+  register_stock_icon (factory, CTK_STOCK_SELECT_ALL, "edit-select-all");
+  register_bidi_stock_icon (factory, CTK_STOCK_CLEAR, "edit-clear");
+  register_stock_icon (factory, CTK_STOCK_SELECT_COLOR, CTK_STOCK_SELECT_COLOR);
+  register_stock_icon (factory, CTK_STOCK_COLOR_PICKER, CTK_STOCK_COLOR_PICKER);
 }
 
 /************************************************************
@@ -661,10 +661,10 @@ init_icon_sizes (void)
       icon_sizes_allocated = NUM_BUILTIN_SIZES;
       icon_sizes_used = NUM_BUILTIN_SIZES;
 
-      icon_sizes[GTK_ICON_SIZE_INVALID].size = 0;
-      icon_sizes[GTK_ICON_SIZE_INVALID].name = NULL;
-      icon_sizes[GTK_ICON_SIZE_INVALID].width = 0;
-      icon_sizes[GTK_ICON_SIZE_INVALID].height = 0;
+      icon_sizes[CTK_ICON_SIZE_INVALID].size = 0;
+      icon_sizes[CTK_ICON_SIZE_INVALID].name = NULL;
+      icon_sizes[CTK_ICON_SIZE_INVALID].width = 0;
+      icon_sizes[CTK_ICON_SIZE_INVALID].height = 0;
 
       /* the name strings aren't copied since we don't ever remove
        * icon sizes, so we don't need to know whether they're static.
@@ -672,37 +672,37 @@ init_icon_sizes (void)
        * disallowed.
        */
 
-      icon_sizes[GTK_ICON_SIZE_MENU].size = GTK_ICON_SIZE_MENU;
-      icon_sizes[GTK_ICON_SIZE_MENU].name = "gtk-menu";
-      icon_sizes[GTK_ICON_SIZE_MENU].width = 16;
-      icon_sizes[GTK_ICON_SIZE_MENU].height = 16;
+      icon_sizes[CTK_ICON_SIZE_MENU].size = CTK_ICON_SIZE_MENU;
+      icon_sizes[CTK_ICON_SIZE_MENU].name = "gtk-menu";
+      icon_sizes[CTK_ICON_SIZE_MENU].width = 16;
+      icon_sizes[CTK_ICON_SIZE_MENU].height = 16;
 
-      icon_sizes[GTK_ICON_SIZE_BUTTON].size = GTK_ICON_SIZE_BUTTON;
-      icon_sizes[GTK_ICON_SIZE_BUTTON].name = "gtk-button";
-      icon_sizes[GTK_ICON_SIZE_BUTTON].width = 16;
-      icon_sizes[GTK_ICON_SIZE_BUTTON].height = 16;
+      icon_sizes[CTK_ICON_SIZE_BUTTON].size = CTK_ICON_SIZE_BUTTON;
+      icon_sizes[CTK_ICON_SIZE_BUTTON].name = "gtk-button";
+      icon_sizes[CTK_ICON_SIZE_BUTTON].width = 16;
+      icon_sizes[CTK_ICON_SIZE_BUTTON].height = 16;
 
-      icon_sizes[GTK_ICON_SIZE_SMALL_TOOLBAR].size = GTK_ICON_SIZE_SMALL_TOOLBAR;
-      icon_sizes[GTK_ICON_SIZE_SMALL_TOOLBAR].name = "gtk-small-toolbar";
-      icon_sizes[GTK_ICON_SIZE_SMALL_TOOLBAR].width = 16;
-      icon_sizes[GTK_ICON_SIZE_SMALL_TOOLBAR].height = 16;
+      icon_sizes[CTK_ICON_SIZE_SMALL_TOOLBAR].size = CTK_ICON_SIZE_SMALL_TOOLBAR;
+      icon_sizes[CTK_ICON_SIZE_SMALL_TOOLBAR].name = "gtk-small-toolbar";
+      icon_sizes[CTK_ICON_SIZE_SMALL_TOOLBAR].width = 16;
+      icon_sizes[CTK_ICON_SIZE_SMALL_TOOLBAR].height = 16;
 
-      icon_sizes[GTK_ICON_SIZE_LARGE_TOOLBAR].size = GTK_ICON_SIZE_LARGE_TOOLBAR;
-      icon_sizes[GTK_ICON_SIZE_LARGE_TOOLBAR].name = "gtk-large-toolbar";
-      icon_sizes[GTK_ICON_SIZE_LARGE_TOOLBAR].width = 24;
-      icon_sizes[GTK_ICON_SIZE_LARGE_TOOLBAR].height = 24;
+      icon_sizes[CTK_ICON_SIZE_LARGE_TOOLBAR].size = CTK_ICON_SIZE_LARGE_TOOLBAR;
+      icon_sizes[CTK_ICON_SIZE_LARGE_TOOLBAR].name = "gtk-large-toolbar";
+      icon_sizes[CTK_ICON_SIZE_LARGE_TOOLBAR].width = 24;
+      icon_sizes[CTK_ICON_SIZE_LARGE_TOOLBAR].height = 24;
 
-      icon_sizes[GTK_ICON_SIZE_DND].size = GTK_ICON_SIZE_DND;
-      icon_sizes[GTK_ICON_SIZE_DND].name = "gtk-dnd";
-      icon_sizes[GTK_ICON_SIZE_DND].width = 32;
-      icon_sizes[GTK_ICON_SIZE_DND].height = 32;
+      icon_sizes[CTK_ICON_SIZE_DND].size = CTK_ICON_SIZE_DND;
+      icon_sizes[CTK_ICON_SIZE_DND].name = "gtk-dnd";
+      icon_sizes[CTK_ICON_SIZE_DND].width = 32;
+      icon_sizes[CTK_ICON_SIZE_DND].height = 32;
 
-      icon_sizes[GTK_ICON_SIZE_DIALOG].size = GTK_ICON_SIZE_DIALOG;
-      icon_sizes[GTK_ICON_SIZE_DIALOG].name = "gtk-dialog";
-      icon_sizes[GTK_ICON_SIZE_DIALOG].width = 48;
-      icon_sizes[GTK_ICON_SIZE_DIALOG].height = 48;
+      icon_sizes[CTK_ICON_SIZE_DIALOG].size = CTK_ICON_SIZE_DIALOG;
+      icon_sizes[CTK_ICON_SIZE_DIALOG].name = "gtk-dialog";
+      icon_sizes[CTK_ICON_SIZE_DIALOG].width = 48;
+      icon_sizes[CTK_ICON_SIZE_DIALOG].height = 48;
 
-      g_assert ((GTK_ICON_SIZE_DIALOG + 1) == NUM_BUILTIN_SIZES);
+      g_assert ((CTK_ICON_SIZE_DIALOG + 1) == NUM_BUILTIN_SIZES);
 
       /* Alias everything to itself. */
       i = 1; /* skip invalid size */
@@ -730,7 +730,7 @@ icon_size_lookup_intern (GtkIconSize  size,
   if (size >= icon_sizes_used)
     return FALSE;
 
-  if (size == GTK_ICON_SIZE_INVALID)
+  if (size == CTK_ICON_SIZE_INVALID)
     return FALSE;
 
   if (widthp)
@@ -753,7 +753,7 @@ icon_size_lookup_intern (GtkIconSize  size,
  * Obtains the pixel size of a semantic icon size, possibly
  * modified by user preferences for a particular
  * #GtkSettings. Normally @size would be
- * #GTK_ICON_SIZE_MENU, #GTK_ICON_SIZE_BUTTON, etc.  This function
+ * #CTK_ICON_SIZE_MENU, #CTK_ICON_SIZE_BUTTON, etc.  This function
  * isn’t normally needed, ctk_widget_render_icon_pixbuf() is the usual
  * way to get an icon for rendering, then just look at the size of
  * the rendered pixbuf. The rendered pixbuf may not even correspond to
@@ -773,7 +773,7 @@ ctk_icon_size_lookup_for_settings (GtkSettings *settings,
 				   gint        *width,
 				   gint        *height)
 {
-  g_return_val_if_fail (GTK_IS_SETTINGS (settings), FALSE);
+  g_return_val_if_fail (CTK_IS_SETTINGS (settings), FALSE);
 
   return icon_size_lookup_intern (size, width, height);
 }
@@ -785,7 +785,7 @@ ctk_icon_size_lookup_for_settings (GtkSettings *settings,
  * @height: (out) (allow-none): location to store icon height
  *
  * Obtains the pixel size of a semantic icon size @size:
- * #GTK_ICON_SIZE_MENU, #GTK_ICON_SIZE_BUTTON, etc.  This function
+ * #CTK_ICON_SIZE_MENU, #CTK_ICON_SIZE_BUTTON, etc.  This function
  * isn’t normally needed, ctk_icon_theme_load_icon() is the usual
  * way to get an icon for rendering, then just look at the size of
  * the rendered pixbuf. The rendered pixbuf may not even correspond to
@@ -800,7 +800,7 @@ ctk_icon_size_lookup (GtkIconSize  size,
                       gint        *widthp,
                       gint        *heightp)
 {
-  GTK_NOTE (MULTIHEAD,
+  CTK_NOTE (MULTIHEAD,
 	    g_warning ("ctk_icon_size_lookup ()) is not multihead safe"));
 
   return icon_size_lookup_intern (size, widthp, heightp);
@@ -820,7 +820,7 @@ icon_size_register_intern (const gchar *name,
   if (old_alias && icon_sizes[old_alias->target].width > 0)
     {
       g_warning ("Icon size name '%s' already exists", name);
-      return GTK_ICON_SIZE_INVALID;
+      return CTK_ICON_SIZE_INVALID;
     }
 
   if (old_alias)
@@ -856,7 +856,7 @@ icon_size_register_intern (const gchar *name,
  * @width: the icon width
  * @height: the icon height
  *
- * Registers a new icon size, along the same lines as #GTK_ICON_SIZE_MENU,
+ * Registers a new icon size, along the same lines as #CTK_ICON_SIZE_MENU,
  * etc. Returns the integer value for the size.
  *
  * Returns: (type int): integer value representing the size (#GtkIconSize)
@@ -943,7 +943,7 @@ ctk_icon_size_from_name (const gchar *name)
   if (ia && icon_sizes[ia->target].width > 0)
     return ia->target;
   else
-    return GTK_ICON_SIZE_INVALID;
+    return CTK_ICON_SIZE_INVALID;
 }
 
 /**
@@ -1026,7 +1026,7 @@ ctk_icon_set_new_from_pixbuf (GdkPixbuf *pixbuf)
 {
   GtkIconSet *set;
 
-  GtkIconSource source = GTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
+  GtkIconSource source = CTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
 
   g_return_val_if_fail (pixbuf != NULL, NULL);
 
@@ -1236,7 +1236,7 @@ render_icon_name_pixbuf (GtkIconSource *icon_source,
   GError *error = NULL;
 
   icon_theme = ctk_css_icon_theme_value_get_icon_theme
-    (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_THEME));
+    (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_THEME));
 
   if (!ctk_icon_size_lookup (size, &width, &height))
     {
@@ -1282,7 +1282,7 @@ render_icon_name_pixbuf (GtkIconSource *icon_source,
 
   pixel_size = MIN (width, height);
 
-  if (icon_source->direction != GTK_TEXT_DIR_NONE)
+  if (icon_source->direction != CTK_TEXT_DIR_NONE)
     {
       gchar *suffix[3] = { NULL, "-ltr", "-rtl" };
       gchar *names[3];
@@ -1295,7 +1295,7 @@ render_icon_name_pixbuf (GtkIconSource *icon_source,
       info = ctk_icon_theme_choose_icon_for_scale (icon_theme,
                                                    (const char **) names,
                                                    pixel_size, scale,
-                                                   GTK_ICON_LOOKUP_USE_BUILTIN);
+                                                   CTK_ICON_LOOKUP_USE_BUILTIN);
       g_free (names[0]);
       if (info)
         {
@@ -1325,8 +1325,8 @@ render_icon_name_pixbuf (GtkIconSource *icon_source,
   pixbuf = ctk_render_icon_pixbuf_unpacked (tmp_pixbuf,
                                             -1,
                                             ctk_icon_source_get_state_wildcarded (icon_source)
-                                            ? _ctk_css_icon_effect_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_EFFECT))
-                                            : GTK_CSS_ICON_EFFECT_NONE);
+                                            ? _ctk_css_icon_effect_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_EFFECT))
+                                            : CTK_CSS_ICON_EFFECT_NONE);
 
   if (!pixbuf)
     g_warning ("Failed to render icon");
@@ -1366,18 +1366,18 @@ find_and_render_icon_source (GtkIconSet       *icon_set,
 
       switch (source->type)
 	{
-	case GTK_ICON_SOURCE_FILENAME:
+	case CTK_ICON_SOURCE_FILENAME:
 	  if (!ensure_filename_pixbuf (icon_set, source))
 	    break;
 	  /* Fall through */
-	case GTK_ICON_SOURCE_PIXBUF:
+	case CTK_ICON_SOURCE_PIXBUF:
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
           pixbuf = ctk_render_icon_pixbuf_unpacked (ctk_icon_source_get_pixbuf (source),
                                                     ctk_icon_source_get_size_wildcarded (source) ? size : -1,
                                                     ctk_icon_source_get_state_wildcarded (source)
                                                     ? _ctk_css_icon_effect_value_get (
-                                                       ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_EFFECT))
-                                                    : GTK_CSS_ICON_EFFECT_NONE);
+                                                       ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_EFFECT))
+                                                    : CTK_CSS_ICON_EFFECT_NONE);
 G_GNUC_END_IGNORE_DEPRECATIONS;
 	  if (!pixbuf)
 	    {
@@ -1395,14 +1395,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 	      g_object_unref (tmp);
 	    }
 	  break;
-	case GTK_ICON_SOURCE_ICON_NAME:
-	case GTK_ICON_SOURCE_STATIC_ICON_NAME:
+	case CTK_ICON_SOURCE_ICON_NAME:
+	case CTK_ICON_SOURCE_STATIC_ICON_NAME:
           pixbuf = render_icon_name_pixbuf (source, style,
                                             size, scale);
 	  if (!pixbuf)
 	    failed = g_slist_prepend (failed, source);
 	  break;
-	case GTK_ICON_SOURCE_EMPTY:
+	case CTK_ICON_SOURCE_EMPTY:
 	  g_assert_not_reached ();
 	}
     }
@@ -1419,13 +1419,13 @@ render_fallback_image (GtkCssStyle       *style,
                        GtkIconSize        size)
 {
   /* This icon can be used for any direction/state/size */
-  static GtkIconSource fallback_source = GTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
+  static GtkIconSource fallback_source = CTK_ICON_SOURCE_INIT (TRUE, TRUE, TRUE);
 
-  if (fallback_source.type == GTK_ICON_SOURCE_EMPTY)
+  if (fallback_source.type == CTK_ICON_SOURCE_EMPTY)
     {
-      fallback_source.type = GTK_ICON_SOURCE_STATIC_ICON_NAME;
+      fallback_source.type = CTK_ICON_SOURCE_STATIC_ICON_NAME;
       fallback_source.source.icon_name = (gchar *)"image-missing";
-      fallback_source.direction = GTK_TEXT_DIR_NONE;
+      fallback_source.direction = CTK_TEXT_DIR_NONE;
     }
 
   return render_icon_name_pixbuf (&fallback_source, style, size, 1);
@@ -1443,23 +1443,23 @@ ctk_icon_set_render_icon_pixbuf_for_scale (GtkIconSet       *icon_set,
   GtkCssIconEffect effect;
 
   g_return_val_if_fail (icon_set != NULL, NULL);
-  g_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
 
   effect = _ctk_css_icon_effect_value_get
-    (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_ICON_EFFECT));
+    (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_EFFECT));
 
   switch (effect)
     {
     default:
       g_assert_not_reached ();
-    case GTK_CSS_ICON_EFFECT_NONE:
-      state = GTK_STATE_NORMAL;
+    case CTK_CSS_ICON_EFFECT_NONE:
+      state = CTK_STATE_NORMAL;
       break;
-    case GTK_CSS_ICON_EFFECT_HIGHLIGHT:
-      state = GTK_STATE_PRELIGHT;
+    case CTK_CSS_ICON_EFFECT_HIGHLIGHT:
+      state = CTK_STATE_PRELIGHT;
       break;
-    case GTK_CSS_ICON_EFFECT_DIM:
-      state = GTK_STATE_PRELIGHT;
+    case CTK_CSS_ICON_EFFECT_DIM:
+      state = CTK_STATE_PRELIGHT;
       break;
     }
 
@@ -1499,7 +1499,7 @@ ctk_icon_set_render_icon_pixbuf (GtkIconSet        *icon_set,
                                  GtkIconSize        size)
 {
   g_return_val_if_fail (icon_set != NULL, NULL);
-  g_return_val_if_fail (GTK_IS_STYLE_CONTEXT (context), NULL);
+  g_return_val_if_fail (CTK_IS_STYLE_CONTEXT (context), NULL);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   return ctk_icon_set_render_icon_pixbuf_for_scale (icon_set,
@@ -1599,7 +1599,7 @@ ctk_icon_set_render_icon (GtkIconSet        *icon_set,
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  g_return_val_if_fail (style == NULL || GTK_IS_STYLE (style), NULL);
+  g_return_val_if_fail (style == NULL || CTK_IS_STYLE (style), NULL);
 
   if (style && ctk_style_has_context (style))
     {
@@ -1620,11 +1620,11 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
   switch (state)
     {
-    case GTK_STATE_PRELIGHT:
-      flags |= GTK_STATE_FLAG_PRELIGHT;
+    case CTK_STATE_PRELIGHT:
+      flags |= CTK_STATE_FLAG_PRELIGHT;
       break;
-    case GTK_STATE_INSENSITIVE:
-      flags |= GTK_STATE_FLAG_INSENSITIVE;
+    case CTK_STATE_INSENSITIVE:
+      flags |= CTK_STATE_FLAG_INSENSITIVE;
       break;
     default:
       break;
@@ -1709,7 +1709,7 @@ ctk_icon_set_add_source (GtkIconSet          *icon_set,
   g_return_if_fail (icon_set != NULL);
   g_return_if_fail (source != NULL);
 
-  if (source->type == GTK_ICON_SOURCE_EMPTY)
+  if (source->type == CTK_ICON_SOURCE_EMPTY)
     {
       g_warning ("Useless empty GtkIconSource");
       return;
@@ -1845,9 +1845,9 @@ ctk_icon_source_new (void)
 
   src = g_new0 (GtkIconSource, 1);
 
-  src->direction = GTK_TEXT_DIR_NONE;
-  src->size = GTK_ICON_SIZE_INVALID;
-  src->state = GTK_STATE_NORMAL;
+  src->direction = CTK_TEXT_DIR_NONE;
+  src->size = CTK_ICON_SIZE_INVALID;
+  src->state = CTK_STATE_NORMAL;
 
   src->any_direction = TRUE;
   src->any_state = TRUE;
@@ -1879,18 +1879,18 @@ ctk_icon_source_copy (const GtkIconSource *source)
 
   switch (copy->type)
     {
-    case GTK_ICON_SOURCE_EMPTY:
-    case GTK_ICON_SOURCE_STATIC_ICON_NAME:
+    case CTK_ICON_SOURCE_EMPTY:
+    case CTK_ICON_SOURCE_STATIC_ICON_NAME:
       break;
-    case GTK_ICON_SOURCE_ICON_NAME:
+    case CTK_ICON_SOURCE_ICON_NAME:
       copy->source.icon_name = g_strdup (copy->source.icon_name);
       break;
-    case GTK_ICON_SOURCE_FILENAME:
+    case CTK_ICON_SOURCE_FILENAME:
       copy->source.filename = g_strdup (copy->source.filename);
       if (copy->filename_pixbuf)
 	g_object_ref (copy->filename_pixbuf);
       break;
-    case GTK_ICON_SOURCE_PIXBUF:
+    case CTK_ICON_SOURCE_PIXBUF:
       g_object_ref (copy->source.pixbuf);
       break;
     default:
@@ -1927,22 +1927,22 @@ icon_source_clear (GtkIconSource *source)
 {
   switch (source->type)
     {
-    case GTK_ICON_SOURCE_EMPTY:
+    case CTK_ICON_SOURCE_EMPTY:
       break;
-    case GTK_ICON_SOURCE_ICON_NAME:
+    case CTK_ICON_SOURCE_ICON_NAME:
       g_free (source->source.icon_name);
       /* fall thru */
-    case GTK_ICON_SOURCE_STATIC_ICON_NAME:
+    case CTK_ICON_SOURCE_STATIC_ICON_NAME:
       source->source.icon_name = NULL;
       break;
-    case GTK_ICON_SOURCE_FILENAME:
+    case CTK_ICON_SOURCE_FILENAME:
       g_free (source->source.filename);
       source->source.filename = NULL;
       if (source->filename_pixbuf) 
 	g_object_unref (source->filename_pixbuf);
       source->filename_pixbuf = NULL;
       break;
-    case GTK_ICON_SOURCE_PIXBUF:
+    case CTK_ICON_SOURCE_PIXBUF:
       g_object_unref (source->source.pixbuf);
       source->source.pixbuf = NULL;
       break;
@@ -1950,7 +1950,7 @@ icon_source_clear (GtkIconSource *source)
       g_assert_not_reached();
     }
 
-  source->type = GTK_ICON_SOURCE_EMPTY;
+  source->type = CTK_ICON_SOURCE_EMPTY;
 }
 
 /**
@@ -1970,7 +1970,7 @@ ctk_icon_source_set_filename (GtkIconSource *source,
   g_return_if_fail (source != NULL);
   g_return_if_fail (filename == NULL || g_path_is_absolute (filename));
 
-  if (source->type == GTK_ICON_SOURCE_FILENAME &&
+  if (source->type == CTK_ICON_SOURCE_FILENAME &&
       source->source.filename == filename)
     return;
 
@@ -1978,7 +1978,7 @@ ctk_icon_source_set_filename (GtkIconSource *source,
 
   if (filename != NULL)
     {
-      source->type = GTK_ICON_SOURCE_FILENAME;
+      source->type = CTK_ICON_SOURCE_FILENAME;
       source->source.filename = g_strdup (filename);
     }
 }
@@ -1999,7 +1999,7 @@ ctk_icon_source_set_icon_name (GtkIconSource *source,
 {
   g_return_if_fail (source != NULL);
 
-  if (source->type == GTK_ICON_SOURCE_ICON_NAME &&
+  if (source->type == CTK_ICON_SOURCE_ICON_NAME &&
       source->source.icon_name == icon_name)
     return;
 
@@ -2007,7 +2007,7 @@ ctk_icon_source_set_icon_name (GtkIconSource *source,
 
   if (icon_name != NULL)
     {
-      source->type = GTK_ICON_SOURCE_ICON_NAME;
+      source->type = CTK_ICON_SOURCE_ICON_NAME;
       source->source.icon_name = g_strdup (icon_name);
     }
 }
@@ -2029,7 +2029,7 @@ ctk_icon_source_set_pixbuf (GtkIconSource *source,
   g_return_if_fail (source != NULL);
   g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
 
-  if (source->type == GTK_ICON_SOURCE_PIXBUF &&
+  if (source->type == CTK_ICON_SOURCE_PIXBUF &&
       source->source.pixbuf == pixbuf)
     return;
 
@@ -2037,7 +2037,7 @@ ctk_icon_source_set_pixbuf (GtkIconSource *source,
 
   if (pixbuf != NULL)
     {
-      source->type = GTK_ICON_SOURCE_PIXBUF;
+      source->type = CTK_ICON_SOURCE_PIXBUF;
       source->source.pixbuf = g_object_ref (pixbuf);
     }
 }
@@ -2060,7 +2060,7 @@ ctk_icon_source_get_filename (const GtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, NULL);
 
-  if (source->type == GTK_ICON_SOURCE_FILENAME)
+  if (source->type == CTK_ICON_SOURCE_FILENAME)
     return source->source.filename;
   else
     return NULL;
@@ -2083,8 +2083,8 @@ ctk_icon_source_get_icon_name (const GtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, NULL);
 
-  if (source->type == GTK_ICON_SOURCE_ICON_NAME ||
-     source->type == GTK_ICON_SOURCE_STATIC_ICON_NAME)
+  if (source->type == CTK_ICON_SOURCE_ICON_NAME ||
+     source->type == CTK_ICON_SOURCE_STATIC_ICON_NAME)
     return source->source.icon_name;
   else
     return NULL;
@@ -2111,9 +2111,9 @@ ctk_icon_source_get_pixbuf (const GtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, NULL);
 
-  if (source->type == GTK_ICON_SOURCE_PIXBUF)
+  if (source->type == CTK_ICON_SOURCE_PIXBUF)
     return source->source.pixbuf;
-  else if (source->type == GTK_ICON_SOURCE_FILENAME)
+  else if (source->type == CTK_ICON_SOURCE_FILENAME)
     return source->filename_pixbuf;
   else
     return NULL;
@@ -2415,7 +2415,7 @@ _ctk_icon_factory_list_ids (void)
   while (tmp_list != NULL)
     {
       GList *these_ids;
-      GtkIconFactory *factory = GTK_ICON_FACTORY (tmp_list->data);
+      GtkIconFactory *factory = CTK_ICON_FACTORY (tmp_list->data);
       GtkIconFactoryPrivate *priv = factory->priv;
 
       these_ids = g_hash_table_get_keys (priv->icons);
@@ -2470,7 +2470,7 @@ icon_source_start_element (GMarkupParseContext  *context,
       if (strcmp (element_name, "sources") != 0)
         {
           error_msg = g_strdup_printf ("Unexpected element %s, expected <sources>", element_name);
-          error_domain = GTK_BUILDER_ERROR_INVALID_TAG;
+          error_domain = CTK_BUILDER_ERROR_INVALID_TAG;
           goto error;
         }
       parser_data->in_source = TRUE;
@@ -2481,7 +2481,7 @@ icon_source_start_element (GMarkupParseContext  *context,
       if (strcmp (element_name, "source") != 0)
         {
           error_msg = g_strdup_printf ("Unexpected element %s, expected <source>", element_name);
-          error_domain = GTK_BUILDER_ERROR_INVALID_TAG;
+          error_domain = CTK_BUILDER_ERROR_INVALID_TAG;
           goto error;
         }
     }
@@ -2496,7 +2496,7 @@ icon_source_start_element (GMarkupParseContext  *context,
         icon_name = g_strdup (values[i]);
       else if (strcmp (names[i], "size") == 0)
         {
-          if (!_ctk_builder_enum_from_string (GTK_TYPE_ICON_SIZE,
+          if (!_ctk_builder_enum_from_string (CTK_TYPE_ICON_SIZE,
                                               values[i],
                                               &size,
                                               error))
@@ -2504,7 +2504,7 @@ icon_source_start_element (GMarkupParseContext  *context,
         }
       else if (strcmp (names[i], "direction") == 0)
         {
-          if (!_ctk_builder_enum_from_string (GTK_TYPE_TEXT_DIRECTION,
+          if (!_ctk_builder_enum_from_string (CTK_TYPE_TEXT_DIRECTION,
                                               values[i],
                                               &direction,
                                               error))
@@ -2512,7 +2512,7 @@ icon_source_start_element (GMarkupParseContext  *context,
         }
       else if (strcmp (names[i], "state") == 0)
         {
-          if (!_ctk_builder_enum_from_string (GTK_TYPE_STATE_TYPE,
+          if (!_ctk_builder_enum_from_string (CTK_TYPE_STATE_TYPE,
                                               values[i],
                                               &state,
                                               error))
@@ -2522,7 +2522,7 @@ icon_source_start_element (GMarkupParseContext  *context,
         {
           error_msg = g_strdup_printf ("'%s' is not a valid attribute of <%s>",
                                        names[i], "source");
-          error_domain = GTK_BUILDER_ERROR_INVALID_ATTRIBUTE;
+          error_domain = CTK_BUILDER_ERROR_INVALID_ATTRIBUTE;
           goto error;
         }
     }
@@ -2530,7 +2530,7 @@ icon_source_start_element (GMarkupParseContext  *context,
   if (!stock_id)
     {
       error_msg = g_strdup_printf ("<source> requires a stock_id");
-      error_domain = GTK_BUILDER_ERROR_MISSING_ATTRIBUTE;
+      error_domain = CTK_BUILDER_ERROR_MISSING_ATTRIBUTE;
       goto error;
     }
 
@@ -2554,7 +2554,7 @@ icon_source_start_element (GMarkupParseContext  *context,
 
     tmp = g_strdup_printf ("%s:%d:%d %s", "input",
                            line_number, char_number, error_msg);
-    g_set_error_literal (error, GTK_BUILDER_ERROR, error_domain, tmp);
+    g_set_error_literal (error, CTK_BUILDER_ERROR, error_domain, tmp);
     g_free (tmp);
     g_free (stock_id);
     g_free (filename);
@@ -2599,7 +2599,7 @@ ctk_icon_factory_buildable_custom_tag_end (GtkBuildable *buildable,
 {
   GtkIconFactory *icon_factory;
 
-  icon_factory = GTK_ICON_FACTORY (buildable);
+  icon_factory = CTK_ICON_FACTORY (buildable);
 
   if (strcmp (tagname, "sources") == 0)
     {
@@ -2650,7 +2650,7 @@ ctk_icon_factory_buildable_custom_tag_end (GtkBuildable *buildable,
             }
 
 	  /* Inline source_add() to avoid creating a copy */
-	  g_assert (icon_source->type != GTK_ICON_SOURCE_EMPTY);
+	  g_assert (icon_source->type != CTK_ICON_SOURCE_EMPTY);
 	  icon_set->sources = g_slist_insert_sorted (icon_set->sources,
 						     icon_source,
 						     icon_source_compare);

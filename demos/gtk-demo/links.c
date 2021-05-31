@@ -26,16 +26,16 @@ activate_link (GtkWidget   *label,
       GtkWidget *parent;
 
       parent = ctk_widget_get_toplevel (label);
-      dialog = ctk_message_dialog_new_with_markup (GTK_WINDOW (parent),
-                 GTK_DIALOG_DESTROY_WITH_PARENT,
-                 GTK_MESSAGE_INFO,
-                 GTK_BUTTONS_OK,
+      dialog = ctk_message_dialog_new_with_markup (CTK_WINDOW (parent),
+                 CTK_DIALOG_DESTROY_WITH_PARENT,
+                 CTK_MESSAGE_INFO,
+                 CTK_BUTTONS_OK,
                  "The term <i>keynav</i> is a shorthand for "
                  "keyboard navigation and refers to the process of using "
                  "a program (exclusively) via keyboard input.");
-      ctk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+      ctk_window_set_modal (CTK_WINDOW (dialog), TRUE);
 
-      ctk_window_present (GTK_WINDOW (dialog));
+      ctk_window_present (CTK_WINDOW (dialog));
       g_signal_connect (dialog, "response", G_CALLBACK (response_cb), NULL);
 
       return TRUE;
@@ -52,11 +52,11 @@ do_links (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Links");
-      ctk_container_set_border_width (GTK_CONTAINER (window), 12);
+      ctk_window_set_title (CTK_WINDOW (window), "Links");
+      ctk_container_set_border_width (CTK_CONTAINER (window), 12);
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
@@ -70,9 +70,9 @@ do_links (GtkWidget *do_widget)
                              "<span color=\"#F2B50F\">o</span><span color=\"#0266C8\">g</span>"
                              "<span color=\"#00933B\">l</span><span color=\"#F90101\">e</span>"
                              "</a>.");
-      ctk_label_set_use_markup (GTK_LABEL (label), TRUE);
+      ctk_label_set_use_markup (CTK_LABEL (label), TRUE);
       g_signal_connect (label, "activate-link", G_CALLBACK (activate_link), NULL);
-      ctk_container_add (GTK_CONTAINER (window), label);
+      ctk_container_add (CTK_CONTAINER (window), label);
       ctk_widget_show (label);
     }
 

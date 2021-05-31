@@ -19,19 +19,19 @@ append_element (GtkWidgetPath *path,
     const char    *name;
     GtkStateFlags  state_flag;
   } pseudo_classes[] = {
-    { "active",        GTK_STATE_FLAG_ACTIVE },
-    { "hover",         GTK_STATE_FLAG_PRELIGHT },
-    { "selected",      GTK_STATE_FLAG_SELECTED },
-    { "disabled",      GTK_STATE_FLAG_INSENSITIVE },
-    { "indeterminate", GTK_STATE_FLAG_INCONSISTENT },
-    { "focus",         GTK_STATE_FLAG_FOCUSED },
-    { "backdrop",      GTK_STATE_FLAG_BACKDROP },
-    { "dir(ltr)",      GTK_STATE_FLAG_DIR_LTR },
-    { "dir(rtl)",      GTK_STATE_FLAG_DIR_RTL },
-    { "link",          GTK_STATE_FLAG_LINK },
-    { "visited",       GTK_STATE_FLAG_VISITED },
-    { "checked",       GTK_STATE_FLAG_CHECKED },
-    { "drop(active)",  GTK_STATE_FLAG_DROP_ACTIVE }
+    { "active",        CTK_STATE_FLAG_ACTIVE },
+    { "hover",         CTK_STATE_FLAG_PRELIGHT },
+    { "selected",      CTK_STATE_FLAG_SELECTED },
+    { "disabled",      CTK_STATE_FLAG_INSENSITIVE },
+    { "indeterminate", CTK_STATE_FLAG_INCONSISTENT },
+    { "focus",         CTK_STATE_FLAG_FOCUSED },
+    { "backdrop",      CTK_STATE_FLAG_BACKDROP },
+    { "dir(ltr)",      CTK_STATE_FLAG_DIR_LTR },
+    { "dir(rtl)",      CTK_STATE_FLAG_DIR_RTL },
+    { "link",          CTK_STATE_FLAG_LINK },
+    { "visited",       CTK_STATE_FLAG_VISITED },
+    { "checked",       CTK_STATE_FLAG_CHECKED },
+    { "drop(active)",  CTK_STATE_FLAG_DROP_ACTIVE }
   };
   const char *next;
   char *name;
@@ -562,7 +562,7 @@ draw_text (GtkWidget     *widget,
 
   ctk_style_context_set_state (label_context, state);
 
-  if (state & GTK_STATE_FLAG_SELECTED)
+  if (state & CTK_STATE_FLAG_SELECTED)
     context = selection_context;
   else
     context = label_context;
@@ -897,26 +897,26 @@ draw_cb (GtkWidget *widget,
   cairo_fill (cr);
 
   x = y = 10;
-  draw_horizontal_scrollbar (widget, cr, x, y, panewidth - 20, 30, GTK_STATE_FLAG_NORMAL, &height);
+  draw_horizontal_scrollbar (widget, cr, x, y, panewidth - 20, 30, CTK_STATE_FLAG_NORMAL, &height);
   y += height + 8;
-  draw_horizontal_scrollbar (widget, cr, x, y, panewidth - 20, 40, GTK_STATE_FLAG_PRELIGHT, &height);
+  draw_horizontal_scrollbar (widget, cr, x, y, panewidth - 20, 40, CTK_STATE_FLAG_PRELIGHT, &height);
   y += height + 8;
-  draw_horizontal_scrollbar (widget, cr, x, y, panewidth - 20, 50, GTK_STATE_FLAG_ACTIVE|GTK_STATE_FLAG_PRELIGHT, &height);
+  draw_horizontal_scrollbar (widget, cr, x, y, panewidth - 20, 50, CTK_STATE_FLAG_ACTIVE|CTK_STATE_FLAG_PRELIGHT, &height);
 
   y += height + 8;
-  draw_text (widget, cr, x,  y, panewidth - 20, 20, "Not selected", GTK_STATE_FLAG_NORMAL);
+  draw_text (widget, cr, x,  y, panewidth - 20, 20, "Not selected", CTK_STATE_FLAG_NORMAL);
   y += 20 + 10;
-  draw_text (widget, cr, x, y, panewidth - 20, 20, "Selected", GTK_STATE_FLAG_SELECTED);
+  draw_text (widget, cr, x, y, panewidth - 20, 20, "Selected", CTK_STATE_FLAG_SELECTED);
 
   x = 10;
   y += 20 + 10;
-  draw_check (widget, cr,  x, y, GTK_STATE_FLAG_NORMAL, &width, &height);
+  draw_check (widget, cr,  x, y, CTK_STATE_FLAG_NORMAL, &width, &height);
   x += width + 10;
-  draw_check (widget, cr,  x, y, GTK_STATE_FLAG_CHECKED, &width, &height);
+  draw_check (widget, cr,  x, y, CTK_STATE_FLAG_CHECKED, &width, &height);
   x += width + 10;
-  draw_radio (widget, cr,  x, y, GTK_STATE_FLAG_NORMAL, &width, &height);
+  draw_radio (widget, cr,  x, y, CTK_STATE_FLAG_NORMAL, &width, &height);
   x += width + 10;
-  draw_radio (widget, cr, x, y, GTK_STATE_FLAG_CHECKED, &width, &height);
+  draw_radio (widget, cr, x, y, CTK_STATE_FLAG_CHECKED, &width, &height);
   x = 10;
 
   y += height + 10;
@@ -958,21 +958,21 @@ do_foreigndrawing (GtkWidget *do_widget)
       GtkWidget *box;
       GtkWidget *da;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_title (GTK_WINDOW (window), "Foreign drawing");
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_title (CTK_WINDOW (window), "Foreign drawing");
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-      ctk_container_add (GTK_CONTAINER (window), box);
+      box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+      ctk_container_add (CTK_CONTAINER (window), box);
       da = ctk_drawing_area_new ();
       ctk_widget_set_size_request (da, 400, 400);
       ctk_widget_set_hexpand (da, TRUE);
       ctk_widget_set_vexpand (da, TRUE);
       ctk_widget_set_app_paintable (da, TRUE);
-      ctk_container_add (GTK_CONTAINER (box), da);
+      ctk_container_add (CTK_CONTAINER (box), da);
 
       g_signal_connect (da, "draw", G_CALLBACK (draw_cb), NULL);
     }

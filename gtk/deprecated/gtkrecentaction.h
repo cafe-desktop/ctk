@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_RECENT_ACTION_H__
-#define __GTK_RECENT_ACTION_H__
+#ifndef __CTK_RECENT_ACTION_H__
+#define __CTK_RECENT_ACTION_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,12 +29,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_RECENT_ACTION                  (ctk_recent_action_get_type ())
-#define GTK_RECENT_ACTION(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_RECENT_ACTION, GtkRecentAction))
-#define GTK_IS_RECENT_ACTION(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_RECENT_ACTION))
-#define GTK_RECENT_ACTION_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_RECENT_ACTION, GtkRecentActionClass))
-#define GTK_IS_RECENT_ACTION_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_RECENT_ACTION))
-#define GTK_RECENT_ACTION_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_RECENT_ACTION, GtkRecentActionClass))
+#define CTK_TYPE_RECENT_ACTION                  (ctk_recent_action_get_type ())
+#define CTK_RECENT_ACTION(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_RECENT_ACTION, GtkRecentAction))
+#define CTK_IS_RECENT_ACTION(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_RECENT_ACTION))
+#define CTK_RECENT_ACTION_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_RECENT_ACTION, GtkRecentActionClass))
+#define CTK_IS_RECENT_ACTION_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_RECENT_ACTION))
+#define CTK_RECENT_ACTION_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_RECENT_ACTION, GtkRecentActionClass))
 
 typedef struct _GtkRecentAction         GtkRecentAction;
 typedef struct _GtkRecentActionPrivate  GtkRecentActionPrivate;
@@ -80,4 +80,4 @@ void       ctk_recent_action_set_show_numbers (GtkRecentAction  *action,
 
 G_END_DECLS
 
-#endif /* __GTK_RECENT_ACTION_H__ */
+#endif /* __CTK_RECENT_ACTION_H__ */

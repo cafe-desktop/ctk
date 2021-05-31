@@ -17,20 +17,20 @@
  * Authors: Ryan Lortie <desrt@desrt.ca>
  */
 
-#ifndef __GTK_ACTION_OBSERVER_H__
-#define __GTK_ACTION_OBSERVER_H__
+#ifndef __CTK_ACTION_OBSERVER_H__
+#define __CTK_ACTION_OBSERVER_H__
 
 #include <gio/gio.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTION_OBSERVER                            (ctk_action_observer_get_type ())
-#define GTK_ACTION_OBSERVER(inst)                           (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
-                                                             GTK_TYPE_ACTION_OBSERVER, GtkActionObserver))
-#define GTK_IS_ACTION_OBSERVER(inst)                        (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
-                                                             GTK_TYPE_ACTION_OBSERVER))
-#define GTK_ACTION_OBSERVER_GET_IFACE(inst)                 (G_TYPE_INSTANCE_GET_INTERFACE ((inst),                  \
-                                                             GTK_TYPE_ACTION_OBSERVER, GtkActionObserverInterface))
+#define CTK_TYPE_ACTION_OBSERVER                            (ctk_action_observer_get_type ())
+#define CTK_ACTION_OBSERVER(inst)                           (G_TYPE_CHECK_INSTANCE_CAST ((inst),                     \
+                                                             CTK_TYPE_ACTION_OBSERVER, GtkActionObserver))
+#define CTK_IS_ACTION_OBSERVER(inst)                        (G_TYPE_CHECK_INSTANCE_TYPE ((inst),                     \
+                                                             CTK_TYPE_ACTION_OBSERVER))
+#define CTK_ACTION_OBSERVER_GET_IFACE(inst)                 (G_TYPE_INSTANCE_GET_INTERFACE ((inst),                  \
+                                                             CTK_TYPE_ACTION_OBSERVER, GtkActionObserverInterface))
 
 typedef struct _GtkActionObserverInterface                  GtkActionObserverInterface;
 typedef struct _GtkActionObservable                         GtkActionObservable;
@@ -88,4 +88,4 @@ void                    ctk_action_observer_primary_accel_changed       (GtkActi
 
 G_END_DECLS
 
-#endif /* __GTK_ACTION_OBSERVER_H__ */
+#endif /* __CTK_ACTION_OBSERVER_H__ */

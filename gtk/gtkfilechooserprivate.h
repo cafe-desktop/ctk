@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FILE_CHOOSER_PRIVATE_H__
-#define __GTK_FILE_CHOOSER_PRIVATE_H__
+#ifndef __CTK_FILE_CHOOSER_PRIVATE_H__
+#define __CTK_FILE_CHOOSER_PRIVATE_H__
 
 #include "gtkbookmarksmanager.h"
 #include "gtkfilechooser.h"
@@ -50,7 +50,7 @@ G_BEGIN_DECLS
 #define SETTINGS_KEY_DATE_FORMAT            "date-format"
 #define SETTINGS_KEY_TYPE_FORMAT            "type-format"
 
-#define GTK_FILE_CHOOSER_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_FILE_CHOOSER, GtkFileChooserIface))
+#define CTK_FILE_CHOOSER_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_FILE_CHOOSER, GtkFileChooserIface))
 
 typedef struct _GtkFileChooserIface GtkFileChooserIface;
 
@@ -125,4 +125,4 @@ GSList *       _ctk_file_chooser_list_shortcut_folder_files (GtkFileChooser *cho
 
 G_END_DECLS
 
-#endif /* __GTK_FILE_CHOOSER_PRIVATE_H__ */
+#endif /* __CTK_FILE_CHOOSER_PRIVATE_H__ */

@@ -22,21 +22,21 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_MOUNT_OPERATION_H__
-#define __GTK_MOUNT_OPERATION_H__
+#ifndef __CTK_MOUNT_OPERATION_H__
+#define __CTK_MOUNT_OPERATION_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MOUNT_OPERATION         (ctk_mount_operation_get_type ())
-#define GTK_MOUNT_OPERATION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_MOUNT_OPERATION, GtkMountOperation))
-#define GTK_MOUNT_OPERATION_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), GTK_TYPE_MOUNT_OPERATION, GtkMountOperationClass))
-#define GTK_IS_MOUNT_OPERATION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_MOUNT_OPERATION))
-#define GTK_IS_MOUNT_OPERATION_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GTK_TYPE_MOUNT_OPERATION))
-#define GTK_MOUNT_OPERATION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_MOUNT_OPERATION, GtkMountOperationClass))
+#define CTK_TYPE_MOUNT_OPERATION         (ctk_mount_operation_get_type ())
+#define CTK_MOUNT_OPERATION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_MOUNT_OPERATION, GtkMountOperation))
+#define CTK_MOUNT_OPERATION_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), CTK_TYPE_MOUNT_OPERATION, GtkMountOperationClass))
+#define CTK_IS_MOUNT_OPERATION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_MOUNT_OPERATION))
+#define CTK_IS_MOUNT_OPERATION_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_MOUNT_OPERATION))
+#define CTK_MOUNT_OPERATION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_MOUNT_OPERATION, GtkMountOperationClass))
 
 typedef struct _GtkMountOperation         GtkMountOperation;
 typedef struct _GtkMountOperationClass    GtkMountOperationClass;
@@ -91,4 +91,4 @@ GdkScreen       *ctk_mount_operation_get_screen (GtkMountOperation *op);
 
 G_END_DECLS
 
-#endif /* __GTK_MOUNT_OPERATION_H__ */
+#endif /* __CTK_MOUNT_OPERATION_H__ */

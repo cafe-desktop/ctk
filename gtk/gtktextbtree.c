@@ -52,7 +52,7 @@
  *
  */
 
-#define GTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
+#define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
 #include "gtktextbtree.h"
 #include <string.h>
@@ -374,8 +374,8 @@ _ctk_text_btree_new (GtkTextTagTable *table,
   GtkTextBTreeNode *root_node;
   GtkTextLine *line, *line2;
 
-  g_return_val_if_fail (GTK_IS_TEXT_TAG_TABLE (table), NULL);
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_TAG_TABLE (table), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
 
   /*
    * The tree will initially have two empty lines.  The second line
@@ -757,7 +757,7 @@ _ctk_text_btree_delete (GtkTextIter *start,
   tree = _ctk_text_iter_get_btree (start);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_btree_check (tree);
 #endif
 
@@ -1081,7 +1081,7 @@ _ctk_text_btree_delete (GtkTextIter *start,
   segments_changed (tree);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_btree_check (tree);
 #endif
 
@@ -1365,7 +1365,7 @@ find_line_by_y (GtkTextBTree *tree, BTreeView *view,
   gint current_y = 0;
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_btree_check (tree);
 #endif
 
@@ -1784,7 +1784,7 @@ _ctk_text_btree_tag (const GtkTextIter *start_orig,
 
   g_return_if_fail (start_orig != NULL);
   g_return_if_fail (end_orig != NULL);
-  g_return_if_fail (GTK_IS_TEXT_TAG (tag));
+  g_return_if_fail (CTK_IS_TEXT_TAG (tag));
   g_return_if_fail (_ctk_text_iter_get_btree (start_orig) ==
                     _ctk_text_iter_get_btree (end_orig));
   g_return_if_fail (tag->priv->table == _ctk_text_iter_get_btree (start_orig)->table);
@@ -2019,7 +2019,7 @@ _ctk_text_btree_tag (const GtkTextIter *start_orig,
   queue_tag_redisplay (tree, tag, &start, &end);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_btree_check (tree);
 #endif
 }
@@ -2305,7 +2305,7 @@ _ctk_text_btree_get_tags (const GtkTextIter *iter,
     {
       if (tagInfo.counts[src] & 1)
         {
-          g_assert (GTK_IS_TEXT_TAG (tagInfo.tags[src]));
+          g_assert (CTK_IS_TEXT_TAG (tagInfo.tags[src]));
           tagInfo.tags[dst] = tagInfo.tags[src];
           dst++;
         }
@@ -2401,7 +2401,7 @@ copy_segment (GString *string,
         {
           g_string_append_len (string,
                                _ctk_text_unknown_char_utf8,
-                               GTK_TEXT_UNKNOWN_CHAR_UTF8_LEN);
+                               CTK_TEXT_UNKNOWN_CHAR_UTF8_LEN);
 
         }
     }
@@ -2757,7 +2757,7 @@ real_set_mark (GtkTextBTree      *tree,
   iter = *where;
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_iter_check (&iter);
 #endif
 
@@ -2816,7 +2816,7 @@ real_set_mark (GtkTextBTree      *tree,
     }
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_iter_check (&iter);
 #endif
 
@@ -2833,7 +2833,7 @@ real_set_mark (GtkTextBTree      *tree,
   redisplay_mark_if_visible (mark);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     {
       _ctk_text_iter_check (&iter);
       _ctk_text_btree_check (tree);
@@ -4358,7 +4358,7 @@ _ctk_text_line_next_could_contain_tag (GtkTextLine  *line,
   g_return_val_if_fail (line != NULL, NULL);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_btree_check (tree);
 #endif
 
@@ -4523,7 +4523,7 @@ _ctk_text_line_previous_could_contain_tag (GtkTextLine  *line,
   g_return_val_if_fail (line != NULL, NULL);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_btree_check (tree);
 #endif
 
@@ -5297,7 +5297,7 @@ _ctk_text_btree_validate (GtkTextBTree *tree,
         *new_height = state.new_height;
 
 #ifdef G_ENABLE_DEBUG
-      if (GTK_DEBUG_CHECK (TEXT))
+      if (CTK_DEBUG_CHECK (TEXT))
         _ctk_text_btree_check (tree);
 #endif
 
@@ -6008,7 +6008,7 @@ post_insert_fixup (GtkTextBTree *tree,
     }
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_btree_check (tree);
 #endif
 }
@@ -6564,7 +6564,7 @@ ctk_text_btree_link_segment (GtkTextLineSegment *seg,
   segments_changed (tree);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TEXT))
+  if (CTK_DEBUG_CHECK (TEXT))
     _ctk_text_btree_check (tree);
 #endif
 }

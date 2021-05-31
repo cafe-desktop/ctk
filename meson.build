@@ -53,7 +53,7 @@ ctk_major_version = ctk_version.split('.')[0].to_int()
 ctk_minor_version = ctk_version.split('.')[1].to_int()
 ctk_micro_version = ctk_version.split('.')[2].to_int()
 ctk_interface_age = 20
-add_project_arguments('-DGTK_VERSION="@0@"'.format(meson.project_version()), language: 'c')
+add_project_arguments('-DCTK_VERSION="@0@"'.format(meson.project_version()), language: 'c')
 
 add_project_arguments('-D_GNU_SOURCE', language: 'c')
 
@@ -181,16 +181,16 @@ ctk_mplocaledir = join_paths(ctk_prefix, get_option('localedir'))
 
 cdata = configuration_data()
 cdata.set_quoted('PACKAGE_VERSION', meson.project_version())
-cdata.set_quoted('GTK_LOCALEDIR', ctk_localedir)
-cdata.set_quoted('GTK_DATADIR', ctk_datadir)
-cdata.set_quoted('GTK_LIBDIR', ctk_libdir)
-cdata.set_quoted('GTK_SYSCONFDIR', ctk_sysconfdir)
+cdata.set_quoted('CTK_LOCALEDIR', ctk_localedir)
+cdata.set_quoted('CTK_DATADIR', ctk_datadir)
+cdata.set_quoted('CTK_LIBDIR', ctk_libdir)
+cdata.set_quoted('CTK_SYSCONFDIR', ctk_sysconfdir)
 cdata.set_quoted('GETTEXT_PACKAGE', 'gtk30')
-cdata.set('GTK_MAJOR_VERSION', ctk_major_version)
-cdata.set('GTK_MINOR_VERSION', ctk_minor_version)
-cdata.set('GTK_MICRO_VERSION', ctk_micro_version)
-cdata.set('GTK_BINARY_AGE', ctk_binary_age)
-cdata.set('GTK_INTERFACE_AGE', ctk_interface_age)
+cdata.set('CTK_MAJOR_VERSION', ctk_major_version)
+cdata.set('CTK_MINOR_VERSION', ctk_minor_version)
+cdata.set('CTK_MICRO_VERSION', ctk_micro_version)
+cdata.set('CTK_BINARY_AGE', ctk_binary_age)
+cdata.set('CTK_INTERFACE_AGE', ctk_interface_age)
 
 cdata.set_quoted('PACKAGE_URL', '')
 cdata.set_quoted('PACKAGE_NAME', 'gtk+')
@@ -438,7 +438,7 @@ if pangoft_dep.found()
 endif
 
 if win32_enabled
-  # for GTK_IM_CONTEXT_IME
+  # for CTK_IM_CONTEXT_IME
   pangowin32_dep  = dependency('pangowin32', fallback : ['pango', 'libpangowin32_dep'])
 endif
 
@@ -863,9 +863,9 @@ pkgconf.set('prefix', get_option('prefix'))
 pkgconf.set('exec_prefix', '${prefix}')
 pkgconf.set('libdir', '${prefix}' / get_option('libdir'))
 pkgconf.set('includedir', '${prefix}' / get_option('includedir'))
-pkgconf.set('GTK_API_VERSION', ctk_api_version)
+pkgconf.set('CTK_API_VERSION', ctk_api_version)
 pkgconf.set('VERSION', meson.project_version())
-pkgconf.set('GTK_BINARY_VERSION', ctk_binary_version)
+pkgconf.set('CTK_BINARY_VERSION', ctk_binary_version)
 pkgconf.set('host', '@0@-@1@'.format(host_machine.cpu_family(), host_machine.system())) # FIXME
 
 # Requires
@@ -907,7 +907,7 @@ ctk_packages = ' '.join([
     pixbuf_dep.name(), gdk_pixbuf_req,
     'gio-2.0', glib_req,
 ])
-pkgconf.set('GTK_PACKAGES', ctk_packages)
+pkgconf.set('CTK_PACKAGES', ctk_packages)
 
 # Requires.private
 pc_gdk_extra_libs += cairo_libs
@@ -918,15 +918,15 @@ if wayland_enabled or x11_enabled
 endif
 ctk_private_packages += gio_packages
 
-pkgconf.set('GTK_PRIVATE_PACKAGES', ' '.join(ctk_private_packages))
+pkgconf.set('CTK_PRIVATE_PACKAGES', ' '.join(ctk_private_packages))
 
 pkgconf.set('GDK_EXTRA_LIBS', ' '.join(pc_gdk_extra_libs))
 pkgconf.set('GSK_EXTRA_LIBS', '')
-pkgconf.set('GTK_EXTRA_LIBS', '')
+pkgconf.set('CTK_EXTRA_LIBS', '')
 
 pkgconf.set('GDK_EXTRA_CFLAGS', '')
 pkgconf.set('GSK_EXTRA_CFLAGS', '')
-pkgconf.set('GTK_EXTRA_CFLAGS', '')
+pkgconf.set('CTK_EXTRA_CFLAGS', '')
 
 pkg_install_dir = join_paths(get_option('libdir'), 'pkgconfig')
 

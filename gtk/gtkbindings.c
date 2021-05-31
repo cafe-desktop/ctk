@@ -146,15 +146,15 @@
 #define BINDING_MOD_MASK() (ctk_accelerator_get_default_mod_mask () | GDK_RELEASE_MASK)
 
 
-#define GTK_TYPE_IDENTIFIER (ctk_identifier_get_type ())
+#define CTK_TYPE_IDENTIFIER (ctk_identifier_get_type ())
 _GDK_EXTERN
 GType ctk_identifier_get_type (void) G_GNUC_CONST;
 
 
 /* --- structures --- */
 typedef enum {
-  GTK_BINDING_TOKEN_BIND,
-  GTK_BINDING_TOKEN_UNBIND
+  CTK_BINDING_TOKEN_BIND,
+  CTK_BINDING_TOKEN_UNBIND
 } GtkBindingTokens;
 
 /* --- variables --- */
@@ -497,7 +497,7 @@ binding_compose_params (GObject         *object,
 
               valid = FALSE;
 
-              if (args->arg_type == GTK_TYPE_IDENTIFIER)
+              if (args->arg_type == CTK_TYPE_IDENTIFIER)
                 {
                   GEnumValue *enum_value = NULL;
                   enum_value = g_enum_get_value_by_name (class, args->d.string_data);
@@ -523,7 +523,7 @@ binding_compose_params (GObject         *object,
 
               valid = FALSE;
 
-              if (args->arg_type == GTK_TYPE_IDENTIFIER)
+              if (args->arg_type == CTK_TYPE_IDENTIFIER)
                 {
                   GFlagsValue *flags_value = NULL;
                   flags_value = g_flags_get_value_by_name (class, args->d.string_data);
@@ -950,10 +950,10 @@ _ctk_binding_entry_add_signall (GtkBindingSet  *binding_set,
           arg->d.double_data = tmp_arg->d.double_data;
           break;
         case  G_TYPE_STRING:
-          if (tmp_arg->arg_type != GTK_TYPE_IDENTIFIER)
+          if (tmp_arg->arg_type != CTK_TYPE_IDENTIFIER)
             arg->arg_type = G_TYPE_STRING;
           else
-            arg->arg_type = GTK_TYPE_IDENTIFIER;
+            arg->arg_type = CTK_TYPE_IDENTIFIER;
           arg->d.string_data = g_strdup (tmp_arg->d.string_data);
           if (!arg->d.string_data)
             {
@@ -1012,7 +1012,7 @@ _ctk_binding_entry_add_signall (GtkBindingSet  *binding_set,
  *                               GDK_KEY_space,
  *                               modmask,
  *                               "move-cursor", 2,
- *                               GTK_TYPE_MOVEMENT_STEP, GTK_MOVEMENT_PAGES,
+ *                               CTK_TYPE_MOVEMENT_STEP, CTK_MOVEMENT_PAGES,
  *                               G_TYPE_INT, count,
  *                               G_TYPE_BOOLEAN, FALSE);
  * ]|
@@ -1065,7 +1065,7 @@ ctk_binding_entry_add_signal (GtkBindingSet  *binding_set,
           arg->d.double_data = va_arg (args, gdouble);
           break;
         case G_TYPE_STRING:
-          if (arg->arg_type != GTK_TYPE_IDENTIFIER)
+          if (arg->arg_type != CTK_TYPE_IDENTIFIER)
             arg->arg_type = G_TYPE_STRING;
           arg->d.string_data = va_arg (args, gchar*);
           if (!arg->d.string_data)
@@ -1208,7 +1208,7 @@ ctk_binding_parse_signal (GScanner       *scanner,
             {
               need_arg = FALSE;
               arg = g_new (GtkBindingArg, 1);
-              arg->arg_type = GTK_TYPE_IDENTIFIER;
+              arg->arg_type = CTK_TYPE_IDENTIFIER;
               arg->d.string_data = g_strdup (scanner->value.v_identifier);
               args = g_slist_prepend (args, arg);
             }
@@ -1291,11 +1291,11 @@ ctk_binding_parse_bind (GScanner       *scanner,
   if (scanner->token != G_TOKEN_SYMBOL)
     return G_TOKEN_SYMBOL;
 
-  if (scanner->value.v_symbol != GUINT_TO_POINTER (GTK_BINDING_TOKEN_BIND) &&
-      scanner->value.v_symbol != GUINT_TO_POINTER (GTK_BINDING_TOKEN_UNBIND))
+  if (scanner->value.v_symbol != GUINT_TO_POINTER (CTK_BINDING_TOKEN_BIND) &&
+      scanner->value.v_symbol != GUINT_TO_POINTER (CTK_BINDING_TOKEN_UNBIND))
     return G_TOKEN_SYMBOL;
 
-  unbind = (scanner->value.v_symbol == GUINT_TO_POINTER (GTK_BINDING_TOKEN_UNBIND));
+  unbind = (scanner->value.v_symbol == GUINT_TO_POINTER (CTK_BINDING_TOKEN_UNBIND));
   g_scanner_get_next_token (scanner);
 
   if (scanner->token != (guint) G_TOKEN_STRING)
@@ -1356,8 +1356,8 @@ create_signal_scanner (void)
   scanner = g_scanner_new (NULL);
   scanner->config->cset_identifier_nth = G_CSET_a_2_z G_CSET_A_2_Z G_CSET_DIGITS "-_";
 
-  g_scanner_scope_add_symbol (scanner, 0, "bind", GUINT_TO_POINTER (GTK_BINDING_TOKEN_BIND));
-  g_scanner_scope_add_symbol (scanner, 0, "unbind", GUINT_TO_POINTER (GTK_BINDING_TOKEN_UNBIND));
+  g_scanner_scope_add_symbol (scanner, 0, "bind", GUINT_TO_POINTER (CTK_BINDING_TOKEN_BIND));
+  g_scanner_scope_add_symbol (scanner, 0, "unbind", GUINT_TO_POINTER (CTK_BINDING_TOKEN_UNBIND));
 
   g_scanner_set_scope (scanner, 0);
 
@@ -1472,7 +1472,7 @@ ctk_bindings_activate_list (GObject  *object,
   if (!entries)
     return FALSE;
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (object));
+  context = ctk_widget_get_style_context (CTK_WIDGET (object));
 
   ctk_style_context_get (context, ctk_style_context_get_state (context),
                          "-gtk-key-bindings", &array,
@@ -1547,13 +1547,13 @@ ctk_bindings_activate (GObject         *object,
   gboolean handled = FALSE;
   gboolean is_release;
 
-  if (!GTK_IS_WIDGET (object))
+  if (!CTK_IS_WIDGET (object))
     return FALSE;
 
   is_release = (modifiers & GDK_RELEASE_MASK) != 0;
   modifiers = modifiers & BINDING_MOD_MASK () & ~GDK_RELEASE_MASK;
 
-  display = ctk_widget_get_display (GTK_WIDGET (object));
+  display = ctk_widget_get_display (CTK_WIDGET (object));
   key_hash = binding_key_hash_for_keymap (gdk_keymap_get_for_display (display));
 
   entries = _ctk_key_hash_lookup_keyval (key_hash, keyval, modifiers);
@@ -1586,10 +1586,10 @@ ctk_bindings_activate_event (GObject     *object,
   GtkKeyHash *key_hash;
   gboolean handled = FALSE;
 
-  if (!GTK_IS_WIDGET (object))
+  if (!CTK_IS_WIDGET (object))
     return FALSE;
 
-  display = ctk_widget_get_display (GTK_WIDGET (object));
+  display = ctk_widget_get_display (CTK_WIDGET (object));
   key_hash = binding_key_hash_for_keymap (gdk_keymap_get_for_display (display));
 
   entries = _ctk_key_hash_lookup (key_hash,

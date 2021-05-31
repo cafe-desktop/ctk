@@ -20,7 +20,7 @@
 #include <gtk/gtk.h>
 #include "gtkplugaccessible.h"
 
-#ifdef GTK_HAVE_ATK_PLUG_SET_CHILD
+#ifdef CTK_HAVE_ATK_PLUG_SET_CHILD
 
 /* We can not make GtkPlugAccessible inherit both from GtkContainerAccessible
  * and GtkPlug, so we make it the atk child of an AtkPlug */
@@ -30,14 +30,14 @@ struct _GtkPlugAccessiblePrivate
   AtkObject *accessible_plug;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkPlugAccessible, ctk_plug_accessible, GTK_TYPE_WINDOW_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkPlugAccessible, ctk_plug_accessible, CTK_TYPE_WINDOW_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkPlugAccessible))
 
 
 static void
 ctk_plug_accessible_finalize (GObject *object)
 {
-  GtkPlugAccessible *plug = GTK_PLUG_ACCESSIBLE (object);
+  GtkPlugAccessible *plug = CTK_PLUG_ACCESSIBLE (object);
   GtkPlugAccessiblePrivate *priv = plug->priv;
 
   g_clear_object (&priv->accessible_plug);
@@ -54,7 +54,7 @@ ctk_plug_accessible_initialize (AtkObject *plug, gpointer data)
 
   atk_plug = atk_plug_new ();
   atk_plug_set_child (ATK_PLUG (atk_plug), plug);
-  GTK_PLUG_ACCESSIBLE (plug)->priv->accessible_plug = atk_plug;
+  CTK_PLUG_ACCESSIBLE (plug)->priv->accessible_plug = atk_plug;
 }
 
 static void
@@ -78,4 +78,4 @@ ctk_plug_accessible_get_id (GtkPlugAccessible *plug)
   return atk_plug_get_id (ATK_PLUG (plug->priv->accessible_plug));
 }
 
-#endif /* GTK_HAVE_ATK_PLUG_SET_CHILD */
+#endif /* CTK_HAVE_ATK_PLUG_SET_CHILD */

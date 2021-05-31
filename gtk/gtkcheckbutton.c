@@ -112,12 +112,12 @@ typedef struct {
   GtkCssGadget *indicator_gadget;
 } GtkCheckButtonPrivate;
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCheckButton, ctk_check_button, GTK_TYPE_TOGGLE_BUTTON)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCheckButton, ctk_check_button, CTK_TYPE_TOGGLE_BUTTON)
 
 static void
 ctk_check_button_update_node_state (GtkWidget *widget)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (widget));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (widget));
   GtkCssImageBuiltinType image_type;
   GtkStateFlags state;
 
@@ -126,13 +126,13 @@ ctk_check_button_update_node_state (GtkWidget *widget)
   /* XXX: This is somewhat awkward here, but there's no better
    * way to update the icon
    */
-  if (state & GTK_STATE_FLAG_CHECKED)
-    image_type = GTK_IS_RADIO_BUTTON (widget) ? GTK_CSS_IMAGE_BUILTIN_OPTION : GTK_CSS_IMAGE_BUILTIN_CHECK;
-  else if (state & GTK_STATE_FLAG_INCONSISTENT)
-    image_type = GTK_IS_RADIO_BUTTON (widget) ? GTK_CSS_IMAGE_BUILTIN_OPTION_INCONSISTENT : GTK_CSS_IMAGE_BUILTIN_CHECK_INCONSISTENT;
+  if (state & CTK_STATE_FLAG_CHECKED)
+    image_type = CTK_IS_RADIO_BUTTON (widget) ? CTK_CSS_IMAGE_BUILTIN_OPTION : CTK_CSS_IMAGE_BUILTIN_CHECK;
+  else if (state & CTK_STATE_FLAG_INCONSISTENT)
+    image_type = CTK_IS_RADIO_BUTTON (widget) ? CTK_CSS_IMAGE_BUILTIN_OPTION_INCONSISTENT : CTK_CSS_IMAGE_BUILTIN_CHECK_INCONSISTENT;
   else
-    image_type = GTK_CSS_IMAGE_BUILTIN_NONE;
-  ctk_builtin_icon_set_image (GTK_BUILTIN_ICON (priv->indicator_gadget), image_type);
+    image_type = CTK_CSS_IMAGE_BUILTIN_NONE;
+  ctk_builtin_icon_set_image (CTK_BUILTIN_ICON (priv->indicator_gadget), image_type);
 
   ctk_css_gadget_set_state (priv->indicator_gadget, state);
 }
@@ -144,28 +144,28 @@ ctk_check_button_state_flags_changed (GtkWidget     *widget,
 {
   ctk_check_button_update_node_state (widget);
 
-  GTK_WIDGET_CLASS (ctk_check_button_parent_class)->state_flags_changed (widget, previous_state_flags);
+  CTK_WIDGET_CLASS (ctk_check_button_parent_class)->state_flags_changed (widget, previous_state_flags);
 }
 
 static void
 ctk_check_button_direction_changed (GtkWidget        *widget,
                                     GtkTextDirection  previous_direction)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (widget));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (widget));
 
-  ctk_box_gadget_reverse_children (GTK_BOX_GADGET (priv->gadget));
-  ctk_box_gadget_set_allocate_reverse (GTK_BOX_GADGET (priv->gadget),
-                                       ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL);
-  ctk_box_gadget_set_align_reverse (GTK_BOX_GADGET (priv->gadget),
-                                    ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL);
+  ctk_box_gadget_reverse_children (CTK_BOX_GADGET (priv->gadget));
+  ctk_box_gadget_set_allocate_reverse (CTK_BOX_GADGET (priv->gadget),
+                                       ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL);
+  ctk_box_gadget_set_align_reverse (CTK_BOX_GADGET (priv->gadget),
+                                    ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL);
 
-  GTK_WIDGET_CLASS (ctk_check_button_parent_class)->direction_changed (widget, previous_direction);
+  CTK_WIDGET_CLASS (ctk_check_button_parent_class)->direction_changed (widget, previous_direction);
 }
 
 static void
 ctk_check_button_finalize (GObject *object)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (object));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (object));
 
   g_clear_object (&priv->gadget);
   g_clear_object (&priv->indicator_gadget);
@@ -177,33 +177,33 @@ static void
 ctk_check_button_add (GtkContainer *container,
                       GtkWidget    *widget)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (container));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (container));
   int pos;
 
-  GTK_CONTAINER_CLASS (ctk_check_button_parent_class)->add (container, widget);
+  CTK_CONTAINER_CLASS (ctk_check_button_parent_class)->add (container, widget);
 
-  pos = ctk_widget_get_direction (GTK_WIDGET (container)) == GTK_TEXT_DIR_RTL ? 0 : 1;
-  ctk_box_gadget_insert_widget (GTK_BOX_GADGET (priv->gadget), pos, widget);
-  ctk_box_gadget_set_gadget_expand (GTK_BOX_GADGET (priv->gadget), G_OBJECT (widget), TRUE);
+  pos = ctk_widget_get_direction (CTK_WIDGET (container)) == CTK_TEXT_DIR_RTL ? 0 : 1;
+  ctk_box_gadget_insert_widget (CTK_BOX_GADGET (priv->gadget), pos, widget);
+  ctk_box_gadget_set_gadget_expand (CTK_BOX_GADGET (priv->gadget), G_OBJECT (widget), TRUE);
 }
 
 static void
 ctk_check_button_remove (GtkContainer *container,
                          GtkWidget    *widget)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (container));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (container));
 
-  ctk_box_gadget_remove_widget (GTK_BOX_GADGET (priv->gadget), widget);
+  ctk_box_gadget_remove_widget (CTK_BOX_GADGET (priv->gadget), widget);
 
-  GTK_CONTAINER_CLASS (ctk_check_button_parent_class)->remove (container, widget);
+  CTK_CONTAINER_CLASS (ctk_check_button_parent_class)->remove (container, widget);
 }
 
 static void
 ctk_check_button_class_init (GtkCheckButtonClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
 
   object_class->finalize = ctk_check_button_finalize;
 
@@ -234,7 +234,7 @@ ctk_check_button_class_init (GtkCheckButtonClass *class)
 							     0,
 							     G_MAXINT,
 							     INDICATOR_SIZE,
-							     GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkCheckButton:indicator-spacing:
@@ -251,7 +251,7 @@ ctk_check_button_class_init (GtkCheckButtonClass *class)
 							     0,
 							     G_MAXINT,
 							     INDICATOR_SPACING,
-							     GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_CHECK_BOX);
   ctk_widget_class_set_css_name (widget_class, "checkbutton");
@@ -262,25 +262,25 @@ draw_indicator_changed (GObject    *object,
                         GParamSpec *pspec,
                         gpointer    user_data)
 {
-  GtkButton *button = GTK_BUTTON (object);
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (button));
+  GtkButton *button = CTK_BUTTON (object);
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (button));
   GtkCssNode *widget_node;
   GtkCssNode *indicator_node;
 
-  widget_node = ctk_widget_get_css_node (GTK_WIDGET (button));
+  widget_node = ctk_widget_get_css_node (CTK_WIDGET (button));
   indicator_node = ctk_css_gadget_get_node (priv->indicator_gadget);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (ctk_toggle_button_get_mode (GTK_TOGGLE_BUTTON (button)))
+  if (ctk_toggle_button_get_mode (CTK_TOGGLE_BUTTON (button)))
     {
       ctk_button_set_alignment (button, 0.0, 0.5);
       ctk_css_node_set_visible (indicator_node, TRUE);
-      if (GTK_IS_RADIO_BUTTON (button))
+      if (CTK_IS_RADIO_BUTTON (button))
         {
           ctk_css_node_remove_class (widget_node, g_quark_from_static_string ("radio"));
           ctk_css_node_set_name (widget_node, I_("radiobutton"));
         }
-      else if (GTK_IS_CHECK_BUTTON (button))
+      else if (CTK_IS_CHECK_BUTTON (button))
         {
           ctk_css_node_remove_class (widget_node, g_quark_from_static_string ("check"));
           ctk_css_node_set_name (widget_node, I_("checkbutton"));
@@ -290,12 +290,12 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     {
       ctk_button_set_alignment (button, 0.5, 0.5);
       ctk_css_node_set_visible (indicator_node, FALSE);
-      if (GTK_IS_RADIO_BUTTON (button))
+      if (CTK_IS_RADIO_BUTTON (button))
         {
           ctk_css_node_add_class (widget_node, g_quark_from_static_string ("radio"));
           ctk_css_node_set_name (widget_node, I_("button"));
         }
-      else if (GTK_IS_CHECK_BUTTON (button))
+      else if (CTK_IS_CHECK_BUTTON (button))
         {
           ctk_css_node_add_class (widget_node, g_quark_from_static_string ("check"));
           ctk_css_node_set_name (widget_node, I_("button"));
@@ -310,24 +310,24 @@ ctk_check_button_init (GtkCheckButton *check_button)
   GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (check_button);
   GtkCssNode *widget_node;
 
-  ctk_widget_set_receives_default (GTK_WIDGET (check_button), FALSE);
+  ctk_widget_set_receives_default (CTK_WIDGET (check_button), FALSE);
   g_signal_connect (check_button, "notify::draw-indicator", G_CALLBACK (draw_indicator_changed), NULL);
-  ctk_toggle_button_set_mode (GTK_TOGGLE_BUTTON (check_button), TRUE);
+  ctk_toggle_button_set_mode (CTK_TOGGLE_BUTTON (check_button), TRUE);
 
-  ctk_style_context_remove_class (ctk_widget_get_style_context (GTK_WIDGET (check_button)), "toggle");
+  ctk_style_context_remove_class (ctk_widget_get_style_context (CTK_WIDGET (check_button)), "toggle");
 
-  widget_node = ctk_widget_get_css_node (GTK_WIDGET (check_button));
-  priv->gadget = ctk_box_gadget_new_for_node (widget_node, GTK_WIDGET (check_button));
-  ctk_box_gadget_set_orientation (GTK_BOX_GADGET (priv->gadget), GTK_ORIENTATION_HORIZONTAL);
-  ctk_box_gadget_set_draw_focus (GTK_BOX_GADGET (priv->gadget), TRUE);
+  widget_node = ctk_widget_get_css_node (CTK_WIDGET (check_button));
+  priv->gadget = ctk_box_gadget_new_for_node (widget_node, CTK_WIDGET (check_button));
+  ctk_box_gadget_set_orientation (CTK_BOX_GADGET (priv->gadget), CTK_ORIENTATION_HORIZONTAL);
+  ctk_box_gadget_set_draw_focus (CTK_BOX_GADGET (priv->gadget), TRUE);
   priv->indicator_gadget = ctk_builtin_icon_new ("check",
-                                                 GTK_WIDGET (check_button),
+                                                 CTK_WIDGET (check_button),
                                                  priv->gadget,
                                                  NULL);
-  ctk_builtin_icon_set_default_size_property (GTK_BUILTIN_ICON (priv->indicator_gadget), "indicator-size");
-  ctk_box_gadget_insert_gadget (GTK_BOX_GADGET (priv->gadget), 0, priv->indicator_gadget, FALSE, GTK_ALIGN_BASELINE);
+  ctk_builtin_icon_set_default_size_property (CTK_BUILTIN_ICON (priv->indicator_gadget), "indicator-size");
+  ctk_box_gadget_insert_gadget (CTK_BOX_GADGET (priv->gadget), 0, priv->indicator_gadget, FALSE, CTK_ALIGN_BASELINE);
 
-  ctk_check_button_update_node_state (GTK_WIDGET (check_button));
+  ctk_check_button_update_node_state (CTK_WIDGET (check_button));
 }
 
 /**
@@ -340,7 +340,7 @@ ctk_check_button_init (GtkCheckButton *check_button)
 GtkWidget*
 ctk_check_button_new (void)
 {
-  return g_object_new (GTK_TYPE_CHECK_BUTTON, NULL);
+  return g_object_new (CTK_TYPE_CHECK_BUTTON, NULL);
 }
 
 
@@ -355,7 +355,7 @@ ctk_check_button_new (void)
 GtkWidget*
 ctk_check_button_new_with_label (const gchar *label)
 {
-  return g_object_new (GTK_TYPE_CHECK_BUTTON, "label", label, NULL);
+  return g_object_new (CTK_TYPE_CHECK_BUTTON, "label", label, NULL);
 }
 
 /**
@@ -372,7 +372,7 @@ ctk_check_button_new_with_label (const gchar *label)
 GtkWidget*
 ctk_check_button_new_with_mnemonic (const gchar *label)
 {
-  return g_object_new (GTK_TYPE_CHECK_BUTTON, 
+  return g_object_new (CTK_TYPE_CHECK_BUTTON, 
                        "label", label, 
                        "use-underline", TRUE, 
                        NULL);
@@ -384,16 +384,16 @@ ctk_check_button_get_preferred_width_for_height (GtkWidget *widget,
                                                  gint      *minimum,
                                                  gint      *natural)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (widget));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (widget));
   GtkCssGadget *gadget;
 
-  if (ctk_toggle_button_get_mode (GTK_TOGGLE_BUTTON (widget)))
+  if (ctk_toggle_button_get_mode (CTK_TOGGLE_BUTTON (widget)))
     gadget = priv->gadget;
   else
-    gadget = GTK_BUTTON (widget)->priv->gadget;
+    gadget = CTK_BUTTON (widget)->priv->gadget;
 
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      height,
                                      minimum, natural,
                                      NULL, NULL);
@@ -404,16 +404,16 @@ ctk_check_button_get_preferred_width (GtkWidget *widget,
                                       gint      *minimum,
                                       gint      *natural)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (widget));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (widget));
   GtkCssGadget *gadget;
 
-  if (ctk_toggle_button_get_mode (GTK_TOGGLE_BUTTON (widget)))
+  if (ctk_toggle_button_get_mode (CTK_TOGGLE_BUTTON (widget)))
     gadget = priv->gadget;
   else
-    gadget = GTK_BUTTON (widget)->priv->gadget;
+    gadget = CTK_BUTTON (widget)->priv->gadget;
 
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -427,16 +427,16 @@ ctk_check_button_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 							      gint      *minimum_baseline,
 							      gint      *natural_baseline)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (widget));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (widget));
   GtkCssGadget *gadget;
 
-  if (ctk_toggle_button_get_mode (GTK_TOGGLE_BUTTON (widget)))
+  if (ctk_toggle_button_get_mode (CTK_TOGGLE_BUTTON (widget)))
     gadget = priv->gadget;
   else
-    gadget = GTK_BUTTON (widget)->priv->gadget;
+    gadget = CTK_BUTTON (widget)->priv->gadget;
 
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum, natural,
                                      minimum_baseline, natural_baseline);
@@ -448,16 +448,16 @@ ctk_check_button_get_preferred_height_for_width (GtkWidget *widget,
                                                  gint      *minimum,
                                                  gint      *natural)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (widget));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (widget));
   GtkCssGadget *gadget;
 
-  if (ctk_toggle_button_get_mode (GTK_TOGGLE_BUTTON (widget)))
+  if (ctk_toggle_button_get_mode (CTK_TOGGLE_BUTTON (widget)))
     gadget = priv->gadget;
   else
-    gadget = GTK_BUTTON (widget)->priv->gadget;
+    gadget = CTK_BUTTON (widget)->priv->gadget;
 
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum, natural,
                                      NULL, NULL);
@@ -468,16 +468,16 @@ ctk_check_button_get_preferred_height (GtkWidget *widget,
                                        gint      *minimum,
                                        gint      *natural)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (widget));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (widget));
   GtkCssGadget *gadget;
 
-  if (ctk_toggle_button_get_mode (GTK_TOGGLE_BUTTON (widget)))
+  if (ctk_toggle_button_get_mode (CTK_TOGGLE_BUTTON (widget)))
     gadget = priv->gadget;
   else
-    gadget = GTK_BUTTON (widget)->priv->gadget;
+    gadget = CTK_BUTTON (widget)->priv->gadget;
 
   ctk_css_gadget_get_preferred_size (gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -487,14 +487,14 @@ static void
 ctk_check_button_size_allocate (GtkWidget     *widget,
 				GtkAllocation *allocation)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (widget));
-  GtkButton *button = GTK_BUTTON (widget);
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (widget));
+  GtkButton *button = CTK_BUTTON (widget);
   GtkCssGadget *gadget;
   GdkRectangle clip;
   PangoContext *pango_context;
   PangoFontMetrics *metrics;
 
-  if (ctk_toggle_button_get_mode (GTK_TOGGLE_BUTTON (widget)))
+  if (ctk_toggle_button_get_mode (CTK_TOGGLE_BUTTON (widget)))
     gadget = priv->gadget;
   else
     gadget = button->priv->gadget;
@@ -520,7 +520,7 @@ ctk_check_button_size_allocate (GtkWidget     *widget,
     {
       GtkAllocation border_allocation;
       ctk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
-      gdk_window_move_resize (GTK_BUTTON (widget)->priv->event_window,
+      gdk_window_move_resize (CTK_BUTTON (widget)->priv->event_window,
                               border_allocation.x,
                               border_allocation.y,
                               border_allocation.width,
@@ -532,13 +532,13 @@ static gint
 ctk_check_button_draw (GtkWidget *widget,
                        cairo_t   *cr)
 {
-  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (GTK_CHECK_BUTTON (widget));
+  GtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (widget));
   GtkCssGadget *gadget;
 
-  if (ctk_toggle_button_get_mode (GTK_TOGGLE_BUTTON (widget)))
+  if (ctk_toggle_button_get_mode (CTK_TOGGLE_BUTTON (widget)))
     gadget = priv->gadget;
   else
-    gadget = GTK_BUTTON (widget)->priv->gadget;
+    gadget = CTK_BUTTON (widget)->priv->gadget;
 
   ctk_css_gadget_draw (gadget, cr);
 

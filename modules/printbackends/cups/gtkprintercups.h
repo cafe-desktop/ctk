@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINTER_CUPS_H__
-#define __GTK_PRINTER_CUPS_H__
+#ifndef __CTK_PRINTER_CUPS_H__
+#define __CTK_PRINTER_CUPS_H__
 
 #include <glib-object.h>
 #include <cups/cups.h>
@@ -32,12 +32,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINTER_CUPS                  (ctk_printer_cups_get_type ())
-#define GTK_PRINTER_CUPS(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER_CUPS, GtkPrinterCups))
-#define GTK_PRINTER_CUPS_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINTER_CUPS, GtkPrinterCupsClass))
-#define GTK_IS_PRINTER_CUPS(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER_CUPS))
-#define GTK_IS_PRINTER_CUPS_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PRINTER_CUPS))
-#define GTK_PRINTER_CUPS_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PRINTER_CUPS, GtkPrinterCupsClass))
+#define CTK_TYPE_PRINTER_CUPS                  (ctk_printer_cups_get_type ())
+#define CTK_PRINTER_CUPS(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_CUPS, GtkPrinterCups))
+#define CTK_PRINTER_CUPS_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER_CUPS, GtkPrinterCupsClass))
+#define CTK_IS_PRINTER_CUPS(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINTER_CUPS))
+#define CTK_IS_PRINTER_CUPS_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINTER_CUPS))
+#define CTK_PRINTER_CUPS_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER_CUPS, GtkPrinterCupsClass))
 
 typedef struct _GtkPrinterCups	        GtkPrinterCups;
 typedef struct _GtkPrinterCupsClass     GtkPrinterCupsClass;
@@ -132,4 +132,4 @@ void                     ctk_printer_cups_update_settings (GtkPrinterCups *print
 
 G_END_DECLS
 
-#endif /* __GTK_PRINTER_CUPS_H__ */
+#endif /* __CTK_PRINTER_CUPS_H__ */

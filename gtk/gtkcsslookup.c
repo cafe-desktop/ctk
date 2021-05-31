@@ -38,7 +38,7 @@ _ctk_css_lookup_new (const GtkBitmask *relevant)
   else
     {
       lookup->missing = _ctk_bitmask_new ();
-      lookup->missing = _ctk_bitmask_invert_range (lookup->missing, 0, GTK_CSS_PROPERTY_N_PROPERTIES);
+      lookup->missing = _ctk_bitmask_invert_range (lookup->missing, 0, CTK_CSS_PROPERTY_N_PROPERTIES);
     }
 
   return lookup;
@@ -111,11 +111,11 @@ _ctk_css_lookup_resolve (GtkCssLookup            *lookup,
   guint i;
 
   ctk_internal_return_if_fail (lookup != NULL);
-  ctk_internal_return_if_fail (GTK_IS_STYLE_PROVIDER_PRIVATE (provider));
-  ctk_internal_return_if_fail (GTK_IS_CSS_STATIC_STYLE (style));
-  ctk_internal_return_if_fail (parent_style == NULL || GTK_IS_CSS_STYLE (parent_style));
+  ctk_internal_return_if_fail (CTK_IS_STYLE_PROVIDER_PRIVATE (provider));
+  ctk_internal_return_if_fail (CTK_IS_CSS_STATIC_STYLE (style));
+  ctk_internal_return_if_fail (parent_style == NULL || CTK_IS_CSS_STYLE (parent_style));
 
-  for (i = 0; i < GTK_CSS_PROPERTY_N_PROPERTIES; i++)
+  for (i = 0; i < CTK_CSS_PROPERTY_N_PROPERTIES; i++)
     {
       if (lookup->values[i].value ||
           _ctk_bitmask_get (lookup->missing, i))

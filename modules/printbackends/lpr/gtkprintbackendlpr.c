@@ -38,9 +38,9 @@
 
 typedef struct _GtkPrintBackendLprClass GtkPrintBackendLprClass;
 
-#define GTK_PRINT_BACKEND_LPR_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINT_BACKEND_LPR, GtkPrintBackendLprClass))
-#define GTK_IS_PRINT_BACKEND_LPR_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PRINT_BACKEND_LPR))
-#define GTK_PRINT_BACKEND_LPR_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PRINT_BACKEND_LPR, GtkPrintBackendLprClass))
+#define CTK_PRINT_BACKEND_LPR_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_BACKEND_LPR, GtkPrintBackendLprClass))
+#define CTK_IS_PRINT_BACKEND_LPR_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINT_BACKEND_LPR))
+#define CTK_PRINT_BACKEND_LPR_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_BACKEND_LPR, GtkPrintBackendLprClass))
 
 #define _LPR_MAX_CHUNK_SIZE 8192
 
@@ -100,7 +100,7 @@ ctk_print_backend_lpr_register_type (GTypeModule *module)
   };
 
   print_backend_lpr_type = g_type_module_register_type (module,
-                                                        GTK_TYPE_PRINT_BACKEND,
+                                                        CTK_TYPE_PRINT_BACKEND,
                                                         "GtkPrintBackendLpr",
                                                         &print_backend_lpr_info, 0);
 }
@@ -144,13 +144,13 @@ ctk_print_backend_lpr_get_type (void)
 GtkPrintBackend *
 ctk_print_backend_lpr_new (void)
 {
-  return g_object_new (GTK_TYPE_PRINT_BACKEND_LPR, NULL);
+  return g_object_new (CTK_TYPE_PRINT_BACKEND_LPR, NULL);
 }
 
 static void
 ctk_print_backend_lpr_class_init (GtkPrintBackendLprClass *class)
 {
-  GtkPrintBackendClass *backend_class = GTK_PRINT_BACKEND_CLASS (class);
+  GtkPrintBackendClass *backend_class = CTK_PRINT_BACKEND_CLASS (class);
   
   backend_parent_class = g_type_class_peek_parent (class);
 
@@ -172,7 +172,7 @@ _cairo_write (void                *closure,
 
   error = NULL;
 
-  GTK_NOTE (PRINTING,
+  CTK_NOTE (PRINTING,
             g_print ("LPR Backend: Writting %i byte chunk to temp file\n", length));
 
   while (length > 0) 
@@ -181,14 +181,14 @@ _cairo_write (void                *closure,
 
       if (error != NULL)
 	{
-	  GTK_NOTE (PRINTING,
+	  CTK_NOTE (PRINTING,
                      g_print ("LPR Backend: Error writting to temp file, %s\n", error->message));
 
           g_error_free (error);
 	  return CAIRO_STATUS_WRITE_ERROR;
 	}    
 
-      GTK_NOTE (PRINTING,
+      CTK_NOTE (PRINTING,
                 g_print ("LPR Backend: Wrote %" G_GSIZE_FORMAT " bytes to temp file\n", written));
 
       data += written;
@@ -243,8 +243,8 @@ lpr_print_cb (GtkPrintBackendLpr *print_backend,
     ps->dnotify (ps->user_data);
 
   ctk_print_job_set_status (ps->job, 
-			    error ? GTK_PRINT_STATUS_FINISHED_ABORTED 
-			          : GTK_PRINT_STATUS_FINISHED);
+			    error ? CTK_PRINT_STATUS_FINISHED_ABORTED 
+			          : CTK_PRINT_STATUS_FINISHED);
 
   if (ps->job)
     g_object_unref (ps->job);
@@ -285,13 +285,13 @@ lpr_write (GIOChannel   *source,
 
   if (error != NULL || status == G_IO_STATUS_EOF)
     {
-      lpr_print_cb (GTK_PRINT_BACKEND_LPR (ps->backend), 
+      lpr_print_cb (CTK_PRINT_BACKEND_LPR (ps->backend), 
 		    error, user_data);
 
 
       if (error != NULL)
         {
-          GTK_NOTE (PRINTING,
+          CTK_NOTE (PRINTING,
                     g_print ("LPR Backend: %s\n", error->message));
 
           g_error_free (error);
@@ -300,7 +300,7 @@ lpr_write (GIOChannel   *source,
       return FALSE;
     }
 
-  GTK_NOTE (PRINTING,
+  CTK_NOTE (PRINTING,
             g_print ("LPR Backend: Writting %" G_GSIZE_FORMAT " byte chunk to lpr pipe\n", bytes_read));
 
 
@@ -379,7 +379,7 @@ ctk_print_backend_lpr_print_stream (GtkPrintBackend        *print_backend,
 
   if (print_error != NULL)
     {
-      lpr_print_cb (GTK_PRINT_BACKEND_LPR (print_backend),
+      lpr_print_cb (CTK_PRINT_BACKEND_LPR (print_backend),
 		    print_error, ps);
       g_error_free (print_error);
     }
@@ -390,7 +390,7 @@ ctk_print_backend_lpr_init (GtkPrintBackendLpr *backend)
 {
   GtkPrinter *printer;
 
-  printer = g_object_new (GTK_TYPE_PRINTER,
+  printer = g_object_new (CTK_TYPE_PRINTER,
 			  "name", _("Print to LPR"),
 			  "backend", backend,
 			  "is-virtual", FALSE,
@@ -402,9 +402,9 @@ ctk_print_backend_lpr_init (GtkPrintBackendLpr *backend)
   ctk_printer_set_is_active (printer, TRUE);
   ctk_printer_set_is_default (printer, TRUE);
 
-  ctk_print_backend_add_printer (GTK_PRINT_BACKEND (backend), printer);
+  ctk_print_backend_add_printer (CTK_PRINT_BACKEND (backend), printer);
   g_object_unref (printer);
-  ctk_print_backend_set_list_done (GTK_PRINT_BACKEND (backend));
+  ctk_print_backend_set_list_done (CTK_PRINT_BACKEND (backend));
 }
 
 static GtkPrinterOptionSet *
@@ -420,14 +420,14 @@ lpr_printer_get_options (GtkPrinter           *printer,
 
   set = ctk_printer_option_set_new ();
 
-  option = ctk_printer_option_new ("gtk-n-up", _("Pages Per Sheet"), GTK_PRINTER_OPTION_TYPE_PICKONE);
+  option = ctk_printer_option_new ("gtk-n-up", _("Pages Per Sheet"), CTK_PRINTER_OPTION_TYPE_PICKONE);
   ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
 					 n_up, n_up);
   ctk_printer_option_set (option, "1");
   ctk_printer_option_set_add (set, option);
   g_object_unref (option);
 
-  option = ctk_printer_option_new ("gtk-main-page-custom-input", _("Command Line"), GTK_PRINTER_OPTION_TYPE_STRING);
+  option = ctk_printer_option_new ("gtk-main-page-custom-input", _("Command Line"), CTK_PRINTER_OPTION_TYPE_STRING);
   ctk_printer_option_set_activates_default (option, TRUE);
   option->group = g_strdup ("GtkPrintDialogExtension");
   if (settings != NULL &&
@@ -453,11 +453,11 @@ lpr_printer_get_settings_from_options (GtkPrinter          *printer,
 
   option = ctk_printer_option_set_lookup (options, "gtk-n-up");
   if (option)
-    ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_NUMBER_UP, option->value);
+    ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_NUMBER_UP, option->value);
 
   option = ctk_printer_option_set_lookup (options, "gtk-n-up-layout");
   if (option)
-    ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT, option->value);
+    ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT, option->value);
 }
 
 static void
@@ -474,7 +474,7 @@ lpr_printer_prepare_for_print (GtkPrinter       *printer,
   pages = ctk_print_settings_get_print_pages (settings);
   ctk_print_job_set_pages (print_job, pages);
 
-  if (pages == GTK_PRINT_PAGES_RANGES)
+  if (pages == CTK_PRINT_PAGES_RANGES)
     ranges = ctk_print_settings_get_page_ranges (settings, &n_ranges);
   else
     {

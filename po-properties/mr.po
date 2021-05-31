@@ -273,10 +273,10 @@ msgstr "महत्वाचे आहे"
 #: ../gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "साधनपट्टीतील घटक महत्वाचे ठरले जाते का. खरे असल्यास, साधनघटक प्रॉक्सी करीता "
-"GTK_TOOLBAR_BOTH_HORIZ पध्दती मध्ये पाठ्य दर्शविते."
+"CTK_TOOLBAR_BOTH_HORIZ पध्दती मध्ये पाठ्य दर्शविते."
 
 #: ../gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1734,8 +1734,8 @@ msgid "Default Spacing"
 msgstr "सर्वसाधारण मोकळी  जागा "
 
 #: ../gtk/gtkbutton.c:494
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "GTK_CAN_DEFAULT बटणस् करीता समावेश करण्याजोगी अगाऊ जागा"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "CTK_CAN_DEFAULT बटणस् करीता समावेश करण्याजोगी अगाऊ जागा"
 
 #: ../gtk/gtkbutton.c:510
 msgid "Default Outside Spacing"
@@ -1743,10 +1743,10 @@ msgstr "सर्वसाधारण बाहेरील जागा"
 
 #: ../gtk/gtkbutton.c:511
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"for GTK_CAN_DEFAULT बटणस् करीता समावेश करण्याजोगी अगाऊ स्पेस् ज्यांस नेहमी "
+"for CTK_CAN_DEFAULT बटणस् करीता समावेश करण्याजोगी अगाऊ स्पेस् ज्यांस नेहमी "
 "किनारच्या "
 "बाहेरून काढले जाते"
 
@@ -4085,9 +4085,9 @@ msgid "Baseline Row"
 msgstr "बेसलाइन ओळ"
 
 #: ../gtk/gtkgrid.c:1763
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
-"संरेषन GTK_ALIGN_BASELINE प्रमाणे असल्यास बेसलाइनसह संरेषीत करण्याजोगी ओळ"
+"संरेषन CTK_ALIGN_BASELINE प्रमाणे असल्यास बेसलाइनसह संरेषीत करण्याजोगी ओळ"
 
 #: ../gtk/gtkgrid.c:1781
 msgid "The row number to attach the top side of a child widget to"
@@ -7729,10 +7729,10 @@ msgstr "मोकळी जागा ठेवा"
 #: ../gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "साधनपट्टीतील घटक महत्वाचे ठरले जाते का. खरे असल्यास, साधनपट्टी बटण "
-"GTK_TOOLBAR_BOTH_HORIZ पध्दती मध्ये पाठ्य दर्शविते"
+"CTK_TOOLBAR_BOTH_HORIZ पध्दती मध्ये पाठ्य दर्शविते"
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

@@ -77,19 +77,19 @@ create_tags (GtkTextBuffer *buffer)
                               "editable", FALSE, NULL);
 
   ctk_text_buffer_create_tag (buffer, "word_wrap",
-                              "wrap_mode", GTK_WRAP_WORD, NULL);
+                              "wrap_mode", CTK_WRAP_WORD, NULL);
 
   ctk_text_buffer_create_tag (buffer, "char_wrap",
-                              "wrap_mode", GTK_WRAP_CHAR, NULL);
+                              "wrap_mode", CTK_WRAP_CHAR, NULL);
 
   ctk_text_buffer_create_tag (buffer, "no_wrap",
-                              "wrap_mode", GTK_WRAP_NONE, NULL);
+                              "wrap_mode", CTK_WRAP_NONE, NULL);
 
   ctk_text_buffer_create_tag (buffer, "center",
-                              "justification", GTK_JUSTIFY_CENTER, NULL);
+                              "justification", CTK_JUSTIFY_CENTER, NULL);
 
   ctk_text_buffer_create_tag (buffer, "right_justify",
-                              "justification", GTK_JUSTIFY_RIGHT, NULL);
+                              "justification", CTK_JUSTIFY_RIGHT, NULL);
 
   ctk_text_buffer_create_tag (buffer, "wide_margins",
                               "left_margin", 50, "right_margin", 50,
@@ -115,8 +115,8 @@ create_tags (GtkTextBuffer *buffer)
                               NULL);
 
   ctk_text_buffer_create_tag (buffer, "rtl_quote",
-                              "wrap_mode", GTK_WRAP_WORD,
-                              "direction", GTK_TEXT_DIR_RTL,
+                              "wrap_mode", CTK_WRAP_WORD,
+                              "direction", CTK_TEXT_DIR_RTL,
                               "indent", 30,
                               "left_margin", 20,
                               "right_margin", 20,
@@ -135,7 +135,7 @@ insert_text (GtkTextBuffer *buffer)
   pixbuf = ctk_icon_theme_load_icon (icon_theme,
                                      "gtk3-demo",
                                      32,
-                                     GTK_ICON_LOOKUP_GENERIC_FALLBACK,
+                                     CTK_ICON_LOOKUP_GENERIC_FALLBACK,
                                      NULL);
   g_assert (pixbuf);
 
@@ -424,14 +424,14 @@ attach_widgets (GtkTextView *text_view)
         {
           widget = ctk_combo_box_text_new ();
 
-          ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "Option 1");
-          ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "Option 2");
-          ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "Option 3");
+          ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (widget), "Option 1");
+          ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (widget), "Option 2");
+          ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (widget), "Option 3");
         }
       else if (i == 2)
         {
-          widget = ctk_scale_new (GTK_ORIENTATION_HORIZONTAL, NULL);
-          ctk_range_set_range (GTK_RANGE (widget), 0, 100);
+          widget = ctk_scale_new (CTK_ORIENTATION_HORIZONTAL, NULL);
+          ctk_range_set_range (CTK_RANGE (widget), 0, 100);
           ctk_widget_set_size_request (widget, 70, -1);
         }
       else if (i == 3)
@@ -471,21 +471,21 @@ do_textview (GtkWidget *do_widget)
       GtkWidget *sw;
       GtkTextBuffer *buffer;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_default_size (GTK_WINDOW (window),
+      ctk_window_set_default_size (CTK_WINDOW (window),
                                    450, 450);
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      ctk_window_set_title (GTK_WINDOW (window), "Multiple Views");
-      ctk_container_set_border_width (GTK_CONTAINER (window), 0);
+      ctk_window_set_title (CTK_WINDOW (window), "Multiple Views");
+      ctk_container_set_border_width (CTK_CONTAINER (window), 0);
 
-      vpaned = ctk_paned_new (GTK_ORIENTATION_VERTICAL);
-      ctk_container_set_border_width (GTK_CONTAINER(vpaned), 5);
-      ctk_container_add (GTK_CONTAINER (window), vpaned);
+      vpaned = ctk_paned_new (CTK_ORIENTATION_VERTICAL);
+      ctk_container_set_border_width (CTK_CONTAINER(vpaned), 5);
+      ctk_container_add (CTK_CONTAINER (window), vpaned);
 
       /* For convenience, we just use the autocreated buffer from
        * the first text view; you could also create the buffer
@@ -493,30 +493,30 @@ do_textview (GtkWidget *do_widget)
        * a view widget.
        */
       view1 = ctk_text_view_new ();
-      buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view1));
+      buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view1));
       view2 = ctk_text_view_new_with_buffer (buffer);
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_paned_add1 (GTK_PANED (vpaned), sw);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_paned_add1 (CTK_PANED (vpaned), sw);
 
-      ctk_container_add (GTK_CONTAINER (sw), view1);
+      ctk_container_add (CTK_CONTAINER (sw), view1);
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_paned_add2 (GTK_PANED (vpaned), sw);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_paned_add2 (CTK_PANED (vpaned), sw);
 
-      ctk_container_add (GTK_CONTAINER (sw), view2);
+      ctk_container_add (CTK_CONTAINER (sw), view2);
 
       create_tags (buffer);
       insert_text (buffer);
 
-      attach_widgets (GTK_TEXT_VIEW (view1));
-      attach_widgets (GTK_TEXT_VIEW (view2));
+      attach_widgets (CTK_TEXT_VIEW (view1));
+      attach_widgets (CTK_TEXT_VIEW (view2));
 
       ctk_widget_show_all (vpaned);
     }
@@ -548,11 +548,11 @@ recursive_attach_view (int                 depth,
 
   /* Frame is to add a black border around each child view */
   frame = ctk_frame_new (NULL);
-  ctk_container_add (GTK_CONTAINER (frame), child_view);
+  ctk_container_add (CTK_CONTAINER (frame), child_view);
 
   ctk_text_view_add_child_at_anchor (view, frame, anchor);
 
-  recursive_attach_view (depth + 1, GTK_TEXT_VIEW (child_view), anchor);
+  recursive_attach_view (depth + 1, CTK_TEXT_VIEW (child_view), anchor);
 }
 
 static void
@@ -569,7 +569,7 @@ easter_egg_callback (GtkWidget *button,
 
   if (window)
     {
-      ctk_window_present (GTK_WINDOW (window));
+      ctk_window_present (CTK_WINDOW (window));
       return;
     }
 
@@ -585,23 +585,23 @@ easter_egg_callback (GtkWidget *button,
 
   view = ctk_text_view_new_with_buffer (buffer);
 
-  recursive_attach_view (0, GTK_TEXT_VIEW (view), anchor);
+  recursive_attach_view (0, CTK_TEXT_VIEW (view), anchor);
 
   g_object_unref (buffer);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   sw = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                  GTK_POLICY_AUTOMATIC,
-                                  GTK_POLICY_AUTOMATIC);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                  CTK_POLICY_AUTOMATIC,
+                                  CTK_POLICY_AUTOMATIC);
 
-  ctk_container_add (GTK_CONTAINER (window), sw);
-  ctk_container_add (GTK_CONTAINER (sw), view);
+  ctk_container_add (CTK_CONTAINER (window), sw);
+  ctk_container_add (CTK_CONTAINER (sw), view);
 
   window_ptr = &window;
   g_object_add_weak_pointer (G_OBJECT (window), window_ptr);
 
-  ctk_window_set_default_size (GTK_WINDOW (window), 300, 400);
+  ctk_window_set_default_size (CTK_WINDOW (window), 300, 400);
 
   ctk_widget_show_all (window);
 }

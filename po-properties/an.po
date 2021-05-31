@@ -287,11 +287,11 @@ msgstr "Ye important"
 #: ../gtk/deprecated/gtkaction.c:430
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Indica si l'acción ye considerada important. Quan siga VERDADERO, os proxies "
 "de l'elemento de ferramienta amuestran texto en o modo "
-"GTK_TOOLBAR_BOTH_HORIZ."
+"CTK_TOOLBAR_BOTH_HORIZ."
 
 #: ../gtk/deprecated/gtkaction.c:446
 msgid "Hide if empty"
@@ -1532,7 +1532,7 @@ msgid "Default Spacing"
 msgstr "Espaciau predeterminau"
 
 #: ../gtk/gtkbutton.c:504
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "Espacio adicional que adhibir ta los botons CAN_DEFAULT"
 
 #: ../gtk/gtkbutton.c:518
@@ -1541,7 +1541,7 @@ msgstr "Espaciau exterior predeterminau"
 
 #: ../gtk/gtkbutton.c:519
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
 "Espacio adicional que adhibir ta los botons CAN_DEFAULT que se dibuixa "
@@ -3907,10 +3907,10 @@ msgid "Baseline Row"
 msgstr "Ringlera d'a linia base"
 
 #: ../gtk/gtkgrid.c:1764
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
 "A ringlera que aliniar a la linia base quan l'aliniación vertical ye "
-"GTK_ALIGN_BASELINE"
+"CTK_ALIGN_BASELINE"
 
 #: ../gtk/gtkgrid.c:1782
 msgid "The row number to attach the top side of a child widget to"
@@ -8031,11 +8031,11 @@ msgstr "Espaciau en pixels entre l'icono y a etiqueta"
 #, fuzzy
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Indica si l'elemento d'a barra de quefers ye considerau important. Quan ye a "
 "TRUE, os botons d'a barra de ferramientas amuestran texto en modo "
-"GTK_TOOLBAR_BOTH_HORIZ"
+"CTK_TOOLBAR_BOTH_HORIZ"
 
 #: ../gtk/gtktoolitemgroup.c:1594
 msgid "The human-readable title of this item group"

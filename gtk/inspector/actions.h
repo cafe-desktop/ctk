@@ -15,17 +15,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef _GTK_INSPECTOR_ACTIONS_H_
-#define _GTK_INSPECTOR_ACTIONS_H_
+#ifndef _CTK_INSPECTOR_ACTIONS_H_
+#define _CTK_INSPECTOR_ACTIONS_H_
 
 #include <gtk/gtkbox.h>
 
-#define GTK_TYPE_INSPECTOR_ACTIONS            (ctk_inspector_actions_get_type())
-#define GTK_INSPECTOR_ACTIONS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), GTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActions))
-#define GTK_INSPECTOR_ACTIONS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), GTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActionsClass))
-#define GTK_INSPECTOR_IS_ACTIONS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), GTK_TYPE_INSPECTOR_ACTIONS))
-#define GTK_INSPECTOR_IS_ACTIONS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), GTK_TYPE_INSPECTOR_ACTIONS))
-#define GTK_INSPECTOR_ACTIONS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActionsClass))
+#define CTK_TYPE_INSPECTOR_ACTIONS            (ctk_inspector_actions_get_type())
+#define CTK_INSPECTOR_ACTIONS(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActions))
+#define CTK_INSPECTOR_ACTIONS_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST((klass), CTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActionsClass))
+#define CTK_INSPECTOR_IS_ACTIONS(obj)         (G_TYPE_CHECK_INSTANCE_TYPE((obj), CTK_TYPE_INSPECTOR_ACTIONS))
+#define CTK_INSPECTOR_IS_ACTIONS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE((klass), CTK_TYPE_INSPECTOR_ACTIONS))
+#define CTK_INSPECTOR_ACTIONS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_INSPECTOR_ACTIONS, GtkInspectorActionsClass))
 
 
 typedef struct _GtkInspectorActionsPrivate GtkInspectorActionsPrivate;
@@ -49,6 +49,6 @@ void       ctk_inspector_actions_set_object (GtkInspectorActions *sl,
 
 G_END_DECLS
 
-#endif // _GTK_INSPECTOR_ACTIONS_H_
+#endif // _CTK_INSPECTOR_ACTIONS_H_
 
 // vim: set et sw=2 ts=2:

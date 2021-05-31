@@ -21,14 +21,14 @@
  * Based on nautilus-search-engine-tracker.h
  */
 
-#ifndef __GTK_SEARCH_ENGINE_TRACKER3_H__
-#define __GTK_SEARCH_ENGINE_TRACKER3_H__
+#ifndef __CTK_SEARCH_ENGINE_TRACKER3_H__
+#define __CTK_SEARCH_ENGINE_TRACKER3_H__
 
 #include "gtksearchengine.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEARCH_ENGINE_TRACKER3 (ctk_search_engine_tracker3_get_type ())
+#define CTK_TYPE_SEARCH_ENGINE_TRACKER3 (ctk_search_engine_tracker3_get_type ())
 G_DECLARE_FINAL_TYPE (GtkSearchEngineTracker3,
                       ctk_search_engine_tracker3,
                       GTK, SEARCH_ENGINE_TRACKER3,
@@ -42,4 +42,4 @@ gboolean         ctk_search_engine_tracker3_is_indexed (GFile    *file,
                                                         gpointer  data);
 G_END_DECLS
 
-#endif /* __GTK_SEARCH_ENGINE_TRACKER3_H__ */
+#endif /* __CTK_SEARCH_ENGINE_TRACKER3_H__ */

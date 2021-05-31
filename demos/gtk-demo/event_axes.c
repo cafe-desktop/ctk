@@ -54,14 +54,14 @@ const gchar *colors[] = {
 };
 
 static GtkPadActionEntry pad_actions[] = {
-  { GTK_PAD_ACTION_BUTTON, 1, -1, N_("Nuclear strike"), "pad.nuke" },
-  { GTK_PAD_ACTION_BUTTON, 2, -1, N_("Release siberian methane reserves"), "pad.heat" },
-  { GTK_PAD_ACTION_BUTTON, 3, -1, N_("Release solar flare"), "pad.fry" },
-  { GTK_PAD_ACTION_BUTTON, 4, -1, N_("De-stabilize Oort cloud"), "pad.fall" },
-  { GTK_PAD_ACTION_BUTTON, 5, -1, N_("Ignite WR-104"), "pad.burst" },
-  { GTK_PAD_ACTION_BUTTON, 6, -1, N_("Lart whoever asks about this button"), "pad.lart" },
-  { GTK_PAD_ACTION_RING, -1, -1, N_("Earth axial tilt"), "pad.tilt" },
-  { GTK_PAD_ACTION_STRIP, -1, -1, N_("Extent of weak nuclear force"), "pad.dissolve" },
+  { CTK_PAD_ACTION_BUTTON, 1, -1, N_("Nuclear strike"), "pad.nuke" },
+  { CTK_PAD_ACTION_BUTTON, 2, -1, N_("Release siberian methane reserves"), "pad.heat" },
+  { CTK_PAD_ACTION_BUTTON, 3, -1, N_("Release solar flare"), "pad.fry" },
+  { CTK_PAD_ACTION_BUTTON, 4, -1, N_("De-stabilize Oort cloud"), "pad.fall" },
+  { CTK_PAD_ACTION_BUTTON, 5, -1, N_("Ignite WR-104"), "pad.burst" },
+  { CTK_PAD_ACTION_BUTTON, 6, -1, N_("Lart whoever asks about this button"), "pad.lart" },
+  { CTK_PAD_ACTION_RING, -1, -1, N_("Earth axial tilt"), "pad.tilt" },
+  { CTK_PAD_ACTION_STRIP, -1, -1, N_("Extent of weak nuclear force"), "pad.dissolve" },
 };
 
 static const gchar *pad_action_results[] = {
@@ -521,7 +521,7 @@ update_label_text (GtkWidget   *label,
 
   if (text)
     markup = g_strdup_printf ("<span font='48.0'>%s</span>", text);
-  ctk_label_set_markup (GTK_LABEL (label), markup);
+  ctk_label_set_markup (CTK_LABEL (label), markup);
   g_free (markup);
 }
 
@@ -577,13 +577,13 @@ init_pad_controller (GtkWidget *window,
   gint i;
 
   action_group = g_simple_action_group_new ();
-  pad_controller = ctk_pad_controller_new (GTK_WINDOW (window),
+  pad_controller = ctk_pad_controller_new (CTK_WINDOW (window),
                                            G_ACTION_GROUP (action_group),
                                            NULL);
 
   for (i = 0; i < G_N_ELEMENTS (pad_actions); i++)
     {
-      if (pad_actions[i].type == GTK_PAD_ACTION_BUTTON)
+      if (pad_actions[i].type == CTK_PAD_ACTION_BUTTON)
         {
           action = g_simple_action_new (pad_actions[i].action_name, NULL);
         }
@@ -618,15 +618,15 @@ do_event_axes (GtkWidget *toplevel)
 
   if (!window)
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_title (GTK_WINDOW (window), "Event Axes");
-      ctk_window_set_default_size (GTK_WINDOW (window), 400, 400);
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_title (CTK_WINDOW (window), "Event Axes");
+      ctk_window_set_default_size (CTK_WINDOW (window), 400, 400);
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
       box = ctk_event_box_new ();
-      ctk_container_add (GTK_CONTAINER (window), box);
+      ctk_container_add (CTK_CONTAINER (window), box);
       ctk_widget_set_support_multidevice (box, TRUE);
       ctk_widget_add_events (box,
 			     GDK_POINTER_MOTION_MASK |
@@ -647,8 +647,8 @@ do_event_axes (GtkWidget *toplevel)
                         G_CALLBACK (draw_cb), event_data);
 
       label = ctk_label_new ("");
-      ctk_label_set_use_markup (GTK_LABEL (label), TRUE);
-      ctk_container_add (GTK_CONTAINER (box), label);
+      ctk_label_set_use_markup (CTK_LABEL (label), TRUE);
+      ctk_container_add (CTK_CONTAINER (box), label);
 
       init_pad_controller (window, label);
     }

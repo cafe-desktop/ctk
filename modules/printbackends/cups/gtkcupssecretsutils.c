@@ -69,7 +69,7 @@ create_attributes (const gchar  *printer_uri,
 
   if (printer_uri == NULL)
     {
-      GTK_NOTE (PRINTING,
+      CTK_NOTE (PRINTING,
                 g_print ("create_attributes called with invalid parameters.\n"));
       return NULL;
     }
@@ -128,7 +128,7 @@ get_secret_cb (GObject      *source_object,
                                                  "Attributes");
   if (attributes == NULL)
     {
-      GTK_NOTE (PRINTING, g_print ("Failed to lookup attributes.\n"));
+      CTK_NOTE (PRINTING, g_print ("Failed to lookup attributes.\n"));
       g_variant_unref (output);
       g_task_return_pointer (task, NULL, NULL);
       return;
@@ -173,7 +173,7 @@ get_secret_cb (GObject      *source_object,
   if (pw_field == -1)
     {
       /* should not happen... */
-      GTK_NOTE (PRINTING, g_print ("No password required?.\n"));
+      CTK_NOTE (PRINTING, g_print ("No password required?.\n"));
       g_variant_unref (output);
       goto fail;
     }
@@ -188,7 +188,7 @@ get_secret_cb (GObject      *source_object,
       g_variant_unref (output);
       if (secret == NULL || g_variant_n_children (secret) != 4)
         {
-          GTK_NOTE (PRINTING, g_print ("Get secret response invalid.\n"));
+          CTK_NOTE (PRINTING, g_print ("Get secret response invalid.\n"));
           if (secret != NULL)
             g_variant_unref (secret);
           goto fail;
@@ -202,7 +202,7 @@ get_secret_cb (GObject      *source_object,
 
       if (ba_passwd == NULL)
         {
-          GTK_NOTE (PRINTING, g_print ("Invalid / no secret found.\n"));
+          CTK_NOTE (PRINTING, g_print ("Invalid / no secret found.\n"));
           g_variant_unref (s_value);
           goto fail;
         }
@@ -216,7 +216,7 @@ get_secret_cb (GObject      *source_object,
       if (auth_info[i] == NULL)
         {
           /* Error out if we did not find everything */
-          GTK_NOTE (PRINTING, g_print ("Failed to lookup required attribute: %s.\n",
+          CTK_NOTE (PRINTING, g_print ("Failed to lookup required attribute: %s.\n",
                                        task_data->auth_info_required[i]));
           goto fail;
         }
@@ -227,7 +227,7 @@ get_secret_cb (GObject      *source_object,
 
 fail:
   /* Error out */
-  GTK_NOTE (PRINTING, g_print ("Failed to lookup secret.\n"));
+  CTK_NOTE (PRINTING, g_print ("Failed to lookup secret.\n"));
   required_len = g_strv_length (task_data->auth_info_required);
   for (i = 0; i < required_len; i++)
     {
@@ -263,7 +263,7 @@ create_item_cb (GObject      *source_object,
   g_variant_get (output, "(&o&o)", &item, NULL);
   if (item != NULL && strlen (item) > 1)
     {
-      GTK_NOTE (PRINTING, g_print ("Successfully stored auth info.\n"));
+      CTK_NOTE (PRINTING, g_print ("Successfully stored auth info.\n"));
       g_task_return_pointer (task, NULL, NULL);
       return;
     }
@@ -316,14 +316,14 @@ do_store_auth_info (GTask *task)
   g_free (additional_attrs);
   if (attributes == NULL)
     {
-      GTK_NOTE (PRINTING, g_print ("Failed to create attributes.\n"));
+      CTK_NOTE (PRINTING, g_print ("Failed to create attributes.\n"));
       g_task_return_pointer (task, NULL, NULL);
       return;
     }
 
   if (password == NULL)
     {
-      GTK_NOTE (PRINTING, g_print ("No secret to store.\n"));
+      CTK_NOTE (PRINTING, g_print ("No secret to store.\n"));
       g_task_return_pointer (task, NULL, NULL);
       return;
     }
@@ -387,7 +387,7 @@ prompt_completed_cb (GDBusConnection *connection,
 
   if (dismissed == NULL)
     {
-      GTK_NOTE (PRINTING, g_print ("Invalid prompt signal.\n"));
+      CTK_NOTE (PRINTING, g_print ("Invalid prompt signal.\n"));
       g_task_return_pointer (task, NULL, NULL);
       return;
     }
@@ -397,7 +397,7 @@ prompt_completed_cb (GDBusConnection *connection,
 
   if (is_dismissed)
     {
-      GTK_NOTE (PRINTING, g_print ("Collection unlock dismissed.\n"));
+      CTK_NOTE (PRINTING, g_print ("Collection unlock dismissed.\n"));
       g_task_return_pointer (task, NULL, NULL);
       return;
     }
@@ -556,7 +556,7 @@ unlock_read_alias_cb (GObject      *source_object,
 
   if (subresult == NULL)
     {
-      GTK_NOTE (PRINTING, g_print ("Invalid ReadAlias response.\n"));
+      CTK_NOTE (PRINTING, g_print ("Invalid ReadAlias response.\n"));
       g_task_return_pointer (task, NULL, NULL);
       return;
     }
@@ -612,7 +612,7 @@ item_proxy_cb (GObject      *source_object,
 
   if (locked == NULL)
     {
-      GTK_NOTE (PRINTING, g_print ("Failed to look up \"Locked\" property on item.\n"));
+      CTK_NOTE (PRINTING, g_print ("Failed to look up \"Locked\" property on item.\n"));
       g_task_return_pointer (task, NULL, NULL);
       return;
     }
@@ -693,7 +693,7 @@ search_items_cb (GObject      *source_object,
 
       if (item_paths == NULL)
         {
-          GTK_NOTE (PRINTING,
+          CTK_NOTE (PRINTING,
                     g_print ("SearchItems returned invalid result.\n"));
           continue;
         }
@@ -726,7 +726,7 @@ search_items_cb (GObject      *source_object,
 
   if (!found_item)
     {
-      GTK_NOTE (PRINTING, g_print ("No match found in secrets service.\n"));
+      CTK_NOTE (PRINTING, g_print ("No match found in secrets service.\n"));
       g_task_return_pointer (task, NULL, NULL);
       return;
     }
@@ -759,7 +759,7 @@ open_session_cb (GObject      *source_object,
 
   if (session_variant == NULL)
     {
-      GTK_NOTE (PRINTING, g_print ("Invalid session path response.\n"));
+      CTK_NOTE (PRINTING, g_print ("Invalid session path response.\n"));
       g_variant_unref (output);
       g_task_return_pointer (task, NULL, NULL);
       return;
@@ -769,7 +769,7 @@ open_session_cb (GObject      *source_object,
 
   if (task_data->session_path == NULL)
     {
-      GTK_NOTE (PRINTING, g_print ("Invalid session path string value.\n"));
+      CTK_NOTE (PRINTING, g_print ("Invalid session path string value.\n"));
       g_variant_unref (session_variant);
       g_variant_unref (output);
       g_task_return_pointer (task, NULL, NULL);
@@ -789,7 +789,7 @@ open_session_cb (GObject      *source_object,
           secrets_attrs = create_attributes (task_data->printer_uri, NULL, NULL);
           if (secrets_attrs == NULL)
             {
-              GTK_NOTE (PRINTING, g_print ("Failed to create attributes.\n"));
+              CTK_NOTE (PRINTING, g_print ("Failed to create attributes.\n"));
               g_task_return_pointer (task, NULL, NULL);
               return;
             }
@@ -993,13 +993,13 @@ store_done_cb (GObject      *source_object,
 
   if (error != NULL)
     {
-      GTK_NOTE (PRINTING,
+      CTK_NOTE (PRINTING,
                 g_print ("Failed to store auth info: %s\n", error->message));
       g_error_free (error);
     }
 
   g_object_unref (task);
-  GTK_NOTE (PRINTING,
+  CTK_NOTE (PRINTING,
             g_print ("ctk_cups_secrets_service_store finished.\n"));
 }
 
@@ -1021,7 +1021,7 @@ ctk_cups_secrets_service_store (gchar       **auth_info,
 
   if (auth_info == NULL || auth_info_labels == NULL || printer_uri == NULL)
     {
-      GTK_NOTE (PRINTING,
+      CTK_NOTE (PRINTING,
                 g_print ("Invalid call to ctk_cups_secrets_service_store.\n"));
       return;
     }

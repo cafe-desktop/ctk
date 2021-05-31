@@ -17,19 +17,19 @@ static guint finish_search_id = 0;
 static void
 show_find_button (void)
 {
-  ctk_notebook_set_current_page (GTK_NOTEBOOK (notebook), 0);
+  ctk_notebook_set_current_page (CTK_NOTEBOOK (notebook), 0);
 }
 
 static void
 show_cancel_button (void)
 {
-  ctk_notebook_set_current_page (GTK_NOTEBOOK (notebook), 1);
+  ctk_notebook_set_current_page (CTK_NOTEBOOK (notebook), 1);
 }
 
 static gboolean
 search_progress (gpointer data)
 {
-  ctk_entry_progress_pulse (GTK_ENTRY (data));
+  ctk_entry_progress_pulse (CTK_ENTRY (data));
   return G_SOURCE_CONTINUE;
 }
 
@@ -93,7 +93,7 @@ search_by_name (GtkWidget *item,
                 GtkEntry  *entry)
 {
   ctk_entry_set_icon_tooltip_text (entry,
-                                   GTK_ENTRY_ICON_PRIMARY,
+                                   CTK_ENTRY_ICON_PRIMARY,
                                    "Search by name\n"
                                    "Click here to change the search type");
   ctk_entry_set_placeholder_text (entry, "name");
@@ -105,7 +105,7 @@ search_by_description (GtkWidget *item,
 {
 
   ctk_entry_set_icon_tooltip_text (entry,
-                                   GTK_ENTRY_ICON_PRIMARY,
+                                   CTK_ENTRY_ICON_PRIMARY,
                                    "Search by description\n"
                                    "Click here to change the search type");
   ctk_entry_set_placeholder_text (entry, "description");
@@ -116,7 +116,7 @@ search_by_file (GtkWidget *item,
                 GtkEntry  *entry)
 {
   ctk_entry_set_icon_tooltip_text (entry,
-                                   GTK_ENTRY_ICON_PRIMARY,
+                                   CTK_ENTRY_ICON_PRIMARY,
                                    "Search by file name\n"
                                    "Click here to change the search type");
   ctk_entry_set_placeholder_text (entry, "file name");
@@ -133,17 +133,17 @@ create_search_menu (GtkWidget *entry)
   item = ctk_menu_item_new_with_mnemonic ("Search by _name");
   g_signal_connect (item, "activate",
                     G_CALLBACK (search_by_name), entry);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
 
   item = ctk_menu_item_new_with_mnemonic ("Search by _description");
   g_signal_connect (item, "activate",
                     G_CALLBACK (search_by_description), entry);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
 
   item = ctk_menu_item_new_with_mnemonic ("Search by _file name");
   g_signal_connect (item, "activate",
                     G_CALLBACK (search_by_file), entry);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
 
   ctk_widget_show_all (menu);
 
@@ -156,8 +156,8 @@ icon_press_cb (GtkEntry       *entry,
                GdkEventButton *event,
                gpointer        data)
 {
-  if (position == GTK_ENTRY_ICON_PRIMARY)
-    ctk_menu_popup_at_pointer (GTK_MENU (menu), (GdkEvent *) event);
+  if (position == CTK_ENTRY_ICON_PRIMARY)
+    ctk_menu_popup_at_pointer (CTK_MENU (menu), (GdkEvent *) event);
 }
 
 static void
@@ -202,20 +202,20 @@ entry_populate_popup (GtkEntry *entry,
 
   item = ctk_separator_menu_item_new ();
   ctk_widget_show (item);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
 
   item = ctk_menu_item_new_with_mnemonic ("C_lear");
   ctk_widget_show (item);
   g_signal_connect_swapped (item, "activate",
                             G_CALLBACK (clear_entry), entry);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
   ctk_widget_set_sensitive (item, has_text);
 
-  search_menu = create_search_menu (GTK_WIDGET (entry));
+  search_menu = create_search_menu (CTK_WIDGET (entry));
   item = ctk_menu_item_new_with_label ("Search by");
   ctk_widget_show (item);
-  ctk_menu_item_set_submenu (GTK_MENU_ITEM (item), search_menu);
-  ctk_menu_shell_append (GTK_MENU_SHELL (menu), item);
+  ctk_menu_item_set_submenu (CTK_MENU_ITEM (item), search_menu);
+  ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
 }
 
 GtkWidget *
@@ -230,49 +230,49 @@ do_search_entry (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window), ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Search Entry");
-      ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window), ctk_widget_get_screen (do_widget));
+      ctk_window_set_title (CTK_WINDOW (window), "Search Entry");
+      ctk_window_set_resizable (CTK_WINDOW (window), FALSE);
       g_signal_connect (window, "destroy",
                         G_CALLBACK (search_entry_destroyed), &window);
 
-      vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-      ctk_container_add (GTK_CONTAINER (window), vbox);
-      ctk_container_set_border_width (GTK_CONTAINER (vbox), 5);
+      vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 5);
+      ctk_container_add (CTK_CONTAINER (window), vbox);
+      ctk_container_set_border_width (CTK_CONTAINER (vbox), 5);
 
       label = ctk_label_new (NULL);
-      ctk_label_set_markup (GTK_LABEL (label), "Search entry demo");
-      ctk_box_pack_start (GTK_BOX (vbox), label, FALSE, FALSE, 0);
+      ctk_label_set_markup (CTK_LABEL (label), "Search entry demo");
+      ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
-      hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
-      ctk_box_pack_start (GTK_BOX (vbox), hbox, TRUE, TRUE, 0);
-      ctk_container_set_border_width (GTK_CONTAINER (hbox), 0);
+      hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
+      ctk_box_pack_start (CTK_BOX (vbox), hbox, TRUE, TRUE, 0);
+      ctk_container_set_border_width (CTK_CONTAINER (hbox), 0);
 
       /* Create our entry */
       entry = ctk_search_entry_new ();
-      ctk_box_pack_start (GTK_BOX (hbox), entry, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (hbox), entry, FALSE, FALSE, 0);
 
       /* Create the find and cancel buttons */
       notebook = ctk_notebook_new ();
-      ctk_notebook_set_show_tabs (GTK_NOTEBOOK (notebook), FALSE);
-      ctk_notebook_set_show_border (GTK_NOTEBOOK (notebook), FALSE);
-      ctk_box_pack_start (GTK_BOX (hbox), notebook, FALSE, FALSE, 0);
+      ctk_notebook_set_show_tabs (CTK_NOTEBOOK (notebook), FALSE);
+      ctk_notebook_set_show_border (CTK_NOTEBOOK (notebook), FALSE);
+      ctk_box_pack_start (CTK_BOX (hbox), notebook, FALSE, FALSE, 0);
 
       find_button = ctk_button_new_with_label ("Find");
       g_signal_connect (find_button, "clicked",
                         G_CALLBACK (start_search), entry);
-      ctk_notebook_append_page (GTK_NOTEBOOK (notebook), find_button, NULL);
+      ctk_notebook_append_page (CTK_NOTEBOOK (notebook), find_button, NULL);
       ctk_widget_show (find_button);
 
       cancel_button = ctk_button_new_with_label ("Cancel");
       g_signal_connect (cancel_button, "clicked",
                         G_CALLBACK (stop_search), NULL);
-      ctk_notebook_append_page (GTK_NOTEBOOK (notebook), cancel_button, NULL);
+      ctk_notebook_append_page (CTK_NOTEBOOK (notebook), cancel_button, NULL);
       ctk_widget_show (cancel_button);
 
       /* Set up the search icon */
-      search_by_name (NULL, GTK_ENTRY (entry));
+      search_by_name (NULL, CTK_ENTRY (entry));
 
       /* Set up the clear icon */
       g_signal_connect (entry, "icon-press",
@@ -282,7 +282,7 @@ do_search_entry (GtkWidget *do_widget)
 
       /* Create the menu */
       menu = create_search_menu (entry);
-      ctk_menu_attach_to_widget (GTK_MENU (menu), entry, NULL);
+      ctk_menu_attach_to_widget (CTK_MENU (menu), entry, NULL);
 
       /* add accessible alternatives for icon functionality */
       g_object_set (entry, "populate-all", TRUE, NULL);

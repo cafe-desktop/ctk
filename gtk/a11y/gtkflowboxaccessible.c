@@ -23,7 +23,7 @@
 
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkFlowBoxAccessible, ctk_flow_box_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkFlowBoxAccessible, ctk_flow_box_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
 
 static void
@@ -47,7 +47,7 @@ ctk_flow_box_accessible_ref_state_set (AtkObject *obj)
   GtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_flow_box_accessible_parent_class)->ref_state_set (obj);
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
 
   if (widget != NULL)
     atk_state_set_add_state (state_set, ATK_STATE_MANAGES_DESCENDANTS);
@@ -72,16 +72,16 @@ ctk_flow_box_accessible_add_selection (AtkSelection *selection,
   GList *children;
   GtkWidget *child;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return FALSE;
 
-  children = ctk_container_get_children (GTK_CONTAINER (box));
+  children = ctk_container_get_children (CTK_CONTAINER (box));
   child = g_list_nth_data (children, idx);
   g_list_free (children);
   if (child)
     {
-      ctk_flow_box_select_child (GTK_FLOW_BOX (box), GTK_FLOW_BOX_CHILD (child));
+      ctk_flow_box_select_child (CTK_FLOW_BOX (box), CTK_FLOW_BOX_CHILD (child));
       return TRUE;
     }
   return FALSE;
@@ -95,16 +95,16 @@ ctk_flow_box_accessible_remove_selection (AtkSelection *selection,
   GList *children;
   GtkWidget *child;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return FALSE;
 
-  children = ctk_container_get_children (GTK_CONTAINER (box));
+  children = ctk_container_get_children (CTK_CONTAINER (box));
   child = g_list_nth_data (children, idx);
   g_list_free (children);
   if (child)
     {
-      ctk_flow_box_unselect_child (GTK_FLOW_BOX (box), GTK_FLOW_BOX_CHILD (child));
+      ctk_flow_box_unselect_child (CTK_FLOW_BOX (box), CTK_FLOW_BOX_CHILD (child));
       return TRUE;
     }
   return FALSE;
@@ -115,11 +115,11 @@ ctk_flow_box_accessible_clear_selection (AtkSelection *selection)
 {
   GtkWidget *box;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return FALSE;
 
-  ctk_flow_box_unselect_all (GTK_FLOW_BOX (box));
+  ctk_flow_box_unselect_all (CTK_FLOW_BOX (box));
   return TRUE;
 }
 
@@ -128,11 +128,11 @@ ctk_flow_box_accessible_select_all (AtkSelection *selection)
 {
   GtkWidget *box;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return FALSE;
 
-  ctk_flow_box_select_all (GTK_FLOW_BOX (box));
+  ctk_flow_box_select_all (CTK_FLOW_BOX (box));
   return TRUE;
 }
 
@@ -152,7 +152,7 @@ find_selected_child (GtkFlowBox      *box,
   if (d->idx == 0)
     {
       if (d->child == NULL)
-        d->child = GTK_WIDGET (child);
+        d->child = CTK_WIDGET (child);
     }
   else
     d->idx -= 1;
@@ -166,13 +166,13 @@ ctk_flow_box_accessible_ref_selection (AtkSelection *selection,
   AtkObject *accessible;
   FindSelectedData data;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return NULL;
 
   data.idx = idx;
   data.child = NULL;
-  ctk_flow_box_selected_foreach (GTK_FLOW_BOX (box), find_selected_child, &data);
+  ctk_flow_box_selected_foreach (CTK_FLOW_BOX (box), find_selected_child, &data);
 
   if (data.child == NULL)
     return NULL;
@@ -197,12 +197,12 @@ ctk_flow_box_accessible_get_selection_count (AtkSelection *selection)
   GtkWidget *box;
   gint count;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return 0;
 
   count = 0;
-  ctk_flow_box_selected_foreach (GTK_FLOW_BOX (box), count_selected, &count);
+  ctk_flow_box_selected_foreach (CTK_FLOW_BOX (box), count_selected, &count);
 
   return count;
 }
@@ -214,11 +214,11 @@ ctk_flow_box_accessible_is_child_selected (AtkSelection *selection,
   GtkWidget *box;
   GtkFlowBoxChild *child;
 
-  box = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  box = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (box == NULL)
     return FALSE;
 
-  child = ctk_flow_box_get_child_at_index (GTK_FLOW_BOX (box), idx);
+  child = ctk_flow_box_get_child_at_index (CTK_FLOW_BOX (box), idx);
 
   return ctk_flow_box_child_is_selected (child);
 }

@@ -53,11 +53,11 @@ static void run_automated_tests (void);
 
 /* This custom model is to test custom model use. */
 
-#define GTK_TYPE_MODEL_TYPES				(ctk_tree_model_types_get_type ())
-#define GTK_TREE_MODEL_TYPES(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MODEL_TYPES, GtkTreeModelTypes))
-#define GTK_TREE_MODEL_TYPES_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MODEL_TYPES, GtkTreeModelTypesClass))
-#define GTK_IS_TREE_MODEL_TYPES(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MODEL_TYPES))
-#define GTK_IS_TREE_MODEL_TYPES_GET_CLASS(klass)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_MODEL_TYPES))
+#define CTK_TYPE_MODEL_TYPES				(ctk_tree_model_types_get_type ())
+#define CTK_TREE_MODEL_TYPES(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MODEL_TYPES, GtkTreeModelTypes))
+#define CTK_TREE_MODEL_TYPES_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MODEL_TYPES, GtkTreeModelTypesClass))
+#define CTK_IS_TREE_MODEL_TYPES(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MODEL_TYPES))
+#define CTK_IS_TREE_MODEL_TYPES_GET_CLASS(klass)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MODEL_TYPES))
 
 typedef struct _GtkTreeModelTypes       GtkTreeModelTypes;
 typedef struct _GtkTreeModelTypesClass  GtkTreeModelTypesClass;
@@ -173,13 +173,13 @@ toggled_callback (GtkCellRendererToggle *celltoggle,
   GtkTreeIter iter;
   gboolean active = FALSE;
   
-  g_return_if_fail (GTK_IS_TREE_VIEW (tree_view));
+  g_return_if_fail (CTK_IS_TREE_VIEW (tree_view));
 
   model = ctk_tree_view_get_model (tree_view);
   
-  if (GTK_IS_TREE_MODEL_SORT (model))
+  if (CTK_IS_TREE_MODEL_SORT (model))
     {
-      sort_model = GTK_TREE_MODEL_SORT (model);
+      sort_model = CTK_TREE_MODEL_SORT (model);
       model = ctk_tree_model_sort_get_model (sort_model);
     }
 
@@ -201,29 +201,29 @@ toggled_callback (GtkCellRendererToggle *celltoggle,
     }
   ctk_tree_path_free (path);
   
-  if (GTK_IS_LIST_STORE (model))
+  if (CTK_IS_LIST_STORE (model))
     {
-      ctk_tree_model_get (GTK_TREE_MODEL (model),
+      ctk_tree_model_get (CTK_TREE_MODEL (model),
                           &iter,
                           BOOL_COLUMN,
                           &active,
                           -1);
       
-      ctk_list_store_set (GTK_LIST_STORE (model),
+      ctk_list_store_set (CTK_LIST_STORE (model),
                           &iter,
                           BOOL_COLUMN,
                           !active,
                           -1);
     }
-  else if (GTK_IS_TREE_STORE (model))
+  else if (CTK_IS_TREE_STORE (model))
     {
-      ctk_tree_model_get (GTK_TREE_MODEL (model),
+      ctk_tree_model_get (CTK_TREE_MODEL (model),
                           &iter,
                           BOOL_COLUMN,
                           &active,
                           -1);
             
-      ctk_tree_store_set (GTK_TREE_STORE (model),
+      ctk_tree_store_set (CTK_TREE_STORE (model),
                           &iter,
                           BOOL_COLUMN,
                           !active,
@@ -246,13 +246,13 @@ edited_callback (GtkCellRendererText *renderer,
   GtkTreeIter iter;
   guint value = atoi (new_text);
   
-  g_return_if_fail (GTK_IS_TREE_VIEW (tree_view));
+  g_return_if_fail (CTK_IS_TREE_VIEW (tree_view));
 
   model = ctk_tree_view_get_model (tree_view);
   
-  if (GTK_IS_TREE_MODEL_SORT (model))
+  if (CTK_IS_TREE_MODEL_SORT (model))
     {
-      sort_model = GTK_TREE_MODEL_SORT (model);
+      sort_model = CTK_TREE_MODEL_SORT (model);
       model = ctk_tree_model_sort_get_model (sort_model);
     }
 
@@ -274,17 +274,17 @@ edited_callback (GtkCellRendererText *renderer,
     }
   ctk_tree_path_free (path);
 
-  if (GTK_IS_LIST_STORE (model))
+  if (CTK_IS_LIST_STORE (model))
     {
-      ctk_list_store_set (GTK_LIST_STORE (model),
+      ctk_list_store_set (CTK_LIST_STORE (model),
                           &iter,
                           4,
                           value,
                           -1);
     }
-  else if (GTK_IS_TREE_STORE (model))
+  else if (CTK_IS_TREE_STORE (model))
     {
-      ctk_tree_store_set (GTK_TREE_STORE (model),
+      ctk_tree_store_set (CTK_TREE_STORE (model),
                           &iter,
                           4,
                           value,
@@ -329,7 +329,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
                                                       "text", 1,
                                                       NULL);
       
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), col);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
       
       col = ctk_tree_view_column_new();
       ctk_tree_view_column_set_title (col, "Column 2");
@@ -342,7 +342,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
       ctk_tree_view_column_add_attribute (col, rend, "text", 0);
 
       
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), col);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
       ctk_tree_view_set_expander_column (tree_view, col);
       
       rend = ctk_cell_renderer_toggle_new ();
@@ -355,7 +355,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
                                                       "active", BOOL_COLUMN,
                                                       NULL);
 
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), col);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
 
       pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **)book_closed_xpm);
 
@@ -382,7 +382,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
                                                       "active", BOOL_COLUMN,
                                                       NULL);
 
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), col);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
 
       rend = ctk_cell_renderer_spin_new ();
 
@@ -398,7 +398,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
                                                       "text", 4,
                                                       NULL);
 
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), col);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
 #if 0
       
       rend = ctk_cell_renderer_text_new ();
@@ -408,7 +408,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
                                                       "text", 4,
                                                       NULL);
 
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), col);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
       
       rend = ctk_cell_renderer_text_new ();
       
@@ -417,7 +417,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
                                                       "text", 5,
                                                       NULL);
 
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), col);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
       
       rend = ctk_cell_renderer_text_new ();
       
@@ -426,7 +426,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
                                                       "text", 6,
                                                       NULL);
 
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), col);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
       
       rend = ctk_cell_renderer_text_new ();
       
@@ -435,7 +435,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
                                                       "text", 7,
                                                       NULL);
 
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), col);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
       
       rend = ctk_cell_renderer_text_new ();
       
@@ -444,7 +444,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
                                                       "text", 8,
                                                       NULL);
 
-      ctk_tree_view_append_column (GTK_TREE_VIEW (tree_view), col);
+      ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
       
 #endif
       
@@ -458,7 +458,7 @@ set_columns_type (GtkTreeView *tree_view, ColumnsType type)
                                                       "text", 0,
                                                       NULL);
 
-      ctk_tree_view_insert_column (GTK_TREE_VIEW (tree_view), col, 0);
+      ctk_tree_view_insert_column (CTK_TREE_VIEW (tree_view), col, 0);
     default:
       break;
     }
@@ -533,7 +533,7 @@ create_list_model (void)
       ++i;
     }
 
-  return GTK_TREE_MODEL (store);
+  return CTK_TREE_MODEL (store);
 }
 
 static void
@@ -601,13 +601,13 @@ create_tree_model (void)
       ++i;
     }
 
-  return GTK_TREE_MODEL (store);
+  return CTK_TREE_MODEL (store);
 }
 
 static void
 model_selected (GtkComboBox *combo_box, gpointer data)
 {
-  GtkTreeView *tree_view = GTK_TREE_VIEW (data);
+  GtkTreeView *tree_view = CTK_TREE_VIEW (data);
   gint hist;
 
   hist = ctk_combo_box_get_active (combo_box);
@@ -621,7 +621,7 @@ model_selected (GtkComboBox *combo_box, gpointer data)
 static void
 columns_selected (GtkComboBox *combo_box, gpointer data)
 {
-  GtkTreeView *tree_view = GTK_TREE_VIEW (data);
+  GtkTreeView *tree_view = CTK_TREE_VIEW (data);
   gint hist;
 
   hist = ctk_combo_box_get_active (combo_box);
@@ -643,12 +643,12 @@ on_row_activated (GtkTreeView       *tree_view,
 
 enum
 {
-  TARGET_GTK_TREE_MODEL_ROW
+  TARGET_CTK_TREE_MODEL_ROW
 };
 
 static GtkTargetEntry row_targets[] = {
-  { "GTK_TREE_MODEL_ROW", GTK_TARGET_SAME_APP,
-    TARGET_GTK_TREE_MODEL_ROW }
+  { "CTK_TREE_MODEL_ROW", CTK_TARGET_SAME_APP,
+    TARGET_CTK_TREE_MODEL_ROW }
 };
 
 int
@@ -666,12 +666,12 @@ main (int    argc,
   ctk_init (&argc, &argv);
 
   if (g_getenv ("RTL"))
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
   our_pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) book_closed_xpm);  
   
 #if 0
-  models[MODEL_TYPES] = GTK_TREE_MODEL (ctk_tree_model_types_new ());
+  models[MODEL_TYPES] = CTK_TREE_MODEL (ctk_tree_model_types_new ());
 #endif
   models[MODEL_LIST] = create_list_model ();
   models[MODEL_TREE] = create_tree_model ();
@@ -684,42 +684,42 @@ main (int    argc,
   models[MODEL_SORTED_TREE] = ctk_tree_model_sort_new_with_model (model);
   g_object_unref (model);
 
-  models[MODEL_EMPTY_LIST] = GTK_TREE_MODEL (ctk_list_store_new (1, G_TYPE_INT));
-  models[MODEL_EMPTY_TREE] = GTK_TREE_MODEL (ctk_tree_store_new (1, G_TYPE_INT));
+  models[MODEL_EMPTY_LIST] = CTK_TREE_MODEL (ctk_list_store_new (1, G_TYPE_INT));
+  models[MODEL_EMPTY_TREE] = CTK_TREE_MODEL (ctk_tree_store_new (1, G_TYPE_INT));
   
   models[MODEL_NULL] = NULL;
 
   run_automated_tests ();
   
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);
-  ctk_window_set_default_size (GTK_WINDOW (window), 430, 400);
+  ctk_window_set_default_size (CTK_WINDOW (window), 430, 400);
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
 
-  ctk_container_add (GTK_CONTAINER (window), box);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   tv = ctk_tree_view_new_with_model (models[0]);
   g_signal_connect (tv, "row-activated", G_CALLBACK (on_row_activated), NULL);
 
-  ctk_tree_view_enable_model_drag_source (GTK_TREE_VIEW (tv),
+  ctk_tree_view_enable_model_drag_source (CTK_TREE_VIEW (tv),
 					  GDK_BUTTON1_MASK,
 					  row_targets,
 					  G_N_ELEMENTS (row_targets),
 					  GDK_ACTION_MOVE | GDK_ACTION_COPY);
 
-  ctk_tree_view_enable_model_drag_dest (GTK_TREE_VIEW (tv),
+  ctk_tree_view_enable_model_drag_dest (CTK_TREE_VIEW (tv),
 					row_targets,
 					G_N_ELEMENTS (row_targets),
 					GDK_ACTION_MOVE | GDK_ACTION_COPY);
   
   /* Model menu */
   combo_box = ctk_combo_box_text_new ();
-  ctk_widget_set_halign (combo_box, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (combo_box, CTK_ALIGN_CENTER);
   for (i = 0; i < MODEL_LAST; i++)
-      ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), model_names[i]);
+      ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo_box), model_names[i]);
 
-  ctk_container_add (GTK_CONTAINER (box), combo_box);
+  ctk_container_add (CTK_CONTAINER (box), combo_box);
   g_signal_connect (combo_box,
                     "changed",
                     G_CALLBACK (model_selected),
@@ -727,14 +727,14 @@ main (int    argc,
   
   /* Columns menu */
   combo_box = ctk_combo_box_text_new ();
-  ctk_widget_set_halign (combo_box, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (combo_box, CTK_ALIGN_CENTER);
   for (i = 0; i < COLUMNS_LAST; i++)
-      ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo_box), column_type_names[i]);
+      ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (combo_box), column_type_names[i]);
 
-  ctk_container_add (GTK_CONTAINER (box), combo_box);
+  ctk_container_add (CTK_CONTAINER (box), combo_box);
 
-  set_columns_type (GTK_TREE_VIEW (tv), COLUMNS_LOTS);
-  ctk_combo_box_set_active (GTK_COMBO_BOX (combo_box), COLUMNS_LOTS);
+  set_columns_type (CTK_TREE_VIEW (tv), COLUMNS_LOTS);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (combo_box), COLUMNS_LOTS);
 
   g_signal_connect (combo_box,
                     "changed",
@@ -744,13 +744,13 @@ main (int    argc,
   sw = ctk_scrolled_window_new (NULL, NULL);
   ctk_widget_set_hexpand (sw, TRUE);
   ctk_widget_set_vexpand (sw, TRUE);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                  GTK_POLICY_AUTOMATIC,
-                                  GTK_POLICY_AUTOMATIC);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                  CTK_POLICY_AUTOMATIC,
+                                  CTK_POLICY_AUTOMATIC);
   
-  ctk_container_add (GTK_CONTAINER (box), sw);
+  ctk_container_add (CTK_CONTAINER (box), sw);
   
-  ctk_container_add (GTK_CONTAINER (sw), tv);
+  ctk_container_add (CTK_CONTAINER (sw), tv);
   
   ctk_widget_show_all (window);
   
@@ -823,7 +823,7 @@ ctk_tree_model_types_get_type (void)
 						 "GtkTreeModelTypes",
 						 &model_types_info, 0);
       g_type_add_interface_static (model_types_type,
-				   GTK_TYPE_TREE_MODEL,
+				   CTK_TYPE_TREE_MODEL,
 				   &tree_model_info);
     }
 
@@ -835,7 +835,7 @@ ctk_tree_model_types_new (void)
 {
   GtkTreeModelTypes *retval;
 
-  retval = g_object_new (GTK_TYPE_MODEL_TYPES, NULL);
+  retval = g_object_new (CTK_TYPE_MODEL_TYPES, NULL);
 
   return retval;
 }
@@ -904,7 +904,7 @@ ctk_real_model_types_get_path (GtkTreeModel *tree_model,
   GType type;
   GType parent;
   
-  g_return_val_if_fail (GTK_IS_TREE_MODEL_TYPES (tree_model), NULL);
+  g_return_val_if_fail (CTK_IS_TREE_MODEL_TYPES (tree_model), NULL);
   g_return_val_if_fail (iter != NULL, NULL);
 
   type = GPOINTER_TO_INT (iter->user_data);
@@ -1185,7 +1185,7 @@ treestore_torture_recurse (GtkTreeStore *store,
   gint i;
   GtkTreeIter iter;  
   
-  model = GTK_TREE_MODEL (store);    
+  model = CTK_TREE_MODEL (store);    
 
   if (depth > 2)
     return;
@@ -1285,7 +1285,7 @@ run_automated_tests (void)
     
     store = ctk_list_store_new (1, G_TYPE_INT);
 
-    model = GTK_TREE_MODEL (store);
+    model = CTK_TREE_MODEL (store);
     
     i = 0;
     while (i < 100)
@@ -1353,7 +1353,7 @@ run_automated_tests (void)
     GtkTreeIter root;
 
     store = ctk_tree_store_new (1, G_TYPE_INT);
-    ctk_tree_store_append (GTK_TREE_STORE (store), &root, NULL);
+    ctk_tree_store_append (CTK_TREE_STORE (store), &root, NULL);
     /* Remove test until it is rewritten to work */
     /*    treestore_torture_recurse (store, &root, 0);*/
     

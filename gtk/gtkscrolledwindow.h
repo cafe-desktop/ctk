@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_SCROLLED_WINDOW_H__
-#define __GTK_SCROLLED_WINDOW_H__
+#ifndef __CTK_SCROLLED_WINDOW_H__
+#define __CTK_SCROLLED_WINDOW_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -34,12 +34,12 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_SCROLLED_WINDOW            (ctk_scrolled_window_get_type ())
-#define GTK_SCROLLED_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SCROLLED_WINDOW, GtkScrolledWindow))
-#define GTK_SCROLLED_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SCROLLED_WINDOW, GtkScrolledWindowClass))
-#define GTK_IS_SCROLLED_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SCROLLED_WINDOW))
-#define GTK_IS_SCROLLED_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SCROLLED_WINDOW))
-#define GTK_SCROLLED_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SCROLLED_WINDOW, GtkScrolledWindowClass))
+#define CTK_TYPE_SCROLLED_WINDOW            (ctk_scrolled_window_get_type ())
+#define CTK_SCROLLED_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SCROLLED_WINDOW, GtkScrolledWindow))
+#define CTK_SCROLLED_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SCROLLED_WINDOW, GtkScrolledWindowClass))
+#define CTK_IS_SCROLLED_WINDOW(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SCROLLED_WINDOW))
+#define CTK_IS_SCROLLED_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SCROLLED_WINDOW))
+#define CTK_SCROLLED_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SCROLLED_WINDOW, GtkScrolledWindowClass))
 
 
 typedef struct _GtkScrolledWindow              GtkScrolledWindow;
@@ -74,7 +74,7 @@ struct _GtkScrolledWindowClass
    */
 
   /* Unfortunately, GtkScrollType is deficient in that there is
-   * no horizontal/vertical variants for GTK_SCROLL_START/END,
+   * no horizontal/vertical variants for CTK_SCROLL_START/END,
    * so we have to add an additional boolean flag.
    */
   gboolean (*scroll_child) (GtkScrolledWindow *scrolled_window,
@@ -96,13 +96,13 @@ struct _GtkScrolledWindowClass
 
 /**
  * GtkCornerType:
- * @GTK_CORNER_TOP_LEFT: Place the scrollbars on the right and bottom of the
+ * @CTK_CORNER_TOP_LEFT: Place the scrollbars on the right and bottom of the
  *  widget (default behaviour).
- * @GTK_CORNER_BOTTOM_LEFT: Place the scrollbars on the top and right of the
+ * @CTK_CORNER_BOTTOM_LEFT: Place the scrollbars on the top and right of the
  *  widget.
- * @GTK_CORNER_TOP_RIGHT: Place the scrollbars on the left and bottom of the
+ * @CTK_CORNER_TOP_RIGHT: Place the scrollbars on the left and bottom of the
  *  widget.
- * @GTK_CORNER_BOTTOM_RIGHT: Place the scrollbars on the top and left of the
+ * @CTK_CORNER_BOTTOM_RIGHT: Place the scrollbars on the top and left of the
  *  widget.
  *
  * Specifies which corner a child widget should be placed in when packed into
@@ -111,22 +111,22 @@ struct _GtkScrolledWindowClass
  */
 typedef enum
 {
-  GTK_CORNER_TOP_LEFT,
-  GTK_CORNER_BOTTOM_LEFT,
-  GTK_CORNER_TOP_RIGHT,
-  GTK_CORNER_BOTTOM_RIGHT
+  CTK_CORNER_TOP_LEFT,
+  CTK_CORNER_BOTTOM_LEFT,
+  CTK_CORNER_TOP_RIGHT,
+  CTK_CORNER_BOTTOM_RIGHT
 } GtkCornerType;
 
 
 /**
  * GtkPolicyType:
- * @GTK_POLICY_ALWAYS: The scrollbar is always visible. The view size is
+ * @CTK_POLICY_ALWAYS: The scrollbar is always visible. The view size is
  *  independent of the content.
- * @GTK_POLICY_AUTOMATIC: The scrollbar will appear and disappear as necessary.
+ * @CTK_POLICY_AUTOMATIC: The scrollbar will appear and disappear as necessary.
  *  For example, when all of a #GtkTreeView can not be seen.
- * @GTK_POLICY_NEVER: The scrollbar should never appear. In this mode the
+ * @CTK_POLICY_NEVER: The scrollbar should never appear. In this mode the
  *  content determines the size.
- * @GTK_POLICY_EXTERNAL: Don't show a scrollbar, but don't force the
+ * @CTK_POLICY_EXTERNAL: Don't show a scrollbar, but don't force the
  *  size to follow the content. This can be used e.g. to make multiple
  *  scrolled windows share a scrollbar. Since: 3.16
  *
@@ -135,10 +135,10 @@ typedef enum
  */
 typedef enum
 {
-  GTK_POLICY_ALWAYS,
-  GTK_POLICY_AUTOMATIC,
-  GTK_POLICY_NEVER,
-  GTK_POLICY_EXTERNAL
+  CTK_POLICY_ALWAYS,
+  CTK_POLICY_AUTOMATIC,
+  CTK_POLICY_NEVER,
+  CTK_POLICY_EXTERNAL
 } GtkPolicyType;
 
 
@@ -241,4 +241,4 @@ gboolean       ctk_scrolled_window_get_propagate_natural_height (GtkScrolledWind
 G_END_DECLS
 
 
-#endif /* __GTK_SCROLLED_WINDOW_H__ */
+#endif /* __CTK_SCROLLED_WINDOW_H__ */

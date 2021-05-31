@@ -7,7 +7,7 @@
 #define HEADER_HEIGHT (10*72/25.4)
 #define HEADER_GAP (3*72/25.4)
 
-G_DEFINE_TYPE (TestPrintFileOperation, test_print_file_operation, GTK_TYPE_PRINT_OPERATION)
+G_DEFINE_TYPE (TestPrintFileOperation, test_print_file_operation, CTK_TYPE_PRINT_OPERATION)
 
 static void
 test_print_file_operation_finalize (GObject *object)
@@ -22,7 +22,7 @@ test_print_file_operation_finalize (GObject *object)
 static void
 test_print_file_operation_init (TestPrintFileOperation *operation)
 {
-  ctk_print_operation_set_unit (GTK_PRINT_OPERATION (operation), GTK_UNIT_POINTS);
+  ctk_print_operation_set_unit (CTK_PRINT_OPERATION (operation), CTK_UNIT_POINTS);
   operation->font_size = 14.0;
 }
 

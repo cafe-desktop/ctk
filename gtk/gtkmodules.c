@@ -61,8 +61,8 @@ get_module_path (void)
   if (result)
     return result;
 
-  module_path_env = g_getenv ("GTK_PATH");
-  exe_prefix = g_getenv ("GTK_EXE_PREFIX");
+  module_path_env = g_getenv ("CTK_PATH");
+  exe_prefix = g_getenv ("CTK_EXE_PREFIX");
 
   if (exe_prefix)
     default_dir = g_build_filename (exe_prefix, "lib", "gtk-3.0", NULL);
@@ -116,11 +116,11 @@ _ctk_get_module_path (const gchar *type)
 	    gchar *tmp_dir;
 	    
 	    if (use_version && use_host)
-	      tmp_dir = g_build_filename (*path, GTK_BINARY_VERSION, GTK_HOST, type, NULL);
+	      tmp_dir = g_build_filename (*path, CTK_BINARY_VERSION, CTK_HOST, type, NULL);
 	    else if (use_version)
-	      tmp_dir = g_build_filename (*path, GTK_BINARY_VERSION, type, NULL);
+	      tmp_dir = g_build_filename (*path, CTK_BINARY_VERSION, type, NULL);
 	    else if (use_host)
-	      tmp_dir = g_build_filename (*path, GTK_HOST, type, NULL);
+	      tmp_dir = g_build_filename (*path, CTK_HOST, type, NULL);
 	    else
 	      tmp_dir = g_build_filename (*path, type, NULL);
 
@@ -355,7 +355,7 @@ load_module (GSList      *module_list,
 		    }
 		  else
 		    {
-		      GTK_NOTE (MODULES, g_message ("Module already loaded, ignoring: %s", name));
+		      CTK_NOTE (MODULES, g_message ("Module already loaded, ignoring: %s", name));
 		      info->names = g_slist_prepend (info->names, g_strdup (name));
 		      info->ref_count++;
 		      /* remove new reference count on module, we already have one */
@@ -397,7 +397,7 @@ ctk_module_info_unref (GtkModuleInfo *info)
 
   if (info->ref_count == 0)
     {
-      GTK_NOTE (MODULES,
+      CTK_NOTE (MODULES,
 		g_message ("Unloading module: %s", g_module_name (info->module)));
 
       ctk_modules = g_slist_remove (ctk_modules, info);
@@ -416,7 +416,7 @@ load_modules (const char *module_str)
   GSList *module_list = NULL;
   gint i;
 
-  GTK_NOTE (MODULES, g_message ("Loading module list: %s", module_str));
+  CTK_NOTE (MODULES, g_message ("Loading module list: %s", module_str));
 
   module_names = ctk_split_file_list (module_str);
   for (i = 0; module_names[i]; i++)
@@ -537,7 +537,7 @@ _ctk_modules_init (gint        *argc,
 
   if (ctk_modules_args)
     {
-      /* Modules specified in the GTK_MODULES environment variable
+      /* Modules specified in the CTK_MODULES environment variable
        * or on the command line are always loaded, so we'll just leak
        * the refcounts.
        */
@@ -564,7 +564,7 @@ _ctk_modules_settings_changed (GtkSettings *settings,
 {
   GSList *new_modules = NULL;
 
-  GTK_NOTE (MODULES, g_message ("gtk-modules setting changed to: %s", modules));
+  CTK_NOTE (MODULES, g_message ("gtk-modules setting changed to: %s", modules));
 
   /* load/ref before unreffing existing */
   if (modules && modules[0])

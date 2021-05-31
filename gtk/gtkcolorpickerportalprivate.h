@@ -17,11 +17,11 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_COLOR_PICKER_PORTAL_H__
-#define __GTK_COLOR_PICKER_PORTAL_H__
+#ifndef __CTK_COLOR_PICKER_PORTAL_H__
+#define __CTK_COLOR_PICKER_PORTAL_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -30,7 +30,7 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_COLOR_PICKER_PORTAL ctk_color_picker_portal_get_type ()
+#define CTK_TYPE_COLOR_PICKER_PORTAL ctk_color_picker_portal_get_type ()
 G_DECLARE_FINAL_TYPE (GtkColorPickerPortal, ctk_color_picker_portal, GTK, COLOR_PICKER_PORTAL, GObject)
 
 GDK_AVAILABLE_IN_ALL
@@ -38,4 +38,4 @@ GtkColorPicker * ctk_color_picker_portal_new (void);
 
 G_END_DECLS
 
-#endif  /* __GTK_COLOR_PICKER_PORTAL_H__ */
+#endif  /* __CTK_COLOR_PICKER_PORTAL_H__ */

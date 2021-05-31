@@ -3791,21 +3791,21 @@ ctk_surface_configure (void                *data,
 
       switch (state)
         {
-        case GTK_SURFACE1_STATE_TILED:
+        case CTK_SURFACE1_STATE_TILED:
           new_state |= GDK_WINDOW_STATE_TILED;
           break;
 
         /* Since v2 */
-        case GTK_SURFACE1_STATE_TILED_TOP:
+        case CTK_SURFACE1_STATE_TILED_TOP:
           new_state |= (GDK_WINDOW_STATE_TILED | GDK_WINDOW_STATE_TOP_TILED);
           break;
-        case GTK_SURFACE1_STATE_TILED_RIGHT:
+        case CTK_SURFACE1_STATE_TILED_RIGHT:
           new_state |= (GDK_WINDOW_STATE_TILED | GDK_WINDOW_STATE_RIGHT_TILED);
           break;
-        case GTK_SURFACE1_STATE_TILED_BOTTOM:
+        case CTK_SURFACE1_STATE_TILED_BOTTOM:
           new_state |= (GDK_WINDOW_STATE_TILED | GDK_WINDOW_STATE_BOTTOM_TILED);
           break;
-        case GTK_SURFACE1_STATE_TILED_LEFT:
+        case CTK_SURFACE1_STATE_TILED_LEFT:
           new_state |= (GDK_WINDOW_STATE_TILED | GDK_WINDOW_STATE_LEFT_TILED);
           break;
         default:
@@ -3833,16 +3833,16 @@ ctk_surface_configure_edges (void                *data,
 
       switch (constraint)
         {
-        case GTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_TOP:
+        case CTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_TOP:
           new_state |= GDK_WINDOW_STATE_TOP_RESIZABLE;
           break;
-        case GTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_RIGHT:
+        case CTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_RIGHT:
           new_state |= GDK_WINDOW_STATE_RIGHT_RESIZABLE;
           break;
-        case GTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_BOTTOM:
+        case CTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_BOTTOM:
           new_state |= GDK_WINDOW_STATE_BOTTOM_RESIZABLE;
           break;
-        case GTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_LEFT:
+        case CTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_LEFT:
           new_state |= GDK_WINDOW_STATE_LEFT_RESIZABLE;
           break;
         default:

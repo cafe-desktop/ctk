@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_X_H__
-#define __GTK_X_H__
+#ifndef __CTK_X_H__
+#define __CTK_X_H__
 
-#if defined (GTK_COMPILATION)
+#if defined (CTK_COMPILATION)
 #error "<gtk/gtkx.h> must not be included by GTK+ headers."
 #endif
 
@@ -33,4 +33,4 @@
 
 #undef __GTKX_H_INSIDE__
 
-#endif /* __GTK_X_H__ */
+#endif /* __CTK_X_H__ */

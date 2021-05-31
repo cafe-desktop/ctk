@@ -65,7 +65,7 @@ ctk_trash_monitor_dispose (GObject *object)
 {
   GtkTrashMonitor *monitor;
 
-  monitor = GTK_TRASH_MONITOR (object);
+  monitor = CTK_TRASH_MONITOR (object);
 
   if (monitor->file_monitor)
     {
@@ -124,7 +124,7 @@ trash_query_info_cb (GObject *source,
                      GAsyncResult *result,
                      gpointer user_data)
 {
-  GtkTrashMonitor *monitor = GTK_TRASH_MONITOR (user_data);
+  GtkTrashMonitor *monitor = CTK_TRASH_MONITOR (user_data);
   GFileInfo *info;
   guint32 item_count;
   gboolean has_trash = FALSE;
@@ -240,7 +240,7 @@ _ctk_trash_monitor_get (void)
     }
   else
     {
-      the_trash_monitor = g_object_new (GTK_TYPE_TRASH_MONITOR, NULL);
+      the_trash_monitor = g_object_new (CTK_TYPE_TRASH_MONITOR, NULL);
       g_object_add_weak_pointer (G_OBJECT (the_trash_monitor), (gpointer *) &the_trash_monitor);
     }
 
@@ -260,7 +260,7 @@ _ctk_trash_monitor_get_icon (GtkTrashMonitor *monitor)
 {
   const char *icon_name;
 
-  g_return_val_if_fail (GTK_IS_TRASH_MONITOR (monitor), NULL);
+  g_return_val_if_fail (CTK_IS_TRASH_MONITOR (monitor), NULL);
 
   if (monitor->has_trash)
     icon_name = ICON_NAME_TRASH_FULL;
@@ -279,7 +279,7 @@ _ctk_trash_monitor_get_icon (GtkTrashMonitor *monitor)
 gboolean
 _ctk_trash_monitor_get_has_trash (GtkTrashMonitor *monitor)
 {
-  g_return_val_if_fail (GTK_IS_TRASH_MONITOR (monitor), FALSE);
+  g_return_val_if_fail (CTK_IS_TRASH_MONITOR (monitor), FALSE);
 
   return monitor->has_trash;
 }

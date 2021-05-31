@@ -115,9 +115,9 @@ struct _GtkAppChooserButtonPrivate {
   GHashTable *custom_item_names;
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkAppChooserButton, ctk_app_chooser_button, GTK_TYPE_COMBO_BOX,
+G_DEFINE_TYPE_WITH_CODE (GtkAppChooserButton, ctk_app_chooser_button, CTK_TYPE_COMBO_BOX,
                          G_ADD_PRIVATE (GtkAppChooserButton)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_APP_CHOOSER,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_APP_CHOOSER,
                                                 app_chooser_iface_init));
 
 static gboolean
@@ -140,7 +140,7 @@ get_first_iter (GtkListStore *store,
 {
   GtkTreeIter iter2;
 
-  if (!ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), iter))
+  if (!ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), iter))
     {
       /* the model is empty, append */
       ctk_list_store_append (store, iter);
@@ -191,7 +191,7 @@ select_application_func_cb (GtkTreeModel *model,
     result = TRUE;
   else if (g_app_info_equal (app, app_to_match))
     {
-      ctk_combo_box_set_active_iter (GTK_COMBO_BOX (data->self), iter);
+      ctk_combo_box_set_active_iter (CTK_COMBO_BOX (data->self), iter);
       result = TRUE;
     }
   else
@@ -212,7 +212,7 @@ ctk_app_chooser_button_select_application (GtkAppChooserButton *self,
   data->self = g_object_ref (self);
   data->info = g_object_ref (info);
 
-  ctk_tree_model_foreach (GTK_TREE_MODEL (self->priv->store),
+  ctk_tree_model_foreach (CTK_TREE_MODEL (self->priv->store),
                           select_application_func_cb, data);
 
   select_app_data_free (data);
@@ -226,22 +226,22 @@ other_application_dialog_response_cb (GtkDialog *dialog,
   GtkAppChooserButton *self = user_data;
   GAppInfo *info;
 
-  if (response_id != GTK_RESPONSE_OK)
+  if (response_id != CTK_RESPONSE_OK)
     {
       /* reset the active item, otherwise we are stuck on
        * 'Other application…'
        */
-      ctk_combo_box_set_active (GTK_COMBO_BOX (self), self->priv->last_active);
-      ctk_widget_destroy (GTK_WIDGET (dialog));
+      ctk_combo_box_set_active (CTK_COMBO_BOX (self), self->priv->last_active);
+      ctk_widget_destroy (CTK_WIDGET (dialog));
       return;
     }
 
-  info = ctk_app_chooser_get_app_info (GTK_APP_CHOOSER (dialog));
+  info = ctk_app_chooser_get_app_info (CTK_APP_CHOOSER (dialog));
 
-  ctk_widget_destroy (GTK_WIDGET (dialog));
+  ctk_widget_destroy (CTK_WIDGET (dialog));
 
   /* refresh the combobox to get the new application */
-  ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+  ctk_app_chooser_refresh (CTK_APP_CHOOSER (self));
   ctk_app_chooser_button_select_application (self, info);
 
   g_object_unref (info);
@@ -253,16 +253,16 @@ other_application_item_activated_cb (GtkAppChooserButton *self)
   GtkWidget *dialog, *widget;
   GtkWindow *toplevel;
 
-  toplevel = GTK_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (self)));
+  toplevel = CTK_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (self)));
   dialog = ctk_app_chooser_dialog_new_for_content_type (toplevel,
-                                                        GTK_DIALOG_DESTROY_WITH_PARENT,
+                                                        CTK_DIALOG_DESTROY_WITH_PARENT,
                                                         self->priv->content_type);
 
-  ctk_window_set_modal (GTK_WINDOW (dialog), ctk_window_get_modal (toplevel));
-  ctk_app_chooser_dialog_set_heading (GTK_APP_CHOOSER_DIALOG (dialog),
+  ctk_window_set_modal (CTK_WINDOW (dialog), ctk_window_get_modal (toplevel));
+  ctk_app_chooser_dialog_set_heading (CTK_APP_CHOOSER_DIALOG (dialog),
                                       self->priv->heading);
 
-  widget = ctk_app_chooser_dialog_get_widget (GTK_APP_CHOOSER_DIALOG (dialog));
+  widget = ctk_app_chooser_dialog_get_widget (CTK_APP_CHOOSER_DIALOG (dialog));
   g_object_set (widget,
                 "show-fallback", TRUE,
                 "show-other", TRUE,
@@ -379,7 +379,7 @@ ctk_app_chooser_button_populate (GtkAppChooserButton *self)
   else
     ctk_app_chooser_button_ensure_dialog_item (self, &iter);
 
-  ctk_combo_box_set_active (GTK_COMBO_BOX (self), 0);
+  ctk_combo_box_set_active (CTK_COMBO_BOX (self), 0);
 }
 
 static void
@@ -388,12 +388,12 @@ ctk_app_chooser_button_build_ui (GtkAppChooserButton *self)
   GtkCellRenderer *cell;
   GtkCellArea *area;
 
-  ctk_combo_box_set_model (GTK_COMBO_BOX (self),
-                           GTK_TREE_MODEL (self->priv->store));
+  ctk_combo_box_set_model (CTK_COMBO_BOX (self),
+                           CTK_TREE_MODEL (self->priv->store));
 
-  area = ctk_cell_layout_get_area (GTK_CELL_LAYOUT (self));
+  area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (self));
 
-  ctk_combo_box_set_row_separator_func (GTK_COMBO_BOX (self),
+  ctk_combo_box_set_row_separator_func (CTK_COMBO_BOX (self),
                                         row_separator_func, NULL, NULL);
 
   cell = ctk_cell_renderer_pixbuf_new ();
@@ -402,7 +402,7 @@ ctk_app_chooser_button_build_ui (GtkAppChooserButton *self)
                                      "expand", FALSE,
                                      "fixed-size", FALSE,
                                      NULL);
-  ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (self), cell,
+  ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (self), cell,
                                   "gicon", COLUMN_ICON,
                                   NULL);
 
@@ -411,7 +411,7 @@ ctk_app_chooser_button_build_ui (GtkAppChooserButton *self)
                                      "align", FALSE,
                                      "expand", TRUE,
                                      NULL);
-  ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (self), cell,
+  ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (self), cell,
                                   "text", COLUMN_LABEL,
                                   NULL);
 
@@ -425,7 +425,7 @@ ctk_app_chooser_button_remove_non_custom (GtkAppChooserButton *self)
   GtkTreeIter iter;
   gboolean custom, res;
 
-  model = GTK_TREE_MODEL (self->priv->store);
+  model = CTK_TREE_MODEL (self->priv->store);
 
   if (!ctk_tree_model_get_iter_first (model, &iter))
     return;
@@ -437,14 +437,14 @@ ctk_app_chooser_button_remove_non_custom (GtkAppChooserButton *self)
     if (custom)
       res = ctk_tree_model_iter_next (model, &iter);
     else
-      res = ctk_list_store_remove (GTK_LIST_STORE (model), &iter);
+      res = ctk_list_store_remove (CTK_LIST_STORE (model), &iter);
   } while (res);
 }
 
 static void
 ctk_app_chooser_button_changed (GtkComboBox *object)
 {
-  GtkAppChooserButton *self = GTK_APP_CHOOSER_BUTTON (object);
+  GtkAppChooserButton *self = CTK_APP_CHOOSER_BUTTON (object);
   GtkTreeIter iter;
   gchar *name = NULL;
   gboolean custom;
@@ -453,7 +453,7 @@ ctk_app_chooser_button_changed (GtkComboBox *object)
   if (!ctk_combo_box_get_active_iter (object, &iter))
     return;
 
-  ctk_tree_model_get (GTK_TREE_MODEL (self->priv->store), &iter,
+  ctk_tree_model_get (CTK_TREE_MODEL (self->priv->store), &iter,
                       COLUMN_NAME, &name,
                       COLUMN_CUSTOM, &custom,
                       -1);
@@ -481,7 +481,7 @@ ctk_app_chooser_button_changed (GtkComboBox *object)
 static void
 ctk_app_chooser_button_refresh (GtkAppChooser *object)
 {
-  GtkAppChooserButton *self = GTK_APP_CHOOSER_BUTTON (object);
+  GtkAppChooserButton *self = CTK_APP_CHOOSER_BUTTON (object);
 
   ctk_app_chooser_button_remove_non_custom (self);
   ctk_app_chooser_button_populate (self);
@@ -490,14 +490,14 @@ ctk_app_chooser_button_refresh (GtkAppChooser *object)
 static GAppInfo *
 ctk_app_chooser_button_get_app_info (GtkAppChooser *object)
 {
-  GtkAppChooserButton *self = GTK_APP_CHOOSER_BUTTON (object);
+  GtkAppChooserButton *self = CTK_APP_CHOOSER_BUTTON (object);
   GtkTreeIter iter;
   GAppInfo *info;
 
-  if (!ctk_combo_box_get_active_iter (GTK_COMBO_BOX (self), &iter))
+  if (!ctk_combo_box_get_active_iter (CTK_COMBO_BOX (self), &iter))
     return NULL;
 
-  ctk_tree_model_get (GTK_TREE_MODEL (self->priv->store), &iter,
+  ctk_tree_model_get (CTK_TREE_MODEL (self->priv->store), &iter,
                       COLUMN_APP_INFO, &info,
                       -1);
 
@@ -507,7 +507,7 @@ ctk_app_chooser_button_get_app_info (GtkAppChooser *object)
 static void
 ctk_app_chooser_button_constructed (GObject *obj)
 {
-  GtkAppChooserButton *self = GTK_APP_CHOOSER_BUTTON (obj);
+  GtkAppChooserButton *self = CTK_APP_CHOOSER_BUTTON (obj);
 
   if (G_OBJECT_CLASS (ctk_app_chooser_button_parent_class)->constructed != NULL)
     G_OBJECT_CLASS (ctk_app_chooser_button_parent_class)->constructed (obj);
@@ -521,7 +521,7 @@ ctk_app_chooser_button_set_property (GObject      *obj,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
-  GtkAppChooserButton *self = GTK_APP_CHOOSER_BUTTON (obj);
+  GtkAppChooserButton *self = CTK_APP_CHOOSER_BUTTON (obj);
 
   switch (property_id)
     {
@@ -549,7 +549,7 @@ ctk_app_chooser_button_get_property (GObject    *obj,
                                      GValue     *value,
                                      GParamSpec *pspec)
 {
-  GtkAppChooserButton *self = GTK_APP_CHOOSER_BUTTON (obj);
+  GtkAppChooserButton *self = CTK_APP_CHOOSER_BUTTON (obj);
 
   switch (property_id)
     {
@@ -574,7 +574,7 @@ ctk_app_chooser_button_get_property (GObject    *obj,
 static void
 ctk_app_chooser_button_finalize (GObject *obj)
 {
-  GtkAppChooserButton *self = GTK_APP_CHOOSER_BUTTON (obj);
+  GtkAppChooserButton *self = CTK_APP_CHOOSER_BUTTON (obj);
 
   g_hash_table_destroy (self->priv->custom_item_names);
   g_free (self->priv->content_type);
@@ -595,7 +595,7 @@ static void
 ctk_app_chooser_button_class_init (GtkAppChooserButtonClass *klass)
 {
   GObjectClass *oclass = G_OBJECT_CLASS (klass);
-  GtkComboBoxClass *combo_class = GTK_COMBO_BOX_CLASS (klass);
+  GtkComboBoxClass *combo_class = CTK_COMBO_BOX_CLASS (klass);
 
   oclass->set_property = ctk_app_chooser_button_set_property;
   oclass->get_property = ctk_app_chooser_button_get_property;
@@ -662,7 +662,7 @@ ctk_app_chooser_button_class_init (GtkAppChooserButtonClass *klass)
    */
   signals[SIGNAL_CUSTOM_ITEM_ACTIVATED] =
     g_signal_new (I_("custom-item-activated"),
-                  GTK_TYPE_APP_CHOOSER_BUTTON,
+                  CTK_TYPE_APP_CHOOSER_BUTTON,
                   G_SIGNAL_RUN_FIRST | G_SIGNAL_DETAILED,
                   G_STRUCT_OFFSET (GtkAppChooserButtonClass, custom_item_activated),
                   NULL, NULL,
@@ -694,11 +694,11 @@ app_chooser_button_iter_from_custom_name (GtkAppChooserButton *self,
   GtkTreeIter iter;
   gchar *custom_name = NULL;
 
-  if (!ctk_tree_model_get_iter_first (GTK_TREE_MODEL (self->priv->store), &iter))
+  if (!ctk_tree_model_get_iter_first (CTK_TREE_MODEL (self->priv->store), &iter))
     return FALSE;
 
   do {
-    ctk_tree_model_get (GTK_TREE_MODEL (self->priv->store), &iter,
+    ctk_tree_model_get (CTK_TREE_MODEL (self->priv->store), &iter,
                         COLUMN_NAME, &custom_name,
                         -1);
 
@@ -711,7 +711,7 @@ app_chooser_button_iter_from_custom_name (GtkAppChooserButton *self,
       }
 
     g_free (custom_name);
-  } while (ctk_tree_model_iter_next (GTK_TREE_MODEL (self->priv->store), &iter));
+  } while (ctk_tree_model_iter_next (CTK_TREE_MODEL (self->priv->store), &iter));
 
   return FALSE;
 }
@@ -773,7 +773,7 @@ ctk_app_chooser_button_new (const gchar *content_type)
 {
   g_return_val_if_fail (content_type != NULL, NULL);
 
-  return g_object_new (GTK_TYPE_APP_CHOOSER_BUTTON,
+  return g_object_new (CTK_TYPE_APP_CHOOSER_BUTTON,
                        "content-type", content_type,
                        NULL);
 }
@@ -792,7 +792,7 @@ ctk_app_chooser_button_append_separator (GtkAppChooserButton *self)
 {
   GtkTreeIter iter;
 
-  g_return_if_fail (GTK_IS_APP_CHOOSER_BUTTON (self));
+  g_return_if_fail (CTK_IS_APP_CHOOSER_BUTTON (self));
 
   ctk_list_store_append (self->priv->store, &iter);
   real_insert_separator (self, TRUE, &iter);
@@ -822,7 +822,7 @@ ctk_app_chooser_button_append_custom_item (GtkAppChooserButton *self,
 {
   GtkTreeIter iter;
 
-  g_return_if_fail (GTK_IS_APP_CHOOSER_BUTTON (self));
+  g_return_if_fail (CTK_IS_APP_CHOOSER_BUTTON (self));
   g_return_if_fail (name != NULL);
 
   ctk_list_store_append (self->priv->store, &iter);
@@ -848,7 +848,7 @@ ctk_app_chooser_button_set_active_custom_item (GtkAppChooserButton *self,
 {
   GtkTreeIter iter;
 
-  g_return_if_fail (GTK_IS_APP_CHOOSER_BUTTON (self));
+  g_return_if_fail (CTK_IS_APP_CHOOSER_BUTTON (self));
   g_return_if_fail (name != NULL);
 
   if (!g_hash_table_contains (self->priv->custom_item_names, name) ||
@@ -858,7 +858,7 @@ ctk_app_chooser_button_set_active_custom_item (GtkAppChooserButton *self,
       return;
     }
 
-  ctk_combo_box_set_active_iter (GTK_COMBO_BOX (self), &iter);
+  ctk_combo_box_set_active_iter (CTK_COMBO_BOX (self), &iter);
 }
 
 /**
@@ -875,7 +875,7 @@ ctk_app_chooser_button_set_active_custom_item (GtkAppChooserButton *self,
 gboolean
 ctk_app_chooser_button_get_show_dialog_item (GtkAppChooserButton *self)
 {
-  g_return_val_if_fail (GTK_IS_APP_CHOOSER_BUTTON (self), FALSE);
+  g_return_val_if_fail (CTK_IS_APP_CHOOSER_BUTTON (self), FALSE);
 
   return self->priv->show_dialog_item;
 }
@@ -900,7 +900,7 @@ ctk_app_chooser_button_set_show_dialog_item (GtkAppChooserButton *self,
 
       g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_SHOW_DIALOG_ITEM]);
 
-      ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+      ctk_app_chooser_refresh (CTK_APP_CHOOSER (self));
     }
 }
 
@@ -918,7 +918,7 @@ ctk_app_chooser_button_set_show_dialog_item (GtkAppChooserButton *self,
 gboolean
 ctk_app_chooser_button_get_show_default_item (GtkAppChooserButton *self)
 {
-  g_return_val_if_fail (GTK_IS_APP_CHOOSER_BUTTON (self), FALSE);
+  g_return_val_if_fail (CTK_IS_APP_CHOOSER_BUTTON (self), FALSE);
 
   return self->priv->show_default_item;
 }
@@ -943,7 +943,7 @@ ctk_app_chooser_button_set_show_default_item (GtkAppChooserButton *self,
 
       g_object_notify_by_pspec (G_OBJECT (self), properties[PROP_SHOW_DEFAULT_ITEM]);
 
-      ctk_app_chooser_refresh (GTK_APP_CHOOSER (self));
+      ctk_app_chooser_refresh (CTK_APP_CHOOSER (self));
     }
 }
 
@@ -959,7 +959,7 @@ void
 ctk_app_chooser_button_set_heading (GtkAppChooserButton *self,
                                     const gchar         *heading)
 {
-  g_return_if_fail (GTK_IS_APP_CHOOSER_BUTTON (self));
+  g_return_if_fail (CTK_IS_APP_CHOOSER_BUTTON (self));
 
   g_free (self->priv->heading);
   self->priv->heading = g_strdup (heading);
@@ -979,7 +979,7 @@ ctk_app_chooser_button_set_heading (GtkAppChooserButton *self,
 const gchar *
 ctk_app_chooser_button_get_heading (GtkAppChooserButton *self)
 {
-  g_return_val_if_fail (GTK_IS_APP_CHOOSER_BUTTON (self), NULL);
+  g_return_val_if_fail (CTK_IS_APP_CHOOSER_BUTTON (self), NULL);
 
   return self->priv->heading;
 }

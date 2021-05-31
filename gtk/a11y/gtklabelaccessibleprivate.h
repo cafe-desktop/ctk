@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_LABEL_ACCESSIBLE_PRIVATE_H__
-#define __GTK_LABEL_ACCESSIBLE_PRIVATE_H__
+#ifndef __CTK_LABEL_ACCESSIBLE_PRIVATE_H__
+#define __CTK_LABEL_ACCESSIBLE_PRIVATE_H__
 
 #include <gtk/a11y/gtklabelaccessible.h>
 
@@ -29,4 +29,4 @@ void _ctk_label_accessible_focus_link_changed (GtkLabel *label);
 
 G_END_DECLS
 
-#endif /* __GTK_LABEL_ACCESSIBLE_PRIVATE_H__ */
+#endif /* __CTK_LABEL_ACCESSIBLE_PRIVATE_H__ */

@@ -177,7 +177,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                           "# Created by %s from gtk+-%d.%d.%d\n"
                           "#\n",
                           argv[0],
-                          GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
+                          CTK_MAJOR_VERSION, CTK_MINOR_VERSION, CTK_MICRO_VERSION);
 
   if (argc == first_file)  /* No file arguments given */
     {

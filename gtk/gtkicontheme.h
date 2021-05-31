@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ICON_THEME_H__
-#define __GTK_ICON_THEME_H__
+#ifndef __CTK_ICON_THEME_H__
+#define __CTK_ICON_THEME_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,19 +28,19 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ICON_INFO              (ctk_icon_info_get_type ())
-#define GTK_ICON_INFO(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ICON_INFO, GtkIconInfo))
-#define GTK_ICON_INFO_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ICON_INFO, GtkIconInfoClass))
-#define GTK_IS_ICON_INFO(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ICON_INFO))
-#define GTK_IS_ICON_INFO_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ICON_INFO))
-#define GTK_ICON_INFO_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ICON_INFO, GtkIconInfoClass))
+#define CTK_TYPE_ICON_INFO              (ctk_icon_info_get_type ())
+#define CTK_ICON_INFO(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_INFO, GtkIconInfo))
+#define CTK_ICON_INFO_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ICON_INFO, GtkIconInfoClass))
+#define CTK_IS_ICON_INFO(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ICON_INFO))
+#define CTK_IS_ICON_INFO_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ICON_INFO))
+#define CTK_ICON_INFO_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ICON_INFO, GtkIconInfoClass))
 
-#define GTK_TYPE_ICON_THEME             (ctk_icon_theme_get_type ())
-#define GTK_ICON_THEME(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ICON_THEME, GtkIconTheme))
-#define GTK_ICON_THEME_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ICON_THEME, GtkIconThemeClass))
-#define GTK_IS_ICON_THEME(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ICON_THEME))
-#define GTK_IS_ICON_THEME_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ICON_THEME))
-#define GTK_ICON_THEME_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ICON_THEME, GtkIconThemeClass))
+#define CTK_TYPE_ICON_THEME             (ctk_icon_theme_get_type ())
+#define CTK_ICON_THEME(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ICON_THEME, GtkIconTheme))
+#define CTK_ICON_THEME_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ICON_THEME, GtkIconThemeClass))
+#define CTK_IS_ICON_THEME(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ICON_THEME))
+#define CTK_IS_ICON_THEME_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ICON_THEME))
+#define CTK_ICON_THEME_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ICON_THEME, GtkIconThemeClass))
 
 /**
  * GtkIconInfo:
@@ -99,62 +99,62 @@ struct _GtkIconThemeClass
 
 /**
  * GtkIconLookupFlags:
- * @GTK_ICON_LOOKUP_NO_SVG: Never get SVG icons, even if gdk-pixbuf
- *   supports them. Cannot be used together with %GTK_ICON_LOOKUP_FORCE_SVG.
- * @GTK_ICON_LOOKUP_FORCE_SVG: Get SVG icons, even if gdk-pixbuf
+ * @CTK_ICON_LOOKUP_NO_SVG: Never get SVG icons, even if gdk-pixbuf
+ *   supports them. Cannot be used together with %CTK_ICON_LOOKUP_FORCE_SVG.
+ * @CTK_ICON_LOOKUP_FORCE_SVG: Get SVG icons, even if gdk-pixbuf
  *   doesn’t support them.
- *   Cannot be used together with %GTK_ICON_LOOKUP_NO_SVG.
- * @GTK_ICON_LOOKUP_USE_BUILTIN: When passed to
+ *   Cannot be used together with %CTK_ICON_LOOKUP_NO_SVG.
+ * @CTK_ICON_LOOKUP_USE_BUILTIN: When passed to
  *   ctk_icon_theme_lookup_icon() includes builtin icons
  *   as well as files. For a builtin icon, ctk_icon_info_get_filename()
  *   is %NULL and you need to call ctk_icon_info_get_builtin_pixbuf().
- * @GTK_ICON_LOOKUP_GENERIC_FALLBACK: Try to shorten icon name at '-'
+ * @CTK_ICON_LOOKUP_GENERIC_FALLBACK: Try to shorten icon name at '-'
  *   characters before looking at inherited themes. This flag is only
  *   supported in functions that take a single icon name. For more general
  *   fallback, see ctk_icon_theme_choose_icon(). Since 2.12.
- * @GTK_ICON_LOOKUP_FORCE_SIZE: Always get the icon scaled to the
+ * @CTK_ICON_LOOKUP_FORCE_SIZE: Always get the icon scaled to the
  *   requested size. Since 2.14.
- * @GTK_ICON_LOOKUP_FORCE_REGULAR: Try to always load regular icons, even
+ * @CTK_ICON_LOOKUP_FORCE_REGULAR: Try to always load regular icons, even
  *   when symbolic icon names are given. Since 3.14.
- * @GTK_ICON_LOOKUP_FORCE_SYMBOLIC: Try to always load symbolic icons, even
+ * @CTK_ICON_LOOKUP_FORCE_SYMBOLIC: Try to always load symbolic icons, even
  *   when regular icon names are given. Since 3.14.
- * @GTK_ICON_LOOKUP_DIR_LTR: Try to load a variant of the icon for left-to-right
+ * @CTK_ICON_LOOKUP_DIR_LTR: Try to load a variant of the icon for left-to-right
  *   text direction. Since 3.14.
- * @GTK_ICON_LOOKUP_DIR_RTL: Try to load a variant of the icon for right-to-left
+ * @CTK_ICON_LOOKUP_DIR_RTL: Try to load a variant of the icon for right-to-left
  *   text direction. Since 3.14.
  * 
  * Used to specify options for ctk_icon_theme_lookup_icon()
  */
 typedef enum
 {
-  GTK_ICON_LOOKUP_NO_SVG           = 1 << 0,
-  GTK_ICON_LOOKUP_FORCE_SVG        = 1 << 1,
-  GTK_ICON_LOOKUP_USE_BUILTIN      = 1 << 2,
-  GTK_ICON_LOOKUP_GENERIC_FALLBACK = 1 << 3,
-  GTK_ICON_LOOKUP_FORCE_SIZE       = 1 << 4,
-  GTK_ICON_LOOKUP_FORCE_REGULAR    = 1 << 5,
-  GTK_ICON_LOOKUP_FORCE_SYMBOLIC   = 1 << 6,
-  GTK_ICON_LOOKUP_DIR_LTR          = 1 << 7,
-  GTK_ICON_LOOKUP_DIR_RTL          = 1 << 8
+  CTK_ICON_LOOKUP_NO_SVG           = 1 << 0,
+  CTK_ICON_LOOKUP_FORCE_SVG        = 1 << 1,
+  CTK_ICON_LOOKUP_USE_BUILTIN      = 1 << 2,
+  CTK_ICON_LOOKUP_GENERIC_FALLBACK = 1 << 3,
+  CTK_ICON_LOOKUP_FORCE_SIZE       = 1 << 4,
+  CTK_ICON_LOOKUP_FORCE_REGULAR    = 1 << 5,
+  CTK_ICON_LOOKUP_FORCE_SYMBOLIC   = 1 << 6,
+  CTK_ICON_LOOKUP_DIR_LTR          = 1 << 7,
+  CTK_ICON_LOOKUP_DIR_RTL          = 1 << 8
 } GtkIconLookupFlags;
 
 /**
- * GTK_ICON_THEME_ERROR:
+ * CTK_ICON_THEME_ERROR:
  *
  * The #GQuark used for #GtkIconThemeError errors.
  */
-#define GTK_ICON_THEME_ERROR ctk_icon_theme_error_quark ()
+#define CTK_ICON_THEME_ERROR ctk_icon_theme_error_quark ()
 
 /**
  * GtkIconThemeError:
- * @GTK_ICON_THEME_NOT_FOUND: The icon specified does not exist in the theme
- * @GTK_ICON_THEME_FAILED: An unspecified error occurred.
+ * @CTK_ICON_THEME_NOT_FOUND: The icon specified does not exist in the theme
+ * @CTK_ICON_THEME_FAILED: An unspecified error occurred.
  * 
  * Error codes for GtkIconTheme operations.
  **/
 typedef enum {
-  GTK_ICON_THEME_NOT_FOUND,
-  GTK_ICON_THEME_FAILED
+  CTK_ICON_THEME_NOT_FOUND,
+  CTK_ICON_THEME_FAILED
 } GtkIconThemeError;
 
 GDK_AVAILABLE_IN_ALL
@@ -373,4 +373,4 @@ const gchar *         ctk_icon_info_get_display_name  (GtkIconInfo    *icon_info
 
 G_END_DECLS
 
-#endif /* __GTK_ICON_THEME_H__ */
+#endif /* __CTK_ICON_THEME_H__ */

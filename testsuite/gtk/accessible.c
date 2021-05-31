@@ -6,13 +6,13 @@ test_type (GType t)
   GtkWidget *w;
   AtkObject *a;
 
-  if (g_type_is_a (t, GTK_TYPE_WIDGET))
+  if (g_type_is_a (t, CTK_TYPE_WIDGET))
     {
       w = (GtkWidget *)g_object_new (t, NULL);
       a = ctk_widget_get_accessible (w);
 
-      g_assert (GTK_IS_ACCESSIBLE (a));
-      g_assert (ctk_accessible_get_widget (GTK_ACCESSIBLE (a)) == w);
+      g_assert (CTK_IS_ACCESSIBLE (a));
+      g_assert (ctk_accessible_get_widget (CTK_ACCESSIBLE (a)) == w);
 
       g_object_unref (w);
     }

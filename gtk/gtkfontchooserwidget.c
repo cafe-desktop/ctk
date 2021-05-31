@@ -235,9 +235,9 @@ static void update_font_features (GtkFontChooserWidget *fontchooser);
 
 static void ctk_font_chooser_widget_iface_init (GtkFontChooserIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkFontChooserWidget, ctk_font_chooser_widget, GTK_TYPE_BOX,
+G_DEFINE_TYPE_WITH_CODE (GtkFontChooserWidget, ctk_font_chooser_widget, CTK_TYPE_BOX,
                          G_ADD_PRIVATE (GtkFontChooserWidget)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_FONT_CHOOSER,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_FONT_CHOOSER,
                                                 ctk_font_chooser_widget_iface_init))
 
 typedef struct _GtkDelayedFontDescription GtkDelayedFontDescription;
@@ -293,7 +293,7 @@ ctk_delayed_font_description_get (GtkDelayedFontDescription *desc)
   return desc->desc;
 }
 
-#define GTK_TYPE_DELAYED_FONT_DESCRIPTION (ctk_delayed_font_description_get_type ())
+#define CTK_TYPE_DELAYED_FONT_DESCRIPTION (ctk_delayed_font_description_get_type ())
 G_DEFINE_BOXED_TYPE (GtkDelayedFontDescription, ctk_delayed_font_description,
                      ctk_delayed_font_description_ref,
                      ctk_delayed_font_description_unref)
@@ -303,26 +303,26 @@ ctk_font_chooser_widget_set_property (GObject         *object,
                                       const GValue    *value,
                                       GParamSpec      *pspec)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (object);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (object);
 
   switch (prop_id)
     {
-    case GTK_FONT_CHOOSER_PROP_FONT:
+    case CTK_FONT_CHOOSER_PROP_FONT:
       ctk_font_chooser_widget_set_font (fontchooser, g_value_get_string (value));
       break;
-    case GTK_FONT_CHOOSER_PROP_FONT_DESC:
+    case CTK_FONT_CHOOSER_PROP_FONT_DESC:
       ctk_font_chooser_widget_take_font_desc (fontchooser, g_value_dup_boxed (value));
       break;
-    case GTK_FONT_CHOOSER_PROP_PREVIEW_TEXT:
+    case CTK_FONT_CHOOSER_PROP_PREVIEW_TEXT:
       ctk_font_chooser_widget_set_preview_text (fontchooser, g_value_get_string (value));
       break;
-    case GTK_FONT_CHOOSER_PROP_SHOW_PREVIEW_ENTRY:
+    case CTK_FONT_CHOOSER_PROP_SHOW_PREVIEW_ENTRY:
       ctk_font_chooser_widget_set_show_preview_entry (fontchooser, g_value_get_boolean (value));
       break;
-    case GTK_FONT_CHOOSER_PROP_LEVEL:
+    case CTK_FONT_CHOOSER_PROP_LEVEL:
       ctk_font_chooser_widget_set_level (fontchooser, g_value_get_flags (value));
       break;
-    case GTK_FONT_CHOOSER_PROP_LANGUAGE:
+    case CTK_FONT_CHOOSER_PROP_LANGUAGE:
       ctk_font_chooser_widget_set_language (fontchooser, g_value_get_string (value));
       break;
     default:
@@ -337,32 +337,32 @@ ctk_font_chooser_widget_get_property (GObject         *object,
                                       GValue          *value,
                                       GParamSpec      *pspec)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (object);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (object);
 
   switch (prop_id)
     {
     case PROP_TWEAK_ACTION:
       g_value_set_object (value, G_OBJECT (fontchooser->priv->tweak_action));
       break;
-    case GTK_FONT_CHOOSER_PROP_FONT:
+    case CTK_FONT_CHOOSER_PROP_FONT:
       g_value_take_string (value, ctk_font_chooser_widget_get_font (fontchooser));
       break;
-    case GTK_FONT_CHOOSER_PROP_FONT_DESC:
+    case CTK_FONT_CHOOSER_PROP_FONT_DESC:
       g_value_set_boxed (value, ctk_font_chooser_widget_get_font_desc (fontchooser));
       break;
-    case GTK_FONT_CHOOSER_PROP_PREVIEW_TEXT:
+    case CTK_FONT_CHOOSER_PROP_PREVIEW_TEXT:
       g_value_set_string (value, ctk_font_chooser_widget_get_preview_text (fontchooser));
       break;
-    case GTK_FONT_CHOOSER_PROP_SHOW_PREVIEW_ENTRY:
+    case CTK_FONT_CHOOSER_PROP_SHOW_PREVIEW_ENTRY:
       g_value_set_boolean (value, ctk_font_chooser_widget_get_show_preview_entry (fontchooser));
       break;
-    case GTK_FONT_CHOOSER_PROP_LEVEL:
+    case CTK_FONT_CHOOSER_PROP_LEVEL:
       g_value_set_flags (value, ctk_font_chooser_widget_get_level (fontchooser));
       break;
-    case GTK_FONT_CHOOSER_PROP_FONT_FEATURES:
+    case CTK_FONT_CHOOSER_PROP_FONT_FEATURES:
       g_value_set_string (value, fontchooser->priv->font_features);
       break;
-    case GTK_FONT_CHOOSER_PROP_LANGUAGE:
+    case CTK_FONT_CHOOSER_PROP_LANGUAGE:
       g_value_set_string (value, pango_language_to_string (fontchooser->priv->language));
       break;
     default:
@@ -374,7 +374,7 @@ ctk_font_chooser_widget_get_property (GObject         *object,
 static void
 ctk_font_chooser_widget_refilter_font_list (GtkFontChooserWidget *fontchooser)
 {
-  ctk_tree_model_filter_refilter (GTK_TREE_MODEL_FILTER (fontchooser->priv->filter_model));
+  ctk_tree_model_filter_refilter (CTK_TREE_MODEL_FILTER (fontchooser->priv->filter_model));
   ctk_font_chooser_widget_ensure_selection (fontchooser);
 }
 
@@ -396,9 +396,9 @@ stop_search_cb (GtkEntry             *entry,
       GtkWidget *dialog;
       GtkWidget *button = NULL;
 
-      dialog = ctk_widget_get_ancestor (GTK_WIDGET (fc), GTK_TYPE_DIALOG);
+      dialog = ctk_widget_get_ancestor (CTK_WIDGET (fc), CTK_TYPE_DIALOG);
       if (dialog)
-        button = ctk_dialog_get_widget_for_response (GTK_DIALOG (dialog), GTK_RESPONSE_CANCEL);
+        button = ctk_dialog_get_widget_for_response (CTK_DIALOG (dialog), CTK_RESPONSE_CANCEL);
 
       if (button)
         ctk_widget_activate (button);
@@ -434,7 +434,7 @@ output_cb (GtkSpinButton *spin,
   adjustment = ctk_spin_button_get_adjustment (spin);
   value = ctk_adjustment_get_value (adjustment);
   text = g_strdup_printf ("%2.4g", value);
-  ctk_entry_set_text (GTK_ENTRY (spin), text);
+  ctk_entry_set_text (CTK_ENTRY (spin), text);
   g_free (text);
 
   return TRUE;
@@ -450,7 +450,7 @@ ctk_font_chooser_widget_update_marks (GtkFontChooserWidget *fontchooser)
   gint i, n_sizes;
   gdouble value, spin_value;
 
-  if (ctk_list_store_iter_is_valid (GTK_LIST_STORE (priv->model), &priv->font_iter))
+  if (ctk_list_store_iter_is_valid (CTK_LIST_STORE (priv->model), &priv->font_iter))
     {
       PangoFontFace *face;
 
@@ -486,11 +486,11 @@ ctk_font_chooser_widget_update_marks (GtkFontChooserWidget *fontchooser)
       sizes = font_sizes;
     }
 
-  ctk_scale_clear_marks (GTK_SCALE (priv->size_slider));
-  ctk_scale_clear_marks (GTK_SCALE (priv->size_slider2));
+  ctk_scale_clear_marks (CTK_SCALE (priv->size_slider));
+  ctk_scale_clear_marks (CTK_SCALE (priv->size_slider2));
 
-  adj        = ctk_range_get_adjustment (GTK_RANGE (priv->size_slider));
-  spin_adj   = ctk_spin_button_get_adjustment (GTK_SPIN_BUTTON (priv->size_spin));
+  adj        = ctk_range_get_adjustment (CTK_RANGE (priv->size_slider));
+  spin_adj   = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (priv->size_spin));
   spin_value = ctk_adjustment_get_value (spin_adj);
 
   if (spin_value < sizes[0])
@@ -513,12 +513,12 @@ ctk_font_chooser_widget_update_marks (GtkFontChooserWidget *fontchooser)
 
   for (i = 0; i < n_sizes; i++)
     {
-      ctk_scale_add_mark (GTK_SCALE (priv->size_slider),
+      ctk_scale_add_mark (CTK_SCALE (priv->size_slider),
                           sizes[i],
-                          GTK_POS_BOTTOM, NULL);
-      ctk_scale_add_mark (GTK_SCALE (priv->size_slider2),
+                          CTK_POS_BOTTOM, NULL);
+      ctk_scale_add_mark (CTK_SCALE (priv->size_slider2),
                           sizes[i],
-                          GTK_POS_BOTTOM, NULL);
+                          CTK_POS_BOTTOM, NULL);
     }
 
   g_free (font_sizes);
@@ -534,7 +534,7 @@ row_activated_cb (GtkTreeView       *view,
   gchar *fontname;
 
   fontname = ctk_font_chooser_widget_get_font (fontchooser);
-  _ctk_font_chooser_font_activated (GTK_FONT_CHOOSER (fontchooser), fontname);
+  _ctk_font_chooser_font_activated (CTK_FONT_CHOOSER (fontchooser), fontname);
   g_free (fontname);
 }
 
@@ -561,7 +561,7 @@ cursor_changed_cb (GtkTreeView *treeview,
 
   ctk_tree_path_free (path);
 
-  ctk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (priv->filter_model),
+  ctk_tree_model_filter_convert_iter_to_child_iter (CTK_TREE_MODEL_FILTER (priv->filter_model),
                                                     &iter,
                                                     &filter_iter);
   ctk_tree_model_get (priv->model, &iter,
@@ -583,7 +583,7 @@ resize_by_scroll_cb (GtkWidget      *scrolled_window,
 {
   GtkFontChooserWidget *fc = user_data;
   GtkFontChooserWidgetPrivate *priv = fc->priv;
-  GtkAdjustment *adj = ctk_spin_button_get_adjustment (GTK_SPIN_BUTTON (priv->size_spin));
+  GtkAdjustment *adj = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (priv->size_spin));
 
   if (event->direction == GDK_SCROLL_UP || event->direction == GDK_SCROLL_RIGHT)
     ctk_adjustment_set_value (adj,
@@ -625,7 +625,7 @@ ctk_font_chooser_widget_update_preview_attributes (GtkFontChooserWidget *fontcho
   if (priv->language)
     pango_attr_list_insert (attrs, pango_attr_language_new (priv->language));
 
-  ctk_entry_set_attributes (GTK_ENTRY (priv->preview), attrs);
+  ctk_entry_set_attributes (CTK_ENTRY (priv->preview), attrs);
   pango_attr_list_unref (attrs);
 }
 
@@ -638,7 +638,7 @@ row_inserted_cb (GtkTreeModel *model,
   GtkFontChooserWidget *fontchooser = user_data;
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
 
-  ctk_stack_set_visible_child_name (GTK_STACK (priv->list_stack), "list");
+  ctk_stack_set_visible_child_name (CTK_STACK (priv->list_stack), "list");
 }
 
 static void
@@ -650,30 +650,30 @@ row_deleted_cb  (GtkTreeModel *model,
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
 
   if (ctk_tree_model_iter_n_children (model, NULL) == 0)
-    ctk_stack_set_visible_child_name (GTK_STACK (priv->list_stack), "empty");
+    ctk_stack_set_visible_child_name (CTK_STACK (priv->list_stack), "empty");
 }
 
 static void
 ctk_font_chooser_widget_map (GtkWidget *widget)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (widget);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (widget);
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
 
-  ctk_entry_set_text (GTK_ENTRY (priv->search_entry), "");
-  ctk_stack_set_visible_child_name (GTK_STACK (priv->stack), "list");
+  ctk_entry_set_text (CTK_ENTRY (priv->search_entry), "");
+  ctk_stack_set_visible_child_name (CTK_STACK (priv->stack), "list");
   g_simple_action_set_state (G_SIMPLE_ACTION (priv->tweak_action), g_variant_new_boolean (FALSE));
 
-  GTK_WIDGET_CLASS (ctk_font_chooser_widget_parent_class)->map (widget);
+  CTK_WIDGET_CLASS (ctk_font_chooser_widget_parent_class)->map (widget);
 }
 
 static void
 ctk_font_chooser_widget_class_init (GtkFontChooserWidgetClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
   GParamSpec *pspec;
 
-  g_type_ensure (GTK_TYPE_DELAYED_FONT_DESCRIPTION);
+  g_type_ensure (CTK_TYPE_DELAYED_FONT_DESCRIPTION);
   g_type_ensure (G_TYPE_THEMED_ICON);
 
   widget_class->screen_changed = ctk_font_chooser_widget_screen_changed;
@@ -751,13 +751,13 @@ change_tweak (GSimpleAction *action,
 
   if (tweak)
     {
-      ctk_entry_grab_focus_without_selecting (GTK_ENTRY (fontchooser->priv->preview2));
-      ctk_stack_set_visible_child_name (GTK_STACK (fontchooser->priv->stack), "tweaks");
+      ctk_entry_grab_focus_without_selecting (CTK_ENTRY (fontchooser->priv->preview2));
+      ctk_stack_set_visible_child_name (CTK_STACK (fontchooser->priv->stack), "tweaks");
     }
   else
     {
-      ctk_entry_grab_focus_without_selecting (GTK_ENTRY (fontchooser->priv->search_entry));
-      ctk_stack_set_visible_child_name (GTK_STACK (fontchooser->priv->stack), "list");
+      ctk_entry_grab_focus_without_selecting (CTK_ENTRY (fontchooser->priv->search_entry));
+      ctk_stack_set_visible_child_name (CTK_STACK (fontchooser->priv->stack), "list");
     }
 
   g_simple_action_set_state (action, state);
@@ -821,7 +821,7 @@ ctk_font_chooser_widget_init (GtkFontChooserWidget *fontchooser)
   fontchooser->priv = ctk_font_chooser_widget_get_instance_private (fontchooser);
   priv = fontchooser->priv;
 
-  ctk_widget_init_template (GTK_WIDGET (fontchooser));
+  ctk_widget_init_template (CTK_WIDGET (fontchooser));
 
 #if defined(HAVE_HARFBUZZ) && defined(HAVE_PANGOFT)
   priv->axes = g_hash_table_new_full (axis_hash, axis_equal, NULL, axis_free);
@@ -831,26 +831,26 @@ ctk_font_chooser_widget_init (GtkFontChooserWidget *fontchooser)
   priv->preview_text = g_strdup (pango_language_get_sample_string (NULL));
   priv->show_preview_entry = TRUE;
   priv->font_desc = pango_font_description_new ();
-  priv->level = GTK_FONT_CHOOSER_LEVEL_FAMILY |
-                GTK_FONT_CHOOSER_LEVEL_STYLE |
-                GTK_FONT_CHOOSER_LEVEL_SIZE;
+  priv->level = CTK_FONT_CHOOSER_LEVEL_FAMILY |
+                CTK_FONT_CHOOSER_LEVEL_STYLE |
+                CTK_FONT_CHOOSER_LEVEL_SIZE;
   priv->language = pango_language_get_default ();
 
   /* Set default preview text */
-  ctk_entry_set_text (GTK_ENTRY (priv->preview), priv->preview_text);
+  ctk_entry_set_text (CTK_ENTRY (priv->preview), priv->preview_text);
 
   ctk_font_chooser_widget_update_preview_attributes (fontchooser);
 
   ctk_widget_add_events (priv->preview, GDK_SCROLL_MASK);
 
   /* Set the upper values of the spin/scale with G_MAXINT / PANGO_SCALE */
-  ctk_spin_button_set_range (GTK_SPIN_BUTTON (priv->size_spin),
+  ctk_spin_button_set_range (CTK_SPIN_BUTTON (priv->size_spin),
                              1.0, (gdouble)(G_MAXINT / PANGO_SCALE));
-  ctk_adjustment_set_upper (ctk_range_get_adjustment (GTK_RANGE (priv->size_slider)),
+  ctk_adjustment_set_upper (ctk_range_get_adjustment (CTK_RANGE (priv->size_slider)),
                             (gdouble)(G_MAXINT / PANGO_SCALE));
 
   /* Setup treeview/model auxilary functions */
-  ctk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (priv->filter_model),
+  ctk_tree_model_filter_set_visible_func (CTK_TREE_MODEL_FILTER (priv->filter_model),
                                           visible_func, (gpointer)priv, NULL);
 
   ctk_tree_view_column_set_cell_data_func (priv->family_face_column,
@@ -883,7 +883,7 @@ ctk_font_chooser_widget_init (GtkFontChooserWidget *fontchooser)
 GtkWidget *
 ctk_font_chooser_widget_new (void)
 {
-  return g_object_new (GTK_TYPE_FONT_CHOOSER_WIDGET, NULL);
+  return g_object_new (CTK_TYPE_FONT_CHOOSER_WIDGET, NULL);
 }
 
 static int
@@ -908,7 +908,7 @@ ctk_font_chooser_widget_load_fonts (GtkFontChooserWidget *fontchooser,
   gboolean need_reload;
   PangoFontMap *font_map;
 
-  g_object_get (ctk_widget_get_settings (GTK_WIDGET (fontchooser)),
+  g_object_get (ctk_widget_get_settings (CTK_WIDGET (fontchooser)),
                 "gtk-fontconfig-timestamp", &fontconfig_timestamp,
                 NULL);
 
@@ -924,7 +924,7 @@ ctk_font_chooser_widget_load_fonts (GtkFontChooserWidget *fontchooser,
   if (!need_reload && !force)
     return;
 
-  list_store = GTK_LIST_STORE (priv->model);
+  list_store = CTK_LIST_STORE (priv->model);
 
   if (priv->font_map)
     font_map = priv->font_map;
@@ -944,7 +944,7 @@ ctk_font_chooser_widget_load_fonts (GtkFontChooserWidget *fontchooser,
       GtkTreeIter     iter;
       const gchar    *fam_name = pango_font_family_get_name (families[i]);
 
-      if ((priv->level & GTK_FONT_CHOOSER_LEVEL_STYLE) == 0)
+      if ((priv->level & CTK_FONT_CHOOSER_LEVEL_STYLE) == 0)
         {
           GtkDelayedFontDescription *desc;
           PangoFontFace *face;
@@ -1052,7 +1052,7 @@ visible_func (GtkTreeModel *model,
     }
 
   /* If there's no filter string we show the item */
-  search_text = ctk_entry_get_text (GTK_ENTRY (priv->search_entry));
+  search_text = ctk_entry_get_text (CTK_ENTRY (priv->search_entry));
   if (strlen (search_text) == 0)
     return TRUE;
 
@@ -1182,7 +1182,7 @@ ctk_font_chooser_widget_set_cell_size (GtkFontChooserWidget *fontchooser)
 static void
 ctk_font_chooser_widget_finalize (GObject *object)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (object);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (object);
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
 
   if (priv->font_desc)
@@ -1276,11 +1276,11 @@ static void
 ctk_font_chooser_widget_screen_changed (GtkWidget *widget,
                                         GdkScreen *previous_screen)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (widget);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (widget);
   GtkSettings *settings;
 
-  if (GTK_WIDGET_CLASS (ctk_font_chooser_widget_parent_class)->screen_changed)
-    GTK_WIDGET_CLASS (ctk_font_chooser_widget_parent_class)->screen_changed (widget, previous_screen);
+  if (CTK_WIDGET_CLASS (ctk_font_chooser_widget_parent_class)->screen_changed)
+    CTK_WIDGET_CLASS (ctk_font_chooser_widget_parent_class)->screen_changed (widget, previous_screen);
 
   if (previous_screen)
     {
@@ -1303,11 +1303,11 @@ ctk_font_chooser_widget_screen_changed (GtkWidget *widget,
 static PangoFontFamily *
 ctk_font_chooser_widget_get_family (GtkFontChooser *chooser)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (chooser);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (chooser);
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
   PangoFontFamily *family;
 
-  if (!ctk_list_store_iter_is_valid (GTK_LIST_STORE (priv->model), &priv->font_iter))
+  if (!ctk_list_store_iter_is_valid (CTK_LIST_STORE (priv->model), &priv->font_iter))
     return NULL;
 
   ctk_tree_model_get (priv->model, &priv->font_iter,
@@ -1321,11 +1321,11 @@ ctk_font_chooser_widget_get_family (GtkFontChooser *chooser)
 static PangoFontFace *
 ctk_font_chooser_widget_get_face (GtkFontChooser *chooser)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (chooser);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (chooser);
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
   PangoFontFace *face;
 
-  if (!ctk_list_store_iter_is_valid (GTK_LIST_STORE (priv->model), &priv->font_iter))
+  if (!ctk_list_store_iter_is_valid (CTK_LIST_STORE (priv->model), &priv->font_iter))
     return NULL;
 
   ctk_tree_model_get (priv->model, &priv->font_iter,
@@ -1339,7 +1339,7 @@ ctk_font_chooser_widget_get_face (GtkFontChooser *chooser)
 static gint
 ctk_font_chooser_widget_get_size (GtkFontChooser *chooser)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (chooser);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (chooser);
   PangoFontDescription *desc = ctk_font_chooser_widget_get_font_desc (fontchooser);
 
   if (desc)
@@ -1365,7 +1365,7 @@ ctk_font_chooser_widget_get_font_desc (GtkFontChooserWidget *fontchooser)
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
   GtkTreeSelection *selection;
 
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->family_face_list));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->family_face_list));
   if (ctk_tree_selection_count_selected_rows (selection) > 0)
     return fontchooser->priv->font_desc;
 
@@ -1413,16 +1413,16 @@ ctk_font_chooser_widget_update_font_name (GtkFontChooserWidget *fontchooser,
   g_object_unref (face);
   ctk_delayed_font_description_unref (desc);
 
-  if (priv->level == GTK_FONT_CHOOSER_LEVEL_FAMILY)
+  if (priv->level == CTK_FONT_CHOOSER_LEVEL_FAMILY)
     title = g_strdup (fam_name);
   else
     title = g_strconcat (fam_name, " ", face_name, NULL);
 
   attrs = ctk_font_chooser_widget_get_preview_attributes (fontchooser, font_desc);
-  ctk_label_set_attributes (GTK_LABEL (priv->font_name_label), attrs);
+  ctk_label_set_attributes (CTK_LABEL (priv->font_name_label), attrs);
   pango_attr_list_unref (attrs);
 
-  ctk_label_set_label (GTK_LABEL (priv->font_name_label), title);
+  ctk_label_set_label (CTK_LABEL (priv->font_name_label), title);
   g_free (title);
 }
 
@@ -1454,18 +1454,18 @@ ctk_font_chooser_widget_ensure_selection (GtkFontChooserWidget *fontchooser)
   GtkTreeSelection *selection;
   GtkTreeIter filter_iter;
   
-  selection = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->family_face_list));
+  selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->family_face_list));
 
-  if (ctk_list_store_iter_is_valid (GTK_LIST_STORE (priv->model), &priv->font_iter) &&
-      ctk_tree_model_filter_convert_child_iter_to_iter (GTK_TREE_MODEL_FILTER (priv->filter_model),
+  if (ctk_list_store_iter_is_valid (CTK_LIST_STORE (priv->model), &priv->font_iter) &&
+      ctk_tree_model_filter_convert_child_iter_to_iter (CTK_TREE_MODEL_FILTER (priv->filter_model),
                                                         &filter_iter,
                                                         &priv->font_iter))
     {
-      GtkTreePath *path = ctk_tree_model_get_path (GTK_TREE_MODEL (priv->filter_model),
+      GtkTreePath *path = ctk_tree_model_get_path (CTK_TREE_MODEL (priv->filter_model),
                                                    &filter_iter);
 
       ctk_tree_selection_select_iter (selection, &filter_iter);
-      ctk_tree_view_scroll_to_cell (GTK_TREE_VIEW (priv->family_face_list),
+      ctk_tree_view_scroll_to_cell (CTK_TREE_VIEW (priv->family_face_list),
                                     path, NULL, FALSE, 0.0, 0.0);
       ctk_tree_path_free (path);
     }
@@ -1511,7 +1511,7 @@ static void
 adjustment_changed (GtkAdjustment *adjustment,
                     Axis          *axis)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (axis->fontchooser);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (axis->fontchooser);
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
   PangoFontDescription *font_desc;
   GString *s;
@@ -1574,7 +1574,7 @@ add_axis (GtkFontChooserWidget *fontchooser,
 
   axis = g_new (Axis, 1);
   axis->tag = ax->tag;
-  axis->fontchooser = GTK_WIDGET (fontchooser);
+  axis->fontchooser = CTK_WIDGET (fontchooser);
 
   name = ax->name;
   for (i = 0; i < G_N_ELEMENTS (axis_names); i++)
@@ -1587,26 +1587,26 @@ add_axis (GtkFontChooserWidget *fontchooser,
     }
   axis->label = ctk_label_new (name);
   ctk_widget_show (axis->label);
-  ctk_widget_set_halign (axis->label, GTK_ALIGN_START);
-  ctk_widget_set_valign (axis->label, GTK_ALIGN_BASELINE);
-  ctk_grid_attach (GTK_GRID (priv->axis_grid), axis->label, 0, row, 1, 1);
+  ctk_widget_set_halign (axis->label, CTK_ALIGN_START);
+  ctk_widget_set_valign (axis->label, CTK_ALIGN_BASELINE);
+  ctk_grid_attach (CTK_GRID (priv->axis_grid), axis->label, 0, row, 1, 1);
   axis->adjustment = ctk_adjustment_new ((double)FixedToFloat(value),
                                          (double)FixedToFloat(ax->minimum),
                                          (double)FixedToFloat(ax->maximum),
                                          1.0, 10.0, 0.0);
-  axis->scale = ctk_scale_new (GTK_ORIENTATION_HORIZONTAL, axis->adjustment);
+  axis->scale = ctk_scale_new (CTK_ORIENTATION_HORIZONTAL, axis->adjustment);
   ctk_widget_show (axis->scale);
-  ctk_scale_add_mark (GTK_SCALE (axis->scale), (double)FixedToFloat(ax->def), GTK_POS_TOP, NULL);
-  ctk_widget_set_valign (axis->scale, GTK_ALIGN_BASELINE);
+  ctk_scale_add_mark (CTK_SCALE (axis->scale), (double)FixedToFloat(ax->def), CTK_POS_TOP, NULL);
+  ctk_widget_set_valign (axis->scale, CTK_ALIGN_BASELINE);
   ctk_widget_set_hexpand (axis->scale, TRUE);
   ctk_widget_set_size_request (axis->scale, 100, -1);
-  ctk_scale_set_draw_value (GTK_SCALE (axis->scale), FALSE);
-  ctk_grid_attach (GTK_GRID (priv->axis_grid), axis->scale, 1, row, 1, 1);
+  ctk_scale_set_draw_value (CTK_SCALE (axis->scale), FALSE);
+  ctk_grid_attach (CTK_GRID (priv->axis_grid), axis->scale, 1, row, 1, 1);
   axis->spin = ctk_spin_button_new (axis->adjustment, 0, 0);
   ctk_widget_show (axis->spin);
   g_signal_connect (axis->spin, "output", G_CALLBACK (output_cb), fontchooser);
-  ctk_widget_set_valign (axis->spin, GTK_ALIGN_BASELINE);
-  ctk_grid_attach (GTK_GRID (priv->axis_grid), axis->spin, 2, row, 1, 1);
+  ctk_widget_set_valign (axis->spin, CTK_ALIGN_BASELINE);
+  ctk_grid_attach (CTK_GRID (priv->axis_grid), axis->spin, 2, row, 1, 1);
 
   g_hash_table_add (priv->axes, axis);
 
@@ -1640,10 +1640,10 @@ ctk_font_chooser_widget_update_font_variations (GtkFontChooserWidget *fontchoose
   g_hash_table_foreach (priv->axes, axis_remove, NULL);
   g_hash_table_remove_all (priv->axes);
 
-  if ((priv->level & GTK_FONT_CHOOSER_LEVEL_VARIATIONS) == 0)
+  if ((priv->level & CTK_FONT_CHOOSER_LEVEL_VARIATIONS) == 0)
     return FALSE;
 
-  pango_font = pango_context_load_font (ctk_widget_get_pango_context (GTK_WIDGET (fontchooser)),
+  pango_font = pango_context_load_font (ctk_widget_get_pango_context (CTK_WIDGET (fontchooser)),
                                         priv->font_desc);
   ft_face = pango_fc_font_lock_face (PANGO_FC_FONT (pango_font));
 
@@ -1771,10 +1771,10 @@ set_inconsistent (GtkCheckButton *button,
                   gboolean        inconsistent)
 {
   if (inconsistent)
-    ctk_widget_set_state_flags (GTK_WIDGET (button), GTK_STATE_FLAG_INCONSISTENT, FALSE);
+    ctk_widget_set_state_flags (CTK_WIDGET (button), CTK_STATE_FLAG_INCONSISTENT, FALSE);
   else
-    ctk_widget_unset_state_flags (GTK_WIDGET (button), GTK_STATE_FLAG_INCONSISTENT);
-//  ctk_widget_set_opacity (ctk_widget_get_first_child (GTK_WIDGET (button)), inconsistent ? 0.0 : 1.0);
+    ctk_widget_unset_state_flags (CTK_WIDGET (button), CTK_STATE_FLAG_INCONSISTENT);
+//  ctk_widget_set_opacity (ctk_widget_get_first_child (CTK_WIDGET (button)), inconsistent ? 0.0 : 1.0);
 }
 
 static void
@@ -1783,10 +1783,10 @@ feat_clicked (GtkWidget *feat,
 {
   g_signal_handlers_block_by_func (feat, feat_clicked, NULL);
 
-  if (ctk_widget_get_state_flags (feat) & GTK_STATE_FLAG_INCONSISTENT)
+  if (ctk_widget_get_state_flags (feat) & CTK_STATE_FLAG_INCONSISTENT)
     {
-      set_inconsistent (GTK_CHECK_BUTTON (feat), FALSE);
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (feat), TRUE);
+      set_inconsistent (CTK_CHECK_BUTTON (feat), FALSE);
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (feat), TRUE);
     }
 
   g_signal_handlers_unblock_by_func (feat, feat_clicked, NULL);
@@ -1801,8 +1801,8 @@ feat_pressed (GtkGesture *gesture,
 {
   gboolean inconsistent;
 
-  inconsistent = (ctk_widget_get_state_flags (feat) & GTK_STATE_FLAG_INCONSISTENT) != 0;
-  set_inconsistent (GTK_CHECK_BUTTON (feat), !inconsistent);
+  inconsistent = (ctk_widget_get_state_flags (feat) & CTK_STATE_FLAG_INCONSISTENT) != 0;
+  set_inconsistent (CTK_CHECK_BUTTON (feat), !inconsistent);
 }
 
 static char *
@@ -1918,8 +1918,8 @@ update_feature_example (FeatureItem          *item,
       attr = pango_attr_font_features_new (str);
       pango_attr_list_insert (attrs, attr);
 
-      ctk_label_set_text (GTK_LABEL (item->example), "0123456789");
-      ctk_label_set_attributes (GTK_LABEL (item->example), attrs);
+      ctk_label_set_text (CTK_LABEL (item->example), "0123456789");
+      ctk_label_set_attributes (CTK_LABEL (item->example), attrs);
 
       pango_attr_list_unref (attrs);
     }
@@ -1967,14 +1967,14 @@ update_feature_example (FeatureItem          *item,
           attr->end_index = attr->start_index + strlen (input);
           pango_attr_list_insert (attrs, attr);
 
-          ctk_label_set_text (GTK_LABEL (item->example), text);
-          ctk_label_set_attributes (GTK_LABEL (item->example), attrs);
+          ctk_label_set_text (CTK_LABEL (item->example), text);
+          ctk_label_set_attributes (CTK_LABEL (item->example), attrs);
 
           g_free (text);
           pango_attr_list_unref (attrs);
         }
       else
-        ctk_label_set_markup (GTK_LABEL (item->example), "");
+        ctk_label_set_markup (CTK_LABEL (item->example), "");
       g_free (input);
     }
 }
@@ -1990,20 +1990,20 @@ add_check_group (GtkFontChooserWidget *fontchooser,
   PangoAttrList *attrs;
   int i;
 
-  group = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  group = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   ctk_widget_show (group);
-  ctk_widget_set_halign (group, GTK_ALIGN_FILL);
+  ctk_widget_set_halign (group, CTK_ALIGN_FILL);
 
   label = ctk_label_new (title);
   ctk_widget_show (label);
-  ctk_label_set_xalign (GTK_LABEL (label), 0.0);
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
+  ctk_label_set_xalign (CTK_LABEL (label), 0.0);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
   g_object_set (label, "margin-top", 10, "margin-bottom", 10, NULL);
   attrs = pango_attr_list_new ();
   pango_attr_list_insert (attrs, pango_attr_weight_new (PANGO_WEIGHT_BOLD));
-  ctk_label_set_attributes (GTK_LABEL (label), attrs);
+  ctk_label_set_attributes (CTK_LABEL (label), attrs);
   pango_attr_list_unref (attrs);
-  ctk_container_add (GTK_CONTAINER (group), label);
+  ctk_container_add (CTK_CONTAINER (group), label);
 
   for (i = 0; tags[i]; i++)
     {
@@ -2018,7 +2018,7 @@ add_check_group (GtkFontChooserWidget *fontchooser,
 
       feat = ctk_check_button_new_with_label (get_feature_display_name (tag));
       ctk_widget_show (feat);
-      set_inconsistent (GTK_CHECK_BUTTON (feat), TRUE);
+      set_inconsistent (CTK_CHECK_BUTTON (feat), TRUE);
       g_signal_connect_swapped (feat, "notify::active", G_CALLBACK (update_font_features), fontchooser);
       g_signal_connect_swapped (feat, "notify::inconsistent", G_CALLBACK (update_font_features), fontchooser);
       g_signal_connect (feat, "clicked", G_CALLBACK (feat_clicked), NULL);
@@ -2026,20 +2026,20 @@ add_check_group (GtkFontChooserWidget *fontchooser,
       gesture = ctk_gesture_multi_press_new (feat);
       g_object_set_data_full (G_OBJECT (feat), "press", gesture, g_object_unref);
 
-      ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (gesture), GDK_BUTTON_SECONDARY);
+      ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (gesture), GDK_BUTTON_SECONDARY);
       g_signal_connect (gesture, "pressed", G_CALLBACK (feat_pressed), feat);
 
       example = ctk_label_new ("");
       ctk_widget_show (example);
-      ctk_label_set_selectable (GTK_LABEL (example), TRUE);
-      ctk_widget_set_halign (example, GTK_ALIGN_START);
+      ctk_label_set_selectable (CTK_LABEL (example), TRUE);
+      ctk_widget_set_halign (example, CTK_ALIGN_START);
 
-      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+      box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
       ctk_widget_show (box);
-      ctk_box_set_homogeneous (GTK_BOX (box), TRUE);
-      ctk_container_add (GTK_CONTAINER (box), feat);
-      ctk_container_add (GTK_CONTAINER (box), example);
-      ctk_container_add (GTK_CONTAINER (group), box);
+      ctk_box_set_homogeneous (CTK_BOX (box), TRUE);
+      ctk_container_add (CTK_CONTAINER (box), feat);
+      ctk_container_add (CTK_CONTAINER (box), example);
+      ctk_container_add (CTK_CONTAINER (group), box);
 
       item = g_new (FeatureItem, 1);
       item->name = tags[i];
@@ -2051,7 +2051,7 @@ add_check_group (GtkFontChooserWidget *fontchooser,
       priv->feature_items = g_list_prepend (priv->feature_items, item);
     }
 
-  ctk_container_add (GTK_CONTAINER (priv->feature_box), group);
+  ctk_container_add (CTK_CONTAINER (priv->feature_box), group);
 }
 
 static void
@@ -2066,20 +2066,20 @@ add_radio_group (GtkFontChooserWidget *fontchooser,
   GtkWidget *group_button = NULL;
   PangoAttrList *attrs;
 
-  group = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+  group = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   ctk_widget_show (group);
-  ctk_widget_set_halign (group, GTK_ALIGN_FILL);
+  ctk_widget_set_halign (group, CTK_ALIGN_FILL);
 
   label = ctk_label_new (title);
   ctk_widget_show (label);
-  ctk_label_set_xalign (GTK_LABEL (label), 0.0);
-  ctk_widget_set_halign (label, GTK_ALIGN_START);
+  ctk_label_set_xalign (CTK_LABEL (label), 0.0);
+  ctk_widget_set_halign (label, CTK_ALIGN_START);
   g_object_set (label, "margin-top", 10, "margin-bottom", 10, NULL);
   attrs = pango_attr_list_new ();
   pango_attr_list_insert (attrs, pango_attr_weight_new (PANGO_WEIGHT_BOLD));
-  ctk_label_set_attributes (GTK_LABEL (label), attrs);
+  ctk_label_set_attributes (CTK_LABEL (label), attrs);
   pango_attr_list_unref (attrs);
-  ctk_container_add (GTK_CONTAINER (group), label);
+  ctk_container_add (CTK_CONTAINER (group), label);
 
   for (i = 0; tags[i]; i++)
     {
@@ -2093,7 +2093,7 @@ add_radio_group (GtkFontChooserWidget *fontchooser,
       tag = hb_tag_from_string (tags[i], -1);
       name = get_feature_display_name (tag);
 
-      feat = ctk_radio_button_new_with_label_from_widget (GTK_RADIO_BUTTON (group_button),
+      feat = ctk_radio_button_new_with_label_from_widget (CTK_RADIO_BUTTON (group_button),
                                                           name ? name : _("Default"));
       ctk_widget_show (feat);
       if (group_button == NULL)
@@ -2104,15 +2104,15 @@ add_radio_group (GtkFontChooserWidget *fontchooser,
 
       example = ctk_label_new ("");
       ctk_widget_show (example);
-      ctk_label_set_selectable (GTK_LABEL (example), TRUE);
-      ctk_widget_set_halign (example, GTK_ALIGN_START);
+      ctk_label_set_selectable (CTK_LABEL (example), TRUE);
+      ctk_widget_set_halign (example, CTK_ALIGN_START);
 
-      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+      box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
       ctk_widget_show (box);
-      ctk_box_set_homogeneous (GTK_BOX (box), TRUE);
-      ctk_container_add (GTK_CONTAINER (box), feat);
-      ctk_container_add (GTK_CONTAINER (box), example);
-      ctk_container_add (GTK_CONTAINER (group), box);
+      ctk_box_set_homogeneous (CTK_BOX (box), TRUE);
+      ctk_container_add (CTK_CONTAINER (box), feat);
+      ctk_container_add (CTK_CONTAINER (box), example);
+      ctk_container_add (CTK_CONTAINER (group), box);
 
       item = g_new (FeatureItem, 1);
       item->name = tags[i];
@@ -2124,7 +2124,7 @@ add_radio_group (GtkFontChooserWidget *fontchooser,
       priv->feature_items = g_list_prepend (priv->feature_items, item);
     }
 
-  ctk_container_add (GTK_CONTAINER (priv->feature_box), group);
+  ctk_container_add (CTK_CONTAINER (priv->feature_box), group);
 }
 
 static void
@@ -2173,10 +2173,10 @@ ctk_font_chooser_widget_update_font_features (GtkFontChooserWidget *fontchooser)
       ctk_widget_hide (ctk_widget_get_parent (item->top));
     }
 
-  if ((priv->level & GTK_FONT_CHOOSER_LEVEL_FEATURES) == 0)
+  if ((priv->level & CTK_FONT_CHOOSER_LEVEL_FEATURES) == 0)
     return FALSE;
 
-  pango_font = pango_context_load_font (ctk_widget_get_pango_context (GTK_WIDGET (fontchooser)),
+  pango_font = pango_context_load_font (ctk_widget_get_pango_context (CTK_WIDGET (fontchooser)),
                                         priv->font_desc);
   ft_face = pango_fc_font_lock_face (PANGO_FC_FONT (pango_font)),
   hb_font = hb_ft_font_create (ft_face, NULL);
@@ -2223,14 +2223,14 @@ ctk_font_chooser_widget_update_font_features (GtkFontChooserWidget *fontchooser)
 
               update_feature_example (item, hb_face, script_tag, lang_tag, priv->font_desc);
 
-              if (GTK_IS_RADIO_BUTTON (item->feat))
+              if (CTK_IS_RADIO_BUTTON (item->feat))
                 {
-                  GtkWidget *def = GTK_WIDGET (g_object_get_data (G_OBJECT (item->feat), "default"));
+                  GtkWidget *def = CTK_WIDGET (g_object_get_data (G_OBJECT (item->feat), "default"));
                   ctk_widget_show (ctk_widget_get_parent (def));
                 }
-              else if (GTK_IS_CHECK_BUTTON (item->feat))
+              else if (CTK_IS_CHECK_BUTTON (item->feat))
                 {
-                  set_inconsistent (GTK_CHECK_BUTTON (item->feat), TRUE);
+                  set_inconsistent (CTK_CHECK_BUTTON (item->feat), TRUE);
                 }
             }
         }
@@ -2260,22 +2260,22 @@ update_font_features (GtkFontChooserWidget *fontchooser)
       if (!ctk_widget_is_sensitive (item->feat))
         continue;
 
-      if (GTK_IS_RADIO_BUTTON (item->feat))
+      if (CTK_IS_RADIO_BUTTON (item->feat))
         {
-          if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (item->feat)) &&
+          if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (item->feat)) &&
               strcmp (item->name, "xxxx") != 0)
             {
               g_string_append_printf (s, "%s\"%s\" %d", s->len > 0 ? ", " : "", item->name, 1);
             }
         }
-      else if (GTK_IS_CHECK_BUTTON (item->feat))
+      else if (CTK_IS_CHECK_BUTTON (item->feat))
         {
-          if (ctk_widget_get_state_flags (item->feat) & GTK_STATE_FLAG_INCONSISTENT)
+          if (ctk_widget_get_state_flags (item->feat) & CTK_STATE_FLAG_INCONSISTENT)
             continue;
 
           g_string_append_printf (s, "%s\"%s\" %d",
                                   s->len > 0 ? ", " : "", item->name,
-                                  ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (item->feat)));
+                                  ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (item->feat)));
         }
     }
 
@@ -2318,8 +2318,8 @@ ctk_font_chooser_widget_merge_font_desc (GtkFontChooserWidget       *fontchooser
       double font_size = (double) pango_font_description_get_size (priv->font_desc) / PANGO_SCALE;
       /* XXX: This clamps, which can cause it to reloop into here, do we need
        * to block its signal handler? */
-      ctk_range_set_value (GTK_RANGE (priv->size_slider), font_size);
-      ctk_spin_button_set_value (GTK_SPIN_BUTTON (priv->size_spin), font_size);
+      ctk_range_set_value (CTK_RANGE (priv->size_slider), font_size);
+      ctk_spin_button_set_value (CTK_SPIN_BUTTON (priv->size_spin), font_size);
     }
   if (mask & (PANGO_FONT_MASK_FAMILY | PANGO_FONT_MASK_STYLE | PANGO_FONT_MASK_VARIANT |
               PANGO_FONT_MASK_WEIGHT | PANGO_FONT_MASK_STRETCH))
@@ -2362,7 +2362,7 @@ ctk_font_chooser_widget_take_font_desc (GtkFontChooserWidget *fontchooser,
   PangoFontMask mask;
 
   if (font_desc == NULL)
-    font_desc = pango_font_description_from_string (GTK_FONT_CHOOSER_DEFAULT_FONT_NAME);
+    font_desc = pango_font_description_from_string (CTK_FONT_CHOOSER_DEFAULT_FONT_NAME);
 
   mask = pango_font_description_get_set_fields (font_desc);
   if (mask & (PANGO_FONT_MASK_FAMILY | PANGO_FONT_MASK_STYLE | PANGO_FONT_MASK_VARIANT |
@@ -2398,7 +2398,7 @@ ctk_font_chooser_widget_set_preview_text (GtkFontChooserWidget *fontchooser,
   g_free (priv->preview_text);
   priv->preview_text = g_strdup (text);
 
-  ctk_entry_set_text (GTK_ENTRY (priv->preview), text);
+  ctk_entry_set_text (CTK_ENTRY (priv->preview), text);
 
   g_object_notify (G_OBJECT (fontchooser), "preview-text");
 
@@ -2436,7 +2436,7 @@ static void
 ctk_font_chooser_widget_set_font_map (GtkFontChooser *chooser,
                                       PangoFontMap   *fontmap)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (chooser);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (chooser);
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
 
   if (g_set_object (&priv->font_map, fontmap))
@@ -2459,7 +2459,7 @@ ctk_font_chooser_widget_set_font_map (GtkFontChooser *chooser,
 static PangoFontMap *
 ctk_font_chooser_widget_get_font_map (GtkFontChooser *chooser)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (chooser);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (chooser);
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
 
   return priv->font_map;
@@ -2471,7 +2471,7 @@ ctk_font_chooser_widget_set_filter_func (GtkFontChooser  *chooser,
                                          gpointer          data,
                                          GDestroyNotify    destroy)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (chooser);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (chooser);
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
 
   if (priv->filter_data_destroy)
@@ -2495,7 +2495,7 @@ ctk_font_chooser_widget_set_level (GtkFontChooserWidget *fontchooser,
 
   priv->level = level;
 
-  if ((level & GTK_FONT_CHOOSER_LEVEL_SIZE) != 0)
+  if ((level & CTK_FONT_CHOOSER_LEVEL_SIZE) != 0)
     {
       ctk_widget_show (priv->size_slider);
       ctk_widget_show (priv->size_spin);
@@ -2553,15 +2553,15 @@ gboolean
 ctk_font_chooser_widget_handle_event (GtkWidget   *widget,
                                       GdkEventKey *key_event)
 {
-  GtkFontChooserWidget *fontchooser = GTK_FONT_CHOOSER_WIDGET (widget);
+  GtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (widget);
   GtkFontChooserWidgetPrivate *priv = fontchooser->priv;
   GdkEvent *event = (GdkEvent *)key_event;
 
-  return ctk_search_entry_handle_event (GTK_SEARCH_ENTRY (priv->search_entry), event);
+  return ctk_search_entry_handle_event (CTK_SEARCH_ENTRY (priv->search_entry), event);
 }
 
 GAction *
 ctk_font_chooser_widget_get_tweak_action (GtkWidget *widget)
 {
-  return GTK_FONT_CHOOSER_WIDGET (widget)->priv->tweak_action;
+  return CTK_FONT_CHOOSER_WIDGET (widget)->priv->tweak_action;
 }

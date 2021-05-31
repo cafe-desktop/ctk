@@ -403,10 +403,10 @@ msgstr "Важно је"
 #: gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Да ли се акција сматра важном. Ако је постављено, посредници за ставке "
-"алатки ове акције приказују текст у режиму GTK_TOOLBAR_BOTH_HORIZ."
+"алатки ове акције приказују текст у режиму CTK_TOOLBAR_BOTH_HORIZ."
 
 #: gtk/gtkaction.c:374
 msgid "Hide if empty"
@@ -955,7 +955,7 @@ msgstr "Размак подразумјеваних"
 
 #: gtk/gtkbutton.c:461
 #, fuzzy
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "Размак који треба додати за „подразумјеване“ дугмиће"
 
 #: gtk/gtkbutton.c:475
@@ -965,7 +965,7 @@ msgstr "Размак око подразумјеваних"
 #: gtk/gtkbutton.c:476
 #, fuzzy
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr "Размак који треба додати увијек око подразумјеваних дугмића"
 
@@ -6486,10 +6486,10 @@ msgstr "Размак између корачница и клизача"
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Да ли се ставка алатки сматра важном. Ако је постављено, дугмад алатке "
-"приказују и текст у режиму GTK_TOOLBAR_BOTH_HORIZ"
+"приказују и текст у режиму CTK_TOOLBAR_BOTH_HORIZ"
 
 #: gtk/gtktoolitemgroup.c:1572
 #, fuzzy

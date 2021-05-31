@@ -678,8 +678,8 @@ msgstr "مۇھىم"
 #: ../gtk/gtkaction.c:364
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
-msgstr "بۇ مەشغۇلات مۇھىممۇ ئەمەسمۇ. TRUE بولغاندا بۇ مەشغۇلاتقا ماس كەلگەن قورال بالداق تۈرلىرى GTK_TOOLBAR_BOTH_HORIZ ھالىتىدە تېكىستنى كۆرسىتىدۇ."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
+msgstr "بۇ مەشغۇلات مۇھىممۇ ئەمەسمۇ. TRUE بولغاندا بۇ مەشغۇلاتقا ماس كەلگەن قورال بالداق تۈرلىرى CTK_TOOLBAR_BOTH_HORIZ ھالىتىدە تېكىستنى كۆرسىتىدۇ."
 
 #: ../gtk/gtkaction.c:372
 msgid "Hide if empty"
@@ -1327,8 +1327,8 @@ msgid "Default Spacing"
 msgstr "كۆڭۈلدىكى ئارىلىق"
 
 #: ../gtk/gtkbutton.c:477
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "GTK_CAN_DEFAULT توپچىغا قوشقان زىيادە بوشلۇق"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "CTK_CAN_DEFAULT توپچىغا قوشقان زىيادە بوشلۇق"
 
 #: ../gtk/gtkbutton.c:491
 msgid "Default Outside Spacing"
@@ -1336,9 +1336,9 @@ msgstr "كۆڭۈلدىكى توپچىنىڭ چۆرىسىدىكى ئارىلىق"
 
 #: ../gtk/gtkbutton.c:492
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
-msgstr "GTK_CAN_DEFAULT توپچىنىڭ قىرىنىڭ سىرتىدا زىيادە قوشىدىغان ئارىلىق"
+msgstr "CTK_CAN_DEFAULT توپچىنىڭ قىرىنىڭ سىرتىدا زىيادە قوشىدىغان ئارىلىق"
 
 #: ../gtk/gtkbutton.c:497
 msgid "Child X Displacement"
@@ -6862,8 +6862,8 @@ msgstr "سىنبەلگە ۋە ئەن ئارىسىدىكى پىكسېل بىلە�
 #: ../gtk/gtktoolitem.c:206
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
-msgstr "GTK_TOOLBAR_BOTH_HORIZ ھالىتىدە قورال بالداق تۈرى مۇھىممۇ ئەمەسمۇ. ئەگەر TRUE بولسا ئۇنداقتا قورال بالداقتىكى توپچا تېكىستنى GTK_TOOLBAR_BOTH_HORIZ ھالىتىدە كۆرسىتىدۇ."
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
+msgstr "CTK_TOOLBAR_BOTH_HORIZ ھالىتىدە قورال بالداق تۈرى مۇھىممۇ ئەمەسمۇ. ئەگەر TRUE بولسا ئۇنداقتا قورال بالداقتىكى توپچا تېكىستنى CTK_TOOLBAR_BOTH_HORIZ ھالىتىدە كۆرسىتىدۇ."
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

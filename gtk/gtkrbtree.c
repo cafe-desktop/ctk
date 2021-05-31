@@ -43,7 +43,7 @@ static void        _ctk_rbtree_debug_spew         (GtkRBTree  *tree,
 #endif
 
 static const GtkRBNode nil = {
-  /* .flags = */ GTK_RBNODE_BLACK,
+  /* .flags = */ CTK_RBNODE_BLACK,
 
   /* rest is NULL */
 };
@@ -63,7 +63,7 @@ _ctk_rbnode_new (GtkRBTree *tree,
   node->left = (GtkRBNode *) &nil;
   node->right = (GtkRBNode *) &nil;
   node->parent = (GtkRBNode *) &nil;
-  node->flags = GTK_RBNODE_RED;
+  node->flags = CTK_RBNODE_RED;
   node->total_count = 1;
   node->count = 1;
   node->children = NULL;
@@ -75,7 +75,7 @@ static void
 _ctk_rbnode_free (GtkRBNode *node)
 {
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     {
       node->left = (gpointer) 0xdeadbeef;
       node->right = (gpointer) 0xdeadbeef;
@@ -101,8 +101,8 @@ _ctk_rbnode_rotate_left (GtkRBTree *tree,
 
   right = node->right;
 
-  node_height = GTK_RBNODE_GET_HEIGHT (node);
-  right_height = GTK_RBNODE_GET_HEIGHT (right);
+  node_height = CTK_RBNODE_GET_HEIGHT (node);
+  right_height = CTK_RBNODE_GET_HEIGHT (right);
   node->right = right->left;
   if (!_ctk_rbtree_is_nil (right->left))
     right->left->parent = node;
@@ -147,8 +147,8 @@ _ctk_rbnode_rotate_right (GtkRBTree *tree,
 
   left = node->left;
 
-  node_height = GTK_RBNODE_GET_HEIGHT (node);
-  left_height = GTK_RBNODE_GET_HEIGHT (left);
+  node_height = CTK_RBNODE_GET_HEIGHT (node);
+  left_height = CTK_RBNODE_GET_HEIGHT (left);
   
   node->left = left->right;
   if (!_ctk_rbtree_is_nil (left->right))
@@ -191,23 +191,23 @@ _ctk_rbtree_insert_fixup (GtkRBTree *tree,
 {
 
   /* check Red-Black properties */
-  while (node != tree->root && GTK_RBNODE_GET_COLOR (node->parent) == GTK_RBNODE_RED)
+  while (node != tree->root && CTK_RBNODE_GET_COLOR (node->parent) == CTK_RBNODE_RED)
     {
       /* we have a violation */
       if (node->parent == node->parent->parent->left)
 	{
 	  GtkRBNode *y = node->parent->parent->right;
-	  if (GTK_RBNODE_GET_COLOR (y) == GTK_RBNODE_RED)
+	  if (CTK_RBNODE_GET_COLOR (y) == CTK_RBNODE_RED)
 	    {
-				/* uncle is GTK_RBNODE_RED */
-	      GTK_RBNODE_SET_COLOR (node->parent, GTK_RBNODE_BLACK);
-	      GTK_RBNODE_SET_COLOR (y, GTK_RBNODE_BLACK);
-	      GTK_RBNODE_SET_COLOR (node->parent->parent, GTK_RBNODE_RED);
+				/* uncle is CTK_RBNODE_RED */
+	      CTK_RBNODE_SET_COLOR (node->parent, CTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (y, CTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (node->parent->parent, CTK_RBNODE_RED);
 	      node = node->parent->parent;
 	    }
 	  else
 	    {
-				/* uncle is GTK_RBNODE_BLACK */
+				/* uncle is CTK_RBNODE_BLACK */
 	      if (node == node->parent->right)
 		{
 		  /* make node a left child */
@@ -216,8 +216,8 @@ _ctk_rbtree_insert_fixup (GtkRBTree *tree,
 		}
 
 				/* recolor and rotate */
-	      GTK_RBNODE_SET_COLOR (node->parent, GTK_RBNODE_BLACK);
-	      GTK_RBNODE_SET_COLOR (node->parent->parent, GTK_RBNODE_RED);
+	      CTK_RBNODE_SET_COLOR (node->parent, CTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (node->parent->parent, CTK_RBNODE_RED);
 	      _ctk_rbnode_rotate_right(tree, node->parent->parent);
 	    }
 	}
@@ -225,29 +225,29 @@ _ctk_rbtree_insert_fixup (GtkRBTree *tree,
 	{
 	  /* mirror image of above code */
 	  GtkRBNode *y = node->parent->parent->left;
-	  if (GTK_RBNODE_GET_COLOR (y) == GTK_RBNODE_RED)
+	  if (CTK_RBNODE_GET_COLOR (y) == CTK_RBNODE_RED)
 	    {
-				/* uncle is GTK_RBNODE_RED */
-	      GTK_RBNODE_SET_COLOR (node->parent, GTK_RBNODE_BLACK);
-	      GTK_RBNODE_SET_COLOR (y, GTK_RBNODE_BLACK);
-	      GTK_RBNODE_SET_COLOR (node->parent->parent, GTK_RBNODE_RED);
+				/* uncle is CTK_RBNODE_RED */
+	      CTK_RBNODE_SET_COLOR (node->parent, CTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (y, CTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (node->parent->parent, CTK_RBNODE_RED);
 	      node = node->parent->parent;
 	    }
 	  else
 	    {
-				/* uncle is GTK_RBNODE_BLACK */
+				/* uncle is CTK_RBNODE_BLACK */
 	      if (node == node->parent->left)
 		{
 		  node = node->parent;
 		  _ctk_rbnode_rotate_right (tree, node);
 		}
-	      GTK_RBNODE_SET_COLOR (node->parent, GTK_RBNODE_BLACK);
-	      GTK_RBNODE_SET_COLOR (node->parent->parent, GTK_RBNODE_RED);
+	      CTK_RBNODE_SET_COLOR (node->parent, CTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (node->parent->parent, CTK_RBNODE_RED);
 	      _ctk_rbnode_rotate_left (tree, node->parent->parent);
 	    }
 	}
     }
-  GTK_RBNODE_SET_COLOR (tree->root, GTK_RBNODE_BLACK);
+  CTK_RBNODE_SET_COLOR (tree->root, CTK_RBNODE_BLACK);
 }
 
 static void
@@ -255,35 +255,35 @@ _ctk_rbtree_remove_node_fixup (GtkRBTree *tree,
 			       GtkRBNode *node,
                                GtkRBNode *parent)
 {
-  while (node != tree->root && GTK_RBNODE_GET_COLOR (node) == GTK_RBNODE_BLACK)
+  while (node != tree->root && CTK_RBNODE_GET_COLOR (node) == CTK_RBNODE_BLACK)
     {
       if (node == parent->left)
 	{
 	  GtkRBNode *w = parent->right;
-	  if (GTK_RBNODE_GET_COLOR (w) == GTK_RBNODE_RED)
+	  if (CTK_RBNODE_GET_COLOR (w) == CTK_RBNODE_RED)
 	    {
-	      GTK_RBNODE_SET_COLOR (w, GTK_RBNODE_BLACK);
-	      GTK_RBNODE_SET_COLOR (parent, GTK_RBNODE_RED);
+	      CTK_RBNODE_SET_COLOR (w, CTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (parent, CTK_RBNODE_RED);
 	      _ctk_rbnode_rotate_left (tree, parent);
 	      w = parent->right;
 	    }
-	  if (GTK_RBNODE_GET_COLOR (w->left) == GTK_RBNODE_BLACK && GTK_RBNODE_GET_COLOR (w->right) == GTK_RBNODE_BLACK)
+	  if (CTK_RBNODE_GET_COLOR (w->left) == CTK_RBNODE_BLACK && CTK_RBNODE_GET_COLOR (w->right) == CTK_RBNODE_BLACK)
 	    {
-	      GTK_RBNODE_SET_COLOR (w, GTK_RBNODE_RED);
+	      CTK_RBNODE_SET_COLOR (w, CTK_RBNODE_RED);
 	      node = parent;
 	    }
 	  else
 	    {
-	      if (GTK_RBNODE_GET_COLOR (w->right) == GTK_RBNODE_BLACK)
+	      if (CTK_RBNODE_GET_COLOR (w->right) == CTK_RBNODE_BLACK)
 		{
-		  GTK_RBNODE_SET_COLOR (w->left, GTK_RBNODE_BLACK);
-		  GTK_RBNODE_SET_COLOR (w, GTK_RBNODE_RED);
+		  CTK_RBNODE_SET_COLOR (w->left, CTK_RBNODE_BLACK);
+		  CTK_RBNODE_SET_COLOR (w, CTK_RBNODE_RED);
 		  _ctk_rbnode_rotate_right (tree, w);
 		  w = parent->right;
 		}
-	      GTK_RBNODE_SET_COLOR (w, GTK_RBNODE_GET_COLOR (parent));
-	      GTK_RBNODE_SET_COLOR (parent, GTK_RBNODE_BLACK);
-	      GTK_RBNODE_SET_COLOR (w->right, GTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (w, CTK_RBNODE_GET_COLOR (parent));
+	      CTK_RBNODE_SET_COLOR (parent, CTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (w->right, CTK_RBNODE_BLACK);
 	      _ctk_rbnode_rotate_left (tree, parent);
 	      node = tree->root;
 	    }
@@ -291,30 +291,30 @@ _ctk_rbtree_remove_node_fixup (GtkRBTree *tree,
       else
 	{
 	  GtkRBNode *w = parent->left;
-	  if (GTK_RBNODE_GET_COLOR (w) == GTK_RBNODE_RED)
+	  if (CTK_RBNODE_GET_COLOR (w) == CTK_RBNODE_RED)
 	    {
-	      GTK_RBNODE_SET_COLOR (w, GTK_RBNODE_BLACK);
-	      GTK_RBNODE_SET_COLOR (parent, GTK_RBNODE_RED);
+	      CTK_RBNODE_SET_COLOR (w, CTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (parent, CTK_RBNODE_RED);
 	      _ctk_rbnode_rotate_right (tree, parent);
 	      w = parent->left;
 	    }
-	  if (GTK_RBNODE_GET_COLOR (w->right) == GTK_RBNODE_BLACK && GTK_RBNODE_GET_COLOR (w->left) == GTK_RBNODE_BLACK)
+	  if (CTK_RBNODE_GET_COLOR (w->right) == CTK_RBNODE_BLACK && CTK_RBNODE_GET_COLOR (w->left) == CTK_RBNODE_BLACK)
 	    {
-	      GTK_RBNODE_SET_COLOR (w, GTK_RBNODE_RED);
+	      CTK_RBNODE_SET_COLOR (w, CTK_RBNODE_RED);
 	      node = parent;
 	    }
 	  else
 	    {
-	      if (GTK_RBNODE_GET_COLOR (w->left) == GTK_RBNODE_BLACK)
+	      if (CTK_RBNODE_GET_COLOR (w->left) == CTK_RBNODE_BLACK)
 		{
-		  GTK_RBNODE_SET_COLOR (w->right, GTK_RBNODE_BLACK);
-		  GTK_RBNODE_SET_COLOR (w, GTK_RBNODE_RED);
+		  CTK_RBNODE_SET_COLOR (w->right, CTK_RBNODE_BLACK);
+		  CTK_RBNODE_SET_COLOR (w, CTK_RBNODE_RED);
 		  _ctk_rbnode_rotate_left (tree, w);
 		  w = parent->left;
 		}
-	      GTK_RBNODE_SET_COLOR (w, GTK_RBNODE_GET_COLOR (parent));
-	      GTK_RBNODE_SET_COLOR (parent, GTK_RBNODE_BLACK);
-	      GTK_RBNODE_SET_COLOR (w->left, GTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (w, CTK_RBNODE_GET_COLOR (parent));
+	      CTK_RBNODE_SET_COLOR (parent, CTK_RBNODE_BLACK);
+	      CTK_RBNODE_SET_COLOR (w->left, CTK_RBNODE_BLACK);
 	      _ctk_rbnode_rotate_right (tree, parent);
 	      node = tree->root;
 	    }
@@ -322,7 +322,7 @@ _ctk_rbtree_remove_node_fixup (GtkRBTree *tree,
 
       parent = node->parent;
     }
-  GTK_RBNODE_SET_COLOR (node, GTK_RBNODE_BLACK);
+  CTK_RBNODE_SET_COLOR (node, CTK_RBNODE_BLACK);
 }
 
 GtkRBTree *
@@ -395,13 +395,13 @@ _ctk_rbtree_remove (GtkRBTree *tree)
 #ifdef G_ENABLE_DEBUG
   GtkRBTree *tmp_tree;
 
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     _ctk_rbtree_test (G_STRLOC, tree);
 #endif
   
   /* ugly hack to make _fixup_validation work in the first iteration of the
    * loop below */
-  GTK_RBNODE_UNSET_FLAG (tree->root, GTK_RBNODE_DESCENDANTS_INVALID);
+  CTK_RBNODE_UNSET_FLAG (tree->root, CTK_RBNODE_DESCENDANTS_INVALID);
   
   ctk_rbnode_adjust (tree->parent_tree, 
                      tree->parent_node,
@@ -416,7 +416,7 @@ _ctk_rbtree_remove (GtkRBTree *tree)
   _ctk_rbtree_free (tree);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     _ctk_rbtree_test (G_STRLOC, tmp_tree);
 #endif
 }
@@ -432,7 +432,7 @@ _ctk_rbtree_insert_after (GtkRBTree *tree,
   gboolean right = TRUE;
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     {
       GString *s;
 
@@ -482,7 +482,7 @@ _ctk_rbtree_insert_after (GtkRBTree *tree,
   _ctk_rbtree_insert_fixup (tree, node);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     {
       GString *s;
 
@@ -507,7 +507,7 @@ _ctk_rbtree_insert_before (GtkRBTree *tree,
   gboolean left = TRUE;
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     {
       GString *s;
 
@@ -558,7 +558,7 @@ _ctk_rbtree_insert_before (GtkRBTree *tree,
   _ctk_rbtree_insert_fixup (tree, node);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     {
       GString *s;
 
@@ -600,7 +600,7 @@ _ctk_rbtree_node_set_height (GtkRBTree *tree,
 			     GtkRBNode *node,
 			     gint       height)
 {
-  gint diff = height - GTK_RBNODE_GET_HEIGHT (node);
+  gint diff = height - CTK_RBNODE_GET_HEIGHT (node);
 
   if (diff == 0)
     return;
@@ -608,7 +608,7 @@ _ctk_rbtree_node_set_height (GtkRBTree *tree,
   ctk_rbnode_adjust (tree, node, 0, 0, diff);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     _ctk_rbtree_test (G_STRLOC, tree);
 #endif
 }
@@ -617,15 +617,15 @@ void
 _ctk_rbtree_node_mark_invalid (GtkRBTree *tree,
 			       GtkRBNode *node)
 {
-  if (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID))
+  if (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID))
     return;
 
-  GTK_RBNODE_SET_FLAG (node, GTK_RBNODE_INVALID);
+  CTK_RBNODE_SET_FLAG (node, CTK_RBNODE_INVALID);
   do
     {
-      if (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_DESCENDANTS_INVALID))
+      if (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_DESCENDANTS_INVALID))
 	return;
-      GTK_RBNODE_SET_FLAG (node, GTK_RBNODE_DESCENDANTS_INVALID);
+      CTK_RBNODE_SET_FLAG (node, CTK_RBNODE_DESCENDANTS_INVALID);
       node = node->parent;
       if (_ctk_rbtree_is_nil (node))
 	{
@@ -642,7 +642,7 @@ void
 _ctk_rbtree_node_mark_invalid (GtkRBTree *tree,
 			       GtkRBNode *node)
 {
-  GTK_RBNODE_SET_FLAG (node, GTK_RBNODE_INVALID);
+  CTK_RBNODE_SET_FLAG (node, CTK_RBNODE_INVALID);
   do
     {
       _fixup_validation (tree, node);
@@ -661,23 +661,23 @@ void
 _ctk_rbtree_node_mark_valid (GtkRBTree *tree,
 			     GtkRBNode *node)
 {
-  if ((!GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID)) &&
-      (!GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_COLUMN_INVALID)))
+  if ((!CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID)) &&
+      (!CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_COLUMN_INVALID)))
     return;
 
-  GTK_RBNODE_UNSET_FLAG (node, GTK_RBNODE_INVALID);
-  GTK_RBNODE_UNSET_FLAG (node, GTK_RBNODE_COLUMN_INVALID);
+  CTK_RBNODE_UNSET_FLAG (node, CTK_RBNODE_INVALID);
+  CTK_RBNODE_UNSET_FLAG (node, CTK_RBNODE_COLUMN_INVALID);
 
   do
     {
-      if ((GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID)) ||
-	  (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_COLUMN_INVALID)) ||
-	  (node->children && GTK_RBNODE_FLAG_SET (node->children->root, GTK_RBNODE_DESCENDANTS_INVALID)) ||
-	  (GTK_RBNODE_FLAG_SET (node->left, GTK_RBNODE_DESCENDANTS_INVALID)) ||
-	  (GTK_RBNODE_FLAG_SET (node->right, GTK_RBNODE_DESCENDANTS_INVALID)))
+      if ((CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID)) ||
+	  (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_COLUMN_INVALID)) ||
+	  (node->children && CTK_RBNODE_FLAG_SET (node->children->root, CTK_RBNODE_DESCENDANTS_INVALID)) ||
+	  (CTK_RBNODE_FLAG_SET (node->left, CTK_RBNODE_DESCENDANTS_INVALID)) ||
+	  (CTK_RBNODE_FLAG_SET (node->right, CTK_RBNODE_DESCENDANTS_INVALID)))
 	return;
 
-      GTK_RBNODE_UNSET_FLAG (node, GTK_RBNODE_DESCENDANTS_INVALID);
+      CTK_RBNODE_UNSET_FLAG (node, CTK_RBNODE_DESCENDANTS_INVALID);
       node = node->parent;
       if (_ctk_rbtree_is_nil (node))
 	{
@@ -694,8 +694,8 @@ void
 _ctk_rbtree_node_mark_valid (GtkRBTree *tree,
 			     GtkRBNode *node)
 {
-  GTK_RBNODE_UNSET_FLAG (node, GTK_RBNODE_INVALID);
-  GTK_RBNODE_UNSET_FLAG (node, GTK_RBNODE_COLUMN_INVALID);
+  CTK_RBNODE_UNSET_FLAG (node, CTK_RBNODE_INVALID);
+  CTK_RBNODE_UNSET_FLAG (node, CTK_RBNODE_COLUMN_INVALID);
 
   do
     {
@@ -724,9 +724,9 @@ _ctk_rbtree_column_invalid (GtkRBTree *tree)
 
   do
     {
-      if (! (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID)))
-	GTK_RBNODE_SET_FLAG (node, GTK_RBNODE_COLUMN_INVALID);
-      GTK_RBNODE_SET_FLAG (node, GTK_RBNODE_DESCENDANTS_INVALID);
+      if (! (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID)))
+	CTK_RBNODE_SET_FLAG (node, CTK_RBNODE_COLUMN_INVALID);
+      CTK_RBNODE_SET_FLAG (node, CTK_RBNODE_DESCENDANTS_INVALID);
 
       if (node->children)
 	_ctk_rbtree_column_invalid (node->children);
@@ -746,8 +746,8 @@ _ctk_rbtree_mark_invalid (GtkRBTree *tree)
 
   do
     {
-      GTK_RBNODE_SET_FLAG (node, GTK_RBNODE_INVALID);
-      GTK_RBNODE_SET_FLAG (node, GTK_RBNODE_DESCENDANTS_INVALID);
+      CTK_RBNODE_SET_FLAG (node, CTK_RBNODE_INVALID);
+      CTK_RBNODE_SET_FLAG (node, CTK_RBNODE_DESCENDANTS_INVALID);
 
       if (node->children)
 	_ctk_rbtree_mark_invalid (node->children);
@@ -769,7 +769,7 @@ _ctk_rbtree_set_fixed_height (GtkRBTree *tree,
 
   do
     {
-      if (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID))
+      if (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID))
         {
 	  _ctk_rbtree_node_set_height (tree, node, height);
 	  if (mark_valid)
@@ -788,7 +788,7 @@ reorder_prepare (GtkRBTree *tree,
                  gpointer   data)
 {
   node->offset -= node->left->offset + node->right->offset;
-  GTK_RBNODE_UNSET_FLAG (node, GTK_RBNODE_DESCENDANTS_INVALID);
+  CTK_RBNODE_UNSET_FLAG (node, CTK_RBNODE_DESCENDANTS_INVALID);
 }
 
 static void
@@ -807,7 +807,7 @@ reorder_copy_node (GtkRBTree *tree,
                    GtkRBNode *to,
                    GtkRBNode *from)
 {
-  to->flags = (to->flags & GTK_RBNODE_NON_COLORS) | GTK_RBNODE_GET_COLOR (from);
+  to->flags = (to->flags & CTK_RBNODE_NON_COLORS) | CTK_RBNODE_GET_COLOR (from);
 
   to->left = from->left;
   if (!_ctk_rbtree_is_nil (to->left))
@@ -949,7 +949,7 @@ _ctk_rbtree_node_find_offset (GtkRBTree *tree,
 
           /* Add the parent node, plus the left branch. */
 	  if (node)
-	    retval += node->left->offset + GTK_RBNODE_GET_HEIGHT (node);
+	    retval += node->left->offset + CTK_RBNODE_GET_HEIGHT (node);
 	}
     }
   return retval;
@@ -983,7 +983,7 @@ _ctk_rbtree_node_get_index (GtkRBTree *tree,
 
           /* Add the parent node, plus the left branch. */
 	  if (node)
-	    retval += node->left->total_count + 1; /* 1 == GTK_RBNODE_GET_PARITY() */
+	    retval += node->left->total_count + 1; /* 1 == CTK_RBNODE_GET_PARITY() */
 	}
     }
   
@@ -1134,7 +1134,7 @@ _ctk_rbtree_remove_node (GtkRBTree *tree,
 
   
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     {
       GString *s;
 
@@ -1153,7 +1153,7 @@ _ctk_rbtree_remove_node (GtkRBTree *tree,
   g_return_if_fail (x == tree->root);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     _ctk_rbtree_test (G_STRLOC, tree);
 #endif
   
@@ -1170,7 +1170,7 @@ _ctk_rbtree_remove_node (GtkRBTree *tree,
 	y = y->left;
     }
 
-  y_height = GTK_RBNODE_GET_HEIGHT (y) 
+  y_height = CTK_RBNODE_GET_HEIGHT (y) 
              + (y->children ? y->children->root->offset : 0);
   y_total_count = 1 + (y->children ? y->children->root->total_count : 0);
 
@@ -1199,7 +1199,7 @@ _ctk_rbtree_remove_node (GtkRBTree *tree,
    */
   ctk_rbnode_adjust (tree, y, -1, - y_total_count, - y_height);
 
-  if (GTK_RBNODE_GET_COLOR (y) == GTK_RBNODE_BLACK)
+  if (CTK_RBNODE_GET_COLOR (y) == CTK_RBNODE_BLACK)
     _ctk_rbtree_remove_node_fixup (tree, x, y->parent);
 
   if (y != node)
@@ -1209,14 +1209,14 @@ _ctk_rbtree_remove_node (GtkRBTree *tree,
       /* We want to see how much we remove from the aggregate values.
        * This is all the children we remove plus the node's values.
        */
-      node_height = GTK_RBNODE_GET_HEIGHT (node)
+      node_height = CTK_RBNODE_GET_HEIGHT (node)
                     + (node->children ? node->children->root->offset : 0);
       node_total_count = 1
                          + (node->children ? node->children->root->total_count : 0);
 
       /* Move the node over */
-      if (GTK_RBNODE_GET_COLOR (node) != GTK_RBNODE_GET_COLOR (y))
-	y->flags ^= (GTK_RBNODE_BLACK | GTK_RBNODE_RED);
+      if (CTK_RBNODE_GET_COLOR (node) != CTK_RBNODE_GET_COLOR (y))
+	y->flags ^= (CTK_RBNODE_BLACK | CTK_RBNODE_RED);
 
       y->left = node->left;
       if (!_ctk_rbtree_is_nil (y->left))
@@ -1249,7 +1249,7 @@ _ctk_rbtree_remove_node (GtkRBTree *tree,
   _ctk_rbnode_free (node);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (TREE))
+  if (CTK_DEBUG_CHECK (TREE))
     {
       GString *s;
 
@@ -1476,17 +1476,17 @@ static inline
 void _fixup_validation (GtkRBTree *tree,
 			GtkRBNode *node)
 {
-  if (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID) ||
-      GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_COLUMN_INVALID) ||
-      GTK_RBNODE_FLAG_SET (node->left, GTK_RBNODE_DESCENDANTS_INVALID) ||
-      GTK_RBNODE_FLAG_SET (node->right, GTK_RBNODE_DESCENDANTS_INVALID) ||
-      (node->children != NULL && GTK_RBNODE_FLAG_SET (node->children->root, GTK_RBNODE_DESCENDANTS_INVALID)))
+  if (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID) ||
+      CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_COLUMN_INVALID) ||
+      CTK_RBNODE_FLAG_SET (node->left, CTK_RBNODE_DESCENDANTS_INVALID) ||
+      CTK_RBNODE_FLAG_SET (node->right, CTK_RBNODE_DESCENDANTS_INVALID) ||
+      (node->children != NULL && CTK_RBNODE_FLAG_SET (node->children->root, CTK_RBNODE_DESCENDANTS_INVALID)))
     {
-      GTK_RBNODE_SET_FLAG (node, GTK_RBNODE_DESCENDANTS_INVALID);
+      CTK_RBNODE_SET_FLAG (node, CTK_RBNODE_DESCENDANTS_INVALID);
     }
   else
     {
-      GTK_RBNODE_UNSET_FLAG (node, GTK_RBNODE_DESCENDANTS_INVALID);
+      CTK_RBNODE_UNSET_FLAG (node, CTK_RBNODE_DESCENDANTS_INVALID);
     }
 }
 
@@ -1574,7 +1574,7 @@ _ctk_rbtree_test_height (GtkRBTree *tree,
   if (node->children && !_ctk_rbtree_is_nil (node->children->root))
     computed_offset += node->children->root->offset;
 
-  if (GTK_RBNODE_GET_HEIGHT (node) + computed_offset != node->offset)
+  if (CTK_RBNODE_GET_HEIGHT (node) + computed_offset != node->offset)
     g_error ("node has broken offset");
 
   if (!_ctk_rbtree_is_nil (node->left))
@@ -1595,30 +1595,30 @@ _ctk_rbtree_test_dirty (GtkRBTree *tree,
 
   if (expected_dirtyness)
     {
-      g_assert (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_COLUMN_INVALID) ||
-		GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID) ||
-		GTK_RBNODE_FLAG_SET (node->left, GTK_RBNODE_DESCENDANTS_INVALID) ||
-		GTK_RBNODE_FLAG_SET (node->right, GTK_RBNODE_DESCENDANTS_INVALID) ||
-		(node->children && GTK_RBNODE_FLAG_SET (node->children->root, GTK_RBNODE_DESCENDANTS_INVALID)));
+      g_assert (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_COLUMN_INVALID) ||
+		CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID) ||
+		CTK_RBNODE_FLAG_SET (node->left, CTK_RBNODE_DESCENDANTS_INVALID) ||
+		CTK_RBNODE_FLAG_SET (node->right, CTK_RBNODE_DESCENDANTS_INVALID) ||
+		(node->children && CTK_RBNODE_FLAG_SET (node->children->root, CTK_RBNODE_DESCENDANTS_INVALID)));
     }
   else
     {
-      g_assert (! GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_COLUMN_INVALID) &&
-		! GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID));
+      g_assert (! CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_COLUMN_INVALID) &&
+		! CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID));
       if (!_ctk_rbtree_is_nil (node->left))
-	g_assert (! GTK_RBNODE_FLAG_SET (node->left, GTK_RBNODE_DESCENDANTS_INVALID));
+	g_assert (! CTK_RBNODE_FLAG_SET (node->left, CTK_RBNODE_DESCENDANTS_INVALID));
       if (!_ctk_rbtree_is_nil (node->right))
-	g_assert (! GTK_RBNODE_FLAG_SET (node->right, GTK_RBNODE_DESCENDANTS_INVALID));
+	g_assert (! CTK_RBNODE_FLAG_SET (node->right, CTK_RBNODE_DESCENDANTS_INVALID));
       if (node->children != NULL)
-	g_assert (! GTK_RBNODE_FLAG_SET (node->children->root, GTK_RBNODE_DESCENDANTS_INVALID));
+	g_assert (! CTK_RBNODE_FLAG_SET (node->children->root, CTK_RBNODE_DESCENDANTS_INVALID));
     }
 
   if (!_ctk_rbtree_is_nil (node->left))
-    _ctk_rbtree_test_dirty (tree, node->left, GTK_RBNODE_FLAG_SET (node->left, GTK_RBNODE_DESCENDANTS_INVALID));
+    _ctk_rbtree_test_dirty (tree, node->left, CTK_RBNODE_FLAG_SET (node->left, CTK_RBNODE_DESCENDANTS_INVALID));
   if (!_ctk_rbtree_is_nil (node->right))
-    _ctk_rbtree_test_dirty (tree, node->right, GTK_RBNODE_FLAG_SET (node->right, GTK_RBNODE_DESCENDANTS_INVALID));
+    _ctk_rbtree_test_dirty (tree, node->right, CTK_RBNODE_FLAG_SET (node->right, CTK_RBNODE_DESCENDANTS_INVALID));
   if (node->children != NULL && !_ctk_rbtree_is_nil (node->children->root))
-    _ctk_rbtree_test_dirty (node->children, node->children->root, GTK_RBNODE_FLAG_SET (node->children->root, GTK_RBNODE_DESCENDANTS_INVALID));
+    _ctk_rbtree_test_dirty (node->children, node->children->root, CTK_RBNODE_FLAG_SET (node->children->root, CTK_RBNODE_DESCENDANTS_INVALID));
 }
 
 static void _ctk_rbtree_test_structure (GtkRBTree *tree);
@@ -1687,7 +1687,7 @@ _ctk_rbtree_test (const gchar *where,
       
       
   _ctk_rbtree_test_height (tmp_tree, tmp_tree->root);
-  _ctk_rbtree_test_dirty (tmp_tree, tmp_tree->root, GTK_RBNODE_FLAG_SET (tmp_tree->root, GTK_RBNODE_DESCENDANTS_INVALID));
+  _ctk_rbtree_test_dirty (tmp_tree, tmp_tree->root, CTK_RBNODE_FLAG_SET (tmp_tree->root, CTK_RBNODE_DESCENDANTS_INVALID));
   g_assert (count_total (tmp_tree, tmp_tree->root) == tmp_tree->root->total_count);
 }
 
@@ -1703,12 +1703,12 @@ _ctk_rbtree_debug_spew_helper (GtkRBTree *tree,
 
   g_string_append_printf (s, "(%p - %s) (Offset %d) (Parity %d) (Validity %d%d%d)\n",
 	   node,
-	   (GTK_RBNODE_GET_COLOR (node) == GTK_RBNODE_BLACK)?"BLACK":" RED ",
+	   (CTK_RBNODE_GET_COLOR (node) == CTK_RBNODE_BLACK)?"BLACK":" RED ",
 	   node->offset,
 	   node->total_count,
-	   (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_DESCENDANTS_INVALID))?1:0,
-	   (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_INVALID))?1:0,
-	   (GTK_RBNODE_FLAG_SET (node, GTK_RBNODE_COLUMN_INVALID))?1:0);
+	   (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_DESCENDANTS_INVALID))?1:0,
+	   (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID))?1:0,
+	   (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_COLUMN_INVALID))?1:0);
   if (node->children != NULL)
     {
       g_string_append (s, "Looking at child.\n");

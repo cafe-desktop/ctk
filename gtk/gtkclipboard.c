@@ -257,7 +257,7 @@ ctk_clipboard_finalize (GObject *object)
   GtkWidget *clipboard_widget = NULL;
   GSList *clipboards = NULL;
 
-  clipboard = GTK_CLIPBOARD (object);
+  clipboard = CTK_CLIPBOARD (object);
 
   if (clipboard->display)
     {
@@ -672,7 +672,7 @@ ctk_clipboard_set_with_data (GtkClipboard          *clipboard,
   g_return_val_if_fail (targets != NULL, FALSE);
   g_return_val_if_fail (get_func != NULL, FALSE);
 
-  return GTK_CLIPBOARD_GET_CLASS (clipboard)->set_contents (clipboard,
+  return CTK_CLIPBOARD_GET_CLASS (clipboard)->set_contents (clipboard,
                                                             targets,
                                                             n_targets,
 				                            get_func,
@@ -719,7 +719,7 @@ ctk_clipboard_set_with_owner (GtkClipboard          *clipboard,
   g_return_val_if_fail (get_func != NULL, FALSE);
   g_return_val_if_fail (G_IS_OBJECT (owner), FALSE);
 
-  return GTK_CLIPBOARD_GET_CLASS (clipboard)->set_contents (clipboard,
+  return CTK_CLIPBOARD_GET_CLASS (clipboard)->set_contents (clipboard,
                                                             targets,
                                                             n_targets,
 				                            get_func,
@@ -804,7 +804,7 @@ ctk_clipboard_clear (GtkClipboard *clipboard)
 {
   g_return_if_fail (clipboard != NULL);
 
-  GTK_CLIPBOARD_GET_CLASS (clipboard)->clear (clipboard);
+  CTK_CLIPBOARD_GET_CLASS (clipboard)->clear (clipboard);
 }
 
 static void
@@ -991,7 +991,7 @@ ctk_clipboard_request_contents (GtkClipboard            *clipboard,
   g_return_if_fail (target != GDK_NONE);
   g_return_if_fail (callback != NULL);
 
-  GTK_CLIPBOARD_GET_CLASS (clipboard)->request_contents (clipboard,
+  CTK_CLIPBOARD_GET_CLASS (clipboard)->request_contents (clipboard,
                                                          target,
                                                          callback,
                                                          user_data);
@@ -1162,7 +1162,7 @@ ctk_clipboard_request_rich_text (GtkClipboard                    *clipboard,
   RequestRichTextInfo *info;
 
   g_return_if_fail (clipboard != NULL);
-  g_return_if_fail (GTK_IS_TEXT_BUFFER (buffer));
+  g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (callback != NULL);
 
   info = g_new (RequestRichTextInfo, 1);
@@ -1540,7 +1540,7 @@ ctk_clipboard_wait_for_rich_text (GtkClipboard  *clipboard,
   WaitResults results;
 
   g_return_val_if_fail (clipboard != NULL, NULL);
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), NULL);
   g_return_val_if_fail (format != NULL, NULL);
   g_return_val_if_fail (length != NULL, NULL);
 
@@ -1753,8 +1753,8 @@ ctk_clipboard_wait_is_rich_text_available (GtkClipboard  *clipboard,
   GtkSelectionData *data;
   gboolean result = FALSE;
 
-  g_return_val_if_fail (GTK_IS_CLIPBOARD (clipboard), FALSE);
-  g_return_val_if_fail (GTK_IS_TEXT_BUFFER (buffer), FALSE);
+  g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
 
   data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("TARGETS"));
   if (data)
@@ -1941,7 +1941,7 @@ clipboard_peek (GdkDisplay *display,
 
   if (!tmp_list && !only_if_exists)
     {
-      clipboard = g_object_new (GTK_TYPE_CLIPBOARD, NULL);
+      clipboard = g_object_new (CTK_TYPE_CLIPBOARD, NULL);
 
       clipboard->selection = selection;
       clipboard->display = display;
@@ -2062,10 +2062,10 @@ ctk_clipboard_set_can_store (GtkClipboard         *clipboard,
  			     const GtkTargetEntry *targets,
  			     gint                  n_targets)
 {
-  g_return_if_fail (GTK_IS_CLIPBOARD (clipboard));
+  g_return_if_fail (CTK_IS_CLIPBOARD (clipboard));
   g_return_if_fail (n_targets >= 0);
 
-  GTK_CLIPBOARD_GET_CLASS (clipboard)->set_can_store (clipboard,
+  CTK_CLIPBOARD_GET_CLASS (clipboard)->set_can_store (clipboard,
                                                       targets,
                                                       n_targets);
 }
@@ -2133,9 +2133,9 @@ ctk_clipboard_selection_notify (GtkWidget         *widget,
 void
 ctk_clipboard_store (GtkClipboard *clipboard)
 {
-  g_return_if_fail (GTK_IS_CLIPBOARD (clipboard));
+  g_return_if_fail (CTK_IS_CLIPBOARD (clipboard));
 
-  GTK_CLIPBOARD_GET_CLASS (clipboard)->store (clipboard);
+  CTK_CLIPBOARD_GET_CLASS (clipboard)->store (clipboard);
 }
 
 static void
@@ -2229,7 +2229,7 @@ _ctk_clipboard_store_all (void)
 GdkAtom
 ctk_clipboard_get_selection (GtkClipboard *clipboard)
 {
-  g_return_val_if_fail (GTK_IS_CLIPBOARD (clipboard), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), GDK_NONE);
 
   return clipboard->selection;
 }

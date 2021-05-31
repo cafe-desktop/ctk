@@ -15,11 +15,11 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_SORTABLE_H__
-#define __GTK_TREE_SORTABLE_H__
+#ifndef __CTK_TREE_SORTABLE_H__
+#define __CTK_TREE_SORTABLE_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,31 +29,31 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TREE_SORTABLE            (ctk_tree_sortable_get_type ())
-#define GTK_TREE_SORTABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_SORTABLE, GtkTreeSortable))
-#define GTK_TREE_SORTABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), GTK_TYPE_TREE_SORTABLE, GtkTreeSortableIface))
-#define GTK_IS_TREE_SORTABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_SORTABLE))
-#define GTK_TREE_SORTABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GTK_TYPE_TREE_SORTABLE, GtkTreeSortableIface))
+#define CTK_TYPE_TREE_SORTABLE            (ctk_tree_sortable_get_type ())
+#define CTK_TREE_SORTABLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_SORTABLE, GtkTreeSortable))
+#define CTK_TREE_SORTABLE_CLASS(obj)      (G_TYPE_CHECK_CLASS_CAST ((obj), CTK_TYPE_TREE_SORTABLE, GtkTreeSortableIface))
+#define CTK_IS_TREE_SORTABLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_SORTABLE))
+#define CTK_TREE_SORTABLE_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CTK_TYPE_TREE_SORTABLE, GtkTreeSortableIface))
 
 /**
- * GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID:
+ * CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID:
  *
- * The GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID can be used to make a
+ * The CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID can be used to make a
  * #GtkTreeSortable use the default sort function.
  *
  * See also ctk_tree_sortable_set_sort_column_id()
  */
-#define GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID (-1)
+#define CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID (-1)
 
 /**
- * GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID:
+ * CTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID:
  *
- * The GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID can be used to make a
+ * The CTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID can be used to make a
  * #GtkTreeSortable use no sorting.
  *
  * See also ctk_tree_sortable_set_sort_column_id()
  */
-#define GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID (-2)
+#define CTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID (-2)
 
 typedef struct _GtkTreeSortable      GtkTreeSortable; /* Dummy typedef */
 typedef struct _GtkTreeSortableIface GtkTreeSortableIface;
@@ -160,4 +160,4 @@ gboolean ctk_tree_sortable_has_default_sort_func (GtkTreeSortable        *sortab
 
 G_END_DECLS
 
-#endif /* __GTK_TREE_SORTABLE_H__ */
+#endif /* __CTK_TREE_SORTABLE_H__ */

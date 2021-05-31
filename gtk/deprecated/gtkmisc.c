@@ -82,7 +82,7 @@ static void ctk_misc_get_property (GObject         *object,
 				   GParamSpec      *pspec);
 
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkMisc, ctk_misc, GTK_TYPE_WIDGET)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkMisc, ctk_misc, CTK_TYPE_WIDGET)
 
 static void
 ctk_misc_class_init (GtkMiscClass *class)
@@ -116,7 +116,7 @@ ctk_misc_class_init (GtkMiscClass *class)
 						       0.0,
 						       1.0,
 						       0.5,
-						       GTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+						       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
   /**
    * GtkMisc:yalign:
@@ -135,7 +135,7 @@ ctk_misc_class_init (GtkMiscClass *class)
 						       0.0,
 						       1.0,
 						       0.5,
-						       GTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+						       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
   /**
    * GtkMisc:xpad:
@@ -154,7 +154,7 @@ ctk_misc_class_init (GtkMiscClass *class)
 						     0,
 						     G_MAXINT,
 						     0,
-						     GTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+						     CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
   /**
    * GtkMisc:ypad:
@@ -173,7 +173,7 @@ ctk_misc_class_init (GtkMiscClass *class)
 						     0,
 						     G_MAXINT,
 						     0,
-						     GTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+						     CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 }
 
 static void
@@ -196,7 +196,7 @@ ctk_misc_set_property (GObject      *object,
 		       const GValue *value,
 		       GParamSpec   *pspec)
 {
-  GtkMisc *misc = GTK_MISC (object);
+  GtkMisc *misc = CTK_MISC (object);
   GtkMiscPrivate *priv = misc->priv;
 
   switch (prop_id)
@@ -225,7 +225,7 @@ ctk_misc_get_property (GObject      *object,
 		       GValue       *value,
 		       GParamSpec   *pspec)
 {
-  GtkMisc *misc = GTK_MISC (object);
+  GtkMisc *misc = CTK_MISC (object);
   GtkMiscPrivate *priv = misc->priv;
 
   switch (prop_id)
@@ -266,7 +266,7 @@ ctk_misc_set_alignment (GtkMisc *misc,
   GtkMiscPrivate *priv;
   GtkWidget *widget;
 
-  g_return_if_fail (GTK_IS_MISC (misc));
+  g_return_if_fail (CTK_IS_MISC (misc));
 
   priv = misc->priv;
 
@@ -292,15 +292,15 @@ ctk_misc_set_alignment (GtkMisc *misc,
       priv->xalign = xalign;
       priv->yalign = yalign;
       
-      if (GTK_IS_LABEL (misc))
+      if (CTK_IS_LABEL (misc))
         {
-          ctk_label_set_xalign (GTK_LABEL (misc), xalign);
-          ctk_label_set_yalign (GTK_LABEL (misc), yalign);
+          ctk_label_set_xalign (CTK_LABEL (misc), xalign);
+          ctk_label_set_yalign (CTK_LABEL (misc), yalign);
         }
 
       /* clear the area that was allocated before the change
        */
-      widget = GTK_WIDGET (misc);
+      widget = CTK_WIDGET (misc);
       if (ctk_widget_is_drawable (widget))
         ctk_widget_queue_draw (widget);
 
@@ -326,7 +326,7 @@ ctk_misc_get_alignment (GtkMisc *misc,
 {
   GtkMiscPrivate *priv;
 
-  g_return_if_fail (GTK_IS_MISC (misc));
+  g_return_if_fail (CTK_IS_MISC (misc));
 
   priv = misc->priv;
 
@@ -355,7 +355,7 @@ ctk_misc_set_padding (GtkMisc *misc,
 {
   GtkMiscPrivate *priv;
 
-  g_return_if_fail (GTK_IS_MISC (misc));
+  g_return_if_fail (CTK_IS_MISC (misc));
 
   priv = misc->priv;
 
@@ -376,8 +376,8 @@ ctk_misc_set_padding (GtkMisc *misc,
       priv->xpad = xpad;
       priv->ypad = ypad;
 
-      if (ctk_widget_is_drawable (GTK_WIDGET (misc)))
-	ctk_widget_queue_resize (GTK_WIDGET (misc));
+      if (ctk_widget_is_drawable (CTK_WIDGET (misc)))
+	ctk_widget_queue_resize (CTK_WIDGET (misc));
 
       g_object_thaw_notify (G_OBJECT (misc));
     }
@@ -403,7 +403,7 @@ ctk_misc_get_padding (GtkMisc *misc,
 {
   GtkMiscPrivate *priv;
 
-  g_return_if_fail (GTK_IS_MISC (misc));
+  g_return_if_fail (CTK_IS_MISC (misc));
 
   priv = misc->priv;
 
@@ -463,10 +463,10 @@ _ctk_misc_get_padding_and_border (GtkMisc   *misc,
   GtkBorder tmp;
   gint xpad, ypad;
 
-  g_return_if_fail (GTK_IS_MISC (misc));
+  g_return_if_fail (CTK_IS_MISC (misc));
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (misc));
-  state = ctk_widget_get_state_flags (GTK_WIDGET (misc));
+  context = ctk_widget_get_style_context (CTK_WIDGET (misc));
+  state = ctk_widget_get_state_flags (CTK_WIDGET (misc));
 
   ctk_style_context_get_padding (context, state, border);
 

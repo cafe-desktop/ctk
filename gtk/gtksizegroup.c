@@ -51,7 +51,7 @@
  * a #GtkSizeGroup to actually be the same size, you need to pack them in
  * such a way that they get the size they request and not more. For
  * example, if you are packing your widgets into a table, you would not
- * include the %GTK_FILL flag.
+ * include the %CTK_FILL flag.
  *
  * #GtkSizeGroup objects are referenced by each widget in the size group,
  * so once you have added all widgets to a #GtkSizeGroup, you can drop
@@ -64,16 +64,16 @@
  * Widgets can be part of multiple size groups; GTK+ will compute the
  * horizontal size of a widget from the horizontal requisition of all
  * widgets that can be reached from the widget by a chain of size groups
- * of type %GTK_SIZE_GROUP_HORIZONTAL or %GTK_SIZE_GROUP_BOTH, and the
+ * of type %CTK_SIZE_GROUP_HORIZONTAL or %CTK_SIZE_GROUP_BOTH, and the
  * vertical size from the vertical requisition of all widgets that can be
  * reached from the widget by a chain of size groups of type
- * %GTK_SIZE_GROUP_VERTICAL or %GTK_SIZE_GROUP_BOTH.
+ * %CTK_SIZE_GROUP_VERTICAL or %CTK_SIZE_GROUP_BOTH.
  *
  * Note that only non-contextual sizes of every widget are ever consulted
  * by size groups (since size groups have no knowledge of what size a widget
  * will be allocated in one dimension, it cannot derive how much height
  * a widget will receive for a given width). When grouping widgets that
- * trade height for width in mode %GTK_SIZE_GROUP_VERTICAL or %GTK_SIZE_GROUP_BOTH:
+ * trade height for width in mode %CTK_SIZE_GROUP_VERTICAL or %CTK_SIZE_GROUP_BOTH:
  * the height for the minimum width will be the requested height for all
  * widgets in the group. The same is of course true when horizontally grouping
  * width for height widgets.
@@ -93,7 +93,7 @@
  * An example of a UI definition fragment with GtkSizeGroup:
  * |[
  * <object class="GtkSizeGroup">
- *   <property name="mode">GTK_SIZE_GROUP_HORIZONTAL</property>
+ *   <property name="mode">CTK_SIZE_GROUP_HORIZONTAL</property>
  *   <widgets>
  *     <widget name="radio1"/>
  *     <widget name="radio2"/>
@@ -141,13 +141,13 @@ static void ctk_size_group_buildable_custom_finished (GtkBuildable  *buildable,
 						      const gchar   *tagname,
 						      gpointer       user_data);
 
-G_STATIC_ASSERT (GTK_SIZE_GROUP_HORIZONTAL == (1 << GTK_ORIENTATION_HORIZONTAL));
-G_STATIC_ASSERT (GTK_SIZE_GROUP_VERTICAL == (1 << GTK_ORIENTATION_VERTICAL));
-G_STATIC_ASSERT (GTK_SIZE_GROUP_BOTH == (GTK_SIZE_GROUP_HORIZONTAL | GTK_SIZE_GROUP_VERTICAL));
+G_STATIC_ASSERT (CTK_SIZE_GROUP_HORIZONTAL == (1 << CTK_ORIENTATION_HORIZONTAL));
+G_STATIC_ASSERT (CTK_SIZE_GROUP_VERTICAL == (1 << CTK_ORIENTATION_VERTICAL));
+G_STATIC_ASSERT (CTK_SIZE_GROUP_BOTH == (CTK_SIZE_GROUP_HORIZONTAL | CTK_SIZE_GROUP_VERTICAL));
 
 G_DEFINE_TYPE_WITH_CODE (GtkSizeGroup, ctk_size_group, G_TYPE_OBJECT,
                          G_ADD_PRIVATE (GtkSizeGroup)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
 						ctk_size_group_buildable_init))
 
 static void
@@ -228,9 +228,9 @@ ctk_size_group_class_init (GtkSizeGroupClass *klass)
                                                       P_("Mode"),
                                                       P_("The directions in which the size group affects the requested sizes"
                                                          " of its component widgets"),
-                                                      GTK_TYPE_SIZE_GROUP_MODE,
-                                                      GTK_SIZE_GROUP_HORIZONTAL,
-                                                      GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                      CTK_TYPE_SIZE_GROUP_MODE,
+                                                      CTK_SIZE_GROUP_HORIZONTAL,
+                                                      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkSizeGroup:ignore-hidden:
@@ -254,7 +254,7 @@ ctk_size_group_class_init (GtkSizeGroupClass *klass)
                                                          P_("If TRUE, unmapped widgets are ignored "
                                                             "when determining the size of the group"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED));
+                                                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED));
 }
 
 static void
@@ -266,7 +266,7 @@ ctk_size_group_init (GtkSizeGroup *size_group)
   priv = size_group->priv;
 
   priv->widgets = NULL;
-  priv->mode = GTK_SIZE_GROUP_HORIZONTAL;
+  priv->mode = CTK_SIZE_GROUP_HORIZONTAL;
   priv->ignore_hidden = FALSE;
 }
 
@@ -283,7 +283,7 @@ ctk_size_group_set_property (GObject      *object,
 			     const GValue *value,
 			     GParamSpec   *pspec)
 {
-  GtkSizeGroup *size_group = GTK_SIZE_GROUP (object);
+  GtkSizeGroup *size_group = CTK_SIZE_GROUP (object);
 
   switch (prop_id)
     {
@@ -307,7 +307,7 @@ ctk_size_group_get_property (GObject      *object,
 			     GValue       *value,
 			     GParamSpec   *pspec)
 {
-  GtkSizeGroup *size_group = GTK_SIZE_GROUP (object);
+  GtkSizeGroup *size_group = CTK_SIZE_GROUP (object);
   GtkSizeGroupPrivate *priv = size_group->priv;
 
   switch (prop_id)
@@ -335,7 +335,7 @@ ctk_size_group_get_property (GObject      *object,
 GtkSizeGroup *
 ctk_size_group_new (GtkSizeGroupMode mode)
 {
-  GtkSizeGroup *size_group = g_object_new (GTK_TYPE_SIZE_GROUP, NULL);
+  GtkSizeGroup *size_group = g_object_new (CTK_TYPE_SIZE_GROUP, NULL);
   GtkSizeGroupPrivate *priv = size_group->priv;
 
   priv->mode = mode;
@@ -350,10 +350,10 @@ ctk_size_group_new (GtkSizeGroupMode mode)
  * 
  * Sets the #GtkSizeGroupMode of the size group. The mode of the size
  * group determines whether the widgets in the size group should
- * all have the same horizontal requisition (%GTK_SIZE_GROUP_HORIZONTAL)
- * all have the same vertical requisition (%GTK_SIZE_GROUP_VERTICAL),
+ * all have the same horizontal requisition (%CTK_SIZE_GROUP_HORIZONTAL)
+ * all have the same vertical requisition (%CTK_SIZE_GROUP_VERTICAL),
  * or should all have the same requisition in both directions
- * (%GTK_SIZE_GROUP_BOTH).
+ * (%CTK_SIZE_GROUP_BOTH).
  **/
 void
 ctk_size_group_set_mode (GtkSizeGroup     *size_group,
@@ -361,16 +361,16 @@ ctk_size_group_set_mode (GtkSizeGroup     *size_group,
 {
   GtkSizeGroupPrivate *priv;
 
-  g_return_if_fail (GTK_IS_SIZE_GROUP (size_group));
+  g_return_if_fail (CTK_IS_SIZE_GROUP (size_group));
 
   priv = size_group->priv;
 
   if (priv->mode != mode)
     {
-      if (priv->mode != GTK_SIZE_GROUP_NONE)
+      if (priv->mode != CTK_SIZE_GROUP_NONE)
 	queue_resize_on_group (size_group);
       priv->mode = mode;
-      if (priv->mode != GTK_SIZE_GROUP_NONE)
+      if (priv->mode != CTK_SIZE_GROUP_NONE)
 	queue_resize_on_group (size_group);
 
       g_object_notify (G_OBJECT (size_group), "mode");
@@ -388,7 +388,7 @@ ctk_size_group_set_mode (GtkSizeGroup     *size_group,
 GtkSizeGroupMode
 ctk_size_group_get_mode (GtkSizeGroup *size_group)
 {
-  g_return_val_if_fail (GTK_IS_SIZE_GROUP (size_group), GTK_SIZE_GROUP_BOTH);
+  g_return_val_if_fail (CTK_IS_SIZE_GROUP (size_group), CTK_SIZE_GROUP_BOTH);
 
   return size_group->priv->mode;
 }
@@ -417,7 +417,7 @@ ctk_size_group_set_ignore_hidden (GtkSizeGroup *size_group,
 {
   GtkSizeGroupPrivate *priv;
 
-  g_return_if_fail (GTK_IS_SIZE_GROUP (size_group));
+  g_return_if_fail (CTK_IS_SIZE_GROUP (size_group));
 
   priv = size_group->priv;
 
@@ -451,7 +451,7 @@ ctk_size_group_set_ignore_hidden (GtkSizeGroup *size_group,
 gboolean
 ctk_size_group_get_ignore_hidden (GtkSizeGroup *size_group)
 {
-  g_return_val_if_fail (GTK_IS_SIZE_GROUP (size_group), FALSE);
+  g_return_val_if_fail (CTK_IS_SIZE_GROUP (size_group), FALSE);
 
   return size_group->priv->ignore_hidden;
 }
@@ -477,8 +477,8 @@ ctk_size_group_add_widget (GtkSizeGroup *size_group,
   GtkSizeGroupPrivate *priv;
   GSList *groups;
   
-  g_return_if_fail (GTK_IS_SIZE_GROUP (size_group));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_SIZE_GROUP (size_group));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = size_group->priv;
 
@@ -509,8 +509,8 @@ ctk_size_group_remove_widget (GtkSizeGroup *size_group,
 {
   GtkSizeGroupPrivate *priv;
   
-  g_return_if_fail (GTK_IS_SIZE_GROUP (size_group));
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_SIZE_GROUP (size_group));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = size_group->priv;
 
@@ -669,7 +669,7 @@ ctk_size_group_buildable_custom_finished (GtkBuildable  *buildable,
       object = _ctk_builder_lookup_object (builder, item_data->name, item_data->line, item_data->col);
       if (!object)
         continue;
-      ctk_size_group_add_widget (GTK_SIZE_GROUP (data->object), GTK_WIDGET (object));
+      ctk_size_group_add_widget (CTK_SIZE_GROUP (data->object), CTK_WIDGET (object));
     }
   g_slist_free_full (data->items, item_data_free);
   g_slice_free (GSListSubParserData, data);

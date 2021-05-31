@@ -56,29 +56,29 @@ ctk_inspector_init (void)
 {
   static GIOExtensionPoint *extension_point = NULL;
 
-  g_type_ensure (GTK_TYPE_CELL_RENDERER_GRAPH);
-  g_type_ensure (GTK_TYPE_GRAPH_DATA);
-  g_type_ensure (GTK_TYPE_INSPECTOR_ACTIONS);
-  g_type_ensure (GTK_TYPE_INSPECTOR_CSS_EDITOR);
-  g_type_ensure (GTK_TYPE_INSPECTOR_CSS_NODE_TREE);
-  g_type_ensure (GTK_TYPE_INSPECTOR_DATA_LIST);
-  g_type_ensure (GTK_TYPE_INSPECTOR_GENERAL);
-  g_type_ensure (GTK_TYPE_INSPECTOR_GESTURES);
-  g_type_ensure (GTK_TYPE_MAGNIFIER);
-  g_type_ensure (GTK_TYPE_INSPECTOR_MAGNIFIER);
-  g_type_ensure (GTK_TYPE_INSPECTOR_MENU);
-  g_type_ensure (GTK_TYPE_INSPECTOR_MISC_INFO);
-  g_type_ensure (GTK_TYPE_INSPECTOR_OBJECT_HIERARCHY);
-  g_type_ensure (GTK_TYPE_INSPECTOR_OBJECT_TREE);
-  g_type_ensure (GTK_TYPE_INSPECTOR_PROP_LIST);
-  g_type_ensure (GTK_TYPE_INSPECTOR_RESOURCE_LIST);
-  g_type_ensure (GTK_TYPE_INSPECTOR_SELECTOR);
-  g_type_ensure (GTK_TYPE_INSPECTOR_SIGNALS_LIST);
-  g_type_ensure (GTK_TYPE_INSPECTOR_SIZE_GROUPS);
-  g_type_ensure (GTK_TYPE_INSPECTOR_STATISTICS);
-  g_type_ensure (GTK_TYPE_INSPECTOR_VISUAL);
-  g_type_ensure (GTK_TYPE_INSPECTOR_WINDOW);
-  g_type_ensure (GTK_TYPE_STACK_COMBO);
+  g_type_ensure (CTK_TYPE_CELL_RENDERER_GRAPH);
+  g_type_ensure (CTK_TYPE_GRAPH_DATA);
+  g_type_ensure (CTK_TYPE_INSPECTOR_ACTIONS);
+  g_type_ensure (CTK_TYPE_INSPECTOR_CSS_EDITOR);
+  g_type_ensure (CTK_TYPE_INSPECTOR_CSS_NODE_TREE);
+  g_type_ensure (CTK_TYPE_INSPECTOR_DATA_LIST);
+  g_type_ensure (CTK_TYPE_INSPECTOR_GENERAL);
+  g_type_ensure (CTK_TYPE_INSPECTOR_GESTURES);
+  g_type_ensure (CTK_TYPE_MAGNIFIER);
+  g_type_ensure (CTK_TYPE_INSPECTOR_MAGNIFIER);
+  g_type_ensure (CTK_TYPE_INSPECTOR_MENU);
+  g_type_ensure (CTK_TYPE_INSPECTOR_MISC_INFO);
+  g_type_ensure (CTK_TYPE_INSPECTOR_OBJECT_HIERARCHY);
+  g_type_ensure (CTK_TYPE_INSPECTOR_OBJECT_TREE);
+  g_type_ensure (CTK_TYPE_INSPECTOR_PROP_LIST);
+  g_type_ensure (CTK_TYPE_INSPECTOR_RESOURCE_LIST);
+  g_type_ensure (CTK_TYPE_INSPECTOR_SELECTOR);
+  g_type_ensure (CTK_TYPE_INSPECTOR_SIGNALS_LIST);
+  g_type_ensure (CTK_TYPE_INSPECTOR_SIZE_GROUPS);
+  g_type_ensure (CTK_TYPE_INSPECTOR_STATISTICS);
+  g_type_ensure (CTK_TYPE_INSPECTOR_VISUAL);
+  g_type_ensure (CTK_TYPE_INSPECTOR_WINDOW);
+  g_type_ensure (CTK_TYPE_STACK_COMBO);
 
   if (extension_point == NULL)
     {
@@ -87,7 +87,7 @@ ctk_inspector_init (void)
       int i;
 
       extension_point = g_io_extension_point_register ("gtk-inspector-page");
-      g_io_extension_point_set_required_type (extension_point, GTK_TYPE_WIDGET);
+      g_io_extension_point_set_required_type (extension_point, CTK_TYPE_WIDGET);
 
       paths = _ctk_get_module_path ("inspector");
       scope = g_io_module_scope_new (G_IO_MODULE_SCOPE_BLOCK_DUPLICATES);

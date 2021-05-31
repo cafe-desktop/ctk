@@ -15,20 +15,20 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_PATH_NODE_PRIVATE_H__
-#define __GTK_CSS_PATH_NODE_PRIVATE_H__
+#ifndef __CTK_CSS_PATH_NODE_PRIVATE_H__
+#define __CTK_CSS_PATH_NODE_PRIVATE_H__
 
 #include "gtkcssnodeprivate.h"
 #include "gtkwidgetpath.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_PATH_NODE           (ctk_css_path_node_get_type ())
-#define GTK_CSS_PATH_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_PATH_NODE, GtkCssPathNode))
-#define GTK_CSS_PATH_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_PATH_NODE, GtkCssPathNodeClass))
-#define GTK_IS_CSS_PATH_NODE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_PATH_NODE))
-#define GTK_IS_CSS_PATH_NODE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_PATH_NODE))
-#define GTK_CSS_PATH_NODE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_PATH_NODE, GtkCssPathNodeClass))
+#define CTK_TYPE_CSS_PATH_NODE           (ctk_css_path_node_get_type ())
+#define CTK_CSS_PATH_NODE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_PATH_NODE, GtkCssPathNode))
+#define CTK_CSS_PATH_NODE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_PATH_NODE, GtkCssPathNodeClass))
+#define CTK_IS_CSS_PATH_NODE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_PATH_NODE))
+#define CTK_IS_CSS_PATH_NODE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_PATH_NODE))
+#define CTK_CSS_PATH_NODE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_PATH_NODE, GtkCssPathNodeClass))
 
 typedef struct _GtkCssPathNode           GtkCssPathNode;
 typedef struct _GtkCssPathNodeClass      GtkCssPathNodeClass;
@@ -58,4 +58,4 @@ GtkWidgetPath *         ctk_css_path_node_get_widget_path  (GtkCssPathNode *node
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_PATH_NODE_PRIVATE_H__ */
+#endif /* __CTK_CSS_PATH_NODE_PRIVATE_H__ */

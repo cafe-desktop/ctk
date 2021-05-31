@@ -233,9 +233,9 @@ static gboolean ctk_progress_bar_render_text       (GtkCssGadget        *gadget,
                                                     gint                 height,
                                                     gpointer             data);
 
-G_DEFINE_TYPE_WITH_CODE (GtkProgressBar, ctk_progress_bar, GTK_TYPE_WIDGET,
+G_DEFINE_TYPE_WITH_CODE (GtkProgressBar, ctk_progress_bar, CTK_TYPE_WIDGET,
                          G_ADD_PRIVATE (GtkProgressBar)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE, NULL))
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_ORIENTABLE, NULL))
 
 static void
 ctk_progress_bar_class_init (GtkProgressBarClass *class)
@@ -264,7 +264,7 @@ ctk_progress_bar_class_init (GtkProgressBarClass *class)
                             P_("Inverted"),
                             P_("Invert the direction in which the progress bar grows"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   progress_props[PROP_FRACTION] =
       g_param_spec_double ("fraction",
@@ -272,7 +272,7 @@ ctk_progress_bar_class_init (GtkProgressBarClass *class)
                            P_("The fraction of total work that has been completed"),
                            0.0, 1.0,
                            0.0,
-                           GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   progress_props[PROP_PULSE_STEP] =
       g_param_spec_double ("pulse-step",
@@ -280,14 +280,14 @@ ctk_progress_bar_class_init (GtkProgressBarClass *class)
                            P_("The fraction of total progress to move the bouncing block when pulsed"),
                            0.0, 1.0,
                            0.1,
-                           GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   progress_props[PROP_TEXT] =
       g_param_spec_string ("text",
                            P_("Text"),
                            P_("Text to be displayed in the progress bar"),
                            NULL,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkProgressBar:show-text:
@@ -309,7 +309,7 @@ ctk_progress_bar_class_init (GtkProgressBarClass *class)
                             P_("Show text"),
                             P_("Whether the progress is shown as text."),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkProgressBar:ellipsize:
@@ -332,7 +332,7 @@ ctk_progress_bar_class_init (GtkProgressBarClass *class)
                             "does not have enough room to display the entire string, if at all."),
                          PANGO_TYPE_ELLIPSIZE_MODE,
                          PANGO_ELLIPSIZE_NONE,
-                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   g_object_class_install_properties (gobject_class, NUM_PROPERTIES, progress_props);
 
@@ -427,7 +427,7 @@ ctk_progress_bar_class_init (GtkProgressBarClass *class)
                                                              1, G_MAXINT, MIN_VERTICAL_BAR_HEIGHT,
                                                              G_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_PROGRESS_BAR_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_PROGRESS_BAR_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "progressbar");
 }
 
@@ -475,7 +475,7 @@ update_node_classes (GtkProgressBar *pbar)
 
   if (priv->activity_mode)
     {
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           left = priv->activity_pos <= 0.0;
           right = priv->activity_pos >= 1.0;
@@ -491,13 +491,13 @@ update_node_classes (GtkProgressBar *pbar)
       gboolean inverted;
 
       inverted = priv->inverted;
-      if (ctk_widget_get_direction (GTK_WIDGET (pbar)) == GTK_TEXT_DIR_RTL)
+      if (ctk_widget_get_direction (CTK_WIDGET (pbar)) == CTK_TEXT_DIR_RTL)
         {
-          if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+          if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
             inverted = !inverted;
         }
 
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           left = !inverted || priv->fraction >= 1.0;
           right = inverted || priv->fraction >= 1.0;
@@ -510,24 +510,24 @@ update_node_classes (GtkProgressBar *pbar)
     }
 
   if (left)
-    ctk_css_gadget_add_class (priv->progress_gadget, GTK_STYLE_CLASS_LEFT);
+    ctk_css_gadget_add_class (priv->progress_gadget, CTK_STYLE_CLASS_LEFT);
   else
-    ctk_css_gadget_remove_class (priv->progress_gadget, GTK_STYLE_CLASS_LEFT);
+    ctk_css_gadget_remove_class (priv->progress_gadget, CTK_STYLE_CLASS_LEFT);
 
   if (right)
-    ctk_css_gadget_add_class (priv->progress_gadget, GTK_STYLE_CLASS_RIGHT);
+    ctk_css_gadget_add_class (priv->progress_gadget, CTK_STYLE_CLASS_RIGHT);
   else
-    ctk_css_gadget_remove_class (priv->progress_gadget, GTK_STYLE_CLASS_RIGHT);
+    ctk_css_gadget_remove_class (priv->progress_gadget, CTK_STYLE_CLASS_RIGHT);
 
   if (top)
-    ctk_css_gadget_add_class (priv->progress_gadget, GTK_STYLE_CLASS_TOP);
+    ctk_css_gadget_add_class (priv->progress_gadget, CTK_STYLE_CLASS_TOP);
   else
-    ctk_css_gadget_remove_class (priv->progress_gadget, GTK_STYLE_CLASS_TOP);
+    ctk_css_gadget_remove_class (priv->progress_gadget, CTK_STYLE_CLASS_TOP);
 
   if (bottom)
-    ctk_css_gadget_add_class (priv->progress_gadget, GTK_STYLE_CLASS_BOTTOM);
+    ctk_css_gadget_add_class (priv->progress_gadget, CTK_STYLE_CLASS_BOTTOM);
   else
-    ctk_css_gadget_remove_class (priv->progress_gadget, GTK_STYLE_CLASS_BOTTOM);
+    ctk_css_gadget_remove_class (priv->progress_gadget, CTK_STYLE_CLASS_BOTTOM);
 
   update_fraction_classes (pbar);
 }
@@ -538,7 +538,7 @@ update_node_state (GtkProgressBar *pbar)
   GtkProgressBarPrivate *priv = pbar->priv;
   GtkStateFlags state;
 
-  state = ctk_widget_get_state_flags (GTK_WIDGET (pbar));
+  state = ctk_widget_get_state_flags (CTK_WIDGET (pbar));
 
   ctk_css_gadget_set_state (priv->gadget, state);
   ctk_css_gadget_set_state (priv->trough_gadget, state);
@@ -556,7 +556,7 @@ ctk_progress_bar_init (GtkProgressBar *pbar)
   pbar->priv = ctk_progress_bar_get_instance_private (pbar);
   priv = pbar->priv;
 
-  priv->orientation = GTK_ORIENTATION_HORIZONTAL;
+  priv->orientation = CTK_ORIENTATION_HORIZONTAL;
   priv->inverted = FALSE;
   priv->pulse_fraction = 0.1;
   priv->activity_pos = 0;
@@ -568,13 +568,13 @@ ctk_progress_bar_init (GtkProgressBar *pbar)
   priv->text = NULL;
   priv->fraction = 0.0;
 
-  ctk_widget_set_has_window (GTK_WIDGET (pbar), FALSE);
+  ctk_widget_set_has_window (CTK_WIDGET (pbar), FALSE);
 
-  _ctk_orientable_set_style_classes (GTK_ORIENTABLE (pbar));
+  _ctk_orientable_set_style_classes (CTK_ORIENTABLE (pbar));
 
-  widget_node = ctk_widget_get_css_node (GTK_WIDGET (pbar));
+  widget_node = ctk_widget_get_css_node (CTK_WIDGET (pbar));
   priv->gadget = ctk_css_custom_gadget_new_for_node (widget_node,
-                                                     GTK_WIDGET (pbar),
+                                                     CTK_WIDGET (pbar),
                                                      ctk_progress_bar_measure,
                                                      ctk_progress_bar_allocate,
                                                      ctk_progress_bar_render,
@@ -582,7 +582,7 @@ ctk_progress_bar_init (GtkProgressBar *pbar)
                                                      NULL);
 
   priv->trough_gadget = ctk_css_custom_gadget_new ("trough",
-                                                   GTK_WIDGET (pbar),
+                                                   CTK_WIDGET (pbar),
                                                    priv->gadget,
                                                    NULL,
                                                    ctk_progress_bar_measure_trough,
@@ -592,7 +592,7 @@ ctk_progress_bar_init (GtkProgressBar *pbar)
                                                    NULL);
 
   priv->progress_gadget = ctk_css_custom_gadget_new ("progress",
-                                                     GTK_WIDGET (pbar),
+                                                     CTK_WIDGET (pbar),
                                                      priv->trough_gadget,
                                                      NULL,
                                                      ctk_progress_bar_measure_progress,
@@ -613,7 +613,7 @@ ctk_progress_bar_set_property (GObject      *object,
 {
   GtkProgressBar *pbar;
 
-  pbar = GTK_PROGRESS_BAR (object);
+  pbar = CTK_PROGRESS_BAR (object);
 
   switch (prop_id)
     {
@@ -650,7 +650,7 @@ ctk_progress_bar_get_property (GObject      *object,
                                GValue       *value,
                                GParamSpec   *pspec)
 {
-  GtkProgressBar *pbar = GTK_PROGRESS_BAR (object);
+  GtkProgressBar *pbar = CTK_PROGRESS_BAR (object);
   GtkProgressBarPrivate* priv = pbar->priv;
 
   switch (prop_id)
@@ -694,7 +694,7 @@ ctk_progress_bar_new (void)
 {
   GtkWidget *pbar;
 
-  pbar = g_object_new (GTK_TYPE_PROGRESS_BAR, NULL);
+  pbar = g_object_new (CTK_TYPE_PROGRESS_BAR, NULL);
 
   return pbar;
 }
@@ -702,7 +702,7 @@ ctk_progress_bar_new (void)
 static void
 ctk_progress_bar_finalize (GObject *object)
 {
-  GtkProgressBar *pbar = GTK_PROGRESS_BAR (object);
+  GtkProgressBar *pbar = CTK_PROGRESS_BAR (object);
   GtkProgressBarPrivate *priv = pbar->priv;
 
   if (priv->activity_mode)
@@ -746,7 +746,7 @@ ctk_progress_bar_measure (GtkCssGadget   *gadget,
   gint trough_minimum, trough_natural;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  pbar = GTK_PROGRESS_BAR (widget);
+  pbar = CTK_PROGRESS_BAR (widget);
   priv = pbar->priv;
 
   if (priv->show_text)
@@ -764,9 +764,9 @@ ctk_progress_bar_measure (GtkCssGadget   *gadget,
                                      &trough_minimum, &trough_natural,
                                      NULL, NULL);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           *minimum = MAX (text_minimum, trough_minimum);
           *natural = MAX (text_natural, trough_natural);
@@ -779,7 +779,7 @@ ctk_progress_bar_measure (GtkCssGadget   *gadget,
     }
   else
     {
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           *minimum = text_minimum + trough_minimum;
           *natural = text_natural + trough_natural;
@@ -802,7 +802,7 @@ ctk_progress_bar_get_layout (GtkProgressBar *pbar)
   PangoFontDescription *desc;
 
   buf = get_current_text (pbar);
-  layout = ctk_widget_create_pango_layout (GTK_WIDGET (pbar), buf);
+  layout = ctk_widget_create_pango_layout (CTK_WIDGET (pbar), buf);
 
   style = ctk_css_node_get_style (ctk_css_gadget_get_node (pbar->priv->text_gadget));
 
@@ -838,14 +838,14 @@ ctk_progress_bar_measure_text (GtkCssGadget   *gadget,
   PangoRectangle logical_rect;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  pbar = GTK_PROGRESS_BAR (widget);
+  pbar = CTK_PROGRESS_BAR (widget);
   priv = pbar->priv;
 
   layout = ctk_progress_bar_get_layout (pbar);
 
   pango_layout_get_pixel_extents (layout, NULL, &logical_rect);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       if (priv->ellipsize)
         {
@@ -902,18 +902,18 @@ ctk_progress_bar_measure_trough (GtkCssGadget   *gadget,
   GtkCssStyle *style;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  priv = GTK_PROGRESS_BAR (widget)->priv;
+  priv = CTK_PROGRESS_BAR (widget)->priv;
 
   style = ctk_css_gadget_get_style (gadget);
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       gdouble min_width;
 
-      min_width = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_MIN_WIDTH), 100.0);
+      min_width = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_MIN_WIDTH), 100.0);
 
       if (min_width > 0.0)
         *minimum = 0;
-      else if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      else if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         ctk_widget_style_get (widget, "min-horizontal-bar-width", minimum, NULL);
       else
         ctk_widget_style_get (widget, "min-vertical-bar-width", minimum, NULL);
@@ -922,11 +922,11 @@ ctk_progress_bar_measure_trough (GtkCssGadget   *gadget,
     {
       gdouble min_height;
 
-      min_height = _ctk_css_number_value_get (ctk_css_style_get_value (style, GTK_CSS_PROPERTY_MIN_HEIGHT), 100.0);
+      min_height = _ctk_css_number_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_MIN_HEIGHT), 100.0);
 
       if (min_height > 0.0)
         *minimum = 0;
-      else if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      else if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         ctk_widget_style_get (widget, "min-horizontal-bar-height", minimum, NULL);
       else
         ctk_widget_style_get (widget, "min-vertical-bar-height", minimum, NULL);
@@ -956,19 +956,19 @@ ctk_progress_bar_measure_progress (GtkCssGadget   *gadget,
   GtkCssStyle *style;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  pbar = GTK_PROGRESS_BAR (widget);
+  pbar = CTK_PROGRESS_BAR (widget);
   priv = pbar->priv;
 
   style = ctk_css_gadget_get_style (gadget);
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       gint min_width;
 
-      min_width = get_number (style, GTK_CSS_PROPERTY_MIN_WIDTH);
+      min_width = get_number (style, CTK_CSS_PROPERTY_MIN_WIDTH);
 
       if (min_width != 0)
         *minimum = min_width;
-      else if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      else if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         *minimum = 0;
       else
         ctk_widget_style_get (widget, "min-vertical-bar-width", minimum, NULL);
@@ -977,11 +977,11 @@ ctk_progress_bar_measure_progress (GtkCssGadget   *gadget,
     {
       gint min_height;
 
-      min_height = get_number (style, GTK_CSS_PROPERTY_MIN_HEIGHT);
+      min_height = get_number (style, CTK_CSS_PROPERTY_MIN_HEIGHT);
 
       if (min_height != 0)
         *minimum = min_height;
-      else if (priv->orientation == GTK_ORIENTATION_VERTICAL)
+      else if (priv->orientation == CTK_ORIENTATION_VERTICAL)
         *minimum = 0;
       else
         ctk_widget_style_get (widget, "min-horizontal-bar-height", minimum, NULL);
@@ -1003,7 +1003,7 @@ ctk_progress_bar_size_allocate (GtkWidget     *widget,
 
   ctk_widget_set_allocation (widget, allocation);
 
-  ctk_css_gadget_allocate (GTK_PROGRESS_BAR (widget)->priv->gadget,
+  ctk_css_gadget_allocate (CTK_PROGRESS_BAR (widget)->priv->gadget,
                            allocation,
                            ctk_widget_get_allocated_baseline (widget),
                            &clip);
@@ -1026,12 +1026,12 @@ ctk_progress_bar_allocate (GtkCssGadget        *gadget,
   GtkAllocation text_clip;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  priv = GTK_PROGRESS_BAR (widget)->priv;
+  priv = CTK_PROGRESS_BAR (widget)->priv;
 
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       ctk_css_gadget_get_preferred_size (priv->trough_gadget,
-                                         GTK_ORIENTATION_VERTICAL,
+                                         CTK_ORIENTATION_VERTICAL,
                                          -1,
                                          &bar_height, NULL,
                                          NULL, NULL);
@@ -1040,7 +1040,7 @@ ctk_progress_bar_allocate (GtkCssGadget        *gadget,
   else
     {
       ctk_css_gadget_get_preferred_size (priv->trough_gadget,
-                                         GTK_ORIENTATION_HORIZONTAL,
+                                         CTK_ORIENTATION_HORIZONTAL,
                                          -1,
                                          &bar_width, NULL,
                                          NULL, NULL);
@@ -1058,19 +1058,19 @@ ctk_progress_bar_allocate (GtkCssGadget        *gadget,
     return;
 
   ctk_css_gadget_get_preferred_size (priv->text_gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      &text_min, &text_nat,
                                      NULL, NULL);
   ctk_css_gadget_get_preferred_size (priv->text_gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      &text_height, NULL,
                                      NULL, NULL);
 
   text_width = CLAMP (text_nat, text_min, allocation->width);
 
-  if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       alloc.x = allocation->x + (allocation->width - text_width) / 2;
       alloc.y = allocation->y;
@@ -1105,29 +1105,29 @@ ctk_progress_bar_allocate_trough (GtkCssGadget        *gadget,
   gboolean inverted;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  priv = GTK_PROGRESS_BAR (widget)->priv;
+  priv = CTK_PROGRESS_BAR (widget)->priv;
 
   inverted = priv->inverted;
-  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+  if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
     {
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         inverted = !inverted;
     }
 
   ctk_css_gadget_get_preferred_size (priv->progress_gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      &height, NULL,
                                      NULL, NULL);
   ctk_css_gadget_get_preferred_size (priv->progress_gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      &width, NULL,
                                      NULL, NULL);
 
   if (priv->activity_mode)
     {
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           alloc.width = width + (allocation->width - width) / priv->activity_blocks;
           alloc.x = allocation->x + priv->activity_pos * (allocation->width - alloc.width);
@@ -1145,7 +1145,7 @@ ctk_progress_bar_allocate_trough (GtkCssGadget        *gadget,
     }
   else
     {
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           alloc.width = width + (allocation->width - width) * priv->fraction;
           alloc.height = height;
@@ -1177,8 +1177,8 @@ ctk_progress_bar_get_preferred_width (GtkWidget *widget,
                                       gint      *minimum,
                                       gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (GTK_PROGRESS_BAR (widget)->priv->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+  ctk_css_gadget_get_preferred_size (CTK_PROGRESS_BAR (widget)->priv->gadget,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -1189,8 +1189,8 @@ ctk_progress_bar_get_preferred_height (GtkWidget *widget,
                                        gint      *minimum,
                                        gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (GTK_PROGRESS_BAR (widget)->priv->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+  ctk_css_gadget_get_preferred_size (CTK_PROGRESS_BAR (widget)->priv->gadget,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -1201,7 +1201,7 @@ tick_cb (GtkWidget     *widget,
          GdkFrameClock *frame_clock,
          gpointer       user_data)
 {
-  GtkProgressBar *pbar = GTK_PROGRESS_BAR (widget);
+  GtkProgressBar *pbar = CTK_PROGRESS_BAR (widget);
   GtkProgressBarPrivate *priv = pbar->priv;
   gint64 frame_time;
   gdouble iteration, pulse_iterations, current_iterations, fraction;
@@ -1262,15 +1262,15 @@ static void
 ctk_progress_bar_act_mode_enter (GtkProgressBar *pbar)
 {
   GtkProgressBarPrivate *priv = pbar->priv;
-  GtkWidget *widget = GTK_WIDGET (pbar);
+  GtkWidget *widget = CTK_WIDGET (pbar);
   gboolean inverted;
 
-  ctk_css_gadget_add_class (priv->progress_gadget, GTK_STYLE_CLASS_PULSE);
+  ctk_css_gadget_add_class (priv->progress_gadget, CTK_STYLE_CLASS_PULSE);
 
   inverted = priv->inverted;
-  if (ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+  if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
     {
-      if (priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         inverted = !inverted;
     }
 
@@ -1302,10 +1302,10 @@ ctk_progress_bar_act_mode_leave (GtkProgressBar *pbar)
   GtkProgressBarPrivate *priv = pbar->priv;
 
   if (priv->tick_id)
-    ctk_widget_remove_tick_callback (GTK_WIDGET (pbar), priv->tick_id);
+    ctk_widget_remove_tick_callback (CTK_WIDGET (pbar), priv->tick_id);
   priv->tick_id = 0;
 
-  ctk_css_gadget_remove_class (priv->progress_gadget, GTK_STYLE_CLASS_PULSE);
+  ctk_css_gadget_remove_class (priv->progress_gadget, CTK_STYLE_CLASS_PULSE);
   update_node_classes (pbar);
 }
 
@@ -1325,7 +1325,7 @@ ctk_progress_bar_render_text (GtkCssGadget *gadget,
   PangoLayout *layout;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  pbar = GTK_PROGRESS_BAR (widget);
+  pbar = CTK_PROGRESS_BAR (widget);
   priv = pbar->priv;
 
   context = ctk_widget_get_style_context (widget);
@@ -1358,7 +1358,7 @@ ctk_progress_bar_render_trough (GtkCssGadget *gadget,
   GtkProgressBarPrivate *priv;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  priv = GTK_PROGRESS_BAR (widget)->priv;
+  priv = CTK_PROGRESS_BAR (widget)->priv;
 
   ctk_css_gadget_draw (priv->progress_gadget, cr);
 
@@ -1378,7 +1378,7 @@ ctk_progress_bar_render (GtkCssGadget *gadget,
   GtkProgressBarPrivate *priv;
 
   widget = ctk_css_gadget_get_owner (gadget);
-  priv = GTK_PROGRESS_BAR (widget)->priv;
+  priv = CTK_PROGRESS_BAR (widget)->priv;
 
   ctk_css_gadget_draw (priv->trough_gadget, cr);
   if (priv->show_text)
@@ -1391,7 +1391,7 @@ static gboolean
 ctk_progress_bar_draw (GtkWidget *widget,
                        cairo_t   *cr)
 {
-  GtkProgressBar *pbar = GTK_PROGRESS_BAR (widget);
+  GtkProgressBar *pbar = CTK_PROGRESS_BAR (widget);
   GtkProgressBarPrivate *priv = pbar->priv;
 
   ctk_css_gadget_draw (priv->gadget, cr);
@@ -1416,7 +1416,7 @@ ctk_progress_bar_set_activity_mode (GtkProgressBar *pbar,
       else
         ctk_progress_bar_act_mode_leave (pbar);
 
-      ctk_widget_queue_resize (GTK_WIDGET (pbar));
+      ctk_widget_queue_resize (CTK_WIDGET (pbar));
     }
 }
 
@@ -1435,13 +1435,13 @@ ctk_progress_bar_set_fraction (GtkProgressBar *pbar,
 {
   GtkProgressBarPrivate* priv;
 
-  g_return_if_fail (GTK_IS_PROGRESS_BAR (pbar));
+  g_return_if_fail (CTK_IS_PROGRESS_BAR (pbar));
 
   priv = pbar->priv;
 
   priv->fraction = CLAMP (fraction, 0.0, 1.0);
   ctk_progress_bar_set_activity_mode (pbar, FALSE);
-  ctk_widget_queue_allocate (GTK_WIDGET (pbar));
+  ctk_widget_queue_allocate (CTK_WIDGET (pbar));
   update_fraction_classes (pbar);
 
   g_object_notify_by_pspec (G_OBJECT (pbar), progress_props[PROP_FRACTION]);
@@ -1473,7 +1473,7 @@ ctk_progress_bar_update_pulse (GtkProgressBar *pbar)
 void
 ctk_progress_bar_pulse (GtkProgressBar *pbar)
 {
-  g_return_if_fail (GTK_IS_PROGRESS_BAR (pbar));
+  g_return_if_fail (CTK_IS_PROGRESS_BAR (pbar));
 
   ctk_progress_bar_set_activity_mode (pbar, TRUE);
   ctk_progress_bar_update_pulse (pbar);
@@ -1501,7 +1501,7 @@ ctk_progress_bar_set_text (GtkProgressBar *pbar,
 {
   GtkProgressBarPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PROGRESS_BAR (pbar));
+  g_return_if_fail (CTK_IS_PROGRESS_BAR (pbar));
 
   priv = pbar->priv;
 
@@ -1512,7 +1512,7 @@ ctk_progress_bar_set_text (GtkProgressBar *pbar,
   g_free (priv->text);
   priv->text = g_strdup (text);
 
-  ctk_widget_queue_resize (GTK_WIDGET (pbar));
+  ctk_widget_queue_resize (CTK_WIDGET (pbar));
 
   g_object_notify_by_pspec (G_OBJECT (pbar), progress_props[PROP_TEXT]);
 }
@@ -1523,10 +1523,10 @@ ctk_progress_bar_text_style_changed (GtkCssNode        *node,
                                      GtkProgressBar    *pbar)
 {
   if (change == NULL ||
-      ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_TEXT_ATTRS) ||
-      ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_FONT))
+      ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_TEXT_ATTRS) ||
+      ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_FONT))
     {
-      ctk_widget_queue_resize (GTK_WIDGET (pbar));
+      ctk_widget_queue_resize (CTK_WIDGET (pbar));
     }
 }
 
@@ -1552,7 +1552,7 @@ ctk_progress_bar_set_show_text (GtkProgressBar *pbar,
 {
   GtkProgressBarPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PROGRESS_BAR (pbar));
+  g_return_if_fail (CTK_IS_PROGRESS_BAR (pbar));
 
   priv = pbar->priv;
 
@@ -1566,7 +1566,7 @@ ctk_progress_bar_set_show_text (GtkProgressBar *pbar,
   if (show_text)
     {
       priv->text_gadget = ctk_css_custom_gadget_new ("text",
-                                                     GTK_WIDGET (pbar),
+                                                     CTK_WIDGET (pbar),
                                                      priv->gadget,
                                                      priv->trough_gadget,
                                                      ctk_progress_bar_measure_text,
@@ -1586,7 +1586,7 @@ ctk_progress_bar_set_show_text (GtkProgressBar *pbar,
       g_clear_object (&priv->text_gadget);
     }
 
-  ctk_widget_queue_resize (GTK_WIDGET (pbar));
+  ctk_widget_queue_resize (CTK_WIDGET (pbar));
 
   g_object_notify_by_pspec (G_OBJECT (pbar), progress_props[PROP_SHOW_TEXT]);
 }
@@ -1605,7 +1605,7 @@ ctk_progress_bar_set_show_text (GtkProgressBar *pbar,
 gboolean
 ctk_progress_bar_get_show_text (GtkProgressBar *pbar)
 {
-  g_return_val_if_fail (GTK_IS_PROGRESS_BAR (pbar), FALSE);
+  g_return_val_if_fail (CTK_IS_PROGRESS_BAR (pbar), FALSE);
 
   return pbar->priv->show_text;
 }
@@ -1624,7 +1624,7 @@ ctk_progress_bar_set_pulse_step (GtkProgressBar *pbar,
 {
   GtkProgressBarPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PROGRESS_BAR (pbar));
+  g_return_if_fail (CTK_IS_PROGRESS_BAR (pbar));
 
   priv = pbar->priv;
 
@@ -1637,23 +1637,23 @@ static void
 ctk_progress_bar_direction_changed (GtkWidget        *widget,
                                     GtkTextDirection  previous_dir)
 {
-  GtkProgressBar *pbar = GTK_PROGRESS_BAR (widget);
+  GtkProgressBar *pbar = CTK_PROGRESS_BAR (widget);
 
   update_node_classes (pbar);
   update_node_state (pbar);
 
-  GTK_WIDGET_CLASS (ctk_progress_bar_parent_class)->direction_changed (widget, previous_dir);
+  CTK_WIDGET_CLASS (ctk_progress_bar_parent_class)->direction_changed (widget, previous_dir);
 }
 
 static void
 ctk_progress_bar_state_flags_changed (GtkWidget     *widget,
                                       GtkStateFlags  previous_state)
 {
-  GtkProgressBar *pbar = GTK_PROGRESS_BAR (widget);
+  GtkProgressBar *pbar = CTK_PROGRESS_BAR (widget);
 
   update_node_state (pbar);
 
-  GTK_WIDGET_CLASS (ctk_progress_bar_parent_class)->state_flags_changed (widget, previous_state);
+  CTK_WIDGET_CLASS (ctk_progress_bar_parent_class)->state_flags_changed (widget, previous_state);
 }
 
 static void
@@ -1667,9 +1667,9 @@ ctk_progress_bar_set_orientation (GtkProgressBar *pbar,
 
   priv->orientation = orientation;
 
-  _ctk_orientable_set_style_classes (GTK_ORIENTABLE (pbar));
+  _ctk_orientable_set_style_classes (CTK_ORIENTABLE (pbar));
   update_node_classes (pbar);
-  ctk_widget_queue_resize (GTK_WIDGET (pbar));
+  ctk_widget_queue_resize (CTK_WIDGET (pbar));
 
   g_object_notify (G_OBJECT (pbar), "orientation");
 }
@@ -1688,7 +1688,7 @@ ctk_progress_bar_set_inverted (GtkProgressBar *pbar,
 {
   GtkProgressBarPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PROGRESS_BAR (pbar));
+  g_return_if_fail (CTK_IS_PROGRESS_BAR (pbar));
 
   priv = pbar->priv;
 
@@ -1698,7 +1698,7 @@ ctk_progress_bar_set_inverted (GtkProgressBar *pbar,
   priv->inverted = inverted;
 
   update_node_classes (pbar);
-  ctk_widget_queue_resize (GTK_WIDGET (pbar));
+  ctk_widget_queue_resize (CTK_WIDGET (pbar));
 
   g_object_notify_by_pspec (G_OBJECT (pbar), progress_props[PROP_INVERTED]);
 }
@@ -1718,7 +1718,7 @@ ctk_progress_bar_set_inverted (GtkProgressBar *pbar,
 const gchar*
 ctk_progress_bar_get_text (GtkProgressBar *pbar)
 {
-  g_return_val_if_fail (GTK_IS_PROGRESS_BAR (pbar), NULL);
+  g_return_val_if_fail (CTK_IS_PROGRESS_BAR (pbar), NULL);
 
   return pbar->priv->text;
 }
@@ -1734,7 +1734,7 @@ ctk_progress_bar_get_text (GtkProgressBar *pbar)
 gdouble
 ctk_progress_bar_get_fraction (GtkProgressBar *pbar)
 {
-  g_return_val_if_fail (GTK_IS_PROGRESS_BAR (pbar), 0);
+  g_return_val_if_fail (CTK_IS_PROGRESS_BAR (pbar), 0);
 
   return pbar->priv->fraction;
 }
@@ -1750,7 +1750,7 @@ ctk_progress_bar_get_fraction (GtkProgressBar *pbar)
 gdouble
 ctk_progress_bar_get_pulse_step (GtkProgressBar *pbar)
 {
-  g_return_val_if_fail (GTK_IS_PROGRESS_BAR (pbar), 0);
+  g_return_val_if_fail (CTK_IS_PROGRESS_BAR (pbar), 0);
 
   return pbar->priv->pulse_fraction;
 }
@@ -1766,7 +1766,7 @@ ctk_progress_bar_get_pulse_step (GtkProgressBar *pbar)
 gboolean
 ctk_progress_bar_get_inverted (GtkProgressBar *pbar)
 {
-  g_return_val_if_fail (GTK_IS_PROGRESS_BAR (pbar), FALSE);
+  g_return_val_if_fail (CTK_IS_PROGRESS_BAR (pbar), FALSE);
 
   return pbar->priv->inverted;
 }
@@ -1787,7 +1787,7 @@ ctk_progress_bar_set_ellipsize (GtkProgressBar     *pbar,
 {
   GtkProgressBarPrivate *priv;
 
-  g_return_if_fail (GTK_IS_PROGRESS_BAR (pbar));
+  g_return_if_fail (CTK_IS_PROGRESS_BAR (pbar));
   g_return_if_fail (mode >= PANGO_ELLIPSIZE_NONE &&
                     mode <= PANGO_ELLIPSIZE_END);
 
@@ -1798,7 +1798,7 @@ ctk_progress_bar_set_ellipsize (GtkProgressBar     *pbar,
       priv->ellipsize = mode;
 
       g_object_notify_by_pspec (G_OBJECT (pbar), progress_props[PROP_ELLIPSIZE]);
-      ctk_widget_queue_resize (GTK_WIDGET (pbar));
+      ctk_widget_queue_resize (CTK_WIDGET (pbar));
     }
 }
 
@@ -1816,7 +1816,7 @@ ctk_progress_bar_set_ellipsize (GtkProgressBar     *pbar,
 PangoEllipsizeMode
 ctk_progress_bar_get_ellipsize (GtkProgressBar *pbar)
 {
-  g_return_val_if_fail (GTK_IS_PROGRESS_BAR (pbar), PANGO_ELLIPSIZE_NONE);
+  g_return_val_if_fail (CTK_IS_PROGRESS_BAR (pbar), PANGO_ELLIPSIZE_NONE);
 
   return pbar->priv->ellipsize;
 }

@@ -15,19 +15,19 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_MODEL_REF_COUNT_H__
-#define __GTK_TREE_MODEL_REF_COUNT_H__
+#ifndef __CTK_TREE_MODEL_REF_COUNT_H__
+#define __CTK_TREE_MODEL_REF_COUNT_H__
 
 #include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TREE_MODEL_REF_COUNT              (ctk_tree_model_ref_count_get_type ())
-#define GTK_TREE_MODEL_REF_COUNT(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_MODEL_REF_COUNT, GtkTreeModelRefCount))
-#define GTK_TREE_MODEL_REF_COUNT_CLASS(vtable)     (G_TYPE_CHECK_CLASS_CAST ((vtable), GTK_TYPE_TREE_MODEL_REF_COUNT, GtkTreeModelRefCountClass))
-#define GTK_IS_TREE_MODEL_REF_COUNT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_MODEL_REF_COUNT))
-#define GTK_IS_TREE_MODEL_REF_COUNT_CLASS(vtable)  (G_TYPE_CHECK_CLASS_TYPE ((vtable), GTK_TYPE_TREE_MODEL_REF_COUNT))
-#define GTK_TREE_MODEL_REF_COUNT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TREE_MODEL_REF_COUNT, GtkTreeModelRefCountClass))
+#define CTK_TYPE_TREE_MODEL_REF_COUNT              (ctk_tree_model_ref_count_get_type ())
+#define CTK_TREE_MODEL_REF_COUNT(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_MODEL_REF_COUNT, GtkTreeModelRefCount))
+#define CTK_TREE_MODEL_REF_COUNT_CLASS(vtable)     (G_TYPE_CHECK_CLASS_CAST ((vtable), CTK_TYPE_TREE_MODEL_REF_COUNT, GtkTreeModelRefCountClass))
+#define CTK_IS_TREE_MODEL_REF_COUNT(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_MODEL_REF_COUNT))
+#define CTK_IS_TREE_MODEL_REF_COUNT_CLASS(vtable)  (G_TYPE_CHECK_CLASS_TYPE ((vtable), CTK_TYPE_TREE_MODEL_REF_COUNT))
+#define CTK_TREE_MODEL_REF_COUNT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_MODEL_REF_COUNT, GtkTreeModelRefCountClass))
 
 
 typedef struct _GtkTreeModelRefCount        GtkTreeModelRefCount;
@@ -129,4 +129,4 @@ assert_node_ref_count (GtkTreeModelRefCount *ref_model,
 }
 
 
-#endif /* __GTK_TREE_MODEL_REF_COUNT_H__ */
+#endif /* __CTK_TREE_MODEL_REF_COUNT_H__ */

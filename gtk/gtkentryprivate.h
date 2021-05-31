@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ENTRY_PRIVATE_H__
-#define __GTK_ENTRY_PRIVATE_H__
+#ifndef __CTK_ENTRY_PRIVATE_H__
+#define __CTK_ENTRY_PRIVATE_H__
 
 #include <gtk/gtktreeviewcolumn.h>
 #include <gtk/gtktreemodelfilter.h>
@@ -103,4 +103,4 @@ void     ctk_entry_set_positions           (GtkEntry   *entry,
 
 G_END_DECLS
 
-#endif /* __GTK_ENTRY_PRIVATE_H__ */
+#endif /* __CTK_ENTRY_PRIVATE_H__ */

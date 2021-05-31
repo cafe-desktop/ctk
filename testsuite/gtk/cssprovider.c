@@ -35,14 +35,14 @@ test_section_in_style_property (void)
                     G_CALLBACK (assert_section_is_not_null), NULL);
   ctk_css_provider_load_from_data (provider, "* { -GtkWidget-interior-focus: random garbage goes here; }", -1, NULL);
 
-  widget_class = g_type_class_ref (GTK_TYPE_WIDGET);
+  widget_class = g_type_class_ref (CTK_TYPE_WIDGET);
   pspec = ctk_widget_class_find_style_property (widget_class, "interior-focus");
   g_assert (pspec);
   path = ctk_widget_path_new ();
-  ctk_widget_path_append_type (path, GTK_TYPE_WIDGET);
+  ctk_widget_path_append_type (path, CTK_TYPE_WIDGET);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  ctk_style_provider_get_style_property (GTK_STYLE_PROVIDER (provider), path, 0, pspec, &value);
+  ctk_style_provider_get_style_property (CTK_STYLE_PROVIDER (provider), path, 0, pspec, &value);
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
   ctk_widget_path_unref (path);

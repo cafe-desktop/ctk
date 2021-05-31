@@ -138,13 +138,13 @@ init_atoms (void)
 void
 selection_toggled (GtkWidget *widget)
 {
-  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (widget)))
+  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (widget)))
     {
       have_selection = ctk_selection_owner_set (selection_widget,
 						GDK_SELECTION_PRIMARY,
 						GDK_CURRENT_TIME);
       if (!have_selection)
-	ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON(widget), FALSE);
+	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON(widget), FALSE);
     }
   else
     {
@@ -198,7 +198,7 @@ gint
 selection_clear (GtkWidget *widget, GdkEventSelection *event)
 {
   have_selection = FALSE;
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON(selection_button), FALSE);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON(selection_button), FALSE);
 
   return TRUE;
 }
@@ -306,7 +306,7 @@ selection_received (GtkWidget *widget, GtkSelectionData *selection_data)
 
   selection_string = g_string_new (NULL);
 
-  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (selection_text));
+  buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (selection_text));
   ctk_text_buffer_set_text (buffer, "", -1);
 
   position = 0;
@@ -359,13 +359,13 @@ paste (GtkWidget *dialog, gint response, GtkWidget *entry)
   const char *name;
   GdkAtom atom;
 
-  if (response != GTK_RESPONSE_APPLY)
+  if (response != CTK_RESPONSE_APPLY)
     {
       ctk_widget_destroy (dialog);
       return;
     }
 
-  name = ctk_entry_get_text (GTK_ENTRY(entry));
+  name = ctk_entry_get_text (CTK_ENTRY(entry));
   atom = gdk_atom_intern (name, FALSE);
 
   if (atom == GDK_NONE)
@@ -410,21 +410,21 @@ main (int argc, char *argv[])
 
   dialog = ctk_dialog_new ();
   ctk_widget_set_name (dialog, "Test Input");
-  ctk_container_set_border_width (GTK_CONTAINER(dialog), 0);
+  ctk_container_set_border_width (CTK_CONTAINER(dialog), 0);
 
   g_signal_connect (dialog, "destroy",
 		    G_CALLBACK (quit), NULL);
 
-  content_area = ctk_dialog_get_content_area (GTK_DIALOG (dialog));
+  content_area = ctk_dialog_get_content_area (CTK_DIALOG (dialog));
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-  ctk_container_set_border_width (GTK_CONTAINER (vbox), 10);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 2);
+  ctk_container_set_border_width (CTK_CONTAINER (vbox), 10);
 
-  ctk_box_pack_start (GTK_BOX (content_area), vbox, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (content_area), vbox, TRUE, TRUE, 0);
   ctk_widget_show (vbox);
   
   selection_button = ctk_toggle_button_new_with_label ("Claim Selection");
-  ctk_container_add (GTK_CONTAINER (vbox), selection_button);
+  ctk_container_add (CTK_CONTAINER (vbox), selection_button);
   ctk_widget_show (selection_button);
 
   g_signal_connect (selection_button, "toggled",
@@ -442,29 +442,29 @@ main (int argc, char *argv[])
 
   selection_text = ctk_text_view_new ();
   scrolled = ctk_scrolled_window_new (NULL, NULL);
-  ctk_container_add (GTK_CONTAINER (scrolled), selection_text);
-  ctk_container_add (GTK_CONTAINER (vbox), scrolled);
+  ctk_container_add (CTK_CONTAINER (scrolled), selection_text);
+  ctk_container_add (CTK_CONTAINER (vbox), scrolled);
   ctk_widget_show (selection_text);
 
-  hbox = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 2);
-  ctk_container_add (GTK_CONTAINER (vbox), hbox);
+  hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 2);
+  ctk_container_add (CTK_CONTAINER (vbox), hbox);
   ctk_widget_show (hbox);
 
   label = ctk_label_new ("Target:");
-  ctk_box_pack_start (GTK_BOX(hbox), label, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX(hbox), label, FALSE, FALSE, 0);
   ctk_widget_show (label);
 
   entry = ctk_entry_new ();
-  ctk_box_pack_start (GTK_BOX(hbox), entry, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX(hbox), entry, TRUE, TRUE, 0);
   ctk_widget_show (entry);
 
   /* .. And create some buttons */
-  ctk_dialog_add_button (GTK_DIALOG (dialog),
+  ctk_dialog_add_button (CTK_DIALOG (dialog),
                          "Paste",
-                         GTK_RESPONSE_APPLY);
-  ctk_dialog_add_button (GTK_DIALOG (dialog),
+                         CTK_RESPONSE_APPLY);
+  ctk_dialog_add_button (CTK_DIALOG (dialog),
                          "Quit",
-                         GTK_RESPONSE_CLOSE);
+                         CTK_RESPONSE_CLOSE);
 
   g_signal_connect (dialog, "response",
 		    G_CALLBACK (paste), entry);

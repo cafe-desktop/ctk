@@ -4,13 +4,13 @@ libdir=@libdir@
 includedir=@includedir@
 targets=@GDK_BACKENDS@
 
-ctk_binary_version=@GTK_BINARY_VERSION@
+ctk_binary_version=@CTK_BINARY_VERSION@
 ctk_host=@host@
 
 Name: GTK+
 Description: GTK+ Graphical UI Library
 Version: @VERSION@
-Requires: gdk-@GTK_API_VERSION@ @GTK_PACKAGES@
-Requires.private: @GTK_PRIVATE_PACKAGES@
-Libs: -L${libdir} -lgtk-3 @GTK_EXTRA_LIBS@
-Cflags: -I${includedir}/gtk-@GTK_API_VERSION@ @GTK_EXTRA_CFLAGS@
+Requires: gdk-@CTK_API_VERSION@ @CTK_PACKAGES@
+Requires.private: @CTK_PRIVATE_PACKAGES@
+Libs: -L${libdir} -lgtk-3 @CTK_EXTRA_LIBS@
+Cflags: -I${includedir}/gtk-@CTK_API_VERSION@ @CTK_EXTRA_CFLAGS@

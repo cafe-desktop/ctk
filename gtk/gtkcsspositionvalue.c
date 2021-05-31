@@ -22,7 +22,7 @@
 #include "gtkcssnumbervalueprivate.h"
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   GtkCssValue *x;
   GtkCssValue *y;
 };
@@ -95,10 +95,10 @@ ctk_css_value_position_print (const GtkCssValue *position,
     const char *y_name;
     GtkCssValue *number;
   } values[] = { 
-    { "left",   "top",    _ctk_css_number_value_new (0, GTK_CSS_PERCENT) },
-    { "right",  "bottom", _ctk_css_number_value_new (100, GTK_CSS_PERCENT) }
+    { "left",   "top",    _ctk_css_number_value_new (0, CTK_CSS_PERCENT) },
+    { "right",  "bottom", _ctk_css_number_value_new (100, CTK_CSS_PERCENT) }
   };
-  GtkCssValue *center = _ctk_css_number_value_new (50, GTK_CSS_PERCENT);
+  GtkCssValue *center = _ctk_css_number_value_new (50, CTK_CSS_PERCENT);
   guint i;
 
   if (_ctk_css_value_equal (position->x, center))
@@ -149,7 +149,7 @@ done:
   _ctk_css_value_unref (center);
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_POSITION = {
+static const GtkCssValueClass CTK_CSS_VALUE_POSITION = {
   ctk_css_value_position_free,
   ctk_css_value_position_compute,
   ctk_css_value_position_equal,
@@ -163,7 +163,7 @@ _ctk_css_position_value_new (GtkCssValue *x,
 {
   GtkCssValue *result;
 
-  result = _ctk_css_value_new (GtkCssValue, &GTK_CSS_VALUE_POSITION);
+  result = _ctk_css_value_new (GtkCssValue, &CTK_CSS_VALUE_POSITION);
   result->x = x;
   result->y = y;
 
@@ -197,12 +197,12 @@ position_value_parse (GtkCssParser *parser, gboolean try)
         {
           if (names[first].horizontal)
             {
-	      x = _ctk_css_number_value_new (names[first].percentage, GTK_CSS_PERCENT);
+	      x = _ctk_css_number_value_new (names[first].percentage, CTK_CSS_PERCENT);
               missing = &y;
             }
           else
             {
-	      y = _ctk_css_number_value_new (names[first].percentage, GTK_CSS_PERCENT);
+	      y = _ctk_css_number_value_new (names[first].percentage, CTK_CSS_PERCENT);
               missing = &x;
             }
           break;
@@ -214,8 +214,8 @@ position_value_parse (GtkCssParser *parser, gboolean try)
         {
           missing = &y;
           x = _ctk_css_number_value_parse (parser,
-                                           GTK_CSS_PARSE_PERCENT
-                                           | GTK_CSS_PARSE_LENGTH);
+                                           CTK_CSS_PARSE_PERCENT
+                                           | CTK_CSS_PARSE_LENGTH);
 
           if (x == NULL)
             return NULL;
@@ -232,7 +232,7 @@ position_value_parse (GtkCssParser *parser, gboolean try)
     {
       if (_ctk_css_parser_try (parser, names[second].name, TRUE))
         {
-	  *missing = _ctk_css_number_value_new (names[second].percentage, GTK_CSS_PERCENT);
+	  *missing = _ctk_css_number_value_new (names[second].percentage, CTK_CSS_PERCENT);
           break;
         }
     }
@@ -249,8 +249,8 @@ position_value_parse (GtkCssParser *parser, gboolean try)
               return NULL;
             }
           y = _ctk_css_number_value_parse (parser,
-                                           GTK_CSS_PARSE_PERCENT
-                                           | GTK_CSS_PARSE_LENGTH);
+                                           CTK_CSS_PARSE_PERCENT
+                                           | CTK_CSS_PARSE_LENGTH);
           if (y == NULL)
             {
               _ctk_css_value_unref (x);
@@ -260,7 +260,7 @@ position_value_parse (GtkCssParser *parser, gboolean try)
       else
         {
           second++;
-          *missing = _ctk_css_number_value_new (50, GTK_CSS_PERCENT);
+          *missing = _ctk_css_number_value_new (50, CTK_CSS_PERCENT);
         }
     }
   else
@@ -296,7 +296,7 @@ _ctk_css_position_value_get_x (const GtkCssValue *position,
                                double             one_hundred_percent)
 {
   g_return_val_if_fail (position != NULL, 0.0);
-  g_return_val_if_fail (position->class == &GTK_CSS_VALUE_POSITION, 0.0);
+  g_return_val_if_fail (position->class == &CTK_CSS_VALUE_POSITION, 0.0);
 
   return _ctk_css_number_value_get (position->x, one_hundred_percent);
 }
@@ -306,7 +306,7 @@ _ctk_css_position_value_get_y (const GtkCssValue *position,
                                double             one_hundred_percent)
 {
   g_return_val_if_fail (position != NULL, 0.0);
-  g_return_val_if_fail (position->class == &GTK_CSS_VALUE_POSITION, 0.0);
+  g_return_val_if_fail (position->class == &CTK_CSS_VALUE_POSITION, 0.0);
 
   return _ctk_css_number_value_get (position->y, one_hundred_percent);
 }

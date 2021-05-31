@@ -964,12 +964,12 @@ create_window (void)
   GtkWidget *window, *vbox, *button;
   gint i;
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  vbox   = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  vbox   = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
 
-  ctk_container_set_border_width (GTK_CONTAINER (window), 8);
+  ctk_container_set_border_width (CTK_CONTAINER (window), 8);
 
-  ctk_container_add (GTK_CONTAINER (window), vbox);
+  ctk_container_add (CTK_CONTAINER (window), vbox);
 
   for (i = 0; i < G_N_ELEMENTS (interfaces); i++)
     {
@@ -980,7 +980,7 @@ create_window (void)
       g_signal_connect (button, "clicked",
                         G_CALLBACK (test_clicked), &interfaces[i]);
 
-      ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+      ctk_box_pack_start (CTK_BOX (vbox), button, FALSE, FALSE, 0);
     }
 
   return window;

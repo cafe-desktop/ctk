@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_STYLE_H__
-#define __GTK_STYLE_H__
+#ifndef __CTK_STYLE_H__
+#define __CTK_STYLE_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -37,12 +37,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STYLE              (ctk_style_get_type ())
-#define GTK_STYLE(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_STYLE, GtkStyle))
-#define GTK_STYLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_STYLE, GtkStyleClass))
-#define GTK_IS_STYLE(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_STYLE))
-#define GTK_IS_STYLE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_STYLE))
-#define GTK_STYLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_STYLE, GtkStyleClass))
+#define CTK_TYPE_STYLE              (ctk_style_get_type ())
+#define CTK_STYLE(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_STYLE, GtkStyle))
+#define CTK_STYLE_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_STYLE, GtkStyleClass))
+#define CTK_IS_STYLE(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_STYLE))
+#define CTK_IS_STYLE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_STYLE))
+#define CTK_STYLE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_STYLE, GtkStyleClass))
 
 /* Some forward declarations needed to rationalize the header
  * files.
@@ -53,28 +53,28 @@ typedef struct _GtkRcProperty  GtkRcProperty;
 
 /**
  * GtkExpanderStyle:
- * @GTK_EXPANDER_COLLAPSED: The style used for a collapsed subtree.
- * @GTK_EXPANDER_SEMI_COLLAPSED: Intermediate style used during animation.
- * @GTK_EXPANDER_SEMI_EXPANDED: Intermediate style used during animation.
- * @GTK_EXPANDER_EXPANDED: The style used for an expanded subtree.
+ * @CTK_EXPANDER_COLLAPSED: The style used for a collapsed subtree.
+ * @CTK_EXPANDER_SEMI_COLLAPSED: Intermediate style used during animation.
+ * @CTK_EXPANDER_SEMI_EXPANDED: Intermediate style used during animation.
+ * @CTK_EXPANDER_EXPANDED: The style used for an expanded subtree.
  *
  * Used to specify the style of the expanders drawn by a #GtkTreeView.
  */
 typedef enum
 {
-  GTK_EXPANDER_COLLAPSED,
-  GTK_EXPANDER_SEMI_COLLAPSED,
-  GTK_EXPANDER_SEMI_EXPANDED,
-  GTK_EXPANDER_EXPANDED
+  CTK_EXPANDER_COLLAPSED,
+  CTK_EXPANDER_SEMI_COLLAPSED,
+  CTK_EXPANDER_SEMI_EXPANDED,
+  CTK_EXPANDER_EXPANDED
 } GtkExpanderStyle;
 
 /**
- * GTK_STYLE_ATTACHED:
+ * CTK_STYLE_ATTACHED:
  * @style: a #GtkStyle.
  *
  * Returns: whether the style is attached to a window.
  */
-#define GTK_STYLE_ATTACHED(style)       (GTK_STYLE (style)->attach_count > 0)
+#define CTK_STYLE_ATTACHED(style)       (CTK_STYLE (style)->attach_count > 0)
 
 /**
  * GtkStyle:
@@ -790,4 +790,4 @@ GdkPixbuf *ctk_widget_render_icon         (GtkWidget   *widget,
 
 G_END_DECLS
 
-#endif /* __GTK_STYLE_H__ */
+#endif /* __CTK_STYLE_H__ */

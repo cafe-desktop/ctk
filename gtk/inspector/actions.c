@@ -46,7 +46,7 @@ struct _GtkInspectorActionsPrivate
   GHashTable *iters;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorActions, ctk_inspector_actions, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkInspectorActions, ctk_inspector_actions, CTK_TYPE_BOX)
 
 static void
 ctk_inspector_actions_init (GtkInspectorActions *sl)
@@ -60,7 +60,7 @@ ctk_inspector_actions_init (GtkInspectorActions *sl)
                                             g_direct_equal,
                                             NULL,
                                             g_free);
-  ctk_widget_init_template (GTK_WIDGET (sl));
+  ctk_widget_init_template (CTK_WIDGET (sl));
 }
 
 static void
@@ -173,7 +173,7 @@ add_group (GtkInspectorActions *sl,
   gint i;
   gchar **names;
 
-  ctk_widget_show (GTK_WIDGET (sl));
+  ctk_widget_show (CTK_WIDGET (sl));
 
   g_signal_connect (group, "action-added", G_CALLBACK (action_added_cb), sl);
   g_signal_connect (group, "action-removed", G_CALLBACK (action_removed_cb), sl);
@@ -203,28 +203,28 @@ void
 ctk_inspector_actions_set_object (GtkInspectorActions *sl,
                                   GObject             *object)
 {
-  ctk_widget_hide (GTK_WIDGET (sl));
+  ctk_widget_hide (CTK_WIDGET (sl));
   g_hash_table_foreach (sl->priv->groups, disconnect_group, sl);
   g_hash_table_remove_all (sl->priv->groups);
   g_hash_table_remove_all (sl->priv->iters);
   ctk_list_store_clear (sl->priv->model);
   
-  if (GTK_IS_APPLICATION (object))
+  if (CTK_IS_APPLICATION (object))
     add_group (sl, G_ACTION_GROUP (object), "app");
-  else if (GTK_IS_APPLICATION_WINDOW (object))
+  else if (CTK_IS_APPLICATION_WINDOW (object))
     add_group (sl, G_ACTION_GROUP (object), "win");
-  else if (GTK_IS_WIDGET (object))
+  else if (CTK_IS_WIDGET (object))
     {
       const gchar **prefixes;
       GActionGroup *group;
       gint i;
 
-      prefixes = ctk_widget_list_action_prefixes (GTK_WIDGET (object));
+      prefixes = ctk_widget_list_action_prefixes (CTK_WIDGET (object));
       if (prefixes)
         {
           for (i = 0; prefixes[i]; i++)
             {
-              group = ctk_widget_get_action_group (GTK_WIDGET (object), prefixes[i]);
+              group = ctk_widget_get_action_group (CTK_WIDGET (object), prefixes[i]);
               add_group (sl, group, prefixes[i]);
             }
           g_free (prefixes);
@@ -246,24 +246,24 @@ row_activated (GtkTreeView         *tv,
   GActionGroup *group;
   GtkWidget *editor;
 
-  ctk_tree_model_get_iter (GTK_TREE_MODEL (sl->priv->model), &iter, path);
-  ctk_tree_model_get (GTK_TREE_MODEL (sl->priv->model),
+  ctk_tree_model_get_iter (CTK_TREE_MODEL (sl->priv->model), &iter, path);
+  ctk_tree_model_get (CTK_TREE_MODEL (sl->priv->model),
                       &iter,
                       COLUMN_PREFIX, &prefix,
                       COLUMN_NAME, &name,
                       COLUMN_GROUP, &group,
                       -1);
 
-  ctk_tree_model_get_iter (GTK_TREE_MODEL (sl->priv->model), &iter, path);
+  ctk_tree_model_get_iter (CTK_TREE_MODEL (sl->priv->model), &iter, path);
   ctk_tree_view_get_cell_area (tv, path, col, &rect);
   ctk_tree_view_convert_bin_window_to_widget_coords (tv, rect.x, rect.y, &rect.x, &rect.y);
 
-  popover = ctk_popover_new (GTK_WIDGET (tv));
-  ctk_popover_set_pointing_to (GTK_POPOVER (popover), &rect);
+  popover = ctk_popover_new (CTK_WIDGET (tv));
+  ctk_popover_set_pointing_to (CTK_POPOVER (popover), &rect);
 
   editor = ctk_inspector_action_editor_new (group, prefix, name);
-  ctk_container_add (GTK_CONTAINER (popover), editor);
-  ctk_popover_popup (GTK_POPOVER (popover));
+  ctk_container_add (CTK_CONTAINER (popover), editor);
+  ctk_popover_popup (CTK_POPOVER (popover));
 
   g_signal_connect (popover, "hide", G_CALLBACK (ctk_widget_destroy), NULL);
 
@@ -274,7 +274,7 @@ row_activated (GtkTreeView         *tv,
 static void
 ctk_inspector_actions_class_init (GtkInspectorActionsClass *klass)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/actions.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorActions, model);

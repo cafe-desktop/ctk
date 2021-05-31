@@ -50,7 +50,7 @@
  * {
  *   GtkExpander *expander;
  *
- *   expander = GTK_EXPANDER (object);
+ *   expander = CTK_EXPANDER (object);
  *
  *   if (ctk_expander_get_expanded (expander))
  *     {
@@ -250,9 +250,9 @@ static void     gesture_multipress_released_cb (GtkGestureMultiPress *gesture,
                                                 gdouble               y,
                                                 GtkExpander          *expander);
 
-G_DEFINE_TYPE_WITH_CODE (GtkExpander, ctk_expander, GTK_TYPE_BIN,
+G_DEFINE_TYPE_WITH_CODE (GtkExpander, ctk_expander, CTK_TYPE_BIN,
                          G_ADD_PRIVATE (GtkExpander)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_expander_buildable_init))
 
 static void
@@ -300,7 +300,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                          P_("Expanded"),
                                                          P_("Whether the expander has been opened to reveal the child widget"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (gobject_class,
                                    PROP_LABEL,
@@ -308,7 +308,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                         P_("Label"),
                                                         P_("Text of the expander's label"),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE|G_PARAM_CONSTRUCT));
+                                                        CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT));
 
   g_object_class_install_property (gobject_class,
                                    PROP_USE_UNDERLINE,
@@ -316,7 +316,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                          P_("Use underline"),
                                                          P_("If set, an underline in the text indicates the next character should be used for the mnemonic accelerator key"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (gobject_class,
                                    PROP_USE_MARKUP,
@@ -324,7 +324,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                          P_("Use markup"),
                                                          P_("The text of the label includes XML markup. See pango_parse_markup()"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkExpander:spacing:
@@ -343,15 +343,15 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                      0,
                                                      G_MAXINT,
                                                      0,
-                                                     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED));
+                                                     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED));
 
   g_object_class_install_property (gobject_class,
                                    PROP_LABEL_WIDGET,
                                    g_param_spec_object ("label-widget",
                                                         P_("Label widget"),
                                                         P_("A widget to display in place of the usual expander label"),
-                                                        GTK_TYPE_WIDGET,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_TYPE_WIDGET,
+                                                        CTK_PARAM_READWRITE));
 
   /**
    * GtkExpander:label-fill:
@@ -366,7 +366,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                          P_("Label fill"),
                                                          P_("Whether the label widget should fill all available horizontal space"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkExpander:resize-toplevel:
@@ -382,7 +382,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                          P_("Resize toplevel"),
                                                          P_("Whether the expander will resize the toplevel window upon expanding and collapsing"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkExpander:expander-size:
@@ -398,7 +398,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                              0,
                                                              G_MAXINT,
                                                              DEFAULT_EXPANDER_SIZE,
-                                                             GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkExpander:expander-spacing:
@@ -415,7 +415,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                                                              0,
                                                              G_MAXINT,
                                                              DEFAULT_EXPANDER_SPACING,
-                                                             GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   widget_class->activate_signal =
     g_signal_new (I_("activate"),
@@ -426,7 +426,7 @@ ctk_expander_class_init (GtkExpanderClass *klass)
                   NULL,
                   G_TYPE_NONE, 0);
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_EXPANDER_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_EXPANDER_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "expander");
 }
 
@@ -438,8 +438,8 @@ ctk_expander_init (GtkExpander *expander)
 
   expander->priv = priv = ctk_expander_get_instance_private (expander);
 
-  ctk_widget_set_can_focus (GTK_WIDGET (expander), TRUE);
-  ctk_widget_set_has_window (GTK_WIDGET (expander), FALSE);
+  ctk_widget_set_can_focus (CTK_WIDGET (expander), TRUE);
+  ctk_widget_set_has_window (CTK_WIDGET (expander), FALSE);
 
   priv->label_widget = NULL;
   priv->event_window = NULL;
@@ -453,38 +453,38 @@ ctk_expander_init (GtkExpander *expander)
   priv->expand_timer = 0;
   priv->resize_toplevel = 0;
 
-  widget_node = ctk_widget_get_css_node (GTK_WIDGET (expander));
-  priv->gadget = ctk_box_gadget_new_for_node (widget_node, GTK_WIDGET (expander));
-  ctk_box_gadget_set_orientation (GTK_BOX_GADGET (priv->gadget), GTK_ORIENTATION_VERTICAL);
+  widget_node = ctk_widget_get_css_node (CTK_WIDGET (expander));
+  priv->gadget = ctk_box_gadget_new_for_node (widget_node, CTK_WIDGET (expander));
+  ctk_box_gadget_set_orientation (CTK_BOX_GADGET (priv->gadget), CTK_ORIENTATION_VERTICAL);
   priv->title_gadget = ctk_box_gadget_new ("title",
-                                           GTK_WIDGET (expander),
+                                           CTK_WIDGET (expander),
                                            priv->gadget,
                                            NULL);
-  ctk_box_gadget_set_orientation (GTK_BOX_GADGET (priv->title_gadget), GTK_ORIENTATION_HORIZONTAL);
-  ctk_box_gadget_set_draw_focus (GTK_BOX_GADGET (priv->title_gadget), TRUE);
-  ctk_box_gadget_insert_gadget (GTK_BOX_GADGET (priv->gadget), -1, priv->title_gadget, FALSE, GTK_ALIGN_START);
+  ctk_box_gadget_set_orientation (CTK_BOX_GADGET (priv->title_gadget), CTK_ORIENTATION_HORIZONTAL);
+  ctk_box_gadget_set_draw_focus (CTK_BOX_GADGET (priv->title_gadget), TRUE);
+  ctk_box_gadget_insert_gadget (CTK_BOX_GADGET (priv->gadget), -1, priv->title_gadget, FALSE, CTK_ALIGN_START);
 
   priv->arrow_gadget = ctk_builtin_icon_new ("arrow",
-                                             GTK_WIDGET (expander),
+                                             CTK_WIDGET (expander),
                                              priv->title_gadget,
                                              NULL);
-  ctk_css_gadget_add_class (priv->arrow_gadget, GTK_STYLE_CLASS_HORIZONTAL);
-  ctk_builtin_icon_set_default_size_property (GTK_BUILTIN_ICON (priv->arrow_gadget), "expander-size");
+  ctk_css_gadget_add_class (priv->arrow_gadget, CTK_STYLE_CLASS_HORIZONTAL);
+  ctk_builtin_icon_set_default_size_property (CTK_BUILTIN_ICON (priv->arrow_gadget), "expander-size");
 
-  ctk_box_gadget_insert_gadget (GTK_BOX_GADGET (priv->title_gadget), -1, priv->arrow_gadget, FALSE, GTK_ALIGN_CENTER);
+  ctk_box_gadget_insert_gadget (CTK_BOX_GADGET (priv->title_gadget), -1, priv->arrow_gadget, FALSE, CTK_ALIGN_CENTER);
 
-  ctk_drag_dest_set (GTK_WIDGET (expander), 0, NULL, 0, 0);
-  ctk_drag_dest_set_track_motion (GTK_WIDGET (expander), TRUE);
+  ctk_drag_dest_set (CTK_WIDGET (expander), 0, NULL, 0, 0);
+  ctk_drag_dest_set_track_motion (CTK_WIDGET (expander), TRUE);
 
-  priv->multipress_gesture = ctk_gesture_multi_press_new (GTK_WIDGET (expander));
-  ctk_gesture_single_set_button (GTK_GESTURE_SINGLE (priv->multipress_gesture),
+  priv->multipress_gesture = ctk_gesture_multi_press_new (CTK_WIDGET (expander));
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->multipress_gesture),
                                  GDK_BUTTON_PRIMARY);
-  ctk_gesture_single_set_touch_only (GTK_GESTURE_SINGLE (priv->multipress_gesture),
+  ctk_gesture_single_set_touch_only (CTK_GESTURE_SINGLE (priv->multipress_gesture),
                                      FALSE);
   g_signal_connect (priv->multipress_gesture, "released",
                     G_CALLBACK (gesture_multipress_released_cb), expander);
-  ctk_event_controller_set_propagation_phase (GTK_EVENT_CONTROLLER (priv->multipress_gesture),
-                                              GTK_PHASE_BUBBLE);
+  ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (priv->multipress_gesture),
+                                              CTK_PHASE_BUBBLE);
 }
 
 static void
@@ -494,11 +494,11 @@ ctk_expander_buildable_add_child (GtkBuildable  *buildable,
                                   const gchar   *type)
 {
   if (!type)
-    ctk_container_add (GTK_CONTAINER (buildable), GTK_WIDGET (child));
+    ctk_container_add (CTK_CONTAINER (buildable), CTK_WIDGET (child));
   else if (strcmp (type, "label") == 0)
-    ctk_expander_set_label_widget (GTK_EXPANDER (buildable), GTK_WIDGET (child));
+    ctk_expander_set_label_widget (CTK_EXPANDER (buildable), CTK_WIDGET (child));
   else
-    GTK_BUILDER_WARN_INVALID_CHILD_TYPE (GTK_EXPANDER (buildable), type);
+    CTK_BUILDER_WARN_INVALID_CHILD_TYPE (CTK_EXPANDER (buildable), type);
 }
 
 static void
@@ -513,7 +513,7 @@ ctk_expander_set_property (GObject      *object,
                            const GValue *value,
                            GParamSpec   *pspec)
 {
-  GtkExpander *expander = GTK_EXPANDER (object);
+  GtkExpander *expander = CTK_EXPANDER (object);
 
   switch (prop_id)
     {
@@ -553,7 +553,7 @@ ctk_expander_get_property (GObject    *object,
                            GValue     *value,
                            GParamSpec *pspec)
 {
-  GtkExpander *expander = GTK_EXPANDER (object);
+  GtkExpander *expander = CTK_EXPANDER (object);
   GtkExpanderPrivate *priv = expander->priv;
 
   switch (prop_id)
@@ -593,7 +593,7 @@ ctk_expander_get_property (GObject    *object,
 static void
 ctk_expander_destroy (GtkWidget *widget)
 {
-  GtkExpanderPrivate *priv = GTK_EXPANDER (widget)->priv;
+  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
 
   if (priv->expand_timer)
     {
@@ -603,7 +603,7 @@ ctk_expander_destroy (GtkWidget *widget)
 
   g_clear_object (&priv->multipress_gesture);
 
-  GTK_WIDGET_CLASS (ctk_expander_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (ctk_expander_parent_class)->destroy (widget);
 
   g_clear_object (&priv->arrow_gadget);
   g_clear_object (&priv->title_gadget);
@@ -619,7 +619,7 @@ ctk_expander_realize (GtkWidget *widget)
   GdkWindowAttr attributes;
   gint attributes_mask;
 
-  priv = GTK_EXPANDER (widget)->priv;
+  priv = CTK_EXPANDER (widget)->priv;
 
   ctk_css_gadget_get_border_allocation (priv->title_gadget, &title_allocation, NULL);
 
@@ -652,7 +652,7 @@ ctk_expander_realize (GtkWidget *widget)
 static void
 ctk_expander_unrealize (GtkWidget *widget)
 {
-  GtkExpanderPrivate *priv = GTK_EXPANDER (widget)->priv;
+  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
 
   if (priv->event_window)
     {
@@ -662,14 +662,14 @@ ctk_expander_unrealize (GtkWidget *widget)
       priv->event_window = NULL;
     }
 
-  GTK_WIDGET_CLASS (ctk_expander_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_expander_parent_class)->unrealize (widget);
 }
 
 static void
 ctk_expander_size_allocate (GtkWidget     *widget,
                             GtkAllocation *allocation)
 {
-  GtkExpanderPrivate *priv = GTK_EXPANDER (widget)->priv;
+  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
   GtkAllocation clip;
 
   ctk_widget_set_allocation (widget, allocation);
@@ -695,12 +695,12 @@ ctk_expander_size_allocate (GtkWidget     *widget,
 static void
 ctk_expander_map (GtkWidget *widget)
 {
-  GtkExpanderPrivate *priv = GTK_EXPANDER (widget)->priv;
+  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
 
   if (priv->label_widget)
     ctk_widget_map (priv->label_widget);
 
-  GTK_WIDGET_CLASS (ctk_expander_parent_class)->map (widget);
+  CTK_WIDGET_CLASS (ctk_expander_parent_class)->map (widget);
 
   if (priv->event_window)
     gdk_window_show (priv->event_window);
@@ -709,12 +709,12 @@ ctk_expander_map (GtkWidget *widget)
 static void
 ctk_expander_unmap (GtkWidget *widget)
 {
-  GtkExpanderPrivate *priv = GTK_EXPANDER (widget)->priv;
+  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
 
   if (priv->event_window)
     gdk_window_hide (priv->event_window);
 
-  GTK_WIDGET_CLASS (ctk_expander_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (ctk_expander_parent_class)->unmap (widget);
 
   if (priv->label_widget)
     ctk_widget_unmap (priv->label_widget);
@@ -724,7 +724,7 @@ static gboolean
 ctk_expander_draw (GtkWidget *widget,
                    cairo_t   *cr)
 {
-  ctk_css_gadget_draw (GTK_EXPANDER (widget)->priv->gadget, cr);
+  ctk_css_gadget_draw (CTK_EXPANDER (widget)->priv->gadget, cr);
 
   return FALSE;
 }
@@ -737,14 +737,14 @@ gesture_multipress_released_cb (GtkGestureMultiPress *gesture,
                                 GtkExpander          *expander)
 {
   if (expander->priv->prelight)
-    ctk_widget_activate (GTK_WIDGET (expander));
+    ctk_widget_activate (CTK_WIDGET (expander));
 }
 
 static void
 ctk_expander_redraw_expander (GtkExpander *expander)
 {
   GtkAllocation allocation;
-  GtkWidget *widget = GTK_WIDGET (expander);
+  GtkWidget *widget = CTK_WIDGET (expander);
 
   if (ctk_widget_get_realized (widget))
     {
@@ -759,19 +759,19 @@ update_node_state (GtkExpander *expander)
   GtkExpanderPrivate *priv = expander->priv;
   GtkStateFlags state;
 
-  state = ctk_widget_get_state_flags (GTK_WIDGET (expander));
+  state = ctk_widget_get_state_flags (CTK_WIDGET (expander));
 
   if (priv->prelight)
-    state |= GTK_STATE_FLAG_PRELIGHT;
+    state |= CTK_STATE_FLAG_PRELIGHT;
   else
-    state &= ~GTK_STATE_FLAG_PRELIGHT;
+    state &= ~CTK_STATE_FLAG_PRELIGHT;
 
   ctk_css_gadget_set_state (priv->title_gadget, state);
 
   if (priv->expanded)
-    state |= GTK_STATE_FLAG_CHECKED;
+    state |= CTK_STATE_FLAG_CHECKED;
   else
-    state &= ~GTK_STATE_FLAG_CHECKED;
+    state &= ~CTK_STATE_FLAG_CHECKED;
 
   ctk_css_gadget_set_state (priv->arrow_gadget, state);
 }
@@ -780,37 +780,37 @@ static void
 ctk_expander_state_flags_changed (GtkWidget     *widget,
                                   GtkStateFlags  previous_state)
 {
-  update_node_state (GTK_EXPANDER (widget));
+  update_node_state (CTK_EXPANDER (widget));
 
-  GTK_WIDGET_CLASS (ctk_expander_parent_class)->state_flags_changed (widget, previous_state);
+  CTK_WIDGET_CLASS (ctk_expander_parent_class)->state_flags_changed (widget, previous_state);
 }
 
 static void
 ctk_expander_direction_changed (GtkWidget        *widget,
                                 GtkTextDirection  previous_direction)
 {
-  GtkExpanderPrivate *priv = GTK_EXPANDER (widget)->priv;
+  GtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
   GtkAlign align;
 
-  ctk_box_gadget_reverse_children (GTK_BOX_GADGET (priv->title_gadget));
+  ctk_box_gadget_reverse_children (CTK_BOX_GADGET (priv->title_gadget));
 
-  align = ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL ? GTK_ALIGN_END : GTK_ALIGN_START;
-  ctk_box_gadget_remove_gadget (GTK_BOX_GADGET (priv->gadget), priv->title_gadget);
-  ctk_box_gadget_insert_gadget (GTK_BOX_GADGET (priv->gadget), 0, priv->title_gadget, FALSE, align);
+  align = ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL ? CTK_ALIGN_END : CTK_ALIGN_START;
+  ctk_box_gadget_remove_gadget (CTK_BOX_GADGET (priv->gadget), priv->title_gadget);
+  ctk_box_gadget_insert_gadget (CTK_BOX_GADGET (priv->gadget), 0, priv->title_gadget, FALSE, align);
 
-  ctk_box_gadget_set_allocate_reverse (GTK_BOX_GADGET (priv->title_gadget),
-                                       ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL);
-  ctk_box_gadget_set_align_reverse (GTK_BOX_GADGET (priv->title_gadget),
-                                    ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL);
+  ctk_box_gadget_set_allocate_reverse (CTK_BOX_GADGET (priv->title_gadget),
+                                       ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL);
+  ctk_box_gadget_set_align_reverse (CTK_BOX_GADGET (priv->title_gadget),
+                                    ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL);
 
-  GTK_WIDGET_CLASS (ctk_expander_parent_class)->direction_changed (widget, previous_direction);
+  CTK_WIDGET_CLASS (ctk_expander_parent_class)->direction_changed (widget, previous_direction);
 }
 
 static gboolean
 ctk_expander_enter_notify (GtkWidget        *widget,
                            GdkEventCrossing *event)
 {
-  GtkExpander *expander = GTK_EXPANDER (widget);
+  GtkExpander *expander = CTK_EXPANDER (widget);
 
   if (event->window == expander->priv->event_window &&
       event->detail != GDK_NOTIFY_INFERIOR)
@@ -821,7 +821,7 @@ ctk_expander_enter_notify (GtkWidget        *widget,
 
       if (expander->priv->label_widget)
         ctk_widget_set_state_flags (expander->priv->label_widget,
-                                    GTK_STATE_FLAG_PRELIGHT,
+                                    CTK_STATE_FLAG_PRELIGHT,
                                     FALSE);
 
       ctk_expander_redraw_expander (expander);
@@ -834,7 +834,7 @@ static gboolean
 ctk_expander_leave_notify (GtkWidget        *widget,
                            GdkEventCrossing *event)
 {
-  GtkExpander *expander = GTK_EXPANDER (widget);
+  GtkExpander *expander = CTK_EXPANDER (widget);
 
   if (event->window == expander->priv->event_window &&
       event->detail != GDK_NOTIFY_INFERIOR)
@@ -845,7 +845,7 @@ ctk_expander_leave_notify (GtkWidget        *widget,
 
       if (expander->priv->label_widget)
         ctk_widget_unset_state_flags (expander->priv->label_widget,
-                                      GTK_STATE_FLAG_PRELIGHT);
+                                      CTK_STATE_FLAG_PRELIGHT);
 
       ctk_expander_redraw_expander (expander);
     }
@@ -856,7 +856,7 @@ ctk_expander_leave_notify (GtkWidget        *widget,
 static gboolean
 expand_timeout (gpointer data)
 {
-  GtkExpander *expander = GTK_EXPANDER (data);
+  GtkExpander *expander = CTK_EXPANDER (data);
   GtkExpanderPrivate *priv = expander->priv;
 
   priv->expand_timer = 0;
@@ -872,7 +872,7 @@ ctk_expander_drag_motion (GtkWidget        *widget,
                           gint              y,
                           guint             time)
 {
-  GtkExpander *expander = GTK_EXPANDER (widget);
+  GtkExpander *expander = CTK_EXPANDER (widget);
   GtkExpanderPrivate *priv = expander->priv;
 
   if (!priv->expanded && !priv->expand_timer)
@@ -889,7 +889,7 @@ ctk_expander_drag_leave (GtkWidget      *widget,
                          GdkDragContext *context,
                          guint           time)
 {
-  GtkExpander *expander = GTK_EXPANDER (widget);
+  GtkExpander *expander = CTK_EXPANDER (widget);
   GtkExpanderPrivate *priv = expander->priv;
 
   if (priv->expand_timer)
@@ -913,7 +913,7 @@ focus_current_site (GtkExpander      *expander,
 {
   GtkWidget *current_focus;
 
-  current_focus = ctk_container_get_focus_child (GTK_CONTAINER (expander));
+  current_focus = ctk_container_get_focus_child (CTK_CONTAINER (expander));
 
   if (!current_focus)
     return FALSE;
@@ -929,7 +929,7 @@ focus_in_site (GtkExpander      *expander,
   switch (site)
     {
     case FOCUS_WIDGET:
-      ctk_widget_grab_focus (GTK_WIDGET (expander));
+      ctk_widget_grab_focus (CTK_WIDGET (expander));
       return TRUE;
     case FOCUS_LABEL:
       if (expander->priv->label_widget)
@@ -938,7 +938,7 @@ focus_in_site (GtkExpander      *expander,
         return FALSE;
     case FOCUS_CHILD:
       {
-        GtkWidget *child = ctk_bin_get_child (GTK_BIN (expander));
+        GtkWidget *child = ctk_bin_get_child (CTK_BIN (expander));
 
         if (child && ctk_widget_get_child_visible (child))
           return ctk_widget_child_focus (child, direction);
@@ -960,63 +960,63 @@ get_next_site (GtkExpander      *expander,
 {
   gboolean ltr;
 
-  ltr = ctk_widget_get_direction (GTK_WIDGET (expander)) != GTK_TEXT_DIR_RTL;
+  ltr = ctk_widget_get_direction (CTK_WIDGET (expander)) != CTK_TEXT_DIR_RTL;
 
   switch (site)
     {
     case FOCUS_NONE:
       switch (direction)
         {
-        case GTK_DIR_TAB_BACKWARD:
-        case GTK_DIR_LEFT:
-        case GTK_DIR_UP:
+        case CTK_DIR_TAB_BACKWARD:
+        case CTK_DIR_LEFT:
+        case CTK_DIR_UP:
           return FOCUS_CHILD;
-        case GTK_DIR_TAB_FORWARD:
-        case GTK_DIR_DOWN:
-        case GTK_DIR_RIGHT:
+        case CTK_DIR_TAB_FORWARD:
+        case CTK_DIR_DOWN:
+        case CTK_DIR_RIGHT:
           return FOCUS_WIDGET;
         }
       break;
     case FOCUS_WIDGET:
       switch (direction)
         {
-        case GTK_DIR_TAB_BACKWARD:
-        case GTK_DIR_UP:
+        case CTK_DIR_TAB_BACKWARD:
+        case CTK_DIR_UP:
           return FOCUS_NONE;
-        case GTK_DIR_LEFT:
+        case CTK_DIR_LEFT:
           return ltr ? FOCUS_NONE : FOCUS_LABEL;
-        case GTK_DIR_TAB_FORWARD:
-        case GTK_DIR_DOWN:
+        case CTK_DIR_TAB_FORWARD:
+        case CTK_DIR_DOWN:
           return FOCUS_LABEL;
-        case GTK_DIR_RIGHT:
+        case CTK_DIR_RIGHT:
           return ltr ? FOCUS_LABEL : FOCUS_NONE;
         }
       break;
     case FOCUS_LABEL:
       switch (direction)
         {
-        case GTK_DIR_TAB_BACKWARD:
-        case GTK_DIR_UP:
+        case CTK_DIR_TAB_BACKWARD:
+        case CTK_DIR_UP:
           return FOCUS_WIDGET;
-        case GTK_DIR_LEFT:
+        case CTK_DIR_LEFT:
           return ltr ? FOCUS_WIDGET : FOCUS_CHILD;
-        case GTK_DIR_TAB_FORWARD:
-        case GTK_DIR_DOWN:
+        case CTK_DIR_TAB_FORWARD:
+        case CTK_DIR_DOWN:
           return FOCUS_CHILD;
-        case GTK_DIR_RIGHT:
+        case CTK_DIR_RIGHT:
           return ltr ? FOCUS_CHILD : FOCUS_WIDGET;
         }
       break;
     case FOCUS_CHILD:
       switch (direction)
         {
-        case GTK_DIR_TAB_BACKWARD:
-        case GTK_DIR_LEFT:
-        case GTK_DIR_UP:
+        case CTK_DIR_TAB_BACKWARD:
+        case CTK_DIR_LEFT:
+        case CTK_DIR_UP:
           return FOCUS_LABEL;
-        case GTK_DIR_TAB_FORWARD:
-        case GTK_DIR_DOWN:
-        case GTK_DIR_RIGHT:
+        case CTK_DIR_TAB_FORWARD:
+        case CTK_DIR_DOWN:
+        case CTK_DIR_RIGHT:
           return FOCUS_NONE;
         }
       break;
@@ -1030,28 +1030,28 @@ static void
 ctk_expander_resize_toplevel (GtkExpander *expander)
 {
   GtkExpanderPrivate *priv = expander->priv;
-  GtkWidget *child = ctk_bin_get_child (GTK_BIN (expander));
+  GtkWidget *child = ctk_bin_get_child (CTK_BIN (expander));
 
   if (child && priv->resize_toplevel &&
-      ctk_widget_get_realized (GTK_WIDGET (expander)))
+      ctk_widget_get_realized (CTK_WIDGET (expander)))
     {
-      GtkWidget *toplevel = ctk_widget_get_toplevel (GTK_WIDGET (expander));
+      GtkWidget *toplevel = ctk_widget_get_toplevel (CTK_WIDGET (expander));
 
-      if (toplevel && GTK_IS_WINDOW (toplevel) &&
+      if (toplevel && CTK_IS_WINDOW (toplevel) &&
           ctk_widget_get_realized (toplevel))
         {
           int toplevel_width, toplevel_height;
           int child_height;
 
           ctk_widget_get_preferred_height (child, &child_height, NULL);
-          ctk_window_get_size (GTK_WINDOW (toplevel), &toplevel_width, &toplevel_height);
+          ctk_window_get_size (CTK_WINDOW (toplevel), &toplevel_width, &toplevel_height);
 
           if (priv->expanded)
             toplevel_height += child_height;
           else
             toplevel_height -= child_height;
 
-          ctk_window_resize (GTK_WINDOW (toplevel),
+          ctk_window_resize (CTK_WINDOW (toplevel),
                              toplevel_width,
                              toplevel_height);
         }
@@ -1062,7 +1062,7 @@ static gboolean
 ctk_expander_focus (GtkWidget        *widget,
                     GtkDirectionType  direction)
 {
-  GtkExpander *expander = GTK_EXPANDER (widget);
+  GtkExpander *expander = CTK_EXPANDER (widget);
 
   if (!focus_current_site (expander, direction))
     {
@@ -1071,7 +1071,7 @@ ctk_expander_focus (GtkWidget        *widget,
       FocusSite site = FOCUS_NONE;
 
       widget_is_focus = ctk_widget_is_focus (widget);
-      old_focus_child = ctk_container_get_focus_child (GTK_CONTAINER (widget));
+      old_focus_child = ctk_container_get_focus_child (CTK_CONTAINER (widget));
 
       if (old_focus_child && old_focus_child == expander->priv->label_widget)
         site = FOCUS_LABEL;
@@ -1116,14 +1116,14 @@ static void
 ctk_expander_add (GtkContainer *container,
                   GtkWidget    *widget)
 {
-  GtkExpander *expander = GTK_EXPANDER (container);
+  GtkExpander *expander = CTK_EXPANDER (container);
 
-  GTK_CONTAINER_CLASS (ctk_expander_parent_class)->add (container, widget);
+  CTK_CONTAINER_CLASS (ctk_expander_parent_class)->add (container, widget);
 
-  ctk_widget_queue_resize (GTK_WIDGET (container));
+  ctk_widget_queue_resize (CTK_WIDGET (container));
 
   if (expander->priv->expanded)
-    ctk_box_gadget_insert_widget (GTK_BOX_GADGET (expander->priv->gadget), -1, widget);
+    ctk_box_gadget_insert_widget (CTK_BOX_GADGET (expander->priv->gadget), -1, widget);
 
   ctk_expander_update_child_mapped (expander, widget);
 }
@@ -1132,14 +1132,14 @@ static void
 ctk_expander_remove (GtkContainer *container,
                      GtkWidget    *widget)
 {
-  GtkExpander *expander = GTK_EXPANDER (container);
+  GtkExpander *expander = CTK_EXPANDER (container);
 
-  if (GTK_EXPANDER (expander)->priv->label_widget == widget)
+  if (CTK_EXPANDER (expander)->priv->label_widget == widget)
     ctk_expander_set_label_widget (expander, NULL);
   else
     {
-      ctk_box_gadget_remove_widget (GTK_BOX_GADGET (expander->priv->gadget), widget);
-      GTK_CONTAINER_CLASS (ctk_expander_parent_class)->remove (container, widget);
+      ctk_box_gadget_remove_widget (CTK_BOX_GADGET (expander->priv->gadget), widget);
+      CTK_CONTAINER_CLASS (ctk_expander_parent_class)->remove (container, widget);
     }
 }
 
@@ -1149,8 +1149,8 @@ ctk_expander_forall (GtkContainer *container,
                      GtkCallback   callback,
                      gpointer      callback_data)
 {
-  GtkBin *bin = GTK_BIN (container);
-  GtkExpanderPrivate *priv = GTK_EXPANDER (container)->priv;
+  GtkBin *bin = CTK_BIN (container);
+  GtkExpanderPrivate *priv = CTK_EXPANDER (container)->priv;
   GtkWidget *child;
 
   child = ctk_bin_get_child (bin);
@@ -1172,8 +1172,8 @@ ctk_expander_get_preferred_width (GtkWidget *widget,
                                   gint      *minimum_size,
                                   gint      *natural_size)
 {
-  ctk_css_gadget_get_preferred_size (GTK_EXPANDER (widget)->priv->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+  ctk_css_gadget_get_preferred_size (CTK_EXPANDER (widget)->priv->gadget,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum_size, natural_size,
                                      NULL, NULL);
@@ -1184,8 +1184,8 @@ ctk_expander_get_preferred_height (GtkWidget *widget,
                                    gint      *minimum_size,
                                    gint      *natural_size)
 {
-  ctk_css_gadget_get_preferred_size (GTK_EXPANDER (widget)->priv->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+  ctk_css_gadget_get_preferred_size (CTK_EXPANDER (widget)->priv->gadget,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum_size, natural_size,
                                      NULL, NULL);
@@ -1197,8 +1197,8 @@ ctk_expander_get_preferred_width_for_height (GtkWidget *widget,
                                              gint      *minimum_size,
                                              gint      *natural_size)
 {
-  ctk_css_gadget_get_preferred_size (GTK_EXPANDER (widget)->priv->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+  ctk_css_gadget_get_preferred_size (CTK_EXPANDER (widget)->priv->gadget,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      height,
                                      minimum_size, natural_size,
                                      NULL, NULL);
@@ -1210,8 +1210,8 @@ ctk_expander_get_preferred_height_for_width (GtkWidget *widget,
                                              gint      *minimum_size,
                                              gint      *natural_size)
 {
-  ctk_css_gadget_get_preferred_size (GTK_EXPANDER (widget)->priv->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+  ctk_css_gadget_get_preferred_size (CTK_EXPANDER (widget)->priv->gadget,
+                                     CTK_ORIENTATION_VERTICAL,
                                      width,
                                      minimum_size, natural_size,
                                      NULL, NULL);
@@ -1230,7 +1230,7 @@ ctk_expander_get_preferred_height_for_width (GtkWidget *widget,
 GtkWidget *
 ctk_expander_new (const gchar *label)
 {
-  return g_object_new (GTK_TYPE_EXPANDER, "label", label, NULL);
+  return g_object_new (CTK_TYPE_EXPANDER, "label", label, NULL);
 }
 
 /**
@@ -1252,7 +1252,7 @@ ctk_expander_new (const gchar *label)
 GtkWidget *
 ctk_expander_new_with_mnemonic (const gchar *label)
 {
-  return g_object_new (GTK_TYPE_EXPANDER,
+  return g_object_new (CTK_TYPE_EXPANDER,
                        "label", label,
                        "use-underline", TRUE,
                        NULL);
@@ -1276,7 +1276,7 @@ ctk_expander_set_expanded (GtkExpander *expander,
   GtkExpanderPrivate *priv;
   GtkWidget *child;
 
-  g_return_if_fail (GTK_IS_EXPANDER (expander));
+  g_return_if_fail (CTK_IS_EXPANDER (expander));
 
   priv = expander->priv;
 
@@ -1289,16 +1289,16 @@ ctk_expander_set_expanded (GtkExpander *expander,
 
   update_node_state (expander);
 
-  child = ctk_bin_get_child (GTK_BIN (expander));
+  child = ctk_bin_get_child (CTK_BIN (expander));
 
   if (child)
     {
       if (priv->expanded)
-        ctk_box_gadget_insert_widget (GTK_BOX_GADGET (priv->gadget), 1, child);
+        ctk_box_gadget_insert_widget (CTK_BOX_GADGET (priv->gadget), 1, child);
       else
-        ctk_box_gadget_remove_widget (GTK_BOX_GADGET (priv->gadget), child);
+        ctk_box_gadget_remove_widget (CTK_BOX_GADGET (priv->gadget), child);
 
-      ctk_widget_queue_resize (GTK_WIDGET (expander));
+      ctk_widget_queue_resize (CTK_WIDGET (expander));
       ctk_expander_resize_toplevel (expander);
 
       ctk_expander_update_child_mapped (expander, child);
@@ -1323,7 +1323,7 @@ ctk_expander_set_expanded (GtkExpander *expander,
 gboolean
 ctk_expander_get_expanded (GtkExpander *expander)
 {
-  g_return_val_if_fail (GTK_IS_EXPANDER (expander), FALSE);
+  g_return_val_if_fail (CTK_IS_EXPANDER (expander), FALSE);
 
   return expander->priv->expanded;
 }
@@ -1344,14 +1344,14 @@ void
 ctk_expander_set_spacing (GtkExpander *expander,
                           gint         spacing)
 {
-  g_return_if_fail (GTK_IS_EXPANDER (expander));
+  g_return_if_fail (CTK_IS_EXPANDER (expander));
   g_return_if_fail (spacing >= 0);
 
   if (expander->priv->spacing != spacing)
     {
       expander->priv->spacing = spacing;
 
-      ctk_widget_queue_resize (GTK_WIDGET (expander));
+      ctk_widget_queue_resize (CTK_WIDGET (expander));
 
       g_object_notify (G_OBJECT (expander), "spacing");
     }
@@ -1372,7 +1372,7 @@ ctk_expander_set_spacing (GtkExpander *expander,
 gint
 ctk_expander_get_spacing (GtkExpander *expander)
 {
-  g_return_val_if_fail (GTK_IS_EXPANDER (expander), 0);
+  g_return_val_if_fail (CTK_IS_EXPANDER (expander), 0);
 
   return expander->priv->spacing;
 }
@@ -1392,7 +1392,7 @@ void
 ctk_expander_set_label (GtkExpander *expander,
                         const gchar *label)
 {
-  g_return_if_fail (GTK_IS_EXPANDER (expander));
+  g_return_if_fail (CTK_IS_EXPANDER (expander));
 
   if (!label)
     {
@@ -1403,8 +1403,8 @@ ctk_expander_set_label (GtkExpander *expander,
       GtkWidget *child;
 
       child = ctk_label_new (label);
-      ctk_label_set_use_underline (GTK_LABEL (child), expander->priv->use_underline);
-      ctk_label_set_use_markup (GTK_LABEL (child), expander->priv->use_markup);
+      ctk_label_set_use_underline (CTK_LABEL (child), expander->priv->use_underline);
+      ctk_label_set_use_markup (CTK_LABEL (child), expander->priv->use_markup);
       ctk_widget_show (child);
 
       ctk_expander_set_label_widget (expander, child);
@@ -1439,12 +1439,12 @@ ctk_expander_get_label (GtkExpander *expander)
 {
   GtkExpanderPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_EXPANDER (expander), NULL);
+  g_return_val_if_fail (CTK_IS_EXPANDER (expander), NULL);
 
   priv = expander->priv;
 
-  if (GTK_IS_LABEL (priv->label_widget))
-    return ctk_label_get_label (GTK_LABEL (priv->label_widget));
+  if (CTK_IS_LABEL (priv->label_widget))
+    return ctk_label_get_label (CTK_LABEL (priv->label_widget));
   else
     return NULL;
 }
@@ -1465,7 +1465,7 @@ ctk_expander_set_use_underline (GtkExpander *expander,
 {
   GtkExpanderPrivate *priv;
 
-  g_return_if_fail (GTK_IS_EXPANDER (expander));
+  g_return_if_fail (CTK_IS_EXPANDER (expander));
 
   priv = expander->priv;
 
@@ -1475,8 +1475,8 @@ ctk_expander_set_use_underline (GtkExpander *expander,
     {
       priv->use_underline = use_underline;
 
-      if (GTK_IS_LABEL (priv->label_widget))
-        ctk_label_set_use_underline (GTK_LABEL (priv->label_widget), use_underline);
+      if (CTK_IS_LABEL (priv->label_widget))
+        ctk_label_set_use_underline (CTK_LABEL (priv->label_widget), use_underline);
 
       g_object_notify (G_OBJECT (expander), "use-underline");
     }
@@ -1497,7 +1497,7 @@ ctk_expander_set_use_underline (GtkExpander *expander,
 gboolean
 ctk_expander_get_use_underline (GtkExpander *expander)
 {
-  g_return_val_if_fail (GTK_IS_EXPANDER (expander), FALSE);
+  g_return_val_if_fail (CTK_IS_EXPANDER (expander), FALSE);
 
   return expander->priv->use_underline;
 }
@@ -1519,7 +1519,7 @@ ctk_expander_set_use_markup (GtkExpander *expander,
 {
   GtkExpanderPrivate *priv;
 
-  g_return_if_fail (GTK_IS_EXPANDER (expander));
+  g_return_if_fail (CTK_IS_EXPANDER (expander));
 
   priv = expander->priv;
 
@@ -1529,8 +1529,8 @@ ctk_expander_set_use_markup (GtkExpander *expander,
     {
       priv->use_markup = use_markup;
 
-      if (GTK_IS_LABEL (priv->label_widget))
-        ctk_label_set_use_markup (GTK_LABEL (priv->label_widget), use_markup);
+      if (CTK_IS_LABEL (priv->label_widget))
+        ctk_label_set_use_markup (CTK_LABEL (priv->label_widget), use_markup);
 
       g_object_notify (G_OBJECT (expander), "use-markup");
     }
@@ -1551,7 +1551,7 @@ ctk_expander_set_use_markup (GtkExpander *expander,
 gboolean
 ctk_expander_get_use_markup (GtkExpander *expander)
 {
-  g_return_val_if_fail (GTK_IS_EXPANDER (expander), FALSE);
+  g_return_val_if_fail (CTK_IS_EXPANDER (expander), FALSE);
 
   return expander->priv->use_markup;
 }
@@ -1574,8 +1574,8 @@ ctk_expander_set_label_widget (GtkExpander *expander,
   GtkWidget *widget;
   int pos;
 
-  g_return_if_fail (GTK_IS_EXPANDER (expander));
-  g_return_if_fail (label_widget == NULL || GTK_IS_WIDGET (label_widget));
+  g_return_if_fail (CTK_IS_EXPANDER (expander));
+  g_return_if_fail (label_widget == NULL || CTK_IS_WIDGET (label_widget));
   g_return_if_fail (label_widget == NULL || ctk_widget_get_parent (label_widget) == NULL);
 
   priv = expander->priv;
@@ -1585,13 +1585,13 @@ ctk_expander_set_label_widget (GtkExpander *expander,
 
   if (priv->label_widget)
     {
-      ctk_box_gadget_remove_widget (GTK_BOX_GADGET (priv->title_gadget), priv->label_widget);
+      ctk_box_gadget_remove_widget (CTK_BOX_GADGET (priv->title_gadget), priv->label_widget);
       ctk_widget_set_state_flags (priv->label_widget, 0, TRUE);
       ctk_widget_unparent (priv->label_widget);
     }
 
   priv->label_widget = label_widget;
-  widget = GTK_WIDGET (expander);
+  widget = CTK_WIDGET (expander);
 
   if (label_widget)
     {
@@ -1599,10 +1599,10 @@ ctk_expander_set_label_widget (GtkExpander *expander,
       ctk_widget_set_parent (label_widget, widget);
 
       if (priv->prelight)
-        ctk_widget_set_state_flags (label_widget, GTK_STATE_FLAG_PRELIGHT, FALSE);
+        ctk_widget_set_state_flags (label_widget, CTK_STATE_FLAG_PRELIGHT, FALSE);
 
-      pos = ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL ? 0 : 1;
-      ctk_box_gadget_insert_widget (GTK_BOX_GADGET (priv->title_gadget), pos, label_widget);
+      pos = ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL ? 0 : 1;
+      ctk_box_gadget_insert_widget (CTK_BOX_GADGET (priv->title_gadget), pos, label_widget);
     }
 
   if (ctk_widget_get_visible (widget))
@@ -1629,7 +1629,7 @@ ctk_expander_set_label_widget (GtkExpander *expander,
 GtkWidget *
 ctk_expander_get_label_widget (GtkExpander *expander)
 {
-  g_return_val_if_fail (GTK_IS_EXPANDER (expander), NULL);
+  g_return_val_if_fail (CTK_IS_EXPANDER (expander), NULL);
 
   return expander->priv->label_widget;
 }
@@ -1653,7 +1653,7 @@ ctk_expander_set_label_fill (GtkExpander *expander,
 {
   GtkExpanderPrivate *priv;
 
-  g_return_if_fail (GTK_IS_EXPANDER (expander));
+  g_return_if_fail (CTK_IS_EXPANDER (expander));
 
   priv = expander->priv;
 
@@ -1664,7 +1664,7 @@ ctk_expander_set_label_fill (GtkExpander *expander,
       priv->label_fill = label_fill;
 
       if (priv->label_widget != NULL)
-        ctk_widget_queue_resize (GTK_WIDGET (expander));
+        ctk_widget_queue_resize (CTK_WIDGET (expander));
 
       g_object_notify (G_OBJECT (expander), "label-fill");
     }
@@ -1685,7 +1685,7 @@ ctk_expander_set_label_fill (GtkExpander *expander,
 gboolean
 ctk_expander_get_label_fill (GtkExpander *expander)
 {
-  g_return_val_if_fail (GTK_IS_EXPANDER (expander), FALSE);
+  g_return_val_if_fail (CTK_IS_EXPANDER (expander), FALSE);
 
   return expander->priv->label_fill;
 }
@@ -1704,7 +1704,7 @@ void
 ctk_expander_set_resize_toplevel (GtkExpander *expander,
                                   gboolean     resize_toplevel)
 {
-  g_return_if_fail (GTK_IS_EXPANDER (expander));
+  g_return_if_fail (CTK_IS_EXPANDER (expander));
 
   if (expander->priv->resize_toplevel != resize_toplevel)
     {
@@ -1727,7 +1727,7 @@ ctk_expander_set_resize_toplevel (GtkExpander *expander,
 gboolean
 ctk_expander_get_resize_toplevel (GtkExpander *expander)
 {
-  g_return_val_if_fail (GTK_IS_EXPANDER (expander), FALSE);
+  g_return_val_if_fail (CTK_IS_EXPANDER (expander), FALSE);
 
   return expander->priv->resize_toplevel;
 }

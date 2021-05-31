@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_IMAGE_DEFINITION_H__
-#define __GTK_IMAGE_DEFINITION_H__
+#ifndef __CTK_IMAGE_DEFINITION_H__
+#define __CTK_IMAGE_DEFINITION_H__
 
 #include "gtk/gtkimage.h"
 #include "gtk/gtktypes.h"
@@ -52,4 +52,4 @@ cairo_surface_t *       ctk_image_definition_get_surface        (const GtkImageD
 
 G_END_DECLS
 
-#endif /* __GTK_IMAGE_DEFINITION_H__ */
+#endif /* __CTK_IMAGE_DEFINITION_H__ */

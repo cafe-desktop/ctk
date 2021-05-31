@@ -17,8 +17,8 @@
  * Authors: Alexander Larsson <alexl@gnome.org>
  */
 
-#ifndef __GTK_CSS_KEYFRAMES_PRIVATE_H__
-#define __GTK_CSS_KEYFRAMES_PRIVATE_H__
+#ifndef __CTK_CSS_KEYFRAMES_PRIVATE_H__
+#define __CTK_CSS_KEYFRAMES_PRIVATE_H__
 
 #include "gtkcssparserprivate.h"
 #include "gtkcssvalueprivate.h"
@@ -51,4 +51,4 @@ GtkCssValue *       _ctk_css_keyframes_get_value              (GtkCssKeyframes  
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_KEYFRAMES_PRIVATE_H__ */
+#endif /* __CTK_CSS_KEYFRAMES_PRIVATE_H__ */

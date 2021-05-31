@@ -83,7 +83,7 @@ struct _GtkShortcutsSectionClass
 
 };
 
-G_DEFINE_TYPE (GtkShortcutsSection, ctk_shortcuts_section, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GtkShortcutsSection, ctk_shortcuts_section, CTK_TYPE_BOX)
 
 enum {
   PROP_0,
@@ -126,10 +126,10 @@ static void
 ctk_shortcuts_section_add (GtkContainer *container,
                            GtkWidget    *child)
 {
-  GtkShortcutsSection *self = GTK_SHORTCUTS_SECTION (container);
+  GtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (container);
 
-  if (GTK_IS_SHORTCUTS_GROUP (child))
-    ctk_shortcuts_section_add_group (self, GTK_SHORTCUTS_GROUP (child));
+  if (CTK_IS_SHORTCUTS_GROUP (child))
+    ctk_shortcuts_section_add_group (self, CTK_SHORTCUTS_GROUP (child));
   else
     g_warning ("Can't add children of type %s to %s",
                G_OBJECT_TYPE_NAME (child),
@@ -142,14 +142,14 @@ ctk_shortcuts_section_remove (GtkContainer *container,
 {
   GtkShortcutsSection *self = (GtkShortcutsSection *)container;
 
-  if (GTK_IS_SHORTCUTS_GROUP (child) &&
-      ctk_widget_is_ancestor (child, GTK_WIDGET (container)))
+  if (CTK_IS_SHORTCUTS_GROUP (child) &&
+      ctk_widget_is_ancestor (child, CTK_WIDGET (container)))
     {
       self->groups = g_list_remove (self->groups, child);
-      ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (child)), child);
+      ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (child)), child);
     }
   else
-    GTK_CONTAINER_CLASS (ctk_shortcuts_section_parent_class)->remove (container, child);
+    CTK_CONTAINER_CLASS (ctk_shortcuts_section_parent_class)->remove (container, child);
 }
 
 static void
@@ -163,7 +163,7 @@ ctk_shortcuts_section_forall (GtkContainer *container,
 
   if (include_internal)
     {
-      GTK_CONTAINER_CLASS (ctk_shortcuts_section_parent_class)->forall (container, include_internal, callback, callback_data);
+      CTK_CONTAINER_CLASS (ctk_shortcuts_section_parent_class)->forall (container, include_internal, callback, callback_data);
     }
   else
     {
@@ -187,49 +187,49 @@ map_child (GtkWidget *child)
 static void
 ctk_shortcuts_section_map (GtkWidget *widget)
 {
-  GtkShortcutsSection *self = GTK_SHORTCUTS_SECTION (widget);
+  GtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (widget);
 
   if (self->need_reflow)
     ctk_shortcuts_section_reflow_groups (self);
 
   ctk_widget_set_mapped (widget, TRUE);
 
-  map_child (GTK_WIDGET (self->stack));
-  map_child (GTK_WIDGET (self->footer));
+  map_child (CTK_WIDGET (self->stack));
+  map_child (CTK_WIDGET (self->footer));
 }
 
 static void
 ctk_shortcuts_section_unmap (GtkWidget *widget)
 {
-  GtkShortcutsSection *self = GTK_SHORTCUTS_SECTION (widget);
+  GtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (widget);
 
   ctk_widget_set_mapped (widget, FALSE);
 
-  ctk_widget_unmap (GTK_WIDGET (self->footer));
-  ctk_widget_unmap (GTK_WIDGET (self->stack));
+  ctk_widget_unmap (CTK_WIDGET (self->footer));
+  ctk_widget_unmap (CTK_WIDGET (self->stack));
 }
 
 static void
 ctk_shortcuts_section_destroy (GtkWidget *widget)
 {
-  GtkShortcutsSection *self = GTK_SHORTCUTS_SECTION (widget);
+  GtkShortcutsSection *self = CTK_SHORTCUTS_SECTION (widget);
 
   if (self->stack)
     {
-      ctk_widget_destroy (GTK_WIDGET (self->stack));
+      ctk_widget_destroy (CTK_WIDGET (self->stack));
       self->stack = NULL;
     }
 
   if (self->footer)
     {
-      ctk_widget_destroy (GTK_WIDGET (self->footer));
+      ctk_widget_destroy (CTK_WIDGET (self->footer));
       self->footer = NULL;
     }
 
   g_list_free (self->groups);
   self->groups = NULL;
 
-  GTK_WIDGET_CLASS (ctk_shortcuts_section_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (ctk_shortcuts_section_parent_class)->destroy (widget);
 }
 
 static void
@@ -312,15 +312,15 @@ ctk_shortcuts_section_set_property (GObject      *object,
 static GType
 ctk_shortcuts_section_child_type (GtkContainer *container)
 {
-  return GTK_TYPE_SHORTCUTS_GROUP;
+  return CTK_TYPE_SHORTCUTS_GROUP;
 }
 
 static void
 ctk_shortcuts_section_class_init (GtkShortcutsSectionClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (klass);
   GtkBindingSet *binding_set;
 
   object_class->finalize = ctk_shortcuts_section_finalize;
@@ -426,41 +426,41 @@ ctk_shortcuts_section_init (GtkShortcutsSection *self)
 {
   self->max_height = 15;
 
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (self), GTK_ORIENTATION_VERTICAL);
-  ctk_box_set_homogeneous (GTK_BOX (self), FALSE);
-  ctk_box_set_spacing (GTK_BOX (self), 22);
-  ctk_container_set_border_width (GTK_CONTAINER (self), 24);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (self), CTK_ORIENTATION_VERTICAL);
+  ctk_box_set_homogeneous (CTK_BOX (self), FALSE);
+  ctk_box_set_spacing (CTK_BOX (self), 22);
+  ctk_container_set_border_width (CTK_CONTAINER (self), 24);
 
-  self->stack = g_object_new (GTK_TYPE_STACK,
+  self->stack = g_object_new (CTK_TYPE_STACK,
                               "homogeneous", TRUE,
-                              "transition-type", GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT,
+                              "transition-type", CTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT,
                               "vexpand", TRUE,
                               "visible", TRUE,
                               NULL);
-  GTK_CONTAINER_CLASS (ctk_shortcuts_section_parent_class)->add (GTK_CONTAINER (self), GTK_WIDGET (self->stack));
+  CTK_CONTAINER_CLASS (ctk_shortcuts_section_parent_class)->add (CTK_CONTAINER (self), CTK_WIDGET (self->stack));
 
-  self->switcher = g_object_new (GTK_TYPE_STACK_SWITCHER,
-                                 "halign", GTK_ALIGN_CENTER,
+  self->switcher = g_object_new (CTK_TYPE_STACK_SWITCHER,
+                                 "halign", CTK_ALIGN_CENTER,
                                  "stack", self->stack,
                                  "spacing", 12,
                                  "no-show-all", TRUE,
                                  NULL);
 
-  ctk_style_context_remove_class (ctk_widget_get_style_context (GTK_WIDGET (self->switcher)), GTK_STYLE_CLASS_LINKED);
+  ctk_style_context_remove_class (ctk_widget_get_style_context (CTK_WIDGET (self->switcher)), CTK_STYLE_CLASS_LINKED);
 
   self->show_all = ctk_button_new_with_mnemonic (_("_Show All"));
   ctk_widget_set_no_show_all (self->show_all, TRUE);
   g_signal_connect_swapped (self->show_all, "clicked",
                             G_CALLBACK (ctk_shortcuts_section_show_all), self);
 
-  self->footer = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 20);
-  GTK_CONTAINER_CLASS (ctk_shortcuts_section_parent_class)->add (GTK_CONTAINER (self), self->footer);
+  self->footer = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 20);
+  CTK_CONTAINER_CLASS (ctk_shortcuts_section_parent_class)->add (CTK_CONTAINER (self), self->footer);
 
-  ctk_box_set_center_widget (GTK_BOX (self->footer), GTK_WIDGET (self->switcher));
-  ctk_box_pack_end (GTK_BOX (self->footer), self->show_all, TRUE, TRUE, 0);
-  ctk_widget_set_halign (self->show_all, GTK_ALIGN_END);
+  ctk_box_set_center_widget (CTK_BOX (self->footer), CTK_WIDGET (self->switcher));
+  ctk_box_pack_end (CTK_BOX (self->footer), self->show_all, TRUE, TRUE, 0);
+  ctk_widget_set_halign (self->show_all, CTK_ALIGN_END);
 
-  self->pan_gesture = ctk_gesture_pan_new (GTK_WIDGET (self->stack), GTK_ORIENTATION_HORIZONTAL);
+  self->pan_gesture = ctk_gesture_pan_new (CTK_WIDGET (self->stack), CTK_ORIENTATION_HORIZONTAL);
   g_signal_connect (self->pan_gesture, "pan",
                     G_CALLBACK (ctk_shortcuts_section_pan_gesture_pan), self);
 }
@@ -502,27 +502,27 @@ ctk_shortcuts_section_add_group (GtkShortcutsSection *self,
   GList *children;
   GtkWidget *page, *column;
 
-  children = ctk_container_get_children (GTK_CONTAINER (self->stack));
+  children = ctk_container_get_children (CTK_CONTAINER (self->stack));
   if (children)
     page = g_list_last (children)->data;
   else
     {
-      page = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 22);
+      page = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 22);
       ctk_stack_add_named (self->stack, page, "1");
     }
   g_list_free (children);
 
-  children = ctk_container_get_children (GTK_CONTAINER (page));
+  children = ctk_container_get_children (CTK_CONTAINER (page));
   if (children)
     column = g_list_last (children)->data;
   else
     {
-      column = ctk_box_new (GTK_ORIENTATION_VERTICAL, 22);
-      ctk_container_add (GTK_CONTAINER (page), column);
+      column = ctk_box_new (CTK_ORIENTATION_VERTICAL, 22);
+      ctk_container_add (CTK_CONTAINER (page), column);
     }
   g_list_free (children);
 
-  ctk_container_add (GTK_CONTAINER (column), GTK_WIDGET (group));
+  ctk_container_add (CTK_CONTAINER (column), CTK_WIDGET (group));
   self->groups = g_list_append (self->groups, group);
 
   ctk_shortcuts_section_maybe_reflow (self);
@@ -539,7 +539,7 @@ update_group_visibility (GtkWidget *child, gpointer data)
 {
   GtkShortcutsSection *self = data;
 
-  if (GTK_IS_SHORTCUTS_GROUP (child))
+  if (CTK_IS_SHORTCUTS_GROUP (child))
     {
       gchar *view;
       gboolean match;
@@ -554,9 +554,9 @@ update_group_visibility (GtkWidget *child, gpointer data)
 
       g_free (view);
     }
-  else if (GTK_IS_CONTAINER (child))
+  else if (CTK_IS_CONTAINER (child))
     {
-      ctk_container_foreach (GTK_CONTAINER (child), update_group_visibility, data);
+      ctk_container_foreach (CTK_CONTAINER (child), update_group_visibility, data);
     }
 }
 
@@ -565,18 +565,18 @@ ctk_shortcuts_section_filter_groups (GtkShortcutsSection *self)
 {
   self->has_filtered_group = FALSE;
 
-  ctk_container_foreach (GTK_CONTAINER (self), update_group_visibility, self);
+  ctk_container_foreach (CTK_CONTAINER (self), update_group_visibility, self);
 
-  ctk_widget_set_visible (GTK_WIDGET (self->show_all), self->has_filtered_group);
-  ctk_widget_set_visible (ctk_widget_get_parent (GTK_WIDGET (self->show_all)),
-                          ctk_widget_get_visible (GTK_WIDGET (self->show_all)) ||
-                          ctk_widget_get_visible (GTK_WIDGET (self->switcher)));
+  ctk_widget_set_visible (CTK_WIDGET (self->show_all), self->has_filtered_group);
+  ctk_widget_set_visible (ctk_widget_get_parent (CTK_WIDGET (self->show_all)),
+                          ctk_widget_get_visible (CTK_WIDGET (self->show_all)) ||
+                          ctk_widget_get_visible (CTK_WIDGET (self->switcher)));
 }
 
 static void
 ctk_shortcuts_section_maybe_reflow (GtkShortcutsSection *self)
 {
-  if (ctk_widget_get_mapped (GTK_WIDGET (self)))
+  if (ctk_widget_get_mapped (CTK_WIDGET (self)))
     ctk_shortcuts_section_reflow_groups (self);
   else
     self->need_reflow = TRUE;
@@ -590,8 +590,8 @@ adjust_page_buttons (GtkWidget *widget,
 
   ctk_style_context_add_class (ctk_widget_get_style_context (widget), "circular");
 
-  label = ctk_bin_get_child (GTK_BIN (widget));
-  ctk_label_set_use_underline (GTK_LABEL (label), TRUE);
+  label = ctk_bin_get_child (CTK_BIN (widget));
+  ctk_label_set_use_underline (CTK_LABEL (label), TRUE);
 }
 
 static void
@@ -608,13 +608,13 @@ ctk_shortcuts_section_reflow_groups (GtkShortcutsSection *self)
 
   /* collect all groups from the current pages */
   groups = NULL;
-  pages = ctk_container_get_children (GTK_CONTAINER (self->stack));
+  pages = ctk_container_get_children (CTK_CONTAINER (self->stack));
   for (p = pages; p; p = p->next)
     {
-      columns = ctk_container_get_children (GTK_CONTAINER (p->data));
+      columns = ctk_container_get_children (CTK_CONTAINER (p->data));
       for (c = columns; c; c = c->next)
         {
-          children = ctk_container_get_children (GTK_CONTAINER (c->data));
+          children = ctk_container_get_children (CTK_CONTAINER (c->data));
           groups = g_list_concat (groups, children);
         }
       g_list_free (columns);
@@ -646,16 +646,16 @@ ctk_shortcuts_section_reflow_groups (GtkShortcutsSection *self)
           GtkWidget *column;
           GtkSizeGroup *group;
 
-          column = ctk_box_new (GTK_ORIENTATION_VERTICAL, 22);
+          column = ctk_box_new (CTK_ORIENTATION_VERTICAL, 22);
           ctk_widget_show (column);
 
-          group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+          group = ctk_size_group_new (CTK_SIZE_GROUP_HORIZONTAL);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           ctk_size_group_set_ignore_hidden (group, TRUE);
 G_GNUC_END_IGNORE_DEPRECATIONS
           g_object_set_data_full (G_OBJECT (column), "accel-size-group", group, g_object_unref);
 
-          group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+          group = ctk_size_group_new (CTK_SIZE_GROUP_HORIZONTAL);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           ctk_size_group_set_ignore_hidden (group, TRUE);
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -665,14 +665,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
             {
               GtkWidget *page;
 
-              page = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 22);
+              page = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 22);
               ctk_widget_show (page);
 
               pages = g_list_append (pages, page);
               current_page = page;
             }
 
-          ctk_container_add (GTK_CONTAINER (current_page), column);
+          ctk_container_add (CTK_CONTAINER (current_page), column);
           current_column = column;
           n_columns += 1;
           n_rows = 0;
@@ -686,8 +686,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                     NULL);
 
       g_object_ref (group);
-      ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (GTK_WIDGET (group))), GTK_WIDGET (group));
-      ctk_container_add (GTK_CONTAINER (current_column), GTK_WIDGET (group));
+      ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (CTK_WIDGET (group))), CTK_WIDGET (group));
+      ctk_container_add (CTK_CONTAINER (current_column), CTK_WIDGET (group));
       g_object_unref (group);
     }
 
@@ -699,23 +699,23 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       GList *content;
       guint n;
 
-      column = ctk_box_new (GTK_ORIENTATION_VERTICAL, 22);
+      column = ctk_box_new (CTK_ORIENTATION_VERTICAL, 22);
       ctk_widget_show (column);
 
-      group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+      group = ctk_size_group_new (CTK_SIZE_GROUP_HORIZONTAL);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_size_group_set_ignore_hidden (group, TRUE);
 G_GNUC_END_IGNORE_DEPRECATIONS
       g_object_set_data_full (G_OBJECT (column), "accel-size-group", group, g_object_unref);
-      group = ctk_size_group_new (GTK_SIZE_GROUP_HORIZONTAL);
+      group = ctk_size_group_new (CTK_SIZE_GROUP_HORIZONTAL);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_size_group_set_ignore_hidden (group, TRUE);
 G_GNUC_END_IGNORE_DEPRECATIONS
       g_object_set_data_full (G_OBJECT (column), "title-size-group", group, g_object_unref);
 
-      ctk_container_add (GTK_CONTAINER (current_page), column);
+      ctk_container_add (CTK_CONTAINER (current_page), column);
 
-      content = ctk_container_get_children (GTK_CONTAINER (current_column));
+      content = ctk_container_get_children (CTK_CONTAINER (current_column));
       n = 0;
 
       for (g = g_list_last (content); g; g = g->prev)
@@ -750,8 +750,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         NULL);
 
           g_object_ref (group);
-          ctk_container_remove (GTK_CONTAINER (current_column), GTK_WIDGET (group));
-          ctk_container_add (GTK_CONTAINER (column), GTK_WIDGET (group));
+          ctk_container_remove (CTK_CONTAINER (current_column), CTK_WIDGET (group));
+          ctk_container_add (CTK_CONTAINER (column), CTK_WIDGET (group));
           g_object_unref (group);
         }
 
@@ -759,7 +759,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
   /* replace the current pages with the new pages */
-  children = ctk_container_get_children (GTK_CONTAINER (self->stack));
+  children = ctk_container_get_children (CTK_CONTAINER (self->stack));
   g_list_free_full (children, (GDestroyNotify)ctk_widget_destroy);
 
   for (p = pages, n_pages = 0; p; p = p->next, n_pages++)
@@ -773,11 +773,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
   /* fix up stack switcher */
-  ctk_container_foreach (GTK_CONTAINER (self->switcher), adjust_page_buttons, NULL);
-  ctk_widget_set_visible (GTK_WIDGET (self->switcher), (n_pages > 1));
-  ctk_widget_set_visible (ctk_widget_get_parent (GTK_WIDGET (self->switcher)),
-                          ctk_widget_get_visible (GTK_WIDGET (self->show_all)) ||
-                          ctk_widget_get_visible (GTK_WIDGET (self->switcher)));
+  ctk_container_foreach (CTK_CONTAINER (self->switcher), adjust_page_buttons, NULL);
+  ctk_widget_set_visible (CTK_WIDGET (self->switcher), (n_pages > 1));
+  ctk_widget_set_visible (ctk_widget_get_parent (CTK_WIDGET (self->switcher)),
+                          ctk_widget_get_visible (CTK_WIDGET (self->show_all)) ||
+                          ctk_widget_get_visible (CTK_WIDGET (self->switcher)));
 
   /* clean up */
   g_list_free (groups);
@@ -794,7 +794,7 @@ ctk_shortcuts_section_change_current_page (GtkShortcutsSection *self,
   GList *children, *l;
 
   child = ctk_stack_get_visible_child (self->stack);
-  children = ctk_container_get_children (GTK_CONTAINER (self->stack));
+  children = ctk_container_get_children (CTK_CONTAINER (self->stack));
   l = g_list_find (children, child);
 
   if (offset == 1)
@@ -805,9 +805,9 @@ ctk_shortcuts_section_change_current_page (GtkShortcutsSection *self,
     g_assert_not_reached ();
 
   if (l)
-    ctk_stack_set_visible_child (self->stack, GTK_WIDGET (l->data));
+    ctk_stack_set_visible_child (self->stack, CTK_WIDGET (l->data));
   else
-    ctk_widget_error_bell (GTK_WIDGET (self));
+    ctk_widget_error_bell (CTK_WIDGET (self));
 
   g_list_free (children);
 
@@ -823,12 +823,12 @@ ctk_shortcuts_section_pan_gesture_pan (GtkGesturePan       *gesture,
   if (offset < 50)
     return;
 
-  if (direction == GTK_PAN_DIRECTION_LEFT)
+  if (direction == CTK_PAN_DIRECTION_LEFT)
     ctk_shortcuts_section_change_current_page (self, 1);
-  else if (direction == GTK_PAN_DIRECTION_RIGHT)
+  else if (direction == CTK_PAN_DIRECTION_RIGHT)
     ctk_shortcuts_section_change_current_page (self, -1);
   else
     g_assert_not_reached ();
 
-  ctk_gesture_set_state (GTK_GESTURE (gesture), GTK_EVENT_SEQUENCE_DENIED);
+  ctk_gesture_set_state (CTK_GESTURE (gesture), CTK_EVENT_SEQUENCE_DENIED);
 }

@@ -69,8 +69,8 @@ void
 _ctk_file_chooser_embed_set_delegate (GtkFileChooserEmbed *receiver,
 				      GtkFileChooserEmbed *delegate)
 {
-  g_return_if_fail (GTK_IS_FILE_CHOOSER_EMBED (receiver));
-  g_return_if_fail (GTK_IS_FILE_CHOOSER_EMBED (delegate));
+  g_return_if_fail (CTK_IS_FILE_CHOOSER_EMBED (receiver));
+  g_return_if_fail (CTK_IS_FILE_CHOOSER_EMBED (delegate));
   
   g_object_set_data (G_OBJECT (receiver), I_("gtk-file-chooser-embed-delegate"), delegate);
 
@@ -138,7 +138,7 @@ _ctk_file_chooser_embed_get_type (void)
 							I_("GtkFileChooserEmbed"),
 							&file_chooser_embed_info, 0);
 
-      g_type_interface_add_prerequisite (file_chooser_embed_type, GTK_TYPE_WIDGET);
+      g_type_interface_add_prerequisite (file_chooser_embed_type, CTK_TYPE_WIDGET);
     }
 
   return file_chooser_embed_type;
@@ -170,25 +170,25 @@ _ctk_file_chooser_embed_get_default_size (GtkFileChooserEmbed *chooser_embed,
 					 gint                *default_width,
 					 gint                *default_height)
 {
-  g_return_if_fail (GTK_IS_FILE_CHOOSER_EMBED (chooser_embed));
+  g_return_if_fail (CTK_IS_FILE_CHOOSER_EMBED (chooser_embed));
   g_return_if_fail (default_width != NULL);
   g_return_if_fail (default_height != NULL);
 
-  GTK_FILE_CHOOSER_EMBED_GET_IFACE (chooser_embed)->get_default_size (chooser_embed, default_width, default_height);
+  CTK_FILE_CHOOSER_EMBED_GET_IFACE (chooser_embed)->get_default_size (chooser_embed, default_width, default_height);
 }
 
 gboolean
 _ctk_file_chooser_embed_should_respond (GtkFileChooserEmbed *chooser_embed)
 {
-  g_return_val_if_fail (GTK_IS_FILE_CHOOSER_EMBED (chooser_embed), FALSE);
+  g_return_val_if_fail (CTK_IS_FILE_CHOOSER_EMBED (chooser_embed), FALSE);
 
-  return GTK_FILE_CHOOSER_EMBED_GET_IFACE (chooser_embed)->should_respond (chooser_embed);
+  return CTK_FILE_CHOOSER_EMBED_GET_IFACE (chooser_embed)->should_respond (chooser_embed);
 }
 
 void
 _ctk_file_chooser_embed_initial_focus (GtkFileChooserEmbed *chooser_embed)
 {
-  g_return_if_fail (GTK_IS_FILE_CHOOSER_EMBED (chooser_embed));
+  g_return_if_fail (CTK_IS_FILE_CHOOSER_EMBED (chooser_embed));
 
-  GTK_FILE_CHOOSER_EMBED_GET_IFACE (chooser_embed)->initial_focus (chooser_embed);
+  CTK_FILE_CHOOSER_EMBED_GET_IFACE (chooser_embed)->initial_focus (chooser_embed);
 }

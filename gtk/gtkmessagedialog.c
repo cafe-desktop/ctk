@@ -53,21 +53,21 @@
  * from the taskbar by default.
  *
  * The easiest way to do a modal message dialog is to use ctk_dialog_run(), though
- * you can also pass in the %GTK_DIALOG_MODAL flag, ctk_dialog_run() automatically
+ * you can also pass in the %CTK_DIALOG_MODAL flag, ctk_dialog_run() automatically
  * makes the dialog modal and waits for the user to respond to it. ctk_dialog_run()
  * returns when any dialog button is clicked.
  *
  * An example for using a modal dialog:
  * |[<!-- language="C" -->
- *  GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
+ *  GtkDialogFlags flags = CTK_DIALOG_DESTROY_WITH_PARENT;
  *  dialog = ctk_message_dialog_new (parent_window,
  *                                   flags,
- *                                   GTK_MESSAGE_ERROR,
- *                                   GTK_BUTTONS_CLOSE,
+ *                                   CTK_MESSAGE_ERROR,
+ *                                   CTK_BUTTONS_CLOSE,
  *                                   "Error reading “%s”: %s",
  *                                   filename,
  *                                   g_strerror (errno));
- *  ctk_dialog_run (GTK_DIALOG (dialog));
+ *  ctk_dialog_run (CTK_DIALOG (dialog));
  *  ctk_widget_destroy (dialog);
  * ]|
  *
@@ -75,11 +75,11 @@
  *
  * An example for a non-modal dialog:
  * |[<!-- language="C" -->
- *  GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
+ *  GtkDialogFlags flags = CTK_DIALOG_DESTROY_WITH_PARENT;
  *  dialog = ctk_message_dialog_new (parent_window,
  *                                   flags,
- *                                   GTK_MESSAGE_ERROR,
- *                                   GTK_BUTTONS_CLOSE,
+ *                                   CTK_MESSAGE_ERROR,
+ *                                   CTK_BUTTONS_CLOSE,
  *                                   "Error reading “%s”: %s",
  *                                   filename,
  *                                   g_strerror (errno));
@@ -137,9 +137,9 @@ enum {
   PROP_MESSAGE_AREA
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkMessageDialog, ctk_message_dialog, GTK_TYPE_DIALOG,
+G_DEFINE_TYPE_WITH_CODE (GtkMessageDialog, ctk_message_dialog, CTK_TYPE_DIALOG,
                          G_ADD_PRIVATE (GtkMessageDialog)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_message_dialog_buildable_interface_init))
 
 static GtkBuildableIface *parent_buildable_iface;
@@ -158,7 +158,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
   GtkWidgetClass *widget_class;
   GObjectClass *gobject_class;
 
-  widget_class = GTK_WIDGET_CLASS (class);
+  widget_class = CTK_WIDGET_CLASS (class);
   gobject_class = G_OBJECT_CLASS (class);
   
   widget_class->style_updated = ctk_message_dialog_style_updated;
@@ -176,7 +176,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
                                                              0,
                                                              G_MAXINT,
                                                              12,
-                                                             GTK_PARAM_READABLE));
+                                                             CTK_PARAM_READABLE));
 
   /**
    * GtkMessageDialog:message-type:
@@ -188,17 +188,17 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
                                    g_param_spec_enum ("message-type",
 						      P_("Message Type"),
 						      P_("The type of message"),
-						      GTK_TYPE_MESSAGE_TYPE,
-                                                      GTK_MESSAGE_INFO,
-                                                      GTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
+						      CTK_TYPE_MESSAGE_TYPE,
+                                                      CTK_MESSAGE_INFO,
+                                                      CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT|G_PARAM_EXPLICIT_NOTIFY));
   g_object_class_install_property (gobject_class,
                                    PROP_BUTTONS,
                                    g_param_spec_enum ("buttons",
 						      P_("Message Buttons"),
 						      P_("The buttons shown in the message dialog"),
-						      GTK_TYPE_BUTTONS_TYPE,
-                                                      GTK_BUTTONS_NONE,
-                                                      GTK_PARAM_WRITABLE|G_PARAM_CONSTRUCT_ONLY));
+						      CTK_TYPE_BUTTONS_TYPE,
+                                                      CTK_BUTTONS_NONE,
+                                                      CTK_PARAM_WRITABLE|G_PARAM_CONSTRUCT_ONLY));
 
   /**
    * GtkMessageDialog:text:
@@ -214,7 +214,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
                                                         P_("Text"),
                                                         P_("The primary text of the message dialog"),
                                                         "",
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 
   /**
    * GtkMessageDialog:use-markup:
@@ -230,7 +230,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
 							 P_("Use Markup"),
 							 P_("The primary text of the title includes Pango markup."),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
   /**
    * GtkMessageDialog:secondary-text:
@@ -245,7 +245,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
                                                         P_("Secondary Text"),
                                                         P_("The secondary text of the message dialog"),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 
   /**
    * GtkMessageDialog:secondary-use-markup:
@@ -261,7 +261,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
 							 P_("Use Markup in secondary"),
 							 P_("The secondary text includes Pango markup."),
 							 FALSE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /**
    * GtkMessageDialog:image:
@@ -276,8 +276,8 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
                                    g_param_spec_object ("image",
                                                         P_("Image"),
                                                         P_("The image"),
-                                                        GTK_TYPE_WIDGET,
-                                                        GTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+                                                        CTK_TYPE_WIDGET,
+                                                        CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 
   /**
    * GtkMessageDialog:message-area:
@@ -293,8 +293,8 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
 				   g_param_spec_object ("message-area",
 							P_("Message area"),
 							P_("GtkBox that holds the dialog's primary and secondary labels"),
-							GTK_TYPE_WIDGET,
-							GTK_PARAM_READABLE));
+							CTK_TYPE_WIDGET,
+							CTK_PARAM_READABLE));
 
   /* Setup Composite data */
   ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkmessagedialog.ui");
@@ -320,19 +320,19 @@ ctk_message_dialog_init (GtkMessageDialog *dialog)
   priv->has_secondary_text = FALSE;
   priv->has_primary_markup = FALSE;
   priv->has_secondary_text = FALSE;
-  priv->message_type = GTK_MESSAGE_OTHER;
+  priv->message_type = CTK_MESSAGE_OTHER;
 
-  ctk_widget_init_template (GTK_WIDGET (dialog));
-  ctk_message_dialog_style_updated (GTK_WIDGET (dialog));
+  ctk_widget_init_template (CTK_WIDGET (dialog));
+  ctk_message_dialog_style_updated (CTK_WIDGET (dialog));
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  action_area = ctk_dialog_get_action_area (GTK_DIALOG (dialog));
+  action_area = ctk_dialog_get_action_area (CTK_DIALOG (dialog));
 G_GNUC_END_IGNORE_DEPRECATIONS
-  ctk_button_box_set_layout (GTK_BUTTON_BOX (action_area), GTK_BUTTONBOX_EXPAND);
+  ctk_button_box_set_layout (CTK_BUTTON_BOX (action_area), CTK_BUTTONBOX_EXPAND);
 
-  settings = ctk_widget_get_settings (GTK_WIDGET (dialog));
+  settings = ctk_widget_get_settings (CTK_WIDGET (dialog));
   g_object_get (settings, "gtk-keynav-use-caret", &use_caret, NULL);
-  ctk_label_set_selectable (GTK_LABEL (priv->label), use_caret);
-  ctk_label_set_selectable (GTK_LABEL (priv->secondary_label), use_caret);
+  ctk_label_set_selectable (CTK_LABEL (priv->label), use_caret);
+  ctk_label_set_selectable (CTK_LABEL (priv->secondary_label), use_caret);
 }
 
 static void
@@ -356,13 +356,13 @@ setup_primary_label_font (GtkMessageDialog *dialog)
           pango_attr_list_insert (attributes, attr);
         }
 
-      ctk_label_set_attributes (GTK_LABEL (priv->label), attributes);
+      ctk_label_set_attributes (CTK_LABEL (priv->label), attributes);
       pango_attr_list_unref (attributes);
     }
   else
     {
       /* unset the font settings */
-      ctk_label_set_attributes (GTK_LABEL (priv->label), NULL);
+      ctk_label_set_attributes (CTK_LABEL (priv->label), NULL);
     }
 }
 
@@ -381,23 +381,23 @@ setup_type (GtkMessageDialog *dialog,
 
   switch (type)
     {
-    case GTK_MESSAGE_INFO:
+    case CTK_MESSAGE_INFO:
       name = _("Information");
       break;
 
-    case GTK_MESSAGE_QUESTION:
+    case CTK_MESSAGE_QUESTION:
       name = _("Question");
       break;
 
-    case GTK_MESSAGE_WARNING:
+    case CTK_MESSAGE_WARNING:
       name = _("Warning");
       break;
 
-    case GTK_MESSAGE_ERROR:
+    case CTK_MESSAGE_ERROR:
       name = _("Error");
       break;
 
-    case GTK_MESSAGE_OTHER:
+    case CTK_MESSAGE_OTHER:
       break;
 
     default:
@@ -405,8 +405,8 @@ setup_type (GtkMessageDialog *dialog,
       break;
     }
 
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (dialog));
-  if (GTK_IS_ACCESSIBLE (atk_obj))
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (dialog));
+  if (CTK_IS_ACCESSIBLE (atk_obj))
     {
       atk_object_set_role (atk_obj, ATK_ROLE_ALERT);
       if (name)
@@ -423,20 +423,20 @@ update_title (GObject    *dialog,
 {
   const gchar *title;
 
-  title = ctk_window_get_title (GTK_WINDOW (dialog));
-  ctk_label_set_label (GTK_LABEL (label), title);
+  title = ctk_window_get_title (CTK_WINDOW (dialog));
+  ctk_label_set_label (CTK_LABEL (label), title);
   ctk_widget_set_visible (label, title && title[0]);
 }
 
 static void
 ctk_message_dialog_constructed (GObject *object)
 {
-  GtkMessageDialog *dialog = GTK_MESSAGE_DIALOG (object);
+  GtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (object);
   gboolean use_header;
 
   G_OBJECT_CLASS (ctk_message_dialog_parent_class)->constructed (object);
 
-  g_object_get (ctk_widget_get_settings (GTK_WIDGET (dialog)),
+  g_object_get (ctk_widget_get_settings (CTK_WIDGET (dialog)),
                 "gtk-dialogs-use-header", &use_header,
                 NULL);
 
@@ -445,7 +445,7 @@ ctk_message_dialog_constructed (GObject *object)
       GtkWidget *box;
       GtkWidget *label;
 
-      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+      box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
       ctk_widget_show (box);
       ctk_widget_set_size_request (box, -1, 16);
       label = ctk_label_new ("");
@@ -453,10 +453,10 @@ ctk_message_dialog_constructed (GObject *object)
       ctk_widget_set_margin_top (label, 6);
       ctk_widget_set_margin_bottom (label, 6);
       ctk_style_context_add_class (ctk_widget_get_style_context (label), "title");
-      ctk_box_set_center_widget (GTK_BOX (box), label);
+      ctk_box_set_center_widget (CTK_BOX (box), label);
       g_signal_connect_object (dialog, "notify::title", G_CALLBACK (update_title), label, 0);
 
-      ctk_window_set_titlebar (GTK_WINDOW (dialog), box);
+      ctk_window_set_titlebar (CTK_WINDOW (dialog), box);
     }
 }
 
@@ -466,7 +466,7 @@ ctk_message_dialog_set_property (GObject      *object,
 				 const GValue *value,
 				 GParamSpec   *pspec)
 {
-  GtkMessageDialog *dialog = GTK_MESSAGE_DIALOG (object);
+  GtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (object);
   GtkMessageDialogPrivate *priv = dialog->priv;
 
   switch (prop_id)
@@ -479,17 +479,17 @@ ctk_message_dialog_set_property (GObject      *object,
       break;
     case PROP_TEXT:
       if (priv->has_primary_markup)
-	ctk_label_set_markup (GTK_LABEL (priv->label),
+	ctk_label_set_markup (CTK_LABEL (priv->label),
 			      g_value_get_string (value));
       else
-	ctk_label_set_text (GTK_LABEL (priv->label),
+	ctk_label_set_text (CTK_LABEL (priv->label),
 			    g_value_get_string (value));
       break;
     case PROP_USE_MARKUP:
       if (priv->has_primary_markup != g_value_get_boolean (value))
         {
           priv->has_primary_markup = g_value_get_boolean (value);
-          ctk_label_set_use_markup (GTK_LABEL (priv->label), priv->has_primary_markup);
+          ctk_label_set_use_markup (CTK_LABEL (priv->label), priv->has_primary_markup);
           g_object_notify_by_pspec (object, pspec);
         }
         setup_primary_label_font (dialog);
@@ -498,10 +498,10 @@ ctk_message_dialog_set_property (GObject      *object,
       {
 	const gchar *txt = g_value_get_string (value);
 
-	if (ctk_label_get_use_markup (GTK_LABEL (priv->secondary_label)))
-	  ctk_label_set_markup (GTK_LABEL (priv->secondary_label), txt);
+	if (ctk_label_get_use_markup (CTK_LABEL (priv->secondary_label)))
+	  ctk_label_set_markup (CTK_LABEL (priv->secondary_label), txt);
 	else
-	  ctk_label_set_text (GTK_LABEL (priv->secondary_label), txt);
+	  ctk_label_set_text (CTK_LABEL (priv->secondary_label), txt);
 
 	if (txt)
 	  {
@@ -517,9 +517,9 @@ ctk_message_dialog_set_property (GObject      *object,
       }
       break;
     case PROP_SECONDARY_USE_MARKUP:
-      if (ctk_label_get_use_markup (GTK_LABEL (priv->secondary_label)) != g_value_get_boolean (value))
+      if (ctk_label_get_use_markup (CTK_LABEL (priv->secondary_label)) != g_value_get_boolean (value))
         {
-          ctk_label_set_use_markup (GTK_LABEL (priv->secondary_label), g_value_get_boolean (value));
+          ctk_label_set_use_markup (CTK_LABEL (priv->secondary_label), g_value_get_boolean (value));
           g_object_notify_by_pspec (object, pspec);
         }
       break;
@@ -541,7 +541,7 @@ ctk_message_dialog_get_property (GObject     *object,
 				 GValue      *value,
 				 GParamSpec  *pspec)
 {
-  GtkMessageDialog *dialog = GTK_MESSAGE_DIALOG (object);
+  GtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (object);
   GtkMessageDialogPrivate *priv = dialog->priv;
 
   switch (prop_id)
@@ -550,7 +550,7 @@ ctk_message_dialog_get_property (GObject     *object,
       g_value_set_enum (value, (GtkMessageType) priv->message_type);
       break;
     case PROP_TEXT:
-      g_value_set_string (value, ctk_label_get_label (GTK_LABEL (priv->label)));
+      g_value_set_string (value, ctk_label_get_label (CTK_LABEL (priv->label)));
       break;
     case PROP_USE_MARKUP:
       g_value_set_boolean (value, priv->has_primary_markup);
@@ -558,14 +558,14 @@ ctk_message_dialog_get_property (GObject     *object,
     case PROP_SECONDARY_TEXT:
       if (priv->has_secondary_text)
       g_value_set_string (value, 
-			  ctk_label_get_label (GTK_LABEL (priv->secondary_label)));
+			  ctk_label_get_label (CTK_LABEL (priv->secondary_label)));
       else
 	g_value_set_string (value, NULL);
       break;
     case PROP_SECONDARY_USE_MARKUP:
       if (priv->has_secondary_text)
 	g_value_set_boolean (value, 
-			     ctk_label_get_use_markup (GTK_LABEL (priv->secondary_label)));
+			     ctk_label_get_use_markup (CTK_LABEL (priv->secondary_label)));
       else
 	g_value_set_boolean (value, FALSE);
       break;
@@ -610,14 +610,14 @@ ctk_message_dialog_new (GtkWindow     *parent,
   gchar* msg = NULL;
   va_list args;
 
-  g_return_val_if_fail (parent == NULL || GTK_IS_WINDOW (parent), NULL);
+  g_return_val_if_fail (parent == NULL || CTK_IS_WINDOW (parent), NULL);
 
-  widget = g_object_new (GTK_TYPE_MESSAGE_DIALOG,
+  widget = g_object_new (CTK_TYPE_MESSAGE_DIALOG,
                          "use-header-bar", FALSE,
 			 "message-type", type,
 			 "buttons", buttons,
 			 NULL);
-  dialog = GTK_DIALOG (widget);
+  dialog = CTK_DIALOG (widget);
 
   if (message_format)
     {
@@ -625,19 +625,19 @@ ctk_message_dialog_new (GtkWindow     *parent,
       msg = g_strdup_vprintf (message_format, args);
       va_end (args);
 
-      ctk_label_set_text (GTK_LABEL (GTK_MESSAGE_DIALOG (widget)->priv->label), msg);
+      ctk_label_set_text (CTK_LABEL (CTK_MESSAGE_DIALOG (widget)->priv->label), msg);
 
       g_free (msg);
     }
 
   if (parent != NULL)
-    ctk_window_set_transient_for (GTK_WINDOW (widget), GTK_WINDOW (parent));
+    ctk_window_set_transient_for (CTK_WINDOW (widget), CTK_WINDOW (parent));
   
-  if (flags & GTK_DIALOG_MODAL)
-    ctk_window_set_modal (GTK_WINDOW (dialog), TRUE);
+  if (flags & CTK_DIALOG_MODAL)
+    ctk_window_set_modal (CTK_WINDOW (dialog), TRUE);
 
-  if (flags & GTK_DIALOG_DESTROY_WITH_PARENT)
-    ctk_window_set_destroy_with_parent (GTK_WINDOW (dialog), TRUE);
+  if (flags & CTK_DIALOG_DESTROY_WITH_PARENT)
+    ctk_window_set_destroy_with_parent (CTK_WINDOW (dialog), TRUE);
 
   return widget;
 }
@@ -667,13 +667,13 @@ ctk_message_dialog_new (GtkWindow     *parent,
  * argument.
  * |[<!-- language="C" -->
  *  GtkWidget *dialog;
- *  GtkDialogFlags flags = GTK_DIALOG_DESTROY_WITH_PARENT;
+ *  GtkDialogFlags flags = CTK_DIALOG_DESTROY_WITH_PARENT;
  *  dialog = ctk_message_dialog_new (parent_window,
  *                                   flags,
- *                                   GTK_MESSAGE_ERROR,
- *                                   GTK_BUTTONS_CLOSE,
+ *                                   CTK_MESSAGE_ERROR,
+ *                                   CTK_BUTTONS_CLOSE,
  *                                   NULL);
- *  ctk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (dialog),
+ *  ctk_message_dialog_set_markup (CTK_MESSAGE_DIALOG (dialog),
  *                                 markup);
  * ]|
  * 
@@ -693,7 +693,7 @@ ctk_message_dialog_new_with_markup (GtkWindow     *parent,
   va_list args;
   gchar *msg = NULL;
 
-  g_return_val_if_fail (parent == NULL || GTK_IS_WINDOW (parent), NULL);
+  g_return_val_if_fail (parent == NULL || CTK_IS_WINDOW (parent), NULL);
 
   widget = ctk_message_dialog_new (parent, flags, type, buttons, NULL);
 
@@ -703,7 +703,7 @@ ctk_message_dialog_new_with_markup (GtkWindow     *parent,
       msg = g_markup_vprintf_escaped (message_format, args);
       va_end (args);
 
-      ctk_message_dialog_set_markup (GTK_MESSAGE_DIALOG (widget), msg);
+      ctk_message_dialog_set_markup (CTK_MESSAGE_DIALOG (widget), msg);
 
       g_free (msg);
     }
@@ -728,8 +728,8 @@ ctk_message_dialog_set_image (GtkMessageDialog *dialog,
   GtkMessageDialogPrivate *priv;
   GtkWidget *parent;
 
-  g_return_if_fail (GTK_IS_MESSAGE_DIALOG (dialog));
-  g_return_if_fail (image == NULL || GTK_IS_WIDGET (image));
+  g_return_if_fail (CTK_IS_MESSAGE_DIALOG (dialog));
+  g_return_if_fail (image == NULL || CTK_IS_WIDGET (image));
 
   priv = dialog->priv;
   
@@ -740,14 +740,14 @@ ctk_message_dialog_set_image (GtkMessageDialog *dialog,
  
   if (priv->image)
     { 
-      ctk_widget_set_halign (priv->image, GTK_ALIGN_CENTER);
-      ctk_widget_set_valign (priv->image, GTK_ALIGN_START);
+      ctk_widget_set_halign (priv->image, CTK_ALIGN_CENTER);
+      ctk_widget_set_valign (priv->image, CTK_ALIGN_START);
       parent = ctk_widget_get_parent (priv->message_area);
-      ctk_container_add (GTK_CONTAINER (parent), priv->image);
-      ctk_box_reorder_child (GTK_BOX (parent), priv->image, 0);
+      ctk_container_add (CTK_CONTAINER (parent), priv->image);
+      ctk_box_reorder_child (CTK_BOX (parent), priv->image, 0);
     }
 
-  priv->message_type = GTK_MESSAGE_OTHER;
+  priv->message_type = CTK_MESSAGE_OTHER;
 
   g_object_notify (G_OBJECT (dialog), "image");
   g_object_notify (G_OBJECT (dialog), "message-type");
@@ -767,7 +767,7 @@ ctk_message_dialog_set_image (GtkMessageDialog *dialog,
 GtkWidget *
 ctk_message_dialog_get_image (GtkMessageDialog *dialog)
 {
-  g_return_val_if_fail (GTK_IS_MESSAGE_DIALOG (dialog), NULL);
+  g_return_val_if_fail (CTK_IS_MESSAGE_DIALOG (dialog), NULL);
 
   return dialog->priv->image;
 }
@@ -788,12 +788,12 @@ ctk_message_dialog_set_markup (GtkMessageDialog *message_dialog,
 {
   GtkMessageDialogPrivate *priv;
 
-  g_return_if_fail (GTK_IS_MESSAGE_DIALOG (message_dialog));
+  g_return_if_fail (CTK_IS_MESSAGE_DIALOG (message_dialog));
 
   priv = message_dialog->priv;
 
   priv->has_primary_markup = TRUE;
-  ctk_label_set_markup (GTK_LABEL (priv->label), str);
+  ctk_label_set_markup (CTK_LABEL (priv->label), str);
 }
 
 /**
@@ -816,7 +816,7 @@ ctk_message_dialog_format_secondary_text (GtkMessageDialog *message_dialog,
   gchar *msg = NULL;
   GtkMessageDialogPrivate *priv;
 
-  g_return_if_fail (GTK_IS_MESSAGE_DIALOG (message_dialog));
+  g_return_if_fail (CTK_IS_MESSAGE_DIALOG (message_dialog));
 
   priv = message_dialog->priv;
 
@@ -829,7 +829,7 @@ ctk_message_dialog_format_secondary_text (GtkMessageDialog *message_dialog,
       va_end (args);
 
       ctk_widget_show (priv->secondary_label);
-      ctk_label_set_text (GTK_LABEL (priv->secondary_label), msg);
+      ctk_label_set_text (CTK_LABEL (priv->secondary_label), msg);
 
       g_free (msg);
     }
@@ -878,7 +878,7 @@ ctk_message_dialog_format_secondary_markup (GtkMessageDialog *message_dialog,
   gchar *msg = NULL;
   GtkMessageDialogPrivate *priv;
 
-  g_return_if_fail (GTK_IS_MESSAGE_DIALOG (message_dialog));
+  g_return_if_fail (CTK_IS_MESSAGE_DIALOG (message_dialog));
 
   priv = message_dialog->priv;
 
@@ -891,7 +891,7 @@ ctk_message_dialog_format_secondary_markup (GtkMessageDialog *message_dialog,
       va_end (args);
 
       ctk_widget_show (priv->secondary_label);
-      ctk_label_set_markup (GTK_LABEL (priv->secondary_label), msg);
+      ctk_label_set_markup (CTK_LABEL (priv->secondary_label), msg);
 
       g_free (msg);
     }
@@ -922,7 +922,7 @@ ctk_message_dialog_format_secondary_markup (GtkMessageDialog *message_dialog,
 GtkWidget *
 ctk_message_dialog_get_message_area (GtkMessageDialog *message_dialog)
 {
-  g_return_val_if_fail (GTK_IS_MESSAGE_DIALOG (message_dialog), NULL);
+  g_return_val_if_fail (CTK_IS_MESSAGE_DIALOG (message_dialog), NULL);
 
   return message_dialog->priv->message_area;
 }
@@ -931,42 +931,42 @@ static void
 ctk_message_dialog_add_buttons (GtkMessageDialog* message_dialog,
 				GtkButtonsType buttons)
 {
-  GtkDialog* dialog = GTK_DIALOG (message_dialog);
+  GtkDialog* dialog = CTK_DIALOG (message_dialog);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   switch (buttons)
     {
-    case GTK_BUTTONS_NONE:
+    case CTK_BUTTONS_NONE:
       /* nothing */
       break;
 
-    case GTK_BUTTONS_OK:
-      ctk_dialog_add_button (dialog, _("_OK"), GTK_RESPONSE_OK);
+    case CTK_BUTTONS_OK:
+      ctk_dialog_add_button (dialog, _("_OK"), CTK_RESPONSE_OK);
       break;
 
-    case GTK_BUTTONS_CLOSE:
-      ctk_dialog_add_button (dialog, _("_Close"), GTK_RESPONSE_CLOSE);
+    case CTK_BUTTONS_CLOSE:
+      ctk_dialog_add_button (dialog, _("_Close"), CTK_RESPONSE_CLOSE);
       break;
 
-    case GTK_BUTTONS_CANCEL:
-      ctk_dialog_add_button (dialog, _("_Cancel"), GTK_RESPONSE_CANCEL);
+    case CTK_BUTTONS_CANCEL:
+      ctk_dialog_add_button (dialog, _("_Cancel"), CTK_RESPONSE_CANCEL);
       break;
 
-    case GTK_BUTTONS_YES_NO:
-      ctk_dialog_add_button (dialog, _("_No"), GTK_RESPONSE_NO);
-      ctk_dialog_add_button (dialog, _("_Yes"), GTK_RESPONSE_YES);
-      ctk_dialog_set_alternative_button_order (GTK_DIALOG (dialog),
-					       GTK_RESPONSE_YES,
-					       GTK_RESPONSE_NO,
+    case CTK_BUTTONS_YES_NO:
+      ctk_dialog_add_button (dialog, _("_No"), CTK_RESPONSE_NO);
+      ctk_dialog_add_button (dialog, _("_Yes"), CTK_RESPONSE_YES);
+      ctk_dialog_set_alternative_button_order (CTK_DIALOG (dialog),
+					       CTK_RESPONSE_YES,
+					       CTK_RESPONSE_NO,
 					       -1);
       break;
 
-    case GTK_BUTTONS_OK_CANCEL:
-      ctk_dialog_add_button (dialog, _("_Cancel"), GTK_RESPONSE_CANCEL);
-      ctk_dialog_add_button (dialog, _("_OK"), GTK_RESPONSE_OK);
-      ctk_dialog_set_alternative_button_order (GTK_DIALOG (dialog),
-					       GTK_RESPONSE_OK,
-					       GTK_RESPONSE_CANCEL,
+    case CTK_BUTTONS_OK_CANCEL:
+      ctk_dialog_add_button (dialog, _("_Cancel"), CTK_RESPONSE_CANCEL);
+      ctk_dialog_add_button (dialog, _("_OK"), CTK_RESPONSE_OK);
+      ctk_dialog_set_alternative_button_order (CTK_DIALOG (dialog),
+					       CTK_RESPONSE_OK,
+					       CTK_RESPONSE_CANCEL,
 					       -1);
       break;
       
@@ -982,7 +982,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 ctk_message_dialog_style_updated (GtkWidget *widget)
 {
-  GtkMessageDialog *dialog = GTK_MESSAGE_DIALOG (widget);
+  GtkMessageDialog *dialog = CTK_MESSAGE_DIALOG (widget);
   GtkWidget *parent;
   gint border_width;
 
@@ -993,9 +993,9 @@ ctk_message_dialog_style_updated (GtkWidget *widget)
       ctk_widget_style_get (widget, "message-border",
                             &border_width, NULL);
 
-      ctk_container_set_border_width (GTK_CONTAINER (parent),
+      ctk_container_set_border_width (CTK_CONTAINER (parent),
                                       MAX (0, border_width - 7));
     }
 
-  GTK_WIDGET_CLASS (ctk_message_dialog_parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (ctk_message_dialog_parent_class)->style_updated (widget);
 }

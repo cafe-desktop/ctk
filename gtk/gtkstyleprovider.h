@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_STYLE_PROVIDER_H__
-#define __GTK_STYLE_PROVIDER_H__
+#ifndef __CTK_STYLE_PROVIDER_H__
+#define __CTK_STYLE_PROVIDER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -30,13 +30,13 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_STYLE_PROVIDER          (ctk_style_provider_get_type ())
-#define GTK_STYLE_PROVIDER(o)            (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_STYLE_PROVIDER, GtkStyleProvider))
-#define GTK_IS_STYLE_PROVIDER(o)         (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_STYLE_PROVIDER))
-#define GTK_STYLE_PROVIDER_GET_IFACE(o)  (G_TYPE_INSTANCE_GET_INTERFACE ((o), GTK_TYPE_STYLE_PROVIDER, GtkStyleProviderIface))
+#define CTK_TYPE_STYLE_PROVIDER          (ctk_style_provider_get_type ())
+#define CTK_STYLE_PROVIDER(o)            (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_STYLE_PROVIDER, GtkStyleProvider))
+#define CTK_IS_STYLE_PROVIDER(o)         (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_STYLE_PROVIDER))
+#define CTK_STYLE_PROVIDER_GET_IFACE(o)  (G_TYPE_INSTANCE_GET_INTERFACE ((o), CTK_TYPE_STYLE_PROVIDER, GtkStyleProviderIface))
 
 /**
- * GTK_STYLE_PROVIDER_PRIORITY_FALLBACK:
+ * CTK_STYLE_PROVIDER_PRIORITY_FALLBACK:
  *
  * The priority used for default style information
  * that is used in the absence of themes.
@@ -46,37 +46,37 @@ G_BEGIN_DECLS
  * override styling provided at this priority with
  * catch-all `* {...}` rules.
  */
-#define GTK_STYLE_PROVIDER_PRIORITY_FALLBACK      1
+#define CTK_STYLE_PROVIDER_PRIORITY_FALLBACK      1
 
 /**
- * GTK_STYLE_PROVIDER_PRIORITY_THEME:
+ * CTK_STYLE_PROVIDER_PRIORITY_THEME:
  *
  * The priority used for style information provided
  * by themes.
  */
-#define GTK_STYLE_PROVIDER_PRIORITY_THEME     200
+#define CTK_STYLE_PROVIDER_PRIORITY_THEME     200
 
 /**
- * GTK_STYLE_PROVIDER_PRIORITY_SETTINGS:
+ * CTK_STYLE_PROVIDER_PRIORITY_SETTINGS:
  *
  * The priority used for style information provided
  * via #GtkSettings.
  *
- * This priority is higher than #GTK_STYLE_PROVIDER_PRIORITY_THEME
+ * This priority is higher than #CTK_STYLE_PROVIDER_PRIORITY_THEME
  * to let settings override themes.
  */
-#define GTK_STYLE_PROVIDER_PRIORITY_SETTINGS    400
+#define CTK_STYLE_PROVIDER_PRIORITY_SETTINGS    400
 
 /**
- * GTK_STYLE_PROVIDER_PRIORITY_APPLICATION:
+ * CTK_STYLE_PROVIDER_PRIORITY_APPLICATION:
  *
  * A priority that can be used when adding a #GtkStyleProvider
  * for application-specific style information.
  */
-#define GTK_STYLE_PROVIDER_PRIORITY_APPLICATION 600
+#define CTK_STYLE_PROVIDER_PRIORITY_APPLICATION 600
 
 /**
- * GTK_STYLE_PROVIDER_PRIORITY_USER:
+ * CTK_STYLE_PROVIDER_PRIORITY_USER:
  *
  * The priority used for the style information from
  * `XDG_CONFIG_HOME/gtk-3.0/gtk.css`.
@@ -84,7 +84,7 @@ G_BEGIN_DECLS
  * You should not use priorities higher than this, to
  * give the user the last word.
  */
-#define GTK_STYLE_PROVIDER_PRIORITY_USER        800
+#define CTK_STYLE_PROVIDER_PRIORITY_USER        800
 
 typedef struct _GtkStyleProviderIface GtkStyleProviderIface;
 typedef struct _GtkStyleProvider GtkStyleProvider; /* dummy typedef */
@@ -135,4 +135,4 @@ GtkIconFactory * ctk_style_provider_get_icon_factory (GtkStyleProvider *provider
 
 G_END_DECLS
 
-#endif /* __GTK_STYLE_PROVIDER_H__ */
+#endif /* __CTK_STYLE_PROVIDER_H__ */

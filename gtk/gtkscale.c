@@ -162,7 +162,7 @@ struct _GtkScaleMark
   GtkCssGadget    *gadget;
   GtkCssGadget    *indicator_gadget;
   GtkCssGadget    *label_gadget;
-  GtkPositionType  position; /* always GTK_POS_TOP or GTK_POS_BOTTOM */
+  GtkPositionType  position; /* always CTK_POS_TOP or CTK_POS_BOTTOM */
 };
 
 enum {
@@ -231,9 +231,9 @@ static gchar  * ctk_scale_format_value               (GtkScale      *scale,
                                                       gdouble        value);
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkScale, ctk_scale, GTK_TYPE_RANGE,
+G_DEFINE_TYPE_WITH_CODE (GtkScale, ctk_scale, CTK_TYPE_RANGE,
                          G_ADD_PRIVATE (GtkScale)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_scale_buildable_interface_init))
 
 static gint
@@ -256,7 +256,7 @@ ctk_scale_notify (GObject    *object,
 {
   if (strcmp (pspec->name, "inverted") == 0)
     {
-      GtkScale *scale = GTK_SCALE (object);
+      GtkScale *scale = CTK_SCALE (object);
       GtkScaleMark *mark;
       GSList *m;
       gint i, n;
@@ -264,7 +264,7 @@ ctk_scale_notify (GObject    *object,
 
       scale->priv->marks = g_slist_sort_with_data (scale->priv->marks,
                                                    compare_marks,
-                                                   GINT_TO_POINTER (ctk_range_get_inverted (GTK_RANGE (scale))));
+                                                   GINT_TO_POINTER (ctk_range_get_inverted (CTK_RANGE (scale))));
 
       n = g_slist_length (scale->priv->marks);
       values = g_new (gdouble, n);
@@ -274,7 +274,7 @@ ctk_scale_notify (GObject    *object,
           values[i] = mark->value;
         }
 
-      _ctk_range_set_stop_values (GTK_RANGE (scale), values, n);
+      _ctk_range_set_stop_values (CTK_RANGE (scale), values, n);
 
       g_free (values);
     }
@@ -288,8 +288,8 @@ ctk_scale_allocate_value (GtkScale      *scale,
                           GtkAllocation *out_clip)
 {
   GtkScalePrivate *priv = scale->priv;
-  GtkWidget *widget = GTK_WIDGET (scale);
-  GtkRange *range = GTK_RANGE (widget);
+  GtkWidget *widget = CTK_WIDGET (scale);
+  GtkRange *range = CTK_RANGE (widget);
   GtkCssGadget *range_gadget, *slider_gadget;
   GtkAllocation range_alloc, slider_alloc, value_alloc;
 
@@ -300,35 +300,35 @@ ctk_scale_allocate_value (GtkScale      *scale,
   ctk_css_gadget_get_border_allocation (slider_gadget, &slider_alloc, NULL);
 
   ctk_css_gadget_get_preferred_size (priv->value_gadget,
-                                     GTK_ORIENTATION_HORIZONTAL, -1,
+                                     CTK_ORIENTATION_HORIZONTAL, -1,
                                      &value_alloc.width, NULL,
                                      NULL, NULL);
   ctk_css_gadget_get_preferred_size (priv->value_gadget,
-                                     GTK_ORIENTATION_VERTICAL, -1,
+                                     CTK_ORIENTATION_VERTICAL, -1,
                                      &value_alloc.height, NULL,
                                      NULL, NULL);
 
-  if (ctk_orientable_get_orientation (GTK_ORIENTABLE (range)) == GTK_ORIENTATION_HORIZONTAL)
+  if (ctk_orientable_get_orientation (CTK_ORIENTABLE (range)) == CTK_ORIENTATION_HORIZONTAL)
     {
       switch (priv->value_pos)
         {
-        case GTK_POS_LEFT:
+        case CTK_POS_LEFT:
           value_alloc.x = range_alloc.x;
           value_alloc.y = range_alloc.y + (range_alloc.height - value_alloc.height) / 2;
           break;
 
-        case GTK_POS_RIGHT:
+        case CTK_POS_RIGHT:
           value_alloc.x = range_alloc.x + range_alloc.width - value_alloc.width;
           value_alloc.y = range_alloc.y + (range_alloc.height - value_alloc.height) / 2;
           break;
 
-        case GTK_POS_TOP:
+        case CTK_POS_TOP:
           value_alloc.x = slider_alloc.x + (slider_alloc.width - value_alloc.width) / 2;
           value_alloc.x = CLAMP (value_alloc.x, range_alloc.x, range_alloc.x + range_alloc.width - value_alloc.width);
           value_alloc.y = range_alloc.y;
           break;
 
-        case GTK_POS_BOTTOM:
+        case CTK_POS_BOTTOM:
           value_alloc.x = slider_alloc.x + (slider_alloc.width - value_alloc.width) / 2;
           value_alloc.x = CLAMP (value_alloc.x, range_alloc.x, range_alloc.x + range_alloc.width - value_alloc.width);
           value_alloc.y = range_alloc.y + range_alloc.height - value_alloc.height;
@@ -343,24 +343,24 @@ ctk_scale_allocate_value (GtkScale      *scale,
     {
       switch (priv->value_pos)
         {
-        case GTK_POS_LEFT:
+        case CTK_POS_LEFT:
           value_alloc.x = range_alloc.x;
           value_alloc.y = slider_alloc.y + (slider_alloc.height - value_alloc.height) / 2;
           value_alloc.y = CLAMP (value_alloc.y, range_alloc.y, range_alloc.y + range_alloc.height - value_alloc.height);
           break;
 
-        case GTK_POS_RIGHT:
+        case CTK_POS_RIGHT:
           value_alloc.x = range_alloc.x + range_alloc.width - value_alloc.width;
           value_alloc.y = slider_alloc.y + (slider_alloc.height - value_alloc.height) / 2;
           value_alloc.y = CLAMP (value_alloc.y, range_alloc.y, range_alloc.y + range_alloc.height - value_alloc.height);
           break;
 
-        case GTK_POS_TOP:
+        case CTK_POS_TOP:
           value_alloc.x = range_alloc.x + (range_alloc.width - value_alloc.width) / 2;
           value_alloc.y = range_alloc.y;
           break;
 
-        case GTK_POS_BOTTOM:
+        case CTK_POS_BOTTOM:
           value_alloc.x = range_alloc.x + (range_alloc.width - value_alloc.width) / 2;
           value_alloc.y = range_alloc.y + range_alloc.height - value_alloc.height;
           break;
@@ -388,21 +388,21 @@ ctk_scale_allocate_mark (GtkCssGadget        *gadget,
   int indicator_width, indicator_height;
   GtkOrientation orientation;
 
-  orientation = ctk_orientable_get_orientation (GTK_ORIENTABLE (widget));
+  orientation = ctk_orientable_get_orientation (CTK_ORIENTABLE (widget));
   ctk_widget_get_allocation (widget, &widget_alloc);
   ctk_css_gadget_get_preferred_size (mark->indicator_gadget,
-                                     GTK_ORIENTATION_HORIZONTAL, -1,
+                                     CTK_ORIENTATION_HORIZONTAL, -1,
                                      &indicator_width, NULL,
                                      NULL, NULL);
   ctk_css_gadget_get_preferred_size (mark->indicator_gadget,
-                                     GTK_ORIENTATION_VERTICAL, -1,
+                                     CTK_ORIENTATION_VERTICAL, -1,
                                      &indicator_height, NULL,
                                      NULL, NULL);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       indicator_alloc.x = mark->stop_position + widget_alloc.x - indicator_width / 2;
-      if (mark->position == GTK_POS_TOP)
+      if (mark->position == CTK_POS_TOP)
         indicator_alloc.y = allocation->y + allocation->height - indicator_height;
       else
         indicator_alloc.y = allocation->y;
@@ -411,7 +411,7 @@ ctk_scale_allocate_mark (GtkCssGadget        *gadget,
     }
   else
     {
-      if (mark->position == GTK_POS_TOP)
+      if (mark->position == CTK_POS_TOP)
         indicator_alloc.x = allocation->x + allocation->width - indicator_width;
       else
         indicator_alloc.x = allocation->x;
@@ -430,16 +430,16 @@ ctk_scale_allocate_mark (GtkCssGadget        *gadget,
 
       label_alloc = *allocation;
 
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           label_alloc.height = allocation->height - indicator_alloc.height;
-          if (mark->position == GTK_POS_BOTTOM)
+          if (mark->position == CTK_POS_BOTTOM)
             label_alloc.y = indicator_alloc.y + indicator_alloc.height;
         }
       else
         {
           label_alloc.width = allocation->width - indicator_alloc.width;
-          if (mark->position == GTK_POS_BOTTOM)
+          if (mark->position == CTK_POS_BOTTOM)
             label_alloc.x = indicator_alloc.x + indicator_alloc.width;
         }
 
@@ -469,7 +469,7 @@ find_next_pos (GtkWidget       *widget,
     }
 
   ctk_widget_get_allocation (widget, &allocation);
-  if (ctk_orientable_get_orientation (GTK_ORIENTABLE (widget)) == GTK_ORIENTATION_HORIZONTAL)
+  if (ctk_orientable_get_orientation (CTK_ORIENTABLE (widget)) == CTK_ORIENTATION_HORIZONTAL)
     return allocation.width;
   else
     return allocation.height;
@@ -483,7 +483,7 @@ ctk_scale_allocate_marks (GtkCssGadget        *gadget,
                           gpointer             data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkScale *scale = GTK_SCALE (widget);
+  GtkScale *scale = CTK_SCALE (widget);
   GtkScalePrivate *priv = scale->priv;
   GtkOrientation orientation;
   int *marks;
@@ -494,11 +494,11 @@ ctk_scale_allocate_marks (GtkCssGadget        *gadget,
   GSList *m;
   GtkAllocation widget_alloc;
 
-  orientation = ctk_orientable_get_orientation (GTK_ORIENTABLE (scale));
-  _ctk_range_get_stop_positions (GTK_RANGE (scale), &marks);
+  orientation = ctk_orientable_get_orientation (CTK_ORIENTABLE (scale));
+  _ctk_range_get_stop_positions (CTK_RANGE (scale), &marks);
   ctk_widget_get_allocation (widget, &widget_alloc);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     min_pos_before = min_pos_after = widget_alloc.x;
   else
     min_pos_before = min_pos_after = widget_alloc.y;
@@ -509,8 +509,8 @@ ctk_scale_allocate_marks (GtkCssGadget        *gadget,
       GtkAllocation mark_alloc, mark_clip;
       int mark_size;
 
-      if ((mark->position == GTK_POS_TOP && gadget == priv->bottom_marks_gadget) ||
-          (mark->position == GTK_POS_BOTTOM && gadget == priv->top_marks_gadget))
+      if ((mark->position == CTK_POS_TOP && gadget == priv->bottom_marks_gadget) ||
+          (mark->position == CTK_POS_BOTTOM && gadget == priv->top_marks_gadget))
         continue;
 
       ctk_css_gadget_get_preferred_size (mark->gadget,
@@ -519,22 +519,22 @@ ctk_scale_allocate_marks (GtkCssGadget        *gadget,
                                          NULL, NULL);
       mark->stop_position = marks[i];
 
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
         {
           mark_alloc.x = mark->stop_position + widget_alloc.x;
           mark_alloc.y = allocation->y;
           mark_alloc.width = mark_size;
           mark_alloc.height = allocation->height;
 
-          if (mark->position == GTK_POS_TOP)
+          if (mark->position == CTK_POS_TOP)
             {
               min_pos = min_pos_before;
-              max_pos = find_next_pos (widget, m, marks + i, GTK_POS_TOP) - min_sep + widget_alloc.x;
+              max_pos = find_next_pos (widget, m, marks + i, CTK_POS_TOP) - min_sep + widget_alloc.x;
             }
           else
             {
               min_pos = min_pos_after;
-              max_pos = find_next_pos (widget, m, marks + i, GTK_POS_BOTTOM) - min_sep + widget_alloc.x;
+              max_pos = find_next_pos (widget, m, marks + i, CTK_POS_BOTTOM) - min_sep + widget_alloc.x;
             }
 
           mark_alloc.x -= mark_size / 2;
@@ -546,7 +546,7 @@ ctk_scale_allocate_marks (GtkCssGadget        *gadget,
           if (mark_alloc.x < 0)
             mark_alloc.x = 0;
 
-          if (mark->position == GTK_POS_TOP)
+          if (mark->position == CTK_POS_TOP)
             min_pos_before = mark_alloc.x + mark_size + min_sep;
           else
             min_pos_after = mark_alloc.x + mark_size + min_sep;
@@ -558,15 +558,15 @@ ctk_scale_allocate_marks (GtkCssGadget        *gadget,
           mark_alloc.width = allocation->width;
           mark_alloc.height = mark_size;
 
-          if (mark->position == GTK_POS_TOP)
+          if (mark->position == CTK_POS_TOP)
             {
               min_pos = min_pos_before;
-              max_pos = find_next_pos (widget, m, marks + i, GTK_POS_TOP) - min_sep + widget_alloc.y;
+              max_pos = find_next_pos (widget, m, marks + i, CTK_POS_TOP) - min_sep + widget_alloc.y;
             }
           else
             {
               min_pos = min_pos_after;
-              max_pos = find_next_pos (widget, m, marks + i, GTK_POS_BOTTOM) - min_sep + widget_alloc.y;
+              max_pos = find_next_pos (widget, m, marks + i, CTK_POS_BOTTOM) - min_sep + widget_alloc.y;
             }
 
           mark_alloc.y -= mark_size / 2;
@@ -578,7 +578,7 @@ ctk_scale_allocate_marks (GtkCssGadget        *gadget,
           if (mark_alloc.y < 0)
             mark_alloc.y = 0;
 
-          if (mark->position == GTK_POS_TOP)
+          if (mark->position == CTK_POS_TOP)
             min_pos_before = mark_alloc.y + mark_size + min_sep;
           else
             min_pos_after = mark_alloc.y + mark_size + min_sep;
@@ -595,28 +595,28 @@ static void
 ctk_scale_size_allocate (GtkWidget     *widget,
                          GtkAllocation *allocation)
 {
-  GtkScale *scale = GTK_SCALE (widget);
+  GtkScale *scale = CTK_SCALE (widget);
   GtkScalePrivate *priv = scale->priv;
   GtkAllocation clip, marks_clip, range_rect, marks_rect;
   GtkOrientation orientation;
 
-  GTK_WIDGET_CLASS (ctk_scale_parent_class)->size_allocate (widget, allocation);
+  CTK_WIDGET_CLASS (ctk_scale_parent_class)->size_allocate (widget, allocation);
 
   ctk_widget_get_clip (widget, &clip);
-  orientation = ctk_orientable_get_orientation (GTK_ORIENTABLE (widget));
-  ctk_range_get_range_rect (GTK_RANGE (scale), &range_rect);
+  orientation = ctk_orientable_get_orientation (CTK_ORIENTABLE (widget));
+  ctk_range_get_range_rect (CTK_RANGE (scale), &range_rect);
 
   range_rect.x += allocation->x;
   range_rect.y += allocation->y;
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       int marks_height = 0;
 
       if (priv->top_marks_gadget)
         {
           ctk_css_gadget_get_preferred_size (priv->top_marks_gadget,
-                                             GTK_ORIENTATION_VERTICAL, -1,
+                                             CTK_ORIENTATION_VERTICAL, -1,
                                              &marks_height, NULL,
                                              NULL, NULL);
           marks_rect = range_rect;
@@ -632,7 +632,7 @@ ctk_scale_size_allocate (GtkWidget     *widget,
       if (priv->bottom_marks_gadget)
         {
           ctk_css_gadget_get_preferred_size (priv->bottom_marks_gadget,
-                                             GTK_ORIENTATION_VERTICAL, -1,
+                                             CTK_ORIENTATION_VERTICAL, -1,
                                              &marks_height, NULL,
                                              NULL, NULL);
           marks_rect = range_rect;
@@ -652,7 +652,7 @@ ctk_scale_size_allocate (GtkWidget     *widget,
       if (priv->top_marks_gadget)
         {
           ctk_css_gadget_get_preferred_size (priv->top_marks_gadget,
-                                             GTK_ORIENTATION_HORIZONTAL, -1,
+                                             CTK_ORIENTATION_HORIZONTAL, -1,
                                              &marks_width, NULL,
                                              NULL, NULL);
           marks_rect = range_rect;
@@ -668,7 +668,7 @@ ctk_scale_size_allocate (GtkWidget     *widget,
       if (priv->bottom_marks_gadget)
         {
           ctk_css_gadget_get_preferred_size (priv->bottom_marks_gadget,
-                                             GTK_ORIENTATION_HORIZONTAL, -1,
+                                             CTK_ORIENTATION_HORIZONTAL, -1,
                                              &marks_width, NULL,
                                              NULL, NULL);
           marks_rect = range_rect;
@@ -696,7 +696,7 @@ ctk_scale_size_allocate (GtkWidget     *widget,
 #define add_slider_binding(binding_set, keyval, mask, scroll)              \
   ctk_binding_entry_add_signal (binding_set, keyval, mask,                 \
                                 I_("move-slider"), 1, \
-                                GTK_TYPE_SCROLL_TYPE, scroll)
+                                CTK_TYPE_SCROLL_TYPE, scroll)
 
 static void
 ctk_scale_class_init (GtkScaleClass *class)
@@ -768,29 +768,29 @@ ctk_scale_class_init (GtkScaleClass *class)
                         P_("The number of decimal places that are displayed in the value"),
                         -1, MAX_DIGITS,
                         1,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   properties[PROP_DRAW_VALUE] =
       g_param_spec_boolean ("draw-value",
                             P_("Draw Value"),
                             P_("Whether the current value is displayed as a string next to the slider"),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   properties[PROP_HAS_ORIGIN] =
       g_param_spec_boolean ("has-origin",
                             P_("Has Origin"),
                             P_("Whether the scale has an origin"),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   properties[PROP_VALUE_POS] =
       g_param_spec_enum ("value-pos",
                          P_("Value Position"),
                          P_("The position in which the current value is displayed"),
-                         GTK_TYPE_POSITION_TYPE,
-                         GTK_POS_TOP,
-                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                         CTK_TYPE_POSITION_TYPE,
+                         CTK_POS_TOP,
+                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   g_object_class_install_properties (gobject_class, LAST_PROP, properties);
 
@@ -807,7 +807,7 @@ ctk_scale_class_init (GtkScaleClass *class)
                                                              P_("Slider Length"),
                                                              P_("Length of scale's slider"),
                                                              0, G_MAXINT, 31,
-                                                             GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkScale:value-spacing:
@@ -824,7 +824,7 @@ ctk_scale_class_init (GtkScaleClass *class)
 							     0,
 							     G_MAXINT,
 							     2,
-							     GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
   
   /* All bindings (even arrow keys) are on both h/v scale, because
    * blind users etc. don't care about scale orientation.
@@ -833,118 +833,118 @@ ctk_scale_class_init (GtkScaleClass *class)
   binding_set = ctk_binding_set_by_class (class);
 
   add_slider_binding (binding_set, GDK_KEY_Left, 0,
-                      GTK_SCROLL_STEP_LEFT);
+                      CTK_SCROLL_STEP_LEFT);
 
   add_slider_binding (binding_set, GDK_KEY_Left, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_LEFT);
+                      CTK_SCROLL_PAGE_LEFT);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Left, 0,
-                      GTK_SCROLL_STEP_LEFT);
+                      CTK_SCROLL_STEP_LEFT);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Left, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_LEFT);
+                      CTK_SCROLL_PAGE_LEFT);
 
   add_slider_binding (binding_set, GDK_KEY_Right, 0,
-                      GTK_SCROLL_STEP_RIGHT);
+                      CTK_SCROLL_STEP_RIGHT);
 
   add_slider_binding (binding_set, GDK_KEY_Right, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_RIGHT);
+                      CTK_SCROLL_PAGE_RIGHT);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Right, 0,
-                      GTK_SCROLL_STEP_RIGHT);
+                      CTK_SCROLL_STEP_RIGHT);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Right, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_RIGHT);
+                      CTK_SCROLL_PAGE_RIGHT);
 
   add_slider_binding (binding_set, GDK_KEY_Up, 0,
-                      GTK_SCROLL_STEP_UP);
+                      CTK_SCROLL_STEP_UP);
 
   add_slider_binding (binding_set, GDK_KEY_Up, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_UP);
+                      CTK_SCROLL_PAGE_UP);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Up, 0,
-                      GTK_SCROLL_STEP_UP);
+                      CTK_SCROLL_STEP_UP);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Up, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_UP);
+                      CTK_SCROLL_PAGE_UP);
 
   add_slider_binding (binding_set, GDK_KEY_Down, 0,
-                      GTK_SCROLL_STEP_DOWN);
+                      CTK_SCROLL_STEP_DOWN);
 
   add_slider_binding (binding_set, GDK_KEY_Down, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_DOWN);
+                      CTK_SCROLL_PAGE_DOWN);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Down, 0,
-                      GTK_SCROLL_STEP_DOWN);
+                      CTK_SCROLL_STEP_DOWN);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Down, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_DOWN);
+                      CTK_SCROLL_PAGE_DOWN);
    
   add_slider_binding (binding_set, GDK_KEY_Page_Up, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_LEFT);
+                      CTK_SCROLL_PAGE_LEFT);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Page_Up, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_LEFT);  
+                      CTK_SCROLL_PAGE_LEFT);  
 
   add_slider_binding (binding_set, GDK_KEY_Page_Up, 0,
-                      GTK_SCROLL_PAGE_UP);
+                      CTK_SCROLL_PAGE_UP);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Page_Up, 0,
-                      GTK_SCROLL_PAGE_UP);
+                      CTK_SCROLL_PAGE_UP);
   
   add_slider_binding (binding_set, GDK_KEY_Page_Down, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_RIGHT);
+                      CTK_SCROLL_PAGE_RIGHT);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Page_Down, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_RIGHT);
+                      CTK_SCROLL_PAGE_RIGHT);
 
   add_slider_binding (binding_set, GDK_KEY_Page_Down, 0,
-                      GTK_SCROLL_PAGE_DOWN);
+                      CTK_SCROLL_PAGE_DOWN);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Page_Down, 0,
-                      GTK_SCROLL_PAGE_DOWN);
+                      CTK_SCROLL_PAGE_DOWN);
 
   /* Logical bindings (vs. visual bindings above) */
 
   add_slider_binding (binding_set, GDK_KEY_plus, 0,
-                      GTK_SCROLL_STEP_FORWARD);  
+                      CTK_SCROLL_STEP_FORWARD);  
 
   add_slider_binding (binding_set, GDK_KEY_minus, 0,
-                      GTK_SCROLL_STEP_BACKWARD);  
+                      CTK_SCROLL_STEP_BACKWARD);  
 
   add_slider_binding (binding_set, GDK_KEY_plus, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_FORWARD);  
+                      CTK_SCROLL_PAGE_FORWARD);  
 
   add_slider_binding (binding_set, GDK_KEY_minus, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_BACKWARD);
+                      CTK_SCROLL_PAGE_BACKWARD);
 
 
   add_slider_binding (binding_set, GDK_KEY_KP_Add, 0,
-                      GTK_SCROLL_STEP_FORWARD);  
+                      CTK_SCROLL_STEP_FORWARD);  
 
   add_slider_binding (binding_set, GDK_KEY_KP_Subtract, 0,
-                      GTK_SCROLL_STEP_BACKWARD);  
+                      CTK_SCROLL_STEP_BACKWARD);  
 
   add_slider_binding (binding_set, GDK_KEY_KP_Add, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_FORWARD);  
+                      CTK_SCROLL_PAGE_FORWARD);  
 
   add_slider_binding (binding_set, GDK_KEY_KP_Subtract, GDK_CONTROL_MASK,
-                      GTK_SCROLL_PAGE_BACKWARD);
+                      CTK_SCROLL_PAGE_BACKWARD);
   
   
   add_slider_binding (binding_set, GDK_KEY_Home, 0,
-                      GTK_SCROLL_START);
+                      CTK_SCROLL_START);
 
   add_slider_binding (binding_set, GDK_KEY_KP_Home, 0,
-                      GTK_SCROLL_START);
+                      CTK_SCROLL_START);
 
   add_slider_binding (binding_set, GDK_KEY_End, 0,
-                      GTK_SCROLL_END);
+                      CTK_SCROLL_END);
 
   add_slider_binding (binding_set, GDK_KEY_KP_End, 0,
-                      GTK_SCROLL_END);
+                      CTK_SCROLL_END);
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_SCALE_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_SCALE_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "scale");
 }
 
@@ -952,15 +952,15 @@ static void
 ctk_scale_init (GtkScale *scale)
 {
   GtkScalePrivate *priv;
-  GtkRange *range = GTK_RANGE (scale);
+  GtkRange *range = CTK_RANGE (scale);
 
   scale->priv = ctk_scale_get_instance_private (scale);
   priv = scale->priv;
 
-  priv->value_pos = GTK_POS_TOP;
+  priv->value_pos = CTK_POS_TOP;
   priv->digits = 1;
 
-  ctk_widget_set_can_focus (GTK_WIDGET (scale), TRUE);
+  ctk_widget_set_can_focus (CTK_WIDGET (scale), TRUE);
 
   ctk_range_set_slider_size_fixed (range, TRUE);
   ctk_range_set_slider_use_min_size (range, TRUE);
@@ -981,7 +981,7 @@ ctk_scale_set_property (GObject      *object,
 {
   GtkScale *scale;
 
-  scale = GTK_SCALE (object);
+  scale = CTK_SCALE (object);
 
   switch (prop_id)
     {
@@ -1009,7 +1009,7 @@ ctk_scale_get_property (GObject      *object,
 			GValue       *value,
 			GParamSpec   *pspec)
 {
-  GtkScale *scale = GTK_SCALE (object);
+  GtkScale *scale = CTK_SCALE (object);
   GtkScalePrivate *priv = scale->priv;
 
   switch (prop_id)
@@ -1048,10 +1048,10 @@ GtkWidget *
 ctk_scale_new (GtkOrientation  orientation,
                GtkAdjustment  *adjustment)
 {
-  g_return_val_if_fail (adjustment == NULL || GTK_IS_ADJUSTMENT (adjustment),
+  g_return_val_if_fail (adjustment == NULL || CTK_IS_ADJUSTMENT (adjustment),
                         NULL);
 
-  return g_object_new (GTK_TYPE_SCALE,
+  return g_object_new (CTK_TYPE_SCALE,
                        "orientation", orientation,
                        "adjustment",  adjustment,
                        NULL);
@@ -1103,7 +1103,7 @@ ctk_scale_new_with_range (GtkOrientation orientation,
         digits = 5;
     }
 
-  return g_object_new (GTK_TYPE_SCALE,
+  return g_object_new (CTK_TYPE_SCALE,
                        "orientation", orientation,
                        "adjustment",  adj,
                        "digits",      digits,
@@ -1134,10 +1134,10 @@ ctk_scale_set_digits (GtkScale *scale,
   GtkScalePrivate *priv;
   GtkRange *range;
 
-  g_return_if_fail (GTK_IS_SCALE (scale));
+  g_return_if_fail (CTK_IS_SCALE (scale));
 
   priv = scale->priv;
-  range = GTK_RANGE (scale);
+  range = CTK_RANGE (scale);
   
   digits = CLAMP (digits, -1, MAX_DIGITS);
 
@@ -1148,7 +1148,7 @@ ctk_scale_set_digits (GtkScale *scale,
         ctk_range_set_round_digits (range, digits);
 
       ctk_scale_clear_value_layout (scale);
-      ctk_widget_queue_resize (GTK_WIDGET (scale));
+      ctk_widget_queue_resize (CTK_WIDGET (scale));
 
       g_object_notify_by_pspec (G_OBJECT (scale), properties[PROP_DIGITS]);
     }
@@ -1165,7 +1165,7 @@ ctk_scale_set_digits (GtkScale *scale,
 gint
 ctk_scale_get_digits (GtkScale *scale)
 {
-  g_return_val_if_fail (GTK_IS_SCALE (scale), -1);
+  g_return_val_if_fail (CTK_IS_SCALE (scale), -1);
 
   return scale->priv->digits;
 }
@@ -1180,7 +1180,7 @@ ctk_scale_render_value (GtkCssGadget *gadget,
                         gpointer      user_data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkScale *scale = GTK_SCALE (widget);
+  GtkScale *scale = CTK_SCALE (widget);
   GtkStyleContext *context;
   PangoLayout *layout;
 
@@ -1227,7 +1227,7 @@ ctk_scale_measure_value (GtkCssGadget   *gadget,
                          gpointer        user_data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkScale *scale = GTK_SCALE (widget);
+  GtkScale *scale = CTK_SCALE (widget);
   GtkScalePrivate *priv = scale->priv;
   int width, height;
 
@@ -1243,7 +1243,7 @@ ctk_scale_measure_value (GtkCssGadget   *gadget,
       layout = ctk_widget_create_pango_layout (widget, NULL);
       ctk_css_node_update_layout_attributes (ctk_css_gadget_get_node (priv->value_gadget), layout);
 
-      adjustment = ctk_range_get_adjustment (GTK_RANGE (scale));
+      adjustment = ctk_range_get_adjustment (CTK_RANGE (scale));
 
       txt = ctk_scale_format_value (scale, ctk_adjustment_get_lower (adjustment));
       pango_layout_set_text (layout, txt, -1);
@@ -1266,7 +1266,7 @@ ctk_scale_measure_value (GtkCssGadget   *gadget,
       g_object_unref (layout);
     }
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     *minimum = *natural = width;
   else
     *minimum = *natural = height;
@@ -1280,15 +1280,15 @@ update_value_position (GtkScale *scale)
   if (!priv->value_gadget)
     return;
 
-  if (priv->value_pos == GTK_POS_TOP || priv->value_pos == GTK_POS_LEFT)
+  if (priv->value_pos == CTK_POS_TOP || priv->value_pos == CTK_POS_LEFT)
     {
-      ctk_css_gadget_remove_class (priv->value_gadget, GTK_STYLE_CLASS_BOTTOM);
-      ctk_css_gadget_add_class (priv->value_gadget, GTK_STYLE_CLASS_TOP);
+      ctk_css_gadget_remove_class (priv->value_gadget, CTK_STYLE_CLASS_BOTTOM);
+      ctk_css_gadget_add_class (priv->value_gadget, CTK_STYLE_CLASS_TOP);
     }
   else
     {
-      ctk_css_gadget_remove_class (priv->value_gadget, GTK_STYLE_CLASS_TOP);
-      ctk_css_gadget_add_class (priv->value_gadget, GTK_STYLE_CLASS_BOTTOM);
+      ctk_css_gadget_remove_class (priv->value_gadget, CTK_STYLE_CLASS_TOP);
+      ctk_css_gadget_add_class (priv->value_gadget, CTK_STYLE_CLASS_BOTTOM);
     }
 }
 
@@ -1307,10 +1307,10 @@ ctk_scale_set_draw_value (GtkScale *scale,
   GtkScalePrivate *priv;
   GtkWidget *widget;
 
-  g_return_if_fail (GTK_IS_SCALE (scale));
+  g_return_if_fail (CTK_IS_SCALE (scale));
 
   priv = scale->priv;
-  widget = GTK_WIDGET (scale);
+  widget = CTK_WIDGET (scale);
 
   draw_value = draw_value != FALSE;
 
@@ -1331,12 +1331,12 @@ ctk_scale_set_draw_value (GtkScale *scale,
           g_signal_connect (ctk_css_gadget_get_node (priv->value_gadget), "style-changed",
                             G_CALLBACK (ctk_scale_value_style_changed), scale);
 
-          if (priv->value_pos == GTK_POS_TOP || priv->value_pos == GTK_POS_LEFT)
+          if (priv->value_pos == CTK_POS_TOP || priv->value_pos == CTK_POS_LEFT)
             ctk_css_node_insert_after (widget_node, ctk_css_gadget_get_node (priv->value_gadget), NULL);
           else
             ctk_css_node_insert_before (widget_node, ctk_css_gadget_get_node (priv->value_gadget), NULL);
 
-          ctk_range_set_round_digits (GTK_RANGE (scale), priv->digits);
+          ctk_range_set_round_digits (CTK_RANGE (scale), priv->digits);
           update_value_position (scale);
         }
       else
@@ -1345,7 +1345,7 @@ ctk_scale_set_draw_value (GtkScale *scale,
             ctk_css_node_set_parent (ctk_css_gadget_get_node (priv->value_gadget), NULL);
           g_clear_object (&priv->value_gadget);
 
-          ctk_range_set_round_digits (GTK_RANGE (scale), -1);
+          ctk_range_set_round_digits (CTK_RANGE (scale), -1);
         }
 
       ctk_scale_clear_value_layout (scale);
@@ -1368,7 +1368,7 @@ ctk_scale_set_draw_value (GtkScale *scale,
 gboolean
 ctk_scale_get_draw_value (GtkScale *scale)
 {
-  g_return_val_if_fail (GTK_IS_SCALE (scale), FALSE);
+  g_return_val_if_fail (CTK_IS_SCALE (scale), FALSE);
 
   return scale->priv->draw_value;
 }
@@ -1388,15 +1388,15 @@ void
 ctk_scale_set_has_origin (GtkScale *scale,
                           gboolean  has_origin)
 {
-  g_return_if_fail (GTK_IS_SCALE (scale));
+  g_return_if_fail (CTK_IS_SCALE (scale));
 
   has_origin = has_origin != FALSE;
 
-  if (_ctk_range_get_has_origin (GTK_RANGE (scale)) != has_origin)
+  if (_ctk_range_get_has_origin (CTK_RANGE (scale)) != has_origin)
     {
-      _ctk_range_set_has_origin (GTK_RANGE (scale), has_origin);
+      _ctk_range_set_has_origin (CTK_RANGE (scale), has_origin);
 
-      ctk_widget_queue_draw (GTK_WIDGET (scale));
+      ctk_widget_queue_draw (CTK_WIDGET (scale));
 
       g_object_notify_by_pspec (G_OBJECT (scale), properties[PROP_HAS_ORIGIN]);
     }
@@ -1415,9 +1415,9 @@ ctk_scale_set_has_origin (GtkScale *scale,
 gboolean
 ctk_scale_get_has_origin (GtkScale *scale)
 {
-  g_return_val_if_fail (GTK_IS_SCALE (scale), FALSE);
+  g_return_val_if_fail (CTK_IS_SCALE (scale), FALSE);
 
-  return _ctk_range_get_has_origin (GTK_RANGE (scale));
+  return _ctk_range_get_has_origin (CTK_RANGE (scale));
 }
 
 /**
@@ -1434,14 +1434,14 @@ ctk_scale_set_value_pos (GtkScale        *scale,
   GtkScalePrivate *priv;
   GtkWidget *widget;
 
-  g_return_if_fail (GTK_IS_SCALE (scale));
+  g_return_if_fail (CTK_IS_SCALE (scale));
 
   priv = scale->priv;
 
   if (priv->value_pos != pos)
     {
       priv->value_pos = pos;
-      widget = GTK_WIDGET (scale);
+      widget = CTK_WIDGET (scale);
 
       ctk_scale_clear_value_layout (scale);
       update_value_position (scale);
@@ -1464,7 +1464,7 @@ ctk_scale_set_value_pos (GtkScale        *scale,
 GtkPositionType
 ctk_scale_get_value_pos (GtkScale *scale)
 {
-  g_return_val_if_fail (GTK_IS_SCALE (scale), 0);
+  g_return_val_if_fail (CTK_IS_SCALE (scale), 0);
 
   return scale->priv->value_pos;
 }
@@ -1476,7 +1476,7 @@ ctk_scale_get_range_border (GtkRange  *range,
   GtkScalePrivate *priv;
   GtkScale *scale;
 
-  scale = GTK_SCALE (range);
+  scale = CTK_SCALE (range);
   priv = scale->priv;
 
   border->left = 0;
@@ -1489,10 +1489,10 @@ ctk_scale_get_range_border (GtkRange  *range,
       int value_size;
       GtkOrientation value_orientation;
 
-      if (priv->value_pos == GTK_POS_LEFT || priv->value_pos == GTK_POS_RIGHT)
-        value_orientation = GTK_ORIENTATION_HORIZONTAL;
+      if (priv->value_pos == CTK_POS_LEFT || priv->value_pos == CTK_POS_RIGHT)
+        value_orientation = CTK_ORIENTATION_HORIZONTAL;
       else
-        value_orientation = GTK_ORIENTATION_VERTICAL;
+        value_orientation = CTK_ORIENTATION_VERTICAL;
 
       ctk_css_gadget_get_preferred_size (priv->value_gadget,
                                          value_orientation, -1,
@@ -1501,29 +1501,29 @@ ctk_scale_get_range_border (GtkRange  *range,
 
       switch (priv->value_pos)
         {
-        case GTK_POS_LEFT:
+        case CTK_POS_LEFT:
           border->left += value_size;
           break;
-        case GTK_POS_RIGHT:
+        case CTK_POS_RIGHT:
           border->right += value_size;
           break;
-        case GTK_POS_TOP:
+        case CTK_POS_TOP:
           border->top += value_size;
           break;
-        case GTK_POS_BOTTOM:
+        case CTK_POS_BOTTOM:
           border->bottom += value_size;
           break;
         }
     }
 
-  if (ctk_orientable_get_orientation (GTK_ORIENTABLE (range)) == GTK_ORIENTATION_HORIZONTAL)
+  if (ctk_orientable_get_orientation (CTK_ORIENTABLE (range)) == CTK_ORIENTATION_HORIZONTAL)
     {
       int height;
 
       if (priv->top_marks_gadget)
         {
           ctk_css_gadget_get_preferred_size (priv->top_marks_gadget,
-                                             GTK_ORIENTATION_VERTICAL, -1,
+                                             CTK_ORIENTATION_VERTICAL, -1,
                                              &height, NULL,
                                              NULL, NULL);
           if (height > 0)
@@ -1533,7 +1533,7 @@ ctk_scale_get_range_border (GtkRange  *range,
       if (priv->bottom_marks_gadget)
         {
           ctk_css_gadget_get_preferred_size (priv->bottom_marks_gadget,
-                                             GTK_ORIENTATION_VERTICAL, -1,
+                                             CTK_ORIENTATION_VERTICAL, -1,
                                              &height, NULL,
                                              NULL, NULL);
           if (height > 0)
@@ -1547,7 +1547,7 @@ ctk_scale_get_range_border (GtkRange  *range,
       if (priv->top_marks_gadget)
         {
           ctk_css_gadget_get_preferred_size (priv->top_marks_gadget,
-                                             GTK_ORIENTATION_HORIZONTAL, -1,
+                                             CTK_ORIENTATION_HORIZONTAL, -1,
                                              &width, NULL,
                                              NULL, NULL);
           if (width > 0)
@@ -1557,7 +1557,7 @@ ctk_scale_get_range_border (GtkRange  *range,
       if (priv->bottom_marks_gadget)
         {
           ctk_css_gadget_get_preferred_size (priv->bottom_marks_gadget,
-                                             GTK_ORIENTATION_HORIZONTAL, -1,
+                                             CTK_ORIENTATION_HORIZONTAL, -1,
                                              &width, NULL,
                                              NULL, NULL);
           if (width > 0)
@@ -1572,7 +1572,7 @@ ctk_scale_get_range_size_request (GtkRange       *range,
                                   gint           *minimum,
                                   gint           *natural)
 {
-  GtkScalePrivate *priv = GTK_SCALE (range)->priv;
+  GtkScalePrivate *priv = CTK_SCALE (range)->priv;
 
   /* Ensure the range requests enough size for our value */
   if (priv->value_gadget)
@@ -1593,11 +1593,11 @@ ctk_scale_value_style_changed (GtkCssNode        *node,
                                GtkScale          *scale)
 {
   if (change == NULL ||
-      ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_TEXT_ATTRS) ||
-      ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_FONT))
+      ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_TEXT_ATTRS) ||
+      ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_FONT))
     {
       ctk_scale_clear_value_layout (scale);
-      ctk_widget_queue_resize (GTK_WIDGET (scale));
+      ctk_widget_queue_resize (CTK_WIDGET (scale));
     }
 }
 
@@ -1607,8 +1607,8 @@ ctk_scale_mark_style_changed (GtkCssNode        *node,
                               GtkScaleMark      *mark)
 {
   if (change == NULL ||
-      ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_TEXT_ATTRS) ||
-      ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_FONT))
+      ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_TEXT_ATTRS) ||
+      ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_FONT))
     {
       GtkCssNode *widget_node;
       GtkWidget *scale;
@@ -1616,8 +1616,8 @@ ctk_scale_mark_style_changed (GtkCssNode        *node,
       g_clear_object (&mark->layout);
 
       widget_node = ctk_css_node_get_parent (ctk_css_node_get_parent (ctk_css_node_get_parent (node)));
-      scale = ctk_css_widget_node_get_widget (GTK_CSS_WIDGET_NODE (widget_node));
-      ctk_widget_queue_resize (GTK_WIDGET (scale));
+      scale = ctk_css_widget_node_get_widget (CTK_CSS_WIDGET_NODE (widget_node));
+      ctk_widget_queue_resize (CTK_WIDGET (scale));
     }
 }
 
@@ -1625,8 +1625,8 @@ static void
 ctk_scale_screen_changed (GtkWidget *widget,
                           GdkScreen *old_screen)
 {
-  ctk_scale_clear_value_layout (GTK_SCALE (widget));
-  ctk_scale_clear_mark_layouts (GTK_SCALE (widget));
+  ctk_scale_clear_value_layout (CTK_SCALE (widget));
+  ctk_scale_clear_mark_layouts (CTK_SCALE (widget));
 }
 
 static void
@@ -1654,7 +1654,7 @@ ctk_scale_measure_mark_label (GtkCssGadget   *gadget,
 
   pango_layout_get_pixel_extents (mark->layout, NULL, &logical_rect);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     *minimum = *natural = logical_rect.width;
   else
     *minimum = *natural = logical_rect.height;
@@ -1701,9 +1701,9 @@ ctk_scale_measure_marks (GtkCssGadget   *gadget,
                          gpointer        user_data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkScale *scale = GTK_SCALE (widget);
+  GtkScale *scale = CTK_SCALE (widget);
   GtkScalePrivate *priv = scale->priv;
-  GtkOrientation scale_orientation = ctk_orientable_get_orientation (GTK_ORIENTABLE (scale));
+  GtkOrientation scale_orientation = ctk_orientable_get_orientation (CTK_ORIENTABLE (scale));
   GSList *m;
 
   *minimum = *natural = 0;
@@ -1713,8 +1713,8 @@ ctk_scale_measure_marks (GtkCssGadget   *gadget,
       GtkScaleMark *mark = m->data;
       int mark_size;
 
-      if ((mark->position == GTK_POS_TOP && gadget == priv->bottom_marks_gadget) ||
-          (mark->position == GTK_POS_BOTTOM && gadget == priv->top_marks_gadget))
+      if ((mark->position == CTK_POS_TOP && gadget == priv->bottom_marks_gadget) ||
+          (mark->position == CTK_POS_BOTTOM && gadget == priv->top_marks_gadget))
         continue;
 
       ctk_css_gadget_get_preferred_size (mark->gadget,
@@ -1740,23 +1740,23 @@ ctk_scale_get_preferred_width (GtkWidget *widget,
                                gint      *minimum,
                                gint      *natural)
 {
-  GtkScale *scale = GTK_SCALE (widget);
+  GtkScale *scale = CTK_SCALE (widget);
   GtkScalePrivate *priv = scale->priv;
 
-  GTK_WIDGET_CLASS (ctk_scale_parent_class)->get_preferred_width (widget, minimum, natural);
+  CTK_WIDGET_CLASS (ctk_scale_parent_class)->get_preferred_width (widget, minimum, natural);
   
-  if (ctk_orientable_get_orientation (GTK_ORIENTABLE (widget)) == GTK_ORIENTATION_HORIZONTAL)
+  if (ctk_orientable_get_orientation (CTK_ORIENTABLE (widget)) == CTK_ORIENTATION_HORIZONTAL)
     {
       int top_marks_width = 0, bottom_marks_width = 0, marks_width;
 
       if (priv->top_marks_gadget)
         ctk_css_gadget_get_preferred_size (priv->top_marks_gadget,
-                                           GTK_ORIENTATION_HORIZONTAL, -1,
+                                           CTK_ORIENTATION_HORIZONTAL, -1,
                                            &top_marks_width, NULL,
                                            NULL, NULL);
       if (priv->bottom_marks_gadget)
         ctk_css_gadget_get_preferred_size (priv->bottom_marks_gadget,
-                                           GTK_ORIENTATION_HORIZONTAL, -1,
+                                           CTK_ORIENTATION_HORIZONTAL, -1,
                                            &bottom_marks_width, NULL,
                                            NULL, NULL);
 
@@ -1772,23 +1772,23 @@ ctk_scale_get_preferred_height (GtkWidget *widget,
                                 gint      *minimum,
                                 gint      *natural)
 {
-  GtkScale *scale = GTK_SCALE (widget);
+  GtkScale *scale = CTK_SCALE (widget);
   GtkScalePrivate *priv = scale->priv;
 
-  GTK_WIDGET_CLASS (ctk_scale_parent_class)->get_preferred_height (widget, minimum, natural);
+  CTK_WIDGET_CLASS (ctk_scale_parent_class)->get_preferred_height (widget, minimum, natural);
 
-  if (ctk_orientable_get_orientation (GTK_ORIENTABLE (widget)) == GTK_ORIENTATION_VERTICAL)
+  if (ctk_orientable_get_orientation (CTK_ORIENTABLE (widget)) == CTK_ORIENTATION_VERTICAL)
     {
       int top_marks_height = 0, bottom_marks_height = 0, marks_height;
 
       if (priv->top_marks_gadget)
         ctk_css_gadget_get_preferred_size (priv->top_marks_gadget,
-                                           GTK_ORIENTATION_VERTICAL, -1,
+                                           CTK_ORIENTATION_VERTICAL, -1,
                                            &top_marks_height, NULL,
                                            NULL, NULL);
       if (priv->bottom_marks_gadget)
         ctk_css_gadget_get_preferred_size (priv->bottom_marks_gadget,
-                                           GTK_ORIENTATION_VERTICAL, -1,
+                                           CTK_ORIENTATION_VERTICAL, -1,
                                            &bottom_marks_height, NULL,
                                            NULL, NULL);
 
@@ -1812,11 +1812,11 @@ ctk_scale_render_mark_indicator (GtkCssGadget *gadget,
   GtkStyleContext *context;
   GtkOrientation orientation;
 
-  orientation = ctk_orientable_get_orientation (GTK_ORIENTABLE (widget));
+  orientation = ctk_orientable_get_orientation (CTK_ORIENTABLE (widget));
   context = ctk_widget_get_style_context (widget);
   ctk_style_context_save_to_node (context, ctk_css_gadget_get_node (gadget));
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     ctk_render_line (context, cr,
                      x + width / 2, y,
                      x + width / 2, y + height);
@@ -1882,7 +1882,7 @@ ctk_scale_render_marks (GtkCssGadget *gadget,
                         gpointer      user_data)
 {
   GtkWidget *widget = ctk_css_gadget_get_owner (gadget);
-  GtkScale *scale = GTK_SCALE (widget);
+  GtkScale *scale = CTK_SCALE (widget);
   GtkScalePrivate *priv = scale->priv;
   GSList *m;
 
@@ -1890,8 +1890,8 @@ ctk_scale_render_marks (GtkCssGadget *gadget,
     {
       GtkScaleMark *mark = m->data;
 
-      if ((mark->position == GTK_POS_TOP && gadget == priv->bottom_marks_gadget) ||
-          (mark->position == GTK_POS_BOTTOM && gadget == priv->top_marks_gadget))
+      if ((mark->position == CTK_POS_TOP && gadget == priv->bottom_marks_gadget) ||
+          (mark->position == CTK_POS_BOTTOM && gadget == priv->top_marks_gadget))
         continue;
 
       ctk_css_gadget_draw (mark->gadget, cr);
@@ -1904,7 +1904,7 @@ static gboolean
 ctk_scale_draw (GtkWidget *widget,
                 cairo_t   *cr)
 {
-  GtkScale *scale = GTK_SCALE (widget);
+  GtkScale *scale = CTK_SCALE (widget);
   GtkScalePrivate *priv = scale->priv;
 
   if (priv->top_marks_gadget)
@@ -1912,7 +1912,7 @@ ctk_scale_draw (GtkWidget *widget,
   if (priv->bottom_marks_gadget)
     ctk_css_gadget_draw (priv->bottom_marks_gadget, cr);
 
-  GTK_WIDGET_CLASS (ctk_scale_parent_class)->draw (widget, cr);
+  CTK_WIDGET_CLASS (ctk_scale_parent_class)->draw (widget, cr);
 
   if (priv->value_gadget)
     ctk_css_gadget_draw (priv->value_gadget, cr);
@@ -1982,7 +1982,7 @@ ctk_scale_format_value (GtkScale *scale,
 static void
 ctk_scale_finalize (GObject *object)
 {
-  GtkScale *scale = GTK_SCALE (object);
+  GtkScale *scale = CTK_SCALE (object);
   GtkScalePrivate *priv = scale->priv;
 
   ctk_scale_clear_value_layout (scale);
@@ -2014,7 +2014,7 @@ ctk_scale_get_layout (GtkScale *scale)
   GtkScalePrivate *priv;
   gchar *txt;
 
-  g_return_val_if_fail (GTK_IS_SCALE (scale), NULL);
+  g_return_val_if_fail (CTK_IS_SCALE (scale), NULL);
 
   priv = scale->priv;
 
@@ -2022,18 +2022,18 @@ ctk_scale_get_layout (GtkScale *scale)
     {
       int min_layout_width;
 
-      priv->layout = ctk_widget_create_pango_layout (GTK_WIDGET (scale), NULL);
+      priv->layout = ctk_widget_create_pango_layout (CTK_WIDGET (scale), NULL);
       ctk_css_node_update_layout_attributes (ctk_css_gadget_get_node (priv->value_gadget), priv->layout);
 
       ctk_css_gadget_get_preferred_size (priv->value_gadget,
-                                         GTK_ORIENTATION_HORIZONTAL, -1,
+                                         CTK_ORIENTATION_HORIZONTAL, -1,
                                          &min_layout_width, NULL,
                                          NULL, NULL);
       pango_layout_set_width (priv->layout, min_layout_width * PANGO_SCALE);
 
-      if (priv->value_pos == GTK_POS_LEFT)
+      if (priv->value_pos == CTK_POS_LEFT)
         pango_layout_set_alignment (priv->layout, PANGO_ALIGN_RIGHT);
-      else if (priv->value_pos == GTK_POS_RIGHT)
+      else if (priv->value_pos == CTK_POS_RIGHT)
         pango_layout_set_alignment (priv->layout, PANGO_ALIGN_LEFT);
       else
         pango_layout_set_alignment (priv->layout, PANGO_ALIGN_CENTER);
@@ -2042,7 +2042,7 @@ ctk_scale_get_layout (GtkScale *scale)
   if (priv->draw_value)
     {
       txt = ctk_scale_format_value (scale,
-                                    ctk_adjustment_get_value (ctk_range_get_adjustment (GTK_RANGE (scale))));
+                                    ctk_adjustment_get_value (ctk_range_get_adjustment (CTK_RANGE (scale))));
       pango_layout_set_text (priv->layout, txt, -1);
       g_free (txt);
     }
@@ -2074,10 +2074,10 @@ ctk_scale_get_layout_offsets (GtkScale *scale,
   gint local_x = 0; 
   gint local_y = 0;
 
-  g_return_if_fail (GTK_IS_SCALE (scale));
+  g_return_if_fail (CTK_IS_SCALE (scale));
 
-  if (GTK_SCALE_GET_CLASS (scale)->get_layout_offsets)
-    (GTK_SCALE_GET_CLASS (scale)->get_layout_offsets) (scale, &local_x, &local_y);
+  if (CTK_SCALE_GET_CLASS (scale)->get_layout_offsets)
+    (CTK_SCALE_GET_CLASS (scale)->get_layout_offsets) (scale, &local_x, &local_y);
 
   if (x)
     *x = local_x;
@@ -2135,7 +2135,7 @@ ctk_scale_clear_marks (GtkScale *scale)
   GtkScalePrivate *priv;
   GtkStyleContext *context;
 
-  g_return_if_fail (GTK_IS_SCALE (scale));
+  g_return_if_fail (CTK_IS_SCALE (scale));
 
   priv = scale->priv;
 
@@ -2149,13 +2149,13 @@ ctk_scale_clear_marks (GtkScale *scale)
     ctk_css_node_set_parent (ctk_css_gadget_get_node (priv->bottom_marks_gadget), NULL);
   g_clear_object (&priv->bottom_marks_gadget);
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (scale));
+  context = ctk_widget_get_style_context (CTK_WIDGET (scale));
   ctk_style_context_remove_class (context, "marks-before");
   ctk_style_context_remove_class (context, "marks-after");
 
-  _ctk_range_set_stop_values (GTK_RANGE (scale), NULL, 0);
+  _ctk_range_set_stop_values (CTK_RANGE (scale), NULL, 0);
 
-  ctk_widget_queue_resize (GTK_WIDGET (scale));
+  ctk_widget_queue_resize (CTK_WIDGET (scale));
 }
 
 /**
@@ -2163,9 +2163,9 @@ ctk_scale_clear_marks (GtkScale *scale)
  * @scale: a #GtkScale
  * @value: the value at which the mark is placed, must be between
  *   the lower and upper limits of the scales’ adjustment
- * @position: where to draw the mark. For a horizontal scale, #GTK_POS_TOP
- *   and %GTK_POS_LEFT are drawn above the scale, anything else below.
- *   For a vertical scale, #GTK_POS_LEFT and %GTK_POS_TOP are drawn to
+ * @position: where to draw the mark. For a horizontal scale, #CTK_POS_TOP
+ *   and %CTK_POS_LEFT are drawn above the scale, anything else below.
+ *   For a vertical scale, #CTK_POS_LEFT and %CTK_POS_TOP are drawn to
  *   the left of the scale, anything else to the right.
  * @markup: (allow-none): Text to be shown at the mark, using [Pango markup][PangoMarkupFormat], or %NULL
  *
@@ -2197,26 +2197,26 @@ ctk_scale_add_mark (GtkScale        *scale,
   GtkCssNode *widget_node, *marks_node;
   GtkStyleContext *context;
 
-  g_return_if_fail (GTK_IS_SCALE (scale));
+  g_return_if_fail (CTK_IS_SCALE (scale));
 
   priv = scale->priv;
-  widget = GTK_WIDGET (scale);
+  widget = CTK_WIDGET (scale);
   widget_node = ctk_widget_get_css_node (widget);
 
   mark = g_new0 (GtkScaleMark, 1);
   mark->value = value;
   mark->markup = g_strdup (markup);
-  if (position == GTK_POS_LEFT ||
-      position == GTK_POS_TOP)
-    mark->position = GTK_POS_TOP;
+  if (position == CTK_POS_LEFT ||
+      position == CTK_POS_TOP)
+    mark->position = CTK_POS_TOP;
   else
-    mark->position = GTK_POS_BOTTOM;
+    mark->position = CTK_POS_BOTTOM;
 
   priv->marks = g_slist_insert_sorted_with_data (priv->marks, mark,
                                                  compare_marks,
-                                                 GINT_TO_POINTER (ctk_range_get_inverted (GTK_RANGE (scale))));
+                                                 GINT_TO_POINTER (ctk_range_get_inverted (CTK_RANGE (scale))));
 
-  if (mark->position == GTK_POS_TOP)
+  if (mark->position == CTK_POS_TOP)
     {
       if (!priv->top_marks_gadget)
         {
@@ -2230,9 +2230,9 @@ ctk_scale_add_mark (GtkScale        *scale,
           ctk_css_node_insert_after (widget_node,
                                      ctk_css_gadget_get_node (priv->top_marks_gadget),
                                      (priv->value_gadget &&
-                                      (priv->value_pos == GTK_POS_TOP || priv->value_pos == GTK_POS_LEFT)) ?
+                                      (priv->value_pos == CTK_POS_TOP || priv->value_pos == CTK_POS_LEFT)) ?
                                      ctk_css_gadget_get_node (priv->value_gadget) : NULL);
-          ctk_css_gadget_add_class (priv->top_marks_gadget, GTK_STYLE_CLASS_TOP);
+          ctk_css_gadget_add_class (priv->top_marks_gadget, CTK_STYLE_CLASS_TOP);
           ctk_css_gadget_set_state (priv->top_marks_gadget, ctk_css_node_get_state (widget_node));
         }
       marks_node = ctk_css_gadget_get_node (priv->top_marks_gadget);
@@ -2251,9 +2251,9 @@ ctk_scale_add_mark (GtkScale        *scale,
           ctk_css_node_insert_before (widget_node,
                                       ctk_css_gadget_get_node (priv->bottom_marks_gadget),
                                       (priv->value_gadget &&
-                                       (priv->value_pos == GTK_POS_BOTTOM || priv->value_pos == GTK_POS_RIGHT)) ?
+                                       (priv->value_pos == CTK_POS_BOTTOM || priv->value_pos == CTK_POS_RIGHT)) ?
                                       ctk_css_gadget_get_node (priv->value_gadget) : NULL);
-          ctk_css_gadget_add_class (priv->bottom_marks_gadget, GTK_STYLE_CLASS_BOTTOM);
+          ctk_css_gadget_add_class (priv->bottom_marks_gadget, CTK_STYLE_CLASS_BOTTOM);
           ctk_css_gadget_set_state (priv->bottom_marks_gadget, ctk_css_node_get_state (widget_node));
         }
       marks_node = ctk_css_gadget_get_node (priv->bottom_marks_gadget);
@@ -2280,7 +2280,7 @@ ctk_scale_add_mark (GtkScale        *scale,
       mark->label_gadget =
         ctk_css_custom_gadget_new ("label",
                                    widget, mark->gadget,
-                                   mark->position == GTK_POS_TOP ?
+                                   mark->position == CTK_POS_TOP ?
                                    NULL : mark->indicator_gadget,
                                    ctk_scale_measure_mark_label,
                                    NULL,
@@ -2320,11 +2320,11 @@ ctk_scale_add_mark (GtkScale        *scale,
       values[i] = mark->value;
     }
 
-  _ctk_range_set_stop_values (GTK_RANGE (scale), values, n);
+  _ctk_range_set_stop_values (CTK_RANGE (scale), values, n);
 
   g_free (values);
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (scale));
+  context = ctk_widget_get_style_context (CTK_WIDGET (scale));
   if (priv->top_marks_gadget)
     ctk_style_context_add_class (context, "marks-before");
   if (priv->bottom_marks_gadget)
@@ -2392,7 +2392,7 @@ marks_start_element (GMarkupParseContext *context,
       const gchar *value_str;
       gdouble value = 0;
       const gchar *position_str = NULL;
-      GtkPositionType position = GTK_POS_BOTTOM;
+      GtkPositionType position = CTK_POS_BOTTOM;
       const gchar *msg_context = NULL;
       gboolean translatable = FALSE;
       MarkData *mark;
@@ -2429,7 +2429,7 @@ marks_start_element (GMarkupParseContext *context,
         {
           GValue gvalue = G_VALUE_INIT;
 
-          if (!ctk_builder_value_from_string_type (data->builder, GTK_TYPE_POSITION_TYPE, position_str, &gvalue, error))
+          if (!ctk_builder_value_from_string_type (data->builder, CTK_TYPE_POSITION_TYPE, position_str, &gvalue, error))
             {
               _ctk_builder_prefix_error (data->builder, context, error);
               return;
@@ -2440,10 +2440,10 @@ marks_start_element (GMarkupParseContext *context,
 
       mark = g_slice_new (MarkData);
       mark->value = value;
-      if (position == GTK_POS_LEFT || position == GTK_POS_TOP)
-        mark->position = GTK_POS_TOP;
+      if (position == CTK_POS_LEFT || position == CTK_POS_TOP)
+        mark->position = CTK_POS_TOP;
       else
-        mark->position = GTK_POS_BOTTOM;
+        mark->position = CTK_POS_BOTTOM;
       mark->markup = g_string_new ("");
       mark->context = g_strdup (msg_context);
       mark->translatable = translatable;
@@ -2499,7 +2499,7 @@ ctk_scale_buildable_custom_tag_start (GtkBuildable  *buildable,
   if (strcmp (tagname, "marks") == 0)
     {
       data = g_slice_new0 (MarksSubparserData);
-      data->scale = GTK_SCALE (buildable);
+      data->scale = CTK_SCALE (buildable);
       data->builder = builder;
       data->marks = NULL;
 
@@ -2520,7 +2520,7 @@ ctk_scale_buildable_custom_finished (GtkBuildable *buildable,
                                      const gchar  *tagname,
                                      gpointer      user_data)
 {
-  GtkScale *scale = GTK_SCALE (buildable);
+  GtkScale *scale = CTK_SCALE (buildable);
   MarksSubparserData *marks_data;
 
   if (strcmp (tagname, "marks") == 0)

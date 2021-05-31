@@ -19,8 +19,8 @@
  * Authors: Cosimo Cecchi <cosimoc@redhat.com>
  */
 
-#ifndef __GTK_NUMERABLE_ICON_PRIVATE_H__
-#define __GTK_NUMERABLE_ICON_PRIVATE_H__
+#ifndef __CTK_NUMERABLE_ICON_PRIVATE_H__
+#define __CTK_NUMERABLE_ICON_PRIVATE_H__
 
 #include "gtknumerableicon.h"
 
@@ -31,4 +31,4 @@ void _ctk_numerable_icon_set_background_icon_size (GtkNumerableIcon *self,
 
 G_END_DECLS
 
-#endif /* __GTK_NUMERABLE_ICON_PRIVATE_H__ */
+#endif /* __CTK_NUMERABLE_ICON_PRIVATE_H__ */

@@ -72,12 +72,12 @@ struct _GtkSpinnerPrivate
   gboolean active;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkSpinner, ctk_spinner, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkSpinner, ctk_spinner, CTK_TYPE_WIDGET)
 
 static void
 ctk_spinner_finalize (GObject *object)
 {
-  GtkSpinner *spinner = GTK_SPINNER (object);
+  GtkSpinner *spinner = CTK_SPINNER (object);
 
   g_clear_object (&spinner->priv->gadget);
 
@@ -89,8 +89,8 @@ ctk_spinner_get_preferred_width (GtkWidget *widget,
                                  gint      *minimum,
                                  gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (GTK_SPINNER (widget)->priv->gadget,
-                                     GTK_ORIENTATION_HORIZONTAL,
+  ctk_css_gadget_get_preferred_size (CTK_SPINNER (widget)->priv->gadget,
+                                     CTK_ORIENTATION_HORIZONTAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -101,8 +101,8 @@ ctk_spinner_get_preferred_height (GtkWidget *widget,
                                   gint      *minimum,
                                   gint      *natural)
 {
-  ctk_css_gadget_get_preferred_size (GTK_SPINNER (widget)->priv->gadget,
-                                     GTK_ORIENTATION_VERTICAL,
+  ctk_css_gadget_get_preferred_size (CTK_SPINNER (widget)->priv->gadget,
+                                     CTK_ORIENTATION_VERTICAL,
                                      -1,
                                      minimum, natural,
                                      NULL, NULL);
@@ -116,7 +116,7 @@ ctk_spinner_size_allocate (GtkWidget     *widget,
 
   ctk_widget_set_allocation (widget, allocation);
 
-  ctk_css_gadget_allocate (GTK_SPINNER (widget)->priv->gadget,
+  ctk_css_gadget_allocate (CTK_SPINNER (widget)->priv->gadget,
                            allocation,
                            ctk_widget_get_allocated_baseline (widget),
                            &clip);
@@ -128,7 +128,7 @@ static gboolean
 ctk_spinner_draw (GtkWidget *widget,
                   cairo_t   *cr)
 {
-  ctk_css_gadget_draw (GTK_SPINNER (widget)->priv->gadget, cr);
+  ctk_css_gadget_draw (CTK_SPINNER (widget)->priv->gadget, cr);
 
   return FALSE;
 }
@@ -148,11 +148,11 @@ ctk_spinner_set_active (GtkSpinner *spinner,
       g_object_notify (G_OBJECT (spinner), "active");
 
       if (active)
-        ctk_widget_set_state_flags (GTK_WIDGET (spinner),
-                                    GTK_STATE_FLAG_CHECKED, FALSE);
+        ctk_widget_set_state_flags (CTK_WIDGET (spinner),
+                                    CTK_STATE_FLAG_CHECKED, FALSE);
       else
-        ctk_widget_unset_state_flags (GTK_WIDGET (spinner),
-                                      GTK_STATE_FLAG_CHECKED);
+        ctk_widget_unset_state_flags (CTK_WIDGET (spinner),
+                                      CTK_STATE_FLAG_CHECKED);
     }
 }
 
@@ -164,7 +164,7 @@ ctk_spinner_get_property (GObject    *object,
 {
   GtkSpinnerPrivate *priv;
 
-  priv = GTK_SPINNER (object)->priv;
+  priv = CTK_SPINNER (object)->priv;
 
   switch (param_id)
     {
@@ -185,7 +185,7 @@ ctk_spinner_set_property (GObject      *object,
   switch (param_id)
     {
       case PROP_ACTIVE:
-        ctk_spinner_set_active (GTK_SPINNER (object), g_value_get_boolean (value));
+        ctk_spinner_set_active (CTK_SPINNER (object), g_value_get_boolean (value));
         break;
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, param_id, pspec);
@@ -203,7 +203,7 @@ ctk_spinner_class_init (GtkSpinnerClass *klass)
   gobject_class->get_property = ctk_spinner_get_property;
   gobject_class->set_property = ctk_spinner_set_property;
 
-  widget_class = GTK_WIDGET_CLASS(klass);
+  widget_class = CTK_WIDGET_CLASS(klass);
   widget_class->size_allocate = ctk_spinner_size_allocate;
   widget_class->draw = ctk_spinner_draw;
   widget_class->get_preferred_width = ctk_spinner_get_preferred_width;
@@ -221,9 +221,9 @@ ctk_spinner_class_init (GtkSpinnerClass *klass)
                                                          P_("Active"),
                                                          P_("Whether the spinner is active"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
-  ctk_widget_class_set_accessible_type (widget_class, GTK_TYPE_SPINNER_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_SPINNER_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "spinner");
 }
 
@@ -234,12 +234,12 @@ ctk_spinner_init (GtkSpinner *spinner)
 
   spinner->priv = ctk_spinner_get_instance_private (spinner);
 
-  ctk_widget_set_has_window (GTK_WIDGET (spinner), FALSE);
+  ctk_widget_set_has_window (CTK_WIDGET (spinner), FALSE);
 
-  widget_node = ctk_widget_get_css_node (GTK_WIDGET (spinner));
-  spinner->priv->gadget = ctk_builtin_icon_new_for_node (widget_node, GTK_WIDGET (spinner));
-  ctk_builtin_icon_set_image (GTK_BUILTIN_ICON (spinner->priv->gadget), GTK_CSS_IMAGE_BUILTIN_SPINNER);
-  ctk_builtin_icon_set_default_size (GTK_BUILTIN_ICON (spinner->priv->gadget), 16);
+  widget_node = ctk_widget_get_css_node (CTK_WIDGET (spinner));
+  spinner->priv->gadget = ctk_builtin_icon_new_for_node (widget_node, CTK_WIDGET (spinner));
+  ctk_builtin_icon_set_image (CTK_BUILTIN_ICON (spinner->priv->gadget), CTK_CSS_IMAGE_BUILTIN_SPINNER);
+  ctk_builtin_icon_set_default_size (CTK_BUILTIN_ICON (spinner->priv->gadget), 16);
 }
 
 /**
@@ -254,7 +254,7 @@ ctk_spinner_init (GtkSpinner *spinner)
 GtkWidget *
 ctk_spinner_new (void)
 {
-  return g_object_new (GTK_TYPE_SPINNER, NULL);
+  return g_object_new (CTK_TYPE_SPINNER, NULL);
 }
 
 /**
@@ -268,7 +268,7 @@ ctk_spinner_new (void)
 void
 ctk_spinner_start (GtkSpinner *spinner)
 {
-  g_return_if_fail (GTK_IS_SPINNER (spinner));
+  g_return_if_fail (CTK_IS_SPINNER (spinner));
 
   ctk_spinner_set_active (spinner, TRUE);
 }
@@ -284,7 +284,7 @@ ctk_spinner_start (GtkSpinner *spinner)
 void
 ctk_spinner_stop (GtkSpinner *spinner)
 {
-  g_return_if_fail (GTK_IS_SPINNER (spinner));
+  g_return_if_fail (CTK_IS_SPINNER (spinner));
 
   ctk_spinner_set_active (spinner, FALSE);
 }

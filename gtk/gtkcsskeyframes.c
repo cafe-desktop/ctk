@@ -238,7 +238,7 @@ parse_declaration (GtkCssKeyframes *keyframes,
   property = _ctk_style_property_lookup (name);
   if (property == NULL)
     {
-      /* should be GTK_CSS_PROVIDER_ERROR_NAME */
+      /* should be CTK_CSS_PROVIDER_ERROR_NAME */
       _ctk_css_parser_error (parser, "No property named '%s'", name);
       g_free (name);
       return FALSE;
@@ -264,9 +264,9 @@ parse_declaration (GtkCssKeyframes *keyframes,
       return FALSE;
     }
 
-  if (GTK_IS_CSS_SHORTHAND_PROPERTY (property))
+  if (CTK_IS_CSS_SHORTHAND_PROPERTY (property))
     {
-      GtkCssShorthandProperty *shorthand = GTK_CSS_SHORTHAND_PROPERTY (property);
+      GtkCssShorthandProperty *shorthand = CTK_CSS_SHORTHAND_PROPERTY (property);
       gboolean animatable = FALSE;
       guint i;
 
@@ -281,9 +281,9 @@ parse_declaration (GtkCssKeyframes *keyframes,
       if (!animatable)
         _ctk_css_parser_error (parser, "shorthand '%s' cannot be animated", _ctk_style_property_get_name (property));
     }
-  else if (GTK_IS_CSS_STYLE_PROPERTY (property))
+  else if (CTK_IS_CSS_STYLE_PROPERTY (property))
     {
-      if (!keyframes_set_value (keyframes, k, GTK_CSS_STYLE_PROPERTY (property), value))
+      if (!keyframes_set_value (keyframes, k, CTK_CSS_STYLE_PROPERTY (property), value))
         _ctk_css_parser_error (parser, "Cannot animate property '%s'", _ctk_style_property_get_name (property));
     }
   else
@@ -377,9 +377,9 @@ compare_property_by_name (gconstpointer a,
 {
   GtkCssKeyframes *keyframes = data;
 
-  return strcmp (_ctk_style_property_get_name (GTK_STYLE_PROPERTY (
+  return strcmp (_ctk_style_property_get_name (CTK_STYLE_PROPERTY (
                     _ctk_css_style_property_lookup_by_id (keyframes->property_ids[*(const guint *) a]))),
-                 _ctk_style_property_get_name (GTK_STYLE_PROPERTY (
+                 _ctk_style_property_get_name (CTK_STYLE_PROPERTY (
                     _ctk_css_style_property_lookup_by_id (keyframes->property_ids[*(const guint *) b]))));
 }
 
@@ -420,7 +420,7 @@ _ctk_css_keyframes_print (GtkCssKeyframes *keyframes,
             }
           
           g_string_append_printf (string, "    %s: ", _ctk_style_property_get_name (
-                                                        GTK_STYLE_PROPERTY (
+                                                        CTK_STYLE_PROPERTY (
                                                           _ctk_css_style_property_lookup_by_id (
                                                             keyframes->property_ids[sorted[p]]))));
           _ctk_css_value_print (KEYFRAMES_VALUE (keyframes, k, sorted[p]), string);
@@ -444,9 +444,9 @@ _ctk_css_keyframes_compute (GtkCssKeyframes         *keyframes,
   guint k, p;
 
   g_return_val_if_fail (keyframes != NULL, NULL);
-  g_return_val_if_fail (GTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
-  g_return_val_if_fail (GTK_IS_CSS_STYLE (style), NULL);
-  g_return_val_if_fail (parent_style == NULL || GTK_IS_CSS_STYLE (parent_style), NULL);
+  g_return_val_if_fail (CTK_IS_STYLE_PROVIDER_PRIVATE (provider), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_STYLE (style), NULL);
+  g_return_val_if_fail (parent_style == NULL || CTK_IS_CSS_STYLE (parent_style), NULL);
 
   resolved = ctk_css_keyframes_alloc ();
   resolved->n_keyframes = keyframes->n_keyframes;

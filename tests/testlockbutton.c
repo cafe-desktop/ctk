@@ -179,10 +179,10 @@ update_clicked (GtkButton *button, GtkLockButton *lockbutton)
 
   permission = ctk_lock_button_get_permission (lockbutton);
 
-  allowed = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (allowed_button));
-  can_acquire = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (can_acquire_button));
-  can_release = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (can_release_button));
-  success = ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (success_button));
+  allowed = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (allowed_button));
+  can_acquire = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (can_acquire_button));
+  can_release = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (can_release_button));
+  success = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (success_button));
   g_permission_impl_update (permission, allowed, can_acquire, can_release);
   g_test_permission_set_success (G_TEST_PERMISSION (permission), success);
 }
@@ -201,9 +201,9 @@ permission_changed (GPermission *permission,
                 "can-release", &can_release,
                 NULL);
 
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (allowed_button), allowed);
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (can_acquire_button), can_acquire);
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (can_release_button), can_release);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (allowed_button), allowed);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (can_acquire_button), can_acquire);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (can_release_button), can_release);
 
   ctk_widget_set_sensitive (content, allowed);
 }
@@ -222,23 +222,23 @@ main (int argc, char *argv[])
 
   permission = g_object_new (G_TYPE_TEST_PERMISSION, NULL);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
-  ctk_container_set_border_width (GTK_CONTAINER (window), 12);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_resizable (CTK_WINDOW (window), FALSE);
+  ctk_container_set_border_width (CTK_CONTAINER (window), 12);
 
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 5);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   allowed_button = ctk_check_button_new_with_label ("Allowed");
-  ctk_container_add (GTK_CONTAINER (box), allowed_button);
+  ctk_container_add (CTK_CONTAINER (box), allowed_button);
   can_acquire_button = ctk_check_button_new_with_label ("Can acquire");
-  ctk_container_add (GTK_CONTAINER (box), can_acquire_button);
+  ctk_container_add (CTK_CONTAINER (box), can_acquire_button);
   can_release_button = ctk_check_button_new_with_label ("Can release");
-  ctk_container_add (GTK_CONTAINER (box), can_release_button);
+  ctk_container_add (CTK_CONTAINER (box), can_release_button);
   success_button = ctk_check_button_new_with_label ("Will succeed");
-  ctk_container_add (GTK_CONTAINER (box), success_button);
+  ctk_container_add (CTK_CONTAINER (box), success_button);
   update = ctk_button_new_with_label ("Update");
-  ctk_container_add (GTK_CONTAINER (box), update);
+  ctk_container_add (CTK_CONTAINER (box), update);
   g_signal_connect (permission, "notify",
                     G_CALLBACK (permission_changed), NULL);
 
@@ -248,18 +248,18 @@ main (int argc, char *argv[])
                     G_CALLBACK (update_clicked), button);
 
   dialog = ctk_dialog_new_with_buttons ("Dialog", NULL, 0,
-                                        "Close", GTK_RESPONSE_CLOSE,
-                                        "Some other action", GTK_RESPONSE_APPLY,
+                                        "Close", CTK_RESPONSE_CLOSE,
+                                        "Some other action", CTK_RESPONSE_APPLY,
                                         NULL);
-  ctk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
+  ctk_window_set_resizable (CTK_WINDOW (dialog), FALSE);
 
-  content = ctk_box_new (GTK_ORIENTATION_VERTICAL, 5);
-  ctk_container_add (GTK_CONTAINER (content), ctk_check_button_new_with_label ("Control 1"));
-  ctk_container_add (GTK_CONTAINER (content), ctk_check_button_new_with_label ("Control 2"));
+  content = ctk_box_new (CTK_ORIENTATION_VERTICAL, 5);
+  ctk_container_add (CTK_CONTAINER (content), ctk_check_button_new_with_label ("Control 1"));
+  ctk_container_add (CTK_CONTAINER (content), ctk_check_button_new_with_label ("Control 2"));
   ctk_widget_set_sensitive (content, FALSE);
 
-  ctk_container_add (GTK_CONTAINER (ctk_dialog_get_content_area (GTK_DIALOG (dialog))), content);
-  ctk_container_add (GTK_CONTAINER (ctk_dialog_get_content_area (GTK_DIALOG (dialog))), button);
+  ctk_container_add (CTK_CONTAINER (ctk_dialog_get_content_area (CTK_DIALOG (dialog))), content);
+  ctk_container_add (CTK_CONTAINER (ctk_dialog_get_content_area (CTK_DIALOG (dialog))), button);
 
   ctk_widget_show_all (window);
   ctk_widget_show_all (dialog);

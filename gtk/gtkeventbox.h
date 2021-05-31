@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_EVENT_BOX_H__
-#define __GTK_EVENT_BOX_H__
+#ifndef __CTK_EVENT_BOX_H__
+#define __CTK_EVENT_BOX_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -35,12 +35,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EVENT_BOX              (ctk_event_box_get_type ())
-#define GTK_EVENT_BOX(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_EVENT_BOX, GtkEventBox))
-#define GTK_EVENT_BOX_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_EVENT_BOX, GtkEventBoxClass))
-#define GTK_IS_EVENT_BOX(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_EVENT_BOX))
-#define GTK_IS_EVENT_BOX_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_EVENT_BOX))
-#define GTK_EVENT_BOX_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_EVENT_BOX, GtkEventBoxClass))
+#define CTK_TYPE_EVENT_BOX              (ctk_event_box_get_type ())
+#define CTK_EVENT_BOX(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EVENT_BOX, GtkEventBox))
+#define CTK_EVENT_BOX_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_EVENT_BOX, GtkEventBoxClass))
+#define CTK_IS_EVENT_BOX(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_EVENT_BOX))
+#define CTK_IS_EVENT_BOX_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_EVENT_BOX))
+#define CTK_EVENT_BOX_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_EVENT_BOX, GtkEventBoxClass))
 
 typedef struct _GtkEventBox        GtkEventBox;
 typedef struct _GtkEventBoxClass   GtkEventBoxClass;
@@ -88,4 +88,4 @@ void       ctk_event_box_set_above_child    (GtkEventBox *event_box,
 
 G_END_DECLS
 
-#endif /* __GTK_EVENT_BOX_H__ */
+#endif /* __CTK_EVENT_BOX_H__ */

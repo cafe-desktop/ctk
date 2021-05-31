@@ -84,14 +84,14 @@ static void     ctk_event_box_get_property  (GObject          *object,
                                              GValue           *value,
                                              GParamSpec       *pspec);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkEventBox, ctk_event_box, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkEventBox, ctk_event_box, CTK_TYPE_BIN)
 
 static void
 ctk_event_box_class_init (GtkEventBoxClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
-  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
+  GtkContainerClass *container_class = CTK_CONTAINER_CLASS (class);
 
   gobject_class->set_property = ctk_event_box_set_property;
   gobject_class->get_property = ctk_event_box_get_property;
@@ -114,20 +114,20 @@ ctk_event_box_class_init (GtkEventBoxClass *class)
                                                         P_("Visible Window"),
                                                         P_("Whether the event box is visible, as opposed to invisible and only used to trap events."),
                                                         TRUE,
-                                                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   g_object_class_install_property (gobject_class,
                                    PROP_ABOVE_CHILD,
                                    g_param_spec_boolean ("above-child",
                                                         P_("Above child"),
                                                         P_("Whether the event-trapping window of the eventbox is above the window of the child widget as opposed to below it."),
                                                         FALSE,
-                                                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 }
 
 static void
 ctk_event_box_init (GtkEventBox *event_box)
 {
-  ctk_widget_set_has_window (GTK_WIDGET (event_box), TRUE);
+  ctk_widget_set_has_window (CTK_WIDGET (event_box), TRUE);
 
   event_box->priv = ctk_event_box_get_instance_private (event_box);
   event_box->priv->above_child = FALSE;
@@ -143,7 +143,7 @@ ctk_event_box_init (GtkEventBox *event_box)
 GtkWidget*
 ctk_event_box_new (void)
 {
-  return g_object_new (GTK_TYPE_EVENT_BOX, NULL);
+  return g_object_new (CTK_TYPE_EVENT_BOX, NULL);
 }
 
 static void
@@ -154,7 +154,7 @@ ctk_event_box_set_property (GObject      *object,
 {
   GtkEventBox *event_box;
 
-  event_box = GTK_EVENT_BOX (object);
+  event_box = CTK_EVENT_BOX (object);
 
   switch (prop_id)
     {
@@ -180,7 +180,7 @@ ctk_event_box_get_property (GObject     *object,
 {
   GtkEventBox *event_box;
 
-  event_box = GTK_EVENT_BOX (object);
+  event_box = CTK_EVENT_BOX (object);
 
   switch (prop_id)
     {
@@ -212,9 +212,9 @@ ctk_event_box_get_property (GObject     *object,
 gboolean
 ctk_event_box_get_visible_window (GtkEventBox *event_box)
 {
-  g_return_val_if_fail (GTK_IS_EVENT_BOX (event_box), FALSE);
+  g_return_val_if_fail (CTK_IS_EVENT_BOX (event_box), FALSE);
 
-  return ctk_widget_get_has_window (GTK_WIDGET (event_box));
+  return ctk_widget_get_has_window (CTK_WIDGET (event_box));
 }
 
 /**
@@ -264,9 +264,9 @@ ctk_event_box_set_visible_window (GtkEventBox *event_box,
 {
   GtkWidget *widget;
 
-  g_return_if_fail (GTK_IS_EVENT_BOX (event_box));
+  g_return_if_fail (CTK_IS_EVENT_BOX (event_box));
 
-  widget = GTK_WIDGET (event_box);
+  widget = CTK_WIDGET (event_box);
 
   visible_window = visible_window != FALSE;
 
@@ -318,7 +318,7 @@ ctk_event_box_get_above_child (GtkEventBox *event_box)
 {
   GtkEventBoxPrivate *priv = event_box->priv;
 
-  g_return_val_if_fail (GTK_IS_EVENT_BOX (event_box), FALSE);
+  g_return_val_if_fail (CTK_IS_EVENT_BOX (event_box), FALSE);
 
   return priv->above_child;
 }
@@ -345,9 +345,9 @@ ctk_event_box_set_above_child (GtkEventBox *event_box,
   GtkEventBoxPrivate *priv = event_box->priv;
   GtkWidget *widget;
 
-  g_return_if_fail (GTK_IS_EVENT_BOX (event_box));
+  g_return_if_fail (CTK_IS_EVENT_BOX (event_box));
 
-  widget = GTK_WIDGET (event_box);
+  widget = CTK_WIDGET (event_box);
 
   above_child = above_child != FALSE;
 
@@ -413,7 +413,7 @@ ctk_event_box_realize (GtkWidget *widget)
                         | GDK_ENTER_NOTIFY_MASK
                         | GDK_LEAVE_NOTIFY_MASK;
 
-  priv = GTK_EVENT_BOX (widget)->priv;
+  priv = CTK_EVENT_BOX (widget)->priv;
 
   visible_window = ctk_widget_get_has_window (widget);
   if (visible_window)
@@ -452,7 +452,7 @@ ctk_event_box_realize (GtkWidget *widget)
 static void
 ctk_event_box_unrealize (GtkWidget *widget)
 {
-  GtkEventBoxPrivate *priv = GTK_EVENT_BOX (widget)->priv;
+  GtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
 
   if (priv->event_window != NULL)
     {
@@ -461,18 +461,18 @@ ctk_event_box_unrealize (GtkWidget *widget)
       priv->event_window = NULL;
     }
 
-  GTK_WIDGET_CLASS (ctk_event_box_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_event_box_parent_class)->unrealize (widget);
 }
 
 static void
 ctk_event_box_map (GtkWidget *widget)
 {
-  GtkEventBoxPrivate *priv = GTK_EVENT_BOX (widget)->priv;
+  GtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
 
   if (priv->event_window != NULL && !priv->above_child)
     gdk_window_show (priv->event_window);
 
-  GTK_WIDGET_CLASS (ctk_event_box_parent_class)->map (widget);
+  CTK_WIDGET_CLASS (ctk_event_box_parent_class)->map (widget);
 
   if (priv->event_window != NULL && priv->above_child)
     gdk_window_show (priv->event_window);
@@ -481,12 +481,12 @@ ctk_event_box_map (GtkWidget *widget)
 static void
 ctk_event_box_unmap (GtkWidget *widget)
 {
-  GtkEventBoxPrivate *priv = GTK_EVENT_BOX (widget)->priv;
+  GtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
 
   if (priv->event_window != NULL)
     gdk_window_hide (priv->event_window);
 
-  GTK_WIDGET_CLASS (ctk_event_box_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (ctk_event_box_parent_class)->unmap (widget);
 }
 
 static void
@@ -494,7 +494,7 @@ ctk_event_box_get_preferred_width (GtkWidget *widget,
                                    gint      *minimum,
                                    gint      *natural)
 {
-  GtkBin *bin = GTK_BIN (widget);
+  GtkBin *bin = CTK_BIN (widget);
   GtkWidget *child;
 
   *minimum = 0;
@@ -513,7 +513,7 @@ ctk_event_box_get_preferred_height_and_baseline_for_width (GtkWidget *widget,
 							   gint      *minimum_baseline,
 							   gint      *natural_baseline)
 {
-  GtkBin *bin = GTK_BIN (widget);
+  GtkBin *bin = CTK_BIN (widget);
   GtkWidget *child;
 
   *minimum = 0;
@@ -555,7 +555,7 @@ ctk_event_box_size_allocate (GtkWidget     *widget,
   GtkEventBoxPrivate *priv;
   GtkWidget *child;
 
-  bin = GTK_BIN (widget);
+  bin = CTK_BIN (widget);
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -574,7 +574,7 @@ ctk_event_box_size_allocate (GtkWidget     *widget,
 
   if (ctk_widget_get_realized (widget))
     {
-      priv = GTK_EVENT_BOX (widget)->priv;
+      priv = CTK_EVENT_BOX (widget)->priv;
 
       if (priv->event_window != NULL)
         gdk_window_move_resize (priv->event_window,
@@ -616,7 +616,7 @@ ctk_event_box_draw (GtkWidget *widget,
                         ctk_widget_get_allocated_height (widget));
     }
 
-  GTK_WIDGET_CLASS (ctk_event_box_parent_class)->draw (widget, cr);
+  CTK_WIDGET_CLASS (ctk_event_box_parent_class)->draw (widget, cr);
 
   return FALSE;
 }

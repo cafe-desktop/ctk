@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_WINDOW_PRIVATE_H__
-#define __GTK_WINDOW_PRIVATE_H__
+#ifndef __CTK_WINDOW_PRIVATE_H__
+#define __CTK_WINDOW_PRIVATE_H__
 
 #include <gdk/gdk.h>
 
@@ -155,4 +155,4 @@ void          ctk_window_unexport_handle (GtkWindow               *window);
 
 G_END_DECLS
 
-#endif /* __GTK_WINDOW_PRIVATE_H__ */
+#endif /* __CTK_WINDOW_PRIVATE_H__ */

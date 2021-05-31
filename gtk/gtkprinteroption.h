@@ -16,14 +16,14 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINTER_OPTION_H__
-#define __GTK_PRINTER_OPTION_H__
+#ifndef __CTK_PRINTER_OPTION_H__
+#define __CTK_PRINTER_OPTION_H__
 
 /* This is a "semi-private" header; it is meant only for
  * alternate GtkPrintDialog backend modules; no stability guarantees 
  * are made at this point
  */
-#ifndef GTK_PRINT_BACKEND_ENABLE_UNSUPPORTED
+#ifndef CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED
 #error "GtkPrintBackend is not supported API for general use"
 #endif
 
@@ -31,28 +31,28 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINTER_OPTION             (ctk_printer_option_get_type ())
-#define GTK_PRINTER_OPTION(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER_OPTION, GtkPrinterOption))
-#define GTK_IS_PRINTER_OPTION(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER_OPTION))
+#define CTK_TYPE_PRINTER_OPTION             (ctk_printer_option_get_type ())
+#define CTK_PRINTER_OPTION(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_OPTION, GtkPrinterOption))
+#define CTK_IS_PRINTER_OPTION(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINTER_OPTION))
 
 typedef struct _GtkPrinterOption       GtkPrinterOption;
 typedef struct _GtkPrinterOptionClass  GtkPrinterOptionClass;
 
-#define GTK_PRINTER_OPTION_GROUP_IMAGE_QUALITY "ImageQuality"
-#define GTK_PRINTER_OPTION_GROUP_FINISHING "Finishing"
+#define CTK_PRINTER_OPTION_GROUP_IMAGE_QUALITY "ImageQuality"
+#define CTK_PRINTER_OPTION_GROUP_FINISHING "Finishing"
 
 typedef enum {
-  GTK_PRINTER_OPTION_TYPE_BOOLEAN,
-  GTK_PRINTER_OPTION_TYPE_PICKONE,
-  GTK_PRINTER_OPTION_TYPE_PICKONE_PASSWORD,
-  GTK_PRINTER_OPTION_TYPE_PICKONE_PASSCODE,
-  GTK_PRINTER_OPTION_TYPE_PICKONE_REAL,
-  GTK_PRINTER_OPTION_TYPE_PICKONE_INT,
-  GTK_PRINTER_OPTION_TYPE_PICKONE_STRING,
-  GTK_PRINTER_OPTION_TYPE_ALTERNATIVE,
-  GTK_PRINTER_OPTION_TYPE_STRING,
-  GTK_PRINTER_OPTION_TYPE_FILESAVE,
-  GTK_PRINTER_OPTION_TYPE_INFO
+  CTK_PRINTER_OPTION_TYPE_BOOLEAN,
+  CTK_PRINTER_OPTION_TYPE_PICKONE,
+  CTK_PRINTER_OPTION_TYPE_PICKONE_PASSWORD,
+  CTK_PRINTER_OPTION_TYPE_PICKONE_PASSCODE,
+  CTK_PRINTER_OPTION_TYPE_PICKONE_REAL,
+  CTK_PRINTER_OPTION_TYPE_PICKONE_INT,
+  CTK_PRINTER_OPTION_TYPE_PICKONE_STRING,
+  CTK_PRINTER_OPTION_TYPE_ALTERNATIVE,
+  CTK_PRINTER_OPTION_TYPE_STRING,
+  CTK_PRINTER_OPTION_TYPE_FILESAVE,
+  CTK_PRINTER_OPTION_TYPE_INFO
 } GtkPrinterOptionType;
 
 struct _GtkPrinterOption
@@ -126,6 +126,6 @@ gboolean          ctk_printer_option_get_activates_default (GtkPrinterOption    
 
 G_END_DECLS
 
-#endif /* __GTK_PRINTER_OPTION_H__ */
+#endif /* __CTK_PRINTER_OPTION_H__ */
 
 

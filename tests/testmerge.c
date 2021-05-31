@@ -67,9 +67,9 @@ dump_toplevels (GtkWidget    *button,
   GSList *toplevels;
 
   toplevels = ctk_ui_manager_get_toplevels (merge, 
-					    GTK_UI_MANAGER_MENUBAR |
-					    GTK_UI_MANAGER_TOOLBAR |
-					    GTK_UI_MANAGER_POPUP);
+					    CTK_UI_MANAGER_MENUBAR |
+					    CTK_UI_MANAGER_TOOLBAR |
+					    CTK_UI_MANAGER_POPUP);
 
   g_slist_foreach (toplevels, (GFunc) print_toplevel, NULL);
   g_slist_free (toplevels);
@@ -97,16 +97,16 @@ delayed_toggle_dynamic (GtkUIManager *merge)
     {
       dynamic = ctk_action_group_new ("dynamic");
       ctk_ui_manager_insert_action_group (merge, dynamic, 0);
-      dyn = g_object_new (GTK_TYPE_ACTION,
+      dyn = g_object_new (CTK_TYPE_ACTION,
 			  "name", "dyn1",
 			  "label", "Dynamic action 1",
-			  "stock_id", GTK_STOCK_COPY,
+			  "stock_id", CTK_STOCK_COPY,
 			  NULL);
       ctk_action_group_add_action (dynamic, dyn);
-      dyn = g_object_new (GTK_TYPE_ACTION,
+      dyn = g_object_new (CTK_TYPE_ACTION,
 			  "name", "dyn2",
 			  "label", "Dynamic action 2",
-			  "stock_id", GTK_STOCK_EXECUTE,
+			  "stock_id", CTK_STOCK_EXECUTE,
 			  NULL);
       ctk_action_group_add_action (dynamic, dyn);
     }
@@ -117,16 +117,16 @@ delayed_toggle_dynamic (GtkUIManager *merge)
       ctk_ui_manager_add_ui (merge, merge_id, "/toolbar1/ToolbarPlaceholder", 
 			     "dyn1", "dyn1", 0, 0);
       ctk_ui_manager_add_ui (merge, merge_id, "/toolbar1/ToolbarPlaceholder", 
-			     "dynsep", NULL, GTK_UI_MANAGER_SEPARATOR, 0);
+			     "dynsep", NULL, CTK_UI_MANAGER_SEPARATOR, 0);
       ctk_ui_manager_add_ui (merge, merge_id, "/toolbar1/ToolbarPlaceholder", 
 			     "dyn2", "dyn2", 0, 0);
 
       ctk_ui_manager_add_ui (merge, merge_id, "/menubar/EditMenu", 
-			     "dyn1menu", "dyn1", GTK_UI_MANAGER_MENU, 0);
+			     "dyn1menu", "dyn1", CTK_UI_MANAGER_MENU, 0);
       ctk_ui_manager_add_ui (merge, merge_id, "/menubar/EditMenu/dyn1menu", 
-			     "dyn1", "dyn1", GTK_UI_MANAGER_MENUITEM, 0);
+			     "dyn1", "dyn1", CTK_UI_MANAGER_MENUITEM, 0);
       ctk_ui_manager_add_ui (merge, merge_id, "/menubar/EditMenu/dyn1menu/dyn1", 
-			     "dyn2", "dyn2", GTK_UI_MANAGER_AUTO, FALSE);
+			     "dyn2", "dyn2", CTK_UI_MANAGER_AUTO, FALSE);
     }
   else 
     {
@@ -160,7 +160,7 @@ toggle_action (GtkAction *action)
   const gchar *typename = G_OBJECT_TYPE_NAME (action);
 
   g_message ("ToggleAction %s (type=%s) toggled (active=%d)", name, typename,
-	     ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (action)));
+	     ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action)));
 }
 
 
@@ -168,9 +168,9 @@ static void
 radio_action_changed (GtkAction *action, GtkRadioAction *current)
 {
   g_message ("RadioAction %s (type=%s) activated (active=%d) (value %d)", 
-	     ctk_action_get_name (GTK_ACTION (current)), 
-	     G_OBJECT_TYPE_NAME (GTK_ACTION (current)),
-	     ctk_toggle_action_get_active (GTK_TOGGLE_ACTION (current)),
+	     ctk_action_get_name (CTK_ACTION (current)), 
+	     G_OBJECT_TYPE_NAME (CTK_ACTION (current)),
+	     ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (current)),
 	     ctk_radio_action_get_current_value (current));
 }
 
@@ -183,19 +183,19 @@ static GtkActionEntry entries[] = {
   { "EmptyMenu2Action", NULL, "Empty 2" },
   { "Test", NULL, "Test" },
 
-  { "QuitAction",  GTK_STOCK_QUIT,  NULL,     "<control>q", "Quit", G_CALLBACK (ctk_main_quit) },
-  { "NewAction",   GTK_STOCK_NEW,   NULL,     "<control>n", "Create something", G_CALLBACK (activate_action) },
-  { "New2Action",  GTK_STOCK_NEW,   NULL,     "<control>m", "Create something else", G_CALLBACK (activate_action) },
-  { "OpenAction",  GTK_STOCK_OPEN,  NULL,     NULL,         "Open it", G_CALLBACK (activate_action) },
-  { "CutAction",   GTK_STOCK_CUT,   NULL,     "<control>x", "Knive", G_CALLBACK (activate_action) },
-  { "CopyAction",  GTK_STOCK_COPY,  NULL,     "<control>c", "Copy", G_CALLBACK (activate_action) },
-  { "PasteAction", GTK_STOCK_PASTE, NULL,     "<control>v", "Paste", G_CALLBACK (activate_action) },
+  { "QuitAction",  CTK_STOCK_QUIT,  NULL,     "<control>q", "Quit", G_CALLBACK (ctk_main_quit) },
+  { "NewAction",   CTK_STOCK_NEW,   NULL,     "<control>n", "Create something", G_CALLBACK (activate_action) },
+  { "New2Action",  CTK_STOCK_NEW,   NULL,     "<control>m", "Create something else", G_CALLBACK (activate_action) },
+  { "OpenAction",  CTK_STOCK_OPEN,  NULL,     NULL,         "Open it", G_CALLBACK (activate_action) },
+  { "CutAction",   CTK_STOCK_CUT,   NULL,     "<control>x", "Knive", G_CALLBACK (activate_action) },
+  { "CopyAction",  CTK_STOCK_COPY,  NULL,     "<control>c", "Copy", G_CALLBACK (activate_action) },
+  { "PasteAction", CTK_STOCK_PASTE, NULL,     "<control>v", "Paste", G_CALLBACK (activate_action) },
   { "AboutAction", NULL,            "_About", NULL,         "About", G_CALLBACK (activate_action) },
 };
 static guint n_entries = G_N_ELEMENTS (entries);
 
 static GtkToggleActionEntry toggle_entries[] = {
-  { "BoldAction",  GTK_STOCK_BOLD,  "_Bold",  "<control>b", "Make it bold", G_CALLBACK (toggle_action), 
+  { "BoldAction",  CTK_STOCK_BOLD,  "_Bold",  "<control>b", "Make it bold", G_CALLBACK (toggle_action), 
     TRUE },
 };
 static guint n_toggle_entries = G_N_ELEMENTS (toggle_entries);
@@ -208,13 +208,13 @@ enum {
 };
 
 static GtkRadioActionEntry radio_entries[] = {
-  { "justify-left", GTK_STOCK_JUSTIFY_LEFT, NULL, "<control>L", 
+  { "justify-left", CTK_STOCK_JUSTIFY_LEFT, NULL, "<control>L", 
     "Left justify the text", JUSTIFY_LEFT },
-  { "justify-center", GTK_STOCK_JUSTIFY_CENTER, NULL, "<super>E",
+  { "justify-center", CTK_STOCK_JUSTIFY_CENTER, NULL, "<super>E",
     "Center justify the text", JUSTIFY_CENTER },
-  { "justify-right", GTK_STOCK_JUSTIFY_RIGHT, NULL, "<hyper>R",
+  { "justify-right", CTK_STOCK_JUSTIFY_RIGHT, NULL, "<hyper>R",
     "Right justify the text", JUSTIFY_RIGHT },
-  { "justify-fill", GTK_STOCK_JUSTIFY_FILL, NULL, "<super><hyper>J",
+  { "justify-fill", CTK_STOCK_JUSTIFY_FILL, NULL, "<super><hyper>J",
     "Fill justify the text", JUSTIFY_FILL },
 };
 static guint n_radio_entries = G_N_ELEMENTS (radio_entries);
@@ -236,7 +236,7 @@ toggle_merge (GtkWidget    *button,
 
   mergenum = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (button), "mergenum"));
 
-  if (ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
+  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
       GError *err = NULL;
 
@@ -247,8 +247,8 @@ toggle_merge (GtkWidget    *button,
 	{
 	  GtkWidget *dialog;
 
-	  dialog = ctk_message_dialog_new (GTK_WINDOW (ctk_widget_get_toplevel (button)),
-					   0, GTK_MESSAGE_WARNING, GTK_BUTTONS_OK,
+	  dialog = ctk_message_dialog_new (CTK_WINDOW (ctk_widget_get_toplevel (button)),
+					   0, CTK_MESSAGE_WARNING, CTK_BUTTONS_OK,
 					   "could not merge %s: %s", merge_ids[mergenum].filename,
 					   err->message);
 
@@ -369,8 +369,8 @@ iter_compare_func (GtkTreeModel *model,
 
   ctk_tree_model_get_value (model, a, 0, &a_value);
   ctk_tree_model_get_value (model, b, 0, &b_value);
-  a_action = GTK_ACTION (g_value_get_object (&a_value));
-  b_action = GTK_ACTION (g_value_get_object (&b_value));
+  a_action = CTK_ACTION (g_value_get_object (&a_value));
+  b_action = CTK_ACTION (g_value_get_object (&b_value));
 
   a_name = ctk_action_get_name (a_action);
   b_name = ctk_action_get_name (b_action);
@@ -397,11 +397,11 @@ create_tree_view (GtkUIManager *merge)
   GList *p;
   GtkCellRenderer *cell;
   
-  store = ctk_list_store_new (1, GTK_TYPE_ACTION);
-  ctk_tree_sortable_set_sort_func (GTK_TREE_SORTABLE (store), 0,
+  store = ctk_list_store_new (1, CTK_TYPE_ACTION);
+  ctk_tree_sortable_set_sort_func (CTK_TREE_SORTABLE (store), 0,
 				   iter_compare_func, NULL, NULL);
-  ctk_tree_sortable_set_sort_column_id (GTK_TREE_SORTABLE (store), 0,
-					GTK_SORT_ASCENDING);
+  ctk_tree_sortable_set_sort_column_id (CTK_TREE_SORTABLE (store), 0,
+					CTK_SORT_ASCENDING);
   
   for (p = ctk_ui_manager_get_action_groups (merge); p; p = p->next)
     {
@@ -420,34 +420,34 @@ create_tree_view (GtkUIManager *merge)
       g_list_free (actions);
     }
   
-  tree_view = ctk_tree_view_new_with_model (GTK_TREE_MODEL (store));
+  tree_view = ctk_tree_view_new_with_model (CTK_TREE_MODEL (store));
   g_object_unref (store);
 
-  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_data_func (CTK_TREE_VIEW (tree_view),
 					      -1, "Action",
 					      ctk_cell_renderer_text_new (),
 					      set_name_func, NULL, NULL);
 
-  ctk_tree_view_column_set_sort_column_id (ctk_tree_view_get_column (GTK_TREE_VIEW (tree_view), 0), 0);
+  ctk_tree_view_column_set_sort_column_id (ctk_tree_view_get_column (CTK_TREE_VIEW (tree_view), 0), 0);
 
   cell = ctk_cell_renderer_toggle_new ();
   g_signal_connect (cell, "toggled", G_CALLBACK (sensitivity_toggled), store);
-  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_data_func (CTK_TREE_VIEW (tree_view),
 					      -1, "Sensitive",
 					      cell,
 					      set_sensitive_func, NULL, NULL);
 
   cell = ctk_cell_renderer_toggle_new ();
   g_signal_connect (cell, "toggled", G_CALLBACK (visibility_toggled), store);
-  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+  ctk_tree_view_insert_column_with_data_func (CTK_TREE_VIEW (tree_view),
 					      -1, "Visible",
 					      cell,
 					      set_visible_func, NULL, NULL);
 
   sw = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-				  GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
-  ctk_container_add (GTK_CONTAINER (sw), tree_view);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+				  CTK_POLICY_NEVER, CTK_POLICY_AUTOMATIC);
+  ctk_container_add (CTK_CONTAINER (sw), tree_view);
   
   return sw;
 }
@@ -464,9 +464,9 @@ area_press (GtkWidget      *drawing_area,
     {
       GtkWidget *menu = ctk_ui_manager_get_widget (merge, "/FileMenu");
       
-      if (GTK_IS_MENU (menu)) 
+      if (CTK_IS_MENU (menu)) 
 	{
-	  ctk_menu_popup (GTK_MENU (menu), NULL, NULL,
+	  ctk_menu_popup (CTK_MENU (menu), NULL, NULL,
 			  NULL, drawing_area,
 			  3, event->time);
 	  return TRUE;
@@ -519,7 +519,7 @@ set_tip (GtkWidget *widget)
     {
       g_object_get (data->action, "tooltip", &tooltip, NULL);
       
-      ctk_statusbar_push (GTK_STATUSBAR (data->statusbar), 0, 
+      ctk_statusbar_push (CTK_STATUSBAR (data->statusbar), 0, 
 			  tooltip ? tooltip : "");
       
       g_free (tooltip);
@@ -534,7 +534,7 @@ unset_tip (GtkWidget *widget)
   data = g_object_get_data (G_OBJECT (widget), "action-status");
 
   if (data)
-    ctk_statusbar_pop (GTK_STATUSBAR (data->statusbar), 0);
+    ctk_statusbar_pop (CTK_STATUSBAR (data->statusbar), 0);
 }
 		    
 static void
@@ -543,7 +543,7 @@ connect_proxy (GtkUIManager *merge,
 	       GtkWidget    *proxy,
 	       GtkWidget    *statusbar)
 {
-  if (GTK_IS_MENU_ITEM (proxy)) 
+  if (CTK_IS_MENU_ITEM (proxy)) 
     {
       ActionStatus *data;
 
@@ -601,51 +601,51 @@ main (int argc, char **argv)
 				      JUSTIFY_RIGHT,
 				      G_CALLBACK (radio_action_changed), NULL);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_default_size (GTK_WINDOW (window), -1, 400);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_default_size (CTK_WINDOW (window), -1, 400);
   g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);
 
   grid = ctk_grid_new ();
-  ctk_grid_set_row_spacing (GTK_GRID (grid), 2);
-  ctk_grid_set_column_spacing (GTK_GRID (grid), 2);
-  ctk_container_set_border_width (GTK_CONTAINER (grid), 2);
-  ctk_container_add (GTK_CONTAINER (window), grid);
+  ctk_grid_set_row_spacing (CTK_GRID (grid), 2);
+  ctk_grid_set_column_spacing (CTK_GRID (grid), 2);
+  ctk_container_set_border_width (CTK_CONTAINER (grid), 2);
+  ctk_container_add (CTK_CONTAINER (window), grid);
 
   frame = ctk_frame_new ("Menus and Toolbars");
-  ctk_grid_attach (GTK_GRID (grid), frame, 0, 1, 2, 1);
+  ctk_grid_attach (CTK_GRID (grid), frame, 0, 1, 2, 1);
   
-  menu_box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_container_set_border_width (GTK_CONTAINER (menu_box), 2);
-  ctk_container_add (GTK_CONTAINER (frame), menu_box);
+  menu_box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_set_border_width (CTK_CONTAINER (menu_box), 2);
+  ctk_container_add (CTK_CONTAINER (frame), menu_box);
 
   statusbar = ctk_statusbar_new ();
-  ctk_box_pack_end (GTK_BOX (menu_box), statusbar, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (menu_box), statusbar, FALSE, FALSE, 0);
     
   area = ctk_drawing_area_new ();
   ctk_widget_set_events (area, GDK_BUTTON_PRESS_MASK);
   ctk_widget_set_size_request (area, -1, 40);
-  ctk_box_pack_end (GTK_BOX (menu_box), area, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (menu_box), area, FALSE, FALSE, 0);
   ctk_widget_show (area);
 
   button = ctk_button_new ();
-  ctk_box_pack_end (GTK_BOX (menu_box), button, FALSE, FALSE, 0);
-  ctk_activatable_set_related_action (GTK_ACTIVATABLE (button),
+  ctk_box_pack_end (CTK_BOX (menu_box), button, FALSE, FALSE, 0);
+  ctk_activatable_set_related_action (CTK_ACTIVATABLE (button),
 			    ctk_action_group_get_action (action_group, "AboutAction"));
 
   ctk_widget_show (button);
 
   button = ctk_check_button_new ();
-  ctk_box_pack_end (GTK_BOX (menu_box), button, FALSE, FALSE, 0);
-  ctk_activatable_set_related_action (GTK_ACTIVATABLE (button),
+  ctk_box_pack_end (CTK_BOX (menu_box), button, FALSE, FALSE, 0);
+  ctk_activatable_set_related_action (CTK_ACTIVATABLE (button),
 			    ctk_action_group_get_action (action_group, "BoldAction"));
   ctk_widget_show (button);
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
-  ctk_box_pack_end (GTK_BOX (menu_box), box, FALSE, FALSE, 0);
-  ctk_container_add (GTK_CONTAINER (box), ctk_label_new ("Bold:"));
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
+  ctk_box_pack_end (CTK_BOX (menu_box), box, FALSE, FALSE, 0);
+  ctk_container_add (CTK_CONTAINER (box), ctk_label_new ("Bold:"));
   button = ctk_switch_new ();
-  ctk_container_add (GTK_CONTAINER (box), button);
-  ctk_activatable_set_related_action (GTK_ACTIVATABLE (button),
+  ctk_container_add (CTK_CONTAINER (box), button);
+  ctk_activatable_set_related_action (CTK_ACTIVATABLE (button),
                             ctk_action_group_get_action (action_group, "BoldAction"));
   ctk_widget_show_all (box);
 
@@ -657,54 +657,54 @@ main (int argc, char **argv)
   ctk_ui_manager_insert_action_group (merge, action_group, 0);
   g_signal_connect (merge, "add_widget", G_CALLBACK (add_widget), menu_box);
 
-  ctk_window_add_accel_group (GTK_WINDOW (window), 
+  ctk_window_add_accel_group (CTK_WINDOW (window), 
 			      ctk_ui_manager_get_accel_group (merge));
   
   frame = ctk_frame_new ("UI Files");
   ctk_widget_set_vexpand (frame, TRUE);
-  ctk_grid_attach (GTK_GRID (grid), frame, 0, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), frame, 0, 0, 1, 1);
 
-  vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 2);
-  ctk_container_set_border_width (GTK_CONTAINER (vbox), 2);
-  ctk_container_add (GTK_CONTAINER (frame), vbox);
+  vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 2);
+  ctk_container_set_border_width (CTK_CONTAINER (vbox), 2);
+  ctk_container_add (CTK_CONTAINER (frame), vbox);
 
   for (i = 0; i < G_N_ELEMENTS (merge_ids); i++)
     {
       button = ctk_check_button_new_with_label (merge_ids[i].filename);
       g_object_set_data (G_OBJECT (button), "mergenum", GINT_TO_POINTER (i));
       g_signal_connect (button, "toggled", G_CALLBACK (toggle_merge), merge);
-      ctk_box_pack_start (GTK_BOX (vbox), button, FALSE, FALSE, 0);
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
+      ctk_box_pack_start (CTK_BOX (vbox), button, FALSE, FALSE, 0);
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (button), TRUE);
     }
 
   button = ctk_check_button_new_with_label ("Tearoffs");
   g_signal_connect (button, "clicked", G_CALLBACK (toggle_tearoffs), merge);
-  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   button = ctk_check_button_new_with_label ("Dynamic");
   g_signal_connect (button, "clicked", G_CALLBACK (toggle_dynamic), merge);
-  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   button = ctk_button_new_with_label ("Activate path");
   g_signal_connect (button, "clicked", G_CALLBACK (activate_path), merge);
-  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   button = ctk_button_new_with_label ("Dump Tree");
   g_signal_connect (button, "clicked", G_CALLBACK (dump_tree), merge);
-  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   button = ctk_button_new_with_label ("Dump Toplevels");
   g_signal_connect (button, "clicked", G_CALLBACK (dump_toplevels), merge);
-  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   button = ctk_button_new_with_label ("Dump Accels");
   g_signal_connect (button, "clicked", G_CALLBACK (dump_accels), NULL);
-  ctk_box_pack_end (GTK_BOX (vbox), button, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (vbox), button, FALSE, FALSE, 0);
 
   view = create_tree_view (merge);
   ctk_widget_set_hexpand (view, TRUE);
   ctk_widget_set_vexpand (view, TRUE);
-  ctk_grid_attach (GTK_GRID (grid), view, 1, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), view, 1, 0, 1, 1);
 
   ctk_widget_show_all (window);
   ctk_main ();

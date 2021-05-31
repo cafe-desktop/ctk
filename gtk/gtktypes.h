@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TYPES_H__
-#define __GTK_TYPES_H__
+#ifndef __CTK_TYPES_H__
+#define __CTK_TYPES_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -62,4 +62,4 @@ typedef void (*GtkBuilderConnectFunc) (GtkBuilder    *builder,
 
 G_END_DECLS
 
-#endif /* __GTK_TYPES_H__ */
+#endif /* __CTK_TYPES_H__ */

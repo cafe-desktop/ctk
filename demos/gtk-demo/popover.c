@@ -23,9 +23,9 @@ create_popover (GtkWidget       *parent,
   GtkWidget *popover;
 
   popover = ctk_popover_new (parent);
-  ctk_popover_set_position (GTK_POPOVER (popover), pos);
-  ctk_container_add (GTK_CONTAINER (popover), child);
-  ctk_container_set_border_width (GTK_CONTAINER (popover), 6);
+  ctk_popover_set_position (CTK_POPOVER (popover), pos);
+  ctk_container_add (CTK_CONTAINER (popover), child);
+  ctk_container_set_border_width (CTK_CONTAINER (popover), 6);
   ctk_widget_show (child);
 
   return popover;
@@ -40,15 +40,15 @@ create_complex_popover (GtkWidget       *parent,
 
   builder = ctk_builder_new ();
   ctk_builder_add_from_resource (builder, "/popover/popover.ui", NULL);
-  window = GTK_WIDGET (ctk_builder_get_object (builder, "window"));
-  content = ctk_bin_get_child (GTK_BIN (window));
+  window = CTK_WIDGET (ctk_builder_get_object (builder, "window"));
+  content = ctk_bin_get_child (CTK_BIN (window));
   g_object_ref (content);
-  ctk_container_remove (GTK_CONTAINER (ctk_widget_get_parent (content)),
+  ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (content)),
                         content);
   ctk_widget_destroy (window);
   g_object_unref (builder);
 
-  popover = create_popover (parent, content, GTK_POS_BOTTOM);
+  popover = create_popover (parent, content, CTK_POS_BOTTOM);
   g_object_unref (content);
 
   return popover;
@@ -63,13 +63,13 @@ entry_size_allocate_cb (GtkEntry      *entry,
   GtkPopover *popover = user_data;
   cairo_rectangle_int_t rect;
 
-  if (ctk_widget_is_visible (GTK_WIDGET (popover)))
+  if (ctk_widget_is_visible (CTK_WIDGET (popover)))
     {
       popover_pos =
         GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (entry),
                                              "popover-icon-pos"));
       ctk_entry_get_icon_area (entry, popover_pos, &rect);
-      ctk_popover_set_pointing_to (GTK_POPOVER (popover), &rect);
+      ctk_popover_set_pointing_to (CTK_POPOVER (popover), &rect);
     }
 }
 
@@ -83,7 +83,7 @@ entry_icon_press_cb (GtkEntry             *entry,
   cairo_rectangle_int_t rect;
 
   ctk_entry_get_icon_area (entry, icon_pos, &rect);
-  ctk_popover_set_pointing_to (GTK_POPOVER (popover), &rect);
+  ctk_popover_set_pointing_to (CTK_POPOVER (popover), &rect);
   ctk_widget_show (popover);
 
   g_object_set_data (G_OBJECT (entry), "popover-icon-pos",
@@ -107,15 +107,15 @@ day_selected_cb (GtkCalendar *calendar,
   gdk_window_coords_to_parent (event->button.window,
                                event->button.x, event->button.y,
                                &event->button.x, &event->button.y);
-  ctk_widget_get_allocation (GTK_WIDGET (calendar), &allocation);
+  ctk_widget_get_allocation (CTK_WIDGET (calendar), &allocation);
   rect.x = event->button.x - allocation.x;
   rect.y = event->button.y - allocation.y;
   rect.width = rect.height = 1;
 
-  popover = create_popover (GTK_WIDGET (calendar),
+  popover = create_popover (CTK_WIDGET (calendar),
                             ctk_entry_new (),
-                            GTK_POS_BOTTOM);
-  ctk_popover_set_pointing_to (GTK_POPOVER (popover), &rect);
+                            CTK_POS_BOTTOM);
+  ctk_popover_set_pointing_to (CTK_POPOVER (popover), &rect);
 
   ctk_widget_show (popover);
 
@@ -130,10 +130,10 @@ do_popover (GtkWidget *do_widget)
 
   if (!window)
     {
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 24);
-      ctk_container_set_border_width (GTK_CONTAINER (box), 24);
-      ctk_container_add (GTK_CONTAINER (window), box);
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 24);
+      ctk_container_set_border_width (CTK_CONTAINER (box), 24);
+      ctk_container_add (CTK_CONTAINER (window), box);
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
@@ -141,29 +141,29 @@ do_popover (GtkWidget *do_widget)
       widget = ctk_toggle_button_new_with_label ("Button");
       popover = create_popover (widget,
                                 ctk_label_new ("This popover does not grab input"),
-                                GTK_POS_TOP);
-      ctk_popover_set_modal (GTK_POPOVER (popover), FALSE);
+                                CTK_POS_TOP);
+      ctk_popover_set_modal (CTK_POPOVER (popover), FALSE);
       g_signal_connect (widget, "toggled",
                         G_CALLBACK (toggle_changed_cb), popover);
-      ctk_container_add (GTK_CONTAINER (box), widget);
+      ctk_container_add (CTK_CONTAINER (box), widget);
 
       widget = ctk_entry_new ();
-      popover = create_complex_popover (widget, GTK_POS_TOP);
-      ctk_entry_set_icon_from_icon_name (GTK_ENTRY (widget),
-                                         GTK_ENTRY_ICON_PRIMARY, "edit-find");
-      ctk_entry_set_icon_from_icon_name (GTK_ENTRY (widget),
-                                         GTK_ENTRY_ICON_SECONDARY, "edit-clear");
+      popover = create_complex_popover (widget, CTK_POS_TOP);
+      ctk_entry_set_icon_from_icon_name (CTK_ENTRY (widget),
+                                         CTK_ENTRY_ICON_PRIMARY, "edit-find");
+      ctk_entry_set_icon_from_icon_name (CTK_ENTRY (widget),
+                                         CTK_ENTRY_ICON_SECONDARY, "edit-clear");
 
       g_signal_connect (widget, "icon-press",
                         G_CALLBACK (entry_icon_press_cb), popover);
       g_signal_connect (widget, "size-allocate",
                         G_CALLBACK (entry_size_allocate_cb), popover);
-      ctk_container_add (GTK_CONTAINER (box), widget);
+      ctk_container_add (CTK_CONTAINER (box), widget);
 
       widget = ctk_calendar_new ();
       g_signal_connect (widget, "day-selected",
                         G_CALLBACK (day_selected_cb), NULL);
-      ctk_container_add (GTK_CONTAINER (box), widget);
+      ctk_container_add (CTK_CONTAINER (box), widget);
     }
 
   if (!ctk_widget_get_visible (window))

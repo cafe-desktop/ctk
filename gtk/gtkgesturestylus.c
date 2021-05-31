@@ -35,7 +35,7 @@
 #include "gtkmarshalers.h"
 #include "gtkmain.h"
 
-G_DEFINE_TYPE (GtkGestureStylus, ctk_gesture_stylus, GTK_TYPE_GESTURE_SINGLE)
+G_DEFINE_TYPE (GtkGestureStylus, ctk_gesture_stylus, CTK_TYPE_GESTURE_SINGLE)
 
 enum {
   PROXIMITY,
@@ -55,7 +55,7 @@ ctk_gesture_stylus_handle_event (GtkEventController *controller,
   guint n_signal;
   gdouble x, y;
 
-  GTK_EVENT_CONTROLLER_CLASS (ctk_gesture_stylus_parent_class)->handle_event (controller, event);
+  CTK_EVENT_CONTROLLER_CLASS (ctk_gesture_stylus_parent_class)->handle_event (controller, event);
 
   if (!gdk_event_get_device_tool (event))
     return FALSE;
@@ -92,7 +92,7 @@ ctk_gesture_stylus_class_init (GtkGestureStylusClass *klass)
 {
   GtkEventControllerClass *event_controller_class;
 
-  event_controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
+  event_controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
   event_controller_class->handle_event = ctk_gesture_stylus_handle_event;
 
   signals[PROXIMITY] =
@@ -162,7 +162,7 @@ ctk_gesture_stylus_init (GtkGestureStylus *gesture)
 GtkGesture *
 ctk_gesture_stylus_new (GtkWidget *widget)
 {
-  return g_object_new (GTK_TYPE_GESTURE_STYLUS,
+  return g_object_new (CTK_TYPE_GESTURE_STYLUS,
                        "widget", widget,
                        NULL);
 }
@@ -172,9 +172,9 @@ gesture_get_current_event (GtkGestureStylus *gesture)
 {
   GdkEventSequence *sequence;
 
-  sequence = ctk_gesture_single_get_current_sequence (GTK_GESTURE_SINGLE (gesture));
+  sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
 
-  return ctk_gesture_get_last_event (GTK_GESTURE (gesture), sequence);
+  return ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
 }
 
 /**
@@ -199,7 +199,7 @@ ctk_gesture_stylus_get_axis (GtkGestureStylus *gesture,
 {
   const GdkEvent *event;
 
-  g_return_val_if_fail (GTK_IS_GESTURE_STYLUS (gesture), FALSE);
+  g_return_val_if_fail (CTK_IS_GESTURE_STYLUS (gesture), FALSE);
   g_return_val_if_fail (axis < GDK_AXIS_LAST, FALSE);
   g_return_val_if_fail (value != NULL, FALSE);
 
@@ -234,7 +234,7 @@ ctk_gesture_stylus_get_axes (GtkGestureStylus  *gesture,
   GArray *array;
   gint i = 0;
 
-  g_return_val_if_fail (GTK_IS_GESTURE_STYLUS (gesture), FALSE);
+  g_return_val_if_fail (CTK_IS_GESTURE_STYLUS (gesture), FALSE);
   g_return_val_if_fail (values != NULL, FALSE);
 
   event = gesture_get_current_event (gesture);
@@ -283,7 +283,7 @@ ctk_gesture_stylus_get_device_tool (GtkGestureStylus *gesture)
 {
   const GdkEvent *event;
 
-  g_return_val_if_fail (GTK_IS_GESTURE_STYLUS (gesture), FALSE);
+  g_return_val_if_fail (CTK_IS_GESTURE_STYLUS (gesture), FALSE);
 
   event = gesture_get_current_event (gesture);
   if (!event)

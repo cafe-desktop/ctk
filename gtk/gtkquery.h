@@ -19,19 +19,19 @@
  * Based on nautilus-query.h
  */
 
-#ifndef __GTK_QUERY_H__
-#define __GTK_QUERY_H__
+#ifndef __CTK_QUERY_H__
+#define __CTK_QUERY_H__
 
 #include <gio/gio.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_QUERY          (ctk_query_get_type ())
-#define GTK_QUERY(obj)          (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_QUERY, GtkQuery))
-#define GTK_QUERY_CLASS(klass)  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_QUERY, GtkQueryClass))
-#define GTK_IS_QUERY(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_QUERY))
-#define GTK_IS_QUERY_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_QUERY))
-#define GTK_QUERY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_QUERY, GtkQueryClass))
+#define CTK_TYPE_QUERY          (ctk_query_get_type ())
+#define CTK_QUERY(obj)          (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_QUERY, GtkQuery))
+#define CTK_QUERY_CLASS(klass)  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_QUERY, GtkQueryClass))
+#define CTK_IS_QUERY(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_QUERY))
+#define CTK_IS_QUERY_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_QUERY))
+#define CTK_QUERY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_QUERY, GtkQueryClass))
 
 typedef struct _GtkQuery GtkQuery;
 typedef struct _GtkQueryClass GtkQueryClass;
@@ -66,4 +66,4 @@ gboolean     ctk_query_matches_string (GtkQuery    *query,
 
 G_END_DECLS
 
-#endif /* __GTK_QUERY_H__ */
+#endif /* __CTK_QUERY_H__ */

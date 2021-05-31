@@ -34,23 +34,23 @@
   <example>
     <title>A simple box</title>
     <programlisting>
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
 
-  ctk_box_pack_start (GTK_BOX (box), ctk_label_new ("One"), FALSE, FALSE, 0);
-  ctk_box_pack_start (GTK_BOX (box), ctk_label_new ("Two"), FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), ctk_label_new ("One"), FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), ctk_label_new ("Two"), FALSE, FALSE, 0);
     </programlisting>
     <para>This can be done with #GtkGrid as follows:</para>
     <programlisting>
   grid = ctk_grid_new ();
 
   child1 = ctk_label_new ("One");
-  ctk_grid_attach (GTK_GRID (grid), child1, 0, 0, 1, 1);
+  ctk_grid_attach (CTK_GRID (grid), child1, 0, 0, 1, 1);
   child2 = ctk_label_new ("Two");
-  ctk_grid_attach_next_to (GTK_GRID (grid), child2, child1, GTK_POS_RIGHT, 1, 1);
+  ctk_grid_attach_next_to (CTK_GRID (grid), child2, child1, CTK_POS_RIGHT, 1, 1);
     </programlisting>
     <para>
       And similarly for ctk_box_pack_end(). In that case, you
-      would use #GTK_POS_LEFT to place the grid children from
+      would use #CTK_POS_LEFT to place the grid children from
       left to right.
     </para>
     <para>
@@ -113,8 +113,8 @@
     <para>
       To replace the functionality of the fill child properties, you can
       set the #GtkWidget:halign and #GtkWidget:valign properties. An
-      align value of #GTK_ALIGN_FILL has the same effect as setting fill
-      to %TRUE, a value of #GTK_ALIGN_CENTER has the same effect as setting
+      align value of #CTK_ALIGN_FILL has the same effect as setting fill
+      to %TRUE, a value of #CTK_ALIGN_CENTER has the same effect as setting
       fill to %FALSE. The image below shows the effect of various combinations
       of halign and valign.
     </para>
@@ -124,10 +124,10 @@
     <example>
       <title>Expansion and alignment</title>
       <programlisting>
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
 
-  ctk_box_pack_start (GTK_BOX (box), ctk_label_new ("One"), TRUE, FALSE, 0);
-  ctk_box_pack_start (GTK_BOX (box), ctk_label_new ("Two"), TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), ctk_label_new ("One"), TRUE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (box), ctk_label_new ("Two"), TRUE, TRUE, 0);
       </programlisting>
     <para>This can be done with #GtkGrid as follows:</para>
     <programlisting>
@@ -135,12 +135,12 @@
 
   child1 = ctk_label_new ("One");
   ctk_widget_set_hexpand (child1, TRUE);
-  ctk_widget_set_halign (child1, GTK_ALIGN_CENTER);
-  ctk_grid_attach (GTK_GRID (grid), child1, 0, 0, 1, 1);
+  ctk_widget_set_halign (child1, CTK_ALIGN_CENTER);
+  ctk_grid_attach (CTK_GRID (grid), child1, 0, 0, 1, 1);
   child2 = ctk_label_new ("Two");
   ctk_widget_set_hexpand (child2, TRUE);
-  ctk_widget_set_halign (child1, GTK_ALIGN_FILL);
-  ctk_grid_attach_next_to (GTK_GRID (grid), child2, child1, GTK_POS_RIGHT, 1, 1);
+  ctk_widget_set_halign (child1, CTK_ALIGN_FILL);
+  ctk_grid_attach_next_to (CTK_GRID (grid), child2, child1, CTK_POS_RIGHT, 1, 1);
       </programlisting>
     </example>
     <para>
@@ -208,15 +208,15 @@
       <title>Spacing in boxes</title>
 
       <programlisting>
-         box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 6);
-         ctk_box_pack_start (GTK_BOX (box), child, FALSE, FALSE, 12);
+         box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);
+         ctk_box_pack_start (CTK_BOX (box), child, FALSE, FALSE, 12);
       </programlisting>
       <para>This can be done with #GtkGrid as follows:</para>
       <programlisting>
          grid = ctk_grid_new ();
-         ctk_grid_set_row_spacing (GTK_GRID (grid), 6);
+         ctk_grid_set_row_spacing (CTK_GRID (grid), 6);
          g_object_set (child, "margin", 12, NULL);
-         ctk_grid_attach (GTK_GRID (box), child, 0, 0, 1, 1);
+         ctk_grid_attach (CTK_GRID (box), child, 0, 0, 1, 1);
       </programlisting>
     </example>
   </section>

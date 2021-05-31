@@ -17,8 +17,8 @@
  *
  * Author(s): Carlos Garnacho <carlosg@gnome.org>
  */
-#ifndef __GTK_EVENT_CONTROLLER_PRIVATE_H__
-#define __GTK_EVENT_CONTROLLER_PRIVATE_H__
+#ifndef __CTK_EVENT_CONTROLLER_PRIVATE_H__
+#define __CTK_EVENT_CONTROLLER_PRIVATE_H__
 
 #include "gtkeventcontroller.h"
 
@@ -49,4 +49,4 @@ void         ctk_event_controller_set_event_mask (GtkEventController *controller
 						  GdkEventMask        event_mask);
 GdkEventMask ctk_event_controller_get_event_mask (GtkEventController *controller);
 
-#endif /* __GTK_EVENT_CONTROLLER_PRIVATE_H__ */
+#endif /* __CTK_EVENT_CONTROLLER_PRIVATE_H__ */

@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TEXT_TYPES_H__
-#define __GTK_TEXT_TYPES_H__
+#ifndef __CTK_TEXT_TYPES_H__
+#define __CTK_TEXT_TYPES_H__
 
 #include <gtk/gtk.h>
 #include <gtk/gtktexttagprivate.h>
@@ -57,11 +57,11 @@ extern G_GNUC_INTERNAL const GtkTextLineSegmentClass ctk_text_child_type;
  * UTF 8 Stubs
  */
 
-#define GTK_TEXT_UNKNOWN_CHAR 0xFFFC
-#define GTK_TEXT_UNKNOWN_CHAR_UTF8_LEN 3
+#define CTK_TEXT_UNKNOWN_CHAR 0xFFFC
+#define CTK_TEXT_UNKNOWN_CHAR_UTF8_LEN 3
 GDK_AVAILABLE_IN_ALL
 const gchar *ctk_text_unknown_char_utf8_ctk_tests_only (void);
-extern const gchar _ctk_text_unknown_char_utf8[GTK_TEXT_UNKNOWN_CHAR_UTF8_LEN+1];
+extern const gchar _ctk_text_unknown_char_utf8[CTK_TEXT_UNKNOWN_CHAR_UTF8_LEN+1];
 
 GDK_AVAILABLE_IN_ALL
 gboolean ctk_text_byte_begins_utf8_char (const gchar *byte);

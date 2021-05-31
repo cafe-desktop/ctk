@@ -54,7 +54,7 @@ may be absolute or relative paths.
 Normally, the output of <command>gtk-query-immodules-3.0</command> is written
 to <filename><replaceable>libdir</replaceable>/gtk-3.0/3.0.0/immodules.cache</filename>,
 where GTK+ looks for it by default. If it is written to some other location,
-the <envar>GTK_IM_MODULE_FILE</envar> environment variable can be set to point
+the <envar>CTK_IM_MODULE_FILE</envar> environment variable can be set to point
 GTK+ at the file.
 </para>
 </refsect1>
@@ -82,11 +82,11 @@ GTK+ at the file.
 <refsect1><title>Environment</title>
 <variablelist>
   <varlistentry>
-    <term><link linkend="gtk-path"><envar>GTK_PATH</envar></link></term>
+    <term><link linkend="gtk-path"><envar>CTK_PATH</envar></link></term>
     <listitem><para>Prepends directories to the input method module path</para></listitem>
   </varlistentry>
   <varlistentry>
-    <term><link linkend="gtk-im-module-file"><envar>GTK_IM_MODULE_FILE</envar></link></term>
+    <term><link linkend="gtk-im-module-file"><envar>CTK_IM_MODULE_FILE</envar></link></term>
     <listitem><para>Specifies an alternative im module cache for GTK+
     applications</para></listitem>
   </varlistentry>

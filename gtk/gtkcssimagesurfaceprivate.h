@@ -17,19 +17,19 @@
  * Authors: Benjamin Otte <otte@gnome.org>
  */
 
-#ifndef __GTK_CSS_IMAGE_SURFACE_PRIVATE_H__
-#define __GTK_CSS_IMAGE_SURFACE_PRIVATE_H__
+#ifndef __CTK_CSS_IMAGE_SURFACE_PRIVATE_H__
+#define __CTK_CSS_IMAGE_SURFACE_PRIVATE_H__
 
 #include "gtk/gtkcssimageprivate.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_CSS_IMAGE_SURFACE           (_ctk_css_image_surface_get_type ())
-#define GTK_CSS_IMAGE_SURFACE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, GTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurface))
-#define GTK_CSS_IMAGE_SURFACE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, GTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurfaceClass))
-#define GTK_IS_CSS_IMAGE_SURFACE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, GTK_TYPE_CSS_IMAGE_SURFACE))
-#define GTK_IS_CSS_IMAGE_SURFACE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, GTK_TYPE_CSS_IMAGE_SURFACE))
-#define GTK_CSS_IMAGE_SURFACE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurfaceClass))
+#define CTK_TYPE_CSS_IMAGE_SURFACE           (_ctk_css_image_surface_get_type ())
+#define CTK_CSS_IMAGE_SURFACE(obj)           (G_TYPE_CHECK_INSTANCE_CAST (obj, CTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurface))
+#define CTK_CSS_IMAGE_SURFACE_CLASS(cls)     (G_TYPE_CHECK_CLASS_CAST (cls, CTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurfaceClass))
+#define CTK_IS_CSS_IMAGE_SURFACE(obj)        (G_TYPE_CHECK_INSTANCE_TYPE (obj, CTK_TYPE_CSS_IMAGE_SURFACE))
+#define CTK_IS_CSS_IMAGE_SURFACE_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE (obj, CTK_TYPE_CSS_IMAGE_SURFACE))
+#define CTK_CSS_IMAGE_SURFACE_GET_CLASS(obj) (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_CSS_IMAGE_SURFACE, GtkCssImageSurfaceClass))
 
 typedef struct _GtkCssImageSurface           GtkCssImageSurface;
 typedef struct _GtkCssImageSurfaceClass      GtkCssImageSurfaceClass;
@@ -56,4 +56,4 @@ GtkCssImage *  _ctk_css_image_surface_new_for_pixbuf       (GdkPixbuf       *pix
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_IMAGE_SURFACE_PRIVATE_H__ */
+#endif /* __CTK_CSS_IMAGE_SURFACE_PRIVATE_H__ */

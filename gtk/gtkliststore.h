@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_LIST_STORE_H__
-#define __GTK_LIST_STORE_H__
+#ifndef __CTK_LIST_STORE_H__
+#define __CTK_LIST_STORE_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -30,12 +30,12 @@
 G_BEGIN_DECLS
 
 
-#define GTK_TYPE_LIST_STORE	       (ctk_list_store_get_type ())
-#define GTK_LIST_STORE(obj)	       (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_LIST_STORE, GtkListStore))
-#define GTK_LIST_STORE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_LIST_STORE, GtkListStoreClass))
-#define GTK_IS_LIST_STORE(obj)	       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_LIST_STORE))
-#define GTK_IS_LIST_STORE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_LIST_STORE))
-#define GTK_LIST_STORE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_LIST_STORE, GtkListStoreClass))
+#define CTK_TYPE_LIST_STORE	       (ctk_list_store_get_type ())
+#define CTK_LIST_STORE(obj)	       (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_LIST_STORE, GtkListStore))
+#define CTK_LIST_STORE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_LIST_STORE, GtkListStoreClass))
+#define CTK_IS_LIST_STORE(obj)	       (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_LIST_STORE))
+#define CTK_IS_LIST_STORE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_LIST_STORE))
+#define CTK_LIST_STORE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_LIST_STORE, GtkListStoreClass))
 
 typedef struct _GtkListStore              GtkListStore;
 typedef struct _GtkListStorePrivate       GtkListStorePrivate;
@@ -153,4 +153,4 @@ void          ctk_list_store_move_before      (GtkListStore *store,
 G_END_DECLS
 
 
-#endif /* __GTK_LIST_STORE_H__ */
+#endif /* __CTK_LIST_STORE_H__ */

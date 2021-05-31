@@ -52,15 +52,15 @@
  * This is functionally equivalent to:
  *
  * |[<!-- language="C" -->
- *   GtkWidget *box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
- *   GtkWidget *icon = ctk_image_new_from_icon_name ("folder-music-symbolic", GTK_ICON_SIZE_MENU);
+ *   GtkWidget *box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
+ *   GtkWidget *icon = ctk_image_new_from_icon_name ("folder-music-symbolic", CTK_ICON_SIZE_MENU);
  *   GtkWidget *label = ctk_label_new ("Music");
  *   GtkWidget *menu_item = ctk_menu_item_new ();
  *
- *   ctk_container_add (GTK_CONTAINER (box), icon);
- *   ctk_container_add (GTK_CONTAINER (box), label);
+ *   ctk_container_add (CTK_CONTAINER (box), icon);
+ *   ctk_container_add (CTK_CONTAINER (box), label);
  *
- *   ctk_container_add (GTK_CONTAINER (menu_item), box);
+ *   ctk_container_add (CTK_CONTAINER (menu_item), box);
  *
  *   ctk_widget_show_all (menu_item);
  * ]|
@@ -87,24 +87,24 @@
  * binding of Ctrl+M:
  *
  * |[<!-- language="C" -->
- *   GtkWidget *box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
- *   GtkWidget *icon = ctk_image_new_from_icon_name ("folder-music-symbolic", GTK_ICON_SIZE_MENU);
+ *   GtkWidget *box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
+ *   GtkWidget *icon = ctk_image_new_from_icon_name ("folder-music-symbolic", CTK_ICON_SIZE_MENU);
  *   GtkWidget *label = ctk_accel_label_new ("Music");
  *   GtkWidget *menu_item = ctk_menu_item_new ();
  *   GtkAccelGroup *accel_group = ctk_accel_group_new ();
  *
- *   ctk_container_add (GTK_CONTAINER (box), icon);
+ *   ctk_container_add (CTK_CONTAINER (box), icon);
  *
- *   ctk_label_set_use_underline (GTK_LABEL (label), TRUE);
- *   ctk_label_set_xalign (GTK_LABEL (label), 0.0);
+ *   ctk_label_set_use_underline (CTK_LABEL (label), TRUE);
+ *   ctk_label_set_xalign (CTK_LABEL (label), 0.0);
  *
  *   ctk_widget_add_accelerator (menu_item, "activate", accel_group,
- *                               GDK_KEY_m, GDK_CONTROL_MASK, GTK_ACCEL_VISIBLE);
- *   ctk_accel_label_set_accel_widget (GTK_ACCEL_LABEL (label), menu_item);
+ *                               GDK_KEY_m, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+ *   ctk_accel_label_set_accel_widget (CTK_ACCEL_LABEL (label), menu_item);
  *
- *   ctk_box_pack_end (GTK_BOX (box), label, TRUE, TRUE, 0);
+ *   ctk_box_pack_end (CTK_BOX (box), label, TRUE, TRUE, 0);
  *
- *   ctk_container_add (GTK_CONTAINER (menu_item), box);
+ *   ctk_container_add (CTK_CONTAINER (menu_item), box);
  *
  *   ctk_widget_show_all (menu_item);
  * ]|
@@ -179,9 +179,9 @@ static void ctk_image_menu_item_sync_action_properties     (GtkActivatable      
                                                             GtkAction            *action);
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkImageMenuItem, ctk_image_menu_item, GTK_TYPE_MENU_ITEM,
+G_DEFINE_TYPE_WITH_CODE (GtkImageMenuItem, ctk_image_menu_item, CTK_TYPE_MENU_ITEM,
                          G_ADD_PRIVATE (GtkImageMenuItem)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
                                                 ctk_image_menu_item_activatable_interface_init))
 
 
@@ -225,8 +225,8 @@ ctk_image_menu_item_class_init (GtkImageMenuItemClass *klass)
                                    g_param_spec_object ("image",
                                                         P_("Image widget"),
                                                         P_("Child widget to appear next to the menu text"),
-                                                        GTK_TYPE_WIDGET,
-                                                        GTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+                                                        CTK_TYPE_WIDGET,
+                                                        CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
   /**
    * GtkImageMenuItem:use-stock:
    *
@@ -243,7 +243,7 @@ ctk_image_menu_item_class_init (GtkImageMenuItemClass *klass)
                                                          P_("Use stock"),
                                                          P_("Whether to use the label text to create a stock menu item"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_DEPRECATED));
+                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_DEPRECATED));
 
   /**
    * GtkImageMenuItem:always-show-image:
@@ -264,7 +264,7 @@ ctk_image_menu_item_class_init (GtkImageMenuItemClass *klass)
                                                          P_("Always show image"),
                                                          P_("Whether the image will always be shown"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_DEPRECATED));
+                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_DEPRECATED));
 
   /**
    * GtkImageMenuItem:accel-group:
@@ -280,8 +280,8 @@ ctk_image_menu_item_class_init (GtkImageMenuItemClass *klass)
                                    g_param_spec_object ("accel-group",
                                                         P_("Accel Group"),
                                                         P_("The Accel Group to use for stock accelerator keys"),
-                                                        GTK_TYPE_ACCEL_GROUP,
-                                                        GTK_PARAM_WRITABLE | G_PARAM_DEPRECATED));
+                                                        CTK_TYPE_ACCEL_GROUP,
+                                                        CTK_PARAM_WRITABLE | G_PARAM_DEPRECATED));
 
 }
 
@@ -301,7 +301,7 @@ ctk_image_menu_item_init (GtkImageMenuItem *image_menu_item)
 static void
 ctk_image_menu_item_finalize (GObject *object)
 {
-  GtkImageMenuItemPrivate *priv = GTK_IMAGE_MENU_ITEM (object)->priv;
+  GtkImageMenuItemPrivate *priv = CTK_IMAGE_MENU_ITEM (object)->priv;
 
   g_free (priv->label);
   priv->label  = NULL;
@@ -315,7 +315,7 @@ ctk_image_menu_item_set_property (GObject         *object,
                                   const GValue    *value,
                                   GParamSpec      *pspec)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (object);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (object);
 
   switch (prop_id)
     {
@@ -347,7 +347,7 @@ ctk_image_menu_item_get_property (GObject         *object,
                                   GValue          *value,
                                   GParamSpec      *pspec)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (object);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (object);
 
   switch (prop_id)
     {
@@ -372,7 +372,7 @@ static gboolean
 show_image (GtkImageMenuItem *image_menu_item)
 {
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
-  GtkSettings *settings = ctk_widget_get_settings (GTK_WIDGET (image_menu_item));
+  GtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (image_menu_item));
   gboolean show;
 
   if (priv->always_show_image)
@@ -386,10 +386,10 @@ show_image (GtkImageMenuItem *image_menu_item)
 static void
 ctk_image_menu_item_map (GtkWidget *widget)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (widget);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (widget);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
 
-  GTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->map (widget);
+  CTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->map (widget);
 
   if (priv->image)
     g_object_set (priv->image,
@@ -400,32 +400,32 @@ ctk_image_menu_item_map (GtkWidget *widget)
 static void
 ctk_image_menu_item_destroy (GtkWidget *widget)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (widget);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (widget);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
 
   if (priv->image)
-    ctk_container_remove (GTK_CONTAINER (image_menu_item),
+    ctk_container_remove (CTK_CONTAINER (image_menu_item),
                           priv->image);
 
-  GTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->destroy (widget);
+  CTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->destroy (widget);
 }
 
 static void
 ctk_image_menu_item_toggle_size_request (GtkMenuItem *menu_item,
                                          gint        *requisition)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (menu_item);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (menu_item);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
   GtkPackDirection pack_dir;
   GtkWidget *parent;
-  GtkWidget *widget = GTK_WIDGET (menu_item);
+  GtkWidget *widget = CTK_WIDGET (menu_item);
 
   parent = ctk_widget_get_parent (widget);
 
-  if (GTK_IS_MENU_BAR (parent))
-    pack_dir = ctk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
+  if (CTK_IS_MENU_BAR (parent))
+    pack_dir = ctk_menu_bar_get_child_pack_direction (CTK_MENU_BAR (parent));
   else
-    pack_dir = GTK_PACK_DIRECTION_LTR;
+    pack_dir = CTK_PACK_DIRECTION_LTR;
 
   *requisition = 0;
 
@@ -436,11 +436,11 @@ ctk_image_menu_item_toggle_size_request (GtkMenuItem *menu_item,
 
       ctk_widget_get_preferred_size (priv->image, &image_requisition, NULL);
 
-      ctk_widget_style_get (GTK_WIDGET (menu_item),
+      ctk_widget_style_get (CTK_WIDGET (menu_item),
                             "toggle-spacing", &toggle_spacing,
                             NULL);
 
-      if (pack_dir == GTK_PACK_DIRECTION_LTR || pack_dir == GTK_PACK_DIRECTION_RTL)
+      if (pack_dir == CTK_PACK_DIRECTION_LTR || pack_dir == CTK_PACK_DIRECTION_RTL)
         {
           if (image_requisition.width > 0)
             *requisition = image_requisition.width + toggle_spacing;
@@ -468,20 +468,20 @@ ctk_image_menu_item_recalculate (GtkImageMenuItem *image_menu_item)
 
       if (!priv->image)
         {
-          image = ctk_image_new_from_stock (priv->label, GTK_ICON_SIZE_MENU);
+          image = ctk_image_new_from_stock (priv->label, CTK_ICON_SIZE_MENU);
           ctk_image_menu_item_set_image (image_menu_item, image);
         }
 
       if (ctk_stock_lookup (priv->label, &stock_item))
           resolved_label = stock_item.label;
 
-      ctk_menu_item_set_use_underline (GTK_MENU_ITEM (image_menu_item), TRUE);
+      ctk_menu_item_set_use_underline (CTK_MENU_ITEM (image_menu_item), TRUE);
 
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
-  GTK_MENU_ITEM_CLASS
-    (ctk_image_menu_item_parent_class)->set_label (GTK_MENU_ITEM (image_menu_item), resolved_label);
+  CTK_MENU_ITEM_CLASS
+    (ctk_image_menu_item_parent_class)->set_label (CTK_MENU_ITEM (image_menu_item), resolved_label);
 
 }
 
@@ -489,14 +489,14 @@ static void
 ctk_image_menu_item_set_label (GtkMenuItem      *menu_item,
                                const gchar      *label)
 {
-  GtkImageMenuItemPrivate *priv = GTK_IMAGE_MENU_ITEM (menu_item)->priv;
+  GtkImageMenuItemPrivate *priv = CTK_IMAGE_MENU_ITEM (menu_item)->priv;
 
   if (priv->label != label)
     {
       g_free (priv->label);
       priv->label = g_strdup (label);
 
-      ctk_image_menu_item_recalculate (GTK_IMAGE_MENU_ITEM (menu_item));
+      ctk_image_menu_item_recalculate (CTK_IMAGE_MENU_ITEM (menu_item));
 
       g_object_notify (G_OBJECT (menu_item), "label");
 
@@ -506,7 +506,7 @@ ctk_image_menu_item_set_label (GtkMenuItem      *menu_item,
 static const gchar *
 ctk_image_menu_item_get_label (GtkMenuItem *menu_item)
 {
-  GtkImageMenuItemPrivate *priv = GTK_IMAGE_MENU_ITEM (menu_item)->priv;
+  GtkImageMenuItemPrivate *priv = CTK_IMAGE_MENU_ITEM (menu_item)->priv;
 
   return priv->label;
 }
@@ -516,21 +516,21 @@ ctk_image_menu_item_get_preferred_width (GtkWidget        *widget,
                                          gint             *minimum,
                                          gint             *natural)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (widget);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (widget);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
   GtkPackDirection pack_dir;
   GtkWidget *parent;
 
   parent = ctk_widget_get_parent (widget);
 
-  if (GTK_IS_MENU_BAR (parent))
-    pack_dir = ctk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
+  if (CTK_IS_MENU_BAR (parent))
+    pack_dir = ctk_menu_bar_get_child_pack_direction (CTK_MENU_BAR (parent));
   else
-    pack_dir = GTK_PACK_DIRECTION_LTR;
+    pack_dir = CTK_PACK_DIRECTION_LTR;
 
-  GTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->get_preferred_width (widget, minimum, natural);
+  CTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->get_preferred_width (widget, minimum, natural);
 
-  if ((pack_dir == GTK_PACK_DIRECTION_TTB || pack_dir == GTK_PACK_DIRECTION_BTT) &&
+  if ((pack_dir == CTK_PACK_DIRECTION_TTB || pack_dir == CTK_PACK_DIRECTION_BTT) &&
       priv->image &&
       ctk_widget_get_visible (priv->image))
     {
@@ -548,7 +548,7 @@ ctk_image_menu_item_get_preferred_height (GtkWidget        *widget,
                                           gint             *minimum,
                                           gint             *natural)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (widget);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (widget);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
   gint child_height = 0;
   GtkPackDirection pack_dir;
@@ -556,10 +556,10 @@ ctk_image_menu_item_get_preferred_height (GtkWidget        *widget,
 
   parent = ctk_widget_get_parent (widget);
 
-  if (GTK_IS_MENU_BAR (parent))
-    pack_dir = ctk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
+  if (CTK_IS_MENU_BAR (parent))
+    pack_dir = ctk_menu_bar_get_child_pack_direction (CTK_MENU_BAR (parent));
   else
-    pack_dir = GTK_PACK_DIRECTION_LTR;
+    pack_dir = CTK_PACK_DIRECTION_LTR;
 
   if (priv->image && ctk_widget_get_visible (priv->image))
     {
@@ -570,9 +570,9 @@ ctk_image_menu_item_get_preferred_height (GtkWidget        *widget,
       child_height = child_requisition.height;
     }
 
-  GTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->get_preferred_height (widget, minimum, natural);
+  CTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->get_preferred_height (widget, minimum, natural);
 
-  if (pack_dir == GTK_PACK_DIRECTION_RTL || pack_dir == GTK_PACK_DIRECTION_LTR)
+  if (pack_dir == CTK_PACK_DIRECTION_RTL || pack_dir == CTK_PACK_DIRECTION_LTR)
     {
       *minimum = MAX (*minimum, child_height);
       *natural = MAX (*natural, child_height);
@@ -585,7 +585,7 @@ ctk_image_menu_item_get_preferred_height_for_width (GtkWidget        *widget,
                                                     gint             *minimum,
                                                     gint             *natural)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (widget);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (widget);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
   gint child_height = 0;
   GtkPackDirection pack_dir;
@@ -593,10 +593,10 @@ ctk_image_menu_item_get_preferred_height_for_width (GtkWidget        *widget,
 
   parent = ctk_widget_get_parent (widget);
 
-  if (GTK_IS_MENU_BAR (parent))
-    pack_dir = ctk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
+  if (CTK_IS_MENU_BAR (parent))
+    pack_dir = ctk_menu_bar_get_child_pack_direction (CTK_MENU_BAR (parent));
   else
-    pack_dir = GTK_PACK_DIRECTION_LTR;
+    pack_dir = CTK_PACK_DIRECTION_LTR;
 
   if (priv->image && ctk_widget_get_visible (priv->image))
     {
@@ -607,10 +607,10 @@ ctk_image_menu_item_get_preferred_height_for_width (GtkWidget        *widget,
       child_height = child_requisition.height;
     }
 
-  GTK_WIDGET_CLASS
+  CTK_WIDGET_CLASS
     (ctk_image_menu_item_parent_class)->get_preferred_height_for_width (widget, width, minimum, natural);
 
-  if (pack_dir == GTK_PACK_DIRECTION_RTL || pack_dir == GTK_PACK_DIRECTION_LTR)
+  if (pack_dir == CTK_PACK_DIRECTION_RTL || pack_dir == CTK_PACK_DIRECTION_LTR)
     {
       *minimum = MAX (*minimum, child_height);
       *natural = MAX (*natural, child_height);
@@ -622,7 +622,7 @@ static void
 ctk_image_menu_item_size_allocate (GtkWidget     *widget,
                                    GtkAllocation *allocation)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (widget);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (widget);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
   GtkAllocation widget_allocation;
   GtkPackDirection pack_dir;
@@ -630,12 +630,12 @@ ctk_image_menu_item_size_allocate (GtkWidget     *widget,
 
   parent = ctk_widget_get_parent (widget);
 
-  if (GTK_IS_MENU_BAR (parent))
-    pack_dir = ctk_menu_bar_get_child_pack_direction (GTK_MENU_BAR (parent));
+  if (CTK_IS_MENU_BAR (parent))
+    pack_dir = ctk_menu_bar_get_child_pack_direction (CTK_MENU_BAR (parent));
   else
-    pack_dir = GTK_PACK_DIRECTION_LTR;
+    pack_dir = CTK_PACK_DIRECTION_LTR;
 
-  GTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->size_allocate (widget, allocation);
+  CTK_WIDGET_CLASS (ctk_image_menu_item_parent_class)->size_allocate (widget, allocation);
 
   if (priv->image && ctk_widget_get_visible (priv->image))
     {
@@ -648,7 +648,7 @@ ctk_image_menu_item_size_allocate (GtkWidget     *widget,
       guint toggle_spacing;
       gint toggle_size;
 
-      toggle_size = GTK_MENU_ITEM (image_menu_item)->priv->toggle_size;
+      toggle_size = CTK_MENU_ITEM (image_menu_item)->priv->toggle_size;
       ctk_widget_style_get (widget,
                             "toggle-spacing", &toggle_spacing,
                             NULL);
@@ -664,13 +664,13 @@ ctk_image_menu_item_size_allocate (GtkWidget     *widget,
       context = ctk_widget_get_style_context (widget);
       state = ctk_widget_get_state_flags (widget);
       ctk_style_context_get_padding (context, state, &padding);
-      offset = ctk_container_get_border_width (GTK_CONTAINER (image_menu_item));
+      offset = ctk_container_get_border_width (CTK_CONTAINER (image_menu_item));
 
-      if (pack_dir == GTK_PACK_DIRECTION_LTR ||
-          pack_dir == GTK_PACK_DIRECTION_RTL)
+      if (pack_dir == CTK_PACK_DIRECTION_LTR ||
+          pack_dir == CTK_PACK_DIRECTION_RTL)
         {
-          if ((ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR) ==
-              (pack_dir == GTK_PACK_DIRECTION_LTR))
+          if ((ctk_widget_get_direction (widget) == CTK_TEXT_DIR_LTR) ==
+              (pack_dir == CTK_PACK_DIRECTION_LTR))
             x = offset + padding.left +
                (toggle_size - toggle_spacing - child_requisition.width) / 2;
           else
@@ -682,8 +682,8 @@ ctk_image_menu_item_size_allocate (GtkWidget     *widget,
         }
       else
         {
-          if ((ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR) ==
-              (pack_dir == GTK_PACK_DIRECTION_TTB))
+          if ((ctk_widget_get_direction (widget) == CTK_TEXT_DIR_LTR) ==
+              (pack_dir == CTK_PACK_DIRECTION_TTB))
             y = offset + padding.top +
               (toggle_size - toggle_spacing - child_requisition.height) / 2;
           else
@@ -709,10 +709,10 @@ ctk_image_menu_item_forall (GtkContainer   *container,
                             GtkCallback     callback,
                             gpointer        callback_data)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (container);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (container);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
 
-  GTK_CONTAINER_CLASS (ctk_image_menu_item_parent_class)->forall (container,
+  CTK_CONTAINER_CLASS (ctk_image_menu_item_parent_class)->forall (container,
                                                                   include_internals,
                                                                   callback,
                                                                   callback_data);
@@ -736,7 +736,7 @@ ctk_image_menu_item_ensure_image (GtkImageMenuItem *item)
   GtkWidget *image;
 
   image = ctk_image_menu_item_get_image (item);
-  if (!GTK_IS_IMAGE (image))
+  if (!CTK_IS_IMAGE (image))
     {
       image = ctk_image_new ();
       ctk_widget_show (image);
@@ -758,7 +758,7 @@ activatable_update_stock_id (GtkImageMenuItem *image_menu_item, GtkAction *actio
       GtkWidget *image;
 
       image = ctk_image_menu_item_ensure_image (image_menu_item);
-      ctk_image_set_from_stock (GTK_IMAGE (image), stock_id, GTK_ICON_SIZE_MENU);
+      ctk_image_set_from_stock (CTK_IMAGE (image), stock_id, CTK_ICON_SIZE_MENU);
       return TRUE;
     }
 
@@ -783,7 +783,7 @@ activatable_update_gicon (GtkImageMenuItem *image_menu_item, GtkAction *action)
       GtkWidget *image;
 
       image = ctk_image_menu_item_ensure_image (image_menu_item);
-      ctk_image_set_from_gicon (GTK_IMAGE (image), icon, GTK_ICON_SIZE_MENU);
+      ctk_image_set_from_gicon (CTK_IMAGE (image), icon, CTK_ICON_SIZE_MENU);
       ret = TRUE;
     }
 
@@ -802,7 +802,7 @@ activatable_update_icon_name (GtkImageMenuItem *image_menu_item, GtkAction *acti
       GtkWidget *image;
 
       image = ctk_image_menu_item_ensure_image (image_menu_item);
-      ctk_image_set_from_icon_name (GTK_IMAGE (image), icon_name, GTK_ICON_SIZE_MENU);
+      ctk_image_set_from_icon_name (CTK_IMAGE (image), icon_name, CTK_ICON_SIZE_MENU);
       return TRUE;
     }
 
@@ -817,7 +817,7 @@ ctk_image_menu_item_update (GtkActivatable *activatable,
   GtkImageMenuItem *image_menu_item;
   gboolean   use_appearance;
 
-  image_menu_item = GTK_IMAGE_MENU_ITEM (activatable);
+  image_menu_item = CTK_IMAGE_MENU_ITEM (activatable);
 
   parent_activatable_iface->update (activatable, action, property_name);
 
@@ -840,7 +840,7 @@ ctk_image_menu_item_sync_action_properties (GtkActivatable *activatable,
   GtkImageMenuItem *image_menu_item;
   gboolean   use_appearance;
 
-  image_menu_item = GTK_IMAGE_MENU_ITEM (activatable);
+  image_menu_item = CTK_IMAGE_MENU_ITEM (activatable);
 
   parent_activatable_iface->sync_action_properties (activatable, action);
 
@@ -872,7 +872,7 @@ ctk_image_menu_item_sync_action_properties (GtkActivatable *activatable,
 GtkWidget*
 ctk_image_menu_item_new (void)
 {
-  return g_object_new (GTK_TYPE_IMAGE_MENU_ITEM, NULL);
+  return g_object_new (CTK_TYPE_IMAGE_MENU_ITEM, NULL);
 }
 
 /**
@@ -888,7 +888,7 @@ ctk_image_menu_item_new (void)
 GtkWidget*
 ctk_image_menu_item_new_with_label (const gchar *label)
 {
-  return g_object_new (GTK_TYPE_IMAGE_MENU_ITEM,
+  return g_object_new (CTK_TYPE_IMAGE_MENU_ITEM,
                        "label", label,
                        NULL);
 }
@@ -909,7 +909,7 @@ ctk_image_menu_item_new_with_label (const gchar *label)
 GtkWidget*
 ctk_image_menu_item_new_with_mnemonic (const gchar *label)
 {
-  return g_object_new (GTK_TYPE_IMAGE_MENU_ITEM,
+  return g_object_new (CTK_TYPE_IMAGE_MENU_ITEM,
                        "use-underline", TRUE,
                        "label", label,
                        NULL);
@@ -922,8 +922,8 @@ ctk_image_menu_item_new_with_mnemonic (const gchar *label)
  *   accelerator to, or %NULL.
  *
  * Creates a new #GtkImageMenuItem containing the image and text from a
- * stock item. Some stock ids have preprocessor macros like #GTK_STOCK_OK
- * and #GTK_STOCK_APPLY.
+ * stock item. Some stock ids have preprocessor macros like #CTK_STOCK_OK
+ * and #CTK_STOCK_APPLY.
  *
  * If you want this menu item to have changeable accelerators, then pass in
  * %NULL for accel_group. Next call ctk_menu_item_set_accel_path() with an
@@ -939,7 +939,7 @@ GtkWidget*
 ctk_image_menu_item_new_from_stock (const gchar   *stock_id,
                                     GtkAccelGroup *accel_group)
 {
-  return g_object_new (GTK_TYPE_IMAGE_MENU_ITEM,
+  return g_object_new (CTK_TYPE_IMAGE_MENU_ITEM,
                        "label", stock_id,
                        "use-stock", TRUE,
                        "accel-group", accel_group,
@@ -964,7 +964,7 @@ ctk_image_menu_item_set_use_stock (GtkImageMenuItem *image_menu_item,
 {
   GtkImageMenuItemPrivate *priv;
 
-  g_return_if_fail (GTK_IS_IMAGE_MENU_ITEM (image_menu_item));
+  g_return_if_fail (CTK_IS_IMAGE_MENU_ITEM (image_menu_item));
 
   priv = image_menu_item->priv;
 
@@ -995,7 +995,7 @@ ctk_image_menu_item_set_use_stock (GtkImageMenuItem *image_menu_item,
 gboolean
 ctk_image_menu_item_get_use_stock (GtkImageMenuItem *image_menu_item)
 {
-  g_return_val_if_fail (GTK_IS_IMAGE_MENU_ITEM (image_menu_item), FALSE);
+  g_return_val_if_fail (CTK_IS_IMAGE_MENU_ITEM (image_menu_item), FALSE);
 
   return image_menu_item->priv->use_stock;
 }
@@ -1021,7 +1021,7 @@ ctk_image_menu_item_set_always_show_image (GtkImageMenuItem *image_menu_item,
 {
   GtkImageMenuItemPrivate *priv;
 
-  g_return_if_fail (GTK_IS_IMAGE_MENU_ITEM (image_menu_item));
+  g_return_if_fail (CTK_IS_IMAGE_MENU_ITEM (image_menu_item));
 
   priv = image_menu_item->priv;
 
@@ -1057,7 +1057,7 @@ ctk_image_menu_item_set_always_show_image (GtkImageMenuItem *image_menu_item,
 gboolean
 ctk_image_menu_item_get_always_show_image (GtkImageMenuItem *image_menu_item)
 {
-  g_return_val_if_fail (GTK_IS_IMAGE_MENU_ITEM (image_menu_item), FALSE);
+  g_return_val_if_fail (CTK_IS_IMAGE_MENU_ITEM (image_menu_item), FALSE);
 
   return image_menu_item->priv->always_show_image;
 }
@@ -1091,8 +1091,8 @@ ctk_image_menu_item_set_accel_group (GtkImageMenuItem *image_menu_item,
   if (!accel_group)
     return;
 
-  g_return_if_fail (GTK_IS_IMAGE_MENU_ITEM (image_menu_item));
-  g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_IMAGE_MENU_ITEM (image_menu_item));
+  g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
 
   priv = image_menu_item->priv;
 
@@ -1101,12 +1101,12 @@ ctk_image_menu_item_set_accel_group (GtkImageMenuItem *image_menu_item,
   if (priv->use_stock && priv->label && ctk_stock_lookup (priv->label, &stock_item))
     if (stock_item.keyval)
       {
-        ctk_widget_add_accelerator (GTK_WIDGET (image_menu_item),
+        ctk_widget_add_accelerator (CTK_WIDGET (image_menu_item),
                                     "activate",
                                     accel_group,
                                     stock_item.keyval,
                                     stock_item.modifier,
-                                    GTK_ACCEL_VISIBLE);
+                                    CTK_ACCEL_VISIBLE);
 
         g_object_notify (G_OBJECT (image_menu_item), "accel-group");
       }
@@ -1132,7 +1132,7 @@ ctk_image_menu_item_set_image (GtkImageMenuItem *image_menu_item,
 {
   GtkImageMenuItemPrivate *priv;
 
-  g_return_if_fail (GTK_IS_IMAGE_MENU_ITEM (image_menu_item));
+  g_return_if_fail (CTK_IS_IMAGE_MENU_ITEM (image_menu_item));
 
   priv = image_menu_item->priv;
 
@@ -1140,7 +1140,7 @@ ctk_image_menu_item_set_image (GtkImageMenuItem *image_menu_item,
     return;
 
   if (priv->image)
-    ctk_container_remove (GTK_CONTAINER (image_menu_item),
+    ctk_container_remove (CTK_CONTAINER (image_menu_item),
                           priv->image);
 
   priv->image = image;
@@ -1148,12 +1148,12 @@ ctk_image_menu_item_set_image (GtkImageMenuItem *image_menu_item,
   if (image == NULL)
     return;
 
-  ctk_widget_set_parent (image, GTK_WIDGET (image_menu_item));
+  ctk_widget_set_parent (image, CTK_WIDGET (image_menu_item));
   g_object_set (image,
                 "visible", show_image (image_menu_item),
                 "no-show-all", TRUE,
                 NULL);
-  ctk_image_set_pixel_size (GTK_IMAGE (image), 16);
+  ctk_image_set_pixel_size (CTK_IMAGE (image), 16);
 
   g_object_notify (G_OBJECT (image_menu_item), "image");
 }
@@ -1172,7 +1172,7 @@ ctk_image_menu_item_set_image (GtkImageMenuItem *image_menu_item,
 GtkWidget*
 ctk_image_menu_item_get_image (GtkImageMenuItem *image_menu_item)
 {
-  g_return_val_if_fail (GTK_IS_IMAGE_MENU_ITEM (image_menu_item), NULL);
+  g_return_val_if_fail (CTK_IS_IMAGE_MENU_ITEM (image_menu_item), NULL);
 
   return image_menu_item->priv->image;
 }
@@ -1181,7 +1181,7 @@ static void
 ctk_image_menu_item_remove (GtkContainer *container,
                             GtkWidget    *child)
 {
-  GtkImageMenuItem *image_menu_item = GTK_IMAGE_MENU_ITEM (container);
+  GtkImageMenuItem *image_menu_item = CTK_IMAGE_MENU_ITEM (container);
   GtkImageMenuItemPrivate *priv = image_menu_item->priv;
 
   if (child == priv->image)
@@ -1194,14 +1194,14 @@ ctk_image_menu_item_remove (GtkContainer *container,
       priv->image = NULL;
 
       if (widget_was_visible &&
-          ctk_widget_get_visible (GTK_WIDGET (container)))
-        ctk_widget_queue_resize (GTK_WIDGET (container));
+          ctk_widget_get_visible (CTK_WIDGET (container)))
+        ctk_widget_queue_resize (CTK_WIDGET (container));
 
       g_object_notify (G_OBJECT (image_menu_item), "image");
     }
   else
     {
-      GTK_CONTAINER_CLASS (ctk_image_menu_item_parent_class)->remove (container, child);
+      CTK_CONTAINER_CLASS (ctk_image_menu_item_parent_class)->remove (container, child);
     }
 }
 
@@ -1223,10 +1223,10 @@ static void
 traverse_container (GtkWidget *widget,
                     gpointer   data)
 {
-  if (GTK_IS_IMAGE_MENU_ITEM (widget))
-    show_image_change_notify (GTK_IMAGE_MENU_ITEM (widget));
-  else if (GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget), traverse_container, NULL);
+  if (CTK_IS_IMAGE_MENU_ITEM (widget))
+    show_image_change_notify (CTK_IMAGE_MENU_ITEM (widget));
+  else if (CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget), traverse_container, NULL);
 }
 
 static void
@@ -1237,7 +1237,7 @@ ctk_image_menu_item_setting_changed (GtkSettings *settings)
   list = ctk_window_list_toplevels ();
 
   for (l = list; l; l = l->next)
-    ctk_container_forall (GTK_CONTAINER (l->data),
+    ctk_container_forall (CTK_CONTAINER (l->data),
                           traverse_container, NULL);
 
   g_list_free (list);
@@ -1265,5 +1265,5 @@ ctk_image_menu_item_screen_changed (GtkWidget *widget,
   g_signal_connect (settings, "notify::gtk-menu-images",
                     G_CALLBACK (ctk_image_menu_item_setting_changed), NULL);
 
-  show_image_change_notify (GTK_IMAGE_MENU_ITEM (widget));
+  show_image_change_notify (CTK_IMAGE_MENU_ITEM (widget));
 }

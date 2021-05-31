@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_XEMBED_H__
-#define __GTK_XEMBED_H__
+#ifndef __CTK_XEMBED_H__
+#define __CTK_XEMBED_H__
 
 #include "xembed.h"
 #include "x11/gdkx.h"
@@ -25,7 +25,7 @@
 G_BEGIN_DECLS
 
 /* Latest version we implement */
-#define GTK_XEMBED_PROTOCOL_VERSION 1
+#define CTK_XEMBED_PROTOCOL_VERSION 1
 
 void _ctk_xembed_send_message       (GdkWindow         *recipient,
 				     XEmbedMessageType  message,
@@ -44,4 +44,4 @@ const char *_ctk_xembed_message_name       (XEmbedMessageType message);
 
 G_END_DECLS
 
-#endif /*  __GTK_XEMBED_H__ */
+#endif /*  __CTK_XEMBED_H__ */

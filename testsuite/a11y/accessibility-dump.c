@@ -120,11 +120,11 @@ get_name (AtkObject *accessible)
   if (name)
     return name;
 
-  if (GTK_IS_ACCESSIBLE (accessible))
+  if (CTK_IS_ACCESSIBLE (accessible))
     {
-      GtkWidget *widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+      GtkWidget *widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
 
-      name = g_strdup (ctk_buildable_get_name (GTK_BUILDABLE (widget)));
+      name = g_strdup (ctk_buildable_get_name (CTK_BUILDABLE (widget)));
     }
 
   if (name == NULL && ATK_IS_TEXT (accessible))
@@ -685,7 +685,7 @@ dump_accessible (AtkObject     *accessible,
   depth += DEPTH_INCREMENT;
 
   g_string_append_printf (string, "%*s\"%s\"\n", depth, "", atk_role_get_name (atk_object_get_role (accessible)));
-  if (GTK_IS_ACCESSIBLE (atk_object_get_parent (accessible)))
+  if (CTK_IS_ACCESSIBLE (atk_object_get_parent (accessible)))
     g_string_append_printf (string, "%*sparent: %s\n", depth, "", get_name (atk_object_get_parent (accessible)));
   if (atk_object_get_index_in_parent (accessible) != -1)
     g_string_append_printf (string, "%*sindex: %d\n", depth, "", atk_object_get_index_in_parent (accessible));
@@ -747,7 +747,7 @@ builder_get_toplevel (GtkBuilder *builder)
   list = ctk_builder_get_objects (builder);
   for (walk = list; walk; walk = walk->next)
     {
-      if (GTK_IS_WINDOW (walk->data) &&
+      if (CTK_IS_WINDOW (walk->data) &&
           ctk_widget_get_parent (walk->data) == NULL)
         {
           window = walk->data;
@@ -928,7 +928,7 @@ parse_command_line (int *argc, char ***argv)
   ctk_test_init (argc, argv);
 
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
-  if (g_getenv ("GTK_TEST_MESON") == NULL)
+  if (g_getenv ("CTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
   g_free (schema_dir);
 

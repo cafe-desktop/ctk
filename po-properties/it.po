@@ -360,10 +360,10 @@ msgstr "È importante"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Indica se l'azione è considerata importante. Se VERO, per questa azione i "
-"toolitem proxy visualizzano il testo nella modalità GTK_TOOLBAR_BOTH_HORIZ."
+"toolitem proxy visualizzano il testo nella modalità CTK_TOOLBAR_BOTH_HORIZ."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1866,8 +1866,8 @@ msgid "Default Spacing"
 msgstr "Spaziatura predefinita"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Spazio addizionale da aggiungere per i pulsanti GTK_CAN_DEFAULT"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Spazio addizionale da aggiungere per i pulsanti CTK_CAN_DEFAULT"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1875,10 +1875,10 @@ msgstr "Spaziatura esterna predefinita"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Spazio addizionale da aggiungere per i pulsanti GTK_CAN_DEFAULT che viene "
+"Spazio addizionale da aggiungere per i pulsanti CTK_CAN_DEFAULT che viene "
 "sempre visualizzato esternamente al bordo"
 
 #: gtk/gtkbutton.c:556
@@ -4419,9 +4419,9 @@ msgid "Baseline Row"
 msgstr "Riga baseline"
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
 msgstr ""
-"La riga su cui allinearsi con la baseline quando valign è GTK_ALIGN_BASELINE"
+"La riga su cui allinearsi con la baseline quando valign è CTK_ALIGN_BASELINE"
 
 #: gtk/gtkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -8816,11 +8816,11 @@ msgstr "Spaziatura in pixel tra l'icona e l'etichetta"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Indica se l'elemento della barra strumenti viene considerato importante. Se "
 "VERO, i pulsanti della barra strumenti mostrano il testo nella modalità "
-"GTK_TOOLBAR_BOTH_HORIZ"
+"CTK_TOOLBAR_BOTH_HORIZ"
 
 #: gtk/gtktoolitemgroup.c:1640
 msgid "The human-readable title of this item group"

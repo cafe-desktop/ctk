@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINT_OPERATION_PORTAL_H__
-#define __GTK_PRINT_OPERATION_PORTAL_H__
+#ifndef __CTK_PRINT_OPERATION_PORTAL_H__
+#define __CTK_PRINT_OPERATION_PORTAL_H__
 
 #include "gtkprintoperation.h"
 
@@ -37,4 +37,4 @@ void                    ctk_print_operation_portal_launch_preview         (GtkPr
 
 G_END_DECLS
 
-#endif /* __GTK_PRINT_OPERATION_PORTAL_H__ */
+#endif /* __CTK_PRINT_OPERATION_PORTAL_H__ */

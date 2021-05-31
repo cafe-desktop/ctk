@@ -687,10 +687,10 @@ msgstr "សំខាន់"
 #: ../gtk/gtkaction.c:364
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "ថា​តើ​សកម្មភាព​នេះ​នឹង​ត្រូវ​បាន​ចាត់​ទុក​ថា​សំខាន់​ដែរ​ឬ​ទេ ។ នៅ​ពេល​ពិត ប្រូកស៊ី​ធាតុ​ឧបករណ៍​សម្រាប់​សកម្មភាព​នេះ​"
-"នឹង​បង្ហាញ​អត្ថបទ​ជា​របៀប GTK_TOOLBAR_BOTH_HORIZ ។"
+"នឹង​បង្ហាញ​អត្ថបទ​ជា​របៀប CTK_TOOLBAR_BOTH_HORIZ ។"
 
 #: ../gtk/gtkaction.c:372
 msgid "Hide if empty"
@@ -1352,8 +1352,8 @@ msgid "Default Spacing"
 msgstr "គម្លាត​លំនាំដើម"
 
 #: ../gtk/gtkbutton.c:477
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "គម្លាត​បន្ថែម​ដែល​ត្រូវ​បន្ថែម​សម្រាប់​ប៊ូតុង GTK_CAN_DEFAULT"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "គម្លាត​បន្ថែម​ដែល​ត្រូវ​បន្ថែម​សម្រាប់​ប៊ូតុង CTK_CAN_DEFAULT"
 
 #: ../gtk/gtkbutton.c:491
 msgid "Default Outside Spacing"
@@ -1361,9 +1361,9 @@ msgstr "គម្លាត​លំនាំដើម​ខាងក្រៅ"
 
 #: ../gtk/gtkbutton.c:492
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
-msgstr "គម្លាត​បន្ថែម​ដែល​ត្រូវ​បន្ថែម​សម្រាប់​ប៊ូតុង GTK_CAN_DEFAULT ដែល​តែងតែ​គូរ​ចេញ​ក្រៅ​ស៊ុម"
+msgstr "គម្លាត​បន្ថែម​ដែល​ត្រូវ​បន្ថែម​សម្រាប់​ប៊ូតុង CTK_CAN_DEFAULT ដែល​តែងតែ​គូរ​ចេញ​ក្រៅ​ស៊ុម"
 
 #: ../gtk/gtkbutton.c:497
 msgid "Child X Displacement"
@@ -6933,10 +6933,10 @@ msgstr "គម្លាត​រវាង​រូបតំណាង និង�
 #: ../gtk/gtktoolitem.c:206
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "ថា​តើ​ធាតុ​របារ​ឧបករណ៍​ត្រូវ​បាន​ចាត់​ទុក​ថា​សំខាន់​ដែរ​ឬ​ទេ ។ នៅ​ពេល​ពិត ប៊ូតុង​របារ​ឧបករណ៍​នឹង​បង្ហាញ​អត្ថបទ​ជា​"
-"របៀប GTK_TOOLBAR_BOTH_HORIZ"
+"របៀប CTK_TOOLBAR_BOTH_HORIZ"
 
 #: ../gtk/gtktoolitemgroup.c:1598
 msgid "The human-readable title of this item group"

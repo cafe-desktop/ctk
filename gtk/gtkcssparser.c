@@ -33,7 +33,7 @@
 #define NMCHAR NMSTART "01234567890-_"
 #define URLCHAR NMCHAR "!#$%&*~"
 
-#define GTK_IS_CSS_PARSER(parser) ((parser) != NULL)
+#define CTK_IS_CSS_PARSER(parser) ((parser) != NULL)
 
 struct _GtkCssParser
 {
@@ -74,7 +74,7 @@ _ctk_css_parser_new (const char            *data,
 void
 _ctk_css_parser_free (GtkCssParser *parser)
 {
-  g_return_if_fail (GTK_IS_CSS_PARSER (parser));
+  g_return_if_fail (CTK_IS_CSS_PARSER (parser));
 
   if (parser->file)
     g_object_unref (parser->file);
@@ -85,7 +85,7 @@ _ctk_css_parser_free (GtkCssParser *parser)
 gboolean
 _ctk_css_parser_is_eof (GtkCssParser *parser)
 {
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), TRUE);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), TRUE);
 
   return *parser->data == 0;
 }
@@ -94,7 +94,7 @@ gboolean
 _ctk_css_parser_begins_with (GtkCssParser *parser,
                              char          c)
 {
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), TRUE);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), TRUE);
 
   return *parser->data == c;
 }
@@ -103,7 +103,7 @@ gboolean
 _ctk_css_parser_has_prefix (GtkCssParser *parser,
                             const char   *prefix)
 {
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), FALSE);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), FALSE);
 
   return g_ascii_strncasecmp (parser->data, prefix, strlen (prefix)) == 0;
 }
@@ -111,7 +111,7 @@ _ctk_css_parser_has_prefix (GtkCssParser *parser,
 guint
 _ctk_css_parser_get_line (GtkCssParser *parser)
 {
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), 1);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), 1);
 
   return parser->line;
 }
@@ -119,7 +119,7 @@ _ctk_css_parser_get_line (GtkCssParser *parser)
 guint
 _ctk_css_parser_get_position (GtkCssParser *parser)
 {
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), 1);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), 1);
 
   return parser->data - parser->line_start;
 }
@@ -186,8 +186,8 @@ _ctk_css_parser_error (GtkCssParser *parser,
   va_list args;
 
   va_start (args, format);
-  error = g_error_new_valist (GTK_CSS_PROVIDER_ERROR,
-                              GTK_CSS_PROVIDER_ERROR_SYNTAX,
+  error = g_error_new_valist (CTK_CSS_PROVIDER_ERROR,
+                              CTK_CSS_PROVIDER_ERROR_SYNTAX,
                               format, args);
   va_end (args);
 
@@ -205,7 +205,7 @@ _ctk_css_parser_error_full (GtkCssParser        *parser,
   va_list args;
 
   va_start (args, format);
-  error = g_error_new_valist (GTK_CSS_PROVIDER_ERROR,
+  error = g_error_new_valist (CTK_CSS_PROVIDER_ERROR,
                               code, format, args);
   va_end (args);
 
@@ -294,7 +294,7 @@ _ctk_css_parser_try (GtkCssParser *parser,
                      const char   *string,
                      gboolean      skip_whitespace)
 {
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), FALSE);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), FALSE);
   g_return_val_if_fail (string != NULL, FALSE);
 
   if (g_ascii_strncasecmp (parser->data, string, strlen (string)) != 0)
@@ -396,7 +396,7 @@ _ctk_css_parser_try_name (GtkCssParser *parser,
 {
   GString *name;
 
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), NULL);
 
   name = g_string_new (NULL);
 
@@ -416,7 +416,7 @@ _ctk_css_parser_try_ident (GtkCssParser *parser,
   const char *start;
   GString *ident;
 
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), NULL);
 
   start = parser->data;
   
@@ -447,7 +447,7 @@ _ctk_css_parser_try_ident (GtkCssParser *parser,
 gboolean
 _ctk_css_parser_is_string (GtkCssParser *parser)
 {
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), FALSE);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), FALSE);
 
   return *parser->data == '"' || *parser->data == '\'';
 }
@@ -458,7 +458,7 @@ _ctk_css_parser_read_string (GtkCssParser *parser)
   GString *str;
   char quote;
 
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), NULL);
 
   quote = *parser->data;
   
@@ -520,7 +520,7 @@ _ctk_css_parser_try_int (GtkCssParser *parser,
   gint64 result;
   char *end;
 
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), FALSE);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), FALSE);
   g_return_val_if_fail (value != NULL, FALSE);
 
   /* strtoll parses a plus, but we are not allowed to */
@@ -551,7 +551,7 @@ _ctk_css_parser_try_uint (GtkCssParser *parser,
   guint64 result;
   char *end;
 
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), FALSE);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), FALSE);
   g_return_val_if_fail (value != NULL, FALSE);
 
   errno = 0;
@@ -578,7 +578,7 @@ _ctk_css_parser_try_double (GtkCssParser *parser,
   gdouble result;
   char *end;
 
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), FALSE);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), FALSE);
   g_return_val_if_fail (value != NULL, FALSE);
 
   errno = 0;
@@ -619,27 +619,27 @@ ctk_css_dimension_value_parse (GtkCssParser           *parser,
     GtkCssUnit unit;
     GtkCssNumberParseFlags required_flags;
   } units[] = {
-    { "px",   GTK_CSS_PX,      GTK_CSS_PARSE_LENGTH },
-    { "pt",   GTK_CSS_PT,      GTK_CSS_PARSE_LENGTH },
-    { "em",   GTK_CSS_EM,      GTK_CSS_PARSE_LENGTH },
-    { "ex",   GTK_CSS_EX,      GTK_CSS_PARSE_LENGTH },
-    { "rem",  GTK_CSS_REM,     GTK_CSS_PARSE_LENGTH },
-    { "pc",   GTK_CSS_PC,      GTK_CSS_PARSE_LENGTH },
-    { "in",   GTK_CSS_IN,      GTK_CSS_PARSE_LENGTH },
-    { "cm",   GTK_CSS_CM,      GTK_CSS_PARSE_LENGTH },
-    { "mm",   GTK_CSS_MM,      GTK_CSS_PARSE_LENGTH },
-    { "rad",  GTK_CSS_RAD,     GTK_CSS_PARSE_ANGLE  },
-    { "deg",  GTK_CSS_DEG,     GTK_CSS_PARSE_ANGLE  },
-    { "grad", GTK_CSS_GRAD,    GTK_CSS_PARSE_ANGLE  },
-    { "turn", GTK_CSS_TURN,    GTK_CSS_PARSE_ANGLE  },
-    { "s",    GTK_CSS_S,       GTK_CSS_PARSE_TIME   },
-    { "ms",   GTK_CSS_MS,      GTK_CSS_PARSE_TIME   }
+    { "px",   CTK_CSS_PX,      CTK_CSS_PARSE_LENGTH },
+    { "pt",   CTK_CSS_PT,      CTK_CSS_PARSE_LENGTH },
+    { "em",   CTK_CSS_EM,      CTK_CSS_PARSE_LENGTH },
+    { "ex",   CTK_CSS_EX,      CTK_CSS_PARSE_LENGTH },
+    { "rem",  CTK_CSS_REM,     CTK_CSS_PARSE_LENGTH },
+    { "pc",   CTK_CSS_PC,      CTK_CSS_PARSE_LENGTH },
+    { "in",   CTK_CSS_IN,      CTK_CSS_PARSE_LENGTH },
+    { "cm",   CTK_CSS_CM,      CTK_CSS_PARSE_LENGTH },
+    { "mm",   CTK_CSS_MM,      CTK_CSS_PARSE_LENGTH },
+    { "rad",  CTK_CSS_RAD,     CTK_CSS_PARSE_ANGLE  },
+    { "deg",  CTK_CSS_DEG,     CTK_CSS_PARSE_ANGLE  },
+    { "grad", CTK_CSS_GRAD,    CTK_CSS_PARSE_ANGLE  },
+    { "turn", CTK_CSS_TURN,    CTK_CSS_PARSE_ANGLE  },
+    { "s",    CTK_CSS_S,       CTK_CSS_PARSE_TIME   },
+    { "ms",   CTK_CSS_MS,      CTK_CSS_PARSE_TIME   }
   };
   char *end, *unit_name;
   double value;
   GtkCssUnit unit;
 
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), NULL);
 
   errno = 0;
   value = g_ascii_strtod (parser->data, &end);
@@ -656,7 +656,7 @@ ctk_css_dimension_value_parse (GtkCssParser           *parser,
 
   parser->data = end;
 
-  if (flags & GTK_CSS_POSITIVE_ONLY &&
+  if (flags & CTK_CSS_POSITIVE_ONLY &&
       value < 0)
     {
       _ctk_css_parser_error (parser, "negative values are not allowed.");
@@ -689,34 +689,34 @@ ctk_css_dimension_value_parse (GtkCssParser           *parser,
     }
   else
     {
-      if ((flags & GTK_CSS_PARSE_PERCENT) &&
+      if ((flags & CTK_CSS_PARSE_PERCENT) &&
           _ctk_css_parser_try (parser, "%", FALSE))
         {
-          unit = GTK_CSS_PERCENT;
+          unit = CTK_CSS_PERCENT;
         }
       else if (value == 0.0)
         {
-          if (flags & GTK_CSS_PARSE_NUMBER)
-            unit = GTK_CSS_NUMBER;
-          else if (flags & GTK_CSS_PARSE_LENGTH)
-            unit = GTK_CSS_PX;
-          else if (flags & GTK_CSS_PARSE_ANGLE)
-            unit = GTK_CSS_DEG;
-          else if (flags & GTK_CSS_PARSE_TIME)
-            unit = GTK_CSS_S;
+          if (flags & CTK_CSS_PARSE_NUMBER)
+            unit = CTK_CSS_NUMBER;
+          else if (flags & CTK_CSS_PARSE_LENGTH)
+            unit = CTK_CSS_PX;
+          else if (flags & CTK_CSS_PARSE_ANGLE)
+            unit = CTK_CSS_DEG;
+          else if (flags & CTK_CSS_PARSE_TIME)
+            unit = CTK_CSS_S;
           else
-            unit = GTK_CSS_PERCENT;
+            unit = CTK_CSS_PERCENT;
         }
-      else if (flags & GTK_CSS_NUMBER_AS_PIXELS)
+      else if (flags & CTK_CSS_NUMBER_AS_PIXELS)
         {
           _ctk_css_parser_error_full (parser,
-                                      GTK_CSS_PROVIDER_ERROR_DEPRECATED,
+                                      CTK_CSS_PROVIDER_ERROR_DEPRECATED,
                                       "Not using units is deprecated. Assuming 'px'.");
-          unit = GTK_CSS_PX;
+          unit = CTK_CSS_PX;
         }
-      else if (flags & GTK_CSS_PARSE_NUMBER)
+      else if (flags & CTK_CSS_PARSE_NUMBER)
         {
-          unit = GTK_CSS_NUMBER;
+          unit = CTK_CSS_NUMBER;
         }
       else
         {
@@ -757,7 +757,7 @@ _ctk_css_parser_try_enum (GtkCssParser *parser,
   const char *start;
   char *str;
 
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), FALSE);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), FALSE);
   g_return_val_if_fail (value != NULL, FALSE);
 
   result = FALSE;
@@ -846,7 +846,7 @@ _ctk_css_parser_read_url (GtkCssParser *parser)
           if (_ctk_css_parser_try (parser, "(", TRUE))
             {
               _ctk_css_parser_error_full (parser,
-                                          GTK_CSS_PROVIDER_ERROR_DEPRECATED,
+                                          CTK_CSS_PROVIDER_ERROR_DEPRECATED,
                                           "Whitespace between 'url' and '(' is deprecated");
             }
           else
@@ -986,7 +986,7 @@ _ctk_css_parser_read_value (GtkCssParser *parser)
   const char *start;
   char *result;
 
-  g_return_val_if_fail (GTK_IS_CSS_PARSER (parser), NULL);
+  g_return_val_if_fail (CTK_IS_CSS_PARSER (parser), NULL);
 
   start = parser->data;
 
@@ -1015,7 +1015,7 @@ _ctk_css_parser_resync (GtkCssParser *parser,
                         gboolean      sync_at_semicolon,
                         char          terminator)
 {
-  g_return_if_fail (GTK_IS_CSS_PARSER (parser));
+  g_return_if_fail (CTK_IS_CSS_PARSER (parser));
 
   ctk_css_parser_resync_internal (parser, sync_at_semicolon, TRUE, terminator);
 }

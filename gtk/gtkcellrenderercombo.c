@@ -98,15 +98,15 @@ enum {
 
 static guint cell_renderer_combo_signals[LAST_SIGNAL] = { 0, };
 
-#define GTK_CELL_RENDERER_COMBO_PATH "gtk-cell-renderer-combo-path"
+#define CTK_CELL_RENDERER_COMBO_PATH "gtk-cell-renderer-combo-path"
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererCombo, ctk_cell_renderer_combo, GTK_TYPE_CELL_RENDERER_TEXT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererCombo, ctk_cell_renderer_combo, CTK_TYPE_CELL_RENDERER_TEXT)
 
 static void
 ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkCellRendererClass *cell_class = GTK_CELL_RENDERER_CLASS (klass);
+  GtkCellRendererClass *cell_class = CTK_CELL_RENDERER_CLASS (klass);
 
   object_class->finalize = ctk_cell_renderer_combo_finalize;
   object_class->get_property = ctk_cell_renderer_combo_get_property;
@@ -127,8 +127,8 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
 				   g_param_spec_object ("model",
 							P_("Model"),
 							P_("The model containing the possible values for the combo box"),
-							GTK_TYPE_TREE_MODEL,
-							GTK_PARAM_READWRITE));
+							CTK_TYPE_TREE_MODEL,
+							CTK_PARAM_READWRITE));
 
   /**
    * GtkCellRendererCombo:text-column:
@@ -153,7 +153,7 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
                                                      -1,
                                                      G_MAXINT,
                                                      -1,
-                                                     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   /** 
    * GtkCellRendererCombo:has-entry:
@@ -169,7 +169,7 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
 							 P_("Has Entry"),
 							 P_("If FALSE, don't allow to enter strings other than the chosen ones"),
 							 TRUE,
-							 GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
 
   /**
@@ -203,7 +203,7 @@ ctk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
 		  _ctk_marshal_VOID__STRING_BOXED,
 		  G_TYPE_NONE, 2,
 		  G_TYPE_STRING,
-		  GTK_TYPE_TREE_ITER);
+		  CTK_TYPE_TREE_ITER);
   g_signal_set_va_marshaller (cell_renderer_combo_signals[CHANGED],
                               G_TYPE_FROM_CLASS (object_class),
                               _ctk_marshal_VOID__STRING_BOXEDv);
@@ -241,13 +241,13 @@ ctk_cell_renderer_combo_init (GtkCellRendererCombo *self)
 GtkCellRenderer *
 ctk_cell_renderer_combo_new (void)
 {
-  return g_object_new (GTK_TYPE_CELL_RENDERER_COMBO, NULL); 
+  return g_object_new (CTK_TYPE_CELL_RENDERER_COMBO, NULL); 
 }
 
 static void
 ctk_cell_renderer_combo_finalize (GObject *object)
 {
-  GtkCellRendererCombo *cell = GTK_CELL_RENDERER_COMBO (object);
+  GtkCellRendererCombo *cell = CTK_CELL_RENDERER_COMBO (object);
   GtkCellRendererComboPrivate *priv = cell->priv;
   
   if (priv->model)
@@ -265,7 +265,7 @@ ctk_cell_renderer_combo_get_property (GObject    *object,
 				      GValue     *value,
 				      GParamSpec *pspec)
 {
-  GtkCellRendererCombo *cell = GTK_CELL_RENDERER_COMBO (object);
+  GtkCellRendererCombo *cell = CTK_CELL_RENDERER_COMBO (object);
   GtkCellRendererComboPrivate *priv = cell->priv;
 
   switch (prop_id)
@@ -291,7 +291,7 @@ ctk_cell_renderer_combo_set_property (GObject      *object,
 				      const GValue *value,
 				      GParamSpec   *pspec)
 {
-  GtkCellRendererCombo *cell = GTK_CELL_RENDERER_COMBO (object);
+  GtkCellRendererCombo *cell = CTK_CELL_RENDERER_COMBO (object);
   GtkCellRendererComboPrivate *priv = cell->priv;
 
   switch (prop_id)
@@ -300,7 +300,7 @@ ctk_cell_renderer_combo_set_property (GObject      *object,
       {
         if (priv->model)
           g_object_unref (priv->model);
-        priv->model = GTK_TREE_MODEL (g_value_get_object (value));
+        priv->model = CTK_TREE_MODEL (g_value_get_object (value));
         if (priv->model)
           g_object_ref (priv->model);
         break;
@@ -332,13 +332,13 @@ ctk_cell_renderer_combo_changed (GtkComboBox *combo,
   GtkTreeIter iter;
   GtkCellRendererCombo *cell;
 
-  cell = GTK_CELL_RENDERER_COMBO (data);
+  cell = CTK_CELL_RENDERER_COMBO (data);
 
   if (ctk_combo_box_get_active_iter (combo, &iter))
     {
       const char *path;
 
-      path = g_object_get_data (G_OBJECT (combo), GTK_CELL_RENDERER_COMBO_PATH);
+      path = g_object_get_data (G_OBJECT (combo), CTK_CELL_RENDERER_COMBO_PATH);
       g_signal_emit (cell, cell_renderer_combo_signals[CHANGED], 0,
 		     path, &iter);
     }
@@ -357,7 +357,7 @@ ctk_cell_renderer_combo_editing_done (GtkCellEditable *combo,
   gboolean canceled;
   GtkCellRendererComboPrivate *priv;
 
-  cell = GTK_CELL_RENDERER_COMBO (data);
+  cell = CTK_CELL_RENDERER_COMBO (data);
   priv = cell->priv;
 
   if (priv->focus_out_id > 0)
@@ -369,28 +369,28 @@ ctk_cell_renderer_combo_editing_done (GtkCellEditable *combo,
   g_object_get (combo,
                 "editing-canceled", &canceled,
                 NULL);
-  ctk_cell_renderer_stop_editing (GTK_CELL_RENDERER (data), canceled);
+  ctk_cell_renderer_stop_editing (CTK_CELL_RENDERER (data), canceled);
   if (canceled)
     {
       priv->combo = NULL;
       return;
     }
 
-  if (ctk_combo_box_get_has_entry (GTK_COMBO_BOX (combo)))
+  if (ctk_combo_box_get_has_entry (CTK_COMBO_BOX (combo)))
     {
-      entry = GTK_ENTRY (ctk_bin_get_child (GTK_BIN (combo)));
+      entry = CTK_ENTRY (ctk_bin_get_child (CTK_BIN (combo)));
       new_text = g_strdup (ctk_entry_get_text (entry));
     }
   else 
     {
-      model = ctk_combo_box_get_model (GTK_COMBO_BOX (combo));
+      model = ctk_combo_box_get_model (CTK_COMBO_BOX (combo));
 
       if (model
-          && ctk_combo_box_get_active_iter (GTK_COMBO_BOX (combo), &iter))
+          && ctk_combo_box_get_active_iter (CTK_COMBO_BOX (combo), &iter))
         ctk_tree_model_get (model, &iter, priv->text_column, &new_text, -1);
     }
 
-  path = g_object_get_data (G_OBJECT (combo), GTK_CELL_RENDERER_COMBO_PATH);
+  path = g_object_get_data (G_OBJECT (combo), CTK_CELL_RENDERER_COMBO_PATH);
   g_signal_emit_by_name (cell, "edited", path, new_text);
 
   priv->combo = NULL;
@@ -404,7 +404,7 @@ ctk_cell_renderer_combo_focus_out_event (GtkWidget *widget,
 					 gpointer   data)
 {
   
-  ctk_cell_renderer_combo_editing_done (GTK_CELL_EDITABLE (widget), data);
+  ctk_cell_renderer_combo_editing_done (CTK_CELL_EDITABLE (widget), data);
 
   return FALSE;
 }
@@ -429,7 +429,7 @@ find_text (GtkTreeModel *model,
   priv = search_data->cell->priv;
   
   ctk_tree_model_get (model, iter, priv->text_column, &text, -1);
-  g_object_get (GTK_CELL_RENDERER_TEXT (search_data->cell),
+  g_object_get (CTK_CELL_RENDERER_TEXT (search_data->cell),
                 "text", &cell_text,
                 NULL);
   if (text && cell_text && g_strcmp0 (text, cell_text) == 0)
@@ -461,12 +461,12 @@ ctk_cell_renderer_combo_start_editing (GtkCellRenderer     *cell,
   gboolean editable;
   gchar *text;
 
-  cell_text = GTK_CELL_RENDERER_TEXT (cell);
+  cell_text = CTK_CELL_RENDERER_TEXT (cell);
   g_object_get (cell_text, "editable", &editable, NULL);
   if (editable == FALSE)
     return NULL;
 
-  cell_combo = GTK_CELL_RENDERER_COMBO (cell);
+  cell_combo = CTK_CELL_RENDERER_COMBO (cell);
   priv = cell_combo->priv;
 
   if (priv->text_column < 0)
@@ -474,16 +474,16 @@ ctk_cell_renderer_combo_start_editing (GtkCellRenderer     *cell,
 
   if (priv->has_entry)
     {
-      combo = g_object_new (GTK_TYPE_COMBO_BOX, "has-entry", TRUE, NULL);
+      combo = g_object_new (CTK_TYPE_COMBO_BOX, "has-entry", TRUE, NULL);
 
       if (priv->model)
-        ctk_combo_box_set_model (GTK_COMBO_BOX (combo), priv->model);
-      ctk_combo_box_set_entry_text_column (GTK_COMBO_BOX (combo),
+        ctk_combo_box_set_model (CTK_COMBO_BOX (combo), priv->model);
+      ctk_combo_box_set_entry_text_column (CTK_COMBO_BOX (combo),
                                            priv->text_column);
 
       g_object_get (cell_text, "text", &text, NULL);
       if (text)
-	ctk_entry_set_text (GTK_ENTRY (ctk_bin_get_child (GTK_BIN (combo))),
+	ctk_entry_set_text (CTK_ENTRY (ctk_bin_get_child (CTK_BIN (combo))),
 			    text);
       g_free (text);
     }
@@ -493,10 +493,10 @@ ctk_cell_renderer_combo_start_editing (GtkCellRenderer     *cell,
 
       combo = ctk_combo_box_new ();
       if (priv->model)
-        ctk_combo_box_set_model (GTK_COMBO_BOX (combo), priv->model);
+        ctk_combo_box_set_model (CTK_COMBO_BOX (combo), priv->model);
 
-      ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), cell, TRUE);
-      ctk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), 
+      ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (combo), cell, TRUE);
+      ctk_cell_layout_set_attributes (CTK_CELL_LAYOUT (combo), 
 				      cell, "text", priv->text_column,
 				      NULL);
 
@@ -507,22 +507,22 @@ ctk_cell_renderer_combo_start_editing (GtkCellRenderer     *cell,
           search_data.found = FALSE;
           ctk_tree_model_foreach (priv->model, find_text, &search_data);
           if (search_data.found)
-            ctk_combo_box_set_active_iter (GTK_COMBO_BOX (combo),
+            ctk_combo_box_set_active_iter (CTK_COMBO_BOX (combo),
                                            &(search_data.iter));
         }
     }
 
   g_object_set (combo, "has-frame", FALSE, NULL);
   g_object_set_data_full (G_OBJECT (combo),
-			  I_(GTK_CELL_RENDERER_COMBO_PATH),
+			  I_(CTK_CELL_RENDERER_COMBO_PATH),
 			  g_strdup (path), g_free);
 
   ctk_widget_show (combo);
 
-  g_signal_connect (GTK_CELL_EDITABLE (combo), "editing-done",
+  g_signal_connect (CTK_CELL_EDITABLE (combo), "editing-done",
 		    G_CALLBACK (ctk_cell_renderer_combo_editing_done),
 		    cell_combo);
-  g_signal_connect (GTK_CELL_EDITABLE (combo), "changed",
+  g_signal_connect (CTK_CELL_EDITABLE (combo), "changed",
 		    G_CALLBACK (ctk_cell_renderer_combo_changed),
 		    cell_combo);
   priv->focus_out_id = g_signal_connect (combo, "focus-out-event",
@@ -531,5 +531,5 @@ ctk_cell_renderer_combo_start_editing (GtkCellRenderer     *cell,
 
   priv->combo = combo;
 
-  return GTK_CELL_EDITABLE (combo);
+  return CTK_CELL_EDITABLE (combo);
 }

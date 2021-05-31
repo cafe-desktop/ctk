@@ -397,10 +397,10 @@ msgstr "গুরুত্বপূর্ণ কিনা"
 #: gtk/gtkaction.c:366
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "কাজটিকে গুরুত্বপূর্ণ বিবেচনা করা হয় কিনা। এর মান সত্য (TRUE) হলে টুল-আইটেম প্রক্সি "
-"GTK_TOOLBAR_BOTH_HORIZ মোডে টেক্সট প্রদর্শন করে।"
+"CTK_TOOLBAR_BOTH_HORIZ মোডে টেক্সট প্রদর্শন করে।"
 
 #: gtk/gtkaction.c:374
 msgid "Hide if empty"
@@ -930,7 +930,7 @@ msgid "Default Spacing"
 msgstr "ডিফল্ট স্পেস স্থাপনের প্রক্রিয়া"
 
 #: gtk/gtkbutton.c:461
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "CAN_DEFAULT বাটনের জন্য অতিরিক্ত স্পেস যোগ করতে হবে"
 
 #: gtk/gtkbutton.c:475
@@ -939,7 +939,7 @@ msgstr "ডিফল্ট বহিস্থ স্পেস স্থাপন
 
 #: gtk/gtkbutton.c:476
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
 "সর্বদা প্রান্তরে বাহিরে অঙ্কিত CAN_DEFAULT বাটনের জন্য অতিরিক্ত স্পেস যোগ করতে হবে"
@@ -6218,10 +6218,10 @@ msgstr "আইকন ও লেবেলের মধ্যে ব্যবধ�
 #: gtk/gtktoolitem.c:201
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "টুলবার আইটেমকে গুরুত্বপূর্ণ বিবেচনা করা হয় কিনা।  এর মান সত্য (TRUE) হলে, টুলবার "
-"বাটন GTK_TOOLBAR_BOTH_HORIZ মোডে টেক্সট প্রদর্শন করে"
+"বাটন CTK_TOOLBAR_BOTH_HORIZ মোডে টেক্সট প্রদর্শন করে"
 
 #: gtk/gtktoolitemgroup.c:1572
 msgid "The human-readable title of this item group"

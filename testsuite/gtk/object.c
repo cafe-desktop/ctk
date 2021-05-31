@@ -56,7 +56,7 @@ list_ignore_properties (gboolean buglist)
     { "GtkContainer",           "child",                NULL, },                        /* needs working child widget */
     { "GtkRadioMenuItem",       "group",                NULL, },                        /* needs working sibling */
     { "GtkWidget",              "parent",               NULL, },                        /* needs working parent widget */
-    { "GtkCList",               "selection-mode",       (void*) GTK_SELECTION_NONE, },
+    { "GtkCList",               "selection-mode",       (void*) CTK_SELECTION_NONE, },
     { "GtkWidget",              "has-default",          (void*) TRUE, },                /* conflicts with toplevel-less widgets */
     { "GtkWidget",              "screen",               NULL, },
     { "GtkWindow",              "type-hint",            (void*) GDK_WINDOW_TYPE_HINT_DND, }, /* conflicts with ::visible=TRUE */
@@ -72,15 +72,15 @@ list_ignore_properties (gboolean buglist)
     { "GtkComboBox",            "row-span-column",      (void*) MATCH_ANY_VALUE },      /* GtkComboBoxEntry needs a tree model for this */
     { "GtkComboBox",            "column-span-column",   (void*) MATCH_ANY_VALUE },      /* GtkComboBoxEntry needs a tree model for this */
     { "GtkFileChooserButton",   "select-multiple",      (void*) MATCH_ANY_VALUE },      /* property disabled */
-    { "GtkFileChooserButton",   "action",               (void*) GTK_FILE_CHOOSER_ACTION_SAVE },
-    { "GtkFileChooserButton",   "action",               (void*) GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER },
+    { "GtkFileChooserButton",   "action",               (void*) CTK_FILE_CHOOSER_ACTION_SAVE },
+    { "GtkFileChooserButton",   "action",               (void*) CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER },
     { "GtkFileChooserWidget",   "select-multiple",      (void*) 0x1 },                  /* property conflicts */
     { "GtkFileChooserDialog",   "select-multiple",      (void*) MATCH_ANY_VALUE },      /* property disabled */
     { "GtkMenu",                "accel-path",           (void*) MATCH_ANY_VALUE },      /* has odd restrictions in the setter */
     { "GtkMenuItem",            "accel-path",           (void*) MATCH_ANY_VALUE },      /* has odd restrictions in the setter */
     { "GtkRecentChooserMenu",   "select-multiple",      (void*) MATCH_ANY_VALUE },      /* property disabled */
     { "GtkTextView",            "overwrite",            (void*) MATCH_ANY_VALUE },      /* needs text buffer */
-    { "GtkToolbar",             "icon-size",            (void*) GTK_ICON_SIZE_INVALID },
+    { "GtkToolbar",             "icon-size",            (void*) CTK_ICON_SIZE_INVALID },
     { "GtkTreeView",            "expander-column",      (void*) MATCH_ANY_VALUE },      /* assertion list != NULL */
     { "GtkWindow",              "screen",               (void*) MATCH_ANY_VALUE },      /* cannot create GdkScreen */
     { NULL, NULL, NULL }
@@ -134,7 +134,7 @@ pspec_select_value (GParamSpec *pspec,
   else if (G_IS_PARAM_SPEC_UNICHAR (pspec))
     g_value_set_uint (value, SELECT_VALUE (dvalue, ((GParamSpecUnichar*) pspec)->default_value, FALSE, TRUE));
   else if (G_IS_PARAM_SPEC_GTYPE (pspec))
-    g_value_set_gtype (value, SELECT_VALUE ((int) dvalue, ((GParamSpecGType*) pspec)->is_a_type, 0, GTK_TYPE_WIDGET));
+    g_value_set_gtype (value, SELECT_VALUE ((int) dvalue, ((GParamSpecGType*) pspec)->is_a_type, 0, CTK_TYPE_WIDGET));
   else if (G_IS_PARAM_SPEC_STRING (pspec))
     {
       GParamSpecString *sspec = (GParamSpecString*) pspec;
@@ -294,9 +294,9 @@ static void
 widget_fixups (GtkWidget *widget)
 {
   /* post-constructor for widgets that need additional settings to work correctly */
-  if (GTK_IS_COMBO_BOX_TEXT (widget))
+  if (CTK_IS_COMBO_BOX_TEXT (widget))
     {
-      ctk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (widget), "test text");
+      ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (widget), "test text");
     }
 }
 
@@ -336,13 +336,13 @@ main (int   argc,
 
   /* g_test_build_filename must be called after ctk_test_init */
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
-  if (g_getenv ("GTK_TEST_MESON") == NULL)
+  if (g_getenv ("CTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
 
   /* install a property test for each widget type */
   otypes = ctk_test_list_all_types (NULL);
   for (i = 0; otypes[i]; i++)
-    if (g_type_is_a (otypes[i], GTK_TYPE_WIDGET) &&
+    if (g_type_is_a (otypes[i], CTK_TYPE_WIDGET) &&
         G_TYPE_IS_OBJECT (otypes[i]) &&
         !G_TYPE_IS_ABSTRACT (otypes[i]))
       {

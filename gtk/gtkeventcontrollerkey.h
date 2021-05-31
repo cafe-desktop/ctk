@@ -17,10 +17,10 @@
  * Author(s): Carlos Garnacho <carlosg@gnome.org>
  */
 
-#ifndef __GTK_EVENT_CONTROLLER_KEY_H__
-#define __GTK_EVENT_CONTROLLER_KEY_H__
+#ifndef __CTK_EVENT_CONTROLLER_KEY_H__
+#define __CTK_EVENT_CONTROLLER_KEY_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -30,12 +30,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EVENT_CONTROLLER_KEY         (ctk_event_controller_key_get_type ())
-#define GTK_EVENT_CONTROLLER_KEY(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKey))
-#define GTK_EVENT_CONTROLLER_KEY_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKeyClass))
-#define GTK_IS_EVENT_CONTROLLER_KEY(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_EVENT_CONTROLLER_KEY))
-#define GTK_IS_EVENT_CONTROLLER_KEY_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GTK_TYPE_EVENT_CONTROLLER_KEY))
-#define GTK_EVENT_CONTROLLER_KEY_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKeyClass))
+#define CTK_TYPE_EVENT_CONTROLLER_KEY         (ctk_event_controller_key_get_type ())
+#define CTK_EVENT_CONTROLLER_KEY(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKey))
+#define CTK_EVENT_CONTROLLER_KEY_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKeyClass))
+#define CTK_IS_EVENT_CONTROLLER_KEY(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_EVENT_CONTROLLER_KEY))
+#define CTK_IS_EVENT_CONTROLLER_KEY_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_EVENT_CONTROLLER_KEY))
+#define CTK_EVENT_CONTROLLER_KEY_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER_KEY, GtkEventControllerKeyClass))
 
 typedef struct _GtkEventControllerKey GtkEventControllerKey;
 typedef struct _GtkEventControllerKeyClass GtkEventControllerKeyClass;
@@ -60,4 +60,4 @@ guint               ctk_event_controller_key_get_group      (GtkEventControllerK
 
 G_END_DECLS
 
-#endif /* __GTK_EVENT_CONTROLLER_KEY_H__ */
+#endif /* __CTK_EVENT_CONTROLLER_KEY_H__ */

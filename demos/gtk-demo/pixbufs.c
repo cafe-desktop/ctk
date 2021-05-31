@@ -174,11 +174,11 @@ do_pixbufs (GtkWidget *do_widget)
     {
       GError *error;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Pixbufs");
-      ctk_window_set_resizable (GTK_WINDOW (window), FALSE);
+      ctk_window_set_title (CTK_WINDOW (window), "Pixbufs");
+      ctk_window_set_resizable (CTK_WINDOW (window), FALSE);
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
@@ -188,10 +188,10 @@ do_pixbufs (GtkWidget *do_widget)
         {
           GtkWidget *dialog;
 
-          dialog = ctk_message_dialog_new (GTK_WINDOW (window),
-                                           GTK_DIALOG_DESTROY_WITH_PARENT,
-                                           GTK_MESSAGE_ERROR,
-                                           GTK_BUTTONS_CLOSE,
+          dialog = ctk_message_dialog_new (CTK_WINDOW (window),
+                                           CTK_DIALOG_DESTROY_WITH_PARENT,
+                                           CTK_MESSAGE_ERROR,
+                                           CTK_BUTTONS_CLOSE,
                                            "Failed to load an image: %s",
                                            error->message);
 
@@ -213,7 +213,7 @@ do_pixbufs (GtkWidget *do_widget)
           g_signal_connect (da, "draw",
                             G_CALLBACK (draw_cb), NULL);
 
-          ctk_container_add (GTK_CONTAINER (window), da);
+          ctk_container_add (CTK_CONTAINER (window), da);
 
           ctk_widget_add_tick_callback (da, on_tick, NULL, NULL);
         }

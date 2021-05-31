@@ -16,23 +16,23 @@
  *
  * Author(s): Carlos Garnacho <carlosg@gnome.org>
  */
-#ifndef __GTK_GESTURE_STYLUS_H__
-#define __GTK_GESTURE_STYLUS_H__
+#ifndef __CTK_GESTURE_STYLUS_H__
+#define __CTK_GESTURE_STYLUS_H__
 
 #include <gtk/gtkgesture.h>
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_GESTURE_STYLUS         (ctk_gesture_stylus_get_type ())
-#define GTK_GESTURE_STYLUS(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_GESTURE_STYLUS, GtkGestureStylus))
-#define GTK_GESTURE_STYLUS_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), GTK_TYPE_GESTURE_STYLUS, GtkGestureStylusClass))
-#define GTK_IS_GESTURE_STYLUS(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_GESTURE_STYLUS))
-#define GTK_IS_GESTURE_STYLUS_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GTK_TYPE_GESTURE_STYLUS))
-#define GTK_GESTURE_STYLUS_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GTK_TYPE_GESTURE_STYLUS, GtkGestureStylusClass))
+#define CTK_TYPE_GESTURE_STYLUS         (ctk_gesture_stylus_get_type ())
+#define CTK_GESTURE_STYLUS(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_GESTURE_STYLUS, GtkGestureStylus))
+#define CTK_GESTURE_STYLUS_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST ((k), CTK_TYPE_GESTURE_STYLUS, GtkGestureStylusClass))
+#define CTK_IS_GESTURE_STYLUS(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_GESTURE_STYLUS))
+#define CTK_IS_GESTURE_STYLUS_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CTK_TYPE_GESTURE_STYLUS))
+#define CTK_GESTURE_STYLUS_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_GESTURE_STYLUS, GtkGestureStylusClass))
 
 typedef struct _GtkGestureStylus GtkGestureStylus;
 typedef struct _GtkGestureStylusClass GtkGestureStylusClass;
@@ -56,4 +56,4 @@ GdkDeviceTool *   ctk_gesture_stylus_get_device_tool (GtkGestureStylus *gesture)
 
 G_END_DECLS
 
-#endif /* __GTK_GESTURE_STYLUS_H__ */
+#endif /* __CTK_GESTURE_STYLUS_H__ */

@@ -23,11 +23,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_NOTEBOOK_H__
-#define __GTK_NOTEBOOK_H__
+#ifndef __CTK_NOTEBOOK_H__
+#define __CTK_NOTEBOOK_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -36,18 +36,18 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_NOTEBOOK                  (ctk_notebook_get_type ())
-#define GTK_NOTEBOOK(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_NOTEBOOK, GtkNotebook))
-#define GTK_NOTEBOOK_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_NOTEBOOK, GtkNotebookClass))
-#define GTK_IS_NOTEBOOK(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_NOTEBOOK))
-#define GTK_IS_NOTEBOOK_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_NOTEBOOK))
-#define GTK_NOTEBOOK_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_NOTEBOOK, GtkNotebookClass))
+#define CTK_TYPE_NOTEBOOK                  (ctk_notebook_get_type ())
+#define CTK_NOTEBOOK(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_NOTEBOOK, GtkNotebook))
+#define CTK_NOTEBOOK_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_NOTEBOOK, GtkNotebookClass))
+#define CTK_IS_NOTEBOOK(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_NOTEBOOK))
+#define CTK_IS_NOTEBOOK_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_NOTEBOOK))
+#define CTK_NOTEBOOK_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_NOTEBOOK, GtkNotebookClass))
 
 
 typedef enum
 {
-  GTK_NOTEBOOK_TAB_FIRST,
-  GTK_NOTEBOOK_TAB_LAST
+  CTK_NOTEBOOK_TAB_FIRST,
+  CTK_NOTEBOOK_TAB_LAST
 } GtkNotebookTab;
 
 typedef struct _GtkNotebook              GtkNotebook;
@@ -295,4 +295,4 @@ void       ctk_notebook_set_action_widget (GtkNotebook *notebook,
 
 G_END_DECLS
 
-#endif /* __GTK_NOTEBOOK_H__ */
+#endif /* __CTK_NOTEBOOK_H__ */

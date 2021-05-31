@@ -709,7 +709,7 @@ GtkExpander
   GtkContainer::border_width
   GtkExpander::spacing
 
-if (GTK_WIDGET_VISIBLE (bin->child) && interior_focus)
+if (CTK_WIDGET_VISIBLE (bin->child) && interior_focus)
 
 +-------------------------------------+
 |                  A                  |
@@ -744,7 +744,7 @@ if (GTK_WIDGET_VISIBLE (bin->child) && interior_focus)
  E: GtkWidget::focus_line_width
  F: GtkWidget::focus_padding
 
-if (GTK_WIDGET_VISIBLE (bin->child) && !interior_focus)
+if (CTK_WIDGET_VISIBLE (bin->child) && !interior_focus)
 
 +-------------------------------------------+
 |                    A                      |
@@ -783,7 +783,7 @@ if (GTK_WIDGET_VISIBLE (bin->child) && !interior_focus)
  E: GtkWidget::focus_line_width
  F: GtkWidget::focus_padding
 
-if (!GTK_WIDGET_VISIBLE (bin->child) && interior_focus)
+if (!CTK_WIDGET_VISIBLE (bin->child) && interior_focus)
 
 +-------------------------------------+
 |                  A                  |
@@ -807,7 +807,7 @@ if (!GTK_WIDGET_VISIBLE (bin->child) && interior_focus)
  E: GtkWidget::focus_line_width
  F: GtkWidget::focus_padding
 
-if (!GTK_WIDGET_VISIBLE (bin->child) && !interior_focus)
+if (!CTK_WIDGET_VISIBLE (bin->child) && !interior_focus)
 
 +-------------------------------------------+
 |                    A                      |

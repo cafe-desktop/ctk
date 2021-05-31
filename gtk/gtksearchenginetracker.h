@@ -19,19 +19,19 @@
  * Based on nautilus-search-engine-tracker.h
  */
 
-#ifndef __GTK_SEARCH_ENGINE_TRACKER_H__
-#define __GTK_SEARCH_ENGINE_TRACKER_H__
+#ifndef __CTK_SEARCH_ENGINE_TRACKER_H__
+#define __CTK_SEARCH_ENGINE_TRACKER_H__
 
 #include "gtksearchengine.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_SEARCH_ENGINE_TRACKER		(_ctk_search_engine_tracker_get_type ())
-#define GTK_SEARCH_ENGINE_TRACKER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_SEARCH_ENGINE_TRACKER, GtkSearchEngineTracker))
-#define GTK_SEARCH_ENGINE_TRACKER_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_SEARCH_ENGINE_TRACKER, GtkSearchEngineTrackerClass))
-#define GTK_IS_SEARCH_ENGINE_TRACKER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_SEARCH_ENGINE_TRACKER))
-#define GTK_IS_SEARCH_ENGINE_TRACKER_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_SEARCH_ENGINE_TRACKER))
-#define GTK_SEARCH_ENGINE_TRACKER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_SEARCH_ENGINE_TRACKER, GtkSearchEngineTrackerClass))
+#define CTK_TYPE_SEARCH_ENGINE_TRACKER		(_ctk_search_engine_tracker_get_type ())
+#define CTK_SEARCH_ENGINE_TRACKER(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_SEARCH_ENGINE_TRACKER, GtkSearchEngineTracker))
+#define CTK_SEARCH_ENGINE_TRACKER_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_SEARCH_ENGINE_TRACKER, GtkSearchEngineTrackerClass))
+#define CTK_IS_SEARCH_ENGINE_TRACKER(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_SEARCH_ENGINE_TRACKER))
+#define CTK_IS_SEARCH_ENGINE_TRACKER_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_SEARCH_ENGINE_TRACKER))
+#define CTK_SEARCH_ENGINE_TRACKER_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_SEARCH_ENGINE_TRACKER, GtkSearchEngineTrackerClass))
 
 typedef struct _GtkSearchEngineTracker GtkSearchEngineTracker;
 typedef struct _GtkSearchEngineTrackerClass GtkSearchEngineTrackerClass;
@@ -44,4 +44,4 @@ gboolean         _ctk_search_engine_tracker_is_indexed (GFile    *file,
                                                         gpointer  data);
 G_END_DECLS
 
-#endif /* __GTK_SEARCH_ENGINE_TRACKER_H__ */
+#endif /* __CTK_SEARCH_ENGINE_TRACKER_H__ */

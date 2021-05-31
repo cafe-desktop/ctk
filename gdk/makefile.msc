@@ -19,7 +19,7 @@ WTKIT = $(TOP)\wtkit126
 
 # Nothing much configurable below
 # overwrite version?
-GTK_VER=3.0
+CTK_VER=3.0
 
 !IFNDEF PERL
 PERL = perl
@@ -31,7 +31,7 @@ INCLUDES = -FImsvc_recommended_pragmas.h \
 
 DEFINES = \
 	-DHAVE_CONFIG_H \
-	-DGDK_VERSION=\"$(GTK_VER)\" \
+	-DGDK_VERSION=\"$(CTK_VER)\" \
 	-DG_LOG_DOMAIN=\"Gdk\" \
 	-DGDK_COMPILATION -DG_LOG_DOMAIN=\"Gdk\"
 
@@ -54,10 +54,10 @@ all: \
 	gdkmarshalers.h \
 	gdkmarshalers.c \
 	gdk-win32-backend \
-	libgdk-win32-$(GTK_VER)-0.dll \
+	libgdk-win32-$(CTK_VER)-0.dll \
 #	testgdk.exe \
-#	gdk-win32-$(GTK_VER)s.lib \
-#	gdk-x11-$(GTK_VER).dll \
+#	gdk-win32-$(CTK_VER)s.lib \
+#	gdk-x11-$(CTK_VER).dll \
 
 gdk_OBJECTS = \
 	gdk.obj \
@@ -146,21 +146,21 @@ gdk.def: gdk.symbols
 		gdk.symbols >> gdk.def
 
 # /force /verbose:lib 
-libgdk-win32-$(GTK_VER)-0.dll : $(gdk_OBJECTS) gdk.def win32\gdk-win32.lib
+libgdk-win32-$(CTK_VER)-0.dll : $(gdk_OBJECTS) gdk.def win32\gdk-win32.lib
 	$(CC) $(CFLAGS) -LD -Fe$@ $(gdk_OBJECTS) win32\gdk-win32.lib $(EXTRALIBS) \
 	gdi32.lib user32.lib imm32.lib shell32.lib ole32.lib uuid.lib win32\gdk.res \
-	$(LDFLAGS) /implib:gdk-win32-$(GTK_VER).lib /def:gdk.def
+	$(LDFLAGS) /implib:gdk-win32-$(CTK_VER).lib /def:gdk.def
 
-gdk-win32-$(GTK_VER)s.lib : $(gdk_OBJECTS)
-	lib /out:gdk-win32-$(GTK_VER)s.lib $(gdk_OBJECTS) win32\gdk-win32.lib
+gdk-win32-$(CTK_VER)s.lib : $(gdk_OBJECTS)
+	lib /out:gdk-win32-$(CTK_VER)s.lib $(gdk_OBJECTS) win32\gdk-win32.lib
 
-gdk-x11-$(GTK_VER).dll : $(gdk_OBJECTS) gdk.def x11\gdk-x11.lib
-	$(CC) $(CFLAGS) -LD -Fegdk-x11-$(GTK_VER).dll $(gdk_OBJECTS) \
+gdk-x11-$(CTK_VER).dll : $(gdk_OBJECTS) gdk.def x11\gdk-x11.lib
+	$(CC) $(CFLAGS) -LD -Fegdk-x11-$(CTK_VER).dll $(gdk_OBJECTS) \
 	$(PANGO)\pango\pangox-$(PANGO_VER).lib \
 	x11\gdk-x11.lib $(X11_LIBS) $(EXTRALIBS) user32.lib $(LDFLAGS) /def:gdk.def
 
-testgdk.exe : libgdk-win32-$(GTK_VER)-0.dll testgdk.obj
-	$(CC) -Fetestgdk.exe testgdk.obj gdk-win32-$(GTK_VER).lib $(EXTRALIBS) $(LDFLAGS)
+testgdk.exe : libgdk-win32-$(CTK_VER)-0.dll testgdk.obj
+	$(CC) -Fetestgdk.exe testgdk.obj gdk-win32-$(CTK_VER).lib $(EXTRALIBS) $(LDFLAGS)
 
 clean::
 	cd win32

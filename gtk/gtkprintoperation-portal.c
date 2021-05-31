@@ -107,8 +107,8 @@ portal_start_page (GtkPrintOperation *op,
 
   paper_size = ctk_page_setup_get_paper_size (page_setup);
 
-  w = ctk_paper_size_get_width (paper_size, GTK_UNIT_POINTS);
-  h = ctk_paper_size_get_height (paper_size, GTK_UNIT_POINTS);
+  w = ctk_paper_size_get_width (paper_size, CTK_UNIT_POINTS);
+  h = ctk_paper_size_get_height (paper_size, CTK_UNIT_POINTS);
 
   type = cairo_surface_get_type (op_portal->surface);
 
@@ -121,13 +121,13 @@ portal_start_page (GtkPrintOperation *op,
           cairo_ps_surface_dsc_begin_page_setup (op_portal->surface);
           switch (ctk_page_setup_get_orientation (page_setup))
             {
-              case GTK_PAGE_ORIENTATION_PORTRAIT:
-              case GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT:
+              case CTK_PAGE_ORIENTATION_PORTRAIT:
+              case CTK_PAGE_ORIENTATION_REVERSE_PORTRAIT:
                 cairo_ps_surface_dsc_comment (op_portal->surface, "%%PageOrientation: Portrait");
                 break;
 
-              case GTK_PAGE_ORIENTATION_LANDSCAPE:
-              case GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE:
+              case CTK_PAGE_ORIENTATION_LANDSCAPE:
+              case CTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE:
                 cairo_ps_surface_dsc_comment (op_portal->surface, "%%PageOrientation: Landscape");
                 break;
             }
@@ -136,8 +136,8 @@ portal_start_page (GtkPrintOperation *op,
         {
           if (!op->priv->manual_orientation)
             {
-              w = ctk_page_setup_get_paper_width (page_setup, GTK_UNIT_POINTS);
-              h = ctk_page_setup_get_paper_height (page_setup, GTK_UNIT_POINTS);
+              w = ctk_page_setup_get_paper_width (page_setup, CTK_UNIT_POINTS);
+              h = ctk_page_setup_get_paper_height (page_setup, CTK_UNIT_POINTS);
             }
           cairo_pdf_surface_set_size (op_portal->surface, w, h);
         }
@@ -211,7 +211,7 @@ portal_job_complete (GtkPrintJob  *job,
   op_portal->file_written = TRUE;
 
   settings = ctk_print_job_get_settings (job);
-  uri = ctk_print_settings_get (settings, GTK_PRINT_SETTINGS_OUTPUT_URI);
+  uri = ctk_print_settings_get (settings, CTK_PRINT_SETTINGS_OUTPUT_URI);
   filename = g_filename_from_uri (uri, NULL, NULL);
 
   fd = open (filename, O_RDONLY|O_CLOEXEC);
@@ -314,7 +314,7 @@ finish_print (PortalData        *portal,
       op_portal->surface = ctk_print_job_get_surface (job, &priv->error);
       if (op_portal->surface == NULL)
         {
-          portal->result = GTK_PRINT_OPERATION_RESULT_ERROR;
+          portal->result = CTK_PRINT_OPERATION_RESULT_ERROR;
           portal->do_print = FALSE;
           goto out;
         }
@@ -402,7 +402,7 @@ prepare_print_response (GDBusConnection *connection,
       char *uri;
       int fd;
 
-      portal->result = GTK_PRINT_OPERATION_RESULT_APPLY;
+      portal->result = CTK_PRINT_OPERATION_RESULT_APPLY;
 
       v = g_variant_lookup_value (options, "settings", G_VARIANT_TYPE_VARDICT);
       settings = ctk_print_settings_new_from_gvariant (v);
@@ -418,7 +418,7 @@ prepare_print_response (GDBusConnection *connection,
 
       fd = g_file_open_tmp ("gtkprintXXXXXX", &filename, NULL);
       uri = g_filename_to_uri (filename, NULL, NULL);
-      ctk_print_settings_set (settings, GTK_PRINT_SETTINGS_OUTPUT_URI, uri);
+      ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_OUTPUT_URI, uri);
       g_free (uri);
       close (fd);
 
@@ -427,7 +427,7 @@ prepare_print_response (GDBusConnection *connection,
     }
   else
     {
-      portal->result = GTK_PRINT_OPERATION_RESULT_CANCEL;
+      portal->result = CTK_PRINT_OPERATION_RESULT_CANCEL;
 
       if (portal->print_cb)
 	  portal->print_cb (portal->op, portal->parent, portal->do_print, portal->result);
@@ -493,7 +493,7 @@ create_portal_data (GtkPrintOperation          *op,
   guint signal_id;
   GError *error = NULL;
 
-  signal_id = g_signal_lookup ("create-custom-widget", GTK_TYPE_PRINT_OPERATION);
+  signal_id = g_signal_lookup ("create-custom-widget", CTK_TYPE_PRINT_OPERATION);
   if (g_signal_has_handler_pending (op, signal_id, 0, TRUE))
     g_warning ("GtkPrintOperation::create-custom-widget not supported with portal");
 
@@ -518,7 +518,7 @@ create_portal_data (GtkPrintOperation          *op,
   portal->proxy = proxy;
   portal->op = g_object_ref (op);
   portal->parent = parent;
-  portal->result = GTK_PRINT_OPERATION_RESULT_CANCEL;
+  portal->result = CTK_PRINT_OPERATION_RESULT_CANCEL;
   portal->print_cb = print_cb;
 
   if (print_cb) /* async case */
@@ -607,7 +607,7 @@ call_prepare_print (GtkPrintOperation *op,
   g_variant_ref_sink (portal->setup);
 
   if (portal->parent != NULL &&
-      ctk_widget_is_visible (GTK_WIDGET (portal->parent)) &&
+      ctk_widget_is_visible (CTK_WIDGET (portal->parent)) &&
       ctk_window_export_handle (portal->parent, window_handle_exported, portal))
     return;
 
@@ -637,7 +637,7 @@ ctk_print_operation_portal_run_dialog (GtkPrintOperation *op,
 
   portal = create_portal_data (op, parent, NULL);
   if (portal == NULL)
-    return GTK_PRINT_OPERATION_RESULT_ERROR;
+    return CTK_PRINT_OPERATION_RESULT_ERROR;
 
   call_prepare_print (op, portal);
 

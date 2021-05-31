@@ -33,7 +33,7 @@ main (int argc, char *argv[])
   ctk_init (&argc, &argv);
 
   window = g_object_connect (g_object_new (ctk_window_get_type (),
-                                           "type", GTK_WINDOW_TOPLEVEL,
+                                           "type", CTK_WINDOW_TOPLEVEL,
                                            "title", "hello world",
                                            "resizable", FALSE,
                                            "border_width", 10,

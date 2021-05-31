@@ -126,7 +126,7 @@ on_frame (double progress)
       window_height = HEIGHT + jitter;
     }
 
-  ctk_window_resize (GTK_WINDOW (window),
+  ctk_window_resize (CTK_WINDOW (window),
                      window_width, window_height);
 
   ctk_widget_queue_draw (window);
@@ -188,11 +188,11 @@ main(int argc, char **argv)
   g_print ("# Resizing?: %s\n",
            cb_no_resize ? "no" : "yes");
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  frame_stats_ensure (GTK_WINDOW (window));
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  frame_stats_ensure (CTK_WINDOW (window));
 
-  ctk_window_set_keep_above (GTK_WINDOW (window), TRUE);
-  ctk_window_set_gravity (GTK_WINDOW (window), GDK_GRAVITY_CENTER);
+  ctk_window_set_keep_above (CTK_WINDOW (window), TRUE);
+  ctk_window_set_gravity (CTK_WINDOW (window), GDK_GRAVITY_CENTER);
   ctk_widget_set_app_paintable (window, TRUE);
 
   g_signal_connect (window, "draw",
@@ -207,7 +207,7 @@ main(int argc, char **argv)
   monitor = gdk_display_get_primary_monitor (ctk_widget_get_display (window));
   gdk_monitor_get_geometry (monitor, &monitor_bounds);
 
-  ctk_window_move (GTK_WINDOW (window),
+  ctk_window_move (CTK_WINDOW (window),
                    monitor_bounds.x + (monitor_bounds.width - window_width) / 2,
                    monitor_bounds.y + (monitor_bounds.height - window_height) / 2);
 

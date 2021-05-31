@@ -293,7 +293,7 @@
  * * `im_module_file pathname`
  *
  *    Sets the pathname for the IM modules file. Setting this from RC files
- *       is deprecated; you should use the environment variable `GTK_IM_MODULE_FILE`
+ *       is deprecated; you should use the environment variable `CTK_IM_MODULE_FILE`
  *       instead.
  *
  * * `style name [ =
@@ -423,7 +423,7 @@
  * * `ACTIVE`
  *
  *         A variant of the `NORMAL` color used when the
- *         widget is in the %GTK_STATE_ACTIVE state, and also for
+ *         widget is in the %CTK_STATE_ACTIVE state, and also for
  *         the trough of a ScrollBar, tabs of a NoteBook
  *         other than the current tab and similar areas.
  *         Frequently, this should be a darker variant
@@ -431,7 +431,7 @@
  *
  * * `PRELIGHT`
  *
- *         A color used for widgets in the %GTK_STATE_PRELIGHT state. This
+ *         A color used for widgets in the %CTK_STATE_PRELIGHT state. This
  *         state is the used for Buttons and MenuItems
  *         that have the mouse cursor over them, and for
  *         their children.
@@ -648,7 +648,7 @@ typedef struct {
   GSList *color_hashes;
 } GtkRcStylePrivate;
 
-#define GTK_RC_STYLE_GET_PRIVATE(obj) ((GtkRcStylePrivate *) ctk_rc_style_get_instance_private ((GtkRcStyle *) (obj)))
+#define CTK_RC_STYLE_GET_PRIVATE(obj) ((GtkRcStylePrivate *) ctk_rc_style_get_instance_private ((GtkRcStyle *) (obj)))
 
 static void        ctk_rc_style_finalize             (GObject         *object);
 static void        ctk_rc_style_real_merge           (GtkRcStyle      *dest,
@@ -719,12 +719,12 @@ ctk_rc_make_default_dir (const gchar *type)
   const gchar *var;
   gchar *path;
 
-  var = g_getenv ("GTK_EXE_PREFIX");
+  var = g_getenv ("CTK_EXE_PREFIX");
 
   if (var)
-    path = g_build_filename (var, "lib", "gtk-3.0", GTK_BINARY_VERSION, type, NULL);
+    path = g_build_filename (var, "lib", "gtk-3.0", CTK_BINARY_VERSION, type, NULL);
   else
-    path = g_build_filename (_ctk_get_libdir (), "gtk-3.0", GTK_BINARY_VERSION, type, NULL);
+    path = g_build_filename (_ctk_get_libdir (), "gtk-3.0", CTK_BINARY_VERSION, type, NULL);
 
   return path;
 }
@@ -733,7 +733,7 @@ ctk_rc_make_default_dir (const gchar *type)
  * ctk_rc_get_im_module_path:
  *
  * Obtains the path in which to look for IM modules. See the documentation
- * of the `GTK_PATH`
+ * of the `CTK_PATH`
  * environment variable for more details about looking up modules. This
  * function is useful solely for utilities supplied with GTK+ and should
  * not be used by applications under normal circumstances.
@@ -757,7 +757,7 @@ ctk_rc_get_im_module_path (void)
  * ctk_rc_get_im_module_file:
  *
  * Obtains the path to the IM modules file. See the documentation
- * of the `GTK_IM_MODULE_FILE`
+ * of the `CTK_IM_MODULE_FILE`
  * environment variable for more details.
  *
  * Returns: (type filename): a newly-allocated string containing the
@@ -768,7 +768,7 @@ ctk_rc_get_im_module_path (void)
 gchar *
 ctk_rc_get_im_module_file (void)
 {
-  const gchar *var = g_getenv ("GTK_IM_MODULE_FILE");
+  const gchar *var = g_getenv ("CTK_IM_MODULE_FILE");
   gchar *result = NULL;
 
   if (var)
@@ -802,7 +802,7 @@ ctk_rc_get_theme_dir (void)
   const gchar *var;
   gchar *path;
 
-  var = g_getenv ("GTK_DATA_PREFIX");
+  var = g_getenv ("CTK_DATA_PREFIX");
 
   if (var)
     path = g_build_filename (var, "share", "themes", NULL);
@@ -817,7 +817,7 @@ ctk_rc_get_theme_dir (void)
  *
  * Returns a directory in which GTK+ looks for theme engines.
  * For full information about the search for theme engines,
- * see the docs for `GTK_PATH` in [Running GTK+ Applications][gtk-running].
+ * see the docs for `CTK_PATH` in [Running GTK+ Applications][gtk-running].
  *
  * return value: (type filename): the directory. (Must be freed with g_free())
  *
@@ -914,7 +914,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (GtkRcStyle, ctk_rc_style, G_TYPE_OBJECT)
 static void
 ctk_rc_style_init (GtkRcStyle *style)
 {
-  GtkRcStylePrivate *priv = GTK_RC_STYLE_GET_PRIVATE (style);
+  GtkRcStylePrivate *priv = CTK_RC_STYLE_GET_PRIVATE (style);
   guint i;
 
   style->name = NULL;
@@ -962,8 +962,8 @@ ctk_rc_style_finalize (GObject *object)
   GtkRcStylePrivate *rc_priv;
   gint i;
 
-  rc_style = GTK_RC_STYLE (object);
-  rc_priv = GTK_RC_STYLE_GET_PRIVATE (rc_style);
+  rc_style = CTK_RC_STYLE (object);
+  rc_priv = CTK_RC_STYLE_GET_PRIVATE (rc_style);
 
   g_free (rc_style->name);
   if (rc_style->font_desc)
@@ -1039,7 +1039,7 @@ ctk_rc_style_new (void)
 {
   GtkRcStyle *style;
 
-  style = g_object_new (GTK_TYPE_RC_STYLE, NULL);
+  style = g_object_new (CTK_TYPE_RC_STYLE, NULL);
 
   return style;
 }
@@ -1061,10 +1061,10 @@ ctk_rc_style_copy (GtkRcStyle *orig)
 {
   GtkRcStyle *style;
 
-  g_return_val_if_fail (GTK_IS_RC_STYLE (orig), NULL);
+  g_return_val_if_fail (CTK_IS_RC_STYLE (orig), NULL);
   
-  style = GTK_RC_STYLE_GET_CLASS (orig)->create_rc_style (orig);
-  GTK_RC_STYLE_GET_CLASS (style)->merge (style, orig);
+  style = CTK_RC_STYLE_GET_CLASS (orig)->create_rc_style (orig);
+  CTK_RC_STYLE_GET_CLASS (style)->merge (style, orig);
 
   return style;
 }
@@ -1151,29 +1151,29 @@ ctk_rc_style_real_merge (GtkRcStyle *dest,
       if (!dest->bg_pixmap_name[i] && src->bg_pixmap_name[i])
 	dest->bg_pixmap_name[i] = g_strdup (src->bg_pixmap_name[i]);
       
-      if (!(dest->color_flags[i] & GTK_RC_FG) && 
-	  src->color_flags[i] & GTK_RC_FG)
+      if (!(dest->color_flags[i] & CTK_RC_FG) && 
+	  src->color_flags[i] & CTK_RC_FG)
 	{
 	  dest->fg[i] = src->fg[i];
-	  dest->color_flags[i] |= GTK_RC_FG;
+	  dest->color_flags[i] |= CTK_RC_FG;
 	}
-      if (!(dest->color_flags[i] & GTK_RC_BG) && 
-	  src->color_flags[i] & GTK_RC_BG)
+      if (!(dest->color_flags[i] & CTK_RC_BG) && 
+	  src->color_flags[i] & CTK_RC_BG)
 	{
 	  dest->bg[i] = src->bg[i];
-	  dest->color_flags[i] |= GTK_RC_BG;
+	  dest->color_flags[i] |= CTK_RC_BG;
 	}
-      if (!(dest->color_flags[i] & GTK_RC_TEXT) && 
-	  src->color_flags[i] & GTK_RC_TEXT)
+      if (!(dest->color_flags[i] & CTK_RC_TEXT) && 
+	  src->color_flags[i] & CTK_RC_TEXT)
 	{
 	  dest->text[i] = src->text[i];
-	  dest->color_flags[i] |= GTK_RC_TEXT;
+	  dest->color_flags[i] |= CTK_RC_TEXT;
 	}
-      if (!(dest->color_flags[i] & GTK_RC_BASE) && 
-	  src->color_flags[i] & GTK_RC_BASE)
+      if (!(dest->color_flags[i] & CTK_RC_BASE) && 
+	  src->color_flags[i] & CTK_RC_BASE)
 	{
 	  dest->base[i] = src->base[i];
-	  dest->color_flags[i] |= GTK_RC_BASE;
+	  dest->color_flags[i] |= CTK_RC_BASE;
 	}
     }
 
@@ -1287,7 +1287,7 @@ ctk_rc_reparse_all (void)
 GtkStyle *
 ctk_rc_get_style (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   ctk_widget_ensure_style (widget);
 
@@ -1350,7 +1350,7 @@ ctk_rc_get_style_by_paths (GtkSettings *settings,
    */
   if (class_path == NULL)
     {
-      ctk_widget_path_append_type (path, type == G_TYPE_NONE ? GTK_TYPE_WIDGET : type);
+      ctk_widget_path_append_type (path, type == G_TYPE_NONE ? CTK_TYPE_WIDGET : type);
     }
   else
     {
@@ -1394,7 +1394,7 @@ ctk_rc_get_style_by_paths (GtkSettings *settings,
 
 	  component_type = g_type_from_name (component_class);
 	  if (component_type == G_TYPE_INVALID)
-	    component_type = GTK_TYPE_WIDGET;
+	    component_type = CTK_TYPE_WIDGET;
 
 	  pos = ctk_widget_path_append_type (path, component_type);
 	  if (component_name != NULL && strcmp (component_name, component_name) != 0)
@@ -1433,7 +1433,7 @@ lookup_color (GtkRcStyle *style,
               const char *color_name,
               GdkColor   *color)
 {
-  GtkRcStylePrivate *priv = GTK_RC_STYLE_GET_PRIVATE (style);
+  GtkRcStylePrivate *priv = CTK_RC_STYLE_GET_PRIVATE (style);
   GSList *iter;
 
   for (iter = priv->color_hashes; iter != NULL; iter = iter->next)
@@ -1533,23 +1533,23 @@ ctk_rc_parse_state (GScanner	 *scanner,
   token = g_scanner_get_next_token (scanner);
   switch (token)
     {
-    case GTK_RC_TOKEN_ACTIVE:
-      *state = GTK_STATE_ACTIVE;
+    case CTK_RC_TOKEN_ACTIVE:
+      *state = CTK_STATE_ACTIVE;
       break;
-    case GTK_RC_TOKEN_INSENSITIVE:
-      *state = GTK_STATE_INSENSITIVE;
+    case CTK_RC_TOKEN_INSENSITIVE:
+      *state = CTK_STATE_INSENSITIVE;
       break;
-    case GTK_RC_TOKEN_NORMAL:
-      *state = GTK_STATE_NORMAL;
+    case CTK_RC_TOKEN_NORMAL:
+      *state = CTK_STATE_NORMAL;
       break;
-    case GTK_RC_TOKEN_PRELIGHT:
-      *state = GTK_STATE_PRELIGHT;
+    case CTK_RC_TOKEN_PRELIGHT:
+      *state = CTK_STATE_PRELIGHT;
       break;
-    case GTK_RC_TOKEN_SELECTED:
-      *state = GTK_STATE_SELECTED;
+    case CTK_RC_TOKEN_SELECTED:
+      *state = CTK_STATE_SELECTED;
       break;
     default:
-      return /* G_TOKEN_SYMBOL */ GTK_RC_TOKEN_NORMAL;
+      return /* G_TOKEN_SYMBOL */ CTK_RC_TOKEN_NORMAL;
     }
   
   token = g_scanner_get_next_token (scanner);
@@ -1598,26 +1598,26 @@ ctk_rc_parse_priority (GScanner	           *scanner,
   token = g_scanner_get_next_token (scanner);
   switch (token)
     {
-    case GTK_RC_TOKEN_LOWEST:
-      *priority = GTK_PATH_PRIO_LOWEST;
+    case CTK_RC_TOKEN_LOWEST:
+      *priority = CTK_PATH_PRIO_LOWEST;
       break;
-    case GTK_RC_TOKEN_GTK:
-      *priority = GTK_PATH_PRIO_GTK;
+    case CTK_RC_TOKEN_GTK:
+      *priority = CTK_PATH_PRIO_GTK;
       break;
-    case GTK_RC_TOKEN_APPLICATION:
-      *priority = GTK_PATH_PRIO_APPLICATION;
+    case CTK_RC_TOKEN_APPLICATION:
+      *priority = CTK_PATH_PRIO_APPLICATION;
       break;
-    case GTK_RC_TOKEN_THEME:
-      *priority = GTK_PATH_PRIO_THEME;
+    case CTK_RC_TOKEN_THEME:
+      *priority = CTK_PATH_PRIO_THEME;
       break;
-    case GTK_RC_TOKEN_RC:
-      *priority = GTK_PATH_PRIO_RC;
+    case CTK_RC_TOKEN_RC:
+      *priority = CTK_PATH_PRIO_RC;
       break;
-    case GTK_RC_TOKEN_HIGHEST:
-      *priority = GTK_PATH_PRIO_HIGHEST;
+    case CTK_RC_TOKEN_HIGHEST:
+      *priority = CTK_PATH_PRIO_HIGHEST;
       break;
     default:
-      return /* G_TOKEN_SYMBOL */ GTK_RC_TOKEN_APPLICATION;
+      return /* G_TOKEN_SYMBOL */ CTK_RC_TOKEN_APPLICATION;
     }
   
   g_scanner_set_scope (scanner, old_scope);
@@ -1906,19 +1906,19 @@ ctk_binding_set_add_path (GtkBindingSet       *binding_set,
 
   g_return_if_fail (binding_set != NULL);
   g_return_if_fail (path_pattern != NULL);
-  g_return_if_fail (priority <= GTK_PATH_PRIO_MASK);
+  g_return_if_fail (priority <= CTK_PATH_PRIO_MASK);
 
-  priority &= GTK_PATH_PRIO_MASK;
+  priority &= CTK_PATH_PRIO_MASK;
 
   switch (path_type)
     {
-    case  GTK_PATH_WIDGET:
+    case  CTK_PATH_WIDGET:
       slist_p = &binding_set->widget_path_pspecs;
       break;
-    case  GTK_PATH_WIDGET_CLASS:
+    case  CTK_PATH_WIDGET_CLASS:
       slist_p = &binding_set->widget_class_pspecs;
       break;
-    case  GTK_PATH_CLASS:
+    case  CTK_PATH_CLASS:
       slist_p = &binding_set->class_branch_pspecs;
       break;
     default:
@@ -1929,7 +1929,7 @@ ctk_binding_set_add_path (GtkBindingSet       *binding_set,
 
   pspec = g_new (PatternSpec, 1);
   pspec->type = path_type;
-  if (path_type == GTK_PATH_WIDGET_CLASS)
+  if (path_type == CTK_PATH_WIDGET_CLASS)
     pspec->pspec = NULL;
   else
     pspec->pspec = g_pattern_spec_new (path_pattern);

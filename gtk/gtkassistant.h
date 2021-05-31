@@ -21,10 +21,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ASSISTANT_H__
-#define __GTK_ASSISTANT_H__
+#ifndef __CTK_ASSISTANT_H__
+#define __CTK_ASSISTANT_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -32,28 +32,28 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ASSISTANT         (ctk_assistant_get_type ())
-#define GTK_ASSISTANT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_ASSISTANT, GtkAssistant))
-#define GTK_ASSISTANT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), GTK_TYPE_ASSISTANT, GtkAssistantClass))
-#define GTK_IS_ASSISTANT(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_ASSISTANT))
-#define GTK_IS_ASSISTANT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE    ((c), GTK_TYPE_ASSISTANT))
-#define GTK_ASSISTANT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), GTK_TYPE_ASSISTANT, GtkAssistantClass))
+#define CTK_TYPE_ASSISTANT         (ctk_assistant_get_type ())
+#define CTK_ASSISTANT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_ASSISTANT, GtkAssistant))
+#define CTK_ASSISTANT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_ASSISTANT, GtkAssistantClass))
+#define CTK_IS_ASSISTANT(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_ASSISTANT))
+#define CTK_IS_ASSISTANT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE    ((c), CTK_TYPE_ASSISTANT))
+#define CTK_ASSISTANT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_ASSISTANT, GtkAssistantClass))
 
 /**
  * GtkAssistantPageType:
- * @GTK_ASSISTANT_PAGE_CONTENT: The page has regular contents. Both the
+ * @CTK_ASSISTANT_PAGE_CONTENT: The page has regular contents. Both the
  *  Back and forward buttons will be shown.
- * @GTK_ASSISTANT_PAGE_INTRO: The page contains an introduction to the
+ * @CTK_ASSISTANT_PAGE_INTRO: The page contains an introduction to the
  *  assistant task. Only the Forward button will be shown if there is a
  *   next page.
- * @GTK_ASSISTANT_PAGE_CONFIRM: The page lets the user confirm or deny the
+ * @CTK_ASSISTANT_PAGE_CONFIRM: The page lets the user confirm or deny the
  *  changes. The Back and Apply buttons will be shown.
- * @GTK_ASSISTANT_PAGE_SUMMARY: The page informs the user of the changes
+ * @CTK_ASSISTANT_PAGE_SUMMARY: The page informs the user of the changes
  *  done. Only the Close button will be shown.
- * @GTK_ASSISTANT_PAGE_PROGRESS: Used for tasks that take a long time to
+ * @CTK_ASSISTANT_PAGE_PROGRESS: Used for tasks that take a long time to
  *  complete, blocks the assistant until the page is marked as complete.
  *   Only the back button will be shown.
- * @GTK_ASSISTANT_PAGE_CUSTOM: Used for when other page types are not
+ * @CTK_ASSISTANT_PAGE_CUSTOM: Used for when other page types are not
  *  appropriate. No buttons will be shown, and the application must
  *  add its own buttons through ctk_assistant_add_action_widget().
  *
@@ -61,20 +61,20 @@ G_BEGIN_DECLS
  * used to handle buttons sensitivity and visibility.
  *
  * Note that an assistant needs to end its page flow with a page of type
- * %GTK_ASSISTANT_PAGE_CONFIRM, %GTK_ASSISTANT_PAGE_SUMMARY or
- * %GTK_ASSISTANT_PAGE_PROGRESS to be correct.
+ * %CTK_ASSISTANT_PAGE_CONFIRM, %CTK_ASSISTANT_PAGE_SUMMARY or
+ * %CTK_ASSISTANT_PAGE_PROGRESS to be correct.
  *
  * The Cancel button will only be shown if the page isn’t “committed”.
  * See ctk_assistant_commit() for details.
  */
 typedef enum
 {
-  GTK_ASSISTANT_PAGE_CONTENT,
-  GTK_ASSISTANT_PAGE_INTRO,
-  GTK_ASSISTANT_PAGE_CONFIRM,
-  GTK_ASSISTANT_PAGE_SUMMARY,
-  GTK_ASSISTANT_PAGE_PROGRESS,
-  GTK_ASSISTANT_PAGE_CUSTOM
+  CTK_ASSISTANT_PAGE_CONTENT,
+  CTK_ASSISTANT_PAGE_INTRO,
+  CTK_ASSISTANT_PAGE_CONFIRM,
+  CTK_ASSISTANT_PAGE_SUMMARY,
+  CTK_ASSISTANT_PAGE_PROGRESS,
+  CTK_ASSISTANT_PAGE_CUSTOM
 } GtkAssistantPageType;
 
 typedef struct _GtkAssistant        GtkAssistant;
@@ -227,4 +227,4 @@ gboolean              ctk_assistant_get_page_has_padding  (GtkAssistant *assista
 
 G_END_DECLS
 
-#endif /* __GTK_ASSISTANT_H__ */
+#endif /* __CTK_ASSISTANT_H__ */

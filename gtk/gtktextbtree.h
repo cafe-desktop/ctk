@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TEXT_BTREE_H__
-#define __GTK_TEXT_BTREE_H__
+#ifndef __CTK_TEXT_BTREE_H__
+#define __CTK_TEXT_BTREE_H__
 
 #if 0
 #define DEBUG_VALIDATION_AND_SCROLLING

@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_MAIN_H__
-#define __GTK_MAIN_H__
+#ifndef __CTK_MAIN_H__
+#define __CTK_MAIN_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -40,7 +40,7 @@
 G_BEGIN_DECLS
 
 /**
- * GTK_PRIORITY_RESIZE: (value 110)
+ * CTK_PRIORITY_RESIZE: (value 110)
  *
  * Use this priority for functionality related to size allocation.
  *
@@ -48,7 +48,7 @@ G_BEGIN_DECLS
  * This priority is higher than %GDK_PRIORITY_REDRAW to avoid
  * resizing a widget which was just redrawn.
  */
-#define GTK_PRIORITY_RESIZE (G_PRIORITY_HIGH_IDLE + 10)
+#define CTK_PRIORITY_RESIZE (G_PRIORITY_HIGH_IDLE + 10)
 
 /**
  * GtkKeySnoopFunc:
@@ -206,4 +206,4 @@ void       ctk_propagate_event          (GtkWidget       *widget,
 
 G_END_DECLS
 
-#endif /* __GTK_MAIN_H__ */
+#endif /* __CTK_MAIN_H__ */

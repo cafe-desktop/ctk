@@ -24,7 +24,7 @@
 
 static void atk_action_interface_init (AtkActionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkColorSwatchAccessible, _ctk_color_swatch_accessible, GTK_TYPE_WIDGET_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkColorSwatchAccessible, _ctk_color_swatch_accessible, CTK_TYPE_WIDGET_ACCESSIBLE,
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_ACTION, atk_action_interface_init))
 
 static void
@@ -38,8 +38,8 @@ state_changed_cb (GtkWidget     *widget,
 
   flags = ctk_widget_get_state_flags (widget);
 
-  was_selected = (previous_flags & GTK_STATE_FLAG_SELECTED) != 0;
-  selected = (flags & GTK_STATE_FLAG_SELECTED) != 0;
+  was_selected = (previous_flags & CTK_STATE_FLAG_SELECTED) != 0;
+  selected = (flags & CTK_STATE_FLAG_SELECTED) != 0;
 
   accessible = ctk_widget_get_accessible (widget);
   if (selected && !was_selected)
@@ -68,10 +68,10 @@ ctk_color_swatch_accessible_ref_state_set (AtkObject *accessible)
 
   state_set = ATK_OBJECT_CLASS (_ctk_color_swatch_accessible_parent_class)->ref_state_set (accessible);
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget != NULL)
     {
-      if ((ctk_widget_get_state_flags (widget) & GTK_STATE_FLAG_SELECTED) != 0)
+      if ((ctk_widget_get_state_flags (widget) & CTK_STATE_FLAG_SELECTED) != 0)
         atk_state_set_add_state (state_set, ATK_STATE_CHECKED);
     }
 
@@ -82,18 +82,18 @@ static void
 ctk_color_swatch_accessible_notify_gtk (GObject    *obj,
                                         GParamSpec *pspec)
 {
-  GtkWidget *widget = GTK_WIDGET (obj);
+  GtkWidget *widget = CTK_WIDGET (obj);
   AtkObject *atk_obj = ctk_widget_get_accessible (widget);
 
   if (strcmp (pspec->name, "selectable") == 0)
     {
-      if (ctk_color_swatch_get_selectable (GTK_COLOR_SWATCH (widget)))
+      if (ctk_color_swatch_get_selectable (CTK_COLOR_SWATCH (widget)))
         atk_object_set_role (atk_obj, ATK_ROLE_RADIO_BUTTON);
       else
         atk_object_set_role (atk_obj, ATK_ROLE_PUSH_BUTTON);
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (_ctk_color_swatch_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (_ctk_color_swatch_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 static void
@@ -171,14 +171,14 @@ ctk_color_swatch_accessible_do_action (AtkAction *action,
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (action));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (action));
   if (widget == NULL)
     return FALSE;
 
   switch (i)
     {
     case 0:
-      ctk_widget_set_state_flags (widget, GTK_STATE_FLAG_SELECTED, FALSE);
+      ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_SELECTED, FALSE);
       break;
 
     case 1:

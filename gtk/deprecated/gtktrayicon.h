@@ -15,19 +15,19 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TRAY_ICON_H__
-#define __GTK_TRAY_ICON_H__
+#ifndef __CTK_TRAY_ICON_H__
+#define __CTK_TRAY_ICON_H__
 
 #include "gtkplug.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_TRAY_ICON		(ctk_tray_icon_get_type ())
-#define GTK_TRAY_ICON(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TRAY_ICON, GtkTrayIcon))
-#define GTK_TRAY_ICON_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TRAY_ICON, GtkTrayIconClass))
-#define GTK_IS_TRAY_ICON(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TRAY_ICON))
-#define GTK_IS_TRAY_ICON_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TRAY_ICON))
-#define GTK_TRAY_ICON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TRAY_ICON, GtkTrayIconClass))
+#define CTK_TYPE_TRAY_ICON		(ctk_tray_icon_get_type ())
+#define CTK_TRAY_ICON(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TRAY_ICON, GtkTrayIcon))
+#define CTK_TRAY_ICON_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TRAY_ICON, GtkTrayIconClass))
+#define CTK_IS_TRAY_ICON(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TRAY_ICON))
+#define CTK_IS_TRAY_ICON_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TRAY_ICON))
+#define CTK_TRAY_ICON_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TRAY_ICON, GtkTrayIconClass))
 	
 typedef struct _GtkTrayIcon	   GtkTrayIcon;
 typedef struct _GtkTrayIconPrivate GtkTrayIconPrivate;
@@ -72,4 +72,4 @@ gint           _ctk_tray_icon_get_icon_size   (GtkTrayIcon *icon);
 
 G_END_DECLS
 
-#endif /* __GTK_TRAY_ICON_H__ */
+#endif /* __CTK_TRAY_ICON_H__ */

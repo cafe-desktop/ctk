@@ -78,8 +78,8 @@ ctk_scrollable_default_init (GtkScrollableInterface *iface)
                                P_("Horizontal adjustment that is shared "
                                   "between the scrollable widget and its "
                                   "controller"),
-                               GTK_TYPE_ADJUSTMENT,
-                               GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT);
+                               CTK_TYPE_ADJUSTMENT,
+                               CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT);
   g_object_interface_install_property (iface, pspec);
 
   /**
@@ -95,8 +95,8 @@ ctk_scrollable_default_init (GtkScrollableInterface *iface)
                                P_("Vertical adjustment that is shared "
                                   "between the scrollable widget and its "
                                   "controller"),
-                               GTK_TYPE_ADJUSTMENT,
-                               GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT);
+                               CTK_TYPE_ADJUSTMENT,
+                               CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT);
   g_object_interface_install_property (iface, pspec);
 
   /**
@@ -110,9 +110,9 @@ ctk_scrollable_default_init (GtkScrollableInterface *iface)
   pspec = g_param_spec_enum ("hscroll-policy",
 			     P_("Horizontal Scrollable Policy"),
 			     P_("How the size of the content should be determined"),
-			     GTK_TYPE_SCROLLABLE_POLICY,
-			     GTK_SCROLL_MINIMUM,
-			     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+			     CTK_TYPE_SCROLLABLE_POLICY,
+			     CTK_SCROLL_MINIMUM,
+			     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
   g_object_interface_install_property (iface, pspec);
 
   /**
@@ -126,9 +126,9 @@ ctk_scrollable_default_init (GtkScrollableInterface *iface)
   pspec = g_param_spec_enum ("vscroll-policy",
 			     P_("Vertical Scrollable Policy"),
 			     P_("How the size of the content should be determined"),
-			     GTK_TYPE_SCROLLABLE_POLICY,
-			     GTK_SCROLL_MINIMUM,
-			     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+			     CTK_TYPE_SCROLLABLE_POLICY,
+			     CTK_SCROLL_MINIMUM,
+			     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
   g_object_interface_install_property (iface, pspec);
 }
 
@@ -147,7 +147,7 @@ ctk_scrollable_get_hadjustment (GtkScrollable *scrollable)
 {
   GtkAdjustment *adj = NULL;
 
-  g_return_val_if_fail (GTK_IS_SCROLLABLE (scrollable), NULL);
+  g_return_val_if_fail (CTK_IS_SCROLLABLE (scrollable), NULL);
 
   g_object_get (scrollable, "hadjustment", &adj, NULL);
 
@@ -174,8 +174,8 @@ void
 ctk_scrollable_set_hadjustment (GtkScrollable *scrollable,
                                 GtkAdjustment *hadjustment)
 {
-  g_return_if_fail (GTK_IS_SCROLLABLE (scrollable));
-  g_return_if_fail (hadjustment == NULL || GTK_IS_ADJUSTMENT (hadjustment));
+  g_return_if_fail (CTK_IS_SCROLLABLE (scrollable));
+  g_return_if_fail (hadjustment == NULL || CTK_IS_ADJUSTMENT (hadjustment));
 
   g_object_set (scrollable, "hadjustment", hadjustment, NULL);
 }
@@ -195,7 +195,7 @@ ctk_scrollable_get_vadjustment (GtkScrollable *scrollable)
 {
   GtkAdjustment *adj = NULL;
 
-  g_return_val_if_fail (GTK_IS_SCROLLABLE (scrollable), NULL);
+  g_return_val_if_fail (CTK_IS_SCROLLABLE (scrollable), NULL);
 
   g_object_get (scrollable, "vadjustment", &adj, NULL);
 
@@ -222,8 +222,8 @@ void
 ctk_scrollable_set_vadjustment (GtkScrollable *scrollable,
                                 GtkAdjustment *vadjustment)
 {
-  g_return_if_fail (GTK_IS_SCROLLABLE (scrollable));
-  g_return_if_fail (vadjustment == NULL || GTK_IS_ADJUSTMENT (vadjustment));
+  g_return_if_fail (CTK_IS_SCROLLABLE (scrollable));
+  g_return_if_fail (vadjustment == NULL || CTK_IS_ADJUSTMENT (vadjustment));
 
   g_object_set (scrollable, "vadjustment", vadjustment, NULL);
 }
@@ -244,7 +244,7 @@ ctk_scrollable_get_hscroll_policy (GtkScrollable *scrollable)
 {
   GtkScrollablePolicy policy;
 
-  g_return_val_if_fail (GTK_IS_SCROLLABLE (scrollable), GTK_SCROLL_MINIMUM);
+  g_return_val_if_fail (CTK_IS_SCROLLABLE (scrollable), CTK_SCROLL_MINIMUM);
 
   g_object_get (scrollable, "hscroll-policy", &policy, NULL);
 
@@ -266,7 +266,7 @@ void
 ctk_scrollable_set_hscroll_policy (GtkScrollable       *scrollable,
 				   GtkScrollablePolicy  policy)
 {
-  g_return_if_fail (GTK_IS_SCROLLABLE (scrollable));
+  g_return_if_fail (CTK_IS_SCROLLABLE (scrollable));
 
   g_object_set (scrollable, "hscroll-policy", policy, NULL);
 }
@@ -286,7 +286,7 @@ ctk_scrollable_get_vscroll_policy (GtkScrollable *scrollable)
 {
   GtkScrollablePolicy policy;
 
-  g_return_val_if_fail (GTK_IS_SCROLLABLE (scrollable), GTK_SCROLL_MINIMUM);
+  g_return_val_if_fail (CTK_IS_SCROLLABLE (scrollable), CTK_SCROLL_MINIMUM);
 
   g_object_get (scrollable, "vscroll-policy", &policy, NULL);
 
@@ -308,7 +308,7 @@ void
 ctk_scrollable_set_vscroll_policy (GtkScrollable       *scrollable,
 				   GtkScrollablePolicy  policy)
 {
-  g_return_if_fail (GTK_IS_SCROLLABLE (scrollable));
+  g_return_if_fail (CTK_IS_SCROLLABLE (scrollable));
 
   g_object_set (scrollable, "vscroll-policy", policy, NULL);
 }
@@ -332,11 +332,11 @@ gboolean
 ctk_scrollable_get_border (GtkScrollable *scrollable,
                            GtkBorder     *border)
 {
-  g_return_val_if_fail (GTK_IS_SCROLLABLE (scrollable), FALSE);
+  g_return_val_if_fail (CTK_IS_SCROLLABLE (scrollable), FALSE);
   g_return_val_if_fail (border != NULL, FALSE);
 
-  if (GTK_SCROLLABLE_GET_IFACE (scrollable)->get_border)
-    return GTK_SCROLLABLE_GET_IFACE (scrollable)->get_border (scrollable, border);
+  if (CTK_SCROLLABLE_GET_IFACE (scrollable)->get_border)
+    return CTK_SCROLLABLE_GET_IFACE (scrollable)->get_border (scrollable, border);
 
   return FALSE;
 }

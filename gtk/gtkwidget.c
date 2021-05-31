@@ -109,7 +109,7 @@
  * in the #GtkSizeRequestMode chosen by the toplevel.
  *
  * For example, when queried in the normal
- * %GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH mode:
+ * %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH mode:
  * First, the default minimum and natural width for each widget
  * in the interface will be computed using ctk_widget_get_preferred_width().
  * Because the preferred widths for each container depend on the preferred
@@ -154,7 +154,7 @@
  * height-for-width or width-for-height requests will always be allocated
  * at least enough space to fit its own content.
  *
- * Here are some examples of how a %GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH widget
+ * Here are some examples of how a %CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH widget
  * generally deals with width-for-height requests, for #GtkWidgetClass.get_preferred_height()
  * it will do:
  *
@@ -168,10 +168,10 @@
  *      {
  *        gint min_width, nat_width;
  *
- *        GTK_WIDGET_GET_CLASS (widget)->get_preferred_width (widget,
+ *        CTK_WIDGET_GET_CLASS (widget)->get_preferred_width (widget,
  *                                                            &min_width,
  *                                                            &nat_width);
- *        GTK_WIDGET_GET_CLASS (widget)->get_preferred_height_for_width
+ *        CTK_WIDGET_GET_CLASS (widget)->get_preferred_height_for_width
  *                                                           (widget,
  *                                                            min_width,
  *                                                            min_height,
@@ -197,7 +197,7 @@
  * {
  *    if (i_am_in_height_for_width_mode)
  *      {
- *        GTK_WIDGET_GET_CLASS (widget)->get_preferred_width (widget,
+ *        CTK_WIDGET_GET_CLASS (widget)->get_preferred_width (widget,
  *                                                            min_width,
  *                                                            nat_width);
  *      }
@@ -217,7 +217,7 @@
  * be careful to call its virtual methods directly, like this:
  *
  * |[<!-- language="C" -->
- * GTK_WIDGET_GET_CLASS(widget)->get_preferred_width (widget,
+ * CTK_WIDGET_GET_CLASS(widget)->get_preferred_width (widget,
  *                                                    &min,
  *                                                    &natural);
  * ]|
@@ -240,7 +240,7 @@
  * Since 3.10 GTK+ also supports baseline vertical alignment of widgets. This
  * means that widgets are positioned such that the typographical baseline of
  * widgets in the same row are aligned. This happens if a widget supports baselines,
- * has a vertical alignment of %GTK_ALIGN_BASELINE, and is inside a container
+ * has a vertical alignment of %CTK_ALIGN_BASELINE, and is inside a container
  * that supports baselines and has a natural “row” that it aligns to the baseline,
  * or a baseline assigned to it by the grandparent.
  *
@@ -252,7 +252,7 @@
  * so if baselines are not supported it doesn’t need to be implemented.
  *
  * If a widget ends up baseline aligned it will be allocated all the space in the parent
- * as if it was %GTK_ALIGN_FILL, but the selected baseline can be found via ctk_widget_get_allocated_baseline().
+ * as if it was %CTK_ALIGN_FILL, but the selected baseline can be found via ctk_widget_get_allocated_baseline().
  * If this has a value other than -1 you need to align the widget such that the baseline
  * appears at the position.
  *
@@ -356,7 +356,7 @@
  * |[
  * <interface>
  *   <template class="FooWidget" parent="GtkBox">
- *     <property name="orientation">GTK_ORIENTATION_HORIZONTAL</property>
+ *     <property name="orientation">CTK_ORIENTATION_HORIZONTAL</property>
  *     <property name="spacing">4</property>
  *     <child>
  *       <object class="GtkButton" id="hello_button">
@@ -384,7 +384,7 @@
  * {
  *   // ...
  *
- *   ctk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
+ *   ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (klass),
  *                                                "/com/example/ui/foowidget.ui");
  * }
  * ]|
@@ -397,7 +397,7 @@
  * foo_widget_init (FooWidget *self)
  * {
  *   // ...
- *   ctk_widget_init_template (GTK_WIDGET (self));
+ *   ctk_widget_init_template (CTK_WIDGET (self));
  * }
  * ]|
  *
@@ -413,17 +413,17 @@
  *   GtkWidget *goodbye_button;
  * } FooWidgetPrivate;
  *
- * G_DEFINE_TYPE_WITH_PRIVATE (FooWidget, foo_widget, GTK_TYPE_BOX)
+ * G_DEFINE_TYPE_WITH_PRIVATE (FooWidget, foo_widget, CTK_TYPE_BOX)
  *
  * static void
  * foo_widget_class_init (FooWidgetClass *klass)
  * {
  *   // ...
- *   ctk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
+ *   ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (klass),
  *                                                "/com/example/ui/foowidget.ui");
- *   ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (klass),
+ *   ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (klass),
  *                                                 FooWidget, hello_button);
- *   ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (klass),
+ *   ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (klass),
  *                                                 FooWidget, goodbye_button);
  * }
  *
@@ -452,16 +452,16 @@
  * foo_widget_class_init (FooWidgetClass *klass)
  * {
  *   // ...
- *   ctk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (klass),
+ *   ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (klass),
  *                                                "/com/example/ui/foowidget.ui");
- *   ctk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (klass), hello_button_clicked);
+ *   ctk_widget_class_bind_template_callback (CTK_WIDGET_CLASS (klass), hello_button_clicked);
  * }
  * ]|
  */
 
-#define GTK_STATE_FLAGS_DO_PROPAGATE (GTK_STATE_FLAG_INSENSITIVE|GTK_STATE_FLAG_BACKDROP)
+#define CTK_STATE_FLAGS_DO_PROPAGATE (CTK_STATE_FLAG_INSENSITIVE|CTK_STATE_FLAG_BACKDROP)
 
-#define WIDGET_CLASS(w)	 GTK_WIDGET_GET_CLASS (w)
+#define WIDGET_CLASS(w)	 CTK_WIDGET_GET_CLASS (w)
 
 typedef struct {
   gchar               *name;           /* Name of the template automatic child */
@@ -824,7 +824,7 @@ static gint             GtkWidget_private_offset = 0;
 static gpointer         ctk_widget_parent_class = NULL;
 static guint            widget_signals[LAST_SIGNAL] = { 0 };
 static guint            composite_child_stack = 0;
-GtkTextDirection ctk_default_direction = GTK_TEXT_DIR_LTR;
+GtkTextDirection ctk_default_direction = CTK_TEXT_DIR_LTR;
 static GParamSpecPool  *style_property_spec_pool = NULL;
 
 static GQuark		quark_property_parser = 0;
@@ -898,7 +898,7 @@ ctk_widget_get_type (void)
 
       g_type_add_interface_static (widget_type, ATK_TYPE_IMPLEMENTOR,
                                    &accessibility_info) ;
-      g_type_add_interface_static (widget_type, GTK_TYPE_BUILDABLE,
+      g_type_add_interface_static (widget_type, CTK_TYPE_BUILDABLE,
                                    &buildable_info) ;
     }
 
@@ -916,7 +916,7 @@ ctk_widget_base_class_init (gpointer g_class)
 {
   GtkWidgetClass *klass = g_class;
 
-  klass->priv = G_TYPE_CLASS_GET_PRIVATE (g_class, GTK_TYPE_WIDGET, GtkWidgetClassPrivate);
+  klass->priv = G_TYPE_CLASS_GET_PRIVATE (g_class, CTK_TYPE_WIDGET, GtkWidgetClassPrivate);
   klass->priv->template = NULL;
 }
 
@@ -925,7 +925,7 @@ child_property_notify_dispatcher (GObject     *object,
 				  guint        n_pspecs,
 				  GParamSpec **pspecs)
 {
-  GTK_WIDGET_GET_CLASS (object)->dispatch_child_properties_changed (GTK_WIDGET (object), n_pspecs, pspecs);
+  CTK_WIDGET_GET_CLASS (object)->dispatch_child_properties_changed (CTK_WIDGET (object), n_pspecs, pspecs);
 }
 
 /* We guard against the draw signal callbacks modifying the state of the
@@ -1103,7 +1103,7 @@ ctk_widget_class_init (GtkWidgetClass *klass)
   klass->show_help = ctk_widget_real_show_help;
 
   /* Accessibility support */
-  klass->priv->accessible_type = GTK_TYPE_ACCESSIBLE;
+  klass->priv->accessible_type = CTK_TYPE_ACCESSIBLE;
   klass->priv->accessible_role = ATK_ROLE_INVALID;
   klass->get_accessible = ctk_widget_real_get_accessible;
 
@@ -1118,14 +1118,14 @@ ctk_widget_class_init (GtkWidgetClass *klass)
                            P_("Widget name"),
                            P_("The name of the widget"),
                            NULL,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   widget_props[PROP_PARENT] =
       g_param_spec_object ("parent",
                            P_("Parent widget"),
                            P_("The parent widget of this widget. Must be a Container widget"),
-                           GTK_TYPE_CONTAINER,
-                           GTK_PARAM_READWRITE);
+                           CTK_TYPE_CONTAINER,
+                           CTK_PARAM_READWRITE);
 
   widget_props[PROP_WIDTH_REQUEST] =
       g_param_spec_int ("width-request",
@@ -1133,7 +1133,7 @@ ctk_widget_class_init (GtkWidgetClass *klass)
                         P_("Override for width request of the widget, or -1 if natural request should be used"),
                         -1, G_MAXINT,
                         -1,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_HEIGHT_REQUEST] =
       g_param_spec_int ("height-request",
@@ -1141,49 +1141,49 @@ ctk_widget_class_init (GtkWidgetClass *klass)
                         P_("Override for height request of the widget, or -1 if natural request should be used"),
                         -1, G_MAXINT,
                         -1,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_VISIBLE] =
       g_param_spec_boolean ("visible",
                             P_("Visible"),
                             P_("Whether the widget is visible"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_SENSITIVE] =
       g_param_spec_boolean ("sensitive",
                             P_("Sensitive"),
                             P_("Whether the widget responds to input"),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_APP_PAINTABLE] =
       g_param_spec_boolean ("app-paintable",
                             P_("Application paintable"),
                             P_("Whether the application will paint directly on the widget"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_CAN_FOCUS] =
       g_param_spec_boolean ("can-focus",
                             P_("Can focus"),
                             P_("Whether the widget can accept the input focus"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_HAS_FOCUS] =
       g_param_spec_boolean ("has-focus",
                             P_("Has focus"),
                             P_("Whether the widget has the input focus"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_IS_FOCUS] =
       g_param_spec_boolean ("is-focus",
                             P_("Is focus"),
                             P_("Whether the widget is the focus widget within the toplevel"),
                             FALSE,
-                            GTK_PARAM_READWRITE);
+                            CTK_PARAM_READWRITE);
 
   /**
    * GtkWidget:focus-on-click:
@@ -1202,35 +1202,35 @@ ctk_widget_class_init (GtkWidgetClass *klass)
                             P_("Focus on click"),
                             P_("Whether the widget should grab focus when it is clicked with the mouse"),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_CAN_DEFAULT] =
       g_param_spec_boolean ("can-default",
                             P_("Can default"),
                             P_("Whether the widget can be the default widget"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_HAS_DEFAULT] =
       g_param_spec_boolean ("has-default",
                             P_("Has default"),
                             P_("Whether the widget is the default widget"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_RECEIVES_DEFAULT] =
       g_param_spec_boolean ("receives-default",
                             P_("Receives default"),
                             P_("If TRUE, the widget will receive the default action when it is focused"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_COMPOSITE_CHILD] =
       g_param_spec_boolean ("composite-child",
                             P_("Composite child"),
                             P_("Whether the widget is part of a composite widget"),
                             FALSE,
-                            GTK_PARAM_READABLE);
+                            CTK_PARAM_READABLE);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
@@ -1245,8 +1245,8 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       g_param_spec_object ("style",
                            P_("Style"),
                            P_("The style of the widget, which contains information about how it will look (colors etc)"),
-                           GTK_TYPE_STYLE,
-                           GTK_PARAM_READWRITE|G_PARAM_DEPRECATED);
+                           CTK_TYPE_STYLE,
+                           CTK_PARAM_READWRITE|G_PARAM_DEPRECATED);
 
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -1256,14 +1256,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                           P_("The event mask that decides what kind of GdkEvents this widget gets"),
                           GDK_TYPE_EVENT_MASK,
                           GDK_STRUCTURE_MASK,
-                          GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_NO_SHOW_ALL] =
       g_param_spec_boolean ("no-show-all",
                             P_("No show all"),
                             P_("Whether ctk_widget_show_all() should not affect this widget"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
 /**
  * GtkWidget:has-tooltip:
@@ -1285,7 +1285,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             P_("Has tooltip"),
                             P_("Whether this widget has a tooltip"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:tooltip-text:
@@ -1309,7 +1309,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            P_("Tooltip Text"),
                            P_("The contents of the tooltip for this widget"),
                            NULL,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkWidget:tooltip-markup:
@@ -1333,7 +1333,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            P_("Tooltip markup"),
                            P_("The contents of the tooltip for this widget"),
                            NULL,
-                           GTK_PARAM_READWRITE);
+                           CTK_PARAM_READWRITE);
 
   /**
    * GtkWidget:window:
@@ -1347,7 +1347,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            P_("Window"),
                            P_("The widget's window if it is realized"),
                            GDK_TYPE_WINDOW,
-                           GTK_PARAM_READABLE);
+                           CTK_PARAM_READABLE);
 
   /**
    * GtkWidget:double-buffered:
@@ -1363,7 +1363,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             P_("Double Buffered"),
                             P_("Whether the widget is double buffered"),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
    * GtkWidget:halign:
@@ -1376,9 +1376,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       g_param_spec_enum ("halign",
                          P_("Horizontal Alignment"),
                          P_("How to position in extra horizontal space"),
-                         GTK_TYPE_ALIGN,
-                         GTK_ALIGN_FILL,
-                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                         CTK_TYPE_ALIGN,
+                         CTK_ALIGN_FILL,
+                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:valign:
@@ -1391,9 +1391,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       g_param_spec_enum ("valign",
                          P_("Vertical Alignment"),
                          P_("How to position in extra vertical space"),
-                         GTK_TYPE_ALIGN,
-                         GTK_ALIGN_FILL,
-                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                         CTK_TYPE_ALIGN,
+                         CTK_ALIGN_FILL,
+                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:margin-left:
@@ -1414,7 +1414,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         P_("Pixels of extra space on the left side"),
                         0, G_MAXINT16,
                         0,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
    * GtkWidget:margin-right:
@@ -1435,7 +1435,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         P_("Pixels of extra space on the right side"),
                         0, G_MAXINT16,
                         0,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY|G_PARAM_DEPRECATED);
 
   /**
    * GtkWidget:margin-start:
@@ -1455,7 +1455,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         P_("Pixels of extra space on the start"),
                         0, G_MAXINT16,
                         0,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:margin-end:
@@ -1475,7 +1475,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         P_("Pixels of extra space on the end"),
                         0, G_MAXINT16,
                         0,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:margin-top:
@@ -1494,7 +1494,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         P_("Pixels of extra space on the top side"),
                         0, G_MAXINT16,
                         0,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:margin-bottom:
@@ -1513,7 +1513,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         P_("Pixels of extra space on the bottom side"),
                         0, G_MAXINT16,
                         0,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:margin:
@@ -1529,7 +1529,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         P_("Pixels of extra space on all four sides"),
                         0, G_MAXINT16,
                         0,
-                        GTK_PARAM_READWRITE);
+                        CTK_PARAM_READWRITE);
 
   /**
    * GtkWidget:hexpand:
@@ -1543,7 +1543,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             P_("Horizontal Expand"),
                             P_("Whether widget wants more horizontal space"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:hexpand-set:
@@ -1557,7 +1557,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             P_("Horizontal Expand Set"),
                             P_("Whether to use the hexpand property"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:vexpand:
@@ -1571,7 +1571,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             P_("Vertical Expand"),
                             P_("Whether widget wants more vertical space"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:vexpand-set:
@@ -1585,7 +1585,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             P_("Vertical Expand Set"),
                             P_("Whether to use the vexpand property"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:expand:
@@ -1599,7 +1599,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                             P_("Expand Both"),
                             P_("Whether widget wants to expand in both directions"),
                             FALSE,
-                            GTK_PARAM_READWRITE);
+                            CTK_PARAM_READWRITE);
 
   /**
    * GtkWidget:opacity:
@@ -1617,7 +1617,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            P_("The opacity of the widget, from 0 to 1"),
                            0.0, 1.0,
                            1.0,
-                           GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkWidget:scale-factor:
@@ -1633,7 +1633,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                         P_("The scaling factor of the window"),
                         1, G_MAXINT,
                         1,
-                        GTK_PARAM_READABLE);
+                        CTK_PARAM_READABLE);
 
   g_object_class_install_properties (gobject_class, NUM_PROPERTIES, widget_props);
 
@@ -1800,7 +1800,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GTK_TYPE_STATE_TYPE);
+		  CTK_TYPE_STATE_TYPE);
 
   /**
    * GtkWidget::state-flags-changed:
@@ -1820,7 +1820,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GTK_TYPE_STATE_FLAGS);
+                  CTK_TYPE_STATE_FLAGS);
 
   /**
    * GtkWidget::parent-set:
@@ -1839,7 +1839,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GTK_TYPE_WIDGET);
+		  CTK_TYPE_WIDGET);
 
   /**
    * GtkWidget::hierarchy-changed:
@@ -1861,7 +1861,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GTK_TYPE_WIDGET);
+		  CTK_TYPE_WIDGET);
 
   /**
    * GtkWidget::style-set:
@@ -1890,7 +1890,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GTK_TYPE_STYLE);
+		  CTK_TYPE_STYLE);
 
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -1932,7 +1932,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GTK_TYPE_TEXT_DIRECTION);
+		  CTK_TYPE_TEXT_DIRECTION);
 
   /**
    * GtkWidget::grab-notify:
@@ -2070,7 +2070,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__ENUM,
 		  G_TYPE_BOOLEAN, 1,
-		  GTK_TYPE_DIRECTION_TYPE);
+		  CTK_TYPE_DIRECTION_TYPE);
   g_signal_set_va_marshaller (widget_signals[FOCUS],
                               G_TYPE_FROM_CLASS (gobject_class),
                               _ctk_marshal_BOOLEAN__ENUMv);
@@ -2089,7 +2089,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                   NULL,
                   G_TYPE_NONE,
                   1,
-                  GTK_TYPE_DIRECTION_TYPE);
+                  CTK_TYPE_DIRECTION_TYPE);
 
   /**
    * GtkWidget::keynav-failed:
@@ -2113,7 +2113,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__ENUM,
                   G_TYPE_BOOLEAN, 1,
-                  GTK_TYPE_DIRECTION_TYPE);
+                  CTK_TYPE_DIRECTION_TYPE);
   g_signal_set_va_marshaller (widget_signals[KEYNAV_FAILED],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__ENUMv);
@@ -2728,7 +2728,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  _ctk_marshal_VOID__BOXED_UINT,
 		  G_TYPE_NONE, 2,
-		  GTK_TYPE_SELECTION_DATA | G_SIGNAL_TYPE_STATIC_SCOPE,
+		  CTK_TYPE_SELECTION_DATA | G_SIGNAL_TYPE_STATIC_SCOPE,
 		  G_TYPE_UINT);
   g_signal_set_va_marshaller (widget_signals[SELECTION_RECEIVED],
                               G_TYPE_FROM_CLASS (klass),
@@ -2749,7 +2749,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  _ctk_marshal_VOID__BOXED_UINT_UINT,
 		  G_TYPE_NONE, 3,
-		  GTK_TYPE_SELECTION_DATA | G_SIGNAL_TYPE_STATIC_SCOPE,
+		  CTK_TYPE_SELECTION_DATA | G_SIGNAL_TYPE_STATIC_SCOPE,
 		  G_TYPE_UINT,
 		  G_TYPE_UINT);
   g_signal_set_va_marshaller (widget_signals[SELECTION_GET],
@@ -2925,7 +2925,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_marshal_BOOLEAN__OBJECT_ENUM,
 		  G_TYPE_BOOLEAN, 2,
 		  GDK_TYPE_DRAG_CONTEXT,
-		  GTK_TYPE_DRAG_RESULT);
+		  CTK_TYPE_DRAG_RESULT);
   g_signal_set_va_marshaller (widget_signals[DRAG_FAILED],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__OBJECT_ENUMv);
@@ -2950,8 +2950,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * made based solely on the cursor position and the type of the data, the
    * handler may inspect the dragged data by calling ctk_drag_get_data() and
    * defer the gdk_drag_status() call to the #GtkWidget::drag-data-received
-   * handler. Note that you must pass #GTK_DEST_DEFAULT_DROP,
-   * #GTK_DEST_DEFAULT_MOTION or #GTK_DEST_DEFAULT_ALL to ctk_drag_dest_set()
+   * handler. Note that you must pass #CTK_DEST_DEFAULT_DROP,
+   * #CTK_DEST_DEFAULT_MOTION or #CTK_DEST_DEFAULT_ALL to ctk_drag_dest_set()
    * when using the drag-motion signal that way.
    *
    * Also note that there is no drag-enter signal. The drag receiver has to
@@ -3104,7 +3104,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_marshal_VOID__OBJECT_BOXED_UINT_UINT,
 		  G_TYPE_NONE, 4,
 		  GDK_TYPE_DRAG_CONTEXT,
-		  GTK_TYPE_SELECTION_DATA | G_SIGNAL_TYPE_STATIC_SCOPE,
+		  CTK_TYPE_SELECTION_DATA | G_SIGNAL_TYPE_STATIC_SCOPE,
 		  G_TYPE_UINT,
 		  G_TYPE_UINT);
   g_signal_set_va_marshaller (widget_signals[DRAG_DATA_GET],
@@ -3162,15 +3162,15 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *           gint response;
    *
    *           dialog = ctk_message_dialog_new (NULL,
-   *                                            GTK_DIALOG_MODAL |
-   *                                            GTK_DIALOG_DESTROY_WITH_PARENT,
-   *                                            GTK_MESSAGE_INFO,
-   *                                            GTK_BUTTONS_YES_NO,
+   *                                            CTK_DIALOG_MODAL |
+   *                                            CTK_DIALOG_DESTROY_WITH_PARENT,
+   *                                            CTK_MESSAGE_INFO,
+   *                                            CTK_BUTTONS_YES_NO,
    *                                            "Move the data ?\n");
-   *           response = ctk_dialog_run (GTK_DIALOG (dialog));
+   *           response = ctk_dialog_run (CTK_DIALOG (dialog));
    *           ctk_widget_destroy (dialog);
    *
-   *           if (response == GTK_RESPONSE_YES)
+   *           if (response == CTK_RESPONSE_YES)
    *             action = GDK_ACTION_MOVE;
    *           else
    *             action = GDK_ACTION_COPY;
@@ -3194,7 +3194,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  GDK_TYPE_DRAG_CONTEXT,
 		  G_TYPE_INT,
 		  G_TYPE_INT,
-		  GTK_TYPE_SELECTION_DATA | G_SIGNAL_TYPE_STATIC_SCOPE,
+		  CTK_TYPE_SELECTION_DATA | G_SIGNAL_TYPE_STATIC_SCOPE,
 		  G_TYPE_UINT,
 		  G_TYPE_UINT);
    g_signal_set_va_marshaller (widget_signals[DRAG_DATA_RECEIVED],
@@ -3355,7 +3355,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  G_TYPE_INT,
 		  G_TYPE_INT,
 		  G_TYPE_BOOLEAN,
-		  GTK_TYPE_TOOLTIP);
+		  CTK_TYPE_TOOLTIP);
   g_signal_set_va_marshaller (widget_signals[QUERY_TOOLTIP],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__INT_INT_BOOLEAN_OBJECTv);
@@ -3402,7 +3402,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__ENUM,
 		  G_TYPE_BOOLEAN, 1,
-		  GTK_TYPE_WIDGET_HELP_TYPE);
+		  CTK_TYPE_WIDGET_HELP_TYPE);
   g_signal_set_va_marshaller (widget_signals[SHOW_HELP],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__ENUMv);
@@ -3469,20 +3469,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_F1, GDK_CONTROL_MASK,
                                 "show-help", 1,
-                                GTK_TYPE_WIDGET_HELP_TYPE,
-                                GTK_WIDGET_HELP_TOOLTIP);
+                                CTK_TYPE_WIDGET_HELP_TYPE,
+                                CTK_WIDGET_HELP_TOOLTIP);
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_F1, GDK_CONTROL_MASK,
                                 "show-help", 1,
-                                GTK_TYPE_WIDGET_HELP_TYPE,
-                                GTK_WIDGET_HELP_TOOLTIP);
+                                CTK_TYPE_WIDGET_HELP_TYPE,
+                                CTK_WIDGET_HELP_TOOLTIP);
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_F1, GDK_SHIFT_MASK,
                                 "show-help", 1,
-                                GTK_TYPE_WIDGET_HELP_TYPE,
-                                GTK_WIDGET_HELP_WHATS_THIS);
+                                CTK_TYPE_WIDGET_HELP_TYPE,
+                                CTK_WIDGET_HELP_WHATS_THIS);
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_F1, GDK_SHIFT_MASK,
                                 "show-help", 1,
-                                GTK_TYPE_WIDGET_HELP_TYPE,
-                                GTK_WIDGET_HELP_WHATS_THIS);
+                                CTK_TYPE_WIDGET_HELP_TYPE,
+                                CTK_WIDGET_HELP_WHATS_THIS);
 
   /**
    * GtkWidget:interior-focus:
@@ -3497,7 +3497,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 								 P_("Interior Focus"),
 								 P_("Whether to draw the focus indicator inside widgets"),
 								 TRUE,
-								 GTK_PARAM_READABLE | G_PARAM_DEPRECATED));
+								 CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
   /**
    * GtkWidget:focus-line-width:
    *
@@ -3511,7 +3511,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 							     P_("Focus linewidth"),
 							     P_("Width, in pixels, of the focus indicator line"),
 							     0, G_MAXINT, 1,
-							     GTK_PARAM_READABLE | G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
   /**
    * GtkWidget:focus-line-pattern:
    *
@@ -3526,7 +3526,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 								P_("Focus line dash pattern"),
 								P_("Dash pattern used to draw the focus indicator. The character values are interpreted as pixel widths of alternating on and off segments of the line."),
 								"\1\1",
-								GTK_PARAM_READABLE | G_PARAM_DEPRECATED));
+								CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
   /**
    * GtkWidget:focus-padding:
    *
@@ -3540,7 +3540,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 							     P_("Focus padding"),
 							     P_("Width, in pixels, between focus indicator and the widget 'box'"),
 							     0, G_MAXINT, 1,
-							     GTK_PARAM_READABLE | G_PARAM_DEPRECATED));
+							     CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   /**
    * GtkWidget:cursor-color:
@@ -3555,7 +3555,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 							       P_("Cursor color"),
 							       P_("Color with which to draw insertion cursor"),
 							       GDK_TYPE_COLOR,
-							       GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
   /**
    * GtkWidget:secondary-cursor-color:
    *
@@ -3569,21 +3569,21 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 							       P_("Secondary cursor color"),
 							       P_("Color with which to draw the secondary insertion cursor when editing mixed right-to-left and left-to-right text"),
 							       GDK_TYPE_COLOR,
-							       GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_widget_class_install_style_property (klass,
 					   g_param_spec_float ("cursor-aspect-ratio",
 							       P_("Cursor line aspect ratio"),
 							       P_("Aspect ratio with which to draw insertion cursor"),
 							       0.0, 1.0, 0.04,
-							       GTK_PARAM_READABLE));
+							       CTK_PARAM_READABLE));
 
   ctk_widget_class_install_style_property (klass,
                                            g_param_spec_boolean ("window-dragging",
                                                                  P_("Window dragging"),
                                                                  P_("Whether windows can be dragged and maximized by clicking on empty areas"),
                                                                  FALSE,
-                                                                 GTK_PARAM_READABLE));
+                                                                 CTK_PARAM_READABLE));
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   /**
@@ -3601,7 +3601,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 							       P_("Unvisited Link Color"),
 							       P_("Color of unvisited links"),
 							       GDK_TYPE_COLOR,
-							       GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkWidget:visited-link-color:
@@ -3618,7 +3618,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 							       P_("Visited Link Color"),
 							       P_("Color of visited links"),
 							       GDK_TYPE_COLOR,
-							       GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /**
@@ -3637,7 +3637,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                                  P_("Wide Separators"),
                                                                  P_("Whether separators have configurable width and should be drawn using a box instead of a line"),
                                                                  FALSE,
-                                                                 GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                                 CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkWidget:separator-width:
@@ -3655,7 +3655,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                              P_("Separator Width"),
                                                              P_("The width of separators if wide-separators is TRUE"),
                                                              0, G_MAXINT, 0,
-                                                             GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkWidget:separator-height:
@@ -3673,7 +3673,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                              P_("Separator Height"),
                                                              P_("The height of separators if \"wide-separators\" is TRUE"),
                                                              0, G_MAXINT, 0,
-                                                             GTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
    * GtkWidget:scroll-arrow-hlength:
@@ -3688,7 +3688,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                              P_("Horizontal Scroll Arrow Length"),
                                                              P_("The length of horizontal scroll arrows"),
                                                              1, G_MAXINT, 16,
-                                                             GTK_PARAM_READABLE));
+                                                             CTK_PARAM_READABLE));
 
   /**
    * GtkWidget:scroll-arrow-vlength:
@@ -3703,22 +3703,22 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                              P_("Vertical Scroll Arrow Length"),
                                                              P_("The length of vertical scroll arrows"),
                                                              1, G_MAXINT, 16,
-                                                             GTK_PARAM_READABLE));
+                                                             CTK_PARAM_READABLE));
 
   ctk_widget_class_install_style_property (klass,
                                            g_param_spec_int ("text-handle-width",
                                                              P_("Width of text selection handles"),
                                                              P_("Width of text selection handles"),
                                                              1, G_MAXINT, 16,
-                                                             GTK_PARAM_READABLE));
+                                                             CTK_PARAM_READABLE));
   ctk_widget_class_install_style_property (klass,
                                            g_param_spec_int ("text-handle-height",
                                                              P_("Height of text selection handles"),
                                                              P_("Height of text selection handles"),
                                                              1, G_MAXINT, 20,
-                                                             GTK_PARAM_READABLE));
+                                                             CTK_PARAM_READABLE));
 
-  ctk_widget_class_set_accessible_type (klass, GTK_TYPE_WIDGET_ACCESSIBLE);
+  ctk_widget_class_set_accessible_type (klass, CTK_TYPE_WIDGET_ACCESSIBLE);
   ctk_widget_class_set_css_name (klass, "widget");
 }
 
@@ -3746,7 +3746,7 @@ ctk_widget_set_property (GObject         *object,
 			 const GValue    *value,
 			 GParamSpec      *pspec)
 {
-  GtkWidget *widget = GTK_WIDGET (object);
+  GtkWidget *widget = CTK_WIDGET (object);
 
   switch (prop_id)
     {
@@ -3759,7 +3759,7 @@ ctk_widget_set_property (GObject         *object,
       ctk_widget_set_name (widget, g_value_get_string (value));
       break;
     case PROP_PARENT:
-      ctk_container_add (GTK_CONTAINER (g_value_get_object (value)), widget);
+      ctk_container_add (CTK_CONTAINER (g_value_get_object (value)), widget);
       break;
     case PROP_WIDTH_REQUEST:
       ctk_widget_set_usize_internal (widget, g_value_get_int (value), -2);
@@ -3932,7 +3932,7 @@ ctk_widget_get_property (GObject         *object,
 			 GValue          *value,
 			 GParamSpec      *pspec)
 {
-  GtkWidget *widget = GTK_WIDGET (object);
+  GtkWidget *widget = CTK_WIDGET (object);
   GtkWidgetPrivate *priv = widget->priv;
 
   switch (prop_id)
@@ -4183,10 +4183,10 @@ _ctk_widget_get_last_event (GtkWidget        *widget,
     {
       data = l->data;
 
-      if (!GTK_IS_GESTURE (data->controller))
+      if (!CTK_IS_GESTURE (data->controller))
         continue;
 
-      event = ctk_gesture_get_last_event (GTK_GESTURE (data->controller),
+      event = ctk_gesture_get_last_event (CTK_GESTURE (data->controller),
                                           sequence);
       if (event)
         return event;
@@ -4225,10 +4225,10 @@ _ctk_widget_get_emulating_sequence (GtkWidget         *widget,
         {
           EventControllerData *data = l->data;
 
-          if (!GTK_IS_GESTURE (data->controller))
+          if (!CTK_IS_GESTURE (data->controller))
             continue;
 
-          if (_ctk_gesture_get_pointer_emulating_sequence (GTK_GESTURE (data->controller),
+          if (_ctk_gesture_get_pointer_emulating_sequence (CTK_GESTURE (data->controller),
                                                            sequence_out))
             return TRUE;
         }
@@ -4257,12 +4257,12 @@ ctk_widget_needs_press_emulation (GtkWidget        *widget,
       data = l->data;
       phase = ctk_event_controller_get_propagation_phase (data->controller);
 
-      if (phase != GTK_PHASE_CAPTURE)
+      if (phase != CTK_PHASE_CAPTURE)
         continue;
-      if (!GTK_IS_GESTURE (data->controller))
+      if (!CTK_IS_GESTURE (data->controller))
         continue;
 
-      gesture = GTK_GESTURE (data->controller);
+      gesture = CTK_GESTURE (data->controller);
       sequence_press_handled |=
         (ctk_gesture_handles_sequence (gesture, sequence) &&
          _ctk_gesture_handled_sequence_press (gesture, sequence));
@@ -4284,7 +4284,7 @@ _ctk_widget_set_sequence_state_internal (GtkWidget             *widget,
   GdkEventSequence *seq;
   gint n_handled = 0;
 
-  if (!priv->event_controllers && state != GTK_EVENT_SEQUENCE_CLAIMED)
+  if (!priv->event_controllers && state != CTK_EVENT_SEQUENCE_CLAIMED)
     return TRUE;
 
   if (emitter)
@@ -4304,10 +4304,10 @@ _ctk_widget_set_sequence_state_internal (GtkWidget             *widget,
       data = l->data;
       gesture_state = state;
 
-      if (!GTK_IS_GESTURE (data->controller))
+      if (!CTK_IS_GESTURE (data->controller))
         continue;
 
-      gesture = GTK_GESTURE (data->controller);
+      gesture = CTK_GESTURE (data->controller);
 
       if (gesture == emitter)
         {
@@ -4326,14 +4326,14 @@ _ctk_widget_set_sequence_state_internal (GtkWidget             *widget,
           /* If a group is provided, ensure only gestures pertaining to the group
            * get a "claimed" state, all other claiming gestures must deny the sequence.
            */
-          if (gesture_state == GTK_EVENT_SEQUENCE_CLAIMED &&
-              ctk_gesture_get_sequence_state (gesture, sequence) == GTK_EVENT_SEQUENCE_CLAIMED)
-            gesture_state = GTK_EVENT_SEQUENCE_DENIED;
+          if (gesture_state == CTK_EVENT_SEQUENCE_CLAIMED &&
+              ctk_gesture_get_sequence_state (gesture, sequence) == CTK_EVENT_SEQUENCE_CLAIMED)
+            gesture_state = CTK_EVENT_SEQUENCE_DENIED;
           else
             continue;
         }
       else if (!group &&
-               ctk_gesture_get_sequence_state (gesture, sequence) != GTK_EVENT_SEQUENCE_CLAIMED)
+               ctk_gesture_get_sequence_state (gesture, sequence) != CTK_EVENT_SEQUENCE_CLAIMED)
         continue;
 
       g_signal_handler_block (data->controller, data->sequence_state_changed_id);
@@ -4354,7 +4354,7 @@ _ctk_widget_set_sequence_state_internal (GtkWidget             *widget,
    * beneath, so the widgets beneath get a coherent stream of events from now on.
    */
   if (n_handled > 0 && sequence_handled &&
-      state == GTK_EVENT_SEQUENCE_DENIED &&
+      state == CTK_EVENT_SEQUENCE_DENIED &&
       ctk_widget_needs_press_emulation (widget, sequence))
     _ctk_widget_emulate_press (widget, mimic_event);
 
@@ -4383,10 +4383,10 @@ _ctk_widget_cancel_sequence (GtkWidget        *widget,
       seq = sequence;
       data = l->data;
 
-      if (!GTK_IS_GESTURE (data->controller))
+      if (!CTK_IS_GESTURE (data->controller))
         continue;
 
-      gesture = GTK_GESTURE (data->controller);
+      gesture = CTK_GESTURE (data->controller);
 
       if (seq && emulates_pointer &&
           !ctk_gesture_handles_sequence (gesture, seq))
@@ -4404,7 +4404,7 @@ _ctk_widget_cancel_sequence (GtkWidget        *widget,
 static void
 ctk_widget_init (GTypeInstance *instance, gpointer g_class)
 {
-  GtkWidget *widget = GTK_WIDGET (instance);
+  GtkWidget *widget = CTK_WIDGET (instance);
   GtkWidgetPrivate *priv;
 
   widget->priv = ctk_widget_get_instance_private (widget); 
@@ -4434,15 +4434,15 @@ ctk_widget_init (GTypeInstance *instance, gpointer g_class)
 
   switch (_ctk_widget_get_direction (widget))
     {
-    case GTK_TEXT_DIR_LTR:
-      priv->state_flags = GTK_STATE_FLAG_DIR_LTR;
+    case CTK_TEXT_DIR_LTR:
+      priv->state_flags = CTK_STATE_FLAG_DIR_LTR;
       break;
 
-    case GTK_TEXT_DIR_RTL:
-      priv->state_flags = GTK_STATE_FLAG_DIR_RTL;
+    case CTK_TEXT_DIR_RTL:
+      priv->state_flags = CTK_STATE_FLAG_DIR_RTL;
       break;
 
-    case GTK_TEXT_DIR_NONE:
+    case CTK_TEXT_DIR_NONE:
     default:
       g_assert_not_reached ();
       break;
@@ -4457,8 +4457,8 @@ ctk_widget_init (GTypeInstance *instance, gpointer g_class)
    */
   priv->need_compute_expand = FALSE;
 
-  priv->halign = GTK_ALIGN_FILL;
-  priv->valign = GTK_ALIGN_FILL;
+  priv->halign = CTK_ALIGN_FILL;
+  priv->valign = CTK_ALIGN_FILL;
 
   priv->width = -1;
   priv->height = -1;
@@ -4469,7 +4469,7 @@ ctk_widget_init (GTypeInstance *instance, gpointer g_class)
   ctk_css_node_set_state (priv->cssnode, priv->state_flags);
   /* need to set correct type here, and only class has the correct type here */
   ctk_css_node_set_widget_type (priv->cssnode, G_TYPE_FROM_CLASS (g_class));
-  ctk_css_node_set_name (priv->cssnode, GTK_WIDGET_CLASS (g_class)->priv->css_name);
+  ctk_css_node_set_name (priv->cssnode, CTK_WIDGET_CLASS (g_class)->priv->css_name);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   priv->style = ctk_widget_get_default_style ();
@@ -4504,7 +4504,7 @@ ctk_widget_dispatch_child_properties_changed (GtkWidget   *widget,
 void
 ctk_widget_freeze_child_notify (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (!G_OBJECT (widget)->ref_count)
     return;
@@ -4535,7 +4535,7 @@ ctk_widget_child_notify (GtkWidget    *widget,
   if (widget->priv->parent == NULL)
     return;
 
-  ctk_container_child_notify (GTK_CONTAINER (widget->priv->parent), widget, child_property);
+  ctk_container_child_notify (CTK_CONTAINER (widget->priv->parent), widget, child_property);
 }
 
 /**
@@ -4551,7 +4551,7 @@ ctk_widget_thaw_child_notify (GtkWidget *widget)
 {
   GObjectNotifyQueue *nqueue;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (!G_OBJECT (widget)->ref_count)
     return;
@@ -4576,7 +4576,7 @@ ctk_widget_thaw_child_notify (GtkWidget *widget)
  *
  * This is a convenience function for creating a widget and setting
  * its properties in one go. For example you might write:
- * `ctk_widget_new (GTK_TYPE_LABEL, "label", "Hello World", "xalign",
+ * `ctk_widget_new (CTK_TYPE_LABEL, "label", "Hello World", "xalign",
  * 0.0, NULL)` to create a left-aligned label. Equivalent to
  * g_object_new(), but returns a widget so you don’t have to
  * cast the object yourself.
@@ -4591,7 +4591,7 @@ ctk_widget_new (GType        type,
   GtkWidget *widget;
   va_list var_args;
 
-  g_return_val_if_fail (g_type_is_a (type, GTK_TYPE_WIDGET), NULL);
+  g_return_val_if_fail (g_type_is_a (type, CTK_TYPE_WIDGET), NULL);
 
   va_start (var_args, first_property_name);
   widget = (GtkWidget *)g_object_new_valist (type, first_property_name, var_args);
@@ -4631,7 +4631,7 @@ ctk_widget_unparent (GtkWidget *widget)
   GtkWidget *toplevel;
   GtkWidget *old_parent;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -4647,10 +4647,10 @@ ctk_widget_unparent (GtkWidget *widget)
 
   toplevel = _ctk_widget_get_toplevel (widget);
   if (_ctk_widget_is_toplevel (toplevel))
-    _ctk_window_unset_focus_and_default (GTK_WINDOW (toplevel), widget);
+    _ctk_window_unset_focus_and_default (CTK_WINDOW (toplevel), widget);
 
-  if (ctk_container_get_focus_child (GTK_CONTAINER (priv->parent)) == widget)
-    ctk_container_set_focus_child (GTK_CONTAINER (priv->parent), NULL);
+  if (ctk_container_get_focus_child (CTK_CONTAINER (priv->parent)) == widget)
+    ctk_container_set_focus_child (CTK_CONTAINER (priv->parent), NULL);
 
   ctk_widget_queue_draw_child (widget);
 
@@ -4700,7 +4700,7 @@ ctk_widget_unparent (GtkWidget *widget)
     }
 
   /* Unset BACKDROP since we are no longer inside a toplevel window */
-  ctk_widget_unset_state_flags (widget, GTK_STATE_FLAG_BACKDROP);
+  ctk_widget_unset_state_flags (widget, CTK_STATE_FLAG_BACKDROP);
   if (priv->context)
     ctk_style_context_set_parent (priv->context, NULL);
   ctk_css_node_set_parent (widget->priv->cssnode, NULL);
@@ -4770,7 +4770,7 @@ ctk_widget_unparent (GtkWidget *widget)
 void
 ctk_widget_destroy (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (!widget->priv->in_destruction)
     g_object_run_dispose (G_OBJECT (widget));
@@ -4820,7 +4820,7 @@ ctk_widget_destroyed (GtkWidget      *widget,
 void
 ctk_widget_show (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (!_ctk_widget_get_visible (widget))
     {
@@ -4894,7 +4894,7 @@ ctk_widget_show_now (GtkWidget *widget)
 {
   gint flag = FALSE;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   /* make sure we will get event */
   if (!_ctk_widget_get_mapped (widget) &&
@@ -4923,7 +4923,7 @@ ctk_widget_show_now (GtkWidget *widget)
 void
 ctk_widget_hide (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (_ctk_widget_get_visible (widget))
     {
@@ -4934,7 +4934,7 @@ ctk_widget_hide (GtkWidget *widget)
       ctk_widget_push_verify_invariants (widget);
 
       if (toplevel != widget && _ctk_widget_is_toplevel (toplevel))
-        _ctk_window_unset_focus_and_default (GTK_WINDOW (toplevel), widget);
+        _ctk_window_unset_focus_and_default (CTK_WINDOW (toplevel), widget);
 
       /* a parent may now be expand=FALSE since we're hidden. */
       if (widget->priv->need_compute_expand ||
@@ -4989,7 +4989,7 @@ ctk_widget_real_hide (GtkWidget *widget)
 gboolean
 ctk_widget_hide_on_delete (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   ctk_widget_hide (widget);
 
@@ -5008,12 +5008,12 @@ ctk_widget_show_all (GtkWidget *widget)
 {
   GtkWidgetClass *class;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (ctk_widget_get_no_show_all (widget))
     return;
 
-  class = GTK_WIDGET_GET_CLASS (widget);
+  class = CTK_WIDGET_GET_CLASS (widget);
 
   if (class->show_all)
     class->show_all (widget);
@@ -5031,7 +5031,7 @@ ctk_widget_map (GtkWidget *widget)
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (_ctk_widget_get_visible (widget));
   g_return_if_fail (_ctk_widget_get_child_visible (widget));
 
@@ -5065,7 +5065,7 @@ ctk_widget_unmap (GtkWidget *widget)
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -5176,8 +5176,8 @@ ctk_widget_set_device_enabled_internal (GtkWidget *widget,
       g_list_foreach (window_list, device_enable_foreach_window, &data);
     }
 
-  if (recurse && GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget), device_enable_foreach, &data);
+  if (recurse && CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget), device_enable_foreach, &data);
 }
 
 static void
@@ -5341,7 +5341,7 @@ ctk_widget_add_tick_callback (GtkWidget       *widget,
   GtkTickCallbackInfo *info;
   GdkFrameClock *frame_clock;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   priv = widget->priv;
 
@@ -5389,7 +5389,7 @@ ctk_widget_remove_tick_callback (GtkWidget *widget,
   GtkWidgetPrivate *priv;
   GList *l;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -5418,8 +5418,8 @@ ctk_widget_connect_frame_clock (GtkWidget     *widget,
 
   priv->frameclock_connected = TRUE;
 
-  if (GTK_IS_CONTAINER (widget))
-    _ctk_container_maybe_start_idle_sizer (GTK_CONTAINER (widget));
+  if (CTK_IS_CONTAINER (widget))
+    _ctk_container_maybe_start_idle_sizer (CTK_CONTAINER (widget));
 
   if (priv->tick_callbacks != NULL && !priv->clock_tick_id)
     {
@@ -5441,8 +5441,8 @@ ctk_widget_disconnect_frame_clock (GtkWidget     *widget,
 {
   GtkWidgetPrivate *priv = widget->priv;
 
-  if (GTK_IS_CONTAINER (widget))
-    _ctk_container_stop_idle_sizer (GTK_CONTAINER (widget));
+  if (CTK_IS_CONTAINER (widget))
+    _ctk_container_stop_idle_sizer (CTK_CONTAINER (widget));
 
   ctk_css_node_invalidate_frame_clock (priv->cssnode, FALSE);
 
@@ -5488,9 +5488,9 @@ ctk_widget_realize (GtkWidget *widget)
   GtkWidgetPrivate *priv;
   cairo_region_t *region;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (widget->priv->anchored ||
-		    GTK_IS_INVISIBLE (widget));
+		    CTK_IS_INVISIBLE (widget));
 
   priv = widget->priv;
 
@@ -5499,7 +5499,7 @@ ctk_widget_realize (GtkWidget *widget)
       ctk_widget_push_verify_invariants (widget);
 
       /*
-	if (GTK_IS_CONTAINER (widget) && _ctk_widget_get_has_window (widget))
+	if (CTK_IS_CONTAINER (widget) && _ctk_widget_get_has_window (widget))
 	  g_message ("ctk_widget_realize(%s)", G_OBJECT_TYPE_NAME (widget));
       */
 
@@ -5556,7 +5556,7 @@ ctk_widget_realize (GtkWidget *widget)
 void
 ctk_widget_unrealize (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   g_object_ref (widget);
   ctk_widget_push_verify_invariants (widget);
@@ -5621,7 +5621,7 @@ ctk_widget_queue_draw_region (GtkWidget            *widget,
 {
   GtkWidget *w;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (!_ctk_widget_get_realized (widget))
     return;
@@ -5664,7 +5664,7 @@ ctk_widget_queue_draw_area (GtkWidget *widget,
   GdkRectangle rect;
   cairo_region_t *region;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (width >= 0);
   g_return_if_fail (height >= 0);
 
@@ -5693,7 +5693,7 @@ ctk_widget_queue_draw (GtkWidget *widget)
 {
   GdkRectangle rect;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   ctk_widget_get_clip (widget, &rect);
 
@@ -5725,7 +5725,7 @@ ctk_widget_set_alloc_needed (GtkWidget *widget);
 void
 ctk_widget_queue_allocate (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (_ctk_widget_get_realized (widget))
     ctk_widget_queue_draw (widget);
@@ -5766,9 +5766,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   }
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  if (GTK_IS_RESIZE_CONTAINER (widget))
+  if (CTK_IS_RESIZE_CONTAINER (widget))
     {
-      ctk_container_queue_resize_handler (GTK_CONTAINER (widget));
+      ctk_container_queue_resize_handler (CTK_CONTAINER (widget));
 G_GNUC_END_IGNORE_DEPRECATIONS;
     }
   else if (_ctk_widget_get_visible (widget))
@@ -5797,7 +5797,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 void
 ctk_widget_queue_resize (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (_ctk_widget_get_realized (widget))
     ctk_widget_queue_draw (widget);
@@ -5817,7 +5817,7 @@ ctk_widget_queue_resize (GtkWidget *widget)
 void
 ctk_widget_queue_resize_no_redraw (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   ctk_widget_queue_resize_internal (widget);
 }
@@ -5856,7 +5856,7 @@ ctk_widget_queue_resize_no_redraw (GtkWidget *widget)
 GdkFrameClock*
 ctk_widget_get_frame_clock (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   if (widget->priv->realized)
     {
@@ -5902,7 +5902,7 @@ void
 ctk_widget_size_request (GtkWidget	*widget,
 			 GtkRequisition *requisition)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   ctk_widget_get_preferred_size (widget, requisition, NULL);
 }
@@ -5995,7 +5995,7 @@ ctk_widget_invalidate_widget_windows (GtkWidget      *widget,
  * margins, and applying the widget’s #GtkWidget:halign and
  * #GtkWidget:valign properties.
  *
- * If the child widget does not have a valign of %GTK_ALIGN_BASELINE the
+ * If the child widget does not have a valign of %CTK_ALIGN_BASELINE the
  * baseline argument is ignored and -1 is used instead.
  *
  * Since: 3.10
@@ -6017,7 +6017,7 @@ ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
   gint min_width, min_height;
   gint old_baseline;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -6027,7 +6027,7 @@ ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
   ctk_widget_push_verify_invariants (widget);
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DISPLAY_DEBUG_CHECK (ctk_widget_get_display (widget), RESIZE))
+  if (CTK_DISPLAY_DEBUG_CHECK (ctk_widget_get_display (widget), RESIZE))
     {
       priv->highlight_resize = TRUE;
       ctk_widget_queue_draw (widget);
@@ -6042,7 +6042,7 @@ ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
     }
 #endif
 
-  if (GTK_DEBUG_CHECK (GEOMETRY))
+  if (CTK_DEBUG_CHECK (GEOMETRY))
     {
       gint depth;
       GtkWidget *parent;
@@ -6068,7 +6068,7 @@ ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
   /* Never pass a baseline to a child unless it requested it.
      This means containers don't have to manually check for this. */
   if (baseline != -1 &&
-      (ctk_widget_get_valign_with_baseline (widget) != GTK_ALIGN_BASELINE ||
+      (ctk_widget_get_valign_with_baseline (widget) != CTK_ALIGN_BASELINE ||
        !_ctk_widget_has_baseline_support (widget)))
     baseline = -1;
 
@@ -6085,7 +6085,7 @@ ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
   priv->allocated_size_baseline = baseline;
 
   adjusted_allocation = real_allocation;
-  if (ctk_widget_get_request_mode (widget) == GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
+  if (ctk_widget_get_request_mode (widget) == CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH)
     {
       /* Go ahead and request the height for allocated width, note that the internals
        * of get_height_for_width will internally limit the for_size to natural size
@@ -6106,7 +6106,7 @@ ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
 
 #ifdef G_ENABLE_CONSISTENCY_CHECKS
   if ((min_width > real_allocation.width || min_height > real_allocation.height) &&
-      !GTK_IS_SCROLLABLE (widget))
+      !CTK_IS_SCROLLABLE (widget))
     g_warning ("ctk_widget_size_allocate(): attempt to underallocate %s%s %s %p. "
                "Allocation is %dx%d, but minimum required size is %dx%d.",
                priv->parent ? G_OBJECT_TYPE_NAME (priv->parent) : "", priv->parent ? "'s child" : "toplevel",
@@ -6116,20 +6116,20 @@ ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
 #endif
   /* Now that we have the right natural height and width, go ahead and remove any margins from the
    * allocated sizes and possibly limit them to the natural sizes */
-  GTK_WIDGET_GET_CLASS (widget)->adjust_size_allocation (widget,
-							 GTK_ORIENTATION_HORIZONTAL,
+  CTK_WIDGET_GET_CLASS (widget)->adjust_size_allocation (widget,
+							 CTK_ORIENTATION_HORIZONTAL,
 							 &dummy,
 							 &natural_width,
 							 &adjusted_allocation.x,
 							 &adjusted_allocation.width);
-  GTK_WIDGET_GET_CLASS (widget)->adjust_size_allocation (widget,
-							 GTK_ORIENTATION_VERTICAL,
+  CTK_WIDGET_GET_CLASS (widget)->adjust_size_allocation (widget,
+							 CTK_ORIENTATION_VERTICAL,
 							 &dummy,
 							 &natural_height,
 							 &adjusted_allocation.y,
 							 &adjusted_allocation.height);
   if (baseline >= 0)
-    GTK_WIDGET_GET_CLASS (widget)->adjust_baseline_allocation (widget,
+    CTK_WIDGET_GET_CLASS (widget)->adjust_baseline_allocation (widget,
 							       &baseline);
 
   if (adjusted_allocation.x < real_allocation.x ||
@@ -6172,11 +6172,11 @@ ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
   if (g_signal_has_handler_pending (widget, widget_signals[SIZE_ALLOCATE], 0, FALSE))
     g_signal_emit (widget, widget_signals[SIZE_ALLOCATE], 0, &real_allocation);
   else
-    GTK_WIDGET_GET_CLASS (widget)->size_allocate (widget, &real_allocation);
+    CTK_WIDGET_GET_CLASS (widget)->size_allocate (widget, &real_allocation);
 
   /* Size allocation is god... after consulting god, no further requests or allocations are needed */
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (GEOMETRY) && ctk_widget_get_resize_needed (widget))
+  if (CTK_DEBUG_CHECK (GEOMETRY) && ctk_widget_get_resize_needed (widget))
     {
       g_warning ("%s %p or a child called ctk_widget_queue_resize() during size_allocate().",
                  ctk_widget_get_name (widget), widget);
@@ -6217,7 +6217,7 @@ ctk_widget_size_allocate_with_baseline (GtkWidget     *widget,
     }
 
   if ((size_changed || position_changed || baseline_changed) && priv->parent &&
-      _ctk_widget_get_realized (priv->parent) && _ctk_container_get_reallocate_redraws (GTK_CONTAINER (priv->parent)))
+      _ctk_widget_get_realized (priv->parent) && _ctk_container_get_reallocate_redraws (CTK_CONTAINER (priv->parent)))
     {
       cairo_region_t *invalidate = cairo_region_create_rectangle (&priv->parent->priv->clip);
       ctk_widget_invalidate_widget_windows (priv->parent, invalidate);
@@ -6347,8 +6347,8 @@ ctk_widget_translate_coordinates (GtkWidget  *src_widget,
   GdkWindow *window;
   GList *dest_list = NULL;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (src_widget), FALSE);
-  g_return_val_if_fail (GTK_IS_WIDGET (dest_widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (src_widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (dest_widget), FALSE);
 
   ancestor = ctk_widget_common_ancestor (src_widget, dest_widget);
   if (!ancestor || !_ctk_widget_get_realized (src_widget) || !_ctk_widget_get_realized (dest_widget))
@@ -6463,10 +6463,10 @@ effective_align (GtkAlign         align,
 {
   switch (align)
     {
-    case GTK_ALIGN_START:
-      return direction == GTK_TEXT_DIR_RTL ? GTK_ALIGN_END : GTK_ALIGN_START;
-    case GTK_ALIGN_END:
-      return direction == GTK_TEXT_DIR_RTL ? GTK_ALIGN_START : GTK_ALIGN_END;
+    case CTK_ALIGN_START:
+      return direction == CTK_TEXT_DIR_RTL ? CTK_ALIGN_END : CTK_ALIGN_START;
+    case CTK_ALIGN_END:
+      return direction == CTK_TEXT_DIR_RTL ? CTK_ALIGN_START : CTK_ALIGN_END;
     default:
       return align;
     }
@@ -6480,22 +6480,22 @@ adjust_for_align (GtkAlign  align,
 {
   switch (align)
     {
-    case GTK_ALIGN_BASELINE:
-    case GTK_ALIGN_FILL:
+    case CTK_ALIGN_BASELINE:
+    case CTK_ALIGN_FILL:
       /* change nothing */
       break;
-    case GTK_ALIGN_START:
+    case CTK_ALIGN_START:
       /* keep *allocated_pos where it is */
       *allocated_size = MIN (*allocated_size, *natural_size);
       break;
-    case GTK_ALIGN_END:
+    case CTK_ALIGN_END:
       if (*allocated_size > *natural_size)
 	{
 	  *allocated_pos += (*allocated_size - *natural_size);
 	  *allocated_size = *natural_size;
 	}
       break;
-    case GTK_ALIGN_CENTER:
+    case CTK_ALIGN_CENTER:
       if (*allocated_size > *natural_size)
 	{
 	  *allocated_pos += (*allocated_size - *natural_size) / 2;
@@ -6529,7 +6529,7 @@ ctk_widget_real_adjust_size_allocation (GtkWidget         *widget,
 {
   GtkWidgetPrivate *priv = widget->priv;
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       adjust_for_margin (priv->margin.left,
                          priv->margin.right,
@@ -6544,7 +6544,7 @@ ctk_widget_real_adjust_size_allocation (GtkWidget         *widget,
                          priv->margin.bottom,
                          minimum_size, natural_size,
                          allocated_pos, allocated_size);
-      adjust_for_align (effective_align (priv->valign, GTK_TEXT_DIR_NONE),
+      adjust_for_align (effective_align (priv->valign, CTK_TEXT_DIR_NONE),
                         natural_size, allocated_pos, allocated_size);
     }
 }
@@ -6591,7 +6591,7 @@ ctk_widget_can_activate_accel (GtkWidget *widget,
                                guint      signal_id)
 {
   gboolean can_activate = FALSE;
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
   g_signal_emit (widget, widget_signals[CAN_ACTIVATE_ACCEL], 0, signal_id, &can_activate);
   return can_activate;
 }
@@ -6672,7 +6672,7 @@ widget_new_accel_closure (GtkWidget *widget,
  * @accel_group:  accel group for this widget, added to its toplevel
  * @accel_key:    GDK keyval of the accelerator
  * @accel_mods:   modifier key combination of the accelerator
- * @accel_flags:  flag accelerators, e.g. %GTK_ACCEL_VISIBLE
+ * @accel_flags:  flag accelerators, e.g. %CTK_ACCEL_VISIBLE
  *
  * Installs an accelerator for this @widget in @accel_group that causes
  * @accel_signal to be emitted if the accelerator is activated.
@@ -6694,9 +6694,9 @@ ctk_widget_add_accelerator (GtkWidget      *widget,
   GClosure *closure;
   GSignalQuery query;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (accel_signal != NULL);
-  g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+  g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
 
   g_signal_query (g_signal_lookup (accel_signal, G_OBJECT_TYPE (widget)), &query);
   if (!query.signal_id ||
@@ -6720,7 +6720,7 @@ ctk_widget_add_accelerator (GtkWidget      *widget,
   ctk_accel_group_connect (accel_group,
 			   accel_key,
 			   accel_mods,
-			   accel_flags | GTK_ACCEL_LOCKED,
+			   accel_flags | CTK_ACCEL_LOCKED,
 			   closure);
 
   g_signal_emit (widget, widget_signals[ACCEL_CLOSURES_CHANGED], 0);
@@ -6750,8 +6750,8 @@ ctk_widget_remove_accelerator (GtkWidget      *widget,
   GList *slist, *clist;
   guint n;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
-  g_return_val_if_fail (GTK_IS_ACCEL_GROUP (accel_group), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), FALSE);
 
   ag_entry = ctk_accel_group_query (accel_group, accel_key, accel_mods, &n);
   clist = ctk_widget_list_accel_closures (widget);
@@ -6800,7 +6800,7 @@ ctk_widget_list_accel_closures (GtkWidget *widget)
   GSList *slist;
   GList *clist = NULL;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   for (slist = g_object_get_qdata (G_OBJECT (widget), quark_accel_closures); slist; slist = slist->next)
     if (ctk_accel_group_from_accel_closure (slist->data))
@@ -6863,19 +6863,19 @@ ctk_widget_set_accel_path (GtkWidget     *widget,
 {
   AccelPath *apath;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (GTK_WIDGET_GET_CLASS (widget)->activate_signal != 0);
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_WIDGET_GET_CLASS (widget)->activate_signal != 0);
 
   if (accel_path)
     {
-      g_return_if_fail (GTK_IS_ACCEL_GROUP (accel_group));
+      g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
       g_return_if_fail (_ctk_accel_path_is_valid (accel_path));
 
       ctk_accel_map_add_entry (accel_path, 0, 0);
       apath = g_slice_new (AccelPath);
       apath->accel_group = g_object_ref (accel_group);
       apath->path_quark = g_quark_from_string (accel_path);
-      apath->closure = widget_new_accel_closure (widget, GTK_WIDGET_GET_CLASS (widget)->activate_signal);
+      apath->closure = widget_new_accel_closure (widget, CTK_WIDGET_GET_CLASS (widget)->activate_signal);
     }
   else
     apath = NULL;
@@ -6895,7 +6895,7 @@ _ctk_widget_get_accel_path (GtkWidget *widget,
 {
   AccelPath *apath;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   apath = g_object_get_qdata (G_OBJECT (widget), quark_accel_path);
   if (locked)
@@ -6918,7 +6918,7 @@ ctk_widget_mnemonic_activate (GtkWidget *widget,
 {
   gboolean handled;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   group_cycling = group_cycling != FALSE;
   if (!ctk_widget_is_sensitive (widget))
@@ -6936,7 +6936,7 @@ static gboolean
 ctk_widget_real_mnemonic_activate (GtkWidget *widget,
                                    gboolean   group_cycling)
 {
-  if (!group_cycling && GTK_WIDGET_GET_CLASS (widget)->activate_signal)
+  if (!group_cycling && CTK_WIDGET_GET_CLASS (widget)->activate_signal)
     ctk_widget_activate (widget);
   else if (ctk_widget_get_can_focus (widget))
     ctk_widget_grab_focus (widget);
@@ -7074,15 +7074,15 @@ ctk_widget_draw_internal (GtkWidget *widget,
                          0, cr,
                          &result);
         }
-      else if (GTK_WIDGET_GET_CLASS (widget)->draw)
+      else if (CTK_WIDGET_GET_CLASS (widget)->draw)
         {
           cairo_save (cr);
-          GTK_WIDGET_GET_CLASS (widget)->draw (widget, cr);
+          CTK_WIDGET_GET_CLASS (widget)->draw (widget, cr);
           cairo_restore (cr);
         }
 
 #ifdef G_ENABLE_DEBUG
-      if (GTK_DISPLAY_DEBUG_CHECK (ctk_widget_get_display (widget), BASELINES))
+      if (CTK_DISPLAY_DEBUG_CHECK (ctk_widget_get_display (widget), BASELINES))
 	{
 	  gint baseline = ctk_widget_get_allocated_baseline (widget);
 	  gint width = ctk_widget_get_allocated_width (widget);
@@ -7168,7 +7168,7 @@ ctk_widget_draw (GtkWidget *widget,
 {
   gboolean was_marked;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (!widget->priv->alloc_needed);
   g_return_if_fail (!widget->priv->alloc_needed_on_child);
   g_return_if_fail (cr != NULL);
@@ -7194,7 +7194,7 @@ ctk_widget_real_scroll_event (GtkWidget      *widget,
                               GdkEventScroll *event)
 {
   return _ctk_widget_run_controllers (widget, (GdkEvent *) event,
-                                      GTK_PHASE_BUBBLE);
+                                      CTK_PHASE_BUBBLE);
 }
 
 static gboolean
@@ -7202,7 +7202,7 @@ ctk_widget_real_button_event (GtkWidget      *widget,
                               GdkEventButton *event)
 {
   return _ctk_widget_run_controllers (widget, (GdkEvent *) event,
-                                      GTK_PHASE_BUBBLE);
+                                      CTK_PHASE_BUBBLE);
 }
 
 static gboolean
@@ -7210,7 +7210,7 @@ ctk_widget_real_motion_event (GtkWidget      *widget,
                               GdkEventMotion *event)
 {
   return _ctk_widget_run_controllers (widget, (GdkEvent *) event,
-                                      GTK_PHASE_BUBBLE);
+                                      CTK_PHASE_BUBBLE);
 }
 
 static gboolean
@@ -7218,7 +7218,7 @@ ctk_widget_real_key_press_event (GtkWidget         *widget,
 				 GdkEventKey       *event)
 {
   if (_ctk_widget_run_controllers (widget, (GdkEvent *) event,
-                                   GTK_PHASE_BUBBLE))
+                                   CTK_PHASE_BUBBLE))
     return GDK_EVENT_STOP;
 
   return ctk_bindings_activate_event (G_OBJECT (widget), event);
@@ -7229,7 +7229,7 @@ ctk_widget_real_key_release_event (GtkWidget         *widget,
 				   GdkEventKey       *event)
 {
   if (_ctk_widget_run_controllers (widget, (GdkEvent *) event,
-                                   GTK_PHASE_BUBBLE))
+                                   CTK_PHASE_BUBBLE))
     return GDK_EVENT_STOP;
 
   return ctk_bindings_activate_event (G_OBJECT (widget), event);
@@ -7262,7 +7262,7 @@ ctk_widget_real_touch_event (GtkWidget     *widget,
 
   if (!event->emulating_pointer)
     return _ctk_widget_run_controllers (widget, (GdkEvent*) event,
-                                        GTK_PHASE_BUBBLE);
+                                        CTK_PHASE_BUBBLE);
 
   if (event->type == GDK_TOUCH_UPDATE ||
       event->type == GDK_TOUCH_BEGIN)
@@ -7337,7 +7337,7 @@ ctk_widget_real_grab_broken_event (GtkWidget          *widget,
                                    GdkEventGrabBroken *event)
 {
   return _ctk_widget_run_controllers (widget, (GdkEvent*) event,
-                                      GTK_PHASE_BUBBLE);
+                                      CTK_PHASE_BUBBLE);
 }
 
 #define WIDGET_REALIZED_FOR_EVENT(widget, event) \
@@ -7364,7 +7364,7 @@ gboolean
 ctk_widget_event (GtkWidget *widget,
 		  GdkEvent  *event)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), TRUE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
   g_return_val_if_fail (WIDGET_REALIZED_FOR_EVENT (widget, event), TRUE);
 
   if (event->type == GDK_EXPOSE)
@@ -7399,7 +7399,7 @@ _ctk_widget_get_controllers_evmask (GtkWidget *widget)
     {
       data = l->data;
       if (data->controller)
-        evmask |= ctk_event_controller_get_event_mask (GTK_EVENT_CONTROLLER (data->controller));
+        evmask |= ctk_event_controller_get_event_mask (CTK_EVENT_CONTROLLER (data->controller));
     }
 
   return evmask;
@@ -7466,7 +7466,7 @@ cancel_event_sequence_on_hierarchy (GtkWidget        *widget,
         _ctk_widget_cancel_sequence (event_widget, sequence);
       else
         _ctk_widget_set_sequence_state_internal (event_widget, sequence,
-                                                 GTK_EVENT_SEQUENCE_DENIED,
+                                                 CTK_EVENT_SEQUENCE_DENIED,
                                                  NULL);
 
       event_widget = _ctk_widget_get_parent (event_widget);
@@ -7480,7 +7480,7 @@ _ctk_widget_captured_event (GtkWidget *widget,
   gboolean return_val = FALSE;
   GtkCapturedEventHandler handler;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), TRUE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
   g_return_val_if_fail (WIDGET_REALIZED_FOR_EVENT (widget, event), TRUE);
 
   if (event->type == GDK_EXPOSE)
@@ -7494,7 +7494,7 @@ _ctk_widget_captured_event (GtkWidget *widget,
   if (!event_window_is_still_viewable (event))
     return TRUE;
 
-  return_val = _ctk_widget_run_controllers (widget, event, GTK_PHASE_CAPTURE);
+  return_val = _ctk_widget_run_controllers (widget, event, CTK_PHASE_CAPTURE);
 
   handler = g_object_get_data (G_OBJECT (widget), "captured-event-handler");
   if (!handler)
@@ -7588,7 +7588,7 @@ ctk_cairo_transform_to_window (cairo_t   *cr,
   int x, y;
 
   g_return_if_fail (cr != NULL);
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_WINDOW (window));
 
   if (_ctk_widget_get_translation_to_window (widget, window, &x, &y))
@@ -7623,7 +7623,7 @@ gint
 ctk_widget_send_expose (GtkWidget *widget,
 			GdkEvent  *event)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), TRUE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
   g_return_val_if_fail (ctk_widget_get_realized (widget), TRUE);
   g_return_val_if_fail (event != NULL, TRUE);
   g_return_val_if_fail (event->type == GDK_EXPOSE, TRUE);
@@ -7690,7 +7690,7 @@ ctk_widget_event_internal (GtkWidget *widget,
   g_object_ref (widget);
 
   if (widget == ctk_get_event_widget (event))
-    return_val |= _ctk_widget_run_controllers (widget, event, GTK_PHASE_TARGET);
+    return_val |= _ctk_widget_run_controllers (widget, event, CTK_PHASE_TARGET);
 
   g_signal_emit (widget, widget_signals[EVENT], 0, event, &handled);
   return_val |= handled | !WIDGET_REALIZED_FOR_EVENT (widget, event);
@@ -7702,7 +7702,7 @@ ctk_widget_event_internal (GtkWidget *widget,
 	{
         case GDK_TOUCHPAD_SWIPE:
         case GDK_TOUCHPAD_PINCH:
-          return_val |= _ctk_widget_run_controllers (widget, event, GTK_PHASE_BUBBLE);
+          return_val |= _ctk_widget_run_controllers (widget, event, CTK_PHASE_BUBBLE);
           /* Fall through */
         case GDK_PAD_BUTTON_PRESS:
         case GDK_PAD_BUTTON_RELEASE:
@@ -7833,7 +7833,7 @@ ctk_widget_event_internal (GtkWidget *widget,
 gboolean
 ctk_widget_activate (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   if (WIDGET_CLASS (widget)->activate_signal)
     {
@@ -7917,8 +7917,8 @@ ctk_widget_reparent_fixup_child (GtkWidget *widget,
       if (priv->window)
 	g_object_ref (priv->window);
 
-      if (GTK_IS_CONTAINER (widget))
-        ctk_container_forall (GTK_CONTAINER (widget),
+      if (CTK_IS_CONTAINER (widget))
+        ctk_container_forall (CTK_CONTAINER (widget),
                               ctk_widget_reparent_fixup_child,
                               client_data);
     }
@@ -7940,8 +7940,8 @@ ctk_widget_reparent (GtkWidget *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (GTK_IS_CONTAINER (new_parent));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_CONTAINER (new_parent));
   priv = widget->priv;
   g_return_if_fail (priv->parent != NULL);
 
@@ -7955,8 +7955,8 @@ ctk_widget_reparent (GtkWidget *widget,
 	priv->in_reparent = TRUE;
 
       g_object_ref (widget);
-      ctk_container_remove (GTK_CONTAINER (priv->parent), widget);
-      ctk_container_add (GTK_CONTAINER (new_parent), widget);
+      ctk_container_remove (CTK_CONTAINER (priv->parent), widget);
+      ctk_container_add (CTK_CONTAINER (new_parent), widget);
       g_object_unref (widget);
 
       if (priv->in_reparent)
@@ -7996,7 +7996,7 @@ ctk_widget_intersect (GtkWidget	         *widget,
   GdkRectangle tmp;
   gint return_val;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (area != NULL, FALSE);
 
   priv = widget->priv;
@@ -8042,7 +8042,7 @@ ctk_widget_region_intersect (GtkWidget            *widget,
   GdkRectangle rect;
   cairo_region_t *dest;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (region != NULL, NULL);
 
   _ctk_widget_get_allocation (widget, &rect);
@@ -8078,7 +8078,7 @@ _ctk_widget_grab_notify (GtkWidget *widget,
  * inside. @widget must be a focusable widget, such as a #GtkEntry;
  * something like #GtkFrame won’t work.
  *
- * More precisely, it must have the %GTK_CAN_FOCUS flag set. Use
+ * More precisely, it must have the %CTK_CAN_FOCUS flag set. Use
  * ctk_widget_set_can_focus() to modify that flag.
  *
  * The widget also needs to be realized and mapped. This is indicated by the
@@ -8088,7 +8088,7 @@ _ctk_widget_grab_notify (GtkWidget *widget,
 void
 ctk_widget_grab_focus (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (!ctk_widget_is_sensitive (widget))
     return;
@@ -8103,11 +8103,11 @@ static void
 reset_focus_recurse (GtkWidget *widget,
 		     gpointer   data)
 {
-  if (GTK_IS_CONTAINER (widget))
+  if (CTK_IS_CONTAINER (widget))
     {
       GtkContainer *container;
 
-      container = GTK_CONTAINER (widget);
+      container = CTK_CONTAINER (widget);
       ctk_container_set_focus_child (container, NULL);
 
       ctk_container_foreach (container,
@@ -8129,9 +8129,9 @@ ctk_widget_real_grab_focus (GtkWidget *focus_widget)
        * be set by the next loop.
        */
       toplevel = _ctk_widget_get_toplevel (focus_widget);
-      if (_ctk_widget_is_toplevel (toplevel) && GTK_IS_WINDOW (toplevel))
+      if (_ctk_widget_is_toplevel (toplevel) && CTK_IS_WINDOW (toplevel))
 	{
-          widget = ctk_window_get_focus (GTK_WINDOW (toplevel));
+          widget = ctk_window_get_focus (CTK_WINDOW (toplevel));
 
 	  if (widget == focus_widget)
 	    {
@@ -8140,7 +8140,7 @@ ctk_widget_real_grab_focus (GtkWidget *focus_widget)
 	       * This is needed when the toplevel is a GtkPlug
 	       */
 	      if (!ctk_widget_has_focus (widget))
-		_ctk_window_internal_set_focus (GTK_WINDOW (toplevel), focus_widget);
+		_ctk_window_internal_set_focus (CTK_WINDOW (toplevel), focus_widget);
 
 	      return;
 	    }
@@ -8154,7 +8154,7 @@ ctk_widget_real_grab_focus (GtkWidget *focus_widget)
 		  while (widget->priv->parent)
 		    {
 		      widget = widget->priv->parent;
-		      ctk_container_set_focus_child (GTK_CONTAINER (widget), NULL);
+		      ctk_container_set_focus_child (CTK_CONTAINER (widget), NULL);
 		      if (widget == common_ancestor)
 		        break;
 		    }
@@ -8167,7 +8167,7 @@ ctk_widget_real_grab_focus (GtkWidget *focus_widget)
 	   * actually, this is very questionable behavior.
 	   */
 
-	  ctk_container_foreach (GTK_CONTAINER (toplevel),
+	  ctk_container_foreach (CTK_CONTAINER (toplevel),
 				 reset_focus_recurse,
 				 NULL);
 	}
@@ -8178,11 +8178,11 @@ ctk_widget_real_grab_focus (GtkWidget *focus_widget)
       widget = focus_widget;
       while (widget->priv->parent)
 	{
-	  ctk_container_set_focus_child (GTK_CONTAINER (widget->priv->parent), widget);
+	  ctk_container_set_focus_child (CTK_CONTAINER (widget->priv->parent), widget);
 	  widget = widget->priv->parent;
 	}
-      if (GTK_IS_WINDOW (widget))
-	_ctk_window_internal_set_focus (GTK_WINDOW (widget), focus_widget);
+      if (CTK_IS_WINDOW (widget))
+	_ctk_window_internal_set_focus (CTK_WINDOW (widget), focus_widget);
     }
 }
 
@@ -8247,18 +8247,18 @@ ctk_widget_real_style_updated (GtkWidget *widget)
       gboolean has_text = ctk_widget_peek_pango_context (widget) != NULL;
 
       if (change == NULL ||
-          (has_text && ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_FONT)))
+          (has_text && ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_FONT)))
         ctk_widget_update_pango_context (widget);
 
       if (widget->priv->anchored)
         {
           if (change == NULL ||
-              ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_SIZE) ||
-              (has_text && ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_TEXT)))
+              ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_SIZE) ||
+              (has_text && ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_TEXT)))
             ctk_widget_queue_resize (widget);
-          else if (ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_CLIP))
+          else if (ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_CLIP))
             ctk_widget_queue_allocate (widget);
-          else if (ctk_css_style_change_affects (change, GTK_CSS_AFFECTS_REDRAW))
+          else if (ctk_css_style_change_affects (change, CTK_CSS_AFFECTS_REDRAW))
             ctk_widget_queue_draw (widget);
         }
     }
@@ -8290,7 +8290,7 @@ static gboolean
 ctk_widget_real_show_help (GtkWidget        *widget,
                            GtkWidgetHelpType help_type)
 {
-  if (help_type == GTK_WIDGET_HELP_TOOLTIP)
+  if (help_type == CTK_WIDGET_HELP_TOOLTIP)
     {
       _ctk_tooltip_toggle_keyboard_mode (widget);
 
@@ -8322,7 +8322,7 @@ ctk_widget_real_move_focus (GtkWidget         *widget,
 {
   GtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
 
-  if (widget != toplevel && GTK_IS_WINDOW (toplevel))
+  if (widget != toplevel && CTK_IS_WINDOW (toplevel))
     {
       g_signal_emit (toplevel, widget_signals[MOVE_FOCUS], 0,
                      direction);
@@ -8335,14 +8335,14 @@ ctk_widget_real_keynav_failed (GtkWidget        *widget,
 {
   switch (direction)
     {
-    case GTK_DIR_TAB_FORWARD:
-    case GTK_DIR_TAB_BACKWARD:
+    case CTK_DIR_TAB_FORWARD:
+    case CTK_DIR_TAB_BACKWARD:
       return FALSE;
 
-    case GTK_DIR_UP:
-    case GTK_DIR_DOWN:
-    case GTK_DIR_LEFT:
-    case GTK_DIR_RIGHT:
+    case CTK_DIR_UP:
+    case CTK_DIR_DOWN:
+    case CTK_DIR_LEFT:
+    case CTK_DIR_RIGHT:
       break;
     }
 
@@ -8366,7 +8366,7 @@ void
 ctk_widget_set_can_focus (GtkWidget *widget,
                           gboolean   can_focus)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (widget->priv->can_focus != can_focus)
     {
@@ -8391,7 +8391,7 @@ ctk_widget_set_can_focus (GtkWidget *widget,
 gboolean
 ctk_widget_get_can_focus (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->can_focus;
 }
@@ -8411,7 +8411,7 @@ ctk_widget_get_can_focus (GtkWidget *widget)
 gboolean
 ctk_widget_has_focus (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->has_focus;
 }
@@ -8439,7 +8439,7 @@ ctk_widget_has_visible_focus (GtkWidget *widget)
 {
   gboolean draw_focus;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   if (widget->priv->has_focus)
     {
@@ -8447,8 +8447,8 @@ ctk_widget_has_visible_focus (GtkWidget *widget)
 
       toplevel = _ctk_widget_get_toplevel (widget);
 
-      if (GTK_IS_WINDOW (toplevel))
-        draw_focus = ctk_window_get_focus_visible (GTK_WINDOW (toplevel));
+      if (CTK_IS_WINDOW (toplevel))
+        draw_focus = ctk_window_get_focus_visible (CTK_WINDOW (toplevel));
       else
         draw_focus = TRUE;
     }
@@ -8474,12 +8474,12 @@ ctk_widget_is_focus (GtkWidget *widget)
 {
   GtkWidget *toplevel;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   toplevel = _ctk_widget_get_toplevel (widget);
 
-  if (GTK_IS_WINDOW (toplevel))
-    return widget == ctk_window_get_focus (GTK_WINDOW (toplevel));
+  if (CTK_IS_WINDOW (toplevel))
+    return widget == ctk_window_get_focus (CTK_WINDOW (toplevel));
   else
     return FALSE;
 }
@@ -8502,7 +8502,7 @@ ctk_widget_set_focus_on_click (GtkWidget *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -8531,7 +8531,7 @@ ctk_widget_set_focus_on_click (GtkWidget *widget,
 gboolean
 ctk_widget_get_focus_on_click (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->focus_on_click;
 }
@@ -8552,7 +8552,7 @@ void
 ctk_widget_set_can_default (GtkWidget *widget,
                             gboolean   can_default)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (widget->priv->can_default != can_default)
     {
@@ -8577,7 +8577,7 @@ ctk_widget_set_can_default (GtkWidget *widget,
 gboolean
 ctk_widget_get_can_default (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->can_default;
 }
@@ -8597,7 +8597,7 @@ ctk_widget_get_can_default (GtkWidget *widget)
 gboolean
 ctk_widget_has_default (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->has_default;
 }
@@ -8613,9 +8613,9 @@ _ctk_widget_set_has_default (GtkWidget *widget,
   context = _ctk_widget_get_style_context (widget);
 
   if (has_default)
-    ctk_style_context_add_class (context, GTK_STYLE_CLASS_DEFAULT);
+    ctk_style_context_add_class (context, CTK_STYLE_CLASS_DEFAULT);
   else
-    ctk_style_context_remove_class (context, GTK_STYLE_CLASS_DEFAULT);
+    ctk_style_context_remove_class (context, CTK_STYLE_CLASS_DEFAULT);
 }
 
 /**
@@ -8637,13 +8637,13 @@ ctk_widget_grab_default (GtkWidget *widget)
 {
   GtkWidget *window;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (ctk_widget_get_can_default (widget));
 
   window = _ctk_widget_get_toplevel (widget);
 
   if (window && _ctk_widget_is_toplevel (window))
-    ctk_window_set_default (GTK_WINDOW (window), widget);
+    ctk_window_set_default (CTK_WINDOW (window), widget);
   else
     g_warning (G_STRLOC ": widget not within a GtkWindow");
 }
@@ -8666,7 +8666,7 @@ void
 ctk_widget_set_receives_default (GtkWidget *widget,
                                  gboolean   receives_default)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (widget->priv->receives_default != receives_default)
     {
@@ -8694,7 +8694,7 @@ ctk_widget_set_receives_default (GtkWidget *widget,
 gboolean
 ctk_widget_get_receives_default (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->receives_default;
 }
@@ -8715,7 +8715,7 @@ ctk_widget_get_receives_default (GtkWidget *widget)
 gboolean
 ctk_widget_has_grab (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->has_grab;
 }
@@ -8750,7 +8750,7 @@ ctk_widget_device_is_shadowed (GtkWidget *widget,
   GtkWindowGroup *group;
   GtkWidget *grab_widget, *toplevel;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (GDK_IS_DEVICE (device), FALSE);
 
   if (!_ctk_widget_get_realized (widget))
@@ -8758,8 +8758,8 @@ ctk_widget_device_is_shadowed (GtkWidget *widget,
 
   toplevel = _ctk_widget_get_toplevel (widget);
 
-  if (GTK_IS_WINDOW (toplevel))
-    group = ctk_window_get_group (GTK_WINDOW (toplevel));
+  if (CTK_IS_WINDOW (toplevel))
+    group = ctk_window_get_group (CTK_WINDOW (toplevel));
   else
     group = ctk_window_get_group (NULL);
 
@@ -8801,7 +8801,7 @@ ctk_widget_set_name (GtkWidget	 *widget,
   GtkWidgetPrivate *priv;
   gchar *new_name;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -8832,7 +8832,7 @@ ctk_widget_get_name (GtkWidget *widget)
 {
   GtkWidgetPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   priv = widget->priv;
 
@@ -8853,13 +8853,13 @@ ctk_widget_update_state_flags (GtkWidget     *widget,
   /* Handle insensitive first, since it is propagated
    * differently throughout the widget hierarchy.
    */
-  if ((priv->state_flags & GTK_STATE_FLAG_INSENSITIVE) && (flags_to_unset & GTK_STATE_FLAG_INSENSITIVE))
+  if ((priv->state_flags & CTK_STATE_FLAG_INSENSITIVE) && (flags_to_unset & CTK_STATE_FLAG_INSENSITIVE))
     ctk_widget_set_sensitive (widget, TRUE);
-  else if (!(priv->state_flags & GTK_STATE_FLAG_INSENSITIVE) && (flags_to_set & GTK_STATE_FLAG_INSENSITIVE))
+  else if (!(priv->state_flags & CTK_STATE_FLAG_INSENSITIVE) && (flags_to_set & CTK_STATE_FLAG_INSENSITIVE))
     ctk_widget_set_sensitive (widget, FALSE);
 
-  flags_to_set &= ~(GTK_STATE_FLAG_INSENSITIVE);
-  flags_to_unset &= ~(GTK_STATE_FLAG_INSENSITIVE);
+  flags_to_set &= ~(CTK_STATE_FLAG_INSENSITIVE);
+  flags_to_unset &= ~(CTK_STATE_FLAG_INSENSITIVE);
 
   if (flags_to_set != 0 || flags_to_unset != 0)
     {
@@ -8882,13 +8882,13 @@ ctk_widget_update_state_flags (GtkWidget     *widget,
  * This function is for use in widget implementations. Turns on flag
  * values in the current widget state (insensitive, prelighted, etc.).
  *
- * This function accepts the values %GTK_STATE_FLAG_DIR_LTR and
- * %GTK_STATE_FLAG_DIR_RTL but ignores them. If you want to set the widget's
+ * This function accepts the values %CTK_STATE_FLAG_DIR_LTR and
+ * %CTK_STATE_FLAG_DIR_RTL but ignores them. If you want to set the widget's
  * direction, use ctk_widget_set_direction().
  *
- * It is worth mentioning that any other state than %GTK_STATE_FLAG_INSENSITIVE,
+ * It is worth mentioning that any other state than %CTK_STATE_FLAG_INSENSITIVE,
  * will be propagated down to all non-internal children if @widget is a
- * #GtkContainer, while %GTK_STATE_FLAG_INSENSITIVE itself will be propagated
+ * #GtkContainer, while %CTK_STATE_FLAG_INSENSITIVE itself will be propagated
  * down to all #GtkContainer children by different means than turning on the
  * state flag down the hierarchy, both ctk_widget_get_state_flags() and
  * ctk_widget_is_sensitive() will make use of these.
@@ -8900,10 +8900,10 @@ ctk_widget_set_state_flags (GtkWidget     *widget,
                             GtkStateFlags  flags,
                             gboolean       clear)
 {
-#define ALLOWED_FLAGS (~(GTK_STATE_FLAG_DIR_LTR | GTK_STATE_FLAG_DIR_RTL))
+#define ALLOWED_FLAGS (~(CTK_STATE_FLAG_DIR_LTR | CTK_STATE_FLAG_DIR_RTL))
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (flags < (1 << GTK_STATE_FLAGS_BITS));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (flags < (1 << CTK_STATE_FLAGS_BITS));
 
   if ((!clear && (widget->priv->state_flags & flags) == flags) ||
       (clear && widget->priv->state_flags == flags))
@@ -8932,8 +8932,8 @@ void
 ctk_widget_unset_state_flags (GtkWidget     *widget,
                               GtkStateFlags  flags)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (flags < (1 << GTK_STATE_FLAGS_BITS));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (flags < (1 << CTK_STATE_FLAGS_BITS));
 
   if ((widget->priv->state_flags & flags) == 0)
     return;
@@ -8946,7 +8946,7 @@ ctk_widget_unset_state_flags (GtkWidget     *widget,
  * @widget: a #GtkWidget
  *
  * Returns the widget state as a flag set. It is worth mentioning
- * that the effective %GTK_STATE_FLAG_INSENSITIVE state will be
+ * that the effective %CTK_STATE_FLAG_INSENSITIVE state will be
  * returned, that is, also based on parent insensitivity, even if
  * @widget itself is sensitive.
  *
@@ -8961,7 +8961,7 @@ ctk_widget_unset_state_flags (GtkWidget     *widget,
 GtkStateFlags
 ctk_widget_get_state_flags (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   return widget->priv->state_flags;
 }
@@ -8990,25 +8990,25 @@ ctk_widget_set_state (GtkWidget           *widget,
 
   switch (state)
     {
-    case GTK_STATE_ACTIVE:
-      flags = GTK_STATE_FLAG_ACTIVE;
+    case CTK_STATE_ACTIVE:
+      flags = CTK_STATE_FLAG_ACTIVE;
       break;
-    case GTK_STATE_PRELIGHT:
-      flags = GTK_STATE_FLAG_PRELIGHT;
+    case CTK_STATE_PRELIGHT:
+      flags = CTK_STATE_FLAG_PRELIGHT;
       break;
-    case GTK_STATE_SELECTED:
-      flags = GTK_STATE_FLAG_SELECTED;
+    case CTK_STATE_SELECTED:
+      flags = CTK_STATE_FLAG_SELECTED;
       break;
-    case GTK_STATE_INSENSITIVE:
-      flags = GTK_STATE_FLAG_INSENSITIVE;
+    case CTK_STATE_INSENSITIVE:
+      flags = CTK_STATE_FLAG_INSENSITIVE;
       break;
-    case GTK_STATE_INCONSISTENT:
-      flags = GTK_STATE_FLAG_INCONSISTENT;
+    case CTK_STATE_INCONSISTENT:
+      flags = CTK_STATE_FLAG_INCONSISTENT;
       break;
-    case GTK_STATE_FOCUSED:
-      flags = GTK_STATE_FLAG_FOCUSED;
+    case CTK_STATE_FOCUSED:
+      flags = CTK_STATE_FLAG_FOCUSED;
       break;
-    case GTK_STATE_NORMAL:
+    case CTK_STATE_NORMAL:
     default:
       flags = 0;
       break;
@@ -9016,8 +9016,8 @@ ctk_widget_set_state (GtkWidget           *widget,
 
   ctk_widget_update_state_flags (widget,
                                  flags,
-                                 (GTK_STATE_FLAG_ACTIVE | GTK_STATE_FLAG_PRELIGHT | GTK_STATE_FLAG_SELECTED
-                                 | GTK_STATE_FLAG_INSENSITIVE | GTK_STATE_FLAG_INCONSISTENT | GTK_STATE_FLAG_FOCUSED) ^ flags);
+                                 (CTK_STATE_FLAG_ACTIVE | CTK_STATE_FLAG_PRELIGHT | CTK_STATE_FLAG_SELECTED
+                                 | CTK_STATE_FLAG_INSENSITIVE | CTK_STATE_FLAG_INCONSISTENT | CTK_STATE_FLAG_FOCUSED) ^ flags);
 }
 
 /**
@@ -9037,20 +9037,20 @@ ctk_widget_get_state (GtkWidget *widget)
 {
   GtkStateFlags flags;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), GTK_STATE_NORMAL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), CTK_STATE_NORMAL);
 
   flags = _ctk_widget_get_state_flags (widget);
 
-  if (flags & GTK_STATE_FLAG_INSENSITIVE)
-    return GTK_STATE_INSENSITIVE;
-  else if (flags & GTK_STATE_FLAG_ACTIVE)
-    return GTK_STATE_ACTIVE;
-  else if (flags & GTK_STATE_FLAG_SELECTED)
-    return GTK_STATE_SELECTED;
-  else if (flags & GTK_STATE_FLAG_PRELIGHT)
-    return GTK_STATE_PRELIGHT;
+  if (flags & CTK_STATE_FLAG_INSENSITIVE)
+    return CTK_STATE_INSENSITIVE;
+  else if (flags & CTK_STATE_FLAG_ACTIVE)
+    return CTK_STATE_ACTIVE;
+  else if (flags & CTK_STATE_FLAG_SELECTED)
+    return CTK_STATE_SELECTED;
+  else if (flags & CTK_STATE_FLAG_PRELIGHT)
+    return CTK_STATE_PRELIGHT;
   else
-    return GTK_STATE_NORMAL;
+    return CTK_STATE_NORMAL;
 }
 
 /**
@@ -9072,7 +9072,7 @@ void
 ctk_widget_set_visible (GtkWidget *widget,
                         gboolean   visible)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (visible)
     ctk_widget_show (widget);
@@ -9119,7 +9119,7 @@ _ctk_widget_set_visible_flag (GtkWidget *widget,
 gboolean
 ctk_widget_get_visible (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->visible;
 }
@@ -9142,7 +9142,7 @@ ctk_widget_get_visible (GtkWidget *widget)
 gboolean
 ctk_widget_is_visible (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   while (widget)
     {
@@ -9179,7 +9179,7 @@ void
 ctk_widget_set_has_window (GtkWidget *widget,
                            gboolean   has_window)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   widget->priv->no_window = !has_window;
 }
@@ -9198,7 +9198,7 @@ ctk_widget_set_has_window (GtkWidget *widget,
 gboolean
 ctk_widget_get_has_window (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return ! widget->priv->no_window;
 }
@@ -9220,7 +9220,7 @@ ctk_widget_get_has_window (GtkWidget *widget)
 gboolean
 ctk_widget_is_toplevel (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->toplevel;
 }
@@ -9246,7 +9246,7 @@ _ctk_widget_set_is_toplevel (GtkWidget *widget,
 gboolean
 ctk_widget_is_drawable (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return (_ctk_widget_get_visible (widget) &&
           _ctk_widget_get_mapped (widget));
@@ -9265,7 +9265,7 @@ ctk_widget_is_drawable (GtkWidget *widget)
 gboolean
 ctk_widget_get_realized (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->realized;
 }
@@ -9288,7 +9288,7 @@ void
 ctk_widget_set_realized (GtkWidget *widget,
                          gboolean   realized)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   widget->priv->realized = realized;
 }
@@ -9306,7 +9306,7 @@ ctk_widget_set_realized (GtkWidget *widget,
 gboolean
 ctk_widget_get_mapped (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->mapped;
 }
@@ -9327,7 +9327,7 @@ void
 ctk_widget_set_mapped (GtkWidget *widget,
                        gboolean   mapped)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   widget->priv->mapped = mapped;
 }
@@ -9353,7 +9353,7 @@ void
 ctk_widget_set_app_paintable (GtkWidget *widget,
 			      gboolean   app_paintable)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   app_paintable = (app_paintable != FALSE);
 
@@ -9384,7 +9384,7 @@ ctk_widget_set_app_paintable (GtkWidget *widget,
 gboolean
 ctk_widget_get_app_paintable (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->app_paintable;
 }
@@ -9428,7 +9428,7 @@ void
 ctk_widget_set_double_buffered (GtkWidget *widget,
 				gboolean   double_buffered)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   double_buffered = (double_buffered != FALSE);
 
@@ -9455,7 +9455,7 @@ ctk_widget_set_double_buffered (GtkWidget *widget,
 gboolean
 ctk_widget_get_double_buffered (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->double_buffered;
 }
@@ -9487,7 +9487,7 @@ void
 ctk_widget_set_redraw_on_allocate (GtkWidget *widget,
 				   gboolean   redraw_on_allocate)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   widget->priv->redraw_on_alloc = redraw_on_allocate;
 }
@@ -9508,7 +9508,7 @@ ctk_widget_set_sensitive (GtkWidget *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -9529,11 +9529,11 @@ ctk_widget_set_sensitive (GtkWidget *widget,
       if (sensitive)
         {
           data.flags_to_set = 0;
-          data.flags_to_unset = GTK_STATE_FLAG_INSENSITIVE;
+          data.flags_to_unset = CTK_STATE_FLAG_INSENSITIVE;
         }
       else
         {
-          data.flags_to_set = GTK_STATE_FLAG_INSENSITIVE;
+          data.flags_to_set = CTK_STATE_FLAG_INSENSITIVE;
           data.flags_to_unset = 0;
         }
 
@@ -9560,7 +9560,7 @@ ctk_widget_set_sensitive (GtkWidget *widget,
 gboolean
 ctk_widget_get_sensitive (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->sensitive;
 }
@@ -9579,9 +9579,9 @@ ctk_widget_get_sensitive (GtkWidget *widget)
 gboolean
 ctk_widget_is_sensitive (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
-  return !(widget->priv->state_flags & GTK_STATE_FLAG_INSENSITIVE);
+  return !(widget->priv->state_flags & CTK_STATE_FLAG_INSENSITIVE);
 }
 
 /**
@@ -9604,8 +9604,8 @@ ctk_widget_set_parent (GtkWidget *widget,
   GtkWidgetPrivate *priv;
   GtkStateData data;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (GTK_IS_WIDGET (parent));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (parent));
   g_return_if_fail (widget != parent);
 
   priv = widget->priv;
@@ -9636,7 +9636,7 @@ ctk_widget_set_parent (GtkWidget *widget,
 
   /* Merge both old state and current parent state,
    * making sure to only propagate the right states */
-  data.flags_to_set = parent_flags & GTK_STATE_FLAGS_DO_PROPAGATE;
+  data.flags_to_set = parent_flags & CTK_STATE_FLAGS_DO_PROPAGATE;
   data.flags_to_unset = 0;
   ctk_widget_propagate_state (widget, &data);
 
@@ -9700,7 +9700,7 @@ ctk_widget_set_parent (GtkWidget *widget,
 GtkWidget *
 ctk_widget_get_parent (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   return widget->priv->parent;
 }
@@ -9725,8 +9725,8 @@ _ctk_widget_get_modifier_properties (GtkWidget *widget)
       context = _ctk_widget_get_style_context (widget);
 
       ctk_style_context_add_provider (context,
-                                      GTK_STYLE_PROVIDER (style),
-                                      GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                      CTK_STYLE_PROVIDER (style),
+                                      CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     }
 
   return style;
@@ -9755,14 +9755,14 @@ _ctk_widget_get_modifier_properties (GtkWidget *widget)
  * widget/container implementation through ctk_style_context_add_class().
  *
  * This way, your widget library can install a #GtkCssProvider
- * with the %GTK_STYLE_PROVIDER_PRIORITY_FALLBACK priority in order
+ * with the %CTK_STYLE_PROVIDER_PRIORITY_FALLBACK priority in order
  * to provide a default styling for those widgets that need so, and
  * this theming may fully overridden by the user’s theme.
  *
  * Note that for complex widgets this may bring in undesired
  * results (such as uniform background color everywhere), in
  * these cases it is better to fully style such widgets through a
- * #GtkCssProvider with the %GTK_STYLE_PROVIDER_PRIORITY_APPLICATION
+ * #GtkCssProvider with the %CTK_STYLE_PROVIDER_PRIORITY_APPLICATION
  * priority.
  *
  * Since: 3.0
@@ -9776,7 +9776,7 @@ ctk_widget_override_color (GtkWidget     *widget,
 {
   GtkModifierStyle *style;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   style = _ctk_widget_get_modifier_properties (widget);
   _ctk_modifier_style_set_color (style, state, color);
@@ -9810,7 +9810,7 @@ ctk_widget_override_background_color (GtkWidget     *widget,
 {
   GtkModifierStyle *style;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   style = _ctk_widget_get_modifier_properties (widget);
   _ctk_modifier_style_set_background_color (style, state, color);
@@ -9838,7 +9838,7 @@ ctk_widget_override_font (GtkWidget                  *widget,
 {
   GtkModifierStyle *style;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   style = _ctk_widget_get_modifier_properties (widget);
   _ctk_modifier_style_set_font (style, font_desc);
@@ -9872,7 +9872,7 @@ ctk_widget_override_symbolic_color (GtkWidget     *widget,
 {
   GtkModifierStyle *style;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   style = _ctk_widget_get_modifier_properties (widget);
   _ctk_modifier_style_map_color (style, name, color);
@@ -9910,14 +9910,14 @@ ctk_widget_override_cursor (GtkWidget     *widget,
 {
   GtkModifierStyle *style;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   style = _ctk_widget_get_modifier_properties (widget);
   _ctk_modifier_style_set_color_property (style,
-                                          GTK_TYPE_WIDGET,
+                                          CTK_TYPE_WIDGET,
                                           "cursor-color", cursor);
   _ctk_modifier_style_set_color_property (style,
-                                          GTK_TYPE_WIDGET,
+                                          CTK_TYPE_WIDGET,
                                           "secondary-cursor-color",
                                           secondary_cursor);
 }
@@ -9995,8 +9995,8 @@ ctk_widget_propagate_hierarchy_changed_recurse (GtkWidget *widget,
       g_signal_emit (widget, widget_signals[HIERARCHY_CHANGED], 0, info->previous_toplevel);
       do_screen_change (widget, info->previous_screen, info->new_screen);
 
-      if (GTK_IS_CONTAINER (widget))
-	ctk_container_forall (GTK_CONTAINER (widget),
+      if (CTK_IS_CONTAINER (widget))
+	ctk_container_forall (CTK_CONTAINER (widget),
 			      ctk_widget_propagate_hierarchy_changed_recurse,
 			      client_data);
 
@@ -10052,8 +10052,8 @@ ctk_widget_propagate_screen_changed_recurse (GtkWidget *widget,
 
   do_screen_change (widget, info->previous_screen, info->new_screen);
 
-  if (GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget),
+  if (CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget),
 			  ctk_widget_propagate_screen_changed_recurse,
 			  client_data);
 
@@ -10084,7 +10084,7 @@ ctk_widget_is_composited (GtkWidget *widget)
 {
   GdkScreen *screen;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   screen = ctk_widget_get_screen (widget);
 
@@ -10095,9 +10095,9 @@ static void
 propagate_composited_changed (GtkWidget *widget,
 			      gpointer dummy)
 {
-  if (GTK_IS_CONTAINER (widget))
+  if (CTK_IS_CONTAINER (widget))
     {
-      ctk_container_forall (GTK_CONTAINER (widget),
+      ctk_container_forall (CTK_CONTAINER (widget),
 			    propagate_composited_changed,
 			    NULL);
     }
@@ -10140,10 +10140,10 @@ _ctk_widget_propagate_screen_changed (GtkWidget    *widget,
 static void
 reset_style_recurse (GtkWidget *widget, gpointer data)
 {
-  _ctk_widget_invalidate_style_context (widget, GTK_CSS_CHANGE_ANY);
+  _ctk_widget_invalidate_style_context (widget, CTK_CSS_CHANGE_ANY);
 
-  if (GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget),
+  if (CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget),
 			  reset_style_recurse,
 			  NULL);
 }
@@ -10162,7 +10162,7 @@ reset_style_recurse (GtkWidget *widget, gpointer data)
 void
 ctk_widget_reset_style (GtkWidget *widget)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   reset_style_recurse (widget, NULL);
 
@@ -10334,7 +10334,7 @@ ctk_widget_pop_verify_invariants (GtkWidget *widget)
     {
       ctk_widget_verify_invariants (widget);
 
-      if (GTK_IS_CONTAINER (widget))
+      if (CTK_IS_CONTAINER (widget))
         {
           /* Check one level of children, because our
            * push_verify_invariants() will have prevented some of the
@@ -10344,7 +10344,7 @@ ctk_widget_pop_verify_invariants (GtkWidget *widget)
            * mapping children, we'll push/pop on each child as we map
            * it.
            */
-          ctk_container_forall (GTK_CONTAINER (widget),
+          ctk_container_forall (CTK_CONTAINER (widget),
                                 ctk_widget_verify_child_invariants,
                                 NULL);
         }
@@ -10377,12 +10377,12 @@ ctk_widget_get_pango_context (GtkWidget *widget)
 {
   PangoContext *context;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   context = g_object_get_qdata (G_OBJECT (widget), quark_pango_context);
   if (!context)
     {
-      context = ctk_widget_create_pango_context (GTK_WIDGET (widget));
+      context = ctk_widget_create_pango_context (CTK_WIDGET (widget));
       g_object_set_qdata_full (G_OBJECT (widget),
 			       quark_pango_context,
 			       context,
@@ -10426,13 +10426,13 @@ update_pango_context (GtkWidget    *widget,
   pango_font_description_free (font_desc);
 
   pango_context_set_base_dir (context,
-			      _ctk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR ?
+			      _ctk_widget_get_direction (widget) == CTK_TEXT_DIR_LTR ?
 			      PANGO_DIRECTION_LTR : PANGO_DIRECTION_RTL);
 
   pango_cairo_context_set_resolution (context,
                                       _ctk_css_number_value_get (
                                           _ctk_style_context_peek_property (style_context,
-                                                                            GTK_CSS_PROPERTY_DPI),
+                                                                            CTK_CSS_PROPERTY_DPI),
                                           100));
 
   screen = ctk_widget_get_screen_unchecked (widget);
@@ -10481,7 +10481,7 @@ ctk_widget_set_font_options (GtkWidget                  *widget,
 {
   cairo_font_options_t *font_options;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   font_options = (cairo_font_options_t *)g_object_get_qdata (G_OBJECT (widget), quark_font_options);
   if (font_options != options)
@@ -10509,7 +10509,7 @@ ctk_widget_set_font_options (GtkWidget                  *widget,
 const cairo_font_options_t *
 ctk_widget_get_font_options (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   return (cairo_font_options_t *)g_object_get_qdata (G_OBJECT (widget), quark_font_options);
 }
@@ -10522,8 +10522,8 @@ ctk_widget_set_font_map_recurse (GtkWidget *widget, gpointer data)
 
   ctk_widget_update_pango_context (widget);
 
-  if (GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget),
+  if (CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget),
                           ctk_widget_set_font_map_recurse,
                           data);
 }
@@ -10545,7 +10545,7 @@ ctk_widget_set_font_map (GtkWidget    *widget,
 {
   PangoFontMap *map;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   map = PANGO_FONT_MAP (g_object_get_qdata (G_OBJECT (widget), quark_font_map));
   if (map == font_map)
@@ -10557,8 +10557,8 @@ ctk_widget_set_font_map (GtkWidget    *widget,
                            g_object_unref);
 
   ctk_widget_update_pango_context (widget);
-  if (GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget),
+  if (CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget),
                           ctk_widget_set_font_map_recurse,
                           NULL);
 }
@@ -10576,7 +10576,7 @@ ctk_widget_set_font_map (GtkWidget    *widget,
 PangoFontMap *
 ctk_widget_get_font_map (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   return PANGO_FONT_MAP (g_object_get_qdata (G_OBJECT (widget), quark_font_map));
 }
@@ -10597,7 +10597,7 @@ ctk_widget_create_pango_context (GtkWidget *widget)
   GdkDisplay *display;
   PangoContext *context;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   display = ctk_widget_get_display (widget);
   context = gdk_pango_context_get_for_display (display);
@@ -10630,7 +10630,7 @@ ctk_widget_create_pango_layout (GtkWidget   *widget,
   PangoLayout *layout;
   PangoContext *context;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   context = ctk_widget_get_pango_context (widget);
   layout = pango_layout_new (context);
@@ -10652,8 +10652,8 @@ ctk_widget_create_pango_layout (GtkWidget   *widget,
  * A convenience function that uses the theme engine and style
  * settings for @widget to look up @stock_id and render it to
  * a pixbuf. @stock_id should be a stock icon ID such as
- * #GTK_STOCK_OPEN or #GTK_STOCK_OK. @size should be a size
- * such as #GTK_ICON_SIZE_MENU.
+ * #CTK_STOCK_OPEN or #CTK_STOCK_OK. @size should be a size
+ * such as #CTK_ICON_SIZE_MENU.
  *
  * The pixels in the returned #GdkPixbuf are shared with the rest of
  * the application and should not be modified. The pixbuf should be freed
@@ -10674,9 +10674,9 @@ ctk_widget_render_icon_pixbuf (GtkWidget   *widget,
   GtkStyleContext *context;
   GtkIconSet *icon_set;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (stock_id != NULL, NULL);
-  g_return_val_if_fail (size > GTK_ICON_SIZE_INVALID || size == -1, NULL);
+  g_return_val_if_fail (size > CTK_ICON_SIZE_INVALID || size == -1, NULL);
 
   context = _ctk_widget_get_style_context (widget);
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -10709,7 +10709,7 @@ ctk_widget_set_parent_window (GtkWidget *widget,
 {
   GdkWindow *old_parent_window;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   old_parent_window = g_object_get_qdata (G_OBJECT (widget),
 					  quark_parent_window);
@@ -10730,12 +10730,12 @@ ctk_widget_set_parent_window (GtkWidget *widget,
        * embeddable.
        */
 #ifdef GDK_WINDOWING_X11
-      is_plug = GTK_IS_PLUG (widget);
+      is_plug = CTK_IS_PLUG (widget);
 #else
       is_plug = FALSE;
 #endif
-      if (GTK_IS_WINDOW (widget) && !is_plug)
-	_ctk_window_set_is_toplevel (GTK_WINDOW (widget), parent_window == NULL);
+      if (CTK_IS_WINDOW (widget) && !is_plug)
+	_ctk_window_set_is_toplevel (CTK_WINDOW (widget), parent_window == NULL);
     }
 }
 
@@ -10754,7 +10754,7 @@ ctk_widget_get_parent_window (GtkWidget *widget)
   GtkWidgetPrivate *priv;
   GdkWindow *parent_window;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   priv = widget->priv;
 
@@ -10794,7 +10794,7 @@ ctk_widget_set_child_visible (GtkWidget *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (!_ctk_widget_is_toplevel (widget));
 
   priv = widget->priv;
@@ -10812,7 +10812,7 @@ ctk_widget_set_child_visible (GtkWidget *widget,
 
       toplevel = _ctk_widget_get_toplevel (widget);
       if (toplevel != widget && _ctk_widget_is_toplevel (toplevel))
-	_ctk_window_unset_focus_and_default (GTK_WINDOW (toplevel), widget);
+	_ctk_window_unset_focus_and_default (CTK_WINDOW (toplevel), widget);
     }
 
   if (priv->parent && _ctk_widget_get_realized (priv->parent))
@@ -10845,7 +10845,7 @@ ctk_widget_set_child_visible (GtkWidget *widget,
 gboolean
 ctk_widget_get_child_visible (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->child_visible;
 }
@@ -10859,10 +10859,10 @@ ctk_widget_get_screen_unchecked (GtkWidget *widget)
 
   if (_ctk_widget_is_toplevel (toplevel))
     {
-      if (GTK_IS_WINDOW (toplevel))
-	return _ctk_window_get_screen (GTK_WINDOW (toplevel));
-      else if (GTK_IS_INVISIBLE (toplevel))
-	return ctk_invisible_get_screen (GTK_INVISIBLE (widget));
+      if (CTK_IS_WINDOW (toplevel))
+	return _ctk_window_get_screen (CTK_WINDOW (toplevel));
+      else if (CTK_IS_INVISIBLE (toplevel))
+	return ctk_invisible_get_screen (CTK_INVISIBLE (widget));
     }
 
   return NULL;
@@ -10890,7 +10890,7 @@ ctk_widget_get_screen (GtkWidget *widget)
 {
   GdkScreen *screen;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   screen = ctk_widget_get_screen_unchecked (widget);
 
@@ -10917,7 +10917,7 @@ ctk_widget_get_screen (GtkWidget *widget)
 gboolean
 ctk_widget_has_screen (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return (ctk_widget_get_screen_unchecked (widget) != NULL);
 }
@@ -10927,7 +10927,7 @@ _ctk_widget_scale_changed (GtkWidget *widget)
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -10938,8 +10938,8 @@ _ctk_widget_scale_changed (GtkWidget *widget)
 
   ctk_widget_queue_draw (widget);
 
-  if (GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget),
+  if (CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget),
                           (GtkCallback) _ctk_widget_scale_changed,
                           NULL);
 }
@@ -10965,7 +10965,7 @@ ctk_widget_get_scale_factor (GtkWidget *widget)
   GdkDisplay *display;
   GdkMonitor *monitor;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 1);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 1);
 
   if (_ctk_widget_get_realized (widget))
     return gdk_window_get_scale_factor (_ctk_widget_get_window (widget));
@@ -11002,7 +11002,7 @@ ctk_widget_get_scale_factor (GtkWidget *widget)
 GdkDisplay*
 ctk_widget_get_display (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   return gdk_screen_get_display (ctk_widget_get_screen (widget));
 }
@@ -11029,7 +11029,7 @@ ctk_widget_get_display (GtkWidget *widget)
 GdkWindow*
 ctk_widget_get_root_window (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   return gdk_screen_get_root_window (ctk_widget_get_screen (widget));
 }
@@ -11067,7 +11067,7 @@ ctk_widget_child_focus (GtkWidget       *widget,
 {
   gboolean return_val;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   if (!_ctk_widget_get_visible (widget) ||
       !ctk_widget_is_sensitive (widget))
@@ -11076,7 +11076,7 @@ ctk_widget_child_focus (GtkWidget       *widget,
   /* child widgets must set CAN_FOCUS, containers
    * don't have to though.
    */
-  if (!GTK_IS_CONTAINER (widget) &&
+  if (!CTK_IS_CONTAINER (widget) &&
       !ctk_widget_get_can_focus (widget))
     return FALSE;
 
@@ -11108,7 +11108,7 @@ ctk_widget_child_focus (GtkWidget       *widget,
  * ctk_widget_child_focus() on the widget’s toplevel.
  *
  * The default ::keynav-failed handler returns %FALSE for
- * %GTK_DIR_TAB_FORWARD and %GTK_DIR_TAB_BACKWARD. For the other
+ * %CTK_DIR_TAB_FORWARD and %CTK_DIR_TAB_BACKWARD. For the other
  * values of #GtkDirectionType it returns %TRUE.
  *
  * Whenever the default handler returns %TRUE, it also calls
@@ -11133,7 +11133,7 @@ ctk_widget_keynav_failed (GtkWidget        *widget,
 {
   gboolean return_val;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   g_signal_emit (widget, widget_signals[KEYNAV_FAILED], 0,
 		 direction, &return_val);
@@ -11162,7 +11162,7 @@ ctk_widget_error_bell (GtkWidget *widget)
   GtkSettings* settings;
   gboolean beep;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -11251,7 +11251,7 @@ ctk_widget_set_size_request (GtkWidget *widget,
                              gint       width,
                              gint       height)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (width >= -1);
   g_return_if_fail (height >= -1);
 
@@ -11283,7 +11283,7 @@ ctk_widget_get_size_request (GtkWidget *widget,
                              gint      *width,
                              gint      *height)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (width)
     *width = widget->priv->width;
@@ -11328,7 +11328,7 @@ ctk_widget_set_events (GtkWidget *widget,
 {
   gint e;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (!_ctk_widget_get_realized (widget));
 
   e = GPOINTER_TO_INT (g_object_get_qdata (G_OBJECT (widget), quark_event_mask));
@@ -11367,7 +11367,7 @@ ctk_widget_set_device_events (GtkWidget    *widget,
 {
   GHashTable *device_events;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_DEVICE (device));
   g_return_if_fail (!_ctk_widget_get_realized (widget));
 
@@ -11405,7 +11405,7 @@ ctk_widget_set_device_enabled (GtkWidget *widget,
 {
   GList *enabled_devices;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_DEVICE (device));
 
   enabled_devices = g_object_get_qdata (G_OBJECT (widget), quark_enabled_devices);
@@ -11436,7 +11436,7 @@ ctk_widget_get_device_enabled (GtkWidget *widget,
 {
   GList *enabled_devices;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (GDK_IS_DEVICE (device), FALSE);
 
   enabled_devices = g_object_get_qdata (G_OBJECT (widget), quark_enabled_devices);
@@ -11518,7 +11518,7 @@ ctk_widget_add_events (GtkWidget *widget,
 {
   gint old_events;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   old_events = GPOINTER_TO_INT (g_object_get_qdata (G_OBJECT (widget), quark_event_mask));
   g_object_set_qdata (G_OBJECT (widget), quark_event_mask,
@@ -11552,7 +11552,7 @@ ctk_widget_add_device_events (GtkWidget    *widget,
   GdkEventMask old_events;
   GHashTable *device_events;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_DEVICE (device));
 
   old_events = ctk_widget_get_device_events (widget, device);
@@ -11585,7 +11585,7 @@ ctk_widget_add_device_events (GtkWidget    *widget,
  * returned widget; it should not be unreferenced.
  *
  * Note the difference in behavior vs. ctk_widget_get_ancestor();
- * `ctk_widget_get_ancestor (widget, GTK_TYPE_WINDOW)`
+ * `ctk_widget_get_ancestor (widget, CTK_TYPE_WINDOW)`
  * would return
  * %NULL if @widget wasn’t inside a toplevel window, and if the
  * window was inside a #GtkWindow-derived widget which was in turn
@@ -11594,7 +11594,7 @@ ctk_widget_add_device_events (GtkWidget    *widget,
  * inside a #GtkSocket within the same application.
  *
  * To reliably find the toplevel #GtkWindow, use
- * ctk_widget_get_toplevel() and call GTK_IS_WINDOW()
+ * ctk_widget_get_toplevel() and call CTK_IS_WINDOW()
  * on the result. For instance, to get the title of a widget's toplevel
  * window, one might use:
  * |[<!-- language="C" -->
@@ -11602,9 +11602,9 @@ ctk_widget_add_device_events (GtkWidget    *widget,
  * get_widget_toplevel_title (GtkWidget *widget)
  * {
  *   GtkWidget *toplevel = ctk_widget_get_toplevel (widget);
- *   if (GTK_IS_WINDOW (toplevel))
+ *   if (CTK_IS_WINDOW (toplevel))
  *     {
- *       return ctk_window_get_title (GTK_WINDOW (toplevel));
+ *       return ctk_window_get_title (CTK_WINDOW (toplevel));
  *     }
  *
  *   return NULL;
@@ -11617,7 +11617,7 @@ ctk_widget_add_device_events (GtkWidget    *widget,
 GtkWidget*
 ctk_widget_get_toplevel (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   while (widget->priv->parent)
     widget = widget->priv->parent;
@@ -11631,7 +11631,7 @@ ctk_widget_get_toplevel (GtkWidget *widget)
  * @widget_type: ancestor type
  *
  * Gets the first ancestor of @widget with type @widget_type. For example,
- * `ctk_widget_get_ancestor (widget, GTK_TYPE_BOX)` gets
+ * `ctk_widget_get_ancestor (widget, CTK_TYPE_BOX)` gets
  * the first #GtkBox that’s an ancestor of @widget. No reference will be
  * added to the returned widget; it should not be unreferenced. See note
  * about checking for a toplevel #GtkWindow in the docs for
@@ -11646,7 +11646,7 @@ GtkWidget*
 ctk_widget_get_ancestor (GtkWidget *widget,
 			 GType      widget_type)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   while (widget && !g_type_is_a (G_OBJECT_TYPE (widget), widget_type))
     widget = widget->priv->parent;
@@ -11674,7 +11674,7 @@ void
 ctk_widget_set_visual (GtkWidget *widget,
                        GdkVisual *visual)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (visual == NULL || GDK_IS_VISUAL (visual));
 
   if (visual)
@@ -11701,7 +11701,7 @@ ctk_widget_get_visual (GtkWidget *widget)
   GdkVisual *visual;
   GdkScreen *screen;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   if (!_ctk_widget_get_has_window (widget) &&
       widget->priv->window)
@@ -11740,7 +11740,7 @@ ctk_widget_get_visual (GtkWidget *widget)
 GtkSettings*
 ctk_widget_get_settings (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   return ctk_settings_get_for_screen (ctk_widget_get_screen (widget));
 }
@@ -11762,7 +11762,7 @@ ctk_widget_get_settings (GtkWidget *widget)
 gint
 ctk_widget_get_events (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   return GPOINTER_TO_INT (g_object_get_qdata (G_OBJECT (widget), quark_event_mask)) |
     _ctk_widget_get_controllers_evmask (widget);
@@ -11786,7 +11786,7 @@ ctk_widget_get_device_events (GtkWidget *widget,
 {
   GHashTable *device_events;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
   g_return_val_if_fail (GDK_IS_DEVICE (device), 0);
 
   device_events = g_object_get_qdata (G_OBJECT (widget), quark_device_event_mask);
@@ -11818,7 +11818,7 @@ ctk_widget_get_pointer (GtkWidget *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -11861,7 +11861,7 @@ gboolean
 ctk_widget_is_ancestor (GtkWidget *widget,
 			GtkWidget *ancestor)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (ancestor != NULL, FALSE);
 
   while (widget)
@@ -11890,7 +11890,7 @@ void
 ctk_widget_set_composite_name (GtkWidget   *widget,
 			       const gchar *name)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (widget->priv->composite_child);
   g_return_if_fail (name != NULL);
 
@@ -11920,12 +11920,12 @@ ctk_widget_get_composite_name (GtkWidget *widget)
 {
   GtkWidgetPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   priv = widget->priv;
 
   if (widget->priv->composite_child && priv->parent)
-    return _ctk_container_child_composite_name (GTK_CONTAINER (priv->parent),
+    return _ctk_container_child_composite_name (CTK_CONTAINER (priv->parent),
 					       widget);
   else
     return NULL;
@@ -11979,15 +11979,15 @@ ctk_widget_emit_direction_changed (GtkWidget        *widget,
 
   switch (direction)
     {
-    case GTK_TEXT_DIR_LTR:
-      state = GTK_STATE_FLAG_DIR_LTR;
+    case CTK_TEXT_DIR_LTR:
+      state = CTK_STATE_FLAG_DIR_LTR;
       break;
 
-    case GTK_TEXT_DIR_RTL:
-      state = GTK_STATE_FLAG_DIR_RTL;
+    case CTK_TEXT_DIR_RTL:
+      state = CTK_STATE_FLAG_DIR_RTL;
       break;
 
-    case GTK_TEXT_DIR_NONE:
+    case CTK_TEXT_DIR_NONE:
     default:
       g_assert_not_reached ();
       break;
@@ -11995,7 +11995,7 @@ ctk_widget_emit_direction_changed (GtkWidget        *widget,
 
   ctk_widget_update_state_flags (widget,
                                  state,
-                                 state ^ (GTK_STATE_FLAG_DIR_LTR | GTK_STATE_FLAG_DIR_RTL));
+                                 state ^ (CTK_STATE_FLAG_DIR_LTR | CTK_STATE_FLAG_DIR_RTL));
 
   g_signal_emit (widget, widget_signals[DIRECTION_CHANGED], 0, old_dir);
 }
@@ -12015,7 +12015,7 @@ ctk_widget_emit_direction_changed (GtkWidget        *widget,
  * where the containers are arranged in an order that is explicitly
  * visual rather than logical (such as buttons for text justification).
  *
- * If the direction is set to %GTK_TEXT_DIR_NONE, then the value
+ * If the direction is set to %CTK_TEXT_DIR_NONE, then the value
  * set by ctk_widget_set_default_direction() will be used.
  **/
 void
@@ -12024,8 +12024,8 @@ ctk_widget_set_direction (GtkWidget        *widget,
 {
   GtkTextDirection old_dir;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (dir >= GTK_TEXT_DIR_NONE && dir <= GTK_TEXT_DIR_RTL);
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (dir >= CTK_TEXT_DIR_NONE && dir <= CTK_TEXT_DIR_RTL);
 
   old_dir = _ctk_widget_get_direction (widget);
 
@@ -12047,9 +12047,9 @@ ctk_widget_set_direction (GtkWidget        *widget,
 GtkTextDirection
 ctk_widget_get_direction (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), GTK_TEXT_DIR_LTR);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), CTK_TEXT_DIR_LTR);
 
-  if (widget->priv->direction == GTK_TEXT_DIR_NONE)
+  if (widget->priv->direction == CTK_TEXT_DIR_NONE)
     return ctk_default_direction;
   else
     return widget->priv->direction;
@@ -12062,11 +12062,11 @@ ctk_widget_set_default_direction_recurse (GtkWidget *widget, gpointer data)
 
   g_object_ref (widget);
 
-  if (widget->priv->direction == GTK_TEXT_DIR_NONE)
+  if (widget->priv->direction == CTK_TEXT_DIR_NONE)
     ctk_widget_emit_direction_changed (widget, old_dir);
 
-  if (GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget),
+  if (CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget),
 			  ctk_widget_set_default_direction_recurse,
 			  data);
 
@@ -12076,7 +12076,7 @@ ctk_widget_set_default_direction_recurse (GtkWidget *widget, gpointer data)
 /**
  * ctk_widget_set_default_direction:
  * @dir: the new default direction. This cannot be
- *        %GTK_TEXT_DIR_NONE.
+ *        %CTK_TEXT_DIR_NONE.
  *
  * Sets the default reading direction for widgets where the
  * direction has not been explicitly set by ctk_widget_set_direction().
@@ -12084,7 +12084,7 @@ ctk_widget_set_default_direction_recurse (GtkWidget *widget, gpointer data)
 void
 ctk_widget_set_default_direction (GtkTextDirection dir)
 {
-  g_return_if_fail (dir == GTK_TEXT_DIR_RTL || dir == GTK_TEXT_DIR_LTR);
+  g_return_if_fail (dir == CTK_TEXT_DIR_RTL || dir == CTK_TEXT_DIR_LTR);
 
   if (dir != ctk_default_direction)
     {
@@ -12125,7 +12125,7 @@ ctk_widget_get_default_direction (void)
 static void
 ctk_widget_constructed (GObject *object)
 {
-  GtkWidget *widget = GTK_WIDGET (object);
+  GtkWidget *widget = CTK_WIDGET (object);
   GtkWidgetPath *path;
 
   /* As strange as it may seem, this may happen on object construction.
@@ -12143,12 +12143,12 @@ ctk_widget_constructed (GObject *object)
 static void
 ctk_widget_dispose (GObject *object)
 {
-  GtkWidget *widget = GTK_WIDGET (object);
+  GtkWidget *widget = CTK_WIDGET (object);
   GtkWidgetPrivate *priv = widget->priv;
   GSList *sizegroups;
 
   if (priv->parent)
-    ctk_container_remove (GTK_CONTAINER (priv->parent), widget);
+    ctk_container_remove (CTK_CONTAINER (priv->parent), widget);
   else if (_ctk_widget_get_visible (widget))
     ctk_widget_hide (widget);
 
@@ -12233,8 +12233,8 @@ build_finalize_assertion_list (GtkWidget *widget)
   GtkWidgetClass *class;
   GSList *l, *list = NULL;
 
-  for (class = GTK_WIDGET_GET_CLASS (widget);
-       GTK_IS_WIDGET_CLASS (class);
+  for (class = CTK_WIDGET_GET_CLASS (widget);
+       CTK_IS_WIDGET_CLASS (class);
        class = g_type_class_peek_parent (class))
     {
       if (!class->priv->template)
@@ -12260,7 +12260,7 @@ static void
 ctk_widget_real_destroy (GtkWidget *object)
 {
   /* ctk_object_destroy() will already hold a refcount on object */
-  GtkWidget *widget = GTK_WIDGET (object);
+  GtkWidget *widget = CTK_WIDGET (object);
   GtkWidgetPrivate *priv = widget->priv;
 
   if (g_object_get_qdata (G_OBJECT (widget), quark_auto_children))
@@ -12271,7 +12271,7 @@ ctk_widget_real_destroy (GtkWidget *object)
 #ifdef G_ENABLE_CONSISTENCY_CHECKS
       GSList *assertions = NULL;
 
-      /* Note, GTK_WIDGET_ASSERT_COMPONENTS is very useful
+      /* Note, CTK_WIDGET_ASSERT_COMPONENTS is very useful
        * to catch ref counting bugs, but can only be used in
        * test cases which simply create and destroy a composite
        * widget.
@@ -12280,7 +12280,7 @@ ctk_widget_real_destroy (GtkWidget *object)
        * and so we cannot assert that a component is expected to finalize
        * in a full application ecosystem.
        */
-      if (g_getenv ("GTK_WIDGET_ASSERT_COMPONENTS") != NULL)
+      if (g_getenv ("CTK_WIDGET_ASSERT_COMPONENTS") != NULL)
 	assertions = build_finalize_assertion_list (widget);
 #endif /* G_ENABLE_CONSISTENCY_CHECKS */
 
@@ -12305,8 +12305,8 @@ ctk_widget_real_destroy (GtkWidget *object)
 #endif /* G_ENABLE_CONSISTENCY_CHECKS */
 
       /* Set any automatic private data pointers to NULL */
-      for (class = GTK_WIDGET_GET_CLASS (widget);
-	   GTK_IS_WIDGET_CLASS (class);
+      for (class = CTK_WIDGET_GET_CLASS (widget);
+	   CTK_IS_WIDGET_CLASS (class);
 	   class = g_type_class_peek_parent (class))
 	{
 	  if (!class->priv->template)
@@ -12330,7 +12330,7 @@ ctk_widget_real_destroy (GtkWidget *object)
 
   if (priv->accessible)
     {
-      ctk_accessible_set_widget (GTK_ACCESSIBLE (priv->accessible), NULL);
+      ctk_accessible_set_widget (CTK_ACCESSIBLE (priv->accessible), NULL);
       g_object_unref (priv->accessible);
       priv->accessible = NULL;
     }
@@ -12357,7 +12357,7 @@ ctk_widget_real_destroy (GtkWidget *object)
 static void
 ctk_widget_finalize (GObject *object)
 {
-  GtkWidget *widget = GTK_WIDGET (object);
+  GtkWidget *widget = CTK_WIDGET (object);
   GtkWidgetPrivate *priv = widget->priv;
   GList *l;
 
@@ -12371,7 +12371,7 @@ ctk_widget_finalize (GObject *object)
 
   ctk_widget_clear_path (widget);
 
-  ctk_css_widget_node_widget_destroyed (GTK_CSS_WIDGET_NODE (priv->cssnode));
+  ctk_css_widget_node_widget_destroyed (CTK_CSS_WIDGET_NODE (priv->cssnode));
   g_object_unref (priv->cssnode);
 
   g_clear_object (&priv->context);
@@ -12486,8 +12486,8 @@ ctk_widget_real_unrealize (GtkWidget *widget)
     * (for example, gdk_ic_destroy () with destroyed window causes crash.)
     */
 
-  if (GTK_IS_CONTAINER (widget))
-    ctk_container_forall (GTK_CONTAINER (widget),
+  if (CTK_IS_CONTAINER (widget))
+    ctk_container_forall (CTK_CONTAINER (widget),
 			  (GtkCallback) ctk_widget_unrealize,
 			  NULL);
 
@@ -12516,9 +12516,9 @@ ctk_widget_real_adjust_size_request (GtkWidget      *widget,
 {
   GtkWidgetPrivate *priv = widget->priv;
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL && priv->width > 0)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL && priv->width > 0)
     *minimum_size = MAX (*minimum_size, priv->width);
-  else if (orientation == GTK_ORIENTATION_VERTICAL && priv->height > 0)
+  else if (orientation == CTK_ORIENTATION_VERTICAL && priv->height > 0)
     *minimum_size = MAX (*minimum_size, priv->height);
 
   /* Fix it if set_size_request made natural size smaller than min size.
@@ -12527,7 +12527,7 @@ ctk_widget_real_adjust_size_request (GtkWidget      *widget,
    */
   *natural_size = MAX (*natural_size, *minimum_size);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       *minimum_size += priv->margin.left + priv->margin.right;
       *natural_size += priv->margin.left + priv->margin.right;
@@ -12582,7 +12582,7 @@ _ctk_widget_get_device_window (GtkWidget *widget,
 {
   GdkWindow *window;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
 
   if (gdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
@@ -12637,7 +12637,7 @@ _ctk_widget_list_devices (GtkWidget *widget)
   GdkDeviceManager *device_manager;
   GList *result = NULL;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   if (!_ctk_widget_get_mapped (widget))
     return NULL;
@@ -12831,7 +12831,7 @@ _ctk_widget_synthesize_crossing (GtkWidget       *from,
 	}
       if (to_ancestor == from_window)
 	{
-	  if (mode != GDK_CROSSING_GTK_UNGRAB)
+	  if (mode != GDK_CROSSING_CTK_UNGRAB)
 	    synth_crossing (from, GDK_LEAVE_NOTIFY, from_window,
 			    device, mode, GDK_NOTIFY_INFERIOR);
 	  for (list = to_ancestors; list; list = list->next)
@@ -12849,7 +12849,7 @@ _ctk_widget_synthesize_crossing (GtkWidget       *from,
 	      synth_crossing (NULL, GDK_LEAVE_NOTIFY, (GdkWindow *) list->data,
 			      device, mode, GDK_NOTIFY_VIRTUAL);
 	    }
-	  if (mode != GDK_CROSSING_GTK_GRAB)
+	  if (mode != GDK_CROSSING_CTK_GRAB)
 	    synth_crossing (to, GDK_ENTER_NOTIFY, to_window,
 			    device, mode, GDK_NOTIFY_INFERIOR);
 	}
@@ -12902,7 +12902,7 @@ ctk_widget_propagate_state (GtkWidget    *widget,
 
   /* make insensitivity unoverridable */
   if (!priv->sensitive)
-    priv->state_flags |= GTK_STATE_FLAG_INSENSITIVE;
+    priv->state_flags |= CTK_STATE_FLAG_INSENSITIVE;
 
   if (ctk_widget_is_focus (widget) && !ctk_widget_is_sensitive (widget))
     {
@@ -12911,7 +12911,7 @@ ctk_widget_propagate_state (GtkWidget    *widget,
       window = _ctk_widget_get_toplevel (widget);
 
       if (window && _ctk_widget_is_toplevel (window))
-        ctk_window_set_focus (GTK_WINDOW (window), NULL);
+        ctk_window_set_focus (CTK_WINDOW (window), NULL);
     }
 
   new_flags = priv->state_flags;
@@ -12932,7 +12932,7 @@ ctk_widget_propagate_state (GtkWidget    *widget,
       g_signal_emit (widget, widget_signals[STATE_FLAGS_CHANGED], 0, old_flags);
 
       if (!priv->shadowed &&
-          (new_flags & GTK_STATE_FLAG_INSENSITIVE) != (old_flags & GTK_STATE_FLAG_INSENSITIVE))
+          (new_flags & CTK_STATE_FLAG_INSENSITIVE) != (old_flags & CTK_STATE_FLAG_INSENSITIVE))
         {
           GList *event_windows = NULL;
           GList *devices, *d;
@@ -12971,16 +12971,16 @@ ctk_widget_propagate_state (GtkWidget    *widget,
       if (!ctk_widget_is_sensitive (widget))
         ctk_widget_reset_controllers (widget);
 
-      if (GTK_IS_CONTAINER (widget))
+      if (CTK_IS_CONTAINER (widget))
         {
           GtkStateData child_data;
 
           /* Make sure to only propagate the right states further */
           child_data.old_scale_factor = new_scale_factor;
-          child_data.flags_to_set = data->flags_to_set & GTK_STATE_FLAGS_DO_PROPAGATE;
-          child_data.flags_to_unset = data->flags_to_unset & GTK_STATE_FLAGS_DO_PROPAGATE;
+          child_data.flags_to_set = data->flags_to_set & CTK_STATE_FLAGS_DO_PROPAGATE;
+          child_data.flags_to_unset = data->flags_to_unset & CTK_STATE_FLAGS_DO_PROPAGATE;
 
-          ctk_container_forall (GTK_CONTAINER (widget),
+          ctk_container_forall (CTK_CONTAINER (widget),
                                 (GtkCallback) ctk_widget_propagate_state,
                                 &child_data);
         }
@@ -13006,7 +13006,7 @@ ctk_widget_shape_combine_region (GtkWidget *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   /*  set_shape doesn't work on widgets without GDK window */
   g_return_if_fail (_ctk_widget_get_has_window (widget));
 
@@ -13105,7 +13105,7 @@ void
 ctk_widget_input_shape_combine_region (GtkWidget      *widget,
                                        cairo_region_t *region)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   /*  set_shape doesn't work on widgets without GDK window */
   g_return_if_fail (_ctk_widget_get_has_window (widget));
 
@@ -13135,7 +13135,7 @@ ctk_widget_class_install_style_property_parser (GtkWidgetClass     *klass,
 						GParamSpec         *pspec,
 						GtkRcPropertyParser parser)
 {
-  g_return_if_fail (GTK_IS_WIDGET_CLASS (klass));
+  g_return_if_fail (CTK_IS_WIDGET_CLASS (klass));
   g_return_if_fail (G_IS_PARAM_SPEC (pspec));
   g_return_if_fail (pspec->flags & G_PARAM_READABLE);
   g_return_if_fail (!(pspec->flags & (G_PARAM_CONSTRUCT_ONLY | G_PARAM_CONSTRUCT)));
@@ -13167,7 +13167,7 @@ ctk_widget_class_install_style_property (GtkWidgetClass *klass,
 {
   GtkRcPropertyParser parser;
 
-  g_return_if_fail (GTK_IS_WIDGET_CLASS (klass));
+  g_return_if_fail (CTK_IS_WIDGET_CLASS (klass));
   g_return_if_fail (G_IS_PARAM_SPEC (pspec));
 
   parser = _ctk_rc_property_parser_from_type (G_PARAM_SPEC_VALUE_TYPE (pspec));
@@ -13243,7 +13243,7 @@ ctk_widget_style_get_property (GtkWidget   *widget,
 {
   GParamSpec *pspec;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (property_name != NULL);
   g_return_if_fail (G_IS_VALUE (value));
 
@@ -13302,7 +13302,7 @@ ctk_widget_style_get_valist (GtkWidget   *widget,
   GtkStyleContext *context;
   const gchar *name;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   g_object_ref (widget);
   context = _ctk_widget_get_style_context (widget);
@@ -13363,7 +13363,7 @@ ctk_widget_style_get (GtkWidget   *widget,
 {
   va_list var_args;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   va_start (var_args, first_property_name);
   ctk_widget_style_get_valist (widget, first_property_name, var_args);
@@ -13435,7 +13435,7 @@ ctk_widget_class_set_accessible_type (GtkWidgetClass *widget_class,
 {
   GtkWidgetClassPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET_CLASS (widget_class));
+  g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
   g_return_if_fail (g_type_is_a (type, widget_class->priv->accessible_type));
 
   priv = widget_class->priv;
@@ -13473,7 +13473,7 @@ ctk_widget_class_set_accessible_role (GtkWidgetClass *widget_class,
 {
   GtkWidgetClassPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET_CLASS (widget_class));
+  g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
 
   priv = widget_class->priv;
 
@@ -13520,9 +13520,9 @@ _ctk_widget_peek_accessible (GtkWidget *widget)
 AtkObject*
 ctk_widget_get_accessible (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  return GTK_WIDGET_GET_CLASS (widget)->get_accessible (widget);
+  return CTK_WIDGET_GET_CLASS (widget)->get_accessible (widget);
 }
 
 static AtkObject*
@@ -13539,10 +13539,10 @@ ctk_widget_real_get_accessible (GtkWidget *widget)
       AtkObjectFactory *factory;
       AtkRegistry *default_registry;
 
-      widget_class = GTK_WIDGET_GET_CLASS (widget);
+      widget_class = CTK_WIDGET_GET_CLASS (widget);
       priv = widget_class->priv;
 
-      if (priv->accessible_type == GTK_TYPE_ACCESSIBLE)
+      if (priv->accessible_type == CTK_TYPE_ACCESSIBLE)
         {
           default_registry = atk_get_default_registry ();
           factory = atk_registry_get_factory (default_registry,
@@ -13594,7 +13594,7 @@ ctk_widget_ref_accessible (AtkImplementor *implementor)
 {
   AtkObject *accessible;
 
-  accessible = ctk_widget_get_accessible (GTK_WIDGET (implementor));
+  accessible = ctk_widget_get_accessible (CTK_WIDGET (implementor));
   if (accessible)
     g_object_ref (accessible);
   return accessible;
@@ -13630,11 +13630,11 @@ ctk_widget_update_computed_expand (GtkWidget *widget)
        */
       if (!(priv->hexpand_set && priv->vexpand_set))
         {
-          if (GTK_WIDGET_GET_CLASS (widget)->compute_expand != NULL)
+          if (CTK_WIDGET_GET_CLASS (widget)->compute_expand != NULL)
             {
               gboolean ignored;
 
-              GTK_WIDGET_GET_CLASS (widget)->compute_expand (widget,
+              CTK_WIDGET_GET_CLASS (widget)->compute_expand (widget,
                                                              priv->hexpand_set ? &ignored : &h,
                                                              priv->vexpand_set ? &ignored : &v);
             }
@@ -13718,7 +13718,7 @@ gboolean
 ctk_widget_compute_expand (GtkWidget      *widget,
                            GtkOrientation  orientation)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   /* We never make a widget expand if not even showing. */
   if (!_ctk_widget_get_visible (widget))
@@ -13726,7 +13726,7 @@ ctk_widget_compute_expand (GtkWidget      *widget,
 
   ctk_widget_update_computed_expand (widget);
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     return widget->priv->computed_hexpand;
   else
     return widget->priv->computed_vexpand;
@@ -13742,7 +13742,7 @@ ctk_widget_set_expand (GtkWidget     *widget,
   gboolean was_both;
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -13750,7 +13750,7 @@ ctk_widget_set_expand (GtkWidget     *widget,
 
   was_both = priv->hexpand && priv->vexpand;
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       if (priv->hexpand_set &&
           priv->hexpand == expand)
@@ -13797,7 +13797,7 @@ ctk_widget_set_expand_set (GtkWidget      *widget,
 
   set = set != FALSE;
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       if (set == priv->hexpand_set)
         return;
@@ -13843,7 +13843,7 @@ ctk_widget_set_expand_set (GtkWidget      *widget,
 gboolean
 ctk_widget_get_hexpand (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->hexpand;
 }
@@ -13883,9 +13883,9 @@ void
 ctk_widget_set_hexpand (GtkWidget      *widget,
                         gboolean        expand)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  ctk_widget_set_expand (widget, GTK_ORIENTATION_HORIZONTAL, expand);
+  ctk_widget_set_expand (widget, CTK_ORIENTATION_HORIZONTAL, expand);
 }
 
 /**
@@ -13908,7 +13908,7 @@ ctk_widget_set_hexpand (GtkWidget      *widget,
 gboolean
 ctk_widget_get_hexpand_set (GtkWidget      *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->hexpand_set;
 }
@@ -13938,9 +13938,9 @@ void
 ctk_widget_set_hexpand_set (GtkWidget      *widget,
                             gboolean        set)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  ctk_widget_set_expand_set (widget, GTK_ORIENTATION_HORIZONTAL, set);
+  ctk_widget_set_expand_set (widget, CTK_ORIENTATION_HORIZONTAL, set);
 }
 
 
@@ -13958,7 +13958,7 @@ ctk_widget_set_hexpand_set (GtkWidget      *widget,
 gboolean
 ctk_widget_get_vexpand (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->vexpand;
 }
@@ -13977,9 +13977,9 @@ void
 ctk_widget_set_vexpand (GtkWidget      *widget,
                         gboolean        expand)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  ctk_widget_set_expand (widget, GTK_ORIENTATION_VERTICAL, expand);
+  ctk_widget_set_expand (widget, CTK_ORIENTATION_VERTICAL, expand);
 }
 
 /**
@@ -13996,7 +13996,7 @@ ctk_widget_set_vexpand (GtkWidget      *widget,
 gboolean
 ctk_widget_get_vexpand_set (GtkWidget      *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->vexpand_set;
 }
@@ -14015,9 +14015,9 @@ void
 ctk_widget_set_vexpand_set (GtkWidget      *widget,
                             gboolean        set)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  ctk_widget_set_expand_set (widget, GTK_ORIENTATION_VERTICAL, set);
+  ctk_widget_set_expand_set (widget, CTK_ORIENTATION_VERTICAL, set);
 }
 
 /*
@@ -14069,13 +14069,13 @@ ctk_widget_buildable_get_internal_child (GtkBuildable *buildable,
   GType internal_child_type = 0;
 
   if (strcmp (childname, "accessible") == 0)
-    return G_OBJECT (ctk_widget_get_accessible (GTK_WIDGET (buildable)));
+    return G_OBJECT (ctk_widget_get_accessible (CTK_WIDGET (buildable)));
 
   /* Find a widget type which has declared an automated child as internal by
    * the name 'childname', if any.
    */
-  for (class = GTK_WIDGET_GET_CLASS (buildable);
-       GTK_IS_WIDGET_CLASS (class);
+  for (class = CTK_WIDGET_GET_CLASS (buildable);
+       CTK_IS_WIDGET_CLASS (class);
        class = g_type_class_peek_parent (class))
     {
       GtkWidgetTemplate *template = class->priv->template;
@@ -14097,7 +14097,7 @@ ctk_widget_buildable_get_internal_child (GtkBuildable *buildable,
    * which are in the private scope of a given class.
    */
   if (internal_child_type != 0)
-    return ctk_widget_get_template_child (GTK_WIDGET (buildable), internal_child_type, childname);
+    return ctk_widget_get_template_child (CTK_WIDGET (buildable), internal_child_type, childname);
 
   return NULL;
 }
@@ -14158,13 +14158,13 @@ ctk_widget_buildable_parser_finished (GtkBuildable *buildable,
 
   if (g_object_get_qdata (G_OBJECT (buildable), quark_builder_has_default))
     {
-      ctk_widget_grab_default (GTK_WIDGET (buildable));
+      ctk_widget_grab_default (CTK_WIDGET (buildable));
       g_object_steal_qdata (G_OBJECT (buildable), quark_builder_has_default);
     }
 
   if (g_object_get_qdata (G_OBJECT (buildable), quark_builder_has_focus))
     {
-      ctk_widget_grab_focus (GTK_WIDGET (buildable));
+      ctk_widget_grab_focus (CTK_WIDGET (buildable));
       g_object_steal_qdata (G_OBJECT (buildable), quark_builder_has_focus);
     }
 
@@ -14178,7 +14178,7 @@ ctk_widget_buildable_parser_finished (GtkBuildable *buildable,
       GObject *target;
       AtkObject *target_accessible;
 
-      accessible = ctk_widget_get_accessible (GTK_WIDGET (buildable));
+      accessible = ctk_widget_get_accessible (CTK_WIDGET (buildable));
       relation_set = atk_object_ref_relation_set (accessible);
 
       for (l = atk_relations; l; l = l->next)
@@ -14188,7 +14188,7 @@ ctk_widget_buildable_parser_finished (GtkBuildable *buildable,
 	  target = _ctk_builder_lookup_object (builder, relation->target, relation->line, relation->col);
 	  if (!target)
 	    continue;
-	  target_accessible = ctk_widget_get_accessible (GTK_WIDGET (target));
+	  target_accessible = ctk_widget_get_accessible (CTK_WIDGET (target));
 	  g_assert (target_accessible != NULL);
 
 	  atk_relation_set_add_relation_by_type (relation_set, relation->type, target_accessible);
@@ -14240,8 +14240,8 @@ accessibility_start_element (GMarkupParseContext  *context,
       if (relation_type == ATK_RELATION_NULL)
         {
           g_set_error (error,
-                       GTK_BUILDER_ERROR,
-                       GTK_BUILDER_ERROR_INVALID_VALUE,
+                       CTK_BUILDER_ERROR,
+                       CTK_BUILDER_ERROR_INVALID_VALUE,
                        "No such relation type: '%s'", type);
           _ctk_builder_prefix_error (data->builder, context, error);
           return;
@@ -14370,7 +14370,7 @@ accel_group_start_element (GMarkupParseContext  *context,
       if (key == 0)
         {
           g_set_error (error,
-                       GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE,
+                       CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE,
                        "Could not parse key '%s'", key_str);
           _ctk_builder_prefix_error (data->builder, context, error);
           return;
@@ -14526,8 +14526,8 @@ _ctk_widget_buildable_finish_accelerator (GtkWidget *widget,
   GSList *accel_groups;
   GtkAccelGroup *accel_group;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (GTK_IS_WIDGET (toplevel));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (toplevel));
   g_return_if_fail (user_data != NULL);
 
   accel_data = (AccelGroupParserData*)user_data;
@@ -14535,7 +14535,7 @@ _ctk_widget_buildable_finish_accelerator (GtkWidget *widget,
   if (g_slist_length (accel_groups) == 0)
     {
       accel_group = ctk_accel_group_new ();
-      ctk_window_add_accel_group (GTK_WINDOW (toplevel), accel_group);
+      ctk_window_add_accel_group (CTK_WINDOW (toplevel), accel_group);
     }
   else
     {
@@ -14543,12 +14543,12 @@ _ctk_widget_buildable_finish_accelerator (GtkWidget *widget,
       accel_group = g_slist_nth_data (accel_groups, 0);
     }
 
-  ctk_widget_add_accelerator (GTK_WIDGET (accel_data->object),
+  ctk_widget_add_accelerator (CTK_WIDGET (accel_data->object),
 			      accel_data->signal,
 			      accel_group,
 			      accel_data->key,
 			      accel_data->modifiers,
-			      GTK_ACCEL_VISIBLE);
+			      CTK_ACCEL_VISIBLE);
 
   g_object_unref (accel_data->object);
   g_free (accel_data->signal);
@@ -14570,9 +14570,9 @@ ctk_widget_buildable_custom_finished (GtkBuildable *buildable,
       accel_data = (AccelGroupParserData*)user_data;
       g_assert (accel_data->object);
 
-      toplevel = _ctk_widget_get_toplevel (GTK_WIDGET (accel_data->object));
+      toplevel = _ctk_widget_get_toplevel (CTK_WIDGET (accel_data->object));
 
-      _ctk_widget_buildable_finish_accelerator (GTK_WIDGET (buildable), toplevel, user_data);
+      _ctk_widget_buildable_finish_accelerator (CTK_WIDGET (buildable), toplevel, user_data);
     }
   else if (strcmp (tagname, "accessibility") == 0)
     {
@@ -14587,7 +14587,7 @@ ctk_widget_buildable_custom_finished (GtkBuildable *buildable,
 	  gint i, n_actions;
 	  GSList *l;
 
-	  accessible = ctk_widget_get_accessible (GTK_WIDGET (buildable));
+	  accessible = ctk_widget_get_accessible (CTK_WIDGET (buildable));
 
           if (ATK_IS_ACTION (accessible))
             {
@@ -14636,12 +14636,12 @@ ctk_widget_buildable_custom_finished (GtkBuildable *buildable,
       GtkStyleContext *context;
       GSList *l;
 
-      context = _ctk_widget_get_style_context (GTK_WIDGET (buildable));
+      context = _ctk_widget_get_style_context (CTK_WIDGET (buildable));
 
       for (l = style_data->classes; l; l = l->next)
         ctk_style_context_add_class (context, (const gchar *)l->data);
 
-      ctk_widget_reset_style (GTK_WIDGET (buildable));
+      ctk_widget_reset_style (CTK_WIDGET (buildable));
 
       g_slist_free_full (style_data->classes, g_free);
       g_slice_free (StyleParserData, style_data);
@@ -14652,7 +14652,7 @@ static GtkSizeRequestMode
 ctk_widget_real_get_request_mode (GtkWidget *widget)
 {
   /* By default widgets don't trade size at all. */
-  return GTK_SIZE_REQUEST_CONSTANT_SIZE;
+  return CTK_SIZE_REQUEST_CONSTANT_SIZE;
 }
 
 static void
@@ -14679,7 +14679,7 @@ ctk_widget_real_get_height_for_width (GtkWidget *widget,
                                       gint      *minimum_height,
                                       gint      *natural_height)
 {
-  GTK_WIDGET_GET_CLASS (widget)->get_preferred_height (widget, minimum_height, natural_height);
+  CTK_WIDGET_GET_CLASS (widget)->get_preferred_height (widget, minimum_height, natural_height);
 }
 
 static void
@@ -14688,7 +14688,7 @@ ctk_widget_real_get_width_for_height (GtkWidget *widget,
                                       gint      *minimum_width,
                                       gint      *natural_width)
 {
-  GTK_WIDGET_GET_CLASS (widget)->get_preferred_width (widget, minimum_width, natural_width);
+  CTK_WIDGET_GET_CLASS (widget)->get_preferred_width (widget, minimum_width, natural_width);
 }
 
 /**
@@ -14698,8 +14698,8 @@ ctk_widget_real_get_width_for_height (GtkWidget *widget,
  * Gets the value of the #GtkWidget:halign property.
  *
  * For backwards compatibility reasons this method will never return
- * %GTK_ALIGN_BASELINE, but instead it will convert it to
- * %GTK_ALIGN_FILL. Baselines are not supported for horizontal
+ * %CTK_ALIGN_BASELINE, but instead it will convert it to
+ * %CTK_ALIGN_FILL. Baselines are not supported for horizontal
  * alignment.
  *
  * Returns: the horizontal alignment of @widget
@@ -14709,11 +14709,11 @@ ctk_widget_get_halign (GtkWidget *widget)
 {
   GtkAlign align;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), GTK_ALIGN_FILL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), CTK_ALIGN_FILL);
 
   align = widget->priv->halign;
-  if (align == GTK_ALIGN_BASELINE)
-    return GTK_ALIGN_FILL;
+  if (align == CTK_ALIGN_BASELINE)
+    return CTK_ALIGN_FILL;
   return align;
 }
 
@@ -14729,7 +14729,7 @@ void
 ctk_widget_set_halign (GtkWidget *widget,
                        GtkAlign   align)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (widget->priv->halign == align)
     return;
@@ -14744,7 +14744,7 @@ ctk_widget_set_halign (GtkWidget *widget,
  * @widget: a #GtkWidget
  *
  * Gets the value of the #GtkWidget:valign property, including
- * %GTK_ALIGN_BASELINE.
+ * %CTK_ALIGN_BASELINE.
  *
  * Returns: the vertical alignment of @widget
  *
@@ -14753,7 +14753,7 @@ ctk_widget_set_halign (GtkWidget *widget,
 GtkAlign
 ctk_widget_get_valign_with_baseline (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), GTK_ALIGN_FILL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), CTK_ALIGN_FILL);
   return widget->priv->valign;
 }
 
@@ -14764,8 +14764,8 @@ ctk_widget_get_valign_with_baseline (GtkWidget *widget)
  * Gets the value of the #GtkWidget:valign property.
  *
  * For backwards compatibility reasons this method will never return
- * %GTK_ALIGN_BASELINE, but instead it will convert it to
- * %GTK_ALIGN_FILL. If your widget want to support baseline aligned
+ * %CTK_ALIGN_BASELINE, but instead it will convert it to
+ * %CTK_ALIGN_FILL. If your widget want to support baseline aligned
  * children it must use ctk_widget_get_valign_with_baseline(), or
  * `g_object_get (widget, "valign", &value, NULL)`, which will
  * also report the true value.
@@ -14778,8 +14778,8 @@ ctk_widget_get_valign (GtkWidget *widget)
   GtkAlign align;
 
   align = ctk_widget_get_valign_with_baseline (widget);
-  if (align == GTK_ALIGN_BASELINE)
-    return GTK_ALIGN_FILL;
+  if (align == CTK_ALIGN_BASELINE)
+    return CTK_ALIGN_FILL;
   return align;
 }
 
@@ -14795,7 +14795,7 @@ void
 ctk_widget_set_valign (GtkWidget *widget,
                        GtkAlign   align)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   if (widget->priv->valign == align)
     return;
@@ -14820,7 +14820,7 @@ ctk_widget_set_valign (GtkWidget *widget,
 gint
 ctk_widget_get_margin_left (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   return widget->priv->margin.left;
 }
@@ -14843,10 +14843,10 @@ ctk_widget_set_margin_left (GtkWidget *widget,
 {
   gboolean rtl;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (margin <= G_MAXINT16);
 
-  rtl = _ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL;
+  rtl = _ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL;
 
   if (widget->priv->margin.left == margin)
     return;
@@ -14872,7 +14872,7 @@ ctk_widget_set_margin_left (GtkWidget *widget,
 gint
 ctk_widget_get_margin_right (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   return widget->priv->margin.right;
 }
@@ -14895,10 +14895,10 @@ ctk_widget_set_margin_right (GtkWidget *widget,
 {
   gboolean rtl;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (margin <= G_MAXINT16);
 
-  rtl = _ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL;
+  rtl = _ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL;
 
   if (widget->priv->margin.right == margin)
     return;
@@ -14922,9 +14922,9 @@ ctk_widget_set_margin_right (GtkWidget *widget,
 gint
 ctk_widget_get_margin_start (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
-  if (_ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+  if (_ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
     return widget->priv->margin.right;
   else
     return widget->priv->margin.left;
@@ -14947,10 +14947,10 @@ ctk_widget_set_margin_start (GtkWidget *widget,
   gint16 *start;
   gboolean rtl;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (margin <= G_MAXINT16);
 
-  rtl = _ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL;
+  rtl = _ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL;
 
   if (rtl)
     start = &widget->priv->margin.right;
@@ -14979,9 +14979,9 @@ ctk_widget_set_margin_start (GtkWidget *widget,
 gint
 ctk_widget_get_margin_end (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
-  if (_ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+  if (_ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
     return widget->priv->margin.left;
   else
     return widget->priv->margin.right;
@@ -15004,10 +15004,10 @@ ctk_widget_set_margin_end (GtkWidget *widget,
   gint16 *end;
   gboolean rtl;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (margin <= G_MAXINT16);
 
-  rtl = _ctk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL;
+  rtl = _ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL;
 
   if (rtl)
     end = &widget->priv->margin.left;
@@ -15036,7 +15036,7 @@ ctk_widget_set_margin_end (GtkWidget *widget,
 gint
 ctk_widget_get_margin_top (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   return widget->priv->margin.top;
 }
@@ -15055,7 +15055,7 @@ void
 ctk_widget_set_margin_top (GtkWidget *widget,
                            gint       margin)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (margin <= G_MAXINT16);
 
   if (widget->priv->margin.top == margin)
@@ -15079,7 +15079,7 @@ ctk_widget_set_margin_top (GtkWidget *widget,
 gint
 ctk_widget_get_margin_bottom (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   return widget->priv->margin.bottom;
 }
@@ -15098,7 +15098,7 @@ void
 ctk_widget_set_margin_bottom (GtkWidget *widget,
                               gint       margin)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (margin <= G_MAXINT16);
 
   if (widget->priv->margin.bottom == margin)
@@ -15133,7 +15133,7 @@ ctk_widget_set_margin_bottom (GtkWidget *widget,
 GtkClipboard *
 ctk_widget_get_clipboard (GtkWidget *widget, GdkAtom selection)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (ctk_widget_has_screen (widget), NULL);
 
   return ctk_clipboard_get_for_display (ctk_widget_get_display (widget),
@@ -15167,7 +15167,7 @@ ctk_widget_list_mnemonic_labels (GtkWidget *widget)
   GList *list = NULL;
   GSList *l;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   for (l = g_object_get_qdata (G_OBJECT (widget), quark_mnemonic_labels); l; l = l->next)
     list = g_list_prepend (list, l->data);
@@ -15195,8 +15195,8 @@ ctk_widget_add_mnemonic_label (GtkWidget *widget,
 {
   GSList *old_list, *new_list;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (GTK_IS_WIDGET (label));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (label));
 
   old_list = g_object_steal_qdata (G_OBJECT (widget), quark_mnemonic_labels);
   new_list = g_slist_prepend (old_list, label);
@@ -15224,8 +15224,8 @@ ctk_widget_remove_mnemonic_label (GtkWidget *widget,
 {
   GSList *old_list, *new_list;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (GTK_IS_WIDGET (label));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (label));
 
   old_list = g_object_steal_qdata (G_OBJECT (widget), quark_mnemonic_labels);
   new_list = g_slist_remove (old_list, label);
@@ -15250,7 +15250,7 @@ ctk_widget_remove_mnemonic_label (GtkWidget *widget,
 gboolean
 ctk_widget_get_no_show_all (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->no_show_all;
 }
@@ -15272,7 +15272,7 @@ void
 ctk_widget_set_no_show_all (GtkWidget *widget,
 			    gboolean   no_show_all)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   no_show_all = (no_show_all != FALSE);
 
@@ -15334,8 +15334,8 @@ ctk_widget_set_tooltip_window (GtkWidget *widget,
   gboolean has_tooltip;
   gchar *tooltip_markup;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (custom_window == NULL || GTK_IS_WINDOW (custom_window));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (custom_window == NULL || CTK_IS_WINDOW (custom_window));
 
   tooltip_markup = g_object_get_qdata (G_OBJECT (widget), quark_tooltip_markup);
 
@@ -15367,7 +15367,7 @@ ctk_widget_set_tooltip_window (GtkWidget *widget,
 GtkWindow *
 ctk_widget_get_tooltip_window (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   return g_object_get_qdata (G_OBJECT (widget), quark_tooltip_window);
 }
@@ -15437,7 +15437,7 @@ void
 ctk_widget_set_tooltip_text (GtkWidget   *widget,
                              const gchar *text)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   g_object_set (G_OBJECT (widget), "tooltip-text", text, NULL);
 }
@@ -15458,7 +15458,7 @@ ctk_widget_get_tooltip_text (GtkWidget *widget)
 {
   gchar *text = NULL;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   g_object_get (G_OBJECT (widget), "tooltip-text", &text, NULL);
 
@@ -15485,7 +15485,7 @@ void
 ctk_widget_set_tooltip_markup (GtkWidget   *widget,
                                const gchar *markup)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   g_object_set (G_OBJECT (widget), "tooltip-markup", markup, NULL);
 }
@@ -15506,7 +15506,7 @@ ctk_widget_get_tooltip_markup (GtkWidget *widget)
 {
   gchar *text = NULL;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   g_object_get (G_OBJECT (widget), "tooltip-markup", &text, NULL);
 
@@ -15527,7 +15527,7 @@ void
 ctk_widget_set_has_tooltip (GtkWidget *widget,
 			    gboolean   has_tooltip)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   ctk_widget_real_set_has_tooltip (widget, has_tooltip, FALSE);
 }
@@ -15546,7 +15546,7 @@ ctk_widget_set_has_tooltip (GtkWidget *widget,
 gboolean
 ctk_widget_get_has_tooltip (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->has_tooltip;
 }
@@ -15572,7 +15572,7 @@ ctk_widget_get_clip (GtkWidget     *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (clip != NULL);
 
   priv = widget->priv;
@@ -15604,14 +15604,14 @@ ctk_widget_set_clip (GtkWidget           *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (_ctk_widget_get_visible (widget) || _ctk_widget_is_toplevel (widget));
   g_return_if_fail (clip != NULL);
 
   priv = widget->priv;
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (GEOMETRY))
+  if (CTK_DEBUG_CHECK (GEOMETRY))
     {
       gint depth;
       GtkWidget *parent;
@@ -15685,7 +15685,7 @@ _ctk_widget_set_simple_clip (GtkWidget     *widget,
   _ctk_widget_get_allocation (widget, &allocation);
 
   _ctk_css_shadows_value_get_extents (_ctk_style_context_peek_property (context,
-                                                                        GTK_CSS_PROPERTY_BOX_SHADOW),
+                                                                        CTK_CSS_PROPERTY_BOX_SHADOW),
                                       &extents);
 
   clip = allocation;
@@ -15697,11 +15697,11 @@ _ctk_widget_set_simple_clip (GtkWidget     *widget,
   if (content_clip)
     gdk_rectangle_union (content_clip, &clip, &clip);
 
-  if (GTK_IS_CONTAINER (widget))
+  if (CTK_IS_CONTAINER (widget))
     {
       GdkRectangle children_clip;
 
-      ctk_container_get_children_clip (GTK_CONTAINER (widget), &children_clip);
+      ctk_container_get_children_clip (CTK_CONTAINER (widget), &children_clip);
 
       if (_ctk_widget_get_has_window (widget))
         {
@@ -15740,7 +15740,7 @@ ctk_widget_get_allocated_size (GtkWidget     *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (allocation != NULL);
 
   priv = widget->priv;
@@ -15781,7 +15781,7 @@ ctk_widget_get_allocation (GtkWidget     *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (allocation != NULL);
 
   priv = widget->priv;
@@ -15812,7 +15812,7 @@ ctk_widget_set_allocation (GtkWidget           *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (_ctk_widget_get_visible (widget) || _ctk_widget_is_toplevel (widget));
   g_return_if_fail (allocation != NULL);
 
@@ -15835,7 +15835,7 @@ ctk_widget_set_allocation (GtkWidget           *widget,
 int
 ctk_widget_get_allocated_width (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   return widget->priv->allocation.width;
 }
@@ -15853,7 +15853,7 @@ ctk_widget_get_allocated_width (GtkWidget *widget)
 int
 ctk_widget_get_allocated_height (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   return widget->priv->allocation.height;
 }
@@ -15874,7 +15874,7 @@ ctk_widget_get_allocated_height (GtkWidget *widget)
 int
 ctk_widget_get_allocated_baseline (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   return widget->priv->allocated_baseline;
 }
@@ -15903,7 +15903,7 @@ void
 ctk_widget_get_requisition (GtkWidget      *widget,
                             GtkRequisition *requisition)
 {
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (requisition != NULL);
 
   ctk_widget_get_preferred_size (widget, requisition, NULL);
@@ -15934,7 +15934,7 @@ ctk_widget_set_window (GtkWidget *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (window == NULL || GDK_IS_WINDOW (window));
 
   priv = widget->priv;
@@ -15970,7 +15970,7 @@ ctk_widget_register_window (GtkWidget    *widget,
   GtkWidgetPrivate *priv;
   gpointer user_data;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_WINDOW (window));
 
   gdk_window_get_user_data (window, &user_data);
@@ -16000,7 +16000,7 @@ ctk_widget_unregister_window (GtkWidget    *widget,
   GtkWidgetPrivate *priv;
   gpointer user_data;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (GDK_IS_WINDOW (window));
 
   priv = widget->priv;
@@ -16024,7 +16024,7 @@ ctk_widget_unregister_window (GtkWidget    *widget,
 GdkWindow*
 ctk_widget_get_window (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   return widget->priv->window;
 }
@@ -16041,7 +16041,7 @@ ctk_widget_get_window (GtkWidget *widget)
 gboolean
 ctk_widget_get_support_multidevice (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   return widget->priv->multidevice;
 }
@@ -16064,7 +16064,7 @@ ctk_widget_set_support_multidevice (GtkWidget *widget,
 {
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
   priv->multidevice = (support_multidevice == TRUE);
@@ -16092,7 +16092,7 @@ ctk_widget_update_alpha (GtkWidget *widget)
   context = _ctk_widget_get_style_context (widget);
   opacity =
     _ctk_css_number_value_get (_ctk_style_context_peek_property (context,
-                                                                 GTK_CSS_PROPERTY_OPACITY),
+                                                                 CTK_CSS_PROPERTY_OPACITY),
                                100);
   opacity = CLAMP (opacity, 0.0, 1.0);
   alpha = round (priv->user_alpha * opacity);
@@ -16141,7 +16141,7 @@ ctk_widget_set_opacity (GtkWidget *widget,
   GtkWidgetPrivate *priv;
   guint8 alpha;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   priv = widget->priv;
 
@@ -16173,7 +16173,7 @@ ctk_widget_set_opacity (GtkWidget *widget,
 gdouble
 ctk_widget_get_opacity (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0.0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0.0);
 
   return widget->priv->user_alpha / 255.0;
 }
@@ -16185,9 +16185,9 @@ _ctk_widget_set_has_focus (GtkWidget *widget,
   widget->priv->has_focus = has_focus;
 
   if (has_focus)
-    ctk_widget_set_state_flags (widget, GTK_STATE_FLAG_FOCUSED, FALSE);
+    ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_FOCUSED, FALSE);
   else
-    ctk_widget_unset_state_flags (widget, GTK_STATE_FLAG_FOCUSED);
+    ctk_widget_unset_state_flags (widget, CTK_STATE_FLAG_FOCUSED);
 }
 
 /**
@@ -16230,7 +16230,7 @@ ctk_widget_send_focus_change (GtkWidget *widget,
 {
   gboolean res;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (event != NULL && event->type == GDK_FOCUS_CHANGE, FALSE);
 
   g_object_ref (widget);
@@ -16325,9 +16325,9 @@ ctk_widget_set_alloc_needed (GtkWidget *widget)
         break;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      if (GTK_IS_RESIZE_CONTAINER (widget))
+      if (CTK_IS_RESIZE_CONTAINER (widget))
         {
-          ctk_container_queue_resize_handler (GTK_CONTAINER (widget));
+          ctk_container_queue_resize_handler (CTK_CONTAINER (widget));
           break;
         }
 G_GNUC_END_IGNORE_DEPRECATIONS;
@@ -16382,8 +16382,8 @@ ctk_widget_ensure_allocate (GtkWidget *widget)
     {
       priv->alloc_needed_on_child = FALSE;
 
-      if (GTK_IS_CONTAINER (widget))
-        ctk_container_forall (GTK_CONTAINER (widget),
+      if (CTK_IS_CONTAINER (widget))
+        ctk_container_forall (CTK_CONTAINER (widget),
                               (GtkCallback) ctk_widget_ensure_allocate,
                               NULL);
     }
@@ -16482,7 +16482,7 @@ ctk_widget_path_append_for_widget (GtkWidgetPath *path,
   gint pos;
 
   g_return_val_if_fail (path != NULL, 0);
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   pos = ctk_widget_path_append_type (path, ctk_css_node_get_widget_type (widget->priv->cssnode));
   ctk_widget_path_iter_set_object_name (path, pos, ctk_css_node_get_name (widget->priv->cssnode));
@@ -16508,7 +16508,7 @@ _ctk_widget_create_path (GtkWidget *widget)
   parent = widget->priv->parent;
 
   if (parent)
-    return ctk_container_get_path_for_child (GTK_CONTAINER (parent), widget);
+    return ctk_container_get_path_for_child (CTK_CONTAINER (parent), widget);
   else
     {
       /* Widget is either toplevel or unparented, treat both
@@ -16519,8 +16519,8 @@ _ctk_widget_create_path (GtkWidget *widget)
       GtkWidget *attach_widget = NULL;
       GtkWidgetPath *result;
 
-      if (GTK_IS_WINDOW (widget))
-        attach_widget = ctk_window_get_attached_to (GTK_WINDOW (widget));
+      if (CTK_IS_WINDOW (widget))
+        attach_widget = ctk_window_get_attached_to (CTK_WINDOW (widget));
 
       if (attach_widget != NULL)
         result = ctk_widget_path_copy (ctk_widget_get_path (attach_widget));
@@ -16548,7 +16548,7 @@ ctk_widget_get_path (GtkWidget *widget)
 {
   GtkWidgetPath *path;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   path = (GtkWidgetPath*)g_object_get_qdata (G_OBJECT (widget), quark_widget_path);
   if (!path)
@@ -16587,7 +16587,7 @@ ctk_widget_class_set_css_name (GtkWidgetClass *widget_class,
 {
   GtkWidgetClassPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET_CLASS (widget_class));
+  g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
   g_return_if_fail (name != NULL);
 
   priv = widget_class->priv;
@@ -16609,7 +16609,7 @@ ctk_widget_class_set_css_name (GtkWidgetClass *widget_class,
 const char *
 ctk_widget_class_get_css_name (GtkWidgetClass *widget_class)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET_CLASS (widget_class), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET_CLASS (widget_class), NULL);
 
   return widget_class->priv->css_name;
 }
@@ -16648,7 +16648,7 @@ ctk_widget_get_style_context (GtkWidget *widget)
 {
   GtkWidgetPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   priv = widget->priv;
 
@@ -16706,7 +16706,7 @@ ctk_widget_get_modifier_mask (GtkWidget         *widget,
 {
   GdkDisplay *display;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
   display = ctk_widget_get_display (widget);
 
@@ -16734,13 +16734,13 @@ _ctk_widget_get_parent_muxer (GtkWidget *widget,
 {
   GtkWidget *parent;
 
-  if (GTK_IS_WINDOW (widget))
-    return ctk_application_get_parent_muxer_for_window (GTK_WINDOW (widget));
+  if (CTK_IS_WINDOW (widget))
+    return ctk_application_get_parent_muxer_for_window (CTK_WINDOW (widget));
 
-  if (GTK_IS_MENU (widget))
-    parent = ctk_menu_get_attach_widget (GTK_MENU (widget));
-  else if (GTK_IS_POPOVER (widget))
-    parent = ctk_popover_get_relative_to (GTK_POPOVER (widget));
+  if (CTK_IS_MENU (widget))
+    parent = ctk_menu_get_attach_widget (CTK_MENU (widget));
+  else if (CTK_IS_POPOVER (widget))
+    parent = ctk_popover_get_relative_to (CTK_POPOVER (widget));
   else
     parent = _ctk_widget_get_parent (widget);
 
@@ -16811,7 +16811,7 @@ ctk_widget_insert_action_group (GtkWidget    *widget,
 {
   GtkActionMuxer *muxer;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (name != NULL);
 
   muxer = _ctk_widget_get_action_muxer (widget, TRUE);
@@ -16999,12 +16999,12 @@ ctk_widget_init_template (GtkWidget *widget)
   GSList *l;
   GType class_type;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
 
   object = G_OBJECT (widget);
   class_type = G_OBJECT_TYPE (widget);
 
-  template = GTK_WIDGET_GET_CLASS (widget)->priv->template;
+  template = CTK_WIDGET_GET_CLASS (widget)->priv->template;
   g_return_if_fail (template != NULL);
 
   builder = ctk_builder_new ();
@@ -17091,7 +17091,7 @@ void
 ctk_widget_class_set_template (GtkWidgetClass    *widget_class,
 			       GBytes            *template_bytes)
 {
-  g_return_if_fail (GTK_IS_WIDGET_CLASS (widget_class));
+  g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
   g_return_if_fail (widget_class->priv->template == NULL);
   g_return_if_fail (template_bytes != NULL);
 
@@ -17118,7 +17118,7 @@ ctk_widget_class_set_template_from_resource (GtkWidgetClass    *widget_class,
   GError *error = NULL;
   GBytes *bytes = NULL;
 
-  g_return_if_fail (GTK_IS_WIDGET_CLASS (widget_class));
+  g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
   g_return_if_fail (widget_class->priv->template == NULL);
   g_return_if_fail (resource_name && resource_name[0]);
 
@@ -17163,7 +17163,7 @@ ctk_widget_class_bind_template_callback_full (GtkWidgetClass *widget_class,
 {
   CallbackSymbol *cb;
 
-  g_return_if_fail (GTK_IS_WIDGET_CLASS (widget_class));
+  g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
   g_return_if_fail (widget_class->priv->template != NULL);
   g_return_if_fail (callback_name && callback_name[0]);
   g_return_if_fail (callback_symbol != NULL);
@@ -17194,7 +17194,7 @@ ctk_widget_class_set_connect_func (GtkWidgetClass        *widget_class,
 				   gpointer               connect_data,
 				   GDestroyNotify         connect_data_destroy)
 {
-  g_return_if_fail (GTK_IS_WIDGET_CLASS (widget_class));
+  g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
   g_return_if_fail (widget_class->priv->template != NULL);
 
   /* Defensive, destroy any previously set data */
@@ -17249,7 +17249,7 @@ ctk_widget_class_bind_template_child_full (GtkWidgetClass *widget_class,
 {
   AutomaticChildClass *child_class;
 
-  g_return_if_fail (GTK_IS_WIDGET_CLASS (widget_class));
+  g_return_if_fail (CTK_IS_WIDGET_CLASS (widget_class));
   g_return_if_fail (widget_class->priv->template != NULL);
   g_return_if_fail (name && name[0]);
 
@@ -17286,7 +17286,7 @@ ctk_widget_get_template_child (GtkWidget   *widget,
   GHashTable *auto_child_hash;
   GObject *ret = NULL;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (g_type_name (widget_type) != NULL, NULL);
   g_return_val_if_fail (name && name[0], NULL);
 
@@ -17314,7 +17314,7 @@ ctk_widget_list_action_prefixes (GtkWidget *widget)
 {
   GtkActionMuxer *muxer;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   muxer = _ctk_widget_get_action_muxer (widget, FALSE);
   if (muxer)
@@ -17344,7 +17344,7 @@ ctk_widget_get_action_group (GtkWidget   *widget,
 {
   GtkActionMuxer *muxer;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (prefix, NULL);
 
   muxer = _ctk_widget_get_action_muxer (widget, FALSE);
@@ -17361,8 +17361,8 @@ event_controller_grab_notify (GtkWidget           *widget,
 {
   GdkDevice *device = NULL;
 
-  if (GTK_IS_GESTURE (data->controller))
-    device = ctk_gesture_get_device (GTK_GESTURE (data->controller));
+  if (CTK_IS_GESTURE (data->controller))
+    device = ctk_gesture_get_device (CTK_GESTURE (data->controller));
 
   if (!device || !ctk_widget_device_is_shadowed (widget, device))
     return;
@@ -17394,7 +17394,7 @@ event_controller_sequence_state_changed (GtkGesture            *gesture,
   handled = _ctk_widget_set_sequence_state_internal (widget, sequence,
                                                      state, gesture);
 
-  if (!handled || state != GTK_EVENT_SEQUENCE_CLAIMED)
+  if (!handled || state != CTK_EVENT_SEQUENCE_CLAIMED)
     return;
 
   event = _ctk_widget_get_last_event (widget, sequence);
@@ -17434,8 +17434,8 @@ _ctk_widget_add_controller (GtkWidget          *widget,
   EventControllerData *data;
   GtkWidgetPrivate *priv;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (GTK_IS_EVENT_CONTROLLER (controller));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_EVENT_CONTROLLER (controller));
   g_return_if_fail (widget == ctk_event_controller_get_widget (controller));
 
   priv = widget->priv;
@@ -17452,7 +17452,7 @@ _ctk_widget_add_controller (GtkWidget          *widget,
 
   g_object_add_weak_pointer (G_OBJECT (data->controller), (gpointer *) &data->controller);
 
-  if (GTK_IS_GESTURE (controller))
+  if (CTK_IS_GESTURE (controller))
     {
       data->sequence_state_changed_id =
         g_signal_connect (controller, "sequence-state-changed",
@@ -17470,8 +17470,8 @@ _ctk_widget_remove_controller (GtkWidget          *widget,
 {
   EventControllerData *data;
 
-  g_return_if_fail (GTK_IS_WIDGET (widget));
-  g_return_if_fail (GTK_IS_EVENT_CONTROLLER (controller));
+  g_return_if_fail (CTK_IS_WIDGET (widget));
+  g_return_if_fail (CTK_IS_EVENT_CONTROLLER (controller));
 
   data = _ctk_widget_has_controller (widget, controller);
 
@@ -17497,7 +17497,7 @@ _ctk_widget_list_controllers (GtkWidget           *widget,
   GtkWidgetPrivate *priv;
   GList *l, *retval = NULL;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
   priv = widget->priv;
 
@@ -17521,7 +17521,7 @@ _ctk_widget_consumes_motion (GtkWidget        *widget,
   GtkWidgetPrivate *priv;
   GList *l;
 
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   priv = widget->priv;
 
@@ -17532,10 +17532,10 @@ _ctk_widget_consumes_motion (GtkWidget        *widget,
       if (data->controller == NULL)
         continue;
 
-      if ((!GTK_IS_GESTURE_SINGLE (data->controller) ||
-           GTK_IS_GESTURE_DRAG (data->controller) ||
-           GTK_IS_GESTURE_SWIPE (data->controller)) &&
-          ctk_gesture_handles_sequence (GTK_GESTURE (data->controller), sequence))
+      if ((!CTK_IS_GESTURE_SINGLE (data->controller) ||
+           CTK_IS_GESTURE_DRAG (data->controller) ||
+           CTK_IS_GESTURE_SWIPE (data->controller)) &&
+          ctk_gesture_handles_sequence (CTK_GESTURE (data->controller), sequence))
         return TRUE;
     }
 

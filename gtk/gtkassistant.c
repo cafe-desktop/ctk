@@ -38,7 +38,7 @@
  * and [committed][gtk-assistant-commit] status.
  *
  * If you have a case that doesn’t quite fit in #GtkAssistants way of
- * handling buttons, you can use the #GTK_ASSISTANT_PAGE_CUSTOM page
+ * handling buttons, you can use the #CTK_ASSISTANT_PAGE_CUSTOM page
  * type and handle buttons yourself.
  *
  * # GtkAssistant as GtkBuildable
@@ -223,9 +223,9 @@ enum {
 static guint signals [LAST_SIGNAL] = { 0 };
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkAssistant, ctk_assistant, GTK_TYPE_WINDOW,
+G_DEFINE_TYPE_WITH_CODE (GtkAssistant, ctk_assistant, CTK_TYPE_WINDOW,
                          G_ADD_PRIVATE (GtkAssistant)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_assistant_buildable_interface_init))
 
 static void
@@ -246,7 +246,7 @@ ctk_assistant_set_property (GObject      *object,
                             const GValue *value,
                             GParamSpec   *pspec)
 {
-  GtkAssistant *assistant = GTK_ASSISTANT (object);
+  GtkAssistant *assistant = CTK_ASSISTANT (object);
 
   switch (prop_id)
     {
@@ -266,7 +266,7 @@ ctk_assistant_get_property (GObject      *object,
                             GValue       *value,
                             GParamSpec   *pspec)
 {
-  GtkAssistant *assistant = GTK_ASSISTANT (object);
+  GtkAssistant *assistant = CTK_ASSISTANT (object);
   GtkAssistantPrivate *priv = assistant->priv;
 
   switch (prop_id)
@@ -291,7 +291,7 @@ add_cb (GtkContainer *container,
   if (priv->use_header_bar)
     g_warning ("Content added to the action area of a assistant using header bars");
 
-  ctk_widget_show (GTK_WIDGET (container));
+  ctk_widget_show (CTK_WIDGET (container));
 }
 
 static void
@@ -302,7 +302,7 @@ apply_use_header_bar (GtkAssistant *assistant)
   ctk_widget_set_visible (priv->action_area, !priv->use_header_bar);
   ctk_widget_set_visible (priv->headerbar, priv->use_header_bar);
   if (!priv->use_header_bar)
-    ctk_window_set_titlebar (GTK_WINDOW (assistant), NULL);
+    ctk_window_set_titlebar (CTK_WINDOW (assistant), NULL);
   else
     g_signal_connect (priv->action_area, "add", G_CALLBACK (add_cb), assistant);
 }
@@ -313,12 +313,12 @@ add_to_header_bar (GtkAssistant *assistant,
 {
   GtkAssistantPrivate *priv = assistant->priv;
 
-  ctk_widget_set_valign (child, GTK_ALIGN_CENTER);
+  ctk_widget_set_valign (child, CTK_ALIGN_CENTER);
 
   if (child == priv->back || child == priv->cancel)
-    ctk_header_bar_pack_start (GTK_HEADER_BAR (priv->headerbar), child);
+    ctk_header_bar_pack_start (CTK_HEADER_BAR (priv->headerbar), child);
   else
-    ctk_header_bar_pack_end (GTK_HEADER_BAR (priv->headerbar), child);
+    ctk_header_bar_pack_end (CTK_HEADER_BAR (priv->headerbar), child);
 }
 
 static void
@@ -330,7 +330,7 @@ add_action_widgets (GtkAssistant *assistant)
 
   if (priv->use_header_bar)
     {
-      children = ctk_container_get_children (GTK_CONTAINER (priv->action_area));
+      children = ctk_container_get_children (CTK_CONTAINER (priv->action_area));
       for (l = children; l != NULL; l = l->next)
         {
           GtkWidget *child = l->data;
@@ -339,14 +339,14 @@ add_action_widgets (GtkAssistant *assistant)
           has_default = ctk_widget_has_default (child);
 
           g_object_ref (child);
-          ctk_container_remove (GTK_CONTAINER (priv->action_area), child);
+          ctk_container_remove (CTK_CONTAINER (priv->action_area), child);
           add_to_header_bar (assistant, child);
           g_object_unref (child);
 
           if (has_default)
             {
               ctk_widget_grab_default (child);
-              ctk_style_context_add_class (ctk_widget_get_style_context (child), GTK_STYLE_CLASS_SUGGESTED_ACTION);
+              ctk_style_context_add_class (ctk_widget_get_style_context (child), CTK_STYLE_CLASS_SUGGESTED_ACTION);
             }
         }
       g_list_free (children);
@@ -356,7 +356,7 @@ add_action_widgets (GtkAssistant *assistant)
 static void
 ctk_assistant_constructed (GObject *object)
 {
-  GtkAssistant *assistant = GTK_ASSISTANT (object);
+  GtkAssistant *assistant = CTK_ASSISTANT (object);
   GtkAssistantPrivate *priv = assistant->priv;
 
   G_OBJECT_CLASS (ctk_assistant_parent_class)->constructed (object);
@@ -376,7 +376,7 @@ escape_cb (GtkAssistant *assistant)
 
   /* Do not allow cancelling in the middle of a progress page */
   if (priv->current_page &&
-      (priv->current_page->type != GTK_ASSISTANT_PAGE_PROGRESS ||
+      (priv->current_page->type != CTK_ASSISTANT_PAGE_PROGRESS ||
        priv->current_page->complete))
     g_signal_emit (assistant, signals [CANCEL], 0, NULL);
 
@@ -449,7 +449,7 @@ ctk_assistant_class_init (GtkAssistantClass *class)
                   G_STRUCT_OFFSET (GtkAssistantClass, prepare),
                   NULL, NULL,
                   NULL,
-                  G_TYPE_NONE, 1, GTK_TYPE_WIDGET);
+                  G_TYPE_NONE, 1, CTK_TYPE_WIDGET);
 
   /**
    * GtkAssistant::apply:
@@ -463,7 +463,7 @@ ctk_assistant_class_init (GtkAssistantClass *class)
    * A handler for the ::apply signal should carry out the actions for
    * which the wizard has collected data. If the action takes a long time
    * to complete, you might consider putting a page of type
-   * %GTK_ASSISTANT_PAGE_PROGRESS after the confirmation page and handle
+   * %CTK_ASSISTANT_PAGE_PROGRESS after the confirmation page and handle
    * this operation within the #GtkAssistant::prepare signal of the progress
    * page.
    *
@@ -484,7 +484,7 @@ ctk_assistant_class_init (GtkAssistantClass *class)
    *
    * The ::close signal is emitted either when the close button of
    * a summary page is clicked, or when the apply button in the last
-   * page in the flow (of type %GTK_ASSISTANT_PAGE_CONFIRM) is clicked.
+   * page in the flow (of type %CTK_ASSISTANT_PAGE_CONFIRM) is clicked.
    *
    * Since: 2.10
    */
@@ -526,7 +526,7 @@ ctk_assistant_class_init (GtkAssistantClass *class)
                                                      P_("Use Header Bar"),
                                                      P_("Use Header Bar for actions."),
                                                      -1, 1, -1,
-                                                     GTK_PARAM_READWRITE|G_PARAM_CONSTRUCT_ONLY));
+                                                     CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT_ONLY));
 
   /**
    * GtkAssistant:header-padding:
@@ -542,7 +542,7 @@ ctk_assistant_class_init (GtkAssistantClass *class)
                                                              0,
                                                              G_MAXINT,
                                                              6,
-                                                             GTK_PARAM_READABLE | G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
 
   /**
    * GtkAssistant:content-padding:
@@ -558,7 +558,7 @@ ctk_assistant_class_init (GtkAssistantClass *class)
                                                              0,
                                                              G_MAXINT,
                                                              1,
-                                                             GTK_PARAM_READABLE | G_PARAM_DEPRECATED));
+                                                             CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
 
   /**
    * GtkAssistant:page-type:
@@ -572,9 +572,9 @@ ctk_assistant_class_init (GtkAssistantClass *class)
                                               g_param_spec_enum ("page-type",
                                                                  P_("Page type"),
                                                                  P_("The type of the assistant page"),
-                                                                 GTK_TYPE_ASSISTANT_PAGE_TYPE,
-                                                                 GTK_ASSISTANT_PAGE_CONTENT,
-                                                                 GTK_PARAM_READWRITE));
+                                                                 CTK_TYPE_ASSISTANT_PAGE_TYPE,
+                                                                 CTK_ASSISTANT_PAGE_CONTENT,
+                                                                 CTK_PARAM_READWRITE));
 
   /**
    * GtkAssistant:title:
@@ -589,7 +589,7 @@ ctk_assistant_class_init (GtkAssistantClass *class)
                                                                    P_("Page title"),
                                                                    P_("The title of the assistant page"),
                                                                    NULL,
-                                                                   GTK_PARAM_READWRITE));
+                                                                   CTK_PARAM_READWRITE));
 
   /**
    * GtkAssistant:header-image:
@@ -607,7 +607,7 @@ ctk_assistant_class_init (GtkAssistantClass *class)
                                                                    P_("Header image"),
                                                                    P_("Header image for the assistant page"),
                                                                    GDK_TYPE_PIXBUF,
-                                                                   GTK_PARAM_READWRITE));
+                                                                   CTK_PARAM_READWRITE));
 
   /**
    * GtkAssistant:sidebar-image:
@@ -624,7 +624,7 @@ ctk_assistant_class_init (GtkAssistantClass *class)
                                                                    P_("Sidebar image"),
                                                                    P_("Sidebar image for the assistant page"),
                                                                    GDK_TYPE_PIXBUF,
-                                                                   GTK_PARAM_READWRITE));
+                                                                   CTK_PARAM_READWRITE));
 
   /**
    * GtkAssistant:complete:
@@ -684,7 +684,7 @@ default_forward_function (gint current_page, gpointer data)
   GtkAssistantPage *page_info;
   GList *page_node;
 
-  assistant = GTK_ASSISTANT (data);
+  assistant = CTK_ASSISTANT (data);
   priv = assistant->priv;
 
   page_node = g_list_nth (priv->pages, ++current_page);
@@ -716,7 +716,7 @@ last_button_visible (GtkAssistant *assistant, GtkAssistantPage *page)
   if (page == NULL)
     return FALSE;
 
-  if (page->type != GTK_ASSISTANT_PAGE_CONTENT)
+  if (page->type != CTK_ASSISTANT_PAGE_CONTENT)
     return FALSE;
 
   count = 0;
@@ -725,7 +725,7 @@ last_button_visible (GtkAssistant *assistant, GtkAssistantPage *page)
   page_info = page;
 
   while (page_num >= 0 && page_num < n_pages &&
-         page_info->type == GTK_ASSISTANT_PAGE_CONTENT &&
+         page_info->type == CTK_ASSISTANT_PAGE_CONTENT &&
          (count == 0 || page_info->complete) &&
          count < n_pages)
     {
@@ -739,8 +739,8 @@ last_button_visible (GtkAssistant *assistant, GtkAssistantPage *page)
    * pages and end on a confirmation or summary page
    */
   if (count > 1 && page_info &&
-      (page_info->type == GTK_ASSISTANT_PAGE_CONFIRM ||
-       page_info->type == GTK_ASSISTANT_PAGE_SUMMARY))
+      (page_info->type == CTK_ASSISTANT_PAGE_CONFIRM ||
+       page_info->type == CTK_ASSISTANT_PAGE_SUMMARY))
     return TRUE;
   else
     return FALSE;
@@ -824,7 +824,7 @@ update_buttons_state (GtkAssistant *assistant)
 
   switch (priv->current_page->type)
     {
-    case GTK_ASSISTANT_PAGE_INTRO:
+    case CTK_ASSISTANT_PAGE_INTRO:
       ctk_widget_set_sensitive (priv->cancel, TRUE);
       ctk_widget_set_sensitive (priv->forward, priv->current_page->complete);
       ctk_widget_grab_default (priv->forward);
@@ -834,7 +834,7 @@ update_buttons_state (GtkAssistant *assistant)
       ctk_widget_hide (priv->close);
       compute_last_button_state (assistant);
       break;
-    case GTK_ASSISTANT_PAGE_CONFIRM:
+    case CTK_ASSISTANT_PAGE_CONFIRM:
       ctk_widget_set_sensitive (priv->cancel, TRUE);
       ctk_widget_set_sensitive (priv->back, TRUE);
       ctk_widget_set_sensitive (priv->apply, priv->current_page->complete);
@@ -845,7 +845,7 @@ update_buttons_state (GtkAssistant *assistant)
       ctk_widget_hide (priv->close);
       ctk_widget_hide (priv->last);
       break;
-    case GTK_ASSISTANT_PAGE_CONTENT:
+    case CTK_ASSISTANT_PAGE_CONTENT:
       ctk_widget_set_sensitive (priv->cancel, TRUE);
       ctk_widget_set_sensitive (priv->back, TRUE);
       ctk_widget_set_sensitive (priv->forward, priv->current_page->complete);
@@ -856,7 +856,7 @@ update_buttons_state (GtkAssistant *assistant)
       ctk_widget_hide (priv->close);
       compute_last_button_state (assistant);
       break;
-    case GTK_ASSISTANT_PAGE_SUMMARY:
+    case CTK_ASSISTANT_PAGE_SUMMARY:
       ctk_widget_set_sensitive (priv->close, priv->current_page->complete);
       ctk_widget_grab_default (priv->close);
       ctk_widget_show (priv->close);
@@ -865,7 +865,7 @@ update_buttons_state (GtkAssistant *assistant)
       ctk_widget_hide (priv->apply);
       ctk_widget_hide (priv->last);
       break;
-    case GTK_ASSISTANT_PAGE_PROGRESS:
+    case CTK_ASSISTANT_PAGE_PROGRESS:
       ctk_widget_set_sensitive (priv->cancel, priv->current_page->complete);
       ctk_widget_set_sensitive (priv->back, priv->current_page->complete);
       ctk_widget_set_sensitive (priv->forward, priv->current_page->complete);
@@ -876,7 +876,7 @@ update_buttons_state (GtkAssistant *assistant)
       ctk_widget_hide (priv->last);
       compute_progress_state (assistant);
       break;
-    case GTK_ASSISTANT_PAGE_CUSTOM:
+    case CTK_ASSISTANT_PAGE_CUSTOM:
       ctk_widget_hide (priv->cancel);
       ctk_widget_hide (priv->back);
       ctk_widget_hide (priv->forward);
@@ -890,8 +890,8 @@ update_buttons_state (GtkAssistant *assistant)
 
   if (priv->committed)
     ctk_widget_hide (priv->cancel);
-  else if (priv->current_page->type == GTK_ASSISTANT_PAGE_SUMMARY ||
-           priv->current_page->type == GTK_ASSISTANT_PAGE_CUSTOM)
+  else if (priv->current_page->type == CTK_ASSISTANT_PAGE_SUMMARY ||
+           priv->current_page->type == CTK_ASSISTANT_PAGE_CUSTOM)
     ctk_widget_hide (priv->cancel);
   else
     ctk_widget_show (priv->cancel);
@@ -989,15 +989,15 @@ set_current_page (GtkAssistant *assistant,
 
   update_title_state (assistant);
 
-  ctk_window_set_title (GTK_WINDOW (assistant), priv->current_page->title);
+  ctk_window_set_title (CTK_WINDOW (assistant), priv->current_page->title);
 
-  ctk_notebook_set_current_page (GTK_NOTEBOOK (priv->content), page_num);
+  ctk_notebook_set_current_page (CTK_NOTEBOOK (priv->content), page_num);
 
   /* update buttons state, flow may have changed */
-  if (ctk_widget_get_mapped (GTK_WIDGET (assistant)))
+  if (ctk_widget_get_mapped (CTK_WIDGET (assistant)))
     update_buttons_state (assistant);
 
-  if (!ctk_widget_child_focus (priv->current_page->page, GTK_DIR_TAB_FORWARD))
+  if (!ctk_widget_child_focus (priv->current_page->page, CTK_DIR_TAB_FORWARD))
     {
       GtkWidget *button[6];
       gint i;
@@ -1097,7 +1097,7 @@ on_assistant_last (GtkWidget    *widget,
 {
   GtkAssistantPrivate *priv = assistant->priv;
 
-  while (priv->current_page->type == GTK_ASSISTANT_PAGE_CONTENT &&
+  while (priv->current_page->type == CTK_ASSISTANT_PAGE_CONTENT &&
          priv->current_page->complete)
     compute_next_step (assistant);
 }
@@ -1109,7 +1109,7 @@ alternative_button_order (GtkAssistant *assistant)
   GdkScreen *screen;
   gboolean result;
 
-  screen   = ctk_widget_get_screen (GTK_WIDGET (assistant));
+  screen   = ctk_widget_get_screen (CTK_WIDGET (assistant));
   settings = ctk_settings_get_for_screen (screen);
 
   g_object_get (settings,
@@ -1123,9 +1123,9 @@ on_page_notify (GtkWidget  *widget,
                 GParamSpec *arg,
                 gpointer    data)
 {
-  GtkAssistant *assistant = GTK_ASSISTANT (data);
+  GtkAssistant *assistant = CTK_ASSISTANT (data);
 
-  if (ctk_widget_get_mapped (GTK_WIDGET (assistant)))
+  if (ctk_widget_get_mapped (CTK_WIDGET (assistant)))
     {
       update_buttons_state (assistant);
       update_title_state (assistant);
@@ -1177,8 +1177,8 @@ assistant_remove_page_cb (GtkContainer *container,
   ctk_size_group_remove_widget (priv->title_size_group, page_info->regular_title);
   ctk_size_group_remove_widget (priv->title_size_group, page_info->current_title);
 
-  ctk_container_remove (GTK_CONTAINER (priv->sidebar), page_info->regular_title);
-  ctk_container_remove (GTK_CONTAINER (priv->sidebar), page_info->current_title);
+  ctk_container_remove (CTK_CONTAINER (priv->sidebar), page_info->regular_title);
+  ctk_container_remove (CTK_CONTAINER (priv->sidebar), page_info->current_title);
 
   priv->pages = g_list_remove_link (priv->pages, element);
   priv->visited_pages = g_slist_remove_all (priv->visited_pages, page_info);
@@ -1188,7 +1188,7 @@ assistant_remove_page_cb (GtkContainer *container,
   g_slice_free (GtkAssistantPage, page_info);
   g_list_free_1 (element);
 
-  if (ctk_widget_get_mapped (GTK_WIDGET (assistant)))
+  if (ctk_widget_get_mapped (CTK_WIDGET (assistant)))
     {
       update_buttons_state (assistant);
       update_actions_size (assistant);
@@ -1211,21 +1211,21 @@ ctk_assistant_init (GtkAssistant *assistant)
   priv->forward_function_data = assistant;
   priv->forward_data_destroy = NULL;
 
-  g_object_get (ctk_widget_get_settings (GTK_WIDGET (assistant)),
+  g_object_get (ctk_widget_get_settings (CTK_WIDGET (assistant)),
                 "gtk-dialogs-use-header", &priv->use_header_bar,
                 NULL);
 
-  ctk_widget_init_template (GTK_WIDGET (assistant));
+  ctk_widget_init_template (CTK_WIDGET (assistant));
 
   if (alternative_button_order (assistant))
     {
       GList *buttons, *l;
 
       /* Reverse the action area children for the alternative button order setting */
-      buttons = ctk_container_get_children (GTK_CONTAINER (priv->action_area));
+      buttons = ctk_container_get_children (CTK_CONTAINER (priv->action_area));
 
       for (l = buttons; l; l = l->next)
-	ctk_box_reorder_child (GTK_BOX (priv->action_area), GTK_WIDGET (l->data), -1);
+	ctk_box_reorder_child (CTK_BOX (priv->action_area), CTK_WIDGET (l->data), -1);
 
       g_list_free (buttons);
     }
@@ -1241,31 +1241,31 @@ ctk_assistant_set_child_property (GtkContainer *container,
   switch (property_id)
     {
     case CHILD_PROP_PAGE_TYPE:
-      ctk_assistant_set_page_type (GTK_ASSISTANT (container), child,
+      ctk_assistant_set_page_type (CTK_ASSISTANT (container), child,
                                    g_value_get_enum (value));
       break;
     case CHILD_PROP_PAGE_TITLE:
-      ctk_assistant_set_page_title (GTK_ASSISTANT (container), child,
+      ctk_assistant_set_page_title (CTK_ASSISTANT (container), child,
                                     g_value_get_string (value));
       break;
     case CHILD_PROP_PAGE_HEADER_IMAGE:
-      ctk_assistant_do_set_page_header_image (GTK_ASSISTANT (container), child,
+      ctk_assistant_do_set_page_header_image (CTK_ASSISTANT (container), child,
                                               g_value_get_object (value));
       break;
     case CHILD_PROP_PAGE_SIDEBAR_IMAGE:
-      ctk_assistant_do_set_page_side_image (GTK_ASSISTANT (container), child,
+      ctk_assistant_do_set_page_side_image (CTK_ASSISTANT (container), child,
                                             g_value_get_object (value));
       break;
     case CHILD_PROP_PAGE_COMPLETE:
-      ctk_assistant_set_page_complete (GTK_ASSISTANT (container), child,
+      ctk_assistant_set_page_complete (CTK_ASSISTANT (container), child,
                                        g_value_get_boolean (value));
       break;
     case CHILD_PROP_HAS_PADDING:
-      ctk_assistant_set_page_has_padding (GTK_ASSISTANT (container), child,
+      ctk_assistant_set_page_has_padding (CTK_ASSISTANT (container), child,
                                           g_value_get_boolean (value));
       break;
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
 }
@@ -1277,7 +1277,7 @@ ctk_assistant_get_child_property (GtkContainer *container,
                                   GValue       *value,
                                   GParamSpec   *pspec)
 {
-  GtkAssistant *assistant = GTK_ASSISTANT (container);
+  GtkAssistant *assistant = CTK_ASSISTANT (container);
 
   switch (property_id)
     {
@@ -1310,7 +1310,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            ctk_assistant_get_page_has_padding (assistant, child));
       break;
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
 }
@@ -1318,7 +1318,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 ctk_assistant_destroy (GtkWidget *widget)
 {
-  GtkAssistant *assistant = GTK_ASSISTANT (widget);
+  GtkAssistant *assistant = CTK_ASSISTANT (widget);
   GtkAssistantPrivate *priv = assistant->priv;
 
   /* We set current to NULL so that the remove code doesn't try
@@ -1365,8 +1365,8 @@ ctk_assistant_destroy (GtkWidget *widget)
       priv->visited_pages = NULL;
     }
 
-  ctk_window_set_titlebar (GTK_WINDOW (widget), NULL);
-  GTK_WIDGET_CLASS (ctk_assistant_parent_class)->destroy (widget);
+  ctk_window_set_titlebar (CTK_WINDOW (widget), NULL);
+  CTK_WIDGET_CLASS (ctk_assistant_parent_class)->destroy (widget);
 }
 
 static GList*
@@ -1391,7 +1391,7 @@ find_page (GtkAssistant  *assistant,
 static void
 ctk_assistant_map (GtkWidget *widget)
 {
-  GtkAssistant *assistant = GTK_ASSISTANT (widget);
+  GtkAssistant *assistant = CTK_ASSISTANT (widget);
   GtkAssistantPrivate *priv = assistant->priv;
   GList *page_node;
   GtkAssistantPage *page;
@@ -1421,32 +1421,32 @@ ctk_assistant_map (GtkWidget *widget)
   update_actions_size (assistant);
   update_title_state (assistant);
 
-  GTK_WIDGET_CLASS (ctk_assistant_parent_class)->map (widget);
+  CTK_WIDGET_CLASS (ctk_assistant_parent_class)->map (widget);
 }
 
 static void
 ctk_assistant_unmap (GtkWidget *widget)
 {
-  GtkAssistant *assistant = GTK_ASSISTANT (widget);
+  GtkAssistant *assistant = CTK_ASSISTANT (widget);
   GtkAssistantPrivate *priv = assistant->priv;
 
   g_slist_free (priv->visited_pages);
   priv->visited_pages = NULL;
   priv->current_page  = NULL;
 
-  GTK_WIDGET_CLASS (ctk_assistant_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (ctk_assistant_parent_class)->unmap (widget);
 }
 
 static gboolean
 ctk_assistant_delete_event (GtkWidget   *widget,
                             GdkEventAny *event)
 {
-  GtkAssistant *assistant = GTK_ASSISTANT (widget);
+  GtkAssistant *assistant = CTK_ASSISTANT (widget);
   GtkAssistantPrivate *priv = assistant->priv;
 
   /* Do not allow cancelling in the middle of a progress page */
   if (priv->current_page &&
-      (priv->current_page->type != GTK_ASSISTANT_PAGE_PROGRESS ||
+      (priv->current_page->type != CTK_ASSISTANT_PAGE_PROGRESS ||
        priv->current_page->complete))
     g_signal_emit (widget, signals [CANCEL], 0, NULL);
 
@@ -1463,14 +1463,14 @@ ctk_assistant_add (GtkContainer *container,
    * For the first invocation (from the builder template invocation),
    * let's make sure we add the actual direct container content properly.
    */
-  if (!ctk_bin_get_child (GTK_BIN (container)))
+  if (!ctk_bin_get_child (CTK_BIN (container)))
     {
-      ctk_widget_set_parent (page, GTK_WIDGET (container));
-      _ctk_bin_set_child (GTK_BIN (container), page);
+      ctk_widget_set_parent (page, CTK_WIDGET (container));
+      _ctk_bin_set_child (CTK_BIN (container), page);
       return;
     }
 
-  ctk_assistant_append_page (GTK_ASSISTANT (container), page);
+  ctk_assistant_append_page (CTK_ASSISTANT (container), page);
 }
 
 static void
@@ -1482,12 +1482,12 @@ ctk_assistant_remove (GtkContainer *container,
 
   /* Forward this removal to the content notebook */
   box = ctk_widget_get_parent (page);
-  if (GTK_IS_BOX (box) &&
+  if (CTK_IS_BOX (box) &&
       assistant->priv->content != NULL &&
       ctk_widget_get_parent (box) == assistant->priv->content)
     {
-      ctk_container_remove (GTK_CONTAINER (box), page);
-      ctk_container_remove (GTK_CONTAINER (assistant->priv->content), box);
+      ctk_container_remove (CTK_CONTAINER (box), page);
+      ctk_container_remove (CTK_CONTAINER (assistant->priv->content), box);
     }
 }
 
@@ -1505,7 +1505,7 @@ ctk_assistant_new (void)
 {
   GtkWidget *assistant;
 
-  assistant = g_object_new (GTK_TYPE_ASSISTANT, NULL);
+  assistant = g_object_new (CTK_TYPE_ASSISTANT, NULL);
 
   return assistant;
 }
@@ -1527,7 +1527,7 @@ ctk_assistant_get_current_page (GtkAssistant *assistant)
 {
   GtkAssistantPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), -1);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), -1);
 
   priv = assistant->priv;
 
@@ -1560,7 +1560,7 @@ ctk_assistant_set_current_page (GtkAssistant *assistant,
   GtkAssistantPrivate *priv;
   GtkAssistantPage *page;
 
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
 
   priv = assistant->priv;
 
@@ -1581,7 +1581,7 @@ ctk_assistant_set_current_page (GtkAssistant *assistant,
    * if not, just use it as an initial page setting, for the cases where
    * the initial page is != to 0
    */
-  if (ctk_widget_get_mapped (GTK_WIDGET (assistant)))
+  if (ctk_widget_get_mapped (CTK_WIDGET (assistant)))
     priv->visited_pages = g_slist_prepend (priv->visited_pages,
                                            priv->current_page);
 
@@ -1598,19 +1598,19 @@ ctk_assistant_set_current_page (GtkAssistant *assistant,
  * there is no next page.
  *
  * This function is for use when creating pages of the
- * #GTK_ASSISTANT_PAGE_CUSTOM type.
+ * #CTK_ASSISTANT_PAGE_CUSTOM type.
  *
  * Since: 3.0
  */
 void
 ctk_assistant_next_page (GtkAssistant *assistant)
 {
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
 
   if (!compute_next_step (assistant))
     g_critical ("Page flow is broken.\n"
                 "You may want to end it with a page of type\n"
-                "GTK_ASSISTANT_PAGE_CONFIRM or GTK_ASSISTANT_PAGE_SUMMARY");
+                "CTK_ASSISTANT_PAGE_CONFIRM or CTK_ASSISTANT_PAGE_SUMMARY");
 }
 
 /**
@@ -1623,7 +1623,7 @@ ctk_assistant_next_page (GtkAssistant *assistant)
  * no previous page is available.
  *
  * This function is for use when creating pages of the
- * #GTK_ASSISTANT_PAGE_CUSTOM type.
+ * #CTK_ASSISTANT_PAGE_CUSTOM type.
  *
  * Since: 3.0
  */
@@ -1634,7 +1634,7 @@ ctk_assistant_previous_page (GtkAssistant *assistant)
   GtkAssistantPage *page_info;
   GSList *page_node;
 
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
 
   priv = assistant->priv;
 
@@ -1649,7 +1649,7 @@ ctk_assistant_previous_page (GtkAssistant *assistant)
       page_info = (GtkAssistantPage *) page_node->data;
       g_slist_free_1 (page_node);
     }
-  while (page_info->type == GTK_ASSISTANT_PAGE_PROGRESS ||
+  while (page_info->type == CTK_ASSISTANT_PAGE_PROGRESS ||
          !ctk_widget_get_visible (page_info->page));
 
   set_current_page (assistant, g_list_index (priv->pages, page_info));
@@ -1670,7 +1670,7 @@ ctk_assistant_get_n_pages (GtkAssistant *assistant)
 {
   GtkAssistantPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), 0);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), 0);
 
   priv = assistant->priv;
 
@@ -1698,7 +1698,7 @@ ctk_assistant_get_nth_page (GtkAssistant *assistant,
   GtkAssistantPage *page;
   GList *elem;
 
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), NULL);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), NULL);
   g_return_val_if_fail (page_num >= -1, NULL);
 
   priv = assistant->priv;
@@ -1731,8 +1731,8 @@ gint
 ctk_assistant_prepend_page (GtkAssistant *assistant,
                             GtkWidget    *page)
 {
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), 0);
-  g_return_val_if_fail (GTK_IS_WIDGET (page), 0);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (page), 0);
 
   return ctk_assistant_insert_page (assistant, page, 0);
 }
@@ -1752,8 +1752,8 @@ gint
 ctk_assistant_append_page (GtkAssistant *assistant,
                            GtkWidget    *page)
 {
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), 0);
-  g_return_val_if_fail (GTK_IS_WIDGET (page), 0);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (page), 0);
 
   return ctk_assistant_insert_page (assistant, page, -1);
 }
@@ -1782,8 +1782,8 @@ ctk_assistant_insert_page (GtkAssistant *assistant,
   GtkStyleContext *context;
   GtkWidget *box;
 
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), 0);
-  g_return_val_if_fail (GTK_IS_WIDGET (page), 0);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), 0);
+  g_return_val_if_fail (CTK_IS_WIDGET (page), 0);
   g_return_val_if_fail (ctk_widget_get_parent (page) == NULL, 0);
   g_return_val_if_fail (!ctk_widget_is_toplevel (page), 0);
 
@@ -1797,14 +1797,14 @@ ctk_assistant_insert_page (GtkAssistant *assistant,
   page_info->current_title = ctk_label_new (NULL);
   ctk_widget_set_no_show_all (page_info->current_title, TRUE);
 
-  ctk_label_set_xalign (GTK_LABEL (page_info->regular_title), 0.0);
-  ctk_label_set_xalign (GTK_LABEL (page_info->current_title), 0.0);
+  ctk_label_set_xalign (CTK_LABEL (page_info->regular_title), 0.0);
+  ctk_label_set_xalign (CTK_LABEL (page_info->current_title), 0.0);
 
   ctk_widget_show (page_info->regular_title);
   ctk_widget_hide (page_info->current_title);
 
   context = ctk_widget_get_style_context (page_info->current_title);
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_HIGHLIGHT);
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_HIGHLIGHT);
 
   ctk_size_group_add_widget (priv->title_size_group, page_info->regular_title);
   ctk_size_group_add_widget (priv->title_size_group, page_info->current_title);
@@ -1825,22 +1825,22 @@ ctk_assistant_insert_page (GtkAssistant *assistant,
 
   priv->pages = g_list_insert (priv->pages, page_info, position);
 
-  ctk_box_pack_start (GTK_BOX (priv->sidebar), page_info->regular_title, FALSE, FALSE, 0);
-  ctk_box_pack_start (GTK_BOX (priv->sidebar), page_info->current_title, FALSE, FALSE, 0);
-  ctk_box_reorder_child (GTK_BOX (priv->sidebar), page_info->regular_title, 2 * position);
-  ctk_box_reorder_child (GTK_BOX (priv->sidebar), page_info->current_title, 2 * position + 1);
+  ctk_box_pack_start (CTK_BOX (priv->sidebar), page_info->regular_title, FALSE, FALSE, 0);
+  ctk_box_pack_start (CTK_BOX (priv->sidebar), page_info->current_title, FALSE, FALSE, 0);
+  ctk_box_reorder_child (CTK_BOX (priv->sidebar), page_info->regular_title, 2 * position);
+  ctk_box_reorder_child (CTK_BOX (priv->sidebar), page_info->current_title, 2 * position + 1);
 
-  box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
   ctk_widget_show (box);
-  ctk_box_pack_start (GTK_BOX (box), page, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (box), page, TRUE, TRUE, 0);
   g_object_set (box, "margin", 12, NULL);
   g_signal_connect (box, "remove", G_CALLBACK (assistant_remove_page_cb), assistant);
 
-  ctk_notebook_insert_page (GTK_NOTEBOOK (priv->content), box, NULL, position);
+  ctk_notebook_insert_page (CTK_NOTEBOOK (priv->content), box, NULL, position);
 
   page_info->box = box;
 
-  if (ctk_widget_get_mapped (GTK_WIDGET (assistant)))
+  if (ctk_widget_get_mapped (CTK_WIDGET (assistant)))
     {
       update_buttons_state (assistant);
       update_actions_size (assistant);
@@ -1865,12 +1865,12 @@ ctk_assistant_remove_page (GtkAssistant *assistant,
 {
   GtkWidget *page;
 
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
 
   page = ctk_assistant_get_nth_page (assistant, page_num);
 
   if (page)
-    ctk_container_remove (GTK_CONTAINER (assistant), page);
+    ctk_container_remove (CTK_CONTAINER (assistant), page);
 }
 
 /**
@@ -1899,7 +1899,7 @@ ctk_assistant_set_forward_page_func (GtkAssistant         *assistant,
 {
   GtkAssistantPrivate *priv;
 
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
 
   priv = assistant->priv;
 
@@ -1923,7 +1923,7 @@ ctk_assistant_set_forward_page_func (GtkAssistant         *assistant,
   /* Page flow has possibly changed, so the
    * buttons state might need to change too
    */
-  if (ctk_widget_get_mapped (GTK_WIDGET (assistant)))
+  if (ctk_widget_get_mapped (CTK_WIDGET (assistant)))
     update_buttons_state (assistant);
 }
 
@@ -1933,9 +1933,9 @@ add_to_action_area (GtkAssistant *assistant,
 {
   GtkAssistantPrivate *priv = assistant->priv;
 
-  ctk_widget_set_valign (child, GTK_ALIGN_BASELINE);
+  ctk_widget_set_valign (child, CTK_ALIGN_BASELINE);
 
-  ctk_box_pack_end (GTK_BOX (priv->action_area), child, FALSE, FALSE, 0);
+  ctk_box_pack_end (CTK_BOX (priv->action_area), child, FALSE, FALSE, 0);
 }
 
 /**
@@ -1953,16 +1953,16 @@ ctk_assistant_add_action_widget (GtkAssistant *assistant,
 {
   GtkAssistantPrivate *priv;
 
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_WIDGET (child));
 
   priv = assistant->priv;
 
-  if (GTK_IS_BUTTON (child))
+  if (CTK_IS_BUTTON (child))
     {
       ctk_size_group_add_widget (priv->button_size_group, child);
       priv->extra_buttons += 1;
-      if (ctk_widget_get_mapped (GTK_WIDGET (assistant)))
+      if (ctk_widget_get_mapped (CTK_WIDGET (assistant)))
         update_actions_size (assistant);
     }
 
@@ -1987,20 +1987,20 @@ ctk_assistant_remove_action_widget (GtkAssistant *assistant,
 {
   GtkAssistantPrivate *priv;
 
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
-  g_return_if_fail (GTK_IS_WIDGET (child));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_WIDGET (child));
 
   priv = assistant->priv;
 
-  if (GTK_IS_BUTTON (child))
+  if (CTK_IS_BUTTON (child))
     {
       ctk_size_group_remove_widget (priv->button_size_group, child);
       priv->extra_buttons -= 1;
-      if (ctk_widget_get_mapped (GTK_WIDGET (assistant)))
+      if (ctk_widget_get_mapped (CTK_WIDGET (assistant)))
         update_actions_size (assistant);
     }
 
-  ctk_container_remove (GTK_CONTAINER (priv->action_area), child);
+  ctk_container_remove (CTK_CONTAINER (priv->action_area), child);
 }
 
 /**
@@ -2024,8 +2024,8 @@ ctk_assistant_set_page_title (GtkAssistant *assistant,
   GtkAssistantPage *page_info;
   GList *child;
 
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
-  g_return_if_fail (GTK_IS_WIDGET (page));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_WIDGET (page));
 
   child = find_page (assistant, page);
 
@@ -2041,7 +2041,7 @@ ctk_assistant_set_page_title (GtkAssistant *assistant,
 
   update_title_state (assistant);
 
-  ctk_container_child_notify (GTK_CONTAINER (assistant), page, "title");
+  ctk_container_child_notify (CTK_CONTAINER (assistant), page, "title");
 }
 
 /**
@@ -2062,8 +2062,8 @@ ctk_assistant_get_page_title (GtkAssistant *assistant,
   GtkAssistantPage *page_info;
   GList *child;
 
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), NULL);
-  g_return_val_if_fail (GTK_IS_WIDGET (page), NULL);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (page), NULL);
 
   child = find_page (assistant, page);
 
@@ -2094,8 +2094,8 @@ ctk_assistant_set_page_type (GtkAssistant         *assistant,
   GtkAssistantPage *page_info;
   GList *child;
 
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
-  g_return_if_fail (GTK_IS_WIDGET (page));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_WIDGET (page));
 
   child = find_page (assistant, page);
 
@@ -2108,7 +2108,7 @@ ctk_assistant_set_page_type (GtkAssistant         *assistant,
       page_info->type = type;
 
       /* backwards compatibility to the era before fixing bug 604289 */
-      if (type == GTK_ASSISTANT_PAGE_SUMMARY && !page_info->complete_set)
+      if (type == CTK_ASSISTANT_PAGE_SUMMARY && !page_info->complete_set)
         {
           ctk_assistant_set_page_complete (assistant, page, TRUE);
           page_info->complete_set = FALSE;
@@ -2119,7 +2119,7 @@ ctk_assistant_set_page_type (GtkAssistant         *assistant,
        */
       update_buttons_state (assistant);
 
-      ctk_container_child_notify (GTK_CONTAINER (assistant), page, "page-type");
+      ctk_container_child_notify (CTK_CONTAINER (assistant), page, "page-type");
     }
 }
 
@@ -2141,12 +2141,12 @@ ctk_assistant_get_page_type (GtkAssistant *assistant,
   GtkAssistantPage *page_info;
   GList *child;
 
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), GTK_ASSISTANT_PAGE_CONTENT);
-  g_return_val_if_fail (GTK_IS_WIDGET (page), GTK_ASSISTANT_PAGE_CONTENT);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), CTK_ASSISTANT_PAGE_CONTENT);
+  g_return_val_if_fail (CTK_IS_WIDGET (page), CTK_ASSISTANT_PAGE_CONTENT);
 
   child = find_page (assistant, page);
 
-  g_return_val_if_fail (child != NULL, GTK_ASSISTANT_PAGE_CONTENT);
+  g_return_val_if_fail (child != NULL, CTK_ASSISTANT_PAGE_CONTENT);
 
   page_info = (GtkAssistantPage*) child->data;
 
@@ -2171,8 +2171,8 @@ ctk_assistant_set_page_header_image (GtkAssistant *assistant,
                                      GtkWidget    *page,
                                      GdkPixbuf    *pixbuf)
 {
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
-  g_return_if_fail (GTK_IS_WIDGET (page));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_WIDGET (page));
   g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
 
   ctk_assistant_do_set_page_header_image (assistant, page, pixbuf);
@@ -2203,7 +2203,7 @@ ctk_assistant_do_set_page_header_image (GtkAssistant *assistant,
       if (pixbuf)
         page_info->header_image = g_object_ref (pixbuf);
 
-      ctk_container_child_notify (GTK_CONTAINER (assistant), page, "header-image");
+      ctk_container_child_notify (CTK_CONTAINER (assistant), page, "header-image");
     }
 }
 
@@ -2229,8 +2229,8 @@ ctk_assistant_get_page_header_image (GtkAssistant *assistant,
   GtkAssistantPage *page_info;
   GList *child;
 
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), NULL);
-  g_return_val_if_fail (GTK_IS_WIDGET (page), NULL);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (page), NULL);
 
   child = find_page (assistant, page);
 
@@ -2262,8 +2262,8 @@ ctk_assistant_set_page_side_image (GtkAssistant *assistant,
                                    GtkWidget    *page,
                                    GdkPixbuf    *pixbuf)
 {
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
-  g_return_if_fail (GTK_IS_WIDGET (page));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_WIDGET (page));
   g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
 
   ctk_assistant_do_set_page_side_image (assistant, page, pixbuf);
@@ -2294,7 +2294,7 @@ ctk_assistant_do_set_page_side_image (GtkAssistant *assistant,
       if (pixbuf)
         page_info->sidebar_image = g_object_ref (pixbuf);
 
-      ctk_container_child_notify (GTK_CONTAINER (assistant), page, "sidebar-image");
+      ctk_container_child_notify (CTK_CONTAINER (assistant), page, "sidebar-image");
     }
 }
 
@@ -2320,8 +2320,8 @@ ctk_assistant_get_page_side_image (GtkAssistant *assistant,
   GtkAssistantPage *page_info;
   GList *child;
 
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), NULL);
-  g_return_val_if_fail (GTK_IS_WIDGET (page), NULL);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (page), NULL);
 
   child = find_page (assistant, page);
 
@@ -2353,8 +2353,8 @@ ctk_assistant_set_page_complete (GtkAssistant *assistant,
   GtkAssistantPage *page_info;
   GList *child;
 
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
-  g_return_if_fail (GTK_IS_WIDGET (page));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_WIDGET (page));
 
   child = find_page (assistant, page);
 
@@ -2372,7 +2372,7 @@ ctk_assistant_set_page_complete (GtkAssistant *assistant,
        */
       update_buttons_state (assistant);
 
-      ctk_container_child_notify (GTK_CONTAINER (assistant), page, "complete");
+      ctk_container_child_notify (CTK_CONTAINER (assistant), page, "complete");
     }
 }
 
@@ -2394,8 +2394,8 @@ ctk_assistant_get_page_complete (GtkAssistant *assistant,
   GtkAssistantPage *page_info;
   GList *child;
 
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), FALSE);
-  g_return_val_if_fail (GTK_IS_WIDGET (page), FALSE);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (page), FALSE);
 
   child = find_page (assistant, page);
 
@@ -2425,8 +2425,8 @@ ctk_assistant_set_page_has_padding (GtkAssistant *assistant,
   GtkAssistantPage *page_info;
   GList *child;
 
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
-  g_return_if_fail (GTK_IS_WIDGET (page));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_WIDGET (page));
 
   child = find_page (assistant, page);
 
@@ -2442,7 +2442,7 @@ ctk_assistant_set_page_has_padding (GtkAssistant *assistant,
                     "margin", has_padding ? 12 : 0,
                     NULL);
 
-      ctk_container_child_notify (GTK_CONTAINER (assistant), page, "has-padding");
+      ctk_container_child_notify (CTK_CONTAINER (assistant), page, "has-padding");
     }
 }
 
@@ -2463,8 +2463,8 @@ ctk_assistant_get_page_has_padding (GtkAssistant *assistant,
   GtkAssistantPage *page_info;
   GList *child;
 
-  g_return_val_if_fail (GTK_IS_ASSISTANT (assistant), FALSE);
-  g_return_val_if_fail (GTK_IS_WIDGET (page), FALSE);
+  g_return_val_if_fail (CTK_IS_ASSISTANT (assistant), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (page), FALSE);
 
   child = find_page (assistant, page);
 
@@ -2494,7 +2494,7 @@ ctk_assistant_get_page_has_padding (GtkAssistant *assistant,
 void
 ctk_assistant_update_buttons_state (GtkAssistant *assistant)
 {
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
 
   update_buttons_state (assistant);
 }
@@ -2518,7 +2518,7 @@ ctk_assistant_update_buttons_state (GtkAssistant *assistant)
 void
 ctk_assistant_commit (GtkAssistant *assistant)
 {
-  g_return_if_fail (GTK_IS_ASSISTANT (assistant));
+  g_return_if_fail (CTK_IS_ASSISTANT (assistant));
 
   g_slist_free (assistant->priv->visited_pages);
   assistant->priv->visited_pages = NULL;
@@ -2534,18 +2534,18 @@ ctk_assistant_commit (GtkAssistant *assistant)
 typedef GtkWindowAccessible      GtkAssistantAccessible;
 typedef GtkWindowAccessibleClass GtkAssistantAccessibleClass;
 
-G_DEFINE_TYPE (GtkAssistantAccessible, _ctk_assistant_accessible, GTK_TYPE_WINDOW_ACCESSIBLE);
+G_DEFINE_TYPE (GtkAssistantAccessible, _ctk_assistant_accessible, CTK_TYPE_WINDOW_ACCESSIBLE);
 
 static gint
 ctk_assistant_accessible_get_n_children (AtkObject *accessible)
 {
   GtkWidget *widget;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return 0;
 
-  return g_list_length (GTK_ASSISTANT (widget)->priv->pages) + 2;
+  return g_list_length (CTK_ASSISTANT (widget)->priv->pages) + 2;
 }
 
 static AtkObject *
@@ -2559,11 +2559,11 @@ ctk_assistant_accessible_ref_child (AtkObject *accessible,
   AtkObject *obj;
   const gchar *title;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (accessible));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
     return NULL;
 
-  assistant = GTK_ASSISTANT (widget);
+  assistant = CTK_ASSISTANT (widget);
   priv = assistant->priv;
   n_pages = g_list_length (priv->pages);
 

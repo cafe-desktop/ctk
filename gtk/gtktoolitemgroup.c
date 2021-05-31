@@ -119,61 +119,61 @@ struct _GtkToolItemGroupChild
 
 static void ctk_tool_item_group_tool_shell_init (GtkToolShellIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkToolItemGroup, ctk_tool_item_group, GTK_TYPE_CONTAINER,
+G_DEFINE_TYPE_WITH_CODE (GtkToolItemGroup, ctk_tool_item_group, CTK_TYPE_CONTAINER,
                          G_ADD_PRIVATE (GtkToolItemGroup)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_TOOL_SHELL,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_TOOL_SHELL,
                                                 ctk_tool_item_group_tool_shell_init));
 
 static GtkWidget*
 ctk_tool_item_group_get_alignment (GtkToolItemGroup *group)
 {
-  return ctk_bin_get_child (GTK_BIN (group->priv->header));
+  return ctk_bin_get_child (CTK_BIN (group->priv->header));
 }
 
 static GtkOrientation
 ctk_tool_item_group_get_orientation (GtkToolShell *shell)
 {
-  GtkWidget *parent = ctk_widget_get_parent (GTK_WIDGET (shell));
+  GtkWidget *parent = ctk_widget_get_parent (CTK_WIDGET (shell));
 
-  if (GTK_IS_TOOL_PALETTE (parent))
-    return ctk_orientable_get_orientation (GTK_ORIENTABLE (parent));
+  if (CTK_IS_TOOL_PALETTE (parent))
+    return ctk_orientable_get_orientation (CTK_ORIENTABLE (parent));
 
-  return GTK_ORIENTATION_VERTICAL;
+  return CTK_ORIENTATION_VERTICAL;
 }
 
 static GtkToolbarStyle
 ctk_tool_item_group_get_style (GtkToolShell *shell)
 {
-  GtkWidget *parent = ctk_widget_get_parent (GTK_WIDGET (shell));
+  GtkWidget *parent = ctk_widget_get_parent (CTK_WIDGET (shell));
 
-  if (GTK_IS_TOOL_PALETTE (parent))
-    return ctk_tool_palette_get_style (GTK_TOOL_PALETTE (parent));
+  if (CTK_IS_TOOL_PALETTE (parent))
+    return ctk_tool_palette_get_style (CTK_TOOL_PALETTE (parent));
 
-  return GTK_TOOLBAR_ICONS;
+  return CTK_TOOLBAR_ICONS;
 }
 
 static GtkIconSize
 ctk_tool_item_group_get_icon_size (GtkToolShell *shell)
 {
-  GtkWidget *parent = ctk_widget_get_parent (GTK_WIDGET (shell));
+  GtkWidget *parent = ctk_widget_get_parent (CTK_WIDGET (shell));
 
-  if (GTK_IS_TOOL_PALETTE (parent))
-    return ctk_tool_palette_get_icon_size (GTK_TOOL_PALETTE (parent));
+  if (CTK_IS_TOOL_PALETTE (parent))
+    return ctk_tool_palette_get_icon_size (CTK_TOOL_PALETTE (parent));
 
-  return GTK_ICON_SIZE_SMALL_TOOLBAR;
+  return CTK_ICON_SIZE_SMALL_TOOLBAR;
 }
 
 static PangoEllipsizeMode
 ctk_tool_item_group_get_ellipsize_mode (GtkToolShell *shell)
 {
-  return GTK_TOOL_ITEM_GROUP (shell)->priv->ellipsize;
+  return CTK_TOOL_ITEM_GROUP (shell)->priv->ellipsize;
 }
 
 static gfloat
 ctk_tool_item_group_get_text_alignment (GtkToolShell *shell)
 {
-  if (GTK_TOOLBAR_TEXT == ctk_tool_item_group_get_style (shell) ||
-      GTK_TOOLBAR_BOTH_HORIZ == ctk_tool_item_group_get_style (shell))
+  if (CTK_TOOLBAR_TEXT == ctk_tool_item_group_get_style (shell) ||
+      CTK_TOOLBAR_BOTH_HORIZ == ctk_tool_item_group_get_style (shell))
     return 0.0;
 
   return 0.5;
@@ -182,16 +182,16 @@ ctk_tool_item_group_get_text_alignment (GtkToolShell *shell)
 static GtkOrientation
 ctk_tool_item_group_get_text_orientation (GtkToolShell *shell)
 {
-  return GTK_ORIENTATION_HORIZONTAL;
+  return CTK_ORIENTATION_HORIZONTAL;
 }
 
 static GtkSizeGroup *
 ctk_tool_item_group_get_text_size_group (GtkToolShell *shell)
 {
-  GtkWidget *parent = ctk_widget_get_parent (GTK_WIDGET (shell));
+  GtkWidget *parent = ctk_widget_get_parent (CTK_WIDGET (shell));
 
-  if (GTK_IS_TOOL_PALETTE (parent))
-    return _ctk_tool_palette_get_size_group (GTK_TOOL_PALETTE (parent));
+  if (CTK_IS_TOOL_PALETTE (parent))
+    return _ctk_tool_palette_get_size_group (CTK_TOOL_PALETTE (parent));
 
   return NULL;
 }
@@ -225,13 +225,13 @@ static void
 ctk_tool_item_group_screen_changed (GtkWidget *widget,
                                     GdkScreen *previous_screen)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (widget);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (widget);
   GtkToolItemGroupPrivate* priv = group->priv;
   GtkSettings *old_settings = priv->settings;
   GtkSettings *settings;
 
-  if (ctk_widget_has_screen (GTK_WIDGET (group)))
-    settings = ctk_widget_get_settings (GTK_WIDGET (group));
+  if (ctk_widget_has_screen (CTK_WIDGET (group)))
+    settings = ctk_widget_get_settings (CTK_WIDGET (group));
   else
     settings = NULL;
 
@@ -276,14 +276,14 @@ ctk_tool_item_group_header_draw_cb (GtkWidget *widget,
                                     cairo_t   *cr,
                                     gpointer   data)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (data);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (data);
   GtkToolItemGroupPrivate* priv = group->priv;
   GtkOrientation orientation;
   gint x, y, width, height;
   GtkTextDirection direction;
   GtkStyleContext *context;
 
-  orientation = ctk_tool_shell_get_orientation (GTK_TOOL_SHELL (group));
+  orientation = ctk_tool_shell_get_orientation (CTK_TOOL_SHELL (group));
   direction = ctk_widget_get_direction (widget);
   width = ctk_widget_get_allocated_width (widget);
   height = ctk_widget_get_allocated_height (widget);
@@ -291,11 +291,11 @@ ctk_tool_item_group_header_draw_cb (GtkWidget *widget,
 
   ctk_style_context_save_to_node (context, priv->arrow_node);
 
-  if (GTK_ORIENTATION_VERTICAL == orientation)
+  if (CTK_ORIENTATION_VERTICAL == orientation)
     {
-      ctk_style_context_add_class (context, GTK_STYLE_CLASS_VERTICAL);
+      ctk_style_context_add_class (context, CTK_STYLE_CLASS_VERTICAL);
 
-      if (GTK_TEXT_DIR_RTL == direction)
+      if (CTK_TEXT_DIR_RTL == direction)
         x = width;
       else
         x = 0;
@@ -304,7 +304,7 @@ ctk_tool_item_group_header_draw_cb (GtkWidget *widget,
     }
   else
     {
-      ctk_style_context_add_class (context, GTK_STYLE_CLASS_HORIZONTAL);
+      ctk_style_context_add_class (context, CTK_STYLE_CLASS_HORIZONTAL);
       x = width / 2 - priv->expander_size / 2;
       y = 0;
     }
@@ -322,13 +322,13 @@ static void
 ctk_tool_item_group_header_clicked_cb (GtkButton *button,
                                        gpointer   data)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (data);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (data);
   GtkToolItemGroupPrivate* priv = group->priv;
   GtkWidget *parent = ctk_widget_get_parent (data);
 
   if (priv->collapsed ||
-      !GTK_IS_TOOL_PALETTE (parent) ||
-      !ctk_tool_palette_get_exclusive (GTK_TOOL_PALETTE (parent), data))
+      !CTK_IS_TOOL_PALETTE (parent) ||
+      !ctk_tool_palette_get_exclusive (CTK_TOOL_PALETTE (parent), data))
     ctk_tool_item_group_set_collapsed (group, !priv->collapsed);
 }
 
@@ -336,8 +336,8 @@ static void
 ctk_tool_item_group_header_adjust_style (GtkToolItemGroup *group)
 {
   GtkWidget *alignment = ctk_tool_item_group_get_alignment (group);
-  GtkWidget *label_widget = ctk_bin_get_child (GTK_BIN (alignment));
-  GtkWidget *widget = GTK_WIDGET (group);
+  GtkWidget *label_widget = ctk_bin_get_child (CTK_BIN (alignment));
+  GtkWidget *widget = CTK_WIDGET (group);
   GtkToolItemGroupPrivate* priv = group->priv;
   gint dx = 0, dy = 0;
   GtkTextDirection direction = ctk_widget_get_direction (widget);
@@ -349,34 +349,34 @@ ctk_tool_item_group_header_adjust_style (GtkToolItemGroup *group)
   
   ctk_widget_set_size_request (alignment, -1, priv->expander_size);
 
-  switch (ctk_tool_shell_get_orientation (GTK_TOOL_SHELL (group)))
+  switch (ctk_tool_shell_get_orientation (CTK_TOOL_SHELL (group)))
     {
-      case GTK_ORIENTATION_HORIZONTAL:
+      case CTK_ORIENTATION_HORIZONTAL:
         dy = priv->header_spacing + priv->expander_size;
 
-        if (GTK_IS_LABEL (label_widget))
+        if (CTK_IS_LABEL (label_widget))
           {
-            ctk_label_set_ellipsize (GTK_LABEL (label_widget), PANGO_ELLIPSIZE_NONE);
-            if (GTK_TEXT_DIR_RTL == direction)
-              ctk_label_set_angle (GTK_LABEL (label_widget), -90);
+            ctk_label_set_ellipsize (CTK_LABEL (label_widget), PANGO_ELLIPSIZE_NONE);
+            if (CTK_TEXT_DIR_RTL == direction)
+              ctk_label_set_angle (CTK_LABEL (label_widget), -90);
             else
-              ctk_label_set_angle (GTK_LABEL (label_widget), 90);
+              ctk_label_set_angle (CTK_LABEL (label_widget), 90);
           }
        break;
 
-      case GTK_ORIENTATION_VERTICAL:
+      case CTK_ORIENTATION_VERTICAL:
         dx = priv->header_spacing + priv->expander_size;
 
-        if (GTK_IS_LABEL (label_widget))
+        if (CTK_IS_LABEL (label_widget))
           {
-            ctk_label_set_ellipsize (GTK_LABEL (label_widget), priv->ellipsize);
-            ctk_label_set_angle (GTK_LABEL (label_widget), 0);
+            ctk_label_set_ellipsize (CTK_LABEL (label_widget), priv->ellipsize);
+            ctk_label_set_angle (CTK_LABEL (label_widget), 0);
           }
         break;
     }
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  ctk_alignment_set_padding (GTK_ALIGNMENT (alignment), dy, 0, dx, 0);
+  ctk_alignment_set_padding (CTK_ALIGNMENT (alignment), dy, 0, dx, 0);
 G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
@@ -386,12 +386,12 @@ update_arrow_state (GtkToolItemGroup *group)
   GtkToolItemGroupPrivate *priv = group->priv;
   GtkStateFlags state;
 
-  state = ctk_widget_get_state_flags (GTK_WIDGET (group));
+  state = ctk_widget_get_state_flags (CTK_WIDGET (group));
 
   if (priv->collapsed)
-    state &= ~GTK_STATE_FLAG_CHECKED;
+    state &= ~CTK_STATE_FLAG_CHECKED;
   else
-    state |= GTK_STATE_FLAG_CHECKED;
+    state |= CTK_STATE_FLAG_CHECKED;
   ctk_css_node_set_state (priv->arrow_node, state);
 }
 
@@ -410,19 +410,19 @@ ctk_tool_item_group_init (GtkToolItemGroup *group)
   priv->collapsed = DEFAULT_COLLAPSED;
 
   priv->label_widget = ctk_label_new (NULL);
-  ctk_widget_set_halign (priv->label_widget, GTK_ALIGN_START);
-  ctk_widget_set_valign (priv->label_widget, GTK_ALIGN_CENTER);
+  ctk_widget_set_halign (priv->label_widget, CTK_ALIGN_START);
+  ctk_widget_set_valign (priv->label_widget, CTK_ALIGN_CENTER);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   alignment = ctk_alignment_new (0.5, 0.5, 1.0, 1.0);
 G_GNUC_END_IGNORE_DEPRECATIONS
-  ctk_container_add (GTK_CONTAINER (alignment), priv->label_widget);
+  ctk_container_add (CTK_CONTAINER (alignment), priv->label_widget);
   ctk_widget_show_all (alignment);
 
   priv->header = ctk_button_new ();
   g_object_ref_sink (priv->header);
   ctk_widget_set_focus_on_click (priv->header, FALSE);
-  ctk_container_add (GTK_CONTAINER (priv->header), alignment);
-  ctk_widget_set_parent (priv->header, GTK_WIDGET (group));
+  ctk_container_add (CTK_CONTAINER (priv->header), alignment);
+  ctk_widget_set_parent (priv->header, CTK_WIDGET (group));
 
   ctk_tool_item_group_header_adjust_style (group);
 
@@ -434,7 +434,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                     G_CALLBACK (ctk_tool_item_group_header_clicked_cb),
                     group);
 
-  widget_node = ctk_widget_get_css_node (GTK_WIDGET (group));
+  widget_node = ctk_widget_get_css_node (CTK_WIDGET (group));
   priv->arrow_node = ctk_css_node_new ();
   ctk_css_node_set_name (priv->arrow_node, I_("arrow"));
   ctk_css_node_set_parent (priv->arrow_node, widget_node);
@@ -450,7 +450,7 @@ ctk_tool_item_group_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (object);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (object);
 
   switch (prop_id)
     {
@@ -486,7 +486,7 @@ ctk_tool_item_group_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (object);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (object);
 
   switch (prop_id)
     {
@@ -520,7 +520,7 @@ ctk_tool_item_group_get_property (GObject    *object,
 static void
 ctk_tool_item_group_finalize (GObject *object)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (object);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (object);
 
   g_list_free (group->priv->children);
 
@@ -530,7 +530,7 @@ ctk_tool_item_group_finalize (GObject *object)
 static void
 ctk_tool_item_group_dispose (GObject *object)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (object);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (object);
   GtkToolItemGroupPrivate* priv = group->priv;
 
   if (priv->toplevel)
@@ -563,10 +563,10 @@ ctk_tool_item_group_get_item_size (GtkToolItemGroup *group,
                                    gboolean          homogeneous_only,
                                    gint             *requested_rows)
 {
-  GtkWidget *parent = ctk_widget_get_parent (GTK_WIDGET (group));
+  GtkWidget *parent = ctk_widget_get_parent (CTK_WIDGET (group));
 
-  if (GTK_IS_TOOL_PALETTE (parent))
-    _ctk_tool_palette_get_item_size (GTK_TOOL_PALETTE (parent), item_size, homogeneous_only, requested_rows);
+  if (CTK_IS_TOOL_PALETTE (parent))
+    _ctk_tool_palette_get_item_size (CTK_TOOL_PALETTE (parent), item_size, homogeneous_only, requested_rows);
   else
     _ctk_tool_item_group_item_size_request (group, item_size, homogeneous_only, requested_rows);
 }
@@ -575,7 +575,7 @@ static void
 ctk_tool_item_group_size_request (GtkWidget      *widget,
                                   GtkRequisition *requisition)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (widget);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (widget);
   GtkToolItemGroupPrivate* priv = group->priv;
   GtkOrientation orientation;
   GtkRequisition item_size;
@@ -596,14 +596,14 @@ ctk_tool_item_group_size_request (GtkWidget      *widget,
 
   ctk_tool_item_group_get_item_size (group, &item_size, FALSE, &requested_rows);
 
-  orientation = ctk_tool_shell_get_orientation (GTK_TOOL_SHELL (group));
+  orientation = ctk_tool_shell_get_orientation (CTK_TOOL_SHELL (group));
 
-  if (GTK_ORIENTATION_VERTICAL == orientation)
+  if (CTK_ORIENTATION_VERTICAL == orientation)
     requisition->width = MAX (requisition->width, item_size.width);
   else
     requisition->height = MAX (requisition->height, item_size.height * requested_rows);
 
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
   requisition->width += border_width * 2;
   requisition->height += border_width * 2;
 }
@@ -640,18 +640,18 @@ ctk_tool_item_group_is_item_visible (GtkToolItemGroup      *group,
   GtkToolbarStyle style;
   GtkOrientation orientation;
 
-  orientation = ctk_tool_shell_get_orientation (GTK_TOOL_SHELL (group));
-  style = ctk_tool_shell_get_style (GTK_TOOL_SHELL (group));
+  orientation = ctk_tool_shell_get_orientation (CTK_TOOL_SHELL (group));
+  style = ctk_tool_shell_get_style (CTK_TOOL_SHELL (group));
 
   /* horizontal tool palettes with text style support only homogeneous items */
   if (!child->homogeneous &&
-      GTK_ORIENTATION_HORIZONTAL == orientation &&
-      GTK_TOOLBAR_TEXT == style)
+      CTK_ORIENTATION_HORIZONTAL == orientation &&
+      CTK_TOOLBAR_TEXT == style)
     return FALSE;
 
   return
-    (ctk_widget_get_visible (GTK_WIDGET (child->item))) &&
-    (GTK_ORIENTATION_VERTICAL == orientation ?
+    (ctk_widget_get_visible (CTK_WIDGET (child->item))) &&
+    (CTK_ORIENTATION_VERTICAL == orientation ?
      ctk_tool_item_get_visible_vertical (child->item) :
      ctk_tool_item_get_visible_horizontal (child->item));
 }
@@ -668,7 +668,7 @@ ctk_tool_item_group_real_size_query (GtkWidget      *widget,
                                      GtkAllocation  *allocation,
                                      GtkRequisition *inquery)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (widget);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (widget);
   GtkToolItemGroupPrivate* priv = group->priv;
 
   GtkRequisition item_size;
@@ -679,13 +679,13 @@ ctk_tool_item_group_real_size_query (GtkWidget      *widget,
   gint min_rows;
   guint border_width;
 
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
-  orientation = ctk_tool_shell_get_orientation (GTK_TOOL_SHELL (group));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
+  orientation = ctk_tool_shell_get_orientation (CTK_TOOL_SHELL (group));
 
   /* figure out the size of homogeneous items */
   ctk_tool_item_group_get_item_size (group, &item_size, TRUE, &min_rows);
 
-  if (GTK_ORIENTATION_VERTICAL == orientation)
+  if (CTK_ORIENTATION_VERTICAL == orientation)
     item_size.width = MIN (item_size.width, allocation->width);
   else
     item_size.height = MIN (item_size.height, allocation->height);
@@ -705,7 +705,7 @@ ctk_tool_item_group_real_size_query (GtkWidget      *widget,
       gint n_rows;
       GList *it;
 
-      if (GTK_ORIENTATION_VERTICAL == orientation)
+      if (CTK_ORIENTATION_VERTICAL == orientation)
         {
           gboolean new_row = FALSE;
           gint row = -1;
@@ -743,7 +743,7 @@ ctk_tool_item_group_real_size_query (GtkWidget      *widget,
                   GtkRequisition req = {0, 0};
                   guint width;
 
-                  ctk_widget_get_preferred_size (GTK_WIDGET (child->item),
+                  ctk_widget_get_preferred_size (CTK_WIDGET (child->item),
                                                  &req, NULL);
 
                   width = udiv (req.width, item_size.width);
@@ -804,7 +804,7 @@ ctk_tool_item_group_real_size_query (GtkWidget      *widget,
                   GtkRequisition req = {0, 0};
                   guint width;
 
-                  ctk_widget_get_preferred_size (GTK_WIDGET (child->item),
+                  ctk_widget_get_preferred_size (CTK_WIDGET (child->item),
                                                  &req, NULL);
 
                   width = udiv (req.width, item_size.width);
@@ -862,7 +862,7 @@ ctk_tool_item_group_real_size_query (GtkWidget      *widget,
                       GtkRequisition req = {0, 0};
                       guint width;
 
-                      ctk_widget_get_preferred_size (GTK_WIDGET (child->item),
+                      ctk_widget_get_preferred_size (CTK_WIDGET (child->item),
                                                      &req, NULL);
 
                       width = udiv (req.width, item_size.width);
@@ -898,7 +898,7 @@ ctk_tool_item_group_real_size_query (GtkWidget      *widget,
       ctk_widget_get_preferred_size (priv->header,
                                      &child_requisition, NULL);
 
-      if (GTK_ORIENTATION_VERTICAL == orientation)
+      if (CTK_ORIENTATION_VERTICAL == orientation)
         inquery->height += child_requisition.height;
       else
         inquery->width += child_requisition.width;
@@ -913,7 +913,7 @@ static void
 ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
                                         GtkAllocation *allocation)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (widget);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (widget);
   GtkToolItemGroupPrivate* priv = group->priv;
   GtkRequisition child_requisition;
   GtkAllocation child_allocation;
@@ -930,14 +930,14 @@ ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
   guint border_width;
   GtkTextDirection direction;
 
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
 
   direction = ctk_widget_get_direction (widget);
 
-  orientation = ctk_tool_shell_get_orientation (GTK_TOOL_SHELL (group));
+  orientation = ctk_tool_shell_get_orientation (CTK_TOOL_SHELL (group));
 
   /* chain up */
-  GTK_WIDGET_CLASS (ctk_tool_item_group_parent_class)->size_allocate (widget, allocation);
+  CTK_WIDGET_CLASS (ctk_tool_item_group_parent_class)->size_allocate (widget, allocation);
 
   child_allocation.x = border_width;
   child_allocation.y = border_width;
@@ -948,7 +948,7 @@ ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
       ctk_widget_get_preferred_size (priv->header,
                                      &child_requisition, NULL);
 
-      if (GTK_ORIENTATION_VERTICAL == orientation)
+      if (CTK_ORIENTATION_VERTICAL == orientation)
         {
           child_allocation.width = allocation->width;
           child_allocation.height = child_requisition.height;
@@ -958,15 +958,15 @@ ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
           child_allocation.width = child_requisition.width;
           child_allocation.height = allocation->height;
 
-          if (GTK_TEXT_DIR_RTL == direction)
+          if (CTK_TEXT_DIR_RTL == direction)
             child_allocation.x = allocation->width - border_width - child_allocation.width;
         }
 
       ctk_widget_size_allocate (priv->header, &child_allocation);
 
-      if (GTK_ORIENTATION_VERTICAL == orientation)
+      if (CTK_ORIENTATION_VERTICAL == orientation)
         child_allocation.y += child_allocation.height;
-      else if (GTK_TEXT_DIR_RTL != direction)
+      else if (CTK_TEXT_DIR_RTL != direction)
         child_allocation.x += child_allocation.width;
       else
         child_allocation.x = border_width;
@@ -981,7 +981,7 @@ ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
   item_size.height = MAX (item_size.height, 1);
 
   /* figure out the available columns and size of item_area */
-  if (GTK_ORIENTATION_VERTICAL == orientation)
+  if (CTK_ORIENTATION_VERTICAL == orientation)
     {
       item_size.width = MIN (item_size.width, allocation->width);
 
@@ -1020,7 +1020,7 @@ ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
 
           if (!ctk_tool_item_group_is_item_visible (group, child))
             {
-              ctk_widget_set_child_visible (GTK_WIDGET (child->item), FALSE);
+              ctk_widget_set_child_visible (CTK_WIDGET (child->item), FALSE);
 
               continue;
             }
@@ -1030,7 +1030,7 @@ ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
 
           if (!child->homogeneous)
             {
-              ctk_widget_get_preferred_size (GTK_WIDGET (child->item),
+              ctk_widget_get_preferred_size (CTK_WIDGET (child->item),
                                              &child_requisition, NULL);
               child_requisition.width = MIN (child_requisition.width, item_area.width);
             }
@@ -1058,7 +1058,7 @@ ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
 
               width = col_width * item_size.width;
 
-              if (GTK_TEXT_DIR_RTL == direction)
+              if (CTK_TEXT_DIR_RTL == direction)
                 col_child = (n_columns - col - col_width);
 
               if (child->fill)
@@ -1078,7 +1078,7 @@ ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
             }
           else
             {
-              if (GTK_TEXT_DIR_RTL == direction)
+              if (CTK_TEXT_DIR_RTL == direction)
                 col_child = (n_columns - col - 1);
 
               child_allocation.x = item_area.x + col_child * item_size.width;
@@ -1089,8 +1089,8 @@ ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
 
           child_allocation.height = item_size.height;
 
-          ctk_widget_size_allocate (GTK_WIDGET (child->item), &child_allocation);
-          ctk_widget_set_child_visible (GTK_WIDGET (child->item), TRUE);
+          ctk_widget_size_allocate (CTK_WIDGET (child->item), &child_allocation);
+          ctk_widget_set_child_visible (CTK_WIDGET (child->item), TRUE);
         }
 
       child_allocation.y += item_size.height;
@@ -1104,7 +1104,7 @@ ctk_tool_item_group_real_size_allocate (GtkWidget     *widget,
         {
           GtkToolItemGroupChild *child = it->data;
 
-          ctk_widget_set_child_visible (GTK_WIDGET (child->item), FALSE);
+          ctk_widget_set_child_visible (CTK_WIDGET (child->item), FALSE);
         }
     }
 }
@@ -1136,12 +1136,12 @@ ctk_tool_item_group_set_focus_cb (GtkWidget *window,
         break;
       }
 
-  if (GTK_IS_TOOL_PALETTE (p))
+  if (CTK_IS_TOOL_PALETTE (p))
     {
       /* Check that the focused widgets is fully visible within
        * the group's parent widget and make it visible otherwise. */
 
-      adjustment = ctk_scrollable_get_vadjustment (GTK_SCROLLABLE (p));
+      adjustment = ctk_scrollable_get_vadjustment (CTK_SCROLLABLE (p));
 
       if (adjustment)
         {
@@ -1165,7 +1165,7 @@ ctk_tool_item_group_set_focus_cb (GtkWidget *window,
             }
         }
 
-      adjustment = ctk_scrollable_get_hadjustment (GTK_SCROLLABLE (p));
+      adjustment = ctk_scrollable_get_hadjustment (CTK_SCROLLABLE (p));
 
       if (adjustment)
         {
@@ -1244,7 +1244,7 @@ ctk_tool_item_group_realize (GtkWidget *widget)
 
   ctk_widget_set_realized (widget, TRUE);
 
-  border_width = ctk_container_get_border_width (GTK_CONTAINER (widget));
+  border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
   ctk_widget_get_allocation (widget, &allocation);
 
   attributes.window_type = GDK_WINDOW_CHILD;
@@ -1266,22 +1266,22 @@ ctk_tool_item_group_realize (GtkWidget *widget)
 
   ctk_widget_register_window (widget, window);
 
-  ctk_container_forall (GTK_CONTAINER (widget),
+  ctk_container_forall (CTK_CONTAINER (widget),
                         (GtkCallback) ctk_widget_set_parent_window,
                         window);
 
   ctk_widget_queue_resize_no_redraw (widget);
 
-  toplevel_window = ctk_widget_get_ancestor (widget, GTK_TYPE_WINDOW);
-  ctk_tool_item_group_set_toplevel_window (GTK_TOOL_ITEM_GROUP (widget),
+  toplevel_window = ctk_widget_get_ancestor (widget, CTK_TYPE_WINDOW);
+  ctk_tool_item_group_set_toplevel_window (CTK_TOOL_ITEM_GROUP (widget),
                                            toplevel_window);
 }
 
 static void
 ctk_tool_item_group_unrealize (GtkWidget *widget)
 {
-  ctk_tool_item_group_set_toplevel_window (GTK_TOOL_ITEM_GROUP (widget), NULL);
-  GTK_WIDGET_CLASS (ctk_tool_item_group_parent_class)->unrealize (widget);
+  ctk_tool_item_group_set_toplevel_window (CTK_TOOL_ITEM_GROUP (widget), NULL);
+  CTK_WIDGET_CLASS (ctk_tool_item_group_parent_class)->unrealize (widget);
 }
 
 static gboolean
@@ -1293,32 +1293,32 @@ ctk_tool_item_group_draw (GtkWidget *widget,
                          ctk_widget_get_allocated_width (widget),
                          ctk_widget_get_allocated_height (widget));
 
-  return GTK_WIDGET_CLASS (ctk_tool_item_group_parent_class)->draw (widget, cr);
+  return CTK_WIDGET_CLASS (ctk_tool_item_group_parent_class)->draw (widget, cr);
 }
 
 static void
 ctk_tool_item_group_style_updated (GtkWidget *widget)
 {
-  ctk_tool_item_group_header_adjust_style (GTK_TOOL_ITEM_GROUP (widget));
-  GTK_WIDGET_CLASS (ctk_tool_item_group_parent_class)->style_updated (widget);
+  ctk_tool_item_group_header_adjust_style (CTK_TOOL_ITEM_GROUP (widget));
+  CTK_WIDGET_CLASS (ctk_tool_item_group_parent_class)->style_updated (widget);
 }
 
 static void
 ctk_tool_item_group_state_flags_changed (GtkWidget     *widget,
                                          GtkStateFlags  previous_flags)
 {
-  update_arrow_state (GTK_TOOL_ITEM_GROUP (widget));
+  update_arrow_state (CTK_TOOL_ITEM_GROUP (widget));
 }
 
 static void
 ctk_tool_item_group_add (GtkContainer *container,
                          GtkWidget    *widget)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (container));
-  g_return_if_fail (GTK_IS_TOOL_ITEM (widget));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (container));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (widget));
 
-  ctk_tool_item_group_insert (GTK_TOOL_ITEM_GROUP (container),
-                              GTK_TOOL_ITEM (widget), -1);
+  ctk_tool_item_group_insert (CTK_TOOL_ITEM_GROUP (container),
+                              CTK_TOOL_ITEM (widget), -1);
 }
 
 static void
@@ -1329,8 +1329,8 @@ ctk_tool_item_group_remove (GtkContainer *container,
   GtkToolItemGroupPrivate* priv;
   GList *it;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (container));
-  group = GTK_TOOL_ITEM_GROUP (container);
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (container));
+  group = CTK_TOOL_ITEM_GROUP (container);
   priv = group->priv;
 
   for (it = priv->children; it != NULL; it = it->next)
@@ -1345,7 +1345,7 @@ ctk_tool_item_group_remove (GtkContainer *container,
           g_free (child_info);
           priv->children = g_list_delete_link (priv->children, it);
 
-          ctk_widget_queue_resize (GTK_WIDGET (container));
+          ctk_widget_queue_resize (CTK_WIDGET (container));
           break;
         }
     }
@@ -1357,7 +1357,7 @@ ctk_tool_item_group_forall (GtkContainer *container,
                             GtkCallback   callback,
                             gpointer      callback_data)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (container);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (container);
   GtkToolItemGroupPrivate* priv = group->priv;
   GList *children;
 
@@ -1373,14 +1373,14 @@ ctk_tool_item_group_forall (GtkContainer *container,
 				    child->item is removed from the item group
 				    in callback */
 
-      callback (GTK_WIDGET (child->item), callback_data);
+      callback (CTK_WIDGET (child->item), callback_data);
     }
 }
 
 static GType
 ctk_tool_item_group_child_type (GtkContainer *container)
 {
-  return GTK_TYPE_TOOL_ITEM;
+  return CTK_TYPE_TOOL_ITEM;
 }
 
 static GtkToolItemGroupChild *
@@ -1392,8 +1392,8 @@ ctk_tool_item_group_get_child (GtkToolItemGroup  *group,
   guint i;
   GList *it;
 
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), NULL);
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (item), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM_GROUP (group), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (item), NULL);
 
   for (it = group->priv->children, i = 0; it != NULL; it = it->next, ++i)
     {
@@ -1424,8 +1424,8 @@ ctk_tool_item_group_get_item_packing (GtkToolItemGroup *group,
 {
   GtkToolItemGroupChild *child;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
-  g_return_if_fail (GTK_IS_TOOL_ITEM (item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (group));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (item));
 
   child = ctk_tool_item_group_get_child (group, item, NULL, NULL);
   if (!child)
@@ -1455,46 +1455,46 @@ ctk_tool_item_group_set_item_packing (GtkToolItemGroup *group,
   GtkToolItemGroupChild *child;
   gboolean changed = FALSE;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
-  g_return_if_fail (GTK_IS_TOOL_ITEM (item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (group));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (item));
 
   child = ctk_tool_item_group_get_child (group, item, NULL, NULL);
   if (!child)
     return;
 
-  ctk_widget_freeze_child_notify (GTK_WIDGET (item));
+  ctk_widget_freeze_child_notify (CTK_WIDGET (item));
 
   if (child->homogeneous != homogeneous)
     {
       child->homogeneous = homogeneous;
       changed = TRUE;
-      ctk_widget_child_notify (GTK_WIDGET (item), "homogeneous");
+      ctk_widget_child_notify (CTK_WIDGET (item), "homogeneous");
     }
   if (child->expand != expand)
     {
       child->expand = expand;
       changed = TRUE;
-      ctk_widget_child_notify (GTK_WIDGET (item), "expand");
+      ctk_widget_child_notify (CTK_WIDGET (item), "expand");
     }
   if (child->fill != fill)
     {
       child->fill = fill;
       changed = TRUE;
-      ctk_widget_child_notify (GTK_WIDGET (item), "fill");
+      ctk_widget_child_notify (CTK_WIDGET (item), "fill");
     }
   if (child->new_row != new_row)
     {
       child->new_row = new_row;
       changed = TRUE;
-      ctk_widget_child_notify (GTK_WIDGET (item), "new-row");
+      ctk_widget_child_notify (CTK_WIDGET (item), "new-row");
     }
 
-  ctk_widget_thaw_child_notify (GTK_WIDGET (item));
+  ctk_widget_thaw_child_notify (CTK_WIDGET (item));
 
   if (changed
-      && ctk_widget_get_visible (GTK_WIDGET (group))
-      && ctk_widget_get_visible (GTK_WIDGET (item)))
-    ctk_widget_queue_resize (GTK_WIDGET (group));
+      && ctk_widget_get_visible (CTK_WIDGET (group))
+      && ctk_widget_get_visible (CTK_WIDGET (item)))
+    ctk_widget_queue_resize (CTK_WIDGET (group));
 }
 
 static void
@@ -1504,8 +1504,8 @@ ctk_tool_item_group_set_child_property (GtkContainer *container,
                                         const GValue *value,
                                         GParamSpec   *pspec)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (container);
-  GtkToolItem *item = GTK_TOOL_ITEM (child);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (container);
+  GtkToolItem *item = CTK_TOOL_ITEM (child);
   gboolean homogeneous, expand, fill, new_row;
 
   if (prop_id != CHILD_PROP_POSITION)
@@ -1554,7 +1554,7 @@ ctk_tool_item_group_set_child_property (GtkContainer *container,
         break;
 
       default:
-        GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, prop_id, pspec);
+        CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, prop_id, pspec);
         break;
     }
 }
@@ -1566,8 +1566,8 @@ ctk_tool_item_group_get_child_property (GtkContainer *container,
                                         GValue       *value,
                                         GParamSpec   *pspec)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (container);
-  GtkToolItem *item = GTK_TOOL_ITEM (child);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (container);
+  GtkToolItem *item = CTK_TOOL_ITEM (child);
   gboolean homogeneous, expand, fill, new_row;
 
   if (prop_id != CHILD_PROP_POSITION)
@@ -1600,7 +1600,7 @@ ctk_tool_item_group_get_child_property (GtkContainer *container,
         break;
 
       default:
-        GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, prop_id, pspec);
+        CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, prop_id, pspec);
         break;
     }
 }
@@ -1609,8 +1609,8 @@ static void
 ctk_tool_item_group_class_init (GtkToolItemGroupClass *cls)
 {
   GObjectClass       *oclass = G_OBJECT_CLASS (cls);
-  GtkWidgetClass     *wclass = GTK_WIDGET_CLASS (cls);
-  GtkContainerClass  *cclass = GTK_CONTAINER_CLASS (cls);
+  GtkWidgetClass     *wclass = CTK_WIDGET_CLASS (cls);
+  GtkContainerClass  *cclass = CTK_CONTAINER_CLASS (cls);
 
   oclass->set_property       = ctk_tool_item_group_set_property;
   oclass->get_property       = ctk_tool_item_group_get_property;
@@ -1639,77 +1639,77 @@ ctk_tool_item_group_class_init (GtkToolItemGroupClass *cls)
                                                         P_("Label"),
                                                         P_("The human-readable title of this item group"),
                                                         DEFAULT_LABEL,
-                                                        GTK_PARAM_READWRITE));
+                                                        CTK_PARAM_READWRITE));
 
   g_object_class_install_property (oclass, PROP_LABEL_WIDGET,
                                    g_param_spec_object  ("label-widget",
                                                         P_("Label widget"),
                                                         P_("A widget to display in place of the usual label"),
-                                                        GTK_TYPE_WIDGET,
-							GTK_PARAM_READWRITE));
+                                                        CTK_TYPE_WIDGET,
+							CTK_PARAM_READWRITE));
 
   g_object_class_install_property (oclass, PROP_COLLAPSED,
                                    g_param_spec_boolean ("collapsed",
                                                          P_("Collapsed"),
                                                          P_("Whether the group has been collapsed and items are hidden"),
                                                          DEFAULT_COLLAPSED,
-                                                         GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                         CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (oclass, PROP_ELLIPSIZE,
                                    g_param_spec_enum ("ellipsize",
                                                       P_("ellipsize"),
                                                       P_("Ellipsize for item group headers"),
                                                       PANGO_TYPE_ELLIPSIZE_MODE, DEFAULT_ELLIPSIZE,
-                                                      GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   g_object_class_install_property (oclass, PROP_RELIEF,
                                    g_param_spec_enum ("header-relief",
                                                       P_("Header Relief"),
                                                       P_("Relief of the group header button"),
-                                                      GTK_TYPE_RELIEF_STYLE, GTK_RELIEF_NORMAL,
-                                                      GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+                                                      CTK_TYPE_RELIEF_STYLE, CTK_RELIEF_NORMAL,
+                                                      CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
   ctk_widget_class_install_style_property (wclass,
                                            g_param_spec_int ("expander-size",
                                                              P_("Expander Size"),
                                                              P_("Size of the expander arrow"),
                                                              0, G_MAXINT, DEFAULT_EXPANDER_SIZE,
-                                                             GTK_PARAM_READABLE));
+                                                             CTK_PARAM_READABLE));
 
   ctk_widget_class_install_style_property (wclass,
                                            g_param_spec_int ("header-spacing",
                                                              P_("Header Spacing"),
                                                              P_("Spacing between expander arrow and caption"),
                                                              0, G_MAXINT, DEFAULT_HEADER_SPACING,
-                                                             GTK_PARAM_READABLE));
+                                                             CTK_PARAM_READABLE));
 
   ctk_container_class_install_child_property (cclass, CHILD_PROP_HOMOGENEOUS,
                                               g_param_spec_boolean ("homogeneous",
                                                                     P_("Homogeneous"),
                                                                     P_("Whether the item should be the same size as other homogeneous items"),
                                                                     TRUE,
-                                                                    GTK_PARAM_READWRITE));
+                                                                    CTK_PARAM_READWRITE));
 
   ctk_container_class_install_child_property (cclass, CHILD_PROP_EXPAND,
                                               g_param_spec_boolean ("expand",
                                                                     P_("Expand"),
                                                                     P_("Whether the item should receive extra space when the group grows"),
                                                                     FALSE,
-                                                                    GTK_PARAM_READWRITE)); 
+                                                                    CTK_PARAM_READWRITE)); 
 
   ctk_container_class_install_child_property (cclass, CHILD_PROP_FILL,
                                               g_param_spec_boolean ("fill",
                                                                     P_("Fill"),
                                                                     P_("Whether the item should fill the available space"),
                                                                     TRUE,
-                                                                    GTK_PARAM_READWRITE));
+                                                                    CTK_PARAM_READWRITE));
 
   ctk_container_class_install_child_property (cclass, CHILD_PROP_NEW_ROW,
                                               g_param_spec_boolean ("new-row",
                                                                     P_("New Row"),
                                                                     P_("Whether the item should start a new row"),
                                                                     FALSE,
-                                                                    GTK_PARAM_READWRITE));
+                                                                    CTK_PARAM_READWRITE));
 
   ctk_container_class_install_child_property (cclass, CHILD_PROP_POSITION,
                                               g_param_spec_int ("position",
@@ -1718,7 +1718,7 @@ ctk_tool_item_group_class_init (GtkToolItemGroupClass *cls)
                                                                 0,
                                                                 G_MAXINT,
                                                                 0,
-                                                                GTK_PARAM_READWRITE));
+                                                                CTK_PARAM_READWRITE));
 
   ctk_widget_class_set_css_name (wclass, "toolitemgroup");
 }
@@ -1736,7 +1736,7 @@ ctk_tool_item_group_class_init (GtkToolItemGroupClass *cls)
 GtkWidget*
 ctk_tool_item_group_new (const gchar *label)
 {
-  return g_object_new (GTK_TYPE_TOOL_ITEM_GROUP, "label", label, NULL);
+  return g_object_new (CTK_TYPE_TOOL_ITEM_GROUP, "label", label, NULL);
 }
 
 /**
@@ -1753,7 +1753,7 @@ void
 ctk_tool_item_group_set_label (GtkToolItemGroup *group,
                                const gchar      *label)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (group));
 
   if (!label)
     ctk_tool_item_group_set_label_widget (group, NULL);
@@ -1786,8 +1786,8 @@ ctk_tool_item_group_set_label_widget (GtkToolItemGroup *group,
   GtkToolItemGroupPrivate* priv;
   GtkWidget *alignment;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
-  g_return_if_fail (label_widget == NULL || GTK_IS_WIDGET (label_widget));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (group));
+  g_return_if_fail (label_widget == NULL || CTK_IS_WIDGET (label_widget));
   g_return_if_fail (label_widget == NULL || ctk_widget_get_parent (label_widget) == NULL);
 
   priv = group->priv;
@@ -1800,17 +1800,17 @@ ctk_tool_item_group_set_label_widget (GtkToolItemGroup *group,
   if (priv->label_widget)
     {
       ctk_widget_set_state_flags (priv->label_widget, 0, TRUE);
-      ctk_container_remove (GTK_CONTAINER (alignment), priv->label_widget);
+      ctk_container_remove (CTK_CONTAINER (alignment), priv->label_widget);
     }
 
 
   if (label_widget)
-      ctk_container_add (GTK_CONTAINER (alignment), label_widget);
+      ctk_container_add (CTK_CONTAINER (alignment), label_widget);
 
   priv->label_widget = label_widget;
 
-  if (ctk_widget_get_visible (GTK_WIDGET (group)))
-    ctk_widget_queue_resize (GTK_WIDGET (group));
+  if (ctk_widget_get_visible (CTK_WIDGET (group)))
+    ctk_widget_queue_resize (CTK_WIDGET (group));
 
   /* Only show the header widget if the group has children: */
   if (label_widget && priv->children)
@@ -1838,11 +1838,11 @@ void
 ctk_tool_item_group_set_header_relief (GtkToolItemGroup *group,
                                        GtkReliefStyle    style)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (group));
 
-  if (ctk_button_get_relief (GTK_BUTTON (group->priv->header)) != style)
+  if (ctk_button_get_relief (CTK_BUTTON (group->priv->header)) != style)
     {
-      ctk_button_set_relief (GTK_BUTTON (group->priv->header), style);
+      ctk_button_set_relief (CTK_BUTTON (group->priv->header), style);
       g_object_notify (G_OBJECT (group), "header-relief");
     }
 }
@@ -1858,7 +1858,7 @@ static void
 ctk_tool_item_group_force_expose (GtkToolItemGroup *group)
 {
   GtkToolItemGroupPrivate* priv = group->priv;
-  GtkWidget *widget = GTK_WIDGET (group);
+  GtkWidget *widget = CTK_WIDGET (group);
 
   if (ctk_widget_get_realized (priv->header))
     {
@@ -1907,7 +1907,7 @@ ctk_tool_item_group_force_expose (GtkToolItemGroup *group)
 static gboolean
 ctk_tool_item_group_animation_cb (gpointer data)
 {
-  GtkToolItemGroup *group = GTK_TOOL_ITEM_GROUP (data);
+  GtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (data);
   GtkToolItemGroupPrivate* priv = group->priv;
   gint64 timestamp = ctk_tool_item_group_get_animation_timestamp (group);
   gboolean retval;
@@ -1915,7 +1915,7 @@ ctk_tool_item_group_animation_cb (gpointer data)
   gdk_threads_enter ();
 
   /* Enque this early to reduce number of expose events. */
-  ctk_widget_queue_resize_no_redraw (GTK_WIDGET (group));
+  ctk_widget_queue_resize_no_redraw (CTK_WIDGET (group));
 
   ctk_tool_item_group_force_expose (group);
 
@@ -1946,14 +1946,14 @@ ctk_tool_item_group_set_collapsed (GtkToolItemGroup *group,
   GtkWidget *parent;
   GtkToolItemGroupPrivate* priv;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (group));
 
   priv = group->priv;
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (group));
-  if (GTK_IS_TOOL_PALETTE (parent) && !collapsed)
-    _ctk_tool_palette_set_expanding_child (GTK_TOOL_PALETTE (parent),
-                                           GTK_WIDGET (group));
+  parent = ctk_widget_get_parent (CTK_WIDGET (group));
+  if (CTK_IS_TOOL_PALETTE (parent) && !collapsed)
+    _ctk_tool_palette_set_expanding_child (CTK_TOOL_PALETTE (parent),
+                                           CTK_WIDGET (group));
   if (collapsed != priv->collapsed)
     {
       if (priv->animation)
@@ -1991,7 +1991,7 @@ void
 ctk_tool_item_group_set_ellipsize (GtkToolItemGroup   *group,
                                    PangoEllipsizeMode  ellipsize)
 {
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (group));
 
   if (ellipsize != group->priv->ellipsize)
     {
@@ -2019,12 +2019,12 @@ ctk_tool_item_group_get_label (GtkToolItemGroup *group)
 {
   GtkToolItemGroupPrivate *priv;
 
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM_GROUP (group), NULL);
 
   priv = group->priv;
 
-  if (GTK_IS_LABEL (priv->label_widget))
-    return ctk_label_get_label (GTK_LABEL (priv->label_widget));
+  if (CTK_IS_LABEL (priv->label_widget))
+    return ctk_label_get_label (CTK_LABEL (priv->label_widget));
   else
     return NULL;
 }
@@ -2045,7 +2045,7 @@ ctk_tool_item_group_get_label_widget (GtkToolItemGroup *group)
 {
   GtkWidget *alignment = ctk_tool_item_group_get_alignment (group);
 
-  return ctk_bin_get_child (GTK_BIN (alignment));
+  return ctk_bin_get_child (CTK_BIN (alignment));
 }
 
 /**
@@ -2061,7 +2061,7 @@ ctk_tool_item_group_get_label_widget (GtkToolItemGroup *group)
 gboolean
 ctk_tool_item_group_get_collapsed (GtkToolItemGroup *group)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), DEFAULT_COLLAPSED);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM_GROUP (group), DEFAULT_COLLAPSED);
 
   return group->priv->collapsed;
 }
@@ -2079,7 +2079,7 @@ ctk_tool_item_group_get_collapsed (GtkToolItemGroup *group)
 PangoEllipsizeMode
 ctk_tool_item_group_get_ellipsize (GtkToolItemGroup *group)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), DEFAULT_ELLIPSIZE);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM_GROUP (group), DEFAULT_ELLIPSIZE);
 
   return group->priv->ellipsize;
 }
@@ -2097,9 +2097,9 @@ ctk_tool_item_group_get_ellipsize (GtkToolItemGroup *group)
 GtkReliefStyle
 ctk_tool_item_group_get_header_relief (GtkToolItemGroup   *group)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), GTK_RELIEF_NORMAL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM_GROUP (group), CTK_RELIEF_NORMAL);
 
-  return ctk_button_get_relief (GTK_BUTTON (group->priv->header));
+  return ctk_button_get_relief (CTK_BUTTON (group->priv->header));
 }
 
 /**
@@ -2121,11 +2121,11 @@ ctk_tool_item_group_insert (GtkToolItemGroup *group,
   GtkWidget *parent, *child_widget;
   GtkToolItemGroupChild *child;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
-  g_return_if_fail (GTK_IS_TOOL_ITEM (item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (group));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (item));
   g_return_if_fail (position >= -1);
 
-  parent = ctk_widget_get_parent (GTK_WIDGET (group));
+  parent = ctk_widget_get_parent (CTK_WIDGET (group));
 
   child = g_new (GtkToolItemGroupChild, 1);
   child->item = g_object_ref_sink (item);
@@ -2136,14 +2136,14 @@ ctk_tool_item_group_insert (GtkToolItemGroup *group,
 
   group->priv->children = g_list_insert (group->priv->children, child, position);
 
-  if (GTK_IS_TOOL_PALETTE (parent))
-    _ctk_tool_palette_child_set_drag_source (GTK_WIDGET (item), parent);
+  if (CTK_IS_TOOL_PALETTE (parent))
+    _ctk_tool_palette_child_set_drag_source (CTK_WIDGET (item), parent);
 
-  child_widget = ctk_bin_get_child (GTK_BIN (item));
+  child_widget = ctk_bin_get_child (CTK_BIN (item));
 
   ctk_widget_set_focus_on_click (child_widget, TRUE);
 
-  ctk_widget_set_parent (GTK_WIDGET (item), GTK_WIDGET (group));
+  ctk_widget_set_parent (CTK_WIDGET (item), CTK_WIDGET (group));
 }
 
 /**
@@ -2168,8 +2168,8 @@ ctk_tool_item_group_set_item_position (GtkToolItemGroup *group,
   GtkToolItemGroupChild *child;
   GtkToolItemGroupPrivate* priv;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
-  g_return_if_fail (GTK_IS_TOOL_ITEM (item));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (group));
+  g_return_if_fail (CTK_IS_TOOL_ITEM (item));
   g_return_if_fail (position >= -1);
 
   child = ctk_tool_item_group_get_child (group, item, &old_position, &link);
@@ -2183,10 +2183,10 @@ ctk_tool_item_group_set_item_position (GtkToolItemGroup *group,
   priv->children = g_list_delete_link (priv->children, link);
   priv->children = g_list_insert (priv->children, child, position);
 
-  ctk_widget_child_notify (GTK_WIDGET (item), "position");
-  if (ctk_widget_get_visible (GTK_WIDGET (group)) &&
-      ctk_widget_get_visible (GTK_WIDGET (item)))
-    ctk_widget_queue_resize (GTK_WIDGET (group));
+  ctk_widget_child_notify (CTK_WIDGET (item), "position");
+  if (ctk_widget_get_visible (CTK_WIDGET (group)) &&
+      ctk_widget_get_visible (CTK_WIDGET (item)))
+    ctk_widget_queue_resize (CTK_WIDGET (group));
 }
 
 /**
@@ -2206,8 +2206,8 @@ ctk_tool_item_group_get_item_position (GtkToolItemGroup *group,
 {
   gint position;
 
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), -1);
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM (item), -1);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM_GROUP (group), -1);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM (item), -1);
 
   if (ctk_tool_item_group_get_child (group, item, &position, NULL))
     return position;
@@ -2228,7 +2228,7 @@ ctk_tool_item_group_get_item_position (GtkToolItemGroup *group,
 guint
 ctk_tool_item_group_get_n_items (GtkToolItemGroup *group)
 {
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), 0);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM_GROUP (group), 0);
 
   return g_list_length (group->priv->children);
 }
@@ -2250,7 +2250,7 @@ ctk_tool_item_group_get_nth_item (GtkToolItemGroup *group,
 {
   GtkToolItemGroupChild *child;
 
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM_GROUP (group), NULL);
 
   child = g_list_nth_data (group->priv->children, index);
 
@@ -2277,9 +2277,9 @@ ctk_tool_item_group_get_drop_item (GtkToolItemGroup *group,
   GtkAllocation allocation;
   GList *it;
 
-  g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), NULL);
+  g_return_val_if_fail (CTK_IS_TOOL_ITEM_GROUP (group), NULL);
 
-  ctk_widget_get_allocation (GTK_WIDGET (group), &allocation);
+  ctk_widget_get_allocation (CTK_WIDGET (group), &allocation);
 
   g_return_val_if_fail (x >= 0 && x < allocation.width, NULL);
   g_return_val_if_fail (y >= 0 && y < allocation.height, NULL);
@@ -2293,7 +2293,7 @@ ctk_tool_item_group_get_drop_item (GtkToolItemGroup *group,
       if (!item || !ctk_tool_item_group_is_item_visible (group, child))
         continue;
 
-      ctk_widget_get_allocation (GTK_WIDGET (item), &allocation);
+      ctk_widget_get_allocation (CTK_WIDGET (item), &allocation);
 
       x0 = x - allocation.x;
       y0 = y - allocation.y;
@@ -2317,7 +2317,7 @@ _ctk_tool_item_group_item_size_request (GtkToolItemGroup *group,
   gint rows = 0;
   gboolean new_row = TRUE;
 
-  g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
+  g_return_if_fail (CTK_IS_TOOL_ITEM_GROUP (group));
   g_return_if_fail (NULL != item_size);
 
   item_size->width = item_size->height = 0;
@@ -2338,7 +2338,7 @@ _ctk_tool_item_group_item_size_request (GtkToolItemGroup *group,
       if (!child->homogeneous && child->expand)
           new_row = TRUE;
 
-      ctk_widget_get_preferred_size (GTK_WIDGET (child->item),
+      ctk_widget_get_preferred_size (CTK_WIDGET (child->item),
                                      &child_requisition, NULL);
 
       if (!homogeneous_only || child->homogeneous)
@@ -2359,7 +2359,7 @@ _ctk_tool_item_group_get_size_for_limit (GtkToolItemGroup *group,
   GtkRequisition requisition;
   GtkToolItemGroupPrivate* priv = group->priv;
 
-  ctk_widget_get_preferred_size (GTK_WIDGET (group),
+  ctk_widget_get_preferred_size (CTK_WIDGET (group),
                                  &requisition, NULL);
 
   if (!priv->collapsed || priv->animation_timeout)
@@ -2372,7 +2372,7 @@ _ctk_tool_item_group_get_size_for_limit (GtkToolItemGroup *group,
       else
         allocation.height = limit;
 
-      ctk_tool_item_group_real_size_query (GTK_WIDGET (group),
+      ctk_tool_item_group_real_size_query (CTK_WIDGET (group),
                                            &allocation, &inquery);
 
       if (vertical)
@@ -2428,15 +2428,15 @@ static void
 ctk_tool_palette_reconfigured_foreach_item (GtkWidget *child,
                                             gpointer   data)
 {
-  if (GTK_IS_TOOL_ITEM (child))
-    ctk_tool_item_toolbar_reconfigured (GTK_TOOL_ITEM (child));
+  if (CTK_IS_TOOL_ITEM (child))
+    ctk_tool_item_toolbar_reconfigured (CTK_TOOL_ITEM (child));
 }
 
 
 void
 _ctk_tool_item_group_palette_reconfigured (GtkToolItemGroup *group)
 {
-  ctk_container_foreach (GTK_CONTAINER (group),
+  ctk_container_foreach (CTK_CONTAINER (group),
                          ctk_tool_palette_reconfigured_foreach_item,
                          NULL);
 

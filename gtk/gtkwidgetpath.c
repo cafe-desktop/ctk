@@ -53,8 +53,8 @@
  *   GtkWidgetPath *path;
  *
  *   path = ctk_widget_path_new ();
- *   ctk_widget_path_append_type (path, GTK_TYPE_WINDOW);
- *   ctk_widget_path_append_type (path, GTK_TYPE_BUTTON);
+ *   ctk_widget_path_append_type (path, CTK_TYPE_WINDOW);
+ *   ctk_widget_path_append_type (path, CTK_TYPE_BUTTON);
  * }
  * ]|
  *
@@ -71,10 +71,10 @@
  *
  *   path = ctk_widget_path_new ();
  *
- *   pos = ctk_widget_path_append_type (path, GTK_TYPE_NOTEBOOK);
- *   ctk_widget_path_iter_add_region (path, pos, "tab", GTK_REGION_EVEN | GTK_REGION_FIRST);
+ *   pos = ctk_widget_path_append_type (path, CTK_TYPE_NOTEBOOK);
+ *   ctk_widget_path_iter_add_region (path, pos, "tab", CTK_REGION_EVEN | CTK_REGION_FIRST);
  *
- *   pos = ctk_widget_path_append_type (path, GTK_TYPE_LABEL);
+ *   pos = ctk_widget_path_append_type (path, CTK_TYPE_LABEL);
  *   ctk_widget_path_iter_set_name (path, pos, "first tab label");
  * }
  * ]|
@@ -316,7 +316,7 @@ ctk_widget_path_to_string (const GtkWidgetPath *path)
         {
           GFlagsClass *fclass;
 
-          fclass = g_type_class_ref (GTK_TYPE_STATE_FLAGS);
+          fclass = g_type_class_ref (CTK_TYPE_STATE_FLAGS);
           for (j = 0; j < fclass->n_values; j++)
             {
               if (state & fclass->values[j].value)

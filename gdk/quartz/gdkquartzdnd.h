@@ -19,7 +19,7 @@
 #ifndef __GDK_QUARTZ_DND_H__
 #define __GDK_QUARTZ_DND_H__
 
-#if !defined (GTK_COMPILATION) && !defined (GDK_COMPILATION)
+#if !defined (CTK_COMPILATION) && !defined (GDK_COMPILATION)
 #error "gdkquartzdnd.h is for Gtk's internal use only"
 #endif
 

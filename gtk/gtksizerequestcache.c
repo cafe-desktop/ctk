@@ -36,10 +36,10 @@ free_sizes_x (SizeRequestX **sizes)
 {
   gint i;
 
-  for (i = 0; i < GTK_SIZE_REQUEST_CACHED_SIZES && sizes[i] != NULL; i++)
+  for (i = 0; i < CTK_SIZE_REQUEST_CACHED_SIZES && sizes[i] != NULL; i++)
     g_slice_free (SizeRequestX, sizes[i]);
 
-  g_slice_free1 (sizeof (SizeRequestY *) * GTK_SIZE_REQUEST_CACHED_SIZES, sizes);
+  g_slice_free1 (sizeof (SizeRequestY *) * CTK_SIZE_REQUEST_CACHED_SIZES, sizes);
 }
 
 static void
@@ -47,10 +47,10 @@ free_sizes_y (SizeRequestY **sizes)
 {
   gint i;
 
-  for (i = 0; i < GTK_SIZE_REQUEST_CACHED_SIZES && sizes[i] != NULL; i++)
+  for (i = 0; i < CTK_SIZE_REQUEST_CACHED_SIZES && sizes[i] != NULL; i++)
     g_slice_free (SizeRequestY, sizes[i]);
 
-  g_slice_free1 (sizeof (SizeRequestY *) * GTK_SIZE_REQUEST_CACHED_SIZES, sizes);
+  g_slice_free1 (sizeof (SizeRequestY *) * CTK_SIZE_REQUEST_CACHED_SIZES, sizes);
 }
 
 void
@@ -80,7 +80,7 @@ _ctk_size_request_cache_commit (SizeRequestCache *cache,
 {
   guint         i, n_sizes;
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       g_assert (minimum_baseline == -1);
       g_assert (natural_baseline == -1);
@@ -89,7 +89,7 @@ _ctk_size_request_cache_commit (SizeRequestCache *cache,
   /* First handle caching of the base requests */
   if (for_size < 0)
     {
-      if (orientation == GTK_ORIENTATION_HORIZONTAL)
+      if (orientation == CTK_ORIENTATION_HORIZONTAL)
 	{
 	  cache->cached_size_x.minimum_size = minimum_size;
 	  cache->cached_size_x.natural_size = natural_size;
@@ -113,7 +113,7 @@ _ctk_size_request_cache_commit (SizeRequestCache *cache,
   n_sizes = cache->flags[orientation].n_cached_requests;
 
 
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       SizeRequestX **cached_sizes;
       SizeRequestX  *cached_size;
@@ -133,19 +133,19 @@ _ctk_size_request_cache_commit (SizeRequestCache *cache,
       /* If not found, pull a new size from the cache, the returned size cache
        * will immediately be used to cache the new computed size so we go ahead
        * and increment the last_cached_request right away */
-      if (n_sizes < GTK_SIZE_REQUEST_CACHED_SIZES)
+      if (n_sizes < CTK_SIZE_REQUEST_CACHED_SIZES)
 	{
 	  cache->flags[orientation].n_cached_requests++;
 	  cache->flags[orientation].last_cached_request = cache->flags[orientation].n_cached_requests - 1;
 	}
       else
 	{
-	  if (++cache->flags[orientation].last_cached_request == GTK_SIZE_REQUEST_CACHED_SIZES)
+	  if (++cache->flags[orientation].last_cached_request == CTK_SIZE_REQUEST_CACHED_SIZES)
 	    cache->flags[orientation].last_cached_request = 0;
 	}
 
       if (cache->requests_x == NULL)
-	cache->requests_x = g_slice_alloc0 (sizeof (SizeRequestX *) * GTK_SIZE_REQUEST_CACHED_SIZES);
+	cache->requests_x = g_slice_alloc0 (sizeof (SizeRequestX *) * CTK_SIZE_REQUEST_CACHED_SIZES);
 
       if (cache->requests_x[cache->flags[orientation].last_cached_request] == NULL)
 	cache->requests_x[cache->flags[orientation].last_cached_request] = g_slice_new (SizeRequestX);
@@ -178,19 +178,19 @@ _ctk_size_request_cache_commit (SizeRequestCache *cache,
       /* If not found, pull a new size from the cache, the returned size cache
        * will immediately be used to cache the new computed size so we go ahead
        * and increment the last_cached_request right away */
-      if (n_sizes < GTK_SIZE_REQUEST_CACHED_SIZES)
+      if (n_sizes < CTK_SIZE_REQUEST_CACHED_SIZES)
 	{
 	  cache->flags[orientation].n_cached_requests++;
 	  cache->flags[orientation].last_cached_request = cache->flags[orientation].n_cached_requests - 1;
 	}
       else
 	{
-	  if (++cache->flags[orientation].last_cached_request == GTK_SIZE_REQUEST_CACHED_SIZES)
+	  if (++cache->flags[orientation].last_cached_request == CTK_SIZE_REQUEST_CACHED_SIZES)
 	    cache->flags[orientation].last_cached_request = 0;
 	}
 
       if (cache->requests_y == NULL)
-	cache->requests_y = g_slice_alloc0 (sizeof (SizeRequestY *) * GTK_SIZE_REQUEST_CACHED_SIZES);
+	cache->requests_y = g_slice_alloc0 (sizeof (SizeRequestY *) * CTK_SIZE_REQUEST_CACHED_SIZES);
 
       if (cache->requests_y[cache->flags[orientation].last_cached_request] == NULL)
 	cache->requests_y[cache->flags[orientation].last_cached_request] = g_slice_new (SizeRequestY);
@@ -219,7 +219,7 @@ _ctk_size_request_cache_lookup (SizeRequestCache *cache,
 				gint             *minimum_baseline,
 				gint             *natural_baseline)
 {
-  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+  if (orientation == CTK_ORIENTATION_HORIZONTAL)
     {
       CachedSizeX *result = NULL;
 

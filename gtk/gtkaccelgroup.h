@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_ACCEL_GROUP_H__
-#define __GTK_ACCEL_GROUP_H__
+#ifndef __CTK_ACCEL_GROUP_H__
+#define __CTK_ACCEL_GROUP_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -37,28 +37,28 @@ G_BEGIN_DECLS
 
 
 /* --- type macros --- */
-#define GTK_TYPE_ACCEL_GROUP              (ctk_accel_group_get_type ())
-#define GTK_ACCEL_GROUP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GTK_TYPE_ACCEL_GROUP, GtkAccelGroup))
-#define GTK_ACCEL_GROUP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ACCEL_GROUP, GtkAccelGroupClass))
-#define GTK_IS_ACCEL_GROUP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GTK_TYPE_ACCEL_GROUP))
-#define GTK_IS_ACCEL_GROUP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ACCEL_GROUP))
-#define GTK_ACCEL_GROUP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ACCEL_GROUP, GtkAccelGroupClass))
+#define CTK_TYPE_ACCEL_GROUP              (ctk_accel_group_get_type ())
+#define CTK_ACCEL_GROUP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CTK_TYPE_ACCEL_GROUP, GtkAccelGroup))
+#define CTK_ACCEL_GROUP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ACCEL_GROUP, GtkAccelGroupClass))
+#define CTK_IS_ACCEL_GROUP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CTK_TYPE_ACCEL_GROUP))
+#define CTK_IS_ACCEL_GROUP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ACCEL_GROUP))
+#define CTK_ACCEL_GROUP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ACCEL_GROUP, GtkAccelGroupClass))
 
 
 /* --- accel flags --- */
 /**
  * GtkAccelFlags:
- * @GTK_ACCEL_VISIBLE: Accelerator is visible
- * @GTK_ACCEL_LOCKED: Accelerator not removable
- * @GTK_ACCEL_MASK: Mask
+ * @CTK_ACCEL_VISIBLE: Accelerator is visible
+ * @CTK_ACCEL_LOCKED: Accelerator not removable
+ * @CTK_ACCEL_MASK: Mask
  *
  * Accelerator flags used with ctk_accel_group_connect().
  */
 typedef enum
 {
-  GTK_ACCEL_VISIBLE        = 1 << 0,
-  GTK_ACCEL_LOCKED         = 1 << 1,
-  GTK_ACCEL_MASK           = 0x07
+  CTK_ACCEL_VISIBLE        = 1 << 0,
+  CTK_ACCEL_LOCKED         = 1 << 1,
+  CTK_ACCEL_MASK           = 0x07
 } GtkAccelFlags;
 
 
@@ -246,4 +246,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkAccelGroup, g_object_unref)
 
 G_END_DECLS
 
-#endif /* __GTK_ACCEL_GROUP_H__ */
+#endif /* __CTK_ACCEL_GROUP_H__ */

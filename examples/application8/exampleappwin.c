@@ -22,7 +22,7 @@ struct _ExampleAppWindowPrivate
   GtkWidget *words;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, GTK_TYPE_APPLICATION_WINDOW);
+G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, CTK_TYPE_APPLICATION_WINDOW);
 
 static void
 search_text_changed (GtkEntry *entry)
@@ -40,20 +40,20 @@ search_text_changed (GtkEntry *entry)
   if (text[0] == '\0')
     return;
 
-  win = EXAMPLE_APP_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (entry)));
+  win = EXAMPLE_APP_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (entry)));
   priv = example_app_window_get_instance_private (win);
 
-  tab = ctk_stack_get_visible_child (GTK_STACK (priv->stack));
-  view = ctk_bin_get_child (GTK_BIN (tab));
-  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+  tab = ctk_stack_get_visible_child (CTK_STACK (priv->stack));
+  view = ctk_bin_get_child (CTK_BIN (tab));
+  buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
   /* Very simple-minded search implementation */
   ctk_text_buffer_get_start_iter (buffer, &start);
-  if (ctk_text_iter_forward_search (&start, text, GTK_TEXT_SEARCH_CASE_INSENSITIVE,
+  if (ctk_text_iter_forward_search (&start, text, CTK_TEXT_SEARCH_CASE_INSENSITIVE,
                                     &match_start, &match_end, NULL))
     {
       ctk_text_buffer_select_range (buffer, &match_start, &match_end);
-      ctk_text_view_scroll_to_iter (GTK_TEXT_VIEW (view), &match_start,
+      ctk_text_view_scroll_to_iter (CTK_TEXT_VIEW (view), &match_start,
                                     0.0, FALSE, 0.0, 0.0);
     }
 }
@@ -68,7 +68,7 @@ find_word (GtkButton        *button,
   priv = example_app_window_get_instance_private (win);
 
   word = ctk_button_get_label (button);
-  ctk_entry_set_text (GTK_ENTRY (priv->searchentry), word);
+  ctk_entry_set_text (CTK_ENTRY (priv->searchentry), word);
 }
 
 static void
@@ -85,13 +85,13 @@ update_words (ExampleAppWindow *win)
 
   priv = example_app_window_get_instance_private (win);
 
-  tab = ctk_stack_get_visible_child (GTK_STACK (priv->stack));
+  tab = ctk_stack_get_visible_child (CTK_STACK (priv->stack));
 
   if (tab == NULL)
     return;
 
-  view = ctk_bin_get_child (GTK_BIN (tab));
-  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+  view = ctk_bin_get_child (CTK_BIN (tab));
+  buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
   strings = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
 
@@ -113,9 +113,9 @@ update_words (ExampleAppWindow *win)
     }
 
 done:
-  children = ctk_container_get_children (GTK_CONTAINER (priv->words));
+  children = ctk_container_get_children (CTK_CONTAINER (priv->words));
   for (l = children; l; l = l->next)
-    ctk_container_remove (GTK_CONTAINER (priv->words), GTK_WIDGET (l->data));
+    ctk_container_remove (CTK_CONTAINER (priv->words), CTK_WIDGET (l->data));
   g_list_free (children);
 
   g_hash_table_iter_init (&iter, strings);
@@ -125,7 +125,7 @@ done:
       g_signal_connect (row, "clicked",
                         G_CALLBACK (find_word), win);
       ctk_widget_show (row);
-      ctk_container_add (GTK_CONTAINER (priv->words), row);
+      ctk_container_add (CTK_CONTAINER (priv->words), row);
     }
 
   g_hash_table_unref (strings);
@@ -138,13 +138,13 @@ visible_child_changed (GObject    *stack,
   ExampleAppWindow *win;
   ExampleAppWindowPrivate *priv;
 
-  if (ctk_widget_in_destruction (GTK_WIDGET (stack)))
+  if (ctk_widget_in_destruction (CTK_WIDGET (stack)))
     return;
 
-  win = EXAMPLE_APP_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (stack)));
+  win = EXAMPLE_APP_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (stack)));
 
   priv = example_app_window_get_instance_private (win);
-  ctk_search_bar_set_search_mode (GTK_SEARCH_BAR (priv->searchbar), FALSE);
+  ctk_search_bar_set_search_mode (CTK_SEARCH_BAR (priv->searchbar), FALSE);
   update_words (win);
 }
 
@@ -165,7 +165,7 @@ example_app_window_init (ExampleAppWindow *win)
   GAction *action;
 
   priv = example_app_window_get_instance_private (win);
-  ctk_widget_init_template (GTK_WIDGET (win));
+  ctk_widget_init_template (CTK_WIDGET (win));
   priv->settings = g_settings_new ("org.gtk.exampleapp");
 
   g_settings_bind (priv->settings, "transition",
@@ -185,7 +185,7 @@ example_app_window_init (ExampleAppWindow *win)
 
   builder = ctk_builder_new_from_resource ("/org/gtk/exampleapp/gears-menu.ui");
   menu = G_MENU_MODEL (ctk_builder_get_object (builder, "menu"));
-  ctk_menu_button_set_menu_model (GTK_MENU_BUTTON (priv->gears), menu);
+  ctk_menu_button_set_menu_model (CTK_MENU_BUTTON (priv->gears), menu);
   g_object_unref (builder);
 
   action = g_settings_create_action (priv->settings, "show-words");
@@ -212,19 +212,19 @@ example_app_window_class_init (ExampleAppWindowClass *class)
 {
   G_OBJECT_CLASS (class)->dispose = example_app_window_dispose;
 
-  ctk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
+  ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (class),
                                                "/org/gtk/exampleapp/window.ui");
 
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, stack);
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, search);
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, searchbar);
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, searchentry);
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, gears);
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, words);
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, sidebar);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, stack);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, search);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, searchbar);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, searchentry);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, gears);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, words);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, sidebar);
 
-  ctk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), search_text_changed);
-  ctk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), visible_child_changed);
+  ctk_widget_class_bind_template_callback (CTK_WIDGET_CLASS (class), search_text_changed);
+  ctk_widget_class_bind_template_callback (CTK_WIDGET_CLASS (class), visible_child_changed);
 
 }
 
@@ -255,13 +255,13 @@ example_app_window_open (ExampleAppWindow *win,
   ctk_widget_set_hexpand (scrolled, TRUE);
   ctk_widget_set_vexpand (scrolled, TRUE);
   view = ctk_text_view_new ();
-  ctk_text_view_set_editable (GTK_TEXT_VIEW (view), FALSE);
-  ctk_text_view_set_cursor_visible (GTK_TEXT_VIEW (view), FALSE);
+  ctk_text_view_set_editable (CTK_TEXT_VIEW (view), FALSE);
+  ctk_text_view_set_cursor_visible (CTK_TEXT_VIEW (view), FALSE);
   ctk_widget_show (view);
-  ctk_container_add (GTK_CONTAINER (scrolled), view);
-  ctk_stack_add_titled (GTK_STACK (priv->stack), scrolled, basename, basename);
+  ctk_container_add (CTK_CONTAINER (scrolled), view);
+  ctk_stack_add_titled (CTK_STACK (priv->stack), scrolled, basename, basename);
 
-  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+  buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
   if (g_file_load_contents (file, NULL, &contents, &length, NULL, NULL))
     {

@@ -68,9 +68,9 @@ _ctk_style_animation_advance (GtkStyleAnimation    *animation,
 {
   GtkStyleAnimationClass *klass;
 
-  g_return_val_if_fail (GTK_IS_STYLE_ANIMATION (animation), NULL);
+  g_return_val_if_fail (CTK_IS_STYLE_ANIMATION (animation), NULL);
 
-  klass = GTK_STYLE_ANIMATION_GET_CLASS (animation);
+  klass = CTK_STYLE_ANIMATION_GET_CLASS (animation);
 
   return klass->advance (animation, timestamp);
 }
@@ -81,10 +81,10 @@ _ctk_style_animation_apply_values (GtkStyleAnimation    *animation,
 {
   GtkStyleAnimationClass *klass;
 
-  g_return_if_fail (GTK_IS_STYLE_ANIMATION (animation));
-  g_return_if_fail (GTK_IS_CSS_ANIMATED_STYLE (style));
+  g_return_if_fail (CTK_IS_STYLE_ANIMATION (animation));
+  g_return_if_fail (CTK_IS_CSS_ANIMATED_STYLE (style));
 
-  klass = GTK_STYLE_ANIMATION_GET_CLASS (animation);
+  klass = CTK_STYLE_ANIMATION_GET_CLASS (animation);
 
   klass->apply_values (animation, style);
 }
@@ -94,9 +94,9 @@ _ctk_style_animation_is_finished (GtkStyleAnimation *animation)
 {
   GtkStyleAnimationClass *klass;
 
-  g_return_val_if_fail (GTK_IS_STYLE_ANIMATION (animation), TRUE);
+  g_return_val_if_fail (CTK_IS_STYLE_ANIMATION (animation), TRUE);
 
-  klass = GTK_STYLE_ANIMATION_GET_CLASS (animation);
+  klass = CTK_STYLE_ANIMATION_GET_CLASS (animation);
 
   return klass->is_finished (animation);
 }
@@ -117,9 +117,9 @@ _ctk_style_animation_is_static (GtkStyleAnimation *animation)
 {
   GtkStyleAnimationClass *klass;
 
-  g_return_val_if_fail (GTK_IS_STYLE_ANIMATION (animation), TRUE);
+  g_return_val_if_fail (CTK_IS_STYLE_ANIMATION (animation), TRUE);
 
-  klass = GTK_STYLE_ANIMATION_GET_CLASS (animation);
+  klass = CTK_STYLE_ANIMATION_GET_CLASS (animation);
 
   return klass->is_static (animation);
 }

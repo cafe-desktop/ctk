@@ -24,7 +24,7 @@
 #include <string.h>
 
 struct _GtkCssValue {
-  GTK_CSS_VALUE_BASE
+  CTK_CSS_VALUE_BASE
   guint         n_values;
   GtkCssValue  *values[1];
 };
@@ -149,7 +149,7 @@ ctk_css_array_value_create_default_transition_value (guint property_id)
 {
   switch (property_id)
     {
-    case GTK_CSS_PROPERTY_BACKGROUND_IMAGE:
+    case CTK_CSS_PROPERTY_BACKGROUND_IMAGE:
       return _ctk_css_image_value_new (NULL);
     default:
       g_return_val_if_reached (NULL);
@@ -231,71 +231,71 @@ ctk_css_value_array_transition (GtkCssValue *start,
 {
   switch (property_id)
     {
-    case GTK_CSS_PROPERTY_BACKGROUND_CLIP:
-    case GTK_CSS_PROPERTY_BACKGROUND_ORIGIN:
-    case GTK_CSS_PROPERTY_BACKGROUND_SIZE:
-    case GTK_CSS_PROPERTY_BACKGROUND_POSITION:
-    case GTK_CSS_PROPERTY_BACKGROUND_REPEAT:
+    case CTK_CSS_PROPERTY_BACKGROUND_CLIP:
+    case CTK_CSS_PROPERTY_BACKGROUND_ORIGIN:
+    case CTK_CSS_PROPERTY_BACKGROUND_SIZE:
+    case CTK_CSS_PROPERTY_BACKGROUND_POSITION:
+    case CTK_CSS_PROPERTY_BACKGROUND_REPEAT:
       return ctk_css_value_array_transition_repeat (start, end, property_id, progress);
-    case GTK_CSS_PROPERTY_BACKGROUND_IMAGE:
+    case CTK_CSS_PROPERTY_BACKGROUND_IMAGE:
       return ctk_css_value_array_transition_extend (start, end, property_id, progress);
-    case GTK_CSS_PROPERTY_COLOR:
-    case GTK_CSS_PROPERTY_FONT_SIZE:
-    case GTK_CSS_PROPERTY_BACKGROUND_COLOR:
-    case GTK_CSS_PROPERTY_FONT_FAMILY:
-    case GTK_CSS_PROPERTY_FONT_STYLE:
-    case GTK_CSS_PROPERTY_FONT_VARIANT:
-    case GTK_CSS_PROPERTY_FONT_WEIGHT:
-    case GTK_CSS_PROPERTY_TEXT_SHADOW:
-    case GTK_CSS_PROPERTY_ICON_SHADOW:
-    case GTK_CSS_PROPERTY_BOX_SHADOW:
-    case GTK_CSS_PROPERTY_MARGIN_TOP:
-    case GTK_CSS_PROPERTY_MARGIN_LEFT:
-    case GTK_CSS_PROPERTY_MARGIN_BOTTOM:
-    case GTK_CSS_PROPERTY_MARGIN_RIGHT:
-    case GTK_CSS_PROPERTY_PADDING_TOP:
-    case GTK_CSS_PROPERTY_PADDING_LEFT:
-    case GTK_CSS_PROPERTY_PADDING_BOTTOM:
-    case GTK_CSS_PROPERTY_PADDING_RIGHT:
-    case GTK_CSS_PROPERTY_BORDER_TOP_STYLE:
-    case GTK_CSS_PROPERTY_BORDER_TOP_WIDTH:
-    case GTK_CSS_PROPERTY_BORDER_LEFT_STYLE:
-    case GTK_CSS_PROPERTY_BORDER_LEFT_WIDTH:
-    case GTK_CSS_PROPERTY_BORDER_BOTTOM_STYLE:
-    case GTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH:
-    case GTK_CSS_PROPERTY_BORDER_RIGHT_STYLE:
-    case GTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH:
-    case GTK_CSS_PROPERTY_BORDER_TOP_LEFT_RADIUS:
-    case GTK_CSS_PROPERTY_BORDER_TOP_RIGHT_RADIUS:
-    case GTK_CSS_PROPERTY_BORDER_BOTTOM_RIGHT_RADIUS:
-    case GTK_CSS_PROPERTY_BORDER_BOTTOM_LEFT_RADIUS:
-    case GTK_CSS_PROPERTY_OUTLINE_STYLE:
-    case GTK_CSS_PROPERTY_OUTLINE_WIDTH:
-    case GTK_CSS_PROPERTY_OUTLINE_OFFSET:
-    case GTK_CSS_PROPERTY_OUTLINE_TOP_LEFT_RADIUS:
-    case GTK_CSS_PROPERTY_OUTLINE_TOP_RIGHT_RADIUS:
-    case GTK_CSS_PROPERTY_OUTLINE_BOTTOM_RIGHT_RADIUS:
-    case GTK_CSS_PROPERTY_OUTLINE_BOTTOM_LEFT_RADIUS:
-    case GTK_CSS_PROPERTY_BORDER_TOP_COLOR:
-    case GTK_CSS_PROPERTY_BORDER_RIGHT_COLOR:
-    case GTK_CSS_PROPERTY_BORDER_BOTTOM_COLOR:
-    case GTK_CSS_PROPERTY_BORDER_LEFT_COLOR:
-    case GTK_CSS_PROPERTY_OUTLINE_COLOR:
-    case GTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE:
-    case GTK_CSS_PROPERTY_BORDER_IMAGE_REPEAT:
-    case GTK_CSS_PROPERTY_BORDER_IMAGE_SLICE:
-    case GTK_CSS_PROPERTY_BORDER_IMAGE_WIDTH:
-    case GTK_CSS_PROPERTY_ENGINE:
+    case CTK_CSS_PROPERTY_COLOR:
+    case CTK_CSS_PROPERTY_FONT_SIZE:
+    case CTK_CSS_PROPERTY_BACKGROUND_COLOR:
+    case CTK_CSS_PROPERTY_FONT_FAMILY:
+    case CTK_CSS_PROPERTY_FONT_STYLE:
+    case CTK_CSS_PROPERTY_FONT_VARIANT:
+    case CTK_CSS_PROPERTY_FONT_WEIGHT:
+    case CTK_CSS_PROPERTY_TEXT_SHADOW:
+    case CTK_CSS_PROPERTY_ICON_SHADOW:
+    case CTK_CSS_PROPERTY_BOX_SHADOW:
+    case CTK_CSS_PROPERTY_MARGIN_TOP:
+    case CTK_CSS_PROPERTY_MARGIN_LEFT:
+    case CTK_CSS_PROPERTY_MARGIN_BOTTOM:
+    case CTK_CSS_PROPERTY_MARGIN_RIGHT:
+    case CTK_CSS_PROPERTY_PADDING_TOP:
+    case CTK_CSS_PROPERTY_PADDING_LEFT:
+    case CTK_CSS_PROPERTY_PADDING_BOTTOM:
+    case CTK_CSS_PROPERTY_PADDING_RIGHT:
+    case CTK_CSS_PROPERTY_BORDER_TOP_STYLE:
+    case CTK_CSS_PROPERTY_BORDER_TOP_WIDTH:
+    case CTK_CSS_PROPERTY_BORDER_LEFT_STYLE:
+    case CTK_CSS_PROPERTY_BORDER_LEFT_WIDTH:
+    case CTK_CSS_PROPERTY_BORDER_BOTTOM_STYLE:
+    case CTK_CSS_PROPERTY_BORDER_BOTTOM_WIDTH:
+    case CTK_CSS_PROPERTY_BORDER_RIGHT_STYLE:
+    case CTK_CSS_PROPERTY_BORDER_RIGHT_WIDTH:
+    case CTK_CSS_PROPERTY_BORDER_TOP_LEFT_RADIUS:
+    case CTK_CSS_PROPERTY_BORDER_TOP_RIGHT_RADIUS:
+    case CTK_CSS_PROPERTY_BORDER_BOTTOM_RIGHT_RADIUS:
+    case CTK_CSS_PROPERTY_BORDER_BOTTOM_LEFT_RADIUS:
+    case CTK_CSS_PROPERTY_OUTLINE_STYLE:
+    case CTK_CSS_PROPERTY_OUTLINE_WIDTH:
+    case CTK_CSS_PROPERTY_OUTLINE_OFFSET:
+    case CTK_CSS_PROPERTY_OUTLINE_TOP_LEFT_RADIUS:
+    case CTK_CSS_PROPERTY_OUTLINE_TOP_RIGHT_RADIUS:
+    case CTK_CSS_PROPERTY_OUTLINE_BOTTOM_RIGHT_RADIUS:
+    case CTK_CSS_PROPERTY_OUTLINE_BOTTOM_LEFT_RADIUS:
+    case CTK_CSS_PROPERTY_BORDER_TOP_COLOR:
+    case CTK_CSS_PROPERTY_BORDER_RIGHT_COLOR:
+    case CTK_CSS_PROPERTY_BORDER_BOTTOM_COLOR:
+    case CTK_CSS_PROPERTY_BORDER_LEFT_COLOR:
+    case CTK_CSS_PROPERTY_OUTLINE_COLOR:
+    case CTK_CSS_PROPERTY_BORDER_IMAGE_SOURCE:
+    case CTK_CSS_PROPERTY_BORDER_IMAGE_REPEAT:
+    case CTK_CSS_PROPERTY_BORDER_IMAGE_SLICE:
+    case CTK_CSS_PROPERTY_BORDER_IMAGE_WIDTH:
+    case CTK_CSS_PROPERTY_ENGINE:
     default:
       /* keep all values that are not arrays here, so we get a warning if we ever turn them
        * into arrays and start animating them. */
       g_warning ("Don't know how to transition arrays for property '%s'", 
-                 _ctk_style_property_get_name (GTK_STYLE_PROPERTY (_ctk_css_style_property_lookup_by_id (property_id))));
-    case GTK_CSS_PROPERTY_TRANSITION_PROPERTY:
-    case GTK_CSS_PROPERTY_TRANSITION_DURATION:
-    case GTK_CSS_PROPERTY_TRANSITION_TIMING_FUNCTION:
-    case GTK_CSS_PROPERTY_TRANSITION_DELAY:
-    case GTK_CSS_PROPERTY_GTK_KEY_BINDINGS:
+                 _ctk_style_property_get_name (CTK_STYLE_PROPERTY (_ctk_css_style_property_lookup_by_id (property_id))));
+    case CTK_CSS_PROPERTY_TRANSITION_PROPERTY:
+    case CTK_CSS_PROPERTY_TRANSITION_DURATION:
+    case CTK_CSS_PROPERTY_TRANSITION_TIMING_FUNCTION:
+    case CTK_CSS_PROPERTY_TRANSITION_DELAY:
+    case CTK_CSS_PROPERTY_CTK_KEY_BINDINGS:
       return NULL;
     }
 }
@@ -320,7 +320,7 @@ ctk_css_value_array_print (const GtkCssValue *value,
     }
 }
 
-static const GtkCssValueClass GTK_CSS_VALUE_ARRAY = {
+static const GtkCssValueClass CTK_CSS_VALUE_ARRAY = {
   ctk_css_value_array_free,
   ctk_css_value_array_compute,
   ctk_css_value_array_equal,
@@ -345,7 +345,7 @@ _ctk_css_array_value_new_from_array (GtkCssValue **values,
   g_return_val_if_fail (values != NULL, NULL);
   g_return_val_if_fail (n_values > 0, NULL);
          
-  result = _ctk_css_value_alloc (&GTK_CSS_VALUE_ARRAY, sizeof (GtkCssValue) + sizeof (GtkCssValue *) * (n_values - 1));
+  result = _ctk_css_value_alloc (&CTK_CSS_VALUE_ARRAY, sizeof (GtkCssValue) + sizeof (GtkCssValue *) * (n_values - 1));
   result->n_values = n_values;
   memcpy (&result->values[0], values, sizeof (GtkCssValue *) * n_values);
             
@@ -384,7 +384,7 @@ _ctk_css_array_value_get_nth (const GtkCssValue *value,
                               guint              i)
 {
   g_return_val_if_fail (value != NULL, NULL);
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_ARRAY, NULL);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_ARRAY, NULL);
   g_return_val_if_fail (value->n_values > 0, NULL);
 
   return value->values[i % value->n_values];
@@ -394,7 +394,7 @@ guint
 _ctk_css_array_value_get_n_values (const GtkCssValue *value)
 {
   g_return_val_if_fail (value != NULL, 0);
-  g_return_val_if_fail (value->class == &GTK_CSS_VALUE_ARRAY, 0);
+  g_return_val_if_fail (value->class == &CTK_CSS_VALUE_ARRAY, 0);
 
   return value->n_values;
 }

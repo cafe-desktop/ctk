@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_SHORTCUTS_SHORTCUT_PRIVATE_H__
-#define __GTK_SHORTCUTS_SHORTCUT_PRIVATE_H__
+#ifndef __CTK_SHORTCUTS_SHORTCUT_PRIVATE_H__
+#define __CTK_SHORTCUTS_SHORTCUT_PRIVATE_H__
 
 #include "gtkshortcutsshortcut.h"
 
@@ -34,4 +34,4 @@ void ctk_shortcuts_shortcut_update_accel (GtkShortcutsShortcut *self,
 
 G_END_DECLS
 
-#endif /* __GTK_sHORTCUTS_SHORTCUT_PRIVATE_H__ */
+#endif /* __CTK_sHORTCUTS_SHORTCUT_PRIVATE_H__ */

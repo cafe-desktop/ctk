@@ -111,8 +111,8 @@
     But instead of casting <varname>window</varname> via
     <varname>(GtkWindow*)</varname>, 
     <varname>window</varname> can be cast using the macro
-    <varname>GTK_WINDOW()</varname>.
-    <varname>GTK_WINDOW()</varname> will check if the 
+    <varname>CTK_WINDOW()</varname>.
+    <varname>CTK_WINDOW()</varname> will check if the 
     pointer is an instance of the GtkWindow class, before casting, and emit a
     warning if the check fails. More information about this convention 
     can be found 
@@ -438,13 +438,13 @@
 static void
 example_app_window_init (ExampleAppWindow *win)
 {
-  ctk_widget_init_template (GTK_WIDGET (win));
+  ctk_widget_init_template (CTK_WIDGET (win));
 }
 
 static void
 example_app_window_class_init (ExampleAppWindowClass *class)
 {
-  ctk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
+  ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (class),
                                                "/org/gtk/exampleapp/window.ui");
 }
 
@@ -504,16 +504,16 @@ struct _ExampleAppWindowPrivate
   GtkWidget *stack;
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, GTK_TYPE_APPLICATION_WINDOW);
+G_DEFINE_TYPE_WITH_PRIVATE(ExampleAppWindow, example_app_window, CTK_TYPE_APPLICATION_WINDOW);
 
 ...
 
 static void
 example_app_window_class_init (ExampleAppWindowClass *class)
 {
-  ctk_widget_class_set_template_from_resource (GTK_WIDGET_CLASS (class),
+  ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (class),
                                                "/org/gtk/exampleapp/window.ui");
-  ctk_widget_class_bind_template_child_private (GTK_WIDGET_CLASS (class), ExampleAppWindow, stack);
+  ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppWindow, stack);
 }
 
 ...
@@ -547,17 +547,17 @@ example_app_window_open (ExampleAppWindow *win,
   ctk_widget_set_hexpand (scrolled, TRUE);
   ctk_widget_set_vexpand (scrolled, TRUE);
   view = ctk_text_view_new ();
-  ctk_text_view_set_editable (GTK_TEXT_VIEW (view), FALSE);
-  ctk_text_view_set_cursor_visible (GTK_TEXT_VIEW (view), FALSE);
+  ctk_text_view_set_editable (CTK_TEXT_VIEW (view), FALSE);
+  ctk_text_view_set_cursor_visible (CTK_TEXT_VIEW (view), FALSE);
   ctk_widget_show (view);
-  ctk_container_add (GTK_CONTAINER (scrolled), view);
-  ctk_stack_add_titled (GTK_STACK (priv->stack), scrolled, basename, basename);
+  ctk_container_add (CTK_CONTAINER (scrolled), view);
+  ctk_stack_add_titled (CTK_STACK (priv->stack), scrolled, basename, basename);
 
   if (g_file_load_contents (file, NULL, &contents, &length, NULL, NULL))
     {
       GtkTextBuffer *buffer;
 
-      buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+      buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
       ctk_text_buffer_set_text (buffer, contents, length);
       g_free (contents);
     }
@@ -646,13 +646,13 @@ example_app_startup (GApplication *app)
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),
                                    app);
-  ctk_application_set_accels_for_action (GTK_APPLICATION (app),
+  ctk_application_set_accels_for_action (CTK_APPLICATION (app),
                                          "app.quit",
                                          quit_accels);
 
   builder = ctk_builder_new_from_resource ("/org/gtk/exampleapp/app-menu.ui");
   app_menu = G_MENU_MODEL (ctk_builder_get_object (builder, "appmenu"));
-  ctk_application_set_app_menu (GTK_APPLICATION (app), app_menu);
+  ctk_application_set_app_menu (CTK_APPLICATION (app), app_menu);
   g_object_unref (builder);
 }
 
@@ -721,7 +721,7 @@ example_app_window_init (ExampleAppWindow *win)
   ExampleAppWindowPrivate *priv;
 
   priv = example_app_window_get_instance_private (win);
-  ctk_widget_init_template (GTK_WIDGET (win));
+  ctk_widget_init_template (CTK_WIDGET (win));
   priv->settings = g_settings_new ("org.gtk.exampleapp");
 
   g_settings_bind (priv->settings, "transition",
@@ -773,9 +773,9 @@ preferences_activated (GSimpleAction *action,
   ExampleAppPrefs *prefs;
   GtkWindow *win;
 
-  win = ctk_application_get_active_window (GTK_APPLICATION (app));
+  win = ctk_application_get_active_window (CTK_APPLICATION (app));
   prefs = example_app_prefs_new (EXAMPLE_APP_WINDOW (win));
-  ctk_window_present (GTK_WINDOW (prefs));
+  ctk_window_present (CTK_WINDOW (prefs));
 }
 
 ...
@@ -837,17 +837,17 @@ search_text_changed (GtkEntry         *entry,
 
   priv = example_app_window_get_instance_private (win);
 
-  tab = ctk_stack_get_visible_child (GTK_STACK (priv->stack));
-  view = ctk_bin_get_child (GTK_BIN (tab));
-  buffer = ctk_text_view_get_buffer (GTK_TEXT_VIEW (view));
+  tab = ctk_stack_get_visible_child (CTK_STACK (priv->stack));
+  view = ctk_bin_get_child (CTK_BIN (tab));
+  buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (view));
 
   /* Very simple-minded search implementation */
   ctk_text_buffer_get_start_iter (buffer, &start);
-  if (ctk_text_iter_forward_search (&start, text, GTK_TEXT_SEARCH_CASE_INSENSITIVE,
+  if (ctk_text_iter_forward_search (&start, text, CTK_TEXT_SEARCH_CASE_INSENSITIVE,
                                     &match_start, &match_end, NULL))
     {
       ctk_text_buffer_select_range (buffer, &match_start, &match_end);
-      ctk_text_view_scroll_to_iter (GTK_TEXT_VIEW (view), &match_start,
+      ctk_text_view_scroll_to_iter (CTK_TEXT_VIEW (view), &match_start,
                                     0.0, FALSE, 0.0, 0.0);
     }
 }
@@ -858,7 +858,7 @@ example_app_window_init (ExampleAppWindow *win)
 
 ...
 
-  ctk_widget_class_bind_template_callback (GTK_WIDGET_CLASS (class), search_text_changed);
+  ctk_widget_class_bind_template_callback (CTK_WIDGET_CLASS (class), search_text_changed);
 
 ...
 
@@ -916,7 +916,7 @@ example_app_window_init (ExampleAppWindow *win)
 
   builder = ctk_builder_new_from_resource ("/org/gtk/exampleapp/gears-menu.ui");
   menu = G_MENU_MODEL (ctk_builder_get_object (builder, "menu"));
-  ctk_menu_button_set_menu_model (GTK_MENU_BUTTON (priv->gears), menu);
+  ctk_menu_button_set_menu_model (CTK_MENU_BUTTON (priv->gears), menu);
   g_object_unref (builder);
 
   action = g_settings_create_action (priv->settings, "show-words");

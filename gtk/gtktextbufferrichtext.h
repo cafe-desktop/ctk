@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TEXT_BUFFER_RICH_TEXT_H__
-#define __GTK_TEXT_BUFFER_RICH_TEXT_H__
+#ifndef __CTK_TEXT_BUFFER_RICH_TEXT_H__
+#define __CTK_TEXT_BUFFER_RICH_TEXT_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -135,4 +135,4 @@ gboolean  ctk_text_buffer_deserialize                 (GtkTextBuffer            
 
 G_END_DECLS
 
-#endif /* __GTK_TEXT_BUFFER_RICH_TEXT_H__ */
+#endif /* __CTK_TEXT_BUFFER_RICH_TEXT_H__ */

@@ -161,9 +161,9 @@ static void ctk_layout_style_updated      (GtkWidget      *widget);
 static void ctk_layout_set_hadjustment_values (GtkLayout      *layout);
 static void ctk_layout_set_vadjustment_values (GtkLayout      *layout);
 
-G_DEFINE_TYPE_WITH_CODE (GtkLayout, ctk_layout, GTK_TYPE_CONTAINER,
+G_DEFINE_TYPE_WITH_CODE (GtkLayout, ctk_layout, CTK_TYPE_CONTAINER,
                          G_ADD_PRIVATE (GtkLayout)
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_SCROLLABLE, NULL))
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_SCROLLABLE, NULL))
 
 /* Public interface
  */
@@ -185,12 +185,12 @@ ctk_layout_new (GtkAdjustment *hadjustment,
 {
   GtkLayout *layout;
 
-  layout = g_object_new (GTK_TYPE_LAYOUT,
+  layout = g_object_new (CTK_TYPE_LAYOUT,
 			 "hadjustment", hadjustment,
 			 "vadjustment", vadjustment,
 			 NULL);
 
-  return GTK_WIDGET (layout);
+  return CTK_WIDGET (layout);
 }
 
 /**
@@ -206,7 +206,7 @@ ctk_layout_new (GtkAdjustment *hadjustment,
 GdkWindow*
 ctk_layout_get_bin_window (GtkLayout *layout)
 {
-  g_return_val_if_fail (GTK_IS_LAYOUT (layout), NULL);
+  g_return_val_if_fail (CTK_IS_LAYOUT (layout), NULL);
 
   return layout->priv->bin_window;
 }
@@ -229,7 +229,7 @@ ctk_layout_get_bin_window (GtkLayout *layout)
 GtkAdjustment*
 ctk_layout_get_hadjustment (GtkLayout *layout)
 {
-  g_return_val_if_fail (GTK_IS_LAYOUT (layout), NULL);
+  g_return_val_if_fail (CTK_IS_LAYOUT (layout), NULL);
 
   return layout->priv->hadjustment;
 }
@@ -251,7 +251,7 @@ ctk_layout_get_hadjustment (GtkLayout *layout)
 GtkAdjustment*
 ctk_layout_get_vadjustment (GtkLayout *layout)
 {
-  g_return_val_if_fail (GTK_IS_LAYOUT (layout), NULL);
+  g_return_val_if_fail (CTK_IS_LAYOUT (layout), NULL);
 
   return layout->priv->vadjustment;
 }
@@ -266,7 +266,7 @@ ctk_layout_set_hadjustment_values (GtkLayout *layout)
   gdouble new_value;
   gdouble new_upper;
 
-  ctk_widget_get_allocation (GTK_WIDGET (layout), &allocation);
+  ctk_widget_get_allocation (CTK_WIDGET (layout), &allocation);
 
   old_value = ctk_adjustment_get_value (adj);
   new_upper = MAX (allocation.width, priv->width);
@@ -293,7 +293,7 @@ ctk_layout_set_vadjustment_values (GtkLayout *layout)
   gdouble new_value;
   gdouble new_upper;
 
-  ctk_widget_get_allocation (GTK_WIDGET (layout), &allocation);
+  ctk_widget_get_allocation (CTK_WIDGET (layout), &allocation);
 
   old_value = ctk_adjustment_get_value (adj);
   new_upper = MAX (allocation.height, layout->priv->height);
@@ -314,7 +314,7 @@ ctk_layout_set_vadjustment_values (GtkLayout *layout)
 static void
 ctk_layout_finalize (GObject *object)
 {
-  GtkLayout *layout = GTK_LAYOUT (object);
+  GtkLayout *layout = CTK_LAYOUT (object);
   GtkLayoutPrivate *priv = layout->priv;
 
   g_object_unref (priv->hadjustment);
@@ -368,8 +368,8 @@ void
 ctk_layout_set_hadjustment (GtkLayout     *layout,
                             GtkAdjustment *adjustment)
 {
-  g_return_if_fail (GTK_IS_LAYOUT (layout));
-  g_return_if_fail (adjustment == NULL || GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_LAYOUT (layout));
+  g_return_if_fail (adjustment == NULL || CTK_IS_ADJUSTMENT (adjustment));
 
   ctk_layout_do_set_hadjustment (layout, adjustment);
 }
@@ -419,8 +419,8 @@ void
 ctk_layout_set_vadjustment (GtkLayout     *layout,
                             GtkAdjustment *adjustment)
 {
-  g_return_if_fail (GTK_IS_LAYOUT (layout));
-  g_return_if_fail (adjustment == NULL || GTK_IS_ADJUSTMENT (adjustment));
+  g_return_if_fail (CTK_IS_LAYOUT (layout));
+  g_return_if_fail (adjustment == NULL || CTK_IS_ADJUSTMENT (adjustment));
 
   ctk_layout_do_set_vadjustment (layout, adjustment);
 }
@@ -467,8 +467,8 @@ ctk_layout_put (GtkLayout     *layout,
   GtkLayoutPrivate *priv;
   GtkLayoutChild *child;
 
-  g_return_if_fail (GTK_IS_LAYOUT (layout));
-  g_return_if_fail (GTK_IS_WIDGET (child_widget));
+  g_return_if_fail (CTK_IS_LAYOUT (layout));
+  g_return_if_fail (CTK_IS_WIDGET (child_widget));
 
   priv = layout->priv;
 
@@ -480,10 +480,10 @@ ctk_layout_put (GtkLayout     *layout,
 
   priv->children = g_list_append (priv->children, child);
 
-  if (ctk_widget_get_realized (GTK_WIDGET (layout)))
+  if (ctk_widget_get_realized (CTK_WIDGET (layout)))
     ctk_widget_set_parent_window (child->widget, priv->bin_window);
 
-  ctk_widget_set_parent (child_widget, GTK_WIDGET (layout));
+  ctk_widget_set_parent (child_widget, CTK_WIDGET (layout));
 }
 
 static void
@@ -517,7 +517,7 @@ ctk_layout_move_internal (GtkLayout       *layout,
   ctk_widget_thaw_child_notify (widget);
   
   if (ctk_widget_get_visible (widget) &&
-      ctk_widget_get_visible (GTK_WIDGET (layout)))
+      ctk_widget_get_visible (CTK_WIDGET (layout)))
     ctk_widget_queue_resize (widget);
 }
 
@@ -537,9 +537,9 @@ ctk_layout_move (GtkLayout     *layout,
 		 gint           x, 
 		 gint           y)
 {
-  g_return_if_fail (GTK_IS_LAYOUT (layout));
-  g_return_if_fail (GTK_IS_WIDGET (child_widget));
-  g_return_if_fail (ctk_widget_get_parent (child_widget) == GTK_WIDGET (layout));
+  g_return_if_fail (CTK_IS_LAYOUT (layout));
+  g_return_if_fail (CTK_IS_WIDGET (child_widget));
+  g_return_if_fail (ctk_widget_get_parent (child_widget) == CTK_WIDGET (layout));
 
   ctk_layout_move_internal (layout, child_widget, TRUE, x, TRUE, y);
 }
@@ -561,10 +561,10 @@ ctk_layout_set_size (GtkLayout     *layout,
   GtkLayoutPrivate *priv;
   GtkWidget *widget;
 
-  g_return_if_fail (GTK_IS_LAYOUT (layout));
+  g_return_if_fail (CTK_IS_LAYOUT (layout));
 
   priv = layout->priv;
-  widget = GTK_WIDGET (layout);
+  widget = CTK_WIDGET (layout);
 
   g_object_freeze_notify (G_OBJECT (layout));
   if (width != priv->width)
@@ -612,7 +612,7 @@ ctk_layout_get_size (GtkLayout *layout,
 {
   GtkLayoutPrivate *priv;
 
-  g_return_if_fail (GTK_IS_LAYOUT (layout));
+  g_return_if_fail (CTK_IS_LAYOUT (layout));
 
   priv = layout->priv;
 
@@ -650,7 +650,7 @@ ctk_layout_class_init (GtkLayoutClass *class)
                                                                 G_MININT,
                                                                 G_MAXINT,
                                                                 0,
-                                                                GTK_PARAM_READWRITE));
+                                                                CTK_PARAM_READWRITE));
 
   ctk_container_class_install_child_property (container_class,
 					      CHILD_PROP_Y,
@@ -660,7 +660,7 @@ ctk_layout_class_init (GtkLayoutClass *class)
                                                                 G_MININT,
                                                                 G_MAXINT,
                                                                 0,
-                                                                GTK_PARAM_READWRITE));
+                                                                CTK_PARAM_READWRITE));
   
   /* Scrollable interface */
   g_object_class_override_property (gobject_class, PROP_HADJUSTMENT,    "hadjustment");
@@ -676,7 +676,7 @@ ctk_layout_class_init (GtkLayoutClass *class)
 						     0,
 						     G_MAXINT,
 						     100,
-						     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   g_object_class_install_property (gobject_class,
 				   PROP_HEIGHT,
 				   g_param_spec_uint ("height",
@@ -685,7 +685,7 @@ ctk_layout_class_init (GtkLayoutClass *class)
 						     0,
 						     G_MAXINT,
 						     100,
-						     GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
+						     CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   widget_class->realize = ctk_layout_realize;
   widget_class->unrealize = ctk_layout_unrealize;
   widget_class->map = ctk_layout_map;
@@ -706,7 +706,7 @@ ctk_layout_get_property (GObject     *object,
 			 GValue      *value,
 			 GParamSpec  *pspec)
 {
-  GtkLayout *layout = GTK_LAYOUT (object);
+  GtkLayout *layout = CTK_LAYOUT (object);
   GtkLayoutPrivate *priv = layout->priv;
 
   switch (prop_id)
@@ -741,7 +741,7 @@ ctk_layout_set_property (GObject      *object,
 			 const GValue *value,
 			 GParamSpec   *pspec)
 {
-  GtkLayout *layout = GTK_LAYOUT (object);
+  GtkLayout *layout = CTK_LAYOUT (object);
   GtkLayoutPrivate *priv = layout->priv;
 
   switch (prop_id)
@@ -756,7 +756,7 @@ ctk_layout_set_property (GObject      *object,
       if (priv->hscroll_policy != g_value_get_enum (value))
         {
           priv->hscroll_policy = g_value_get_enum (value);
-          ctk_widget_queue_resize (GTK_WIDGET (layout));
+          ctk_widget_queue_resize (CTK_WIDGET (layout));
           g_object_notify_by_pspec (object, pspec);
         }
       break;
@@ -764,7 +764,7 @@ ctk_layout_set_property (GObject      *object,
       if (priv->vscroll_policy != g_value_get_enum (value))
         {
           priv->vscroll_policy = g_value_get_enum (value);
-          ctk_widget_queue_resize (GTK_WIDGET (layout));
+          ctk_widget_queue_resize (CTK_WIDGET (layout));
           g_object_notify_by_pspec (object, pspec);
         }
       break;
@@ -790,19 +790,19 @@ ctk_layout_set_child_property (GtkContainer    *container,
   switch (property_id)
     {
     case CHILD_PROP_X:
-      ctk_layout_move_internal (GTK_LAYOUT (container),
+      ctk_layout_move_internal (CTK_LAYOUT (container),
                                 child,
                                 TRUE, g_value_get_int (value),
                                 FALSE, 0);
       break;
     case CHILD_PROP_Y:
-      ctk_layout_move_internal (GTK_LAYOUT (container),
+      ctk_layout_move_internal (CTK_LAYOUT (container),
                                 child,
                                 FALSE, 0,
                                 TRUE, g_value_get_int (value));
       break;
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
 }
@@ -816,7 +816,7 @@ ctk_layout_get_child_property (GtkContainer *container,
 {
   GtkLayoutChild *layout_child;
 
-  layout_child = get_child (GTK_LAYOUT (container), child);
+  layout_child = get_child (CTK_LAYOUT (container), child);
   
   switch (property_id)
     {
@@ -827,7 +827,7 @@ ctk_layout_get_child_property (GtkContainer *container,
       g_value_set_int (value, layout_child->y);
       break;
     default:
-      GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
+      CTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID (container, property_id, pspec);
       break;
     }
 }
@@ -866,7 +866,7 @@ set_background (GtkWidget *widget)
 
   if (ctk_widget_get_realized (widget))
     {
-      priv = GTK_LAYOUT (widget)->priv;
+      priv = CTK_LAYOUT (widget)->priv;
 
       /* We still need to call ctk_style_context_set_background() here for
        * GtkLayout, since subclasses like EelCanvas depend on a background to
@@ -882,7 +882,7 @@ set_background (GtkWidget *widget)
 static void 
 ctk_layout_realize (GtkWidget *widget)
 {
-  GtkLayout *layout = GTK_LAYOUT (widget);
+  GtkLayout *layout = CTK_LAYOUT (widget);
   GtkLayoutPrivate *priv = layout->priv;
   GtkAllocation allocation;
   GdkWindow *window;
@@ -938,7 +938,7 @@ ctk_layout_realize (GtkWidget *widget)
 static void
 ctk_layout_style_updated (GtkWidget *widget)
 {
-  GTK_WIDGET_CLASS (ctk_layout_parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (ctk_layout_parent_class)->style_updated (widget);
 
   set_background (widget);
 }
@@ -946,7 +946,7 @@ ctk_layout_style_updated (GtkWidget *widget)
 static void
 ctk_layout_map (GtkWidget *widget)
 {
-  GtkLayout *layout = GTK_LAYOUT (widget);
+  GtkLayout *layout = CTK_LAYOUT (widget);
   GtkLayoutPrivate *priv = layout->priv;
   GList *tmp_list;
 
@@ -972,14 +972,14 @@ ctk_layout_map (GtkWidget *widget)
 static void 
 ctk_layout_unrealize (GtkWidget *widget)
 {
-  GtkLayout *layout = GTK_LAYOUT (widget);
+  GtkLayout *layout = CTK_LAYOUT (widget);
   GtkLayoutPrivate *priv = layout->priv;
 
   ctk_widget_unregister_window (widget, priv->bin_window);
   gdk_window_destroy (priv->bin_window);
   priv->bin_window = NULL;
 
-  GTK_WIDGET_CLASS (ctk_layout_parent_class)->unrealize (widget);
+  CTK_WIDGET_CLASS (ctk_layout_parent_class)->unrealize (widget);
 }
 
 static void
@@ -1002,7 +1002,7 @@ static void
 ctk_layout_size_allocate (GtkWidget     *widget,
 			  GtkAllocation *allocation)
 {
-  GtkLayout *layout = GTK_LAYOUT (widget);
+  GtkLayout *layout = CTK_LAYOUT (widget);
   GtkLayoutPrivate *priv = layout->priv;
   GList *tmp_list;
 
@@ -1037,11 +1037,11 @@ static gboolean
 ctk_layout_draw (GtkWidget *widget,
                  cairo_t   *cr)
 {
-  GtkLayout *layout = GTK_LAYOUT (widget);
+  GtkLayout *layout = CTK_LAYOUT (widget);
   GtkLayoutPrivate *priv = layout->priv;
 
   if (ctk_cairo_should_draw_window (cr, priv->bin_window))
-    GTK_WIDGET_CLASS (ctk_layout_parent_class)->draw (widget, cr);
+    CTK_WIDGET_CLASS (ctk_layout_parent_class)->draw (widget, cr);
 
   return FALSE;
 }
@@ -1052,14 +1052,14 @@ static void
 ctk_layout_add (GtkContainer *container,
 		GtkWidget    *widget)
 {
-  ctk_layout_put (GTK_LAYOUT (container), widget, 0, 0);
+  ctk_layout_put (CTK_LAYOUT (container), widget, 0, 0);
 }
 
 static void
 ctk_layout_remove (GtkContainer *container, 
 		   GtkWidget    *widget)
 {
-  GtkLayout *layout = GTK_LAYOUT (container);
+  GtkLayout *layout = CTK_LAYOUT (container);
   GtkLayoutPrivate *priv = layout->priv;
   GList *tmp_list;
   GtkLayoutChild *child = NULL;
@@ -1089,7 +1089,7 @@ ctk_layout_forall (GtkContainer *container,
 		   GtkCallback   callback,
 		   gpointer      callback_data)
 {
-  GtkLayout *layout = GTK_LAYOUT (container);
+  GtkLayout *layout = CTK_LAYOUT (container);
   GtkLayoutPrivate *priv = layout->priv;
   GtkLayoutChild *child;
   GList *tmp_list;
@@ -1135,7 +1135,7 @@ ctk_layout_adjustment_changed (GtkAdjustment *adjustment,
   if (priv->freeze_count)
     return;
 
-  if (ctk_widget_get_realized (GTK_WIDGET (layout)))
+  if (ctk_widget_get_realized (CTK_WIDGET (layout)))
     {
       gdk_window_move (priv->bin_window,
 		       - ctk_adjustment_get_value (priv->hadjustment),

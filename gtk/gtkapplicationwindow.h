@@ -17,10 +17,10 @@
  * Author: Ryan Lortie <desrt@desrt.ca>
  */
 
-#ifndef __GTK_APPLICATION_WINDOW_H__
-#define __GTK_APPLICATION_WINDOW_H__
+#ifndef __CTK_APPLICATION_WINDOW_H__
+#define __CTK_APPLICATION_WINDOW_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -29,17 +29,17 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_APPLICATION_WINDOW            (ctk_application_window_get_type ())
-#define GTK_APPLICATION_WINDOW(inst)           (G_TYPE_CHECK_INSTANCE_CAST ((inst), \
-                                                GTK_TYPE_APPLICATION_WINDOW, GtkApplicationWindow))
-#define GTK_APPLICATION_WINDOW_CLASS(class)    (G_TYPE_CHECK_CLASS_CAST ((class),   \
-                                                GTK_TYPE_APPLICATION_WINDOW, GtkApplicationWindowClass))
-#define GTK_IS_APPLICATION_WINDOW(inst)        (G_TYPE_CHECK_INSTANCE_TYPE ((inst), \
-                                                GTK_TYPE_APPLICATION_WINDOW))
-#define GTK_IS_APPLICATION_WINDOW_CLASS(class) (G_TYPE_CHECK_CLASS_TYPE ((class),   \
-                                                GTK_TYPE_APPLICATION_WINDOW))
-#define GTK_APPLICATION_WINDOW_GET_CLASS(inst) (G_TYPE_INSTANCE_GET_CLASS ((inst),  \
-                                                GTK_TYPE_APPLICATION_WINDOW, GtkApplicationWindowClass))
+#define CTK_TYPE_APPLICATION_WINDOW            (ctk_application_window_get_type ())
+#define CTK_APPLICATION_WINDOW(inst)           (G_TYPE_CHECK_INSTANCE_CAST ((inst), \
+                                                CTK_TYPE_APPLICATION_WINDOW, GtkApplicationWindow))
+#define CTK_APPLICATION_WINDOW_CLASS(class)    (G_TYPE_CHECK_CLASS_CAST ((class),   \
+                                                CTK_TYPE_APPLICATION_WINDOW, GtkApplicationWindowClass))
+#define CTK_IS_APPLICATION_WINDOW(inst)        (G_TYPE_CHECK_INSTANCE_TYPE ((inst), \
+                                                CTK_TYPE_APPLICATION_WINDOW))
+#define CTK_IS_APPLICATION_WINDOW_CLASS(class) (G_TYPE_CHECK_CLASS_TYPE ((class),   \
+                                                CTK_TYPE_APPLICATION_WINDOW))
+#define CTK_APPLICATION_WINDOW_GET_CLASS(inst) (G_TYPE_INSTANCE_GET_CLASS ((inst),  \
+                                                CTK_TYPE_APPLICATION_WINDOW, GtkApplicationWindowClass))
 
 typedef struct _GtkApplicationWindowPrivate GtkApplicationWindowPrivate;
 typedef struct _GtkApplicationWindowClass   GtkApplicationWindowClass;
@@ -88,4 +88,4 @@ GtkShortcutsWindow *
 
 G_END_DECLS
 
-#endif /* __GTK_APPLICATION_WINDOW_H__ */
+#endif /* __CTK_APPLICATION_WINDOW_H__ */

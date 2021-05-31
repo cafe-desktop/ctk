@@ -55,7 +55,7 @@ typedef struct
   NSObject *delegate;
 } GtkApplicationImplQuartz;
 
-G_DEFINE_TYPE (GtkApplicationImplQuartz, ctk_application_impl_quartz, GTK_TYPE_APPLICATION_IMPL)
+G_DEFINE_TYPE (GtkApplicationImplQuartz, ctk_application_impl_quartz, CTK_TYPE_APPLICATION_IMPL)
 #if MAC_OS_X_VERSION_MIN_REQUIRED >= 1060
 @interface GtkApplicationQuartzDelegate : NSObject <NSApplicationDelegate>
 #else
@@ -295,7 +295,7 @@ ctk_application_impl_quartz_inhibit (GtkApplicationImpl         *impl,
 
   quartz->inhibitors = g_slist_prepend (quartz->inhibitors, inhibitor);
 
-  if (flags & GTK_APPLICATION_INHIBIT_LOGOUT)
+  if (flags & CTK_APPLICATION_INHIBIT_LOGOUT)
     quartz->quit_inhibit++;
 
   return inhibitor->cookie;
@@ -314,7 +314,7 @@ ctk_application_impl_quartz_uninhibit (GtkApplicationImpl *impl,
 
       if (inhibitor->cookie == cookie)
         {
-          if (inhibitor->flags & GTK_APPLICATION_INHIBIT_LOGOUT)
+          if (inhibitor->flags & CTK_APPLICATION_INHIBIT_LOGOUT)
             quartz->quit_inhibit--;
           ctk_application_quartz_inhibitor_free (inhibitor);
           quartz->inhibitors = g_slist_delete_link (quartz->inhibitors, iter);
@@ -331,7 +331,7 @@ ctk_application_impl_quartz_is_inhibited (GtkApplicationImpl         *impl,
 {
   GtkApplicationImplQuartz *quartz = (GtkApplicationImplQuartz *) impl;
 
-  if (flags & GTK_APPLICATION_INHIBIT_LOGOUT)
+  if (flags & CTK_APPLICATION_INHIBIT_LOGOUT)
     return quartz->quit_inhibit > 0;
 
   return FALSE;

@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CONTAINER_ACCESSIBLE_PRIVATE_H__
-#define __GTK_CONTAINER_ACCESSIBLE_PRIVATE_H__
+#ifndef __CTK_CONTAINER_ACCESSIBLE_PRIVATE_H__
+#define __CTK_CONTAINER_ACCESSIBLE_PRIVATE_H__
 
 #include <gtk/a11y/gtkcontaineraccessible.h>
 
@@ -35,4 +35,4 @@ void            _ctk_container_accessible_remove        (GtkWidget              
 
 G_END_DECLS
 
-#endif /* __GTK_CONTAINER_ACCESSIBLE_PRIVATE_H__ */
+#endif /* __CTK_CONTAINER_ACCESSIBLE_PRIVATE_H__ */

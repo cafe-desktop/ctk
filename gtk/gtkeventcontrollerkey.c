@@ -70,12 +70,12 @@ enum {
 static guint signals[N_SIGNALS] = { 0 };
 
 G_DEFINE_TYPE (GtkEventControllerKey, ctk_event_controller_key,
-               GTK_TYPE_EVENT_CONTROLLER)
+               CTK_TYPE_EVENT_CONTROLLER)
 
 static void
 ctk_event_controller_finalize (GObject *object)
 {
-  GtkEventControllerKey *key = GTK_EVENT_CONTROLLER_KEY (object);
+  GtkEventControllerKey *key = CTK_EVENT_CONTROLLER_KEY (object);
 
   g_hash_table_destroy (key->pressed_keys);
   g_clear_object (&key->im_context);
@@ -87,7 +87,7 @@ static gboolean
 ctk_event_controller_key_handle_event (GtkEventController *controller,
                                        const GdkEvent     *event)
 {
-  GtkEventControllerKey *key = GTK_EVENT_CONTROLLER_KEY (controller);
+  GtkEventControllerKey *key = CTK_EVENT_CONTROLLER_KEY (controller);
   GdkEventType event_type = gdk_event_get_event_type (event);
   GdkModifierType state;
   guint16 keycode;
@@ -154,7 +154,7 @@ ctk_event_controller_key_handle_event (GtkEventController *controller,
 static void
 ctk_event_controller_key_class_init (GtkEventControllerKeyClass *klass)
 {
-  GtkEventControllerClass *controller_class = GTK_EVENT_CONTROLLER_CLASS (klass);
+  GtkEventControllerClass *controller_class = CTK_EVENT_CONTROLLER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = ctk_event_controller_finalize;
@@ -175,7 +175,7 @@ ctk_event_controller_key_class_init (GtkEventControllerKeyClass *klass)
    */
   signals[KEY_PRESSED] =
     g_signal_new (I_("key-pressed"),
-                  GTK_TYPE_EVENT_CONTROLLER_KEY,
+                  CTK_TYPE_EVENT_CONTROLLER_KEY,
                   G_SIGNAL_RUN_LAST,
                   0, _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__UINT_UINT_FLAGS,
@@ -197,7 +197,7 @@ ctk_event_controller_key_class_init (GtkEventControllerKeyClass *klass)
    */
   signals[KEY_RELEASED] =
     g_signal_new (I_("key-released"),
-                  GTK_TYPE_EVENT_CONTROLLER_KEY,
+                  CTK_TYPE_EVENT_CONTROLLER_KEY,
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   _ctk_marshal_VOID__UINT_UINT_FLAGS,
@@ -208,7 +208,7 @@ ctk_event_controller_key_class_init (GtkEventControllerKeyClass *klass)
 
   signals[MODIFIERS] =
     g_signal_new (I_("modifiers"),
-                  GTK_TYPE_EVENT_CONTROLLER_KEY,
+                  CTK_TYPE_EVENT_CONTROLLER_KEY,
                   G_SIGNAL_RUN_LAST,
                   0, NULL,
                   NULL,
@@ -220,21 +220,21 @@ ctk_event_controller_key_class_init (GtkEventControllerKeyClass *klass)
 
   signals[IM_UPDATE] =
     g_signal_new (I_("im-update"),
-                  GTK_TYPE_EVENT_CONTROLLER_KEY,
+                  CTK_TYPE_EVENT_CONTROLLER_KEY,
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
   signals[FOCUS_IN] =
     g_signal_new (I_("focus-in"),
-                  GTK_TYPE_EVENT_CONTROLLER_KEY,
+                  CTK_TYPE_EVENT_CONTROLLER_KEY,
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 0);
   signals[FOCUS_OUT] =
     g_signal_new (I_("focus-out"),
-                  GTK_TYPE_EVENT_CONTROLLER_KEY,
+                  CTK_TYPE_EVENT_CONTROLLER_KEY,
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   NULL,
@@ -250,9 +250,9 @@ ctk_event_controller_key_init (GtkEventControllerKey *controller)
 GtkEventController *
 ctk_event_controller_key_new (GtkWidget *widget)
 {
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
-  return g_object_new (GTK_TYPE_EVENT_CONTROLLER_KEY,
+  return g_object_new (CTK_TYPE_EVENT_CONTROLLER_KEY,
                        "widget", widget,
                        NULL);
 }
@@ -261,8 +261,8 @@ void
 ctk_event_controller_key_set_im_context (GtkEventControllerKey *controller,
                                          GtkIMContext          *im_context)
 {
-  g_return_if_fail (GTK_IS_EVENT_CONTROLLER_KEY (controller));
-  g_return_if_fail (!im_context || GTK_IS_IM_CONTEXT (im_context));
+  g_return_if_fail (CTK_IS_EVENT_CONTROLLER_KEY (controller));
+  g_return_if_fail (!im_context || CTK_IS_IM_CONTEXT (im_context));
 
   if (controller->im_context)
     ctk_im_context_reset (controller->im_context);
@@ -283,7 +283,7 @@ ctk_event_controller_key_set_im_context (GtkEventControllerKey *controller,
 GtkIMContext *
 ctk_event_controller_key_get_im_context (GtkEventControllerKey *controller)
 {
-  g_return_val_if_fail (GTK_IS_EVENT_CONTROLLER_KEY (controller), NULL);
+  g_return_val_if_fail (CTK_IS_EVENT_CONTROLLER_KEY (controller), NULL);
 
   return controller->im_context;
 }
@@ -292,8 +292,8 @@ gboolean
 ctk_event_controller_key_forward (GtkEventControllerKey *controller,
                                   GtkWidget             *widget)
 {
-  g_return_val_if_fail (GTK_IS_EVENT_CONTROLLER_KEY (controller), FALSE);
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
+  g_return_val_if_fail (CTK_IS_EVENT_CONTROLLER_KEY (controller), FALSE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
   g_return_val_if_fail (controller->current_event != NULL, FALSE);
 
   if (!ctk_widget_get_realized (widget))
@@ -310,7 +310,7 @@ ctk_event_controller_key_forward (GtkEventControllerKey *controller,
 guint
 ctk_event_controller_key_get_group (GtkEventControllerKey *controller)
 {
-  g_return_val_if_fail (GTK_IS_EVENT_CONTROLLER_KEY (controller), FALSE);
+  g_return_val_if_fail (CTK_IS_EVENT_CONTROLLER_KEY (controller), FALSE);
   g_return_val_if_fail (controller->current_event != NULL, FALSE);
 
   return controller->current_event->key.group;

@@ -103,7 +103,7 @@ icon_loaded (GObject      *object,
              GAsyncResult *result,
              gpointer      user_data)
 {
-  GtkIconInfo *info = GTK_ICON_INFO (object);
+  GtkIconInfo *info = CTK_ICON_INFO (object);
   GNSMenuItem *item = user_data;
   GError *error = NULL;
   GdkPixbuf *pixbuf;
@@ -300,7 +300,7 @@ icon_loaded (GObject      *object,
       if ([[NSScreen mainScreen] respondsToSelector:@selector(backingScaleFactor)])
         scale = roundf ([[NSScreen mainScreen] backingScaleFactor]);
 #endif
-      info = ctk_icon_theme_lookup_by_gicon_for_scale (theme, icon, ICON_SIZE, scale, GTK_ICON_LOOKUP_USE_BUILTIN);
+      info = ctk_icon_theme_lookup_by_gicon_for_scale (theme, icon, ICON_SIZE, scale, CTK_ICON_LOOKUP_USE_BUILTIN);
 
       if (info != NULL)
         {
@@ -460,7 +460,7 @@ ctk_application_impl_quartz_setup_menu (GMenuModel     *model,
   NSMenu *menu;
 
   if (model != NULL)
-    menu = [[GNSMenu alloc] initWithTitle:@"Main Menu" model:model observable:GTK_ACTION_OBSERVABLE (muxer)];
+    menu = [[GNSMenu alloc] initWithTitle:@"Main Menu" model:model observable:CTK_ACTION_OBSERVABLE (muxer)];
   else
     menu = [[NSMenu alloc] init];
 

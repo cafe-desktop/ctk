@@ -27,10 +27,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_COLOR_UTILS_H__
-#define __GTK_COLOR_UTILS_H__
+#ifndef __CTK_COLOR_UTILS_H__
+#define __CTK_COLOR_UTILS_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -48,4 +48,4 @@ void ctk_rgb_to_hsv (gdouble  r, gdouble  g, gdouble  b,
 
 G_END_DECLS
 
-#endif /* __GTK_COLOR_UTILS_H__ */
+#endif /* __CTK_COLOR_UTILS_H__ */

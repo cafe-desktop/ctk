@@ -72,11 +72,11 @@ static void
 response_cb (GtkDialog *dialog,
 	     gint       response_id)
 {
-  if (response_id == GTK_RESPONSE_OK)
+  if (response_id == CTK_RESPONSE_OK)
     {
       GSList *list;
 
-      list = ctk_file_chooser_get_uris (GTK_FILE_CHOOSER (dialog));
+      list = ctk_file_chooser_get_uris (CTK_FILE_CHOOSER (dialog));
 
       if (list)
 	{
@@ -289,7 +289,7 @@ update_preview_cb (GtkFileChooser *chooser)
       pixbuf = my_new_from_file_at_size (filename, 128, 128, &error);
       if (pixbuf)
 	{
-	  ctk_image_set_from_pixbuf (GTK_IMAGE (preview_image), pixbuf);
+	  ctk_image_set_from_pixbuf (CTK_IMAGE (preview_image), pixbuf);
 	  g_object_unref (pixbuf);
 	  ctk_widget_show (preview_image);
 	  ctk_widget_hide (preview_label);
@@ -311,7 +311,7 @@ update_preview_cb (GtkFileChooser *chooser)
 					      "<i>Size:</i>\t%s\n",
 					      modified_time,
 					      size_str);
-	      ctk_label_set_markup (GTK_LABEL (preview_label), preview_text);
+	      ctk_label_set_markup (CTK_LABEL (preview_label), preview_text);
 	      g_free (modified_time);
 	      g_free (size_str);
 	      g_free (preview_text);
@@ -340,13 +340,13 @@ set_current_folder (GtkFileChooser *chooser,
     {
       GtkWidget *dialog;
 
-      dialog = ctk_message_dialog_new (GTK_WINDOW (chooser),
-				       GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-				       GTK_MESSAGE_ERROR,
-				       GTK_BUTTONS_CLOSE,
+      dialog = ctk_message_dialog_new (CTK_WINDOW (chooser),
+				       CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
+				       CTK_MESSAGE_ERROR,
+				       CTK_BUTTONS_CLOSE,
 				       "Could not set the folder to %s",
 				       name);
-      ctk_dialog_run (GTK_DIALOG (dialog));
+      ctk_dialog_run (CTK_DIALOG (dialog));
       ctk_widget_destroy (dialog);
     }
 }
@@ -373,13 +373,13 @@ set_filename (GtkFileChooser *chooser,
     {
       GtkWidget *dialog;
 
-      dialog = ctk_message_dialog_new (GTK_WINDOW (chooser),
-				       GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-				       GTK_MESSAGE_ERROR,
-				       GTK_BUTTONS_CLOSE,
+      dialog = ctk_message_dialog_new (CTK_WINDOW (chooser),
+				       CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
+				       CTK_MESSAGE_ERROR,
+				       CTK_BUTTONS_CLOSE,
 				       "Could not select %s",
 				       name);
-      ctk_dialog_run (GTK_DIALOG (dialog));
+      ctk_dialog_run (CTK_DIALOG (dialog));
       ctk_widget_destroy (dialog);
     }
 }
@@ -443,8 +443,8 @@ static void
 unmap_and_remap_cb (GtkButton *button,
 		    GtkFileChooser *chooser)
 {
-  ctk_widget_hide (GTK_WIDGET (chooser));
-  ctk_widget_show (GTK_WIDGET (chooser));
+  ctk_widget_hide (CTK_WIDGET (chooser));
+  ctk_widget_show (CTK_WIDGET (chooser));
 }
 
 static void
@@ -461,7 +461,7 @@ notify_multiple_cb (GtkWidget  *dialog,
 {
   gboolean multiple;
 
-  multiple = ctk_file_chooser_get_select_multiple (GTK_FILE_CHOOSER (dialog));
+  multiple = ctk_file_chooser_get_select_multiple (CTK_FILE_CHOOSER (dialog));
 
   ctk_widget_set_sensitive (button, multiple);
 }
@@ -475,38 +475,38 @@ confirm_overwrite_cb (GtkFileChooser *chooser,
   int response;
   GtkFileChooserConfirmation conf;
 
-  dialog = ctk_message_dialog_new (GTK_WINDOW (ctk_widget_get_toplevel (GTK_WIDGET (chooser))),
-				   GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-				   GTK_MESSAGE_QUESTION,
-				   GTK_BUTTONS_NONE,
+  dialog = ctk_message_dialog_new (CTK_WINDOW (ctk_widget_get_toplevel (CTK_WIDGET (chooser))),
+				   CTK_DIALOG_MODAL | CTK_DIALOG_DESTROY_WITH_PARENT,
+				   CTK_MESSAGE_QUESTION,
+				   CTK_BUTTONS_NONE,
 				   "What do you want to do?");
 
   button = ctk_button_new_with_label ("Use the stock confirmation dialog");
   ctk_widget_show (button);
-  ctk_dialog_add_action_widget (GTK_DIALOG (dialog), button, 1);
+  ctk_dialog_add_action_widget (CTK_DIALOG (dialog), button, 1);
 
   button = ctk_button_new_with_label ("Type a new file name");
   ctk_widget_show (button);
-  ctk_dialog_add_action_widget (GTK_DIALOG (dialog), button, 2);
+  ctk_dialog_add_action_widget (CTK_DIALOG (dialog), button, 2);
 
   button = ctk_button_new_with_label ("Accept the file name");
   ctk_widget_show (button);
-  ctk_dialog_add_action_widget (GTK_DIALOG (dialog), button, 3);
+  ctk_dialog_add_action_widget (CTK_DIALOG (dialog), button, 3);
 
-  response = ctk_dialog_run (GTK_DIALOG (dialog));
+  response = ctk_dialog_run (CTK_DIALOG (dialog));
 
   switch (response)
     {
     case 1:
-      conf = GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
+      conf = CTK_FILE_CHOOSER_CONFIRMATION_CONFIRM;
       break;
 
     case 3:
-      conf = GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
+      conf = CTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME;
       break;
 
     default:
-      conf = GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
+      conf = CTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN;
       break;
     }
 
@@ -555,20 +555,20 @@ main (int argc, char **argv)
     }
 
   if (force_rtl)
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
-  action = GTK_FILE_CHOOSER_ACTION_OPEN;
+  action = CTK_FILE_CHOOSER_ACTION_OPEN;
 
   if (action_arg != NULL)
     {
       if (! strcmp ("open", action_arg))
-	action = GTK_FILE_CHOOSER_ACTION_OPEN;
+	action = CTK_FILE_CHOOSER_ACTION_OPEN;
       else if (! strcmp ("save", action_arg))
-	action = GTK_FILE_CHOOSER_ACTION_SAVE;
+	action = CTK_FILE_CHOOSER_ACTION_SAVE;
       else if (! strcmp ("select_folder", action_arg))
-	action = GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER;
+	action = CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER;
       else if (! strcmp ("create_folder", action_arg))
-	action = GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER;
+	action = CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER;
       else
 	{
 	  g_print ("--action must be one of \"open\", \"save\", \"select_folder\", \"create_folder\"\n");
@@ -578,7 +578,7 @@ main (int argc, char **argv)
       g_free (action_arg);
     }
 
-  dialog = g_object_new (GTK_TYPE_FILE_CHOOSER_DIALOG,
+  dialog = g_object_new (CTK_TYPE_FILE_CHOOSER_DIALOG,
 			 "action", action,
 			 "select-multiple", multiple,
                          "local-only", local_only,
@@ -586,24 +586,24 @@ main (int argc, char **argv)
 
   switch (action)
     {
-    case GTK_FILE_CHOOSER_ACTION_OPEN:
-    case GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER:
-      ctk_window_set_title (GTK_WINDOW (dialog), "Select a file");
-      ctk_dialog_add_buttons (GTK_DIALOG (dialog),
-			      _("_Cancel"), GTK_RESPONSE_CANCEL,
-			      _("_Open"), GTK_RESPONSE_OK,
+    case CTK_FILE_CHOOSER_ACTION_OPEN:
+    case CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER:
+      ctk_window_set_title (CTK_WINDOW (dialog), "Select a file");
+      ctk_dialog_add_buttons (CTK_DIALOG (dialog),
+			      _("_Cancel"), CTK_RESPONSE_CANCEL,
+			      _("_Open"), CTK_RESPONSE_OK,
 			      NULL);
       break;
-    case GTK_FILE_CHOOSER_ACTION_SAVE:
-    case GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER:
-      ctk_window_set_title (GTK_WINDOW (dialog), "Save a file");
-      ctk_dialog_add_buttons (GTK_DIALOG (dialog),
-			      _("_Cancel"), GTK_RESPONSE_CANCEL,
-			      _("_Save"), GTK_RESPONSE_OK,
+    case CTK_FILE_CHOOSER_ACTION_SAVE:
+    case CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER:
+      ctk_window_set_title (CTK_WINDOW (dialog), "Save a file");
+      ctk_dialog_add_buttons (CTK_DIALOG (dialog),
+			      _("_Cancel"), CTK_RESPONSE_CANCEL,
+			      _("_Save"), CTK_RESPONSE_OK,
 			      NULL);
       break;
     }
-  ctk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+  ctk_dialog_set_default_response (CTK_DIALOG (dialog), CTK_RESPONSE_OK);
 
   g_signal_connect (dialog, "selection-changed",
 		    G_CALLBACK (print_selected), NULL);
@@ -618,22 +618,22 @@ main (int argc, char **argv)
   filter = ctk_file_filter_new ();
   ctk_file_filter_set_name (filter, "All Files");
   ctk_file_filter_add_pattern (filter, "*");
-  ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+  ctk_file_chooser_add_filter (CTK_FILE_CHOOSER (dialog), filter);
 
   /* Make this filter the default */
-  ctk_file_chooser_set_filter (GTK_FILE_CHOOSER (dialog), filter);
+  ctk_file_chooser_set_filter (CTK_FILE_CHOOSER (dialog), filter);
 
   filter = ctk_file_filter_new ();
   ctk_file_filter_set_name (filter, "No backup files");
-  ctk_file_filter_add_custom (filter, GTK_FILE_FILTER_DISPLAY_NAME,
+  ctk_file_filter_add_custom (filter, CTK_FILE_FILTER_DISPLAY_NAME,
 			      no_backup_files_filter, NULL, NULL);
   ctk_file_filter_add_mime_type (filter, "image/png");
-  ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+  ctk_file_chooser_add_filter (CTK_FILE_CHOOSER (dialog), filter);
 
   filter = ctk_file_filter_new ();
   ctk_file_filter_set_name (filter, "Starts with D");
   ctk_file_filter_add_pattern (filter, "D*");
-  ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+  ctk_file_chooser_add_filter (CTK_FILE_CHOOSER (dialog), filter);
 
   g_signal_connect (dialog, "notify::filter",
 		    G_CALLBACK (filter_changed), NULL);
@@ -642,29 +642,29 @@ main (int argc, char **argv)
   ctk_file_filter_set_name (filter, "PNG and JPEG");
   ctk_file_filter_add_mime_type (filter, "image/jpeg");
   ctk_file_filter_add_mime_type (filter, "image/png");
-  ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+  ctk_file_chooser_add_filter (CTK_FILE_CHOOSER (dialog), filter);
 
   filter = ctk_file_filter_new ();
   ctk_file_filter_set_name (filter, "Images");
   ctk_file_filter_add_pixbuf_formats (filter);
-  ctk_file_chooser_add_filter (GTK_FILE_CHOOSER (dialog), filter);
+  ctk_file_chooser_add_filter (CTK_FILE_CHOOSER (dialog), filter);
 
 #if 0
   /* Preview widget */
   /* THIS IS A TERRIBLE PREVIEW WIDGET, AND SHOULD NOT BE COPIED AT ALL.
    */
-  preview_vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_file_chooser_set_preview_widget (GTK_FILE_CHOOSER (dialog), preview_vbox);
+  preview_vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_file_chooser_set_preview_widget (CTK_FILE_CHOOSER (dialog), preview_vbox);
 
   preview_label = ctk_label_new (NULL);
-  ctk_box_pack_start (GTK_BOX (preview_vbox), preview_label, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (preview_vbox), preview_label, TRUE, TRUE, 0);
   g_object_set (preview_label, "margin", 6, NULL);
 
   preview_image = ctk_image_new ();
-  ctk_box_pack_start (GTK_BOX (preview_vbox), preview_image, TRUE, TRUE, 0);
+  ctk_box_pack_start (CTK_BOX (preview_vbox), preview_image, TRUE, TRUE, 0);
   g_object_set (preview_image, "margin", 6, NULL);
 
-  update_preview_cb (GTK_FILE_CHOOSER (dialog));
+  update_preview_cb (CTK_FILE_CHOOSER (dialog));
   g_signal_connect (dialog, "update-preview",
 		    G_CALLBACK (update_preview_cb), NULL);
 #endif
@@ -672,25 +672,25 @@ main (int argc, char **argv)
   /* Extra widget */
 
   extra = ctk_check_button_new_with_mnemonic ("Lar_t whoever asks about this button");
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (extra), TRUE);
-  ctk_file_chooser_set_extra_widget (GTK_FILE_CHOOSER (dialog), extra);
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (extra), TRUE);
+  ctk_file_chooser_set_extra_widget (CTK_FILE_CHOOSER (dialog), extra);
 
   /* Shortcuts */
 
-  ctk_file_chooser_add_shortcut_folder_uri (GTK_FILE_CHOOSER (dialog),
+  ctk_file_chooser_add_shortcut_folder_uri (CTK_FILE_CHOOSER (dialog),
 					    "file:///usr/share/pixmaps",
 					    NULL);
-  ctk_file_chooser_add_shortcut_folder (GTK_FILE_CHOOSER (dialog),
+  ctk_file_chooser_add_shortcut_folder (CTK_FILE_CHOOSER (dialog),
 					g_get_user_special_dir (G_USER_DIRECTORY_MUSIC),
 					NULL);
 
   /* Initial filename or folder */
 
   if (initial_filename)
-    set_filename (GTK_FILE_CHOOSER (dialog), initial_filename);
+    set_filename (CTK_FILE_CHOOSER (dialog), initial_filename);
 
   if (initial_folder)
-    set_current_folder (GTK_FILE_CHOOSER (dialog), initial_folder);
+    set_current_folder (CTK_FILE_CHOOSER (dialog), initial_folder);
 
   /* show_all() to reveal bugs in composite widget handling */
   ctk_widget_show_all (dialog);
@@ -698,56 +698,56 @@ main (int argc, char **argv)
   /* Extra controls for manipulating the test environment
    */
 
-  control_window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  control_window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
-  vbbox = ctk_button_box_new (GTK_ORIENTATION_VERTICAL);
-  ctk_container_add (GTK_CONTAINER (control_window), vbbox);
+  vbbox = ctk_button_box_new (CTK_ORIENTATION_VERTICAL);
+  ctk_container_add (CTK_CONTAINER (control_window), vbbox);
 
   button = ctk_button_new_with_mnemonic ("_Select all");
   ctk_widget_set_sensitive (button, multiple);
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect_swapped (button, "clicked",
 			    G_CALLBACK (ctk_file_chooser_select_all), dialog);
   g_signal_connect (dialog, "notify::select-multiple",
 		    G_CALLBACK (notify_multiple_cb), button);
 
   button = ctk_button_new_with_mnemonic ("_Unselect all");
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect_swapped (button, "clicked",
 			    G_CALLBACK (ctk_file_chooser_unselect_all), dialog);
 
   button = ctk_button_new_with_label ("set_current_folder (\"/nonexistent\")");
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (set_folder_nonexistent_cb), dialog);
 
   button = ctk_button_new_with_label ("set_current_folder (\"/usr/nonexistent\")");
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (set_folder_existing_nonexistent_cb), dialog);
 
   button = ctk_button_new_with_label ("set_filename (\"/nonexistent\")");
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (set_filename_nonexistent_cb), dialog);
 
   button = ctk_button_new_with_label ("set_filename (\"/usr/nonexistent\")");
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (set_filename_existing_nonexistent_cb), dialog);
 
   button = ctk_button_new_with_label ("Get selection");
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (get_selection_cb), dialog);
 
   button = ctk_button_new_with_label ("Get current name");
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (get_current_name_cb), dialog);
 
   button = ctk_button_new_with_label ("Unmap and remap");
-  ctk_container_add (GTK_CONTAINER (vbbox), button);
+  ctk_container_add (CTK_CONTAINER (vbbox), button);
   g_signal_connect (button, "clicked",
 		    G_CALLBACK (unmap_and_remap_cb), dialog);
 

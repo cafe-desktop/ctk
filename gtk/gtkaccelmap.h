@@ -15,11 +15,11 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ACCEL_MAP_H__
-#define __GTK_ACCEL_MAP_H__
+#ifndef __CTK_ACCEL_MAP_H__
+#define __CTK_ACCEL_MAP_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,12 +28,12 @@
 G_BEGIN_DECLS
 
 /* --- global GtkAccelMap object --- */
-#define GTK_TYPE_ACCEL_MAP                (ctk_accel_map_get_type ())
-#define GTK_ACCEL_MAP(accel_map)	  (G_TYPE_CHECK_INSTANCE_CAST ((accel_map), GTK_TYPE_ACCEL_MAP, GtkAccelMap))
-#define GTK_ACCEL_MAP_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ACCEL_MAP, GtkAccelMapClass))
-#define GTK_IS_ACCEL_MAP(accel_map)	  (G_TYPE_CHECK_INSTANCE_TYPE ((accel_map), GTK_TYPE_ACCEL_MAP))
-#define GTK_IS_ACCEL_MAP_CLASS(klass)	  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ACCEL_MAP))
-#define GTK_ACCEL_MAP_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_ACCEL_MAP, GtkAccelMapClass))
+#define CTK_TYPE_ACCEL_MAP                (ctk_accel_map_get_type ())
+#define CTK_ACCEL_MAP(accel_map)	  (G_TYPE_CHECK_INSTANCE_CAST ((accel_map), CTK_TYPE_ACCEL_MAP, GtkAccelMap))
+#define CTK_ACCEL_MAP_CLASS(klass)	  (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ACCEL_MAP, GtkAccelMapClass))
+#define CTK_IS_ACCEL_MAP(accel_map)	  (G_TYPE_CHECK_INSTANCE_TYPE ((accel_map), CTK_TYPE_ACCEL_MAP))
+#define CTK_IS_ACCEL_MAP_CLASS(klass)	  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ACCEL_MAP))
+#define CTK_ACCEL_MAP_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_ACCEL_MAP, GtkAccelMapClass))
 
 typedef struct _GtkAccelMap      GtkAccelMap;
 typedef struct _GtkAccelMapClass GtkAccelMapClass;
@@ -106,4 +106,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkAccelMap, g_object_unref)
 
 G_END_DECLS
 
-#endif /* __GTK_ACCEL_MAP_H__ */
+#endif /* __CTK_ACCEL_MAP_H__ */

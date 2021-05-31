@@ -115,7 +115,7 @@ main (int argc, char *argv[])
     }
 
   if (force_rtl)
-    ctk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
+    ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
   op = ctk_mount_operation_new (NULL);
 

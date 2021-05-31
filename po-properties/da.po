@@ -367,11 +367,11 @@ msgstr "Er vigtig"
 #: gtk/deprecated/gtkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
-"this action show text in GTK_TOOLBAR_BOTH_HORIZ mode."
+"this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "Om handlingen anses for at være vigtig. Hvis TRUE vil "
 "værktøjselementstedfortræderne for denne handling vise tekst i "
-"GTK_TOOLBAR_BOTH_HORIZ-tilstand."
+"CTK_TOOLBAR_BOTH_HORIZ-tilstand."
 
 #: gtk/deprecated/gtkaction.c:451
 msgid "Hide if empty"
@@ -1872,8 +1872,8 @@ msgid "Default Spacing"
 msgstr "Forvalgsmellemrum"
 
 #: gtk/gtkbutton.c:524
-msgid "Extra space to add for GTK_CAN_DEFAULT buttons"
-msgstr "Ekstra mellemrum for GTK_CAN_DEFAULT-knapper"
+msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
+msgstr "Ekstra mellemrum for CTK_CAN_DEFAULT-knapper"
 
 #: gtk/gtkbutton.c:541
 msgid "Default Outside Spacing"
@@ -1881,10 +1881,10 @@ msgstr "Ydre mellemrum for forvalg"
 
 #: gtk/gtkbutton.c:542
 msgid ""
-"Extra space to add for GTK_CAN_DEFAULT buttons that is always drawn outside "
+"Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"Ekstra mellemrum for GTK_CAN_DEFAULT-knapper, som altid tegnes uden for "
+"Ekstra mellemrum for CTK_CAN_DEFAULT-knapper, som altid tegnes uden for "
 "kanten"
 
 #: gtk/gtkbutton.c:556
@@ -3863,8 +3863,8 @@ msgstr "Kontrollen, som gestussen relaterer til"
 # +                                                      P_("Propagation phase"),
 # +                                                      P_("Phase in event propagation where this controller 
 # handles events"),
-# +                                                      GTK_TYPE_PROPAGATION_PHASE, GTK_PHASE_BUBBLE,
-# +                                                      GTK_PARAM_READWRITE));
+# +                                                      CTK_TYPE_PROPAGATION_PHASE, CTK_PHASE_BUBBLE,
+# +                                                      CTK_PARAM_READWRITE));
 #
 # Det refererer altså til en fase i udviklingen af en hændelse.  Heraf foreslår jeg "hændelsesfase"
 #: gtk/gtkeventcontroller.c:181
@@ -4387,8 +4387,8 @@ msgid "Baseline Row"
 msgstr "Grundlinjerække"
 
 #: gtk/gtkgrid.c:1785
-msgid "The row to align the to the baseline when valign is GTK_ALIGN_BASELINE"
-msgstr "Rækken som placeres langs grundlinjen når valign er GTK_ALIGN_BASELINE"
+msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
+msgstr "Rækken som placeres langs grundlinjen når valign er CTK_ALIGN_BASELINE"
 
 #: gtk/gtkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -8609,10 +8609,10 @@ msgstr "Mellemrum i skærmpunkter mellem ikonet og etiketten"
 #: gtk/gtktoolitem.c:194
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
-"show text in GTK_TOOLBAR_BOTH_HORIZ mode"
+"show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
 "Om værktøjslinjeelementet anses for at være vigtigt. Hvis TRUE vises tekst i "
-"GTK_TOOLBAR_BOTH_HORIZ-tilstand"
+"CTK_TOOLBAR_BOTH_HORIZ-tilstand"
 
 #: gtk/gtktoolitemgroup.c:1640
 msgid "The human-readable title of this item group"

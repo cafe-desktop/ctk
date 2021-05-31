@@ -63,7 +63,7 @@ MODULE_ENTRY (GtkIMContext *, create) (const gchar *context_id)
 {
   if (strcmp (context_id, CONTEXT_ID) == 0)
   {
-    GtkIMContext* imcontext = GTK_IM_CONTEXT(g_object_new (GTK_TYPE_IM_CONTEXT_MULTIPRESS, NULL));
+    GtkIMContext* imcontext = CTK_IM_CONTEXT(g_object_new (CTK_TYPE_IM_CONTEXT_MULTIPRESS, NULL));
     return imcontext;
   }
   else

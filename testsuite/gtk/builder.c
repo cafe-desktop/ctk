@@ -77,7 +77,7 @@ test_parser (void)
 
   error = NULL;
   ctk_builder_add_from_string (builder, "<xxx/>", -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_UNHANDLED_TAG);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_UNHANDLED_TAG);
   g_error_free (error);
   
   error = NULL;
@@ -87,42 +87,42 @@ test_parser (void)
 
   error = NULL;
   ctk_builder_add_from_string (builder, "<interface><child/></interface>", -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_TAG);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_TAG);
   g_error_free (error);
 
   error = NULL;
   ctk_builder_add_from_string (builder, "<interface><object class=\"GtkVBox\" id=\"a\"><object class=\"GtkHBox\" id=\"b\"/></object></interface>", -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_TAG);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_TAG);
   g_error_free (error);
 
   error = NULL;
   ctk_builder_add_from_string (builder, "<interface><object class=\"Unknown\" id=\"a\"></object></interface>", -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
 
   error = NULL;
   ctk_builder_add_from_string (builder, "<interface><object class=\"GtkWidget\" id=\"a\" constructor=\"none\"></object></interface>", -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
 
   error = NULL;
   ctk_builder_add_from_string (builder, "<interface><object class=\"GtkButton\" id=\"a\"><child internal-child=\"foobar\"><object class=\"GtkButton\" id=\"int\"/></child></object></interface>", -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
 
   error = NULL;
   ctk_builder_add_from_string (builder, "<interface><object class=\"GtkButton\" id=\"a\"></object><object class=\"GtkButton\" id=\"a\"/></object></interface>", -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_DUPLICATE_ID);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_DUPLICATE_ID);
   g_error_free (error);
 
   error = NULL;
   ctk_builder_add_from_string (builder, "<interface><object class=\"GtkButton\" id=\"a\"><property name=\"deafbeef\"></property></object></interface>", -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_PROPERTY);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_PROPERTY);
   g_error_free (error);
   
   error = NULL;
   ctk_builder_add_from_string (builder, "<interface><object class=\"GtkButton\" id=\"a\"><signal name=\"deafbeef\" handler=\"ctk_true\"/></object></interface>", -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_SIGNAL);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_SIGNAL);
   g_error_free (error);
 
   g_object_unref (builder);
@@ -136,7 +136,7 @@ static int object_after = 0;
 G_MODULE_EXPORT void /* exported for GtkBuilder */
 signal_normal (GtkWindow *window, GParamSpec *spec)
 {
-  g_assert (GTK_IS_WINDOW (window));
+  g_assert (CTK_IS_WINDOW (window));
   g_assert (normal == 0);
   g_assert (after == 0);
 
@@ -146,7 +146,7 @@ signal_normal (GtkWindow *window, GParamSpec *spec)
 G_MODULE_EXPORT void /* exported for GtkBuilder */
 signal_after (GtkWindow *window, GParamSpec *spec)
 {
-  g_assert (GTK_IS_WINDOW (window));
+  g_assert (CTK_IS_WINDOW (window));
   g_assert (normal == 1);
   g_assert (after == 0);
   
@@ -156,7 +156,7 @@ signal_after (GtkWindow *window, GParamSpec *spec)
 G_MODULE_EXPORT void /* exported for GtkBuilder */
 signal_object (GtkButton *button, GParamSpec *spec)
 {
-  g_assert (GTK_IS_BUTTON (button));
+  g_assert (CTK_IS_BUTTON (button));
   g_assert (object == 0);
   g_assert (object_after == 0);
 
@@ -166,7 +166,7 @@ signal_object (GtkButton *button, GParamSpec *spec)
 G_MODULE_EXPORT void /* exported for GtkBuilder */
 signal_object_after (GtkButton *button, GParamSpec *spec)
 {
-  g_assert (GTK_IS_BUTTON (button));
+  g_assert (CTK_IS_BUTTON (button));
   g_assert (object == 1);
   g_assert (object_after == 0);
 
@@ -251,24 +251,24 @@ test_connect_signals (void)
   ctk_builder_connect_signals (builder, NULL);
 
   window = ctk_builder_get_object (builder, "window1");
-  ctk_window_set_title (GTK_WINDOW (window), "test");
+  ctk_window_set_title (CTK_WINDOW (window), "test");
 
   g_assert_cmpint (normal, ==, 1);
   g_assert_cmpint (after, ==, 1);
   g_assert_cmpint (object, ==, 1);
   g_assert_cmpint (object_after, ==, 1);
 
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   g_object_unref (builder);
   
   builder = builder_new_from_string (buffer_order, -1, NULL);
   ctk_builder_connect_signals (builder, NULL);
   window = ctk_builder_get_object (builder, "window1");
   normal = 0;
-  ctk_window_set_title (GTK_WINDOW (window), "test");
+  ctk_window_set_title (CTK_WINDOW (window), "test");
   g_assert (normal == 20);
 
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
 
   ctk_builder_add_from_string (builder, buffer_extra,
 			       strlen (buffer_extra), NULL);
@@ -276,14 +276,14 @@ test_connect_signals (void)
 			       strlen (buffer_extra2), NULL);
   ctk_builder_connect_signals (builder, NULL);
   window = ctk_builder_get_object (builder, "window2");
-  ctk_window_set_title (GTK_WINDOW (window), "test");
+  ctk_window_set_title (CTK_WINDOW (window), "test");
   g_assert (normal == 30);
 
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   window = ctk_builder_get_object (builder, "window3");
-  ctk_window_set_title (GTK_WINDOW (window), "test");
+  ctk_window_set_title (CTK_WINDOW (window), "test");
   g_assert (normal == 40);
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   
   g_object_unref (builder);
 
@@ -294,10 +294,10 @@ test_connect_signals (void)
   builder = builder_new_from_string (buffer_after_child, -1, NULL);
   window = ctk_builder_get_object (builder, "window1");
   ctk_builder_connect_signals (builder, NULL);
-  ctk_window_set_title (GTK_WINDOW (window), "test");
+  ctk_window_set_title (CTK_WINDOW (window), "test");
 
   g_assert (normal == 1);
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   g_object_unref (builder);
 }
 
@@ -344,27 +344,27 @@ test_uimanager_simple (void)
 
   uimgr = ctk_builder_get_object (builder, "uimgr1");
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  g_assert (GTK_IS_UI_MANAGER (uimgr));
+  g_assert (CTK_IS_UI_MANAGER (uimgr));
   G_GNUC_END_IGNORE_DEPRECATIONS;
   g_object_unref (builder);
   
   builder = builder_new_from_string (buffer2, -1, NULL);
 
   menubar = ctk_builder_get_object (builder, "menubar1");
-  g_assert (GTK_IS_MENU_BAR (menubar));
+  g_assert (CTK_IS_MENU_BAR (menubar));
 
-  children = ctk_container_get_children (GTK_CONTAINER (menubar));
+  children = ctk_container_get_children (CTK_CONTAINER (menubar));
   menu = children->data;
-  g_assert (GTK_IS_MENU_ITEM (menu));
-  g_assert (strcmp (ctk_widget_get_name (GTK_WIDGET (menu)), "file") == 0);
+  g_assert (CTK_IS_MENU_ITEM (menu));
+  g_assert (strcmp (ctk_widget_get_name (CTK_WIDGET (menu)), "file") == 0);
   g_list_free (children);
   
-  label = G_OBJECT (ctk_bin_get_child (GTK_BIN (menu)));
-  g_assert (GTK_IS_LABEL (label));
-  g_assert (strcmp (ctk_label_get_text (GTK_LABEL (label)), "File") == 0);
+  label = G_OBJECT (ctk_bin_get_child (CTK_BIN (menu)));
+  g_assert (CTK_IS_LABEL (label));
+  g_assert (strcmp (ctk_label_get_text (CTK_LABEL (label)), "File") == 0);
 
   window = ctk_builder_get_object (builder, "window1");
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   g_object_unref (builder);
 }
 
@@ -415,11 +415,11 @@ test_translation (void)
   bindtextdomain ("builder", "tests");
 
   builder = builder_new_from_string (buffer, -1, NULL);
-  label = GTK_LABEL (ctk_builder_get_object (builder, "label"));
+  label = CTK_LABEL (ctk_builder_get_object (builder, "label"));
   g_assert (strcmp (ctk_label_get_text (label), "Arkiv") == 0);
 
   window = ctk_builder_get_object (builder, "window1");
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   g_object_unref (builder);
 }
 #endif
@@ -431,7 +431,7 @@ test_sizegroup (void)
   const gchar buffer1[] =
     "<interface domain=\"test\">"
     "  <object class=\"GtkSizeGroup\" id=\"sizegroup1\">"
-    "    <property name=\"mode\">GTK_SIZE_GROUP_HORIZONTAL</property>"
+    "    <property name=\"mode\">CTK_SIZE_GROUP_HORIZONTAL</property>"
     "    <widgets>"
     "      <widget name=\"radio1\"/>"
     "      <widget name=\"radio2\"/>"
@@ -453,7 +453,7 @@ test_sizegroup (void)
   const gchar buffer2[] =
     "<interface domain=\"test\">"
     "  <object class=\"GtkSizeGroup\" id=\"sizegroup1\">"
-    "    <property name=\"mode\">GTK_SIZE_GROUP_HORIZONTAL</property>"
+    "    <property name=\"mode\">CTK_SIZE_GROUP_HORIZONTAL</property>"
     "    <widgets>"
     "    </widgets>"
     "   </object>"
@@ -461,14 +461,14 @@ test_sizegroup (void)
   const gchar buffer3[] =
     "<interface domain=\"test\">"
     "  <object class=\"GtkSizeGroup\" id=\"sizegroup1\">"
-    "    <property name=\"mode\">GTK_SIZE_GROUP_HORIZONTAL</property>"
+    "    <property name=\"mode\">CTK_SIZE_GROUP_HORIZONTAL</property>"
     "    <widgets>"
     "      <widget name=\"radio1\"/>"
     "      <widget name=\"radio2\"/>"
     "    </widgets>"
     "  </object>"
     "  <object class=\"GtkSizeGroup\" id=\"sizegroup2\">"
-    "    <property name=\"mode\">GTK_SIZE_GROUP_HORIZONTAL</property>"
+    "    <property name=\"mode\">CTK_SIZE_GROUP_HORIZONTAL</property>"
     "    <widgets>"
     "      <widget name=\"radio1\"/>"
     "      <widget name=\"radio2\"/>"
@@ -492,25 +492,25 @@ test_sizegroup (void)
 
   builder = builder_new_from_string (buffer1, -1, NULL);
   sizegroup = ctk_builder_get_object (builder, "sizegroup1");
-  widgets = ctk_size_group_get_widgets (GTK_SIZE_GROUP (sizegroup));
+  widgets = ctk_size_group_get_widgets (CTK_SIZE_GROUP (sizegroup));
   g_assert (g_slist_length (widgets) == 2);
   g_slist_free (widgets);
   g_object_unref (builder);
 
   builder = builder_new_from_string (buffer2, -1, NULL);
   sizegroup = ctk_builder_get_object (builder, "sizegroup1");
-  widgets = ctk_size_group_get_widgets (GTK_SIZE_GROUP (sizegroup));
+  widgets = ctk_size_group_get_widgets (CTK_SIZE_GROUP (sizegroup));
   g_assert (g_slist_length (widgets) == 0);
   g_slist_free (widgets);
   g_object_unref (builder);
 
   builder = builder_new_from_string (buffer3, -1, NULL);
   sizegroup = ctk_builder_get_object (builder, "sizegroup1");
-  widgets = ctk_size_group_get_widgets (GTK_SIZE_GROUP (sizegroup));
+  widgets = ctk_size_group_get_widgets (CTK_SIZE_GROUP (sizegroup));
   g_assert (g_slist_length (widgets) == 2);
   g_slist_free (widgets);
   sizegroup = ctk_builder_get_object (builder, "sizegroup2");
-  widgets = ctk_size_group_get_widgets (GTK_SIZE_GROUP (sizegroup));
+  widgets = ctk_size_group_get_widgets (CTK_SIZE_GROUP (sizegroup));
   g_assert (g_slist_length (widgets) == 2);
   g_slist_free (widgets);
 
@@ -518,7 +518,7 @@ test_sizegroup (void)
   {
     GObject *window;
     window = ctk_builder_get_object (builder, "window1");
-    ctk_widget_destroy (GTK_WIDGET (window));
+    ctk_widget_destroy (CTK_WIDGET (window));
   }
 #endif  
   g_object_unref (builder);
@@ -591,20 +591,20 @@ test_list_store (void)
   
   builder = builder_new_from_string (buffer1, -1, NULL);
   store = ctk_builder_get_object (builder, "liststore1");
-  g_assert (ctk_tree_model_get_n_columns (GTK_TREE_MODEL (store)) == 2);
-  g_assert (ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), 0) == G_TYPE_STRING);
-  g_assert (ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), 1) == G_TYPE_UINT);
+  g_assert (ctk_tree_model_get_n_columns (CTK_TREE_MODEL (store)) == 2);
+  g_assert (ctk_tree_model_get_column_type (CTK_TREE_MODEL (store), 0) == G_TYPE_STRING);
+  g_assert (ctk_tree_model_get_column_type (CTK_TREE_MODEL (store), 1) == G_TYPE_UINT);
   g_object_unref (builder);
   
   builder = builder_new_from_string (buffer2, -1, NULL);
   store = ctk_builder_get_object (builder, "liststore1");
-  g_assert (ctk_tree_model_get_n_columns (GTK_TREE_MODEL (store)) == 3);
-  g_assert (ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), 0) == G_TYPE_STRING);
-  g_assert (ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), 1) == G_TYPE_STRING);
-  g_assert (ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), 2) == G_TYPE_INT);
+  g_assert (ctk_tree_model_get_n_columns (CTK_TREE_MODEL (store)) == 3);
+  g_assert (ctk_tree_model_get_column_type (CTK_TREE_MODEL (store), 0) == G_TYPE_STRING);
+  g_assert (ctk_tree_model_get_column_type (CTK_TREE_MODEL (store), 1) == G_TYPE_STRING);
+  g_assert (ctk_tree_model_get_column_type (CTK_TREE_MODEL (store), 2) == G_TYPE_INT);
   
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter) == TRUE);
-  ctk_tree_model_get (GTK_TREE_MODEL (store), &iter,
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter) == TRUE);
+  ctk_tree_model_get (CTK_TREE_MODEL (store), &iter,
                       0, &surname,
                       1, &lastname,
                       2, &age,
@@ -616,9 +616,9 @@ test_list_store (void)
   g_assert (strcmp (lastname, "Doe") == 0);
   g_free (lastname);
   g_assert (age == 25);
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter) == TRUE);
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter) == TRUE);
   
-  ctk_tree_model_get (GTK_TREE_MODEL (store), &iter,
+  ctk_tree_model_get (CTK_TREE_MODEL (store), &iter,
                       0, &surname,
                       1, &lastname,
                       2, &age,
@@ -630,19 +630,19 @@ test_list_store (void)
   g_assert (strcmp (lastname, "Dole") == 0);
   g_free (lastname);
   g_assert (age == 50);
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter) == FALSE);
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter) == FALSE);
 
   g_object_unref (builder);  
 
   builder = builder_new_from_string (buffer3, -1, NULL);
   store = ctk_builder_get_object (builder, "liststore1");
-  g_assert (ctk_tree_model_get_n_columns (GTK_TREE_MODEL (store)) == 3);
-  g_assert (ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), 0) == G_TYPE_STRING);
-  g_assert (ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), 1) == G_TYPE_STRING);
-  g_assert (ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), 2) == G_TYPE_INT);
+  g_assert (ctk_tree_model_get_n_columns (CTK_TREE_MODEL (store)) == 3);
+  g_assert (ctk_tree_model_get_column_type (CTK_TREE_MODEL (store), 0) == G_TYPE_STRING);
+  g_assert (ctk_tree_model_get_column_type (CTK_TREE_MODEL (store), 1) == G_TYPE_STRING);
+  g_assert (ctk_tree_model_get_column_type (CTK_TREE_MODEL (store), 2) == G_TYPE_INT);
   
-  g_assert (ctk_tree_model_get_iter_first (GTK_TREE_MODEL (store), &iter) == TRUE);
-  ctk_tree_model_get (GTK_TREE_MODEL (store), &iter,
+  g_assert (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (store), &iter) == TRUE);
+  ctk_tree_model_get (CTK_TREE_MODEL (store), &iter,
                       0, &surname,
                       1, &lastname,
                       2, &age,
@@ -654,9 +654,9 @@ test_list_store (void)
   g_assert (strcmp (lastname, "Doe") == 0);
   g_free (lastname);
   g_assert (age == 25);
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter) == TRUE);
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter) == TRUE);
   
-  ctk_tree_model_get (GTK_TREE_MODEL (store), &iter,
+  ctk_tree_model_get (CTK_TREE_MODEL (store), &iter,
                       0, &surname,
                       1, &lastname,
                       2, &age,
@@ -668,9 +668,9 @@ test_list_store (void)
   g_assert (strcmp (lastname, "Dole") == 0);
   g_free (lastname);
   g_assert (age == 50);
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter) == TRUE);
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter) == TRUE);
   
-  ctk_tree_model_get (GTK_TREE_MODEL (store), &iter,
+  ctk_tree_model_get (CTK_TREE_MODEL (store), &iter,
                       0, &surname,
                       1, &lastname,
                       2, &age,
@@ -678,7 +678,7 @@ test_list_store (void)
   g_assert (surname == NULL);
   g_assert (lastname == NULL);
   g_assert (age == 19);
-  g_assert (ctk_tree_model_iter_next (GTK_TREE_MODEL (store), &iter) == FALSE);
+  g_assert (ctk_tree_model_iter_next (CTK_TREE_MODEL (store), &iter) == FALSE);
 
   g_object_unref (builder);
 }
@@ -700,9 +700,9 @@ test_tree_store (void)
   
   builder = builder_new_from_string (buffer, -1, NULL);
   store = ctk_builder_get_object (builder, "treestore1");
-  g_assert (ctk_tree_model_get_n_columns (GTK_TREE_MODEL (store)) == 2);
-  g_assert (ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), 0) == G_TYPE_STRING);
-  g_assert (ctk_tree_model_get_column_type (GTK_TREE_MODEL (store), 1) == G_TYPE_UINT);
+  g_assert (ctk_tree_model_get_n_columns (CTK_TREE_MODEL (store)) == 2);
+  g_assert (ctk_tree_model_get_column_type (CTK_TREE_MODEL (store), 0) == G_TYPE_STRING);
+  g_assert (ctk_tree_model_get_column_type (CTK_TREE_MODEL (store), 1) == G_TYPE_UINT);
   
   g_object_unref (builder);
 }
@@ -774,26 +774,26 @@ test_types (void)
   GError *error;
 
   builder = builder_new_from_string (buffer, -1, NULL);
-  ctk_widget_destroy (GTK_WIDGET (ctk_builder_get_object (builder, "dialog")));
-  ctk_widget_destroy (GTK_WIDGET (ctk_builder_get_object (builder, "window")));
+  ctk_widget_destroy (CTK_WIDGET (ctk_builder_get_object (builder, "dialog")));
+  ctk_widget_destroy (CTK_WIDGET (ctk_builder_get_object (builder, "window")));
   g_object_unref (builder);
 
   builder = builder_new_from_string (buffer2, -1, NULL);
   window = ctk_builder_get_object (builder, "window");
-  g_assert (GTK_IS_WINDOW (window));
-  ctk_widget_destroy (GTK_WIDGET (window));
+  g_assert (CTK_IS_WINDOW (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   g_object_unref (builder);
 
   builder = builder_new_from_string (buffer3, -1, NULL);
   window = ctk_builder_get_object (builder, "window");
-  g_assert (GTK_IS_WINDOW (window));
-  ctk_widget_destroy (GTK_WIDGET (window));
+  g_assert (CTK_IS_WINDOW (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   g_object_unref (builder);
   
   error = NULL;
   builder = ctk_builder_new ();
   ctk_builder_add_from_string (builder, buffer4, -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION);
   g_error_free (error);
   g_object_unref (builder);
 }
@@ -823,9 +823,9 @@ test_spin_button (void)
   
   builder = builder_new_from_string (buffer, -1, NULL);
   obj = ctk_builder_get_object (builder, "spinbutton1");
-  g_assert (GTK_IS_SPIN_BUTTON (obj));
-  adjustment = ctk_spin_button_get_adjustment (GTK_SPIN_BUTTON (obj));
-  g_assert (GTK_IS_ADJUSTMENT (adjustment));
+  g_assert (CTK_IS_SPIN_BUTTON (obj));
+  adjustment = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (obj));
+  g_assert (CTK_IS_ADJUSTMENT (adjustment));
   g_object_get (adjustment, "value", &value, NULL);
   g_assert (value == 1);
   g_object_get (adjustment, "lower", &value, NULL);
@@ -877,21 +877,21 @@ test_notebook (void)
   builder = builder_new_from_string (buffer, -1, NULL);
   notebook = ctk_builder_get_object (builder, "notebook1");
   g_assert (notebook != NULL);
-  g_assert (ctk_notebook_get_n_pages (GTK_NOTEBOOK (notebook)) == 2);
+  g_assert (ctk_notebook_get_n_pages (CTK_NOTEBOOK (notebook)) == 2);
 
-  label = ctk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 0);
-  g_assert (GTK_IS_LABEL (label));
-  g_assert (strcmp (ctk_label_get_label (GTK_LABEL (label)), "label1") == 0);
-  label = ctk_notebook_get_tab_label (GTK_NOTEBOOK (notebook), label);
-  g_assert (GTK_IS_LABEL (label));
-  g_assert (strcmp (ctk_label_get_label (GTK_LABEL (label)), "tab_label1") == 0);
+  label = ctk_notebook_get_nth_page (CTK_NOTEBOOK (notebook), 0);
+  g_assert (CTK_IS_LABEL (label));
+  g_assert (strcmp (ctk_label_get_label (CTK_LABEL (label)), "label1") == 0);
+  label = ctk_notebook_get_tab_label (CTK_NOTEBOOK (notebook), label);
+  g_assert (CTK_IS_LABEL (label));
+  g_assert (strcmp (ctk_label_get_label (CTK_LABEL (label)), "tab_label1") == 0);
 
-  label = ctk_notebook_get_nth_page (GTK_NOTEBOOK (notebook), 1);
-  g_assert (GTK_IS_LABEL (label));
-  g_assert (strcmp (ctk_label_get_label (GTK_LABEL (label)), "label2") == 0);
-  label = ctk_notebook_get_tab_label (GTK_NOTEBOOK (notebook), label);
-  g_assert (GTK_IS_LABEL (label));
-  g_assert (strcmp (ctk_label_get_label (GTK_LABEL (label)), "tab_label2") == 0);
+  label = ctk_notebook_get_nth_page (CTK_NOTEBOOK (notebook), 1);
+  g_assert (CTK_IS_LABEL (label));
+  g_assert (strcmp (ctk_label_get_label (CTK_LABEL (label)), "label2") == 0);
+  label = ctk_notebook_get_tab_label (CTK_NOTEBOOK (notebook), label);
+  g_assert (CTK_IS_LABEL (label));
+  g_assert (strcmp (ctk_label_get_label (CTK_LABEL (label)), "tab_label2") == 0);
 
   g_object_unref (builder);
 }
@@ -903,7 +903,7 @@ test_construct_only_property (void)
   const gchar buffer[] =
     "<interface>"
     "  <object class=\"GtkWindow\" id=\"window1\">"
-    "    <property name=\"type\">GTK_WINDOW_POPUP</property>"
+    "    <property name=\"type\">CTK_WINDOW_POPUP</property>"
     "  </object>"
     "</interface>";
   const gchar buffer2[] =
@@ -919,9 +919,9 @@ test_construct_only_property (void)
   builder = builder_new_from_string (buffer, -1, NULL);
   widget = ctk_builder_get_object (builder, "window1");
   g_object_get (widget, "type", &type, NULL);
-  g_assert (type == GTK_WINDOW_POPUP);
+  g_assert (type == CTK_WINDOW_POPUP);
 
-  ctk_widget_destroy (GTK_WIDGET (widget));
+  ctk_widget_destroy (CTK_WIDGET (widget));
   g_object_unref (builder);
 
   builder = builder_new_from_string (buffer2, -1, NULL);
@@ -966,12 +966,12 @@ test_object_properties (void)
   g_assert (label != NULL);
   spinbutton = ctk_builder_get_object (builder, "spinbutton1");
   g_assert (spinbutton != NULL);
-  g_assert (spinbutton == (GObject*)ctk_label_get_mnemonic_widget (GTK_LABEL (label)));
+  g_assert (spinbutton == (GObject*)ctk_label_get_mnemonic_widget (CTK_LABEL (label)));
 
   ctk_builder_add_from_string (builder, buffer2, -1, NULL);
   window = ctk_builder_get_object (builder, "window2");
   g_assert (window != NULL);
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
 
   g_object_unref (builder);
 }
@@ -1015,47 +1015,47 @@ test_children (void)
   builder = builder_new_from_string (buffer1, -1, NULL);
   window = ctk_builder_get_object (builder, "window1");
   g_assert (window != NULL);
-  g_assert (GTK_IS_WINDOW (window));
+  g_assert (CTK_IS_WINDOW (window));
 
   button = ctk_builder_get_object (builder, "button1");
   g_assert (button != NULL);
-  g_assert (GTK_IS_BUTTON (button));
-  g_assert (ctk_widget_get_parent (GTK_WIDGET(button)) != NULL);
-  g_assert (strcmp (ctk_buildable_get_name (GTK_BUILDABLE (ctk_widget_get_parent (GTK_WIDGET (button)))), "window1") == 0);
+  g_assert (CTK_IS_BUTTON (button));
+  g_assert (ctk_widget_get_parent (CTK_WIDGET(button)) != NULL);
+  g_assert (strcmp (ctk_buildable_get_name (CTK_BUILDABLE (ctk_widget_get_parent (CTK_WIDGET (button)))), "window1") == 0);
 
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   g_object_unref (builder);
   
   builder = builder_new_from_string (buffer2, -1, NULL);
   dialog = ctk_builder_get_object (builder, "dialog1");
   g_assert (dialog != NULL);
-  g_assert (GTK_IS_DIALOG (dialog));
-  children = ctk_container_get_children (GTK_CONTAINER (dialog));
+  g_assert (CTK_IS_DIALOG (dialog));
+  children = ctk_container_get_children (CTK_CONTAINER (dialog));
   g_assert_cmpint (g_list_length (children), ==, 2);
   g_list_free (children);
   
   vbox = ctk_builder_get_object (builder, "dialog1-vbox");
-  content_area = ctk_dialog_get_content_area (GTK_DIALOG (dialog));
+  content_area = ctk_dialog_get_content_area (CTK_DIALOG (dialog));
   g_assert (vbox != NULL);
-  g_assert (GTK_IS_BOX (vbox));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (vbox)) == GTK_ORIENTATION_VERTICAL);
-  g_assert (strcmp (ctk_buildable_get_name (GTK_BUILDABLE (ctk_widget_get_parent (GTK_WIDGET (vbox)))), "dialog1") == 0);
-  g_assert (ctk_container_get_border_width (GTK_CONTAINER (vbox)) == 10);
-  g_assert (strcmp (ctk_buildable_get_name (GTK_BUILDABLE (content_area)), "dialog1-vbox") == 0);
+  g_assert (CTK_IS_BOX (vbox));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (vbox)) == CTK_ORIENTATION_VERTICAL);
+  g_assert (strcmp (ctk_buildable_get_name (CTK_BUILDABLE (ctk_widget_get_parent (CTK_WIDGET (vbox)))), "dialog1") == 0);
+  g_assert (ctk_container_get_border_width (CTK_CONTAINER (vbox)) == 10);
+  g_assert (strcmp (ctk_buildable_get_name (CTK_BUILDABLE (content_area)), "dialog1-vbox") == 0);
 
   action_area = ctk_builder_get_object (builder, "dialog1-action_area");
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  dialog_action_area = ctk_dialog_get_action_area (GTK_DIALOG (dialog));
+  dialog_action_area = ctk_dialog_get_action_area (CTK_DIALOG (dialog));
 G_GNUC_END_IGNORE_DEPRECATIONS
   g_assert (action_area != NULL);
-  g_assert (GTK_IS_BUTTON_BOX (action_area));
-  g_assert (ctk_orientable_get_orientation (GTK_ORIENTABLE (action_area)) == GTK_ORIENTATION_HORIZONTAL);
-  g_assert (ctk_widget_get_parent (GTK_WIDGET (action_area)) != NULL);
-  g_assert (ctk_container_get_border_width (GTK_CONTAINER (action_area)) == 20);
+  g_assert (CTK_IS_BUTTON_BOX (action_area));
+  g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (action_area)) == CTK_ORIENTATION_HORIZONTAL);
+  g_assert (ctk_widget_get_parent (CTK_WIDGET (action_area)) != NULL);
+  g_assert (ctk_container_get_border_width (CTK_CONTAINER (action_area)) == 20);
   g_assert (dialog_action_area != NULL);
-  g_assert (ctk_buildable_get_name (GTK_BUILDABLE (action_area)) != NULL);
-  g_assert (strcmp (ctk_buildable_get_name (GTK_BUILDABLE (dialog_action_area)), "dialog1-action_area") == 0);
-  ctk_widget_destroy (GTK_WIDGET (dialog));
+  g_assert (ctk_buildable_get_name (CTK_BUILDABLE (action_area)) != NULL);
+  g_assert (strcmp (ctk_buildable_get_name (CTK_BUILDABLE (dialog_action_area)), "dialog1-action_area") == 0);
+  ctk_widget_destroy (CTK_WIDGET (dialog));
   g_object_unref (builder);
 }
 
@@ -1086,25 +1086,25 @@ test_child_properties (void)
   
   builder = builder_new_from_string (buffer1, -1, NULL);
   vbox = ctk_builder_get_object (builder, "vbox1");
-  g_assert (GTK_IS_BOX (vbox));
+  g_assert (CTK_IS_BOX (vbox));
 
   label = ctk_builder_get_object (builder, "label1");
-  g_assert (GTK_IS_LABEL (label));
-  ctk_container_child_get (GTK_CONTAINER (vbox),
-                           GTK_WIDGET (label),
+  g_assert (CTK_IS_LABEL (label));
+  ctk_container_child_get (CTK_CONTAINER (vbox),
+                           CTK_WIDGET (label),
                            "pack-type",
                            &pack_type,
                            NULL);
-  g_assert (pack_type == GTK_PACK_START);
+  g_assert (pack_type == CTK_PACK_START);
   
   label = ctk_builder_get_object (builder, "label2");
-  g_assert (GTK_IS_LABEL (label));
-  ctk_container_child_get (GTK_CONTAINER (vbox),
-                           GTK_WIDGET (label),
+  g_assert (CTK_IS_LABEL (label));
+  ctk_container_child_get (CTK_CONTAINER (vbox),
+                           CTK_WIDGET (label),
                            "pack-type",
                            &pack_type,
                            NULL);
-  g_assert (pack_type == GTK_PACK_END);
+  g_assert (pack_type == CTK_PACK_END);
 
   g_object_unref (builder);
 }
@@ -1166,20 +1166,20 @@ test_treeview_column (void)
   builder = builder_new_from_string (buffer, -1, NULL);
   treeview = ctk_builder_get_object (builder, "treeview1");
   g_assert (treeview);
-  g_assert (GTK_IS_TREE_VIEW (treeview));
-  column = ctk_tree_view_get_column (GTK_TREE_VIEW (treeview), 0);
-  g_assert (GTK_IS_TREE_VIEW_COLUMN (column));
+  g_assert (CTK_IS_TREE_VIEW (treeview));
+  column = ctk_tree_view_get_column (CTK_TREE_VIEW (treeview), 0);
+  g_assert (CTK_IS_TREE_VIEW_COLUMN (column));
   g_assert (strcmp (ctk_tree_view_column_get_title (column), "Test") == 0);
 
-  renderers = ctk_cell_layout_get_cells (GTK_CELL_LAYOUT (column));
+  renderers = ctk_cell_layout_get_cells (CTK_CELL_LAYOUT (column));
   g_assert (g_list_length (renderers) == 1);
   renderer = g_list_nth_data (renderers, 0);
   g_assert (renderer);
-  g_assert (GTK_IS_CELL_RENDERER_TEXT (renderer));
+  g_assert (CTK_IS_CELL_RENDERER_TEXT (renderer));
   g_list_free (renderers);
 
   window = ctk_builder_get_object (builder, "window1");
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
 
   g_object_unref (builder);
 }
@@ -1223,10 +1223,10 @@ test_icon_view (void)
   builder = builder_new_from_string (buffer, -1, NULL);
   iconview = ctk_builder_get_object (builder, "iconview1");
   g_assert (iconview);
-  g_assert (GTK_IS_ICON_VIEW (iconview));
+  g_assert (CTK_IS_ICON_VIEW (iconview));
 
   window = ctk_builder_get_object (builder, "window1");
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   g_object_unref (builder);
 }
 
@@ -1280,7 +1280,7 @@ test_combo_box (void)
   g_assert (combobox);
 
   window = ctk_builder_get_object (builder, "window1");
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
 
   g_object_unref (builder);
 }
@@ -1352,7 +1352,7 @@ test_combo_box_entry (void)
   g_free (text);
 
   window = ctk_builder_get_object (builder, "window1");
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
 
   g_object_unref (builder);
 }
@@ -1399,21 +1399,21 @@ test_cell_view (void)
   cellview = ctk_builder_get_object (builder, "cellview1");
   g_assert (builder);
   g_assert (cellview);
-  g_assert (GTK_IS_CELL_VIEW (cellview));
+  g_assert (CTK_IS_CELL_VIEW (cellview));
   g_object_get (cellview, "model", &model, NULL);
   g_assert (model);
-  g_assert (GTK_IS_TREE_MODEL (model));
+  g_assert (CTK_IS_TREE_MODEL (model));
   g_object_unref (model);
   path = ctk_tree_path_new_first ();
-  ctk_cell_view_set_displayed_row (GTK_CELL_VIEW (cellview), path);
+  ctk_cell_view_set_displayed_row (CTK_CELL_VIEW (cellview), path);
   
-  renderers = ctk_cell_layout_get_cells (GTK_CELL_LAYOUT (cellview));
+  renderers = ctk_cell_layout_get_cells (CTK_CELL_LAYOUT (cellview));
   g_assert (renderers);
   g_assert (g_list_length (renderers) == 1);
 
   window = ctk_builder_get_object (builder, "window1");
   g_assert (window);
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   
   g_object_unref (builder);
 }
@@ -1453,11 +1453,11 @@ test_dialog (void)
   builder = builder_new_from_string (buffer1, -1, NULL);
   dialog1 = ctk_builder_get_object (builder, "dialog1");
   button_ok = ctk_builder_get_object (builder, "button_ok");
-  g_assert (ctk_dialog_get_response_for_widget (GTK_DIALOG (dialog1), GTK_WIDGET (button_ok)) == 3);
+  g_assert (ctk_dialog_get_response_for_widget (CTK_DIALOG (dialog1), CTK_WIDGET (button_ok)) == 3);
   button_cancel = ctk_builder_get_object (builder, "button_cancel");
-  g_assert (ctk_dialog_get_response_for_widget (GTK_DIALOG (dialog1), GTK_WIDGET (button_cancel)) == -5);
+  g_assert (ctk_dialog_get_response_for_widget (CTK_DIALOG (dialog1), CTK_WIDGET (button_cancel)) == -5);
   
-  ctk_widget_destroy (GTK_WIDGET (dialog1));
+  ctk_widget_destroy (CTK_WIDGET (dialog1));
   g_object_unref (builder);
 }
 
@@ -1484,10 +1484,10 @@ test_message_dialog (void)
   builder = builder_new_from_string (buffer1, -1, NULL);
   dialog1 = ctk_builder_get_object (builder, "dialog1");
   expander = ctk_builder_get_object (builder, "expander");
-  g_assert (GTK_IS_EXPANDER (expander));
-  g_assert (ctk_widget_get_parent (GTK_WIDGET (expander)) == ctk_message_dialog_get_message_area (GTK_MESSAGE_DIALOG (dialog1)));
+  g_assert (CTK_IS_EXPANDER (expander));
+  g_assert (ctk_widget_get_parent (CTK_WIDGET (expander)) == ctk_message_dialog_get_message_area (CTK_MESSAGE_DIALOG (dialog1)));
 
-  ctk_widget_destroy (GTK_WIDGET (dialog1));
+  ctk_widget_destroy (CTK_WIDGET (dialog1));
   g_object_unref (builder);
 }
 
@@ -1523,27 +1523,27 @@ test_accelerators (void)
   builder = builder_new_from_string (buffer, -1, NULL);
   window1 = ctk_builder_get_object (builder, "window1");
   g_assert (window1);
-  g_assert (GTK_IS_WINDOW (window1));
+  g_assert (CTK_IS_WINDOW (window1));
 
   accel_groups = ctk_accel_groups_from_object (window1);
   g_assert (g_slist_length (accel_groups) == 1);
   accel_group = g_slist_nth_data (accel_groups, 0);
   g_assert (accel_group);
 
-  ctk_widget_destroy (GTK_WIDGET (window1));
+  ctk_widget_destroy (CTK_WIDGET (window1));
   g_object_unref (builder);
 
   builder = builder_new_from_string (buffer2, -1, NULL);
   window1 = ctk_builder_get_object (builder, "window1");
   g_assert (window1);
-  g_assert (GTK_IS_WINDOW (window1));
+  g_assert (CTK_IS_WINDOW (window1));
 
   accel_groups = ctk_accel_groups_from_object (window1);
   g_assert (g_slist_length (accel_groups) == 1);
   accel_group = g_slist_nth_data (accel_groups, 0);
   g_assert (accel_group);
 
-  ctk_widget_destroy (GTK_WIDGET (window1));
+  ctk_widget_destroy (CTK_WIDGET (window1));
   g_object_unref (builder);
 }
 
@@ -1612,17 +1612,17 @@ test_widget (void)
   button1 = ctk_builder_get_object (builder, "button1");
 
 #if 0
-  g_assert (ctk_widget_has_focus (GTK_WIDGET (button1)));
+  g_assert (ctk_widget_has_focus (CTK_WIDGET (button1)));
 #endif
   window1 = ctk_builder_get_object (builder, "window1");
-  ctk_widget_destroy (GTK_WIDGET (window1));
+  ctk_widget_destroy (CTK_WIDGET (window1));
   
   g_object_unref (builder);
   
   builder = builder_new_from_string (buffer2, -1, NULL);
   button1 = ctk_builder_get_object (builder, "button1");
 
-  g_assert (ctk_widget_get_receives_default (GTK_WIDGET (button1)));
+  g_assert (ctk_widget_get_receives_default (CTK_WIDGET (button1)));
   
   g_object_unref (builder);
   
@@ -1631,7 +1631,7 @@ test_widget (void)
   window1 = ctk_builder_get_object (builder, "window1");
   label1 = ctk_builder_get_object (builder, "label1");
 
-  accessible = ctk_widget_get_accessible (GTK_WIDGET (label1));
+  accessible = ctk_widget_get_accessible (CTK_WIDGET (label1));
   relation_set = atk_object_ref_relation_set (accessible);
   g_return_if_fail (atk_relation_set_get_n_relations (relation_set) == 1);
   relation = atk_relation_set_get_relation (relation_set, 0);
@@ -1644,7 +1644,7 @@ test_widget (void)
   g_return_if_fail (strcmp (name, "A Label") == 0);
   g_free (name);
   
-  ctk_widget_destroy (GTK_WIDGET (window1));
+  ctk_widget_destroy (CTK_WIDGET (window1));
   g_object_unref (builder);
 }
 
@@ -1671,12 +1671,12 @@ test_window (void)
   g_object_get (window1, "title", &title, NULL);
   g_assert (strcmp (title, "") == 0);
   g_free (title);
-  ctk_widget_destroy (GTK_WIDGET (window1));
+  ctk_widget_destroy (CTK_WIDGET (window1));
   g_object_unref (builder);
 
   builder = builder_new_from_string (buffer2, -1, NULL);
   window1 = ctk_builder_get_object (builder, "window1");
-  ctk_widget_destroy (GTK_WIDGET (window1));
+  ctk_widget_destroy (CTK_WIDGET (window1));
   g_object_unref (builder);
 }
 
@@ -1731,25 +1731,25 @@ test_value_from_string (void)
   
   g_assert (ctk_builder_value_from_string_type (builder, G_TYPE_BOOLEAN, "blaurgh", &value, &error) == FALSE);
   g_value_unset (&value);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
   error = NULL;
 
   g_assert (ctk_builder_value_from_string_type (builder, G_TYPE_BOOLEAN, "yess", &value, &error) == FALSE);
   g_value_unset (&value);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
   error = NULL;
   
   g_assert (ctk_builder_value_from_string_type (builder, G_TYPE_BOOLEAN, "trueee", &value, &error) == FALSE);
   g_value_unset (&value);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
   error = NULL;
   
   g_assert (ctk_builder_value_from_string_type (builder, G_TYPE_BOOLEAN, "", &value, &error) == FALSE);
   g_value_unset (&value);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
   error = NULL;
   
@@ -1785,30 +1785,30 @@ test_value_from_string (void)
 
   g_assert (ctk_builder_value_from_string_type (builder, G_TYPE_FLOAT, "abc", &value, &error) == FALSE);
   g_value_unset (&value);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
   error = NULL;
 
   g_assert (ctk_builder_value_from_string_type (builder, G_TYPE_INT, "/-+,abc", &value, &error) == FALSE);
   g_value_unset (&value);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
   error = NULL;
 
-  g_assert (ctk_builder_value_from_string_type (builder, GTK_TYPE_WINDOW_TYPE, "toplevel", &value, &error) == TRUE);
+  g_assert (ctk_builder_value_from_string_type (builder, CTK_TYPE_WINDOW_TYPE, "toplevel", &value, &error) == TRUE);
   g_assert (G_VALUE_HOLDS_ENUM (&value));
-  g_assert (g_value_get_enum (&value) == GTK_WINDOW_TOPLEVEL);
+  g_assert (g_value_get_enum (&value) == CTK_WINDOW_TOPLEVEL);
   g_value_unset (&value);
 
-  g_assert (ctk_builder_value_from_string_type (builder, GTK_TYPE_WINDOW_TYPE, "sliff", &value, &error) == FALSE);
+  g_assert (ctk_builder_value_from_string_type (builder, CTK_TYPE_WINDOW_TYPE, "sliff", &value, &error) == FALSE);
   g_value_unset (&value);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
   error = NULL;
 
-  g_assert (ctk_builder_value_from_string_type (builder, GTK_TYPE_WINDOW_TYPE, "foobar", &value, &error) == FALSE);
+  g_assert (ctk_builder_value_from_string_type (builder, CTK_TYPE_WINDOW_TYPE, "foobar", &value, &error) == FALSE);
   g_value_unset (&value);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_INVALID_VALUE);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_INVALID_VALUE);
   g_error_free (error);
   error = NULL;
   
@@ -1862,10 +1862,10 @@ test_reference_counting (void)
   g_object_weak_ref (model, (GWeakNotify)model_weakref, NULL);
 
   g_assert (model_freed == FALSE);
-  ctk_tree_view_set_model (GTK_TREE_VIEW (treeview), NULL);
+  ctk_tree_view_set_model (CTK_TREE_VIEW (treeview), NULL);
   g_assert (model_freed == TRUE);
   
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
 
   builder = builder_new_from_string (buffer2, -1, NULL);
   g_object_unref (builder);
@@ -1905,11 +1905,11 @@ test_icon_factory (void)
   factory = ctk_builder_get_object (builder, "iconfactory1");
   g_assert (factory != NULL);
 
-  icon_set = ctk_icon_factory_lookup (GTK_ICON_FACTORY (factory), "apple-red");
+  icon_set = ctk_icon_factory_lookup (CTK_ICON_FACTORY (factory), "apple-red");
   g_assert (icon_set != NULL);
-  ctk_icon_factory_add_default (GTK_ICON_FACTORY (factory));
+  ctk_icon_factory_add_default (CTK_ICON_FACTORY (factory));
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  image = ctk_image_new_from_stock ("apple-red", GTK_ICON_SIZE_BUTTON);
+  image = ctk_image_new_from_stock ("apple-red", CTK_ICON_SIZE_BUTTON);
   G_GNUC_END_IGNORE_DEPRECATIONS;
   g_assert (image != NULL);
   g_object_ref_sink (image);
@@ -1921,20 +1921,20 @@ test_icon_factory (void)
   factory = ctk_builder_get_object (builder, "iconfactory1");
   g_assert (factory != NULL);
 
-  icon_set = ctk_icon_factory_lookup (GTK_ICON_FACTORY (factory), "sliff");
+  icon_set = ctk_icon_factory_lookup (CTK_ICON_FACTORY (factory), "sliff");
   g_assert (icon_set != NULL);
   g_assert (g_slist_length (icon_set->sources) == 2);
 
   icon_source = icon_set->sources->data;
-  g_assert (ctk_icon_source_get_direction (icon_source) == GTK_TEXT_DIR_RTL);
-  g_assert (ctk_icon_source_get_state (icon_source) == GTK_STATE_ACTIVE);
-  g_assert (ctk_icon_source_get_size (icon_source) == GTK_ICON_SIZE_MENU);
+  g_assert (ctk_icon_source_get_direction (icon_source) == CTK_TEXT_DIR_RTL);
+  g_assert (ctk_icon_source_get_state (icon_source) == CTK_STATE_ACTIVE);
+  g_assert (ctk_icon_source_get_size (icon_source) == CTK_ICON_SIZE_MENU);
   g_assert (g_str_has_suffix (ctk_icon_source_get_filename (icon_source), "sloff.png"));
   
   icon_source = icon_set->sources->next->data;
-  g_assert (ctk_icon_source_get_direction (icon_source) == GTK_TEXT_DIR_LTR);
-  g_assert (ctk_icon_source_get_state (icon_source) == GTK_STATE_SELECTED);
-  g_assert (ctk_icon_source_get_size (icon_source) == GTK_ICON_SIZE_DND);
+  g_assert (ctk_icon_source_get_direction (icon_source) == CTK_TEXT_DIR_LTR);
+  g_assert (ctk_icon_source_get_state (icon_source) == CTK_STATE_SELECTED);
+  g_assert (ctk_icon_source_get_size (icon_source) == CTK_ICON_SIZE_DND);
   g_assert (g_str_has_suffix (ctk_icon_source_get_filename (icon_source), "slurf.png"));
 
   g_object_unref (builder);
@@ -2021,7 +2021,7 @@ test_pango_attributes (void)
   label = ctk_builder_get_object (builder, "label1");
   g_assert (label != NULL);
 
-  attrs = ctk_label_get_attributes (GTK_LABEL (label));
+  attrs = ctk_label_get_attributes (CTK_LABEL (label));
   g_assert (attrs != NULL);
 
   filtered = pango_attr_list_filter (attrs, filter_pango_attrs, &found);
@@ -2066,10 +2066,10 @@ test_requires (void)
     "  <requires lib=\"gtk+\" version=\"%d.%d\"/>"
     "</interface>";
 
-  buffer = g_strdup_printf (buffer_fmt, GTK_MAJOR_VERSION, GTK_MINOR_VERSION + 1);
+  buffer = g_strdup_printf (buffer_fmt, CTK_MAJOR_VERSION, CTK_MINOR_VERSION + 1);
   builder = ctk_builder_new ();
   ctk_builder_add_from_string (builder, buffer, -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_VERSION_MISMATCH);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_VERSION_MISMATCH);
   g_object_unref (builder);
   g_error_free (error);
   g_free (buffer);
@@ -2159,7 +2159,7 @@ test_add_objects (void)
   obj = ctk_builder_get_object (builder, "window2");
   g_assert (obj == NULL);
   obj = ctk_builder_get_object (builder, "mainbox");  
-  g_assert (GTK_IS_WIDGET (obj));
+  g_assert (CTK_IS_WIDGET (obj));
   g_object_unref (builder);
 
   error = NULL;
@@ -2170,10 +2170,10 @@ test_add_objects (void)
   obj = ctk_builder_get_object (builder, "window");
   g_assert (obj == NULL);
   obj = ctk_builder_get_object (builder, "window2");
-  g_assert (GTK_IS_WINDOW (obj));
-  ctk_widget_destroy (GTK_WIDGET (obj));
+  g_assert (CTK_IS_WINDOW (obj));
+  ctk_widget_destroy (CTK_WIDGET (obj));
   obj = ctk_builder_get_object (builder, "mainbox");  
-  g_assert (GTK_IS_WIDGET (obj));
+  g_assert (CTK_IS_WIDGET (obj));
   g_object_unref (builder);
 
   /* test cherry picking a ui manager and menubar that depends on it */
@@ -2182,24 +2182,24 @@ test_add_objects (void)
   ret = ctk_builder_add_objects_from_string (builder, buffer2, -1, objects3, &error);
   g_assert (ret);
   obj = ctk_builder_get_object (builder, "uimgr1");
-  g_assert (GTK_IS_UI_MANAGER (obj));
+  g_assert (CTK_IS_UI_MANAGER (obj));
   obj = ctk_builder_get_object (builder, "file");
-  g_assert (GTK_IS_ACTION (obj));
+  g_assert (CTK_IS_ACTION (obj));
   obj = ctk_builder_get_object (builder, "menubar1");
-  g_assert (GTK_IS_MENU_BAR (obj));
-  menubar = GTK_WIDGET (obj);
+  g_assert (CTK_IS_MENU_BAR (obj));
+  menubar = CTK_WIDGET (obj);
 
-  children = ctk_container_get_children (GTK_CONTAINER (menubar));
+  children = ctk_container_get_children (CTK_CONTAINER (menubar));
   menu = children->data;
   g_assert (menu != NULL);
-  g_assert (GTK_IS_MENU_ITEM (menu));
-  g_assert (strcmp (ctk_widget_get_name (GTK_WIDGET (menu)), "file") == 0);
+  g_assert (CTK_IS_MENU_ITEM (menu));
+  g_assert (strcmp (ctk_widget_get_name (CTK_WIDGET (menu)), "file") == 0);
   g_list_free (children);
  
-  label = G_OBJECT (ctk_bin_get_child (GTK_BIN (menu)));
+  label = G_OBJECT (ctk_bin_get_child (CTK_BIN (menu)));
   g_assert (label != NULL);
-  g_assert (GTK_IS_LABEL (label));
-  g_assert (strcmp (ctk_label_get_text (GTK_LABEL (label)), "File") == 0);
+  g_assert (CTK_IS_LABEL (label));
+  g_assert (strcmp (ctk_label_get_text (CTK_LABEL (label)), "File") == 0);
 
   g_object_unref (builder);
 
@@ -2209,24 +2209,24 @@ test_add_objects (void)
   ret = ctk_builder_add_objects_from_string (builder, buffer2, -1, objects4, &error);
   g_assert (ret);
   obj = ctk_builder_get_object (builder, "uimgr1");
-  g_assert (GTK_IS_UI_MANAGER (obj));
-  manager = GTK_UI_MANAGER (obj);
+  g_assert (CTK_IS_UI_MANAGER (obj));
+  manager = CTK_UI_MANAGER (obj);
   obj = ctk_builder_get_object (builder, "file");
-  g_assert (GTK_IS_ACTION (obj));
+  g_assert (CTK_IS_ACTION (obj));
   menubar = ctk_ui_manager_get_widget (manager, "/menubar1");
-  g_assert (GTK_IS_MENU_BAR (menubar));
+  g_assert (CTK_IS_MENU_BAR (menubar));
 
-  children = ctk_container_get_children (GTK_CONTAINER (menubar));
+  children = ctk_container_get_children (CTK_CONTAINER (menubar));
   menu = children->data;
   g_assert (menu != NULL);
-  g_assert (GTK_IS_MENU_ITEM (menu));
-  g_assert (strcmp (ctk_widget_get_name (GTK_WIDGET (menu)), "file") == 0);
+  g_assert (CTK_IS_MENU_ITEM (menu));
+  g_assert (strcmp (ctk_widget_get_name (CTK_WIDGET (menu)), "file") == 0);
   g_list_free (children);
  
-  label = G_OBJECT (ctk_bin_get_child (GTK_BIN (menu)));
+  label = G_OBJECT (ctk_bin_get_child (CTK_BIN (menu)));
   g_assert (label != NULL);
-  g_assert (GTK_IS_LABEL (label));
-  g_assert (strcmp (ctk_label_get_text (GTK_LABEL (label)), "File") == 0);
+  g_assert (CTK_IS_LABEL (label));
+  g_assert (strcmp (ctk_label_get_text (CTK_LABEL (label)), "File") == 0);
 
   g_object_unref (builder);
 }
@@ -2237,20 +2237,20 @@ get_parent_menubar (GtkWidget *menuitem)
   GtkMenuShell *menu_shell;
   GtkWidget *attach = NULL;
 
-  menu_shell = GTK_MENU_SHELL (ctk_widget_get_parent (menuitem));
+  menu_shell = CTK_MENU_SHELL (ctk_widget_get_parent (menuitem));
 
-  g_assert (GTK_IS_MENU_SHELL (menu_shell));
+  g_assert (CTK_IS_MENU_SHELL (menu_shell));
 
-  while (menu_shell && !GTK_IS_MENU_BAR (menu_shell))
+  while (menu_shell && !CTK_IS_MENU_BAR (menu_shell))
     {
-      if (GTK_IS_MENU (menu_shell) && 
-	  (attach = ctk_menu_get_attach_widget (GTK_MENU (menu_shell))) != NULL)
-	menu_shell = GTK_MENU_SHELL (ctk_widget_get_parent (attach));
+      if (CTK_IS_MENU (menu_shell) && 
+	  (attach = ctk_menu_get_attach_widget (CTK_MENU (menu_shell))) != NULL)
+	menu_shell = CTK_MENU_SHELL (ctk_widget_get_parent (attach));
       else
 	menu_shell = NULL;
     }
 
-  return menu_shell ? GTK_WIDGET (menu_shell) : NULL;
+  return menu_shell ? CTK_WIDGET (menu_shell) : NULL;
 }
 
 static void
@@ -2344,32 +2344,32 @@ test_menus (void)
   ctk_widget_show_all (window);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  sample_menu_item = ctk_image_menu_item_new_from_stock (GTK_STOCK_NEW, accel_group);
+  sample_menu_item = ctk_image_menu_item_new_from_stock (CTK_STOCK_NEW, accel_group);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
-  child = ctk_bin_get_child (GTK_BIN (sample_menu_item));
+  child = ctk_bin_get_child (CTK_BIN (sample_menu_item));
   g_assert (child);
-  g_assert (GTK_IS_ACCEL_LABEL (child));
+  g_assert (CTK_IS_ACCEL_LABEL (child));
   sample_accel_label = child;
   ctk_widget_show (sample_accel_label);
 
-  child = ctk_bin_get_child (GTK_BIN (item));
+  child = ctk_bin_get_child (CTK_BIN (item));
   g_assert (child);
-  g_assert (GTK_IS_ACCEL_LABEL (child));
+  g_assert (CTK_IS_ACCEL_LABEL (child));
   item_accel_label = child;
 
-  ctk_accel_label_refetch (GTK_ACCEL_LABEL (sample_accel_label));
-  ctk_accel_label_refetch (GTK_ACCEL_LABEL (item_accel_label));
+  ctk_accel_label_refetch (CTK_ACCEL_LABEL (sample_accel_label));
+  ctk_accel_label_refetch (CTK_ACCEL_LABEL (item_accel_label));
 
-  g_assert (ctk_label_get_text (GTK_LABEL (sample_accel_label)) != NULL);
-  g_assert (ctk_label_get_text (GTK_LABEL (item_accel_label)) != NULL);
-  g_assert (strcmp (ctk_label_get_text (GTK_LABEL (item_accel_label)),
-		    ctk_label_get_text (GTK_LABEL (sample_accel_label))) == 0);
+  g_assert (ctk_label_get_text (CTK_LABEL (sample_accel_label)) != NULL);
+  g_assert (ctk_label_get_text (CTK_LABEL (item_accel_label)) != NULL);
+  g_assert (strcmp (ctk_label_get_text (CTK_LABEL (item_accel_label)),
+		    ctk_label_get_text (CTK_LABEL (sample_accel_label))) == 0);
 
   /* Check the menu hierarchy worked here  */
   g_assert (get_parent_menubar (item));
 
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   ctk_widget_destroy (sample_menu_item);
   g_object_unref (builder);
 
@@ -2384,7 +2384,7 @@ test_menus (void)
 
   g_assert (ctk_widget_get_parent (custom) == item);
 
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   g_object_unref (builder);
 }
 
@@ -2409,18 +2409,18 @@ test_file (const gchar *filename)
     {
       GObject *obj = (GObject*)l->data;
 
-      if (GTK_IS_DIALOG (obj))
+      if (CTK_IS_DIALOG (obj))
 	{
 	  g_print ("Running dialog %s.\n",
-		   ctk_widget_get_name (GTK_WIDGET (obj)));
-	  ctk_dialog_run (GTK_DIALOG (obj));
+		   ctk_widget_get_name (CTK_WIDGET (obj)));
+	  ctk_dialog_run (CTK_DIALOG (obj));
 	}
-      else if (GTK_IS_WINDOW (obj))
+      else if (CTK_IS_WINDOW (obj))
 	{
 	  g_signal_connect (obj, "destroy", G_CALLBACK (ctk_main_quit), NULL);
 	  g_print ("Showing %s.\n",
-		   ctk_widget_get_name (GTK_WIDGET (obj)));
-	  ctk_widget_show_all (GTK_WIDGET (obj));
+		   ctk_widget_get_name (CTK_WIDGET (obj)));
+	  ctk_widget_show_all (CTK_WIDGET (obj));
 	}
     }
 
@@ -2467,12 +2467,12 @@ test_message_area (void)
 
   builder = builder_new_from_string (buffer, -1, NULL);
   obj = ctk_builder_get_object (builder, "infobar1");
-  g_assert (GTK_IS_INFO_BAR (obj));
+  g_assert (CTK_IS_INFO_BAR (obj));
   obj1 = ctk_builder_get_object (builder, "content");
-  g_assert (GTK_IS_LABEL (obj1));
+  g_assert (CTK_IS_LABEL (obj1));
 
   obj1 = ctk_builder_get_object (builder, "button_ok");
-  g_assert (GTK_IS_BUTTON (obj1));
+  g_assert (CTK_IS_BUTTON (obj1));
 
   g_object_unref (builder);
 }
@@ -2542,7 +2542,7 @@ test_gmenu (void)
 
   builder = builder_new_from_string (buffer, -1, NULL);
   obj = ctk_builder_get_object (builder, "window");
-  g_assert (GTK_IS_WINDOW (obj));
+  g_assert (CTK_IS_WINDOW (obj));
   obj1 = ctk_builder_get_object (builder, "edit-menu");
   g_assert (G_IS_MENU_MODEL (obj1));
   obj1 = ctk_builder_get_object (builder, "blargh");
@@ -2597,9 +2597,9 @@ test_level_bar (void)
   g_assert (error == NULL);
 
   obj = ctk_builder_get_object (builder, "window");
-  g_assert (GTK_IS_WINDOW (obj));
+  g_assert (CTK_IS_WINDOW (obj));
   obj1 = ctk_builder_get_object (builder, "levelbar");
-  g_assert (GTK_IS_LEVEL_BAR (obj1));
+  g_assert (CTK_IS_LEVEL_BAR (obj1));
   g_object_unref (builder);
 
   error = NULL;
@@ -2612,7 +2612,7 @@ test_level_bar (void)
   error = NULL;
   builder = ctk_builder_new ();
   ctk_builder_add_from_string (builder, buffer3, -1, &error);
-  g_assert_error (error, GTK_BUILDER_ERROR, GTK_BUILDER_ERROR_UNHANDLED_TAG);
+  g_assert_error (error, CTK_BUILDER_ERROR, CTK_BUILDER_ERROR_UNHANDLED_TAG);
   g_error_free (error);
   g_object_unref (builder);
 }
@@ -2655,13 +2655,13 @@ test_expose_object (void)
   g_assert (error == NULL);
 
   obj = ctk_builder_get_object (builder, "button");
-  g_assert (GTK_IS_BUTTON (obj));
+  g_assert (CTK_IS_BUTTON (obj));
 
-  g_assert (ctk_button_get_image (GTK_BUTTON (obj)) == image);
+  g_assert (ctk_button_get_image (CTK_BUTTON (obj)) == image);
 
   /* Connect signals and fake clicked event */
   ctk_builder_connect_signals (builder, NULL);
-  ctk_button_clicked (GTK_BUTTON (obj));
+  ctk_button_clicked (CTK_BUTTON (obj));
 
   g_assert (external_object == G_OBJECT (builder));
   g_assert (external_object_swapped == G_OBJECT (builder));
@@ -2712,7 +2712,7 @@ test_no_ids (void)
   g_assert (error == NULL);
 
   obj = ctk_builder_get_object (builder, "button_ok");
-  g_assert (GTK_IS_BUTTON (obj));
+  g_assert (CTK_IS_BUTTON (obj));
 
   g_object_unref (builder);
 }
@@ -2753,27 +2753,27 @@ test_property_bindings (void)
   builder = builder_new_from_string (buffer, -1, NULL);
   
   checkbutton = ctk_builder_get_object (builder, "checkbutton");
-  g_assert (GTK_IS_CHECK_BUTTON (checkbutton));
-  g_assert (!ctk_toggle_button_get_active (GTK_TOGGLE_BUTTON (checkbutton)));
+  g_assert (CTK_IS_CHECK_BUTTON (checkbutton));
+  g_assert (!ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (checkbutton)));
 
   button = ctk_builder_get_object (builder, "button");
-  g_assert (GTK_IS_BUTTON (button));
-  g_assert (!ctk_widget_get_sensitive (GTK_WIDGET (button)));
+  g_assert (CTK_IS_BUTTON (button));
+  g_assert (!ctk_widget_get_sensitive (CTK_WIDGET (button)));
 
   button2 = ctk_builder_get_object (builder, "button2");
-  g_assert (GTK_IS_BUTTON (button2));
-  g_assert (ctk_widget_get_sensitive (GTK_WIDGET (button2)));
+  g_assert (CTK_IS_BUTTON (button2));
+  g_assert (ctk_widget_get_sensitive (CTK_WIDGET (button2)));
   
-  ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (checkbutton), TRUE);
-  g_assert (ctk_widget_get_sensitive (GTK_WIDGET (button)));
-  g_assert (ctk_widget_get_sensitive (GTK_WIDGET (button2)));
+  ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (checkbutton), TRUE);
+  g_assert (ctk_widget_get_sensitive (CTK_WIDGET (button)));
+  g_assert (ctk_widget_get_sensitive (CTK_WIDGET (button2)));
   
   window = ctk_builder_get_object (builder, "window");
-  ctk_widget_destroy (GTK_WIDGET (window));
+  ctk_widget_destroy (CTK_WIDGET (window));
   g_object_unref (builder);
 }
 
-#define MY_GTK_GRID_TEMPLATE "\
+#define MY_CTK_GRID_TEMPLATE "\
 <interface>\n\
  <template class=\"MyGtkGrid\" parent=\"GtkGrid\">\n\
    <property name=\"visible\">True</property>\n\
@@ -2785,8 +2785,8 @@ test_property_bindings (void)
  </template>\n\
 </interface>\n"
 
-#define MY_TYPE_GTK_GRID             (my_ctk_grid_get_type ())
-#define MY_IS_GTK_GRID(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MY_TYPE_GTK_GRID))
+#define MY_TYPE_CTK_GRID             (my_ctk_grid_get_type ())
+#define MY_IS_CTK_GRID(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MY_TYPE_CTK_GRID))
 
 typedef struct
 {
@@ -2805,20 +2805,20 @@ typedef struct
   MyGtkGridPrivate *priv;
 } MyGtkGrid;
 
-G_DEFINE_TYPE_WITH_PRIVATE (MyGtkGrid, my_ctk_grid, GTK_TYPE_GRID);
+G_DEFINE_TYPE_WITH_PRIVATE (MyGtkGrid, my_ctk_grid, CTK_TYPE_GRID);
 
 static void
 my_ctk_grid_init (MyGtkGrid *grid)
 {
   grid->priv = my_ctk_grid_get_instance_private (grid);
-  ctk_widget_init_template (GTK_WIDGET (grid));
+  ctk_widget_init_template (CTK_WIDGET (grid));
 }
 
 static void
 my_ctk_grid_class_init (MyGtkGridClass *klass)
 {
-  GBytes *template = g_bytes_new_static (MY_GTK_GRID_TEMPLATE, strlen (MY_GTK_GRID_TEMPLATE));
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GBytes *template = g_bytes_new_static (MY_CTK_GRID_TEMPLATE, strlen (MY_CTK_GRID_TEMPLATE));
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   ctk_widget_class_set_template (widget_class, template);
   ctk_widget_class_bind_template_child (widget_class, MyGtkGrid, label);
@@ -2834,14 +2834,14 @@ test_template ()
   g_assert (!g_type_from_name ("MyGtkGrid"));
 
   /* create the template object */
-  my_ctk_grid = g_object_new (MY_TYPE_GTK_GRID, NULL);
+  my_ctk_grid = g_object_new (MY_TYPE_CTK_GRID, NULL);
 
   /* Check everything is fine */
   g_assert (g_type_from_name ("MyGtkGrid"));
-  g_assert (MY_IS_GTK_GRID (my_ctk_grid));
+  g_assert (MY_IS_CTK_GRID (my_ctk_grid));
   g_assert (my_ctk_grid->label == my_ctk_grid->priv->label);
-  g_assert (GTK_IS_LABEL (my_ctk_grid->label));
-  g_assert (GTK_IS_LABEL (my_ctk_grid->priv->label));
+  g_assert (CTK_IS_LABEL (my_ctk_grid->label));
+  g_assert (CTK_IS_LABEL (my_ctk_grid->priv->label));
 }
 
 G_MODULE_EXPORT void
@@ -2922,19 +2922,19 @@ test_file_filter (void)
 
   builder = builder_new_from_string (buffer, -1, NULL);
   obj = ctk_builder_get_object (builder, "filter1");
-  g_assert (GTK_IS_FILE_FILTER (obj));
-  filter = GTK_FILE_FILTER (obj);
+  g_assert (CTK_IS_FILE_FILTER (obj));
+  filter = CTK_FILE_FILTER (obj);
   g_assert_cmpstr (ctk_file_filter_get_name (filter), ==, "filter1");
-  g_assert (ctk_file_filter_get_needed (filter) & GTK_FILE_FILTER_MIME_TYPE);
-  g_assert (ctk_file_filter_get_needed (filter) & GTK_FILE_FILTER_DISPLAY_NAME);
+  g_assert (ctk_file_filter_get_needed (filter) & CTK_FILE_FILTER_MIME_TYPE);
+  g_assert (ctk_file_filter_get_needed (filter) & CTK_FILE_FILTER_DISPLAY_NAME);
 
   info.filename = "test1.txt";
   info.display_name = "test1.txt";
-  info.contains = GTK_FILE_FILTER_FILENAME | GTK_FILE_FILTER_DISPLAY_NAME;
+  info.contains = CTK_FILE_FILTER_FILENAME | CTK_FILE_FILTER_DISPLAY_NAME;
   g_assert (ctk_file_filter_filter (filter, &info));
 
   info.mime_type = "application/x-pdf";
-  info.contains = GTK_FILE_FILTER_MIME_TYPE;
+  info.contains = CTK_FILE_FILTER_MIME_TYPE;
   g_assert (!ctk_file_filter_filter (filter, &info));
 
   g_object_unref (builder);

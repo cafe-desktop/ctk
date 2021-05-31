@@ -94,7 +94,7 @@ distclean-local:
 
 ChangeLog:
 	$(AM_V_GEN) if test -d "$(srcdir)/.git"; then \
-	  (GIT_DIR=$(top_srcdir)/.git $(top_builddir)/build-aux/missing git log GTK_2_16_0^^.. --stat) | fmt --split-only > $@.tmp \
+	  (GIT_DIR=$(top_srcdir)/.git $(top_builddir)/build-aux/missing git log CTK_2_16_0^^.. --stat) | fmt --split-only > $@.tmp \
 	  && mv -f $@.tmp $@ \
 	  || ($(RM) $@.tmp; \
 	      echo Failed to generate ChangeLog, your ChangeLog may be outdated >&2; \

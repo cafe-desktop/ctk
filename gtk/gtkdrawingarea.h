@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_DRAWING_AREA_H__
-#define __GTK_DRAWING_AREA_H__
+#ifndef __CTK_DRAWING_AREA_H__
+#define __CTK_DRAWING_AREA_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -35,12 +35,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_DRAWING_AREA            (ctk_drawing_area_get_type ())
-#define GTK_DRAWING_AREA(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_DRAWING_AREA, GtkDrawingArea))
-#define GTK_DRAWING_AREA_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_DRAWING_AREA, GtkDrawingAreaClass))
-#define GTK_IS_DRAWING_AREA(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_DRAWING_AREA))
-#define GTK_IS_DRAWING_AREA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_DRAWING_AREA))
-#define GTK_DRAWING_AREA_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_DRAWING_AREA, GtkDrawingAreaClass))
+#define CTK_TYPE_DRAWING_AREA            (ctk_drawing_area_get_type ())
+#define CTK_DRAWING_AREA(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_DRAWING_AREA, GtkDrawingArea))
+#define CTK_DRAWING_AREA_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_DRAWING_AREA, GtkDrawingAreaClass))
+#define CTK_IS_DRAWING_AREA(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_DRAWING_AREA))
+#define CTK_IS_DRAWING_AREA_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_DRAWING_AREA))
+#define CTK_DRAWING_AREA_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_DRAWING_AREA, GtkDrawingAreaClass))
 
 
 typedef struct _GtkDrawingArea       GtkDrawingArea;
@@ -73,4 +73,4 @@ GtkWidget* ctk_drawing_area_new      (void);
 
 G_END_DECLS
 
-#endif /* __GTK_DRAWING_AREA_H__ */
+#endif /* __CTK_DRAWING_AREA_H__ */

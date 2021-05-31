@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_TEXT_SEGMENT_H__
-#define __GTK_TEXT_SEGMENT_H__
+#ifndef __CTK_TEXT_SEGMENT_H__
+#define __CTK_TEXT_SEGMENT_H__
 
 #include <gtk/gtktexttag.h>
 #include <gtk/gtktextiter.h>

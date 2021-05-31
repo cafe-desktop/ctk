@@ -76,7 +76,7 @@ enum {
   PROP_STACK
 };
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkStackSwitcher, ctk_stack_switcher, GTK_TYPE_BOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkStackSwitcher, ctk_stack_switcher, CTK_TYPE_BOX)
 
 static void
 ctk_stack_switcher_init (GtkStackSwitcher *switcher)
@@ -84,22 +84,22 @@ ctk_stack_switcher_init (GtkStackSwitcher *switcher)
   GtkStyleContext *context;
   GtkStackSwitcherPrivate *priv;
 
-  ctk_widget_set_has_window (GTK_WIDGET (switcher), FALSE);
+  ctk_widget_set_has_window (CTK_WIDGET (switcher), FALSE);
 
   priv = ctk_stack_switcher_get_instance_private (switcher);
 
-  priv->icon_size = GTK_ICON_SIZE_MENU;
+  priv->icon_size = CTK_ICON_SIZE_MENU;
   priv->stack = NULL;
   priv->buttons = g_hash_table_new (g_direct_hash, g_direct_equal);
 
-  context = ctk_widget_get_style_context (GTK_WIDGET (switcher));
+  context = ctk_widget_get_style_context (CTK_WIDGET (switcher));
   ctk_style_context_add_class (context, "stack-switcher");
-  ctk_style_context_add_class (context, GTK_STYLE_CLASS_LINKED);
+  ctk_style_context_add_class (context, CTK_STYLE_CLASS_LINKED);
 
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (switcher), GTK_ORIENTATION_HORIZONTAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (switcher), CTK_ORIENTATION_HORIZONTAL);
 
-  ctk_drag_dest_set (GTK_WIDGET (switcher), 0, NULL, 0, 0);
-  ctk_drag_dest_set_track_motion (GTK_WIDGET (switcher), TRUE);
+  ctk_drag_dest_set (CTK_WIDGET (switcher), 0, NULL, 0, 0);
+  ctk_drag_dest_set_track_motion (CTK_WIDGET (switcher), TRUE);
 }
 
 static void
@@ -127,18 +127,18 @@ rebuild_child (GtkWidget   *self,
   GtkStyleContext *context;
   GtkWidget *button_child;
 
-  button_child = ctk_bin_get_child (GTK_BIN (self));
+  button_child = ctk_bin_get_child (CTK_BIN (self));
   if (button_child != NULL)
     ctk_widget_destroy (button_child);
 
   button_child = NULL;
-  context = ctk_widget_get_style_context (GTK_WIDGET (self));
+  context = ctk_widget_get_style_context (CTK_WIDGET (self));
 
   if (icon_name != NULL)
     {
       button_child = ctk_image_new_from_icon_name (icon_name, icon_size);
       if (title != NULL)
-        ctk_widget_set_tooltip_text (GTK_WIDGET (self), title);
+        ctk_widget_set_tooltip_text (CTK_WIDGET (self), title);
 
       ctk_style_context_remove_class (context, "text-button");
       ctk_style_context_add_class (context, "image-button");
@@ -147,7 +147,7 @@ rebuild_child (GtkWidget   *self,
     {
       button_child = ctk_label_new (title);
 
-      ctk_widget_set_tooltip_text (GTK_WIDGET (self), NULL);
+      ctk_widget_set_tooltip_text (CTK_WIDGET (self), NULL);
 
       ctk_style_context_remove_class (context, "image-button");
       ctk_style_context_add_class (context, "text-button");
@@ -155,9 +155,9 @@ rebuild_child (GtkWidget   *self,
 
   if (button_child)
     {
-      ctk_widget_set_halign (GTK_WIDGET (button_child), GTK_ALIGN_CENTER);
+      ctk_widget_set_halign (CTK_WIDGET (button_child), CTK_ALIGN_CENTER);
       ctk_widget_show_all (button_child);
-      ctk_container_add (GTK_CONTAINER (self), button_child);
+      ctk_container_add (CTK_CONTAINER (self), button_child);
     }
 }
 
@@ -168,16 +168,16 @@ update_needs_attention (GtkWidget *widget, GtkWidget *button, gpointer data)
   gboolean needs_attention;
   GtkStyleContext *context;
 
-  container = GTK_CONTAINER (data);
+  container = CTK_CONTAINER (data);
   ctk_container_child_get (container, widget,
                            "needs-attention", &needs_attention,
                            NULL);
 
   context = ctk_widget_get_style_context (button);
   if (needs_attention)
-    ctk_style_context_add_class (context, GTK_STYLE_CLASS_NEEDS_ATTENTION);
+    ctk_style_context_add_class (context, CTK_STYLE_CLASS_NEEDS_ATTENTION);
   else
-    ctk_style_context_remove_class (context, GTK_STYLE_CLASS_NEEDS_ATTENTION);
+    ctk_style_context_remove_class (context, CTK_STYLE_CLASS_NEEDS_ATTENTION);
 }
 
 static void
@@ -191,7 +191,7 @@ update_button (GtkStackSwitcher *self,
 
   priv = ctk_stack_switcher_get_instance_private (self);
 
-  ctk_container_child_get (GTK_CONTAINER (priv->stack), widget,
+  ctk_container_child_get (CTK_CONTAINER (priv->stack), widget,
                            "title", &title,
                            "icon-name", &icon_name,
                            NULL);
@@ -233,11 +233,11 @@ on_position_updated (GtkWidget        *widget,
 
   button = g_hash_table_lookup (priv->buttons, widget);
 
-  ctk_container_child_get (GTK_CONTAINER (priv->stack), widget,
+  ctk_container_child_get (CTK_CONTAINER (priv->stack), widget,
                            "position", &position,
                            NULL);
 
-  ctk_box_reorder_child (GTK_BOX (self), button, position);
+  ctk_box_reorder_child (CTK_BOX (self), button, position);
 }
 
 static void
@@ -283,7 +283,7 @@ ctk_stack_switcher_switch_timeout (gpointer data)
   priv->switch_button = NULL;
 
   if (button)
-    ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
+    ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (button), TRUE);
 
   return G_SOURCE_REMOVE;
 }
@@ -295,7 +295,7 @@ ctk_stack_switcher_drag_motion (GtkWidget      *widget,
                                 gint            y,
                                 guint           time)
 {
-  GtkStackSwitcher *self = GTK_STACK_SWITCHER (widget);
+  GtkStackSwitcher *self = CTK_STACK_SWITCHER (widget);
   GtkStackSwitcherPrivate *priv;
   GtkAllocation allocation;
   GtkWidget *button;
@@ -314,11 +314,11 @@ ctk_stack_switcher_drag_motion (GtkWidget      *widget,
   g_hash_table_iter_init (&iter, priv->buttons);
   while (g_hash_table_iter_next (&iter, NULL, &value))
     {
-      ctk_widget_get_allocation (GTK_WIDGET (value), &allocation);
+      ctk_widget_get_allocation (CTK_WIDGET (value), &allocation);
       if (x >= allocation.x && x <= allocation.x + allocation.width &&
           y >= allocation.y && y <= allocation.y + allocation.height)
         {
-          button = GTK_WIDGET (value);
+          button = CTK_WIDGET (value);
           retval = TRUE;
           break;
         }
@@ -345,7 +345,7 @@ ctk_stack_switcher_drag_leave (GtkWidget      *widget,
                                GdkDragContext *context,
                                guint           time)
 {
-  GtkStackSwitcher *self = GTK_STACK_SWITCHER (widget);
+  GtkStackSwitcher *self = CTK_STACK_SWITCHER (widget);
 
   remove_switch_timer (self);
 }
@@ -363,18 +363,18 @@ add_child (GtkWidget        *widget,
   button = ctk_radio_button_new (NULL);
 
   ctk_widget_set_focus_on_click (button, FALSE);
-  ctk_toggle_button_set_mode (GTK_TOGGLE_BUTTON (button), FALSE);
+  ctk_toggle_button_set_mode (CTK_TOGGLE_BUTTON (button), FALSE);
 
   update_button (self, widget, button);
 
-  group = ctk_container_get_children (GTK_CONTAINER (self));
+  group = ctk_container_get_children (CTK_CONTAINER (self));
   if (group != NULL)
     {
-      ctk_radio_button_join_group (GTK_RADIO_BUTTON (button), GTK_RADIO_BUTTON (group->data));
+      ctk_radio_button_join_group (CTK_RADIO_BUTTON (button), CTK_RADIO_BUTTON (group->data));
       g_list_free (group);
     }
 
-  ctk_container_add (GTK_CONTAINER (self), button);
+  ctk_container_add (CTK_CONTAINER (self), button);
 
   g_object_set_data (G_OBJECT (button), "stack-child", widget);
   g_signal_connect (button, "clicked", G_CALLBACK (on_button_clicked), self);
@@ -401,7 +401,7 @@ remove_child (GtkWidget        *widget,
   g_signal_handlers_disconnect_by_func (widget, on_needs_attention_updated, self);
 
   button = g_hash_table_lookup (priv->buttons, widget);
-  ctk_container_remove (GTK_CONTAINER (self), button);
+  ctk_container_remove (CTK_CONTAINER (self), button);
   g_hash_table_remove (priv->buttons, widget);
 }
 
@@ -412,14 +412,14 @@ populate_switcher (GtkStackSwitcher *self)
   GtkWidget *widget, *button;
 
   priv = ctk_stack_switcher_get_instance_private (self);
-  ctk_container_foreach (GTK_CONTAINER (priv->stack), (GtkCallback)add_child, self);
+  ctk_container_foreach (CTK_CONTAINER (priv->stack), (GtkCallback)add_child, self);
 
   widget = ctk_stack_get_visible_child (priv->stack);
   if (widget)
     {
       button = g_hash_table_lookup (priv->buttons, widget);
       priv->in_child_changed = TRUE;
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (button), TRUE);
       priv->in_child_changed = FALSE;
     }
 }
@@ -430,7 +430,7 @@ clear_switcher (GtkStackSwitcher *self)
   GtkStackSwitcherPrivate *priv;
 
   priv = ctk_stack_switcher_get_instance_private (self);
-  ctk_container_foreach (GTK_CONTAINER (priv->stack), (GtkCallback)remove_child, self);
+  ctk_container_foreach (CTK_CONTAINER (priv->stack), (GtkCallback)remove_child, self);
 }
 
 static void
@@ -444,12 +444,12 @@ on_child_changed (GtkWidget        *widget,
 
   priv = ctk_stack_switcher_get_instance_private (self);
 
-  child = ctk_stack_get_visible_child (GTK_STACK (widget));
+  child = ctk_stack_get_visible_child (CTK_STACK (widget));
   button = g_hash_table_lookup (priv->buttons, child);
   if (button != NULL)
     {
       priv->in_child_changed = TRUE;
-      ctk_toggle_button_set_active (GTK_TOGGLE_BUTTON (button), TRUE);
+      ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (button), TRUE);
       priv->in_child_changed = FALSE;
     }
 }
@@ -513,8 +513,8 @@ ctk_stack_switcher_set_stack (GtkStackSwitcher *switcher,
 {
   GtkStackSwitcherPrivate *priv;
 
-  g_return_if_fail (GTK_IS_STACK_SWITCHER (switcher));
-  g_return_if_fail (GTK_IS_STACK (stack) || stack == NULL);
+  g_return_if_fail (CTK_IS_STACK_SWITCHER (switcher));
+  g_return_if_fail (CTK_IS_STACK (stack) || stack == NULL);
 
   priv = ctk_stack_switcher_get_instance_private (switcher);
 
@@ -534,7 +534,7 @@ ctk_stack_switcher_set_stack (GtkStackSwitcher *switcher,
       connect_stack_signals (switcher);
     }
 
-  ctk_widget_queue_resize (GTK_WIDGET (switcher));
+  ctk_widget_queue_resize (CTK_WIDGET (switcher));
 
   g_object_notify (G_OBJECT (switcher), "stack");
 }
@@ -555,7 +555,7 @@ GtkStack *
 ctk_stack_switcher_get_stack (GtkStackSwitcher *switcher)
 {
   GtkStackSwitcherPrivate *priv;
-  g_return_val_if_fail (GTK_IS_STACK_SWITCHER (switcher), NULL);
+  g_return_val_if_fail (CTK_IS_STACK_SWITCHER (switcher), NULL);
 
   priv = ctk_stack_switcher_get_instance_private (switcher);
   return priv->stack;
@@ -567,7 +567,7 @@ ctk_stack_switcher_set_icon_size (GtkStackSwitcher *switcher,
 {
   GtkStackSwitcherPrivate *priv;
 
-  g_return_if_fail (GTK_IS_STACK_SWITCHER (switcher));
+  g_return_if_fail (CTK_IS_STACK_SWITCHER (switcher));
 
   priv = ctk_stack_switcher_get_instance_private (switcher);
 
@@ -591,7 +591,7 @@ ctk_stack_switcher_get_property (GObject      *object,
                                  GValue       *value,
                                  GParamSpec   *pspec)
 {
-  GtkStackSwitcher *switcher = GTK_STACK_SWITCHER (object);
+  GtkStackSwitcher *switcher = CTK_STACK_SWITCHER (object);
   GtkStackSwitcherPrivate *priv;
 
   priv = ctk_stack_switcher_get_instance_private (switcher);
@@ -617,7 +617,7 @@ ctk_stack_switcher_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  GtkStackSwitcher *switcher = GTK_STACK_SWITCHER (object);
+  GtkStackSwitcher *switcher = CTK_STACK_SWITCHER (object);
 
   switch (prop_id)
     {
@@ -638,7 +638,7 @@ ctk_stack_switcher_set_property (GObject      *object,
 static void
 ctk_stack_switcher_dispose (GObject *object)
 {
-  GtkStackSwitcher *switcher = GTK_STACK_SWITCHER (object);
+  GtkStackSwitcher *switcher = CTK_STACK_SWITCHER (object);
 
   remove_switch_timer (switcher);
   ctk_stack_switcher_set_stack (switcher, NULL);
@@ -649,7 +649,7 @@ ctk_stack_switcher_dispose (GObject *object)
 static void
 ctk_stack_switcher_finalize (GObject *object)
 {
-  GtkStackSwitcher *switcher = GTK_STACK_SWITCHER (object);
+  GtkStackSwitcher *switcher = CTK_STACK_SWITCHER (object);
   GtkStackSwitcherPrivate *priv;
 
   priv = ctk_stack_switcher_get_instance_private (switcher);
@@ -663,7 +663,7 @@ static void
 ctk_stack_switcher_class_init (GtkStackSwitcherClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   object_class->get_property = ctk_stack_switcher_get_property;
   object_class->set_property = ctk_stack_switcher_set_property;
@@ -686,16 +686,16 @@ ctk_stack_switcher_class_init (GtkStackSwitcherClass *class)
                                                      P_("Icon Size"),
                                                      P_("Symbolic size to use for named icon"),
                                                      0, G_MAXINT,
-                                                     GTK_ICON_SIZE_MENU,
-                                                     G_PARAM_EXPLICIT_NOTIFY | GTK_PARAM_READWRITE));
+                                                     CTK_ICON_SIZE_MENU,
+                                                     G_PARAM_EXPLICIT_NOTIFY | CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
                                    PROP_STACK,
                                    g_param_spec_object ("stack",
                                                         P_("Stack"),
                                                         P_("Stack"),
-                                                        GTK_TYPE_STACK,
-                                                        GTK_PARAM_READWRITE |
+                                                        CTK_TYPE_STACK,
+                                                        CTK_PARAM_READWRITE |
                                                         G_PARAM_CONSTRUCT));
 
   ctk_widget_class_set_css_name (widget_class, "stackswitcher");
@@ -713,5 +713,5 @@ ctk_stack_switcher_class_init (GtkStackSwitcherClass *class)
 GtkWidget *
 ctk_stack_switcher_new (void)
 {
-  return g_object_new (GTK_TYPE_STACK_SWITCHER, NULL);
+  return g_object_new (CTK_TYPE_STACK_SWITCHER, NULL);
 }

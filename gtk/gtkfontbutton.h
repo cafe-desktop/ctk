@@ -23,10 +23,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_FONT_BUTTON_H__
-#define __GTK_FONT_BUTTON_H__
+#ifndef __CTK_FONT_BUTTON_H__
+#define __CTK_FONT_BUTTON_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -38,12 +38,12 @@ G_BEGIN_DECLS
 /* GtkFontButton is a button widget that allow user to select a font.
  */
 
-#define GTK_TYPE_FONT_BUTTON             (ctk_font_button_get_type ())
-#define GTK_FONT_BUTTON(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FONT_BUTTON, GtkFontButton))
-#define GTK_FONT_BUTTON_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_FONT_BUTTON, GtkFontButtonClass))
-#define GTK_IS_FONT_BUTTON(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FONT_BUTTON))
-#define GTK_IS_FONT_BUTTON_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_FONT_BUTTON))
-#define GTK_FONT_BUTTON_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_FONT_BUTTON, GtkFontButtonClass))
+#define CTK_TYPE_FONT_BUTTON             (ctk_font_button_get_type ())
+#define CTK_FONT_BUTTON(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FONT_BUTTON, GtkFontButton))
+#define CTK_FONT_BUTTON_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_FONT_BUTTON, GtkFontButtonClass))
+#define CTK_IS_FONT_BUTTON(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FONT_BUTTON))
+#define CTK_IS_FONT_BUTTON_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_FONT_BUTTON))
+#define CTK_FONT_BUTTON_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_FONT_BUTTON, GtkFontButtonClass))
 
 typedef struct _GtkFontButton        GtkFontButton;
 typedef struct _GtkFontButtonClass   GtkFontButtonClass;
@@ -111,4 +111,4 @@ void                  ctk_font_button_set_show_size  (GtkFontButton *font_button
 G_END_DECLS
 
 
-#endif /* __GTK_FONT_BUTTON_H__ */
+#endif /* __CTK_FONT_BUTTON_H__ */

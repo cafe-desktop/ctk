@@ -181,40 +181,40 @@ do_rotated_text (GtkWidget *do_widget)
       PangoLayout *layout;
       PangoAttrList *attrs;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_title (GTK_WINDOW (window), "Rotated Text");
-      ctk_window_set_default_size (GTK_WINDOW (window), 4 * RADIUS, 2 * RADIUS);
+      ctk_window_set_title (CTK_WINDOW (window), "Rotated Text");
+      ctk_window_set_default_size (CTK_WINDOW (window), 4 * RADIUS, 2 * RADIUS);
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-      ctk_box_set_homogeneous (GTK_BOX (box), TRUE);
-      ctk_container_add (GTK_CONTAINER (window), box);
+      box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
+      ctk_box_set_homogeneous (CTK_BOX (box), TRUE);
+      ctk_container_add (CTK_CONTAINER (window), box);
 
       /* Add a drawing area */
       drawing_area = ctk_drawing_area_new ();
-      ctk_container_add (GTK_CONTAINER (box), drawing_area);
+      ctk_container_add (CTK_CONTAINER (box), drawing_area);
       ctk_style_context_add_class (ctk_widget_get_style_context (drawing_area),
-                                   GTK_STYLE_CLASS_VIEW);
+                                   CTK_STYLE_CLASS_VIEW);
 
       g_signal_connect (drawing_area, "draw",
                         G_CALLBACK (rotated_text_draw), NULL);
 
       /* And a label */
       label = ctk_label_new (text);
-      ctk_container_add (GTK_CONTAINER (box), label);
+      ctk_container_add (CTK_CONTAINER (box), label);
 
-      ctk_label_set_angle (GTK_LABEL (label), 45);
+      ctk_label_set_angle (CTK_LABEL (label), 45);
 
       /* Set up fancy stuff on the label */
-      layout = ctk_label_get_layout (GTK_LABEL (label));
+      layout = ctk_label_get_layout (CTK_LABEL (label));
       pango_cairo_context_set_shape_renderer (pango_layout_get_context (layout),
                                               fancy_shape_renderer,
                                               NULL, NULL);
       attrs = create_fancy_attr_list_for_layout (layout);
-      ctk_label_set_attributes (GTK_LABEL (label), attrs);
+      ctk_label_set_attributes (CTK_LABEL (label), attrs);
       pango_attr_list_unref (attrs);
     }
 

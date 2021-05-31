@@ -20,7 +20,7 @@ typedef struct
   GtkEventBoxClass parent_class;
 } DrawingAreaClass;
 
-G_DEFINE_TYPE (DrawingArea, drawing_area, GTK_TYPE_EVENT_BOX)
+G_DEFINE_TYPE (DrawingArea, drawing_area, CTK_TYPE_EVENT_BOX)
 
 static void
 drawing_area_ensure_surface (DrawingArea *area,
@@ -61,7 +61,7 @@ drawing_area_size_allocate (GtkWidget     *widget,
 
   drawing_area_ensure_surface (area, allocation->width, allocation->height);
 
-  GTK_WIDGET_CLASS (drawing_area_parent_class)->size_allocate (widget, allocation);
+  CTK_WIDGET_CLASS (drawing_area_parent_class)->size_allocate (widget, allocation);
 }
 
 static void
@@ -69,7 +69,7 @@ drawing_area_map (GtkWidget *widget)
 {
   GtkAllocation allocation;
 
-  GTK_WIDGET_CLASS (drawing_area_parent_class)->map (widget);
+  CTK_WIDGET_CLASS (drawing_area_parent_class)->map (widget);
 
   gdk_window_set_event_compression (ctk_widget_get_window (widget), TRUE);
 
@@ -86,7 +86,7 @@ drawing_area_unmap (GtkWidget *widget)
   g_clear_pointer (&area->cr, cairo_destroy);
   g_clear_pointer (&area->surface, cairo_surface_destroy);
 
-  GTK_WIDGET_CLASS (drawing_area_parent_class)->unmap (widget);
+  CTK_WIDGET_CLASS (drawing_area_parent_class)->unmap (widget);
 }
 
 static gboolean
@@ -114,7 +114,7 @@ drawing_area_draw (GtkWidget *widget,
 static void
 drawing_area_class_init (DrawingAreaClass *klass)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
   widget_class->size_allocate = drawing_area_size_allocate;
   widget_class->draw = drawing_area_draw;
@@ -175,16 +175,16 @@ stylus_gesture_motion (GtkGestureStylus *gesture,
     pressure = 1;
 
   drawing_area_apply_stroke (area, tool, x, y, pressure);
-  ctk_widget_queue_draw (GTK_WIDGET (area));
+  ctk_widget_queue_draw (CTK_WIDGET (area));
 }
 
 static void
 drawing_area_init (DrawingArea *area)
 {
   const GdkRGBA draw_rgba = { 0, 0, 0, 1 };
-  ctk_event_box_set_visible_window (GTK_EVENT_BOX (area), TRUE);
+  ctk_event_box_set_visible_window (CTK_EVENT_BOX (area), TRUE);
 
-  area->stylus_gesture = ctk_gesture_stylus_new (GTK_WIDGET (area));
+  area->stylus_gesture = ctk_gesture_stylus_new (CTK_WIDGET (area));
   g_signal_connect (area->stylus_gesture, "down",
                     G_CALLBACK (stylus_gesture_down), area);
   g_signal_connect (area->stylus_gesture, "motion",
@@ -212,7 +212,7 @@ color_button_color_set (GtkColorButton *button,
 {
   GdkRGBA color;
 
-  ctk_color_chooser_get_rgba (GTK_COLOR_CHOOSER (button), &color);
+  ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (button), &color);
   drawing_area_set_color (draw_area, &color);
 }
 
@@ -226,23 +226,23 @@ do_paint (GtkWidget *toplevel)
       GtkWidget *draw_area, *headerbar, *colorbutton;
       const GdkRGBA draw_rgba = { 0, 0, 0, 1 };
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
       draw_area = drawing_area_new ();
-      ctk_container_add (GTK_CONTAINER (window), draw_area);
+      ctk_container_add (CTK_CONTAINER (window), draw_area);
 
       headerbar = ctk_header_bar_new ();
-      ctk_header_bar_set_title (GTK_HEADER_BAR (headerbar), "Paint");
-      ctk_header_bar_set_show_close_button (GTK_HEADER_BAR (headerbar), TRUE);
+      ctk_header_bar_set_title (CTK_HEADER_BAR (headerbar), "Paint");
+      ctk_header_bar_set_show_close_button (CTK_HEADER_BAR (headerbar), TRUE);
 
       colorbutton = ctk_color_button_new ();
       g_signal_connect (colorbutton, "color-set",
                         G_CALLBACK (color_button_color_set), draw_area);
-      ctk_color_chooser_set_rgba (GTK_COLOR_CHOOSER (colorbutton),
+      ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (colorbutton),
                                   &draw_rgba);
 
-      ctk_header_bar_pack_end (GTK_HEADER_BAR (headerbar), colorbutton);
-      ctk_window_set_titlebar (GTK_WINDOW (window), headerbar);
+      ctk_header_bar_pack_end (CTK_HEADER_BAR (headerbar), colorbutton);
+      ctk_window_set_titlebar (CTK_WINDOW (window), headerbar);
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);

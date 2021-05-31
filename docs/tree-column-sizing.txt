@@ -37,7 +37,7 @@ structure.  These are all valid after realization:
   width             The actual width of the column as displayed.
 
   fixed_width       The requested fixed width for the column iff it's
-		    sizing type is set to GTK_TREE_VIEW_COLUMN_FIXED.
+		    sizing type is set to CTK_TREE_VIEW_COLUMN_FIXED.
 		    Used instead of requested_width in that case.
 
   min_width	    The minimum width the column can be.  If set to -1,
@@ -70,7 +70,7 @@ max_width is greater than or equal to width
 
 min_width <= max_width
 
-(sizing == GTK_TREE_VIEW_COLUMN_FIXED) => (requested_width == fixed_width)
+(sizing == CTK_TREE_VIEW_COLUMN_FIXED) => (requested_width == fixed_width)
 
 (column != last visible column) => width == CLAMP (requested_width, min_width, max_width)
 

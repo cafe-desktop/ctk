@@ -10,12 +10,12 @@ static gboolean da_draw          (GtkWidget     *widget,
 typedef GtkDrawingArea DArea;
 typedef GtkDrawingAreaClass DAreaClass;
 
-G_DEFINE_TYPE (DArea, da, GTK_TYPE_WIDGET)
+G_DEFINE_TYPE (DArea, da, CTK_TYPE_WIDGET)
 
 static void
 da_class_init (DAreaClass *class)
 {
-  GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (class);
+  GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
   widget_class->realize = da_realize;
   widget_class->size_allocate = da_size_allocate;
@@ -25,7 +25,7 @@ da_class_init (DAreaClass *class)
 static void
 da_init (DArea *darea)
 {
-  ctk_widget_set_has_window (GTK_WIDGET (darea), TRUE);
+  ctk_widget_set_has_window (CTK_WIDGET (darea), TRUE);
 }
 
 GtkWidget*
@@ -93,22 +93,22 @@ main (int argc, char *argv[])
 
   ctk_init (NULL, NULL);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-  ctk_window_set_resizable (GTK_WINDOW (window), TRUE);
-  box = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_container_add (GTK_CONTAINER (window), box);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+  ctk_window_set_resizable (CTK_WINDOW (window), TRUE);
+  box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (CTK_CONTAINER (window), box);
 
   stack = ctk_stack_new ();
   switcher = ctk_stack_switcher_new ();
-  ctk_stack_switcher_set_stack (GTK_STACK_SWITCHER (switcher), GTK_STACK (stack));
-  ctk_container_add (GTK_CONTAINER (box), switcher);
-  ctk_container_add (GTK_CONTAINER (box), stack);
+  ctk_stack_switcher_set_stack (CTK_STACK_SWITCHER (switcher), CTK_STACK (stack));
+  ctk_container_add (CTK_CONTAINER (box), switcher);
+  ctk_container_add (CTK_CONTAINER (box), stack);
 
   label = ctk_label_new ("Test test");
-  ctk_stack_add_titled (GTK_STACK (stack), label, "1", "One");
+  ctk_stack_add_titled (CTK_STACK (stack), label, "1", "One");
   widget = da_new ();
   ctk_widget_set_size_request (widget, 100, 100);
-  ctk_stack_add_titled (GTK_STACK (stack), widget, "2", "Two");
+  ctk_stack_add_titled (CTK_STACK (stack), widget, "2", "Two");
   ctk_widget_show_all (window);
 
   ctk_main ();

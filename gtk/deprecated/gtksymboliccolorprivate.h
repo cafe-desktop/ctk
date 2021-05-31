@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_SYMBOLIC_COLOR_PRIVATE_H__
-#define __GTK_SYMBOLIC_COLOR_PRIVATE_H__
+#ifndef __CTK_SYMBOLIC_COLOR_PRIVATE_H__
+#define __CTK_SYMBOLIC_COLOR_PRIVATE_H__
 
 #include "gtk/deprecated/gtksymboliccolor.h"
 #include "gtk/gtkcssparserprivate.h"
@@ -30,4 +30,4 @@ GtkCssValue *      _ctk_symbolic_color_get_css_value      (GtkSymbolicColor     
 
 G_END_DECLS
 
-#endif /* __GTK_SYMBOLIC_COLOR_PRIVATE_H__ */
+#endif /* __CTK_SYMBOLIC_COLOR_PRIVATE_H__ */

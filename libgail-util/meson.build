@@ -26,7 +26,7 @@ libgailutil = library('gailutil-3',
                       include_directories: [confinc, gtkinc],
                       c_args: [
                         '-DGDK_DISABLE_DEPRECATED',
-                        '-DGTK_DISABLE_DEPRECATED',
+                        '-DCTK_DISABLE_DEPRECATED',
                       ] + common_cflags,
                       link_args: gailutil_link_args,
                       install: true)

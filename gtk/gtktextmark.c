@@ -47,7 +47,7 @@
  *
  */
 
-#define GTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
+#define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
 #include "gtktextbtree.h"
 #include "gtkprivate.h"
@@ -136,7 +136,7 @@ ctk_text_mark_class_init (GtkTextMarkClass *klass)
                                                         P_("Name"),
                                                         P_("Mark name"),
                                                         NULL,
-                                                        GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+                                                        CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   /**
    * GtkTextMark:left-gravity:
@@ -151,7 +151,7 @@ ctk_text_mark_class_init (GtkTextMarkClass *klass)
                                                          P_("Left gravity"),
                                                          P_("Whether the mark has left gravity"),
                                                          FALSE,
-                                                         GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
 static void
@@ -166,7 +166,7 @@ ctk_text_mark_finalize (GObject *obj)
   GtkTextMark *mark;
   GtkTextLineSegment *seg;
 
-  mark = GTK_TEXT_MARK (obj);
+  mark = CTK_TEXT_MARK (obj);
 
   seg = mark->segment;
 
@@ -194,7 +194,7 @@ ctk_text_mark_set_property (GObject      *object,
 			    GParamSpec   *pspec)
 {
   gchar *tmp;
-  GtkTextMark *mark = GTK_TEXT_MARK (object);
+  GtkTextMark *mark = CTK_TEXT_MARK (object);
   GtkTextLineSegment *seg = mark->segment;
 
   switch (prop_id)
@@ -223,7 +223,7 @@ ctk_text_mark_get_property (GObject    *object,
 			    GValue     *value,
 			    GParamSpec *pspec)
 {
-  GtkTextMark *mark = GTK_TEXT_MARK (object);
+  GtkTextMark *mark = CTK_TEXT_MARK (object);
 
   switch (prop_id)
     {
@@ -263,7 +263,7 @@ GtkTextMark *
 ctk_text_mark_new (const gchar *name,
 		   gboolean     left_gravity)
 {
-  return g_object_new (GTK_TYPE_TEXT_MARK,
+  return g_object_new (CTK_TYPE_TEXT_MARK,
 		       "name", name,
 		       "left-gravity", left_gravity,
 		       NULL);
@@ -321,7 +321,7 @@ ctk_text_mark_get_deleted (GtkTextMark *mark)
 {
   GtkTextLineSegment *seg;
 
-  g_return_val_if_fail (GTK_IS_TEXT_MARK (mark), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_MARK (mark), FALSE);
 
   seg = mark->segment;
 
@@ -345,7 +345,7 @@ ctk_text_mark_get_buffer (GtkTextMark *mark)
 {
   GtkTextLineSegment *seg;
 
-  g_return_val_if_fail (GTK_IS_TEXT_MARK (mark), NULL);
+  g_return_val_if_fail (CTK_IS_TEXT_MARK (mark), NULL);
 
   seg = mark->segment;
 
@@ -368,7 +368,7 @@ ctk_text_mark_get_left_gravity (GtkTextMark *mark)
 {
   GtkTextLineSegment *seg;
 
-  g_return_val_if_fail (GTK_IS_TEXT_MARK (mark), FALSE);
+  g_return_val_if_fail (CTK_IS_TEXT_MARK (mark), FALSE);
   
   seg = mark->segment;
 

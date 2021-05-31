@@ -22,8 +22,8 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_MENU_PRIVATE_H__
-#define __GTK_MENU_PRIVATE_H__
+#ifndef __CTK_MENU_PRIVATE_H__
+#define __CTK_MENU_PRIVATE_H__
 
 #include <gtk/gtkmenu.h>
 #include <gtk/gtkcssgadgetprivate.h>
@@ -34,8 +34,8 @@ G_BEGIN_DECLS
 /* Directions for submenus */
 typedef enum
 {
-  GTK_DIRECTION_LEFT,
-  GTK_DIRECTION_RIGHT
+  CTK_DIRECTION_LEFT,
+  CTK_DIRECTION_RIGHT
 } GtkSubmenuDirection;
 
 
@@ -151,4 +151,4 @@ void ctk_menu_update_scroll_offset (GtkMenu            *menu,
 
 G_END_DECLS
 
-#endif /* __GTK_MENU_PRIVATE_H__ */
+#endif /* __CTK_MENU_PRIVATE_H__ */

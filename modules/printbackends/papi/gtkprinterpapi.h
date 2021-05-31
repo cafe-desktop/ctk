@@ -15,8 +15,8 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef __GTK_PRINTER_PAPI_H__
-#define __GTK_PRINTER_PAPI_H__
+#ifndef __CTK_PRINTER_PAPI_H__
+#define __CTK_PRINTER_PAPI_H__
 
 #include <glib.h>
 #include <glib-object.h>
@@ -26,12 +26,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINTER_PAPI                  (ctk_printer_papi_get_type ())
-#define GTK_PRINTER_PAPI(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINTER_PAPI, GtkPrinterPapi))
-#define GTK_PRINTER_PAPI_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINTER_PAPI, GtkPrinterPapiClass))
-#define GTK_IS_PRINTER_PAPI(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINTER_PAPI))
-#define GTK_IS_PRINTER_PAPI_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PRINTER_PAPI))
-#define GTK_PRINTER_PAPI_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PRINTER_PAPI, GtkPrinterPapiClass))
+#define CTK_TYPE_PRINTER_PAPI                  (ctk_printer_papi_get_type ())
+#define CTK_PRINTER_PAPI(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINTER_PAPI, GtkPrinterPapi))
+#define CTK_PRINTER_PAPI_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINTER_PAPI, GtkPrinterPapiClass))
+#define CTK_IS_PRINTER_PAPI(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINTER_PAPI))
+#define CTK_IS_PRINTER_PAPI_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINTER_PAPI))
+#define CTK_PRINTER_PAPI_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINTER_PAPI, GtkPrinterPapiClass))
 
 typedef struct _GtkPrinterPapi	        GtkPrinterPapi;
 typedef struct _GtkPrinterPapiClass     GtkPrinterPapiClass;
@@ -56,4 +56,4 @@ GtkPrinterPapi          *ctk_printer_papi_new           (const char      *name, 
 
 G_END_DECLS
 
-#endif /* __GTK_PRINTER_PAPI_H__ */
+#endif /* __CTK_PRINTER_PAPI_H__ */

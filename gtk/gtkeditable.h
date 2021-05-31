@@ -22,11 +22,11 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_EDITABLE_H__
-#define __GTK_EDITABLE_H__
+#ifndef __CTK_EDITABLE_H__
+#define __CTK_EDITABLE_H__
 
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -35,10 +35,10 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_EDITABLE             (ctk_editable_get_type ())
-#define GTK_EDITABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_EDITABLE, GtkEditable))
-#define GTK_IS_EDITABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_EDITABLE))
-#define GTK_EDITABLE_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), GTK_TYPE_EDITABLE, GtkEditableInterface))
+#define CTK_TYPE_EDITABLE             (ctk_editable_get_type ())
+#define CTK_EDITABLE(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_EDITABLE, GtkEditable))
+#define CTK_IS_EDITABLE(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_EDITABLE))
+#define CTK_EDITABLE_GET_IFACE(inst)  (G_TYPE_INSTANCE_GET_INTERFACE ((inst), CTK_TYPE_EDITABLE, GtkEditableInterface))
 
 typedef struct _GtkEditable          GtkEditable;         /* Dummy typedef */
 typedef struct _GtkEditableInterface GtkEditableInterface;
@@ -124,4 +124,4 @@ gboolean ctk_editable_get_editable         (GtkEditable *editable);
 
 G_END_DECLS
 
-#endif /* __GTK_EDITABLE_H__ */
+#endif /* __CTK_EDITABLE_H__ */

@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_MENU_ITEM_H__
-#define __GTK_MENU_ITEM_H__
+#ifndef __CTK_MENU_ITEM_H__
+#define __CTK_MENU_ITEM_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -34,12 +34,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MENU_ITEM            (ctk_menu_item_get_type ())
-#define GTK_MENU_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MENU_ITEM, GtkMenuItem))
-#define GTK_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MENU_ITEM, GtkMenuItemClass))
-#define GTK_IS_MENU_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MENU_ITEM))
-#define GTK_IS_MENU_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_MENU_ITEM))
-#define GTK_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_MENU_ITEM, GtkMenuItemClass))
+#define CTK_TYPE_MENU_ITEM            (ctk_menu_item_get_type ())
+#define CTK_MENU_ITEM(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU_ITEM, GtkMenuItem))
+#define CTK_MENU_ITEM_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU_ITEM, GtkMenuItemClass))
+#define CTK_IS_MENU_ITEM(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MENU_ITEM))
+#define CTK_IS_MENU_ITEM_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MENU_ITEM))
+#define CTK_MENU_ITEM_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU_ITEM, GtkMenuItemClass))
 
 
 typedef struct _GtkMenuItem        GtkMenuItem;
@@ -164,4 +164,4 @@ gboolean   ctk_menu_item_get_reserve_indicator (GtkMenuItem        *menu_item);
 
 G_END_DECLS
 
-#endif /* __GTK_MENU_ITEM_H__ */
+#endif /* __CTK_MENU_ITEM_H__ */

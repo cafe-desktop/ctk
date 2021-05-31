@@ -22,10 +22,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_MENU_H__
-#define __GTK_MENU_H__
+#ifndef __CTK_MENU_H__
+#define __CTK_MENU_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -34,12 +34,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MENU			(ctk_menu_get_type ())
-#define GTK_MENU(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_MENU, GtkMenu))
-#define GTK_MENU_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_MENU, GtkMenuClass))
-#define GTK_IS_MENU(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_MENU))
-#define GTK_IS_MENU_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_MENU))
-#define GTK_MENU_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_MENU, GtkMenuClass))
+#define CTK_TYPE_MENU			(ctk_menu_get_type ())
+#define CTK_MENU(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_MENU, GtkMenu))
+#define CTK_MENU_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_MENU, GtkMenuClass))
+#define CTK_IS_MENU(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_MENU))
+#define CTK_IS_MENU_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_MENU))
+#define CTK_MENU_GET_CLASS(obj)         (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_MENU, GtkMenuClass))
 
 
 typedef struct _GtkMenu        GtkMenu;
@@ -48,17 +48,17 @@ typedef struct _GtkMenuPrivate GtkMenuPrivate;
 
 /**
  * GtkArrowPlacement:
- * @GTK_ARROWS_BOTH: Place one arrow on each end of the menu.
- * @GTK_ARROWS_START: Place both arrows at the top of the menu.
- * @GTK_ARROWS_END: Place both arrows at the bottom of the menu.
+ * @CTK_ARROWS_BOTH: Place one arrow on each end of the menu.
+ * @CTK_ARROWS_START: Place both arrows at the top of the menu.
+ * @CTK_ARROWS_END: Place both arrows at the bottom of the menu.
  *
  * Used to specify the placement of scroll arrows in scrolling menus.
  */
 typedef enum
 {
-  GTK_ARROWS_BOTH,
-  GTK_ARROWS_START,
-  GTK_ARROWS_END
+  CTK_ARROWS_BOTH,
+  CTK_ARROWS_START,
+  CTK_ARROWS_END
 } GtkArrowPlacement;
 
 /**
@@ -274,4 +274,4 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GtkMenu, g_object_unref)
 
 G_END_DECLS
 
-#endif /* __GTK_MENU_H__ */
+#endif /* __CTK_MENU_H__ */

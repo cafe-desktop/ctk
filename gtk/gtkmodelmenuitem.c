@@ -35,7 +35,7 @@ struct _GtkModelMenuItem
 
 typedef GtkCheckMenuItemClass GtkModelMenuItemClass;
 
-G_DEFINE_TYPE (GtkModelMenuItem, ctk_model_menu_item, GTK_TYPE_CHECK_MENU_ITEM)
+G_DEFINE_TYPE (GtkModelMenuItem, ctk_model_menu_item, CTK_TYPE_CHECK_MENU_ITEM)
 
 enum
 {
@@ -51,10 +51,10 @@ static void
 ctk_model_menu_item_toggle_size_request (GtkMenuItem *menu_item,
                                          gint        *requisition)
 {
-  GtkModelMenuItem *item = GTK_MODEL_MENU_ITEM (menu_item);
+  GtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (menu_item);
 
   if (item->has_indicator)
-    GTK_MENU_ITEM_CLASS (ctk_model_menu_item_parent_class)
+    CTK_MENU_ITEM_CLASS (ctk_model_menu_item_parent_class)
       ->toggle_size_request (menu_item, requisition);
 
   else
@@ -71,10 +71,10 @@ static void
 ctk_model_menu_item_draw_indicator (GtkCheckMenuItem *check_item,
                                     cairo_t          *cr)
 {
-  GtkModelMenuItem *item = GTK_MODEL_MENU_ITEM (check_item);
+  GtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (check_item);
 
   if (item->has_indicator)
-    GTK_CHECK_MENU_ITEM_CLASS (ctk_model_menu_item_parent_class)
+    CTK_CHECK_MENU_ITEM_CLASS (ctk_model_menu_item_parent_class)
       ->draw_indicator (check_item, cr);
 }
 
@@ -87,7 +87,7 @@ ctk_model_menu_item_set_has_indicator (GtkModelMenuItem *item,
 
   item->has_indicator = has_indicator;
 
-  ctk_widget_queue_resize (GTK_WIDGET (item));
+  ctk_widget_queue_resize (CTK_WIDGET (item));
 }
 
 static void
@@ -100,21 +100,21 @@ ctk_model_menu_item_set_action_role (GtkModelMenuItem       *item,
   if (role == item->role)
     return;
 
-  ctk_check_menu_item_set_draw_as_radio (GTK_CHECK_MENU_ITEM (item), role == GTK_MENU_TRACKER_ITEM_ROLE_RADIO);
-  ctk_model_menu_item_set_has_indicator (item, role != GTK_MENU_TRACKER_ITEM_ROLE_NORMAL);
+  ctk_check_menu_item_set_draw_as_radio (CTK_CHECK_MENU_ITEM (item), role == CTK_MENU_TRACKER_ITEM_ROLE_RADIO);
+  ctk_model_menu_item_set_has_indicator (item, role != CTK_MENU_TRACKER_ITEM_ROLE_NORMAL);
 
-  accessible = ctk_widget_get_accessible (GTK_WIDGET (item));
+  accessible = ctk_widget_get_accessible (CTK_WIDGET (item));
   switch (role)
     {
-    case GTK_MENU_TRACKER_ITEM_ROLE_NORMAL:
+    case CTK_MENU_TRACKER_ITEM_ROLE_NORMAL:
       a11y_role = ATK_ROLE_MENU_ITEM;
       break;
 
-    case GTK_MENU_TRACKER_ITEM_ROLE_CHECK:
+    case CTK_MENU_TRACKER_ITEM_ROLE_CHECK:
       a11y_role = ATK_ROLE_CHECK_MENU_ITEM;
       break;
 
-    case GTK_MENU_TRACKER_ITEM_ROLE_RADIO:
+    case CTK_MENU_TRACKER_ITEM_ROLE_RADIO:
       a11y_role = ATK_ROLE_RADIO_MENU_ITEM;
       break;
 
@@ -132,10 +132,10 @@ ctk_model_menu_item_set_icon (GtkModelMenuItem *item,
 {
   GtkWidget *child;
 
-  g_return_if_fail (GTK_IS_MODEL_MENU_ITEM (item));
+  g_return_if_fail (CTK_IS_MODEL_MENU_ITEM (item));
   g_return_if_fail (icon == NULL || G_IS_ICON (icon));
 
-  child = ctk_bin_get_child (GTK_BIN (item));
+  child = ctk_bin_get_child (CTK_BIN (item));
 
   /* There are only three possibilities here:
    *
@@ -148,21 +148,21 @@ ctk_model_menu_item_set_icon (GtkModelMenuItem *item,
    */
   if (child == NULL)
     {
-      ctk_menu_item_get_label (GTK_MENU_ITEM (item));
-      child = ctk_bin_get_child (GTK_BIN (item));
-      g_assert (GTK_IS_LABEL (child));
+      ctk_menu_item_get_label (CTK_MENU_ITEM (item));
+      child = ctk_bin_get_child (CTK_BIN (item));
+      g_assert (CTK_IS_LABEL (child));
     }
 
   /* If it is a box, make sure there are no images inside of it already.
    */
-  if (GTK_IS_BOX (child))
+  if (CTK_IS_BOX (child))
     {
       GList *children;
 
-      children = ctk_container_get_children (GTK_CONTAINER (child));
+      children = ctk_container_get_children (CTK_CONTAINER (child));
       while (children)
         {
-          if (GTK_IS_IMAGE (children->data))
+          if (CTK_IS_IMAGE (children->data))
             ctk_widget_destroy (children->data);
 
           children = g_list_delete_link (children, children);
@@ -175,22 +175,22 @@ ctk_model_menu_item_set_icon (GtkModelMenuItem *item,
       if (icon == NULL)
         return;
 
-      box = ctk_box_new (GTK_ORIENTATION_HORIZONTAL, 6);
+      box = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 6);
 
       /* Reparent the child without destroying it */
       g_object_ref (child);
-      ctk_container_remove (GTK_CONTAINER (item), child);
-      ctk_box_pack_end (GTK_BOX (box), child, TRUE, TRUE, 0);
+      ctk_container_remove (CTK_CONTAINER (item), child);
+      ctk_box_pack_end (CTK_BOX (box), child, TRUE, TRUE, 0);
       g_object_unref (child);
 
-      ctk_container_add (GTK_CONTAINER (item), box);
+      ctk_container_add (CTK_CONTAINER (item), box);
       ctk_widget_show (box);
 
       /* Now we have a box */
       child = box;
     }
 
-  g_assert (GTK_IS_BOX (child));
+  g_assert (CTK_IS_BOX (child));
 
   /* child is now a box containing a label and no image.  Add the icon,
    * if appropriate.
@@ -199,9 +199,9 @@ ctk_model_menu_item_set_icon (GtkModelMenuItem *item,
     {
       GtkWidget *image;
 
-      image = ctk_image_new_from_gicon (icon, GTK_ICON_SIZE_MENU);
-      ctk_image_set_pixel_size (GTK_IMAGE (image), 16);
-      ctk_box_pack_start (GTK_BOX (child), image, FALSE, FALSE, 0);
+      image = ctk_image_new_from_gicon (icon, CTK_ICON_SIZE_MENU);
+      ctk_image_set_pixel_size (CTK_IMAGE (image), 16);
+      ctk_box_pack_start (CTK_BOX (child), image, FALSE, FALSE, 0);
       ctk_widget_show (image);
     }
 
@@ -214,17 +214,17 @@ ctk_model_menu_item_get_icon (GtkModelMenuItem *item)
   GtkWidget *child;
   GIcon *icon = NULL;
 
-  child = ctk_bin_get_child (GTK_BIN (item));
-  if (GTK_IS_BOX (child))
+  child = ctk_bin_get_child (CTK_BIN (item));
+  if (CTK_IS_BOX (child))
     {
       GList *children, *l;
 
-      children = ctk_container_get_children (GTK_CONTAINER (child));
+      children = ctk_container_get_children (CTK_CONTAINER (child));
       for (l = children; l; l = l->next)
         {
-          if (GTK_IS_IMAGE (l->data))
+          if (CTK_IS_IMAGE (l->data))
             {
-              ctk_image_get_gicon (GTK_IMAGE (l->data), &icon, NULL);
+              ctk_image_get_gicon (CTK_IMAGE (l->data), &icon, NULL);
               break;
             }
         }
@@ -241,29 +241,29 @@ ctk_model_menu_item_set_text (GtkModelMenuItem *item,
   GtkWidget *child;
   GList *children;
 
-  child = ctk_bin_get_child (GTK_BIN (item));
+  child = ctk_bin_get_child (CTK_BIN (item));
   if (child == NULL)
     {
-      ctk_menu_item_get_label (GTK_MENU_ITEM (item));
-      child = ctk_bin_get_child (GTK_BIN (item));
-      g_assert (GTK_IS_LABEL (child));
+      ctk_menu_item_get_label (CTK_MENU_ITEM (item));
+      child = ctk_bin_get_child (CTK_BIN (item));
+      g_assert (CTK_IS_LABEL (child));
     }
 
-  if (GTK_IS_LABEL (child))
+  if (CTK_IS_LABEL (child))
     {
-      ctk_label_set_text_with_mnemonic (GTK_LABEL (child), text);
+      ctk_label_set_text_with_mnemonic (CTK_LABEL (child), text);
       return;
     }
 
-  if (!GTK_IS_CONTAINER (child))
+  if (!CTK_IS_CONTAINER (child))
     return;
 
-  children = ctk_container_get_children (GTK_CONTAINER (child));
+  children = ctk_container_get_children (CTK_CONTAINER (child));
 
   while (children)
     {
-      if (GTK_IS_LABEL (children->data))
-        ctk_label_set_label (GTK_LABEL (children->data), text);
+      if (CTK_IS_LABEL (children->data))
+        ctk_label_set_label (CTK_LABEL (children->data), text);
 
       children = g_list_delete_link (children, children);
     }
@@ -276,22 +276,22 @@ ctk_model_menu_item_get_text (GtkModelMenuItem *item)
 {
   GtkWidget *child;
 
-  child = ctk_bin_get_child (GTK_BIN (item));
+  child = ctk_bin_get_child (CTK_BIN (item));
 
-  if (GTK_IS_LABEL (child))
-    return ctk_label_get_text (GTK_LABEL (child));
+  if (CTK_IS_LABEL (child))
+    return ctk_label_get_text (CTK_LABEL (child));
 
-  if (GTK_IS_CONTAINER (child))
+  if (CTK_IS_CONTAINER (child))
     {
       GList *children, *l;
       const gchar *text = NULL;
 
-      children = ctk_container_get_children (GTK_CONTAINER (child));
+      children = ctk_container_get_children (CTK_CONTAINER (child));
       for (l = children; l; l = l->next)
         {
-          if (GTK_IS_LABEL (l->data))
+          if (CTK_IS_LABEL (l->data))
             {
-              text = ctk_label_get_text (GTK_LABEL (l->data));
+              text = ctk_label_get_text (CTK_LABEL (l->data));
               break;
             }
         }
@@ -324,28 +324,28 @@ ctk_model_menu_item_set_accel (GtkModelMenuItem *item,
       modifiers = 0;
     }
 
-  child = ctk_bin_get_child (GTK_BIN (item));
+  child = ctk_bin_get_child (CTK_BIN (item));
   if (child == NULL)
     {
-      ctk_menu_item_get_label (GTK_MENU_ITEM (item));
-      child = ctk_bin_get_child (GTK_BIN (item));
-      g_assert (GTK_IS_LABEL (child));
+      ctk_menu_item_get_label (CTK_MENU_ITEM (item));
+      child = ctk_bin_get_child (CTK_BIN (item));
+      g_assert (CTK_IS_LABEL (child));
     }
 
-  if (GTK_IS_ACCEL_LABEL (child))
+  if (CTK_IS_ACCEL_LABEL (child))
     {
-      ctk_accel_label_set_accel (GTK_ACCEL_LABEL (child), key, modifiers);
+      ctk_accel_label_set_accel (CTK_ACCEL_LABEL (child), key, modifiers);
       return;
     }
 
-  if (!GTK_IS_CONTAINER (child))
+  if (!CTK_IS_CONTAINER (child))
     return;
 
-  children = ctk_container_get_children (GTK_CONTAINER (child));
+  children = ctk_container_get_children (CTK_CONTAINER (child));
 
   while (children)
     {
-      if (GTK_IS_ACCEL_LABEL (children->data))
+      if (CTK_IS_ACCEL_LABEL (children->data))
         ctk_accel_label_set_accel (children->data, key, modifiers);
 
       children = g_list_delete_link (children, children);
@@ -358,20 +358,20 @@ ctk_model_menu_item_get_accel (GtkModelMenuItem *item)
   GtkWidget *child;
   GtkWidget *accel_label = NULL;
 
-  child = ctk_bin_get_child (GTK_BIN (item));
+  child = ctk_bin_get_child (CTK_BIN (item));
 
-  if (GTK_IS_ACCEL_LABEL (child))
+  if (CTK_IS_ACCEL_LABEL (child))
     accel_label = child;
-  else if (GTK_IS_CONTAINER (child))
+  else if (CTK_IS_CONTAINER (child))
     {
       GList *children, *l;
 
-      children = ctk_container_get_children (GTK_CONTAINER (child));
+      children = ctk_container_get_children (CTK_CONTAINER (child));
       for (l = children; l; l = l->next)
         {
-          if (GTK_IS_ACCEL_LABEL (l->data))
+          if (CTK_IS_ACCEL_LABEL (l->data))
             {
-              accel_label = GTK_WIDGET (l->data);
+              accel_label = CTK_WIDGET (l->data);
               break;
             }
         }
@@ -383,7 +383,7 @@ ctk_model_menu_item_get_accel (GtkModelMenuItem *item)
       guint key;
       GdkModifierType mods;
 
-      ctk_accel_label_get_accel (GTK_ACCEL_LABEL (accel_label), &key, &mods);
+      ctk_accel_label_get_accel (CTK_ACCEL_LABEL (accel_label), &key, &mods);
 
       return ctk_accelerator_name (key, mods);
     }
@@ -397,7 +397,7 @@ ctk_model_menu_item_get_property (GObject    *object,
                                   GValue     *value,
                                   GParamSpec *pspec)
 {
-  GtkModelMenuItem *item = GTK_MODEL_MENU_ITEM (object);
+  GtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (object);
 
   switch (prop_id)
     {
@@ -414,7 +414,7 @@ ctk_model_menu_item_get_property (GObject    *object,
       break;
 
     case PROP_TOGGLED:
-      g_value_set_boolean (value, ctk_check_menu_item_get_active (GTK_CHECK_MENU_ITEM (item)));
+      g_value_set_boolean (value, ctk_check_menu_item_get_active (CTK_CHECK_MENU_ITEM (item)));
       break;
 
     case PROP_ACCEL:
@@ -432,7 +432,7 @@ ctk_model_menu_item_set_property (GObject      *object,
                                   const GValue *value,
                                   GParamSpec   *pspec)
 {
-  GtkModelMenuItem *item = GTK_MODEL_MENU_ITEM (object);
+  GtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (object);
 
   switch (prop_id)
     {
@@ -449,7 +449,7 @@ ctk_model_menu_item_set_property (GObject      *object,
       break;
 
     case PROP_TOGGLED:
-      _ctk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (item), g_value_get_boolean (value));
+      _ctk_check_menu_item_set_active (CTK_CHECK_MENU_ITEM (item), g_value_get_boolean (value));
       g_object_notify (object, "active");
       break;
 
@@ -470,8 +470,8 @@ ctk_model_menu_item_init (GtkModelMenuItem *item)
 static void
 ctk_model_menu_item_class_init (GtkModelMenuItemClass *class)
 {
-  GtkCheckMenuItemClass *check_class = GTK_CHECK_MENU_ITEM_CLASS (class);
-  GtkMenuItemClass *item_class = GTK_MENU_ITEM_CLASS (class);
+  GtkCheckMenuItemClass *check_class = CTK_CHECK_MENU_ITEM_CLASS (class);
+  GtkMenuItemClass *item_class = CTK_MENU_ITEM_CLASS (class);
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
   check_class->draw_indicator = ctk_model_menu_item_draw_indicator;
@@ -484,8 +484,8 @@ ctk_model_menu_item_class_init (GtkModelMenuItemClass *class)
 
   g_object_class_install_property (object_class, PROP_ACTION_ROLE,
                                    g_param_spec_enum ("action-role", "action role", "action role",
-                                                      GTK_TYPE_MENU_TRACKER_ITEM_ROLE,
-                                                      GTK_MENU_TRACKER_ITEM_ROLE_NORMAL,
+                                                      CTK_TYPE_MENU_TRACKER_ITEM_ROLE,
+                                                      CTK_MENU_TRACKER_ITEM_ROLE_NORMAL,
                                                       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY));
   g_object_class_install_property (object_class, PROP_ICON,
                                    g_param_spec_object ("icon", "icon", "icon", G_TYPE_ICON,
@@ -500,11 +500,11 @@ ctk_model_menu_item_class_init (GtkModelMenuItemClass *class)
                                    g_param_spec_string ("accel", "accel", "accel", NULL,
                                                         G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY));
 
-  ctk_widget_class_set_accessible_role (GTK_WIDGET_CLASS (class), ATK_ROLE_MENU_ITEM);
+  ctk_widget_class_set_accessible_role (CTK_WIDGET_CLASS (class), ATK_ROLE_MENU_ITEM);
 }
 
 GtkWidget *
 ctk_model_menu_item_new (void)
 {
-  return g_object_new (GTK_TYPE_MODEL_MENU_ITEM, NULL);
+  return g_object_new (CTK_TYPE_MODEL_MENU_ITEM, NULL);
 }

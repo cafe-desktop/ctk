@@ -26,10 +26,10 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
  */
 
-#ifndef __GTK_ACTION_H__
-#define __GTK_ACTION_H__
+#ifndef __CTK_ACTION_H__
+#define __CTK_ACTION_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -37,12 +37,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_ACTION            (ctk_action_get_type ())
-#define GTK_ACTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ACTION, GtkAction))
-#define GTK_ACTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_ACTION, GtkActionClass))
-#define GTK_IS_ACTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ACTION))
-#define GTK_IS_ACTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_ACTION))
-#define GTK_ACTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), GTK_TYPE_ACTION, GtkActionClass))
+#define CTK_TYPE_ACTION            (ctk_action_get_type ())
+#define CTK_ACTION(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ACTION, GtkAction))
+#define CTK_ACTION_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_ACTION, GtkActionClass))
+#define CTK_IS_ACTION(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_ACTION))
+#define CTK_IS_ACTION_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_ACTION))
+#define CTK_ACTION_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS((obj), CTK_TYPE_ACTION, GtkActionClass))
 
 typedef struct _GtkAction      GtkAction;
 typedef struct _GtkActionClass GtkActionClass;
@@ -214,4 +214,4 @@ gboolean              ctk_action_get_always_show_image  (GtkAction   *action);
 
 G_END_DECLS
 
-#endif  /* __GTK_ACTION_H__ */
+#endif  /* __CTK_ACTION_H__ */

@@ -21,9 +21,9 @@ def main(argv):
     gdk_sourcedir = os.path.join(top_srcdir, 'gdk')
     version_parts = args.version.split('.')
 
-    gdkversionmacro_replace_items = {'@GTK_MAJOR_VERSION@': version_parts[0],
-                                     '@GTK_MINOR_VERSION@': version_parts[1],
-                                     '@GTK_MICRO_VERSION@': version_parts[2]}
+    gdkversionmacro_replace_items = {'@CTK_MAJOR_VERSION@': version_parts[0],
+                                     '@CTK_MINOR_VERSION@': version_parts[1],
+                                     '@CTK_MICRO_VERSION@': version_parts[2]}
 
     replace_multi(os.path.join(gdk_sourcedir, 'gdkversionmacros.h.in'),
                   os.path.join(gdk_sourcedir, 'gdkversionmacros.h'),

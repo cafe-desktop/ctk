@@ -193,28 +193,28 @@ do_transparent (GtkWidget *do_widget)
       GtkCssProvider *provider;
       gchar *css;
 
-      window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
-      ctk_window_set_screen (GTK_WINDOW (window),
+      window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
+      ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));
-      ctk_window_set_default_size (GTK_WINDOW (window), 450, 450);
+      ctk_window_set_default_size (CTK_WINDOW (window), 450, 450);
 
       g_signal_connect (window, "destroy",
                         G_CALLBACK (ctk_widget_destroyed), &window);
 
-      ctk_window_set_title (GTK_WINDOW (window), "Transparency");
-      ctk_container_set_border_width (GTK_CONTAINER (window), 0);
+      ctk_window_set_title (CTK_WINDOW (window), "Transparency");
+      ctk_container_set_border_width (CTK_CONTAINER (window), 0);
 
       view = ctk_text_view_new ();
 
       sw = ctk_scrolled_window_new (NULL, NULL);
-      ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
-                                      GTK_POLICY_AUTOMATIC,
-                                      GTK_POLICY_AUTOMATIC);
-      ctk_container_add (GTK_CONTAINER (sw), view);
+      ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (sw),
+                                      CTK_POLICY_AUTOMATIC,
+                                      CTK_POLICY_AUTOMATIC);
+      ctk_container_add (CTK_CONTAINER (sw), view);
 
       overlay = ctk_overlay_new ();
-      ctk_container_add (GTK_CONTAINER (overlay), sw);
-      ctk_container_add (GTK_CONTAINER (window), overlay);
+      ctk_container_add (CTK_CONTAINER (overlay), sw);
+      ctk_container_add (CTK_CONTAINER (window), overlay);
 
       entry = ctk_entry_new ();
       provider = ctk_css_provider_new ();
@@ -223,12 +223,12 @@ do_transparent (GtkWidget *do_widget)
       ctk_css_provider_load_from_data (provider, css, -1, NULL);
       g_free (css);
       ctk_style_context_add_provider (ctk_widget_get_style_context (entry),
-                                      GTK_STYLE_PROVIDER (provider),
-                                      GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+                                      CTK_STYLE_PROVIDER (provider),
+                                      CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
       g_signal_connect (entry, "draw", G_CALLBACK (draw_callback), NULL);
-      ctk_overlay_add_overlay (GTK_OVERLAY (overlay), entry);
-      ctk_widget_set_halign (entry, GTK_ALIGN_CENTER);
-      ctk_widget_set_valign (entry, GTK_ALIGN_START);
+      ctk_overlay_add_overlay (CTK_OVERLAY (overlay), entry);
+      ctk_widget_set_halign (entry, CTK_ALIGN_CENTER);
+      ctk_widget_set_valign (entry, CTK_ALIGN_START);
 
       ctk_widget_show_all (overlay);
     }

@@ -149,7 +149,7 @@ ctk_css_section_unref (GtkCssSection *section)
 GtkCssSectionType
 ctk_css_section_get_section_type (const GtkCssSection *section)
 {
-  ctk_internal_return_val_if_fail (section != NULL, GTK_CSS_SECTION_DOCUMENT);
+  ctk_internal_return_val_if_fail (section != NULL, CTK_CSS_SECTION_DOCUMENT);
 
   return section->section_type;
 }
@@ -160,10 +160,10 @@ ctk_css_section_get_section_type (const GtkCssSection *section)
  *
  * Gets the parent section for the given @section. The parent section is
  * the section that contains this @section. A special case are sections of
- * type #GTK_CSS_SECTION_DOCUMENT. Their parent will either be %NULL
+ * type #CTK_CSS_SECTION_DOCUMENT. Their parent will either be %NULL
  * if they are the original CSS document that was loaded by
  * ctk_css_provider_load_from_file() or a section of type
- * #GTK_CSS_SECTION_IMPORT if it was loaded with an import rule from
+ * #CTK_CSS_SECTION_IMPORT if it was loaded with an import rule from
  * a different file.
  *
  * Returns: (nullable) (transfer none): the parent section or %NULL if none

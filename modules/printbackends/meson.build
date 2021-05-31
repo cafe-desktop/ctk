@@ -87,7 +87,7 @@ if enabled_print_backends.contains('cups')
   endif
 endif
 
-cdata.set_quoted('GTK_PRINT_BACKENDS', ','.join(print_backends))
+cdata.set_quoted('CTK_PRINT_BACKENDS', ','.join(print_backends))
 
 disabled_print_backends = []
 foreach backend : all_print_backends
@@ -99,9 +99,9 @@ endforeach
 # Building
 
 printbackends_args = [
-  '-DGTK_COMPILATION',
-  '-DGTK_DISABLE_DEPRECATION_WARNINGS',
-  '-DGTK_PRINT_BACKEND_ENABLE_UNSUPPORTED',
+  '-DCTK_COMPILATION',
+  '-DCTK_DISABLE_DEPRECATION_WARNINGS',
+  '-DCTK_PRINT_BACKEND_ENABLE_UNSUPPORTED',
 ]
 printbackends_subdir = 'gtk-3.0/@0@/printbackends'.format(ctk_binary_version)
 printbackends_install_dir = join_paths(get_option('libdir'), printbackends_subdir)

@@ -36,11 +36,11 @@ test_dialog_basic (void)
   GtkWidget *dialog;
 
   dialog = ctk_dialog_new();
-  g_assert (GTK_IS_DIALOG (dialog));
+  g_assert (CTK_IS_DIALOG (dialog));
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  g_assert (ctk_dialog_get_action_area (GTK_DIALOG (dialog)) != NULL);
+  g_assert (ctk_dialog_get_action_area (CTK_DIALOG (dialog)) != NULL);
 G_GNUC_END_IGNORE_DEPRECATIONS
-  g_assert (ctk_dialog_get_content_area (GTK_DIALOG (dialog)) != NULL);
+  g_assert (ctk_dialog_get_content_area (CTK_DIALOG (dialog)) != NULL);
 
   ctk_widget_destroy (dialog);
 }
@@ -50,11 +50,11 @@ test_dialog_override_property (void)
 {
   GtkWidget *dialog;
 
-  dialog = g_object_new (GTK_TYPE_DIALOG,
+  dialog = g_object_new (CTK_TYPE_DIALOG,
 			 "type-hint", GDK_WINDOW_TYPE_HINT_UTILITY,
 			 NULL);
-  g_assert (GTK_IS_DIALOG (dialog));
-  g_assert (ctk_window_get_type_hint (GTK_WINDOW (dialog)) == GDK_WINDOW_TYPE_HINT_UTILITY);
+  g_assert (CTK_IS_DIALOG (dialog));
+  g_assert (ctk_window_get_type_hint (CTK_WINDOW (dialog)) == GDK_WINDOW_TYPE_HINT_UTILITY);
 
   ctk_widget_destroy (dialog);
 }
@@ -65,10 +65,10 @@ test_message_dialog_basic (void)
   GtkWidget *dialog;
 
   dialog = ctk_message_dialog_new (NULL, 0,
-				   GTK_MESSAGE_INFO,
-				   GTK_BUTTONS_CLOSE,
+				   CTK_MESSAGE_INFO,
+				   CTK_BUTTONS_CLOSE,
 				   "Do it hard !");
-  g_assert (GTK_IS_DIALOG (dialog));
+  g_assert (CTK_IS_DIALOG (dialog));
   ctk_widget_destroy (dialog);
 }
 
@@ -78,7 +78,7 @@ test_about_dialog_basic (void)
   GtkWidget *dialog;
 
   dialog = ctk_about_dialog_new ();
-  g_assert (GTK_IS_ABOUT_DIALOG (dialog));
+  g_assert (CTK_IS_ABOUT_DIALOG (dialog));
   ctk_widget_destroy (dialog);
 }
 
@@ -88,7 +88,7 @@ test_info_bar_basic (void)
   GtkWidget *infobar;
 
   infobar = ctk_info_bar_new ();
-  g_assert (GTK_IS_INFO_BAR (infobar));
+  g_assert (CTK_IS_INFO_BAR (infobar));
   ctk_widget_destroy (infobar);
 }
 
@@ -100,7 +100,7 @@ test_lock_button_basic (void)
 
   permission = g_simple_permission_new (TRUE);
   button = ctk_lock_button_new (permission);
-  g_assert (GTK_IS_LOCK_BUTTON (button));
+  g_assert (CTK_IS_LOCK_BUTTON (button));
   ctk_widget_destroy (button);
   g_object_unref (permission);
 }
@@ -111,7 +111,7 @@ test_assistant_basic (void)
   GtkWidget *widget;
 
   widget = ctk_assistant_new ();
-  g_assert (GTK_IS_ASSISTANT (widget));
+  g_assert (CTK_IS_ASSISTANT (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -120,9 +120,9 @@ test_scale_button_basic (void)
 {
   GtkWidget *widget;
 
-  widget = ctk_scale_button_new (GTK_ICON_SIZE_MENU,
+  widget = ctk_scale_button_new (CTK_ICON_SIZE_MENU,
 				 0, 100, 10, NULL);
-  g_assert (GTK_IS_SCALE_BUTTON (widget));
+  g_assert (CTK_IS_SCALE_BUTTON (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -132,7 +132,7 @@ test_volume_button_basic (void)
   GtkWidget *widget;
 
   widget = ctk_volume_button_new ();
-  g_assert (GTK_IS_VOLUME_BUTTON (widget));
+  g_assert (CTK_IS_VOLUME_BUTTON (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -142,7 +142,7 @@ test_statusbar_basic (void)
   GtkWidget *widget;
 
   widget = ctk_statusbar_new ();
-  g_assert (GTK_IS_STATUSBAR (widget));
+  g_assert (CTK_IS_STATUSBAR (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -152,7 +152,7 @@ test_search_bar_basic (void)
   GtkWidget *widget;
 
   widget = ctk_search_bar_new ();
-  g_assert (GTK_IS_SEARCH_BAR (widget));
+  g_assert (CTK_IS_SEARCH_BAR (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -162,7 +162,7 @@ test_action_bar_basic (void)
   GtkWidget *widget;
 
   widget = ctk_action_bar_new ();
-  g_assert (GTK_IS_ACTION_BAR (widget));
+  g_assert (CTK_IS_ACTION_BAR (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -172,7 +172,7 @@ test_app_chooser_widget_basic (void)
   GtkWidget *widget;
 
   widget = ctk_app_chooser_widget_new (NULL);
-  g_assert (GTK_IS_APP_CHOOSER_WIDGET (widget));
+  g_assert (CTK_IS_APP_CHOOSER_WIDGET (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -182,7 +182,7 @@ test_app_chooser_dialog_basic (void)
   GtkWidget *widget;
 
   widget = ctk_app_chooser_dialog_new_for_content_type (NULL, 0, "text/plain");
-  g_assert (GTK_IS_APP_CHOOSER_DIALOG (widget));
+  g_assert (CTK_IS_APP_CHOOSER_DIALOG (widget));
 
   /* GtkAppChooserDialog bug, if destroyed before spinning 
    * the main context then app_chooser_online_get_default_ready_cb()
@@ -200,7 +200,7 @@ test_color_chooser_dialog_basic (void)
 
   /* This test also tests the internal GtkColorEditor widget */
   widget = ctk_color_chooser_dialog_new (NULL, NULL);
-  g_assert (GTK_IS_COLOR_CHOOSER_DIALOG (widget));
+  g_assert (CTK_IS_COLOR_CHOOSER_DIALOG (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -225,8 +225,8 @@ test_file_chooser_widget_basic (void)
   /* This test also tests the internal GtkPathBar widget */
   g_test_log_set_fatal_handler (ignore_gvfs_warning, NULL);
 
-  widget = ctk_file_chooser_widget_new (GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
-  g_assert (GTK_IS_FILE_CHOOSER_WIDGET (widget));
+  widget = ctk_file_chooser_widget_new (CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
+  g_assert (CTK_IS_FILE_CHOOSER_WIDGET (widget));
 
   /* XXX BUG:
    *
@@ -251,11 +251,11 @@ test_file_chooser_dialog_basic (void)
   g_test_log_set_fatal_handler (ignore_gvfs_warning, NULL);
 
   widget = ctk_file_chooser_dialog_new ("The Dialog", NULL,
-					GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
-					"_OK", GTK_RESPONSE_OK,
+					CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
+					"_OK", CTK_RESPONSE_OK,
 					NULL);
 
-  g_assert (GTK_IS_FILE_CHOOSER_DIALOG (widget));
+  g_assert (CTK_IS_FILE_CHOOSER_DIALOG (widget));
   g_timeout_add (100, main_loop_quit_cb, NULL);
   ctk_main();
 
@@ -269,8 +269,8 @@ test_file_chooser_button_basic (void)
 
   g_test_log_set_fatal_handler (ignore_gvfs_warning, NULL);
 
-  widget = ctk_file_chooser_button_new ("Choose a file !", GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
-  g_assert (GTK_IS_FILE_CHOOSER_BUTTON (widget));
+  widget = ctk_file_chooser_button_new ("Choose a file !", CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER);
+  g_assert (CTK_IS_FILE_CHOOSER_BUTTON (widget));
   g_timeout_add (100, main_loop_quit_cb, NULL);
   ctk_main();
 
@@ -283,7 +283,7 @@ test_font_button_basic (void)
   GtkWidget *widget;
 
   widget = ctk_font_button_new ();
-  g_assert (GTK_IS_FONT_BUTTON (widget));
+  g_assert (CTK_IS_FONT_BUTTON (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -293,7 +293,7 @@ test_font_chooser_widget_basic (void)
   GtkWidget *widget;
 
   widget = ctk_font_chooser_widget_new ();
-  g_assert (GTK_IS_FONT_CHOOSER_WIDGET (widget));
+  g_assert (CTK_IS_FONT_CHOOSER_WIDGET (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -303,7 +303,7 @@ test_font_chooser_dialog_basic (void)
   GtkWidget *widget;
 
   widget = ctk_font_chooser_dialog_new ("Choose a font !", NULL);
-  g_assert (GTK_IS_FONT_CHOOSER_DIALOG (widget));
+  g_assert (CTK_IS_FONT_CHOOSER_DIALOG (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -313,7 +313,7 @@ test_recent_chooser_widget_basic (void)
   GtkWidget *widget;
 
   widget = ctk_recent_chooser_widget_new ();
-  g_assert (GTK_IS_RECENT_CHOOSER_WIDGET (widget));
+  g_assert (CTK_IS_RECENT_CHOOSER_WIDGET (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -324,7 +324,7 @@ test_page_setup_unix_dialog_basic (void)
   GtkWidget *widget;
 
   widget = ctk_page_setup_unix_dialog_new ("Setup your Page !", NULL);
-  g_assert (GTK_IS_PAGE_SETUP_UNIX_DIALOG (widget));
+  g_assert (CTK_IS_PAGE_SETUP_UNIX_DIALOG (widget));
   ctk_widget_destroy (widget);
 }
 
@@ -334,7 +334,7 @@ test_print_unix_dialog_basic (void)
   GtkWidget *widget;
 
   widget = ctk_print_unix_dialog_new ("Go Print !", NULL);
-  g_assert (GTK_IS_PRINT_UNIX_DIALOG (widget));
+  g_assert (CTK_IS_PRINT_UNIX_DIALOG (widget));
   ctk_widget_destroy (widget);
 }
 #endif
@@ -353,14 +353,14 @@ main (int argc, char **argv)
 
   /* g_test_build_filename must be called after ctk_test_init */
   schema_dir = g_test_build_filename (G_TEST_BUILT, "", NULL);
-  if (g_getenv ("GTK_TEST_MESON") == NULL)
+  if (g_getenv ("CTK_TEST_MESON") == NULL)
     g_setenv ("GSETTINGS_SCHEMA_DIR", schema_dir, TRUE);
 
   /* This environment variable cooperates with ctk_widget_destroy()
    * to assert that all automated compoenents are properly finalized
    * when a given composite widget is destroyed.
    */
-  g_assert (g_setenv ("GTK_WIDGET_ASSERT_COMPONENTS", "1", TRUE));
+  g_assert (g_setenv ("CTK_WIDGET_ASSERT_COMPONENTS", "1", TRUE));
 
   g_test_add_func ("/Template/GtkDialog/Basic", test_dialog_basic);
   g_test_add_func ("/Template/GtkDialog/OverrideProperty", test_dialog_override_property);

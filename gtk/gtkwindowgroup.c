@@ -90,7 +90,7 @@ ctk_window_group_class_init (GtkWindowGroupClass *klass)
 GtkWindowGroup *
 ctk_window_group_new (void)
 {
-  return g_object_new (GTK_TYPE_WINDOW_GROUP, NULL);
+  return g_object_new (CTK_TYPE_WINDOW_GROUP, NULL);
 }
 
 static void
@@ -153,8 +153,8 @@ ctk_window_group_add_window (GtkWindowGroup *window_group,
 {
   GtkWindowGroup *old_group;
 
-  g_return_if_fail (GTK_IS_WINDOW_GROUP (window_group));
-  g_return_if_fail (GTK_IS_WINDOW (window));
+  g_return_if_fail (CTK_IS_WINDOW_GROUP (window_group));
+  g_return_if_fail (CTK_IS_WINDOW (window));
 
   old_group = _ctk_window_get_window_group (window);
 
@@ -185,8 +185,8 @@ void
 ctk_window_group_remove_window (GtkWindowGroup *window_group,
                                 GtkWindow      *window)
 {
-  g_return_if_fail (GTK_IS_WINDOW_GROUP (window_group));
-  g_return_if_fail (GTK_IS_WINDOW (window));
+  g_return_if_fail (CTK_IS_WINDOW_GROUP (window_group));
+  g_return_if_fail (CTK_IS_WINDOW (window));
   g_return_if_fail (_ctk_window_get_window_group (window) == window_group);
 
   g_object_ref (window);
@@ -214,7 +214,7 @@ ctk_window_group_list_windows (GtkWindowGroup *window_group)
 {
   GList *toplevels, *toplevel, *group_windows;
 
-  g_return_val_if_fail (GTK_IS_WINDOW_GROUP (window_group), NULL);
+  g_return_val_if_fail (CTK_IS_WINDOW_GROUP (window_group), NULL);
 
   group_windows = NULL;
   toplevels = ctk_window_list_toplevels ();
@@ -246,10 +246,10 @@ ctk_window_group_list_windows (GtkWindowGroup *window_group)
 GtkWidget *
 ctk_window_group_get_current_grab (GtkWindowGroup *window_group)
 {
-  g_return_val_if_fail (GTK_IS_WINDOW_GROUP (window_group), NULL);
+  g_return_val_if_fail (CTK_IS_WINDOW_GROUP (window_group), NULL);
 
   if (window_group->priv->grabs)
-    return GTK_WIDGET (window_group->priv->grabs->data);
+    return CTK_WIDGET (window_group->priv->grabs->data);
   return NULL;
 }
 
@@ -350,7 +350,7 @@ ctk_window_group_get_current_device_grab (GtkWindowGroup *window_group,
   GdkDevice *other_device;
   GSList *list;
 
-  g_return_val_if_fail (GTK_IS_WINDOW_GROUP (window_group), NULL);
+  g_return_val_if_fail (CTK_IS_WINDOW_GROUP (window_group), NULL);
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
 
   priv = window_group->priv;

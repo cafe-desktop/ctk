@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_LOOKUP_PRIVATE_H__
-#define __GTK_CSS_LOOKUP_PRIVATE_H__
+#ifndef __CTK_CSS_LOOKUP_PRIVATE_H__
+#define __CTK_CSS_LOOKUP_PRIVATE_H__
 
 #include <glib-object.h>
 #include "gtk/gtkbitmaskprivate.h"
@@ -35,7 +35,7 @@ typedef struct {
 
 struct _GtkCssLookup {
   GtkBitmask        *missing;
-  GtkCssLookupValue  values[GTK_CSS_PROPERTY_N_PROPERTIES];
+  GtkCssLookupValue  values[CTK_CSS_PROPERTY_N_PROPERTIES];
 };
 
 GtkCssLookup *          _ctk_css_lookup_new                     (const GtkBitmask           *relevant);
@@ -63,4 +63,4 @@ _ctk_css_lookup_get_missing (const GtkCssLookup *lookup)
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_LOOKUP_PRIVATE_H__ */
+#endif /* __CTK_CSS_LOOKUP_PRIVATE_H__ */

@@ -80,32 +80,32 @@ may_be_stored_in_cache (GtkCssStyle *style)
   GtkCssChange change;
 
   /* If you run your application with
-   *   GTK_DEBUG=no-css-cache
+   *   CTK_DEBUG=no-css-cache
    * no caching will happen. This is slow (in particular
    * when animating), but useful for figuring out bugs.
    *
    * We achieve that by disallowing any inserts into caches here.
    */
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DEBUG_CHECK (NO_CSS_CACHE))
+  if (CTK_DEBUG_CHECK (NO_CSS_CACHE))
     return FALSE;
 #endif
 
-  if (!GTK_IS_CSS_STATIC_STYLE (style))
+  if (!CTK_IS_CSS_STATIC_STYLE (style))
     return FALSE;
 
-  change = ctk_css_static_style_get_change (GTK_CSS_STATIC_STYLE (style));
+  change = ctk_css_static_style_get_change (CTK_CSS_STATIC_STYLE (style));
 
   /* The cache is shared between all children of the parent, so if a
    * style depends on a sibling it is not independant of the child.
    */
-  if (change & GTK_CSS_CHANGE_ANY_SIBLING)
+  if (change & CTK_CSS_CHANGE_ANY_SIBLING)
     return FALSE;
 
   /* Again, the cache is shared between all children of the parent.
    * If the position is relevant, no child has the same style.
    */
-  if (change & (GTK_CSS_CHANGE_NTH_CHILD | GTK_CSS_CHANGE_NTH_LAST_CHILD))
+  if (change & (CTK_CSS_CHANGE_NTH_CHILD | CTK_CSS_CHANGE_NTH_LAST_CHILD))
     return FALSE;
 
   return TRUE;

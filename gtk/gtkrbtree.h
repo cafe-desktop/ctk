@@ -17,8 +17,8 @@
 
 /* A Red-Black Tree implementation used specifically by GtkTreeView.
  */
-#ifndef __GTK_RBTREE_H__
-#define __GTK_RBTREE_H__
+#ifndef __CTK_RBTREE_H__
+#define __CTK_RBTREE_H__
 
 #include <glib.h>
 
@@ -28,20 +28,20 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-  GTK_RBNODE_BLACK = 1 << 0,
-  GTK_RBNODE_RED = 1 << 1,
-  GTK_RBNODE_IS_PARENT = 1 << 2,
-  GTK_RBNODE_IS_SELECTED = 1 << 3,
-  GTK_RBNODE_IS_PRELIT = 1 << 4,
-  GTK_RBNODE_INVALID = 1 << 7,
-  GTK_RBNODE_COLUMN_INVALID = 1 << 8,
-  GTK_RBNODE_DESCENDANTS_INVALID = 1 << 9,
-  GTK_RBNODE_NON_COLORS = GTK_RBNODE_IS_PARENT |
-  			  GTK_RBNODE_IS_SELECTED |
-  			  GTK_RBNODE_IS_PRELIT |
-                          GTK_RBNODE_INVALID |
-                          GTK_RBNODE_COLUMN_INVALID |
-                          GTK_RBNODE_DESCENDANTS_INVALID
+  CTK_RBNODE_BLACK = 1 << 0,
+  CTK_RBNODE_RED = 1 << 1,
+  CTK_RBNODE_IS_PARENT = 1 << 2,
+  CTK_RBNODE_IS_SELECTED = 1 << 3,
+  CTK_RBNODE_IS_PRELIT = 1 << 4,
+  CTK_RBNODE_INVALID = 1 << 7,
+  CTK_RBNODE_COLUMN_INVALID = 1 << 8,
+  CTK_RBNODE_DESCENDANTS_INVALID = 1 << 9,
+  CTK_RBNODE_NON_COLORS = CTK_RBNODE_IS_PARENT |
+  			  CTK_RBNODE_IS_SELECTED |
+  			  CTK_RBNODE_IS_PRELIT |
+                          CTK_RBNODE_INVALID |
+                          CTK_RBNODE_COLUMN_INVALID |
+                          CTK_RBNODE_DESCENDANTS_INVALID
 } GtkRBNodeColor;
 
 typedef struct _GtkRBTree GtkRBTree;
@@ -90,12 +90,12 @@ struct _GtkRBNode
 };
 
 
-#define GTK_RBNODE_GET_COLOR(node)		(node?(((node->flags&GTK_RBNODE_RED)==GTK_RBNODE_RED)?GTK_RBNODE_RED:GTK_RBNODE_BLACK):GTK_RBNODE_BLACK)
-#define GTK_RBNODE_SET_COLOR(node,color) 	if((node->flags&color)!=color)node->flags=node->flags^(GTK_RBNODE_RED|GTK_RBNODE_BLACK)
-#define GTK_RBNODE_GET_HEIGHT(node) 		(node->offset-(node->left->offset+node->right->offset+(node->children?node->children->root->offset:0)))
-#define GTK_RBNODE_SET_FLAG(node, flag)   	G_STMT_START{ (node->flags|=flag); }G_STMT_END
-#define GTK_RBNODE_UNSET_FLAG(node, flag) 	G_STMT_START{ (node->flags&=~(flag)); }G_STMT_END
-#define GTK_RBNODE_FLAG_SET(node, flag) 	(node?(((node->flags&flag)==flag)?TRUE:FALSE):FALSE)
+#define CTK_RBNODE_GET_COLOR(node)		(node?(((node->flags&CTK_RBNODE_RED)==CTK_RBNODE_RED)?CTK_RBNODE_RED:CTK_RBNODE_BLACK):CTK_RBNODE_BLACK)
+#define CTK_RBNODE_SET_COLOR(node,color) 	if((node->flags&color)!=color)node->flags=node->flags^(CTK_RBNODE_RED|CTK_RBNODE_BLACK)
+#define CTK_RBNODE_GET_HEIGHT(node) 		(node->offset-(node->left->offset+node->right->offset+(node->children?node->children->root->offset:0)))
+#define CTK_RBNODE_SET_FLAG(node, flag)   	G_STMT_START{ (node->flags|=flag); }G_STMT_END
+#define CTK_RBNODE_UNSET_FLAG(node, flag) 	G_STMT_START{ (node->flags&=~(flag)); }G_STMT_END
+#define CTK_RBNODE_FLAG_SET(node, flag) 	(node?(((node->flags&flag)==flag)?TRUE:FALSE):FALSE)
 
 
 GtkRBTree *_ctk_rbtree_new              (void);
@@ -169,4 +169,4 @@ gint       _ctk_rbtree_get_depth        (GtkRBTree              *tree);
 G_END_DECLS
 
 
-#endif /* __GTK_RBTREE_H__ */
+#endif /* __CTK_RBTREE_H__ */

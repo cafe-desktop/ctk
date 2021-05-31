@@ -192,13 +192,13 @@ main (int argc, char **argv)
 
   ctk_init (&argc, &argv);
 
-  window = ctk_window_new (GTK_WINDOW_TOPLEVEL);
+  window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   
-  ctk_window_set_default_size (GTK_WINDOW (window), 400, 400);
-  ctk_window_set_title (GTK_WINDOW (window), "cairo: Knockout Groups");
+  ctk_window_set_default_size (CTK_WINDOW (window), 400, 400);
+  ctk_window_set_title (CTK_WINDOW (window), "cairo: Knockout Groups");
 
   darea = ctk_drawing_area_new ();
-  ctk_container_add (GTK_CONTAINER (window), darea);
+  ctk_container_add (CTK_CONTAINER (window), darea);
 
   g_signal_connect (darea, "draw",
 		    G_CALLBACK (on_draw), NULL);

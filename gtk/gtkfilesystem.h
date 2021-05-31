@@ -16,20 +16,20 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FILE_SYSTEM_H__
-#define __GTK_FILE_SYSTEM_H__
+#ifndef __CTK_FILE_SYSTEM_H__
+#define __CTK_FILE_SYSTEM_H__
 
 #include <gio/gio.h>
 #include <gtk/gtkwidget.h>	/* For icon handling */
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_SYSTEM         (_ctk_file_system_get_type ())
-#define GTK_FILE_SYSTEM(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTK_TYPE_FILE_SYSTEM, GtkFileSystem))
-#define GTK_FILE_SYSTEM_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), GTK_TYPE_FILE_SYSTEM, GtkFileSystemClass))
-#define GTK_IS_FILE_SYSTEM(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GTK_TYPE_FILE_SYSTEM))
-#define GTK_IS_FILE_SYSTEM_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE    ((c), GTK_TYPE_FILE_SYSTEM))
-#define GTK_FILE_SYSTEM_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), GTK_TYPE_FILE_SYSTEM, GtkFileSystemClass))
+#define CTK_TYPE_FILE_SYSTEM         (_ctk_file_system_get_type ())
+#define CTK_FILE_SYSTEM(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_FILE_SYSTEM, GtkFileSystem))
+#define CTK_FILE_SYSTEM_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST    ((c), CTK_TYPE_FILE_SYSTEM, GtkFileSystemClass))
+#define CTK_IS_FILE_SYSTEM(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_FILE_SYSTEM))
+#define CTK_IS_FILE_SYSTEM_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE    ((c), CTK_TYPE_FILE_SYSTEM))
+#define CTK_FILE_SYSTEM_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS  ((o), CTK_TYPE_FILE_SYSTEM, GtkFileSystemClass))
 
 typedef struct GtkFileSystem          GtkFileSystem;
 typedef struct GtkFileSystemPrivate      GtkFileSystemPrivate;
@@ -116,4 +116,4 @@ gboolean        _ctk_file_consider_as_remote (GFile *file);
 
 G_END_DECLS
 
-#endif /* __GTK_FILE_SYSTEM_H__ */
+#endif /* __CTK_FILE_SYSTEM_H__ */

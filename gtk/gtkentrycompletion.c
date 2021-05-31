@@ -194,9 +194,9 @@ static void     ctk_entry_completion_buildable_init      (GtkBuildableIface  *if
 
 G_DEFINE_TYPE_WITH_CODE (GtkEntryCompletion, ctk_entry_completion, G_TYPE_OBJECT,
                          G_ADD_PRIVATE (GtkEntryCompletion)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_CELL_LAYOUT,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_CELL_LAYOUT,
                                                 ctk_entry_completion_cell_layout_init)
-                         G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
                                                 ctk_entry_completion_buildable_init))
 
 
@@ -272,8 +272,8 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__OBJECT_BOXED,
                   G_TYPE_BOOLEAN, 2,
-                  GTK_TYPE_TREE_MODEL,
-                  GTK_TYPE_TREE_ITER);
+                  CTK_TYPE_TREE_MODEL,
+                  CTK_TYPE_TREE_ITER);
 
   /**
    * GtkEntryCompletion::cursor-on-match:
@@ -301,8 +301,8 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__OBJECT_BOXED,
                   G_TYPE_BOOLEAN, 2,
-                  GTK_TYPE_TREE_MODEL,
-                  GTK_TYPE_TREE_ITER);
+                  CTK_TYPE_TREE_MODEL,
+                  CTK_TYPE_TREE_ITER);
 
   /**
    * GtkEntryCompletion::no-matches:
@@ -347,15 +347,15 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
       g_param_spec_object ("model",
                            P_("Completion Model"),
                            P_("The model to find matches in"),
-                           GTK_TYPE_TREE_MODEL,
-                           GTK_PARAM_READWRITE);
+                           CTK_TYPE_TREE_MODEL,
+                           CTK_PARAM_READWRITE);
 
   entry_completion_props[PROP_MINIMUM_KEY_LENGTH] =
       g_param_spec_int ("minimum-key-length",
                         P_("Minimum Key Length"),
                         P_("Minimum length of the search key in order to look up matches"),
                         0, G_MAXINT, 1,
-                        GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkEntryCompletion:text-column:
@@ -370,7 +370,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                       P_("Text column"),
                       P_("The column of the model containing the strings."),
                       -1, G_MAXINT, -1,
-                      GTK_PARAM_READWRITE);
+                      CTK_PARAM_READWRITE);
 
   /**
    * GtkEntryCompletion:inline-completion:
@@ -387,7 +387,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                             P_("Inline completion"),
                             P_("Whether the common prefix should be inserted automatically"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkEntryCompletion:popup-completion:
@@ -402,7 +402,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                             P_("Popup completion"),
                             P_("Whether the completions should be shown in a popup window"),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkEntryCompletion:popup-set-width:
@@ -417,7 +417,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                             P_("Popup set width"),
                             P_("If TRUE, the popup window will have the same size as the entry"),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkEntryCompletion:popup-single-match:
@@ -434,7 +434,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                             P_("Popup single match"),
                             P_("If TRUE, the popup window will appear for a single match."),
                             TRUE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkEntryCompletion:inline-selection:
@@ -449,7 +449,7 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                             P_("Inline selection"),
                             P_("Your description here"),
                             FALSE,
-                            GTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
+                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
    * GtkEntryCompletion:cell-area:
@@ -466,8 +466,8 @@ ctk_entry_completion_class_init (GtkEntryCompletionClass *klass)
       g_param_spec_object ("cell-area",
                            P_("Cell Area"),
                            P_("The GtkCellArea used to layout cells"),
-                           GTK_TYPE_CELL_AREA,
-                           GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
+                           CTK_TYPE_CELL_AREA,
+                           CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, NUM_PROPERTIES, entry_completion_props);
 }
@@ -522,7 +522,7 @@ ctk_entry_completion_init (GtkEntryCompletion *completion)
 static void
 ctk_entry_completion_constructed (GObject *object)
 {
-  GtkEntryCompletion        *completion = GTK_ENTRY_COMPLETION (object);
+  GtkEntryCompletion        *completion = CTK_ENTRY_COMPLETION (object);
   GtkEntryCompletionPrivate *priv = completion->priv;
   GtkCellRenderer           *cell;
   GtkTreeSelection          *sel;
@@ -548,11 +548,11 @@ ctk_entry_completion_constructed (GObject *object)
                     G_CALLBACK (ctk_entry_completion_list_motion_notify),
                     completion);
 
-  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (priv->tree_view), FALSE);
-  ctk_tree_view_set_hover_selection (GTK_TREE_VIEW (priv->tree_view), TRUE);
+  ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (priv->tree_view), FALSE);
+  ctk_tree_view_set_hover_selection (CTK_TREE_VIEW (priv->tree_view), TRUE);
 
-  sel = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->tree_view));
-  ctk_tree_selection_set_mode (sel, GTK_SELECTION_SINGLE);
+  sel = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->tree_view));
+  ctk_tree_selection_set_mode (sel, CTK_SELECTION_SINGLE);
   ctk_tree_selection_unselect_all (sel);
   g_signal_connect (sel, "changed",
                     G_CALLBACK (ctk_entry_completion_selection_changed),
@@ -560,24 +560,24 @@ ctk_entry_completion_constructed (GObject *object)
   priv->first_sel_changed = TRUE;
 
   priv->column = ctk_tree_view_column_new_with_area (priv->cell_area);
-  ctk_tree_view_append_column (GTK_TREE_VIEW (priv->tree_view), priv->column);
+  ctk_tree_view_append_column (CTK_TREE_VIEW (priv->tree_view), priv->column);
 
   priv->scrolled_window = ctk_scrolled_window_new (NULL, NULL);
-  ctk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (priv->scrolled_window),
-                                  GTK_POLICY_NEVER,
-                                  GTK_POLICY_AUTOMATIC);
-  ctk_scrolled_window_set_shadow_type (GTK_SCROLLED_WINDOW (priv->scrolled_window),
-                                       GTK_SHADOW_NONE);
+  ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (priv->scrolled_window),
+                                  CTK_POLICY_NEVER,
+                                  CTK_POLICY_AUTOMATIC);
+  ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (priv->scrolled_window),
+                                       CTK_SHADOW_NONE);
 
   /* a nasty hack to get the completions treeview to size nicely */
-  ctk_widget_set_size_request (ctk_scrolled_window_get_vscrollbar (GTK_SCROLLED_WINDOW (priv->scrolled_window)),
+  ctk_widget_set_size_request (ctk_scrolled_window_get_vscrollbar (CTK_SCROLLED_WINDOW (priv->scrolled_window)),
                                -1, 0);
 
   /* actions */
   priv->actions = ctk_list_store_new (2, G_TYPE_STRING, G_TYPE_BOOLEAN);
 
   priv->action_view =
-    ctk_tree_view_new_with_model (GTK_TREE_MODEL (priv->actions));
+    ctk_tree_view_new_with_model (CTK_TREE_MODEL (priv->actions));
   g_object_ref_sink (priv->action_view);
   g_signal_connect (priv->action_view, "button-press-event",
                     G_CALLBACK (ctk_entry_completion_action_button_press),
@@ -588,15 +588,15 @@ ctk_entry_completion_constructed (GObject *object)
   g_signal_connect (priv->action_view, "motion-notify-event",
                     G_CALLBACK (ctk_entry_completion_list_motion_notify),
                     completion);
-  ctk_tree_view_set_headers_visible (GTK_TREE_VIEW (priv->action_view), FALSE);
-  ctk_tree_view_set_hover_selection (GTK_TREE_VIEW (priv->action_view), TRUE);
+  ctk_tree_view_set_headers_visible (CTK_TREE_VIEW (priv->action_view), FALSE);
+  ctk_tree_view_set_hover_selection (CTK_TREE_VIEW (priv->action_view), TRUE);
 
-  sel = ctk_tree_view_get_selection (GTK_TREE_VIEW (priv->action_view));
-  ctk_tree_selection_set_mode (sel, GTK_SELECTION_SINGLE);
+  sel = ctk_tree_view_get_selection (CTK_TREE_VIEW (priv->action_view));
+  ctk_tree_selection_set_mode (sel, CTK_SELECTION_SINGLE);
   ctk_tree_selection_unselect_all (sel);
 
   cell = ctk_cell_renderer_text_new ();
-  ctk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (priv->action_view),
+  ctk_tree_view_insert_column_with_data_func (CTK_TREE_VIEW (priv->action_view),
                                               0, "",
                                               cell,
                                               ctk_entry_completion_action_data_func,
@@ -604,10 +604,10 @@ ctk_entry_completion_constructed (GObject *object)
                                               NULL);
 
   /* pack it all */
-  priv->popup_window = ctk_window_new (GTK_WINDOW_POPUP);
-  ctk_window_set_use_subsurface (GTK_WINDOW (priv->popup_window), TRUE);
-  ctk_window_set_resizable (GTK_WINDOW (priv->popup_window), FALSE);
-  ctk_window_set_type_hint (GTK_WINDOW(priv->popup_window),
+  priv->popup_window = ctk_window_new (CTK_WINDOW_POPUP);
+  ctk_window_set_use_subsurface (CTK_WINDOW (priv->popup_window), TRUE);
+  ctk_window_set_resizable (CTK_WINDOW (priv->popup_window), FALSE);
+  ctk_window_set_type_hint (CTK_WINDOW(priv->popup_window),
                             GDK_WINDOW_TYPE_HINT_COMBO);
 
   g_signal_connect (priv->popup_window, "key-press-event",
@@ -621,16 +621,16 @@ ctk_entry_completion_constructed (GObject *object)
                     completion);
 
   popup_frame = ctk_frame_new (NULL);
-  ctk_frame_set_shadow_type (GTK_FRAME (popup_frame),
-                             GTK_SHADOW_ETCHED_IN);
+  ctk_frame_set_shadow_type (CTK_FRAME (popup_frame),
+                             CTK_SHADOW_ETCHED_IN);
   ctk_widget_show (popup_frame);
-  ctk_container_add (GTK_CONTAINER (priv->popup_window), popup_frame);
+  ctk_container_add (CTK_CONTAINER (priv->popup_window), popup_frame);
 
-  priv->vbox = ctk_box_new (GTK_ORIENTATION_VERTICAL, 0);
-  ctk_container_add (GTK_CONTAINER (popup_frame), priv->vbox);
+  priv->vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
+  ctk_container_add (CTK_CONTAINER (popup_frame), priv->vbox);
 
-  ctk_container_add (GTK_CONTAINER (priv->scrolled_window), priv->tree_view);
-  ctk_box_pack_start (GTK_BOX (priv->vbox), priv->scrolled_window,
+  ctk_container_add (CTK_CONTAINER (priv->scrolled_window), priv->tree_view);
+  ctk_box_pack_start (CTK_BOX (priv->vbox), priv->scrolled_window,
                       TRUE, TRUE, 0);
 
   /* we don't want to see the action treeview when no actions have
@@ -646,7 +646,7 @@ ctk_entry_completion_set_property (GObject      *object,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (object);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
   GtkEntryCompletionPrivate *priv = completion->priv;
   GtkCellArea *area;
 
@@ -719,7 +719,7 @@ ctk_entry_completion_get_property (GObject    *object,
                                    GValue     *value,
                                    GParamSpec *pspec)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (object);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
 
   switch (prop_id)
     {
@@ -769,7 +769,7 @@ ctk_entry_completion_get_property (GObject    *object,
 static void
 ctk_entry_completion_finalize (GObject *object)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (object);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
   GtkEntryCompletionPrivate *priv = completion->priv;
 
   g_free (priv->case_normalized_key);
@@ -784,7 +784,7 @@ ctk_entry_completion_finalize (GObject *object)
 static void
 ctk_entry_completion_dispose (GObject *object)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (object);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (object);
   GtkEntryCompletionPrivate *priv = completion->priv;
 
   if (priv->tree_view)
@@ -794,7 +794,7 @@ ctk_entry_completion_dispose (GObject *object)
     }
 
   if (priv->entry)
-    ctk_entry_set_completion (GTK_ENTRY (priv->entry), NULL);
+    ctk_entry_set_completion (CTK_ENTRY (priv->entry), NULL);
 
   if (priv->actions)
     {
@@ -829,7 +829,7 @@ ctk_entry_completion_get_area (GtkCellLayout *cell_layout)
 {
   GtkEntryCompletionPrivate *priv;
 
-  priv = GTK_ENTRY_COMPLETION (cell_layout)->priv;
+  priv = CTK_ENTRY_COMPLETION (cell_layout)->priv;
 
   if (G_UNLIKELY (!priv->cell_area))
     {
@@ -891,7 +891,7 @@ ctk_entry_completion_visible_func (GtkTreeModel *model,
 {
   gboolean ret = FALSE;
 
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (data);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
 
   if (!completion->priv->case_normalized_key)
     return ret;
@@ -915,7 +915,7 @@ ctk_entry_completion_popup_key_event (GtkWidget   *widget,
                                       GdkEventKey *event,
                                       gpointer     user_data)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (user_data);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
 
   if (!ctk_widget_get_mapped (completion->priv->popup_window))
     return FALSE;
@@ -931,7 +931,7 @@ ctk_entry_completion_popup_button_press (GtkWidget      *widget,
                                          GdkEventButton *event,
                                          gpointer        user_data)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (user_data);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
 
   if (!ctk_widget_get_mapped (completion->priv->popup_window))
     return FALSE;
@@ -947,13 +947,13 @@ ctk_entry_completion_list_button_press (GtkWidget      *widget,
                                         GdkEventButton *event,
                                         gpointer        user_data)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (user_data);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
   GtkTreePath *path = NULL;
 
   if (!ctk_widget_get_mapped (completion->priv->popup_window))
     return FALSE;
 
-  if (ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
+  if (ctk_tree_view_get_path_at_pos (CTK_TREE_VIEW (widget),
                                      event->x, event->y,
                                      &path, NULL, NULL, NULL))
     {
@@ -962,7 +962,7 @@ ctk_entry_completion_list_button_press (GtkWidget      *widget,
       GtkTreeModel *model;
       GtkTreeIter child_iter;
 
-      ctk_tree_model_get_iter (GTK_TREE_MODEL (completion->priv->filter_model),
+      ctk_tree_model_get_iter (CTK_TREE_MODEL (completion->priv->filter_model),
                                &iter, path);
       ctk_tree_path_free (path);
       ctk_tree_model_filter_convert_iter_to_child_iter (completion->priv->filter_model,
@@ -990,15 +990,15 @@ ctk_entry_completion_action_button_press (GtkWidget      *widget,
                                           GdkEventButton *event,
                                           gpointer        user_data)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (user_data);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
   GtkTreePath *path = NULL;
 
   if (!ctk_widget_get_mapped (completion->priv->popup_window))
     return FALSE;
 
-  ctk_entry_reset_im_context (GTK_ENTRY (completion->priv->entry));
+  ctk_entry_reset_im_context (CTK_ENTRY (completion->priv->entry));
 
-  if (ctk_tree_view_get_path_at_pos (GTK_TREE_VIEW (widget),
+  if (ctk_tree_view_get_path_at_pos (CTK_TREE_VIEW (widget),
                                      event->x, event->y,
                                      &path, NULL, NULL, NULL))
     {
@@ -1049,7 +1049,7 @@ static void
 ctk_entry_completion_selection_changed (GtkTreeSelection *selection,
                                         gpointer          data)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (data);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
 
   if (completion->priv->first_sel_changed)
     {
@@ -1069,8 +1069,8 @@ prepare_popup_func (GdkSeat   *seat,
   /* prevent the first row being focused */
   ctk_widget_grab_focus (completion->priv->tree_view);
 
-  ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (GTK_TREE_VIEW (completion->priv->tree_view)));
-  ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (GTK_TREE_VIEW (completion->priv->action_view)));
+  ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->tree_view)));
+  ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->action_view)));
 
   ctk_widget_show (completion->priv->popup_window);
 }
@@ -1100,15 +1100,15 @@ ctk_entry_completion_popup (GtkEntryCompletion *completion)
   completion->priv->current_selected = -1;
 
   toplevel = ctk_widget_get_toplevel (completion->priv->entry);
-  if (GTK_IS_WINDOW (toplevel))
+  if (CTK_IS_WINDOW (toplevel))
     {
-      ctk_window_set_transient_for (GTK_WINDOW (completion->priv->popup_window),
-                                    GTK_WINDOW (toplevel));
-      ctk_window_group_add_window (ctk_window_get_group (GTK_WINDOW (toplevel)),
-                                   GTK_WINDOW (completion->priv->popup_window));
+      ctk_window_set_transient_for (CTK_WINDOW (completion->priv->popup_window),
+                                    CTK_WINDOW (toplevel));
+      ctk_window_group_add_window (ctk_window_get_group (CTK_WINDOW (toplevel)),
+                                   CTK_WINDOW (completion->priv->popup_window));
     }
 
-  ctk_window_set_screen (GTK_WINDOW (completion->priv->popup_window),
+  ctk_window_set_screen (CTK_WINDOW (completion->priv->popup_window),
                          ctk_widget_get_screen (completion->priv->entry));
 
   _ctk_entry_completion_resize_popup (completion);
@@ -1160,7 +1160,7 @@ ctk_entry_completion_new (void)
 {
   GtkEntryCompletion *completion;
 
-  completion = g_object_new (GTK_TYPE_ENTRY_COMPLETION, NULL);
+  completion = g_object_new (CTK_TYPE_ENTRY_COMPLETION, NULL);
 
   return completion;
 }
@@ -1182,7 +1182,7 @@ ctk_entry_completion_new_with_area (GtkCellArea *area)
 {
   GtkEntryCompletion *completion;
 
-  completion = g_object_new (GTK_TYPE_ENTRY_COMPLETION, "cell-area", area, NULL);
+  completion = g_object_new (CTK_TYPE_ENTRY_COMPLETION, "cell-area", area, NULL);
 
   return completion;
 }
@@ -1200,7 +1200,7 @@ ctk_entry_completion_new_with_area (GtkCellArea *area)
 GtkWidget *
 ctk_entry_completion_get_entry (GtkEntryCompletion *completion)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_COMPLETION (completion), NULL);
+  g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), NULL);
 
   return completion->priv->entry;
 }
@@ -1220,12 +1220,12 @@ void
 ctk_entry_completion_set_model (GtkEntryCompletion *completion,
                                 GtkTreeModel       *model)
 {
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
-  g_return_if_fail (model == NULL || GTK_IS_TREE_MODEL (model));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (model == NULL || CTK_IS_TREE_MODEL (model));
 
   if (!model)
     {
-      ctk_tree_view_set_model (GTK_TREE_VIEW (completion->priv->tree_view),
+      ctk_tree_view_set_model (CTK_TREE_VIEW (completion->priv->tree_view),
                                NULL);
       _ctk_entry_completion_popdown (completion);
       completion->priv->filter_model = NULL;
@@ -1234,14 +1234,14 @@ ctk_entry_completion_set_model (GtkEntryCompletion *completion,
 
   /* code will unref the old filter model (if any) */
   completion->priv->filter_model =
-    GTK_TREE_MODEL_FILTER (ctk_tree_model_filter_new (model, NULL));
+    CTK_TREE_MODEL_FILTER (ctk_tree_model_filter_new (model, NULL));
   ctk_tree_model_filter_set_visible_func (completion->priv->filter_model,
                                           ctk_entry_completion_visible_func,
                                           completion,
                                           NULL);
 
-  ctk_tree_view_set_model (GTK_TREE_VIEW (completion->priv->tree_view),
-                           GTK_TREE_MODEL (completion->priv->filter_model));
+  ctk_tree_view_set_model (CTK_TREE_VIEW (completion->priv->tree_view),
+                           CTK_TREE_MODEL (completion->priv->filter_model));
   g_object_unref (completion->priv->filter_model);
 
   g_object_notify_by_pspec (G_OBJECT (completion), entry_completion_props[PROP_MODEL]);
@@ -1265,7 +1265,7 @@ ctk_entry_completion_set_model (GtkEntryCompletion *completion,
 GtkTreeModel *
 ctk_entry_completion_get_model (GtkEntryCompletion *completion)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_COMPLETION (completion), NULL);
+  g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), NULL);
 
   if (!completion->priv->filter_model)
     return NULL;
@@ -1292,7 +1292,7 @@ ctk_entry_completion_set_match_func (GtkEntryCompletion          *completion,
                                      gpointer                     func_data,
                                      GDestroyNotify               func_notify)
 {
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
 
   if (completion->priv->match_notify)
     (* completion->priv->match_notify) (completion->priv->match_data);
@@ -1318,7 +1318,7 @@ void
 ctk_entry_completion_set_minimum_key_length (GtkEntryCompletion *completion,
                                              gint                length)
 {
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
   g_return_if_fail (length >= 0);
 
   if (completion->priv->minimum_key_length != length)
@@ -1343,7 +1343,7 @@ ctk_entry_completion_set_minimum_key_length (GtkEntryCompletion *completion,
 gint
 ctk_entry_completion_get_minimum_key_length (GtkEntryCompletion *completion)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_COMPLETION (completion), 0);
+  g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), 0);
 
   return completion->priv->minimum_key_length;
 }
@@ -1364,8 +1364,8 @@ ctk_entry_completion_complete (GtkEntryCompletion *completion)
   gchar *tmp;
   GtkTreeIter iter;
 
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
-  g_return_if_fail (GTK_IS_ENTRY (completion->priv->entry));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY (completion->priv->entry));
 
   if (completion->priv->filter_model)
     {
@@ -1375,21 +1375,21 @@ ctk_entry_completion_complete (GtkEntryCompletion *completion)
 
       g_free (completion->priv->case_normalized_key);
 
-      tmp = g_utf8_normalize (ctk_entry_get_text (GTK_ENTRY (completion->priv->entry)),
+      tmp = g_utf8_normalize (ctk_entry_get_text (CTK_ENTRY (completion->priv->entry)),
                               -1, G_NORMALIZE_ALL);
       completion->priv->case_normalized_key = g_utf8_casefold (tmp, -1);
       g_free (tmp);
 
       ctk_tree_model_filter_refilter (completion->priv->filter_model);
 
-      if (!ctk_tree_model_get_iter_first (GTK_TREE_MODEL (completion->priv->filter_model), &iter))
+      if (!ctk_tree_model_get_iter_first (CTK_TREE_MODEL (completion->priv->filter_model), &iter))
         g_signal_emit (completion, entry_completion_signals[NO_MATCHES], 0);
 
       if (ctk_widget_get_visible (completion->priv->popup_window))
         _ctk_entry_completion_resize_popup (completion);
 
-      matches = ctk_tree_model_iter_n_children (GTK_TREE_MODEL (completion->priv->filter_model), NULL);
-      actions = ctk_tree_model_iter_n_children (GTK_TREE_MODEL (completion->priv->actions), NULL);
+      matches = ctk_tree_model_iter_n_children (CTK_TREE_MODEL (completion->priv->filter_model), NULL);
+      actions = ctk_tree_model_iter_n_children (CTK_TREE_MODEL (completion->priv->actions), NULL);
 
       g_object_get (completion, "popup-single-match", &popup_single, NULL);
       if ((matches > (popup_single ? 0: 1)) || actions > 0)
@@ -1425,11 +1425,11 @@ ctk_entry_completion_insert_action (GtkEntryCompletion *completion,
     {
       GtkTreePath *path = ctk_tree_path_new_from_indices (0, -1);
 
-      ctk_tree_view_set_cursor (GTK_TREE_VIEW (completion->priv->action_view),
+      ctk_tree_view_set_cursor (CTK_TREE_VIEW (completion->priv->action_view),
                                 path, NULL, FALSE);
       ctk_tree_path_free (path);
 
-      ctk_box_pack_start (GTK_BOX (completion->priv->vbox),
+      ctk_box_pack_start (CTK_BOX (completion->priv->vbox),
                           completion->priv->action_view, FALSE, FALSE, 0);
       ctk_widget_show (completion->priv->action_view);
     }
@@ -1455,7 +1455,7 @@ ctk_entry_completion_insert_action_text (GtkEntryCompletion *completion,
                                          gint                index_,
                                          const gchar        *text)
 {
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
   g_return_if_fail (text != NULL);
 
   ctk_entry_completion_insert_action (completion, index_, text, FALSE);
@@ -1477,7 +1477,7 @@ ctk_entry_completion_insert_action_markup (GtkEntryCompletion *completion,
                                            gint                index_,
                                            const gchar        *markup)
 {
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
   g_return_if_fail (markup != NULL);
 
   ctk_entry_completion_insert_action (completion, index_, markup, TRUE);
@@ -1501,10 +1501,10 @@ ctk_entry_completion_delete_action (GtkEntryCompletion *completion,
 {
   GtkTreeIter iter;
 
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
   g_return_if_fail (index_ >= 0);
 
-  ctk_tree_model_iter_nth_child (GTK_TREE_MODEL (completion->priv->actions),
+  ctk_tree_model_iter_nth_child (CTK_TREE_MODEL (completion->priv->actions),
                                  &iter, NULL, index_);
   ctk_list_store_remove (completion->priv->actions, &iter);
 }
@@ -1532,7 +1532,7 @@ ctk_entry_completion_set_text_column (GtkEntryCompletion *completion,
 {
   GtkCellRenderer *cell;
 
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
   g_return_if_fail (column >= 0);
 
   if (completion->priv->text_column == column)
@@ -1541,9 +1541,9 @@ ctk_entry_completion_set_text_column (GtkEntryCompletion *completion,
   completion->priv->text_column = column;
 
   cell = ctk_cell_renderer_text_new ();
-  ctk_cell_layout_pack_start (GTK_CELL_LAYOUT (completion),
+  ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (completion),
                               cell, TRUE);
-  ctk_cell_layout_add_attribute (GTK_CELL_LAYOUT (completion),
+  ctk_cell_layout_add_attribute (CTK_CELL_LAYOUT (completion),
                                  cell,
                                  "text", column);
 
@@ -1563,7 +1563,7 @@ ctk_entry_completion_set_text_column (GtkEntryCompletion *completion,
 gint
 ctk_entry_completion_get_text_column (GtkEntryCompletion *completion)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_COMPLETION (completion), -1);
+  g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), -1);
 
   return completion->priv->text_column;
 }
@@ -1575,7 +1575,7 @@ ctk_entry_completion_list_enter_notify (GtkWidget        *widget,
                                         GdkEventCrossing *event,
                                         gpointer          data)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (data);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
 
   return completion->priv->ignore_enter;
 }
@@ -1585,7 +1585,7 @@ ctk_entry_completion_list_motion_notify (GtkWidget      *widget,
                                          GdkEventMotion *event,
                                          gpointer        data)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (data);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
 
   completion->priv->ignore_enter = FALSE;
 
@@ -1630,9 +1630,9 @@ _ctk_entry_completion_resize_popup (GtkEntryCompletion *completion)
   x += allocation.x;
   y += allocation.y + (allocation.height - entry_req.height) / 2;
 
-  matches = ctk_tree_model_iter_n_children (GTK_TREE_MODEL (completion->priv->filter_model), NULL);
-  actions = ctk_tree_model_iter_n_children (GTK_TREE_MODEL (completion->priv->actions), NULL);
-  action_column  = ctk_tree_view_get_column (GTK_TREE_VIEW (completion->priv->action_view), 0);
+  matches = ctk_tree_model_iter_n_children (CTK_TREE_MODEL (completion->priv->filter_model), NULL);
+  actions = ctk_tree_model_iter_n_children (CTK_TREE_MODEL (completion->priv->actions), NULL);
+  action_column  = ctk_tree_view_get_column (CTK_TREE_VIEW (completion->priv->action_view), 0);
 
   /* Call get preferred size on the on the tree view to force it to validate its
    * cells before calling into the cell size functions.
@@ -1644,7 +1644,7 @@ _ctk_entry_completion_resize_popup (GtkEntryCompletion *completion)
   ctk_tree_view_column_cell_get_size (action_column, NULL,
                                       NULL, NULL, NULL, &action_height);
 
-  ctk_widget_style_get (GTK_WIDGET (completion->priv->tree_view),
+  ctk_widget_style_get (CTK_WIDGET (completion->priv->tree_view),
                         "vertical-separator", &vertical_separator,
                         NULL);
 
@@ -1652,7 +1652,7 @@ _ctk_entry_completion_resize_popup (GtkEntryCompletion *completion)
 
   ctk_widget_realize (completion->priv->tree_view);
 
-  display = ctk_widget_get_display (GTK_WIDGET (completion->priv->entry));
+  display = ctk_widget_get_display (CTK_WIDGET (completion->priv->entry));
   monitor = gdk_display_get_monitor_at_window (display, window);
   gdk_monitor_get_workarea (monitor, &area);
 
@@ -1673,10 +1673,10 @@ _ctk_entry_completion_resize_popup (GtkEntryCompletion *completion)
   else
     width = -1;
 
-  ctk_tree_view_columns_autosize (GTK_TREE_VIEW (completion->priv->tree_view));
-  ctk_scrolled_window_set_min_content_width (GTK_SCROLLED_WINDOW (completion->priv->scrolled_window), width);
+  ctk_tree_view_columns_autosize (CTK_TREE_VIEW (completion->priv->tree_view));
+  ctk_scrolled_window_set_min_content_width (CTK_SCROLLED_WINDOW (completion->priv->scrolled_window), width);
   ctk_widget_set_size_request (completion->priv->popup_window, width, -1);
-  ctk_scrolled_window_set_min_content_height (GTK_SCROLLED_WINDOW (completion->priv->scrolled_window), items * height);
+  ctk_scrolled_window_set_min_content_height (CTK_SCROLLED_WINDOW (completion->priv->scrolled_window), items * height);
 
   if (actions)
     ctk_widget_show (completion->priv->action_view);
@@ -1706,12 +1706,12 @@ _ctk_entry_completion_resize_popup (GtkEntryCompletion *completion)
   if (matches > 0)
     {
       path = ctk_tree_path_new_from_indices (above ? matches - 1 : 0, -1);
-      ctk_tree_view_scroll_to_cell (GTK_TREE_VIEW (completion->priv->tree_view), path,
+      ctk_tree_view_scroll_to_cell (CTK_TREE_VIEW (completion->priv->tree_view), path,
                                     NULL, FALSE, 0.0, 0.0);
       ctk_tree_path_free (path);
     }
 
-  ctk_window_move (GTK_WINDOW (completion->priv->popup_window), x, y);
+  ctk_window_move (CTK_WINDOW (completion->priv->popup_window), x, y);
 }
 
 static gboolean
@@ -1722,10 +1722,10 @@ ctk_entry_completion_match_selected (GtkEntryCompletion *completion,
   gchar *str = NULL;
 
   ctk_tree_model_get (model, iter, completion->priv->text_column, &str, -1);
-  ctk_entry_set_text (GTK_ENTRY (completion->priv->entry), str ? str : "");
+  ctk_entry_set_text (CTK_ENTRY (completion->priv->entry), str ? str : "");
 
   /* move cursor to the end */
-  ctk_editable_set_position (GTK_EDITABLE (completion->priv->entry), -1);
+  ctk_editable_set_position (CTK_EDITABLE (completion->priv->entry), -1);
 
   g_free (str);
 
@@ -1768,14 +1768,14 @@ ctk_entry_completion_compute_prefix (GtkEntryCompletion *completion,
   if (completion->priv->text_column < 0)
     return NULL;
 
-  valid = ctk_tree_model_get_iter_first (GTK_TREE_MODEL (completion->priv->filter_model),
+  valid = ctk_tree_model_get_iter_first (CTK_TREE_MODEL (completion->priv->filter_model),
                                          &iter);
 
   while (valid)
     {
       gchar *text;
 
-      ctk_tree_model_get (GTK_TREE_MODEL (completion->priv->filter_model),
+      ctk_tree_model_get (CTK_TREE_MODEL (completion->priv->filter_model),
                           &iter, completion->priv->text_column, &text,
                           -1);
 
@@ -1812,7 +1812,7 @@ ctk_entry_completion_compute_prefix (GtkEntryCompletion *completion,
         }
 
       g_free (text);
-      valid = ctk_tree_model_iter_next (GTK_TREE_MODEL (completion->priv->filter_model),
+      valid = ctk_tree_model_iter_next (CTK_TREE_MODEL (completion->priv->filter_model),
                                         &iter);
     }
 
@@ -1832,16 +1832,16 @@ ctk_entry_completion_real_insert_prefix (GtkEntryCompletion *completion,
 
       prefix_len = g_utf8_strlen (prefix, -1);
 
-      key = ctk_entry_get_text (GTK_ENTRY (completion->priv->entry));
+      key = ctk_entry_get_text (CTK_ENTRY (completion->priv->entry));
       key_len = g_utf8_strlen (key, -1);
 
       if (prefix_len > key_len)
         {
           gint pos = prefix_len;
 
-          ctk_editable_insert_text (GTK_EDITABLE (completion->priv->entry),
+          ctk_editable_insert_text (CTK_EDITABLE (completion->priv->entry),
                                     prefix + strlen (key), -1, &pos);
-          ctk_editable_select_region (GTK_EDITABLE (completion->priv->entry),
+          ctk_editable_select_region (CTK_EDITABLE (completion->priv->entry),
                                       key_len, prefix_len);
 
           completion->priv->has_completion = TRUE;
@@ -1865,7 +1865,7 @@ ctk_entry_completion_real_insert_prefix (GtkEntryCompletion *completion,
 const gchar*
 ctk_entry_completion_get_completion_prefix (GtkEntryCompletion *completion)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_COMPLETION (completion), NULL);
+  g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), NULL);
 
   return completion->priv->completion_prefix;
 }
@@ -1885,10 +1885,10 @@ ctk_entry_completion_insert_completion_text (GtkEntryCompletion *completion,
   if (priv->insert_text_id > 0)
     g_signal_handler_block (priv->entry, priv->insert_text_id);
 
-  ctk_entry_set_text (GTK_ENTRY (priv->entry), text);
+  ctk_entry_set_text (CTK_ENTRY (priv->entry), text);
 
   len = strlen (priv->completion_prefix);
-  ctk_editable_select_region (GTK_EDITABLE (priv->entry), len, -1);
+  ctk_editable_select_region (CTK_EDITABLE (priv->entry), len, -1);
 
   if (priv->changed_id > 0)
     g_signal_handler_unblock (priv->entry, priv->changed_id);
@@ -1937,7 +1937,7 @@ ctk_entry_completion_insert_prefix (GtkEntryCompletion *completion)
                             completion->priv->insert_text_id);
 
   prefix = ctk_entry_completion_compute_prefix (completion,
-                                                ctk_entry_get_text (GTK_ENTRY (completion->priv->entry)));
+                                                ctk_entry_get_text (CTK_ENTRY (completion->priv->entry)));
 
   if (prefix)
     {
@@ -1965,7 +1965,7 @@ void
 ctk_entry_completion_set_inline_completion (GtkEntryCompletion *completion,
                                             gboolean            inline_completion)
 {
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
 
   inline_completion = inline_completion != FALSE;
 
@@ -1991,7 +1991,7 @@ ctk_entry_completion_set_inline_completion (GtkEntryCompletion *completion,
 gboolean
 ctk_entry_completion_get_inline_completion (GtkEntryCompletion *completion)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_COMPLETION (completion), FALSE);
+  g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), FALSE);
 
   return completion->priv->inline_completion;
 }
@@ -2009,7 +2009,7 @@ void
 ctk_entry_completion_set_popup_completion (GtkEntryCompletion *completion,
                                            gboolean            popup_completion)
 {
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
 
   popup_completion = popup_completion != FALSE;
 
@@ -2035,7 +2035,7 @@ ctk_entry_completion_set_popup_completion (GtkEntryCompletion *completion,
 gboolean
 ctk_entry_completion_get_popup_completion (GtkEntryCompletion *completion)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_COMPLETION (completion), TRUE);
+  g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), TRUE);
 
   return completion->priv->popup_completion;
 }
@@ -2054,7 +2054,7 @@ void
 ctk_entry_completion_set_popup_set_width (GtkEntryCompletion *completion,
                                           gboolean            popup_set_width)
 {
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
 
   popup_set_width = popup_set_width != FALSE;
 
@@ -2081,7 +2081,7 @@ ctk_entry_completion_set_popup_set_width (GtkEntryCompletion *completion,
 gboolean
 ctk_entry_completion_get_popup_set_width (GtkEntryCompletion *completion)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_COMPLETION (completion), TRUE);
+  g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), TRUE);
 
   return completion->priv->popup_set_width;
 }
@@ -2103,7 +2103,7 @@ void
 ctk_entry_completion_set_popup_single_match (GtkEntryCompletion *completion,
                                              gboolean            popup_single_match)
 {
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
 
   popup_single_match = popup_single_match != FALSE;
 
@@ -2130,7 +2130,7 @@ ctk_entry_completion_set_popup_single_match (GtkEntryCompletion *completion,
 gboolean
 ctk_entry_completion_get_popup_single_match (GtkEntryCompletion *completion)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_COMPLETION (completion), TRUE);
+  g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), TRUE);
 
   return completion->priv->popup_single_match;
 }
@@ -2149,7 +2149,7 @@ void
 ctk_entry_completion_set_inline_selection (GtkEntryCompletion *completion,
                                            gboolean inline_selection)
 {
-  g_return_if_fail (GTK_IS_ENTRY_COMPLETION (completion));
+  g_return_if_fail (CTK_IS_ENTRY_COMPLETION (completion));
 
   inline_selection = inline_selection != FALSE;
 
@@ -2174,7 +2174,7 @@ ctk_entry_completion_set_inline_selection (GtkEntryCompletion *completion,
 gboolean
 ctk_entry_completion_get_inline_selection (GtkEntryCompletion *completion)
 {
-  g_return_val_if_fail (GTK_IS_ENTRY_COMPLETION (completion), FALSE);
+  g_return_val_if_fail (CTK_IS_ENTRY_COMPLETION (completion), FALSE);
 
   return completion->priv->inline_selection;
 }
@@ -2183,15 +2183,15 @@ ctk_entry_completion_get_inline_selection (GtkEntryCompletion *completion)
 static gint
 ctk_entry_completion_timeout (gpointer data)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (data);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
 
   completion->priv->completion_timeout = 0;
 
   if (completion->priv->filter_model &&
-      g_utf8_strlen (ctk_entry_get_text (GTK_ENTRY (completion->priv->entry)), -1)
+      g_utf8_strlen (ctk_entry_get_text (CTK_ENTRY (completion->priv->entry)), -1)
       >= completion->priv->minimum_key_length)
     {
-      ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (GTK_TREE_VIEW (completion->priv->tree_view)));
+      ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->tree_view)));
       ctk_entry_completion_complete (completion);
     }
   else if (ctk_widget_get_visible (completion->priv->popup_window))
@@ -2224,7 +2224,7 @@ ctk_entry_completion_key_press (GtkWidget   *widget,
                                 gpointer     user_data)
 {
   gint matches, actions = 0;
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (user_data);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
 
   if (!completion->priv->popup_completion)
     return FALSE;
@@ -2244,10 +2244,10 @@ ctk_entry_completion_key_press (GtkWidget   *widget,
   if (!ctk_widget_get_mapped (completion->priv->popup_window))
     return FALSE;
 
-  matches = ctk_tree_model_iter_n_children (GTK_TREE_MODEL (completion->priv->filter_model), NULL);
+  matches = ctk_tree_model_iter_n_children (CTK_TREE_MODEL (completion->priv->filter_model), NULL);
 
   if (completion->priv->actions)
-    actions = ctk_tree_model_iter_n_children (GTK_TREE_MODEL (completion->priv->actions), NULL);
+    actions = ctk_tree_model_iter_n_children (CTK_TREE_MODEL (completion->priv->actions), NULL);
 
   if (keyval_is_cursor_move (event->keyval))
     {
@@ -2310,23 +2310,23 @@ ctk_entry_completion_key_press (GtkWidget   *widget,
 
       if (completion->priv->current_selected < 0)
         {
-          ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (GTK_TREE_VIEW (completion->priv->tree_view)));
-          ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (GTK_TREE_VIEW (completion->priv->action_view)));
+          ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->tree_view)));
+          ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->action_view)));
 
           if (completion->priv->inline_selection &&
               completion->priv->completion_prefix)
             {
-              ctk_entry_set_text (GTK_ENTRY (completion->priv->entry),
+              ctk_entry_set_text (CTK_ENTRY (completion->priv->entry),
                                   completion->priv->completion_prefix);
-              ctk_editable_set_position (GTK_EDITABLE (widget), -1);
+              ctk_editable_set_position (CTK_EDITABLE (widget), -1);
             }
         }
       else if (completion->priv->current_selected < matches)
         {
-          ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (GTK_TREE_VIEW (completion->priv->action_view)));
+          ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->action_view)));
 
           path = ctk_tree_path_new_from_indices (completion->priv->current_selected, -1);
-          ctk_tree_view_set_cursor (GTK_TREE_VIEW (completion->priv->tree_view),
+          ctk_tree_view_set_cursor (CTK_TREE_VIEW (completion->priv->tree_view),
                                     path, NULL, FALSE);
 
           if (completion->priv->inline_selection)
@@ -2338,14 +2338,14 @@ ctk_entry_completion_key_press (GtkWidget   *widget,
               GtkTreeSelection *sel;
               gboolean entry_set;
 
-              sel = ctk_tree_view_get_selection (GTK_TREE_VIEW (completion->priv->tree_view));
+              sel = ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->tree_view));
               if (!ctk_tree_selection_get_selected (sel, &model, &iter))
                 return FALSE;
-             ctk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (model), &child_iter, &iter);
-              model = ctk_tree_model_filter_get_model (GTK_TREE_MODEL_FILTER (model));
+             ctk_tree_model_filter_convert_iter_to_child_iter (CTK_TREE_MODEL_FILTER (model), &child_iter, &iter);
+              model = ctk_tree_model_filter_get_model (CTK_TREE_MODEL_FILTER (model));
 
               if (completion->priv->completion_prefix == NULL)
-                completion->priv->completion_prefix = g_strdup (ctk_entry_get_text (GTK_ENTRY (completion->priv->entry)));
+                completion->priv->completion_prefix = g_strdup (ctk_entry_get_text (CTK_ENTRY (completion->priv->entry)));
 
               g_signal_emit_by_name (completion, "cursor-on-match", model,
                                      &child_iter, &entry_set);
@@ -2353,18 +2353,18 @@ ctk_entry_completion_key_press (GtkWidget   *widget,
         }
       else if (completion->priv->current_selected - matches >= 0)
         {
-          ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (GTK_TREE_VIEW (completion->priv->tree_view)));
+          ctk_tree_selection_unselect_all (ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->tree_view)));
 
           path = ctk_tree_path_new_from_indices (completion->priv->current_selected - matches, -1);
-          ctk_tree_view_set_cursor (GTK_TREE_VIEW (completion->priv->action_view),
+          ctk_tree_view_set_cursor (CTK_TREE_VIEW (completion->priv->action_view),
                                     path, NULL, FALSE);
 
           if (completion->priv->inline_selection &&
               completion->priv->completion_prefix)
             {
-              ctk_entry_set_text (GTK_ENTRY (completion->priv->entry),
+              ctk_entry_set_text (CTK_ENTRY (completion->priv->entry),
                                   completion->priv->completion_prefix);
-              ctk_editable_set_position (GTK_EDITABLE (widget), -1);
+              ctk_editable_set_position (CTK_EDITABLE (widget), -1);
             }
         }
 
@@ -2380,7 +2380,7 @@ ctk_entry_completion_key_press (GtkWidget   *widget,
     {
       gboolean retval = TRUE;
 
-      ctk_entry_reset_im_context (GTK_ENTRY (widget));
+      ctk_entry_reset_im_context (CTK_ENTRY (widget));
       _ctk_entry_completion_popdown (completion);
 
       if (completion->priv->current_selected < 0)
@@ -2394,17 +2394,17 @@ ctk_entry_completion_key_press (GtkWidget   *widget,
           if (event->keyval == GDK_KEY_Escape)
             {
               if (completion->priv->completion_prefix)
-                ctk_entry_set_text (GTK_ENTRY (completion->priv->entry),
+                ctk_entry_set_text (CTK_ENTRY (completion->priv->entry),
                                     completion->priv->completion_prefix);
               else
-                ctk_entry_set_text (GTK_ENTRY (completion->priv->entry), "");
+                ctk_entry_set_text (CTK_ENTRY (completion->priv->entry), "");
             }
 
           /* Move the cursor to the end for Right/Esc */
           if (event->keyval == GDK_KEY_Right ||
               event->keyval == GDK_KEY_KP_Right ||
               event->keyval == GDK_KEY_Escape)
-            ctk_editable_set_position (GTK_EDITABLE (widget), -1);
+            ctk_editable_set_position (CTK_EDITABLE (widget), -1);
           /* Let the default keybindings run for Left, i.e. either move to the
  *            * previous character or select word if a modifier is used */
           else
@@ -2424,7 +2424,7 @@ keypress_completion_out:
            event->keyval == GDK_KEY_KP_Tab ||
            event->keyval == GDK_KEY_ISO_Left_Tab)
     {
-      ctk_entry_reset_im_context (GTK_ENTRY (widget));
+      ctk_entry_reset_im_context (CTK_ENTRY (widget));
       _ctk_entry_completion_popdown (completion);
 
       g_free (completion->priv->completion_prefix);
@@ -2443,18 +2443,18 @@ keypress_completion_out:
       GtkTreeSelection *sel;
       gboolean retval = TRUE;
 
-      ctk_entry_reset_im_context (GTK_ENTRY (widget));
+      ctk_entry_reset_im_context (CTK_ENTRY (widget));
       _ctk_entry_completion_popdown (completion);
 
       if (completion->priv->current_selected < matches)
         {
           gboolean entry_set;
 
-          sel = ctk_tree_view_get_selection (GTK_TREE_VIEW (completion->priv->tree_view));
+          sel = ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->tree_view));
           if (ctk_tree_selection_get_selected (sel, &model, &iter))
             {
-              ctk_tree_model_filter_convert_iter_to_child_iter (GTK_TREE_MODEL_FILTER (model), &child_iter, &iter);
-              child_model = ctk_tree_model_filter_get_model (GTK_TREE_MODEL_FILTER (model));
+              ctk_tree_model_filter_convert_iter_to_child_iter (CTK_TREE_MODEL_FILTER (model), &child_iter, &iter);
+              child_model = ctk_tree_model_filter_get_model (CTK_TREE_MODEL_FILTER (model));
               g_signal_handler_block (widget, completion->priv->changed_id);
               g_signal_emit_by_name (completion, "match-selected",
                                      child_model, &child_iter, &entry_set);
@@ -2468,10 +2468,10 @@ keypress_completion_out:
                                       completion->priv->text_column, &str,
                                       -1);
 
-                  ctk_entry_set_text (GTK_ENTRY (widget), str);
+                  ctk_entry_set_text (CTK_ENTRY (widget), str);
 
                   /* move the cursor to the end */
-                  ctk_editable_set_position (GTK_EDITABLE (widget), -1);
+                  ctk_editable_set_position (CTK_EDITABLE (widget), -1);
                   g_free (str);
                 }
             }
@@ -2480,7 +2480,7 @@ keypress_completion_out:
         }
       else if (completion->priv->current_selected - matches >= 0)
         {
-          sel = ctk_tree_view_get_selection (GTK_TREE_VIEW (completion->priv->action_view));
+          sel = ctk_tree_view_get_selection (CTK_TREE_VIEW (completion->priv->action_view));
           if (ctk_tree_selection_get_selected (sel, &model, &iter))
             {
               GtkTreePath *path;
@@ -2507,8 +2507,8 @@ static void
 ctk_entry_completion_changed (GtkWidget *widget,
                               gpointer   user_data)
 {
-  GtkEntryCompletion *completion = GTK_ENTRY_COMPLETION (user_data);
-  GtkEntry *entry = GTK_ENTRY (widget);
+  GtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
+  GtkEntry *entry = CTK_ENTRY (widget);
   GdkDevice *device;
 
   if (!completion->priv->popup_completion)
@@ -2582,7 +2582,7 @@ accept_completion_callback (GtkEntry *entry)
     return FALSE;
 
   if (completion->priv->has_completion)
-    ctk_editable_set_position (GTK_EDITABLE (entry),
+    ctk_editable_set_position (CTK_EDITABLE (entry),
                                ctk_entry_buffer_get_length (ctk_entry_get_buffer (entry)));
 
   return FALSE;
@@ -2710,10 +2710,10 @@ _ctk_entry_completion_disconnect (GtkEntryCompletion *completion)
 
   unset_accessible_relation (completion->priv->popup_window,
                              completion->priv->entry);
-  ctk_window_set_attached_to (GTK_WINDOW (completion->priv->popup_window),
+  ctk_window_set_attached_to (CTK_WINDOW (completion->priv->popup_window),
                               NULL);
 
-  ctk_window_set_transient_for (GTK_WINDOW (completion->priv->popup_window), NULL);
+  ctk_window_set_transient_for (CTK_WINDOW (completion->priv->popup_window), NULL);
 
   completion->priv->entry = NULL;
 }
@@ -2722,11 +2722,11 @@ void
 _ctk_entry_completion_connect (GtkEntryCompletion *completion,
                                GtkEntry           *entry)
 {
-  completion->priv->entry = GTK_WIDGET (entry);
+  completion->priv->entry = CTK_WIDGET (entry);
 
   set_accessible_relation (completion->priv->popup_window,
                            completion->priv->entry);
-  ctk_window_set_attached_to (GTK_WINDOW (completion->priv->popup_window),
+  ctk_window_set_attached_to (CTK_WINDOW (completion->priv->popup_window),
                               completion->priv->entry);
 
   connect_completion_signals (completion);

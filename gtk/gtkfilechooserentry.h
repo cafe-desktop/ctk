@@ -16,17 +16,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FILE_CHOOSER_ENTRY_H__
-#define __GTK_FILE_CHOOSER_ENTRY_H__
+#ifndef __CTK_FILE_CHOOSER_ENTRY_H__
+#define __CTK_FILE_CHOOSER_ENTRY_H__
 
 #include "gtkfilesystem.h"
 #include "gtkfilechooser.h"
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_CHOOSER_ENTRY    (_ctk_file_chooser_entry_get_type ())
-#define GTK_FILE_CHOOSER_ENTRY(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FILE_CHOOSER_ENTRY, GtkFileChooserEntry))
-#define GTK_IS_FILE_CHOOSER_ENTRY(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FILE_CHOOSER_ENTRY))
+#define CTK_TYPE_FILE_CHOOSER_ENTRY    (_ctk_file_chooser_entry_get_type ())
+#define CTK_FILE_CHOOSER_ENTRY(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_CHOOSER_ENTRY, GtkFileChooserEntry))
+#define CTK_IS_FILE_CHOOSER_ENTRY(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FILE_CHOOSER_ENTRY))
 
 typedef struct _GtkFileChooserEntry      GtkFileChooserEntry;
 
@@ -51,4 +51,4 @@ void               _ctk_file_chooser_entry_set_file_filter    (GtkFileChooserEnt
 
 G_END_DECLS
 
-#endif /* __GTK_FILE_CHOOSER_ENTRY_H__ */
+#endif /* __CTK_FILE_CHOOSER_ENTRY_H__ */

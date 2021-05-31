@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_PRINT_UNIX_DIALOG_H__
-#define __GTK_PRINT_UNIX_DIALOG_H__
+#ifndef __CTK_PRINT_UNIX_DIALOG_H__
+#define __CTK_PRINT_UNIX_DIALOG_H__
 
-#if !defined (__GTK_UNIX_PRINT_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_UNIX_PRINT_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtkunixprint.h> can be included directly."
 #endif
 
@@ -28,12 +28,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_PRINT_UNIX_DIALOG                  (ctk_print_unix_dialog_get_type ())
-#define GTK_PRINT_UNIX_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_PRINT_UNIX_DIALOG, GtkPrintUnixDialog))
-#define GTK_PRINT_UNIX_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PRINT_UNIX_DIALOG, GtkPrintUnixDialogClass))
-#define GTK_IS_PRINT_UNIX_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_PRINT_UNIX_DIALOG))
-#define GTK_IS_PRINT_UNIX_DIALOG_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PRINT_UNIX_DIALOG))
-#define GTK_PRINT_UNIX_DIALOG_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PRINT_UNIX_DIALOG, GtkPrintUnixDialogClass))
+#define CTK_TYPE_PRINT_UNIX_DIALOG                  (ctk_print_unix_dialog_get_type ())
+#define CTK_PRINT_UNIX_DIALOG(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_UNIX_DIALOG, GtkPrintUnixDialog))
+#define CTK_PRINT_UNIX_DIALOG_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_UNIX_DIALOG, GtkPrintUnixDialogClass))
+#define CTK_IS_PRINT_UNIX_DIALOG(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_UNIX_DIALOG))
+#define CTK_IS_PRINT_UNIX_DIALOG_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_PRINT_UNIX_DIALOG))
+#define CTK_PRINT_UNIX_DIALOG_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_PRINT_UNIX_DIALOG, GtkPrintUnixDialogClass))
 
 
 typedef struct _GtkPrintUnixDialog         GtkPrintUnixDialog;
@@ -111,4 +111,4 @@ gboolean             ctk_print_unix_dialog_get_page_setup_set      (GtkPrintUnix
 
 G_END_DECLS
 
-#endif /* __GTK_PRINT_UNIX_DIALOG_H__ */
+#endif /* __CTK_PRINT_UNIX_DIALOG_H__ */

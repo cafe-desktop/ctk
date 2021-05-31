@@ -50,7 +50,7 @@ ipa_register_type (GTypeModule *module)
 
   type_ipa = 
     g_type_module_register_type (module,
-				 GTK_TYPE_IM_CONTEXT_SIMPLE,
+				 CTK_TYPE_IM_CONTEXT_SIMPLE,
 				 "GtkIMContextIpa",
 				 &object_info, 0);
 }
@@ -142,7 +142,7 @@ static const GtkIMContextInfo ipa_info = {
   "ipa",		   /* ID */
   NC_("input method menu", "IPA"), /* Human readable name */
   GETTEXT_PACKAGE,		   /* Translation domain */
-   GTK_LOCALEDIR,		   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+   CTK_LOCALEDIR,		   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
   ""			           /* Languages for which this module is the default */
 };
 

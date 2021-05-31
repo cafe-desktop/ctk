@@ -3,7 +3,7 @@ NULL =
 
 TESTS_ENVIRONMENT = 				\
 	REFTEST_MODULE_DIR=$(abs_builddir)	\
-	GTK_IM_MODULE=gtk-im-context-simple 	\
+	CTK_IM_MODULE=gtk-im-context-simple 	\
 	GSETTINGS_BACKEND=memory		\
 	G_ENABLE_DIAGNOSTIC=0
 
@@ -16,9 +16,9 @@ ctk_reftest_CFLAGS = \
 	-I$(top_builddir)/gdk           \
 	-I$(top_srcdir)/gdk             \
 	-DGDK_DISABLE_DEPRECATED        \
-	-DGTK_DISABLE_DEPRECATED        \
-	$(GTK_DEBUG_FLAGS)              \
-	$(GTK_DEP_CFLAGS)		\
+	-DCTK_DISABLE_DEPRECATED        \
+	$(CTK_DEBUG_FLAGS)              \
+	$(CTK_DEP_CFLAGS)		\
 	$(GMODULE_CFLAGS)		\
 	$(NULL)
 
@@ -26,7 +26,7 @@ ctk_reftest_LDADD = \
 	libgtkreftestprivate.la		\
 	$(top_builddir)/gdk/libgdk-3.la \
 	$(top_builddir)/gtk/libgtk-3.la \
-	$(GTK_DEP_LIBS)			\
+	$(CTK_DEP_LIBS)			\
 	$(GMODULE_LIBS)			\
 	$(NULL)
 
@@ -46,7 +46,7 @@ libgtkreftestprivate_la_LDFLAGS = $(no_undefined)
 libgtkreftestprivate_la_LIBADD =	\
 	$(top_builddir)/gdk/libgdk-3.la \
 	$(top_builddir)/gtk/libgtk-3.la \
-	$(GTK_DEP_LIBS)			\
+	$(CTK_DEP_LIBS)			\
 	$(GMODULE_LIBS)			\
 	$(NULL)
 
@@ -480,7 +480,7 @@ EXTRA_DIST += 			\
 	reftests.test.in	\
 	$(NULL)
 
-GTK_GSETTINGS_SCHEMAS = \
+CTK_GSETTINGS_SCHEMAS = \
 	$(top_srcdir)/gtk/org.gtk.Settings.ColorChooser.gschema.xml \
 	$(top_srcdir)/gtk/org.gtk.Settings.FileChooser.gschema.xml \
 	$(NULL)
@@ -489,9 +489,9 @@ BUILT_SOURCES = gschemas.compiled
 
 CLEANFILES = gschemas.compiled
 
-gschemas.compiled: $(GTK_GSETTINGS_SCHEMAS)
+gschemas.compiled: $(CTK_GSETTINGS_SCHEMAS)
 	$(AM_V_GEN) $(GLIB_COMPILE_SCHEMAS) \
-		$(addprefix --schema-file=,$(GTK_GSETTINGS_SCHEMAS)) \
+		$(addprefix --schema-file=,$(CTK_GSETTINGS_SCHEMAS)) \
 		--targetdir=$(builddir)
 
 all-am: gschemas.compiled

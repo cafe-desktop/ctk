@@ -33,7 +33,7 @@
 
 G_BEGIN_DECLS
 
-#if defined (GTK_COMPILATION) || defined (GDK_COMPILATION)
+#if defined (CTK_COMPILATION) || defined (GDK_COMPILATION)
 #define gdk_wayland_selection_add_targets gdk_wayland_selection_add_targets_libctk_only
 GDK_AVAILABLE_IN_ALL
 void

@@ -22,15 +22,15 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
  */
 
-#ifndef __GTK_TEXT_MARK_PRIVATE_H__
-#define __GTK_TEXT_MARK_PRIVATE_H__
+#ifndef __CTK_TEXT_MARK_PRIVATE_H__
+#define __CTK_TEXT_MARK_PRIVATE_H__
 
 #include <gtk/gtktexttypes.h>
 #include <gtk/gtktextlayout.h>
 
 G_BEGIN_DECLS
 
-#define GTK_IS_TEXT_MARK_SEGMENT(mark) (((GtkTextLineSegment*)mark)->type == &ctk_text_left_mark_type || \
+#define CTK_IS_TEXT_MARK_SEGMENT(mark) (((GtkTextLineSegment*)mark)->type == &ctk_text_left_mark_type || \
                                 ((GtkTextLineSegment*)mark)->type == &ctk_text_right_mark_type)
 
 /*

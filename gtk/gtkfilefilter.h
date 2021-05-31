@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_FILE_FILTER_H__
-#define __GTK_FILE_FILTER_H__
+#ifndef __CTK_FILE_FILTER_H__
+#define __CTK_FILE_FILTER_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,29 +28,29 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_FILE_FILTER              (ctk_file_filter_get_type ())
-#define GTK_FILE_FILTER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_FILE_FILTER, GtkFileFilter))
-#define GTK_IS_FILE_FILTER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_FILE_FILTER))
+#define CTK_TYPE_FILE_FILTER              (ctk_file_filter_get_type ())
+#define CTK_FILE_FILTER(obj)              (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_FILE_FILTER, GtkFileFilter))
+#define CTK_IS_FILE_FILTER(obj)           (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_FILE_FILTER))
 
 typedef struct _GtkFileFilter     GtkFileFilter;
 typedef struct _GtkFileFilterInfo GtkFileFilterInfo;
 
 /**
  * GtkFileFilterFlags:
- * @GTK_FILE_FILTER_FILENAME: the filename of the file being tested
- * @GTK_FILE_FILTER_URI: the URI for the file being tested
- * @GTK_FILE_FILTER_DISPLAY_NAME: the string that will be used to 
+ * @CTK_FILE_FILTER_FILENAME: the filename of the file being tested
+ * @CTK_FILE_FILTER_URI: the URI for the file being tested
+ * @CTK_FILE_FILTER_DISPLAY_NAME: the string that will be used to 
  *   display the file in the file chooser
- * @GTK_FILE_FILTER_MIME_TYPE: the mime type of the file
+ * @CTK_FILE_FILTER_MIME_TYPE: the mime type of the file
  * 
  * These flags indicate what parts of a #GtkFileFilterInfo struct
  * are filled or need to be filled. 
  */
 typedef enum {
-  GTK_FILE_FILTER_FILENAME     = 1 << 0,
-  GTK_FILE_FILTER_URI          = 1 << 1,
-  GTK_FILE_FILTER_DISPLAY_NAME = 1 << 2,
-  GTK_FILE_FILTER_MIME_TYPE    = 1 << 3
+  CTK_FILE_FILTER_FILENAME     = 1 << 0,
+  CTK_FILE_FILTER_URI          = 1 << 1,
+  CTK_FILE_FILTER_DISPLAY_NAME = 1 << 2,
+  CTK_FILE_FILTER_MIME_TYPE    = 1 << 3
 } GtkFileFilterFlags;
 
 /**
@@ -129,4 +129,4 @@ GtkFileFilter *ctk_file_filter_new_from_gvariant (GVariant      *variant);
 
 G_END_DECLS
 
-#endif /* __GTK_FILE_FILTER_H__ */
+#endif /* __CTK_FILE_FILTER_H__ */

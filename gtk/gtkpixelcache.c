@@ -182,7 +182,7 @@ _ctk_pixel_cache_create_surface_if_needed (GtkPixelCache         *cache,
   cairo_content_t content;
 
 #ifdef G_ENABLE_DEBUG
-  if (GTK_DISPLAY_DEBUG_CHECK (gdk_window_get_display (window), NO_PIXEL_CACHE))
+  if (CTK_DISPLAY_DEBUG_CHECK (gdk_window_get_display (window), NO_PIXEL_CACHE))
     return;
 #endif
 
@@ -359,7 +359,7 @@ _ctk_pixel_cache_repaint (GtkPixelCache         *cache,
       cairo_restore (backing_cr);
 
 #ifdef G_ENABLE_DEBUG
-      if (GTK_DISPLAY_DEBUG_CHECK (gdk_window_get_display (window), PIXEL_CACHE))
+      if (CTK_DISPLAY_DEBUG_CHECK (gdk_window_get_display (window), PIXEL_CACHE))
         {
           GdkRGBA colors[] = {
             { 1, 0, 0, 0.08},

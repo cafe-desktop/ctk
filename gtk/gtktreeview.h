@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_TREE_VIEW_H__
-#define __GTK_TREE_VIEW_H__
+#ifndef __CTK_TREE_VIEW_H__
+#define __CTK_TREE_VIEW_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -32,31 +32,31 @@ G_BEGIN_DECLS
 
 /**
  * GtkTreeViewDropPosition:
- * @GTK_TREE_VIEW_DROP_BEFORE: dropped row is inserted before
- * @GTK_TREE_VIEW_DROP_AFTER: dropped row is inserted after
- * @GTK_TREE_VIEW_DROP_INTO_OR_BEFORE: dropped row becomes a child or is inserted before
- * @GTK_TREE_VIEW_DROP_INTO_OR_AFTER: dropped row becomes a child or is inserted after
+ * @CTK_TREE_VIEW_DROP_BEFORE: dropped row is inserted before
+ * @CTK_TREE_VIEW_DROP_AFTER: dropped row is inserted after
+ * @CTK_TREE_VIEW_DROP_INTO_OR_BEFORE: dropped row becomes a child or is inserted before
+ * @CTK_TREE_VIEW_DROP_INTO_OR_AFTER: dropped row becomes a child or is inserted after
  *
  * An enum for determining where a dropped row goes.
  */
 typedef enum
 {
   /* drop before/after this row */
-  GTK_TREE_VIEW_DROP_BEFORE,
-  GTK_TREE_VIEW_DROP_AFTER,
+  CTK_TREE_VIEW_DROP_BEFORE,
+  CTK_TREE_VIEW_DROP_AFTER,
   /* drop as a child of this row (with fallback to before or after
    * if into is not possible)
    */
-  GTK_TREE_VIEW_DROP_INTO_OR_BEFORE,
-  GTK_TREE_VIEW_DROP_INTO_OR_AFTER
+  CTK_TREE_VIEW_DROP_INTO_OR_BEFORE,
+  CTK_TREE_VIEW_DROP_INTO_OR_AFTER
 } GtkTreeViewDropPosition;
 
-#define GTK_TYPE_TREE_VIEW		(ctk_tree_view_get_type ())
-#define GTK_TREE_VIEW(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TREE_VIEW, GtkTreeView))
-#define GTK_TREE_VIEW_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_TREE_VIEW, GtkTreeViewClass))
-#define GTK_IS_TREE_VIEW(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TREE_VIEW))
-#define GTK_IS_TREE_VIEW_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_TREE_VIEW))
-#define GTK_TREE_VIEW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_TREE_VIEW, GtkTreeViewClass))
+#define CTK_TYPE_TREE_VIEW		(ctk_tree_view_get_type ())
+#define CTK_TREE_VIEW(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TREE_VIEW, GtkTreeView))
+#define CTK_TREE_VIEW_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_TREE_VIEW, GtkTreeViewClass))
+#define CTK_IS_TREE_VIEW(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TREE_VIEW))
+#define CTK_IS_TREE_VIEW_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_TREE_VIEW))
+#define CTK_TREE_VIEW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_TREE_VIEW, GtkTreeViewClass))
 
 typedef struct _GtkTreeView           GtkTreeView;
 typedef struct _GtkTreeViewClass      GtkTreeViewClass;
@@ -597,4 +597,4 @@ gint          ctk_tree_view_get_tooltip_column (GtkTreeView       *tree_view);
 G_END_DECLS
 
 
-#endif /* __GTK_TREE_VIEW_H__ */
+#endif /* __CTK_TREE_VIEW_H__ */

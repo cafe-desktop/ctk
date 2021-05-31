@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_COMBO_BOX_H__
-#define __GTK_COMBO_BOX_H__
+#ifndef __CTK_COMBO_BOX_H__
+#define __CTK_COMBO_BOX_H__
 
-#if !defined (__GTK_H_INSIDE__) && !defined (GTK_COMPILATION)
+#if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <gtk/gtk.h> can be included directly."
 #endif
 
@@ -28,12 +28,12 @@
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_COMBO_BOX             (ctk_combo_box_get_type ())
-#define GTK_COMBO_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_COMBO_BOX, GtkComboBox))
-#define GTK_COMBO_BOX_CLASS(vtable)    (G_TYPE_CHECK_CLASS_CAST ((vtable), GTK_TYPE_COMBO_BOX, GtkComboBoxClass))
-#define GTK_IS_COMBO_BOX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_COMBO_BOX))
-#define GTK_IS_COMBO_BOX_CLASS(vtable) (G_TYPE_CHECK_CLASS_TYPE ((vtable), GTK_TYPE_COMBO_BOX))
-#define GTK_COMBO_BOX_GET_CLASS(inst)  (G_TYPE_INSTANCE_GET_CLASS ((inst), GTK_TYPE_COMBO_BOX, GtkComboBoxClass))
+#define CTK_TYPE_COMBO_BOX             (ctk_combo_box_get_type ())
+#define CTK_COMBO_BOX(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_COMBO_BOX, GtkComboBox))
+#define CTK_COMBO_BOX_CLASS(vtable)    (G_TYPE_CHECK_CLASS_CAST ((vtable), CTK_TYPE_COMBO_BOX, GtkComboBoxClass))
+#define CTK_IS_COMBO_BOX(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_COMBO_BOX))
+#define CTK_IS_COMBO_BOX_CLASS(vtable) (G_TYPE_CHECK_CLASS_TYPE ((vtable), CTK_TYPE_COMBO_BOX))
+#define CTK_COMBO_BOX_GET_CLASS(inst)  (G_TYPE_INSTANCE_GET_CLASS ((inst), CTK_TYPE_COMBO_BOX, GtkComboBoxClass))
 
 typedef struct _GtkComboBox        GtkComboBox;
 typedef struct _GtkComboBoxClass   GtkComboBoxClass;
@@ -197,4 +197,4 @@ gboolean      ctk_combo_box_set_active_id        (GtkComboBox *combo_box,
 
 G_END_DECLS
 
-#endif /* __GTK_COMBO_BOX_H__ */
+#endif /* __CTK_COMBO_BOX_H__ */

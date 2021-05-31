@@ -36,7 +36,7 @@ struct _GtkNotebookAccessiblePrivate
 
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GtkNotebookAccessible, ctk_notebook_accessible, GTK_TYPE_CONTAINER_ACCESSIBLE,
+G_DEFINE_TYPE_WITH_CODE (GtkNotebookAccessible, ctk_notebook_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE,
                          G_ADD_PRIVATE (GtkNotebookAccessible)
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
 
@@ -63,8 +63,8 @@ page_added_cb (GtkNotebook *notebook,
   AtkObject *atk_obj;
   GtkNotebookAccessible *accessible;
 
-  atk_obj = ctk_widget_get_accessible (GTK_WIDGET (notebook));
-  accessible = GTK_NOTEBOOK_ACCESSIBLE (atk_obj);
+  atk_obj = ctk_widget_get_accessible (CTK_WIDGET (notebook));
+  accessible = CTK_NOTEBOOK_ACCESSIBLE (atk_obj);
   create_notebook_page_accessible (accessible, notebook, child, page_num);
 }
 
@@ -77,13 +77,13 @@ page_removed_cb (GtkNotebook *notebook,
   GtkNotebookAccessible *accessible;
   AtkObject *obj;
 
-  accessible = GTK_NOTEBOOK_ACCESSIBLE (ctk_widget_get_accessible (GTK_WIDGET (notebook)));
+  accessible = CTK_NOTEBOOK_ACCESSIBLE (ctk_widget_get_accessible (CTK_WIDGET (notebook)));
 
   obj = g_hash_table_lookup (accessible->priv->pages, widget);
   g_return_if_fail (obj);
   g_signal_emit_by_name (accessible, "children-changed::remove",
                          page_num, obj, NULL);
-  ctk_notebook_page_accessible_invalidate (GTK_NOTEBOOK_PAGE_ACCESSIBLE (obj));
+  ctk_notebook_page_accessible_invalidate (CTK_NOTEBOOK_PAGE_ACCESSIBLE (obj));
   g_hash_table_remove (accessible->priv->pages, widget);
 }
 
@@ -98,8 +98,8 @@ ctk_notebook_accessible_initialize (AtkObject *obj,
 
   ATK_OBJECT_CLASS (ctk_notebook_accessible_parent_class)->initialize (obj, data);
 
-  accessible = GTK_NOTEBOOK_ACCESSIBLE (obj);
-  notebook = GTK_NOTEBOOK (data);
+  accessible = CTK_NOTEBOOK_ACCESSIBLE (obj);
+  notebook = CTK_NOTEBOOK (data);
   for (i = 0; i < ctk_notebook_get_n_pages (notebook); i++)
     {
       create_notebook_page_accessible (accessible,
@@ -120,7 +120,7 @@ ctk_notebook_accessible_initialize (AtkObject *obj,
 static void
 ctk_notebook_accessible_finalize (GObject *object)
 {
-  GtkNotebookAccessible *accessible = GTK_NOTEBOOK_ACCESSIBLE (object);
+  GtkNotebookAccessible *accessible = CTK_NOTEBOOK_ACCESSIBLE (object);
 
   g_hash_table_destroy (accessible->priv->pages);
 
@@ -136,12 +136,12 @@ ctk_notebook_accessible_ref_child (AtkObject *obj,
   GtkNotebook *notebook;
   GtkWidget *widget;
  
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (obj));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
     return NULL;
 
-  accessible = GTK_NOTEBOOK_ACCESSIBLE (obj);
-  notebook = GTK_NOTEBOOK (widget);
+  accessible = CTK_NOTEBOOK_ACCESSIBLE (obj);
+  notebook = CTK_NOTEBOOK (widget);
 
   child = g_hash_table_lookup (accessible->priv->pages,
                                ctk_notebook_get_nth_page (notebook, i));
@@ -160,7 +160,7 @@ ctk_notebook_accessible_notify_gtk (GObject    *obj,
   GtkWidget *widget;
   AtkObject* atk_obj;
 
-  widget = GTK_WIDGET (obj);
+  widget = CTK_WIDGET (obj);
   atk_obj = ctk_widget_get_accessible (widget);
 
   if (strcmp (pspec->name, "page") == 0)
@@ -169,8 +169,8 @@ ctk_notebook_accessible_notify_gtk (GObject    *obj,
       GtkNotebookAccessible *accessible;
       GtkNotebook *notebook;
 
-      accessible = GTK_NOTEBOOK_ACCESSIBLE (atk_obj);
-      notebook = GTK_NOTEBOOK (widget);
+      accessible = CTK_NOTEBOOK_ACCESSIBLE (atk_obj);
+      notebook = CTK_NOTEBOOK (widget);
 
       /* Notify SELECTED state change for old and new page */
       old_page_num = accessible->priv->selected_page;
@@ -201,7 +201,7 @@ ctk_notebook_accessible_notify_gtk (GObject    *obj,
         }
     }
   else
-    GTK_WIDGET_ACCESSIBLE_CLASS (ctk_notebook_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_notebook_accessible_parent_class)->notify_gtk (obj, pspec);
 }
 
 /*
@@ -216,11 +216,11 @@ ctk_notebook_accessible_add_selection (AtkSelection *selection,
   GtkNotebook *notebook;
   GtkWidget *widget;
 
-  widget =  ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget =  ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
-  notebook = GTK_NOTEBOOK (widget);
+  notebook = CTK_NOTEBOOK (widget);
   ctk_notebook_set_current_page (notebook, i);
   return TRUE;
 }
@@ -268,11 +268,11 @@ ctk_notebook_accessible_ref_selection (AtkSelection *selection,
   if (i != 0)
     return NULL;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return NULL;
 
-  notebook = GTK_NOTEBOOK (widget);
+  notebook = CTK_NOTEBOOK (widget);
   pagenum = ctk_notebook_get_current_page (notebook);
   if (pagenum == -1)
     return NULL;
@@ -290,11 +290,11 @@ ctk_notebook_accessible_get_selection_count (AtkSelection *selection)
   GtkWidget *widget;
   GtkNotebook *notebook;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return 0;
 
-  notebook = GTK_NOTEBOOK (widget);
+  notebook = CTK_NOTEBOOK (widget);
   if (notebook == NULL || ctk_notebook_get_current_page (notebook) == -1)
     return 0;
 
@@ -309,11 +309,11 @@ ctk_notebook_accessible_is_child_selected (AtkSelection *selection,
   GtkNotebook *notebook;
   gint pagenumber;
 
-  widget = ctk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+  widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (selection));
   if (widget == NULL)
     return FALSE;
 
-  notebook = GTK_NOTEBOOK (widget);
+  notebook = CTK_NOTEBOOK (widget);
   pagenumber = ctk_notebook_get_current_page(notebook);
 
   if (pagenumber == i)

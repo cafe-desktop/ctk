@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_CSS_PARSER_PRIVATE_H__
-#define __GTK_CSS_PARSER_PRIVATE_H__
+#ifndef __CTK_CSS_PARSER_PRIVATE_H__
+#define __CTK_CSS_PARSER_PRIVATE_H__
 
 #include "gtk/gtkcsstypesprivate.h"
 #include <gtk/gtkcssprovider.h>
@@ -104,4 +104,4 @@ void            _ctk_css_print_string             (GString               *str,
 
 G_END_DECLS
 
-#endif /* __GTK_CSS_PARSER_PRIVATE_H__ */
+#endif /* __CTK_CSS_PARSER_PRIVATE_H__ */

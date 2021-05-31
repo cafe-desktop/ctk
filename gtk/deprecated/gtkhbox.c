@@ -49,7 +49,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * GtkHBox, you can simply change the inheritance to derive directly
  * from #GtkBox. No further changes are needed, since the default
  * value of the #GtkOrientable:orientation property is
- * %GTK_ORIENTATION_HORIZONTAL.
+ * %CTK_ORIENTATION_HORIZONTAL.
  *
  * If you have a grid-like layout composed of nested boxes, and you don’t
  * need first-child or last-child styling, the recommendation is to switch
@@ -58,7 +58,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  */
 
 
-G_DEFINE_TYPE (GtkHBox, ctk_hbox, GTK_TYPE_BOX)
+G_DEFINE_TYPE (GtkHBox, ctk_hbox, CTK_TYPE_BOX)
 
 static void
 ctk_hbox_class_init (GtkHBoxClass *class)
@@ -68,10 +68,10 @@ ctk_hbox_class_init (GtkHBoxClass *class)
 static void
 ctk_hbox_init (GtkHBox *hbox)
 {
-  ctk_orientable_set_orientation (GTK_ORIENTABLE (hbox),
-                                  GTK_ORIENTATION_HORIZONTAL);
+  ctk_orientable_set_orientation (CTK_ORIENTABLE (hbox),
+                                  CTK_ORIENTATION_HORIZONTAL);
 
-  _ctk_box_set_old_defaults (GTK_BOX (hbox));
+  _ctk_box_set_old_defaults (CTK_BOX (hbox));
 }
 
 /**
@@ -83,7 +83,7 @@ ctk_hbox_init (GtkHBox *hbox)
  *
  * Returns: a new #GtkHBox.
  *
- * Deprecated: 3.2: You can use ctk_box_new() with %GTK_ORIENTATION_HORIZONTAL instead,
+ * Deprecated: 3.2: You can use ctk_box_new() with %CTK_ORIENTATION_HORIZONTAL instead,
  *   which is a quick and easy change. But the recommendation is to switch to
  *   #GtkGrid, since #GtkBox is going to go away eventually.
  *   See [Migrating from other containers to GtkGrid][gtk-migrating-GtkGrid].
@@ -92,7 +92,7 @@ GtkWidget *
 ctk_hbox_new (gboolean homogeneous,
 	      gint     spacing)
 {
-  return g_object_new (GTK_TYPE_HBOX,
+  return g_object_new (CTK_TYPE_HBOX,
                        "spacing",     spacing,
                        "homogeneous", homogeneous ? TRUE : FALSE,
                        NULL);

@@ -15,14 +15,14 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GTK_ACCESSIBILITY_MISC_H__
-#define __GTK_ACCESSIBILITY_MISC_H__
+#ifndef __CTK_ACCESSIBILITY_MISC_H__
+#define __CTK_ACCESSIBILITY_MISC_H__
 
 #include <atk/atk.h>
 
 G_BEGIN_DECLS
 
-#define GTK_TYPE_MISC_IMPL (_ctk_misc_impl_get_type ())
+#define CTK_TYPE_MISC_IMPL (_ctk_misc_impl_get_type ())
 
 typedef struct _GtkMiscImpl      GtkMiscImpl;
 typedef struct _GtkMiscImplClass GtkMiscImplClass;
@@ -41,4 +41,4 @@ GType _ctk_misc_impl_get_type (void);
 
 G_END_DECLS
 
-#endif /* __GTK_ACCESSIBILITY_MISC_H__ */
+#endif /* __CTK_ACCESSIBILITY_MISC_H__ */
