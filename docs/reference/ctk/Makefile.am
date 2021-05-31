@@ -8,7 +8,7 @@ DOC_MODULE=ctk3
 # The top-level SGML file.
 DOC_MAIN_SGML_FILE=ctk-docs.sgml
 
-# Extra options to supply to ctkdoc-scan
+# Extra options to supply to gtkdoc-scan
 SCAN_OPTIONS=--deprecated-guards="CTK_ENABLE_BROKEN|CTK_DISABLE_DEPRECATED"
 
 # The directory containing the source code. Relative to $(srcdir)
@@ -275,7 +275,7 @@ GTKDOC_LIBS = \
 	$(CTK_DEP_LIBS)
 
 
-# Extra options to supply to ctkdoc-mkdb
+# Extra options to supply to gtkdoc-mkdb
 MKDB_OPTIONS=--output-format=xml --name-space=ctk --default-includes=ctk/ctk.h
 
 # Extra SGML files that are included by $(DOC_MAIN_SGML_FILE)
@@ -483,7 +483,7 @@ HTML_IMAGES = \
 	$(srcdir)/images/builder-shortcuts.png
 
 if ENABLE_DOC_CROSS_REFERENCES
-# Extra options to supply to ctkdoc-fixref
+# Extra options to supply to gtkdoc-fixref
 FIXXREF_OPTIONS=--extra-dir=../gdk/html \
 	--extra-dir=$(GLIB_PREFIX)/share/ctk-doc/html/gobject \
 	--extra-dir=$(GLIB_PREFIX)/share/ctk-doc/html/glib \
