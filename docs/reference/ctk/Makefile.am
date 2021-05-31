@@ -547,7 +547,7 @@ EXTRA_DIST += \
 	$(man_MANS) \
 	meson.build
 
-if ENABLE_CTK_DOC
+if ENABLE_GTK_DOC
 TESTS_ENVIRONMENT = cd $(srcdir) && \
   DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
   SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)
