@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1998-2002 James Henstridge <james@daa.com.au>
  * Copyright (C) 2006-2007 Async Open Source,
  *                         Johan Dahlin <jdahlin@async.com.br>,
@@ -87,7 +87,7 @@
  *
  * Typically, the specific kind of object represented by an <object>
  * element is specified by the “class” attribute. If the type has not
- * been loaded yet, GTK+ tries to find the get_type() function from the
+ * been loaded yet, CTK+ tries to find the get_type() function from the
  * class name by applying heuristics. This works in most cases, but if
  * necessary, it is possible to specify the name of the get_type() function
  * explictly with the "type-func" attribute. As a special case, CtkBuilder
@@ -99,13 +99,13 @@
  * Objects may be given a name with the “id” attribute, which allows the
  * application to retrieve them from the builder with ctk_builder_get_object().
  * An id is also necessary to use the object as property value in other
- * parts of the UI definition. GTK+ reserves ids starting and ending
+ * parts of the UI definition. CTK+ reserves ids starting and ending
  * with ___ (3 underscores) for its own purposes.
  *
  * Setting properties of objects is pretty straightforward with the
  * <property> element: the “name” attribute specifies the name of the
  * property, and the content of the element specifies the value.
- * If the “translatable” attribute is set to a true value, GTK+ uses
+ * If the “translatable” attribute is set to a true value, CTK+ uses
  * gettext() (or dgettext() if the builder has a translation domain set)
  * to find a translation for the value. This happens before the value
  * is parsed, so it can be used for properties of any type, but it is
@@ -143,7 +143,7 @@
  *
  * Signal handlers are set up with the <signal> element. The “name”
  * attribute specifies the name of the signal, and the “handler” attribute
- * specifies the function to connect to the signal. By default, GTK+ tries
+ * specifies the function to connect to the signal. By default, CTK+ tries
  * to find the handler using g_module_symbol(), but this can be changed by
  * passing a custom #CtkBuilderConnectFunc to
  * ctk_builder_connect_signals_full(). The remaining attributes, “after”,
@@ -154,7 +154,7 @@
  * builder.
  *
  * Sometimes it is necessary to refer to widgets which have implicitly
- * been constructed by GTK+ as part of a composite widget, to set
+ * been constructed by CTK+ as part of a composite widget, to set
  * properties on them or to add further children (e.g. the @vbox of
  * a #CtkDialog). This can be achieved by setting the “internal-child”
  * property of the <child> element to a true value. Note that CtkBuilder

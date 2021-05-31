@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkpagesetup.c: Page Setup
  * Copyright (C) 2006, Red Hat, Inc.
  *
@@ -71,7 +71,7 @@
  * }
  * ]|
  *
- * Printing support was added in GTK+ 2.10.
+ * Printing support was added in CTK+ 2.10.
  */
 
 #define KEYFILE_GROUP_NAME "Page Setup"

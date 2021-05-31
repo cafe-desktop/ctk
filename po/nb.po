@@ -2920,8 +2920,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Last tilleggsmoduler for GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Last tilleggsmoduler for CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2935,13 +2935,13 @@ msgstr "La alle advarsler være fatale"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "Feilsøkingsflagg som skal settes for GTK+"
+msgid "CTK+ debugging flags to set"
+msgstr "Feilsøkingsflagg som skal settes for CTK+"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "Feilsøkingsflagg som skal fjernes for GTK+"
+msgid "CTK+ debugging flags to unset"
+msgstr "Feilsøkingsflagg som skal fjernes for CTK+"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2949,12 +2949,12 @@ msgid "Cannot open display: %s"
 msgstr "Kan ikke åpne skjerm: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Alternativer for GTK+"
+msgid "CTK+ Options"
+msgstr "Alternativer for CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Vis alternativer for GTK+"
+msgid "Show CTK+ Options"
+msgstr "Vis alternativer for CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3973,10 +3973,10 @@ msgstr "Serialiserte data har feil utforming"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Serialiserte data er feilutformet.Første del er ikke "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4055,18 +4055,18 @@ msgstr "Alltid øverst"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Vil du bruke GTK+ inspektør?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Vil du bruke CTK+ inspektør?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ Inspector er et interaktivt feilsøkingsprogram som lar deg utforske og "
-"endre interne detaljer av ethvert GTK+ program. Bruk av denne kan få "
+"CTK+ Inspector er et interaktivt feilsøkingsprogram som lar deg utforske og "
+"endre interne detaljer av ethvert CTK+ program. Bruk av denne kan få "
 "programmet til å slutte å virke eller krasje."
 
 #: ctk/ctkwindow.c:12784
@@ -4096,8 +4096,8 @@ msgid "Parameter Type"
 msgstr "Type parameter"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Du kan skrive enhver CSS-regel som støttes av GTK+ her."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Du kan skrive enhver CSS-regel som støttes av CTK+ her."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4156,8 +4156,8 @@ msgid "None"
 msgstr "Ingen"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK+-versjon"
+msgid "CTK+ Version"
+msgstr "CTK+-versjon"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4545,8 +4545,8 @@ msgid "GL rendering is disabled"
 msgstr "GL-tegning er slått av"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK+-tema"
+msgid "CTK+ Theme"
+msgstr "CTK+-tema"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

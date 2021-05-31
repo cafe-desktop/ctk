@@ -15,10 +15,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /*
@@ -232,7 +232,7 @@ ctk_fnmatch_intern (const char *pattern,
 /* Match STRING against the filename pattern PATTERN, returning zero if
  *  it matches, nonzero if not.
  *
- * GTK+ used to use a old version of GNU fnmatch() that was buggy
+ * CTK+ used to use a old version of GNU fnmatch() that was buggy
  * in various ways and didn’t handle UTF-8. The following is
  * converted to UTF-8. To simplify the process of making it
  * correct, this is special-cased to the combinations of flags

@@ -16,14 +16,14 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /* This is a kludge to be able to include gdk/gdkx.h from inside the
- * GTK source tree.
+ * CTK source tree.
  * Also, this hopefully serves as a warning to new backends to put
  * their header into the backend dir from the start.
  */

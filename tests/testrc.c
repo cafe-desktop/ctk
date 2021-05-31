@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
 
    Copyright (C) 2006 Red Hat, Inc.
    Author: Matthias Clasen <mclasen@redhat.com>
@@ -20,7 +20,7 @@
 #include <string.h>
 #include "ctk/ctk.h"
 
-/* NOTE to compile this test, GTK+ needs to be build without
+/* NOTE to compile this test, CTK+ needs to be build without
  * the _-prefix stripping.
  */
 struct {

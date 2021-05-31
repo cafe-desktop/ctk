@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentmanager.c: a manager for the recently used resources
  *
  * Copyright (C) 2006 Emmanuele Bassi

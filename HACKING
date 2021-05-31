@@ -1,4 +1,4 @@
-If you want to hack on the GTK+ project, you'll need to have
+If you want to hack on the CTK+ project, you'll need to have
 the following packages installed:
 
         - GNU autoconf 2.62
@@ -19,10 +19,10 @@ Information about using git with GNOME can be found here:
 
         https://wiki.gnome.org/Git
 
-In order to get GIT GTK+ installed on your system, you need to have
+In order to get GIT CTK+ installed on your system, you need to have
 the most recent GIT versions of GLib, Pango, and ATK installed as well.
-The installation process of these libraries is similar to that of GTK+,
-but needs to be fulfilled prior to installation of GTK+.
+The installation process of these libraries is similar to that of CTK+,
+but needs to be fulfilled prior to installation of CTK+.
 
 If at all possible, please use GIT to get the latest development version of
 ctk+ and glib. You can do the following to get glib and ctk+ from GIT:
@@ -37,7 +37,7 @@ have a gnome account, you want to use the following instead:
 
         $ git clone ssh://<username>@git.gnome.org/git/ctk+
 
-To compile the GIT version of GTK+ on your system, you will need to take
+To compile the GIT version of CTK+ on your system, you will need to take
 several steps to setup the tree for compilation.  You can do all these
 steps at once by running:
 

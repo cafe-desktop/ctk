@@ -1,5 +1,5 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctktextview.c Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -17,10 +17,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -127,7 +127,7 @@
  *
  * Also, in size_allocate, if we invalidate some lines from changing
  * the layout width, we need to go ahead and run the high-priority idle,
- * because GTK sends exposes right after doing the size allocates without
+ * because CTK sends exposes right after doing the size allocates without
  * returning to the main loop. This is also why the high-priority idle
  * is at a higher priority than resizing.
  *
@@ -1211,7 +1211,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * [keybinding signal][CtkBindingSignal] 
    * which gets emitted when the user initiates a text deletion.
    *
-   * If the @type is %CTK_DELETE_CHARS, GTK+ deletes the selection
+   * If the @type is %CTK_DELETE_CHARS, CTK+ deletes the selection
    * if there is one, otherwise it deletes the requested number
    * of characters.
    *
@@ -4389,7 +4389,7 @@ ctk_text_view_size_allocate (CtkWidget *widget,
   if (!ctk_adjustment_is_animating (priv->vadjustment))
     ctk_text_view_set_vadjustment_values (text_view);
 
-  /* The GTK resize loop processes all the pending exposes right
+  /* The CTK resize loop processes all the pending exposes right
    * after doing the resize stuff, so the idle sizer won't have a
    * chance to run. So we do the work here. 
    */

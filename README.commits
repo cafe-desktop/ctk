@@ -1,25 +1,25 @@
-GTK+ is part of the GNOME git repository. At the current time, any
+CTK+ is part of the GNOME git repository. At the current time, any
 person with write access to the GNOME repository, can make changes to
-GTK+. This is a good thing, in that it encourages many people to work
-on GTK+, and progress can be made quickly. However, GTK+ is a fairly
+CTK+. This is a good thing, in that it encourages many people to work
+on CTK+, and progress can be made quickly. However, CTK+ is a fairly
 large and complicated package that many other things depend on, so to
 avoid unnecessary breakage, and to take advantage of the knowledge
-about GTK+ that has been built up over the years, we'd like to ask
-people committing to GTK+ to follow a few rules:
+about CTK+ that has been built up over the years, we'd like to ask
+people committing to CTK+ to follow a few rules:
 
 0) Ask first. If your changes are major, or could possibly break existing
    code, you should always ask. If your change is minor and you've
-   been working on GTK+ for a while it probably isn't necessary
+   been working on CTK+ for a while it probably isn't necessary
    to ask. But when in doubt, ask. Even if your change is correct,
    somebody may know a better way to do things.
 
-   If you are making changes to GTK+, you should be subscribed
+   If you are making changes to CTK+, you should be subscribed
    to ctk-devel-list@gnome.org. (Subscription address:
    ctk-devel-list-request@gnome.org.) This is a good place to ask
    about intended changes.
 
    #ctk+ on GIMPNet (irc.gimp.org, irc.us.gimp.org, irc.eu.gimp.org, ...)
-   is also a good place to find GTK+ developers to discuss changes with,
+   is also a good place to find CTK+ developers to discuss changes with,
    however, email to ctk-devel-list is the most certain and preferred
    method.
 
@@ -33,7 +33,7 @@ people committing to GTK+ to follow a few rules:
 Notes:
 
 * When developing larger features or complicated bug fixes, it is
-  advisable to work in a branch in your own cloned GTK+ repository.
+  advisable to work in a branch in your own cloned CTK+ repository.
   You may even consider making your repository publically available
   so that others can easily test and review your changes.
 

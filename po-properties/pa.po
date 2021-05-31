@@ -6853,12 +6853,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "ਆਈਕਾਨ ਅਕਾਰ ਦੀ ਸੂਚੀ (ctk-ਸੂਚੀ=16,16;ctk-ਬਟਨ=20,20..."
 
 #: ctk/ctksettings.c:568
-msgid "GTK Modules"
-msgstr "GTK ਮੈਡੀਊਲ"
+msgid "CTK Modules"
+msgstr "CTK ਮੈਡੀਊਲ"
 
 #: ctk/ctksettings.c:569
-msgid "List of currently active GTK modules"
-msgstr "ਇਸ ਸਮੇਂ ਸਰਗਰਮ GTK ਮੈਡੀਊਲਾਂ ਦੀ ਸੂਚੀ"
+msgid "List of currently active CTK modules"
+msgstr "ਇਸ ਸਮੇਂ ਸਰਗਰਮ CTK ਮੈਡੀਊਲਾਂ ਦੀ ਸੂਚੀ"
 
 #: ctk/ctksettings.c:577
 msgid "Xft Antialias"
@@ -7408,9 +7408,9 @@ msgstr "ਡਾਈਲਾਗ ਹੈੱਡਰ ਪੱਟੀ ਵਰਤਦੇ ਹਨ"
 
 #: ctk/ctksettings.c:1698
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
-msgstr "ਕੀ ਬਿਲਟਇਨ GTK+ ਡਾਈਲਾਗ ਕਾਰਵਾਈ ਖੇਤਰ ਦੀ ਬਜਾਏ ਹੈੱਡ ਪੱਟੀ ਦੀ ਵਰਤੋਂ ਕਰੇ"
+msgstr "ਕੀ ਬਿਲਟਇਨ CTK+ ਡਾਈਲਾਗ ਕਾਰਵਾਈ ਖੇਤਰ ਦੀ ਬਜਾਏ ਹੈੱਡ ਪੱਟੀ ਦੀ ਵਰਤੋਂ ਕਰੇ"
 
 #: ctk/ctksettings.c:1714
 msgid "Enable primary paste"
@@ -7429,8 +7429,8 @@ msgid "Recent Files Enabled"
 msgstr "ਤਾਜ਼ਾ ਫਾਇਲਾਂ ਚਾਲੂ"
 
 #: ctk/ctksettings.c:1732
-msgid "Whether GTK+ remembers recent files"
-msgstr "ਕੀ GTK+ ਤਾਜ਼ਾ ਫਾਇਲਾਂ ਨੂੰ ਯਾਦ ਰੱਖੇ"
+msgid "Whether CTK+ remembers recent files"
+msgstr "ਕੀ CTK+ ਤਾਜ਼ਾ ਫਾਇਲਾਂ ਨੂੰ ਯਾਦ ਰੱਖੇ"
 
 #: ctk/ctksettings.c:1747
 msgid "Long press time"

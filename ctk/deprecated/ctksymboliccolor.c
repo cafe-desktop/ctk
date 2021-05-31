@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2010 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -48,7 +48,7 @@
  * #CtkCssProvider.
  *
  * #CtkSymbolicColor is deprecated. Symbolic colors are considered an
- * implementation detail of GTK+.
+ * implementation detail of CTK+.
  */
 
 G_DEFINE_BOXED_TYPE (CtkSymbolicColor, ctk_symbolic_color,
@@ -322,8 +322,8 @@ ctk_symbolic_color_resolve (CtkSymbolicColor   *color,
  *
  * Converts the given @color to a string representation. This is useful
  * both for debugging and for serialization of strings. The format of
- * the string may change between different versions of GTK, but it is
- * guaranteed that the GTK css parser is able to read the string and
+ * the string may change between different versions of CTK, but it is
+ * guaranteed that the CTK css parser is able to read the string and
  * create the same symbolic color from it.
  *
  * Returns: a new string representing @color

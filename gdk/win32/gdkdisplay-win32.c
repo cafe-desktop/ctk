@@ -224,7 +224,7 @@ _gdk_win32_display_init_monitors (GdkWin32Display *win32_display)
  * gdk_cursor_new_from_name() are updated to reflect the theme
  * change. Custom cursors constructed with
  * gdk_cursor_new_from_pixbuf() will have to be handled
- * by the application (GTK+ applications can learn about
+ * by the application (CTK+ applications can learn about
  * cursor theme changes by listening for change notification
  * for the corresponding #CtkSetting).
  *

@@ -42,7 +42,7 @@
  * etc. Most importantly, a #CtkPrinter object can be used to create
  * a #CtkPrintJob object, which lets you print to the printer.
  *
- * Printing support was added in GTK+ 2.10.
+ * Printing support was added in CTK+ 2.10.
  */
 
 

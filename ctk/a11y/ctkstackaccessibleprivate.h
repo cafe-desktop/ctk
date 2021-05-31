@@ -1,4 +1,4 @@
-/* GTK+ - accessibility implementations
+/* CTK+ - accessibility implementations
  * Copyright (C) 2016  Timm Bäder <mail@baedert.org>
  *
  * This library is free software; you can redistribute it and/or

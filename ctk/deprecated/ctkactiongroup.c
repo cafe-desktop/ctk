@@ -1,5 +1,5 @@
 /*
- * GTK - The GIMP Toolkit
+ * CTK - The GIMP Toolkit
  * Copyright (C) 1998, 1999 Red Hat, Inc.
  * All rights reserved.
  *
@@ -20,10 +20,10 @@
 /*
  * Author: James Henstridge <james@daa.com.au>
  *
- * Modified by the GTK+ Team and others 2003.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 2003.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
@@ -46,11 +46,11 @@
  *
  * ## Accelerators ## {#Action-Accel}
  *
- * Accelerators are handled by the GTK+ accelerator map. All actions are
+ * Accelerators are handled by the CTK+ accelerator map. All actions are
  * assigned an accelerator path (which normally has the form
  * `<Actions>/group-name/action-name`) and a shortcut is associated with
  * this accelerator path. All menuitems and toolitems take on this accelerator
- * path. The GTK+ accelerator map code makes sure that the correct shortcut
+ * path. The CTK+ accelerator map code makes sure that the correct shortcut
  * is displayed next to the menu item.
  *
  * # CtkActionGroup as CtkBuildable # {#CtkActionGroup-BUILDER-UI}

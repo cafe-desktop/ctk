@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentchooser.c - Abstract interface for recent file selectors GUIs
  *
  * Copyright (C) 2006, Emmanuele Bassi
@@ -38,11 +38,11 @@
  *   #CtkRecentChooserWidget, #CtkRecentChooserMenu
  *
  * #CtkRecentChooser is an interface that can be implemented by widgets
- * displaying the list of recently used files.  In GTK+, the main objects
+ * displaying the list of recently used files.  In CTK+, the main objects
  * that implement this interface are #CtkRecentChooserWidget,
  * #CtkRecentChooserDialog and #CtkRecentChooserMenu.
  *
- * Recently used files are supported since GTK+ 2.10.
+ * Recently used files are supported since CTK+ 2.10.
  */
 
 

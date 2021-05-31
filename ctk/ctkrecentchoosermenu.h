@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentchoosermenu.h - Recently used items menu widget
  * Copyright (C) 2006, Emmanuele Bassi
  *

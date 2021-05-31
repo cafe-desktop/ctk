@@ -5793,12 +5793,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "ଚିତ୍ରସଂକେତ ଆକାରଗୁଡ଼ିକର ତାଲିକା (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ../ctk/ctksettings.c:512
-msgid "GTK Modules"
-msgstr "GTK ଏକକାଂଶଗୁଡ଼ିକ"
+msgid "CTK Modules"
+msgstr "CTK ଏକକାଂଶଗୁଡ଼ିକ"
 
 #: ../ctk/ctksettings.c:513
-msgid "List of currently active GTK modules"
-msgstr "ସାମ୍ପ୍ରତିକ ସକ୍ରିୟ GTK ଏକକାଂଶଗୁଡ଼ିକର ତାଲିକା"
+msgid "List of currently active CTK modules"
+msgstr "ସାମ୍ପ୍ରତିକ ସକ୍ରିୟ CTK ଏକକାଂଶଗୁଡ଼ିକର ତାଲିକା"
 
 #: ../ctk/ctksettings.c:521
 msgid "Xft Antialias"

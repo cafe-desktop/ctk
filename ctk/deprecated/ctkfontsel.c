@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * Massively updated for Pango by Owen Taylor, May 2000
@@ -21,10 +21,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -74,7 +74,7 @@
  * To change the text which is shown in the preview area, use
  * ctk_font_selection_set_preview_text().
  *
- * In GTK+ 3.2, #CtkFontSelection has been deprecated in favor of
+ * In CTK+ 3.2, #CtkFontSelection has been deprecated in favor of
  * #CtkFontChooser.
  */
 
@@ -1623,7 +1623,7 @@ ctk_font_selection_set_preview_text  (CtkFontSelection *fontsel,
  * To change the text which is shown in the preview area, use
  * ctk_font_selection_dialog_set_preview_text().
  *
- * In GTK+ 3.2, #CtkFontSelectionDialog has been deprecated in favor of
+ * In CTK+ 3.2, #CtkFontSelectionDialog has been deprecated in favor of
  * #CtkFontChooserDialog.
  *
  * # CtkFontSelectionDialog as CtkBuildable # {#CtkFontSelectionDialog-BUILDER-UI}

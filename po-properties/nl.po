@@ -7111,12 +7111,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Lijst van pictogramafmetingen (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK-modules"
+msgid "CTK Modules"
+msgstr "CTK-modules"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Lijst met actieve GTK-modules"
+msgid "List of currently active CTK modules"
+msgstr "Lijst met actieve CTK-modules"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7708,10 +7708,10 @@ msgstr "Dialogen gebruiken kopbalk"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Of ingebouwde GTK+ dialogen een kopbalk moeten gebruiken in plaats van een "
+"Of ingebouwde CTK+ dialogen een kopbalk moeten gebruiken in plaats van een "
 "actie."
 
 #: ctk/ctksettings.c:1724
@@ -7732,8 +7732,8 @@ msgid "Recent Files Enabled"
 msgstr "Onlangs gebruikte bestanden ingeschakeld"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Of GTK+ onlangs gebruikte bestanden onthoudt"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Of CTK+ onlangs gebruikte bestanden onthoudt"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

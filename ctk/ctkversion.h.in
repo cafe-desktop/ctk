@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-1999.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-1999.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
@@ -31,10 +31,10 @@
 
 /**
  * SECTION:ctkfeatures
- * @Short_description: Variables and functions to check the GTK+ version
+ * @Short_description: Variables and functions to check the CTK+ version
  * @Title: Version Information
  *
- * GTK+ provides version information, primarily useful in configure checks
+ * CTK+ provides version information, primarily useful in configure checks
  * for builds that have a configure script. Applications will not typically
  * use the features described here.
  */
@@ -90,10 +90,10 @@
  * @minor: minor version (e.g. 2 for version 1.2.5)
  * @micro: micro version (e.g. 5 for version 1.2.5)
  *
- * Returns %TRUE if the version of the GTK+ header files
+ * Returns %TRUE if the version of the CTK+ header files
  * is the same as or newer than the passed-in version.
  *
- * Returns: %TRUE if GTK+ headers are new enough
+ * Returns: %TRUE if CTK+ headers are new enough
  */
 #define CTK_CHECK_VERSION(major,minor,micro)                          \
     (CTK_MAJOR_VERSION > (major) ||                                   \

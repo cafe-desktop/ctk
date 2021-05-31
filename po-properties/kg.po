@@ -1,4 +1,4 @@
-# kikongo translation of GTK+ 2.x.
+# kikongo translation of CTK+ 2.x.
 # Copyright (C) 1998-2010 Free Software Foundation, Inc.
 # This file is distributed under the GNU Library General Public License Version 2.
 #
@@ -4601,7 +4601,7 @@ msgstr "bilala bia nta yi bu i songa bio nkatu"
 #: ../ctk/ctkrecentchooser.c:161
 #, fuzzy
 msgid "Show Tooltips"
-msgstr "onga ngilama za GTK+"
+msgstr "onga ngilama za CTK+"
 
 #: ../ctk/ctkrecentchooser.c:162
 msgid "Whether there should be a tooltip on the item"
@@ -5002,11 +5002,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr ""
 
 #: ../ctk/ctksettings.c:380
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr ""
 
 #: ../ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr ""
 
 #: ../ctk/ctksettings.c:390
@@ -8417,8 +8417,8 @@ msgstr ""
 #~ msgid "Invalid URI"
 #~ msgstr "lukizi luambi"
 
-#~ msgid "Load additional GTK+ modules"
-#~ msgstr "yiikama mabalu ma nkaka ma GTK+"
+#~ msgid "Load additional CTK+ modules"
+#~ msgstr "yiikama mabalu ma nkaka ma CTK+"
 
 #~ msgid "MODULES"
 #~ msgstr "mabalu"
@@ -8426,11 +8426,11 @@ msgstr ""
 #~ msgid "Make all warnings fatal"
 #~ msgstr "yambula mu konso nduengoso"
 
-#~ msgid "GTK+ debugging flags to set"
-#~ msgstr "bendila muna londa GTK+ (usasila bio)"
+#~ msgid "CTK+ debugging flags to set"
+#~ msgstr "bendila muna londa CTK+ (usasila bio)"
 
-#~ msgid "GTK+ debugging flags to unset"
-#~ msgstr "bendila muna londa GTK+(ku sasila bio ko)"
+#~ msgid "CTK+ debugging flags to unset"
+#~ msgstr "bendila muna londa CTK+(ku sasila bio ko)"
 
 #~ msgid "default:LTR"
 #~ msgstr "mankulu:LTR"
@@ -8438,8 +8438,8 @@ msgstr ""
 #~ msgid "Cannot open display: %s"
 #~ msgstr "kisongilu %s bukisadilua nkatu"
 
-#~ msgid "GTK+ Options"
-#~ msgstr "ngilama za GTK+"
+#~ msgid "CTK+ Options"
+#~ msgstr "ngilama za CTK+"
 
 #~ msgid "Co_nnect"
 #~ msgstr "vuka_na"
@@ -9228,11 +9228,11 @@ msgstr ""
 #~ msgstr "mafiuma malandakane ka ma betila ko"
 
 #~ msgid ""
-#~ "Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-"
+#~ "Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-"
 #~ "0001"
 #~ msgstr ""
 #~ "mafiuma malandakane ka ma betila ko. kapu diantete ka i "
-#~ "GTKTEXTBUFFERCONTENTS-0001 ko."
+#~ "CTKTEXTBUFFERCONTENTS-0001 ko."
 
 #, fuzzy
 #~ msgid "LRM _Left-to-right mark"

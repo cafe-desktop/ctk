@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  *
  * Copyright (C) 2003 Ricardo Fernandez Pascual
  * Copyright (C) 2004 Paolo Borelli
@@ -985,7 +985,7 @@ popover_destroy_cb (CtkMenuButton *menu_button)
  * be changed to an arrow if it was customized.
  *
  * If the does not fit in the available space in the given direction,
- * GTK+ will its best to keep it inside the screen and fully visible.
+ * CTK+ will its best to keep it inside the screen and fully visible.
  *
  * If you pass %CTK_ARROW_NONE for a @direction, the popup will behave
  * as if you passed %CTK_ARROW_DOWN (although you won’t see any arrows).

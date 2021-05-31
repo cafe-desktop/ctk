@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintbackendpapi.c: Default implementation of CtkPrintBackend 
  * for printing to papi 
  * Copyright (C) 2003, Red Hat, Inc.

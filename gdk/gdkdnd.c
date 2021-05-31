@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -65,10 +65,10 @@ static GList *contexts = NULL;
  * protocols transparently, the Win32 backend supports the WM_DROPFILES
  * protocol.
  *
- * GTK+ provides a higher level abstraction based on top of these functions,
- * and so they are not normally needed in GTK+ applications.
+ * CTK+ provides a higher level abstraction based on top of these functions,
+ * and so they are not normally needed in CTK+ applications.
  * See the [Drag and Drop][ctk3-Drag-and-Drop] section of
- * the GTK+ documentation for more information.
+ * the CTK+ documentation for more information.
  */
 
 /**

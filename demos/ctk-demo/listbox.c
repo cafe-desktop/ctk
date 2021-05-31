@@ -196,7 +196,7 @@ ctk_message_row_update (CtkMessageRow *row)
   if (priv->message->resent_by)
     ctk_button_set_label (CTK_BUTTON (priv->resent_by_button), priv->message->resent_by);
 
-  if (strcmp (priv->message->sender_nick, "@GTKtoolkit") == 0)
+  if (strcmp (priv->message->sender_nick, "@CTKtoolkit") == 0)
     ctk_image_set_from_icon_name (priv->avatar_image, "ctk3-demo", CTK_ICON_SIZE_DND);
   else
     ctk_image_set_from_pixbuf (priv->avatar_image, avatar_pixbuf_other);

@@ -2734,8 +2734,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:456
-msgid "Load additional GTK+ modules"
-msgstr "Зареждане на допълнителни модули на GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Зареждане на допълнителни модули на CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:457
@@ -2749,16 +2749,16 @@ msgstr "Всички предупреждения да са фатални"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:462
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr ""
-"Флаговете за изчистване на грешки на GTK+,\n"
+"Флаговете за изчистване на грешки на CTK+,\n"
 "                                        които да бъдат зададени"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:465
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr ""
-"Флаговете за изчистване на грешки на GTK+,\n"
+"Флаговете за изчистване на грешки на CTK+,\n"
 "                                        които да не бъдат зададени"
 
 #: ctk/ctkmain.c:798
@@ -2767,12 +2767,12 @@ msgid "Cannot open display: %s"
 msgstr "Дисплеят не може да се отвори: %s"
 
 #: ctk/ctkmain.c:893
-msgid "GTK+ Options"
-msgstr "Опции за GTK+"
+msgid "CTK+ Options"
+msgstr "Опции за CTK+"
 
 #: ctk/ctkmain.c:893
-msgid "Show GTK+ Options"
-msgstr "Показване на опциите за GTK+"
+msgid "Show CTK+ Options"
+msgstr "Показване на опциите за CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3722,10 +3722,10 @@ msgstr "Сериализираните данни са неправилни"
 
 #: ctk/ctktextbufferserialize.c:1864
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Сериализираните данни са неправилни. Първата част не е "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3804,18 +3804,18 @@ msgstr "Винаги отгоре"
 
 #: ctk/ctkwindow.c:12490
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Желаете ли да използвате „Инспектор на GTK+“?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Желаете ли да използвате „Инспектор на CTK+“?"
 
 #: ctk/ctkwindow.c:12492
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"„Инспектор на GTK+“ е интерактивен инструмент за изчистване на грешки, който "
-"ви позволява да изследвате и променяте съдържанието на всяка програма за GTK"
+"„Инспектор на CTK+“ е интерактивен инструмент за изчистване на грешки, който "
+"ви позволява да изследвате и променяте съдържанието на всяка програма за CTK"
 "+. Използването му може да доведе до забиване на програмата."
 
 #: ctk/ctkwindow.c:12497
@@ -3844,8 +3844,8 @@ msgid "Parameter Type"
 msgstr "Вид на параметъра"
 
 #: ctk/inspector/css-editor.c:118
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Тук можете да въведете всяко правило на CSS, поддържано от GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Тук можете да въведете всяко правило на CSS, поддържано от CTK+."
 
 #: ctk/inspector/css-editor.c:119
 msgid ""
@@ -3904,8 +3904,8 @@ msgid "None"
 msgstr "Няма"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Версия на GTK+"
+msgid "CTK+ Version"
+msgstr "Версия на CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4291,8 +4291,8 @@ msgid "GL rendering is disabled"
 msgstr "Изобразяването чрез GL е изключено"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "Тема на GTK+"
+msgid "CTK+ Theme"
+msgstr "Тема на CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

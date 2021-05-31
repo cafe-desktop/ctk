@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentfilter.h - Filter object for recently used resources
  * Copyright (C) 2006, Emmanuele Bassi
  * 
@@ -38,7 +38,7 @@
  * see ctk_recent_chooser_add_filter(), but it is also possible to
  * manually use a filter on a file with ctk_recent_filter_filter().
  *
- * Recently used files are supported since GTK+ 2.10.
+ * Recently used files are supported since CTK+ 2.10.
  *
  * ## CtkRecentFilter as CtkBuildable
  *
@@ -676,7 +676,7 @@ ctk_recent_filter_add_age (CtkRecentFilter *filter,
  * Adds a rule to a filter that allows resources based on a custom callback
  * function. The bitfield @needed which is passed in provides information
  * about what sorts of information that the filter function needs;
- * this allows GTK+ to avoid retrieving expensive information when
+ * this allows CTK+ to avoid retrieving expensive information when
  * it isn’t needed by the filter.
  * 
  * Since: 2.10

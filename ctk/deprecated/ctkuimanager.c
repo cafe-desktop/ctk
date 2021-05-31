@@ -1,5 +1,5 @@
 /*
- * GTK - The GIMP Toolkit
+ * CTK - The GIMP Toolkit
  * Copyright (C) 1998, 1999 Red Hat, Inc.
  * All rights reserved.
  *
@@ -20,10 +20,10 @@
 /*
  * Author: James Henstridge <james@daa.com.au>
  *
- * Modified by the GTK+ Team and others 2003.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 2003.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -56,7 +56,7 @@
  * @Title: CtkUIManager
  * @See_also: #CtkBuilder
  *
- * > CtkUIManager is deprecated since GTK+ 3.10. To construct user interfaces
+ * > CtkUIManager is deprecated since CTK+ 3.10. To construct user interfaces
  * > from XML definitions, you should use #CtkBuilder, #GMenuModel, et al. To
  * > work with actions, use #GAction, #CtkActionable et al. These newer classes
  * > support richer functionality and integration with various desktop shells.
@@ -1053,7 +1053,7 @@ ctk_ui_manager_remove_action_group (CtkUIManager   *manager,
  * Returns the list of action groups associated with @manager.
  *
  * Returns:  (element-type CtkActionGroup) (transfer none): a #GList of
- *   action groups. The list is owned by GTK+
+ *   action groups. The list is owned by CTK+
  *   and should not be modified.
  *
  * Since: 2.4
@@ -2062,7 +2062,7 @@ ctk_ui_manager_add_ui_from_resource (CtkUIManager *manager,
  *
  * Adds a UI element to the current contents of @manager. 
  *
- * If @type is %CTK_UI_MANAGER_AUTO, GTK+ inserts a menuitem, toolitem or 
+ * If @type is %CTK_UI_MANAGER_AUTO, CTK+ inserts a menuitem, toolitem or 
  * separator if such an element can be inserted at the place determined by 
  * @path. Otherwise @type must indicate an element that can be inserted at 
  * the place determined by @path.

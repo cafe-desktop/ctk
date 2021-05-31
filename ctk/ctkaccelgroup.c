@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1998, 2001 Tim Janik
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -45,7 +45,7 @@
  * A #CtkAccelGroup represents a group of keyboard accelerators,
  * typically attached to a toplevel #CtkWindow (with
  * ctk_window_add_accel_group()). Usually you won’t need to create a
- * #CtkAccelGroup directly; instead, when using #CtkUIManager, GTK+
+ * #CtkAccelGroup directly; instead, when using #CtkUIManager, CTK+
  * automatically sets up the accelerators for your menus in the ui
  * manager’s #CtkAccelGroup.
  *
@@ -379,7 +379,7 @@ ctk_accel_groups_from_object (GObject *object)
  * @find_func returns %TRUE and returns its #CtkAccelKey.
  *
  * Returns: (transfer none): the key of the first entry passing
- *    @find_func. The key is owned by GTK+ and must not be freed.
+ *    @find_func. The key is owned by CTK+ and must not be freed.
  */
 CtkAccelKey*
 ctk_accel_group_find (CtkAccelGroup         *accel_group,
@@ -826,7 +826,7 @@ _ctk_accel_group_get_accelerables (CtkAccelGroup *accel_group)
  *
  * Returns: (nullable) (transfer none) (array length=n_entries): an array of
  *     @n_entries #CtkAccelGroupEntry elements, or %NULL. The array
- *     is owned by GTK+ and must not be freed.
+ *     is owned by CTK+ and must not be freed.
  */
 CtkAccelGroupEntry*
 ctk_accel_group_query (CtkAccelGroup   *accel_group,

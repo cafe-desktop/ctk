@@ -2,7 +2,7 @@
  * This is useful when writing special CSS tests that should not be
  * inluenced by themes - not even the default ones.
  * Keep in mind that the output will be very ugly and not look like
- * anything GTK.
+ * anything CTK.
  * Also, when adding new style properties, please add them here.
  */
 

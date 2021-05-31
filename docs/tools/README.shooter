@@ -1,4 +1,4 @@
-The doc shooter is used to take screenshots of widgets for the GTK+
+The doc shooter is used to take screenshots of widgets for the CTK+
 reference manuals.  We use these images for both the headers of the
 images, and for the visual index of GNOME images.  They aren't part of
 the docs build.  Instead, the images are taken, and then copied by hand

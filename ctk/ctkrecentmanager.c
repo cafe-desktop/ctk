@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkrecentmanager.c: a manager for the recently used resources
  *
  * Copyright (C) 2006 Emmanuele Bassi
@@ -36,7 +36,7 @@
  *
  * The #CtkRecentManager acts like a database of all the recently
  * used files. You can create new #CtkRecentManager objects, but
- * it is more efficient to use the default manager created by GTK+.
+ * it is more efficient to use the default manager created by CTK+.
  *
  * Adding a new recently used file is as simple as:
  *
@@ -82,7 +82,7 @@
  * controllable through the #CtkSettings:ctk-recent-files-max-age
  * property.
  *
- * Recently used files are supported since GTK+ 2.10.
+ * Recently used files are supported since CTK+ 2.10.
  */
 
 #include "config.h"

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /**
@@ -34,7 +34,7 @@
  * performs no automatic layout management.
  *
  * For most applications, you should not use this container! It keeps
- * you from having to learn about the other GTK+ containers, but it
+ * you from having to learn about the other CTK+ containers, but it
  * results in broken applications.  With #CtkFixed, the following
  * things will result in truncated text, overlapping widgets, and
  * other display bugs:
@@ -52,7 +52,7 @@
  *
  * In addition, #CtkFixed does not pay attention to text direction and thus may
  * produce unwanted results if your app is run under right-to-left languages
- * such as Hebrew or Arabic. That is: normally GTK+ will order containers
+ * such as Hebrew or Arabic. That is: normally CTK+ will order containers
  * appropriately for the text direction, e.g. to put labels to the right of the
  * thing they label when using an RTL language, but it can’t do that with
  * #CtkFixed. So if you need to reorder widgets depending on the text direction,

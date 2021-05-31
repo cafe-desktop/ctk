@@ -52,7 +52,7 @@
  * These animations respect the #CtkSettings:ctk-enable-animations
  * setting.
  *
- * The CtkStack widget was added in GTK+ 3.10.
+ * The CtkStack widget was added in CTK+ 3.10.
  *
  * # CSS nodes
  *

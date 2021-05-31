@@ -6,7 +6,7 @@
   <refmeta>
     <refentrytitle>Tree and List Widget Overview</refentrytitle>
     <manvolnum>3</manvolnum>
-    <refmiscinfo>GTK Library</refmiscinfo>
+    <refmiscinfo>CTK Library</refmiscinfo>
   </refmeta>
 
   <refnamediv>
@@ -17,7 +17,7 @@
   <refsect1>
     <title>Overview</title>
     <para>
-      To create a tree or list in GTK+, use the #CtkTreeModel interface in
+      To create a tree or list in CTK+, use the #CtkTreeModel interface in
       conjunction with the #CtkTreeView widget.  This widget is
       designed around a <firstterm>Model/View/Controller</firstterm>
       design and consists of four major parts:
@@ -46,7 +46,7 @@
   <refsect1>
     <title>Creating a model</title>
     <para>
-      GTK+ provides two simple models that can be used: the #CtkListStore
+      CTK+ provides two simple models that can be used: the #CtkListStore
       and the #CtkTreeStore.  CtkListStore is used to model list widgets, 
       while the CtkTreeStore models trees.  It is possible to develop a new 
       type of model, but the existing models should be satisfactory for all 
@@ -164,7 +164,7 @@ tree = ctk_tree_view_new_with_model (CTK_TREE_MODEL (store));
       </para>
       <para>
         Cell renderers are used to draw the data in the tree model in a
-        way.  There are a number of cell renderers that come with GTK+,
+        way.  There are a number of cell renderers that come with CTK+,
         including the #CtkCellRendererText, #CtkCellRendererPixbuf and
         the #CtkCellRendererToggle.
         It is relatively easy to write a custom renderer.
@@ -312,7 +312,7 @@ setup_tree (void)
                                                       NULL);
    ctk_tree_view_append_column (CTK_TREE_VIEW (tree), column);
 
-   /* Now we can manipulate the view just like any other GTK widget */
+   /* Now we can manipulate the view just like any other CTK widget */
    ...
 }
       </programlisting></informalexample>

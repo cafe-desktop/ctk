@@ -2635,8 +2635,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:454
-msgid "Load additional GTK+ modules"
-msgstr "Бор кардани модулҳои иловагии GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Бор кардани модулҳои иловагии CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:455
@@ -2650,13 +2650,13 @@ msgstr "Ҳатмӣ кардани ҳамаи огоҳиҳо"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:460
-msgid "GTK+ debugging flags to set"
-msgstr "Байрақчаҳои ислоҳи хатоҳои GTK+"
+msgid "CTK+ debugging flags to set"
+msgstr "Байрақчаҳои ислоҳи хатоҳои CTK+"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:463
-msgid "GTK+ debugging flags to unset"
-msgstr "Байрақчаҳои ислоҳи хатоҳои GTK+ барои ғайрифаъол кардан"
+msgid "CTK+ debugging flags to unset"
+msgstr "Байрақчаҳои ислоҳи хатоҳои CTK+ барои ғайрифаъол кардан"
 
 #: ctk/ctkmain.c:776
 #, c-format
@@ -2664,12 +2664,12 @@ msgid "Cannot open display: %s"
 msgstr "Дисплей кушода нашуд: %s"
 
 #: ctk/ctkmain.c:842
-msgid "GTK+ Options"
-msgstr "Имконоти GTK+"
+msgid "CTK+ Options"
+msgstr "Имконоти CTK+"
 
 #: ctk/ctkmain.c:842
-msgid "Show GTK+ Options"
-msgstr "Намоиш додани имконоти GTK+"
+msgid "Show CTK+ Options"
+msgstr "Намоиш додани имконоти CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3511,10 +3511,10 @@ msgstr "Иттилооти силсилавишуда нодуруст мебо�
 
 #: ctk/ctktextbufferserialize.c:1886
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Иттилооти силсилавишуда нодуруст мебошад. Қисмати аввалин "
-"GTKTEXTBUFFERCONTENTS-0001 намебошад"
+"CTKTEXTBUFFERCONTENTS-0001 намебошад"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3581,14 +3581,14 @@ msgstr "%d %%"
 
 #: ctk/ctkwindow.c:12000
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
+msgid "Do you want to use CTK+ Inspector?"
 msgstr ""
 
 #: ctk/ctkwindow.c:12002
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
 
@@ -3638,7 +3638,7 @@ msgid "Restore defaults for this widget"
 msgstr ""
 
 #: ctk/inspector/css-editor.c:90 ctk/inspector/css-editor.c:96
-msgid "You can type here any CSS rule recognized by GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
 msgstr ""
 
 #: ctk/inspector/css-editor.c:91 ctk/inspector/css-editor.c:97
@@ -3685,8 +3685,8 @@ msgid "Show data"
 msgstr "Намоиш додани маълумот"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Версияи GTK+"
+msgid "CTK+ Version"
+msgstr "Версияи CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4057,8 +4057,8 @@ msgid "GL rendering is disabled"
 msgstr "Коркарди GL ғайрифаъол аст"
 
 #: ctk/inspector/visual.ui:49
-msgid "GTK+ Theme"
-msgstr "Мавзӯи GTK+"
+msgid "CTK+ Theme"
+msgstr "Мавзӯи CTK+"
 
 #: ctk/inspector/visual.ui:82
 #, fuzzy

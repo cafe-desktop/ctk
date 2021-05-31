@@ -1,5 +1,5 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechoosernativewin32.c: Win32 Native File selector dialog
  * Copyright (C) 2015, Red Hat, Inc.
  *

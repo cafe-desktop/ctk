@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkpapersize.c: Paper Size
  * Copyright (C) 2006, Red Hat, Inc.
  * Copyright © 2006, 2007 Christian Persch
@@ -55,7 +55,7 @@
  * and height) of a paper size and its name, it also provides
  * default [print margins][print-margins].
  *
- * Printing support has been added in GTK+ 2.10.
+ * Printing support has been added in CTK+ 2.10.
  */
 
 
@@ -793,7 +793,7 @@ ctk_paper_size_set_size (CtkPaperSize *size,
  * depends on the current locale.
  *
  * Returns: the name of the default paper size. The string
- * is owned by GTK+ and should not be modified.
+ * is owned by CTK+ and should not be modified.
  *
  * Since: 2.10
  */

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2010 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -57,7 +57,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
  * from widget implementations and theming engine implementations
  * should use the APIs provided by #CtkThemingEngine instead.
  *
- * #CtkStyleProperties has been deprecated in GTK 3.16. The CSS
+ * #CtkStyleProperties has been deprecated in CTK 3.16. The CSS
  * machinery does not use it anymore and all users of this object
  * have been deprecated.
  */

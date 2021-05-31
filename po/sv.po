@@ -1,4 +1,4 @@
-# Swedish messages for GTK.
+# Swedish messages for CTK.
 # Copyright © 1999-2020 Free Software Foundation, Inc.
 # Tomas Ögren <stric@ing.umu.se>, 1999.
 # Christian Rose <menthos@menthos.com>, 2000, 2001, 2002, 2003, 2004, 2005.
@@ -2931,8 +2931,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Läs in ytterligare GTK+-moduler"
+msgid "Load additional CTK+ modules"
+msgstr "Läs in ytterligare CTK+-moduler"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2946,13 +2946,13 @@ msgstr "Gör alla varningar ödesdigra"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+-felsökningsflaggor att ställa in"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+-felsökningsflaggor att ställa in"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+-felsökningsflaggor att inte ställa in"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+-felsökningsflaggor att inte ställa in"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2960,12 +2960,12 @@ msgid "Cannot open display: %s"
 msgstr "Kan inte öppna display: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+-flaggor"
+msgid "CTK+ Options"
+msgstr "CTK+-flaggor"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Visa GTK+-flaggor"
+msgid "Show CTK+ Options"
+msgstr "Visa CTK+-flaggor"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3982,10 +3982,10 @@ msgstr "Serialiserad data är felformulerad"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Serialiserad data är felformulerad. Första sektionen är inte "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4064,18 +4064,18 @@ msgstr "Alltid överst"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Vill du använda GTK+ Inspector?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Vill du använda CTK+ Inspector?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ Inspector är en interaktiv felsökare som låter dig utforska och ändra "
-"det inre i vilket GTK+-program som helst. Användning av det kan medföra att "
+"CTK+ Inspector är en interaktiv felsökare som låter dig utforska och ändra "
+"det inre i vilket CTK+-program som helst. Användning av det kan medföra att "
 "programmet avslutar eller kraschar."
 
 #: ctk/ctkwindow.c:12784
@@ -4105,8 +4105,8 @@ msgid "Parameter Type"
 msgstr "Parametertyp"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Du kan skriva vilken CSS-regel som helst som känns igen av GTK+ här."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Du kan skriva vilken CSS-regel som helst som känns igen av CTK+ här."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4165,8 +4165,8 @@ msgid "None"
 msgstr "Ingen"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK+-version"
+msgid "CTK+ Version"
+msgstr "CTK+-version"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4555,8 +4555,8 @@ msgid "GL rendering is disabled"
 msgstr "GL-rendering är inaktiverad"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK+-tema"
+msgid "CTK+ Theme"
+msgstr "CTK+-tema"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

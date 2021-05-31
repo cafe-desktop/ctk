@@ -1,5 +1,5 @@
 # Bangla translation of ctk+-properties.
-# This file is distributed under the same license as the GTK package.
+# This file is distributed under the same license as the CTK package.
 # Copyright (C) 2003-2005 Free Software Foundation, Inc.
 # Sayamindu Dasgupta <unmadindu@Softhome.net>, 2003.
 # Progga <progga@BengaLinux.Org>, 2004, 2005.
@@ -5033,11 +5033,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "আইকনের আকারের তালিকা (ctk-menu= ১৬, ১৬:ctk-button=২০,২০..."
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr "জি.টি.কে. মডিউল"
 
 #: ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr "বর্তমানে সক্রিয় জি.টি.কে. মডিউলের তালিকা"
 
 #: ctk/ctksettings.c:390

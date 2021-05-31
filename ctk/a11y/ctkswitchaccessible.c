@@ -1,4 +1,4 @@
-/* GTK+ - accessibility implementations
+/* CTK+ - accessibility implementations
  * Copyright (C) 2010  Intel Corporation
  * Copyright (C) 2010  RedHat, Inc.
  *

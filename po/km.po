@@ -1855,8 +1855,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:447
-msgid "Load additional GTK+ modules"
-msgstr "ផ្ទុក​ម៉ូឌុល​បន្ថែម GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "ផ្ទុក​ម៉ូឌុល​បន្ថែម CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:448
@@ -1870,13 +1870,13 @@ msgstr "ធ្វើ​ការ​ព្រមាន​ធ្ងន់ធ្ង
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:453
-msgid "GTK+ debugging flags to set"
-msgstr "កំណត់​ទង់​បាត់​កំហុស GTK+"
+msgid "CTK+ debugging flags to set"
+msgstr "កំណត់​ទង់​បាត់​កំហុស CTK+"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:456
-msgid "GTK+ debugging flags to unset"
-msgstr "មិន​កំណត់​ទង់​បំបាត់​កំហុស GTK+"
+msgid "CTK+ debugging flags to unset"
+msgstr "មិន​កំណត់​ទង់​បំបាត់​កំហុស CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1893,12 +1893,12 @@ msgid "Cannot open display: %s"
 msgstr "មិន​អាច​បើក​ទិដ្ឋភាព​បាន​ទេ ៖ %s"
 
 #: ../ctk/ctkmain.c:838
-msgid "GTK+ Options"
-msgstr "ជម្រើស GTK+"
+msgid "CTK+ Options"
+msgstr "ជម្រើស CTK+"
 
 #: ../ctk/ctkmain.c:838
-msgid "Show GTK+ Options"
-msgstr "បង្ហាញ​ជម្រើស GTK+"
+msgid "Show CTK+ Options"
+msgstr "បង្ហាញ​ជម្រើស CTK+"
 
 #: ../ctk/ctkmountoperation.c:535
 msgid "Co_nnect"
@@ -3258,9 +3258,9 @@ msgstr "ទិន្នន័យ​ដែល​រៀប​តាម​លំដ
 
 #: ../ctk/ctktextbufferserialize.c:1868
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"ទិន្នន័យ​ដែល​រៀប​តាម​លំដាប់​គឺ​មិន​ត្រឹមត្រូវ ។ ជម្រើស​ដំបូង​គឺ​មិន​​មែន​ជា​ GTKTEXTBUFFERCONTENTS-0001 ឡើយ"
+"ទិន្នន័យ​ដែល​រៀប​តាម​លំដាប់​គឺ​មិន​ត្រឹមត្រូវ ។ ជម្រើស​ដំបូង​គឺ​មិន​​មែន​ជា​ CTKTEXTBUFFERCONTENTS-0001 ឡើយ"
 
 #: ../ctk/ctktextutil.c:58
 msgid "LRM _Left-to-right mark"

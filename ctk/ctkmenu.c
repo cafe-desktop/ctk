@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /**
@@ -3135,7 +3135,7 @@ ctk_menu_set_title (CtkMenu     *menu,
  * Returns the title of the menu. See ctk_menu_set_title().
  *
  * Returns: the title of the menu, or %NULL if the menu
- *     has no title set on it. This string is owned by GTK+
+ *     has no title set on it. This string is owned by CTK+
  *     and should not be modified or freed.
  *
  * Deprecated: 3.10
@@ -6118,7 +6118,7 @@ ctk_menu_real_move_scroll (CtkMenu       *menu,
  * @monitor_num: the number of the monitor on which the menu should
  *    be popped up
  *
- * Informs GTK+ on which monitor a menu should be popped up.
+ * Informs CTK+ on which monitor a menu should be popped up.
  * See gdk_monitor_get_geometry().
  *
  * This function should be called from a #CtkMenuPositionFunc
@@ -6206,7 +6206,7 @@ ctk_menu_place_on_monitor (CtkMenu    *menu,
  * @widget: a #CtkWidget
  *
  * Returns a list of the menus which are attached to this widget.
- * This list is owned by GTK+ and must not be modified.
+ * This list is owned by CTK+ and must not be modified.
  *
  * Returns: (element-type CtkWidget) (transfer none): the list
  *     of menus attached to his widget.

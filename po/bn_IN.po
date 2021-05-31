@@ -1,6 +1,6 @@
 # translation of bn_IN.po to Bengali INDIA
-# Translation of GTK+ to Bengali India
-# This file is distributed under the same license as the GTK+ package.
+# Translation of CTK+ to Bengali India
+# This file is distributed under the same license as the CTK+ package.
 # Copyright (C) 2003-2005, 2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
 # 
 # Sayamindu Dasgupta <unmadindu@Softhome.net>, 2004.
@@ -68,7 +68,7 @@ msgstr "DISPLAY"
 #. Description of --gdk-debug=FLAGS in --help output
 #: ../gdk/gdk.c:215
 msgid "GDK debugging flags to set"
-msgstr "নির্ধারণের উদ্দেশ্যে চিহ্নিত GTK+ ডিবাগিং ফ্ল্যাগ"
+msgstr "নির্ধারণের উদ্দেশ্যে চিহ্নিত CTK+ ডিবাগিং ফ্ল্যাগ"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -84,7 +84,7 @@ msgstr "FLAGS"
 #. Description of --gdk-no-debug=FLAGS in --help output
 #: ../gdk/gdk.c:218
 msgid "GDK debugging flags to unset"
-msgstr "মুছে ফেলার উদ্দেশ্যে চিহ্নিত GTK+ ডিবাগিং ফ্ল্যাগ"
+msgstr "মুছে ফেলার উদ্দেশ্যে চিহ্নিত CTK+ ডিবাগিং ফ্ল্যাগ"
 
 #. * Translators, the strings in the 'keyboard label' context are
 #. * display names for keyboard keys. Some of them have prefixes like
@@ -2004,8 +2004,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:446
-msgid "Load additional GTK+ modules"
-msgstr "অতিরিক্ত GTK+ মডিউল লোড করুন"
+msgid "Load additional CTK+ modules"
+msgstr "অতিরিক্ত CTK+ মডিউল লোড করুন"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:447
@@ -2019,13 +2019,13 @@ msgstr "সকল সতর্কবার্তা গুরুতর হিস
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:452
-msgid "GTK+ debugging flags to set"
-msgstr "মান নির্ধারণের উদ্দেশ্যে চিহ্নিত GTK+ ডিবাগিং ফ্ল্যাগ"
+msgid "CTK+ debugging flags to set"
+msgstr "মান নির্ধারণের উদ্দেশ্যে চিহ্নিত CTK+ ডিবাগিং ফ্ল্যাগ"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:455
-msgid "GTK+ debugging flags to unset"
-msgstr "মান মুছে ফেলার উদ্দেশ্যে চিহ্নিত GTK+ ডিবাগিং ফ্ল্যাগ"
+msgid "CTK+ debugging flags to unset"
+msgstr "মান মুছে ফেলার উদ্দেশ্যে চিহ্নিত CTK+ ডিবাগিং ফ্ল্যাগ"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -2041,12 +2041,12 @@ msgid "Cannot open display: %s"
 msgstr "ডিসপ্লে খুলতে ব্যর্থ: %s"
 
 #: ../ctk/ctkmain.c:834
-msgid "GTK+ Options"
-msgstr "GTK+ সংক্রান্ত বিকল্প"
+msgid "CTK+ Options"
+msgstr "CTK+ সংক্রান্ত বিকল্প"
 
 #: ../ctk/ctkmain.c:834
-msgid "Show GTK+ Options"
-msgstr "GTK+ সংক্রান্ত বিকল্প প্রদর্শন করা হবে"
+msgid "Show CTK+ Options"
+msgstr "CTK+ সংক্রান্ত বিকল্প প্রদর্শন করা হবে"
 
 #: ../ctk/ctkmountoperation.c:535
 msgid "Co_nnect"
@@ -3418,9 +3418,9 @@ msgstr "সিরিয়েলাইজ করা তথ্য সঠিকরূ
 
 #: ../ctk/ctktextbufferserialize.c:1868
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"সিরিয়েলাইজ করা তথ্য সঠিকরূপে গঠিত হয়নি। প্রথম অংশ GTKTEXTBUFFERCONTENTS-0001 "
+"সিরিয়েলাইজ করা তথ্য সঠিকরূপে গঠিত হয়নি। প্রথম অংশ CTKTEXTBUFFERCONTENTS-0001 "
 "নয়"
 
 #: ../ctk/ctktextutil.c:58

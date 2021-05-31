@@ -7,8 +7,8 @@ targets=@GDK_BACKENDS@
 ctk_binary_version=@CTK_BINARY_VERSION@
 ctk_host=@host@
 
-Name: GTK+
-Description: GTK+ Graphical UI Library
+Name: CTK+
+Description: CTK+ Graphical UI Library
 Version: @VERSION@
 Requires: gdk-@CTK_API_VERSION@ @CTK_PACKAGES@
 Requires.private: @CTK_PRIVATE_PACKAGES@

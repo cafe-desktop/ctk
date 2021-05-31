@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintoperationpreview.h: Abstract print preview interface
  * Copyright (C) 2006, Red Hat, Inc.
  *

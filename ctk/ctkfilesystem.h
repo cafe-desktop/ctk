@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilesystem.h: Filesystem abstraction functions.
  * Copyright (C) 2003, Red Hat, Inc.
  *

@@ -1,4 +1,4 @@
-/* GTK+ - accessibility implementations
+/* CTK+ - accessibility implementations
  * Copyright 2001 Sun Microsystems Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -49,7 +49,7 @@ struct _CtkWidgetAccessibleClass
   CtkAccessibleClass parent_class;
 
   /*
-   * Signal handler for notify signal on GTK widget
+   * Signal handler for notify signal on CTK widget
    */
   void (*notify_ctk)                   (GObject             *object,
                                         GParamSpec          *pspec);

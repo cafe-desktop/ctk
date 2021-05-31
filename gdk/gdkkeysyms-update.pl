@@ -94,10 +94,10 @@ print OUT_GDKKEYSYMS<<EOF;
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2007.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2007.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __GDK_KEYSYMS_H__
@@ -110,7 +110,7 @@ print OUT_GDKKEYSYMS_COMPAT<<EOF;
 /*
  * Compatibility version of gdkkeysyms.h.
  *
- * In GTK3, keysyms changed to have a KEY_ prefix.  This is a compatibility header
+ * In CTK3, keysyms changed to have a KEY_ prefix.  This is a compatibility header
  * your application can include to gain access to the old names as well.  Consider
  * porting to the new names instead.
  */

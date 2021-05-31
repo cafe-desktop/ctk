@@ -6054,7 +6054,7 @@ msgstr "Sideopsætning"
 msgid "Track Print Status"
 msgstr "Hold øje med udskrivningsstatus"
 
-# status-changed er et GTK-signal og skal derfor ikke oversættes
+# status-changed er et CTK-signal og skal derfor ikke oversættes
 #: ctk/ctkprintjob.c:170
 msgid ""
 "TRUE if the print job will continue to emit status-changed signals after the "
@@ -7005,12 +7005,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Liste over ikonstørrelser (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:568
-msgid "GTK Modules"
-msgstr "GTK-moduler"
+msgid "CTK Modules"
+msgstr "CTK-moduler"
 
 #: ctk/ctksettings.c:569
-msgid "List of currently active GTK modules"
-msgstr "Liste over nuværende aktive GTK-moduler"
+msgid "List of currently active CTK modules"
+msgstr "Liste over nuværende aktive CTK-moduler"
 
 #: ctk/ctksettings.c:577
 msgid "Xft Antialias"
@@ -7094,7 +7094,7 @@ msgstr ""
 "Om orienteringen af sorteringsindikatorerne i liste- og trævisninger vises "
 "omvendt i forhold til standarden (hvor ned betyder stigende)"
 
-# Oversættelsen af dette menunavn findes i den anden ctk+fil som fra 2.18 til 2.20 har ændret navn fra GTK+ UI translations til GTK+ Core
+# Oversættelsen af dette menunavn findes i den anden ctk+fil som fra 2.18 til 2.20 har ændret navn fra CTK+ UI translations til CTK+ Core
 #: ctk/ctksettings.c:678
 msgid "Show the 'Input Methods' menu"
 msgstr "Vis menuen \"Indtastningsmetoder\""
@@ -7107,7 +7107,7 @@ msgstr ""
 "Om kontekstmenuer for indtastninger og tekstvisninger skal tilbyde at skifte "
 "indtastningsmetode"
 
-# Oversættelsen af dette menunavn findes i den anden ctk+fil som fra 2.18 til 2.20 har ændret navn fra GTK+ UI translations til GTK+ Core<
+# Oversættelsen af dette menunavn findes i den anden ctk+fil som fra 2.18 til 2.20 har ændret navn fra CTK+ UI translations til CTK+ Core<
 #: ctk/ctksettings.c:692
 msgid "Show the 'Insert Unicode Control Character' menu"
 msgstr "Vis menuen \"Indsæt Unicode-kontroltegn\""
@@ -7576,10 +7576,10 @@ msgstr "Dialoger bruger overskriftsbjælke"
 
 #: ctk/ctksettings.c:1698
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Om indbyggede GTK+-dialoger skal bruge en overskriftsbjælke frem for et "
+"Om indbyggede CTK+-dialoger skal bruge en overskriftsbjælke frem for et "
 "handlingsområde."
 
 #: ctk/ctksettings.c:1714
@@ -7599,8 +7599,8 @@ msgid "Recent Files Enabled"
 msgstr "Seneste filer slået til"
 
 #: ctk/ctksettings.c:1732
-msgid "Whether GTK+ remembers recent files"
-msgstr "Om GTK+ husker seneste filer"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Om CTK+ husker seneste filer"
 
 #: ctk/ctksettings.c:1747
 msgid "Long press time"

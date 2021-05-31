@@ -4,38 +4,38 @@
 ]>
 <refentry id="ctk-building">
 <refmeta>
-<refentrytitle>Compiling the GTK+ libraries</refentrytitle>
+<refentrytitle>Compiling the CTK+ libraries</refentrytitle>
 <manvolnum>3</manvolnum>
-<refmiscinfo>GTK Library</refmiscinfo>
+<refmiscinfo>CTK Library</refmiscinfo>
 </refmeta>
 
 <refnamediv>
-<refname>Compiling the GTK+ Libraries</refname>
+<refname>Compiling the CTK+ Libraries</refname>
 <refpurpose>
-How to compile GTK+ itself
+How to compile CTK+ itself
 </refpurpose>
 </refnamediv>
   <refsect1 id="overview">
-    <title>Building GTK+ on UNIX-like systems</title>
+    <title>Building CTK+ on UNIX-like systems</title>
     <para>
-      This chapter covers building and installing GTK+ on UNIX and
-      UNIX-like systems such as Linux. Compiling GTK+ on Microsoft
+      This chapter covers building and installing CTK+ on UNIX and
+      UNIX-like systems such as Linux. Compiling CTK+ on Microsoft
       Windows is different in detail and somewhat more difficult to
       get going since the necessary tools aren't included with
       the operating system.
     </para>
     <para>
-      Before we get into the details of how to compile GTK+, we should
-      mention that in many cases, binary packages of GTK+ prebuilt for
+      Before we get into the details of how to compile CTK+, we should
+      mention that in many cases, binary packages of CTK+ prebuilt for
       your operating system will be available, either from your
       operating system vendor or from independent sources. If such a
       set of packages is available, installing it will get you
-      programming with GTK+ much faster than building it yourself. In
-      fact, you may well already have GTK+ installed on your system
+      programming with CTK+ much faster than building it yourself. In
+      fact, you may well already have CTK+ installed on your system
       already.
     </para>
     <para>
-      On UNIX-like systems GTK+ uses the standard GNU build system,
+      On UNIX-like systems CTK+ uses the standard GNU build system,
       using <application>autoconf</application> for package
       configuration and resolving portability issues,
       <application>automake</application> for building makefiles that
@@ -44,7 +44,7 @@ How to compile GTK+ itself
       on multiple platforms.
     </para>
     <para>
-      If you are building GTK+ from the distributed source packages,
+      If you are building CTK+ from the distributed source packages,
       then you won't need these tools installed; the necessary pieces
       of the tools are already included in the source packages. But
       it's useful to know a bit about how packages that use these
@@ -103,7 +103,7 @@ How to compile GTK+ itself
       <envar>PKG_CONFIG_PATH</envar> environment variable contains
       a search path that <command>pkg-config</command> (see below)
       uses when looking for files describing how to compile
-      programs using different libraries. If you were installing GTK+
+      programs using different libraries. If you were installing CTK+
       and it's dependencies into <filename>/opt/ctk</filename>, you
       might want to set these variables as:
     </para>
@@ -129,10 +129,10 @@ How to compile GTK+ itself
   <refsect1 id="dependencies">
     <title>Dependencies</title>
     <para>
-      Before you can compile the GTK+ widget toolkit, you need to have
+      Before you can compile the CTK+ widget toolkit, you need to have
       various other tools and libraries installed on your
       system. The two tools needed during the build process (as
-      differentiated from the tools used in when creating GTK+
+      differentiated from the tools used in when creating CTK+
       mentioned above such as <application>autoconf</application>)
       are <command>pkg-config</command> and GNU make.
     </para>
@@ -142,7 +142,7 @@ How to compile GTK+ itself
           <ulink
           url="https://www.freedesktop.org/wiki/Software/pkg-config/">pkg-config</ulink>
           is a tool for tracking the compilation flags needed for
-          libraries that are used by the GTK+ libraries. (For each
+          libraries that are used by the CTK+ libraries. (For each
           library, a small <literal>.pc</literal> text file is installed
           in a standard location that contains the compilation flags
           needed for that library along with version number information.)
@@ -150,9 +150,9 @@ How to compile GTK+ itself
       </listitem>
       <listitem>
         <para>
-          The GTK+ makefiles will mostly work with different versions
+          The CTK+ makefiles will mostly work with different versions
           of <command>make</command>, however, there tends to be
-          a few incompatibilities, so the GTK+ team recommends
+          a few incompatibilities, so the CTK+ team recommends
           installing <ulink url="https://www.gnu.org/software/make">GNU
             make</ulink> if you don't already have it on your system
           and using it. (It may be called <command>gmake</command>
@@ -161,8 +161,8 @@ How to compile GTK+ itself
       </listitem>
     </itemizedlist>
     <para>
-      Some of the libraries that GTK+ depends on are maintained by
-      by the GTK+ team: GLib, GdkPixbuf, Pango, ATK and GObject Introspection.
+      Some of the libraries that CTK+ depends on are maintained by
+      by the CTK+ team: GLib, GdkPixbuf, Pango, ATK and GObject Introspection.
       Other libraries are maintained separately.
     </para>
     <itemizedlist>
@@ -171,7 +171,7 @@ How to compile GTK+ itself
           The GLib library provides core non-graphical functionality
           such as high level data types, Unicode manipulation, and
           an object and type system to C programs. It is available
-          from the <ulink url="https://ftp.ctk.org/pub/glib/">GTK+
+          from the <ulink url="https://ftp.ctk.org/pub/glib/">CTK+
           FTP site</ulink> or
           <ulink url="https://download.gnome.org/sources/glib/">here</ulink>.
         </para>
@@ -233,7 +233,7 @@ How to compile GTK+ itself
       <listitem>
         <para>
           The libraries from the X window system are needed to build
-          Pango and GTK+. You should already have these installed on
+          Pango and CTK+. You should already have these installed on
           your system, but it's possible that you'll need to install
           the development environment for these libraries that your
           operating system vendor provides.
@@ -250,7 +250,7 @@ How to compile GTK+ itself
         <para>
           <ulink url="https://www.cairographics.org">Cairo</ulink>
           is a graphics library that supports vector graphics and image
-          compositing. Both Pango and GTK+ use cairo for all of their
+          compositing. Both Pango and CTK+ use cairo for all of their
           drawing.
         </para>
       </listitem>
@@ -258,20 +258,20 @@ How to compile GTK+ itself
         <para>
           <ulink url="https://github.com/anholt/libepoxy">libepoxy</ulink>
           is a library that abstracts the differences between different
-          OpenGL libraries. GTK+ uses it for cross-platform GL support.
+          OpenGL libraries. CTK+ uses it for cross-platform GL support.
         </para>
       </listitem>
       <listitem>
         <para>
           The <ulink url="https://wayland.freedesktop.org">Wayland</ulink> libraries
-          are needed to build GTK+ with the Wayland backend.
+          are needed to build CTK+ with the Wayland backend.
         </para>
       </listitem>
       <listitem>
         <para>
           The <ulink url="https://www.freedesktop.org/wiki/Software/shared-mime-info">shared-mime-info</ulink>
-          package is not a hard dependency of GTK+, but it contains definitions
-          for mime types that are used by GIO and, indirectly, by GTK+.
+          package is not a hard dependency of CTK+, but it contains definitions
+          for mime types that are used by GIO and, indirectly, by CTK+.
           gdk-pixbuf will use GIO for mime type detection if possible. For this
           to work, shared-mime-info needs to be installed and
           <envar>XDG_DATA_DIRS</envar> set accordingly at configure time.
@@ -281,7 +281,7 @@ How to compile GTK+ itself
     </itemizedlist>
   </refsect1>
   <refsect1 id="building">
-    <title>Building and testing GTK+</title>
+    <title>Building and testing CTK+</title>
     <para>
       First make sure that you have the necessary external
       dependencies installed: <command>pkg-config</command>, GNU make,
@@ -293,15 +293,15 @@ How to compile GTK+ itself
       installed already except for <command>pkg-config</command>.
     </para>
     <para>
-      Then build and install the GTK+ libraries in the order:
-      GLib, Pango, ATK, then GTK+. For each library, follow the
+      Then build and install the CTK+ libraries in the order:
+      GLib, Pango, ATK, then CTK+. For each library, follow the
       steps of <literal>configure</literal>, <literal>make</literal>,
       <literal>make install</literal> mentioned above. If you're
       lucky, this will all go smoothly, and you'll be ready to
-      <link linkend="ctk-compiling">start compiling your own GTK+
-      applications</link>. You can test your GTK+ installation
+      <link linkend="ctk-compiling">start compiling your own CTK+
+      applications</link>. You can test your CTK+ installation
       by running the <command>ctk3-demo</command> program that
-      GTK+ installs.
+      CTK+ installs.
     </para>
     <para>
       If one of the <filename>configure</filename> scripts fails or running
@@ -321,9 +321,9 @@ How to compile GTK+ itself
 
       <para>
         In addition to the normal options, the
-        <command>configure</command> script for the GTK+ library
+        <command>configure</command> script for the CTK+ library
         supports a number of additional arguments. (Command line
-        arguments for the other GTK+ libraries are described in
+        arguments for the other CTK+ libraries are described in
         the documentation distributed with the those libraries.)
 
         <cmdsynopsis>
@@ -423,11 +423,11 @@ How to compile GTK+ itself
           <systemitem>--enable-modules</systemitem></title>
 
         <para>
-          Normally GTK+ will try to build the input method modules
+          Normally CTK+ will try to build the input method modules
           as little shared libraries that are loaded on demand.
           The <systemitem>--disable-modules</systemitem> argument
           indicates that they should all be built statically
-          into the GTK+ library instead. This is useful for
+          into the CTK+ library instead. This is useful for
           people who need to produce statically-linked binaries.
           If neither <systemitem>--disable-modules</systemitem> nor
           <systemitem>--enable-modules</systemitem> is specified,
@@ -441,7 +441,7 @@ How to compile GTK+ itself
 
         <para>
          This option allows you to specify which input method modules you
-         want to include directly into the GTK+ shared library, as opposed
+         want to include directly into the CTK+ shared library, as opposed
          to building them as loadable modules.
         </para>
       </formalpara>
@@ -453,13 +453,13 @@ How to compile GTK+ itself
          Turns on various amounts of debugging support. Setting this to
          'no' disables g_assert(), g_return_if_fail(), g_return_val_if_fail()           and all cast checks between different object types. Setting it
          to 'minimum' disables only cast checks. Setting it to 'yes' enables
-         <link linkend="GTK-Debug-Options">runtime debugging</link>.
+         <link linkend="CTK-Debug-Options">runtime debugging</link>.
          The default is 'minimum'.
          Note that 'no' is fast, but dangerous as it tends to destabilize
          even mostly bug-free software by changing the effect of many bugs
          from simple warnings into fatal crashes. Thus
          <option>--enable-debug=no</option> should <emphasis>not</emphasis>
-         be used for stable releases of GTK+.
+         be used for stable releases of CTK+.
         </para>
       </formalpara>
 
@@ -469,7 +469,7 @@ How to compile GTK+ itself
         <para>
           The option <systemitem>--disable-Bsymbolic</systemitem>
           turns off the use of the -Bsymbolic-functions linker flag.
-          This is only necessary if you want to override GTK+ functions
+          This is only necessary if you want to override CTK+ functions
           by using <envar>LD_PRELOAD</envar>.
         </para>
       </formalpara>
@@ -479,13 +479,13 @@ How to compile GTK+ itself
           <systemitem>--disable-explicit-deps</systemitem></title>
         <para>
           If <systemitem>--enable-explicit-deps</systemitem> is
-          specified then GTK+ will write the full set of libraries
-          that GTK+ depends upon into its <literal>.pc</literal> files to be used when
-          programs depending on GTK+ are linked. Otherwise, GTK+
-          only will include the GTK+ libraries themselves, and
+          specified then CTK+ will write the full set of libraries
+          that CTK+ depends upon into its <literal>.pc</literal> files to be used when
+          programs depending on CTK+ are linked. Otherwise, CTK+
+          only will include the CTK+ libraries themselves, and
           will depend on system library dependency facilities to
           bring in the other libraries.
-          By default GTK+ will disable explicit dependencies unless
+          By default CTK+ will disable explicit dependencies unless
           it detects that they are needed on the system. (If you
           specify <systemitem>--enable-static</systemitem> to force
           building of static libraries, then explicit dependencies
@@ -494,7 +494,7 @@ How to compile GTK+ itself
           <systemitem>--enable-explicit-deps</systemitem> or
           <systemitem>--enable-static</systemitem> can cause
           compatibility
-          problems when libraries that GTK+ depends upon change
+          problems when libraries that CTK+ depends upon change
           their versions, and should be avoided if possible.
         </para>
       </formalpara>
@@ -506,9 +506,9 @@ How to compile GTK+ itself
         <para>
           By default the <command>configure</command> script will try
           to auto-detect whether the XKB extension is supported by
-          the X libraries GTK+ is linked with.
+          the X libraries CTK+ is linked with.
           These options can be used to explicitly control whether
-          GTK+ will support the XKB extension.
+          CTK+ will support the XKB extension.
         </para>
       </formalpara>
 
@@ -528,11 +528,11 @@ How to compile GTK+ itself
         <title><systemitem>--disable-xinput</systemitem> and
            <systemitem>--enable-xinput</systemitem></title>
         <para>
-          Controls whether GTK+ is built with support for the XInput
+          Controls whether CTK+ is built with support for the XInput
           or XInput2 extension. These extensions provide an extended
           interface to input devices such as graphics tablets.
           When this support is compiled in, specially written
-          GTK+ programs can get access to subpixel positions,
+          CTK+ programs can get access to subpixel positions,
           multiple simultaneous input devices, and extra "axes"
           provided by the device such as pressure and tilt
           information.
@@ -546,14 +546,14 @@ How to compile GTK+ itself
         <para>
           The <application>gtk-doc</application> package is
           used to generate the reference documentation included
-          with GTK+. By default support for <application>gtk-doc</application>
+          with CTK+. By default support for <application>gtk-doc</application>
           is disabled because it requires various extra dependencies
           to be installed. If you have
           <application>gtk-doc</application> installed and
-          are modifying GTK+, you may want to enable
+          are modifying CTK+, you may want to enable
           <application>gtk-doc</application> support by passing
           in <systemitem>--enable-gtk-doc</systemitem>. If not
-          enabled, pre-generated HTML files distributed with GTK+
+          enabled, pre-generated HTML files distributed with CTK+
           will be installed.
         </para>
       </formalpara>

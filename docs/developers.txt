@@ -1,4 +1,4 @@
-Things to care about when using/programing for GTK+
+Things to care about when using/programing for CTK+
 ===================================================
 
 This file is meant to collect some frequently triggered failures when

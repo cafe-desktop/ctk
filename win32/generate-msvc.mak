@@ -116,7 +116,7 @@ all:	\
 	--outstring=*
 
 ..\ctk\ctkdbusgenerated.h ..\ctk\ctkdbusgenerated.c: ..\ctk\ctkdbusinterfaces.xml
-	@echo Generating GTK DBus sources...
+	@echo Generating CTK DBus sources...
 	@$(PYTHON) $(PREFIX)\bin\gdbus-codegen	\
 	--interface-prefix org.Ctk. --c-namespace _Ctk	\
 	--generate-c-code ctkdbusgenerated $**	\

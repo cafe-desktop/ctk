@@ -77,7 +77,7 @@ msgstr "ЕКРАН"
 #: gdk/gdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
-msgstr "Поставување на GTK+ знамиња за дебагирање"
+msgstr "Поставување на CTK+ знамиња за дебагирање"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -91,7 +91,7 @@ msgstr "ЗНАМИЊА"
 #: gdk/gdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "Отстранување на GTK+ знамиња за дебагирање"
+msgstr "Отстранување на CTK+ знамиња за дебагирање"
 
 #: gdk/keyname-table.h:3940
 #, fuzzy
@@ -1308,8 +1308,8 @@ msgstr "Невалидна URI"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
-msgstr "Вчитај додатно модули за GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Вчитај додатно модули за CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:527
@@ -1323,13 +1323,13 @@ msgstr "Направи ги сите предупредувања фатални
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
-msgstr "Поставување на GTK+ знамиња за дебагирање"
+msgid "CTK+ debugging flags to set"
+msgstr "Поставување на CTK+ знамиња за дебагирање"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
-msgstr "Отстранување на GTK+ знамиња за дебагирање"
+msgid "CTK+ debugging flags to unset"
+msgstr "Отстранување на CTK+ знамиња за дебагирање"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1346,12 +1346,12 @@ msgid "Cannot open display: %s"
 msgstr ""
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Опции за GTK+"
+msgid "CTK+ Options"
+msgstr "Опции за CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Покажи опции за GTK+"
+msgid "Show CTK+ Options"
+msgstr "Покажи опции за CTK+"
 
 #: ctk/ctkmountoperation.c:491
 #, fuzzy
@@ -2840,10 +2840,10 @@ msgstr "Емитуваните податоци се деформирани"
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Емитуваните податоци се деформирани. Првиот дел не е "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:60
 msgid "LRM _Left-to-right mark"
@@ -4472,10 +4472,10 @@ msgstr ""
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Модулот за вчитување на слики %s не го извесува точниот интерфејс; можеби "
-#~ "е напишан во друга верзија на GTK?"
+#~ "е напишан во друга верзија на CTK?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Типот на слика „%s“ не е поддржан"

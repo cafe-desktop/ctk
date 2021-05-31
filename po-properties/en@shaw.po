@@ -5109,13 +5109,13 @@ msgstr "𐑤𐑦𐑕𐑑 𐑝 𐑲𐑒𐑪𐑯 𐑕𐑲𐑟𐑩𐑟 (ctk-𐑥�
 
 #, fuzzy
 #: ../ctk/ctksettings.c:380
-msgid "GTK Modules"
-msgstr "GTK 𐑥𐑪𐑛𐑿𐑤𐑟"
+msgid "CTK Modules"
+msgstr "CTK 𐑥𐑪𐑛𐑿𐑤𐑟"
 
 #, fuzzy
 #: ../ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
-msgstr "𐑤𐑦𐑕𐑑 𐑝 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑨𐑒𐑑𐑦𐑝 GTK 𐑥𐑪𐑛𐑿𐑤𐑟"
+msgid "List of currently active CTK modules"
+msgstr "𐑤𐑦𐑕𐑑 𐑝 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑨𐑒𐑑𐑦𐑝 CTK 𐑥𐑪𐑛𐑿𐑤𐑟"
 
 #, fuzzy
 #: ../ctk/ctksettings.c:390

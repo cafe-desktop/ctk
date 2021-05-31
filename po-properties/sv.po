@@ -1,4 +1,4 @@
-# Swedish messages for GTK+ properties.
+# Swedish messages for CTK+ properties.
 # Copyright © 1999-2020 Free Software Foundation, Inc.
 # Tomas Ögren <stric@ing.umu.se>, 1999.
 # Christian Rose <menthos@menthos.com>, 2000, 2001, 2002, 2003, 2004, 2005.
@@ -6937,12 +6937,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Lista med ikonstorlekar (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK-moduler"
+msgid "CTK Modules"
+msgstr "CTK-moduler"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Lista med GTK-moduler som är aktiva för tillfället"
+msgid "List of currently active CTK modules"
+msgstr "Lista med CTK-moduler som är aktiva för tillfället"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7507,10 +7507,10 @@ msgstr "Dialoger använder rubrikraden"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Huruvida inbyggda GTK+-dialoger ska använda en rubrikrad istället för en "
+"Huruvida inbyggda CTK+-dialoger ska använda en rubrikrad istället för en "
 "åtgärdsyta."
 
 #: ctk/ctksettings.c:1724
@@ -7530,8 +7530,8 @@ msgid "Recent Files Enabled"
 msgstr "Senaste filer aktiverade"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Huruvida GTK+ kommer ihåg senaste filerna"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Huruvida CTK+ kommer ihåg senaste filerna"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

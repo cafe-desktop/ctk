@@ -2996,8 +2996,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Завантажити додаткові модулі GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Завантажити додаткові модулі CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -3011,13 +3011,13 @@ msgstr "Зробити усі попередження фатальними"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "Встановити прапорці зневадження GTK+"
+msgid "CTK+ debugging flags to set"
+msgstr "Встановити прапорці зневадження CTK+"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "Скинути прапорці зневадження GTK+"
+msgid "CTK+ debugging flags to unset"
+msgstr "Скинути прапорці зневадження CTK+"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -3025,12 +3025,12 @@ msgid "Cannot open display: %s"
 msgstr "Неможливо відкрити дисплей: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Параметри GTK+"
+msgid "CTK+ Options"
+msgstr "Параметри CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Показати параметри GTK+"
+msgid "Show CTK+ Options"
+msgstr "Показати параметри CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -4048,10 +4048,10 @@ msgstr "Послідовні дані неправильно сформован�
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Послідовні дані неправильно сформовано. Першим розділом не є "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4130,18 +4130,18 @@ msgstr "Завжди зверху"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Бажаєте використовувати інспектор GTK+?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Бажаєте використовувати інспектор CTK+?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"Інспектор GTK+ — інтерактивний зневаджувач, який дозволяє досліджувати та "
-"редагувати внутрішні частини будь-які програми GTK+. Його використання може "
+"Інспектор CTK+ — інтерактивний зневаджувач, який дозволяє досліджувати та "
+"редагувати внутрішні частини будь-які програми CTK+. Його використання може "
 "спричинити збої в програмі."
 
 #: ctk/ctkwindow.c:12784
@@ -4171,8 +4171,8 @@ msgid "Parameter Type"
 msgstr "Тип параметра"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Можете ввести будь-яке правило CSS, яке розпізнає GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Можете ввести будь-яке правило CSS, яке розпізнає CTK+."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4230,8 +4230,8 @@ msgid "None"
 msgstr "Немає"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Версія GTK+"
+msgid "CTK+ Version"
+msgstr "Версія CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4619,8 +4619,8 @@ msgid "GL rendering is disabled"
 msgstr "Відтворення GL вимкнено"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "Тема GTK+"
+msgid "CTK+ Theme"
+msgstr "Тема CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

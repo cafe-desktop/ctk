@@ -2,7 +2,7 @@
 # Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
 # ctk+-properties Georgian translation
 # Copyright (C) 2006, Gia Shervashidze <giasher@telenet.ge>
-# This file is distributed under the same license as the GTK+-PROPERTIES package.
+# This file is distributed under the same license as the CTK+-PROPERTIES package.
 msgid ""
 msgstr ""
 "Project-Id-Version: ka\n"
@@ -5072,12 +5072,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "ხატულების ზომების სია (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
-msgstr "GTK მოდულები"
+msgid "CTK Modules"
+msgstr "CTK მოდულები"
 
 #: ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
-msgstr "მიმდინარე აქტიური GTK მოდულების სია"
+msgid "List of currently active CTK modules"
+msgstr "მიმდინარე აქტიური CTK მოდულების სია"
 
 #: ctk/ctksettings.c:390
 msgid "Xft Antialias"

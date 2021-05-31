@@ -543,7 +543,7 @@ ctk_shortcuts_shortcut_class_init (CtkShortcutsShortcutClass *klass)
    *
    * An icon to represent the shortcut or gesture. This property is used if
    * #CtkShortcutsShortcut:shortcut-type is set to #CTK_SHORTCUT_GESTURE.
-   * For the other predefined gesture types, GTK+ provides an icon on its own.
+   * For the other predefined gesture types, CTK+ provides an icon on its own.
    */
   properties[PROP_ICON] =
     g_param_spec_object ("icon",
@@ -584,7 +584,7 @@ ctk_shortcuts_shortcut_class_init (CtkShortcutsShortcutClass *klass)
    *
    * This is typically used for gestures and should be a short, one-line
    * text that describes the gesture itself. For the predefined gesture
-   * types, GTK+ provides a subtitle on its own.
+   * types, CTK+ provides a subtitle on its own.
    */
   properties[PROP_SUBTITLE] =
     g_param_spec_string ("subtitle",
@@ -610,7 +610,7 @@ ctk_shortcuts_shortcut_class_init (CtkShortcutsShortcutClass *klass)
    *
    * The size group for the accelerator portion of this shortcut.
    *
-   * This is used internally by GTK+, and must not be modified by applications.
+   * This is used internally by CTK+, and must not be modified by applications.
    */
   properties[PROP_ACCEL_SIZE_GROUP] =
     g_param_spec_object ("accel-size-group",
@@ -624,7 +624,7 @@ ctk_shortcuts_shortcut_class_init (CtkShortcutsShortcutClass *klass)
    *
    * The size group for the textual portion of this shortcut.
    *
-   * This is used internally by GTK+, and must not be modified by applications.
+   * This is used internally by CTK+, and must not be modified by applications.
    */
   properties[PROP_TITLE_SIZE_GROUP] =
     g_param_spec_object ("title-size-group",
@@ -665,7 +665,7 @@ ctk_shortcuts_shortcut_class_init (CtkShortcutsShortcutClass *klass)
    * CtkShortcutsShortcut:action-name:
    *
    * A detailed action name. If this is set for a shortcut
-   * of type %CTK_SHORTCUT_ACCELERATOR, then GTK+ will use
+   * of type %CTK_SHORTCUT_ACCELERATOR, then CTK+ will use
    * the accelerators that are associated with the action
    * via ctk_application_set_accels_for_action(), and setting
    * #CtkShortcutsShortcut::accelerator is not necessary.

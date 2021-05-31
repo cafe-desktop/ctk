@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Build zipfiles for GTK on Win32
+# Build zipfiles for CTK on Win32
 
 ZIP=/tmp/ctk+-@CTK_VERSION@.zip
 DEVZIP=/tmp/ctk+-dev-@CTK_VERSION@.zip

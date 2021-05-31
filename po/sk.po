@@ -2924,8 +2924,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Načíta prídavné moduly GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Načíta prídavné moduly CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2939,13 +2939,13 @@ msgstr "Zmení všetky upozornenia na závažné"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "Ladiace príznaky GTK+, ktoré sa majú nastaviť"
+msgid "CTK+ debugging flags to set"
+msgstr "Ladiace príznaky CTK+, ktoré sa majú nastaviť"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "Ladiace príznaky GTK+, ktoré sa majú vypnúť"
+msgid "CTK+ debugging flags to unset"
+msgstr "Ladiace príznaky CTK+, ktoré sa majú vypnúť"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2953,13 +2953,13 @@ msgid "Cannot open display: %s"
 msgstr "Nedá sa otvoriť displej: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Voľby GTK+"
+msgid "CTK+ Options"
+msgstr "Voľby CTK+"
 
 #  cmd desc
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Zobrazí voľby GTK+"
+msgid "Show CTK+ Options"
+msgstr "Zobrazí voľby CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -4002,10 +4002,10 @@ msgstr "Serializované údaje sú zdeformované"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Serializované údaje sú zdeformované. Prvá sekcia nie je "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4084,18 +4084,18 @@ msgstr "Vždy navrchu"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Chcete použiť nástroj Inšpektor GTK+?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Chcete použiť nástroj Inšpektor CTK+?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"Inšpektor GTK+ je interaktývny ladiaci nástroj, pomocou ktorého je možné "
-"preskúmať a meniť interné vlastnosti ľubovolnej aplikácie GTK+. Jeho "
+"Inšpektor CTK+ je interaktývny ladiaci nástroj, pomocou ktorého je možné "
+"preskúmať a meniť interné vlastnosti ľubovolnej aplikácie CTK+. Jeho "
 "používaním môžete spôsobiť neočakávanie chovanie alebo pád."
 
 #: ctk/ctkwindow.c:12784
@@ -4125,8 +4125,8 @@ msgid "Parameter Type"
 msgstr "Typ parametra"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Sem môžete napísať ľubovoľné pravidlo CSS platné v systéme GTK+"
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Sem môžete napísať ľubovoľné pravidlo CSS platné v systéme CTK+"
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4187,8 +4187,8 @@ msgid "None"
 msgstr "Žiadny"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Verzia GTK+"
+msgid "CTK+ Version"
+msgstr "Verzia CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4584,8 +4584,8 @@ msgid "GL rendering is disabled"
 msgstr "Vykresľovanie GL je zakázané"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "Téma GTK+"
+msgid "CTK+ Theme"
+msgstr "Téma CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -8651,8 +8651,8 @@ msgstr "Vytlačiť na skúšobnej tlačiarni"
 #~ msgid "Count:"
 #~ msgstr "Počet:"
 
-#~ msgid "GTK+ Inspector — %s"
-#~ msgstr "Inšpektor GTK+ — %s"
+#~ msgid "CTK+ Inspector — %s"
+#~ msgstr "Inšpektor CTK+ — %s"
 
 #~ msgid "Send Widget to Shell"
 #~ msgstr "Odoslať ovládací prvok do Shellu"

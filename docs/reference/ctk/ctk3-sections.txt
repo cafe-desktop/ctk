@@ -5976,7 +5976,7 @@ ctk_propagate_event
 <SUBSECTION Private>
 ctk_init_abi_check
 ctk_init_check_abi_check
-GTKMAIN_C_VAR
+CTKMAIN_C_VAR
 </SECTION>
 
 

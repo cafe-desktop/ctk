@@ -3,7 +3,7 @@ This is written down to help keep track of it in my head, and thus help
 anyone who hopes to work with the code in the future.
 -jrb
 
-HOW THE GTKTREEVIEW CALCULATES SIZE:
+HOW THE CTKTREEVIEW CALCULATES SIZE:
 ====================================
  When the view is given a new model, the first thing it does is walk
 through the model at the top level, creating an CtkRBNode for each
@@ -15,7 +15,7 @@ expand, collapse, and select rows at this stage.  The RBTree is accurate
 When the widget is realized, it calls install_presize_handler, to setup
 the first-run function.  This is run before the expose event.
 
-HOW THE GTKTREEVIEWCOLUMN STORES SIZE:
+HOW THE CTKTREEVIEWCOLUMN STORES SIZE:
 ======================================
 
 There are a number of size related fields in the CtkTreeViewColumn

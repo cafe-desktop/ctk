@@ -19,10 +19,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -2733,11 +2733,11 @@ update_single_bit (LONG    *style,
 
 /*
  * Returns TRUE if window has no decorations.
- * Usually it means CSD windows, because GTK
+ * Usually it means CSD windows, because CTK
  * calls gdk_window_set_decorations (window, 0);
  * This is used to decide whether a toplevel should
  * be made layered, thus it
- * only returns TRUE for toplevels (until GTK minimal
+ * only returns TRUE for toplevels (until CTK minimal
  * system requirements are lifted to Windows 8 or newer,
  * because only toplevels can be layered).
  */
@@ -2757,7 +2757,7 @@ _gdk_win32_window_lacks_wm_decorations (GdkWindow *window)
 
   impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
-  /* This is because GTK calls gdk_window_set_decorations (window, 0),
+  /* This is because CTK calls gdk_window_set_decorations (window, 0),
    * even though GdkWMDecoration docs indicate that 0 does NOT mean
    * "no decorations".
    */

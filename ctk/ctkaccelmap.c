@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1998, 2001 Tim Janik
  *
  * This library is free software; you can redistribute it and/or
@@ -872,7 +872,7 @@ ctk_accel_map_foreach_unfiltered (gpointer           data,
  * Accel map entries whose accel path matches one of the filters
  * are skipped by ctk_accel_map_foreach().
  *
- * This function is intended for GTK+ modules that create their own
+ * This function is intended for CTK+ modules that create their own
  * menus, but don’t want them to be saved into the applications accelerator
  * map dump.
  */

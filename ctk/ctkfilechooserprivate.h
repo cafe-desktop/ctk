@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechooserprivate.h: Interface definition for file selector GUIs
  * Copyright (C) 2003, Red Hat, Inc.
  *

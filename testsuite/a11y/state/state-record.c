@@ -361,7 +361,7 @@ main (int argc, char *argv[])
   GError *error = NULL;
   GOptionContext *context;
 
-  context = g_option_context_new ("- run GTK state tests");
+  context = g_option_context_new ("- run CTK state tests");
   g_option_context_add_main_entries (context, test_args, NULL);
   g_option_context_set_ignore_unknown_options (context, TRUE);
 

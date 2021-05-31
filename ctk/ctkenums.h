@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_ENUMS_H__
@@ -34,7 +34,7 @@
 
 /**
  * SECTION:ctkenums
- * @Short_description: Public enumerated types used throughout GTK+
+ * @Short_description: Public enumerated types used throughout CTK+
  * @Title: Standard Enumerations
  */
 
@@ -203,7 +203,7 @@ typedef enum
  * @CTK_SENSITIVITY_ON: The arrow is always sensitive
  * @CTK_SENSITIVITY_OFF: The arrow is always insensitive
  *
- * Determines how GTK+ handles the sensitivity of stepper arrows
+ * Determines how CTK+ handles the sensitivity of stepper arrows
  * at the end of range widgets.
  */
 typedef enum
@@ -860,7 +860,7 @@ typedef enum
  * @CTK_STATE_FLAG_DROP_ACTIVE: Widget is highlighted as a drop target for DND. Since 3.20
  *
  * Describes a widget state. Widget states are used to match the widget
- * against CSS pseudo-classes. Note that GTK extends the regular CSS
+ * against CSS pseudo-classes. Note that CTK extends the regular CSS
  * classes and sometimes uses different names.
  */
 typedef enum

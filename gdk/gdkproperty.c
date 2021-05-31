@@ -213,7 +213,7 @@ gdk_atom_intern (const gchar *atom_name,
  * allocated strings in the main program, but not with statically
  * allocated memory in dynamically loaded modules, if you expect to
  * ever unload the module again (e.g. do not use this function in
- * GTK+ theme engines).
+ * CTK+ theme engines).
  *
  * Returns: (transfer none): the atom corresponding to @atom_name
  *

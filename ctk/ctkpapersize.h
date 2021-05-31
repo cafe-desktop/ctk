@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkpapersize.h: Paper Size
  * Copyright (C) 2006, Red Hat, Inc.
  *

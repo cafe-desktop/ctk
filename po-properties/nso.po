@@ -5407,11 +5407,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Lelokelelo la bogolo bja leswao (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr ""
 
 #: ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr ""
 
 #: ctk/ctksettings.c:390
@@ -8306,8 +8306,8 @@ msgstr "Kamoo o ka thalago bara e bontšhago boemo ya mokgwa wa tsebišo"
 #~ msgid "Show Preview"
 #~ msgstr "Bontšha sengwalwa"
 
-#~ msgid "Whether this text is hidden. Not implemented in GTK 2.0"
-#~ msgstr "Ge eba sengwalwa se se utilwe. Ga se tša hlongwa go GTK 2.0"
+#~ msgid "Whether this text is hidden. Not implemented in CTK 2.0"
+#~ msgstr "Ge eba sengwalwa se se utilwe. Ga se tša hlongwa go CTK 2.0"
 
 #, fuzzy
 #~ msgid "Width In Chararacters"

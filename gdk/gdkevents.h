@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __GDK_EVENTS_H__
@@ -238,7 +238,7 @@ typedef GdkFilterReturn (*GdkFilterFunc) (GdkXEvent *xevent,
  * @GDK_LEAVE_NOTIFY: the pointer has left the window.
  * @GDK_FOCUS_CHANGE: the keyboard focus has entered or left the window.
  * @GDK_CONFIGURE: the size, position or stacking order of the window has changed.
- *   Note that GTK+ discards these events for %GDK_WINDOW_CHILD windows.
+ *   Note that CTK+ discards these events for %GDK_WINDOW_CHILD windows.
  * @GDK_MAP: the window has been mapped.
  * @GDK_UNMAP: the window has been unmapped.
  * @GDK_PROPERTY_NOTIFY: a property on the window has been changed or deleted.
@@ -295,7 +295,7 @@ typedef GdkFilterReturn (*GdkFilterFunc) (GdkXEvent *xevent,
  *
  * Specifies the type of the event.
  *
- * Do not confuse these events with the signals that GTK+ widgets emit.
+ * Do not confuse these events with the signals that CTK+ widgets emit.
  * Although many of these events result in corresponding signals being emitted,
  * the events are often transformed or filtered along the way.
  *
@@ -469,9 +469,9 @@ typedef enum
  * @GDK_CROSSING_NORMAL: crossing because of pointer motion.
  * @GDK_CROSSING_GRAB: crossing because a grab is activated.
  * @GDK_CROSSING_UNGRAB: crossing because a grab is deactivated.
- * @GDK_CROSSING_CTK_GRAB: crossing because a GTK+ grab is activated.
- * @GDK_CROSSING_CTK_UNGRAB: crossing because a GTK+ grab is deactivated.
- * @GDK_CROSSING_STATE_CHANGED: crossing because a GTK+ widget changed
+ * @GDK_CROSSING_CTK_GRAB: crossing because a CTK+ grab is activated.
+ * @GDK_CROSSING_CTK_UNGRAB: crossing because a CTK+ grab is deactivated.
+ * @GDK_CROSSING_STATE_CHANGED: crossing because a CTK+ widget changed
  *   state (e.g. sensitivity).
  * @GDK_CROSSING_TOUCH_BEGIN: crossing because a touch sequence has begun,
  *   this event is synthetic as the pointer might have not left the window.
@@ -883,7 +883,7 @@ struct _GdkEventScroll
  *   (gdk_unicode_to_keyval() provides a non-deprecated way of getting
  *   an approximate translation for a key.) The string is encoded in the
  *   encoding of the current locale (Note: this for backwards compatibility:
- *   strings in GTK+ and GDK are typically in UTF-8.) and NUL-terminated.
+ *   strings in CTK+ and GDK are typically in UTF-8.) and NUL-terminated.
  *   In some cases, the translation of the key code will be a single
  *   NUL byte, in which case looking at @length is necessary to distinguish
  *   it from the an empty translation.

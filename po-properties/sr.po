@@ -6893,11 +6893,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Списак величина иконице (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr "Гтк додаци"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr "Списак тренутно покренутих Гтк додатака"
 
 #: ctk/ctksettings.c:587
@@ -7459,7 +7459,7 @@ msgstr "Прозорчићи користе траку заглавља"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
 "Да ли уграђени Гтк+ прозорчићи треба да користе траку заглавља уместо "
@@ -7482,7 +7482,7 @@ msgid "Recent Files Enabled"
 msgstr "Укључене скорашње датотеке"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
 msgstr "Да ли Гтк+ памти скорашње датотеке"
 
 #: ctk/ctksettings.c:1757

@@ -1,4 +1,4 @@
-# Catalan translation of GTK+.
+# Catalan translation of CTK+.
 # Copyright © 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006
 #    Free Software Foundation, Inc.
 # Ivan Vilata i Balaguer <ivan@selidor.net>, 1999, 2000.
@@ -2768,8 +2768,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:463
-msgid "Load additional GTK+ modules"
-msgstr "Carrega mòduls addicionals de la GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Carrega mòduls addicionals de la CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
@@ -2783,13 +2783,13 @@ msgstr "Considera tots els avisos com a greus"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:469
-msgid "GTK+ debugging flags to set"
-msgstr "Senyaladors de depuració de GTK+ que s'han d'habilitar"
+msgid "CTK+ debugging flags to set"
+msgstr "Senyaladors de depuració de CTK+ que s'han d'habilitar"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:472
-msgid "GTK+ debugging flags to unset"
-msgstr "Senyaladors de depuració de GTK+ que s'han d'inhabilitar"
+msgid "CTK+ debugging flags to unset"
+msgstr "Senyaladors de depuració de CTK+ que s'han d'inhabilitar"
 
 #: ctk/ctkmain.c:807 ctk/ctkmain.c:1001
 #, c-format
@@ -2797,12 +2797,12 @@ msgid "Cannot open display: %s"
 msgstr "No es pot obrir la pantalla: %s"
 
 #: ctk/ctkmain.c:919
-msgid "GTK+ Options"
-msgstr "Opcions del GTK+"
+msgid "CTK+ Options"
+msgstr "Opcions del CTK+"
 
 #: ctk/ctkmain.c:919
-msgid "Show GTK+ Options"
-msgstr "Mostra les opcions del GTK+"
+msgid "Show CTK+ Options"
+msgstr "Mostra les opcions del CTK+"
 
 # Premi a qui va ficar "Per defecte:LTR. M'ha costat
 # trobar en quin mòdul estava l'error. jm
@@ -3776,10 +3776,10 @@ msgstr "Les dades en sèrie estan mal formades"
 
 #: ctk/ctktextbufferserialize.c:1864
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Les dades en sèrie estan mal formades. La primera secció no és "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3858,18 +3858,18 @@ msgstr "Sempre per damunt"
 
 #: ctk/ctkwindow.c:12514
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Voleu utilitzar l'inspector de la GTK+?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Voleu utilitzar l'inspector de la CTK+?"
 
 #: ctk/ctkwindow.c:12516
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"L'inspector de la GTK+ és un depurador interactiu que vos permet explorar i "
-"modificar qualsevol aplicació GTK+ internament. Podeu arribar a trencar o "
+"L'inspector de la CTK+ és un depurador interactiu que vos permet explorar i "
+"modificar qualsevol aplicació CTK+ internament. Podeu arribar a trencar o "
 "fer fallar l'aplicació si l'utilitzeu."
 
 #: ctk/ctkwindow.c:12521
@@ -3899,8 +3899,8 @@ msgid "Parameter Type"
 msgstr "Tipus de paràmetre"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Ací podeu escriure qualsevol regla de CSS reconeguda per la GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Ací podeu escriure qualsevol regla de CSS reconeguda per la CTK+."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -3959,8 +3959,8 @@ msgid "None"
 msgstr "Cap"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Versió de la GTK+"
+msgid "CTK+ Version"
+msgstr "Versió de la CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4352,8 +4352,8 @@ msgid "GL rendering is disabled"
 msgstr "La renderització GL està desactivada"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "Tema GTK+"
+msgid "CTK+ Theme"
+msgstr "Tema CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

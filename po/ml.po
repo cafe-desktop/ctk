@@ -64,7 +64,7 @@ msgstr "DISPLAY"
 #. Description of --gdk-debug=FLAGS in --help output
 #: ../gdk/gdk.c:215
 msgid "GDK debugging flags to set"
-msgstr "ക്രമീകരിക്കാനുള്ള GTK ഡീബഗ്ഗിങ് ഫ്ളാഗുകള്‍"
+msgstr "ക്രമീകരിക്കാനുള്ള CTK ഡീബഗ്ഗിങ് ഫ്ളാഗുകള്‍"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -2023,8 +2023,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:446
-msgid "Load additional GTK+ modules"
-msgstr "കൂടുതല്‍ GTK+ ഘടകങ്ങള്‍ ലഭ്യമാക്കുക"
+msgid "Load additional CTK+ modules"
+msgstr "കൂടുതല്‍ CTK+ ഘടകങ്ങള്‍ ലഭ്യമാക്കുക"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:447
@@ -2038,13 +2038,13 @@ msgstr "എല്ലാ മുന്നറിയിപ്പുകളും പ�
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:452
-msgid "GTK+ debugging flags to set"
-msgstr "ക്രമീകരിക്കാനുള്ള GTK+ ഡീബഗ്ഗിങ് ഫ്ളാഗുകള്‍"
+msgid "CTK+ debugging flags to set"
+msgstr "ക്രമീകരിക്കാനുള്ള CTK+ ഡീബഗ്ഗിങ് ഫ്ളാഗുകള്‍"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:455
-msgid "GTK+ debugging flags to unset"
-msgstr "നിറ്‍ജ്ജീവമാക്കുവാനുള്ള GTK+ ഡീബഗ്ഗിങ് ഫ്ളാഗുകള്‍ "
+msgid "CTK+ debugging flags to unset"
+msgstr "നിറ്‍ജ്ജീവമാക്കുവാനുള്ള CTK+ ഡീബഗ്ഗിങ് ഫ്ളാഗുകള്‍ "
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -2061,12 +2061,12 @@ msgid "Cannot open display: %s"
 msgstr "ഡിസ്പ്ലെ തുറക്കുവാന്‍ സാധ്യമല്ല: %s"
 
 #: ../ctk/ctkmain.c:834
-msgid "GTK+ Options"
-msgstr "GTK+ ഉപാധികള്‍"
+msgid "CTK+ Options"
+msgstr "CTK+ ഉപാധികള്‍"
 
 #: ../ctk/ctkmain.c:834
-msgid "Show GTK+ Options"
-msgstr "GTK+ ഉപാധികള്‍ കാണിക്കുക"
+msgid "Show CTK+ Options"
+msgstr "CTK+ ഉപാധികള്‍ കാണിക്കുക"
 
 #: ../ctk/ctkmountoperation.c:535
 msgid "Co_nnect"
@@ -3440,9 +3440,9 @@ msgstr "സീരിയലൈസ്ഡ് ഡേറ്റാ തെറ്റാ�
 
 #: ../ctk/ctktextbufferserialize.c:1868
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"സീരിയലൈസ്ഡ് ഡേറ്റാ തെറ്റാകുന്നു. ആദ്യത്തെ ഭാഗം GTKTEXTBUFFERCONTENTS-0001 "
+"സീരിയലൈസ്ഡ് ഡേറ്റാ തെറ്റാകുന്നു. ആദ്യത്തെ ഭാഗം CTKTEXTBUFFERCONTENTS-0001 "
 "അല്ല."
 
 #: ../ctk/ctktextutil.c:58
@@ -5135,9 +5135,9 @@ msgstr "ടെസ്റ്റ് പ്രിന്ററിലേക്ക് �
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
-#~ "ഇമേജ് ലഭ്യമാക്കുന്ന ഘടകമായ %s ശരിയായ സംയോജക ഘടകം എക്സ്പോറ്‍ട്ട് ചെയ്യുന്നില്ല; മറ്റൊരു GTK "
+#~ "ഇമേജ് ലഭ്യമാക്കുന്ന ഘടകമായ %s ശരിയായ സംയോജക ഘടകം എക്സ്പോറ്‍ട്ട് ചെയ്യുന്നില്ല; മറ്റൊരു CTK "
 #~ "ലക്കത്തില്‍ നിന്നുമാവാം?"
 
 #~ msgid "Image type '%s' is not supported"

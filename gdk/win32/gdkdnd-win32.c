@@ -18,10 +18,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -44,27 +44,27 @@
  * the window.
  *
  * There's a mismatch between data types supported by W32 (W32 formats)
- * and by GTK+ (GDK targets).
+ * and by CTK+ (GDK targets).
  * To account for it the data is transmuted back and forth. There are two
  * main points of transmutation:
- * * GDK convert selection: transmute W32 data to GTK+ data
- * * GDK window property change: transmute GTK+ data to W32 data
+ * * GDK convert selection: transmute W32 data to CTK+ data
+ * * GDK window property change: transmute CTK+ data to W32 data
  *
  * There are also two points where data formats are considered:
- * * When source drag context is created, it gets a list of GTK+ targets
+ * * When source drag context is created, it gets a list of CTK+ targets
  *   that it supports, these are matched to the W32 formats they
  *   correspond to (possibly with transmutation). New W32 formats for
- *   GTK+-specific formats are also created here (see below).
+ *   CTK+-specific formats are also created here (see below).
  * * When target drag context is created, it queries the IDataObject
  *   for the list of W32 formats it supports and matches these to
- *   corresponding GTK+ formats that it will be able to provide
+ *   corresponding CTK+ formats that it will be able to provide
  *   (possibly with transmutation) later. Missing GDK targets for
  *   W32-specific formats are also created here (see below).
  *
- * W32 formats and GTK+ targets are both integers (CLIPFORMAT and GdkAtom
+ * W32 formats and CTK+ targets are both integers (CLIPFORMAT and GdkAtom
  * respectively), but cannot be used interchangeably.
  *
- * To accommodate advanced GTK+ applications the code allows them to
+ * To accommodate advanced CTK+ applications the code allows them to
  * register drop targets that accept W32 data formats, and to register
  * drag sources that provide W32 data formats. To do that they must
  * register either with the string name of the format in question
@@ -74,38 +74,38 @@
  * If such target format is accepted/provided, GDK will not try to
  * transmute it to/from something else. Otherwise GDK will do the following
  * transmutation:
- * * If GTK+ application provides image/png, image/gif or image/jpeg,
+ * * If CTK+ application provides image/png, image/gif or image/jpeg,
  *   GDK will claim to also provide "PNG", "GIF" or "JFIF" respectively,
  *   and will pass these along verbatim.
- * * If GTK+ application provides any GdkPixbuf-compatible target,
+ * * If CTK+ application provides any GdkPixbuf-compatible target,
  *   GDK will also offer "PNG" and CF_DIB W32 formats.
- * * If GTK+ application provides UTF8_STRING, GDK will also offer
+ * * If CTK+ application provides UTF8_STRING, GDK will also offer
  *   CF_UNICODETEXT (UTF-16-encoded) and CF_TEXT (encoded with thread-
  *   and locale-depenant codepage), and will do the conversion when such
  *   data is requested.
- * * If GTK+ application accepts image/png, image/gif or image/jpeg,
+ * * If CTK+ application accepts image/png, image/gif or image/jpeg,
  *   GDK will claim to also accept "PNG", "GIF" or "JFIF" respectively,
  *   and will pass these along verbatim.
- * * If GTK+ application accepts image/bmp, GDK will
+ * * If CTK+ application accepts image/bmp, GDK will
  *   claim to accept CF_DIB W32 format, and will convert
  *   it, changing the header, when such data is provided.
- * * If GTK+ application accepts UTF8_STRING, GDK will
+ * * If CTK+ application accepts UTF8_STRING, GDK will
  *   claim to accept CF_UNICODETEXT and CF_TEXT, and will do
  *   the conversion when such data is provided.
- * * If GTK+ application accepts text/uri-list, GDK will
+ * * If CTK+ application accepts text/uri-list, GDK will
  *   claim to accept "Shell IDList Array", and will do the
  *   conversion when such data is provided.
  *
  * Currently the conversion from text/uri-list to Shell IDList Array is not
- * implemented, so it's not possible to drag & drop files from GTK+
- * applications to non-GTK+ applications the same way one can drag files
+ * implemented, so it's not possible to drag & drop files from CTK+
+ * applications to non-CTK+ applications the same way one can drag files
  * from Windows Explorer.
  *
- * To accommodate GTK+ application compaibility the code allows
- * GTK+ applications to register drop targets that accept GTK+-specific
- * data formats, and to register drag sources that provide GTK+-specific
+ * To accommodate CTK+ application compaibility the code allows
+ * CTK+ applications to register drop targets that accept CTK+-specific
+ * data formats, and to register drag sources that provide CTK+-specific
  * data formats. This is done by simply registering target atom names
- * as clipboard formats. This way two GTK+ applications can exchange
+ * as clipboard formats. This way two CTK+ applications can exchange
  * data in their native formats (both well-known ones, such as UTF8_STRING,
  * and special, known only to specific applications). This will work just
  * fine as long as both applications agree on what kind of data is stored
@@ -117,7 +117,7 @@
  * If more flexibility is needed, register one format that has some
  * internal indicators of the kind of data it contains, then write the application
  * in such a way that it requests the data and inspects its header before deciding
- * whether to accept it or not. For details see GTK+ drag & drop documentation
+ * whether to accept it or not. For details see CTK+ drag & drop documentation
  * on the "drag-motion" and "drag-data-received" signals.
  */
 
@@ -1752,7 +1752,7 @@ gdk_dropfiles_filter (GdkXEvent *xev,
 	  /* Awful hack to recognize temp files corresponding to
 	   * images dragged from Firefox... Open the file right here
 	   * so that it is less likely that Firefox manages to delete
-	   * it before the GTK+-using app (typically GIMP) has opened
+	   * it before the CTK+-using app (typically GIMP) has opened
 	   * it.
 	   *
 	   * Not compiled in for now, because it means images dragged

@@ -39,7 +39,7 @@
  * combination like `Control + a`). If the cell renderer is editable,
  * the accelerator can be changed by simply typing the new combination.
  *
- * The #CtkCellRendererAccel cell renderer was added in GTK+ 2.10.
+ * The #CtkCellRendererAccel cell renderer was added in CTK+ 2.10.
  */
 
 
@@ -183,9 +183,9 @@ ctk_cell_renderer_accel_class_init (CtkCellRendererAccelClass *cell_accel_class)
   /**
    * CtkCellRendererAccel:accel-mode:
    *
-   * Determines if the edited accelerators are GTK+ accelerators. If
+   * Determines if the edited accelerators are CTK+ accelerators. If
    * they are, consumed modifiers are suppressed, only accelerators
-   * accepted by GTK+ are allowed, and the accelerators are rendered
+   * accepted by CTK+ are allowed, and the accelerators are rendered
    * in the same way as they are in menus.
    *
    * Since: 2.10

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprint-win32.h: Win32 Print utils
  * Copyright (C) 2006, Red Hat, Inc.
  *

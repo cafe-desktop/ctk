@@ -1,5 +1,5 @@
-# Czech translation of GTK+.
-# Copyright (C) 1999, 2006, 2007, 2008, 2009, 2010, 2011, 2012 the author(s) of GTK+.
+# Czech translation of CTK+.
+# Copyright (C) 1999, 2006, 2007, 2008, 2009, 2010, 2011, 2012 the author(s) of CTK+.
 # Copyright (C) 2003, 2004, 2005 Miloslav Trmac <mitr@volny.cz>.
 # Copyright (C) 2006 Lukas Novotny <lukasnov@cvs.gnome.org>.
 # This file is distributed under the same license as the ctk+ package.
@@ -2932,8 +2932,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Načte přídavné moduly GTK+"
+msgid "Load additional CTK+ modules"
+msgstr "Načte přídavné moduly CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2947,13 +2947,13 @@ msgstr "Učiní všechna varování kritickými"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "Ladicí příznaky GTK+, které nastaví"
+msgid "CTK+ debugging flags to set"
+msgstr "Ladicí příznaky CTK+, které nastaví"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "Ladicí příznaky GTK+, jejichž nastavení zruší"
+msgid "CTK+ debugging flags to unset"
+msgstr "Ladicí příznaky CTK+, jejichž nastavení zruší"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2961,12 +2961,12 @@ msgid "Cannot open display: %s"
 msgstr "Nelze otevřít displej: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Přepínače GTK+"
+msgid "CTK+ Options"
+msgstr "Přepínače CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Zobrazit přepínače GTK+"
+msgid "Show CTK+ Options"
+msgstr "Zobrazit přepínače CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3984,9 +3984,9 @@ msgstr "Serializovaná data jsou chybná"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"Serializovaná data jsou chybná. První částí není GTKTEXTBUFFERCONTENTS-0001"
+"Serializovaná data jsou chybná. První částí není CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4065,18 +4065,18 @@ msgstr "Vždy navrchu"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Chcete použít GTK+ Inspector?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Chcete použít CTK+ Inspector?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ Inspektor je interaktivní ladicí program, který umožňuje prozkoumat a "
-"změnit vnitřní strukturu jakékoliv aplikace GTK+. Použití tohoto programu "
+"CTK+ Inspektor je interaktivní ladicí program, který umožňuje prozkoumat a "
+"změnit vnitřní strukturu jakékoliv aplikace CTK+. Použití tohoto programu "
 "může vést k přerušení běhu nebo pádu aplikace."
 
 #: ctk/ctkwindow.c:12784
@@ -4106,8 +4106,8 @@ msgid "Parameter Type"
 msgstr "Typ parametru"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Zde můžete napsat jakékoliv pravidlo CSS podporované v GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Zde můžete napsat jakékoliv pravidlo CSS podporované v CTK+."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4166,8 +4166,8 @@ msgid "None"
 msgstr "žádný"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Verze GTK+"
+msgid "CTK+ Version"
+msgstr "Verze CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4555,8 +4555,8 @@ msgid "GL rendering is disabled"
 msgstr "Vykreslování přes GL je zakázáno"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "Motiv GTK+"
+msgid "CTK+ Theme"
+msgstr "Motiv CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

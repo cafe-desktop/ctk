@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -453,7 +453,7 @@ update_cursor (gpointer data,
  * gdk_cursor_new_from_name() are updated to reflect the theme
  * change. Custom cursors constructed with
  * gdk_cursor_new_from_pixbuf() will have to be handled
- * by the application (GTK+ applications can learn about
+ * by the application (CTK+ applications can learn about
  * cursor theme changes by listening for change notification
  * for the corresponding #CtkSetting).
  *

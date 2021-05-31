@@ -1078,7 +1078,7 @@ gdk_device_set_axis_use (GdkDevice   *device,
  * Returns the #GdkDisplay to which @device pertains.
  *
  * Returns: (transfer none): a #GdkDisplay. This memory is owned
- *          by GTK+, and must not be freed or unreffed.
+ *          by CTK+, and must not be freed or unreffed.
  *
  * Since: 3.0
  **/
@@ -1168,7 +1168,7 @@ _gdk_device_set_associated_device (GdkDevice *device,
  * Returns: (nullable) (transfer container) (element-type GdkDevice):
  *          the list of slave devices, or %NULL. The list must be
  *          freed with g_list_free(), the contents of the list are
- *          owned by GTK+ and should not be freed.
+ *          owned by CTK+ and should not be freed.
  **/
 GList *
 gdk_device_list_slave_devices (GdkDevice *device)
@@ -1418,7 +1418,7 @@ get_native_grab_event_mask (GdkEventMask grab_mask)
  * Note that @device and @window need to be on the same display.
  *
  * Device grabs are used for operations which need complete control over the
- * given device events (either pointer or keyboard). For example in GTK+ this
+ * given device events (either pointer or keyboard). For example in CTK+ this
  * is used for Drag and Drop operations, popup menus and such.
  *
  * Note that if the event mask of an X window has selected both button press
@@ -2012,7 +2012,7 @@ gdk_device_set_seat (GdkDevice *device,
  *
  * Returns the #GdkSeat the device belongs to.
  *
- * Returns: (transfer none): A #GdkSeat. This memory is owned by GTK+ and
+ * Returns: (transfer none): A #GdkSeat. This memory is owned by CTK+ and
  *          must not be freed.
  *
  * Since: 3.20

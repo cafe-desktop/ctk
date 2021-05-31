@@ -7407,11 +7407,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "प्रतिमा साइजहरूको सूची (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:567
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr "जिटिके मोड्युलहरू"
 
 #: ctk/ctksettings.c:568
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr "हालका सकृय जिटिके मोड्युलहरू सूची"
 
 #: ctk/ctksettings.c:576
@@ -7984,7 +7984,7 @@ msgstr "कार्यको लागि हेडर बार प्रय�
 #: ctk/ctksettings.c:1691
 #, fuzzy
 #| msgid "Whether buttons in dialogs should use the alternative button order"
-msgid "Whether builtin GTK+ dialogs should use a header bar instead of an action area."
+msgid "Whether builtin CTK+ dialogs should use a header bar instead of an action area."
 msgstr "जब बार्तालापमा बटनहरूले बैकल्पिक बटन क्रम प्रयोग गर्नु पर्दछ"
 
 #: ctk/ctksettings.c:1707
@@ -8004,7 +8004,7 @@ msgid "Recent Files Enabled"
 msgstr "हालैका फाइल"
 
 #: ctk/ctksettings.c:1725
-msgid "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
 msgstr ""
 
 #: ctk/ctksettings.c:1740
@@ -10769,5 +10769,5 @@ msgstr "पूर्वनिर्धारित फाँट शीर्ष�
 #~ msgid "Show Preview"
 #~ msgstr "पाठ देखाऊ"
 
-#~ msgid "Whether this text is hidden. Not implemented in GTK 2.0"
+#~ msgid "Whether this text is hidden. Not implemented in CTK 2.0"
 #~ msgstr "यो लुकाइएको हो भने जीटीके २.० मा प्रयोग हुँदैनन्"

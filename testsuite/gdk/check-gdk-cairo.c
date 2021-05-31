@@ -1,4 +1,4 @@
-/* This file is part of GTK+
+/* This file is part of CTK+
  *
  * AUTHORS
  *     Sven Herzberg

@@ -320,7 +320,7 @@ ctk_scrollable_set_vscroll_policy (CtkScrollable       *scrollable,
  *
  * Returns the size of a non-scrolling border around the
  * outside of the scrollable. An example for this would
- * be treeview headers. GTK+ can use this information to
+ * be treeview headers. CTK+ can use this information to
  * display overlayed graphics, like the overshoot indication,
  * at the right position.
  *

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2010 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -67,7 +67,7 @@ ctk_style_provider_iface_init (gpointer g_iface)
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: Will always return %NULL for all GTK-provided style providers
+ * Deprecated: 3.8: Will always return %NULL for all CTK-provided style providers
  *     as the interface cannot correctly work the way CSS is specified.
  **/
 CtkStyleProperties *
@@ -136,7 +136,7 @@ ctk_style_provider_get_style_property (CtkStyleProvider *provider,
  *
  * Since: 3.0
  *
- * Deprecated: 3.8: Will always return %NULL for all GTK-provided style providers.
+ * Deprecated: 3.8: Will always return %NULL for all CTK-provided style providers.
  **/
 CtkIconFactory *
 ctk_style_provider_get_icon_factory (CtkStyleProvider *provider,

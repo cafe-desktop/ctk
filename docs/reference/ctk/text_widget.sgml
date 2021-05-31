@@ -6,7 +6,7 @@
 <refmeta>
 <refentrytitle>Text Widget Overview</refentrytitle>
 <manvolnum>3</manvolnum>
-<refmiscinfo>GTK Library</refmiscinfo>
+<refmiscinfo>CTK Library</refmiscinfo>
 </refmeta>
 
 <refnamediv>
@@ -18,14 +18,14 @@
 <title>Conceptual Overview</title>
 
 <para>
-GTK+ has an extremely powerful framework for multiline text editing.  The
+CTK+ has an extremely powerful framework for multiline text editing.  The
 primary objects involved in the process are #CtkTextBuffer, which represents the 
 text being edited, and #CtkTextView, a widget which can display a #CtkTextBuffer. 
 Each buffer can be displayed by any number of views.
 </para>
 
 <para>
-One of the important things to remember about text in GTK+ is that it's in the
+One of the important things to remember about text in CTK+ is that it's in the
 UTF-8 encoding. This means that one character can be encoded as multiple
 bytes. Character counts are usually referred to as
 <firstterm>offsets</firstterm>, while byte counts are called
@@ -198,7 +198,7 @@ foreground color &mdash; use CSS to override their default values.
 
 <para>
 The <application>ctk-demo</application> application that comes with
-GTK+ contains more example code for #CtkTextView.
+CTK+ contains more example code for #CtkTextView.
 </para>
 
 </refsect1>

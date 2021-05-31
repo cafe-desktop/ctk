@@ -6822,11 +6822,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Spisak veličina ikonice (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:567
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr "Ctk dodaci"
 
 #: ctk/ctksettings.c:568
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr "Spisak trenutno pokrenutih Ctk dodataka"
 
 #: ctk/ctksettings.c:576
@@ -7388,7 +7388,7 @@ msgstr "Prozorčići koriste traku zaglavlja"
 
 #: ctk/ctksettings.c:1697
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
 "Da li ugrađeni Ctk+ prozorčići treba da koriste traku zaglavlja umesto "
@@ -7411,7 +7411,7 @@ msgid "Recent Files Enabled"
 msgstr "Uključene skorašnje datoteke"
 
 #: ctk/ctksettings.c:1731
-msgid "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
 msgstr "Da li Ctk+ pamti skorašnje datoteke"
 
 #: ctk/ctksettings.c:1746

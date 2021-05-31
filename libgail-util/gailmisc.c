@@ -33,7 +33,7 @@
  * @Title: GailMisc
  *
  * GailMisc is a set of utility function which are used in the implemementation
- * of Atk interfaces for GTK+ widgets. They may be useful to implementors of
+ * of Atk interfaces for CTK+ widgets. They may be useful to implementors of
  * Atk interfaces for custom widgets.
  */
 

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2000 Red Hat, Inc.
  * Copyright (C) 2004 Nokia Corporation
  * Copyright (C) 2006-2008 Imendio AB
@@ -1229,7 +1229,7 @@ ctk_clipboard_store (CtkClipboard *clipboard)
   /* We simply store all targets into the OS X clipboard. We should be
    * using the functions gdk_display_supports_clipboard_persistence() and
    * gdk_display_store_clipboard(), but since for OS X the clipboard support
-   * was implemented in GTK+ and not through GdkSelections, we do it this
+   * was implemented in CTK+ and not through GdkSelections, we do it this
    * way. Doing this properly could be worthwhile to implement in the future.
    */
 

@@ -1,5 +1,5 @@
 # translation of ctk+-properties.master.po to Español
-# GTK+-properties Spanish translation.
+# CTK+-properties Spanish translation.
 # Copyright © 1999-2006, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the ctk+ package.
 #
@@ -2317,7 +2317,7 @@ msgstr "El ID de inventario del icono de inventario a renderizar"
 
 #: ctk/ctkcellrendererpixbuf.c:211
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
-msgstr "El valor de GTKIconSize que especifica el tamaño del icono renderizado"
+msgstr "El valor de CTKIconSize que especifica el tamaño del icono renderizado"
 
 #: ctk/ctkcellrendererpixbuf.c:227
 msgid "Detail"
@@ -2432,7 +2432,7 @@ msgstr "Pulso del marcador incrementable"
 #: ctk/ctkcellrendererspinner.c:160
 msgid "The CtkIconSize value that specifies the size of the rendered spinner"
 msgstr ""
-"El valor de GTKIconSize que especifica el tamaño del marcador incrementable "
+"El valor de CTKIconSize que especifica el tamaño del marcador incrementable "
 "renderizado"
 
 #: ctk/ctkcellrenderertext.c:256
@@ -6994,12 +6994,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Lista de tamaños de los iconos (ctk-menu=16,16:ctk-button=20,20…"
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "Módulos GTK"
+msgid "CTK Modules"
+msgstr "Módulos CTK"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Lista de módulos GTK activos actualmente"
+msgid "List of currently active CTK modules"
+msgstr "Lista de módulos CTK activos actualmente"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7593,10 +7593,10 @@ msgstr "Los diálogos usan barra de cabecera"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Indica si los diálogos integrados en GTK+ deben usar una barra de cabecera "
+"Indica si los diálogos integrados en CTK+ deben usar una barra de cabecera "
 "en lugar de un área de acción."
 
 #: ctk/ctksettings.c:1724
@@ -7616,8 +7616,8 @@ msgid "Recent Files Enabled"
 msgstr "Archivos recientes activados"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Indica si GTK+ recuerda los archivos recientes"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Indica si CTK+ recuerda los archivos recientes"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

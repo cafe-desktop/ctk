@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -275,7 +275,7 @@ correct_libdir_prefix (gchar **path)
   if (strncmp (*path, CTK_LIBDIR, strlen (CTK_LIBDIR)) == 0)
     {
       /* This is an entry put there by make install on the
-       * packager's system. On Windows a prebuilt GTK+
+       * packager's system. On Windows a prebuilt CTK+
        * package can be installed in a random
        * location. The ctk.immodules file distributed in
        * such a package contains paths from the package

@@ -1,5 +1,5 @@
 Please do not mail any of the authors listed here 
-asking questions about this version of GTK+. 
+asking questions about this version of CTK+. 
 
 Original Authors
 ----------------
@@ -7,7 +7,7 @@ Peter Mattis      <petm@xcf.berkeley.edu>
 Spencer Kimball   <spencer@xcf.berkeley.edu>
 Josh MacDonald    <jmacd@xcf.berkeley.edu>
 
-The GTK+ Team (in alphabetical order)
+The CTK+ Team (in alphabetical order)
 -------------------------------------
 Shawn T. Amundson <amundson@ctk.org>
 Jerome Bolliet    <bolliet@ctk.org>
@@ -29,10 +29,10 @@ Manish Singh      <manish@ctk.org>
 Owen Taylor       <otaylor@ctk.org>
 
 There are many others who have contributed patches; we thank them,
-GTK+ is much better because of them.
+CTK+ is much better because of them.
 
 
-Over time, GTK+ has incorporated some pieces of software which 
+Over time, CTK+ has incorporated some pieces of software which 
 started as independent projects. We list the original authors here:
 
 

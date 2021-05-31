@@ -62,7 +62,7 @@ test_finalize_object (gconstpointer data)
   /* Assert that the object finalizes properly */
   g_object_weak_ref (object, check_finalized, &finalized);
 
-  /* Toplevels are owned by GTK+, just tell GTK+ to destroy it */
+  /* Toplevels are owned by CTK+, just tell CTK+ to destroy it */
   if (CTK_IS_WINDOW (object) || CTK_IS_INVISIBLE (object))
     ctk_widget_destroy (CTK_WIDGET (object));
   else

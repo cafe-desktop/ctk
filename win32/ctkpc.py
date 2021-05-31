@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# Utility script to generate .pc files for GTK+
+# Utility script to generate .pc files for CTK+
 # for Visual Studio builds, to be used for
 # building introspection files
 

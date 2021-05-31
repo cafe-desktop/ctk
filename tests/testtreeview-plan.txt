@@ -17,7 +17,7 @@ TreeModel testing:
    with each of the different models testtreeview supports. The 
    option menu at the top of testtreeview lets you swap in the 
    various models. The option menu includes each of the 
-   models that comes with GTK, in various configurations, 
+   models that comes with CTK, in various configurations, 
    and also NULL (no model).
 
  - ensure that swapping in a new model for the tree view when there

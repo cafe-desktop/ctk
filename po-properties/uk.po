@@ -6914,12 +6914,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Список розмірів піктограм (ctk-menu=16,16:ctk-button=20,20…"
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "Модулі GTK"
+msgid "CTK Modules"
+msgstr "Модулі CTK"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Перелік активних модулів GTK"
+msgid "List of currently active CTK modules"
+msgstr "Перелік активних модулів CTK"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7481,10 +7481,10 @@ msgstr "Діалоги використовують панель заголов�
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Чи мають вбудовані діалогові вікна GTK+ використовувати панель заголовка "
+"Чи мають вбудовані діалогові вікна CTK+ використовувати панель заголовка "
 "замість області дій."
 
 #: ctk/ctksettings.c:1724
@@ -7504,8 +7504,8 @@ msgid "Recent Files Enabled"
 msgstr "Журнал недавніх файлів увімкнено"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Чи GTK+ зберігає журнал недавніх файлів"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Чи CTK+ зберігає журнал недавніх файлів"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

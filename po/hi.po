@@ -79,7 +79,7 @@ msgstr "प्रदर्शन"
 #. Description of --gdk-debug=FLAGS in --help output
 #: ../gdk/gdk.c:223
 msgid "GDK debugging flags to set"
-msgstr "GTK+ डिबगिंग फ्लैग सेट किया जाना है"
+msgstr "CTK+ डिबगिंग फ्लैग सेट किया जाना है"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -92,7 +92,7 @@ msgstr "पताका"
 #. Description of --gdk-no-debug=FLAGS in --help output
 #: ../gdk/gdk.c:226
 msgid "GDK debugging flags to unset"
-msgstr "GTK+ डिबगिंग फ्लैग अनसेट किया जाना है"
+msgstr "CTK+ डिबगिंग फ्लैग अनसेट किया जाना है"
 
 #.
 #. * Translators, the strings in the “keyboard label” context are
@@ -2501,8 +2501,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:453
-msgid "Load additional GTK+ modules"
-msgstr "स्थानीय GTK+ मौड्यूल लोड करें"
+msgid "Load additional CTK+ modules"
+msgstr "स्थानीय CTK+ मौड्यूल लोड करें"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:454
@@ -2516,13 +2516,13 @@ msgstr "सभी चेतावनी को गंभीर बनाये�
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:459
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+ डिबगिंग फ्लैग सेट किया जाना है"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+ डिबगिंग फ्लैग सेट किया जाना है"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:462
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+ डिबगिंग फ्लैग अनसेट किया जाना है"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+ डिबगिंग फ्लैग अनसेट किया जाना है"
 
 #: ../ctk/ctkmain.c:764
 #, c-format
@@ -2530,12 +2530,12 @@ msgid "Cannot open display: %s"
 msgstr "डिस्प्ले खोल नही सकता है: %s"
 
 #: ../ctk/ctkmain.c:830
-msgid "GTK+ Options"
-msgstr "GTK+ विकल्प"
+msgid "CTK+ Options"
+msgstr "CTK+ विकल्प"
 
 #: ../ctk/ctkmain.c:830
-msgid "Show GTK+ Options"
-msgstr "GTK+ विकल्प दिखायें"
+msgid "Show CTK+ Options"
+msgstr "CTK+ विकल्प दिखायें"
 
 #  Translate to default:RTL if you want your widgets
 #  * to be RTL, otherwise translate to default:LTR.
@@ -3355,9 +3355,9 @@ msgstr "श्रृंखलाबद्ध आंकड़ा विरूप�
 
 #: ../ctk/ctktextbufferserialize.c:1882
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"श्रृंखलाबद्ध आंकड़ा विरूपित है. पहला खंड GTKTEXTBUFFERCONTENTS-0001 नहीं है"
+"श्रृंखलाबद्ध आंकड़ा विरूपित है. पहला खंड CTKTEXTBUFFERCONTENTS-0001 नहीं है"
 
 #: ../ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3423,16 +3423,16 @@ msgid "%d %%"
 msgstr "%d %%"
 
 #: ../ctk/ctkwindow.c:11655
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "क्या आप सचमुच GTK+ इंस्पेक्टर प्रयोग करना चाहते हैं?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "क्या आप सचमुच CTK+ इंस्पेक्टर प्रयोग करना चाहते हैं?"
 
 #: ../ctk/ctkwindow.c:11657
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ इंस्पेक्टर अंतःक्रियात्मक डिबगर है जो किसी GTK+ अनुप्रयोग के आंतरिक को "
+"CTK+ इंस्पेक्टर अंतःक्रियात्मक डिबगर है जो किसी CTK+ अनुप्रयोग के आंतरिक को "
 "देखने और बदलने "
 "देता है. इसे उपयोग करना अनुप्रयोग के ब्रेक करने या क्रैश का कारण है."
 
@@ -3490,8 +3490,8 @@ msgid "Restore defaults for this widget"
 msgstr "इस विजेट के लिए तयशुदा वापस करें"
 
 #: ../ctk/inspector/css-editor.c:86 ../ctk/inspector/css-editor.c:92
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "आप कोई CSS नियम को टाइप कर सकते हैं जो GTK+ के द्वारा पहचाना जाता है."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "आप कोई CSS नियम को टाइप कर सकते हैं जो CTK+ के द्वारा पहचाना जाता है."
 
 #: ../ctk/inspector/css-editor.c:87 ../ctk/inspector/css-editor.c:93
 msgid ""
@@ -3531,8 +3531,8 @@ msgstr "आँकड़ा दिखाएँ"
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/general.ui.h:1
-msgid "GTK+ Version"
-msgstr "GTK+ संस्करण"
+msgid "CTK+ Version"
+msgstr "CTK+ संस्करण"
 
 #: ../ctk/inspector/general.ui.h:2
 msgid "GDK Backend"
@@ -3671,7 +3671,7 @@ msgid "Default"
 msgstr "तयशुदा"
 
 #: ../ctk/inspector/prop-editor.c:1563
-#| msgid "GTK+ Theme"
+#| msgid "CTK+ Theme"
 msgid "Theme"
 msgstr "प्रसंग"
 
@@ -3776,7 +3776,7 @@ msgstr "संकेत CTK_TEST_TOUCHSCREEN के द्वारा हार
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/visual.ui.h:1
-msgid "GTK+ Theme"
+msgid "CTK+ Theme"
 msgstr "जीटीके+ प्रसंग"
 
 #: ../ctk/inspector/visual.ui.h:2
@@ -3837,8 +3837,8 @@ msgstr "पता"
 
 #: ../ctk/inspector/window.c:143
 #, c-format
-msgid "GTK+ Inspector — %s"
-msgstr "GTK+ इंस्पेक्टर — %s"
+msgid "CTK+ Inspector — %s"
+msgstr "CTK+ इंस्पेक्टर — %s"
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/window.ui.h:1

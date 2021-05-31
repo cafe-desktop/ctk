@@ -1,13 +1,13 @@
 General Information
 ===================
 
-This is GTK+ version @CTK_VERSION@. GTK+ is a multi-platform toolkit for
+This is CTK+ version @CTK_VERSION@. CTK+ is a multi-platform toolkit for
 creating graphical user interfaces. Offering a complete set of widgets,
-GTK+ is suitable for projects ranging from small one-off projects to
+CTK+ is suitable for projects ranging from small one-off projects to
 complete application suites.
 
-GTK+ is free software and part of the GNU Project. However, the
-licensing terms for GTK+, the GNU LGPL, allow it to be used by all
+CTK+ is free software and part of the GNU Project. However, the
+licensing terms for CTK+, the GNU LGPL, allow it to be used by all
 developers, including those developing proprietary software, without any
 license fees or royalties.
 
@@ -76,7 +76,7 @@ Even better are git-formatted patches. (Use git format-patch)
 Release notes
 =============
 
-Release notes for releases of GTK+ 3.x are part of the migration
-guide in the GTK+ documentation. See
+Release notes for releases of CTK+ 3.x are part of the migration
+guide in the CTK+ documentation. See
 
 https://developer.gnome.org/ctk3/unstable/ctk-migrating-2-to-3.html

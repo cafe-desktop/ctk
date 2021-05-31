@@ -1,8 +1,8 @@
 /* Benchmark/Fishbowl
  *
- * This demo models the fishbowl demos seen on the web in a GTK way.
+ * This demo models the fishbowl demos seen on the web in a CTK way.
  * It's also a neat little tool to see how fast your computer (or
- * your GTK version) is.
+ * your CTK version) is.
  */
 
 #include <ctk/ctk.h>

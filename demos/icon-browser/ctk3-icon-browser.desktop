@@ -6,5 +6,5 @@ Icon=ctk3-icon-browser
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Development;GTK;
+Categories=Development;CTK;
 NoDisplay=true

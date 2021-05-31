@@ -31,13 +31,13 @@
  * @Short_description: Using Pango in GDK
  * @Title: Pango Interaction
  *
- * Pango is the text layout system used by GDK and GTK+. The functions
+ * Pango is the text layout system used by GDK and CTK+. The functions
  * and types in this section are used to obtain clip regions for
  * #PangoLayouts, and to get #PangoContexts that can be used with
  * GDK.
  *
  * Creating a #PangoLayout object is the first step in rendering text,
- * and requires getting a handle to a #PangoContext. For GTK+ programs,
+ * and requires getting a handle to a #PangoContext. For CTK+ programs,
  * you’ll usually want to use ctk_widget_get_pango_context(), or
  * ctk_widget_create_pango_layout(), rather than using the lowlevel
  * gdk_pango_context_get_for_screen(). Once you have a #PangoLayout, you
@@ -305,7 +305,7 @@ gdk_pango_layout_get_clip_region (PangoLayout *layout,
  *
  * The context must be freed when you’re finished with it.
  * 
- * When using GTK+, normally you should use ctk_widget_get_pango_context()
+ * When using CTK+, normally you should use ctk_widget_get_pango_context()
  * instead of this function, to get the appropriate context for
  * the widget you intend to render text onto.
  * 
@@ -331,7 +331,7 @@ gdk_pango_context_get (void)
  *
  * The context must be freed when you’re finished with it.
  * 
- * When using GTK+, normally you should use ctk_widget_get_pango_context()
+ * When using CTK+, normally you should use ctk_widget_get_pango_context()
  * instead of this function, to get the appropriate context for
  * the widget you intend to render text onto.
  * 
@@ -375,7 +375,7 @@ gdk_pango_context_get_for_screen (GdkScreen *screen)
  *
  * The context must be freed when you’re finished with it.
  *
- * When using GTK+, normally you should use ctk_widget_get_pango_context()
+ * When using CTK+, normally you should use ctk_widget_get_pango_context()
  * instead of this function, to get the appropriate context for
  * the widget you intend to render text onto.
  *

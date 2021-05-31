@@ -585,7 +585,7 @@ serialize_pixbufs (SerializationContext *context,
       gdk_pixdata_from_pixbuf (&pixdata, pixbuf, FALSE);
       tmp = gdk_pixdata_serialize (&pixdata, &len);
 
-      serialize_section_header (text, "GTKTEXTBUFFERPIXBDATA-0001", len);
+      serialize_section_header (text, "CTKTEXTBUFFERPIXBDATA-0001", len);
       g_string_append_len (text, (gchar *) tmp, len);
       g_free (tmp);
     }
@@ -619,7 +619,7 @@ _ctk_text_buffer_serialize_rich_text (CtkTextBuffer     *register_buffer,
   serialize_tags (&context);
 
   text = g_string_new (NULL);
-  serialize_section_header (text, "GTKTEXTBUFFERCONTENTS-0001",
+  serialize_section_header (text, "CTKTEXTBUFFERCONTENTS-0001",
                             context.tag_table_str->len + context.text_str->len);
 
   g_string_append_len (text, context.tag_table_str->str, context.tag_table_str->len);
@@ -1756,8 +1756,8 @@ read_headers (const gchar *start,
       if (i + 30 >= len)
 	goto error;
 
-      if (strncmp (start + i, "GTKTEXTBUFFERCONTENTS-0001", 26) == 0 ||
-	  strncmp (start + i, "GTKTEXTBUFFERPIXBDATA-0001", 26) == 0)
+      if (strncmp (start + i, "CTKTEXTBUFFERCONTENTS-0001", 26) == 0 ||
+	  strncmp (start + i, "CTKTEXTBUFFERPIXBDATA-0001", 26) == 0)
 	{
 	  section_len = read_int ((const guchar *) start + i + 26);
 
@@ -1865,12 +1865,12 @@ _ctk_text_buffer_deserialize_rich_text (CtkTextBuffer *register_buffer,
     return FALSE;
 
   header = headers->data;
-  if (!header_is (header, "GTKTEXTBUFFERCONTENTS-0001"))
+  if (!header_is (header, "CTKTEXTBUFFERCONTENTS-0001"))
     {
       g_set_error_literal (error,
                            G_MARKUP_ERROR,
                            G_MARKUP_ERROR_PARSE,
-                           _("Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"));
+                           _("Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"));
 
       retval = FALSE;
       goto out;

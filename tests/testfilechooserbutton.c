@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 2 -*- */
 
-/* GTK+: ctkfilechooserbutton.c
+/* CTK+: ctkfilechooserbutton.c
  * 
  * Copyright (c) 2004 James M. Cape <jcape@ignore-your.tv>
  *

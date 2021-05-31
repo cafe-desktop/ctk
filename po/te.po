@@ -2470,7 +2470,7 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:453
-msgid "Load additional GTK+ modules"
+msgid "Load additional CTK+ modules"
 msgstr "అదనపు జిటికె+ పర్వికాలను నింపు"
 
 #. Placeholder in --ctk-module=MODULES in --help output
@@ -2485,12 +2485,12 @@ msgstr "అన్ని హెచ్చరికలను అనివార్�
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:459
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr "జిటికె+ దోషనిర్మూలన  గుర్తులను అమర్చు"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:462
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr "జిటికె+ దోషనిర్మూలనా గుర్తులను అమర్చువద్దు"
 
 #: ../ctk/ctkmain.c:764
@@ -2499,11 +2499,11 @@ msgid "Cannot open display: %s"
 msgstr "ప్రదర్శనను తెరువలేదు: %s"
 
 #: ../ctk/ctkmain.c:830
-msgid "GTK+ Options"
+msgid "CTK+ Options"
 msgstr "జిటికె+ ఐచ్ఛికాలు"
 
 #: ../ctk/ctkmain.c:830
-msgid "Show GTK+ Options"
+msgid "Show CTK+ Options"
 msgstr "జిటికె+ ఐచ్ఛికాలను చూపించు"
 
 #. Translate to default:RTL if you want your widgets
@@ -3318,8 +3318,8 @@ msgstr "క్రమపరిచిన డేటా తప్పైనది"
 
 #: ../ctk/ctktextbufferserialize.c:1882
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
-msgstr "క్రమపరిచిన డేటా తప్పైనది. మొదటి విభాగం GTKTEXTBUFFERCONTENTS-0001 కాదు"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
+msgstr "క్రమపరిచిన డేటా తప్పైనది. మొదటి విభాగం CTKTEXTBUFFERCONTENTS-0001 కాదు"
 
 #: ../ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3385,16 +3385,16 @@ msgid "%d %%"
 msgstr "%d %%"
 
 #: ../ctk/ctkwindow.c:11655
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "GTK+ ఇన్‌స్పెక్టర్ ఉపయోగించాలని అనుకుంటున్నారా?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "CTK+ ఇన్‌స్పెక్టర్ ఉపయోగించాలని అనుకుంటున్నారా?"
 
 #: ../ctk/ctkwindow.c:11657
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ ఇన్‌స్పెక్టర్ అనునది ఇంటరాక్టివ్ డీబగ్గర్ అది మిమ్ములను ఏదేని GTK+ "
+"CTK+ ఇన్‌స్పెక్టర్ అనునది ఇంటరాక్టివ్ డీబగ్గర్ అది మిమ్ములను ఏదేని CTK+ "
 "అనువర్తనం యొక్క అంతర్గతాలను "
 "సవరించుటకు అనుమతించును. దీనిని ఉపయోగించుట వలన అనువర్తనం ఆగిపోడం లేదా క్రాష్ "
 "అవడం కావచ్చు."
@@ -3453,8 +3453,8 @@ msgid "Restore defaults for this widget"
 msgstr "ఈ విడ్జట్ కొరకు అప్రమేయాలు తిరిగివుంచు"
 
 #: ../ctk/inspector/css-editor.c:86 ../ctk/inspector/css-editor.c:92
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "మీరు ఇక్కడ GTK+ ద్వారా గుర్తించబడిన ఏ CSS నియమమైనా టైపు చేయవచ్చు."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "మీరు ఇక్కడ CTK+ ద్వారా గుర్తించబడిన ఏ CSS నియమమైనా టైపు చేయవచ్చు."
 
 #: ../ctk/inspector/css-editor.c:87 ../ctk/inspector/css-editor.c:93
 msgid ""
@@ -3494,8 +3494,8 @@ msgstr "డేటా చూపు"
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/general.ui.h:1
-msgid "GTK+ Version"
-msgstr "GTK+ వర్షన్"
+msgid "CTK+ Version"
+msgstr "CTK+ వర్షన్"
 
 #: ../ctk/inspector/general.ui.h:2
 msgid "GDK Backend"
@@ -3630,7 +3630,7 @@ msgid "Default"
 msgstr "అప్రమేయ"
 
 #: ../ctk/inspector/prop-editor.c:1563
-#| msgid "GTK+ Theme"
+#| msgid "CTK+ Theme"
 msgid "Theme"
 msgstr "థీమ్"
 
@@ -3735,8 +3735,8 @@ msgstr "అమరిక CTK_TEST_TOUCHSCREEN చేత హార్డ్‌క�
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/visual.ui.h:1
-msgid "GTK+ Theme"
-msgstr "GTK+ థీమ్"
+msgid "CTK+ Theme"
+msgstr "CTK+ థీమ్"
 
 #: ../ctk/inspector/visual.ui.h:2
 msgid "Dark variant"
@@ -3796,8 +3796,8 @@ msgstr "చిరునామా"
 
 #: ../ctk/inspector/window.c:143
 #, c-format
-msgid "GTK+ Inspector — %s"
-msgstr "GTK+ ఇన్‌స్పెక్టర్ — %s"
+msgid "CTK+ Inspector — %s"
+msgstr "CTK+ ఇన్‌స్పెక్టర్ — %s"
 
 #. vim: set et sw=2 ts=2:
 #: ../ctk/inspector/window.ui.h:1

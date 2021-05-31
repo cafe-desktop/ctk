@@ -2892,8 +2892,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "追加で読み込む GTK+ モジュールを指定する"
+msgid "Load additional CTK+ modules"
+msgstr "追加で読み込む CTK+ モジュールを指定する"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2907,13 +2907,13 @@ msgstr "警告をすべて致命的と見なす"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "有効にする GTK+ のデバッグフラグを指定する"
+msgid "CTK+ debugging flags to set"
+msgstr "有効にする CTK+ のデバッグフラグを指定する"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "無効にする GTK+ のデバッグフラグを指定する"
+msgid "CTK+ debugging flags to unset"
+msgstr "無効にする CTK+ のデバッグフラグを指定する"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2921,12 +2921,12 @@ msgid "Cannot open display: %s"
 msgstr "ディスプレイをオープンできません: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+ のオプション"
+msgid "CTK+ Options"
+msgstr "CTK+ のオプション"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "GTK+ のオプションを表示する"
+msgid "Show CTK+ Options"
+msgstr "CTK+ のオプションを表示する"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3944,10 +3944,10 @@ msgstr "シリアライズしたデータが壊れています"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "シリアライズしたデータが壊れています (セクションの先頭が "
-"GTKTEXTBUFFERCONTENTS-0001 でない)"
+"CTKTEXTBUFFERCONTENTS-0001 でない)"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4026,17 +4026,17 @@ msgstr "常に最前面に配置する"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "GTK+ インスペクターを使用しますか?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "CTK+ インスペクターを使用しますか?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ インスペクターは、GTK+ アプリケーションの内部状態を参照、変更できる対話"
+"CTK+ インスペクターは、CTK+ アプリケーションの内部状態を参照、変更できる対話"
 "的デバッガーです。使用方法によっては、アプリケーションの異常動作やクラッシュ"
 "を引き起こす可能性があります。"
 
@@ -4067,8 +4067,8 @@ msgid "Parameter Type"
 msgstr "パラメーターの種類"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "GTK+ が認識可能な CSS ルールをここに記述できます。"
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "CTK+ が認識可能な CSS ルールをここに記述できます。"
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4127,8 +4127,8 @@ msgid "None"
 msgstr "なし"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK+ バージョン"
+msgid "CTK+ Version"
+msgstr "CTK+ バージョン"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4519,8 +4519,8 @@ msgid "GL rendering is disabled"
 msgstr "GL レンダリングは無効です"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK+ テーマ"
+msgid "CTK+ Theme"
+msgstr "CTK+ テーマ"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"

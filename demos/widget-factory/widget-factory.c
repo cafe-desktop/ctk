@@ -204,22 +204,22 @@ activate_about (GSimpleAction *action,
   };
   gchar *version;
 
-  version = g_strdup_printf ("%s\nRunning against GTK+ %d.%d.%d",
+  version = g_strdup_printf ("%s\nRunning against CTK+ %d.%d.%d",
                              PACKAGE_VERSION,
                              ctk_get_major_version (),
                              ctk_get_minor_version (),
                              ctk_get_micro_version ());
 
   ctk_show_about_dialog (CTK_WINDOW (ctk_application_get_active_window (app)),
-                         "program-name", "GTK Widget Factory",
+                         "program-name", "CTK Widget Factory",
                          "version", version,
-                         "copyright", "© 1997—2019 The GTK Team",
+                         "copyright", "© 1997—2019 The CTK Team",
                          "license-type", CTK_LICENSE_LGPL_2_1,
                          "website", "http://www.ctk.org",
-                         "comments", "Program to demonstrate GTK themes and widgets",
+                         "comments", "Program to demonstrate CTK themes and widgets",
                          "authors", authors,
                          "logo-icon-name", "ctk3-widget-factory",
-                         "title", "About GTK Widget Factory",
+                         "title", "About CTK Widget Factory",
                          NULL);
 
   g_free (version);

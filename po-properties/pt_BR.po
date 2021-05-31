@@ -1,5 +1,5 @@
-# Brazilian Portuguese translation of the GTK+ Properties.
-# Copyright (C) 2020 the GTK+ authors.
+# Brazilian Portuguese translation of the CTK+ Properties.
+# Copyright (C) 2020 the CTK+ authors.
 # Alex Sandro Queiroz e Silva <asandro@lcg.dc.ufc.br>, 1999.
 # Afonso Celso Medina <medina@maua.br>, 2004, 2005.
 # Leonardo Ferreira Fontenelle <leonardof@gnome.org>, 2006, 2008, 2009.
@@ -6938,12 +6938,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Lista de tamanhos de ícones (ctk-menu=16,16:ctk-button=20,20…)"
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "Módulos do GTK"
+msgid "CTK Modules"
+msgstr "Módulos do CTK"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Lista dos módulos do GTK atualmente ativos"
+msgid "List of currently active CTK modules"
+msgstr "Lista dos módulos do CTK atualmente ativos"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7514,10 +7514,10 @@ msgstr "Diálogos usam barra de cabeçalho"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Se diálogos GTK+ embutidos devem usar uma barra de cabeçalho em vez de uma "
+"Se diálogos CTK+ embutidos devem usar uma barra de cabeçalho em vez de uma "
 "área de ação."
 
 #: ctk/ctksettings.c:1724
@@ -7537,8 +7537,8 @@ msgid "Recent Files Enabled"
 msgstr "Habilitado arquivos recentes"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Se o GTK+ deve ou não lembrar-se dos arquivos recentes"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Se o CTK+ deve ou não lembrar-se dos arquivos recentes"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

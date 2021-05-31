@@ -1,5 +1,5 @@
 /* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) Christian Kellner <gicmo@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -17,10 +17,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -60,7 +60,7 @@
  * @short_description: Functions for working with GIO
  * @Title: Filesystem utilities
  *
- * The functions and objects described here make working with GTK+ and
+ * The functions and objects described here make working with CTK+ and
  * GIO more convenient.
  *
  * #CtkMountOperation is needed when mounting volumes:

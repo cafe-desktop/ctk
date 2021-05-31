@@ -1,10 +1,10 @@
 Prerequisites
 =============
 
-GTK+ requires the following packages:
+CTK+ requires the following packages:
 
  - The GLib, Pango, GdkPixbuf, ATK and cairo libraries, available at
-   the same location as GTK+. GTK+ @CTK_VERSION@ requires at least
+   the same location as CTK+. CTK+ @CTK_VERSION@ requires at least
    GLib @GLIB_REQUIRED_VERSION@, Pango @PANGO_REQUIRED_VERSION@,
    GdkPixbuf @GDK_PIXBUF_REQUIRED_VERSION@, ATK @ATK_REQUIRED_VERSION@
    and cairo @CAIRO_REQUIRED_VERSION@.
@@ -25,14 +25,14 @@ Simple install procedure
   % tar xf ctk+-@CTK_VERSION@.tar.xz          # unpack the sources
   % cd ctk+-@CTK_VERSION@                     # change to the toplevel directory
   % ./configure                        # run the `configure' script
-  % make                               # build GTK+
+  % make                               # build CTK+
   [ Become root if necessary ]
-  % make install                       # install GTK+
+  % make install                       # install CTK+
 
 The Details
 ===========
 
-Complete information about installing GTK+ and related libraries
+Complete information about installing CTK+ and related libraries
 can be found in the file:
 
  docs/reference/ctk/html/ctk-building.html

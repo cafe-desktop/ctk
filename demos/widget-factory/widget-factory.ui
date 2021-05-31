@@ -411,7 +411,7 @@ Suspendisse feugiat quam quis dolor accumsan cursus.</property>
     </columns>
   </object>
   <object class="CtkApplicationWindow" id="window">
-    <property name="title">GTK+ Widget Factory</property>
+    <property name="title">CTK+ Widget Factory</property>
     <child type="titlebar">
       <object class="CtkHeaderBar" id="headerbar1">
         <property name="visible">1</property>

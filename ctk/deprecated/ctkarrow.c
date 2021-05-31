@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2001.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2001.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /**
@@ -32,7 +32,7 @@
  * one of the four cardinal directions (up, down, left, or right).  The
  * style of the arrow can be one of shadow in, shadow out, etched in, or
  * etched out.  Note that these directions and style types may be
- * amended in versions of GTK+ to come.
+ * amended in versions of CTK+ to come.
  *
  * CtkArrow will fill any space alloted to it, but since it is inherited
  * from #CtkMisc, it can be padded and/or aligned, to fill exactly the

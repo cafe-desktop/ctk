@@ -1,6 +1,6 @@
-# Interlingua translations for GTK+ package.
+# Interlingua translations for CTK+ package.
 # Copyright (C) 2013 Free Software Foundation, Inc.
-# This file is distributed under the same license as the GTK+ package.
+# This file is distributed under the same license as the CTK+ package.
 #
 # Nik Kalach <nikka@fedoraproject.org>, 2013.
 #
@@ -1874,8 +1874,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:447
-msgid "Load additional GTK+ modules"
-msgstr "Cargar modulos GTK+ additional"
+msgid "Load additional CTK+ modules"
+msgstr "Cargar modulos CTK+ additional"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:448
@@ -1889,13 +1889,13 @@ msgstr "Render tote le advertimentos fatal"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:453
-msgid "GTK+ debugging flags to set"
-msgstr "Activar optiones diagnostic GTK+"
+msgid "CTK+ debugging flags to set"
+msgstr "Activar optiones diagnostic CTK+"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:456
-msgid "GTK+ debugging flags to unset"
-msgstr "Disactivar optiones diagnostic GTK+"
+msgid "CTK+ debugging flags to unset"
+msgstr "Disactivar optiones diagnostic CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1912,12 +1912,12 @@ msgid "Cannot open display: %s"
 msgstr "Impossibile de aperir le schermo: %s"
 
 #: ../ctk/ctkmain.c:838
-msgid "GTK+ Options"
-msgstr "Optiones GTK+"
+msgid "CTK+ Options"
+msgstr "Optiones CTK+"
 
 #: ../ctk/ctkmain.c:838
-msgid "Show GTK+ Options"
-msgstr "Monstrar le optiones GTK+"
+msgid "Show CTK+ Options"
+msgstr "Monstrar le optiones CTK+"
 
 #: ../ctk/ctkmountoperation.c:535
 msgid "Co_nnect"
@@ -3288,10 +3288,10 @@ msgstr "Datos serialisate son mal formate"
 
 #: ../ctk/ctktextbufferserialize.c:1868
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Datos serialisate son mal formate. Le prime section non es "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ../ctk/ctktextutil.c:58
 msgid "LRM _Left-to-right mark"

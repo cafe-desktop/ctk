@@ -63,7 +63,7 @@ msgstr "كۆرسەت"
 #. Description of --gdk-debug=FLAGS in --help output
 #: ../gdk/gdk.c:213
 msgid "GDK debugging flags to set"
-msgstr "تەڭشەيدىغان GTK+ سازلاش بەلگىسى"
+msgstr "تەڭشەيدىغان CTK+ سازلاش بەلگىسى"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -76,7 +76,7 @@ msgstr "بەلگە"
 #. Description of --gdk-no-debug=FLAGS in --help output
 #: ../gdk/gdk.c:216
 msgid "GDK debugging flags to unset"
-msgstr "قالدۇرماقچى بولغان GTK+ سازلاش بەلگىسى"
+msgstr "قالدۇرماقچى بولغان CTK+ سازلاش بەلگىسى"
 
 #.
 #. * Translators, the strings in the 'keyboard label' context are
@@ -1838,8 +1838,8 @@ msgstr "سىستېما تاكتىكىسى ئۆزگەرتىشنى چەكلىگە�
 
 #. Description of --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:446
-msgid "Load additional GTK+ modules"
-msgstr "قوشۇمچە GTK+ بۆلىكىنى يۈكلە"
+msgid "Load additional CTK+ modules"
+msgstr "قوشۇمچە CTK+ بۆلىكىنى يۈكلە"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ../ctk/ctkmain.c:447
@@ -1853,13 +1853,13 @@ msgstr "ھەممە ئاگاھلاندۇرۇشنى ئېغىر خاتالىققا 
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:452
-msgid "GTK+ debugging flags to set"
-msgstr "تەڭشەيدىغان GTK+ سازلاش بەلگىسى"
+msgid "CTK+ debugging flags to set"
+msgstr "تەڭشەيدىغان CTK+ سازلاش بەلگىسى"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ../ctk/ctkmain.c:455
-msgid "GTK+ debugging flags to unset"
-msgstr "قالدۇرماقچى بولغان GTK+ سازلاش بەلگىسى"
+msgid "CTK+ debugging flags to unset"
+msgstr "قالدۇرماقچى بولغان CTK+ سازلاش بەلگىسى"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1876,12 +1876,12 @@ msgid "Cannot open display: %s"
 msgstr "ئېكران ئېچىلمىدى: (%s)"
 
 #: ../ctk/ctkmain.c:834
-msgid "GTK+ Options"
-msgstr "GTK+ تاللانما"
+msgid "CTK+ Options"
+msgstr "CTK+ تاللانما"
 
 #: ../ctk/ctkmain.c:834
-msgid "Show GTK+ Options"
-msgstr "GTK+ تاللانما كۆرسەت"
+msgid "Show CTK+ Options"
+msgstr "CTK+ تاللانما كۆرسەت"
 
 #: ../ctk/ctkmountoperation.c:535
 msgid "Co_nnect"
@@ -3238,8 +3238,8 @@ msgstr "تەرتىپلەشكەن سانلىق-مەلۇمات فورماتى خا
 
 #: ../ctk/ctktextbufferserialize.c:1868
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
-msgstr "تەرتىپلەشكەن سانلىق-مەلۇمات فورماتى خاتا. بىرىنچى بۆلىكى GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
+msgstr "تەرتىپلەشكەن سانلىق-مەلۇمات فورماتى خاتا. بىرىنچى بۆلىكى CTKTEXTBUFFERCONTENTS-0001"
 
 #: ../ctk/ctktextutil.c:58
 msgid "LRM _Left-to-right mark"

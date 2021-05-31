@@ -6928,12 +6928,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Llista de mides d'icona (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:567
-msgid "GTK Modules"
-msgstr "Mòduls de la GTK"
+msgid "CTK Modules"
+msgstr "Mòduls de la CTK"
 
 #: ctk/ctksettings.c:568
-msgid "List of currently active GTK modules"
-msgstr "Llista dels mòduls de la GTK actius ara mateix"
+msgid "List of currently active CTK modules"
+msgstr "Llista dels mòduls de la CTK actius ara mateix"
 
 #: ctk/ctksettings.c:576
 msgid "Xft Antialias"
@@ -7542,10 +7542,10 @@ msgstr "Els diàlegs utilitzen barra de títol"
 
 #: ctk/ctksettings.c:1691
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Si els diàlegs integrats de la GTK+ han d'utilitzar la barra de títol en "
+"Si els diàlegs integrats de la CTK+ han d'utilitzar la barra de títol en "
 "comptes d'una àrea d'acció."
 
 #: ctk/ctksettings.c:1707
@@ -7565,8 +7565,8 @@ msgid "Recent Files Enabled"
 msgstr "Fitxers recents habilitats"
 
 #: ctk/ctksettings.c:1725
-msgid "Whether GTK+ remembers recent files"
-msgstr "Si la GTK+ recorda els fitxers recents"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Si la CTK+ recorda els fitxers recents"
 
 #: ctk/ctksettings.c:1740
 msgid "Long press time"

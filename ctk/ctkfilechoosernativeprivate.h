@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechoosernativeprivate.h: Native File selector dialog
  * Copyright (C) 2015, Red Hat, Inc.
  *

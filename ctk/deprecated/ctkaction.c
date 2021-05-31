@@ -1,5 +1,5 @@
 /*
- * GTK - The GIMP Toolkit
+ * CTK - The GIMP Toolkit
  * Copyright (C) 1998, 1999 Red Hat, Inc.
  * All rights reserved.
  *
@@ -20,10 +20,10 @@
 /*
  * Author: James Henstridge <james@daa.com.au>
  *
- * Modified by the GTK+ Team and others 2003.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 2003.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
@@ -32,7 +32,7 @@
  * @Title: CtkAction
  * @See_also: #CtkActionGroup, #CtkUIManager, #CtkActivatable
  *
- * > In GTK+ 3.10, CtkAction has been deprecated. Use #GAction
+ * > In CTK+ 3.10, CtkAction has been deprecated. Use #GAction
  * > instead, and associate actions with #CtkActionable widgets. Use
  * > #GMenuModel for creating menus with ctk_menu_new_from_model().
  *
@@ -250,7 +250,7 @@ ctk_action_class_init (CtkActionClass *klass)
    * CtkAction:label:
    *
    * The label used for menu items and buttons that activate
-   * this action. If the label is %NULL, GTK+ uses the stock 
+   * this action. If the label is %NULL, CTK+ uses the stock 
    * label specified via the stock-id property.
    *
    * This is an appearance property and thus only applies if 
@@ -1106,7 +1106,7 @@ _ctk_action_remove_from_proxy_list (CtkAction     *action,
  * Returns the proxy widgets for an action.
  * See also ctk_activatable_get_related_action().
  *
- * Returns: (element-type CtkWidget) (transfer none): a #GSList of proxy widgets. The list is owned by GTK+
+ * Returns: (element-type CtkWidget) (transfer none): a #GSList of proxy widgets. The list is owned by CTK+
  * and must not be modified.
  *
  * Since: 2.4
@@ -1127,7 +1127,7 @@ ctk_action_get_proxies (CtkAction *action)
  * 
  * Returns the name of the action.
  * 
- * Returns: the name of the action. The string belongs to GTK+ and should not
+ * Returns: the name of the action. The string belongs to CTK+ and should not
  *   be freed.
  *
  * Since: 2.4
@@ -1917,7 +1917,7 @@ ctk_action_set_accel_path (CtkAction   *action,
  * Since: 2.6
  *
  * Returns: the accel path for this action, or %NULL
- *   if none is set. The returned string is owned by GTK+ 
+ *   if none is set. The returned string is owned by CTK+ 
  *   and must not be freed or modified.
  *
  * Deprecated: 3.10: Use #GAction and the accelerator path on an associated
@@ -1943,7 +1943,7 @@ ctk_action_get_accel_path (CtkAction *action)
  * Since: 2.8
  *
  * Returns: (transfer none): the accel closure for this action. The
- *          returned closure is owned by GTK+ and must not be unreffed
+ *          returned closure is owned by CTK+ and must not be unreffed
  *          or modified.
  *
  * Deprecated: 3.10: Use #GAction and #CtkMenu instead, which have no

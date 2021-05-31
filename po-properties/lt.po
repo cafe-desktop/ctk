@@ -6855,12 +6855,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Piktogramų dydžių sąrašas (ctk-menu=16,16:ctk-button=20,20…"
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK moduliai"
+msgid "CTK Modules"
+msgstr "CTK moduliai"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Šiuo metu aktyvių GTK modulių sąrašas"
+msgid "List of currently active CTK modules"
+msgstr "Šiuo metu aktyvių CTK modulių sąrašas"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7419,10 +7419,10 @@ msgstr "Dialogai naudoja antraštės juostą"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Ar vidiniai GTK+ dialogai turėtų naudoti antraštės juostą vietoj veiksmų "
+"Ar vidiniai CTK+ dialogai turėtų naudoti antraštės juostą vietoj veiksmų "
 "srities."
 
 #: ctk/ctksettings.c:1724
@@ -7442,8 +7442,8 @@ msgid "Recent Files Enabled"
 msgstr "Neseniai naudoti failai įjungti"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Ar GTK+ įsimena neseniai naudotus failus"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Ar CTK+ įsimena neseniai naudotus failus"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

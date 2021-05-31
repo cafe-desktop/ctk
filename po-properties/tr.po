@@ -6866,12 +6866,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Simge boyutları listesi (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK Modülleri"
+msgid "CTK Modules"
+msgstr "CTK Modülleri"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Şu anda aktif olan GTK modüllerinin listesi"
+msgid "List of currently active CTK modules"
+msgstr "Şu anda aktif olan CTK modüllerinin listesi"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7435,10 +7435,10 @@ msgstr "İletişim pencereleri üst bilgi çubuğu kullanır"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Yerleşik GTK+ pencerelerinin eylem alanı yerine bir üst bilgi çubuğu "
+"Yerleşik CTK+ pencerelerinin eylem alanı yerine bir üst bilgi çubuğu "
 "kullanmasının gerekip gerekmemesi."
 
 #: ctk/ctksettings.c:1724
@@ -7458,8 +7458,8 @@ msgid "Recent Files Enabled"
 msgstr "Son Dosyalar Etkinleştirildi"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "GTK+'ın son dosyaları hatırlayıp hatırlamaması"
+msgid "Whether CTK+ remembers recent files"
+msgstr "CTK+'ın son dosyaları hatırlayıp hatırlamaması"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

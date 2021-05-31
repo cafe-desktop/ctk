@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2010 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -43,7 +43,7 @@
  * since they are mostly used behind the scenes by #CtkStyleContext and
  * #CtkCssProvider.
  *
- * #CtkGradient is deprecated. It was used internally by GTK’s CSS engine
+ * #CtkGradient is deprecated. It was used internally by CTK’s CSS engine
  * to represent gradients. As its handling is not conforming to modern
  * web standards, it is not used anymore. If you want to use gradients in
  * your own code, please use Cairo directly.
@@ -383,7 +383,7 @@ append_number (GString    *str,
  * @gradient: the gradient to print
  *
  * Creates a string representation for @gradient that is suitable
- * for using in GTK CSS files.
+ * for using in CTK CSS files.
  *
  * Returns: A string representation for @gradient
  *

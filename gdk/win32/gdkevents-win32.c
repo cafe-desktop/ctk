@@ -19,10 +19,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /* Cannot use TrackMouseEvent, as the stupid WM_MOUSELEAVE message
@@ -1155,7 +1155,7 @@ apply_event_filters (GdkWindow  *window,
  * transient owner.
  *
  * It would be a good idea if applications don’t chain transient windows
- * together.  There’s a limit to how much evil GTK can try to shield you
+ * together.  There’s a limit to how much evil CTK can try to shield you
  * from.
  */
 static void
@@ -2024,7 +2024,7 @@ _gdk_win32_window_fill_min_max_info (GdkWindow  *window,
            * This doesn't seem to be documented anywhere.
            * The following code uses a simple CSD/non-CSD test, but it could be that
            * this behaviour hinges on just one particular window style.
-           * Finding exactly which style that could be is not very useful for GTK, however.
+           * Finding exactly which style that could be is not very useful for CTK, however.
            */
           mmi->ptMaxPosition.x = 0;
           mmi->ptMaxPosition.y = 0;

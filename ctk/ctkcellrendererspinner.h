@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  *
  * Copyright (C) 2009 Matthias Clasen <mclasen@redhat.com>
  * Copyright (C) 2008 Richard Hughes <richard@hughsie.com>

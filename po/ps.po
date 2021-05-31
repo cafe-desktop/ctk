@@ -1247,7 +1247,7 @@ msgstr "URI ناسم"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
+msgid "Load additional CTK+ modules"
 msgstr ""
 
 #. Placeholder in --ctk-module=MODULES in --help output
@@ -1262,12 +1262,12 @@ msgstr "ټولې خبرتياوې وژونکې کول"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr ""
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr ""
 
 #. Translate to default:RTL if you want your widgets
@@ -1285,12 +1285,12 @@ msgid "Cannot open display: %s"
 msgstr "%s :ښوون نه شي پرانيستلی"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "غوراوي GTK+"
+msgid "CTK+ Options"
+msgstr "غوراوي CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "غوراوي ښودل GTK+ د"
+msgid "Show CTK+ Options"
+msgstr "غوراوي ښودل CTK+ د"
 
 #: ctk/ctkmountoperation.c:491
 msgid "Co_nnect"
@@ -2656,7 +2656,7 @@ msgstr ""
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 
 #: ctk/ctktextutil.c:60

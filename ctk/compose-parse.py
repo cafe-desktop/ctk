@@ -3,7 +3,7 @@
 #
 # compose-parse.py, version 1.4
 #
-# multifunction script that helps manage the compose sequence table in GTK+ (ctk/ctkimcontextsimple.c)
+# multifunction script that helps manage the compose sequence table in CTK+ (ctk/ctkimcontextsimple.c)
 # the script produces statistics and information about the whole process, run with --help for more.
 #
 # You may need to switch your python installation to utf-8, if you get 'ascii' codec errors.
@@ -38,7 +38,7 @@ keysymdatabase = {}
 keysymunicodedatabase = {}
 unicodedatabase = {}
 
-headerfile_start = """/* GTK - The GIMP Tool Kit
+headerfile_start = """/* CTK - The GIMP Tool Kit
  * Copyright (C) 2007, 2008 GNOME Foundation
  *
  * This library is free software; you can redistribute it and/or
@@ -70,10 +70,10 @@ headerfile_start = """/* GTK - The GIMP Tool Kit
  */
 
 /*
- * Modified by the GTK+ Team and others 2007, 2008.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 2007, 2008.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_IM_CONTEXT_SIMPLE_SEQS_H__
@@ -148,12 +148,12 @@ def usage():
 	-h, --help		this craft
 	-s, --statistics	show overall statistics (both algorithmic, non-algorithmic)
 	-a, --algorithmic	show sequences saved with algorithmic optimisation
-	-g, --ctk		show entries that go to GTK+
+	-g, --ctk		show entries that go to CTK+
 	-u, --unicodedatatxt	show compose sequences derived from UnicodeData.txt (from unicode.org)
 	-v, --verbose		show verbose output
         -p, --plane1		show plane1 compose sequences
 	-n, --numeric		when used with --ctk, create file with numeric values only
-	-e, --ctk-expanded	when used with --ctk, create file that repeats first column; not usable in GTK+
+	-e, --ctk-expanded	when used with --ctk, create file that repeats first column; not usable in CTK+
 
 	Default is to show statistics.
 	"""
@@ -233,7 +233,7 @@ def download_file(url):
 	return localfilename
 
 def process_gdkkeysymsh():
-	""" Opens the gdkkeysyms.h file from GTK+/gdk/gdkkeysyms.h """
+	""" Opens the gdkkeysyms.h file from CTK+/gdk/gdkkeysyms.h """
 	""" Fills up keysymdb with contents """
 	filename_gdkkeysymsh = download_file(URL_GDKKEYSYMSH)
 	try: 
@@ -956,7 +956,7 @@ if opt_statistics:
 	print "Not algorithmic (stats from Xorg Compose file)"
 	print "Number of sequences                                        :", len(xorg_compose_sequences) 
 	print "Flat array looks like                                      :", len(xorg_compose_sequences), "rows of 6 integers (2 bytes per int, or 12 bytes per row)"
-	print "Flat array would have taken up (in bytes)                  :", num_entries * 2 * 6, "bytes from the GTK+ library"
+	print "Flat array would have taken up (in bytes)                  :", num_entries * 2 * 6, "bytes from the CTK+ library"
 	print "Number of items in flat array                              :", len(xorg_compose_sequences) * 6
 	print "  of which are zeroes                                      :", zeroes, "or ", (100 * zeroes) / (len(xorg_compose_sequences) * 6), " per cent"
 	print "Number of different first items                            :", num_first_keysyms
@@ -966,6 +966,6 @@ if opt_statistics:
 	print "Memory needs if both algorithmic+optimised table in latest Xorg compose file"
 	print "                                                           :", num_entries * 2 * 6 - zeroes * 2 + num_first_keysyms * 2 * 5
 	print
-	print "Existing (old) implementation in GTK+"
+	print "Existing (old) implementation in CTK+"
 	print "Number of sequences in old ctkimcontextsimple.c            :", 691
-	print "The existing (old) implementation in GTK+ takes up         :", 691 * 2 * 12, "bytes"
+	print "The existing (old) implementation in CTK+ takes up         :", 691 * 2 * 12, "bytes"

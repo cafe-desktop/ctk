@@ -1,6 +1,6 @@
 # Icelandic translation of ctk 2.2
 # Copyright (C) 2003 Free Software Foundation, Inc.
-# This file is distributed under the same license as the GTK package.
+# This file is distributed under the same license as the CTK package.
 #
 # Richard Allen <ra@ra.is>, 2003.
 # Sveinn í Felli <sv1@fellsnet.is>, 2015, 2017, 2018.
@@ -6655,11 +6655,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr ""
 
 #: ctk/ctksettings.c:567
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr ""
 
 #: ctk/ctksettings.c:568
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr ""
 
 #: ctk/ctksettings.c:576
@@ -7186,7 +7186,7 @@ msgstr ""
 
 #: ctk/ctksettings.c:1697
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
 
@@ -7205,7 +7205,7 @@ msgid "Recent Files Enabled"
 msgstr ""
 
 #: ctk/ctksettings.c:1731
-msgid "Whether GTK+ remembers recent files"
+msgid "Whether CTK+ remembers recent files"
 msgstr ""
 
 #: ctk/ctksettings.c:1746
@@ -9381,10 +9381,10 @@ msgstr ""
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Myndlestrareiningin %s hefur ekki rétt viðmót. Ef til vill er hún ættuð "
-#~ "úr annari útgáfu af GTK?"
+#~ "úr annari útgáfu af CTK?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Myndgerðin '%s' er ekki studd"

@@ -826,7 +826,7 @@ ctk_numerable_icon_set_count (CtkNumerableIcon *self,
  * or %NULL if there’s none.
  *
  * Returns: (nullable) (transfer none): a #CtkStyleContext, or %NULL.
- *     This object is internal to GTK+ and should not be unreffed.
+ *     This object is internal to CTK+ and should not be unreffed.
  *     Use g_object_ref() if you want to keep it around
  *
  * Since: 3.0

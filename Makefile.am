@@ -1,4 +1,4 @@
-## Makefile.am for GTK+
+## Makefile.am for CTK+
 include $(top_srcdir)/Makefile.decl
 
 SRC_SUBDIRS = gdk ctk libgail-util modules demos tests testsuite examples

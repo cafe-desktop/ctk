@@ -1,5 +1,5 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -17,10 +17,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_DRAG_DEST_H__
@@ -39,17 +39,17 @@ G_BEGIN_DECLS
 
 /**
  * CtkDestDefaults:
- * @CTK_DEST_DEFAULT_MOTION: If set for a widget, GTK+, during a drag over this
+ * @CTK_DEST_DEFAULT_MOTION: If set for a widget, CTK+, during a drag over this
  *   widget will check if the drag matches this widget’s list of possible targets
  *   and actions.
- *   GTK+ will then call gdk_drag_status() as appropriate.
- * @CTK_DEST_DEFAULT_HIGHLIGHT: If set for a widget, GTK+ will draw a highlight on
+ *   CTK+ will then call gdk_drag_status() as appropriate.
+ * @CTK_DEST_DEFAULT_HIGHLIGHT: If set for a widget, CTK+ will draw a highlight on
  *   this widget as long as a drag is over this widget and the widget drag format
  *   and action are acceptable.
- * @CTK_DEST_DEFAULT_DROP: If set for a widget, when a drop occurs, GTK+ will
+ * @CTK_DEST_DEFAULT_DROP: If set for a widget, when a drop occurs, CTK+ will
  *   will check if the drag matches this widget’s list of possible targets and
- *   actions. If so, GTK+ will call ctk_drag_get_data() on behalf of the widget.
- *   Whether or not the drop is successful, GTK+ will call ctk_drag_finish(). If
+ *   actions. If so, CTK+ will call ctk_drag_get_data() on behalf of the widget.
+ *   Whether or not the drop is successful, CTK+ will call ctk_drag_finish(). If
  *   the action was a move, then if the drag was successful, then %TRUE will be
  *   passed for the @delete parameter to ctk_drag_finish().
  * @CTK_DEST_DEFAULT_ALL: If set, specifies that all default actions should

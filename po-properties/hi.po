@@ -5824,12 +5824,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "आइकन आकार की सूची (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ../ctk/ctksettings.c:519
-msgid "GTK Modules"
-msgstr "GTK मौड्यूल"
+msgid "CTK Modules"
+msgstr "CTK मौड्यूल"
 
 #: ../ctk/ctksettings.c:520
-msgid "List of currently active GTK modules"
-msgstr "मौजूदा सक्रिय GTK की सूची"
+msgid "List of currently active CTK modules"
+msgstr "मौजूदा सक्रिय CTK की सूची"
 
 #: ../ctk/ctksettings.c:528
 msgid "Xft Antialias"

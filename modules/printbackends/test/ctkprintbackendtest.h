@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintbackendtest.h: Test implementation of CtkPrintBackend 
  * for testing the dialog
  * Copyright (C) 2007, Red Hat, Inc.

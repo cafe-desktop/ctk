@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-1999.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-1999.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __GDK_WINDOW_WIN32_H__
@@ -263,7 +263,7 @@ struct _GdkWindowImplWin32
   gint margins_x;
   gint margins_y;
 
-  /* Set to TRUE when GTK tells us that margins are 0 everywhere.
+  /* Set to TRUE when CTK tells us that margins are 0 everywhere.
    * We don't actually set margins to 0, we just set this bit.
    */
   guint zero_margins : 1;

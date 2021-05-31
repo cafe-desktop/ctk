@@ -2936,8 +2936,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Wczytuje dodatkowe moduły biblioteki GTK"
+msgid "Load additional CTK+ modules"
+msgstr "Wczytuje dodatkowe moduły biblioteki CTK"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2951,13 +2951,13 @@ msgstr "Traktuje wszystkie ostrzeżenia jako błędy"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "Ustawione znaczniki debugowania biblioteki GTK"
+msgid "CTK+ debugging flags to set"
+msgstr "Ustawione znaczniki debugowania biblioteki CTK"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "Wyczyszczone znaczniki debugowania biblioteki GTK"
+msgid "CTK+ debugging flags to unset"
+msgstr "Wyczyszczone znaczniki debugowania biblioteki CTK"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2965,12 +2965,12 @@ msgid "Cannot open display: %s"
 msgstr "Nie można otworzyć ekranu: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "Opcje biblioteki GTK"
+msgid "CTK+ Options"
+msgstr "Opcje biblioteki CTK"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Wyświetla opcje biblioteki GTK"
+msgid "Show CTK+ Options"
+msgstr "Wyświetla opcje biblioteki CTK"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3990,10 +3990,10 @@ msgstr "Dane serializowane są nieprawidłowo rozwinięte"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Dane serializowane są nieprawidłowo rozwinięte. Pierwsza sekcja nie jest "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4072,18 +4072,18 @@ msgstr "Zawsze na wierzchu"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Użyć Inspektora biblioteki GTK?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Użyć Inspektora biblioteki CTK?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"Inspektor biblioteki GTK to interaktywny debuger umożliwiający przeglądanie "
-"i modyfikowanie wnętrza programu GTK. Jego użycie może spowodować awarię lub "
+"Inspektor biblioteki CTK to interaktywny debuger umożliwiający przeglądanie "
+"i modyfikowanie wnętrza programu CTK. Jego użycie może spowodować awarię lub "
 "uszkodzenie programu."
 
 #: ctk/ctkwindow.c:12784
@@ -4113,8 +4113,8 @@ msgid "Parameter Type"
 msgstr "Typ parametru"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Można tutaj wpisać każdą regułę CSS rozpoznawaną przez bibliotekę GTK."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Można tutaj wpisać każdą regułę CSS rozpoznawaną przez bibliotekę CTK."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4173,8 +4173,8 @@ msgid "None"
 msgstr "Brak"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "Wersja biblioteki GTK"
+msgid "CTK+ Version"
+msgstr "Wersja biblioteki CTK"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4562,8 +4562,8 @@ msgid "GL rendering is disabled"
 msgstr "Rysowanie za pomocą GL jest wyłączone"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "Motyw biblioteki GTK"
+msgid "CTK+ Theme"
+msgstr "Motyw biblioteki CTK"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -7757,7 +7757,7 @@ msgstr "Wayland"
 #: modules/input/imwaylandctk.c:82
 msgctxt "input method menu"
 msgid "Waylandctk"
-msgstr "Wayland (GTK)"
+msgstr "Wayland (CTK)"
 
 #. ID
 #: modules/input/imxim.c:26

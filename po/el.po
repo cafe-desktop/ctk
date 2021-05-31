@@ -1,4 +1,4 @@
-# Greek translation of GTK+ UI Translations
+# Greek translation of CTK+ UI Translations
 # Copyright (C) 1999 - 2012 Free Software Foundation, Inc.
 # Spiros Papadimitriou <spapadim+@cs.cmu.edu>, 1999.
 # Simos Xenitellis <simos@hellug.gr>, 1999, 2001, 2002.
@@ -1899,9 +1899,9 @@ msgid "Cannot end process with PID %d: %s"
 msgstr "Αδυναμία τερματισμού διεργασίας με PID %d: %s"
 
 #: ctk/ctknomediafile.c:48
-msgid "GTK could not find a media module. Check your installation."
+msgid "CTK could not find a media module. Check your installation."
 msgstr ""
-"Το GTK δεν μπόρεσε να βρει το άρθρωμα μέσων. Ελέγξτε την εγκατάστασή σας."
+"Το CTK δεν μπόρεσε να βρει το άρθρωμα μέσων. Ελέγξτε την εγκατάστασή σας."
 
 #: ctk/ctknotebook.c:4223 ctk/ctknotebook.c:6431
 #, c-format
@@ -2668,23 +2668,23 @@ msgstr "%d %%"
 
 #: ctk/ctkwindow.c:6637
 #, fuzzy, c-format
-#| msgid "Do you want to use GTK+ Inspector?"
-msgid "Do you want to use GTK Inspector?"
-msgstr "Θέλετε να χρησιμοποιήσετε τον επόπτη GTK+;"
+#| msgid "Do you want to use CTK+ Inspector?"
+msgid "Do you want to use CTK Inspector?"
+msgstr "Θέλετε να χρησιμοποιήσετε τον επόπτη CTK+;"
 
 #: ctk/ctkwindow.c:6639
 #, fuzzy, c-format
 #| msgid ""
-#| "GTK+ Inspector is an interactive debugger that lets you explore and "
-#| "modify the internals of any GTK+ application. Using it may cause the "
+#| "CTK+ Inspector is an interactive debugger that lets you explore and "
+#| "modify the internals of any CTK+ application. Using it may cause the "
 #| "application to break or crash."
 msgid ""
-"GTK Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK application. Using it may cause the application to "
+"CTK Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"Ο επόπτης GTK+ είναι ένας διαδραστικός αποσφαλματωτής που σας επιτρέπει να "
-"εξερευνήσετε και να τροποποιήσετε κάθε εφαρμογή GTK+. Χρησιμοποιώντας το "
+"Ο επόπτης CTK+ είναι ένας διαδραστικός αποσφαλματωτής που σας επιτρέπει να "
+"εξερευνήσετε και να τροποποιήσετε κάθε εφαρμογή CTK+. Χρησιμοποιώντας το "
 "μπορεί να προκαλέσετε την κατάρρευση της εφαρμογής."
 
 #: ctk/ctkwindow.c:6644
@@ -2763,10 +2763,10 @@ msgstr "Στόχος"
 
 #: ctk/inspector/css-editor.c:129
 #, fuzzy
-#| msgid "You can type here any CSS rule recognized by GTK+."
-msgid "You can type here any CSS rule recognized by GTK."
+#| msgid "You can type here any CSS rule recognized by CTK+."
+msgid "You can type here any CSS rule recognized by CTK."
 msgstr ""
-"Πληκτρολογήστε εδώ οποιοδήποτε κανόνα CSS όπου αναγνωρίζεται από το GTK+."
+"Πληκτρολογήστε εδώ οποιοδήποτε κανόνα CSS όπου αναγνωρίζεται από το CTK+."
 
 #: ctk/inspector/css-editor.c:130
 msgid ""
@@ -2826,8 +2826,8 @@ msgid "None"
 msgstr "Καμία"
 
 #: ctk/inspector/general.ui:36
-msgid "GTK Version"
-msgstr "Έκδοση GTK"
+msgid "CTK Version"
+msgstr "Έκδοση CTK"
 
 #: ctk/inspector/general.ui:66
 msgid "GDK Backend"
@@ -3235,8 +3235,8 @@ msgid "GL rendering is disabled"
 msgstr "Η απεικόνιση GL είναι απενεργοποιημένη"
 
 #: ctk/inspector/visual.ui:63
-msgid "GTK Theme"
-msgstr "Θέμα GTK"
+msgid "CTK Theme"
+msgstr "Θέμα CTK"
 
 #: ctk/inspector/visual.ui:91
 msgid "Dark Variant"
@@ -5828,7 +5828,7 @@ msgid ""
 "\n"
 "Simplify Options:\n"
 "  --replace    Replace the file\n"
-"  --3to4       Convert from GTK 3 to GTK 4\n"
+"  --3to4       Convert from CTK 3 to CTK 4\n"
 "\n"
 "Preview Options:\n"
 "  --id=ID      Preview only the named object\n"
@@ -5847,7 +5847,7 @@ msgstr ""
 "\n"
 "Επιλογές απλοποίησης:\n"
 "  --replace          Αντικατάσταση του αρχείου\n"
-"  --3to4      \tΜετατροπή από GTK 3 σε GTK 4\n"
+"  --3to4      \tΜετατροπή από CTK 3 σε CTK 4\n"
 "\n"
 "Επιλογές προεπισκόπησης:\n"
 "  --id=ID            Προεπισκόπηση μόνο των ονομαζόμενου αρχείου\n"
@@ -8061,10 +8061,10 @@ msgstr "Ακαθόριστο προφίλ"
 
 #~ msgid ""
 #~ "Serialized data is malformed. First section isn’t "
-#~ "GTKTEXTBUFFERCONTENTS-0001"
+#~ "CTKTEXTBUFFERCONTENTS-0001"
 #~ msgstr ""
 #~ "Τα σειριακά δεδομένα είναι κακοδιατυπωμένα. Η πρώτη ενότητα δεν είναι "
-#~ "GTKTEXTBUFFERCONTENTS-0001"
+#~ "CTKTEXTBUFFERCONTENTS-0001"
 
 #~ msgid "Default Widget"
 #~ msgstr "Προεπιλεγμένο γραφικό στοιχείο"
@@ -8509,8 +8509,8 @@ msgstr "Ακαθόριστο προφίλ"
 #~ msgid "System (%s)"
 #~ msgstr "Σύστημα (%s)"
 
-#~ msgid "Load additional GTK+ modules"
-#~ msgstr "Φόρτωση πρόσθετων αρθρωμάτων GTK+"
+#~ msgid "Load additional CTK+ modules"
+#~ msgstr "Φόρτωση πρόσθετων αρθρωμάτων CTK+"
 
 #~ msgid "MODULES"
 #~ msgstr "ΑΡΘΡΩΜΑΤΑ"
@@ -8518,20 +8518,20 @@ msgstr "Ακαθόριστο προφίλ"
 #~ msgid "Make all warnings fatal"
 #~ msgstr "Να είναι όλες οι προειδοποιήσεις μοιραίες"
 
-#~ msgid "GTK+ debugging flags to set"
-#~ msgstr "Σημαίες αποσφαλμάτωσης του GTK+ για ορισμό"
+#~ msgid "CTK+ debugging flags to set"
+#~ msgstr "Σημαίες αποσφαλμάτωσης του CTK+ για ορισμό"
 
-#~ msgid "GTK+ debugging flags to unset"
-#~ msgstr "Σημαίες αποσφαλμάτωσης του GTK+ για αφαίρεση"
+#~ msgid "CTK+ debugging flags to unset"
+#~ msgstr "Σημαίες αποσφαλμάτωσης του CTK+ για αφαίρεση"
 
 #~ msgid "Cannot open display: %s"
 #~ msgstr "Αδυναμία ανοίγματος της οθόνης: %s"
 
-#~ msgid "GTK+ Options"
-#~ msgstr "Επιλογές GTK+"
+#~ msgid "CTK+ Options"
+#~ msgstr "Επιλογές CTK+"
 
-#~ msgid "Show GTK+ Options"
-#~ msgstr "Εμφάνιση επιλογών GTK+"
+#~ msgid "Show CTK+ Options"
+#~ msgstr "Εμφάνιση επιλογών CTK+"
 
 #~ msgid "Connect to Server"
 #~ msgstr "Σύνδεση σε διακομιστή"
@@ -8808,8 +8808,8 @@ msgstr "Ακαθόριστο προφίλ"
 #~ msgid "Count:"
 #~ msgstr "Πλήθος:"
 
-#~ msgid "GTK+ Inspector — %s"
-#~ msgstr "Επόπτης GTK+ — %s"
+#~ msgid "CTK+ Inspector — %s"
+#~ msgstr "Επόπτης CTK+ — %s"
 
 #~ msgid "Send Widget to Shell"
 #~ msgstr "Αποστολή γραφικού στοιχείου στο κέλυφος"
@@ -9338,10 +9338,10 @@ msgstr "Ακαθόριστο προφίλ"
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Το άρθρωμα φόρτωσης εικόνων %s δεν εξάγει την κατάλληλη διεπαφή. Μήπως "
-#~ "προέρχεται από διαφορετική έκδοση του GTK;"
+#~ "προέρχεται από διαφορετική έκδοση του CTK;"
 
 #~ msgid "Couldn't recognize the image file format for file '%s'"
 #~ msgstr "Αδυναμία αναγνώρισης του τύπου αρχείου εικόνας για το αρχείο '%s'"

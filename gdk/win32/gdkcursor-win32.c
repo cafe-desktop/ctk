@@ -43,7 +43,7 @@ static DefaultCursor default_cursors[] = {
   { "hand",  IDC_HAND },
   { "help",  IDC_HELP },
   { "ibeam", IDC_IBEAM },
-  /* an X cursor name, for compatibility with GTK: */
+  /* an X cursor name, for compatibility with CTK: */
   { "left_ptr_watch", IDC_APPSTARTING },
   { "sizeall", IDC_SIZEALL },
   { "sizenesw", IDC_SIZENESW },

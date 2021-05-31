@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechooserembed.h: Abstract sizing interface for file selector implementations
  * Copyright (C) 2004, Red Hat, Inc.
  *

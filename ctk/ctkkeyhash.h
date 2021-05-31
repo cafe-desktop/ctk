@@ -1,6 +1,6 @@
 /* ctkkeyhash.h: Keymap aware matching of key bindings
  *
- * GTK - The GIMP Toolkit
+ * CTK - The GIMP Toolkit
  * Copyright (C) 2002, Red Hat Inc.
  *
  * This library is free software; you can redistribute it and/or

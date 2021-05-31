@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2014 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -25,7 +25,7 @@
  * #CtkGestureMultiPress is a #CtkGesture implementation able to recognize
  * multiple clicks on a nearby zone, which can be listened for through the
  * #CtkGestureMultiPress::pressed signal. Whenever time or distance between
- * clicks exceed the GTK+ defaults, #CtkGestureMultiPress::stopped is emitted,
+ * clicks exceed the CTK+ defaults, #CtkGestureMultiPress::stopped is emitted,
  * and the click counter is reset.
  *
  * Callers may also restrict the area that is considered valid for a >1

@@ -26,7 +26,7 @@
 #include "ctkcloudprintaccount.h"
 #include "ctkprintercloudprint.h"
 
-#define CLOUDPRINT_PROXY "GTK+"
+#define CLOUDPRINT_PROXY "CTK+"
 
 #define ACCOUNT_IFACE        "org.gnome.OnlineAccounts.Account"
 #define O_AUTH2_BASED_IFACE  "org.gnome.OnlineAccounts.OAuth2Based"

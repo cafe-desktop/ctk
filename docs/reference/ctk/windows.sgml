@@ -4,24 +4,24 @@
 ]>
 <refentry id="ctk-windows">
 <refmeta>
-<refentrytitle>Using GTK+ on Windows</refentrytitle>
+<refentrytitle>Using CTK+ on Windows</refentrytitle>
 <manvolnum>3</manvolnum>
-<refmiscinfo>GTK Library</refmiscinfo>
+<refmiscinfo>CTK Library</refmiscinfo>
 </refmeta>
 
 <refnamediv>
-<refname>Using GTK+ on Windows</refname>
+<refname>Using CTK+ on Windows</refname>
 <refpurpose>
-Windows-specific aspects of using GTK+
+Windows-specific aspects of using CTK+
 </refpurpose>
 </refnamediv>
 
 <refsect1>
-<title>Using GTK+ on Windows</title>
+<title>Using CTK+ on Windows</title>
 
 <para>
-The Windows port of GTK+ is an implementation of GDK (and therefore GTK+)
-on top of the Win32 API. When compiling GTK+ on Windows, this backend is
+The Windows port of CTK+ is an implementation of GDK (and therefore CTK+)
+on top of the Win32 API. When compiling CTK+ on Windows, this backend is
 the default.
 </para>
 
@@ -82,7 +82,7 @@ additional environment variables.
 <title><envar>GDK_IGNORE_WINTAB</envar></title>
 
 <para>
-If this variable is set, GTK+ doesn't use 
+If this variable is set, CTK+ doesn't use 
 the Wintab API for tablet support.
 </para>
 </formalpara>
@@ -91,7 +91,7 @@ the Wintab API for tablet support.
 <title><envar>GDK_USE_WINTAB</envar></title>
 
 <para>
-If this variable is set, GTK+ uses the Wintab API for 
+If this variable is set, CTK+ uses the Wintab API for 
 tablet support.  This is the default.
 </para>
 </formalpara>
@@ -111,16 +111,16 @@ in 256 color mode.
 <title>Windows-specific handling of cursors</title>
 
 <para>
-By default the "system" cursor theme is used. This makes GTK prefer cursors
+By default the "system" cursor theme is used. This makes CTK prefer cursors
 that Windows currently uses, falling back to Adwaita cursors and (as the last
 resort) built-in X cursors.
 </para>
 <para>
-When any other cursor theme is used, GTK will prefer cursors from that theme,
+When any other cursor theme is used, CTK will prefer cursors from that theme,
 falling back to Windows cursors and built-in X cursors.
 </para>
 <para>
-Theme can be changed by setting <literal>ctk-cursor-theme-name</literal> GTK+ setting. Users can override GTK+ settings in the <filename>settings.ini</filename> file or at runtime in the GTK+ Inspector.
+Theme can be changed by setting <literal>ctk-cursor-theme-name</literal> CTK+ setting. Users can override CTK+ settings in the <filename>settings.ini</filename> file or at runtime in the CTK+ Inspector.
 </para>
 <para>
 Themes are loaded from normal Windows variants of the XDG locations:
@@ -129,15 +129,15 @@ Themes are loaded from normal Windows variants of the XDG locations:
 <filename>RUNTIME_PREFIX/share/icons/THEME/cursors</filename>.
 </para>
 <para>
-The <literal>ctk-cursor-theme-size</literal> setting is ignored, GTK will use the cursor size that Windows tells it to use.
+The <literal>ctk-cursor-theme-size</literal> setting is ignored, CTK will use the cursor size that Windows tells it to use.
 </para>
 
 </refsect2>
 
 <para>
-More information about GTK+ on Windows, including detailed build
+More information about CTK+ on Windows, including detailed build
 instructions, binary downloads, etc, can be found
-<ulink url="https://wiki.gnome.org/Projects/GTK+/Win32">online</ulink>.
+<ulink url="https://wiki.gnome.org/Projects/CTK+/Win32">online</ulink>.
 </para>
 
 </refsect1>

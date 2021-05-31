@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=GTK+ Demo
-Comment=GTK+ code examples and demonstrations
+Name=CTK+ Demo
+Comment=CTK+ code examples and demonstrations
 Exec=ctk3-demo
 Icon=ctk3-demo
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Development;GTK;
+Categories=Development;CTK;
 NoDisplay=true

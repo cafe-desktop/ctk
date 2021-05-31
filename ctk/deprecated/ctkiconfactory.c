@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2000 Red Hat, Inc.
  *               2008 Johan Dahlin
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -59,7 +59,7 @@
  * stock ID, which is a simple string identifying the icon. Each #CtkStyle has a
  * list of #CtkIconFactory derived from the current theme; those icon factories
  * are consulted first when searching for an icon. If the theme doesn’t set a
- * particular icon, GTK+ looks for the icon in a list of default icon factories,
+ * particular icon, CTK+ looks for the icon in a list of default icon factories,
  * maintained by ctk_icon_factory_add_default() and
  * ctk_icon_factory_remove_default(). Applications with icons should add a default
  * icon factory with their icons, which will allow themes to override the icons
@@ -258,7 +258,7 @@ ctk_icon_factory_finalize (GObject *object)
  * stock ID, which is a simple string identifying the icon. Each
  * #CtkStyle has a list of #CtkIconFactorys derived from the current
  * theme; those icon factories are consulted first when searching for
- * an icon. If the theme doesn’t set a particular icon, GTK+ looks for
+ * an icon. If the theme doesn’t set a particular icon, CTK+ looks for
  * the icon in a list of default icon factories, maintained by
  * ctk_icon_factory_add_default() and
  * ctk_icon_factory_remove_default(). Applications with icons should

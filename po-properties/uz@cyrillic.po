@@ -4854,12 +4854,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Нишонча ўлчамлари рўйхати (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
-msgstr "GTK модуллари"
+msgid "CTK Modules"
+msgstr "CTK модуллари"
 
 #: ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
-msgstr "Жорий актив GTK модуллари рўйхати"
+msgid "List of currently active CTK modules"
+msgstr "Жорий актив CTK модуллари рўйхати"
 
 #: ctk/ctksettings.c:390
 msgid "Xft Antialias"

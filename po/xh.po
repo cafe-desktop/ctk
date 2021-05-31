@@ -72,7 +72,7 @@ msgstr "ISKRINI"
 #: gdk/gdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
-msgstr "I-GTK+ ukusetha izilungisi-ziphene kwinkqubo"
+msgstr "I-CTK+ ukusetha izilungisi-ziphene kwinkqubo"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -86,7 +86,7 @@ msgstr "Ii-FLAGS"
 #: gdk/gdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "I-GTK+ ukumisela izilungisi-ziphene kwinkqubo"
+msgstr "I-CTK+ ukumisela izilungisi-ziphene kwinkqubo"
 
 #: gdk/keyname-table.h:3940
 #, fuzzy
@@ -1323,8 +1323,8 @@ msgstr "i-UTF-8 engasebenziyo"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
-msgstr "Faka i-GTK+ eyongeziweyo iimodyuli"
+msgid "Load additional CTK+ modules"
+msgstr "Faka i-CTK+ eyongeziweyo iimodyuli"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:527
@@ -1338,13 +1338,13 @@ msgstr "Bulala zonke izilumkiso"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
-msgstr "I-GTK+ ukusetha izilungisi-ziphene kwinkqubo"
+msgid "CTK+ debugging flags to set"
+msgstr "I-CTK+ ukusetha izilungisi-ziphene kwinkqubo"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
-msgstr "I-GTK+ ukumisela izilungisi-ziphene kwinkqubo"
+msgid "CTK+ debugging flags to unset"
+msgstr "I-CTK+ ukumisela izilungisi-ziphene kwinkqubo"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1361,12 +1361,12 @@ msgid "Cannot open display: %s"
 msgstr ""
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "I-GTK+ekunokukhethwa kuko"
+msgid "CTK+ Options"
+msgstr "I-CTK+ekunokukhethwa kuko"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Bonisa i- GTK+ ekunokukhethwa kuko"
+msgid "Show CTK+ Options"
+msgstr "Bonisa i- CTK+ ekunokukhethwa kuko"
 
 #: ctk/ctkmountoperation.c:491
 #, fuzzy
@@ -2860,7 +2860,7 @@ msgstr ""
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 
 #: ctk/ctktextutil.c:60
@@ -4441,10 +4441,10 @@ msgstr ""
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Imodyuli yokufaka umfanekiso %s ayihambisi umdibanisi wemida onguwo; "
-#~ "mhlawumbi isuka kuhlobo lwe-GTK olwahlukileyo?"
+#~ "mhlawumbi isuka kuhlobo lwe-CTK olwahlukileyo?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Uhlobo lomfanekiso '%s' aluxhaswanga"

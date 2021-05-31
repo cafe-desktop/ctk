@@ -1221,7 +1221,7 @@ ctk_tool_button_set_label (CtkToolButton *button,
  * 
  * Returns the label used by the tool button, or %NULL if the tool button
  * doesn’t have a label. or uses a the label from a stock item. The returned
- * string is owned by GTK+, and must not be modified or freed.
+ * string is owned by CTK+, and must not be modified or freed.
  * 
  * Returns: (nullable): The label, or %NULL
  * 
@@ -1324,7 +1324,7 @@ ctk_tool_button_set_stock_id (CtkToolButton *button,
  * @button: a #CtkToolButton
  * 
  * Returns the name of the stock item. See ctk_tool_button_set_stock_id().
- * The returned string is owned by GTK+ and must not be freed or modifed.
+ * The returned string is owned by CTK+ and must not be freed or modifed.
  * 
  * Returns: the name of the stock item for @button.
  * 

@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -425,7 +425,7 @@ gdk_x11_ungrab_server (void)
 /**
  * gdk_x11_get_default_screen:
  * 
- * Gets the default GTK+ screen number.
+ * Gets the default CTK+ screen number.
  * 
  * Returns: returns the screen number specified by
  *   the --display command line option or the DISPLAY environment
@@ -454,7 +454,7 @@ gdk_x11_get_default_root_xwindow (void)
 /**
  * gdk_x11_get_default_xdisplay:
  * 
- * Gets the default GTK+ display.
+ * Gets the default CTK+ display.
  * 
  * Returns: (transfer none): the Xlib Display* for
  * the display specified in the `--display` command

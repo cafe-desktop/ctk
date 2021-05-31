@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -78,19 +78,19 @@
  * @Short_description: Base class for all widgets
  * @Title: CtkWidget
  *
- * CtkWidget is the base class all widgets in GTK+ derive from. It manages the
+ * CtkWidget is the base class all widgets in CTK+ derive from. It manages the
  * widget lifecycle, states and style.
  *
  * # Height-for-width Geometry Management # {#geometry-management}
  *
- * GTK+ uses a height-for-width (and width-for-height) geometry management
+ * CTK+ uses a height-for-width (and width-for-height) geometry management
  * system. Height-for-width means that a widget can change how much
  * vertical space it needs, depending on the amount of horizontal space
  * that it is given (and similar for width-for-height). The most common
  * example is a label that reflows to fill up the available width, wraps
  * to fewer lines, and therefore needs less height.
  *
- * Height-for-width geometry management is implemented in GTK+ by way
+ * Height-for-width geometry management is implemented in CTK+ by way
  * of five virtual methods:
  *
  * - #CtkWidgetClass.get_request_mode()
@@ -228,7 +228,7 @@
  * and by the #CtkWidgetClass.adjust_size_request() virtual method. If a
  * widget used the wrappers inside its virtual method implementations,
  * then the adjustments (such as widget margins) would be applied
- * twice. GTK+ therefore does not allow this and will warn if you try
+ * twice. CTK+ therefore does not allow this and will warn if you try
  * to do it.
  *
  * Of course if you are getting the size request for
@@ -237,7 +237,7 @@
  * Otherwise, you would not properly consider widget margins,
  * #CtkSizeGroup, and so forth.
  *
- * Since 3.10 GTK+ also supports baseline vertical alignment of widgets. This
+ * Since 3.10 CTK+ also supports baseline vertical alignment of widgets. This
  * means that widgets are positioned such that the typographical baseline of
  * widgets in the same row are aligned. This happens if a widget supports baselines,
  * has a vertical alignment of %CTK_ALIGN_BASELINE, and is inside a container
@@ -1941,7 +1941,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *               if it becomes unshadowed
    *
    * The ::grab-notify signal is emitted when a widget becomes
-   * shadowed by a GTK+ grab (not a pointer or keyboard grab) on
+   * shadowed by a CTK+ grab (not a pointer or keyboard grab) on
    * another widget, or when it becomes unshadowed due to a grab
    * being removed.
    *
@@ -2123,7 +2123,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * @widget: the object which received the signal.
    * @event: the #GdkEvent which triggered this signal
    *
-   * The GTK+ main loop will emit three signals for each GDK event delivered
+   * The CTK+ main loop will emit three signals for each GDK event delivered
    * to a widget: one generic ::event signal, another, more specific,
    * signal that matches the type of event delivered (e.g.
    * #CtkWidget::key-press-event) and finally a generic
@@ -4745,7 +4745,7 @@ ctk_widget_unparent (CtkWidget *widget)
  *  - if the widget is a container, all its children will be destroyed,
  *  recursively
  *  - if the widget is a top level, it will be removed from the list
- *  of top level widgets that GTK+ maintains internally
+ *  of top level widgets that CTK+ maintains internally
  *
  * It's expected that all references held on the widget will also
  * be released; you should connect to the #CtkWidget::destroy signal
@@ -4981,7 +4981,7 @@ ctk_widget_real_hide (CtkWidget *widget)
  * argument, then returns %TRUE. If connected to ::delete-event, the
  * result is that clicking the close button for a window (on the
  * window frame, top right corner usually) will hide but not destroy
- * the window. By default, GTK+ destroys windows when ::delete-event
+ * the window. By default, CTK+ destroys windows when ::delete-event
  * is received.
  *
  * Returns: %TRUE
@@ -7124,7 +7124,7 @@ ctk_widget_draw_internal (CtkWidget *widget,
       if (cairo_status (cr) &&
           event_window != NULL)
         {
-          /* We check the event so we only warn about internal GTK+ calls.
+          /* We check the event so we only warn about internal CTK+ calls.
            * Errors might come from PDF streams having write failures and
            * we don't want to spam stderr in that case.
            * We do want to catch errors from
@@ -7573,10 +7573,10 @@ _ctk_widget_get_translation_to_window (CtkWidget      *widget,
  * If the @widget’s window is not an ancestor of @window, no
  * modification will be applied.
  *
- * This is the inverse to the transformation GTK applies when
+ * This is the inverse to the transformation CTK applies when
  * preparing an expose event to be emitted with the #CtkWidget::draw
  * signal. It is intended to help porting multiwindow widgets from
- * GTK+ 2 to the rendering architecture of GTK+ 3.
+ * CTK+ 2 to the rendering architecture of CTK+ 3.
  *
  * Since: 3.0
  **/
@@ -8732,7 +8732,7 @@ _ctk_widget_set_has_grab (CtkWidget *widget,
  * @widget: a #CtkWidget
  * @device: a #GdkDevice
  *
- * Returns %TRUE if @device has been shadowed by a GTK+
+ * Returns %TRUE if @device has been shadowed by a CTK+
  * device grab on another widget, so it would stop sending
  * events to @widget. This may be used in the
  * #CtkWidget::grab-notify signal to check for specific
@@ -8824,7 +8824,7 @@ ctk_widget_set_name (CtkWidget	 *widget,
  * Retrieves the name of a widget. See ctk_widget_set_name() for the
  * significance of widget names.
  *
- * Returns: name of the widget. This string is owned by GTK+ and
+ * Returns: name of the widget. This string is owned by CTK+ and
  * should not be modified or freed
  **/
 const gchar*
@@ -9341,7 +9341,7 @@ ctk_widget_set_mapped (CtkWidget *widget,
  * an #CtkWidget::draw handler.
  *
  * This is a hint to the widget and does not affect the behavior of
- * the GTK+ core; many widgets ignore this flag entirely. For widgets
+ * the CTK+ core; many widgets ignore this flag entirely. For widgets
  * that do pay attention to the flag, such as #CtkEventBox and #CtkWindow,
  * the effect is to suppress default themed drawing of the widget's
  * background. (Children of the widget will still be drawn.) The application
@@ -9413,7 +9413,7 @@ ctk_widget_get_app_paintable (CtkWidget *widget)
  * pixmap will not happen automatically (as it is done in
  * gdk_window_begin_draw_frame()).
  *
- * In 3.10 GTK and GDK have been restructured for translucent drawing. Since
+ * In 3.10 CTK and GDK have been restructured for translucent drawing. Since
  * then expose events for double-buffered widgets are culled into a single
  * event to the toplevel GDK window. If you now unset double buffering, you
  * will cause a separate rendering pass for every widget. This will likely
@@ -10647,7 +10647,7 @@ ctk_widget_create_pango_layout (CtkWidget   *widget,
  * @stock_id: a stock ID
  * @size: (type int): a stock size (#CtkIconSize). A size of `(CtkIconSize)-1`
  *     means render at the size of the source and don’t scale (if there are
- *     multiple source sizes, GTK+ picks one of the available sizes).
+ *     multiple source sizes, CTK+ picks one of the available sizes).
  *
  * A convenience function that uses the theme engine and style
  * settings for @widget to look up @stock_id and render it to
@@ -11939,7 +11939,7 @@ ctk_widget_get_composite_name (CtkWidget *widget)
  *
  * A composite child is a child that’s an implementation detail of the
  * container it’s inside and should not be visible to people using the
- * container. Composite children aren’t treated differently by GTK+ (but
+ * container. Composite children aren’t treated differently by CTK+ (but
  * see ctk_container_foreach() vs. ctk_container_forall()), but e.g. GUI
  * builders might want to treat them in a different way.
  *
@@ -12628,7 +12628,7 @@ list_devices (CtkWidget        *widget,
  * Returns the list of #GdkDevices that is currently on top
  * of any window belonging to @widget.
  * Free the list with g_list_free(), the elements are owned
- * by GTK+ and must not be freed.
+ * by CTK+ and must not be freed.
  */
 GList *
 _ctk_widget_list_devices (CtkWidget *widget)
@@ -12700,7 +12700,7 @@ synth_crossing (CtkWidget       *widget,
  * @to: the #CtkWidget the virtual pointer is moving to.
  * @mode: the #GdkCrossingMode to place on the synthesized events.
  *
- * Generate crossing event(s) on widget state (sensitivity) or GTK+ grab change.
+ * Generate crossing event(s) on widget state (sensitivity) or CTK+ grab change.
  *
  * The real pointer window is the window that most recently received an enter notify
  * event.  Windows that don’t select for crossing events can’t become the real
@@ -15320,7 +15320,7 @@ ctk_widget_real_set_has_tooltip (CtkWidget *widget,
  * @custom_window: (allow-none): a #CtkWindow, or %NULL
  *
  * Replaces the default window used for displaying
- * tooltips with @custom_window. GTK+ will take care of showing and
+ * tooltips with @custom_window. CTK+ will take care of showing and
  * hiding @custom_window at the right moment, to behave likewise as
  * the default tooltip window. If @custom_window is %NULL, the default
  * tooltip window will be used.
@@ -15561,7 +15561,7 @@ ctk_widget_get_has_tooltip (CtkWidget *widget)
  * The clip area is the area in which all of @widget's drawing will
  * happen. Other toolkits call it the bounding box.
  *
- * Historically, in GTK+ the clip area has been equal to the allocation
+ * Historically, in CTK+ the clip area has been equal to the allocation
  * retrieved via ctk_widget_get_allocation().
  *
  * Since: 3.14
@@ -17123,7 +17123,7 @@ ctk_widget_class_set_template_from_resource (CtkWidgetClass    *widget_class,
   g_return_if_fail (resource_name && resource_name[0]);
 
   /* This is a hack, because class initializers now access resources
-   * and GIR/gtk-doc initializes classes without initializing GTK+,
+   * and GIR/gtk-doc initializes classes without initializing CTK+,
    * we ensure that our base resources are registered here and
    * avoid warnings which building GIRs/documentation.
    */

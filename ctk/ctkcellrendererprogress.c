@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 /*
- * Modified by the GTK+ Team and others 1997-2007.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2007.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -41,7 +41,7 @@
  * #CtkCellRendererProgress renders a numeric value as a progress par in a cell.
  * Additionally, it can display a text on top of the progress bar.
  *
- * The #CtkCellRendererProgress cell renderer was added in GTK+ 2.6.
+ * The #CtkCellRendererProgress cell renderer was added in CTK+ 2.6.
  */
 
 

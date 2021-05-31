@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -832,7 +832,7 @@ static const struct {
   { 0x20ac, 0x20ac }, /*                    EuroSign € EURO SIGN */
 
 
-  /* Following items added to GTK, not in the xterm table */
+  /* Following items added to CTK, not in the xterm table */
 
   /* A few ASCII control characters */
 #ifndef GDK_WINDOWING_WIN32

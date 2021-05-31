@@ -51,7 +51,7 @@ G_BEGIN_DECLS
  *
  * An enum for specifying which features the print dialog should offer.
  * If neither %CTK_PRINT_CAPABILITY_GENERATE_PDF nor
- * %CTK_PRINT_CAPABILITY_GENERATE_PS is specified, GTK+ assumes that all
+ * %CTK_PRINT_CAPABILITY_GENERATE_PS is specified, CTK+ assumes that all
  * formats are supported.
  */
 typedef enum

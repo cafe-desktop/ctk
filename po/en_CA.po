@@ -72,7 +72,7 @@ msgstr "SCREEN"
 #: gdk/gdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
-msgstr "GTK+ debugging flags to set"
+msgstr "CTK+ debugging flags to set"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
@@ -86,7 +86,7 @@ msgstr "FLAGS"
 #: gdk/gdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "GTK+ debugging flags to unset"
+msgstr "CTK+ debugging flags to unset"
 
 #: gdk/keyname-table.h:3940
 #, fuzzy
@@ -1298,8 +1298,8 @@ msgstr "Invalid URI"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
-msgstr "Load additional GTK+ modules"
+msgid "Load additional CTK+ modules"
+msgstr "Load additional CTK+ modules"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:527
@@ -1313,13 +1313,13 @@ msgstr "Make all warnings fatal"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+ debugging flags to set"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+ debugging flags to unset"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -1336,12 +1336,12 @@ msgid "Cannot open display: %s"
 msgstr ""
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+ Options"
+msgid "CTK+ Options"
+msgstr "CTK+ Options"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Show GTK+ Options"
+msgid "Show CTK+ Options"
+msgstr "Show CTK+ Options"
 
 #: ctk/ctkmountoperation.c:491
 #, fuzzy
@@ -2823,9 +2823,9 @@ msgstr "Serialized data is malformed"
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:60
 msgid "LRM _Left-to-right mark"
@@ -4451,10 +4451,10 @@ msgstr ""
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Image type '%s' is not supported"

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2000 Red Hat Software
  * Copyright (C) 2000 SuSE Linux Ltd
  *

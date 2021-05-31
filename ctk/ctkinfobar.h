@@ -1,6 +1,6 @@
 /*
  * ctkinfobar.h
- * This file is part of GTK+
+ * This file is part of CTK+
  *
  * Copyright (C) 2005 - Paolo Maggi
  *
@@ -23,7 +23,7 @@
  * list of people on the gedit Team.
  * See the gedit ChangeLog files for a list of changes.
  *
- * Modified by the GTK+ Team, 2008-2009.
+ * Modified by the CTK+ Team, 2008-2009.
  */
 
 #ifndef __CTK_INFO_BAR_H__

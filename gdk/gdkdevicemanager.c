@@ -139,7 +139,7 @@
  * macro buttons. Such keys can be globally set to map into normal X
  * keyboard events. The mapping is set using gdk_device_set_key().
  *
- * In GTK+ 3.20, a new #GdkSeat object has been introduced that
+ * In CTK+ 3.20, a new #GdkSeat object has been introduced that
  * supersedes #GdkDeviceManager and should be preferred in newly
  * written code.
  */
@@ -324,7 +324,7 @@ gdk_device_manager_get_display (GdkDeviceManager *device_manager)
  * Returns: (transfer container) (element-type Gdk.Device): a list of 
  *          #GdkDevices. The returned list must be
  *          freed with g_list_free (). The list elements are owned by
- *          GTK+ and must not be freed or unreffed.
+ *          CTK+ and must not be freed or unreffed.
  *
  * Since: 3.0
  *

@@ -58,7 +58,7 @@
  * ]|
  *
  * Furthermore for implementations of CtkCellLayout that use a #CtkCellArea
- * to lay out cells (all CtkCellLayouts in GTK+ use a CtkCellArea)
+ * to lay out cells (all CtkCellLayouts in CTK+ use a CtkCellArea)
  * [cell properties][cell-properties] can also be defined in the format by
  * specifying the custom <cell-packing> attribute which can contain multiple
  * <property> elements defined in the normal way.

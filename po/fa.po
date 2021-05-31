@@ -2874,8 +2874,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "پیمانه‌های ‪GTK+‬ بیشتری بار شود"
+msgid "Load additional CTK+ modules"
+msgstr "پیمانه‌های ‪CTK+‬ بیشتری بار شود"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2889,13 +2889,13 @@ msgstr "تبدیل همهٔ اخطارها به مهلک"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "پرچم‌های اشکال‌زدایی ‪GTK+‬ که باید تنظیم شوند"
+msgid "CTK+ debugging flags to set"
+msgstr "پرچم‌های اشکال‌زدایی ‪CTK+‬ که باید تنظیم شوند"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "پرچم‌های اشکال‌زدایی ‪GTK+‬ که باید از تنظیم خارج شوند"
+msgid "CTK+ debugging flags to unset"
+msgstr "پرچم‌های اشکال‌زدایی ‪CTK+‬ که باید از تنظیم خارج شوند"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2903,12 +2903,12 @@ msgid "Cannot open display: %s"
 msgstr "ناتوان در گشودن نمایشگر: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "گزینه‌های ‪GTK+"
+msgid "CTK+ Options"
+msgstr "گزینه‌های ‪CTK+"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "نمایش گزینه‌های ‪GTK+"
+msgid "Show CTK+ Options"
+msgstr "نمایش گزینه‌های ‪CTK+"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3920,8 +3920,8 @@ msgstr "دادهٔ متوالی شده بد‌ریخت است"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
-msgstr "دادهٔ متوالی شده بد‌ریخت است. اولین بخش GTKTEXTBUFFERCONTENTS-0001 نیست"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
+msgstr "دادهٔ متوالی شده بد‌ریخت است. اولین بخش CTKTEXTBUFFERCONTENTS-0001 نیست"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4000,18 +4000,18 @@ msgstr "همیشه در بالا"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "آیا میخواهید از بازرس +GTK استفاده کنید؟"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "آیا میخواهید از بازرس +CTK استفاده کنید؟"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify the "
-"internals of any GTK+ application. Using it may cause the application to break "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify the "
+"internals of any CTK+ application. Using it may cause the application to break "
 "or crash."
 msgstr ""
-"بازرس +GTK یک بازرس تعاملی است که به شما اجازه پیمایش و تغییر هسته برنامه‌های "
-"+GTK را می‌دهد. استفاده از آن ممکن است باعث شود که برنامه‌ها قفل کنند یا از هم "
+"بازرس +CTK یک بازرس تعاملی است که به شما اجازه پیمایش و تغییر هسته برنامه‌های "
+"+CTK را می‌دهد. استفاده از آن ممکن است باعث شود که برنامه‌ها قفل کنند یا از هم "
 "بپاشند."
 
 #: ctk/ctkwindow.c:12784
@@ -4041,8 +4041,8 @@ msgid "Parameter Type"
 msgstr "نوع پارامتر"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "در اینجا می‌توانید هر نوع قاعدهٔ CSS قابل شناسایی برای +GTK را وارد کنید."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "در اینجا می‌توانید هر نوع قاعدهٔ CSS قابل شناسایی برای +CTK را وارد کنید."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4103,8 +4103,8 @@ msgid "None"
 msgstr "هیچ‌کدام"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "نسخهٔ GTK+"
+msgid "CTK+ Version"
+msgstr "نسخهٔ CTK+"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4494,8 +4494,8 @@ msgid "GL rendering is disabled"
 msgstr "رندر GL غیرفعال است"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "تم GTK+"
+msgid "CTK+ Theme"
+msgstr "تم CTK+"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -8843,10 +8843,10 @@ msgstr "چاپ به چاپگر آزمایشی"
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps it's "
-#~ "from a different GTK version?"
+#~ "from a different CTK version?"
 #~ msgstr ""
 #~ "پیمانه‌ی بار کردن پرونده %s رابط مناسب را صادر نمی‌کند؛ شاید از نسخه‌ی دیگری از "
-#~ "GTK است؟"
+#~ "CTK است؟"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "تصویر نوع «%s» پشتیبانی نمی‌شود"

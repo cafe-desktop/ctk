@@ -6785,12 +6785,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "아이콘 크기 목록(ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK 모듈"
+msgid "CTK Modules"
+msgstr "CTK 모듈"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "현재 활성화한 GTK 모듈 목록"
+msgid "List of currently active CTK modules"
+msgstr "현재 활성화한 CTK 모듈 목록"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7331,9 +7331,9 @@ msgstr "대화 상자에서 헤더 막대 사용"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
-msgstr "내장 GTK+ 대화 상자가 동작 모음 대신 헤더 막대를 사용할지 여부."
+msgstr "내장 CTK+ 대화 상자가 동작 모음 대신 헤더 막대를 사용할지 여부."
 
 #: ctk/ctksettings.c:1724
 msgid "Enable primary paste"
@@ -7352,8 +7352,8 @@ msgid "Recent Files Enabled"
 msgstr "최근 파일 사용"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "GTK+에서 최근 파일을 저장할지 여부"
+msgid "Whether CTK+ remembers recent files"
+msgstr "CTK+에서 최근 파일을 저장할지 여부"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

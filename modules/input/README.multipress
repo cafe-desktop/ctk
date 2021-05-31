@@ -1,8 +1,8 @@
 *** Introduction
 
-This is a GTK+ input method which allows text entry via the multi-press method, 
+This is a CTK+ input method which allows text entry via the multi-press method, 
 as on a mobile phone. When this has been installed, you can choose the "Multipress" 
-menu item from the "Input Methods" submenu when right-clicking in a GTK+ text entry 
+menu item from the "Input Methods" submenu when right-clicking in a CTK+ text entry 
 area. 
 
 For instance:

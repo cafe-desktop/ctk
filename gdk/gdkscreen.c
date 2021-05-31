@@ -41,7 +41,7 @@
  * nowadays it is more common to have a single #GdkScreen which
  * combines several physical monitors (see gdk_screen_get_n_monitors()).
  *
- * GdkScreen is used throughout GDK and GTK+ to specify which screen
+ * GdkScreen is used throughout GDK and CTK+ to specify which screen
  * the top level windows are to be displayed on. it is also used to
  * query the screen specification and default settings such as
  * the default visual (gdk_screen_get_system_visual()), the dimensions
@@ -956,7 +956,7 @@ gdk_screen_get_system_visual (GdkScreen * screen)
  * @screen: a #GdkScreen
  *
  * Gets a visual to use for creating windows with an alpha channel.
- * The windowing system on which GTK+ is running
+ * The windowing system on which CTK+ is running
  * may not support this capability, in which case %NULL will
  * be returned. Even if a non-%NULL value is returned, its
  * possible that the window’s alpha channel won’t be honored

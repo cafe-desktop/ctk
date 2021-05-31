@@ -104,7 +104,7 @@ gdk_quartz_events_init_notifications (void)
     return;
   notifications_initialized = TRUE;
 
-  /* Initialize any handlers for notifications we want to push to GTK
+  /* Initialize any handlers for notifications we want to push to CTK
    * through GdkEventSettings.
    */
 

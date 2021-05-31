@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkpagesetup.h: Page Setup
  * Copyright (C) 2006, Red Hat, Inc.
  *

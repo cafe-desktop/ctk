@@ -1,7 +1,7 @@
 /* Color Chooser
  *
  * A CtkColorChooser lets the user choose a color. There are several
- * implementations of the CtkColorChooser interface in GTK+. The
+ * implementations of the CtkColorChooser interface in CTK+. The
  * CtkColorChooserDialog is a prebuilt dialog containing a
  * CtkColorChooserWidget.
  */

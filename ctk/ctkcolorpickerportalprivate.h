@@ -1,5 +1,5 @@
 /*
- * GTK - The GIMP Toolkit
+ * CTK - The GIMP Toolkit
  * Copyright (C) 2018 Red Hat, Inc.
  * All rights reserved.
  *
@@ -31,7 +31,7 @@ G_BEGIN_DECLS
 
 
 #define CTK_TYPE_COLOR_PICKER_PORTAL ctk_color_picker_portal_get_type ()
-G_DECLARE_FINAL_TYPE (CtkColorPickerPortal, ctk_color_picker_portal, GTK, COLOR_PICKER_PORTAL, GObject)
+G_DECLARE_FINAL_TYPE (CtkColorPickerPortal, ctk_color_picker_portal, CTK, COLOR_PICKER_PORTAL, GObject)
 
 GDK_AVAILABLE_IN_ALL
 CtkColorPicker * ctk_color_picker_portal_new (void);

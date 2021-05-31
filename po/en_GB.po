@@ -1,5 +1,5 @@
 # English (British) translation
-# Copyright (C) 2004 GTK+'s COPYRIGHT HOLDER
+# Copyright (C) 2004 CTK+'s COPYRIGHT HOLDER
 # This file is distributed under the same licence as the ctk+ package.
 # Abigail Brady <morwen@evilmagic.org>, Gareth Owen <gowen72@yahoo.com> 2004
 # Philip Withnall <philip@tecnocode.co.uk>, 2010, 2012.
@@ -2764,8 +2764,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Load additional GTK modules"
+msgid "Load additional CTK+ modules"
+msgstr "Load additional CTK modules"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2779,13 +2779,13 @@ msgstr "Make all warnings fatal"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "GTK debugging flags to set"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK debugging flags to set"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK debugging flags to unset"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2793,12 +2793,12 @@ msgid "Cannot open display: %s"
 msgstr "Cannot open display: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK Options"
+msgid "CTK+ Options"
+msgstr "CTK Options"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Show GTK Options"
+msgid "Show CTK+ Options"
+msgstr "Show CTK Options"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3815,9 +3815,9 @@ msgstr "Serialised data is malformed"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
-"Serialised data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialised data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3896,18 +3896,18 @@ msgstr "Always on Top"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Do you want to use GTK Inspector?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Do you want to use CTK Inspector?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK application. Using it may cause the application to "
+"CTK Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK application. Using it may cause the application to "
 "break or crash."
 
 #: ctk/ctkwindow.c:12784
@@ -3937,8 +3937,8 @@ msgid "Parameter Type"
 msgstr "Parameter Type"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "You can type here any CSS rule recognised by GTK."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "You can type here any CSS rule recognised by CTK."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -3997,8 +3997,8 @@ msgid "None"
 msgstr "None"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK Version"
+msgid "CTK+ Version"
+msgstr "CTK Version"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4386,8 +4386,8 @@ msgid "GL rendering is disabled"
 msgstr "GL rendering is disabled"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK Theme"
+msgid "CTK+ Theme"
+msgstr "CTK Theme"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -8461,8 +8461,8 @@ msgstr "Print to Test Printer"
 #~ msgid "Count:"
 #~ msgstr "Count:"
 
-#~ msgid "GTK+ Inspector — %s"
-#~ msgstr "GTK+ Inspector — %s"
+#~ msgid "CTK+ Inspector — %s"
+#~ msgstr "CTK+ Inspector — %s"
 
 #~ msgid "Send Widget to Shell"
 #~ msgstr "Send Widget to Shell"
@@ -8853,10 +8853,10 @@ msgstr "Print to Test Printer"
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Image-loading module %s does not export the correct interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Image type '%s' is not supported"

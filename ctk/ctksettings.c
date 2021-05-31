@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -76,7 +76,7 @@
  * [XSettings](http://www.freedesktop.org/wiki/Specifications/xsettings-spec)
  * manager that is usually part of the desktop environment, along with
  * utilities that let the user change these settings. In the absence of
- * an Xsettings manager, GTK+ reads default values for settings from
+ * an Xsettings manager, CTK+ reads default values for settings from
  * `settings.ini` files in
  * `/etc/ctk-3.0`, `$XDG_CONFIG_DIRS/ctk-3.0`
  * and `$XDG_CONFIG_HOME/ctk-3.0`.
@@ -537,7 +537,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
   /**
    * CtkSettings:ctk-font-name:
    *
-   * The default font to use. GTK+ uses the family name and size from this string.
+   * The default font to use. CTK+ uses the family name and size from this string.
    */
   result = settings_install_property_parser (class,
                                              g_param_spec_string ("ctk-font-name",
@@ -557,7 +557,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * `size-name` = `width` , `height`
    *
    * E.g. "ctk-menu=16,16:ctk-button=20,20:ctk-dialog=48,48".
-   * GTK+ itself use the following named icon sizes: ctk-menu,
+   * CTK+ itself use the following named icon sizes: ctk-menu,
    * ctk-button, ctk-small-toolbar, ctk-large-toolbar, ctk-dnd,
    * ctk-dialog. Applications can register their own named icon
    * sizes with ctk_icon_size_register().
@@ -575,8 +575,8 @@ ctk_settings_class_init (CtkSettingsClass *class)
 
   result = settings_install_property_parser (class,
                                              g_param_spec_string ("ctk-modules",
-                                                                  P_("GTK Modules"),
-                                                                  P_("List of currently active GTK modules"),
+                                                                  P_("CTK Modules"),
+                                                                  P_("List of currently active CTK modules"),
                                                                   NULL,
                                                                   CTK_PARAM_READWRITE),
                                              NULL);
@@ -769,7 +769,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * merged, color specifications will be converted to hexadecimal form
    * when getting this property.
    *
-   * Starting with GTK+ 2.12, the entries can alternatively be separated
+   * Starting with CTK+ 2.12, the entries can alternatively be separated
    * by ';' instead of newlines:
    * |[
    * name1: color1; name2: color2; ...
@@ -997,7 +997,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * CtkSettings:ctk-print-backends:
    *
    * A comma-separated list of print backends to use in the print
-   * dialog. Available print backends depend on the GTK+ installation,
+   * dialog. Available print backends depend on the CTK+ installation,
    * and may include "file", "cups", "lpr" or "papi".
    *
    * Since: 2.10
@@ -1099,7 +1099,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * Which IM (input method) module should be used by default. This is the
    * input method that will be used if the user has not explicitly chosen
    * another input method from the IM context menu.
-   * This also can be a colon-separated list of input methods, which GTK+
+   * This also can be a colon-separated list of input methods, which CTK+
    * will try in turn until it finds one available on the system.
    *
    * See #CtkIMContext.
@@ -1151,7 +1151,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * See the [Sound Theme Specifications](http://www.freedesktop.org/wiki/Specifications/sound-theme-spec)
    * for more information on event sounds and sound themes.
    *
-   * GTK+ itself does not support event sounds, you have to use a loadable
+   * CTK+ itself does not support event sounds, you have to use a loadable
    * module like the one that comes with libcanberra.
    *
    * Since: 2.14
@@ -1173,7 +1173,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * See the [Sound Theme Specifications](http://www.freedesktop.org/wiki/Specifications/sound-theme-spec)
    * for more information on event sounds and sound themes.
    *
-   * GTK+ itself does not support event sounds, you have to use a loadable
+   * CTK+ itself does not support event sounds, you have to use a loadable
    * module like the one that comes with libcanberra.
    *
    * Since: 2.14
@@ -1196,7 +1196,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * See the [Sound Theme Specifications](http://www.freedesktop.org/wiki/Specifications/sound-theme-spec)
    * for more information on event sounds and sound themes.
    *
-   * GTK+ itself does not support event sounds, you have to use a loadable
+   * CTK+ itself does not support event sounds, you have to use a loadable
    * module like the one that comes with libcanberra.
    *
    * Since: 2.14
@@ -1290,7 +1290,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * slider/value to move by the range’s page-size towards the point clicked.
    *
    * Whichever action you choose for the primary button, the other action will
-   * be available by holding Shift and primary-clicking, or (since GTK+ 3.22.25)
+   * be available by holding Shift and primary-clicking, or (since CTK+ 3.22.25)
    * clicking the middle mouse button.
    *
    * Since: 3.6
@@ -1327,7 +1327,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
   /**
    * CtkSettings:ctk-application-prefer-dark-theme:
    *
-   * Whether the application prefers to use a dark theme. If a GTK+ theme
+   * Whether the application prefers to use a dark theme. If a CTK+ theme
    * includes a dark variant, it will be used instead of the configured
    * theme.
    *
@@ -1693,7 +1693,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
   /**
    * CtkSettings:ctk-dialogs-use-header:
    *
-   * Whether builtin GTK+ dialogs such as the file chooser, the
+   * Whether builtin CTK+ dialogs such as the file chooser, the
    * color chooser or the font chooser will use a header bar at
    * the top to show action widgets, or an action area at the bottom.
    *
@@ -1705,7 +1705,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
   result = settings_install_property_parser (class,
                                              g_param_spec_boolean ("ctk-dialogs-use-header",
                                                                    P_("Dialogs use header bar"),
-                                                                   P_("Whether builtin GTK+ dialogs should use a header bar instead of an action area."),
+                                                                   P_("Whether builtin CTK+ dialogs should use a header bar instead of an action area."),
                                                                    FALSE,
                                                                    CTK_PARAM_READWRITE),
                                              NULL);
@@ -1731,7 +1731,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
   /**
    * CtkSettings:ctk-recent-files-enabled:
    *
-   * Whether GTK+ should keep track of items inside the recently used
+   * Whether CTK+ should keep track of items inside the recently used
    * resources list. If set to %FALSE, the list will always be empty.
    *
    * Since: 3.8
@@ -1739,7 +1739,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
   result = settings_install_property_parser (class,
                                              g_param_spec_boolean ("ctk-recent-files-enabled",
                                                                    P_("Recent Files Enabled"),
-                                                                   P_("Whether GTK+ remembers recent files"),
+                                                                   P_("Whether CTK+ remembers recent files"),
                                                                    TRUE,
                                                                    CTK_PARAM_READWRITE),
                                              NULL);
@@ -1764,7 +1764,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
   /**
    * CtkSettings:ctk-keynav-use-caret:
    *
-   * Whether GTK+ should make sure that text can be navigated with
+   * Whether CTK+ should make sure that text can be navigated with
    * a caret, even if it is not editable. This is useful when using
    * a screen reader.
    *
@@ -2384,7 +2384,7 @@ _ctk_rc_property_parser_from_type (GType type)
  * ctk_settings_install_property:
  * @pspec:
  *
- * Deprecated: 3.16: This function is not useful outside GTK+.
+ * Deprecated: 3.16: This function is not useful outside CTK+.
  */
 void
 ctk_settings_install_property (GParamSpec *pspec)
@@ -2408,7 +2408,7 @@ ctk_settings_install_property (GParamSpec *pspec)
  * @pspec:
  * @parser: (scope call):
  *
- * Deprecated: 3.16: This function is not useful outside GTK+.
+ * Deprecated: 3.16: This function is not useful outside CTK+.
  */
 void
 ctk_settings_install_property_parser (GParamSpec          *pspec,

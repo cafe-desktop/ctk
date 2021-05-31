@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -18,10 +18,10 @@
 /* By Owen Taylor <otaylor@ctk.org>              98/4/4 */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -96,7 +96,7 @@
  * If it returns a non-%NULL value, then the plug has been
  * successfully created inside of the socket.
  *
- * When GTK+ is notified that the embedded window has been destroyed,
+ * When CTK+ is notified that the embedded window has been destroyed,
  * then it will destroy the socket as well. You should always,
  * therefore, be prepared for your sockets to be destroyed at any
  * time when the main event loop is running. To prevent this from
@@ -106,9 +106,9 @@
  * [XEmbed Protocol](http://www.freedesktop.org/Standards/xembed-spec).
  * This protocol has also been implemented in other toolkits, e.g. Qt,
  * allowing the same level of integration when embedding a Qt widget
- * in GTK or vice versa.
+ * in CTK or vice versa.
  *
- * The #CtkPlug and #CtkSocket widgets are only available when GTK+
+ * The #CtkPlug and #CtkSocket widgets are only available when CTK+
  * is compiled for the X11 platform and %GDK_WINDOWING_X11 is defined.
  * They can only be used on a #GdkX11Display. To use #CtkPlug and
  * #CtkSocket, you need to include the `ctk/ctkx.h` header.

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_DIALOG_H__
@@ -55,19 +55,19 @@ typedef enum
  * CtkResponseType:
  * @CTK_RESPONSE_NONE: Returned if an action widget has no response id,
  *     or if the dialog gets programmatically hidden or destroyed
- * @CTK_RESPONSE_REJECT: Generic response id, not used by GTK+ dialogs
- * @CTK_RESPONSE_ACCEPT: Generic response id, not used by GTK+ dialogs
+ * @CTK_RESPONSE_REJECT: Generic response id, not used by CTK+ dialogs
+ * @CTK_RESPONSE_ACCEPT: Generic response id, not used by CTK+ dialogs
  * @CTK_RESPONSE_DELETE_EVENT: Returned if the dialog is deleted
- * @CTK_RESPONSE_OK: Returned by OK buttons in GTK+ dialogs
- * @CTK_RESPONSE_CANCEL: Returned by Cancel buttons in GTK+ dialogs
- * @CTK_RESPONSE_CLOSE: Returned by Close buttons in GTK+ dialogs
- * @CTK_RESPONSE_YES: Returned by Yes buttons in GTK+ dialogs
- * @CTK_RESPONSE_NO: Returned by No buttons in GTK+ dialogs
- * @CTK_RESPONSE_APPLY: Returned by Apply buttons in GTK+ dialogs
- * @CTK_RESPONSE_HELP: Returned by Help buttons in GTK+ dialogs
+ * @CTK_RESPONSE_OK: Returned by OK buttons in CTK+ dialogs
+ * @CTK_RESPONSE_CANCEL: Returned by Cancel buttons in CTK+ dialogs
+ * @CTK_RESPONSE_CLOSE: Returned by Close buttons in CTK+ dialogs
+ * @CTK_RESPONSE_YES: Returned by Yes buttons in CTK+ dialogs
+ * @CTK_RESPONSE_NO: Returned by No buttons in CTK+ dialogs
+ * @CTK_RESPONSE_APPLY: Returned by Apply buttons in CTK+ dialogs
+ * @CTK_RESPONSE_HELP: Returned by Help buttons in CTK+ dialogs
  *
  * Predefined values for use as response ids in ctk_dialog_add_button().
- * All predefined values are negative; GTK+ leaves values of 0 or greater for
+ * All predefined values are negative; CTK+ leaves values of 0 or greater for
  * application-defined response ids.
  */
 typedef enum

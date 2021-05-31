@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_WIDGET_H__
@@ -183,7 +183,7 @@ struct _CtkWidget
  * @direction_changed: Signal emitted when the text direction of a
  *   widget changes.
  * @grab_notify: Signal emitted when a widget becomes shadowed by a
- *   GTK+ grab (not a pointer or keyboard grab) on another widget, or
+ *   CTK+ grab (not a pointer or keyboard grab) on another widget, or
  *   when it becomes unshadowed due to a grab being removed.
  * @child_notify: Signal emitted for each child property that has
  *   changed on an object.
@@ -233,7 +233,7 @@ struct _CtkWidget
  * @focus:
  * @move_focus: Signal emitted when a change of focus is requested
  * @keynav_failed: Signal emitted if keyboard navigation fails.
- * @event: The GTK+ main loop will emit three signals for each GDK
+ * @event: The CTK+ main loop will emit three signals for each GDK
  *   event delivered to a widget: one generic ::event signal, another,
  *   more specific, signal that matches the type of event delivered
  *   (e.g. "key-press-event") and finally a generic "event-after"

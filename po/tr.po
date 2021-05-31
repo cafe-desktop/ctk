@@ -2774,8 +2774,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Ek GTK+ modüllerini yükle"
+msgid "Load additional CTK+ modules"
+msgstr "Ek CTK+ modüllerini yükle"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2789,13 +2789,13 @@ msgstr "Tüm uyarıları ölümcül yap"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+ hata ayıklama bayraklarını ayarlamak için"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+ hata ayıklama bayraklarını ayarlamak için"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+ hata ayıklama bayraklarını kaldırmak için"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+ hata ayıklama bayraklarını kaldırmak için"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2803,12 +2803,12 @@ msgid "Cannot open display: %s"
 msgstr "Ekran açılamıyor: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+ Seçenekleri"
+msgid "CTK+ Options"
+msgstr "CTK+ Seçenekleri"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "GTK+ Seçeneklerini Göster"
+msgid "Show CTK+ Options"
+msgstr "CTK+ Seçeneklerini Göster"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3822,8 +3822,8 @@ msgstr "Dönüştürülen veri bozulmuş"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
-msgstr "Dönüştürülen veri bozulmuş. İlk bölüm GTKTEXTBUFFERCONTENTS-0001 değil"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
+msgstr "Dönüştürülen veri bozulmuş. İlk bölüm CTKTEXTBUFFERCONTENTS-0001 değil"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3902,17 +3902,17 @@ msgstr "Her Zaman Üstte"
 
 #: ctk/ctkwindow.c:12777
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "GTK+ denetleyicisi kullanmak istiyor musunuz?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "CTK+ denetleyicisi kullanmak istiyor musunuz?"
 
 #: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+ Denetleyicisi, dahili GTK+ uygulamalarını değiştirmeye ve araştırmaya "
+"CTK+ Denetleyicisi, dahili CTK+ uygulamalarını değiştirmeye ve araştırmaya "
 "izin veren etkileşimli bir hata ayıklayıcıdır. Bunun kullanılması "
 "uygulamanın kesilmesine ya da çökmesine neden olabilir."
 
@@ -3943,8 +3943,8 @@ msgid "Parameter Type"
 msgstr "Parametre Türü"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Burada GTK+ tarafından tanınan CSS kuralları yazabilirsiniz."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Burada CTK+ tarafından tanınan CSS kuralları yazabilirsiniz."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4004,8 +4004,8 @@ msgid "None"
 msgstr "Hiçbiri"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK+ Sürümü"
+msgid "CTK+ Version"
+msgstr "CTK+ Sürümü"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4393,8 +4393,8 @@ msgid "GL rendering is disabled"
 msgstr "GL gerçeklemesi kapatıldı"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK+ Teması"
+msgid "CTK+ Theme"
+msgstr "CTK+ Teması"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -8539,8 +8539,8 @@ msgstr "Sınama Yazıcısına Yazdır"
 #~ msgid "%d:%02d"
 #~ msgstr "%d.%02d"
 
-#~ msgid "GTK could not find a media module. Check your installation."
-#~ msgstr "GTK, ortam modülü bulamadı. Kurulumunuzu gözden geçirin."
+#~ msgid "CTK could not find a media module. Check your installation."
+#~ msgstr "CTK, ortam modülü bulamadı. Kurulumunuzu gözden geçirin."
 
 #~ msgid "Starred files"
 #~ msgstr "Yıldızlı dosyalar"

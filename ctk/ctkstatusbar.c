@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * CtkStatusbar Copyright (C) 1998 Shawn T. Amundson
  *
@@ -17,10 +17,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -48,7 +48,7 @@
  * used to simply output a message when the status changes, (when an upload
  * is complete in an FTP client, for example).
  *
- * Status bars in GTK+ maintain a stack of messages. The message at
+ * Status bars in CTK+ maintain a stack of messages. The message at
  * the top of the each bar’s stack is the one that will currently be displayed.
  *
  * Any messages added to a statusbar’s stack must specify a

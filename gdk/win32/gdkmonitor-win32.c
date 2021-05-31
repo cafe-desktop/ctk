@@ -121,7 +121,7 @@ typedef struct fixedDISPLAYCONFIG_TARGET_DEVICE_NAME
  * at the moment of writing.
  * Also, Windows Vista doesn't have these functions at all
  * (according to MSDN it does, but that is a lie), so we'd have
- * to load them manually anyway (otherwise GTK apps won't even start
+ * to load them manually anyway (otherwise CTK apps won't even start
  * on Vista).
  */
 typedef LONG
@@ -762,7 +762,7 @@ enum_monitor (HMONITOR hmonitor,
               g_ptr_array_index (data->monitors, i) = temp;
             }
 
-          /* Work area is the most important component, actively used by GTK,
+          /* Work area is the most important component, actively used by CTK,
            * but our initial list of monitor devices did not have it.
            * Any monitor devices not matched in this functions will have
            * 0-filled work area and will therefore be useless, so let them

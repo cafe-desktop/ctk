@@ -4,42 +4,42 @@
 <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
 ]>
 <chapter id="ctk-migrating-2-to-3">
-  <title>Migrating from GTK+ 2.x to GTK+ 3</title>
+  <title>Migrating from CTK+ 2.x to CTK+ 3</title>
 
   <para>
-    GTK+ 3 is a major new version of GTK+ that breaks both API and ABI
-    compared to GTK+ 2.x, which has remained API- and ABI-stable for a
+    CTK+ 3 is a major new version of CTK+ that breaks both API and ABI
+    compared to CTK+ 2.x, which has remained API- and ABI-stable for a
     long time. Thankfully, most of the changes are not hard to adapt to
     and there are a number of steps that you can take to prepare your
-    GTK+ 2.x application for the switch to GTK+ 3. After that, there's
+    CTK+ 2.x application for the switch to CTK+ 3. After that, there's
     a small number of adjustments that you may have to do when you actually
-    switch your application to build against GTK+ 3.
+    switch your application to build against CTK+ 3.
   </para>
 
   <section>
-    <title>Preparation in GTK+ 2.x</title>
+    <title>Preparation in CTK+ 2.x</title>
 
     <para>
       The steps outlined in the following sections assume that your
-      application is working with GTK+ 2.24, which is the final stable
-      release of GTK+ 2.x. It includes all the necessary APIs and tools
-      to help you port your application to GTK+ 3. If you are still using
-      an older version of GTK+ 2.x, you should first get your application
+      application is working with CTK+ 2.24, which is the final stable
+      release of CTK+ 2.x. It includes all the necessary APIs and tools
+      to help you port your application to CTK+ 3. If you are still using
+      an older version of CTK+ 2.x, you should first get your application
       to build and work with 2.24.
     </para>
 
   <section>
   <title>Do not include individual headers</title>
   <para>
-    With GTK+ 2.x it was common to include just the header files for
+    With CTK+ 2.x it was common to include just the header files for
     a few widgets that your application was using, which could lead
-    to problems with missing definitions, etc. GTK+ 3 tightens the
+    to problems with missing definitions, etc. CTK+ 3 tightens the
     rules about which header files you are allowed to include directly.
     The allowed header files are are
     <variablelist>
       <varlistentry>
         <term><filename>ctk/ctk.h</filename></term>
-        <listitem>for GTK</listitem>
+        <listitem>for CTK</listitem>
       </varlistentry>
       <varlistentry>
         <term><filename>ctk/ctkx.h</filename></term>
@@ -82,7 +82,7 @@
     Over the years, a number of functions, and in some cases, entire
     widgets have been deprecated. These deprecations are clearly spelled
     out in the API reference, with hints about the recommended replacements.
-    The API reference for GTK+ 2 also includes an
+    The API reference for CTK+ 2 also includes an
     <ulink url="https://developer.gnome.org/ctk2/2.24/api-index-deprecated.html">index</ulink> of all deprecated symbols.
   </para>
   <para>
@@ -98,20 +98,20 @@
     not well covered by the deprecation warnings. In most cases, using
     them will require you to also use deprecated functions, which will
     trigger warnings. But some things, like the %CTK_DIALOG_NO_SEPARATOR
-    flag that has disappeared in GTK+ 3, may not.
+    flag that has disappeared in CTK+ 3, may not.
   </para>
   </section>
 
   <section>
   <title>Use accessor functions instead of direct access</title>
   <para>
-    GTK+ 3 removes many implementation details and struct members from
+    CTK+ 3 removes many implementation details and struct members from
     its public headers.
   </para>
   <para>
     To ensure that your application does not have problems with this, you
     define the preprocessor symbol <literal>GSEAL_ENABLE</literal> while
-    building your application against GTK+ 2.x. This will make the compiler
+    building your application against CTK+ 2.x. This will make the compiler
     catch all uses of direct access to struct fields so that you can go
     through them one by one and replace them with a call to an accessor
     function instead.
@@ -167,8 +167,8 @@
     <para>
       Key constants have gained a <literal>_KEY_</literal> infix.
       For example, <literal>GDK_a</literal> is now
-      <literal>GDK_KEY_a</literal>.  In GTK+ 2, the old names continue
-      to be available.  In GTK+ 3 however, the old names will require
+      <literal>GDK_KEY_a</literal>.  In CTK+ 2, the old names continue
+      to be available.  In CTK+ 3 however, the old names will require
       an explicit include of the <literal>gdkkeysyms-compat.h</literal> header.
     </para>
 
@@ -229,9 +229,9 @@
   <section>
     <title>Use cairo for drawing</title>
     <para>
-      In GTK+ 3, the GDK drawing API (which closely mimics the X
+      In CTK+ 3, the GDK drawing API (which closely mimics the X
       drawing API, which is itself modeled after PostScript) has been
-      removed. All drawing in GTK+ 3 is done via cairo.
+      removed. All drawing in CTK+ 3 is done via cairo.
     </para>
     <para>
       The #GdkGC and #GdkImage objects, as well as all the functions using
@@ -391,7 +391,7 @@ ctk_color_button_get_checkered (void)
           </programlisting></informalexample>
           Note that stippling looks very outdated in UIs, and is rarely
           used in modern applications. All properties that made use of
-          stippling have been removed from GTK+ 3. Most prominently,
+          stippling have been removed from CTK+ 3. Most prominently,
           stippling is absent from text rendering, in particular #CtkTextTag.
         </para>
       </formalpara>
@@ -460,7 +460,7 @@ gdk_cairo_set_source_pixbuf() instead of cairo_set_source_surface().
   <para>
     This section outlines porting tasks that you need to tackle when
     you get to the point that you actually build your application against
-    GTK+ 3. Making it possible to prepare for these in GTK+ 2.24 would
+    CTK+ 3. Making it possible to prepare for these in CTK+ 2.24 would
     have been either impossible or impractical.
   </para>
 
@@ -468,7 +468,7 @@ gdk_cairo_set_source_pixbuf() instead of cairo_set_source_surface().
     <title>Replace size_request by get_preferred_width/height</title>
 
     <para>
-      The request-phase of the traditional GTK+ geometry management
+      The request-phase of the traditional CTK+ geometry management
       has been replaced by a more flexible height-for-width system,
       which is described in detail in the API documentation
       (see <xref linkend="geometry-management"/>). As a consequence,
@@ -671,7 +671,7 @@ ctk_fixed_get_preferred_height (CtkWidget *widget,
     <para>
       Starting with version 1.10, cairo provides a region API that is
       equivalent to the GDK region API (which was itself copied from
-      the X server). Therefore, the region API has been removed in GTK+ 3.
+      the X server). Therefore, the region API has been removed in CTK+ 3.
     </para>
     <para>
       Porting your application to the cairo region API should be a straight
@@ -716,7 +716,7 @@ ctk_fixed_get_preferred_height (CtkWidget *widget,
     <title>Replace GdkPixmap by cairo surfaces</title>
     <para>
       The #GdkPixmap object and related functions have been removed.
-      In the cairo-centric world of GTK+ 3, cairo surfaces take over
+      In the cairo-centric world of CTK+ 3, cairo surfaces take over
       the role of pixmaps.
     </para>
     <example>
@@ -775,7 +775,7 @@ g_object_unref (pixbuf);
       For drawing with cairo, it is not necessary to allocate colors, and
       a #GdkVisual provides enough information for cairo to handle colors
       in 'native' surfaces. Therefore, #GdkColormap and related functions
-      have been removed in GTK+ 3, and visuals are used instead. The
+      have been removed in CTK+ 3, and visuals are used instead. The
       colormap-handling functions of #CtkWidget (ctk_widget_set_colormap(),
       etc) have been removed and ctk_widget_set_visual() has been added.
     </para>
@@ -823,7 +823,7 @@ on_alpha_screen_changed (CtkWindow *window,
     <title>GdkDrawable is gone</title>
 
     <para>
-      #GdkDrawable has been removed in GTK+ 3, together with #GdkPixmap
+      #GdkDrawable has been removed in CTK+ 3, together with #GdkPixmap
       and #GdkImage. The only remaining drawable class is #GdkWindow.
       For dealing with image data, you should use a #cairo_surface_t or
       a #GdkPixbuf.
@@ -908,7 +908,7 @@ gdk_window_add_filter (NULL, message_filter, NULL);
 
     <para>
       The other difference to be aware of when working with event filters
-      in GTK+ 3 is that GDK now uses XI2 by default when available. That
+      in CTK+ 3 is that GDK now uses XI2 by default when available. That
       means that your application does not receive core X11 key or button
       events. Instead, all input events are delivered as XIDeviceEvents.
       As a short-term workaround for this, you can force your application
@@ -921,7 +921,7 @@ gdk_window_add_filter (NULL, message_filter, NULL);
   <section>
     <title>Backend-specific code</title>
     <para>
-      In GTK+ 2.x, GDK could only be compiled for one backend at a time,
+      In CTK+ 2.x, GDK could only be compiled for one backend at a time,
       and the %GDK_WINDOWING_X11 or %GDK_WINDOWING_WIN32 macros could
       be used to find out which one you are dealing with:
       <informalexample><programlisting>
@@ -933,7 +933,7 @@ gdk_window_add_filter (NULL, message_filter, NULL);
         /* ... win32 specific code ... */
 #endif
       </programlisting></informalexample>
-      In GTK+ 3, GDK can be built with multiple backends, and currently
+      In CTK+ 3, GDK can be built with multiple backends, and currently
       used backend has to be determined at runtime, typically using
       type-check macros on a #GdkDisplay or #GdkWindow. You still need
       to use the GDK_WINDOWING macros to only compile code referring
@@ -966,7 +966,7 @@ gdk_window_add_filter (NULL, message_filter, NULL);
       <informalexample><programlisting>
 AM_CONDITIONAL(BUILD_X11, test `$PKG_CONFIG --variable=target ctk+-2.0` = "x11")
       </programlisting></informalexample>
-      then you should now use the M4 macro provided by GTK+ itself:
+      then you should now use the M4 macro provided by CTK+ itself:
       <informalexample><programlisting>
 CTK_CHECK_BACKEND([x11], [3.0.2], [have_x11=yes], [have_x11=no])
 AM_CONDITIONAL(BUILD_x11, [test "x$have_x11" = "xyes"])
@@ -1002,7 +1002,7 @@ AM_CONDITIONAL(BUILD_x11, [test "x$have_x11" = "xyes"])
       The widget is expected to draw itself with its allocated size, which
       is available via the new ctk_widget_get_allocated_width() and
       ctk_widget_get_allocated_height() functions. It is not necessary to
-      check for ctk_widget_is_drawable(), since GTK+ already does this check
+      check for ctk_widget_is_drawable(), since CTK+ already does this check
       before emitting the #CtkWidget::draw signal.
     </para>
     <para>
@@ -1023,7 +1023,7 @@ AM_CONDITIONAL(BUILD_x11, [test "x$have_x11" = "xyes"])
       ...
       </programlisting></informalexample>
       In contrast, the #CtkWidget::draw signal handler may have to draw multiple
-      windows in one call. GTK+ has a convenience function
+      windows in one call. CTK+ has a convenience function
       ctk_cairo_should_draw_window() that can be used to find out if
       a window needs to be drawn. With that, the example above would look
       like this (note that the 'else' is gone):
@@ -1080,9 +1080,9 @@ ctk_arrow_draw (CtkWidget *widget,
     <title>CtkProgressBar orientation</title>
 
     <para>
-      In GTK+ 2.x, #CtkProgressBar and #CtkCellRendererProgress were using the
+      In CTK+ 2.x, #CtkProgressBar and #CtkCellRendererProgress were using the
       CtkProgressBarOrientation enumeration to specify their orientation and
-      direction. In GTK+ 3, both the widget and the cell renderer implement
+      direction. In CTK+ 3, both the widget and the cell renderer implement
       #CtkOrientable, and have an additional 'inverted' property to determine
       their direction. Therefore, a call to ctk_progress_bar_set_orientation()
       needs to be replaced by a pair of calls to
@@ -1094,7 +1094,7 @@ ctk_arrow_draw (CtkWidget *widget,
           <colspec colname="2"/>
           <colspec colname="3"/>
           <thead>
-            <row><entry>GTK+ 2.x</entry><entry namest="2" nameend="3">GTK+ 3</entry></row>
+            <row><entry>CTK+ 2.x</entry><entry namest="2" nameend="3">CTK+ 3</entry></row>
             <row><entry>CtkProgressBarOrientation</entry><entry>CtkOrientation</entry><entry>inverted</entry></row>
           </thead>
           <tbody>
@@ -1112,8 +1112,8 @@ ctk_arrow_draw (CtkWidget *widget,
     <title>Check your expand and fill flags</title>
 
     <para>
-      The behaviour of expanding widgets has changed slightly in GTK+ 3,
-      compared to GTK+ 2.x. It is now 'inherited', i.e. a container that
+      The behaviour of expanding widgets has changed slightly in CTK+ 3,
+      compared to CTK+ 2.x. It is now 'inherited', i.e. a container that
       has an expanding child is considered expanding itself. This is often
       the desired behaviour. In places where you don't want this to happen,
       setting the container explicity as not expanding will stop the
@@ -1150,7 +1150,7 @@ ctk_arrow_draw (CtkWidget *widget,
     <title>CtkObject is gone</title>
 
     <para>
-      CtkObject has been removed in GTK+ 3. Its remaining functionality,
+      CtkObject has been removed in CTK+ 3. Its remaining functionality,
       the ::destroy signal, has been moved to CtkWidget. If you have non-widget
       classes that are directly derived from CtkObject, you have to make
       them derive from #GInitiallyUnowned (or, if you don't need the floating
@@ -1177,9 +1177,9 @@ ctk_arrow_draw (CtkWidget *widget,
       If your program used functions like ctk_object_get or ctk_object_set,
       these can be replaced directly with g_object_get or g_object_set. In
       fact, most every ctk_object_* function can be replaced with the
-      corresponding g_object_ function, even in GTK+ 2 code. The one exception
+      corresponding g_object_ function, even in CTK+ 2 code. The one exception
       to this rule is ctk_object_destroy, which can be replaced with
-      ctk_widget_destroy, again in both GTK+ 2 and GTK+ 3.
+      ctk_widget_destroy, again in both CTK+ 2 and CTK+ 3.
     </para>
   </section>
 
@@ -1190,7 +1190,7 @@ ctk_arrow_draw (CtkWidget *widget,
       The #CtkEntryCompletion::match-selected and
       #CtkEntryCompletion::cursor-on-match signals were erroneously
       given the internal filter model instead of the users model.
-      This oversight has been fixed in GTK+ 3; if you have handlers
+      This oversight has been fixed in CTK+ 3; if you have handlers
       for these signals, they will likely need slight adjustments.
     </para>
   </section>
@@ -1207,9 +1207,9 @@ ctk_arrow_draw (CtkWidget *widget,
      ctk_window_set_has_resize_grip() and ctk_window_get_has_resize_grip().
     </para>
     <para>
-     In more recent versions of GTK+ 3, the resize grip functionality has
+     In more recent versions of CTK+ 3, the resize grip functionality has
      been removed entirely, in favor of invisible resize borders around the
-     window. When updating to newer versions of GTK+ 3, you should simply
+     window. When updating to newer versions of CTK+ 3, you should simply
      remove all code dealing with resize grips.
     </para>
   </section>
@@ -1217,55 +1217,55 @@ ctk_arrow_draw (CtkWidget *widget,
   <section>
     <title>Prevent mixed linkage</title>
     <para>
-      Linking against GTK+ 2.x and GTK+ 3 in the same process is problematic
+      Linking against CTK+ 2.x and CTK+ 3 in the same process is problematic
       and can lead to hard-to-diagnose crashes. The ctk_init() function in
-      both GTK+ 2.22 and in GTK+ 3 tries to detect this situation and abort
+      both CTK+ 2.22 and in CTK+ 3 tries to detect this situation and abort
       with a diagnostic message, but this check is not 100% reliable (e.g. if
       the problematic linking happens only in loadable modules).
     </para>
     <para>
-      Direct linking of your application against both versions of GTK+ is
+      Direct linking of your application against both versions of CTK+ is
       easy to avoid; the problem gets harder when your application is using
-      libraries that are themselves linked against some version of GTK+.
+      libraries that are themselves linked against some version of CTK+.
       In that case, you have to verify that you are using a version of the
-      library that is linked against GTK+ 3.
+      library that is linked against CTK+ 3.
     </para>
     <para>
       If you are using packages provided by a distributor, it is likely that
-      parallel installable versions of the library exist for GTK+ 2.x and
-      GTK+ 3, e.g for vte, check for vte3; for webkitctk look for webkitctk3,
+      parallel installable versions of the library exist for CTK+ 2.x and
+      CTK+ 3, e.g for vte, check for vte3; for webkitctk look for webkitctk3,
       and so on.
     </para>
   </section>
 
   <section>
-  <title>Install GTK+ modules in the right place</title>
+  <title>Install CTK+ modules in the right place</title>
   <para>
-    Some software packages install loadable GTK+ modules such as theme engines,
-    gdk-pixbuf loaders or input methods. Since GTK+ 3 is parallel-installable
-    with GTK+ 2.x, the two GTK+ versions have separate locations for their
-    loadable modules. The location for GTK+ 2.x is
+    Some software packages install loadable CTK+ modules such as theme engines,
+    gdk-pixbuf loaders or input methods. Since CTK+ 3 is parallel-installable
+    with CTK+ 2.x, the two CTK+ versions have separate locations for their
+    loadable modules. The location for CTK+ 2.x is
     <filename><replaceable>libdir</replaceable>/ctk-2.0</filename>
-    (and its subdirectories), for GTK+ 3 the location is
+    (and its subdirectories), for CTK+ 3 the location is
     <filename><replaceable>libdir</replaceable>/ctk-3.0</filename>
     (and its subdirectories).
   </para>
   <para>
     For some kinds of modules, namely input methods and pixbuf loaders,
-    GTK+ keeps a cache file with extra information about the modules.
-    For GTK+ 2.x, these cache files are located in
+    CTK+ keeps a cache file with extra information about the modules.
+    For CTK+ 2.x, these cache files are located in
     <filename><replaceable>sysconfdir</replaceable>/ctk-2.0</filename>.
-    For GTK+ 3, they have been moved to
+    For CTK+ 3, they have been moved to
     <filename><replaceable>libdir</replaceable>/ctk-3.0/3.0.0/</filename>.
     The commands that create these cache files have been renamed with a -3
     suffix to make them parallel-installable.
   </para>
   <para>
-    Note that GTK+ modules often link against libctk, libgdk-pixbuf, etc.
+    Note that CTK+ modules often link against libctk, libgdk-pixbuf, etc.
     If that is the case for your module, you have to be careful to link the
-    GTK+ 2.x version of your module against the 2.x version of the libraries,
-    and the GTK+ 3 version against hte 3.x versions. Loading a module linked
-    against libctk 2.x into an application using GTK+ 3 will lead to
+    CTK+ 2.x version of your module against the 2.x version of the libraries,
+    and the CTK+ 3 version against hte 3.x versions. Loading a module linked
+    against libctk 2.x into an application using CTK+ 3 will lead to
     unhappiness and must be avoided.
   </para>
   </section>

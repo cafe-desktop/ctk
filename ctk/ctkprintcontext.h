@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkprintcontext.h: Print Context
  * Copyright (C) 2006, Red Hat, Inc.
  *

@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 2001 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -71,7 +71,7 @@
  * show an icon you are strongly encouraged to use a #CtkMenuItem
  * with a #CtkImage instead.
  *
- * #CtkImageMenuItem has been deprecated since GTK+ 3.10. If you want to
+ * #CtkImageMenuItem has been deprecated since CTK+ 3.10. If you want to
  * display an icon in a menu item, you should use #CtkMenuItem and pack a
  * #CtkBox with a #CtkImage and a #CtkLabel instead. You should also consider
  * using #CtkBuilder and the XML #GMenu description for creating menus, by

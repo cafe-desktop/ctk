@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfontchooser.c - Abstract interface for font file selectors GUIs
  *
  * Copyright (C) 2006, Emmanuele Bassi
@@ -33,10 +33,10 @@
  * @See_also: #CtkFontChooserDialog, #CtkFontChooserWidget, #CtkFontButton
  *
  * #CtkFontChooser is an interface that can be implemented by widgets
- * displaying the list of fonts. In GTK+, the main objects
+ * displaying the list of fonts. In CTK+, the main objects
  * that implement this interface are #CtkFontChooserWidget,
  * #CtkFontChooserDialog and #CtkFontButton. The CtkFontChooser interface
- * has been introducted in GTK+ 3.2.
+ * has been introducted in CTK+ 3.2.
  */
 
 enum
@@ -488,7 +488,7 @@ _ctk_font_chooser_font_activated (CtkFontChooser *chooser,
  * ctk_font_chooser_set_font_map (font_chooser, fontmap);
  * ]|
  *
- * Note that other GTK+ widgets will only be able to use the application-specific
+ * Note that other CTK+ widgets will only be able to use the application-specific
  * font if it is present in the font map they use:
  *
  * |[

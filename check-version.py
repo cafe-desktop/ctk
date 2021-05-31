@@ -163,7 +163,7 @@ with open(configure_ac, 'r') as f:
             break
         line = f.readline()
 
-print(f'GTK version defined in {configure_ac}: {version["major"]}.{version["minor"]}.{version["micro"]} (age: {version["age"]})')
+print(f'CTK version defined in {configure_ac}: {version["major"]}.{version["minor"]}.{version["micro"]} (age: {version["age"]})')
 
 configure_version = version
 version = {}
@@ -189,7 +189,7 @@ with open(meson_build, 'r') as f:
             break
         line = f.readline()
 
-print(f'GTK version defined in {meson_build}: {version["major"]}.{version["minor"]}.{version["micro"]} (age: {version["age"]})')
+print(f'CTK version defined in {meson_build}: {version["major"]}.{version["minor"]}.{version["micro"]} (age: {version["age"]})')
 
 meson_version = version
 

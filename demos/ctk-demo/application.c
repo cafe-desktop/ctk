@@ -200,20 +200,20 @@ activate_about (GSimpleAction *action,
   };
 
   ctk_show_about_dialog (CTK_WINDOW (window),
-                         "program-name", "GTK+ Code Demos",
-                         "version", g_strdup_printf ("%s,\nRunning against GTK+ %d.%d.%d",
+                         "program-name", "CTK+ Code Demos",
+                         "version", g_strdup_printf ("%s,\nRunning against CTK+ %d.%d.%d",
                                                      PACKAGE_VERSION,
                                                      ctk_get_major_version (),
                                                      ctk_get_minor_version (),
                                                      ctk_get_micro_version ()),
-                         "copyright", "(C) 1997-2013 The GTK+ Team",
+                         "copyright", "(C) 1997-2013 The CTK+ Team",
                          "license-type", CTK_LICENSE_LGPL_2_1,
                          "website", "http://www.ctk.org",
-                         "comments", "Program to demonstrate GTK+ functions.",
+                         "comments", "Program to demonstrate CTK+ functions.",
                          "authors", authors,
                          "documenters", documentors,
                          "logo-icon-name", "ctk3-demo",
-                         "title", "About GTK+ Code Demos",
+                         "title", "About CTK+ Code Demos",
                          NULL);
 }
 

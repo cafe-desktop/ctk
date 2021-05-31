@@ -6850,12 +6850,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Ikonas izmēru saraksts (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:578
-msgid "GTK Modules"
-msgstr "GTK moduļi"
+msgid "CTK Modules"
+msgstr "CTK moduļi"
 
 #: ctk/ctksettings.c:579
-msgid "List of currently active GTK modules"
-msgstr "Pašlaik aktīvo GTK moduļu saraksts"
+msgid "List of currently active CTK modules"
+msgstr "Pašlaik aktīvo CTK moduļu saraksts"
 
 #: ctk/ctksettings.c:587
 msgid "Xft Antialias"
@@ -7413,10 +7413,10 @@ msgstr "Dialoglodziņi izmanto virsraksta joslu"
 
 #: ctk/ctksettings.c:1708
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Vai iebūvētajiem GTK+ dialoglodziņiem vajadzētu izmantot virsraksta joslu, "
+"Vai iebūvētajiem CTK+ dialoglodziņiem vajadzētu izmantot virsraksta joslu, "
 "nevis darbības laukumu."
 
 #: ctk/ctksettings.c:1724
@@ -7436,8 +7436,8 @@ msgid "Recent Files Enabled"
 msgstr "Aktivēts “Nesen lietotās datnes”"
 
 #: ctk/ctksettings.c:1742
-msgid "Whether GTK+ remembers recent files"
-msgstr "Vai GTK+ atceras nesen lietotās datnes"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Vai CTK+ atceras nesen lietotās datnes"
 
 #: ctk/ctksettings.c:1757
 msgid "Long press time"

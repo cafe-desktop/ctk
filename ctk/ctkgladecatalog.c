@@ -38,7 +38,7 @@ void ctk_glade_catalog_init (const gchar *catalog_name);
 
 /* This function is referred to in ctk/glade/ctk-private-widgets.xml
  * and is used to ensure the private types for use in Glade while
- * editing UI files that define GTK+’s various composite widget classes.
+ * editing UI files that define CTK+’s various composite widget classes.
  */
 void
 ctk_glade_catalog_init (const gchar *catalog_name)

@@ -7039,12 +7039,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Λίστα μεγεθών εικονιδίου (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:568
-msgid "GTK Modules"
-msgstr "Αρθρώματα GTK"
+msgid "CTK Modules"
+msgstr "Αρθρώματα CTK"
 
 #: ctk/ctksettings.c:569
-msgid "List of currently active GTK modules"
-msgstr "Λίστα των τρεχόντων ενεργών αρθρωμάτων GTK"
+msgid "List of currently active CTK modules"
+msgstr "Λίστα των τρεχόντων ενεργών αρθρωμάτων CTK"
 
 #: ctk/ctksettings.c:577
 msgid "Xft Antialias"
@@ -7627,10 +7627,10 @@ msgstr "Οι διάλογοι χρησιμοποιούν γραμμή κεφαλ
 
 #: ctk/ctksettings.c:1698
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Αν οι ενσωματωμένοι διάλογοι GTK+ πρέπει να χρησιμοποιούν γραμμή κεφαλίδας "
+"Αν οι ενσωματωμένοι διάλογοι CTK+ πρέπει να χρησιμοποιούν γραμμή κεφαλίδας "
 "αντί για περιοχή ενέργειας."
 
 #: ctk/ctksettings.c:1714
@@ -7650,8 +7650,8 @@ msgid "Recent Files Enabled"
 msgstr "Ενεργοποιημένα πρόσφατα αρχεία"
 
 #: ctk/ctksettings.c:1732
-msgid "Whether GTK+ remembers recent files"
-msgstr "Αν το GTK+ θα θυμάται τα πρόσφατα αρχεία"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Αν το CTK+ θα θυμάται τα πρόσφατα αρχεία"
 
 #: ctk/ctksettings.c:1747
 msgid "Long press time"

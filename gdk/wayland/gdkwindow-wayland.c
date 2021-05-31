@@ -2927,7 +2927,7 @@ find_grab_input_seat (GdkWindow *window, GdkWindow *transient_for)
   GdkWindowImplWayland *tmp_impl;
 
   /* Use the device that was used for the grab as the device for
-   * the popup window setup - so this relies on GTK+ taking the
+   * the popup window setup - so this relies on CTK+ taking the
    * grab before showing the popup window.
    */
   if (impl->grab_input_seat)
@@ -2965,7 +2965,7 @@ should_be_mapped (GdkWindow *window)
 {
   GdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  /* Don't map crazy temp that GTK+ uses for internal X11 shenanigans. */
+  /* Don't map crazy temp that CTK+ uses for internal X11 shenanigans. */
   if (window->window_type == GDK_WINDOW_TEMP && window->x < 0 && window->y < 0)
     return FALSE;
 

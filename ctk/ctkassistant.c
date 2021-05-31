@@ -1,5 +1,5 @@
 /*
- * GTK - The GIMP Toolkit
+ * CTK - The GIMP Toolkit
  * Copyright (C) 1999  Red Hat, Inc.
  * Copyright (C) 2002  Anders Carlsson <andersca@gnu.org>
  * Copyright (C) 2003  Matthias Clasen <mclasen@redhat.com>
@@ -598,7 +598,7 @@ ctk_assistant_class_init (CtkAssistantClass *class)
    *
    * Since: 2.10
    *
-   * Deprecated: 3.2: Since GTK+ 3.2, a header is no longer shown;
+   * Deprecated: 3.2: Since CTK+ 3.2, a header is no longer shown;
    *     add your header decoration to the page content instead.
    */
   ctk_container_class_install_child_property (container_class,
@@ -616,7 +616,7 @@ ctk_assistant_class_init (CtkAssistantClass *class)
    *
    * Since: 2.10
    *
-   * Deprecated: 3.2: Since GTK+ 3.2, the sidebar image is no longer shown.
+   * Deprecated: 3.2: Since CTK+ 3.2, the sidebar image is no longer shown.
    */
   ctk_container_class_install_child_property (container_class,
                                               CHILD_PROP_PAGE_SIDEBAR_IMAGE,
@@ -630,7 +630,7 @@ ctk_assistant_class_init (CtkAssistantClass *class)
    * CtkAssistant:complete:
    *
    * Setting the "complete" child property to %TRUE marks a page as
-   * complete (i.e.: all the required fields are filled out). GTK+ uses
+   * complete (i.e.: all the required fields are filled out). CTK+ uses
    * this information to control the sensitivity of the navigation buttons.
    *
    * Since: 2.10
@@ -2163,7 +2163,7 @@ ctk_assistant_get_page_type (CtkAssistant *assistant,
  *
  * Since: 2.10
  *
- * Deprecated: 3.2: Since GTK+ 3.2, a header is no longer shown;
+ * Deprecated: 3.2: Since CTK+ 3.2, a header is no longer shown;
  *     add your header decoration to the page content instead.
  */
 void
@@ -2219,7 +2219,7 @@ ctk_assistant_do_set_page_header_image (CtkAssistant *assistant,
  *
  * Since: 2.10
  *
- * Deprecated: 3.2: Since GTK+ 3.2, a header is no longer shown;
+ * Deprecated: 3.2: Since CTK+ 3.2, a header is no longer shown;
  *     add your header decoration to the page content instead.
  */
 GdkPixbuf*
@@ -2254,7 +2254,7 @@ ctk_assistant_get_page_header_image (CtkAssistant *assistant,
  *
  * Since: 2.10
  *
- * Deprecated: 3.2: Since GTK+ 3.2, sidebar images are not
+ * Deprecated: 3.2: Since CTK+ 3.2, sidebar images are not
  *     shown anymore.
  */
 void
@@ -2310,7 +2310,7 @@ ctk_assistant_do_set_page_side_image (CtkAssistant *assistant,
  *
  * Since: 2.10
  *
- * Deprecated: 3.2: Since GTK+ 3.2, sidebar images are not
+ * Deprecated: 3.2: Since CTK+ 3.2, sidebar images are not
  *     shown anymore.
  */
 GdkPixbuf*
@@ -2481,7 +2481,7 @@ ctk_assistant_get_page_has_padding (CtkAssistant *assistant,
  *
  * Forces @assistant to recompute the buttons state.
  *
- * GTK+ automatically takes care of this in most situations,
+ * CTK+ automatically takes care of this in most situations,
  * e.g. when the user goes to a different page, or when the
  * visibility or completeness of a page changes.
  *

@@ -64,7 +64,7 @@ parse_command_line (int *argc, char ***argv)
   GOptionContext *context;
   char *schema_dir;
 
-  context = g_option_context_new ("- run GTK reftests");
+  context = g_option_context_new ("- run CTK reftests");
   g_option_context_add_main_entries (context, test_args, NULL);
   g_option_context_set_ignore_unknown_options (context, TRUE);
 

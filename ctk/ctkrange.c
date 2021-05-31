@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 2001 Red Hat, Inc.
  *
@@ -17,10 +17,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2004.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2004.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -403,12 +403,12 @@ ctk_range_class_init (CtkRangeClass *class)
    * type of scroll event that occurred and the resultant new value.
    * The application can handle the event itself and return %TRUE to
    * prevent further processing.  Or, by returning %FALSE, it can pass
-   * the event to other handlers until the default GTK+ handler is
+   * the event to other handlers until the default CTK+ handler is
    * reached.
    *
    * The value parameter is unrounded.  An application that overrides
    * the CtkRange::change-value signal is responsible for clamping the
-   * value to the desired number of decimal digits; the default GTK+
+   * value to the desired number of decimal digits; the default CTK+
    * handler clamps the value based on #CtkRange:round-digits.
    *
    * Returns: %TRUE to prevent other handlers from being invoked for
@@ -2431,7 +2431,7 @@ range_grab_add (CtkRange      *range,
 
   context = ctk_widget_get_style_context (CTK_WIDGET (range));
 
-  /* Don't perform any GDK/GTK+ grab here. Since a button
+  /* Don't perform any GDK/CTK+ grab here. Since a button
    * is down, there's an ongoing implicit grab on
    * priv->event_window, which pretty much guarantees this
    * is the only widget receiving the pointer events.

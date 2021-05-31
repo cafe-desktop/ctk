@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -55,7 +55,7 @@
  *
  * The functions in this section only contain the lowlevel parts of the
  * selection protocol. A considerably more complicated implementation is needed
- * on top of this. GTK+ contains such an implementation in the functions in
+ * on top of this. CTK+ contains such an implementation in the functions in
  * `ctkselection.h` and programmers should use those functions
  * instead of the ones presented here. If you plan to implement selection
  * handling directly on top of the functions here, you should refer to the

@@ -5339,11 +5339,11 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Сьпіс памераў значкі (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:380
-msgid "GTK Modules"
+msgid "CTK Modules"
 msgstr ""
 
 #: ctk/ctksettings.c:381
-msgid "List of currently active GTK modules"
+msgid "List of currently active CTK modules"
 msgstr ""
 
 #: ctk/ctksettings.c:390
@@ -8092,8 +8092,8 @@ msgstr "Як адлюстроўваць палоску стану мэтада �
 #~ msgid "Show Preview"
 #~ msgstr "Адлюстраваць тэкст"
 
-#~ msgid "Whether this text is hidden. Not implemented in GTK 2.0"
-#~ msgstr "Ці зьяўляецца гэты тэкст нябачным. Не зьдзейсьнена ў GTK 2.0"
+#~ msgid "Whether this text is hidden. Not implemented in CTK 2.0"
+#~ msgstr "Ці зьяўляецца гэты тэкст нябачным. Не зьдзейсьнена ў CTK 2.0"
 
 #, fuzzy
 #~ msgid "Width In Chararacters"

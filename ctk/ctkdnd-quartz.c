@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1999 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -1326,7 +1326,7 @@ ctk_drag_cancel (GdkDragContext *context)
  * @hot_x: the X offset within @widget of the hotspot.
  * @hot_y: the Y offset within @widget of the hotspot.
  * 
- * Changes the icon for a widget to a given widget. GTK+
+ * Changes the icon for a widget to a given widget. CTK+
  * will not destroy the icon, so if you don’t want
  * it to persist, you should connect to the “drag-end” 
  * signal and destroy it yourself.
@@ -1473,7 +1473,7 @@ ctk_drag_set_icon_stock  (GdkDragContext *context,
  *            with a context for the source side of a drag)
  * @surface: the surface to use as icon
  *
- * Sets @surface as the icon for a given drag. GTK+ retains
+ * Sets @surface as the icon for a given drag. CTK+ retains
  * references for the arguments, and will release them when
  * they are no longer needed.
  *

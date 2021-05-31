@@ -1,4 +1,4 @@
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -16,10 +16,10 @@
  */
 
 /*
- * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
- * file for a list of people on the GTK+ Team.  See the ChangeLog
+ * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
+ * file for a list of people on the CTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
+ * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_MENU_H__
@@ -70,7 +70,7 @@ typedef enum
  *     where the menu shall be drawn.  This is an output parameter.
  * @push_in: (out): This parameter controls how menus placed outside
  *     the monitor are handled.  If this is set to %TRUE and part of
- *     the menu is outside the monitor then GTK+ pushes the window
+ *     the menu is outside the monitor then CTK+ pushes the window
  *     into the visible area, effectively modifying the popup
  *     position.  Note that moving and possibly resizing the menu
  *     around will alter the scroll position to keep the menu items

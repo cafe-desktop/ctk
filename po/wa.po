@@ -1290,7 +1290,7 @@ msgstr "Hårdêye (URI) nén valide"
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:526
-msgid "Load additional GTK+ modules"
+msgid "Load additional CTK+ modules"
 msgstr ""
 
 #. Placeholder in --ctk-module=MODULES in --help output
@@ -1305,12 +1305,12 @@ msgstr "Tos les adviertixhmints dvèt esse fatås"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:532
-msgid "GTK+ debugging flags to set"
+msgid "CTK+ debugging flags to set"
 msgstr ""
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:535
-msgid "GTK+ debugging flags to unset"
+msgid "CTK+ debugging flags to unset"
 msgstr ""
 
 #. Translate to default:RTL if you want your widgets
@@ -1328,11 +1328,11 @@ msgid "Cannot open display: %s"
 msgstr ""
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
+msgid "CTK+ Options"
 msgstr ""
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
+msgid "Show CTK+ Options"
 msgstr ""
 
 #: ctk/ctkmountoperation.c:491
@@ -2808,7 +2808,7 @@ msgstr ""
 
 #: ctk/ctktextbufferserialize.c:1862
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 
 #: ctk/ctktextutil.c:60
@@ -4425,10 +4425,10 @@ msgstr ""
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Li module di tcherdjaedje d' imådjes %s n' ebague nén li boune eterface; "
-#~ "motoit k' il est po ene diferinne modêye di GTK?"
+#~ "motoit k' il est po ene diferinne modêye di CTK?"
 
 #~ msgid "Image type '%s' is not supported"
 #~ msgstr "Li sôre d' imådje %s n' est nén sopoirté"

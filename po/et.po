@@ -1,5 +1,5 @@
-# GTK+ eesti keele tõlge.
-# Estonian translation of GTK+.
+# CTK+ eesti keele tõlge.
+# Estonian translation of CTK+.
 #
 # Copyright (C) 1999–2007 Free Software Foundation, Inc.
 # Copyright (C) 2007–2011 The GNOME Project.
@@ -2834,8 +2834,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Täiendavate GTK+ moodulite laadimine"
+msgid "Load additional CTK+ modules"
+msgstr "Täiendavate CTK+ moodulite laadimine"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2849,13 +2849,13 @@ msgstr "Kõikide hoiatuste muutmine fataalseks"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+ silumislipud, mida seada"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+ silumislipud, mida seada"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+ silumislipud, mida maha võtta"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+ silumislipud, mida maha võtta"
 
 #: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
 #, c-format
@@ -2863,12 +2863,12 @@ msgid "Cannot open display: %s"
 msgstr "Kuva pole võimalik avada: %s"
 
 #: ctk/ctkmain.c:920
-msgid "GTK+ Options"
-msgstr "GTK+ võtmed"
+msgid "CTK+ Options"
+msgstr "CTK+ võtmed"
 
 #: ctk/ctkmain.c:920
-msgid "Show GTK+ Options"
-msgstr "GTK+ võtmete näitamine"
+msgid "Show CTK+ Options"
+msgstr "CTK+ võtmete näitamine"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3899,10 +3899,10 @@ msgstr "Serialiseeritud andmed on vääralt vormindatud"
 
 #: ctk/ctktextbufferserialize.c:1864
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Serialiseeritud andmed pole korrektselt vormindatud. Esimene sektsioon pole "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3981,14 +3981,14 @@ msgstr ""
 
 #: ctk/ctkwindow.c:12686
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
+msgid "Do you want to use CTK+ Inspector?"
 msgstr ""
 
 #: ctk/ctkwindow.c:12688
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
 
@@ -4026,7 +4026,7 @@ msgid "Parameter Type"
 msgstr "Paberi liik"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
 msgstr ""
 
 #: ctk/inspector/css-editor.c:113
@@ -4095,9 +4095,9 @@ msgstr "Puudub"
 
 #: ctk/inspector/general.ui:34
 #, fuzzy
-#| msgid "GTK+ Options"
-msgid "GTK+ Version"
-msgstr "GTK+ võtmed"
+#| msgid "CTK+ Options"
+msgid "CTK+ Version"
+msgstr "CTK+ võtmed"
 
 #: ctk/inspector/general.ui:68
 #, fuzzy
@@ -4534,7 +4534,7 @@ msgid "GL rendering is disabled"
 msgstr ""
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
+msgid "CTK+ Theme"
 msgstr ""
 
 #: ctk/inspector/visual.ui:94

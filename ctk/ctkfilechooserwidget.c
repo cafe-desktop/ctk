@@ -1,5 +1,5 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
-/* GTK - The GIMP Toolkit
+/* CTK - The GIMP Toolkit
  * ctkfilechooserwidget.c: Embeddable file selector widget
  * Copyright (C) 2003, Red Hat, Inc.
  *
@@ -8880,7 +8880,7 @@ ctk_file_chooser_widget_init (CtkFileChooserWidget *impl)
   priv->auto_selecting_first_row = FALSE;
   priv->renamed_file = NULL;
 
-  /* Ensure GTK+ private types used by the template
+  /* Ensure CTK+ private types used by the template
    * definition before calling ctk_widget_init_template()
    */
   g_type_ensure (CTK_TYPE_PATH_BAR);

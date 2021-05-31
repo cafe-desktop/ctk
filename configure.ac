@@ -35,7 +35,7 @@ AC_CANONICAL_HOST
 # backwards binary compatibility with for all interfaces a module
 # might. Unless we add module-only API with lower stability
 # guarantees, this should be unchanged until we break binary compat
-# for GTK+.
+# for CTK+.
 #
 #CTK_BINARY_VERSION=$CTK_MAJOR_VERSION.$CTK_MINOR_VERSION.$LT_CURRENT
 m4_define([ctk_binary_version], [3.0.0])
@@ -819,7 +819,7 @@ AC_CHECK_HEADERS(ftw.h,
 #
 # Disable deprecation checks for all libraries we depend on on stable branches.
 # This is so newer versions of those libraries don't cause more warnings with
-# a stable GTK version.
+# a stable CTK version.
 # We don't ever want to turn off deprecation warnings for master however, because
 # that's where we get rid of deprecated API we use.
 #
@@ -978,7 +978,7 @@ AM_CONDITIONAL(CROSS_COMPILING, test $cross_compiling = yes)
 # Windowing system checks
 ########################################
 
-# GTK+ uses some X calls, so needs to link against X directly
+# CTK+ uses some X calls, so needs to link against X directly
 CTK_DEP_PACKAGES_FOR_X=
 CTK_DEP_LIBS_FOR_X=
 X_EXTENSIONS=
@@ -1288,7 +1288,7 @@ if $PKG_CONFIG --exists $PANGO_PACKAGES ; then
 else
         AC_MSG_ERROR([
 *** Pango not found. Pango built with Cairo support is required
-*** to build GTK+. See http://www.pango.org for Pango information.
+*** to build CTK+. See http://www.pango.org for Pango information.
 ])
 fi
 
@@ -1301,7 +1301,7 @@ else
         LIBS="$PANGO_LIBS $LIBS"
         AC_TRY_LINK_FUNC(pango_context_new, :, AC_MSG_ERROR([
 *** Can't link to Pango. Pango is required to build
-*** GTK+. For more information see http://www.pango.org]))
+*** CTK+. For more information see http://www.pango.org]))
         LIBS="$ctk_save_LIBS"
 fi
 
@@ -1430,7 +1430,7 @@ if test x"$enable_win32_backend" = xyes; then
     AC_MSG_ERROR([
 *** epoxy was not built with WGL support or epoxy version is too old.
 *** WGL support in epoxy is enabled by default for all Windows builds,
-*** and is used by GTK+ uncondititonally. If it is not there, then
+*** and is used by CTK+ uncondititonally. If it is not there, then
 *** something is very wrong.
 ])
   fi
@@ -1527,7 +1527,7 @@ else
   fi
 fi
 
-# Checks to see if we should compile with PAPI backend for GTK+
+# Checks to see if we should compile with PAPI backend for CTK+
 #
 
 AC_ARG_ENABLE(papi,
@@ -1576,7 +1576,7 @@ fi
 
 AM_CONDITIONAL(HAVE_TRACKER3, test "x$have_tracker3" = "xyes")
 
-# Checks to see if we should compile with cloudprint backend for GTK+
+# Checks to see if we should compile with cloudprint backend for CTK+
 #
 
 AC_ARG_ENABLE(cloudprint,
@@ -1733,7 +1733,7 @@ AM_CONDITIONAL(HAVE_COLORD, test "x$have_colord" = "xyes")
 # Checks for gtk-doc and docbook-tools
 ##################################################
 
-GTK_DOC_CHECK([1.20],[--flavour no-tmpl])
+CTK_DOC_CHECK([1.20],[--flavour no-tmpl])
 
 AC_ARG_ENABLE(man,
               [AS_HELP_STRING([--enable-man],
@@ -2008,7 +2008,7 @@ included_immodules=$(echo "${included_immodules}" | $SED 's/,/ /g')
 if test -z "${included_immodules}"; then included_immodules="none"; fi
 
 echo ""
-echo "        GTK+ $CTK_VERSION"
+echo "        CTK+ $CTK_VERSION"
 echo "        ==========="
 echo ""
 echo "        GDK backends:         $GDK_BACKENDS"

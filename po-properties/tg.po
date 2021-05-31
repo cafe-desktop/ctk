@@ -6223,12 +6223,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Рӯйхати андозаҳои нишона (ctk-menu=16,16:ctk-button=20,20..."
 
 #: ../ctk/ctksettings.c:539
-msgid "GTK Modules"
-msgstr "Модулҳои GTK"
+msgid "CTK Modules"
+msgstr "Модулҳои CTK"
 
 #: ../ctk/ctksettings.c:540
-msgid "List of currently active GTK modules"
-msgstr "Рӯйхати модулҳои ҷории фаъоли GTK"
+msgid "List of currently active CTK modules"
+msgstr "Рӯйхати модулҳои ҷории фаъоли CTK"
 
 #: ../ctk/ctksettings.c:548
 msgid "Xft Antialias"
@@ -6775,11 +6775,11 @@ msgstr "Равзанаҳои гуфтугӯ лавҳаи сарварақро и
 
 #: ../ctk/ctksettings.c:1594
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
 "Интихоби истифодаи лавҳаи сарварақ ба ҷои ноҳияи амалҳо дар равзанаҳои "
-"гуфтугӯи дарунсохти GTK+."
+"гуфтугӯи дарунсохти CTK+."
 
 #: ../ctk/ctksettings.c:1610
 msgid "Enable primary paste"
@@ -6798,8 +6798,8 @@ msgid "Recent Files Enabled"
 msgstr "Файлҳои охирин фаъол шудаанд+"
 
 #: ../ctk/ctksettings.c:1628
-msgid "Whether GTK+ remembers recent files"
-msgstr "Оё GTK+ файлҳои охиринро ёдовар мешавад"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Оё CTK+ файлҳои охиринро ёдовар мешавад"
 
 #: ../ctk/ctksizegroup.c:323 ../ctk/ctktreeselection.c:129
 msgid "Mode"

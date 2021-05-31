@@ -1,4 +1,4 @@
-# Danish translation of GTK+.
+# Danish translation of CTK+.
 # Copyright (C) 1999-2019 Free Software Foundation, Inc.
 # Birger Langkjer <birger.langkjer@image.dk>, 1999.
 # Kenneth Christiansen, 1999-2000
@@ -2904,8 +2904,8 @@ msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:464
-msgid "Load additional GTK+ modules"
-msgstr "Indlæs yderligere GTK+-moduler"
+msgid "Load additional CTK+ modules"
+msgstr "Indlæs yderligere CTK+-moduler"
 
 #. Placeholder in --ctk-module=MODULES in --help output
 #: ctk/ctkmain.c:465
@@ -2919,13 +2919,13 @@ msgstr "Gør alle advarsler fatale"
 
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
-msgid "GTK+ debugging flags to set"
-msgstr "GTK+-fejlretningsflag der skal angives"
+msgid "CTK+ debugging flags to set"
+msgstr "CTK+-fejlretningsflag der skal angives"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
-msgid "GTK+ debugging flags to unset"
-msgstr "GTK+-fejlretningsflag der skal fjernes"
+msgid "CTK+ debugging flags to unset"
+msgstr "CTK+-fejlretningsflag der skal fjernes"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -2933,12 +2933,12 @@ msgid "Cannot open display: %s"
 msgstr "Kan ikke åbne terminal: %s"
 
 #: ctk/ctkmain.c:922
-msgid "GTK+ Options"
-msgstr "GTK+-tilvalg"
+msgid "CTK+ Options"
+msgstr "CTK+-tilvalg"
 
 #: ctk/ctkmain.c:922
-msgid "Show GTK+ Options"
-msgstr "Vis GTK+-tilvalg"
+msgid "Show CTK+ Options"
+msgstr "Vis CTK+-tilvalg"
 
 #. Translate to default:RTL if you want your widgets
 #. * to be RTL, otherwise translate to default:LTR.
@@ -3973,10 +3973,10 @@ msgstr "Serialiserede data er fejldannede"
 
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
-"Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
+"Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "Serialiserede data er fejldannede. Første sektion er ikke "
-"GTKTEXTBUFFERCONTENTS-0001"
+"CTKTEXTBUFFERCONTENTS-0001"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -4056,18 +4056,18 @@ msgstr "Altid øverst"
 
 #: ctk/ctkwindow.c:12764
 #, c-format
-msgid "Do you want to use GTK+ Inspector?"
-msgstr "Vil du bruge GTK+-inspektøren?"
+msgid "Do you want to use CTK+ Inspector?"
+msgstr "Vil du bruge CTK+-inspektøren?"
 
 #: ctk/ctkwindow.c:12766
 #, c-format
 msgid ""
-"GTK+ Inspector is an interactive debugger that lets you explore and modify "
-"the internals of any GTK+ application. Using it may cause the application to "
+"CTK+ Inspector is an interactive debugger that lets you explore and modify "
+"the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"GTK+-inspektøren er en interaktiv fejlsøger, som lader dig udforske og ændre "
-"bestanddelene af ethvert GTK+-program. Dens brug kan forårsage fejl eller "
+"CTK+-inspektøren er en interaktiv fejlsøger, som lader dig udforske og ændre "
+"bestanddelene af ethvert CTK+-program. Dens brug kan forårsage fejl eller "
 "nedbrud af programmet."
 
 #: ctk/ctkwindow.c:12771
@@ -4097,8 +4097,8 @@ msgid "Parameter Type"
 msgstr "Parametertype"
 
 #: ctk/inspector/css-editor.c:112
-msgid "You can type here any CSS rule recognized by GTK+."
-msgstr "Her kan du skrive enhver CSS-regel, som genkendes af GTK+."
+msgid "You can type here any CSS rule recognized by CTK+."
+msgstr "Her kan du skrive enhver CSS-regel, som genkendes af CTK+."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -4157,8 +4157,8 @@ msgid "None"
 msgstr "Ingen"
 
 #: ctk/inspector/general.ui:34
-msgid "GTK+ Version"
-msgstr "GTK+-version"
+msgid "CTK+ Version"
+msgstr "CTK+-version"
 
 #: ctk/inspector/general.ui:68
 msgid "GDK Backend"
@@ -4561,8 +4561,8 @@ msgid "GL rendering is disabled"
 msgstr "GL-tegning er slået fra"
 
 #: ctk/inspector/visual.ui:61
-msgid "GTK+ Theme"
-msgstr "GTK+-tema"
+msgid "CTK+ Theme"
+msgstr "CTK+-tema"
 
 #: ctk/inspector/visual.ui:94
 msgid "Dark Variant"
@@ -8613,8 +8613,8 @@ msgstr "Udskriv til testprinter"
 #~ msgid "Count:"
 #~ msgstr "Antal:"
 
-#~ msgid "GTK+ Inspector — %s"
-#~ msgstr "GTK+-inspektør — %s"
+#~ msgid "CTK+ Inspector — %s"
+#~ msgstr "CTK+-inspektør — %s"
 
 #~ msgid "Send Widget to Shell"
 #~ msgstr "Send kontrol til skal"
@@ -9137,7 +9137,7 @@ msgstr "Udskriv til testprinter"
 
 #~ msgid ""
 #~ "Image-loading module %s does not export the proper interface; perhaps "
-#~ "it's from a different GTK version?"
+#~ "it's from a different CTK version?"
 #~ msgstr ""
 #~ "Billedindlæsningsmodulet %s  eksporterer ikke den rigtige grænseflade; "
 #~ "måske er den fra en anden Ctk-version?"

@@ -5,7 +5,7 @@
   <init-function>ctk_glade_catalog_init</init-function>
 
   <glade-widget-classes>
-    <!-- base GTK+ private widgets -->
+    <!-- base CTK+ private widgets -->
     <glade-widget-class name="CtkPathBar" generic-name="pathbar" title="Path Bar" icon-name="widget-ctk-toolbar"/>
     <glade-widget-class name="CtkColorEditor" generic-name="coloreditor" title="Color Editor" icon-name="widget-ctk-colorselection"/>
     <glade-widget-class name="CtkColorSwatch" generic-name="colorswatch" title="Color Swatch" icon-name="widget-ctk-colorselection"/>
@@ -22,7 +22,7 @@
     </glade-widget-class>
   </glade-widget-classes>
   
-  <glade-widget-group name="ctk-private" title="Private GTK+ Classes">
+  <glade-widget-group name="ctk-private" title="Private CTK+ Classes">
     <glade-widget-class-ref name="CtkPathBar"/>
     <glade-widget-class-ref name="CtkColorEditor"/>
     <glade-widget-class-ref name="CtkColorSwatch"/>

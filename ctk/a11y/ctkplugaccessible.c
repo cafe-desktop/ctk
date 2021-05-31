@@ -1,4 +1,4 @@
-/* GTK+ - accessibility implementations
+/* CTK+ - accessibility implementations
  * Copyright 2019 Samuel Thibault <sthibault@hypra.fr>
  *
  * This library is free software; you can redistribute it and/or

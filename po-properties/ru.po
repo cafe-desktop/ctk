@@ -6943,12 +6943,12 @@ msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Список размеров значков (ctk-menu=16,16;ctk-button=20,20..."
 
 #: ctk/ctksettings.c:568
-msgid "GTK Modules"
-msgstr "Модули GTK"
+msgid "CTK Modules"
+msgstr "Модули CTK"
 
 #: ctk/ctksettings.c:569
-msgid "List of currently active GTK modules"
-msgstr "Список доступных модулей GTK"
+msgid "List of currently active CTK modules"
+msgstr "Список доступных модулей CTK"
 
 #: ctk/ctksettings.c:577
 msgid "Xft Antialias"
@@ -7514,10 +7514,10 @@ msgstr "Диалоговые окна используют панель заго
 
 #: ctk/ctksettings.c:1698
 msgid ""
-"Whether builtin GTK+ dialogs should use a header bar instead of an action "
+"Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr ""
-"Должны ли встроенные диалоговые окна GTK+ использовать панель заголовка "
+"Должны ли встроенные диалоговые окна CTK+ использовать панель заголовка "
 "вместо области действий."
 
 #: ctk/ctksettings.c:1714
@@ -7537,8 +7537,8 @@ msgid "Recent Files Enabled"
 msgstr "Запоминать последние файлы"
 
 #: ctk/ctksettings.c:1732
-msgid "Whether GTK+ remembers recent files"
-msgstr "Запоминает ли GTK+ последние файлы"
+msgid "Whether CTK+ remembers recent files"
+msgstr "Запоминает ли CTK+ последние файлы"
 
 #: ctk/ctksettings.c:1747
 msgid "Long press time"
