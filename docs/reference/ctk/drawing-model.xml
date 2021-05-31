@@ -436,6 +436,6 @@ my_widget_init (MyWidget *widget)
 <!--
 Local variables:
 mode: xml
-sgml-parent-document: ("gtk-docs.sgml" "book" "part" "refentry")
+sgml-parent-document: ("ctk-docs.sgml" "book" "part" "refentry")
 End:
 -->
