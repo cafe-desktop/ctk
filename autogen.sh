@@ -9,12 +9,12 @@ cd "$srcdir"
 
 mkdir -p m4
 
-GTKDOCIZE=`which ctkdocize`
+GTKDOCIZE=`which gtkdocize`
 if test -z $GTKDOCIZE; then
         echo "*** No GTK-Doc found, please install it ***"
         exit 1
 else
-        ctkdocize || exit $?
+        gtkdocize || exit $?
 fi
 
 PKGCONFIG=`which pkg-config`

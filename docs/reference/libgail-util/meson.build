@@ -1,7 +1,7 @@
 if get_option('ctk_doc')
     configure_file(input: 'version.xml.in', output: 'version.xml', configuration: version_conf)
 
-    gnome.ctkdoc('gail-libgail-util3',
+    gnome.gtkdoc('gail-libgail-util3',
                  mode: 'none',
                  main_xml: 'gail-libgail-util-docs.sgml',
                  src_dir: libgailutilinc,

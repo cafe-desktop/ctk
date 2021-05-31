@@ -24,7 +24,7 @@ AM_CPPFLAGS =                   \
 
 GTKDOC_LIBS = $(top_builddir)/libgail-util/libgailutil-3.la
 
-# ctkdoc-mkdb related varaibles
+# gtkdoc-mkdb related varaibles
 MKDB_OPTIONS =
 content_files =		\
 	version.xml

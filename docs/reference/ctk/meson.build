@@ -449,7 +449,7 @@ if get_option('ctk_doc')
     configure_file(input: 'version.xml.in', output: 'version.xml', configuration: version_conf)
     configure_file(input: 'getting_started.xml.in', output: 'getting_started.xml', configuration: src_dir_conf)
 
-    gnome.ctkdoc('ctk3',
+    gnome.gtkdoc('ctk3',
                  mode: 'none',
                  main_xml: 'ctk-docs.sgml',
                  src_dir: [

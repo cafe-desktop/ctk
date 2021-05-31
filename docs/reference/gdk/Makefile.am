@@ -8,7 +8,7 @@ DOC_MODULE=gdk3
 # The top-level SGML file.
 DOC_MAIN_SGML_FILE=gdk-docs.sgml
 
-# Extra options to supply to ctkdoc-scan
+# Extra options to supply to gtkdoc-scan
 SCAN_OPTIONS=--deprecated-guards=GDK_DISABLE_DEPRECATED \
              --ignore-decorators=G_GNUC_WARN_UNUSED_RESULT
 
@@ -63,7 +63,7 @@ AM_CPPFLAGS = 			\
 
 GTKDOC_LIBS = $(top_builddir)/gdk/libgdk-3.la $(GDK_DEP_LIBS)
 
-# Extra options to supply to ctkdoc-mkdb
+# Extra options to supply to gtkdoc-mkdb
 MKDB_OPTIONS=--output-format=xml --name-space=gdk
 
 # Extra SGML files that are included by DOC_MAIN_SGML_FILE
@@ -188,7 +188,7 @@ HTML_IMAGES = 				\
 	images/zoom_out_cursor.png
 
 if ENABLE_DOC_CROSS_REFERENCES
-# Extra options to supply to ctkdoc-fixref
+# Extra options to supply to gtkdoc-fixref
 FIXXREF_OPTIONS= \
 	--extra-dir=$(GLIB_PREFIX)/share/ctk-doc/html/gobject \
 	--extra-dir=$(GLIB_PREFIX)/share/ctk-doc/html/glib \
