@@ -36,10 +36,10 @@ MAINTAINERCLEANFILES = \
 	$(GITIGNORE_MAINTAINERCLEANFILES_TOPLEVEL) \
 	$(GITIGNORE_MAINTAINERCLEANFILES_M4_LIBTOOL) \
 	$(GITIGNORE_MAINTAINERCLEANFILES_MAKEFILE_IN) \
-	$(srcdir)/m4/ctk-doc.m4 \
+	$(srcdir)/m4/gtk-doc.m4 \
 	$(srcdir)/INSTALL \
 	$(srcdir)/README \
-	$(srcdir)/ctk-doc.make \
+	$(srcdir)/gtk-doc.make \
 	$(srcdir)/ChangeLog
 
 if OS_UNIX
@@ -111,7 +111,7 @@ uninstall-local:
 	rm -f $(DESTDIR)$(pkgconfigdir)/ctk+-3.0.pc
 
 AM_DISTCHECK_CONFIGURE_FLAGS =		\
-	--enable-ctk-doc 		\
+	--enable-gtk-doc 		\
 	--disable-doc-cross-references  \
 	--enable-man 			\
 	--disable-maintainer-mode 	\

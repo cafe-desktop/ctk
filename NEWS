@@ -8172,7 +8172,7 @@ Overview of Changes in GTK+ 3.3.2
  659672 ctk_tree_view_column_dispose() does not remove from tree...
  660139 GtkGrid gives Gtk-Warnings about negative sizes...
  660833 all: add an 'only-child' pseudo-class selector
- 661032 out-of-tree builds result in broken ctk-doc documentation
+ 661032 out-of-tree builds result in broken gtk-doc documentation
  661089 ctkfontbutton.c will not compile on Solaris
  661780 CTK_STOCK_INDENT references wrong images
  661835 GMountOperation on OpenBSD: remove the need for kvm(3)
@@ -9296,7 +9296,7 @@ Overview of Changes from GTK+ 2.91.6 to 2.91.7
  637155 Remove vestiges of support for themes using XSHAPE
  637156 Optimize ctk_widget_shape_combine_region (widget, NULL, ...)
  637189 ctk_cell_renderer_spin_start_editing uses g_ascii_strtod but...
- 637243 docs: fix link failure on ctk-doc scanner binaries
+ 637243 docs: fix link failure on gtk-doc scanner binaries
  637256 ctkstylecontext: fix typos in annotations
  637464 Fix GdkWindowFilter internal refcounting
  637471 GTK2_RC_FILES should be renamed to GTK3_RC_FILES
@@ -13414,7 +13414,7 @@ Overview of Changes from GTK+ 2.10.0 to 2.10.1
  347032	documentation of ctk_print_context_get_height() 
         has typo
  347037	GObject info missing for GtkRecentManager and 
-        GtkRecentChooser* in ctk-doc API reference
+        GtkRecentChooser* in gtk-doc API reference
  347041 documentation of ctk_paper_size_is_equal() 
         has a typo
  347043	Reference leaks in GtkFileChooserButton

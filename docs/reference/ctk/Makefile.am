@@ -6,7 +6,7 @@ AUTOMAKE_OPTIONS = 1.6
 DOC_MODULE=ctk3
 
 # The top-level SGML file.
-DOC_MAIN_SGML_FILE=ctk-docs.sgml
+DOC_MAIN_SGML_FILE=gtk-docs.sgml
 
 # Extra options to supply to gtkdoc-scan
 SCAN_OPTIONS=--deprecated-guards="CTK_ENABLE_BROKEN|CTK_DISABLE_DEPRECATED"
@@ -485,15 +485,15 @@ HTML_IMAGES = \
 if ENABLE_DOC_CROSS_REFERENCES
 # Extra options to supply to gtkdoc-fixref
 FIXXREF_OPTIONS=--extra-dir=../gdk/html \
-	--extra-dir=$(GLIB_PREFIX)/share/ctk-doc/html/gobject \
-	--extra-dir=$(GLIB_PREFIX)/share/ctk-doc/html/glib \
-	--extra-dir=$(GLIB_PREFIX)/share/ctk-doc/html/gio \
-	--extra-dir=$(ATK_PREFIX)/share/ctk-doc/html/atk \
-	--extra-dir=$(PANGO_PREFIX)/share/ctk-doc/html/pango \
-	--extra-dir=$(CAIRO_PREFIX)/share/ctk-doc/html/cairo
+	--extra-dir=$(GLIB_PREFIX)/share/gtk-doc/html/gobject \
+	--extra-dir=$(GLIB_PREFIX)/share/gtk-doc/html/glib \
+	--extra-dir=$(GLIB_PREFIX)/share/gtk-doc/html/gio \
+	--extra-dir=$(ATK_PREFIX)/share/gtk-doc/html/atk \
+	--extra-dir=$(PANGO_PREFIX)/share/gtk-doc/html/pango \
+	--extra-dir=$(CAIRO_PREFIX)/share/gtk-doc/html/cairo
 endif
 
-include $(top_srcdir)/ctk-doc.make
+include $(top_srcdir)/gtk-doc.make
 
 # Other files to distribute
 EXTRA_DIST += version.xml.in ctk3.types.in getting_started.xml.in
@@ -556,7 +556,7 @@ endif
 
 dist-hook-local: dist-local-check-mans-enabled all-local
 
-ctk-docs-clean: clean
+gtk-docs-clean: clean
 	cd $(srcdir) && rm -rf xml html
 
 -include $(top_srcdir)/git.mk

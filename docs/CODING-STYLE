@@ -501,7 +501,7 @@ And callback types:
 
 Instance structures should only contain the parent type, and optionally a
 pointer to a private data structure, and they should be annotated as
-"private" using the ctk-doc trigraph:
+"private" using the gtk-doc trigraph:
 
   struct _GtkFoo
   {
@@ -583,7 +583,7 @@ should be declared static.
 
 + Documentation
 
-All public APIs must have ctk-doc comments. For functions, these should
+All public APIs must have gtk-doc comments. For functions, these should
 be placed in the source file, directly above the function.
 
   /* valid */
@@ -626,7 +626,7 @@ To properly document a new function, macro, function type or struct,
 it needs to be listed in the ctk3-sections.txt file.
 
 To properly document a new class, it needs to be given its own section
-in ctk3-sections.txt, needs to be included in ctk-docs.sgml, and the
+in ctk3-sections.txt, needs to be included in gtk-docs.sgml, and the
 get_type function needs to listed in ctk3.types.
 
 + Old code

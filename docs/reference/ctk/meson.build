@@ -451,7 +451,7 @@ if get_option('ctk_doc')
 
     gnome.gtkdoc('ctk3',
                  mode: 'none',
-                 main_xml: 'ctk-docs.sgml',
+                 main_xml: 'gtk-docs.sgml',
                  src_dir: [
                    ctkinc,
                 ],

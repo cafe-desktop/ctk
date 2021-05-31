@@ -17123,7 +17123,7 @@ ctk_widget_class_set_template_from_resource (GtkWidgetClass    *widget_class,
   g_return_if_fail (resource_name && resource_name[0]);
 
   /* This is a hack, because class initializers now access resources
-   * and GIR/ctk-doc initializes classes without initializing GTK+,
+   * and GIR/gtk-doc initializes classes without initializing GTK+,
    * we ensure that our base resources are registered here and
    * avoid warnings which building GIRs/documentation.
    */

@@ -27,7 +27,7 @@ pacman --noconfirm -S --needed \
     mingw-w64-$MSYS2_ARCH-libepoxy \
     mingw-w64-$MSYS2_ARCH-pango \
     mingw-w64-$MSYS2_ARCH-shared-mime-info \
-    mingw-w64-$MSYS2_ARCH-ctk-doc
+    mingw-w64-$MSYS2_ARCH-gtk-doc
 
 mkdir -p _ccache
 export CCACHE_BASEDIR="$(pwd)"

@@ -295,7 +295,7 @@
 295|GTK+ and friends|GTKtoolkit|dconf 0.3.1 released: http://mail.gnome.org/archives/ctk-devel-list/2010-May/msg00145.html #ctk|1274800819|0||0|0
 296|GTK+ and friends|GTKtoolkit|GLib 2.25.7 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-May/msg00144.html #ctk|1274800611|0||0|0
 297|GTK+ and friends|GTKtoolkit|XI2 @garnacho 's branch ready for review (xi2-for-master): http://mail.gnome.org/archives/ctk-devel-list/2010-May/thread.html #ctk|1274472793|0||0|0
-298|GTK+ and friends|GTKtoolkit|ANNOUNCE: ctk-doc 1.15 released: http://mail.gnome.org/archives/ctk-doc-list/2010-May/msg00000.html #ctk|1274446357|0||0|0
+298|GTK+ and friends|GTKtoolkit|ANNOUNCE: gtk-doc 1.15 released: http://mail.gnome.org/archives/gtk-doc-list/2010-May/msg00000.html #ctk|1274446357|0||0|0
 299|GTK+ and friends|GTKtoolkit|Ryan Lortie (@desrt) just released #dconf 0.3: http://mail.gnome.org/archives/ctk-devel-list/2010-May/msg00128.html #ctk|1274311034|0||0|0
 300|GTK+ and friends|GTKtoolkit|GLib 2.25.6 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-May/msg00127.html #ctk|1274310863|0||0|0
 301|GTK+ and friends|GTKtoolkit|GLib 2.25.6 (unstable) released:|1274310818|0||0|0

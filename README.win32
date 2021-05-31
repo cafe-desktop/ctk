@@ -98,7 +98,7 @@ CFLAGS=-O2 \
 --without-libjasper \
 --enable-debug=yes \
 --enable-explicit-deps=no \
---disable-ctk-doc \
+--disable-gtk-doc \
 --disable-static \
 --prefix=$TARGET &&
 
