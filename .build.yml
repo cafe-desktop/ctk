@@ -83,6 +83,15 @@ requires:
     - xauth
     - xvfb
     - xml-core
+    - debhelper
+    - fonts-cantarell
+    - gnome-pkg-tools
+    - libxkbfile-dev
+    - sassc
+    - libatk1.0-doc
+    - libcairo2-doc
+    - libglib2.0-doc
+    - libpango1.0-doc
 
 build_scripts:
   - dpkg-buildpackage -b -rfakeroot -us -uc
