@@ -98,7 +98,6 @@ build_scripts:
 
 after_scripts:
   - make check
-  - make distcheck
 
 releases:
   draft: false
