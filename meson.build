@@ -1015,7 +1015,7 @@ summary = [
   '    Colord support: @0@'.format(get_option('colord')),
   '          Profiler: @0@'.format(get_option('profiler')),
   '     Introspection: @0@'.format(get_option('introspection')),
-  '     Documentation: @0@'.format(get_option('ctk_doc')),
+  '     Documentation: @0@'.format(get_option('gtk_doc')),
   '         Man pages: @0@'.format(get_option('man')),
   '       Build tests: @0@'.format(get_option('tests')),
   '   Installed tests: @0@'.format(get_option('installed_tests')),
