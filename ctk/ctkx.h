@@ -22,7 +22,7 @@
 #error "<ctk/ctkx.h> must not be included by GTK+ headers."
 #endif
 
-#define __GTKX_H_INSIDE__
+#define __CTKX_H_INSIDE__
 
 #include <ctk/ctk.h>
 
@@ -31,6 +31,6 @@
 
 #include <ctk/ctkx-autocleanups.h>
 
-#undef __GTKX_H_INSIDE__
+#undef __CTKX_H_INSIDE__
 
 #endif /* __CTK_X_H__ */

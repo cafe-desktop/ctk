@@ -196,7 +196,7 @@ ctk_cell_renderer_accel_class_init (GtkCellRendererAccelClass *cell_accel_class)
                                                       P_("Accelerator Mode"),
                                                       P_("The type of accelerators"),
                                                       CTK_TYPE_CELL_RENDERER_ACCEL_MODE,
-                                                      CTK_CELL_RENDERER_ACCEL_MODE_GTK,
+                                                      CTK_CELL_RENDERER_ACCEL_MODE_CTK,
                                                       CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
   
   /**
@@ -273,7 +273,7 @@ convert_keysym_state_to_string (GtkCellRendererAccel *accel,
     return g_strdup (C_("Accelerator", "Disabled"));
   else 
     {
-      if (priv->accel_mode == CTK_CELL_RENDERER_ACCEL_MODE_GTK)
+      if (priv->accel_mode == CTK_CELL_RENDERER_ACCEL_MODE_CTK)
         {
           if (!ctk_accelerator_valid (keysym, mask))
             /* This label is displayed in a treeview cell displaying
@@ -596,7 +596,7 @@ ctk_cell_editable_event_box_key_press_event (GtkWidget   *widget,
 
   /* Filter consumed modifiers 
    */
-  if (box->accel_mode == CTK_CELL_RENDERER_ACCEL_MODE_GTK)
+  if (box->accel_mode == CTK_CELL_RENDERER_ACCEL_MODE_CTK)
     accel_mods &= ~consumed_modifiers;
   
   /* Put shift back if it changed the case of the key, not otherwise.
@@ -618,7 +618,7 @@ ctk_cell_editable_event_box_key_press_event (GtkWidget   *widget,
 	}
     }
 
-  if (box->accel_mode == CTK_CELL_RENDERER_ACCEL_MODE_GTK &&
+  if (box->accel_mode == CTK_CELL_RENDERER_ACCEL_MODE_CTK &&
       !ctk_accelerator_valid (accel_key, accel_mods))
     {
       ctk_widget_error_bell (widget);
@@ -733,7 +733,7 @@ ctk_cell_editable_event_box_class_init (GtkCellEditableEventBoxClass *class)
   g_object_class_install_property (object_class, PROP_MODE,
       g_param_spec_enum ("accel-mode", NULL, NULL,
                          CTK_TYPE_CELL_RENDERER_ACCEL_MODE,
-                         CTK_CELL_RENDERER_ACCEL_MODE_GTK,
+                         CTK_CELL_RENDERER_ACCEL_MODE_CTK,
                          CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class, PROP_PATH,

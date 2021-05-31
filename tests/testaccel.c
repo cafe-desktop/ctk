@@ -82,7 +82,7 @@ key_test (void)
 	column = ctk_tree_view_column_new ();
 	rend = ctk_cell_renderer_accel_new ();
 	g_object_set (G_OBJECT (rend), 
-		      "accel-mode", CTK_CELL_RENDERER_ACCEL_MODE_GTK, 
+		      "accel-mode", CTK_CELL_RENDERER_ACCEL_MODE_CTK, 
                       "editable", TRUE, 
 		      NULL);
 	g_signal_connect (G_OBJECT (rend),

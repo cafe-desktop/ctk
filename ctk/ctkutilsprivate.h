@@ -1,5 +1,5 @@
-#ifndef __GTKUTILS_H__
-#define __GTKUTILS_H__
+#ifndef __CTKUTILS_H__
+#define __CTKUTILS_H__
 
 #include <gio/gio.h>
 
