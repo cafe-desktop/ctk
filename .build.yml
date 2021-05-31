@@ -83,21 +83,19 @@ requires:
     - xauth
     - xvfb
     - xml-core
+    - debhelper
+    - fonts-cantarell
+    - gnome-pkg-tools
+    - libxkbfile-dev
+    - sassc
+    - libatk1.0-doc
+    - libcairo2-doc
+    - libglib2.0-doc
+    - libpango1.0-doc
+    - curl
 
 build_scripts:
-  - NOCONFIGURE=1 ./autogen.sh
-  - scan-build $CHECKERS ./configure --disable-dependency-tracking --enable-broadway-backend --enable-x11-backend --enable-gtk-doc --enable-man --enable-shared --enable-introspection --enable-cloudprint --disable-static --enable-installed-tests
-  - if [ $CPU_COUNT -gt 1 ]; then
-  -     scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
-  - else
-  -     scan-build $CHECKERS --keep-cc -o html-report make
-  - fi
-  - if [ ${DISTRO_NAME} == "debian" ];then
-  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude .
-  - fi
-
-after_scripts:
-  - make check
+  - ./buildPackages.sh $CPU_COUNT
 
 releases:
   draft: false
