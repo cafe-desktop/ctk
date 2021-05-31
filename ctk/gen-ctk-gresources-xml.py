@@ -2,7 +2,7 @@
 #
 # Generate ctk.gresources.xml
 #
-# Usage: gen-ctk-gresources-xml SRCDIR_GTK [OUTPUT-FILE]
+# Usage: gen-ctk-gresources-xml SRCDIR_CTK [OUTPUT-FILE]
 
 import os, sys
 

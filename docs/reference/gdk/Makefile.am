@@ -202,7 +202,7 @@ EXTRA_DIST += \
 	version.xml.in \
 	meson.build
 
-if ENABLE_GTK_DOC
+if ENABLE_CTK_DOC
 TESTS_ENVIRONMENT = cd $(srcdir) && \
   DOC_MODULE=$(DOC_MODULE) DOC_MAIN_SGML_FILE=$(DOC_MAIN_SGML_FILE) \
   SRCDIR=$(abs_srcdir) BUILDDIR=$(abs_builddir)

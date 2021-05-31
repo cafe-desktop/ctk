@@ -1,5 +1,5 @@
-#ifndef __GTKINTL_H__
-#define __GTKINTL_H__
+#ifndef __CTKINTL_H__
+#define __CTKINTL_H__
 
 #include <glib/gi18n-lib.h>
 

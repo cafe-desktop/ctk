@@ -381,7 +381,7 @@ msgid ""
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
 msgstr ""
 "𐑢𐑧𐑞𐑼 𐑞 𐑨𐑒𐑖𐑩𐑯 𐑦𐑟 𐑒𐑩𐑯𐑕𐑦𐑛𐑼𐑛 𐑦𐑥𐑐𐑹𐑑𐑩𐑯𐑑. 𐑢𐑧𐑯 𐑑𐑮𐑵, toolitem 𐑐𐑮𐑪𐑒𐑕𐑦𐑟 𐑓𐑹 𐑞𐑦𐑕 𐑨𐑒𐑖𐑩𐑯 𐑖𐑴 "
-"𐑑𐑧𐑒𐑕𐑑 𐑦𐑯 _GTKTOOLBAR__BOTHHORIZ 𐑥𐑴𐑛."
+"𐑑𐑧𐑒𐑕𐑑 𐑦𐑯 _CTKTOOLBAR__BOTHHORIZ 𐑥𐑴𐑛."
 
 #: ../ctk/ctkaction.c:372
 msgid "Hide if empty"
@@ -908,7 +908,7 @@ msgstr "𐑛𐑦𐑓𐑷𐑤𐑑 𐑕𐑐𐑱𐑕𐑦𐑙"
 #, fuzzy
 #: ../ctk/ctkbutton.c:450
 msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
-msgstr "𐑧𐑒𐑕𐑑𐑮𐑩 𐑕𐑐𐑱𐑕 𐑑 𐑨𐑛 𐑓𐑹 _GTKCAN_𐑛𐑦𐑓𐑷𐑤𐑑 𐑚𐑳𐑑𐑩𐑯𐑟"
+msgstr "𐑧𐑒𐑕𐑑𐑮𐑩 𐑕𐑐𐑱𐑕 𐑑 𐑨𐑛 𐑓𐑹 _CTKCAN_𐑛𐑦𐑓𐑷𐑤𐑑 𐑚𐑳𐑑𐑩𐑯𐑟"
 
 #: ../ctk/ctkbutton.c:464
 msgid "Default Outside Spacing"
@@ -920,7 +920,7 @@ msgid ""
 "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr ""
-"𐑧𐑒𐑕𐑑𐑮𐑩 𐑕𐑐𐑱𐑕 𐑑 𐑨𐑛 𐑓𐑹 _GTKCAN_𐑛𐑦𐑓𐑷𐑤𐑑 𐑚𐑳𐑑𐑩𐑯𐑟 𐑞𐑨𐑑 𐑦𐑟 𐑷𐑤𐑢𐑱𐑟 𐑛𐑮𐑷𐑯 𐑬𐑑𐑕𐑲𐑛 𐑞 𐑚𐑹𐑛𐑼"
+"𐑧𐑒𐑕𐑑𐑮𐑩 𐑕𐑐𐑱𐑕 𐑑 𐑨𐑛 𐑓𐑹 _CTKCAN_𐑛𐑦𐑓𐑷𐑤𐑑 𐑚𐑳𐑑𐑩𐑯𐑟 𐑞𐑨𐑑 𐑦𐑟 𐑷𐑤𐑢𐑱𐑟 𐑛𐑮𐑷𐑯 𐑬𐑑𐑕𐑲𐑛 𐑞 𐑚𐑹𐑛𐑼"
 
 #: ../ctk/ctkbutton.c:470
 msgid "Child X Displacement"

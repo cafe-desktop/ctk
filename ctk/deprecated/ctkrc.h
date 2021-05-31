@@ -244,7 +244,7 @@ gchar*      ctk_rc_get_im_module_file  (void);
  * @CTK_RC_TOKEN_WIDGET_CLASS: Deprecated
  * @CTK_RC_TOKEN_CLASS: Deprecated
  * @CTK_RC_TOKEN_LOWEST: Deprecated
- * @CTK_RC_TOKEN_GTK: Deprecated
+ * @CTK_RC_TOKEN_CTK: Deprecated
  * @CTK_RC_TOKEN_APPLICATION: Deprecated
  * @CTK_RC_TOKEN_THEME: Deprecated
  * @CTK_RC_TOKEN_RC: Deprecated
@@ -293,7 +293,7 @@ typedef enum {
   CTK_RC_TOKEN_WIDGET_CLASS,
   CTK_RC_TOKEN_CLASS,
   CTK_RC_TOKEN_LOWEST,
-  CTK_RC_TOKEN_GTK,
+  CTK_RC_TOKEN_CTK,
   CTK_RC_TOKEN_APPLICATION,
   CTK_RC_TOKEN_THEME,
   CTK_RC_TOKEN_RC,
@@ -314,7 +314,7 @@ typedef enum {
 /**
  * GtkPathPriorityType:
  * @CTK_PATH_PRIO_LOWEST: Deprecated
- * @CTK_PATH_PRIO_GTK: Deprecated
+ * @CTK_PATH_PRIO_CTK: Deprecated
  * @CTK_PATH_PRIO_APPLICATION: Deprecated
  * @CTK_PATH_PRIO_THEME: Deprecated
  * @CTK_PATH_PRIO_RC: Deprecated
@@ -328,7 +328,7 @@ typedef enum {
 typedef enum
 {
   CTK_PATH_PRIO_LOWEST      = 0,
-  CTK_PATH_PRIO_GTK         = 4,
+  CTK_PATH_PRIO_CTK         = 4,
   CTK_PATH_PRIO_APPLICATION = 8,
   CTK_PATH_PRIO_THEME       = 10,
   CTK_PATH_PRIO_RC          = 12,

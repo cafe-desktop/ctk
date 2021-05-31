@@ -25,7 +25,7 @@
 #ifndef __CTK_SOCKET_H__
 #define __CTK_SOCKET_H__
 
-#if !defined (__GTKX_H_INSIDE__) && !defined (CTK_COMPILATION)
+#if !defined (__CTKX_H_INSIDE__) && !defined (CTK_COMPILATION)
 #error "Only <ctk/ctkx.h> can be included directly."
 #endif
 

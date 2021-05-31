@@ -39,7 +39,7 @@ typedef struct _GtkCellRendererAccelClass         GtkCellRendererAccelClass;
 
 /**
  * GtkCellRendererAccelMode:
- * @CTK_CELL_RENDERER_ACCEL_MODE_GTK: GTK+ accelerators mode
+ * @CTK_CELL_RENDERER_ACCEL_MODE_CTK: GTK+ accelerators mode
  * @CTK_CELL_RENDERER_ACCEL_MODE_OTHER: Other accelerator mode
  *
  * Determines if the edited accelerators are GTK+ accelerators. If
@@ -49,7 +49,7 @@ typedef struct _GtkCellRendererAccelClass         GtkCellRendererAccelClass;
  */
 typedef enum
 {
-  CTK_CELL_RENDERER_ACCEL_MODE_GTK,
+  CTK_CELL_RENDERER_ACCEL_MODE_CTK,
   CTK_CELL_RENDERER_ACCEL_MODE_OTHER
 } GtkCellRendererAccelMode;
 

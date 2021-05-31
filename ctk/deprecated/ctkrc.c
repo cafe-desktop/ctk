@@ -1601,8 +1601,8 @@ ctk_rc_parse_priority (GScanner	           *scanner,
     case CTK_RC_TOKEN_LOWEST:
       *priority = CTK_PATH_PRIO_LOWEST;
       break;
-    case CTK_RC_TOKEN_GTK:
-      *priority = CTK_PATH_PRIO_GTK;
+    case CTK_RC_TOKEN_CTK:
+      *priority = CTK_PATH_PRIO_CTK;
       break;
     case CTK_RC_TOKEN_APPLICATION:
       *priority = CTK_PATH_PRIO_APPLICATION;
