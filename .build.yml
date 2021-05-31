@@ -32,7 +32,7 @@ requires:
     - gobject-introspection
     - gettext
     - gvfs
-    - ctk-doc-tools
+    - gtk-doc-tools
     - hicolor-icon-theme
     - itstool
     - libatk-bridge2.0-dev
