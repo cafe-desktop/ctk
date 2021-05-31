@@ -11,7 +11,7 @@ mkdir -p m4
 
 CTKDOCIZE=`which gtkdocize`
 if test -z $CTKDOCIZE; then
-        echo "*** No CTK-Doc found, please install it ***"
+        echo "*** No GTK-Doc found, please install it ***"
         exit 1
 else
         gtkdocize || exit $?
