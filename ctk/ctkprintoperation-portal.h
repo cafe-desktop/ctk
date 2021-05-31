@@ -18,7 +18,7 @@
 #ifndef __CTK_PRINT_OPERATION_PORTAL_H__
 #define __CTK_PRINT_OPERATION_PORTAL_H__
 
-#include "gtkprintoperation.h"
+#include "ctkprintoperation.h"
 
 G_BEGIN_DECLS
 

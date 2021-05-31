@@ -2,8 +2,8 @@ include $(top_srcdir)/Makefile.decl
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir) 				\
-	-I$(top_srcdir)/gtk				\
-	-I$(top_builddir)/gtk				\
+	-I$(top_srcdir)/ctk				\
+	-I$(top_builddir)/ctk				\
 	-I$(top_srcdir)/gdk				\
 	-I$(top_builddir)/gdk				\
 	$(CUPS_CFLAGS)					\
@@ -14,25 +14,25 @@ AM_CPPFLAGS = \
 	$(CTK_DEBUG_FLAGS)
 
 LDADDS = \
-	$(top_builddir)/gtk/libgtk-3.la	\
+	$(top_builddir)/ctk/libctk-3.la	\
 	$(COLORD_LIBS)			\
 	$(CTK_DEP_LIBS)
 
-backenddir = $(libdir)/gtk-3.0/$(CTK_BINARY_VERSION)/printbackends
+backenddir = $(libdir)/ctk-3.0/$(CTK_BINARY_VERSION)/printbackends
 
 backend_LTLIBRARIES = libprintbackend-cups.la
 
 libprintbackend_cups_la_SOURCES =	\
-	gtkprintbackendcups.c		\
-	gtkprintercups.c		\
-	gtkcupsutils.c			\
-	gtkcupssecretsutils.c
+	ctkprintbackendcups.c		\
+	ctkprintercups.c		\
+	ctkcupsutils.c			\
+	ctkcupssecretsutils.c
 
 noinst_HEADERS =			\
-	gtkprintbackendcups.h		\
-	gtkprintercups.h		\
-	gtkcupsutils.h			\
-	gtkcupssecretsutils.h
+	ctkprintbackendcups.h		\
+	ctkprintercups.h		\
+	ctkcupsutils.h			\
+	ctkcupssecretsutils.h
 
 libprintbackend_cups_la_LDFLAGS =  -avoid-version -module $(no_undefined)
 libprintbackend_cups_la_LIBADD = $(LDADDS) $(CUPS_LIBS)

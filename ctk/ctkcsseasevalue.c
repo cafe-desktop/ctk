@@ -17,7 +17,7 @@
 
 #include "config.h"
 
-#include "gtkcsseasevalueprivate.h"
+#include "ctkcsseasevalueprivate.h"
 
 #include <math.h>
 

@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *antialias;
 static GtkWidget *subpixel;

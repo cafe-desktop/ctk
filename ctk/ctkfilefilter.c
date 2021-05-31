@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilefilter.c: Filters for selecting a file subset
+ * ctkfilefilter.c: Filters for selecting a file subset
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -17,7 +17,7 @@
  */
 
 /**
- * SECTION:gtkfilefilter
+ * SECTION:ctkfilefilter
  * @Short_description: A filter for selecting a file subset
  * @Title: GtkFileFilter
  * @see_also: #GtkFileChooser
@@ -67,11 +67,11 @@
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-#include "gtkfilefilterprivate.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkfilefilterprivate.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
 typedef struct _GtkFileFilterClass GtkFileFilterClass;
 typedef struct _FilterRule FilterRule;

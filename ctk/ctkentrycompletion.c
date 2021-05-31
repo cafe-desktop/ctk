@@ -1,5 +1,5 @@
-/* gtkentrycompletion.c
- * Copyright (C) 2003  Kristian Rietveld  <kris@gtk.org>
+/* ctkentrycompletion.c
+ * Copyright (C) 2003  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -16,7 +16,7 @@
  */
 
 /**
- * SECTION:gtkentrycompletion
+ * SECTION:ctkentrycompletion
  * @Short_description: Completion functionality for GtkEntry
  * @Title: GtkEntryCompletion
  *
@@ -64,28 +64,28 @@
 
 #include "config.h"
 
-#include "gtkentrycompletion.h"
+#include "ctkentrycompletion.h"
 
-#include "gtkentryprivate.h"
-#include "gtkcelllayout.h"
-#include "gtkcellareabox.h"
+#include "ctkentryprivate.h"
+#include "ctkcelllayout.h"
+#include "ctkcellareabox.h"
 
-#include "gtkintl.h"
-#include "gtkcellrenderertext.h"
-#include "gtkframe.h"
-#include "gtktreeselection.h"
-#include "gtktreeview.h"
-#include "gtkscrolledwindow.h"
-#include "gtksizerequest.h"
-#include "gtkbox.h"
-#include "gtkwindow.h"
-#include "gtkwindowgroup.h"
-#include "gtkentry.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
+#include "ctkintl.h"
+#include "ctkcellrenderertext.h"
+#include "ctkframe.h"
+#include "ctktreeselection.h"
+#include "ctktreeview.h"
+#include "ctkscrolledwindow.h"
+#include "ctksizerequest.h"
+#include "ctkbox.h"
+#include "ctkwindow.h"
+#include "ctkwindowgroup.h"
+#include "ctkentry.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
 
-#include "gtkprivate.h"
-#include "gtkwindowprivate.h"
+#include "ctkprivate.h"
+#include "ctkwindowprivate.h"
 
 #include <string.h>
 
@@ -2545,7 +2545,7 @@ ctk_entry_completion_changed (GtkWidget *widget,
     gdk_threads_add_timeout (COMPLETION_TIMEOUT,
                    ctk_entry_completion_timeout,
                    completion);
-  g_source_set_name_by_id (completion->priv->completion_timeout, "[gtk+] ctk_entry_completion_timeout");
+  g_source_set_name_by_id (completion->priv->completion_timeout, "[ctk+] ctk_entry_completion_timeout");
 }
 
 static gboolean

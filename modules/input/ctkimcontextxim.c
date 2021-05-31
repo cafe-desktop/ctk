@@ -20,9 +20,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "gtkimcontextxim.h"
+#include "ctkimcontextxim.h"
 
-#include "gtk/gtkintl.h"
+#include "ctk/ctkintl.h"
 
 typedef struct _StatusWindow StatusWindow;
 typedef struct _GtkXIMInfo GtkXIMInfo;
@@ -1673,7 +1673,7 @@ status_window_free (StatusWindow *status_window)
   if (status_window->window)
     ctk_widget_destroy (status_window->window);
   
-  g_object_set_data (G_OBJECT (status_window->toplevel), "gtk-im-xim-status-window", NULL);
+  g_object_set_data (G_OBJECT (status_window->toplevel), "ctk-im-xim-status-window", NULL);
  
   g_free (status_window);
 }
@@ -1685,7 +1685,7 @@ status_window_get (GtkWidget *toplevel)
 {
   StatusWindow *status_window;
 
-  status_window = g_object_get_data (G_OBJECT (toplevel), "gtk-im-xim-status-window");
+  status_window = g_object_get_data (G_OBJECT (toplevel), "ctk-im-xim-status-window");
   if (status_window)
     return status_window;
   
@@ -1704,7 +1704,7 @@ status_window_get (GtkWidget *toplevel)
 		    G_CALLBACK (on_status_toplevel_notify_screen),
 		    status_window);
   
-  g_object_set_data (G_OBJECT (toplevel), "gtk-im-xim-status-window", status_window);
+  g_object_set_data (G_OBJECT (toplevel), "ctk-im-xim-status-window", status_window);
 
   return status_window;
 }

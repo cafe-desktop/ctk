@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintoperation.h: Print Operation
+ * ctkprintoperation.h: Print Operation
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
 #ifndef __CTK_PRINT_OPERATION_PRIVATE_H__
 #define __CTK_PRINT_OPERATION_PRIVATE_H__
 
-#include "gtkprintoperation.h"
+#include "ctkprintoperation.h"
 
 G_BEGIN_DECLS
 

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilesystemmodel.h: GtkTreeModel wrapping a GtkFileSystem
+ * ctkfilesystemmodel.h: GtkTreeModel wrapping a GtkFileSystem
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -20,8 +20,8 @@
 #define __CTK_FILE_SYSTEM_MODEL_H__
 
 #include <gio/gio.h>
-#include <gtk/gtkfilefilter.h>
-#include <gtk/gtktreemodel.h>
+#include <ctk/ctkfilefilter.h>
+#include <ctk/ctktreemodel.h>
 
 G_BEGIN_DECLS
 

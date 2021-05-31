@@ -19,10 +19,10 @@
 
 #include "config.h"
 
-#include "gtkmenutracker.h"
+#include "ctkmenutracker.h"
 
 /*< private >
- * SECTION:gtkmenutracker
+ * SECTION:ctkmenutracker
  * @Title: GtkMenuTracker
  * @Short_description: A helper class for interpreting #GMenuModel
  *

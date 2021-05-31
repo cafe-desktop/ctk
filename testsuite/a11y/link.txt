@@ -2,7 +2,7 @@ window1
   "window"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -13,7 +13,7 @@ window1
     index: 0
     name: Hello World!
     state: enabled focusable sensitive showing visible visited has-tooltip
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -27,4 +27,4 @@ window1
       <AtkHyperlink>
       start index: 0
       end index: 0
-      anchors: http://www.gtk.org
+      anchors: http://www.ctk.org

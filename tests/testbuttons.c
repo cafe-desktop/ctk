@@ -15,7 +15,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* various combinations of use_underline and use_stock */
 

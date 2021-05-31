@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkpapersize.c: Paper Size
+ * ctkpapersize.c: Paper Size
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#include "gtkprintutils.h"
+#include "ctkprintutils.h"
 
 gdouble
 _ctk_print_convert_to_mm (gdouble len, 

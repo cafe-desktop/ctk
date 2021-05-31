@@ -1,13 +1,13 @@
 #! /bin/bash
 
-CTK_QUERY_SETTINGS=${CTK_QUERY_SETTINGS:-gtk-query-settings}
+CTK_QUERY_SETTINGS=${CTK_QUERY_SETTINGS:-ctk-query-settings}
 TEST_RESULT_DIR=${TEST_RESULT_DIR:-/tmp}
 
 shopt -s nullglob
 
 echo "1..1"
 
-name=gtk-query-settings
+name=ctk-query-settings
 result=$TEST_RESULT_DIR/$name.out
 $CTK_QUERY_SETTINGS 2>/dev/null >$result
 if [ $(wc -l $result | cut -f1 -d' ') -eq 84 ]; then

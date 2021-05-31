@@ -32,20 +32,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "gtkprivate.h"
-#include "gtkaccelgroup.h"
-#include "gtkimcontextsimple.h"
-#include "gtksettings.h"
-#include "gtkwidget.h"
-#include "gtkdebug.h"
-#include "gtkintl.h"
-#include "gtkcomposetable.h"
+#include "ctkprivate.h"
+#include "ctkaccelgroup.h"
+#include "ctkimcontextsimple.h"
+#include "ctksettings.h"
+#include "ctkwidget.h"
+#include "ctkdebug.h"
+#include "ctkintl.h"
+#include "ctkcomposetable.h"
 
-#include "gtkimcontextsimpleprivate.h"
-#include "gtkimcontextsimpleseqs.h"
+#include "ctkimcontextsimpleprivate.h"
+#include "ctkimcontextsimpleseqs.h"
 
 /**
- * SECTION:gtkimcontextsimple
+ * SECTION:ctkimcontextsimple
  * @Short_description: An input method context supporting table-based input methods
  * @Title: GtkIMContextSimple
  *
@@ -54,7 +54,7 @@
  * from the X11 Compose files.
  *
  * GtkIMContextSimple reads additional compose sequences from the first of the
- * following files that is found: ~/.config/gtk-3.0/Compose, ~/.XCompose,
+ * following files that is found: ~/.config/ctk-3.0/Compose, ~/.XCompose,
  * /usr/share/X11/locale/$locale/Compose (for locales that have a nontrivial
  * Compose file). The syntax of these files is described in the Compose(5)
  * manual page.
@@ -78,7 +78,7 @@ struct _GtkIMContextSimplePrivate
 /* From the values below, the value 30 means the number of different first keysyms
  * that exist in the Compose file (from Xorg). When running compose-parse.py without
  * parameters, you get the count that you can put here. Needed when updating the
- * gtkimcontextsimpleseqs.h header file (contains the compose sequences).
+ * ctkimcontextsimpleseqs.h header file (contains the compose sequences).
  */
 const GtkComposeTableCompact ctk_compose_table_compact = {
   ctk_compose_seqs_compact,
@@ -161,7 +161,7 @@ ctk_im_context_simple_init_compose_table (GtkIMContextSimple *im_context_simple)
   gchar * const *sys_lang = NULL;
   gchar *x11_compose_file_dir = get_x11_compose_file_dir ();
 
-  path = g_build_filename (g_get_user_config_dir (), "gtk-3.0", "Compose", NULL);
+  path = g_build_filename (g_get_user_config_dir (), "ctk-3.0", "Compose", NULL);
   if (g_file_test (path, G_FILE_TEST_EXISTS))
     {
       ctk_im_context_simple_add_compose_file (im_context_simple, path);
@@ -872,7 +872,7 @@ beep_window (GdkWindow *window)
   gboolean   beep;
 
   g_object_get (ctk_settings_get_for_screen (screen),
-                "gtk-error-bell", &beep,
+                "ctk-error-bell", &beep,
                 NULL);
 
   if (beep)

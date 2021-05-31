@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentmanager.c: a manager for the recently used resources
+ * ctkrecentmanager.c: a manager for the recently used resources
  *
  * Copyright (C) 2006 Emmanuele Bassi
  *
@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gtkrecentmanager
+ * SECTION:ctkrecentmanager
  * @Title: GtkRecentManager
  * @short_description: Managing recently used files
  * @See_Also: #GBookmarkFile, #GtkSettings, #GtkRecentChooser
@@ -79,7 +79,7 @@
  * one, or more #GtkRecentChooser implementations.
  *
  * Note that the maximum age of the recently used files list is
- * controllable through the #GtkSettings:gtk-recent-files-max-age
+ * controllable through the #GtkSettings:ctk-recent-files-max-age
  * property.
  *
  * Recently used files are supported since GTK+ 2.10.
@@ -99,13 +99,13 @@
 #include <glib/gstdio.h>
 #include <gio/gio.h>
 
-#include "gtkrecentmanager.h"
-#include "gtkintl.h"
-#include "gtksettings.h"
-#include "gtkicontheme.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkmarshalers.h"
+#include "ctkrecentmanager.h"
+#include "ctkintl.h"
+#include "ctksettings.h"
+#include "ctkicontheme.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkmarshalers.h"
 
 /* the file where we store the recently used items */
 #define CTK_RECENTLY_USED_FILE  "recently-used.xbel"
@@ -262,7 +262,7 @@ has_case_prefix (const gchar *haystack,
 GQuark
 ctk_recent_manager_error_quark (void)
 {
-  return g_quark_from_static_string ("gtk-recent-manager-error-quark");
+  return g_quark_from_static_string ("ctk-recent-manager-error-quark");
 }
 
 static void
@@ -344,7 +344,7 @@ ctk_recent_manager_init (GtkRecentManager *manager)
 
   settings = ctk_settings_get_default ();
   if (settings)
-    g_signal_connect_swapped (settings, "notify::gtk-recent-files-enabled",
+    g_signal_connect_swapped (settings, "notify::ctk-recent-files-enabled",
                               G_CALLBACK (ctk_recent_manager_enabled_changed), manager);
 }
 
@@ -474,8 +474,8 @@ ctk_recent_manager_real_changed (GtkRecentManager *manager)
           settings = ctk_settings_get_default ();
           if (settings)
             g_object_get (G_OBJECT (settings),
-                          "gtk-recent-files-max-age", &age,
-                          "gtk-recent-files-enabled", &enabled,
+                          "ctk-recent-files-max-age", &age,
+                          "ctk-recent-files-enabled", &enabled,
                           NULL);
           else
             {
@@ -967,7 +967,7 @@ ctk_recent_manager_add_full (GtkRecentManager    *manager,
     }
 
   settings = ctk_settings_get_default ();
-  g_object_get (G_OBJECT (settings), "gtk-recent-files-enabled", &enabled, NULL);
+  g_object_get (G_OBJECT (settings), "ctk-recent-files-enabled", &enabled, NULL);
   if (!enabled)
     return TRUE;
 
@@ -1419,7 +1419,7 @@ ctk_recent_manager_changed (GtkRecentManager *manager)
   if (manager->priv->changed_timeout == 0)
     {
       manager->priv->changed_timeout = gdk_threads_add_timeout (250, emit_manager_changed, manager);
-      g_source_set_name_by_id (manager->priv->changed_timeout, "[gtk+] emit_manager_changed");
+      g_source_set_name_by_id (manager->priv->changed_timeout, "[ctk+] emit_manager_changed");
     }
   else
     {

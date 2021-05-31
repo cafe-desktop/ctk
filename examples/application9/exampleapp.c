@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "exampleapp.h"
 #include "exampleappwin.h"
@@ -59,7 +59,7 @@ example_app_startup (GApplication *app)
                                          "app.quit",
                                          quit_accels);
 
-  builder = ctk_builder_new_from_resource ("/org/gtk/exampleapp/app-menu.ui");
+  builder = ctk_builder_new_from_resource ("/org/ctk/exampleapp/app-menu.ui");
   app_menu = G_MENU_MODEL (ctk_builder_get_object (builder, "appmenu"));
   ctk_application_set_app_menu (CTK_APPLICATION (app), app_menu);
   g_object_unref (builder);
@@ -108,7 +108,7 @@ ExampleApp *
 example_app_new (void)
 {
   return g_object_new (EXAMPLE_APP_TYPE,
-                       "application-id", "org.gtk.exampleapp",
+                       "application-id", "org.ctk.exampleapp",
                        "flags", G_APPLICATION_HANDLES_OPEN,
                        NULL);
 }

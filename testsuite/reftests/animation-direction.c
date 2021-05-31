@@ -20,9 +20,9 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtk-reftest.h"
+#include "ctk-reftest.h"
 
 static gboolean
 unblock (gpointer data)
@@ -36,7 +36,7 @@ strip_attributes_if_no_animation (GtkWidget *widget)
 {
   gboolean enabled;
 
-  g_object_get (ctk_widget_get_settings (widget), "gtk-enable-animations", &enabled, NULL);
+  g_object_get (ctk_widget_get_settings (widget), "ctk-enable-animations", &enabled, NULL);
   if (enabled)
     return;
 

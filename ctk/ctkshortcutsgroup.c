@@ -1,4 +1,4 @@
-/* gtkshortcutsgroup.c
+/* ctkshortcutsgroup.c
  *
  * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
  *
@@ -18,17 +18,17 @@
 
 #include "config.h"
 
-#include "gtkshortcutsgroup.h"
+#include "ctkshortcutsgroup.h"
 
-#include "gtkshortcutsshortcut.h"
-#include "gtklabel.h"
-#include "gtkorientable.h"
-#include "gtksizegroup.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkshortcutsshortcut.h"
+#include "ctklabel.h"
+#include "ctkorientable.h"
+#include "ctksizegroup.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkshortcutsgroup
+ * SECTION:ctkshortcutsgroup
  * @Title: GtkShortcutsGroup
  * @Short_description: Represents a group of shortcuts in a GtkShortcutsWindow
  *

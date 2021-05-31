@@ -32,7 +32,7 @@ _gdk_x11_window_sync_rendering (GdkWindow *window)
   XImage *ximage;
 
   /* syncronize to X drawing queue, see:
-   * http://mail.gnome.org/archives/gtk-devel-list/2006-October/msg00103.html
+   * http://mail.gnome.org/archives/ctk-devel-list/2006-October/msg00103.html
    */
   ximage = XGetImage (display, DefaultRootWindow (display),
 	     	      0, 0, 1, 1, AllPlanes, ZPixmap);

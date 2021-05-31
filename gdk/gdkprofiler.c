@@ -56,7 +56,7 @@ gdk_profiler_start (int fd)
     {
       gchar *filename;
 
-      filename = g_strdup_printf ("gtk.%d.syscap", getpid ());
+      filename = g_strdup_printf ("ctk.%d.syscap", getpid ());
       g_print ("Writing profiling data to %s\n", filename);
       writer = sysprof_capture_writer_new (filename, 16*1024);
       g_free (filename);
@@ -95,7 +95,7 @@ gdk_profiler_add_mark (gint64      start,
                                    start,
                                    -1, getpid (),
                                    duration,
-                                   "gtk", name, message);
+                                   "ctk", name, message);
 }
 
 static guint
@@ -111,7 +111,7 @@ define_counter (const char *name,
   counter.id = (guint) sysprof_capture_writer_request_counter (writer, 1);
   counter.type = type;
   counter.value.vdbl = 0;
-  g_strlcpy (counter.category, "gtk", sizeof counter.category);
+  g_strlcpy (counter.category, "ctk", sizeof counter.category);
   g_strlcpy (counter.name, name, sizeof counter.name);
   g_strlcpy (counter.description, description, sizeof counter.name);
 

@@ -1,6 +1,6 @@
 #include <glib.h>
 #define GDK_VERSION_MIN_REQUIRED G_ENCODE_VERSION (3, 8)
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 int main (int argc, char **argv)
 {

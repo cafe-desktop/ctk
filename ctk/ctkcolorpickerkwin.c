@@ -17,7 +17,7 @@
 
 #include "config.h"
 
-#include "gtkcolorpickerkwinprivate.h"
+#include "ctkcolorpickerkwinprivate.h"
 #include <gio/gio.h>
 
 struct _GtkColorPickerKwin

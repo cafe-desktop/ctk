@@ -24,7 +24,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -34,17 +34,17 @@
 #include <math.h>
 #include <string.h>
 
-#include "gtkhsv.h"
-#include "gtkbindings.h"
-#include "gtkmarshalers.h"
-#include "gtkrender.h"
-#include "gtkstylecontext.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
+#include "ctkhsv.h"
+#include "ctkbindings.h"
+#include "ctkmarshalers.h"
+#include "ctkrender.h"
+#include "ctkstylecontext.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtkhsv
+ * SECTION:ctkhsv
  * @Short_description: A “color wheel” widget
  * @Title: GtkHSV
  * @See_also: #GtkColorSelection, #GtkColorSelectionDialog

@@ -1,6 +1,6 @@
 testexecdir = join_paths(installed_test_bindir, 'reftests')
 
-libgtkreftestprivate = library('gtkreftestprivate', [
+libctkreftestprivate = library('ctkreftestprivate', [
   'reftest-compare.c',
   'reftest-module.c',
   'reftest-snapshot.c'],
@@ -17,11 +17,11 @@ libreftest = shared_library('reftest',
     'textview-tags.c',
     'animation-direction.c',
   ],
-  link_with: libgtkreftestprivate,
+  link_with: libctkreftestprivate,
   dependencies : libctk_dep)
 
-ctk_reftest = executable('gtk-reftest', 'gtk-reftest.c',
-  link_with : [libgtkreftestprivate, libreftest],
+ctk_reftest = executable('ctk-reftest', 'ctk-reftest.c',
+  link_with : [libctkreftestprivate, libreftest],
   dependencies : libctk_dep,
   install: get_option('installed_tests'),
   install_dir: installed_test_bindir)
@@ -206,9 +206,9 @@ test_data = [
   'font-sizes-names.css',
   'font-sizes-names.ref.ui',
   'font-sizes-names.ui',
-  'gtk-image-effect-inherit.css',
-  'gtk-image-effect-inherit.ref.ui',
-  'gtk-image-effect-inherit.ui',
+  'ctk-image-effect-inherit.css',
+  'ctk-image-effect-inherit.ref.ui',
+  'ctk-image-effect-inherit.ui',
   'green-20x20.png',
   'grid-empty-with-spacing.ref.ui',
   'grid-empty-with-spacing.ui',
@@ -227,9 +227,9 @@ test_data = [
   'grid-spacing3.css',
   'grid-spacing3.ref.ui',
   'grid-spacing3.ui',
-  'gtk-icontheme-sizing.css',
-  'gtk-icontheme-sizing.ref.ui',
-  'gtk-icontheme-sizing.ui',
+  'ctk-icontheme-sizing.css',
+  'ctk-icontheme-sizing.ref.ui',
+  'ctk-icontheme-sizing.ui',
   'icon-effect-missing.css',
   'icon-effect-missing.ref.ui',
   'icon-effect-missing.ui',
@@ -449,7 +449,7 @@ foreach testname : test_data
                  '-o', join_paths(meson.current_build_dir(), 'output'),
                  join_paths(meson.current_source_dir(), testname),
          ],
-         env: [ 'CTK_IM_MODULE=gtk-im-context-simple',
+         env: [ 'CTK_IM_MODULE=ctk-im-context-simple',
                 'GSETTINGS_BACKEND=memory',
                 'GSETTINGS_SCHEMA_DIR=@0@'.format(ctk_schema_build_dir),
                 'CTK_TEST_MESON=1',

@@ -68,7 +68,7 @@ gdk_xsettings_notify (GdkX11Screen     *x11_screen,
 {
   GdkEvent new_event;
 
-  if (!g_str_has_prefix (name, "gtk-"))
+  if (!g_str_has_prefix (name, "ctk-"))
     return;
 
   new_event.type = GDK_SETTING;
@@ -458,7 +458,7 @@ read_settings (GdkX11Screen *x11_screen,
 	  g_value_init (copy, G_VALUE_TYPE (setting));
 	  g_value_copy (setting, copy);
 	  g_hash_table_insert (x11_screen->xsettings, 
-			       "gtk-xft-dpi", copy);
+			       "ctk-xft-dpi", copy);
 	}
     }
 
@@ -471,10 +471,10 @@ read_settings (GdkX11Screen *x11_screen,
 
   if (!screen->resolution_set)
     {
-      /* This code is duplicated with gtksettings.c:settings_update_resolution().
+      /* This code is duplicated with ctksettings.c:settings_update_resolution().
        * The update of the screen resolution needs to happen immediately when
        * gdk_x11_display_set_window_scale() is called, and not wait for events
-       * to be processed, so we can't always handling it in gtksettings.c.
+       * to be processed, so we can't always handling it in ctksettings.c.
        * But we can't always handle it here because the DPI can be set through
        * GtkSettings, which we don't have access to.
        */
@@ -484,7 +484,7 @@ read_settings (GdkX11Screen *x11_screen,
       double scale;
 
       if (gdk_screen_get_setting (GDK_SCREEN (x11_screen),
-                                  "gtk-xft-dpi", &value))
+                                  "ctk-xft-dpi", &value))
         dpi_int = g_value_get_int (&value);
 
       if (dpi_int > 0)

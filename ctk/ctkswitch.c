@@ -24,7 +24,7 @@
  */
 
 /**
- * SECTION:gtkswitch
+ * SECTION:ctkswitch
  * @Short_Description: A “light switch” style toggle
  * @Title: GtkSwitch
  * @See_Also: #GtkToggleButton
@@ -49,27 +49,27 @@
 
 #include "config.h"
 
-#include "gtkswitch.h"
+#include "ctkswitch.h"
 
-#include "deprecated/gtkactivatable.h"
-#include "deprecated/gtktoggleaction.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkwidget.h"
-#include "gtkmarshalers.h"
-#include "gtkapplicationprivate.h"
-#include "gtkactionable.h"
-#include "a11y/gtkswitchaccessible.h"
-#include "gtkactionhelper.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkcssgadgetprivate.h"
-#include "gtkiconhelperprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkprogresstrackerprivate.h"
-#include "gtksettingsprivate.h"
+#include "deprecated/ctkactivatable.h"
+#include "deprecated/ctktoggleaction.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkwidget.h"
+#include "ctkmarshalers.h"
+#include "ctkapplicationprivate.h"
+#include "ctkactionable.h"
+#include "a11y/ctkswitchaccessible.h"
+#include "ctkactionhelper.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkcssgadgetprivate.h"
+#include "ctkiconhelperprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkprogresstrackerprivate.h"
+#include "ctksettingsprivate.h"
 
 #include "fallback-c89.c"
 

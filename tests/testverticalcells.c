@@ -20,7 +20,7 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef struct _TreeEntry TreeEntry;
 

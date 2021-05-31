@@ -23,7 +23,7 @@
 #ifndef _CTK_INSPECTOR_SELECTOR_H_
 #define _CTK_INSPECTOR_SELECTOR_H_
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
 #define CTK_TYPE_INSPECTOR_SELECTOR            (ctk_inspector_selector_get_type())
 #define CTK_INSPECTOR_SELECTOR(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_SELECTOR, GtkInspectorSelector))

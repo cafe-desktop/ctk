@@ -17,7 +17,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 test_9d6da33ff5c5e41e3521e1afd63d2d67bc915753 (void)

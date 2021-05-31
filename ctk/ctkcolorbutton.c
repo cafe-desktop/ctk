@@ -23,29 +23,29 @@
  * Modified by the GTK+ Team and others 2003.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkcolorbutton.h"
+#include "ctkcolorbutton.h"
 
-#include "gtkbutton.h"
-#include "gtkmain.h"
-#include "gtkcolorchooser.h"
-#include "gtkcolorchooserprivate.h"
-#include "gtkcolorchooserdialog.h"
-#include "gtkcolorswatchprivate.h"
-#include "gtkdnd.h"
-#include "gtkdragdest.h"
-#include "gtkdragsource.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkbutton.h"
+#include "ctkmain.h"
+#include "ctkcolorchooser.h"
+#include "ctkcolorchooserprivate.h"
+#include "ctkcolorchooserdialog.h"
+#include "ctkcolorswatchprivate.h"
+#include "ctkdnd.h"
+#include "ctkdragdest.h"
+#include "ctkdragsource.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtkcolorbutton
+ * SECTION:ctkcolorbutton
  * @Short_description: A button to launch a color selection dialog
  * @Title: GtkColorButton
  * @See_also: #GtkColorSelectionDialog, #GtkFontButton
@@ -103,7 +103,7 @@ static void ctk_color_button_get_property  (GObject          *object,
                                             GValue           *value,
                                             GParamSpec       *pspec);
 
-/* gtkbutton signals */
+/* ctkbutton signals */
 static void ctk_color_button_clicked       (GtkButton        *button);
 
 /* source side drag signals */

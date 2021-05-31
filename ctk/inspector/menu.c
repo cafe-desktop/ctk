@@ -20,9 +20,9 @@
 
 #include "menu.h"
 
-#include "gtktreestore.h"
-#include "gtkwidgetprivate.h"
-#include "gtklabel.h"
+#include "ctktreestore.h"
+#include "ctkwidgetprivate.h"
+#include "ctklabel.h"
 
 
 enum
@@ -139,7 +139,7 @@ ctk_inspector_menu_class_init (GtkInspectorMenuClass *klass)
 {
   GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/menu.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/menu.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMenu, model);
 }
 

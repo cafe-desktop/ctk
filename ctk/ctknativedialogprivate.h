@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtknativedialogprivate.h: Native dialog
+ * ctknativedialogprivate.h: Native dialog
  * Copyright (C) 2015, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
 #ifndef __CTK_NATIVE_DIALOG_PRIVATE_H__
 #define __CTK_NATIVE_DIALOG_PRIVATE_H__
 
-#include <gtk/gtknativedialog.h>
+#include <ctk/ctknativedialog.h>
 
 G_BEGIN_DECLS
 

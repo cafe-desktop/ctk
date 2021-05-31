@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtkimagedefinitionprivate.h"
+#include "ctkimagedefinitionprivate.h"
 
-#include "deprecated/gtkiconfactory.h"
+#include "deprecated/ctkiconfactory.h"
 
 typedef struct _GtkImageDefinitionEmpty GtkImageDefinitionEmpty;
 typedef struct _GtkImageDefinitionPixbuf GtkImageDefinitionPixbuf;

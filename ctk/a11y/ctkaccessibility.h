@@ -19,7 +19,7 @@
 #define __CTK_ACCESSIBILITY_H__
 
 #include <glib.h>
-#include "gtk/gtkwidget.h"
+#include "ctk/ctkwidget.h"
 
 G_BEGIN_DECLS
 

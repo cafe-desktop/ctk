@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist>
 
-  <schema id='org.gtk.Settings.Debug' path='/org/gtk/settings/debug/'>
+  <schema id='org.ctk.Settings.Debug' path='/org/ctk/settings/debug/'>
     <key name='enable-inspector-keybinding' type='b'>
       <default>false</default>
       <summary>Enable inspector keybinding</summary>

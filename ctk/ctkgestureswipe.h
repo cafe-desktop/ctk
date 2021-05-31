@@ -21,11 +21,11 @@
 #define __CTK_GESTURE_SWIPE_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkwidget.h>
-#include <gtk/gtkgesturesingle.h>
+#include <ctk/ctkwidget.h>
+#include <ctk/ctkgesturesingle.h>
 
 G_BEGIN_DECLS
 

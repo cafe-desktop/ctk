@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtkgesturelongpress
+ * SECTION:ctkgesturelongpress
  * @Short_description: "Press and Hold" gesture
  * @Title: GtkGestureLongPress
  *
@@ -33,14 +33,14 @@
  */
 
 #include "config.h"
-#include "gtkgesturelongpress.h"
-#include "gtkgesturelongpressprivate.h"
-#include "gtkgestureprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkdnd.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
+#include "ctkgesturelongpress.h"
+#include "ctkgesturelongpressprivate.h"
+#include "ctkgestureprivate.h"
+#include "ctkmarshalers.h"
+#include "ctkdnd.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
 
 typedef struct _GtkGestureLongPressPrivate GtkGestureLongPressPrivate;
 
@@ -131,7 +131,7 @@ ctk_gesture_long_press_begin (GtkGesture       *gesture,
 
   widget = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));
   g_object_get (ctk_widget_get_settings (widget),
-                "gtk-long-press-time", &delay,
+                "ctk-long-press-time", &delay,
                 NULL);
 
   delay = (gint)(priv->delay_factor * delay);

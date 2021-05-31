@@ -1,4 +1,4 @@
-/* gtkbuilderparser.c
+/* ctkbuilderparser.c
  * Copyright (C) 2006-2007 Async Open Source,
  *                         Johan Dahlin <jdahlin@async.com.br>
  *
@@ -22,13 +22,13 @@
 #include <gmodule.h>
 
 #include <gio/gio.h>
-#include "gtkbuilderprivate.h"
-#include "gtkbuilder.h"
-#include "gtkbuildable.h"
-#include "gtkdebug.h"
-#include "gtkversion.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
+#include "ctkbuilderprivate.h"
+#include "ctkbuilder.h"
+#include "ctkbuildable.h"
+#include "ctkdebug.h"
+#include "ctkversion.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
 
 
 static void free_property_info (PropertyInfo *info);
@@ -1025,7 +1025,7 @@ end_element (GMarkupParseContext  *context,
        * required versions, possibly throw a signal allowing them
        * to check thier library versions here.
        */
-      if (!strcmp (req_info->library, "gtk+"))
+      if (!strcmp (req_info->library, "ctk+"))
         {
           if (!CTK_CHECK_VERSION (req_info->major, req_info->minor, 0))
             {

@@ -19,14 +19,14 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_TOOLTIP_PRIVATE_H__
 #define __CTK_TOOLTIP_PRIVATE_H__
 
 
-#include <gtk/gtktooltip.h>
+#include <ctk/ctktooltip.h>
 
 
 G_BEGIN_DECLS

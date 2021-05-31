@@ -17,7 +17,7 @@
 
 #include <config.h>
 
-#include "gtkwin32drawprivate.h"
+#include "ctkwin32drawprivate.h"
 
 typedef enum {
   ICON_CLOSE,

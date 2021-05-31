@@ -45,11 +45,11 @@
 #include "statistics.h"
 #include "visual.h"
 #include "window.h"
-#include "gtkstackcombo.h"
+#include "ctkstackcombo.h"
 
-#include "gtkmagnifierprivate.h"
+#include "ctkmagnifierprivate.h"
 
-#include "gtkmodulesprivate.h"
+#include "ctkmodulesprivate.h"
 
 void
 ctk_inspector_init (void)
@@ -86,7 +86,7 @@ ctk_inspector_init (void)
       gchar **paths;
       int i;
 
-      extension_point = g_io_extension_point_register ("gtk-inspector-page");
+      extension_point = g_io_extension_point_register ("ctk-inspector-page");
       g_io_extension_point_set_required_type (extension_point, CTK_TYPE_WIDGET);
 
       paths = _ctk_get_module_path ("inspector");

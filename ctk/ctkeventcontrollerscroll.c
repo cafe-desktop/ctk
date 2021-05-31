@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gtkeventcontrollerscroll
+ * SECTION:ctkeventcontrollerscroll
  * @Short_description: Event controller for scroll events
  * @Title: GtkEventControllerScroll
  * @See_also: #GtkEventController
@@ -60,13 +60,13 @@
  **/
 #include "config.h"
 
-#include "gtkintl.h"
-#include "gtkwidget.h"
-#include "gtkeventcontrollerprivate.h"
-#include "gtkeventcontrollerscroll.h"
-#include "gtktypebuiltins.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkwidget.h"
+#include "ctkeventcontrollerprivate.h"
+#include "ctkeventcontrollerscroll.h"
+#include "ctktypebuiltins.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
 
 #include "fallback-c89.c"
 

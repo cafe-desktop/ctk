@@ -1,4 +1,4 @@
-/* gtkrecentchooserutils.h - Private utility functions for implementing a
+/* ctkrecentchooserutils.h - Private utility functions for implementing a
  *                           GtkRecentChooser interface
  *
  * Copyright (C) 2006 Emmanuele Bassi
@@ -18,14 +18,14 @@
  * You should have received a copy of the GNU Library General Public
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  *
- * Based on gtkfilechooserutils.h:
+ * Based on ctkfilechooserutils.h:
  *	Copyright (C) 2003 Red Hat, Inc.
  */
  
 #ifndef __CTK_RECENT_CHOOSER_UTILS_H__
 #define __CTK_RECENT_CHOOSER_UTILS_H__
 
-#include "gtkrecentchooserprivate.h"
+#include "ctkrecentchooserprivate.h"
 
 G_BEGIN_DECLS
 

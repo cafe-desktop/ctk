@@ -1,4 +1,4 @@
-/* gtktextchildprivate.h - child pixmaps and widgets
+/* ctktextchildprivate.h - child pixmaps and widgets
  *
  * Copyright (c) 1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
@@ -50,7 +50,7 @@
 #ifndef __CTK_TEXT_CHILD_PRIVATE_H__
 #define __CTK_TEXT_CHILD_PRIVATE_H__
 
-#include <gtk/gtktexttypes.h>
+#include <ctk/ctktexttypes.h>
 
 G_BEGIN_DECLS
 

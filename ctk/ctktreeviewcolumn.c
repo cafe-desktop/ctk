@@ -1,4 +1,4 @@
-/* gtktreeviewcolumn.c
+/* ctktreeviewcolumn.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -17,35 +17,35 @@
 
 #include "config.h"
 
-#include "gtktreeviewcolumn.h"
+#include "ctktreeviewcolumn.h"
 
 #include <string.h>
 
-#include "gtktreeview.h"
-#include "gtktreeprivate.h"
-#include "gtkcelllayout.h"
-#include "gtkbutton.h"
-#include "deprecated/gtkalignment.h"
-#include "gtklabel.h"
-#include "gtkbox.h"
-#include "gtkmarshalers.h"
-#include "gtkimage.h"
-#include "gtkcellareacontext.h"
-#include "gtkcellareabox.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtktypebuiltins.h"
-#include "a11y/gtktreeviewaccessibleprivate.h"
+#include "ctktreeview.h"
+#include "ctktreeprivate.h"
+#include "ctkcelllayout.h"
+#include "ctkbutton.h"
+#include "deprecated/ctkalignment.h"
+#include "ctklabel.h"
+#include "ctkbox.h"
+#include "ctkmarshalers.h"
+#include "ctkimage.h"
+#include "ctkcellareacontext.h"
+#include "ctkcellareabox.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctktypebuiltins.h"
+#include "a11y/ctktreeviewaccessibleprivate.h"
 
 
 /**
- * SECTION:gtktreeviewcolumn
+ * SECTION:ctktreeviewcolumn
  * @Short_description: A visible column in a GtkTreeView widget
  * @Title: GtkTreeViewColumn
  * @See_also: #GtkTreeView, #GtkTreeSelection, #GtkTreeModel, #GtkTreeSortable,
  *   #GtkTreeModelSort, #GtkListStore, #GtkTreeStore, #GtkCellRenderer, #GtkCellEditable,
  *   #GtkCellRendererPixbuf, #GtkCellRendererText, #GtkCellRendererToggle,
- *   [GtkTreeView drag-and-drop][gtk3-GtkTreeView-drag-and-drop]
+ *   [GtkTreeView drag-and-drop][ctk3-GtkTreeView-drag-and-drop]
  *
  * The GtkTreeViewColumn object represents a visible column in a #GtkTreeView widget.
  * It allows to set properties of the column header, and functions as a holding pen for
@@ -136,7 +136,7 @@ struct _GtkTreeViewColumnPrivate
   gfloat xalign;
 
   /* Sizing fields */
-  /* see gtk+/doc/tree-column-sizing.txt for more information on them */
+  /* see ctk+/doc/tree-column-sizing.txt for more information on them */
   GtkTreeViewColumnSizing column_type;
   gint padding;
   gint x_offset;
@@ -937,7 +937,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (priv->tree_view)
         g_object_get (ctk_widget_get_settings (priv->tree_view),
-                      "gtk-alternative-sort-arrows", &alternative,
+                      "ctk-alternative-sort-arrows", &alternative,
                       NULL);
       else
         alternative = FALSE;
@@ -1304,7 +1304,7 @@ ctk_tree_view_column_remove_editable_callback (GtkCellArea     *area,
 }
 
 /* Exported Private Functions.
- * These should only be called by gtktreeview.c or gtktreeviewcolumn.c
+ * These should only be called by ctktreeview.c or ctktreeviewcolumn.c
  */
 void
 _ctk_tree_view_column_realize_button (GtkTreeViewColumn *column)

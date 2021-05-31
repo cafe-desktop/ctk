@@ -19,10 +19,10 @@
 
 #include "config.h"
 
-#include "gtkcssanimationprivate.h"
+#include "ctkcssanimationprivate.h"
 
-#include "gtkcsseasevalueprivate.h"
-#include "gtkprogresstrackerprivate.h"
+#include "ctkcsseasevalueprivate.h"
+#include "ctkprogresstrackerprivate.h"
 
 #include <math.h>
 

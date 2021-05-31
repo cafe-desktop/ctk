@@ -19,28 +19,28 @@
 
 #include "config.h"
 
-#include "gtkcssshorthandpropertyprivate.h"
+#include "ctkcssshorthandpropertyprivate.h"
 
 #include <cairo-gobject.h>
 #include <math.h>
 
-#include "gtkcssarrayvalueprivate.h"
-#include "gtkcssbgsizevalueprivate.h"
-#include "gtkcssbordervalueprivate.h"
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcsscornervalueprivate.h"
-#include "gtkcsseasevalueprivate.h"
-#include "gtkcssenumvalueprivate.h"
-#include "gtkcssimageprivate.h"
-#include "gtkcssimagevalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcsspositionvalueprivate.h"
-#include "gtkcssrepeatvalueprivate.h"
-#include "gtkcssstringvalueprivate.h"
-#include "gtkcssstylefuncsprivate.h"
-#include "gtkcssvalueprivate.h"
-#include "deprecated/gtkstylepropertiesprivate.h"
-#include "gtktypebuiltins.h"
+#include "ctkcssarrayvalueprivate.h"
+#include "ctkcssbgsizevalueprivate.h"
+#include "ctkcssbordervalueprivate.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcsscornervalueprivate.h"
+#include "ctkcsseasevalueprivate.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkcssimageprivate.h"
+#include "ctkcssimagevalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcsspositionvalueprivate.h"
+#include "ctkcssrepeatvalueprivate.h"
+#include "ctkcssstringvalueprivate.h"
+#include "ctkcssstylefuncsprivate.h"
+#include "ctkcssvalueprivate.h"
+#include "deprecated/ctkstylepropertiesprivate.h"
+#include "ctktypebuiltins.h"
 
 /* this is in case round() is not provided by the compiler, 
  * such as in the case of C89 compilers, like MSVC
@@ -1160,7 +1160,7 @@ pack_font_description (GtkCssShorthandProperty *shorthand,
       g_string_free (s, TRUE);
     }
 
-  v = (* query_func) (_ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("-gtk-dpi"))), query_data);
+  v = (* query_func) (_ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("-ctk-dpi"))), query_data);
   dpi = _ctk_css_number_value_get (v, 96);
   v = (* query_func) (_ctk_css_style_property_get_id (CTK_CSS_STYLE_PROPERTY (_ctk_style_property_lookup ("font-size"))), query_data);
   if (v)
@@ -1375,13 +1375,13 @@ _ctk_css_shorthand_property_init_properties (void)
                                           parse_border,
                                           NULL,
                                           NULL);
-  _ctk_css_shorthand_property_register   ("-gtk-outline-radius",
+  _ctk_css_shorthand_property_register   ("-ctk-outline-radius",
                                           G_TYPE_INT,
                                           outline_radius_subproperties,
                                           parse_border_radius,
                                           unpack_border_radius,
                                           pack_border_radius);
-  _ctk_style_property_add_alias ("-gtk-outline-radius", "outline-radius");
+  _ctk_style_property_add_alias ("-ctk-outline-radius", "outline-radius");
   _ctk_css_shorthand_property_register   ("outline",
                                           G_TYPE_NONE,
                                           outline_subproperties,

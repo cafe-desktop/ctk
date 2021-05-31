@@ -20,8 +20,8 @@
 #include "config.h"
 
 #include <glib/gi18n-lib.h>
-#include <gtk/gtk.h>
-#include "gtkpopoveraccessible.h"
+#include <ctk/ctk.h>
+#include "ctkpopoveraccessible.h"
 
 typedef struct _GtkPopoverAccessiblePrivate GtkPopoverAccessiblePrivate;
 

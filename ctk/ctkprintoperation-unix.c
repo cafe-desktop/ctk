@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintoperation-unix.c: Print Operation Details for Unix 
+ * ctkprintoperation-unix.c: Print Operation Details for Unix 
  *                           and Unix-like platforms
  * Copyright (C) 2006, Red Hat, Inc.
  *
@@ -29,21 +29,21 @@
 #include <fcntl.h>
 
 #include <glib/gstdio.h>
-#include "gtkprintoperation-private.h"
-#include "gtkprintoperation-portal.h"
-#include "gtkmessagedialog.h"
-#include "gtkprinter-private.h"
+#include "ctkprintoperation-private.h"
+#include "ctkprintoperation-portal.h"
+#include "ctkmessagedialog.h"
+#include "ctkprinter-private.h"
 
 #include <cairo-pdf.h>
 #include <cairo-ps.h>
-#include "gtkprivate.h"
-#include "gtkprintunixdialog.h"
-#include "gtkpagesetupunixdialog.h"
-#include "gtkprintbackend.h"
-#include "gtkprinter.h"
-#include "gtkprintjob.h"
-#include "gtklabel.h"
-#include "gtkintl.h"
+#include "ctkprivate.h"
+#include "ctkprintunixdialog.h"
+#include "ctkpagesetupunixdialog.h"
+#include "ctkprintbackend.h"
+#include "ctkprinter.h"
+#include "ctkprintjob.h"
+#include "ctklabel.h"
+#include "ctkintl.h"
 
 
 typedef struct 
@@ -278,7 +278,7 @@ ctk_print_operation_unix_launch_preview (GtkPrintOperation *op,
     goto out;
 
   settings = ctk_settings_get_for_screen (screen);
-  g_object_get (settings, "gtk-print-preview-command", &preview_cmd, NULL);
+  g_object_get (settings, "ctk-print-preview-command", &preview_cmd, NULL);
 
   quoted_filename = g_shell_quote (filename);
   quoted_settings_filename = g_shell_quote (settings_filename);

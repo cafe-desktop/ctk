@@ -19,7 +19,7 @@
 #define __CTK_ACCEL_MAP_PRIVATE_H__
 
 
-#include <gtk/gtkaccelmap.h>
+#include <ctk/ctkaccelmap.h>
 
 G_BEGIN_DECLS
 

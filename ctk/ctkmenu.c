@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /**
- * SECTION:gtkmenu
+ * SECTION:ctkmenu
  * @Short_description: A menu widget
  * @Title: GtkMenu
  *
@@ -106,39 +106,39 @@
 
 #include  <gobject/gvaluecollector.h>
 
-#include "gtkaccellabel.h"
-#include "gtkaccelmap.h"
-#include "gtkadjustment.h"
-#include "gtkbindings.h"
-#include "gtkbuiltiniconprivate.h"
-#include "gtkcheckmenuitem.h"
-#include "gtkcheckmenuitemprivate.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkmenuprivate.h"
-#include "gtkmenuitemprivate.h"
-#include "gtkmenushellprivate.h"
-#include "gtkwindow.h"
-#include "gtkbox.h"
-#include "gtkscrollbar.h"
-#include "gtksettings.h"
-#include "gtkprivate.h"
-#include "gtkwidgetpath.h"
-#include "gtkwidgetprivate.h"
-#include "gtkdnd.h"
-#include "gtkintl.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindowprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtktooltipprivate.h"
+#include "ctkaccellabel.h"
+#include "ctkaccelmap.h"
+#include "ctkadjustment.h"
+#include "ctkbindings.h"
+#include "ctkbuiltiniconprivate.h"
+#include "ctkcheckmenuitem.h"
+#include "ctkcheckmenuitemprivate.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkmenuprivate.h"
+#include "ctkmenuitemprivate.h"
+#include "ctkmenushellprivate.h"
+#include "ctkwindow.h"
+#include "ctkbox.h"
+#include "ctkscrollbar.h"
+#include "ctksettings.h"
+#include "ctkprivate.h"
+#include "ctkwidgetpath.h"
+#include "ctkwidgetprivate.h"
+#include "ctkdnd.h"
+#include "ctkintl.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindowprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctktooltipprivate.h"
 
-#include "deprecated/gtktearoffmenuitem.h"
+#include "deprecated/ctktearoffmenuitem.h"
 
 
-#include "a11y/gtkmenuaccessible.h"
+#include "a11y/ctkmenuaccessible.h"
 #include "gdk/gdk-private.h"
 
 #define NAVIGATION_REGION_OVERSHOOT 50  /* How much the navigation region
@@ -154,8 +154,8 @@
 #define MENU_POPUP_DELAY     225
 #define MENU_POPDOWN_DELAY  1000
 
-#define ATTACH_INFO_KEY "gtk-menu-child-attach-info-key"
-#define ATTACHED_MENUS "gtk-attached-menus"
+#define ATTACH_INFO_KEY "ctk-menu-child-attach-info-key"
+#define ATTACHED_MENUS "ctk-attached-menus"
 
 typedef struct _GtkMenuAttachData  GtkMenuAttachData;
 typedef struct _GtkMenuPopdownData GtkMenuPopdownData;
@@ -339,7 +339,7 @@ static void ctk_menu_get_preferred_height_for_width (GtkWidget           *widget
                                                      gint                *natural_size);
 
 
-static const gchar attach_data_key[] = "gtk-menu-attach-data";
+static const gchar attach_data_key[] = "ctk-menu-attach-data";
 
 static guint menu_signals[LAST_SIGNAL] = { 0 };
 
@@ -1499,7 +1499,7 @@ attach_widget_screen_changed (GtkWidget *attach_widget,
                               GtkMenu   *menu)
 {
   if (ctk_widget_has_screen (attach_widget) &&
-      !g_object_get_data (G_OBJECT (menu), "gtk-menu-explicit-screen"))
+      !g_object_get_data (G_OBJECT (menu), "ctk-menu-explicit-screen"))
     menu_change_screen (menu, ctk_widget_get_screen (attach_widget));
 }
 
@@ -1797,7 +1797,7 @@ associate_menu_grab_transfer_window (GtkMenu *menu)
   GdkWindow *transfer_window;
 
   toplevel_window = ctk_widget_get_window (priv->toplevel);
-  transfer_window = g_object_get_data (G_OBJECT (menu), "gtk-menu-transfer-window");
+  transfer_window = g_object_get_data (G_OBJECT (menu), "ctk-menu-transfer-window");
 
   if (toplevel_window == NULL || transfer_window == NULL)
     return;
@@ -1894,7 +1894,7 @@ ctk_menu_popup_internal (GtkMenu             *menu,
    * owner_events = TRUE, which we override further down with a
    * grab on the menu. (We can't grab on the menu until it is mapped;
    * we probably could just leave the grab on the other window,
-   * with a little reorganization of the code in gtkmenu*).
+   * with a little reorganization of the code in ctkmenu*).
    */
   grab_keyboard = ctk_menu_shell_get_take_focus (menu_shell);
   ctk_window_set_accept_focus (CTK_WINDOW (priv->toplevel), grab_keyboard);
@@ -1963,7 +1963,7 @@ ctk_menu_popup_internal (GtkMenu             *menu,
   parent_toplevel = NULL;
   if (parent_menu_shell)
     parent_toplevel = ctk_widget_get_toplevel (parent_menu_shell);
-  else if (!g_object_get_data (G_OBJECT (menu), "gtk-menu-explicit-screen"))
+  else if (!g_object_get_data (G_OBJECT (menu), "ctk-menu-explicit-screen"))
     {
       GtkWidget *attach_widget = ctk_menu_get_attach_widget (menu);
       if (attach_widget)
@@ -3314,7 +3314,7 @@ ctk_menu_focus (GtkWidget       *widget,
 static GdkWindow *
 menu_grab_transfer_window_get (GtkMenu *menu)
 {
-  GdkWindow *window = g_object_get_data (G_OBJECT (menu), "gtk-menu-transfer-window");
+  GdkWindow *window = g_object_get_data (G_OBJECT (menu), "ctk-menu-transfer-window");
   if (!window)
     {
       GdkWindowAttr attributes;
@@ -3339,7 +3339,7 @@ menu_grab_transfer_window_get (GtkMenu *menu)
 
       gdk_window_show (window);
 
-      g_object_set_data (G_OBJECT (menu), I_("gtk-menu-transfer-window"), window);
+      g_object_set_data (G_OBJECT (menu), I_("ctk-menu-transfer-window"), window);
     }
 
   return window;
@@ -3349,14 +3349,14 @@ static void
 menu_grab_transfer_window_destroy (GtkMenu *menu)
 {
   GtkMenuPrivate *priv = menu->priv;
-  GdkWindow *window = g_object_get_data (G_OBJECT (menu), "gtk-menu-transfer-window");
+  GdkWindow *window = g_object_get_data (G_OBJECT (menu), "ctk-menu-transfer-window");
   if (window)
     {
       GdkWindow *toplevel_window;
 
       ctk_widget_unregister_window (CTK_WIDGET (menu), window);
       gdk_window_destroy (window);
-      g_object_set_data (G_OBJECT (menu), I_("gtk-menu-transfer-window"), NULL);
+      g_object_set_data (G_OBJECT (menu), I_("ctk-menu-transfer-window"), NULL);
 
       toplevel_window = ctk_widget_get_window (priv->toplevel);
 
@@ -4345,7 +4345,7 @@ ctk_menu_handle_scrolling (GtkMenu *menu,
                                            ? MENU_SCROLL_TIMEOUT2
                                            : MENU_SCROLL_TIMEOUT1,
                                          ctk_menu_scroll_timeout, menu);
-              g_source_set_name_by_id (priv->scroll_timeout, "[gtk+] ctk_menu_scroll_timeout");
+              g_source_set_name_by_id (priv->scroll_timeout, "[ctk+] ctk_menu_scroll_timeout");
             }
           else if (!enter && !in_arrow && priv->upper_arrow_prelight)
             {
@@ -4419,7 +4419,7 @@ ctk_menu_handle_scrolling (GtkMenu *menu,
                                            ? MENU_SCROLL_TIMEOUT2
                                            : MENU_SCROLL_TIMEOUT1,
                                          ctk_menu_scroll_timeout, menu);
-              g_source_set_name_by_id (priv->scroll_timeout, "[gtk+] ctk_menu_scroll_timeout");
+              g_source_set_name_by_id (priv->scroll_timeout, "[ctk+] ctk_menu_scroll_timeout");
             }
           else if (!enter && !in_arrow && priv->lower_arrow_prelight)
             {
@@ -4907,7 +4907,7 @@ ctk_menu_set_submenu_navigation_region (GtkMenu          *menu,
                                                                ctk_menu_stop_navigating_submenu_cb,
                                                                popdown_data,
                                                                (GDestroyNotify) g_free);
-      g_source_set_name_by_id (priv->navigation_timeout, "[gtk+] ctk_menu_stop_navigating_submenu_cb");
+      g_source_set_name_by_id (priv->navigation_timeout, "[ctk+] ctk_menu_stop_navigating_submenu_cb");
     }
 }
 
@@ -5696,7 +5696,7 @@ ctk_menu_set_screen (GtkMenu   *menu,
   g_return_if_fail (CTK_IS_MENU (menu));
   g_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
 
-  g_object_set_data (G_OBJECT (menu), I_("gtk-menu-explicit-screen"), screen);
+  g_object_set_data (G_OBJECT (menu), I_("ctk-menu-explicit-screen"), screen);
 
   if (screen)
     {

@@ -1,14 +1,14 @@
-# translation of gtk+.master.ml.po to
-# This file is distributed under the same license as the gtk+ package.
-# Copyright (C) 2003-2008 gtk+'S COPYRIGHT HOLDER.
+# translation of ctk+.master.ml.po to
+# This file is distributed under the same license as the ctk+ package.
+# Copyright (C) 2003-2008 ctk+'S COPYRIGHT HOLDER.
 #
 # FSF-India <locale@gnu.org.in>, 2003.
 # Ani Peter <apeter@redhat.com>, 2006, 2007, 2009, 2012, 2013.
 # Hari Vishnu <harivishnu@gmail.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: gtk+.master.ml\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gtk"
+"Project-Id-Version: ctk+.master.ml\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=ctk"
 "%2b&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2013-03-12 22:05+0000\n"
 "PO-Revision-Date: 2013-03-25 11:25+0530\n"
@@ -68,9 +68,9 @@ msgstr "ക്രമീകരിക്കാനുള്ള GTK ഡീബഗ്�
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
-#. Placeholder in --gtk-debug=FLAGS in --help output
-#. Placeholder in --gtk-no-debug=FLAGS in --help output
-#: ../gdk/gdk.c:216 ../gdk/gdk.c:219 ../gtk/gtkmain.c:453 ../gtk/gtkmain.c:456
+#. Placeholder in --ctk-debug=FLAGS in --help output
+#. Placeholder in --ctk-no-debug=FLAGS in --help output
+#: ../gdk/gdk.c:216 ../gdk/gdk.c:219 ../ctk/ctkmain.c:453 ../ctk/ctkmain.c:456
 msgid "FLAGS"
 msgstr "FLAGS"
 
@@ -455,165 +455,165 @@ msgid_plural "Opening %d Items"
 msgstr[0] "%d വസ്തു തുറക്കുന്നു"
 msgstr[1] "%d വസ്തുക്കള്‍ തുറക്കുന്നു"
 
-#: ../gtk/a11y/gtkbooleancellaccessible.c:43
+#: ../ctk/a11y/ctkbooleancellaccessible.c:43
 msgctxt "Action description"
 msgid "Toggles the cell"
 msgstr "സെല്‍ മാറ്റുന്നു"
 
-#: ../gtk/a11y/gtkbooleancellaccessible.c:63
-#: ../gtk/a11y/gtkswitchaccessible.c:101
+#: ../ctk/a11y/ctkbooleancellaccessible.c:63
+#: ../ctk/a11y/ctkswitchaccessible.c:101
 msgctxt "Action name"
 msgid "Toggle"
 msgstr "മാറ്റുക"
 
-#: ../gtk/a11y/gtkbuttonaccessible.c:341
-#: ../gtk/a11y/gtkmenuitemaccessible.c:436
+#: ../ctk/a11y/ctkbuttonaccessible.c:341
+#: ../ctk/a11y/ctkmenuitemaccessible.c:436
 msgctxt "Action name"
 msgid "Click"
 msgstr "ക്ലിക്ക് ചെയ്യുക"
 
-#: ../gtk/a11y/gtkbuttonaccessible.c:350
+#: ../ctk/a11y/ctkbuttonaccessible.c:350
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "ബട്ടണ്‍ ക്ലിക്ക് ചെയ്യുന്നു"
 
-#: ../gtk/a11y/gtkcellaccessible.c:258
+#: ../ctk/a11y/ctkcellaccessible.c:258
 msgctxt "Action name"
 msgid "Expand or contract"
 msgstr "വികസിപ്പിയ്ക്കുക അല്ലെങ്കില്‍ ചെറുതാക്കുക"
 
-#: ../gtk/a11y/gtkcellaccessible.c:260
+#: ../ctk/a11y/ctkcellaccessible.c:260
 #| msgctxt "Stock label"
 #| msgid "_Edit"
 msgctxt "Action name"
 msgid "Edit"
 msgstr "ചിട്ടപ്പെടുത്തുക"
 
-#: ../gtk/a11y/gtkcellaccessible.c:262
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:72
-#: ../gtk/a11y/gtkentryaccessible.c:1541
-#: ../gtk/a11y/gtkexpanderaccessible.c:281
+#: ../ctk/a11y/ctkcellaccessible.c:262
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:72
+#: ../ctk/a11y/ctkentryaccessible.c:1541
+#: ../ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "സജീവമാക്കുക"
 
-#: ../gtk/a11y/gtkcellaccessible.c:275
+#: ../ctk/a11y/ctkcellaccessible.c:275
 msgctxt "Action description"
 msgid "Expands or contracts the row in the tree view containing this cell"
 msgstr "ഈ സെല്‍ അടങ്ങുന്ന ട്രീ കാഴ്ചയിലുള്ള നിരയുടെ വലിപ്പം മാറ്റുന്നു"
 
-#: ../gtk/a11y/gtkcellaccessible.c:277
+#: ../ctk/a11y/ctkcellaccessible.c:277
 msgctxt "Action description"
 msgid "Creates a widget in which the contents of the cell can be edited"
 msgstr ""
 "ഉള്ളടക്കം ചിട്ടപ്പെടുത്തുവാന്‍ സാധിയ്ക്കുന്നൊരു വിഡ്ജറ്റ് തയ്യാറാക്കുന്നു"
 
-#: ../gtk/a11y/gtkcellaccessible.c:279
+#: ../ctk/a11y/ctkcellaccessible.c:279
 msgctxt "Action description"
 msgid "Activates the cell"
 msgstr "സെല്‍ സജീവമാക്കുന്നു"
 
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:71
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:71
 #| msgid "_Select"
 msgctxt "Action name"
 msgid "Select"
 msgstr "തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:73
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:73
 #| msgid "_Customize"
 msgctxt "Action name"
 msgid "Customize"
 msgstr "യഥേഷ്ടമാക്കുക"
 
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:84
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:84
 #| msgid "Select a Color"
 msgctxt "Action description"
 msgid "Selects the color"
 msgstr "ഒരു നിറം തെരഞ്ഞെടുക്കുന്നു"
 
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:85
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:85
 #| msgid "Brightness of the color."
 msgctxt "Action description"
 msgid "Activates the color"
 msgstr "നിറം സജ്ജമാക്കുന്നു"
 
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:86
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:86
 #| msgid "Custom color %d: %s"
 msgctxt "Action description"
 msgid "Customizes the color"
 msgstr "നിറം യഥേഷ്ടമാക്കുന്നു"
 
-#: ../gtk/a11y/gtkcomboboxaccessible.c:313
+#: ../ctk/a11y/ctkcomboboxaccessible.c:313
 #| msgid "_Pressure:"
 msgctxt "Action name"
 msgid "Press"
 msgstr "അമര്‍ത്തുക"
 
-#: ../gtk/a11y/gtkcomboboxaccessible.c:322
+#: ../ctk/a11y/ctkcomboboxaccessible.c:322
 #| msgid "Decreases the volume"
 msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "combobox അമര്‍ത്തുന്നു"
 
-#: ../gtk/a11y/gtkentryaccessible.c:1550
+#: ../ctk/a11y/ctkentryaccessible.c:1550
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr "എന്‍ട്രി സജീവമാക്കുന്നു"
 
-#: ../gtk/a11y/gtkexpanderaccessible.c:290
+#: ../ctk/a11y/ctkexpanderaccessible.c:290
 msgctxt "Action description"
 msgid "Activates the expander"
 msgstr "വികസിപ്പിയ്ക്കുന്ന സംവിധാനം സജീവമാക്കുന്നു"
 
-#: ../gtk/a11y/gtkmenuitemaccessible.c:445
+#: ../ctk/a11y/ctkmenuitemaccessible.c:445
 msgctxt "Action description"
 msgid "Clicks the menuitem"
 msgstr "മെനുവസ്തു ക്ലിക്ക് ചെയ്യുന്നു"
 
-#: ../gtk/a11y/gtkscalebuttonaccessible.c:140
+#: ../ctk/a11y/ctkscalebuttonaccessible.c:140
 msgctxt "Action description"
 msgid "Pops up the slider"
 msgstr "സ്ലൈഡര്‍ ലഭ്യമാക്കുന്നു"
 
-#: ../gtk/a11y/gtkscalebuttonaccessible.c:142
+#: ../ctk/a11y/ctkscalebuttonaccessible.c:142
 msgctxt "Action description"
 msgid "Dismisses the slider"
 msgstr "സ്ലൈഡര്‍ നിര്‍ത്തുന്നു"
 
-#: ../gtk/a11y/gtkscalebuttonaccessible.c:170
+#: ../ctk/a11y/ctkscalebuttonaccessible.c:170
 msgctxt "Action name"
 msgid "Popup"
 msgstr "പോപ്പപ്പ്"
 
-#: ../gtk/a11y/gtkscalebuttonaccessible.c:172
+#: ../ctk/a11y/ctkscalebuttonaccessible.c:172
 msgctxt "Action name"
 msgid "Dismiss"
 msgstr "ഉപേക്ഷിയ്ക്കുക"
 
-#: ../gtk/a11y/gtkspinneraccessible.c:39
+#: ../ctk/a11y/ctkspinneraccessible.c:39
 msgctxt "throbbing progress animation widget"
 msgid "Spinner"
 msgstr "സ്പിന്നര്‍"
 
-#: ../gtk/a11y/gtkspinneraccessible.c:40
+#: ../ctk/a11y/ctkspinneraccessible.c:40
 msgid "Provides visual indication of progress"
 msgstr "പുരോഗതിയുടെ കാണുന്ന സൂചിക ലഭ്യമാക്കുന്നു"
 
-#: ../gtk/a11y/gtkswitchaccessible.c:63
+#: ../ctk/a11y/ctkswitchaccessible.c:63
 msgctxt "light switch widget"
 msgid "Switch"
 msgstr "സ്വിച്ച്"
 
-#: ../gtk/a11y/gtkswitchaccessible.c:64
+#: ../ctk/a11y/ctkswitchaccessible.c:64
 msgid "Switches between on and off states"
 msgstr "ഓണ്‍, ഓഫ് അവസ്ഥകള്‍ തമ്മില്‍ മാറ്റുക"
 
-#: ../gtk/a11y/gtkswitchaccessible.c:110
+#: ../ctk/a11y/ctkswitchaccessible.c:110
 msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr "സ്വിച്ച് മാറ്റുന്നു"
 
-#: ../gtk/deprecated/gtkcolorsel.c:425
+#: ../ctk/deprecated/ctkcolorsel.c:425
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -622,7 +622,7 @@ msgstr ""
 "ഉള്ളിലുള്ള ത്രികോണത്തില്‍ "
 "നിന്നും ഈ നിറത്തിനുള്ള ഇരുളിമ അല്ലെങ്കില്‍ തെളിച്ചം തെരഞ്ഞെടുക്കുക."
 
-#: ../gtk/deprecated/gtkcolorsel.c:451
+#: ../ctk/deprecated/ctkcolorsel.c:451
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -631,67 +631,67 @@ msgstr ""
 "ക്ലിക്ക് ചെയ്തു് ഈ നിറം "
 "തെരഞ്ഞെടുക്കുക."
 
-#: ../gtk/deprecated/gtkcolorsel.c:461
+#: ../ctk/deprecated/ctkcolorsel.c:461
 msgid "_Hue:"
 msgstr "_ഹ്യൂ:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:462
+#: ../ctk/deprecated/ctkcolorsel.c:462
 msgid "Position on the color wheel."
 msgstr "കളര്‍ വീലിലുള്ള സ്ഥാനം."
 
-#: ../gtk/deprecated/gtkcolorsel.c:464
+#: ../ctk/deprecated/ctkcolorsel.c:464
 msgid "S_aturation:"
 msgstr "_സാച്ചുറേഷന്‍:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:465
+#: ../ctk/deprecated/ctkcolorsel.c:465
 msgid "Intensity of the color."
 msgstr "നിറത്തിന്റെ കാഠിന്യത."
 
-#: ../gtk/deprecated/gtkcolorsel.c:466
+#: ../ctk/deprecated/ctkcolorsel.c:466
 msgid "_Value:"
 msgstr "_മൂല്യം:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:467
+#: ../ctk/deprecated/ctkcolorsel.c:467
 msgid "Brightness of the color."
 msgstr "നിറത്തിന്റെ തെളിച്ചം."
 
-#: ../gtk/deprecated/gtkcolorsel.c:468
+#: ../ctk/deprecated/ctkcolorsel.c:468
 msgid "_Red:"
 msgstr "_ചുവപ്പു്:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:469
+#: ../ctk/deprecated/ctkcolorsel.c:469
 msgid "Amount of red light in the color."
 msgstr "നിറത്തില്‍ ചുവപ്പു് നിറത്തിന്റെ അളവ്."
 
-#: ../gtk/deprecated/gtkcolorsel.c:470
+#: ../ctk/deprecated/ctkcolorsel.c:470
 msgid "_Green:"
 msgstr "_പച്ച:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:471
+#: ../ctk/deprecated/ctkcolorsel.c:471
 msgid "Amount of green light in the color."
 msgstr "നിറത്തില്‍ പച്ച നിറത്തിന്റെ അളവ്."
 
-#: ../gtk/deprecated/gtkcolorsel.c:472
+#: ../ctk/deprecated/ctkcolorsel.c:472
 msgid "_Blue:"
 msgstr "_നീല:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:473
+#: ../ctk/deprecated/ctkcolorsel.c:473
 msgid "Amount of blue light in the color."
 msgstr "നിറത്തില്‍ നീല നിറത്തിന്റെ അളവ്."
 
-#: ../gtk/deprecated/gtkcolorsel.c:476
+#: ../ctk/deprecated/ctkcolorsel.c:476
 msgid "Op_acity:"
 msgstr "Op_acity:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:484 ../gtk/deprecated/gtkcolorsel.c:494
+#: ../ctk/deprecated/ctkcolorsel.c:484 ../ctk/deprecated/ctkcolorsel.c:494
 msgid "Transparency of the color."
 msgstr "നിറത്തിന്റെ ട്രാന്‍സ്പെറന്‍സി"
 
-#: ../gtk/deprecated/gtkcolorsel.c:501
+#: ../ctk/deprecated/ctkcolorsel.c:501
 msgid "Color _name:"
 msgstr "_ഏതു് നിറം:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:516
+#: ../ctk/deprecated/ctkcolorsel.c:516
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
 "such as 'orange' in this entry."
@@ -700,15 +700,15 @@ msgstr ""
 "അല്ലെങ്കില്‍, വെറുതെ "
 "നിറത്തിന്റെ പേരു് നല്‍കുക, ഉദാ. 'orange'."
 
-#: ../gtk/deprecated/gtkcolorsel.c:548
+#: ../ctk/deprecated/ctkcolorsel.c:548
 msgid "_Palette:"
 msgstr "_നിറക്കൂട്ട്:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:578
+#: ../ctk/deprecated/ctkcolorsel.c:578
 msgid "Color Wheel"
 msgstr "നിറങ്ങളുടെ ചക്രം"
 
-#: ../gtk/deprecated/gtkcolorsel.c:1072
+#: ../ctk/deprecated/ctkcolorsel.c:1072
 msgid ""
 "The previously-selected color, for comparison to the color you're selecting "
 "now. You can drag this color to a palette entry, or select this color as "
@@ -720,7 +720,7 @@ msgstr ""
 "അല്ലെങ്കില്‍, ഇതു് മറ്റൊരു "
 "സ്വാച്ചിലേക്കു് വലിച്ചിട്ടു് നിലവില്‍ ഉപയോഗിക്കുന്ന നിറമായി സജ്ജമാക്കുക."
 
-#: ../gtk/deprecated/gtkcolorsel.c:1078
+#: ../ctk/deprecated/ctkcolorsel.c:1078
 msgid ""
 "The color you've chosen. You can drag this color to a palette entry to save "
 "it for use in the future."
@@ -729,7 +729,7 @@ msgstr ""
 "നിങ്ങള്‍ക്കു് ഈ നിറം "
 "താലത്തിലേക്കു് വലിച്ചിടുവാന്‍ സാധ്യമാകുന്നു."
 
-#: ../gtk/deprecated/gtkcolorsel.c:1084
+#: ../ctk/deprecated/ctkcolorsel.c:1084
 msgid ""
 "The previously-selected color, for comparison to the color you're selecting "
 "now."
@@ -737,15 +737,15 @@ msgstr ""
 "നിങ്ങള്‍ മുമ്പു് തെരഞ്ഞെടുത്ത നിറം, ഇതു് നിങ്ങള്‍ മുമ്പു് തെരഞ്ഞെടുത്ത "
 "നിറവുമായി താരതമ്യപ്പെടുത്തുവാനാണു്."
 
-#: ../gtk/deprecated/gtkcolorsel.c:1088
+#: ../ctk/deprecated/ctkcolorsel.c:1088
 msgid "The color you've chosen."
 msgstr "നിങ്ങള്‍ തെരഞ്ഞെടുത്ത നിറം"
 
-#: ../gtk/deprecated/gtkcolorsel.c:1491
+#: ../ctk/deprecated/ctkcolorsel.c:1491
 msgid "_Save color here"
 msgstr "നിറം ഇവിടെ _സൂക്ഷിക്കുക"
 
-#: ../gtk/deprecated/gtkcolorsel.c:1695
+#: ../ctk/deprecated/ctkcolorsel.c:1695
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
 "drag a color swatch here or right-click it and select \"Save color here.\""
@@ -759,47 +759,47 @@ msgstr ""
 #. We emit the response for the Select button manually,
 #. * since we want to save the color first
 #.
-#: ../gtk/deprecated/gtkcolorseldialog.c:201 ../gtk/gtkappchooserdialog.c:509
-#: ../gtk/gtkcolorchooserdialog.c:150 ../gtk/gtkfontchooserdialog.c:174
-#: ../gtk/gtkprinteroptionwidget.c:550
+#: ../ctk/deprecated/ctkcolorseldialog.c:201 ../ctk/ctkappchooserdialog.c:509
+#: ../ctk/ctkcolorchooserdialog.c:150 ../ctk/ctkfontchooserdialog.c:174
+#: ../ctk/ctkprinteroptionwidget.c:550
 msgid "_Select"
 msgstr "_തെരഞ്ഞെടുക്കുക:"
 
-#: ../gtk/deprecated/gtkcolorseldialog.c:219
+#: ../ctk/deprecated/ctkcolorseldialog.c:219
 msgid "Color Selection"
 msgstr "നിറം തെരഞ്ഞെടുക്കല്‍"
 
 #. This is the default text shown in the preview entry, though the user
 #. can set it. Remember that some fonts only have capital letters.
-#: ../gtk/deprecated/gtkfontsel.c:124
+#: ../ctk/deprecated/ctkfontsel.c:124
 msgid "abcdefghijk ABCDEFGHIJK"
 msgstr "abcdefghijk ABCDEFGHIJK"
 
-#: ../gtk/deprecated/gtkfontsel.c:393
+#: ../ctk/deprecated/ctkfontsel.c:393
 msgid "_Family:"
 msgstr "_കുടുംബം:"
 
-#: ../gtk/deprecated/gtkfontsel.c:400
+#: ../ctk/deprecated/ctkfontsel.c:400
 msgid "_Style:"
 msgstr "_രീതി:"
 
-#: ../gtk/deprecated/gtkfontsel.c:407
+#: ../ctk/deprecated/ctkfontsel.c:407
 msgid "Si_ze:"
 msgstr "_വലിപ്പം:"
 
 #. create the text entry widget
-#: ../gtk/deprecated/gtkfontsel.c:584
+#: ../ctk/deprecated/ctkfontsel.c:584
 msgid "_Preview:"
 msgstr "സ്ക്രീനില്‍ _കാണുക:"
 
-#: ../gtk/deprecated/gtkfontsel.c:1720 ../gtk/gtkfontchooserdialog.c:183
+#: ../ctk/deprecated/ctkfontsel.c:1720 ../ctk/ctkfontchooserdialog.c:183
 msgid "Font Selection"
 msgstr "അക്ഷരസഞ്ചയം തെരഞ്ഞെടുക്കല്‍"
 
 #. Translators: this is the license preamble; the string at the end
 #. * contains the URL of the license.
 #.
-#: ../gtk/gtkaboutdialog.c:104
+#: ../ctk/ctkaboutdialog.c:104
 #, c-format
 msgid ""
 "This program comes with ABSOLUTELY NO WARRANTY;\n"
@@ -808,50 +808,50 @@ msgstr ""
 "ഈ പ്രോഗ്രാമിനു് വാറന്റി ലഭ്യമല്ല;\n"
 "വിശദവിവരങ്ങള്‍ക്കായി, <a href=\"%s\">%s</a> കാണുക"
 
-#: ../gtk/gtkaboutdialog.c:357
+#: ../ctk/ctkaboutdialog.c:357
 msgid "License"
 msgstr "അനുമതിപത്രം "
 
-#: ../gtk/gtkaboutdialog.c:358
+#: ../ctk/ctkaboutdialog.c:358
 msgid "The license of the program"
 msgstr "പ്രോഗ്രാമിനുള്ള അനുമതിപത്രം"
 
 #. Add the credits button
-#: ../gtk/gtkaboutdialog.c:751
+#: ../ctk/ctkaboutdialog.c:751
 msgid "C_redits"
 msgstr "_ബഹുമതികള്‍"
 
 #. Add the license button
-#: ../gtk/gtkaboutdialog.c:764
+#: ../ctk/ctkaboutdialog.c:764
 msgid "_License"
 msgstr "_അനുമതിപത്രം"
 
-#: ../gtk/gtkaboutdialog.c:980
+#: ../ctk/ctkaboutdialog.c:980
 msgid "Could not show link"
 msgstr "കണ്ണി കാണിക്കുവാന്‍ സാധ്യമായില്ല"
 
-#: ../gtk/gtkaboutdialog.c:1017
+#: ../ctk/ctkaboutdialog.c:1017
 msgid "Website"
 msgstr "വെബ്സൈറ്റ്"
 
-#: ../gtk/gtkaboutdialog.c:1071
+#: ../ctk/ctkaboutdialog.c:1071
 #, c-format
 msgid "About %s"
 msgstr "%s സംബന്ധിച്ച്"
 
-#: ../gtk/gtkaboutdialog.c:2398
+#: ../ctk/ctkaboutdialog.c:2398
 msgid "Created by"
 msgstr "ഉണ്ടാക്കുന്നതു്"
 
-#: ../gtk/gtkaboutdialog.c:2401
+#: ../ctk/ctkaboutdialog.c:2401
 msgid "Documented by"
 msgstr "സഹായക്കുറിപ്പുകള്‍"
 
-#: ../gtk/gtkaboutdialog.c:2411
+#: ../ctk/ctkaboutdialog.c:2411
 msgid "Translated by"
 msgstr "പരിഭാഷകര്‍"
 
-#: ../gtk/gtkaboutdialog.c:2416
+#: ../ctk/ctkaboutdialog.c:2416
 msgid "Artwork by"
 msgstr "കലാവിരുതുകള്‍"
 
@@ -860,7 +860,7 @@ msgstr "കലാവിരുതുകള്‍"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:159
+#: ../ctk/ctkaccellabel.c:159
 msgctxt "keyboard label"
 msgid "Shift"
 msgstr "Shift"
@@ -870,7 +870,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:165
+#: ../ctk/ctkaccellabel.c:165
 msgctxt "keyboard label"
 msgid "Ctrl"
 msgstr "Ctrl"
@@ -880,7 +880,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:171
+#: ../ctk/ctkaccellabel.c:171
 msgctxt "keyboard label"
 msgid "Alt"
 msgstr "Alt"
@@ -890,7 +890,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:805
+#: ../ctk/ctkaccellabel.c:805
 msgctxt "keyboard label"
 msgid "Super"
 msgstr "Super"
@@ -900,7 +900,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:818
+#: ../ctk/ctkaccellabel.c:818
 msgctxt "keyboard label"
 msgid "Hyper"
 msgstr "Hyper"
@@ -910,57 +910,57 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:832
+#: ../ctk/ctkaccellabel.c:832
 msgctxt "keyboard label"
 msgid "Meta"
 msgstr "Meta"
 
-#: ../gtk/gtkaccellabel.c:849
+#: ../ctk/ctkaccellabel.c:849
 msgctxt "keyboard label"
 msgid "Space"
 msgstr "Space"
 
-#: ../gtk/gtkaccellabel.c:852
+#: ../ctk/ctkaccellabel.c:852
 msgctxt "keyboard label"
 msgid "Backslash"
 msgstr "Backslash"
 
-#: ../gtk/gtkappchooserbutton.c:290
+#: ../ctk/ctkappchooserbutton.c:290
 #| msgid "Other application..."
 msgid "Other application…"
 msgstr "മറ്റു് പ്രയോഗങ്ങള്‍..."
 
-#: ../gtk/gtkappchooserdialog.c:137
+#: ../ctk/ctkappchooserdialog.c:137
 msgid "Failed to look for applications online"
 msgstr "പ്രയോഗങ്ങള്‍ക്കായി ഓണ്‍ലൈന്‍ പരിശോധന പരാജയപ്പെട്ടു"
 
-#: ../gtk/gtkappchooserdialog.c:188
+#: ../ctk/ctkappchooserdialog.c:188
 msgid "_Find applications online"
 msgstr "പ്രയോഗങ്ങള്‍ ഓണ്‍ലൈന്‍ _കണ്ടുപിടിയ്ക്കുക"
 
 #. Translators: %s is a filename
-#: ../gtk/gtkappchooserdialog.c:332
+#: ../ctk/ctkappchooserdialog.c:332
 #, c-format
 msgid "Select an application to open \"%s\""
 msgstr "\"%s\" തുറക്കുന്നതിനായി ഒരു പ്രയോഗം തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/gtkappchooserdialog.c:333 ../gtk/gtkappchooserwidget.c:657
+#: ../ctk/ctkappchooserdialog.c:333 ../ctk/ctkappchooserwidget.c:657
 #, c-format
 msgid "No applications available to open \"%s\""
 msgstr "\"%s\"-നുചിതമായ പ്രയോഗം ലഭ്യമല്ല"
 
 #. Translators: %s is a file type description
-#: ../gtk/gtkappchooserdialog.c:339
+#: ../ctk/ctkappchooserdialog.c:339
 #, c-format
 msgid "Select an application for \"%s\" files"
 msgstr "\"%s\" ഫയലുകള്‍ക്കുള്ളൊരു പ്രയോഗം തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/gtkappchooserdialog.c:341
+#: ../ctk/ctkappchooserdialog.c:341
 #, c-format
 msgid "No applications available to open \"%s\" files"
 msgstr "\"%s\" ഫയലുകള്‍ തുറക്കുവാന്‍ ആവശ്യമായി പ്രയോഗങ്ങള്‍ ലഭ്യമല്ല"
 
-#: ../gtk/gtkappchooserdialog.c:357
+#: ../ctk/ctkappchooserdialog.c:357
 msgid ""
 "Click \"Show other applications\", for more options, or \"Find applications "
 "online\" to install a new application"
@@ -970,31 +970,31 @@ msgstr ""
 "പ്രയോഗം ഇന്‍സ്റ്റോള്‍ ചെയ്യുന്നതിനായി \"ഓണ്‍ലൈനായി പ്രയോഗങ്ങള്‍ "
 "കണ്ടുപിടിയ്ക്കുക\""
 
-#: ../gtk/gtkappchooserdialog.c:427
+#: ../ctk/ctkappchooserdialog.c:427
 msgid "Forget association"
 msgstr "ബന്ധം മറക്കുക"
 
-#: ../gtk/gtkappchooserdialog.c:493
+#: ../ctk/ctkappchooserdialog.c:493
 msgid "Show other applications"
 msgstr "മറ്റു് പ്രയോഗങ്ങള്‍ കാണിയ്ക്കുക"
 
-#: ../gtk/gtkappchooserwidget.c:606
+#: ../ctk/ctkappchooserwidget.c:606
 msgid "Default Application"
 msgstr "സ്വതവേയുള്ള പ്രയോഗം"
 
-#: ../gtk/gtkappchooserwidget.c:744
+#: ../ctk/ctkappchooserwidget.c:744
 msgid "Recommended Applications"
 msgstr "ഉചിതമായ പ്രയോഗങ്ങള്‍"
 
-#: ../gtk/gtkappchooserwidget.c:759
+#: ../ctk/ctkappchooserwidget.c:759
 msgid "Related Applications"
 msgstr "ബന്ധമുള്ള പ്രയോഗങ്ങള്‍"
 
-#: ../gtk/gtkappchooserwidget.c:773
+#: ../ctk/ctkappchooserwidget.c:773
 msgid "Other Applications"
 msgstr "മറ്റു് പ്രയോഗങ്ങള്‍"
 
-#: ../gtk/gtkapplication.c:1563
+#: ../ctk/ctkapplication.c:1563
 #, c-format
 msgid ""
 "%s cannot quit at this time:\n"
@@ -1005,54 +1005,54 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../gtk/gtkapplicationwindow.c:333 ../gtk/gtkprintoperation-unix.c:480
-#: ../gtk/gtkprintoperation-win32.c:1445
+#: ../ctk/ctkapplicationwindow.c:333 ../ctk/ctkprintoperation-unix.c:480
+#: ../ctk/ctkprintoperation-win32.c:1445
 msgid "Application"
 msgstr "പ്രയോഗം"
 
-#: ../gtk/gtkassistant.c:1008
+#: ../ctk/ctkassistant.c:1008
 msgid "C_ontinue"
 msgstr "തു_ടരുക"
 
-#: ../gtk/gtkassistant.c:1011
+#: ../ctk/ctkassistant.c:1011
 msgid "Go _Back"
 msgstr "_പുറകോട്ട്"
 
-#: ../gtk/gtkassistant.c:1015
+#: ../ctk/ctkassistant.c:1015
 msgid "_Finish"
 msgstr "_പൂര്‍ത്തിയാക്കിയിരിക്കുന്നു"
 
-#: ../gtk/gtkbuilder-menus.c:220
+#: ../ctk/ctkbuilder-menus.c:220
 #, c-format
 msgid "Element <%s> not allowed inside <%s>"
 msgstr "എലമെന്റ് <%s>ഉള്ളില്‍ അനുവദിക്കുന്നതല്ല <%s>"
 
-#: ../gtk/gtkbuilder-menus.c:225
+#: ../ctk/ctkbuilder-menus.c:225
 #, c-format
 msgid "Element <%s> not allowed at toplevel"
 msgstr "എല്ലമെന്റ് <%s> മുകളില്‍ അനുവദിയ്ക്കുന്നില്ല"
 
-#: ../gtk/gtkbuilder-menus.c:314
+#: ../ctk/ctkbuilder-menus.c:314
 #, c-format
 msgid "text may not appear inside <%s>"
 msgstr "വാചകം ഉള്ളില്‍ ലഭ്യമാകുന്നതല്ല <%s>"
 
-#: ../gtk/gtkbuilderparser.c:341
+#: ../ctk/ctkbuilderparser.c:341
 #, c-format
 msgid "Invalid type function on line %d: '%s'"
 msgstr "%d-ല്‍ തെറ്റായ തരത്തിലുള്ള ഫംഗ്ഷന്‍: `%s'"
 
-#: ../gtk/gtkbuilderparser.c:405
+#: ../ctk/ctkbuilderparser.c:405
 #, c-format
 msgid "Duplicate object ID '%s' on line %d (previously on line %d)"
 msgstr "ഒബ്ജക്ട് ID'%s' വീണ്ടും വരി %d-ല്‍ (മുമ്പ് വരി %d-യില്‍)"
 
-#: ../gtk/gtkbuilderparser.c:865
+#: ../ctk/ctkbuilderparser.c:865
 #, c-format
 msgid "Invalid root element: '%s'"
 msgstr "തെറ്റായ റൂട്ട് എലമെന്റ്: `%s'"
 
-#: ../gtk/gtkbuilderparser.c:906
+#: ../ctk/ctkbuilderparser.c:906
 #, c-format
 msgid "Unhandled tag: '%s'"
 msgstr "അണ്‍ഹാന്‍ഡില്‍ട് ടാഗ്: '%s'"
@@ -1067,7 +1067,7 @@ msgstr "അണ്‍ഹാന്‍ഡില്‍ട് ടാഗ്: '%s'"
 #. * text direction of RTL and specify "calendar:YM", then the year
 #. * will appear to the right of the month.
 #.
-#: ../gtk/gtkcalendar.c:872
+#: ../ctk/ctkcalendar.c:872
 msgid "calendar:MY"
 msgstr "calendar:MY"
 
@@ -1075,7 +1075,7 @@ msgstr "calendar:MY"
 #. * first day of the week to calendar:week_start:1 if you want Monday
 #. * to be the first day of the week, and so on.
 #.
-#: ../gtk/gtkcalendar.c:910
+#: ../ctk/ctkcalendar.c:910
 msgid "calendar:week_start:0"
 msgstr "calendar:week_start:0"
 
@@ -1084,7 +1084,7 @@ msgstr "calendar:week_start:0"
 #. *
 #. * If you don't understand this, leave it as "2000"
 #.
-#: ../gtk/gtkcalendar.c:1910
+#: ../ctk/ctkcalendar.c:1910
 msgctxt "year measurement template"
 msgid "2000"
 msgstr "2000"
@@ -1099,7 +1099,7 @@ msgstr "2000"
 #. * digits. That needs support from your system and locale definition
 #. * too.
 #.
-#: ../gtk/gtkcalendar.c:1941 ../gtk/gtkcalendar.c:2633
+#: ../ctk/ctkcalendar.c:1941 ../ctk/ctkcalendar.c:2633
 #, c-format
 msgctxt "calendar:day:digits"
 msgid "%d"
@@ -1115,14 +1115,14 @@ msgstr "%d"
 #. * digits. That needs support from your system and locale definition
 #. * too.
 #.
-#: ../gtk/gtkcalendar.c:1973 ../gtk/gtkcalendar.c:2499
+#: ../ctk/ctkcalendar.c:1973 ../ctk/ctkcalendar.c:2499
 #, c-format
 msgctxt "calendar:week:digits"
 msgid "%d"
 msgstr "%d"
 
 #. Translators: This dictates how the year is displayed in
-#. * gtkcalendar widget.  See strftime() manual for the format.
+#. * ctkcalendar widget.  See strftime() manual for the format.
 #. * Use only ASCII in the translation.
 #. *
 #. * Also look for the msgid "2000".
@@ -1131,7 +1131,7 @@ msgstr "%d"
 #. *
 #. * "%Y" is appropriate for most locales.
 #.
-#: ../gtk/gtkcalendar.c:2268
+#: ../ctk/ctkcalendar.c:2268
 msgctxt "calendar year format"
 msgid "%Y"
 msgstr "%Y"
@@ -1139,7 +1139,7 @@ msgstr "%Y"
 #. This label is displayed in a treeview cell displaying
 #. * a disabled accelerator key combination.
 #.
-#: ../gtk/gtkcellrendereraccel.c:282
+#: ../ctk/ctkcellrendereraccel.c:282
 msgctxt "Accelerator"
 msgid "Disabled"
 msgstr "പ്രവര്‍ത്തനരഹിതം"
@@ -1148,7 +1148,7 @@ msgstr "പ്രവര്‍ത്തനരഹിതം"
 #. * an accelerator key combination that is not valid according
 #. * to ctk_accelerator_valid().
 #.
-#: ../gtk/gtkcellrendereraccel.c:292
+#: ../ctk/ctkcellrendereraccel.c:292
 msgctxt "Accelerator"
 msgid "Invalid"
 msgstr "തെറ്റായ "
@@ -1157,283 +1157,283 @@ msgstr "തെറ്റായ "
 #. * an accelerator when the cell is clicked to change the
 #. * acelerator.
 #.
-#: ../gtk/gtkcellrendereraccel.c:416 ../gtk/gtkcellrendereraccel.c:747
+#: ../ctk/ctkcellrendereraccel.c:416 ../ctk/ctkcellrendereraccel.c:747
 #| msgid "New accelerator..."
 msgid "New accelerator…"
 msgstr "പുതിയ ആക്സലറേറ്റര്‍..."
 
-#: ../gtk/gtkcellrendererprogress.c:372 ../gtk/gtkcellrendererprogress.c:462
+#: ../ctk/ctkcellrendererprogress.c:372 ../ctk/ctkcellrendererprogress.c:462
 #, c-format
 msgctxt "progress bar label"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ../gtk/gtkcolorbutton.c:188 ../gtk/gtkcolorbutton.c:449
+#: ../ctk/ctkcolorbutton.c:188 ../ctk/ctkcolorbutton.c:449
 msgid "Pick a Color"
 msgstr "ഒരു നിറം തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/gtkcolorchooserdialog.c:164
+#: ../ctk/ctkcolorchooserdialog.c:164
 msgid "Select a Color"
 msgstr "ഒരു നിറം തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/gtkcolorchooserwidget.c:281
+#: ../ctk/ctkcolorchooserwidget.c:281
 #, c-format
 msgid "Red %d%%, Green %d%%, Blue %d%%, Alpha %d%%"
 msgstr "ചുവപ്പു് %d%%, പച്ച %d%%, നീല %d%%, ആല്‍ഫാ %d%%"
 
-#: ../gtk/gtkcolorchooserwidget.c:287
+#: ../ctk/ctkcolorchooserwidget.c:287
 #, c-format
 msgid "Red %d%%, Green %d%%, Blue %d%%"
 msgstr "ചുവപ്പു് %d%%, പച്ച %d%%, നീല %d%%"
 
-#: ../gtk/gtkcolorchooserwidget.c:364
+#: ../ctk/ctkcolorchooserwidget.c:364
 #, c-format
 msgid "Color: %s"
 msgstr "നിറം: %s"
 
-#: ../gtk/gtkcolorchooserwidget.c:423
+#: ../ctk/ctkcolorchooserwidget.c:423
 msgctxt "Color name"
 msgid "Light Scarlet Red"
 msgstr "ഇളം സ്കാര്‍ലറ്റ് ചുവപ്പു്"
 
-#: ../gtk/gtkcolorchooserwidget.c:424
+#: ../ctk/ctkcolorchooserwidget.c:424
 msgctxt "Color name"
 msgid "Scarlet Red"
 msgstr "സ്കാര്‍ലെറ്റ് ചുവപ്പു്"
 
-#: ../gtk/gtkcolorchooserwidget.c:425
+#: ../ctk/ctkcolorchooserwidget.c:425
 msgctxt "Color name"
 msgid "Dark Scarlet Red"
 msgstr "കടും സ്കാര്‍ലറ്റ് ചുവപ്പു്"
 
-#: ../gtk/gtkcolorchooserwidget.c:426
+#: ../ctk/ctkcolorchooserwidget.c:426
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr "ഇളം ഓറഞ്ച്"
 
-#: ../gtk/gtkcolorchooserwidget.c:427
+#: ../ctk/ctkcolorchooserwidget.c:427
 msgctxt "Color name"
 msgid "Orange"
 msgstr "ഓറഞ്ചു്"
 
-#: ../gtk/gtkcolorchooserwidget.c:428
+#: ../ctk/ctkcolorchooserwidget.c:428
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr "കടും ഓറഞ്ച്"
 
-#: ../gtk/gtkcolorchooserwidget.c:429
+#: ../ctk/ctkcolorchooserwidget.c:429
 msgctxt "Color name"
 msgid "Light Butter"
 msgstr "ഇളം ബട്ടര്‍"
 
-#: ../gtk/gtkcolorchooserwidget.c:430
+#: ../ctk/ctkcolorchooserwidget.c:430
 msgctxt "Color name"
 msgid "Butter"
 msgstr "ബട്ടര്‍"
 
-#: ../gtk/gtkcolorchooserwidget.c:431
+#: ../ctk/ctkcolorchooserwidget.c:431
 msgctxt "Color name"
 msgid "Dark Butter"
 msgstr "കടും ബട്ടര്‍"
 
-#: ../gtk/gtkcolorchooserwidget.c:432
+#: ../ctk/ctkcolorchooserwidget.c:432
 msgctxt "Color name"
 msgid "Light Chameleon"
 msgstr "ഇളം കമലിയണ്‍"
 
-#: ../gtk/gtkcolorchooserwidget.c:433
+#: ../ctk/ctkcolorchooserwidget.c:433
 msgctxt "Color name"
 msgid "Chameleon"
 msgstr "കമലിയണ്‍"
 
-#: ../gtk/gtkcolorchooserwidget.c:434
+#: ../ctk/ctkcolorchooserwidget.c:434
 msgctxt "Color name"
 msgid "Dark Chameleon"
 msgstr "കടും കമലിയണ്‍"
 
-#: ../gtk/gtkcolorchooserwidget.c:435
+#: ../ctk/ctkcolorchooserwidget.c:435
 msgctxt "Color name"
 msgid "Light Sky Blue"
 msgstr "ഇളം ആകാശ നീല"
 
-#: ../gtk/gtkcolorchooserwidget.c:436
+#: ../ctk/ctkcolorchooserwidget.c:436
 msgctxt "Color name"
 msgid "Sky Blue"
 msgstr "ആകാശ നീല"
 
-#: ../gtk/gtkcolorchooserwidget.c:437
+#: ../ctk/ctkcolorchooserwidget.c:437
 msgctxt "Color name"
 msgid "Dark Sky Blue"
 msgstr "കടും ആകാശ നീല"
 
-#: ../gtk/gtkcolorchooserwidget.c:438
+#: ../ctk/ctkcolorchooserwidget.c:438
 msgctxt "Color name"
 msgid "Light Plum"
 msgstr "ഇളം പ്ലം"
 
-#: ../gtk/gtkcolorchooserwidget.c:439
+#: ../ctk/ctkcolorchooserwidget.c:439
 msgctxt "Color name"
 msgid "Plum"
 msgstr "പ്ലം"
 
-#: ../gtk/gtkcolorchooserwidget.c:440
+#: ../ctk/ctkcolorchooserwidget.c:440
 msgctxt "Color name"
 msgid "Dark Plum"
 msgstr "കടും പ്ലം"
 
-#: ../gtk/gtkcolorchooserwidget.c:441
+#: ../ctk/ctkcolorchooserwidget.c:441
 msgctxt "Color name"
 msgid "Light Chocolate"
 msgstr "ഇളം ചോക്കളേറ്റ്"
 
-#: ../gtk/gtkcolorchooserwidget.c:442
+#: ../ctk/ctkcolorchooserwidget.c:442
 msgctxt "Color name"
 msgid "Chocolate"
 msgstr "ചോക്കോളേറ്റ്"
 
-#: ../gtk/gtkcolorchooserwidget.c:443
+#: ../ctk/ctkcolorchooserwidget.c:443
 msgctxt "Color name"
 msgid "Dark Chocolate"
 msgstr "കടും ചോക്കളേറ്റ്"
 
-#: ../gtk/gtkcolorchooserwidget.c:444
+#: ../ctk/ctkcolorchooserwidget.c:444
 msgctxt "Color name"
 msgid "Light Aluminum 1"
 msgstr "ഇളം അലുമിനിയം 1"
 
-#: ../gtk/gtkcolorchooserwidget.c:445
+#: ../ctk/ctkcolorchooserwidget.c:445
 msgctxt "Color name"
 msgid "Aluminum 1"
 msgstr "അലുമിനിയം 1"
 
-#: ../gtk/gtkcolorchooserwidget.c:446
+#: ../ctk/ctkcolorchooserwidget.c:446
 msgctxt "Color name"
 msgid "Dark Aluminum 1"
 msgstr "കടും അലുമിനിയം 1"
 
-#: ../gtk/gtkcolorchooserwidget.c:447
+#: ../ctk/ctkcolorchooserwidget.c:447
 msgctxt "Color name"
 msgid "Light Aluminum 2"
 msgstr "ഇളം അലുമിനിയം 2"
 
-#: ../gtk/gtkcolorchooserwidget.c:448
+#: ../ctk/ctkcolorchooserwidget.c:448
 msgctxt "Color name"
 msgid "Aluminum 2"
 msgstr "അലുമിനിയം 2"
 
-#: ../gtk/gtkcolorchooserwidget.c:449
+#: ../ctk/ctkcolorchooserwidget.c:449
 msgctxt "Color name"
 msgid "Dark Aluminum 2"
 msgstr "കടും അലുമിനിയം 2"
 
-#: ../gtk/gtkcolorchooserwidget.c:463
+#: ../ctk/ctkcolorchooserwidget.c:463
 msgctxt "Color name"
 msgid "Black"
 msgstr "കറുപ്പു്"
 
-#: ../gtk/gtkcolorchooserwidget.c:464
+#: ../ctk/ctkcolorchooserwidget.c:464
 msgctxt "Color name"
 msgid "Very Dark Gray"
 msgstr "കടുത്ത ഗ്രേ"
 
-#: ../gtk/gtkcolorchooserwidget.c:465
+#: ../ctk/ctkcolorchooserwidget.c:465
 msgctxt "Color name"
 msgid "Darker Gray"
 msgstr "വളരെ കടും ഗ്രേ"
 
-#: ../gtk/gtkcolorchooserwidget.c:466
+#: ../ctk/ctkcolorchooserwidget.c:466
 msgctxt "Color name"
 msgid "Dark Gray"
 msgstr "കടും ഗ്രേ"
 
-#: ../gtk/gtkcolorchooserwidget.c:467
+#: ../ctk/ctkcolorchooserwidget.c:467
 msgctxt "Color name"
 msgid "Medium Gray"
 msgstr "ഇടത്തരം ഗ്രേ"
 
-#: ../gtk/gtkcolorchooserwidget.c:468
+#: ../ctk/ctkcolorchooserwidget.c:468
 msgctxt "Color name"
 msgid "Light Gray"
 msgstr "ഇളം ഗ്രേ"
 
-#: ../gtk/gtkcolorchooserwidget.c:469
+#: ../ctk/ctkcolorchooserwidget.c:469
 msgctxt "Color name"
 msgid "Lighter Gray"
 msgstr "ഇളം ഗ്രേ"
 
-#: ../gtk/gtkcolorchooserwidget.c:470
+#: ../ctk/ctkcolorchooserwidget.c:470
 msgctxt "Color name"
 msgid "Very Light Gray"
 msgstr "വളരെ ഇളം ഗ്രേ"
 
-#: ../gtk/gtkcolorchooserwidget.c:471
+#: ../ctk/ctkcolorchooserwidget.c:471
 msgctxt "Color name"
 msgid "White"
 msgstr "വെളുപ്പു്"
 
 #. translators: label for the custom section in the color chooser
-#: ../gtk/gtkcolorchooserwidget.c:520
+#: ../ctk/ctkcolorchooserwidget.c:520
 msgid "Custom"
 msgstr "യഥേഷ്ടമാക്കുക"
 
-#: ../gtk/gtkcolorchooserwidget.c:528
+#: ../ctk/ctkcolorchooserwidget.c:528
 msgid "Create custom color"
 msgstr "യഥേഷ്ടമുള്ള നിറം തയ്യാറാക്കുക"
 
-#: ../gtk/gtkcolorchooserwidget.c:546
+#: ../ctk/ctkcolorchooserwidget.c:546
 #, c-format
 msgid "Custom color %d: %s"
 msgstr "യഥേഷ്ടമുള്ള നിറം %d: %s"
 
-#: ../gtk/gtkcoloreditor.c:412
+#: ../ctk/ctkcoloreditor.c:412
 msgid "Color Name"
 msgstr "നിറത്തിന്റെ പേരു്"
 
-#: ../gtk/gtkcoloreditor.c:457
+#: ../ctk/ctkcoloreditor.c:457
 msgctxt "Color channel"
 msgid "Saturation"
 msgstr "സാച്ചുറേഷന്‍:"
 
-#: ../gtk/gtkcoloreditor.c:463
+#: ../ctk/ctkcoloreditor.c:463
 msgctxt "Color channel"
 msgid "Value"
 msgstr "മൂല്യം:"
 
-#: ../gtk/gtkcoloreditor.c:471
+#: ../ctk/ctkcoloreditor.c:471
 msgctxt "Color channel"
 msgid "S"
 msgstr "S"
 
-#: ../gtk/gtkcoloreditor.c:473
+#: ../ctk/ctkcoloreditor.c:473
 msgctxt "Color channel"
 msgid "V"
 msgstr "V"
 
-#: ../gtk/gtkcoloreditor.c:481 ../gtk/gtkcolorscale.c:301
+#: ../ctk/ctkcoloreditor.c:481 ../ctk/ctkcolorscale.c:301
 msgctxt "Color channel"
 msgid "Hue"
 msgstr "ഹ്യൂ"
 
-#: ../gtk/gtkcoloreditor.c:488
+#: ../ctk/ctkcoloreditor.c:488
 msgctxt "Color channel"
 msgid "H"
 msgstr "H"
 
-#: ../gtk/gtkcoloreditor.c:496 ../gtk/gtkcolorscale.c:303
+#: ../ctk/ctkcoloreditor.c:496 ../ctk/ctkcolorscale.c:303
 msgctxt "Color channel"
 msgid "Alpha"
 msgstr "ആല്‍ഫാ"
 
-#: ../gtk/gtkcoloreditor.c:503
+#: ../ctk/ctkcoloreditor.c:503
 msgctxt "Color channel"
 msgid "A"
 msgstr "A"
 
-#: ../gtk/gtkcolorplane.c:438
+#: ../ctk/ctkcolorplane.c:438
 msgid "Color Plane"
 msgstr "കളര്‍ പ്ലെയിന്‍"
 
-#: ../gtk/gtkcolorswatch.c:447
+#: ../ctk/ctkcolorswatch.c:447
 msgid "_Customize"
 msgstr "_യഥേഷ്ടമാക്കുക"
 
@@ -1443,79 +1443,79 @@ msgstr "_യഥേഷ്ടമാക്കുക"
 #. * Do *not* translate it to "predefinito:mm", if it
 #. * it isn't default:mm or default:inch it will not work
 #.
-#: ../gtk/gtkcustompaperunixdialog.c:115
+#: ../ctk/ctkcustompaperunixdialog.c:115
 msgid "default:mm"
 msgstr "default:mm"
 
 #. And show the custom paper dialog
-#: ../gtk/gtkcustompaperunixdialog.c:397 ../gtk/gtkprintunixdialog.c:3275
+#: ../ctk/ctkcustompaperunixdialog.c:397 ../ctk/ctkprintunixdialog.c:3275
 msgid "Manage Custom Sizes"
 msgstr "നിങ്ങള്‍ സജ്ജമാക്കിയ വലിപ്പംകള്‍ കൈകാര്യം ചെയ്യുക"
 
-#: ../gtk/gtkcustompaperunixdialog.c:558 ../gtk/gtkpagesetupunixdialog.c:778
+#: ../ctk/ctkcustompaperunixdialog.c:558 ../ctk/ctkpagesetupunixdialog.c:778
 msgid "inch"
 msgstr " ഇഞ്ച്"
 
-#: ../gtk/gtkcustompaperunixdialog.c:560 ../gtk/gtkpagesetupunixdialog.c:776
+#: ../ctk/ctkcustompaperunixdialog.c:560 ../ctk/ctkpagesetupunixdialog.c:776
 msgid "mm"
 msgstr "mm"
 
-#: ../gtk/gtkcustompaperunixdialog.c:605
+#: ../ctk/ctkcustompaperunixdialog.c:605
 #| msgid "Margins from Printer..."
 msgid "Margins from Printer…"
 msgstr "പ്രിന്ററില്‍ നിന്നുള്ള മാര്‍ജിനുകള്‍..."
 
-#: ../gtk/gtkcustompaperunixdialog.c:771
+#: ../ctk/ctkcustompaperunixdialog.c:771
 #, c-format
 msgid "Custom Size %d"
 msgstr "നിങ്ങള്‍ സജ്ജമാക്കിയ വലിപ്പം %d"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1109
+#: ../ctk/ctkcustompaperunixdialog.c:1109
 msgid "_Width:"
 msgstr "_വീതി:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1120
+#: ../ctk/ctkcustompaperunixdialog.c:1120
 msgid "_Height:"
 msgstr "_ഉയരം:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1131
+#: ../ctk/ctkcustompaperunixdialog.c:1131
 msgid "Paper Size"
 msgstr "പേപ്പറിന്റെ വലിപ്പം"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1140
+#: ../ctk/ctkcustompaperunixdialog.c:1140
 msgid "_Top:"
 msgstr "_മുകളില്‍:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1151
+#: ../ctk/ctkcustompaperunixdialog.c:1151
 msgid "_Bottom:"
 msgstr "_താഴെ:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1162
+#: ../ctk/ctkcustompaperunixdialog.c:1162
 msgid "_Left:"
 msgstr "_ഇടത്ത്:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1173
+#: ../ctk/ctkcustompaperunixdialog.c:1173
 msgid "_Right:"
 msgstr "_വലത്ത്:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1212
+#: ../ctk/ctkcustompaperunixdialog.c:1212
 msgid "Paper Margins"
 msgstr "പേപ്പറിനുള്ള മാര്‍ജിനുകള്‍"
 
-#: ../gtk/gtkentry.c:9204 ../gtk/gtktextview.c:8684
+#: ../ctk/ctkentry.c:9204 ../ctk/ctktextview.c:8684
 msgid "Input _Methods"
 msgstr "ഇന്‍പുട്ട് _രീതികള്‍"
 
-#: ../gtk/gtkentry.c:9218 ../gtk/gtktextview.c:8698
+#: ../ctk/ctkentry.c:9218 ../ctk/ctktextview.c:8698
 msgid "_Insert Unicode Control Character"
 msgstr "_Insert Unicode Control Character"
 
-#: ../gtk/gtkentry.c:10316
+#: ../ctk/ctkentry.c:10316
 msgid "Caps Lock is on"
 msgstr "Caps Lock ഓണ്‍ ആണു്"
 
 #. *
-#. * SECTION:gtkfilechooserbutton
+#. * SECTION:ctkfilechooserbutton
 #. * @Short_description: A button to launch a file selection dialog
 #. * @Title: GtkFileChooserButton
 #. * @See_also:#GtkFileChooserDialog
@@ -1555,44 +1555,44 @@ msgstr "Caps Lock ഓണ്‍ ആണു്"
 #. **************** *
 #. *  Private Macros  *
 #. * ****************
-#: ../gtk/gtkfilechooserbutton.c:104
+#: ../ctk/ctkfilechooserbutton.c:104
 msgid "Select a File"
 msgstr "ഒരു ഫയല്‍ തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/gtkfilechooserbutton.c:105 ../gtk/gtkfilechooserdefault.c:1825
+#: ../ctk/ctkfilechooserbutton.c:105 ../ctk/ctkfilechooserdefault.c:1825
 msgid "Desktop"
 msgstr "പണിയിടം"
 
-#: ../gtk/gtkfilechooserbutton.c:106
+#: ../ctk/ctkfilechooserbutton.c:106
 msgid "(None)"
 msgstr "(ഒന്നുമില്ല)"
 
-#: ../gtk/gtkfilechooserbutton.c:2198
+#: ../ctk/ctkfilechooserbutton.c:2198
 #| msgid "Other..."
 msgid "Other…"
 msgstr "മറ്റുള്ളവ..."
 
-#: ../gtk/gtkfilechooserdefault.c:152
+#: ../ctk/ctkfilechooserdefault.c:152
 msgid "Type name of new folder"
 msgstr "പുതിയ അറയുടെ പേരു് ടൈപ്പ് ചെയ്യുക"
 
-#: ../gtk/gtkfilechooserdefault.c:954
+#: ../ctk/ctkfilechooserdefault.c:954
 msgid "Could not retrieve information about the file"
 msgstr "ഫയല്‍ സംബന്ധിച്ചുള്ള വിവരം ലഭ്യമാക്കുവാന്‍ സാധ്യമായില്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:965
+#: ../ctk/ctkfilechooserdefault.c:965
 msgid "Could not add a bookmark"
 msgstr "ഒരു ഓര്‍മ്മക്കുറിപ്പു് ചേര്‍ക്കുവാന്‍ സാധ്യമായില്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:976
+#: ../ctk/ctkfilechooserdefault.c:976
 msgid "Could not remove bookmark"
 msgstr "ഓര്‍മ്മക്കുറിപ്പു് നീക്കം ചെയ്യുവാന്‍ സാധ്യമായില്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:987
+#: ../ctk/ctkfilechooserdefault.c:987
 msgid "The folder could not be created"
 msgstr "അറ ഉണ്ടാക്കുവാന്‍ സാധ്യമായില്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:1000
+#: ../ctk/ctkfilechooserdefault.c:1000
 msgid ""
 "The folder could not be created, as a file with the same name already "
 "exists.  Try using a different name for the folder, or rename the file first."
@@ -1601,17 +1601,17 @@ msgstr ""
 "വേറൊരു പേരു് "
 "ഉപയോഗിക്കുക, അല്ലെങ്കില്‍ ആദ്യം ഫയലിന്റെ പേരു് മാറ്റുക."
 
-#: ../gtk/gtkfilechooserdefault.c:1014
+#: ../ctk/ctkfilechooserdefault.c:1014
 msgid "You need to choose a valid filename."
 msgstr "ശരിയായൊരു ഫയല്‍നാമം തെരഞ്ഞെടുക്കേണ്ടതുണ്ടു്."
 
-#: ../gtk/gtkfilechooserdefault.c:1017
+#: ../ctk/ctkfilechooserdefault.c:1017
 #, c-format
 msgid "Cannot create a file under %s as it is not a folder"
 msgstr ""
 "ഒരു ഫോള്‍ഡര്‍ അല്ലാത്തതിനാല്‍ %s-ല്‍ ഒരു ഫയല്‍ തയ്യാറാക്കുവാന്‍ സാധ്യമല്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:1029
+#: ../ctk/ctkfilechooserdefault.c:1029
 msgid ""
 "You may only select folders.  The item that you selected is not a folder; "
 "try using a different item."
@@ -1619,11 +1619,11 @@ msgstr ""
 "ഫോള്‍ഡറുകള്‍ മാത്രം തെരഞ്ഞെടുക്കുക. നിങ്ങള്‍ തെരഞ്ഞെടുത്തതു് ഒരു ഫോള്‍ഡറല്ല; "
 "വേറൊന്നു് തെരഞ്ഞെടുക്കുക."
 
-#: ../gtk/gtkfilechooserdefault.c:1039
+#: ../ctk/ctkfilechooserdefault.c:1039
 msgid "Invalid file name"
 msgstr "തെറ്റായ ഫയല്‍നാമം"
 
-#: ../gtk/gtkfilechooserdefault.c:1049
+#: ../ctk/ctkfilechooserdefault.c:1049
 msgid "The folder contents could not be displayed"
 msgstr "അറയിലുള്ളവ പ്രദര്‍ശിപ്പിക്കുവാന്‍ സാധ്യമായില്ല"
 
@@ -1631,196 +1631,196 @@ msgstr "അറയിലുള്ളവ പ്രദര്‍ശിപ്പി�
 #. * is a hostname. Nautilus and the panel contain the same string
 #. * to translate.
 #.
-#: ../gtk/gtkfilechooserdefault.c:1575
+#: ../ctk/ctkfilechooserdefault.c:1575
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s, %2$s-ല്‍"
 
-#: ../gtk/gtkfilechooserdefault.c:1724
+#: ../ctk/ctkfilechooserdefault.c:1724
 msgid "Search"
 msgstr "തെരയുക"
 
-#: ../gtk/gtkfilechooserdefault.c:1768 ../gtk/gtkfilechooserdefault.c:4996
+#: ../ctk/ctkfilechooserdefault.c:1768 ../ctk/ctkfilechooserdefault.c:4996
 msgid "Recently Used"
 msgstr "ഏറ്റവും ഒടുവില്‍ ഉപയോഗിച്ച"
 
-#: ../gtk/gtkfilechooserdefault.c:2369
+#: ../ctk/ctkfilechooserdefault.c:2369
 msgid "Select which types of files are shown"
 msgstr "ഏത് തരം ഫയലുകളാണ് കാണിച്ചിട്ടുള്ളത് എന്ന് തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:2728
+#: ../ctk/ctkfilechooserdefault.c:2728
 #, c-format
 msgid "Add the folder '%s' to the bookmarks"
 msgstr "ഓര്‍മ്മക്കുറിപ്പിലേയ്ക്കു് '%s' അറ ചേര്‍ക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:2772
+#: ../ctk/ctkfilechooserdefault.c:2772
 #, c-format
 msgid "Add the current folder to the bookmarks"
 msgstr "ഈ അറ ഓര്‍മ്മക്കുറിപ്പിലേയ്ക്കു് ചേര്‍ക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:2774
+#: ../ctk/ctkfilechooserdefault.c:2774
 #, c-format
 msgid "Add the selected folders to the bookmarks"
 msgstr "തെരഞ്ഞെടുത്ത അറകള്‍ ഓര്‍മ്മക്കുറിപ്പിലേയ്ക്കു് ചേര്‍ക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:2812
+#: ../ctk/ctkfilechooserdefault.c:2812
 #, c-format
 msgid "Remove the bookmark '%s'"
 msgstr "'%s' എന്ന ഓര്‍മ്മക്കുറിപ്പു് നീക്കം ചെയ്യുക"
 
-#: ../gtk/gtkfilechooserdefault.c:2814
+#: ../ctk/ctkfilechooserdefault.c:2814
 #, c-format
 msgid "Bookmark '%s' cannot be removed"
 msgstr "'%s' അടയാളക്കുറിപ്പു് നീക്കം ചെയ്യുവാന്‍ സാധ്യമല്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:2821 ../gtk/gtkfilechooserdefault.c:3707
+#: ../ctk/ctkfilechooserdefault.c:2821 ../ctk/ctkfilechooserdefault.c:3707
 msgid "Remove the selected bookmark"
 msgstr "തെരഞ്ഞെടുത്ത ഓര്‍മ്മക്കുറിപ്പു് നീക്കം ചെയ്യുക"
 
-#: ../gtk/gtkfilechooserdefault.c:3385
+#: ../ctk/ctkfilechooserdefault.c:3385
 msgid "Remove"
 msgstr "നീക്കം ചെയ്യുക"
 
-#: ../gtk/gtkfilechooserdefault.c:3394
+#: ../ctk/ctkfilechooserdefault.c:3394
 #| msgid "_Rename"
 msgid "Rename…"
 msgstr "പേരു് മാറ്റുക..."
 
 #. Accessible object name for the file chooser's shortcuts pane
-#: ../gtk/gtkfilechooserdefault.c:3558
+#: ../ctk/ctkfilechooserdefault.c:3558
 msgid "Places"
 msgstr "സ്ഥലങ്ങള്‍"
 
 #. Column header for the file chooser's shortcuts pane
-#: ../gtk/gtkfilechooserdefault.c:3615
+#: ../ctk/ctkfilechooserdefault.c:3615
 msgid "_Places"
 msgstr "_സ്ഥലങ്ങള്‍"
 
-#: ../gtk/gtkfilechooserdefault.c:3695
+#: ../ctk/ctkfilechooserdefault.c:3695
 msgid "Add the selected folder to the Bookmarks"
 msgstr "തെരഞ്ഞെടുത്ത അറ ഓര്‍മ്മക്കുറിപ്പിലേയ്ക്കു് ചേര്‍ക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:3956
+#: ../ctk/ctkfilechooserdefault.c:3956
 msgid "Could not select file"
 msgstr "ഫയല്‍ തെരഞ്ഞെടുക്കുവാന്‍ സാധ്യമായില്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:4181
+#: ../ctk/ctkfilechooserdefault.c:4181
 msgid "_Visit this file"
 msgstr "ഈ ഫയല്‍ _സന്ദര്‍ശിയ്ക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:4184
+#: ../ctk/ctkfilechooserdefault.c:4184
 msgid "_Copy file’s location"
 msgstr "ഫയലിന്റെ സ്ഥാനം _പകര്‍ത്തുക"
 
-#: ../gtk/gtkfilechooserdefault.c:4187
+#: ../ctk/ctkfilechooserdefault.c:4187
 msgid "_Add to Bookmarks"
 msgstr "ഓര്‍മ്മക്കുറിപ്പിലേയ്ക്കു് _ചേര്‍ക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:4194
+#: ../ctk/ctkfilechooserdefault.c:4194
 msgid "Show _Hidden Files"
 msgstr "_അദൃശ്യമായ ഫയലുകള്‍ കാണിക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:4197
+#: ../ctk/ctkfilechooserdefault.c:4197
 msgid "Show _Size Column"
 msgstr "_വ്യാപ്തിയ്ക്കുള്ള നിര കാണിക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:4422
+#: ../ctk/ctkfilechooserdefault.c:4422
 msgid "Files"
 msgstr "ഫയലുകള്‍"
 
-#: ../gtk/gtkfilechooserdefault.c:4473
+#: ../ctk/ctkfilechooserdefault.c:4473
 msgid "Name"
 msgstr "പേരു്"
 
-#: ../gtk/gtkfilechooserdefault.c:4496
+#: ../ctk/ctkfilechooserdefault.c:4496
 msgid "Size"
 msgstr "വലിപ്പം"
 
-#: ../gtk/gtkfilechooserdefault.c:4510
+#: ../ctk/ctkfilechooserdefault.c:4510
 msgid "Modified"
 msgstr "മാറ്റം വരുത്തിയവ"
 
 #. Label
-#: ../gtk/gtkfilechooserdefault.c:4603
+#: ../ctk/ctkfilechooserdefault.c:4603
 msgid "_Name:"
 msgstr "_പേരു്:"
 
-#: ../gtk/gtkfilechooserdefault.c:4834
+#: ../ctk/ctkfilechooserdefault.c:4834
 msgid "Type a file name"
 msgstr "ഒരു ഫയലിന്റെ പേരു് ടൈപ്പ് ചെയ്യുക"
 
-#: ../gtk/gtkfilechooserdefault.c:4881 ../gtk/gtkfilechooserdefault.c:4892
+#: ../ctk/ctkfilechooserdefault.c:4881 ../ctk/ctkfilechooserdefault.c:4892
 msgid "Please select a folder below"
 msgstr "താഴെയുള്ള ഒരു ഫോള്‍ഡര്‍ ദയവായി തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:4887
+#: ../ctk/ctkfilechooserdefault.c:4887
 msgid "Please type a file name"
 msgstr "ഒരു ഫയലിന്റെ പേരു് ടൈപ്പ് ചെയ്യുക"
 
 #. Create Folder
-#: ../gtk/gtkfilechooserdefault.c:4958
+#: ../ctk/ctkfilechooserdefault.c:4958
 msgid "Create Fo_lder"
 msgstr "_അറ ഉണ്ടാക്കുക"
 
-#: ../gtk/gtkfilechooserdefault.c:5006
+#: ../ctk/ctkfilechooserdefault.c:5006
 msgid "Search:"
 msgstr "തെരയുക:"
 
-#: ../gtk/gtkfilechooserdefault.c:5057
+#: ../ctk/ctkfilechooserdefault.c:5057
 msgid "_Location:"
 msgstr "_സ്ഥാനം:"
 
-#: ../gtk/gtkfilechooserdefault.c:5507
+#: ../ctk/ctkfilechooserdefault.c:5507
 msgid "Save in _folder:"
 msgstr "_അറയില്‍ സൂക്ഷിക്കുക:"
 
-#: ../gtk/gtkfilechooserdefault.c:5509
+#: ../ctk/ctkfilechooserdefault.c:5509
 msgid "Create in _folder:"
 msgstr "_അറയില്‍ ഉണ്ടാക്കുക:"
 
-#: ../gtk/gtkfilechooserdefault.c:6530
+#: ../ctk/ctkfilechooserdefault.c:6530
 #, c-format
 msgid "Could not read the contents of %s"
 msgstr "%s-ന്റെ ഉള്ളടക്കം വായിയ്ക്കുവാന്‍ സാധ്യമല്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:6534
+#: ../ctk/ctkfilechooserdefault.c:6534
 msgid "Could not read the contents of the folder"
 msgstr "ഫോള്‍ഡറിന്റെ ഉള്ളടക്കം വായിയ്ക്കുവാന്‍ സാധ്യമല്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:6627 ../gtk/gtkfilechooserdefault.c:6695
-#: ../gtk/gtkfilechooserdefault.c:6875
+#: ../ctk/ctkfilechooserdefault.c:6627 ../ctk/ctkfilechooserdefault.c:6695
+#: ../ctk/ctkfilechooserdefault.c:6875
 msgid "Unknown"
 msgstr "അപരിചിതം"
 
-#: ../gtk/gtkfilechooserdefault.c:6642
+#: ../ctk/ctkfilechooserdefault.c:6642
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gtk/gtkfilechooserdefault.c:6644
+#: ../ctk/ctkfilechooserdefault.c:6644
 msgid "Yesterday at %H:%M"
 msgstr "ഇന്നലെ %H:%M"
 
-#: ../gtk/gtkfilechooserdefault.c:7346
+#: ../ctk/ctkfilechooserdefault.c:7346
 msgid "Cannot change to folder because it is not local"
 msgstr "ലോക്കല്‍ ആയതിനാല്‍ അറയിലേയ്ക്കു് മാറ്റുവാന്‍ സാധ്യമായില്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:7943 ../gtk/gtkfilechooserdefault.c:7964
+#: ../ctk/ctkfilechooserdefault.c:7943 ../ctk/ctkfilechooserdefault.c:7964
 #, c-format
 msgid "Shortcut %s already exists"
 msgstr "%s എന്ന കുറുക്ക് വഴി നിലവിലുണ്ട്"
 
-#: ../gtk/gtkfilechooserdefault.c:8054
+#: ../ctk/ctkfilechooserdefault.c:8054
 #, c-format
 msgid "Shortcut %s does not exist"
 msgstr "%s എന്ന കുറുക്ക് വഴി നിലവിലില്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:8301 ../gtk/gtkprintunixdialog.c:548
+#: ../ctk/ctkfilechooserdefault.c:8301 ../ctk/ctkprintunixdialog.c:548
 #, c-format
 msgid "A file named \"%s\" already exists.  Do you want to replace it?"
 msgstr ""
 "\"%s\" എന്ന പേരില്‍ ഒരു ഫയല്‍ നിലവിലുണ്ട്.  നിങ്ങള്‍ക്ക് അത് മാറ്റി എഴുതണമോ?"
 
-#: ../gtk/gtkfilechooserdefault.c:8304 ../gtk/gtkprintunixdialog.c:552
+#: ../ctk/ctkfilechooserdefault.c:8304 ../ctk/ctkprintunixdialog.c:552
 #, c-format
 msgid ""
 "The file already exists in \"%s\".  Replacing it will overwrite its contents."
@@ -1828,15 +1828,15 @@ msgstr ""
 "\"%s\"-ല്‍ ഒരു ഫയല്‍ ഉണ്ട്.  അതിന്റെ സ്ഥാനത്ത് ഇത് സൂക്ഷിച്ചാല്‍ ഉള്ളടക്കം "
 "മാറ്റി എഴുതപ്പെടുന്നു."
 
-#: ../gtk/gtkfilechooserdefault.c:8309 ../gtk/gtkprintunixdialog.c:559
+#: ../ctk/ctkfilechooserdefault.c:8309 ../ctk/ctkprintunixdialog.c:559
 msgid "_Replace"
 msgstr "മാറ്റി വേറെ സൂക്ഷിക്കുക (_R)"
 
-#: ../gtk/gtkfilechooserdefault.c:9116
+#: ../ctk/ctkfilechooserdefault.c:9116
 msgid "Could not start the search process"
 msgstr "തിരച്ചില്‍ പ്രക്രിയ ആരംഭിക്കുവാനായില്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:9117
+#: ../ctk/ctkfilechooserdefault.c:9117
 msgid ""
 "The program was not able to create a connection to the indexer daemon.  "
 "Please make sure it is running."
@@ -1845,11 +1845,11 @@ msgstr ""
 "അത് പ്രവറ്‍ത്തിക്കുന്നു "
 "എന്നുറപ്പാക്കുക."
 
-#: ../gtk/gtkfilechooserdefault.c:9131
+#: ../ctk/ctkfilechooserdefault.c:9131
 msgid "Could not send the search request"
 msgstr "തിരച്ചിലിനുള്ള ആവശ്യം അയയ്ക്കുവാന്‍ സാധ്യമായില്ല"
 
-#: ../gtk/gtkfilechooserdefault.c:9741
+#: ../ctk/ctkfilechooserdefault.c:9741
 #, c-format
 msgid "Could not mount %s"
 msgstr "%s മൌണ്ട് ചെയ്യുവാന്‍ സാധ്യമായില്ല"
@@ -1859,83 +1859,83 @@ msgstr "%s മൌണ്ട് ചെയ്യുവാന്‍ സാധ്യ�
 #. * token for the fake "File System" volume.  So, we'll return a pointer to
 #. * this particular string.
 #.
-#: ../gtk/gtkfilesystem.c:47
+#: ../ctk/ctkfilesystem.c:47
 msgid "File System"
 msgstr "ഫയല്‍ സിസ്റ്റം"
 
-#: ../gtk/gtkfontbutton.c:354
+#: ../ctk/ctkfontbutton.c:354
 msgid "Sans 12"
 msgstr "സാന്‍സ് 12"
 
-#: ../gtk/gtkfontbutton.c:436 ../gtk/gtkfontbutton.c:563
+#: ../ctk/ctkfontbutton.c:436 ../ctk/ctkfontbutton.c:563
 msgid "Pick a Font"
 msgstr "ഒരു അക്ഷരസഞ്ചയം തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/gtkfontbutton.c:1121
+#: ../ctk/ctkfontbutton.c:1121
 msgid "Font"
 msgstr "അക്ഷരസഞ്ചയം"
 
-#: ../gtk/gtkfontchooserwidget.c:110
+#: ../ctk/ctkfontchooserwidget.c:110
 msgid "No fonts matched your search. You can revise your search and try again."
 msgstr ""
 "നിങ്ങള്‍ തെരയുന്ന അക്ഷരസഞ്ചയം ലഭ്യമല്ല. ദയവായി തെരച്ചില്‍ പരിശോധിച്ചു് "
 "വീണ്ടും ശ്രമിയ്ക്കുക."
 
-#: ../gtk/gtkfontchooserwidget.c:557
+#: ../ctk/ctkfontchooserwidget.c:557
 msgid "Search font name"
 msgstr "അക്ഷരസഞ്ചയത്തിന്റെ നാമം തെരയുക"
 
-#: ../gtk/gtkfontchooserwidget.c:891
+#: ../ctk/ctkfontchooserwidget.c:891
 msgid "Font Family"
 msgstr "അക്ഷരസഞ്ചയത്തിന്റെ കുടുംബം"
 
-#: ../gtk/gtkicontheme.c:1935
+#: ../ctk/ctkicontheme.c:1935
 #, c-format
 msgid "Icon '%s' not present in theme"
 msgstr "പ്രമേയത്തില്‍ '%s' എന്ന ചിഹ്നം ലഭ്യമല്ല"
 
-#: ../gtk/gtkicontheme.c:3557
+#: ../ctk/ctkicontheme.c:3557
 msgid "Failed to load icon"
 msgstr "ചിഹ്നം ലഭ്യമാക്കുന്നതില്‍ പരാജയം"
 
-#: ../gtk/gtkimmodule.c:515
+#: ../ctk/ctkimmodule.c:515
 msgid "Simple"
 msgstr "സൌമ്യം"
 
-#: ../gtk/gtkimmulticontext.c:608
+#: ../ctk/ctkimmulticontext.c:608
 msgctxt "input method menu"
 msgid "System"
 msgstr "സിസ്റ്റം"
 
-#: ../gtk/gtkimmulticontext.c:618
+#: ../ctk/ctkimmulticontext.c:618
 msgctxt "input method menu"
 msgid "None"
 msgstr "ഒന്നുമില്ല"
 
-#: ../gtk/gtkimmulticontext.c:701
+#: ../ctk/ctkimmulticontext.c:701
 #, c-format
 msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "സിസ്റ്റം (%s)"
 
 #. Open Link
-#: ../gtk/gtklabel.c:6141
+#: ../ctk/ctklabel.c:6141
 msgid "_Open Link"
 msgstr "കണ്ണി _തുറക്കുക "
 
 #. Copy Link Address
-#: ../gtk/gtklabel.c:6153
+#: ../ctk/ctklabel.c:6153
 msgid "Copy _Link Address"
 msgstr "_കണ്ണിയുടെ വിലാസം പകര്‍ത്തുക"
 
-#: ../gtk/gtk-launch.c:71
+#: ../ctk/ctk-launch.c:71
 #| msgid "APPLICATION [URI...] - launch an APPLICATION with URI."
 msgid "APPLICATION [URI…] — launch an APPLICATION with URI."
 msgstr "APPLICATION [URI...] - യുആര്‍ഐയ്ക്കുള്ളൊരു APPLICATION തുറക്കുക."
 
 #. Translators: this message will appear after the usage string
 #. and before the list of options.
-#: ../gtk/gtk-launch.c:75
+#: ../ctk/ctk-launch.c:75
 msgid ""
 "Launch specified application by its desktop file info\n"
 "optionally passing list of URIs as arguments."
@@ -1943,24 +1943,24 @@ msgstr ""
 "ആര്‍ഗ്യുമെന്റുകളായി യുആര്‍ഐ പട്ടിക നല്‍കി, പണിയിട ഫയല്‍ ആവശ്യപ്പെട്ട പ്രയോഗം "
 "ലഭ്യമാക്കുന്നു."
 
-#: ../gtk/gtk-launch.c:87
+#: ../ctk/ctk-launch.c:87
 #, c-format
 msgid "Error parsing commandline options: %s\n"
 msgstr "കമാന്‍ഡ്‌ലൈന്‍ ഐച്ഛികങ്ങള്‍ പാഴ്സ് ചെയ്യുന്നതില്‍ പിശക് %s\n"
 
-#: ../gtk/gtk-launch.c:89 ../gtk/gtk-launch.c:102
+#: ../ctk/ctk-launch.c:89 ../ctk/ctk-launch.c:102
 #, c-format
 msgid "Try \"%s --help\" for more information."
 msgstr "കൂടുതല്‍ വിവരങ്ങള്‍ക്കായി \"%s --help\" ഉപയോഗിയ്ക്കുക."
 
 #. Translators: the %s is the program name. This error message
-#. means the user is calling gtk-launch without any argument.
-#: ../gtk/gtk-launch.c:100
+#. means the user is calling ctk-launch without any argument.
+#: ../ctk/ctk-launch.c:100
 #, c-format
 msgid "%s: missing application name"
 msgstr "%s: പ്രയോഗത്തിന്റെ നാമം ലഭ്യമല്ല"
 
-#: ../gtk/gtk-launch.c:121
+#: ../ctk/ctk-launch.c:121
 #, c-format
 msgid "Creating AppInfo from id not supported on non unix operating systems"
 msgstr ""
@@ -1969,35 +1969,35 @@ msgstr ""
 
 #. Translators: the first %s is the program name, the second one
 #. is the application name.
-#: ../gtk/gtk-launch.c:129
+#: ../ctk/ctk-launch.c:129
 #, c-format
 msgid "%s: no such application %s"
 msgstr "%s: %s പോലുള്ള പ്രയോഗം"
 
 #. Translators: the first %s is the program name, the second one
 #. is the error message.
-#: ../gtk/gtk-launch.c:147
+#: ../ctk/ctk-launch.c:147
 #, c-format
 msgid "%s: error launching application: %s\n"
 msgstr "%s: പ്രയോഗം ലഭ്യമാക്കുന്നതില്‍ പിശക്: %s\n"
 
-#: ../gtk/gtklinkbutton.c:499
+#: ../ctk/ctklinkbutton.c:499
 msgid "Copy URL"
 msgstr "URL പകര്‍ത്തുക"
 
-#: ../gtk/gtklinkbutton.c:665
+#: ../ctk/ctklinkbutton.c:665
 msgid "Invalid URI"
 msgstr "തെറ്റായ URI"
 
-#: ../gtk/gtklockbutton.c:290
+#: ../ctk/ctklockbutton.c:290
 msgid "Lock"
 msgstr "പൂട്ടുക"
 
-#: ../gtk/gtklockbutton.c:299
+#: ../ctk/ctklockbutton.c:299
 msgid "Unlock"
 msgstr "പൂട്ടു് തുറക്കുക"
 
-#: ../gtk/gtklockbutton.c:308
+#: ../ctk/ctklockbutton.c:308
 msgid ""
 "Dialog is unlocked.\n"
 "Click to prevent further changes"
@@ -2005,7 +2005,7 @@ msgstr ""
 "ഡയലോഗിന്റെ പൂട്ട് തുറന്നിരിയ്ക്കുന്നു.\n"
 "ഇനിയുള്ള മാറ്റങ്ങള്‍ വേണ്ടെന്നു് വയ്ക്കുന്നതിനായി ക്ലിക്ക് ചെയ്യുക."
 
-#: ../gtk/gtklockbutton.c:317
+#: ../ctk/ctklockbutton.c:317
 msgid ""
 "Dialog is locked.\n"
 "Click to make changes"
@@ -2013,7 +2013,7 @@ msgstr ""
 "ഡയലോഗ് പൂട്ടിയിരിയ്ക്കുന്നു.\n"
 "മാറ്റങ്ങള്‍ വരുത്തുന്നതിനായി ക്ലിക്ക് ചെയ്യുക."
 
-#: ../gtk/gtklockbutton.c:326
+#: ../ctk/ctklockbutton.c:326
 msgid ""
 "System policy prevents changes.\n"
 "Contact your system administrator"
@@ -2021,28 +2021,28 @@ msgstr ""
 "സിസ്റ്റം പോളിസി മാറ്റങ്ങള്‍ തടയുന്നു.\n"
 "നിങ്ങളുടെ സിസ്റ്റം അഡ്മിനിസ്ട്രേറ്ററുമായി ബന്ധപ്പെടുക"
 
-#. Description of --gtk-module=MODULES in --help output
-#: ../gtk/gtkmain.c:446
+#. Description of --ctk-module=MODULES in --help output
+#: ../ctk/ctkmain.c:446
 msgid "Load additional GTK+ modules"
 msgstr "കൂടുതല്‍ GTK+ ഘടകങ്ങള്‍ ലഭ്യമാക്കുക"
 
-#. Placeholder in --gtk-module=MODULES in --help output
-#: ../gtk/gtkmain.c:447
+#. Placeholder in --ctk-module=MODULES in --help output
+#: ../ctk/ctkmain.c:447
 msgid "MODULES"
 msgstr "MODULES"
 
 #. Description of --g-fatal-warnings in --help output
-#: ../gtk/gtkmain.c:449
+#: ../ctk/ctkmain.c:449
 msgid "Make all warnings fatal"
 msgstr "എല്ലാ മുന്നറിയിപ്പുകളും പ്രധാനമാക്കുക"
 
-#. Description of --gtk-debug=FLAGS in --help output
-#: ../gtk/gtkmain.c:452
+#. Description of --ctk-debug=FLAGS in --help output
+#: ../ctk/ctkmain.c:452
 msgid "GTK+ debugging flags to set"
 msgstr "ക്രമീകരിക്കാനുള്ള GTK+ ഡീബഗ്ഗിങ് ഫ്ളാഗുകള്‍"
 
-#. Description of --gtk-no-debug=FLAGS in --help output
-#: ../gtk/gtkmain.c:455
+#. Description of --ctk-no-debug=FLAGS in --help output
+#: ../ctk/ctkmain.c:455
 msgid "GTK+ debugging flags to unset"
 msgstr "നിറ്‍ജ്ജീവമാക്കുവാനുള്ള GTK+ ഡീബഗ്ഗിങ് ഫ്ളാഗുകള്‍ "
 
@@ -2051,77 +2051,77 @@ msgstr "നിറ്‍ജ്ജീവമാക്കുവാനുള്ള GT
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ../gtk/gtkmain.c:703
+#: ../ctk/ctkmain.c:703
 msgid "default:LTR"
 msgstr "default:LTR"
 
-#: ../gtk/gtkmain.c:768
+#: ../ctk/ctkmain.c:768
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "ഡിസ്പ്ലെ തുറക്കുവാന്‍ സാധ്യമല്ല: %s"
 
-#: ../gtk/gtkmain.c:834
+#: ../ctk/ctkmain.c:834
 msgid "GTK+ Options"
 msgstr "GTK+ ഉപാധികള്‍"
 
-#: ../gtk/gtkmain.c:834
+#: ../ctk/ctkmain.c:834
 msgid "Show GTK+ Options"
 msgstr "GTK+ ഉപാധികള്‍ കാണിക്കുക"
 
-#: ../gtk/gtkmountoperation.c:535
+#: ../ctk/ctkmountoperation.c:535
 msgid "Co_nnect"
 msgstr "ക_ണക്ട് ചെയ്യുക"
 
-#: ../gtk/gtkmountoperation.c:609
+#: ../ctk/ctkmountoperation.c:609
 msgid "Connect As"
 msgstr "ഇങ്ങനെ കണക്ട് ചെയ്യുക"
 
-#: ../gtk/gtkmountoperation.c:618
+#: ../ctk/ctkmountoperation.c:618
 msgid "_Anonymous"
 msgstr "_അജ്ഞാതം"
 
-#: ../gtk/gtkmountoperation.c:627
+#: ../ctk/ctkmountoperation.c:627
 msgid "Registered U_ser"
 msgstr "രജിസ്ടര്‍ _ഉപയോക്താവു്"
 
-#: ../gtk/gtkmountoperation.c:638
+#: ../ctk/ctkmountoperation.c:638
 msgid "_Username"
 msgstr "_ഉപയോക്താവു്"
 
-#: ../gtk/gtkmountoperation.c:643
+#: ../ctk/ctkmountoperation.c:643
 msgid "_Domain"
 msgstr "_ഡൊമെയിന്‍"
 
-#: ../gtk/gtkmountoperation.c:649
+#: ../ctk/ctkmountoperation.c:649
 msgid "_Password"
 msgstr "_രഹസ്യവാക്ക്"
 
-#: ../gtk/gtkmountoperation.c:671
+#: ../ctk/ctkmountoperation.c:671
 msgid "Forget password _immediately"
 msgstr "_ഉടന്‍ രഹസ്യവാക്ക് ഉടന്‍ മറക്കുക"
 
-#: ../gtk/gtkmountoperation.c:681
+#: ../ctk/ctkmountoperation.c:681
 msgid "Remember password until you _logout"
 msgstr "_പുറത്തു് കടക്കുന്നതു്വരെ പാസ്‌വേര്‍ഡ് സൂക്ഷിക്കുക"
 
-#: ../gtk/gtkmountoperation.c:691
+#: ../ctk/ctkmountoperation.c:691
 msgid "Remember _forever"
 msgstr "_എന്നേക്കുമായി സൂക്ഷിക്കുക"
 
-#: ../gtk/gtkmountoperation.c:1080
+#: ../ctk/ctkmountoperation.c:1080
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "അപരിചിതമായ പ്രയോഗം (PID %d)"
 
-#: ../gtk/gtkmountoperation.c:1263
+#: ../ctk/ctkmountoperation.c:1263
 msgid "Unable to end process"
 msgstr "പ്രക്രിയ അവസാനിപ്പിക്കുവാന്‍ സാധ്യമല്ല"
 
-#: ../gtk/gtkmountoperation.c:1300
+#: ../ctk/ctkmountoperation.c:1300
 msgid "_End Process"
 msgstr "പ്രക്രിയ _അവസാനിപ്പിക്കുക"
 
-#: ../gtk/gtkmountoperation-stub.c:62
+#: ../ctk/ctkmountoperation-stub.c:62
 #, c-format
 msgid "Cannot kill process with PID %d. Operation is not implemented."
 msgstr ""
@@ -2129,32 +2129,32 @@ msgstr ""
 "ലഭ്യമാക്കിയിട്ടില്ല."
 
 #. translators: this string is a name for the 'less' command
-#: ../gtk/gtkmountoperation-x11.c:954
+#: ../ctk/ctkmountoperation-x11.c:954
 msgid "Terminal Pager"
 msgstr "ടെര്‍മിനല്‍ പേജര്‍"
 
-#: ../gtk/gtkmountoperation-x11.c:955
+#: ../ctk/ctkmountoperation-x11.c:955
 msgid "Top Command"
 msgstr "Top കമാന്‍ഡ്"
 
-#: ../gtk/gtkmountoperation-x11.c:956
+#: ../ctk/ctkmountoperation-x11.c:956
 msgid "Bourne Again Shell"
 msgstr "ബോര്‍ണ്‍ എഗെയിന്‍ ഷെല്‍"
 
-#: ../gtk/gtkmountoperation-x11.c:957
+#: ../ctk/ctkmountoperation-x11.c:957
 msgid "Bourne Shell"
 msgstr "ബോര്‍ണ്‍ ഷെല്‍"
 
-#: ../gtk/gtkmountoperation-x11.c:958
+#: ../ctk/ctkmountoperation-x11.c:958
 msgid "Z Shell"
 msgstr "Z ഷെല്‍"
 
-#: ../gtk/gtkmountoperation-x11.c:1055
+#: ../ctk/ctkmountoperation-x11.c:1055
 #, c-format
 msgid "Cannot end process with PID %d: %s"
 msgstr "PID %d-ല്‍ പ്രക്രിയ അവസാനിപ്പിക്കുവാന്‍ സാധ്യമല്ല: %s"
 
-#: ../gtk/gtknotebook.c:5069 ../gtk/gtknotebook.c:7723
+#: ../ctk/ctknotebook.c:5069 ../ctk/ctknotebook.c:7723
 #, c-format
 msgid "Page %u"
 msgstr "താള്‍ %u"
@@ -2162,26 +2162,26 @@ msgstr "താള്‍ %u"
 #. Translators: the format here is used to build the string that will be rendered
 #. * in the number emblem.
 #.
-#: ../gtk/gtknumerableicon.c:482
+#: ../ctk/ctknumerableicon.c:482
 #, c-format
 msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ../gtk/gtkpagesetup.c:646 ../gtk/gtkpapersize.c:848
-#: ../gtk/gtkpapersize.c:888
+#: ../ctk/ctkpagesetup.c:646 ../ctk/ctkpapersize.c:848
+#: ../ctk/ctkpapersize.c:888
 msgid "Not a valid page setup file"
 msgstr "ശരിയായ താള്‍ ക്രമികരണ ഫയല്‍ അല്ല"
 
-#: ../gtk/gtkpagesetupunixdialog.c:167
+#: ../ctk/ctkpagesetupunixdialog.c:167
 msgid "Any Printer"
 msgstr "ഏതെങ്കിലും പ്രിന്റര്‍"
 
-#: ../gtk/gtkpagesetupunixdialog.c:167
+#: ../ctk/ctkpagesetupunixdialog.c:167
 msgid "For portable documents"
 msgstr "മാറ്റുവാന്‍ സാധ്യമാകുന്ന രേഖകള്‍ക്ക്"
 
-#: ../gtk/gtkpagesetupunixdialog.c:796
+#: ../ctk/ctkpagesetupunixdialog.c:796
 #, c-format
 msgid ""
 "Margins:\n"
@@ -2196,48 +2196,48 @@ msgstr ""
 " മുകളില്‍: %s %s\n"
 " താഴെ: %s %s"
 
-#: ../gtk/gtkpagesetupunixdialog.c:845 ../gtk/gtkprintunixdialog.c:3329
+#: ../ctk/ctkpagesetupunixdialog.c:845 ../ctk/ctkprintunixdialog.c:3329
 #| msgid "Manage Custom Sizes"
 msgid "Manage Custom Sizes…"
 msgstr "നിങ്ങള്‍ സജ്ജമാക്കിയ വ്യാപ്തികള്‍ കൈകാര്യം ചെയ്യുക..."
 
-#: ../gtk/gtkpagesetupunixdialog.c:896
+#: ../ctk/ctkpagesetupunixdialog.c:896
 msgid "_Format for:"
 msgstr "_മാതൃക:"
 
-#: ../gtk/gtkpagesetupunixdialog.c:917 ../gtk/gtkprintunixdialog.c:3477
+#: ../ctk/ctkpagesetupunixdialog.c:917 ../ctk/ctkprintunixdialog.c:3477
 msgid "_Paper size:"
 msgstr "_പേപ്പറിന്റെ വലിപ്പം:"
 
-#: ../gtk/gtkpagesetupunixdialog.c:946
+#: ../ctk/ctkpagesetupunixdialog.c:946
 msgid "_Orientation:"
 msgstr "സംവേദനം (_O):"
 
-#: ../gtk/gtkpagesetupunixdialog.c:1006 ../gtk/gtkprintunixdialog.c:3531
+#: ../ctk/ctkpagesetupunixdialog.c:1006 ../ctk/ctkprintunixdialog.c:3531
 msgid "Page Setup"
 msgstr "പേജിന്റെ ക്രമീകരണം"
 
-#: ../gtk/gtkpathbar.c:159
+#: ../ctk/ctkpathbar.c:159
 msgid "Up Path"
 msgstr "മുകളിലേക്കുള്ള വഴി"
 
-#: ../gtk/gtkpathbar.c:161
+#: ../ctk/ctkpathbar.c:161
 msgid "Down Path"
 msgstr "താഴേക്കുള്ള വഴി"
 
-#: ../gtk/gtkpathbar.c:1644
+#: ../ctk/ctkpathbar.c:1644
 msgid "File System Root"
 msgstr "ഫയല്‍ സിസ്റ്റം റൂട്ട്"
 
-#: ../gtk/gtkprintbackend.c:750
+#: ../ctk/ctkprintbackend.c:750
 msgid "Authentication"
 msgstr "ആധികാരികത ഉറപ്പാക്കല്‍"
 
-#: ../gtk/gtkprinteroptionwidget.c:546
+#: ../ctk/ctkprinteroptionwidget.c:546
 msgid "Select a filename"
 msgstr "ഒരു ഫയല്‍നാമം തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/gtkprinteroptionwidget.c:770
+#: ../ctk/ctkprinteroptionwidget.c:770
 msgid "Not available"
 msgstr "ലഭ്യമല്ല"
 
@@ -2245,182 +2245,182 @@ msgstr "ലഭ്യമല്ല"
 #. * jobs. %s gets replaced by the application name, %d gets replaced
 #. * by the job number.
 #.
-#: ../gtk/gtkprintoperation.c:260
+#: ../ctk/ctkprintoperation.c:260
 #, c-format
 msgid "%s job #%d"
 msgstr "%s ജോലി #%d"
 
-#: ../gtk/gtkprintoperation.c:1777
+#: ../ctk/ctkprintoperation.c:1777
 msgctxt "print operation status"
 msgid "Initial state"
 msgstr "ആരംഭത്തിലുള്ള അവസ്ഥ"
 
-#: ../gtk/gtkprintoperation.c:1778
+#: ../ctk/ctkprintoperation.c:1778
 msgctxt "print operation status"
 msgid "Preparing to print"
 msgstr "പ്രിന്റ് ചെയ്യുന്നതിനായി തയ്യാറാക്കുന്നു"
 
-#: ../gtk/gtkprintoperation.c:1779
+#: ../ctk/ctkprintoperation.c:1779
 msgctxt "print operation status"
 msgid "Generating data"
 msgstr "ഡേറ്റാ ലഭ്യമാക്കുന്നു"
 
-#: ../gtk/gtkprintoperation.c:1780
+#: ../ctk/ctkprintoperation.c:1780
 msgctxt "print operation status"
 msgid "Sending data"
 msgstr "ഡേറ്റാ അയയ്ക്കുന്നു"
 
-#: ../gtk/gtkprintoperation.c:1781
+#: ../ctk/ctkprintoperation.c:1781
 msgctxt "print operation status"
 msgid "Waiting"
 msgstr "കാത്തിരിക്കുന്നു"
 
-#: ../gtk/gtkprintoperation.c:1782
+#: ../ctk/ctkprintoperation.c:1782
 msgctxt "print operation status"
 msgid "Blocking on issue"
 msgstr "ബ്ലോക്ക് ചെയ്യുന്നു"
 
-#: ../gtk/gtkprintoperation.c:1783
+#: ../ctk/ctkprintoperation.c:1783
 msgctxt "print operation status"
 msgid "Printing"
 msgstr "പ്രിന്റ് ചെയ്യുന്നു"
 
-#: ../gtk/gtkprintoperation.c:1784
+#: ../ctk/ctkprintoperation.c:1784
 msgctxt "print operation status"
 msgid "Finished"
 msgstr "പൂര്‍ത്തിയാക്കിയിരിക്കുന്നു"
 
-#: ../gtk/gtkprintoperation.c:1785
+#: ../ctk/ctkprintoperation.c:1785
 msgctxt "print operation status"
 msgid "Finished with error"
 msgstr "പിശകോടെ പൂര്‍ത്തിയാക്കിയിരിക്കുന്നു"
 
-#: ../gtk/gtkprintoperation.c:2349
+#: ../ctk/ctkprintoperation.c:2349
 #, c-format
 msgid "Preparing %d"
 msgstr "%d തയ്യാറാക്കുന്നു"
 
-#: ../gtk/gtkprintoperation.c:2351 ../gtk/gtkprintoperation.c:2983
+#: ../ctk/ctkprintoperation.c:2351 ../ctk/ctkprintoperation.c:2983
 msgid "Preparing"
 msgstr "തയ്യാറാക്കുന്നു"
 
-#: ../gtk/gtkprintoperation.c:2354
+#: ../ctk/ctkprintoperation.c:2354
 #, c-format
 msgid "Printing %d"
 msgstr "%d പ്രിന്റ് ചെയ്യുന്നു"
 
-#: ../gtk/gtkprintoperation.c:3013
+#: ../ctk/ctkprintoperation.c:3013
 msgid "Error creating print preview"
 msgstr "പ്രിന്റ് ചെയ്യുന്നതിനു് മുമ്പ് സ്ക്രീനില്‍ കാണുന്നതില്‍ പിശക്"
 
-#: ../gtk/gtkprintoperation.c:3016
+#: ../ctk/ctkprintoperation.c:3016
 msgid "The most probable reason is that a temporary file could not be created."
 msgstr ""
 "ഇതിനുള്ള കാരണം മിക്കവാറും താല്‍ക്കാലിക ഫയല്‍ ഉണ്ടാക്കപ്പെട്ടില്ല എന്നതാവും."
 
-#: ../gtk/gtkprintoperation-unix.c:307
+#: ../ctk/ctkprintoperation-unix.c:307
 msgid "Error launching preview"
 msgstr "തിരനോട്ടം ലഭ്യമാക്കുന്നതില്‍ പിശക്"
 
-#: ../gtk/gtkprintoperation-win32.c:609
+#: ../ctk/ctkprintoperation-win32.c:609
 msgid "Printer offline"
 msgstr "പ്രിന്ററ്‍ നെറ്റ്‌വറ്‍ക്കിലില്ല"
 
-#: ../gtk/gtkprintoperation-win32.c:611
+#: ../ctk/ctkprintoperation-win32.c:611
 msgid "Out of paper"
 msgstr "പേപ്പറ്‍ തീറ്‍ന്നിരിക്കുന്നു"
 
 #. Translators: this is a printer status.
-#: ../gtk/gtkprintoperation-win32.c:613
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:2232
+#: ../ctk/ctkprintoperation-win32.c:613
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:2232
 msgid "Paused"
 msgstr "തല്‍ക്കാലികമായി നിറ്‍ത്തിയിരിക്കുന്നു"
 
-#: ../gtk/gtkprintoperation-win32.c:615
+#: ../ctk/ctkprintoperation-win32.c:615
 msgid "Need user intervention"
 msgstr "ഉപയോക്താവ് ഇടപടേണ്ടതുണ്ട്"
 
-#: ../gtk/gtkprintoperation-win32.c:715
+#: ../ctk/ctkprintoperation-win32.c:715
 msgid "Custom size"
 msgstr "നിങ്ങള്‍ വലിപ്പം സജ്ജമാക്കുക"
 
-#: ../gtk/gtkprintoperation-win32.c:1537
+#: ../ctk/ctkprintoperation-win32.c:1537
 msgid "No printer found"
 msgstr "പ്രിന്റര്‍ കണ്ടെത്താനായില്ല"
 
-#: ../gtk/gtkprintoperation-win32.c:1564
+#: ../ctk/ctkprintoperation-win32.c:1564
 msgid "Invalid argument to CreateDC"
 msgstr "CreateDC-നുള്ള തെറ്റായ ആറ്‍ഗ്യുമെന്റ്"
 
-#: ../gtk/gtkprintoperation-win32.c:1600 ../gtk/gtkprintoperation-win32.c:1827
+#: ../ctk/ctkprintoperation-win32.c:1600 ../ctk/ctkprintoperation-win32.c:1827
 msgid "Error from StartDoc"
 msgstr "StartDoc-ല്‍ നിന്നും പിശക്"
 
-#: ../gtk/gtkprintoperation-win32.c:1682 ../gtk/gtkprintoperation-win32.c:1705
-#: ../gtk/gtkprintoperation-win32.c:1753
+#: ../ctk/ctkprintoperation-win32.c:1682 ../ctk/ctkprintoperation-win32.c:1705
+#: ../ctk/ctkprintoperation-win32.c:1753
 msgid "Not enough free memory"
 msgstr "ഉപയോഗിത്തിലില്ലാത്ത മെമ്മറി ലഭ്യമല്ല"
 
-#: ../gtk/gtkprintoperation-win32.c:1758
+#: ../ctk/ctkprintoperation-win32.c:1758
 msgid "Invalid argument to PrintDlgEx"
 msgstr "PrintDlgEx-നുള്ള തെറ്റായ ആറ്‍ഗ്യുമെന്റ്"
 
-#: ../gtk/gtkprintoperation-win32.c:1763
+#: ../ctk/ctkprintoperation-win32.c:1763
 msgid "Invalid pointer to PrintDlgEx"
 msgstr "PrintDlgEx-നുള്ള തെറ്റായ പോയിന്ററ്‍"
 
-#: ../gtk/gtkprintoperation-win32.c:1768
+#: ../ctk/ctkprintoperation-win32.c:1768
 msgid "Invalid handle to PrintDlgEx"
 msgstr "PrintDlgEx-നുള്ള തെറ്റായ ഹാന്‍ഡില്‍"
 
-#: ../gtk/gtkprintoperation-win32.c:1773
+#: ../ctk/ctkprintoperation-win32.c:1773
 msgid "Unspecified error"
 msgstr "വ്യക്തമാക്കാത്ത പിശക്"
 
-#: ../gtk/gtkprintunixdialog.c:681
+#: ../ctk/ctkprintunixdialog.c:681
 msgid "Getting printer information failed"
 msgstr "പ്രിന്ററിന്റെ വിവരങ്ങള്‍ ലഭ്യമാക്കുന്നതില്‍ പരാജയം"
 
-#: ../gtk/gtkprintunixdialog.c:1916
+#: ../ctk/ctkprintunixdialog.c:1916
 #| msgid "Getting printer information..."
 msgid "Getting printer information…"
 msgstr "പ്രിന്ററിന്റെ വിവരങ്ങള്‍ ലഭ്യമാക്കുന്നു..."
 
-#: ../gtk/gtkprintunixdialog.c:2184
+#: ../ctk/ctkprintunixdialog.c:2184
 msgid "Printer"
 msgstr "പ്രിന്‍റര്‍"
 
 #. Translators: this is the header for the location column in the print dialog
-#: ../gtk/gtkprintunixdialog.c:2194
+#: ../ctk/ctkprintunixdialog.c:2194
 msgid "Location"
 msgstr "സ്ഥാനം"
 
 #. Translators: this is the header for the printer status column in the print dialog
-#: ../gtk/gtkprintunixdialog.c:2205
+#: ../ctk/ctkprintunixdialog.c:2205
 msgid "Status"
 msgstr "അവസ്ഥ"
 
-#: ../gtk/gtkprintunixdialog.c:2231
+#: ../ctk/ctkprintunixdialog.c:2231
 msgid "Range"
 msgstr "പരിധി"
 
-#: ../gtk/gtkprintunixdialog.c:2235
+#: ../ctk/ctkprintunixdialog.c:2235
 msgid "_All Pages"
 msgstr "_എല്ലാ പേജുകളും"
 
-#: ../gtk/gtkprintunixdialog.c:2240
+#: ../ctk/ctkprintunixdialog.c:2240
 msgid "C_urrent Page"
 msgstr "നി_ലവിലുളള താള്‍"
 
-#: ../gtk/gtkprintunixdialog.c:2248
+#: ../ctk/ctkprintunixdialog.c:2248
 msgid "Se_lection"
 msgstr "_തെരഞ്ഞെടുക്കല്‍"
 
-#: ../gtk/gtkprintunixdialog.c:2254
+#: ../ctk/ctkprintunixdialog.c:2254
 msgid "Pag_es:"
 msgstr "താ_ളുകള്‍:"
 
-#: ../gtk/gtkprintunixdialog.c:2255
+#: ../ctk/ctkprintunixdialog.c:2255
 msgid ""
 "Specify one or more page ranges,\n"
 " e.g. 1-3,7,11"
@@ -2428,199 +2428,199 @@ msgstr ""
 "ഒന്നോ അതിലധികമോ താള്‍ പരിധികള്‍ നല്‍കുക,\n"
 " ഉദാ. 1-3,7,11"
 
-#: ../gtk/gtkprintunixdialog.c:2264
+#: ../ctk/ctkprintunixdialog.c:2264
 msgid "Pages"
 msgstr "താളുകള്‍"
 
-#: ../gtk/gtkprintunixdialog.c:2275
+#: ../ctk/ctkprintunixdialog.c:2275
 msgid "Copies"
 msgstr "പകര്‍പ്പുകള്‍"
 
 #. FIXME chpe: too much space between Copies and spinbutton, put those 2 in a hbox and make it span 2 columns
-#: ../gtk/gtkprintunixdialog.c:2280
+#: ../ctk/ctkprintunixdialog.c:2280
 msgid "Copie_s:"
 msgstr "പ_കര്‍പ്പുകള്‍:"
 
-#: ../gtk/gtkprintunixdialog.c:2296
+#: ../ctk/ctkprintunixdialog.c:2296
 msgid "C_ollate"
 msgstr "_കോളേറ്റ് ചെയ്യുക"
 
-#: ../gtk/gtkprintunixdialog.c:2302
+#: ../ctk/ctkprintunixdialog.c:2302
 msgid "_Reverse"
 msgstr "_തിരിക്കുക"
 
-#: ../gtk/gtkprintunixdialog.c:2318
+#: ../ctk/ctkprintunixdialog.c:2318
 msgid "General"
 msgstr "സാധാരണ"
 
 #. Translators: These strings name the possible arrangements of
-#. * multiple pages on a sheet when printing (same as in gtkprintbackendcups.c)
+#. * multiple pages on a sheet when printing (same as in ctkprintbackendcups.c)
 #.
 #. Translators: These strings name the possible arrangements of
 #. * multiple pages on a sheet when printing
 #.
-#: ../gtk/gtkprintunixdialog.c:3058
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4461
+#: ../ctk/ctkprintunixdialog.c:3058
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4461
 msgid "Left to right, top to bottom"
 msgstr "ഇടതില്‍ നിന്നും വലത്തേയ്ക്ക്, മുകളില്‍ നിന്നും താഴേയ്ക്ക്"
 
-#: ../gtk/gtkprintunixdialog.c:3058
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4461
+#: ../ctk/ctkprintunixdialog.c:3058
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4461
 msgid "Left to right, bottom to top"
 msgstr "ഇടതില്‍ നിന്നും വലത്തേയ്ക്ക്, താഴെ നിന്നും മുകളിലേക്ക്, "
 
-#: ../gtk/gtkprintunixdialog.c:3059
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4462
+#: ../ctk/ctkprintunixdialog.c:3059
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4462
 msgid "Right to left, top to bottom"
 msgstr "വലതു്‌ നിന്നും ഇടത്തേയ്ക്ക്, മുകളില്‍ നിന്നും താഴേയ്ക്ക്"
 
-#: ../gtk/gtkprintunixdialog.c:3059
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4462
+#: ../ctk/ctkprintunixdialog.c:3059
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4462
 msgid "Right to left, bottom to top"
 msgstr ", താഴെ നിന്നും മുകളിലേക്ക്"
 
-#: ../gtk/gtkprintunixdialog.c:3060
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4463
+#: ../ctk/ctkprintunixdialog.c:3060
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4463
 msgid "Top to bottom, left to right"
 msgstr "മുകളില്‍ നിന്നും താഴേയ്ക്ക്, ഇടതില്‍ നിന്നും വലത്തേയ്ക്ക്"
 
-#: ../gtk/gtkprintunixdialog.c:3060
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4463
+#: ../ctk/ctkprintunixdialog.c:3060
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4463
 msgid "Top to bottom, right to left"
 msgstr "മുകളില്‍ നിന്നും താഴേയ്ക്ക്, വലതു്‌ നിന്നും ഇടത്തേയ്ക്ക്"
 
-#: ../gtk/gtkprintunixdialog.c:3061
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4464
+#: ../ctk/ctkprintunixdialog.c:3061
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4464
 msgid "Bottom to top, left to right"
 msgstr "താഴെ നിന്നും മുകളിലേക്ക്, "
 
-#: ../gtk/gtkprintunixdialog.c:3061
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4464
+#: ../ctk/ctkprintunixdialog.c:3061
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4464
 msgid "Bottom to top, right to left"
 msgstr "താഴെ നിന്നും മുകളിലേക്ക്, വലതു്‌ നിന്നും ഇടത്തേയ്ക്ക്"
 
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: ../gtk/gtkprintunixdialog.c:3065 ../gtk/gtkprintunixdialog.c:3078
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4541
+#: ../ctk/ctkprintunixdialog.c:3065 ../ctk/ctkprintunixdialog.c:3078
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4541
 msgid "Page Ordering"
 msgstr "പേജിന്റെ ക്രമം"
 
-#: ../gtk/gtkprintunixdialog.c:3094
+#: ../ctk/ctkprintunixdialog.c:3094
 msgid "Left to right"
 msgstr "ഇടത് മുതല്‍ വലത്"
 
-#: ../gtk/gtkprintunixdialog.c:3095
+#: ../ctk/ctkprintunixdialog.c:3095
 msgid "Right to left"
 msgstr "വലതില്‍ നിന്നും എടത്തേയ്ക്ക്"
 
-#: ../gtk/gtkprintunixdialog.c:3107
+#: ../ctk/ctkprintunixdialog.c:3107
 msgid "Top to bottom"
 msgstr "മുകളില്‍ നിന്നും താഴേയ്ക്ക്"
 
-#: ../gtk/gtkprintunixdialog.c:3108
+#: ../ctk/ctkprintunixdialog.c:3108
 msgid "Bottom to top"
 msgstr "താഴെ നിന്നും മുകളിലേക്ക്"
 
-#: ../gtk/gtkprintunixdialog.c:3352
+#: ../ctk/ctkprintunixdialog.c:3352
 msgid "Layout"
 msgstr "ലേയൌട്ട് "
 
-#: ../gtk/gtkprintunixdialog.c:3356
+#: ../ctk/ctkprintunixdialog.c:3356
 msgid "T_wo-sided:"
 msgstr "_ഇരു വശമുള്ള:"
 
-#: ../gtk/gtkprintunixdialog.c:3368
+#: ../ctk/ctkprintunixdialog.c:3368
 msgid "Pages per _side:"
 msgstr "ഒരു _വശത്ത് എത്ര താള്‍:"
 
-#: ../gtk/gtkprintunixdialog.c:3382
+#: ../ctk/ctkprintunixdialog.c:3382
 msgid "Page or_dering:"
 msgstr "പേജിന്റെ _ക്രമം:"
 
-#: ../gtk/gtkprintunixdialog.c:3395
+#: ../ctk/ctkprintunixdialog.c:3395
 msgid "_Only print:"
 msgstr "പ്രിന്റ് മാത്രം ചെയ്യുക:"
 
 #. In enum order
-#: ../gtk/gtkprintunixdialog.c:3407
+#: ../ctk/ctkprintunixdialog.c:3407
 msgid "All sheets"
 msgstr "എല്ലാ ഷീറ്റുകളും"
 
-#: ../gtk/gtkprintunixdialog.c:3408
+#: ../ctk/ctkprintunixdialog.c:3408
 msgid "Even sheets"
 msgstr "ഇവന്‍ ഷീറ്റുകള്‍"
 
-#: ../gtk/gtkprintunixdialog.c:3409
+#: ../ctk/ctkprintunixdialog.c:3409
 msgid "Odd sheets"
 msgstr "ഓഡ് ഷീറ്റുകള്‍"
 
-#: ../gtk/gtkprintunixdialog.c:3412
+#: ../ctk/ctkprintunixdialog.c:3412
 msgid "Sc_ale:"
 msgstr "അളവ് (_a):"
 
-#: ../gtk/gtkprintunixdialog.c:3436
+#: ../ctk/ctkprintunixdialog.c:3436
 msgid "Paper"
 msgstr "പേപ്പറ്‍"
 
-#: ../gtk/gtkprintunixdialog.c:3440
+#: ../ctk/ctkprintunixdialog.c:3440
 msgid "Paper _type:"
 msgstr "ഏത് തരം പേപ്പറ്‍ (_t):"
 
-#: ../gtk/gtkprintunixdialog.c:3452
+#: ../ctk/ctkprintunixdialog.c:3452
 msgid "Paper _source:"
 msgstr "പേപ്പറിന്റെ _ഉറവിടം:"
 
-#: ../gtk/gtkprintunixdialog.c:3464
+#: ../ctk/ctkprintunixdialog.c:3464
 msgid "Output t_ray:"
 msgstr "ഔട്ട്പുട്ട് ട്റേ (_r):"
 
-#: ../gtk/gtkprintunixdialog.c:3497
+#: ../ctk/ctkprintunixdialog.c:3497
 msgid "Or_ientation:"
 msgstr "_സംവേദനം:"
 
 #. In enum order
-#: ../gtk/gtkprintunixdialog.c:3509
+#: ../ctk/ctkprintunixdialog.c:3509
 msgid "Portrait"
 msgstr "പോര്‍ട്രെയ്റ്റ്"
 
-#: ../gtk/gtkprintunixdialog.c:3510
+#: ../ctk/ctkprintunixdialog.c:3510
 msgid "Landscape"
 msgstr "ലാന്‍ഡ്സ്കേപ്പ്"
 
-#: ../gtk/gtkprintunixdialog.c:3511
+#: ../ctk/ctkprintunixdialog.c:3511
 msgid "Reverse portrait"
 msgstr "തിരിഞ്ഞ പോര്‍ട്രെയ്റ്റ്"
 
-#: ../gtk/gtkprintunixdialog.c:3512
+#: ../ctk/ctkprintunixdialog.c:3512
 msgid "Reverse landscape"
 msgstr "തിരിഞ്ഞ ലാന്‍ഡ്സ്കേപ്"
 
-#: ../gtk/gtkprintunixdialog.c:3556
+#: ../ctk/ctkprintunixdialog.c:3556
 msgid "Job Details"
 msgstr "ജോലിയുടെ വിശദവിവരങ്ങള്‍"
 
-#: ../gtk/gtkprintunixdialog.c:3560
+#: ../ctk/ctkprintunixdialog.c:3560
 msgid "Pri_ority:"
 msgstr "മുന്‍ഗണന (_o):"
 
-#: ../gtk/gtkprintunixdialog.c:3572
+#: ../ctk/ctkprintunixdialog.c:3572
 msgid "_Billing info:"
 msgstr "ബില്ലിങ് വിവരം (_B): "
 
-#: ../gtk/gtkprintunixdialog.c:3587
+#: ../ctk/ctkprintunixdialog.c:3587
 msgid "Print Document"
 msgstr "രേഖ പ്രിന്റ് ചെയ്യുക"
 
 #. Translators: this is one of the choices for the print at option
 #. * in the print dialog
 #.
-#: ../gtk/gtkprintunixdialog.c:3594
+#: ../ctk/ctkprintunixdialog.c:3594
 msgid "_Now"
 msgstr "ഉടന്‍ (_N)"
 
-#: ../gtk/gtkprintunixdialog.c:3603
+#: ../ctk/ctkprintunixdialog.c:3603
 msgid "A_t:"
 msgstr "എപ്പോള്‍ (_t):"
 
@@ -2628,7 +2628,7 @@ msgstr "എപ്പോള്‍ (_t):"
 #. * You can remove the am/pm values below for your locale if they are not
 #. * supported.
 #.
-#: ../gtk/gtkprintunixdialog.c:3609
+#: ../ctk/ctkprintunixdialog.c:3609
 msgid ""
 "Specify the time of print,\n"
 " e.g. 15:30, 2:35 pm, 14:15:20, 11:46:30 am, 4 pm"
@@ -2636,105 +2636,105 @@ msgstr ""
 "പ്രിന്റ് ചെയ്യുന്നതിനുള്ള സമയം,\n"
 " ഉദാ. 15:30, 2:35 pm, 14:15:20, 11:46:30 am, 4 pm"
 
-#: ../gtk/gtkprintunixdialog.c:3617
+#: ../ctk/ctkprintunixdialog.c:3617
 msgid "Time of print"
 msgstr "പ്രിന്റ് ചെയ്യുന്ന സമയം"
 
-#: ../gtk/gtkprintunixdialog.c:3631
+#: ../ctk/ctkprintunixdialog.c:3631
 msgid "On _hold"
 msgstr "തല്‍ക്കാലത്തേക്ക് _നിര്‍ത്തുക"
 
-#: ../gtk/gtkprintunixdialog.c:3632
+#: ../ctk/ctkprintunixdialog.c:3632
 msgid "Hold the job until it is explicitly released"
 msgstr "ഈ മാത്രമായി ലഭ്യമാക്കുന്നതു് വരെ ഇതു് ഹോള്‍ഡ് ചെയ്യുക"
 
-#: ../gtk/gtkprintunixdialog.c:3650
+#: ../ctk/ctkprintunixdialog.c:3650
 msgid "Add Cover Page"
 msgstr "കവര്‍ താള്‍ ചേര്‍ക്കുക"
 
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: ../gtk/gtkprintunixdialog.c:3657
+#: ../ctk/ctkprintunixdialog.c:3657
 msgid "Be_fore:"
 msgstr "മുമ്പ് (_f):"
 
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: ../gtk/gtkprintunixdialog.c:3672
+#: ../ctk/ctkprintunixdialog.c:3672
 msgid "_After:"
 msgstr "ശേഷം (_A):"
 
 #. Translators: this is the tab label for the notebook tab containing
 #. * job-specific options in the print dialog
 #.
-#: ../gtk/gtkprintunixdialog.c:3687
+#: ../ctk/ctkprintunixdialog.c:3687
 msgid "Job"
 msgstr "ജോലി"
 
-#: ../gtk/gtkprintunixdialog.c:3751
+#: ../ctk/ctkprintunixdialog.c:3751
 msgid "Advanced"
 msgstr "പുരോഗമിച്ച"
 
 #. Translators: this will appear as tab label in print dialog.
-#: ../gtk/gtkprintunixdialog.c:3789
+#: ../ctk/ctkprintunixdialog.c:3789
 msgid "Image Quality"
 msgstr "ഇമേജിന്റെ നിലവാരം"
 
 #. Translators: this will appear as tab label in print dialog.
-#: ../gtk/gtkprintunixdialog.c:3793
+#: ../ctk/ctkprintunixdialog.c:3793
 msgid "Color"
 msgstr "നിറം"
 
 #. Translators: this will appear as tab label in print dialog.
 #. It's a typographical term, as in "Binding and finishing"
-#: ../gtk/gtkprintunixdialog.c:3798
+#: ../ctk/ctkprintunixdialog.c:3798
 msgid "Finishing"
 msgstr "പൂറ്‍ത്തിയാക്കുന്നു"
 
-#: ../gtk/gtkprintunixdialog.c:3808
+#: ../ctk/ctkprintunixdialog.c:3808
 msgid "Some of the settings in the dialog conflict"
 msgstr "ഡയലോഗിലുള്ള ചില ക്രമീകരണങ്ങള്‍ പൊരുത്തപ്പെടുന്നില്ല"
 
-#: ../gtk/gtkprintunixdialog.c:3834
+#: ../ctk/ctkprintunixdialog.c:3834
 msgid "Print"
 msgstr "പ്രിന്റ് ചെയ്യുക"
 
-#: ../gtk/gtkrecentchooserdefault.c:480
+#: ../ctk/ctkrecentchooserdefault.c:480
 msgid "Select which type of documents are shown"
 msgstr "ഏത് തരം രേഖകളാണ് പ്രദര്‍ശിപ്പിച്ചിരിക്കുന്നത് എന്ന് തെരഞ്ഞെടുക്കുക"
 
-#: ../gtk/gtkrecentchooserdefault.c:1129 ../gtk/gtkrecentchooserdefault.c:1166
+#: ../ctk/ctkrecentchooserdefault.c:1129 ../ctk/ctkrecentchooserdefault.c:1166
 #, c-format
 msgid "No item for URI '%s' found"
 msgstr "URI '%s'-നുള്ള വസ്തു ലഭ്യമല്ല"
 
-#: ../gtk/gtkrecentchooserdefault.c:1293
+#: ../ctk/ctkrecentchooserdefault.c:1293
 msgid "Untitled filter"
 msgstr "തലക്കെട്ടില്ലാത്ത ഫില്‍‌റ്ററ്‍"
 
-#: ../gtk/gtkrecentchooserdefault.c:1646
+#: ../ctk/ctkrecentchooserdefault.c:1646
 msgid "Could not remove item"
 msgstr "വസ്തു നീക്കം ചെയ്യുവാന്‍ സാധ്യമായില്ല"
 
-#: ../gtk/gtkrecentchooserdefault.c:1690
+#: ../ctk/ctkrecentchooserdefault.c:1690
 msgid "Could not clear list"
 msgstr "പട്ടിക വെടിപ്പാക്കുവാന്‍ സാധ്യമായില്ല"
 
-#: ../gtk/gtkrecentchooserdefault.c:1774
+#: ../ctk/ctkrecentchooserdefault.c:1774
 msgid "Copy _Location"
 msgstr "സ്ഥാനം പകര്‍ത്തുക (_L)"
 
-#: ../gtk/gtkrecentchooserdefault.c:1787
+#: ../ctk/ctkrecentchooserdefault.c:1787
 msgid "_Remove From List"
 msgstr "പട്ടികയില്‍ നിന്നും നീക്കം ചെയ്യുക (_R)"
 
-#: ../gtk/gtkrecentchooserdefault.c:1796
+#: ../ctk/ctkrecentchooserdefault.c:1796
 msgid "_Clear List"
 msgstr "പട്ടിക വെടിപ്പാക്കുക (_C)"
 
-#: ../gtk/gtkrecentchooserdefault.c:1810
+#: ../ctk/ctkrecentchooserdefault.c:1810
 msgid "Show _Private Resources"
 msgstr "സ്വകാര്യ ഉറവിടങ്ങള്‍ കാണിക്കുക (_P)"
 
@@ -2748,21 +2748,21 @@ msgstr "സ്വകാര്യ ഉറവിടങ്ങള്‍ കാണി�
 #. * user appended or prepended custom menu items to the
 #. * recent chooser menu widget.
 #.
-#: ../gtk/gtkrecentchoosermenu.c:360
+#: ../ctk/ctkrecentchoosermenu.c:360
 msgid "No items found"
 msgstr "വസ്തുക്കള്‍ ലഭ്യമായില്ല"
 
-#: ../gtk/gtkrecentchoosermenu.c:526 ../gtk/gtkrecentchoosermenu.c:582
+#: ../ctk/ctkrecentchoosermenu.c:526 ../ctk/ctkrecentchoosermenu.c:582
 #, c-format
 msgid "No recently used resource found with URI `%s'"
 msgstr "യുആര്‍ഐ `%s'-നൊപ്പം ഏറ്റവും ഒടുവില്‍ ഉപയോഗിച്ച റിസോഴ്സ് ലഭ്യമായില്ല "
 
-#: ../gtk/gtkrecentchoosermenu.c:792
+#: ../ctk/ctkrecentchoosermenu.c:792
 #, c-format
 msgid "Open '%s'"
 msgstr "'%s' തുറക്കുക"
 
-#: ../gtk/gtkrecentchoosermenu.c:822
+#: ../ctk/ctkrecentchoosermenu.c:822
 msgid "Unknown item"
 msgstr "അപരിചിതമായ വസ്തു"
 
@@ -2771,7 +2771,7 @@ msgstr "അപരിചിതമായ വസ്തു"
 #. * the %s is the name of the item. Please keep the _ in front
 #. * of the number to give these menu items a mnemonic.
 #.
-#: ../gtk/gtkrecentchoosermenu.c:833
+#: ../ctk/ctkrecentchoosermenu.c:833
 #, c-format
 msgctxt "recent menu label"
 msgid "_%d. %s"
@@ -2780,42 +2780,42 @@ msgstr "_%d. %s"
 #. This is the format that is used for items in a recent files menu.
 #. * The %d is the number of the item, the %s is the name of the item.
 #.
-#: ../gtk/gtkrecentchoosermenu.c:838
+#: ../ctk/ctkrecentchoosermenu.c:838
 #, c-format
 msgctxt "recent menu label"
 msgid "%d. %s"
 msgstr "%d. %s"
 
-#: ../gtk/gtkrecentmanager.c:1035 ../gtk/gtkrecentmanager.c:1048
-#: ../gtk/gtkrecentmanager.c:1185 ../gtk/gtkrecentmanager.c:1195
-#: ../gtk/gtkrecentmanager.c:1247 ../gtk/gtkrecentmanager.c:1256
-#: ../gtk/gtkrecentmanager.c:1271
+#: ../ctk/ctkrecentmanager.c:1035 ../ctk/ctkrecentmanager.c:1048
+#: ../ctk/ctkrecentmanager.c:1185 ../ctk/ctkrecentmanager.c:1195
+#: ../ctk/ctkrecentmanager.c:1247 ../ctk/ctkrecentmanager.c:1256
+#: ../ctk/ctkrecentmanager.c:1271
 #, c-format
 msgid "Unable to find an item with URI '%s'"
 msgstr "'%s' എന്ന URI ഉള്ള ഒരു വസ്തു ലഭ്യമായില്ല"
 
-#: ../gtk/gtkrecentmanager.c:2471
+#: ../ctk/ctkrecentmanager.c:2471
 #, c-format
 msgid "No registered application with name '%s' for item with URI '%s' found"
 msgstr "'%s' എന്ന പേരില്‍ ഒരു പ്രയോഗവും '%s' യുആര്‍ഐയില്‍ ലഭ്യമല്ല"
 
-#. KEEP IN SYNC with gtkiconfactory.c stock icons, when appropriate
-#: ../gtk/gtkstock.c:324
+#. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
+#: ../ctk/ctkstock.c:324
 msgctxt "Stock label"
 msgid "Information"
 msgstr "വിവരം"
 
-#: ../gtk/gtkstock.c:325
+#: ../ctk/ctkstock.c:325
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "മുന്നറിയിപ്പ്"
 
-#: ../gtk/gtkstock.c:326
+#: ../ctk/ctkstock.c:326
 msgctxt "Stock label"
 msgid "Error"
 msgstr "പിശക്"
 
-#: ../gtk/gtkstock.c:327
+#: ../ctk/ctkstock.c:327
 msgctxt "Stock label"
 msgid "Question"
 msgstr "ചോദ്യം"
@@ -2823,482 +2823,482 @@ msgstr "ചോദ്യം"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ../gtk/gtkstock.c:332
+#: ../ctk/ctkstock.c:332
 msgctxt "Stock label"
 msgid "_About"
 msgstr "_അണിയറ വിശേഷങ്ങള്‍"
 
-#: ../gtk/gtkstock.c:333
+#: ../ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "_ചേര്‍ക്കുക"
 
-#: ../gtk/gtkstock.c:334
+#: ../ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "_Apply"
 msgstr "_കംപ്യൂട്ടറില്‍ സൂക്ഷിക്കുക"
 
-#: ../gtk/gtkstock.c:335
+#: ../ctk/ctkstock.c:335
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "_ബോള്‍ഡ്"
 
-#: ../gtk/gtkstock.c:336
+#: ../ctk/ctkstock.c:336
 msgctxt "Stock label"
 msgid "_Cancel"
 msgstr "_റദ്ദാക്കുക"
 
-#: ../gtk/gtkstock.c:337
+#: ../ctk/ctkstock.c:337
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "_സിഡി-റോം"
 
-#: ../gtk/gtkstock.c:338
+#: ../ctk/ctkstock.c:338
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "_വെടിപ്പാക്കുക"
 
-#: ../gtk/gtkstock.c:339
+#: ../ctk/ctkstock.c:339
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "_അടയ്ക്കുക"
 
-#: ../gtk/gtkstock.c:340
+#: ../ctk/ctkstock.c:340
 msgctxt "Stock label"
 msgid "C_onnect"
 msgstr "_കണക്ട് ചെയ്യുക"
 
-#: ../gtk/gtkstock.c:341
+#: ../ctk/ctkstock.c:341
 msgctxt "Stock label"
 msgid "_Convert"
 msgstr "_വേര്‍തിരിക്കുക"
 
-#: ../gtk/gtkstock.c:342
+#: ../ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "_പകര്‍ത്തുക"
 
-#: ../gtk/gtkstock.c:343
+#: ../ctk/ctkstock.c:343
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "_മുറിയ്ക്കുക"
 
-#: ../gtk/gtkstock.c:344
+#: ../ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "_വെട്ടി നീക്കുക"
 
-#: ../gtk/gtkstock.c:345
+#: ../ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_Discard"
 msgstr "_വേണ്ടെന്ന് വയ്ക്കുക"
 
-#: ../gtk/gtkstock.c:346
+#: ../ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "_Disconnect"
 msgstr "_വിഛേദിക്കുക "
 
-#: ../gtk/gtkstock.c:347
+#: ../ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "_പ്രവര്‍ത്തിപ്പിക്കുകകുക "
 
-#: ../gtk/gtkstock.c:348
+#: ../ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "_Edit"
 msgstr "_ചിട്ടപ്പെടുത്തുക"
 
-#: ../gtk/gtkstock.c:349
+#: ../ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_File"
 msgstr "_ഫയല്‍"
 
-#: ../gtk/gtkstock.c:350
+#: ../ctk/ctkstock.c:350
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "_കണ്ടുപിടിക്കുക"
 
-#: ../gtk/gtkstock.c:351
+#: ../ctk/ctkstock.c:351
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "_കണ്ടുപിടിച്ച് മാറ്റി എഴുതുക"
 
-#: ../gtk/gtkstock.c:352
+#: ../ctk/ctkstock.c:352
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "_ഫ്ലോപ്പി"
 
-#: ../gtk/gtkstock.c:353
+#: ../ctk/ctkstock.c:353
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "_സ്ക്രീന്‍ പരമാവധി വലിപ്പത്തില്‍"
 
-#: ../gtk/gtkstock.c:354
+#: ../ctk/ctkstock.c:354
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "_സ്ക്രീന്‍ പരമാവധി വലിപ്പത്തില്‍ ആക്കുക"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ../gtk/gtkstock.c:356
+#: ../ctk/ctkstock.c:356
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "_താഴെ"
 
 #. This is a navigation label as in "go to the first page"
-#: ../gtk/gtkstock.c:358
+#: ../ctk/ctkstock.c:358
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "_ആദ്യം"
 
 #. This is a navigation label as in "go to the last page"
-#: ../gtk/gtkstock.c:360
+#: ../ctk/ctkstock.c:360
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "_ഒടുവില്‍"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ../gtk/gtkstock.c:362
+#: ../ctk/ctkstock.c:362
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "_മുകളില്‍"
 
 #. This is a navigation label as in "go back"
-#: ../gtk/gtkstock.c:364
+#: ../ctk/ctkstock.c:364
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "_പുറകോട്ട്"
 
 #. This is a navigation label as in "go down"
-#: ../gtk/gtkstock.c:366
+#: ../ctk/ctkstock.c:366
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "_താഴോട്ട്"
 
 #. This is a navigation label as in "go forward"
-#: ../gtk/gtkstock.c:368
+#: ../ctk/ctkstock.c:368
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "_മുമ്പോട്ട്"
 
 #. This is a navigation label as in "go up"
-#: ../gtk/gtkstock.c:370
+#: ../ctk/ctkstock.c:370
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "_മുകളിലേക്ക്"
 
-#: ../gtk/gtkstock.c:371
+#: ../ctk/ctkstock.c:371
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "_ഹാര്‍ഡ് ഡിസ്ക്"
 
-#: ../gtk/gtkstock.c:372
+#: ../ctk/ctkstock.c:372
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "_സഹായം"
 
-#: ../gtk/gtkstock.c:373
+#: ../ctk/ctkstock.c:373
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "_ആസ്ഥാനം"
 
-#: ../gtk/gtkstock.c:374
+#: ../ctk/ctkstock.c:374
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "ഇന്‍ഡെന്റ് കൂട്ടുക"
 
-#: ../gtk/gtkstock.c:375
+#: ../ctk/ctkstock.c:375
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "ഇന്‍ഡെന്റ് കുറയ്ക്കുക"
 
-#: ../gtk/gtkstock.c:376
+#: ../ctk/ctkstock.c:376
 msgctxt "Stock label"
 msgid "_Index"
 msgstr "_സൂചിക"
 
-#: ../gtk/gtkstock.c:377
+#: ../ctk/ctkstock.c:377
 msgctxt "Stock label"
 msgid "_Information"
 msgstr "_വിവരങ്ങള്‍"
 
-#: ../gtk/gtkstock.c:378
+#: ../ctk/ctkstock.c:378
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "_ചരിഞ്ഞ അക്ഷരങ്ങള്‍"
 
-#: ../gtk/gtkstock.c:379
+#: ../ctk/ctkstock.c:379
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "_ഏങ്ങോട്ട് പോകണം"
 
 #. This is about text justification, "centered text"
-#: ../gtk/gtkstock.c:381
+#: ../ctk/ctkstock.c:381
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_മദ്ധ്യത്തില്‍"
 
 #. This is about text justification
-#: ../gtk/gtkstock.c:383
+#: ../ctk/ctkstock.c:383
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "_നിറയ്ക്കുക"
 
 #. This is about text justification, "left-justified text"
-#: ../gtk/gtkstock.c:385
+#: ../ctk/ctkstock.c:385
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "_ഇടത്ത്"
 
 #. This is about text justification, "right-justified text"
-#: ../gtk/gtkstock.c:387
+#: ../ctk/ctkstock.c:387
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "_വലത്ത്"
 
 #. Media label, as in "fast forward"
-#: ../gtk/gtkstock.c:390
+#: ../ctk/ctkstock.c:390
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "_മുമ്പോട്ട്"
 
 #. Media label, as in "next song"
-#: ../gtk/gtkstock.c:392
+#: ../ctk/ctkstock.c:392
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "_അടുത്തതു്"
 
 #. Media label, as in "pause music"
-#: ../gtk/gtkstock.c:394
+#: ../ctk/ctkstock.c:394
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "_തല്‍ക്കാലികമായി നിര്‍ത്തുക"
 
 #. Media label, as in "play music"
-#: ../gtk/gtkstock.c:396
+#: ../ctk/ctkstock.c:396
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "_പ്ലേ ചെയ്യുക"
 
 #. Media label, as in  "previous song"
-#: ../gtk/gtkstock.c:398
+#: ../ctk/ctkstock.c:398
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "_മുമ്പുള്ളത്"
 
 #. Media label
-#: ../gtk/gtkstock.c:400
+#: ../ctk/ctkstock.c:400
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "_റിക്കോര്‍ഡ് ചെയ്യുക"
 
 #. Media label
-#: ../gtk/gtkstock.c:402
+#: ../ctk/ctkstock.c:402
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "_പുറകോട്ട് പോകുക"
 
 #. Media label
-#: ../gtk/gtkstock.c:404
+#: ../ctk/ctkstock.c:404
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_നിര്‍ത്തുക"
 
-#: ../gtk/gtkstock.c:405
+#: ../ctk/ctkstock.c:405
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "_നെറ്റ്‌വര്‍ക്ക്"
 
-#: ../gtk/gtkstock.c:406
+#: ../ctk/ctkstock.c:406
 msgctxt "Stock label"
 msgid "_New"
 msgstr "_പുതിയത് "
 
-#: ../gtk/gtkstock.c:407
+#: ../ctk/ctkstock.c:407
 msgctxt "Stock label"
 msgid "_No"
 msgstr "_ഇല്ല"
 
-#: ../gtk/gtkstock.c:408
+#: ../ctk/ctkstock.c:408
 msgctxt "Stock label"
 msgid "_OK"
 msgstr "_ശരി"
 
-#: ../gtk/gtkstock.c:409
+#: ../ctk/ctkstock.c:409
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "_തുറക്കുക "
 
 #. Page orientation
-#: ../gtk/gtkstock.c:411
+#: ../ctk/ctkstock.c:411
 msgctxt "Stock label"
 msgid "Landscape"
 msgstr "ലാന്‍ഡ്സ്കേപ്പ്"
 
 #. Page orientation
-#: ../gtk/gtkstock.c:413
+#: ../ctk/ctkstock.c:413
 msgctxt "Stock label"
 msgid "Portrait"
 msgstr "പോര്‍ട്രെയ്റ്റ്"
 
 #. Page orientation
-#: ../gtk/gtkstock.c:415
+#: ../ctk/ctkstock.c:415
 msgctxt "Stock label"
 msgid "Reverse landscape"
 msgstr "തിരിഞ്ഞ ലാന്‍ഡ്സ്കേപ്"
 
 #. Page orientation
-#: ../gtk/gtkstock.c:417
+#: ../ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "Reverse portrait"
 msgstr "തിരിഞ്ഞ പോര്‍ട്രെയ്റ്റ്"
 
-#: ../gtk/gtkstock.c:418
+#: ../ctk/ctkstock.c:418
 msgctxt "Stock label"
 msgid "Page Set_up"
 msgstr "_പേജിന്റെ ക്രമീകരണം"
 
-#: ../gtk/gtkstock.c:419
+#: ../ctk/ctkstock.c:419
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "_ഒട്ടിക്കുക "
 
-#: ../gtk/gtkstock.c:420
+#: ../ctk/ctkstock.c:420
 msgctxt "Stock label"
 msgid "_Preferences"
 msgstr "_മുന്‍ഗണനകള്‍ "
 
-#: ../gtk/gtkstock.c:421
+#: ../ctk/ctkstock.c:421
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "_പ്രിന്റ് ചെയ്യുക "
 
-#: ../gtk/gtkstock.c:422
+#: ../ctk/ctkstock.c:422
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "_പ്രിന്റ് ചെയ്യുന്നതിന് മുമ്പ് സ്ക്രീനില്‍ കാണുക"
 
-#: ../gtk/gtkstock.c:423
+#: ../ctk/ctkstock.c:423
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "_ഗുണഗണങ്ങള്‍ "
 
-#: ../gtk/gtkstock.c:424
+#: ../ctk/ctkstock.c:424
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "_പുറത്ത് കടക്കുക"
 
-#: ../gtk/gtkstock.c:425
+#: ../ctk/ctkstock.c:425
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "_വീണ്ടും"
 
-#: ../gtk/gtkstock.c:426
+#: ../ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "_പുതുക്കുക "
 
-#: ../gtk/gtkstock.c:427
+#: ../ctk/ctkstock.c:427
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "_നീക്കം ചെയ്യുക"
 
-#: ../gtk/gtkstock.c:428
+#: ../ctk/ctkstock.c:428
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "_തിരികെ ലഭ്യമാക്കുക"
 
-#: ../gtk/gtkstock.c:429
+#: ../ctk/ctkstock.c:429
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "_സൂക്ഷിക്കുക "
 
-#: ../gtk/gtkstock.c:430
+#: ../ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "_പേരു് മാറ്റി സൂക്ഷിക്കുക"
 
-#: ../gtk/gtkstock.c:431
+#: ../ctk/ctkstock.c:431
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "_എല്ലാം തെരഞ്ഞടുക്കുക "
 
-#: ../gtk/gtkstock.c:432
+#: ../ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Color"
 msgstr "_നിറം "
 
-#: ../gtk/gtkstock.c:433
+#: ../ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Font"
 msgstr "_അക്ഷരസഞ്ചയം "
 
 #. Sorting direction
-#: ../gtk/gtkstock.c:435
+#: ../ctk/ctkstock.c:435
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "_ആരോഹണം "
 
 #. Sorting direction
-#: ../gtk/gtkstock.c:437
+#: ../ctk/ctkstock.c:437
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "_അവരോഹണം "
 
-#: ../gtk/gtkstock.c:438
+#: ../ctk/ctkstock.c:438
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "_അക്ഷരത്തെറ്റ് പരിശോധന "
 
-#: ../gtk/gtkstock.c:439
+#: ../ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_നിര്‍ത്തുക"
 
 #. Font variant
-#: ../gtk/gtkstock.c:441
+#: ../ctk/ctkstock.c:441
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "_കുറുകെ വരയ്‌ക്കുക "
 
-#: ../gtk/gtkstock.c:442
+#: ../ctk/ctkstock.c:442
 msgctxt "Stock label"
 msgid "_Undelete"
 msgstr "_നീക്കം ചെയ്തത് വേണ്ടെന്ന് വയ്ക്കുക "
 
 #. Font variant
-#: ../gtk/gtkstock.c:444
+#: ../ctk/ctkstock.c:444
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "_അടി വര ഇടുക "
 
-#: ../gtk/gtkstock.c:445
+#: ../ctk/ctkstock.c:445
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "_വേണ്ടെ"
 
-#: ../gtk/gtkstock.c:446
+#: ../ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "_Yes"
 msgstr "_ഉവ്വ്"
 
 #. Zoom
-#: ../gtk/gtkstock.c:448
+#: ../ctk/ctkstock.c:448
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "_സാധാരണ വലിപ്പം"
 
 #. Zoom
-#: ../gtk/gtkstock.c:450
+#: ../ctk/ctkstock.c:450
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "ഏറ്റവും _ഉചിതം"
 
-#: ../gtk/gtkstock.c:451
+#: ../ctk/ctkstock.c:451
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "_വലുതാക്കുക"
 
-#: ../gtk/gtkstock.c:452
+#: ../ctk/ctkstock.c:452
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "_ചെറുതാക്കുക"
@@ -3307,7 +3307,7 @@ msgstr "_ചെറുതാക്കുക"
 #. * glyphs then use MEDIUM VERTICAL BAR (U+2759) as the text for
 #. * the state
 #.
-#: ../gtk/gtkswitch.c:337 ../gtk/gtkswitch.c:392 ../gtk/gtkswitch.c:583
+#: ../ctk/ctkswitch.c:337 ../ctk/ctkswitch.c:392 ../ctk/ctkswitch.c:583
 msgctxt "switch"
 msgid "ON"
 msgstr "ഓണ്‍ "
@@ -3315,85 +3315,85 @@ msgstr "ഓണ്‍ "
 #. Translators: if the "off" state label requires more than three
 #. * glyphs then use WHITE CIRCLE (U+25CB) as the text for the state
 #.
-#: ../gtk/gtkswitch.c:345 ../gtk/gtkswitch.c:393 ../gtk/gtkswitch.c:598
+#: ../ctk/ctkswitch.c:345 ../ctk/ctkswitch.c:393 ../ctk/ctkswitch.c:598
 msgctxt "switch"
 msgid "OFF"
 msgstr "ഓഫ്"
 
-#: ../gtk/gtktextbufferrichtext.c:649
+#: ../ctk/ctktextbufferrichtext.c:649
 #, c-format
 msgid "Unknown error when trying to deserialize %s"
 msgstr "%s ഡീസീരിയലൈസ് ചെയ്യുവാന്‍ ശ്രമിക്കുമ്പോള്‍ അപരിചിതമായ പിശക്"
 
-#: ../gtk/gtktextbufferrichtext.c:708
+#: ../ctk/ctktextbufferrichtext.c:708
 #, c-format
 msgid "No deserialize function found for format %s"
 msgstr "%s മാതൃകയ്ക്കായി ഡീസീരിയലൈസ് ഫംങ്ഷന്‍ ലഭ്യമല്ല"
 
-#: ../gtk/gtktextbufferserialize.c:798 ../gtk/gtktextbufferserialize.c:824
+#: ../ctk/ctktextbufferserialize.c:798 ../ctk/ctktextbufferserialize.c:824
 #, c-format
 msgid "Both \"id\" and \"name\" were found on the <%s> element"
 msgstr "\"id\", \"പേരു്\" എന്നിവ രണ്ടും <%s> എലമെന്റില്‍ ലഭ്യമാണു്"
 
-#: ../gtk/gtktextbufferserialize.c:808 ../gtk/gtktextbufferserialize.c:834
+#: ../ctk/ctktextbufferserialize.c:808 ../ctk/ctktextbufferserialize.c:834
 #, c-format
 msgid "The attribute \"%s\" was found twice on the <%s> element"
 msgstr "\"%s\" എന്ന വിശേഷത രണ്ടു് തവണ <%s> എലമെന്റില്‍ ലഭ്യമായി"
 
-#: ../gtk/gtktextbufferserialize.c:850
+#: ../ctk/ctktextbufferserialize.c:850
 #, c-format
 msgid "<%s> element has invalid ID \"%s\""
 msgstr "<%s>എലമെന്റില്‍ തെറ്റായ ID \"%s\""
 
-#: ../gtk/gtktextbufferserialize.c:860
+#: ../ctk/ctktextbufferserialize.c:860
 #, c-format
 msgid "<%s> element has neither a \"name\" nor an \"id\" attribute"
 msgstr ""
 "<%s> എലമെന്റിനു് ഒരു \"name\" പേരു് അല്ലെങ്കില്‍ \"id\" സവിശേഷത ലഭ്യമല്ല"
 
-#: ../gtk/gtktextbufferserialize.c:947
+#: ../ctk/ctktextbufferserialize.c:947
 #, c-format
 msgid "Attribute \"%s\" repeated twice on the same <%s> element"
 msgstr "\"%s\" സവിശേഷത ഒരേ <%s> എലമെന്റില്‍ രണ്ടു് തവണ ആവര്‍ത്തിച്ചിരിക്കുന്നു"
 
-#: ../gtk/gtktextbufferserialize.c:965 ../gtk/gtktextbufferserialize.c:990
+#: ../ctk/ctktextbufferserialize.c:965 ../ctk/ctktextbufferserialize.c:990
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgstr "ഈ കോണ്‍ടെക്സ്റ്റില്‍ \"%s\" സവിശേഷത <%s> എലമെന്റില്‍ തെറ്റാണു്"
 
-#: ../gtk/gtktextbufferserialize.c:1029
+#: ../ctk/ctktextbufferserialize.c:1029
 #, c-format
 msgid "Tag \"%s\" has not been defined."
 msgstr "റ്റാഗ് \"%s\" വ്യക്തമാക്കിയിട്ടില്ല."
 
-#: ../gtk/gtktextbufferserialize.c:1041
+#: ../ctk/ctktextbufferserialize.c:1041
 msgid "Anonymous tag found and tags can not be created."
 msgstr "അപരിചിതമായ റ്റാഗ് ലഭ്യമായി അല്ലെങ്കില്‍ റ്റാഗുകള്‍ ഉണ്ടാക്കിയിട്ടില്ല."
 
-#: ../gtk/gtktextbufferserialize.c:1052
+#: ../ctk/ctktextbufferserialize.c:1052
 #, c-format
 msgid "Tag \"%s\" does not exist in buffer and tags can not be created."
 msgstr ""
 "\"%s\" റ്റാഗ് ബഫറില്‍ ലഭ്യമായില്ല. കൂടാതെ റ്റാഗുകള്‍ ഉണ്ടാക്കുവാന്‍ "
 "സാധ്യമായില്ല."
 
-#: ../gtk/gtktextbufferserialize.c:1151 ../gtk/gtktextbufferserialize.c:1226
-#: ../gtk/gtktextbufferserialize.c:1331 ../gtk/gtktextbufferserialize.c:1405
+#: ../ctk/ctktextbufferserialize.c:1151 ../ctk/ctktextbufferserialize.c:1226
+#: ../ctk/ctktextbufferserialize.c:1331 ../ctk/ctktextbufferserialize.c:1405
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "എലമെന്റ് <%s> <%s>-നു് താഴെ അനുവദിക്കുന്നതല്ല"
 
-#: ../gtk/gtktextbufferserialize.c:1182
+#: ../ctk/ctktextbufferserialize.c:1182
 #, c-format
 msgid "\"%s\" is not a valid attribute type"
 msgstr "\"%s\" ശരിയായ തരത്തിലുള്ള ഒരു സവിശേഷത അല്ല."
 
-#: ../gtk/gtktextbufferserialize.c:1190
+#: ../ctk/ctktextbufferserialize.c:1190
 #, c-format
 msgid "\"%s\" is not a valid attribute name"
 msgstr "\"%s\" ശരിയായ പേരുള്ള ഒരു സവിശേഷത അല്ല."
 
-#: ../gtk/gtktextbufferserialize.c:1200
+#: ../ctk/ctktextbufferserialize.c:1200
 #, c-format
 msgid ""
 "\"%s\" could not be converted to a value of type \"%s\" for attribute \"%s\""
@@ -3402,136 +3402,136 @@ msgstr ""
 "s\" എന്ന "
 "സവിശേഷതയ്ക്കുള്ളതാണു്"
 
-#: ../gtk/gtktextbufferserialize.c:1209
+#: ../ctk/ctktextbufferserialize.c:1209
 #, c-format
 msgid "\"%s\" is not a valid value for attribute \"%s\""
 msgstr "\"%s\", \"%s\" സവിശേഷതയ്ക്കുള്ള ശരിയായ ഒരു മൂല്ല്യം അല്ല"
 
-#: ../gtk/gtktextbufferserialize.c:1294
+#: ../ctk/ctktextbufferserialize.c:1294
 #, c-format
 msgid "Tag \"%s\" already defined"
 msgstr "റ്റാഗ് \"%s\" നിലവില്‍ വ്യക്തമാക്കിയിരിക്കുന്നു"
 
-#: ../gtk/gtktextbufferserialize.c:1307
+#: ../ctk/ctktextbufferserialize.c:1307
 #, c-format
 msgid "Tag \"%s\" has invalid priority \"%s\""
 msgstr "റ്റാഗ് \"%s\"-നു് തെറ്റായ മുന്‍ഗണന \"%s\""
 
-#: ../gtk/gtktextbufferserialize.c:1360
+#: ../ctk/ctktextbufferserialize.c:1360
 #, c-format
 msgid "Outermost element in text must be <text_view_markup> not <%s>"
 msgstr ""
 "വാചകത്തിന്റെ ഏറ്റവും പുറത്തുള്ള എലമെന്റ് <text_view_markup> ആയിരിക്കണം. <%s> "
 "അല്ല."
 
-#: ../gtk/gtktextbufferserialize.c:1369 ../gtk/gtktextbufferserialize.c:1385
+#: ../ctk/ctktextbufferserialize.c:1369 ../ctk/ctktextbufferserialize.c:1385
 #, c-format
 msgid "A <%s> element has already been specified"
 msgstr "ഒരു <%s> എലമെന്റ് നിലവില്‍ വ്യക്തമാക്കിയിട്ടുണ്ടു്"
 
-#: ../gtk/gtktextbufferserialize.c:1391
+#: ../ctk/ctktextbufferserialize.c:1391
 msgid "A <text> element can't occur before a <tags> element"
 msgstr ""
 "ഒരു <text> എലമെന്റ് ഒരു <tags> എലമെന്റിനു് മുമ്പു് ഉണ്ടാകുവാന്‍ സാധ്യമല്ല"
 
-#: ../gtk/gtktextbufferserialize.c:1790
+#: ../ctk/ctktextbufferserialize.c:1790
 msgid "Serialized data is malformed"
 msgstr "സീരിയലൈസ്ഡ് ഡേറ്റാ തെറ്റാകുന്നു"
 
-#: ../gtk/gtktextbufferserialize.c:1868
+#: ../ctk/ctktextbufferserialize.c:1868
 msgid ""
 "Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 "സീരിയലൈസ്ഡ് ഡേറ്റാ തെറ്റാകുന്നു. ആദ്യത്തെ ഭാഗം GTKTEXTBUFFERCONTENTS-0001 "
 "അല്ല."
 
-#: ../gtk/gtktextutil.c:58
+#: ../ctk/ctktextutil.c:58
 msgid "LRM _Left-to-right mark"
 msgstr "LRM _ഇടതു് മുതല്‍ വലതു് വരെയുള്ള അടയാളം"
 
-#: ../gtk/gtktextutil.c:59
+#: ../ctk/ctktextutil.c:59
 msgid "RLM _Right-to-left mark"
 msgstr "RLM _വലതു് മുതല്‍ ഇടതു് വരെയുള്ള അടയാളം"
 
-#: ../gtk/gtktextutil.c:60
+#: ../ctk/ctktextutil.c:60
 msgid "LRE Left-to-right _embedding"
 msgstr "LRE ഇടതു് മുതല്‍ വലതു് വരെയുള്ള _എംബഡ്ഡിങ്"
 
-#: ../gtk/gtktextutil.c:61
+#: ../ctk/ctktextutil.c:61
 msgid "RLE Right-to-left e_mbedding"
 msgstr "RLE വലതു് മുതല്‍ ഇടതു് വരെയുള്ള _എംബഡ്ഡിങ്"
 
-#: ../gtk/gtktextutil.c:62
+#: ../ctk/ctktextutil.c:62
 msgid "LRO Left-to-right _override"
 msgstr "LRO ഇടതു് മുതല്‍ വലതു് വരെയുള്ള _ഓവര്‍റൈഡ്"
 
-#: ../gtk/gtktextutil.c:63
+#: ../ctk/ctktextutil.c:63
 msgid "RLO Right-to-left o_verride"
 msgstr "RLO വലതു് മുതല്‍ ഇടതു് വരെയുള്ള _ഓവര്‍റൈഡ്"
 
-#: ../gtk/gtktextutil.c:64
+#: ../ctk/ctktextutil.c:64
 msgid "PDF _Pop directional formatting"
 msgstr "PDF പോപ്പ് ഡയറക്ഷണല്‍ ഫോറ്‍മാറ്റിങ് _P"
 
-#: ../gtk/gtktextutil.c:65
+#: ../ctk/ctktextutil.c:65
 msgid "ZWS _Zero width space"
 msgstr "ZWS സീറോ വിഡ്ത് സ്പെയിസ് _Z"
 
-#: ../gtk/gtktextutil.c:66
+#: ../ctk/ctktextutil.c:66
 msgid "ZWJ Zero width _joiner"
 msgstr "ZWJ സീറോ വിഡ്ത് ജോയിനറ്‍ _j"
 
-#: ../gtk/gtktextutil.c:67
+#: ../ctk/ctktextutil.c:67
 msgid "ZWNJ Zero width _non-joiner"
 msgstr "ZWNJ സീറോ വിഡ്ത് നോണ്‍-ജോയിനറ്‍ _n"
 
-#: ../gtk/gtkuimanager.c:1780
+#: ../ctk/ctkuimanager.c:1780
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "അപ്രതീക്ഷിതമായ ആരംഭ റ്റാഗ് '%s', വരി %d അക്ഷരം %d "
 
-#: ../gtk/gtkuimanager.c:1870
+#: ../ctk/ctkuimanager.c:1870
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "%d വരിയില്‍ അപ്രതീക്ഷിതമായ അക്ഷരം %d"
 
-#: ../gtk/gtkuimanager.c:2693
+#: ../ctk/ctkuimanager.c:2693
 msgid "Empty"
 msgstr "ശൂന്യം"
 
-#: ../gtk/gtkvolumebutton.c:169
+#: ../ctk/ctkvolumebutton.c:169
 msgid "Volume"
 msgstr "ശബ്ദം"
 
-#: ../gtk/gtkvolumebutton.c:171
+#: ../ctk/ctkvolumebutton.c:171
 msgid "Turns volume down or up"
 msgstr "ശബ്ദം കൂട്ടുകയോ കുറയ്ക്കുകയോ ചെയ്യുന്നു"
 
-#: ../gtk/gtkvolumebutton.c:174
+#: ../ctk/ctkvolumebutton.c:174
 msgid "Adjusts the volume"
 msgstr "ശബ്ദം മാറ്റുന്നു"
 
-#: ../gtk/gtkvolumebutton.c:180 ../gtk/gtkvolumebutton.c:183
+#: ../ctk/ctkvolumebutton.c:180 ../ctk/ctkvolumebutton.c:183
 msgid "Volume Down"
 msgstr "ശബ്ദം കുറയ്ക്കുക"
 
-#: ../gtk/gtkvolumebutton.c:182
+#: ../ctk/ctkvolumebutton.c:182
 msgid "Decreases the volume"
 msgstr "ശബ്ദം കൂറയ്ക്കുന്നു"
 
-#: ../gtk/gtkvolumebutton.c:186 ../gtk/gtkvolumebutton.c:189
+#: ../ctk/ctkvolumebutton.c:186 ../ctk/ctkvolumebutton.c:189
 msgid "Volume Up"
 msgstr "ശബ്ദം കൂട്ടുക"
 
-#: ../gtk/gtkvolumebutton.c:188
+#: ../ctk/ctkvolumebutton.c:188
 msgid "Increases the volume"
 msgstr "ശബ്ദം കൂട്ടുന്നു"
 
-#: ../gtk/gtkvolumebutton.c:246
+#: ../ctk/ctkvolumebutton.c:246
 msgid "Muted"
 msgstr "നിശബ്ദമാക്കുക"
 
-#: ../gtk/gtkvolumebutton.c:250
+#: ../ctk/ctkvolumebutton.c:250
 msgid "Full Volume"
 msgstr "മുഴുവന്‍ വോള്യം"
 
@@ -3540,928 +3540,928 @@ msgstr "മുഴുവന്‍ വോള്യം"
 #. * Translate the "%d" to "%Id" if you want to use localised digits,
 #. * or otherwise translate the "%d" to "%d".
 #.
-#: ../gtk/gtkvolumebutton.c:263
+#: ../ctk/ctkvolumebutton.c:263
 #, c-format
 msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ../gtk/paper_names_offsets.c:4
+#: ../ctk/paper_names_offsets.c:4
 msgctxt "paper size"
 msgid "asme_f"
 msgstr "asme_f"
 
-#: ../gtk/paper_names_offsets.c:5
+#: ../ctk/paper_names_offsets.c:5
 msgctxt "paper size"
 msgid "A0x2"
 msgstr "A0x2"
 
-#: ../gtk/paper_names_offsets.c:6
+#: ../ctk/paper_names_offsets.c:6
 msgctxt "paper size"
 msgid "A0"
 msgstr "A0"
 
-#: ../gtk/paper_names_offsets.c:7
+#: ../ctk/paper_names_offsets.c:7
 msgctxt "paper size"
 msgid "A0x3"
 msgstr "A0x3"
 
-#: ../gtk/paper_names_offsets.c:8
+#: ../ctk/paper_names_offsets.c:8
 msgctxt "paper size"
 msgid "A1"
 msgstr "A1"
 
-#: ../gtk/paper_names_offsets.c:9
+#: ../ctk/paper_names_offsets.c:9
 msgctxt "paper size"
 msgid "A10"
 msgstr "A10"
 
-#: ../gtk/paper_names_offsets.c:10
+#: ../ctk/paper_names_offsets.c:10
 msgctxt "paper size"
 msgid "A1x3"
 msgstr "A1x3"
 
-#: ../gtk/paper_names_offsets.c:11
+#: ../ctk/paper_names_offsets.c:11
 msgctxt "paper size"
 msgid "A1x4"
 msgstr "A1x4"
 
-#: ../gtk/paper_names_offsets.c:12
+#: ../ctk/paper_names_offsets.c:12
 msgctxt "paper size"
 msgid "A2"
 msgstr "A2"
 
-#: ../gtk/paper_names_offsets.c:13
+#: ../ctk/paper_names_offsets.c:13
 msgctxt "paper size"
 msgid "A2x3"
 msgstr "A2x3"
 
-#: ../gtk/paper_names_offsets.c:14
+#: ../ctk/paper_names_offsets.c:14
 msgctxt "paper size"
 msgid "A2x4"
 msgstr "A2x4"
 
-#: ../gtk/paper_names_offsets.c:15
+#: ../ctk/paper_names_offsets.c:15
 msgctxt "paper size"
 msgid "A2x5"
 msgstr "A2x5"
 
-#: ../gtk/paper_names_offsets.c:16
+#: ../ctk/paper_names_offsets.c:16
 msgctxt "paper size"
 msgid "A3"
 msgstr "A3"
 
-#: ../gtk/paper_names_offsets.c:17
+#: ../ctk/paper_names_offsets.c:17
 msgctxt "paper size"
 msgid "A3 Extra"
 msgstr "A3 Extra"
 
-#: ../gtk/paper_names_offsets.c:18
+#: ../ctk/paper_names_offsets.c:18
 msgctxt "paper size"
 msgid "A3x3"
 msgstr "A3x3"
 
-#: ../gtk/paper_names_offsets.c:19
+#: ../ctk/paper_names_offsets.c:19
 msgctxt "paper size"
 msgid "A3x4"
 msgstr "A3x4"
 
-#: ../gtk/paper_names_offsets.c:20
+#: ../ctk/paper_names_offsets.c:20
 msgctxt "paper size"
 msgid "A3x5"
 msgstr "A3x5"
 
-#: ../gtk/paper_names_offsets.c:21
+#: ../ctk/paper_names_offsets.c:21
 msgctxt "paper size"
 msgid "A3x6"
 msgstr "A3x6"
 
-#: ../gtk/paper_names_offsets.c:22
+#: ../ctk/paper_names_offsets.c:22
 msgctxt "paper size"
 msgid "A3x7"
 msgstr "A3x7"
 
-#: ../gtk/paper_names_offsets.c:23
+#: ../ctk/paper_names_offsets.c:23
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4"
 
-#: ../gtk/paper_names_offsets.c:24
+#: ../ctk/paper_names_offsets.c:24
 msgctxt "paper size"
 msgid "A4 Extra"
 msgstr "A4 എക്സ്ട്രാ"
 
-#: ../gtk/paper_names_offsets.c:25
+#: ../ctk/paper_names_offsets.c:25
 msgctxt "paper size"
 msgid "A4 Tab"
 msgstr "A4 റ്റാബ്"
 
-#: ../gtk/paper_names_offsets.c:26
+#: ../ctk/paper_names_offsets.c:26
 msgctxt "paper size"
 msgid "A4x3"
 msgstr "A4x3"
 
-#: ../gtk/paper_names_offsets.c:27
+#: ../ctk/paper_names_offsets.c:27
 msgctxt "paper size"
 msgid "A4x4"
 msgstr "A4x4"
 
-#: ../gtk/paper_names_offsets.c:28
+#: ../ctk/paper_names_offsets.c:28
 msgctxt "paper size"
 msgid "A4x5"
 msgstr "A4x5"
 
-#: ../gtk/paper_names_offsets.c:29
+#: ../ctk/paper_names_offsets.c:29
 msgctxt "paper size"
 msgid "A4x6"
 msgstr "A4x6"
 
-#: ../gtk/paper_names_offsets.c:30
+#: ../ctk/paper_names_offsets.c:30
 msgctxt "paper size"
 msgid "A4x7"
 msgstr "A4x7"
 
-#: ../gtk/paper_names_offsets.c:31
+#: ../ctk/paper_names_offsets.c:31
 msgctxt "paper size"
 msgid "A4x8"
 msgstr "A4x8"
 
-#: ../gtk/paper_names_offsets.c:32
+#: ../ctk/paper_names_offsets.c:32
 msgctxt "paper size"
 msgid "A4x9"
 msgstr "A4x9"
 
-#: ../gtk/paper_names_offsets.c:33
+#: ../ctk/paper_names_offsets.c:33
 msgctxt "paper size"
 msgid "A5"
 msgstr "A5"
 
-#: ../gtk/paper_names_offsets.c:34
+#: ../ctk/paper_names_offsets.c:34
 msgctxt "paper size"
 msgid "A5 Extra"
 msgstr "A5 എക്സ്ട്രാ"
 
-#: ../gtk/paper_names_offsets.c:35
+#: ../ctk/paper_names_offsets.c:35
 msgctxt "paper size"
 msgid "A6"
 msgstr "A6"
 
-#: ../gtk/paper_names_offsets.c:36
+#: ../ctk/paper_names_offsets.c:36
 msgctxt "paper size"
 msgid "A7"
 msgstr "A7"
 
-#: ../gtk/paper_names_offsets.c:37
+#: ../ctk/paper_names_offsets.c:37
 msgctxt "paper size"
 msgid "A8"
 msgstr "A8"
 
-#: ../gtk/paper_names_offsets.c:38
+#: ../ctk/paper_names_offsets.c:38
 msgctxt "paper size"
 msgid "A9"
 msgstr "A9"
 
-#: ../gtk/paper_names_offsets.c:39
+#: ../ctk/paper_names_offsets.c:39
 msgctxt "paper size"
 msgid "B0"
 msgstr "B0"
 
-#: ../gtk/paper_names_offsets.c:40
+#: ../ctk/paper_names_offsets.c:40
 msgctxt "paper size"
 msgid "B1"
 msgstr "B1"
 
-#: ../gtk/paper_names_offsets.c:41
+#: ../ctk/paper_names_offsets.c:41
 msgctxt "paper size"
 msgid "B10"
 msgstr "B10"
 
-#: ../gtk/paper_names_offsets.c:42
+#: ../ctk/paper_names_offsets.c:42
 msgctxt "paper size"
 msgid "B2"
 msgstr "B2"
 
-#: ../gtk/paper_names_offsets.c:43
+#: ../ctk/paper_names_offsets.c:43
 msgctxt "paper size"
 msgid "B3"
 msgstr "B3"
 
-#: ../gtk/paper_names_offsets.c:44
+#: ../ctk/paper_names_offsets.c:44
 msgctxt "paper size"
 msgid "B4"
 msgstr "B4"
 
-#: ../gtk/paper_names_offsets.c:45
+#: ../ctk/paper_names_offsets.c:45
 msgctxt "paper size"
 msgid "B5"
 msgstr "B5"
 
-#: ../gtk/paper_names_offsets.c:46
+#: ../ctk/paper_names_offsets.c:46
 msgctxt "paper size"
 msgid "B5 Extra"
 msgstr "B5 എക്സ്ട്രാ"
 
-#: ../gtk/paper_names_offsets.c:47
+#: ../ctk/paper_names_offsets.c:47
 msgctxt "paper size"
 msgid "B6"
 msgstr "B6"
 
-#: ../gtk/paper_names_offsets.c:48
+#: ../ctk/paper_names_offsets.c:48
 msgctxt "paper size"
 msgid "B6/C4"
 msgstr "B6/C4"
 
-#: ../gtk/paper_names_offsets.c:49
+#: ../ctk/paper_names_offsets.c:49
 msgctxt "paper size"
 msgid "B7"
 msgstr "B7"
 
-#: ../gtk/paper_names_offsets.c:50
+#: ../ctk/paper_names_offsets.c:50
 msgctxt "paper size"
 msgid "B8"
 msgstr "B8"
 
-#: ../gtk/paper_names_offsets.c:51
+#: ../ctk/paper_names_offsets.c:51
 msgctxt "paper size"
 msgid "B9"
 msgstr "B9"
 
-#: ../gtk/paper_names_offsets.c:52
+#: ../ctk/paper_names_offsets.c:52
 msgctxt "paper size"
 msgid "C0"
 msgstr "C0"
 
-#: ../gtk/paper_names_offsets.c:53
+#: ../ctk/paper_names_offsets.c:53
 msgctxt "paper size"
 msgid "C1"
 msgstr "C1"
 
-#: ../gtk/paper_names_offsets.c:54
+#: ../ctk/paper_names_offsets.c:54
 msgctxt "paper size"
 msgid "C10"
 msgstr "C10"
 
-#: ../gtk/paper_names_offsets.c:55
+#: ../ctk/paper_names_offsets.c:55
 msgctxt "paper size"
 msgid "C2"
 msgstr "C2"
 
-#: ../gtk/paper_names_offsets.c:56
+#: ../ctk/paper_names_offsets.c:56
 msgctxt "paper size"
 msgid "C3"
 msgstr "C3"
 
-#: ../gtk/paper_names_offsets.c:57
+#: ../ctk/paper_names_offsets.c:57
 msgctxt "paper size"
 msgid "C4"
 msgstr "C4"
 
-#: ../gtk/paper_names_offsets.c:58
+#: ../ctk/paper_names_offsets.c:58
 msgctxt "paper size"
 msgid "C5"
 msgstr "C5"
 
-#: ../gtk/paper_names_offsets.c:59
+#: ../ctk/paper_names_offsets.c:59
 msgctxt "paper size"
 msgid "C6"
 msgstr "C6"
 
-#: ../gtk/paper_names_offsets.c:60
+#: ../ctk/paper_names_offsets.c:60
 msgctxt "paper size"
 msgid "C6/C5"
 msgstr "C6/C5"
 
-#: ../gtk/paper_names_offsets.c:61
+#: ../ctk/paper_names_offsets.c:61
 msgctxt "paper size"
 msgid "C7"
 msgstr "C7"
 
-#: ../gtk/paper_names_offsets.c:62
+#: ../ctk/paper_names_offsets.c:62
 msgctxt "paper size"
 msgid "C7/C6"
 msgstr "C7/C6"
 
-#: ../gtk/paper_names_offsets.c:63
+#: ../ctk/paper_names_offsets.c:63
 msgctxt "paper size"
 msgid "C8"
 msgstr "C8"
 
-#: ../gtk/paper_names_offsets.c:64
+#: ../ctk/paper_names_offsets.c:64
 msgctxt "paper size"
 msgid "C9"
 msgstr "C9"
 
-#: ../gtk/paper_names_offsets.c:65
+#: ../ctk/paper_names_offsets.c:65
 msgctxt "paper size"
 msgid "DL Envelope"
 msgstr "DL കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:66
+#: ../ctk/paper_names_offsets.c:66
 msgctxt "paper size"
 msgid "RA0"
 msgstr "RA0"
 
-#: ../gtk/paper_names_offsets.c:67
+#: ../ctk/paper_names_offsets.c:67
 msgctxt "paper size"
 msgid "RA1"
 msgstr "RA1"
 
-#: ../gtk/paper_names_offsets.c:68
+#: ../ctk/paper_names_offsets.c:68
 msgctxt "paper size"
 msgid "RA2"
 msgstr "RA2"
 
-#: ../gtk/paper_names_offsets.c:69
+#: ../ctk/paper_names_offsets.c:69
 msgctxt "paper size"
 msgid "SRA0"
 msgstr "SRA0"
 
-#: ../gtk/paper_names_offsets.c:70
+#: ../ctk/paper_names_offsets.c:70
 msgctxt "paper size"
 msgid "SRA1"
 msgstr "SRA1"
 
-#: ../gtk/paper_names_offsets.c:71
+#: ../ctk/paper_names_offsets.c:71
 msgctxt "paper size"
 msgid "SRA2"
 msgstr "SRA2"
 
-#: ../gtk/paper_names_offsets.c:72
+#: ../ctk/paper_names_offsets.c:72
 msgctxt "paper size"
 msgid "JB0"
 msgstr "JB0"
 
-#: ../gtk/paper_names_offsets.c:73
+#: ../ctk/paper_names_offsets.c:73
 msgctxt "paper size"
 msgid "JB1"
 msgstr "JB1"
 
-#: ../gtk/paper_names_offsets.c:74
+#: ../ctk/paper_names_offsets.c:74
 msgctxt "paper size"
 msgid "JB10"
 msgstr "JB10"
 
-#: ../gtk/paper_names_offsets.c:75
+#: ../ctk/paper_names_offsets.c:75
 msgctxt "paper size"
 msgid "JB2"
 msgstr "JB2"
 
-#: ../gtk/paper_names_offsets.c:76
+#: ../ctk/paper_names_offsets.c:76
 msgctxt "paper size"
 msgid "JB3"
 msgstr "JB3"
 
-#: ../gtk/paper_names_offsets.c:77
+#: ../ctk/paper_names_offsets.c:77
 msgctxt "paper size"
 msgid "JB4"
 msgstr "JB4"
 
-#: ../gtk/paper_names_offsets.c:78
+#: ../ctk/paper_names_offsets.c:78
 msgctxt "paper size"
 msgid "JB5"
 msgstr "JB5"
 
-#: ../gtk/paper_names_offsets.c:79
+#: ../ctk/paper_names_offsets.c:79
 msgctxt "paper size"
 msgid "JB6"
 msgstr "JB6"
 
-#: ../gtk/paper_names_offsets.c:80
+#: ../ctk/paper_names_offsets.c:80
 msgctxt "paper size"
 msgid "JB7"
 msgstr "JB7"
 
-#: ../gtk/paper_names_offsets.c:81
+#: ../ctk/paper_names_offsets.c:81
 msgctxt "paper size"
 msgid "JB8"
 msgstr "JB8"
 
-#: ../gtk/paper_names_offsets.c:82
+#: ../ctk/paper_names_offsets.c:82
 msgctxt "paper size"
 msgid "JB9"
 msgstr "JB9"
 
-#: ../gtk/paper_names_offsets.c:83
+#: ../ctk/paper_names_offsets.c:83
 msgctxt "paper size"
 msgid "jis exec"
 msgstr "jis exec"
 
-#: ../gtk/paper_names_offsets.c:84
+#: ../ctk/paper_names_offsets.c:84
 msgctxt "paper size"
 msgid "Choukei 2 Envelope"
 msgstr "Choukei 2 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:85
+#: ../ctk/paper_names_offsets.c:85
 msgctxt "paper size"
 msgid "Choukei 3 Envelope"
 msgstr "Choukei 3 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:86
+#: ../ctk/paper_names_offsets.c:86
 msgctxt "paper size"
 msgid "Choukei 4 Envelope"
 msgstr "Choukei 4 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:87
+#: ../ctk/paper_names_offsets.c:87
 msgctxt "paper size"
 msgid "hagaki (postcard)"
 msgstr "hagaki (പോസ്റ്റ്കാര്‍ഡ്)"
 
-#: ../gtk/paper_names_offsets.c:88
+#: ../ctk/paper_names_offsets.c:88
 msgctxt "paper size"
 msgid "kahu Envelope"
 msgstr "kahu കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:89
+#: ../ctk/paper_names_offsets.c:89
 msgctxt "paper size"
 msgid "kaku2 Envelope"
 msgstr "kaku2 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:90
+#: ../ctk/paper_names_offsets.c:90
 msgctxt "paper size"
 msgid "oufuku (reply postcard)"
 msgstr "oufuku (മറുപടിയ്ക്കുള്ള പോസ്റ്റ്കാര്‍ഡ്)"
 
-#: ../gtk/paper_names_offsets.c:91
+#: ../ctk/paper_names_offsets.c:91
 msgctxt "paper size"
 msgid "you4 Envelope"
 msgstr "you4 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:92
+#: ../ctk/paper_names_offsets.c:92
 msgctxt "paper size"
 msgid "10x11"
 msgstr "10x11"
 
-#: ../gtk/paper_names_offsets.c:93
+#: ../ctk/paper_names_offsets.c:93
 msgctxt "paper size"
 msgid "10x13"
 msgstr "10x13"
 
-#: ../gtk/paper_names_offsets.c:94
+#: ../ctk/paper_names_offsets.c:94
 msgctxt "paper size"
 msgid "10x14"
 msgstr "10x14"
 
-#: ../gtk/paper_names_offsets.c:95 ../gtk/paper_names_offsets.c:96
+#: ../ctk/paper_names_offsets.c:95 ../ctk/paper_names_offsets.c:96
 msgctxt "paper size"
 msgid "10x15"
 msgstr "10x15"
 
-#: ../gtk/paper_names_offsets.c:97
+#: ../ctk/paper_names_offsets.c:97
 msgctxt "paper size"
 msgid "11x12"
 msgstr "11x12"
 
-#: ../gtk/paper_names_offsets.c:98
+#: ../ctk/paper_names_offsets.c:98
 msgctxt "paper size"
 msgid "11x15"
 msgstr "11x15"
 
-#: ../gtk/paper_names_offsets.c:99
+#: ../ctk/paper_names_offsets.c:99
 msgctxt "paper size"
 msgid "12x19"
 msgstr "12x19"
 
-#: ../gtk/paper_names_offsets.c:100
+#: ../ctk/paper_names_offsets.c:100
 msgctxt "paper size"
 msgid "5x7"
 msgstr "5x7"
 
-#: ../gtk/paper_names_offsets.c:101
+#: ../ctk/paper_names_offsets.c:101
 msgctxt "paper size"
 msgid "6x9 Envelope"
 msgstr "6x9 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:102
+#: ../ctk/paper_names_offsets.c:102
 msgctxt "paper size"
 msgid "7x9 Envelope"
 msgstr "7x9 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:103
+#: ../ctk/paper_names_offsets.c:103
 msgctxt "paper size"
 msgid "9x11 Envelope"
 msgstr "9x11 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:104
+#: ../ctk/paper_names_offsets.c:104
 msgctxt "paper size"
 msgid "a2 Envelope"
 msgstr "a2 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:105
+#: ../ctk/paper_names_offsets.c:105
 msgctxt "paper size"
 msgid "Arch A"
 msgstr "Arch A"
 
-#: ../gtk/paper_names_offsets.c:106
+#: ../ctk/paper_names_offsets.c:106
 msgctxt "paper size"
 msgid "Arch B"
 msgstr "Arch B"
 
-#: ../gtk/paper_names_offsets.c:107
+#: ../ctk/paper_names_offsets.c:107
 msgctxt "paper size"
 msgid "Arch C"
 msgstr "Arch C"
 
-#: ../gtk/paper_names_offsets.c:108
+#: ../ctk/paper_names_offsets.c:108
 msgctxt "paper size"
 msgid "Arch D"
 msgstr "Arch D"
 
-#: ../gtk/paper_names_offsets.c:109
+#: ../ctk/paper_names_offsets.c:109
 msgctxt "paper size"
 msgid "Arch E"
 msgstr "Arch E"
 
-#: ../gtk/paper_names_offsets.c:110
+#: ../ctk/paper_names_offsets.c:110
 msgctxt "paper size"
 msgid "b-plus"
 msgstr "b-plus"
 
-#: ../gtk/paper_names_offsets.c:111
+#: ../ctk/paper_names_offsets.c:111
 msgctxt "paper size"
 msgid "c"
 msgstr "c"
 
-#: ../gtk/paper_names_offsets.c:112
+#: ../ctk/paper_names_offsets.c:112
 msgctxt "paper size"
 msgid "c5 Envelope"
 msgstr "c5 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:113
+#: ../ctk/paper_names_offsets.c:113
 msgctxt "paper size"
 msgid "d"
 msgstr "d"
 
-#: ../gtk/paper_names_offsets.c:114
+#: ../ctk/paper_names_offsets.c:114
 msgctxt "paper size"
 msgid "e"
 msgstr "e"
 
-#: ../gtk/paper_names_offsets.c:115
+#: ../ctk/paper_names_offsets.c:115
 msgctxt "paper size"
 msgid "edp"
 msgstr "edp"
 
-#: ../gtk/paper_names_offsets.c:116
+#: ../ctk/paper_names_offsets.c:116
 msgctxt "paper size"
 msgid "European edp"
 msgstr "യൂറോപ്യന്‍ edp"
 
-#: ../gtk/paper_names_offsets.c:117
+#: ../ctk/paper_names_offsets.c:117
 msgctxt "paper size"
 msgid "Executive"
 msgstr "എക്സിക്യൂട്ടീവ്"
 
-#: ../gtk/paper_names_offsets.c:118
+#: ../ctk/paper_names_offsets.c:118
 msgctxt "paper size"
 msgid "f"
 msgstr "f"
 
-#: ../gtk/paper_names_offsets.c:119
+#: ../ctk/paper_names_offsets.c:119
 msgctxt "paper size"
 msgid "FanFold European"
 msgstr "ഫാന്‍ഫോള്‍ഡ് യൂറോപ്യന്‍"
 
-#: ../gtk/paper_names_offsets.c:120
+#: ../ctk/paper_names_offsets.c:120
 msgctxt "paper size"
 msgid "FanFold US"
 msgstr "ഫാന്‍ഫോള്‍ഡ് യുഎസ്"
 
-#: ../gtk/paper_names_offsets.c:121
+#: ../ctk/paper_names_offsets.c:121
 msgctxt "paper size"
 msgid "FanFold German Legal"
 msgstr "ഫാന്‍ഫോള്‍ഡ് ജര്‍മന്‍ ലീഗല്‍"
 
-#: ../gtk/paper_names_offsets.c:122
+#: ../ctk/paper_names_offsets.c:122
 msgctxt "paper size"
 msgid "Government Legal"
 msgstr "ഗവണ്മെന്റ് ലീഗല്‍"
 
-#: ../gtk/paper_names_offsets.c:123
+#: ../ctk/paper_names_offsets.c:123
 msgctxt "paper size"
 msgid "Government Letter"
 msgstr "ഗവണ്മെന്റ് എഴുത്ത്"
 
-#: ../gtk/paper_names_offsets.c:124
+#: ../ctk/paper_names_offsets.c:124
 msgctxt "paper size"
 msgid "Index 3x5"
 msgstr "സൂചിക 3x5"
 
-#: ../gtk/paper_names_offsets.c:125
+#: ../ctk/paper_names_offsets.c:125
 msgctxt "paper size"
 msgid "Index 4x6 (postcard)"
 msgstr "സൂചിക 4x6 (പോസ്റ്റ് കാര്‍ഡ്)"
 
-#: ../gtk/paper_names_offsets.c:126
+#: ../ctk/paper_names_offsets.c:126
 msgctxt "paper size"
 msgid "Index 4x6 ext"
 msgstr "സൂചിക 4x6 ext"
 
-#: ../gtk/paper_names_offsets.c:127
+#: ../ctk/paper_names_offsets.c:127
 msgctxt "paper size"
 msgid "Index 5x8"
 msgstr "സൂചിക 5x8"
 
-#: ../gtk/paper_names_offsets.c:128
+#: ../ctk/paper_names_offsets.c:128
 msgctxt "paper size"
 msgid "Invoice"
 msgstr "ഇന്‍വോയിസ്"
 
-#: ../gtk/paper_names_offsets.c:129
+#: ../ctk/paper_names_offsets.c:129
 msgctxt "paper size"
 msgid "Tabloid"
 msgstr "ടാബ്ലോയിഡ്"
 
-#: ../gtk/paper_names_offsets.c:130
+#: ../ctk/paper_names_offsets.c:130
 msgctxt "paper size"
 msgid "US Legal"
 msgstr "യുഎസ് ലീഗല്‍"
 
-#: ../gtk/paper_names_offsets.c:131
+#: ../ctk/paper_names_offsets.c:131
 msgctxt "paper size"
 msgid "US Legal Extra"
 msgstr "യു എസ് ലീഗല്‍ എക്സ്ട്രാ"
 
-#: ../gtk/paper_names_offsets.c:132
+#: ../ctk/paper_names_offsets.c:132
 msgctxt "paper size"
 msgid "US Letter"
 msgstr "യു എസ് ലെറ്റര്‍"
 
-#: ../gtk/paper_names_offsets.c:133
+#: ../ctk/paper_names_offsets.c:133
 msgctxt "paper size"
 msgid "US Letter Extra"
 msgstr "യു എസ് ലെറ്റര്‍ എക്സ്ട്രാ"
 
-#: ../gtk/paper_names_offsets.c:134
+#: ../ctk/paper_names_offsets.c:134
 msgctxt "paper size"
 msgid "US Letter Plus"
 msgstr "യു എസ് ലെറ്റര്‍ പ്ലസ്"
 
-#: ../gtk/paper_names_offsets.c:135
+#: ../ctk/paper_names_offsets.c:135
 msgctxt "paper size"
 msgid "Monarch Envelope"
 msgstr "മൊണാര്‍ക് കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:136
+#: ../ctk/paper_names_offsets.c:136
 msgctxt "paper size"
 msgid "#10 Envelope"
 msgstr "#10 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:137
+#: ../ctk/paper_names_offsets.c:137
 msgctxt "paper size"
 msgid "#11 Envelope"
 msgstr "#11 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:138
+#: ../ctk/paper_names_offsets.c:138
 msgctxt "paper size"
 msgid "#12 Envelope"
 msgstr "#12 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:139
+#: ../ctk/paper_names_offsets.c:139
 msgctxt "paper size"
 msgid "#14 Envelope"
 msgstr "#14 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:140
+#: ../ctk/paper_names_offsets.c:140
 msgctxt "paper size"
 msgid "#9 Envelope"
 msgstr "#9 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:141
+#: ../ctk/paper_names_offsets.c:141
 msgctxt "paper size"
 msgid "Personal Envelope"
 msgstr "സ്വകാര്യ കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:142
+#: ../ctk/paper_names_offsets.c:142
 msgctxt "paper size"
 msgid "Quarto"
 msgstr "ക്വാര്‍ട്ടോ"
 
-#: ../gtk/paper_names_offsets.c:143
+#: ../ctk/paper_names_offsets.c:143
 msgctxt "paper size"
 msgid "Super A"
 msgstr "സൂപ്പര്‍ എ"
 
-#: ../gtk/paper_names_offsets.c:144
+#: ../ctk/paper_names_offsets.c:144
 msgctxt "paper size"
 msgid "Super B"
 msgstr "സൂപ്പര്‍ ബി"
 
-#: ../gtk/paper_names_offsets.c:145
+#: ../ctk/paper_names_offsets.c:145
 msgctxt "paper size"
 msgid "Wide Format"
 msgstr "വീതിയുള്ള രീതി"
 
-#: ../gtk/paper_names_offsets.c:146
+#: ../ctk/paper_names_offsets.c:146
 msgctxt "paper size"
 msgid "Dai-pa-kai"
 msgstr "Dai-pa-kai"
 
-#: ../gtk/paper_names_offsets.c:147
+#: ../ctk/paper_names_offsets.c:147
 msgctxt "paper size"
 msgid "Folio"
 msgstr "ഫോളിയോ"
 
-#: ../gtk/paper_names_offsets.c:148
+#: ../ctk/paper_names_offsets.c:148
 msgctxt "paper size"
 msgid "Folio sp"
 msgstr "ഫോളിയോ sp"
 
-#: ../gtk/paper_names_offsets.c:149
+#: ../ctk/paper_names_offsets.c:149
 msgctxt "paper size"
 msgid "Invite Envelope"
 msgstr "ക്ഷണം അയയ്ക്കുന്നതിനുള്ള കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:150
+#: ../ctk/paper_names_offsets.c:150
 msgctxt "paper size"
 msgid "Italian Envelope"
 msgstr "ഇറ്റാലിയന്‍ കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:151
+#: ../ctk/paper_names_offsets.c:151
 msgctxt "paper size"
 msgid "juuro-ku-kai"
 msgstr "juuro-ku-kai"
 
-#: ../gtk/paper_names_offsets.c:152
+#: ../ctk/paper_names_offsets.c:152
 msgctxt "paper size"
 msgid "pa-kai"
 msgstr "pa-kai"
 
-#: ../gtk/paper_names_offsets.c:153
+#: ../ctk/paper_names_offsets.c:153
 msgctxt "paper size"
 msgid "Postfix Envelope"
 msgstr "പോസ്റ്റ്ഫിക്സ് കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:154
+#: ../ctk/paper_names_offsets.c:154
 msgctxt "paper size"
 msgid "Small Photo"
 msgstr "ചെറിയ ഫോട്ടോ"
 
-#: ../gtk/paper_names_offsets.c:155
+#: ../ctk/paper_names_offsets.c:155
 msgctxt "paper size"
 msgid "prc1 Envelope"
 msgstr "prc1 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:156
+#: ../ctk/paper_names_offsets.c:156
 msgctxt "paper size"
 msgid "prc10 Envelope"
 msgstr "prc10 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:157
+#: ../ctk/paper_names_offsets.c:157
 msgctxt "paper size"
 msgid "prc 16k"
 msgstr "prc 16k"
 
-#: ../gtk/paper_names_offsets.c:158
+#: ../ctk/paper_names_offsets.c:158
 msgctxt "paper size"
 msgid "prc2 Envelope"
 msgstr "prc2 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:159
+#: ../ctk/paper_names_offsets.c:159
 msgctxt "paper size"
 msgid "prc3 Envelope"
 msgstr "prc3 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:160
+#: ../ctk/paper_names_offsets.c:160
 msgctxt "paper size"
 msgid "prc 32k"
 msgstr "prc 32k"
 
-#: ../gtk/paper_names_offsets.c:161
+#: ../ctk/paper_names_offsets.c:161
 msgctxt "paper size"
 msgid "prc4 Envelope"
 msgstr "prc4 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:162
+#: ../ctk/paper_names_offsets.c:162
 msgctxt "paper size"
 msgid "prc5 Envelope"
 msgstr "prc5 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:163
+#: ../ctk/paper_names_offsets.c:163
 msgctxt "paper size"
 msgid "prc6 Envelope"
 msgstr "prc6 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:164
+#: ../ctk/paper_names_offsets.c:164
 msgctxt "paper size"
 msgid "prc7 Envelope"
 msgstr "prc7 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:165
+#: ../ctk/paper_names_offsets.c:165
 msgctxt "paper size"
 msgid "prc8 Envelope"
 msgstr "prc8 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:166
+#: ../ctk/paper_names_offsets.c:166
 msgctxt "paper size"
 msgid "prc9 Envelope"
 msgstr "prc9 കവര്‍"
 
-#: ../gtk/paper_names_offsets.c:167
+#: ../ctk/paper_names_offsets.c:167
 msgctxt "paper size"
 msgid "ROC 16k"
 msgstr "ROC 16k"
 
-#: ../gtk/paper_names_offsets.c:168
+#: ../ctk/paper_names_offsets.c:168
 msgctxt "paper size"
 msgid "ROC 8k"
 msgstr "ROC 8k"
 
-#: ../gtk/updateiconcache.c:1386
+#: ../ctk/updateiconcache.c:1386
 #, c-format
 msgid "Failed to write header\n"
 msgstr "ഹെഡറ്‍ എഴുതുന്നതില്‍ പരാജയം\n"
 
-#: ../gtk/updateiconcache.c:1392
+#: ../ctk/updateiconcache.c:1392
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "hash ടേബിള്‍ എഴുതുന്നതില്‍ പരാജയം\n"
 
-#: ../gtk/updateiconcache.c:1398
+#: ../ctk/updateiconcache.c:1398
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "index അറ എഴുതുന്നതില്‍ പരാ‍ജയം\n"
 
-#: ../gtk/updateiconcache.c:1406
+#: ../ctk/updateiconcache.c:1406
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "ഹെഡറ്‍ തിരുത്തി എഴുതുന്നതില്‍ പിശക്\n"
 
-#: ../gtk/updateiconcache.c:1500
+#: ../ctk/updateiconcache.c:1500
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "'%s' എന്ന ഫയല്‍ തുറക്കുന്നില്‍ പരാജയം: %s\n"
 
-#: ../gtk/updateiconcache.c:1508 ../gtk/updateiconcache.c:1538
+#: ../ctk/updateiconcache.c:1508 ../ctk/updateiconcache.c:1538
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "കാഷ് ഫയല്‍ എഴുതുന്നതില്‍ പരാജയം: %s\n"
 
-#: ../gtk/updateiconcache.c:1548
+#: ../ctk/updateiconcache.c:1548
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "ഉണ്ടാക്കപ്പെട്ട കാഷ് ശരിയല്ല.\n"
 
-#: ../gtk/updateiconcache.c:1562
+#: ../ctk/updateiconcache.c:1562
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr ""
 "%s-ന്റെ പേരു് %s ആയി മാറ്റുവാന്‍ സാധ്യമായില്ല: %s, അതിനാല്‍ %s മാറ്റുന്നു\n"
 
-#: ../gtk/updateiconcache.c:1576
+#: ../ctk/updateiconcache.c:1576
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "%s-ന്റെ പേരു് %s ആയി മാറ്റുവാന്‍ സാധ്യമായില്ല: %s\n"
 
-#: ../gtk/updateiconcache.c:1586
+#: ../ctk/updateiconcache.c:1586
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "%s-ന്റെ പേരു് %s എന്ന് തിരികെ മാറ്റുവാന്‍ സാധ്യമായില്ല: %s.\n"
 
-#: ../gtk/updateiconcache.c:1613
+#: ../ctk/updateiconcache.c:1613
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "കാഷ് ഫയല്‍ വിജയകരമായി ഉണ്ടാക്കിയിരിക്കുന്നു.\n"
 
-#: ../gtk/updateiconcache.c:1652
+#: ../ctk/updateiconcache.c:1652
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "ഏറ്റവും പുതിയതാണ് എങ്കിലും നിലവിലുള്ള കാഷ് മാറ്റി എഴുതുന്നു"
 
-#: ../gtk/updateiconcache.c:1653
+#: ../ctk/updateiconcache.c:1653
 msgid "Don't check for the existence of index.theme"
 msgstr "index.theme നിലവിലുണ്ടോ എന്ന് നോക്കേണ്ടതില്ല"
 
-#: ../gtk/updateiconcache.c:1654
+#: ../ctk/updateiconcache.c:1654
 msgid "Don't include image data in the cache"
 msgstr "കാഷില്‍ ഇമേജിനുള്ള ഫയല്‍ ഉള്‍പ്പെടുത്തേണ്ട"
 
-#: ../gtk/updateiconcache.c:1655
+#: ../ctk/updateiconcache.c:1655
 msgid "Output a C header file"
 msgstr "ഒരു C ഹെഡറ്‍ ഫയല്‍ ഔട്ട്പുട്ട് ആക്കുക"
 
-#: ../gtk/updateiconcache.c:1656
+#: ../ctk/updateiconcache.c:1656
 msgid "Turn off verbose output"
 msgstr "വെറ്‍ബോസ് ഔട്ട്പുട്ട് വേണ്ടെന്ന് വയ്ക്കുക"
 
-#: ../gtk/updateiconcache.c:1657
+#: ../ctk/updateiconcache.c:1657
 msgid "Validate existing icon cache"
 msgstr "നിലവിലുള്ള ഐക്കണ്‍ കാഷ് പരിശോധിക്കുന്നു"
 
-#: ../gtk/updateiconcache.c:1724
+#: ../ctk/updateiconcache.c:1724
 #, c-format
 msgid "File not found: %s\n"
 msgstr "ഫയല്‍ ലഭ്യമല്ല: %s\n"
 
-#: ../gtk/updateiconcache.c:1730
+#: ../ctk/updateiconcache.c:1730
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "ശരിയായ ഐക്കണ്‍ കാഷ് അല്ല: %s\n"
 
-#: ../gtk/updateiconcache.c:1743
+#: ../ctk/updateiconcache.c:1743
 #, c-format
 msgid "No theme index file.\n"
 msgstr "ഥീം സൂചിക ഫയലില്ല.\n"
 
-#: ../gtk/updateiconcache.c:1747
+#: ../ctk/updateiconcache.c:1747
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -4526,338 +4526,338 @@ msgstr "വിയറ്റ്നാമീസ് (VIQR)"
 msgid "X Input Method"
 msgstr "X ഇന്‍പുട്ട് രീതി"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:948
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1163
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:948
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1163
 msgid "Username:"
 msgstr "ഉപയോക്താവിന്റെ പേരു്:"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:949
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1172
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:949
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1172
 msgid "Password:"
 msgstr "അടയാളവാക്കു്:"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:988
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1185
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:988
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1185
 #, c-format
 msgid "Authentication is required to print document '%s' on printer %s"
 msgstr ""
 "'%s' വിവരണം %s പ്രിന്ററില്‍ പ്രിന്റ് ചെയ്യുന്നതിനായി ആധികാരികത "
 "ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:990
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:990
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr ""
 "%s-ല്‍ ഒരു വിവരണം പ്രിന്റ് ചെയ്യുന്നതിനായി ആധികാരികത ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:994
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:994
 #, c-format
 msgid "Authentication is required to get attributes of job '%s'"
 msgstr ""
 "'%s' ജോലിയുടെ വിശേഷതകള്‍ ലഭ്യമാക്കുന്നതിനു് ആധികാരികത ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:996
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:996
 msgid "Authentication is required to get attributes of a job"
 msgstr ""
 "ഒരു ജോലിയുടെ വിശേഷതകള്‍ ലഭ്യമാക്കുന്നതിനു് ആധികാരികത ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1000
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1000
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr ""
 "പ്രിന്റര്‍ %s-ന്റെ വിശേഷതകള്‍ ലഭ്യമാക്കുന്നതിനു് ആധികാരികത "
 "ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1002
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1002
 msgid "Authentication is required to get attributes of a printer"
 msgstr ""
 "ഒരു പ്രിന്ററിന്റെ വിശേഷതകള്‍ ലഭ്യമാക്കുന്നതിനു് ആധികാരികത ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1005
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1005
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr ""
 "%s-ല്‍ നിന്നും സ്വതവേയുള്ള പ്രിന്റര്‍ ലഭ്യമാക്കുന്നതിനു് ആധികാരികത "
 "ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1008
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1008
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr ""
 "%s-ല്‍ നിന്നും പ്രിന്ററുകള്‍ ലഭ്യമാക്കുന്നതിനു് ആധികാരികത ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1013
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1013
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr ""
 "%s-ല്‍ നിന്നും ഒരു ഫയല്‍ ലഭ്യമാക്കുന്നതിനായി ആധികാരികത ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1015
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1015
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "%s-ല്‍ ആധികാരികത ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1157
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1157
 msgid "Domain:"
 msgstr "ഡൊമെയിന്‍:"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1187
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1187
 #, c-format
 msgid "Authentication is required to print document '%s'"
 msgstr "%s- രേഖ പ്രിന്റ് ചെയ്യുന്നതിനായി ആധികാരികത ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1192
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1192
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr ""
 "ഈ രേഖ %s പ്രിന്ററില്‍ പ്രിന്റ് ചെയ്യുന്നതിനായി ആധികാരികത ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1194
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1194
 msgid "Authentication is required to print this document"
 msgstr "ഈ രേഖ പ്രിന്റ് ചെയ്യുന്നതിനായി ആധികാരികത ഉറപ്പാക്കേണ്ടതുണ്ടു്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1756
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1756
 #, c-format
 msgid "Printer '%s' is low on toner."
 msgstr "പ്രിന്റര്‍  '%s'-ഇല്‍ ഒരു മാര്‍ക്കര്‍ ടോണര്‍ കുറവാണു്‌."
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1757
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1757
 #, c-format
 msgid "Printer '%s' has no toner left."
 msgstr "പ്രിന്റര്‍  '%s'-ഇല്‍ ഒരു മാര്‍ക്കര്‍ ടോണര്‍ ഇല്ല."
 
 #. Translators: "Developer" like on photo development context
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1759
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1759
 #, c-format
 msgid "Printer '%s' is low on developer."
 msgstr "പ്രിന്റര്‍  '%s'-ഇല്‍ ഒരു മാര്‍ക്കര്‍ ഡെവെലപ്പര്‍ കുറവാണു്‌."
 
 #. Translators: "Developer" like on photo development context
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1761
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1761
 #, c-format
 msgid "Printer '%s' is out of developer."
 msgstr "പ്രിന്റര്‍  '%s'-ഇല്‍ ഒരു മാര്‍ക്കര്‍ ഡെവെലപ്പര്‍ ഇല്ല."
 
 #. Translators: "marker" is one color bin of the printer
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1763
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1763
 #, c-format
 msgid "Printer '%s' is low on at least one marker supply."
 msgstr "പ്രിന്റര്‍  '%s'-ഇല്‍ ഒരു മാര്‍ക്കര്‍ സപ്പ്ലൈ എങ്കിലും കുറവാണു്‌."
 
 #. Translators: "marker" is one color bin of the printer
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1765
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1765
 #, c-format
 msgid "Printer '%s' is out of at least one marker supply."
 msgstr "പ്രിന്റര്‍  '%s'-ഇല്‍ ഒരു മാര്‍ക്കര്‍ സപ്പ്ലൈ എങ്കിലും ഇല്ല."
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1766
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1766
 #, c-format
 msgid "The cover is open on printer '%s'."
 msgstr "പ്രിന്റര്‍  '%s'-ഇന്റെ കവര്‍ തുറന്നിരിക്കുന്നു"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1767
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1767
 #, c-format
 msgid "The door is open on printer '%s'."
 msgstr "പ്രിന്റര്‍  '%s'-ഇന്റെ വാതില്‍ തുറന്നിരിക്കുന്നു"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1768
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1768
 #, c-format
 msgid "Printer '%s' is low on paper."
 msgstr "പ്രിന്റര്‍  '%s'-ഇല്‍ പേപ്പര്‍ കുറവാണു്‌"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1769
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1769
 #, c-format
 msgid "Printer '%s' is out of paper."
 msgstr "പ്രിന്റര്‍ '%s'-ഇല്‍ പേപ്പര്‍ ഇല്ല"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1770
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1770
 #, c-format
 msgid "Printer '%s' is currently offline."
 msgstr "പ്രിന്റര്‍  '%s' ഇപ്പോള്‍ ഓഫ്-ലൈന്‍ ആണു്‌."
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1771
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1771
 #, c-format
 msgid "There is a problem on printer '%s'."
 msgstr "പ്രിന്റര്‍  '%s'-ഇല്‍ ഒരു പ്രശ്നമുണ്ട്"
 
 #. Translators: this is a printer status.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:2229
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:2229
 msgid "Paused; Rejecting Jobs"
 msgstr "താല്‍കാല്‍കമായി നിര്‍ത്തി ; ജോലികള്‍ റിജെക്ര്റ് ചെയ്യുന്നു"
 
 #. Translators: this is a printer status.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:2235
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:2235
 msgid "Rejecting Jobs"
 msgstr "ജോലികള്‍ റിജെക്ര്റ് ചെയ്യുന്നു"
 
 #. Translators: this string connects multiple printer states together.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:2277
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:2277
 msgid "; "
 msgstr "; "
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3684
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3684
 msgid "Two Sided"
 msgstr "ഇരുവശവുമുള്ള"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3685
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3685
 msgid "Paper Type"
 msgstr "ഏത് തരം പേപ്പറ്‍"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3686
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3686
 msgid "Paper Source"
 msgstr "പേപ്പറിന്റെ ഉറവിടം"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3687
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3687
 msgid "Output Tray"
 msgstr "ഔട്ട്പുട്ട് ട്രേ"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3688
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3688
 msgid "Resolution"
 msgstr "റിസല്യൂഷന്‍"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3689
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3689
 msgid "GhostScript pre-filtering"
 msgstr "GhostScript പ്രീ-ഫില്‍‌റ്ററിങ്"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3698
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3698
 msgid "One Sided"
 msgstr "ഒരു വശം മാത്രം"
 
 #. Translators: this is an option of "Two Sided"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3700
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3700
 msgid "Long Edge (Standard)"
 msgstr "ലോങ് എഡ്ജ് (സാധാരണ)"
 
 #. Translators: this is an option of "Two Sided"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3702
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3702
 msgid "Short Edge (Flip)"
 msgstr "ഷോര്‍ട്ട് എഡ്ജ് (ഫ്ലിപ്പ്)"
 
 #. Translators: this is an option of "Paper Source"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3704
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3706
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3714
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3704
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3706
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3714
 msgid "Auto Select"
 msgstr "സ്വയം തെരഞ്ഞെടുക്കുക"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3708
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3710
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3712
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3716
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4204
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3708
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3710
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3712
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3716
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4204
 msgid "Printer Default"
 msgstr "സ്വതവേസുള്ള പ്രിന്ററ്‍"
 
 #. Translators: this is an option of "GhostScript"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3718
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3718
 msgid "Embed GhostScript fonts only"
 msgstr "GhostScript അക്ഷരസഞ്ചയങ്ങള്‍ മാത്രം എംബഡ് ചെയ്യുക"
 
 #. Translators: this is an option of "GhostScript"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3720
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3720
 msgid "Convert to PS level 1"
 msgstr "പിഎസ് ലവല്‍ 1-ലേക്കു് വേര്‍തിരിക്കുക"
 
 #. Translators: this is an option of "GhostScript"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3722
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3722
 msgid "Convert to PS level 2"
 msgstr "പിഎസ് ലവല്‍ 2-ലേക്കു് വേര്‍തിരിക്കുക"
 
 #. Translators: this is an option of "GhostScript"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3724
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3724
 msgid "No pre-filtering"
 msgstr "പ്രീ-ഫില്‍‌റ്ററിങ് ലഭ്യമല്ല"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:3733
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:3733
 msgid "Miscellaneous"
 msgstr "മറ്റുള്ളവ"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4456
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4456
 msgid "Urgent"
 msgstr "അത്യാവശ്യമായ"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4456
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4456
 msgid "High"
 msgstr "കൂടിയ"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4456
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4456
 msgid "Medium"
 msgstr "ഇടത്തരം"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4456
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4456
 msgid "Low"
 msgstr "കുറഞ്ഞ"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4486
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4486
 msgid "Job Priority"
 msgstr "ജോലി മുന്‍ഗണന"
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4497
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4497
 msgid "Billing Info"
 msgstr "ബില്ലിങ് വിവരം"
 
 #. Translators, these strings are names for various 'standard' cover
 #. * pages that the printing system may support.
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4512
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4512
 msgid "None"
 msgstr "ഒന്നുമില്ല"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4512
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4512
 msgid "Classified"
 msgstr "വേറ്‍തിരിച്ച"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4512
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4512
 msgid "Confidential"
 msgstr "വളരെ രഹസ്യമായ"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4512
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4512
 msgid "Secret"
 msgstr "രഹസ്യം"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4512
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4512
 msgid "Standard"
 msgstr "നിലവാരമുള്ള"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4512
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4512
 msgid "Top Secret"
 msgstr "പരമ രഹസ്യം"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4512
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4512
 msgid "Unclassified"
 msgstr "വേറ്‍തിരിച്ചിട്ടില്ലാത്ത"
 
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4523
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4523
 msgid "Pages per Sheet"
 msgstr "ഒരു ഷീറ്റില്‍ എത്ര താള്‍"
 
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4583
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4583
 msgid "Before"
 msgstr "മുമ്പ്"
 
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4598
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4598
 msgid "After"
 msgstr "ശേഷം"
 
@@ -4865,14 +4865,14 @@ msgstr "ശേഷം"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4618
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4618
 msgid "Print at"
 msgstr "പ്രിന്റ് ചെയ്യുക ഈ സമയത്ത്"
 
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4629
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4629
 msgid "Print at time"
 msgstr "പ്രിന്റ് ചെയ്യുക ഈ സമയത്ത്"
 
@@ -4880,113 +4880,113 @@ msgstr "പ്രിന്റ് ചെയ്യുക ഈ സമയത്ത്
 #. * size. The two placeholders are replaced with the width and height
 #. * in points. E.g: "Custom 230.4x142.9"
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4664
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4664
 #, c-format
 msgid "Custom %sx%s"
 msgstr "കസ്റ്റം %sx%s"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4745
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4745
 msgid "Printer Profile"
 msgstr "പ്രിന്റര്‍ പ്രോഫൈല്‍"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4752
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4752
 msgid "Unavailable"
 msgstr "ലഭ്യമല്ല"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: ../modules/printbackends/cups/gtkprintercups.c:241
+#: ../modules/printbackends/cups/ctkprintercups.c:241
 msgid "Color management unavailable"
 msgstr "നിറം കൈകാര്യം ചെയ്യല്‍ ലഭ്യമല്ല"
 
 #. TRANSLATORS: when there is no color profile available
-#: ../modules/printbackends/cups/gtkprintercups.c:253
+#: ../modules/printbackends/cups/ctkprintercups.c:253
 msgid "No profile available"
 msgstr "പ്രൊഫൈല്‍ ലഭ്യമല്ല"
 
 #. TRANSLATORS: when the color profile has no title
-#: ../modules/printbackends/cups/gtkprintercups.c:264
+#: ../modules/printbackends/cups/ctkprintercups.c:264
 msgid "Unspecified profile"
 msgstr "വ്യക്തമാക്കാത്ത പ്രൊഫൈല്‍"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:249
+#: ../modules/printbackends/file/ctkprintbackendfile.c:249
 msgid "output"
 msgstr "ഔട്ട്പുട്ട്"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:521
+#: ../modules/printbackends/file/ctkprintbackendfile.c:521
 msgid "Print to File"
 msgstr "ഫയലിലേക്ക് പ്രിന്റ് ചെയ്യുക"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:647
+#: ../modules/printbackends/file/ctkprintbackendfile.c:647
 msgid "PDF"
 msgstr "PDF"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:647
+#: ../modules/printbackends/file/ctkprintbackendfile.c:647
 msgid "Postscript"
 msgstr "പോസ്റ്റ് സ്ക്രിപ്ര്റ് "
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:647
+#: ../modules/printbackends/file/ctkprintbackendfile.c:647
 msgid "SVG"
 msgstr "SVG"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:660
-#: ../modules/printbackends/test/gtkprintbackendtest.c:501
+#: ../modules/printbackends/file/ctkprintbackendfile.c:660
+#: ../modules/printbackends/test/ctkprintbackendtest.c:501
 msgid "Pages per _sheet:"
 msgstr "ഒരു ഷീറ്റില്‍ എത്റ താള്‍: _s"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:719
+#: ../modules/printbackends/file/ctkprintbackendfile.c:719
 msgid "File"
 msgstr "ഫയല്‍"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:729
+#: ../modules/printbackends/file/ctkprintbackendfile.c:729
 msgid "_Output format"
 msgstr "ഔട്ട്പുട്ട് രീതി (_O)"
 
-#: ../modules/printbackends/lpr/gtkprintbackendlpr.c:393
+#: ../modules/printbackends/lpr/ctkprintbackendlpr.c:393
 msgid "Print to LPR"
 msgstr "LPR-ലേക്ക് പ്രിന്റ് ചെയ്യുക"
 
-#: ../modules/printbackends/lpr/gtkprintbackendlpr.c:419
+#: ../modules/printbackends/lpr/ctkprintbackendlpr.c:419
 msgid "Pages Per Sheet"
 msgstr "ഒരു ഷീറ്റില്‍ എത്റ താള്‍"
 
-#: ../modules/printbackends/lpr/gtkprintbackendlpr.c:426
+#: ../modules/printbackends/lpr/ctkprintbackendlpr.c:426
 msgid "Command Line"
 msgstr "കമാന്‍ഡ് ലൈന്‍"
 
 #. SUN_BRANDING
-#: ../modules/printbackends/papi/gtkprintbackendpapi.c:809
+#: ../modules/printbackends/papi/ctkprintbackendpapi.c:809
 msgid "printer offline"
 msgstr "പ്രിന്റര്‍ നെറ്റ്‌വര്‍ക്കിലില്ല"
 
 #. SUN_BRANDING
-#: ../modules/printbackends/papi/gtkprintbackendpapi.c:827
+#: ../modules/printbackends/papi/ctkprintbackendpapi.c:827
 msgid "ready to print"
 msgstr "പ്രിന്റ് ചെയ്യുന്നതിനായി തയ്യാറാക്കുന്നു"
 
 #. SUN_BRANDING
-#: ../modules/printbackends/papi/gtkprintbackendpapi.c:830
+#: ../modules/printbackends/papi/ctkprintbackendpapi.c:830
 msgid "processing job"
 msgstr "പ്രവര്‍ത്തനത്തിലുള്ള ജോലി"
 
 #. SUN_BRANDING
-#: ../modules/printbackends/papi/gtkprintbackendpapi.c:834
+#: ../modules/printbackends/papi/ctkprintbackendpapi.c:834
 msgid "paused"
 msgstr "തല്‍ക്കാലികമായി നിര്‍ത്തിയിരിക്കുന്നു"
 
 #. SUN_BRANDING
-#: ../modules/printbackends/papi/gtkprintbackendpapi.c:837
+#: ../modules/printbackends/papi/ctkprintbackendpapi.c:837
 msgid "unknown"
 msgstr "അപരിചിതം"
 
 #. default filename used for print-to-test
-#: ../modules/printbackends/test/gtkprintbackendtest.c:232
+#: ../modules/printbackends/test/ctkprintbackendtest.c:232
 #, c-format
 msgid "test-output.%s"
 msgstr "test-output.%s"
 
-#: ../modules/printbackends/test/gtkprintbackendtest.c:465
+#: ../modules/printbackends/test/ctkprintbackendtest.c:465
 msgid "Print to Test Printer"
 msgstr "ടെസ്റ്റ് പ്രിന്ററിലേക്ക് പ്രിന്റ് ചെയ്യുക"
 

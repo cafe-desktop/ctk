@@ -30,43 +30,43 @@
 #include <cloudproviders/cloudprovidersprovider.h>
 #endif
 
-#include "gtkplacessidebarprivate.h"
-#include "gtksidebarrowprivate.h"
+#include "ctkplacessidebarprivate.h"
+#include "ctksidebarrowprivate.h"
 #include "gdk/gdkkeysyms.h"
-#include "gtkbookmarksmanager.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtkfilesystem.h"
-#include "gtkicontheme.h"
-#include "gtkintl.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkmenuitem.h"
-#include "gtkmountoperation.h"
-#include "gtkplacessidebar.h"
-#include "gtkscrolledwindow.h"
-#include "gtkseparatormenuitem.h"
-#include "gtksettings.h"
-#include "gtktrashmonitor.h"
-#include "gtktypebuiltins.h"
-#include "gtkwindow.h"
-#include "gtkpopover.h"
-#include "gtkgrid.h"
-#include "gtklabel.h"
-#include "gtkbutton.h"
-#include "gtklistbox.h"
-#include "gtkselection.h"
-#include "gtkdragdest.h"
-#include "gtkdnd.h"
-#include "gtkseparator.h"
-#include "gtkentry.h"
-#include "gtkgesturelongpress.h"
-#include "gtkbox.h"
-#include "gtkmodelbutton.h"
+#include "ctkbookmarksmanager.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcellrendererpixbuf.h"
+#include "ctkfilesystem.h"
+#include "ctkicontheme.h"
+#include "ctkintl.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkmenuitem.h"
+#include "ctkmountoperation.h"
+#include "ctkplacessidebar.h"
+#include "ctkscrolledwindow.h"
+#include "ctkseparatormenuitem.h"
+#include "ctksettings.h"
+#include "ctktrashmonitor.h"
+#include "ctktypebuiltins.h"
+#include "ctkwindow.h"
+#include "ctkpopover.h"
+#include "ctkgrid.h"
+#include "ctklabel.h"
+#include "ctkbutton.h"
+#include "ctklistbox.h"
+#include "ctkselection.h"
+#include "ctkdragdest.h"
+#include "ctkdnd.h"
+#include "ctkseparator.h"
+#include "ctkentry.h"
+#include "ctkgesturelongpress.h"
+#include "ctkbox.h"
+#include "ctkmodelbutton.h"
 
 /**
- * SECTION:gtkplacessidebar
+ * SECTION:ctkplacessidebar
  * @Short_description: Sidebar that displays frequently-used places in the file system
  * @Title: GtkPlacesSidebar
  * @See_also: #GtkFileChooser
@@ -567,7 +567,7 @@ recent_files_setting_is_enabled (GtkPlacesSidebar *sidebar)
   gboolean enabled;
 
   settings = ctk_widget_get_settings (CTK_WIDGET (sidebar));
-  g_object_get (settings, "gtk-recent-files-enabled", &enabled, NULL);
+  g_object_get (settings, "ctk-recent-files-enabled", &enabled, NULL);
 
   return enabled;
 }
@@ -4058,7 +4058,7 @@ shell_shows_desktop_changed (GtkSettings *settings,
   if (sidebar->show_desktop_set)
     return;
 
-  g_object_get (settings, "gtk-shell-shows-desktop", &show_desktop, NULL);
+  g_object_get (settings, "ctk-shell-shows-desktop", &show_desktop, NULL);
 
   if (show_desktop != sidebar->show_desktop)
     {
@@ -4171,9 +4171,9 @@ ctk_places_sidebar_init (GtkPlacesSidebar *sidebar)
 
   /* Don't bother trying to trace this across hierarchy changes... */
   sidebar->ctk_settings = ctk_settings_get_default ();
-  g_signal_connect (sidebar->ctk_settings, "notify::gtk-shell-shows-desktop",
+  g_signal_connect (sidebar->ctk_settings, "notify::ctk-shell-shows-desktop",
                     G_CALLBACK (shell_shows_desktop_changed), sidebar);
-  g_object_get (sidebar->ctk_settings, "gtk-shell-shows-desktop", &show_desktop, NULL);
+  g_object_get (sidebar->ctk_settings, "ctk-shell-shows-desktop", &show_desktop, NULL);
   sidebar->show_desktop = show_desktop;
 
   /* Cloud providers */

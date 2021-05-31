@@ -17,23 +17,23 @@
 
 #include "config.h"
 
-#include "gtkrender.h"
-#include "gtkrenderprivate.h"
+#include "ctkrender.h"
+#include "ctkrenderprivate.h"
 
 #include <math.h>
 
-#include "gtkcsscornervalueprivate.h"
-#include "gtkcssimagebuiltinprivate.h"
-#include "gtkcssimagevalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkcsstransformvalueprivate.h"
-#include "gtkhslaprivate.h"
-#include "gtkrenderbackgroundprivate.h"
-#include "gtkrenderborderprivate.h"
-#include "gtkrendericonprivate.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkcsscornervalueprivate.h"
+#include "ctkcssimagebuiltinprivate.h"
+#include "ctkcssimagevalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkcsstransformvalueprivate.h"
+#include "ctkhslaprivate.h"
+#include "ctkrenderbackgroundprivate.h"
+#include "ctkrenderborderprivate.h"
+#include "ctkrendericonprivate.h"
+#include "ctkstylecontextprivate.h"
 
 #include "fallback-c89.c"
 

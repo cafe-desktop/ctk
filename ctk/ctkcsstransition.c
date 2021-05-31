@@ -19,10 +19,10 @@
 
 #include "config.h"
 
-#include "gtkcsstransitionprivate.h"
+#include "ctkcsstransitionprivate.h"
 
-#include "gtkcsseasevalueprivate.h"
-#include "gtkprogresstrackerprivate.h"
+#include "ctkcsseasevalueprivate.h"
+#include "ctkprogresstrackerprivate.h"
 
 G_DEFINE_TYPE (GtkCssTransition, _ctk_css_transition, CTK_TYPE_STYLE_ANIMATION)
 

@@ -17,7 +17,7 @@
 
 #include "config.h"
 #define GDK_DISABLE_DEPRECATION_WARNINGS
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkActionGroup *action_group = NULL;
 static GtkToolbar *toolbar = NULL;

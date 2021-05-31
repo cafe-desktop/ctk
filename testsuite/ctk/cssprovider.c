@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 assert_section_is_not_null (GtkCssProvider *provider,

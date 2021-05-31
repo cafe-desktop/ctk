@@ -1,5 +1,5 @@
 /*
- * gtkinfobar.c
+ * ctkinfobar.c
  * This file is part of GTK+
  *
  * Copyright (C) 2005 - Paolo Maggi
@@ -20,7 +20,7 @@
 
 /*
  * Modified by the gedit Team, 2005. See the AUTHORS file for a
- * list of people on the gtk Team.
+ * list of people on the ctk Team.
  * See the gedit ChangeLog files for a list of changes.
  *
  * Modified by the GTK+ team, 2008-2009.
@@ -31,31 +31,31 @@
 
 #include <stdlib.h>
 
-#include "gtkinfobar.h"
-#include "gtkaccessible.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtkbbox.h"
-#include "gtkbox.h"
-#include "gtklabel.h"
-#include "gtkbutton.h"
-#include "gtkenums.h"
-#include "gtkbindings.h"
-#include "gtkdialog.h"
-#include "gtkrevealer.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkorientable.h"
-#include "gtkrender.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidgetprivate.h"
-#include "deprecated/gtkstock.h"
-#include "gtkgesturemultipress.h"
+#include "ctkinfobar.h"
+#include "ctkaccessible.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctkbbox.h"
+#include "ctkbox.h"
+#include "ctklabel.h"
+#include "ctkbutton.h"
+#include "ctkenums.h"
+#include "ctkbindings.h"
+#include "ctkdialog.h"
+#include "ctkrevealer.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkorientable.h"
+#include "ctkrender.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidgetprivate.h"
+#include "deprecated/ctkstock.h"
+#include "ctkgesturemultipress.h"
 
 /**
- * SECTION:gtkinfobar
+ * SECTION:ctkinfobar
  * @short_description: Report important messages to the user
- * @include: gtk/gtk.h
+ * @include: ctk/ctk.h
  * @see_also: #GtkStatusbar, #GtkMessageDialog
  *
  * #GtkInfoBar is a widget that can be used to show messages to
@@ -264,14 +264,14 @@ get_response_data (GtkWidget *widget,
                    gboolean   create)
 {
   ResponseData *ad = g_object_get_data (G_OBJECT (widget),
-                                        "gtk-info-bar-response-data");
+                                        "ctk-info-bar-response-data");
 
   if (ad == NULL && create)
     {
       ad = g_slice_new (ResponseData);
 
       g_object_set_data_full (G_OBJECT (widget),
-                              I_("gtk-info-bar-response-data"),
+                              I_("ctk-info-bar-response-data"),
                               ad,
                               response_data_free);
     }
@@ -592,7 +592,7 @@ ctk_info_bar_class_init (GtkInfoBarClass *klass)
 
   /* Bind class to template
    */
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkinfobar.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkinfobar.ui");
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkInfoBar, content_area);
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkInfoBar, action_area);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInfoBar, close_button);

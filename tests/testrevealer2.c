@@ -2,7 +2,7 @@
  * https://bugzilla.gnome.org/show_bug.cgi?id=761760
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 on_activate (GApplication *app,
@@ -62,7 +62,7 @@ on_activate (GApplication *app,
       g_object_bind_property (sidebar_toggle, "active",
                               revealer, "reveal-child",
                               G_BINDING_SYNC_CREATE);
-      g_object_bind_property (ctk_settings_get_default(), "gtk-enable-animations",
+      g_object_bind_property (ctk_settings_get_default(), "ctk-enable-animations",
                               animation_switch, "active",
                               G_BINDING_SYNC_CREATE | G_BINDING_BIDIRECTIONAL);
                               
@@ -73,7 +73,7 @@ on_activate (GApplication *app,
 int
 main (int argc, char *argv[])
 {
-  GtkApplication *app = ctk_application_new ("org.gtk.fmuellner.Revealer", 0);
+  GtkApplication *app = ctk_application_new ("org.ctk.fmuellner.Revealer", 0);
 
   g_signal_connect (app, "activate", G_CALLBACK (on_activate), NULL);
 

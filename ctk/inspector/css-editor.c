@@ -25,16 +25,16 @@
 
 #include "css-editor.h"
 
-#include "gtkcssprovider.h"
-#include "gtkstyleprovider.h"
-#include "gtkstylecontext.h"
-#include "gtktextview.h"
-#include "gtkmessagedialog.h"
-#include "gtkfilechooserdialog.h"
-#include "gtktogglebutton.h"
-#include "gtklabel.h"
-#include "gtktooltip.h"
-#include "gtktextiter.h"
+#include "ctkcssprovider.h"
+#include "ctkstyleprovider.h"
+#include "ctkstylecontext.h"
+#include "ctktextview.h"
+#include "ctkmessagedialog.h"
+#include "ctkfilechooserdialog.h"
+#include "ctktogglebutton.h"
+#include "ctklabel.h"
+#include "ctktooltip.h"
+#include "ctktextiter.h"
 
 
 struct _GtkInspectorCssEditorPrivate
@@ -342,7 +342,7 @@ ctk_inspector_css_editor_class_init (GtkInspectorCssEditorClass *klass)
   object_class->constructed = constructed;
   object_class->finalize = finalize;
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/css-editor.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/css-editor.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssEditor, text);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssEditor, view);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssEditor, disable_button);

@@ -21,15 +21,15 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtktoolpaletteprivate.h"
-#include "gtkmarshalers.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkscrollable.h"
-#include "gtkorientableprivate.h"
-#include "gtkintl.h"
+#include "ctktoolpaletteprivate.h"
+#include "ctkmarshalers.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkscrollable.h"
+#include "ctkorientableprivate.h"
+#include "ctkintl.h"
 
 #define DEFAULT_ICON_SIZE       CTK_ICON_SIZE_SMALL_TOOLBAR
 #define DEFAULT_ORIENTATION     CTK_ORIENTATION_VERTICAL
@@ -39,7 +39,7 @@
 #define DEFAULT_CHILD_EXPAND    FALSE
 
 /**
- * SECTION:gtktoolpalette
+ * SECTION:ctktoolpalette
  * @Short_description: A tool palette with categories
  * @Title: GtkToolPalette
  *
@@ -185,8 +185,8 @@ static GdkAtom dnd_target_atom_group = GDK_NONE;
 
 static const GtkTargetEntry dnd_targets[] =
 {
-  { "application/x-gtk-tool-palette-item", CTK_TARGET_SAME_APP, 0 },
-  { "application/x-gtk-tool-palette-group", CTK_TARGET_SAME_APP, 0 },
+  { "application/x-ctk-tool-palette-item", CTK_TARGET_SAME_APP, 0 },
+  { "application/x-ctk-tool-palette-group", CTK_TARGET_SAME_APP, 0 },
 };
 
 static void ctk_tool_palette_set_hadjustment (GtkToolPalette *palette,

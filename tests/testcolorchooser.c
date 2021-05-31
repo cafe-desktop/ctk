@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 color_changed (GObject *o, GParamSpec *pspect, gpointer data)

@@ -18,7 +18,7 @@
 #ifndef __CTK_CSS_TRANSIENT_NODE_PRIVATE_H__
 #define __CTK_CSS_TRANSIENT_NODE_PRIVATE_H__
 
-#include "gtkcssnodeprivate.h"
+#include "ctkcssnodeprivate.h"
 
 G_BEGIN_DECLS
 

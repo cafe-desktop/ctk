@@ -1,4 +1,4 @@
-/* gtkkeyhash.c: Keymap aware matching of key bindings
+/* ctkkeyhash.c: Keymap aware matching of key bindings
  *
  * GTK - The GIMP Toolkit
  * Copyright (C) 2002, Red Hat Inc.
@@ -19,9 +19,9 @@
 
 #include "config.h"
 
-#include "gtkdebug.h"
-#include "gtkkeyhash.h"
-#include "gtkprivate.h"
+#include "ctkdebug.h"
+#include "ctkkeyhash.h"
+#include "ctkprivate.h"
 
 typedef struct _GtkKeyHashEntry GtkKeyHashEntry;
 

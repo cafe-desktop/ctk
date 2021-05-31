@@ -18,8 +18,8 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtktogglebuttonaccessible.h"
+#include <ctk/ctk.h>
+#include "ctktogglebuttonaccessible.h"
 
 
 G_DEFINE_TYPE (GtkToggleButtonAccessible, ctk_toggle_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE)
@@ -50,7 +50,7 @@ ctk_toggle_button_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_toggle_button_accessible_notify_gtk (GObject    *obj,
+ctk_toggle_button_accessible_notify_ctk (GObject    *obj,
                                          GParamSpec *pspec)
 {
   GtkToggleButton *toggle_button = CTK_TOGGLE_BUTTON (obj);
@@ -74,7 +74,7 @@ ctk_toggle_button_accessible_notify_gtk (GObject    *obj,
       atk_object_notify_state_change (atk_obj, ATK_STATE_ENABLED, (sensitive && !inconsistent));
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_toggle_button_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_toggle_button_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static AtkStateSet*
@@ -109,7 +109,7 @@ ctk_toggle_button_accessible_class_init (GtkToggleButtonAccessibleClass *klass)
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
 
-  widget_class->notify_gtk = ctk_toggle_button_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_toggle_button_accessible_notify_ctk;
 
   class->ref_state_set = ctk_toggle_button_accessible_ref_state_set;
   class->initialize = ctk_toggle_button_accessible_initialize;

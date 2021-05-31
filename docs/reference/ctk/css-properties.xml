@@ -36,7 +36,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
     <para>
       GTK+ supports CSS properties and shorthands as far as they can be applied
       in the context of widgets, and adds its own properties only when needed.
-      All GTK+-specific properties have a -gtk prefix.
+      All GTK+-specific properties have a -ctk prefix.
     </para>
 
     <para>
@@ -72,10 +72,10 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
 
 <literallayout>
 <code>〈win32 theme size〉 = 〈win32 size〉 | 〈win32 part size〉</code>
-<code>〈win32 size〉 = -gtk-win32-size ( 〈theme name〉, 〈metric id〉 )</code>
-<code>〈win32 part size〉 = [ -gtk-win32-part-width | -gtk-win32-part-height |</code>
-<code>                      -gtk-win32-part-border-top | -gtk-win32-part-border-right |</code>
-<code>                      -gtk-win32-part-border-bottom | -gtk-win32-part-border-left ]</code>
+<code>〈win32 size〉 = -ctk-win32-size ( 〈theme name〉, 〈metric id〉 )</code>
+<code>〈win32 part size〉 = [ -ctk-win32-part-width | -ctk-win32-part-height |</code>
+<code>                      -ctk-win32-part-border-top | -ctk-win32-part-border-right |</code>
+<code>                      -ctk-win32-part-border-bottom | -ctk-win32-part-border-left ]</code>
 <code>                    ( 〈theme name〉 , 〈integer〉 , 〈integer〉 )</code>
 </literallayout>
 
@@ -164,7 +164,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
             <row>
               <entry><phrase role="nowrap">font-family</phrase></entry>
               <entry><code>〈family name〉 [ , 〈family name〉 ]*</code></entry>
-              <entry>gtk-font-name setting</entry>
+              <entry>ctk-font-name setting</entry>
               <entry>✓</entry>
               <entry></entry>
               <entry><ulink url="https://www.w3.org/TR/2011/REC-CSS2-20110607/fonts.html#propdef-font-family">CSS2</ulink>,
@@ -174,7 +174,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
             <row>
               <entry><phrase role="nowrap">font-size</phrase></entry>
               <entry><code>〈absolute size〉 | 〈relative size〉 | 〈length〉 | 〈percentage〉</code></entry>
-              <entry>gtk-font-name setting</entry>
+              <entry>ctk-font-name setting</entry>
               <entry>✓</entry>
               <entry>✓</entry>
               <entry><ulink url="https://www.w3.org/TR/2011/REC-CSS2-20110607/fonts.html#font-size-props">CSS2</ulink>,
@@ -221,7 +221,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry></entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-dpi</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-dpi</phrase></entry>
               <entry><code>〈number〉</code></entry>
               <entry>screen resolution</entry>
               <entry>✓</entry>
@@ -286,7 +286,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry>CSS allows an auto value</entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-secondary-caret-color</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-secondary-caret-color</phrase></entry>
               <entry><code>〈color〉</code></entry>
               <entry><code>currentColor</code></entry>
               <entry>✓</entry>
@@ -394,7 +394,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
           </thead>
           <tbody>
             <row>
-              <entry><phrase role="nowrap">-gtk-icon-source</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-icon-source</phrase></entry>
               <entry><code>builtin | 〈image〉 | none</code></entry>
               <entry><code>builtin</code></entry>
               <entry></entry>
@@ -403,7 +403,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry></entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-icon-transform</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-icon-transform</phrase></entry>
               <entry><code>none | 〈transform〉+</code></entry>
               <entry><code>none</code></entry>
               <entry></entry>
@@ -412,7 +412,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry></entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-icon-style</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-icon-style</phrase></entry>
               <entry><code>requested | regular | symbolic</code></entry>
               <entry><code>requested</code></entry>
               <entry>✓</entry>
@@ -421,25 +421,25 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry>Determines the preferred style for application-loaded icons</entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-icon-theme</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-icon-theme</phrase></entry>
               <entry><code>〈name〉</code></entry>
               <entry>current icon theme</entry>
               <entry>✓</entry>
               <entry></entry>
               <entry></entry>
-              <entry>The icon theme to use with -gtk-icontheme(). Since 3.20</entry>
+              <entry>The icon theme to use with -ctk-icontheme(). Since 3.20</entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-icon-palette</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-icon-palette</phrase></entry>
               <entry><code>〈color palette〉</code></entry>
               <entry><code>default</code></entry>
               <entry>✓</entry>
               <entry>✓</entry>
               <entry></entry>
-              <entry>Used to recolor symbolic icons (both application-loaded and from -gtk-icontheme()). Since 3.20</entry>
+              <entry>Used to recolor symbolic icons (both application-loaded and from -ctk-icontheme()). Since 3.20</entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-icon-shadow</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-icon-shadow</phrase></entry>
               <entry><code>none | 〈shadow〉</code></entry>
               <entry><code>none</code></entry>
               <entry>✓</entry>
@@ -448,7 +448,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry></entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-icon-effect</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-icon-effect</phrase></entry>
               <entry><code>none | highlight | dim</code></entry>
               <entry><code>none</code></entry>
               <entry>✓</entry>
@@ -467,22 +467,22 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
 </literallayout>
 
       <para>
-        The -gtk-icon-source property is used by widgets that are rendering 'built-in'
+        The -ctk-icon-source property is used by widgets that are rendering 'built-in'
         icons, such as arrows, expanders, spinners, checks or radios.
       </para>
 
       <para>
-        The -gtk-icon-style property determines the preferred style for
+        The -ctk-icon-style property determines the preferred style for
         application-provided icons.
       </para>
 
       <para>
-        The -gtk-icon-transform and -gtk-icon-shadow properties affect the rendering
+        The -ctk-icon-transform and -ctk-icon-shadow properties affect the rendering
         of both built-in and application-provided icons.
       </para>
 
       <para>
-        -gtk-icon-palette defines a color palette for recoloring symbolic
+        -ctk-icon-palette defines a color palette for recoloring symbolic
         icons. The recognized names for colors in symbolic icons are error,
         warning and success. The default palette maps these three names to
         symbolic colors with the names @error_color, @warning_color and
@@ -972,7 +972,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry></entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-outline-top-left-radius</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-outline-top-left-radius</phrase></entry>
               <entry><code>〈corner radius〉</code></entry>
               <entry><code>0</code></entry>
               <entry></entry>
@@ -981,7 +981,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry></entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-outline-top-right-radius</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-outline-top-right-radius</phrase></entry>
               <entry><code>〈corner radius〉</code></entry>
               <entry><code>0</code></entry>
               <entry></entry>
@@ -990,7 +990,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry></entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-outline-bottom-right-radius</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-outline-bottom-right-radius</phrase></entry>
               <entry><code>〈corner radius〉</code></entry>
               <entry><code>0</code></entry>
               <entry></entry>
@@ -999,7 +999,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry></entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-outline-bottom-left-radius</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-outline-bottom-left-radius</phrase></entry>
               <entry><code>〈corner radius〉</code></entry>
               <entry><code>0</code></entry>
               <entry></entry>
@@ -1023,7 +1023,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
               <entry></entry>
             </row>
             <row>
-              <entry><phrase role="nowrap">-gtk-outline-radius</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-outline-radius</phrase></entry>
               <entry><code>[ 〈length〉 | 〈percentage〉 ]{1,4} [ / [ 〈length〉 | 〈percentage〉 ]{1,4} ]?</code></entry>
               <entry>see individual properties</entry>
               <entry></entry>
@@ -1360,7 +1360,7 @@ We use <literallayout> for syntax productions, and each line is put in a <code>
           </thead>
           <tbody>
             <row>
-              <entry><phrase role="nowrap">-gtk-key-bindings</phrase></entry>
+              <entry><phrase role="nowrap">-ctk-key-bindings</phrase></entry>
               <entry><code>none | 〈binding name〉 [ , 〈binding name〉 ]*</code></entry>
               <entry><code>none</code></entry>
               <entry></entry>

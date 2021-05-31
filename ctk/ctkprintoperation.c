@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintoperation.c: Print Operation
+ * ctkprintoperation.c: Print Operation
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -25,16 +25,16 @@
 
 #include <cairo-pdf.h>
 
-#include "gtkprintoperation-private.h"
-#include "gtkmarshalers.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkmessagedialog.h"
-#include "gtkwindowgroup.h"
-#include "gtktypebuiltins.h"
+#include "ctkprintoperation-private.h"
+#include "ctkmarshalers.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkmessagedialog.h"
+#include "ctkwindowgroup.h"
+#include "ctktypebuiltins.h"
 
 /**
- * SECTION:gtkprintoperation
+ * SECTION:ctkprintoperation
  * @Title: GtkPrintOperation
  * @Short_description: High-level Printing API
  * @See_also: #GtkPrintContext, #GtkPrintUnixDialog
@@ -176,7 +176,7 @@ ctk_print_error_quark (void)
 {
   static GQuark quark = 0;
   if (quark == 0)
-    quark = g_quark_from_static_string ("gtk-print-error-quark");
+    quark = g_quark_from_static_string ("ctk-print-error-quark");
   return quark;
 }
      
@@ -642,7 +642,7 @@ preview_ready (GtkPrintOperationPreview *preview,
 				  preview_print_idle,
 				  pop,
 				  preview_print_idle_done);
-  g_source_set_name_by_id (id, "[gtk+] preview_print_idle");
+  g_source_set_name_by_id (id, "[ctk+] preview_print_idle");
 }
 
 
@@ -3012,7 +3012,7 @@ print_pages (GtkPrintOperation       *op,
 	gdk_threads_add_timeout (SHOW_PROGRESS_TIME, 
 		       (GSourceFunc)show_progress_timeout,
 		       data);
-      g_source_set_name_by_id (priv->show_progress_timeout_id, "[gtk+] show_progress_timeout");
+      g_source_set_name_by_id (priv->show_progress_timeout_id, "[ctk+] show_progress_timeout");
 
       data->progress = progress;
     }
@@ -3081,7 +3081,7 @@ print_pages (GtkPrintOperation       *op,
 					                 print_pages_idle, 
 					                 data, 
 					                 print_pages_idle_done);
-  g_source_set_name_by_id (priv->print_pages_idle_id, "[gtk+] print_pages_idle");
+  g_source_set_name_by_id (priv->print_pages_idle_id, "[ctk+] print_pages_idle");
   
   /* Recursive main loop to make sure we don't exit  on sync operations  */
   if (priv->is_sync)

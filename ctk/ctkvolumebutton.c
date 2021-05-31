@@ -22,20 +22,20 @@
  * Modified by the GTK+ Team and others 2007.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkvolumebutton.h"
+#include "ctkvolumebutton.h"
 
-#include "gtkadjustment.h"
-#include "gtkintl.h"
-#include "gtktooltip.h"
+#include "ctkadjustment.h"
+#include "ctkintl.h"
+#include "ctktooltip.h"
 
 
 /**
- * SECTION:gtkvolumebutton
+ * SECTION:ctkvolumebutton
  * @Short_description: A button which pops up a volume control
  * @Title: GtkVolumeButton
  *
@@ -172,7 +172,7 @@ ctk_volume_button_class_init (GtkVolumeButtonClass *klass)
 
   /* Bind class to template
    */
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkvolumebutton.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkvolumebutton.ui");
   ctk_widget_class_bind_template_callback (widget_class, cb_query_tooltip);
   ctk_widget_class_bind_template_callback (widget_class, cb_value_changed);
 }

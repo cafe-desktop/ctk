@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 const int KEEP_HEIGHT = 1 << 0;
 const int KEEP_WIDTH  = 1 << 1;
@@ -15,8 +15,8 @@ keep_size (int      direction,
   GtkWidget   *child    = ctk_button_new_with_label ("Some Text!");
   GtkSettings *settings = ctk_settings_get_default ();
 
-  g_object_get (settings, "gtk-enable-animations", &animations_before, NULL);
-  g_object_set (settings, "gtk-enable-animations", animations, NULL);
+  g_object_get (settings, "ctk-enable-animations", &animations_before, NULL);
+  g_object_set (settings, "ctk-enable-animations", animations, NULL);
 
   ctk_container_add (CTK_CONTAINER (revealer), child);
   ctk_widget_show_all (CTK_WIDGET (revealer));
@@ -49,7 +49,7 @@ keep_size (int      direction,
   else
     g_assert_cmpint (min_height, ==, 0);
 
-  g_object_set (settings, "gtk-enable-animations", animations_before, NULL);
+  g_object_set (settings, "ctk-enable-animations", animations_before, NULL);
 }
 
 

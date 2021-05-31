@@ -170,7 +170,7 @@ send_event_handler (Display *dpy,
         {
           guint id;
           id = gdk_threads_add_idle (callback_idle, state);
-          g_source_set_name_by_id (id, "[gtk+] callback_idle");
+          g_source_set_name_by_id (id, "[ctk+] callback_idle");
         }
 
       DeqAsyncHandler(state->dpy, &state->async);
@@ -704,7 +704,7 @@ roundtrip_handler (Display *dpy,
         {
           guint id;
           id = gdk_threads_add_idle (roundtrip_callback_idle, state);
-          g_source_set_name_by_id (id, "[gtk+] roundtrip_callback_idle");
+          g_source_set_name_by_id (id, "[ctk+] roundtrip_callback_idle");
         }
 
       DeqAsyncHandler(state->dpy, &state->async);

@@ -18,9 +18,9 @@
 #ifndef __CTK_SYMBOLIC_COLOR_PRIVATE_H__
 #define __CTK_SYMBOLIC_COLOR_PRIVATE_H__
 
-#include "gtk/deprecated/gtksymboliccolor.h"
-#include "gtk/gtkcssparserprivate.h"
-#include "gtk/gtkcssvalueprivate.h"
+#include "ctk/deprecated/ctksymboliccolor.h"
+#include "ctk/ctkcssparserprivate.h"
+#include "ctk/ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

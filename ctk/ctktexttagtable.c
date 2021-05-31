@@ -19,24 +19,24 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtktexttagtable.h"
+#include "ctktexttagtable.h"
 
-#include "gtkbuildable.h"
-#include "gtktexttagprivate.h"
-#include "gtkmarshalers.h"
-#include "gtktextbufferprivate.h" /* just for the lame notify_will_remove_tag hack */
-#include "gtkintl.h"
+#include "ctkbuildable.h"
+#include "ctktexttagprivate.h"
+#include "ctkmarshalers.h"
+#include "ctktextbufferprivate.h" /* just for the lame notify_will_remove_tag hack */
+#include "ctkintl.h"
 
 #include <stdlib.h>
 
 
 /**
- * SECTION:gtktexttagtable
+ * SECTION:ctktexttagtable
  * @Short_description: Collection of tags that can be used together
  * @Title: GtkTextTagTable
  *

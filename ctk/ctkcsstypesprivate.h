@@ -19,7 +19,7 @@
 #define __CTK_CSS_TYPES_PRIVATE_H__
 
 #include <glib-object.h>
-#include <gtk/gtkstylecontext.h>
+#include <ctk/ctkstylecontext.h>
 
 G_BEGIN_DECLS
 
@@ -68,7 +68,7 @@ typedef struct _GtkStyleProviderPrivate GtkStyleProviderPrivate; /* dummy typede
 #define CTK_CSS_CHANGE_TIMESTAMP                      (1ULL << 34)
 #define CTK_CSS_CHANGE_ANIMATIONS                     (1ULL << 35)
 
-#define CTK_CSS_CHANGE_RESERVED_BIT                   (1ULL << 62) /* Used internally in gtkcssselector.c */
+#define CTK_CSS_CHANGE_RESERVED_BIT                   (1ULL << 62) /* Used internally in ctkcssselector.c */
 
 typedef guint64 GtkCssChange;
 

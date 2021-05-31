@@ -18,7 +18,7 @@
 */
 
 #include <string.h>
-#include "gtk/gtk.h"
+#include "ctk/ctk.h"
 
 /* NOTE to compile this test, GTK+ needs to be build without
  * the _-prefix stripping.

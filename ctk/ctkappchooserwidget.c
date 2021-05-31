@@ -1,5 +1,5 @@
 /*
- * gtkappchooserwidget.c: an app-chooser widget
+ * ctkappchooserwidget.c: an app-chooser widget
  *
  * Copyright (C) 2004 Novell, Inc.
  * Copyright (C) 2007, 2010 Red Hat, Inc.
@@ -24,28 +24,28 @@
 
 #include "config.h"
 
-#include "gtkappchooserwidget.h"
+#include "ctkappchooserwidget.h"
 
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkappchooserwidget.h"
-#include "gtkappchooserprivate.h"
-#include "gtkliststore.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtktreeview.h"
-#include "gtktreeselection.h"
-#include "gtktreemodelsort.h"
-#include "gtkorientable.h"
-#include "gtkscrolledwindow.h"
-#include "gtklabel.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkappchooserwidget.h"
+#include "ctkappchooserprivate.h"
+#include "ctkliststore.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcellrendererpixbuf.h"
+#include "ctktreeview.h"
+#include "ctktreeselection.h"
+#include "ctktreemodelsort.h"
+#include "ctkorientable.h"
+#include "ctkscrolledwindow.h"
+#include "ctklabel.h"
 
 #include <string.h>
 #include <glib/gi18n-lib.h>
 #include <gio/gio.h>
 
 /**
- * SECTION:gtkappchooserwidget
+ * SECTION:ctkappchooserwidget
  * @Title: GtkAppChooserWidget
  * @Short_description: Application chooser widget that can be embedded in other widgets
  *
@@ -1068,7 +1068,7 @@ ctk_app_chooser_widget_class_init (GtkAppChooserWidgetClass *klass)
    */
   widget_class = CTK_WIDGET_CLASS (klass);
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkappchooserwidget.ui");
+					       "/org/ctk/libctk/ui/ctkappchooserwidget.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, program_list);
   ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, program_list_store);
   ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserWidget, column);

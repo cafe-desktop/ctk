@@ -18,21 +18,21 @@
 #include "config.h"
 
 #include <math.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include <gtk/gtkstylecontext.h>
-#include <gtk/gtkintl.h>
+#include <ctk/ctkstylecontext.h>
+#include <ctk/ctkintl.h>
 
-#include "gtkprivate.h"
-#include "gtkmodulesprivate.h"
-#include "gtkpango.h"
-#include "gtkrenderprivate.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkprivate.h"
+#include "ctkmodulesprivate.h"
+#include "ctkpango.h"
+#include "ctkrenderprivate.h"
+#include "ctkstylecontextprivate.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 /**
- * SECTION:gtkthemingengine
+ * SECTION:ctkthemingengine
  * @Short_description: Theming renderers
  * @Title: GtkThemingEngine
  * @See_also: #GtkStyleContext

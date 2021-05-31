@@ -1,25 +1,25 @@
 {
-    "app-id": "org.gtk.WidgetFactory",
+    "app-id": "org.ctk.WidgetFactory",
     "runtime": "org.gnome.Platform",
     "runtime-version": "master",
     "sdk": "org.gnome.Sdk",
-    "command": "gtk3-widget-factory",
+    "command": "ctk3-widget-factory",
     "tags": ["devel", "development", "nightly"],
-    "rename-desktop-file": "gtk3-widget-factory.desktop",
-    "rename-icon": "gtk3-widget-factory",
+    "rename-desktop-file": "ctk3-widget-factory.desktop",
+    "rename-icon": "ctk3-widget-factory",
     "finish-args": [
         "--device=dri",
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland",
-        "--talk-name=org.gtk.vfs", "--talk-name=org.gtk.vfs.*",
+        "--talk-name=org.ctk.vfs", "--talk-name=org.ctk.vfs.*",
         "--talk-name=ca.desrt.conf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "cleanup": [
         "/include",
         "/lib/pkgconfig", "/share/pkgconfig",
         "/share/aclocal",
-        "/man", "/share/man", "/share/gtk-doc",
+        "/man", "/share/man", "/share/ctk-doc",
         "*.la", ".a",
         "/lib/girepository-1.0",
         "/share/gir-1.0",
@@ -27,7 +27,7 @@
     ],
     "modules": [
         {
-            "name": "gtk",
+            "name": "ctk",
             "buildsystem": "autotools",
             "builddir": true,
             "config-opts": [
@@ -36,8 +36,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "branch": "gtk-3-24",
-                    "url": "https://gitlab.gnome.org/GNOME/gtk.git"
+                    "branch": "ctk-3-24",
+                    "url": "https://gitlab.gnome.org/GNOME/ctk.git"
                 }
             ]
         }

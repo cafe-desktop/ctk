@@ -22,7 +22,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{95A4B53D-2773-4406-A2C1-8FD2840BBAD8}</ProjectGuid>
-    <RootNamespace>gtk3</RootNamespace>
+    <RootNamespace>ctk3</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -51,19 +51,19 @@
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="gtk3-gen-srcs.props" />
+    <Import Project="ctk3-gen-srcs.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="gtk3-gen-srcs.props" />
+    <Import Project="ctk3-gen-srcs.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="gtk3-gen-srcs.props" />
+    <Import Project="ctk3-gen-srcs.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="gtk3-gen-srcs.props" />
+    <Import Project="ctk3-gen-srcs.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -75,7 +75,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\gtk;..\..\gdk;..\..\gdk\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\ctk;..\..\gdk;..\..\gdk\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;G_ENABLE_DEBUG;$(GtkDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -97,7 +97,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\gtk;..\..\gdk;..\..\gdk\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\ctk;..\..\gdk;..\..\gdk\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>$(GtkDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>
@@ -120,7 +120,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\gtk;..\..\gdk;..\..\gdk\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\ctk;..\..\gdk;..\..\gdk\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;G_ENABLE_DEBUG;$(GtkDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -142,7 +142,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\gtk;..\..\gdk;..\..\gdk\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\ctk;..\..\gdk;..\..\gdk\win32;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>$(GtkDefines);%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>
@@ -163,13 +163,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ResourceCompile Include="..\..\gtk\gtk-win32.rc" />
+    <ResourceCompile Include="..\..\ctk\ctk-win32.rc" />
   </ItemGroup>
   <ItemGroup>
-#include "gtk-3.vs10.sourcefiles"
-    <ClCompile Include="..\..\modules\input\gtkimcontextime.c" />
-    <ClCompile Include="..\..\modules\input\gtkimcontextmultipress.c" />
-    <ClCompile Include="..\..\modules\input\gtkimcontextthai.c" />
+#include "ctk-3.vs10.sourcefiles"
+    <ClCompile Include="..\..\modules\input\ctkimcontextime.c" />
+    <ClCompile Include="..\..\modules\input\ctkimcontextmultipress.c" />
+    <ClCompile Include="..\..\modules\input\ctkimcontextthai.c" />
     <ClCompile Include="..\..\modules\input\imam-et.c" />
     <ClCompile Include="..\..\modules\input\imcedilla.c" />
     <ClCompile Include="..\..\modules\input\imcyrillic-translit.c" />
@@ -184,7 +184,7 @@
     <ClCompile Include="..\..\modules\input\thai-charprop.c" />
   </ItemGroup>
   <ItemGroup>
-    <Manifest Include="..\..\gtk\libgtk3.manifest" />
+    <Manifest Include="..\..\ctk\libctk3.manifest" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="gdk-3.vcxproj">

@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -270,39 +270,39 @@ _get_system_font_name (HDC hdc)
 /*
   For reference, from gdk/x11/gdksettings.c:
 
-  "Net/DoubleClickTime\0"     "gtk-double-click-time\0"
-  "Net/DoubleClickDistance\0" "gtk-double-click-distance\0"
-  "Net/DndDragThreshold\0"    "gtk-dnd-drag-threshold\0"
-  "Net/CursorBlink\0"         "gtk-cursor-blink\0"
-  "Net/CursorBlinkTime\0"     "gtk-cursor-blink-time\0"
-  "Net/ThemeName\0"           "gtk-theme-name\0"
-  "Net/IconThemeName\0"       "gtk-icon-theme-name\0"
-  "Gtk/ColorPalette\0"        "gtk-color-palette\0"
-  "Gtk/FontName\0"            "gtk-font-name\0"
-  "Gtk/KeyThemeName\0"        "gtk-key-theme-name\0"
-  "Gtk/Modules\0"             "gtk-modules\0"
-  "Gtk/CursorBlinkTimeout\0"  "gtk-cursor-blink-timeout\0"
-  "Gtk/CursorThemeName\0"     "gtk-cursor-theme-name\0"
-  "Gtk/CursorThemeSize\0"     "gtk-cursor-theme-size\0"
-  "Gtk/ColorScheme\0"         "gtk-color-scheme\0"
-  "Gtk/EnableAnimations\0"    "gtk-enable-animations\0"
-  "Xft/Antialias\0"           "gtk-xft-antialias\0"
-  "Xft/Hinting\0"             "gtk-xft-hinting\0"
-  "Xft/HintStyle\0"           "gtk-xft-hintstyle\0"
-  "Xft/RGBA\0"                "gtk-xft-rgba\0"
-  "Xft/DPI\0"                 "gtk-xft-dpi\0"
-  "Gtk/EnableAccels\0"        "gtk-enable-accels\0"
-  "Gtk/ScrolledWindowPlacement\0" "gtk-scrolled-window-placement\0"
-  "Gtk/IMModule\0"            "gtk-im-module\0"
-  "Fontconfig/Timestamp\0"    "gtk-fontconfig-timestamp\0"
-  "Net/SoundThemeName\0"      "gtk-sound-theme-name\0"
-  "Net/EnableInputFeedbackSounds\0" "gtk-enable-input-feedback-sounds\0"
-  "Net/EnableEventSounds\0"  "gtk-enable-event-sounds\0";
+  "Net/DoubleClickTime\0"     "ctk-double-click-time\0"
+  "Net/DoubleClickDistance\0" "ctk-double-click-distance\0"
+  "Net/DndDragThreshold\0"    "ctk-dnd-drag-threshold\0"
+  "Net/CursorBlink\0"         "ctk-cursor-blink\0"
+  "Net/CursorBlinkTime\0"     "ctk-cursor-blink-time\0"
+  "Net/ThemeName\0"           "ctk-theme-name\0"
+  "Net/IconThemeName\0"       "ctk-icon-theme-name\0"
+  "Gtk/ColorPalette\0"        "ctk-color-palette\0"
+  "Gtk/FontName\0"            "ctk-font-name\0"
+  "Gtk/KeyThemeName\0"        "ctk-key-theme-name\0"
+  "Gtk/Modules\0"             "ctk-modules\0"
+  "Gtk/CursorBlinkTimeout\0"  "ctk-cursor-blink-timeout\0"
+  "Gtk/CursorThemeName\0"     "ctk-cursor-theme-name\0"
+  "Gtk/CursorThemeSize\0"     "ctk-cursor-theme-size\0"
+  "Gtk/ColorScheme\0"         "ctk-color-scheme\0"
+  "Gtk/EnableAnimations\0"    "ctk-enable-animations\0"
+  "Xft/Antialias\0"           "ctk-xft-antialias\0"
+  "Xft/Hinting\0"             "ctk-xft-hinting\0"
+  "Xft/HintStyle\0"           "ctk-xft-hintstyle\0"
+  "Xft/RGBA\0"                "ctk-xft-rgba\0"
+  "Xft/DPI\0"                 "ctk-xft-dpi\0"
+  "Gtk/EnableAccels\0"        "ctk-enable-accels\0"
+  "Gtk/ScrolledWindowPlacement\0" "ctk-scrolled-window-placement\0"
+  "Gtk/IMModule\0"            "ctk-im-module\0"
+  "Fontconfig/Timestamp\0"    "ctk-fontconfig-timestamp\0"
+  "Net/SoundThemeName\0"      "ctk-sound-theme-name\0"
+  "Net/EnableInputFeedbackSounds\0" "ctk-enable-input-feedback-sounds\0"
+  "Net/EnableEventSounds\0"  "ctk-enable-event-sounds\0";
 
-  More, from various places in gtk sources:
+  More, from various places in ctk sources:
 
-  gtk-entry-select-on-focus
-  gtk-split-cursor
+  ctk-entry-select-on-focus
+  ctk-split-cursor
 
 */
 gboolean
@@ -316,58 +316,58 @@ _gdk_win32_screen_get_setting (GdkScreen   *screen,
    * XXX : if these values get changed through the Windoze UI the
    *       respective gdk_events are not generated yet.
    */
-  if (strcmp ("gtk-double-click-time", name) == 0)
+  if (strcmp ("ctk-double-click-time", name) == 0)
     {
       gint i = GetDoubleClickTime ();
       GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : %d\n", name, i));
       g_value_set_int (value, i);
       return TRUE;
     }
-  else if (strcmp ("gtk-double-click-distance", name) == 0)
+  else if (strcmp ("ctk-double-click-distance", name) == 0)
     {
       gint i = MAX(GetSystemMetrics (SM_CXDOUBLECLK), GetSystemMetrics (SM_CYDOUBLECLK));
       GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : %d\n", name, i));
       g_value_set_int (value, i);
       return TRUE;
     }
-  else if (strcmp ("gtk-dnd-drag-threshold", name) == 0)
+  else if (strcmp ("ctk-dnd-drag-threshold", name) == 0)
     {
       gint i = MAX(GetSystemMetrics (SM_CXDRAG), GetSystemMetrics (SM_CYDRAG));
       GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : %d\n", name, i));
       g_value_set_int (value, i);
       return TRUE;
     }
-  else if (strcmp ("gtk-split-cursor", name) == 0)
+  else if (strcmp ("ctk-split-cursor", name) == 0)
     {
       GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : FALSE\n", name));
       g_value_set_boolean (value, FALSE);
       return TRUE;
     }
-  else if (strcmp ("gtk-alternative-button-order", name) == 0)
+  else if (strcmp ("ctk-alternative-button-order", name) == 0)
     {
       GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : TRUE\n", name));
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
-  else if (strcmp ("gtk-alternative-sort-arrows", name) == 0)
+  else if (strcmp ("ctk-alternative-sort-arrows", name) == 0)
     {
       GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : TRUE\n", name));
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
-  else if (strcmp ("gtk-shell-shows-desktop", name) == 0)
+  else if (strcmp ("ctk-shell-shows-desktop", name) == 0)
     {
       GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : TRUE\n", name));
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
-  else if (strcmp ("gtk-xft-hinting", name) == 0)
+  else if (strcmp ("ctk-xft-hinting", name) == 0)
     {
       GDK_NOTE(MISC, g_print ("gdk_screen_get_setting(\"%s\") : 1\n", name));
       g_value_set_int (value, 1);
       return TRUE;
     }
-  else if (strcmp ("gtk-xft-antialias", name) == 0)
+  else if (strcmp ("ctk-xft-antialias", name) == 0)
     {
       BOOL val = TRUE;
       SystemParametersInfoW (SPI_GETFONTSMOOTHING, 0, &val, 0);
@@ -376,13 +376,13 @@ _gdk_win32_screen_get_setting (GdkScreen   *screen,
       GDK_NOTE(MISC, g_print ("gdk_screen_get_setting(\"%s\") : %u\n", name, val));
       return TRUE;
     }
-  else if (strcmp ("gtk-xft-hintstyle", name) == 0)
+  else if (strcmp ("ctk-xft-hintstyle", name) == 0)
     {
       g_value_set_static_string (value, "hintfull");
       GDK_NOTE(MISC, g_print ("gdk_screen_get_setting(\"%s\") : %s\n", name, g_value_get_string (value)));
       return TRUE;
     }
-  else if (strcmp ("gtk-xft-rgba", name) == 0)
+  else if (strcmp ("ctk-xft-rgba", name) == 0)
     {
       const gchar *rgb_value;
       GdkMonitor *monitor;
@@ -393,7 +393,7 @@ _gdk_win32_screen_get_setting (GdkScreen   *screen,
       GDK_NOTE(MISC, g_print ("gdk_screen_get_setting(\"%s\") : %s\n", name, g_value_get_string (value)));
       return TRUE;
     }
-  else if (strcmp ("gtk-font-name", name) == 0)
+  else if (strcmp ("ctk-font-name", name) == 0)
     {
       gchar *font_name = _get_system_font_name (_gdk_display_hdc);
 
@@ -418,7 +418,7 @@ _gdk_win32_screen_get_setting (GdkScreen   *screen,
           return FALSE;
         }
     }
-  else if (strcmp ("gtk-im-module", name) == 0)
+  else if (strcmp ("ctk-im-module", name) == 0)
     {
       if (_gdk_input_locale_is_ime)
         g_value_set_static_string (value, "ime");

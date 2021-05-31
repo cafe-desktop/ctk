@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkaccessibilitymisc.h"
+#include <ctk/ctk.h>
+#include "ctkaccessibilitymisc.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 

@@ -1,4 +1,4 @@
-/* gtktreedatalist.h
+/* ctktreedatalist.h
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -18,8 +18,8 @@
 #ifndef __CTK_TREE_DATA_LIST_H__
 #define __CTK_TREE_DATA_LIST_H__
 
-#include <gtk/gtktreemodel.h>
-#include <gtk/gtktreesortable.h>
+#include <ctk/ctktreemodel.h>
+#include <ctk/ctktreesortable.h>
 
 typedef struct _GtkTreeDataList GtkTreeDataList;
 struct _GtkTreeDataList

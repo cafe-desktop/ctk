@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechooserembed.h: Abstract sizing interface for file selector implementations
+ * ctkfilechooserembed.h: Abstract sizing interface for file selector implementations
  * Copyright (C) 2004, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -17,9 +17,9 @@
  */
 
 #include "config.h"
-#include "gtkfilechooserembed.h"
-#include "gtkmarshalers.h"
-#include "gtkintl.h"
+#include "ctkfilechooserembed.h"
+#include "ctkmarshalers.h"
+#include "ctkintl.h"
 
 static void ctk_file_chooser_embed_class_init (gpointer g_iface);
 static void delegate_get_default_size         (GtkFileChooserEmbed *chooser_embed,
@@ -35,7 +35,7 @@ static void delegate_response_requested       (GtkFileChooserEmbed *chooser_embe
 static GtkFileChooserEmbed *
 get_delegate (GtkFileChooserEmbed *receiver)
 {
-  return g_object_get_data (G_OBJECT (receiver), "gtk-file-chooser-embed-delegate");
+  return g_object_get_data (G_OBJECT (receiver), "ctk-file-chooser-embed-delegate");
 }
 
 /**
@@ -72,7 +72,7 @@ _ctk_file_chooser_embed_set_delegate (GtkFileChooserEmbed *receiver,
   g_return_if_fail (CTK_IS_FILE_CHOOSER_EMBED (receiver));
   g_return_if_fail (CTK_IS_FILE_CHOOSER_EMBED (delegate));
   
-  g_object_set_data (G_OBJECT (receiver), I_("gtk-file-chooser-embed-delegate"), delegate);
+  g_object_set_data (G_OBJECT (receiver), I_("ctk-file-chooser-embed-delegate"), delegate);
 
   g_signal_connect (delegate, "default-size-changed",
 		    G_CALLBACK (delegate_default_size_changed), receiver);

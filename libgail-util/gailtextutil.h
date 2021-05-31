@@ -19,7 +19,7 @@
 #define __GAIL_TEXT_UTIL_H__
 
 #include <glib-object.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

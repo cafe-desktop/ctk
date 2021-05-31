@@ -19,12 +19,12 @@
 #include <glib/gi18n-lib.h>
 
 #include "strv-editor.h"
-#include "gtkbutton.h"
-#include "gtkentry.h"
-#include "gtkbox.h"
-#include "gtkstylecontext.h"
-#include "gtkorientable.h"
-#include "gtkmarshalers.h"
+#include "ctkbutton.h"
+#include "ctkentry.h"
+#include "ctkbox.h"
+#include "ctkstylecontext.h"
+#include "ctkorientable.h"
+#include "ctkmarshalers.h"
 
 enum
 {

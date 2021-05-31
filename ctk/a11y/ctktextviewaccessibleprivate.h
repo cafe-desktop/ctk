@@ -18,7 +18,7 @@
 #ifndef __CTK_TEXT_VIEW_ACCESSIBLE_PRIVATE_H__
 #define __CTK_TEXT_VIEW_ACCESSIBLE_PRIVATE_H__
 
-#include <gtk/a11y/gtktextviewaccessible.h>
+#include <ctk/a11y/ctktextviewaccessible.h>
 
 G_BEGIN_DECLS
 

@@ -19,13 +19,13 @@
 
 #include "config.h"
 
-#include "gtkactionable.h"
+#include "ctkactionable.h"
 
-#include "gtkwidget.h"
-#include "gtkintl.h"
+#include "ctkwidget.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkactionable
+ * SECTION:ctkactionable
  * @title: GtkActionable
  * @short_description: An interface for widgets that can be associated
  *     with actions

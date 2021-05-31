@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtklevelbar
+ * SECTION:ctklevelbar
  * @Title: GtkLevelBar
  * @Short_description: A bar that can used as a level indicator
  *
@@ -119,25 +119,25 @@
  */
 #include "config.h"
 
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkintl.h"
-#include "gtkorientableprivate.h"
-#include "gtklevelbar.h"
-#include "gtkmarshalers.h"
-#include "gtkstylecontext.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidget.h"
-#include "gtkwidgetprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcssnodeprivate.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkintl.h"
+#include "ctkorientableprivate.h"
+#include "ctklevelbar.h"
+#include "ctkmarshalers.h"
+#include "ctkstylecontext.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidget.h"
+#include "ctkwidgetprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcssnodeprivate.h"
 
 #include <math.h>
 #include <stdlib.h>
 
-#include "a11y/gtklevelbaraccessible.h"
+#include "a11y/ctklevelbaraccessible.h"
 
 #include "fallback-c89.c"
 

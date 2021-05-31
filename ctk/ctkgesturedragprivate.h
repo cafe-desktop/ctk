@@ -19,8 +19,8 @@
 #ifndef __CTK_GESTURE_DRAG_PRIVATE_H__
 #define __CTK_GESTURE_DRAG_PRIVATE_H__
 
-#include "gtkgesturesingleprivate.h"
-#include "gtkgesturedrag.h"
+#include "ctkgesturesingleprivate.h"
+#include "ctkgesturedrag.h"
 
 struct _GtkGestureDrag
 {

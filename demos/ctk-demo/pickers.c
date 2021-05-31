@@ -4,7 +4,7 @@
  * They allow to select colors, fonts, files, directories and applications.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 GtkWidget *
 do_pickers (GtkWidget *do_widget)

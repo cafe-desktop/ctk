@@ -18,8 +18,8 @@
 #ifndef __CTK_SETTINGS_PRIVATE_H__
 #define __CTK_SETTINGS_PRIVATE_H__
 
-#include <gtk/gtksettings.h>
-#include "gtkstylecascadeprivate.h"
+#include <ctk/ctksettings.h>
+#include "ctkstylecascadeprivate.h"
 
 G_BEGIN_DECLS
 

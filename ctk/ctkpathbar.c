@@ -1,5 +1,5 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
-/* gtkpathbar.c
+/* ctkpathbar.c
  * Copyright (C) 2004  Red Hat, Inc.,  Jonathan Blandford <jrb@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -18,24 +18,24 @@
 
 #include "config.h"
 
-#include "gtkpathbar.h"
+#include "ctkpathbar.h"
 
 #include <string.h>
 
-#include "gtkbox.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkdnd.h"
-#include "gtkdragsource.h"
-#include "gtkicontheme.h"
-#include "gtkimage.h"
-#include "gtkintl.h"
-#include "gtklabel.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtksettings.h"
-#include "gtktogglebutton.h"
-#include "gtkwidgetpath.h"
-#include "gtkwidgetprivate.h"
+#include "ctkbox.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkdnd.h"
+#include "ctkdragsource.h"
+#include "ctkicontheme.h"
+#include "ctkimage.h"
+#include "ctkintl.h"
+#include "ctklabel.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctksettings.h"
+#include "ctktogglebutton.h"
+#include "ctkwidgetpath.h"
+#include "ctkwidgetprivate.h"
 
 struct _GtkPathBarPrivate
 {
@@ -254,7 +254,7 @@ ctk_path_bar_init (GtkPathBar *path_bar)
   ctk_widget_init_template (CTK_WIDGET (path_bar));
 
   /* Add the children manually because GtkPathBar derives from an abstract class,
-   * Glade cannot edit a <template> in gtkpathbar.ui if it's only a GtkContainer.
+   * Glade cannot edit a <template> in ctkpathbar.ui if it's only a GtkContainer.
    */
   ctk_container_add (CTK_CONTAINER (path_bar), path_bar->priv->up_slider_button);
   ctk_container_add (CTK_CONTAINER (path_bar), path_bar->priv->down_slider_button);
@@ -326,7 +326,7 @@ ctk_path_bar_class_init (GtkPathBarClass *path_bar_class)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkpathbar.ui");
+					       "/org/ctk/libctk/ui/ctkpathbar.ui");
 
   ctk_widget_class_bind_template_child_private (widget_class, GtkPathBar, up_slider_button);
   ctk_widget_class_bind_template_child_private (widget_class, GtkPathBar, down_slider_button);
@@ -1057,7 +1057,7 @@ ctk_path_bar_scroll_timeout (GtkPathBar *path_bar)
 	  path_bar->priv->timer = gdk_threads_add_timeout (TIMEOUT_REPEAT * SCROLL_DELAY_FACTOR,
 					   (GSourceFunc)ctk_path_bar_scroll_timeout,
 					   path_bar);
-          g_source_set_name_by_id (path_bar->priv->timer, "[gtk+] ctk_path_bar_scroll_timeout");
+          g_source_set_name_by_id (path_bar->priv->timer, "[ctk+] ctk_path_bar_scroll_timeout");
 	}
       else
 	retval = TRUE;
@@ -1162,7 +1162,7 @@ ctk_path_bar_slider_button_press (GtkWidget      *widget,
       path_bar->priv->timer = gdk_threads_add_timeout (TIMEOUT_INITIAL,
 				       (GSourceFunc)ctk_path_bar_scroll_timeout,
 				       path_bar);
-      g_source_set_name_by_id (path_bar->priv->timer, "[gtk+] ctk_path_bar_scroll_timeout");
+      g_source_set_name_by_id (path_bar->priv->timer, "[ctk+] ctk_path_bar_scroll_timeout");
     }
 
   return FALSE;
@@ -1239,7 +1239,7 @@ settings_notify_cb (GObject    *object,
 
   name = g_param_spec_get_name (pspec);
 
-  if (strcmp (name, "gtk-icon-theme-name") == 0)
+  if (strcmp (name, "ctk-icon-theme-name") == 0)
     change_icon_theme (path_bar);
 }
 

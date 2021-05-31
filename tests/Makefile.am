@@ -1,4 +1,4 @@
-## Makefile.am for gtk+/tests
+## Makefile.am for ctk+/tests
 include $(top_srcdir)/Makefile.decl
 
 SUBDIRS = visuals
@@ -12,10 +12,10 @@ AM_CPPFLAGS =				\
 	$(GDK_DEP_CFLAGS)
 
 DEPS = \
-	$(top_builddir)/gtk/libgtk-3.la
+	$(top_builddir)/ctk/libctk-3.la
 
 LDADD = \
-	$(top_builddir)/gtk/libgtk-3.la	\
+	$(top_builddir)/ctk/libctk-3.la	\
 	$(top_builddir)/gdk/libgdk-3.la	\
 	$(CTK_DEP_LIBS)			\
 	$(GDK_DEP_LIBS)			\
@@ -83,7 +83,7 @@ noinst_PROGRAMS =  $(TEST_PROGS)	\
 	testglarea			\
 	testglblending			\
 	testgrid			\
-	testgtk				\
+	testctk				\
 	testheaderbar			\
 	testheightforwidth		\
 	testiconview			\
@@ -331,7 +331,7 @@ scrolling_performance_SOURCES = \
 
 blur_performance_SOURCES = \
 	blur-performance.c	\
-	../gtk/gtkcairoblur.c
+	../ctk/ctkcairoblur.c
 
 video_timer_SOURCES = 	\
 	video-timer.c	\
@@ -378,7 +378,7 @@ testgrid_SOURCES =	\
 	testgrid.c
 
 testctk_SOURCES =	\
-	testgtk.c
+	testctk.c
 
 testtreechanging_SOURCES =	\
 	testtreechanging.c
@@ -478,8 +478,8 @@ testtreemenu_SOURCES =		\
 	testtreemenu.c
 
 testoffscreen_SOURCES = 	\
-	gtkoffscreenbox.c	\
-	gtkoffscreenbox.h	\
+	ctkoffscreenbox.c	\
+	ctkoffscreenbox.h	\
 	testoffscreen.c
 
 testoffscreenwindow_SOURCES =	\
@@ -538,13 +538,13 @@ testwindowsize_SOURCES = testwindowsize.c
 
 gdkgears_SOURCES =	\
 	gdkgears.c	\
-	gtkgears.c	\
-	gtkgears.h
+	ctkgears.c	\
+	ctkgears.h
 
 testglblending_SOURCES =	\
 	testglblending.c	\
-	gtkgears.c	\
-	gtkgears.h
+	ctkgears.c	\
+	ctkgears.h
 
 listmodel_SOURCES = listmodel.c
 
@@ -552,9 +552,9 @@ EXTRA_DIST += 			\
 	apple-red.png		\
 	dialog.ui		\
 	gradient1.png		\
-	testgtk.1 		\
-	testgtk.css		\
-	testgtk2.css		\
+	testctk.1 		\
+	testctk.css		\
+	testctk2.css		\
 	3DRings.xpm		\
 	FilesQueue.xpm		\
 	Modeller.xpm		\

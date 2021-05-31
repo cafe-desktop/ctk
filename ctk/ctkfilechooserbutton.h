@@ -1,4 +1,4 @@
-/* GTK+: gtkfilechooserbutton.h
+/* GTK+: ctkfilechooserbutton.h
  *
  * Copyright (c) 2004 James M. Cape <jcape@ignore-your.tv>
  *
@@ -20,11 +20,11 @@
 #define __CTK_FILE_CHOOSER_BUTTON_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkbox.h>
-#include <gtk/gtkfilechooser.h>
+#include <ctk/ctkbox.h>
+#include <ctk/ctkfilechooser.h>
 
 G_BEGIN_DECLS
 

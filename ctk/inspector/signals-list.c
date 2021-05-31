@@ -20,12 +20,12 @@
 
 #include "signals-list.h"
 
-#include "gtkcellrenderer.h"
-#include "gtkliststore.h"
-#include "gtktextbuffer.h"
-#include "gtktogglebutton.h"
-#include "gtktreeviewcolumn.h"
-#include "gtklabel.h"
+#include "ctkcellrenderer.h"
+#include "ctkliststore.h"
+#include "ctktextbuffer.h"
+#include "ctktogglebutton.h"
+#include "ctktreeviewcolumn.h"
+#include "ctklabel.h"
 
 enum
 {
@@ -413,7 +413,7 @@ ctk_inspector_signals_list_class_init (GtkInspectorSignalsListClass *klass)
       g_param_spec_object ("clear-button", NULL, NULL,
                            CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/signals-list.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/signals-list.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorSignalsList, view);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorSignalsList, model);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorSignalsList, text);

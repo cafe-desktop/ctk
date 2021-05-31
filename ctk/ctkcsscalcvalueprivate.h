@@ -18,7 +18,7 @@
 #ifndef __CTK_CSS_CALC_VALUE_PRIVATE_H__
 #define __CTK_CSS_CALC_VALUE_PRIVATE_H__
 
-#include "gtkcssnumbervalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
 
 G_BEGIN_DECLS
 

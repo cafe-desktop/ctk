@@ -27,9 +27,9 @@
 #include "window.h"
 #include "object-tree.h"
 
-#include "gtkstack.h"
-#include "gtkmain.h"
-#include "gtkinvisible.h"
+#include "ctkstack.h"
+#include "ctkmain.h"
+#include "ctkinvisible.h"
 
 typedef struct
 {

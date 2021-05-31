@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfontchooser.h - Abstract interface for font file selectors GUIs
+ * ctkfontchooser.h - Abstract interface for font file selectors GUIs
  *
  * Copyright (C) 2006, Emmanuele Bassi
  * Copyright (C) 2011 Alberto Ruiz <aruiz@gnome.org>
@@ -22,10 +22,10 @@
 #define __CTK_FONT_CHOOSER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS
 

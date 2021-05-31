@@ -19,20 +19,20 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkboxprivate.h"
-#include "gtkorientable.h"
+#include "ctkboxprivate.h"
+#include "ctkorientable.h"
 
-#include "gtkhbox.h"
+#include "ctkhbox.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 /**
- * SECTION:gtkhbox
+ * SECTION:ctkhbox
  * @Short_description: A horizontal container box
  * @Title: GtkHBox
  * @See_also: #GtkVBox
@@ -54,7 +54,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * If you have a grid-like layout composed of nested boxes, and you don’t
  * need first-child or last-child styling, the recommendation is to switch
  * to #GtkGrid. For more information about migrating to #GtkGrid, see
- * [Migrating from other containers to GtkGrid][gtk-migrating-GtkGrid].
+ * [Migrating from other containers to GtkGrid][ctk-migrating-GtkGrid].
  */
 
 
@@ -86,7 +86,7 @@ ctk_hbox_init (GtkHBox *hbox)
  * Deprecated: 3.2: You can use ctk_box_new() with %CTK_ORIENTATION_HORIZONTAL instead,
  *   which is a quick and easy change. But the recommendation is to switch to
  *   #GtkGrid, since #GtkBox is going to go away eventually.
- *   See [Migrating from other containers to GtkGrid][gtk-migrating-GtkGrid].
+ *   See [Migrating from other containers to GtkGrid][ctk-migrating-GtkGrid].
  */
 GtkWidget *
 ctk_hbox_new (gboolean homogeneous,

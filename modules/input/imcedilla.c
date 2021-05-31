@@ -21,11 +21,11 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtk/gtk.h"
+#include "ctk/ctk.h"
 #include "gdk/gdkkeysyms.h"
 
-#include "gtk/gtkimmodule.h"
-#include "gtk/gtkintl.h"
+#include "ctk/ctkimmodule.h"
+#include "ctk/ctkintl.h"
 
 
 GType type_cedilla = 0;

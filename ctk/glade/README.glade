@@ -5,8 +5,8 @@ in GTK+.
 In order to edit any composite classes in GTK+, startup Glade
 in the following way, example:
 
-    cd /path/to/gtk+/
-    GLADE_CATALOG_SEARCH_PATH=`pwd`/gtk/glade glade gtk/ui/gtkfilechooserwidget.ui
+    cd /path/to/ctk+/
+    GLADE_CATALOG_SEARCH_PATH=`pwd`/ctk/glade glade ctk/ui/ctkfilechooserwidget.ui
 
 Documentation for updating this catalog can be found here:
     https://developer.gnome.org/gladeui/stable/

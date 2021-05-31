@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <gio/gio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* TODO
  *
@@ -594,8 +594,8 @@ create_add_remove_buttons (GActionGroup *group,
 
 /* main {{{1 */
 
-#define BUS_NAME "org.gtk.TestMenus"
-#define OBJ_PATH "/org/gtk/TestMenus"
+#define BUS_NAME "org.ctk.TestMenus"
+#define OBJ_PATH "/org/ctk/TestMenus"
 
 static gboolean
 on_delete_event (GtkWidget   *widget,

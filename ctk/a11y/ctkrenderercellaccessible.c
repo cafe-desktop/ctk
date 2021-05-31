@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkrenderercellaccessible.h"
-#include "gtkintl.h"
+#include <ctk/ctk.h>
+#include "ctkrenderercellaccessible.h"
+#include "ctkintl.h"
 
 struct _GtkRendererCellAccessiblePrivate
 {

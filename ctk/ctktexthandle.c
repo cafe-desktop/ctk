@@ -16,16 +16,16 @@
  */
 
 #include "config.h"
-#include "gtkprivatetypebuiltins.h"
-#include "gtktexthandleprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkwindowprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkintl.h"
+#include "ctkprivatetypebuiltins.h"
+#include "ctktexthandleprivate.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkwindowprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkintl.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef struct _GtkTextHandlePrivate GtkTextHandlePrivate;
 typedef struct _HandleWindow HandleWindow;

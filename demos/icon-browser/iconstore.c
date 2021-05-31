@@ -1,5 +1,5 @@
 #include "iconstore.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 struct _IconStore
 {

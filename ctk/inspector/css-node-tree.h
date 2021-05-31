@@ -23,9 +23,9 @@
 #ifndef _CTK_INSPECTOR_CSS_NODE_TREE_H_
 #define _CTK_INSPECTOR_CSS_NODE_TREE_H_
 
-#include <gtk/gtkbox.h>
+#include <ctk/ctkbox.h>
 
-#include "gtk/gtkcssnodeprivate.h"
+#include "ctk/ctkcssnodeprivate.h"
 
 #define CTK_TYPE_INSPECTOR_CSS_NODE_TREE            (ctk_inspector_css_node_tree_get_type())
 #define CTK_INSPECTOR_CSS_NODE_TREE(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_CSS_NODE_TREE, GtkInspectorCssNodeTree))

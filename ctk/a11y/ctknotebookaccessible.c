@@ -18,9 +18,9 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtknotebookaccessible.h"
-#include "gtknotebookpageaccessible.h"
+#include <ctk/ctk.h>
+#include "ctknotebookaccessible.h"
+#include "ctknotebookpageaccessible.h"
 
 struct _GtkNotebookAccessiblePrivate
 {
@@ -154,7 +154,7 @@ ctk_notebook_accessible_ref_child (AtkObject *obj,
 }
 
 static void
-ctk_notebook_accessible_notify_gtk (GObject    *obj,
+ctk_notebook_accessible_notify_ctk (GObject    *obj,
                                     GParamSpec *pspec)
 {
   GtkWidget *widget;
@@ -201,7 +201,7 @@ ctk_notebook_accessible_notify_gtk (GObject    *obj,
         }
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_notebook_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_notebook_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 /*
@@ -238,11 +238,11 @@ ctk_notebook_accessible_class_init (GtkNotebookAccessibleClass *klass)
   class->ref_child = ctk_notebook_accessible_ref_child;
   class->initialize = ctk_notebook_accessible_initialize;
 
-  widget_class->notify_gtk = ctk_notebook_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_notebook_accessible_notify_ctk;
 
   /* we listen to page-added/-removed, so we don't care about these */
-  container_class->add_gtk = NULL;
-  container_class->remove_gtk = NULL;
+  container_class->add_ctk = NULL;
+  container_class->remove_ctk = NULL;
 }
 
 static void

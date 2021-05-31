@@ -21,11 +21,11 @@
 #define __CTK_STACK_SWITCHER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkbox.h>
-#include <gtk/gtkstack.h>
+#include <ctk/ctkbox.h>
+#include <ctk/ctkstack.h>
 
 G_BEGIN_DECLS
 

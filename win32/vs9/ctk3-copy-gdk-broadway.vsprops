@@ -2,8 +2,8 @@
 <VisualStudioPropertySheet
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="gtk3copygdkbroadwayprops"
-	InheritedPropertySheets=".\gtk3-build-defines.vsprops"
+	Name="ctk3copygdkbroadwayprops"
+	InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 	>
 	<Tool
 		Name="VCLinkerTool"

@@ -20,10 +20,10 @@
 
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkaccelgroup.h>
+#include <ctk/ctkaccelgroup.h>
 
 G_BEGIN_DECLS
 

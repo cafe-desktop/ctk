@@ -16,9 +16,9 @@
  */
 
 #include "config.h"
-#include "gtkmodifierstyle.h"
-#include "gtkstyleproviderprivate.h"
-#include "gtkintl.h"
+#include "ctkmodifierstyle.h"
+#include "ctkstyleproviderprivate.h"
+#include "ctkintl.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 

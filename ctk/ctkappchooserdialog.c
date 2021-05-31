@@ -1,5 +1,5 @@
 /*
- * gtkappchooserdialog.c: an app-chooser dialog
+ * ctkappchooserdialog.c: an app-chooser dialog
  *
  * Copyright (C) 2004 Novell, Inc.
  * Copyright (C) 2007, 2010 Red Hat, Inc.
@@ -23,7 +23,7 @@
  */
 
 /**
- * SECTION:gtkappchooserdialog
+ * SECTION:ctkappchooserdialog
  * @Title: GtkAppChooserDialog
  * @Short_description: An application chooser dialog
  *
@@ -39,25 +39,25 @@
  */
 #include "config.h"
 
-#include "gtkappchooserdialog.h"
+#include "ctkappchooserdialog.h"
 
-#include "gtkintl.h"
-#include "gtkappchooser.h"
-#include "gtkappchooserprivate.h"
+#include "ctkintl.h"
+#include "ctkappchooser.h"
+#include "ctkappchooserprivate.h"
 
-#include "gtkmessagedialog.h"
-#include "gtksettings.h"
-#include "gtklabel.h"
-#include "gtkbbox.h"
-#include "gtkbutton.h"
-#include "gtkentry.h"
-#include "gtktogglebutton.h"
-#include "gtkstylecontext.h"
-#include "gtkmenuitem.h"
-#include "gtkheaderbar.h"
-#include "gtkdialogprivate.h"
-#include "gtksearchbar.h"
-#include "gtksizegroup.h"
+#include "ctkmessagedialog.h"
+#include "ctksettings.h"
+#include "ctklabel.h"
+#include "ctkbbox.h"
+#include "ctkbutton.h"
+#include "ctkentry.h"
+#include "ctktogglebutton.h"
+#include "ctkstylecontext.h"
+#include "ctkmenuitem.h"
+#include "ctkheaderbar.h"
+#include "ctkdialogprivate.h"
+#include "ctksearchbar.h"
+#include "ctksizegroup.h"
 
 #include <string.h>
 #include <glib/gi18n-lib.h>
@@ -695,7 +695,7 @@ ctk_app_chooser_dialog_class_init (GtkAppChooserDialogClass *klass)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkappchooserdialog.ui");
+					       "/org/ctk/libctk/ui/ctkappchooserdialog.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserDialog, label);
   ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserDialog, show_more_button);
   ctk_widget_class_bind_template_child_private (widget_class, GtkAppChooserDialog, software_button);

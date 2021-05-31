@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtklinkbutton.c - an hyperlink-enabled button
+ * ctklinkbutton.c - an hyperlink-enabled button
  *
  * Copyright (C) 2006 Emmanuele Bassi <ebassi@gmail.com>
  * All rights reserved.
@@ -22,7 +22,7 @@
  */
 
 /**
- * SECTION:gtklinkbutton
+ * SECTION:ctklinkbutton
  * @Title: GtkLinkButton
  * @Short_description: Create buttons bound to a URL
  * @See_also: #GtkButton
@@ -51,25 +51,25 @@
 
 #include "config.h"
 
-#include "gtklinkbutton.h"
+#include "ctklinkbutton.h"
 
 #include <string.h>
 
-#include "gtkclipboard.h"
-#include "gtkdnd.h"
-#include "gtklabel.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkmenu.h"
-#include "gtkmenuitem.h"
-#include "gtksizerequest.h"
-#include "gtkshow.h"
-#include "gtktooltip.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtktextutil.h"
+#include "ctkclipboard.h"
+#include "ctkdnd.h"
+#include "ctklabel.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkmenu.h"
+#include "ctkmenuitem.h"
+#include "ctksizerequest.h"
+#include "ctkshow.h"
+#include "ctktooltip.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctktextutil.h"
 
-#include "a11y/gtklinkbuttonaccessible.h"
+#include "a11y/ctklinkbuttonaccessible.h"
 
 struct _GtkLinkButtonPrivate
 {

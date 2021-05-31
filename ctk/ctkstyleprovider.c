@@ -17,14 +17,14 @@
 
 #include "config.h"
 
-#include "gtkstyleprovider.h"
+#include "ctkstyleprovider.h"
 
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkwidgetpath.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkwidgetpath.h"
 
 /**
- * SECTION:gtkstyleprovider
+ * SECTION:ctkstyleprovider
  * @Short_description: Interface to provide style information to GtkStyleContext
  * @Title: GtkStyleProvider
  * @See_also: #GtkStyleContext, #GtkCssProvider

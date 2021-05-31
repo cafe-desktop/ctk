@@ -21,12 +21,12 @@
 #include "statistics.h"
 
 #include "graphdata.h"
-#include "gtkstack.h"
-#include "gtktreeview.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcelllayout.h"
-#include "gtksearchbar.h"
-#include "gtklabel.h"
+#include "ctkstack.h"
+#include "ctktreeview.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcelllayout.h"
+#include "ctksearchbar.h"
+#include "ctklabel.h"
 
 enum
 {
@@ -448,7 +448,7 @@ ctk_inspector_statistics_class_init (GtkInspectorStatisticsClass *klass)
       g_param_spec_object ("button", NULL, NULL,
                            CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/statistics.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/statistics.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, view);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, stack);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorStatistics, model);

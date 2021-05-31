@@ -18,9 +18,9 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkstackaccessible.h"
-#include "gtkwidgetprivate.h"
+#include <ctk/ctk.h>
+#include "ctkstackaccessible.h"
+#include "ctkwidgetprivate.h"
 
 
 G_DEFINE_TYPE (GtkStackAccessible, ctk_stack_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
@@ -72,8 +72,8 @@ ctk_stack_accessible_class_init (GtkStackAccessibleClass *klass)
    * As we report the stack as having only the visible child,
    * we are not interested in add and remove signals
    */
-  container_class->add_gtk    = NULL;
-  container_class->remove_gtk = NULL;
+  container_class->add_ctk    = NULL;
+  container_class->remove_ctk = NULL;
 }
 
 static void

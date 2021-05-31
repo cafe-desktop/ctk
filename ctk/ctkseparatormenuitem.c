@@ -19,17 +19,17 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkseparatormenuitem.h"
+#include "ctkseparatormenuitem.h"
 
-#include "gtkstylecontext.h"
+#include "ctkstylecontext.h"
 
 /**
- * SECTION:gtkseparatormenuitem
+ * SECTION:ctkseparatormenuitem
  * @Short_description: A separator used in menus
  * @Title: GtkSeparatorMenuItem
  *

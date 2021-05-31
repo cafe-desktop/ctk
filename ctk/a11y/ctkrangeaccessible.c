@@ -18,8 +18,8 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkrangeaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkrangeaccessible.h"
 
 struct _GtkRangeAccessiblePrivate
 {
@@ -82,7 +82,7 @@ ctk_range_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_range_accessible_notify_gtk (GObject    *obj,
+ctk_range_accessible_notify_ctk (GObject    *obj,
                                  GParamSpec *pspec)
 {
   GtkWidget *widget = CTK_WIDGET (obj);
@@ -95,7 +95,7 @@ ctk_range_accessible_notify_gtk (GObject    *obj,
       ctk_range_accessible_widget_set (CTK_ACCESSIBLE (range));
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_range_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_range_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 
@@ -111,7 +111,7 @@ ctk_range_accessible_class_init (GtkRangeAccessibleClass *klass)
   accessible_class->widget_set = ctk_range_accessible_widget_set;
   accessible_class->widget_unset = ctk_range_accessible_widget_unset;
 
-  widget_class->notify_gtk = ctk_range_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_range_accessible_notify_ctk;
 }
 
 static void

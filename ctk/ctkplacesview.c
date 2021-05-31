@@ -1,4 +1,4 @@
-/* gtkplacesview.c
+/* ctkplacesview.c
  *
  * Copyright (C) 2015 Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
  *
@@ -20,16 +20,16 @@
 
 #include <gio/gio.h>
 #include <gio/gvfs.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkplacesviewprivate.h"
-#include "gtkplacesviewrowprivate.h"
-#include "gtktypebuiltins.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkplacesviewprivate.h"
+#include "ctkplacesviewrowprivate.h"
+#include "ctktypebuiltins.h"
 
 /**
- * SECTION:gtkplacesview
+ * SECTION:ctkplacesview
  * @Short_description: Widget that displays persistent drives and manages mounted networks
  * @Title: GtkPlacesView
  * @See_also: #GtkFileChooser
@@ -189,7 +189,7 @@ server_list_load (GtkPlacesView *view)
 
   priv = ctk_places_view_get_instance_private (view);
   bookmarks = g_bookmark_file_new ();
-  datadir = g_build_filename (g_get_user_config_dir (), "gtk-3.0", NULL);
+  datadir = g_build_filename (g_get_user_config_dir (), "ctk-3.0", NULL);
   filename = g_build_filename (datadir, "servers", NULL);
 
   g_mkdir_with_parents (datadir, 0700);
@@ -247,7 +247,7 @@ server_list_save (GBookmarkFile *bookmarks)
 {
   gchar *filename;
 
-  filename = g_build_filename (g_get_user_config_dir (), "gtk-3.0", "servers", NULL);
+  filename = g_build_filename (g_get_user_config_dir (), "ctk-3.0", "servers", NULL);
   g_bookmark_file_to_file (bookmarks, filename, NULL);
   g_free (filename);
 }
@@ -2363,7 +2363,7 @@ ctk_places_view_class_init (GtkPlacesViewClass *klass)
   g_object_class_install_properties (object_class, LAST_PROP, properties);
 
   /* Bind class to template */
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkplacesview.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkplacesview.ui");
 
   ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, actionbar);
   ctk_widget_class_bind_template_child_private (widget_class, GtkPlacesView, address_entry);

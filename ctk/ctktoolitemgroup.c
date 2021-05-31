@@ -24,13 +24,13 @@
 #include <math.h>
 #include <string.h>
 
-#include "gtktoolpaletteprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctktoolpaletteprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidgetprivate.h"
 
 
 #define ANIMATION_TIMEOUT        50
@@ -44,7 +44,7 @@
 #define DEFAULT_ELLIPSIZE        PANGO_ELLIPSIZE_NONE
 
 /**
- * SECTION:gtktoolitemgroup
+ * SECTION:ctktoolitemgroup
  * @Short_description: A sub container used in a tool palette
  * @Title: GtkToolItemGroup
  *
@@ -204,7 +204,7 @@ animation_change_notify (GtkToolItemGroup *group)
 
   if (settings)
     g_object_get (settings,
-                  "gtk-enable-animations", &animation,
+                  "ctk-enable-animations", &animation,
                   NULL);
   else
     animation = DEFAULT_ANIMATION_STATE;
@@ -217,7 +217,7 @@ ctk_tool_item_group_settings_change_notify (GtkSettings      *settings,
                                             const GParamSpec *pspec,
                                             GtkToolItemGroup *group)
 {
-  if (strcmp (pspec->name, "gtk-enable-animations") == 0)
+  if (strcmp (pspec->name, "ctk-enable-animations") == 0)
     animation_change_notify (group);
 }
 

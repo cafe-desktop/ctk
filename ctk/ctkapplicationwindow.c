@@ -19,23 +19,23 @@
 
 #include "config.h"
 
-#include "gtkapplicationwindow.h"
+#include "ctkapplicationwindow.h"
 
-#include "gtkapplicationprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindowprivate.h"
-#include "gtkheaderbar.h"
-#include "gtkmenubar.h"
-#include "gtkintl.h"
-#include "gtksettings.h"
-#include "gtkshortcutswindowprivate.h"
+#include "ctkapplicationprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindowprivate.h"
+#include "ctkheaderbar.h"
+#include "ctkmenubar.h"
+#include "ctkintl.h"
+#include "ctksettings.h"
+#include "ctkshortcutswindowprivate.h"
 
 #if defined(HAVE_GIO_UNIX) && !defined(__APPLE__)
 #include <gio/gdesktopappinfo.h>
 #endif
 
 /**
- * SECTION:gtkapplicationwindow
+ * SECTION:ctkapplicationwindow
  * @title: GtkApplicationWindow
  * @short_description: GtkWindow subclass with GtkApplication support
  *
@@ -61,8 +61,8 @@
  * processing actions arriving from other processes and should therefore
  * be held when activating actions locally (if GDK threads are enabled).
  *
- * The settings #GtkSettings:gtk-shell-shows-app-menu and
- * #GtkSettings:gtk-shell-shows-menubar tell GTK+ whether the
+ * The settings #GtkSettings:ctk-shell-shows-app-menu and
+ * #GtkSettings:ctk-shell-shows-menubar tell GTK+ whether the
  * desktop environment is showing the application menu and menubar
  * models outside the application as part of the desktop shell.
  * For instance, on OS X, both menus will be displayed remotely;
@@ -79,7 +79,7 @@
  * ## A GtkApplicationWindow with a menubar
  *
  * |[<!-- language="C" -->
- * GtkApplication *app = ctk_application_new ("org.gtk.test", 0);
+ * GtkApplication *app = ctk_application_new ("org.ctk.test", 0);
  *
  * GtkBuilder *builder = ctk_builder_new_from_string (
  *     "<interface>"
@@ -104,7 +104,7 @@
  *
  * ## Handling fallback yourself
  *
- * [A simple example](https://git.gnome.org/browse/gtk+/tree/examples/sunny.c)
+ * [A simple example](https://git.gnome.org/browse/ctk+/tree/examples/sunny.c)
  *
  * The XML format understood by #GtkBuilder for #GMenuModel consists
  * of a toplevel `<menu>` element, which contains one or more `<item>`
@@ -306,7 +306,7 @@ ctk_application_window_update_shell_shows_app_menu (GtkApplicationWindow *window
   gboolean shown_by_shell;
   gboolean shown_by_titlebar;
 
-  g_object_get (settings, "gtk-shell-shows-app-menu", &shown_by_shell, NULL);
+  g_object_get (settings, "ctk-shell-shows-app-menu", &shown_by_shell, NULL);
 
   shown_by_titlebar = _ctk_window_titlebar_shows_app_menu (CTK_WINDOW (window));
 
@@ -358,7 +358,7 @@ ctk_application_window_update_shell_shows_menubar (GtkApplicationWindow *window,
 {
   gboolean shown_by_shell;
 
-  g_object_get (settings, "gtk-shell-shows-menubar", &shown_by_shell, NULL);
+  g_object_get (settings, "ctk-shell-shows-menubar", &shown_by_shell, NULL);
 
   if (shown_by_shell)
     {
@@ -673,9 +673,9 @@ ctk_application_window_real_realize (GtkWidget *widget)
 
   settings = ctk_widget_get_settings (widget);
 
-  g_signal_connect (settings, "notify::gtk-shell-shows-app-menu",
+  g_signal_connect (settings, "notify::ctk-shell-shows-app-menu",
                     G_CALLBACK (ctk_application_window_shell_shows_app_menu_changed), window);
-  g_signal_connect (settings, "notify::gtk-shell-shows-menubar",
+  g_signal_connect (settings, "notify::ctk-shell-shows-menubar",
                     G_CALLBACK (ctk_application_window_shell_shows_menubar_changed), window);
 
   CTK_WIDGET_CLASS (ctk_application_window_parent_class)->realize (widget);

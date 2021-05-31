@@ -25,10 +25,10 @@
 
 #include "object-hierarchy.h"
 
-#include "gtktreeselection.h"
-#include "gtktreestore.h"
-#include "gtktreeview.h"
-#include "gtklabel.h"
+#include "ctktreeselection.h"
+#include "ctktreestore.h"
+#include "ctktreeview.h"
+#include "ctklabel.h"
 
 
 enum
@@ -56,7 +56,7 @@ ctk_inspector_object_hierarchy_class_init (GtkInspectorObjectHierarchyClass *kla
 {
   GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/object-hierarchy.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/object-hierarchy.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectHierarchy, model);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorObjectHierarchy, tree);
 }

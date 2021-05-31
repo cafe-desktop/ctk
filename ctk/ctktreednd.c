@@ -1,4 +1,4 @@
-/* gtktreednd.c
+/* ctktreednd.c
  * Copyright (C) 2001  Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -17,12 +17,12 @@
 
 #include "config.h"
 #include <string.h>
-#include "gtktreednd.h"
-#include "gtkintl.h"
+#include "ctktreednd.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtktreednd
+ * SECTION:ctktreednd
  * @Short_description: Interfaces for drag-and-drop support in GtkTreeView
  * @Title: GtkTreeView drag-and-drop
  *

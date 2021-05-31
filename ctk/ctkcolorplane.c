@@ -17,14 +17,14 @@
 
 #include "config.h"
 
-#include "gtkcolorplaneprivate.h"
+#include "ctkcolorplaneprivate.h"
 
-#include "gtkgesturedrag.h"
-#include "gtkgesturelongpress.h"
-#include "gtkaccessible.h"
-#include "gtkadjustment.h"
-#include "gtkcolorutils.h"
-#include "gtkintl.h"
+#include "ctkgesturedrag.h"
+#include "ctkgesturelongpress.h"
+#include "ctkaccessible.h"
+#include "ctkadjustment.h"
+#include "ctkcolorutils.h"
+#include "ctkintl.h"
 
 struct _GtkColorPlanePrivate
 {
@@ -454,7 +454,7 @@ plane_set_property (GObject      *object,
   GtkAdjustment *adjustment;
 
   /* Construct only properties can only be set once, these are created
-   * only in order to be properly buildable from gtkcoloreditor.ui
+   * only in order to be properly buildable from ctkcoloreditor.ui
    */
   switch (prop_id)
     {

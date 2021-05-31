@@ -18,16 +18,16 @@
 
 #include "config.h"
 
-#include "gtklockbuttonprivate.h"
-#include "gtkbox.h"
-#include "gtkimage.h"
-#include "gtklabel.h"
-#include "gtksizegroup.h"
-#include "gtkintl.h"
-#include "a11y/gtklockbuttonaccessibleprivate.h"
+#include "ctklockbuttonprivate.h"
+#include "ctkbox.h"
+#include "ctkimage.h"
+#include "ctklabel.h"
+#include "ctksizegroup.h"
+#include "ctkintl.h"
+#include "a11y/ctklockbuttonaccessibleprivate.h"
 
 /**
- * SECTION:gtklockbutton
+ * SECTION:ctklockbutton
  * @title: GtkLockButton
  * @short_description: A widget to unlock or lock privileged operations
  *
@@ -315,7 +315,7 @@ ctk_lock_button_class_init (GtkLockButtonClass *klass)
 
   /* Bind class to template
    */
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtklockbutton.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctklockbutton.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkLockButton, box);
   ctk_widget_class_bind_template_child_private (widget_class, GtkLockButton, image);
   ctk_widget_class_bind_template_child_private (widget_class, GtkLockButton, label_lock);

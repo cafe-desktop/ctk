@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktextbuffer.c Copyright (C) 2000 Red Hat, Inc.
+ * ctktextbuffer.c Copyright (C) 2000 Red Hat, Inc.
  *                 Copyright (C) 2004 Nokia Corporation
  *
  * This library is free software; you can redistribute it and/or
@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -28,22 +28,22 @@
 #include <stdarg.h>
 
 #define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
-#include "gtkclipboard.h"
-#include "gtkdnd.h"
-#include "gtkinvisible.h"
-#include "gtkmarshalers.h"
-#include "gtktextbuffer.h"
-#include "gtktextbufferprivate.h"
-#include "gtktextbufferrichtext.h"
-#include "gtktextbtree.h"
-#include "gtktextiterprivate.h"
-#include "gtktexttagprivate.h"
-#include "gtktexttagtableprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkclipboard.h"
+#include "ctkdnd.h"
+#include "ctkinvisible.h"
+#include "ctkmarshalers.h"
+#include "ctktextbuffer.h"
+#include "ctktextbufferprivate.h"
+#include "ctktextbufferrichtext.h"
+#include "ctktextbtree.h"
+#include "ctktextiterprivate.h"
+#include "ctktexttagprivate.h"
+#include "ctktexttagtableprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtktextbuffer
+ * SECTION:ctktextbuffer
  * @Short_description: Stores attributed text for display in a GtkTextView
  * @Title: GtkTextBuffer
  * @See_also: #GtkTextView, #GtkTextIter, #GtkTextMark
@@ -3263,9 +3263,9 @@ create_clipboard_contents_buffer (GtkTextBuffer *buffer)
 
   contents = ctk_text_buffer_new (ctk_text_buffer_get_tag_table (buffer));
 
-  g_object_set_data (G_OBJECT (contents), I_("gtk-text-buffer-clipboard-source"),
+  g_object_set_data (G_OBJECT (contents), I_("ctk-text-buffer-clipboard-source"),
                      buffer);
-  g_object_set_data (G_OBJECT (contents), I_("gtk-text-buffer-clipboard"),
+  g_object_set_data (G_OBJECT (contents), I_("ctk-text-buffer-clipboard"),
                      GINT_TO_POINTER (1));
 
   /*  Ref the source buffer as long as the clipboard contents buffer
@@ -3308,7 +3308,7 @@ clipboard_get_contents_cb (GtkClipboard     *clipboard,
       gsize   len;
 
       clipboard_source_buffer = g_object_get_data (G_OBJECT (contents),
-                                                   "gtk-text-buffer-clipboard-source");
+                                                   "ctk-text-buffer-clipboard-source");
 
       ctk_text_buffer_get_bounds (contents, &start, &end);
 
@@ -3639,7 +3639,7 @@ clipboard_clipboard_buffer_received (GtkClipboard     *clipboard,
     {
       GtkTextIter start, end;
 
-      if (g_object_get_data (G_OBJECT (src_buffer), "gtk-text-buffer-clipboard"))
+      if (g_object_get_data (G_OBJECT (src_buffer), "ctk-text-buffer-clipboard"))
 	{
 	  ctk_text_buffer_get_bounds (src_buffer, &start, &end);
 

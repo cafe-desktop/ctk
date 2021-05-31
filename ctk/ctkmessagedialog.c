@@ -20,26 +20,26 @@
  * Modified by the GTK+ Team and others 1997-2003.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
 #include <string.h>
 
-#include "gtkmessagedialog.h"
-#include "gtkaccessible.h"
-#include "gtkbuildable.h"
-#include "gtklabel.h"
-#include "gtkbox.h"
-#include "gtkbbox.h"
-#include "gtkimage.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
+#include "ctkmessagedialog.h"
+#include "ctkaccessible.h"
+#include "ctkbuildable.h"
+#include "ctklabel.h"
+#include "ctkbox.h"
+#include "ctkbbox.h"
+#include "ctkimage.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
 
 /**
- * SECTION:gtkmessagedialog
+ * SECTION:ctkmessagedialog
  * @Short_description: A convenient message window
  * @Title: GtkMessageDialog
  * @See_also:#GtkDialog
@@ -297,7 +297,7 @@ ctk_message_dialog_class_init (GtkMessageDialogClass *class)
 							CTK_PARAM_READABLE));
 
   /* Setup Composite data */
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkmessagedialog.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkmessagedialog.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkMessageDialog, label);
   ctk_widget_class_bind_template_child_private (widget_class, GtkMessageDialog, secondary_label);
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkMessageDialog, message_area);
@@ -330,7 +330,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_button_box_set_layout (CTK_BUTTON_BOX (action_area), CTK_BUTTONBOX_EXPAND);
 
   settings = ctk_widget_get_settings (CTK_WIDGET (dialog));
-  g_object_get (settings, "gtk-keynav-use-caret", &use_caret, NULL);
+  g_object_get (settings, "ctk-keynav-use-caret", &use_caret, NULL);
   ctk_label_set_selectable (CTK_LABEL (priv->label), use_caret);
   ctk_label_set_selectable (CTK_LABEL (priv->secondary_label), use_caret);
 }
@@ -437,7 +437,7 @@ ctk_message_dialog_constructed (GObject *object)
   G_OBJECT_CLASS (ctk_message_dialog_parent_class)->constructed (object);
 
   g_object_get (ctk_widget_get_settings (CTK_WIDGET (dialog)),
-                "gtk-dialogs-use-header", &use_header,
+                "ctk-dialogs-use-header", &use_header,
                 NULL);
 
   if (use_header)

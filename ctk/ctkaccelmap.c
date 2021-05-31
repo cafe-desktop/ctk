@@ -17,12 +17,12 @@
 
 #include "config.h"
 
-#include "gtkaccelmapprivate.h"
-#include "gtkaccelgroupprivate.h"
+#include "ctkaccelmapprivate.h"
+#include "ctkaccelgroupprivate.h"
 
-#include "gtkmarshalers.h"
-#include "gtkwindowprivate.h"
-#include "gtkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkwindowprivate.h"
+#include "ctkintl.h"
 
 #include <glib/gstdio.h>
 
@@ -38,7 +38,7 @@
 
 
 /**
- * SECTION:gtkaccelmap
+ * SECTION:ctkaccelmap
  * @Short_description: Loadable keyboard accelerator specifications
  * @Title: Accelerator Maps
  * @See_also: #GtkAccelGroup, #GtkAccelKey, #GtkUIManager, ctk_widget_set_accel_path(), ctk_menu_item_set_accel_path()

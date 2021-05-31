@@ -18,7 +18,7 @@
 #ifndef __CTK_COLOR_CHOOSER_PRIVATE_H__
 #define __CTK_COLOR_CHOOSER_PRIVATE_H__
 
-#include "gtkcolorchooser.h"
+#include "ctkcolorchooser.h"
 
 G_BEGIN_DECLS
 

@@ -20,11 +20,11 @@
 
 #include "action-editor.h"
 
-#include "gtksizegroup.h"
-#include "gtktogglebutton.h"
-#include "gtkentry.h"
-#include "gtkbin.h"
-#include "gtklabel.h"
+#include "ctksizegroup.h"
+#include "ctktogglebutton.h"
+#include "ctkentry.h"
+#include "ctkbin.h"
+#include "ctklabel.h"
 
 struct _GtkInspectorActionEditorPrivate
 {

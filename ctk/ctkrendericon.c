@@ -19,13 +19,13 @@
 
 #include "config.h"
 
-#include "gtkrendericonprivate.h"
+#include "ctkrendericonprivate.h"
 
-#include "gtkcssimagebuiltinprivate.h"
-#include "gtkcssimagevalueprivate.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkcssstyleprivate.h"
-#include "gtkcsstransformvalueprivate.h"
+#include "ctkcssimagebuiltinprivate.h"
+#include "ctkcssimagevalueprivate.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkcssstyleprivate.h"
+#include "ctkcsstransformvalueprivate.h"
 
 #include <math.h>
 
@@ -57,7 +57,7 @@ ctk_css_style_render_icon (GtkCssStyle            *style,
 
   if (_ctk_css_transform_value_get_matrix (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_TRANSFORM), &transform_matrix))
     {
-      /* XXX: Implement -gtk-icon-transform-origin instead of hardcoding "50% 50%" here */
+      /* XXX: Implement -ctk-icon-transform-origin instead of hardcoding "50% 50%" here */
       cairo_matrix_init_translate (&matrix, width / 2, height / 2);
       cairo_matrix_multiply (&matrix, &transform_matrix, &matrix);
       cairo_matrix_translate (&matrix, - width / 2, - height / 2);
@@ -128,7 +128,7 @@ ctk_css_style_render_icon_surface (GtkCssStyle            *style,
     {
       cairo_pattern_t *pattern;
 
-      /* XXX: Implement -gtk-icon-transform-origin instead of hardcoding "50% 50%" here */
+      /* XXX: Implement -ctk-icon-transform-origin instead of hardcoding "50% 50%" here */
       cairo_matrix_init_translate (&matrix, extents.width / 2, extents.height / 2);
       cairo_matrix_multiply (&matrix, &transform_matrix, &matrix);
       cairo_matrix_translate (&matrix, - extents.width / 2, - extents.height / 2);

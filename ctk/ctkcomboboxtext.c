@@ -18,17 +18,17 @@
 
 #include "config.h"
 
-#include "gtkcomboboxtext.h"
-#include "gtkcombobox.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcelllayout.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
+#include "ctkcomboboxtext.h"
+#include "ctkcombobox.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcelllayout.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
 
 #include <string.h>
 
 /**
- * SECTION:gtkcomboboxtext
+ * SECTION:ctkcomboboxtext
  * @Short_description: A simple, text-only combo box
  * @Title: GtkComboBoxText
  * @See_also: #GtkComboBox

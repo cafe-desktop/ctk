@@ -18,8 +18,8 @@
 #include "config.h"
 
 #include <glib/gi18n-lib.h>
-#include <gtk/gtk.h>
-#include "gtkexpanderaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkexpanderaccessible.h"
 
 static void atk_action_interface_init (AtkActionIface *iface);
 
@@ -136,7 +136,7 @@ ctk_expander_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_expander_accessible_notify_gtk (GObject    *obj,
+ctk_expander_accessible_notify_ctk (GObject    *obj,
                                     GParamSpec *pspec)
 {
   AtkObject* atk_obj;
@@ -160,7 +160,7 @@ ctk_expander_accessible_notify_gtk (GObject    *obj,
       g_signal_emit_by_name (atk_obj, "visible-data-changed");
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_expander_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_expander_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static AtkStateSet *
@@ -195,7 +195,7 @@ ctk_expander_accessible_class_init (GtkExpanderAccessibleClass *klass)
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GtkWidgetAccessibleClass *widget_class = (GtkWidgetAccessibleClass*)klass;
 
-  widget_class->notify_gtk = ctk_expander_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_expander_accessible_notify_ctk;
 
   class->get_name = ctk_expander_accessible_get_name;
   class->get_n_children = ctk_expander_accessible_get_n_children;

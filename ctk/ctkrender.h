@@ -19,15 +19,15 @@
 #define __CTK_RENDER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <cairo.h>
 #include <pango/pango.h>
 #include <gdk/gdk.h>
 
-#include <gtk/gtkenums.h>
-#include <gtk/gtktypes.h>
+#include <ctk/ctkenums.h>
+#include <ctk/ctktypes.h>
 
 G_BEGIN_DECLS
 

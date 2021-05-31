@@ -1,4 +1,4 @@
-/* gtkshortcutssection.h
+/* ctkshortcutssection.h
  *
  * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
  *
@@ -19,8 +19,8 @@
 #ifndef __CTK_SHORTCUTS_SECTION_H__
 #define __CTK_SHORTCUTS_SECTION_H__
 
-#include <gtk/gtkbox.h>
-#include <gtk/gtkshortcutsgroup.h>
+#include <ctk/ctkbox.h>
+#include <ctk/ctkshortcutsgroup.h>
 
 G_BEGIN_DECLS
 

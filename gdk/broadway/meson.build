@@ -25,8 +25,8 @@ gdk_broadway_public_headers = files(
   'gdkbroadwayvisual.h',
 )
 
-install_headers(gdk_broadway_public_headers, subdir: 'gtk-3.0/gdk/broadway/')
-install_headers('gdkbroadway.h', subdir: 'gtk-3.0/gdk/')
+install_headers(gdk_broadway_public_headers, subdir: 'ctk-3.0/gdk/broadway/')
+install_headers('gdkbroadway.h', subdir: 'ctk-3.0/gdk/')
 
 gdk_broadway_deps = [shmlib]
 
@@ -65,7 +65,7 @@ libgdk_broadway = static_library('gdk-broadway',
   link_args: common_ldflags,
   dependencies: [gdk_deps, gdk_broadway_deps])
 
-# gtk4-broadwayd
+# ctk4-broadwayd
 
 broadwayd_syslib = os_win32 ? cc.find_library('ws2_32') : shmlib
 

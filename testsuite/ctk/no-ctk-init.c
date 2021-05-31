@@ -15,7 +15,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <locale.h>
 
 /* This test tests functions that are supposed to work without calling ctk_init()

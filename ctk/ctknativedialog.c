@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
 /* GTK - The GIMP Toolkit
- * gtkfilechoosernative.c: Native File selector dialog
+ * ctkfilechoosernative.c: Native File selector dialog
  * Copyright (C) 2015, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,28 +19,28 @@
 
 #include "config.h"
 
-#include "gtknativedialogprivate.h"
+#include "ctknativedialogprivate.h"
 
-#include "gtkprivate.h"
-#include "gtkfilechooserdialog.h"
-#include "gtkfilechooserprivate.h"
-#include "gtkfilechooserwidget.h"
-#include "gtkfilechooserwidgetprivate.h"
-#include "gtkfilechooserutils.h"
-#include "gtkfilechooserembed.h"
-#include "gtkfilesystem.h"
-#include "gtksizerequest.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
-#include "gtksettings.h"
-#include "gtktogglebutton.h"
-#include "gtkstylecontext.h"
-#include "gtkheaderbar.h"
-#include "gtklabel.h"
-#include "gtkfilechooserentry.h"
+#include "ctkprivate.h"
+#include "ctkfilechooserdialog.h"
+#include "ctkfilechooserprivate.h"
+#include "ctkfilechooserwidget.h"
+#include "ctkfilechooserwidgetprivate.h"
+#include "ctkfilechooserutils.h"
+#include "ctkfilechooserembed.h"
+#include "ctkfilesystem.h"
+#include "ctksizerequest.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
+#include "ctksettings.h"
+#include "ctktogglebutton.h"
+#include "ctkstylecontext.h"
+#include "ctkheaderbar.h"
+#include "ctklabel.h"
+#include "ctkfilechooserentry.h"
 
 /**
- * SECTION:gtknativedialog
+ * SECTION:ctknativedialog
  * @Short_description: Integrate with native dialogs
  * @Title: GtkNativeDialog
  * @See_also: #GtkFileChooserNative, #GtkDialog
@@ -425,7 +425,7 @@ ctk_native_dialog_get_visible (GtkNativeDialog *self)
  * with other windows in the same application. To keep modal dialogs
  * on top of main application windows, use
  * ctk_native_dialog_set_transient_for() to make the dialog transient for the
- * parent; most [window managers][gtk-X11-arch]
+ * parent; most [window managers][ctk-X11-arch]
  * will then disallow lowering the dialog below the parent.
  *
  * Since: 3.20
@@ -519,7 +519,7 @@ ctk_native_dialog_get_title (GtkNativeDialog *self)
  *
  * Dialog windows should be set transient for the main application
  * window they were spawned from. This allows
- * [window managers][gtk-X11-arch] to e.g. keep the
+ * [window managers][ctk-X11-arch] to e.g. keep the
  * dialog on top of the main window, or center the dialog over the
  * main window.
  *

@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #define MIN_SIZE 150
 #define MAX_SIZE 300

@@ -29,10 +29,10 @@
 #include <gio/gio.h>
 #include <gmodule.h>
 #include <gdk/gdk.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <libtracker-sparql/tracker-sparql.h>
 
-#include "gtksearchenginetracker3.h"
+#include "ctksearchenginetracker3.h"
 
 #define MINER_FS_BUS_NAME "org.freedesktop.Tracker3.Miner.Files"
 

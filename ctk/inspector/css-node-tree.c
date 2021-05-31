@@ -26,24 +26,24 @@
 #include "css-node-tree.h"
 #include "prop-editor.h"
 
-#include "gtktreemodelcssnode.h"
-#include "gtktreeview.h"
-#include "gtklabel.h"
-#include "gtkpopover.h"
-#include "gtk/gtkwidgetprivate.h"
-#include "gtkcssproviderprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcsssectionprivate.h"
-#include "gtkcssstyleprivate.h"
-#include "gtkcssvalueprivate.h"
-#include "gtkcssselectorprivate.h"
-#include "gtkliststore.h"
-#include "gtksettings.h"
-#include "gtktreeview.h"
-#include "gtktreeselection.h"
-#include "gtktypebuiltins.h"
-#include "gtkmodelbutton.h"
-#include "gtkstack.h"
+#include "ctktreemodelcssnode.h"
+#include "ctktreeview.h"
+#include "ctklabel.h"
+#include "ctkpopover.h"
+#include "ctk/ctkwidgetprivate.h"
+#include "ctkcssproviderprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcsssectionprivate.h"
+#include "ctkcssstyleprivate.h"
+#include "ctkcssvalueprivate.h"
+#include "ctkcssselectorprivate.h"
+#include "ctkliststore.h"
+#include "ctksettings.h"
+#include "ctktreeview.h"
+#include "ctktreeselection.h"
+#include "ctktypebuiltins.h"
+#include "ctkmodelbutton.h"
+#include "ctkstack.h"
 
 enum {
   COLUMN_NODE_NAME,
@@ -189,8 +189,8 @@ ensure_css_sections (void)
   ctk_css_provider_set_keep_css_sections ();
 
   settings = ctk_settings_get_default ();
-  g_object_get (settings, "gtk-theme-name", &theme_name, NULL);
-  g_object_set (settings, "gtk-theme-name", theme_name, NULL);
+  g_object_get (settings, "ctk-theme-name", &theme_name, NULL);
+  g_object_set (settings, "ctk-theme-name", theme_name, NULL);
   g_free (theme_name);
 }
 
@@ -204,7 +204,7 @@ ctk_inspector_css_node_tree_class_init (GtkInspectorCssNodeTreeClass *klass)
 
   object_class->finalize = ctk_inspector_css_node_tree_finalize;
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/css-node-tree.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/css-node-tree.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssNodeTree, node_tree);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssNodeTree, node_name_column);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorCssNodeTree, node_id_column);

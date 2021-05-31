@@ -1,4 +1,4 @@
-/* gtktreedatalist.c
+/* ctktreedatalist.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
  */
 
 #include "config.h"
-#include "gtktreedatalist.h"
+#include "ctktreedatalist.h"
 #include <string.h>
 
 /* node allocation

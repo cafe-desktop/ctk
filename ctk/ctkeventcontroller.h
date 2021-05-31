@@ -21,15 +21,15 @@
 #define __CTK_EVENT_CONTROLLER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 typedef struct _GtkEventController GtkEventController;
 typedef struct _GtkEventControllerClass GtkEventControllerClass;
 
 #include <gdk/gdk.h>
-#include <gtk/gtktypes.h>
-#include <gtk/gtkenums.h>
+#include <ctk/ctktypes.h>
+#include <ctk/ctkenums.h>
 
 G_BEGIN_DECLS
 

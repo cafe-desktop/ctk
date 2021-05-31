@@ -19,14 +19,14 @@
 
 #include "config.h"
 
-#include "gtkcssimagelinearprivate.h"
+#include "ctkcssimagelinearprivate.h"
 
 #include <math.h>
 
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcssprovider.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcssprovider.h"
 
 G_DEFINE_TYPE (GtkCssImageLinear, _ctk_css_image_linear, CTK_TYPE_CSS_IMAGE)
 

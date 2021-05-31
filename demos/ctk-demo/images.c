@@ -12,7 +12,7 @@
  * application binary can be self-contained.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <glib/gstdio.h>
 #include <stdio.h>
 #include <errno.h>
@@ -273,7 +273,7 @@ start_progressive_loading (GtkWidget *image)
   load_timeout = gdk_threads_add_timeout (150,
                                 progressive_timeout,
                                 image);
-  g_source_set_name_by_id (load_timeout, "[gtk+] progressive_timeout");
+  g_source_set_name_by_id (load_timeout, "[ctk+] progressive_timeout");
 }
 
 static void
@@ -364,7 +364,7 @@ do_images (GtkWidget *do_widget)
       ctk_widget_set_valign (frame, CTK_ALIGN_CENTER);
       ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
 
-      image = ctk_image_new_from_icon_name ("gtk3-demo", CTK_ICON_SIZE_DIALOG);
+      image = ctk_image_new_from_icon_name ("ctk3-demo", CTK_ICON_SIZE_DIALOG);
 
       ctk_container_add (CTK_CONTAINER (frame), image);
 

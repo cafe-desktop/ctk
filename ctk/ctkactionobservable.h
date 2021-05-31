@@ -20,7 +20,7 @@
 #ifndef __CTK_ACTION_OBSERVABLE_H__
 #define __CTK_ACTION_OBSERVABLE_H__
 
-#include "gtkactionobserver.h"
+#include "ctkactionobserver.h"
 
 G_BEGIN_DECLS
 

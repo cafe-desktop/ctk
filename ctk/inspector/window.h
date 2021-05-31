@@ -24,7 +24,7 @@
 #define _CTK_INSPECTOR_WINDOW_H_
 
 
-#include <gtk/gtkwindow.h>
+#include <ctk/ctkwindow.h>
 
 #define CTK_TYPE_INSPECTOR_WINDOW            (ctk_inspector_window_get_type())
 #define CTK_INSPECTOR_WINDOW(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_WINDOW, GtkInspectorWindow))

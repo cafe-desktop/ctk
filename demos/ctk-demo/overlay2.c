@@ -4,7 +4,7 @@
  * and some interactive controls.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkTextTag *tag;
 

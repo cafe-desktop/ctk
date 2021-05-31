@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentfilter.h - Filter object for recently used resources
+ * ctkrecentfilter.h - Filter object for recently used resources
  * Copyright (C) 2006, Emmanuele Bassi
  * 
  * This library is free software; you can redistribute it and/or
@@ -17,7 +17,7 @@
  */
 
 /**
- * SECTION:gtkrecentfilter
+ * SECTION:ctkrecentfilter
  * @Short_Description: A filter for selecting a subset of recently used files
  * @Title: GtkRecentFilter
  *
@@ -74,11 +74,11 @@
 
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
-#include "gtkrecentfilter.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkrecentfilter.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
 static void     ctk_recent_filter_buildable_init                 (GtkBuildableIface *iface);
 static gboolean ctk_recent_filter_buildable_custom_tag_start     (GtkBuildable  *buildable,

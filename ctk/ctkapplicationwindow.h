@@ -21,11 +21,11 @@
 #define __CTK_APPLICATION_WINDOW_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkwindow.h>
-#include <gtk/gtkshortcutswindow.h>
+#include <ctk/ctkwindow.h>
+#include <ctk/ctkshortcutswindow.h>
 
 G_BEGIN_DECLS
 

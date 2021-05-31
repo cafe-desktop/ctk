@@ -20,9 +20,9 @@
  */
 
 #include "config.h"
-#include "gtkapplicationaccelsprivate.h"
+#include "ctkapplicationaccelsprivate.h"
 #include <string.h>
-#include "gtkactionmuxer.h"
+#include "ctkactionmuxer.h"
 
 typedef struct
 {

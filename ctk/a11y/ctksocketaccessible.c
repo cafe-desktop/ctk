@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtksocketaccessible.h"
+#include <ctk/ctk.h>
+#include "ctksocketaccessible.h"
 
 /* We can not make GtkSocketAccessible inherit both from GtkContainerAccessible
  * and GtkSocket, so we make it the atk parent of an AtkSocket */
@@ -79,8 +79,8 @@ ctk_socket_accessible_class_init (GtkSocketAccessibleClass *klass)
   AtkObjectClass              *atk_class       = ATK_OBJECT_CLASS (klass);
   GObjectClass                *gobject_class   = G_OBJECT_CLASS (klass);
 
-  container_class->add_gtk    = NULL;
-  container_class->remove_gtk = NULL;
+  container_class->add_ctk    = NULL;
+  container_class->remove_ctk = NULL;
 
   atk_class->initialize     = ctk_socket_accessible_initialize;
   atk_class->get_n_children = ctk_socket_accessible_get_n_children;

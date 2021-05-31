@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gtkgesturedrag
+ * SECTION:ctkgesturedrag
  * @Short_description: Drag gesture
  * @Title: GtkGestureDrag
  * @See_also: #GtkGestureSwipe
@@ -31,10 +31,10 @@
  * ctk_gesture_drag_get_start_point().
  */
 #include "config.h"
-#include "gtkgesturedrag.h"
-#include "gtkgesturedragprivate.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
+#include "ctkgesturedrag.h"
+#include "ctkgesturedragprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
 
 typedef struct _GtkGestureDragPrivate GtkGestureDragPrivate;
 typedef struct _EventData EventData;

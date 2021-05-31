@@ -17,13 +17,13 @@
 
 #include "config.h"
 
-#include "gtkcssbgsizevalueprivate.h"
+#include "ctkcssbgsizevalueprivate.h"
 
 #include <math.h>
 #include <string.h>
 
-#include "gtkcsstransformvalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
+#include "ctkcsstransformvalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
 
 typedef union _GtkCssTransform GtkCssTransform;
 

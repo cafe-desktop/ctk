@@ -1,4 +1,4 @@
-/* gtktooltip.h
+/* ctktooltip.h
  *
  * Copyright (C) 2006-2007 Imendio AB
  * Contact: Kristian Rietveld <kris@imendio.com>
@@ -21,10 +21,10 @@
 #define __CTK_TOOLTIP_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkwindow.h>
+#include <ctk/ctkwindow.h>
 
 G_BEGIN_DECLS
 

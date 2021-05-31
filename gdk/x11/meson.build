@@ -53,8 +53,8 @@ gdk_x11_public_headers = files(
   'gdkx11window.h',
 )
 
-install_headers(gdk_x11_public_headers, subdir: 'gtk-3.0/gdk/x11/')
-install_headers('gdkx.h', subdir: 'gtk-3.0/gdk/')
+install_headers(gdk_x11_public_headers, subdir: 'ctk-3.0/gdk/x11/')
+install_headers('gdkx.h', subdir: 'ctk-3.0/gdk/')
 
 gdk_x11_deps = [
   xrender_dep,

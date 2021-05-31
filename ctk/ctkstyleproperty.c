@@ -17,16 +17,16 @@
 
 #include "config.h"
 
-#include "gtkstylepropertyprivate.h"
+#include "ctkstylepropertyprivate.h"
 
-#include "gtkcssprovider.h"
-#include "gtkcssparserprivate.h"
-#include "gtkcssshorthandpropertyprivate.h"
-#include "gtkcssstylefuncsprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcsstypesprivate.h"
-#include "gtkintl.h"
-#include "gtkprivatetypebuiltins.h"
+#include "ctkcssprovider.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcssshorthandpropertyprivate.h"
+#include "ctkcssstylefuncsprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkintl.h"
+#include "ctkprivatetypebuiltins.h"
 
 enum {
   PROP_0,

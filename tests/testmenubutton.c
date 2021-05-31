@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #define INITIAL_HALIGN          CTK_ALIGN_START
 #define INITIAL_VALIGN          CTK_ALIGN_START

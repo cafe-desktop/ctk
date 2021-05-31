@@ -2,7 +2,7 @@ window1
   "window"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -13,7 +13,7 @@ window1
     index: 0
     name: Go to the GTK+ website or >google it
     state: enabled focusable multi-line sensitive has-tooltip
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -50,7 +50,7 @@ window1
       <AtkHyperlink>
       start index: 10
       end index: 22
-      anchors: http://www.gtk.org
+      anchors: http://www.ctk.org
       <AtkHyperlink>
       start index: 27
       end index: 36
@@ -63,7 +63,7 @@ window1
         <AtkHyperlink>
         start index: 10
         end index: 22
-        anchors: http://www.gtk.org
+        anchors: http://www.ctk.org
     unnamed-GtkLabelAccessibleLinkImpl-1
       "link"
       parent: label1

@@ -28,7 +28,7 @@ behaviour can be turned off for individual widgets, like so:
   g_object_set_data(G_OBJECT(yourwidget), "multipress-passthrough-flag", GINT_TO_POINTER(1));
 
 
-For a C++ gtkmm project, you could make a convenience function to do this. For instance:
+For a C++ ctkmm project, you could make a convenience function to do this. For instance:
 
   void multipress_deactivate(Gtk::Widget& widget)
   {

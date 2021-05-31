@@ -2,7 +2,7 @@ window1
   "window"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -12,7 +12,7 @@ window1
     parent: window1
     index: 0
     state: enabled horizontal sensitive
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -23,7 +23,7 @@ window1
       name: entry:
       label-for: entry1
       state: enabled multi-line sensitive visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -64,7 +64,7 @@ window1
       name: password entry:
       label-for: entry2
       state: enabled multi-line sensitive visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -105,7 +105,7 @@ window1
       name: spinbutton:
       label-for: spinbutton1
       state: enabled multi-line sensitive visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -145,7 +145,7 @@ window1
       index: 3
       labelled-by: label1
       state: editable enabled focusable sensitive single-line visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -188,7 +188,7 @@ window1
       index: 4
       labelled-by: label2
       state: editable enabled focusable sensitive single-line visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -230,7 +230,7 @@ window1
       parent: box1
       index: 5
       state: editable enabled focusable sensitive single-line visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -290,7 +290,7 @@ window1
       index: 6
       labelled-by: label3
       state: editable enabled focusable horizontal sensitive single-line visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1

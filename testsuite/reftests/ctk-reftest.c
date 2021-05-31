@@ -26,7 +26,7 @@
 
 #include <string.h>
 #include <glib/gstdio.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #ifdef G_OS_WIN32
 # include <direct.h>

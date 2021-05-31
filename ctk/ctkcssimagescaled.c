@@ -19,9 +19,9 @@
 
 #include "config.h"
 
-#include "gtkcssimagescaledprivate.h"
+#include "ctkcssimagescaledprivate.h"
 
-#include "gtkstyleproviderprivate.h"
+#include "ctkstyleproviderprivate.h"
 
 G_DEFINE_TYPE (GtkCssImageScaled, _ctk_css_image_scaled, CTK_TYPE_CSS_IMAGE)
 
@@ -67,7 +67,7 @@ ctk_css_image_scaled_print (GtkCssImage *image,
   GtkCssImageScaled *scaled = CTK_CSS_IMAGE_SCALED (image);
   int i;
   
-  g_string_append (string, "-gtk-scaled(");
+  g_string_append (string, "-ctk-scaled(");
   for (i = 0; i < scaled->n_images; i++)
     {
       _ctk_css_image_print (scaled->images[i], string);
@@ -138,16 +138,16 @@ ctk_css_image_scaled_parse (GtkCssImage  *image,
   GPtrArray *images;
   GtkCssImage *child;
 
-  if (!_ctk_css_parser_try (parser, "-gtk-scaled", TRUE))
+  if (!_ctk_css_parser_try (parser, "-ctk-scaled", TRUE))
     {
-      _ctk_css_parser_error (parser, "'-gtk-scaled'");
+      _ctk_css_parser_error (parser, "'-ctk-scaled'");
       return FALSE;
     }
 
   if (!_ctk_css_parser_try (parser, "(", TRUE))
     {
       _ctk_css_parser_error (parser,
-                             "Expected '(' after '-gtk-scaled'");
+                             "Expected '(' after '-ctk-scaled'");
       return FALSE;
     }
 
@@ -170,7 +170,7 @@ ctk_css_image_scaled_parse (GtkCssImage  *image,
     {
       g_ptr_array_free (images, TRUE);
       _ctk_css_parser_error (parser,
-                             "Expected ')' at end of '-gtk-scaled'");
+                             "Expected ')' at end of '-ctk-scaled'");
       return FALSE;
     }
 

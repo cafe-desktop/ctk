@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtkcssarrayvalueprivate.h"
-#include "gtkcssimagevalueprivate.h"
-#include "gtkcssstylepropertyprivate.h"
+#include "ctkcssarrayvalueprivate.h"
+#include "ctkcssimagevalueprivate.h"
+#include "ctkcssstylepropertyprivate.h"
 
 #include <string.h>
 

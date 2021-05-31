@@ -19,7 +19,7 @@
  *
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 dark_button_toggled_cb (GtkToggleButton *button,
@@ -29,7 +29,7 @@ dark_button_toggled_cb (GtkToggleButton *button,
   GtkSettings *settings = ctk_settings_get_default ();
 
   g_object_set (settings,
-                "gtk-application-prefer-dark-theme", active,
+                "ctk-application-prefer-dark-theme", active,
                 NULL);
 }
 

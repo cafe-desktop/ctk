@@ -1,4 +1,4 @@
-/* gtkplacessidebarprivate.h
+/* ctkplacessidebarprivate.h
  *
  * Copyright (C) 2015 Red Hat
  *
@@ -22,7 +22,7 @@
 #define __CTK_PLACES_SIDEBAR_PRIVATE_H__
 
 #include <glib.h>
-#include "gtkplacessidebar.h"
+#include "ctkplacessidebar.h"
 
 G_BEGIN_DECLS
 

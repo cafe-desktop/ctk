@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintbackendcups.h: Default implementation of GtkPrintBackend
+ * ctkprintbackendcups.h: Default implementation of GtkPrintBackend
  * for the Common Unix Print System (CUPS)
  * Copyright (C) 2006, 2007 Red Hat, Inc.
  *
@@ -44,18 +44,18 @@
 #include <glib/gi18n-lib.h>
 #include <gmodule.h>
 
-#include <gtk/gtk.h>
-#include <gtk/gtkprintbackend.h>
-#include <gtk/gtkunixprint.h>
-#include <gtk/gtkprinter-private.h>
+#include <ctk/ctk.h>
+#include <ctk/ctkprintbackend.h>
+#include <ctk/ctkunixprint.h>
+#include <ctk/ctkprinter-private.h>
 
-#include "gtkprintbackendcups.h"
-#include "gtkprintercups.h"
+#include "ctkprintbackendcups.h"
+#include "ctkprintercups.h"
 
-#include "gtkcupsutils.h"
-#include "gtkcupssecretsutils.h"
+#include "ctkcupsutils.h"
+#include "ctkcupssecretsutils.h"
 
-#include <gtkprintutils.h>
+#include <ctkprintutils.h>
 
 #ifdef HAVE_COLORD
 #include <colord.h>
@@ -580,7 +580,7 @@ add_cups_options (const gchar *key,
   if (!g_str_has_prefix (key, "cups-"))
     return;
 
-  if (strcmp (value, "gtk-ignore-value") == 0)
+  if (strcmp (value, "ctk-ignore-value") == 0)
     return;
 
   key = key + strlen ("cups-");
@@ -1790,7 +1790,7 @@ cups_request_job_info_cb (GtkPrintBackendCups *print_backend,
 	timeout = 1000;
 
       id = g_timeout_add (timeout, cups_job_info_poll_timeout, data);
-      g_source_set_name_by_id (id, "[gtk+] cups_job_info_poll_timeout");
+      g_source_set_name_by_id (id, "[ctk+] cups_job_info_poll_timeout");
     }
   else
     cups_job_poll_data_free (data);
@@ -3751,7 +3751,7 @@ cups_request_printer_list (GtkPrintBackendCups *cups_backend)
       cups_backend->list_printers_poll = gdk_threads_add_timeout (200,
                                            (GSourceFunc) cups_request_printer_list,
                                            cups_backend);
-      g_source_set_name_by_id (cups_backend->list_printers_poll, "[gtk+] cups_request_printer_list");
+      g_source_set_name_by_id (cups_backend->list_printers_poll, "[ctk+] cups_request_printer_list");
     }
   else if (cups_backend->list_printers_attempts != -1)
     cups_backend->list_printers_attempts++;
@@ -3802,7 +3802,7 @@ cups_get_printer_list (GtkPrintBackend *backend)
           cups_backend->list_printers_poll = gdk_threads_add_timeout (50,
                                                (GSourceFunc) cups_request_printer_list,
                                                backend);
-          g_source_set_name_by_id (cups_backend->list_printers_poll, "[gtk+] cups_request_printer_list");
+          g_source_set_name_by_id (cups_backend->list_printers_poll, "[ctk+] cups_request_printer_list");
         }
 
       avahi_request_printer_list (cups_backend);
@@ -3892,7 +3892,7 @@ cups_request_ppd_cb (GtkPrintBackendCups *print_backend,
           if (cups_request_ppd (printer))
             {
               cups_printer->get_remote_ppd_poll = g_timeout_add (50, (GSourceFunc) cups_request_ppd, printer);
-              g_source_set_name_by_id (cups_printer->get_remote_ppd_poll, "[gtk] cups_request_ppd");
+              g_source_set_name_by_id (cups_printer->get_remote_ppd_poll, "[ctk] cups_request_ppd");
             }
         }
       else
@@ -3951,7 +3951,7 @@ cups_request_ppd (GtkPrinter *printer)
               cups_printer->get_remote_ppd_poll = gdk_threads_add_timeout (200,
                                                     (GSourceFunc) cups_request_ppd,
                                                     printer);
-              g_source_set_name_by_id (cups_printer->get_remote_ppd_poll, "[gtk+] cups_request_ppd");
+              g_source_set_name_by_id (cups_printer->get_remote_ppd_poll, "[ctk+] cups_request_ppd");
             }
           else if (cups_printer->get_remote_ppd_attempts != -1)
             cups_printer->get_remote_ppd_attempts++;
@@ -3992,7 +3992,7 @@ cups_request_ppd (GtkPrinter *printer)
 
   data = g_new0 (GetPPDData, 1);
 
-  fd = g_file_open_tmp ("gtkprint_ppd_XXXXXX",
+  fd = g_file_open_tmp ("ctkprint_ppd_XXXXXX",
                         &ppd_filename,
                         &error);
 
@@ -4229,7 +4229,7 @@ cups_get_default_printer (GtkPrintBackendCups *backend)
           cups_backend->default_printer_poll = gdk_threads_add_timeout (200,
                                                  (GSourceFunc) cups_request_default_printer,
                                                  backend);
-          g_source_set_name_by_id (cups_backend->default_printer_poll, "[gtk+] cups_request_default_printer");
+          g_source_set_name_by_id (cups_backend->default_printer_poll, "[ctk+] cups_request_default_printer");
         }
     }
 }
@@ -4368,7 +4368,7 @@ cups_printer_request_details (GtkPrinter *printer)
                   cups_printer->get_remote_ppd_poll = gdk_threads_add_timeout (50,
                                                       (GSourceFunc) cups_request_ppd,
                                                       printer);
-                  g_source_set_name_by_id (cups_printer->get_remote_ppd_poll, "[gtk+] cups_request_ppd");
+                  g_source_set_name_by_id (cups_printer->get_remote_ppd_poll, "[ctk+] cups_request_ppd");
                 }
             }
         }
@@ -4492,10 +4492,10 @@ static const struct {
   const char *ppd_keyword;
   const char *name;
 } ppd_option_names[] = {
-  { "Duplex", "gtk-duplex" },
-  { "MediaType", "gtk-paper-type" },
-  { "InputSlot", "gtk-paper-source" },
-  { "OutputBin", "gtk-output-tray" }
+  { "Duplex", "ctk-duplex" },
+  { "MediaType", "ctk-paper-type" },
+  { "InputSlot", "ctk-paper-source" },
+  { "OutputBin", "ctk-output-tray" }
 };
 
 static const struct {
@@ -4503,8 +4503,8 @@ static const struct {
   const char *ctk_option_name;
   const char *translation;
 } ipp_option_translations[] = {
-  { "sides", "gtk-duplex", NC_("printing option", "Two Sided") },
-  { "output-bin", "gtk-output-tray", NC_("printing option", "Output Tray") }
+  { "sides", "ctk-duplex", NC_("printing option", "Two Sided") },
+  { "output-bin", "ctk-output-tray", NC_("printing option", "Output Tray") }
 };
 
 static const struct {
@@ -4587,10 +4587,10 @@ static const struct {
   const char *lpoption;
   const char *name;
 } lpoption_names[] = {
-  { "number-up", "gtk-n-up" },
-  { "number-up-layout", "gtk-n-up-layout" },
-  { "job-billing", "gtk-billing-info" },
-  { "job-priority", "gtk-job-prio" }
+  { "number-up", "ctk-n-up" },
+  { "number-up-layout", "ctk-n-up-layout" },
+  { "job-billing", "ctk-billing-info" },
+  { "job-priority", "ctk-job-prio" }
 };
 
 /* keep sorted when changing */
@@ -4969,7 +4969,7 @@ create_pickone_option (ppd_file_t   *ppd_file,
 
   option = NULL;
 
-  n_choices = available_choices (ppd_file, ppd_option, &available, g_str_has_prefix (ctk_name, "gtk-"));
+  n_choices = available_choices (ppd_file, ppd_option, &available, g_str_has_prefix (ctk_name, "ctk-"));
   if (n_choices > 0)
     {
 
@@ -5043,7 +5043,7 @@ create_pickone_option (ppd_file_t   *ppd_file,
 	  if (available[i] == NULL)
 	    {
 	      /* This was auto-added */
-	      option->choices[i] = g_strdup ("gtk-ignore-value");
+	      option->choices[i] = g_strdup ("ctk-ignore-value");
 	      option->choices_display[i] = g_strdup (_("Printer Default"));
 	    }
 	  else
@@ -5088,7 +5088,7 @@ create_boolean_option (ppd_file_t   *ppd_file,
 
   option = NULL;
 
-  n_choices = available_choices (ppd_file, ppd_option, &available, g_str_has_prefix (ctk_name, "gtk-"));
+  n_choices = available_choices (ppd_file, ppd_option, &available, g_str_has_prefix (ctk_name, "ctk-"));
   if (n_choices == 2)
     {
       label = get_option_text (ppd_file, ppd_option);
@@ -5515,7 +5515,7 @@ cups_printer_get_options (GtkPrinter           *printer,
   /* Translators, this string is used to label the job priority option
    * in the print dialog
    */
-  option = ctk_printer_option_new ("gtk-job-prio", _("Job Priority"), CTK_PRINTER_OPTION_TYPE_PICKONE);
+  option = ctk_printer_option_new ("ctk-job-prio", _("Job Priority"), CTK_PRINTER_OPTION_TYPE_PICKONE);
   ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (prio),
 					 prio, prio_display);
   ctk_printer_option_set (option, "50");
@@ -5526,7 +5526,7 @@ cups_printer_get_options (GtkPrinter           *printer,
   /* Translators, this string is used to label the billing info entry
    * in the print dialog
    */
-  option = ctk_printer_option_new ("gtk-billing-info", _("Billing Info"), CTK_PRINTER_OPTION_TYPE_STRING);
+  option = ctk_printer_option_new ("ctk-billing-info", _("Billing Info"), CTK_PRINTER_OPTION_TYPE_STRING);
   ctk_printer_option_set (option, "");
   set_option_from_settings (option, settings);
   ctk_printer_option_set_add (set, option);
@@ -5568,7 +5568,7 @@ cups_printer_get_options (GtkPrinter           *printer,
        /* Translators, this string is used to label the pages-per-sheet option
         * in the print dialog
         */
-      option = ctk_printer_option_new ("gtk-n-up", C_("printer option", "Pages per Sheet"), CTK_PRINTER_OPTION_TYPE_PICKONE);
+      option = ctk_printer_option_new ("ctk-n-up", C_("printer option", "Pages per Sheet"), CTK_PRINTER_OPTION_TYPE_PICKONE);
       ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up), n_up, n_up);
       default_number_up = g_strdup_printf ("%d", cups_printer->default_number_up);
       ctk_printer_option_set (option, default_number_up);
@@ -5585,7 +5585,7 @@ cups_printer_get_options (GtkPrinter           *printer,
            /* Translators, this string is used to label the option in the print
             * dialog that controls in what order multiple pages are arranged
             */
-          option = ctk_printer_option_new ("gtk-n-up-layout", C_("printer option", "Page Ordering"), CTK_PRINTER_OPTION_TYPE_PICKONE);
+          option = ctk_printer_option_new ("ctk-n-up-layout", C_("printer option", "Page Ordering"), CTK_PRINTER_OPTION_TYPE_PICKONE);
           ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up_layout),
                                                  n_up_layout, n_up_layout_display);
 
@@ -5627,7 +5627,7 @@ cups_printer_get_options (GtkPrinter           *printer,
       /* Translators, this is the label used for the option in the print
        * dialog that controls the front cover page.
        */
-      option = ctk_printer_option_new ("gtk-cover-before", C_("printer option", "Before"), CTK_PRINTER_OPTION_TYPE_PICKONE);
+      option = ctk_printer_option_new ("ctk-cover-before", C_("printer option", "Before"), CTK_PRINTER_OPTION_TYPE_PICKONE);
       ctk_printer_option_choices_from_array (option, num_of_covers,
 					 cover, cover_display_translated);
 
@@ -5642,7 +5642,7 @@ cups_printer_get_options (GtkPrinter           *printer,
       /* Translators, this is the label used for the option in the print
        * dialog that controls the back cover page.
        */
-      option = ctk_printer_option_new ("gtk-cover-after", C_("printer option", "After"), CTK_PRINTER_OPTION_TYPE_PICKONE);
+      option = ctk_printer_option_new ("ctk-cover-after", C_("printer option", "After"), CTK_PRINTER_OPTION_TYPE_PICKONE);
       ctk_printer_option_choices_from_array (option, num_of_covers,
 					 cover, cover_display_translated);
       if (cups_printer->default_cover_after != NULL)
@@ -5662,7 +5662,7 @@ cups_printer_get_options (GtkPrinter           *printer,
    * a print job is printed. Possible values are 'now', a specified time,
    * or 'on hold'
    */
-  option = ctk_printer_option_new ("gtk-print-time", C_("printer option", "Print at"), CTK_PRINTER_OPTION_TYPE_PICKONE);
+  option = ctk_printer_option_new ("ctk-print-time", C_("printer option", "Print at"), CTK_PRINTER_OPTION_TYPE_PICKONE);
   ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (print_at),
 					 print_at, print_at);
   ctk_printer_option_set (option, "now");
@@ -5673,7 +5673,7 @@ cups_printer_get_options (GtkPrinter           *printer,
   /* Translators: this is the name of the option that allows the user
    * to specify a time when a print job will be printed.
    */
-  option = ctk_printer_option_new ("gtk-print-time-text", C_("printer option", "Print at time"), CTK_PRINTER_OPTION_TYPE_STRING);
+  option = ctk_printer_option_new ("ctk-print-time-text", C_("printer option", "Print at time"), CTK_PRINTER_OPTION_TYPE_STRING);
   ctk_printer_option_set (option, "");
   set_option_from_settings (option, settings);
   ctk_printer_option_set_add (set, option);
@@ -5766,11 +5766,11 @@ cups_printer_get_options (GtkPrinter           *printer,
           values = g_strsplit (opts[i].value, ",", 2);
           num_values = g_strv_length (values);
 
-          option = ctk_printer_option_set_lookup (set, "gtk-cover-before");
+          option = ctk_printer_option_set_lookup (set, "ctk-cover-before");
           if (option && num_values > 0)
             ctk_printer_option_set (option, g_strstrip (values[0]));
 
-          option = ctk_printer_option_set_lookup (set, "gtk-cover-after");
+          option = ctk_printer_option_set_lookup (set, "ctk-cover-after");
           if (option && num_values > 1)
             ctk_printer_option_set (option, g_strstrip (values[1]));
 
@@ -5780,10 +5780,10 @@ cups_printer_get_options (GtkPrinter           *printer,
         {
           GtkPrinterOption *option2 = NULL;
 
-          option = ctk_printer_option_set_lookup (set, "gtk-print-time-text");
+          option = ctk_printer_option_set_lookup (set, "ctk-print-time-text");
           if (option && opts[i].value)
             {
-              option2 = ctk_printer_option_set_lookup (set, "gtk-print-time");
+              option2 = ctk_printer_option_set_lookup (set, "ctk-print-time");
               if (option2)
                 {
                   if (strcmp (opts[i].value, "indefinite") == 0)
@@ -5798,7 +5798,7 @@ cups_printer_get_options (GtkPrinter           *printer,
         }
       else if (strcmp (name, "cups-sides") == 0)
         {
-          option = ctk_printer_option_set_lookup (set, "gtk-duplex");
+          option = ctk_printer_option_set_lookup (set, "ctk-duplex");
           if (option && opts[i].value)
             {
               if (!option_is_ipp_option (option))
@@ -6141,15 +6141,15 @@ set_option_from_settings (GtkPrinterOption *option,
   if (settings == NULL)
     return;
 
-  if (strcmp (option->name, "gtk-paper-source") == 0)
+  if (strcmp (option->name, "ctk-paper-source") == 0)
     map_settings_to_option (option, paper_source_map, G_N_ELEMENTS (paper_source_map),
 			     settings, CTK_PRINT_SETTINGS_DEFAULT_SOURCE,
 			     "InputSlot", NULL);
-  else if (strcmp (option->name, "gtk-output-tray") == 0)
+  else if (strcmp (option->name, "ctk-output-tray") == 0)
     map_settings_to_option (option, output_tray_map, G_N_ELEMENTS (output_tray_map),
 			    settings, CTK_PRINT_SETTINGS_OUTPUT_BIN,
 			    "OutputBin", "output-bin");
-  else if (strcmp (option->name, "gtk-duplex") == 0)
+  else if (strcmp (option->name, "ctk-duplex") == 0)
     map_settings_to_option (option, duplex_map, G_N_ELEMENTS (duplex_map),
 			    settings, CTK_PRINT_SETTINGS_DUPLEX,
 			    "Duplex", "sides");
@@ -6188,53 +6188,53 @@ set_option_from_settings (GtkPrinterOption *option,
             }
         }
     }
-  else if (strcmp (option->name, "gtk-paper-type") == 0)
+  else if (strcmp (option->name, "ctk-paper-type") == 0)
     map_settings_to_option (option, media_type_map, G_N_ELEMENTS (media_type_map),
 			    settings, CTK_PRINT_SETTINGS_MEDIA_TYPE,
 			    "MediaType", NULL);
-  else if (strcmp (option->name, "gtk-n-up") == 0)
+  else if (strcmp (option->name, "ctk-n-up") == 0)
     {
       map_settings_to_option (option, all_map, G_N_ELEMENTS (all_map),
 			      settings, CTK_PRINT_SETTINGS_NUMBER_UP,
 			      "number-up", NULL);
     }
-  else if (strcmp (option->name, "gtk-n-up-layout") == 0)
+  else if (strcmp (option->name, "ctk-n-up-layout") == 0)
     {
       map_settings_to_option (option, all_map, G_N_ELEMENTS (all_map),
 			      settings, CTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT,
 			      "number-up-layout", NULL);
     }
-  else if (strcmp (option->name, "gtk-billing-info") == 0)
+  else if (strcmp (option->name, "ctk-billing-info") == 0)
     {
       cups_value = ctk_print_settings_get (settings, "cups-job-billing");
       if (cups_value)
 	ctk_printer_option_set (option, cups_value);
     }
-  else if (strcmp (option->name, "gtk-job-prio") == 0)
+  else if (strcmp (option->name, "ctk-job-prio") == 0)
     {
       cups_value = ctk_print_settings_get (settings, "cups-job-priority");
       if (cups_value)
 	ctk_printer_option_set (option, cups_value);
     }
-  else if (strcmp (option->name, "gtk-cover-before") == 0)
+  else if (strcmp (option->name, "ctk-cover-before") == 0)
     {
       cups_value = ctk_print_settings_get (settings, "cover-before");
       if (cups_value)
 	ctk_printer_option_set (option, cups_value);
     }
-  else if (strcmp (option->name, "gtk-cover-after") == 0)
+  else if (strcmp (option->name, "ctk-cover-after") == 0)
     {
       cups_value = ctk_print_settings_get (settings, "cover-after");
       if (cups_value)
 	ctk_printer_option_set (option, cups_value);
     }
-  else if (strcmp (option->name, "gtk-print-time") == 0)
+  else if (strcmp (option->name, "ctk-print-time") == 0)
     {
       cups_value = ctk_print_settings_get (settings, "print-at");
       if (cups_value)
 	ctk_printer_option_set (option, cups_value);
     }
-  else if (strcmp (option->name, "gtk-print-time-text") == 0)
+  else if (strcmp (option->name, "ctk-print-time-text") == 0)
     {
       cups_value = ctk_print_settings_get (settings, "print-at-time");
       if (cups_value)
@@ -6258,15 +6258,15 @@ foreach_option_get_settings (GtkPrinterOption *option,
 
   value = option->value;
 
-  if (strcmp (option->name, "gtk-paper-source") == 0)
+  if (strcmp (option->name, "ctk-paper-source") == 0)
     map_option_to_settings (value, paper_source_map, G_N_ELEMENTS (paper_source_map),
 			    settings, CTK_PRINT_SETTINGS_DEFAULT_SOURCE,
 			    "InputSlot", NULL, FALSE);
-  else if (strcmp (option->name, "gtk-output-tray") == 0)
+  else if (strcmp (option->name, "ctk-output-tray") == 0)
     map_option_to_settings (value, output_tray_map, G_N_ELEMENTS (output_tray_map),
 			    settings, CTK_PRINT_SETTINGS_OUTPUT_BIN,
 			    "OutputBin", "output-bin", option_is_ipp_option (option));
-  else if (strcmp (option->name, "gtk-duplex") == 0)
+  else if (strcmp (option->name, "ctk-duplex") == 0)
     map_option_to_settings (value, duplex_map, G_N_ELEMENTS (duplex_map),
 			    settings, CTK_PRINT_SETTINGS_DUPLEX,
 			    "Duplex", "sides", option_is_ipp_option (option));
@@ -6291,29 +6291,29 @@ foreach_option_get_settings (GtkPrinterOption *option,
 
       ctk_print_settings_set (settings, option->name, value);
     }
-  else if (strcmp (option->name, "gtk-paper-type") == 0)
+  else if (strcmp (option->name, "ctk-paper-type") == 0)
     map_option_to_settings (value, media_type_map, G_N_ELEMENTS (media_type_map),
 			    settings, CTK_PRINT_SETTINGS_MEDIA_TYPE,
 			    "MediaType", NULL, FALSE);
-  else if (strcmp (option->name, "gtk-n-up") == 0)
+  else if (strcmp (option->name, "ctk-n-up") == 0)
     map_option_to_settings (value, all_map, G_N_ELEMENTS (all_map),
 			    settings, CTK_PRINT_SETTINGS_NUMBER_UP,
 			    "number-up", NULL, FALSE);
-  else if (strcmp (option->name, "gtk-n-up-layout") == 0)
+  else if (strcmp (option->name, "ctk-n-up-layout") == 0)
     map_option_to_settings (value, all_map, G_N_ELEMENTS (all_map),
 			    settings, CTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT,
 			    "number-up-layout", NULL, FALSE);
-  else if (strcmp (option->name, "gtk-billing-info") == 0 && strlen (value) > 0)
+  else if (strcmp (option->name, "ctk-billing-info") == 0 && strlen (value) > 0)
     ctk_print_settings_set (settings, "cups-job-billing", value);
-  else if (strcmp (option->name, "gtk-job-prio") == 0)
+  else if (strcmp (option->name, "ctk-job-prio") == 0)
     ctk_print_settings_set (settings, "cups-job-priority", value);
-  else if (strcmp (option->name, "gtk-cover-before") == 0)
+  else if (strcmp (option->name, "ctk-cover-before") == 0)
     ctk_print_settings_set (settings, "cover-before", value);
-  else if (strcmp (option->name, "gtk-cover-after") == 0)
+  else if (strcmp (option->name, "ctk-cover-after") == 0)
     ctk_print_settings_set (settings, "cover-after", value);
-  else if (strcmp (option->name, "gtk-print-time") == 0)
+  else if (strcmp (option->name, "ctk-print-time") == 0)
     ctk_print_settings_set (settings, "print-at", value);
-  else if (strcmp (option->name, "gtk-print-time-text") == 0)
+  else if (strcmp (option->name, "ctk-print-time-text") == 0)
     ctk_print_settings_set (settings, "print-at-time", value);
   else if (g_str_has_prefix (option->name, "cups-"))
     ctk_print_settings_set (settings, option->name, value);
@@ -6418,8 +6418,8 @@ cups_printer_get_settings_from_options (GtkPrinter          *printer,
     {
       GtkPrinterOption *cover_before, *cover_after;
 
-      cover_before = ctk_printer_option_set_lookup (options, "gtk-cover-before");
-      cover_after = ctk_printer_option_set_lookup (options, "gtk-cover-after");
+      cover_before = ctk_printer_option_set_lookup (options, "ctk-cover-before");
+      cover_after = ctk_printer_option_set_lookup (options, "ctk-cover-after");
       if (cover_before && cover_after)
 	{
 	  char *value = g_strdup_printf ("%s,%s", cover_before->value, cover_after->value);

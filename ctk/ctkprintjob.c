@@ -16,10 +16,10 @@
  */
 
 /**
- * SECTION:gtkprintjob
+ * SECTION:ctkprintjob
  * @Title: GtkPrintJob
  * @Short_description: Represents a print job
- * @Include: gtk/gtkunixprint.h
+ * @Include: ctk/ctkunixprint.h
  *
  * A #GtkPrintJob object represents a job that is sent to a
  * printer. You only need to deal directly with print jobs if
@@ -44,13 +44,13 @@
 #include <sys/stat.h>
 
 #include <glib/gstdio.h>
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
-#include "gtkprintjob.h"
-#include "gtkprinter.h"
-#include "gtkprinter-private.h"
-#include "gtkprintbackend.h"
+#include "ctkprintjob.h"
+#include "ctkprinter.h"
+#include "ctkprinter-private.h"
+#include "ctkprintbackend.h"
 
 #ifndef O_BINARY
 #define O_BINARY 0
@@ -513,7 +513,7 @@ ctk_print_job_get_surface (GtkPrintJob  *job,
  
   g_return_val_if_fail (priv->spool_io == NULL, NULL);
  
-  fd = g_file_open_tmp ("gtkprint_XXXXXX", 
+  fd = g_file_open_tmp ("ctkprint_XXXXXX", 
 			 &filename, 
 			 &tmp_error);
   if (fd == -1)

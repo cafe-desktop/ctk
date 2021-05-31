@@ -1,13 +1,13 @@
 /*
- * gtkoffscreenbox.c
+ * ctkoffscreenbox.c
  */
 
 #include "config.h"
 
 #include <math.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtkoffscreenbox.h"
+#include "ctkoffscreenbox.h"
 
 static void        ctk_offscreen_box_realize       (GtkWidget       *widget);
 static void        ctk_offscreen_box_unrealize     (GtkWidget       *widget);

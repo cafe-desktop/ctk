@@ -1,5 +1,5 @@
 /*
- * gtkinfobar.h
+ * ctkinfobar.h
  * This file is part of GTK+
  *
  * Copyright (C) 2005 - Paolo Maggi
@@ -30,11 +30,11 @@
 #define __CTK_INFO_BAR_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkbox.h>
-#include <gtk/gtkenums.h>
+#include <ctk/ctkbox.h>
+#include <ctk/ctkenums.h>
 
 G_BEGIN_DECLS
 

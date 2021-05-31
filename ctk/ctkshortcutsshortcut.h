@@ -1,4 +1,4 @@
-/* gtkshortcutsshortcutprivate.h
+/* ctkshortcutsshortcutprivate.h
  *
  * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
  *
@@ -19,7 +19,7 @@
 #ifndef CTK_SHORTCUTS_SHORTCUT_H
 #define CTK_SHORTCUTS_SHORTCUT_H
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

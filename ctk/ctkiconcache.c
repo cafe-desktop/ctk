@@ -1,4 +1,4 @@
-/* gtkiconcache.c
+/* ctkiconcache.c
  * Copyright (C) 2004  Anders Carlsson <andersca@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtkdebug.h"
-#include "gtkiconcache.h"
-#include "gtkiconcachevalidator.h"
+#include "ctkdebug.h"
+#include "ctkiconcache.h"
+#include "ctkiconcachevalidator.h"
 
 #include <glib/gstdio.h>
 #include <gdk-pixbuf/gdk-pixdata.h>

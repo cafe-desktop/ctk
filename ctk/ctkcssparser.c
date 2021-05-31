@@ -17,15 +17,15 @@
 
 #include "config.h"
 
-#include "gtkcssparserprivate.h"
+#include "ctkcssparserprivate.h"
 
-#include "gtkcssdimensionvalueprivate.h"
+#include "ctkcssdimensionvalueprivate.h"
 
 #include <errno.h>
 #include <string.h>
 
 /* just for the errors, yay! */
-#include "gtkcssprovider.h"
+#include "ctkcssprovider.h"
 
 #define NEWLINE_CHARS "\r\n"
 #define WHITESPACE_CHARS "\f \t"

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintoperation.h: Print Operation
+ * ctkprintoperation.h: Print Operation
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -21,16 +21,16 @@
 
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <cairo.h>
-#include <gtk/gtkmain.h>
-#include <gtk/gtkwindow.h>
-#include <gtk/gtkpagesetup.h>
-#include <gtk/gtkprintsettings.h>
-#include <gtk/gtkprintcontext.h>
-#include <gtk/gtkprintoperationpreview.h>
+#include <ctk/ctkmain.h>
+#include <ctk/ctkwindow.h>
+#include <ctk/ctkpagesetup.h>
+#include <ctk/ctkprintsettings.h>
+#include <ctk/ctkprintcontext.h>
+#include <ctk/ctkprintoperationpreview.h>
 
 
 G_BEGIN_DECLS

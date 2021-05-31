@@ -18,7 +18,7 @@
 #ifndef __CTK_FLOW_BOX_ACCESSIBLE_PRIVATE_H__
 #define __CTK_FLOW_BOX_ACCESSIBLE_PRIVATE_H__
 
-#include <gtk/a11y/gtkflowboxaccessible.h>
+#include <ctk/a11y/ctkflowboxaccessible.h>
 
 G_BEGIN_DECLS
 

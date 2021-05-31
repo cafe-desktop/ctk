@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -28,29 +28,29 @@
 #include <math.h>
 #include <stdlib.h>
 
-#include "gtkrangeprivate.h"
+#include "ctkrangeprivate.h"
 
-#include "gtkadjustment.h"
-#include "gtkbindings.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkicontheme.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkorientable.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkstylepropertyprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcsswidgetnodeprivate.h"
+#include "ctkadjustment.h"
+#include "ctkbindings.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkicontheme.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkorientable.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkstylepropertyprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcsswidgetnodeprivate.h"
 
-#include "a11y/gtkscaleaccessible.h"
+#include "a11y/ctkscaleaccessible.h"
 
 
 /**
- * SECTION:gtkscale
+ * SECTION:ctkscale
  * @Short_description: A slider widget for selecting a value from a range
  * @Title: GtkScale
  *

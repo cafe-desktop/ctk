@@ -1,4 +1,4 @@
-/* gtktooltip.c
+/* ctktooltip.c
  *
  * Copyright (C) 2006-2007 Imendio AB
  * Contact: Kristian Rietveld <kris@imendio.com>
@@ -19,25 +19,25 @@
 
 #include "config.h"
 
-#include "gtktooltip.h"
-#include "gtktooltipprivate.h"
+#include "ctktooltip.h"
+#include "ctktooltipprivate.h"
 
 #include <math.h>
 #include <string.h>
 
-#include "gtkintl.h"
-#include "gtkwindow.h"
-#include "gtkmain.h"
-#include "gtklabel.h"
-#include "gtkimage.h"
-#include "gtkbox.h"
-#include "gtksettings.h"
-#include "gtksizerequest.h"
-#include "gtkstylecontext.h"
-#include "gtktooltipwindowprivate.h"
-#include "gtkwindowprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkaccessible.h"
+#include "ctkintl.h"
+#include "ctkwindow.h"
+#include "ctkmain.h"
+#include "ctklabel.h"
+#include "ctkimage.h"
+#include "ctkbox.h"
+#include "ctksettings.h"
+#include "ctksizerequest.h"
+#include "ctkstylecontext.h"
+#include "ctktooltipwindowprivate.h"
+#include "ctkwindowprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkaccessible.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
 #include "wayland/gdkwayland.h"
@@ -45,7 +45,7 @@
 
 
 /**
- * SECTION:gtktooltip
+ * SECTION:ctktooltip
  * @Short_description: Add tips to your widgets
  * @Title: GtkTooltip
  *
@@ -892,7 +892,7 @@ ctk_tooltip_position (GtkTooltip *tooltip,
   screen = gdk_window_get_screen (window);
   settings = ctk_settings_get_for_screen (screen);
   g_object_get (settings,
-                "gtk-cursor-theme-size", &cursor_size,
+                "ctk-cursor-theme-size", &cursor_size,
                 NULL);
 
   if (cursor_size == 0)
@@ -1078,7 +1078,7 @@ ctk_tooltip_hide_tooltip (GtkTooltip *tooltip)
 					  tooltip_browse_mode_expired,
 					  g_object_ref (tooltip),
 					  g_object_unref);
-	  g_source_set_name_by_id (tooltip->browse_mode_timeout_id, "[gtk+] tooltip_browse_mode_expired");
+	  g_source_set_name_by_id (tooltip->browse_mode_timeout_id, "[ctk+] tooltip_browse_mode_expired");
 	}
     }
   else
@@ -1142,7 +1142,7 @@ ctk_tooltip_start_delay (GdkDisplay *display)
 						      tooltip_popup_timeout,
 						      g_object_ref (display),
 						      g_object_unref);
-  g_source_set_name_by_id (tooltip->timeout_id, "[gtk+] tooltip_popup_timeout");
+  g_source_set_name_by_id (tooltip->timeout_id, "[ctk+] tooltip_popup_timeout");
 }
 
 void

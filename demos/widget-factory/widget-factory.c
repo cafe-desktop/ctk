@@ -21,7 +21,7 @@
 #include "config.h"
 
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 change_theme_state (GSimpleAction *action,
@@ -31,7 +31,7 @@ change_theme_state (GSimpleAction *action,
   GtkSettings *settings = ctk_settings_get_default ();
 
   g_object_set (G_OBJECT (settings),
-                "gtk-application-prefer-dark-theme",
+                "ctk-application-prefer-dark-theme",
                 g_variant_get_boolean (state),
                 NULL);
 
@@ -215,10 +215,10 @@ activate_about (GSimpleAction *action,
                          "version", version,
                          "copyright", "© 1997—2019 The GTK Team",
                          "license-type", CTK_LICENSE_LGPL_2_1,
-                         "website", "http://www.gtk.org",
+                         "website", "http://www.ctk.org",
                          "comments", "Program to demonstrate GTK themes and widgets",
                          "authors", authors,
-                         "logo-icon-name", "gtk3-widget-factory",
+                         "logo-icon-name", "ctk3-widget-factory",
                          "title", "About GTK Widget Factory",
                          NULL);
 
@@ -1761,13 +1761,13 @@ activate (GApplication *app)
   register_icon_sizes ();
 
   provider = ctk_css_provider_new ();
-  ctk_css_provider_load_from_resource (provider, "/org/gtk/WidgetFactory/widget-factory.css");
+  ctk_css_provider_load_from_resource (provider, "/org/ctk/WidgetFactory/widget-factory.css");
   ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
   g_object_unref (provider);
 
-  builder = ctk_builder_new_from_resource ("/org/gtk/WidgetFactory/widget-factory.ui");
+  builder = ctk_builder_new_from_resource ("/org/ctk/WidgetFactory/widget-factory.ui");
   ctk_builder_add_callback_symbol (builder, "on_entry_icon_release", (GCallback)on_entry_icon_release);
   ctk_builder_add_callback_symbol (builder, "on_scale_button_value_changed", (GCallback)on_scale_button_value_changed);
   ctk_builder_add_callback_symbol (builder, "on_scale_button_query_tooltip", (GCallback)on_scale_button_query_tooltip);
@@ -2014,7 +2014,7 @@ activate (GApplication *app)
 static void
 print_version (void)
 {
-  g_print ("gtk3-widget-factory %d.%d.%d\n",
+  g_print ("ctk3-widget-factory %d.%d.%d\n",
            ctk_get_major_version (),
            ctk_get_minor_version (),
            ctk_get_micro_version ());
@@ -2056,7 +2056,7 @@ main (int argc, char *argv[])
   };
   gint status;
 
-  app = ctk_application_new ("org.gtk.WidgetFactory", G_APPLICATION_NON_UNIQUE);
+  app = ctk_application_new ("org.ctk.WidgetFactory", G_APPLICATION_NON_UNIQUE);
 
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),

@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #ifdef GDK_WINDOWING_DIRECTFB
 #define gdk_display gdk_display_directfb

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktextbtree.h Copyright (C) 2000 Red Hat, Inc.
+ * ctktextbtree.h Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_TEXT_BTREE_H__
@@ -35,12 +35,12 @@
 #define DV(x)
 #endif
 
-#include <gtk/gtktextbuffer.h>
-#include <gtk/gtktexttag.h>
-#include <gtk/gtktextmark.h>
-#include <gtk/gtktextchild.h>
-#include <gtk/gtktextsegment.h>
-#include <gtk/gtktextiter.h>
+#include <ctk/ctktextbuffer.h>
+#include <ctk/ctktexttag.h>
+#include <ctk/ctktextmark.h>
+#include <ctk/ctktextchild.h>
+#include <ctk/ctktextsegment.h>
+#include <ctk/ctktextiter.h>
 
 G_BEGIN_DECLS
 
@@ -140,7 +140,7 @@ gboolean      _ctk_text_btree_char_is_invisible (const GtkTextIter *iter);
 
 
 
-/* Get iterators (these are implemented in gtktextiter.c) */
+/* Get iterators (these are implemented in ctktextiter.c) */
 void     _ctk_text_btree_get_iter_at_char         (GtkTextBTree       *tree,
                                                    GtkTextIter        *iter,
                                                    gint                char_index);
@@ -326,14 +326,14 @@ void _ctk_text_btree_check (GtkTextBTree *tree);
 void _ctk_text_btree_spew (GtkTextBTree *tree);
 extern gboolean _ctk_text_view_debug_btree;
 
-/* ignore, exported only for gtktextsegment.c */
+/* ignore, exported only for ctktextsegment.c */
 void _ctk_toggle_segment_check_func (GtkTextLineSegment *segPtr,
                                      GtkTextLine        *line);
 void _ctk_change_node_toggle_count  (GtkTextBTreeNode   *node,
                                      GtkTextTagInfo     *info,
                                      gint                delta);
 
-/* for gtktextmark.c */
+/* for ctktextmark.c */
 void _ctk_text_btree_release_mark_segment (GtkTextBTree       *tree,
                                            GtkTextLineSegment *segment);
 

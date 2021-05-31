@@ -1,4 +1,4 @@
-/* gtktextmark.c - mark segments
+/* ctktextmark.c - mark segments
  *
  * Copyright (c) 1994 The Regents of the University of California.
  * Copyright (c) 1994-1997 Sun Microsystems, Inc.
@@ -49,13 +49,13 @@
 
 #define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
-#include "gtktextbtree.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctktextbtree.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtktextmark
+ * SECTION:ctktextmark
  * @Short_description: A position in the buffer preserved across buffer modifications
  * @Title: GtkTextMark
  *

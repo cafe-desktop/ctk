@@ -1,6 +1,6 @@
-# Irish translations for gtk+ package.
+# Irish translations for ctk+ package.
 # Copyright (C) 1999-2015 Free Software Foundation, Inc.
-# This file is distributed under the same license as the gtk+ package.
+# This file is distributed under the same license as the ctk+ package.
 # Seán Ó Ceallaigh <soc@users.sourceforge.net>, 1999.
 # Alastair McKinstry <mckinstry@computer.org>, 2004.
 # Alan Horkan <horkan@maths.tcd.ie>, 2005.
@@ -8,7 +8,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gtk+.master\n"
+"Project-Id-Version: ctk+.master\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-30 20:07-0600\n"
 "PO-Revision-Date: 2015-09-30 20:30-0600\n"
@@ -73,9 +73,9 @@ msgstr "Bratacha dífhabhtaithe GDK le socrú"
 
 #. Placeholder in --gdk-debug=FLAGS in --help output
 #. Placeholder in --gdk-no-debug=FLAGS in --help output
-#. Placeholder in --gtk-debug=FLAGS in --help output
-#. Placeholder in --gtk-no-debug=FLAGS in --help output
-#: ../gdk/gdk.c:238 ../gdk/gdk.c:241 ../gtk/gtkmain.c:461 ../gtk/gtkmain.c:464
+#. Placeholder in --ctk-debug=FLAGS in --help output
+#. Placeholder in --ctk-no-debug=FLAGS in --help output
+#: ../gdk/gdk.c:238 ../gdk/gdk.c:241 ../ctk/ctkmain.c:461 ../ctk/ctkmain.c:464
 msgid "FLAGS"
 msgstr "BRATACHA"
 
@@ -529,104 +529,104 @@ msgid ""
 "is not available"
 msgstr ""
 
-#: ../gtk/a11y/gtkbooleancellaccessible.c:43
+#: ../ctk/a11y/ctkbooleancellaccessible.c:43
 msgctxt "Action description"
 msgid "Toggles the cell"
 msgstr "Scoránaíonn sé seo an chill"
 
-#: ../gtk/a11y/gtkbooleancellaccessible.c:63
-#: ../gtk/a11y/gtkswitchaccessible.c:89
+#: ../ctk/a11y/ctkbooleancellaccessible.c:63
+#: ../ctk/a11y/ctkswitchaccessible.c:89
 msgctxt "Action name"
 msgid "Toggle"
 msgstr "Scoránaigh"
 
-#: ../gtk/a11y/gtkbuttonaccessible.c:321
-#: ../gtk/a11y/gtkmenuitemaccessible.c:436
+#: ../ctk/a11y/ctkbuttonaccessible.c:321
+#: ../ctk/a11y/ctkmenuitemaccessible.c:436
 msgctxt "Action name"
 msgid "Click"
 msgstr "Cliceáil"
 
-#: ../gtk/a11y/gtkbuttonaccessible.c:330
+#: ../ctk/a11y/ctkbuttonaccessible.c:330
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "Cliceálann sé seo an cnaipe"
 
-#: ../gtk/a11y/gtkcellaccessible.c:255
+#: ../ctk/a11y/ctkcellaccessible.c:255
 msgctxt "Action name"
 msgid "Expand or contract"
 msgstr "Leathnaigh nó crap"
 
-#: ../gtk/a11y/gtkcellaccessible.c:257
+#: ../ctk/a11y/ctkcellaccessible.c:257
 msgctxt "Action name"
 msgid "Edit"
 msgstr "Cuir in eagar"
 
-#: ../gtk/a11y/gtkcellaccessible.c:259
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:149
-#: ../gtk/a11y/gtkentryaccessible.c:1553
-#: ../gtk/a11y/gtkexpanderaccessible.c:281
+#: ../ctk/a11y/ctkcellaccessible.c:259
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:149
+#: ../ctk/a11y/ctkentryaccessible.c:1553
+#: ../ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "Gníomhachtaigh"
 
-#: ../gtk/a11y/gtkcellaccessible.c:272
+#: ../ctk/a11y/ctkcellaccessible.c:272
 msgctxt "Action description"
 msgid "Expands or contracts the row in the tree view containing this cell"
 msgstr ""
 "Leathnaíonn nó crapann sé seo an ró san amharc crainn ina bhfuil an chill seo"
 
-#: ../gtk/a11y/gtkcellaccessible.c:274
+#: ../ctk/a11y/ctkcellaccessible.c:274
 msgctxt "Action description"
 msgid "Creates a widget in which the contents of the cell can be edited"
 msgstr ""
 
-#: ../gtk/a11y/gtkcellaccessible.c:276
+#: ../ctk/a11y/ctkcellaccessible.c:276
 msgctxt "Action description"
 msgid "Activates the cell"
 msgstr "Gníomhachtaíonn sé seo an chill"
 
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:148
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:148
 msgctxt "Action name"
 msgid "Select"
 msgstr "Roghnaigh"
 
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:150
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:150
 msgctxt "Action name"
 msgid "Customize"
 msgstr "Saincheap"
 
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:161
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:161
 msgctxt "Action description"
 msgid "Selects the color"
 msgstr "Roghnaíonn sé seo an dath"
 
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:162
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:162
 msgctxt "Action description"
 msgid "Activates the color"
 msgstr "Gníomhachtaíonn sé seo an dath"
 
-#: ../gtk/a11y/gtkcolorswatchaccessible.c:163
+#: ../ctk/a11y/ctkcolorswatchaccessible.c:163
 msgctxt "Action description"
 msgid "Customizes the color"
 msgstr "Saincheapann sé seo an dath"
 
-#: ../gtk/a11y/gtkcomboboxaccessible.c:310
+#: ../ctk/a11y/ctkcomboboxaccessible.c:310
 msgctxt "Action name"
 msgid "Press"
 msgstr ""
 
-#: ../gtk/a11y/gtkcomboboxaccessible.c:319
+#: ../ctk/a11y/ctkcomboboxaccessible.c:319
 #, fuzzy
 msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "Laghdaíonn sé seo an airde"
 
-#: ../gtk/a11y/gtkentryaccessible.c:1562
+#: ../ctk/a11y/ctkentryaccessible.c:1562
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr ""
 
-#: ../gtk/a11y/gtkexpanderaccessible.c:290
+#: ../ctk/a11y/ctkexpanderaccessible.c:290
 msgctxt "Action description"
 msgid "Activates the expander"
 msgstr ""
@@ -634,454 +634,454 @@ msgstr ""
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ../gtk/a11y/gtkimageaccessible.c:53 ../gtk/deprecated/gtkstock.c:340
+#: ../ctk/a11y/ctkimageaccessible.c:53 ../ctk/deprecated/ctkstock.c:340
 msgctxt "Stock label"
 msgid "_About"
 msgstr "_Maidir Leis Seo"
 
-#: ../gtk/a11y/gtkimageaccessible.c:54 ../gtk/deprecated/gtkstock.c:341
+#: ../ctk/a11y/ctkimageaccessible.c:54 ../ctk/deprecated/ctkstock.c:341
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "Cuir _Leis"
 
-#: ../gtk/a11y/gtkimageaccessible.c:55 ../gtk/deprecated/gtkstock.c:343
+#: ../ctk/a11y/ctkimageaccessible.c:55 ../ctk/deprecated/ctkstock.c:343
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "_Trom"
 
-#: ../gtk/a11y/gtkimageaccessible.c:56 ../gtk/deprecated/gtkstock.c:345
+#: ../ctk/a11y/ctkimageaccessible.c:56 ../ctk/deprecated/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "_CD-ROM"
 
-#: ../gtk/a11y/gtkimageaccessible.c:57 ../gtk/deprecated/gtkstock.c:346
+#: ../ctk/a11y/ctkimageaccessible.c:57 ../ctk/deprecated/ctkstock.c:346
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "_Glan"
 
-#: ../gtk/a11y/gtkimageaccessible.c:58 ../gtk/deprecated/gtkstock.c:347
+#: ../ctk/a11y/ctkimageaccessible.c:58 ../ctk/deprecated/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "_Dún"
 
-#: ../gtk/a11y/gtkimageaccessible.c:59 ../gtk/gtkheaderbar.c:418
+#: ../ctk/a11y/ctkimageaccessible.c:59 ../ctk/ctkheaderbar.c:418
 msgid "Minimize"
 msgstr "Íoslaghdaigh"
 
-#: ../gtk/a11y/gtkimageaccessible.c:60 ../gtk/gtkheaderbar.c:441
+#: ../ctk/a11y/ctkimageaccessible.c:60 ../ctk/ctkheaderbar.c:441
 msgid "Maximize"
 msgstr "Uasmhéadaigh"
 
-#: ../gtk/a11y/gtkimageaccessible.c:61 ../gtk/gtkheaderbar.c:441
+#: ../ctk/a11y/ctkimageaccessible.c:61 ../ctk/ctkheaderbar.c:441
 msgid "Restore"
 msgstr ""
 
-#: ../gtk/a11y/gtkimageaccessible.c:62 ../gtk/deprecated/gtkstock.c:350
+#: ../ctk/a11y/ctkimageaccessible.c:62 ../ctk/deprecated/ctkstock.c:350
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "_Cóipeáil"
 
-#: ../gtk/a11y/gtkimageaccessible.c:63 ../gtk/deprecated/gtkstock.c:351
+#: ../ctk/a11y/ctkimageaccessible.c:63 ../ctk/deprecated/ctkstock.c:351
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "_Gearr"
 
-#: ../gtk/a11y/gtkimageaccessible.c:64 ../gtk/deprecated/gtkstock.c:352
+#: ../ctk/a11y/ctkimageaccessible.c:64 ../ctk/deprecated/ctkstock.c:352
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "_Scrios"
 
-#: ../gtk/a11y/gtkimageaccessible.c:65 ../gtk/deprecated/gtkstock.c:334
+#: ../ctk/a11y/ctkimageaccessible.c:65 ../ctk/deprecated/ctkstock.c:334
 msgctxt "Stock label"
 msgid "Error"
 msgstr "Earráid"
 
-#. KEEP IN SYNC with gtkiconfactory.c stock icons, when appropriate
-#: ../gtk/a11y/gtkimageaccessible.c:66 ../gtk/deprecated/gtkstock.c:332
+#. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
+#: ../ctk/a11y/ctkimageaccessible.c:66 ../ctk/deprecated/ctkstock.c:332
 msgctxt "Stock label"
 msgid "Information"
 msgstr "Eolas"
 
-#: ../gtk/a11y/gtkimageaccessible.c:67 ../gtk/deprecated/gtkstock.c:335
+#: ../ctk/a11y/ctkimageaccessible.c:67 ../ctk/deprecated/ctkstock.c:335
 msgctxt "Stock label"
 msgid "Question"
 msgstr "Ceist"
 
-#: ../gtk/a11y/gtkimageaccessible.c:68 ../gtk/deprecated/gtkstock.c:333
+#: ../ctk/a11y/ctkimageaccessible.c:68 ../ctk/deprecated/ctkstock.c:333
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: ../gtk/a11y/gtkimageaccessible.c:69 ../gtk/deprecated/gtkstock.c:355
+#: ../ctk/a11y/ctkimageaccessible.c:69 ../ctk/deprecated/ctkstock.c:355
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "_Rith"
 
-#: ../gtk/a11y/gtkimageaccessible.c:70 ../gtk/deprecated/gtkstock.c:357
+#: ../ctk/a11y/ctkimageaccessible.c:70 ../ctk/deprecated/ctkstock.c:357
 msgctxt "Stock label"
 msgid "_File"
 msgstr "_Comhad"
 
-#: ../gtk/a11y/gtkimageaccessible.c:71 ../gtk/deprecated/gtkstock.c:358
+#: ../ctk/a11y/ctkimageaccessible.c:71 ../ctk/deprecated/ctkstock.c:358
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "_Aimsigh"
 
-#: ../gtk/a11y/gtkimageaccessible.c:72 ../gtk/deprecated/gtkstock.c:359
+#: ../ctk/a11y/ctkimageaccessible.c:72 ../ctk/deprecated/ctkstock.c:359
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "Aimsigh agus _Ionadaigh"
 
-#: ../gtk/a11y/gtkimageaccessible.c:73 ../gtk/deprecated/gtkstock.c:360
+#: ../ctk/a11y/ctkimageaccessible.c:73 ../ctk/deprecated/ctkstock.c:360
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "Diosca _Bog"
 
-#: ../gtk/a11y/gtkimageaccessible.c:74 ../gtk/deprecated/gtkstock.c:361
+#: ../ctk/a11y/ctkimageaccessible.c:74 ../ctk/deprecated/ctkstock.c:361
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "_Lánscáileán"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ../gtk/a11y/gtkimageaccessible.c:75 ../gtk/deprecated/gtkstock.c:364
+#: ../ctk/a11y/ctkimageaccessible.c:75 ../ctk/deprecated/ctkstock.c:364
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "_Bun:"
 
 #. This is a navigation label as in "go to the first page"
-#: ../gtk/a11y/gtkimageaccessible.c:76 ../gtk/deprecated/gtkstock.c:366
+#: ../ctk/a11y/ctkimageaccessible.c:76 ../ctk/deprecated/ctkstock.c:366
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "An _Chéad"
 
 #. This is a navigation label as in "go to the last page"
-#: ../gtk/a11y/gtkimageaccessible.c:77 ../gtk/deprecated/gtkstock.c:368
+#: ../ctk/a11y/ctkimageaccessible.c:77 ../ctk/deprecated/ctkstock.c:368
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "An _Deireanach"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ../gtk/a11y/gtkimageaccessible.c:78 ../gtk/deprecated/gtkstock.c:370
+#: ../ctk/a11y/ctkimageaccessible.c:78 ../ctk/deprecated/ctkstock.c:370
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "Ba_rr:"
 
 #. This is a navigation label as in "go back"
-#: ../gtk/a11y/gtkimageaccessible.c:79 ../gtk/deprecated/gtkstock.c:372
+#: ../ctk/a11y/ctkimageaccessible.c:79 ../ctk/deprecated/ctkstock.c:372
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "Ar A_is"
 
 #. This is a navigation label as in "go down"
-#: ../gtk/a11y/gtkimageaccessible.c:80 ../gtk/deprecated/gtkstock.c:374
+#: ../ctk/a11y/ctkimageaccessible.c:80 ../ctk/deprecated/ctkstock.c:374
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "_Síos"
 
 #. This is a navigation label as in "go forward"
-#: ../gtk/a11y/gtkimageaccessible.c:81 ../gtk/deprecated/gtkstock.c:376
+#: ../ctk/a11y/ctkimageaccessible.c:81 ../ctk/deprecated/ctkstock.c:376
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "Ar A_ghaidh"
 
 #. This is a navigation label as in "go up"
-#: ../gtk/a11y/gtkimageaccessible.c:82 ../gtk/deprecated/gtkstock.c:378
+#: ../ctk/a11y/ctkimageaccessible.c:82 ../ctk/deprecated/ctkstock.c:378
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "_Siar"
 
-#: ../gtk/a11y/gtkimageaccessible.c:83 ../gtk/deprecated/gtkstock.c:379
+#: ../ctk/a11y/ctkimageaccessible.c:83 ../ctk/deprecated/ctkstock.c:379
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "Diosca _Crua"
 
-#: ../gtk/a11y/gtkimageaccessible.c:84 ../gtk/deprecated/gtkstock.c:380
+#: ../ctk/a11y/ctkimageaccessible.c:84 ../ctk/deprecated/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "Cab_hair"
 
-#: ../gtk/a11y/gtkimageaccessible.c:85 ../gtk/deprecated/gtkstock.c:381
+#: ../ctk/a11y/ctkimageaccessible.c:85 ../ctk/deprecated/ctkstock.c:381
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "_Baile"
 
-#: ../gtk/a11y/gtkimageaccessible.c:86 ../gtk/deprecated/gtkstock.c:382
+#: ../ctk/a11y/ctkimageaccessible.c:86 ../ctk/deprecated/ctkstock.c:382
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "Méadaigh Eang"
 
-#: ../gtk/a11y/gtkimageaccessible.c:87 ../gtk/deprecated/gtkstock.c:386
+#: ../ctk/a11y/ctkimageaccessible.c:87 ../ctk/deprecated/ctkstock.c:386
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "Cló _Iodálach"
 
-#: ../gtk/a11y/gtkimageaccessible.c:88 ../gtk/deprecated/gtkstock.c:387
+#: ../ctk/a11y/ctkimageaccessible.c:88 ../ctk/deprecated/ctkstock.c:387
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "_Léim Go"
 
 #. This is about text justification, "centered text"
-#: ../gtk/a11y/gtkimageaccessible.c:89 ../gtk/deprecated/gtkstock.c:389
+#: ../ctk/a11y/ctkimageaccessible.c:89 ../ctk/deprecated/ctkstock.c:389
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_Láraigh"
 
 #. This is about text justification
-#: ../gtk/a11y/gtkimageaccessible.c:90 ../gtk/deprecated/gtkstock.c:391
+#: ../ctk/a11y/ctkimageaccessible.c:90 ../ctk/deprecated/ctkstock.c:391
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "_Líon"
 
 #. This is about text justification, "left-justified text"
-#: ../gtk/a11y/gtkimageaccessible.c:91 ../gtk/deprecated/gtkstock.c:393
+#: ../ctk/a11y/ctkimageaccessible.c:91 ../ctk/deprecated/ctkstock.c:393
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "Ar _Chlé"
 
 #. This is about text justification, "right-justified text"
-#: ../gtk/a11y/gtkimageaccessible.c:92 ../gtk/deprecated/gtkstock.c:395
+#: ../ctk/a11y/ctkimageaccessible.c:92 ../ctk/deprecated/ctkstock.c:395
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "Ar _Dheis"
 
-#: ../gtk/a11y/gtkimageaccessible.c:93 ../gtk/deprecated/gtkstock.c:362
+#: ../ctk/a11y/ctkimageaccessible.c:93 ../ctk/deprecated/ctkstock.c:362
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "_Fág Lánscáileán"
 
 #. Media label, as in "fast forward"
-#: ../gtk/a11y/gtkimageaccessible.c:94 ../gtk/deprecated/gtkstock.c:398
+#: ../ctk/a11y/ctkimageaccessible.c:94 ../ctk/deprecated/ctkstock.c:398
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "_Ar Aghaidh"
 
 #. Media label, as in "next song"
-#: ../gtk/a11y/gtkimageaccessible.c:95 ../gtk/deprecated/gtkstock.c:400
+#: ../ctk/a11y/ctkimageaccessible.c:95 ../ctk/deprecated/ctkstock.c:400
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "Ar _Aghaidh"
 
 #. Media label, as in "pause music"
-#: ../gtk/a11y/gtkimageaccessible.c:96 ../gtk/deprecated/gtkstock.c:402
+#: ../ctk/a11y/ctkimageaccessible.c:96 ../ctk/deprecated/ctkstock.c:402
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "_Sos"
 
 #. Media label, as in "play music"
-#: ../gtk/a11y/gtkimageaccessible.c:97 ../gtk/deprecated/gtkstock.c:404
+#: ../ctk/a11y/ctkimageaccessible.c:97 ../ctk/deprecated/ctkstock.c:404
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "_Seinn"
 
 #. Media label, as in  "previous song"
-#: ../gtk/a11y/gtkimageaccessible.c:98 ../gtk/deprecated/gtkstock.c:406
+#: ../ctk/a11y/ctkimageaccessible.c:98 ../ctk/deprecated/ctkstock.c:406
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "_Roimhe Seo"
 
 #. Media label
-#: ../gtk/a11y/gtkimageaccessible.c:99 ../gtk/deprecated/gtkstock.c:408
+#: ../ctk/a11y/ctkimageaccessible.c:99 ../ctk/deprecated/ctkstock.c:408
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "_Taifead"
 
 #. Media label
-#: ../gtk/a11y/gtkimageaccessible.c:100 ../gtk/deprecated/gtkstock.c:410
+#: ../ctk/a11y/ctkimageaccessible.c:100 ../ctk/deprecated/ctkstock.c:410
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "At_ochrais"
 
 #. Media label
-#: ../gtk/a11y/gtkimageaccessible.c:101 ../gtk/deprecated/gtkstock.c:412
+#: ../ctk/a11y/ctkimageaccessible.c:101 ../ctk/deprecated/ctkstock.c:412
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_Stad"
 
-#: ../gtk/a11y/gtkimageaccessible.c:102 ../gtk/deprecated/gtkstock.c:413
+#: ../ctk/a11y/ctkimageaccessible.c:102 ../ctk/deprecated/ctkstock.c:413
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "Lío_nra"
 
-#: ../gtk/a11y/gtkimageaccessible.c:103 ../gtk/deprecated/gtkstock.c:414
+#: ../ctk/a11y/ctkimageaccessible.c:103 ../ctk/deprecated/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_New"
 msgstr "_Nua"
 
-#: ../gtk/a11y/gtkimageaccessible.c:104 ../gtk/deprecated/gtkstock.c:417
+#: ../ctk/a11y/ctkimageaccessible.c:104 ../ctk/deprecated/ctkstock.c:417
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "_Oscail"
 
-#: ../gtk/a11y/gtkimageaccessible.c:105 ../gtk/deprecated/gtkstock.c:427
+#: ../ctk/a11y/ctkimageaccessible.c:105 ../ctk/deprecated/ctkstock.c:427
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "G_reamaigh"
 
-#: ../gtk/a11y/gtkimageaccessible.c:106 ../gtk/deprecated/gtkstock.c:429
+#: ../ctk/a11y/ctkimageaccessible.c:106 ../ctk/deprecated/ctkstock.c:429
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "_Priontáil"
 
-#: ../gtk/a11y/gtkimageaccessible.c:107 ../gtk/deprecated/gtkstock.c:430
+#: ../ctk/a11y/ctkimageaccessible.c:107 ../ctk/deprecated/ctkstock.c:430
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "Réamh_amharc Priontála"
 
-#: ../gtk/a11y/gtkimageaccessible.c:108 ../gtk/deprecated/gtkstock.c:431
+#: ../ctk/a11y/ctkimageaccessible.c:108 ../ctk/deprecated/ctkstock.c:431
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "_Airíonna"
 
-#: ../gtk/a11y/gtkimageaccessible.c:109 ../gtk/deprecated/gtkstock.c:432
+#: ../ctk/a11y/ctkimageaccessible.c:109 ../ctk/deprecated/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "_Scoir"
 
-#: ../gtk/a11y/gtkimageaccessible.c:110 ../gtk/deprecated/gtkstock.c:433
+#: ../ctk/a11y/ctkimageaccessible.c:110 ../ctk/deprecated/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "_Athfheidhmigh"
 
-#: ../gtk/a11y/gtkimageaccessible.c:111 ../gtk/deprecated/gtkstock.c:434
+#: ../ctk/a11y/ctkimageaccessible.c:111 ../ctk/deprecated/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "_Athnuaigh"
 
-#: ../gtk/a11y/gtkimageaccessible.c:112 ../gtk/deprecated/gtkstock.c:435
+#: ../ctk/a11y/ctkimageaccessible.c:112 ../ctk/deprecated/ctkstock.c:435
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "_Bain"
 
-#: ../gtk/a11y/gtkimageaccessible.c:113 ../gtk/deprecated/gtkstock.c:436
+#: ../ctk/a11y/ctkimageaccessible.c:113 ../ctk/deprecated/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "_Fill"
 
-#: ../gtk/a11y/gtkimageaccessible.c:114 ../gtk/deprecated/gtkstock.c:437
+#: ../ctk/a11y/ctkimageaccessible.c:114 ../ctk/deprecated/ctkstock.c:437
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "_Sábháil"
 
-#: ../gtk/a11y/gtkimageaccessible.c:115 ../gtk/deprecated/gtkstock.c:438
+#: ../ctk/a11y/ctkimageaccessible.c:115 ../ctk/deprecated/ctkstock.c:438
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "Sábháil M_ar"
 
-#: ../gtk/a11y/gtkimageaccessible.c:116 ../gtk/deprecated/gtkstock.c:439
+#: ../ctk/a11y/ctkimageaccessible.c:116 ../ctk/deprecated/ctkstock.c:439
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "Roghnaigh _Gach Rud"
 
 #. Sorting direction
-#: ../gtk/a11y/gtkimageaccessible.c:117 ../gtk/deprecated/gtkstock.c:443
+#: ../ctk/a11y/ctkimageaccessible.c:117 ../ctk/deprecated/ctkstock.c:443
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "_Ardaitheach"
 
 #. Sorting direction
-#: ../gtk/a11y/gtkimageaccessible.c:118 ../gtk/deprecated/gtkstock.c:445
+#: ../ctk/a11y/ctkimageaccessible.c:118 ../ctk/deprecated/ctkstock.c:445
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "Í_slitheach"
 
-#: ../gtk/a11y/gtkimageaccessible.c:119 ../gtk/deprecated/gtkstock.c:446
+#: ../ctk/a11y/ctkimageaccessible.c:119 ../ctk/deprecated/ctkstock.c:446
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "_Litriú"
 
-#: ../gtk/a11y/gtkimageaccessible.c:120 ../gtk/deprecated/gtkstock.c:447
+#: ../ctk/a11y/ctkimageaccessible.c:120 ../ctk/deprecated/ctkstock.c:447
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_Stad"
 
 #. Font variant
-#: ../gtk/a11y/gtkimageaccessible.c:121 ../gtk/deprecated/gtkstock.c:449
+#: ../ctk/a11y/ctkimageaccessible.c:121 ../ctk/deprecated/ctkstock.c:449
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "Líne _Trí"
 
 #. Font variant
-#: ../gtk/a11y/gtkimageaccessible.c:122 ../gtk/deprecated/gtkstock.c:452
+#: ../ctk/a11y/ctkimageaccessible.c:122 ../ctk/deprecated/ctkstock.c:452
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "_Líne Faoi"
 
-#: ../gtk/a11y/gtkimageaccessible.c:123 ../gtk/deprecated/gtkstock.c:453
+#: ../ctk/a11y/ctkimageaccessible.c:123 ../ctk/deprecated/ctkstock.c:453
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "Cea_laigh"
 
-#: ../gtk/a11y/gtkimageaccessible.c:124 ../gtk/deprecated/gtkstock.c:383
+#: ../ctk/a11y/ctkimageaccessible.c:124 ../ctk/deprecated/ctkstock.c:383
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "Laghdaigh Eang"
 
 #. Zoom
-#: ../gtk/a11y/gtkimageaccessible.c:125 ../gtk/deprecated/gtkstock.c:456
+#: ../ctk/a11y/ctkimageaccessible.c:125 ../ctk/deprecated/ctkstock.c:456
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "_Gnáthmhéid"
 
 #. Zoom
-#: ../gtk/a11y/gtkimageaccessible.c:126 ../gtk/deprecated/gtkstock.c:458
+#: ../ctk/a11y/ctkimageaccessible.c:126 ../ctk/deprecated/ctkstock.c:458
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "_Scothoiriúint"
 
-#: ../gtk/a11y/gtkimageaccessible.c:127 ../gtk/deprecated/gtkstock.c:459
+#: ../ctk/a11y/ctkimageaccessible.c:127 ../ctk/deprecated/ctkstock.c:459
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "Súmáil _Isteach"
 
-#: ../gtk/a11y/gtkimageaccessible.c:128 ../gtk/deprecated/gtkstock.c:460
+#: ../ctk/a11y/ctkimageaccessible.c:128 ../ctk/deprecated/ctkstock.c:460
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "Súmáil _Amach"
 
-#: ../gtk/a11y/gtkmenubuttonaccessible.c:102
+#: ../ctk/a11y/ctkmenubuttonaccessible.c:102
 msgid "Menu"
 msgstr "Roghchlár"
 
-#: ../gtk/a11y/gtkmenuitemaccessible.c:445
+#: ../ctk/a11y/ctkmenuitemaccessible.c:445
 msgctxt "Action description"
 msgid "Clicks the menuitem"
 msgstr ""
 
-#: ../gtk/a11y/gtkscalebuttonaccessible.c:140
+#: ../ctk/a11y/ctkscalebuttonaccessible.c:140
 msgctxt "Action description"
 msgid "Pops up the slider"
 msgstr ""
 
-#: ../gtk/a11y/gtkscalebuttonaccessible.c:142
+#: ../ctk/a11y/ctkscalebuttonaccessible.c:142
 msgctxt "Action description"
 msgid "Dismisses the slider"
 msgstr ""
 
-#: ../gtk/a11y/gtkscalebuttonaccessible.c:170
+#: ../ctk/a11y/ctkscalebuttonaccessible.c:170
 msgctxt "Action name"
 msgid "Popup"
 msgstr ""
 
-#: ../gtk/a11y/gtkscalebuttonaccessible.c:172
+#: ../ctk/a11y/ctkscalebuttonaccessible.c:172
 msgctxt "Action name"
 msgid "Dismiss"
 msgstr ""
 
-#: ../gtk/a11y/gtkspinneraccessible.c:39
+#: ../ctk/a11y/ctkspinneraccessible.c:39
 msgctxt "throbbing progress animation widget"
 msgid "Spinner"
 msgstr ""
 
-#: ../gtk/a11y/gtkspinneraccessible.c:40
+#: ../ctk/a11y/ctkspinneraccessible.c:40
 msgid "Provides visual indication of progress"
 msgstr ""
 
-#: ../gtk/a11y/gtkswitchaccessible.c:98
+#: ../ctk/a11y/ctkswitchaccessible.c:98
 msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr ""
 
-#: ../gtk/deprecated/gtkcolorsel.c:423
+#: ../ctk/deprecated/ctkcolorsel.c:423
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1089,7 +1089,7 @@ msgstr ""
 "Roghnaigh an dath atá uait ón bhfáinne amuigh. Roghnaigh dorchadas nó gile "
 "an datha sin leis an triantán istigh."
 
-#: ../gtk/deprecated/gtkcolorsel.c:449
+#: ../ctk/deprecated/ctkcolorsel.c:449
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -1097,67 +1097,67 @@ msgstr ""
 "Cliceáil an titimeán súile, agus ansin cliceáil dath áit ar bith ar do "
 "scáileán chun an dath sin a roghnú."
 
-#: ../gtk/deprecated/gtkcolorsel.c:459
+#: ../ctk/deprecated/ctkcolorsel.c:459
 msgid "_Hue:"
 msgstr "_Lí:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:460
+#: ../ctk/deprecated/ctkcolorsel.c:460
 msgid "Position on the color wheel."
 msgstr "Ionad ar roth na ndathanna."
 
-#: ../gtk/deprecated/gtkcolorsel.c:462
+#: ../ctk/deprecated/ctkcolorsel.c:462
 msgid "S_aturation:"
 msgstr "_Sáithiú:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:463
+#: ../ctk/deprecated/ctkcolorsel.c:463
 msgid "Intensity of the color."
 msgstr "Déine an datha."
 
-#: ../gtk/deprecated/gtkcolorsel.c:464
+#: ../ctk/deprecated/ctkcolorsel.c:464
 msgid "_Value:"
 msgstr "L_uach:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:465
+#: ../ctk/deprecated/ctkcolorsel.c:465
 msgid "Brightness of the color."
 msgstr "Gile an datha."
 
-#: ../gtk/deprecated/gtkcolorsel.c:466
+#: ../ctk/deprecated/ctkcolorsel.c:466
 msgid "_Red:"
 msgstr "_Dearg:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:467
+#: ../ctk/deprecated/ctkcolorsel.c:467
 msgid "Amount of red light in the color."
 msgstr "Méid sholais dhearg sa dath."
 
-#: ../gtk/deprecated/gtkcolorsel.c:468
+#: ../ctk/deprecated/ctkcolorsel.c:468
 msgid "_Green:"
 msgstr "_Uaine:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:469
+#: ../ctk/deprecated/ctkcolorsel.c:469
 msgid "Amount of green light in the color."
 msgstr "Méid sholais uaine sa dath."
 
-#: ../gtk/deprecated/gtkcolorsel.c:470
+#: ../ctk/deprecated/ctkcolorsel.c:470
 msgid "_Blue:"
 msgstr "_Gorm:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:471
+#: ../ctk/deprecated/ctkcolorsel.c:471
 msgid "Amount of blue light in the color."
 msgstr "Méid sholais ghorm sa dath."
 
-#: ../gtk/deprecated/gtkcolorsel.c:474
+#: ../ctk/deprecated/ctkcolorsel.c:474
 msgid "Op_acity:"
 msgstr "Teimhne_acht:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:482 ../gtk/deprecated/gtkcolorsel.c:492
+#: ../ctk/deprecated/ctkcolorsel.c:482 ../ctk/deprecated/ctkcolorsel.c:492
 msgid "Transparency of the color."
 msgstr "Trédhearcacht an datha."
 
-#: ../gtk/deprecated/gtkcolorsel.c:499
+#: ../ctk/deprecated/ctkcolorsel.c:499
 msgid "Color _name:"
 msgstr "Ai_nm datha:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:514
+#: ../ctk/deprecated/ctkcolorsel.c:514
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1166,22 +1166,22 @@ msgstr ""
 "Is féidir leat luach datha heicsidheachúlach ar stíl HTML a iontráil, nó "
 "ainm datha mar shampla 'orange' a iontráil san iontráil seo."
 
-#: ../gtk/deprecated/gtkcolorsel.c:546
+#: ../ctk/deprecated/ctkcolorsel.c:546
 msgid "_Palette:"
 msgstr "_Pailéad:"
 
-#: ../gtk/deprecated/gtkcolorsel.c:576
+#: ../ctk/deprecated/ctkcolorsel.c:576
 msgid "Color Wheel"
 msgstr "Roth na nDathanna"
 
-#: ../gtk/deprecated/gtkcolorsel.c:1070
+#: ../ctk/deprecated/ctkcolorsel.c:1070
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now. You can drag this color to a palette entry, or select this color as "
 "current by dragging it to the other color swatch alongside."
 msgstr ""
 
-#: ../gtk/deprecated/gtkcolorsel.c:1076
+#: ../ctk/deprecated/ctkcolorsel.c:1076
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1190,242 +1190,242 @@ msgstr ""
 "An dath atá roghnaithe agat. Is féidir leat an dath seo a tharraingt go "
 "hiontráil pailéid chun é a shábháil le haghaidh úsáide san am atá le teacht."
 
-#: ../gtk/deprecated/gtkcolorsel.c:1082
+#: ../ctk/deprecated/ctkcolorsel.c:1082
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr ""
 
-#: ../gtk/deprecated/gtkcolorsel.c:1086
+#: ../ctk/deprecated/ctkcolorsel.c:1086
 #, fuzzy
 msgid "The color you’ve chosen."
 msgstr "An dath atá roghnaithe agat."
 
-#: ../gtk/deprecated/gtkcolorsel.c:1490
+#: ../ctk/deprecated/ctkcolorsel.c:1490
 msgid "_Save color here"
 msgstr "_Sábháil dath anseo"
 
-#: ../gtk/deprecated/gtkcolorsel.c:1693
+#: ../ctk/deprecated/ctkcolorsel.c:1693
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
 "drag a color swatch here or right-click it and select “Save color here.”"
 msgstr ""
 
-#: ../gtk/deprecated/gtkcolorseldialog.c:191
-#: ../gtk/deprecated/gtkfontsel.c:1689 ../gtk/gtkfilechooserbutton.c:795
-#: ../gtk/gtkfilechooserwidget.c:1448 ../gtk/gtkfilechooserwidget.c:6310
-#: ../gtk/gtkmessagedialog.c:942 ../gtk/gtkmessagedialog.c:955
-#: ../gtk/gtkmountoperation.c:543 ../gtk/gtkpagesetupunixdialog.c:196
-#: ../gtk/gtkprintbackend.c:763 ../gtk/gtkprinteroptionwidget.c:545
-#: ../gtk/gtkprintunixdialog.c:665 ../gtk/gtkprintunixdialog.c:738
-#: ../gtk/gtkwindow.c:12111 ../gtk/inspector/css-editor.c:199
+#: ../ctk/deprecated/ctkcolorseldialog.c:191
+#: ../ctk/deprecated/ctkfontsel.c:1689 ../ctk/ctkfilechooserbutton.c:795
+#: ../ctk/ctkfilechooserwidget.c:1448 ../ctk/ctkfilechooserwidget.c:6310
+#: ../ctk/ctkmessagedialog.c:942 ../ctk/ctkmessagedialog.c:955
+#: ../ctk/ctkmountoperation.c:543 ../ctk/ctkpagesetupunixdialog.c:196
+#: ../ctk/ctkprintbackend.c:763 ../ctk/ctkprinteroptionwidget.c:545
+#: ../ctk/ctkprintunixdialog.c:665 ../ctk/ctkprintunixdialog.c:738
+#: ../ctk/ctkwindow.c:12111 ../ctk/inspector/css-editor.c:199
 msgid "_Cancel"
 msgstr "_Cealaigh"
 
-#: ../gtk/deprecated/gtkcolorseldialog.c:195
-#: ../gtk/gtkprinteroptionwidget.c:546
+#: ../ctk/deprecated/ctkcolorseldialog.c:195
+#: ../ctk/ctkprinteroptionwidget.c:546
 msgid "_Select"
 msgstr "_Roghnaigh"
 
-#: ../gtk/deprecated/gtkcolorseldialog.c:201
+#: ../ctk/deprecated/ctkcolorseldialog.c:201
 msgid "_Help"
 msgstr "Cab_hair"
 
-#: ../gtk/deprecated/gtkcolorseldialog.c:213
+#: ../ctk/deprecated/ctkcolorseldialog.c:213
 msgid "Color Selection"
 msgstr "Roghnú Datha"
 
 #. This is the default text shown in the preview entry, though the user
 #. can set it. Remember that some fonts only have capital letters.
-#: ../gtk/deprecated/gtkfontsel.c:121
+#: ../ctk/deprecated/ctkfontsel.c:121
 msgid "abcdefghijk ABCDEFGHIJK"
 msgstr "aábcdeéfghií AÁBCDEÉFGHIÍ"
 
-#: ../gtk/deprecated/gtkfontsel.c:386
+#: ../ctk/deprecated/ctkfontsel.c:386
 msgid "_Family:"
 msgstr "_Clann:"
 
-#: ../gtk/deprecated/gtkfontsel.c:393
+#: ../ctk/deprecated/ctkfontsel.c:393
 msgid "_Style:"
 msgstr "_Stíl:"
 
-#: ../gtk/deprecated/gtkfontsel.c:400
+#: ../ctk/deprecated/ctkfontsel.c:400
 msgid "Si_ze:"
 msgstr "_Méid:"
 
 #. create the text entry widget
-#: ../gtk/deprecated/gtkfontsel.c:577
+#: ../ctk/deprecated/ctkfontsel.c:577
 msgid "_Preview:"
 msgstr "_Réamhamharc:"
 
-#: ../gtk/deprecated/gtkfontsel.c:1693 ../gtk/gtkpagesetupunixdialog.c:197
+#: ../ctk/deprecated/ctkfontsel.c:1693 ../ctk/ctkpagesetupunixdialog.c:197
 msgid "_Apply"
 msgstr "Cuir i bh_Feidhm"
 
-#: ../gtk/deprecated/gtkfontsel.c:1698 ../gtk/gtkmessagedialog.c:934
-#: ../gtk/gtkmessagedialog.c:956 ../gtk/gtkprintbackend.c:764
-#: ../gtk/gtkwindow.c:12112 ../gtk/inspector/classes-list.c:127
+#: ../ctk/deprecated/ctkfontsel.c:1698 ../ctk/ctkmessagedialog.c:934
+#: ../ctk/ctkmessagedialog.c:956 ../ctk/ctkprintbackend.c:764
+#: ../ctk/ctkwindow.c:12112 ../ctk/inspector/classes-list.c:127
 msgid "_OK"
 msgstr "Tá g_o Maith"
 
-#: ../gtk/deprecated/gtkfontsel.c:1709
+#: ../ctk/deprecated/ctkfontsel.c:1709
 msgid "Font Selection"
 msgstr "Roghnú Cló"
 
 #. Translators: the format here is used to build the string that will be rendered
 #. * in the number emblem.
 #.
-#: ../gtk/deprecated/gtknumerableicon.c:472
+#: ../ctk/deprecated/ctknumerableicon.c:472
 #, c-format
 msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ../gtk/deprecated/gtkstock.c:342
+#: ../ctk/deprecated/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Apply"
 msgstr "Cuir i bh_Feidhm"
 
-#: ../gtk/deprecated/gtkstock.c:344
+#: ../ctk/deprecated/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_Cancel"
 msgstr "_Cealaigh"
 
-#: ../gtk/deprecated/gtkstock.c:348
+#: ../ctk/deprecated/ctkstock.c:348
 msgctxt "Stock label"
 msgid "C_onnect"
 msgstr "_Nasc"
 
-#: ../gtk/deprecated/gtkstock.c:349
+#: ../ctk/deprecated/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_Convert"
 msgstr "_Tiontaigh"
 
-#: ../gtk/deprecated/gtkstock.c:353
+#: ../ctk/deprecated/ctkstock.c:353
 msgctxt "Stock label"
 msgid "_Discard"
 msgstr "_Cuir i Leataobh"
 
-#: ../gtk/deprecated/gtkstock.c:354
+#: ../ctk/deprecated/ctkstock.c:354
 msgctxt "Stock label"
 msgid "_Disconnect"
 msgstr "_Dínasc"
 
-#: ../gtk/deprecated/gtkstock.c:356
+#: ../ctk/deprecated/ctkstock.c:356
 msgctxt "Stock label"
 msgid "_Edit"
 msgstr "Cuir in _Eagar"
 
-#: ../gtk/deprecated/gtkstock.c:384
+#: ../ctk/deprecated/ctkstock.c:384
 msgctxt "Stock label"
 msgid "_Index"
 msgstr "_Innéacs"
 
-#: ../gtk/deprecated/gtkstock.c:385
+#: ../ctk/deprecated/ctkstock.c:385
 msgctxt "Stock label"
 msgid "_Information"
 msgstr "_Eolas"
 
-#: ../gtk/deprecated/gtkstock.c:415
+#: ../ctk/deprecated/ctkstock.c:415
 msgctxt "Stock label"
 msgid "_No"
 msgstr "_Níl"
 
-#: ../gtk/deprecated/gtkstock.c:416
+#: ../ctk/deprecated/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_OK"
 msgstr "Tá g_o Maith"
 
 #. Page orientation
-#: ../gtk/deprecated/gtkstock.c:419
+#: ../ctk/deprecated/ctkstock.c:419
 msgctxt "Stock label"
 msgid "Landscape"
 msgstr "Tírdhreach"
 
 #. Page orientation
-#: ../gtk/deprecated/gtkstock.c:421
+#: ../ctk/deprecated/ctkstock.c:421
 msgctxt "Stock label"
 msgid "Portrait"
 msgstr "Portráid"
 
 #. Page orientation
-#: ../gtk/deprecated/gtkstock.c:423
+#: ../ctk/deprecated/ctkstock.c:423
 msgctxt "Stock label"
 msgid "Reverse landscape"
 msgstr "Tírdhreach aisiompaithe"
 
 #. Page orientation
-#: ../gtk/deprecated/gtkstock.c:425
+#: ../ctk/deprecated/ctkstock.c:425
 msgctxt "Stock label"
 msgid "Reverse portrait"
 msgstr "Portráid aisiompaithe"
 
-#: ../gtk/deprecated/gtkstock.c:426
+#: ../ctk/deprecated/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Page Set_up"
 msgstr "Socrú _Leathanaigh"
 
-#: ../gtk/deprecated/gtkstock.c:428
+#: ../ctk/deprecated/ctkstock.c:428
 msgctxt "Stock label"
 msgid "_Preferences"
 msgstr "_Sainroghanna"
 
-#: ../gtk/deprecated/gtkstock.c:440
+#: ../ctk/deprecated/ctkstock.c:440
 msgctxt "Stock label"
 msgid "_Color"
 msgstr "_Dath"
 
-#: ../gtk/deprecated/gtkstock.c:441
+#: ../ctk/deprecated/ctkstock.c:441
 msgctxt "Stock label"
 msgid "_Font"
 msgstr "_Cló"
 
-#: ../gtk/deprecated/gtkstock.c:450
+#: ../ctk/deprecated/ctkstock.c:450
 msgctxt "Stock label"
 msgid "_Undelete"
 msgstr "_Díscrios"
 
-#: ../gtk/deprecated/gtkstock.c:454
+#: ../ctk/deprecated/ctkstock.c:454
 msgctxt "Stock label"
 msgid "_Yes"
 msgstr "_Tá"
 
-#: ../gtk/deprecated/gtkuimanager.c:1779
+#: ../ctk/deprecated/ctkuimanager.c:1779
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr ""
 
-#: ../gtk/deprecated/gtkuimanager.c:1869
+#: ../ctk/deprecated/ctkuimanager.c:1869
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr ""
 
-#: ../gtk/deprecated/gtkuimanager.c:2724
+#: ../ctk/deprecated/ctkuimanager.c:2724
 msgid "Empty"
 msgstr "Folamh"
 
-#: ../gtk/encodesymbolic.c:38
+#: ../ctk/encodesymbolic.c:38
 msgid "Output to this directory instead of cwd"
 msgstr ""
 
-#: ../gtk/encodesymbolic.c:266
+#: ../ctk/encodesymbolic.c:266
 #, fuzzy, c-format
 msgid "Invalid size %s\n"
 msgstr "Ainm comhaid neamhbhailí"
 
-#: ../gtk/encodesymbolic.c:279 ../gtk/gtk-builder-tool.c:591
+#: ../ctk/encodesymbolic.c:279 ../ctk/ctk-builder-tool.c:591
 #, c-format
 msgid "Can't load file: %s\n"
 msgstr "Ní féidir comhad a luchtú: %s\n"
 
-#: ../gtk/encodesymbolic.c:307 ../gtk/encodesymbolic.c:313
+#: ../ctk/encodesymbolic.c:307 ../ctk/encodesymbolic.c:313
 #, c-format
 msgid "Can't save file %s: %s\n"
 msgstr ""
 "Ní féidir comhad %s a shábháil: %s\n"
 "\n"
 
-#: ../gtk/encodesymbolic.c:319
+#: ../ctk/encodesymbolic.c:319
 #, c-format
 msgid "Can't close stream"
 msgstr ""
@@ -1433,104 +1433,104 @@ msgstr ""
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
 #.
-#: ../gtk/gtkaboutdialog.c:114
+#: ../ctk/ctkaboutdialog.c:114
 #, c-format
 msgid ""
 "This program comes with absolutely no warranty.\n"
 "See the <a href=\"%s\">%s</a> for details."
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:118
+#: ../ctk/ctkaboutdialog.c:118
 msgid "License"
 msgstr "Ceadúnas"
 
-#: ../gtk/gtkaboutdialog.c:119
+#: ../ctk/ctkaboutdialog.c:119
 msgid "Custom License"
 msgstr "Ceadúnas Saincheaptha"
 
-#: ../gtk/gtkaboutdialog.c:120
+#: ../ctk/ctkaboutdialog.c:120
 msgid "GNU General Public License, version 2 or later"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:121
+#: ../ctk/ctkaboutdialog.c:121
 msgid "GNU General Public License, version 3 or later"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:122
+#: ../ctk/ctkaboutdialog.c:122
 msgid "GNU Lesser General Public License, version 2.1 or later"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:123
+#: ../ctk/ctkaboutdialog.c:123
 msgid "GNU Lesser General Public License, version 3 or later"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:124
+#: ../ctk/ctkaboutdialog.c:124
 msgid "BSD 2-Clause License"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:125
+#: ../ctk/ctkaboutdialog.c:125
 msgid "The MIT License (MIT)"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:126
+#: ../ctk/ctkaboutdialog.c:126
 msgid "Artistic License 2.0"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:127
+#: ../ctk/ctkaboutdialog.c:127
 msgid "GNU General Public License, version 2 only"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:128
+#: ../ctk/ctkaboutdialog.c:128
 msgid "GNU General Public License, version 3 only"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:129
+#: ../ctk/ctkaboutdialog.c:129
 msgid "GNU Lesser General Public License, version 2.1 only"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:130
+#: ../ctk/ctkaboutdialog.c:130
 msgid "GNU Lesser General Public License, version 3 only"
 msgstr ""
 
-#: ../gtk/gtkaboutdialog.c:699
+#: ../ctk/ctkaboutdialog.c:699
 msgid "C_redits"
 msgstr "_Admhálacha"
 
-#: ../gtk/gtkaboutdialog.c:707
+#: ../ctk/ctkaboutdialog.c:707
 msgid "_License"
 msgstr "_Ceadúnas"
 
-#: ../gtk/gtkaboutdialog.c:716 ../gtk/gtkcustompaperunixdialog.c:329
-#: ../gtk/gtkmessagedialog.c:938
+#: ../ctk/ctkaboutdialog.c:716 ../ctk/ctkcustompaperunixdialog.c:329
+#: ../ctk/ctkmessagedialog.c:938
 msgid "_Close"
 msgstr "_Dún"
 
-#: ../gtk/gtkaboutdialog.c:1003
+#: ../ctk/ctkaboutdialog.c:1003
 msgid "Could not show link"
 msgstr "Níorbh fhéidir nasc a thaispeáint"
 
-#: ../gtk/gtkaboutdialog.c:1040
+#: ../ctk/ctkaboutdialog.c:1040
 msgid "Website"
 msgstr "Suíomh Gréasáin"
 
-#: ../gtk/gtkaboutdialog.c:1090
+#: ../ctk/ctkaboutdialog.c:1090
 #, c-format
 msgid "About %s"
 msgstr "Maidir le %s"
 
-#: ../gtk/gtkaboutdialog.c:2312
+#: ../ctk/ctkaboutdialog.c:2312
 msgid "Created by"
 msgstr "Cruthaithe ag"
 
-#: ../gtk/gtkaboutdialog.c:2315
+#: ../ctk/ctkaboutdialog.c:2315
 msgid "Documented by"
 msgstr "Doiciméadaithe ag"
 
-#: ../gtk/gtkaboutdialog.c:2325
+#: ../ctk/ctkaboutdialog.c:2325
 msgid "Translated by"
 msgstr "Aistrithe ag"
 
-#: ../gtk/gtkaboutdialog.c:2330
+#: ../ctk/ctkaboutdialog.c:2330
 msgid "Artwork by"
 msgstr "Maisiúchán le"
 
@@ -1539,7 +1539,7 @@ msgstr "Maisiúchán le"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:165
+#: ../ctk/ctkaccellabel.c:165
 msgctxt "keyboard label"
 msgid "Shift"
 msgstr "Shift"
@@ -1549,7 +1549,7 @@ msgstr "Shift"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:171
+#: ../ctk/ctkaccellabel.c:171
 msgctxt "keyboard label"
 msgid "Ctrl"
 msgstr "Ctrl"
@@ -1559,7 +1559,7 @@ msgstr "Ctrl"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:177
+#: ../ctk/ctkaccellabel.c:177
 msgctxt "keyboard label"
 msgid "Alt"
 msgstr "Alt"
@@ -1569,7 +1569,7 @@ msgstr "Alt"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:828
+#: ../ctk/ctkaccellabel.c:828
 msgctxt "keyboard label"
 msgid "Super"
 msgstr "Super"
@@ -1579,7 +1579,7 @@ msgstr "Super"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:841
+#: ../ctk/ctkaccellabel.c:841
 msgctxt "keyboard label"
 msgid "Hyper"
 msgstr "Hyper"
@@ -1589,141 +1589,141 @@ msgstr "Hyper"
 #. * translated on keyboards used for your language, don't translate
 #. * this.
 #.
-#: ../gtk/gtkaccellabel.c:855
+#: ../ctk/ctkaccellabel.c:855
 msgctxt "keyboard label"
 msgid "Meta"
 msgstr "Meta"
 
-#: ../gtk/gtkaccellabel.c:872
+#: ../ctk/ctkaccellabel.c:872
 msgctxt "keyboard label"
 msgid "Space"
 msgstr "Space"
 
-#: ../gtk/gtkaccellabel.c:875
+#: ../ctk/ctkaccellabel.c:875
 msgctxt "keyboard label"
 msgid "Backslash"
 msgstr "Backslash"
 
-#: ../gtk/gtkappchooserbutton.c:295
+#: ../ctk/ctkappchooserbutton.c:295
 msgid "Other application…"
 msgstr "Feidhmchlár eile…"
 
-#: ../gtk/gtkappchooserdialog.c:206 ../gtk/gtkappchooserdialog.c:213
-#: ../gtk/gtkappchooserdialog.c:230
+#: ../ctk/ctkappchooserdialog.c:206 ../ctk/ctkappchooserdialog.c:213
+#: ../ctk/ctkappchooserdialog.c:230
 msgid "Select Application"
 msgstr "Roghnaigh Feidhmchlár"
 
 #. Translators: %s is a filename
-#: ../gtk/gtkappchooserdialog.c:208
+#: ../ctk/ctkappchooserdialog.c:208
 #, c-format
 msgid "Opening “%s”."
 msgstr "“%s” á oscailt."
 
-#: ../gtk/gtkappchooserdialog.c:209
+#: ../ctk/ctkappchooserdialog.c:209
 #, fuzzy, c-format
 msgid "No applications found for “%s”"
 msgstr "Níl aon fheidhmchlár ar fáil chun “%s” a oscailt"
 
 #. Translators: %s is a file type description
-#: ../gtk/gtkappchooserdialog.c:215
+#: ../ctk/ctkappchooserdialog.c:215
 #, fuzzy, c-format
 msgid "Opening “%s” files."
 msgstr "%s á Oscailt"
 
-#: ../gtk/gtkappchooserdialog.c:217
+#: ../ctk/ctkappchooserdialog.c:217
 #, fuzzy, c-format
 msgid "No applications found for “%s” files"
 msgstr "Roghnaigh feidhmchlár le haghaidh comhaid “%s”"
 
-#: ../gtk/gtkappchooserdialog.c:310
+#: ../ctk/ctkappchooserdialog.c:310
 msgid "Forget association"
 msgstr "Déan dearmad ar an gcomhcheangal"
 
-#: ../gtk/gtkappchooserdialog.c:453
+#: ../ctk/ctkappchooserdialog.c:453
 msgid "Failed to start GNOME Software"
 msgstr ""
 
-#: ../gtk/gtkappchooserwidget.c:622
+#: ../ctk/ctkappchooserwidget.c:622
 msgid "Default Application"
 msgstr "Feidhmchlár Réamhshocraithe"
 
-#: ../gtk/gtkappchooserwidget.c:672
+#: ../ctk/ctkappchooserwidget.c:672
 #, fuzzy, c-format
 msgid "No applications found for “%s”."
 msgstr "Níl aon fheidhmchlár ar fáil chun “%s” a oscailt"
 
-#: ../gtk/gtkappchooserwidget.c:755
+#: ../ctk/ctkappchooserwidget.c:755
 msgid "Recommended Applications"
 msgstr "Feidhmchláir Mholta"
 
-#: ../gtk/gtkappchooserwidget.c:770
+#: ../ctk/ctkappchooserwidget.c:770
 msgid "Related Applications"
 msgstr "Feidhmchláir Gaolmhara"
 
-#: ../gtk/gtkappchooserwidget.c:784
+#: ../ctk/ctkappchooserwidget.c:784
 msgid "Other Applications"
 msgstr "Feidhmchláir Eile"
 
-#: ../gtk/gtkapplicationwindow.c:339 ../gtk/gtkprintoperation-unix.c:481
-#: ../gtk/gtkprintoperation-win32.c:1453 ../gtk/inspector/prop-editor.c:1566
+#: ../ctk/ctkapplicationwindow.c:339 ../ctk/ctkprintoperation-unix.c:481
+#: ../ctk/ctkprintoperation-win32.c:1453 ../ctk/inspector/prop-editor.c:1566
 msgid "Application"
 msgstr "Feidhmchlár"
 
-#: ../gtk/gtkbookmarksmanager.c:51
+#: ../ctk/ctkbookmarksmanager.c:51
 #, c-format
 msgid "%s does not exist in the bookmarks list"
 msgstr "Níl %s ann sa liosta leabharmharcanna"
 
-#: ../gtk/gtkbookmarksmanager.c:362
+#: ../ctk/ctkbookmarksmanager.c:362
 #, c-format
 msgid "%s already exists in the bookmarks list"
 msgstr "Tá %s ann sa liosta leabharmharcanna cheana"
 
-#: ../gtk/gtkbuilder-menus.c:223
+#: ../ctk/ctkbuilder-menus.c:223
 #, c-format
 msgid "Element <%s> not allowed inside <%s>"
 msgstr "Ní cheadaítear an eilimint <%s> istigh i <%s>"
 
-#: ../gtk/gtkbuilder-menus.c:228
+#: ../ctk/ctkbuilder-menus.c:228
 #, fuzzy, c-format
 msgid "Element <%s> not allowed at toplevel"
 msgstr "Ní cheadaítear an eilimint <%s> faoi <%s>"
 
-#: ../gtk/gtkbuilder-menus.c:317
+#: ../ctk/ctkbuilder-menus.c:317
 #, fuzzy, c-format
 msgid "Text may not appear inside <%s>"
 msgstr "Ní cheadaítear an eilimint <%s> istigh i <%s>"
 
-#: ../gtk/gtk-builder-tool.c:97
+#: ../ctk/ctk-builder-tool.c:97
 #, c-format
 msgid "Packing property %s::%s not found\n"
 msgstr ""
 
-#: ../gtk/gtk-builder-tool.c:99
+#: ../ctk/ctk-builder-tool.c:99
 #, c-format
 msgid "Cell property %s::%s not found\n"
 msgstr ""
 
-#: ../gtk/gtk-builder-tool.c:101
+#: ../ctk/ctk-builder-tool.c:101
 #, c-format
 msgid "Property %s::%s not found\n"
 msgstr ""
 
-#: ../gtk/gtk-builder-tool.c:109
+#: ../ctk/ctk-builder-tool.c:109
 #, fuzzy, c-format
 msgid "Couldn't parse value for %s::%s: %s\n"
 msgstr "Níorbh fhéidir %s a athainmniú go %s: %s\n"
 
-#: ../gtk/gtk-builder-tool.c:612
+#: ../ctk/ctk-builder-tool.c:612
 #, fuzzy, c-format
 msgid "Can't parse file: %s\n"
 msgstr "Ní féidir taispeáint a oscailt: %s"
 
-#: ../gtk/gtk-builder-tool.c:783
+#: ../ctk/ctk-builder-tool.c:783
 #, c-format
 msgid ""
 "Usage:\n"
-"  gtk-builder-tool [COMMAND] FILE\n"
+"  ctk-builder-tool [COMMAND] FILE\n"
 "\n"
 "Commands:\n"
 "  validate    Validate the file\n"
@@ -1743,7 +1743,7 @@ msgstr ""
 #. * text direction of RTL and specify "calendar:YM", then the year
 #. * will appear to the right of the month.
 #.
-#: ../gtk/gtkcalendar.c:798
+#: ../ctk/ctkcalendar.c:798
 msgid "calendar:MY"
 msgstr "calendar:MY"
 
@@ -1751,7 +1751,7 @@ msgstr "calendar:MY"
 #. * first day of the week to calendar:week_start:1 if you want Monday
 #. * to be the first day of the week, and so on.
 #.
-#: ../gtk/gtkcalendar.c:836
+#: ../ctk/ctkcalendar.c:836
 msgid "calendar:week_start:0"
 msgstr "calendar:week_start:0"
 
@@ -1760,7 +1760,7 @@ msgstr "calendar:week_start:0"
 #. *
 #. * If you don't understand this, leave it as "2000"
 #.
-#: ../gtk/gtkcalendar.c:1861
+#: ../ctk/ctkcalendar.c:1861
 msgctxt "year measurement template"
 msgid "2000"
 msgstr "2000"
@@ -1775,7 +1775,7 @@ msgstr "2000"
 #. * digits. That needs support from your system and locale definition
 #. * too.
 #.
-#: ../gtk/gtkcalendar.c:1892 ../gtk/gtkcalendar.c:2570
+#: ../ctk/ctkcalendar.c:1892 ../ctk/ctkcalendar.c:2570
 #, c-format
 msgctxt "calendar:day:digits"
 msgid "%d"
@@ -1791,14 +1791,14 @@ msgstr "%d"
 #. * digits. That needs support from your system and locale definition
 #. * too.
 #.
-#: ../gtk/gtkcalendar.c:1924 ../gtk/gtkcalendar.c:2436
+#: ../ctk/ctkcalendar.c:1924 ../ctk/ctkcalendar.c:2436
 #, c-format
 msgctxt "calendar:week:digits"
 msgid "%d"
 msgstr "%d"
 
 #. Translators: This dictates how the year is displayed in
-#. * gtkcalendar widget.  See strftime() manual for the format.
+#. * ctkcalendar widget.  See strftime() manual for the format.
 #. * Use only ASCII in the translation.
 #. *
 #. * Also look for the msgid "2000".
@@ -1807,7 +1807,7 @@ msgstr "%d"
 #. *
 #. * "%Y" is appropriate for most locales.
 #.
-#: ../gtk/gtkcalendar.c:2215
+#: ../ctk/ctkcalendar.c:2215
 msgctxt "calendar year format"
 msgid "%Y"
 msgstr "%Y"
@@ -1815,7 +1815,7 @@ msgstr "%Y"
 #. This label is displayed in a treeview cell displaying
 #. * a disabled accelerator key combination.
 #.
-#: ../gtk/gtkcellrendereraccel.c:274
+#: ../ctk/ctkcellrendereraccel.c:274
 msgctxt "Accelerator"
 msgid "Disabled"
 msgstr "Díchumasaithe"
@@ -1824,7 +1824,7 @@ msgstr "Díchumasaithe"
 #. * an accelerator key combination that is not valid according
 #. * to ctk_accelerator_valid().
 #.
-#: ../gtk/gtkcellrendereraccel.c:284
+#: ../ctk/ctkcellrendereraccel.c:284
 msgctxt "Accelerator"
 msgid "Invalid"
 msgstr "Neamhbhailí"
@@ -1832,250 +1832,250 @@ msgstr "Neamhbhailí"
 #. This label is displayed in a treeview cell displaying an accelerator
 #. * when the cell is clicked to change the acelerator.
 #.
-#: ../gtk/gtkcellrendereraccel.c:415 ../gtk/gtkcellrendereraccel.c:509
+#: ../ctk/ctkcellrendereraccel.c:415 ../ctk/ctkcellrendereraccel.c:509
 msgid "New accelerator…"
 msgstr "Aicearra nua…"
 
-#: ../gtk/gtkcellrendererprogress.c:377 ../gtk/gtkcellrendererprogress.c:470
+#: ../ctk/ctkcellrendererprogress.c:377 ../ctk/ctkcellrendererprogress.c:470
 #, c-format
 msgctxt "progress bar label"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ../gtk/gtkcolorbutton.c:183 ../gtk/gtkcolorbutton.c:383
+#: ../ctk/ctkcolorbutton.c:183 ../ctk/ctkcolorbutton.c:383
 msgid "Pick a Color"
 msgstr "Roghnaigh Dath"
 
-#: ../gtk/gtkcolorchooserwidget.c:300
+#: ../ctk/ctkcolorchooserwidget.c:300
 #, c-format
 msgid "Red %d%%, Green %d%%, Blue %d%%, Alpha %d%%"
 msgstr "Dearg %d%%, Uaine %d%%, Gorm %d%%, Alfa %d%%"
 
-#: ../gtk/gtkcolorchooserwidget.c:306
+#: ../ctk/ctkcolorchooserwidget.c:306
 #, c-format
 msgid "Red %d%%, Green %d%%, Blue %d%%"
 msgstr "Dearg %d%%, Uaine %d%%, Gorm %d%%"
 
-#: ../gtk/gtkcolorchooserwidget.c:383
+#: ../ctk/ctkcolorchooserwidget.c:383
 #, c-format
 msgid "Color: %s"
 msgstr "Dath: %s"
 
-#: ../gtk/gtkcolorchooserwidget.c:442
+#: ../ctk/ctkcolorchooserwidget.c:442
 msgctxt "Color name"
 msgid "Light Scarlet Red"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:443
+#: ../ctk/ctkcolorchooserwidget.c:443
 msgctxt "Color name"
 msgid "Scarlet Red"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:444
+#: ../ctk/ctkcolorchooserwidget.c:444
 msgctxt "Color name"
 msgid "Dark Scarlet Red"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:445
+#: ../ctk/ctkcolorchooserwidget.c:445
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:446
+#: ../ctk/ctkcolorchooserwidget.c:446
 msgctxt "Color name"
 msgid "Orange"
 msgstr "Oráiste"
 
-#: ../gtk/gtkcolorchooserwidget.c:447
+#: ../ctk/ctkcolorchooserwidget.c:447
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:448
+#: ../ctk/ctkcolorchooserwidget.c:448
 msgctxt "Color name"
 msgid "Light Butter"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:449
+#: ../ctk/ctkcolorchooserwidget.c:449
 msgctxt "Color name"
 msgid "Butter"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:450
+#: ../ctk/ctkcolorchooserwidget.c:450
 msgctxt "Color name"
 msgid "Dark Butter"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:451
+#: ../ctk/ctkcolorchooserwidget.c:451
 msgctxt "Color name"
 msgid "Light Chameleon"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:452
+#: ../ctk/ctkcolorchooserwidget.c:452
 msgctxt "Color name"
 msgid "Chameleon"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:453
+#: ../ctk/ctkcolorchooserwidget.c:453
 msgctxt "Color name"
 msgid "Dark Chameleon"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:454
+#: ../ctk/ctkcolorchooserwidget.c:454
 msgctxt "Color name"
 msgid "Light Sky Blue"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:455
+#: ../ctk/ctkcolorchooserwidget.c:455
 msgctxt "Color name"
 msgid "Sky Blue"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:456
+#: ../ctk/ctkcolorchooserwidget.c:456
 msgctxt "Color name"
 msgid "Dark Sky Blue"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:457
+#: ../ctk/ctkcolorchooserwidget.c:457
 msgctxt "Color name"
 msgid "Light Plum"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:458
+#: ../ctk/ctkcolorchooserwidget.c:458
 msgctxt "Color name"
 msgid "Plum"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:459
+#: ../ctk/ctkcolorchooserwidget.c:459
 msgctxt "Color name"
 msgid "Dark Plum"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:460
+#: ../ctk/ctkcolorchooserwidget.c:460
 msgctxt "Color name"
 msgid "Light Chocolate"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:461
+#: ../ctk/ctkcolorchooserwidget.c:461
 #, fuzzy
 msgctxt "Color name"
 msgid "Chocolate"
 msgstr "C_omhordaigh"
 
-#: ../gtk/gtkcolorchooserwidget.c:462
+#: ../ctk/ctkcolorchooserwidget.c:462
 msgctxt "Color name"
 msgid "Dark Chocolate"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:463
+#: ../ctk/ctkcolorchooserwidget.c:463
 msgctxt "Color name"
 msgid "Light Aluminum 1"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:464
+#: ../ctk/ctkcolorchooserwidget.c:464
 msgctxt "Color name"
 msgid "Aluminum 1"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:465
+#: ../ctk/ctkcolorchooserwidget.c:465
 msgctxt "Color name"
 msgid "Dark Aluminum 1"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:466
+#: ../ctk/ctkcolorchooserwidget.c:466
 msgctxt "Color name"
 msgid "Light Aluminum 2"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:467
+#: ../ctk/ctkcolorchooserwidget.c:467
 msgctxt "Color name"
 msgid "Aluminum 2"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:468
+#: ../ctk/ctkcolorchooserwidget.c:468
 msgctxt "Color name"
 msgid "Dark Aluminum 2"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:482
+#: ../ctk/ctkcolorchooserwidget.c:482
 msgctxt "Color name"
 msgid "Black"
 msgstr "Dubh"
 
-#: ../gtk/gtkcolorchooserwidget.c:483
+#: ../ctk/ctkcolorchooserwidget.c:483
 msgctxt "Color name"
 msgid "Very Dark Gray"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:484
+#: ../ctk/ctkcolorchooserwidget.c:484
 msgctxt "Color name"
 msgid "Darker Gray"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:485
+#: ../ctk/ctkcolorchooserwidget.c:485
 msgctxt "Color name"
 msgid "Dark Gray"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:486
+#: ../ctk/ctkcolorchooserwidget.c:486
 #, fuzzy
 msgctxt "Color name"
 msgid "Medium Gray"
 msgstr "Measartha"
 
-#: ../gtk/gtkcolorchooserwidget.c:487
+#: ../ctk/ctkcolorchooserwidget.c:487
 msgctxt "Color name"
 msgid "Light Gray"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:488
+#: ../ctk/ctkcolorchooserwidget.c:488
 msgctxt "Color name"
 msgid "Lighter Gray"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:489
+#: ../ctk/ctkcolorchooserwidget.c:489
 msgctxt "Color name"
 msgid "Very Light Gray"
 msgstr ""
 
-#: ../gtk/gtkcolorchooserwidget.c:490
+#: ../ctk/ctkcolorchooserwidget.c:490
 msgctxt "Color name"
 msgid "White"
 msgstr "Bán"
 
 #. translators: label for the custom section in the color chooser
-#: ../gtk/gtkcolorchooserwidget.c:539
+#: ../ctk/ctkcolorchooserwidget.c:539
 msgid "Custom"
 msgstr "Saincheaptha"
 
-#: ../gtk/gtkcolorchooserwidget.c:546
+#: ../ctk/ctkcolorchooserwidget.c:546
 msgid "Custom color"
 msgstr "Dath saincheaptha"
 
-#: ../gtk/gtkcolorchooserwidget.c:547
+#: ../ctk/ctkcolorchooserwidget.c:547
 msgid "Create a custom color"
 msgstr "Cruthaigh dath saincheaptha"
 
-#: ../gtk/gtkcolorchooserwidget.c:566
+#: ../ctk/ctkcolorchooserwidget.c:566
 #, c-format
 msgid "Custom color %d: %s"
 msgstr "Dath saincheaptha %d: %s"
 
-#: ../gtk/gtkcolorplane.c:401
+#: ../ctk/ctkcolorplane.c:401
 msgid "Color Plane"
 msgstr "Plána Datha"
 
-#: ../gtk/gtkcolorscale.c:309
+#: ../ctk/ctkcolorscale.c:309
 msgctxt "Color channel"
 msgid "Hue"
 msgstr "Lí"
 
-#: ../gtk/gtkcolorscale.c:311
+#: ../ctk/ctkcolorscale.c:311
 msgctxt "Color channel"
 msgid "Alpha"
 msgstr "Alfa"
 
-#: ../gtk/gtkcolorswatch.c:417
+#: ../ctk/ctkcolorswatch.c:417
 msgid "C_ustomize"
 msgstr "_Saincheap"
 
@@ -2085,129 +2085,129 @@ msgstr "_Saincheap"
 #. * Do *not* translate it to "predefinito:mm", if it
 #. * it isn't default:mm or default:inch it will not work
 #.
-#: ../gtk/gtkcustompaperunixdialog.c:117
+#: ../ctk/ctkcustompaperunixdialog.c:117
 msgid "default:mm"
 msgstr "default:mm"
 
 #. And show the custom paper dialog
-#: ../gtk/gtkcustompaperunixdialog.c:405 ../gtk/gtkprintunixdialog.c:3318
+#: ../ctk/ctkcustompaperunixdialog.c:405 ../ctk/ctkprintunixdialog.c:3318
 msgid "Manage Custom Sizes"
 msgstr "Bainistigh Méideanna Saincheaptha"
 
-#: ../gtk/gtkcustompaperunixdialog.c:567 ../gtk/gtkpagesetupunixdialog.c:811
+#: ../ctk/ctkcustompaperunixdialog.c:567 ../ctk/ctkpagesetupunixdialog.c:811
 msgid "inch"
 msgstr "orlach"
 
-#: ../gtk/gtkcustompaperunixdialog.c:569 ../gtk/gtkpagesetupunixdialog.c:809
+#: ../ctk/ctkcustompaperunixdialog.c:569 ../ctk/ctkpagesetupunixdialog.c:809
 msgid "mm"
 msgstr "mm"
 
-#: ../gtk/gtkcustompaperunixdialog.c:615
+#: ../ctk/ctkcustompaperunixdialog.c:615
 msgid "Margins from Printer…"
 msgstr "Imill ón bPrintéir…"
 
-#: ../gtk/gtkcustompaperunixdialog.c:781
+#: ../ctk/ctkcustompaperunixdialog.c:781
 #, c-format
 msgid "Custom Size %d"
 msgstr "Méid Saincheaptha %d"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1120
+#: ../ctk/ctkcustompaperunixdialog.c:1120
 msgid "_Width:"
 msgstr "_Leithead:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1131
+#: ../ctk/ctkcustompaperunixdialog.c:1131
 msgid "_Height:"
 msgstr "_Airde:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1142
+#: ../ctk/ctkcustompaperunixdialog.c:1142
 msgid "Paper Size"
 msgstr "Méid Pháipéir"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1151
+#: ../ctk/ctkcustompaperunixdialog.c:1151
 msgid "_Top:"
 msgstr "Ba_rr:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1162
+#: ../ctk/ctkcustompaperunixdialog.c:1162
 msgid "_Bottom:"
 msgstr "_Bun:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1173
+#: ../ctk/ctkcustompaperunixdialog.c:1173
 msgid "_Left:"
 msgstr "Ar _Chlé:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1184
+#: ../ctk/ctkcustompaperunixdialog.c:1184
 msgid "_Right:"
 msgstr "Ar _Dheis:"
 
-#: ../gtk/gtkcustompaperunixdialog.c:1223
+#: ../ctk/ctkcustompaperunixdialog.c:1223
 msgid "Paper Margins"
 msgstr "Imill an Páipéar"
 
-#: ../gtk/gtkentry.c:9637 ../gtk/gtklabel.c:6620 ../gtk/gtktextview.c:9381
+#: ../ctk/ctkentry.c:9637 ../ctk/ctklabel.c:6620 ../ctk/ctktextview.c:9381
 msgid "Cu_t"
 msgstr "_Gearr"
 
-#: ../gtk/gtkentry.c:9641 ../gtk/gtklabel.c:6621 ../gtk/gtktextview.c:9385
+#: ../ctk/ctkentry.c:9641 ../ctk/ctklabel.c:6621 ../ctk/ctktextview.c:9385
 msgid "_Copy"
 msgstr "_Cóipeáil"
 
-#: ../gtk/gtkentry.c:9645 ../gtk/gtklabel.c:6622 ../gtk/gtktextview.c:9387
+#: ../ctk/ctkentry.c:9645 ../ctk/ctklabel.c:6622 ../ctk/ctktextview.c:9387
 msgid "_Paste"
 msgstr "G_reamaigh"
 
-#: ../gtk/gtkentry.c:9648 ../gtk/gtkfilechooserwidget.c:1449
-#: ../gtk/gtkfilechooserwidget.c:2247 ../gtk/gtklabel.c:6624
-#: ../gtk/gtktextview.c:9390
+#: ../ctk/ctkentry.c:9648 ../ctk/ctkfilechooserwidget.c:1449
+#: ../ctk/ctkfilechooserwidget.c:2247 ../ctk/ctklabel.c:6624
+#: ../ctk/ctktextview.c:9390
 msgid "_Delete"
 msgstr "_Scrios"
 
-#: ../gtk/gtkentry.c:9659 ../gtk/gtklabel.c:6633 ../gtk/gtktextview.c:9404
+#: ../ctk/ctkentry.c:9659 ../ctk/ctklabel.c:6633 ../ctk/ctktextview.c:9404
 msgid "Select _All"
 msgstr "Roghnaigh _Uile"
 
-#: ../gtk/gtkentry.c:9837 ../gtk/gtktextview.c:9614
+#: ../ctk/ctkentry.c:9837 ../ctk/ctktextview.c:9614
 msgid "Select all"
 msgstr "Roghnaigh uile"
 
-#: ../gtk/gtkentry.c:9840 ../gtk/gtktextview.c:9617
+#: ../ctk/ctkentry.c:9840 ../ctk/ctktextview.c:9617
 msgid "Cut"
 msgstr "Gearr"
 
-#: ../gtk/gtkentry.c:9843 ../gtk/gtktextview.c:9620
+#: ../ctk/ctkentry.c:9843 ../ctk/ctktextview.c:9620
 msgid "Copy"
 msgstr "Cóipeáil"
 
-#: ../gtk/gtkentry.c:9846 ../gtk/gtktextview.c:9623
+#: ../ctk/ctkentry.c:9846 ../ctk/ctktextview.c:9623
 msgid "Paste"
 msgstr "Greamaigh"
 
-#: ../gtk/gtkentry.c:10932
+#: ../ctk/ctkentry.c:10932
 msgid "Caps Lock is on"
 msgstr "Tá Caps Lock ann"
 
-#: ../gtk/gtkfilechooserbutton.c:104
+#: ../ctk/ctkfilechooserbutton.c:104
 msgid "Select a File"
 msgstr "Roghnaigh Comhad"
 
-#: ../gtk/gtkfilechooserbutton.c:105 ../gtk/gtkplacessidebar.c:930
+#: ../ctk/ctkfilechooserbutton.c:105 ../ctk/ctkplacessidebar.c:930
 msgid "Desktop"
 msgstr "Deasc"
 
-#: ../gtk/gtkfilechooserbutton.c:106
+#: ../ctk/ctkfilechooserbutton.c:106
 msgid "(None)"
 msgstr "(Neamhní)"
 
 #. Open item is always present
-#: ../gtk/gtkfilechooserbutton.c:796 ../gtk/gtkplacessidebar.c:3430
-#: ../gtk/gtkplacesview.c:1619
+#: ../ctk/ctkfilechooserbutton.c:796 ../ctk/ctkplacessidebar.c:3430
+#: ../ctk/ctkplacesview.c:1619
 msgid "_Open"
 msgstr "_Oscail"
 
-#: ../gtk/gtkfilechooserbutton.c:2140
+#: ../ctk/ctkfilechooserbutton.c:2140
 msgid "Other…"
 msgstr "Eile…"
 
-#: ../gtk/gtkfilechooserdialog.c:570
+#: ../ctk/ctkfilechooserdialog.c:570
 msgid "_Name"
 msgstr "_Ainm"
 
@@ -2215,20 +2215,20 @@ msgstr "_Ainm"
 #. * is a hostname. Nautilus and the panel contain the same string
 #. * to translate.
 #.
-#: ../gtk/gtkfilechooserutils.c:488
+#: ../ctk/ctkfilechooserutils.c:488
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s ar %2$s"
 
-#: ../gtk/gtkfilechooserwidget.c:361
+#: ../ctk/ctkfilechooserwidget.c:361
 msgid "Type name of new folder"
 msgstr "Clóscríobh ainm den fhillteán nua"
 
-#: ../gtk/gtkfilechooserwidget.c:772
+#: ../ctk/ctkfilechooserwidget.c:772
 msgid "The folder could not be created"
 msgstr "Níorbh fhéidir an fillteán a chruthú"
 
-#: ../gtk/gtkfilechooserwidget.c:785
+#: ../ctk/ctkfilechooserwidget.c:785
 msgid ""
 "The folder could not be created, as a file with the same name already "
 "exists.  Try using a different name for the folder, or rename the file first."
@@ -2237,269 +2237,269 @@ msgstr ""
 "an ainm céanna.  Bain triail as úsáid ainm difriúil don fhillteán, nó "
 "athainmnigh an comhad ar dtús."
 
-#: ../gtk/gtkfilechooserwidget.c:799
+#: ../ctk/ctkfilechooserwidget.c:799
 msgid "You need to choose a valid filename."
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:802
+#: ../ctk/ctkfilechooserwidget.c:802
 #, fuzzy, c-format
 msgid "Cannot create a file under %s as it is not a folder"
 msgstr "Ní féidir athrú go dtí an fillteán mar níl sé logánta"
 
-#: ../gtk/gtkfilechooserwidget.c:810
+#: ../ctk/ctkfilechooserwidget.c:810
 #, fuzzy
 msgid "Cannot create file as the filename is too long"
 msgstr "Ní féidir athrú go dtí an fillteán mar níl sé logánta"
 
-#: ../gtk/gtkfilechooserwidget.c:811
+#: ../ctk/ctkfilechooserwidget.c:811
 msgid "Try using a shorter name."
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:821
+#: ../ctk/ctkfilechooserwidget.c:821
 #, fuzzy
 msgid "You may only select folders"
 msgstr "Níorbh fhéidir comhad a roghnú"
 
-#: ../gtk/gtkfilechooserwidget.c:822
+#: ../ctk/ctkfilechooserwidget.c:822
 msgid "The item that you selected is not a folder try using a different item."
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:830
+#: ../ctk/ctkfilechooserwidget.c:830
 msgid "Invalid file name"
 msgstr "Ainm comhaid neamhbhailí"
 
-#: ../gtk/gtkfilechooserwidget.c:840
+#: ../ctk/ctkfilechooserwidget.c:840
 msgid "The folder contents could not be displayed"
 msgstr "Níorbh fhéidir ábhar an fhillteáin a thaispeáint"
 
-#: ../gtk/gtkfilechooserwidget.c:849
+#: ../ctk/ctkfilechooserwidget.c:849
 #, fuzzy
 msgid "The file could not be deleted"
 msgstr "Níorbh fhéidir an fillteán a chruthú"
 
-#: ../gtk/gtkfilechooserwidget.c:857
+#: ../ctk/ctkfilechooserwidget.c:857
 #, fuzzy
 msgid "The file could not be moved to the Trash"
 msgstr "Níorbh fhéidir an fillteán a chruthú"
 
-#: ../gtk/gtkfilechooserwidget.c:1002
+#: ../ctk/ctkfilechooserwidget.c:1002
 msgid "A folder with that name already exists"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1004
+#: ../ctk/ctkfilechooserwidget.c:1004
 msgid "A file with that name already exists"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1039
+#: ../ctk/ctkfilechooserwidget.c:1039
 #, fuzzy
 msgid "A folder cannot be called “.”"
 msgstr "Níorbh fhéidir an fillteán a chruthú"
 
-#: ../gtk/gtkfilechooserwidget.c:1040
+#: ../ctk/ctkfilechooserwidget.c:1040
 msgid "A file cannot be called “.”"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1043
+#: ../ctk/ctkfilechooserwidget.c:1043
 #, fuzzy
 msgid "A folder cannot be called “..”"
 msgstr "Níorbh fhéidir an fillteán a chruthú"
 
-#: ../gtk/gtkfilechooserwidget.c:1044
+#: ../ctk/ctkfilechooserwidget.c:1044
 msgid "A file cannot be called “..”"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1047
+#: ../ctk/ctkfilechooserwidget.c:1047
 msgid "Folder names cannot contain “/”"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1048
+#: ../ctk/ctkfilechooserwidget.c:1048
 msgid "File names cannot contain “/”"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1074
+#: ../ctk/ctkfilechooserwidget.c:1074
 #, fuzzy
 msgid "Folder names should not begin with a space"
 msgstr "Níorbh fhéidir ábhar an fhillteáin a thaispeáint"
 
-#: ../gtk/gtkfilechooserwidget.c:1075
+#: ../ctk/ctkfilechooserwidget.c:1075
 msgid "File names should not begin with a space"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1079
+#: ../ctk/ctkfilechooserwidget.c:1079
 #, fuzzy
 msgid "Folder names should not end with a space"
 msgstr "Níorbh fhéidir ábhar an fhillteáin a thaispeáint"
 
-#: ../gtk/gtkfilechooserwidget.c:1080
+#: ../ctk/ctkfilechooserwidget.c:1080
 msgid "File names should not end with a space"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1083
+#: ../ctk/ctkfilechooserwidget.c:1083
 msgid "Folder names starting with a “.” are hidden"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1084
+#: ../ctk/ctkfilechooserwidget.c:1084
 msgid "File names starting with a “.” are hidden"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1444
+#: ../ctk/ctkfilechooserwidget.c:1444
 #, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1447
+#: ../ctk/ctkfilechooserwidget.c:1447
 msgid "If you delete an item, it will be permanently lost."
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:1581
+#: ../ctk/ctkfilechooserwidget.c:1581
 msgid "The file could not be renamed"
 msgstr "Níorbh fhéidir an comhad a athainmniú"
 
-#: ../gtk/gtkfilechooserwidget.c:1893
+#: ../ctk/ctkfilechooserwidget.c:1893
 msgid "Could not select file"
 msgstr "Níorbh fhéidir comhad a roghnú"
 
-#: ../gtk/gtkfilechooserwidget.c:2242
+#: ../ctk/ctkfilechooserwidget.c:2242
 msgid "_Visit File"
 msgstr "_Féach ar Chomhad"
 
-#: ../gtk/gtkfilechooserwidget.c:2243
+#: ../ctk/ctkfilechooserwidget.c:2243
 msgid "_Open With File Manager"
 msgstr "_Oscail le Bainisteoir Comhad"
 
-#: ../gtk/gtkfilechooserwidget.c:2244
+#: ../ctk/ctkfilechooserwidget.c:2244
 msgid "_Copy Location"
 msgstr "Cóipeái_l Suíomh"
 
-#: ../gtk/gtkfilechooserwidget.c:2245
+#: ../ctk/ctkfilechooserwidget.c:2245
 msgid "_Add to Bookmarks"
 msgstr "_Cuir le Leabharmharcanna"
 
-#: ../gtk/gtkfilechooserwidget.c:2246 ../gtk/gtkplacessidebar.c:2468
+#: ../ctk/ctkfilechooserwidget.c:2246 ../ctk/ctkplacessidebar.c:2468
 msgid "_Rename"
 msgstr "_Athainmnigh"
 
-#: ../gtk/gtkfilechooserwidget.c:2248
+#: ../ctk/ctkfilechooserwidget.c:2248
 msgid "_Move to Trash"
 msgstr "_Bog go Bruscar"
 
-#: ../gtk/gtkfilechooserwidget.c:2252
+#: ../ctk/ctkfilechooserwidget.c:2252
 msgid "Show _Hidden Files"
 msgstr "Taispeáin Com_haid Folaithe"
 
-#: ../gtk/gtkfilechooserwidget.c:2253
+#: ../ctk/ctkfilechooserwidget.c:2253
 msgid "Show _Size Column"
 msgstr "Taispeáin Colún _Méide"
 
-#: ../gtk/gtkfilechooserwidget.c:2254
+#: ../ctk/ctkfilechooserwidget.c:2254
 msgid "Show _Time"
 msgstr "Taispeáin _Am"
 
-#: ../gtk/gtkfilechooserwidget.c:2255
+#: ../ctk/ctkfilechooserwidget.c:2255
 msgid "Sort _Folders before Files"
 msgstr ""
 
-#: ../gtk/gtkfilechooserwidget.c:2567
+#: ../ctk/ctkfilechooserwidget.c:2567
 msgid "Location"
 msgstr "Suíomh"
 
 #. Label
-#: ../gtk/gtkfilechooserwidget.c:2653
+#: ../ctk/ctkfilechooserwidget.c:2653
 msgid "_Name:"
 msgstr "_Ainm:"
 
-#: ../gtk/gtkfilechooserwidget.c:3274
+#: ../ctk/ctkfilechooserwidget.c:3274
 #, fuzzy
 msgid "Searching"
 msgstr "Cuardaigh"
 
-#: ../gtk/gtkfilechooserwidget.c:3279 ../gtk/gtkfilechooserwidget.c:3293
+#: ../ctk/ctkfilechooserwidget.c:3279 ../ctk/ctkfilechooserwidget.c:3293
 #, fuzzy, c-format
 msgid "Searching in %s"
 msgstr "%s á Thosú"
 
-#: ../gtk/gtkfilechooserwidget.c:3303
+#: ../ctk/ctkfilechooserwidget.c:3303
 msgid "Enter location"
 msgstr "Iontráil suíomh"
 
-#: ../gtk/gtkfilechooserwidget.c:3305
+#: ../ctk/ctkfilechooserwidget.c:3305
 msgid "Enter location or URL"
 msgstr "Iontráil suíomh nó URL"
 
-#: ../gtk/gtkfilechooserwidget.c:4343 ../gtk/gtkfilechooserwidget.c:7224
+#: ../ctk/ctkfilechooserwidget.c:4343 ../ctk/ctkfilechooserwidget.c:7224
 msgid "Modified"
 msgstr "Athraithe"
 
-#: ../gtk/gtkfilechooserwidget.c:4621
+#: ../ctk/ctkfilechooserwidget.c:4621
 #, c-format
 msgid "Could not read the contents of %s"
 msgstr "Níorbh fhéidir ábhar %s a léamh"
 
-#: ../gtk/gtkfilechooserwidget.c:4625
+#: ../ctk/ctkfilechooserwidget.c:4625
 msgid "Could not read the contents of the folder"
 msgstr "Níorbh fhéidir ábhar an fhíllteáin a léamh"
 
-#: ../gtk/gtkfilechooserwidget.c:4743 ../gtk/gtkfilechooserwidget.c:4789
+#: ../ctk/ctkfilechooserwidget.c:4743 ../ctk/ctkfilechooserwidget.c:4789
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ../gtk/gtkfilechooserwidget.c:4745 ../gtk/gtkfilechooserwidget.c:4791
+#: ../ctk/ctkfilechooserwidget.c:4745 ../ctk/ctkfilechooserwidget.c:4791
 msgid "%l:%M %p"
 msgstr "%l:%M %p"
 
-#: ../gtk/gtkfilechooserwidget.c:4749
+#: ../ctk/ctkfilechooserwidget.c:4749
 msgid "Yesterday"
 msgstr "Inné"
 
-#: ../gtk/gtkfilechooserwidget.c:4757
+#: ../ctk/ctkfilechooserwidget.c:4757
 msgid "%-e %b"
 msgstr "%-e %b"
 
-#: ../gtk/gtkfilechooserwidget.c:4761
+#: ../ctk/ctkfilechooserwidget.c:4761
 msgid "%-e %b %Y"
 msgstr "%-e %b %Y"
 
 #. Translators: We don't know whether this printer is
 #. * available to print to.
-#: ../gtk/gtkfilechooserwidget.c:4994 ../gtk/inspector/prop-editor.c:1569
-#: ../modules/printbackends/cloudprint/gtkprintbackendcloudprint.c:748
+#: ../ctk/ctkfilechooserwidget.c:4994 ../ctk/inspector/prop-editor.c:1569
+#: ../modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
 msgid "Unknown"
 msgstr "Anaithnid"
 
-#: ../gtk/gtkfilechooserwidget.c:5033 ../gtk/gtkplacessidebar.c:915
+#: ../ctk/ctkfilechooserwidget.c:5033 ../ctk/ctkplacessidebar.c:915
 msgid "Home"
 msgstr "Baile"
 
-#: ../gtk/gtkfilechooserwidget.c:5526
+#: ../ctk/ctkfilechooserwidget.c:5526
 msgid "Cannot change to folder because it is not local"
 msgstr "Ní féidir athrú go dtí an fillteán mar níl sé logánta"
 
-#: ../gtk/gtkfilechooserwidget.c:6303 ../gtk/gtkprintunixdialog.c:656
+#: ../ctk/ctkfilechooserwidget.c:6303 ../ctk/ctkprintunixdialog.c:656
 #, c-format
 msgid "A file named “%s” already exists.  Do you want to replace it?"
 msgstr "Tá comhad darbh ainm “%s” ann cheana.  Ar mhaith leat é a athchur?"
 
-#: ../gtk/gtkfilechooserwidget.c:6306 ../gtk/gtkprintunixdialog.c:660
+#: ../ctk/ctkfilechooserwidget.c:6306 ../ctk/ctkprintunixdialog.c:660
 #, c-format
 msgid ""
 "The file already exists in “%s”.  Replacing it will overwrite its contents."
 msgstr ""
 "Tá an comhad ann i “%s” cheana.  Forscríobhfar a ábhar má ionadaítear é."
 
-#: ../gtk/gtkfilechooserwidget.c:6311 ../gtk/gtkprintunixdialog.c:668
+#: ../ctk/ctkfilechooserwidget.c:6311 ../ctk/ctkprintunixdialog.c:668
 msgid "_Replace"
 msgstr "_Ionadaigh"
 
-#: ../gtk/gtkfilechooserwidget.c:6521
+#: ../ctk/ctkfilechooserwidget.c:6521
 #, fuzzy
 msgid "You do not have access to the specified folder."
 msgstr "Níorbh fhéidir ábhar an fhíllteáin a léamh"
 
-#: ../gtk/gtkfilechooserwidget.c:7135
+#: ../ctk/ctkfilechooserwidget.c:7135
 msgid "Could not start the search process"
 msgstr "Níorbh fhéidir an próiseas cuardaigh a thosú"
 
-#: ../gtk/gtkfilechooserwidget.c:7136
+#: ../ctk/ctkfilechooserwidget.c:7136
 #, fuzzy
 msgid ""
 "The program was not able to create a connection to the indexer daemon. "
@@ -2509,11 +2509,11 @@ msgstr ""
 "innéacsóra.\n"
 "Cinntigh go bhfuil sé á rith, le do thoil."
 
-#: ../gtk/gtkfilechooserwidget.c:7148
+#: ../ctk/ctkfilechooserwidget.c:7148
 msgid "Could not send the search request"
 msgstr "Níorbh fhéidir an t-iarratas cuardaigh a sheoladh"
 
-#: ../gtk/gtkfilechooserwidget.c:7441
+#: ../ctk/ctkfilechooserwidget.c:7441
 msgid "Accessed"
 msgstr ""
 
@@ -2522,104 +2522,104 @@ msgstr ""
 #. * token for the fake “File System” volume.  So, we’ll return a pointer to
 #. * this particular string.
 #.
-#: ../gtk/gtkfilesystem.c:48
+#: ../ctk/ctkfilesystem.c:48
 msgid "File System"
 msgstr "Córas Comhaid"
 
-#: ../gtk/gtkfontbutton.c:361
+#: ../ctk/ctkfontbutton.c:361
 msgid "Sans 12"
 msgstr "Sans 12"
 
-#: ../gtk/gtkfontbutton.c:474 ../gtk/gtkfontbutton.c:602
+#: ../ctk/ctkfontbutton.c:474 ../ctk/ctkfontbutton.c:602
 msgid "Pick a Font"
 msgstr "Roghnaigh Cló"
 
 #. Translators, these strings are names for various 'standard' cover
 #. * pages that the printing system may support.
 #.
-#: ../gtk/gtkfontbutton.c:1213 ../gtk/inspector/general.c:226
-#: ../gtk/inspector/general.c:227 ../gtk/inspector/gestures.c:128
-#: ../gtk/inspector/prop-editor.c:1200 ../gtk/inspector/size-groups.c:252
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5322
+#: ../ctk/ctkfontbutton.c:1213 ../ctk/inspector/general.c:226
+#: ../ctk/inspector/general.c:227 ../ctk/inspector/gestures.c:128
+#: ../ctk/inspector/prop-editor.c:1200 ../ctk/inspector/size-groups.c:252
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5322
 msgid "None"
 msgstr "Neamhní"
 
-#: ../gtk/gtkglarea.c:303
+#: ../ctk/ctkglarea.c:303
 #, fuzzy
 msgid "OpenGL context creation failed"
 msgstr "Theip ar fháil eolais printéara"
 
-#: ../gtk/gtkheaderbar.c:397
+#: ../ctk/ctkheaderbar.c:397
 msgid "Application menu"
 msgstr "Roghchlár feidhmchlár"
 
-#: ../gtk/gtkheaderbar.c:459 ../gtk/gtkwindow.c:8688
+#: ../ctk/ctkheaderbar.c:459 ../ctk/ctkwindow.c:8688
 msgid "Close"
 msgstr "Dún"
 
-#: ../gtk/gtkicontheme.c:2313 ../gtk/gtkicontheme.c:2377
+#: ../ctk/ctkicontheme.c:2313 ../ctk/ctkicontheme.c:2377
 #, fuzzy, c-format
 msgid "Icon '%s' not present in theme %s"
 msgstr "Níl deilbhín '%s' ann sa téama"
 
-#: ../gtk/gtkicontheme.c:4016 ../gtk/gtkicontheme.c:4383
+#: ../ctk/ctkicontheme.c:4016 ../ctk/ctkicontheme.c:4383
 msgid "Failed to load icon"
 msgstr "Theip ar luchtú deilbhín"
 
-#: ../gtk/gtkimmodule.c:530
+#: ../ctk/ctkimmodule.c:530
 msgctxt "input method menu"
 msgid "Simple"
 msgstr "Simplí"
 
-#: ../gtk/gtkimmodule.c:546
+#: ../ctk/ctkimmodule.c:546
 msgctxt "input method menu"
 msgid "None"
 msgstr "Neamhní"
 
-#: ../gtk/gtkimmulticontext.c:609
+#: ../ctk/ctkimmulticontext.c:609
 msgctxt "input method menu"
 msgid "System"
 msgstr "Córas"
 
-#: ../gtk/gtkimmulticontext.c:688
+#: ../ctk/ctkimmulticontext.c:688
 #, c-format
 msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "Córas (%s)"
 
-#: ../gtk/gtkinfobar.c:1242 ../gtk/gtkmessagedialog.c:376
+#: ../ctk/ctkinfobar.c:1242 ../ctk/ctkmessagedialog.c:376
 msgid "Information"
 msgstr "Eolas"
 
-#: ../gtk/gtkinfobar.c:1246 ../gtk/gtkmessagedialog.c:380
+#: ../ctk/ctkinfobar.c:1246 ../ctk/ctkmessagedialog.c:380
 msgid "Question"
 msgstr "Ceist"
 
-#: ../gtk/gtkinfobar.c:1250 ../gtk/gtkmessagedialog.c:384
+#: ../ctk/ctkinfobar.c:1250 ../ctk/ctkmessagedialog.c:384
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: ../gtk/gtkinfobar.c:1254 ../gtk/gtkmessagedialog.c:388
+#: ../ctk/ctkinfobar.c:1254 ../ctk/ctkmessagedialog.c:388
 msgid "Error"
 msgstr "Earráid"
 
 #. Open Link
-#: ../gtk/gtklabel.c:6601
+#: ../ctk/ctklabel.c:6601
 msgid "_Open Link"
 msgstr "_Oscail Nasc"
 
 #. Copy Link Address
-#: ../gtk/gtklabel.c:6610
+#: ../ctk/ctklabel.c:6610
 msgid "Copy _Link Address"
 msgstr "Cóipeáil Seoladh an _Naisc"
 
-#: ../gtk/gtk-launch.c:71
+#: ../ctk/ctk-launch.c:71
 msgid "APPLICATION [URI…] — launch an APPLICATION with URI."
 msgstr "FEIDHMCHLÁR [URI…] — luchtaigh FEIDHMCHLÁR le URI."
 
 #. Translators: this message will appear after the usage string
 #. and before the list of options.
-#: ../gtk/gtk-launch.c:75
+#: ../ctk/ctk-launch.c:75
 msgid ""
 "Launch specified application by its desktop file info\n"
 "optionally passing list of URIs as arguments."
@@ -2627,59 +2627,59 @@ msgstr ""
 "Luchtaigh an feidhmchlár sonraithe le heolas óna comhad .desktop,\n"
 "agus liosta URIanna á seoladh mar argóintí go roghnach."
 
-#: ../gtk/gtk-launch.c:87
+#: ../ctk/ctk-launch.c:87
 #, c-format
 msgid "Error parsing commandline options: %s\n"
 msgstr "Earráid agus roghanna líne na n-orduithe á bparsáil: %s\n"
 
-#: ../gtk/gtk-launch.c:89 ../gtk/gtk-launch.c:102
+#: ../ctk/ctk-launch.c:89 ../ctk/ctk-launch.c:102
 #, c-format
 msgid "Try \"%s --help\" for more information."
 msgstr "Bain triail as \"%s --help\" le haghaidh tuilleadh eolais."
 
 #. Translators: the %s is the program name. This error message
-#. means the user is calling gtk-launch without any argument.
-#: ../gtk/gtk-launch.c:100
+#. means the user is calling ctk-launch without any argument.
+#: ../ctk/ctk-launch.c:100
 #, c-format
 msgid "%s: missing application name"
 msgstr "%s: ainm feidhmhcláir ar iarraidh"
 
-#: ../gtk/gtk-launch.c:121
+#: ../ctk/ctk-launch.c:121
 #, c-format
 msgid "Creating AppInfo from id not supported on non unix operating systems"
 msgstr ""
 
 #. Translators: the first %s is the program name, the second one
 #. is the application name.
-#: ../gtk/gtk-launch.c:129
+#: ../ctk/ctk-launch.c:129
 #, c-format
 msgid "%s: no such application %s"
 msgstr "%s níl a leithéid d'fheidmhclár ann: %s"
 
 #. Translators: the first %s is the program name, the second one
 #. is the error message.
-#: ../gtk/gtk-launch.c:147
+#: ../ctk/ctk-launch.c:147
 #, c-format
 msgid "%s: error launching application: %s\n"
 msgstr "%s: earráid agus feidhmchlár á luchtú: %s\n"
 
-#: ../gtk/gtklinkbutton.c:408
+#: ../ctk/ctklinkbutton.c:408
 msgid "Copy URL"
 msgstr "Cóipeáil URL"
 
-#: ../gtk/gtklinkbutton.c:571
+#: ../ctk/ctklinkbutton.c:571
 msgid "Invalid URI"
 msgstr "URI Neamhbhailí"
 
-#: ../gtk/gtklockbutton.c:272
+#: ../ctk/ctklockbutton.c:272
 msgid "Lock"
 msgstr "Cuir Faoi Ghlas"
 
-#: ../gtk/gtklockbutton.c:281
+#: ../ctk/ctklockbutton.c:281
 msgid "Unlock"
 msgstr "Díghlasáil"
 
-#: ../gtk/gtklockbutton.c:290
+#: ../ctk/ctklockbutton.c:290
 msgid ""
 "Dialog is unlocked.\n"
 "Click to prevent further changes"
@@ -2687,7 +2687,7 @@ msgstr ""
 "Tá an dialóg díghlasáilte.\n"
 "Cliceáil chun cosc a chur ar athruithe le teacht"
 
-#: ../gtk/gtklockbutton.c:299
+#: ../ctk/ctklockbutton.c:299
 msgid ""
 "Dialog is locked.\n"
 "Click to make changes"
@@ -2695,7 +2695,7 @@ msgstr ""
 "Tá an dialóg faoi ghlas.\n"
 "Cliceáil chun athruithe a dhéanamh"
 
-#: ../gtk/gtklockbutton.c:308
+#: ../ctk/ctklockbutton.c:308
 msgid ""
 "System policy prevents changes.\n"
 "Contact your system administrator"
@@ -2703,41 +2703,41 @@ msgstr ""
 "Cuireann polasaí an chórais cosc ar athruithe.\n"
 "Déan teagmháil le do riarthóir córais."
 
-#. Description of --gtk-module=MODULES in --help output
-#: ../gtk/gtkmain.c:454
+#. Description of --ctk-module=MODULES in --help output
+#: ../ctk/ctkmain.c:454
 msgid "Load additional GTK+ modules"
 msgstr "Luchtaigh modúil GTK+ breise"
 
-#. Placeholder in --gtk-module=MODULES in --help output
-#: ../gtk/gtkmain.c:455
+#. Placeholder in --ctk-module=MODULES in --help output
+#: ../ctk/ctkmain.c:455
 msgid "MODULES"
 msgstr "MODÚIL"
 
 #. Description of --g-fatal-warnings in --help output
-#: ../gtk/gtkmain.c:457
+#: ../ctk/ctkmain.c:457
 msgid "Make all warnings fatal"
 msgstr "Déan marfach gach rabhadh"
 
-#. Description of --gtk-debug=FLAGS in --help output
-#: ../gtk/gtkmain.c:460
+#. Description of --ctk-debug=FLAGS in --help output
+#: ../ctk/ctkmain.c:460
 msgid "GTK+ debugging flags to set"
 msgstr "Bratacha dífhabhtaithe GTK+ le socrú"
 
-#. Description of --gtk-no-debug=FLAGS in --help output
-#: ../gtk/gtkmain.c:463
+#. Description of --ctk-no-debug=FLAGS in --help output
+#: ../ctk/ctkmain.c:463
 msgid "GTK+ debugging flags to unset"
 msgstr "Bratacha dífhabhtaithe GTK+ le díshocrú"
 
-#: ../gtk/gtkmain.c:781
+#: ../ctk/ctkmain.c:781
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "Ní féidir taispeáint a oscailt: %s"
 
-#: ../gtk/gtkmain.c:858
+#: ../ctk/ctkmain.c:858
 msgid "GTK+ Options"
 msgstr "Roghanna GTK+"
 
-#: ../gtk/gtkmain.c:858
+#: ../ctk/ctkmain.c:858
 msgid "Show GTK+ Options"
 msgstr "Taispeáin Roghanna GTK+"
 
@@ -2746,122 +2746,122 @@ msgstr "Taispeáin Roghanna GTK+"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ../gtk/gtkmain.c:1182
+#: ../ctk/ctkmain.c:1182
 msgid "default:LTR"
 msgstr "default:LTR"
 
-#: ../gtk/gtkmessagedialog.c:946
+#: ../ctk/ctkmessagedialog.c:946
 msgid "_No"
 msgstr "_Níl"
 
-#: ../gtk/gtkmessagedialog.c:947
+#: ../ctk/ctkmessagedialog.c:947
 msgid "_Yes"
 msgstr "_Tá"
 
-#: ../gtk/gtkmountoperation.c:544
+#: ../ctk/ctkmountoperation.c:544
 msgid "Co_nnect"
 msgstr "_Nasc"
 
-#: ../gtk/gtkmountoperation.c:620
+#: ../ctk/ctkmountoperation.c:620
 msgid "Connect As"
 msgstr "Nasc Mar"
 
-#: ../gtk/gtkmountoperation.c:629
+#: ../ctk/ctkmountoperation.c:629
 msgid "_Anonymous"
 msgstr "Gan _Ainm"
 
-#: ../gtk/gtkmountoperation.c:638
+#: ../ctk/ctkmountoperation.c:638
 msgid "Registered U_ser"
 msgstr "Ú_sáideoir Cláraithe"
 
-#: ../gtk/gtkmountoperation.c:649
+#: ../ctk/ctkmountoperation.c:649
 msgid "_Username"
 msgstr "_Ainm úsáideora"
 
-#: ../gtk/gtkmountoperation.c:654
+#: ../ctk/ctkmountoperation.c:654
 msgid "_Domain"
 msgstr "F_earann"
 
-#: ../gtk/gtkmountoperation.c:660
+#: ../ctk/ctkmountoperation.c:660
 msgid "_Password"
 msgstr "_Focal faire"
 
-#: ../gtk/gtkmountoperation.c:682
+#: ../ctk/ctkmountoperation.c:682
 msgid "Forget password _immediately"
 msgstr "Déan _dearmad ar an bhfocal faire láithreach"
 
-#: ../gtk/gtkmountoperation.c:692
+#: ../ctk/ctkmountoperation.c:692
 msgid "Remember password until you _logout"
 msgstr "Meabhraigh focal faire go dtí go _logálann tú amach"
 
-#: ../gtk/gtkmountoperation.c:702
+#: ../ctk/ctkmountoperation.c:702
 msgid "Remember _forever"
 msgstr "Meabhraigh go d_eo"
 
-#: ../gtk/gtkmountoperation.c:1091
+#: ../ctk/ctkmountoperation.c:1091
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "Feidhmchlár Anaithnid (PID %d)"
 
-#: ../gtk/gtkmountoperation.c:1274
+#: ../ctk/ctkmountoperation.c:1274
 msgid "Unable to end process"
 msgstr "Ní féidir deireadh a chur leis an bpróiseas"
 
-#: ../gtk/gtkmountoperation.c:1313
+#: ../ctk/ctkmountoperation.c:1313
 msgid "_End Process"
 msgstr "Cuir _Deireadh Leis an bPróiseas"
 
-#: ../gtk/gtkmountoperation-stub.c:62
+#: ../ctk/ctkmountoperation-stub.c:62
 #, c-format
 msgid "Cannot kill process with PID %d. Operation is not implemented."
 msgstr ""
 "Ní féidir an próiseas le PID %d a mharú. Níl an oibríocht curtha i ngníomh."
 
 #. translators: this string is a name for the 'less' command
-#: ../gtk/gtkmountoperation-x11.c:955
+#: ../ctk/ctkmountoperation-x11.c:955
 msgid "Terminal Pager"
 msgstr "Brabhsálaí Teirminéil"
 
-#: ../gtk/gtkmountoperation-x11.c:956
+#: ../ctk/ctkmountoperation-x11.c:956
 msgid "Top Command"
 msgstr "Ordú Top"
 
-#: ../gtk/gtkmountoperation-x11.c:957
+#: ../ctk/ctkmountoperation-x11.c:957
 msgid "Bourne Again Shell"
 msgstr "Blaosc Bourne Again"
 
-#: ../gtk/gtkmountoperation-x11.c:958
+#: ../ctk/ctkmountoperation-x11.c:958
 msgid "Bourne Shell"
 msgstr "Blaosc Bourne"
 
-#: ../gtk/gtkmountoperation-x11.c:959
+#: ../ctk/ctkmountoperation-x11.c:959
 msgid "Z Shell"
 msgstr "Blaosc Z"
 
-#: ../gtk/gtkmountoperation-x11.c:1056
+#: ../ctk/ctkmountoperation-x11.c:1056
 #, c-format
 msgid "Cannot end process with PID %d: %s"
 msgstr "Ní féidir deireadh a chur leis an bpróiseas le PID %d: %s"
 
-#: ../gtk/gtknotebook.c:5153 ../gtk/gtknotebook.c:7882
+#: ../ctk/ctknotebook.c:5153 ../ctk/ctknotebook.c:7882
 #, c-format
 msgid "Page %u"
 msgstr "Leathanach %u"
 
-#: ../gtk/gtkpagesetup.c:652 ../gtk/gtkpapersize.c:986
-#: ../gtk/gtkpapersize.c:1026
+#: ../ctk/ctkpagesetup.c:652 ../ctk/ctkpapersize.c:986
+#: ../ctk/ctkpapersize.c:1026
 msgid "Not a valid page setup file"
 msgstr "Ní comhad socrú leathanaigh bailí é"
 
-#: ../gtk/gtkpagesetupunixdialog.c:210
+#: ../ctk/ctkpagesetupunixdialog.c:210
 msgid "Any Printer"
 msgstr "Printéir ar Bith"
 
-#: ../gtk/gtkpagesetupunixdialog.c:210
+#: ../ctk/ctkpagesetupunixdialog.c:210
 msgid "For portable documents"
 msgstr "Le haghaidh cáipéisí iniompartha"
 
-#: ../gtk/gtkpagesetupunixdialog.c:829
+#: ../ctk/ctkpagesetupunixdialog.c:829
 #, c-format
 msgid ""
 "Margins:\n"
@@ -2876,283 +2876,283 @@ msgstr ""
 " Barr: %s %s\n"
 " Bun: %s %s"
 
-#: ../gtk/gtkpagesetupunixdialog.c:878 ../gtk/gtkprintunixdialog.c:3372
+#: ../ctk/ctkpagesetupunixdialog.c:878 ../ctk/ctkprintunixdialog.c:3372
 msgid "Manage Custom Sizes…"
 msgstr "Bainistigh Méideanna Saincheaptha…"
 
-#: ../gtk/gtkpagesetupunixdialog.c:900
+#: ../ctk/ctkpagesetupunixdialog.c:900
 msgid "Page Setup"
 msgstr "Socrú Leathanaigh"
 
-#: ../gtk/gtkpathbar.c:1587
+#: ../ctk/ctkpathbar.c:1587
 msgid "File System Root"
 msgstr "Fréamh Chóras Comhaid"
 
-#: ../gtk/gtkplacessidebar.c:904
+#: ../ctk/ctkplacessidebar.c:904
 msgid "Recent"
 msgstr "Úsáidte le Déanaí"
 
-#: ../gtk/gtkplacessidebar.c:906
+#: ../ctk/ctkplacessidebar.c:906
 msgid "Recent files"
 msgstr "Comhaid úsáidte le déanaí"
 
-#: ../gtk/gtkplacessidebar.c:917
+#: ../ctk/ctkplacessidebar.c:917
 msgid "Open your personal folder"
 msgstr "Oscail d'fhillteán pearsanta"
 
-#: ../gtk/gtkplacessidebar.c:932
+#: ../ctk/ctkplacessidebar.c:932
 msgid "Open the contents of your desktop in a folder"
 msgstr "Oscail ábhar do dheisce i bhfillteán"
 
-#: ../gtk/gtkplacessidebar.c:946
+#: ../ctk/ctkplacessidebar.c:946
 msgid "Enter Location"
 msgstr "Iontráil Suíomh"
 
-#: ../gtk/gtkplacessidebar.c:948
+#: ../ctk/ctkplacessidebar.c:948
 msgid "Manually enter a location"
 msgstr "Iontráil suíomh de láimh"
 
-#: ../gtk/gtkplacessidebar.c:959
+#: ../ctk/ctkplacessidebar.c:959
 msgid "Trash"
 msgstr "Bruscar"
 
-#: ../gtk/gtkplacessidebar.c:961
+#: ../ctk/ctkplacessidebar.c:961
 msgid "Open the trash"
 msgstr "Oscail an bosca bruscair"
 
-#: ../gtk/gtkplacessidebar.c:1030 ../gtk/gtkplacessidebar.c:1058
-#: ../gtk/gtkplacessidebar.c:1265
+#: ../ctk/ctkplacessidebar.c:1030 ../ctk/ctkplacessidebar.c:1058
+#: ../ctk/ctkplacessidebar.c:1265
 #, c-format
 msgid "Mount and open “%s”"
 msgstr "Feistigh agus oscail “%s”"
 
-#: ../gtk/gtkplacessidebar.c:1145
+#: ../ctk/ctkplacessidebar.c:1145
 msgid "Open the contents of the file system"
 msgstr "Oscail ábhar an chóras comhaid"
 
-#: ../gtk/gtkplacessidebar.c:1229
+#: ../ctk/ctkplacessidebar.c:1229
 msgid "New bookmark"
 msgstr "Leabharmharc nua"
 
-#: ../gtk/gtkplacessidebar.c:1231
+#: ../ctk/ctkplacessidebar.c:1231
 msgid "Add a new bookmark"
 msgstr "Cuir leabharmharc nua leis"
 
-#: ../gtk/gtkplacessidebar.c:1244
+#: ../ctk/ctkplacessidebar.c:1244
 msgid "Connect to Server"
 msgstr "Nasc le Freastalaí"
 
-#: ../gtk/gtkplacessidebar.c:1246
+#: ../ctk/ctkplacessidebar.c:1246
 msgid "Connect to a network server address"
 msgstr "Ceangail le seoladh fhreastalaí líonra"
 
-#: ../gtk/gtkplacessidebar.c:1308
+#: ../ctk/ctkplacessidebar.c:1308
 msgid "Other Locations"
 msgstr "Suíomhanna Eile"
 
-#: ../gtk/gtkplacessidebar.c:1309
+#: ../ctk/ctkplacessidebar.c:1309
 msgid "Show other locations"
 msgstr "Taispeáin suíomhanna eile"
 
 #. Adjust start/stop items to reflect the type of the drive
-#: ../gtk/gtkplacessidebar.c:2099 ../gtk/gtkplacessidebar.c:3450
+#: ../ctk/ctkplacessidebar.c:2099 ../ctk/ctkplacessidebar.c:3450
 msgid "_Start"
 msgstr "_Tosaigh"
 
-#: ../gtk/gtkplacessidebar.c:2100 ../gtk/gtkplacessidebar.c:3451
+#: ../ctk/ctkplacessidebar.c:2100 ../ctk/ctkplacessidebar.c:3451
 msgid "_Stop"
 msgstr "_Stad"
 
 #. start() for type G_DRIVE_START_STOP_TYPE_SHUTDOWN is normally not used
-#: ../gtk/gtkplacessidebar.c:2107
+#: ../ctk/ctkplacessidebar.c:2107
 msgid "_Power On"
 msgstr "Cuir ar _Siúl"
 
-#: ../gtk/gtkplacessidebar.c:2108
+#: ../ctk/ctkplacessidebar.c:2108
 msgid "_Safely Remove Drive"
 msgstr "Bain Tiomántán go _Sábháilte"
 
-#: ../gtk/gtkplacessidebar.c:2112
+#: ../ctk/ctkplacessidebar.c:2112
 msgid "_Connect Drive"
 msgstr "_Ceangail Tiomántán"
 
-#: ../gtk/gtkplacessidebar.c:2113
+#: ../ctk/ctkplacessidebar.c:2113
 msgid "_Disconnect Drive"
 msgstr "_Dícheangail Tiomántán"
 
-#: ../gtk/gtkplacessidebar.c:2117
+#: ../ctk/ctkplacessidebar.c:2117
 msgid "_Start Multi-disk Device"
 msgstr "_Tosaigh Gléas Ildiosca"
 
-#: ../gtk/gtkplacessidebar.c:2118
+#: ../ctk/ctkplacessidebar.c:2118
 msgid "_Stop Multi-disk Device"
 msgstr "_Stad Gléas Ildiosca"
 
 #. stop() for type G_DRIVE_START_STOP_TYPE_PASSWORD is normally not used
-#: ../gtk/gtkplacessidebar.c:2123
+#: ../ctk/ctkplacessidebar.c:2123
 msgid "_Unlock Device"
 msgstr "Dí_ghlasáil Gléas"
 
-#: ../gtk/gtkplacessidebar.c:2124
+#: ../ctk/ctkplacessidebar.c:2124
 msgid "_Lock Device"
 msgstr "Cuir Gléas Faoi _Ghlas"
 
-#: ../gtk/gtkplacessidebar.c:2162 ../gtk/gtkplacessidebar.c:3198
+#: ../ctk/ctkplacessidebar.c:2162 ../ctk/ctkplacessidebar.c:3198
 #, c-format
 msgid "Unable to start “%s”"
 msgstr "Ní féidir “%s” a thosú"
 
-#: ../gtk/gtkplacessidebar.c:2192
+#: ../ctk/ctkplacessidebar.c:2192
 #, c-format
 msgid "Unable to access “%s”"
 msgstr "Ní féidir “%s” a rochtain"
 
-#: ../gtk/gtkplacessidebar.c:2393
+#: ../ctk/ctkplacessidebar.c:2393
 #, fuzzy
 msgid "This name is already taken"
 msgstr "Sainmhíníodh clib \"%s\" cheana."
 
-#: ../gtk/gtkplacessidebar.c:2462
+#: ../ctk/ctkplacessidebar.c:2462
 msgid "Name"
 msgstr "Ainm"
 
-#: ../gtk/gtkplacessidebar.c:2662
+#: ../ctk/ctkplacessidebar.c:2662
 #, c-format
 msgid "Unable to unmount “%s”"
 msgstr "Ní féidir “%s” a dhífheistiú"
 
-#: ../gtk/gtkplacessidebar.c:2915
+#: ../ctk/ctkplacessidebar.c:2915
 #, c-format
 msgid "Unable to stop “%s”"
 msgstr "Ní féidir “%s” a stad"
 
-#: ../gtk/gtkplacessidebar.c:2944
+#: ../ctk/ctkplacessidebar.c:2944
 #, c-format
 msgid "Unable to eject “%s”"
 msgstr "Ní féidir “%s” a dhíchur"
 
-#: ../gtk/gtkplacessidebar.c:2973 ../gtk/gtkplacessidebar.c:3002
+#: ../ctk/ctkplacessidebar.c:2973 ../ctk/ctkplacessidebar.c:3002
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Ní féidir %s a dhíchur"
 
-#: ../gtk/gtkplacessidebar.c:3150
+#: ../ctk/ctkplacessidebar.c:3150
 #, c-format
 msgid "Unable to poll “%s” for media changes"
 msgstr ""
 
-#: ../gtk/gtkplacessidebar.c:3433 ../gtk/gtkplacesview.c:1629
+#: ../ctk/ctkplacessidebar.c:3433 ../ctk/ctkplacesview.c:1629
 msgid "Open in New _Tab"
 msgstr "Oscail i g_Cluaisín Nua"
 
-#: ../gtk/gtkplacessidebar.c:3436 ../gtk/gtkplacesview.c:1640
+#: ../ctk/ctkplacessidebar.c:3436 ../ctk/ctkplacesview.c:1640
 msgid "Open in New _Window"
 msgstr "Oscail i bh_Fuinneog Nua"
 
-#: ../gtk/gtkplacessidebar.c:3440
+#: ../ctk/ctkplacessidebar.c:3440
 msgid "_Add Bookmark"
 msgstr "_Cuir Leabharmharc Leis"
 
-#: ../gtk/gtkplacessidebar.c:3441
+#: ../ctk/ctkplacessidebar.c:3441
 msgid "_Remove"
 msgstr "_Bain"
 
-#: ../gtk/gtkplacessidebar.c:3442
+#: ../ctk/ctkplacessidebar.c:3442
 msgid "Rename…"
 msgstr "Athainmnigh…"
 
-#: ../gtk/gtkplacessidebar.c:3446 ../gtk/gtkplacesview.c:1674
+#: ../ctk/ctkplacessidebar.c:3446 ../ctk/ctkplacesview.c:1674
 msgid "_Mount"
 msgstr "_Feistigh"
 
-#: ../gtk/gtkplacessidebar.c:3447 ../gtk/gtkplacesview.c:1664
+#: ../ctk/ctkplacessidebar.c:3447 ../ctk/ctkplacesview.c:1664
 msgid "_Unmount"
 msgstr "_Dífheistigh"
 
-#: ../gtk/gtkplacessidebar.c:3448
+#: ../ctk/ctkplacessidebar.c:3448
 msgid "_Eject"
 msgstr "Dí_chuir"
 
-#: ../gtk/gtkplacessidebar.c:3449
+#: ../ctk/ctkplacessidebar.c:3449
 msgid "_Detect Media"
 msgstr "_Braith Meáin"
 
-#: ../gtk/gtkplacessidebar.c:3898 ../gtk/gtkplacesview.c:1072
+#: ../ctk/ctkplacessidebar.c:3898 ../ctk/ctkplacesview.c:1072
 msgid "Computer"
 msgstr "Ríomhaire"
 
-#: ../gtk/gtkplacesview.c:900
+#: ../ctk/ctkplacesview.c:900
 msgid "Searching for network locations"
 msgstr ""
 
-#: ../gtk/gtkplacesview.c:907
+#: ../ctk/ctkplacesview.c:907
 msgid "No network locations found"
 msgstr ""
 
 #. if it wasn't cancelled show a dialog
-#: ../gtk/gtkplacesview.c:1182 ../gtk/gtkplacesview.c:1226
-#: ../gtk/gtkplacesview.c:1277
+#: ../ctk/ctkplacesview.c:1182 ../ctk/ctkplacesview.c:1226
+#: ../ctk/ctkplacesview.c:1277
 #, fuzzy
 msgid "Unable to access location"
 msgstr "Ní féidir “%s” a rochtain"
 
 #. Restore from Cancel to Connect
-#: ../gtk/gtkplacesview.c:1199
+#: ../ctk/ctkplacesview.c:1199
 msgid "Con_nect"
 msgstr "Cea_ngal"
 
 #. if it wasn't cancelled show a dialog
-#: ../gtk/gtkplacesview.c:1340
+#: ../ctk/ctkplacesview.c:1340
 #, fuzzy
 msgid "Unable to unmount volume"
 msgstr "Ní féidir %s a dhífheistiú"
 
 #. Allow to cancel the operation
-#: ../gtk/gtkplacesview.c:1422
+#: ../ctk/ctkplacesview.c:1422
 msgid "Cance_l"
 msgstr "Cea_laigh"
 
-#: ../gtk/gtkplacesview.c:1664
+#: ../ctk/ctkplacesview.c:1664
 msgid "_Disconnect"
 msgstr "_Dícheangal"
 
-#: ../gtk/gtkplacesview.c:1674
+#: ../ctk/ctkplacesview.c:1674
 msgid "_Connect"
 msgstr "_Ceangal"
 
-#: ../gtk/gtkplacesview.c:1839
+#: ../ctk/ctkplacesview.c:1839
 msgid "Unable to get remote server location"
 msgstr ""
 
-#: ../gtk/gtkplacesview.c:1958 ../gtk/gtkplacesview.c:1967
+#: ../ctk/ctkplacesview.c:1958 ../ctk/ctkplacesview.c:1967
 msgid "Networks"
 msgstr "Líonraí"
 
-#: ../gtk/gtkplacesview.c:1958 ../gtk/gtkplacesview.c:1967
+#: ../ctk/ctkplacesview.c:1958 ../ctk/ctkplacesview.c:1967
 msgid "On This Computer"
 msgstr "Ar an Ríomhaire Seo"
 
-#: ../gtk/gtkplacesviewrow.c:323
+#: ../ctk/ctkplacesviewrow.c:323
 msgid "Disconnect"
 msgstr "Dícheangal"
 
-#: ../gtk/gtkplacesviewrow.c:323
+#: ../ctk/ctkplacesviewrow.c:323
 msgid "Unmount"
 msgstr "Dífheistigh"
 
-#: ../gtk/gtkprintbackend.c:762
+#: ../ctk/ctkprintbackend.c:762
 msgid "Authentication"
 msgstr "Fíordheimhniú"
 
-#: ../gtk/gtkprintbackend.c:833
+#: ../ctk/ctkprintbackend.c:833
 msgid "_Remember password"
 msgstr "_Meabhraigh focal faire"
 
-#: ../gtk/gtkprinteroptionwidget.c:542
+#: ../ctk/ctkprinteroptionwidget.c:542
 msgid "Select a filename"
 msgstr "Roghnaigh ainm comhaid"
 
-#: ../gtk/gtkprinteroptionwidget.c:766
+#: ../ctk/ctkprinteroptionwidget.c:766
 msgid "Not available"
 msgstr "Níl ar fáil"
 
@@ -3160,263 +3160,263 @@ msgstr "Níl ar fáil"
 #. * jobs. %s gets replaced by the application name, %d gets replaced
 #. * by the job number.
 #.
-#: ../gtk/gtkprintoperation.c:259
+#: ../ctk/ctkprintoperation.c:259
 #, c-format
 msgid "%s job #%d"
 msgstr "%s jab #%d"
 
-#: ../gtk/gtkprintoperation.c:1799
+#: ../ctk/ctkprintoperation.c:1799
 msgctxt "print operation status"
 msgid "Initial state"
 msgstr "Staid tosaigh"
 
-#: ../gtk/gtkprintoperation.c:1800
+#: ../ctk/ctkprintoperation.c:1800
 msgctxt "print operation status"
 msgid "Preparing to print"
 msgstr "Priontáil á ullmhú"
 
-#: ../gtk/gtkprintoperation.c:1801
+#: ../ctk/ctkprintoperation.c:1801
 msgctxt "print operation status"
 msgid "Generating data"
 msgstr "Sonraí á nginiúint"
 
-#: ../gtk/gtkprintoperation.c:1802
+#: ../ctk/ctkprintoperation.c:1802
 msgctxt "print operation status"
 msgid "Sending data"
 msgstr "Sonraí á seoladh"
 
-#: ../gtk/gtkprintoperation.c:1803
+#: ../ctk/ctkprintoperation.c:1803
 msgctxt "print operation status"
 msgid "Waiting"
 msgstr "Ag feitheamh"
 
-#: ../gtk/gtkprintoperation.c:1804
+#: ../ctk/ctkprintoperation.c:1804
 msgctxt "print operation status"
 msgid "Blocking on issue"
 msgstr "Coiscthe mar gheall ar fhadhb"
 
-#: ../gtk/gtkprintoperation.c:1805
+#: ../ctk/ctkprintoperation.c:1805
 msgctxt "print operation status"
 msgid "Printing"
 msgstr "Á Phriontáil"
 
-#: ../gtk/gtkprintoperation.c:1806
+#: ../ctk/ctkprintoperation.c:1806
 msgctxt "print operation status"
 msgid "Finished"
 msgstr "Críochnaithe"
 
-#: ../gtk/gtkprintoperation.c:1807
+#: ../ctk/ctkprintoperation.c:1807
 msgctxt "print operation status"
 msgid "Finished with error"
 msgstr "Críochnaithe le hearráid"
 
-#: ../gtk/gtkprintoperation.c:2371
+#: ../ctk/ctkprintoperation.c:2371
 #, c-format
 msgid "Preparing %d"
 msgstr "%d á ullmhú"
 
-#: ../gtk/gtkprintoperation.c:2373 ../gtk/gtkprintoperation.c:3002
+#: ../ctk/ctkprintoperation.c:2373 ../ctk/ctkprintoperation.c:3002
 msgid "Preparing"
 msgstr "Á ullmhú"
 
-#: ../gtk/gtkprintoperation.c:2376
+#: ../ctk/ctkprintoperation.c:2376
 #, c-format
 msgid "Printing %d"
 msgstr "%d á phriontáil"
 
-#: ../gtk/gtkprintoperation.c:3033
+#: ../ctk/ctkprintoperation.c:3033
 msgid "Error creating print preview"
 msgstr "Earráid agus réamhamharc priontála á chruthú"
 
-#: ../gtk/gtkprintoperation.c:3036
+#: ../ctk/ctkprintoperation.c:3036
 msgid "The most probable reason is that a temporary file could not be created."
 msgstr "Is dócha gur an chúis ná nárbh fhéidir comhad sealadach a chruthú."
 
-#: ../gtk/gtkprintoperation-unix.c:308
+#: ../ctk/ctkprintoperation-unix.c:308
 msgid "Error launching preview"
 msgstr "Earráid agus réamhamharc á thosú"
 
-#: ../gtk/gtkprintoperation-win32.c:617
+#: ../ctk/ctkprintoperation-win32.c:617
 msgid "Printer offline"
 msgstr "Printéir as líne"
 
-#: ../gtk/gtkprintoperation-win32.c:619
+#: ../ctk/ctkprintoperation-win32.c:619
 msgid "Out of paper"
 msgstr "Páipéar ídithe"
 
 #. Translators: this is a printer status.
-#: ../gtk/gtkprintoperation-win32.c:621
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:2524
+#: ../ctk/ctkprintoperation-win32.c:621
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:2524
 msgid "Paused"
 msgstr "Curtha ar sos"
 
-#: ../gtk/gtkprintoperation-win32.c:623
+#: ../ctk/ctkprintoperation-win32.c:623
 msgid "Need user intervention"
 msgstr "Teastaíonn idirghabháil an úsáideora"
 
-#: ../gtk/gtkprintoperation-win32.c:723
+#: ../ctk/ctkprintoperation-win32.c:723
 msgid "Custom size"
 msgstr "Méid saincheaptha"
 
-#: ../gtk/gtkprintoperation-win32.c:1545
+#: ../ctk/ctkprintoperation-win32.c:1545
 msgid "No printer found"
 msgstr "Níor aimsíodh aon phrintéir"
 
-#: ../gtk/gtkprintoperation-win32.c:1572
+#: ../ctk/ctkprintoperation-win32.c:1572
 msgid "Invalid argument to CreateDC"
 msgstr "Argóint neamhbhailí go CreateDC"
 
-#: ../gtk/gtkprintoperation-win32.c:1608 ../gtk/gtkprintoperation-win32.c:1854
+#: ../ctk/ctkprintoperation-win32.c:1608 ../ctk/ctkprintoperation-win32.c:1854
 msgid "Error from StartDoc"
 msgstr "Earráid ó StartDoc"
 
-#: ../gtk/gtkprintoperation-win32.c:1709 ../gtk/gtkprintoperation-win32.c:1732
-#: ../gtk/gtkprintoperation-win32.c:1780
+#: ../ctk/ctkprintoperation-win32.c:1709 ../ctk/ctkprintoperation-win32.c:1732
+#: ../ctk/ctkprintoperation-win32.c:1780
 msgid "Not enough free memory"
 msgstr "Cuimhne ídithe"
 
-#: ../gtk/gtkprintoperation-win32.c:1785
+#: ../ctk/ctkprintoperation-win32.c:1785
 msgid "Invalid argument to PrintDlgEx"
 msgstr "Argóint neamhbhailí go PrintDlgEx"
 
-#: ../gtk/gtkprintoperation-win32.c:1790
+#: ../ctk/ctkprintoperation-win32.c:1790
 msgid "Invalid pointer to PrintDlgEx"
 msgstr "Pointeoir neamhbhailí go PrintDlgEx"
 
-#: ../gtk/gtkprintoperation-win32.c:1795
+#: ../ctk/ctkprintoperation-win32.c:1795
 msgid "Invalid handle to PrintDlgEx"
 msgstr "Lorgán neamhbhailí chuig PrintDlgEx"
 
-#: ../gtk/gtkprintoperation-win32.c:1800
+#: ../ctk/ctkprintoperation-win32.c:1800
 msgid "Unspecified error"
 msgstr "Earráid gan sonrú"
 
-#: ../gtk/gtkprintunixdialog.c:737
+#: ../ctk/ctkprintunixdialog.c:737
 msgid "Pre_view"
 msgstr "_Réamhamharc"
 
-#: ../gtk/gtkprintunixdialog.c:739
+#: ../ctk/ctkprintunixdialog.c:739
 msgid "_Print"
 msgstr "_Priontáil"
 
-#: ../gtk/gtkprintunixdialog.c:847
+#: ../ctk/ctkprintunixdialog.c:847
 msgid "Getting printer information failed"
 msgstr "Theip ar fháil eolais printéara"
 
-#: ../gtk/gtkprintunixdialog.c:2054
+#: ../ctk/ctkprintunixdialog.c:2054
 msgid "Getting printer information…"
 msgstr "Eolas printéara á fháil…"
 
 #. Translators: These strings name the possible arrangements of
-#. * multiple pages on a sheet when printing (same as in gtkprintbackendcups.c)
+#. * multiple pages on a sheet when printing (same as in ctkprintbackendcups.c)
 #.
 #. Translators: These strings name the possible arrangements of
 #. * multiple pages on a sheet when printing
 #.
-#: ../gtk/gtkprintunixdialog.c:3101
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5271
+#: ../ctk/ctkprintunixdialog.c:3101
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5271
 msgid "Left to right, top to bottom"
 msgstr "Clé go deas, barr go bun"
 
-#: ../gtk/gtkprintunixdialog.c:3101
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5271
+#: ../ctk/ctkprintunixdialog.c:3101
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5271
 msgid "Left to right, bottom to top"
 msgstr "Clé go deas, bun go barr"
 
-#: ../gtk/gtkprintunixdialog.c:3102
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5272
+#: ../ctk/ctkprintunixdialog.c:3102
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5272
 msgid "Right to left, top to bottom"
 msgstr "Deas go clé, barr go bun"
 
-#: ../gtk/gtkprintunixdialog.c:3102
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5272
+#: ../ctk/ctkprintunixdialog.c:3102
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5272
 msgid "Right to left, bottom to top"
 msgstr "Deas go clé, bun go barr"
 
-#: ../gtk/gtkprintunixdialog.c:3103
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5273
+#: ../ctk/ctkprintunixdialog.c:3103
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5273
 msgid "Top to bottom, left to right"
 msgstr "Barr go bun, clé go deas"
 
-#: ../gtk/gtkprintunixdialog.c:3103
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5273
+#: ../ctk/ctkprintunixdialog.c:3103
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5273
 msgid "Top to bottom, right to left"
 msgstr "Barr go bunn, deas go clé"
 
-#: ../gtk/gtkprintunixdialog.c:3104
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5274
+#: ../ctk/ctkprintunixdialog.c:3104
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5274
 msgid "Bottom to top, left to right"
 msgstr "Bun go barr, clé go deas"
 
-#: ../gtk/gtkprintunixdialog.c:3104
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5274
+#: ../ctk/ctkprintunixdialog.c:3104
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5274
 msgid "Bottom to top, right to left"
 msgstr "Barr go bun, deas go clé"
 
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: ../gtk/gtkprintunixdialog.c:3108 ../gtk/gtkprintunixdialog.c:3121
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5351
+#: ../ctk/ctkprintunixdialog.c:3108 ../ctk/ctkprintunixdialog.c:3121
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5351
 msgid "Page Ordering"
 msgstr "Cur in Ord Leathanaigh"
 
-#: ../gtk/gtkprintunixdialog.c:3137
+#: ../ctk/ctkprintunixdialog.c:3137
 msgid "Left to right"
 msgstr "Clé go deas"
 
-#: ../gtk/gtkprintunixdialog.c:3138
+#: ../ctk/ctkprintunixdialog.c:3138
 msgid "Right to left"
 msgstr "Deas go clé"
 
-#: ../gtk/gtkprintunixdialog.c:3150
+#: ../ctk/ctkprintunixdialog.c:3150
 msgid "Top to bottom"
 msgstr "Barr go bun"
 
-#: ../gtk/gtkprintunixdialog.c:3151
+#: ../ctk/ctkprintunixdialog.c:3151
 msgid "Bottom to top"
 msgstr "Bun go barr"
 
-#: ../gtk/gtkprintunixdialog.c:3394
+#: ../ctk/ctkprintunixdialog.c:3394
 msgid "Print"
 msgstr "Priontáil"
 
-#: ../gtk/gtkprogressbar.c:449
+#: ../ctk/ctkprogressbar.c:449
 #, c-format
 msgctxt "progress bar label"
 msgid "%.0f %%"
 msgstr "%.0f %%"
 
-#: ../gtk/gtkrecentchooserdefault.c:1076 ../gtk/gtkrecentchooserdefault.c:1113
+#: ../ctk/ctkrecentchooserdefault.c:1076 ../ctk/ctkrecentchooserdefault.c:1113
 #, c-format
 msgid "No item for URI '%s' found"
 msgstr "Níor aimsíodh mír le URI '%s'"
 
-#: ../gtk/gtkrecentchooserdefault.c:1240
+#: ../ctk/ctkrecentchooserdefault.c:1240
 msgid "Untitled filter"
 msgstr "Scagaire gan teideal"
 
-#: ../gtk/gtkrecentchooserdefault.c:1563
+#: ../ctk/ctkrecentchooserdefault.c:1563
 msgid "Could not remove item"
 msgstr "Níorbh fhéidir mír a bhaint"
 
-#: ../gtk/gtkrecentchooserdefault.c:1607
+#: ../ctk/ctkrecentchooserdefault.c:1607
 msgid "Could not clear list"
 msgstr "Níorbh fhéidir liosta a ghlanadh"
 
-#: ../gtk/gtkrecentchooserdefault.c:1691
+#: ../ctk/ctkrecentchooserdefault.c:1691
 msgid "Copy _Location"
 msgstr "Cóipeái_l Suíomh"
 
-#: ../gtk/gtkrecentchooserdefault.c:1702
+#: ../ctk/ctkrecentchooserdefault.c:1702
 msgid "_Remove From List"
 msgstr "_Bain den Liosta"
 
-#: ../gtk/gtkrecentchooserdefault.c:1709
+#: ../ctk/ctkrecentchooserdefault.c:1709
 msgid "_Clear List"
 msgstr "_Glan Liosta"
 
-#: ../gtk/gtkrecentchooserdefault.c:1721
+#: ../ctk/ctkrecentchooserdefault.c:1721
 msgid "Show _Private Resources"
 msgstr "Taispeáin _Acmhainní Príobháideacha"
 
@@ -3430,21 +3430,21 @@ msgstr "Taispeáin _Acmhainní Príobháideacha"
 #. * user appended or prepended custom menu items to the
 #. * recent chooser menu widget.
 #.
-#: ../gtk/gtkrecentchoosermenu.c:343
+#: ../ctk/ctkrecentchoosermenu.c:343
 msgid "No items found"
 msgstr "Níor aimsíodh mír ar bith"
 
-#: ../gtk/gtkrecentchoosermenu.c:534 ../gtk/gtkrecentchoosermenu.c:590
+#: ../ctk/ctkrecentchoosermenu.c:534 ../ctk/ctkrecentchoosermenu.c:590
 #, fuzzy, c-format
 msgid "No recently used resource found with URI '%s'"
 msgstr "Níor aimsíodh aon acmhainn úsáidte le déanaí leis an URI `%s'"
 
-#: ../gtk/gtkrecentchoosermenu.c:789
+#: ../ctk/ctkrecentchoosermenu.c:789
 #, c-format
 msgid "Open '%s'"
 msgstr "Oscail '%s'"
 
-#: ../gtk/gtkrecentchoosermenu.c:819
+#: ../ctk/ctkrecentchoosermenu.c:819
 msgid "Unknown item"
 msgstr "Mír anaithnid"
 
@@ -3453,7 +3453,7 @@ msgstr "Mír anaithnid"
 #. * the %s is the name of the item. Please keep the _ in front
 #. * of the number to give these menu items a mnemonic.
 #.
-#: ../gtk/gtkrecentchoosermenu.c:830
+#: ../ctk/ctkrecentchoosermenu.c:830
 #, c-format
 msgctxt "recent menu label"
 msgid "_%d. %s"
@@ -3462,26 +3462,26 @@ msgstr "_%d. %s"
 #. This is the format that is used for items in a recent files menu.
 #. * The %d is the number of the item, the %s is the name of the item.
 #.
-#: ../gtk/gtkrecentchoosermenu.c:835
+#: ../ctk/ctkrecentchoosermenu.c:835
 #, c-format
 msgctxt "recent menu label"
 msgid "%d. %s"
 msgstr "%d. %s"
 
-#: ../gtk/gtkrecentmanager.c:1042 ../gtk/gtkrecentmanager.c:1055
-#: ../gtk/gtkrecentmanager.c:1192 ../gtk/gtkrecentmanager.c:1202
-#: ../gtk/gtkrecentmanager.c:1254 ../gtk/gtkrecentmanager.c:1263
-#: ../gtk/gtkrecentmanager.c:1278
+#: ../ctk/ctkrecentmanager.c:1042 ../ctk/ctkrecentmanager.c:1055
+#: ../ctk/ctkrecentmanager.c:1192 ../ctk/ctkrecentmanager.c:1202
+#: ../ctk/ctkrecentmanager.c:1254 ../ctk/ctkrecentmanager.c:1263
+#: ../ctk/ctkrecentmanager.c:1278
 #, c-format
 msgid "Unable to find an item with URI '%s'"
 msgstr "Ní féidir mír a aimsiú le URI '%s'"
 
-#: ../gtk/gtkrecentmanager.c:2468
+#: ../ctk/ctkrecentmanager.c:2468
 #, c-format
 msgid "No registered application with name '%s' for item with URI '%s' found"
 msgstr ""
 
-#: ../gtk/gtksearchentry.c:369
+#: ../ctk/ctksearchentry.c:369
 msgid "Search"
 msgstr "Cuardaigh"
 
@@ -3489,7 +3489,7 @@ msgstr "Cuardaigh"
 #. * glyphs then use MEDIUM VERTICAL BAR (U+2759) as the text for
 #. * the state
 #.
-#: ../gtk/gtkswitch.c:380 ../gtk/gtkswitch.c:430 ../gtk/gtkswitch.c:604
+#: ../ctk/ctkswitch.c:380 ../ctk/ctkswitch.c:430 ../ctk/ctkswitch.c:604
 msgctxt "switch"
 msgid "ON"
 msgstr "❙"
@@ -3497,174 +3497,174 @@ msgstr "❙"
 #. Translators: if the "off" state label requires more than three
 #. * glyphs then use WHITE CIRCLE (U+25CB) as the text for the state
 #.
-#: ../gtk/gtkswitch.c:388 ../gtk/gtkswitch.c:431 ../gtk/gtkswitch.c:619
+#: ../ctk/ctkswitch.c:388 ../ctk/ctkswitch.c:431 ../ctk/ctkswitch.c:619
 msgctxt "switch"
 msgid "OFF"
 msgstr "○"
 
-#: ../gtk/gtktextbufferrichtext.c:648
+#: ../ctk/ctktextbufferrichtext.c:648
 #, c-format
 msgid "Unknown error when trying to deserialize %s"
 msgstr ""
 
-#: ../gtk/gtktextbufferrichtext.c:707
+#: ../ctk/ctktextbufferrichtext.c:707
 #, c-format
 msgid "No deserialize function found for format %s"
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:806 ../gtk/gtktextbufferserialize.c:832
+#: ../ctk/ctktextbufferserialize.c:806 ../ctk/ctktextbufferserialize.c:832
 #, c-format
 msgid "Both \"id\" and \"name\" were found on the <%s> element"
 msgstr "Aimsíodh \"id\" agus \"name\" araon ar an eilimint <%s>"
 
-#: ../gtk/gtktextbufferserialize.c:816 ../gtk/gtktextbufferserialize.c:842
+#: ../ctk/ctktextbufferserialize.c:816 ../ctk/ctktextbufferserialize.c:842
 #, c-format
 msgid "The attribute \"%s\" was found twice on the <%s> element"
 msgstr "Aimsíodh an tréith \"%s\" faoi dhó ar an eilimint <%s>"
 
-#: ../gtk/gtktextbufferserialize.c:858
+#: ../ctk/ctktextbufferserialize.c:858
 #, c-format
 msgid "<%s> element has invalid ID \"%s\""
 msgstr "Tá CA neamhbhailí \"%2$s\" ag eilimint <%1$s>"
 
-#: ../gtk/gtktextbufferserialize.c:868
+#: ../ctk/ctktextbufferserialize.c:868
 #, c-format
 msgid "<%s> element has neither a \"name\" nor an \"id\" attribute"
 msgstr "Níl tréith \"name\" ná \"id\" ag an eilimint <%s>"
 
-#: ../gtk/gtktextbufferserialize.c:955
+#: ../ctk/ctktextbufferserialize.c:955
 #, c-format
 msgid "Attribute \"%s\" repeated twice on the same <%s> element"
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:973 ../gtk/gtktextbufferserialize.c:998
+#: ../ctk/ctktextbufferserialize.c:973 ../ctk/ctktextbufferserialize.c:998
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:1037
+#: ../ctk/ctktextbufferserialize.c:1037
 #, c-format
 msgid "Tag \"%s\" has not been defined."
 msgstr "Níor sainmhíníodh an chlib \"%s\"."
 
-#: ../gtk/gtktextbufferserialize.c:1049
+#: ../ctk/ctktextbufferserialize.c:1049
 msgid "Anonymous tag found and tags can not be created."
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:1060
+#: ../ctk/ctktextbufferserialize.c:1060
 #, c-format
 msgid "Tag \"%s\" does not exist in buffer and tags can not be created."
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:1161 ../gtk/gtktextbufferserialize.c:1236
-#: ../gtk/gtktextbufferserialize.c:1341 ../gtk/gtktextbufferserialize.c:1415
+#: ../ctk/ctktextbufferserialize.c:1161 ../ctk/ctktextbufferserialize.c:1236
+#: ../ctk/ctktextbufferserialize.c:1341 ../ctk/ctktextbufferserialize.c:1415
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Ní cheadaítear an eilimint <%s> faoi <%s>"
 
-#: ../gtk/gtktextbufferserialize.c:1192
+#: ../ctk/ctktextbufferserialize.c:1192
 #, c-format
 msgid "\"%s\" is not a valid attribute type"
 msgstr "Ní cineál tréithe bailí é \"%s\""
 
-#: ../gtk/gtktextbufferserialize.c:1200
+#: ../ctk/ctktextbufferserialize.c:1200
 #, c-format
 msgid "\"%s\" is not a valid attribute name"
 msgstr "Ní ainm tréithe bailí é \"%s\""
 
-#: ../gtk/gtktextbufferserialize.c:1210
+#: ../ctk/ctktextbufferserialize.c:1210
 #, c-format
 msgid ""
 "\"%s\" could not be converted to a value of type \"%s\" for attribute \"%s\""
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:1219
+#: ../ctk/ctktextbufferserialize.c:1219
 #, c-format
 msgid "\"%s\" is not a valid value for attribute \"%s\""
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:1304
+#: ../ctk/ctktextbufferserialize.c:1304
 #, c-format
 msgid "Tag \"%s\" already defined"
 msgstr "Sainmhíníodh clib \"%s\" cheana."
 
-#: ../gtk/gtktextbufferserialize.c:1317
+#: ../ctk/ctktextbufferserialize.c:1317
 #, c-format
 msgid "Tag \"%s\" has invalid priority \"%s\""
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:1370
+#: ../ctk/ctktextbufferserialize.c:1370
 #, c-format
 msgid "Outermost element in text must be <text_view_markup> not <%s>"
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:1379 ../gtk/gtktextbufferserialize.c:1395
+#: ../ctk/ctktextbufferserialize.c:1379 ../ctk/ctktextbufferserialize.c:1395
 #, c-format
 msgid "A <%s> element has already been specified"
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:1401
+#: ../ctk/ctktextbufferserialize.c:1401
 msgid "A <text> element can't occur before a <tags> element"
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:1807
+#: ../ctk/ctktextbufferserialize.c:1807
 msgid "Serialized data is malformed"
 msgstr ""
 
-#: ../gtk/gtktextbufferserialize.c:1886
+#: ../ctk/ctktextbufferserialize.c:1886
 msgid ""
 "Serialized data is malformed. First section isn't GTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
 
-#: ../gtk/gtktextutil.c:57
+#: ../ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
 msgstr "LRM Marc _Clé-go-deas"
 
-#: ../gtk/gtktextutil.c:58
+#: ../ctk/ctktextutil.c:58
 msgid "RLM _Right-to-left mark"
 msgstr "RLM Marc _Deas-go-clé"
 
-#: ../gtk/gtktextutil.c:59
+#: ../ctk/ctktextutil.c:59
 msgid "LRE Left-to-right _embedding"
 msgstr "LRE _Leabú Clé-go-deas"
 
-#: ../gtk/gtktextutil.c:60
+#: ../ctk/ctktextutil.c:60
 msgid "RLE Right-to-left e_mbedding"
 msgstr "RLE L_eabú Deas-go-clé"
 
-#: ../gtk/gtktextutil.c:61
+#: ../ctk/ctktextutil.c:61
 msgid "LRO Left-to-right _override"
 msgstr "LRO _Sárú Clé-go-deas"
 
-#: ../gtk/gtktextutil.c:62
+#: ../ctk/ctktextutil.c:62
 msgid "RLO Right-to-left o_verride"
 msgstr "RLO Sá_rú Deas-go-clé"
 
-#: ../gtk/gtktextutil.c:63
+#: ../ctk/ctktextutil.c:63
 msgid "PDF _Pop directional formatting"
 msgstr ""
 
-#: ../gtk/gtktextutil.c:64
+#: ../ctk/ctktextutil.c:64
 msgid "ZWS _Zero width space"
 msgstr ""
 
-#: ../gtk/gtktextutil.c:65
+#: ../ctk/ctktextutil.c:65
 msgid "ZWJ Zero width _joiner"
 msgstr ""
 
-#: ../gtk/gtktextutil.c:66
+#: ../ctk/ctktextutil.c:66
 msgid "ZWNJ Zero width _non-joiner"
 msgstr ""
 
-#: ../gtk/gtkvolumebutton.c:189
+#: ../ctk/ctkvolumebutton.c:189
 msgid "Adjusts the volume"
 msgstr "Coigeartaíonn sé seo an airde"
 
-#: ../gtk/gtkvolumebutton.c:232
+#: ../ctk/ctkvolumebutton.c:232
 msgid "Muted"
 msgstr "Gan fuaim"
 
-#: ../gtk/gtkvolumebutton.c:236
+#: ../ctk/ctkvolumebutton.c:236
 msgid "Full Volume"
 msgstr "Airde Iomlán"
 
@@ -3673,1240 +3673,1240 @@ msgstr "Airde Iomlán"
 #. * Translate the "%d" to "%Id" if you want to use localised digits,
 #. * or otherwise translate the "%d" to "%d".
 #.
-#: ../gtk/gtkvolumebutton.c:249
+#: ../ctk/ctkvolumebutton.c:249
 #, c-format
 msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ../gtk/gtkwindow.c:12099
+#: ../ctk/ctkwindow.c:12099
 msgid "Do you want to use GTK+ Inspector?"
 msgstr ""
 
-#: ../gtk/gtkwindow.c:12101
+#: ../ctk/ctkwindow.c:12101
 msgid ""
 "GTK+ Inspector is an interactive debugger that lets you explore and modify "
 "the internals of any GTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
 
-#: ../gtk/gtkwindow.c:12106
+#: ../ctk/ctkwindow.c:12106
 msgid "Don't show this message again"
 msgstr ""
 
-#: ../gtk/inspector/action-editor.c:281
+#: ../ctk/inspector/action-editor.c:281
 #, fuzzy
 msgid "Activate"
 msgstr "Gníomhachtaigh"
 
-#: ../gtk/inspector/action-editor.c:302
+#: ../ctk/inspector/action-editor.c:302
 #, fuzzy
 msgid "State"
 msgstr "Stádas"
 
-#: ../gtk/inspector/classes-list.c:124
+#: ../ctk/inspector/classes-list.c:124
 msgid "New class"
 msgstr ""
 
-#: ../gtk/inspector/classes-list.c:128
+#: ../ctk/inspector/classes-list.c:128
 #, fuzzy
 msgid "Cancel"
 msgstr "_Cealaigh"
 
-#: ../gtk/inspector/classes-list.c:135
+#: ../ctk/inspector/classes-list.c:135
 #, fuzzy
 msgid "Class name"
 msgstr "Ai_nm datha:"
 
-#: ../gtk/inspector/css-editor.c:90 ../gtk/inspector/css-editor.c:96
+#: ../ctk/inspector/css-editor.c:90 ../ctk/inspector/css-editor.c:96
 msgid "You can type here any CSS rule recognized by GTK+."
 msgstr ""
 
-#: ../gtk/inspector/css-editor.c:91 ../gtk/inspector/css-editor.c:97
+#: ../ctk/inspector/css-editor.c:91 ../ctk/inspector/css-editor.c:97
 msgid ""
 "You can temporarily disable this custom CSS by clicking on the “Pause” "
 "button above."
 msgstr ""
 
-#: ../gtk/inspector/css-editor.c:92
+#: ../ctk/inspector/css-editor.c:92
 msgid "Changes are applied instantly and globally, for the whole application."
 msgstr ""
 
-#: ../gtk/inspector/css-editor.c:98
+#: ../ctk/inspector/css-editor.c:98
 msgid "Changes are applied instantly, only for this selected widget."
 msgstr ""
 
-#: ../gtk/inspector/css-editor.c:160
+#: ../ctk/inspector/css-editor.c:160
 msgid "Saving CSS failed"
 msgstr ""
 
-#: ../gtk/inspector/css-editor.c:200
+#: ../ctk/inspector/css-editor.c:200
 #, fuzzy
 msgid "_Save"
 msgstr "_Sábháil"
 
-#: ../gtk/inspector/gestures.c:129
+#: ../ctk/inspector/gestures.c:129
 msgid "Capture"
 msgstr ""
 
-#: ../gtk/inspector/gestures.c:130
+#: ../ctk/inspector/gestures.c:130
 msgid "Bubble"
 msgstr ""
 
-#: ../gtk/inspector/gestures.c:131
+#: ../ctk/inspector/gestures.c:131
 msgid "Target"
 msgstr ""
 
-#: ../gtk/inspector/menu.c:93
+#: ../ctk/inspector/menu.c:93
 msgid "Unnamed section"
 msgstr ""
 
-#: ../gtk/inspector/prop-editor.c:615
+#: ../ctk/inspector/prop-editor.c:615
 #, fuzzy, c-format
 msgid "Pointer: %p"
 msgstr "Printéir"
 
-#: ../gtk/inspector/prop-editor.c:630
+#: ../ctk/inspector/prop-editor.c:630
 msgctxt "type name"
 msgid "Unknown"
 msgstr "Anaithnid"
 
-#: ../gtk/inspector/prop-editor.c:631
+#: ../ctk/inspector/prop-editor.c:631
 #, c-format
 msgid "Object: %p (%s)"
 msgstr ""
 
-#: ../gtk/inspector/prop-editor.c:1003 ../gtk/inspector/prop-editor.c:1183
-#: ../gtk/inspector/prop-editor.c:1308 ../gtk/inspector/prop-editor.c:1419
+#: ../ctk/inspector/prop-editor.c:1003 ../ctk/inspector/prop-editor.c:1183
+#: ../ctk/inspector/prop-editor.c:1308 ../ctk/inspector/prop-editor.c:1419
 msgid "Properties"
 msgstr "Airíonna"
 
-#: ../gtk/inspector/prop-editor.c:1056
+#: ../ctk/inspector/prop-editor.c:1056
 #, fuzzy, c-format
 msgid "Uneditable property type: %s"
 msgstr "Ní féidir %s a stad"
 
-#: ../gtk/inspector/prop-editor.c:1174
+#: ../ctk/inspector/prop-editor.c:1174
 msgid "Attribute mapping"
 msgstr ""
 
-#: ../gtk/inspector/prop-editor.c:1179
+#: ../ctk/inspector/prop-editor.c:1179
 msgid "Model:"
 msgstr ""
 
-#: ../gtk/inspector/prop-editor.c:1180
+#: ../ctk/inspector/prop-editor.c:1180
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ../gtk/inspector/prop-editor.c:1190
+#: ../ctk/inspector/prop-editor.c:1190
 msgid "Column:"
 msgstr "Colún:"
 
-#: ../gtk/inspector/prop-editor.c:1300
+#: ../ctk/inspector/prop-editor.c:1300
 #, fuzzy
 msgid "Action"
 msgstr "Suíomh"
 
-#: ../gtk/inspector/prop-editor.c:1304
+#: ../ctk/inspector/prop-editor.c:1304
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr ""
 
-#: ../gtk/inspector/prop-editor.c:1368 ../gtk/inspector/prop-editor.c:1384
+#: ../ctk/inspector/prop-editor.c:1368 ../ctk/inspector/prop-editor.c:1384
 #, fuzzy
 msgid "inverted"
 msgstr "_Tiontaigh"
 
-#: ../gtk/inspector/prop-editor.c:1400
+#: ../ctk/inspector/prop-editor.c:1400
 msgid "bidirectional, inverted"
 msgstr ""
 
-#: ../gtk/inspector/prop-editor.c:1405 ../gtk/inspector/prop-editor.c:1501
+#: ../ctk/inspector/prop-editor.c:1405 ../ctk/inspector/prop-editor.c:1501
 msgid "bidirectional"
 msgstr ""
 
-#: ../gtk/inspector/prop-editor.c:1410
+#: ../ctk/inspector/prop-editor.c:1410
 msgid "Binding:"
 msgstr ""
 
-#: ../gtk/inspector/prop-editor.c:1520
+#: ../ctk/inspector/prop-editor.c:1520
 #, fuzzy
 msgid "Setting:"
 msgstr "%s á Thosú"
 
-#: ../gtk/inspector/prop-editor.c:1552
+#: ../ctk/inspector/prop-editor.c:1552
 msgid "Source:"
 msgstr "Foinse:"
 
-#: ../gtk/inspector/prop-editor.c:1557
+#: ../ctk/inspector/prop-editor.c:1557
 msgid "Default"
 msgstr "Réamhshocraithe"
 
-#: ../gtk/inspector/prop-editor.c:1560
+#: ../ctk/inspector/prop-editor.c:1560
 msgid "Theme"
 msgstr "Téama"
 
-#: ../gtk/inspector/prop-editor.c:1563
+#: ../ctk/inspector/prop-editor.c:1563
 msgid "XSettings"
 msgstr "XSettings"
 
-#: ../gtk/inspector/signals-list.c:111
+#: ../ctk/inspector/signals-list.c:111
 msgid "Yes"
 msgstr "Tá"
 
-#: ../gtk/inspector/size-groups.c:224
+#: ../ctk/inspector/size-groups.c:224
 msgid "Ignore hidden"
 msgstr ""
 
-#: ../gtk/inspector/size-groups.c:242
+#: ../ctk/inspector/size-groups.c:242
 msgid "Mode"
 msgstr "Mód"
 
-#: ../gtk/inspector/size-groups.c:253
+#: ../ctk/inspector/size-groups.c:253
 msgid "Horizontal"
 msgstr ""
 
-#: ../gtk/inspector/size-groups.c:254
+#: ../ctk/inspector/size-groups.c:254
 msgid "Vertical"
 msgstr ""
 
-#: ../gtk/inspector/size-groups.c:255
+#: ../ctk/inspector/size-groups.c:255
 msgid "Both"
 msgstr ""
 
-#: ../gtk/inspector/visual.c:263 ../gtk/inspector/visual.c:278
+#: ../ctk/inspector/visual.c:263 ../ctk/inspector/visual.c:278
 msgid "Theme is hardcoded by CTK_THEME"
 msgstr ""
 
-#: ../gtk/inspector/visual.c:453
+#: ../ctk/inspector/visual.c:453
 msgid "Backend does not support window scaling"
 msgstr ""
 
-#: ../gtk/inspector/visual.c:492
+#: ../ctk/inspector/visual.c:492
 msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
 msgstr ""
 
-#: ../gtk/inspector/visual.c:557
+#: ../ctk/inspector/visual.c:557
 msgid ""
 "Not settable at runtime.\n"
 "Use GDK_GL=always or GDK_GL=disable instead"
 msgstr ""
 
-#: ../gtk/inspector/visual.c:571 ../gtk/inspector/visual.c:572
-#: ../gtk/inspector/visual.c:573
+#: ../ctk/inspector/visual.c:571 ../ctk/inspector/visual.c:572
+#: ../ctk/inspector/visual.c:573
 msgid "GL rendering is disabled"
 msgstr ""
 
-#: ../gtk/paper_names_offsets.c:4
+#: ../ctk/paper_names_offsets.c:4
 msgctxt "paper size"
 msgid "asme_f"
 msgstr "asme_f"
 
-#: ../gtk/paper_names_offsets.c:5
+#: ../ctk/paper_names_offsets.c:5
 msgctxt "paper size"
 msgid "A0×2"
 msgstr "A0×2"
 
-#: ../gtk/paper_names_offsets.c:6
+#: ../ctk/paper_names_offsets.c:6
 msgctxt "paper size"
 msgid "A0"
 msgstr "A0"
 
-#: ../gtk/paper_names_offsets.c:7
+#: ../ctk/paper_names_offsets.c:7
 msgctxt "paper size"
 msgid "A0×3"
 msgstr "A0×3"
 
-#: ../gtk/paper_names_offsets.c:8
+#: ../ctk/paper_names_offsets.c:8
 msgctxt "paper size"
 msgid "A1"
 msgstr "A1"
 
-#: ../gtk/paper_names_offsets.c:9
+#: ../ctk/paper_names_offsets.c:9
 msgctxt "paper size"
 msgid "A10"
 msgstr "A10"
 
-#: ../gtk/paper_names_offsets.c:10
+#: ../ctk/paper_names_offsets.c:10
 msgctxt "paper size"
 msgid "A1×3"
 msgstr "A1×3"
 
-#: ../gtk/paper_names_offsets.c:11
+#: ../ctk/paper_names_offsets.c:11
 msgctxt "paper size"
 msgid "A1×4"
 msgstr "A1×4"
 
-#: ../gtk/paper_names_offsets.c:12
+#: ../ctk/paper_names_offsets.c:12
 msgctxt "paper size"
 msgid "A2"
 msgstr "A2"
 
-#: ../gtk/paper_names_offsets.c:13
+#: ../ctk/paper_names_offsets.c:13
 msgctxt "paper size"
 msgid "A2×3"
 msgstr "A2×3"
 
-#: ../gtk/paper_names_offsets.c:14
+#: ../ctk/paper_names_offsets.c:14
 msgctxt "paper size"
 msgid "A2×4"
 msgstr "A2×4"
 
-#: ../gtk/paper_names_offsets.c:15
+#: ../ctk/paper_names_offsets.c:15
 msgctxt "paper size"
 msgid "A2×5"
 msgstr "A2×5"
 
-#: ../gtk/paper_names_offsets.c:16
+#: ../ctk/paper_names_offsets.c:16
 msgctxt "paper size"
 msgid "A3"
 msgstr "A3"
 
-#: ../gtk/paper_names_offsets.c:17
+#: ../ctk/paper_names_offsets.c:17
 msgctxt "paper size"
 msgid "A3 Extra"
 msgstr "A3 Breise"
 
-#: ../gtk/paper_names_offsets.c:18
+#: ../ctk/paper_names_offsets.c:18
 msgctxt "paper size"
 msgid "A3×3"
 msgstr "A3×3"
 
-#: ../gtk/paper_names_offsets.c:19
+#: ../ctk/paper_names_offsets.c:19
 msgctxt "paper size"
 msgid "A3×4"
 msgstr "A3×4"
 
-#: ../gtk/paper_names_offsets.c:20
+#: ../ctk/paper_names_offsets.c:20
 msgctxt "paper size"
 msgid "A3×5"
 msgstr "A3×5"
 
-#: ../gtk/paper_names_offsets.c:21
+#: ../ctk/paper_names_offsets.c:21
 msgctxt "paper size"
 msgid "A3×6"
 msgstr "A3×6"
 
-#: ../gtk/paper_names_offsets.c:22
+#: ../ctk/paper_names_offsets.c:22
 msgctxt "paper size"
 msgid "A3×7"
 msgstr "A3×7"
 
-#: ../gtk/paper_names_offsets.c:23
+#: ../ctk/paper_names_offsets.c:23
 msgctxt "paper size"
 msgid "A4"
 msgstr "A4"
 
-#: ../gtk/paper_names_offsets.c:24
+#: ../ctk/paper_names_offsets.c:24
 msgctxt "paper size"
 msgid "A4 Extra"
 msgstr "A4 Breise"
 
-#: ../gtk/paper_names_offsets.c:25
+#: ../ctk/paper_names_offsets.c:25
 msgctxt "paper size"
 msgid "A4 Tab"
 msgstr "A4 Clib"
 
-#: ../gtk/paper_names_offsets.c:26
+#: ../ctk/paper_names_offsets.c:26
 msgctxt "paper size"
 msgid "A4×3"
 msgstr "A4×3"
 
-#: ../gtk/paper_names_offsets.c:27
+#: ../ctk/paper_names_offsets.c:27
 msgctxt "paper size"
 msgid "A4×4"
 msgstr "A4×4"
 
-#: ../gtk/paper_names_offsets.c:28
+#: ../ctk/paper_names_offsets.c:28
 msgctxt "paper size"
 msgid "A4×5"
 msgstr "A4×5"
 
-#: ../gtk/paper_names_offsets.c:29
+#: ../ctk/paper_names_offsets.c:29
 msgctxt "paper size"
 msgid "A4×6"
 msgstr "A4×6"
 
-#: ../gtk/paper_names_offsets.c:30
+#: ../ctk/paper_names_offsets.c:30
 msgctxt "paper size"
 msgid "A4×7"
 msgstr "A4×7"
 
-#: ../gtk/paper_names_offsets.c:31
+#: ../ctk/paper_names_offsets.c:31
 msgctxt "paper size"
 msgid "A4×8"
 msgstr "A4×8"
 
-#: ../gtk/paper_names_offsets.c:32
+#: ../ctk/paper_names_offsets.c:32
 msgctxt "paper size"
 msgid "A4×9"
 msgstr "A4×9"
 
-#: ../gtk/paper_names_offsets.c:33
+#: ../ctk/paper_names_offsets.c:33
 msgctxt "paper size"
 msgid "A5"
 msgstr "A5"
 
-#: ../gtk/paper_names_offsets.c:34
+#: ../ctk/paper_names_offsets.c:34
 msgctxt "paper size"
 msgid "A5 Extra"
 msgstr "A5 Breise"
 
-#: ../gtk/paper_names_offsets.c:35
+#: ../ctk/paper_names_offsets.c:35
 msgctxt "paper size"
 msgid "A6"
 msgstr "A6"
 
-#: ../gtk/paper_names_offsets.c:36
+#: ../ctk/paper_names_offsets.c:36
 msgctxt "paper size"
 msgid "A7"
 msgstr "A7"
 
-#: ../gtk/paper_names_offsets.c:37
+#: ../ctk/paper_names_offsets.c:37
 msgctxt "paper size"
 msgid "A8"
 msgstr "A8"
 
-#: ../gtk/paper_names_offsets.c:38
+#: ../ctk/paper_names_offsets.c:38
 msgctxt "paper size"
 msgid "A9"
 msgstr "A9"
 
-#: ../gtk/paper_names_offsets.c:39
+#: ../ctk/paper_names_offsets.c:39
 msgctxt "paper size"
 msgid "B0"
 msgstr "B0"
 
-#: ../gtk/paper_names_offsets.c:40
+#: ../ctk/paper_names_offsets.c:40
 msgctxt "paper size"
 msgid "B1"
 msgstr "B1"
 
-#: ../gtk/paper_names_offsets.c:41
+#: ../ctk/paper_names_offsets.c:41
 msgctxt "paper size"
 msgid "B10"
 msgstr "B10"
 
-#: ../gtk/paper_names_offsets.c:42
+#: ../ctk/paper_names_offsets.c:42
 msgctxt "paper size"
 msgid "B2"
 msgstr "B2"
 
-#: ../gtk/paper_names_offsets.c:43
+#: ../ctk/paper_names_offsets.c:43
 msgctxt "paper size"
 msgid "B3"
 msgstr "B3"
 
-#: ../gtk/paper_names_offsets.c:44
+#: ../ctk/paper_names_offsets.c:44
 msgctxt "paper size"
 msgid "B4"
 msgstr "B4"
 
-#: ../gtk/paper_names_offsets.c:45
+#: ../ctk/paper_names_offsets.c:45
 msgctxt "paper size"
 msgid "B5"
 msgstr "B5"
 
-#: ../gtk/paper_names_offsets.c:46
+#: ../ctk/paper_names_offsets.c:46
 msgctxt "paper size"
 msgid "B5 Extra"
 msgstr "B5 Breise"
 
-#: ../gtk/paper_names_offsets.c:47
+#: ../ctk/paper_names_offsets.c:47
 msgctxt "paper size"
 msgid "B6"
 msgstr "B6"
 
-#: ../gtk/paper_names_offsets.c:48
+#: ../ctk/paper_names_offsets.c:48
 msgctxt "paper size"
 msgid "B6/C4"
 msgstr "B6/C4"
 
-#: ../gtk/paper_names_offsets.c:49
+#: ../ctk/paper_names_offsets.c:49
 msgctxt "paper size"
 msgid "B7"
 msgstr "B7"
 
-#: ../gtk/paper_names_offsets.c:50
+#: ../ctk/paper_names_offsets.c:50
 msgctxt "paper size"
 msgid "B8"
 msgstr "B8"
 
-#: ../gtk/paper_names_offsets.c:51
+#: ../ctk/paper_names_offsets.c:51
 msgctxt "paper size"
 msgid "B9"
 msgstr "B9"
 
-#: ../gtk/paper_names_offsets.c:52
+#: ../ctk/paper_names_offsets.c:52
 msgctxt "paper size"
 msgid "C0"
 msgstr "C0"
 
-#: ../gtk/paper_names_offsets.c:53
+#: ../ctk/paper_names_offsets.c:53
 msgctxt "paper size"
 msgid "C1"
 msgstr "C1"
 
-#: ../gtk/paper_names_offsets.c:54
+#: ../ctk/paper_names_offsets.c:54
 msgctxt "paper size"
 msgid "C10"
 msgstr "C10"
 
-#: ../gtk/paper_names_offsets.c:55
+#: ../ctk/paper_names_offsets.c:55
 msgctxt "paper size"
 msgid "C2"
 msgstr "C2"
 
-#: ../gtk/paper_names_offsets.c:56
+#: ../ctk/paper_names_offsets.c:56
 msgctxt "paper size"
 msgid "C3"
 msgstr "C3"
 
-#: ../gtk/paper_names_offsets.c:57
+#: ../ctk/paper_names_offsets.c:57
 msgctxt "paper size"
 msgid "C4"
 msgstr "C4"
 
-#: ../gtk/paper_names_offsets.c:58
+#: ../ctk/paper_names_offsets.c:58
 msgctxt "paper size"
 msgid "C5"
 msgstr "C5"
 
-#: ../gtk/paper_names_offsets.c:59
+#: ../ctk/paper_names_offsets.c:59
 msgctxt "paper size"
 msgid "C6"
 msgstr "C6"
 
-#: ../gtk/paper_names_offsets.c:60
+#: ../ctk/paper_names_offsets.c:60
 msgctxt "paper size"
 msgid "C6/C5"
 msgstr "C6/C5"
 
-#: ../gtk/paper_names_offsets.c:61
+#: ../ctk/paper_names_offsets.c:61
 msgctxt "paper size"
 msgid "C7"
 msgstr "C7"
 
-#: ../gtk/paper_names_offsets.c:62
+#: ../ctk/paper_names_offsets.c:62
 msgctxt "paper size"
 msgid "C7/C6"
 msgstr "C7/C6"
 
-#: ../gtk/paper_names_offsets.c:63
+#: ../ctk/paper_names_offsets.c:63
 msgctxt "paper size"
 msgid "C8"
 msgstr "C8"
 
-#: ../gtk/paper_names_offsets.c:64
+#: ../ctk/paper_names_offsets.c:64
 msgctxt "paper size"
 msgid "C9"
 msgstr "C9"
 
-#: ../gtk/paper_names_offsets.c:65
+#: ../ctk/paper_names_offsets.c:65
 msgctxt "paper size"
 msgid "DL Envelope"
 msgstr "Clúdach DL"
 
-#: ../gtk/paper_names_offsets.c:66
+#: ../ctk/paper_names_offsets.c:66
 msgctxt "paper size"
 msgid "RA0"
 msgstr "RA0"
 
-#: ../gtk/paper_names_offsets.c:67
+#: ../ctk/paper_names_offsets.c:67
 msgctxt "paper size"
 msgid "RA1"
 msgstr "RA1"
 
-#: ../gtk/paper_names_offsets.c:68
+#: ../ctk/paper_names_offsets.c:68
 msgctxt "paper size"
 msgid "RA2"
 msgstr "RA2"
 
-#: ../gtk/paper_names_offsets.c:69
+#: ../ctk/paper_names_offsets.c:69
 msgctxt "paper size"
 msgid "RA3"
 msgstr "RA3"
 
-#: ../gtk/paper_names_offsets.c:70
+#: ../ctk/paper_names_offsets.c:70
 msgctxt "paper size"
 msgid "RA4"
 msgstr "RA4"
 
-#: ../gtk/paper_names_offsets.c:71
+#: ../ctk/paper_names_offsets.c:71
 msgctxt "paper size"
 msgid "SRA0"
 msgstr "SRA0"
 
-#: ../gtk/paper_names_offsets.c:72
+#: ../ctk/paper_names_offsets.c:72
 msgctxt "paper size"
 msgid "SRA1"
 msgstr "SRA1"
 
-#: ../gtk/paper_names_offsets.c:73
+#: ../ctk/paper_names_offsets.c:73
 msgctxt "paper size"
 msgid "SRA2"
 msgstr "SRA2"
 
-#: ../gtk/paper_names_offsets.c:74
+#: ../ctk/paper_names_offsets.c:74
 msgctxt "paper size"
 msgid "SRA3"
 msgstr "SRA3"
 
-#: ../gtk/paper_names_offsets.c:75
+#: ../ctk/paper_names_offsets.c:75
 msgctxt "paper size"
 msgid "SRA4"
 msgstr "SRA4"
 
-#: ../gtk/paper_names_offsets.c:76
+#: ../ctk/paper_names_offsets.c:76
 msgctxt "paper size"
 msgid "JB0"
 msgstr "JB0"
 
-#: ../gtk/paper_names_offsets.c:77
+#: ../ctk/paper_names_offsets.c:77
 msgctxt "paper size"
 msgid "JB1"
 msgstr "JB1"
 
-#: ../gtk/paper_names_offsets.c:78
+#: ../ctk/paper_names_offsets.c:78
 msgctxt "paper size"
 msgid "JB10"
 msgstr "JB10"
 
-#: ../gtk/paper_names_offsets.c:79
+#: ../ctk/paper_names_offsets.c:79
 msgctxt "paper size"
 msgid "JB2"
 msgstr "JB2"
 
-#: ../gtk/paper_names_offsets.c:80
+#: ../ctk/paper_names_offsets.c:80
 msgctxt "paper size"
 msgid "JB3"
 msgstr "JB3"
 
-#: ../gtk/paper_names_offsets.c:81
+#: ../ctk/paper_names_offsets.c:81
 msgctxt "paper size"
 msgid "JB4"
 msgstr "JB4"
 
-#: ../gtk/paper_names_offsets.c:82
+#: ../ctk/paper_names_offsets.c:82
 msgctxt "paper size"
 msgid "JB5"
 msgstr "JB5"
 
-#: ../gtk/paper_names_offsets.c:83
+#: ../ctk/paper_names_offsets.c:83
 msgctxt "paper size"
 msgid "JB6"
 msgstr "JB6"
 
-#: ../gtk/paper_names_offsets.c:84
+#: ../ctk/paper_names_offsets.c:84
 msgctxt "paper size"
 msgid "JB7"
 msgstr "JB7"
 
-#: ../gtk/paper_names_offsets.c:85
+#: ../ctk/paper_names_offsets.c:85
 msgctxt "paper size"
 msgid "JB8"
 msgstr "JB8"
 
-#: ../gtk/paper_names_offsets.c:86
+#: ../ctk/paper_names_offsets.c:86
 msgctxt "paper size"
 msgid "JB9"
 msgstr "JB9"
 
-#: ../gtk/paper_names_offsets.c:87
+#: ../ctk/paper_names_offsets.c:87
 msgctxt "paper size"
 msgid "jis exec"
 msgstr "jis exec"
 
-#: ../gtk/paper_names_offsets.c:88
+#: ../ctk/paper_names_offsets.c:88
 msgctxt "paper size"
 msgid "Choukei 2 Envelope"
 msgstr "Clúdach Choukei 2"
 
-#: ../gtk/paper_names_offsets.c:89
+#: ../ctk/paper_names_offsets.c:89
 msgctxt "paper size"
 msgid "Choukei 3 Envelope"
 msgstr "Clúdach Choukei 3"
 
-#: ../gtk/paper_names_offsets.c:90
+#: ../ctk/paper_names_offsets.c:90
 msgctxt "paper size"
 msgid "Choukei 4 Envelope"
 msgstr "Clúdach Choukei 4"
 
-#: ../gtk/paper_names_offsets.c:91
+#: ../ctk/paper_names_offsets.c:91
 msgctxt "paper size"
 msgid "Choukei 40 Envelope"
 msgstr "Clúdach Choukei 40"
 
-#: ../gtk/paper_names_offsets.c:92
+#: ../ctk/paper_names_offsets.c:92
 msgctxt "paper size"
 msgid "hagaki (postcard)"
 msgstr "hagaki (cárta poist)"
 
-#: ../gtk/paper_names_offsets.c:93
+#: ../ctk/paper_names_offsets.c:93
 msgctxt "paper size"
 msgid "kahu Envelope"
 msgstr "Clúdach kahu"
 
-#: ../gtk/paper_names_offsets.c:94
+#: ../ctk/paper_names_offsets.c:94
 msgctxt "paper size"
 msgid "kaku2 Envelope"
 msgstr "Clúdach kaku2"
 
-#: ../gtk/paper_names_offsets.c:95
+#: ../ctk/paper_names_offsets.c:95
 msgctxt "paper size"
 msgid "kaku3 Envelope"
 msgstr "Clúdach kaku3"
 
-#: ../gtk/paper_names_offsets.c:96
+#: ../ctk/paper_names_offsets.c:96
 msgctxt "paper size"
 msgid "kaku4 Envelope"
 msgstr "Clúdach kaku4"
 
-#: ../gtk/paper_names_offsets.c:97
+#: ../ctk/paper_names_offsets.c:97
 msgctxt "paper size"
 msgid "kaku5 Envelope"
 msgstr "Clúdach kaku5"
 
-#: ../gtk/paper_names_offsets.c:98
+#: ../ctk/paper_names_offsets.c:98
 msgctxt "paper size"
 msgid "kaku7 Envelope"
 msgstr "Clúdach kaku7"
 
-#: ../gtk/paper_names_offsets.c:99
+#: ../ctk/paper_names_offsets.c:99
 msgctxt "paper size"
 msgid "kaku8 Envelope"
 msgstr "Clúdach kaku8"
 
-#: ../gtk/paper_names_offsets.c:100
+#: ../ctk/paper_names_offsets.c:100
 msgctxt "paper size"
 msgid "oufuku (reply postcard)"
 msgstr "oufuku (cárta poist freagartha)"
 
-#: ../gtk/paper_names_offsets.c:101
+#: ../ctk/paper_names_offsets.c:101
 msgctxt "paper size"
 msgid "you4 Envelope"
 msgstr "Clúdach you4"
 
-#: ../gtk/paper_names_offsets.c:102
+#: ../ctk/paper_names_offsets.c:102
 msgctxt "paper size"
 msgid "you6 Envelope"
 msgstr "Clúdach you6"
 
-#: ../gtk/paper_names_offsets.c:103
+#: ../ctk/paper_names_offsets.c:103
 msgctxt "paper size"
 msgid "10×11"
 msgstr "10×11"
 
-#: ../gtk/paper_names_offsets.c:104
+#: ../ctk/paper_names_offsets.c:104
 msgctxt "paper size"
 msgid "10×13"
 msgstr "10×13"
 
-#: ../gtk/paper_names_offsets.c:105
+#: ../ctk/paper_names_offsets.c:105
 msgctxt "paper size"
 msgid "10×14"
 msgstr "10×14"
 
-#: ../gtk/paper_names_offsets.c:106
+#: ../ctk/paper_names_offsets.c:106
 msgctxt "paper size"
 msgid "10×15"
 msgstr "10×15"
 
-#: ../gtk/paper_names_offsets.c:107
+#: ../ctk/paper_names_offsets.c:107
 msgctxt "paper size"
 msgid "11×12"
 msgstr "11×12"
 
-#: ../gtk/paper_names_offsets.c:108
+#: ../ctk/paper_names_offsets.c:108
 msgctxt "paper size"
 msgid "11×15"
 msgstr "11×15"
 
-#: ../gtk/paper_names_offsets.c:109
+#: ../ctk/paper_names_offsets.c:109
 msgctxt "paper size"
 msgid "12×19"
 msgstr "12×19"
 
-#: ../gtk/paper_names_offsets.c:110
+#: ../ctk/paper_names_offsets.c:110
 msgctxt "paper size"
 msgid "5×7"
 msgstr "5×7"
 
-#: ../gtk/paper_names_offsets.c:111
+#: ../ctk/paper_names_offsets.c:111
 msgctxt "paper size"
 msgid "6×9 Envelope"
 msgstr "Clúdach 6×9"
 
-#: ../gtk/paper_names_offsets.c:112
+#: ../ctk/paper_names_offsets.c:112
 msgctxt "paper size"
 msgid "7×9 Envelope"
 msgstr "Clúdach 7×9"
 
-#: ../gtk/paper_names_offsets.c:113
+#: ../ctk/paper_names_offsets.c:113
 msgctxt "paper size"
 msgid "8×10 Envelope"
 msgstr "Clúdach 8×10"
 
-#: ../gtk/paper_names_offsets.c:114
+#: ../ctk/paper_names_offsets.c:114
 msgctxt "paper size"
 msgid "9×11 Envelope"
 msgstr "Clúdach 9×11"
 
-#: ../gtk/paper_names_offsets.c:115
+#: ../ctk/paper_names_offsets.c:115
 msgctxt "paper size"
 msgid "9×12 Envelope"
 msgstr "Clúdach 9×12"
 
-#: ../gtk/paper_names_offsets.c:116
+#: ../ctk/paper_names_offsets.c:116
 msgctxt "paper size"
 msgid "a2 Envelope"
 msgstr "Clúdach a2"
 
-#: ../gtk/paper_names_offsets.c:117
+#: ../ctk/paper_names_offsets.c:117
 msgctxt "paper size"
 msgid "Arch A"
 msgstr "Arch A"
 
-#: ../gtk/paper_names_offsets.c:118
+#: ../ctk/paper_names_offsets.c:118
 msgctxt "paper size"
 msgid "Arch B"
 msgstr "Arch B"
 
-#: ../gtk/paper_names_offsets.c:119
+#: ../ctk/paper_names_offsets.c:119
 msgctxt "paper size"
 msgid "Arch C"
 msgstr "Arch C"
 
-#: ../gtk/paper_names_offsets.c:120
+#: ../ctk/paper_names_offsets.c:120
 msgctxt "paper size"
 msgid "Arch D"
 msgstr "Arch D"
 
-#: ../gtk/paper_names_offsets.c:121
+#: ../ctk/paper_names_offsets.c:121
 msgctxt "paper size"
 msgid "Arch E"
 msgstr "Arch E"
 
-#: ../gtk/paper_names_offsets.c:122
+#: ../ctk/paper_names_offsets.c:122
 msgctxt "paper size"
 msgid "b-plus"
 msgstr "b-plus"
 
-#: ../gtk/paper_names_offsets.c:123
+#: ../ctk/paper_names_offsets.c:123
 msgctxt "paper size"
 msgid "c"
 msgstr "c"
 
-#: ../gtk/paper_names_offsets.c:124
+#: ../ctk/paper_names_offsets.c:124
 msgctxt "paper size"
 msgid "c5 Envelope"
 msgstr "Clúdach c5"
 
-#: ../gtk/paper_names_offsets.c:125
+#: ../ctk/paper_names_offsets.c:125
 msgctxt "paper size"
 msgid "d"
 msgstr "d"
 
-#: ../gtk/paper_names_offsets.c:126
+#: ../ctk/paper_names_offsets.c:126
 msgctxt "paper size"
 msgid "e"
 msgstr "e"
 
-#: ../gtk/paper_names_offsets.c:127
+#: ../ctk/paper_names_offsets.c:127
 msgctxt "paper size"
 msgid "edp"
 msgstr "edp"
 
-#: ../gtk/paper_names_offsets.c:128
+#: ../ctk/paper_names_offsets.c:128
 msgctxt "paper size"
 msgid "European edp"
 msgstr "edp Eorpach"
 
-#: ../gtk/paper_names_offsets.c:129
+#: ../ctk/paper_names_offsets.c:129
 msgctxt "paper size"
 msgid "Executive"
 msgstr "Feidhmeannach"
 
-#: ../gtk/paper_names_offsets.c:130
+#: ../ctk/paper_names_offsets.c:130
 msgctxt "paper size"
 msgid "f"
 msgstr "f"
 
-#: ../gtk/paper_names_offsets.c:131
+#: ../ctk/paper_names_offsets.c:131
 msgctxt "paper size"
 msgid "Fan-Fold European"
 msgstr "Fan-Fold Eorpach"
 
-#: ../gtk/paper_names_offsets.c:132
+#: ../ctk/paper_names_offsets.c:132
 msgctxt "paper size"
 msgid "Fan-Fold US"
 msgstr "Fan-Fold SAM"
 
-#: ../gtk/paper_names_offsets.c:133
+#: ../ctk/paper_names_offsets.c:133
 msgctxt "paper size"
 msgid "Fan-Fold German Legal"
 msgstr "Fan-Fold Dlí Gearmánach"
 
-#: ../gtk/paper_names_offsets.c:134
+#: ../ctk/paper_names_offsets.c:134
 msgctxt "paper size"
 msgid "Government Legal"
 msgstr "Dlí Rialtais"
 
-#: ../gtk/paper_names_offsets.c:135
+#: ../ctk/paper_names_offsets.c:135
 msgctxt "paper size"
 msgid "Government Letter"
 msgstr "Litir Rialtais"
 
-#: ../gtk/paper_names_offsets.c:136
+#: ../ctk/paper_names_offsets.c:136
 msgctxt "paper size"
 msgid "Index 3×5"
 msgstr "Innéacs 3×5"
 
-#: ../gtk/paper_names_offsets.c:137
+#: ../ctk/paper_names_offsets.c:137
 msgctxt "paper size"
 msgid "Index 4×6 (postcard)"
 msgstr "Innéacs 4×6 (cárta poist)"
 
-#: ../gtk/paper_names_offsets.c:138
+#: ../ctk/paper_names_offsets.c:138
 msgctxt "paper size"
 msgid "Index 4×6 ext"
 msgstr "Innéacs 4×6 ext"
 
-#: ../gtk/paper_names_offsets.c:139
+#: ../ctk/paper_names_offsets.c:139
 msgctxt "paper size"
 msgid "Index 5×8"
 msgstr "Innéacs 5×8"
 
-#: ../gtk/paper_names_offsets.c:140
+#: ../ctk/paper_names_offsets.c:140
 msgctxt "paper size"
 msgid "Invoice"
 msgstr "Sonrasc"
 
-#: ../gtk/paper_names_offsets.c:141
+#: ../ctk/paper_names_offsets.c:141
 msgctxt "paper size"
 msgid "Tabloid"
 msgstr "Tablóid"
 
-#: ../gtk/paper_names_offsets.c:142
+#: ../ctk/paper_names_offsets.c:142
 msgctxt "paper size"
 msgid "US Legal"
 msgstr "Dlí (SAM)"
 
-#: ../gtk/paper_names_offsets.c:143
+#: ../ctk/paper_names_offsets.c:143
 msgctxt "paper size"
 msgid "US Legal Extra"
 msgstr "Dlí Breise (SAM)"
 
-#: ../gtk/paper_names_offsets.c:144
+#: ../ctk/paper_names_offsets.c:144
 msgctxt "paper size"
 msgid "US Letter"
 msgstr "Litir (SAM)"
 
-#: ../gtk/paper_names_offsets.c:145
+#: ../ctk/paper_names_offsets.c:145
 msgctxt "paper size"
 msgid "US Letter Extra"
 msgstr "Litir Breise (SAM)"
 
-#: ../gtk/paper_names_offsets.c:146
+#: ../ctk/paper_names_offsets.c:146
 msgctxt "paper size"
 msgid "US Letter Plus"
 msgstr "Litir Plus (SAM)"
 
-#: ../gtk/paper_names_offsets.c:147
+#: ../ctk/paper_names_offsets.c:147
 msgctxt "paper size"
 msgid "Monarch Envelope"
 msgstr "Clúdach Monarch"
 
-#: ../gtk/paper_names_offsets.c:148
+#: ../ctk/paper_names_offsets.c:148
 msgctxt "paper size"
 msgid "#10 Envelope"
 msgstr "Clúdach #10"
 
-#: ../gtk/paper_names_offsets.c:149
+#: ../ctk/paper_names_offsets.c:149
 msgctxt "paper size"
 msgid "#11 Envelope"
 msgstr "Clúdach #11"
 
-#: ../gtk/paper_names_offsets.c:150
+#: ../ctk/paper_names_offsets.c:150
 msgctxt "paper size"
 msgid "#12 Envelope"
 msgstr "Clúdach #12"
 
-#: ../gtk/paper_names_offsets.c:151
+#: ../ctk/paper_names_offsets.c:151
 msgctxt "paper size"
 msgid "#14 Envelope"
 msgstr "Clúdach #14"
 
-#: ../gtk/paper_names_offsets.c:152
+#: ../ctk/paper_names_offsets.c:152
 msgctxt "paper size"
 msgid "#9 Envelope"
 msgstr "Clúdach #9"
 
-#: ../gtk/paper_names_offsets.c:153
+#: ../ctk/paper_names_offsets.c:153
 msgctxt "paper size"
 msgid "Oficio"
 msgstr "Oficio"
 
-#: ../gtk/paper_names_offsets.c:154
+#: ../ctk/paper_names_offsets.c:154
 msgctxt "paper size"
 msgid "Personal Envelope"
 msgstr "Clúdach Pearsanta"
 
-#: ../gtk/paper_names_offsets.c:155
+#: ../ctk/paper_names_offsets.c:155
 msgctxt "paper size"
 msgid "Quarto"
 msgstr "Ceathairfhillte"
 
-#: ../gtk/paper_names_offsets.c:156
+#: ../ctk/paper_names_offsets.c:156
 msgctxt "paper size"
 msgid "Super A"
 msgstr "Super A"
 
-#: ../gtk/paper_names_offsets.c:157
+#: ../ctk/paper_names_offsets.c:157
 msgctxt "paper size"
 msgid "Super B"
 msgstr "Super B"
 
-#: ../gtk/paper_names_offsets.c:158
+#: ../ctk/paper_names_offsets.c:158
 msgctxt "paper size"
 msgid "Wide Format"
 msgstr "Formáid Leathan"
 
-#: ../gtk/paper_names_offsets.c:159
+#: ../ctk/paper_names_offsets.c:159
 msgctxt "paper size"
 msgid "Photo L"
 msgstr "Photo L"
 
-#: ../gtk/paper_names_offsets.c:160
+#: ../ctk/paper_names_offsets.c:160
 msgctxt "paper size"
 msgid "Dai-pa-kai"
 msgstr "Dai-pa-kai"
 
-#: ../gtk/paper_names_offsets.c:161
+#: ../ctk/paper_names_offsets.c:161
 msgctxt "paper size"
 msgid "Folio"
 msgstr "Fóilió"
 
-#: ../gtk/paper_names_offsets.c:162
+#: ../ctk/paper_names_offsets.c:162
 msgctxt "paper size"
 msgid "Folio sp"
 msgstr "Fóilió sp"
 
-#: ../gtk/paper_names_offsets.c:163
+#: ../ctk/paper_names_offsets.c:163
 msgctxt "paper size"
 msgid "Invite Envelope"
 msgstr "Clúdach Cuiridh"
 
-#: ../gtk/paper_names_offsets.c:164
+#: ../ctk/paper_names_offsets.c:164
 msgctxt "paper size"
 msgid "Italian Envelope"
 msgstr "Clúdach Iodálach"
 
-#: ../gtk/paper_names_offsets.c:165
+#: ../ctk/paper_names_offsets.c:165
 msgctxt "paper size"
 msgid "juuro-ku-kai"
 msgstr "juuro-ku-kai"
 
-#: ../gtk/paper_names_offsets.c:166
+#: ../ctk/paper_names_offsets.c:166
 msgctxt "paper size"
 msgid "Large Photo"
 msgstr "Grianghraf Mór"
 
-#: ../gtk/paper_names_offsets.c:167
+#: ../ctk/paper_names_offsets.c:167
 msgctxt "paper size"
 msgid "Medium Photo"
 msgstr "Grianghraf Meánach"
 
-#: ../gtk/paper_names_offsets.c:168
+#: ../ctk/paper_names_offsets.c:168
 msgctxt "paper size"
 msgid "pa-kai"
 msgstr "pa-kai"
 
-#: ../gtk/paper_names_offsets.c:169
+#: ../ctk/paper_names_offsets.c:169
 msgctxt "paper size"
 msgid "Postfix Envelope"
 msgstr "Clúdach Postfix"
 
-#: ../gtk/paper_names_offsets.c:170
+#: ../ctk/paper_names_offsets.c:170
 msgctxt "paper size"
 msgid "Small Photo"
 msgstr "Grianghraf Beag"
 
-#: ../gtk/paper_names_offsets.c:171
+#: ../ctk/paper_names_offsets.c:171
 msgctxt "paper size"
 msgid "Wide Photo"
 msgstr "Grianghraf Leathan"
 
-#: ../gtk/paper_names_offsets.c:172
+#: ../ctk/paper_names_offsets.c:172
 msgctxt "paper size"
 msgid "prc1 Envelope"
 msgstr "Clúdach prc1"
 
-#: ../gtk/paper_names_offsets.c:173
+#: ../ctk/paper_names_offsets.c:173
 msgctxt "paper size"
 msgid "prc10 Envelope"
 msgstr "Clúdach prc10"
 
-#: ../gtk/paper_names_offsets.c:174
+#: ../ctk/paper_names_offsets.c:174
 msgctxt "paper size"
 msgid "prc 16k"
 msgstr "prc 16k"
 
-#: ../gtk/paper_names_offsets.c:175
+#: ../ctk/paper_names_offsets.c:175
 msgctxt "paper size"
 msgid "prc2 Envelope"
 msgstr "Clúdach prc2"
 
-#: ../gtk/paper_names_offsets.c:176
+#: ../ctk/paper_names_offsets.c:176
 msgctxt "paper size"
 msgid "prc3 Envelope"
 msgstr "Clúdach prc3"
 
-#: ../gtk/paper_names_offsets.c:177
+#: ../ctk/paper_names_offsets.c:177
 msgctxt "paper size"
 msgid "prc 32k"
 msgstr "prc 32k"
 
-#: ../gtk/paper_names_offsets.c:178
+#: ../ctk/paper_names_offsets.c:178
 msgctxt "paper size"
 msgid "prc4 Envelope"
 msgstr "Clúdach prc4"
 
-#: ../gtk/paper_names_offsets.c:179
+#: ../ctk/paper_names_offsets.c:179
 msgctxt "paper size"
 msgid "prc5 Envelope"
 msgstr "Clúdach prc5"
 
-#: ../gtk/paper_names_offsets.c:180
+#: ../ctk/paper_names_offsets.c:180
 msgctxt "paper size"
 msgid "prc6 Envelope"
 msgstr "Clúdach prc6"
 
-#: ../gtk/paper_names_offsets.c:181
+#: ../ctk/paper_names_offsets.c:181
 msgctxt "paper size"
 msgid "prc7 Envelope"
 msgstr "Clúdach prc7"
 
-#: ../gtk/paper_names_offsets.c:182
+#: ../ctk/paper_names_offsets.c:182
 msgctxt "paper size"
 msgid "prc8 Envelope"
 msgstr "Clúdach prc8"
 
-#: ../gtk/paper_names_offsets.c:183
+#: ../ctk/paper_names_offsets.c:183
 msgctxt "paper size"
 msgid "prc9 Envelope"
 msgstr "Clúdach prc9"
 
-#: ../gtk/paper_names_offsets.c:184
+#: ../ctk/paper_names_offsets.c:184
 msgctxt "paper size"
 msgid "ROC 16k"
 msgstr "ROC 16k"
 
-#: ../gtk/paper_names_offsets.c:185
+#: ../ctk/paper_names_offsets.c:185
 msgctxt "paper size"
 msgid "ROC 8k"
 msgstr "ROC 8k"
 
-#: ../gtk/updateiconcache.c:1390
+#: ../ctk/updateiconcache.c:1390
 #, c-format
 msgid "Failed to write header\n"
 msgstr "Theip ar scríobh ceanntáisc\n"
 
-#: ../gtk/updateiconcache.c:1396
+#: ../ctk/updateiconcache.c:1396
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "Theip ar scríobh hais-tábla\n"
 
-#: ../gtk/updateiconcache.c:1402
+#: ../ctk/updateiconcache.c:1402
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "Theip ar scríobh innéacs fillteáin\n"
 
-#: ../gtk/updateiconcache.c:1410
+#: ../ctk/updateiconcache.c:1410
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "Theip ar athscríobh ceanntáisc\n"
 
-#: ../gtk/updateiconcache.c:1504
+#: ../ctk/updateiconcache.c:1504
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "Theip ar oscailt comhaid %s : %s\n"
 
-#: ../gtk/updateiconcache.c:1512 ../gtk/updateiconcache.c:1542
+#: ../ctk/updateiconcache.c:1512 ../ctk/updateiconcache.c:1542
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "Theip ar scríobh chomhad taisce: %s\n"
 
-#: ../gtk/updateiconcache.c:1552
+#: ../ctk/updateiconcache.c:1552
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "Bhí an taisce ghinte neamhbhailí.\n"
 
-#: ../gtk/updateiconcache.c:1566
+#: ../ctk/updateiconcache.c:1566
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "Níorbh fhéidir %s a athainmniú go %s: %s, mar sin %s á bhaint.\n"
 
-#: ../gtk/updateiconcache.c:1580
+#: ../ctk/updateiconcache.c:1580
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "Níorbh fhéidir %s a athainmniú go %s: %s\n"
 
-#: ../gtk/updateiconcache.c:1590
+#: ../ctk/updateiconcache.c:1590
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "Níorbh fhéidir %s a athainmniú ar ais go %s: %s\n"
 
-#: ../gtk/updateiconcache.c:1617
+#: ../ctk/updateiconcache.c:1617
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "D'éirigh le cruthú an chomhaid taisce.\n"
 
-#: ../gtk/updateiconcache.c:1656
+#: ../ctk/updateiconcache.c:1656
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "Forscríobh taisce atá ann, cé go bhfuil sí cothrom le dáta"
 
-#: ../gtk/updateiconcache.c:1657
+#: ../ctk/updateiconcache.c:1657
 msgid "Don't check for the existence of index.theme"
 msgstr ""
 
-#: ../gtk/updateiconcache.c:1658
+#: ../ctk/updateiconcache.c:1658
 msgid "Don't include image data in the cache"
 msgstr ""
 
-#: ../gtk/updateiconcache.c:1659
+#: ../ctk/updateiconcache.c:1659
 msgid "Include image data in the cache"
 msgstr ""
 
-#: ../gtk/updateiconcache.c:1660
+#: ../ctk/updateiconcache.c:1660
 msgid "Output a C header file"
 msgstr "Cuir comhad ceanntáisc C amach"
 
-#: ../gtk/updateiconcache.c:1661
+#: ../ctk/updateiconcache.c:1661
 msgid "Turn off verbose output"
 msgstr "Díchumasaigh aschur foclach"
 
-#: ../gtk/updateiconcache.c:1662
+#: ../ctk/updateiconcache.c:1662
 msgid "Validate existing icon cache"
 msgstr ""
 
-#: ../gtk/updateiconcache.c:1729
+#: ../ctk/updateiconcache.c:1729
 #, c-format
 msgid "File not found: %s\n"
 msgstr "Comhad gan aimsiú: %s\n"
 
-#: ../gtk/updateiconcache.c:1735
+#: ../ctk/updateiconcache.c:1735
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "Ní taisce dheilbhíní bhailí é: %s\n"
 
-#: ../gtk/updateiconcache.c:1748
+#: ../ctk/updateiconcache.c:1748
 #, c-format
 msgid "No theme index file.\n"
 msgstr "Gan chomhad innéacs téama.\n"
 
-#: ../gtk/updateiconcache.c:1752
+#: ../ctk/updateiconcache.c:1752
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -5000,378 +5000,378 @@ msgstr "Modh Ionchurtha X"
 
 #. Translators: The printer status is online, i.e. it is
 #. * ready to print.
-#: ../modules/printbackends/cloudprint/gtkprintbackendcloudprint.c:744
+#: ../modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Online"
 msgstr "Ar Líne"
 
 #. Translators: The printer is offline.
-#: ../modules/printbackends/cloudprint/gtkprintbackendcloudprint.c:751
+#: ../modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:751
 msgid "Offline"
 msgstr "As Líne"
 
 #. We shouldn't get here because the query omits dormant
 #. * printers by default.
 #. Translators: Printer has been offline for a long time.
-#: ../modules/printbackends/cloudprint/gtkprintbackendcloudprint.c:757
+#: ../modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:757
 msgid "Dormant"
 msgstr ""
 
 #. How many document pages to go onto one side of paper.
-#: ../modules/printbackends/cloudprint/gtkprintbackendcloudprint.c:939
-#: ../modules/printbackends/file/gtkprintbackendfile.c:676
-#: ../modules/printbackends/test/gtkprintbackendtest.c:501
+#: ../modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:939
+#: ../modules/printbackends/file/ctkprintbackendfile.c:676
+#: ../modules/printbackends/test/ctkprintbackendtest.c:501
 msgid "Pages per _sheet:"
 msgstr "_Leathanaigh sa leathán:"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1090
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1399
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1090
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1399
 msgid "Username:"
 msgstr "Ainm Úsáideora:"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1091
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1408
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1091
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1408
 msgid "Password:"
 msgstr "Focal Faire:"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1130
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1421
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1130
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1421
 #, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr "Fíordheimhniú de dhíth chun cáipéis “%s” a phriontáil ar phrintéir %s"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1132
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1132
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr "Fíordheimhniú de dhíth chun cáipéis a phriontáil ar %s"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1136
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1136
 #, c-format
 msgid "Authentication is required to get attributes of job “%s”"
 msgstr "Fíordheimhniú de dhíth chun tréithe jab “%s” a fháil"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1138
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1138
 msgid "Authentication is required to get attributes of a job"
 msgstr "Fíordheimhniú de dhíth chun tréithe jab a fháil"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1142
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1142
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr "Fíordheimhniú de dhíth chun tréithe printéara %s a fháil"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1144
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1144
 msgid "Authentication is required to get attributes of a printer"
 msgstr "Fíordheimhniú de dhíth chun tréithe printéara a fháil"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1147
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1147
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr "Fíordheimhniú de dhíth chun an printéir réamhshocraithe %s a fháil"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1150
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1150
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr "Fíordheimhniú de dhíth chun printéirí a fháil ó %s"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1155
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1155
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr "Fíordheimhniú de dhíth chun comhad a fháil ó %s"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1157
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1157
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "Fíordheimhniú de dhíth ar %s"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1393
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1393
 msgid "Domain:"
 msgstr "Fearann:"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1423
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1423
 #, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr "Fíordheimhniú de dhíth chun cáipéis “%s” a phriontáil"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1428
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1428
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr ""
 "Fíordheimhniú de dhíth chun an cháipéis seo a phriontáil ar phrintéir %s"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1430
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1430
 msgid "Authentication is required to print this document"
 msgstr "Fíordheimhniú de dhíth chun an cháipéis seo a phriontáil"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1867
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1867
 #, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "Tonóir gann i bprintéir “%s”."
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1868
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1868
 #, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "Níl aon tonóir fágtha i bprintéir “%s”."
 
 #. Translators: "Developer" like on photo development context
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1870
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1870
 #, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "Réalóir gann i bprintéir “%s”."
 
 #. Translators: "Developer" like on photo development context
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1872
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1872
 #, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "Níl aon réalóir fágtha i bprintéir “%s”."
 
 #. Translators: "marker" is one color bin of the printer
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1874
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1874
 #, fuzzy, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr "Tonóir gann i bprintéir '%s'."
 
 #. Translators: "marker" is one color bin of the printer
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1876
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1876
 #, fuzzy, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr "Níl aon pháipéar fágtha i bprintéir '%s'."
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1877
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1877
 #, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "Tá an clúdach ar phrintéir “%s” oscailte."
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1878
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1878
 #, c-format
 msgid "The door is open on printer “%s”."
 msgstr "Tá an doras ar phrintéir “%s” oscailte."
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1879
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1879
 #, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "Páipéar gann i bprintéir “%s”."
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1880
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1880
 #, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "Níl aon pháipéar fágtha i bprintéir “%s”."
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1881
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1881
 #, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "Tá printéir “%s” as líne faoi láthair."
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:1882
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:1882
 #, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "Tá fadhb ann le printéir “%s”."
 
 #. Translators: this is a printer status.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:2521
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:2521
 msgid "Paused; Rejecting Jobs"
 msgstr "Ar Sos; Jabanna á nDiúltú"
 
 #. Translators: this is a printer status.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:2527
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:2527
 msgid "Rejecting Jobs"
 msgstr "Jabanna á nDiúltú"
 
 #. Translators: this string connects multiple printer states together.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:2569
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:2569
 msgid "; "
 msgstr "; "
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4255
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4322
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4255
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4322
 msgid "Two Sided"
 msgstr "Déthaobhach"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4256
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4256
 msgid "Paper Type"
 msgstr "Cineál an Pháipéir"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4257
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4257
 msgid "Paper Source"
 msgstr "Foinse an Pháipéir"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4258
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4323
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4258
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4323
 msgid "Output Tray"
 msgstr "Tráidire Aschurtha"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4259
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4259
 msgid "Resolution"
 msgstr "Taifeach"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4260
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4260
 msgid "GhostScript pre-filtering"
 msgstr "Réamhscagadh GhostScript"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4269
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4269
 msgid "One Sided"
 msgstr "Aonthaobhach"
 
 #. Translators: this is an option of "Two Sided"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4271
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4271
 msgid "Long Edge (Standard)"
 msgstr "Ciumhais Fhada (Caighdeánach)"
 
 #. Translators: this is an option of "Two Sided"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4273
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4273
 msgid "Short Edge (Flip)"
 msgstr "Ciumhais Ghearr (Smeach)"
 
 #. Translators: this is an option of "Paper Source"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4275
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4277
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4285
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4275
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4277
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4285
 msgid "Auto Select"
 msgstr "Roghnaigh go hUathoibríoch"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4279
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4281
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4283
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4287
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4826
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4279
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4281
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4283
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4287
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4826
 msgid "Printer Default"
 msgstr "Réamhshocrú Printéara"
 
 #. Translators: this is an option of "GhostScript"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4289
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4289
 msgid "Embed GhostScript fonts only"
 msgstr "Leabaigh clónna GhostScript amháin"
 
 #. Translators: this is an option of "GhostScript"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4291
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4291
 msgid "Convert to PS level 1"
 msgstr "Tiontaigh go PS leibhéal 1"
 
 #. Translators: this is an option of "GhostScript"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4293
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4293
 msgid "Convert to PS level 2"
 msgstr "Tiontaigh go PS leibhéal 2"
 
 #. Translators: this is an option of "GhostScript"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4295
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4295
 msgid "No pre-filtering"
 msgstr "Gan réamhscagadh"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4304
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4304
 msgid "Miscellaneous"
 msgstr "Socruithe Éagsúla"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4331
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4331
 msgctxt "sides"
 msgid "One Sided"
 msgstr "Aonthaobhach"
 
 #. Translators: this is an option of "Two Sided"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4333
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4333
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "Ciumhais Fhada (Caighdeánach)"
 
 #. Translators: this is an option of "Two Sided"
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4335
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4335
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "Ciumhais Ghearr (Smeach)"
 
 #. Translators: Top output bin
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4338
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4338
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr ""
 
 #. Translators: Middle output bin
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4340
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4340
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr ""
 
 #. Translators: Bottom output bin
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4342
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4342
 #, fuzzy
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "_Bun:"
 
 #. Translators: Side output bin
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4344
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4344
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr ""
 
 #. Translators: Left output bin
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4346
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4346
 #, fuzzy
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "Left"
 
 #. Translators: Right output bin
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4348
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4348
 #, fuzzy
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "Right"
 
 #. Translators: Center output bin
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4350
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4350
 #, fuzzy
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "_Láraigh"
 
 #. Translators: Rear output bin
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4352
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4352
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4354
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4354
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4356
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4356
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr ""
 
 #. Translators: Large capacity output bin
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4358
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4358
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr ""
 
 #. Translators: Output stacker number %d
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4360
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4360
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr ""
 
 #. Translators: Output mailbox number %d
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4362
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4362
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr ""
 
 #. Translators: Private mailbox
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4364
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4364
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr ""
 
 #. Translators: Output tray number %d
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:4366
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:4366
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
@@ -5380,78 +5380,78 @@ msgstr ""
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5266
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5266
 msgid "Urgent"
 msgstr "Práinneach"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5266
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5266
 msgid "High"
 msgstr "Ard"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5266
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5266
 msgid "Medium"
 msgstr "Measartha"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5266
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5266
 msgid "Low"
 msgstr "Íseal"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5296
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5296
 msgid "Job Priority"
 msgstr "Tosaíocht an Jab"
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5307
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5307
 msgid "Billing Info"
 msgstr "Eolas billeála"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5322
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5322
 msgid "Classified"
 msgstr "Rúnaicmithe"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5322
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5322
 msgid "Confidential"
 msgstr "Faoi Rún"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5322
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5322
 msgid "Secret"
 msgstr "Rúnda"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5322
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5322
 msgid "Standard"
 msgstr "Caighdeánach"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5322
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5322
 msgid "Top Secret"
 msgstr "An-Rúnda"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5322
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5322
 msgid "Unclassified"
 msgstr "Neamhrúnaicmithe"
 
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5333
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5333
 msgid "Pages per Sheet"
 msgstr "Leathanaigh sa Leathán"
 
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5393
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5393
 msgid "Before"
 msgstr "Roimh"
 
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5408
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5408
 msgid "After"
 msgstr "Tar Éis"
 
@@ -5459,14 +5459,14 @@ msgstr "Tar Éis"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5428
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5428
 msgid "Print at"
 msgstr "Priontáil ag"
 
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5439
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5439
 msgid "Print at time"
 msgstr "Priontáil ag am"
 
@@ -5475,107 +5475,107 @@ msgstr "Priontáil ag am"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5481
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5481
 #, c-format
 msgid "Custom %s×%s"
 msgstr "%s×%s Saincheaptha"
 
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5590
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5590
 msgid "Printer Profile"
 msgstr "Próifíl Phrintéara"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: ../modules/printbackends/cups/gtkprintbackendcups.c:5597
+#: ../modules/printbackends/cups/ctkprintbackendcups.c:5597
 msgid "Unavailable"
 msgstr "Níl ar fáil"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: ../modules/printbackends/cups/gtkprintercups.c:267
+#: ../modules/printbackends/cups/ctkprintercups.c:267
 msgid "Color management unavailable"
 msgstr "Níl bainsteoireacht dathanna ar fáil"
 
 #. TRANSLATORS: when there is no color profile available
-#: ../modules/printbackends/cups/gtkprintercups.c:279
+#: ../modules/printbackends/cups/ctkprintercups.c:279
 msgid "No profile available"
 msgstr "Níl aon phróifíl ar fáil"
 
 #. TRANSLATORS: when the color profile has no title
-#: ../modules/printbackends/cups/gtkprintercups.c:290
+#: ../modules/printbackends/cups/ctkprintercups.c:290
 msgid "Unspecified profile"
 msgstr "Próifíl gan sonrú"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:250
+#: ../modules/printbackends/file/ctkprintbackendfile.c:250
 msgid "output"
 msgstr "aschur"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:537
+#: ../modules/printbackends/file/ctkprintbackendfile.c:537
 msgid "Print to File"
 msgstr "Priontáil go Comhad"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:663
+#: ../modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "PDF"
 msgstr "PDF"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:663
+#: ../modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "Postscript"
 msgstr "Postscript"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:663
+#: ../modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "SVG"
 msgstr "SVG"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:735
+#: ../modules/printbackends/file/ctkprintbackendfile.c:735
 msgid "File"
 msgstr "Comhad"
 
-#: ../modules/printbackends/file/gtkprintbackendfile.c:745
+#: ../modules/printbackends/file/ctkprintbackendfile.c:745
 msgid "_Output format"
 msgstr "_Formáid aschurtha"
 
-#: ../modules/printbackends/lpr/gtkprintbackendlpr.c:393
+#: ../modules/printbackends/lpr/ctkprintbackendlpr.c:393
 msgid "Print to LPR"
 msgstr "Priontáil go LPR"
 
-#: ../modules/printbackends/lpr/gtkprintbackendlpr.c:419
+#: ../modules/printbackends/lpr/ctkprintbackendlpr.c:419
 msgid "Pages Per Sheet"
 msgstr "Leathanaigh sa Leathán"
 
-#: ../modules/printbackends/lpr/gtkprintbackendlpr.c:426
+#: ../modules/printbackends/lpr/ctkprintbackendlpr.c:426
 msgid "Command Line"
 msgstr "Líne na n-Orduithe"
 
 #. SUN_BRANDING
-#: ../modules/printbackends/papi/gtkprintbackendpapi.c:786
+#: ../modules/printbackends/papi/ctkprintbackendpapi.c:786
 msgid "printer offline"
 msgstr "printéir as líne"
 
 #. SUN_BRANDING
-#: ../modules/printbackends/papi/gtkprintbackendpapi.c:804
+#: ../modules/printbackends/papi/ctkprintbackendpapi.c:804
 msgid "ready to print"
 msgstr "réidh do phriontáil"
 
 #. SUN_BRANDING
-#: ../modules/printbackends/papi/gtkprintbackendpapi.c:807
+#: ../modules/printbackends/papi/ctkprintbackendpapi.c:807
 msgid "processing job"
 msgstr "jab á phróiseáil"
 
 #. SUN_BRANDING
-#: ../modules/printbackends/papi/gtkprintbackendpapi.c:811
+#: ../modules/printbackends/papi/ctkprintbackendpapi.c:811
 msgid "paused"
 msgstr "curtha ar shos"
 
 #. SUN_BRANDING
-#: ../modules/printbackends/papi/gtkprintbackendpapi.c:814
+#: ../modules/printbackends/papi/ctkprintbackendpapi.c:814
 msgid "unknown"
 msgstr "anaithnid"
 
 #. default filename used for print-to-test
-#: ../modules/printbackends/test/gtkprintbackendtest.c:232
+#: ../modules/printbackends/test/ctkprintbackendtest.c:232
 #, c-format
 msgid "test-output.%s"
 msgstr "aschur-trialach.%s"
 
-#: ../modules/printbackends/test/gtkprintbackendtest.c:465
+#: ../modules/printbackends/test/ctkprintbackendtest.c:465
 msgid "Print to Test Printer"
 msgstr "Priontáil go Printéir Tástála"

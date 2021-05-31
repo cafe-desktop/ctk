@@ -20,10 +20,10 @@
 
 #include "config.h"
 
-#include "gtkbuiltiniconprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkiconprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctkbuiltiniconprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkiconprivate.h"
+#include "ctkwidgetprivate.h"
 
 /* GtkIcon is a minimal widget wrapped around a GtkBuiltinIcon gadget,
  * It should be used whenever builtin-icon functionality is desired

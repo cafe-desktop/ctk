@@ -1,5 +1,5 @@
-#include <gtk/gtkx.h>
-#include <gtk/gtkunixprint.h>
+#include <ctk/ctkx.h>
+#include <ctk/ctkunixprint.h>
 
 ctk_about_dialog_get_type
 ctk_accel_group_get_type

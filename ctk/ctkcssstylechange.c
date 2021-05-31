@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtkcssstylechangeprivate.h"
+#include "ctkcssstylechangeprivate.h"
 
-#include "gtkcssstylepropertyprivate.h"
+#include "ctkcssstylepropertyprivate.h"
 
 void
 ctk_css_style_change_init (GtkCssStyleChange *change,

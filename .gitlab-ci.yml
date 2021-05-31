@@ -7,13 +7,13 @@ cache:
     - _ccache/
 
 fedora-autotools:
-  image: registry.gitlab.gnome.org/gnome/gtk/fedora-gtk3:v1
+  image: registry.gitlab.gnome.org/gnome/ctk/fedora-ctk3:v1
   stage: build
   script:
     - bash -x ./.gitlab-ci/test-docker-autotools.sh
 
 fedora-distcheck:
-  image: registry.gitlab.gnome.org/gnome/gtk/fedora-gtk3:v1
+  image: registry.gitlab.gnome.org/gnome/ctk/fedora-ctk3:v1
   variables:
     DO_DISTCHECK: "yes"
   when: manual
@@ -22,7 +22,7 @@ fedora-distcheck:
     - bash -x ./.gitlab-ci/test-docker-autotools.sh
 
 fedora-meson:
-  image: registry.gitlab.gnome.org/gnome/gtk/fedora-gtk3:v1
+  image: registry.gitlab.gnome.org/gnome/ctk/fedora-ctk3:v1
   stage: build
   variables:
     EXTRA_MESON_FLAGS: "-Ddefault_library=both"
@@ -30,13 +30,13 @@ fedora-meson:
     - bash -x ./.gitlab-ci/test-docker-meson.sh
   artifacts:
     when: always
-    name: "gtk3-${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}"
+    name: "ctk3-${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}"
     paths:
       - "_build/meson-logs"
       - "_build/testsuite/reftests/output"
 
 debian-meson:
-  image: registry.gitlab.gnome.org/gnome/gtk/debian-gtk3:v1
+  image: registry.gitlab.gnome.org/gnome/ctk/debian-ctk3:v1
   stage: build
   variables:
     EXTRA_MESON_FLAGS: "-Ddefault_library=both"
@@ -44,25 +44,25 @@ debian-meson:
     - bash -x ./.gitlab-ci/test-docker-meson.sh
   artifacts:
     when: always
-    name: "gtk3-${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}"
+    name: "ctk3-${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}"
     paths:
       - "_build/meson-logs"
       - "_build/testsuite/reftests/output"
 
 reference:
-  image: registry.gitlab.gnome.org/gnome/gtk/fedora-gtk3:v1
+  image: registry.gitlab.gnome.org/gnome/ctk/fedora-ctk3:v1
   stage: docs
   variables:
     EXTRA_MESON_FLAGS: "--buildtype=release -Dctk_doc=true -Dman=true"
   script:
     - bash -x ./.gitlab-ci/test-docker-meson.sh
-    - ninja -C _build gdk3-doc gtk3-doc
+    - ninja -C _build gdk3-doc ctk3-doc
     - tar -c -J -f gdk3-docs.tar.xz _build/docs/reference/gdk
-    - tar -c -J -f gtk3-docs.tar.xz _build/docs/reference/gtk
+    - tar -c -J -f ctk3-docs.tar.xz _build/docs/reference/ctk
   artifacts:
     paths:
       - gdk3-docs.tar.xz
-      - gtk3-docs.tar.xz
+      - ctk3-docs.tar.xz
 
 msys2-mingw64-meson:
   variables:
@@ -76,7 +76,7 @@ msys2-mingw64-meson:
     - C:\msys64\usr\bin\bash -lc "bash -x ./.gitlab-ci/test-msys2-meson.sh"
   artifacts:
     when: always
-    name: "gtk3-${env:CI_JOB_NAME}-${env:CI_COMMIT_REF_NAME}"
+    name: "ctk3-${env:CI_JOB_NAME}-${env:CI_COMMIT_REF_NAME}"
     paths:
       - "_build/meson-logs"
 

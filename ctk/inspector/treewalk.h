@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gtk/gtk.h>
-//#include "gtktreemodel.h"
+#include <ctk/ctk.h>
+//#include "ctktreemodel.h"
 
 
 typedef gboolean (*RowPredicate) (GtkTreeModel *model,

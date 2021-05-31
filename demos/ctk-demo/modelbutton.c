@@ -12,7 +12,7 @@
  * in popovers.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 tool_clicked (GtkButton *button)

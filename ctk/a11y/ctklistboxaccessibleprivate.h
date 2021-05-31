@@ -18,7 +18,7 @@
 #ifndef __CTK_LIST_BOX_ACCESSIBLE_PRIVATE_H__
 #define __CTK_LIST_BOX_ACCESSIBLE_PRIVATE_H__
 
-#include <gtk/a11y/gtklistboxaccessible.h>
+#include <ctk/a11y/ctklistboxaccessible.h>
 
 G_BEGIN_DECLS
 

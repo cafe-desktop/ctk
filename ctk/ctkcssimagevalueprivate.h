@@ -20,8 +20,8 @@
 #ifndef __CTK_CSS_IMAGE_VALUE_PRIVATE_H__
 #define __CTK_CSS_IMAGE_VALUE_PRIVATE_H__
 
-#include "gtkcssimageprivate.h"
-#include "gtkcssvalueprivate.h"
+#include "ctkcssimageprivate.h"
+#include "ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

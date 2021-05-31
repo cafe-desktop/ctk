@@ -5,7 +5,7 @@
  *
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 show_parsing_error (GtkCssProvider *provider,

@@ -19,13 +19,13 @@
 
 #include "config.h"
 
-#include "gtkboxgadgetprivate.h"
+#include "ctkboxgadgetprivate.h"
 
-#include "gtkcssnodeprivate.h"
-#include "gtkmain.h"
-#include "gtkprivate.h"
-#include "gtksizerequest.h"
-#include "gtkwidgetprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkmain.h"
+#include "ctkprivate.h"
+#include "ctksizerequest.h"
+#include "ctkwidgetprivate.h"
 
 /* GtkBoxGadget is a container gadget implementation that arranges its
  * children in a row, either horizontally or vertically. Children can

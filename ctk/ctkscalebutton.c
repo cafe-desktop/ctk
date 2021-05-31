@@ -29,35 +29,35 @@
  * Modified by the GTK+ Team and others 2007.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkscalebutton.h"
+#include "ctkscalebutton.h"
 
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "gtkadjustment.h"
-#include "gtkbindings.h"
-#include "gtkframe.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkorientable.h"
-#include "gtkpopover.h"
-#include "gtkprivate.h"
-#include "gtkscale.h"
-#include "gtkbox.h"
-#include "gtkwindow.h"
-#include "gtkwindowprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
-#include "a11y/gtkscalebuttonaccessible.h"
+#include "ctkadjustment.h"
+#include "ctkbindings.h"
+#include "ctkframe.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkorientable.h"
+#include "ctkpopover.h"
+#include "ctkprivate.h"
+#include "ctkscale.h"
+#include "ctkbox.h"
+#include "ctkwindow.h"
+#include "ctkwindowprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
+#include "a11y/ctkscalebuttonaccessible.h"
 
 /**
- * SECTION:gtkscalebutton
+ * SECTION:ctkscalebutton
  * @Short_description: A button which pops up a scale
  * @Title: GtkScaleButton
  *
@@ -328,7 +328,7 @@ ctk_scale_button_class_init (GtkScaleButtonClass *klass)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkscalebutton.ui");
+					       "/org/ctk/libctk/ui/ctkscalebutton.ui");
 
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkScaleButton, plus_button);
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkScaleButton, minus_button);
@@ -937,12 +937,12 @@ cb_button_press (GtkWidget      *widget,
   priv->active_button = widget;
 
   g_object_get (ctk_widget_get_settings (widget),
-                "gtk-double-click-time", &double_click_time,
+                "ctk-double-click-time", &double_click_time,
                 NULL);
   priv->click_id = gdk_threads_add_timeout (double_click_time,
                                             cb_button_timeout,
                                             button);
-  g_source_set_name_by_id (priv->click_id, "[gtk+] cb_button_timeout");
+  g_source_set_name_by_id (priv->click_id, "[ctk+] cb_button_timeout");
   cb_button_timeout (button);
 
   return TRUE;

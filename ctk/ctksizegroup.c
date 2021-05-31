@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtksizegroup.c: 
+ * ctksizegroup.c: 
  * Copyright (C) 2001 Red Hat Software
  *
  * This library is free software; you can redistribute it and/or
@@ -19,19 +19,19 @@
 #include "config.h"
 #include <string.h>
 
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtkcontainer.h"
-#include "gtkintl.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtksizegroup-private.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctkcontainer.h"
+#include "ctkintl.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctksizegroup-private.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
 
 
 /**
- * SECTION:gtksizegroup
+ * SECTION:ctksizegroup
  * @Short_description: Grouping widgets so they request the same size
  * @Title: GtkSizeGroup
  *

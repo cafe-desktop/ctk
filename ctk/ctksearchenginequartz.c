@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007  Kristian Rietveld  <kris@gtk.org>
+ * Copyright (C) 2007  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,7 +18,7 @@
 #include <Cocoa/Cocoa.h>
 #include <quartz/gdkquartz.h>
 
-#include "gtksearchenginequartz.h"
+#include "ctksearchenginequartz.h"
 
 /* This file is a mixture of an objective-C object and a GObject,
  * so be careful to not confuse yourself.

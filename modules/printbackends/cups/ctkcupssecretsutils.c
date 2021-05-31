@@ -1,4 +1,4 @@
-/* gtkcupssecretsutils.h: Helper to use a secrets service for printer passwords
+/* ctkcupssecretsutils.h: Helper to use a secrets service for printer passwords
  * Copyright (C) 2014, Intevation GmbH
  *
  * This library is free software; you can redistribute it and/or
@@ -19,9 +19,9 @@
 #include <gio/gio.h>
 #include <string.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtkcupssecretsutils.h"
+#include "ctkcupssecretsutils.h"
 
 #define SECRETS_BUS              "org.freedesktop.secrets"
 #define SECRETS_IFACE(interface) "org.freedesktop.Secret."interface

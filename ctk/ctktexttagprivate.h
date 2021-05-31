@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktexttagprivate.h Copyright (C) 2000 Red Hat, Inc.
+ * ctktexttagprivate.h Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,13 +19,13 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_TEXT_TAG_PRIVATE_H__
 #define __CTK_TEXT_TAG_PRIVATE_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef struct _GtkTextBTreeNode GtkTextBTreeNode;
 

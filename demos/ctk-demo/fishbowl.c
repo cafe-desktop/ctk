@@ -5,9 +5,9 @@
  * your GTK version) is.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtkfishbowl.h"
+#include "ctkfishbowl.h"
 
 const char *const css =
 ".blurred-button {"

@@ -3,7 +3,7 @@ CTK_CFLAGS = 					\
 	$(CTK_DEP_CFLAGS)
 
 CTK_LIBS = 					\
-        $(top_builddir)/gtk/libgtk-3.la 	\
+        $(top_builddir)/ctk/libctk-3.la 	\
         $(top_builddir)/gdk/libgdk-3.la 	\
         $(CTK_DEP_LIBS)
 
@@ -27,18 +27,18 @@ resources.c: exampleapp.gresource.xml window.ui app-menu.ui
 		--target=$@ --sourcedir=$(srcdir) --generate-source
 
 gsettings_SCHEMAS = 				\
-	org.gtk.exampleapp.gschema.xml
+	org.ctk.exampleapp.gschema.xml
 
 @GSETTINGS_RULES@
 
-gschemas.compiled: org.gtk.exampleapp.gschema.xml
+gschemas.compiled: org.ctk.exampleapp.gschema.xml
 	$(GLIB_COMPILE_SCHEMAS) .
 
 EXTRA_DIST = 					\
 	window.ui 				\
 	app-menu.ui 				\
 	exampleapp.gresource.xml 		\
-	org.gtk.exampleapp.gschema.xml	\
+	org.ctk.exampleapp.gschema.xml	\
 	meson.build
 
 CLEANFILES = 					\

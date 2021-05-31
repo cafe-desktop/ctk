@@ -27,9 +27,9 @@
 #include <gio/gio.h>
 #include <gmodule.h>
 #include <gdk/gdk.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtksearchenginetracker.h"
+#include "ctksearchenginetracker.h"
 
 #define DBUS_SERVICE_RESOURCES   "org.freedesktop.Tracker1"
 #define DBUS_PATH_RESOURCES      "/org/freedesktop/Tracker1/Resources"

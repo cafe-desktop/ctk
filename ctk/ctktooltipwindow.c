@@ -19,25 +19,25 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtktooltipwindowprivate.h"
+#include "ctktooltipwindowprivate.h"
 
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
-#include "gtkaccessible.h"
-#include "gtkbox.h"
-#include "gtkimage.h"
-#include "gtklabel.h"
-#include "gtkmain.h"
-#include "gtksettings.h"
-#include "gtksizerequest.h"
-#include "gtkwindowprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctkaccessible.h"
+#include "ctkbox.h"
+#include "ctkimage.h"
+#include "ctklabel.h"
+#include "ctkmain.h"
+#include "ctksettings.h"
+#include "ctksizerequest.h"
+#include "ctkwindowprivate.h"
+#include "ctkwidgetprivate.h"
 
 #define MAX_TOOLTIP_LINE_WIDTH  70
 
@@ -65,7 +65,7 @@ ctk_tooltip_window_class_init (GtkTooltipWindowClass *klass)
 
   ctk_widget_class_set_css_name (widget_class, I_("tooltip"));
   ctk_widget_class_set_accessible_role (widget_class, ATK_ROLE_TOOL_TIP);
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtktooltipwindow.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctktooltipwindow.ui");
 
   ctk_widget_class_bind_template_child (widget_class, GtkTooltipWindow, box);
   ctk_widget_class_bind_template_child (widget_class, GtkTooltipWindow, image);

@@ -19,9 +19,9 @@
 
 #include "config.h"
 
-#include "gtkcssimagewin32private.h"
+#include "ctkcssimagewin32private.h"
 
-#include "gtkcssprovider.h"
+#include "ctkcssprovider.h"
 
 G_DEFINE_TYPE (GtkCssImageWin32, _ctk_css_image_win32, CTK_TYPE_CSS_IMAGE)
 
@@ -71,16 +71,16 @@ ctk_css_image_win32_parse (GtkCssImage  *image,
 {
   GtkCssImageWin32 *wimage = CTK_CSS_IMAGE_WIN32 (image);
 
-  if (!_ctk_css_parser_try (parser, "-gtk-win32-theme-part", TRUE))
+  if (!_ctk_css_parser_try (parser, "-ctk-win32-theme-part", TRUE))
     {
-      _ctk_css_parser_error (parser, "'-gtk-win32-theme-part'");
+      _ctk_css_parser_error (parser, "'-ctk-win32-theme-part'");
       return FALSE;
     }
   
   if (!_ctk_css_parser_try (parser, "(", TRUE))
     {
       _ctk_css_parser_error (parser,
-                             "Expected '(' after '-gtk-win32-theme-part'");
+                             "Expected '(' after '-ctk-win32-theme-part'");
       return FALSE;
     }
   
@@ -218,7 +218,7 @@ ctk_css_image_win32_print (GtkCssImage *image,
 {
   GtkCssImageWin32 *wimage = CTK_CSS_IMAGE_WIN32 (image);
 
-  g_string_append (string, "-gtk-win32-theme-part(");
+  g_string_append (string, "-ctk-win32-theme-part(");
   ctk_win32_theme_print (wimage->theme, string);
   g_string_append_printf (string, ", %d, %d)", wimage->part, wimage->state);
 }

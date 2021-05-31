@@ -1,4 +1,4 @@
-/* gtkprintbackendcloudprint.c: Google Cloud Print implementation of
+/* ctkprintbackendcloudprint.c: Google Cloud Print implementation of
  * GtkPrintBackend
  * Copyright (C) 2014, Red Hat, Inc.
  *
@@ -32,13 +32,13 @@
 
 #include <glib/gi18n-lib.h>
 
-#include <gtk/gtkprintbackend.h>
-#include <gtk/gtkunixprint.h>
-#include <gtk/gtkprinter-private.h>
+#include <ctk/ctkprintbackend.h>
+#include <ctk/ctkunixprint.h>
+#include <ctk/ctkprinter-private.h>
 
-#include "gtkprintbackendcloudprint.h"
-#include "gtkcloudprintaccount.h"
-#include "gtkprintercloudprint.h"
+#include "ctkprintbackendcloudprint.h"
+#include "ctkcloudprintaccount.h"
+#include "ctkprintercloudprint.h"
 
 typedef struct _GtkPrintBackendCloudprintClass GtkPrintBackendCloudprintClass;
 
@@ -936,7 +936,7 @@ cloudprint_printer_get_options (GtkPrinter           *printer,
   set = ctk_printer_option_set_new ();
 
   /* How many document pages to go onto one side of paper. */
-  option = ctk_printer_option_new ("gtk-n-up", _("Pages per _sheet:"), CTK_PRINTER_OPTION_TYPE_PICKONE);
+  option = ctk_printer_option_new ("ctk-n-up", _("Pages per _sheet:"), CTK_PRINTER_OPTION_TYPE_PICKONE);
   ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
 					 (char **) n_up, (char **) n_up /* FIXME i18n (localised digits)! */);
   ctk_printer_option_set (option, "1");

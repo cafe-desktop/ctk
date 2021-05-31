@@ -18,8 +18,8 @@
 #ifndef __CTK_CSS_WIDGET_NODE_PRIVATE_H__
 #define __CTK_CSS_WIDGET_NODE_PRIVATE_H__
 
-#include "gtkcssnodeprivate.h"
-#include "gtkwidget.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkwidget.h"
 
 G_BEGIN_DECLS
 

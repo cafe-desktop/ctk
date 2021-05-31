@@ -19,11 +19,11 @@
 #define __CTK_CELL_ACCESSIBLE_PARENT_H__
 
 #if !defined (__CTK_A11Y_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk-a11y.h> can be included directly."
+#error "Only <ctk/ctk-a11y.h> can be included directly."
 #endif
 
 #include <atk/atk.h>
-#include <gtk/a11y/gtkcellaccessible.h>
+#include <ctk/a11y/ctkcellaccessible.h>
 
 G_BEGIN_DECLS
 

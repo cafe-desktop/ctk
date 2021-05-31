@@ -18,8 +18,8 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
-#include <gtk/gtkx.h>
+#include <ctk/ctk.h>
+#include <ctk/ctkx.h>
 
 #include <string.h>
 #include <stdlib.h>

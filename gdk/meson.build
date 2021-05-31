@@ -79,10 +79,10 @@ gdk_gir_public_headers = files(
 )
 gdk_nogir_public_headers = [files('gdkkeysyms-compat.h')]
 gdk_public_headers = gdk_gir_public_headers + gdk_nogir_public_headers
-install_headers(gdk_public_headers, subdir : 'gtk-3.0/gdk')
+install_headers(gdk_public_headers, subdir : 'ctk-3.0/gdk')
 
 deprecated_h_sources = files('deprecated/gdkcolor.h')
-install_headers(deprecated_h_sources, subdir : 'gtk-3.0/gdk/deprecated')
+install_headers(deprecated_h_sources, subdir : 'ctk-3.0/gdk/deprecated')
 
 # This variable is unused, but added just for completeness
 gdk_private_headers = files(
@@ -148,7 +148,7 @@ gdk_enums = gnome.mkenums('gdkenumtypes',
   sources: gdk_public_headers,
   c_template : 'gdkenumtypes.c.template',
   h_template : 'gdkenumtypes.h.template',
-  install_dir: join_paths(ctk_includedir, 'gtk-3.0/gdk'),
+  install_dir: join_paths(ctk_includedir, 'ctk-3.0/gdk'),
   install_header : true)
 
 gdkenum_h = gdk_enums[1]
@@ -171,7 +171,7 @@ gdkconfig = configure_file(
   input  : 'gdkconfig.h.meson',
   output : 'gdkconfig.h',
   configuration : gdkconfig_cdata,
-  install_dir: join_paths(ctk_includedir, 'gtk-3.0/gdk'))
+  install_dir: join_paths(ctk_includedir, 'ctk-3.0/gdk'))
 
 
 gdkversion_cdata = configuration_data()
@@ -187,7 +187,7 @@ gdkversionmacros = configure_file(
   input  : 'gdkversionmacros.h.in',
   output : 'gdkversionmacros.h',
   configuration: gdkversion_cdata,
-  install_dir: join_paths(ctk_includedir, 'gtk-3.0/gdk'))
+  install_dir: join_paths(ctk_includedir, 'ctk-3.0/gdk'))
 
 gdkinc = include_directories('.')
 gdkx11_inc = include_directories('x11')

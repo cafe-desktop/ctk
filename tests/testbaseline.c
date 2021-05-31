@@ -16,7 +16,7 @@
  *
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static char *baseline_pos_str[] = {
   "BASELINE_POSITION_TOP",

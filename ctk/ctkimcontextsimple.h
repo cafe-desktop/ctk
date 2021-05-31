@@ -19,10 +19,10 @@
 #define __CTK_IM_CONTEXT_SIMPLE_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkimcontext.h>
+#include <ctk/ctkimcontext.h>
 
 
 G_BEGIN_DECLS

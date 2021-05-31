@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
- * SECTION:gtkalignment
+ * SECTION:ctkalignment
  * @Short_description: A widget which controls the alignment and size of its child
  * @Title: GtkAlignment
  *
@@ -47,10 +47,10 @@
  */
 
 #include "config.h"
-#include "gtkalignment.h"
-#include "gtksizerequest.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkalignment.h"
+#include "ctksizerequest.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS

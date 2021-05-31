@@ -1,5 +1,5 @@
-/* gtkcelllayout.h
- * Copyright (C) 2003  Kristian Rietveld  <kris@gtk.org>
+/* ctkcelllayout.h
+ * Copyright (C) 2003  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -19,13 +19,13 @@
 #define __CTK_CELL_LAYOUT_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcellrenderer.h>
-#include <gtk/gtkcellarea.h>
-#include <gtk/gtkbuildable.h>
-#include <gtk/gtkbuilder.h>
+#include <ctk/ctkcellrenderer.h>
+#include <ctk/ctkcellarea.h>
+#include <ctk/ctkbuildable.h>
+#include <ctk/ctkbuilder.h>
 
 G_BEGIN_DECLS
 

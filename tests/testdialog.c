@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 show_message_dialog1 (GtkWindow *parent)
@@ -246,7 +246,7 @@ show_dialog_flex_template (GtkWindow *parent)
   gboolean use_header;
 
   g_object_get (ctk_settings_get_default (),
-                "gtk-dialogs-use-header", &use_header,
+                "ctk-dialogs-use-header", &use_header,
                 NULL);
   dialog = g_object_new (my_dialog_get_type (),
                          "title", "Flexible Template",
@@ -405,7 +405,7 @@ main (int argc, char *argv[])
   ctk_container_add (CTK_CONTAINER (box), button);
 
   button = ctk_check_button_new_with_label ("Dialogs have headers");
-  g_object_bind_property (ctk_settings_get_default (), "gtk-dialogs-use-header",
+  g_object_bind_property (ctk_settings_get_default (), "ctk-dialogs-use-header",
                           button, "active",
                           G_BINDING_BIDIRECTIONAL|G_BINDING_SYNC_CREATE);
   ctk_widget_show (button);

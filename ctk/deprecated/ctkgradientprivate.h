@@ -18,8 +18,8 @@
 #ifndef __CTK_GRADIENT_PRIVATE_H__
 #define __CTK_GRADIENT_PRIVATE_H__
 
-#include "gtkgradient.h"
-#include "gtkcsstypesprivate.h"
+#include "ctkgradient.h"
+#include "ctkcsstypesprivate.h"
 
 G_BEGIN_DECLS
 

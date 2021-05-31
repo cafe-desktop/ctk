@@ -18,8 +18,8 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkstatusbaraccessible.h"
+#include <ctk/ctk.h>
+#include "ctkstatusbaraccessible.h"
 
 
 G_DEFINE_TYPE (GtkStatusbarAccessible, ctk_statusbar_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
@@ -138,8 +138,8 @@ ctk_statusbar_accessible_class_init (GtkStatusbarAccessibleClass *klass)
    * As we report the statusbar as having no children
    * we are not interested in add and remove signals
    */
-  container_class->add_gtk = NULL;
-  container_class->remove_gtk = NULL;
+  container_class->add_ctk = NULL;
+  container_class->remove_ctk = NULL;
 }
 
 static void

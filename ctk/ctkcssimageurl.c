@@ -21,9 +21,9 @@
 
 #include <string.h>
 
-#include "gtkcssimageurlprivate.h"
-#include "gtkcssimagesurfaceprivate.h"
-#include "gtkstyleproviderprivate.h"
+#include "ctkcssimageurlprivate.h"
+#include "ctkcssimagesurfaceprivate.h"
+#include "ctkstyleproviderprivate.h"
 
 G_DEFINE_TYPE (GtkCssImageUrl, _ctk_css_image_url, CTK_TYPE_CSS_IMAGE)
 

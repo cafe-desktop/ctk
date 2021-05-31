@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintbackendfile.c: Default implementation of GtkPrintBackend 
+ * ctkprintbackendfile.c: Default implementation of GtkPrintBackend 
  * for printing to a file
  * Copyright (C) 2003, Red Hat, Inc.
  *
@@ -34,10 +34,10 @@
 
 #include <glib/gi18n-lib.h>
 
-#include "gtk/gtk.h"
-#include "gtk/gtkprinter-private.h"
+#include "ctk/ctk.h"
+#include "ctk/ctkprinter-private.h"
 
-#include "gtkprintbackendfile.h"
+#include "ctkprintbackendfile.h"
 
 typedef struct _GtkPrintBackendFileClass GtkPrintBackendFileClass;
 
@@ -607,7 +607,7 @@ file_printer_output_file_format_changed (GtkPrinterOption    *format_option,
     return;
 
   uri_option = ctk_printer_option_set_lookup (data->set,
-                                              "gtk-main-page-custom-input");
+                                              "ctk-main-page-custom-input");
 
   if (uri_option && uri_option->value)
     {
@@ -673,7 +673,7 @@ file_printer_get_options (GtkPrinter           *printer,
 
   set = ctk_printer_option_set_new ();
 
-  option = ctk_printer_option_new ("gtk-n-up", _("Pages per _sheet:"), CTK_PRINTER_OPTION_TYPE_PICKONE);
+  option = ctk_printer_option_new ("ctk-n-up", _("Pages per _sheet:"), CTK_PRINTER_OPTION_TYPE_PICKONE);
   ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
 					 (char **) n_up, (char **) n_up /* FIXME i18n (localised digits)! */);
   if (settings)
@@ -732,7 +732,7 @@ file_printer_get_options (GtkPrinter           *printer,
 
   uri = output_file_from_settings (settings, supported_formats[current_format]);
 
-  option = ctk_printer_option_new ("gtk-main-page-custom-input", _("File"), 
+  option = ctk_printer_option_new ("ctk-main-page-custom-input", _("File"), 
 				   CTK_PRINTER_OPTION_TYPE_FILESAVE);
   ctk_printer_option_set_activates_default (option, TRUE);
   ctk_printer_option_set (option, uri);
@@ -773,18 +773,18 @@ file_printer_get_settings_from_options (GtkPrinter          *printer,
 {
   GtkPrinterOption *option;
 
-  option = ctk_printer_option_set_lookup (options, "gtk-main-page-custom-input");
+  option = ctk_printer_option_set_lookup (options, "ctk-main-page-custom-input");
   ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_OUTPUT_URI, option->value);
 
   option = ctk_printer_option_set_lookup (options, "output-file-format");
   if (option)
     ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_OUTPUT_FILE_FORMAT, option->value);
 
-  option = ctk_printer_option_set_lookup (options, "gtk-n-up");
+  option = ctk_printer_option_set_lookup (options, "ctk-n-up");
   if (option)
     ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_NUMBER_UP, option->value);
 
-  option = ctk_printer_option_set_lookup (options, "gtk-n-up-layout");
+  option = ctk_printer_option_set_lookup (options, "ctk-n-up-layout");
   if (option)
     ctk_print_settings_set (settings, CTK_PRINT_SETTINGS_NUMBER_UP_LAYOUT, option->value);
 }

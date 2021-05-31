@@ -18,7 +18,7 @@
 #ifndef __CTK_CELL_ACCESSIBLE_PRIVATE_H__
 #define __CTK_CELL_ACCESSIBLE_PRIVATE_H__
 
-#include <gtk/a11y/gtkcellaccessible.h>
+#include <ctk/a11y/ctkcellaccessible.h>
 
 G_BEGIN_DECLS
 

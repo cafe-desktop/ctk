@@ -19,21 +19,21 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
-#include "gtkaccellabel.h"
-#include "gtkcheckmenuitemprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkradiomenuitem.h"
-#include "deprecated/gtkactivatable.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "a11y/gtkradiomenuitemaccessible.h"
+#include "ctkaccellabel.h"
+#include "ctkcheckmenuitemprivate.h"
+#include "ctkmarshalers.h"
+#include "ctkradiomenuitem.h"
+#include "deprecated/ctkactivatable.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "a11y/ctkradiomenuitemaccessible.h"
 
 /**
- * SECTION:gtkradiomenuitem
+ * SECTION:ctkradiomenuitem
  * @Short_description: A choice from multiple check menu items
  * @Title: GtkRadioMenuItem
  * @See_also: #GtkMenuItem, #GtkCheckMenuItem

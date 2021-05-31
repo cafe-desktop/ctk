@@ -2,7 +2,7 @@ window1
   "frame"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -13,7 +13,7 @@ window1
     index: 0
     name: Menu
     state: enabled focusable sensitive showing visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -29,7 +29,7 @@ window1
       index: 0
       name: New
       state: enabled selectable sensitive visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: popup
       alpha: 1

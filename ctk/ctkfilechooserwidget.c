@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
 /* GTK - The GIMP Toolkit
- * gtkfilechooserwidget.c: Embeddable file selector widget
+ * ctkfilechooserwidget.c: Embeddable file selector widget
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,66 +19,66 @@
 
 #include "config.h"
 
-#include "gtkfilechooserwidget.h"
-#include "gtkfilechooserwidgetprivate.h"
+#include "ctkfilechooserwidget.h"
+#include "ctkfilechooserwidgetprivate.h"
 
-#include "gtkaccessible.h"
-#include "gtkbindings.h"
-#include "gtkbutton.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcheckmenuitem.h"
-#include "gtkclipboard.h"
-#include "gtkcomboboxtext.h"
-#include "gtkdragsource.h"
-#include "gtkdragdest.h"
-#include "gtkentry.h"
-#include "gtkfilechooserprivate.h"
-#include "gtkfilechooserdialog.h"
-#include "gtkfilechooserembed.h"
-#include "gtkfilechooserentry.h"
-#include "gtkfilechooserutils.h"
-#include "gtkfilechooser.h"
-#include "gtkfilesystem.h"
-#include "gtkfilesystemmodel.h"
-#include "gtkgrid.h"
-#include "gtkicontheme.h"
-#include "gtklabel.h"
-#include "gtkmarshalers.h"
-#include "gtkmessagedialog.h"
-#include "gtkmountoperation.h"
-#include "gtkpaned.h"
-#include "gtkpathbar.h"
-#include "gtkplacessidebar.h"
-#include "gtkplacessidebarprivate.h"
-#include "gtkplacesviewprivate.h"
-#include "gtkprivate.h"
-#include "gtkrecentmanager.h"
-#include "gtksearchentry.h"
-#include "gtkseparatormenuitem.h"
-#include "gtksettings.h"
-#include "gtksizegroup.h"
-#include "gtksizerequest.h"
-#include "gtkstack.h"
-#include "gtktooltip.h"
-#include "gtktreednd.h"
-#include "gtktreeprivate.h"
-#include "gtktreeselection.h"
-#include "gtkbox.h"
-#include "gtkcheckbutton.h"
-#include "gtkwindowgroup.h"
-#include "gtkintl.h"
-#include "gtkshow.h"
-#include "gtkmain.h"
-#include "gtkscrollable.h"
-#include "gtkpopover.h"
-#include "gtkpopoverprivate.h"
-#include "gtkrevealer.h"
-#include "gtkspinner.h"
-#include "gtkseparator.h"
-#include "gtkmodelbutton.h"
-#include "gtkgesturelongpress.h"
+#include "ctkaccessible.h"
+#include "ctkbindings.h"
+#include "ctkbutton.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrendererpixbuf.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcheckmenuitem.h"
+#include "ctkclipboard.h"
+#include "ctkcomboboxtext.h"
+#include "ctkdragsource.h"
+#include "ctkdragdest.h"
+#include "ctkentry.h"
+#include "ctkfilechooserprivate.h"
+#include "ctkfilechooserdialog.h"
+#include "ctkfilechooserembed.h"
+#include "ctkfilechooserentry.h"
+#include "ctkfilechooserutils.h"
+#include "ctkfilechooser.h"
+#include "ctkfilesystem.h"
+#include "ctkfilesystemmodel.h"
+#include "ctkgrid.h"
+#include "ctkicontheme.h"
+#include "ctklabel.h"
+#include "ctkmarshalers.h"
+#include "ctkmessagedialog.h"
+#include "ctkmountoperation.h"
+#include "ctkpaned.h"
+#include "ctkpathbar.h"
+#include "ctkplacessidebar.h"
+#include "ctkplacessidebarprivate.h"
+#include "ctkplacesviewprivate.h"
+#include "ctkprivate.h"
+#include "ctkrecentmanager.h"
+#include "ctksearchentry.h"
+#include "ctkseparatormenuitem.h"
+#include "ctksettings.h"
+#include "ctksizegroup.h"
+#include "ctksizerequest.h"
+#include "ctkstack.h"
+#include "ctktooltip.h"
+#include "ctktreednd.h"
+#include "ctktreeprivate.h"
+#include "ctktreeselection.h"
+#include "ctkbox.h"
+#include "ctkcheckbutton.h"
+#include "ctkwindowgroup.h"
+#include "ctkintl.h"
+#include "ctkshow.h"
+#include "ctkmain.h"
+#include "ctkscrollable.h"
+#include "ctkpopover.h"
+#include "ctkpopoverprivate.h"
+#include "ctkrevealer.h"
+#include "ctkspinner.h"
+#include "ctkseparator.h"
+#include "ctkmodelbutton.h"
+#include "ctkgesturelongpress.h"
 
 #include <cairo-gobject.h>
 
@@ -90,7 +90,7 @@
 #endif
 
 /**
- * SECTION:gtkfilechooserwidget
+ * SECTION:ctkfilechooserwidget
  * @Short_description: A file chooser widget
  * @Title: GtkFileChooserWidget
  * @See_also: #GtkFileChooserDialog
@@ -2587,7 +2587,7 @@ reset_location_timeout (GtkFileChooserWidget *impl)
   priv->location_changed_id = g_timeout_add (LOCATION_CHANGED_TIMEOUT,
                                             location_changed_timeout_cb,
                                             impl);
-  g_source_set_name_by_id (priv->location_changed_id, "[gtk+] location_changed_timeout_cb");
+  g_source_set_name_by_id (priv->location_changed_id, "[ctk+] location_changed_timeout_cb");
 }
 
 static void
@@ -3777,7 +3777,7 @@ settings_notify_cb (GObject               *object,
 
   name = g_param_spec_get_name (pspec);
 
-  if (strcmp (name, "gtk-icon-theme-name") == 0)
+  if (strcmp (name, "ctk-icon-theme-name") == 0)
     change_icon_theme (impl);
 
   profile_end ("end", NULL);
@@ -3981,7 +3981,7 @@ recent_files_setting_is_enabled (GtkFileChooserWidget *impl)
   gboolean enabled;
 
   settings = ctk_widget_get_settings (CTK_WIDGET (impl));
-  g_object_get (settings, "gtk-recent-files-enabled", &enabled, NULL);
+  g_object_get (settings, "ctk-recent-files-enabled", &enabled, NULL);
   return enabled;
 }
 
@@ -4491,7 +4491,7 @@ load_setup_timer (GtkFileChooserWidget *impl)
   g_assert (priv->load_state != LOAD_PRELOAD);
 
   priv->load_timeout_id = gdk_threads_add_timeout (MAX_LOADING_TIME, load_timeout_cb, impl);
-  g_source_set_name_by_id (priv->load_timeout_id, "[gtk+] load_timeout_cb");
+  g_source_set_name_by_id (priv->load_timeout_id, "[ctk+] load_timeout_cb");
   priv->load_state = LOAD_PRELOAD;
 }
 
@@ -7829,7 +7829,7 @@ recent_start_loading (GtkFileChooserWidget *impl)
                                                     recent_idle_load,
                                                     load_data,
                                                     recent_idle_cleanup);
-  g_source_set_name_by_id (priv->load_recent_id, "[gtk+] recent_idle_load");
+  g_source_set_name_by_id (priv->load_recent_id, "[ctk+] recent_idle_load");
 }
 
 /* Called from ::should_respond(). We return whether there are selected
@@ -8681,7 +8681,7 @@ ctk_file_chooser_widget_class_init (GtkFileChooserWidgetClass *class)
 
   /* Bind class to template */
   ctk_widget_class_set_template_from_resource (widget_class,
-                                               "/org/gtk/libgtk/ui/gtkfilechooserwidget.ui");
+                                               "/org/ctk/libctk/ui/ctkfilechooserwidget.ui");
 
   /* A *lot* of widgets that we need to handle .... */
   ctk_widget_class_bind_template_child_private (widget_class, GtkFileChooserWidget, browse_widgets_hpaned);

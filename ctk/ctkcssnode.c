@@ -17,15 +17,15 @@
 
 #include "config.h"
 
-#include "gtkcssnodeprivate.h"
+#include "ctkcssnodeprivate.h"
 
-#include "gtkcssanimatedstyleprivate.h"
-#include "gtkcsssectionprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtksettingsprivate.h"
-#include "gtktypebuiltins.h"
+#include "ctkcssanimatedstyleprivate.h"
+#include "ctkcsssectionprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctksettingsprivate.h"
+#include "ctktypebuiltins.h"
 
 /*
  * CSS nodes are the backbone of the GtkStyleContext implementation and

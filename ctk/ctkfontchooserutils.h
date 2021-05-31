@@ -1,4 +1,4 @@
-/* gtkfontchooserutils.h - Private utility functions for implementing a
+/* ctkfontchooserutils.h - Private utility functions for implementing a
  *                           GtkFontChooser interface
  *
  * Copyright (C) 2006 Emmanuele Bassi
@@ -18,14 +18,14 @@
  * You should have received a copy of the GNU Library General Public
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  *
- * Based on gtkfilechooserutils.h:
+ * Based on ctkfilechooserutils.h:
  *	Copyright (C) 2003 Red Hat, Inc.
  */
  
 #ifndef __CTK_FONT_CHOOSER_UTILS_H__
 #define __CTK_FONT_CHOOSER_UTILS_H__
 
-#include "gtkfontchooserprivate.h"
+#include "ctkfontchooserprivate.h"
 
 G_BEGIN_DECLS
 

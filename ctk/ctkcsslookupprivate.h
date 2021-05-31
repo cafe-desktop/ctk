@@ -19,9 +19,9 @@
 #define __CTK_CSS_LOOKUP_PRIVATE_H__
 
 #include <glib-object.h>
-#include "gtk/gtkbitmaskprivate.h"
-#include "gtk/gtkcssstaticstyleprivate.h"
-#include "gtk/gtkcsssection.h"
+#include "ctk/ctkbitmaskprivate.h"
+#include "ctk/ctkcssstaticstyleprivate.h"
+#include "ctk/ctkcsssection.h"
 
 
 G_BEGIN_DECLS

@@ -18,7 +18,7 @@
 
 #include <glib.h>
 
-/* Keep in sync with gtkbuilder.c ! */
+/* Keep in sync with ctkbuilder.c ! */
 static gchar *
 type_name_mangle (const gchar *name)
 {

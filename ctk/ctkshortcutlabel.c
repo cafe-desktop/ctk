@@ -1,4 +1,4 @@
-/* gtkshortcutlabel.c
+/* ctkshortcutlabel.c
  *
  * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
  *
@@ -18,15 +18,15 @@
 
 #include "config.h"
 
-#include "gtkshortcutlabel.h"
-#include "gtklabel.h"
-#include "gtkframe.h"
-#include "gtkstylecontext.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkshortcutlabel.h"
+#include "ctklabel.h"
+#include "ctkframe.h"
+#include "ctkstylecontext.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkshortcutlabel
+ * SECTION:ctkshortcutlabel
  * @Title: GtkShortcutLabel
  * @Short_description: Displays a keyboard shortcut
  * @See_also: #GtkCellRendererAccel

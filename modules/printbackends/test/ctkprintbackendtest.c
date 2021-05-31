@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintbackendpdf.c: Test implementation of GtkPrintBackend 
+ * ctkprintbackendpdf.c: Test implementation of GtkPrintBackend 
  * for printing to a test
  * Copyright (C) 2007, Red Hat, Inc.
  *
@@ -33,11 +33,11 @@
 
 #include <glib/gi18n-lib.h>
 
-#include <gtk/gtkprintbackend.h>
-#include <gtk/gtkunixprint.h>
-#include <gtk/gtkprinter-private.h>
+#include <ctk/ctkprintbackend.h>
+#include <ctk/ctkunixprint.h>
+#include <ctk/ctkprinter-private.h>
 
-#include "gtkprintbackendtest.h"
+#include "ctkprintbackendtest.h"
 
 
 typedef struct _GtkPrintBackendTestClass GtkPrintBackendTestClass;
@@ -498,7 +498,7 @@ test_printer_get_options (GtkPrinter           *printer,
 
   set = ctk_printer_option_set_new ();
 
-  option = ctk_printer_option_new ("gtk-n-up", _("Pages per _sheet:"), CTK_PRINTER_OPTION_TYPE_PICKONE);
+  option = ctk_printer_option_new ("ctk-n-up", _("Pages per _sheet:"), CTK_PRINTER_OPTION_TYPE_PICKONE);
   ctk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
 					 (char **) n_up, (char **) n_up /* FIXME i18n (localised digits)! */);
   ctk_printer_option_set (option, "1");

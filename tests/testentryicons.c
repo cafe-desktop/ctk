@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <stdio.h>
 
 static void
@@ -73,7 +73,7 @@ set_gicon (GtkWidget *button,
 
  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
-      icon = g_themed_icon_new ("gtk-yes");
+      icon = g_themed_icon_new ("ctk-yes");
       ctk_entry_set_icon_from_gicon (entry, CTK_ENTRY_ICON_SECONDARY, icon);
       g_object_unref (icon);
     }
@@ -87,7 +87,7 @@ set_pixbuf (GtkWidget *button,
 
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
-      pixbuf = gdk_pixbuf_new_from_resource ("/org/gtk/libgtk/inspector/logo.png", NULL);
+      pixbuf = gdk_pixbuf_new_from_resource ("/org/ctk/libctk/inspector/logo.png", NULL);
       ctk_entry_set_icon_from_pixbuf (entry, CTK_ENTRY_ICON_SECONDARY, pixbuf);
       g_object_unref (pixbuf);
     }

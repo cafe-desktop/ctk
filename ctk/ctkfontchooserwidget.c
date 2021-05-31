@@ -23,35 +23,35 @@
 
 #include <atk/atk.h>
 
-#include "gtkfontchooserwidget.h"
-#include "gtkfontchooserwidgetprivate.h"
+#include "ctkfontchooserwidget.h"
+#include "ctkfontchooserwidgetprivate.h"
 
-#include "gtkadjustment.h"
-#include "gtkbuildable.h"
-#include "gtkbox.h"
-#include "gtkcellrenderertext.h"
-#include "gtkentry.h"
-#include "gtksearchentry.h"
-#include "gtkgrid.h"
-#include "gtkfontchooser.h"
-#include "gtkfontchooserutils.h"
-#include "gtkintl.h"
-#include "gtklabel.h"
-#include "gtkliststore.h"
-#include "gtkstack.h"
-#include "gtkprivate.h"
-#include "gtkscale.h"
-#include "gtkscrolledwindow.h"
-#include "gtkspinbutton.h"
-#include "gtktextview.h"
-#include "gtktreeselection.h"
-#include "gtktreeview.h"
-#include "gtkwidget.h"
-#include "gtksettings.h"
-#include "gtkdialog.h"
-#include "gtkradiobutton.h"
-#include "gtkcombobox.h"
-#include "gtkgesturemultipress.h"
+#include "ctkadjustment.h"
+#include "ctkbuildable.h"
+#include "ctkbox.h"
+#include "ctkcellrenderertext.h"
+#include "ctkentry.h"
+#include "ctksearchentry.h"
+#include "ctkgrid.h"
+#include "ctkfontchooser.h"
+#include "ctkfontchooserutils.h"
+#include "ctkintl.h"
+#include "ctklabel.h"
+#include "ctkliststore.h"
+#include "ctkstack.h"
+#include "ctkprivate.h"
+#include "ctkscale.h"
+#include "ctkscrolledwindow.h"
+#include "ctkspinbutton.h"
+#include "ctktextview.h"
+#include "ctktreeselection.h"
+#include "ctktreeview.h"
+#include "ctkwidget.h"
+#include "ctksettings.h"
+#include "ctkdialog.h"
+#include "ctkradiobutton.h"
+#include "ctkcombobox.h"
+#include "ctkgesturemultipress.h"
 
 #if defined(HAVE_HARFBUZZ) && defined(HAVE_PANGOFT)
 #include <pango/pangofc-font.h>
@@ -67,7 +67,7 @@
 #include "open-type-layout.h"
 
 /**
- * SECTION:gtkfontchooserwidget
+ * SECTION:ctkfontchooserwidget
  * @Short_description: A widget for selecting fonts
  * @Title: GtkFontChooserWidget
  * @See_also: #GtkFontChooserDialog
@@ -159,7 +159,7 @@ enum {
   PROP_TWEAK_ACTION
 };
 
-/* Keep in line with GtkTreeStore defined in gtkfontchooserwidget.ui */
+/* Keep in line with GtkTreeStore defined in ctkfontchooserwidget.ui */
 enum {
   FAMILY_COLUMN,
   FACE_COLUMN,
@@ -704,7 +704,7 @@ ctk_font_chooser_widget_class_init (GtkFontChooserWidgetClass *klass)
 
   /* Bind class to template */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkfontchooserwidget.ui");
+					       "/org/ctk/libctk/ui/ctkfontchooserwidget.ui");
 
   ctk_widget_class_bind_template_child_private (widget_class, GtkFontChooserWidget, search_entry);
   ctk_widget_class_bind_template_child_private (widget_class, GtkFontChooserWidget, family_face_list);
@@ -909,7 +909,7 @@ ctk_font_chooser_widget_load_fonts (GtkFontChooserWidget *fontchooser,
   PangoFontMap *font_map;
 
   g_object_get (ctk_widget_get_settings (CTK_WIDGET (fontchooser)),
-                "gtk-fontconfig-timestamp", &fontconfig_timestamp,
+                "ctk-fontconfig-timestamp", &fontconfig_timestamp,
                 NULL);
 
   /* The fontconfig timestamp is only set on systems with fontconfig; every
@@ -1288,7 +1288,7 @@ ctk_font_chooser_widget_screen_changed (GtkWidget *widget,
       g_signal_handlers_disconnect_by_func (settings, fontconfig_changed, widget);
     }
   settings = ctk_widget_get_settings (widget);
-  g_signal_connect_object (settings, "notify::gtk-fontconfig-timestamp",
+  g_signal_connect_object (settings, "notify::ctk-fontconfig-timestamp",
                            G_CALLBACK (fontconfig_changed), widget, G_CONNECT_SWAPPED);
 
   if (previous_screen == NULL)

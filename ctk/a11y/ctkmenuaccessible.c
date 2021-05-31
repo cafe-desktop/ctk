@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gtkmenuaccessible.h"
-#include "gtkwidgetaccessibleprivate.h"
+#include "ctkmenuaccessible.h"
+#include "ctkwidgetaccessibleprivate.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_DEFINE_TYPE (GtkMenuAccessible, ctk_menu_accessible, CTK_TYPE_MENU_SHELL_ACCESSIBLE)
 

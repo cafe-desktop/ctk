@@ -22,7 +22,7 @@
  */
 
 /**
- * SECTION:gtkassistant
+ * SECTION:ctkassistant
  * @Short_description: A widget used to guide users through multi-step operations
  * @Title: GtkAssistant
  *
@@ -34,8 +34,8 @@
  * and to make sensitive, based on what it knows about the page sequence
  * and the [type][GtkAssistantPageType] of each page,
  * in addition to state information like the page
- * [completion][gtk-assistant-set-page-complete]
- * and [committed][gtk-assistant-commit] status.
+ * [completion][ctk-assistant-set-page-complete]
+ * and [committed][ctk-assistant-commit] status.
  *
  * If you have a case that doesn’t quite fit in #GtkAssistants way of
  * handling buttons, you can use the #CTK_ASSISTANT_PAGE_CUSTOM page
@@ -60,22 +60,22 @@
 
 #include <atk/atk.h>
 
-#include "gtkassistant.h"
+#include "ctkassistant.h"
 
-#include "gtkbutton.h"
-#include "gtkbox.h"
-#include "gtkframe.h"
-#include "gtknotebook.h"
-#include "gtkimage.h"
-#include "gtklabel.h"
-#include "gtksettings.h"
-#include "gtksizegroup.h"
-#include "gtksizerequest.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkbuildable.h"
-#include "a11y/gtkwindowaccessible.h"
+#include "ctkbutton.h"
+#include "ctkbox.h"
+#include "ctkframe.h"
+#include "ctknotebook.h"
+#include "ctkimage.h"
+#include "ctklabel.h"
+#include "ctksettings.h"
+#include "ctksizegroup.h"
+#include "ctksizerequest.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkbuildable.h"
+#include "a11y/ctkwindowaccessible.h"
 
 
 #define HEADER_SPACING 12
@@ -650,7 +650,7 @@ ctk_assistant_class_init (GtkAssistantClass *class)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkassistant.ui");
+					       "/org/ctk/libctk/ui/ctkassistant.ui");
 
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkAssistant, action_area);
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkAssistant, headerbar);
@@ -1113,7 +1113,7 @@ alternative_button_order (GtkAssistant *assistant)
   settings = ctk_settings_get_for_screen (screen);
 
   g_object_get (settings,
-                "gtk-alternative-button-order", &result,
+                "ctk-alternative-button-order", &result,
                 NULL);
   return result;
 }
@@ -1212,7 +1212,7 @@ ctk_assistant_init (GtkAssistant *assistant)
   priv->forward_data_destroy = NULL;
 
   g_object_get (ctk_widget_get_settings (CTK_WIDGET (assistant)),
-                "gtk-dialogs-use-header", &priv->use_header_bar,
+                "ctk-dialogs-use-header", &priv->use_header_bar,
                 NULL);
 
   ctk_widget_init_template (CTK_WIDGET (assistant));

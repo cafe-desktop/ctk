@@ -19,13 +19,13 @@
 
 #include <glib/gi18n-lib.h>
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkpango.h"
-#include "gtkentryaccessible.h"
-#include "gtkentryprivate.h"
-#include "gtkcomboboxaccessible.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidgetprivate.h"
+#include <ctk/ctk.h>
+#include "ctkpango.h"
+#include "ctkentryaccessible.h"
+#include "ctkentryprivate.h"
+#include "ctkcomboboxaccessible.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidgetprivate.h"
 
 #define CTK_TYPE_ENTRY_ICON_ACCESSIBLE      (ctk_entry_icon_accessible_get_type ())
 #define CTK_ENTRY_ICON_ACCESSIBLE(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_ENTRY_ICON_ACCESSIBLE, GtkEntryIconAccessible))
@@ -468,7 +468,7 @@ ctk_entry_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_entry_accessible_notify_gtk (GObject    *obj,
+ctk_entry_accessible_notify_ctk (GObject    *obj,
                                  GParamSpec *pspec)
 {
   GtkWidget *widget;
@@ -646,7 +646,7 @@ ctk_entry_accessible_notify_gtk (GObject    *obj,
         }
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_entry_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_entry_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static gint
@@ -751,7 +751,7 @@ ctk_entry_accessible_class_init (GtkEntryAccessibleClass *klass)
   class->get_n_children = ctk_entry_accessible_get_n_children;
   class->ref_child = ctk_entry_accessible_ref_child;
 
-  widget_class->notify_gtk = ctk_entry_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_entry_accessible_notify_ctk;
 
   gobject_class->finalize = ctk_entry_accessible_finalize;
 }

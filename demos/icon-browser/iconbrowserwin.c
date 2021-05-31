@@ -2,7 +2,7 @@
 #include "iconbrowserapp.h"
 #include "iconbrowserwin.h"
 #include "iconstore.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* Drag 'n Drop */
 static GtkTargetEntry target_table[] = {
@@ -252,7 +252,7 @@ populate (IconBrowserWindow *win)
   char **groups;
   int i;
 
-  file = g_file_new_for_uri ("resource:/org/gtk/iconbrowser/gtk/icon.list");
+  file = g_file_new_for_uri ("resource:/org/ctk/iconbrowser/ctk/icon.list");
   g_file_load_contents (file, NULL, &data, &length, NULL, NULL);
 
   kf = g_key_file_new ();
@@ -500,7 +500,7 @@ icon_browser_window_class_init (IconBrowserWindowClass *class)
   g_type_ensure (ICON_STORE_TYPE);
 
   ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (class),
-                                               "/org/gtk/iconbrowser/gtk/window.ui");
+                                               "/org/ctk/iconbrowser/ctk/window.ui");
 
   ctk_widget_class_bind_template_child (CTK_WIDGET_CLASS (class), IconBrowserWindow, context_list);
   ctk_widget_class_bind_template_child (CTK_WIDGET_CLASS (class), IconBrowserWindow, filter_model);

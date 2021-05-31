@@ -18,7 +18,7 @@
 
 
 #include <X11/Xlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include "x11/gdkx.h"
 
 static void

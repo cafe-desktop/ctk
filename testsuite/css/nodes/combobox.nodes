@@ -9,7 +9,7 @@
             arrow:dir(ltr)
       [window.background.popup:dir(ltr)]
         decoration:dir(ltr)
-        [menu#gtk-combobox-popup-menu:dir(ltr)]
+        [menu#ctk-combobox-popup-menu:dir(ltr)]
           [arrow.top:dir(ltr)]
           menuitem:dir(ltr)
             cellview:dir(ltr)
@@ -28,7 +28,7 @@
             arrow:dir(ltr)
       [window.background.popup:dir(ltr)]
         decoration:dir(ltr)
-        [menu#gtk-combobox-popup-menu:dir(ltr)]
+        [menu#ctk-combobox-popup-menu:dir(ltr)]
           [arrow.top:dir(ltr)]
           menuitem:dir(ltr)
             cellview:dir(ltr)

@@ -2,7 +2,7 @@ window1
   "frame"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -13,7 +13,7 @@ window1
     index: 0
     name: Menu
     state: enabled focusable sensitive showing visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -28,7 +28,7 @@ window1
     parent: menubutton
     popup-for: menubutton
     state: enabled modal sensitive
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -37,7 +37,7 @@ window1
       parent: unnamed-GtkPopoverAccessible-0
       index: 0
       state: enabled sensitive visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -46,7 +46,7 @@ window1
         parent: unnamed-GtkStackAccessible-1
         index: 0
         state: enabled sensitive vertical visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -55,7 +55,7 @@ window1
           parent: unnamed-GtkContainerAccessible-2
           index: 0
           state: enabled sensitive vertical visible
-          toolkit: gtk
+          toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1
@@ -64,7 +64,7 @@ window1
             parent: unnamed-GtkContainerAccessible-3
             index: 0
             state: enabled sensitive vertical visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -73,7 +73,7 @@ window1
               parent: unnamed-GtkContainerAccessible-4
               index: 0
               state: enabled sensitive vertical visible
-              toolkit: gtk
+              toolkit: ctk
               <AtkComponent>
               layer: widget
               alpha: 1
@@ -83,7 +83,7 @@ window1
                 index: 0
                 name: New
                 state: enabled focusable sensitive visible
-                toolkit: gtk
+                toolkit: ctk
                 <AtkComponent>
                 layer: widget
                 alpha: 1

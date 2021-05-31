@@ -1,4 +1,4 @@
-/* gtkcellarea.h
+/* ctkcellarea.h
  *
  * Copyright (C) 2010 Openismus GmbH
  *
@@ -23,12 +23,12 @@
 #define __CTK_CELL_AREA_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcellrenderer.h>
-#include <gtk/gtkwidget.h>
-#include <gtk/gtktreemodel.h>
+#include <ctk/ctkcellrenderer.h>
+#include <ctk/ctkwidget.h>
+#include <ctk/ctktreemodel.h>
 
 G_BEGIN_DECLS
 
@@ -516,7 +516,7 @@ void                  ctk_cell_area_request_renderer               (GtkCellArea 
                                                                     gint               *minimum_size,
                                                                     gint               *natural_size);
 
-/* For api stability, this is called from gtkcelllayout.c in order to ensure the correct
+/* For api stability, this is called from ctkcelllayout.c in order to ensure the correct
  * object is passed to the user function in ctk_cell_layout_set_cell_data_func.
  *
  * This private api takes gpointer & GFunc arguments to circumvent circular header file

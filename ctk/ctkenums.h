@@ -19,21 +19,21 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_ENUMS_H__
 #define __CTK_ENUMS_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <glib-object.h>
 
 
 /**
- * SECTION:gtkenums
+ * SECTION:ctkenums
  * @Short_description: Public enumerated types used throughout GTK+
  * @Title: Standard Enumerations
  */
@@ -571,7 +571,7 @@ typedef enum
   CTK_SORT_DESCENDING
 } GtkSortType;
 
-/* Style for gtk input method preedit/status */
+/* Style for ctk input method preedit/status */
 /**
  * GtkIMPreeditStyle:
  * @CTK_IM_PREEDIT_NOTHING: Deprecated
@@ -579,7 +579,7 @@ typedef enum
  * @CTK_IM_PREEDIT_NONE: Deprecated
  *
  * Style for input method preedit. See also
- * #GtkSettings:gtk-im-preedit-style
+ * #GtkSettings:ctk-im-preedit-style
  *
  * Deprecated: 3.10
  */
@@ -597,7 +597,7 @@ typedef enum
  * @CTK_IM_STATUS_NONE: Deprecated
  *
  * Style for input method status. See also
- * #GtkSettings:gtk-im-status-style
+ * #GtkSettings:ctk-im-status-style
  *
  * Deprecated: 3.10
  */

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkwin32embed.c: Utilities for Win32 embedding
+ * ctkwin32embed.c: Utilities for Win32 embedding
  * Copyright (C) 2005, Novell, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -22,7 +22,7 @@
 
 #include "win32/gdkwin32.h"
 
-#include "gtkwin32embed.h"
+#include "ctkwin32embed.h"
 
 
 static guint message_type[CTK_WIN32_EMBED_LAST];
@@ -38,7 +38,7 @@ _ctk_win32_embed_message_type (GtkWin32EmbedMessageType type)
   if (message_type[type] == 0)
     {
       char name[100];
-      sprintf (name, "gtk-win32-embed:%d", type);
+      sprintf (name, "ctk-win32-embed:%d", type);
       message_type[type] = RegisterWindowMessage (name);
     }
 

@@ -23,10 +23,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "gtkcomposetable.h"
-#include "gtkimcontextsimple.h"
+#include "ctkcomposetable.h"
+#include "ctkimcontextsimple.h"
 
-#include "gtkimcontextsimpleprivate.h"
+#include "ctkimcontextsimpleprivate.h"
 
 
 #define CTK_COMPOSE_TABLE_MAGIC "GtkComposeTable"
@@ -371,7 +371,7 @@ ctk_compose_list_check_uint16 (GList *compose_list)
 }
 
 static GList *
-ctk_compose_list_format_for_gtk (GList *compose_list,
+ctk_compose_list_format_for_ctk (GList *compose_list,
                                  int   *p_max_compose_len,
                                  int   *p_n_index_stride)
 {
@@ -519,7 +519,7 @@ ctk_compose_hash_get_cache_path (guint32 hash)
 
   basename = g_strdup_printf ("%08x.cache", hash);
 
-  dir = g_build_filename (g_get_user_cache_dir (), "gtk-3.0", "compose", NULL);
+  dir = g_build_filename (g_get_user_cache_dir (), "ctk-3.0", "compose", NULL);
   path = g_build_filename (dir, basename, NULL);
   if (g_mkdir_with_parents (dir, 0755) != 0)
     {
@@ -804,7 +804,7 @@ ctk_compose_table_new_with_file (const gchar *compose_file)
     return NULL;
   compose_list = ctk_compose_list_check_duplicated (compose_list);
   compose_list = ctk_compose_list_check_uint16 (compose_list);
-  compose_list = ctk_compose_list_format_for_gtk (compose_list,
+  compose_list = ctk_compose_list_format_for_ctk (compose_list,
                                                   &max_compose_len,
                                                   &n_index_stride);
   compose_list = g_list_sort_with_data (compose_list,

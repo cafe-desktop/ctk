@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentmanager.h: a manager for the recently used resources
+ * ctkrecentmanager.h: a manager for the recently used resources
  *
  * Copyright (C) 2006 Emmanuele Bassi
  *
@@ -21,7 +21,7 @@
 #define __CTK_RECENT_MANAGER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <gdk-pixbuf/gdk-pixbuf.h>

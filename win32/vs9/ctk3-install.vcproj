@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="gtk3-install"
+	Name="ctk3-install"
 	ProjectGUID="{23BBF35F-78AF-4E8C-983F-7B90448CD7DF}"
-	RootNamespace="gtk3install"
+	RootNamespace="ctk3install"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -23,7 +23,7 @@
 			Name="Debug|Win32"
 			OutputDirectory="$(GlibEtcInstallRoot)"
 			ConfigurationType="10"
-			InheritedPropertySheets=".\gtk3-install.vsprops"
+			InheritedPropertySheets=".\ctk3-install.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			>
@@ -36,7 +36,7 @@
 			Name="Debug|x64"
 			OutputDirectory="$(GlibEtcInstallRoot)"
 			ConfigurationType="10"
-			InheritedPropertySheets=".\gtk3-install.vsprops"
+			InheritedPropertySheets=".\ctk3-install.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			>
@@ -50,7 +50,7 @@
 			OutputDirectory="$(GlibEtcInstallRoot)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="10"
-			InheritedPropertySheets=".\gtk3-install.vsprops"
+			InheritedPropertySheets=".\ctk3-install.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			>
@@ -63,7 +63,7 @@
 			Name="Debug_Broadway|x64"
 			OutputDirectory="$(GlibEtcInstallRoot)"
 			ConfigurationType="10"
-			InheritedPropertySheets=".\gtk3-install.vsprops"
+			InheritedPropertySheets=".\ctk3-install.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			>
@@ -77,7 +77,7 @@
 			OutputDirectory="$(GlibEtcInstallRoot)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="10"
-			InheritedPropertySheets=".\gtk3-install.vsprops"
+			InheritedPropertySheets=".\ctk3-install.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			WholeProgramOptimization="1"
@@ -91,7 +91,7 @@
 			Name="Release|x64"
 			OutputDirectory="$(GlibEtcInstallRoot)"
 			ConfigurationType="10"
-			InheritedPropertySheets=".\gtk3-install.vsprops"
+			InheritedPropertySheets=".\ctk3-install.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			WholeProgramOptimization="1"
@@ -106,7 +106,7 @@
 			OutputDirectory="$(GlibEtcInstallRoot)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="10"
-			InheritedPropertySheets=".\gtk3-install.vsprops"
+			InheritedPropertySheets=".\ctk3-install.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			WholeProgramOptimization="1"
@@ -120,7 +120,7 @@
 			Name="Release_Broadway|x64"
 			OutputDirectory="$(GlibEtcInstallRoot)"
 			ConfigurationType="10"
-			InheritedPropertySheets=".\gtk3-install.vsprops"
+			InheritedPropertySheets=".\ctk3-install.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			WholeProgramOptimization="1"
@@ -139,61 +139,61 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
-			<File RelativePath="..\gtkpc.py">
+			<File RelativePath="..\ctkpc.py">
 				<FileConfiguration Name="Debug|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateGtkPC)"
-						Outputs="..\gdk-3.0.pc;..\gtk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateGtkPC)"
-						Outputs="..\gdk-3.0.pc;..\gtk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Debug|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateGtkPCX64)"
-						Outputs="..\gdk-3.0.pc;..\gtk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateGtkPCX64)"
-						Outputs="..\gdk-3.0.pc;..\gtk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Debug_Broadway|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateGtkPC) --broadway"
-						Outputs="..\gdk-3.0.pc;..\gtk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release_Broadway|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateGtkPC) --broadway"
-						Outputs="..\gdk-3.0.pc;..\gtk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Debug_Broadway|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateGtkPCX64) --broadway"
-						Outputs="..\gdk-3.0.pc;..\gtk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release_Broadway|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateGtkPCX64) --broadway"
-						Outputs="..\gdk-3.0.pc;..\gtk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 			</File>

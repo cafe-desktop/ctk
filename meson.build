@@ -1,4 +1,4 @@
-project('gtk+-3.0', 'c',
+project('ctk+-3.0', 'c',
         version: '3.24.24',
         default_options: [
           'buildtype=debugoptimized',
@@ -185,7 +185,7 @@ cdata.set_quoted('CTK_LOCALEDIR', ctk_localedir)
 cdata.set_quoted('CTK_DATADIR', ctk_datadir)
 cdata.set_quoted('CTK_LIBDIR', ctk_libdir)
 cdata.set_quoted('CTK_SYSCONFDIR', ctk_sysconfdir)
-cdata.set_quoted('GETTEXT_PACKAGE', 'gtk30')
+cdata.set_quoted('GETTEXT_PACKAGE', 'ctk30')
 cdata.set('CTK_MAJOR_VERSION', ctk_major_version)
 cdata.set('CTK_MINOR_VERSION', ctk_minor_version)
 cdata.set('CTK_MICRO_VERSION', ctk_micro_version)
@@ -193,10 +193,10 @@ cdata.set('CTK_BINARY_AGE', ctk_binary_age)
 cdata.set('CTK_INTERFACE_AGE', ctk_interface_age)
 
 cdata.set_quoted('PACKAGE_URL', '')
-cdata.set_quoted('PACKAGE_NAME', 'gtk+')
-cdata.set_quoted('PACKAGE_TARNAME', 'gtk+')
-cdata.set_quoted('PACKAGE_STRING', 'gtk+ @0@'.format(meson.project_version()))
-cdata.set_quoted('PACKAGE_BUGREPORT', 'http://bugzilla.gnome.org/enter_bug.cgi?product=gtk%2B')
+cdata.set_quoted('PACKAGE_NAME', 'ctk+')
+cdata.set_quoted('PACKAGE_TARNAME', 'ctk+')
+cdata.set_quoted('PACKAGE_STRING', 'ctk+ @0@'.format(meson.project_version()))
+cdata.set_quoted('PACKAGE_BUGREPORT', 'http://bugzilla.gnome.org/enter_bug.cgi?product=ctk%2B')
 
 cdata.set('ENABLE_NLS', 1)
 
@@ -350,7 +350,7 @@ endif
 
 confinc = include_directories('.')
 gdkinc = include_directories('gdk')
-gtkinc = include_directories('gtk')
+ctkinc = include_directories('ctk')
 libgailutilinc = include_directories('libgail-util')
 testinc = include_directories('tests')
 
@@ -694,7 +694,7 @@ endif
 
 proto_sources = [
   'text-input-unstable-v3',
-  'gtk-text-input',
+  'ctk-text-input',
 ]
 proto_sources_outputs = []
 
@@ -737,22 +737,22 @@ immodules = [
   [ 'cyrillic-translit', files([ immodule_srcdir + 'imcyrillic-translit.c' ]) ],
   [ 'inuktitut', files([ immodule_srcdir + 'iminuktitut.c' ]) ],
   [ 'ipa', files([ immodule_srcdir + 'imipa.c' ]) ],
-  [ 'multipress', files( [ immodule_srcdir + 'gtkimcontextmultipress.c', immodule_srcdir + 'immultipress.c' ]), true,
+  [ 'multipress', files( [ immodule_srcdir + 'ctkimcontextmultipress.c', immodule_srcdir + 'immultipress.c' ]), true,
                     ['-DMULTIPRESS_LOCALEDIR="@0@"'.format(ctk_mplocaledir),
-                     '-DMULTIPRESS_CONFDIR="@0@/gtk-3.0"'.format(ctk_sysconfdir)] ],
-  [ 'thai', files([ immodule_srcdir + 'thai-charprop.c', immodule_srcdir + 'gtkimcontextthai.c', immodule_srcdir + 'imthai.c' ]) ],
+                     '-DMULTIPRESS_CONFDIR="@0@/ctk-3.0"'.format(ctk_sysconfdir)] ],
+  [ 'thai', files([ immodule_srcdir + 'thai-charprop.c', immodule_srcdir + 'ctkimcontextthai.c', immodule_srcdir + 'imthai.c' ]) ],
   [ 'ti-er', files([ immodule_srcdir + 'imti-er.c' ]) ],
   [ 'ti-et', files([ immodule_srcdir + 'imti-et.c' ]) ],
   [ 'viqr', files([ immodule_srcdir + 'imviqr.c' ]) ],
   [ 'broadway', files([ immodule_srcdir + 'imbroadway.c' ]), broadway_enabled ],
-  [ 'ime', files([ immodule_srcdir + 'gtkimcontextime.c', immodule_srcdir + 'imime.c' ]), win32_enabled ],
+  [ 'ime', files([ immodule_srcdir + 'ctkimcontextime.c', immodule_srcdir + 'imime.c' ]), win32_enabled ],
   [ 'quartz', files([ immodule_srcdir + 'imquartz.c' ]), quartz_enabled, [ '-xobjective-c' ] ],
   [ 'wayland', files([ immodule_srcdir + 'imwayland.c' ]) + proto_sources_outputs[0], wayland_enabled ],
-  [ 'waylandgtk', files([ immodule_srcdir + 'imwaylandgtk.c'])  + proto_sources_outputs[1], wayland_enabled ],
-  [ 'xim', files([ immodule_srcdir + 'gtkimcontextxim.c', immodule_srcdir + 'imxim.c' ]), x11_enabled ],
+  [ 'waylandctk', files([ immodule_srcdir + 'imwaylandctk.c'])  + proto_sources_outputs[1], wayland_enabled ],
+  [ 'xim', files([ immodule_srcdir + 'ctkimcontextxim.c', immodule_srcdir + 'imxim.c' ]), x11_enabled ],
 ]
 
-install_data(join_paths(immodule_srcdir, 'im-multipress.conf'), install_dir: join_paths(ctk_sysconfdir, 'gtk-3.0'))
+install_data(join_paths(immodule_srcdir, 'im-multipress.conf'), install_dir: join_paths(ctk_sysconfdir, 'ctk-3.0'))
 
 # Check for bind_textdomain_codeset, including -lintl if GLib brings it in by
 # doing the same check as glib. We can't check that by linking to glib because
@@ -837,7 +837,7 @@ endif
 
 build_gir = get_option('introspection')
 subdir('gdk')
-subdir('gtk')
+subdir('ctk')
 subdir('modules')
 subdir('libgail-util')
 if get_option('demos')
@@ -930,14 +930,14 @@ pkgconf.set('CTK_EXTRA_CFLAGS', '')
 
 pkg_install_dir = join_paths(get_option('libdir'), 'pkgconfig')
 
-ctk_pcs = ['gtk+-3.0.pc']
+ctk_pcs = ['ctk+-3.0.pc']
 gdk_pcs = ['gdk-3.0.pc']
 
 pkg_targets = ''
 disabled_backends = []
 foreach backend: [ 'broadway', 'quartz', 'wayland', 'win32', 'x11']
   if get_variable('@0@_enabled'.format(backend))
-    ctk_pcs += ['gtk+-@0@-3.0.pc'.format(backend)]
+    ctk_pcs += ['ctk+-@0@-3.0.pc'.format(backend)]
     gdk_pcs += ['gdk-@0@-3.0.pc'.format(backend)]
     pkg_targets += ' ' + backend
   else
@@ -959,15 +959,15 @@ foreach pkg: gdk_pcs
 endforeach
 
 foreach pkg: ctk_pcs
-  configure_file(input: 'gtk+-3.0.pc.in',
+  configure_file(input: 'ctk+-3.0.pc.in',
                  output: pkg,
                  configuration: pkgconf,
                  install_dir: pkg_install_dir)
 endforeach
 
 if os_unix
-  configure_file(input: 'gtk+-unix-print-3.0.pc.in',
-                 output: 'gtk+-unix-print-3.0.pc',
+  configure_file(input: 'ctk+-unix-print-3.0.pc.in',
+                 output: 'ctk+-unix-print-3.0.pc',
                  configuration: pkgconf,
                  install_dir: pkg_install_dir)
 endif
@@ -977,7 +977,7 @@ subdir('po-properties')
 subdir('docs/tools')
 subdir('docs/reference')
 
-install_data('m4macros/gtk-3.0.m4', install_dir: join_paths(get_option('datadir'), 'aclocal'))
+install_data('m4macros/ctk-3.0.m4', install_dir: join_paths(get_option('datadir'), 'aclocal'))
 
 # Keep this in sync with post-install.py expected arguments
 meson.add_install_script('build-aux/meson/post-install.py',
@@ -990,8 +990,8 @@ meson.add_install_script('build-aux/meson/post-install.py',
 if host_machine.system() != 'windows'
   # Install Valgrind suppression files (except on Windows,
   # as Valgrind is currently not supported on Windows)
-  install_data('gtk.supp',
-    install_dir : join_paths(ctk_datadir, 'gtk-3.0', 'valgrind'))
+  install_data('ctk.supp',
+    install_dir : join_paths(ctk_datadir, 'ctk-3.0', 'valgrind'))
 endif
 
 test(
@@ -1001,7 +1001,7 @@ test(
     join_paths(meson.current_source_dir(), 'configure.ac'),
     join_paths(meson.current_source_dir(), 'meson.build'),
   ],
-  suite: 'gtk',
+  suite: 'ctk',
 )
 
 summary = [

@@ -19,7 +19,7 @@
 #ifndef __CTK_LOCK_BUTTON_PRIVATE_H__
 #define __CTK_LOCK_BUTTON_PRIVATE_H__
 
-#include "gtklockbutton.h"
+#include "ctklockbutton.h"
 
 G_BEGIN_DECLS
 

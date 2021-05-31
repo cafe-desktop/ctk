@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkcontainercellaccessible.h"
-#include "gtkcellaccessibleprivate.h"
+#include <ctk/ctk.h>
+#include "ctkcontainercellaccessible.h"
+#include "ctkcellaccessibleprivate.h"
 
 struct _GtkContainerCellAccessiblePrivate
 {

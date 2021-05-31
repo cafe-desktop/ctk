@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <string.h>
 
@@ -519,10 +519,10 @@ test_svg_size (void)
 static void
 test_builtin (void)
 {
-  assert_icon_lookup_size ("gtk-color-picker", 16, CTK_ICON_LOOKUP_USE_BUILTIN, "/org/gtk/libgtk/icons/16x16/actions/gtk-color-picker.png", 16);
-  assert_icon_lookup_size ("gtk-color-picker", 20, CTK_ICON_LOOKUP_USE_BUILTIN, "/org/gtk/libgtk/icons/24x24/actions/gtk-color-picker.png", 24);
-  assert_icon_lookup_size ("gtk-color-picker", 24, CTK_ICON_LOOKUP_USE_BUILTIN, "/org/gtk/libgtk/icons/24x24/actions/gtk-color-picker.png", 24);
-  assert_icon_lookup_size ("gtk-color-picker", 30, CTK_ICON_LOOKUP_USE_BUILTIN, "/org/gtk/libgtk/icons/24x24/actions/gtk-color-picker.png", 24);
+  assert_icon_lookup_size ("ctk-color-picker", 16, CTK_ICON_LOOKUP_USE_BUILTIN, "/org/ctk/libctk/icons/16x16/actions/ctk-color-picker.png", 16);
+  assert_icon_lookup_size ("ctk-color-picker", 20, CTK_ICON_LOOKUP_USE_BUILTIN, "/org/ctk/libctk/icons/24x24/actions/ctk-color-picker.png", 24);
+  assert_icon_lookup_size ("ctk-color-picker", 24, CTK_ICON_LOOKUP_USE_BUILTIN, "/org/ctk/libctk/icons/24x24/actions/ctk-color-picker.png", 24);
+  assert_icon_lookup_size ("ctk-color-picker", 30, CTK_ICON_LOOKUP_USE_BUILTIN, "/org/ctk/libctk/icons/24x24/actions/ctk-color-picker.png", 24);
 }
 
 static void

@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtkgesturezoom
+ * SECTION:ctkgesturezoom
  * @Short_description: Zoom gesture
  * @Title: GtkGestureZoom
  * @See_also: #GtkGestureRotate
@@ -32,9 +32,9 @@
 
 #include "config.h"
 #include <math.h>
-#include "gtkgesturezoom.h"
-#include "gtkgesturezoomprivate.h"
-#include "gtkintl.h"
+#include "ctkgesturezoom.h"
+#include "ctkgesturezoomprivate.h"
+#include "ctkintl.h"
 
 typedef struct _GtkGestureZoomPrivate GtkGestureZoomPrivate;
 

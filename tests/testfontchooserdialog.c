@@ -17,7 +17,7 @@
 
 #include <string.h>
 #include <pango/pangofc-fontmap.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static gboolean
 monospace_filter (const PangoFontFamily *family,

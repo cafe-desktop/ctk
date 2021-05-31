@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintcontext.c: Print Context
+ * ctkprintcontext.c: Print Context
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -17,11 +17,11 @@
  */
 
 #include "config.h"
-#include "gtkprintoperation-private.h"
+#include "ctkprintoperation-private.h"
 
 
 /**
- * SECTION:gtkprintcontext
+ * SECTION:ctkprintcontext
  * @Short_description: Encapsulates context for drawing pages
  * @Title: GtkPrintContext
  *

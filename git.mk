@@ -44,7 +44,7 @@
 # not tarballs.  It serves no useful purpose in tarballs and clutters the
 # build dir.
 #
-# This file knows how to handle autoconf, automake, libtool, gtk-doc,
+# This file knows how to handle autoconf, automake, libtool, ctk-doc,
 # gnome-doc-utils, yelp.m4, mallard, intltool, gsettings, dejagnu, appdata,
 # appstream.
 #

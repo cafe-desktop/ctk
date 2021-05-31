@@ -21,7 +21,7 @@
  * if advised of the possibility of such damage.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static gboolean
 query_tooltip_cb (GtkWidget  *widget,

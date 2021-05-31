@@ -7,8 +7,8 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir)			\
 	-I$(top_builddir)/gdk		\
 	-I$(top_srcdir)/gdk		\
-	-I$(top_builddir)/gtk		\
-	-I$(top_srcdir)/gtk		\
+	-I$(top_builddir)/ctk		\
+	-I$(top_srcdir)/ctk		\
 	$(CTK_DEBUG_FLAGS)		\
 	$(CTK_DEP_CFLAGS)
 
@@ -17,10 +17,10 @@ AM_CPPFLAGS += -DHAVE_UNIX_PRINT_WIDGETS
 endif
 
 DEPS = \
-	$(top_builddir)/gtk/libgtk-3.la
+	$(top_builddir)/ctk/libctk-3.la
 
 LDADD = \
-	$(top_builddir)/gtk/libgtk-3.la	\
+	$(top_builddir)/ctk/libctk-3.la	\
 	$(top_builddir)/gdk/libgdk-3.la	\
 	$(CTK_DEP_LIBS)
 
@@ -55,12 +55,12 @@ TEST_PROGS += 			\
 	focus			\
 	gestures		\
 	grid			\
-	gtkmenu			\
+	ctkmenu			\
 	icontheme		\
 	keyhash			\
 	listbox			\
 	notify			\
-	no-gtk-init		\
+	no-ctk-init		\
 	object			\
 	objects-finalize	\
 	papersize		\
@@ -109,8 +109,8 @@ treemodel_SOURCES = 		\
 	filtermodel.c 		\
 	sortmodel.c 		\
 	modelrefcount.c 	\
-	gtktreemodelrefcount.h 	\
-	gtktreemodelrefcount.c	\
+	ctktreemodelrefcount.h 	\
+	ctktreemodelrefcount.c	\
 	$(NULL)
 
 builder_LDFLAGS = -export-dynamic
@@ -119,25 +119,25 @@ rbtree_CFLAGS  = -DCTK_COMPILATION -UG_ENABLE_DEBUG
 rbtree_LDADD = $(CTK_DEP_LIBS)
 rbtree_SOURCES = 			\
 	rbtree.c 			\
-	gtkrbtree.c			\
+	ctkrbtree.c			\
 	$(NULL)
 
-gtkrbtree.c: $(top_srcdir)/gtk/gtkrbtree.c
+ctkrbtree.c: $(top_srcdir)/ctk/ctkrbtree.c
 	$(AM_V_GEN) $(LN_S) $^ $@
 
-CLEANFILES += gtkrbtree.c
+CLEANFILES += ctkrbtree.c
 
 bitmask_CFLAGS  = -DCTK_COMPILATION -UG_ENABLE_DEBUG
 bitmask_LDADD = $(CTK_DEP_LIBS)
 bitmask_SOURCES = 			\
 	bitmask.c 			\
-	gtkallocatedbitmask.c		\
+	ctkallocatedbitmask.c		\
 	$(NULL)
 
-gtkallocatedbitmask.c: $(top_srcdir)/gtk/gtkallocatedbitmask.c
+ctkallocatedbitmask.c: $(top_srcdir)/ctk/ctkallocatedbitmask.c
 	$(AM_V_GEN) $(LN_S) $^ $@
 
-CLEANFILES += gtkallocatedbitmask.c
+CLEANFILES += ctkallocatedbitmask.c
 
 keyhash_CFLAGS =					\
 	-DCTK_COMPILATION 				\
@@ -149,21 +149,21 @@ keyhash_CFLAGS =					\
 
 keyhash_SOURCES	=		\
 	keyhash.c 		\
-	gtkkeyhash.c 		\
-	gtkresources.c 		\
-	gtkprivate.c 		\
+	ctkkeyhash.c 		\
+	ctkresources.c 		\
+	ctkprivate.c 		\
 	$(NULL)
 
-gtkkeyhash.c: $(top_srcdir)/gtk/gtkkeyhash.c
+ctkkeyhash.c: $(top_srcdir)/ctk/ctkkeyhash.c
 	$(AM_V_GEN) $(LN_S) $^ $@
 
-gtkresources.c: $(top_builddir)/gtk/gtkresources.c
+ctkresources.c: $(top_builddir)/ctk/ctkresources.c
 	$(AM_V_GEN) $(LN_S) $^ $@
 
-gtkprivate.c: $(top_srcdir)/gtk/gtkprivate.c
+ctkprivate.c: $(top_srcdir)/ctk/ctkprivate.c
 	$(AM_V_GEN) $(LN_S) $^ $@
 
-CLEANFILES += gtkkeyhash.c gtkresources.c gtkprivate.c
+CLEANFILES += ctkkeyhash.c ctkresources.c ctkprivate.c
 
 test_icontheme =					\
 	icons/index.theme				\
@@ -266,12 +266,12 @@ EXTRA_DIST +=				\
 	$(test_icontheme)		\
 	$(test_ui)			\
 	meson.build	\
-	gtk.test.in \
+	ctk.test.in \
 	$(NULL)
 
 CTK_GSETTINGS_SCHEMAS = \
-	$(top_srcdir)/gtk/org.gtk.Settings.ColorChooser.gschema.xml \
-	$(top_srcdir)/gtk/org.gtk.Settings.FileChooser.gschema.xml \
+	$(top_srcdir)/ctk/org.ctk.Settings.ColorChooser.gschema.xml \
+	$(top_srcdir)/ctk/org.ctk.Settings.FileChooser.gschema.xml \
 	$(NULL)
 
 BUILT_SOURCES += gschemas.compiled

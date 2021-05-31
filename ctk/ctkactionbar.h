@@ -21,10 +21,10 @@
 #define __CTK_ACTION_BAR_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkbin.h>
+#include <ctk/ctkbin.h>
 
 G_BEGIN_DECLS
 

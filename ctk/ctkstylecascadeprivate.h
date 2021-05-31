@@ -19,7 +19,7 @@
 #define __CTK_STYLECASCADE_PRIVATE_H__
 
 #include <gdk/gdk.h>
-#include <gtk/gtkstyleproviderprivate.h>
+#include <ctk/ctkstyleproviderprivate.h>
 
 G_BEGIN_DECLS
 

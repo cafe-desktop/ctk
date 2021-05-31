@@ -18,7 +18,7 @@
 #ifndef __CTK_FISHBOWL_H__
 #define __CTK_FISHBOWL_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

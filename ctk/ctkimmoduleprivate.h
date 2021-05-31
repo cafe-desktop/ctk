@@ -19,8 +19,8 @@
 #define __CTK_IM_MODULE_PRIVATE_H__
 
 #include <gdk/gdk.h>
-#include <gtk/gtkimcontext.h>
-#include <gtk/gtkimcontextinfo.h>
+#include <ctk/ctkimcontext.h>
+#include <ctk/ctkimcontextinfo.h>
 
 G_BEGIN_DECLS
 

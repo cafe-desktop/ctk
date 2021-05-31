@@ -1,4 +1,4 @@
-/* gtkshortcutssection.c
+/* ctkshortcutssection.c
  *
  * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
  *
@@ -18,26 +18,26 @@
 
 #include "config.h"
 
-#include "gtkshortcutssection.h"
+#include "ctkshortcutssection.h"
 
-#include "gtkshortcutsgroup.h"
-#include "gtkbutton.h"
-#include "gtklabel.h"
-#include "gtkstack.h"
-#include "gtkstackswitcher.h"
-#include "gtkstylecontext.h"
-#include "gtkorientable.h"
-#include "gtksizegroup.h"
-#include "gtkwidget.h"
-#include "gtkbindings.h"
-#include "gtkprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkgesturepan.h"
-#include "gtkwidgetprivate.h"
-#include "gtkintl.h"
+#include "ctkshortcutsgroup.h"
+#include "ctkbutton.h"
+#include "ctklabel.h"
+#include "ctkstack.h"
+#include "ctkstackswitcher.h"
+#include "ctkstylecontext.h"
+#include "ctkorientable.h"
+#include "ctksizegroup.h"
+#include "ctkwidget.h"
+#include "ctkbindings.h"
+#include "ctkprivate.h"
+#include "ctkmarshalers.h"
+#include "ctkgesturepan.h"
+#include "ctkwidgetprivate.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkshortcutssection
+ * SECTION:ctkshortcutssection
  * @Title: GtkShortcutsSection
  * @Short_description: Represents an application mode in a GtkShortcutsWindow
  *

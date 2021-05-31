@@ -21,7 +21,7 @@
 
 #include <gdk/gdk.h>
 
-#include "gtkwindow.h"
+#include "ctkwindow.h"
 
 G_BEGIN_DECLS
 

@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkTargetEntry entries[] = {
   { "CTK_LIST_BOX_ROW", CTK_TARGET_SAME_APP, 0 }

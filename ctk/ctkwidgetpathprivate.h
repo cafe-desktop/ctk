@@ -18,7 +18,7 @@
 #ifndef __CTK_WIDGET_PATH_PRIVATE_H__
 #define __CTK_WIDGET_PATH_PRIVATE_H__
 
-#include <gtk/gtkwidgetpath.h>
+#include <ctk/ctkwidgetpath.h>
 
 G_BEGIN_DECLS
 

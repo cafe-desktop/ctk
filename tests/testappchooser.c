@@ -19,7 +19,7 @@
 #include "config.h"
 
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *toplevel;
 static GFile *file;

@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2004.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -28,30 +28,30 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "gtkrange.h"
-#include "gtkrangeprivate.h"
+#include "ctkrange.h"
+#include "ctkrangeprivate.h"
 
-#include "gtkadjustmentprivate.h"
-#include "gtkboxgadgetprivate.h"
-#include "gtkbuiltiniconprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkcolorscaleprivate.h"
-#include "gtkintl.h"
-#include "gtkgesturelongpressprivate.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkorientableprivate.h"
-#include "gtkprivate.h"
-#include "gtkscale.h"
-#include "gtkscrollbar.h"
-#include "gtktypebuiltins.h"
-#include "gtkwindow.h"
-#include "gtkwidgetprivate.h"
-#include "a11y/gtkrangeaccessible.h"
-#include "gtkcssstylepropertyprivate.h"
+#include "ctkadjustmentprivate.h"
+#include "ctkboxgadgetprivate.h"
+#include "ctkbuiltiniconprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkcolorscaleprivate.h"
+#include "ctkintl.h"
+#include "ctkgesturelongpressprivate.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkorientableprivate.h"
+#include "ctkprivate.h"
+#include "ctkscale.h"
+#include "ctkscrollbar.h"
+#include "ctktypebuiltins.h"
+#include "ctkwindow.h"
+#include "ctkwidgetprivate.h"
+#include "a11y/ctkrangeaccessible.h"
+#include "ctkcssstylepropertyprivate.h"
 
 /**
- * SECTION:gtkrange
+ * SECTION:ctkrange
  * @Short_description: Base class for widgets which visualize an adjustment
  * @Title: GtkRange
  *
@@ -2714,7 +2714,7 @@ ctk_range_multipress_gesture_pressed (GtkGestureMultiPress *gesture,
   ctk_css_gadget_get_margin_box (priv->slider_gadget, &slider_alloc);
 
   g_object_get (ctk_widget_get_settings (widget),
-                "gtk-primary-button-warps-slider", &primary_warps,
+                "ctk-primary-button-warps-slider", &primary_warps,
                 NULL);
 
   if (priv->mouse_location == priv->slider_gadget &&
@@ -3831,7 +3831,7 @@ initial_timeout (gpointer data)
   priv->timer->timeout_id = gdk_threads_add_timeout (TIMEOUT_REPEAT,
                                                      second_timeout,
                                                      range);
-  g_source_set_name_by_id (priv->timer->timeout_id, "[gtk+] second_timeout");
+  g_source_set_name_by_id (priv->timer->timeout_id, "[ctk+] second_timeout");
   return G_SOURCE_REMOVE;
 }
 
@@ -3849,7 +3849,7 @@ ctk_range_add_step_timer (GtkRange      *range,
   priv->timer->timeout_id = gdk_threads_add_timeout (TIMEOUT_INITIAL,
                                                      initial_timeout,
                                                      range);
-  g_source_set_name_by_id (priv->timer->timeout_id, "[gtk+] initial_timeout");
+  g_source_set_name_by_id (priv->timer->timeout_id, "[ctk+] initial_timeout");
   priv->timer->step = step;
 
   ctk_range_scroll (range, priv->timer->step);

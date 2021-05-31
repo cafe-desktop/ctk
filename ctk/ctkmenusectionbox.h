@@ -20,10 +20,10 @@
 #ifndef __CTK_MENU_SECTION_BOX_H__
 #define __CTK_MENU_SECTION_BOX_H__
 
-#include <gtk/gtkmenutrackeritem.h>
-#include <gtk/gtkstack.h>
-#include <gtk/gtkbox.h>
-#include <gtk/gtkpopover.h>
+#include <ctk/ctkmenutrackeritem.h>
+#include <ctk/ctkstack.h>
+#include <ctk/ctkbox.h>
+#include <ctk/ctkpopover.h>
 
 G_BEGIN_DECLS
 

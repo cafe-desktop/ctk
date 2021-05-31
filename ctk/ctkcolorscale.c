@@ -17,18 +17,18 @@
 
 #include "config.h"
 
-#include "gtkcolorscaleprivate.h"
+#include "ctkcolorscaleprivate.h"
 
-#include "gtkcolorchooserprivate.h"
-#include "gtkgesturelongpress.h"
-#include "gtkcolorutils.h"
-#include "gtkorientable.h"
-#include "gtkrangeprivate.h"
-#include "gtkstylecontext.h"
-#include "gtkaccessible.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkrenderprivate.h"
+#include "ctkcolorchooserprivate.h"
+#include "ctkgesturelongpress.h"
+#include "ctkcolorutils.h"
+#include "ctkorientable.h"
+#include "ctkrangeprivate.h"
+#include "ctkstylecontext.h"
+#include "ctkaccessible.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkrenderprivate.h"
 
 #include <math.h>
 

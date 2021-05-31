@@ -19,11 +19,11 @@
 #define __CTK_CELL_RENDERER_COMBO_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtktreemodel.h>
-#include <gtk/gtkcellrenderertext.h>
+#include <ctk/ctktreemodel.h>
+#include <ctk/ctkcellrenderertext.h>
 
 G_BEGIN_DECLS
 

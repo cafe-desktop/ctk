@@ -17,10 +17,10 @@
 
 #include <math.h>
 #include <string.h>
-#include <gtk/gtk.h>
-#include <gtk/gtkunixprint.h>
+#include <ctk/ctk.h>
+#include <ctk/ctkunixprint.h>
 #ifdef GDK_WINDOWING_X11
-#include <gtk/gtkx.h>
+#include <ctk/ctkx.h>
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
 #include "gdk/wayland/gdkwayland.h"

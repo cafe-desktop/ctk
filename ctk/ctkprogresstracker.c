@@ -17,15 +17,15 @@
  * Authors: Matthew Watson <mattdangerw@gmail.com>
  */
 
-#include "gtkprogresstrackerprivate.h"
-#include "gtkprivate.h"
-#include "gtkcsseasevalueprivate.h"
+#include "ctkprogresstrackerprivate.h"
+#include "ctkprivate.h"
+#include "ctkcsseasevalueprivate.h"
 
 #include <math.h>
 #include <string.h>
 
 /*
- * Progress tracker is small helper for tracking progress through gtk
+ * Progress tracker is small helper for tracking progress through ctk
  * animations. It's a simple zero-initable struct, meant to be thrown in a
  * widget's private data without the need for setup or teardown.
  *

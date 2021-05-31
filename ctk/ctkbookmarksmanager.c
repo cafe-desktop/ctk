@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
 /* GTK - The GIMP Toolkit
- * gtkbookmarksmanager.c: Utilities to manage and monitor ~/.gtk-bookmarks
+ * ctkbookmarksmanager.c: Utilities to manage and monitor ~/.ctk-bookmarks
  * Copyright (C) 2003, Red Hat, Inc.
  * Copyright (C) 2007-2008 Carlos Garnacho
  * Copyright (C) 2011 Suse
@@ -27,8 +27,8 @@
 
 #include <glib/gi18n-lib.h>
 
-#include "gtkbookmarksmanager.h"
-#include "gtkfilechooser.h" /* for the GError types */
+#include "ctkbookmarksmanager.h"
+#include "ctkfilechooser.h" /* for the GError types */
 
 static void
 _ctk_bookmark_free (gpointer data)
@@ -60,7 +60,7 @@ get_legacy_bookmarks_file (void)
   GFile *file;
   gchar *filename;
 
-  filename = g_build_filename (g_get_home_dir (), ".gtk-bookmarks", NULL);
+  filename = g_build_filename (g_get_home_dir (), ".ctk-bookmarks", NULL);
   file = g_file_new_for_path (filename);
   g_free (filename);
 
@@ -73,7 +73,7 @@ get_bookmarks_file (void)
   GFile *file;
   gchar *filename;
 
-  filename = g_build_filename (g_get_user_config_dir (), "gtk-3.0", "bookmarks", NULL);
+  filename = g_build_filename (g_get_user_config_dir (), "ctk-3.0", "bookmarks", NULL);
   file = g_file_new_for_path (filename);
   g_free (filename);
 

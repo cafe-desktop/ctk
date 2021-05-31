@@ -1,6 +1,6 @@
 #include <math.h>
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include <epoxy/gl.h>
 

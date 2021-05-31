@@ -19,10 +19,10 @@
 #define __CTK_WIDGET_ACCESSIBLE_H__
 
 #if !defined (__CTK_A11Y_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk-a11y.h> can be included directly."
+#error "Only <ctk/ctk-a11y.h> can be included directly."
 #endif
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 
@@ -51,7 +51,7 @@ struct _GtkWidgetAccessibleClass
   /*
    * Signal handler for notify signal on GTK widget
    */
-  void (*notify_gtk)                   (GObject             *object,
+  void (*notify_ctk)                   (GObject             *object,
                                         GParamSpec          *pspec);
 
 };

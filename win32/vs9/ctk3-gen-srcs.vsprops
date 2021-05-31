@@ -2,8 +2,8 @@
 <VisualStudioPropertySheet
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="gtk3gensrcsprops"
-	InheritedPropertySheets=".\gtk3-build-defines.vsprops"
+	Name="ctk3gensrcsprops"
+	InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 	>
 	<UserMacro
 		Name="GenerateRequiredSourcesBase"
@@ -15,10 +15,10 @@
 	/>
 	<UserMacro
 		Name="GeneratedGtkSources"
-		Value="..\gtk\gtk-win32.rc;..\gtk\libgtk3.manifest;..\gtk\gtkdbusgenerated.h;..\gtk\gtkdbusgenerated.c"
+		Value="..\ctk\ctk-win32.rc;..\ctk\libctk3.manifest;..\ctk\ctkdbusgenerated.h;..\ctk\ctkdbusgenerated.c"
 	/>
 	<UserMacro
 		Name="GeneratedDemoSources"
-		Value="..\demos\gtk-demo\demos.h"
+		Value="..\demos\ctk-demo\demos.h"
 	/>
 </VisualStudioPropertySheet>

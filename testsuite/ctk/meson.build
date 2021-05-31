@@ -9,7 +9,7 @@ tests = [
   ['accessible'],
   ['action'],
   ['adjustment'],
-  ['bitmask', ['../../gtk/gtkallocatedbitmask.c'], ['-DCTK_COMPILATION', '-UG_ENABLE_DEBUG']],
+  ['bitmask', ['../../ctk/ctkallocatedbitmask.c'], ['-DCTK_COMPILATION', '-UG_ENABLE_DEBUG']],
   ['builder', [], [], ctk_tests_export_dynamic_ldflag],
   ['builderparser'],
   ['cellarea'],
@@ -23,15 +23,15 @@ tests = [
   ['focus'],
   ['gestures'],
   ['grid'],
-  ['gtkmenu'],
+  ['ctkmenu'],
   ['icontheme'],
-  ['keyhash', ['../../gtk/gtkkeyhash.c', gtkresources, '../../gtk/gtkprivate.c'], ctk_cargs],
+  ['keyhash', ['../../ctk/ctkkeyhash.c', ctkresources, '../../ctk/ctkprivate.c'], ctk_cargs],
   ['listbox'],
   ['notify'],
-  ['no-gtk-init'],
+  ['no-ctk-init'],
   ['object'],
   ['papersize'],
-  ['rbtree', ['../../gtk/gtkrbtree.c'], ['-DCTK_COMPILATION', '-UG_ENABLE_DEBUG']],
+  ['rbtree', ['../../ctk/ctkrbtree.c'], ['-DCTK_COMPILATION', '-UG_ENABLE_DEBUG']],
   ['recentmanager'],
   ['regression-tests'],
   ['scrolledwindow'],
@@ -41,7 +41,7 @@ tests = [
   ['textbuffer'],
   ['textiter'],
   ['treemodel', ['treemodel.c', 'liststore.c', 'treestore.c', 'filtermodel.c',
-                 'modelrefcount.c', 'sortmodel.c', 'gtktreemodelrefcount.c']],
+                 'modelrefcount.c', 'sortmodel.c', 'ctktreemodelrefcount.c']],
   ['treepath'],
   ['treeview'],
   ['typename'],
@@ -97,7 +97,7 @@ foreach t : tests
               'GSETTINGS_SCHEMA_DIR=@0@'.format(ctk_schema_build_dir),
               'CTK_TEST_MESON=1',
             ],
-       suite: 'gtk',
+       suite: 'ctk',
        should_fail: expect_fail,
   )
 endforeach
@@ -120,13 +120,13 @@ if add_languages('cpp', required: false)
               'G_TEST_BUILDDIR=@0@'.format(meson.current_build_dir()),
               'GSETTINGS_SCHEMA_DIR=@0@'.format(ctk_schema_build_dir),
             ],
-       suite: 'gtk')
+       suite: 'ctk')
 
   if get_option('installed_tests')
     conf = configuration_data()
     conf.set('testexecdir', installed_test_bindir)
     conf.set('test', 'autotestkeywords')
-    configure_file(input: 'gtk.test.in',
+    configure_file(input: 'ctk.test.in',
                    output: 'autotestkeywords.test',
                    configuration: conf,
                    install_dir: installed_test_datadir)
@@ -140,7 +140,7 @@ if get_option('installed_tests')
     conf = configuration_data()
     conf.set('testexecdir', installed_test_bindir)
     conf.set('test', test_name)
-    configure_file(input: 'gtk.test.in',
+    configure_file(input: 'ctk.test.in',
                    output: '@0@.test'.format(test_name),
                    configuration: conf,
                    install_dir: installed_test_datadir)

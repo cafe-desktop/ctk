@@ -1,7 +1,7 @@
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
-#include "gtkgears.h"
+#include "ctkgears.h"
 
 /************************************************************************
  *                 DEMO CODE                                            *

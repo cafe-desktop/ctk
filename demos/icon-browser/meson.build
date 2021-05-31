@@ -12,7 +12,7 @@ iconbrowser_resources = gnome.compile_resources(
 )
 
 iconbrowser = executable(
-  'gtk3-icon-browser',
+  'ctk3-icon-browser',
   iconbrowser_sources,
   iconbrowser_resources,
   dependencies: libctk_dep,
@@ -21,4 +21,4 @@ iconbrowser = executable(
 )
 
 # desktop file
-install_data('gtk3-icon-browser.desktop', install_dir: ctk_applicationsdir)
+install_data('ctk3-icon-browser.desktop', install_dir: ctk_applicationsdir)

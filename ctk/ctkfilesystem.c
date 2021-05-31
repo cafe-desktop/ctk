@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilesystem.c: Filesystem abstraction functions.
+ * ctkfilesystem.c: Filesystem abstraction functions.
  * Copyright (C) 2003, Red Hat, Inc.
  * Copyright (C) 2007-2008 Carlos Garnacho
  *
@@ -21,16 +21,16 @@
 
 #include "config.h"
 
-#include "gtkfilesystem.h"
+#include "ctkfilesystem.h"
 
 #include <string.h>
 #include <glib/gi18n-lib.h>
 
-#include "gtkfilechooser.h"
-#include "gtkcssiconthemevalueprivate.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkfilechooser.h"
+#include "ctkcssiconthemevalueprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkstylecontextprivate.h"
 
 /* #define DEBUG_MODE */
 #ifdef DEBUG_MODE

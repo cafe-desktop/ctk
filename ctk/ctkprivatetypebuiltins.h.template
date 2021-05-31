@@ -1,6 +1,6 @@
 /*** BEGIN file-header ***/
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #ifndef __CTK_PRIVATE_TYPE_BUILTINS_H__

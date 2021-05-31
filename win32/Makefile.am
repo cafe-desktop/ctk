@@ -43,11 +43,11 @@ EXTRA_DIST +=	\
 	detectenv-msvc.mak		\
 	gen-gdkversionmacros-h.py	\
 	generate-msvc.mak	\
-	gtk-introspection-msvc.mak	\
+	ctk-introspection-msvc.mak	\
 	introspection-msvc.mak		\
 	replace.py			\
 	pc_base.py			\
-	gtkpc.py			\
+	ctkpc.py			\
 	README_EGL_MSVC.txt		\
 	$(GENERATED_ITEMS)
 

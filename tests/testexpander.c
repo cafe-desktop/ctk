@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 expander_cb (GtkExpander *expander, GParamSpec *pspec, GtkWindow *dialog)

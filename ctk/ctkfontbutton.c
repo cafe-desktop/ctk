@@ -22,32 +22,32 @@
  * Modified by the GTK+ Team and others 2003.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtkfontbutton.h"
+#include "ctkfontbutton.h"
 
-#include "gtkmain.h"
-#include "gtkbox.h"
-#include "gtklabel.h"
-#include "gtkfontchooser.h"
-#include "gtkfontchooserdialog.h"
-#include "gtkimage.h"
-#include "gtkmarshalers.h"
-#include "gtkseparator.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkcssprovider.h"
+#include "ctkmain.h"
+#include "ctkbox.h"
+#include "ctklabel.h"
+#include "ctkfontchooser.h"
+#include "ctkfontchooserdialog.h"
+#include "ctkimage.h"
+#include "ctkmarshalers.h"
+#include "ctkseparator.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkcssprovider.h"
 
 #include <string.h>
 #include <stdio.h>
-#include "gtkfontchooserutils.h"
+#include "ctkfontchooserutils.h"
 
 
 /**
- * SECTION:gtkfontbutton
+ * SECTION:ctkfontbutton
  * @Short_description: A button to launch a font chooser dialog
  * @Title: GtkFontButton
  * @See_also: #GtkFontChooserDialog, #GtkColorButton.
@@ -598,7 +598,7 @@ ctk_font_button_class_init (GtkFontButtonClass *klass)
 
   /* Bind class to template
    */
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkfontbutton.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkfontbutton.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkFontButton, font_label);
   ctk_widget_class_bind_template_child_private (widget_class, GtkFontButton, size_label);
   ctk_widget_class_bind_template_child_private (widget_class, GtkFontButton, font_size_box);

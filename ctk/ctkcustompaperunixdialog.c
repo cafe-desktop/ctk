@@ -25,21 +25,21 @@
 #include <langinfo.h>
 #endif
 
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
-#include "gtkliststore.h"
+#include "ctkliststore.h"
 
-#include "gtktreeviewcolumn.h"
-#include "gtklabel.h"
-#include "gtkspinbutton.h"
+#include "ctktreeviewcolumn.h"
+#include "ctklabel.h"
+#include "ctkspinbutton.h"
 
-#include "gtkcustompaperunixdialog.h"
-#include "gtkprintbackend.h"
-#include "gtkprintutils.h"
-#include "gtkdialogprivate.h"
+#include "ctkcustompaperunixdialog.h"
+#include "ctkprintbackend.h"
+#include "ctkprintutils.h"
+#include "ctkdialogprivate.h"
 
-#define LEGACY_CUSTOM_PAPER_FILENAME ".gtk-custom-papers"
+#define LEGACY_CUSTOM_PAPER_FILENAME ".ctk-custom-papers"
 #define CUSTOM_PAPER_FILENAME "custom-papers"
 
 
@@ -150,7 +150,7 @@ custom_paper_get_filename (void)
   gchar *filename;
 
   filename = g_build_filename (g_get_user_config_dir (),
-                               "gtk-3.0",
+                               "ctk-3.0",
 			       CUSTOM_PAPER_FILENAME, NULL);
   g_assert (filename != NULL);
   return filename;
@@ -256,7 +256,7 @@ _ctk_print_save_custom_papers (GtkListStore *store)
 
   filename = custom_paper_get_filename ();
   parentdir = g_build_filename (g_get_user_config_dir (),
-                                "gtk-3.0",
+                                "ctk-3.0",
                                 NULL);
   if (g_mkdir_with_parents (parentdir, 0700) == 0)
     {
@@ -437,7 +437,7 @@ printer_added_cb (GtkPrintBackend          *backend,
                       -1);
 
   g_object_set_data_full (G_OBJECT (printer),
-			  "gtk-print-tree-iter",
+			  "ctk-print-tree-iter",
                           ctk_tree_iter_copy (&iter),
                           (GDestroyNotify) ctk_tree_iter_free);
 
@@ -461,7 +461,7 @@ printer_removed_cb (GtkPrintBackend        *backend,
   GtkCustomPaperUnixDialogPrivate *priv = dialog->priv;
   GtkTreeIter *iter;
 
-  iter = g_object_get_data (G_OBJECT (printer), "gtk-print-tree-iter");
+  iter = g_object_get_data (G_OBJECT (printer), "ctk-print-tree-iter");
   ctk_list_store_remove (CTK_LIST_STORE (priv->printer_list), iter);
 }
 
@@ -475,7 +475,7 @@ printer_status_cb (GtkPrintBackend        *backend,
   GtkTreeIter *iter;
   gchar *str;
 
-  iter = g_object_get_data (G_OBJECT (printer), "gtk-print-tree-iter");
+  iter = g_object_get_data (G_OBJECT (printer), "ctk-print-tree-iter");
 
   str = g_strdup_printf ("<b>%s</b>",
 			 ctk_printer_get_name (printer));

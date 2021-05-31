@@ -20,8 +20,8 @@
 #ifndef __CTK_MODEL_MENU_ITEM_H__
 #define __CTK_MODEL_MENU_ITEM_H__
 
-#include <gtk/gtkcheckmenuitem.h>
-#include <gtk/gtkmenutrackeritem.h>
+#include <ctk/ctkcheckmenuitem.h>
+#include <ctk/ctkmenutrackeritem.h>
 
 #define CTK_TYPE_MODEL_MENU_ITEM                            (ctk_model_menu_item_get_type ())
 #define CTK_MODEL_MENU_ITEM(inst)                           (G_TYPE_CHECK_INSTANCE_CAST ((inst),                      \

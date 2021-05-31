@@ -19,7 +19,7 @@
 #include "config.h"
 #include <math.h>
 #include <pango/pangocairo.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include "testprintfileoperation.h"
 
 static void

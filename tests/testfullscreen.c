@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 set_fullscreen_monitor_cb (GtkWidget *widget, gpointer user_data)

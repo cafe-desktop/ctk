@@ -1,4 +1,4 @@
-/* gtksidebarrowprivate.h
+/* ctksidebarrowprivate.h
  *
  * Copyright (C) 2015 Carlos Soriano <csoriano@gnome.org>
  *
@@ -19,7 +19,7 @@
 #define CTK_SIDEBAR_ROW_PRIVATE_H
 
 #include <glib.h>
-#include "gtklistbox.h"
+#include "ctklistbox.h"
 
 G_BEGIN_DECLS
 

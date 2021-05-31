@@ -2,7 +2,7 @@ window1
   "window"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -14,7 +14,7 @@ window1
     name: Spinner
     description: Provides visual indication of progress
     state: enabled sensitive showing visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1

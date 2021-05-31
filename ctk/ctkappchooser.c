@@ -1,5 +1,5 @@
 /*
- * gtkappchooser.c: app-chooser interface
+ * ctkappchooser.c: app-chooser interface
  *
  * Copyright (C) 2010 Red Hat, Inc.
  *
@@ -20,7 +20,7 @@
  */
 
 /**
- * SECTION:gtkappchooser
+ * SECTION:ctkappchooser
  * @Title: GtkAppChooser
  * @Short_description: Interface implemented by widgets for choosing an application
  * @See_also: #GAppInfo
@@ -46,11 +46,11 @@
 
 #include "config.h"
 
-#include "gtkappchooser.h"
+#include "ctkappchooser.h"
 
-#include "gtkintl.h"
-#include "gtkappchooserprivate.h"
-#include "gtkwidget.h"
+#include "ctkintl.h"
+#include "ctkappchooserprivate.h"
+#include "ctkwidget.h"
 
 #include <glib.h>
 

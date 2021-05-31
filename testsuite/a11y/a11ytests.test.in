@@ -1,4 +1,4 @@
 [Test]
-Exec=/bin/sh -c "env G_ENABLE_DIAGNOSTIC=0 CTK_CSD=1 @libexecdir@/installed-tests/gtk+/accessibility-dump -k --verbose --directory @libexecdir@/installed-tests/gtk+/a11ytests"
+Exec=/bin/sh -c "env G_ENABLE_DIAGNOSTIC=0 CTK_CSD=1 @libexecdir@/installed-tests/ctk+/accessibility-dump -k --verbose --directory @libexecdir@/installed-tests/ctk+/a11ytests"
 Type=session
 

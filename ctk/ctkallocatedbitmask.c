@@ -19,8 +19,8 @@
 
 #include <config.h>
 
-#include "gtkallocatedbitmaskprivate.h"
-#include "gtkprivate.h"
+#include "ctkallocatedbitmaskprivate.h"
+#include "ctkprivate.h"
 
 
 #define VALUE_TYPE gsize

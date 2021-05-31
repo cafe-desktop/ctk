@@ -19,19 +19,19 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
-#include "gtkadjustment.h"
-#include "gtkadjustmentprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkadjustment.h"
+#include "ctkadjustmentprivate.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtkadjustment
+ * SECTION:ctkadjustment
  * @Short_description: A representation of an adjustable bounded value
  * @Title: GtkAdjustment
  *

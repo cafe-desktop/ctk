@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /*
@@ -2500,7 +2500,7 @@ _gdk_win32_display_send_selection_notify (GdkDisplay   *display,
 }
 
 /* It's hard to say whether implementing this actually is of any use
- * on the Win32 platform? gtk calls only
+ * on the Win32 platform? ctk calls only
  * gdk_text_property_to_utf8_list_for_display().
  */
 gint
@@ -2774,7 +2774,7 @@ _gdk_win32_add_target_to_selformats (GdkAtom  target,
 }
 
 /* This function is called from ctk_selection_add_target() and
- * ctk_selection_add_targets() in gtkselection.c. It is this function
+ * ctk_selection_add_targets() in ctkselection.c. It is this function
  * that takes care of setting those clipboard formats for which we use
  * delayed rendering (that is, all formats, as we use delayed rendering
  * for everything). This function only registers the formats, but does

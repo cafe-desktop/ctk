@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include "gtkapplicationprivate.h"
+#include "ctkapplicationprivate.h"
 
 #include <gdk/gdkx.h>
 

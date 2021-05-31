@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechooserutils.h: Private utility functions useful for
+ * ctkfilechooserutils.h: Private utility functions useful for
  *                        implementing a GtkFileChooser interface
  * Copyright (C) 2003, Red Hat, Inc.
  *
@@ -20,7 +20,7 @@
 #ifndef __CTK_FILE_CHOOSER_UTILS_H__
 #define __CTK_FILE_CHOOSER_UTILS_H__
 
-#include "gtkfilechooserprivate.h"
+#include "ctkfilechooserprivate.h"
 
 G_BEGIN_DECLS
 

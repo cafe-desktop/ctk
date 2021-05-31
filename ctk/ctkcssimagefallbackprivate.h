@@ -20,8 +20,8 @@
 #ifndef __CTK_CSS_IMAGE_FALLBACK_PRIVATE_H__
 #define __CTK_CSS_IMAGE_FALLBACK_PRIVATE_H__
 
-#include "gtk/gtkcssimageprivate.h"
-#include "gtk/gtkcssvalueprivate.h"
+#include "ctk/ctkcssimageprivate.h"
+#include "ctk/ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

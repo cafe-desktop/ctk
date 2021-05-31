@@ -17,7 +17,7 @@
 
 #include "config.h"
 
-#include "gtkcolorpickershellprivate.h"
+#include "ctkcolorpickershellprivate.h"
 #include <gio/gio.h>
 
 struct _GtkColorPickerShell

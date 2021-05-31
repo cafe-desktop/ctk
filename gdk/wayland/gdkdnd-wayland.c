@@ -553,7 +553,7 @@ _gdk_wayland_window_drag_begin (GdkWindow *window,
   if (!context->targets)
     {
       gchar *local_dnd_mime;
-      local_dnd_mime = g_strdup_printf ("application/gtk+-local-dnd-%x", getpid());
+      local_dnd_mime = g_strdup_printf ("application/ctk+-local-dnd-%x", getpid());
       wl_data_source_offer (context_wayland->data_source, local_dnd_mime);
       g_free (local_dnd_mime);
     }

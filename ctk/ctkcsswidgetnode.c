@@ -17,16 +17,16 @@
 
 #include "config.h"
 
-#include "gtkcsswidgetnodeprivate.h"
+#include "ctkcsswidgetnodeprivate.h"
 
-#include "gtkcontainerprivate.h"
-#include "gtkcssanimatedstyleprivate.h"
-#include "gtkprivate.h"
-#include "gtksettingsprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkcssanimatedstyleprivate.h"
+#include "ctkprivate.h"
+#include "ctksettingsprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidgetprivate.h"
 /* widgets for special casing go here */
-#include "gtkbox.h"
+#include "ctkbox.h"
 
 G_DEFINE_TYPE (GtkCssWidgetNode, ctk_css_widget_node, CTK_TYPE_CSS_NODE)
 

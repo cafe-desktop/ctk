@@ -1,4 +1,4 @@
-/* gtktreemenu.h
+/* ctktreemenu.h
  *
  * Copyright (C) 2010 Openismus GmbH
  *
@@ -23,13 +23,13 @@
 #define __CTK_TREE_MENU_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkmenu.h>
-#include <gtk/gtktreemodel.h>
-#include <gtk/gtktreeview.h>
-#include <gtk/gtkcellarea.h>
+#include <ctk/ctkmenu.h>
+#include <ctk/ctktreemodel.h>
+#include <ctk/ctktreeview.h>
+#include <ctk/ctkcellarea.h>
 
 G_BEGIN_DECLS
 

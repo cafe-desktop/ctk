@@ -43,13 +43,13 @@
 #include "gestures.h"
 #include "magnifier.h"
 
-#include "gtklabel.h"
-#include "gtkbutton.h"
-#include "gtkstack.h"
-#include "gtktreeviewcolumn.h"
-#include "gtkmodulesprivate.h"
-#include "gtkwindow.h"
-#include "gtkwindowgroup.h"
+#include "ctklabel.h"
+#include "ctkbutton.h"
+#include "ctkstack.h"
+#include "ctktreeviewcolumn.h"
+#include "ctkmodulesprivate.h"
+#include "ctkwindow.h"
+#include "ctkwindowgroup.h"
 
 G_DEFINE_TYPE (GtkInspectorWindow, ctk_inspector_window, CTK_TYPE_WINDOW)
 
@@ -63,7 +63,7 @@ set_selected_object (GtkInspectorWindow *iw,
   if (!ctk_inspector_prop_list_set_object (CTK_INSPECTOR_PROP_LIST (iw->prop_list), selected))
     return FALSE;
 
-  title = (const char *)g_object_get_data (selected, "gtk-inspector-object-title");
+  title = (const char *)g_object_get_data (selected, "ctk-inspector-object-title");
   ctk_label_set_label (CTK_LABEL (iw->object_title), title);
 
   ctk_inspector_prop_list_set_object (CTK_INSPECTOR_PROP_LIST (iw->child_prop_list), selected);
@@ -172,7 +172,7 @@ ctk_inspector_window_init (GtkInspectorWindow *iw)
 
   ctk_window_group_add_window (ctk_window_group_new (), CTK_WINDOW (iw));
 
-  extension_point = g_io_extension_point_lookup ("gtk-inspector-page");
+  extension_point = g_io_extension_point_lookup ("ctk-inspector-page");
   extensions = g_io_extension_point_get_extensions (extension_point);
 
   for (l = extensions; l != NULL; l = l->next)
@@ -247,7 +247,7 @@ ctk_inspector_window_class_init (GtkInspectorWindowClass *klass)
 
   object_class->constructed = ctk_inspector_window_constructed;
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/window.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/window.ui");
 
   ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, top_stack);
   ctk_widget_class_bind_template_child (widget_class, GtkInspectorWindow, button_stack);

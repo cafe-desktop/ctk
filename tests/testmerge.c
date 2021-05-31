@@ -25,7 +25,7 @@
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #ifndef STDOUT_FILENO
 #define STDOUT_FILENO 1 

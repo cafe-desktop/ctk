@@ -23,7 +23,7 @@
  *  - Needs analysis with the code coverage tool once it is there.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "treemodel.h"
 

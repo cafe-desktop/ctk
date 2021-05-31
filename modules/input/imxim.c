@@ -16,16 +16,16 @@
  */
 
 #include "config.h"
-#include "gtk/gtkintl.h"
-#include "gtk/gtkimmodule.h"
-#include "gtkimcontextxim.h"
+#include "ctk/ctkintl.h"
+#include "ctk/ctkimmodule.h"
+#include "ctkimcontextxim.h"
 #include <string.h>
 
 static const GtkIMContextInfo xim_ja_info = { 
   "xim",		           /* ID */
   NC_("input method menu", "X Input Method"), /* Human readable name */
   GETTEXT_PACKAGE,		   /* Translation domain */
-  CTK_LOCALEDIR,		   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+  CTK_LOCALEDIR,		   /* Dir for bindtextdomain (not strictly needed for "ctk+") */
   "ko:ja:th:zh"		           /* Languages for which this module is the default */
 };
 

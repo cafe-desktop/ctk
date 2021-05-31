@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechooser.h: Abstract interface for file selector GUIs
+ * ctkfilechooser.h: Abstract interface for file selector GUIs
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -20,11 +20,11 @@
 #define __CTK_FILE_CHOOSER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkfilefilter.h>
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkfilefilter.h>
+#include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS
 

@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="gtk3-demo"
+	Name="ctk3-demo"
 	ProjectGUID="{BDAE6DE2-6BCC-4107-94F0-DA12214A02DE}"
-	RootNamespace="gtk3demo"
+	RootNamespace="ctk3demo"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -22,7 +22,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			ConfigurationType="1"
-			InheritedPropertySheets=".\gtk3-build-defines.vsprops"
+			InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -31,7 +31,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gtk"
+				AdditionalIncludeDirectories="..\..\gdk;..\..\ctk"
 				PreprocessorDefinitions="_DEBUG;$(GtkPrefixDefine)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -54,7 +54,7 @@
 		<Configuration
 			Name="Debug|x64"
 			ConfigurationType="1"
-			InheritedPropertySheets=".\gtk3-build-defines.vsprops"
+			InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -63,7 +63,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gtk"
+				AdditionalIncludeDirectories="..\..\gdk;..\..\ctk"
 				PreprocessorDefinitions="_DEBUG;$(GtkPrefixDefine)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -86,7 +86,7 @@
 		<Configuration
 			Name="Release|Win32"
 			ConfigurationType="1"
-			InheritedPropertySheets=".\gtk3-build-defines.vsprops"
+			InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -95,7 +95,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gtk"
+				AdditionalIncludeDirectories="..\..\gdk;..\..\ctk"
 				PreprocessorDefinitions="$(GtkPrefixDefine)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -118,7 +118,7 @@
 		<Configuration
 			Name="Release|x64"
 			ConfigurationType="1"
-			InheritedPropertySheets=".\gtk3-build-defines.vsprops"
+			InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
 			>
@@ -127,7 +127,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gtk"
+				AdditionalIncludeDirectories="..\..\gdk;..\..\ctk"
 				PreprocessorDefinitions="$(GtkPrefixDefine)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -156,7 +156,7 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
-#include "gtk3-demo.sourcefiles"
+#include "ctk3-demo.sourcefiles"
 		</Filter>
 		<Filter
 			Name="Header Files"

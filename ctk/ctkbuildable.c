@@ -1,4 +1,4 @@
-/* gtkbuildable.c
+/* ctkbuildable.c
  * Copyright (C) 2006-2007 Async Open Source,
  *                         Johan Dahlin <jdahlin@async.com.br>
  *
@@ -17,7 +17,7 @@
  */
 
 /**
- * SECTION:gtkbuildable
+ * SECTION:ctkbuildable
  * @Short_description: Interface for objects that can be built by GtkBuilder
  * @Title: GtkBuildable
  *
@@ -36,8 +36,8 @@
  */
 
 #include "config.h"
-#include "gtkbuildable.h"
-#include "gtkintl.h"
+#include "ctkbuildable.h"
+#include "ctkintl.h"
 
 
 typedef GtkBuildableIface GtkBuildableInterface;
@@ -72,7 +72,7 @@ ctk_buildable_set_name (GtkBuildable *buildable,
     (* iface->set_name) (buildable, name);
   else
     g_object_set_data_full (G_OBJECT (buildable),
-			    "gtk-builder-name",
+			    "ctk-builder-name",
 			    g_strdup (name),
 			    g_free);
 }
@@ -104,7 +104,7 @@ ctk_buildable_get_name (GtkBuildable *buildable)
     return (* iface->get_name) (buildable);
   else
     return (const gchar*)g_object_get_data (G_OBJECT (buildable),
-					    "gtk-builder-name");
+					    "ctk-builder-name");
 }
 
 /**

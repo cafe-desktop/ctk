@@ -4,7 +4,7 @@
  * of its sole child with nice transitions.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static gint count = 0;
 static guint timeout = 0;

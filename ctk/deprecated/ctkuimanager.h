@@ -23,20 +23,20 @@
  * Modified by the GTK+ Team and others 2003.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_UI_MANAGER_H__
 #define __CTK_UI_MANAGER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkaccelgroup.h>
-#include <gtk/gtkwidget.h>
-#include <gtk/deprecated/gtkaction.h>
-#include <gtk/deprecated/gtkactiongroup.h>
+#include <ctk/ctkaccelgroup.h>
+#include <ctk/ctkwidget.h>
+#include <ctk/deprecated/ctkaction.h>
+#include <ctk/deprecated/ctkactiongroup.h>
 
 G_BEGIN_DECLS
 

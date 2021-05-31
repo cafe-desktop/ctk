@@ -1,5 +1,5 @@
 /*
- * gtkimmoduleime
+ * ctkimmoduleime
  * Copyright (C) 2003 Takuro Ashie
  * Copyright (C) 2003 Kazuki IWAMOTO
  *
@@ -19,7 +19,7 @@
  * $Id$
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 extern GType ctk_type_im_context_ime;
 

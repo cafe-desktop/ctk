@@ -1,4 +1,4 @@
-/* gtktreemodel.c
+/* ctktreemodel.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -21,18 +21,18 @@
 #include <glib.h>
 #include <glib/gprintf.h>
 #include <gobject/gvaluecollector.h>
-#include "gtktreemodel.h"
-#include "gtktreeview.h"
-#include "gtktreeprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkintl.h"
+#include "ctktreemodel.h"
+#include "ctktreeview.h"
+#include "ctktreeprivate.h"
+#include "ctkmarshalers.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtktreemodel
+ * SECTION:ctktreemodel
  * @Title: GtkTreeModel
  * @Short_description: The tree interface used by GtkTreeView
  * @See_also: #GtkTreeView, #GtkTreeStore, #GtkListStore,
- *     [GtkTreeView drag-and-drop][gtk3-GtkTreeView-drag-and-drop]
+ *     [GtkTreeView drag-and-drop][ctk3-GtkTreeView-drag-and-drop]
  *     #GtkTreeSortable
  *
  * The #GtkTreeModel interface defines a generic tree interface for
@@ -239,7 +239,7 @@
       (Iter)->user_data3 = NULL; \
     }G_STMT_END
 
-#define ROW_REF_DATA_STRING "gtk-tree-row-refs"
+#define ROW_REF_DATA_STRING "ctk-tree-row-refs"
 
 enum {
   ROW_CHANGED,

@@ -1,4 +1,4 @@
-/* gtkcloudprintaccount.h: Google Cloud Print account class
+/* ctkcloudprintaccount.h: Google Cloud Print account class
  * Copyright (C) 2014, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -21,7 +21,7 @@
 #include <glib-object.h>
 #include <json-glib/json-glib.h>
 
-#include "gtkprintbackendcloudprint.h"
+#include "ctkprintbackendcloudprint.h"
 
 G_BEGIN_DECLS
 

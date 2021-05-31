@@ -5,7 +5,7 @@
  * while appending text.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* Scroll to the end of the buffer.
  */

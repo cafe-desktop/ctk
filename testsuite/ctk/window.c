@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #ifdef GDK_WINDOWING_X11
 #include <gdk/gdkx.h>

@@ -20,10 +20,10 @@
 
 #include "data-list.h"
 
-#include "gtktreeview.h"
-#include "gtkcellrenderertext.h"
-#include "gtktogglebutton.h"
-#include "gtklabel.h"
+#include "ctktreeview.h"
+#include "ctkcellrenderertext.h"
+#include "ctktogglebutton.h"
+#include "ctklabel.h"
 
 
 struct _GtkInspectorDataListPrivate
@@ -126,7 +126,7 @@ ctk_inspector_data_list_set_object (GtkInspectorDataList *sl,
       return;
     }
 
-  title = (const gchar *)g_object_get_data (object, "gtk-inspector-object-title");
+  title = (const gchar *)g_object_get_data (object, "ctk-inspector-object-title");
   ctk_label_set_label (CTK_LABEL (sl->priv->object_title), title);
 
   ctk_widget_show (CTK_WIDGET (sl));
@@ -154,7 +154,7 @@ ctk_inspector_data_list_class_init (GtkInspectorDataListClass *klass)
 {
   GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (klass);
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/data-list.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/data-list.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorDataList, view);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorDataList, object_title);
   ctk_widget_class_bind_template_callback (widget_class, toggle_show);

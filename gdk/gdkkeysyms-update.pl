@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# Updates http://git.gnome.org/browse/gtk+/tree/gdk/gdkkeysyms.h from upstream (X.org 7.x),
+# Updates http://git.gnome.org/browse/ctk+/tree/gdk/gdkkeysyms.h from upstream (X.org 7.x),
 # from http://cgit.freedesktop.org/xorg/proto/x11proto/plain/keysymdef.h
 # 
 # Author  : Simos Xenitellis <simos at gnome dot org>.
@@ -9,7 +9,7 @@
 #
 # Input   : http://cgit.freedesktop.org/xorg/proto/x11proto/plain/keysymdef.h
 # Input   : http://cgit.freedesktop.org/xorg/proto/x11proto/plain/XF86keysym.h
-# Output  : http://git.gnome.org/browse/gtk+/tree/gdk/gdkkeysyms.h
+# Output  : http://git.gnome.org/browse/ctk+/tree/gdk/gdkkeysyms.h
 # 
 # Notes   : It downloads keysymdef.h from the Internet, if not found locally,
 # Notes   : and creates an updated gdkkeysyms.h
@@ -53,10 +53,10 @@ else
 # Source: http://cgit.freedesktop.org/xorg/proto/x11proto/plain/keysymdef.h
 die "Could not open file keysymdef.h: $!\n" unless open(IN_KEYSYMDEF, "<:utf8", "keysymdef.h");
 
-# Output: gtk+/gdk/gdkkeysyms.h
+# Output: ctk+/gdk/gdkkeysyms.h
 die "Could not open file gdkkeysyms.h: $!\n" unless open(OUT_GDKKEYSYMS, ">:utf8", "gdkkeysyms.h");
 
-# Output: gtk+/gdk/gdkkeysyms-compat.h
+# Output: ctk+/gdk/gdkkeysyms-compat.h
 die "Could not open file gdkkeysyms-compat.h: $!\n" unless open(OUT_GDKKEYSYMS_COMPAT, ">:utf8", "gdkkeysyms-compat.h");
 
 my $LICENSE_HEADER= <<EOF;
@@ -86,7 +86,7 @@ print OUT_GDKKEYSYMS_COMPAT $LICENSE_HEADER;
 print OUT_GDKKEYSYMS<<EOF;
 
 /*
- * File auto-generated from script http://git.gnome.org/browse/gtk+/tree/gdk/gdkkeysyms-update.pl
+ * File auto-generated from script http://git.gnome.org/browse/ctk+/tree/gdk/gdkkeysyms-update.pl
  * using the input file
  * http://cgit.freedesktop.org/xorg/proto/x11proto/plain/keysymdef.h
  * and
@@ -97,7 +97,7 @@ print OUT_GDKKEYSYMS<<EOF;
  * Modified by the GTK+ Team and others 1997-2007.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __GDK_KEYSYMS_H__

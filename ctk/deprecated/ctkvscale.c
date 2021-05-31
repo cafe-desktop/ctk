@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -27,15 +27,15 @@
 #include <math.h>
 #include <stdlib.h>
 
-#include "gtkvscale.h"
+#include "ctkvscale.h"
 
-#include "gtkadjustment.h"
-#include "gtkorientable.h"
+#include "ctkadjustment.h"
+#include "ctkorientable.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 /**
- * SECTION:gtkvscale
+ * SECTION:ctkvscale
  * @Short_description: A vertical slider widget for selecting a value from a range
  * @Title: GtkVScale
  *

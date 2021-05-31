@@ -1,4 +1,4 @@
-/* gtkiconcachevalidator.4
+/* ctkiconcachevalidator.4
  * Copyright (C) 2007 Red Hat, Inc
  *
  * This library is free software; you can redistribute it and/or

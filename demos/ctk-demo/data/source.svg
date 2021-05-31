@@ -17,7 +17,7 @@
    inkscape:export-ydpi="90.000000"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="gtk3-demo.svg"
+   sodipodi:docname="ctk3-demo.svg"
    sodipodi:version="0.32"
    style="display:inline;enable-background:new"
    version="1.0"
@@ -2574,7 +2574,7 @@
            id="tspan3023"
            sodipodi:role="line"
            x="191.97073"
-           y="21.513618">gtk3-demo</tspan></text>
+           y="21.513618">ctk3-demo</tspan></text>
       <path
          style="opacity:0.4510002;fill:#3465a4;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"
          d="m 16,36 0,256 18,0 220,0 18,0 0,-18 0,-238 -18,0 0,238 -220,0 0,-238 -18,0 z"

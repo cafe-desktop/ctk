@@ -19,26 +19,26 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtkradiobutton.h"
+#include "ctkradiobutton.h"
 
-#include "gtkcontainerprivate.h"
-#include "gtkbuttonprivate.h"
-#include "gtktogglebuttonprivate.h"
-#include "gtkcheckbuttonprivate.h"
-#include "gtklabel.h"
-#include "gtkmarshalers.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "a11y/gtkradiobuttonaccessible.h"
-#include "gtkstylecontextprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkbuttonprivate.h"
+#include "ctktogglebuttonprivate.h"
+#include "ctkcheckbuttonprivate.h"
+#include "ctklabel.h"
+#include "ctkmarshalers.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "a11y/ctkradiobuttonaccessible.h"
+#include "ctkstylecontextprivate.h"
 
 /**
- * SECTION:gtkradiobutton
+ * SECTION:ctkradiobutton
  * @Short_description: A choice from multiple check buttons
  * @Title: GtkRadioButton
  * @See_also: #GtkComboBox

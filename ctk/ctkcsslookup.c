@@ -17,12 +17,12 @@
 
 #include "config.h"
 
-#include "gtkcsslookupprivate.h"
+#include "ctkcsslookupprivate.h"
 
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkcsstypesprivate.h"
-#include "gtkprivatetypebuiltins.h"
-#include "gtkprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkprivatetypebuiltins.h"
+#include "ctkprivate.h"
 
 GtkCssLookup *
 _ctk_css_lookup_new (const GtkBitmask *relevant)

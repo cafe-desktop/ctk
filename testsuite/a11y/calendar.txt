@@ -2,7 +2,7 @@ window1
   "window"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -12,7 +12,7 @@ window1
     parent: window1
     index: 0
     state: enabled focusable sensitive showing visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1

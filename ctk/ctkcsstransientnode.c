@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include "gtkcsstransientnodeprivate.h"
-#include "gtkprivate.h"
+#include "ctkcsstransientnodeprivate.h"
+#include "ctkprivate.h"
 
 G_DEFINE_TYPE (GtkCssTransientNode, ctk_css_transient_node, CTK_TYPE_CSS_NODE)
 

@@ -1,5 +1,5 @@
-/* gtkentrycompletion.h
- * Copyright (C) 2003  Kristian Rietveld  <kris@gtk.org>
+/* ctkentrycompletion.h
+ * Copyright (C) 2003  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -19,15 +19,15 @@
 #define __CTK_ENTRY_COMPLETION_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <gdk/gdk.h>
-#include <gtk/gtktreemodel.h>
-#include <gtk/gtkliststore.h>
-#include <gtk/gtkcellarea.h>
-#include <gtk/gtktreeviewcolumn.h>
-#include <gtk/gtktreemodelfilter.h>
+#include <ctk/ctktreemodel.h>
+#include <ctk/ctkliststore.h>
+#include <ctk/ctkcellarea.h>
+#include <ctk/ctktreeviewcolumn.h>
+#include <ctk/ctktreemodelfilter.h>
 
 G_BEGIN_DECLS
 

@@ -19,13 +19,13 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include <gtk/gtkpango.h>
-#include "gtkwidgetprivate.h"
-#include "gtklabelprivate.h"
-#include "gtklabelaccessible.h"
-#include "gtklabelaccessibleprivate.h"
-#include "gtkstylecontextprivate.h"
+#include <ctk/ctk.h>
+#include <ctk/ctkpango.h>
+#include "ctkwidgetprivate.h"
+#include "ctklabelprivate.h"
+#include "ctklabelaccessible.h"
+#include "ctklabelaccessibleprivate.h"
+#include "ctkstylecontextprivate.h"
 
 struct _GtkLabelAccessiblePrivate
 {
@@ -400,7 +400,7 @@ check_for_selection_change (GtkLabelAccessible *accessible,
 }
 
 static void
-ctk_label_accessible_notify_gtk (GObject    *obj,
+ctk_label_accessible_notify_ctk (GObject    *obj,
                                  GParamSpec *pspec)
 {
   GtkWidget *widget = CTK_WIDGET (obj);
@@ -422,7 +422,7 @@ ctk_label_accessible_notify_gtk (GObject    *obj,
         g_signal_emit_by_name (atk_obj, "text-selection-changed");
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_label_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_label_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 /* atkobject.h */
@@ -586,7 +586,7 @@ ctk_label_accessible_class_init (GtkLabelAccessibleClass *klass)
   class->get_n_children = ctk_label_accessible_get_n_children;
   class->ref_child = ctk_label_accessible_ref_child;
 
-  widget_class->notify_gtk = ctk_label_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_label_accessible_notify_ctk;
 }
 
 /* 'Public' API {{{2 */

@@ -1,6 +1,6 @@
-/* gtktreemodelfilter.c
+/* ctktreemodelfilter.c
  * Copyright (C) 2000,2001  Red Hat, Inc., Jonathan Blandford <jrb@redhat.com>
- * Copyright (C) 2001-2003  Kristian Rietveld <kris@gtk.org>
+ * Copyright (C) 2001-2003  Kristian Rietveld <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -17,15 +17,15 @@
  */
 
 #include "config.h"
-#include "gtktreemodelfilter.h"
-#include "gtkintl.h"
-#include "gtktreednd.h"
-#include "gtkprivate.h"
+#include "ctktreemodelfilter.h"
+#include "ctkintl.h"
+#include "ctktreednd.h"
+#include "ctkprivate.h"
 #include <string.h>
 
 
 /**
- * SECTION:gtktreemodelfilter
+ * SECTION:ctktreemodelfilter
  * @Short_description: A GtkTreeModel which hides parts of an underlying tree model
  * @Title: GtkTreeModelFilter
  * @See_also:#GtkTreeModelSort

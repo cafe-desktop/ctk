@@ -1,6 +1,6 @@
 #! /bin/bash
 
-CTK_BUILDER_TOOL=${CTK_BUILDER_TOOL:-gtk-builder-tool}
+CTK_BUILDER_TOOL=${CTK_BUILDER_TOOL:-ctk-builder-tool}
 TEST_DATA_DIR=${TEST_DATA_DIR:-./simplify}
 TEST_RESULT_DIR=${TEST_RESULT_DIR:-/tmp}
 

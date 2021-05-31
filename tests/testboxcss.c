@@ -16,7 +16,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* This is exactly the style information you've been looking for */
 #define CTK_STYLE_PROVIDER_PRIORITY_FORCE G_MAXUINT

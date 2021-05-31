@@ -19,23 +19,23 @@
 
 #include "config.h"
 
-#include "gtkheaderbar.h"
-#include "gtkheaderbarprivate.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkwindowprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
-#include "a11y/gtkheaderbaraccessible.h"
+#include "ctkheaderbar.h"
+#include "ctkheaderbarprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkwindowprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "a11y/ctkheaderbaraccessible.h"
 
 #include <string.h>
 
 /**
- * SECTION:gtkheaderbar
+ * SECTION:ctkheaderbar
  * @Short_description: A box with a centered child
  * @Title: GtkHeaderBar
  * @See_also: #GtkBox, #GtkActionBar
@@ -306,8 +306,8 @@ _ctk_header_bar_update_window_buttons (GtkHeaderBar *bar)
   direction = ctk_widget_get_direction (widget);
 
   g_object_get (ctk_widget_get_settings (widget),
-                "gtk-shell-shows-app-menu", &shown_by_shell,
-                "gtk-decoration-layout", &layout_desc,
+                "ctk-shell-shows-app-menu", &shown_by_shell,
+                "ctk-decoration-layout", &layout_desc,
                 NULL);
 
   if (priv->decoration_layout_set)
@@ -1909,9 +1909,9 @@ ctk_header_bar_realize (GtkWidget *widget)
   CTK_WIDGET_CLASS (ctk_header_bar_parent_class)->realize (widget);
 
   settings = ctk_widget_get_settings (widget);
-  g_signal_connect_swapped (settings, "notify::gtk-shell-shows-app-menu",
+  g_signal_connect_swapped (settings, "notify::ctk-shell-shows-app-menu",
                             G_CALLBACK (_ctk_header_bar_update_window_buttons), widget);
-  g_signal_connect_swapped (settings, "notify::gtk-decoration-layout",
+  g_signal_connect_swapped (settings, "notify::ctk-decoration-layout",
                             G_CALLBACK (_ctk_header_bar_update_window_buttons), widget);
   _ctk_header_bar_update_window_buttons (CTK_HEADER_BAR (widget));
 }
@@ -2072,7 +2072,7 @@ ctk_header_bar_class_init (GtkHeaderBarClass *class)
    * GtkHeaderBar:decoration-layout:
    *
    * The decoration layout for buttons. If this property is
-   * not set, the #GtkSettings:gtk-decoration-layout setting
+   * not set, the #GtkSettings:ctk-decoration-layout setting
    * is used.
    *
    * See ctk_header_bar_set_decoration_layout() for information
@@ -2342,7 +2342,7 @@ ctk_header_bar_get_has_subtitle (GtkHeaderBar *bar)
  *     unset the layout
  *
  * Sets the decoration layout for this header bar, overriding
- * the #GtkSettings:gtk-decoration-layout setting. 
+ * the #GtkSettings:ctk-decoration-layout setting. 
  *
  * There can be valid reasons for overriding the setting, such
  * as a header bar design that does not allow for buttons to take

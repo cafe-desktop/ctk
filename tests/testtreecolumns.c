@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /*
  * README README README README README README README README README README
@@ -328,7 +328,7 @@ view_column_model_drag_data_received (GtkTreeDragDest   *drag_dest,
       gboolean have_dest;
 
       /* We are a little lazy here, and assume if we can't convert dest
-       * to an iter, we need to append. See gtkliststore.c for a more
+       * to an iter, we need to append. See ctkliststore.c for a more
        * careful handling of this.
        */
       have_dest = ctk_tree_model_get_iter (CTK_TREE_MODEL (drag_dest), &dest_iter, dest);

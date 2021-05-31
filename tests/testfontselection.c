@@ -19,7 +19,7 @@
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 notify_font_name_cb (GObject *fontsel, GParamSpec *pspec, gpointer data)

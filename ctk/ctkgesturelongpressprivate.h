@@ -20,8 +20,8 @@
 #ifndef __CTK_GESTURE_LONG_PRESS_PRIVATE_H__
 #define __CTK_GESTURE_LONG_PRESS_PRIVATE_H__
 
-#include "gtkgesturesingleprivate.h"
-#include "gtkgesturelongpress.h"
+#include "ctkgesturesingleprivate.h"
+#include "ctkgesturelongpress.h"
 
 struct _GtkGestureLongPress
 {

@@ -18,7 +18,7 @@
 #ifndef _CTK_INSPECTOR_MISC_INFO_H_
 #define _CTK_INSPECTOR_MISC_INFO_H_
 
-#include "gtkscrolledwindow.h"
+#include "ctkscrolledwindow.h"
 
 #define CTK_TYPE_INSPECTOR_MISC_INFO            (ctk_inspector_misc_info_get_type())
 #define CTK_INSPECTOR_MISC_INFO(obj)            (G_TYPE_CHECK_INSTANCE_CAST((obj), CTK_TYPE_INSPECTOR_MISC_INFO, GtkInspectorMiscInfo))

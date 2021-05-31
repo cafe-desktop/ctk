@@ -18,7 +18,7 @@
 #ifndef __CTK_COLOR_SWATCH_ACCESSIBLE_H__
 #define __CTK_COLOR_SWATCH_ACCESSIBLE_H__
 
-#include <gtk/a11y/gtkwidgetaccessible.h>
+#include <ctk/a11y/ctkwidgetaccessible.h>
 
 G_BEGIN_DECLS
 

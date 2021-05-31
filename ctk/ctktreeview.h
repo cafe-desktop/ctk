@@ -1,4 +1,4 @@
-/* gtktreeview.h
+/* ctktreeview.h
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,14 +19,14 @@
 #define __CTK_TREE_VIEW_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcontainer.h>
-#include <gtk/gtktreemodel.h>
-#include <gtk/gtktreeviewcolumn.h>
-#include <gtk/gtkdnd.h>
-#include <gtk/gtkentry.h>
+#include <ctk/ctkcontainer.h>
+#include <ctk/ctktreemodel.h>
+#include <ctk/ctktreeviewcolumn.h>
+#include <ctk/ctkdnd.h>
+#include <ctk/ctkentry.h>
 
 G_BEGIN_DECLS
 

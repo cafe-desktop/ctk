@@ -18,7 +18,7 @@
 #ifndef __CTK_BINDINGS_PRIVATE_H__
 #define __CTK_BINDINGS_PRIVATE_H__
 
-#include "gtkbindings.h"
+#include "ctkbindings.h"
 
 G_BEGIN_DECLS
 

@@ -3,7 +3,7 @@
  * GtkTextView can position text at fixed positions, using tabs.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 
 GtkWidget *

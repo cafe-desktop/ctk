@@ -21,7 +21,7 @@
 #define __CTK_ACCEL_GROUP_PRIVATE_H__
 
 
-#include <gtk/gtkaccelgroup.h>
+#include <ctk/ctkaccelgroup.h>
 
 G_BEGIN_DECLS
 

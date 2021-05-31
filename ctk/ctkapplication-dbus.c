@@ -22,9 +22,9 @@
 
 #include "config.h"
 
-#include "gtkapplicationprivate.h"
-#include "gtksettings.h"
-#include "gtkprivate.h"
+#include "ctkapplicationprivate.h"
+#include "ctksettings.h"
+#include "ctkprivate.h"
 
 #include "gdk/gdk-private.h"
 
@@ -418,7 +418,7 @@ ctk_application_impl_dbus_startup (GtkApplicationImpl *impl,
       GValue value = G_VALUE_INIT;
 
       g_value_init (&value, G_TYPE_STRING);
-      gdk_screen_get_setting (gdk_screen_get_default (), "gtk-session-bus-id", &value);
+      gdk_screen_get_setting (gdk_screen_get_default (), "ctk-session-bus-id", &value);
       id = g_value_get_string (&value);
 
       if (id && id[0])
@@ -452,8 +452,8 @@ ctk_application_impl_dbus_startup (GtkApplicationImpl *impl,
 
   if (!same_bus)
     g_object_set (ctk_settings_get_default (),
-                  "gtk-shell-shows-app-menu", FALSE,
-                  "gtk-shell-shows-menubar", FALSE,
+                  "ctk-shell-shows-app-menu", FALSE,
+                  "ctk-shell-shows-menubar", FALSE,
                   NULL);
 
   if (dbus->sm_proxy == NULL && dbus->session)
@@ -836,8 +836,8 @@ ctk_application_impl_dbus_prefers_app_menu (GtkApplicationImpl *impl)
 
       ctk_settings = ctk_settings_get_default ();
       g_object_get (G_OBJECT (ctk_settings),
-                    "gtk-shell-shows-app-menu", &show_app_menu,
-                    "gtk-shell-shows-menubar", &show_menubar,
+                    "ctk-shell-shows-app-menu", &show_app_menu,
+                    "ctk-shell-shows-menubar", &show_menubar,
                     NULL);
 
       /* We prefer traditional menus when we have a shell that doesn't

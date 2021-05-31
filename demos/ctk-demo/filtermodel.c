@@ -5,7 +5,7 @@
  * that are not actually present in the underlying model.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <stdlib.h>
 
 enum {

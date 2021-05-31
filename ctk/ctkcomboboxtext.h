@@ -20,10 +20,10 @@
 #define __CTK_COMBO_BOX_TEXT_H__
 
 #if defined(CTK_DISABLE_SINGLE_INCLUDES) && !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcombobox.h>
+#include <ctk/ctkcombobox.h>
 
 G_BEGIN_DECLS
 

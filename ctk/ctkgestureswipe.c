@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtkgestureswipe
+ * SECTION:ctkgestureswipe
  * @Short_description: Swipe gesture
  * @Title: GtkGestureSwipe
  *
@@ -36,12 +36,12 @@
  */
 
 #include "config.h"
-#include "gtkgestureswipe.h"
-#include "gtkgestureswipeprivate.h"
-#include "gtkgestureprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
+#include "ctkgestureswipe.h"
+#include "ctkgestureswipeprivate.h"
+#include "ctkgestureprivate.h"
+#include "ctkmarshalers.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
 
 #define CAPTURE_THRESHOLD_MS 150
 

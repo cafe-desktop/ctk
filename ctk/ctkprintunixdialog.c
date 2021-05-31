@@ -25,53 +25,53 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "gtkprintunixdialog.h"
+#include "ctkprintunixdialog.h"
 
-#include "gtkcustompaperunixdialog.h"
-#include "gtkprintbackend.h"
-#include "gtkprinter-private.h"
-#include "gtkprinteroptionwidget.h"
-#include "gtkprintutils.h"
+#include "ctkcustompaperunixdialog.h"
+#include "ctkprintbackend.h"
+#include "ctkprinter-private.h"
+#include "ctkprinteroptionwidget.h"
+#include "ctkprintutils.h"
 
-#include "gtkspinbutton.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtkcellrenderertext.h"
-#include "gtkimage.h"
-#include "gtktreeselection.h"
-#include "gtknotebook.h"
-#include "gtkscrolledwindow.h"
-#include "gtkcombobox.h"
-#include "gtktogglebutton.h"
-#include "gtkradiobutton.h"
-#include "gtkdrawingarea.h"
-#include "gtkbox.h"
-#include "gtkgrid.h"
-#include "gtkframe.h"
-#include "gtklabel.h"
-#include "gtkeventbox.h"
-#include "gtkbuildable.h"
-#include "gtkmessagedialog.h"
-#include "gtkbutton.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkdialogprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctkspinbutton.h"
+#include "ctkcellrendererpixbuf.h"
+#include "ctkcellrenderertext.h"
+#include "ctkimage.h"
+#include "ctktreeselection.h"
+#include "ctknotebook.h"
+#include "ctkscrolledwindow.h"
+#include "ctkcombobox.h"
+#include "ctktogglebutton.h"
+#include "ctkradiobutton.h"
+#include "ctkdrawingarea.h"
+#include "ctkbox.h"
+#include "ctkgrid.h"
+#include "ctkframe.h"
+#include "ctklabel.h"
+#include "ctkeventbox.h"
+#include "ctkbuildable.h"
+#include "ctkmessagedialog.h"
+#include "ctkbutton.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkdialogprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidgetprivate.h"
 
 
 /**
- * SECTION:gtkprintunixdialog
+ * SECTION:ctkprintunixdialog
  * @Short_description: A print dialog
  * @Title: GtkPrintUnixDialog
- * @Include: gtk/gtkunixprint.h
+ * @Include: ctk/ctkunixprint.h
  * @See_also: #GtkPageSetupUnixDialog, #GtkPrinter, #GtkPrintJob
  *
  * GtkPrintUnixDialog implements a print dialog for platforms
  * which don’t provide a native print dialog, like Unix. It can
  * be used very much like any other GTK+ dialog, at the cost of
  * the portability offered by the
- * [high-level printing API][gtk3-High-level-Printing-API]
+ * [high-level printing API][ctk3-High-level-Printing-API]
  *
  * In order to print something with #GtkPrintUnixDialog, you need
  * to use ctk_print_unix_dialog_get_selected_printer() to obtain
@@ -229,14 +229,14 @@ static const gchar common_paper_sizes[][16] = {
   "iso_a3",
 };
 
-/* Keep in line with liststore defined in gtkprintunixdialog.ui */
+/* Keep in line with liststore defined in ctkprintunixdialog.ui */
 enum {
   PAGE_SETUP_LIST_COL_PAGE_SETUP,
   PAGE_SETUP_LIST_COL_IS_SEPARATOR,
   PAGE_SETUP_LIST_N_COLS
 };
 
-/* Keep in line with liststore defined in gtkprintunixdialog.ui */
+/* Keep in line with liststore defined in ctkprintunixdialog.ui */
 enum {
   PRINTER_LIST_COL_ICON,
   PRINTER_LIST_COL_NAME,
@@ -477,7 +477,7 @@ ctk_print_unix_dialog_class_init (GtkPrintUnixDialogClass *class)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkprintunixdialog.ui");
+					       "/org/ctk/libctk/ui/ctkprintunixdialog.ui");
 
   /* GtkTreeView / GtkTreeModel */
   ctk_widget_class_bind_template_child_private (widget_class, GtkPrintUnixDialog, printer_treeview);
@@ -639,7 +639,7 @@ error_dialogs (GtkPrintUnixDialog *print_dialog,
           if (ctk_printer_is_virtual (printer))
             {
               option = ctk_printer_option_set_lookup (priv->options,
-                                                      "gtk-main-page-custom-input");
+                                                      "ctk-main-page-custom-input");
 
               if (option != NULL &&
                   option->type == CTK_PRINTER_OPTION_TYPE_FILESAVE)
@@ -856,14 +856,14 @@ disconnect_printer_details_request (GtkPrintUnixDialog *dialog,
       if (details_failed)
         ctk_list_store_set (CTK_LIST_STORE (priv->printer_list),
                             g_object_get_data (G_OBJECT (priv->request_details_printer),
-                                               "gtk-print-tree-iter"),
+                                               "ctk-print-tree-iter"),
                             PRINTER_LIST_COL_STATE,
                              _("Getting printer information failed"),
                             -1);
       else
         ctk_list_store_set (CTK_LIST_STORE (priv->printer_list),
                             g_object_get_data (G_OBJECT (priv->request_details_printer),
-                                               "gtk-print-tree-iter"),
+                                               "ctk-print-tree-iter"),
                             PRINTER_LIST_COL_STATE,
                             ctk_printer_get_state_message (priv->request_details_printer),
                             -1);
@@ -932,7 +932,7 @@ printer_removed_cb (GtkPrintBackend    *backend,
   GtkPrintUnixDialogPrivate *priv = dialog->priv;
   GtkTreeIter *iter;
 
-  iter = g_object_get_data (G_OBJECT (printer), "gtk-print-tree-iter");
+  iter = g_object_get_data (G_OBJECT (printer), "ctk-print-tree-iter");
   ctk_list_store_remove (CTK_LIST_STORE (priv->printer_list), iter);
 }
 
@@ -988,7 +988,7 @@ printer_status_cb (GtkPrintBackend    *backend,
   GtkTreeSelection *selection;
   GIcon *icon;
 
-  iter = g_object_get_data (G_OBJECT (printer), "gtk-print-tree-iter");
+  iter = g_object_get_data (G_OBJECT (printer), "ctk-print-tree-iter");
 
   icon = g_themed_icon_new ("printer");
   g_themed_icon_prepend_name (G_THEMED_ICON (icon), ctk_printer_get_icon_name (printer));
@@ -1028,7 +1028,7 @@ printer_added_cb (GtkPrintBackend    *backend,
   ctk_list_store_append (CTK_LIST_STORE (priv->printer_list), &iter);
 
   g_object_set_data_full (G_OBJECT (printer),
-                         "gtk-print-tree-iter",
+                         "ctk-print-tree-iter",
                           ctk_tree_iter_copy (&iter),
                           (GDestroyNotify) ctk_tree_iter_free);
 
@@ -1407,7 +1407,7 @@ add_option_to_table (GtkPrinterOption *option,
 
   table = CTK_GRID (user_data);
 
-  if (g_str_has_prefix (option->name, "gtk-"))
+  if (g_str_has_prefix (option->name, "ctk-"))
     return;
 
   row = grid_rows (table);
@@ -1456,7 +1456,7 @@ update_print_at_option (GtkPrintUnixDialog *dialog)
   GtkPrintUnixDialogPrivate *priv = dialog->priv;
   GtkPrinterOption *option;
 
-  option = ctk_printer_option_set_lookup (priv->options, "gtk-print-time");
+  option = ctk_printer_option_set_lookup (priv->options, "ctk-print-time");
 
   if (option == NULL)
     return;
@@ -1471,7 +1471,7 @@ update_print_at_option (GtkPrintUnixDialog *dialog)
   else
     ctk_printer_option_set (option, "now");
 
-  option = ctk_printer_option_set_lookup (priv->options, "gtk-print-time-text");
+  option = ctk_printer_option_set_lookup (priv->options, "ctk-print-time-text");
   if (option != NULL)
     {
       const gchar *text;
@@ -1488,7 +1488,7 @@ setup_print_at (GtkPrintUnixDialog *dialog)
   GtkPrintUnixDialogPrivate *priv = dialog->priv;
   GtkPrinterOption *option;
 
-  option = ctk_printer_option_set_lookup (priv->options, "gtk-print-time");
+  option = ctk_printer_option_set_lookup (priv->options, "ctk-print-time");
 
   if (option == NULL)
     {
@@ -1522,7 +1522,7 @@ setup_print_at (GtkPrintUnixDialog *dialog)
     ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (priv->print_now_radio),
                                   TRUE);
 
-  option = ctk_printer_option_set_lookup (priv->options, "gtk-print-time-text");
+  option = ctk_printer_option_set_lookup (priv->options, "ctk-print-time-text");
   if (option != NULL)
     ctk_entry_set_text (CTK_ENTRY (priv->print_at_entry), option->value);
 
@@ -1555,18 +1555,18 @@ update_dialog_from_settings (GtkPrintUnixDialog *dialog)
        return;
     }
 
-  setup_option (dialog, "gtk-n-up", priv->pages_per_sheet);
-  setup_option (dialog, "gtk-n-up-layout", priv->number_up_layout);
-  setup_option (dialog, "gtk-duplex", priv->duplex);
-  setup_option (dialog, "gtk-paper-type", priv->paper_type);
-  setup_option (dialog, "gtk-paper-source", priv->paper_source);
-  setup_option (dialog, "gtk-output-tray", priv->output_tray);
+  setup_option (dialog, "ctk-n-up", priv->pages_per_sheet);
+  setup_option (dialog, "ctk-n-up-layout", priv->number_up_layout);
+  setup_option (dialog, "ctk-duplex", priv->duplex);
+  setup_option (dialog, "ctk-paper-type", priv->paper_type);
+  setup_option (dialog, "ctk-paper-source", priv->paper_source);
+  setup_option (dialog, "ctk-output-tray", priv->output_tray);
 
   has_job = FALSE;
-  has_job |= setup_option (dialog, "gtk-job-prio", priv->job_prio);
-  has_job |= setup_option (dialog, "gtk-billing-info", priv->billing_info);
-  has_job |= setup_option (dialog, "gtk-cover-before", priv->cover_before);
-  has_job |= setup_option (dialog, "gtk-cover-after", priv->cover_after);
+  has_job |= setup_option (dialog, "ctk-job-prio", priv->job_prio);
+  has_job |= setup_option (dialog, "ctk-billing-info", priv->billing_info);
+  has_job |= setup_option (dialog, "ctk-cover-before", priv->cover_before);
+  has_job |= setup_option (dialog, "ctk-cover-after", priv->cover_after);
   has_job |= setup_print_at (dialog);
 
   if (has_job)
@@ -1947,7 +1947,7 @@ schedule_idle_mark_conflicts (GtkPrintUnixDialog *dialog)
 
   priv->mark_conflicts_id = gdk_threads_add_idle (mark_conflicts_callback,
                                         dialog);
-  g_source_set_name_by_id (priv->mark_conflicts_id, "[gtk+] mark_conflicts_callback");
+  g_source_set_name_by_id (priv->mark_conflicts_id, "[ctk+] mark_conflicts_callback");
 }
 
 static void
@@ -2067,7 +2067,7 @@ selected_printer_changed (GtkTreeSelection   *selection,
       priv->request_details_printer = printer;
       set_busy_cursor (dialog, TRUE);
       ctk_list_store_set (CTK_LIST_STORE (priv->printer_list),
-                          g_object_get_data (G_OBJECT (printer), "gtk-print-tree-iter"),
+                          g_object_get_data (G_OBJECT (printer), "ctk-print-tree-iter"),
                           PRINTER_LIST_COL_STATE, _("Getting printer information…"),
                           -1);
       ctk_printer_request_details (printer);
@@ -2661,7 +2661,7 @@ dialog_get_number_up_layout (GtkPrintUnixDialog *dialog)
 
   if (val[0] == '\0' && priv->options)
     {
-      GtkPrinterOption *option = ctk_printer_option_set_lookup (priv->options, "gtk-n-up-layout");
+      GtkPrinterOption *option = ctk_printer_option_set_lookup (priv->options, "ctk-n-up-layout");
       if (option)
         val = option->value;
     }
@@ -3110,12 +3110,12 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
     {
       if (priv->number_up_layout_n_option == NULL)
         {
-          priv->number_up_layout_n_option = ctk_printer_option_set_lookup (set, "gtk-n-up-layout");
+          priv->number_up_layout_n_option = ctk_printer_option_set_lookup (set, "ctk-n-up-layout");
           if (priv->number_up_layout_n_option == NULL)
             {
               char *n_up_layout[] = { "lrtb", "lrbt", "rltb", "rlbt", "tblr", "tbrl", "btlr", "btrl" };
                /* Translators: These strings name the possible arrangements of
-                * multiple pages on a sheet when printing (same as in gtkprintbackendcups.c)
+                * multiple pages on a sheet when printing (same as in ctkprintbackendcups.c)
                 */
               char *n_up_layout_display[] = { N_("Left to right, top to bottom"), N_("Left to right, bottom to top"),
                                               N_("Right to left, top to bottom"), N_("Right to left, bottom to top"),
@@ -3123,7 +3123,7 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
                                               N_("Bottom to top, left to right"), N_("Bottom to top, right to left") };
               int i;
 
-              priv->number_up_layout_n_option = ctk_printer_option_new ("gtk-n-up-layout",
+              priv->number_up_layout_n_option = ctk_printer_option_new ("ctk-n-up-layout",
                                                                         _("Page Ordering"),
                                                                         CTK_PRINTER_OPTION_TYPE_PICKONE);
               ctk_printer_option_allocate_choices (priv->number_up_layout_n_option, 8);
@@ -3136,7 +3136,7 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
             }
           g_object_ref (priv->number_up_layout_n_option);
 
-          priv->number_up_layout_2_option = ctk_printer_option_new ("gtk-n-up-layout",
+          priv->number_up_layout_2_option = ctk_printer_option_new ("ctk-n-up-layout",
                                                                     _("Page Ordering"),
                                                                     CTK_PRINTER_OPTION_TYPE_PICKONE);
           ctk_printer_option_allocate_choices (priv->number_up_layout_2_option, 2);
@@ -3173,7 +3173,7 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
 
       layout = dialog_get_number_up_layout (dialog);
 
-      old_option = ctk_printer_option_set_lookup (set, "gtk-n-up-layout");
+      old_option = ctk_printer_option_set_lookup (set, "ctk-n-up-layout");
       if (old_option != NULL)
         ctk_printer_option_set_remove (set, old_option);
 
@@ -3229,7 +3229,7 @@ update_number_up_layout (GtkPrintUnixDialog *dialog)
         }
     }
 
-  setup_option (dialog, "gtk-n-up-layout", priv->number_up_layout);
+  setup_option (dialog, "ctk-n-up-layout", priv->number_up_layout);
 
   if (priv->number_up_layout != NULL)
     ctk_widget_set_sensitive (CTK_WIDGET (priv->number_up_layout),

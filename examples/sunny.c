@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 new_window (GApplication *app,
@@ -134,7 +134,7 @@ startup (GApplication *application)
   g_action_map_add_action_entries (G_ACTION_MAP (application), app_entries, G_N_ELEMENTS (app_entries), application);
 
   if (g_getenv ("APP_MENU_FALLBACK"))
-    g_object_set (ctk_settings_get_default (), "gtk-shell-shows-app-menu", FALSE, NULL);
+    g_object_set (ctk_settings_get_default (), "ctk-shell-shows-app-menu", FALSE, NULL);
  
   builder = ctk_builder_new ();
   ctk_builder_add_from_string (builder,
@@ -180,7 +180,7 @@ MenuButton *
 menu_button_new (void)
 {
   return g_object_new (menu_button_get_type (),
-                       "application-id", "org.gtk.Test.Sunny",
+                       "application-id", "org.ctk.Test.Sunny",
                        "flags", G_APPLICATION_HANDLES_OPEN,
                        NULL);
 }

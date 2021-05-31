@@ -8,6 +8,6 @@
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="..\..\config.h.win32"><Filter>Resource Files</Filter></CustomBuild>
-    <CustomBuild Include="..\gtkpc.py"><Filter>Resource Files</Filter></CustomBuild>
+    <CustomBuild Include="..\ctkpc.py"><Filter>Resource Files</Filter></CustomBuild>
   </ItemGroup>
 </Project>

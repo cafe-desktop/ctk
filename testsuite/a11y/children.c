@@ -21,7 +21,7 @@
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 #undef CTK_DISABLE_DEPRECATED
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <string.h>
 
 typedef struct

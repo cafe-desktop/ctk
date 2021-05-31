@@ -9,5 +9,5 @@ SASSC_OPT="-M -t compact"
 
 echo Generating the css...
 
-sassc $SASSC_OPT gtk-contained.scss gtk-contained.css
-sassc $SASSC_OPT gtk-contained-inverse.scss gtk-contained-inverse.css
+sassc $SASSC_OPT ctk-contained.scss ctk-contained.css
+sassc $SASSC_OPT ctk-contained-inverse.scss ctk-contained-inverse.css

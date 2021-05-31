@@ -1,4 +1,4 @@
-/* gtkiconview.h
+/* ctkiconview.h
  * Copyright (C) 2002, 2004  Anders Carlsson <andersca@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gtk/gtkiconview.h"
-#include "gtk/gtkcssnodeprivate.h"
+#include "ctk/ctkiconview.h"
+#include "ctk/ctkcssnodeprivate.h"
 
 #ifndef __CTK_ICON_VIEW_PRIVATE_H__
 #define __CTK_ICON_VIEW_PRIVATE_H__

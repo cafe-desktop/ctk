@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="gtk3-prebuild"
+	Name="ctk3-prebuild"
 	ProjectGUID="{B98FBE68-B03C-48E3-8F32-C3C010720D30}"
-	RootNamespace="gtk3prebuild"
+	RootNamespace="ctk3prebuild"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -22,7 +22,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-gen-srcs.vsprops"
+			InheritedPropertySheets=".\ctk3-gen-srcs.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			>
@@ -37,7 +37,7 @@
 		<Configuration
 			Name="Debug|x64"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-gen-srcs.vsprops"
+			InheritedPropertySheets=".\ctk3-gen-srcs.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			>
@@ -52,7 +52,7 @@
 		<Configuration
 			Name="Debug_Broadway|Win32"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-gen-srcs.vsprops"
+			InheritedPropertySheets=".\ctk3-gen-srcs.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			>
@@ -67,7 +67,7 @@
 		<Configuration
 			Name="Debug_Broadway|x64"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-gen-srcs.vsprops"
+			InheritedPropertySheets=".\ctk3-gen-srcs.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			>
@@ -82,7 +82,7 @@
 		<Configuration
 			Name="Release|Win32"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-gen-srcs.vsprops"
+			InheritedPropertySheets=".\ctk3-gen-srcs.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			WholeProgramOptimization="1"
@@ -98,7 +98,7 @@
 		<Configuration
 			Name="Release|x64"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-gen-srcs.vsprops"
+			InheritedPropertySheets=".\ctk3-gen-srcs.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			WholeProgramOptimization="1"
@@ -114,7 +114,7 @@
 		<Configuration
 			Name="Release_Broadway|Win32"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-gen-srcs.vsprops"
+			InheritedPropertySheets=".\ctk3-gen-srcs.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			WholeProgramOptimization="1"
@@ -130,7 +130,7 @@
 		<Configuration
 			Name="Release_Broadway|x64"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-gen-srcs.vsprops"
+			InheritedPropertySheets=".\ctk3-gen-srcs.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			WholeProgramOptimization="1"

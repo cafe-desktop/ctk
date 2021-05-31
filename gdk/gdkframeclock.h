@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2010.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __GDK_FRAME_CLOCK_H__

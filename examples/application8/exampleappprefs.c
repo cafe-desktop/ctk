@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 #include "exampleapp.h"
 #include "exampleappwin.h"
@@ -27,7 +27,7 @@ example_app_prefs_init (ExampleAppPrefs *prefs)
 
   priv = example_app_prefs_get_instance_private (prefs);
   ctk_widget_init_template (CTK_WIDGET (prefs));
-  priv->settings = g_settings_new ("org.gtk.exampleapp");
+  priv->settings = g_settings_new ("org.ctk.exampleapp");
 
   g_settings_bind (priv->settings, "font",
                    priv->font, "font",
@@ -54,7 +54,7 @@ example_app_prefs_class_init (ExampleAppPrefsClass *class)
   G_OBJECT_CLASS (class)->dispose = example_app_prefs_dispose;
 
   ctk_widget_class_set_template_from_resource (CTK_WIDGET_CLASS (class),
-                                               "/org/gtk/exampleapp/prefs.ui");
+                                               "/org/ctk/exampleapp/prefs.ui");
   ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppPrefs, font);
   ctk_widget_class_bind_template_child_private (CTK_WIDGET_CLASS (class), ExampleAppPrefs, transition);
 }

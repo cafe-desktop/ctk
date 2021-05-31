@@ -8,7 +8,7 @@
  * character.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <string.h>
 
 #define HEART "♥"

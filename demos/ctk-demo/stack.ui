@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <!-- interface-requires gtk+ 3.6 -->
+  <!-- interface-requires ctk+ 3.6 -->
   <object class="GtkWindow" id="window1">
     <property name="title" translatable="yes">Stack</property>
     <child>
@@ -27,7 +27,7 @@
                 <property name="visible">1</property>
                 <property name="margin-top">20</property>
                 <property name="margin-bottom">20</property>
-                <property name="icon-name">gtk3-demo</property>
+                <property name="icon-name">ctk3-demo</property>
               </object>
               <packing>
                 <property name="name">page1</property>

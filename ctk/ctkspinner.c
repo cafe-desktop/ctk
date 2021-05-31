@@ -24,25 +24,25 @@
  * Modified by the GTK+ Team and others 2007.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkspinner.h"
+#include "ctkspinner.h"
 
-#include "gtkimage.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkstylecontext.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidgetprivate.h"
-#include "a11y/gtkspinneraccessible.h"
-#include "gtkbuiltiniconprivate.h"
+#include "ctkimage.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkstylecontext.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidgetprivate.h"
+#include "a11y/ctkspinneraccessible.h"
+#include "ctkbuiltiniconprivate.h"
 
 
 /**
- * SECTION:gtkspinner
+ * SECTION:ctkspinner
  * @Short_description: Show a spinner animation
  * @Title: GtkSpinner
  * @See_also: #GtkCellRendererSpinner, #GtkProgressBar

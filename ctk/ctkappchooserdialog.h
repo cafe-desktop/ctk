@@ -1,5 +1,5 @@
 /*
- * gtkappchooserdialog.h: an app-chooser dialog
+ * ctkappchooserdialog.h: an app-chooser dialog
  *
  * Copyright (C) 2004 Novell, Inc.
  * Copyright (C) 2007, 2010 Red Hat, Inc.
@@ -26,10 +26,10 @@
 #define __CTK_APP_CHOOSER_DIALOG_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkdialog.h>
+#include <ctk/ctkdialog.h>
 #include <gio/gio.h>
 
 G_BEGIN_DECLS

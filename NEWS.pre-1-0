@@ -13,15 +13,15 @@ Overview of Changes in GTK+ 0.99.10:
 Overview of Changes in GTK+ 0.99.9:
 
 * Added examples directory, even more examples soon
-* Added optional word wrap to gtktext
-* Changes to gtkhandlebox
+* Added optional word wrap to ctktext
+* Changes to ctkhandlebox
 * Lots of bug fixes
 
 Overview of Changes in GTK+ 0.99.8:
 
 * Compilation and configuration fixes
 * DND Fixes
-* New test in testgtk: cursors
+* New test in testctk: cursors
 * Tutorial updates/additions
 * Few more FAQ additions
 * More prep for 1.0
@@ -35,7 +35,7 @@ Overview of Changes in GTK+ 0.99.7:
 Overview of Changes in GTK+ 0.99.6:
 
 * Intermediate release to become 1.0.
-* More signedness corrections for handler functions in gtkmain.h.
+* More signedness corrections for handler functions in ctkmain.h.
 * Semantics of GtkWidget::delete_event changed.
 * Documentation updates.
 * Inclusion of Gtk tutorial.
@@ -50,7 +50,7 @@ Overview of Fixes in GTK+ 0.99.5:
 * Signal signedness and naming corrections
 * rc/style fixes
 * text, entry widget fixes
-* gtkeditable fixes
+* ctkeditable fixes
 * scrollbar flickering fixed
 * check casts are more descriptive
 * DND fixes
@@ -62,7 +62,7 @@ Overview of Changes in GTK+ 0.99.4:
 * Reference counting revolution integrated.
   Refer to docs/refcounting.txt on this issue.
 * Implementation of a decent debugging system, you would want
-  to export CTK_DEBUG=objects if you are going to develop gtk applications,
+  to export CTK_DEBUG=objects if you are going to develop ctk applications,
   refer to docs/debugging.txt for further information.
 * Additions on the signal code for querying information about certain signals,
   and pending handlers of signals.
@@ -75,12 +75,12 @@ Overview of Changes in GTK+ 0.99.4:
   index into context help.
 * Split up of the widget/object flags into a private and a public portion,
   consult docs/widget_system.txt on this.
-* Support for hot keys on gtk programs via ctk_key_snooper_install().
+* Support for hot keys on ctk programs via ctk_key_snooper_install().
 * Reimplementation of the *_interp functions as *_full functions to provide
   simple callback functions as well.
 * Idle functions are now prioritized.
 * Many enhancements to GtkNotebook.
-* New widget GtkSpinButton, check out testgtk.
+* New widget GtkSpinButton, check out testctk.
 * New widget GtkTipsQuery for letting the user query tooltips of widgets.
 * Addition of GtkEditable base widget to encapsulate selection and
   clipboard handling. (GtkEntry and GtkText use this)
@@ -103,12 +103,12 @@ Overview of Changes in GTK+ 0.99.4:
 Overview of Changes in GTK+ 0.99.3:
 
 * Filesel enhancement / stability changes
-* New widget, gtkcombo 
+* New widget, ctkcombo 
 * Widgets in the toolbar do not get the focus
-* New widget, gtkstatusbar (still in-progress)
+* New widget, ctkstatusbar (still in-progress)
 * g_string_equal renamed g_str_equal
 * g_string_hash renamed g_str_hash
-* new gtkbox functions to allow modification of the child 
+* new ctkbox functions to allow modification of the child 
   linkage after the widget tree is setup
 * ctk_*_get_arg() and ctk_*_set_arg() fixes and implementations
 * DND changes/fixes

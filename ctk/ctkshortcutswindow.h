@@ -1,4 +1,4 @@
-/* gtkshortcutswindow.h
+/* ctkshortcutswindow.h
  *
  * Copyright (C) 2015 Christian Hergert <christian@hergert.me>
  *
@@ -19,7 +19,7 @@
 #ifndef __CTK_SHORTCUTS_WINDOW_H__
 #define __CTK_SHORTCUTS_WINDOW_H__
 
-#include <gtk/gtkwindow.h>
+#include <ctk/ctkwindow.h>
 
 G_BEGIN_DECLS
 

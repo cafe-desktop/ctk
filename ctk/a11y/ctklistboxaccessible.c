@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gtklistboxaccessibleprivate.h"
+#include "ctklistboxaccessibleprivate.h"
 
-#include "gtk/gtklistbox.h"
+#include "ctk/ctklistbox.h"
 
 static void atk_selection_interface_init (AtkSelectionIface *iface);
 

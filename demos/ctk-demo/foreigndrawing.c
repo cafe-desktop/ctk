@@ -8,7 +8,7 @@
  * Note that this is a very simple, non-interactive example.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <string.h>
 
 static void

@@ -20,11 +20,11 @@
 #define __CTK_DND_PRIVATE_H__
 
 
-#include <gtk/gtkwidget.h>
-#include <gtk/gtkselection.h>
-#include <gtk/gtkdragdest.h>
+#include <ctk/ctkwidget.h>
+#include <ctk/ctkselection.h>
+#include <ctk/ctkdragdest.h>
 
-#include "gtkimagedefinitionprivate.h"
+#include "ctkimagedefinitionprivate.h"
 
 typedef struct _GtkDragDestSite GtkDragDestSite;
 struct _GtkDragDestSite

@@ -1,4 +1,4 @@
-/* gtkquartz.h: Utility functions used by the Quartz port
+/* ctkquartz.h: Utility functions used by the Quartz port
  *
  * Copyright (C) 2006 Imendio AB
  *
@@ -20,7 +20,7 @@
 #define __CTK_QUARTZ_H__
 
 #import <Cocoa/Cocoa.h>
-#include <gtk/gtkselection.h>
+#include <ctk/ctkselection.h>
 
 G_BEGIN_DECLS
 

@@ -21,13 +21,13 @@
 #include "size-groups.h"
 #include "window.h"
 
-#include "gtkcomboboxtext.h"
-#include "gtkframe.h"
-#include "gtklabel.h"
-#include "gtklistbox.h"
-#include "gtksizegroup.h"
-#include "gtkswitch.h"
-#include "gtkwidgetprivate.h"
+#include "ctkcomboboxtext.h"
+#include "ctkframe.h"
+#include "ctklabel.h"
+#include "ctklistbox.h"
+#include "ctksizegroup.h"
+#include "ctkswitch.h"
+#include "ctkwidgetprivate.h"
 
 
 typedef struct {

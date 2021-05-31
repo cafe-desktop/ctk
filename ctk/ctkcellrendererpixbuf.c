@@ -1,4 +1,4 @@
-/* gtkcellrendererpixbuf.c
+/* ctkcellrendererpixbuf.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -18,18 +18,18 @@
 #include "config.h"
 #include <stdlib.h>
 #include <cairo-gobject.h>
-#include "gtkcellrendererpixbuf.h"
-#include "deprecated/gtkiconfactory.h"
-#include "gtkiconhelperprivate.h"
-#include "gtkicontheme.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "a11y/gtkimagecellaccessible.h"
+#include "ctkcellrendererpixbuf.h"
+#include "deprecated/ctkiconfactory.h"
+#include "ctkiconhelperprivate.h"
+#include "ctkicontheme.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "a11y/ctkimagecellaccessible.h"
 
 
 /**
- * SECTION:gtkcellrendererpixbuf
+ * SECTION:ctkcellrendererpixbuf
  * @Short_description: Renders a pixbuf in a cell
  * @Title: GtkCellRendererPixbuf
  *

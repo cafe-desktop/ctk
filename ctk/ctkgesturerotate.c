@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtkgesturerotate
+ * SECTION:ctkgesturerotate
  * @Short_description: Rotate gesture
  * @Title: GtkGestureRotate
  * @See_also: #GtkGestureZoom
@@ -31,10 +31,10 @@
 
 #include "config.h"
 #include <math.h>
-#include "gtkgesturerotate.h"
-#include "gtkgesturerotateprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkintl.h"
+#include "ctkgesturerotate.h"
+#include "ctkgesturerotateprivate.h"
+#include "ctkmarshalers.h"
+#include "ctkintl.h"
 
 typedef struct _GtkGestureRotatePrivate GtkGestureRotatePrivate;
 

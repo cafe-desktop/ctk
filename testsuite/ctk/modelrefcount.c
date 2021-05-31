@@ -1,5 +1,5 @@
 /* GtkTreeModel ref counting tests
- * Copyright (C) 2011  Kristian Rietveld  <kris@gtk.org>
+ * Copyright (C) 2011  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -15,7 +15,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gtktreemodelrefcount.h"
+#include "ctktreemodelrefcount.h"
 #include "treemodel.h"
 
 /* And the tests themselves */

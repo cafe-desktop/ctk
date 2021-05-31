@@ -26,5 +26,5 @@ xvfb-run -a -s "-screen 0 1024x768x24" \
     meson test \
         --timeout-multiplier 4 \
         --print-errorlogs \
-        --suite=gtk+-3.0 \
-        --no-suite=gtk+-3.0:a11y
+        --suite=ctk+-3.0 \
+        --no-suite=ctk+-3.0:a11y

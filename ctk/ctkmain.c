@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
- * SECTION:gtkmain
+ * SECTION:ctkmain
  * @Short_description: Library initialization, main event loop, and events
  * @Title: Main loop and Events
  * @See_also:See the GLib manual, especially #GMainLoop and signal-related
@@ -110,28 +110,28 @@
 #undef STRICT
 #endif
 
-#include "gtkintl.h"
+#include "ctkintl.h"
 
-#include "gtkaccelmapprivate.h"
-#include "gtkbox.h"
-#include "gtkclipboardprivate.h"
-#include "gtkdebug.h"
-#include "gtkdndprivate.h"
-#include "gtkmain.h"
-#include "gtkmenu.h"
-#include "gtkmodules.h"
-#include "gtkmodulesprivate.h"
-#include "gtkprivate.h"
-#include "gtkrecentmanager.h"
-#include "gtkselectionprivate.h"
-#include "gtksettingsprivate.h"
-#include "gtktooltipprivate.h"
-#include "gtkversion.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindowprivate.h"
-#include "gtkwindowgroup.h"
+#include "ctkaccelmapprivate.h"
+#include "ctkbox.h"
+#include "ctkclipboardprivate.h"
+#include "ctkdebug.h"
+#include "ctkdndprivate.h"
+#include "ctkmain.h"
+#include "ctkmenu.h"
+#include "ctkmodules.h"
+#include "ctkmodulesprivate.h"
+#include "ctkprivate.h"
+#include "ctkrecentmanager.h"
+#include "ctkselectionprivate.h"
+#include "ctksettingsprivate.h"
+#include "ctktooltipprivate.h"
+#include "ctkversion.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindowprivate.h"
+#include "ctkwindowgroup.h"
 
-#include "a11y/gtkaccessibility.h"
+#include "a11y/ctkaccessibility.h"
 
 /* Private type definitions
  */
@@ -383,7 +383,7 @@ check_setugid (void)
       g_warning ("This process is currently running setuid or setgid.\n"
                  "This is not a supported use of GTK+. You must create a helper\n"
                  "program instead. For further details, see:\n\n"
-                 "    http://www.gtk.org/setuid.html\n\n"
+                 "    http://www.ctk.org/setuid.html\n\n"
                  "Refusing to initialize GTK+.");
       exit (1);
     }
@@ -460,18 +460,18 @@ ctk_arg_module_cb (const char *key, const char *value, gpointer user_data)
 }
 
 static const GOptionEntry ctk_args[] = {
-  { "gtk-module",       0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_module_cb,   
-    /* Description of --gtk-module=MODULES in --help output */ N_("Load additional GTK+ modules"), 
-    /* Placeholder in --gtk-module=MODULES in --help output */ N_("MODULES") },
+  { "ctk-module",       0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_module_cb,   
+    /* Description of --ctk-module=MODULES in --help output */ N_("Load additional GTK+ modules"), 
+    /* Placeholder in --ctk-module=MODULES in --help output */ N_("MODULES") },
   { "g-fatal-warnings", 0, 0, G_OPTION_ARG_NONE, &g_fatal_warnings, 
     /* Description of --g-fatal-warnings in --help output */   N_("Make all warnings fatal"), NULL },
 #ifdef G_ENABLE_DEBUG
-  { "gtk-debug",        0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_debug_cb,    
-    /* Description of --gtk-debug=FLAGS in --help output */    N_("GTK+ debugging flags to set"), 
-    /* Placeholder in --gtk-debug=FLAGS in --help output */    N_("FLAGS") },
-  { "gtk-no-debug",     0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_no_debug_cb, 
-    /* Description of --gtk-no-debug=FLAGS in --help output */ N_("GTK+ debugging flags to unset"), 
-    /* Placeholder in --gtk-no-debug=FLAGS in --help output */ N_("FLAGS") },
+  { "ctk-debug",        0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_debug_cb,    
+    /* Description of --ctk-debug=FLAGS in --help output */    N_("GTK+ debugging flags to set"), 
+    /* Placeholder in --ctk-debug=FLAGS in --help output */    N_("FLAGS") },
+  { "ctk-no-debug",     0, 0, G_OPTION_ARG_CALLBACK, ctk_arg_no_debug_cb, 
+    /* Description of --ctk-no-debug=FLAGS in --help output */ N_("GTK+ debugging flags to unset"), 
+    /* Placeholder in --ctk-no-debug=FLAGS in --help output */ N_("FLAGS") },
 #endif 
   { NULL }
 };
@@ -665,7 +665,7 @@ do_pre_parse_initialization (int    *argc,
                                                    ctk_debug_keys,
                                                    G_N_ELEMENTS (ctk_debug_keys));
 #else
-      g_warning ("CTK_DEBUG set but ignored because gtk isn't built with G_ENABLE_DEBUG");
+      g_warning ("CTK_DEBUG set but ignored because ctk isn't built with G_ENABLE_DEBUG");
 #endif  /* G_ENABLE_DEBUG */
       env_string = NULL;
     }
@@ -919,7 +919,7 @@ ctk_get_option_group (gboolean open_default_display)
   info = g_new0 (OptionGroupInfo, 1);
   info->open_default_display = open_default_display;
   
-  group = g_option_group_new ("gtk", _("GTK+ Options"), _("Show GTK+ Options"), info, g_free);
+  group = g_option_group_new ("ctk", _("GTK+ Options"), _("Show GTK+ Options"), info, g_free);
   g_option_group_set_parse_hooks (group, pre_parse_hook, post_parse_hook);
 
   GDK_PRIVATE_CALL (gdk_add_option_entries) (group);
@@ -1978,7 +1978,7 @@ ctk_main_do_event (GdkEvent *event)
  * ## A persistent window
  *
  * |[<!-- language="C" -->
- * #include <gtk/gtk.h>
+ * #include <ctk/ctk.h>
  *
  * int
  * main (int argc, char **argv)

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtktextview.h Copyright (C) 2000 Red Hat, Inc.
+ * ctktextview.h Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -19,20 +19,20 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_TEXT_VIEW_H__
 #define __CTK_TEXT_VIEW_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcontainer.h>
-#include <gtk/gtkimcontext.h>
-#include <gtk/gtktextbuffer.h>
-#include <gtk/gtkmenu.h>
+#include <ctk/ctkcontainer.h>
+#include <ctk/ctkimcontext.h>
+#include <ctk/ctktextbuffer.h>
+#include <ctk/ctkmenu.h>
 
 G_BEGIN_DECLS
 

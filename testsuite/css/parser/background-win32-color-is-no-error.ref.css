@@ -1,6 +1,6 @@
 a {
   background-clip: border-box;
-  background-color: -gtk-win32-color(edit, highlight);
+  background-color: -ctk-win32-color(edit, highlight);
   background-image: none;
   background-origin: padding-box;
   background-position: left top;

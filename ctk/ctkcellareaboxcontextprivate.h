@@ -1,4 +1,4 @@
-/* gtkcellareaboxcontext.h
+/* ctkcellareaboxcontext.h
  *
  * Copyright (C) 2010 Openismus GmbH
  *
@@ -23,13 +23,13 @@
 #define __CTK_CELL_AREA_BOX_CONTEXT_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkcellareacontext.h>
-#include <gtk/gtkcellareabox.h>
-#include <gtk/gtkcellrenderer.h>
-#include <gtk/gtksizerequest.h>
+#include <ctk/ctkcellareacontext.h>
+#include <ctk/ctkcellareabox.h>
+#include <ctk/ctkcellrenderer.h>
+#include <ctk/ctksizerequest.h>
 
 G_BEGIN_DECLS
 

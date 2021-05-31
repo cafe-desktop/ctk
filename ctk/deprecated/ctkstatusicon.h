@@ -1,4 +1,4 @@
-/* gtkstatusicon.h:
+/* ctkstatusicon.h:
  *
  * Copyright (C) 2003 Sun Microsystems, Inc.
  *
@@ -23,11 +23,11 @@
 #define __CTK_STATUS_ICON_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkimage.h>
-#include <gtk/gtkmenu.h>
+#include <ctk/ctkimage.h>
+#include <ctk/ctkmenu.h>
 
 G_BEGIN_DECLS
 

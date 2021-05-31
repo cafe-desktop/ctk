@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <stdarg.h>
 
 GtkWidget *text_view;

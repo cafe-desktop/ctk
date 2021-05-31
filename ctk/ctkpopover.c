@@ -16,7 +16,7 @@
  */
 
 /**
- * SECTION:gtkpopover
+ * SECTION:ctkpopover
  * @Short_description: Context dependent bubbles
  * @Title: GtkPopover
  *
@@ -87,31 +87,31 @@
 
 #include "config.h"
 #include <gdk/gdk.h>
-#include "gtkpopover.h"
-#include "gtkpopoverprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkmain.h"
-#include "gtkwindowprivate.h"
-#include "gtkscrollable.h"
-#include "gtkadjustment.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtklabel.h"
-#include "gtkbox.h"
-#include "gtkbutton.h"
-#include "gtkseparator.h"
-#include "gtkmodelbutton.h"
-#include "gtkwidgetprivate.h"
-#include "gtkactionmuxer.h"
-#include "gtkmenutracker.h"
-#include "gtkstack.h"
-#include "gtksizegroup.h"
-#include "a11y/gtkpopoveraccessible.h"
-#include "gtkmenusectionbox.h"
-#include "gtkroundedboxprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkprogresstrackerprivate.h"
-#include "gtksettingsprivate.h"
+#include "ctkpopover.h"
+#include "ctkpopoverprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkmain.h"
+#include "ctkwindowprivate.h"
+#include "ctkscrollable.h"
+#include "ctkadjustment.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctklabel.h"
+#include "ctkbox.h"
+#include "ctkbutton.h"
+#include "ctkseparator.h"
+#include "ctkmodelbutton.h"
+#include "ctkwidgetprivate.h"
+#include "ctkactionmuxer.h"
+#include "ctkmenutracker.h"
+#include "ctkstack.h"
+#include "ctksizegroup.h"
+#include "a11y/ctkpopoveraccessible.h"
+#include "ctkmenusectionbox.h"
+#include "ctkroundedboxprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkprogresstrackerprivate.h"
+#include "ctksettingsprivate.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
 #include "wayland/gdkwayland.h"
@@ -1834,7 +1834,7 @@ ctk_popover_class_init (GtkPopoverClass *klass)
                   NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 
-  quark_widget_popovers = g_quark_from_static_string ("gtk-quark-widget-popovers");
+  quark_widget_popovers = g_quark_from_static_string ("ctk-quark-widget-popovers");
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_POPOVER_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "popover");
 }

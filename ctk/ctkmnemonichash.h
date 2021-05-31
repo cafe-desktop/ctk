@@ -1,4 +1,4 @@
-/* gtkmnemonichash.h: Sets of mnemonics with cycling
+/* ctkmnemonichash.h: Sets of mnemonics with cycling
  *
  * GTK - The GIMP Toolkit
  * Copyright (C) 2002, Red Hat Inc.
@@ -21,7 +21,7 @@
 #define __CTK_MNEMONIC_HASH_H__
 
 #include <gdk/gdk.h>
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS
 

@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 fill_text_view (GtkWidget *tv, const gchar *text)

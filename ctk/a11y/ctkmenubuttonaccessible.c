@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <glib/gi18n-lib.h>
-#include "gtkmenubuttonaccessible.h"
+#include "ctkmenubuttonaccessible.h"
 
 
 G_DEFINE_TYPE (GtkMenuButtonAccessible, ctk_menu_button_accessible, CTK_TYPE_TOGGLE_BUTTON_ACCESSIBLE)

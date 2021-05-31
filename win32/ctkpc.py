@@ -66,7 +66,7 @@ def main(argv):
                             '@CTK_EXTRA_CFLAGS@': '',
                             '@CTK_EXTRA_LIBS@': '',
                             '@CTK_EXTRA_CFLAGS@': '',
-                            'gtk-3': 'gtk-3.0'}
+                            'ctk-3': 'ctk-3.0'}
 
     gail_pc_replace_items = {'gailutil-3': 'gailutil-3.0'}
 
@@ -80,9 +80,9 @@ def main(argv):
                   base_pc.srcdir + '/gdk-3.0.pc',
                   gdk_pc_replace_items)
 
-    # Generate gtk+-3.0.pc
-    replace_multi(base_pc.top_srcdir + '/gtk+-3.0.pc.in',
-                  base_pc.srcdir + '/gtk+-3.0.pc',
+    # Generate ctk+-3.0.pc
+    replace_multi(base_pc.top_srcdir + '/ctk+-3.0.pc.in',
+                  base_pc.srcdir + '/ctk+-3.0.pc',
                   ctk_pc_replace_items)
 
     # Generate gail-3.0.pc

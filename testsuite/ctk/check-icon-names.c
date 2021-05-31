@@ -1,19 +1,19 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static char *icon_names[] = {
-  /*** stock icons, from gtkiconfactory.c:get_default_icons() ***/
+  /*** stock icons, from ctkiconfactory.c:get_default_icons() ***/
   "dialog-password",
   "dialog-error",
   "dialog-information",
   "dialog-question",
   "dialog-warning",
-  "gtk-dnd", /* internal icon */
-  "gtk-dnd-multiple", /* internal icon */
-  "gtk-apply", /* deprecated stock id */
-  "gtk-cancel", /* deprecated stock id */
-  "gtk-no", /* deprecated stock id */
-  "gtk-ok", /* deprecated stock id */
-  "gtk-yes", /* deprecated stock id */
+  "ctk-dnd", /* internal icon */
+  "ctk-dnd-multiple", /* internal icon */
+  "ctk-apply", /* deprecated stock id */
+  "ctk-cancel", /* deprecated stock id */
+  "ctk-no", /* deprecated stock id */
+  "ctk-ok", /* deprecated stock id */
+  "ctk-yes", /* deprecated stock id */
   "window-close",
   "list-add",
   "format-justify-center",
@@ -22,14 +22,14 @@ static char *icon_names[] = {
   "format-justify-right",
   "go-bottom",
   "media-optical",
-  "gtk-convert", /* deprecated stock id */
+  "ctk-convert", /* deprecated stock id */
   "edit-copy",
   "edit-cut",
   "go-down",
   "system-run",
   "application-exit",
   "go-first",
-  "gtk-select-font", /* deprecated stock id */
+  "ctk-select-font", /* deprecated stock id */
   "view-fullscreen",
   "view-restore",
   "drive-harddisk",
@@ -42,13 +42,13 @@ static char *icon_names[] = {
   "network-idle",
   "document-new",
   "document-open",
-  "gtk-orientation-portrait", /* internal icon */
-  "gtk-orientation-landscape", /* internal icon */
-  "gtk-orientation-reverse-portrait", /* internal icon */
-  "gtk-orientation-reverse-landscape", /* internal icon */
-  "gtk-page-setup", /* internal icon */
+  "ctk-orientation-portrait", /* internal icon */
+  "ctk-orientation-landscape", /* internal icon */
+  "ctk-orientation-reverse-portrait", /* internal icon */
+  "ctk-orientation-reverse-landscape", /* internal icon */
+  "ctk-page-setup", /* internal icon */
   "edit-paste",
-  "gtk-preferences", /* deprecated stock id */
+  "ctk-preferences", /* deprecated stock id */
   "document-print",
   "document-print-preview",
   "printer-error",
@@ -78,16 +78,16 @@ static char *icon_names[] = {
   "format-indent-less",
   "go-top",
   "edit-delete",
-  "gtk-undelete", /* deprecated stock id */
+  "ctk-undelete", /* deprecated stock id */
   "edit-undo",
   "go-up",
   "text-x-generic",
   "folder",
   "help-about",
-  "gtk-connect", /* deprecated stock id */
-  "gtk-disconnect", /* deprecated stock id */
-  "gtk-edit", /* deprecated stock id */
-  "gtk-caps-lock-warning", /* internal icon */
+  "ctk-connect", /* deprecated stock id */
+  "ctk-disconnect", /* deprecated stock id */
+  "ctk-edit", /* deprecated stock id */
+  "ctk-caps-lock-warning", /* internal icon */
   "media-seek-forward",
   "media-skip-forward",
   "media-playback-pause",
@@ -96,15 +96,15 @@ static char *icon_names[] = {
   "media-record",
   "media-seek-backward",
   "media-playback-stop",
-  "gtk-index", /* deprecated stock id */
+  "ctk-index", /* deprecated stock id */
   "zoom-original",
   "zoom-in",
   "zoom-out",
   "zoom-fit-best",
   "edit-select-all",
   "edit-clear",
-  "gtk-select-color", /* deprecated stock id */
-  "gtk-color-picker", /* deprecated stock id */
+  "ctk-select-color", /* deprecated stock id */
+  "ctk-color-picker", /* deprecated stock id */
 
   /*** Icons used in code or templates, sorted alphabetically ***/
   "audio-volume-high",
@@ -166,7 +166,7 @@ main (int argc, char *argv[])
 
   ctk_test_init (&argc, &argv);
 
-  g_object_get (ctk_settings_get_default (), "gtk-icon-theme-name", &theme, NULL);
+  g_object_get (ctk_settings_get_default (), "ctk-icon-theme-name", &theme, NULL);
   g_test_message ("Testing icon theme: %s", theme);
   g_free (theme);
 

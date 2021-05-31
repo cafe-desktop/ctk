@@ -27,7 +27,7 @@
  */
 #include <string.h>
 #include <glib/gi18n.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 /* The ChangeDisplayInfo structure corresponds to a toplevel window and
  * holds pointers to widgets inside the toplevel window along with other

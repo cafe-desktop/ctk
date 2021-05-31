@@ -22,7 +22,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /* Cannot use TrackMouseEvent, as the stupid WM_MOUSELEAVE message
@@ -2053,7 +2053,7 @@ gdk_settings_notify (GdkWindow        *window,
 {
   GdkEvent *new_event;
 
-  if (!g_str_has_prefix (name, "gtk-"))
+  if (!g_str_has_prefix (name, "ctk-"))
     return;
 
   new_event = gdk_event_new (GDK_SETTING);
@@ -2278,7 +2278,7 @@ gdk_event_translate (MSG  *msg,
 			 (gulong) msg->wParam,
 			 (gpointer) msg->lParam, _gdk_input_locale_is_ime ? " (IME)" : "",
 			 _gdk_input_codepage));
-      gdk_settings_notify (window, "gtk-im-module", GDK_SETTING_ACTION_CHANGED);
+      gdk_settings_notify (window, "ctk-im-module", GDK_SETTING_ACTION_CHANGED);
 
       /* Generate a dummy key event to "nudge" IMContext */
       event = gdk_event_new (GDK_KEY_PRESS);
@@ -2751,7 +2751,7 @@ gdk_event_translate (MSG  *msg,
 
       /* If we haven't moved, don't create any GDK event. Windows
        * sends WM_MOUSEMOVE messages after a new window is shows under
-       * the mouse, even if the mouse hasn't moved. This disturbs gtk.
+       * the mouse, even if the mouse hasn't moved. This disturbs ctk.
        */
       if ((msg->pt.x + _gdk_offset_x) / impl->window_scale == current_root_x &&
 	  (msg->pt.y + _gdk_offset_y) / impl->window_scale == current_root_y)

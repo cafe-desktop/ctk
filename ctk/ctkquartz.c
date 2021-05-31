@@ -1,4 +1,4 @@
-/* gtkquartz.c: Utility functions used by the Quartz port
+/* ctkquartz.c: Utility functions used by the Quartz port
  *
  * Copyright (C) 2006 Imendio AB
  *
@@ -18,9 +18,9 @@
 
 #include "config.h"
 
-#include "gtkquartz.h"
-#include "gtkselectionprivate.h"
-#include <gdk/quartz/gdkquartz-gtk-only.h>
+#include "ctkquartz.h"
+#include "ctkselectionprivate.h"
+#include <gdk/quartz/gdkquartz-ctk-only.h>
 
 
 static gboolean

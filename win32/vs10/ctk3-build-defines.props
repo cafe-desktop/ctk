@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets">
-    <Import Project="gtk3-version-paths.props" />
+    <Import Project="ctk3-version-paths.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
     <GtkBinaryVersion>3.0.0</GtkBinaryVersion>
@@ -9,18 +9,18 @@
     <GtkPrefixDefine>CTK_PREFIX=\"$(GtkDummyPrefix)\"</GtkPrefixDefine>
     <GdkDefines>GDK_COMPILATION;G_LOG_DOMAIN="Gdk"</GdkDefines>
     <GtkIncludedImmodulesDefines>INCLUDE_IM_am_et;INCLUDE_IM_cedilla;INCLUDE_IM_cyrillic_translit;INCLUDE_IM_ime;INCLUDE_IM_inuktitut;INCLUDE_IM_ipa;INCLUDE_IM_multipress;INCLUDE_IM_thai;INCLUDE_IM_ti_er;INCLUDE_IM_ti_et;INCLUDE_IM_viqr</GtkIncludedImmodulesDefines>
-    <GtkDefines>CTK_COMPILATION;G_LOG_DOMAIN="Gtk";CTK_HOST="i686-pc-vs$(VSVer)";CTK_PRINT_BACKENDS="file";CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(GtkIncludedImmodulesDefines);CTK_LIBDIR="$(GtkDummyPrefix)/lib";CTK_DATADIR="$(GtkDummyPrefix)/share";CTK_DATA_PREFIX="$(GtkDummyPrefix)";CTK_SYSCONFDIR="$(GtkDummyPrefix)/etc";MULTIPRESS_CONFDIR="$(GtkDummyPrefix)/etc/gtk-$(ApiVersion)";MULTIPRESS_LOCALEDIR="$(GtkDummyPrefix)/share/locale";CTK_VERSION="$(GtkVersion)/etc";CTK_BINARY_VERSION="$(GtkBinaryVersion)/etc";GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED</GtkDefines>
+    <GtkDefines>CTK_COMPILATION;G_LOG_DOMAIN="Gtk";CTK_HOST="i686-pc-vs$(VSVer)";CTK_PRINT_BACKENDS="file";CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(GtkIncludedImmodulesDefines);CTK_LIBDIR="$(GtkDummyPrefix)/lib";CTK_DATADIR="$(GtkDummyPrefix)/share";CTK_DATA_PREFIX="$(GtkDummyPrefix)";CTK_SYSCONFDIR="$(GtkDummyPrefix)/etc";MULTIPRESS_CONFDIR="$(GtkDummyPrefix)/etc/ctk-$(ApiVersion)";MULTIPRESS_LOCALEDIR="$(GtkDummyPrefix)/share/locale";CTK_VERSION="$(GtkVersion)/etc";CTK_BINARY_VERSION="$(GtkBinaryVersion)/etc";GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED</GtkDefines>
     <GtkGdkCommonLibs>pangowin32-1.0.lib;fribidi.lib;imm32.lib</GtkGdkCommonLibs>
     <GdkAdditionalLibs>winmm.lib;dwmapi.lib;setupapi.lib;$(GtkGdkCommonLibs)</GdkAdditionalLibs>
     <GdkBroadwayAdditionalLibs>ws2_32.lib</GdkBroadwayAdditionalLibs>
     <GtkAdditionalLibs>atk-1.0.lib;winspool.lib;comctl32.lib;$(GtkGdkCommonLibs)</GtkAdditionalLibs>
     <GtkIntrospectNMakeCmd>cd ..
 set VCInstallDir=$(VCInstallDir)
-nmake -f gtk-introspection-msvc.mak CFG=$(Configuration) PREFIX=$(GlibEtcInstallRoot)</GtkIntrospectNMakeCmd>
+nmake -f ctk-introspection-msvc.mak CFG=$(Configuration) PREFIX=$(GlibEtcInstallRoot)</GtkIntrospectNMakeCmd>
     <GtkIntrospectBuiltFiles>$(BinDir)\Gtk-3.0.gir;$(BinDir)\Gtk-3.0.typelib</GtkIntrospectBuiltFiles>
   </PropertyGroup>
   <PropertyGroup>
-    <_PropertySheetDisplayName>gtk3builddefinesprops</_PropertySheetDisplayName>
+    <_PropertySheetDisplayName>ctk3builddefinesprops</_PropertySheetDisplayName>
     <OutDir>$(SolutionDir)$(Configuration)\$(PlatformName)\bin\</OutDir>
     <IntDir>$(SolutionDir)$(Configuration)\$(PlatformName)\obj\$(ProjectName)\</IntDir>
   </PropertyGroup>

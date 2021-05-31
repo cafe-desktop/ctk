@@ -19,13 +19,13 @@
 #define __CTK_GRADIENT_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <gdk/gdk.h>
-#include <gtk/gtkstylecontext.h>
-#include <gtk/deprecated/gtkstyleproperties.h>
-#include <gtk/deprecated/gtksymboliccolor.h>
+#include <ctk/ctkstylecontext.h>
+#include <ctk/deprecated/ctkstyleproperties.h>
+#include <ctk/deprecated/ctksymboliccolor.h>
 
 G_BEGIN_DECLS
 

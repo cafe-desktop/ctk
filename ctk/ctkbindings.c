@@ -22,21 +22,21 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 #include <string.h>
 #include <stdarg.h>
 
-#include "gtkbindingsprivate.h"
-#include "gtkkeyhash.h"
-#include "gtkstylecontext.h"
-#include "gtkwidget.h"
-#include "gtkintl.h"
+#include "ctkbindingsprivate.h"
+#include "ctkkeyhash.h"
+#include "ctkstylecontext.h"
+#include "ctkwidget.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkbindings
+ * SECTION:ctkbindings
  * @Title: Bindings
  * @Short_description: Key bindings for individual widgets
  * @See_also: Keyboard Accelerators, Mnemonics, #GtkCssProvider
@@ -58,7 +58,7 @@
  * A CSS file binding consists of a “binding-set” definition and a match
  * statement to apply the binding set to specific widget types. Details
  * on the matching mechanism are described under
- * [Selectors][gtkcssprovider-selectors]
+ * [Selectors][ctkcssprovider-selectors]
  * in the #GtkCssProvider documentation. Inside the binding set
  * definition, key combinations are bound to one or more specific
  * signal emissions on the target widget. Key combinations are strings
@@ -84,7 +84,7 @@
  *
  * entry
  * {
- *   -gtk-key-bindings: MoveCursor3;
+ *   -ctk-key-bindings: MoveCursor3;
  * }
  * ]|
  *
@@ -94,7 +94,7 @@
  * it provides. Because custom bindings set up in CSS files take
  * precedence over the default bindings shipped with GTK+, overriding
  * existing bindings as demonstrated in
- * [Installing a key binding][gtk-bindings-install]
+ * [Installing a key binding][ctk-bindings-install]
  * works as expected. The same mechanism can not be used to “unbind”
  * existing bindings, however.
  *
@@ -107,7 +107,7 @@
  *
  * entry
  * {
- *   -gtk-key-bindings: MoveCursor3;
+ *   -ctk-key-bindings: MoveCursor3;
  * }
  * ]|
  *
@@ -131,7 +131,7 @@
  *
  * entry
  * {
- *   -gtk-key-bindings: MoveCursor3;
+ *   -ctk-key-bindings: MoveCursor3;
  * }
  * ]|
  *
@@ -161,7 +161,7 @@ typedef enum {
 static GHashTable       *binding_entry_hash_table = NULL;
 static GSList           *binding_key_hashes = NULL;
 static GSList           *binding_set_list = NULL;
-static const gchar       key_class_binding_set[] = "gtk-class-binding-set";
+static const gchar       key_class_binding_set[] = "ctk-class-binding-set";
 static GQuark            key_id_class_binding_set = 0;
 
 
@@ -278,7 +278,7 @@ binding_key_hash_for_keymap (GdkKeymap *keymap)
   GtkKeyHash *key_hash;
 
   if (!key_hash_quark)
-    key_hash_quark = g_quark_from_static_string ("gtk-binding-key-hash");
+    key_hash_quark = g_quark_from_static_string ("ctk-binding-key-hash");
 
   key_hash = g_object_get_qdata (G_OBJECT (keymap), key_hash_quark);
 
@@ -1475,7 +1475,7 @@ ctk_bindings_activate_list (GObject  *object,
   context = ctk_widget_get_style_context (CTK_WIDGET (object));
 
   ctk_style_context_get (context, ctk_style_context_get_state (context),
-                         "-gtk-key-bindings", &array,
+                         "-ctk-key-bindings", &array,
                          NULL);
   if (array)
     {

@@ -18,11 +18,11 @@
 #ifndef __CTK_MENU_ITEM_PRIVATE_H__
 #define __CTK_MENU_ITEM_PRIVATE_H__
 
-#include <gtk/gtkmenuitem.h>
-#include <gtk/deprecated/gtkaction.h>
-#include <gtk/gtkactionhelper.h>
-#include <gtk/gtkcssgadgetprivate.h>
-#include <gtk/gtkcssnodeprivate.h>
+#include <ctk/ctkmenuitem.h>
+#include <ctk/deprecated/ctkaction.h>
+#include <ctk/ctkactionhelper.h>
+#include <ctk/ctkcssgadgetprivate.h>
+#include <ctk/ctkcssnodeprivate.h>
 
 G_BEGIN_DECLS
 

@@ -10,7 +10,7 @@ srcdir = sys.argv[1]
 
 xml = '''<?xml version='1.0' encoding='UTF-8'?>
 <gresources>
-  <gresource prefix='/org/gtk/libgdk'>
+  <gresource prefix='/org/ctk/libgdk'>
 
 '''
 

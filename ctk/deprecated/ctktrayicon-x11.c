@@ -1,4 +1,4 @@
-/* gtktrayicon.c
+/* ctktrayicon.c
  * Copyright (C) 2002 Anders Carlsson <andersca@gnu.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -29,13 +29,13 @@
 #include <X11/Xatom.h>
 #include <cairo-xlib.h>
 
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtktrayicon.h"
-#include "gtktestutils.h"
-#include "gtkdebug.h"
-#include "gtktypebuiltins.h"
-#include "gtkrender.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctktrayicon.h"
+#include "ctktestutils.h"
+#include "ctkdebug.h"
+#include "ctktypebuiltins.h"
+#include "ctkrender.h"
 
 #define SYSTEM_TRAY_REQUEST_DOCK    0
 #define SYSTEM_TRAY_BEGIN_MESSAGE   1

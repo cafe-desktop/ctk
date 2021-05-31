@@ -22,7 +22,7 @@
 #include <glib-object.h>
 #include <papi.h>
 
-#include "gtkunixprint.h"
+#include "ctkunixprint.h"
 
 G_BEGIN_DECLS
 

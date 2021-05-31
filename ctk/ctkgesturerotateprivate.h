@@ -20,8 +20,8 @@
 #ifndef __CTK_GESTURE_ROTATE_PRIVATE_H__
 #define __CTK_GESTURE_ROTATE_PRIVATE_H__
 
-#include "gtkgestureprivate.h"
-#include "gtkgesturerotate.h"
+#include "ctkgestureprivate.h"
+#include "ctkgesturerotate.h"
 
 struct _GtkGestureRotate
 {

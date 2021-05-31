@@ -21,41 +21,41 @@
 #include <string.h>
 #include <locale.h>
 
-#include "gtkintl.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
 
-#include "gtkliststore.h"
-#include "gtktreeviewcolumn.h"
-#include "gtktreeselection.h"
-#include "gtktreemodel.h"
-#include "gtkbutton.h"
-#include "gtkscrolledwindow.h"
-#include "gtkcombobox.h"
-#include "gtktogglebutton.h"
-#include "gtkradiobutton.h"
-#include "gtklabel.h"
-#include "gtkgrid.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrenderertext.h"
+#include "ctkliststore.h"
+#include "ctktreeviewcolumn.h"
+#include "ctktreeselection.h"
+#include "ctktreemodel.h"
+#include "ctkbutton.h"
+#include "ctkscrolledwindow.h"
+#include "ctkcombobox.h"
+#include "ctktogglebutton.h"
+#include "ctkradiobutton.h"
+#include "ctklabel.h"
+#include "ctkgrid.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrenderertext.h"
 
-#include "gtkpagesetupunixdialog.h"
-#include "gtkcustompaperunixdialog.h"
-#include "gtkprintbackend.h"
-#include "gtkpapersize.h"
-#include "gtkprintutils.h"
-#include "gtkdialogprivate.h"
+#include "ctkpagesetupunixdialog.h"
+#include "ctkcustompaperunixdialog.h"
+#include "ctkprintbackend.h"
+#include "ctkpapersize.h"
+#include "ctkprintutils.h"
+#include "ctkdialogprivate.h"
 
 /**
- * SECTION:gtkpagesetupunixdialog
+ * SECTION:ctkpagesetupunixdialog
  * @Short_description: A page setup dialog
  * @Title: GtkPageSetupUnixDialog
- * @Include: gtk/gtkunixprint.h
+ * @Include: ctk/ctkunixprint.h
  *
  * #GtkPageSetupUnixDialog implements a page setup dialog for platforms
  * which don’t provide a native page setup dialog, like Unix. It can
  * be used very much like any other GTK+ dialog, at the cost of
  * the portability offered by the
- * [high-level printing API][gtk3-High-level-Printing-API]
+ * [high-level printing API][ctk3-High-level-Printing-API]
  *
  * Printing support was added in GTK+ 2.10.
  */
@@ -90,7 +90,7 @@ struct _GtkPageSetupUnixDialogPrivate
   gchar *waiting_for_printer;
 };
 
-/* Keep these in line with GtkListStores defined in gtkpagesetupunixprintdialog.ui */
+/* Keep these in line with GtkListStores defined in ctkpagesetupunixprintdialog.ui */
 enum {
   PRINTER_LIST_COL_NAME,
   PRINTER_LIST_COL_PRINTER,
@@ -162,7 +162,7 @@ ctk_page_setup_unix_dialog_class_init (GtkPageSetupUnixDialogClass *class)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkpagesetupunixdialog.ui");
+					       "/org/ctk/libctk/ui/ctkpagesetupunixdialog.ui");
 
   ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, printer_list);
   ctk_widget_class_bind_template_child_private (widget_class, GtkPageSetupUnixDialog, page_setup_list);
@@ -319,7 +319,7 @@ printer_added_cb (GtkPrintBackend        *backend,
                       -1);
 
   g_object_set_data_full (G_OBJECT (printer),
-                          "gtk-print-tree-iter",
+                          "ctk-print-tree-iter",
                           ctk_tree_iter_copy (&iter),
                           (GDestroyNotify) ctk_tree_iter_free);
   g_free (str);
@@ -342,7 +342,7 @@ printer_removed_cb (GtkPrintBackend        *backend,
   GtkPageSetupUnixDialogPrivate *priv = dialog->priv;
   GtkTreeIter *iter;
 
-  iter = g_object_get_data (G_OBJECT (printer), "gtk-print-tree-iter");
+  iter = g_object_get_data (G_OBJECT (printer), "ctk-print-tree-iter");
   ctk_list_store_remove (CTK_LIST_STORE (priv->printer_list), iter);
 }
 
@@ -357,7 +357,7 @@ printer_status_cb (GtkPrintBackend        *backend,
   gchar *str;
   const gchar *location;
 
-  iter = g_object_get_data (G_OBJECT (printer), "gtk-print-tree-iter");
+  iter = g_object_get_data (G_OBJECT (printer), "ctk-print-tree-iter");
 
   location = ctk_printer_get_location (printer);
   if (location == NULL)

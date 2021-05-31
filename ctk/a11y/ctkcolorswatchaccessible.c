@@ -18,9 +18,9 @@
 #include "config.h"
 
 #include <glib/gi18n-lib.h>
-#include <gtk/gtk.h>
-#include "gtkcolorswatchprivate.h"
-#include "gtkcolorswatchaccessibleprivate.h"
+#include <ctk/ctk.h>
+#include "ctkcolorswatchprivate.h"
+#include "ctkcolorswatchaccessibleprivate.h"
 
 static void atk_action_interface_init (AtkActionIface *iface);
 
@@ -79,7 +79,7 @@ ctk_color_swatch_accessible_ref_state_set (AtkObject *accessible)
 }
 
 static void
-ctk_color_swatch_accessible_notify_gtk (GObject    *obj,
+ctk_color_swatch_accessible_notify_ctk (GObject    *obj,
                                         GParamSpec *pspec)
 {
   GtkWidget *widget = CTK_WIDGET (obj);
@@ -93,7 +93,7 @@ ctk_color_swatch_accessible_notify_gtk (GObject    *obj,
         atk_object_set_role (atk_obj, ATK_ROLE_PUSH_BUTTON);
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (_ctk_color_swatch_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (_ctk_color_swatch_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static void
@@ -105,7 +105,7 @@ _ctk_color_swatch_accessible_class_init (GtkColorSwatchAccessibleClass *klass)
   atk_class->initialize = ctk_color_swatch_accessible_initialize;
   atk_class->ref_state_set = ctk_color_swatch_accessible_ref_state_set;
 
-  widget_class->notify_gtk = ctk_color_swatch_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_color_swatch_accessible_notify_ctk;
 }
 
 static void

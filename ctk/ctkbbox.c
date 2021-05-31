@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /**
- * SECTION:gtkbbox
+ * SECTION:ctkbbox
  * @Short_description: A container for arranging buttons
  * @Title: GtkButtonBox
  *
@@ -51,17 +51,17 @@
 
 #include "config.h"
 
-#include "gtkbbox.h"
+#include "ctkbbox.h"
 
-#include "gtkboxprivate.h"
-#include "gtkorientable.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtksizerequest.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkintl.h"
+#include "ctkboxprivate.h"
+#include "ctkorientable.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctksizerequest.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkintl.h"
 
 
 struct _GtkButtonBoxPrivate
@@ -81,8 +81,8 @@ enum {
   CHILD_PROP_NONHOMOGENEOUS
 };
 
-#define CTK_BOX_SECONDARY_CHILD "gtk-box-secondary-child"
-#define CTK_BOX_NON_HOMOGENEOUS "gtk-box-non-homogeneous"
+#define CTK_BOX_SECONDARY_CHILD "ctk-box-secondary-child"
+#define CTK_BOX_NON_HOMOGENEOUS "ctk-box-non-homogeneous"
 
 static void ctk_button_box_set_property       (GObject           *object,
                                                guint              prop_id,

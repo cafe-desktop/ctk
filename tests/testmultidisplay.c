@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 gchar *screen2_name = NULL;
 

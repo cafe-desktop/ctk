@@ -43,8 +43,8 @@ if win32_has_egl
 endif
 
 
-install_headers(gdk_win32_public_headers, subdir: 'gtk-3.0/gdk/win32')
-install_headers('gdkwin32.h', subdir: 'gtk-3.0/gdk')
+install_headers(gdk_win32_public_headers, subdir: 'ctk-3.0/gdk/win32')
+install_headers('gdkwin32.h', subdir: 'ctk-3.0/gdk')
 
 gdk_win32_deps = [ # FIXME
     pangowin32_dep

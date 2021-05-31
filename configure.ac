@@ -16,13 +16,13 @@ m4_define([ctk_binary_age],
           [m4_eval(100 * ctk_minor_version + ctk_micro_version)])
 m4_define([ctk_version],
           [ctk_major_version.ctk_minor_version.ctk_micro_version])
-# This is the X.Y used in -lgtk-FOO-X.Y
+# This is the X.Y used in -lctk-FOO-X.Y
 m4_define([ctk_api_version], [3.0])
 
 AC_PREREQ([2.62])
-AC_INIT([gtk+], [ctk_version],
-        [http://bugzilla.gnome.org/enter_bug.cgi?product=gtk%2B],
-        [gtk+])
+AC_INIT([ctk+], [ctk_version],
+        [http://bugzilla.gnome.org/enter_bug.cgi?product=ctk%2B],
+        [ctk+])
 
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_SRCDIR([gdk/gdktypes.h])
@@ -169,7 +169,7 @@ AC_USE_SYSTEM_EXTENSIONS
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.19.7])
 
-GETTEXT_PACKAGE=gtk30
+GETTEXT_PACKAGE=ctk30
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
                    [The prefix for our gettext translation domains.])
@@ -181,7 +181,7 @@ EXE_MANIFEST_ARCHITECTURE=X86
 DISABLE_ON_W32=''
 case "$host" in
   *-*-mingw*)
-    dnl Comment-out certain gtk3.types.in lines
+    dnl Comment-out certain ctk3.types.in lines
     DISABLE_ON_W32='%'
     os_win32=yes
     gio_can_sniff=no
@@ -778,7 +778,7 @@ esac
 AM_PATH_GLIB_2_0(glib_required_version, :,
   AC_MSG_ERROR([
 *** GLIB glib_required_version or better is required. The latest version of
-*** GLIB is always available from ftp://ftp.gtk.org/pub/gtk/.]),
+*** GLIB is always available from ftp://ftp.ctk.org/pub/ctk/.]),
   gobject gmodule-no-export)
 
 PKG_PROG_PKG_CONFIG_FOR_BUILD
@@ -900,7 +900,7 @@ AC_MSG_CHECKING(immodules to build)
 
 AC_ARG_WITH(included_immodules,
             [AS_HELP_STRING([--with-included-immodules=MODULE1,MODULE2,...],
-                            [build the specified input methods into gtk])])
+                            [build the specified input methods into ctk])])
 
 if $dynworks; then
    :
@@ -1265,8 +1265,8 @@ fi
 
 # Check for gio-unix
 if test "$os_win32" != "yes"; then
-  # Pull in gio-unix for gtk-launch usage, see at least
-  # gtk-launch.c
+  # Pull in gio-unix for ctk-launch usage, see at least
+  # ctk-launch.c
   have_gio_unix=yes
 fi
 if test "$have_gio_unix" = "yes"; then
@@ -1730,7 +1730,7 @@ fi
 AM_CONDITIONAL(HAVE_COLORD, test "x$have_colord" = "xyes")
 
 ##################################################
-# Checks for gtk-doc and docbook-tools
+# Checks for ctk-doc and docbook-tools
 ##################################################
 
 GTK_DOC_CHECK([1.20],[--flavour no-tmpl])
@@ -1914,18 +1914,18 @@ AC_CONFIG_FILES([
 README
 INSTALL
 config.h.win32
-gtk-zip.sh
+ctk-zip.sh
 Makefile
 gdk-3.0.pc
-gtk+-3.0.pc
-gtk+-unix-print-3.0.pc
+ctk+-3.0.pc
+ctk+-unix-print-3.0.pc
 gail-3.0.pc
 m4macros/Makefile
 po/Makefile.in
 po-properties/Makefile.in
 demos/Makefile
-demos/gtk-demo/Makefile
-demos/gtk-demo/geninclude.pl
+demos/ctk-demo/Makefile
+demos/ctk-demo/geninclude.pl
 demos/widget-factory/Makefile
 demos/icon-browser/Makefile
 examples/Makefile
@@ -1950,26 +1950,26 @@ testsuite/css/parser/Makefile
 testsuite/css/nodes/Makefile
 testsuite/css/style/Makefile
 testsuite/gdk/Makefile
-testsuite/gtk/Makefile
+testsuite/ctk/Makefile
 testsuite/reftests/Makefile
 testsuite/tools/Makefile
 docs/Makefile
 docs/reference/Makefile
 docs/reference/gdk/Makefile
 docs/reference/gdk/version.xml
-docs/reference/gtk/Makefile
-docs/reference/gtk/gtk3.types
-docs/reference/gtk/version.xml
-docs/reference/gtk/getting_started.xml
+docs/reference/ctk/Makefile
+docs/reference/ctk/ctk3.types
+docs/reference/ctk/version.xml
+docs/reference/ctk/getting_started.xml
 docs/reference/libgail-util/Makefile
 docs/reference/libgail-util/version.xml
 docs/tools/Makefile
 win32/Makefile
 win32/config-msvc.mak
 win32/vs9/Makefile
-win32/vs9/gtk3-version-paths.vsprops
+win32/vs9/ctk3-version-paths.vsprops
 win32/vs10/Makefile
-win32/vs10/gtk3-version-paths.props
+win32/vs10/ctk3-version-paths.props
 win32/vs11/Makefile
 win32/vs12/Makefile
 win32/vs14/Makefile
@@ -1984,11 +1984,11 @@ gdk/win32/rc/gdk.rc
 gdk/quartz/Makefile
 gdk/wayland/Makefile
 gdk/gdkversionmacros.h
-gtk/Makefile
-gtk/makefile.msc
-gtk/gtkversion.h
-gtk/gtk-win32.rc.body
-gtk/libgtk3.manifest
+ctk/Makefile
+ctk/makefile.msc
+ctk/ctkversion.h
+ctk/ctk-win32.rc.body
+ctk/libctk3.manifest
 libgail-util/Makefile
 modules/Makefile
 modules/input/Makefile

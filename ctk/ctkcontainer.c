@@ -19,14 +19,14 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
-#include "gtkcontainer.h"
-#include "gtkcontainerprivate.h"
+#include "ctkcontainer.h"
+#include "ctkcontainerprivate.h"
 
 #include <stdarg.h>
 #include <string.h>
@@ -35,25 +35,25 @@
 #include <gobject/gobjectnotifyqueue.c>
 #include <gobject/gvaluecollector.h>
 
-#include "gtkadjustment.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtksizerequest.h"
-#include "gtksizerequestcacheprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindow.h"
-#include "gtkassistant.h"
-#include "gtkintl.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkwidgetpath.h"
-#include "a11y/gtkcontaineraccessible.h"
-#include "a11y/gtkcontaineraccessibleprivate.h"
-#include "gtkpopovermenu.h"
-#include "gtkshortcutswindow.h"
+#include "ctkadjustment.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctksizerequest.h"
+#include "ctksizerequestcacheprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindow.h"
+#include "ctkassistant.h"
+#include "ctkintl.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkwidgetpath.h"
+#include "a11y/ctkcontaineraccessible.h"
+#include "a11y/ctkcontaineraccessibleprivate.h"
+#include "ctkpopovermenu.h"
+#include "ctkshortcutswindow.h"
 
 /* A handful of containers inside GTK+ are cheating and widgets
  * inside internal structure as direct children for the purpose
@@ -66,7 +66,7 @@
                               CTK_IS_SHORTCUTS_WINDOW (x))
 
 /**
- * SECTION:gtkcontainer
+ * SECTION:ctkcontainer
  * @Short_description: Base class for widgets which contain other widgets
  * @Title: GtkContainer
  *
@@ -497,9 +497,9 @@ ctk_container_class_init (GtkContainerClass *class)
 
   parent_class = g_type_class_peek_parent (class);
 
-  vadjustment_key_id = g_quark_from_static_string ("gtk-vadjustment");
-  hadjustment_key_id = g_quark_from_static_string ("gtk-hadjustment");
-  quark_focus_chain = g_quark_from_static_string ("gtk-container-focus-chain");
+  vadjustment_key_id = g_quark_from_static_string ("ctk-vadjustment");
+  hadjustment_key_id = g_quark_from_static_string ("ctk-hadjustment");
+  quark_focus_chain = g_quark_from_static_string ("ctk-container-focus-chain");
 
   gobject_class->set_property = ctk_container_set_property;
   gobject_class->get_property = ctk_container_get_property;
@@ -2604,7 +2604,7 @@ _ctk_container_child_composite_name (GtkContainer *container,
       gchar *name;
 
       if (!quark_composite_name)
-        quark_composite_name = g_quark_from_static_string ("gtk-composite-name");
+        quark_composite_name = g_quark_from_static_string ("ctk-composite-name");
 
       name = g_object_get_qdata (G_OBJECT (child), quark_composite_name);
       if (!name)

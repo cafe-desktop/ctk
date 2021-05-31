@@ -1,4 +1,4 @@
-/* gtkmnemonichash.c: Sets of mnemonics with cycling
+/* ctkmnemonichash.c: Sets of mnemonics with cycling
  *
  * GTK - The GIMP Toolkit
  * Copyright (C) 2002, Red Hat Inc.
@@ -17,7 +17,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gtkmnemonichash.h"
+#include "ctkmnemonichash.h"
 
 struct _GtkMnemnonicHash
 {

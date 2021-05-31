@@ -1,4 +1,4 @@
- /* gtktoggletoolbutton.c
+ /* ctktoggletoolbutton.c
  *
  * Copyright (C) 2002 Anders Carlsson <andersca@gnome.org>
  * Copyright (C) 2002 James Henstridge <james@daa.com.au>
@@ -18,20 +18,20 @@
  */
 
 #include "config.h"
-#include "gtktoggletoolbutton.h"
-#include "gtkcheckmenuitem.h"
-#include "gtklabel.h"
-#include "gtktogglebutton.h"
-#include "deprecated/gtkstock.h"
-#include "gtkintl.h"
-#include "gtkradiotoolbutton.h"
-#include "deprecated/gtktoggleaction.h"
-#include "deprecated/gtkactivatable.h"
-#include "gtkprivate.h"
+#include "ctktoggletoolbutton.h"
+#include "ctkcheckmenuitem.h"
+#include "ctklabel.h"
+#include "ctktogglebutton.h"
+#include "deprecated/ctkstock.h"
+#include "ctkintl.h"
+#include "ctkradiotoolbutton.h"
+#include "deprecated/ctktoggleaction.h"
+#include "deprecated/ctkactivatable.h"
+#include "ctkprivate.h"
 
 
 /**
- * SECTION:gtktoggletoolbutton
+ * SECTION:ctktoggletoolbutton
  * @Short_description: A GtkToolItem containing a toggle button
  * @Title: GtkToggleToolButton
  * @See_also: #GtkToolbar, #GtkToolButton, #GtkSeparatorToolItem
@@ -47,7 +47,7 @@
  */
 
 
-#define MENU_ID "gtk-toggle-tool-button-menu-id"
+#define MENU_ID "ctk-toggle-tool-button-menu-id"
 
 enum {
   TOGGLED,

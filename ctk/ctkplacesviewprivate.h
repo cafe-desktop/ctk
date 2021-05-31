@@ -1,4 +1,4 @@
-/* gtkplacesview.h
+/* ctkplacesview.h
  *
  * Copyright (C) 2015 Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
  *
@@ -20,11 +20,11 @@
 #define CTK_PLACES_VIEW_H
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkbox.h>
-#include <gtk/gtkplacessidebar.h>
+#include <ctk/ctkbox.h>
+#include <ctk/ctkplacessidebar.h>
 
 G_BEGIN_DECLS
 

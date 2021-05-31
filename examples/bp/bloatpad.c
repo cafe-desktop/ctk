@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 typedef struct
 {
@@ -549,7 +549,7 @@ bloat_pad_startup (GApplication *application)
 
   menu = ctk_application_get_menu_by_id (CTK_APPLICATION (application), "icon-menu");
 
-  file = g_file_new_for_uri ("resource:///org/gtk/libgtk/icons/16x16/actions/gtk-select-color.png");
+  file = g_file_new_for_uri ("resource:///org/ctk/libctk/icons/16x16/actions/ctk-select-color.png");
   icon = g_file_icon_new (file);
   item = g_menu_item_new ("File Icon", NULL);
   g_menu_item_set_icon (item, icon);
@@ -565,7 +565,7 @@ bloat_pad_startup (GApplication *application)
   g_object_unref (item);
   g_object_unref (icon);
 
-  bytes = g_resources_lookup_data ("/org/gtk/libgtk/icons/16x16/actions/gtk-select-font.png", 0, NULL);
+  bytes = g_resources_lookup_data ("/org/ctk/libctk/icons/16x16/actions/ctk-select-font.png", 0, NULL);
   icon = g_bytes_icon_new (bytes);
   item = g_menu_item_new ("Bytes Icon", NULL);
   g_menu_item_set_icon (item, icon);
@@ -574,19 +574,19 @@ bloat_pad_startup (GApplication *application)
   g_object_unref (icon);
   g_bytes_unref (bytes);
 
-  icon = G_ICON (gdk_pixbuf_new_from_resource ("/org/gtk/libgtk/icons/16x16/actions/gtk-preferences.png", NULL));
+  icon = G_ICON (gdk_pixbuf_new_from_resource ("/org/ctk/libctk/icons/16x16/actions/ctk-preferences.png", NULL));
   item = g_menu_item_new ("Pixbuf", NULL);
   g_menu_item_set_icon (item, icon);
   g_menu_append_item (menu, item);
   g_object_unref (item);
   g_object_unref (icon);
 
-  file = g_file_new_for_uri ("resource:///org/gtk/libgtk/icons/16x16/actions/gtk-page-setup.png");
+  file = g_file_new_for_uri ("resource:///org/ctk/libctk/icons/16x16/actions/ctk-page-setup.png");
   icon = g_file_icon_new (file);
   emblem = g_emblem_new (icon);
   g_object_unref (icon);
   g_object_unref (file);
-  file = g_file_new_for_uri ("resource:///org/gtk/libgtk/icons/16x16/actions/gtk-orientation-reverse-portrait.png");
+  file = g_file_new_for_uri ("resource:///org/ctk/libctk/icons/16x16/actions/ctk-orientation-reverse-portrait.png");
   icon2 = g_file_icon_new (file);
   icon = g_emblemed_icon_new (icon2, emblem);
   item = g_menu_item_new ("Emblemed Icon", NULL);
@@ -655,7 +655,7 @@ bloat_pad_new (void)
   g_set_application_name ("Bloatpad");
 
   bloat_pad = g_object_new (bloat_pad_get_type (),
-                            "application-id", "org.gtk.bloatpad",
+                            "application-id", "org.ctk.bloatpad",
                             "flags", G_APPLICATION_HANDLES_OPEN,
                             "inactivity-timeout", 30000,
                             "register-session", TRUE,

@@ -19,8 +19,8 @@
 
 #include "config.h"
 
-#include "gtkbuilderprivate.h"
-#include "gtkintl.h"
+#include "ctkbuilderprivate.h"
+#include "ctkintl.h"
 
 #include <gio/gio.h>
 #include <string.h>

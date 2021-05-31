@@ -27,10 +27,10 @@
 #include <stdlib.h>
 #include <glib-object.h>
 #include <glib/gstdio.h>
-#include <gtk/gtk.h>
-#include "gtktextviewaccessibleprivate.h"
-#include "gtktextbufferprivate.h"
-#include "gtk/gtkwidgetprivate.h"
+#include <ctk/ctk.h>
+#include "ctktextviewaccessibleprivate.h"
+#include "ctktextbufferprivate.h"
+#include "ctk/ctkwidgetprivate.h"
 
 struct _GtkTextViewAccessiblePrivate
 {
@@ -78,7 +78,7 @@ ctk_text_view_accessible_initialize (AtkObject *obj,
 }
 
 static void
-ctk_text_view_accessible_notify_gtk (GObject    *obj,
+ctk_text_view_accessible_notify_ctk (GObject    *obj,
                                      GParamSpec *pspec)
 {
   AtkObject *atk_obj;
@@ -93,7 +93,7 @@ ctk_text_view_accessible_notify_gtk (GObject    *obj,
       atk_object_notify_state_change (atk_obj, ATK_STATE_EDITABLE, editable);
     }
   else
-    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_text_view_accessible_parent_class)->notify_gtk (obj, pspec);
+    CTK_WIDGET_ACCESSIBLE_CLASS (ctk_text_view_accessible_parent_class)->notify_ctk (obj, pspec);
 }
 
 static AtkStateSet*
@@ -176,7 +176,7 @@ ctk_text_view_accessible_class_init (GtkTextViewAccessibleClass *klass)
   class->ref_state_set = ctk_text_view_accessible_ref_state_set;
   class->initialize = ctk_text_view_accessible_initialize;
 
-  widget_class->notify_gtk = ctk_text_view_accessible_notify_gtk;
+  widget_class->notify_ctk = ctk_text_view_accessible_notify_ctk;
 }
 
 static void

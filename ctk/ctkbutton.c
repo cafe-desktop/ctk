@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2001.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
- * SECTION:gtkbutton
+ * SECTION:ctkbutton
  * @Short_description: A widget that emits a signal when clicked on
  * @Title: GtkButton
  *
@@ -53,28 +53,28 @@
 
 #include "config.h"
 
-#include "gtkbutton.h"
-#include "gtkbuttonprivate.h"
+#include "ctkbutton.h"
+#include "ctkbuttonprivate.h"
 
 #include <string.h>
-#include "deprecated/gtkalignment.h"
-#include "gtklabel.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkimage.h"
-#include "gtkbox.h"
-#include "deprecated/gtkstock.h"
-#include "deprecated/gtkactivatable.h"
-#include "gtksizerequest.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidgetprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "a11y/gtkbuttonaccessible.h"
-#include "gtkapplicationprivate.h"
-#include "gtkactionhelper.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkcontainerprivate.h"
+#include "deprecated/ctkalignment.h"
+#include "ctklabel.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkimage.h"
+#include "ctkbox.h"
+#include "deprecated/ctkstock.h"
+#include "deprecated/ctkactivatable.h"
+#include "ctksizerequest.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidgetprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "a11y/ctkbuttonaccessible.h"
+#include "ctkapplicationprivate.h"
+#include "ctkactionhelper.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkcontainerprivate.h"
 
 /* Time out before giving up on getting a key release when animating
  * the close button.
@@ -380,7 +380,7 @@ ctk_button_class_init (GtkButtonClass *klass)
   /**
    * GtkButton:always-show-image:
    *
-   * If %TRUE, the button will ignore the #GtkSettings:gtk-button-images
+   * If %TRUE, the button will ignore the #GtkSettings:ctk-button-images
    * setting and always show the image, if available.
    *
    * Use this property if the button would be useless or hard to use
@@ -1248,7 +1248,7 @@ show_image (GtkButton *button)
       GtkSettings *settings;
 
       settings = ctk_widget_get_settings (CTK_WIDGET (button));        
-      g_object_get (settings, "gtk-button-images", &show, NULL);
+      g_object_get (settings, "ctk-button-images", &show, NULL);
     }
   else
     show = TRUE;
@@ -1453,7 +1453,7 @@ ctk_button_new_from_icon_name (const gchar *icon_name,
  * @stock_id: the name of the stock item 
  *
  * Creates a new #GtkButton containing the image and text from a
- * [stock item][gtkstock].
+ * [stock item][ctkstock].
  * Some stock ids have preprocessor macros like #CTK_STOCK_OK and
  * #CTK_STOCK_APPLY.
  *
@@ -2012,7 +2012,7 @@ ctk_real_button_activate (GtkButton *button)
       priv->activate_timeout = gdk_threads_add_timeout (ACTIVATE_TIMEOUT,
 						button_activate_timeout,
 						button);
-      g_source_set_name_by_id (priv->activate_timeout, "[gtk+] button_activate_timeout");
+      g_source_set_name_by_id (priv->activate_timeout, "[ctk+] button_activate_timeout");
       priv->button_down = TRUE;
       ctk_button_update_state (button);
     }
@@ -2510,7 +2510,7 @@ ctk_button_screen_changed (GtkWidget *widget,
   if (show_image_connection)
     return;
 
-  g_signal_connect (settings, "notify::gtk-button-images",
+  g_signal_connect (settings, "notify::ctk-button-images",
                     G_CALLBACK (ctk_button_setting_changed), NULL);
 
   show_image_change_notify (button);
@@ -2657,7 +2657,7 @@ ctk_button_get_image_position (GtkButton *button)
  * @button: a #GtkButton
  * @always_show: %TRUE if the menuitem should always show the image
  *
- * If %TRUE, the button will ignore the #GtkSettings:gtk-button-images
+ * If %TRUE, the button will ignore the #GtkSettings:ctk-button-images
  * setting and always show the image, if available.
  *
  * Use this property if the button  would be useless or hard to use
@@ -2695,7 +2695,7 @@ ctk_button_set_always_show_image (GtkButton *button,
  * ctk_button_get_always_show_image:
  * @button: a #GtkButton
  *
- * Returns whether the button will ignore the #GtkSettings:gtk-button-images
+ * Returns whether the button will ignore the #GtkSettings:ctk-button-images
  * setting and always show the image, if available.
  *
  * Returns: %TRUE if the button will always show the image

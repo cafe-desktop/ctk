@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentchooserdialog.c: Recent files selector dialog
+ * ctkrecentchooserdialog.c: Recent files selector dialog
  * Copyright (C) 2006 Emmanuele Bassi
  * 
  * This library is free software; you can redistribute it and/or
@@ -18,19 +18,19 @@
 
 #include "config.h"
 
-#include "gtkrecentchooserdialog.h"
-#include "gtkrecentchooserwidget.h"
-#include "gtkrecentchooserutils.h"
-#include "gtkrecentmanager.h"
-#include "gtktypebuiltins.h"
-#include "gtksettings.h"
-#include "gtkdialogprivate.h"
+#include "ctkrecentchooserdialog.h"
+#include "ctkrecentchooserwidget.h"
+#include "ctkrecentchooserutils.h"
+#include "ctkrecentmanager.h"
+#include "ctktypebuiltins.h"
+#include "ctksettings.h"
+#include "ctkdialogprivate.h"
 
 #include <stdarg.h>
 
 
 /**
- * SECTION:gtkrecentchooserdialog
+ * SECTION:ctkrecentchooserdialog
  * @Short_description: Displays recently used files in a dialog
  * @Title: GtkRecentChooserDialog
  * @See_also:#GtkRecentChooser, #GtkDialog
@@ -44,7 +44,7 @@
  * Note that #GtkRecentChooserDialog does not have any methods of its own.
  * Instead, you should use the functions that work on a #GtkRecentChooser.
  *
- * ## Typical usage ## {#gtkrecentchooser-typical-usage}
+ * ## Typical usage ## {#ctkrecentchooser-typical-usage}
  *
  * In the simplest of cases, you can use the following code to use
  * a #GtkRecentChooserDialog to select a recently used file:

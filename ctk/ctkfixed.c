@@ -19,11 +19,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 /**
- * SECTION:gtkfixed
+ * SECTION:ctkfixed
  * @Short_description: A container which allows you to position
  * widgets at fixed coordinates
  * @Title: GtkFixed
@@ -73,11 +73,11 @@
 
 #include "config.h"
 
-#include "gtkfixed.h"
+#include "ctkfixed.h"
 
-#include "gtkwidgetprivate.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkwidgetprivate.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 struct _GtkFixedPrivate

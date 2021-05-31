@@ -8,7 +8,7 @@
  * and their effect.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <pango/pangofc-font.h>
 #include <hb.h>
 #include <hb-ot.h>

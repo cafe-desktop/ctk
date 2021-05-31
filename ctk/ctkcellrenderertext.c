@@ -1,4 +1,4 @@
-/* gtkcellrenderertext.c
+/* ctkcellrenderertext.c
  * Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -17,22 +17,22 @@
 
 #include "config.h"
 
-#include "gtkcellrenderertext.h"
+#include "ctkcellrenderertext.h"
 
 #include <stdlib.h>
 
-#include "gtkeditable.h"
-#include "gtkentry.h"
-#include "gtksizerequest.h"
-#include "gtkmarshalers.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtktreeprivate.h"
-#include "a11y/gtktextcellaccessible.h"
+#include "ctkeditable.h"
+#include "ctkentry.h"
+#include "ctksizerequest.h"
+#include "ctkmarshalers.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctktreeprivate.h"
+#include "a11y/ctktextcellaccessible.h"
 
 
 /**
- * SECTION:gtkcellrenderertext
+ * SECTION:ctkcellrenderertext
  * @Short_description: Renders text in a cell
  * @Title: GtkCellRendererText
  *
@@ -158,7 +158,7 @@ enum {
 static guint text_cell_renderer_signals [LAST_SIGNAL];
 static GParamSpec *text_cell_renderer_props [LAST_PROP];
 
-#define CTK_CELL_RENDERER_TEXT_PATH "gtk-cell-renderer-text-path"
+#define CTK_CELL_RENDERER_TEXT_PATH "ctk-cell-renderer-text-path"
 
 struct _GtkCellRendererTextPrivate
 {
@@ -1954,7 +1954,7 @@ ctk_cell_renderer_text_popup_unmap (GtkMenu *menu,
 
   priv->entry_menu_popdown_timeout = gdk_threads_add_timeout (500, popdown_timeout,
                                                     data);
-  g_source_set_name_by_id (priv->entry_menu_popdown_timeout, "[gtk+] popdown_timeout");
+  g_source_set_name_by_id (priv->entry_menu_popdown_timeout, "[ctk+] popdown_timeout");
 }
 
 static void

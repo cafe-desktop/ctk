@@ -20,13 +20,13 @@
 
 #include "resource-list.h"
 
-#include "gtklabel.h"
-#include "gtkstack.h"
-#include "gtktextbuffer.h"
-#include "gtktreestore.h"
-#include "gtktreeselection.h"
-#include "gtksearchbar.h"
-#include "gtksearchentry.h"
+#include "ctklabel.h"
+#include "ctkstack.h"
+#include "ctktextbuffer.h"
+#include "ctktreestore.h"
+#include "ctktreeselection.h"
+#include "ctksearchbar.h"
+#include "ctksearchentry.h"
 #include "treewalk.h"
 
 enum
@@ -684,7 +684,7 @@ ctk_inspector_resource_list_class_init (GtkInspectorResourceListClass *klass)
       g_param_spec_object ("buttons", NULL, NULL,
                            CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/resource-list.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/resource-list.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, model);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, buffer);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorResourceList, content);

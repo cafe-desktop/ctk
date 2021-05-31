@@ -5,7 +5,7 @@
  * within the same window, but on top of all its content.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 toggle_changed_cb (GtkToggleButton *button,

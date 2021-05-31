@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
 /* GTK - The GIMP Toolkit
- * gtktextview.c Copyright (C) 2000 Red Hat, Inc.
+ * ctktextview.c Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -20,7 +20,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -28,42 +28,42 @@
 #include <string.h>
 
 #define CTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
-#include "gtkadjustmentprivate.h"
-#include "gtkbindings.h"
-#include "gtkdnd.h"
-#include "gtkdebug.h"
-#include "gtkintl.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkmenu.h"
-#include "gtkmenuitem.h"
-#include "gtkrenderbackgroundprivate.h"
-#include "gtkseparatormenuitem.h"
-#include "gtksettings.h"
-#include "gtkselectionprivate.h"
-#include "gtktextbufferrichtext.h"
-#include "gtktextdisplay.h"
-#include "gtktextview.h"
-#include "gtkimmulticontext.h"
-#include "gtkprivate.h"
-#include "gtktextutil.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindow.h"
-#include "gtkscrollable.h"
-#include "gtktypebuiltins.h"
-#include "gtktexthandleprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkpopover.h"
-#include "gtktoolbar.h"
-#include "gtkpixelcacheprivate.h"
-#include "gtkmagnifierprivate.h"
-#include "gtkemojichooser.h"
-#include "gtkpango.h"
+#include "ctkadjustmentprivate.h"
+#include "ctkbindings.h"
+#include "ctkdnd.h"
+#include "ctkdebug.h"
+#include "ctkintl.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkmenu.h"
+#include "ctkmenuitem.h"
+#include "ctkrenderbackgroundprivate.h"
+#include "ctkseparatormenuitem.h"
+#include "ctksettings.h"
+#include "ctkselectionprivate.h"
+#include "ctktextbufferrichtext.h"
+#include "ctktextdisplay.h"
+#include "ctktextview.h"
+#include "ctkimmulticontext.h"
+#include "ctkprivate.h"
+#include "ctktextutil.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindow.h"
+#include "ctkscrollable.h"
+#include "ctktypebuiltins.h"
+#include "ctktexthandleprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkpopover.h"
+#include "ctktoolbar.h"
+#include "ctkpixelcacheprivate.h"
+#include "ctkmagnifierprivate.h"
+#include "ctkemojichooser.h"
+#include "ctkpango.h"
 
-#include "a11y/gtktextviewaccessibleprivate.h"
+#include "a11y/ctktextviewaccessibleprivate.h"
 
 /**
- * SECTION:gtktextview
+ * SECTION:ctktextview
  * @Short_description: Widget that displays a GtkTextBuffer
  * @Title: GtkTextView
  * @See_also: #GtkTextBuffer, #GtkTextIter
@@ -983,7 +983,7 @@ ctk_text_view_class_init (GtkTextViewClass *klass)
     *
     * Setting this to a non-%NULL value overrides the
     * system-wide IM module setting. See the GtkSettings 
-    * #GtkSettings:gtk-im-module property.
+    * #GtkSettings:ctk-im-module property.
     *
     * Since: 2.16
     */
@@ -1708,9 +1708,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_TEXT_VIEW_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "textview");
 
-  quark_text_selection_data = g_quark_from_static_string ("gtk-text-view-text-selection-data");
-  quark_ctk_signal = g_quark_from_static_string ("gtk-signal");
-  quark_text_view_child = g_quark_from_static_string ("gtk-text-view-child");
+  quark_text_selection_data = g_quark_from_static_string ("ctk-text-view-text-selection-data");
+  quark_ctk_signal = g_quark_from_static_string ("ctk-signal");
+  quark_text_view_child = g_quark_from_static_string ("ctk-text-view-child");
 }
 
 static void
@@ -2736,7 +2736,7 @@ queue_update_im_spot_location (GtkTextView *text_view)
 						      do_update_im_spot_location,
 						      text_view,
 						      NULL);
-      g_source_set_name_by_id (priv->im_spot_idle, "[gtk+] do_update_im_spot_location");
+      g_source_set_name_by_id (priv->im_spot_idle, "[ctk+] do_update_im_spot_location");
     }
 }
 
@@ -3544,7 +3544,7 @@ ctk_text_view_toggle_cursor_visible (GtkTextView *text_view)
  * want to turn the cursor off.
  *
  * Note that this property may be overridden by the
- * #GtkSettings:gtk-keynave-use-caret settings.
+ * #GtkSettings:ctk-keynave-use-caret settings.
  */
 void
 ctk_text_view_set_cursor_visible (GtkTextView *text_view,
@@ -4551,7 +4551,7 @@ ctk_text_view_invalidate (GtkTextView *text_view)
   if (!priv->first_validate_idle)
     {
       priv->first_validate_idle = gdk_threads_add_idle_full (CTK_PRIORITY_RESIZE - 2, first_validate_callback, text_view, NULL);
-      g_source_set_name_by_id (priv->first_validate_idle, "[gtk+] first_validate_callback");
+      g_source_set_name_by_id (priv->first_validate_idle, "[ctk+] first_validate_callback");
       DV (g_print (G_STRLOC": adding first validate idle %d\n",
                    priv->first_validate_idle));
     }
@@ -4559,7 +4559,7 @@ ctk_text_view_invalidate (GtkTextView *text_view)
   if (!priv->incremental_validate_idle)
     {
       priv->incremental_validate_idle = gdk_threads_add_idle_full (CTK_TEXT_VIEW_PRIORITY_VALIDATE, incremental_validate_callback, text_view, NULL);
-      g_source_set_name_by_id (priv->incremental_validate_idle, "[gtk+] incremental_validate_callback");
+      g_source_set_name_by_id (priv->incremental_validate_idle, "[ctk+] incremental_validate_callback");
       DV (g_print (G_STRLOC": adding incremental validate idle %d\n",
                    priv->incremental_validate_idle));
     }
@@ -5367,7 +5367,7 @@ ctk_text_view_handle_drag_finished (GtkTextHandle         *handle,
       guint double_click_time;
 
       settings = ctk_widget_get_settings (CTK_WIDGET (text_view));
-      g_object_get (settings, "gtk-double-click-time", &double_click_time, NULL);
+      g_object_get (settings, "ctk-double-click-time", &double_click_time, NULL);
       if (g_get_monotonic_time() - priv->handle_place_time < double_click_time * 1000)
         {
           buffer = get_buffer (text_view);
@@ -6223,7 +6223,7 @@ cursor_blinks (GtkTextView *text_view)
     return FALSE;
 #endif
 
-  g_object_get (settings, "gtk-cursor-blink", &blink, NULL);
+  g_object_get (settings, "ctk-cursor-blink", &blink, NULL);
 
   if (!blink)
     return FALSE;
@@ -6249,7 +6249,7 @@ cursor_visible (GtkTextView *text_view)
   GtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (text_view));
   gboolean use_caret;
 
-  g_object_get (settings, "gtk-keynav-use-caret", &use_caret, NULL);
+  g_object_get (settings, "ctk-keynav-use-caret", &use_caret, NULL);
 
    return use_caret || text_view->priv->cursor_visible;
 }
@@ -6261,7 +6261,7 @@ get_middle_click_paste (GtkTextView *text_view)
   gboolean paste;
 
   settings = ctk_widget_get_settings (CTK_WIDGET (text_view));
-  g_object_get (settings, "gtk-enable-primary-paste", &paste, NULL);
+  g_object_get (settings, "ctk-enable-primary-paste", &paste, NULL);
 
   return paste;
 }
@@ -6272,7 +6272,7 @@ get_cursor_time (GtkTextView *text_view)
   GtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (text_view));
   gint time;
 
-  g_object_get (settings, "gtk-cursor-blink-time", &time, NULL);
+  g_object_get (settings, "ctk-cursor-blink-time", &time, NULL);
 
   return time;
 }
@@ -6283,7 +6283,7 @@ get_cursor_blink_timeout (GtkTextView *text_view)
   GtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (text_view));
   gint time;
 
-  g_object_get (settings, "gtk-cursor-blink-timeout", &time, NULL);
+  g_object_get (settings, "ctk-cursor-blink-timeout", &time, NULL);
 
   return time;
 }
@@ -6333,14 +6333,14 @@ blink_cb (gpointer data)
       priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_OFF_MULTIPLIER / CURSOR_DIVIDER,
 						     blink_cb,
 						     text_view);
-      g_source_set_name_by_id (priv->blink_timeout, "[gtk+] blink_cb");
+      g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
     }
   else 
     {
       priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_ON_MULTIPLIER / CURSOR_DIVIDER,
 						     blink_cb,
 						     text_view);
-      g_source_set_name_by_id (priv->blink_timeout, "[gtk+] blink_cb");
+      g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
       priv->blink_time += get_cursor_time (text_view);
     }
 
@@ -6391,7 +6391,7 @@ ctk_text_view_check_cursor_blink (GtkTextView *text_view)
 	      priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_OFF_MULTIPLIER / CURSOR_DIVIDER,
 							     blink_cb,
 							     text_view);
-	      g_source_set_name_by_id (priv->blink_timeout, "[gtk+] blink_cb");
+	      g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
 	    }
 	}
       else
@@ -6423,7 +6423,7 @@ ctk_text_view_pend_cursor_blink (GtkTextView *text_view)
       priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_PEND_MULTIPLIER / CURSOR_DIVIDER,
 						     blink_cb,
 						     text_view);
-      g_source_set_name_by_id (priv->blink_timeout, "[gtk+] blink_cb");
+      g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
     }
 }
 
@@ -7786,7 +7786,7 @@ ctk_text_view_drag_gesture_update (GtkGestureDrag *gesture,
 
   text_view->priv->scroll_timeout =
     gdk_threads_add_timeout (50, selection_scan_timeout, text_view);
-  g_source_set_name_by_id (text_view->priv->scroll_timeout, "[gtk+] selection_scan_timeout");
+  g_source_set_name_by_id (text_view->priv->scroll_timeout, "[ctk+] selection_scan_timeout");
 
   ctk_text_view_selection_bubble_popup_unset (text_view);
 
@@ -8012,7 +8012,7 @@ ctk_text_view_check_keymap_direction (GtkTextView *text_view)
       gboolean split_cursor;
 
       g_object_get (settings,
-		    "gtk-split-cursor", &split_cursor,
+		    "ctk-split-cursor", &split_cursor,
 		    NULL);
       
       if (gdk_keymap_get_direction (keymap) == PANGO_DIRECTION_RTL)
@@ -8525,7 +8525,7 @@ ctk_text_view_drag_motion (GtkWidget        *widget,
   {
     priv->scroll_timeout =
       gdk_threads_add_timeout (100, drag_scan_timeout, text_view);
-    g_source_set_name_by_id (text_view->priv->scroll_timeout, "[gtk+] drag_scan_timeout");
+    g_source_set_name_by_id (text_view->priv->scroll_timeout, "[ctk+] drag_scan_timeout");
   }
 
   ctk_drag_highlight (widget);
@@ -9847,7 +9847,7 @@ ctk_text_view_selection_bubble_popup_set (GtkTextView *text_view)
   priv->selection_bubble_timeout_id =
     gdk_threads_add_timeout (50, ctk_text_view_selection_bubble_popup_show,
                              text_view);
-  g_source_set_name_by_id (priv->selection_bubble_timeout_id, "[gtk+] ctk_text_view_selection_bubble_popup_cb");
+  g_source_set_name_by_id (priv->selection_bubble_timeout_id, "[ctk+] ctk_text_view_selection_bubble_popup_cb");
 }
 
 /* Child GdkWindows */
@@ -10107,11 +10107,11 @@ text_window_realize (GtkTextWindow *win,
     }
 
   g_object_set_qdata (G_OBJECT (win->window),
-                      g_quark_from_static_string ("gtk-text-view-text-window"),
+                      g_quark_from_static_string ("ctk-text-view-text-window"),
                       win);
 
   g_object_set_qdata (G_OBJECT (win->bin_window),
-                      g_quark_from_static_string ("gtk-text-view-text-window"),
+                      g_quark_from_static_string ("ctk-text-view-text-window"),
                       win);
 }
 
@@ -10252,7 +10252,7 @@ text_window_invalidate_cursors (GtkTextWindow *win)
   ctk_text_layout_get_cursor_locations (priv->layout, &iter,
                                         &strong, &weak);
 
-  /* cursor width calculation as in gtkstylecontext.c:draw_insertion_cursor(),
+  /* cursor width calculation as in ctkstylecontext.c:draw_insertion_cursor(),
    * ignoring the text direction be exposing both sides of the cursor
    */
 
@@ -10454,7 +10454,7 @@ ctk_text_view_get_window_type (GtkTextView *text_view,
     return CTK_TEXT_WINDOW_WIDGET;
 
   win = g_object_get_qdata (G_OBJECT (window),
-                            g_quark_try_string ("gtk-text-view-text-window"));
+                            g_quark_try_string ("ctk-text-view-text-window"));
 
   if (win)
     return win->type;
@@ -11490,11 +11490,11 @@ ctk_text_view_insert_emoji (GtkTextView *text_view)
   if (ctk_widget_get_ancestor (CTK_WIDGET (text_view), CTK_TYPE_EMOJI_CHOOSER) != NULL)
     return;
 
-  chooser = CTK_WIDGET (g_object_get_data (G_OBJECT (text_view), "gtk-emoji-chooser"));
+  chooser = CTK_WIDGET (g_object_get_data (G_OBJECT (text_view), "ctk-emoji-chooser"));
   if (!chooser)
     {
       chooser = ctk_emoji_chooser_new ();
-      g_object_set_data (G_OBJECT (text_view), "gtk-emoji-chooser", chooser);
+      g_object_set_data (G_OBJECT (text_view), "ctk-emoji-chooser", chooser);
 
       ctk_popover_set_relative_to (CTK_POPOVER (chooser), CTK_WIDGET (text_view));
       g_signal_connect_swapped (chooser, "emoji-picked",

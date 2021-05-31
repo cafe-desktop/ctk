@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentchooser.c - Abstract interface for recent file selectors GUIs
+ * ctkrecentchooser.c - Abstract interface for recent file selectors GUIs
  *
  * Copyright (C) 2006, Emmanuele Bassi
  * 
@@ -19,18 +19,18 @@
 
 #include "config.h"
 
-#include "gtkrecentchooser.h"
-#include "gtkrecentchooserprivate.h"
-#include "gtkrecentmanager.h"
-#include "deprecated/gtkrecentaction.h"
-#include "deprecated/gtkactivatable.h"
-#include "gtkintl.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkmarshalers.h"
+#include "ctkrecentchooser.h"
+#include "ctkrecentchooserprivate.h"
+#include "ctkrecentmanager.h"
+#include "deprecated/ctkrecentaction.h"
+#include "deprecated/ctkactivatable.h"
+#include "ctkintl.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkmarshalers.h"
 
 /**
- * SECTION:gtkrecentchooser
+ * SECTION:ctkrecentchooser
  * @Short_description: Interface implemented by widgets displaying recently
  *   used files
  * @Title: GtkRecentChooser
@@ -58,8 +58,8 @@ static gboolean recent_chooser_has_show_numbers       (GtkRecentChooser *chooser
 
 static GQuark      quark_ctk_related_action               = 0;
 static GQuark      quark_ctk_use_action_appearance        = 0;
-static const gchar ctk_related_action_key[]               = "gtk-related-action";
-static const gchar ctk_use_action_appearance_key[]        = "gtk-use-action-appearance";
+static const gchar ctk_related_action_key[]               = "ctk-related-action";
+static const gchar ctk_use_action_appearance_key[]        = "ctk-use-action-appearance";
 
 
 static guint chooser_signals[LAST_SIGNAL] = { 0, };
@@ -272,7 +272,7 @@ ctk_recent_chooser_default_init (GtkRecentChooserInterface *iface)
 GQuark
 ctk_recent_chooser_error_quark (void)
 {
-  return g_quark_from_static_string ("gtk-recent-chooser-error-quark");
+  return g_quark_from_static_string ("ctk-recent-chooser-error-quark");
 }
 
 /**
@@ -1006,7 +1006,7 @@ ctk_recent_chooser_get_filter (GtkRecentChooser *chooser)
   
   /* we need this hack because g_object_get() increases the refcount
    * of the returned object; see also ctk_file_chooser_get_filter()
-   * inside gtkfilechooser.c
+   * inside ctkfilechooser.c
    */
   if (filter)
     g_object_unref (filter);

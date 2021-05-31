@@ -15,39 +15,39 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.Free
  */
 
-/* By Owen Taylor <otaylor@gtk.org>              98/4/4 */
+/* By Owen Taylor <otaylor@ctk.org>              98/4/4 */
 
 /*
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtkdebug.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkplug.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkrender.h"
-#include "gtksocketprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindowgroup.h"
-#include "gtkwindowprivate.h"
-#include "gtkxembed.h"
+#include "ctkdebug.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkplug.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkrender.h"
+#include "ctksocketprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindowgroup.h"
+#include "ctkwindowprivate.h"
+#include "ctkxembed.h"
 
-#include "a11y/gtkplugaccessible.h"
+#include "a11y/ctkplugaccessible.h"
 
 #include <gdk/gdkx.h>
 
 /**
- * SECTION:gtkplug
+ * SECTION:ctkplug
  * @Short_description: Toplevel for embedding into other processes
  * @Title: GtkPlug
- * @include: gtk/gtkx.h
+ * @include: ctk/ctkx.h
  * @See_also: #GtkSocket
  *
  * Together with #GtkSocket, #GtkPlug provides the ability to embed
@@ -67,7 +67,7 @@
  * The #GtkPlug and #GtkSocket widgets are only available when GTK+
  * is compiled for the X11 platform and %GDK_WINDOWING_X11 is defined.
  * They can only be used on a #GdkX11Display. To use #GtkPlug and
- * #GtkSocket, you need to include the `gtk/gtkx.h` header.
+ * #GtkSocket, you need to include the `ctk/ctkx.h` header.
  */
 
 struct _GtkPlugPrivate

@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprinteroptionset.h: printer option set
+ * ctkprinteroptionset.h: printer option set
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -29,7 +29,7 @@
 
 #include <glib-object.h>
 #include <gdk/gdk.h>
-#include "gtkprinteroption.h"
+#include "ctkprinteroption.h"
 
 G_BEGIN_DECLS
 

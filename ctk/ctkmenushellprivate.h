@@ -19,10 +19,10 @@
 #define __CTK_MENU_SHELL_PRIVATE_H__
 
 
-#include <gtk/gtkmenushell.h>
-#include <gtk/gtkmnemonichash.h>
-#include <gtk/gtkkeyhash.h>
-#include <gtk/gtkmenutracker.h>
+#include <ctk/ctkmenushell.h>
+#include <ctk/ctkmnemonichash.h>
+#include <ctk/ctkkeyhash.h>
+#include <ctk/ctkmenutracker.h>
 
 G_BEGIN_DECLS
 

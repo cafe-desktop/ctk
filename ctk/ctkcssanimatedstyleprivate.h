@@ -20,7 +20,7 @@
 #ifndef __CTK_CSS_ANIMATED_STYLE_PRIVATE_H__
 #define __CTK_CSS_ANIMATED_STYLE_PRIVATE_H__
 
-#include "gtk/gtkcssstyleprivate.h"
+#include "ctk/ctkcssstyleprivate.h"
 
 G_BEGIN_DECLS
 

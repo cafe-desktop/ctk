@@ -1,4 +1,4 @@
-/* gtkseparatortoolitem.c
+/* ctkseparatortoolitem.c
  *
  * Copyright (C) 2002 Anders Carlsson <andersca@gnome.org>
  * Copyright (C) 2002 James Henstridge <james@daa.com.au>
@@ -18,16 +18,16 @@
  */
 
 #include "config.h"
-#include "gtkseparatormenuitem.h"
-#include "gtkseparatortoolitem.h"
-#include "gtkintl.h"
-#include "gtktoolbarprivate.h"
-#include "gtkprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
+#include "ctkseparatormenuitem.h"
+#include "ctkseparatortoolitem.h"
+#include "ctkintl.h"
+#include "ctktoolbarprivate.h"
+#include "ctkprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
 
 /**
- * SECTION:gtkseparatortoolitem
+ * SECTION:ctkseparatortoolitem
  * @Short_description: A toolbar item that separates groups of other
  *   toolbar items
  * @Title: GtkSeparatorToolItem
@@ -48,7 +48,7 @@
  * GtkSeparatorToolItem has a single CSS node with name separator.
  */
 
-#define MENU_ID "gtk-separator-tool-item-menu-id"
+#define MENU_ID "ctk-separator-tool-item-menu-id"
 
 struct _GtkSeparatorToolItemPrivate
 {

@@ -19,18 +19,18 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_MENU_H__
 #define __CTK_MENU_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkaccelgroup.h>
-#include <gtk/gtkmenushell.h>
+#include <ctk/ctkaccelgroup.h>
+#include <ctk/ctkmenushell.h>
 
 G_BEGIN_DECLS
 
@@ -170,7 +170,7 @@ void       ctk_menu_popup_at_pointer      (GtkMenu             *menu,
                                            const GdkEvent      *trigger_event);
 
 /* Position the menu according to its position function. Called
- * from gtkmenuitem.c when a menu-item changes its allocation
+ * from ctkmenuitem.c when a menu-item changes its allocation
  */
 GDK_AVAILABLE_IN_ALL
 void	   ctk_menu_reposition		  (GtkMenu	       *menu);

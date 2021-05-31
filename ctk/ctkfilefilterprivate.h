@@ -19,7 +19,7 @@
 #ifndef __CTK_FILE_FILTER_PRIVATE_H__
 #define __CTK_FILE_FILTER_PRIVATE_H__
 
-#include <gtk/gtkfilefilter.h>
+#include <ctk/ctkfilefilter.h>
 #include <gdk/gdkconfig.h>
 
 #ifdef GDK_WINDOWING_QUARTZ

@@ -3,7 +3,7 @@
 #
 # compose-parse.py, version 1.4
 #
-# multifunction script that helps manage the compose sequence table in GTK+ (gtk/gtkimcontextsimple.c)
+# multifunction script that helps manage the compose sequence table in GTK+ (ctk/ctkimcontextsimple.c)
 # the script produces statistics and information about the whole process, run with --help for more.
 #
 # You may need to switch your python installation to utf-8, if you get 'ascii' codec errors.
@@ -23,9 +23,9 @@ import getopt
 # We grab files off the web, left and right.
 URL_COMPOSE = 'http://cgit.freedesktop.org/xorg/lib/libX11/plain/nls/en_US.UTF-8/Compose.pre'
 URL_KEYSYMSTXT = "http://www.cl.cam.ac.uk/~mgk25/ucs/keysyms.txt"
-URL_GDKKEYSYMSH = "http://git.gnome.org/browse/gtk%2B/plain/gdk/gdkkeysyms.h"
+URL_GDKKEYSYMSH = "http://git.gnome.org/browse/ctk%2B/plain/gdk/gdkkeysyms.h"
 URL_UNICODEDATATXT = 'http://www.unicode.org/Public/6.0.0/ucd/UnicodeData.txt'
-FILENAME_COMPOSE_SUPPLEMENTARY = 'gtk-compose-lookaside.txt'
+FILENAME_COMPOSE_SUPPLEMENTARY = 'ctk-compose-lookaside.txt'
 
 # We currently support keysyms of size 2; once upstream xorg gets sorted, 
 # we might produce some tables with size 2 and some with size 4.
@@ -63,9 +63,9 @@ headerfile_start = """/* GTK - The GIMP Tool Kit
  *  Input   : http://www.unicode.org/Public/UNIDATA/UnicodeData.txt
  *
  * This table is optimised for space and requires special handling to access the content.
- * This table is used solely by http://svn.gnome.org/viewcvs/gtk%2B/trunk/gtk/gtkimcontextsimple.c
+ * This table is used solely by http://svn.gnome.org/viewcvs/ctk%2B/trunk/ctk/ctkimcontextsimple.c
  * 
- * The resulting file is placed at http://svn.gnome.org/viewcvs/gtk%2B/trunk/gtk/gtkimcontextsimpleseqs.h
+ * The resulting file is placed at http://svn.gnome.org/viewcvs/ctk%2B/trunk/ctk/ctkimcontextsimpleseqs.h
  * This file is described in bug report http://bugzilla.gnome.org/show_bug.cgi?id=321896
  */
 
@@ -73,7 +73,7 @@ headerfile_start = """/* GTK - The GIMP Tool Kit
  * Modified by the GTK+ Team and others 2007, 2008.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_IM_CONTEXT_SIMPLE_SEQS_H__
@@ -148,31 +148,31 @@ def usage():
 	-h, --help		this craft
 	-s, --statistics	show overall statistics (both algorithmic, non-algorithmic)
 	-a, --algorithmic	show sequences saved with algorithmic optimisation
-	-g, --gtk		show entries that go to GTK+
+	-g, --ctk		show entries that go to GTK+
 	-u, --unicodedatatxt	show compose sequences derived from UnicodeData.txt (from unicode.org)
 	-v, --verbose		show verbose output
         -p, --plane1		show plane1 compose sequences
-	-n, --numeric		when used with --gtk, create file with numeric values only
-	-e, --gtk-expanded	when used with --gtk, create file that repeats first column; not usable in GTK+
+	-n, --numeric		when used with --ctk, create file with numeric values only
+	-e, --ctk-expanded	when used with --ctk, create file that repeats first column; not usable in GTK+
 
 	Default is to show statistics.
 	"""
 
 try: 
 	opts, args = getopt.getopt(sys.argv[1:], "pvgashune", ["help", "algorithmic", "statistics", "unicodedatatxt", 
-		"stats", "gtk", "verbose", "plane1", "numeric", "gtk-expanded"])
+		"stats", "ctk", "verbose", "plane1", "numeric", "ctk-expanded"])
 except: 
 	usage()
 	sys.exit(2)
 
 opt_statistics = False
 opt_algorithmic = False
-opt_gtk = False
+opt_ctk = False
 opt_unicodedatatxt = False
 opt_verbose = False
 opt_plane1 = False
 opt_numeric = False
-opt_gtkexpanded = False
+opt_ctkexpanded = False
 
 for o, a in opts:
 	if o in ("-h", "--help"):
@@ -182,8 +182,8 @@ for o, a in opts:
 		opt_statistics = True
 	if o in ("-a", "--algorithmic"):
 		opt_algorithmic = True
-	if o in ("-g", "--gtk"):
-		opt_gtk = True	
+	if o in ("-g", "--ctk"):
+		opt_ctk = True	
 	if o in ("-u", "--unicodedatatxt"):
 		opt_unicodedatatxt = True
 	if o in ("-v", "--verbose"):
@@ -192,10 +192,10 @@ for o, a in opts:
 		opt_plane1 = True
 	if o in ("-n", "--numeric"):
 		opt_numeric = True
-	if o in ("-e", "--gtk-expanded"):
-		opt_gtkexpanded = True
+	if o in ("-e", "--ctk-expanded"):
+		opt_ctkexpanded = True
 
-if not opt_algorithmic and not opt_gtk and not opt_unicodedatatxt:
+if not opt_algorithmic and not opt_ctk and not opt_unicodedatatxt:
 	opt_statistics = True
 
 def download_hook(blocks_transferred, block_size, file_size):
@@ -782,7 +782,7 @@ def addprefix_GDK(arg):
 	else:
 		return 'GDK_KEY_%(arg)s, ' % { 'arg': arg }
 
-if opt_gtk:
+if opt_ctk:
 	first_keysym = ""
 	sequence = []
 	compose_table = []
@@ -820,7 +820,7 @@ if opt_gtk:
 
 	print headerfile_start
 	for i in compose_table:
-		if opt_gtkexpanded:
+		if opt_ctkexpanded:
 			print "0x%(ks)04X," % { "ks": keysymvalue(i[0]) },
 			print '%(str)s' % { 'str': "".join(map(lambda x : str(x) + ", ", i[1:])) }
 		elif not match('^0x', i[0]):
@@ -837,7 +837,7 @@ if opt_gtk:
 				print '0x%(seq)04X, ' % { 'seq': keysymvalue(ks) },
 			print '0x%(cp)04X, ' % { 'cp':i[-1] }
 			"""
-		elif opt_gtkexpanded:
+		elif opt_ctkexpanded:
 			print '%(seq)s0x%(cp)04X, ' % { 'seq': "".join(map(addprefix_GDK, i[:-1])), 'cp':i[-1] }
 		else:
 			print '%(seq)s0x%(cp)04X, ' % { 'seq': "".join(map(addprefix_GDK, i[:-1][1:])), 'cp':i[-1] }
@@ -967,5 +967,5 @@ if opt_statistics:
 	print "                                                           :", num_entries * 2 * 6 - zeroes * 2 + num_first_keysyms * 2 * 5
 	print
 	print "Existing (old) implementation in GTK+"
-	print "Number of sequences in old gtkimcontextsimple.c            :", 691
+	print "Number of sequences in old ctkimcontextsimple.c            :", 691
 	print "The existing (old) implementation in GTK+ takes up         :", 691 * 2 * 12, "bytes"

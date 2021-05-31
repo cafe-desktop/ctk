@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
@@ -29,24 +29,24 @@
 
 #include "gdk/gdk.h"
 
-#include "gtkdnd.h"
-#include "gtkdndprivate.h"
-#include "deprecated/gtkiconfactory.h"
-#include "gtkicontheme.h"
-#include "gtkimageprivate.h"
-#include "gtkinvisible.h"
-#include "gtkmain.h"
-#include "gtkoffscreenwindow.h"
-#include "deprecated/gtkstock.h"
-#include "gtkwindow.h"
-#include "gtkintl.h"
-#include "gtkquartz.h"
+#include "ctkdnd.h"
+#include "ctkdndprivate.h"
+#include "deprecated/ctkiconfactory.h"
+#include "ctkicontheme.h"
+#include "ctkimageprivate.h"
+#include "ctkinvisible.h"
+#include "ctkmain.h"
+#include "ctkoffscreenwindow.h"
+#include "deprecated/ctkstock.h"
+#include "ctkwindow.h"
+#include "ctkintl.h"
+#include "ctkquartz.h"
 #include "gdk/quartz/gdkquartz.h"
-#include "gdk/quartz/gdkquartz-gtk-only.h"
+#include "gdk/quartz/gdkquartz-ctk-only.h"
 #include "gdk/quartz/gdkquartzdnd.h"
-#include "gtkselectionprivate.h"
-#include "gtksettings.h"
-#include "gtkiconhelperprivate.h"
+#include "ctkselectionprivate.h"
+#include "ctksettings.h"
+#include "ctkiconhelperprivate.h"
 
 typedef struct _GtkDragSourceInfo GtkDragSourceInfo;
 typedef struct _GtkDragDestInfo GtkDragDestInfo;
@@ -179,7 +179,7 @@ ctk_drag_get_data (GtkWidget      *widget,
   pasteboard = [dragging_info draggingPasteboard];
 
   info = ctk_drag_get_dest_info (context, FALSE);
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
 
   selection_data = _ctk_quartz_get_selection_data_from_pasteboard (pasteboard,
 								   target, 0);
@@ -262,7 +262,7 @@ ctk_drag_get_dest_info (GdkDragContext *context,
   GtkDragDestInfo *info;
   static GQuark info_quark = 0;
   if (!info_quark)
-    info_quark = g_quark_from_static_string ("gtk-dest-info");
+    info_quark = g_quark_from_static_string ("ctk-dest-info");
   
   info = g_object_get_qdata (G_OBJECT (context), info_quark);
   if (!info && create)
@@ -287,7 +287,7 @@ ctk_drag_get_source_info (GdkDragContext *context,
   GtkDragSourceInfo *info;
 
   if (!dest_info_quark)
-    dest_info_quark = g_quark_from_static_string ("gtk-source-info");
+    dest_info_quark = g_quark_from_static_string ("ctk-source-info");
   
   info = g_object_get_qdata (G_OBJECT (context), dest_info_quark);
   if (!info && create)
@@ -442,7 +442,7 @@ ctk_drag_dest_set (GtkWidget            *widget,
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  old_site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  old_site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
 
   site = g_new0 (GtkDragDestSite, 1);
   site->flags = flags;
@@ -468,7 +468,7 @@ ctk_drag_dest_set (GtkWidget            *widget,
   g_signal_connect (widget, "hierarchy-changed",
 		    G_CALLBACK (ctk_drag_dest_hierarchy_changed), site);
 
-  g_object_set_data_full (G_OBJECT (widget), I_("gtk-drag-dest"),
+  g_object_set_data_full (G_OBJECT (widget), I_("ctk-drag-dest"),
 			  site, ctk_drag_dest_site_destroy);
 }
 
@@ -502,7 +502,7 @@ ctk_drag_dest_unset (GtkWidget *widget)
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  old_site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  old_site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
   if (old_site)
     {
       g_signal_handlers_disconnect_by_func (widget,
@@ -513,7 +513,7 @@ ctk_drag_dest_unset (GtkWidget *widget)
                                             old_site);
     }
 
-  g_object_set_data (G_OBJECT (widget), I_("gtk-drag-dest"), NULL);
+  g_object_set_data (G_OBJECT (widget), I_("ctk-drag-dest"), NULL);
 }
 
 /**
@@ -528,7 +528,7 @@ ctk_drag_dest_get_target_list (GtkWidget *widget)
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
 
   return site ? site->target_list : NULL;  
 }
@@ -546,7 +546,7 @@ ctk_drag_dest_set_target_list (GtkWidget      *widget,
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
   
   if (!site)
     {
@@ -753,7 +753,7 @@ ctk_drag_find_widget (GtkWidget       *widget,
        * a drop site.
        */
       if (!data->found &&
-	  g_object_get_data (G_OBJECT (widget), "gtk-drag-dest"))
+	  g_object_get_data (G_OBJECT (widget), "ctk-drag-dest"))
 	{
 	  data->found = data->callback (widget,
 					data->context,
@@ -780,7 +780,7 @@ ctk_drag_dest_leave (GtkWidget      *widget,
 {
   GtkDragDestSite *site;
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
   g_return_if_fail (site != NULL);
 
   if ((site->flags & CTK_DEST_DEFAULT_HIGHLIGHT) && site->have_drag)
@@ -804,7 +804,7 @@ ctk_drag_dest_motion (GtkWidget	     *widget,
   GdkDragAction action = 0;
   gboolean retval;
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
   g_return_val_if_fail (site != NULL, FALSE);
 
   if (site->track_motion || site->flags & CTK_DEST_DEFAULT_MOTION)
@@ -848,7 +848,7 @@ ctk_drag_dest_drop (GtkWidget	     *widget,
   GtkDragDestInfo *info;
   gboolean retval;
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
   g_return_val_if_fail (site != NULL, FALSE);
 
   info = ctk_drag_get_dest_info (context, FALSE);
@@ -889,7 +889,7 @@ ctk_drag_dest_set_track_motion (GtkWidget *widget,
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
   
   g_return_if_fail (site != NULL);
 
@@ -907,7 +907,7 @@ ctk_drag_dest_get_track_motion (GtkWidget *widget)
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
 
   if (site)
     return site->track_motion;
@@ -1691,7 +1691,7 @@ ctk_drag_check_threshold (GtkWidget *widget,
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
   g_object_get (ctk_widget_get_settings (widget),
-		"gtk-dnd-drag-threshold", &drag_threshold,
+		"ctk-dnd-drag-threshold", &drag_threshold,
 		NULL);
   
   return (ABS (current_x - start_x) > drag_threshold ||

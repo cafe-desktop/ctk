@@ -19,30 +19,30 @@
 
 #include "config.h"
 
-#include "gtkmodelbutton.h"
+#include "ctkmodelbutton.h"
 
-#include "gtkbutton.h"
-#include "gtkbuttonprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkmenutrackeritem.h"
-#include "gtkimage.h"
-#include "gtklabel.h"
-#include "gtkbox.h"
-#include "gtkrender.h"
-#include "gtkstylecontext.h"
-#include "gtktypebuiltins.h"
-#include "gtkstack.h"
-#include "gtkpopover.h"
-#include "gtkintl.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkbuiltiniconprivate.h"
-#include "gtkcsstypesprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkcontainerprivate.h"
+#include "ctkbutton.h"
+#include "ctkbuttonprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkmenutrackeritem.h"
+#include "ctkimage.h"
+#include "ctklabel.h"
+#include "ctkbox.h"
+#include "ctkrender.h"
+#include "ctkstylecontext.h"
+#include "ctktypebuiltins.h"
+#include "ctkstack.h"
+#include "ctkpopover.h"
+#include "ctkintl.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkbuiltiniconprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkcontainerprivate.h"
 
 /**
- * SECTION:gtkmodelbutton
+ * SECTION:ctkmodelbutton
  * @Short_description: A button that uses a GAction as model
  * @Title: GtkModelButton
  *

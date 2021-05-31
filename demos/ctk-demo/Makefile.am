@@ -1,4 +1,4 @@
-## Makefile.am for gtk+/demos
+## Makefile.am for ctk+/demos
 include $(top_srcdir)/Makefile.decl
 
 ## These should be in the order you want them to appear in the
@@ -95,19 +95,19 @@ AM_CPPFLAGS = \
 	$(CTK_DEP_CFLAGS)
 
 DEPS = \
-	$(top_builddir)/gtk/libgtk-3.la
+	$(top_builddir)/ctk/libctk-3.la
 
 LDADDS = \
-	$(top_builddir)/gtk/libgtk-3.la		\
+	$(top_builddir)/ctk/libctk-3.la		\
 	$(top_builddir)/gdk/libgdk-3.la		\
 	$(CTK_DEP_LIBS)				\
 	$(GDK_DEP_LIBS)				\
 	-lm
 
-bin_PROGRAMS = gtk3-demo gtk3-demo-application
+bin_PROGRAMS = ctk3-demo ctk3-demo-application
 
 desktopdir = $(datadir)/applications
-dist_desktop_DATA = gtk3-demo.desktop
+dist_desktop_DATA = ctk3-demo.desktop
 
 BUILT_SOURCES = demos.h demo_resources.c
 
@@ -117,13 +117,13 @@ EXTRA_DIST += 				\
 	demo.gresource.xml		\
 	$(resource_files)		\
 	makefile.msc.in			\
-	org.gtk.Demo.gschema.xml	\
+	org.ctk.Demo.gschema.xml	\
 	demos.h.win32	\
 	meson.build	\
 	geninclude.py
 
 gsettings_SCHEMAS = \
-	org.gtk.Demo.gschema.xml
+	org.ctk.Demo.gschema.xml
 
 @GSETTINGS_RULES@
 
@@ -133,24 +133,24 @@ demos.h: $(demos) geninclude.pl
 demos.h.win32: $(demos_base) geninclude.pl
 	 $(AM_V_GEN) (here=`pwd` ; cd $(srcdir) && $(PERL) $$here/geninclude.pl $(demos_base)) > demos.h.win32
 
-nodist_gtk3_demo_SOURCES = demos.h
+nodist_ctk3_demo_SOURCES = demos.h
 
-gtk3_demo_SOURCES = 		\
+ctk3_demo_SOURCES = 		\
 	$(demos)		\
-	gtkfishbowl.c		\
-	gtkfishbowl.h		\
+	ctkfishbowl.c		\
+	ctkfishbowl.h		\
 	demo_resources.c	\
 	main.c
 
-gtk3_demo_DEPENDENCIES = $(DEPS)
-gtk3_demo_LDADD = $(LDADDS)
-gtk3_demo_LDFLAGS = -export-dynamic
+ctk3_demo_DEPENDENCIES = $(DEPS)
+ctk3_demo_LDADD = $(LDADDS)
+ctk3_demo_LDFLAGS = -export-dynamic
 
-gtk3_demo_application_SOURCES = \
+ctk3_demo_application_SOURCES = \
 	application.c 		\
 	demo_resources.c
 
-gtk3_demo_application_LDADD = $(LDADDS)
+ctk3_demo_application_LDADD = $(LDADDS)
 
 resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/demo.gresource.xml)
 
@@ -167,14 +167,14 @@ appsicon48dir = $(iconthemedir)/48x48/apps
 appsicon256dir = $(iconthemedir)/256x256/apps
 appsiconscalabledir = $(iconthemedir)/scalable/apps
 
-dist_appsicon16_DATA = data/16x16/gtk3-demo.png data/16x16/gtk3-demo-symbolic.symbolic.png
-dist_appsicon22_DATA = data/22x22/gtk3-demo.png data/22x22/gtk3-demo-symbolic.symbolic.png
-dist_appsicon24_DATA = data/24x24/gtk3-demo.png data/24x24/gtk3-demo-symbolic.symbolic.png
-dist_appsicon32_DATA = data/32x32/gtk3-demo.png data/32x32/gtk3-demo-symbolic.symbolic.png
-dist_appsicon48_DATA = data/48x48/gtk3-demo.png data/48x48/gtk3-demo-symbolic.symbolic.png
-dist_appsicon256_DATA = data/256x256/gtk3-demo.png data/256x256/gtk3-demo-symbolic.symbolic.png
+dist_appsicon16_DATA = data/16x16/ctk3-demo.png data/16x16/ctk3-demo-symbolic.symbolic.png
+dist_appsicon22_DATA = data/22x22/ctk3-demo.png data/22x22/ctk3-demo-symbolic.symbolic.png
+dist_appsicon24_DATA = data/24x24/ctk3-demo.png data/24x24/ctk3-demo-symbolic.symbolic.png
+dist_appsicon32_DATA = data/32x32/ctk3-demo.png data/32x32/ctk3-demo-symbolic.symbolic.png
+dist_appsicon48_DATA = data/48x48/ctk3-demo.png data/48x48/ctk3-demo-symbolic.symbolic.png
+dist_appsicon256_DATA = data/256x256/ctk3-demo.png data/256x256/ctk3-demo-symbolic.symbolic.png
 
-update_icon_cache = $(top_builddir)/gtk/gtk-update-icon-cache$(EXEEXT) --ignore-theme-index --force
+update_icon_cache = $(top_builddir)/ctk/ctk-update-icon-cache$(EXEEXT) --ignore-theme-index --force
 
 install-data-hook: install-update-icon-cache
 uninstall-hook: uninstall-update-icon-cache
@@ -188,19 +188,19 @@ uninstall-update-icon-cache:
 	test -n "$(DESTDIR)" || $(update_icon_cache) "$(iconthemedir)"
 
 # ------------------- MSVC Build Items ----------------
-MSVCPROJS = gtk3-demo gtk3-demo-application
+MSVCPROJS = ctk3-demo ctk3-demo-application
 
-gtk3_demo_FILES = $(gtk3_demo_SOURCES)
-gtk3_demo_EXCLUDES = font_features.c|pagesetup.c
+ctk3_demo_FILES = $(ctk3_demo_SOURCES)
+ctk3_demo_EXCLUDES = font_features.c|pagesetup.c
 
-gtk3_demo_application_FILES = $(gtk3_demo_application_SOURCES)
-gtk3_demo_application_EXCLUDES = dummy
+ctk3_demo_application_FILES = $(ctk3_demo_application_SOURCES)
+ctk3_demo_application_EXCLUDES = dummy
 
 include $(top_srcdir)/win32/Makefile.msvcproj
 
 dist-hook: \
-	$(top_builddir)/win32/vs9/gtk3-demo.vcproj	\
-	$(top_builddir)/win32/vs9/gtk3-demo-application.vcproj
+	$(top_builddir)/win32/vs9/ctk3-demo.vcproj	\
+	$(top_builddir)/win32/vs9/ctk3-demo-application.vcproj
 
 DISTCLEANFILES = demos.h demos.h.win32
 

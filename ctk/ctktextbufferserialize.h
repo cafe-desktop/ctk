@@ -1,4 +1,4 @@
-/* gtktextbufferserialize.h
+/* ctktextbufferserialize.h
  *
  * Copyright (C) 2004 Nokia Corporation.
  *
@@ -19,7 +19,7 @@
 #ifndef __CTK_TEXT_BUFFER_SERIALIZE_H__
 #define __CTK_TEXT_BUFFER_SERIALIZE_H__
 
-#include <gtk/gtktextbuffer.h>
+#include <ctk/ctktextbuffer.h>
 
 guint8 * _ctk_text_buffer_serialize_rich_text   (GtkTextBuffer     *register_buffer,
                                                  GtkTextBuffer     *content_buffer,

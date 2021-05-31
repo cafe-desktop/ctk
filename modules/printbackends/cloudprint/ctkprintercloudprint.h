@@ -1,4 +1,4 @@
-/* gtkprintercloudprint.h: Google Cloud Print -specific Printer class
+/* ctkprintercloudprint.h: Google Cloud Print -specific Printer class
  * GtkPrinterCloudprint
  * Copyright (C) 2014, Red Hat, Inc.
  *
@@ -20,9 +20,9 @@
 #define __CTK_PRINTER_CLOUDPRINT_H__
 
 #include <glib-object.h>
-#include <gtk/gtkprinter-private.h>
+#include <ctk/ctkprinter-private.h>
 
-#include "gtkcloudprintaccount.h"
+#include "ctkcloudprintaccount.h"
 
 G_BEGIN_DECLS
 

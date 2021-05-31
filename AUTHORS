@@ -9,24 +9,24 @@ Josh MacDonald    <jmacd@xcf.berkeley.edu>
 
 The GTK+ Team (in alphabetical order)
 -------------------------------------
-Shawn T. Amundson <amundson@gtk.org>
-Jerome Bolliet    <bolliet@gtk.org>
-Damon Chaplin     <damon@gtk.org>
-Tony Gale         <gale@gtk.org>
-Jeff Garzik       <jgarzik@gtk.org>
-Lars Hamann       <lars@gtk.org>
-Raja R Harinath   <harinath@gtk.org>
-Carsten Haitzler  <raster@gtk.org>
-Tim Janik         <timj@gtk.org>
-Stefan Jeske      <stefan@gtk.org>
-Elliot Lee        <sopwith@gtk.org>
-Raph Levien       <raph@gtk.org>
-Ian Main          <imain@gtk.org>
-Federico Mena     <quartic@gtk.org>
-Paolo Molaro      <lupus@gtk.org>
-Jay Painter       <jpaint@gtk.org>
-Manish Singh      <manish@gtk.org>
-Owen Taylor       <otaylor@gtk.org>
+Shawn T. Amundson <amundson@ctk.org>
+Jerome Bolliet    <bolliet@ctk.org>
+Damon Chaplin     <damon@ctk.org>
+Tony Gale         <gale@ctk.org>
+Jeff Garzik       <jgarzik@ctk.org>
+Lars Hamann       <lars@ctk.org>
+Raja R Harinath   <harinath@ctk.org>
+Carsten Haitzler  <raster@ctk.org>
+Tim Janik         <timj@ctk.org>
+Stefan Jeske      <stefan@ctk.org>
+Elliot Lee        <sopwith@ctk.org>
+Raph Levien       <raph@ctk.org>
+Ian Main          <imain@ctk.org>
+Federico Mena     <quartic@ctk.org>
+Paolo Molaro      <lupus@ctk.org>
+Jay Painter       <jpaint@ctk.org>
+Manish Singh      <manish@ctk.org>
+Owen Taylor       <otaylor@ctk.org>
 
 There are many others who have contributed patches; we thank them,
 GTK+ is much better because of them.

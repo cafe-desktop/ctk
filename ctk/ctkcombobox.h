@@ -1,5 +1,5 @@
-/* gtkcombobox.h
- * Copyright (C) 2002, 2003  Kristian Rietveld <kris@gtk.org>
+/* ctkcombobox.h
+ * Copyright (C) 2002, 2003  Kristian Rietveld <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -19,12 +19,12 @@
 #define __CTK_COMBO_BOX_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkbin.h>
-#include <gtk/gtktreemodel.h>
-#include <gtk/gtktreeview.h>
+#include <ctk/ctkbin.h>
+#include <ctk/ctktreemodel.h>
+#include <ctk/ctktreeview.h>
 
 G_BEGIN_DECLS
 

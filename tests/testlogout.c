@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *win;
 static GtkWidget *inhibit_entry;
@@ -142,7 +142,7 @@ main (int argc, char *argv[])
 {
   GtkApplication *app;
 
-  app = ctk_application_new ("org.gtk.Test.session", 0);
+  app = ctk_application_new ("org.ctk.Test.session", 0);
   g_object_set (app, "register-session", TRUE, NULL);
 
   g_signal_connect (app, "activate",

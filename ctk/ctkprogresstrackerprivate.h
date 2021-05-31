@@ -21,7 +21,7 @@
 #define __CTK_PROGRESS_TRACKER_PRIVATE_H__
 
 #include <glib-object.h>
-#include "gtkcsseasevalueprivate.h"
+#include "ctkcsseasevalueprivate.h"
 
 G_BEGIN_DECLS
 

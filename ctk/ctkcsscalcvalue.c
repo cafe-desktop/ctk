@@ -17,7 +17,7 @@
 
 #include "config.h"
 
-#include "gtkcsscalcvalueprivate.h"
+#include "ctkcsscalcvalueprivate.h"
 
 #include <string.h>
 

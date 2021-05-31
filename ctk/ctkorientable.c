@@ -1,7 +1,7 @@
 /* GTK - The GIMP Toolkit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
- * gtkorientable.c
+ * ctkorientable.c
  * Copyright (C) 2008 Imendio AB
  * Contact: Michael Natterer <mitch@imendio.com>
  *
@@ -21,14 +21,14 @@
 
 #include "config.h"
 
-#include "gtkorientableprivate.h"
-#include "gtkprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkintl.h"
+#include "ctkorientableprivate.h"
+#include "ctkprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtkorientable
+ * SECTION:ctkorientable
  * @Short_description: An interface for flippable widgets
  * @Title: GtkOrientable
  *

@@ -20,22 +20,22 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkscrollbar.h"
-#include "gtkrangeprivate.h"
+#include "ctkscrollbar.h"
+#include "ctkrangeprivate.h"
 
-#include "gtkadjustment.h"
-#include "gtkintl.h"
-#include "gtkorientable.h"
-#include "gtkprivate.h"
+#include "ctkadjustment.h"
+#include "ctkintl.h"
+#include "ctkorientable.h"
+#include "ctkprivate.h"
 
 
 /**
- * SECTION:gtkscrollbar
+ * SECTION:ctkscrollbar
  * @Short_description: A Scrollbar
  * @Title: GtkScrollbar
  * @See_also: #GtkAdjustment, #GtkScrolledWindow

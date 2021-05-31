@@ -16,7 +16,7 @@
  */
 
 #if !defined (__CTK_UNIX_PRINT_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtkunixprint.h> can be included directly."
+#error "Only <ctk/ctkunixprint.h> can be included directly."
 #endif
 
 #ifndef __GI_SCANNER__

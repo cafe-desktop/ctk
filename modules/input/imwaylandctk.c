@@ -20,12 +20,12 @@
 #include <string.h>
 #include <wayland-client-protocol.h>
 
-#include <gtk/gtk.h>
-#include "gtk/gtkintl.h"
-#include "gtk/gtkimmodule.h"
+#include <ctk/ctk.h>
+#include "ctk/ctkintl.h"
+#include "ctk/ctkimmodule.h"
 
 #include "gdk/wayland/gdkwayland.h"
-#include "gtk-text-input-client-protocol.h"
+#include "ctk-text-input-client-protocol.h"
 
 typedef struct _GtkIMContextWaylandGlobal GtkIMContextWaylandGlobal;
 typedef struct _GtkIMContextWayland GtkIMContextWayland;
@@ -78,10 +78,10 @@ static GtkIMContextWaylandGlobal *global = NULL;
 
 static const GtkIMContextInfo imwayland_info =
 {
-  "waylandgtk",      /* ID */
-  NC_("input method menu", "Waylandgtk"),      /* Human readable name */
+  "waylandctk",      /* ID */
+  NC_("input method menu", "Waylandctk"),      /* Human readable name */
   GETTEXT_PACKAGE, /* Translation domain */
-  CTK_LOCALEDIR,   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+  CTK_LOCALEDIR,   /* Dir for bindtextdomain (not strictly needed for "ctk+") */
   "",              /* Languages for which this module is the default */
 };
 
@@ -698,7 +698,7 @@ MODULE_ENTRY (void, list) (const GtkIMContextInfo *** contexts, int *n_contexts)
 
 MODULE_ENTRY (GtkIMContext *, create) (const gchar * context_id)
 {
-  if (strcmp (context_id, "waylandgtk") == 0)
+  if (strcmp (context_id, "waylandctk") == 0)
     return g_object_new (type_wayland, NULL);
   else
     return NULL;

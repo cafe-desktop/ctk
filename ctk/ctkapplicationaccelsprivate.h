@@ -23,7 +23,7 @@
 #define __CTK_APPLICATION_ACCELS_H__
 
 #include <gio/gio.h>
-#include "gtkwindowprivate.h"
+#include "ctkwindowprivate.h"
 
 G_BEGIN_DECLS
 

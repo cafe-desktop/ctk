@@ -17,49 +17,49 @@
 -->
 <schemalist>
 
-  <enum id='org.gtk.Settings.FileChooser.LocationMode'>
+  <enum id='org.ctk.Settings.FileChooser.LocationMode'>
     <value nick='path-bar' value='0'/>
     <value nick='filename-entry' value='1'/>
   </enum>
 
-  <enum id='org.gtk.Settings.FileChooser.SortColumn'>
+  <enum id='org.ctk.Settings.FileChooser.SortColumn'>
     <value nick='name' value='0'/>
     <value nick='size' value='1'/>
     <value nick='type' value='2'/>
     <value nick='modified' value='3'/>
   </enum>
 
-  <enum id='org.gtk.Settings.FileChooser.SortOrder'>
+  <enum id='org.ctk.Settings.FileChooser.SortOrder'>
     <value nick='ascending' value='0'/>
     <value nick='descending' value='1'/>
   </enum>
 
-  <enum id='org.gtk.Settings.FileChooser.StartupMode'>
+  <enum id='org.ctk.Settings.FileChooser.StartupMode'>
     <value nick='recent' value='0'/>
     <value nick='cwd' value='1'/>
   </enum>
 
-  <enum id='org.gtk.Settings.FileChooser.ClockFormat'>
+  <enum id='org.ctk.Settings.FileChooser.ClockFormat'>
     <value nick='24h' value='0'/>
     <value nick='12h' value='1'/>
   </enum>
 
-  <enum id='org.gtk.Settings.FileChooser.DateFormat'>
+  <enum id='org.ctk.Settings.FileChooser.DateFormat'>
     <value nick='regular' value='0'/>
     <value nick='with-time' value='1'/>
   </enum>
 
-  <enum id='org.gtk.Settings.FileChooser.TypeFormat'>
+  <enum id='org.ctk.Settings.FileChooser.TypeFormat'>
     <value nick='mime' value='0'/>
     <value nick='description' value='1'/>
     <value nick='category' value='2'/>
   </enum>
 
-  <schema id='org.gtk.Settings.FileChooser' path='/org/gtk/settings/file-chooser/'>
+  <schema id='org.ctk.Settings.FileChooser' path='/org/ctk/settings/file-chooser/'>
     <key name='last-folder-uri' type='s'>
       <default>""</default>
     </key>
-    <key name='location-mode' enum='org.gtk.Settings.FileChooser.LocationMode'>
+    <key name='location-mode' enum='org.ctk.Settings.FileChooser.LocationMode'>
       <default>'path-bar'</default>
       <summary>Location mode</summary>
       <description>
@@ -101,7 +101,7 @@
 	Controls whether the file chooser shows a column with file types.
       </description>
     </key>
-    <key name='sort-column' enum='org.gtk.Settings.FileChooser.SortColumn'>
+    <key name='sort-column' enum='org.ctk.Settings.FileChooser.SortColumn'>
       <default>'name'</default>
       <summary>Sort column</summary>
       <description>
@@ -110,7 +110,7 @@
 	the list of files.
       </description>
     </key>
-    <key name='sort-order' enum='org.gtk.Settings.FileChooser.SortOrder'>
+    <key name='sort-order' enum='org.ctk.Settings.FileChooser.SortOrder'>
       <default>'ascending'</default>
       <summary>Sort order</summary>
       <description>
@@ -132,7 +132,7 @@
 	The size (width, height) of the GtkFileChooserDialog's window, in pixels.
       </description>
     </key>
-    <key name='startup-mode' enum='org.gtk.Settings.FileChooser.StartupMode'>
+    <key name='startup-mode' enum='org.ctk.Settings.FileChooser.StartupMode'>
       <default>'recent'</default>
       <summary>Startup mode</summary>
       <description>
@@ -148,21 +148,21 @@
 	Width in pixels of the file chooser's places sidebar.
       </description>
     </key>
-    <key name="clock-format" enum="org.gtk.Settings.FileChooser.ClockFormat">
+    <key name="clock-format" enum="org.ctk.Settings.FileChooser.ClockFormat">
       <default>'24h'</default>
       <summary>Time format</summary>
       <description>
         Whether the time is shown in 24h or 12h format.
       </description>
     </key>
-    <key name="date-format" enum="org.gtk.Settings.FileChooser.DateFormat">
+    <key name="date-format" enum="org.ctk.Settings.FileChooser.DateFormat">
       <default>'regular'</default>
       <summary>Date format</summary>
       <description>
         The amount of detail to show in the Modified column.
       </description>
     </key>
-    <key name="type-format" enum="org.gtk.Settings.FileChooser.TypeFormat">
+    <key name="type-format" enum="org.ctk.Settings.FileChooser.TypeFormat">
       <default>'category'</default>
       <summary>Type format</summary>
       <description>

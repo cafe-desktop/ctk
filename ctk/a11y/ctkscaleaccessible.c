@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkscaleaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkscaleaccessible.h"
 
 G_DEFINE_TYPE (GtkScaleAccessible, ctk_scale_accessible, CTK_TYPE_RANGE_ACCESSIBLE)
 

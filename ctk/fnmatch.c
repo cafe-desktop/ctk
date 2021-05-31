@@ -18,7 +18,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /*
@@ -29,7 +29,7 @@
 
 #include "config.h"
 
-#include "gtkprivate.h"
+#include "ctkprivate.h"
 
 #include <string.h>
 
@@ -236,7 +236,7 @@ ctk_fnmatch_intern (const char *pattern,
  * in various ways and didn’t handle UTF-8. The following is
  * converted to UTF-8. To simplify the process of making it
  * correct, this is special-cased to the combinations of flags
- * that gtkfilesel.c uses.
+ * that ctkfilesel.c uses.
  *
  *   FNM_FILE_NAME   - always set
  *   FNM_LEADING_DIR - never set

@@ -12,5 +12,5 @@ Description: GTK+ Graphical UI Library
 Version: @VERSION@
 Requires: gdk-@CTK_API_VERSION@ @CTK_PACKAGES@
 Requires.private: @CTK_PRIVATE_PACKAGES@
-Libs: -L${libdir} -lgtk-3 @CTK_EXTRA_LIBS@
-Cflags: -I${includedir}/gtk-@CTK_API_VERSION@ @CTK_EXTRA_CFLAGS@
+Libs: -L${libdir} -lctk-3 @CTK_EXTRA_LIBS@
+Cflags: -I${includedir}/ctk-@CTK_API_VERSION@ @CTK_EXTRA_CFLAGS@

@@ -18,13 +18,13 @@
 
 #include "config.h"
 
-#include "gtkoffscreenwindow.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkprivate.h"
+#include "ctkoffscreenwindow.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkprivate.h"
 
 /**
- * SECTION:gtkoffscreenwindow
+ * SECTION:ctkoffscreenwindow
  * @short_description: A toplevel to manage offscreen rendering of child widgets
  * @title: GtkOffscreenWindow
  *

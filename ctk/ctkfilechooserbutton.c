@@ -1,6 +1,6 @@
 /* -*- Mode: C; c-file-style: "gnu"; tab-width: 8 -*- */
 
-/* GTK+: gtkfilechooserbutton.c
+/* GTK+: ctkfilechooserbutton.c
  *
  * Copyright (c) 2004 James M. Cape <jcape@ignore-your.tv>
  *
@@ -28,41 +28,41 @@
 
 #include <string.h>
 
-#include "gtkintl.h"
-#include "gtkbutton.h"
-#include "gtkcelllayout.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtkcombobox.h"
-#include "gtkcssiconthemevalueprivate.h"
-#include "gtkdnd.h"
-#include "gtkdragdest.h"
-#include "gtkicontheme.h"
-#include "deprecated/gtkiconfactory.h"
-#include "gtkimage.h"
-#include "gtklabel.h"
-#include "gtkliststore.h"
-#include "deprecated/gtkstock.h"
-#include "gtktreemodelfilter.h"
-#include "gtkseparator.h"
-#include "gtkfilechooserdialog.h"
-#include "gtkfilechoosernative.h"
-#include "gtkfilechooserprivate.h"
-#include "gtkfilechooserutils.h"
-#include "gtkmarshalers.h"
+#include "ctkintl.h"
+#include "ctkbutton.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcellrendererpixbuf.h"
+#include "ctkcombobox.h"
+#include "ctkcssiconthemevalueprivate.h"
+#include "ctkdnd.h"
+#include "ctkdragdest.h"
+#include "ctkicontheme.h"
+#include "deprecated/ctkiconfactory.h"
+#include "ctkimage.h"
+#include "ctklabel.h"
+#include "ctkliststore.h"
+#include "deprecated/ctkstock.h"
+#include "ctktreemodelfilter.h"
+#include "ctkseparator.h"
+#include "ctkfilechooserdialog.h"
+#include "ctkfilechoosernative.h"
+#include "ctkfilechooserprivate.h"
+#include "ctkfilechooserutils.h"
+#include "ctkmarshalers.h"
 
-#include "gtkfilechooserbutton.h"
+#include "ctkfilechooserbutton.h"
 
-#include "gtkorientable.h"
+#include "ctkorientable.h"
 
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtksettings.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkbitmaskprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctksettings.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkbitmaskprivate.h"
 
 /**
- * SECTION:gtkfilechooserbutton
+ * SECTION:ctkfilechooserbutton
  * @Short_description: A button to launch a file selection dialog
  * @Title: GtkFileChooserButton
  * @See_also:#GtkFileChooserDialog
@@ -111,7 +111,7 @@
 #define FALLBACK_ICON_SIZE	16
 #define DEFAULT_TITLE		N_("Select a File")
 #define DESKTOP_DISPLAY_NAME	N_("Desktop")
-#define FALLBACK_DISPLAY_NAME	N_("(None)") /* this string is used in gtk+/gtk/tests/filechooser.c - change it there if you change it here */
+#define FALLBACK_DISPLAY_NAME	N_("(None)") /* this string is used in ctk+/ctk/tests/filechooser.c - change it there if you change it here */
 
 
 /* ********************** *
@@ -137,7 +137,7 @@ enum
 
 /* TreeModel Columns
  *
- * keep in line with the store defined in gtkfilechooserbutton.ui
+ * keep in line with the store defined in ctkfilechooserbutton.ui
  */
 enum
 {
@@ -464,7 +464,7 @@ ctk_file_chooser_button_class_init (GtkFileChooserButtonClass * class)
   /* Bind class to template
    */
   ctk_widget_class_set_template_from_resource (widget_class,
-					       "/org/gtk/libgtk/ui/gtkfilechooserbutton.ui");
+					       "/org/ctk/libctk/ui/ctkfilechooserbutton.ui");
 
   ctk_widget_class_bind_template_child_private (widget_class, GtkFileChooserButton, model);
   ctk_widget_class_bind_template_child_private (widget_class, GtkFileChooserButton, button);

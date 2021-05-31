@@ -1,4 +1,4 @@
-/* gtkscrollable.h
+/* ctkscrollable.h
  * Copyright (C) 2008 Tadej Borovšak <tadeboro@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,13 +19,13 @@
 #define __CTK_SCROLLABLE_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <gdk/gdk.h>
-#include <gtk/gtkenums.h>
-#include <gtk/gtktypes.h>
-#include <gtk/gtkborder.h>
+#include <ctk/ctkenums.h>
+#include <ctk/ctktypes.h>
+#include <ctk/ctkborder.h>
 
 G_BEGIN_DECLS
 

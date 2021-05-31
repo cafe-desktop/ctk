@@ -21,7 +21,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -2177,7 +2177,7 @@ _gdk_win32_dnd_do_dragdrop (void)
 }
 
 /* Untested, may not work ...
- * ... but as of this writing is only used by exlusive X11 gtksocket.c
+ * ... but as of this writing is only used by exlusive X11 ctksocket.c
  */
 GdkDragProtocol
 _gdk_win32_window_get_drag_protocol (GdkWindow *window,
@@ -2656,7 +2656,7 @@ _gdk_win32_window_register_dnd (GdkWindow *window)
       /* We always claim to accept dropped files, but in fact we might not,
        * of course. This function is called in such a way that it cannot know
        * whether the window (widget) in question actually accepts files
-       * (in gtk, data of type text/uri-list) or not.
+       * (in ctk, data of type text/uri-list) or not.
        */
       gdk_window_add_filter (window, gdk_dropfiles_filter, NULL);
       DragAcceptFiles (GDK_WINDOW_HWND (window), TRUE);

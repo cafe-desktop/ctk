@@ -1,4 +1,4 @@
-/* gtkpathbar.h
+/* ctkpathbar.h
  * Copyright (C) 2004  Red Hat, Inc.,  Jonathan Blandford <jrb@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -18,8 +18,8 @@
 #ifndef __CTK_PATH_BAR_H__
 #define __CTK_PATH_BAR_H__
 
-#include "gtkcontainer.h"
-#include "gtkfilesystem.h"
+#include "ctkcontainer.h"
+#include "ctkfilesystem.h"
 
 G_BEGIN_DECLS
 

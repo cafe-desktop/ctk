@@ -22,13 +22,13 @@
 #include "window.h"
 #include "object-tree.h"
 
-#include "gtktypebuiltins.h"
-#include "gtktreeview.h"
-#include "gtkbuildable.h"
-#include "gtklabel.h"
-#include "gtkframe.h"
-#include "gtkbutton.h"
-#include "gtkwidgetprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctktreeview.h"
+#include "ctkbuildable.h"
+#include "ctklabel.h"
+#include "ctkframe.h"
+#include "ctkbutton.h"
+#include "ctkwidgetprivate.h"
 
 
 struct _GtkInspectorMiscInfoPrivate {
@@ -609,7 +609,7 @@ ctk_inspector_misc_info_class_init (GtkInspectorMiscInfoClass *klass)
       g_param_spec_object ("object-tree", "Object Tree", "Object tree",
                            CTK_TYPE_WIDGET, G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/inspector/misc-info.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/inspector/misc-info.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, address);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, refcount_row);
   ctk_widget_class_bind_template_child_private (widget_class, GtkInspectorMiscInfo, refcount);

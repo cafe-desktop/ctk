@@ -1,5 +1,5 @@
-/* gtkcelllayout.c
- * Copyright (C) 2003  Kristian Rietveld  <kris@gtk.org>
+/* ctkcelllayout.c
+ * Copyright (C) 2003  Kristian Rietveld  <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -16,7 +16,7 @@
  */
 
 /**
- * SECTION:gtkcelllayout
+ * SECTION:ctkcelllayout
  * @Short_Description: An interface for packing cells
  * @Title: GtkCellLayout
  *
@@ -129,9 +129,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <errno.h>
-#include "gtkcelllayout.h"
-#include "gtkbuilderprivate.h"
-#include "gtkintl.h"
+#include "ctkcelllayout.h"
+#include "ctkbuilderprivate.h"
+#include "ctkintl.h"
 
 #define warn_no_cell_area(func)					\
   g_critical ("%s: Called but no GtkCellArea is available yet", func)

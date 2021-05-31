@@ -19,29 +19,29 @@
 
 #include "config.h"
 
-#include "gtkspinbutton.h"
-#include "gtkmain.h"
-#include "gtkbox.h"
-#include "gtklabel.h"
-#include "gtkbutton.h"
-#include "gtktextview.h"
-#include "gtkrange.h"
+#include "ctkspinbutton.h"
+#include "ctkmain.h"
+#include "ctkbox.h"
+#include "ctklabel.h"
+#include "ctkbutton.h"
+#include "ctktextview.h"
+#include "ctkrange.h"
 
 #include <locale.h>
 #include <string.h>
 #include <math.h>
 
 /* This is a hack.
- * We want to include the same headers as gtktypefuncs.c but we are not
- * allowed to include gtkx.h directly during GTK compilation.
+ * We want to include the same headers as ctktypefuncs.c but we are not
+ * allowed to include ctkx.h directly during GTK compilation.
  * So....
  */
 #undef CTK_COMPILATION
-#include <gtk/gtkx.h>
+#include <ctk/ctkx.h>
 #define CTK_COMPILATION
 
 /**
- * SECTION:gtktesting
+ * SECTION:ctktesting
  * @Short_description: Utilities for testing GTK+ applications
  * @Title: Testing
  */
@@ -764,7 +764,7 @@ ctk_test_register_all_types (void)
       GType *tp;
       all_registered_types = g_new0 (GType, max_ctk_types);
       tp = all_registered_types;
-#include "gtktypefuncs.inc"
+#include "ctktypefuncs.inc"
       n_all_registered_types = tp - all_registered_types;
       g_assert (n_all_registered_types + 1 < max_ctk_types);
       *tp = 0;

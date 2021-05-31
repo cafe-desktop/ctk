@@ -1,4 +1,4 @@
-/* gtkgladecatalog.c
+/* ctkgladecatalog.c
  *
  * Copyright (C) 2013 Openismus GmbH
  *
@@ -22,21 +22,21 @@
 
 #include "config.h"
 
-#include "gtkpathbar.h"
-#include "gtkplacesviewprivate.h"
-#include "gtkcolorswatchprivate.h"
-#include "gtkcolorplaneprivate.h"
-#include "gtkcolorscaleprivate.h"
-#include "gtkcoloreditorprivate.h"
+#include "ctkpathbar.h"
+#include "ctkplacesviewprivate.h"
+#include "ctkcolorswatchprivate.h"
+#include "ctkcolorplaneprivate.h"
+#include "ctkcolorscaleprivate.h"
+#include "ctkcoloreditorprivate.h"
 
 #ifdef G_OS_UNIX
-#  include "gtkprinteroptionwidget.h"
+#  include "ctkprinteroptionwidget.h"
 #endif
 
 _GDK_EXTERN
 void ctk_glade_catalog_init (const gchar *catalog_name);
 
-/* This function is referred to in gtk/glade/gtk-private-widgets.xml
+/* This function is referred to in ctk/glade/ctk-private-widgets.xml
  * and is used to ensure the private types for use in Glade while
  * editing UI files that define GTK+’s various composite widget classes.
  */

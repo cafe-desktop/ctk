@@ -21,22 +21,22 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkstack.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkprogresstrackerprivate.h"
-#include "gtksettingsprivate.h"
-#include "gtkwidgetprivate.h"
-#include "a11y/gtkstackaccessible.h"
-#include "a11y/gtkstackaccessibleprivate.h"
+#include <ctk/ctk.h>
+#include "ctkstack.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkprogresstrackerprivate.h"
+#include "ctksettingsprivate.h"
+#include "ctkwidgetprivate.h"
+#include "a11y/ctkstackaccessible.h"
+#include "a11y/ctkstackaccessibleprivate.h"
 #include <math.h>
 #include <string.h>
 
 /**
- * SECTION:gtkstack
+ * SECTION:ctkstack
  * @Short_description: A stacking container
  * @Title: GtkStack
  * @See_also: #GtkNotebook, #GtkStackSwitcher
@@ -49,7 +49,7 @@
  *
  * Transitions between pages can be animated as slides or
  * fades. This can be controlled with ctk_stack_set_transition_type().
- * These animations respect the #GtkSettings:gtk-enable-animations
+ * These animations respect the #GtkSettings:ctk-enable-animations
  * setting.
  *
  * The GtkStack widget was added in GTK+ 3.10.

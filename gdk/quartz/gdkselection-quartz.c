@@ -24,7 +24,7 @@
 #include "gdkproperty.h"
 #include "gdkquartz.h"
 #include "gdkinternal-quartz.h"
-#include "gdkquartz-gtk-only.h"
+#include "gdkquartz-ctk-only.h"
 
 gboolean
 _gdk_quartz_display_set_selection_owner (GdkDisplay *display,

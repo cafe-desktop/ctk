@@ -30,7 +30,7 @@
 #include "gdkquartzglcontext.h"
 #include "gdkquartzscreen.h"
 #include "gdkquartzcursor.h"
-#include "gdkquartz-gtk-only.h"
+#include "gdkquartz-ctk-only.h"
 
 #include <Carbon/Carbon.h>
 #include <AvailabilityMacros.h>
@@ -230,7 +230,7 @@ gdk_window_impl_quartz_finalize (GObject *object)
  * a view) too often. We do this by limiting the manual flushing done
  * outside of expose calls to less than some frequency when measured over
  * the last 4 flushes. This is a bit arbitray, but seems to make it possible
- * for some quick manual flushes (such as gtkruler or gimp’s marching ants)
+ * for some quick manual flushes (such as ctkruler or gimp’s marching ants)
  * without hitting the max flush frequency.
  *
  * If drawable NULL, no flushing is done, only registering that a flush was

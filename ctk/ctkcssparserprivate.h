@@ -18,8 +18,8 @@
 #ifndef __CTK_CSS_PARSER_PRIVATE_H__
 #define __CTK_CSS_PARSER_PRIVATE_H__
 
-#include "gtk/gtkcsstypesprivate.h"
-#include <gtk/gtkcssprovider.h>
+#include "ctk/ctkcsstypesprivate.h"
+#include <ctk/ctkcssprovider.h>
 
 G_BEGIN_DECLS
 

@@ -31,7 +31,7 @@
 #ifndef __CTK_SELECTION_PRIVATE_H__
 #define __CTK_SELECTION_PRIVATE_H__
 
-#include "gtkselection.h"
+#include "ctkselection.h"
 
 G_BEGIN_DECLS
 

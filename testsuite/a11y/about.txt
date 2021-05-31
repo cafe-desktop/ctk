@@ -3,7 +3,7 @@ window1
   index: 0
   name: About FancyPants
   state: enabled sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: dialog
   <AtkComponent>
   layer: window
@@ -13,7 +13,7 @@ window1
     parent: window1
     index: 1
     state: enabled sensitive showing visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -21,7 +21,7 @@ window1
       "filler"
       parent: headerbar1
       state: enabled horizontal sensitive visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -30,7 +30,7 @@ window1
         parent: unnamed-GtkContainerAccessible-0
         index: 0
         state: enabled sensitive vertical
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -40,7 +40,7 @@ window1
         index: 1
         name: Close
         state: enabled sensitive visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -55,7 +55,7 @@ window1
       parent: headerbar1
       index: 0
       state: enabled horizontal sensitive
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -68,7 +68,7 @@ window1
                    unnamed-GtkRadioButtonAccessible-5
                    unnamed-GtkRadioButtonAccessible-3
         state: checked enabled focusable sensitive visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -87,7 +87,7 @@ window1
                    unnamed-GtkRadioButtonAccessible-5
                    unnamed-GtkRadioButtonAccessible-3
         state: enabled focusable sensitive
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -106,7 +106,7 @@ window1
                    unnamed-GtkRadioButtonAccessible-5
                    unnamed-GtkRadioButtonAccessible-3
         state: enabled focusable sensitive
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -121,7 +121,7 @@ window1
     parent: window1
     index: 0
     state: enabled sensitive showing vertical visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -130,7 +130,7 @@ window1
       parent: dialog-vbox1
       index: 0
       state: enabled sensitive showing vertical visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -139,7 +139,7 @@ window1
         parent: box
         index: 0
         state: enabled sensitive showing visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -152,7 +152,7 @@ window1
         index: 1
         name: FancyPants
         state: enabled focusable multi-line sensitive showing visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -191,7 +191,7 @@ window1
         parent: box
         index: 2
         state: enabled sensitive showing visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1
@@ -200,7 +200,7 @@ window1
           parent: stack
           index: 0
           state: enabled sensitive showing vertical visible
-          toolkit: gtk
+          toolkit: ctk
           <AtkComponent>
           layer: widget
           alpha: 1
@@ -210,7 +210,7 @@ window1
             index: 0
             name: 0.99
             state: enabled focusable multi-line sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -250,7 +250,7 @@ window1
             index: 1
             name: comments
             state: enabled focusable multi-line sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -290,7 +290,7 @@ window1
             index: 2
             name: Website
             state: enabled focusable multi-line sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -327,7 +327,7 @@ window1
               <AtkHyperlink>
               start index: 0
               end index: 7
-              anchors: http://www.gtk.org
+              anchors: http://www.ctk.org
             unnamed-GtkLabelAccessibleLinkImpl-6
               "link"
               parent: website_label
@@ -336,14 +336,14 @@ window1
                 <AtkHyperlink>
                 start index: 0
                 end index: 7
-                anchors: http://www.gtk.org
+                anchors: http://www.ctk.org
           copyright_label
             "label"
             parent: page_vbox
             index: 3
             name: no comments
             state: enabled focusable multi-line sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -384,7 +384,7 @@ window1
             name: This program comes with absolutely no warranty.
 See the GNU General Public License, version 3 or later for details.
             state: enabled focusable multi-line sensitive showing visible
-            toolkit: gtk
+            toolkit: ctk
             <AtkComponent>
             layer: widget
             alpha: 1
@@ -437,7 +437,7 @@ See the GNU General Public License, version 3 or later for details.
       parent: dialog-vbox1
       index: 1
       state: enabled horizontal sensitive
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -446,7 +446,7 @@ See the GNU General Public License, version 3 or later for details.
         parent: action_box
         index: 0
         state: enabled horizontal sensitive visible
-        toolkit: gtk
+        toolkit: ctk
         <AtkComponent>
         layer: widget
         alpha: 1

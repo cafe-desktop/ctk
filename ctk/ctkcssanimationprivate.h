@@ -20,10 +20,10 @@
 #ifndef __CTK_CSS_ANIMATION_PRIVATE_H__
 #define __CTK_CSS_ANIMATION_PRIVATE_H__
 
-#include "gtkstyleanimationprivate.h"
+#include "ctkstyleanimationprivate.h"
 
-#include "gtkcsskeyframesprivate.h"
-#include "gtkprogresstrackerprivate.h"
+#include "ctkcsskeyframesprivate.h"
+#include "ctkprogresstrackerprivate.h"
 
 G_BEGIN_DECLS
 

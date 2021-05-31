@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2010.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -313,7 +313,7 @@ maybe_start_idle (GdkFrameClockIdle *clock_idle,
                                                               gdk_frame_clock_flush_idle,
                                                               g_object_ref (clock_idle),
                                                               (GDestroyNotify) g_object_unref);
-          g_source_set_name_by_id (priv->flush_idle_id, "[gtk+] gdk_frame_clock_flush_idle");
+          g_source_set_name_by_id (priv->flush_idle_id, "[ctk+] gdk_frame_clock_flush_idle");
         }
 
       if (!priv->in_paint_idle &&
@@ -325,7 +325,7 @@ maybe_start_idle (GdkFrameClockIdle *clock_idle,
                                                               gdk_frame_clock_paint_idle,
                                                               g_object_ref (clock_idle),
                                                               (GDestroyNotify) g_object_unref);
-          g_source_set_name_by_id (priv->paint_idle_id, "[gtk+] gdk_frame_clock_paint_idle");
+          g_source_set_name_by_id (priv->paint_idle_id, "[ctk+] gdk_frame_clock_paint_idle");
         }
     }
 }

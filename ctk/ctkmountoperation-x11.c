@@ -22,7 +22,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -32,8 +32,8 @@
 #include <gio/gio.h>
 #include "x11/gdkx.h"
 #include <X11/Xatom.h>
-#include <gtk/gtkicontheme.h>
-#include "gtkintl.h"
+#include <ctk/ctkicontheme.h>
+#include "ctkintl.h"
 
 /* for the kill(2) system call and errno - POSIX.1-2001 and later */
 #include <sys/types.h>
@@ -44,7 +44,7 @@
 #include <sys/sysctl.h>
 #endif
 
-#include "gtkmountoperationprivate.h"
+#include "ctkmountoperationprivate.h"
 
 /* ---------------------------------------------------------------------------------------------------- */
 /* these functions are based on code from libwnck (LGPLv2) */

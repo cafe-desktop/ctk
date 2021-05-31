@@ -19,8 +19,8 @@
 #ifndef __CTK_BOX_PRIVATE_H__
 #define __CTK_BOX_PRIVATE_H__
 
-#include "gtkbox.h"
-#include "gtkcssgadgetprivate.h"
+#include "ctkbox.h"
+#include "ctkcssgadgetprivate.h"
 
 G_BEGIN_DECLS
 

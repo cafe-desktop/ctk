@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintoperation.c: Print Operation
+ * ctkprintoperation.c: Print Operation
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -27,7 +27,7 @@
 #endif
 
 #include "config.h"
-#include "gtkprint-win32.h"
+#include "ctkprint-win32.h"
 
 void
 ctk_print_win32_devnames_free (GtkPrintWin32Devnames *devnames)

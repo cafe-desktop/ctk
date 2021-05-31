@@ -1,4 +1,4 @@
-/* gtktoolitem.c
+/* ctktoolitem.c
  *
  * Copyright (C) 2002 Anders Carlsson <andersca@gnome.org>
  * Copyright (C) 2002 James Henstridge <james@daa.com.au>
@@ -22,12 +22,12 @@
 #define __CTK_TOOL_ITEM_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkbin.h>
-#include <gtk/gtkmenuitem.h>
-#include <gtk/gtksizegroup.h>
+#include <ctk/ctkbin.h>
+#include <ctk/ctkmenuitem.h>
+#include <ctk/ctksizegroup.h>
 
 G_BEGIN_DECLS
 

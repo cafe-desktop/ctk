@@ -21,7 +21,7 @@
 #include "gdkquartzdnd.h"
 #include "gdkprivate-quartz.h"
 #include "gdkinternal-quartz.h"
-#include "gdkquartz-gtk-only.h"
+#include "gdkquartz-ctk-only.h"
 
 G_DEFINE_TYPE (GdkQuartzDragContext, gdk_quartz_drag_context, GDK_TYPE_DRAG_CONTEXT)
 

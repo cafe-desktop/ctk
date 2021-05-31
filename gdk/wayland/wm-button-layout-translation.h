@@ -21,6 +21,6 @@
 #ifndef __WM_BUTTON_LAYOUT_TRANSLATION__
 #define __WM_BUTTON_LAYOUT_TRANSLATION__
 
-void translate_wm_button_layout_to_gtk (char *layout);
+void translate_wm_button_layout_to_ctk (char *layout);
 
 #endif

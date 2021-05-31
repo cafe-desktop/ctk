@@ -15,6 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\gtk\encodesymbolic.c"><Filter>Sources</Filter></ClCompile>
+    <ClCompile Include="..\..\ctk\encodesymbolic.c"><Filter>Sources</Filter></ClCompile>
   </ItemGroup>
 </Project>

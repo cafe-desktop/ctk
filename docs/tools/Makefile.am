@@ -10,12 +10,12 @@ AM_CPPFLAGS = \
 	$(CTK_DEP_CFLAGS)
 
 DEPS = \
-	$(top_builddir)/gtk/libgtk-3.la
+	$(top_builddir)/ctk/libctk-3.la
 
 LDADDS = \
-	$(top_builddir)/gtk/libgtk-3.la	\
+	$(top_builddir)/ctk/libctk-3.la	\
 	$(top_builddir)/gdk/libgdk-3.la	\
-	$(top_builddir)/tests/gtkgears.o \
+	$(top_builddir)/tests/ctkgears.o \
 	$(CTK_DEP_LIBS)			\
 	$(GDK_DEP_LIBS)			\
 	-lm

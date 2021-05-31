@@ -20,7 +20,7 @@
 #ifndef __CTK_CLIPBOARD_PRIVATE_H__
 #define __CTK_CLIPBOARD_PRIVATE_H__
 
-#include <gtk/gtkclipboard.h>
+#include <ctk/ctkclipboard.h>
 
 G_BEGIN_DECLS
 

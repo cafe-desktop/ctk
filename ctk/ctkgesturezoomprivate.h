@@ -20,8 +20,8 @@
 #ifndef __CTK_GESTURE_ZOOM_PRIVATE_H__
 #define __CTK_GESTURE_ZOOM_PRIVATE_H__
 
-#include "gtkgestureprivate.h"
-#include "gtkgesturezoom.h"
+#include "ctkgestureprivate.h"
+#include "ctkgesturezoom.h"
 
 struct _GtkGestureZoom
 {

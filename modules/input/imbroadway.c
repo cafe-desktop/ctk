@@ -1,5 +1,5 @@
 /*
- * gtkimmodulebroadway
+ * ctkimmodulebroadway
  * Copyright (C) 2013 Alexander Larsson
  *
  * This library is free software; you can redistribute it and/or
@@ -21,9 +21,9 @@
 #include "config.h"
 #include <string.h>
 
-#include <gtk/gtk.h>
-#include "gtk/gtkintl.h"
-#include "gtk/gtkimmodule.h"
+#include <ctk/ctk.h>
+#include "ctk/ctkintl.h"
+#include "ctk/ctkimmodule.h"
 
 #include "gdk/broadway/gdkbroadway.h"
 
@@ -50,7 +50,7 @@ static const GtkIMContextInfo imbroadway_info =
   "broadway",      /* ID */
   NC_("input method menu", "Broadway"),      /* Human readable name */
   GETTEXT_PACKAGE, /* Translation domain */
-  CTK_LOCALEDIR,   /* Dir for bindtextdomain (not strictly needed for "gtk+") */
+  CTK_LOCALEDIR,   /* Dir for bindtextdomain (not strictly needed for "ctk+") */
   "",              /* Languages for which this module is the default */
 };
 

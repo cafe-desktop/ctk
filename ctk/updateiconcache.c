@@ -39,7 +39,7 @@
 #include <glib/gstdio.h>
 #include <gdk-pixbuf/gdk-pixdata.h>
 #include <glib/gi18n.h>
-#include "gtkiconcachevalidator.h"
+#include "ctkiconcachevalidator.h"
 
 static gboolean force_update = FALSE;
 static gboolean ignore_theme_index = FALSE;
@@ -51,7 +51,7 @@ static gchar *var_name = "-";
 /* Quite ugly - if we just add the c file to the
  * list of sources in Makefile.am, libtool complains.
  */
-#include "gtkiconcachevalidator.c"
+#include "ctkiconcachevalidator.c"
 
 #define CACHE_NAME "icon-theme.cache"
 
@@ -351,7 +351,7 @@ load_icon_data (const char *path)
 }
 
 /*
- * This function was copied from gtkfilesystemunix.c, it should
+ * This function was copied from ctkfilesystemunix.c, it should
  * probably go to GLib
  */
 static void

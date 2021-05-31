@@ -1,4 +1,4 @@
-/* gtktreesortable.h
+/* ctktreesortable.h
  * Copyright (C) 2001  Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -20,11 +20,11 @@
 
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkenums.h>
-#include <gtk/gtktreemodel.h>
+#include <ctk/ctkenums.h>
+#include <ctk/ctktreemodel.h>
 
 
 G_BEGIN_DECLS

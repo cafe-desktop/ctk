@@ -23,66 +23,66 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
 #include <string.h>
 
-#include "gtkbindings.h"
-#include "gtkcelleditable.h"
-#include "gtkclipboard.h"
-#include "gtkdebug.h"
-#include "gtkdnd.h"
-#include "gtkdndprivate.h"
-#include "gtkentry.h"
-#include "gtkentrybuffer.h"
-#include "gtkiconhelperprivate.h"
-#include "gtkemojichooser.h"
-#include "gtkemojicompletion.h"
-#include "gtkentrybuffer.h"
-#include "gtkimcontextsimple.h"
-#include "gtkimmulticontext.h"
-#include "gtkintl.h"
-#include "gtklabel.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkmenu.h"
-#include "gtkmenuitem.h"
-#include "gtkpango.h"
-#include "gtkseparatormenuitem.h"
-#include "gtkselection.h"
-#include "gtksettings.h"
-#include "gtkspinbutton.h"
-#include "gtktextutil.h"
-#include "gtkwindow.h"
-#include "gtktreeview.h"
-#include "gtktreeselection.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkentryprivate.h"
-#include "gtkcelllayout.h"
-#include "gtktooltip.h"
-#include "gtkicontheme.h"
-#include "gtkwidgetprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtktexthandleprivate.h"
-#include "gtkpopover.h"
-#include "gtktoolbar.h"
-#include "gtkmagnifierprivate.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkprogresstrackerprivate.h"
-#include "gtkemojichooser.h"
-#include "gtkwindow.h"
+#include "ctkbindings.h"
+#include "ctkcelleditable.h"
+#include "ctkclipboard.h"
+#include "ctkdebug.h"
+#include "ctkdnd.h"
+#include "ctkdndprivate.h"
+#include "ctkentry.h"
+#include "ctkentrybuffer.h"
+#include "ctkiconhelperprivate.h"
+#include "ctkemojichooser.h"
+#include "ctkemojicompletion.h"
+#include "ctkentrybuffer.h"
+#include "ctkimcontextsimple.h"
+#include "ctkimmulticontext.h"
+#include "ctkintl.h"
+#include "ctklabel.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkmenu.h"
+#include "ctkmenuitem.h"
+#include "ctkpango.h"
+#include "ctkseparatormenuitem.h"
+#include "ctkselection.h"
+#include "ctksettings.h"
+#include "ctkspinbutton.h"
+#include "ctktextutil.h"
+#include "ctkwindow.h"
+#include "ctktreeview.h"
+#include "ctktreeselection.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkentryprivate.h"
+#include "ctkcelllayout.h"
+#include "ctktooltip.h"
+#include "ctkicontheme.h"
+#include "ctkwidgetprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctktexthandleprivate.h"
+#include "ctkpopover.h"
+#include "ctktoolbar.h"
+#include "ctkmagnifierprivate.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkprogresstrackerprivate.h"
+#include "ctkemojichooser.h"
+#include "ctkwindow.h"
 
-#include "a11y/gtkentryaccessible.h"
+#include "a11y/ctkentryaccessible.h"
 
 #include "fallback-c89.c"
 
 /**
- * SECTION:gtkentry
+ * SECTION:ctkentry
  * @Short_description: A single line text entry field
  * @Title: GtkEntry
  * @See_also: #GtkTextView, #GtkEntryCompletion
@@ -822,12 +822,12 @@ ctk_entry_class_init (GtkEntryClass *class)
   class->get_text_area_size = ctk_entry_get_text_area_size;
   class->get_frame_size = ctk_entry_get_frame_size;
   
-  quark_inner_border = g_quark_from_static_string ("gtk-entry-inner-border");
-  quark_password_hint = g_quark_from_static_string ("gtk-entry-password-hint");
-  quark_cursor_hadjustment = g_quark_from_static_string ("gtk-hadjustment");
-  quark_capslock_feedback = g_quark_from_static_string ("gtk-entry-capslock-feedback");
-  quark_ctk_signal = g_quark_from_static_string ("gtk-signal");
-  quark_entry_completion = g_quark_from_static_string ("gtk-entry-completion-key");
+  quark_inner_border = g_quark_from_static_string ("ctk-entry-inner-border");
+  quark_password_hint = g_quark_from_static_string ("ctk-entry-password-hint");
+  quark_cursor_hadjustment = g_quark_from_static_string ("ctk-hadjustment");
+  quark_capslock_feedback = g_quark_from_static_string ("ctk-entry-capslock-feedback");
+  quark_ctk_signal = g_quark_from_static_string ("ctk-signal");
+  quark_entry_completion = g_quark_from_static_string ("ctk-entry-completion-key");
 
   g_object_class_override_property (gobject_class,
                                     PROP_EDITING_CANCELED,
@@ -1413,7 +1413,7 @@ ctk_entry_class_init (GtkEntryClass *class)
    *
    * Setting this to a non-%NULL value overrides the
    * system-wide IM module setting. See the GtkSettings
-   * #GtkSettings:gtk-im-module property.
+   * #GtkSettings:ctk-im-module property.
    *
    * Since: 2.16
    */
@@ -5062,7 +5062,7 @@ ctk_entry_grab_focus (GtkWidget *widget)
   if (priv->editable && !priv->in_click)
     {
       g_object_get (ctk_widget_get_settings (widget),
-                    "gtk-entry-select-on-focus",
+                    "ctk-entry-select-on-focus",
                     &select_on_focus,
                     NULL);
 
@@ -5453,7 +5453,7 @@ buffer_inserted_text (GtkEntryBuffer *buffer,
   if (n_chars == 1 && !priv->visible)
     {
       g_object_get (ctk_widget_get_settings (CTK_WIDGET (entry)),
-                    "gtk-entry-password-hint-timeout", &password_hint_timeout,
+                    "ctk-entry-password-hint-timeout", &password_hint_timeout,
                     NULL);
 
       if (password_hint_timeout > 0)
@@ -5472,7 +5472,7 @@ buffer_inserted_text (GtkEntryBuffer *buffer,
             g_source_remove (password_hint->source_id);
           password_hint->source_id = gdk_threads_add_timeout (password_hint_timeout,
                                                               (GSourceFunc)ctk_entry_remove_password_hint, entry);
-          g_source_set_name_by_id (password_hint->source_id, "[gtk+] ctk_entry_remove_password_hint");
+          g_source_set_name_by_id (password_hint->source_id, "[ctk+] ctk_entry_remove_password_hint");
         }
     }
 }
@@ -5586,7 +5586,7 @@ get_better_cursor_x (GtkEntry *entry,
   PangoRectangle strong_pos, weak_pos;
   
   g_object_get (ctk_widget_get_settings (CTK_WIDGET (entry)),
-		"gtk-split-cursor", &split_cursor,
+		"ctk-split-cursor", &split_cursor,
 		NULL);
 
   pango_layout_get_cursor_pos (layout, index, &strong_pos, &weak_pos);
@@ -6744,7 +6744,7 @@ ctk_entry_handle_drag_finished (GtkTextHandle         *handle,
       guint double_click_time;
 
       settings = ctk_widget_get_settings (CTK_WIDGET (entry));
-      g_object_get (settings, "gtk-double-click-time", &double_click_time, NULL);
+      g_object_get (settings, "ctk-double-click-time", &double_click_time, NULL);
       if (g_get_monotonic_time() - priv->handle_place_time < double_click_time * 1000)
         {
           ctk_entry_select_word (entry);
@@ -7115,7 +7115,7 @@ ctk_entry_move_visually (GtkEntry *entry,
       gboolean strong;
 
       g_object_get (ctk_widget_get_settings (CTK_WIDGET (entry)),
-		    "gtk-split-cursor", &split_cursor,
+		    "ctk-split-cursor", &split_cursor,
 		    NULL);
 
       if (split_cursor)
@@ -8831,7 +8831,7 @@ ctk_entry_get_icon_pixbuf (GtkEntry             *entry,
   if (pixbuf)
     {
       g_object_set_data_full (G_OBJECT (icon_info->gadget),
-                              "gtk-entry-pixbuf",
+                              "ctk-entry-pixbuf",
                               pixbuf,
                               g_object_unref);
     }
@@ -9885,7 +9885,7 @@ ctk_entry_selection_bubble_popup_set (GtkEntry *entry)
 
   priv->selection_bubble_timeout_id =
     gdk_threads_add_timeout (50, ctk_entry_selection_bubble_popup_show, entry);
-  g_source_set_name_by_id (priv->selection_bubble_timeout_id, "[gtk+] ctk_entry_selection_bubble_popup_cb");
+  g_source_set_name_by_id (priv->selection_bubble_timeout_id, "[ctk+] ctk_entry_selection_bubble_popup_cb");
 }
 
 static void
@@ -10194,7 +10194,7 @@ cursor_blinks (GtkEntry *entry)
       gboolean blink;
 
       settings = ctk_widget_get_settings (CTK_WIDGET (entry));
-      g_object_get (settings, "gtk-cursor-blink", &blink, NULL);
+      g_object_get (settings, "ctk-cursor-blink", &blink, NULL);
 
       return blink;
     }
@@ -10209,7 +10209,7 @@ get_middle_click_paste (GtkEntry *entry)
   gboolean paste;
 
   settings = ctk_widget_get_settings (CTK_WIDGET (entry));
-  g_object_get (settings, "gtk-enable-primary-paste", &paste, NULL);
+  g_object_get (settings, "ctk-enable-primary-paste", &paste, NULL);
 
   return paste;
 }
@@ -10220,7 +10220,7 @@ get_cursor_time (GtkEntry *entry)
   GtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (entry));
   gint time;
 
-  g_object_get (settings, "gtk-cursor-blink-time", &time, NULL);
+  g_object_get (settings, "ctk-cursor-blink-time", &time, NULL);
 
   return time;
 }
@@ -10231,7 +10231,7 @@ get_cursor_blink_timeout (GtkEntry *entry)
   GtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (entry));
   gint timeout;
 
-  g_object_get (settings, "gtk-cursor-blink-timeout", &timeout, NULL);
+  g_object_get (settings, "ctk-cursor-blink-timeout", &timeout, NULL);
 
   return timeout;
 }
@@ -10308,7 +10308,7 @@ blink_cb (gpointer data)
       priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_OFF_MULTIPLIER / CURSOR_DIVIDER,
 					    blink_cb,
 					    entry);
-      g_source_set_name_by_id (priv->blink_timeout, "[gtk+] blink_cb");
+      g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
     }
   else
     {
@@ -10317,7 +10317,7 @@ blink_cb (gpointer data)
       priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_ON_MULTIPLIER / CURSOR_DIVIDER,
 					    blink_cb,
 					    entry);
-      g_source_set_name_by_id (priv->blink_timeout, "[gtk+] blink_cb");
+      g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
     }
 
   return G_SOURCE_REMOVE;
@@ -10336,7 +10336,7 @@ ctk_entry_check_cursor_blink (GtkEntry *entry)
 	  priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_ON_MULTIPLIER / CURSOR_DIVIDER,
 						blink_cb,
 						entry);
-	  g_source_set_name_by_id (priv->blink_timeout, "[gtk+] blink_cb");
+	  g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
 	}
     }
   else
@@ -10364,7 +10364,7 @@ ctk_entry_pend_cursor_blink (GtkEntry *entry)
       priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_PEND_MULTIPLIER / CURSOR_DIVIDER,
                                                      blink_cb,
                                                      entry);
-      g_source_set_name_by_id (priv->blink_timeout, "[gtk+] blink_cb");
+      g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
       show_cursor (entry);
     }
 }
@@ -11100,11 +11100,11 @@ ctk_entry_insert_emoji (GtkEntry *entry)
   if (ctk_widget_get_ancestor (CTK_WIDGET (entry), CTK_TYPE_EMOJI_CHOOSER) != NULL)
     return;
 
-  chooser = CTK_WIDGET (g_object_get_data (G_OBJECT (entry), "gtk-emoji-chooser"));
+  chooser = CTK_WIDGET (g_object_get_data (G_OBJECT (entry), "ctk-emoji-chooser"));
   if (!chooser)
     {
       chooser = ctk_emoji_chooser_new ();
-      g_object_set_data (G_OBJECT (entry), "gtk-emoji-chooser", chooser);
+      g_object_set_data (G_OBJECT (entry), "ctk-emoji-chooser", chooser);
 
       ctk_popover_set_relative_to (CTK_POPOVER (chooser), CTK_WIDGET (entry));
       if (entry->priv->show_emoji_icon)

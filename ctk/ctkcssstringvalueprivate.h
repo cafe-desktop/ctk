@@ -20,9 +20,9 @@
 #ifndef __CTK_CSS_STRING_VALUE_PRIVATE_H__
 #define __CTK_CSS_STRING_VALUE_PRIVATE_H__
 
-#include "gtkcssparserprivate.h"
-#include "gtkcsstypesprivate.h"
-#include "gtkcssvalueprivate.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcsstypesprivate.h"
+#include "ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

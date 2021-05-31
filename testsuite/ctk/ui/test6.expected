@@ -1,2 +1,2 @@
-ERROR: gtk-builder-error-quark 8
+ERROR: ctk-builder-error-quark 8
 .:5:1 Duplicate object ID 'foo' (previously on line 3)

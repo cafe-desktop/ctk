@@ -20,7 +20,7 @@
  *     Owen Taylor <otaylor@redhat.com>
  */
 
-#include "gtkcairoblurprivate.h"
+#include "ctkcairoblurprivate.h"
 
 #include <math.h>
 #include <string.h>

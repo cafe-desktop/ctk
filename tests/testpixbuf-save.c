@@ -3,7 +3,7 @@
 #include "config.h"
 #include <stdio.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 compare_pixbufs (GdkPixbuf *pixbuf, GdkPixbuf *compare, const gchar *file_type)

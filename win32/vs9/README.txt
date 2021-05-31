@@ -23,9 +23,9 @@ You will also need a Python 2.6+/3.x interpretor installed on your system,
 which can be obtained from the official installers available from
 http://www.python.org.  Please note that the Python interpretor (python.exe)
 either needs to be in your PATH before attempting the build of GTK+, or it
-can be found in the path specified by PythonDir in gtk-version-paths.vsprops.
-If you happen to change the PythonDir setting in gtk-version-paths.vsprops after
-opening gtk+.sln with Visual Studio, you will need to close the gtk+.sln solution,
+can be found in the path specified by PythonDir in ctk-version-paths.vsprops.
+If you happen to change the PythonDir setting in ctk-version-paths.vsprops after
+opening ctk+.sln with Visual Studio, you will need to close the ctk+.sln solution,
 delete all the *.ncb, *.suo and *.user files before re-attempting the build.
 
 It is recommended that one builds the dependencies with VS9 as far as
@@ -76,11 +76,11 @@ The "install" project will copy build results and headers into their
 appropriate location under <root>\vs9\<PlatformName>. For instance,
 built DLLs go into <root>\vs9\<PlatformName>\bin, built LIBs into
 <root>\vs9\<PlatformName>\lib and GTK+ headers into
-<root>\vs9\<PlatformName>\include\gtk-3.0. This is then from where
+<root>\vs9\<PlatformName>\include\ctk-3.0. This is then from where
 project files higher in the stack are supposed to look for them, not
 from a specific GLib source tree.
 
-There is now a "gtk3-introspect" project that is used to build the
+There is now a "ctk3-introspect" project that is used to build the
 introspection files.  In order for this to work, check that the paths for
 PythonDir (32-bit builds) and PythonDirX64 (x64 builds) are correct for your
 system.  Note that it must be the same Python installation that was used to

@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -29,8 +29,8 @@
 
 #include "gdk/gdk.h"
 
-#include "gtkprivate.h"
-#include "gtkresources.h"
+#include "ctkprivate.h"
+#include "ctkresources.h"
 
 
 #if !defined G_OS_WIN32 && !(defined GDK_WINDOWING_QUARTZ && defined QUARTZ_RELOCATION)
@@ -358,7 +358,7 @@ get_portal_path (GDBusConnection  *connection,
   int i;
   char *path;
 
-  *token = g_strdup_printf ("gtk%d", g_random_int_range (0, G_MAXINT));
+  *token = g_strdup_printf ("ctk%d", g_random_int_range (0, G_MAXINT));
   sender = g_strdup (g_dbus_connection_get_unique_name (connection) + 1);
   for (i = 0; sender[i]; i++)
     if (sender[i] == '.')

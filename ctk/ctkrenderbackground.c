@@ -21,20 +21,20 @@
 
 #include "config.h"
 
-#include "gtkrenderbackgroundprivate.h"
+#include "ctkrenderbackgroundprivate.h"
 
-#include "gtkcssarrayvalueprivate.h"
-#include "gtkcssbgsizevalueprivate.h"
-#include "gtkcsscornervalueprivate.h"
-#include "gtkcssenumvalueprivate.h"
-#include "gtkcssimagevalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkcsspositionvalueprivate.h"
-#include "gtkcssrepeatvalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcssstyleprivate.h"
-#include "gtkcsstypesprivate.h"
+#include "ctkcssarrayvalueprivate.h"
+#include "ctkcssbgsizevalueprivate.h"
+#include "ctkcsscornervalueprivate.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkcssimagevalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkcsspositionvalueprivate.h"
+#include "ctkcssrepeatvalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcssstyleprivate.h"
+#include "ctkcsstypesprivate.h"
 
 #include <math.h>
 

@@ -17,14 +17,14 @@
  * Authors: Ryan Lortie <desrt@desrt.ca>
  */
 
-#include "gtkactionhelper.h"
-#include "gtkactionobservable.h"
+#include "ctkactionhelper.h"
+#include "ctkactionobservable.h"
 
-#include "gtkwidget.h"
-#include "gtkwidgetprivate.h"
-#include "gtkdebug.h"
-#include "gtkmodelbutton.h"
-#include "gtktypebuiltins.h"
+#include "ctkwidget.h"
+#include "ctkwidgetprivate.h"
+#include "ctkdebug.h"
+#include "ctkmodelbutton.h"
+#include "ctktypebuiltins.h"
 
 #include <string.h>
 

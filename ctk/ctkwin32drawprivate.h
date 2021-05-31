@@ -21,7 +21,7 @@
 #include <gdk/gdk.h>
 #include <cairo.h>
 
-#include <gtk/gtkborder.h>
+#include <ctk/ctkborder.h>
 
 G_BEGIN_DECLS
 

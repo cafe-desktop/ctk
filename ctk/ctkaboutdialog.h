@@ -24,10 +24,10 @@
 #define __CTK_ABOUT_DIALOG_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkdialog.h>
+#include <ctk/ctkdialog.h>
 
 G_BEGIN_DECLS
 

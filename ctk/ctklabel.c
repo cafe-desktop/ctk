@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -27,38 +27,38 @@
 #include <math.h>
 #include <string.h>
 
-#include "gtklabel.h"
-#include "gtklabelprivate.h"
-#include "gtkaccellabel.h"
-#include "gtkbindings.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtkclipboard.h"
-#include "gtkcssshadowsvalueprivate.h"
-#include "gtkcssstylepropertyprivate.h"
-#include "gtkdnd.h"
-#include "gtkimage.h"
-#include "gtkintl.h"
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkmenuitem.h"
-#include "gtkmenushellprivate.h"
-#include "gtknotebook.h"
-#include "gtkpango.h"
-#include "gtkprivate.h"
-#include "gtkseparatormenuitem.h"
-#include "gtkshow.h"
-#include "gtkstylecontextprivate.h"
-#include "gtktextutil.h"
-#include "gtktooltip.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidgetprivate.h"
-#include "gtkwindow.h"
-#include "gtkcssnodeprivate.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctklabel.h"
+#include "ctklabelprivate.h"
+#include "ctkaccellabel.h"
+#include "ctkbindings.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctkclipboard.h"
+#include "ctkcssshadowsvalueprivate.h"
+#include "ctkcssstylepropertyprivate.h"
+#include "ctkdnd.h"
+#include "ctkimage.h"
+#include "ctkintl.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctkmenuitem.h"
+#include "ctkmenushellprivate.h"
+#include "ctknotebook.h"
+#include "ctkpango.h"
+#include "ctkprivate.h"
+#include "ctkseparatormenuitem.h"
+#include "ctkshow.h"
+#include "ctkstylecontextprivate.h"
+#include "ctktextutil.h"
+#include "ctktooltip.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidgetprivate.h"
+#include "ctkwindow.h"
+#include "ctkcssnodeprivate.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkwidgetprivate.h"
 
-#include "a11y/gtklabelaccessibleprivate.h"
+#include "a11y/ctklabelaccessibleprivate.h"
 
 /* this is in case rint() is not provided by the compiler, 
  * such as in the case of C89 compilers, like MSVC
@@ -66,7 +66,7 @@
 #include "fallback-c89.c"
 
 /**
- * SECTION:gtklabel
+ * SECTION:ctklabel
  * @Short_description: A widget that displays a small to medium amount of text
  * @Title: GtkLabel
  *
@@ -238,7 +238,7 @@
  * |[<!-- language="C" -->
  * const gchar *text =
  * "Go to the"
- * "<a href=\"http://www.gtk.org title=\"&lt;i&gt;Our&lt;/i&gt; website\">"
+ * "<a href=\"http://www.ctk.org title=\"&lt;i&gt;Our&lt;/i&gt; website\">"
  * "GTK+ website</a> for more...";
  * GtkWidget *label = ctk_label_new (NULL);
  * ctk_label_set_markup (CTK_LABEL (label), text);
@@ -1197,10 +1197,10 @@ ctk_label_class_init (GtkLabelClass *class)
 
   ctk_widget_class_set_css_name (widget_class, "label");
 
-  quark_shortcuts_connected = g_quark_from_static_string ("gtk-label-shortcuts-connected");
-  quark_mnemonic_menu = g_quark_from_static_string ("gtk-mnemonic-menu");
-  quark_mnemonics_visible_connected = g_quark_from_static_string ("gtk-label-mnemonics-visible-connected");
-  quark_ctk_signal = g_quark_from_static_string ("gtk-signal");
+  quark_shortcuts_connected = g_quark_from_static_string ("ctk-label-shortcuts-connected");
+  quark_mnemonic_menu = g_quark_from_static_string ("ctk-mnemonic-menu");
+  quark_mnemonics_visible_connected = g_quark_from_static_string ("ctk-label-mnemonics-visible-connected");
+  quark_ctk_signal = g_quark_from_static_string ("ctk-signal");
   quark_link = g_quark_from_static_string ("link");
 }
 
@@ -2019,10 +2019,10 @@ ctk_label_screen_changed (GtkWidget *widget,
 
   if (! shortcuts_connected)
     {
-      g_signal_connect (settings, "notify::gtk-enable-mnemonics",
+      g_signal_connect (settings, "notify::ctk-enable-mnemonics",
                         G_CALLBACK (label_shortcut_setting_changed),
                         NULL);
-      g_signal_connect (settings, "notify::gtk-enable-accels",
+      g_signal_connect (settings, "notify::ctk-enable-accels",
                         G_CALLBACK (label_shortcut_setting_changed),
                         NULL);
 
@@ -2689,7 +2689,7 @@ ctk_label_set_markup_internal (GtkLabel    *label,
       gboolean auto_mnemonics = TRUE;
 
       g_object_get (ctk_widget_get_settings (CTK_WIDGET (label)),
-                    "gtk-enable-mnemonics", &enable_mnemonics,
+                    "ctk-enable-mnemonics", &enable_mnemonics,
                     NULL);
 
       if (!(enable_mnemonics && priv->mnemonics_visible &&
@@ -2921,7 +2921,7 @@ ctk_label_set_pattern_internal (GtkLabel    *label,
   if (is_mnemonic)
     {
       g_object_get (ctk_widget_get_settings (CTK_WIDGET (label)),
-                    "gtk-enable-mnemonics", &enable_mnemonics,
+                    "ctk-enable-mnemonics", &enable_mnemonics,
                     NULL);
 
       if (enable_mnemonics && priv->mnemonics_visible && pattern &&
@@ -4793,7 +4793,7 @@ ctk_label_grab_focus (GtkWidget *widget)
   if (priv->select_info->selectable)
     {
       g_object_get (ctk_widget_get_settings (widget),
-                    "gtk-label-select-on-focus",
+                    "ctk-label-select-on-focus",
                     &select_on_focus,
                     NULL);
 
@@ -6186,7 +6186,7 @@ get_better_cursor (GtkLabel *label,
   PangoRectangle strong_pos, weak_pos;
   
   g_object_get (ctk_widget_get_settings (CTK_WIDGET (label)),
-		"gtk-split-cursor", &split_cursor,
+		"ctk-split-cursor", &split_cursor,
 		NULL);
 
   ctk_label_ensure_layout (label);
@@ -6278,7 +6278,7 @@ ctk_label_move_visually (GtkLabel *label,
       ctk_label_ensure_layout (label);
 
       g_object_get (ctk_widget_get_settings (CTK_WIDGET (label)),
-		    "gtk-split-cursor", &split_cursor,
+		    "ctk-split-cursor", &split_cursor,
 		    NULL);
 
       if (split_cursor)

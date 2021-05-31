@@ -22,8 +22,8 @@
 #ifndef __CTK_SEARCH_ENGINE_H__
 #define __CTK_SEARCH_ENGINE_H__
 
-#include "gtkquery.h"
-#include "gtkfilesystemmodel.h"
+#include "ctkquery.h"
+#include "ctkfilesystemmodel.h"
 #include <gio/gio.h>
 
 G_BEGIN_DECLS

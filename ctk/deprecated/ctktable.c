@@ -19,22 +19,22 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
 #define GDK_DISABLE_DEPRECATION_WARNINGS
 
-#include "gtktable.h"
+#include "ctktable.h"
 
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 
 /**
- * SECTION:gtktable
+ * SECTION:ctktable
  * @Short_description: Pack widgets in regular patterns
  * @Title: GtkTable
  * @See_also: #GtkGrid

@@ -20,11 +20,11 @@
 #ifndef __CTK_ICON_HELPER_H__
 #define __CTK_ICON_HELPER_H__
 
-#include "gtk/gtkimage.h"
-#include "gtk/gtktypes.h"
+#include "ctk/ctkimage.h"
+#include "ctk/ctktypes.h"
 
-#include "gtkcssgadgetprivate.h"
-#include "gtkimagedefinitionprivate.h"
+#include "ctkcssgadgetprivate.h"
+#include "ctkimagedefinitionprivate.h"
 
 G_BEGIN_DECLS
 

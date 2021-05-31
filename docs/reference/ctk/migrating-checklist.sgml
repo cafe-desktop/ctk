@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
                "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 ]>
-<chapter id="gtk-migrating-checklist">
+<chapter id="ctk-migrating-checklist">
   <title>Migration Details Checklist</title>
 
   <para>
@@ -28,7 +28,7 @@
     <para>
       The #GtkWidget::popup-menu signal instructs the widget for which
       it is emitted to create a context-sensitive popup menu. By default,
-      the <link linkend="gtk-bindings-install">key binding mechanism</link> is set to
+      the <link linkend="ctk-bindings-install">key binding mechanism</link> is set to
       emit this signal when the
       <keycombo><keycap>Shift</keycap><keycap>F10</keycap></keycombo>
       or <keycap>Menu</keycap> keys are pressed while a widget has the
@@ -305,6 +305,6 @@ my_widget_key_press_event_handler (GtkWidget *widget, GdkEventKey *event)
 <!--
 Local variables:
 mode: sgml
-sgml-parent-document: ("gtk-docs.sgml" "book" "part" "chapter")
+sgml-parent-document: ("ctk-docs.sgml" "book" "part" "chapter")
 End:
 -->

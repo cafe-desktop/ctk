@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 
@@ -37,7 +37,7 @@
 #include <unistd.h>
 #endif
 
-#include "gtk/gtk.h"
+#include "ctk/ctk.h"
 #include "gdk/gdk.h"
 #include "gdk/gdkkeysyms.h"
 
@@ -397,7 +397,7 @@ create_composited_window (GtkWidget *widget)
                         &window);
 
       /* set our event box to have a fully-transparent background
-       * drawn on it.  currently there is no way to simply tell gtk
+       * drawn on it.  currently there is no way to simply tell ctk
        * that "transparency" is the background colour for a widget.
        */
       ctk_widget_set_app_paintable (CTK_WIDGET (event), TRUE);
@@ -422,7 +422,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
       /* set up the compositing handler.
        * note that we do _after so that the normal (red) background is drawn
-       * by gtk before our compositing occurs.
+       * by ctk before our compositing occurs.
        */
       g_signal_connect_after (window, "draw",
                               G_CALLBACK (window_draw), NULL);
@@ -3612,7 +3612,7 @@ make_message_dialog (GdkScreen *screen,
     }
 
   *dialog = ctk_message_dialog_new (NULL, 0, type, buttons,
-                                    "This is a message dialog; it can wrap long lines. This is a long line. La la la. Look this line is wrapped. Blah blah blah blah blah blah. (Note: testgtk has a nonstandard gtkrc that changes some of the message dialog icons.)");
+                                    "This is a message dialog; it can wrap long lines. This is a long line. La la la. Look this line is wrapped. Blah blah blah blah blah blah. (Note: testctk has a nonstandard ctkrc that changes some of the message dialog icons.)");
 
   ctk_window_set_screen (CTK_WINDOW (*dialog), screen);
 
@@ -5501,8 +5501,8 @@ create_dialog (GtkWidget *widget)
   if (!dialog_window)
     {
       /* This is a terrible example; it's much simpler to create
-       * dialogs than this. Don't use testgtk for example code,
-       * use gtk-demo ;-)
+       * dialogs than this. Don't use testctk for example code,
+       * use ctk-demo ;-)
        */
       
       dialog_window = ctk_dialog_new ();
@@ -9814,7 +9814,7 @@ create_main_window (void)
 
   label = ctk_label_new (buffer);
   ctk_box_pack_start (CTK_BOX (box1), label, FALSE, FALSE, 0);
-  ctk_widget_set_name (label, "testgtk-version-label");
+  ctk_widget_set_name (label, "testctk-version-label");
 
   scrolled_window = ctk_scrolled_window_new (NULL, NULL);
   ctk_container_set_border_width (CTK_CONTAINER (scrolled_window), 10);
@@ -9970,7 +9970,7 @@ do_bench (char* what, int num)
 void 
 usage (void)
 {
-  fprintf (stderr, "Usage: testgtk [--bench ALL|<bench>[:<count>]]\n");
+  fprintf (stderr, "Usage: testctk [--bench ALL|<bench>[:<count>]]\n");
   exit (1);
 }
 
@@ -9997,12 +9997,12 @@ main (int argc, char *argv[])
   /* Check to see if we are being run from the correct
    * directory.
    */
-  if (file_exists ("testgtk.css"))
-    ctk_css_provider_load_from_path (provider, "testgtk.css", NULL);
-  else if (file_exists ("tests/testgtk.css"))
-    ctk_css_provider_load_from_path (provider, "tests/testgtk.css", NULL);
+  if (file_exists ("testctk.css"))
+    ctk_css_provider_load_from_path (provider, "testctk.css", NULL);
+  else if (file_exists ("tests/testctk.css"))
+    ctk_css_provider_load_from_path (provider, "tests/testctk.css", NULL);
   else
-    g_warning ("Couldn't find file \"testgtk.css\".");
+    g_warning ("Couldn't find file \"testctk.css\".");
 
   display = gdk_display_get_default ();
   screen = gdk_display_get_default_screen (display);
@@ -10072,7 +10072,7 @@ main (int argc, char *argv[])
 
   memory_provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_data (memory_provider,
-                                   "#testgtk-version-label {\n"
+                                   "#testctk-version-label {\n"
                                    "  color: #f00;\n"
                                    "  font-family: Sans;\n"
                                    "  font-size: 18px;\n"

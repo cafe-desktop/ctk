@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkimagecellaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkimagecellaccessible.h"
 
 struct _GtkImageCellAccessiblePrivate
 {

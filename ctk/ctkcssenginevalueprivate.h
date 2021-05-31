@@ -20,9 +20,9 @@
 #ifndef __CTK_CSS_ENGINE_VALUE_PRIVATE_H__
 #define __CTK_CSS_ENGINE_VALUE_PRIVATE_H__
 
-#include "gtkcssparserprivate.h"
-#include "gtkcssvalueprivate.h"
-#include "deprecated/gtkthemingengine.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcssvalueprivate.h"
+#include "deprecated/ctkthemingengine.h"
 
 G_BEGIN_DECLS
 

@@ -22,28 +22,28 @@
  * Modified by the GTK+ Team and others 2007.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkcellrendererspinner.h"
-#include "deprecated/gtkiconfactory.h"
-#include "gtkicontheme.h"
-#include "gtkintl.h"
-#include "gtksettings.h"
-#include "gtktypebuiltins.h"
+#include "ctkcellrendererspinner.h"
+#include "deprecated/ctkiconfactory.h"
+#include "ctkicontheme.h"
+#include "ctkintl.h"
+#include "ctksettings.h"
+#include "ctktypebuiltins.h"
 
 #undef GDK_DEPRECATED
 #undef GDK_DEPRECATED_FOR
 #define GDK_DEPRECATED
 #define GDK_DEPRECATED_FOR(f)
 
-#include "deprecated/gtkstyle.h"
+#include "deprecated/ctkstyle.h"
 
 
 /**
- * SECTION:gtkcellrendererspinner
+ * SECTION:ctkcellrendererspinner
  * @Short_description: Renders a spinning animation in a cell
  * @Title: GtkCellRendererSpinner
  * @See_also: #GtkSpinner, #GtkCellRendererProgress

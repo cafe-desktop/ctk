@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -27,29 +27,29 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "gtkbutton.h"
-#include "gtkdialog.h"
-#include "gtkdialogprivate.h"
-#include "gtkheaderbar.h"
-#include "gtkbbox.h"
-#include "gtklabel.h"
-#include "gtkmarshalers.h"
-#include "gtkbox.h"
-#include "gtkboxprivate.h"
-#include "gtkcontainerprivate.h"
-#include "gtkmain.h"
-#include "gtkintl.h"
-#include "gtkbindings.h"
-#include "gtkprivate.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtksettings.h"
-#include "gtktypebuiltins.h"
-#include "deprecated/gtkstock.h"
-#include "gtksizegroup.h"
+#include "ctkbutton.h"
+#include "ctkdialog.h"
+#include "ctkdialogprivate.h"
+#include "ctkheaderbar.h"
+#include "ctkbbox.h"
+#include "ctklabel.h"
+#include "ctkmarshalers.h"
+#include "ctkbox.h"
+#include "ctkboxprivate.h"
+#include "ctkcontainerprivate.h"
+#include "ctkmain.h"
+#include "ctkintl.h"
+#include "ctkbindings.h"
+#include "ctkprivate.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctksettings.h"
+#include "ctktypebuiltins.h"
+#include "deprecated/ctkstock.h"
+#include "ctksizegroup.h"
 
 /**
- * SECTION:gtkdialog
+ * SECTION:ctkdialog
  * @Short_description: Create popup windows
  * @Title: GtkDialog
  * @See_also: #GtkVBox, #GtkWindow, #GtkButton
@@ -264,7 +264,7 @@ ctk_dialog_set_use_header_bar_from_setting (GtkDialog *dialog)
   g_assert (!priv->constructed);
 
   g_object_get (ctk_widget_get_settings (CTK_WIDGET (dialog)),
-                "gtk-dialogs-use-header", &priv->use_header_bar,
+                "ctk-dialogs-use-header", &priv->use_header_bar,
                 NULL);
 }
 
@@ -659,7 +659,7 @@ ctk_dialog_class_init (GtkDialogClass *class)
 
   /* Bind class to template
    */
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtkdialog.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctkdialog.ui");
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkDialog, vbox);
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkDialog, headerbar);
   ctk_widget_class_bind_template_child_internal_private (widget_class, GtkDialog, action_area);
@@ -983,14 +983,14 @@ get_response_data (GtkWidget *widget,
 		   gboolean   create)
 {
   ResponseData *ad = g_object_get_data (G_OBJECT (widget),
-                                        "gtk-dialog-response-data");
+                                        "ctk-dialog-response-data");
 
   if (ad == NULL && create)
     {
       ad = g_slice_new (ResponseData);
 
       g_object_set_data_full (G_OBJECT (widget),
-                              I_("gtk-dialog-response-data"),
+                              I_("ctk-dialog-response-data"),
                               ad,
 			      response_data_free);
     }
@@ -1493,7 +1493,7 @@ ctk_alt_dialog_button_order (void)
 {
   gboolean result;
   g_object_get (ctk_settings_get_default (),
-		"gtk-alternative-button-order", &result, NULL);
+		"ctk-alternative-button-order", &result, NULL);
   return result;
 }
 
@@ -1507,7 +1507,7 @@ ctk_alt_dialog_button_order (void)
  * about alternative button order.
  *
  * If you need to use this function, you should probably connect
- * to the ::notify:gtk-alternative-button-order signal on the
+ * to the ::notify:ctk-alternative-button-order signal on the
  * #GtkSettings object associated to @screen, in order to be
  * notified if the button order setting changes.
  *
@@ -1556,7 +1556,7 @@ ctk_dialog_set_alternative_button_order_valist (GtkDialog *dialog,
  * @...: a list of more response ids of @dialog’s buttons, terminated by -1
  *
  * Sets an alternative button order. If the
- * #GtkSettings:gtk-alternative-button-order setting is set to %TRUE,
+ * #GtkSettings:ctk-alternative-button-order setting is set to %TRUE,
  * the dialog buttons are reordered according to the order of the
  * response ids passed to this function.
  *
@@ -1626,7 +1626,7 @@ ctk_dialog_set_alternative_button_order (GtkDialog *dialog,
  *     @dialog’s buttons
  *
  * Sets an alternative button order. If the
- * #GtkSettings:gtk-alternative-button-order setting is set to %TRUE,
+ * #GtkSettings:ctk-alternative-button-order setting is set to %TRUE,
  * the dialog buttons are reordered according to the order of the
  * response ids in @new_order.
  *

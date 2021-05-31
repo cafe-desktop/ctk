@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
@@ -30,26 +30,26 @@
 #include <errno.h>
 #include <string.h>
 
-#include "gtkcssenumvalueprivate.h"
-#include "gtkcssiconthemevalueprivate.h"
-#include "gtkiconfactory.h"
-#include "gtkiconcache.h"
-#include "gtkdebug.h"
-#include "gtkicontheme.h"
-#include "gtksettingsprivate.h"
-#include "deprecated/gtkstock.h"
-#include "gtkwidget.h"
-#include "gtkintl.h"
-#include "gtkbuildable.h"
-#include "gtkbuilderprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkstyle.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkrender.h"
-#include "gtkrenderprivate.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkcssiconthemevalueprivate.h"
+#include "ctkiconfactory.h"
+#include "ctkiconcache.h"
+#include "ctkdebug.h"
+#include "ctkicontheme.h"
+#include "ctksettingsprivate.h"
+#include "deprecated/ctkstock.h"
+#include "ctkwidget.h"
+#include "ctkintl.h"
+#include "ctkbuildable.h"
+#include "ctkbuilderprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkstyle.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkrender.h"
+#include "ctkrenderprivate.h"
 
 /**
- * SECTION:gtkiconfactory
+ * SECTION:ctkiconfactory
  * @Short_description: Manipulating stock icons
  * @Title: Themeable Stock Images
  *
@@ -407,7 +407,7 @@ _ctk_icon_factory_get_default_icons (void)
   GdkScreen *screen = gdk_screen_get_default ();
 
   if (screen)
-    icons = g_object_get_data (G_OBJECT (screen), "gtk-default-icons");
+    icons = g_object_get_data (G_OBJECT (screen), "ctk-default-icons");
 
   if (icons == NULL)
     {
@@ -418,7 +418,7 @@ _ctk_icon_factory_get_default_icons (void)
         }
       if (screen)
         g_object_set_data_full (G_OBJECT (screen),
-                                I_("gtk-default-icons"),
+                                I_("ctk-default-icons"),
                                 default_icons,
                                 g_object_unref);
       icons = default_icons;
@@ -511,7 +511,7 @@ register_bidi_stock_icon (GtkIconFactory *factory,
 static void
 get_default_icons (GtkIconFactory *factory)
 {
-  /* KEEP IN SYNC with gtkstock.c */
+  /* KEEP IN SYNC with ctkstock.c */
 
   register_stock_icon (factory, CTK_STOCK_DIALOG_AUTHENTICATION, "dialog-password");
   register_stock_icon (factory, CTK_STOCK_DIALOG_ERROR, "dialog-error");
@@ -673,32 +673,32 @@ init_icon_sizes (void)
        */
 
       icon_sizes[CTK_ICON_SIZE_MENU].size = CTK_ICON_SIZE_MENU;
-      icon_sizes[CTK_ICON_SIZE_MENU].name = "gtk-menu";
+      icon_sizes[CTK_ICON_SIZE_MENU].name = "ctk-menu";
       icon_sizes[CTK_ICON_SIZE_MENU].width = 16;
       icon_sizes[CTK_ICON_SIZE_MENU].height = 16;
 
       icon_sizes[CTK_ICON_SIZE_BUTTON].size = CTK_ICON_SIZE_BUTTON;
-      icon_sizes[CTK_ICON_SIZE_BUTTON].name = "gtk-button";
+      icon_sizes[CTK_ICON_SIZE_BUTTON].name = "ctk-button";
       icon_sizes[CTK_ICON_SIZE_BUTTON].width = 16;
       icon_sizes[CTK_ICON_SIZE_BUTTON].height = 16;
 
       icon_sizes[CTK_ICON_SIZE_SMALL_TOOLBAR].size = CTK_ICON_SIZE_SMALL_TOOLBAR;
-      icon_sizes[CTK_ICON_SIZE_SMALL_TOOLBAR].name = "gtk-small-toolbar";
+      icon_sizes[CTK_ICON_SIZE_SMALL_TOOLBAR].name = "ctk-small-toolbar";
       icon_sizes[CTK_ICON_SIZE_SMALL_TOOLBAR].width = 16;
       icon_sizes[CTK_ICON_SIZE_SMALL_TOOLBAR].height = 16;
 
       icon_sizes[CTK_ICON_SIZE_LARGE_TOOLBAR].size = CTK_ICON_SIZE_LARGE_TOOLBAR;
-      icon_sizes[CTK_ICON_SIZE_LARGE_TOOLBAR].name = "gtk-large-toolbar";
+      icon_sizes[CTK_ICON_SIZE_LARGE_TOOLBAR].name = "ctk-large-toolbar";
       icon_sizes[CTK_ICON_SIZE_LARGE_TOOLBAR].width = 24;
       icon_sizes[CTK_ICON_SIZE_LARGE_TOOLBAR].height = 24;
 
       icon_sizes[CTK_ICON_SIZE_DND].size = CTK_ICON_SIZE_DND;
-      icon_sizes[CTK_ICON_SIZE_DND].name = "gtk-dnd";
+      icon_sizes[CTK_ICON_SIZE_DND].name = "ctk-dnd";
       icon_sizes[CTK_ICON_SIZE_DND].width = 32;
       icon_sizes[CTK_ICON_SIZE_DND].height = 32;
 
       icon_sizes[CTK_ICON_SIZE_DIALOG].size = CTK_ICON_SIZE_DIALOG;
-      icon_sizes[CTK_ICON_SIZE_DIALOG].name = "gtk-dialog";
+      icon_sizes[CTK_ICON_SIZE_DIALOG].name = "ctk-dialog";
       icon_sizes[CTK_ICON_SIZE_DIALOG].width = 48;
       icon_sizes[CTK_ICON_SIZE_DIALOG].height = 48;
 

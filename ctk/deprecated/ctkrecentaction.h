@@ -21,11 +21,11 @@
 #define __CTK_RECENT_ACTION_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/deprecated/gtkaction.h>
-#include <gtk/gtkrecentmanager.h>
+#include <ctk/deprecated/ctkaction.h>
+#include <ctk/ctkrecentmanager.h>
 
 G_BEGIN_DECLS
 

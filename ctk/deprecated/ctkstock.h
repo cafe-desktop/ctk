@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_STOCK_H__
@@ -27,7 +27,7 @@
 
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <gdk/gdk.h>
@@ -120,7 +120,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;help-about&quot; or the label &quot;_About&quot;.
  */
-#define CTK_STOCK_ABOUT            ((GtkStock)"gtk-about")
+#define CTK_STOCK_ABOUT            ((GtkStock)"ctk-about")
 
 /**
  * CTK_STOCK_ADD:
@@ -129,7 +129,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;list-add&quot; or the label &quot;_Add&quot;.
  */
-#define CTK_STOCK_ADD              ((GtkStock)"gtk-add")
+#define CTK_STOCK_ADD              ((GtkStock)"ctk-add")
 
 /**
  * CTK_STOCK_APPLY:
@@ -138,7 +138,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Do not use an icon. Use label &quot;_Apply&quot;.
  */
-#define CTK_STOCK_APPLY            ((GtkStock)"gtk-apply")
+#define CTK_STOCK_APPLY            ((GtkStock)"ctk-apply")
 
 /**
  * CTK_STOCK_BOLD:
@@ -147,7 +147,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;format-text-bold&quot;.
  */
-#define CTK_STOCK_BOLD             ((GtkStock)"gtk-bold")
+#define CTK_STOCK_BOLD             ((GtkStock)"ctk-bold")
 
 /**
  * CTK_STOCK_CANCEL:
@@ -156,7 +156,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Do not use an icon. Use label &quot;_Cancel&quot;.
  */
-#define CTK_STOCK_CANCEL           ((GtkStock)"gtk-cancel")
+#define CTK_STOCK_CANCEL           ((GtkStock)"ctk-cancel")
 
 /**
  * CTK_STOCK_CAPS_LOCK_WARNING:
@@ -167,7 +167,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;dialog-warning-symbolic&quot;.
  */
-#define CTK_STOCK_CAPS_LOCK_WARNING ((GtkStock)"gtk-caps-lock-warning")
+#define CTK_STOCK_CAPS_LOCK_WARNING ((GtkStock)"ctk-caps-lock-warning")
 
 /**
  * CTK_STOCK_CDROM:
@@ -176,7 +176,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;media-optical&quot;.
  */
-#define CTK_STOCK_CDROM            ((GtkStock)"gtk-cdrom")
+#define CTK_STOCK_CDROM            ((GtkStock)"ctk-cdrom")
 
 /**
  * CTK_STOCK_CLEAR:
@@ -185,7 +185,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;edit-clear&quot;.
  */
-#define CTK_STOCK_CLEAR            ((GtkStock)"gtk-clear")
+#define CTK_STOCK_CLEAR            ((GtkStock)"ctk-clear")
 
 /**
  * CTK_STOCK_CLOSE:
@@ -194,7 +194,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;window-close&quot; or the label &quot;_Close&quot;.
  */
-#define CTK_STOCK_CLOSE            ((GtkStock)"gtk-close")
+#define CTK_STOCK_CLOSE            ((GtkStock)"ctk-close")
 
 /**
  * CTK_STOCK_COLOR_PICKER:
@@ -205,7 +205,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_COLOR_PICKER     ((GtkStock)"gtk-color-picker")
+#define CTK_STOCK_COLOR_PICKER     ((GtkStock)"ctk-color-picker")
 
 /**
  * CTK_STOCK_CONNECT:
@@ -216,7 +216,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_CONNECT          ((GtkStock)"gtk-connect")
+#define CTK_STOCK_CONNECT          ((GtkStock)"ctk-connect")
 
 /**
  * CTK_STOCK_CONVERT:
@@ -225,7 +225,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_CONVERT          ((GtkStock)"gtk-convert")
+#define CTK_STOCK_CONVERT          ((GtkStock)"ctk-convert")
 
 /**
  * CTK_STOCK_COPY:
@@ -234,7 +234,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use the named icon &quot;edit-copy&quot; or the label &quot;_Copy&quot;.
  */
-#define CTK_STOCK_COPY             ((GtkStock)"gtk-copy")
+#define CTK_STOCK_COPY             ((GtkStock)"ctk-copy")
 
 /**
  * CTK_STOCK_CUT:
@@ -243,7 +243,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use the named icon &quot;edit-cut&quot; or the label &quot;Cu_t&quot;.
  */
-#define CTK_STOCK_CUT              ((GtkStock)"gtk-cut")
+#define CTK_STOCK_CUT              ((GtkStock)"ctk-cut")
 
 /**
  * CTK_STOCK_DELETE:
@@ -252,7 +252,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use the named icon &quot;edit-delete&quot; or the label &quot;_Delete&quot;.
  */
-#define CTK_STOCK_DELETE           ((GtkStock)"gtk-delete")
+#define CTK_STOCK_DELETE           ((GtkStock)"ctk-delete")
 
 /**
  * CTK_STOCK_DIALOG_AUTHENTICATION:
@@ -263,7 +263,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;dialog-password&quot;.
  */
-#define CTK_STOCK_DIALOG_AUTHENTICATION ((GtkStock)"gtk-dialog-authentication")
+#define CTK_STOCK_DIALOG_AUTHENTICATION ((GtkStock)"ctk-dialog-authentication")
 
 /**
  * CTK_STOCK_DIALOG_INFO:
@@ -272,7 +272,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;dialog-information&quot;.
  */
-#define CTK_STOCK_DIALOG_INFO      ((GtkStock)"gtk-dialog-info")
+#define CTK_STOCK_DIALOG_INFO      ((GtkStock)"ctk-dialog-info")
 
 /**
  * CTK_STOCK_DIALOG_WARNING:
@@ -281,7 +281,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;dialog-warning&quot;.
  */
-#define CTK_STOCK_DIALOG_WARNING   ((GtkStock)"gtk-dialog-warning")
+#define CTK_STOCK_DIALOG_WARNING   ((GtkStock)"ctk-dialog-warning")
 
 /**
  * CTK_STOCK_DIALOG_ERROR:
@@ -290,7 +290,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;dialog-error&quot;.
  */
-#define CTK_STOCK_DIALOG_ERROR     ((GtkStock)"gtk-dialog-error")
+#define CTK_STOCK_DIALOG_ERROR     ((GtkStock)"ctk-dialog-error")
 
 /**
  * CTK_STOCK_DIALOG_QUESTION:
@@ -299,7 +299,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;dialog-question&quot;.
  */
-#define CTK_STOCK_DIALOG_QUESTION  ((GtkStock)"gtk-dialog-question")
+#define CTK_STOCK_DIALOG_QUESTION  ((GtkStock)"ctk-dialog-question")
 
 /**
  * CTK_STOCK_DIRECTORY:
@@ -310,7 +310,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;folder&quot;.
  */
-#define CTK_STOCK_DIRECTORY        ((GtkStock)"gtk-directory")
+#define CTK_STOCK_DIRECTORY        ((GtkStock)"ctk-directory")
 
 /**
  * CTK_STOCK_DISCARD:
@@ -321,7 +321,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_DISCARD          ((GtkStock)"gtk-discard")
+#define CTK_STOCK_DISCARD          ((GtkStock)"ctk-discard")
 
 /**
  * CTK_STOCK_DISCONNECT:
@@ -332,7 +332,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_DISCONNECT       ((GtkStock)"gtk-disconnect")
+#define CTK_STOCK_DISCONNECT       ((GtkStock)"ctk-disconnect")
 
 /**
  * CTK_STOCK_DND:
@@ -341,7 +341,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_DND              ((GtkStock)"gtk-dnd")
+#define CTK_STOCK_DND              ((GtkStock)"ctk-dnd")
 
 /**
  * CTK_STOCK_DND_MULTIPLE:
@@ -350,7 +350,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_DND_MULTIPLE     ((GtkStock)"gtk-dnd-multiple")
+#define CTK_STOCK_DND_MULTIPLE     ((GtkStock)"ctk-dnd-multiple")
 
 /**
  * CTK_STOCK_EDIT:
@@ -361,7 +361,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_EDIT             ((GtkStock)"gtk-edit")
+#define CTK_STOCK_EDIT             ((GtkStock)"ctk-edit")
 
 /**
  * CTK_STOCK_EXECUTE:
@@ -370,7 +370,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;system-run&quot;.
  */
-#define CTK_STOCK_EXECUTE          ((GtkStock)"gtk-execute")
+#define CTK_STOCK_EXECUTE          ((GtkStock)"ctk-execute")
 
 /**
  * CTK_STOCK_FILE:
@@ -383,7 +383,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;text-x-generic&quot;.
  */
-#define CTK_STOCK_FILE             ((GtkStock)"gtk-file")
+#define CTK_STOCK_FILE             ((GtkStock)"ctk-file")
 
 /**
  * CTK_STOCK_FIND:
@@ -392,7 +392,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;edit-find&quot;.
  */
-#define CTK_STOCK_FIND             ((GtkStock)"gtk-find")
+#define CTK_STOCK_FIND             ((GtkStock)"ctk-find")
 
 /**
  * CTK_STOCK_FIND_AND_REPLACE:
@@ -401,7 +401,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;edit-find-replace&quot;.
  */
-#define CTK_STOCK_FIND_AND_REPLACE ((GtkStock)"gtk-find-and-replace")
+#define CTK_STOCK_FIND_AND_REPLACE ((GtkStock)"ctk-find-and-replace")
 
 /**
  * CTK_STOCK_FLOPPY:
@@ -410,7 +410,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_FLOPPY           ((GtkStock)"gtk-floppy")
+#define CTK_STOCK_FLOPPY           ((GtkStock)"ctk-floppy")
 
 /**
  * CTK_STOCK_FULLSCREEN:
@@ -421,7 +421,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;view-fullscreen&quot;.
  */
-#define CTK_STOCK_FULLSCREEN       ((GtkStock)"gtk-fullscreen")
+#define CTK_STOCK_FULLSCREEN       ((GtkStock)"ctk-fullscreen")
 
 /**
  * CTK_STOCK_GOTO_BOTTOM:
@@ -430,7 +430,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;go-bottom&quot;.
  */
-#define CTK_STOCK_GOTO_BOTTOM      ((GtkStock)"gtk-goto-bottom")
+#define CTK_STOCK_GOTO_BOTTOM      ((GtkStock)"ctk-goto-bottom")
 
 /**
  * CTK_STOCK_GOTO_FIRST:
@@ -439,7 +439,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;go-first&quot;.
  */
-#define CTK_STOCK_GOTO_FIRST       ((GtkStock)"gtk-goto-first")
+#define CTK_STOCK_GOTO_FIRST       ((GtkStock)"ctk-goto-first")
 
 /**
  * CTK_STOCK_GOTO_LAST:
@@ -448,7 +448,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;go-last&quot;.
  */
-#define CTK_STOCK_GOTO_LAST        ((GtkStock)"gtk-goto-last")
+#define CTK_STOCK_GOTO_LAST        ((GtkStock)"ctk-goto-last")
 
 /**
  * CTK_STOCK_GOTO_TOP:
@@ -457,7 +457,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;go-top&quot;.
  */
-#define CTK_STOCK_GOTO_TOP         ((GtkStock)"gtk-goto-top")
+#define CTK_STOCK_GOTO_TOP         ((GtkStock)"ctk-goto-top")
 
 /**
  * CTK_STOCK_GO_BACK:
@@ -466,7 +466,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;go-previous&quot;.
 */
-#define CTK_STOCK_GO_BACK          ((GtkStock)"gtk-go-back")
+#define CTK_STOCK_GO_BACK          ((GtkStock)"ctk-go-back")
 
 /**
  * CTK_STOCK_GO_DOWN:
@@ -475,7 +475,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;go-down&quot;.
  */
-#define CTK_STOCK_GO_DOWN          ((GtkStock)"gtk-go-down")
+#define CTK_STOCK_GO_DOWN          ((GtkStock)"ctk-go-down")
 
 /**
  * CTK_STOCK_GO_FORWARD:
@@ -484,7 +484,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;go-next&quot;.
  */
-#define CTK_STOCK_GO_FORWARD       ((GtkStock)"gtk-go-forward")
+#define CTK_STOCK_GO_FORWARD       ((GtkStock)"ctk-go-forward")
 
 /**
  * CTK_STOCK_GO_UP:
@@ -493,7 +493,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;go-up&quot;.
  */
-#define CTK_STOCK_GO_UP            ((GtkStock)"gtk-go-up")
+#define CTK_STOCK_GO_UP            ((GtkStock)"ctk-go-up")
 
 /**
  * CTK_STOCK_HARDDISK:
@@ -504,7 +504,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;drive-harddisk&quot;.
  */
-#define CTK_STOCK_HARDDISK         ((GtkStock)"gtk-harddisk")
+#define CTK_STOCK_HARDDISK         ((GtkStock)"ctk-harddisk")
 
 /**
  * CTK_STOCK_HELP:
@@ -513,7 +513,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;help-browser&quot;.
  */
-#define CTK_STOCK_HELP             ((GtkStock)"gtk-help")
+#define CTK_STOCK_HELP             ((GtkStock)"ctk-help")
 
 /**
  * CTK_STOCK_HOME:
@@ -522,7 +522,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;go-home&quot;.
  */
-#define CTK_STOCK_HOME             ((GtkStock)"gtk-home")
+#define CTK_STOCK_HOME             ((GtkStock)"ctk-home")
 
 /**
  * CTK_STOCK_INDEX:
@@ -531,7 +531,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_INDEX            ((GtkStock)"gtk-index")
+#define CTK_STOCK_INDEX            ((GtkStock)"ctk-index")
 
 /**
  * CTK_STOCK_INDENT:
@@ -542,7 +542,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;format-indent-more&quot;.
  */
-#define CTK_STOCK_INDENT           ((GtkStock)"gtk-indent")
+#define CTK_STOCK_INDENT           ((GtkStock)"ctk-indent")
 
 /**
  * CTK_STOCK_INFO:
@@ -553,7 +553,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;dialog-information&quot;.
  */
-#define CTK_STOCK_INFO             ((GtkStock)"gtk-info")
+#define CTK_STOCK_INFO             ((GtkStock)"ctk-info")
 
 /**
  * CTK_STOCK_ITALIC:
@@ -562,7 +562,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;format-text-italic&quot;.
  */
-#define CTK_STOCK_ITALIC           ((GtkStock)"gtk-italic")
+#define CTK_STOCK_ITALIC           ((GtkStock)"ctk-italic")
 
 /**
  * CTK_STOCK_JUMP_TO:
@@ -571,7 +571,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;go-jump&quot;.
  */
-#define CTK_STOCK_JUMP_TO          ((GtkStock)"gtk-jump-to")
+#define CTK_STOCK_JUMP_TO          ((GtkStock)"ctk-jump-to")
 
 /**
  * CTK_STOCK_JUSTIFY_CENTER:
@@ -580,7 +580,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;format-justify-center&quot;.
  */
-#define CTK_STOCK_JUSTIFY_CENTER   ((GtkStock)"gtk-justify-center")
+#define CTK_STOCK_JUSTIFY_CENTER   ((GtkStock)"ctk-justify-center")
 
 /**
  * CTK_STOCK_JUSTIFY_FILL:
@@ -589,7 +589,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;format-justify-fill&quot;.
  */
-#define CTK_STOCK_JUSTIFY_FILL     ((GtkStock)"gtk-justify-fill")
+#define CTK_STOCK_JUSTIFY_FILL     ((GtkStock)"ctk-justify-fill")
 
 /**
  * CTK_STOCK_JUSTIFY_LEFT:
@@ -598,7 +598,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;format-justify-left&quot;.
  */
-#define CTK_STOCK_JUSTIFY_LEFT     ((GtkStock)"gtk-justify-left")
+#define CTK_STOCK_JUSTIFY_LEFT     ((GtkStock)"ctk-justify-left")
 
 /**
  * CTK_STOCK_JUSTIFY_RIGHT:
@@ -607,7 +607,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;format-justify-right&quot;.
  */
-#define CTK_STOCK_JUSTIFY_RIGHT    ((GtkStock)"gtk-justify-right")
+#define CTK_STOCK_JUSTIFY_RIGHT    ((GtkStock)"ctk-justify-right")
 
 /**
  * CTK_STOCK_LEAVE_FULLSCREEN:
@@ -618,7 +618,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;view-restore&quot;.
  */
-#define CTK_STOCK_LEAVE_FULLSCREEN ((GtkStock)"gtk-leave-fullscreen")
+#define CTK_STOCK_LEAVE_FULLSCREEN ((GtkStock)"ctk-leave-fullscreen")
 
 /**
  * CTK_STOCK_MISSING_IMAGE:
@@ -627,7 +627,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;image-missing&quot;.
  */
-#define CTK_STOCK_MISSING_IMAGE    ((GtkStock)"gtk-missing-image")
+#define CTK_STOCK_MISSING_IMAGE    ((GtkStock)"ctk-missing-image")
 
 /**
  * CTK_STOCK_MEDIA_FORWARD:
@@ -638,7 +638,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;media-seek-forward&quot; or the label &quot;_Forward&quot;.
  */
-#define CTK_STOCK_MEDIA_FORWARD    ((GtkStock)"gtk-media-forward")
+#define CTK_STOCK_MEDIA_FORWARD    ((GtkStock)"ctk-media-forward")
 
 /**
  * CTK_STOCK_MEDIA_NEXT:
@@ -649,7 +649,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;media-skip-forward&quot; or the label &quot;_Next&quot;.
  */
-#define CTK_STOCK_MEDIA_NEXT       ((GtkStock)"gtk-media-next")
+#define CTK_STOCK_MEDIA_NEXT       ((GtkStock)"ctk-media-next")
 
 /**
  * CTK_STOCK_MEDIA_PAUSE:
@@ -660,7 +660,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;media-playback-pause&quot; or the label &quot;P_ause&quot;.
  */
-#define CTK_STOCK_MEDIA_PAUSE      ((GtkStock)"gtk-media-pause")
+#define CTK_STOCK_MEDIA_PAUSE      ((GtkStock)"ctk-media-pause")
 
 /**
  * CTK_STOCK_MEDIA_PLAY:
@@ -671,7 +671,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;media-playback-start&quot; or the label &quot;_Play&quot;.
  */
-#define CTK_STOCK_MEDIA_PLAY       ((GtkStock)"gtk-media-play")
+#define CTK_STOCK_MEDIA_PLAY       ((GtkStock)"ctk-media-play")
 
 /**
  * CTK_STOCK_MEDIA_PREVIOUS:
@@ -682,7 +682,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;media-skip-backward&quot; or the label &quot;Pre_vious&quot;.
  */
-#define CTK_STOCK_MEDIA_PREVIOUS   ((GtkStock)"gtk-media-previous")
+#define CTK_STOCK_MEDIA_PREVIOUS   ((GtkStock)"ctk-media-previous")
 
 /**
  * CTK_STOCK_MEDIA_RECORD:
@@ -693,7 +693,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;media-record&quot; or the label &quot;_Record&quot;.
  */
-#define CTK_STOCK_MEDIA_RECORD     ((GtkStock)"gtk-media-record")
+#define CTK_STOCK_MEDIA_RECORD     ((GtkStock)"ctk-media-record")
 
 /**
  * CTK_STOCK_MEDIA_REWIND:
@@ -704,7 +704,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;media-seek-backward&quot; or the label &quot;R_ewind&quot;.
  */
-#define CTK_STOCK_MEDIA_REWIND     ((GtkStock)"gtk-media-rewind")
+#define CTK_STOCK_MEDIA_REWIND     ((GtkStock)"ctk-media-rewind")
 
 /**
  * CTK_STOCK_MEDIA_STOP:
@@ -715,7 +715,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;media-playback-stop&quot; or the label &quot;_Stop&quot;.
  */
-#define CTK_STOCK_MEDIA_STOP       ((GtkStock)"gtk-media-stop")
+#define CTK_STOCK_MEDIA_STOP       ((GtkStock)"ctk-media-stop")
 
 /**
  * CTK_STOCK_NETWORK:
@@ -726,7 +726,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;network-workgroup&quot;.
  */
-#define CTK_STOCK_NETWORK          ((GtkStock)"gtk-network")
+#define CTK_STOCK_NETWORK          ((GtkStock)"ctk-network")
 
 /**
  * CTK_STOCK_NEW:
@@ -735,7 +735,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;document-new&quot; or the label &quot;_New&quot;.
  */
-#define CTK_STOCK_NEW              ((GtkStock)"gtk-new")
+#define CTK_STOCK_NEW              ((GtkStock)"ctk-new")
 
 /**
  * CTK_STOCK_NO:
@@ -744,7 +744,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_NO               ((GtkStock)"gtk-no")
+#define CTK_STOCK_NO               ((GtkStock)"ctk-no")
 
 /**
  * CTK_STOCK_OK:
@@ -753,7 +753,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Do not use an icon. Use label &quot;_OK&quot;.
  */
-#define CTK_STOCK_OK               ((GtkStock)"gtk-ok")
+#define CTK_STOCK_OK               ((GtkStock)"ctk-ok")
 
 /**
  * CTK_STOCK_OPEN:
@@ -762,7 +762,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;document-open&quot; or the label &quot;_Open&quot;.
  */
-#define CTK_STOCK_OPEN             ((GtkStock)"gtk-open")
+#define CTK_STOCK_OPEN             ((GtkStock)"ctk-open")
 
 /**
  * CTK_STOCK_ORIENTATION_PORTRAIT:
@@ -773,7 +773,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_ORIENTATION_PORTRAIT ((GtkStock)"gtk-orientation-portrait")
+#define CTK_STOCK_ORIENTATION_PORTRAIT ((GtkStock)"ctk-orientation-portrait")
 
 /**
  * CTK_STOCK_ORIENTATION_LANDSCAPE:
@@ -784,7 +784,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_ORIENTATION_LANDSCAPE ((GtkStock)"gtk-orientation-landscape")
+#define CTK_STOCK_ORIENTATION_LANDSCAPE ((GtkStock)"ctk-orientation-landscape")
 
 /**
  * CTK_STOCK_ORIENTATION_REVERSE_LANDSCAPE:
@@ -795,7 +795,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_ORIENTATION_REVERSE_LANDSCAPE ((GtkStock)"gtk-orientation-reverse-landscape")
+#define CTK_STOCK_ORIENTATION_REVERSE_LANDSCAPE ((GtkStock)"ctk-orientation-reverse-landscape")
 
 /**
  * CTK_STOCK_ORIENTATION_REVERSE_PORTRAIT:
@@ -806,7 +806,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_ORIENTATION_REVERSE_PORTRAIT ((GtkStock)"gtk-orientation-reverse-portrait")
+#define CTK_STOCK_ORIENTATION_REVERSE_PORTRAIT ((GtkStock)"ctk-orientation-reverse-portrait")
 
 /**
  * CTK_STOCK_PAGE_SETUP:
@@ -817,7 +817,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;document-page-setup&quot; or the label &quot;Page Set_up&quot;.
  */
-#define CTK_STOCK_PAGE_SETUP       ((GtkStock)"gtk-page-setup")
+#define CTK_STOCK_PAGE_SETUP       ((GtkStock)"ctk-page-setup")
 
 /**
  * CTK_STOCK_PASTE:
@@ -826,7 +826,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;edit-paste&quot; or the label &quot;_Paste&quot;.
  */
-#define CTK_STOCK_PASTE            ((GtkStock)"gtk-paste")
+#define CTK_STOCK_PASTE            ((GtkStock)"ctk-paste")
 
 /**
  * CTK_STOCK_PREFERENCES:
@@ -835,7 +835,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;preferences-system&quot; or the label &quot;_Preferences&quot;.
  */
-#define CTK_STOCK_PREFERENCES      ((GtkStock)"gtk-preferences")
+#define CTK_STOCK_PREFERENCES      ((GtkStock)"ctk-preferences")
 
 /**
  * CTK_STOCK_PRINT:
@@ -844,7 +844,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;document-print&quot; or the label &quot;_Print&quot;.
  */
-#define CTK_STOCK_PRINT            ((GtkStock)"gtk-print")
+#define CTK_STOCK_PRINT            ((GtkStock)"ctk-print")
 
 /**
  * CTK_STOCK_PRINT_ERROR:
@@ -855,7 +855,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;printer-error&quot;.
  */
-#define CTK_STOCK_PRINT_ERROR      ((GtkStock)"gtk-print-error")
+#define CTK_STOCK_PRINT_ERROR      ((GtkStock)"ctk-print-error")
 
 /**
  * CTK_STOCK_PRINT_PAUSED:
@@ -866,7 +866,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_PRINT_PAUSED     ((GtkStock)"gtk-print-paused")
+#define CTK_STOCK_PRINT_PAUSED     ((GtkStock)"ctk-print-paused")
 
 /**
  * CTK_STOCK_PRINT_PREVIEW:
@@ -875,7 +875,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use label &quot;Pre_view&quot;.
  */
-#define CTK_STOCK_PRINT_PREVIEW    ((GtkStock)"gtk-print-preview")
+#define CTK_STOCK_PRINT_PREVIEW    ((GtkStock)"ctk-print-preview")
 
 /**
  * CTK_STOCK_PRINT_REPORT:
@@ -886,7 +886,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_PRINT_REPORT     ((GtkStock)"gtk-print-report")
+#define CTK_STOCK_PRINT_REPORT     ((GtkStock)"ctk-print-report")
 
 
 /**
@@ -898,7 +898,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_PRINT_WARNING    ((GtkStock)"gtk-print-warning")
+#define CTK_STOCK_PRINT_WARNING    ((GtkStock)"ctk-print-warning")
 
 /**
  * CTK_STOCK_PROPERTIES:
@@ -907,7 +907,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;document-properties&quot; or the label &quot;_Properties&quot;.
  */
-#define CTK_STOCK_PROPERTIES       ((GtkStock)"gtk-properties")
+#define CTK_STOCK_PROPERTIES       ((GtkStock)"ctk-properties")
 
 /**
  * CTK_STOCK_QUIT:
@@ -916,7 +916,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;application-exit&quot; or the label &quot;_Quit&quot;.
  */
-#define CTK_STOCK_QUIT             ((GtkStock)"gtk-quit")
+#define CTK_STOCK_QUIT             ((GtkStock)"ctk-quit")
 
 /**
  * CTK_STOCK_REDO:
@@ -925,7 +925,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;edit-redo&quot; or the label &quot;_Redo&quot;.
  */
-#define CTK_STOCK_REDO             ((GtkStock)"gtk-redo")
+#define CTK_STOCK_REDO             ((GtkStock)"ctk-redo")
 
 /**
  * CTK_STOCK_REFRESH:
@@ -934,7 +934,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;view-refresh&quot; or the label &quot;_Refresh&quot;.
  */
-#define CTK_STOCK_REFRESH          ((GtkStock)"gtk-refresh")
+#define CTK_STOCK_REFRESH          ((GtkStock)"ctk-refresh")
 
 /**
  * CTK_STOCK_REMOVE:
@@ -943,7 +943,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;list-remove&quot; or the label &quot;_Remove&quot;.
  */
-#define CTK_STOCK_REMOVE           ((GtkStock)"gtk-remove")
+#define CTK_STOCK_REMOVE           ((GtkStock)"ctk-remove")
 
 /**
  * CTK_STOCK_REVERT_TO_SAVED:
@@ -952,7 +952,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;document-revert&quot; or the label &quot;_Revert&quot;.
  */
-#define CTK_STOCK_REVERT_TO_SAVED  ((GtkStock)"gtk-revert-to-saved")
+#define CTK_STOCK_REVERT_TO_SAVED  ((GtkStock)"ctk-revert-to-saved")
 
 /**
  * CTK_STOCK_SAVE:
@@ -961,7 +961,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;document-save&quot; or the label &quot;_Save&quot;.
  */
-#define CTK_STOCK_SAVE             ((GtkStock)"gtk-save")
+#define CTK_STOCK_SAVE             ((GtkStock)"ctk-save")
 
 /**
  * CTK_STOCK_SAVE_AS:
@@ -970,7 +970,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;document-save-as&quot; or the label &quot;Save _As&quot;.
  */
-#define CTK_STOCK_SAVE_AS          ((GtkStock)"gtk-save-as")
+#define CTK_STOCK_SAVE_AS          ((GtkStock)"ctk-save-as")
 
 /**
  * CTK_STOCK_SELECT_ALL:
@@ -981,7 +981,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;edit-select-all&quot; or the label &quot;Select _All&quot;.
  */
-#define CTK_STOCK_SELECT_ALL       ((GtkStock)"gtk-select-all")
+#define CTK_STOCK_SELECT_ALL       ((GtkStock)"ctk-select-all")
 
 /**
  * CTK_STOCK_SELECT_COLOR:
@@ -990,7 +990,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_SELECT_COLOR     ((GtkStock)"gtk-select-color")
+#define CTK_STOCK_SELECT_COLOR     ((GtkStock)"ctk-select-color")
 
 /**
  * CTK_STOCK_SELECT_FONT:
@@ -999,7 +999,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_SELECT_FONT      ((GtkStock)"gtk-select-font")
+#define CTK_STOCK_SELECT_FONT      ((GtkStock)"ctk-select-font")
 
 /**
  * CTK_STOCK_SORT_ASCENDING:
@@ -1008,7 +1008,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;view-sort-ascending&quot;.
  */
-#define CTK_STOCK_SORT_ASCENDING   ((GtkStock)"gtk-sort-ascending")
+#define CTK_STOCK_SORT_ASCENDING   ((GtkStock)"ctk-sort-ascending")
 
 /**
  * CTK_STOCK_SORT_DESCENDING:
@@ -1017,7 +1017,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;view-sort-descending&quot;.
  */
-#define CTK_STOCK_SORT_DESCENDING  ((GtkStock)"gtk-sort-descending")
+#define CTK_STOCK_SORT_DESCENDING  ((GtkStock)"ctk-sort-descending")
 
 /**
  * CTK_STOCK_SPELL_CHECK:
@@ -1026,7 +1026,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;tools-check-spelling&quot;.
  */
-#define CTK_STOCK_SPELL_CHECK      ((GtkStock)"gtk-spell-check")
+#define CTK_STOCK_SPELL_CHECK      ((GtkStock)"ctk-spell-check")
 
 /**
  * CTK_STOCK_STOP:
@@ -1035,7 +1035,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;process-stop&quot; or the label &quot;_Stop&quot;.
  */
-#define CTK_STOCK_STOP             ((GtkStock)"gtk-stop")
+#define CTK_STOCK_STOP             ((GtkStock)"ctk-stop")
 
 /**
  * CTK_STOCK_STRIKETHROUGH:
@@ -1044,7 +1044,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;format-text-strikethrough&quot; or the label &quot;_Strikethrough&quot;.
  */
-#define CTK_STOCK_STRIKETHROUGH    ((GtkStock)"gtk-strikethrough")
+#define CTK_STOCK_STRIKETHROUGH    ((GtkStock)"ctk-strikethrough")
 
 /**
  * CTK_STOCK_UNDELETE:
@@ -1053,7 +1053,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_UNDELETE         ((GtkStock)"gtk-undelete")
+#define CTK_STOCK_UNDELETE         ((GtkStock)"ctk-undelete")
 
 /**
  * CTK_STOCK_UNDERLINE:
@@ -1062,7 +1062,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;format-text-underline&quot; or the label &quot;_Underline&quot;.
  */
-#define CTK_STOCK_UNDERLINE        ((GtkStock)"gtk-underline")
+#define CTK_STOCK_UNDERLINE        ((GtkStock)"ctk-underline")
 
 /**
  * CTK_STOCK_UNDO:
@@ -1071,7 +1071,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;edit-undo&quot; or the label &quot;_Undo&quot;.
  */
-#define CTK_STOCK_UNDO             ((GtkStock)"gtk-undo")
+#define CTK_STOCK_UNDO             ((GtkStock)"ctk-undo")
 
 /**
  * CTK_STOCK_UNINDENT:
@@ -1082,7 +1082,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;format-indent-less&quot;.
  */
-#define CTK_STOCK_UNINDENT         ((GtkStock)"gtk-unindent")
+#define CTK_STOCK_UNINDENT         ((GtkStock)"ctk-unindent")
 
 /**
  * CTK_STOCK_YES:
@@ -1091,7 +1091,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10
  */
-#define CTK_STOCK_YES              ((GtkStock)"gtk-yes")
+#define CTK_STOCK_YES              ((GtkStock)"ctk-yes")
 
 /**
  * CTK_STOCK_ZOOM_100:
@@ -1100,7 +1100,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;zoom-original&quot; or the label &quot;_Normal Size&quot;.
  */
-#define CTK_STOCK_ZOOM_100         ((GtkStock)"gtk-zoom-100")
+#define CTK_STOCK_ZOOM_100         ((GtkStock)"ctk-zoom-100")
 
 /**
  * CTK_STOCK_ZOOM_FIT:
@@ -1109,7 +1109,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;zoom-fit-best&quot; or the label &quot;Best _Fit&quot;.
  */
-#define CTK_STOCK_ZOOM_FIT         ((GtkStock)"gtk-zoom-fit")
+#define CTK_STOCK_ZOOM_FIT         ((GtkStock)"ctk-zoom-fit")
 
 /**
  * CTK_STOCK_ZOOM_IN:
@@ -1118,7 +1118,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;zoom-in&quot; or the label &quot;Zoom _In&quot;.
  */
-#define CTK_STOCK_ZOOM_IN          ((GtkStock)"gtk-zoom-in")
+#define CTK_STOCK_ZOOM_IN          ((GtkStock)"ctk-zoom-in")
 
 /**
  * CTK_STOCK_ZOOM_OUT:
@@ -1127,7 +1127,7 @@ typedef char * GtkStock;
  *
  * Deprecated: 3.10: Use named icon &quot;zoom-out&quot; or the label &quot;Zoom _Out&quot;.
  */
-#define CTK_STOCK_ZOOM_OUT         ((GtkStock)"gtk-zoom-out")
+#define CTK_STOCK_ZOOM_OUT         ((GtkStock)"ctk-zoom-out")
 
 #endif
 

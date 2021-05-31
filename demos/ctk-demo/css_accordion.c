@@ -4,7 +4,7 @@
  *
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 apply_css (GtkWidget *widget, GtkStyleProvider *provider)

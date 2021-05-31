@@ -21,9 +21,9 @@
 
 #include <config.h>
 
-#include "gtkwin32themeprivate.h"
+#include "ctkwin32themeprivate.h"
 
-#include "gtkwin32drawprivate.h"
+#include "ctkwin32drawprivate.h"
 
 #ifdef G_OS_WIN32
 

@@ -1,4 +1,4 @@
-/* gtkentrybuffer.h
+/* ctkentrybuffer.h
  * Copyright (C) 2009  Stefan Walter <stef@memberwebs.com>
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
 #define __CTK_ENTRY_BUFFER_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <glib-object.h>

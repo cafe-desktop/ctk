@@ -18,8 +18,8 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtknotebookpageaccessible.h"
+#include <ctk/ctk.h>
+#include "ctknotebookpageaccessible.h"
 
 
 struct _GtkNotebookPageAccessiblePrivate

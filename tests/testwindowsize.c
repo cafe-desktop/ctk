@@ -1,5 +1,5 @@
-/*  gcc -g -Wall -O2 -o dialog-test dialog-test.c `pkg-config --cflags --libs gtk+-3.0` */
-#include <gtk/gtk.h>
+/*  gcc -g -Wall -O2 -o dialog-test dialog-test.c `pkg-config --cflags --libs ctk+-3.0` */
+#include <ctk/ctk.h>
 
 static GtkWidget *window;
 static GtkWidget *width_chars_spin;

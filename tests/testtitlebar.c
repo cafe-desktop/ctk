@@ -1,4 +1,4 @@
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 on_text_changed (GtkEntry       *entry,
@@ -136,7 +136,7 @@ activate (GApplication *gapp)
   ctk_widget_set_halign (label, CTK_ALIGN_END);
   entry = ctk_entry_new ();
 
-  g_object_get (ctk_widget_get_settings (window), "gtk-decoration-layout", &layout, NULL);
+  g_object_get (ctk_widget_get_settings (window), "ctk-decoration-layout", &layout, NULL);
   ctk_entry_set_text (CTK_ENTRY (entry), layout);
   g_free (layout);
 
@@ -166,7 +166,7 @@ activate (GApplication *gapp)
   label = ctk_label_new ("Shell Shows Menu");
   ctk_widget_set_halign (label, CTK_ALIGN_END);
   check = ctk_check_button_new ();
-  g_object_bind_property (ctk_settings_get_default (), "gtk-shell-shows-app-menu",
+  g_object_bind_property (ctk_settings_get_default (), "ctk-shell-shows-app-menu",
                           check, "active",
                           G_BINDING_BIDIRECTIONAL|G_BINDING_SYNC_CREATE);
   ctk_grid_attach (CTK_GRID (grid), label, 2, 2, 1, 1);
@@ -193,7 +193,7 @@ main (int argc, char *argv[])
 {
   GtkApplication *app;
 
-  app = ctk_application_new ("org.gtk.Test.titlebar", 0);
+  app = ctk_application_new ("org.ctk.Test.titlebar", 0);
   g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
 
   return g_application_run (G_APPLICATION (app), argc, argv);

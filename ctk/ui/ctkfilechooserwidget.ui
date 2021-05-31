@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface domain="gtk30">
-  <!-- interface-requires gtk+ 3.10 -->
-  <!-- interface-requires gtkprivate 3.10 -->
+<interface domain="ctk30">
+  <!-- interface-requires ctk+ 3.10 -->
+  <!-- interface-requires ctkprivate 3.10 -->
   <template class="GtkFileChooserWidget" parent="GtkBox">
     <property name="orientation">vertical</property>
     <child>

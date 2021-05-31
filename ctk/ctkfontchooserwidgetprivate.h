@@ -18,7 +18,7 @@
 #ifndef __CTK_FONT_CHOOSER_WIDGET_PRIVATE_H__
 #define __CTK_FONT_CHOOSER_WIDGET_PRIVATE_H__
 
-#include "gtkfontchooserwidget.h"
+#include "ctkfontchooserwidget.h"
 
 G_BEGIN_DECLS
 

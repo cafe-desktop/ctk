@@ -1,6 +1,6 @@
 /*
- * gtkoverlay.c
- * This file is part of gtk
+ * ctkoverlay.c
+ * This file is part of ctk
  *
  * Copyright (C) 2011 - Ignacio Casal Quinteiro, Mike Krüger
  *
@@ -20,16 +20,16 @@
 
 #include "config.h"
 
-#include "gtkoverlay.h"
-#include "gtkbuildable.h"
-#include "gtkscrolledwindow.h"
-#include "gtkmarshalers.h"
+#include "ctkoverlay.h"
+#include "ctkbuildable.h"
+#include "ctkscrolledwindow.h"
+#include "ctkmarshalers.h"
 
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 /**
- * SECTION:gtkoverlay
+ * SECTION:ctkoverlay
  * @short_description: A container which overlays widgets on top of each other
  * @title: GtkOverlay
  *

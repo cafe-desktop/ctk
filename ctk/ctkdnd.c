@@ -19,14 +19,14 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtkdnd.h"
-#include "gtkdndprivate.h"
-#include "gtksettingsprivate.h"
+#include "ctkdnd.h"
+#include "ctkdndprivate.h"
+#include "ctksettingsprivate.h"
 
 #include <math.h>
 #include <stdlib.h>
@@ -51,25 +51,25 @@
 #include <gdk/wayland/gdkwayland.h>
 #endif
 
-#include "gtkdragdest.h"
-#include "gtkgesturedrag.h"
-#include "gtkgesturesingle.h"
-#include "gtkicontheme.h"
-#include "gtkimageprivate.h"
-#include "gtkintl.h"
-#include "gtkmain.h"
-#include "gtkplug.h"
-#include "gtktooltipprivate.h"
-#include "gtkwindow.h"
-#include "gtkrender.h"
-#include "gtkselectionprivate.h"
-#include "gtkwindowgroup.h"
-#include "gtkwindowprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctkdragdest.h"
+#include "ctkgesturedrag.h"
+#include "ctkgesturesingle.h"
+#include "ctkicontheme.h"
+#include "ctkimageprivate.h"
+#include "ctkintl.h"
+#include "ctkmain.h"
+#include "ctkplug.h"
+#include "ctktooltipprivate.h"
+#include "ctkwindow.h"
+#include "ctkrender.h"
+#include "ctkselectionprivate.h"
+#include "ctkwindowgroup.h"
+#include "ctkwindowprivate.h"
+#include "ctkwidgetprivate.h"
 
 
 /**
- * SECTION:gtkdnd
+ * SECTION:ctkdnd
  * @Short_description: Functions for controlling drag and drop handling
  * @Title: Drag and Drop
  *
@@ -77,7 +77,7 @@
  * via the drag-and-drop metaphor.
  *
  * As well as the functions listed here, applications may need to use some
- * facilities provided for [Selections][gtk3-Selections]. Also, the Drag and
+ * facilities provided for [Selections][ctk3-Selections]. Also, the Drag and
  * Drop API makes use of signals in the #GtkWidget class.
  */
 
@@ -295,7 +295,7 @@ ctk_drag_get_ipc_widget_for_screen (GdkScreen *screen)
 {
   GtkWidget *result;
   GSList *drag_widgets = g_object_get_data (G_OBJECT (screen), 
-                                            "gtk-dnd-ipc-widgets");
+                                            "ctk-dnd-ipc-widgets");
   
   if (drag_widgets)
     {
@@ -303,7 +303,7 @@ ctk_drag_get_ipc_widget_for_screen (GdkScreen *screen)
       result = drag_widgets->data;
       drag_widgets = drag_widgets->next;
       g_object_set_data (G_OBJECT (screen),
-                         I_("gtk-dnd-ipc-widgets"),
+                         I_("ctk-dnd-ipc-widgets"),
                          drag_widgets);
       g_slist_free_1 (tmp);
     }
@@ -608,7 +608,7 @@ ctk_drag_release_ipc_widget (GtkWidget *widget)
   GdkScreen *screen = ctk_widget_get_screen (widget);
   GdkDragContext *context = g_object_get_data (G_OBJECT (widget), "drag-context");
   GSList *drag_widgets = g_object_get_data (G_OBJECT (screen),
-                                            "gtk-dnd-ipc-widgets");
+                                            "ctk-dnd-ipc-widgets");
   GdkDevice *pointer, *keyboard;
 
   if (context)
@@ -625,7 +625,7 @@ ctk_drag_release_ipc_widget (GtkWidget *widget)
                                     window);
   drag_widgets = g_slist_prepend (drag_widgets, widget);
   g_object_set_data (G_OBJECT (screen),
-                     I_("gtk-dnd-ipc-widgets"),
+                     I_("ctk-dnd-ipc-widgets"),
                      drag_widgets);
 }
 
@@ -767,7 +767,7 @@ ensure_drag_cursor_pixbuf (int i)
 {
   if (drag_cursors[i].pixbuf == NULL)
     {
-      char *path = g_strconcat ("/org/gtk/libgtk/cursor/",  drag_cursors[i].name, ".png", NULL);
+      char *path = g_strconcat ("/org/ctk/libctk/cursor/",  drag_cursors[i].name, ".png", NULL);
       GInputStream *stream = g_resources_open_stream (path, 0, NULL);
       if (stream != NULL)
         {
@@ -928,7 +928,7 @@ ctk_drag_get_source_widget (GdkDragContext *context)
       if (ctk_widget_get_window (ipc_widget) == gdk_drag_context_get_source_window (context))
         {
           GtkDragSourceInfo *info;
-          info = g_object_get_data (G_OBJECT (ipc_widget), "gtk-info");
+          info = g_object_get_data (G_OBJECT (ipc_widget), "ctk-info");
 
           return info ? info->widget : NULL;
         }
@@ -1165,7 +1165,7 @@ ctk_drag_selection_received (GtkWidget        *widget,
     {
       GtkDragDestSite *site;
 
-      site = g_object_get_data (G_OBJECT (drop_widget), "gtk-drag-dest");
+      site = g_object_get_data (G_OBJECT (drop_widget), "ctk-drag-dest");
 
       if (site && site->target_list)
         {
@@ -1265,7 +1265,7 @@ ctk_drag_find_widget (GtkWidget           *widget,
        * emit "drag-motion" to check if we are actually in a drop
        * site.
        */
-      if (g_object_get_data (G_OBJECT (widget), "gtk-drag-dest"))
+      if (g_object_get_data (G_OBJECT (widget), "ctk-drag-dest"))
         {
           found = callback (widget, context, x, y, time);
 
@@ -1387,7 +1387,7 @@ ctk_drag_get_dest_info (GdkDragContext *context,
   GtkDragDestInfo *info;
   static GQuark info_quark = 0;
   if (!info_quark)
-    info_quark = g_quark_from_static_string ("gtk-dest-info");
+    info_quark = g_quark_from_static_string ("ctk-dest-info");
   
   info = g_object_get_qdata (G_OBJECT (context), info_quark);
   if (!info && create)
@@ -1409,7 +1409,7 @@ ctk_drag_get_source_info (GdkDragContext *context,
 {
   GtkDragSourceInfo *info;
   if (!dest_info_quark)
-    dest_info_quark = g_quark_from_static_string ("gtk-source-info");
+    dest_info_quark = g_quark_from_static_string ("ctk-source-info");
   
   info = g_object_get_qdata (G_OBJECT (context), dest_info_quark);
   if (!info && create)
@@ -1438,7 +1438,7 @@ ctk_drag_dest_leave (GtkWidget      *widget,
 {
   GtkDragDestSite *site;
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
   g_return_if_fail (site != NULL);
 
   if (site->do_proxy)
@@ -1478,7 +1478,7 @@ ctk_drag_dest_motion (GtkWidget      *widget,
   GdkDragAction action = 0;
   gboolean retval;
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
   g_return_val_if_fail (site != NULL, FALSE);
 
   if (site->do_proxy)
@@ -1585,7 +1585,7 @@ ctk_drag_dest_drop (GtkWidget      *widget,
   GtkDragDestSite *site;
   GtkDragDestInfo *info;
 
-  site = g_object_get_data (G_OBJECT (widget), "gtk-drag-dest");
+  site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
   g_return_val_if_fail (site != NULL, FALSE);
 
   info = ctk_drag_get_dest_info (context, FALSE);
@@ -1841,7 +1841,7 @@ ctk_drag_begin_internal (GtkWidget           *widget,
   info = ctk_drag_get_source_info (context, TRUE);
   
   info->ipc_widget = ipc_widget;
-  g_object_set_data (G_OBJECT (info->ipc_widget), I_("gtk-info"), info);
+  g_object_set_data (G_OBJECT (info->ipc_widget), I_("ctk-info"), info);
 
   info->widget = g_object_ref (widget);
   
@@ -2671,7 +2671,7 @@ ctk_drag_drop (GtkDragSourceInfo *info,
       info->drop_timeout = gdk_threads_add_timeout (DROP_ABORT_TIME,
                                           ctk_drag_abort_timeout,
                                           info);
-      g_source_set_name_by_id (info->drop_timeout, "[gtk+] ctk_drag_abort_timeout");
+      g_source_set_name_by_id (info->drop_timeout, "[ctk+] ctk_drag_abort_timeout");
     }
 }
 
@@ -2807,7 +2807,7 @@ ctk_drag_source_info_destroy (GtkDragSourceInfo *info)
   g_clear_object (&info->widget);
 
   ctk_selection_remove_all (info->ipc_widget);
-  g_object_set_data (G_OBJECT (info->ipc_widget), I_("gtk-info"), NULL);
+  g_object_set_data (G_OBJECT (info->ipc_widget), I_("ctk-info"), NULL);
   source_widgets = g_slist_remove (source_widgets, info->ipc_widget);
   ctk_drag_release_ipc_widget (info->ipc_widget);
 
@@ -2820,7 +2820,7 @@ ctk_drag_source_info_destroy (GtkDragSourceInfo *info)
     g_source_remove (info->update_idle);
 
   /* keep the icon_window alive until the (possible) drag cancel animation is done */
-  g_object_set_data_full (G_OBJECT (info->context), "former-gtk-source-info", info, (GDestroyNotify)ctk_drag_source_info_free);
+  g_object_set_data_full (G_OBJECT (info->context), "former-ctk-source-info", info, (GDestroyNotify)ctk_drag_source_info_free);
   context = info->context;
   last_event = info->last_event;
 
@@ -2893,7 +2893,7 @@ ctk_drag_add_update_idle (GtkDragSourceInfo *info)
                                                      ctk_drag_update_idle,
                                                      info,
                                                      NULL);
-      g_source_set_name_by_id (info->update_idle, "[gtk+] ctk_drag_update_idle");
+      g_source_set_name_by_id (info->update_idle, "[ctk+] ctk_drag_update_idle");
     }
 }
 

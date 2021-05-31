@@ -3,7 +3,7 @@
                "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 <!ENTITY % local.common.attrib "xmlns:xi  CDATA  #FIXED 'http://www.w3.org/2003/XInclude'">
 ]>
-<chapter id="gtk-migrating-2-to-3">
+<chapter id="ctk-migrating-2-to-3">
   <title>Migrating from GTK+ 2.x to GTK+ 3</title>
 
   <para>
@@ -38,15 +38,15 @@
     The allowed header files are are
     <variablelist>
       <varlistentry>
-        <term><filename>gtk/gtk.h</filename></term>
+        <term><filename>ctk/ctk.h</filename></term>
         <listitem>for GTK</listitem>
       </varlistentry>
       <varlistentry>
-        <term><filename>gtk/gtkx.h</filename></term>
+        <term><filename>ctk/ctkx.h</filename></term>
         <listitem>for the X-specfic widgets #GtkSocket and #GtkPlug</listitem>
       </varlistentry>
       <varlistentry>
-        <term><filename>gtk/gtkunixprint.h</filename></term>
+        <term><filename>ctk/ctkunixprint.h</filename></term>
         <listitem>for low-level, UNIX-specific printing functions</listitem>
       </varlistentry>
       <varlistentry>
@@ -63,8 +63,8 @@
       </varlistentry>
     </variablelist>
     (these relative paths are assuming that you are using the include
-     paths that are specified in the gtk+-2.0.pc file, as returned by
-     <literal>pkg-config --cflags gtk+-2.0.pc</literal>.)
+     paths that are specified in the ctk+-2.0.pc file, as returned by
+     <literal>pkg-config --cflags ctk+-2.0.pc</literal>.)
   </para>
   <para>
     To check that your application only includes the allowed headers,
@@ -83,7 +83,7 @@
     widgets have been deprecated. These deprecations are clearly spelled
     out in the API reference, with hints about the recommended replacements.
     The API reference for GTK+ 2 also includes an
-    <ulink url="https://developer.gnome.org/gtk2/2.24/api-index-deprecated.html">index</ulink> of all deprecated symbols.
+    <ulink url="https://developer.gnome.org/ctk2/2.24/api-index-deprecated.html">index</ulink> of all deprecated symbols.
   </para>
   <para>
     To verify that your program does not use any deprecated symbols,
@@ -964,7 +964,7 @@ gdk_window_add_filter (NULL, message_filter, NULL);
       conditionally build part of your project depending on the GDK backend,
       for instance like this:
       <informalexample><programlisting>
-AM_CONDITIONAL(BUILD_X11, test `$PKG_CONFIG --variable=target gtk+-2.0` = "x11")
+AM_CONDITIONAL(BUILD_X11, test `$PKG_CONFIG --variable=target ctk+-2.0` = "x11")
       </programlisting></informalexample>
       then you should now use the M4 macro provided by GTK+ itself:
       <informalexample><programlisting>
@@ -979,7 +979,7 @@ AM_CONDITIONAL(BUILD_x11, [test "x$have_x11" = "xyes"])
 
     <para>
       The #GtkPlug and #GtkSocket widgets are now X11-specific, and you
-      have to include the <filename>&lt;gtk/gtkx.h&gt;</filename> header
+      have to include the <filename>&lt;ctk/ctkx.h&gt;</filename> header
       to use them. The previous section about proper handling of
       backend-specific code applies, if you care about other backends.
     </para>
@@ -1233,7 +1233,7 @@ ctk_arrow_draw (GtkWidget *widget,
     <para>
       If you are using packages provided by a distributor, it is likely that
       parallel installable versions of the library exist for GTK+ 2.x and
-      GTK+ 3, e.g for vte, check for vte3; for webkitgtk look for webkitgtk3,
+      GTK+ 3, e.g for vte, check for vte3; for webkitctk look for webkitctk3,
       and so on.
     </para>
   </section>
@@ -1245,27 +1245,27 @@ ctk_arrow_draw (GtkWidget *widget,
     gdk-pixbuf loaders or input methods. Since GTK+ 3 is parallel-installable
     with GTK+ 2.x, the two GTK+ versions have separate locations for their
     loadable modules. The location for GTK+ 2.x is
-    <filename><replaceable>libdir</replaceable>/gtk-2.0</filename>
+    <filename><replaceable>libdir</replaceable>/ctk-2.0</filename>
     (and its subdirectories), for GTK+ 3 the location is
-    <filename><replaceable>libdir</replaceable>/gtk-3.0</filename>
+    <filename><replaceable>libdir</replaceable>/ctk-3.0</filename>
     (and its subdirectories).
   </para>
   <para>
     For some kinds of modules, namely input methods and pixbuf loaders,
     GTK+ keeps a cache file with extra information about the modules.
     For GTK+ 2.x, these cache files are located in
-    <filename><replaceable>sysconfdir</replaceable>/gtk-2.0</filename>.
+    <filename><replaceable>sysconfdir</replaceable>/ctk-2.0</filename>.
     For GTK+ 3, they have been moved to
-    <filename><replaceable>libdir</replaceable>/gtk-3.0/3.0.0/</filename>.
+    <filename><replaceable>libdir</replaceable>/ctk-3.0/3.0.0/</filename>.
     The commands that create these cache files have been renamed with a -3
     suffix to make them parallel-installable.
   </para>
   <para>
-    Note that GTK+ modules often link against libgtk, libgdk-pixbuf, etc.
+    Note that GTK+ modules often link against libctk, libgdk-pixbuf, etc.
     If that is the case for your module, you have to be careful to link the
     GTK+ 2.x version of your module against the 2.x version of the libraries,
     and the GTK+ 3 version against hte 3.x versions. Loading a module linked
-    against libgtk 2.x into an application using GTK+ 3 will lead to
+    against libctk 2.x into an application using GTK+ 3 will lead to
     unhappiness and must be avoided.
   </para>
   </section>

@@ -19,7 +19,7 @@ test_css_nodes_CFLAGS = \
 
 test_css_nodes_LDADD = \
 	$(top_builddir)/gdk/libgdk-3.la \
-	$(top_builddir)/gtk/libgtk-3.la \
+	$(top_builddir)/ctk/libctk-3.la \
 	$(CTK_DEP_LIBS)			\
 	$(NULL)
 

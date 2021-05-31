@@ -1,4 +1,4 @@
-/* gtksizerequest.c
+/* ctksizerequest.c
  * Copyright (C) 2007-2010 Openismus GmbH
  *
  * Authors:
@@ -21,15 +21,15 @@
 
 #include <config.h>
 
-#include "gtksizerequest.h"
+#include "ctksizerequest.h"
 
-#include "gtkdebug.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtksizegroup-private.h"
-#include "gtksizerequestcacheprivate.h"
-#include "gtkwidgetprivate.h"
-#include "deprecated/gtkstyle.h"
+#include "ctkdebug.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctksizegroup-private.h"
+#include "ctksizerequestcacheprivate.h"
+#include "ctkwidgetprivate.h"
+#include "deprecated/ctkstyle.h"
 
 
 #ifdef G_ENABLE_CONSISTENCY_CHECKS
@@ -44,7 +44,7 @@ push_recursion_check (GtkWidget       *widget,
   const char *method;
 
   if (recursion_check_quark == 0)
-    recursion_check_quark = g_quark_from_static_string ("gtk-size-request-in-progress");
+    recursion_check_quark = g_quark_from_static_string ("ctk-size-request-in-progress");
 
   previous_method = g_object_get_qdata (G_OBJECT (widget), recursion_check_quark);
 

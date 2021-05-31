@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkpagesetup.h: Page Setup
+ * ctkpagesetup.h: Page Setup
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -21,10 +21,10 @@
 
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkpapersize.h>
+#include <ctk/ctkpapersize.h>
 
 
 G_BEGIN_DECLS

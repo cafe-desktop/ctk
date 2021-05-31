@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkfilechooserentry.c: Entry with filename completion
+ * ctkfilechooserentry.c: Entry with filename completion
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -18,21 +18,21 @@
 
 #include "config.h"
 
-#include "gtkfilechooserentry.h"
+#include "ctkfilechooserentry.h"
 
 #include <string.h>
 
-#include "gtkcelllayout.h"
-#include "gtkcellrenderertext.h"
-#include "gtkentry.h"
-#include "gtkfilesystemmodel.h"
-#include "gtklabel.h"
-#include "gtkmain.h"
-#include "gtksizerequest.h"
-#include "gtkwindow.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkfilefilterprivate.h"
+#include "ctkcelllayout.h"
+#include "ctkcellrenderertext.h"
+#include "ctkentry.h"
+#include "ctkfilesystemmodel.h"
+#include "ctklabel.h"
+#include "ctkmain.h"
+#include "ctksizerequest.h"
+#include "ctkwindow.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctkfilefilterprivate.h"
 
 typedef struct _GtkFileChooserEntryClass GtkFileChooserEntryClass;
 

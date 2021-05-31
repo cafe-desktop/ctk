@@ -19,20 +19,20 @@
  * Modified by the GTK+ Team and others 1997-2006.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 #include "config.h"
 
-#include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtksizerequest.h"
-#include "gtkwin32embedwidget.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkwindowprivate.h"
-#include "gtkwidgetprivate.h"
-#include "gtkcontainerprivate.h"
+#include "ctkmain.h"
+#include "ctkmarshalers.h"
+#include "ctksizerequest.h"
+#include "ctkwin32embedwidget.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkwindowprivate.h"
+#include "ctkwidgetprivate.h"
+#include "ctkcontainerprivate.h"
 
 
 static void            ctk_win32_embed_widget_realize               (GtkWidget        *widget);

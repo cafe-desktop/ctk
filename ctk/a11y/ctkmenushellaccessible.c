@@ -17,8 +17,8 @@
 
 #include "config.h"
 
-#include <gtk/gtk.h>
-#include "gtkmenushellaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkmenushellaccessible.h"
 
 
 static void atk_selection_interface_init (AtkSelectionIface *iface);

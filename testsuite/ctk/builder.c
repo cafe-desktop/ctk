@@ -22,7 +22,7 @@
 #include <locale.h>
 #include <math.h>
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
 
 /* exported for GtkBuilder */
@@ -35,7 +35,7 @@ G_MODULE_EXPORT void signal_second (GtkButton *button, GParamSpec *spec);
 G_MODULE_EXPORT void signal_extra (GtkButton *button, GParamSpec *spec);
 G_MODULE_EXPORT void signal_extra2 (GtkButton *button, GParamSpec *spec);
 
-/* Copied from gtkiconfactory.c; keep in sync! */
+/* Copied from ctkiconfactory.c; keep in sync! */
 struct _GtkIconSet
 {
   guint ref_count;
@@ -2063,7 +2063,7 @@ test_requires (void)
   gchar      *buffer;
   const gchar buffer_fmt[] =
     "<interface>"
-    "  <requires lib=\"gtk+\" version=\"%d.%d\"/>"
+    "  <requires lib=\"ctk+\" version=\"%d.%d\"/>"
     "</interface>";
 
   buffer = g_strdup_printf (buffer_fmt, CTK_MAJOR_VERSION, CTK_MINOR_VERSION + 1);
@@ -2279,7 +2279,7 @@ test_menus (void)
     "                    <property name=\"visible\">True</property>"
     "                    <child>"
     "                      <object class=\"GtkImageMenuItem\" id=\"imagemenuitem1\">"
-    "                        <property name=\"label\">gtk-new</property>"
+    "                        <property name=\"label\">ctk-new</property>"
     "                        <property name=\"visible\">True</property>"
     "                        <property name=\"use_stock\">True</property>"
     "                        <property name=\"accel_group\">accelgroup1</property>"
@@ -2453,7 +2453,7 @@ test_message_area (void)
     "      <object class=\"GtkVButtonBox\" id=\"actionarea1\">"
     "        <child>"
     "          <object class=\"GtkButton\" id=\"button_ok\">"
-    "            <property name=\"label\">gtk-ok</property>"
+    "            <property name=\"label\">ctk-ok</property>"
     "            <property name=\"use-stock\">yes</property>"
     "          </object>"
     "        </child>"
@@ -2695,7 +2695,7 @@ test_no_ids (void)
     "      <object class=\"GtkVButtonBox\">"
     "        <child>"
     "          <object class=\"GtkButton\" id=\"button_ok\">"
-    "            <property name=\"label\">gtk-ok</property>"
+    "            <property name=\"label\">ctk-ok</property>"
     "            <property name=\"use-stock\">yes</property>"
     "          </object>"
     "        </child>"
@@ -2857,7 +2857,7 @@ test_anaconda_signal (void)
     "<?xml version='1.0' encoding='UTF-8'?>"
     "<!-- Generated with glade 3.18.3 -->"
     "<interface>"
-    "  <requires lib='gtk+' version='3.12'/>"
+    "  <requires lib='ctk+' version='3.12'/>"
     "  <object class='GtkListStore' id='liststore1'>"
     "    <columns>"
     "      <!-- column-name use -->"

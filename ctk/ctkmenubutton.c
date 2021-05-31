@@ -19,7 +19,7 @@
  */
 
 /**
- * SECTION:gtkmenubutton
+ * SECTION:ctkmenubutton
  * @short_description: A widget that shows a popup when clicked on
  * @title: GtkMenuButton
  *
@@ -110,18 +110,18 @@
 
 #include "config.h"
 
-#include "gtkmenubutton.h"
-#include "gtkmenubuttonprivate.h"
-#include "gtkbuttonprivate.h"
-#include "gtktypebuiltins.h"
-#include "gtkwindow.h"
-#include "gtkmain.h"
-#include "gtkaccessible.h"
-#include "gtkpopover.h"
-#include "a11y/gtkmenubuttonaccessible.h"
+#include "ctkmenubutton.h"
+#include "ctkmenubuttonprivate.h"
+#include "ctkbuttonprivate.h"
+#include "ctktypebuiltins.h"
+#include "ctkwindow.h"
+#include "ctkmain.h"
+#include "ctkaccessible.h"
+#include "ctkpopover.h"
+#include "a11y/ctkmenubuttonaccessible.h"
 
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 struct _GtkMenuButtonPrivate
 {

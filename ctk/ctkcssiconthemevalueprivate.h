@@ -20,10 +20,10 @@
 #ifndef __CTK_CSS_ICON_THEME_VALUE_PRIVATE_H__
 #define __CTK_CSS_ICON_THEME_VALUE_PRIVATE_H__
 
-#include "gtkicontheme.h"
+#include "ctkicontheme.h"
 
-#include "gtkcssparserprivate.h"
-#include "gtkcssvalueprivate.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

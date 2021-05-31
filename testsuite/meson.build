@@ -1,8 +1,8 @@
 ctk_libexecdir = join_paths(ctk_prefix, get_option('libexecdir'))
-installed_test_bindir = join_paths(ctk_libexecdir, 'installed-tests', 'gtk+')
-installed_test_datadir = join_paths(ctk_datadir, 'installed-tests', 'gtk+')
+installed_test_bindir = join_paths(ctk_libexecdir, 'installed-tests', 'ctk+')
+installed_test_datadir = join_paths(ctk_datadir, 'installed-tests', 'ctk+')
 
-subdir('gtk')
+subdir('ctk')
 subdir('gdk')
 subdir('css')
 subdir('a11y')

@@ -3,7 +3,7 @@
  * Demonstrates an interface loaded from a XML description.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 quit_activate (GSimpleAction *action,

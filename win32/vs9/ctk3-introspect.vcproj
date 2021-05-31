@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="gtk3-introspect"
+	Name="ctk3-introspect"
 	ProjectGUID="{A8092C4E-0A21-4B1D-AC82-16764E418D1F}"
 	Keyword="MakeFileProj"
 	TargetFrameworkVersion="196613"
@@ -21,7 +21,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-build-defines.vsprops"
+			InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 			>
 			<Tool
 				Name="VCNMakeTool"
@@ -34,7 +34,7 @@
 		<Configuration
 			Name="Debug|x64"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-build-defines.vsprops"
+			InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 			>
 			<Tool
 				Name="VCNMakeTool"
@@ -47,7 +47,7 @@
 		<Configuration
 			Name="Release|Win32"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-build-defines.vsprops"
+			InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 			CharacterSet="2"
 			DeleteExtensionsOnClean=""
 			>
@@ -62,7 +62,7 @@
 		<Configuration
 			Name="Release|x64"
 			ConfigurationType="0"
-			InheritedPropertySheets=".\gtk3-build-defines.vsprops"
+			InheritedPropertySheets=".\ctk3-build-defines.vsprops"
 			>
 			<Tool
 				Name="VCNMakeTool"

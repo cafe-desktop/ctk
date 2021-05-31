@@ -21,7 +21,7 @@
 #define __CTK_PIXEL_CACHE_PRIVATE_H__
 
 #include <glib-object.h>
-#include <gtkwidget.h>
+#include <ctkwidget.h>
 
 G_BEGIN_DECLS
 

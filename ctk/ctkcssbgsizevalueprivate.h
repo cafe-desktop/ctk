@@ -20,9 +20,9 @@
 #ifndef __CTK_CSS_BG_SIZE_VALUE_PRIVATE_H__
 #define __CTK_CSS_BG_SIZE_VALUE_PRIVATE_H__
 
-#include "gtkcssparserprivate.h"
-#include "gtkcssimageprivate.h"
-#include "gtkcssvalueprivate.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcssimageprivate.h"
+#include "ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

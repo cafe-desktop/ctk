@@ -22,8 +22,8 @@
 
 #include <gdk/gdk.h>
 
-#include "gtkshow.h"
-#include "gtkwindowprivate.h"
+#include "ctkshow.h"
+#include "ctkwindowprivate.h"
 
 /**
  * ctk_show_uri:

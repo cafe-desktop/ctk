@@ -16,7 +16,7 @@
  */
 
 #if !defined (__GTKX_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtkx.h> can be included directly."
+#error "Only <ctk/ctkx.h> can be included directly."
 #endif
 
 #ifdef GDK_WINDOWING_X11

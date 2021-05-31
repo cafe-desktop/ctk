@@ -46,11 +46,11 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
 /**
- * SECTION:gtkselection
+ * SECTION:ctkselection
  * @Title: Selections
  * @Short_description: Functions for handling inter-process communication
  *     via selections
@@ -87,17 +87,17 @@
 
 #include "config.h"
 
-#include "gtkselection.h"
-#include "gtkselectionprivate.h"
+#include "ctkselection.h"
+#include "ctkselectionprivate.h"
 
 #include <stdarg.h>
 #include <string.h>
 #include "gdk.h"
 
-#include "gtkmain.h"
-#include "gtkdebug.h"
-#include "gtktextbufferrichtext.h"
-#include "gtkintl.h"
+#include "ctkmain.h"
+#include "ctkdebug.h"
+#include "ctktextbufferrichtext.h"
+#include "ctkintl.h"
 #include "gdk-pixbuf/gdk-pixbuf.h"
 
 #ifdef GDK_WINDOWING_X11
@@ -221,7 +221,7 @@ static GList *current_incrs = NULL;
 static GList *current_selections = NULL;
 
 static GdkAtom ctk_selection_atoms[LAST_ATOM];
-static const char ctk_selection_handler_key[] = "gtk-selection-handlers";
+static const char ctk_selection_handler_key[] = "ctk-selection-handlers";
 
 /****************
  * Target Lists *
@@ -1191,7 +1191,7 @@ ctk_selection_convert (GtkWidget *widget,
      35s delay on popup menu before first clipboard copy,
      by preventing conversion to be started.
    
-     https://gitlab.gnome.org/GNOME/gtk/issues/1630
+     https://gitlab.gnome.org/GNOME/ctk/issues/1630
   */ 
   if (GDK_IS_BROADWAY_DISPLAY (display))
   {
@@ -1210,7 +1210,7 @@ ctk_selection_convert (GtkWidget *widget,
   gdk_selection_convert (ctk_widget_get_window (widget), selection, target, time_);
   id = gdk_threads_add_timeout (1000,
       (GSourceFunc) ctk_selection_retrieval_timeout, info);
-  g_source_set_name_by_id (id, "[gtk+] ctk_selection_retrieval_timeout");
+  g_source_set_name_by_id (id, "[ctk+] ctk_selection_retrieval_timeout");
   
   return TRUE;
 }
@@ -2569,7 +2569,7 @@ _ctk_selection_request (GtkWidget *widget,
       gdk_error_trap_pop_ignored ();
       current_incrs = g_list_append (current_incrs, info);
       id = gdk_threads_add_timeout (1000, (GSourceFunc) ctk_selection_incr_timeout, info);
-      g_source_set_name_by_id (id, "[gtk+] ctk_selection_incr_timeout");
+      g_source_set_name_by_id (id, "[ctk+] ctk_selection_incr_timeout");
     }
   
   /* If it was a MULTIPLE request, set the property to indicate which

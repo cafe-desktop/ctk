@@ -1,11 +1,11 @@
 * {
-  -gtk-icon-style: requested;
+  -ctk-icon-style: requested;
 }
 
 .regular {
-  -gtk-icon-style: regular;
+  -ctk-icon-style: regular;
 }
 
 .symbolic {
-  -gtk-icon-style: symbolic;
+  -ctk-icon-style: symbolic;
 }

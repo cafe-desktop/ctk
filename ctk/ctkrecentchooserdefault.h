@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkrecentchooserdefault.h
+ * ctkrecentchooserdefault.h
  * Copyright (C) 2006 Emmanuele Bassi
  * 
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
 #ifndef __CTK_RECENT_CHOOSER_DEFAULT_H__
 #define __CTK_RECENT_CHOOSER_DEFAULT_H__
 
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS
 

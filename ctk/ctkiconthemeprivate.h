@@ -18,8 +18,8 @@
 #ifndef __CTK_ICON_THEME_PRIVATE_H__
 #define __CTK_ICON_THEME_PRIVATE_H__
 
-#include <gtk/gtkicontheme.h>
-#include <gtk/gtkcssstyleprivate.h>
+#include <ctk/ctkicontheme.h>
+#include <ctk/ctkcssstyleprivate.h>
 
 void        ctk_icon_theme_lookup_symbolic_colors       (GtkCssStyle    *style,
                                                          GdkRGBA        *color_out,

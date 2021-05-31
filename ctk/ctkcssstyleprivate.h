@@ -22,9 +22,9 @@
 
 #include <glib-object.h>
 
-#include "gtk/gtkbitmaskprivate.h"
-#include "gtk/gtkcsssection.h"
-#include "gtk/gtkcssvalueprivate.h"
+#include "ctk/ctkbitmaskprivate.h"
+#include "ctk/ctkcsssection.h"
+#include "ctk/ctkcssvalueprivate.h"
 
 G_BEGIN_DECLS
 

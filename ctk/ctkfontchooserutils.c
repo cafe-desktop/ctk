@@ -1,4 +1,4 @@
-/* gtkfontchooserutils.h - Private utility functions for implementing a
+/* ctkfontchooserutils.h - Private utility functions for implementing a
  *                           GtkFontChooser interface
  *
  * Copyright (C) 2006 Emmanuele Bassi
@@ -18,13 +18,13 @@
  * You should have received a copy of the GNU Library General Public
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  *
- * Based on gtkfilechooserutils.c:
+ * Based on ctkfilechooserutils.c:
  *	Copyright (C) 2003 Red Hat, Inc.
  */
 
 #include "config.h"
 
-#include "gtkfontchooserutils.h"
+#include "ctkfontchooserutils.h"
 
 static GtkFontChooser *
 get_delegate (GtkFontChooser *receiver)
@@ -103,7 +103,7 @@ _ctk_font_chooser_delegate_get_quark (void)
   static GQuark quark = 0;
 
   if (G_UNLIKELY (quark == 0))
-    quark = g_quark_from_static_string ("gtk-font-chooser-delegate");
+    quark = g_quark_from_static_string ("ctk-font-chooser-delegate");
 
   return quark;
 }

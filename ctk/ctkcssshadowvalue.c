@@ -19,15 +19,15 @@
 
 #include "config.h"
 
-#include "gtkcssshadowvalueprivate.h"
+#include "ctkcssshadowvalueprivate.h"
 
-#include "gtkcairoblurprivate.h"
-#include "gtkcsscolorvalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkstylecontextprivate.h"
-#include "gtkrenderprivate.h"
-#include "gtkpango.h"
+#include "ctkcairoblurprivate.h"
+#include "ctkcsscolorvalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkstylecontextprivate.h"
+#include "ctkrenderprivate.h"
+#include "ctkpango.h"
 
 #include "fallback-c89.c"
 #include <float.h>

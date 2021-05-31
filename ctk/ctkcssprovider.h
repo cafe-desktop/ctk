@@ -19,7 +19,7 @@
 #define __CTK_CSS_PROVIDER_H__
 
 #include <gio/gio.h>
-#include <gtk/gtkcsssection.h>
+#include <ctk/ctkcsssection.h>
 
 G_BEGIN_DECLS
 

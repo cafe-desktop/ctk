@@ -19,14 +19,14 @@
 
 #include "config.h"
 
-#include "gtkcssimagerecolorprivate.h"
-#include "gtkcssimageurlprivate.h"
-#include "gtkcssimagesurfaceprivate.h"
-#include "gtkcsspalettevalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkiconthemeprivate.h"
+#include "ctkcssimagerecolorprivate.h"
+#include "ctkcssimageurlprivate.h"
+#include "ctkcssimagesurfaceprivate.h"
+#include "ctkcsspalettevalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkiconthemeprivate.h"
 
-#include "gtkstyleproviderprivate.h"
+#include "ctkstyleproviderprivate.h"
 
 G_DEFINE_TYPE (GtkCssImageRecolor, _ctk_css_image_recolor, CTK_TYPE_CSS_IMAGE_URL)
 
@@ -38,7 +38,7 @@ ctk_css_image_recolor_print (GtkCssImage *image,
   GtkCssImageRecolor *recolor = CTK_CSS_IMAGE_RECOLOR (image);
   char *uri;
 
-  g_string_append (string, "-gtk-recolor(url(");
+  g_string_append (string, "-ctk-recolor(url(");
   uri = g_file_get_uri (url->file);
   g_string_append (string, uri);
   g_free (uri);
@@ -188,15 +188,15 @@ ctk_css_image_recolor_parse (GtkCssImage  *image,
   GtkCssImageUrl *url = CTK_CSS_IMAGE_URL (image);
   GtkCssImageRecolor *recolor = CTK_CSS_IMAGE_RECOLOR (image);
 
-  if (!_ctk_css_parser_try (parser, "-gtk-recolor", TRUE))
+  if (!_ctk_css_parser_try (parser, "-ctk-recolor", TRUE))
     {
-      _ctk_css_parser_error (parser, "'-gtk-recolor'");
+      _ctk_css_parser_error (parser, "'-ctk-recolor'");
       return FALSE;
     }
 
   if (!_ctk_css_parser_try (parser, "(", TRUE))
     {
-      _ctk_css_parser_error (parser, "Expected '(' after '-gtk-recolor'");
+      _ctk_css_parser_error (parser, "Expected '(' after '-ctk-recolor'");
       return FALSE;
     }
 
@@ -220,7 +220,7 @@ ctk_css_image_recolor_parse (GtkCssImage  *image,
   if (!_ctk_css_parser_try (parser, ")", TRUE))
     {
       _ctk_css_parser_error (parser,
-                             "Expected ')' at end of '-gtk-recolor'");
+                             "Expected ')' at end of '-ctk-recolor'");
       return FALSE;
     }
 

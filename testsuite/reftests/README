@@ -1,7 +1,7 @@
-gtk-reftest is a new test runner supposed to do a lot of generic tests.
+ctk-reftest is a new test runner supposed to do a lot of generic tests.
 Run it like this:
 
-./gtk-reftest [OPTIONS] TESTFILE [TESTFILES...]
+./ctk-reftest [OPTIONS] TESTFILE [TESTFILES...]
 
 where FILE is a GtkBuilder ui file to run.
 

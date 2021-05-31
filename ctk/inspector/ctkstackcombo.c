@@ -18,12 +18,12 @@
  */
 
 #include "config.h"
-#include "gtkstackcombo.h"
-#include "gtkbox.h"
-#include "gtkstack.h"
-#include "gtkcomboboxtext.h"
-#include "gtkprivate.h"
-#include "gtkintl.h"
+#include "ctkstackcombo.h"
+#include "ctkbox.h"
+#include "ctkstack.h"
+#include "ctkcomboboxtext.h"
+#include "ctkprivate.h"
+#include "ctkintl.h"
 
 struct _GtkStackCombo
 {

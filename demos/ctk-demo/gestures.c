@@ -5,7 +5,7 @@
  * multi-touch rotate and zoom gestures.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkGesture *rotate = NULL;
 static GtkGesture *zoom = NULL;

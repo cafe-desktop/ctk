@@ -1,4 +1,4 @@
-/* gtkplacesviewrow.h
+/* ctkplacesviewrow.h
  *
  * Copyright (C) 2015 Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
  *
@@ -20,12 +20,12 @@
 #define CTK_PLACES_VIEW_ROW_H
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include "gtkwidget.h"
-#include "gtksizegroup.h"
-#include "gtklistbox.h"
+#include "ctkwidget.h"
+#include "ctksizegroup.h"
+#include "ctklistbox.h"
 
 G_BEGIN_DECLS
 

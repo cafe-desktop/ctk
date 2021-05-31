@@ -17,11 +17,11 @@
 
 #include "config.h"
 
-#include "gtkimcontextmultipress.h"
+#include "ctkimcontextmultipress.h"
 #include <string.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 #include <gdk/gdkkeysyms.h>
-#include <gtk/gtkimmodule.h>
+#include <ctk/ctkimmodule.h>
 
 #define AUTOMATIC_COMPOSE_TIMEOUT 1 /* seconds */
 #define CONFIGURATION_FILENAME MULTIPRESS_CONFDIR G_DIR_SEPARATOR_S "im-multipress.conf"
@@ -275,7 +275,7 @@ vfunc_filter_keypress (GtkIMContext *context, GdkEventKey *event)
           multipress_context->timeout_id =
             g_timeout_add_seconds (AUTOMATIC_COMPOSE_TIMEOUT,
                                    &on_timeout, multipress_context);
-          g_source_set_name_by_id (multipress_context->timeout_id, "[gtk+] on_timeout");
+          g_source_set_name_by_id (multipress_context->timeout_id, "[ctk+] on_timeout");
 
           return TRUE; /* key handled */
         }

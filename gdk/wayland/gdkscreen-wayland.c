@@ -89,8 +89,8 @@ struct _GdkWaylandScreenClass
 #define OUTPUT_VERSION_WITH_DONE 2
 #define NO_XDG_OUTPUT_DONE_SINCE_VERSION 3
 
-#define CTK_SETTINGS_DBUS_PATH "/org/gtk/Settings"
-#define CTK_SETTINGS_DBUS_NAME "org.gtk.Settings"
+#define CTK_SETTINGS_DBUS_PATH "/org/ctk/Settings"
+#define CTK_SETTINGS_DBUS_NAME "org.ctk.Settings"
 
 GType _gdk_wayland_screen_get_type (void);
 
@@ -475,25 +475,25 @@ update_xft_settings (GdkScreen *screen)
   if (screen_wayland->xft_settings.antialias != xft_settings.antialias)
     {
       screen_wayland->xft_settings.antialias = xft_settings.antialias;
-      notify_setting (screen, "gtk-xft-antialias");
+      notify_setting (screen, "ctk-xft-antialias");
     }
 
   if (screen_wayland->xft_settings.hinting != xft_settings.hinting)
     {
       screen_wayland->xft_settings.hinting = xft_settings.hinting;
-      notify_setting (screen, "gtk-xft-hinting");
+      notify_setting (screen, "ctk-xft-hinting");
     }
 
   if (screen_wayland->xft_settings.hintstyle != xft_settings.hintstyle)
     {
       screen_wayland->xft_settings.hintstyle = xft_settings.hintstyle;
-      notify_setting (screen, "gtk-xft-hintstyle");
+      notify_setting (screen, "ctk-xft-hintstyle");
     }
 
   if (screen_wayland->xft_settings.rgba != xft_settings.rgba)
     {
       screen_wayland->xft_settings.rgba = xft_settings.rgba;
-      notify_setting (screen, "gtk-xft-rgba");
+      notify_setting (screen, "ctk-xft-rgba");
     }
 
   if (screen_wayland->xft_settings.dpi != xft_settings.dpi)
@@ -514,7 +514,7 @@ update_xft_settings (GdkScreen *screen)
 
       _gdk_screen_set_resolution (screen, dpi);
 
-      notify_setting (screen, "gtk-xft-dpi");
+      notify_setting (screen, "ctk-xft-dpi");
     }
 }
 
@@ -522,44 +522,44 @@ update_xft_settings (GdkScreen *screen)
 #define CLASSIC_WM_SETTINGS_SCHEMA "org.gnome.shell.extensions.classic-overrides"
 
 static TranslationEntry translations[] = {
-  { FALSE, "org.gnome.desktop.interface", "gtk-theme", "gtk-theme-name" , G_TYPE_STRING, { .s = "Adwaita" } },
-  { FALSE, "org.gnome.desktop.interface", "gtk-key-theme", "gtk-key-theme-name" , G_TYPE_STRING, { .s = "Default" } },
-  { FALSE, "org.gnome.desktop.interface", "icon-theme", "gtk-icon-theme-name", G_TYPE_STRING, { .s = "gnome" } },
-  { FALSE, "org.gnome.desktop.interface", "cursor-theme", "gtk-cursor-theme-name", G_TYPE_STRING, { .s = "Adwaita" } },
-  { FALSE, "org.gnome.desktop.interface", "cursor-size", "gtk-cursor-theme-size", G_TYPE_INT, { .i = 32 } },
-  { FALSE, "org.gnome.desktop.interface", "font-name", "gtk-font-name", G_TYPE_STRING, { .s = "Cantarell 11" } },
-  { FALSE, "org.gnome.desktop.interface", "cursor-blink", "gtk-cursor-blink", G_TYPE_BOOLEAN,  { .b = TRUE } },
-  { FALSE, "org.gnome.desktop.interface", "cursor-blink-time", "gtk-cursor-blink-time", G_TYPE_INT, { .i = 1200 } },
-  { FALSE, "org.gnome.desktop.interface", "cursor-blink-timeout", "gtk-cursor-blink-timeout", G_TYPE_INT, { .i = 3600 } },
-  { FALSE, "org.gnome.desktop.interface", "gtk-im-module", "gtk-im-module", G_TYPE_STRING, { .s = "simple" } },
-  { FALSE, "org.gnome.desktop.interface", "enable-animations", "gtk-enable-animations", G_TYPE_BOOLEAN, { .b = TRUE } },
-  { FALSE, "org.gnome.desktop.interface", "gtk-enable-primary-paste", "gtk-enable-primary-paste", G_TYPE_BOOLEAN, { .b = TRUE } },
-  { FALSE, "org.gnome.desktop.interface", "overlay-scrolling", "gtk-overlay-scrolling", G_TYPE_BOOLEAN, { .b = TRUE } },
-  { FALSE, "org.gnome.desktop.peripherals.mouse", "double-click", "gtk-double-click-time", G_TYPE_INT, { .i = 400 } },
-  { FALSE, "org.gnome.desktop.peripherals.mouse", "drag-threshold", "gtk-dnd-drag-threshold", G_TYPE_INT, {.i = 8 } },
-  { FALSE, "org.gnome.settings-daemon.peripherals.mouse", "double-click", "gtk-double-click-time", G_TYPE_INT, { .i = 400 } },
-  { FALSE, "org.gnome.settings-daemon.peripherals.mouse", "drag-threshold", "gtk-dnd-drag-threshold", G_TYPE_INT, {.i = 8 } },
-  { FALSE, "org.gnome.desktop.sound", "theme-name", "gtk-sound-theme-name", G_TYPE_STRING, { .s = "freedesktop" } },
-  { FALSE, "org.gnome.desktop.sound", "event-sounds", "gtk-enable-event-sounds", G_TYPE_BOOLEAN, { .b = TRUE } },
-  { FALSE, "org.gnome.desktop.sound", "input-feedback-sounds", "gtk-enable-input-feedback-sounds", G_TYPE_BOOLEAN, { . b = FALSE } },
-  { FALSE, "org.gnome.desktop.privacy", "recent-files-max-age", "gtk-recent-files-max-age", G_TYPE_INT, { .i = 30 } },
-  { FALSE, "org.gnome.desktop.privacy", "remember-recent-files",    "gtk-recent-files-enabled", G_TYPE_BOOLEAN, { .b = TRUE } },
-  { FALSE, WM_SETTINGS_SCHEMA, "button-layout",    "gtk-decoration-layout", G_TYPE_STRING, { .s = "menu:close" } },
-  { FALSE, CLASSIC_WM_SETTINGS_SCHEMA, "button-layout",   "gtk-decoration-layout", G_TYPE_STRING, { .s = "menu:close" } },
-  { FALSE, "org.gnome.desktop.interface", "font-antialiasing", "gtk-xft-antialias", G_TYPE_NONE, { .i = 0 } },
-  { FALSE, "org.gnome.desktop.interface", "font-hinting", "gtk-xft-hinting", G_TYPE_NONE, { .i = 0 } },
-  { FALSE, "org.gnome.desktop.interface", "font-hinting", "gtk-xft-hintstyle", G_TYPE_NONE, { .i = 0 } },
-  { FALSE, "org.gnome.desktop.interface", "font-rgba-order", "gtk-xft-rgba", G_TYPE_NONE, { .i = 0 } },
-  { FALSE, "org.gnome.settings-daemon.plugins.xsettings", "antialiasing", "gtk-xft-antialias", G_TYPE_NONE, { .i = 0 } },
-  { FALSE, "org.gnome.settings-daemon.plugins.xsettings", "hinting", "gtk-xft-hinting", G_TYPE_NONE, { .i = 0 } },
-  { FALSE, "org.gnome.settings-daemon.plugins.xsettings", "hinting", "gtk-xft-hintstyle", G_TYPE_NONE, { .i = 0 } },
-  { FALSE, "org.gnome.settings-daemon.plugins.xsettings", "rgba-order", "gtk-xft-rgba", G_TYPE_NONE, { .i = 0 } },
-  { FALSE, "org.gnome.desktop.interface", "text-scaling-factor", "gtk-xft-dpi" , G_TYPE_NONE, { .i = 0 } },
-  { FALSE, "org.gnome.desktop.wm.preferences", "action-double-click-titlebar", "gtk-titlebar-double-click", G_TYPE_STRING, { .s = "toggle-maximize" } },
-  { FALSE, "org.gnome.desktop.wm.preferences", "action-middle-click-titlebar", "gtk-titlebar-middle-click", G_TYPE_STRING, { .s = "none" } },
-  { FALSE, "org.gnome.desktop.wm.preferences", "action-right-click-titlebar", "gtk-titlebar-right-click", G_TYPE_STRING, { .s = "menu" } },
-  { FALSE, "org.gnome.desktop.a11y", "always-show-text-caret", "gtk-keynav-use-caret", G_TYPE_BOOLEAN, { .b = FALSE } },
-  { FALSE, "org.gnome.fontconfig", "serial", "gtk-fontconfig-timestamp", G_TYPE_INT, { .i = 0 } }
+  { FALSE, "org.gnome.desktop.interface", "ctk-theme", "ctk-theme-name" , G_TYPE_STRING, { .s = "Adwaita" } },
+  { FALSE, "org.gnome.desktop.interface", "ctk-key-theme", "ctk-key-theme-name" , G_TYPE_STRING, { .s = "Default" } },
+  { FALSE, "org.gnome.desktop.interface", "icon-theme", "ctk-icon-theme-name", G_TYPE_STRING, { .s = "gnome" } },
+  { FALSE, "org.gnome.desktop.interface", "cursor-theme", "ctk-cursor-theme-name", G_TYPE_STRING, { .s = "Adwaita" } },
+  { FALSE, "org.gnome.desktop.interface", "cursor-size", "ctk-cursor-theme-size", G_TYPE_INT, { .i = 32 } },
+  { FALSE, "org.gnome.desktop.interface", "font-name", "ctk-font-name", G_TYPE_STRING, { .s = "Cantarell 11" } },
+  { FALSE, "org.gnome.desktop.interface", "cursor-blink", "ctk-cursor-blink", G_TYPE_BOOLEAN,  { .b = TRUE } },
+  { FALSE, "org.gnome.desktop.interface", "cursor-blink-time", "ctk-cursor-blink-time", G_TYPE_INT, { .i = 1200 } },
+  { FALSE, "org.gnome.desktop.interface", "cursor-blink-timeout", "ctk-cursor-blink-timeout", G_TYPE_INT, { .i = 3600 } },
+  { FALSE, "org.gnome.desktop.interface", "ctk-im-module", "ctk-im-module", G_TYPE_STRING, { .s = "simple" } },
+  { FALSE, "org.gnome.desktop.interface", "enable-animations", "ctk-enable-animations", G_TYPE_BOOLEAN, { .b = TRUE } },
+  { FALSE, "org.gnome.desktop.interface", "ctk-enable-primary-paste", "ctk-enable-primary-paste", G_TYPE_BOOLEAN, { .b = TRUE } },
+  { FALSE, "org.gnome.desktop.interface", "overlay-scrolling", "ctk-overlay-scrolling", G_TYPE_BOOLEAN, { .b = TRUE } },
+  { FALSE, "org.gnome.desktop.peripherals.mouse", "double-click", "ctk-double-click-time", G_TYPE_INT, { .i = 400 } },
+  { FALSE, "org.gnome.desktop.peripherals.mouse", "drag-threshold", "ctk-dnd-drag-threshold", G_TYPE_INT, {.i = 8 } },
+  { FALSE, "org.gnome.settings-daemon.peripherals.mouse", "double-click", "ctk-double-click-time", G_TYPE_INT, { .i = 400 } },
+  { FALSE, "org.gnome.settings-daemon.peripherals.mouse", "drag-threshold", "ctk-dnd-drag-threshold", G_TYPE_INT, {.i = 8 } },
+  { FALSE, "org.gnome.desktop.sound", "theme-name", "ctk-sound-theme-name", G_TYPE_STRING, { .s = "freedesktop" } },
+  { FALSE, "org.gnome.desktop.sound", "event-sounds", "ctk-enable-event-sounds", G_TYPE_BOOLEAN, { .b = TRUE } },
+  { FALSE, "org.gnome.desktop.sound", "input-feedback-sounds", "ctk-enable-input-feedback-sounds", G_TYPE_BOOLEAN, { . b = FALSE } },
+  { FALSE, "org.gnome.desktop.privacy", "recent-files-max-age", "ctk-recent-files-max-age", G_TYPE_INT, { .i = 30 } },
+  { FALSE, "org.gnome.desktop.privacy", "remember-recent-files",    "ctk-recent-files-enabled", G_TYPE_BOOLEAN, { .b = TRUE } },
+  { FALSE, WM_SETTINGS_SCHEMA, "button-layout",    "ctk-decoration-layout", G_TYPE_STRING, { .s = "menu:close" } },
+  { FALSE, CLASSIC_WM_SETTINGS_SCHEMA, "button-layout",   "ctk-decoration-layout", G_TYPE_STRING, { .s = "menu:close" } },
+  { FALSE, "org.gnome.desktop.interface", "font-antialiasing", "ctk-xft-antialias", G_TYPE_NONE, { .i = 0 } },
+  { FALSE, "org.gnome.desktop.interface", "font-hinting", "ctk-xft-hinting", G_TYPE_NONE, { .i = 0 } },
+  { FALSE, "org.gnome.desktop.interface", "font-hinting", "ctk-xft-hintstyle", G_TYPE_NONE, { .i = 0 } },
+  { FALSE, "org.gnome.desktop.interface", "font-rgba-order", "ctk-xft-rgba", G_TYPE_NONE, { .i = 0 } },
+  { FALSE, "org.gnome.settings-daemon.plugins.xsettings", "antialiasing", "ctk-xft-antialias", G_TYPE_NONE, { .i = 0 } },
+  { FALSE, "org.gnome.settings-daemon.plugins.xsettings", "hinting", "ctk-xft-hinting", G_TYPE_NONE, { .i = 0 } },
+  { FALSE, "org.gnome.settings-daemon.plugins.xsettings", "hinting", "ctk-xft-hintstyle", G_TYPE_NONE, { .i = 0 } },
+  { FALSE, "org.gnome.settings-daemon.plugins.xsettings", "rgba-order", "ctk-xft-rgba", G_TYPE_NONE, { .i = 0 } },
+  { FALSE, "org.gnome.desktop.interface", "text-scaling-factor", "ctk-xft-dpi" , G_TYPE_NONE, { .i = 0 } },
+  { FALSE, "org.gnome.desktop.wm.preferences", "action-double-click-titlebar", "ctk-titlebar-double-click", G_TYPE_STRING, { .s = "toggle-maximize" } },
+  { FALSE, "org.gnome.desktop.wm.preferences", "action-middle-click-titlebar", "ctk-titlebar-middle-click", G_TYPE_STRING, { .s = "none" } },
+  { FALSE, "org.gnome.desktop.wm.preferences", "action-right-click-titlebar", "ctk-titlebar-right-click", G_TYPE_STRING, { .s = "menu" } },
+  { FALSE, "org.gnome.desktop.a11y", "always-show-text-caret", "ctk-keynav-use-caret", G_TYPE_BOOLEAN, { .b = FALSE } },
+  { FALSE, "org.gnome.fontconfig", "serial", "ctk-fontconfig-timestamp", G_TYPE_INT, { .i = 0 } }
 };
 
 static TranslationEntry *
@@ -837,9 +837,9 @@ ctk_shell_handle_capabilities (void              *data,
 
   screen_wayland->shell_capabilities = capabilities;
 
-  notify_setting (screen, "gtk-shell-shows-app-menu");
-  notify_setting (screen, "gtk-shell-shows-menubar");
-  notify_setting (screen, "gtk-shell-shows-desktop");
+  notify_setting (screen, "ctk-shell-shows-app-menu");
+  notify_setting (screen, "ctk-shell-shows-menubar");
+  notify_setting (screen, "ctk-shell-shows-desktop");
 }
 
 struct ctk_shell1_listener gdk_screen_ctk_shell_listener = {
@@ -873,7 +873,7 @@ set_value_from_entry (GdkScreen        *screen,
           g_value_set_string (value, entry->fallback.s);
           break;
         case G_TYPE_INT:
-          if (g_str_equal (entry->setting, "gtk-fontconfig-timestamp"))
+          if (g_str_equal (entry->setting, "ctk-fontconfig-timestamp"))
             g_value_set_uint (value, (guint)entry->fallback.i);
           else
             g_value_set_int (value, entry->fallback.i);
@@ -882,15 +882,15 @@ set_value_from_entry (GdkScreen        *screen,
           g_value_set_boolean (value, entry->fallback.b);
           break;
         case G_TYPE_NONE:
-          if (g_str_equal (entry->setting, "gtk-xft-antialias"))
+          if (g_str_equal (entry->setting, "ctk-xft-antialias"))
             g_value_set_int (value, screen_wayland->xft_settings.antialias);
-          else if (g_str_equal (entry->setting, "gtk-xft-hinting"))
+          else if (g_str_equal (entry->setting, "ctk-xft-hinting"))
             g_value_set_int (value, screen_wayland->xft_settings.hinting);
-          else if (g_str_equal (entry->setting, "gtk-xft-hintstyle"))
+          else if (g_str_equal (entry->setting, "ctk-xft-hintstyle"))
             g_value_set_static_string (value, screen_wayland->xft_settings.hintstyle);
-          else if (g_str_equal (entry->setting, "gtk-xft-rgba"))
+          else if (g_str_equal (entry->setting, "ctk-xft-rgba"))
             g_value_set_static_string (value, screen_wayland->xft_settings.rgba);
-          else if (g_str_equal (entry->setting, "gtk-xft-dpi"))
+          else if (g_str_equal (entry->setting, "ctk-xft-dpi"))
             g_value_set_int (value, screen_wayland->xft_settings.dpi);
           else
             g_assert_not_reached ();
@@ -920,7 +920,7 @@ set_value_from_entry (GdkScreen        *screen,
         }
       break;
     case G_TYPE_INT:
-      if (g_str_equal (entry->setting, "gtk-fontconfig-timestamp"))
+      if (g_str_equal (entry->setting, "ctk-fontconfig-timestamp"))
         g_value_set_uint (value, screen_wayland->dbus_settings.fontconfig_timestamp);
       else
         g_value_set_int (value, settings && entry->valid
@@ -933,15 +933,15 @@ set_value_from_entry (GdkScreen        *screen,
                                   : entry->fallback.b);
       break;
     case G_TYPE_NONE:
-      if (g_str_equal (entry->setting, "gtk-xft-antialias"))
+      if (g_str_equal (entry->setting, "ctk-xft-antialias"))
         g_value_set_int (value, screen_wayland->xft_settings.antialias);
-      else if (g_str_equal (entry->setting, "gtk-xft-hinting"))
+      else if (g_str_equal (entry->setting, "ctk-xft-hinting"))
         g_value_set_int (value, screen_wayland->xft_settings.hinting);
-      else if (g_str_equal (entry->setting, "gtk-xft-hintstyle"))
+      else if (g_str_equal (entry->setting, "ctk-xft-hintstyle"))
         g_value_set_static_string (value, screen_wayland->xft_settings.hintstyle);
-      else if (g_str_equal (entry->setting, "gtk-xft-rgba"))
+      else if (g_str_equal (entry->setting, "ctk-xft-rgba"))
         g_value_set_static_string (value, screen_wayland->xft_settings.rgba);
-      else if (g_str_equal (entry->setting, "gtk-xft-dpi"))
+      else if (g_str_equal (entry->setting, "ctk-xft-dpi"))
         g_value_set_int (value, screen_wayland->xft_settings.dpi);
       else
         g_assert_not_reached ();
@@ -981,7 +981,7 @@ set_decoration_layout_from_entry (GdkScreen        *screen,
     {
       gchar *s = g_settings_get_string (settings, entry->key);
 
-      translate_wm_button_layout_to_gtk (s);
+      translate_wm_button_layout_to_ctk (s);
       g_value_set_string (value, s);
 
       g_free (s);
@@ -1021,38 +1021,38 @@ gdk_wayland_screen_get_setting (GdkScreen   *screen,
   entry = find_translation_entry_by_setting (name);
   if (entry != NULL)
     {
-      if (strcmp (name, "gtk-decoration-layout") == 0)
+      if (strcmp (name, "ctk-decoration-layout") == 0)
         set_decoration_layout_from_entry (screen, entry, value);
       else
         set_value_from_entry (screen, entry, value);
       return TRUE;
    }
 
-  if (strcmp (name, "gtk-shell-shows-app-menu") == 0)
+  if (strcmp (name, "ctk-shell-shows-app-menu") == 0)
     return set_capability_setting (screen, value,
                                    CTK_SHELL1_CAPABILITY_GLOBAL_APP_MENU);
 
-  if (strcmp (name, "gtk-shell-shows-menubar") == 0)
+  if (strcmp (name, "ctk-shell-shows-menubar") == 0)
     return set_capability_setting (screen, value,
                                    CTK_SHELL1_CAPABILITY_GLOBAL_MENU_BAR);
 
-  if (strcmp (name, "gtk-shell-shows-desktop") == 0)
+  if (strcmp (name, "ctk-shell-shows-desktop") == 0)
     return set_capability_setting (screen, value,
                                    CTK_SHELL1_CAPABILITY_DESKTOP_ICONS);
 
-  if (strcmp (name, "gtk-dialogs-use-header") == 0)
+  if (strcmp (name, "ctk-dialogs-use-header") == 0)
     {
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
 
-  if (strcmp (name, "gtk-fontconfig-timestamp") == 0)
+  if (strcmp (name, "ctk-fontconfig-timestamp") == 0)
     {
       g_value_set_uint (value, wayland_screen->dbus_settings.fontconfig_timestamp);
       return TRUE;
     }
 
-  if (strcmp (name, "gtk-modules") == 0)
+  if (strcmp (name, "ctk-modules") == 0)
     {
       g_value_set_string (value, wayland_screen->dbus_settings.modules);
       return TRUE;
@@ -1222,7 +1222,7 @@ dbus_properties_change_cb (GDBusProxy         *proxy,
       else if (timestamp > G_MAXUINT)
         g_warning ("Could not handle fontconfig update: timestamp out of bound");
 
-      notify_setting (GDK_SCREEN (screen_wayland), "gtk-fontconfig-timestamp");
+      notify_setting (GDK_SCREEN (screen_wayland), "ctk-fontconfig-timestamp");
 
       g_variant_unref (value);
     }
@@ -1237,7 +1237,7 @@ dbus_properties_change_cb (GDBusProxy         *proxy,
 
       screen_wayland->dbus_settings.modules = g_variant_dup_string (value, NULL);
 
-      notify_setting (GDK_SCREEN (screen_wayland), "gtk-modules");
+      notify_setting (GDK_SCREEN (screen_wayland), "ctk-modules");
 
       g_variant_unref (value);
     }

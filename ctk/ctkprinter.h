@@ -19,17 +19,17 @@
 #define __CTK_PRINTER_H__
 
 #if !defined (__CTK_UNIX_PRINT_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtkunixprint.h> can be included directly."
+#error "Only <ctk/ctkunixprint.h> can be included directly."
 #endif
 
 #include <cairo.h>
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 
 #define CTK_TYPE_PRINT_CAPABILITIES (ctk_print_capabilities_get_type ())
 
-/* Note, this type is manually registered with GObject in gtkprinter.c
+/* Note, this type is manually registered with GObject in ctkprinter.c
  * If you add any flags, update the registration as well!
  */
 /**

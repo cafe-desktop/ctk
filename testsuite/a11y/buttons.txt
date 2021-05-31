@@ -2,7 +2,7 @@ window1
   "window"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gtk
+  toolkit: ctk
   window-type: normal
   <AtkComponent>
   layer: window
@@ -12,7 +12,7 @@ window1
     parent: window1
     index: 0
     state: enabled horizontal sensitive showing visible
-    toolkit: gtk
+    toolkit: ctk
     <AtkComponent>
     layer: widget
     alpha: 1
@@ -22,7 +22,7 @@ window1
       index: 0
       name: Close
       state: enabled focusable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -38,7 +38,7 @@ window1
       index: 1
       name: Find and Replace
       state: enabled focusable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -54,7 +54,7 @@ window1
       index: 2
       name: Text Button
       state: enabled focusable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -70,7 +70,7 @@ window1
       index: 3
       name: Test switch
       state: enabled focusable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -82,7 +82,7 @@ window1
       parent: grid1
       index: 4
       state: checked enabled focusable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -97,7 +97,7 @@ window1
       member-of: button4
                  button3
       state: enabled focusable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -115,7 +115,7 @@ window1
       member-of: button4
                  button3
       state: checked enabled focusable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -131,7 +131,7 @@ window1
       index: 7
       name: Hello World!
       state: enabled focusable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1
@@ -147,7 +147,7 @@ window1
       index: 8
       name: Hello World!
       state: checked enabled focusable sensitive showing visible
-      toolkit: gtk
+      toolkit: ctk
       <AtkComponent>
       layer: widget
       alpha: 1

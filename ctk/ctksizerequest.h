@@ -22,7 +22,7 @@
 #ifndef __CTK_SIZE_REQUEST_H__
 #define __CTK_SIZE_REQUEST_H__
 
-#include <gtk/gtkwidget.h>
+#include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS
 

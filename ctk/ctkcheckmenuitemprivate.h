@@ -18,8 +18,8 @@
 #ifndef __CTK_CHECK_MENU_ITEM_PRIVATE_H__
 #define __CTK_CHECK_MENU_ITEM_PRIVATE_H__
 
-#include <gtk/gtkcheckmenuitem.h>
-#include <gtk/gtkcssgadgetprivate.h>
+#include <ctk/ctkcheckmenuitem.h>
+#include <ctk/ctkcssgadgetprivate.h>
 
 G_BEGIN_DECLS
 

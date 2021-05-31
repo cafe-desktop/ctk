@@ -1,4 +1,4 @@
-/* gtkfilechooserwidgetprivate.h
+/* ctkfilechooserwidgetprivate.h
  *
  * Copyright (C) 2015 Red Hat
  *
@@ -22,7 +22,7 @@
 #define __CTK_FILE_CHOOSER_WIDGET_PRIVATE_H__
 
 #include <glib.h>
-#include "gtkfilechooserwidget.h"
+#include "ctkfilechooserwidget.h"
 
 G_BEGIN_DECLS
 

@@ -17,30 +17,30 @@
 
 #include "config.h"
 
-#include "gtkstylepropertiesprivate.h"
+#include "ctkstylepropertiesprivate.h"
 
 #include <stdlib.h>
 #include <gobject/gvaluecollector.h>
 #include <cairo-gobject.h>
 
-#include "gtkstyleprovider.h"
-#include "gtkcssshorthandpropertyprivate.h"
-#include "gtkcsstypedvalueprivate.h"
-#include "gtkcsstypesprivate.h"
+#include "ctkstyleprovider.h"
+#include "ctkcssshorthandpropertyprivate.h"
+#include "ctkcsstypedvalueprivate.h"
+#include "ctkcsstypesprivate.h"
 
-#include "gtkprivatetypebuiltins.h"
-#include "gtkstylepropertyprivate.h"
-#include "gtkstyleproviderprivate.h"
-#include "gtkintl.h"
+#include "ctkprivatetypebuiltins.h"
+#include "ctkstylepropertyprivate.h"
+#include "ctkstyleproviderprivate.h"
+#include "ctkintl.h"
 
-#include "deprecated/gtkthemingengine.h"
-#include "deprecated/gtkgradient.h"
-#include "deprecated/gtksymboliccolorprivate.h"
+#include "deprecated/ctkthemingengine.h"
+#include "deprecated/ctkgradient.h"
+#include "deprecated/ctksymboliccolorprivate.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
 /**
- * SECTION:gtkstyleproperties
+ * SECTION:ctkstyleproperties
  * @Short_description: Store for style property information
  * @Title: GtkStyleProperties
  *
@@ -927,7 +927,7 @@ ctk_style_properties_merge (GtkStyleProperties       *props,
               GPtrArray *array, *array_to_merge;
 
               /* Append the array, mainly thought
-               * for the gtk-key-bindings property
+               * for the ctk-key-bindings property
                */
               array = g_value_get_boxed (_ctk_css_typed_value_get (value->value));
               array_to_merge = g_value_get_boxed (_ctk_css_typed_value_get (data->value));

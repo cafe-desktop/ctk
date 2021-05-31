@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface domain="gtk30">
-  <!-- interface-requires gtk+ 3.10 -->
-  <!-- interface-requires gtkdemo 3.10 -->
+<interface domain="ctk30">
+  <!-- interface-requires ctk+ 3.10 -->
+  <!-- interface-requires ctkdemo 3.10 -->
   <object class="GtkMenu" id="menu1">
     <property name="visible">1</property>
     <child>
@@ -140,7 +140,7 @@
                 <property name="can_focus">1</property>
                 <property name="receives_default">1</property>
                 <property name="relief">none</property>
-                <property name="uri">http://www.gtk.org</property>
+                <property name="uri">http://www.ctk.org</property>
               </object>
               <packing>
                 <property name="position">2</property>

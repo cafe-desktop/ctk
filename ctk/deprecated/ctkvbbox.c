@@ -19,19 +19,19 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkvbbox.h"
-#include "gtkorientable.h"
-#include "gtkintl.h"
+#include "ctkvbbox.h"
+#include "ctkorientable.h"
+#include "ctkintl.h"
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 /**
- * SECTION:gtkvbbox
+ * SECTION:ctkvbbox
  * @Short_description: A container for arranging buttons vertically
  * @Title: GtkVButtonBox
  * @See_also: #GtkBox, #GtkButtonBox, #GtkHButtonBox

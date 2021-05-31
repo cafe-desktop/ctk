@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtkprintsettings.c: Print Settings
+ * ctkprintsettings.c: Print Settings
  * Copyright (C) 2006, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -23,14 +23,14 @@
 
 #include <glib/gprintf.h>
 
-#include "gtkprintsettings.h"
-#include "gtkprintutils.h"
-#include "gtktypebuiltins.h"
-#include "gtkwidget.h"
+#include "ctkprintsettings.h"
+#include "ctkprintutils.h"
+#include "ctktypebuiltins.h"
+#include "ctkwidget.h"
 
 
 /**
- * SECTION:gtkprintsettings
+ * SECTION:ctkprintsettings
  * @Short_description: Stores print settings
  * @Title: GtkPrintSettings
  *

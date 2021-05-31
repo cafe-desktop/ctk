@@ -20,10 +20,10 @@
 
 #include <glib-object.h>
 #include <cairo.h>
-#include <gtk/gtkenums.h>
-#include <gtk/gtktypes.h>
+#include <ctk/ctkenums.h>
+#include <ctk/ctktypes.h>
 
-#include "gtkcsstypesprivate.h"
+#include "ctkcsstypesprivate.h"
 
 G_BEGIN_DECLS
 

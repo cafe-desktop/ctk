@@ -6,7 +6,7 @@
  * suitable tags.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static GtkWidget *stack;
 static GtkWidget *view;

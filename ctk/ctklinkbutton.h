@@ -1,5 +1,5 @@
 /* GTK - The GIMP Toolkit
- * gtklinkbutton.h - an hyperlink-enabled button
+ * ctklinkbutton.h - an hyperlink-enabled button
  *
  * Copyright (C) 2005 Emmanuele Bassi <ebassi@gmail.com>
  * All rights reserved.
@@ -25,10 +25,10 @@
 #define __CTK_LINK_BUTTON_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtkbutton.h>
+#include <ctk/ctkbutton.h>
 
 G_BEGIN_DECLS
 

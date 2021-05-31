@@ -87,7 +87,7 @@ gdk_quartz_ns_notification_callback (CFNotificationCenterRef  center,
   if (CFStringCompare (name,
                        CFSTR("AppleNoRedisplayAppearancePreferenceChanged"),
                        0) == kCFCompareEqualTo)
-    new_event.setting.name = "gtk-primary-button-warps-slider";
+    new_event.setting.name = "ctk-primary-button-warps-slider";
 
   if (!new_event.setting.name)
     return;
@@ -1297,7 +1297,7 @@ synthesize_crossing_event (GdkWindow *window,
     {
     case GDK_QUARTZ_MOUSE_ENTERED:
       /* Enter events are considered always to be from another toplevel
-       * window, this shouldn't negatively affect any app or gtk code,
+       * window, this shouldn't negatively affect any app or ctk code,
        * and is the only way to make GtkMenu work. EEK EEK EEK.
        */
       if (!(window->event_mask & GDK_ENTER_NOTIFY_MASK))
@@ -1821,7 +1821,7 @@ _gdk_quartz_screen_get_setting (GdkScreen   *screen,
                                 const gchar *name,
                                 GValue      *value)
 {
-  if (strcmp (name, "gtk-double-click-time") == 0)
+  if (strcmp (name, "ctk-double-click-time") == 0)
     {
       NSUserDefaults *defaults;
       float t;
@@ -1843,7 +1843,7 @@ _gdk_quartz_screen_get_setting (GdkScreen   *screen,
 
       return TRUE;
     }
-  else if (strcmp (name, "gtk-font-name") == 0)
+  else if (strcmp (name, "ctk-font-name") == 0)
     {
       NSString *name;
       char *str;
@@ -1871,7 +1871,7 @@ _gdk_quartz_screen_get_setting (GdkScreen   *screen,
 
       return TRUE;
     }
-  else if (strcmp (name, "gtk-primary-button-warps-slider") == 0)
+  else if (strcmp (name, "ctk-primary-button-warps-slider") == 0)
     {
       GDK_QUARTZ_ALLOC_POOL;
 
@@ -1884,7 +1884,7 @@ _gdk_quartz_screen_get_setting (GdkScreen   *screen,
 
       return TRUE;
     }
-  else if (strcmp (name, "gtk-shell-shows-desktop") == 0)
+  else if (strcmp (name, "ctk-shell-shows-desktop") == 0)
     {
       GDK_QUARTZ_ALLOC_POOL;
 

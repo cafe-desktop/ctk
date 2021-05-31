@@ -19,7 +19,7 @@
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_IMAGE_H__
@@ -27,11 +27,11 @@
 
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
 #include <gio/gio.h>
-#include <gtk/deprecated/gtkmisc.h>
+#include <ctk/deprecated/ctkmisc.h>
 
 
 G_BEGIN_DECLS
@@ -52,7 +52,7 @@ typedef struct _GtkImageClass         GtkImageClass;
  * GtkImageType:
  * @CTK_IMAGE_EMPTY: there is no image displayed by the widget
  * @CTK_IMAGE_PIXBUF: the widget contains a #GdkPixbuf
- * @CTK_IMAGE_STOCK: the widget contains a [stock item name][gtkstock]
+ * @CTK_IMAGE_STOCK: the widget contains a [stock item name][ctkstock]
  * @CTK_IMAGE_ICON_SET: the widget contains a #GtkIconSet
  * @CTK_IMAGE_ANIMATION: the widget contains a #GdkPixbufAnimation
  * @CTK_IMAGE_ICON_NAME: the widget contains a named icon.

@@ -20,7 +20,7 @@
 #ifndef __CTK_IM_CONTEXT_THAI_H__
 #define __CTK_IM_CONTEXT_THAI_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

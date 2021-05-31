@@ -23,7 +23,7 @@ libgailutil = library('gailutil-3',
                       darwin_versions: ['1', '1.0'],
                       sources: [gailutil_sources],
                       dependencies: libctk_dep,
-                      include_directories: [confinc, gtkinc],
+                      include_directories: [confinc, ctkinc],
                       c_args: [
                         '-DGDK_DISABLE_DEPRECATED',
                         '-DCTK_DISABLE_DEPRECATED',

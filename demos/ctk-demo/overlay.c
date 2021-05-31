@@ -7,7 +7,7 @@
  * the big blue label.
  */
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 static void
 do_number (GtkButton *button, GtkEntry *entry)

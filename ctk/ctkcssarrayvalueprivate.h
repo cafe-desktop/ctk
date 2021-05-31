@@ -20,9 +20,9 @@
 #ifndef __CTK_CSS_ARRAY_VALUE_PRIVATE_H__
 #define __CTK_CSS_ARRAY_VALUE_PRIVATE_H__
 
-#include "gtkcssparserprivate.h"
-#include "gtkcssvalueprivate.h"
-#include "gtktypes.h"
+#include "ctkcssparserprivate.h"
+#include "ctkcssvalueprivate.h"
+#include "ctktypes.h"
 
 G_BEGIN_DECLS
 

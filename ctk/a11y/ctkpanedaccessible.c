@@ -18,8 +18,8 @@
 #include "config.h"
 
 #include <string.h>
-#include <gtk/gtk.h>
-#include "gtkpanedaccessible.h"
+#include <ctk/ctk.h>
+#include "ctkpanedaccessible.h"
 
 static void atk_value_interface_init (AtkValueIface *iface);
 
@@ -27,7 +27,7 @@ G_DEFINE_TYPE_WITH_CODE (GtkPanedAccessible, ctk_paned_accessible, CTK_TYPE_CONT
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init))
 
 static void
-ctk_paned_accessible_size_allocate_gtk (GtkWidget     *widget,
+ctk_paned_accessible_size_allocate_ctk (GtkWidget     *widget,
                                         GtkAllocation *allocation)
 {
   AtkObject *obj = ctk_widget_get_accessible (widget);
@@ -42,7 +42,7 @@ ctk_paned_accessible_initialize (AtkObject *obj,
   ATK_OBJECT_CLASS (ctk_paned_accessible_parent_class)->initialize (obj, data);
 
   g_signal_connect (data, "size-allocate",
-                    G_CALLBACK (ctk_paned_accessible_size_allocate_gtk), NULL);
+                    G_CALLBACK (ctk_paned_accessible_size_allocate_ctk), NULL);
 
   obj->role = ATK_ROLE_SPLIT_PANE;
 }

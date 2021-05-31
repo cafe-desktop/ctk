@@ -18,9 +18,9 @@
 #ifndef __CTK_CSS_SECTION_PRIVATE_H__
 #define __CTK_CSS_SECTION_PRIVATE_H__
 
-#include "gtkcsssection.h"
+#include "ctkcsssection.h"
 
-#include "gtkcssparserprivate.h"
+#include "ctkcssparserprivate.h"
 
 G_BEGIN_DECLS
 

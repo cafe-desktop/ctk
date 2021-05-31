@@ -1,4 +1,4 @@
-/* gtkrichtext.h
+/* ctkrichtext.h
  *
  * Copyright (C) 2006 Imendio AB
  * Contact: Michael Natterer <mitch@imendio.com>
@@ -21,10 +21,10 @@
 #define __CTK_TEXT_BUFFER_RICH_TEXT_H__
 
 #if !defined (__CTK_H_INSIDE__) && !defined (CTK_COMPILATION)
-#error "Only <gtk/gtk.h> can be included directly."
+#error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gtk/gtktextbuffer.h>
+#include <ctk/ctktextbuffer.h>
 
 G_BEGIN_DECLS
 

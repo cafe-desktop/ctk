@@ -19,12 +19,12 @@
 
 #include "config.h"
 
-#include "gtkcssshadowsvalueprivate.h"
+#include "ctkcssshadowsvalueprivate.h"
 
 #include <math.h>
 
-#include "gtkcairoblurprivate.h"
-#include "gtkcssshadowvalueprivate.h"
+#include "ctkcairoblurprivate.h"
+#include "ctkcssshadowvalueprivate.h"
 
 #include <string.h>
 

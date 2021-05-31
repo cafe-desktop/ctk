@@ -22,9 +22,9 @@
 #include <math.h>
 #include <string.h>
 
-#include "gtkcssimagecrossfadeprivate.h"
+#include "ctkcssimagecrossfadeprivate.h"
 
-#include "gtkcssnumbervalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
 
 G_DEFINE_TYPE (GtkCssImageCrossFade, _ctk_css_image_cross_fade, CTK_TYPE_CSS_IMAGE)
 

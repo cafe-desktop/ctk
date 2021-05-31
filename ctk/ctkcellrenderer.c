@@ -1,4 +1,4 @@
-/* gtkcellrenderer.c
+/* ctkcellrenderer.c
  * Copyright (C) 2000  Red Hat, Inc. Jonathan Blandford
  *
  * This library is free software; you can redistribute it and/or
@@ -16,17 +16,17 @@
  */
 
 #include "config.h"
-#include "gtkcellrenderer.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtktypebuiltins.h"
-#include "gtkprivate.h"
-#include "gtktreeprivate.h"
-#include "a11y/gtkrenderercellaccessible.h"
+#include "ctkcellrenderer.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
+#include "ctktypebuiltins.h"
+#include "ctkprivate.h"
+#include "ctktreeprivate.h"
+#include "a11y/ctkrenderercellaccessible.h"
 
 
 /**
- * SECTION:gtkcellrenderer
+ * SECTION:ctkcellrenderer
  * @Short_description: An object for rendering a single cell
  * @Title: GtkCellRenderer
  * @See_also: #GtkCellEditable

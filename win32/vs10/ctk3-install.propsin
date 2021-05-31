@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets">
-    <Import Project="gtk3-build-defines.props" />
+    <Import Project="ctk3-build-defines.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
     <BinDir>$(SolutionDir)$(Configuration)\$(Platform)\bin</BinDir>
@@ -17,26 +17,26 @@ copy "$(BinDir)\gdk-$(ApiVersion).lib" $(CopyDir)\lib
 
 if "$(Configuration)" == "Release_Broadway" goto DO_BROADWAY_BIN
 if "$(Configuration)" == "Debug_Broadway" goto DO_BROADWAY_BIN
-copy "$(BinDir)\$(GtkDllPrefix)gtk-3$(GtkDllSuffix).dll" $(CopyDir)\bin
-copy "$(BinDir)\$(GtkDllPrefix)gtk-3$(GtkDllSuffix).pdb" $(CopyDir)\bin
+copy "$(BinDir)\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).dll" $(CopyDir)\bin
+copy "$(BinDir)\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).pdb" $(CopyDir)\bin
 copy "$(BinDir)\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).dll" $(CopyDir)\bin
 copy "$(BinDir)\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).pdb" $(CopyDir)\bin
-copy "$(BinDir)\gtk-$(ApiVersion).lib" $(CopyDir)\lib
+copy "$(BinDir)\ctk-$(ApiVersion).lib" $(CopyDir)\lib
 copy "$(BinDir)\gailutil-$(ApiVersion).lib" $(CopyDir)\lib
-copy "$(BinDir)\gtk3-demo.exe" $(CopyDir)\bin
-copy "$(BinDir)\gtk3-demo.pdb" $(CopyDir)\bin
-copy "$(BinDir)\gtk3-demo-application.exe" $(CopyDir)\bin
-copy "$(BinDir)\gtk3-demo-application.pdb" $(CopyDir)\bin
-copy "$(BinDir)\gtk3-icon-browser.exe" $(CopyDir)\bin
-copy "$(BinDir)\gtk3-icon-browser.pdb" $(CopyDir)\bin
-copy "$(BinDir)\gtk-encode-symbolic-svg.exe" $(CopyDir)\bin
-copy "$(BinDir)\gtk-encode-symbolic-svg.pdb" $(CopyDir)\bin
-copy "$(BinDir)\gtk-update-icon-cache.exe" $(CopyDir)\bin
-copy "$(BinDir)\gtk-update-icon-cache.pdb" $(CopyDir)\bin
-copy "$(BinDir)\gtk-query-settings.exe" $(CopyDir)\bin
-copy "$(BinDir)\gtk-query-settings.pdb" $(CopyDir)\bin
-copy "$(BinDir)\gtk-builder-tool.exe" $(CopyDir)\bin
-copy "$(BinDir)\gtk-builder-tool.pdb" $(CopyDir)\bin
+copy "$(BinDir)\ctk3-demo.exe" $(CopyDir)\bin
+copy "$(BinDir)\ctk3-demo.pdb" $(CopyDir)\bin
+copy "$(BinDir)\ctk3-demo-application.exe" $(CopyDir)\bin
+copy "$(BinDir)\ctk3-demo-application.pdb" $(CopyDir)\bin
+copy "$(BinDir)\ctk3-icon-browser.exe" $(CopyDir)\bin
+copy "$(BinDir)\ctk3-icon-browser.pdb" $(CopyDir)\bin
+copy "$(BinDir)\ctk-encode-symbolic-svg.exe" $(CopyDir)\bin
+copy "$(BinDir)\ctk-encode-symbolic-svg.pdb" $(CopyDir)\bin
+copy "$(BinDir)\ctk-update-icon-cache.exe" $(CopyDir)\bin
+copy "$(BinDir)\ctk-update-icon-cache.pdb" $(CopyDir)\bin
+copy "$(BinDir)\ctk-query-settings.exe" $(CopyDir)\bin
+copy "$(BinDir)\ctk-query-settings.pdb" $(CopyDir)\bin
+copy "$(BinDir)\ctk-builder-tool.exe" $(CopyDir)\bin
+copy "$(BinDir)\ctk-builder-tool.pdb" $(CopyDir)\bin
 if exist $(BinDir)\Gdk-3.0.gir copy "$(BinDir)\Gdk-3.0.gir" $(CopyDir)\share\gir-1.0
 if exist $(BinDir)\GdkWin32-3.0.gir copy "$(BinDir)\GdkWin32-3.0.gir" $(CopyDir)\share\gir-1.0
 if exist $(BinDir)\Gtk-3.0.gir copy "$(BinDir)\Gtk-3.0.gir" $(CopyDir)\share\gir-1.0
@@ -52,26 +52,26 @@ copy "$(BinDir)\broadwayd.pdb" $(CopyDir)\bin
 if "$(Configuration)" == "Release_Broadway" goto DO_BROADWAY_RELEASE
 if "$(Configuration)" == "Debug_Broadway" goto DO_BROADWAY_DEBUG
 :DO_BROADWAY_RELEASE
-copy .\Release\$(Platform)\bin\$(GtkDllPrefix)gtk-3$(GtkDllSuffix).dll $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\$(GtkDllPrefix)gtk-3$(GtkDllSuffix).pdb $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).dll $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).pdb $(CopyDir)\bin
 copy .\Release\$(Platform)\bin\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).dll $(CopyDir)\bin
 copy .\Release\$(Platform)\bin\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).pdb $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk-$(ApiVersion).lib $(CopyDir)\lib
+copy .\Release\$(Platform)\bin\ctk-$(ApiVersion).lib $(CopyDir)\lib
 copy .\Release\$(Platform)\bin\gailutil-$(ApiVersion).lib $(CopyDir)\lib
-copy .\Release\$(Platform)\bin\gtk3-demo.exe $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk3-demo.pdb $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk3-demo-application.exe $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk3-demo-application.pdb $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk3-icon-browser.exe $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk3-icon-browser.pdb $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk-encode-symbolic-svg.exe $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk-encode-symbolic-svg.pdb $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk-update-icon-cache.exe $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk-update-icon-cache.pdb $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk-query-settings.exe $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk-query-settings.pdb $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk-builder-tool.exe $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\gtk-builder-tool.pdb $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk3-demo.exe $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk3-demo.pdb $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk3-demo-application.exe $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk3-demo-application.pdb $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk3-icon-browser.exe $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk3-icon-browser.pdb $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk-encode-symbolic-svg.exe $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk-encode-symbolic-svg.pdb $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk-update-icon-cache.exe $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk-update-icon-cache.pdb $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk-query-settings.exe $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk-query-settings.pdb $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk-builder-tool.exe $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\ctk-builder-tool.pdb $(CopyDir)\bin
 if exist .\Release\$(Platform)\bin\Gdk-3.0.gir copy .\Release\$(Platform)\bin\Gdk-3.0.gir $(CopyDir)\share\gir-1.0
 if exist .\Release\$(Platform)\bin\GdkWin32-3.0.gir copy .\Release\$(Platform)\bin\GdkWin32-3.0.gir $(CopyDir)\share\gir-1.0
 if exist .\Release\$(Platform)\bin\Gtk-3.0.gir copy .\Release\$(Platform)\bin\Gtk-3.0.gir $(CopyDir)\share\gir-1.0
@@ -82,26 +82,26 @@ if exist .\Release\$(Platform)\bin\Gtk-3.0.typelib copy .\Release\$(Platform)\bi
 goto DONE_BIN
 
 :DO_BROADWAY_DEBUG
-copy .\Debug\$(Platform)\bin\$(GtkDllPrefix)gtk-3$(GtkDllSuffix).dll $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\$(GtkDllPrefix)gtk-3$(GtkDllSuffix).pdb $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).dll $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\$(GtkDllPrefix)ctk-3$(GtkDllSuffix).pdb $(CopyDir)\bin
 copy .\Debug\$(Platform)\bin\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).dll $(CopyDir)\bin
 copy .\Debug\$(Platform)\bin\$(GtkDllPrefix)gailutil-3$(GtkDllSuffix).pdb $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk-$(ApiVersion).lib $(CopyDir)\lib
+copy .\Debug\$(Platform)\bin\ctk-$(ApiVersion).lib $(CopyDir)\lib
 copy .\Debug\$(Platform)\bin\gailutil-$(ApiVersion).lib $(CopyDir)\lib
-copy .\Debug\$(Platform)\bin\gtk3-demo.exe $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk3-demo.pdb $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk3-demo-application.exe $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk3-demo-application.pdb $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk3-icon-browser.exe $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk3-icon-browser.pdb $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk-encode-symbolic-svg.exe $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk-encode-symbolic-svg.pdb $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk-update-icon-cache.exe $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk-update-icon-cache.pdb $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk-query-settings.exe $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk-query-settings.pdb $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk-builder-tool.exe $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\gtk-builder-tool.pdb $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk3-demo.exe $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk3-demo.pdb $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk3-demo-application.exe $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk3-demo-application.pdb $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk3-icon-browser.exe $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk3-icon-browser.pdb $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk-encode-symbolic-svg.exe $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk-encode-symbolic-svg.pdb $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk-update-icon-cache.exe $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk-update-icon-cache.pdb $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk-query-settings.exe $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk-query-settings.pdb $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk-builder-tool.exe $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\ctk-builder-tool.pdb $(CopyDir)\bin
 if exist .\Debug\$(Platform)\bin\Gdk-3.0.gir copy .\Debug\$(Platform)\bin\Gdk-3.0.gir $(CopyDir)\share\gir-1.0
 if exist .\Debug\$(Platform)\bin\GdkWin32-3.0.gir copy .\Debug\$(Platform)\bin\GdkWin32-3.0.gir $(CopyDir)\share\gir-1.0
 if exist .\Debug\$(Platform)\bin\Gtk-3.0.gir copy .\Debug\$(Platform)\bin\Gtk-3.0.gir $(CopyDir)\share\gir-1.0
@@ -113,38 +113,38 @@ if exist .\Debug\$(Platform)\bin\Gtk-3.0.typelib copy .\Debug\$(Platform)\bin\Gt
 
 copy ..\gdk-3.0.pc $(CopyDir)\lib\pkgconfig
 copy ..\gdk-3.0.pc $(CopyDir)\lib\pkgconfig\gdk-win32-3.0.pc
-copy "..\gtk+-3.0.pc" $(CopyDir)\lib\pkgconfig
-copy "..\gtk+-3.0.pc" "$(CopyDir)\lib\pkgconfig\gtk+-3.0.pc"
+copy "..\ctk+-3.0.pc" $(CopyDir)\lib\pkgconfig
+copy "..\ctk+-3.0.pc" "$(CopyDir)\lib\pkgconfig\ctk+-3.0.pc"
 copy ..\gail-3.0.pc $(CopyDir)\lib\pkgconfig
     </GtkDoInstallBin>
     <GtkDoInstall>
 echo off
-mkdir $(CopyDir)\include\gtk-$(ApiVersion)\gdk\win32
-mkdir $(CopyDir)\include\gtk-$(ApiVersion)\gdk\deprecated
-copy ..\..\gdk\win32\gdkwin32.h $(CopyDir)\include\gtk-$(ApiVersion)\gdk
+mkdir $(CopyDir)\include\ctk-$(ApiVersion)\gdk\win32
+mkdir $(CopyDir)\include\ctk-$(ApiVersion)\gdk\deprecated
+copy ..\..\gdk\win32\gdkwin32.h $(CopyDir)\include\ctk-$(ApiVersion)\gdk
 #include "gdk-3.vs10.headers"
 #include "gdk3-win32.vs10.headers"
 
-mkdir $(CopyDir)\include\gtk-$(ApiVersion)\gtk\a11y
-mkdir $(CopyDir)\include\gtk-$(ApiVersion)\gtk\deprecated
-#include "gtk-3.vs10.headers"
+mkdir $(CopyDir)\include\ctk-$(ApiVersion)\ctk\a11y
+mkdir $(CopyDir)\include\ctk-$(ApiVersion)\ctk\deprecated
+#include "ctk-3.vs10.headers"
 
 mkdir $(CopyDir)\include\gail-$(ApiVersion)\libgail-util
 #include "gailutil-3.vs10.headers"
 
 
-for &#37;&#37;s in (16 22 24 32 48 256) do ((mkdir $(CopyDir)\share\icons\hicolor\&#37;&#37;sx&#37;&#37;s\apps) &amp; (copy /b ..\..\demos\gtk-demo\data\&#37;&#37;sx&#37;&#37;s\gtk3-demo.png $(CopyDir)\share\icons\hicolor\&#37;&#37;sx&#37;&#37;s\apps))
+for &#37;&#37;s in (16 22 24 32 48 256) do ((mkdir $(CopyDir)\share\icons\hicolor\&#37;&#37;sx&#37;&#37;s\apps) &amp; (copy /b ..\..\demos\ctk-demo\data\&#37;&#37;sx&#37;&#37;s\ctk3-demo.png $(CopyDir)\share\icons\hicolor\&#37;&#37;sx&#37;&#37;s\apps))
 
 mkdir $(CopyDir)\share\glib-2.0\schemas
-copy ..\..\gtk\org.gtk.Settings.ColorChooser.gschema.xml $(CopyDir)\share\glib-2.0\schemas
-copy ..\..\gtk\org.gtk.Settings.Debug.gschema.xml $(CopyDir)\share\glib-2.0\schemas
-copy ..\..\gtk\org.gtk.Settings.EmojiChooser.gschema.xml $(CopyDir)\share\glib-2.0\schemas
-copy ..\..\gtk\org.gtk.Settings.FileChooser.gschema.xml $(CopyDir)\share\glib-2.0\schemas
-copy ..\..\demos\gtk-demo\org.gtk.Demo.gschema.xml $(CopyDir)\share\glib-2.0\schemas
+copy ..\..\ctk\org.ctk.Settings.ColorChooser.gschema.xml $(CopyDir)\share\glib-2.0\schemas
+copy ..\..\ctk\org.ctk.Settings.Debug.gschema.xml $(CopyDir)\share\glib-2.0\schemas
+copy ..\..\ctk\org.ctk.Settings.EmojiChooser.gschema.xml $(CopyDir)\share\glib-2.0\schemas
+copy ..\..\ctk\org.ctk.Settings.FileChooser.gschema.xml $(CopyDir)\share\glib-2.0\schemas
+copy ..\..\demos\ctk-demo\org.ctk.Demo.gschema.xml $(CopyDir)\share\glib-2.0\schemas
     </GtkDoInstall>
     <GtkDoInstallBroadwayHeaders>
-copy ..\..\gdk\broadway\gdkbroadway.h $(CopyDir)\include\gtk-$(ApiVersion)\gdk
-mkdir $(CopyDir)\include\gtk-$(ApiVersion)\gdk\broadway
+copy ..\..\gdk\broadway\gdkbroadway.h $(CopyDir)\include\ctk-$(ApiVersion)\gdk
+mkdir $(CopyDir)\include\ctk-$(ApiVersion)\gdk\broadway
 #include "gdk3-broadway.vs10.headers"
     </GtkDoInstallBroadwayHeaders>
     <GtkPostInstall>
@@ -152,14 +152,14 @@ echo "Compiling gsettings XML Files..."
 $(GlibEtcInstallRoot)\bin\glib-compile-schemas.exe $(CopyDir)\share\glib-2.0\schemas
 
 echo "Generating icon cache......"
-$(CopyDir)\bin\gtk-update-icon-cache.exe --ignore-theme-index --force "$(CopyDir)\share\icons\hicolor"
+$(CopyDir)\bin\ctk-update-icon-cache.exe --ignore-theme-index --force "$(CopyDir)\share\icons\hicolor"
     </GtkPostInstall>
-    <GenerateGtkPC>$(PythonDir)\python ..\gtkpc.py --prefix=$(CopyDir) --version=$(GtkVersion) --host=i686-pc-vs$(VSVer)</GenerateGtkPC>
-    <GenerateGtkPCX64>$(PythonDir)\python ..\gtkpc.py --prefix=$(CopyDir) --version=$(GtkVersion) --host=x86_64-pc-vs$(VSVer)</GenerateGtkPCX64>
-    <GtkPCFiles>..\gdk-3.0.pc;..\gtk+-3.0.pc;..\gail-3.0.pc</GtkPCFiles>
+    <GenerateGtkPC>$(PythonDir)\python ..\ctkpc.py --prefix=$(CopyDir) --version=$(GtkVersion) --host=i686-pc-vs$(VSVer)</GenerateGtkPC>
+    <GenerateGtkPCX64>$(PythonDir)\python ..\ctkpc.py --prefix=$(CopyDir) --version=$(GtkVersion) --host=x86_64-pc-vs$(VSVer)</GenerateGtkPCX64>
+    <GtkPCFiles>..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc</GtkPCFiles>
   </PropertyGroup>
   <PropertyGroup>
-    <_PropertySheetDisplayName>gtk3installsprops</_PropertySheetDisplayName>
+    <_PropertySheetDisplayName>ctk3installsprops</_PropertySheetDisplayName>
   </PropertyGroup>
   <ItemGroup>
     <BuildMacro Include="BinDir">

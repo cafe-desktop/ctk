@@ -1,7 +1,7 @@
 #ifndef __EXAMPLEAPP_H
 #define __EXAMPLEAPP_H
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 
 #define EXAMPLE_APP_TYPE (example_app_get_type ())

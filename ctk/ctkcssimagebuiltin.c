@@ -19,14 +19,14 @@
 
 #include "config.h"
 
-#include "gtkcssimagebuiltinprivate.h"
+#include "ctkcssimagebuiltinprivate.h"
 
-#include "gtkcssenumvalueprivate.h"
-#include "gtkcssnumbervalueprivate.h"
-#include "gtkcssrgbavalueprivate.h"
-#include "gtkcssstyleprivate.h"
-#include "gtkhslaprivate.h"
-#include "gtkrenderprivate.h"
+#include "ctkcssenumvalueprivate.h"
+#include "ctkcssnumbervalueprivate.h"
+#include "ctkcssrgbavalueprivate.h"
+#include "ctkcssstyleprivate.h"
+#include "ctkhslaprivate.h"
+#include "ctkrenderprivate.h"
 
 #include <math.h>
 

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets">
-    <Import Project="gtk3-build-defines.props" />
+    <Import Project="ctk3-build-defines.props" />
   </ImportGroup>
   <PropertyGroup>
-    <_PropertySheetDisplayName>gtk3ignorebroadwayprops</_PropertySheetDisplayName>
+    <_PropertySheetDisplayName>ctk3ignorebroadwayprops</_PropertySheetDisplayName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ProjectReference>

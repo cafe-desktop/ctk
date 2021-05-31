@@ -21,7 +21,7 @@ so, please do the following:
  Windows builds.  Pass in -Degl=yes when building libepoxy using Meson.
  Build and install, making sure the headers and .lib can be located by the
  compiler and linker respectively.
--Open the vsX/gtk+.sln, and open the project properties in the "gdk3-win32"
+-Open the vsX/ctk+.sln, and open the project properties in the "gdk3-win32"
  project.  Under "C/C++", add GDK_WIN32_ENABLE_EGL in the "Preprocessor
  Definitions" to the existing definitions in there for the configuration
  that is being built.  Then build the solution.

@@ -1,11 +1,11 @@
-/* gtktreemenu.c
+/* ctktreemenu.c
  *
  * Copyright (C) 2010 Openismus GmbH
  *
  * Authors:
  *      Tristan Van Berkom <tristanvb@openismus.com>
  *
- * Based on some GtkComboBox menu code by Kristian Rietveld <kris@gtk.org>
+ * Based on some GtkComboBox menu code by Kristian Rietveld <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -22,7 +22,7 @@
  */
 
 /*
- * SECTION:gtktreemenu
+ * SECTION:ctktreemenu
  * @Short_Description: A GtkMenu automatically created from a #GtkTreeModel
  * @Title: GtkTreeMenu
  *
@@ -32,24 +32,24 @@
  */
 
 #include "config.h"
-#include "gtkintl.h"
-#include "gtktreemenu.h"
-#include "gtkmarshalers.h"
-#include "gtkmenuitem.h"
-#include "gtkseparatormenuitem.h"
-#include "gtkcellareabox.h"
-#include "gtkcellareacontext.h"
-#include "gtkcelllayout.h"
-#include "gtkcellview.h"
-#include "gtkmenushellprivate.h"
-#include "gtkprivate.h"
+#include "ctkintl.h"
+#include "ctktreemenu.h"
+#include "ctkmarshalers.h"
+#include "ctkmenuitem.h"
+#include "ctkseparatormenuitem.h"
+#include "ctkcellareabox.h"
+#include "ctkcellareacontext.h"
+#include "ctkcelllayout.h"
+#include "ctkcellview.h"
+#include "ctkmenushellprivate.h"
+#include "ctkprivate.h"
 
 #undef GDK_DEPRECATED
 #undef GDK_DEPRECATED_FOR
 #define GDK_DEPRECATED
 #define GDK_DEPRECATED_FOR(f)
 
-#include "deprecated/gtktearoffmenuitem.h"
+#include "deprecated/ctktearoffmenuitem.h"
 
 /* GObjectClass */
 static void      ctk_tree_menu_constructed                    (GObject            *object);
@@ -218,7 +218,7 @@ _ctk_tree_menu_class_init (GtkTreeMenuClass *class)
   GObjectClass   *object_class = G_OBJECT_CLASS (class);
   GtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
 
-  tree_menu_path_quark = g_quark_from_static_string ("gtk-tree-menu-path");
+  tree_menu_path_quark = g_quark_from_static_string ("ctk-tree-menu-path");
 
   object_class->constructed  = ctk_tree_menu_constructed;
   object_class->dispose      = ctk_tree_menu_dispose;

@@ -17,7 +17,7 @@
 #ifndef __CTK_IM_CONTEXT_MULTIPRESS_H__
 #define __CTK_IM_CONTEXT_MULTIPRESS_H__
 
-#include <gtk/gtk.h>
+#include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 

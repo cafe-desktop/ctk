@@ -1,5 +1,5 @@
-/* gtkellview.c
- * Copyright (C) 2002, 2003  Kristian Rietveld <kris@gtk.org>
+/* ctkellview.c
+ * Copyright (C) 2002, 2003  Kristian Rietveld <kris@ctk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -17,23 +17,23 @@
 
 #include "config.h"
 #include <string.h>
-#include "gtkcellview.h"
-#include "gtkcelllayout.h"
-#include "gtkcellareabox.h"
-#include "gtkintl.h"
-#include "gtkcellrenderertext.h"
-#include "gtkcellrendererpixbuf.h"
-#include "gtkprivate.h"
-#include "gtkorientableprivate.h"
-#include "gtkrender.h"
-#include "gtkcsscustomgadgetprivate.h"
-#include "gtkwidgetprivate.h"
+#include "ctkcellview.h"
+#include "ctkcelllayout.h"
+#include "ctkcellareabox.h"
+#include "ctkintl.h"
+#include "ctkcellrenderertext.h"
+#include "ctkcellrendererpixbuf.h"
+#include "ctkprivate.h"
+#include "ctkorientableprivate.h"
+#include "ctkrender.h"
+#include "ctkcsscustomgadgetprivate.h"
+#include "ctkwidgetprivate.h"
 #include <gobject/gmarshal.h>
-#include "gtkbuildable.h"
+#include "ctkbuildable.h"
 
 
 /**
- * SECTION:gtkcellview
+ * SECTION:ctkcellview
  * @Short_description: A widget displaying a single row of a GtkTreeModel
  * @Title: GtkCellView
  *

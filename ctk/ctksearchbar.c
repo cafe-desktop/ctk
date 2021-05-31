@@ -22,21 +22,21 @@
  * Modified by the GTK+ Team and others 2013.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #include "config.h"
 
-#include "gtkentry.h"
-#include "gtkentryprivate.h"
-#include "gtkintl.h"
-#include "gtkprivate.h"
-#include "gtkrender.h"
-#include "gtksearchbar.h"
-#include "gtksearchentryprivate.h"
+#include "ctkentry.h"
+#include "ctkentryprivate.h"
+#include "ctkintl.h"
+#include "ctkprivate.h"
+#include "ctkrender.h"
+#include "ctksearchbar.h"
+#include "ctksearchentryprivate.h"
 
 /**
- * SECTION:gtksearchbar
+ * SECTION:ctksearchbar
  * @Short_description: A toolbar to integrate a search entry with
  * @Title: GtkSearchBar
  *
@@ -62,7 +62,7 @@
  *
  * ## Creating a search bar
  *
- * [A simple example](https://gitlab.gnome.org/GNOME/gtk/blob/gtk-3-24/examples/search-bar.c)
+ * [A simple example](https://gitlab.gnome.org/GNOME/ctk/blob/ctk-3-24/examples/search-bar.c)
  *
  * Since: 3.10
  */
@@ -429,7 +429,7 @@ ctk_search_bar_class_init (GtkSearchBarClass *klass)
 
   g_object_class_install_properties (object_class, LAST_PROPERTY, widget_props);
 
-  ctk_widget_class_set_template_from_resource (widget_class, "/org/gtk/libgtk/ui/gtksearchbar.ui");
+  ctk_widget_class_set_template_from_resource (widget_class, "/org/ctk/libctk/ui/ctksearchbar.ui");
   ctk_widget_class_bind_template_child_private (widget_class, GtkSearchBar, tool_box);
   ctk_widget_class_bind_template_child_private (widget_class, GtkSearchBar, revealer);
   ctk_widget_class_bind_template_child_private (widget_class, GtkSearchBar, box_center);

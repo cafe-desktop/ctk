@@ -1,21 +1,21 @@
 include $(top_srcdir)/Makefile.decl
 
-backenddir = $(libdir)/gtk-3.0/$(CTK_BINARY_VERSION)/printbackends
+backenddir = $(libdir)/ctk-3.0/$(CTK_BINARY_VERSION)/printbackends
 
 backend_LTLIBRARIES = libprintbackend-cloudprint.la
 
 libprintbackend_cloudprint_la_SOURCES = \
-	gtkprintbackendcloudprint.h \
-	gtkprintbackendcloudprint.c \
-	gtkprintercloudprint.h \
-	gtkprintercloudprint.c \
-	gtkcloudprintaccount.h \
-	gtkcloudprintaccount.c
+	ctkprintbackendcloudprint.h \
+	ctkprintbackendcloudprint.c \
+	ctkprintercloudprint.h \
+	ctkprintercloudprint.c \
+	ctkcloudprintaccount.h \
+	ctkcloudprintaccount.c
 
 libprintbackend_cloudprint_la_CPPFLAGS = \
 	-I$(top_srcdir) 				\
-	-I$(top_srcdir)/gtk				\
-	-I$(top_builddir)/gtk				\
+	-I$(top_srcdir)/ctk				\
+	-I$(top_builddir)/ctk				\
 	-I$(top_srcdir)/gdk				\
 	-I$(top_builddir)/gdk				\
 	-DCTK_PRINT_BACKEND_ENABLE_UNSUPPORTED		\
@@ -32,7 +32,7 @@ libprintbackend_cloudprint_la_LDFLAGS =  \
 	-avoid-version -module $(no_undefined)
 
 libprintbackend_cloudprint_la_LIBADD =			\
-	$(top_builddir)/gtk/libgtk-3.la			\
+	$(top_builddir)/ctk/libctk-3.la			\
 	$(REST_LIBS)					\
 	$(JSON_GLIB_LIBS)				\
 	$(CTK_DEP_LIBS)

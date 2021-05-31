@@ -19,17 +19,17 @@
 
 #include "config.h"
 
-#include "gtkactionmuxer.h"
+#include "ctkactionmuxer.h"
 
-#include "gtkactionobservable.h"
-#include "gtkactionobserver.h"
-#include "gtkintl.h"
-#include "gtkmarshalers.h"
+#include "ctkactionobservable.h"
+#include "ctkactionobserver.h"
+#include "ctkintl.h"
+#include "ctkmarshalers.h"
 
 #include <string.h>
 
 /*< private >
- * SECTION:gtkactionmuxer
+ * SECTION:ctkactionmuxer
  * @short_description: Aggregate and monitor several action groups
  *
  * #GtkActionMuxer is a #GActionGroup and #GtkActionObservable that is

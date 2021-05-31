@@ -23,9 +23,9 @@
  *  Input   : http://www.unicode.org/Public/UNIDATA/UnicodeData.txt
  *
  * This table is optimised for space and requires special handling to access the content.
- * This table is used solely by http://svn.gnome.org/viewcvs/gtk%2B/trunk/gtk/gtkimcontextsimple.c
+ * This table is used solely by http://svn.gnome.org/viewcvs/ctk%2B/trunk/ctk/ctkimcontextsimple.c
  * 
- * The resulting file is placed at http://svn.gnome.org/viewcvs/gtk%2B/trunk/gtk/gtkimcontextsimpleseqs.h
+ * The resulting file is placed at http://svn.gnome.org/viewcvs/ctk%2B/trunk/ctk/ctkimcontextsimpleseqs.h
  * This file is described in bug report http://bugzilla.gnome.org/show_bug.cgi?id=321896
  */
 
@@ -33,7 +33,7 @@
  * Modified by the GTK+ Team and others 2007, 2008.  See the AUTHORS
  * file for a list of people on the GTK+ Team.  See the ChangeLog
  * files for a list of changes.  These files are distributed with
- * GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+ * GTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
 #ifndef __CTK_IM_CONTEXT_SIMPLE_SEQS_H__
