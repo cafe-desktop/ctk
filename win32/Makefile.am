@@ -5,7 +5,7 @@ GENERATED_ITEMS = \
 	introspection.body.mak	\
 	Gdk_3_0_gir_list		\
 	GdkWin32_3_0_gir_list	\
-	Gtk_3_0_gir_list
+	Ctk_3_0_gir_list
 
 MSVC_INTROSPECTION_INTERMEDIATE_FILES = Gdk-3.0.gir.msvc.introspect GdkWin32-3.0.gir.msvc.introspect Gtk-3.0.gir.msvc.introspect
 
