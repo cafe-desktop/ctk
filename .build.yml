@@ -85,7 +85,7 @@ requires:
     - xml-core
 
 build_scripts:
-    - git clone https://github.com/cafe-desktop/debian-packages/ctk
+    - git clone https://github.com/cafe-desktop/debian-packages
     - cp -dpR ./ctk/debian/* .
     - dpkg-buildpackage -b -rfakeroot -us -uc
 
