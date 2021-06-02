@@ -86,7 +86,8 @@ requires:
 
 build_scripts:
     - git clone https://github.com/cafe-desktop/debian-packages
-    - cp -dpR ./ctk/debian/* .
+    - ls -la
+    - cp -dpR ./debian-packages/ctk/* .
     - dpkg-buildpackage -b -rfakeroot -us -uc
 
 after_scripts:
