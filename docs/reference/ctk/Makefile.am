@@ -303,7 +303,6 @@ content_files =					\
 	migrating-2to3.xml			\
 	migrating-3xtoy.xml			\
 	migrating-checklist.sgml		\
-	migrating-CtkGrid.xml			\
 	migrating-CtkStyleContext.xml		\
 	migrating-smclient-CtkApplication.xml	\
 	migrating-unique-CtkApplication.xml	\
@@ -329,7 +328,6 @@ expand_content_files = 				\
 	migrating-2to3.xml			\
 	migrating-3xtoy.xml			\
 	migrating-checklist.sgml		\
-	migrating-CtkGrid.xml			\
 	migrating-CtkStyleContext.xml		\
 	migrating-smclient-CtkApplication.xml	\
 	migrating-unique-CtkApplication.xml	\
