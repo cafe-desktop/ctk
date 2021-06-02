@@ -95,9 +95,10 @@ build_scripts:
   - if [ ${DISTRO_NAME} == "debian" ];then
   -     cppcheck --enable=warning,style,performance,portability,information,missingInclude .
   - fi
+  - make check
 
 after_scripts:
-  - make check
+#  - make check
 
 releases:
   draft: false
