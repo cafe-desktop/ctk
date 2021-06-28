@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#include "gdk-pixbuf/gdk-pixdata.h"
+#include "cdk-pixbuf/cdk-pixdata.h"
 #include "ctktextbufferserialize.h"
 #include "ctktexttagprivate.h"
 #include "ctkintl.h"
@@ -206,7 +206,7 @@ is_param_set (GObject    *object,
               GValue     *value)
 {
   /* We need to special case some attributes here */
-  if (strcmp (pspec->name, "background-gdk") == 0)
+  if (strcmp (pspec->name, "background-cdk") == 0)
     {
       gboolean is_set;
 
@@ -223,7 +223,7 @@ is_param_set (GObject    *object,
 
       return FALSE;
     }
-  else if (strcmp (pspec->name, "foreground-gdk") == 0)
+  else if (strcmp (pspec->name, "foreground-cdk") == 0)
     {
       gboolean is_set;
 
@@ -582,8 +582,8 @@ serialize_pixbufs (SerializationContext *context,
       guint8 *tmp;
       guint len;
 
-      gdk_pixdata_from_pixbuf (&pixdata, pixbuf, FALSE);
-      tmp = gdk_pixdata_serialize (&pixdata, &len);
+      cdk_pixdata_from_pixbuf (&pixdata, pixbuf, FALSE);
+      tmp = cdk_pixdata_serialize (&pixdata, &len);
 
       serialize_section_header (text, "CTKTEXTBUFFERPIXBDATA-0001", len);
       g_string_append_len (text, (gchar *) tmp, len);
@@ -1072,11 +1072,11 @@ get_pixbuf_from_headers (GList   *headers,
   if (!header)
     return NULL;
 
-  if (!gdk_pixdata_deserialize (&pixdata, header->length,
+  if (!cdk_pixdata_deserialize (&pixdata, header->length,
                                 (const guint8 *) header->start, error))
     return NULL;
 
-  pixbuf = gdk_pixbuf_from_pixdata (&pixdata, TRUE, error);
+  pixbuf = cdk_pixbuf_from_pixdata (&pixdata, TRUE, error);
 
   return pixbuf;
 }

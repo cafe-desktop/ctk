@@ -24,61 +24,61 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Generator: Lokalize 1.4\n"
 
-#: ../gdk/gdk.c:155
+#: ../cdk/cdk.c:155
 #, c-format
-msgid "Error parsing option --gdk-debug"
+msgid "Error parsing option --cdk-debug"
 msgstr ""
 
-#: ../gdk/gdk.c:175
+#: ../cdk/cdk.c:175
 #, c-format
-msgid "Error parsing option --gdk-no-debug"
+msgid "Error parsing option --cdk-no-debug"
 msgstr ""
 
 #. Description of --class=CLASS in --help output
-#: ../gdk/gdk.c:203
+#: ../cdk/cdk.c:203
 msgid "Program class as used by the window manager"
 msgstr ""
 
 #. Placeholder in --class=CLASS in --help output
-#: ../gdk/gdk.c:204
+#: ../cdk/cdk.c:204
 msgid "CLASS"
 msgstr ""
 
 #. Description of --name=NAME in --help output
-#: ../gdk/gdk.c:206
+#: ../cdk/cdk.c:206
 msgid "Program name as used by the window manager"
 msgstr ""
 
 #. Placeholder in --name=NAME in --help output
-#: ../gdk/gdk.c:207
+#: ../cdk/cdk.c:207
 msgid "NAME"
 msgstr ""
 
 #. Description of --display=DISPLAY in --help output
-#: ../gdk/gdk.c:209
+#: ../cdk/cdk.c:209
 msgid "X display to use"
 msgstr ""
 
 #. Placeholder in --display=DISPLAY in --help output
-#: ../gdk/gdk.c:210
+#: ../cdk/cdk.c:210
 msgid "DISPLAY"
 msgstr ""
 
-#. Description of --gdk-debug=FLAGS in --help output
-#: ../gdk/gdk.c:213
+#. Description of --cdk-debug=FLAGS in --help output
+#: ../cdk/cdk.c:213
 msgid "GDK debugging flags to set"
 msgstr ""
 
-#. Placeholder in --gdk-debug=FLAGS in --help output
-#. Placeholder in --gdk-no-debug=FLAGS in --help output
+#. Placeholder in --cdk-debug=FLAGS in --help output
+#. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: ../gdk/gdk.c:214 ../gdk/gdk.c:217 ../ctk/ctkmain.c:453 ../ctk/ctkmain.c:456
+#: ../cdk/cdk.c:214 ../cdk/cdk.c:217 ../ctk/ctkmain.c:453 ../ctk/ctkmain.c:456
 msgid "FLAGS"
 msgstr ""
 
-#. Description of --gdk-no-debug=FLAGS in --help output
-#: ../gdk/gdk.c:216
+#. Description of --cdk-no-debug=FLAGS in --help output
+#: ../cdk/cdk.c:216
 msgid "GDK debugging flags to unset"
 msgstr ""
 
@@ -94,364 +94,364 @@ msgstr ""
 #. * KP_Space      - Space (keypad)
 #. * Page_Up       - Page up
 #.
-#: ../gdk/keyname-table.h:3952
+#: ../cdk/keyname-table.h:3952
 msgctxt "keyboard label"
 msgid "BackSpace"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3953
+#: ../cdk/keyname-table.h:3953
 msgctxt "keyboard label"
 msgid "Tab"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3954
+#: ../cdk/keyname-table.h:3954
 msgctxt "keyboard label"
 msgid "Return"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3955
+#: ../cdk/keyname-table.h:3955
 msgctxt "keyboard label"
 msgid "Pause"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3956
+#: ../cdk/keyname-table.h:3956
 msgctxt "keyboard label"
 msgid "Scroll_Lock"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3957
+#: ../cdk/keyname-table.h:3957
 msgctxt "keyboard label"
 msgid "Sys_Req"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3958
+#: ../cdk/keyname-table.h:3958
 msgctxt "keyboard label"
 msgid "Escape"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3959
+#: ../cdk/keyname-table.h:3959
 msgctxt "keyboard label"
 msgid "Multi_key"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3960
+#: ../cdk/keyname-table.h:3960
 msgctxt "keyboard label"
 msgid "Home"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3961
+#: ../cdk/keyname-table.h:3961
 msgctxt "keyboard label"
 msgid "Left"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3962
+#: ../cdk/keyname-table.h:3962
 msgctxt "keyboard label"
 msgid "Up"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3963
+#: ../cdk/keyname-table.h:3963
 msgctxt "keyboard label"
 msgid "Right"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3964
+#: ../cdk/keyname-table.h:3964
 msgctxt "keyboard label"
 msgid "Down"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3965
+#: ../cdk/keyname-table.h:3965
 msgctxt "keyboard label"
 msgid "Page_Up"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3966
+#: ../cdk/keyname-table.h:3966
 msgctxt "keyboard label"
 msgid "Page_Down"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3967
+#: ../cdk/keyname-table.h:3967
 msgctxt "keyboard label"
 msgid "End"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3968
+#: ../cdk/keyname-table.h:3968
 msgctxt "keyboard label"
 msgid "Begin"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3969
+#: ../cdk/keyname-table.h:3969
 msgctxt "keyboard label"
 msgid "Print"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3970
+#: ../cdk/keyname-table.h:3970
 msgctxt "keyboard label"
 msgid "Insert"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3971
+#: ../cdk/keyname-table.h:3971
 msgctxt "keyboard label"
 msgid "Num_Lock"
 msgstr ""
 
 #. Translators: KP_ means 'key pad' here
-#: ../gdk/keyname-table.h:3973
+#: ../cdk/keyname-table.h:3973
 msgctxt "keyboard label"
 msgid "KP_Space"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3974
+#: ../cdk/keyname-table.h:3974
 msgctxt "keyboard label"
 msgid "KP_Tab"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3975
+#: ../cdk/keyname-table.h:3975
 msgctxt "keyboard label"
 msgid "KP_Enter"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3976
+#: ../cdk/keyname-table.h:3976
 msgctxt "keyboard label"
 msgid "KP_Home"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3977
+#: ../cdk/keyname-table.h:3977
 msgctxt "keyboard label"
 msgid "KP_Left"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3978
+#: ../cdk/keyname-table.h:3978
 msgctxt "keyboard label"
 msgid "KP_Up"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3979
+#: ../cdk/keyname-table.h:3979
 msgctxt "keyboard label"
 msgid "KP_Right"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3980
+#: ../cdk/keyname-table.h:3980
 msgctxt "keyboard label"
 msgid "KP_Down"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3981
+#: ../cdk/keyname-table.h:3981
 msgctxt "keyboard label"
 msgid "KP_Page_Up"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3982
+#: ../cdk/keyname-table.h:3982
 msgctxt "keyboard label"
 msgid "KP_Prior"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3983
+#: ../cdk/keyname-table.h:3983
 msgctxt "keyboard label"
 msgid "KP_Page_Down"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3984
+#: ../cdk/keyname-table.h:3984
 msgctxt "keyboard label"
 msgid "KP_Next"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3985
+#: ../cdk/keyname-table.h:3985
 msgctxt "keyboard label"
 msgid "KP_End"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3986
+#: ../cdk/keyname-table.h:3986
 msgctxt "keyboard label"
 msgid "KP_Begin"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3987
+#: ../cdk/keyname-table.h:3987
 msgctxt "keyboard label"
 msgid "KP_Insert"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3988
+#: ../cdk/keyname-table.h:3988
 msgctxt "keyboard label"
 msgid "KP_Delete"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3989
+#: ../cdk/keyname-table.h:3989
 msgctxt "keyboard label"
 msgid "Delete"
 msgstr ""
 
 #. Translators: 'Mon' means Monitor here, and the XF86 prefix should be removed
-#: ../gdk/keyname-table.h:3991
+#: ../cdk/keyname-table.h:3991
 msgctxt "keyboard label"
 msgid "MonBrightnessUp"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3992
+#: ../cdk/keyname-table.h:3992
 msgctxt "keyboard label"
 msgid "MonBrightnessDown"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3993
+#: ../cdk/keyname-table.h:3993
 msgctxt "keyboard label"
 msgid "AudioMute"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3994
+#: ../cdk/keyname-table.h:3994
 msgctxt "keyboard label"
 msgid "AudioLowerVolume"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3995
+#: ../cdk/keyname-table.h:3995
 msgctxt "keyboard label"
 msgid "AudioRaiseVolume"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3996
+#: ../cdk/keyname-table.h:3996
 msgctxt "keyboard label"
 msgid "AudioPlay"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3997
+#: ../cdk/keyname-table.h:3997
 msgctxt "keyboard label"
 msgid "AudioStop"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3998
+#: ../cdk/keyname-table.h:3998
 msgctxt "keyboard label"
 msgid "AudioNext"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3999
+#: ../cdk/keyname-table.h:3999
 msgctxt "keyboard label"
 msgid "AudioPrev"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4000
+#: ../cdk/keyname-table.h:4000
 msgctxt "keyboard label"
 msgid "AudioRecord"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4001
+#: ../cdk/keyname-table.h:4001
 msgctxt "keyboard label"
 msgid "AudioPause"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4002
+#: ../cdk/keyname-table.h:4002
 msgctxt "keyboard label"
 msgid "AudioRewind"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4003
+#: ../cdk/keyname-table.h:4003
 msgctxt "keyboard label"
 msgid "AudioMedia"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4004
+#: ../cdk/keyname-table.h:4004
 msgctxt "keyboard label"
 msgid "ScreenSaver"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4005
+#: ../cdk/keyname-table.h:4005
 msgctxt "keyboard label"
 msgid "Battery"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4006
+#: ../cdk/keyname-table.h:4006
 msgctxt "keyboard label"
 msgid "Launch1"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4007
+#: ../cdk/keyname-table.h:4007
 msgctxt "keyboard label"
 msgid "Forward"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4008
+#: ../cdk/keyname-table.h:4008
 msgctxt "keyboard label"
 msgid "Back"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4009
+#: ../cdk/keyname-table.h:4009
 msgctxt "keyboard label"
 msgid "Sleep"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4010
+#: ../cdk/keyname-table.h:4010
 msgctxt "keyboard label"
 msgid "Hibernate"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4011
+#: ../cdk/keyname-table.h:4011
 msgctxt "keyboard label"
 msgid "WLAN"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4012
+#: ../cdk/keyname-table.h:4012
 msgctxt "keyboard label"
 msgid "WebCam"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4013
+#: ../cdk/keyname-table.h:4013
 msgctxt "keyboard label"
 msgid "Display"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4014
+#: ../cdk/keyname-table.h:4014
 msgctxt "keyboard label"
 msgid "TouchpadToggle"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4015
+#: ../cdk/keyname-table.h:4015
 msgctxt "keyboard label"
 msgid "WakeUp"
 msgstr ""
 
-#: ../gdk/keyname-table.h:4016
+#: ../cdk/keyname-table.h:4016
 msgctxt "keyboard label"
 msgid "Suspend"
 msgstr ""
 
 #. Description of --sync in --help output
-#: ../gdk/win32/gdkmain-win32.c:53
+#: ../cdk/win32/cdkmain-win32.c:53
 msgid "Don't batch GDI requests"
 msgstr ""
 
 #. Description of --no-wintab in --help output
-#: ../gdk/win32/gdkmain-win32.c:55
+#: ../cdk/win32/cdkmain-win32.c:55
 msgid "Don't use the Wintab API for tablet support"
 msgstr ""
 
 #. Description of --ignore-wintab in --help output
-#: ../gdk/win32/gdkmain-win32.c:57
+#: ../cdk/win32/cdkmain-win32.c:57
 msgid "Same as --no-wintab"
 msgstr ""
 
 #. Description of --use-wintab in --help output
-#: ../gdk/win32/gdkmain-win32.c:59
+#: ../cdk/win32/cdkmain-win32.c:59
 msgid "Do use the Wintab API [default]"
 msgstr ""
 
 #. Description of --max-colors=COLORS in --help output
-#: ../gdk/win32/gdkmain-win32.c:61
+#: ../cdk/win32/cdkmain-win32.c:61
 msgid "Size of the palette in 8 bit mode"
 msgstr ""
 
 #. Placeholder in --max-colors=COLORS in --help output
-#: ../gdk/win32/gdkmain-win32.c:62
+#: ../cdk/win32/cdkmain-win32.c:62
 msgid "COLORS"
 msgstr ""
 
-#: ../gdk/x11/gdkapplaunchcontext-x11.c:292
+#: ../cdk/x11/cdkapplaunchcontext-x11.c:292
 #, c-format
 msgid "Starting %s"
 msgstr ""
 
-#: ../gdk/x11/gdkapplaunchcontext-x11.c:305
+#: ../cdk/x11/cdkapplaunchcontext-x11.c:305
 #, c-format
 msgid "Opening %s"
 msgstr ""
 
-#: ../gdk/x11/gdkapplaunchcontext-x11.c:310
+#: ../cdk/x11/cdkapplaunchcontext-x11.c:310
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"

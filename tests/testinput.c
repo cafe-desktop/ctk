@@ -45,7 +45,7 @@ static void
 update_cursor (CtkWidget *widget,  gdouble x, gdouble y)
 {
   static gint cursor_present = 0;
-  gint state = !gdk_device_get_has_cursor (current_device) && cursor_proximity;
+  gint state = !cdk_device_get_has_cursor (current_device) && cursor_proximity;
 
   x = floor (x);
   y = floor (y);
@@ -53,7 +53,7 @@ update_cursor (CtkWidget *widget,  gdouble x, gdouble y)
   if (surface != NULL)
     {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      cairo_t *cr = gdk_cairo_create (ctk_widget_get_window (widget));
+      cairo_t *cr = cdk_cairo_create (ctk_widget_get_window (widget));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (cursor_present && (cursor_present != state ||
@@ -93,7 +93,7 @@ configure_event (CtkWidget *widget, GdkEventConfigure *event)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
+  surface = cdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR,
                                                allocation.width,
                                                allocation.height);
@@ -152,15 +152,15 @@ draw_brush (CtkWidget *widget, GdkInputSource source,
   update_rect.height = 20 * pressure;
 
   cr = cairo_create (surface);
-  gdk_cairo_set_source_rgba (cr, &color);
-  gdk_cairo_rectangle (cr, &update_rect);
+  cdk_cairo_set_source_rgba (cr, &color);
+  cdk_cairo_rectangle (cr, &update_rect);
   cairo_fill (cr);
   cairo_destroy (cr);
 
   ctk_widget_queue_draw_area (widget,
 			      update_rect.x, update_rect.y,
 			      update_rect.width, update_rect.height);
-  gdk_window_process_updates (ctk_widget_get_window (widget), TRUE);
+  cdk_window_process_updates (ctk_widget_get_window (widget), TRUE);
 }
 
 static guint32 motion_time;
@@ -172,9 +172,9 @@ print_axes (GdkDevice *device, gdouble *axes)
   
   if (axes)
     {
-      g_print ("%s ", gdk_device_get_name (device));
+      g_print ("%s ", cdk_device_get_name (device));
 
-      for (i = 0; i < gdk_device_get_n_axes (device); i++)
+      for (i = 0; i < cdk_device_get_n_axes (device); i++)
 	g_print ("%g ", axes[i]);
 
       g_print ("\n");
@@ -193,8 +193,8 @@ button_press_event (CtkWidget *widget, GdkEventButton *event)
       gdouble pressure = 0.5;
 
       print_axes (event->device, event->axes);
-      gdk_event_get_axis ((GdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
-      draw_brush (widget, gdk_device_get_source (gdk_event_get_source_device (event)),
+      cdk_event_get_axis ((GdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
+      draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
                   event->x, event->y, pressure);
 
       motion_time = event->time;
@@ -228,7 +228,7 @@ motion_notify_event (CtkWidget *widget, GdkEventMotion *event)
 
   if (event->state & GDK_BUTTON1_MASK && surface != NULL)
     {
-      if (gdk_device_get_history (event->device, event->window, 
+      if (cdk_device_get_history (event->device, event->window, 
 				  motion_time, event->time,
 				  &events, &n_events))
 	{
@@ -236,23 +236,23 @@ motion_notify_event (CtkWidget *widget, GdkEventMotion *event)
 	    {
 	      double x = 0, y = 0, pressure = 0.5;
 
-	      gdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_X, &x);
-	      gdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_Y, &y);
-	      gdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_PRESSURE, &pressure);
-	      draw_brush (widget, gdk_device_get_source (gdk_event_get_source_device (event)),
+	      cdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_X, &x);
+	      cdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_Y, &y);
+	      cdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_PRESSURE, &pressure);
+	      draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
                           x, y, pressure);
 
-	      print_axes (gdk_event_get_source_device (event), events[i]->axes);
+	      print_axes (cdk_event_get_source_device (event), events[i]->axes);
 	    }
-	  gdk_device_free_history (events, n_events);
+	  cdk_device_free_history (events, n_events);
 	}
       else
 	{
 	  double pressure = 0.5;
 
-	  gdk_event_get_axis ((GdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
+	  cdk_event_get_axis ((GdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
 
-	  draw_brush (widget, gdk_device_get_source (gdk_event_get_source_device (event)),
+	  draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
                       event->x, event->y, pressure);
 	}
       motion_time = event->time;
@@ -299,13 +299,13 @@ main (int argc, char *argv[])
   CtkWidget *drawing_area;
   CtkWidget *vbox;
   CtkWidget *button;
-  GdkWindow *gdk_win;
+  GdkWindow *cdk_win;
   GdkSeat *seat;
 
   ctk_init (&argc, &argv);
 
-  seat = gdk_display_get_default_seat (gdk_display_get_default ());
-  current_device = gdk_seat_get_pointer (seat);
+  seat = cdk_display_get_default_seat (cdk_display_get_default ());
+  current_device = cdk_seat_get_pointer (seat);
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_widget_set_name (window, "Test Input");
@@ -355,7 +355,7 @@ main (int argc, char *argv[])
 
   ctk_widget_set_events (drawing_area, event_mask);
 
-  devices = gdk_seat_get_slaves (seat, GDK_SEAT_CAPABILITY_ALL_POINTING);
+  devices = cdk_seat_get_slaves (seat, GDK_SEAT_CAPABILITY_ALL_POINTING);
 
   for (d = devices; d; d = d->next)
     {
@@ -363,7 +363,7 @@ main (int argc, char *argv[])
 
       device = d->data;
       ctk_widget_set_device_events (drawing_area, device, event_mask);
-      gdk_device_set_mode (device, GDK_MODE_SCREEN);
+      cdk_device_set_mode (device, GDK_MODE_SCREEN);
     }
 
   g_list_free (devices);
@@ -383,8 +383,8 @@ main (int argc, char *argv[])
   ctk_widget_show (window);
 
   /* request all motion events */
-  gdk_win = ctk_widget_get_window (drawing_area);
-  gdk_window_set_event_compression (gdk_win, FALSE);
+  cdk_win = ctk_widget_get_window (drawing_area);
+  cdk_window_set_event_compression (cdk_win, FALSE);
 
   ctk_main ();
 

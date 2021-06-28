@@ -292,7 +292,7 @@ get_inspector_screen (void)
       const gchar *name;
 
       name = g_getenv ("CTK_INSPECTOR_DISPLAY");
-      display = gdk_display_open (name);
+      display = cdk_display_open (name);
 
       if (display)
         g_debug ("Using display %s for CtkInspector", name);
@@ -302,7 +302,7 @@ get_inspector_screen (void)
 
   if (!display)
     {
-      display = gdk_display_open (NULL);
+      display = cdk_display_open (NULL);
       if (display)
         g_debug ("Using default display for CtkInspector");
       else
@@ -310,9 +310,9 @@ get_inspector_screen (void)
     }
 
   if (!display)
-    display = gdk_display_get_default ();
+    display = cdk_display_get_default ();
 
-  return gdk_display_get_default_screen (display);
+  return cdk_display_get_default_screen (display);
 }
 
 CtkWidget *

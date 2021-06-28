@@ -26,17 +26,17 @@
 #define __GDK_X11_CURSOR_H__
 
 #if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkx.h> can be included directly."
+#error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_CURSOR              (gdk_x11_cursor_get_type ())
+#define GDK_TYPE_X11_CURSOR              (cdk_x11_cursor_get_type ())
 #define GDK_X11_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_CURSOR, GdkX11Cursor))
 #define GDK_X11_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_CURSOR, GdkX11CursorClass))
 #define GDK_IS_X11_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_CURSOR))
@@ -51,12 +51,12 @@ typedef GdkCursor GdkX11Cursor;
 typedef struct _GdkX11CursorClass GdkX11CursorClass;
 
 GDK_AVAILABLE_IN_ALL
-GType    gdk_x11_cursor_get_type          (void);
+GType    cdk_x11_cursor_get_type          (void);
 
 GDK_AVAILABLE_IN_ALL
-Display *gdk_x11_cursor_get_xdisplay      (GdkCursor   *cursor);
+Display *cdk_x11_cursor_get_xdisplay      (GdkCursor   *cursor);
 GDK_AVAILABLE_IN_ALL
-Cursor   gdk_x11_cursor_get_xcursor       (GdkCursor   *cursor);
+Cursor   cdk_x11_cursor_get_xcursor       (GdkCursor   *cursor);
 
 /**
  * GDK_CURSOR_XDISPLAY:
@@ -66,7 +66,7 @@ Cursor   gdk_x11_cursor_get_xcursor       (GdkCursor   *cursor);
  *
  * Returns: an Xlib Display*.
  */
-#define GDK_CURSOR_XDISPLAY(cursor)   (gdk_x11_cursor_get_xdisplay (cursor))
+#define GDK_CURSOR_XDISPLAY(cursor)   (cdk_x11_cursor_get_xdisplay (cursor))
 
 /**
  * GDK_CURSOR_XCURSOR:
@@ -76,7 +76,7 @@ Cursor   gdk_x11_cursor_get_xcursor       (GdkCursor   *cursor);
  *
  * Returns: an Xlib Cursor.
  */
-#define GDK_CURSOR_XCURSOR(cursor)    (gdk_x11_cursor_get_xcursor (cursor))
+#define GDK_CURSOR_XCURSOR(cursor)    (cdk_x11_cursor_get_xcursor (cursor))
 
 G_END_DECLS
 

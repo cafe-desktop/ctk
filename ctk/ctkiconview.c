@@ -1325,7 +1325,7 @@ ctk_icon_view_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
@@ -1347,10 +1347,10 @@ ctk_icon_view_realize (CtkWidget *widget)
                            GDK_KEY_RELEASE_MASK) |
     ctk_widget_get_events (widget);
   
-  icon_view->priv->bin_window = gdk_window_new (window,
+  icon_view->priv->bin_window = cdk_window_new (window,
 						&attributes, attributes_mask);
   ctk_widget_register_window (widget, icon_view->priv->bin_window);
-  gdk_window_show (icon_view->priv->bin_window);
+  cdk_window_show (icon_view->priv->bin_window);
 }
 
 static void
@@ -1361,7 +1361,7 @@ ctk_icon_view_unrealize (CtkWidget *widget)
   icon_view = CTK_ICON_VIEW (widget);
 
   ctk_widget_unregister_window (widget, icon_view->priv->bin_window);
-  gdk_window_destroy (icon_view->priv->bin_window);
+  cdk_window_destroy (icon_view->priv->bin_window);
   icon_view->priv->bin_window = NULL;
 
   CTK_WIDGET_CLASS (ctk_icon_view_parent_class)->unrealize (widget);
@@ -1811,10 +1811,10 @@ ctk_icon_view_size_allocate (CtkWidget      *widget,
 
   if (ctk_widget_get_realized (widget))
     {
-      gdk_window_move_resize (ctk_widget_get_window (widget),
+      cdk_window_move_resize (ctk_widget_get_window (widget),
 			      allocation->x, allocation->y,
 			      allocation->width, allocation->height);
-      gdk_window_resize (icon_view->priv->bin_window,
+      cdk_window_resize (icon_view->priv->bin_window,
 			 MAX (icon_view->priv->width, allocation->width),
 			 MAX (icon_view->priv->height, allocation->height));
     }
@@ -1902,7 +1902,7 @@ ctk_icon_view_draw (CtkWidget *widget,
       cairo_rectangle (cr, paint_area.x, paint_area.y, paint_area.width, paint_area.height);
       cairo_clip (cr);
 
-      if (gdk_cairo_get_clip_rectangle (cr, NULL))
+      if (cdk_cairo_get_clip_rectangle (cr, NULL))
         {
           ctk_icon_view_paint_item (icon_view, cr, item,
                                     item->cell_area.x, item->cell_area.y,
@@ -2013,7 +2013,7 @@ ctk_icon_view_motion (CtkWidget      *widget,
 	  icon_view->priv->event_last_y = event->y;
 
 	  if (icon_view->priv->scroll_timeout_id == 0) {
-	    icon_view->priv->scroll_timeout_id = gdk_threads_add_timeout (30, rubberband_scroll_timeout, 
+	    icon_view->priv->scroll_timeout_id = cdk_threads_add_timeout (30, rubberband_scroll_timeout, 
 								icon_view);
 	    g_source_set_name_by_id (icon_view->priv->scroll_timeout_id, "[ctk+] rubberband_scroll_timeout");
 	  }
@@ -2529,7 +2529,7 @@ ctk_icon_view_update_rubberband (gpointer data)
   
   icon_view = CTK_ICON_VIEW (data);
 
-  gdk_window_get_device_position (icon_view->priv->bin_window,
+  cdk_window_get_device_position (icon_view->priv->bin_window,
                                   icon_view->priv->rubberband_device,
                                   &x, &y, NULL);
 
@@ -2553,7 +2553,7 @@ ctk_icon_view_update_rubberband (gpointer data)
   invalid_region = cairo_region_create_rectangle (&old_area);
   cairo_region_union_rectangle (invalid_region, &new_area);
 
-  gdk_window_invalidate_region (icon_view->priv->bin_window, invalid_region, TRUE);
+  cdk_window_invalidate_region (icon_view->priv->bin_window, invalid_region, TRUE);
     
   cairo_region_destroy (invalid_region);
 
@@ -2933,7 +2933,7 @@ ctk_icon_view_adjustment_changed (CtkAdjustment *adjustment,
 
   if (ctk_widget_get_realized (CTK_WIDGET (icon_view)))
     {
-      gdk_window_move (priv->bin_window,
+      cdk_window_move (priv->bin_window,
                        - ctk_adjustment_get_value (priv->hadjustment),
                        - ctk_adjustment_get_value (priv->vadjustment));
 
@@ -3182,7 +3182,7 @@ ctk_icon_view_paint_rubberband (CtkIconView *icon_view,
 
   ctk_style_context_save_to_node (context, priv->rubberband_node);
 
-  gdk_cairo_rectangle (cr, &rect);
+  cdk_cairo_rectangle (cr, &rect);
   cairo_clip (cr);
 
   ctk_render_background (context, cr,
@@ -3230,7 +3230,7 @@ ctk_icon_view_queue_draw_item (CtkIconView     *icon_view,
   rect.height = item_area->height + icon_view->priv->item_padding * 2;
 
   if (icon_view->priv->bin_window)
-    gdk_window_invalidate_rect (icon_view->priv->bin_window, &rect, TRUE);
+    cdk_window_invalidate_rect (icon_view->priv->bin_window, &rect, TRUE);
 }
 
 void
@@ -4230,7 +4230,7 @@ ctk_icon_view_scroll_to_path (CtkIconView *icon_view,
 	  item->cell_area.height + icon_view->priv->item_padding * 2 
 	};
 
-      gdk_window_get_position (icon_view->priv->bin_window, &x, &y);
+      cdk_window_get_position (icon_view->priv->bin_window, &x, &y);
 
       ctk_widget_get_allocation (widget, &allocation);
 
@@ -4265,7 +4265,7 @@ ctk_icon_view_scroll_to_item (CtkIconView     *icon_view,
   item_area.width = item->cell_area.width  + priv->item_padding * 2;
   item_area.height = item->cell_area.height + priv->item_padding * 2;
 
-  gdk_window_get_position (icon_view->priv->bin_window, &x, &y);
+  cdk_window_get_position (icon_view->priv->bin_window, &x, &y);
   ctk_widget_get_allocation (widget, &allocation);
 
   hadj = icon_view->priv->hadjustment;
@@ -4431,7 +4431,7 @@ ctk_icon_view_convert_widget_to_bin_window_coords (CtkIconView *icon_view,
   g_return_if_fail (CTK_IS_ICON_VIEW (icon_view));
 
   if (icon_view->priv->bin_window) 
-    gdk_window_get_position (icon_view->priv->bin_window, &x, &y);
+    cdk_window_get_position (icon_view->priv->bin_window, &x, &y);
   else
     x = y = 0;
  
@@ -4581,7 +4581,7 @@ ctk_icon_view_get_cell_rect (CtkIconView     *icon_view,
 
   if (icon_view->priv->bin_window)
     {
-      gdk_window_get_position (icon_view->priv->bin_window, &x, &y);
+      cdk_window_get_position (icon_view->priv->bin_window, &x, &y);
       rect->x += x;
       rect->y += y;
     }
@@ -6227,7 +6227,7 @@ ctk_icon_view_autoscroll (CtkIconView *icon_view)
 
   px = icon_view->priv->event_last_x;
   py = icon_view->priv->event_last_y;
-  gdk_window_get_geometry (window, NULL, NULL, &width, &height);
+  cdk_window_get_geometry (window, NULL, NULL, &width, &height);
 
   /* see if we are near the edge. */
   voffset = py - 2 * SCROLL_EDGE_SIZE;
@@ -6344,7 +6344,7 @@ out:
     {
       CtkWidget *source_widget;
 
-      *suggested_action = gdk_drag_context_get_suggested_action (context);
+      *suggested_action = cdk_drag_context_get_suggested_action (context);
       source_widget = ctk_drag_get_source_widget (context);
 
       if (source_widget == widget)
@@ -6352,7 +6352,7 @@ out:
           /* Default to MOVE, unless the user has
            * pressed ctrl or shift to affect available actions
            */
-          if ((gdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
+          if ((cdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
             *suggested_action = GDK_ACTION_MOVE;
         }
 
@@ -6560,7 +6560,7 @@ ctk_icon_view_drag_data_get (CtkWidget        *widget,
     goto done;
 
   /* If drag_data_get does nothing, try providing row data. */
-  if (ctk_selection_data_get_target (selection_data) == gdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
+  if (ctk_selection_data_get_target (selection_data) == cdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
     ctk_tree_set_row_drag_data (selection_data,
 				model,
 				source_row);
@@ -6647,18 +6647,18 @@ ctk_icon_view_drag_motion (CtkWidget      *widget,
   if (path == NULL && !empty)
     {
       /* Can't drop here. */
-      gdk_drag_status (context, 0, time);
+      cdk_drag_status (context, 0, time);
     }
   else
     {
       if (icon_view->priv->scroll_timeout_id == 0)
 	{
 	  icon_view->priv->scroll_timeout_id =
-	    gdk_threads_add_timeout (50, drag_scroll_timeout, icon_view);
+	    cdk_threads_add_timeout (50, drag_scroll_timeout, icon_view);
 	  g_source_set_name_by_id (icon_view->priv->scroll_timeout_id, "[ctk+] drag_scroll_timeout");
 	}
 
-      if (target == gdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
+      if (target == cdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
         {
           /* Request data so we can use the source row when
            * determining whether to accept the drop
@@ -6669,7 +6669,7 @@ ctk_icon_view_drag_motion (CtkWidget      *widget,
       else
         {
           set_status_pending (context, 0);
-          gdk_drag_status (context, suggested_action, time);
+          cdk_drag_status (context, suggested_action, time);
         }
     }
 
@@ -6782,7 +6782,7 @@ ctk_icon_view_drag_data_received (CtkWidget        *widget,
 	    suggested_action = 0;
         }
 
-      gdk_drag_status (context, suggested_action, time);
+      cdk_drag_status (context, suggested_action, time);
 
       if (path)
         ctk_tree_path_free (path);
@@ -6811,7 +6811,7 @@ ctk_icon_view_drag_data_received (CtkWidget        *widget,
 
   ctk_drag_finish (context,
                    accepted,
-                   (gdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE),
+                   (cdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE),
                    time);
 
   ctk_tree_path_free (dest_row);
@@ -7132,7 +7132,7 @@ ctk_icon_view_create_drag_icon (CtkIconView *icon_view,
 	    item->cell_area.height + icon_view->priv->item_padding * 2 
 	  };
 
-	  surface = gdk_window_create_similar_surface (icon_view->priv->bin_window,
+	  surface = cdk_window_create_similar_surface (icon_view->priv->bin_window,
                                                        CAIRO_CONTENT_COLOR_ALPHA,
                                                        rect.width,
                                                        rect.height);

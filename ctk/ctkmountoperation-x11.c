@@ -30,7 +30,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <gio/gio.h>
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 #include <X11/Xatom.h>
 #include <ctk/ctkicontheme.h>
 #include "ctkintl.h"
@@ -88,7 +88,7 @@ get_cardinal (GdkDisplay *display,
 
   *val = 0;
 
-  gdk_x11_display_error_trap_push (display);
+  cdk_x11_display_error_trap_push (display);
   type = None;
   result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
                                xwindow,
@@ -97,7 +97,7 @@ get_cardinal (GdkDisplay *display,
                                False, XA_CARDINAL, &type, &format, &nitems,
                                &bytes_after, (void*)&num);
   XSync (GDK_DISPLAY_XDISPLAY (display), False);
-  err = gdk_x11_display_error_trap_pop (display);
+  err = cdk_x11_display_error_trap_pop (display);
 
   if (err != Success ||
       result != Success)
@@ -130,9 +130,9 @@ get_utf8_property (GdkDisplay *display,
   char *retval;
   Atom utf8_string;
 
-  utf8_string = gdk_x11_get_xatom_by_name ("UTF8_STRING");
+  utf8_string = cdk_x11_get_xatom_by_name ("UTF8_STRING");
 
-  gdk_x11_display_error_trap_push (display);
+  cdk_x11_display_error_trap_push (display);
   type = None;
   val = NULL;
   result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
@@ -143,7 +143,7 @@ get_utf8_property (GdkDisplay *display,
                                &type, &format, &nitems,
                                &bytes_after, (guchar **)&val);
   XSync (GDK_DISPLAY_XDISPLAY (display), False);
-  err = gdk_x11_display_error_trap_pop (display);
+  err = cdk_x11_display_error_trap_pop (display);
 
   if (err != Success ||
       result != Success)
@@ -161,7 +161,7 @@ get_utf8_property (GdkDisplay *display,
   if (!g_utf8_validate (val, nitems, NULL))
     {
       g_warning ("Property %s contained invalid UTF-8",
-                 gdk_x11_get_xatom_name (atom));
+                 cdk_x11_get_xatom_name (atom));
       XFree (val);
       return NULL;
     }
@@ -353,17 +353,17 @@ read_rgb_icon (GdkDisplay *display,
   gulong *best;
   int w, h;
 
-  gdk_x11_display_error_trap_push (display);
+  cdk_x11_display_error_trap_push (display);
   type = None;
   data = NULL;
   result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
                                xwindow,
-                               gdk_x11_get_xatom_by_name ("_NET_WM_ICON"),
+                               cdk_x11_get_xatom_by_name ("_NET_WM_ICON"),
                                0, G_MAXLONG,
                                False, XA_CARDINAL, &type, &format, &nitems,
                                &bytes_after, (void*)&data);
   XSync (GDK_DISPLAY_XDISPLAY (display), False);
-  err = gdk_x11_display_error_trap_pop (display);
+  err = cdk_x11_display_error_trap_pop (display);
 
   if (err != Success ||
       result != Success)
@@ -409,7 +409,7 @@ scaled_from_pixdata (guchar *pixdata,
   GdkPixbuf *src;
   GdkPixbuf *dest;
 
-  src = gdk_pixbuf_new_from_data (pixdata,
+  src = cdk_pixbuf_new_from_data (pixdata,
                                   GDK_COLORSPACE_RGB,
                                   TRUE,
                                   8,
@@ -427,12 +427,12 @@ scaled_from_pixdata (guchar *pixdata,
 
       size = MAX (w, h);
 
-      tmp = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, size, size);
+      tmp = cdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, size, size);
 
       if (tmp != NULL)
         {
-          gdk_pixbuf_fill (tmp, 0);
-          gdk_pixbuf_copy_area (src, 0, 0, w, h,
+          cdk_pixbuf_fill (tmp, 0);
+          cdk_pixbuf_copy_area (src, 0, 0, w, h,
                                 tmp,
                                 (size - w) / 2, (size - h) / 2);
 
@@ -443,7 +443,7 @@ scaled_from_pixdata (guchar *pixdata,
 
   if (w != new_w || h != new_h)
     {
-      dest = gdk_pixbuf_scale_simple (src, new_w, new_h, GDK_INTERP_BILINEAR);
+      dest = cdk_pixbuf_scale_simple (src, new_w, new_h, GDK_INTERP_BILINEAR);
 
       g_object_unref (G_OBJECT (src));
     }
@@ -472,7 +472,7 @@ get_window_list (GdkDisplay *display,
   *windows = NULL;
   *len = 0;
 
-  gdk_x11_display_error_trap_push (display);
+  cdk_x11_display_error_trap_push (display);
   type = None;
   result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
                                xwindow,
@@ -481,7 +481,7 @@ get_window_list (GdkDisplay *display,
                                False, XA_WINDOW, &type, &format, &nitems,
                                &bytes_after, (void*)&data);
   XSync (GDK_DISPLAY_XDISPLAY (display), False);
-  err = gdk_x11_display_error_trap_pop (display);
+  err = cdk_x11_display_error_trap_pop (display);
 
   if (err != Success ||
       result != Success)
@@ -533,7 +533,7 @@ _ctk_mount_operation_lookup_context_get (GdkDisplay *display)
   mapping_length = 0;
   get_window_list (context->display,
                    GDK_ROOT_WINDOW(),
-                   gdk_x11_get_xatom_by_name_for_display (context->display,
+                   cdk_x11_get_xatom_by_name_for_display (context->display,
                                                           "_NET_CLIENT_LIST"),
                    &mapping,
                    &mapping_length);
@@ -543,7 +543,7 @@ _ctk_mount_operation_lookup_context_get (GdkDisplay *display)
 
       if (!get_cardinal (context->display,
                          mapping[n],
-                         gdk_x11_get_xatom_by_name_for_display (context->display,
+                         cdk_x11_get_xatom_by_name_for_display (context->display,
                                                                 "_NET_WM_PID"),
                          &pid))
         continue;
@@ -884,11 +884,11 @@ get_name_for_window_with_pid (CtkMountOperationLookupContext *context,
     {
       ret = get_utf8_property (context->display,
                                window,
-                               gdk_x11_get_xatom_by_name_for_display (context->display,
+                               cdk_x11_get_xatom_by_name_for_display (context->display,
                                                                       "_NET_WM_NAME"));
       if (ret == NULL)
         ret = get_utf8_property (context->display,
-                                 window, gdk_x11_get_xatom_by_name_for_display (context->display,
+                                 window, cdk_x11_get_xatom_by_name_for_display (context->display,
                                                                                 "_NET_WM_ICON_NAME"));
     }
 

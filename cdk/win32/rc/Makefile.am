@@ -1,15 +1,15 @@
 include $(top_srcdir)/Makefile.decl
 
 EXTRA_DIST += \
-	gdk.rc \
-	gdk.rc.in \
+	cdk.rc \
+	cdk.rc.in \
 	ctk.ico
 
 if USE_WIN32
-noinst_DATA = gdk-win32-res.o
+noinst_DATA = cdk-win32-res.o
 endif
 
-gdk-win32-res.o : gdk.rc ctk.ico
-	$(WINDRES) -I $(srcdir) gdk.rc $@
+cdk-win32-res.o : cdk.rc ctk.ico
+	$(WINDRES) -I $(srcdir) cdk.rc $@
 
 -include $(top_srcdir)/git.mk

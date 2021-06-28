@@ -67,22 +67,22 @@
 #include "inspector/window.h"
 #include "ctkcssstylepropertyprivate.h"
 
-#include "gdk/gdk-private.h"
+#include "cdk/cdk-private.h"
 
 #ifdef GDK_WINDOWING_X11
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
-#include "win32/gdkwin32.h"
+#include "win32/cdkwin32.h"
 #endif
 
 #ifdef GDK_WINDOWING_WAYLAND
-#include "wayland/gdkwayland.h"
+#include "wayland/cdkwayland.h"
 #endif
 
 #ifdef GDK_WINDOWING_BROADWAY
-#include "broadway/gdkbroadway.h"
+#include "broadway/cdkbroadway.h"
 #endif
 
 /**
@@ -1315,22 +1315,22 @@ send_delete_event (gpointer data)
 {
   CtkWidget *window = data;
   CtkWindowPrivate *priv = CTK_WINDOW (window)->priv;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
   priv->delete_event_handler = 0;
 
-  gdk_window = _ctk_widget_get_window (window);
-  if (gdk_window)
+  cdk_window = _ctk_widget_get_window (window);
+  if (cdk_window)
     {
       GdkEvent *event;
 
-      event = gdk_event_new (GDK_DELETE);
-      event->any.window = g_object_ref (gdk_window);
+      event = cdk_event_new (GDK_DELETE);
+      event->any.window = g_object_ref (cdk_window);
       event->any.send_event = TRUE;
 
       ctk_main_do_event (event);
 
-      gdk_event_free (event);
+      cdk_event_free (event);
     }
 
   return G_SOURCE_REMOVE;
@@ -1354,7 +1354,7 @@ ctk_window_close (CtkWindow *window)
   if (!_ctk_widget_get_realized (CTK_WIDGET (window)))
     return;
 
-  window->priv->delete_event_handler = gdk_threads_add_idle_full (G_PRIORITY_DEFAULT, send_delete_event, window, NULL);
+  window->priv->delete_event_handler = cdk_threads_add_idle_full (G_PRIORITY_DEFAULT, send_delete_event, window, NULL);
   g_source_set_name_by_id (window->priv->delete_event_handler, "[ctk+] send_delete_event");
 }
 
@@ -1371,7 +1371,7 @@ popover_destroy (CtkWindowPopover *popover)
     ctk_widget_unparent (popover->widget);
 
   if (popover->window)
-    gdk_window_destroy (popover->window);
+    cdk_window_destroy (popover->window);
 
   g_free (popover);
 }
@@ -1418,9 +1418,9 @@ ctk_window_titlebar_action (CtkWindow      *window,
             _ctk_window_toggle_maximized (window);
     }
   else if (g_str_equal (action, "lower"))
-    gdk_window_lower (_ctk_widget_get_window (CTK_WIDGET (window)));
+    cdk_window_lower (_ctk_widget_get_window (CTK_WIDGET (window)));
   else if (g_str_equal (action, "minimize"))
-    gdk_window_iconify (_ctk_widget_get_window (CTK_WIDGET (window)));
+    cdk_window_iconify (_ctk_widget_get_window (CTK_WIDGET (window)));
   else if (g_str_equal (action, "menu"))
     ctk_window_do_popup (window, (GdkEventButton*) event);
   else
@@ -1463,7 +1463,7 @@ multipress_gesture_pressed_cb (CtkGestureMultiPress *gesture,
 
   region = get_active_region_type (window, (GdkEventAny*) event, x, y);
 
-  if (gdk_display_device_is_grabbed (ctk_widget_get_display (widget),
+  if (cdk_display_device_is_grabbed (ctk_widget_get_display (widget),
                                      ctk_gesture_get_device (CTK_GESTURE (gesture))))
     {
       ctk_gesture_set_state (priv->drag_gesture, CTK_EVENT_SEQUENCE_DENIED);
@@ -1493,7 +1493,7 @@ multipress_gesture_pressed_cb (CtkGestureMultiPress *gesture,
   event_widget = ctk_get_event_widget ((GdkEvent *) event);
 
   if (region == CTK_WINDOW_REGION_TITLE)
-    gdk_window_raise (_ctk_widget_get_window (widget));
+    cdk_window_raise (_ctk_widget_get_window (widget));
 
   switch (region)
     {
@@ -1524,13 +1524,13 @@ multipress_gesture_pressed_cb (CtkGestureMultiPress *gesture,
 
           ctk_gesture_set_state (CTK_GESTURE (gesture), CTK_EVENT_SEQUENCE_CLAIMED);
 
-          gdk_event_get_root_coords (event, &x_root, &y_root);
-          gdk_window_begin_resize_drag_for_device (_ctk_widget_get_window (widget),
+          cdk_event_get_root_coords (event, &x_root, &y_root);
+          cdk_window_begin_resize_drag_for_device (_ctk_widget_get_window (widget),
                                                    (GdkWindowEdge) region,
-                                                   gdk_event_get_device ((GdkEvent *) event),
+                                                   cdk_event_get_device ((GdkEvent *) event),
                                                    GDK_BUTTON_PRIMARY,
                                                    x_root, y_root,
-                                                   gdk_event_get_time (event));
+                                                   cdk_event_get_time (event));
 
           ctk_event_controller_reset (CTK_EVENT_CONTROLLER (gesture));
           ctk_event_controller_reset (CTK_EVENT_CONTROLLER (priv->drag_gesture));
@@ -1627,10 +1627,10 @@ drag_gesture_update_cb (CtkGestureDrag *gesture,
       ctk_gesture_set_state (CTK_GESTURE (gesture), CTK_EVENT_SEQUENCE_CLAIMED);
 
       ctk_gesture_drag_get_start_point (gesture, &start_x, &start_y);
-      gdk_window_get_root_coords (_ctk_widget_get_window (CTK_WIDGET (window)),
+      cdk_window_get_root_coords (_ctk_widget_get_window (CTK_WIDGET (window)),
                                   start_x, start_y, &x_root, &y_root);
 
-      gdk_window_begin_move_drag_for_device (_ctk_widget_get_window (CTK_WIDGET (window)),
+      cdk_window_begin_move_drag_for_device (_ctk_widget_get_window (CTK_WIDGET (window)),
                                              ctk_gesture_get_device (CTK_GESTURE (gesture)),
                                              ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (gesture)),
                                              x_root, y_root,
@@ -1672,7 +1672,7 @@ ctk_window_init (CtkWindow *window)
 
   priv->title = NULL;
   priv->wmclass_name = g_strdup (g_get_prgname ());
-  priv->wmclass_class = g_strdup (gdk_get_program_class ());
+  priv->wmclass_class = g_strdup (cdk_get_program_class ());
   priv->wm_role = NULL;
   priv->geometry_info = NULL;
   priv->type = CTK_WINDOW_TOPLEVEL;
@@ -1688,7 +1688,7 @@ ctk_window_init (CtkWindow *window)
   priv->gravity = GDK_GRAVITY_NORTH_WEST;
   priv->decorated = TRUE;
   priv->mnemonic_modifier = GDK_MOD1_MASK;
-  priv->screen = gdk_screen_get_default ();
+  priv->screen = cdk_screen_get_default ();
 
   priv->accept_focus = TRUE;
   priv->focus_on_map = TRUE;
@@ -2357,7 +2357,7 @@ ctk_window_set_title_internal (CtkWindow   *window,
     new_title = "";
 
   if (_ctk_widget_get_realized (widget))
-    gdk_window_set_title (_ctk_widget_get_window (widget), new_title);
+    cdk_window_set_title (_ctk_widget_get_window (widget), new_title);
 
   if (update_titlebar && CTK_IS_HEADER_BAR (priv->title_box))
     ctk_header_bar_set_title (CTK_HEADER_BAR (priv->title_box), new_title);
@@ -2482,7 +2482,7 @@ ctk_window_set_role (CtkWindow   *window,
   priv->wm_role = new_role;
 
   if (_ctk_widget_get_realized (widget))
-    gdk_window_set_role (_ctk_widget_get_window (widget), priv->wm_role);
+    cdk_window_set_role (_ctk_widget_get_window (widget), priv->wm_role);
 
   g_object_notify_by_pspec (G_OBJECT (window), window_props[PROP_ROLE]);
 }
@@ -2522,14 +2522,14 @@ ctk_window_set_startup_id (CtkWindow   *window,
 
   if (_ctk_widget_get_realized (widget))
     {
-      GdkWindow *gdk_window;
+      GdkWindow *cdk_window;
       guint32 timestamp = extract_time_from_startup_id (priv->startup_id);
 
-      gdk_window = _ctk_widget_get_window (widget);
+      cdk_window = _ctk_widget_get_window (widget);
 
 #ifdef GDK_WINDOWING_X11
-      if (timestamp != GDK_CURRENT_TIME && GDK_IS_X11_WINDOW(gdk_window))
-	gdk_x11_window_set_user_time (gdk_window, timestamp);
+      if (timestamp != GDK_CURRENT_TIME && GDK_IS_X11_WINDOW(cdk_window))
+	cdk_x11_window_set_user_time (cdk_window, timestamp);
 #endif
 
       /* Here we differentiate real and "fake" startup notification IDs,
@@ -2539,13 +2539,13 @@ ctk_window_set_startup_id (CtkWindow   *window,
 	ctk_window_present_with_time (window, timestamp);
       else 
         {
-          gdk_window_set_startup_id (gdk_window,
+          cdk_window_set_startup_id (cdk_window,
                                      priv->startup_id);
           
           /* If window is mapped, terminate the startup-notification too */
           if (_ctk_widget_get_mapped (widget) &&
               !disable_startup_notification)
-            gdk_notify_startup_complete_with_id (priv->startup_id);
+            cdk_notify_startup_complete_with_id (priv->startup_id);
         }
     }
 
@@ -2752,7 +2752,7 @@ _ctk_window_notify_keys_changed (CtkWindow *window)
 
   if (!priv->keys_changed_handler)
     {
-      priv->keys_changed_handler = gdk_threads_add_idle (handle_keys_changed, window);
+      priv->keys_changed_handler = cdk_threads_add_idle (handle_keys_changed, window);
       g_source_set_name_by_id (priv->keys_changed_handler, "[ctk+] handle_keys_changed");
     }
 }
@@ -3084,7 +3084,7 @@ ctk_window_set_modal (CtkWindow *window,
   
   /* adjust desired modality state */
   if (_ctk_widget_get_realized (widget))
-    gdk_window_set_modal_hint (_ctk_widget_get_window (widget), priv->modal);
+    cdk_window_set_modal_hint (_ctk_widget_get_window (widget), priv->modal);
 
   if (ctk_widget_get_visible (widget))
     {
@@ -3213,7 +3213,7 @@ ctk_window_transient_parent_realized (CtkWidget *parent,
 				      CtkWidget *window)
 {
   if (_ctk_widget_get_realized (window))
-    gdk_window_set_transient_for (_ctk_widget_get_window (window),
+    cdk_window_set_transient_for (_ctk_widget_get_window (window),
                                   _ctk_widget_get_window (parent));
 }
 
@@ -3222,8 +3222,8 @@ ctk_window_transient_parent_unrealized (CtkWidget *parent,
 					CtkWidget *window)
 {
   if (_ctk_widget_get_realized (window))
-    gdk_property_delete (_ctk_widget_get_window (window),
-			 gdk_atom_intern_static_string ("WM_TRANSIENT_FOR"));
+    cdk_property_delete (_ctk_widget_get_window (window),
+			 cdk_atom_intern_static_string ("WM_TRANSIENT_FOR"));
 }
 
 static void
@@ -3597,7 +3597,7 @@ ctk_window_set_type_hint (CtkWindow           *window,
 			  GdkWindowTypeHint    hint)
 {
   CtkWindowPrivate *priv;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -3608,9 +3608,9 @@ ctk_window_set_type_hint (CtkWindow           *window,
 
   priv->type_hint = hint;
 
-  gdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
-  if (gdk_window)
-    gdk_window_set_type_hint (gdk_window, hint);
+  cdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
+  if (cdk_window)
+    cdk_window_set_type_hint (cdk_window, hint);
 
   g_object_notify_by_pspec (G_OBJECT (window), window_props[PROP_TYPE_HINT]);
 
@@ -3659,7 +3659,7 @@ ctk_window_set_skip_taskbar_hint (CtkWindow *window,
     {
       priv->skips_taskbar = setting;
       if (_ctk_widget_get_realized (CTK_WIDGET (window)))
-        gdk_window_set_skip_taskbar_hint (_ctk_widget_get_window (CTK_WIDGET (window)),
+        cdk_window_set_skip_taskbar_hint (_ctk_widget_get_window (CTK_WIDGET (window)),
                                           priv->skips_taskbar);
       g_object_notify_by_pspec (G_OBJECT (window), window_props[PROP_SKIP_TASKBAR_HINT]);
     }
@@ -3712,7 +3712,7 @@ ctk_window_set_skip_pager_hint (CtkWindow *window,
     {
       priv->skips_pager = setting;
       if (_ctk_widget_get_realized (CTK_WIDGET (window)))
-        gdk_window_set_skip_pager_hint (_ctk_widget_get_window (CTK_WIDGET (window)),
+        cdk_window_set_skip_pager_hint (_ctk_widget_get_window (CTK_WIDGET (window)),
                                         priv->skips_pager);
       g_object_notify_by_pspec (G_OBJECT (window), window_props[PROP_SKIP_PAGER_HINT]);
     }
@@ -3762,7 +3762,7 @@ ctk_window_set_urgency_hint (CtkWindow *window,
     {
       priv->urgent = setting;
       if (_ctk_widget_get_realized (CTK_WIDGET (window)))
-        gdk_window_set_urgency_hint (_ctk_widget_get_window (CTK_WIDGET (window)),
+        cdk_window_set_urgency_hint (_ctk_widget_get_window (CTK_WIDGET (window)),
 				     priv->urgent);
       g_object_notify_by_pspec (G_OBJECT (window), window_props[PROP_URGENCY_HINT]);
     }
@@ -3812,7 +3812,7 @@ ctk_window_set_accept_focus (CtkWindow *window,
     {
       priv->accept_focus = setting;
       if (_ctk_widget_get_realized (CTK_WIDGET (window)))
-        gdk_window_set_accept_focus (_ctk_widget_get_window (CTK_WIDGET (window)),
+        cdk_window_set_accept_focus (_ctk_widget_get_window (CTK_WIDGET (window)),
 				     priv->accept_focus);
       g_object_notify_by_pspec (G_OBJECT (window), window_props[PROP_ACCEPT_FOCUS]);
     }
@@ -3863,7 +3863,7 @@ ctk_window_set_focus_on_map (CtkWindow *window,
     {
       priv->focus_on_map = setting;
       if (_ctk_widget_get_realized (CTK_WIDGET (window)))
-        gdk_window_set_focus_on_map (_ctk_widget_get_window (CTK_WIDGET (window)),
+        cdk_window_set_focus_on_map (_ctk_widget_get_window (CTK_WIDGET (window)),
 				     priv->focus_on_map);
       g_object_notify_by_pspec (G_OBJECT (window), window_props[PROP_FOCUS_ON_MAP]);
     }
@@ -3946,14 +3946,14 @@ static void
 ctk_window_apply_hide_titlebar_when_maximized (CtkWindow *window)
 {
 #ifdef GDK_WINDOWING_X11
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   gboolean setting;
 
   setting = window->priv->hide_titlebar_when_maximized;
-  gdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
+  cdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (GDK_IS_X11_WINDOW (gdk_window))
-    gdk_x11_window_set_hide_titlebar_when_maximized (gdk_window, setting);
+  if (GDK_IS_X11_WINDOW (cdk_window))
+    cdk_x11_window_set_hide_titlebar_when_maximized (cdk_window, setting);
 #endif
 }
 
@@ -4108,19 +4108,19 @@ ctk_window_supports_client_shadow (CtkWindow *window)
   GdkVisual *visual;
 
   screen = _ctk_window_get_screen (window);
-  display = gdk_screen_get_display (screen);
+  display = cdk_screen_get_display (screen);
 
 #ifdef GDK_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY (display))
     {
-      if (!gdk_screen_is_composited (screen))
+      if (!cdk_screen_is_composited (screen))
         return FALSE;
 
-      if (!gdk_x11_screen_supports_net_wm_hint (screen, gdk_atom_intern_static_string ("_CTK_FRAME_EXTENTS")))
+      if (!cdk_x11_screen_supports_net_wm_hint (screen, cdk_atom_intern_static_string ("_CTK_FRAME_EXTENTS")))
         return FALSE;
 
       /* We need a visual with alpha */
-      visual = gdk_screen_get_rgba_visual (screen);
+      visual = cdk_screen_get_rgba_visual (screen);
       if (!visual)
         return FALSE;
     }
@@ -4129,11 +4129,11 @@ ctk_window_supports_client_shadow (CtkWindow *window)
 #ifdef GDK_WINDOWING_WIN32
   if (GDK_IS_WIN32_DISPLAY (display))
     {
-      if (!gdk_screen_is_composited (screen))
+      if (!cdk_screen_is_composited (screen))
         return FALSE;
 
       /* We need a visual with alpha */
-      visual = gdk_screen_get_rgba_visual (screen);
+      visual = cdk_screen_get_rgba_visual (screen);
       if (!visual)
         return FALSE;
     }
@@ -4152,7 +4152,7 @@ ctk_window_enable_csd (CtkWindow *window)
   /* We need a visual with alpha for client shadows */
   if (priv->use_client_shadow)
     {
-      visual = gdk_screen_get_rgba_visual (ctk_widget_get_screen (widget));
+      visual = cdk_screen_get_rgba_visual (ctk_widget_get_screen (widget));
       if (visual != NULL)
         ctk_widget_set_visual (widget, visual);
 
@@ -4306,7 +4306,7 @@ ctk_window_set_decorated (CtkWindow *window,
                           gboolean   setting)
 {
   CtkWindowPrivate *priv;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -4319,18 +4319,18 @@ ctk_window_set_decorated (CtkWindow *window,
 
   priv->decorated = setting;
 
-  gdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
-  if (gdk_window)
+  cdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
+  if (cdk_window)
     {
       if (priv->decorated)
         {
           if (priv->client_decorated)
-            gdk_window_set_decorations (gdk_window, 0);
+            cdk_window_set_decorations (cdk_window, 0);
           else
-            gdk_window_set_decorations (gdk_window, GDK_DECOR_ALL);
+            cdk_window_set_decorations (cdk_window, GDK_DECOR_ALL);
         }
       else
-        gdk_window_set_decorations (gdk_window, 0);
+        cdk_window_set_decorations (cdk_window, 0);
     }
 
   update_window_buttons (window);
@@ -4379,7 +4379,7 @@ ctk_window_set_deletable (CtkWindow *window,
 			  gboolean   setting)
 {
   CtkWindowPrivate *priv;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -4392,14 +4392,14 @@ ctk_window_set_deletable (CtkWindow *window,
 
   priv->deletable = setting;
 
-  gdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
-  if (gdk_window)
+  cdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
+  if (cdk_window)
     {
       if (priv->deletable)
-        gdk_window_set_functions (gdk_window,
+        cdk_window_set_functions (cdk_window,
 				  GDK_FUNC_ALL);
       else
-        gdk_window_set_functions (gdk_window,
+        cdk_window_set_functions (cdk_window,
 				  GDK_FUNC_ALL | GDK_FUNC_CLOSE);
     }
 
@@ -4506,13 +4506,13 @@ ctk_window_realize_icon (CtkWindow *window)
   CtkWindowPrivate *priv = window->priv;
   CtkWidget *widget;
   CtkWindowIconInfo *info;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   GList *icon_list;
 
   widget = CTK_WIDGET (window);
-  gdk_window = _ctk_widget_get_window (widget);
+  cdk_window = _ctk_widget_get_window (widget);
 
-  g_return_if_fail (gdk_window != NULL);
+  g_return_if_fail (cdk_window != NULL);
 
   /* no point setting an icon on override-redirect */
   if (priv->type == CTK_WINDOW_POPUP)
@@ -4565,7 +4565,7 @@ ctk_window_realize_icon (CtkWindow *window)
 
   info->realized = TRUE;
 
-  gdk_window_set_icon_list (gdk_window, icon_list);
+  cdk_window_set_icon_list (cdk_window, icon_list);
   if (CTK_IS_HEADER_BAR (priv->title_box))
     _ctk_header_bar_update_window_icon (CTK_HEADER_BAR (priv->title_box), window);
 
@@ -4587,8 +4587,8 @@ icon_from_list (GList *list,
   for (l = list; l; l = l->next)
     {
       pixbuf = list->data;
-      if (gdk_pixbuf_get_width (pixbuf) <= size &&
-          gdk_pixbuf_get_height (pixbuf) <= size)
+      if (cdk_pixbuf_get_width (pixbuf) <= size &&
+          cdk_pixbuf_get_height (pixbuf) <= size)
         {
           best = g_object_ref (pixbuf);
           break;
@@ -4596,7 +4596,7 @@ icon_from_list (GList *list,
     }
 
   if (best == NULL)
-    best = gdk_pixbuf_scale_simple (GDK_PIXBUF (list->data), size, size, GDK_INTERP_BILINEAR);
+    best = cdk_pixbuf_scale_simple (GDK_PIXBUF (list->data), size, size, GDK_INTERP_BILINEAR);
 
   return best;
 }
@@ -4902,7 +4902,7 @@ load_pixbuf_verbosely (const char *filename,
   GError *local_err = NULL;
   GdkPixbuf *pixbuf;
 
-  pixbuf = gdk_pixbuf_new_from_file (filename, &local_err);
+  pixbuf = cdk_pixbuf_new_from_file (filename, &local_err);
 
   if (!pixbuf)
     {
@@ -5522,8 +5522,8 @@ ctk_window_get_size (CtkWindow *window,
 
   if (_ctk_widget_get_mapped (CTK_WIDGET (window)))
     {
-      w = gdk_window_get_width (_ctk_widget_get_window (CTK_WIDGET (window)));
-      h = gdk_window_get_height (_ctk_widget_get_window (CTK_WIDGET (window)));
+      w = cdk_window_get_width (_ctk_widget_get_window (CTK_WIDGET (window)));
+      h = cdk_window_get_height (_ctk_widget_get_window (CTK_WIDGET (window)));
     }
   else
     {
@@ -5659,8 +5659,8 @@ ctk_window_translate_csd_pos (CtkWindow *window,
  * the bottom-right corner of the window border will be placed at that
  * reference point. So, to place a window in the bottom right corner
  * you would first set gravity to south east, then write:
- * `ctk_window_move (window, gdk_screen_width () - window_width,
- * gdk_screen_height () - window_height)` (note that this
+ * `ctk_window_move (window, cdk_screen_width () - window_width,
+ * cdk_screen_height () - window_height)` (note that this
  * example does not take multi-head scenarios into account).
  *
  * The [Extended Window Manager Hints Specification](http://www.freedesktop.org/Standards/wm-spec)
@@ -5716,7 +5716,7 @@ ctk_window_move (CtkWindow *window,
        * the same as the position being changed by the window
        * manager.
        */
-      gdk_window_move (_ctk_widget_get_window (CTK_WIDGET (window)), x, y);
+      cdk_window_move (_ctk_widget_get_window (CTK_WIDGET (window)), x, y);
     }
   else
     {
@@ -5780,13 +5780,13 @@ ctk_window_get_position (CtkWindow *window,
 {
   CtkWindowPrivate *priv;
   CtkWidget *widget;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
   priv = window->priv;
   widget = CTK_WIDGET (window);
-  gdk_window = _ctk_widget_get_window (widget);
+  cdk_window = _ctk_widget_get_window (widget);
 
   if (priv->gravity == GDK_GRAVITY_STATIC)
     {
@@ -5794,12 +5794,12 @@ ctk_window_get_position (CtkWindow *window,
         {
           /* This does a server round-trip, which is sort of wrong;
            * but a server round-trip is inevitable for
-           * gdk_window_get_frame_extents() in the usual
+           * cdk_window_get_frame_extents() in the usual
            * NorthWestGravity case below, so not sure what else to
            * do. We should likely be consistent about whether we get
            * the client-side info or the server-side info.
            */
-          gdk_window_get_origin (gdk_window, root_x, root_y);
+          cdk_window_get_origin (cdk_window, root_x, root_y);
         }
       else
         {
@@ -5823,7 +5823,7 @@ ctk_window_get_position (CtkWindow *window,
       
       if (_ctk_widget_get_mapped (widget))
         {
-          gdk_window_get_frame_extents (gdk_window, &frame_extents);
+          cdk_window_get_frame_extents (cdk_window, &frame_extents);
           x = frame_extents.x;
           y = frame_extents.y;
           ctk_window_get_size (window, &w, &h);
@@ -6021,7 +6021,7 @@ ctk_window_finalize (GObject *object)
   G_OBJECT_CLASS (ctk_window_parent_class)->finalize (object);
 }
 
-/* copied from gdkwindow-x11.c */
+/* copied from cdkwindow-x11.c */
 static const gchar *
 get_default_title (void)
 {
@@ -6120,8 +6120,8 @@ ctk_window_should_use_csd (CtkWindow *window)
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
-      GdkDisplay *gdk_display = ctk_widget_get_display (CTK_WIDGET (window));
-      return !gdk_wayland_display_prefers_ssd (gdk_display);
+      GdkDisplay *cdk_display = ctk_widget_get_display (CTK_WIDGET (window));
+      return !cdk_wayland_display_prefers_ssd (cdk_display);
     }
 #endif
 
@@ -6235,7 +6235,7 @@ popover_unmap (CtkWidget        *widget,
 
   if (popover->window)
     {
-      gdk_window_hide (popover->window);
+      cdk_window_hide (popover->window);
       ctk_widget_unmap (popover->widget);
     }
 }
@@ -6246,7 +6246,7 @@ popover_map (CtkWidget        *widget,
 {
   if (popover->window && ctk_widget_get_visible (popover->widget))
     {
-      gdk_window_show_unraised (popover->window);
+      cdk_window_show_unraised (popover->window);
       ctk_widget_map (popover->widget);
       popover->unmap_id = g_signal_connect (popover->widget, "unmap",
                                             G_CALLBACK (popover_unmap), popover);
@@ -6259,7 +6259,7 @@ ctk_window_map (CtkWidget *widget)
   CtkWidget *child;
   CtkWindow *window = CTK_WINDOW (widget);
   CtkWindowPrivate *priv = window->priv;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   GList *link;
   GdkDisplay *display;
 
@@ -6270,7 +6270,7 @@ ctk_window_map (CtkWidget *widget)
     }
 
   display = ctk_widget_get_display (widget);
-  if (priv->initial_fullscreen_monitor > gdk_display_get_n_monitors (display))
+  if (priv->initial_fullscreen_monitor > cdk_display_get_n_monitors (display))
     priv->initial_fullscreen_monitor = -1;
 
   ctk_widget_set_mapped (widget, TRUE);
@@ -6284,37 +6284,37 @@ ctk_window_map (CtkWidget *widget)
       ctk_widget_get_child_visible (priv->title_box))
     ctk_widget_map (priv->title_box);
 
-  gdk_window = _ctk_widget_get_window (widget);
+  cdk_window = _ctk_widget_get_window (widget);
 
   if (priv->maximize_initially)
-    gdk_window_maximize (gdk_window);
+    cdk_window_maximize (cdk_window);
   else
-    gdk_window_unmaximize (gdk_window);
+    cdk_window_unmaximize (cdk_window);
 
   if (priv->stick_initially)
-    gdk_window_stick (gdk_window);
+    cdk_window_stick (cdk_window);
   else
-    gdk_window_unstick (gdk_window);
+    cdk_window_unstick (cdk_window);
 
   if (priv->iconify_initially)
-    gdk_window_iconify (gdk_window);
+    cdk_window_iconify (cdk_window);
   else
-    gdk_window_deiconify (gdk_window);
+    cdk_window_deiconify (cdk_window);
 
   if (priv->fullscreen_initially)
     {
       if (priv->initial_fullscreen_monitor < 0)
-        gdk_window_fullscreen (gdk_window);
+        cdk_window_fullscreen (cdk_window);
       else
-        gdk_window_fullscreen_on_monitor (gdk_window, 
+        cdk_window_fullscreen_on_monitor (cdk_window, 
                                           priv->initial_fullscreen_monitor);
     }
   else
-    gdk_window_unfullscreen (gdk_window);
+    cdk_window_unfullscreen (cdk_window);
 
-  gdk_window_set_keep_above (gdk_window, priv->above_initially);
+  cdk_window_set_keep_above (cdk_window, priv->above_initially);
 
-  gdk_window_set_keep_below (gdk_window, priv->below_initially);
+  cdk_window_set_keep_below (cdk_window, priv->below_initially);
 
   if (priv->type == CTK_WINDOW_TOPLEVEL)
     {
@@ -6326,7 +6326,7 @@ ctk_window_map (CtkWidget *widget)
   priv->need_default_size = FALSE;
   priv->need_default_position = FALSE;
 
-  gdk_window_show (gdk_window);
+  cdk_window_show (cdk_window);
 
   if (!disable_startup_notification &&
       !CTK_IS_OFFSCREEN_WINDOW (window) &&
@@ -6337,14 +6337,14 @@ ctk_window_map (CtkWidget *widget)
         {
           /* Make sure we have a "real" id */
           if (!startup_id_is_fake (priv->startup_id))
-            gdk_notify_startup_complete_with_id (priv->startup_id);
+            cdk_notify_startup_complete_with_id (priv->startup_id);
 
           g_free (priv->startup_id);
           priv->startup_id = NULL;
         }
       else
         {
-          gdk_notify_startup_complete ();
+          cdk_notify_startup_complete ();
         }
     }
 
@@ -6388,7 +6388,7 @@ ctk_window_map_event (CtkWidget   *widget,
        * the window being unmapped. more details can be found in:
        *   http://bugzilla.gnome.org/show_bug.cgi?id=316180
        */
-      gdk_window_hide (_ctk_widget_get_window (widget));
+      cdk_window_hide (_ctk_widget_get_window (widget));
     }
   return FALSE;
 }
@@ -6400,7 +6400,7 @@ ctk_window_unmap (CtkWidget *widget)
   CtkWindowPrivate *priv = window->priv;
   CtkWidget *child;
   CtkWindowGeometryInfo *info;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   GdkWindowState state;
   GList *link;
 
@@ -6419,15 +6419,15 @@ ctk_window_unmap (CtkWidget *widget)
       popover_unmap (popover->widget, popover);
     }
 
-  gdk_window = _ctk_widget_get_window (widget);
+  cdk_window = _ctk_widget_get_window (widget);
 
   ctk_widget_set_mapped (widget, FALSE);
-  gdk_window_withdraw (gdk_window);
+  cdk_window_withdraw (cdk_window);
 
   while (priv->configure_request_count > 0)
     {
       priv->configure_request_count--;
-      GDK_PRIVATE_CALL (gdk_window_thaw_toplevel_updates) (_ctk_widget_get_window (widget));
+      GDK_PRIVATE_CALL (cdk_window_thaw_toplevel_updates) (_ctk_widget_get_window (widget));
     }
   priv->configure_notify_received = FALSE;
 
@@ -6446,7 +6446,7 @@ ctk_window_unmap (CtkWidget *widget)
       info->position_constraints_changed = FALSE;
     }
 
-  state = gdk_window_get_state (gdk_window);
+  state = cdk_window_get_state (cdk_window);
   priv->iconify_initially = (state & GDK_WINDOW_STATE_ICONIFIED) != 0;
   priv->maximize_initially = (state & GDK_WINDOW_STATE_MAXIMIZED) != 0;
   priv->stick_initially = (state & GDK_WINDOW_STATE_STICKY) != 0;
@@ -6510,28 +6510,28 @@ ctk_window_guess_default_size (CtkWindow *window,
 {
   CtkWidget *widget;
   GdkDisplay *display;
-  GdkWindow *gdkwindow;
+  GdkWindow *cdkwindow;
   GdkMonitor *monitor;
   GdkRectangle workarea;
   int minimum, natural;
 
   widget = CTK_WIDGET (window);
   display = ctk_widget_get_display (widget);
-  gdkwindow = _ctk_widget_get_window (widget);
+  cdkwindow = _ctk_widget_get_window (widget);
 
   if (window->priv->fixate_size)
     {
-      g_assert (gdkwindow);
+      g_assert (cdkwindow);
       ctk_window_get_remembered_size (window, width, height);
       return;
     }
 
-  if (gdkwindow)
-    monitor = gdk_display_get_monitor_at_window (display, gdkwindow);
+  if (cdkwindow)
+    monitor = cdk_display_get_monitor_at_window (display, cdkwindow);
   else
-    monitor = gdk_display_get_monitor (display, 0);
+    monitor = cdk_display_get_monitor (display, 0);
 
-  gdk_monitor_get_workarea (monitor, &workarea);
+  cdk_monitor_get_workarea (monitor, &workarea);
 
   if (window->priv->unlimited_guessed_size_x)
     *width = INT_MAX;
@@ -6567,16 +6567,16 @@ ctk_window_get_remembered_size (CtkWindow *window,
                                 int       *height)
 {
   CtkWindowGeometryInfo *info;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
   *width = 0;
   *height = 0;
 
-  gdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
-  if (gdk_window)
+  cdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
+  if (cdk_window)
     {
-      *width = gdk_window_get_width (gdk_window);
-      *height = gdk_window_get_height (gdk_window);
+      *width = cdk_window_get_width (cdk_window);
+      *height = cdk_window_get_height (cdk_window);
       return;
     }
 
@@ -6718,7 +6718,7 @@ popover_realize (CtkWidget        *widget,
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
     {
       attributes.window_type = GDK_WINDOW_SUBSURFACE;
-      parent_window = gdk_screen_get_root_window (_ctk_window_get_screen (window));
+      parent_window = cdk_screen_get_root_window (_ctk_window_get_screen (window));
     }
   else
 #endif
@@ -6737,12 +6737,12 @@ popover_realize (CtkWidget        *widget,
     GDK_EXPOSURE_MASK;
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  popover->window = gdk_window_new (parent_window, &attributes, attributes_mask);
+  popover->window = cdk_window_new (parent_window, &attributes, attributes_mask);
   ctk_widget_register_window (CTK_WIDGET (window), popover->window);
 
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
-    gdk_window_set_transient_for (popover->window,
+    cdk_window_set_transient_for (popover->window,
                                   _ctk_widget_get_window (CTK_WIDGET (window)));
 #endif
 
@@ -6868,7 +6868,7 @@ update_corner_windows (CtkWindow *window,
   /* North-West */
   if (resize_n && resize_w)
     {
-      gdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST],
+      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST],
                               window_border.left - border.left, window_border.top - border.top,
                               border.left + handle_h, border.top + handle_v);
 
@@ -6882,22 +6882,22 @@ update_corner_windows (CtkWindow *window,
       rect.width = handle_h;
       rect.height = handle_v;
       cairo_region_subtract_rectangle (region, &rect);
-      gdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST],
+      cdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST],
                                        region, 0, 0);
       cairo_region_destroy (region);
 
-      gdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST]);
+      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST]);
     }
   else
     {
-      gdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST]);
+      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST]);
     }
 
 
   /* North-East */
   if (resize_n && resize_e)
     {
-      gdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST],
+      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST],
                               window_border.left + width - handle_h, window_border.top - border.top,
                               border.right + handle_h, border.top + handle_v);
 
@@ -6911,21 +6911,21 @@ update_corner_windows (CtkWindow *window,
       rect.width = handle_h;
       rect.height = handle_v;
       cairo_region_subtract_rectangle (region, &rect);
-      gdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST],
+      cdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST],
                                        region, 0, 0);
       cairo_region_destroy (region);
 
-      gdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST]);
+      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST]);
     }
   else
     {
-      gdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST]);
+      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST]);
     }
 
   /* South-West */
   if (resize_s && resize_w)
     {
-      gdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST],
+      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST],
                               window_border.left - border.left, window_border.top + height - handle_v,
                               border.left + handle_h, border.bottom + handle_v);
 
@@ -6939,21 +6939,21 @@ update_corner_windows (CtkWindow *window,
       rect.width = handle_h;
       rect.height = handle_v;
       cairo_region_subtract_rectangle (region, &rect);
-      gdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST],
+      cdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST],
                                        region, 0, 0);
       cairo_region_destroy (region);
 
-      gdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST]);
+      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST]);
     }
   else
     {
-      gdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST]);
+      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST]);
     }
 
   /* South-East */
   if (resize_s && resize_e)
     {
-      gdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST],
+      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST],
                               window_border.left + width - handle_h, window_border.top + height - handle_v,
                               border.right + handle_h, border.bottom + handle_v);
 
@@ -6967,15 +6967,15 @@ update_corner_windows (CtkWindow *window,
       rect.width = handle_h;
       rect.height = handle_v;
       cairo_region_subtract_rectangle (region, &rect);
-      gdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST],
+      cdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST],
                                        region, 0, 0);
       cairo_region_destroy (region);
 
-      gdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST]);
+      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST]);
     }
   else
     {
-      gdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST]);
+      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST]);
     }
 }
 
@@ -7144,57 +7144,57 @@ update_border_windows (CtkWindow *window)
   /* North */
   if (resize_n)
     {
-      gdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_NORTH],
+      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_NORTH],
                               x, window_border.top - border.top,
                               w, border.top);
 
-      gdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_NORTH]);
+      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_NORTH]);
     }
   else
     {
-      gdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_NORTH]);
+      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_NORTH]);
     }
 
   /* South */
   if (resize_s)
     {
-      gdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_SOUTH],
+      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_SOUTH],
                               x, window_border.top + height,
                               w, border.bottom);
 
-      gdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_SOUTH]);
+      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_SOUTH]);
     }
   else
     {
-      gdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_SOUTH]);
+      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_SOUTH]);
     }
 
   /* East */
   if (resize_e)
     {
-      gdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_EAST],
+      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_EAST],
                               window_border.left + width, y,
                               border.right, h);
 
-      gdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_EAST]);
+      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_EAST]);
     }
   else
     {
-      gdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_EAST]);
+      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_EAST]);
     }
 
   /* West */
   if (resize_w)
     {
-      gdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_WEST],
+      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_WEST],
                               window_border.left - border.left, y,
                               border.left, h);
 
-      gdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_WEST]);
+      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_WEST]);
     }
   else
     {
-      gdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_WEST]);
+      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_WEST]);
     }
 
   update_corner_windows (window, border, window_border, width, height, handle_h, handle_v,
@@ -7221,12 +7221,12 @@ static void
 update_shadow_width (CtkWindow *window,
                      CtkBorder *border)
 {
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
-  gdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
+  cdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (gdk_window)
-    gdk_window_set_shadow_width (gdk_window,
+  if (cdk_window)
+    cdk_window_set_shadow_width (cdk_window,
                                  border->left,
                                  border->right,
                                  border->top,
@@ -7324,7 +7324,7 @@ update_opaque_region (CtkWindow           *window,
       opaque_region = NULL;
     }
 
-  gdk_window_set_opaque_region (_ctk_widget_get_window (widget), opaque_region);
+  cdk_window_set_opaque_region (_ctk_widget_get_window (widget), opaque_region);
 
   cairo_region_destroy (opaque_region);
 }
@@ -7354,7 +7354,7 @@ ctk_window_realize (CtkWidget *widget)
   CtkAllocation child_allocation;
   CtkWindow *window;
   GdkWindow *parent_window;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   GdkWindowAttr attributes;
   CtkBorder window_border;
   gint attributes_mask;
@@ -7387,10 +7387,10 @@ ctk_window_realize (CtkWidget *widget)
 
       attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-      gdk_window = gdk_window_new (ctk_widget_get_parent_window (widget),
+      cdk_window = cdk_window_new (ctk_widget_get_parent_window (widget),
 				   &attributes, attributes_mask);
-      ctk_widget_set_window (widget, gdk_window);
-      ctk_widget_register_window (widget, gdk_window);
+      ctk_widget_set_window (widget, cdk_window);
+      ctk_widget_register_window (widget, cdk_window);
       ctk_widget_set_realized (widget, TRUE);
 
       link = priv->popovers;
@@ -7430,9 +7430,9 @@ ctk_window_realize (CtkWidget *widget)
 
   if (priv->hardcoded_window)
     {
-      gdk_window = priv->hardcoded_window;
+      cdk_window = priv->hardcoded_window;
       _ctk_widget_get_allocation (widget, &allocation);
-      gdk_window_resize (gdk_window, allocation.width, allocation.height);
+      cdk_window_resize (cdk_window, allocation.width, allocation.height);
     }
   else
     {
@@ -7462,7 +7462,7 @@ ctk_window_realize (CtkWidget *widget)
       attributes.visual = ctk_widget_get_visual (widget);
 
       attributes_mask = 0;
-      parent_window = gdk_screen_get_root_window (_ctk_window_get_screen (window));
+      parent_window = cdk_screen_get_root_window (_ctk_window_get_screen (window));
 
       _ctk_widget_get_allocation (widget, &allocation);
       attributes.width = allocation.width;
@@ -7488,11 +7488,11 @@ ctk_window_realize (CtkWidget *widget)
       attributes_mask |= (priv->title ? GDK_WA_TITLE : 0);
       attributes_mask |= (priv->wmclass_name ? GDK_WA_WMCLASS : 0);
 
-      gdk_window = gdk_window_new (parent_window, &attributes, attributes_mask);
+      cdk_window = cdk_window_new (parent_window, &attributes, attributes_mask);
     }
 
-  ctk_widget_set_window (widget, gdk_window);
-  ctk_widget_register_window (widget, gdk_window);
+  ctk_widget_set_window (widget, cdk_window);
+  ctk_widget_register_window (widget, cdk_window);
   ctk_widget_set_realized (widget, TRUE);
 
   attributes.x = allocation.x;
@@ -7524,79 +7524,79 @@ ctk_window_realize (CtkWidget *widget)
 
       for (i = 0; i < 8; i++)
         {
-          attributes.cursor = gdk_cursor_new_from_name (ctk_widget_get_display (widget), cursor[i]);
-          priv->border_window[i] = gdk_window_new (gdk_window, &attributes, attributes_mask);
+          attributes.cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), cursor[i]);
+          priv->border_window[i] = cdk_window_new (cdk_window, &attributes, attributes_mask);
           g_clear_object (&attributes.cursor);
 
-          gdk_window_show (priv->border_window[i]);
+          cdk_window_show (priv->border_window[i]);
           ctk_widget_register_window (widget, priv->border_window[i]);
         }
     }
 
   if (priv->transient_parent &&
       _ctk_widget_get_realized (CTK_WIDGET (priv->transient_parent)))
-    gdk_window_set_transient_for (gdk_window,
+    cdk_window_set_transient_for (cdk_window,
                                   _ctk_widget_get_window (CTK_WIDGET (priv->transient_parent)));
 
   if (priv->wm_role)
-    gdk_window_set_role (gdk_window, priv->wm_role);
+    cdk_window_set_role (cdk_window, priv->wm_role);
 
   if (!priv->decorated || priv->client_decorated)
-    gdk_window_set_decorations (gdk_window, 0);
+    cdk_window_set_decorations (cdk_window, 0);
 
 #ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_WINDOW (gdk_window))
+  if (GDK_IS_WAYLAND_WINDOW (cdk_window))
     {
       if (priv->client_decorated)
-        gdk_wayland_window_announce_csd (gdk_window);
+        cdk_wayland_window_announce_csd (cdk_window);
       else
-        gdk_wayland_window_announce_ssd (gdk_window);
+        cdk_wayland_window_announce_ssd (cdk_window);
     }
 #endif
 
   if (!priv->deletable)
-    gdk_window_set_functions (gdk_window, GDK_FUNC_ALL | GDK_FUNC_CLOSE);
+    cdk_window_set_functions (cdk_window, GDK_FUNC_ALL | GDK_FUNC_CLOSE);
 
   if (ctk_window_get_skip_pager_hint (window))
-    gdk_window_set_skip_pager_hint (gdk_window, TRUE);
+    cdk_window_set_skip_pager_hint (cdk_window, TRUE);
 
   if (ctk_window_get_skip_taskbar_hint (window))
-    gdk_window_set_skip_taskbar_hint (gdk_window, TRUE);
+    cdk_window_set_skip_taskbar_hint (cdk_window, TRUE);
 
   if (ctk_window_get_accept_focus (window))
-    gdk_window_set_accept_focus (gdk_window, TRUE);
+    cdk_window_set_accept_focus (cdk_window, TRUE);
   else
-    gdk_window_set_accept_focus (gdk_window, FALSE);
+    cdk_window_set_accept_focus (cdk_window, FALSE);
 
   if (ctk_window_get_focus_on_map (window))
-    gdk_window_set_focus_on_map (gdk_window, TRUE);
+    cdk_window_set_focus_on_map (cdk_window, TRUE);
   else
-    gdk_window_set_focus_on_map (gdk_window, FALSE);
+    cdk_window_set_focus_on_map (cdk_window, FALSE);
 
   if (priv->modal)
-    gdk_window_set_modal_hint (gdk_window, TRUE);
+    cdk_window_set_modal_hint (cdk_window, TRUE);
   else
-    gdk_window_set_modal_hint (gdk_window, FALSE);
+    cdk_window_set_modal_hint (cdk_window, FALSE);
 
   if (priv->startup_id)
     {
 #ifdef GDK_WINDOWING_X11
-      if (GDK_IS_X11_WINDOW (gdk_window))
+      if (GDK_IS_X11_WINDOW (cdk_window))
         {
           guint32 timestamp = extract_time_from_startup_id (priv->startup_id);
           if (timestamp != GDK_CURRENT_TIME)
-            gdk_x11_window_set_user_time (gdk_window, timestamp);
+            cdk_x11_window_set_user_time (cdk_window, timestamp);
         }
 #endif
       if (!startup_id_is_fake (priv->startup_id))
-        gdk_window_set_startup_id (gdk_window, priv->startup_id);
+        cdk_window_set_startup_id (cdk_window, priv->startup_id);
     }
 
 #ifdef GDK_WINDOWING_X11
   if (priv->initial_timestamp != GDK_CURRENT_TIME)
     {
-      if (GDK_IS_X11_WINDOW (gdk_window))
-        gdk_x11_window_set_user_time (gdk_window, priv->initial_timestamp);
+      if (GDK_IS_X11_WINDOW (cdk_window))
+        cdk_x11_window_set_user_time (cdk_window, priv->initial_timestamp);
     }
 #endif
 
@@ -7634,12 +7634,12 @@ popover_unrealize (CtkWidget        *widget,
 {
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
-    gdk_window_set_transient_for (popover->window, NULL);
+    cdk_window_set_transient_for (popover->window, NULL);
 #endif
 
   ctk_widget_unregister_window (CTK_WIDGET (window), popover->window);
   ctk_widget_unrealize (popover->widget);
-  gdk_window_destroy (popover->window);
+  cdk_window_destroy (popover->window);
   popover->window = NULL;
 }
 
@@ -7686,7 +7686,7 @@ ctk_window_unrealize (CtkWidget *widget)
       for (i = 0; i < 8; i++)
         {
           ctk_widget_unregister_window (widget, priv->border_window[i]);
-          gdk_window_destroy (priv->border_window[i]);
+          cdk_window_destroy (priv->border_window[i]);
           priv->border_window[i] = NULL;
         }
     }
@@ -7768,7 +7768,7 @@ popover_size_allocate (CtkWidget        *widget,
     ctk_popover_update_position (CTK_POPOVER (popover->widget));
 
   popover_get_rect (popover, window, &rect);
-  gdk_window_move_resize (popover->window, rect.x, rect.y,
+  cdk_window_move_resize (popover->window, rect.x, rect.y,
                           rect.width, rect.height);
   rect.x = rect.y = 0;
   ctk_widget_size_allocate (widget, &rect);
@@ -7776,11 +7776,11 @@ popover_size_allocate (CtkWidget        *widget,
   if (ctk_widget_is_drawable (CTK_WIDGET (window)) &&
       ctk_widget_is_visible (widget))
     {
-      if (!gdk_window_is_visible (popover->window))
-        gdk_window_show_unraised (popover->window);
+      if (!cdk_window_is_visible (popover->window))
+        cdk_window_show_unraised (popover->window);
     }
-  else if (gdk_window_is_visible (popover->window))
-    gdk_window_hide (popover->window);
+  else if (cdk_window_is_visible (popover->window))
+    cdk_window_hide (popover->window);
 }
 
 /* _ctk_window_set_allocation:
@@ -7867,7 +7867,7 @@ _ctk_window_set_allocation (CtkWindow           *window,
 
   if (!_ctk_widget_is_toplevel (widget) && _ctk_widget_get_realized (widget))
     {
-      gdk_window_move_resize (_ctk_widget_get_window (widget),
+      cdk_window_move_resize (_ctk_widget_get_window (widget),
                               allocation->x, allocation->y,
                               allocation->width, allocation->height);
     }
@@ -7902,7 +7902,7 @@ ctk_window_restack_popovers (CtkWindow *window)
       link = link->next;
 
       if (popover->window)
-        gdk_window_raise (popover->window);
+        cdk_window_raise (popover->window);
     }
 }
 
@@ -7971,7 +7971,7 @@ ctk_window_configure_event (CtkWidget         *widget,
     {
       priv->configure_request_count -= 1;
 
-      GDK_PRIVATE_CALL (gdk_window_thaw_toplevel_updates) (_ctk_widget_get_window (widget));
+      GDK_PRIVATE_CALL (cdk_window_thaw_toplevel_updates) (_ctk_widget_get_window (widget));
     }
 
   /*
@@ -8313,7 +8313,7 @@ controller_handle_wm_event (CtkGesture     *gesture,
   GdkEventSequence *seq;
   gboolean retval;
 
-  seq = gdk_event_get_event_sequence (event);
+  seq = cdk_event_get_event_sequence (event);
   retval = ctk_event_controller_handle_event (CTK_EVENT_CONTROLLER (gesture),
                                               event);
 
@@ -8417,10 +8417,10 @@ do_focus_change (CtkWidget *widget,
   g_object_ref (widget);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  device_manager = gdk_display_get_device_manager (ctk_widget_get_display (widget));
-  devices = gdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
-  devices = g_list_concat (devices, gdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_SLAVE));
-  devices = g_list_concat (devices, gdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_FLOATING));
+  device_manager = cdk_display_get_device_manager (ctk_widget_get_display (widget));
+  devices = cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_SLAVE));
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_FLOATING));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   for (d = devices; d; d = d->next)
@@ -8428,29 +8428,29 @@ do_focus_change (CtkWidget *widget,
       GdkDevice *dev = d->data;
       GdkEvent *fevent;
 
-      if (gdk_device_get_source (dev) != GDK_SOURCE_KEYBOARD)
+      if (cdk_device_get_source (dev) != GDK_SOURCE_KEYBOARD)
         continue;
 
       /* Skip non-master keyboards that haven't
        * selected for events from this window
        */
       window = _ctk_widget_get_window (widget);
-      if (gdk_device_get_device_type (dev) != GDK_DEVICE_TYPE_MASTER &&
-          window && !gdk_window_get_device_events (window, dev))
+      if (cdk_device_get_device_type (dev) != GDK_DEVICE_TYPE_MASTER &&
+          window && !cdk_window_get_device_events (window, dev))
         continue;
 
-      fevent = gdk_event_new (GDK_FOCUS_CHANGE);
+      fevent = cdk_event_new (GDK_FOCUS_CHANGE);
 
       fevent->focus_change.type = GDK_FOCUS_CHANGE;
       fevent->focus_change.window = window;
       if (window)
         g_object_ref (window);
       fevent->focus_change.in = in;
-      gdk_event_set_device (fevent, dev);
+      cdk_event_set_device (fevent, dev);
 
       ctk_widget_send_focus_change (widget, fevent);
 
-      gdk_event_free (fevent);
+      cdk_event_free (fevent);
     }
 
   g_list_free (devices);
@@ -8466,14 +8466,14 @@ ctk_window_has_mnemonic_modifier_pressed (CtkWindow *window)
   if (!window->priv->mnemonic_modifier)
     return FALSE;
 
-  seats = gdk_display_list_seats (ctk_widget_get_display (CTK_WIDGET (window)));
+  seats = cdk_display_list_seats (ctk_widget_get_display (CTK_WIDGET (window)));
 
   for (s = seats; s; s = s->next)
     {
-      GdkDevice *dev = gdk_seat_get_pointer (s->data);
+      GdkDevice *dev = cdk_seat_get_pointer (s->data);
       GdkModifierType mask;
 
-      gdk_device_get_state (dev, _ctk_widget_get_window (CTK_WIDGET (window)),
+      cdk_device_get_state (dev, _ctk_widget_get_window (CTK_WIDGET (window)),
                             NULL, &mask);
       if (window->priv->mnemonic_modifier == (mask & ctk_accelerator_get_default_mod_mask ()))
         {
@@ -9151,14 +9151,14 @@ static GdkWindowState
 ctk_window_get_state (CtkWindow *window)
 {
   GdkWindowState state;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
-  gdk_window = ctk_widget_get_window (CTK_WIDGET (window));
+  cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
   state = 0;
 
-  if (gdk_window)
-    state = gdk_window_get_state (gdk_window);
+  if (cdk_window)
+    state = cdk_window_get_state (cdk_window);
 
   return state;
 }
@@ -9366,7 +9366,7 @@ static void
 ctk_window_do_popup (CtkWindow      *window,
                      GdkEventButton *event)
 {
-  if (!gdk_window_show_window_menu (_ctk_widget_get_window (CTK_WIDGET (window)),
+  if (!cdk_window_show_window_menu (_ctk_widget_get_window (CTK_WIDGET (window)),
                                     (GdkEvent *) event))
     ctk_window_do_popup_fallback (window, event);
 }
@@ -9481,7 +9481,7 @@ ctk_window_compute_configure_request_size (CtkWindow   *window,
     }
 
   /* Don't ever request zero width or height, it's not supported by
-     gdk. The size allocation code will round it to 1 anyway but if
+     cdk. The size allocation code will round it to 1 anyway but if
      we do it then the value returned from this function will is
      not comparable to the size allocation read from the CtkWindow. */
   *width = MAX (*width, 1);
@@ -9511,8 +9511,8 @@ get_center_monitor_of_window (CtkWindow *window)
    * stuff, or we could just be losers and assume you have a row
    * or column of monitors.
    */
-  display = gdk_screen_get_display (ctk_window_check_screen (window));
-  return gdk_display_get_monitor (display, gdk_display_get_n_monitors (display) / 2);
+  display = cdk_screen_get_display (ctk_window_check_screen (window));
+  return cdk_display_get_monitor (display, cdk_display_get_n_monitors (display) / 2);
 }
 
 static GdkMonitor *
@@ -9522,11 +9522,11 @@ get_monitor_containing_pointer (CtkWindow *window)
   GdkDisplay *display;
   GdkDevice *pointer;
 
-  display = gdk_screen_get_display (ctk_window_check_screen (window));
-  pointer = gdk_seat_get_pointer (gdk_display_get_default_seat (display));
-  gdk_device_get_position (pointer, NULL, &px, &py);
+  display = cdk_screen_get_display (ctk_window_check_screen (window));
+  pointer = cdk_seat_get_pointer (cdk_display_get_default_seat (display));
+  cdk_device_get_position (pointer, NULL, &px, &py);
 
-  return gdk_display_get_monitor_at_point (display, px, py);
+  return cdk_display_get_monitor_at_point (display, px, py);
 }
 
 static void
@@ -9544,7 +9544,7 @@ center_window_on_monitor (CtkWindow *window,
   if (monitor == NULL)
     monitor = get_center_monitor_of_window (window);
 
- gdk_monitor_get_workarea (monitor, &area);
+ cdk_monitor_get_workarea (monitor, &area);
 
   *x = (area.width - w) / 2 + area.x;
   *y = (area.height - h) / 2 + area.y;
@@ -9658,18 +9658,18 @@ ctk_window_compute_configure_request (CtkWindow    *window,
           {
             GdkDisplay *display;
             CtkAllocation allocation;
-            GdkWindow *gdk_window;
+            GdkWindow *cdk_window;
             GdkMonitor *monitor;
             GdkRectangle area;
             gint ox, oy;
 
             g_assert (_ctk_widget_get_mapped (parent_widget)); /* established earlier */
 
-            display = gdk_screen_get_display (screen);
-            gdk_window = _ctk_widget_get_window (parent_widget);
-            monitor = gdk_display_get_monitor_at_window (display, gdk_window);
+            display = cdk_screen_get_display (screen);
+            cdk_window = _ctk_widget_get_window (parent_widget);
+            monitor = cdk_display_get_monitor_at_window (display, cdk_window);
 
-            gdk_window_get_origin (gdk_window, &ox, &oy);
+            cdk_window_get_origin (cdk_window, &ox, &oy);
 
             _ctk_widget_get_allocation (parent_widget, &allocation);
             x = ox + (allocation.width - w) / 2;
@@ -9681,7 +9681,7 @@ ctk_window_compute_configure_request (CtkWindow    *window,
              */
             if (monitor != NULL)
               {
-                gdk_monitor_get_geometry (monitor, &area);
+                cdk_monitor_get_geometry (monitor, &area);
                 clamp_window_to_rectangle (&x, &y, w, h, &area);
               }
           }
@@ -9695,11 +9695,11 @@ ctk_window_compute_configure_request (CtkWindow    *window,
             GdkMonitor *monitor;
             gint px, py;
 
-            display = gdk_screen_get_display (screen);
-            pointer = gdk_seat_get_pointer (gdk_display_get_default_seat (display));
+            display = cdk_screen_get_display (screen);
+            pointer = cdk_seat_get_pointer (cdk_display_get_default_seat (display));
 
-            gdk_device_get_position (pointer, NULL, &px, &py);
-            monitor = gdk_display_get_monitor_at_point (display, px, py);
+            cdk_device_get_position (pointer, NULL, &px, &py);
+            monitor = cdk_display_get_monitor_at_point (display, px, py);
 
             x = px - w / 2;
             y = py - h / 2;
@@ -9707,7 +9707,7 @@ ctk_window_compute_configure_request (CtkWindow    *window,
             /* Clamp onto current monitor, ignoring _NET_WM_STRUT and
              * WM decorations.
              */
-            gdk_monitor_get_geometry (monitor, &area);
+            cdk_monitor_get_geometry (monitor, &area);
             clamp_window_to_rectangle (&x, &y, w, h, &area);
           }
           break;
@@ -9798,7 +9798,7 @@ ctk_window_move_resize (CtkWindow *window)
   CtkContainer *container;
   CtkWindowGeometryInfo *info;
   GdkGeometry new_geometry;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   guint new_flags;
   GdkRectangle new_request;
   gboolean configure_request_size_changed;
@@ -9809,7 +9809,7 @@ ctk_window_move_resize (CtkWindow *window)
 
   widget = CTK_WIDGET (window);
 
-  gdk_window = _ctk_widget_get_window (widget);
+  cdk_window = _ctk_widget_get_window (widget);
   container = CTK_CONTAINER (widget);
   info = ctk_window_get_geometry_info (window, TRUE);
   
@@ -9982,12 +9982,12 @@ ctk_window_move_resize (CtkWindow *window)
   /* Set hints if necessary
    */
   if (hints_changed)
-    gdk_window_set_geometry_hints (gdk_window,
+    cdk_window_set_geometry_hints (cdk_window,
 				   &new_geometry,
 				   new_flags);
 
-  current_width = gdk_window_get_width (gdk_window);
-  current_height = gdk_window_get_height (gdk_window);
+  current_width = cdk_window_get_width (cdk_window);
+  current_height = cdk_window_get_height (cdk_window);
 
   /* handle resizing/moving and widget tree allocation
    */
@@ -10076,13 +10076,13 @@ ctk_window_move_resize (CtkWindow *window)
       /* Now send the configure request */
       if (configure_request_pos_changed)
         {
-          gdk_window_move_resize (gdk_window,
+          cdk_window_move_resize (cdk_window,
                                   new_request.x, new_request.y,
                                   new_request.width, new_request.height);
         }
       else  /* only size changed */
         {
-          gdk_window_resize (gdk_window,
+          cdk_window_resize (cdk_window,
                              new_request.width, new_request.height);
         }
 
@@ -10108,7 +10108,7 @@ ctk_window_move_resize (CtkWindow *window)
 	  /* Increment the number of have-not-yet-received-notify requests */
 	  priv->configure_request_count += 1;
 
-          GDK_PRIVATE_CALL (gdk_window_freeze_toplevel_updates) (gdk_window);
+          GDK_PRIVATE_CALL (cdk_window_freeze_toplevel_updates) (cdk_window);
 
 	  /* for CTK_RESIZE_QUEUE toplevels, we are now awaiting a new
 	   * configure event in response to our resizing request.
@@ -10135,7 +10135,7 @@ ctk_window_move_resize (CtkWindow *window)
        */
       if (configure_request_pos_changed)
         {
-          gdk_window_move (gdk_window,
+          cdk_window_move (cdk_window,
                            new_request.x, new_request.y);
         }
 
@@ -10222,7 +10222,7 @@ ctk_window_constrain_size (CtkWindow   *window,
   else
     geometry_flags = flags;
 
-  gdk_window_constrain_size (geometry, geometry_flags, width, height,
+  cdk_window_constrain_size (geometry, geometry_flags, width, height,
                              new_width, new_height);
 }
 
@@ -10535,7 +10535,7 @@ ctk_window_present_with_time (CtkWindow *window,
 {
   CtkWindowPrivate *priv;
   CtkWidget *widget;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10544,29 +10544,29 @@ ctk_window_present_with_time (CtkWindow *window,
 
   if (ctk_widget_get_visible (widget))
     {
-      gdk_window = _ctk_widget_get_window (widget);
+      cdk_window = _ctk_widget_get_window (widget);
 
-      g_assert (gdk_window != NULL);
+      g_assert (cdk_window != NULL);
 
-      gdk_window_show (gdk_window);
+      cdk_window_show (cdk_window);
 
       /* Translate a timestamp of GDK_CURRENT_TIME appropriately */
       if (timestamp == GDK_CURRENT_TIME)
         {
 #ifdef GDK_WINDOWING_X11
-	  if (GDK_IS_X11_WINDOW(gdk_window))
+	  if (GDK_IS_X11_WINDOW(cdk_window))
 	    {
 	      GdkDisplay *display;
 
 	      display = ctk_widget_get_display (widget);
-	      timestamp = gdk_x11_display_get_user_time (display);
+	      timestamp = cdk_x11_display_get_user_time (display);
 	    }
 	  else
 #endif
 	    timestamp = ctk_get_current_event_time ();
         }
 
-      gdk_window_focus (gdk_window, timestamp);
+      cdk_window_focus (cdk_window, timestamp);
     }
   else
     {
@@ -10606,7 +10606,7 @@ ctk_window_iconify (CtkWindow *window)
   toplevel = _ctk_widget_get_window (CTK_WIDGET (window));
 
   if (toplevel != NULL)
-    gdk_window_iconify (toplevel);
+    cdk_window_iconify (toplevel);
 }
 
 /**
@@ -10634,7 +10634,7 @@ ctk_window_deiconify (CtkWindow *window)
   toplevel = _ctk_widget_get_window (CTK_WIDGET (window));
 
   if (toplevel != NULL)
-    gdk_window_deiconify (toplevel);
+    cdk_window_deiconify (toplevel);
 }
 
 /**
@@ -10666,7 +10666,7 @@ ctk_window_stick (CtkWindow *window)
   toplevel = _ctk_widget_get_window (CTK_WIDGET (window));
 
   if (toplevel != NULL)
-    gdk_window_stick (toplevel);
+    cdk_window_stick (toplevel);
 }
 
 /**
@@ -10695,7 +10695,7 @@ ctk_window_unstick (CtkWindow *window)
   toplevel = _ctk_widget_get_window (CTK_WIDGET (window));
 
   if (toplevel != NULL)
-    gdk_window_unstick (toplevel);
+    cdk_window_unstick (toplevel);
 }
 
 /**
@@ -10730,7 +10730,7 @@ ctk_window_maximize (CtkWindow *window)
   toplevel = _ctk_widget_get_window (CTK_WIDGET (window));
 
   if (toplevel != NULL)
-    gdk_window_maximize (toplevel);
+    cdk_window_maximize (toplevel);
 }
 
 /**
@@ -10759,7 +10759,7 @@ ctk_window_unmaximize (CtkWindow *window)
   toplevel = _ctk_widget_get_window (CTK_WIDGET (window));
 
   if (toplevel != NULL)
-    gdk_window_unmaximize (toplevel);
+    cdk_window_unmaximize (toplevel);
 }
 
 /**
@@ -10791,7 +10791,7 @@ ctk_window_fullscreen (CtkWindow *window)
   toplevel = _ctk_widget_get_window (CTK_WIDGET (window));
 
   if (toplevel != NULL)
-    gdk_window_fullscreen (toplevel);
+    cdk_window_fullscreen (toplevel);
 }
 
 /**
@@ -10819,7 +10819,7 @@ ctk_window_fullscreen_on_monitor (CtkWindow *window,
 
   g_return_if_fail (CTK_IS_WINDOW (window));
   g_return_if_fail (GDK_IS_SCREEN (screen));
-  g_return_if_fail (gdk_display_get_monitor (gdk_screen_get_display (screen), monitor) != NULL);
+  g_return_if_fail (cdk_display_get_monitor (cdk_screen_get_display (screen), monitor) != NULL);
 
   priv = window->priv;
   widget = CTK_WIDGET (window);
@@ -10832,7 +10832,7 @@ ctk_window_fullscreen_on_monitor (CtkWindow *window,
   toplevel = _ctk_widget_get_window (widget);
 
   if (toplevel != NULL)
-    gdk_window_fullscreen_on_monitor (toplevel, monitor);
+    cdk_window_fullscreen_on_monitor (toplevel, monitor);
 }
 
 /**
@@ -10865,7 +10865,7 @@ ctk_window_unfullscreen (CtkWindow *window)
   toplevel = _ctk_widget_get_window (CTK_WIDGET (window));
 
   if (toplevel != NULL)
-    gdk_window_unfullscreen (toplevel);
+    cdk_window_unfullscreen (toplevel);
 }
 
 /**
@@ -10912,7 +10912,7 @@ ctk_window_set_keep_above (CtkWindow *window,
   toplevel = _ctk_widget_get_window (CTK_WIDGET (window));
 
   if (toplevel != NULL)
-    gdk_window_set_keep_above (toplevel, setting);
+    cdk_window_set_keep_above (toplevel, setting);
 }
 
 /**
@@ -10959,7 +10959,7 @@ ctk_window_set_keep_below (CtkWindow *window,
   toplevel = _ctk_widget_get_window (CTK_WIDGET (window));
 
   if (toplevel != NULL)
-    gdk_window_set_keep_below (toplevel, setting);
+    cdk_window_set_keep_below (toplevel, setting);
 }
 
 /**
@@ -11094,7 +11094,7 @@ ctk_window_begin_resize_drag  (CtkWindow     *window,
 
   toplevel = _ctk_widget_get_window (widget);
 
-  gdk_window_begin_resize_drag (toplevel,
+  cdk_window_begin_resize_drag (toplevel,
                                 edge, button,
                                 root_x, root_y,
                                 timestamp);
@@ -11131,7 +11131,7 @@ ctk_window_begin_move_drag  (CtkWindow *window,
 
   toplevel = _ctk_widget_get_window (widget);
 
-  gdk_window_begin_move_drag (toplevel,
+  cdk_window_begin_move_drag (toplevel,
                               button,
                               root_x, root_y,
                               timestamp);
@@ -11173,7 +11173,7 @@ ctk_window_set_screen (CtkWindow *window,
 
   previous_screen = priv->screen;
 
-  if (gdk_screen_get_rgba_visual (previous_screen) == ctk_widget_get_visual (widget))
+  if (cdk_screen_get_rgba_visual (previous_screen) == ctk_widget_get_visual (widget))
     was_rgba = TRUE;
   else
     was_rgba = FALSE;
@@ -11215,7 +11215,7 @@ ctk_window_set_screen (CtkWindow *window,
     {
       GdkVisual *visual;
 
-      visual = gdk_screen_get_rgba_visual (screen);
+      visual = cdk_screen_get_rgba_visual (screen);
       if (visual)
         ctk_widget_set_visual (widget, visual);
     }
@@ -11230,17 +11230,17 @@ static void
 ctk_window_set_theme_variant (CtkWindow *window)
 {
 #ifdef GDK_WINDOWING_X11
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   gboolean   dark_theme_requested;
 
   g_object_get (ctk_settings_get_for_screen (window->priv->screen),
                 "ctk-application-prefer-dark-theme", &dark_theme_requested,
                 NULL);
 
-  gdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
+  cdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (GDK_IS_X11_WINDOW (gdk_window))
-    gdk_x11_window_set_theme_variant (gdk_window,
+  if (GDK_IS_X11_WINDOW (cdk_window))
+    cdk_x11_window_set_theme_variant (cdk_window,
                                       dark_theme_requested ? "dark" : NULL);
 #endif
 }
@@ -11725,11 +11725,11 @@ ctk_window_parse_geometry (CtkWindow   *window,
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (grav == GDK_GRAVITY_SOUTH_WEST ||
       grav == GDK_GRAVITY_SOUTH_EAST)
-    y = gdk_screen_get_height (screen) - h + y;
+    y = cdk_screen_get_height (screen) - h + y;
 
   if (grav == GDK_GRAVITY_SOUTH_EAST ||
       grav == GDK_GRAVITY_NORTH_EAST)
-    x = gdk_screen_get_width (screen) - w + x;
+    x = cdk_screen_get_width (screen) - w + x;
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* we don't let you put a window offscreen; maybe some people would
@@ -11943,7 +11943,7 @@ add_to_key_hash (CtkWindow      *window,
       if (keyval == GDK_KEY_Tab)
 	keyval = GDK_KEY_ISO_Left_Tab;
       else
-	keyval = gdk_keyval_to_upper (keyval);
+	keyval = cdk_keyval_to_upper (keyval);
     }
   
   _ctk_key_hash_add_entry (key_hash, keyval, entry->modifiers, entry);
@@ -11958,7 +11958,7 @@ ctk_window_get_key_hash (CtkWindow *window)
   if (key_hash)
     return key_hash;
   
-  key_hash = _ctk_key_hash_new (gdk_keymap_get_for_display (gdk_screen_get_display (screen)),
+  key_hash = _ctk_key_hash_new (cdk_keymap_get_for_display (cdk_screen_get_display (screen)),
 				(GDestroyNotify)window_key_entry_destroy);
   _ctk_window_keys_foreach (window, add_to_key_hash, key_hash);
   g_object_set_qdata (G_OBJECT (window), quark_ctk_window_key_hash, key_hash);
@@ -12249,7 +12249,7 @@ _ctk_window_set_has_toplevel_focus (CtkWindow *window,
  * @setting: %TRUE to automatically do startup notification
  *
  * By default, after showing the first #CtkWindow, CTK+ calls 
- * gdk_notify_startup_complete().  Call this function to disable 
+ * cdk_notify_startup_complete().  Call this function to disable 
  * the automatic startup notification. You might do this if your 
  * first window is a splash screen, and you want to delay notification 
  * until after your real main window has been shown, for example.
@@ -12360,7 +12360,7 @@ _ctk_window_schedule_mnemonics_visible (CtkWindow *window)
     return;
 
   window->priv->mnemonics_display_timeout_id =
-    gdk_threads_add_timeout (MNEMONICS_DELAY, schedule_mnemonics_visible_cb, window);
+    cdk_threads_add_timeout (MNEMONICS_DELAY, schedule_mnemonics_visible_cb, window);
   g_source_set_name_by_id (window->priv->mnemonics_display_timeout_id, "[ctk+] schedule_mnemonics_visible_cb");
 }
 
@@ -12454,7 +12454,7 @@ ensure_state_flag_backdrop (CtkWidget *widget)
 
   window = _ctk_widget_get_window (widget);
 
-  window_focused = gdk_window_get_state (window) & GDK_WINDOW_STATE_FOCUSED;
+  window_focused = cdk_window_get_state (window) & GDK_WINDOW_STATE_FOCUSED;
 
   if (!window_focused)
     ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_BACKDROP, FALSE);
@@ -12592,7 +12592,7 @@ _ctk_window_set_popover_position (CtkWindow                   *window,
     {
       cairo_rectangle_int_t new_size;
       popover_get_rect (data, window, &new_size);
-      gdk_window_move (data->window, new_size.x, new_size.y);
+      cdk_window_move (data->window, new_size.x, new_size.y);
     }
 }
 
@@ -12747,7 +12747,7 @@ ctk_window_update_debugging (void)
   if (inspector_window &&
       ctk_window_update_debugging_id == 0)
     {
-      ctk_window_update_debugging_id = gdk_threads_add_idle (update_debugging, NULL);
+      ctk_window_update_debugging_id = cdk_threads_add_idle (update_debugging, NULL);
       g_source_set_name_by_id (ctk_window_update_debugging_id, "[ctk+] ctk_window_update_debugging");
     }
 }
@@ -12912,14 +12912,14 @@ ctk_window_set_use_subsurface (CtkWindow *window,
 
 void
 ctk_window_set_hardcoded_window (CtkWindow *window,
-                                 GdkWindow *gdk_window)
+                                 GdkWindow *cdk_window)
 {
   CtkWindowPrivate *priv = window->priv;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
   g_return_if_fail (!_ctk_widget_get_realized (CTK_WIDGET (window)));
 
-  g_set_object (&priv->hardcoded_window, gdk_window);
+  g_set_object (&priv->hardcoded_window, cdk_window);
 }
 
 #ifdef GDK_WINDOWING_WAYLAND
@@ -12952,9 +12952,9 @@ ctk_window_export_handle (CtkWindow               *window,
 #ifdef GDK_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
-      GdkWindow *gdk_window = ctk_widget_get_window (CTK_WIDGET (window));
+      GdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
       char *handle_str;
-      guint32 xid = (guint32) gdk_x11_window_get_xid (gdk_window);
+      guint32 xid = (guint32) cdk_x11_window_get_xid (cdk_window);
 
       handle_str = g_strdup_printf ("x11:%x", xid);
       callback (window, handle_str, user_data);
@@ -12965,7 +12965,7 @@ ctk_window_export_handle (CtkWindow               *window,
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
-      GdkWindow *gdk_window = ctk_widget_get_window (CTK_WIDGET (window));
+      GdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
       WaylandWindowHandleExportedData *data;
 
       data = g_new0 (WaylandWindowHandleExportedData, 1);
@@ -12973,7 +12973,7 @@ ctk_window_export_handle (CtkWindow               *window,
       data->callback = callback;
       data->user_data = user_data;
 
-      if (!gdk_wayland_window_export_handle (gdk_window,
+      if (!cdk_wayland_window_export_handle (cdk_window,
                                              wayland_window_handle_exported,
                                              data,
                                              g_free))
@@ -12999,9 +12999,9 @@ ctk_window_unexport_handle (CtkWindow *window)
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
-      GdkWindow *gdk_window = ctk_widget_get_window (CTK_WIDGET (window));
+      GdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
-      gdk_wayland_window_unexport_handle (gdk_window);
+      cdk_wayland_window_unexport_handle (cdk_window);
     }
 #endif
 }

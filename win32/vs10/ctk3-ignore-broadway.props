@@ -11,8 +11,8 @@
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
     <Link>
-      <AdditionalDependencies>$(OutDir)\gdk3-win32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalOptions>/EXPORT:gdk_win32_display_manager_get_type</AdditionalOptions>
+      <AdditionalDependencies>$(OutDir)\cdk3-win32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalOptions>/EXPORT:cdk_win32_display_manager_get_type</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
 </Project>

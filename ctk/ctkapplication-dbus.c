@@ -26,7 +26,7 @@
 #include "ctksettings.h"
 #include "ctkprivate.h"
 
-#include "gdk/gdk-private.h"
+#include "cdk/cdk-private.h"
 
 G_DEFINE_TYPE (CtkApplicationImplDBus, ctk_application_impl_dbus, CTK_TYPE_APPLICATION_IMPL)
 
@@ -257,7 +257,7 @@ ctk_application_impl_dbus_startup (CtkApplicationImpl *impl,
   gboolean same_bus;
   const char *bus_name;
   const char *client_interface;
-  const char *client_id = GDK_PRIVATE_CALL (gdk_get_desktop_autostart_id) ();
+  const char *client_id = GDK_PRIVATE_CALL (cdk_get_desktop_autostart_id) ();
 
   dbus->session = g_application_get_dbus_connection (G_APPLICATION (impl->application));
 
@@ -418,7 +418,7 @@ ctk_application_impl_dbus_startup (CtkApplicationImpl *impl,
       GValue value = G_VALUE_INIT;
 
       g_value_init (&value, G_TYPE_STRING);
-      gdk_screen_get_setting (gdk_screen_get_default (), "ctk-session-bus-id", &value);
+      cdk_screen_get_setting (cdk_screen_get_default (), "ctk-session-bus-id", &value);
       id = g_value_get_string (&value);
 
       if (id && id[0])

@@ -298,7 +298,7 @@ get_surface_size (CtkIconHelper   *self,
   cairo_t *cr;
 
   cr = cairo_create (surface);
-  if (gdk_cairo_get_clip_rectangle (cr, &clip))
+  if (cdk_cairo_get_clip_rectangle (cr, &clip))
     {
       if (clip.x != 0 || clip.y != 0)
         {
@@ -344,25 +344,25 @@ get_pixbuf_size (CtkIconHelper   *self,
       ensure_icon_size (self, &width, &height);
 
       if (scale != orig_scale ||
-	  width < gdk_pixbuf_get_width (orig_pixbuf) / orig_scale ||
-          height < gdk_pixbuf_get_height (orig_pixbuf) / orig_scale)
+	  width < cdk_pixbuf_get_width (orig_pixbuf) / orig_scale ||
+          height < cdk_pixbuf_get_height (orig_pixbuf) / orig_scale)
 	{
-	  width = MIN (width * scale, gdk_pixbuf_get_width (orig_pixbuf) * scale / orig_scale);
-	  height = MIN (height * scale, gdk_pixbuf_get_height (orig_pixbuf) * scale / orig_scale);
+	  width = MIN (width * scale, cdk_pixbuf_get_width (orig_pixbuf) * scale / orig_scale);
+	  height = MIN (height * scale, cdk_pixbuf_get_height (orig_pixbuf) * scale / orig_scale);
 
           scale_pixmap = TRUE;
 	}
       else
 	{
-	  width = gdk_pixbuf_get_width (orig_pixbuf);
-	  height = gdk_pixbuf_get_height (orig_pixbuf);
+	  width = cdk_pixbuf_get_width (orig_pixbuf);
+	  height = cdk_pixbuf_get_height (orig_pixbuf);
 	  scale = orig_scale;
 	}
     }
   else
     {
-      width = gdk_pixbuf_get_width (orig_pixbuf);
-      height = gdk_pixbuf_get_height (orig_pixbuf);
+      width = cdk_pixbuf_get_width (orig_pixbuf);
+      height = cdk_pixbuf_get_height (orig_pixbuf);
       scale = orig_scale;
     }
 
@@ -390,13 +390,13 @@ ensure_surface_from_pixbuf (CtkIconHelper *self,
                        orig_pixbuf,
                        orig_scale,
                        &width, &height, &scale))
-    pixbuf = gdk_pixbuf_scale_simple (orig_pixbuf,
+    pixbuf = cdk_pixbuf_scale_simple (orig_pixbuf,
                                       width, height,
                                       GDK_INTERP_BILINEAR);
   else
     pixbuf = g_object_ref (orig_pixbuf);
 
-  surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale, ctk_widget_get_window (ctk_css_gadget_get_owner (CTK_CSS_GADGET (self))));
+  surface = cdk_cairo_surface_create_from_pixbuf (pixbuf, scale, ctk_widget_get_window (ctk_css_gadget_get_owner (CTK_CSS_GADGET (self))));
   icon_effect = _ctk_css_icon_effect_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_ICON_EFFECT));
   ctk_css_icon_effect_apply (icon_effect, surface);
   g_object_unref (pixbuf);
@@ -419,7 +419,7 @@ ensure_surface_for_icon_set (CtkIconHelper    *self,
                                                       direction,
                                                       self->priv->icon_size,
                                                       scale);
-  surface = gdk_cairo_surface_create_from_pixbuf (pixbuf,
+  surface = cdk_cairo_surface_create_from_pixbuf (pixbuf,
                                                   scale,
                                                   ctk_widget_get_window (ctk_css_gadget_get_owner (CTK_CSS_GADGET (self))));
   g_object_unref (pixbuf);
@@ -496,7 +496,7 @@ ensure_surface_for_gicon (CtkIconHelper    *self,
       symbolic = FALSE;
     }
 
-  surface = gdk_cairo_surface_create_from_pixbuf (destination, scale, ctk_widget_get_window (ctk_css_gadget_get_owner (CTK_CSS_GADGET (self))));
+  surface = cdk_cairo_surface_create_from_pixbuf (destination, scale, ctk_widget_get_window (ctk_css_gadget_get_owner (CTK_CSS_GADGET (self))));
 
   if (!symbolic)
     {
@@ -637,8 +637,8 @@ _ctk_icon_helper_get_size (CtkIconHelper *self,
     case CTK_IMAGE_ANIMATION:
       {
         GdkPixbufAnimation *animation = ctk_image_definition_get_animation (self->priv->def);
-        width = gdk_pixbuf_animation_get_width (animation);
-        height = gdk_pixbuf_animation_get_height (animation);
+        width = cdk_pixbuf_animation_get_width (animation);
+        height = cdk_pixbuf_animation_get_height (animation);
         break;
       }
 

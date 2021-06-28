@@ -24,8 +24,8 @@
 
 #include "config.h"
 
-#include "gdktypes.h"
-#include "gdkprivate-broadway.h"
+#include "cdktypes.h"
+#include "cdkprivate-broadway.h"
 
 #include <stdio.h>
 

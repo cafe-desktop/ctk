@@ -27,7 +27,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "gdk/gdk.h"
+#include "cdk/cdk.h"
 
 #include "ctkdnd.h"
 #include "ctkdndprivate.h"
@@ -41,9 +41,9 @@
 #include "ctkwindow.h"
 #include "ctkintl.h"
 #include "ctkquartz.h"
-#include "gdk/quartz/gdkquartz.h"
-#include "gdk/quartz/gdkquartz-ctk-only.h"
-#include "gdk/quartz/gdkquartzdnd.h"
+#include "cdk/quartz/cdkquartz.h"
+#include "cdk/quartz/cdkquartz-ctk-only.h"
+#include "cdk/quartz/cdkquartzdnd.h"
 #include "ctkselectionprivate.h"
 #include "ctksettings.h"
 #include "ctkiconhelperprivate.h"
@@ -119,8 +119,8 @@ struct _CtkDragFindData
   selection_data.selection = GDK_NONE;
   selection_data.data = NULL;
   selection_data.length = -1;
-  selection_data.target = gdk_quartz_pasteboard_type_to_atom_libctk_only (type);
-  selection_data.display = gdk_display_get_default ();
+  selection_data.target = cdk_quartz_pasteboard_type_to_atom_libctk_only (type);
+  selection_data.display = cdk_display_get_default ();
 
   if (ctk_target_list_find (info->target_list, 
 			    selection_data.target, 
@@ -175,7 +175,7 @@ ctk_drag_get_data (CtkWidget      *widget,
   CtkDragDestInfo *info;
   CtkDragDestSite *site;
 
-  dragging_info = gdk_quartz_drag_context_get_dragging_info_libctk_only (context);
+  dragging_info = cdk_quartz_drag_context_get_dragging_info_libctk_only (context);
   pasteboard = [dragging_info draggingPasteboard];
 
   info = ctk_drag_get_dest_info (context, FALSE);
@@ -214,7 +214,7 @@ ctk_drag_get_data (CtkWidget      *widget,
     {
       ctk_drag_finish (context, 
 		       (selection_data->length >= 0),
-		       (gdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE),
+		       (cdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE),
 		       time);
     }      
 }
@@ -234,7 +234,7 @@ ctk_drag_finish (GdkDragContext *context,
 		 guint32         time)
 {
   CtkDragSourceInfo *info;
-  GdkDragContext* source_context = gdk_quartz_drag_source_context_libctk_only ();
+  GdkDragContext* source_context = cdk_quartz_drag_source_context_libctk_only ();
 
   if (source_context)
     {
@@ -316,7 +316,7 @@ CtkWidget *
 ctk_drag_get_source_widget (GdkDragContext *context)
 {
   CtkDragSourceInfo *info;
-  GdkDragContext* real_source_context = gdk_quartz_drag_source_context_libctk_only ();
+  GdkDragContext* real_source_context = cdk_quartz_drag_source_context_libctk_only ();
 
   if (!real_source_context)
     return NULL;
@@ -363,7 +363,7 @@ get_toplevel_nswindow (CtkWidget *widget)
     return NULL;
 
   if (ctk_widget_is_toplevel (toplevel) && window)
-    return [gdk_quartz_window_get_nsview (window) window];
+    return [cdk_quartz_window_get_nsview (window) window];
   else
     return NULL;
 }
@@ -477,7 +477,7 @@ ctk_drag_dest_set (CtkWidget            *widget,
  * @widget: a #CtkWidget
  * @proxy_window: the window to which to forward drag events
  * @protocol: the drag protocol which the @proxy_window accepts
- *   (You can use gdk_drag_get_protocol() to determine this)
+ *   (You can use cdk_drag_get_protocol() to determine this)
  * @use_coordinates: If %TRUE, send the same coordinates to the
  *   destination, because it is an embedded
  *   subwindow.
@@ -683,7 +683,7 @@ ctk_drag_find_widget (CtkWidget       *widget,
 	  /* The allocation is relative to the parent window for
 	   * window widgets, not to widget->window.
 	   */
-          gdk_window_get_position (window, &tx, &ty);
+          cdk_window_get_position (window, &tx, &ty);
 	  
           allocation_to_window_x -= tx;
           allocation_to_window_y -= ty;
@@ -696,18 +696,18 @@ ctk_drag_find_widget (CtkWidget       *widget,
 	{
 	  GdkRectangle window_rect = { 0, 0, 0, 0 };
 	  
-          window_rect.width = gdk_window_get_width (window);
-          window_rect.height = gdk_window_get_height (window);
+          window_rect.width = cdk_window_get_width (window);
+          window_rect.height = cdk_window_get_height (window);
 
-	  gdk_rectangle_intersect (&new_allocation, &window_rect, &new_allocation);
+	  cdk_rectangle_intersect (&new_allocation, &window_rect, &new_allocation);
 
-	  gdk_window_get_position (window, &tx, &ty);
+	  cdk_window_get_position (window, &tx, &ty);
 	  new_allocation.x += tx;
 	  x_offset += tx;
 	  new_allocation.y += ty;
 	  y_offset += ty;
 	  
-	  window = gdk_window_get_parent (window);
+	  window = cdk_window_get_parent (window);
 	}
 
       if (!window)		/* Window and widget heirarchies didn't match. */
@@ -809,8 +809,8 @@ ctk_drag_dest_motion (CtkWidget	     *widget,
 
   if (site->track_motion || site->flags & CTK_DEST_DEFAULT_MOTION)
     {
-      if (gdk_drag_context_get_suggested_action (context) & site->actions)
-	action = gdk_drag_context_get_suggested_action (context);
+      if (cdk_drag_context_get_suggested_action (context) & site->actions)
+	action = cdk_drag_context_get_suggested_action (context);
       
       if (action && ctk_drag_dest_find_target (widget, context, NULL))
 	{
@@ -821,11 +821,11 @@ ctk_drag_dest_motion (CtkWidget	     *widget,
 		ctk_drag_highlight (widget);
 	    }
 	  
-	  gdk_drag_status (context, action, time);
+	  cdk_drag_status (context, action, time);
 	}
       else
 	{
-	  gdk_drag_status (context, 0, time);
+	  cdk_drag_status (context, 0, time);
 	  if (!site->track_motion)
 	    return TRUE;
 	}
@@ -962,7 +962,7 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
 	      }
 	  }
 
-	gdk_window_get_position (ctk_widget_get_window (toplevel), &tx, &ty);
+	cdk_window_get_position (ctk_widget_get_window (toplevel), &tx, &ty);
 	
 	data.x = event->dnd.x_root - tx;
 	data.y = event->dnd.y_root - ty;
@@ -987,7 +987,7 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
 	if (event->type == GDK_DRAG_MOTION)
 	  {
 	    if (!data.found)
-	      gdk_drag_status (context, 0, event->dnd.time);
+	      cdk_drag_status (context, 0, event->dnd.time);
 	  }
 
 	break;
@@ -1022,7 +1022,7 @@ ctk_drag_dest_find_target (CtkWidget      *widget,
   g_return_val_if_fail (CTK_IS_WIDGET (widget), GDK_NONE);
   g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), GDK_NONE);
 
-  dragging_info = gdk_quartz_drag_context_get_dragging_info_libctk_only (context);
+  dragging_info = cdk_quartz_drag_context_get_dragging_info_libctk_only (context);
   pasteboard = [dragging_info draggingPasteboard];
 
   source_widget = ctk_drag_get_source_widget (context);
@@ -1121,12 +1121,12 @@ ctk_drag_begin_idle (gpointer arg)
 
   return G_SOURCE_REMOVE;
 }
-/* Fake protocol to let us call GdkNSView gdkWindow without including
- * gdk/GdkNSView.h (which we can’t because it pulls in the internal-only
- * gdkwindow.h).
+/* Fake protocol to let us call GdkNSView cdkWindow without including
+ * cdk/GdkNSView.h (which we can’t because it pulls in the internal-only
+ * cdkwindow.h).
  */
 @protocol GdkNSView
-- (GdkWindow *)gdkWindow;
+- (GdkWindow *)cdkWindow;
 @end
 
 GdkDragContext *
@@ -1158,36 +1158,36 @@ ctk_drag_begin_internal (CtkWidget         *widget,
 	  CtkWidget *toplevel = ctk_widget_get_toplevel (widget);
 	  window = ctk_widget_get_window (toplevel);
 	  ctk_widget_translate_coordinates (widget, toplevel, x, y, &x, &y);
-	  gdk_window_get_root_coords (ctk_widget_get_window (toplevel), x, y,
+	  cdk_window_get_root_coords (ctk_widget_get_window (toplevel), x, y,
 							     &x, &y);
 	  dx = (gdouble)x;
 	  dy = (gdouble)y;
 	}
       else if (event)
 	{
-	  if (gdk_event_get_coords (event, &dx, &dy))
+	  if (cdk_event_get_coords (event, &dx, &dy))
 	    {
 	      /* We need to translate (x, y) to coordinates relative to the
 	       * toplevel GdkWindow, which should be the GdkWindow backing
 	       * nswindow. Then, we convert to the NSWindow coordinate system.
 	       */
 	      window = event->any.window;
-	      GdkWindow *toplevel = gdk_window_get_effective_toplevel (window);
+	      GdkWindow *toplevel = cdk_window_get_effective_toplevel (window);
 
 	      while (window != toplevel)
 		{
 		  double old_x = dx;
 		  double old_y = dy;
 
-		  gdk_window_coords_to_parent (window, old_x, old_y,
+		  cdk_window_coords_to_parent (window, old_x, old_y,
 					       &dx, &dy);
-		  window = gdk_window_get_effective_parent (window);
+		  window = cdk_window_get_effective_parent (window);
 		}
 	    }
-	  time = (double)gdk_event_get_time (event);
+	  time = (double)cdk_event_get_time (event);
 	}
       point.x = dx;
-      point.y = gdk_window_get_height (window) - dy;
+      point.y = cdk_window_get_height (window) - dy;
     }
 
   nstime = [[NSDate dateWithTimeIntervalSince1970: time / 1000] timeIntervalSinceReferenceDate];
@@ -1201,11 +1201,11 @@ ctk_drag_begin_internal (CtkWidget         *widget,
                       clickCount: 1
                       pressure: 0.0 ];
 
-  window = [(id<GdkNSView>)[nswindow contentView] gdkWindow];
+  window = [(id<GdkNSView>)[nswindow contentView] cdkWindow];
   g_return_val_if_fail (nsevent != NULL, NULL);
   g_return_val_if_fail (target_list != NULL, NULL);
   
-  context = gdk_drag_begin (window, g_list_copy (target_list->list));
+  context = cdk_drag_begin (window, g_list_copy (target_list->list));
   g_return_val_if_fail (context != NULL, NULL);
 
   info = ctk_drag_get_source_info (context, TRUE);
@@ -1239,8 +1239,8 @@ ctk_drag_begin_internal (CtkWidget         *widget,
 
   g_idle_add_full (G_PRIORITY_HIGH_IDLE, ctk_drag_begin_idle, context, NULL);
 
-  pointer = gdk_drag_context_get_device (info->context);
-  gdk_device_ungrab (pointer, 0);
+  pointer = cdk_drag_context_get_device (info->context);
+  cdk_device_ungrab (pointer, 0);
 
   return context;
 }
@@ -1371,11 +1371,11 @@ set_icon_stock_pixbuf (GdkDragContext    *context,
     g_object_ref (pixbuf);
 
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
-                                        gdk_pixbuf_get_width (pixbuf),
-                                        gdk_pixbuf_get_height (pixbuf));
+                                        cdk_pixbuf_get_width (pixbuf),
+                                        cdk_pixbuf_get_height (pixbuf));
 
   cr = cairo_create (surface);
-  gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+  cdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
   cairo_paint (cr);
   cairo_destroy (cr);
   g_object_unref (pixbuf);
@@ -1534,7 +1534,7 @@ ctk_drag_set_icon_name (GdkDragContext *context,
   g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (icon_name != NULL);
 
-  screen = gdk_window_get_screen (gdk_drag_context_get_source_window (context));
+  screen = cdk_window_get_screen (cdk_drag_context_get_source_window (context));
   g_return_if_fail (screen != NULL);
 
   ctk_icon_size_lookup (CTK_ICON_SIZE_DND, &width, &height);
@@ -1663,7 +1663,7 @@ _ctk_drag_source_handle_event (CtkWidget *widget,
   switch (event->type)
     {
     case GDK_DROP_FINISHED:
-      result = (gdk_drag_context_get_dest_window (context) != NULL) ? CTK_DRAG_RESULT_SUCCESS : CTK_DRAG_RESULT_NO_TARGET;
+      result = (cdk_drag_context_get_dest_window (context) != NULL) ? CTK_DRAG_RESULT_SUCCESS : CTK_DRAG_RESULT_NO_TARGET;
       ctk_drag_drop_finished (info, result);
       break;
     default:

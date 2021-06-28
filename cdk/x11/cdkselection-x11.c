@@ -24,11 +24,11 @@
 
 #include "config.h"
 
-#include "gdkselection.h"
-#include "gdkproperty.h"
-#include "gdkprivate.h"
-#include "gdkprivate-x11.h"
-#include "gdkdisplay-x11.h"
+#include "cdkselection.h"
+#include "cdkproperty.h"
+#include "cdkprivate.h"
+#include "cdkprivate-x11.h"
+#include "cdkdisplay-x11.h"
 
 #include <X11/Xlib.h>
 #include <X11/Xatom.h>
@@ -52,7 +52,7 @@ static GSList *owner_list;
  * low code solution
  */
 void
-_gdk_x11_selection_window_destroyed (GdkWindow *window)
+_cdk_x11_selection_window_destroyed (GdkWindow *window)
 {
   GSList *tmp_list = owner_list;
   while (tmp_list)
@@ -72,17 +72,17 @@ _gdk_x11_selection_window_destroyed (GdkWindow *window)
  * reflect changes to the selection owner that we didn’t make ourself.
  */
 gboolean
-_gdk_x11_selection_filter_clear_event (XSelectionClearEvent *event)
+_cdk_x11_selection_filter_clear_event (XSelectionClearEvent *event)
 {
   GSList *tmp_list = owner_list;
-  GdkDisplay *display = gdk_x11_lookup_xdisplay (event->display);
+  GdkDisplay *display = cdk_x11_lookup_xdisplay (event->display);
 
   while (tmp_list)
     {
       OwnerInfo *info = tmp_list->data;
 
-      if (gdk_window_get_display (info->owner) == display &&
-          info->selection == gdk_x11_xatom_to_atom_for_display (display, event->selection))
+      if (cdk_window_get_display (info->owner) == display &&
+          info->selection == cdk_x11_xatom_to_atom_for_display (display, event->selection))
         {
           if ((GDK_WINDOW_XID (info->owner) == event->window &&
                event->serial >= info->serial))
@@ -101,7 +101,7 @@ _gdk_x11_selection_filter_clear_event (XSelectionClearEvent *event)
 }
 
 gboolean
-_gdk_x11_display_set_selection_owner (GdkDisplay *display,
+_cdk_x11_display_set_selection_owner (GdkDisplay *display,
                                       GdkWindow  *owner,
                                       GdkAtom     selection,
                                       guint32     time,
@@ -113,7 +113,7 @@ _gdk_x11_display_set_selection_owner (GdkDisplay *display,
   GSList *tmp_list;
   OwnerInfo *info;
 
-  if (gdk_display_is_closed (display))
+  if (cdk_display_is_closed (display))
     return FALSE;
 
   if (owner)
@@ -121,7 +121,7 @@ _gdk_x11_display_set_selection_owner (GdkDisplay *display,
       if (GDK_WINDOW_DESTROYED (owner) || !GDK_WINDOW_IS_X11 (owner))
         return FALSE;
 
-      gdk_window_ensure_native (owner);
+      cdk_window_ensure_native (owner);
       xdisplay = GDK_WINDOW_XDISPLAY (owner);
       xwindow = GDK_WINDOW_XID (owner);
     }
@@ -131,7 +131,7 @@ _gdk_x11_display_set_selection_owner (GdkDisplay *display,
       xwindow = None;
     }
 
-  xselection = gdk_x11_atom_to_xatom_for_display (display, selection);
+  xselection = cdk_x11_atom_to_xatom_for_display (display, selection);
 
   tmp_list = owner_list;
   while (tmp_list)
@@ -162,25 +162,25 @@ _gdk_x11_display_set_selection_owner (GdkDisplay *display,
 }
 
 GdkWindow *
-_gdk_x11_display_get_selection_owner (GdkDisplay *display,
+_cdk_x11_display_get_selection_owner (GdkDisplay *display,
                                       GdkAtom     selection)
 {
   Window xwindow;
 
-  if (gdk_display_is_closed (display))
+  if (cdk_display_is_closed (display))
     return NULL;
 
   xwindow = XGetSelectionOwner (GDK_DISPLAY_XDISPLAY (display),
-                                gdk_x11_atom_to_xatom_for_display (display,
+                                cdk_x11_atom_to_xatom_for_display (display,
                                                                    selection));
   if (xwindow == None)
     return NULL;
 
-  return gdk_x11_window_lookup_for_display (display, xwindow);
+  return cdk_x11_window_lookup_for_display (display, xwindow);
 }
 
 void
-_gdk_x11_display_convert_selection (GdkDisplay *display,
+_cdk_x11_display_convert_selection (GdkDisplay *display,
                                     GdkWindow  *requestor,
                                     GdkAtom     selection,
                                     GdkAtom     target,
@@ -191,17 +191,17 @@ _gdk_x11_display_convert_selection (GdkDisplay *display,
   if (GDK_WINDOW_DESTROYED (requestor) || !GDK_WINDOW_IS_X11 (requestor))
     return;
 
-  gdk_window_ensure_native (requestor);
+  cdk_window_ensure_native (requestor);
 
   XConvertSelection (GDK_WINDOW_XDISPLAY (requestor),
-                     gdk_x11_atom_to_xatom_for_display (display, selection),
-                     gdk_x11_atom_to_xatom_for_display (display, target),
-                     gdk_x11_get_xatom_by_name_for_display (display, "GDK_SELECTION"),
+                     cdk_x11_atom_to_xatom_for_display (display, selection),
+                     cdk_x11_atom_to_xatom_for_display (display, target),
+                     cdk_x11_get_xatom_by_name_for_display (display, "GDK_SELECTION"),
                      GDK_WINDOW_XID (requestor), time);
 }
 
 gint
-_gdk_x11_display_get_selection_property (GdkDisplay  *display,
+_cdk_x11_display_get_selection_property (GdkDisplay  *display,
                                          GdkWindow   *requestor,
                                          guchar     **data,
                                          GdkAtom     *ret_type,
@@ -225,7 +225,7 @@ _gdk_x11_display_get_selection_property (GdkDisplay  *display,
      Otherwise there's no guarantee we'll win the race ... */
   if (XGetWindowProperty (GDK_WINDOW_XDISPLAY (requestor),
                           GDK_WINDOW_XID (requestor),
-                          gdk_x11_get_xatom_by_name_for_display (display, "GDK_SELECTION"),
+                          cdk_x11_get_xatom_by_name_for_display (display, "GDK_SELECTION"),
                           0, 0x1FFFFFFF /* MAXINT32 / 4 */, False,
                           AnyPropertyType, &prop_type, &prop_format,
                           &nitems, &nbytes, &t) != Success)
@@ -234,12 +234,12 @@ _gdk_x11_display_get_selection_property (GdkDisplay  *display,
   if (prop_type != None)
     {
       if (ret_type)
-        *ret_type = gdk_x11_xatom_to_atom_for_display (display, prop_type);
+        *ret_type = cdk_x11_xatom_to_atom_for_display (display, prop_type);
       if (ret_format)
         *ret_format = prop_format;
 
       if (prop_type == XA_ATOM ||
-          prop_type == gdk_x11_get_xatom_by_name_for_display (display, "ATOM_PAIR"))
+          prop_type == cdk_x11_get_xatom_by_name_for_display (display, "ATOM_PAIR"))
         {
           Atom* atoms = (Atom*) t;
           GdkAtom* atoms_dest;
@@ -258,7 +258,7 @@ _gdk_x11_display_get_selection_property (GdkDisplay  *display,
               atoms_dest = (GdkAtom *)(*data);
 
               for (i=0; i < num_atom; i++)
-                atoms_dest[i] = gdk_x11_xatom_to_atom_for_display (display, atoms[i]);
+                atoms_dest[i] = cdk_x11_xatom_to_atom_for_display (display, atoms[i]);
             }
         }
       else
@@ -305,7 +305,7 @@ _gdk_x11_display_get_selection_property (GdkDisplay  *display,
 }
 
 void
-_gdk_x11_display_send_selection_notify (GdkDisplay       *display,
+_cdk_x11_display_send_selection_notify (GdkDisplay       *display,
                                         GdkWindow        *requestor,
                                         GdkAtom          selection,
                                         GdkAtom          target,
@@ -318,19 +318,19 @@ _gdk_x11_display_send_selection_notify (GdkDisplay       *display,
   xevent.serial = 0;
   xevent.send_event = True;
   xevent.requestor = GDK_WINDOW_XID (requestor);
-  xevent.selection = gdk_x11_atom_to_xatom_for_display (display, selection);
-  xevent.target = gdk_x11_atom_to_xatom_for_display (display, target);
+  xevent.selection = cdk_x11_atom_to_xatom_for_display (display, selection);
+  xevent.target = cdk_x11_atom_to_xatom_for_display (display, target);
   if (property == GDK_NONE)
     xevent.property = None;
   else
-    xevent.property = gdk_x11_atom_to_xatom_for_display (display, property);
+    xevent.property = cdk_x11_atom_to_xatom_for_display (display, property);
   xevent.time = time;
 
-  _gdk_x11_display_send_xevent (display, xevent.requestor, False, NoEventMask, (XEvent*) & xevent);
+  _cdk_x11_display_send_xevent (display, xevent.requestor, False, NoEventMask, (XEvent*) & xevent);
 }
 
 /**
- * gdk_x11_display_text_property_to_text_list:
+ * cdk_x11_display_text_property_to_text_list:
  * @display: (type GdkX11Display): The #GdkDisplay where the encoding is defined
  * @encoding: an atom representing the encoding. The most
  *    common values for this are STRING, or COMPOUND_TEXT.
@@ -340,7 +340,7 @@ _gdk_x11_display_send_selection_notify (GdkDisplay       *display,
  * @length: The number of items to transform
  * @list: location to store an  array of strings in
  *    the encoding of the current locale. This array should be
- *    freed using gdk_free_text_list().
+ *    freed using cdk_free_text_list().
  *
  * Convert a text string from the encoding as it is stored
  * in a property into an array of strings in the encoding of
@@ -353,7 +353,7 @@ _gdk_x11_display_send_selection_notify (GdkDisplay       *display,
  * Since: 2.24
  */
 gint
-gdk_x11_display_text_property_to_text_list (GdkDisplay   *display,
+cdk_x11_display_text_property_to_text_list (GdkDisplay   *display,
                                             GdkAtom       encoding,
                                             gint          format,
                                             const guchar *text,
@@ -369,11 +369,11 @@ gdk_x11_display_text_property_to_text_list (GdkDisplay   *display,
   if (list)
     *list = NULL;
 
-  if (gdk_display_is_closed (display))
+  if (cdk_display_is_closed (display))
     return 0;
 
   property.value = (guchar *)text;
-  property.encoding = gdk_x11_atom_to_xatom_for_display (display, encoding);
+  property.encoding = cdk_x11_atom_to_xatom_for_display (display, encoding);
   property.format = format;
   property.nitems = length;
   res = XmbTextPropertyToTextList (GDK_DISPLAY_XDISPLAY (display), &property,
@@ -392,17 +392,17 @@ gdk_x11_display_text_property_to_text_list (GdkDisplay   *display,
 }
 
 /**
- * gdk_x11_free_text_list:
+ * cdk_x11_free_text_list:
  * @list: the value stored in the @list parameter by
- *   a call to gdk_x11_display_text_property_to_text_list().
+ *   a call to cdk_x11_display_text_property_to_text_list().
  *
  * Frees the array of strings created by
- * gdk_x11_display_text_property_to_text_list().
+ * cdk_x11_display_text_property_to_text_list().
  *
  * Since: 2.24
  */
 void
-gdk_x11_free_text_list (gchar **list)
+cdk_x11_free_text_list (gchar **list)
 {
   g_return_if_fail (list != NULL);
 
@@ -488,7 +488,7 @@ make_list (const gchar  *text,
 }
 
 gint
-_gdk_x11_display_text_property_to_utf8_list (GdkDisplay    *display,
+_cdk_x11_display_text_property_to_utf8_list (GdkDisplay    *display,
                                              GdkAtom        encoding,
                                              gint           format,
                                              const guchar  *text,
@@ -499,7 +499,7 @@ _gdk_x11_display_text_property_to_utf8_list (GdkDisplay    *display,
     {
       return make_list ((gchar *)text, length, TRUE, list);
     }
-  else if (encoding == gdk_atom_intern_static_string ("UTF8_STRING"))
+  else if (encoding == cdk_atom_intern_static_string ("UTF8_STRING"))
     {
       return make_list ((gchar *)text, length, FALSE, list);
     }
@@ -515,7 +515,7 @@ _gdk_x11_display_text_property_to_utf8_list (GdkDisplay    *display,
 
       /* Probably COMPOUND text, we fall back to Xlib routines
        */
-      local_count = gdk_x11_display_text_property_to_text_list (display,
+      local_count = cdk_x11_display_text_property_to_text_list (display,
                                                                 encoding,
                                                                 format,
                                                                 text,
@@ -561,7 +561,7 @@ _gdk_x11_display_text_property_to_utf8_list (GdkDisplay    *display,
         }
 
       if (local_count)
-        gdk_x11_free_text_list (local_list);
+        cdk_x11_free_text_list (local_list);
 
       if (list)
         (*list)[count] = NULL;
@@ -571,7 +571,7 @@ _gdk_x11_display_text_property_to_utf8_list (GdkDisplay    *display,
 }
 
 /**
- * gdk_x11_display_string_to_compound_text:
+ * cdk_x11_display_string_to_compound_text:
  * @display: (type GdkX11Display): the #GdkDisplay where the encoding is defined
  * @str: a nul-terminated string
  * @encoding: (out) (transfer none): location to store the encoding atom
@@ -589,7 +589,7 @@ _gdk_x11_display_text_property_to_utf8_list (GdkDisplay    *display,
  * Since: 2.24
  */
 gint
-gdk_x11_display_string_to_compound_text (GdkDisplay  *display,
+cdk_x11_display_string_to_compound_text (GdkDisplay  *display,
                                          const gchar *str,
                                          GdkAtom     *encoding,
                                          gint        *format,
@@ -601,7 +601,7 @@ gdk_x11_display_string_to_compound_text (GdkDisplay  *display,
 
   g_return_val_if_fail (GDK_IS_DISPLAY (display), 0);
 
-  if (gdk_display_is_closed (display))
+  if (cdk_display_is_closed (display))
     res = XLocaleNotSupported;
   else
     res = XmbTextListToTextProperty (GDK_DISPLAY_XDISPLAY (display),
@@ -616,7 +616,7 @@ gdk_x11_display_string_to_compound_text (GdkDisplay  *display,
     }
 
   if (encoding)
-    *encoding = gdk_x11_xatom_to_atom_for_display (display, property.encoding);
+    *encoding = cdk_x11_xatom_to_atom_for_display (display, property.encoding);
   if (format)
     *format = property.format;
   if (ctext)
@@ -685,14 +685,14 @@ sanitize_utf8 (const gchar *src,
 }
 
 gchar *
-_gdk_x11_display_utf8_to_string_target (GdkDisplay  *display,
+_cdk_x11_display_utf8_to_string_target (GdkDisplay  *display,
                                         const gchar *str)
 {
   return sanitize_utf8 (str, TRUE);
 }
 
 /**
- * gdk_x11_display_utf8_to_compound_text:
+ * cdk_x11_display_utf8_to_compound_text:
  * @display: (type GdkX11Display): a #GdkDisplay
  * @str: a UTF-8 string
  * @encoding: (out): location to store resulting encoding
@@ -709,7 +709,7 @@ _gdk_x11_display_utf8_to_string_target (GdkDisplay  *display,
  * Since: 2.24
  */
 gboolean
-gdk_x11_display_utf8_to_compound_text (GdkDisplay  *display,
+cdk_x11_display_utf8_to_compound_text (GdkDisplay  *display,
                                        const gchar *str,
                                        GdkAtom     *encoding,
                                        gint        *format,
@@ -760,7 +760,7 @@ gdk_x11_display_utf8_to_compound_text (GdkDisplay  *display,
   else
     locale_str = tmp_str;
 
-  result = gdk_x11_display_string_to_compound_text (display, locale_str,
+  result = cdk_x11_display_string_to_compound_text (display, locale_str,
                                                     encoding, format,
                                                     ctext, length);
   result = (result == Success? TRUE : FALSE);
@@ -771,16 +771,16 @@ gdk_x11_display_utf8_to_compound_text (GdkDisplay  *display,
 }
 
 /**
- * gdk_x11_free_compound_text:
+ * cdk_x11_free_compound_text:
  * @ctext: The pointer stored in @ctext from a call to
- *   gdk_x11_display_string_to_compound_text().
+ *   cdk_x11_display_string_to_compound_text().
  *
- * Frees the data returned from gdk_x11_display_string_to_compound_text().
+ * Frees the data returned from cdk_x11_display_string_to_compound_text().
  *
  * Since: 2.24
  */
 void
-gdk_x11_free_compound_text (guchar *ctext)
+cdk_x11_free_compound_text (guchar *ctext)
 {
   if (ctext)
     XFree (ctext);

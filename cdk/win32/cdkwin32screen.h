@@ -26,14 +26,14 @@
 #define __GDK_WIN32_SCREEN_H__
 
 #if !defined (__GDKWIN32_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkwin32.h> can be included directly."
+#error "Only <cdk/cdkwin32.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_WIN32_SCREEN              (gdk_win32_screen_get_type ())
+#define GDK_TYPE_WIN32_SCREEN              (cdk_win32_screen_get_type ())
 #define GDK_WIN32_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_SCREEN, GdkWin32Screen))
 #define GDK_WIN32_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_SCREEN, GdkWin32ScreenClass))
 #define GDK_IS_WIN32_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_SCREEN))
@@ -48,7 +48,7 @@ typedef GdkScreen GdkWin32Screen;
 typedef struct _GdkWin32ScreenClass GdkWin32ScreenClass;
 
 GDK_AVAILABLE_IN_ALL
-GType    gdk_win32_screen_get_type          (void);
+GType    cdk_win32_screen_get_type          (void);
 
 G_END_DECLS
 

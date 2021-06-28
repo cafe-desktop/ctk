@@ -27,13 +27,13 @@ G_DEFINE_TYPE (CtkMiscImpl, _ctk_misc_impl, ATK_TYPE_MISC)
 static void
 ctk_misc_impl_threads_enter (AtkMisc *misc)
 {
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 }
 
 static void
 ctk_misc_impl_threads_leave (AtkMisc *misc)
 {
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static void

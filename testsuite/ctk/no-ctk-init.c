@@ -19,21 +19,21 @@
 #include <locale.h>
 
 /* This test tests functions that are supposed to work without calling ctk_init()
- * or gdk_init().
+ * or cdk_init().
  */
 
 static void
-test_gdk_cairo_set_source_pixbuf (void)
+test_cdk_cairo_set_source_pixbuf (void)
 {
   cairo_surface_t *surface;
   cairo_t *cr;
   GdkPixbuf *pixbuf;
 
-  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 5, 5);
+  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 5, 5);
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 10, 10);
   cr = cairo_create (surface);
 
-  gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+  cdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
   cairo_paint (cr);
 
   cairo_destroy (cr);
@@ -52,7 +52,7 @@ main (int   argc,
   g_test_bug_base ("http://bugzilla.gnome.org/show_bug.cgi?id=%s");
 
 
-  g_test_add_func ("/no_ctk_init/gdk_cairo_set_source_pixbuf", test_gdk_cairo_set_source_pixbuf);
+  g_test_add_func ("/no_ctk_init/cdk_cairo_set_source_pixbuf", test_cdk_cairo_set_source_pixbuf);
 
 
   return g_test_run();

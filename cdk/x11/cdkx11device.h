@@ -19,15 +19,15 @@
 #define __GDK_X11_DEVICE_H__
 
 #if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkx.h> can be included directly."
+#error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
 GDK_AVAILABLE_IN_3_2
-gint  gdk_x11_device_get_id  (GdkDevice *device);
+gint  cdk_x11_device_get_id  (GdkDevice *device);
 
 G_END_DECLS
 

@@ -30,7 +30,7 @@
 #error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctkwidget.h>
 #ifdef G_PLATFORM_WIN32
 #include <ctk/ctkbox.h>

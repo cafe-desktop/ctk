@@ -638,7 +638,7 @@ ctk_accel_group_connect (CtkAccelGroup   *accel_group,
   g_object_ref (accel_group);
   if (!closure->is_invalid)
     quick_accel_add (accel_group,
-                     gdk_keyval_to_lower (accel_key),
+                     cdk_keyval_to_lower (accel_key),
                      accel_mods, accel_flags, closure, 0);
   g_object_unref (accel_group);
 }
@@ -682,7 +682,7 @@ ctk_accel_group_connect_by_path (CtkAccelGroup *accel_group,
 
   if (ctk_accel_map_lookup_entry (accel_path, &key))
     {
-      accel_key = gdk_keyval_to_lower (key.accel_key);
+      accel_key = cdk_keyval_to_lower (key.accel_key);
       accel_mods = key.accel_mods;
     }
 
@@ -750,7 +750,7 @@ ctk_accel_group_disconnect_key (CtkAccelGroup   *accel_group,
 
   g_object_ref (accel_group);
 
-  accel_key = gdk_keyval_to_lower (accel_key);
+  accel_key = cdk_keyval_to_lower (accel_key);
   entries = quick_accel_find (accel_group, accel_key, accel_mods, &n);
   while (n--)
     {
@@ -839,7 +839,7 @@ ctk_accel_group_query (CtkAccelGroup   *accel_group,
 
   g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), NULL);
 
-  entries = quick_accel_find (accel_group, gdk_keyval_to_lower (accel_key), accel_mods, &n);
+  entries = quick_accel_find (accel_group, cdk_keyval_to_lower (accel_key), accel_mods, &n);
 
   if (n_entries)
     *n_entries = entries ? n : 0;
@@ -1354,7 +1354,7 @@ ctk_accelerator_parse_with_keycode (const gchar     *accelerator,
             }
 	  else
 	    {
-	      keyval = gdk_keyval_from_name (accelerator);
+	      keyval = cdk_keyval_from_name (accelerator);
 	      if (keyval == GDK_KEY_VoidSymbol)
 	        {
 	          error = TRUE;
@@ -1368,9 +1368,9 @@ ctk_accelerator_parse_with_keycode (const gchar     *accelerator,
               GdkKeymapKey *keys;
               gint n_keys, i, j;
 
-              keymap = gdk_keymap_get_for_display (gdk_display_get_default ());
+              keymap = cdk_keymap_get_for_display (cdk_display_get_default ());
 
-              if (!gdk_keymap_get_entries_for_keyval (keymap, keyval, &keys, &n_keys))
+              if (!cdk_keymap_get_entries_for_keyval (keymap, keyval, &keys, &n_keys))
                 {
                   /* Not in keymap */
                   error = TRUE;
@@ -1426,7 +1426,7 @@ out:
     keyval = mods = 0;
 
   if (accelerator_key)
-    *accelerator_key = gdk_keyval_to_lower (keyval);
+    *accelerator_key = cdk_keyval_to_lower (keyval);
   if (accelerator_mods)
     *accelerator_mods = mods;
 }
@@ -1445,7 +1445,7 @@ out:
  *
  * The parser is fairly liberal and allows lower or upper case, and also
  * abbreviations such as “<Ctl>” and “<Ctrl>”. Key names are parsed using
- * gdk_keyval_from_name(). For character keys the name is not the symbol,
+ * cdk_keyval_from_name(). For character keys the name is not the symbol,
  * but the lowercase name, e.g. one would use “<Ctrl>minus” instead of
  * “<Ctrl>-”.
  *
@@ -1486,9 +1486,9 @@ ctk_accelerator_name_with_keycode (GdkDisplay      *display,
   gchar *ctk_name;
 
   if (display == NULL)
-    display = gdk_display_manager_get_default_display (gdk_display_manager_get ());
+    display = cdk_display_manager_get_default_display (cdk_display_manager_get ());
 
-  gdk_keymap_add_virtual_modifiers (gdk_keymap_get_for_display (display), &accelerator_mods);
+  cdk_keymap_add_virtual_modifiers (cdk_keymap_get_for_display (display), &accelerator_mods);
   ctk_name = ctk_accelerator_name (accelerator_key, accelerator_mods);
 
   if (!accelerator_key)
@@ -1539,7 +1539,7 @@ ctk_accelerator_name (guint           accelerator_key,
 
   accelerator_mods &= GDK_MODIFIER_MASK;
 
-  keyval_name = gdk_keyval_name (gdk_keyval_to_lower (accelerator_key));
+  keyval_name = cdk_keyval_name (cdk_keyval_to_lower (accelerator_key));
   if (!keyval_name)
     keyval_name = "";
 
@@ -1673,9 +1673,9 @@ ctk_accelerator_get_label_with_keycode (GdkDisplay      *display,
   gchar *ctk_label;
 
   if (display == NULL)
-    display = gdk_display_manager_get_default_display (gdk_display_manager_get ());
+    display = cdk_display_manager_get_default_display (cdk_display_manager_get ());
 
-  gdk_keymap_add_virtual_modifiers (gdk_keymap_get_for_display (display), &accelerator_mods);
+  cdk_keymap_add_virtual_modifiers (cdk_keymap_get_for_display (display), &accelerator_mods);
   ctk_label = ctk_accelerator_get_label (accelerator_key, accelerator_mods);
 
   if (!accelerator_key)
@@ -1758,13 +1758,13 @@ ctk_accelerator_get_default_mod_mask (void)
     {
       GdkDisplay *display;
 
-      display = gdk_display_get_default ();
+      display = cdk_display_get_default ();
 
       if (!display)
         return GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK;
 
       default_accel_mod_mask =
-          gdk_keymap_get_modifier_mask (gdk_keymap_get_for_display (display),
+          cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
 				        GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK);
     }
 

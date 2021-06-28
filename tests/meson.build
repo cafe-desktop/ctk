@@ -5,7 +5,7 @@ ctk_tests = [
   ['scrolling-performance', ['frame-stats.c', 'variable.c']],
   ['blur-performance', ['../ctk/ctkcairoblur.c']],
   ['flicker'],
-  ['gdkgears', ['ctkgears.c']],
+  ['cdkgears', ['ctkgears.c']],
   ['listmodel'],
   ['motion-compression'],
   ['styleexamples'],

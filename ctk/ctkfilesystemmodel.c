@@ -1141,7 +1141,7 @@ ctk_file_system_model_got_files (GObject *object, GAsyncResult *res, gpointer da
   GList *walk, *files;
   GError *error = NULL;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   files = g_file_enumerator_next_files_finish (enumerator, res, &error);
 
@@ -1150,7 +1150,7 @@ ctk_file_system_model_got_files (GObject *object, GAsyncResult *res, gpointer da
       if (model->dir_thaw_source == 0)
         {
           freeze_updates (model);
-          model->dir_thaw_source = gdk_threads_add_timeout_full (IO_PRIORITY + 1,
+          model->dir_thaw_source = cdk_threads_add_timeout_full (IO_PRIORITY + 1,
                                                                  50,
                                                                  thaw_func,
                                                                  model,
@@ -1209,7 +1209,7 @@ ctk_file_system_model_got_files (GObject *object, GAsyncResult *res, gpointer da
         g_error_free (error);
     }
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 /* Helper for ctk_file_system_model_query_done and
@@ -1247,11 +1247,11 @@ ctk_file_system_model_query_done (GObject *     object,
                                   GAsyncResult *res,
                                   gpointer      data)
 {
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   query_done_helper (object, res, data, FALSE);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static void
@@ -1276,9 +1276,9 @@ ctk_file_system_model_monitor_change (GFileMonitor *      monitor,
                                  model);
         break;
       case G_FILE_MONITOR_EVENT_DELETED:
-	gdk_threads_enter ();
+	cdk_threads_enter ();
         remove_file (model, file);
-	gdk_threads_leave ();
+	cdk_threads_leave ();
         break;
       case G_FILE_MONITOR_EVENT_CHANGES_DONE_HINT:
         /* FIXME: use freeze/thaw with this somehow? */
@@ -1297,7 +1297,7 @@ ctk_file_system_model_got_enumerator (GObject *dir, GAsyncResult *res, gpointer 
   GFileEnumerator *enumerator;
   GError *error = NULL;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   enumerator = g_file_enumerate_children_finish (G_FILE (dir), res, &error);
   if (enumerator == NULL)
@@ -1328,7 +1328,7 @@ ctk_file_system_model_got_enumerator (GObject *dir, GAsyncResult *res, gpointer 
                           model);
     }
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static void

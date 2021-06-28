@@ -32,7 +32,7 @@
 
 #include "ctkplacessidebarprivate.h"
 #include "ctksidebarrowprivate.h"
-#include "gdk/gdkkeysyms.h"
+#include "cdk/cdkkeysyms.h"
 #include "ctkbookmarksmanager.h"
 #include "ctkcelllayout.h"
 #include "ctkcellrenderertext.h"
@@ -1931,7 +1931,7 @@ drag_motion_callback (CtkWidget      *widget,
 
   g_signal_stop_emission_by_name (sidebar->list_box, "drag-motion");
 
-  gdk_drag_status (context, action, time);
+  cdk_drag_status (context, action, time);
 
   return TRUE;
 }
@@ -2010,7 +2010,7 @@ drag_data_get_callback (CtkWidget        *widget,
   CtkPlacesSidebar *sidebar = CTK_PLACES_SIDEBAR (user_data);
   GdkAtom target = ctk_selection_data_get_target (data);
 
-  if (target == gdk_atom_intern_static_string ("DND_CTK_SIDEBAR_ROW"))
+  if (target == cdk_atom_intern_static_string ("DND_CTK_SIDEBAR_ROW"))
     {
       ctk_selection_data_set (data,
                               target,
@@ -2105,10 +2105,10 @@ drag_data_received_callback (CtkWidget        *list_box,
       GList *source_file_list;
 
       /* file transfer requested */
-      real_action = gdk_drag_context_get_selected_action (context);
+      real_action = cdk_drag_context_get_selected_action (context);
 
       if (real_action == GDK_ACTION_ASK)
-        real_action = emit_drag_action_ask (sidebar, gdk_drag_context_get_actions (context));
+        real_action = emit_drag_action_ask (sidebar, cdk_drag_context_get_actions (context));
 
       if (real_action > 0)
         {

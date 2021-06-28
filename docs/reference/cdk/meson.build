@@ -1,24 +1,24 @@
 private_headers = [
-  'gdkintl.h',
-  'gdkmarshalers.h',
-  'gdkkeysyms.h',
-  'gdkinternals.h',
-  'gdkprivate.h',
-  'gdk-private.h',
-  'gdkapplaunchcontextprivate.h',
-  'gdkcursorprivate.h',
-  'gdkdevicemanagerprivate.h',
-  'gdkdeviceprivate.h',
-  'gdkdisplaymanagerprivate.h',
-  'gdkdisplayprivate.h',
-  'gdkdndprivate.h',
-  'gdkframeclockprivate.h',
-  'gdkglcontextprivate.h',
-  'gdkkeysprivate.h',
-  'gdkscreenprivate.h',
-  'gdkseatdefaultprivate.h',
-  'gdkseatprivate.h',
-  'gdkvisualprivate.h',
+  'cdkintl.h',
+  'cdkmarshalers.h',
+  'cdkkeysyms.h',
+  'cdkinternals.h',
+  'cdkprivate.h',
+  'cdk-private.h',
+  'cdkapplaunchcontextprivate.h',
+  'cdkcursorprivate.h',
+  'cdkdevicemanagerprivate.h',
+  'cdkdeviceprivate.h',
+  'cdkdisplaymanagerprivate.h',
+  'cdkdisplayprivate.h',
+  'cdkdndprivate.h',
+  'cdkframeclockprivate.h',
+  'cdkglcontextprivate.h',
+  'cdkkeysprivate.h',
+  'cdkscreenprivate.h',
+  'cdkseatdefaultprivate.h',
+  'cdkseatprivate.h',
+  'cdkvisualprivate.h',
   'keyname-table.h',
   'win32',
   'x11',
@@ -144,26 +144,26 @@ images = [
   'images/zoom_out_cursor.png',
 ]
 
-src_dir = [ gdkinc ]
+src_dir = [ cdkinc ]
 
 if x11_enabled
-  src_dir += [ gdkx11_inc ]
+  src_dir += [ cdkx11_inc ]
 endif
 
 if wayland_enabled
-  src_dir += [ gdkwayland_inc ]
+  src_dir += [ cdkwayland_inc ]
 endif
 
 if get_option('gtk_doc')
 
     configure_file(input: 'version.xml.in', output: 'version.xml', configuration: version_conf)
 
-    gnome.gtkdoc('gdk3',
+    gnome.gtkdoc('cdk3',
                  mode: 'none',
-                 main_xml: 'gdk-docs.sgml',
+                 main_xml: 'cdk-docs.sgml',
                  src_dir: src_dir,
-                 dependencies: libgdk_dep,
-                 gobject_typesfile: join_paths(meson.current_source_dir(), 'gdk3.types'),
+                 dependencies: libcdk_dep,
+                 gobject_typesfile: join_paths(meson.current_source_dir(), 'cdk3.types'),
                  scan_args: [
                    '--ignore-decorators=_GDK_EXTERN|G_GNUC_WARN_UNUSED_RESULT',
                    '--ignore-headers=' + ' '.join(private_headers),

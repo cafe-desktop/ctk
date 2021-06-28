@@ -28,9 +28,9 @@
 #define __GDK_INTERNALS_H__
 
 #include <gio/gio.h>
-#include "gdkwindowimpl.h"
-#include "gdkdisplay.h"
-#include "gdkprivate.h"
+#include "cdkwindowimpl.h"
+#include "cdkdisplay.h"
+#include "cdkprivate.h"
 
 G_BEGIN_DECLS
 
@@ -104,17 +104,17 @@ typedef enum {
   GDK_GL_GLES                   = 1 << 6
 } GdkGLFlags;
 
-extern GList            *_gdk_default_filters;
-extern GdkWindow        *_gdk_parent_root;
+extern GList            *_cdk_default_filters;
+extern GdkWindow        *_cdk_parent_root;
 
-extern guint _gdk_debug_flags;
-extern guint _gdk_gl_flags;
-extern GdkRenderingMode    _gdk_rendering_mode;
-extern gboolean _gdk_debug_updates;
+extern guint _cdk_debug_flags;
+extern guint _cdk_gl_flags;
+extern GdkRenderingMode    _cdk_rendering_mode;
+extern gboolean _cdk_debug_updates;
 
 #ifdef G_ENABLE_DEBUG
 
-#define GDK_DEBUG_CHECK(type) G_UNLIKELY (_gdk_debug_flags & GDK_DEBUG_##type)
+#define GDK_DEBUG_CHECK(type) G_UNLIKELY (_cdk_debug_flags & GDK_DEBUG_##type)
 
 #define GDK_NOTE(type,action)                G_STMT_START {     \
     if (GDK_DEBUG_CHECK (type))                                 \
@@ -235,14 +235,14 @@ struct _GdkWindow
   /* The paint logic here is a bit complex because of our intermingling of
    * cairo and GL. Let's first go over the cairo-alone case:
    *
-   *  1) gdk_window_begin_paint_region() is called with an update region. If
+   *  1) cdk_window_begin_paint_region() is called with an update region. If
    *     the backend wants it, we redirect drawing to a temporary surface
    *     sized the same as the update region and set `surface_needs_composite`
    *     to TRUE. Otherwise, we paint directly onto the real server-side window.
    *
-   *  2) Things paint with cairo using gdk_cairo_create().
+   *  2) Things paint with cairo using cdk_cairo_create().
    *
-   *  3) When everything is painted, the user calls gdk_window_end_paint().
+   *  3) When everything is painted, the user calls cdk_window_end_paint().
    *     If there was a temporary surface, this is composited back onto the
    *     real backing surface in the appropriate places.
    *
@@ -252,31 +252,31 @@ struct _GdkWindow
    *
    * When we add GL to the mix, we have this instead:
    *
-   *  1) gdk_window_begin_paint_region() is called with an update region like
+   *  1) cdk_window_begin_paint_region() is called with an update region like
    *     before. We always redirect cairo drawing to a temporary surface when
    *     GL is enabled.
    *
-   *  2) Things paint with cairo using gdk_cairo_create(). Whenever
-   *     something paints, it calls gdk_window_mark_paint_from_clip() to mark
+   *  2) Things paint with cairo using cdk_cairo_create(). Whenever
+   *     something paints, it calls cdk_window_mark_paint_from_clip() to mark
    *     which regions it has painted in software. We'll learn what this does
    *     soon.
    *
-   *  3) Something paints with GL and uses gdk_cairo_draw_from_gl() to
+   *  3) Something paints with GL and uses cdk_cairo_draw_from_gl() to
    *     composite back into the scene. We paint this onto the backing
    *     store for the window *immediately* by using GL, rather than
    *     painting to the temporary surface, and keep track of the area that
    *     we've painted in `flushed_region`.
    *
    *  4) Something paints using software again. It calls
-   *     gdk_window_mark_paint_from_clip(), which subtracts the region it
+   *     cdk_window_mark_paint_from_clip(), which subtracts the region it
    *     has painted from `flushed_region` and adds the region to
    *     `needs_blended_region`.
    *
-   *  5) Something paints using GL again, using gdk_cairo_draw_from_gl().
+   *  5) Something paints using GL again, using cdk_cairo_draw_from_gl().
    *     It paints directly to the backing store, removes the region it
    *     painted from `needs_blended_region`, and adds to `flushed_region`.
    *
-   *  6) gdk_window_end_paint() is called. It composites the temporary surface
+   *  6) cdk_window_end_paint() is called. It composites the temporary surface
    *     back to the window, using GL, except it doesn't bother copying
    *     `flushed_region`, and when it paints `needs_blended_region`, it also
    *     turns on GL blending.
@@ -292,7 +292,7 @@ struct _GdkWindow
    *
    *   * `needs_blended_region` - This is the portion of `region` that
    *     GL contents that have part cairo drawing painted over it.
-   *     gdk_window_end_paint() will draw this region using blending.
+   *     cdk_window_end_paint() will draw this region using blending.
    *
    * `flushed_region` and `needs_blended_region` never intersect, and the
    * rest of `region` that isn't covered by either is the "opaque region",
@@ -399,58 +399,58 @@ struct _GdkWindow
 #define GDK_WINDOW_TYPE(d) ((((GdkWindow *)(d)))->window_type)
 #define GDK_WINDOW_DESTROYED(d) (((GdkWindow *)(d))->destroyed)
 
-extern gchar     *_gdk_display_name;
-extern gint       _gdk_screen_number;
-extern gchar     *_gdk_display_arg_name;
-extern gboolean   _gdk_disable_multidevice;
+extern gchar     *_cdk_display_name;
+extern gint       _cdk_screen_number;
+extern gchar     *_cdk_display_arg_name;
+extern gboolean   _cdk_disable_multidevice;
 
-GdkEvent* _gdk_event_unqueue (GdkDisplay *display);
+GdkEvent* _cdk_event_unqueue (GdkDisplay *display);
 
-void _gdk_event_filter_unref        (GdkWindow      *window,
+void _cdk_event_filter_unref        (GdkWindow      *window,
 				     GdkEventFilter *filter);
 
-void     gdk_event_set_pointer_emulated (GdkEvent *event,
+void     cdk_event_set_pointer_emulated (GdkEvent *event,
                                          gboolean  emulated);
 
-void     gdk_event_set_scancode        (GdkEvent *event,
+void     cdk_event_set_scancode        (GdkEvent *event,
                                         guint16 scancode);
 
-void     gdk_event_set_seat              (GdkEvent *event,
+void     cdk_event_set_seat              (GdkEvent *event,
                                           GdkSeat  *seat);
 
 /* The IME IM module needs this symbol exported. */
 _GDK_EXTERN
-gboolean gdk_event_is_allocated      (const GdkEvent *event);
+gboolean cdk_event_is_allocated      (const GdkEvent *event);
 
-void   _gdk_event_emit               (GdkEvent   *event);
-GList* _gdk_event_queue_find_first   (GdkDisplay *display);
-void   _gdk_event_queue_remove_link  (GdkDisplay *display,
+void   _cdk_event_emit               (GdkEvent   *event);
+GList* _cdk_event_queue_find_first   (GdkDisplay *display);
+void   _cdk_event_queue_remove_link  (GdkDisplay *display,
                                       GList      *node);
-GList* _gdk_event_queue_append       (GdkDisplay *display,
+GList* _cdk_event_queue_append       (GdkDisplay *display,
                                       GdkEvent   *event);
-GList* _gdk_event_queue_insert_after (GdkDisplay *display,
+GList* _cdk_event_queue_insert_after (GdkDisplay *display,
                                       GdkEvent   *after_event,
                                       GdkEvent   *event);
-GList* _gdk_event_queue_insert_before(GdkDisplay *display,
+GList* _cdk_event_queue_insert_before(GdkDisplay *display,
                                       GdkEvent   *after_event,
                                       GdkEvent   *event);
 
-void    _gdk_event_queue_handle_motion_compression (GdkDisplay *display);
-void    _gdk_event_queue_flush                     (GdkDisplay       *display);
+void    _cdk_event_queue_handle_motion_compression (GdkDisplay *display);
+void    _cdk_event_queue_flush                     (GdkDisplay       *display);
 
-void   _gdk_event_button_generate    (GdkDisplay *display,
+void   _cdk_event_button_generate    (GdkDisplay *display,
                                       GdkEvent   *event);
 
-void _gdk_windowing_event_data_copy (const GdkEvent *src,
+void _cdk_windowing_event_data_copy (const GdkEvent *src,
                                      GdkEvent       *dst);
-void _gdk_windowing_event_data_free (GdkEvent       *event);
+void _cdk_windowing_event_data_free (GdkEvent       *event);
 
-void _gdk_set_window_state (GdkWindow *window,
+void _cdk_set_window_state (GdkWindow *window,
                             GdkWindowState new_state);
 
-gboolean        _gdk_cairo_surface_extents       (cairo_surface_t *surface,
+gboolean        _cdk_cairo_surface_extents       (cairo_surface_t *surface,
                                                   GdkRectangle    *extents);
-void            gdk_gl_texture_from_surface      (cairo_surface_t *surface,
+void            cdk_gl_texture_from_surface      (cairo_surface_t *surface,
                                                   cairo_region_t  *region);
 
 typedef struct {
@@ -458,17 +458,17 @@ typedef struct {
   float u1, v1, u2, v2;
 } GdkTexturedQuad;
 
-void           gdk_gl_texture_quads               (GdkGLContext *paint_context,
+void           cdk_gl_texture_quads               (GdkGLContext *paint_context,
                                                    guint texture_target,
                                                    int n_quads,
                                                    GdkTexturedQuad *quads,
                                                    gboolean flip_colors);
 
-void            gdk_cairo_surface_mark_as_direct (cairo_surface_t *surface,
+void            cdk_cairo_surface_mark_as_direct (cairo_surface_t *surface,
                                                   GdkWindow       *window);
-cairo_region_t *gdk_cairo_region_from_clip       (cairo_t         *cr);
+cairo_region_t *cdk_cairo_region_from_clip       (cairo_t         *cr);
 
-void            gdk_cairo_set_drawing_context    (cairo_t           *cr,
+void            cdk_cairo_set_drawing_context    (cairo_t           *cr,
                                                   GdkDrawingContext *context);
 
 /*************************************
@@ -476,29 +476,29 @@ void            gdk_cairo_set_drawing_context    (cairo_t           *cr,
  *************************************/
 
 cairo_surface_t *
-           _gdk_window_ref_cairo_surface (GdkWindow *window);
+           _cdk_window_ref_cairo_surface (GdkWindow *window);
 
-void       _gdk_window_destroy           (GdkWindow      *window,
+void       _cdk_window_destroy           (GdkWindow      *window,
                                           gboolean        foreign_destroy);
-void       _gdk_window_clear_update_area (GdkWindow      *window);
-void       _gdk_window_update_size       (GdkWindow      *window);
-gboolean   _gdk_window_update_viewable   (GdkWindow      *window);
-GdkGLContext * gdk_window_get_paint_gl_context (GdkWindow *window,
+void       _cdk_window_clear_update_area (GdkWindow      *window);
+void       _cdk_window_update_size       (GdkWindow      *window);
+gboolean   _cdk_window_update_viewable   (GdkWindow      *window);
+GdkGLContext * cdk_window_get_paint_gl_context (GdkWindow *window,
                                                 GError   **error);
-void gdk_window_get_unscaled_size (GdkWindow *window,
+void cdk_window_get_unscaled_size (GdkWindow *window,
                                    int *unscaled_width,
                                    int *unscaled_height);
 
-GdkDrawingContext *gdk_window_get_drawing_context (GdkWindow *window);
+GdkDrawingContext *cdk_window_get_drawing_context (GdkWindow *window);
 
-cairo_region_t *gdk_window_get_current_paint_region (GdkWindow *window);
+cairo_region_t *cdk_window_get_current_paint_region (GdkWindow *window);
 
-void       _gdk_window_process_updates_recurse (GdkWindow *window,
+void       _cdk_window_process_updates_recurse (GdkWindow *window,
                                                 cairo_region_t *expose_region);
 
-void       _gdk_screen_set_resolution    (GdkScreen      *screen,
+void       _cdk_screen_set_resolution    (GdkScreen      *screen,
                                           gdouble         dpi);
-void       _gdk_screen_close             (GdkScreen      *screen);
+void       _cdk_screen_close             (GdkScreen      *screen);
 
 /*****************************************
  * Interfaces provided by windowing code *
@@ -506,35 +506,35 @@ void       _gdk_screen_close             (GdkScreen      *screen);
 
 /* Font/string functions implemented in module-specific code */
 
-void _gdk_cursor_destroy (GdkCursor *cursor);
+void _cdk_cursor_destroy (GdkCursor *cursor);
 
-extern const GOptionEntry _gdk_windowing_args[];
+extern const GOptionEntry _cdk_windowing_args[];
 
-void _gdk_windowing_got_event                (GdkDisplay       *display,
+void _cdk_windowing_got_event                (GdkDisplay       *display,
                                               GList            *event_link,
                                               GdkEvent         *event,
                                               gulong            serial);
 
 #define GDK_WINDOW_IS_MAPPED(window) (((window)->state & GDK_WINDOW_STATE_WITHDRAWN) == 0)
 
-void _gdk_window_invalidate_for_expose (GdkWindow       *window,
+void _cdk_window_invalidate_for_expose (GdkWindow       *window,
                                         cairo_region_t       *region);
 
-GdkWindow * _gdk_window_find_child_at (GdkWindow *window,
+GdkWindow * _cdk_window_find_child_at (GdkWindow *window,
                                        double x, double y);
-GdkWindow * _gdk_window_find_descendant_at (GdkWindow *toplevel,
+GdkWindow * _cdk_window_find_descendant_at (GdkWindow *toplevel,
                                             double x, double y,
                                             double *found_x,
                                             double *found_y);
 
-GdkEvent * _gdk_make_event (GdkWindow    *window,
+GdkEvent * _cdk_make_event (GdkWindow    *window,
                             GdkEventType  type,
                             GdkEvent     *event_in_queue,
                             gboolean      before_event);
-gboolean _gdk_window_event_parent_of (GdkWindow *parent,
+gboolean _cdk_window_event_parent_of (GdkWindow *parent,
                                       GdkWindow *child);
 
-void _gdk_synthesize_crossing_events (GdkDisplay                 *display,
+void _cdk_synthesize_crossing_events (GdkDisplay                 *display,
                                       GdkWindow                  *src,
                                       GdkWindow                  *dest,
                                       GdkDevice                  *device,
@@ -547,28 +547,28 @@ void _gdk_synthesize_crossing_events (GdkDisplay                 *display,
 				      GdkEvent                   *event_in_queue,
 				      gulong                      serial,
 				      gboolean                    non_linear);
-void _gdk_display_set_window_under_pointer (GdkDisplay *display,
+void _cdk_display_set_window_under_pointer (GdkDisplay *display,
                                             GdkDevice  *device,
                                             GdkWindow  *window);
 
 
-void _gdk_synthesize_crossing_events_for_geometry_change (GdkWindow *changed_window);
+void _cdk_synthesize_crossing_events_for_geometry_change (GdkWindow *changed_window);
 
-gboolean    _gdk_window_has_impl (GdkWindow *window);
-GdkWindow * _gdk_window_get_impl_window (GdkWindow *window);
+gboolean    _cdk_window_has_impl (GdkWindow *window);
+GdkWindow * _cdk_window_get_impl_window (GdkWindow *window);
 
 /*****************************
  * offscreen window routines *
  *****************************/
-GType gdk_offscreen_window_get_type (void);
-void       _gdk_offscreen_window_new                 (GdkWindow     *window,
+GType cdk_offscreen_window_get_type (void);
+void       _cdk_offscreen_window_new                 (GdkWindow     *window,
                                                       GdkWindowAttr *attributes,
                                                       gint           attributes_mask);
-cairo_surface_t * _gdk_offscreen_window_create_surface (GdkWindow *window,
+cairo_surface_t * _cdk_offscreen_window_create_surface (GdkWindow *window,
                                                         gint       width,
                                                         gint       height);
 
-PangoDirection gdk_unichar_direction (gunichar ch);
+PangoDirection cdk_unichar_direction (gunichar ch);
 
 G_END_DECLS
 

@@ -18,7 +18,7 @@
  */
 
 /**
- * SECTION:gdkdevicepad
+ * SECTION:cdkdevicepad
  * @Short_description: Pad device interface
  * @Title: CtkDevicePad
  *
@@ -27,16 +27,16 @@
  * by the pad device.
  *
  * Tablet pads may contain one or more groups, each containing a subset
- * of the buttons/rings/strips available. gdk_device_pad_get_n_groups()
- * can be used to obtain the number of groups, gdk_device_pad_get_n_features()
- * and gdk_device_pad_get_feature_group() can be combined to find out the
+ * of the buttons/rings/strips available. cdk_device_pad_get_n_groups()
+ * can be used to obtain the number of groups, cdk_device_pad_get_n_features()
+ * and cdk_device_pad_get_feature_group() can be combined to find out the
  * number of buttons/rings/strips the device has, and how are they grouped.
  *
  * Each of those groups have different modes, which may be used to map
  * each individual pad feature to multiple actions. Only one mode is
  * effective (current) for each given group, different groups may have
  * different current modes. The number of available modes in a group can
- * be found out through gdk_device_pad_get_group_n_modes(), and the current
+ * be found out through cdk_device_pad_get_group_n_modes(), and the current
  * mode for a given group will be notified through the #GdkEventPadGroupMode
  * event.
  *
@@ -44,19 +44,19 @@
 
 #include "config.h"
 
-#include "gdkdevicepad.h"
-#include "gdkdevicepadprivate.h"
-#include "gdkdeviceprivate.h"
+#include "cdkdevicepad.h"
+#include "cdkdevicepadprivate.h"
+#include "cdkdeviceprivate.h"
 
-G_DEFINE_INTERFACE (GdkDevicePad, gdk_device_pad, GDK_TYPE_DEVICE)
+G_DEFINE_INTERFACE (GdkDevicePad, cdk_device_pad, GDK_TYPE_DEVICE)
 
 static void
-gdk_device_pad_default_init (GdkDevicePadInterface *pad)
+cdk_device_pad_default_init (GdkDevicePadInterface *pad)
 {
 }
 
 /**
- * gdk_device_pad_get_n_groups:
+ * cdk_device_pad_get_n_groups:
  * @pad: a #GdkDevicePad
  *
  * Returns the number of groups this pad device has. Pads have
@@ -69,7 +69,7 @@ gdk_device_pad_default_init (GdkDevicePadInterface *pad)
  * Since: 3.22
  **/
 gint
-gdk_device_pad_get_n_groups (GdkDevicePad *pad)
+cdk_device_pad_get_n_groups (GdkDevicePad *pad)
 {
   GdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
 
@@ -79,7 +79,7 @@ gdk_device_pad_get_n_groups (GdkDevicePad *pad)
 }
 
 /**
- * gdk_device_pad_get_group_n_modes:
+ * cdk_device_pad_get_group_n_modes:
  * @pad: a #GdkDevicePad
  * @group_idx: group to get the number of available modes from
  *
@@ -90,7 +90,7 @@ gdk_device_pad_get_n_groups (GdkDevicePad *pad)
  * Since: 3.22
  **/
 gint
-gdk_device_pad_get_group_n_modes (GdkDevicePad *pad,
+cdk_device_pad_get_group_n_modes (GdkDevicePad *pad,
                                   gint          group_idx)
 {
   GdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
@@ -102,7 +102,7 @@ gdk_device_pad_get_group_n_modes (GdkDevicePad *pad,
 }
 
 /**
- * gdk_device_pad_get_n_features:
+ * cdk_device_pad_get_n_features:
  * @pad: a #GdkDevicePad
  * @feature: a pad feature
  *
@@ -113,7 +113,7 @@ gdk_device_pad_get_group_n_modes (GdkDevicePad *pad,
  * Since: 3.22
  **/
 gint
-gdk_device_pad_get_n_features (GdkDevicePad        *pad,
+cdk_device_pad_get_n_features (GdkDevicePad        *pad,
                                GdkDevicePadFeature  feature)
 {
   GdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
@@ -124,7 +124,7 @@ gdk_device_pad_get_n_features (GdkDevicePad        *pad,
 }
 
 /**
- * gdk_device_pad_get_feature_group:
+ * cdk_device_pad_get_feature_group:
  * @pad: a #GdkDevicePad
  * @feature: the feature type to get the group from
  * @feature_idx: the index of the feature to get the group from
@@ -137,7 +137,7 @@ gdk_device_pad_get_n_features (GdkDevicePad        *pad,
  * Since: 3.22
  **/
 gint
-gdk_device_pad_get_feature_group (GdkDevicePad        *pad,
+cdk_device_pad_get_feature_group (GdkDevicePad        *pad,
                                   GdkDevicePadFeature  feature,
                                   gint                 idx)
 {

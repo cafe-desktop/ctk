@@ -7,8 +7,8 @@ SUBDIRS = \
 
 AM_CPPFLAGS = \
 	-I$(top_srcdir)				\
-	-I$(top_srcdir)/gdk			\
-	-I$(top_builddir)/gdk			\
+	-I$(top_srcdir)/cdk			\
+	-I$(top_builddir)/cdk			\
 	-DGDK_DISABLE_DEPRECATED		\
 	-DCTK_DISABLE_DEPRECATED		\
 	$(CTK_DEBUG_FLAGS)			\
@@ -16,7 +16,7 @@ AM_CPPFLAGS = \
 
 LDADD = \
 	$(top_builddir)/ctk/libctk-3.la	\
-	$(top_builddir)/gdk/libgdk-3.la \
+	$(top_builddir)/cdk/libcdk-3.la \
 	$(CTK_DEP_LIBS)
 
 noinst_PROGRAMS = \

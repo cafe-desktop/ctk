@@ -1,5 +1,5 @@
 /*
- * gdkdisplay-quartz.h
+ * cdkdisplay-quartz.h
  *
  * Copyright 2017 Tom Schoonjans 
  *
@@ -20,12 +20,12 @@
 #ifndef __GDK_QUARTZ_DISPLAY__
 #define __GDK_QUARTZ_DISPLAY__
 
-#include "gdkdisplayprivate.h"
-#include "gdkkeys.h"
-#include "gdkwindow.h"
-#include "gdkinternals.h"
-#include "gdkmain.h"
-#include "gdkinternal-quartz.h"
+#include "cdkdisplayprivate.h"
+#include "cdkkeys.h"
+#include "cdkwindow.h"
+#include "cdkinternals.h"
+#include "cdkmain.h"
+#include "cdkinternal-quartz.h"
 
 G_BEGIN_DECLS
 
@@ -44,37 +44,37 @@ struct _GdkQuartzDisplayClass
 };
 
 /* Display methods - events */
-void     _gdk_quartz_display_queue_events (GdkDisplay *display);
-gboolean _gdk_quartz_display_has_pending  (GdkDisplay *display);
+void     _cdk_quartz_display_queue_events (GdkDisplay *display);
+gboolean _cdk_quartz_display_has_pending  (GdkDisplay *display);
 
-void       _gdk_quartz_display_event_data_copy (GdkDisplay     *display,
+void       _cdk_quartz_display_event_data_copy (GdkDisplay     *display,
                                                 const GdkEvent *src,
                                                 GdkEvent       *dst);
-void       _gdk_quartz_display_event_data_free (GdkDisplay     *display,
+void       _cdk_quartz_display_event_data_free (GdkDisplay     *display,
                                                 GdkEvent       *event);
 
 /* Display methods - cursor */
-GdkCursor *_gdk_quartz_display_get_cursor_for_type     (GdkDisplay      *display,
+GdkCursor *_cdk_quartz_display_get_cursor_for_type     (GdkDisplay      *display,
                                                         GdkCursorType    type);
-GdkCursor *_gdk_quartz_display_get_cursor_for_name     (GdkDisplay      *display,
+GdkCursor *_cdk_quartz_display_get_cursor_for_name     (GdkDisplay      *display,
                                                         const gchar     *name);
-GdkCursor *_gdk_quartz_display_get_cursor_for_surface  (GdkDisplay      *display,
+GdkCursor *_cdk_quartz_display_get_cursor_for_surface  (GdkDisplay      *display,
                                                         cairo_surface_t *surface,
                                                         gdouble          x,
                                                         gdouble          y);
-gboolean   _gdk_quartz_display_supports_cursor_alpha   (GdkDisplay    *display);
-gboolean   _gdk_quartz_display_supports_cursor_color   (GdkDisplay    *display);
-void       _gdk_quartz_display_get_default_cursor_size (GdkDisplay *display,
+gboolean   _cdk_quartz_display_supports_cursor_alpha   (GdkDisplay    *display);
+gboolean   _cdk_quartz_display_supports_cursor_color   (GdkDisplay    *display);
+void       _cdk_quartz_display_get_default_cursor_size (GdkDisplay *display,
                                                         guint      *width,
                                                         guint      *height);
-void       _gdk_quartz_display_get_maximal_cursor_size (GdkDisplay *display,
+void       _cdk_quartz_display_get_maximal_cursor_size (GdkDisplay *display,
                                                         guint      *width,
                                                         guint      *height);
 
 /* Display methods - window */
-void       _gdk_quartz_display_before_process_all_updates (GdkDisplay *display);
-void       _gdk_quartz_display_after_process_all_updates  (GdkDisplay *display);
-void       _gdk_quartz_display_create_window_impl (GdkDisplay    *display,
+void       _cdk_quartz_display_before_process_all_updates (GdkDisplay *display);
+void       _cdk_quartz_display_after_process_all_updates  (GdkDisplay *display);
+void       _cdk_quartz_display_create_window_impl (GdkDisplay    *display,
                                                    GdkWindow     *window,
                                                    GdkWindow     *real_parent,
                                                    GdkScreen     *screen,
@@ -83,33 +83,33 @@ void       _gdk_quartz_display_create_window_impl (GdkDisplay    *display,
                                                    gint           attributes_mask);
 
 /* Display methods - keymap */
-GdkKeymap * _gdk_quartz_display_get_keymap (GdkDisplay *display);
+GdkKeymap * _cdk_quartz_display_get_keymap (GdkDisplay *display);
 
 /* Display methods - selection */
-gboolean    _gdk_quartz_display_set_selection_owner (GdkDisplay *display,
+gboolean    _cdk_quartz_display_set_selection_owner (GdkDisplay *display,
                                                      GdkWindow  *owner,
                                                      GdkAtom     selection,
                                                      guint32     time,
                                                      gboolean    send_event);
-GdkWindow * _gdk_quartz_display_get_selection_owner (GdkDisplay *display,
+GdkWindow * _cdk_quartz_display_get_selection_owner (GdkDisplay *display,
                                                      GdkAtom     selection);
-gint        _gdk_quartz_display_get_selection_property (GdkDisplay     *display,
+gint        _cdk_quartz_display_get_selection_property (GdkDisplay     *display,
                                                         GdkWindow      *requestor,
                                                         guchar        **data,
                                                         GdkAtom        *ret_type,
                                                         gint           *ret_format);
-void        _gdk_quartz_display_convert_selection      (GdkDisplay     *display,
+void        _cdk_quartz_display_convert_selection      (GdkDisplay     *display,
                                                         GdkWindow      *requestor,
                                                         GdkAtom         selection,
                                                         GdkAtom         target,
                                                         guint32         time);
-gint        _gdk_quartz_display_text_property_to_utf8_list (GdkDisplay     *display,
+gint        _cdk_quartz_display_text_property_to_utf8_list (GdkDisplay     *display,
                                                             GdkAtom         encoding,
                                                             gint            format,
                                                             const guchar   *text,
                                                             gint            length,
                                                             gchar        ***list);
-gchar *     _gdk_quartz_display_utf8_to_string_target      (GdkDisplay     *displayt,
+gchar *     _cdk_quartz_display_utf8_to_string_target      (GdkDisplay     *displayt,
                                                             const gchar    *str);
 G_END_DECLS
 

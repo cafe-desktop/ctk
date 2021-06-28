@@ -131,17 +131,17 @@ ctk_text_attributes_copy_values (CtkTextAttributes *src,
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (dest->pg_bg_color)
-    gdk_color_free (dest->pg_bg_color);
+    cdk_color_free (dest->pg_bg_color);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (dest->pg_bg_rgba)
-    gdk_rgba_free (dest->pg_bg_rgba);
+    cdk_rgba_free (dest->pg_bg_rgba);
 
   if (dest->appearance.rgba[0])
-    gdk_rgba_free (dest->appearance.rgba[0]);
+    cdk_rgba_free (dest->appearance.rgba[0]);
 
   if (dest->appearance.rgba[1])
-    gdk_rgba_free (dest->appearance.rgba[1]);
+    cdk_rgba_free (dest->appearance.rgba[1]);
 
   if (dest->font_features)
     g_free (dest->font_features);
@@ -161,17 +161,17 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (src->pg_bg_color)
-    dest->pg_bg_color = gdk_color_copy (src->pg_bg_color);
+    dest->pg_bg_color = cdk_color_copy (src->pg_bg_color);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (src->pg_bg_rgba)
-    dest->pg_bg_rgba = gdk_rgba_copy (src->pg_bg_rgba);
+    dest->pg_bg_rgba = cdk_rgba_copy (src->pg_bg_rgba);
 
   if (src->appearance.rgba[0])
-    dest->appearance.rgba[0] = gdk_rgba_copy (src->appearance.rgba[0]);
+    dest->appearance.rgba[0] = cdk_rgba_copy (src->appearance.rgba[0]);
 
   if (src->appearance.rgba[1])
-    dest->appearance.rgba[1] = gdk_rgba_copy (src->appearance.rgba[1]);
+    dest->appearance.rgba[1] = cdk_rgba_copy (src->appearance.rgba[1]);
 
   if (src->font_features)
     dest->font_features = g_strdup (src->font_features);
@@ -222,17 +222,17 @@ ctk_text_attributes_unref (CtkTextAttributes *values)
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       if (values->pg_bg_color)
-	gdk_color_free (values->pg_bg_color);
+	cdk_color_free (values->pg_bg_color);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (values->pg_bg_rgba)
-	gdk_rgba_free (values->pg_bg_rgba);
+	cdk_rgba_free (values->pg_bg_rgba);
 
       if (values->appearance.rgba[0])
-	gdk_rgba_free (values->appearance.rgba[0]);
+	cdk_rgba_free (values->appearance.rgba[0]);
 
       if (values->appearance.rgba[1])
-	gdk_rgba_free (values->appearance.rgba[1]);
+	cdk_rgba_free (values->appearance.rgba[1]);
 
       if (values->font_features)
         g_free (values->font_features);
@@ -264,12 +264,12 @@ _ctk_text_attributes_fill_from_tags (CtkTextAttributes *dest,
         {
 	  if (dest->appearance.rgba[0])
 	    {
-	      gdk_rgba_free (dest->appearance.rgba[0]);
+	      cdk_rgba_free (dest->appearance.rgba[0]);
 	      dest->appearance.rgba[0] = NULL;
 	    }
 
 	  if (vals->appearance.rgba[0])
-	    dest->appearance.rgba[0] = gdk_rgba_copy (vals->appearance.rgba[0]);
+	    dest->appearance.rgba[0] = cdk_rgba_copy (vals->appearance.rgba[0]);
 
           dest->appearance.draw_bg = TRUE;
         }
@@ -278,36 +278,36 @@ _ctk_text_attributes_fill_from_tags (CtkTextAttributes *dest,
 	{
 	  if (dest->appearance.rgba[1])
 	    {
-	      gdk_rgba_free (dest->appearance.rgba[1]);
+	      cdk_rgba_free (dest->appearance.rgba[1]);
 	      dest->appearance.rgba[1] = NULL;
 	    }
 
 	  if (vals->appearance.rgba[1])
-	    dest->appearance.rgba[1] = gdk_rgba_copy (vals->appearance.rgba[1]);
+	    dest->appearance.rgba[1] = cdk_rgba_copy (vals->appearance.rgba[1]);
 	}
 
       if (tag->priv->pg_bg_color_set)
         {
 	  if (dest->pg_bg_rgba)
 	    {
-	      gdk_rgba_free (dest->pg_bg_rgba);
+	      cdk_rgba_free (dest->pg_bg_rgba);
 	      dest->pg_bg_rgba = NULL;
 	    }
 
 	  if (dest->pg_bg_color)
 	    {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-	      gdk_color_free (dest->pg_bg_color);
+	      cdk_color_free (dest->pg_bg_color);
 	      dest->pg_bg_color = NULL;
 G_GNUC_END_IGNORE_DEPRECATIONS
 	    }
 
 	  if (vals->pg_bg_rgba)
-	    dest->pg_bg_rgba = gdk_rgba_copy (vals->pg_bg_rgba);
+	    dest->pg_bg_rgba = cdk_rgba_copy (vals->pg_bg_rgba);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	  if (vals->pg_bg_color)
-	    dest->pg_bg_color = gdk_color_copy (vals->pg_bg_color);
+	    dest->pg_bg_color = cdk_color_copy (vals->pg_bg_color);
 G_GNUC_END_IGNORE_DEPRECATIONS
         }
 

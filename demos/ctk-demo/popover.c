@@ -104,7 +104,7 @@ day_selected_cb (CtkCalendar *calendar,
   if (event->type != GDK_BUTTON_PRESS)
     return;
 
-  gdk_window_coords_to_parent (event->button.window,
+  cdk_window_coords_to_parent (event->button.window,
                                event->button.x, event->button.y,
                                &event->button.x, &event->button.y);
   ctk_widget_get_allocation (CTK_WIDGET (calendar), &allocation);
@@ -119,7 +119,7 @@ day_selected_cb (CtkCalendar *calendar,
 
   ctk_widget_show (popover);
 
-  gdk_event_free (event);
+  cdk_event_free (event);
 }
 
 CtkWidget *

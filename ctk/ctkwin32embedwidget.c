@@ -95,12 +95,12 @@ _ctk_win32_embed_widget_new (HWND parent)
   embed_widget = g_object_new (CTK_TYPE_WIN32_EMBED_WIDGET, NULL);
   
   embed_widget->parent_window =
-    gdk_win32_window_lookup_for_display (gdk_display_get_default (),
+    cdk_win32_window_lookup_for_display (cdk_display_get_default (),
 					 parent);
   
   if (!embed_widget->parent_window)
     embed_widget->parent_window =
-      gdk_win32_window_foreign_new_for_display (gdk_display_get_default (),
+      cdk_win32_window_foreign_new_for_display (cdk_display_get_default (),
 					  parent);
   
   return CTK_WIDGET (embed_widget);
@@ -144,12 +144,12 @@ ctk_win32_embed_widget_window_process (HWND hwnd, UINT msg, WPARAM wparam, LPARA
   CtkWin32EmbedWidget *embed_widget;
   gpointer user_data;
 
-  window = gdk_win32_window_lookup_for_display (gdk_display_get_default (), hwnd);
+  window = cdk_win32_window_lookup_for_display (cdk_display_get_default (), hwnd);
   if (window == NULL) {
     g_warning ("No such window!");
     return 0;
   }
-  gdk_window_get_user_data (window, &user_data);
+  cdk_window_get_user_data (window, &user_data);
   embed_widget = CTK_WIN32_EMBED_WIDGET (user_data);
 
   if (msg == WM_GETDLGCODE) {
@@ -169,7 +169,7 @@ ctk_win32_embed_widget_realize (CtkWidget *widget)
   CtkWindow *window = CTK_WINDOW (widget);
   CtkWin32EmbedWidget *embed_widget = CTK_WIN32_EMBED_WIDGET (widget);
   CtkAllocation allocation;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   GdkWindowAttr attributes;
   gint attributes_mask;
   LONG_PTR styles;
@@ -224,23 +224,23 @@ ctk_win32_embed_widget_realize (CtkWidget *widget)
   attributes_mask |= (attributes.title ? GDK_WA_TITLE : 0);
   attributes_mask |= (attributes.wmclass_name ? GDK_WA_WMCLASS : 0);
 
-  gdk_window = gdk_window_new (embed_widget->parent_window,
+  cdk_window = cdk_window_new (embed_widget->parent_window,
                                &attributes, attributes_mask);
-  ctk_widget_set_window (widget, gdk_window);
-  ctk_widget_register_window (widget, gdk_window);
+  ctk_widget_set_window (widget, cdk_window);
+  ctk_widget_register_window (widget, cdk_window);
 
   embed_widget->old_window_procedure = (gpointer)
-    SetWindowLongPtrW(GDK_WINDOW_HWND (gdk_window),
+    SetWindowLongPtrW(GDK_WINDOW_HWND (cdk_window),
 		      GWLP_WNDPROC,
 		      (LONG_PTR)ctk_win32_embed_widget_window_process);
 
   /* Enable tab to focus the widget */
-  styles = GetWindowLongPtr(GDK_WINDOW_HWND (gdk_window), GWL_STYLE);
-  SetWindowLongPtrW(GDK_WINDOW_HWND (gdk_window), GWL_STYLE, styles | WS_TABSTOP);
+  styles = GetWindowLongPtr(GDK_WINDOW_HWND (cdk_window), GWL_STYLE);
+  SetWindowLongPtrW(GDK_WINDOW_HWND (cdk_window), GWL_STYLE, styles | WS_TABSTOP);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_style_context_set_background (ctk_widget_get_style_context (widget),
-                                    gdk_window);
+                                    cdk_window);
 G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
@@ -275,14 +275,14 @@ ctk_win32_embed_widget_map (CtkWidget *widget)
       !ctk_widget_get_mapped (child))
     ctk_widget_map (child);
 
-  gdk_window_show (ctk_widget_get_window (widget));
+  cdk_window_show (ctk_widget_get_window (widget));
 }
 
 static void
 ctk_win32_embed_widget_unmap (CtkWidget *widget)
 {
   ctk_widget_set_mapped (widget, FALSE);
-  gdk_window_hide (ctk_widget_get_window (widget));
+  cdk_window_hide (ctk_widget_get_window (widget));
 }
 
 static void
@@ -295,7 +295,7 @@ ctk_win32_embed_widget_size_allocate (CtkWidget     *widget,
   ctk_widget_set_allocation (widget, allocation);
   
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (ctk_widget_get_window (widget),
+    cdk_window_move_resize (ctk_widget_get_window (widget),
 			    allocation->x, allocation->y,
 			    allocation->width, allocation->height);
 
@@ -383,5 +383,5 @@ ctk_win32_embed_widget_set_focus (CtkWindow *window,
 {
   CTK_WINDOW_CLASS (ctk_win32_embed_widget_parent_class)->set_focus (window, focus);
 
-  gdk_window_focus (ctk_widget_get_window (CTK_WIDGET(window)), 0);
+  cdk_window_focus (ctk_widget_get_window (CTK_WIDGET(window)), 0);
 }

@@ -165,7 +165,7 @@ main (int argc, char *argv[])
   g_signal_connect (button, "realize", G_CALLBACK (ctk_widget_grab_focus), NULL);
   ctk_window_set_default_size (CTK_WINDOW (window), 300, 400);
   ctk_widget_show_all (window);
-  gdk_threads_add_timeout (1000, (GSourceFunc) futz, NULL);
+  cdk_threads_add_timeout (1000, (GSourceFunc) futz, NULL);
   ctk_main ();
   return 0;
 }

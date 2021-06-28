@@ -25,7 +25,7 @@
 #ifndef __GDK_CURSOR_PRIVATE_H__
 #define __GDK_CURSOR_PRIVATE_H__
 
-#include <gdk/gdkcursor.h>
+#include <cdk/cdkcursor.h>
 
 G_BEGIN_DECLS
 

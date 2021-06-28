@@ -506,13 +506,13 @@ ctk_cell_renderer_pixbuf_get_size (CtkCellRenderer    *cell,
 
   if (priv->pixbuf_expander_open)
     {
-      pixbuf_width  = MAX (pixbuf_width, gdk_pixbuf_get_width (priv->pixbuf_expander_open));
-      pixbuf_height = MAX (pixbuf_height, gdk_pixbuf_get_height (priv->pixbuf_expander_open));
+      pixbuf_width  = MAX (pixbuf_width, cdk_pixbuf_get_width (priv->pixbuf_expander_open));
+      pixbuf_height = MAX (pixbuf_height, cdk_pixbuf_get_height (priv->pixbuf_expander_open));
     }
   if (priv->pixbuf_expander_closed)
     {
-      pixbuf_width  = MAX (pixbuf_width, gdk_pixbuf_get_width (priv->pixbuf_expander_closed));
-      pixbuf_height = MAX (pixbuf_height, gdk_pixbuf_get_height (priv->pixbuf_expander_closed));
+      pixbuf_width  = MAX (pixbuf_width, cdk_pixbuf_get_width (priv->pixbuf_expander_closed));
+      pixbuf_height = MAX (pixbuf_height, cdk_pixbuf_get_height (priv->pixbuf_expander_closed));
     }
 
   ctk_cell_renderer_get_padding (cell, &xpad, &ypad);
@@ -581,7 +581,7 @@ ctk_cell_renderer_pixbuf_render (CtkCellRenderer      *cell,
   pix_rect.width -= xpad * 2;
   pix_rect.height -= ypad * 2;
 
-  if (!gdk_rectangle_intersect (cell_area, &pix_rect, &draw_rect))
+  if (!cdk_rectangle_intersect (cell_area, &pix_rect, &draw_rect))
     return;
 
   context = ctk_widget_get_style_context (widget);

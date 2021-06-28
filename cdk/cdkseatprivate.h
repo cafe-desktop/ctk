@@ -22,7 +22,7 @@
 
 typedef struct _GdkSeatClass GdkSeatClass;
 
-#include "gdkseat.h"
+#include "cdkseat.h"
 
 #define GDK_SEAT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_SEAT, GdkSeatClass))
 #define GDK_IS_SEAT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_SEAT))
@@ -61,18 +61,18 @@ struct _GdkSeatClass
                                 guint64  tool_id);
 };
 
-void gdk_seat_device_added   (GdkSeat   *seat,
+void cdk_seat_device_added   (GdkSeat   *seat,
                               GdkDevice *device);
-void gdk_seat_device_removed (GdkSeat   *seat,
+void cdk_seat_device_removed (GdkSeat   *seat,
                               GdkDevice *device);
 
-void gdk_seat_tool_added     (GdkSeat       *seat,
+void cdk_seat_tool_added     (GdkSeat       *seat,
                               GdkDeviceTool *tool);
-void gdk_seat_tool_removed   (GdkSeat       *seat,
+void cdk_seat_tool_removed   (GdkSeat       *seat,
                               GdkDeviceTool *tool);
 
 GdkDeviceTool *
-     gdk_seat_get_tool       (GdkSeat   *seat,
+     cdk_seat_get_tool       (GdkSeat   *seat,
                               guint64    serial,
                               guint64    hw_id);
 

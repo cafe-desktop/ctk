@@ -248,7 +248,7 @@ ctk_event_controller_scroll_handle_event (CtkEventController *controller,
   GdkScrollDirection direction = GDK_SCROLL_SMOOTH;
   gdouble dx = 0, dy = 0;
 
-  if (gdk_event_get_event_type (event) != GDK_SCROLL)
+  if (cdk_event_get_event_type (event) != GDK_SCROLL)
     return FALSE;
   if ((scroll->flags & (CTK_EVENT_CONTROLLER_SCROLL_VERTICAL |
                         CTK_EVENT_CONTROLLER_SCROLL_HORIZONTAL)) == 0)
@@ -256,10 +256,10 @@ ctk_event_controller_scroll_handle_event (CtkEventController *controller,
 
   /* FIXME: Handle device changes */
 
-  if (gdk_event_get_scroll_deltas (event, &dx, &dy))
+  if (cdk_event_get_scroll_deltas (event, &dx, &dy))
     {
-      GdkDevice *device = gdk_event_get_source_device (event);
-      GdkInputSource input_source = gdk_device_get_source (device);
+      GdkDevice *device = cdk_event_get_source_device (event);
+      GdkInputSource input_source = cdk_device_get_source (device);
 
       if (!scroll->active &&
           (input_source == GDK_SOURCE_TRACKPOINT ||
@@ -298,7 +298,7 @@ ctk_event_controller_scroll_handle_event (CtkEventController *controller,
             }
         }
     }
-  else if (gdk_event_get_scroll_direction (event, &direction))
+  else if (cdk_event_get_scroll_direction (event, &direction))
     {
       switch (direction)
         {
@@ -330,9 +330,9 @@ ctk_event_controller_scroll_handle_event (CtkEventController *controller,
 
   if (direction == GDK_SCROLL_SMOOTH &&
       scroll->flags & CTK_EVENT_CONTROLLER_SCROLL_KINETIC)
-    scroll_history_push (scroll, dx, dy, gdk_event_get_time (event));
+    scroll_history_push (scroll, dx, dy, cdk_event_get_time (event));
 
-  if (scroll->active && gdk_event_is_scroll_stop_event (event))
+  if (scroll->active && cdk_event_is_scroll_stop_event (event))
     {
       g_signal_emit (controller, signals[SCROLL_END], 0);
       scroll->active = FALSE;

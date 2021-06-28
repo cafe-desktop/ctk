@@ -18,7 +18,7 @@
 #ifndef __GDK_DEVICE_MANAGER_PRIVATE_H__
 #define __GDK_DEVICE_MANAGER_PRIVATE_H__
 
-#include "gdkdevicemanager.h"
+#include "cdkdevicemanager.h"
 
 G_BEGIN_DECLS
 

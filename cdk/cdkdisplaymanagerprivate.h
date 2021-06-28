@@ -18,7 +18,7 @@
 #ifndef __GDK_DISPLAY_MANAGER_PRIVATE_H__
 #define __GDK_DISPLAY_MANAGER_PRIVATE_H__
 
-#include "gdkdisplaymanager.h"
+#include "cdkdisplaymanager.h"
 
 G_BEGIN_DECLS
 
@@ -46,9 +46,9 @@ struct _GdkDisplayManagerClass
                                        GdkDisplay        *display);
 };
 
-void            _gdk_display_manager_add_display        (GdkDisplayManager      *manager,
+void            _cdk_display_manager_add_display        (GdkDisplayManager      *manager,
                                                          GdkDisplay             *display);
-void            _gdk_display_manager_remove_display     (GdkDisplayManager      *manager,
+void            _cdk_display_manager_remove_display     (GdkDisplayManager      *manager,
                                                          GdkDisplay             *display);
 
 G_END_DECLS

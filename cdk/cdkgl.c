@@ -17,13 +17,13 @@
 
 #include "config.h"
 
-#include "gdkcairo.h"
-#include "gdkglcontextprivate.h"
+#include "cdkcairo.h"
+#include "cdkglcontextprivate.h"
 
-#include "gdkinternals.h"
+#include "cdkinternals.h"
 
 #ifdef GDK_WINDOWING_WIN32
-# include "win32/gdkwin32.h"
+# include "win32/cdkwin32.h"
 #endif
 
 #include <epoxy/gl.h>
@@ -33,7 +33,7 @@
 static cairo_user_data_key_t direct_key;
 
 void
-gdk_cairo_surface_mark_as_direct (cairo_surface_t *surface,
+cdk_cairo_surface_mark_as_direct (cairo_surface_t *surface,
                                   GdkWindow *window)
 {
   cairo_surface_set_user_data (surface, &direct_key,
@@ -161,8 +161,8 @@ use_texture_gles_program (GdkGLContextPaintData *paint_data)
 {
   if (paint_data->texture_2d_quad_program.program == 0)
     make_program (&paint_data->texture_2d_quad_program,
-                  "/org/ctk/libgdk/glsl/gles2-texture.vs.glsl",
-                  "/org/ctk/libgdk/glsl/gles2-texture.fs.glsl");
+                  "/org/ctk/libcdk/glsl/gles2-texture.vs.glsl",
+                  "/org/ctk/libcdk/glsl/gles2-texture.fs.glsl");
 
   if (paint_data->current_program != &paint_data->texture_2d_quad_program)
     {
@@ -175,12 +175,12 @@ static void
 use_texture_2d_program (GdkGLContextPaintData *paint_data)
 {
   const char *vertex_shader_path = paint_data->is_legacy
-    ? "/org/ctk/libgdk/glsl/gl2-texture-2d.vs.glsl"
-    : "/org/ctk/libgdk/glsl/gl3-texture-2d.vs.glsl";
+    ? "/org/ctk/libcdk/glsl/gl2-texture-2d.vs.glsl"
+    : "/org/ctk/libcdk/glsl/gl3-texture-2d.vs.glsl";
 
   const char *fragment_shader_path = paint_data->is_legacy
-    ? "/org/ctk/libgdk/glsl/gl2-texture-2d.fs.glsl"
-    : "/org/ctk/libgdk/glsl/gl3-texture-2d.fs.glsl";
+    ? "/org/ctk/libcdk/glsl/gl2-texture-2d.fs.glsl"
+    : "/org/ctk/libcdk/glsl/gl3-texture-2d.fs.glsl";
 
   if (paint_data->texture_2d_quad_program.program == 0)
     make_program (&paint_data->texture_2d_quad_program, vertex_shader_path, fragment_shader_path);
@@ -196,12 +196,12 @@ static void
 use_texture_rect_program (GdkGLContextPaintData *paint_data)
 {
   const char *vertex_shader_path = paint_data->is_legacy
-    ? "/org/ctk/libgdk/glsl/gl2-texture-rect.vs.glsl"
-    : "/org/ctk/libgdk/glsl/gl3-texture-rect.vs.glsl";
+    ? "/org/ctk/libcdk/glsl/gl2-texture-rect.vs.glsl"
+    : "/org/ctk/libcdk/glsl/gl3-texture-rect.vs.glsl";
 
   const char *fragment_shader_path = paint_data->is_legacy
-    ? "/org/ctk/libgdk/glsl/gl2-texture-rect.fs.glsl"
-    : "/org/ctk/libgdk/glsl/gl3-texture-rect.vs.glsl";
+    ? "/org/ctk/libcdk/glsl/gl2-texture-rect.fs.glsl"
+    : "/org/ctk/libcdk/glsl/gl3-texture-rect.vs.glsl";
 
   if (paint_data->texture_rect_quad_program.program == 0)
     make_program (&paint_data->texture_rect_quad_program, vertex_shader_path, fragment_shader_path);
@@ -214,18 +214,18 @@ use_texture_rect_program (GdkGLContextPaintData *paint_data)
 }
 
 void
-gdk_gl_texture_quads (GdkGLContext *paint_context,
+cdk_gl_texture_quads (GdkGLContext *paint_context,
                       guint texture_target,
                       int n_quads,
                       GdkTexturedQuad *quads,
                       gboolean flip_colors)
 {
-  GdkGLContextPaintData *paint_data  = gdk_gl_context_get_paint_data (paint_context);
+  GdkGLContextPaintData *paint_data  = cdk_gl_context_get_paint_data (paint_context);
   GdkGLContextProgram *program;
-  GdkWindow *window = gdk_gl_context_get_window (paint_context);
-  int window_scale = gdk_window_get_scale_factor (window);
-  float w = gdk_window_get_width (window) * window_scale;
-  float h = gdk_window_get_height (window) * window_scale;
+  GdkWindow *window = cdk_gl_context_get_window (paint_context);
+  int window_scale = cdk_window_get_scale_factor (window);
+  float w = cdk_window_get_width (window) * window_scale;
+  float h = cdk_window_get_height (window) * window_scale;
   int i;
   float *vertex_buffer_data;
 
@@ -251,7 +251,7 @@ gdk_gl_texture_quads (GdkGLContext *paint_context,
   glUniform1i(program->map_location, 0);
 
   /* Flip 'R' and 'B' colors on GLES, if necessary */
-  if (gdk_gl_context_get_use_es (paint_context))
+  if (cdk_gl_context_get_use_es (paint_context))
     glUniform1i (program->flip_location, flip_colors ? 1 : 0);
 
   glEnableVertexAttribArray (program->position_location);
@@ -300,7 +300,7 @@ gdk_gl_texture_quads (GdkGLContext *paint_context,
    position according to the cairo translation. */
 
 /**
- * gdk_cairo_draw_from_gl:
+ * cdk_cairo_draw_from_gl:
  * @cr: a cairo context
  * @window: The window we're rendering for (not necessarily into)
  * @source: The GL ID of the source buffer
@@ -331,7 +331,7 @@ gdk_gl_texture_quads (GdkGLContext *paint_context,
  * Since: 3.16
  */
 void
-gdk_cairo_draw_from_gl (cairo_t              *cr,
+cdk_cairo_draw_from_gl (cairo_t              *cr,
                         GdkWindow            *window,
                         int                   source,
                         int                   source_type,
@@ -355,19 +355,19 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
 
   impl_window = window->impl_window;
 
-  window_scale = gdk_window_get_scale_factor (impl_window);
+  window_scale = cdk_window_get_scale_factor (impl_window);
 
-  paint_context = gdk_window_get_paint_gl_context (window, NULL);
+  paint_context = cdk_window_get_paint_gl_context (window, NULL);
   if (paint_context == NULL)
     {
-      g_warning ("gdk_cairo_draw_gl_render_buffer failed - no paint context");
+      g_warning ("cdk_cairo_draw_gl_render_buffer failed - no paint context");
       return;
     }
 
-  clip_region = gdk_cairo_region_from_clip (cr);
+  clip_region = cdk_cairo_region_from_clip (cr);
 
-  gdk_gl_context_make_current (paint_context);
-  paint_data = gdk_gl_context_get_paint_data (paint_context);
+  cdk_gl_context_make_current (paint_context);
+  paint_data = cdk_gl_context_get_paint_data (paint_context);
 
   if (paint_data->tmp_framebuffer == 0)
     glGenFramebuffersEXT (1, &paint_data->tmp_framebuffer);
@@ -381,7 +381,7 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
     {
       glBindTexture (GL_TEXTURE_2D, source);
 
-      if (gdk_gl_context_get_use_es (paint_context))
+      if (cdk_gl_context_get_use_es (paint_context))
         alpha_size = 1;
       else
         glGetTexLevelParameteriv (GL_TEXTURE_2D, 0, GL_TEXTURE_ALPHA_SIZE,  &alpha_size);
@@ -408,12 +408,12 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
 
   /* For direct paint of non-alpha renderbuffer, we can
      just do a bitblit */
-  if ((_gdk_gl_flags & GDK_GL_SOFTWARE_DRAW_GL) == 0 &&
+  if ((_cdk_gl_flags & GDK_GL_SOFTWARE_DRAW_GL) == 0 &&
       source_type == GL_RENDERBUFFER &&
       alpha_size == 0 &&
       direct_window != NULL &&
       direct_window->current_paint.use_gl &&
-      gdk_gl_context_has_framebuffer_blit (paint_context) &&
+      cdk_gl_context_has_framebuffer_blit (paint_context) &&
       trivial_transform &&
       clip_region != NULL)
     {
@@ -433,18 +433,18 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
 
       glEnable (GL_SCISSOR_TEST);
 
-      gdk_window_get_unscaled_size (impl_window, NULL, &unscaled_window_height);
+      cdk_window_get_unscaled_size (impl_window, NULL, &unscaled_window_height);
 
       /* We can use glDrawBuffer on OpenGL only; on GLES 2.0 we are already
        * double buffered so we don't need it...
        */
-      if (!gdk_gl_context_get_use_es (paint_context))
+      if (!cdk_gl_context_get_use_es (paint_context))
         glDrawBuffer (GL_BACK);
       else
         {
           int maj, min;
 
-          gdk_gl_context_get_version (paint_context, &maj, &min);
+          cdk_gl_context_get_version (paint_context, &maj, &min);
 
           /* ... but on GLES 3.0 we can use the vectorized glDrawBuffers
            * call.
@@ -477,7 +477,7 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
           dest.width = width * window_scale / buffer_scale;
           dest.height = height * window_scale / buffer_scale;
 
-          if (gdk_rectangle_intersect (&clip_rect, &dest, &dest))
+          if (cdk_rectangle_intersect (&clip_rect, &dest, &dest))
             {
               int clipped_src_x = x + (dest.x - dx * window_scale);
               int clipped_src_y = y + (height - dest.height - (dest.y - dy * window_scale));
@@ -511,7 +511,7 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
 
     }
   /* For direct paint of alpha or non-alpha textures we can use texturing */
-  else if ((_gdk_gl_flags & GDK_GL_SOFTWARE_DRAW_GL) == 0 &&
+  else if ((_cdk_gl_flags & GDK_GL_SOFTWARE_DRAW_GL) == 0 &&
            source_type == GL_TEXTURE &&
            direct_window != NULL &&
            direct_window->current_paint.use_gl &&
@@ -537,7 +537,7 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
           cairo_region_subtract (opaque_region, impl_window->current_paint.need_blend_region);
 
           if (!cairo_region_is_empty (opaque_region))
-            gdk_gl_texture_from_surface (impl_window->current_paint.surface,
+            cdk_gl_texture_from_surface (impl_window->current_paint.surface,
                                          opaque_region);
 
           blend_region = cairo_region_copy (clip_region);
@@ -545,7 +545,7 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
 
           glEnable (GL_BLEND);
           if (!cairo_region_is_empty (blend_region))
-            gdk_gl_texture_from_surface (impl_window->current_paint.surface,
+            cdk_gl_texture_from_surface (impl_window->current_paint.surface,
                                          blend_region);
 
           cairo_region_destroy (opaque_region);
@@ -554,7 +554,7 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
 
       glBindTexture (GL_TEXTURE_2D, source);
 
-      if (gdk_gl_context_get_use_es (paint_context))
+      if (cdk_gl_context_get_use_es (paint_context))
         {
           texture_width = width;
           texture_height = height;
@@ -572,7 +572,7 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
 
       glEnable (GL_SCISSOR_TEST);
 
-      gdk_window_get_unscaled_size (impl_window, NULL, &unscaled_window_height);
+      cdk_window_get_unscaled_size (impl_window, NULL, &unscaled_window_height);
 
 #define FLIP_Y(_y) (unscaled_window_height - (_y))
 
@@ -600,7 +600,7 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
           dest.width = width * window_scale / buffer_scale;
           dest.height = height * window_scale / buffer_scale;
 
-          if (gdk_rectangle_intersect (&clip_rect, &dest, &dest))
+          if (cdk_rectangle_intersect (&clip_rect, &dest, &dest))
             {
               int clipped_src_x = x + (dest.x - dx * window_scale);
               int clipped_src_y = y + (height - dest.height - (dest.y - dy * window_scale));
@@ -631,7 +631,7 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
         }
 
       if (n_quads > 0)
-        gdk_gl_texture_quads (paint_context, GL_TEXTURE_2D, n_quads, quads, FALSE);
+        cdk_gl_texture_quads (paint_context, GL_TEXTURE_2D, n_quads, quads, FALSE);
 
       g_free (quads);
 
@@ -653,14 +653,14 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
         es_read_bgra = TRUE;
 #endif
 
-      gdk_gl_context_get_version (paint_context, &major, &minor);
+      cdk_gl_context_get_version (paint_context, &major, &minor);
       version = major * 100 + minor;
 
       /* TODO: Use glTexSubImage2D() and do a row-by-row copy to replace
        * the GL_UNPACK_ROW_LENGTH support
        */
-      if (gdk_gl_context_get_use_es (paint_context) &&
-          !(version >= 300 || gdk_gl_context_has_unpack_subimage (paint_context)))
+      if (cdk_gl_context_get_use_es (paint_context) &&
+          !(version >= 300 || cdk_gl_context_has_unpack_subimage (paint_context)))
         goto out;
 
       /* TODO: avoid reading back non-required data due to dest clip */
@@ -690,7 +690,7 @@ gdk_cairo_draw_from_gl (cairo_t              *cr,
       glPixelStorei (GL_PACK_ROW_LENGTH, cairo_image_surface_get_stride (image) / 4);
 
       /* The implicit format conversion is going to make this path slower */
-      if (!gdk_gl_context_get_use_es (paint_context))
+      if (!cdk_gl_context_get_use_es (paint_context))
         glReadPixels (x, y, width, height, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV,
                       cairo_image_surface_get_data (image));
       else
@@ -722,7 +722,7 @@ out:
 
 /* This is always called with the paint context current */
 void
-gdk_gl_texture_from_surface (cairo_surface_t *surface,
+cdk_gl_texture_from_surface (cairo_surface_t *surface,
 			     cairo_region_t  *region)
 {
   GdkGLContext *paint_context;
@@ -738,19 +738,19 @@ gdk_gl_texture_from_surface (cairo_surface_t *surface,
   float umax, vmax;
   gboolean use_texture_rectangle;
   guint target;
-  paint_context = gdk_gl_context_get_current ();
-  if ((_gdk_gl_flags & GDK_GL_SOFTWARE_DRAW_SURFACE) == 0 &&
+  paint_context = cdk_gl_context_get_current ();
+  if ((_cdk_gl_flags & GDK_GL_SOFTWARE_DRAW_SURFACE) == 0 &&
       paint_context &&
       GDK_GL_CONTEXT_GET_CLASS (paint_context)->texture_from_surface &&
       GDK_GL_CONTEXT_GET_CLASS (paint_context)->texture_from_surface (paint_context, surface, region))
     return;
 
   /* Software fallback */
-  use_texture_rectangle = gdk_gl_context_use_texture_rectangle (paint_context);
+  use_texture_rectangle = cdk_gl_context_use_texture_rectangle (paint_context);
 
-  window = gdk_gl_context_get_window (paint_context);
-  window_scale = gdk_window_get_scale_factor (window);
-  gdk_window_get_unscaled_size (window, NULL, &unscaled_window_height);
+  window = cdk_gl_context_get_window (paint_context);
+  window_scale = cdk_window_get_scale_factor (window);
+  cdk_window_get_unscaled_size (window, NULL, &unscaled_window_height);
 
   sx = sy = 1;
   cairo_surface_get_device_scale (window->current_paint.surface, &sx, &sy);
@@ -792,7 +792,7 @@ gdk_gl_texture_from_surface (cairo_surface_t *surface,
       e.height *= sy;
       image = cairo_surface_map_to_image (surface, &e);
 
-      gdk_gl_context_upload_texture (paint_context, image, e.width, e.height, target);
+      cdk_gl_context_upload_texture (paint_context, image, e.width, e.height, target);
 
       cairo_surface_unmap_image (surface, image);
 
@@ -817,7 +817,7 @@ gdk_gl_texture_from_surface (cairo_surface_t *surface,
 
         /* We don't want to combine the quads here, because they have different textures.
          * And we don't want to upload the unused source areas to make it one texture. */
-        gdk_gl_texture_quads (paint_context, target, 1, &quad, TRUE);
+        cdk_gl_texture_quads (paint_context, target, 1, &quad, TRUE);
       }
     }
 

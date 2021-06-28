@@ -1,16 +1,16 @@
 ## Process this file with automake to produce Makefile.in
 include $(top_srcdir)/Makefile.decl
 
-libgdkincludedir = $(includedir)/ctk-3.0/gdk
-libgdkwaylandincludedir = $(includedir)/ctk-3.0/gdk/wayland
+libcdkincludedir = $(includedir)/ctk-3.0/cdk
+libcdkwaylandincludedir = $(includedir)/ctk-3.0/cdk/wayland
 
 AM_CPPFLAGS =					\
 	-DG_LOG_DOMAIN=\"Gdk\"			\
 	-DG_LOG_USE_STRUCTURED=1		\
 	-DGDK_COMPILATION			\
 	-I$(top_srcdir)				\
-	-I$(top_srcdir)/gdk			\
-	-I$(top_builddir)/gdk			\
+	-I$(top_srcdir)/cdk			\
+	-I$(top_builddir)/cdk			\
 	$(GDK_HIDDEN_VISIBILITY_CFLAGS)		\
 	$(CTK_DEBUG_FLAGS)			\
 	$(GDK_DEP_CFLAGS)
@@ -18,7 +18,7 @@ AM_CPPFLAGS =					\
 LDADDS = $(GDK_DEP_LIBS) $(SHM_LIBS)
 
 noinst_LTLIBRARIES =				\
-	libgdk-wayland.la
+	libcdk-wayland.la
 
 BUILT_SOURCES = 				\
 	pointer-gestures-unstable-v1-client-protocol.h		\
@@ -44,44 +44,44 @@ BUILT_SOURCES = 				\
 	primary-selection-unstable-v1-client-protocol.h		\
 	primary-selection-unstable-v1-protocol.c
 
-nodist_libgdk_wayland_la_SOURCES =		\
+nodist_libcdk_wayland_la_SOURCES =		\
 	$(BUILT_SOURCES)
 
 DISTCLEANFILES =				\
 	$(BUILT_SOURCES)
 
-libgdk_wayland_la_SOURCES =			\
-	gdkapplaunchcontext-wayland.c		\
-	gdkcursor-wayland.c			\
-	gdkdevice-wayland.c			\
-	gdkdisplay-wayland.c			\
-	gdkdisplay-wayland.h			\
-	gdkdnd-wayland.c			\
-	gdkeventsource.c			\
-	gdkkeys-wayland.c                       \
-	gdkglcontext-wayland.c			\
-	gdkglcontext-wayland.h			\
-	gdkmonitor-wayland.c			\
-	gdkmonitor-wayland.h			\
-	gdkscreen-wayland.c			\
-	gdkseat-wayland.h			\
-	gdkselection-wayland.c			\
-	gdkwindow-wayland.c			\
-	gdkwayland.h				\
-	gdkprivate-wayland.h			\
+libcdk_wayland_la_SOURCES =			\
+	cdkapplaunchcontext-wayland.c		\
+	cdkcursor-wayland.c			\
+	cdkdevice-wayland.c			\
+	cdkdisplay-wayland.c			\
+	cdkdisplay-wayland.h			\
+	cdkdnd-wayland.c			\
+	cdkeventsource.c			\
+	cdkkeys-wayland.c                       \
+	cdkglcontext-wayland.c			\
+	cdkglcontext-wayland.h			\
+	cdkmonitor-wayland.c			\
+	cdkmonitor-wayland.h			\
+	cdkscreen-wayland.c			\
+	cdkseat-wayland.h			\
+	cdkselection-wayland.c			\
+	cdkwindow-wayland.c			\
+	cdkwayland.h				\
+	cdkprivate-wayland.h			\
 	wm-button-layout-translation.c		\
 	wm-button-layout-translation.h
 
-libgdkinclude_HEADERS =				\
-	gdkwayland.h
+libcdkinclude_HEADERS =				\
+	cdkwayland.h
 
-libgdkwaylandinclude_HEADERS = 			\
-	gdkwaylanddevice.h			\
-	gdkwaylanddisplay.h			\
-	gdkwaylandglcontext.h			\
-	gdkwaylandmonitor.h			\
-	gdkwaylandselection.h			\
-	gdkwaylandwindow.h
+libcdkwaylandinclude_HEADERS = 			\
+	cdkwaylanddevice.h			\
+	cdkwaylanddisplay.h			\
+	cdkwaylandglcontext.h			\
+	cdkwaylandmonitor.h			\
+	cdkwaylandselection.h			\
+	cdkwaylandwindow.h
 
 .SECONDEXPANSION:
 

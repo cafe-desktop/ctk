@@ -1933,7 +1933,7 @@ ctk_combo_box_list_position (CtkComboBox *combo_box,
   *width = content_allocation.width;
 
   window = ctk_widget_get_window (CTK_WIDGET (combo_box));
-  gdk_window_get_root_coords (window, *x, *y, x, y);
+  cdk_window_get_root_coords (window, *x, *y, x, y);
 
   hpolicy = vpolicy = CTK_POLICY_NEVER;
   ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (priv->scrolled_window),
@@ -1963,8 +1963,8 @@ ctk_combo_box_list_position (CtkComboBox *combo_box,
   *height = popup_req.height;
 
   display = ctk_widget_get_display (widget);
-  monitor = gdk_display_get_monitor_at_window (display, window);
-  gdk_monitor_get_workarea (monitor, &area);
+  monitor = cdk_display_get_monitor_at_window (display, window);
+  cdk_monitor_get_workarea (monitor, &area);
 
   if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL)
     *x = *x + content_allocation.width - *width;
@@ -2240,8 +2240,8 @@ popup_grab_on_window (GdkWindow *window,
   GdkGrabStatus status;
   GdkSeat *seat;
 
-  seat = gdk_device_get_seat (pointer);
-  status = gdk_seat_grab (seat, window,
+  seat = cdk_device_get_seat (pointer);
+  status = cdk_seat_grab (seat, window,
                           GDK_SEAT_CAPABILITY_ALL, TRUE,
                           NULL, NULL, NULL, NULL);
 
@@ -2305,8 +2305,8 @@ ctk_combo_box_popup_for_device (CtkComboBox *combo_box,
   if (priv->grab_pointer)
     return;
 
-  if (gdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
-    pointer = gdk_device_get_associated_device (device);
+  if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+    pointer = cdk_device_get_associated_device (device);
   else
     pointer = device;
 
@@ -2384,7 +2384,7 @@ ctk_combo_box_real_popup (CtkComboBox *combo_box)
 
       /* No device was set, pick the first master device */
       display = ctk_widget_get_display (CTK_WIDGET (combo_box));
-      device = gdk_seat_get_pointer (gdk_display_get_default_seat (display));
+      device = cdk_seat_get_pointer (cdk_display_get_default_seat (display));
     }
 
   ctk_combo_box_popup_for_device (combo_box, device);
@@ -2438,7 +2438,7 @@ ctk_combo_box_popdown (CtkComboBox *combo_box)
     return;
 
   if (priv->grab_pointer)
-    gdk_seat_ungrab (gdk_device_get_seat (priv->grab_pointer));
+    cdk_seat_ungrab (cdk_device_get_seat (priv->grab_pointer));
 
   ctk_widget_hide (priv->popup_window);
   ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (priv->button),
@@ -2961,7 +2961,7 @@ ctk_combo_box_list_popup_resize (CtkComboBox *combo_box)
   if (!priv->resize_idle_id)
     {
       priv->resize_idle_id =
-        gdk_threads_add_idle (list_popup_resize_idle, combo_box);
+        cdk_threads_add_idle (list_popup_resize_idle, combo_box);
       g_source_set_name_by_id (priv->resize_idle_id, "[ctk+] list_popup_resize_idle");
     }
 }
@@ -3119,7 +3119,7 @@ ctk_combo_box_list_button_pressed (CtkWidget      *widget,
 
   priv->auto_scroll = FALSE;
   if (priv->scroll_timer == 0) {
-    priv->scroll_timer = gdk_threads_add_timeout (SCROLL_TIME,
+    priv->scroll_timer = cdk_threads_add_timeout (SCROLL_TIME,
                                                   (GSourceFunc) ctk_combo_box_list_scroll_timeout,
                                                    combo_box);
     g_source_set_name_by_id (priv->scroll_timer, "[ctk+] ctk_combo_box_list_scroll_timeout");
@@ -3332,7 +3332,7 @@ ctk_combo_box_list_scroll_timeout (CtkComboBox *combo_box)
 
   if (priv->auto_scroll)
     {
-      gdk_window_get_device_position (ctk_widget_get_window (priv->tree_view),
+      cdk_window_get_device_position (ctk_widget_get_window (priv->tree_view),
                                       priv->grab_pointer,
                                       &x, &y, NULL);
       ctk_combo_box_list_auto_scroll (combo_box, x, y);
@@ -4160,7 +4160,7 @@ ctk_combo_box_destroy (CtkWidget *widget)
       priv->popup_idle_id = 0;
     }
 
-  g_clear_pointer (&priv->trigger_event, gdk_event_free);
+  g_clear_pointer (&priv->trigger_event, cdk_event_free);
 
   if (priv->box)
     {
@@ -4390,7 +4390,7 @@ popdown_handler (CtkWidget *widget,
                  gpointer   data)
 {
   guint id;
-  id = gdk_threads_add_idle (popdown_idle, g_object_ref (data));
+  id = cdk_threads_add_idle (popdown_idle, g_object_ref (data));
   g_source_set_name_by_id (id, "[ctk+] popdown_idle");
 }
 
@@ -4412,7 +4412,7 @@ popup_idle (gpointer data)
                 NULL);
   ctk_combo_box_popup (combo_box);
 
-  g_clear_pointer (&priv->trigger_event, gdk_event_free);
+  g_clear_pointer (&priv->trigger_event, cdk_event_free);
 
   priv->popup_idle_id = 0;
 
@@ -4455,15 +4455,15 @@ ctk_combo_box_start_editing (CtkCellEditable *cell_editable,
   if (priv->is_cell_renderer &&
       priv->cell_view && !priv->tree_view)
     {
-      g_clear_pointer (&priv->trigger_event, gdk_event_free);
+      g_clear_pointer (&priv->trigger_event, cdk_event_free);
 
       if (event)
-        priv->trigger_event = gdk_event_copy (event);
+        priv->trigger_event = cdk_event_copy (event);
       else
         priv->trigger_event = ctk_get_current_event ();
 
       priv->popup_idle_id =
-          gdk_threads_add_idle (popup_idle, combo_box);
+          cdk_threads_add_idle (popup_idle, combo_box);
       g_source_set_name_by_id (priv->popup_idle_id, "[ctk+] popup_idle");
     }
 }

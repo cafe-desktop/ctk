@@ -20,7 +20,7 @@
 #ifndef __CTK_MNEMONIC_HASH_H__
 #define __CTK_MNEMONIC_HASH_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctkwidget.h>
 
 G_BEGIN_DECLS

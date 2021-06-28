@@ -158,7 +158,7 @@ test_match (void)
   error = NULL;
   provider = ctk_css_provider_new ();
 
-  gdk_rgba_parse (&expected, "#fff");
+  cdk_rgba_parse (&expected, "#fff");
 
   context = ctk_style_context_new ();
 
@@ -182,14 +182,14 @@ test_match (void)
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   data = "* { color: #f00 }\n"
          "button { color: #fff }";
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   data = "* { color: #f00 }\n"
          "button { color: #fff }\n"
@@ -197,14 +197,14 @@ test_match (void)
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   data = "* { color: #f00 }\n"
          ".button { color: #fff }";
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   data = "* { color: #f00 }\n"
          "button { color: #000 }\n"
@@ -212,7 +212,7 @@ test_match (void)
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   data = "* { color: #f00 }\n"
          "button { color: #000 }\n"
@@ -220,7 +220,7 @@ test_match (void)
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   data = "* { color: #f00 }\n"
          ".button { color: #000 }\n"
@@ -228,7 +228,7 @@ test_match (void)
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   data = "* { color: #f00 }\n"
          "* .button { color: #000 }\n"
@@ -236,7 +236,7 @@ test_match (void)
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   data = "* { color: #f00 }\n"
          "window .button { color: #000 }\n"
@@ -244,7 +244,7 @@ test_match (void)
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   data = "* { color: #f00 }\n"
          "window .button { color: #000 }\n"
@@ -252,7 +252,7 @@ test_match (void)
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   data = "* { color: #f00 }\n"
          "window:backdrop .button { color: #000 }\n"
@@ -261,7 +261,7 @@ test_match (void)
   ctk_css_provider_load_from_data (provider, data, -1, &error);
   g_assert_no_error (error);
   ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-  g_assert (gdk_rgba_equal (&color, &expected));
+  g_assert (cdk_rgba_equal (&color, &expected));
 
   g_object_unref (provider);
   g_object_unref (context);
@@ -290,8 +290,8 @@ test_basic_properties (void)
   g_assert (bg_color != NULL);
   g_assert (font != NULL);
 
-  gdk_rgba_free (color);
-  gdk_rgba_free (bg_color);
+  cdk_rgba_free (color);
+  cdk_rgba_free (bg_color);
   pango_font_description_free (font);
 
   g_object_unref (context);
@@ -410,7 +410,7 @@ test_style_priorities_equal (PrioritiesFixture *f,
 {
   GdkRGBA color, ref_color;
 
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_USER);
   ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
@@ -418,11 +418,11 @@ test_style_priorities_equal (PrioritiesFixture *f,
 
   /* When style providers are added to the screen as well as the style context
   the one specific to the style context should take priority */
-  gdk_rgba_parse (&ref_color, "red");
+  cdk_rgba_parse (&ref_color, "red");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
                                &color);
 
-  g_assert_true (gdk_rgba_equal (&ref_color, &color));
+  g_assert_true (cdk_rgba_equal (&ref_color, &color));
 }
 
 static void
@@ -431,15 +431,15 @@ test_style_priorities_screen_only (PrioritiesFixture *f,
 {
   GdkRGBA color, ref_color;
 
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_USER);
 
-  gdk_rgba_parse (&ref_color, "blue");
+  cdk_rgba_parse (&ref_color, "blue");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
                                &color);
 
-  g_assert_true (gdk_rgba_equal (&ref_color, &color));
+  g_assert_true (cdk_rgba_equal (&ref_color, &color));
 }
 
 static void
@@ -451,11 +451,11 @@ test_style_priorities_context_only (PrioritiesFixture *f,
   ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
                                   CTK_STYLE_PROVIDER_PRIORITY_USER);
 
-  gdk_rgba_parse (&ref_color, "red");
+  cdk_rgba_parse (&ref_color, "red");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
                                &color);
 
-  g_assert_true (gdk_rgba_equal (&ref_color, &color));
+  g_assert_true (cdk_rgba_equal (&ref_color, &color));
 }
 
 static void
@@ -464,17 +464,17 @@ test_style_priorities_screen_higher (PrioritiesFixture *f,
 {
   GdkRGBA color, ref_color;
 
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
   ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
                                   CTK_STYLE_PROVIDER_PRIORITY_USER);
 
-  gdk_rgba_parse (&ref_color, "blue");
+  cdk_rgba_parse (&ref_color, "blue");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
                                &color);
 
-  g_assert_true (gdk_rgba_equal (&ref_color, &color));
+  g_assert_true (cdk_rgba_equal (&ref_color, &color));
 }
 
 static void
@@ -483,17 +483,17 @@ test_style_priorities_context_higher (PrioritiesFixture *f,
 {
   GdkRGBA color, ref_color;
 
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_USER);
   ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
                                   CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
 
-  gdk_rgba_parse (&ref_color, "red");
+  cdk_rgba_parse (&ref_color, "red");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
                                &color);
 
-  g_assert_true (gdk_rgba_equal (&ref_color, &color));
+  g_assert_true (cdk_rgba_equal (&ref_color, &color));
 }
 
 static void
@@ -502,18 +502,18 @@ test_style_priorities_two_screen (PrioritiesFixture *f,
 {
   GdkRGBA color, ref_color;
 
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_USER);
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->red_provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
 
-  gdk_rgba_parse (&ref_color, "red");
+  cdk_rgba_parse (&ref_color, "red");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
                                &color);
 
-  g_assert_true (gdk_rgba_equal (&ref_color, &color));
+  g_assert_true (cdk_rgba_equal (&ref_color, &color));
 }
 
 static void
@@ -527,11 +527,11 @@ test_style_priorities_two_context (PrioritiesFixture *f,
   ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
                                   CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
 
-  gdk_rgba_parse (&ref_color, "red");
+  cdk_rgba_parse (&ref_color, "red");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
                                &color);
 
-  g_assert_true (gdk_rgba_equal (&ref_color, &color));
+  g_assert_true (cdk_rgba_equal (&ref_color, &color));
 }
 
 static void
@@ -540,20 +540,20 @@ test_style_priorities_three_screen_higher (PrioritiesFixture *f,
 {
   GdkRGBA color, ref_color;
 
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_USER);
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->green_provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
   ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
                                   CTK_STYLE_PROVIDER_PRIORITY_USER);
 
-  gdk_rgba_parse (&ref_color, "green");
+  cdk_rgba_parse (&ref_color, "green");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
                                &color);
 
-  g_assert_true (gdk_rgba_equal (&ref_color, &color));
+  g_assert_true (cdk_rgba_equal (&ref_color, &color));
 }
 
 static void
@@ -562,7 +562,7 @@ test_style_priorities_three_context_higher (PrioritiesFixture *f,
 {
   GdkRGBA color, ref_color;
 
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_USER);
   ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
@@ -570,11 +570,11 @@ test_style_priorities_three_context_higher (PrioritiesFixture *f,
   ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->green_provider),
                                   CTK_STYLE_PROVIDER_PRIORITY_USER + 1);
 
-  gdk_rgba_parse (&ref_color, "green");
+  cdk_rgba_parse (&ref_color, "green");
   ctk_style_context_get_color (f->context, ctk_style_context_get_state (f->context),
                                &color);
 
-  g_assert_true (gdk_rgba_equal (&ref_color, &color));
+  g_assert_true (cdk_rgba_equal (&ref_color, &color));
 }
 
 int

@@ -26,11 +26,11 @@
 #define __GDK_THREADS_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdktypes.h>
-#include <gdk/gdkversionmacros.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkversionmacros.h>
 
 G_BEGIN_DECLS
 
@@ -41,41 +41,41 @@ G_BEGIN_DECLS
 #endif
 
 GDK_THREADS_DEPRECATED
-void     gdk_threads_init                     (void);
+void     cdk_threads_init                     (void);
 GDK_THREADS_DEPRECATED
-void     gdk_threads_enter                    (void);
+void     cdk_threads_enter                    (void);
 GDK_THREADS_DEPRECATED
-void     gdk_threads_leave                    (void);
+void     cdk_threads_leave                    (void);
 GDK_THREADS_DEPRECATED
-void     gdk_threads_set_lock_functions       (GCallback enter_fn,
+void     cdk_threads_set_lock_functions       (GCallback enter_fn,
                                                GCallback leave_fn);
 
 GDK_AVAILABLE_IN_ALL
-guint    gdk_threads_add_idle_full            (gint           priority,
+guint    cdk_threads_add_idle_full            (gint           priority,
                                                GSourceFunc    function,
                                                gpointer       data,
                                                GDestroyNotify notify);
 GDK_AVAILABLE_IN_ALL
-guint    gdk_threads_add_idle                 (GSourceFunc    function,
+guint    cdk_threads_add_idle                 (GSourceFunc    function,
                                                gpointer       data);
 GDK_AVAILABLE_IN_ALL
-guint    gdk_threads_add_timeout_full         (gint           priority,
+guint    cdk_threads_add_timeout_full         (gint           priority,
                                                guint          interval,
                                                GSourceFunc    function,
                                                gpointer       data,
                                                GDestroyNotify notify);
 GDK_AVAILABLE_IN_ALL
-guint    gdk_threads_add_timeout              (guint          interval,
+guint    cdk_threads_add_timeout              (guint          interval,
                                                GSourceFunc    function,
                                                gpointer       data);
 GDK_AVAILABLE_IN_ALL
-guint    gdk_threads_add_timeout_seconds_full (gint           priority,
+guint    cdk_threads_add_timeout_seconds_full (gint           priority,
                                                guint          interval,
                                                GSourceFunc    function,
                                                gpointer       data,
                                                GDestroyNotify notify);
 GDK_AVAILABLE_IN_ALL
-guint    gdk_threads_add_timeout_seconds      (guint          interval,
+guint    cdk_threads_add_timeout_seconds      (guint          interval,
                                                GSourceFunc    function,
                                                gpointer       data);
 
@@ -87,13 +87,13 @@ guint    gdk_threads_add_timeout_seconds      (guint          interval,
  * CTK+ functions can be called safely and without causing race
  * conditions.  Only one thread at a time can be in such a critial
  * section. The macro expands to a no-op if #G_THREADS_ENABLED has not
- * been defined. Typically gdk_threads_enter() should be used instead of
+ * been defined. Typically cdk_threads_enter() should be used instead of
  * this macro.
  *
  * Deprecated:3.6: Use g_main_context_invoke(), g_idle_add() and related
  *     functions if you need to schedule CTK+ calls from other threads.
  */
-#define GDK_THREADS_ENTER() gdk_threads_enter()
+#define GDK_THREADS_ENTER() cdk_threads_enter()
 
 /**
  * GDK_THREADS_LEAVE:
@@ -103,7 +103,7 @@ guint    gdk_threads_add_timeout_seconds      (guint          interval,
  *
  * Deprecated:3.6: Deprecated in 3.6.
  */
-#define GDK_THREADS_LEAVE() gdk_threads_leave()
+#define GDK_THREADS_LEAVE() cdk_threads_leave()
 
 #undef GDK_THREADS_DEPRECATED
 

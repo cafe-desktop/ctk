@@ -417,11 +417,11 @@ file_print_cb (CtkPrintBackendFile *print_backend,
                GError              *error,
                gpointer            user_data)
 {
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   file_print_cb_locked (print_backend, error, user_data);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static gboolean

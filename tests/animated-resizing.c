@@ -137,7 +137,7 @@ tick_callback (CtkWidget     *widget,
                GdkFrameClock *frame_clock,
                gpointer       user_data)
 {
-  gint64 frame_time = gdk_frame_clock_get_frame_time (frame_clock);
+  gint64 frame_time = cdk_frame_clock_get_frame_time (frame_clock);
   double scaled_time;
 
   if (start_frame_time == 0)
@@ -204,8 +204,8 @@ main(int argc, char **argv)
                     G_CALLBACK (on_map_event), NULL);
   on_frame (0.);
 
-  monitor = gdk_display_get_primary_monitor (ctk_widget_get_display (window));
-  gdk_monitor_get_geometry (monitor, &monitor_bounds);
+  monitor = cdk_display_get_primary_monitor (ctk_widget_get_display (window));
+  cdk_monitor_get_geometry (monitor, &monitor_bounds);
 
   ctk_window_move (CTK_WINDOW (window),
                    monitor_bounds.x + (monitor_bounds.width - window_width) / 2,

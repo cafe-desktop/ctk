@@ -18,180 +18,180 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../gdk/gdkapplaunchcontext.c:127 ../gdk/gdkcursor.c:139
-#: ../gdk/gdkdevicemanager.c:181 ../gdk/gdkglcontext.c:273
+#: ../cdk/cdkapplaunchcontext.c:127 ../cdk/cdkcursor.c:139
+#: ../cdk/cdkdevicemanager.c:181 ../cdk/cdkglcontext.c:273
 msgid "Display"
 msgstr "Skjerm"
 
-#: ../gdk/gdkcursor.c:131
+#: ../cdk/cdkcursor.c:131
 msgid "Cursor type"
 msgstr "Type markør"
 
-#: ../gdk/gdkcursor.c:132
+#: ../cdk/cdkcursor.c:132
 msgid "Standard cursor type"
 msgstr "Forvalgt type markør"
 
-#: ../gdk/gdkcursor.c:140
+#: ../cdk/cdkcursor.c:140
 msgid "Display of this cursor"
 msgstr "Visning av denne markøren"
 
-#: ../gdk/gdkdevice.c:114
+#: ../cdk/cdkdevice.c:114
 msgid "Device Display"
 msgstr "Skjerm for enhet"
 
-#: ../gdk/gdkdevice.c:115
+#: ../cdk/cdkdevice.c:115
 msgid "Display which the device belongs to"
 msgstr "Skjerm denne enheten tilhører"
 
-#: ../gdk/gdkdevice.c:129
+#: ../cdk/cdkdevice.c:129
 msgid "Device manager"
 msgstr "Enhetshåndtering"
 
-#: ../gdk/gdkdevice.c:130
+#: ../cdk/cdkdevice.c:130
 msgid "Device manager which the device belongs to"
 msgstr "Enhetshåndterer denne enheten tilhører"
 
-#: ../gdk/gdkdevice.c:144 ../gdk/gdkdevice.c:145
+#: ../cdk/cdkdevice.c:144 ../cdk/cdkdevice.c:145
 msgid "Device name"
 msgstr "Navn på enhet"
 
-#: ../gdk/gdkdevice.c:159
+#: ../cdk/cdkdevice.c:159
 msgid "Device type"
 msgstr "Type enhet"
 
-#: ../gdk/gdkdevice.c:160
+#: ../cdk/cdkdevice.c:160
 msgid "Device role in the device manager"
 msgstr "Rolle for enhet i enhetshåndterer"
 
-#: ../gdk/gdkdevice.c:176
+#: ../cdk/cdkdevice.c:176
 msgid "Associated device"
 msgstr "Assosiert enhet"
 
-#: ../gdk/gdkdevice.c:177
+#: ../cdk/cdkdevice.c:177
 msgid "Associated pointer or keyboard with this device"
 msgstr "Peker eller tastatur som er assosiert med denne enheten"
 
-#: ../gdk/gdkdevice.c:190
+#: ../cdk/cdkdevice.c:190
 msgid "Input source"
 msgstr "Inndatakilde"
 
-#: ../gdk/gdkdevice.c:191
+#: ../cdk/cdkdevice.c:191
 msgid "Source type for the device"
 msgstr "Kildetype for enheten"
 
-#: ../gdk/gdkdevice.c:206 ../gdk/gdkdevice.c:207
+#: ../cdk/cdkdevice.c:206 ../cdk/cdkdevice.c:207
 msgid "Input mode for the device"
 msgstr "Inndatamodus for enheten"
 
-#: ../gdk/gdkdevice.c:222
+#: ../cdk/cdkdevice.c:222
 msgid "Whether the device has a cursor"
 msgstr "Hvorvidt enheten har en markør"
 
-#: ../gdk/gdkdevice.c:223
+#: ../cdk/cdkdevice.c:223
 msgid "Whether there is a visible cursor following device motion"
 msgstr "Om en synlig markør følger bevegelse av enheten"
 
-#: ../gdk/gdkdevice.c:237 ../gdk/gdkdevice.c:238
+#: ../cdk/cdkdevice.c:237 ../cdk/cdkdevice.c:238
 msgid "Number of axes in the device"
 msgstr "Antall akser i enheten"
 
-#: ../gdk/gdkdevice.c:251 ../gdk/gdkdevice.c:252
+#: ../cdk/cdkdevice.c:251 ../cdk/cdkdevice.c:252
 msgid "Vendor ID"
 msgstr "Leverandør-ID"
 
-#: ../gdk/gdkdevice.c:266 ../gdk/gdkdevice.c:267
+#: ../cdk/cdkdevice.c:266 ../cdk/cdkdevice.c:267
 msgid "Product ID"
 msgstr "Produkt-ID"
 
-#: ../gdk/gdkdevicemanager.c:182
+#: ../cdk/cdkdevicemanager.c:182
 msgid "Display for the device manager"
 msgstr "Skjerm for enhetshåndterer"
 
-#: ../gdk/gdkdisplaymanager.c:169
+#: ../cdk/cdkdisplaymanager.c:169
 msgid "Default Display"
 msgstr "Forvalgt skjerm"
 
-#: ../gdk/gdkdisplaymanager.c:170
+#: ../cdk/cdkdisplaymanager.c:170
 msgid "The default display for GDK"
 msgstr "Forvalgt skjerm for GDK"
 
-#: ../gdk/gdkglcontext.c:274
+#: ../cdk/cdkglcontext.c:274
 msgid "The GDK display the context is from"
 msgstr "GDK-skjerm konteksten er fra"
 
-#: ../gdk/gdkglcontext.c:289 ../ctk/ctkwidget.c:1448
+#: ../cdk/cdkglcontext.c:289 ../ctk/ctkwidget.c:1448
 msgid "Window"
 msgstr "Vindu"
 
-#: ../gdk/gdkglcontext.c:290
+#: ../cdk/cdkglcontext.c:290
 msgid "The GDK window bound to the GL context"
 msgstr "GDK-vindu som er bundet til GL-konteksten"
 
-#: ../gdk/gdkglcontext.c:305 ../ctk/ctkglarea.c:763
+#: ../cdk/cdkglcontext.c:305 ../ctk/ctkglarea.c:763
 msgid "Profile"
 msgstr "Profil"
 
-#: ../gdk/gdkglcontext.c:306
+#: ../cdk/cdkglcontext.c:306
 msgid "The GL profile the context was created for"
 msgstr "GL-profil denne konteksten ble laget for"
 
-#: ../gdk/gdkglcontext.c:322
+#: ../cdk/cdkglcontext.c:322
 msgid "Shared context"
 msgstr "Delt kontekst"
 
-#: ../gdk/gdkglcontext.c:323
+#: ../cdk/cdkglcontext.c:323
 msgid "The GL context this context share data with"
 msgstr "GL-kontekst denne konteksten deler data med"
 
-#: ../gdk/gdkscreen.c:91
+#: ../cdk/cdkscreen.c:91
 msgid "Font options"
 msgstr "Alternativer for skrift"
 
-#: ../gdk/gdkscreen.c:92
+#: ../cdk/cdkscreen.c:92
 msgid "The default font options for the screen"
 msgstr "Forvalgte alternativer for skrift på skjermen"
 
-#: ../gdk/gdkscreen.c:99
+#: ../cdk/cdkscreen.c:99
 msgid "Font resolution"
 msgstr "Skriftoppløsning"
 
-#: ../gdk/gdkscreen.c:100
+#: ../cdk/cdkscreen.c:100
 msgid "The resolution for fonts on the screen"
 msgstr "Oppløsning for skrifter på skjermen"
 
-#: ../gdk/gdkwindow.c:320 ../gdk/gdkwindow.c:321
+#: ../cdk/cdkwindow.c:320 ../cdk/cdkwindow.c:321
 msgid "Cursor"
 msgstr "Markør"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:113
+#: ../cdk/x11/cdkdevicemanager-xi2.c:113
 msgid "Opcode"
 msgstr "Opcode"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:114
+#: ../cdk/x11/cdkdevicemanager-xi2.c:114
 msgid "Opcode for XInput2 requests"
 msgstr "Opcode for XInput2-forespørsler"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:120
+#: ../cdk/x11/cdkdevicemanager-xi2.c:120
 msgid "Major"
 msgstr "Større"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:121
+#: ../cdk/x11/cdkdevicemanager-xi2.c:121
 msgid "Major version number"
 msgstr "Større versjonsnummer"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:127
+#: ../cdk/x11/cdkdevicemanager-xi2.c:127
 msgid "Minor"
 msgstr "Mindre"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:128
+#: ../cdk/x11/cdkdevicemanager-xi2.c:128
 msgid "Minor version number"
 msgstr "Mindre versjonsnummer"
 
-#: ../gdk/x11/gdkdevice-xi2.c:142
+#: ../cdk/x11/cdkdevice-xi2.c:142
 msgid "Device ID"
 msgstr "Enhets-ID"
 
-#: ../gdk/x11/gdkdevice-xi2.c:143
+#: ../cdk/x11/cdkdevice-xi2.c:143
 msgid "Device identifier"
 msgstr "Enhetsidentifikator"
 

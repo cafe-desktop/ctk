@@ -1,4 +1,4 @@
-/* gdkprivate-quartz.h
+/* cdkprivate-quartz.h
  *
  * Copyright (C) 2005-2007 Imendio AB
  *
@@ -20,9 +20,9 @@
 #define __GDK_PRIVATE_QUARTZ_H__
 
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
-#include "gdkinternals.h"
+#include "cdkinternals.h"
 
 #include "config.h"
 
@@ -31,7 +31,7 @@
 
 /* Display */
 
-GdkDisplay *    _gdk_quartz_display_open (const gchar *name);
+GdkDisplay *    _cdk_quartz_display_open (const gchar *name);
 
 
 #endif /* __GDK_PRIVATE_QUARTZ_H__ */

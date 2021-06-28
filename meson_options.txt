@@ -1,14 +1,14 @@
 # GDK backends
 option('x11_backend', type: 'boolean', value: true,
-  description : 'Enable the X11 gdk backend (only when building on Unix)')
+  description : 'Enable the X11 cdk backend (only when building on Unix)')
 option('wayland_backend', type: 'boolean', value: true,
-  description : 'Enable the wayland gdk backend (only when building on Unix except for macOS)')
+  description : 'Enable the wayland cdk backend (only when building on Unix except for macOS)')
 option('broadway_backend', type: 'boolean', value: false,
-  description : 'Enable the broadway (HTML5) gdk backend')
+  description : 'Enable the broadway (HTML5) cdk backend')
 option('win32_backend', type: 'boolean', value: true,
-  description : 'Enable the Windows gdk backend (only when building on Windows)')
+  description : 'Enable the Windows cdk backend (only when building on Windows)')
 option('quartz_backend', type: 'boolean', value: true,
-  description : 'Enable the macOS gdk backend (only when building on macOS)')
+  description : 'Enable the macOS cdk backend (only when building on macOS)')
 
 # Optional dependencies
 option('xinerama', type: 'combo', choices : ['yes', 'no', 'auto'], value : 'auto',

@@ -1,11 +1,11 @@
-## Makefile.am for ctk+/gdk
+## Makefile.am for ctk+/cdk
 include $(top_srcdir)/Makefile.decl
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS =
 INTROSPECTION_SCANNER_ENV = \
    CC="$(CC)"
 INTROSPECTION_SCANNER_ARGS = \
-	--add-include-path=../gdk \
+	--add-include-path=../cdk \
 	--warn-all
 INTROSPECTION_COMPILER_ARGS = \
    --includedir=$(srcdir) \
@@ -21,20 +21,20 @@ EXTRA_DIST += 			\
 	keynames.txt		\
 	keynames-translate.txt	\
 	keyname-table.h		\
-	gdkkeynames.c		\
+	cdkkeynames.c		\
 	gen-keyname-table.pl	\
-	gdkconfig.h.win32	\
-	gdkconfig.h.win32_broadway	\
-	gdkkeysyms-update.pl	\
-	gdkmarshalers.list	\
-	gdkwindowimpl.h		\
+	cdkconfig.h.win32	\
+	cdkconfig.h.win32_broadway	\
+	cdkkeysyms-update.pl	\
+	cdkmarshalers.list	\
+	cdkwindowimpl.h		\
 	makefile.msc		\
-	gdkenumtypes.c.template	\
-	gdkenumtypes.h.template	\
-	gdkversionmacros.h.in	\
+	cdkenumtypes.c.template	\
+	cdkenumtypes.h.template	\
+	cdkversionmacros.h.in	\
 	meson.build \
-	gen-gdk-gresources-xml.py \
-	gdkconfig.h.meson
+	gen-cdk-gresources-xml.py \
+	cdkconfig.h.meson
 
 GDK_CFLAGS_DEFINES =	\
 	-DG_LOG_USE_STRUCTURED=1	\
@@ -45,7 +45,7 @@ AM_CPPFLAGS =				\
 	-DG_LOG_DOMAIN=\"Gdk\"		\
 	$(GDK_CFLAGS_DEFINES)		\
 	-I$(top_builddir)		\
-	-I$(top_builddir)/gdk		\
+	-I$(top_builddir)/cdk		\
 	-I$(top_srcdir)			\
 	$(CTK_DEBUG_FLAGS)		\
 	$(GDK_DEP_CFLAGS)
@@ -67,303 +67,303 @@ LDADD = 					\
 # GDK header files for public installation (non-generated)
 #
 #
-gdk_public_h_sources = 				\
-	gdk.h					\
-	gdk-autocleanup.h			\
-	gdkapplaunchcontext.h			\
-	gdkcairo.h				\
-	gdkcursor.h				\
-	gdkdevice.h				\
-	gdkdevicepad.h				\
-	gdkdevicetool.h				\
-	gdkdevicemanager.h			\
-	gdkdisplay.h				\
-	gdkdisplaymanager.h			\
-	gdkdnd.h				\
-	gdkdrawingcontext.h			\
-	gdkevents.h				\
-	gdkframetimings.h			\
-	gdkglcontext.h				\
-	gdkkeys.h				\
-	gdkkeysyms.h				\
-	gdkkeysyms-compat.h			\
-	gdkmain.h				\
-	gdkmonitor.h				\
-	gdkpango.h				\
-	gdkframeclock.h				\
-	gdkpixbuf.h				\
-	gdkprivate.h				\
-	gdkproperty.h				\
-	gdkrectangle.h				\
-	gdkrgba.h				\
-	gdkscreen.h				\
-	gdkseat.h				\
-	gdkselection.h				\
-	gdktestutils.h				\
-	gdkthreads.h				\
-	gdktypes.h				\
-	gdkvisual.h				\
-	gdkwindow.h
+cdk_public_h_sources = 				\
+	cdk.h					\
+	cdk-autocleanup.h			\
+	cdkapplaunchcontext.h			\
+	cdkcairo.h				\
+	cdkcursor.h				\
+	cdkdevice.h				\
+	cdkdevicepad.h				\
+	cdkdevicetool.h				\
+	cdkdevicemanager.h			\
+	cdkdisplay.h				\
+	cdkdisplaymanager.h			\
+	cdkdnd.h				\
+	cdkdrawingcontext.h			\
+	cdkevents.h				\
+	cdkframetimings.h			\
+	cdkglcontext.h				\
+	cdkkeys.h				\
+	cdkkeysyms.h				\
+	cdkkeysyms-compat.h			\
+	cdkmain.h				\
+	cdkmonitor.h				\
+	cdkpango.h				\
+	cdkframeclock.h				\
+	cdkpixbuf.h				\
+	cdkprivate.h				\
+	cdkproperty.h				\
+	cdkrectangle.h				\
+	cdkrgba.h				\
+	cdkscreen.h				\
+	cdkseat.h				\
+	cdkselection.h				\
+	cdktestutils.h				\
+	cdkthreads.h				\
+	cdktypes.h				\
+	cdkvisual.h				\
+	cdkwindow.h
 
 deprecated_h_sources =				\
-	deprecated/gdkcolor.h
+	deprecated/cdkcolor.h
 
-gdk_h_sources =					\
-	$(gdk_public_h_sources)			\
+cdk_h_sources =					\
+	$(cdk_public_h_sources)			\
 	$(deprecated_h_sources)
 
-gdk_private_headers = 				\
-	gdk-private.h				\
-	gdkapplaunchcontextprivate.h		\
-	gdkconstructor.h		\
-	gdkcursorprivate.h			\
-	gdkdevicemanagerprivate.h		\
-	gdkdeviceprivate.h			\
-	gdkdevicepadprivate.h			\
-	gdkdevicetoolprivate.h			\
-	gdkdisplaymanagerprivate.h		\
-	gdkdisplayprivate.h			\
-	gdkdndprivate.h				\
-	gdkdrawingcontextprivate.h		\
-	gdkframeclockidle.h			\
-	gdkframeclockprivate.h			\
-	gdkglcontextprivate.h			\
-	gdkmonitorprivate.h			\
-	gdkprofilerprivate.h			\
-	gdkscreenprivate.h			\
-	gdkseatprivate.h			\
-	gdkseatdefaultprivate.h			\
-	gdkinternals.h				\
-	gdkintl.h				\
-	gdkkeysprivate.h			\
-	gdkvisualprivate.h			\
-	gdkx.h
+cdk_private_headers = 				\
+	cdk-private.h				\
+	cdkapplaunchcontextprivate.h		\
+	cdkconstructor.h		\
+	cdkcursorprivate.h			\
+	cdkdevicemanagerprivate.h		\
+	cdkdeviceprivate.h			\
+	cdkdevicepadprivate.h			\
+	cdkdevicetoolprivate.h			\
+	cdkdisplaymanagerprivate.h		\
+	cdkdisplayprivate.h			\
+	cdkdndprivate.h				\
+	cdkdrawingcontextprivate.h		\
+	cdkframeclockidle.h			\
+	cdkframeclockprivate.h			\
+	cdkglcontextprivate.h			\
+	cdkmonitorprivate.h			\
+	cdkprofilerprivate.h			\
+	cdkscreenprivate.h			\
+	cdkseatprivate.h			\
+	cdkseatdefaultprivate.h			\
+	cdkinternals.h				\
+	cdkintl.h				\
+	cdkkeysprivate.h			\
+	cdkvisualprivate.h			\
+	cdkx.h
 
 deprecated_c_sources =				\
-	deprecated/gdkcolor.c
+	deprecated/cdkcolor.c
 
-gdk_c_sources = 				\
+cdk_c_sources = 				\
 	$(deprecated_c_sources)			\
-	gdk-private.c				\
-	gdk.c					\
-	gdkapplaunchcontext.c			\
-	gdkcairo.c				\
-	gdkcursor.c				\
-	gdkdeprecated.c				\
-	gdkdevice.c				\
-	gdkdevicepad.c				\
-	gdkdevicetool.c				\
-	gdkdevicemanager.c			\
-	gdkdisplay.c				\
-	gdkdisplaymanager.c			\
-	gdkdnd.c				\
-	gdkdrawingcontext.c			\
-	gdkevents.c     			\
-	gdkframetimings.c			\
-	gdkgl.c					\
-	gdkglcontext.c				\
-	gdkglobals.c				\
-	gdkkeys.c				\
-	gdkkeyuni.c				\
-	gdkmonitor.c				\
-	gdkoffscreenwindow.c			\
-	gdkframeclock.c				\
-	gdkframeclockidle.c			\
-	gdkpango.c				\
-	gdkpixbuf-drawable.c			\
-	gdkprofiler.c				\
-	gdkproperty.c				\
-	gdkrectangle.c				\
-	gdkrgba.c				\
-	gdkscreen.c				\
-	gdkseat.c				\
-	gdkseatdefault.c			\
-	gdkselection.c				\
-	gdkvisual.c				\
-	gdkwindow.c				\
-	gdkwindowimpl.c
+	cdk-private.c				\
+	cdk.c					\
+	cdkapplaunchcontext.c			\
+	cdkcairo.c				\
+	cdkcursor.c				\
+	cdkdeprecated.c				\
+	cdkdevice.c				\
+	cdkdevicepad.c				\
+	cdkdevicetool.c				\
+	cdkdevicemanager.c			\
+	cdkdisplay.c				\
+	cdkdisplaymanager.c			\
+	cdkdnd.c				\
+	cdkdrawingcontext.c			\
+	cdkevents.c     			\
+	cdkframetimings.c			\
+	cdkgl.c					\
+	cdkglcontext.c				\
+	cdkglobals.c				\
+	cdkkeys.c				\
+	cdkkeyuni.c				\
+	cdkmonitor.c				\
+	cdkoffscreenwindow.c			\
+	cdkframeclock.c				\
+	cdkframeclockidle.c			\
+	cdkpango.c				\
+	cdkpixbuf-drawable.c			\
+	cdkprofiler.c				\
+	cdkproperty.c				\
+	cdkrectangle.c				\
+	cdkrgba.c				\
+	cdkscreen.c				\
+	cdkseat.c				\
+	cdkseatdefault.c			\
+	cdkselection.c				\
+	cdkvisual.c				\
+	cdkwindow.c				\
+	cdkwindowimpl.c
 
-gdk_built_sources = 				\
-	gdkenumtypes.h				\
-	gdkenumtypes.c				\
-	gdkmarshalers.h 			\
-	gdkmarshalers.c				\
-	gdkresources.h				\
-	gdkresources.c				\
-	gdkversionmacros.h
+cdk_built_sources = 				\
+	cdkenumtypes.h				\
+	cdkenumtypes.c				\
+	cdkmarshalers.h 			\
+	cdkmarshalers.c				\
+	cdkresources.h				\
+	cdkresources.c				\
+	cdkversionmacros.h
 
 #
 # setup GDK sources and their dependencies
 #
 
-gdkincludedir = $(includedir)/ctk-3.0/gdk
-gdkinclude_HEADERS = $(gdk_public_h_sources)
-nodist_gdkinclude_HEADERS = gdkconfig.h gdkenumtypes.h gdkversionmacros.h
+cdkincludedir = $(includedir)/ctk-3.0/cdk
+cdkinclude_HEADERS = $(cdk_public_h_sources)
+nodist_cdkinclude_HEADERS = cdkconfig.h cdkenumtypes.h cdkversionmacros.h
 
-deprecatedincludedir = $(includedir)/ctk-3.0/gdk/deprecated
+deprecatedincludedir = $(includedir)/ctk-3.0/cdk/deprecated
 deprecatedinclude_HEADERS = $(deprecated_h_sources)
 
 common_sources = 		\
-	$(gdk_private_headers)	\
-	$(gdk_c_sources)	\
-	gdkenumtypes.c		\
-	gdkmarshalers.c		\
-	gdkmarshalers.h		\
-	gdkresources.h		\
-	gdkresources.c
+	$(cdk_private_headers)	\
+	$(cdk_c_sources)	\
+	cdkenumtypes.c		\
+	cdkmarshalers.c		\
+	cdkmarshalers.h		\
+	cdkresources.h		\
+	cdkresources.c
 
-libgdk_3_la_SOURCES = $(common_sources)
-libgdk_3_la_CFLAGS = $(AM_CFLAGS) $(GDK_HIDDEN_VISIBILITY_CFLAGS)
-libgdk_3_la_LIBADD = $(GDK_DEP_LIBS) $(SHM_LIBS)
-libgdk_3_la_LDFLAGS = $(LDADD)
+libcdk_3_la_SOURCES = $(common_sources)
+libcdk_3_la_CFLAGS = $(AM_CFLAGS) $(GDK_HIDDEN_VISIBILITY_CFLAGS)
+libcdk_3_la_LIBADD = $(GDK_DEP_LIBS) $(SHM_LIBS)
+libcdk_3_la_LDFLAGS = $(LDADD)
 
 if USE_X11
-libgdk_3_la_LIBADD += x11/libgdk-x11.la
+libcdk_3_la_LIBADD += x11/libcdk-x11.la
 endif # USE_X11
 
 if USE_QUARTZ
-libgdk_3_la_LIBADD += quartz/libgdk-quartz.la
+libcdk_3_la_LIBADD += quartz/libcdk-quartz.la
 endif # USE_QUARTZ
 
 if USE_WIN32
-libgdk_3_la_LIBADD += win32/libgdk-win32.la
-libgdk_3_la_DEPENDENCIES = win32/libgdk-win32.la win32/rc/gdk-win32-res.o
-libgdk_3_la_LDFLAGS += -Wl,win32/rc/gdk-win32-res.o
+libcdk_3_la_LIBADD += win32/libcdk-win32.la
+libcdk_3_la_DEPENDENCIES = win32/libcdk-win32.la win32/rc/cdk-win32-res.o
+libcdk_3_la_LDFLAGS += -Wl,win32/rc/cdk-win32-res.o
 endif # USE_WIN32
 
 if USE_BROADWAY
-libgdk_3_la_LIBADD += broadway/libgdk-broadway.la
+libcdk_3_la_LIBADD += broadway/libcdk-broadway.la
 endif # USE_BROADWAY
 
 if USE_WAYLAND
-libgdk_3_la_LIBADD += wayland/libgdk-wayland.la
+libcdk_3_la_LIBADD += wayland/libcdk-wayland.la
 endif
 
 if HAVE_INTROSPECTION
 
 introspection_files = 		\
-	$(filter-out gdkkeysyms-compat.h, $(gdk_h_sources))	\
-	$(gdk_c_sources)	\
-	$(gdk_built_sources)
+	$(filter-out cdkkeysyms-compat.h, $(cdk_h_sources))	\
+	$(cdk_c_sources)	\
+	$(cdk_built_sources)
 
-Gdk-3.0.gir: libgdk-3.la Makefile
+Gdk-3.0.gir: libcdk-3.la Makefile
 Gdk_3_0_gir_SCANNERFLAGS = 	\
-	--c-include="gdk/gdk.h"
+	--c-include="cdk/cdk.h"
 Gdk_3_0_gir_INCLUDES = Gio-2.0 GdkPixbuf-2.0 Pango-1.0 cairo-1.0
-Gdk_3_0_gir_LIBS = libgdk-3.la
+Gdk_3_0_gir_LIBS = libcdk-3.la
 Gdk_3_0_gir_FILES = $(introspection_files)
 Gdk_3_0_gir_CFLAGS = $(AM_CPPFLAGS)
-Gdk_3_0_gir_EXPORT_PACKAGES = gdk-3.0
+Gdk_3_0_gir_EXPORT_PACKAGES = cdk-3.0
 INTROSPECTION_GIRS += Gdk-3.0.gir
 if OS_WIN32
 Gdk_3_0_gir_CFLAGS += -I$(srcdir)/win32 -I$(srcdir)
 endif
 if USE_X11
 x11_introspection_files = 		\
-	x11/gdkapplaunchcontext-x11.c	\
-	x11/gdkasync.c			\
-	x11/gdkcursor-x11.c		\
-	x11/gdkdevice-core-x11.c	\
-	x11/gdkdevicemanager-core-x11.c	\
-	x11/gdkdevicemanager-x11.c	\
-	x11/gdkdevicemanager-xi2.c	\
-	x11/gdkdevice-xi2.c		\
-	x11/gdkdisplay-x11.c		\
-	x11/gdkdisplaymanager-x11.c	\
-	x11/gdkdnd-x11.c		\
-	x11/gdkeventsource.c		\
-	x11/gdkeventtranslator.c	\
-	x11/gdkgeometry-x11.c		\
-	x11/gdkglcontext-x11.c		\
-	x11/gdkkeys-x11.c		\
-	x11/gdkmain-x11.c		\
-	x11/gdkmonitor-x11.c		\
-	x11/gdkproperty-x11.c		\
-	x11/gdkscreen-x11.c		\
-	x11/gdkselection-x11.c		\
-	x11/gdksettings.c		\
-	x11/gdktestutils-x11.c		\
-	x11/gdkvisual-x11.c		\
-	x11/gdkwindow-x11.c		\
-	x11/gdkxftdefaults.c		\
-	x11/gdkxid.c			\
+	x11/cdkapplaunchcontext-x11.c	\
+	x11/cdkasync.c			\
+	x11/cdkcursor-x11.c		\
+	x11/cdkdevice-core-x11.c	\
+	x11/cdkdevicemanager-core-x11.c	\
+	x11/cdkdevicemanager-x11.c	\
+	x11/cdkdevicemanager-xi2.c	\
+	x11/cdkdevice-xi2.c		\
+	x11/cdkdisplay-x11.c		\
+	x11/cdkdisplaymanager-x11.c	\
+	x11/cdkdnd-x11.c		\
+	x11/cdkeventsource.c		\
+	x11/cdkeventtranslator.c	\
+	x11/cdkgeometry-x11.c		\
+	x11/cdkglcontext-x11.c		\
+	x11/cdkkeys-x11.c		\
+	x11/cdkmain-x11.c		\
+	x11/cdkmonitor-x11.c		\
+	x11/cdkproperty-x11.c		\
+	x11/cdkscreen-x11.c		\
+	x11/cdkselection-x11.c		\
+	x11/cdksettings.c		\
+	x11/cdktestutils-x11.c		\
+	x11/cdkvisual-x11.c		\
+	x11/cdkwindow-x11.c		\
+	x11/cdkxftdefaults.c		\
+	x11/cdkxid.c			\
 	x11/xsettings-client.c		\
-	x11/gdkx.h			\
-	x11/gdkx11applaunchcontext.h	\
-	x11/gdkx11cursor.h		\
-	x11/gdkx11device.h		\
-	x11/gdkx11device-core.h		\
-	x11/gdkx11device-xi2.h		\
-	x11/gdkx11devicemanager.h	\
-	x11/gdkx11devicemanager-core.h	\
-	x11/gdkx11devicemanager-xi2.h	\
-	x11/gdkx11display.h		\
-	x11/gdkx11displaymanager.h	\
-	x11/gdkx11dnd.h			\
-	x11/gdkx11glcontext.h		\
-	x11/gdkx11keys.h		\
-	x11/gdkx11monitor.h		\
-	x11/gdkx11property.h		\
-	x11/gdkx11screen.h		\
-	x11/gdkx11selection.h		\
-	x11/gdkx11utils.h		\
-	x11/gdkx11visual.h		\
-	x11/gdkx11window.h
+	x11/cdkx.h			\
+	x11/cdkx11applaunchcontext.h	\
+	x11/cdkx11cursor.h		\
+	x11/cdkx11device.h		\
+	x11/cdkx11device-core.h		\
+	x11/cdkx11device-xi2.h		\
+	x11/cdkx11devicemanager.h	\
+	x11/cdkx11devicemanager-core.h	\
+	x11/cdkx11devicemanager-xi2.h	\
+	x11/cdkx11display.h		\
+	x11/cdkx11displaymanager.h	\
+	x11/cdkx11dnd.h			\
+	x11/cdkx11glcontext.h		\
+	x11/cdkx11keys.h		\
+	x11/cdkx11monitor.h		\
+	x11/cdkx11property.h		\
+	x11/cdkx11screen.h		\
+	x11/cdkx11selection.h		\
+	x11/cdkx11utils.h		\
+	x11/cdkx11visual.h		\
+	x11/cdkx11window.h
 
-GdkX11-3.0.gir: libgdk-3.la Gdk-3.0.gir Makefile
+GdkX11-3.0.gir: libcdk-3.la Gdk-3.0.gir Makefile
 GdkX11_3_0_gir_SCANNERFLAGS = 		\
 	--identifier-prefix=Gdk		\
-	--c-include="gdk/gdkx.h"	\
-	--include-uninstalled=$(top_builddir)/gdk/Gdk-3.0.gir
+	--c-include="cdk/cdkx.h"	\
+	--include-uninstalled=$(top_builddir)/cdk/Gdk-3.0.gir
 GdkX11_3_0_gir_INCLUDES = Gio-2.0 GdkPixbuf-2.0 Pango-1.0 xlib-2.0
-GdkX11_3_0_gir_LIBS = libgdk-3.la
+GdkX11_3_0_gir_LIBS = libcdk-3.la
 GdkX11_3_0_gir_FILES = $(x11_introspection_files)
-GdkX11_3_0_gir_CFLAGS = $(AM_CPPFLAGS) -L$(top_builddir)/gdk
-GdkX11_3_0_gir_EXPORT_PACKAGES = gdk-x11-3.0
+GdkX11_3_0_gir_CFLAGS = $(AM_CPPFLAGS) -L$(top_builddir)/cdk
+GdkX11_3_0_gir_EXPORT_PACKAGES = cdk-x11-3.0
 INTROSPECTION_GIRS += GdkX11-3.0.gir
 
 endif # USE_X11
 
 w32_introspection_files =		\
-	win32/gdkcursor-win32.c		\
-	win32/gdkdevicemanager-win32.c	\
-	win32/gdkdevice-virtual.c	\
-	win32/gdkdevice-win32.c		\
-	win32/gdkdevice-wintab.c	\
-	win32/gdkdisplaymanager-win32.c	\
-	win32/gdkdisplay-win32.c	\
-	win32/gdkdnd-win32.c		\
-	win32/gdkevents-win32.c		\
-	win32/gdkgeometry-win32.c	\
-	win32/gdkglobals-win32.c	\
-	win32/gdkkeys-win32.c		\
-	win32/gdkmain-win32.c		\
-	win32/gdkproperty-win32.c	\
-	win32/gdkscreen-win32.c		\
-	win32/gdkselection-win32.c	\
-	win32/gdktestutils-win32.c	\
-	win32/gdkwin32.h		\
-	win32/gdkwin32cursor.h		\
-	win32/gdkwin32display.h		\
-	win32/gdkwin32displaymanager.h	\
-	win32/gdkwin32dnd.h		\
-	win32/gdkwin32id.c		\
-	win32/gdkwin32keys.h		\
-	win32/gdkwin32misc.h		\
-	win32/gdkwin32screen.h		\
-	win32/gdkwin32window.h		\
-	win32/gdkwindow-win32.c
+	win32/cdkcursor-win32.c		\
+	win32/cdkdevicemanager-win32.c	\
+	win32/cdkdevice-virtual.c	\
+	win32/cdkdevice-win32.c		\
+	win32/cdkdevice-wintab.c	\
+	win32/cdkdisplaymanager-win32.c	\
+	win32/cdkdisplay-win32.c	\
+	win32/cdkdnd-win32.c		\
+	win32/cdkevents-win32.c		\
+	win32/cdkgeometry-win32.c	\
+	win32/cdkglobals-win32.c	\
+	win32/cdkkeys-win32.c		\
+	win32/cdkmain-win32.c		\
+	win32/cdkproperty-win32.c	\
+	win32/cdkscreen-win32.c		\
+	win32/cdkselection-win32.c	\
+	win32/cdktestutils-win32.c	\
+	win32/cdkwin32.h		\
+	win32/cdkwin32cursor.h		\
+	win32/cdkwin32display.h		\
+	win32/cdkwin32displaymanager.h	\
+	win32/cdkwin32dnd.h		\
+	win32/cdkwin32id.c		\
+	win32/cdkwin32keys.h		\
+	win32/cdkwin32misc.h		\
+	win32/cdkwin32screen.h		\
+	win32/cdkwin32window.h		\
+	win32/cdkwindow-win32.c
 
 if OS_WIN32
-GdkWin32-3.0.gir: libgdk-3.la Gdk-3.0.gir Makefile
+GdkWin32-3.0.gir: libcdk-3.la Gdk-3.0.gir Makefile
 GdkWin32_3_0_gir_SCANNERFLAGS = \
 	--identifier-prefix=Gdk		\
-	--c-include="gdk/gdkwin32.h"	\
-	--include-uninstalled=$(top_builddir)/gdk/Gdk-3.0.gir
+	--c-include="cdk/cdkwin32.h"	\
+	--include-uninstalled=$(top_builddir)/cdk/Gdk-3.0.gir
 GdkWin32_3_0_gir_INCLUDES = Gio-2.0 GdkPixbuf-2.0 Pango-1.0
-GdkWin32_3_0_gir_LIBS = libgdk-3.la
+GdkWin32_3_0_gir_LIBS = libcdk-3.la
 GdkWin32_3_0_gir_FILES = $(w32_introspection_files)
-GdkWin32_3_0_gir_CFLAGS = $(AM_CPPFLAGS) -L$(top_builddir)/gdk -I$(srcdir)/win32 -I$(srcdir)
+GdkWin32_3_0_gir_CFLAGS = $(AM_CPPFLAGS) -L$(top_builddir)/cdk -I$(srcdir)/win32 -I$(srcdir)
 INTROSPECTION_GIRS += GdkWin32-3.0.gir
 
 endif # OS_WIN32
@@ -379,93 +379,93 @@ CLEANFILES += $(gir_DATA) $(typelibs_DATA)
 endif # HAVE_INTROSPECTION
 
 if OS_WIN32
-gdk.def: libgdk-3.la
-	echo "LIBRARY libgdk-$(CTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@" >$@
+cdk.def: libcdk-3.la
+	echo "LIBRARY libcdk-$(CTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@" >$@
 	echo "EXPORTS" >>$@
-	objdump -p .libs/libgdk-$(CTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@.dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
-install-def-file: gdk.def
+	objdump -p .libs/libcdk-$(CTK_MAJOR_VERSION)-@LT_CURRENT_MINUS_AGE@.dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
+install-def-file: cdk.def
 	mkdir -p $(DESTDIR)$(libdir)
-	$(INSTALL) gdk.def $(DESTDIR)$(libdir)/gdk-win32-3.0.def
+	$(INSTALL) cdk.def $(DESTDIR)$(libdir)/cdk-win32-3.0.def
 uninstall-def-file:
-	-rm $(DESTDIR)$(libdir)/gdk-win32-3.0.def
+	-rm $(DESTDIR)$(libdir)/cdk-win32-3.0.def
 else
 install-def-file:
 uninstall-def-file:
 endif
 
 if MS_LIB_AVAILABLE
-noinst_DATA = gdk-win32-$(CTK_API_VERSION).lib
+noinst_DATA = cdk-win32-$(CTK_API_VERSION).lib
 
-gdk-win32-$(CTK_API_VERSION).lib: libgdk-3.la gdk.def
-	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libgdk-win32-$(CTK_API_VERSION)-@LT_CURRENT_MINUS_AGE@.dll -def:gdk.def -out:$@
+cdk-win32-$(CTK_API_VERSION).lib: libcdk-3.la cdk.def
+	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libcdk-win32-$(CTK_API_VERSION)-@LT_CURRENT_MINUS_AGE@.dll -def:cdk.def -out:$@
 
 install-ms-lib:
 	mkdir -p $(DESTDIR)$(libdir)
-	$(INSTALL) gdk-win32-$(CTK_API_VERSION).lib $(DESTDIR)$(libdir)
+	$(INSTALL) cdk-win32-$(CTK_API_VERSION).lib $(DESTDIR)$(libdir)
 
 uninstall-ms-lib:
-	-rm $(DESTDIR)$(libdir)/gdk-win32-$(CTK_API_VERSION).lib
+	-rm $(DESTDIR)$(libdir)/cdk-win32-$(CTK_API_VERSION).lib
 else
 install-ms-lib:
 uninstall-ms-lib:
 endif
 
-lib_LTLIBRARIES = libgdk-3.la
+lib_LTLIBRARIES = libcdk-3.la
 
-MAINTAINERCLEANFILES = $(gdk_built_sources) stamp-gdkenumtypes.h
+MAINTAINERCLEANFILES = $(cdk_built_sources) stamp-cdkenumtypes.h
 EXTRA_DIST += \
-	$(gdk_built_sources)	\
+	$(cdk_built_sources)	\
 	fallback-c89.c
 
 install-exec-hook:
 if DISABLE_EXPLICIT_DEPS
-	$(SHELL) $(top_srcdir)/sanitize-la.sh $(DESTDIR)$(libdir)/libgdk-3.la
+	$(SHELL) $(top_srcdir)/sanitize-la.sh $(DESTDIR)$(libdir)/libcdk-3.la
 endif
 
 BUILT_SOURCES = \
-	$(gdk_built_sources)			\
-	gdkconfig.h
+	$(cdk_built_sources)			\
+	cdkconfig.h
 
-gdkenumtypes.h: stamp-gdkenumtypes.h
+cdkenumtypes.h: stamp-cdkenumtypes.h
 	@true
-stamp-gdkenumtypes.h: $(gdk_h_sources) gdkenumtypes.h.template
-	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) --template gdkenumtypes.h.template \
-		$(gdk_h_sources) ) >> xgen-geth \
-	&& (cmp -s xgen-geth gdkenumtypes.h || cp xgen-geth gdkenumtypes.h ) \
+stamp-cdkenumtypes.h: $(cdk_h_sources) cdkenumtypes.h.template
+	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) --template cdkenumtypes.h.template \
+		$(cdk_h_sources) ) >> xgen-geth \
+	&& (cmp -s xgen-geth cdkenumtypes.h || cp xgen-geth cdkenumtypes.h ) \
 	&& rm -f xgen-geth \
 	&& echo timestamp > $(@F)
-gdkenumtypes.c: $(gdk_h_sources) gdkenumtypes.c.template
-	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) --template gdkenumtypes.c.template \
-		$(gdk_h_sources) ) > xgen-getc \
-	&& cp xgen-getc gdkenumtypes.c  \
+cdkenumtypes.c: $(cdk_h_sources) cdkenumtypes.c.template
+	$(AM_V_GEN) ( cd $(srcdir) && $(GLIB_MKENUMS) --template cdkenumtypes.c.template \
+		$(cdk_h_sources) ) > xgen-getc \
+	&& cp xgen-getc cdkenumtypes.c  \
 	&& rm -f xgen-getc
 
 #
 # Marshaller generation
 #
-gdkmarshalers.h: gdkmarshalers.list
+cdkmarshalers.h: cdkmarshalers.list
 	$(AM_V_GEN) $(GLIB_GENMARSHAL) \
-		--prefix=_gdk_marshal \
+		--prefix=_cdk_marshal \
 		--valist-marshallers \
 		--header \
-		$(srcdir)/gdkmarshalers.list > gdkmarshalers-h.tmp \
-	&& mv gdkmarshalers-h.tmp gdkmarshalers.h \
-	|| ( rm -f gdkmarshalers-h.tmp && exit 1)
-gdkmarshalers.c: gdkmarshalers.list
+		$(srcdir)/cdkmarshalers.list > cdkmarshalers-h.tmp \
+	&& mv cdkmarshalers-h.tmp cdkmarshalers.h \
+	|| ( rm -f cdkmarshalers-h.tmp && exit 1)
+cdkmarshalers.c: cdkmarshalers.list
 	$(AM_V_GEN) $(GLIB_GENMARSHAL) \
-		--prefix=_gdk_marshal \
+		--prefix=_cdk_marshal \
 		--valist-marshallers \
 		--body \
-		$(srcdir)/gdkmarshalers.list > gdkmarshalers-c.tmp	\
-	&& mv gdkmarshalers-c.tmp gdkmarshalers.c \
-	|| ( rm -f gdkmarshalers-c.tmp && exit 1 )
+		$(srcdir)/cdkmarshalers.list > cdkmarshalers-c.tmp	\
+	&& mv cdkmarshalers-c.tmp cdkmarshalers.c \
+	|| ( rm -f cdkmarshalers-c.tmp && exit 1 )
 
-gdkconfig.h: stamp-gc-h
-	$(AM_V_GEN) if test -f gdkconfig.h; then :; \
+cdkconfig.h: stamp-gc-h
+	$(AM_V_GEN) if test -f cdkconfig.h; then :; \
 	else rm -f stamp-gc-h; $(MAKE) stamp-gc-h; fi
 stamp-gc-h: $(top_builddir)/config.status
-	$(AM_V_at) cd $(top_builddir) && $(SHELL) ./config.status gdk/gdkconfig.h \
-	&& echo timestamp > gdk/$(@F)
+	$(AM_V_at) cd $(top_builddir) && $(SHELL) ./config.status cdk/cdkconfig.h \
+	&& echo timestamp > cdk/$(@F)
 
 #
 # Resources
@@ -473,10 +473,10 @@ stamp-gc-h: $(top_builddir)/config.status
 
 glsl_sources := $(sort $(wildcard $(srcdir)/resources/glsl/*.glsl))
 
-gdk.gresource.xml: Makefile.am
+cdk.gresource.xml: Makefile.am
 	$(AM_V_GEN) echo "<?xml version='1.0' encoding='UTF-8'?>" > $@; \
 	echo "<gresources>" >> $@; \
-	echo "  <gresource prefix='/org/ctk/libgdk'>" >> $@; \
+	echo "  <gresource prefix='/org/ctk/libcdk'>" >> $@; \
 	for f in $(glsl_sources); do \
 	  n=`basename $$f`; \
 	  echo "    <file alias='glsl/$$n'>resources/glsl/$$n</file>" >> $@; \
@@ -485,30 +485,30 @@ gdk.gresource.xml: Makefile.am
 	echo "</gresources>" >> $@;
 
 EXTRA_DIST += $(glsl_sources)
-CLEANFILES += gdk.gresource.xml
+CLEANFILES += cdk.gresource.xml
 
-resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(builddir)/gdk.gresource.xml)
+resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(builddir)/cdk.gresource.xml)
 
-gdkresources.h: gdk.gresource.xml
+cdkresources.h: cdk.gresource.xml
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $< --target=$@ \
-		--sourcedir=$(srcdir) --c-name _gdk --generate-header --manual-register --internal
-gdkresources.c: gdk.gresource.xml $(resource_files)
+		--sourcedir=$(srcdir) --c-name _cdk --generate-header --manual-register --internal
+cdkresources.c: cdk.gresource.xml $(resource_files)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $< --target=$@ \
-		--sourcedir=$(srcdir) --c-name _gdk --generate-source --manual-register --internal
+		--sourcedir=$(srcdir) --c-name _cdk --generate-source --manual-register --internal
 
 # ------------------- MSVC Build Items ----------------
-MSVCPROJS = gdk-3
+MSVCPROJS = cdk-3
 
-gdk_3_FILES = $(libgdk_3_la_SOURCES)
-gdk_3_EXCLUDES = dummy
-gdk_3_HEADERS_DIR = $(gdkincludedir)
+cdk_3_FILES = $(libcdk_3_la_SOURCES)
+cdk_3_EXCLUDES = dummy
+cdk_3_HEADERS_DIR = $(cdkincludedir)
 
-gdk_3_HEADERS_INST = \
-	$(gdkinclude_HEADERS)		\
+cdk_3_HEADERS_INST = \
+	$(cdkinclude_HEADERS)		\
 	$(deprecatedinclude_HEADERS)	\
-	$(nodist_gdkinclude_HEADERS)
+	$(nodist_cdkinclude_HEADERS)
 
-gdk_3_HEADERS_EXCLUDES = dummy
+cdk_3_HEADERS_EXCLUDES = dummy
 
 include $(top_srcdir)/win32/Makefile.msvcproj
 
@@ -518,7 +518,7 @@ MSVC_INTROSPECT_GIRS = Gdk-3.0.gir GdkWin32-3.0.gir
 
 BASE_MSVC_GIR_CFLAGS =			\
 	$(GDK_CFLAGS_DEFINES)		\
-	-I.. -I../gdk -I../gdk/win32
+	-I.. -I../cdk -I../cdk/win32
 
 INTROSPECTION_INTERMEDIATE_ITEMS = \
 	$(top_builddir)/win32/Gdk-3.0.gir.msvc.introspect	\
@@ -529,7 +529,7 @@ INTROSPECTION_INTERMEDIATE_ITEMS = \
 Gdk_3_0_gir_MSVC_FILES = $(introspection_files)
 Gdk_3_0_gir_MSVC_EXPORT_PACKAGES = $(Gdk_3_0_gir_EXPORT_PACKAGES)
 Gdk_3_0_gir_MSVC_INCLUDE_GIRS = $(Gdk_3_0_gir_INCLUDES)
-Gdk_3_0_gir_MSVC_LIBS = gdk-3.0
+Gdk_3_0_gir_MSVC_LIBS = cdk-3.0
 Gdk_3_0_gir_MSVC_CFLAGS = $(BASE_MSVC_GIR_CFLAGS)
 Gdk_3_0_gir_MSVC_SCANNERFLAGS = $(Gdk_3_0_gir_SCANNERFLAGS)
 
@@ -539,7 +539,7 @@ GdkWin32_3_0_gir_MSVC_LIBS = $(Gdk_3_0_gir_MSVC_LIBS)
 GdkWin32_3_0_gir_MSVC_CFLAGS = $(BASE_MSVC_GIR_CFLAGS)
 GdkWin32_3_0_gir_MSVC_SCANNERFLAGS =	\
 	--identifier-prefix=Gdk		\
-	--c-include="gdk/gdkwin32.h"	\
+	--c-include="cdk/cdkwin32.h"	\
 	--include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Gdk-3.0.gir'
 
 include $(top_srcdir)/win32/Makefile.msvc-introspection
@@ -549,16 +549,16 @@ INTROSPECTION_INTERMEDIATE_ITEMS =
 endif
 
 dist-hook: \
-	$(top_builddir)/win32/vs9/gdk-3.vcproj	\
-	$(top_builddir)/win32/vs9/gdk-3.headers	\
+	$(top_builddir)/win32/vs9/cdk-3.vcproj	\
+	$(top_builddir)/win32/vs9/cdk-3.headers	\
 	$(INTROSPECTION_INTERMEDIATE_ITEMS)
 
-DISTCLEANFILES = gdkconfig.h stamp-gc-h
+DISTCLEANFILES = cdkconfig.h stamp-gc-h
 
 install-data-local: install-ms-lib install-def-file
 
 uninstall-local: uninstall-ms-lib uninstall-def-file
-	rm -f $(DESTDIR)$(configexecincludedir)/gdkconfig.h
+	rm -f $(DESTDIR)$(configexecincludedir)/cdkconfig.h
 
 # if srcdir!=builddir, clean out maintainer-clean files from builddir
 # this allows dist to pass.

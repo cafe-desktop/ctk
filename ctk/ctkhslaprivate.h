@@ -18,7 +18,7 @@
 #ifndef __CTK_HSLA_PRIVATE_H__
 #define __CTK_HSLA_PRIVATE_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
@@ -39,7 +39,7 @@ void            _ctk_hsla_init              (CtkHSLA          *hsla,
 void            _ctk_hsla_init_from_rgba    (CtkHSLA          *hsla,
                                              const GdkRGBA    *rgba);
 /* Yes, I can name that function like this! */
-void            _gdk_rgba_init_from_hsla    (GdkRGBA          *rgba,
+void            _cdk_rgba_init_from_hsla    (GdkRGBA          *rgba,
                                              const CtkHSLA    *hsla);
 
 void            _ctk_hsla_shade             (CtkHSLA          *dest,

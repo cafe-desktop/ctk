@@ -19,74 +19,74 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Virtaal 0.7.1\n"
 
-#: gdk/broadway/gdkbroadway-server.c:144
+#: cdk/broadway/cdkbroadway-server.c:144
 #, c-format
 msgid "Broadway display type not supported: %s"
 msgstr "Tipe d'afichatge Broadway pas pres en carga : %s"
 
-#: gdk/gdk.c:182
+#: cdk/cdk.c:182
 #, c-format
-msgid "Error parsing option --gdk-debug"
-msgstr "Error al moment de l'analisi de l'opcion --gdk-debug"
+msgid "Error parsing option --cdk-debug"
+msgstr "Error al moment de l'analisi de l'opcion --cdk-debug"
 
-#: gdk/gdk.c:202
+#: cdk/cdk.c:202
 #, c-format
-msgid "Error parsing option --gdk-no-debug"
-msgstr "Error al moment de l'analisi de l'opcion --gdk-no-debug"
+msgid "Error parsing option --cdk-no-debug"
+msgstr "Error al moment de l'analisi de l'opcion --cdk-no-debug"
 
 #. Description of --class=CLASS in --help output
-#: gdk/gdk.c:231
+#: cdk/cdk.c:231
 msgid "Program class as used by the window manager"
 msgstr "Classa del programa tal coma utilizada pel gestionari de fenèstras"
 
 #. Placeholder in --class=CLASS in --help output
-#: gdk/gdk.c:232
+#: cdk/cdk.c:232
 msgid "CLASS"
 msgstr "CLASSA"
 
 #. Description of --name=NAME in --help output
-#: gdk/gdk.c:234
+#: cdk/cdk.c:234
 msgid "Program name as used by the window manager"
 msgstr "Nom del programa tal coma utilizat pel gestionari de fenèstras"
 
 #. Placeholder in --name=NAME in --help output
-#: gdk/gdk.c:235
+#: cdk/cdk.c:235
 msgid "NAME"
 msgstr "NOM"
 
 #. Description of --display=DISPLAY in --help output
-#: gdk/gdk.c:237
+#: cdk/cdk.c:237
 msgid "X display to use"
 msgstr "Afichatge X d'utilizar"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: gdk/gdk.c:238
+#: cdk/cdk.c:238
 msgid "DISPLAY"
 msgstr "AFICHATGE"
 
-#. Description of --gdk-debug=FLAGS in --help output
-#: gdk/gdk.c:241
+#. Description of --cdk-debug=FLAGS in --help output
+#: cdk/cdk.c:241
 msgid "GDK debugging flags to set"
 msgstr "Bandièras de desbugatge GDK de definir"
 
-#. Placeholder in --gdk-debug=FLAGS in --help output
-#. Placeholder in --gdk-no-debug=FLAGS in --help output
+#. Placeholder in --cdk-debug=FLAGS in --help output
+#. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:242 gdk/gdk.c:245 ctk/ctkmain.c:470 ctk/ctkmain.c:473
+#: cdk/cdk.c:242 cdk/cdk.c:245 ctk/ctkmain.c:470 ctk/ctkmain.c:473
 msgid "FLAGS"
 msgstr "BANDIÈRAS"
 
-#. Description of --gdk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:244
+#. Description of --cdk-no-debug=FLAGS in --help output
+#: cdk/cdk.c:244
 msgid "GDK debugging flags to unset"
 msgstr "Bandièras de desbugatge GDK de definir pas"
 
-#: gdk/gdkwindow.c:2766
+#: cdk/cdkwindow.c:2766
 msgid "GL support disabled via GDK_DEBUG"
 msgstr "Presa en carga de GL desactivada via GDK_DEBUG"
 
-#: gdk/gdkwindow.c:2777
+#: cdk/cdkwindow.c:2777
 #, fuzzy
 #| msgid "Backend does not support window scaling"
 msgid "The current backend does not support OpenGL"
@@ -103,369 +103,369 @@ msgstr "Lo motor gerís pas la mesa a l'escala de las fenèstras"
 #. * Scroll_lock   - Scroll lock
 #. * KP_Space      - Space (keypad)
 #.
-#: gdk/keyname-table.h:6843
+#: cdk/keyname-table.h:6843
 msgctxt "keyboard label"
 msgid "BackSpace"
 msgstr "Retorn arrièr"
 
-#: gdk/keyname-table.h:6844
+#: cdk/keyname-table.h:6844
 msgctxt "keyboard label"
 msgid "Tab"
 msgstr "Tabulacion"
 
-#: gdk/keyname-table.h:6845
+#: cdk/keyname-table.h:6845
 msgctxt "keyboard label"
 msgid "Return"
 msgstr "Retorn"
 
-#: gdk/keyname-table.h:6846
+#: cdk/keyname-table.h:6846
 msgctxt "keyboard label"
 msgid "Pause"
 msgstr "Pausa"
 
-#: gdk/keyname-table.h:6847
+#: cdk/keyname-table.h:6847
 msgctxt "keyboard label"
 msgid "Scroll_Lock"
 msgstr "Arrèst desfil."
 
-#: gdk/keyname-table.h:6848
+#: cdk/keyname-table.h:6848
 msgctxt "keyboard label"
 msgid "Sys_Req"
 msgstr "Sist"
 
-#: gdk/keyname-table.h:6849
+#: cdk/keyname-table.h:6849
 msgctxt "keyboard label"
 msgid "Escape"
 msgstr "Escap."
 
-#: gdk/keyname-table.h:6850
+#: cdk/keyname-table.h:6850
 msgctxt "keyboard label"
 msgid "Multi_key"
 msgstr "Tòca multi"
 
-#: gdk/keyname-table.h:6851
+#: cdk/keyname-table.h:6851
 msgctxt "keyboard label"
 msgid "Home"
 msgstr "Origina"
 
-#: gdk/keyname-table.h:6852
+#: cdk/keyname-table.h:6852
 msgctxt "keyboard label"
 msgid "Left"
 msgstr "Esquèrra"
 
-#: gdk/keyname-table.h:6853
+#: cdk/keyname-table.h:6853
 msgctxt "keyboard label"
 msgid "Up"
 msgstr "Naut"
 
-#: gdk/keyname-table.h:6854
+#: cdk/keyname-table.h:6854
 msgctxt "keyboard label"
 msgid "Right"
 msgstr "Dreita"
 
-#: gdk/keyname-table.h:6855
+#: cdk/keyname-table.h:6855
 msgctxt "keyboard label"
 msgid "Down"
 msgstr "Bas"
 
-#: gdk/keyname-table.h:6856 ctk/ctkshortcutlabel.c:195
+#: cdk/keyname-table.h:6856 ctk/ctkshortcutlabel.c:195
 msgctxt "keyboard label"
 msgid "Page_Up"
 msgstr "Pagina naut"
 
-#: gdk/keyname-table.h:6857 ctk/ctkshortcutlabel.c:198
+#: cdk/keyname-table.h:6857 ctk/ctkshortcutlabel.c:198
 msgctxt "keyboard label"
 msgid "Page_Down"
 msgstr "Pagina bas"
 
-#: gdk/keyname-table.h:6858
+#: cdk/keyname-table.h:6858
 msgctxt "keyboard label"
 msgid "End"
 msgstr "Fin"
 
-#: gdk/keyname-table.h:6859
+#: cdk/keyname-table.h:6859
 msgctxt "keyboard label"
 msgid "Begin"
 msgstr "Començament"
 
-#: gdk/keyname-table.h:6860
+#: cdk/keyname-table.h:6860
 msgctxt "keyboard label"
 msgid "Print"
 msgstr "Impr"
 
-#: gdk/keyname-table.h:6861
+#: cdk/keyname-table.h:6861
 msgctxt "keyboard label"
 msgid "Insert"
 msgstr "Inser"
 
-#: gdk/keyname-table.h:6862
+#: cdk/keyname-table.h:6862
 msgctxt "keyboard label"
 msgid "Num_Lock"
 msgstr "Verr. num."
 
 #. Translators: KP_ means 'key pad' here
-#: gdk/keyname-table.h:6864
+#: cdk/keyname-table.h:6864
 msgctxt "keyboard label"
 msgid "KP_Space"
 msgstr "Espaci (pavat num.)"
 
-#: gdk/keyname-table.h:6865
+#: cdk/keyname-table.h:6865
 msgctxt "keyboard label"
 msgid "KP_Tab"
 msgstr "Tabulacion (pavat num.)"
 
-#: gdk/keyname-table.h:6866
+#: cdk/keyname-table.h:6866
 msgctxt "keyboard label"
 msgid "KP_Enter"
 msgstr "Entrada (pavat num.)"
 
-#: gdk/keyname-table.h:6867
+#: cdk/keyname-table.h:6867
 msgctxt "keyboard label"
 msgid "KP_Home"
 msgstr "Origina (pavat num.)"
 
-#: gdk/keyname-table.h:6868
+#: cdk/keyname-table.h:6868
 msgctxt "keyboard label"
 msgid "KP_Left"
 msgstr "Esquèrra (pavat num.)"
 
-#: gdk/keyname-table.h:6869
+#: cdk/keyname-table.h:6869
 msgctxt "keyboard label"
 msgid "KP_Up"
 msgstr "Naut (pavat num.)"
 
-#: gdk/keyname-table.h:6870
+#: cdk/keyname-table.h:6870
 msgctxt "keyboard label"
 msgid "KP_Right"
 msgstr "Dreita (pavat num.)"
 
-#: gdk/keyname-table.h:6871
+#: cdk/keyname-table.h:6871
 msgctxt "keyboard label"
 msgid "KP_Down"
 msgstr "Bas (pavat num.)"
 
-#: gdk/keyname-table.h:6872
+#: cdk/keyname-table.h:6872
 msgctxt "keyboard label"
 msgid "KP_Page_Up"
 msgstr "Pagina naut (pavat num.)"
 
-#: gdk/keyname-table.h:6873
+#: cdk/keyname-table.h:6873
 msgctxt "keyboard label"
 msgid "KP_Prior"
 msgstr "Precedent (pavat num.)"
 
-#: gdk/keyname-table.h:6874
+#: cdk/keyname-table.h:6874
 msgctxt "keyboard label"
 msgid "KP_Page_Down"
 msgstr "Pagina bas (pavat num.)"
 
-#: gdk/keyname-table.h:6875
+#: cdk/keyname-table.h:6875
 msgctxt "keyboard label"
 msgid "KP_Next"
 msgstr "Seguent (pavat num.)"
 
-#: gdk/keyname-table.h:6876
+#: cdk/keyname-table.h:6876
 msgctxt "keyboard label"
 msgid "KP_End"
 msgstr "Fin (pavat num.)"
 
-#: gdk/keyname-table.h:6877
+#: cdk/keyname-table.h:6877
 msgctxt "keyboard label"
 msgid "KP_Begin"
 msgstr "Començament (pavat num.)"
 
-#: gdk/keyname-table.h:6878
+#: cdk/keyname-table.h:6878
 msgctxt "keyboard label"
 msgid "KP_Insert"
 msgstr "Inser (pavat num.)"
 
-#: gdk/keyname-table.h:6879
+#: cdk/keyname-table.h:6879
 msgctxt "keyboard label"
 msgid "KP_Delete"
 msgstr "Supr (pavat num.)"
 
-#: gdk/keyname-table.h:6880
+#: cdk/keyname-table.h:6880
 msgctxt "keyboard label"
 msgid "Delete"
 msgstr "Supr"
 
-#: gdk/keyname-table.h:6881
+#: cdk/keyname-table.h:6881
 msgctxt "keyboard label"
 msgid "MonBrightnessUp"
 msgstr "Luminositat ecran mai fòrta"
 
-#: gdk/keyname-table.h:6882
+#: cdk/keyname-table.h:6882
 msgctxt "keyboard label"
 msgid "MonBrightnessDown"
 msgstr "Luminositat ecran mai febla"
 
-#: gdk/keyname-table.h:6883
+#: cdk/keyname-table.h:6883
 msgctxt "keyboard label"
 msgid "KbdBrightnessUp"
 msgstr "Luminositat clavièr mai fòrta"
 
-#: gdk/keyname-table.h:6884
+#: cdk/keyname-table.h:6884
 msgctxt "keyboard label"
 msgid "KbdBrightnessDown"
 msgstr "Luminositat clavièr mai febla"
 
-#: gdk/keyname-table.h:6885
+#: cdk/keyname-table.h:6885
 msgctxt "keyboard label"
 msgid "AudioMute"
 msgstr "Sordina volum"
 
-#: gdk/keyname-table.h:6886
+#: cdk/keyname-table.h:6886
 msgctxt "keyboard label"
 msgid "AudioMicMute"
 msgstr "Sordina volum micro"
 
-#: gdk/keyname-table.h:6887
+#: cdk/keyname-table.h:6887
 msgctxt "keyboard label"
 msgid "AudioLowerVolume"
 msgstr "Volum mai feble"
 
-#: gdk/keyname-table.h:6888
+#: cdk/keyname-table.h:6888
 msgctxt "keyboard label"
 msgid "AudioRaiseVolume"
 msgstr "Volum mai fòrt"
 
-#: gdk/keyname-table.h:6889
+#: cdk/keyname-table.h:6889
 msgctxt "keyboard label"
 msgid "AudioPlay"
 msgstr "Aviada lectura"
 
-#: gdk/keyname-table.h:6890
+#: cdk/keyname-table.h:6890
 msgctxt "keyboard label"
 msgid "AudioStop"
 msgstr "Arrèst lectura"
 
-#: gdk/keyname-table.h:6891
+#: cdk/keyname-table.h:6891
 msgctxt "keyboard label"
 msgid "AudioNext"
 msgstr "Tròç seguent"
 
-#: gdk/keyname-table.h:6892
+#: cdk/keyname-table.h:6892
 msgctxt "keyboard label"
 msgid "AudioPrev"
 msgstr "Tròç precedent"
 
-#: gdk/keyname-table.h:6893
+#: cdk/keyname-table.h:6893
 msgctxt "keyboard label"
 msgid "AudioRecord"
 msgstr "Enregistrament"
 
-#: gdk/keyname-table.h:6894
+#: cdk/keyname-table.h:6894
 msgctxt "keyboard label"
 msgid "AudioPause"
 msgstr "Pausa"
 
-#: gdk/keyname-table.h:6895
+#: cdk/keyname-table.h:6895
 msgctxt "keyboard label"
 msgid "AudioRewind"
 msgstr "Lectura en arrièr"
 
-#: gdk/keyname-table.h:6896
+#: cdk/keyname-table.h:6896
 msgctxt "keyboard label"
 msgid "AudioMedia"
 msgstr "Mèdia àudio"
 
-#: gdk/keyname-table.h:6897
+#: cdk/keyname-table.h:6897
 msgctxt "keyboard label"
 msgid "ScreenSaver"
 msgstr "Estalviador ecran"
 
-#: gdk/keyname-table.h:6898
+#: cdk/keyname-table.h:6898
 msgctxt "keyboard label"
 msgid "Battery"
 msgstr "Batariá"
 
-#: gdk/keyname-table.h:6899
+#: cdk/keyname-table.h:6899
 msgctxt "keyboard label"
 msgid "Launch1"
 msgstr "Aviada1"
 
-#: gdk/keyname-table.h:6900
+#: cdk/keyname-table.h:6900
 msgctxt "keyboard label"
 msgid "Forward"
 msgstr "En avant"
 
-#: gdk/keyname-table.h:6901
+#: cdk/keyname-table.h:6901
 msgctxt "keyboard label"
 msgid "Back"
 msgstr "En arrièr"
 
-#: gdk/keyname-table.h:6902
+#: cdk/keyname-table.h:6902
 msgctxt "keyboard label"
 msgid "Sleep"
 msgstr "Mesa en velha"
 
-#: gdk/keyname-table.h:6903
+#: cdk/keyname-table.h:6903
 msgctxt "keyboard label"
 msgid "Hibernate"
 msgstr "Ivernacion"
 
-#: gdk/keyname-table.h:6904
+#: cdk/keyname-table.h:6904
 msgctxt "keyboard label"
 msgid "WLAN"
 msgstr "Ret sens fial"
 
-#: gdk/keyname-table.h:6905
+#: cdk/keyname-table.h:6905
 msgctxt "keyboard label"
 msgid "WebCam"
 msgstr "Webcam"
 
-#: gdk/keyname-table.h:6906
+#: cdk/keyname-table.h:6906
 msgctxt "keyboard label"
 msgid "Display"
 msgstr "Ecran"
 
-#: gdk/keyname-table.h:6907
+#: cdk/keyname-table.h:6907
 msgctxt "keyboard label"
 msgid "TouchpadToggle"
 msgstr "Bascula pavat tactil"
 
-#: gdk/keyname-table.h:6908
+#: cdk/keyname-table.h:6908
 msgctxt "keyboard label"
 msgid "WakeUp"
 msgstr "Revelh"
 
-#: gdk/keyname-table.h:6909
+#: cdk/keyname-table.h:6909
 msgctxt "keyboard label"
 msgid "Suspend"
 msgstr "Suspension"
 
-#: gdk/mir/gdkmirglcontext.c:48 gdk/mir/gdkmirwindowimpl.c:1358
-#: gdk/wayland/gdkglcontext-wayland.c:422 gdk/win32/gdkglcontext-win32.c:556
-#: gdk/x11/gdkglcontext-x11.c:1274
+#: cdk/mir/cdkmirglcontext.c:48 cdk/mir/cdkmirwindowimpl.c:1358
+#: cdk/wayland/cdkglcontext-wayland.c:422 cdk/win32/cdkglcontext-win32.c:556
+#: cdk/x11/cdkglcontext-x11.c:1274
 msgid "No GL implementation is available"
 msgstr "Pas cap d'implementacion GL disponibla"
 
-#: gdk/mir/gdkmirglcontext.c:89 gdk/wayland/gdkglcontext-wayland.c:208
-#: gdk/win32/gdkglcontext-win32.c:510 gdk/x11/gdkglcontext-x11.c:720
-#: gdk/x11/gdkglcontext-x11.c:770
+#: cdk/mir/cdkmirglcontext.c:89 cdk/wayland/cdkglcontext-wayland.c:208
+#: cdk/win32/cdkglcontext-win32.c:510 cdk/x11/cdkglcontext-x11.c:720
+#: cdk/x11/cdkglcontext-x11.c:770
 msgid "Unable to create a GL context"
 msgstr "Impossible de crear un contèxte GL"
 
-#: gdk/mir/gdkmirwindowimpl.c:1320 gdk/mir/gdkmirwindowimpl.c:1330
-#: gdk/wayland/gdkglcontext-wayland.c:383
-#: gdk/wayland/gdkglcontext-wayland.c:393 gdk/win32/gdkglcontext-win32.c:482
-#: gdk/x11/gdkglcontext-x11.c:968
+#: cdk/mir/cdkmirwindowimpl.c:1320 cdk/mir/cdkmirwindowimpl.c:1330
+#: cdk/wayland/cdkglcontext-wayland.c:383
+#: cdk/wayland/cdkglcontext-wayland.c:393 cdk/win32/cdkglcontext-win32.c:482
+#: cdk/x11/cdkglcontext-x11.c:968
 msgid "No available configurations for the given pixel format"
 msgstr "Pas de configuracion disponibla pel format de pixèl donat"
 
-#: gdk/mir/gdkmirwindowimpl.c:1366
+#: cdk/mir/cdkmirwindowimpl.c:1366
 msgid "3.2 core GL profile is not available on EGL implementation"
 msgstr "Lo perfil GL core 3.2 es pas disponible dins l'implementacion EGL"
 
-#: gdk/quartz/gdkglcontext-quartz.c:37
+#: cdk/quartz/cdkglcontext-quartz.c:37
 msgid "Not implemented on OS X"
 msgstr ""
 
-#: gdk/wayland/gdkglcontext-wayland.c:430
+#: cdk/wayland/cdkglcontext-wayland.c:430
 msgid "Core GL is not available on EGL implementation"
 msgstr "GL core es pas disponible dins l'implementacion EGL"
 
-#: gdk/win32/gdkglcontext-win32.c:565
+#: cdk/win32/cdkglcontext-win32.c:565
 msgid ""
 "The WGL_ARB_create_context extension needed to create core profiles is not "
 "available"
@@ -474,53 +474,53 @@ msgstr ""
 "es pas disponibla"
 
 #. Description of --sync in --help output
-#: gdk/win32/gdkmain-win32.c:53
+#: cdk/win32/cdkmain-win32.c:53
 msgid "Don't batch GDI requests"
 msgstr "Tractar pas las requèstas GDI"
 
 #. Description of --no-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:55
+#: cdk/win32/cdkmain-win32.c:55
 msgid "Don't use the Wintab API for tablet support"
 msgstr "Utilizar pas l'API Wintab pel supòrt de la tauleta"
 
 #. Description of --ignore-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:57
+#: cdk/win32/cdkmain-win32.c:57
 msgid "Same as --no-wintab"
 msgstr "Identic a --no-wintab"
 
 #. Description of --use-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:59
+#: cdk/win32/cdkmain-win32.c:59
 msgid "Do use the Wintab API [default]"
 msgstr "Utilizar l'API Wintab [defaut]"
 
 #. Description of --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:61
+#: cdk/win32/cdkmain-win32.c:61
 msgid "Size of the palette in 8 bit mode"
 msgstr "Talha de la paleta en mòde 8 bits"
 
 #. Placeholder in --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:62
+#: cdk/win32/cdkmain-win32.c:62
 msgid "COLORS"
 msgstr "COLORS"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:295
+#: cdk/x11/cdkapplaunchcontext-x11.c:295
 #, c-format
 msgid "Starting %s"
 msgstr "Aviada de %s"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:308
+#: cdk/x11/cdkapplaunchcontext-x11.c:308
 #, c-format
 msgid "Opening %s"
 msgstr "Dobertura de %s"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:313
+#: cdk/x11/cdkapplaunchcontext-x11.c:313
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
 msgstr[0] "Dobertura de %d element"
 msgstr[1] "Dobertura de %d elements"
 
-#: gdk/x11/gdkglcontext-x11.c:996
+#: cdk/x11/cdkglcontext-x11.c:996
 #, c-format
 msgid "No available configurations for the given RGBA pixel format"
 msgstr "Pas de configuracion disponibla pel format de pixèl RGBA donat"

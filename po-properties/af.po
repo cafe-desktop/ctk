@@ -18,220 +18,220 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.3\n"
 
-#: gdk/gdkapplaunchcontext.c:127 gdk/gdkcursor.c:139 gdk/gdkdevicemanager.c:185
-#: gdk/gdkglcontext.c:317 gdk/gdkseat.c:202 gdk/gdkseat.c:203
+#: cdk/cdkapplaunchcontext.c:127 cdk/cdkcursor.c:139 cdk/cdkdevicemanager.c:185
+#: cdk/cdkglcontext.c:317 cdk/cdkseat.c:202 cdk/cdkseat.c:203
 #, fuzzy
 msgid "Display"
 msgstr "Verstekvertoon"
 
-#: gdk/gdkcursor.c:131
+#: cdk/cdkcursor.c:131
 #, fuzzy
 msgid "Cursor type"
 msgstr "Wyserflonker"
 
-#: gdk/gdkcursor.c:132
+#: cdk/cdkcursor.c:132
 #, fuzzy
 msgid "Standard cursor type"
 msgstr "Sekondêre vorentoestapper"
 
-#: gdk/gdkcursor.c:140
+#: cdk/cdkcursor.c:140
 #, fuzzy
 #| msgid "Display the cell"
 msgid "Display of this cursor"
 msgstr "Vertoon die sel"
 
-#: gdk/gdkdevice.c:123
+#: cdk/cdkdevice.c:123
 #, fuzzy
 msgid "Device Display"
 msgstr "Verstekvertoon"
 
-#: gdk/gdkdevice.c:124
+#: cdk/cdkdevice.c:124
 #, fuzzy
 msgid "Display which the device belongs to"
 msgstr "Vertoon die sel"
 
-#: gdk/gdkdevice.c:138
+#: cdk/cdkdevice.c:138
 msgid "Device manager"
 msgstr ""
 
-#: gdk/gdkdevice.c:139
+#: cdk/cdkdevice.c:139
 msgid "Device manager which the device belongs to"
 msgstr ""
 
-#: gdk/gdkdevice.c:152 gdk/gdkdevice.c:153
+#: cdk/cdkdevice.c:152 cdk/cdkdevice.c:153
 #, fuzzy
 msgid "Device name"
 msgstr "Dingesienaam"
 
-#: gdk/gdkdevice.c:166
+#: cdk/cdkdevice.c:166
 #, fuzzy
 msgid "Device type"
 msgstr "Kurwesoort"
 
-#: gdk/gdkdevice.c:167
+#: cdk/cdkdevice.c:167
 msgid "Device role in the device manager"
 msgstr ""
 
-#: gdk/gdkdevice.c:183
+#: cdk/cdkdevice.c:183
 msgid "Associated device"
 msgstr ""
 
-#: gdk/gdkdevice.c:184
+#: cdk/cdkdevice.c:184
 msgid "Associated pointer or keyboard with this device"
 msgstr ""
 
-#: gdk/gdkdevice.c:197
+#: cdk/cdkdevice.c:197
 msgid "Input source"
 msgstr ""
 
-#: gdk/gdkdevice.c:198
+#: cdk/cdkdevice.c:198
 #, fuzzy
 msgid "Source type for the device"
 msgstr "Die model vir die boomaansig"
 
-#: gdk/gdkdevice.c:213 gdk/gdkdevice.c:214
+#: cdk/cdkdevice.c:213 cdk/cdkdevice.c:214
 #, fuzzy
 msgid "Input mode for the device"
 msgstr "Die model vir die boomaansig"
 
-#: gdk/gdkdevice.c:229
+#: cdk/cdkdevice.c:229
 #, fuzzy
 msgid "Whether the device has a cursor"
 msgstr "Of die dingesie die toevoerfokus het"
 
-#: gdk/gdkdevice.c:230
+#: cdk/cdkdevice.c:230
 #, fuzzy
 msgid "Whether there is a visible cursor following device motion"
 msgstr "Of die dingesie sigbaar is"
 
-#: gdk/gdkdevice.c:244 gdk/gdkdevice.c:245
+#: cdk/cdkdevice.c:244 cdk/cdkdevice.c:245
 #, fuzzy
 msgid "Number of axes in the device"
 msgstr "Die getal rye in die tabel"
 
-#: gdk/gdkdevice.c:259 gdk/gdkdevice.c:260
+#: cdk/cdkdevice.c:259 cdk/cdkdevice.c:260
 msgid "Vendor ID"
 msgstr ""
 
-#: gdk/gdkdevice.c:274 gdk/gdkdevice.c:275
+#: cdk/cdkdevice.c:274 cdk/cdkdevice.c:275
 msgid "Product ID"
 msgstr ""
 
-#: gdk/gdkdevice.c:289 gdk/gdkdevice.c:290
+#: cdk/cdkdevice.c:289 cdk/cdkdevice.c:290
 msgid "Seat"
 msgstr ""
 
-#: gdk/gdkdevice.c:306 gdk/gdkdevice.c:307
+#: cdk/cdkdevice.c:306 cdk/cdkdevice.c:307
 #, fuzzy
 msgid "Number of concurrent touches"
 msgstr "Getal kanale"
 
-#: gdk/gdkdevice.c:321 gdk/gdkdevice.c:322
+#: cdk/cdkdevice.c:321 cdk/cdkdevice.c:322
 msgid "Axes"
 msgstr ""
 
-#: gdk/gdkdevice.c:328
+#: cdk/cdkdevice.c:328
 #, fuzzy
 #| msgid "Tooltip"
 msgid "Tool"
 msgstr "Nutswenk"
 
-#: gdk/gdkdevice.c:329
+#: cdk/cdkdevice.c:329
 #, fuzzy
 #| msgid "The GdkFont that is currently selected"
 msgid "The tool that is currently used with this device"
 msgstr "Die GdkFont wat tans geselekteer is"
 
-#: gdk/gdkdevicemanager.c:186
+#: cdk/cdkdevicemanager.c:186
 #, fuzzy
 msgid "Display for the device manager"
 msgstr "Vertoon die sel"
 
-#: gdk/gdkdisplaymanager.c:169
+#: cdk/cdkdisplaymanager.c:169
 msgid "Default Display"
 msgstr "Verstekvertoon"
 
-#: gdk/gdkdisplaymanager.c:170
+#: cdk/cdkdisplaymanager.c:170
 msgid "The default display for GDK"
 msgstr "Die verstekvertoon vir GDK"
 
-#: gdk/gdkglcontext.c:318
+#: cdk/cdkglcontext.c:318
 msgid "The GDK display used to create the GL context"
 msgstr ""
 
-#: gdk/gdkglcontext.c:333 ctk/ctkwidget.c:1344
+#: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1344
 #, fuzzy
 msgid "Window"
 msgstr "Venstersoort"
 
-#: gdk/gdkglcontext.c:334
+#: cdk/cdkglcontext.c:334
 msgid "The GDK window bound to the GL context"
 msgstr ""
 
-#: gdk/gdkglcontext.c:349
+#: cdk/cdkglcontext.c:349
 #, fuzzy
 #| msgid "Show text"
 msgid "Shared context"
 msgstr "Vertoon teks"
 
-#: gdk/gdkglcontext.c:350
+#: cdk/cdkglcontext.c:350
 msgid "The GL context this context shares data with"
 msgstr ""
 
-#: gdk/gdkscreen.c:91
+#: cdk/cdkscreen.c:91
 #, fuzzy
 msgid "Font options"
 msgstr "Fontpunte"
 
-#: gdk/gdkscreen.c:92
+#: cdk/cdkscreen.c:92
 #, fuzzy
 msgid "The default font options for the screen"
 msgstr "Naam van verstekfont om te gebruik"
 
-#: gdk/gdkscreen.c:99
+#: cdk/cdkscreen.c:99
 #, fuzzy
 msgid "Font resolution"
 msgstr "Fontpunte"
 
-#: gdk/gdkscreen.c:100
+#: cdk/cdkscreen.c:100
 #, fuzzy
 msgid "The resolution for fonts on the screen"
 msgstr "Hoe die strekking op die skerm moet bygewerk word"
 
-#: gdk/gdkwindow.c:354 gdk/gdkwindow.c:355
+#: cdk/cdkwindow.c:354 cdk/cdkwindow.c:355
 #, fuzzy
 msgid "Cursor"
 msgstr "Wyserflonker"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:115
+#: cdk/x11/cdkdevicemanager-xi2.c:115
 msgid "Opcode"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi2.c:116
+#: cdk/x11/cdkdevicemanager-xi2.c:116
 msgid "Opcode for XInput2 requests"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi2.c:122
+#: cdk/x11/cdkdevicemanager-xi2.c:122
 msgid "Major"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi2.c:123
+#: cdk/x11/cdkdevicemanager-xi2.c:123
 msgid "Major version number"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi2.c:129
+#: cdk/x11/cdkdevicemanager-xi2.c:129
 msgid "Minor"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi2.c:130
+#: cdk/x11/cdkdevicemanager-xi2.c:130
 msgid "Minor version number"
 msgstr ""
 
-#: gdk/x11/gdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:143
 msgid "Device ID"
 msgstr ""
 
-#: gdk/x11/gdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device identifier"
 msgstr ""
 

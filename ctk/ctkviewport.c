@@ -291,12 +291,12 @@ ctk_viewport_allocate (CtkCssGadget        *gadget,
 
   if (ctk_widget_get_realized (widget))
     {
-      gdk_window_move_resize (priv->view_window,
+      cdk_window_move_resize (priv->view_window,
 			      allocation->x,
 			      allocation->y,
 			      allocation->width,
 			      allocation->height);
-      gdk_window_move_resize (priv->bin_window,
+      cdk_window_move_resize (priv->bin_window,
                               - ctk_adjustment_get_value (hadjustment),
                               - ctk_adjustment_get_value (vadjustment),
                               ctk_adjustment_get_upper (hadjustment),
@@ -346,13 +346,13 @@ ctk_viewport_render (CtkCssGadget *gadget,
       cairo_rectangle_int_t view_rect;
       cairo_rectangle_int_t canvas_rect;
 
-      gdk_window_get_position (priv->view_window, &view_rect.x, &view_rect.y);
-      view_rect.width = gdk_window_get_width (priv->view_window);
-      view_rect.height = gdk_window_get_height (priv->view_window);
+      cdk_window_get_position (priv->view_window, &view_rect.x, &view_rect.y);
+      view_rect.width = cdk_window_get_width (priv->view_window);
+      view_rect.height = cdk_window_get_height (priv->view_window);
 
-      gdk_window_get_position (priv->bin_window, &canvas_rect.x, &canvas_rect.y);
-      canvas_rect.width = gdk_window_get_width (priv->bin_window);
-      canvas_rect.height = gdk_window_get_height (priv->bin_window);
+      cdk_window_get_position (priv->bin_window, &canvas_rect.x, &canvas_rect.y);
+      canvas_rect.width = cdk_window_get_width (priv->bin_window);
+      canvas_rect.height = cdk_window_get_height (priv->bin_window);
 
       _ctk_pixel_cache_draw (priv->pixel_cache, cr, priv->bin_window,
 			     &view_rect, &canvas_rect,
@@ -797,7 +797,7 @@ ctk_viewport_bin_window_invalidate_handler (GdkWindow *window,
   CtkViewport *viewport;
   CtkViewportPrivate *priv;
 
-  gdk_window_get_user_data (window, &widget);
+  cdk_window_get_user_data (window, &widget);
   viewport = CTK_VIEWPORT (widget);
   priv = viewport->priv;
 
@@ -857,7 +857,7 @@ ctk_viewport_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
@@ -871,7 +871,7 @@ ctk_viewport_realize (CtkWidget *widget)
   attributes.height = view_allocation.height;
   attributes.event_mask = 0;
 
-  priv->view_window = gdk_window_new (window,
+  priv->view_window = cdk_window_new (window,
                                       &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->view_window);
 
@@ -882,17 +882,17 @@ ctk_viewport_realize (CtkWidget *widget)
   
   attributes.event_mask = event_mask;
 
-  priv->bin_window = gdk_window_new (priv->view_window, &attributes, attributes_mask);
+  priv->bin_window = cdk_window_new (priv->view_window, &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->bin_window);
-  gdk_window_set_invalidate_handler (priv->bin_window,
+  cdk_window_set_invalidate_handler (priv->bin_window,
 				     ctk_viewport_bin_window_invalidate_handler);
 
   child = ctk_bin_get_child (bin);
   if (child)
     ctk_widget_set_parent_window (child, priv->bin_window);
 
-  gdk_window_show (priv->bin_window);
-  gdk_window_show (priv->view_window);
+  cdk_window_show (priv->bin_window);
+  cdk_window_show (priv->view_window);
 }
 
 static void
@@ -902,11 +902,11 @@ ctk_viewport_unrealize (CtkWidget *widget)
   CtkViewportPrivate *priv = viewport->priv;
 
   ctk_widget_unregister_window (widget, priv->view_window);
-  gdk_window_destroy (priv->view_window);
+  cdk_window_destroy (priv->view_window);
   priv->view_window = NULL;
 
   ctk_widget_unregister_window (widget, priv->bin_window);
-  gdk_window_destroy (priv->bin_window);
+  cdk_window_destroy (priv->bin_window);
   priv->bin_window = NULL;
 
   CTK_WIDGET_CLASS (ctk_viewport_parent_class)->unrealize (widget);
@@ -1011,12 +1011,12 @@ ctk_viewport_size_allocate (CtkWidget     *widget,
       priv->shadow_type != CTK_SHADOW_NONE &&
       (widget_allocation.width != allocation->width ||
        widget_allocation.height != allocation->height))
-    gdk_window_invalidate_rect (ctk_widget_get_window (widget), NULL, FALSE);
+    cdk_window_invalidate_rect (ctk_widget_get_window (widget), NULL, FALSE);
 
   ctk_widget_set_allocation (widget, allocation);
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (ctk_widget_get_window (widget),
+    cdk_window_move_resize (ctk_widget_get_window (widget),
                             allocation->x,
                             allocation->y,
                             allocation->width,
@@ -1052,12 +1052,12 @@ ctk_viewport_adjustment_value_changed (CtkAdjustment *adjustment,
       gint old_x, old_y;
       gint new_x, new_y;
 
-      gdk_window_get_position (priv->bin_window, &old_x, &old_y);
+      cdk_window_get_position (priv->bin_window, &old_x, &old_y);
       new_x = - ctk_adjustment_get_value (hadjustment);
       new_y = - ctk_adjustment_get_value (vadjustment);
 
       if (new_x != old_x || new_y != old_y)
-	gdk_window_move (priv->bin_window, new_x, new_y);
+	cdk_window_move (priv->bin_window, new_x, new_y);
     }
 }
 

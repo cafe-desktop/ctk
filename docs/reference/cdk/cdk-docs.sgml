@@ -10,32 +10,32 @@
     <releaseinfo>
       This document is for the GDK 3 library, version &version;
       The latest versions can be found online at
-      <ulink role="online-location" url="https://developer.gnome.org/gdk3/">https://developer.gnome.org/gdk3/</ulink>.
+      <ulink role="online-location" url="https://developer.gnome.org/cdk3/">https://developer.gnome.org/cdk3/</ulink>.
       If you are looking for the older GDK 2 series of libraries,
-      see <ulink role="online-location" url="https://developer.gnome.org/gdk2/">https://developer.gnome.org/gdk2/</ulink>.
+      see <ulink role="online-location" url="https://developer.gnome.org/cdk2/">https://developer.gnome.org/cdk2/</ulink>.
     </releaseinfo>
   </bookinfo>
 
   <reference id="reference">
     <title>API Reference</title>
     <xi:include href="xml/general.xml" />
-    <xi:include href="xml/gdkdisplaymanager.xml" />
-    <xi:include href="xml/gdkdisplay.xml" />
-    <xi:include href="xml/gdkscreen.xml" />
-    <xi:include href="xml/gdkseat.xml" />
-    <xi:include href="xml/gdkmonitor.xml" />
-    <xi:include href="xml/gdkdevice.xml" />
-    <xi:include href="xml/gdkdevicepad.xml" />
+    <xi:include href="xml/cdkdisplaymanager.xml" />
+    <xi:include href="xml/cdkdisplay.xml" />
+    <xi:include href="xml/cdkscreen.xml" />
+    <xi:include href="xml/cdkseat.xml" />
+    <xi:include href="xml/cdkmonitor.xml" />
+    <xi:include href="xml/cdkdevice.xml" />
+    <xi:include href="xml/cdkdevicepad.xml" />
     <xi:include href="xml/regions.xml" />
     <xi:include href="xml/pixbufs.xml" />
     <xi:include href="xml/rgba_colors.xml" />
     <xi:include href="xml/visuals.xml" />
     <xi:include href="xml/cursors.xml" />
     <xi:include href="xml/windows.xml" />
-    <xi:include href="xml/gdkframeclock.xml" />
-    <xi:include href="xml/gdkframetimings.xml" />
-    <xi:include href="xml/gdkdrawingcontext.xml" />
-    <xi:include href="xml/gdkglcontext.xml" />
+    <xi:include href="xml/cdkframeclock.xml" />
+    <xi:include href="xml/cdkframetimings.xml" />
+    <xi:include href="xml/cdkdrawingcontext.xml" />
+    <xi:include href="xml/cdkglcontext.xml" />
     <xi:include href="xml/events.xml" />
     <xi:include href="xml/event_structs.xml" />
     <xi:include href="xml/keys.xml" />
@@ -47,14 +47,14 @@
     <xi:include href="xml/cairo_interaction.xml" />
     <xi:include href="xml/x_interaction.xml" />
     <xi:include href="xml/wayland_interaction.xml" />
-    <xi:include href="xml/gdkapplaunchcontext.xml" />
-    <xi:include href="xml/gdktestutils.xml" />
+    <xi:include href="xml/cdkapplaunchcontext.xml" />
+    <xi:include href="xml/cdktestutils.xml" />
   </reference>
 
   <reference>
     <title>Deprecated</title>
     <xi:include href="xml/colors.xml" />
-    <xi:include href="xml/gdkdevicemanager.xml" />
+    <xi:include href="xml/cdkdevicemanager.xml" />
   </reference>
 
   <index id="api-index-full">

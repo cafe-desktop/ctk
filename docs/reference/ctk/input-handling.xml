@@ -82,7 +82,7 @@
     </para>
     <para>
       When CTK+ is initialized, it sets up an event handler function with
-      gdk_event_handler_set(), which receives all of these input events
+      cdk_event_handler_set(), which receives all of these input events
       (as well as others, for instance window management related events).
     </para>
   </refsect2>

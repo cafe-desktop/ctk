@@ -1087,7 +1087,7 @@ ctk_progress_bar_allocate (CtkCssGadget        *gadget,
 
   ctk_css_gadget_allocate (priv->text_gadget, &alloc, -1, &text_clip);
 
-  gdk_rectangle_union (out_clip, &text_clip, out_clip);
+  cdk_rectangle_union (out_clip, &text_clip, out_clip);
 }
 
 
@@ -1209,7 +1209,7 @@ tick_cb (CtkWidget     *widget,
   if (priv->pulse2 == 0 && priv->pulse1 == 0)
     return G_SOURCE_CONTINUE;
 
-  frame_time = gdk_frame_clock_get_frame_time (frame_clock);
+  frame_time = cdk_frame_clock_get_frame_time (frame_clock);
   ctk_progress_tracker_advance_frame (&priv->tracker, frame_time);
 
   g_assert (priv->pulse2 > priv->pulse1);

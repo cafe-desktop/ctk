@@ -307,7 +307,7 @@ copy_to_clipboard (CtkButton         *button,
 {
   CtkClipboard *clipboard;
 
-  clipboard = ctk_clipboard_get_default (gdk_display_get_default ());
+  clipboard = ctk_clipboard_get_default (cdk_display_get_default ());
   ctk_clipboard_set_text (clipboard, ctk_window_get_title (CTK_WINDOW (win->details)), -1);
 }
 

@@ -107,9 +107,9 @@
  * is to change which lines are onscreen. This happens when the value
  * of a scroll adjustment changes. So the code path begins in
  * ctk_text_view_value_changed() and goes like this:
- *   - gdk_window_scroll() to reflect the new adjustment value
+ *   - cdk_window_scroll() to reflect the new adjustment value
  *   - validate the lines that were moved onscreen
- *   - gdk_window_process_updates() to handle the exposes immediately
+ *   - cdk_window_process_updates() to handle the exposes immediately
  *
  * The second way is that you get the “invalidated” signal from the layout,
  * indicating that lines have become invalid. This code path begins in
@@ -2732,7 +2732,7 @@ queue_update_im_spot_location (CtkTextView *text_view)
    * so we don't wait until the entire buffer has been validated. */
   if (!priv->im_spot_idle)
     {
-      priv->im_spot_idle = gdk_threads_add_idle_full (CTK_TEXT_VIEW_PRIORITY_VALIDATE - 1,
+      priv->im_spot_idle = cdk_threads_add_idle_full (CTK_TEXT_VIEW_PRIORITY_VALIDATE - 1,
 						      do_update_im_spot_location,
 						      text_view,
 						      NULL);
@@ -4292,7 +4292,7 @@ ctk_text_view_size_allocate (CtkWidget *widget,
 
   if (ctk_widget_get_realized (widget))
     {
-      gdk_window_move_resize (ctk_widget_get_window (widget),
+      cdk_window_move_resize (ctk_widget_get_window (widget),
                               allocation->x, allocation->y,
                               allocation->width, allocation->height);
     }
@@ -4399,7 +4399,7 @@ ctk_text_view_size_allocate (CtkWidget *widget,
    * be invalidated
    */
   if (size_changed && ctk_widget_get_realized (widget))
-    gdk_window_invalidate_rect (ctk_widget_get_window (widget), NULL, FALSE);
+    cdk_window_invalidate_rect (ctk_widget_get_window (widget), NULL, FALSE);
 }
 
 static void
@@ -4550,7 +4550,7 @@ ctk_text_view_invalidate (CtkTextView *text_view)
   
   if (!priv->first_validate_idle)
     {
-      priv->first_validate_idle = gdk_threads_add_idle_full (CTK_PRIORITY_RESIZE - 2, first_validate_callback, text_view, NULL);
+      priv->first_validate_idle = cdk_threads_add_idle_full (CTK_PRIORITY_RESIZE - 2, first_validate_callback, text_view, NULL);
       g_source_set_name_by_id (priv->first_validate_idle, "[ctk+] first_validate_callback");
       DV (g_print (G_STRLOC": adding first validate idle %d\n",
                    priv->first_validate_idle));
@@ -4558,7 +4558,7 @@ ctk_text_view_invalidate (CtkTextView *text_view)
       
   if (!priv->incremental_validate_idle)
     {
-      priv->incremental_validate_idle = gdk_threads_add_idle_full (CTK_TEXT_VIEW_PRIORITY_VALIDATE, incremental_validate_callback, text_view, NULL);
+      priv->incremental_validate_idle = cdk_threads_add_idle_full (CTK_TEXT_VIEW_PRIORITY_VALIDATE, incremental_validate_callback, text_view, NULL);
       g_source_set_name_by_id (priv->incremental_validate_idle, "[ctk+] incremental_validate_callback");
       DV (g_print (G_STRLOC": adding incremental validate idle %d\n",
                    priv->incremental_validate_idle));
@@ -4611,7 +4611,7 @@ changed_handler (CtkTextLayout     *layout,
       else
         redraw_rect.height = 0;
 	
-      if (gdk_rectangle_intersect (&redraw_rect, &visible_rect, &redraw_rect))
+      if (cdk_rectangle_intersect (&redraw_rect, &visible_rect, &redraw_rect))
         {
           /* text_window_invalidate_rect() takes buffer coordinates */
           text_window_invalidate_rect (priv->text_window,
@@ -4749,7 +4749,7 @@ ctk_text_view_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
@@ -4966,11 +4966,11 @@ ctk_text_view_state_flags_changed (CtkWidget     *widget,
   if (ctk_widget_get_realized (widget))
     {
       if (ctk_widget_is_sensitive (widget))
-        cursor = gdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
+        cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
       else
         cursor = NULL;
 
-      gdk_window_set_cursor (priv->text_window->bin_window, cursor);
+      cdk_window_set_cursor (priv->text_window->bin_window, cursor);
 
       if (cursor)
       g_object_unref (cursor);
@@ -5008,10 +5008,10 @@ set_invisible_cursor (GdkWindow *window)
   GdkDisplay *display;
   GdkCursor *cursor;
 
-  display = gdk_window_get_display (window);
-  cursor = gdk_cursor_new_from_name (display, "none");
+  display = cdk_window_get_display (window);
+  cursor = cdk_cursor_new_from_name (display, "none");
  
-  gdk_window_set_cursor (window, cursor);
+  cdk_window_set_cursor (window, cursor);
   
   g_clear_object (&cursor);
 }
@@ -5036,8 +5036,8 @@ ctk_text_view_unobscure_mouse_cursor (CtkTextView *text_view)
       GdkCursor *cursor;
 
       display = ctk_widget_get_display (CTK_WIDGET (text_view));
-      cursor = gdk_cursor_new_from_name (display, "text");
-      gdk_window_set_cursor (text_view->priv->text_window->bin_window, cursor);
+      cursor = cdk_cursor_new_from_name (display, "text");
+      cdk_window_set_cursor (text_view->priv->text_window->bin_window, cursor);
       g_object_unref (cursor);
       text_view->priv->mouse_cursor_obscured = FALSE;
     }
@@ -5659,7 +5659,7 @@ ctk_text_view_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 
   ctk_widget_grab_focus (CTK_WIDGET (text_view));
 
-  if (gdk_event_get_window (event) != priv->text_window->bin_window)
+  if (cdk_event_get_window (event) != priv->text_window->bin_window)
     {
       /* Remove selection if any. */
       ctk_text_view_unselect (text_view);
@@ -5678,15 +5678,15 @@ ctk_text_view_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
     ctk_text_layout_spew (CTK_TEXT_VIEW (widget)->layout);
 #endif
 
-  device = gdk_event_get_source_device ((GdkEvent *) event);
+  device = cdk_event_get_source_device ((GdkEvent *) event);
   is_touchscreen = ctk_simulate_touchscreen () ||
-                   gdk_device_get_source (device) == GDK_SOURCE_TOUCHSCREEN;
+                   cdk_device_get_source (device) == GDK_SOURCE_TOUCHSCREEN;
 
   if (n_press == 1)
     ctk_text_view_reset_im_context (text_view);
 
   if (n_press == 1 &&
-      gdk_event_triggers_context_menu (event))
+      cdk_event_triggers_context_menu (event))
     {
       ctk_text_view_do_popup (text_view, event);
     }
@@ -5707,7 +5707,7 @@ ctk_text_view_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
       gboolean extends = FALSE;
       GdkModifierType state;
 
-      gdk_event_get_state (event, &state);
+      cdk_event_get_state (event, &state);
 
       if (state &
           ctk_widget_get_modifier_mask (CTK_WIDGET (text_view),
@@ -5827,7 +5827,7 @@ ctk_text_view_focus_in_event (CtkWidget *widget, GdkEventFocus *event)
       ctk_text_view_check_cursor_blink (text_view);
     }
 
-  g_signal_connect (gdk_keymap_get_for_display (ctk_widget_get_display (widget)),
+  g_signal_connect (cdk_keymap_get_for_display (ctk_widget_get_display (widget)),
 		    "direction-changed",
 		    G_CALLBACK (keymap_direction_changed), text_view);
   ctk_text_view_check_keymap_direction (text_view);
@@ -5862,7 +5862,7 @@ ctk_text_view_focus_out_event (CtkWidget *widget, GdkEventFocus *event)
       ctk_text_layout_set_cursor_visible (priv->layout, FALSE);
     }
 
-  g_signal_handlers_disconnect_by_func (gdk_keymap_get_for_display (ctk_widget_get_display (widget)),
+  g_signal_handlers_disconnect_by_func (cdk_keymap_get_for_display (ctk_widget_get_display (widget)),
 					keymap_direction_changed,
 					text_view);
   ctk_text_view_selection_bubble_popup_unset (text_view);
@@ -6000,8 +6000,8 @@ paint_border_window (CtkTextView     *text_view,
 
       ctk_style_context_save_to_node (context, text_window->css_node);
 
-      w = gdk_window_get_width (window);
-      h = gdk_window_get_height (window);
+      w = cdk_window_get_width (window);
+      h = cdk_window_get_height (window);
 
       cairo_save (cr);
       ctk_cairo_transform_to_window (cr, CTK_WIDGET (text_view), window);
@@ -6047,8 +6047,8 @@ ctk_text_view_draw (CtkWidget *widget,
 
       view_rect.x = 0;
       view_rect.y = 0;
-      view_rect.width = gdk_window_get_width (window);
-      view_rect.height = gdk_window_get_height (window);
+      view_rect.width = cdk_window_get_width (window);
+      view_rect.height = cdk_window_get_height (window);
 
       canvas_rect.x = -ctk_adjustment_get_value (priv->hadjustment);
       canvas_rect.y = -ctk_adjustment_get_value (priv->vadjustment);
@@ -6330,14 +6330,14 @@ blink_cb (gpointer data)
     } 
   else if (visible)
     {
-      priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_OFF_MULTIPLIER / CURSOR_DIVIDER,
+      priv->blink_timeout = cdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_OFF_MULTIPLIER / CURSOR_DIVIDER,
 						     blink_cb,
 						     text_view);
       g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
     }
   else 
     {
-      priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_ON_MULTIPLIER / CURSOR_DIVIDER,
+      priv->blink_timeout = cdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_ON_MULTIPLIER / CURSOR_DIVIDER,
 						     blink_cb,
 						     text_view);
       g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
@@ -6388,7 +6388,7 @@ ctk_text_view_check_cursor_blink (CtkTextView *text_view)
 	    {
 	      ctk_text_layout_set_cursor_visible (priv->layout, TRUE);
 	      
-	      priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_OFF_MULTIPLIER / CURSOR_DIVIDER,
+	      priv->blink_timeout = cdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_OFF_MULTIPLIER / CURSOR_DIVIDER,
 							     blink_cb,
 							     text_view);
 	      g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
@@ -6420,7 +6420,7 @@ ctk_text_view_pend_cursor_blink (CtkTextView *text_view)
       ctk_text_view_stop_cursor_blink (text_view);
       ctk_text_layout_set_cursor_visible (priv->layout, TRUE);
       
-      priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_PEND_MULTIPLIER / CURSOR_DIVIDER,
+      priv->blink_timeout = cdk_threads_add_timeout (get_cursor_time (text_view) * CURSOR_PEND_MULTIPLIER / CURSOR_DIVIDER,
 						     blink_cb,
 						     text_view);
       g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
@@ -7483,8 +7483,8 @@ drag_scan_timeout (gpointer data)
                              priv->dnd_mark,
                              &newplace);
 
-  pointer_xoffset = (gdouble) priv->dnd_x / gdk_window_get_width (priv->text_window->bin_window);
-  pointer_yoffset = (gdouble) priv->dnd_y / gdk_window_get_height (priv->text_window->bin_window);
+  pointer_xoffset = (gdouble) priv->dnd_x / cdk_window_get_width (priv->text_window->bin_window);
+  pointer_yoffset = (gdouble) priv->dnd_y / cdk_window_get_height (priv->text_window->bin_window);
 
   if (check_scroll (pointer_xoffset, priv->hadjustment) ||
       check_scroll (pointer_yoffset, priv->vadjustment))
@@ -7699,10 +7699,10 @@ ctk_text_view_drag_gesture_update (CtkGestureDrag *gesture,
   drag_gesture_get_text_window_coords (gesture, text_view,
                                        &start_x, &start_y, &x, &y);
 
-  device = gdk_event_get_source_device (event);
+  device = cdk_event_get_source_device (event);
 
   is_touchscreen = ctk_simulate_touchscreen () ||
-                   gdk_device_get_source (device) == GDK_SOURCE_TOUCHSCREEN;
+                   cdk_device_get_source (device) == GDK_SOURCE_TOUCHSCREEN;
 
   get_iter_from_gesture (text_view, text_view->priv->drag_gesture,
                          &cursor, NULL, NULL);
@@ -7785,7 +7785,7 @@ ctk_text_view_drag_gesture_update (CtkGestureDrag *gesture,
     g_source_remove (text_view->priv->scroll_timeout);
 
   text_view->priv->scroll_timeout =
-    gdk_threads_add_timeout (50, selection_scan_timeout, text_view);
+    cdk_threads_add_timeout (50, selection_scan_timeout, text_view);
   g_source_set_name_by_id (text_view->priv->scroll_timeout, "[ctk+] selection_scan_timeout");
 
   ctk_text_view_selection_bubble_popup_unset (text_view);
@@ -7835,9 +7835,9 @@ ctk_text_view_drag_gesture_end (CtkGestureDrag *gesture,
     return;
 
   event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
-  device = gdk_event_get_source_device (event);
+  device = cdk_event_get_source_device (event);
   is_touchscreen = ctk_simulate_touchscreen () ||
-    gdk_device_get_source (device) == GDK_SOURCE_TOUCHSCREEN;
+    cdk_device_get_source (device) == GDK_SOURCE_TOUCHSCREEN;
 
   if (!is_touchscreen && clicked_in_selection &&
       !ctk_drag_check_threshold (CTK_WIDGET (text_view), start_x, start_y, x, y))
@@ -8006,7 +8006,7 @@ ctk_text_view_check_keymap_direction (CtkTextView *text_view)
   if (priv->layout)
     {
       CtkSettings *settings = ctk_widget_get_settings (CTK_WIDGET (text_view));
-      GdkKeymap *keymap = gdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (text_view)));
+      GdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (text_view)));
       CtkTextDirection new_cursor_dir;
       CtkTextDirection new_keyboard_dir;
       gboolean split_cursor;
@@ -8015,7 +8015,7 @@ ctk_text_view_check_keymap_direction (CtkTextView *text_view)
 		    "ctk-split-cursor", &split_cursor,
 		    NULL);
       
-      if (gdk_keymap_get_direction (keymap) == PANGO_DIRECTION_RTL)
+      if (cdk_keymap_get_direction (keymap) == PANGO_DIRECTION_RTL)
 	new_keyboard_dir = CTK_TEXT_DIR_RTL;
       else
 	new_keyboard_dir  = CTK_TEXT_DIR_LTR;
@@ -8241,7 +8241,7 @@ ctk_text_view_reset_im_context (CtkTextView *text_view)
  * {
  *   guint keyval;
  *
- *   gdk_event_get_keyval ((GdkEvent*)event, &keyval);
+ *   cdk_event_get_keyval ((GdkEvent*)event, &keyval);
  *
  *   if (keyval == GDK_KEY_Return || keyval == GDK_KEY_KP_Enter)
  *     {
@@ -8347,7 +8347,7 @@ ctk_text_view_drag_data_get (CtkWidget        *widget,
   if (info == CTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS)
     {
       ctk_selection_data_set (selection_data,
-                              gdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"),
+                              cdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"),
                               8, /* bytes */
                               (void*)&buffer,
                               sizeof (buffer));
@@ -8485,7 +8485,7 @@ ctk_text_view_drag_motion (CtkWidget        *widget,
         {
           CtkWidget *source_widget;
           
-          suggested_action = gdk_drag_context_get_suggested_action (context);
+          suggested_action = cdk_drag_context_get_suggested_action (context);
           
           source_widget = ctk_drag_get_source_widget (context);
           
@@ -8494,7 +8494,7 @@ ctk_text_view_drag_motion (CtkWidget        *widget,
               /* Default to MOVE, unless the user has
                * pressed ctrl or alt to affect available actions
                */
-              if ((gdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
+              if ((cdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
                 suggested_action = GDK_ACTION_MOVE;
             }
         }
@@ -8507,11 +8507,11 @@ ctk_text_view_drag_motion (CtkWidget        *widget,
   if (suggested_action != 0)
     {
       ctk_text_mark_set_visible (priv->dnd_mark, cursor_visible (text_view));
-      gdk_drag_status (context, suggested_action, time);
+      cdk_drag_status (context, suggested_action, time);
     }
   else
     {
-      gdk_drag_status (context, 0, time);
+      cdk_drag_status (context, 0, time);
       ctk_text_mark_set_visible (priv->dnd_mark, FALSE);
     }
 
@@ -8524,7 +8524,7 @@ ctk_text_view_drag_motion (CtkWidget        *widget,
   if (!priv->scroll_timeout)
   {
     priv->scroll_timeout =
-      gdk_threads_add_timeout (100, drag_scan_timeout, text_view);
+      cdk_threads_add_timeout (100, drag_scan_timeout, text_view);
     g_source_set_name_by_id (text_view->priv->scroll_timeout, "[ctk+] drag_scan_timeout");
   }
 
@@ -8658,7 +8658,7 @@ ctk_text_view_drag_data_received (CtkWidget        *widget,
 
           atoms = ctk_text_buffer_get_deserialize_formats (buffer, &n_atoms);
 
-          for (list = gdk_drag_context_list_targets (context); list; list = list->next)
+          for (list = cdk_drag_context_list_targets (context); list; list = list->next)
             {
               gint i;
 
@@ -8726,7 +8726,7 @@ ctk_text_view_drag_data_received (CtkWidget        *widget,
 
  done:
   ctk_drag_finish (context, success,
-		   success && gdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE,
+		   success && cdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE,
 		   time);
 
   if (success)
@@ -8952,7 +8952,7 @@ ctk_text_view_value_changed (CtkAdjustment *adjustment,
       if (priv->width_changed)
 	{
 	  if (ctk_widget_get_realized (CTK_WIDGET (text_view)))
-	    gdk_window_invalidate_rect (priv->text_window->bin_window, NULL, FALSE);
+	    cdk_window_invalidate_rect (priv->text_window->bin_window, NULL, FALSE);
 	  
 	  priv->width_changed = FALSE;
 	}
@@ -9071,7 +9071,7 @@ ctk_text_view_value_changed (CtkAdjustment *adjustment,
           if (current_event->type == GDK_SCROLL)
             move_mark_to_pointer_and_scroll (text_view, "insert");
 
-          gdk_event_free (current_event);
+          cdk_event_free (current_event);
         }
     }
 
@@ -9561,7 +9561,7 @@ popup_targets_received (CtkClipboard     *clipboard,
       g_signal_emit (text_view, signals[POPULATE_POPUP],
 		     0, priv->popup_menu);
 
-      if (info->trigger_event && gdk_event_triggers_context_menu (info->trigger_event))
+      if (info->trigger_event && cdk_event_triggers_context_menu (info->trigger_event))
         ctk_menu_popup_at_pointer (CTK_MENU (priv->popup_menu), info->trigger_event);
       else
         {
@@ -9600,7 +9600,7 @@ popup_targets_received (CtkClipboard     *clipboard,
         }
     }
 
-  g_clear_pointer (&info->trigger_event, gdk_event_free);
+  g_clear_pointer (&info->trigger_event, cdk_event_free);
   g_object_unref (text_view);
   g_slice_free (PopupInfo, info);
 }
@@ -9616,11 +9616,11 @@ ctk_text_view_do_popup (CtkTextView    *text_view,
    * we get them, then we actually pop up the menu.
    */
   info->text_view = g_object_ref (text_view);
-  info->trigger_event = event ? gdk_event_copy (event) : ctk_get_current_event ();
+  info->trigger_event = event ? cdk_event_copy (event) : ctk_get_current_event ();
 
   ctk_clipboard_request_contents (ctk_widget_get_clipboard (CTK_WIDGET (text_view),
 							    GDK_SELECTION_CLIPBOARD),
-				  gdk_atom_intern_static_string ("TARGETS"),
+				  cdk_atom_intern_static_string ("TARGETS"),
 				  popup_targets_received,
 				  info);
 }
@@ -9809,7 +9809,7 @@ ctk_text_view_selection_bubble_popup_show (gpointer user_data)
   CtkTextView *text_view = user_data;
   ctk_clipboard_request_contents (ctk_widget_get_clipboard (CTK_WIDGET (text_view),
 							    GDK_SELECTION_CLIPBOARD),
-				  gdk_atom_intern_static_string ("TARGETS"),
+				  cdk_atom_intern_static_string ("TARGETS"),
 				  bubble_targets_received,
 				  text_view);
   text_view->priv->selection_bubble_timeout_id = 0;
@@ -9845,7 +9845,7 @@ ctk_text_view_selection_bubble_popup_set (CtkTextView *text_view)
     g_source_remove (priv->selection_bubble_timeout_id);
 
   priv->selection_bubble_timeout_id =
-    gdk_threads_add_timeout (50, ctk_text_view_selection_bubble_popup_show,
+    cdk_threads_add_timeout (50, ctk_text_view_selection_bubble_popup_show,
                              text_view);
   g_source_set_name_by_id (priv->selection_bubble_timeout_id, "[ctk+] ctk_text_view_selection_bubble_popup_cb");
 }
@@ -9988,8 +9988,8 @@ ctk_text_view_get_rendered_rect (CtkTextView  *text_view,
   rect->x = ctk_adjustment_get_value (priv->hadjustment) - extra_w;
   rect->y = ctk_adjustment_get_value (priv->vadjustment) - extra_h - priv->top_border;
 
-  rect->height = gdk_window_get_height (window) + (extra_h * 2);
-  rect->width = gdk_window_get_width (window) + (extra_w * 2);
+  rect->height = cdk_window_get_height (window) + (extra_h * 2);
+  rect->width = cdk_window_get_width (window) + (extra_w * 2);
 }
 
 static void
@@ -10017,7 +10017,7 @@ text_window_invalidate_handler (GdkWindow      *window,
   CtkTextViewPrivate *priv;
   int x, y;
 
-  gdk_window_get_user_data (window, &widget);
+  cdk_window_get_user_data (window, &widget);
   text_view = CTK_TEXT_VIEW (widget);
   priv = text_view->priv;
 
@@ -10057,12 +10057,12 @@ text_window_realize (CtkTextWindow *win,
 
   window = ctk_widget_get_window (widget);
 
-  win->window = gdk_window_new (window,
+  win->window = cdk_window_new (window,
                                 &attributes, attributes_mask);
 
-  gdk_window_show (win->window);
+  cdk_window_show (win->window);
   ctk_widget_register_window (win->widget, win->window);
-  gdk_window_lower (win->window);
+  cdk_window_lower (win->window);
 
   attributes.x = 0;
   attributes.y = 0;
@@ -10076,26 +10076,26 @@ text_window_realize (CtkTextWindow *win,
                           | GDK_BUTTON_RELEASE_MASK
                           | GDK_POINTER_MOTION_MASK;
 
-  win->bin_window = gdk_window_new (win->window,
+  win->bin_window = cdk_window_new (win->window,
                                     &attributes,
                                     attributes_mask);
 
   ctk_widget_register_window (win->widget, win->bin_window);
 
   if (win->type == CTK_TEXT_WINDOW_TEXT)
-    gdk_window_set_invalidate_handler (win->bin_window,
+    cdk_window_set_invalidate_handler (win->bin_window,
                                        text_window_invalidate_handler);
 
-  gdk_window_show (win->bin_window);
+  cdk_window_show (win->bin_window);
 
   switch (win->type)
     {
     case CTK_TEXT_WINDOW_TEXT:
       if (ctk_widget_is_sensitive (widget))
         {
-          display = gdk_window_get_display (window);
-          cursor = gdk_cursor_new_from_name (display, "text");
-          gdk_window_set_cursor (win->bin_window, cursor);
+          display = cdk_window_get_display (window);
+          cursor = cdk_cursor_new_from_name (display, "text");
+          cdk_window_set_cursor (win->bin_window, cursor);
           g_clear_object (&cursor);
         }
 
@@ -10126,8 +10126,8 @@ text_window_unrealize (CtkTextWindow *win)
 
   ctk_widget_unregister_window (win->widget, win->window);
   ctk_widget_unregister_window (win->widget, win->bin_window);
-  gdk_window_destroy (win->bin_window);
-  gdk_window_destroy (win->window);
+  cdk_window_destroy (win->bin_window);
+  cdk_window_destroy (win->window);
   win->window = NULL;
   win->bin_window = NULL;
 }
@@ -10140,11 +10140,11 @@ text_window_size_allocate (CtkTextWindow *win,
 
   if (win->window)
     {
-      gdk_window_move_resize (win->window,
+      cdk_window_move_resize (win->window,
                               rect->x, rect->y,
                               rect->width, rect->height);
 
-      gdk_window_resize (win->bin_window,
+      cdk_window_resize (win->bin_window,
                          rect->width, rect->height);
     }
 }
@@ -10162,7 +10162,7 @@ text_window_scroll        (CtkTextWindow *win,
       if (priv->selection_bubble)
         ctk_widget_hide (priv->selection_bubble);
       view->priv->in_scroll = TRUE;
-      gdk_window_scroll (win->bin_window, dx, dy);
+      cdk_window_scroll (win->bin_window, dx, dy);
       view->priv->in_scroll = FALSE;
     }
 }
@@ -10211,12 +10211,12 @@ text_window_invalidate_rect (CtkTextWindow *win,
       break;
     }
           
-  gdk_window_invalidate_rect (win->bin_window, &window_rect, FALSE);
+  cdk_window_invalidate_rect (win->bin_window, &window_rect, FALSE);
 
 #if 0
   {
-    cairo_t *cr = gdk_cairo_create (win->bin_window);
-    gdk_cairo_rectangle (cr, &window_rect);
+    cairo_t *cr = cdk_cairo_create (win->bin_window);
+    cdk_cairo_rectangle (cr, &window_rect);
     cairo_set_source_rgb  (cr, 1.0, 0.0, 0.0);	/* red */
     cairo_fill (cr);
     cairo_destroy (cr);

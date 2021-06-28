@@ -1,5 +1,5 @@
 /* GDK - The GIMP Drawing Kit
- * gdkdisplaymanager-quartz.c
+ * cdkdisplaymanager-quartz.c
  *
  * Copyright (C) 2005 Imendio AB
  * Copyright 2010 Red Hat, Inc.
@@ -24,12 +24,12 @@
 
 #include <ApplicationServices/ApplicationServices.h>
 
-#include "gdkquartzdisplay.h"
-#include "gdkquartzdisplaymanager.h"
-#include "gdkprivate-quartz.h"
+#include "cdkquartzdisplay.h"
+#include "cdkquartzdisplaymanager.h"
+#include "cdkprivate-quartz.h"
 
-#include "gdkdisplaymanagerprivate.h"
-#include "gdkinternals.h"
+#include "cdkdisplaymanagerprivate.h"
+#include "cdkinternals.h"
 
 struct _GdkQuartzDisplayManager
 {
@@ -37,24 +37,24 @@ struct _GdkQuartzDisplayManager
 };
 
 
-G_DEFINE_TYPE (GdkQuartzDisplayManager, gdk_quartz_display_manager, GDK_TYPE_DISPLAY_MANAGER)
+G_DEFINE_TYPE (GdkQuartzDisplayManager, cdk_quartz_display_manager, GDK_TYPE_DISPLAY_MANAGER)
 
 static void
-gdk_quartz_display_manager_init (GdkQuartzDisplayManager *manager)
+cdk_quartz_display_manager_init (GdkQuartzDisplayManager *manager)
 {
 }
 
 static void
-gdk_quartz_display_manager_finalize (GObject *object)
+cdk_quartz_display_manager_finalize (GObject *object)
 {
   g_error ("A GdkQuartzDisplayManager object was finalized. This should not happen");
-  G_OBJECT_CLASS (gdk_quartz_display_manager_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_quartz_display_manager_parent_class)->finalize (object);
 }
 
 static void
-gdk_quartz_display_manager_class_init (GdkQuartzDisplayManagerClass *class)
+cdk_quartz_display_manager_class_init (GdkQuartzDisplayManagerClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
-  object_class->finalize = gdk_quartz_display_manager_finalize;
+  object_class->finalize = cdk_quartz_display_manager_finalize;
 }

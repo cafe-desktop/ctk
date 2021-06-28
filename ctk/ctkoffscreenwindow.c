@@ -130,7 +130,7 @@ ctk_offscreen_window_size_allocate (CtkWidget *widget,
   border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (ctk_widget_get_window (widget),
+    cdk_window_move_resize (ctk_widget_get_window (widget),
                             allocation->x,
                             allocation->y,
                             allocation->width,
@@ -180,7 +180,7 @@ ctk_offscreen_window_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
@@ -307,7 +307,7 @@ ctk_offscreen_window_get_surface (CtkOffscreenWindow *offscreen)
 {
   g_return_val_if_fail (CTK_IS_OFFSCREEN_WINDOW (offscreen), NULL);
 
-  return gdk_offscreen_window_get_surface (ctk_widget_get_window (CTK_WIDGET (offscreen)));
+  return cdk_offscreen_window_get_surface (ctk_widget_get_window (CTK_WIDGET (offscreen)));
 }
 
 /**
@@ -333,14 +333,14 @@ ctk_offscreen_window_get_pixbuf (CtkOffscreenWindow *offscreen)
   g_return_val_if_fail (CTK_IS_OFFSCREEN_WINDOW (offscreen), NULL);
 
   window = ctk_widget_get_window (CTK_WIDGET (offscreen));
-  surface = gdk_offscreen_window_get_surface (window);
+  surface = cdk_offscreen_window_get_surface (window);
 
   if (surface != NULL)
     {
-      pixbuf = gdk_pixbuf_get_from_surface (surface,
+      pixbuf = cdk_pixbuf_get_from_surface (surface,
                                             0, 0,
-                                            gdk_window_get_width (window),
-                                            gdk_window_get_height (window));
+                                            cdk_window_get_width (window),
+                                            cdk_window_get_height (window));
     }
 
   return pixbuf;

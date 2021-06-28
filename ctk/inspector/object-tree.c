@@ -1215,7 +1215,7 @@ ctk_inspector_object_tree_scan (CtkInspectorObjectTree *wt,
   if (window)
     ctk_inspector_object_tree_append_object (wt, G_OBJECT (window), NULL, NULL);
 
-  screen = gdk_screen_get_default ();
+  screen = cdk_screen_get_default ();
 
   inspector_win = ctk_widget_get_toplevel (CTK_WIDGET (wt));
   toplevels = ctk_window_list_toplevels ();

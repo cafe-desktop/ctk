@@ -19,12 +19,12 @@
 
 #include <math.h>
 
-#include "gdkdevicetoolprivate.h"
-#include "gdkinternals.h"
-#include "gdkintl.h"
+#include "cdkdevicetoolprivate.h"
+#include "cdkinternals.h"
+#include "cdkintl.h"
 
 
-G_DEFINE_TYPE (GdkDeviceTool, gdk_device_tool, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GdkDeviceTool, cdk_device_tool, G_TYPE_OBJECT)
 
 enum {
   TOOL_PROP_0,
@@ -38,7 +38,7 @@ enum {
 GParamSpec *tool_props[N_TOOL_PROPS] = { 0 };
 
 static void
-gdk_device_tool_set_property (GObject      *object,
+cdk_device_tool_set_property (GObject      *object,
                               guint         prop_id,
                               const GValue *value,
                               GParamSpec   *pspec)
@@ -66,7 +66,7 @@ gdk_device_tool_set_property (GObject      *object,
 }
 
 static void
-gdk_device_tool_get_property (GObject    *object,
+cdk_device_tool_get_property (GObject    *object,
                               guint       prop_id,
                               GValue     *value,
                               GParamSpec *pspec)
@@ -94,12 +94,12 @@ gdk_device_tool_get_property (GObject    *object,
 }
 
 static void
-gdk_device_tool_class_init (GdkDeviceToolClass *klass)
+cdk_device_tool_class_init (GdkDeviceToolClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->set_property = gdk_device_tool_set_property;
-  object_class->get_property = gdk_device_tool_get_property;
+  object_class->set_property = cdk_device_tool_set_property;
+  object_class->get_property = cdk_device_tool_get_property;
 
   tool_props[TOOL_PROP_SERIAL] = g_param_spec_uint64 ("serial",
                                                       "Serial",
@@ -131,12 +131,12 @@ gdk_device_tool_class_init (GdkDeviceToolClass *klass)
 }
 
 static void
-gdk_device_tool_init (GdkDeviceTool *tool)
+cdk_device_tool_init (GdkDeviceTool *tool)
 {
 }
 
 GdkDeviceTool *
-gdk_device_tool_new (guint64           serial,
+cdk_device_tool_new (guint64           serial,
                      guint64           hw_id,
                      GdkDeviceToolType type,
                      GdkAxisFlags      tool_axes)
@@ -150,7 +150,7 @@ gdk_device_tool_new (guint64           serial,
 }
 
 /**
- * gdk_device_tool_get_serial:
+ * cdk_device_tool_get_serial:
  * @tool: a #GdkDeviceTool
  *
  * Gets the serial of this tool, this value can be used to identify a
@@ -161,7 +161,7 @@ gdk_device_tool_new (guint64           serial,
  * Since: 3.22
  **/
 guint64
-gdk_device_tool_get_serial (GdkDeviceTool *tool)
+cdk_device_tool_get_serial (GdkDeviceTool *tool)
 {
   g_return_val_if_fail (tool != NULL, 0);
 
@@ -169,16 +169,16 @@ gdk_device_tool_get_serial (GdkDeviceTool *tool)
 }
 
 /**
- * gdk_device_tool_get_hardware_id:
+ * cdk_device_tool_get_hardware_id:
  * @tool: a #GdkDeviceTool
  *
  * Gets the hardware ID of this tool, or 0 if it's not known. When
  * non-zero, the identificator is unique for the given tool model,
  * meaning that two identical tools will share the same @hardware_id,
- * but will have different serial numbers (see gdk_device_tool_get_serial()).
+ * but will have different serial numbers (see cdk_device_tool_get_serial()).
  *
  * This is a more concrete (and device specific) method to identify
- * a #GdkDeviceTool than gdk_device_tool_get_tool_type(), as a tablet
+ * a #GdkDeviceTool than cdk_device_tool_get_tool_type(), as a tablet
  * may support multiple devices with the same #GdkDeviceToolType,
  * but having different hardware identificators.
  *
@@ -187,7 +187,7 @@ gdk_device_tool_get_serial (GdkDeviceTool *tool)
  * Since: 3.22
  **/
 guint64
-gdk_device_tool_get_hardware_id (GdkDeviceTool *tool)
+cdk_device_tool_get_hardware_id (GdkDeviceTool *tool)
 {
   g_return_val_if_fail (tool != NULL, 0);
 
@@ -195,7 +195,7 @@ gdk_device_tool_get_hardware_id (GdkDeviceTool *tool)
 }
 
 /**
- * gdk_device_tool_get_tool_type:
+ * cdk_device_tool_get_tool_type:
  * @tool: a #GdkDeviceTool
  *
  * Gets the #GdkDeviceToolType of the tool.
@@ -206,7 +206,7 @@ gdk_device_tool_get_hardware_id (GdkDeviceTool *tool)
  * Since: 3.22
  **/
 GdkDeviceToolType
-gdk_device_tool_get_tool_type (GdkDeviceTool *tool)
+cdk_device_tool_get_tool_type (GdkDeviceTool *tool)
 {
   g_return_val_if_fail (tool != NULL, GDK_DEVICE_TOOL_TYPE_UNKNOWN);
 

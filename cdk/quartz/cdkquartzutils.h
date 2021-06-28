@@ -1,4 +1,4 @@
-/* gdkquartzutils.h
+/* cdkquartzutils.h
  *
  * Copyright (C) 2005  Imendio AB
  * Copyright (C) 2010  Kristian Rietveld  <kris@ctk.org>
@@ -21,15 +21,15 @@
 #define __GDK_QUARTZ_UTILS_H__
 
 #if !defined (__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkquartz.h> can be included directly."
+#error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
 GDK_AVAILABLE_IN_3_12
-gunichar  gdk_quartz_get_key_equivalent                         (guint           key);
+gunichar  cdk_quartz_get_key_equivalent                         (guint           key);
 
 G_END_DECLS
 

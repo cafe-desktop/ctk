@@ -1,6 +1,6 @@
 /* GDK - The GIMP Drawing Kit
  *
- * gdkglcontextprivate.h: GL context abstraction
+ * cdkglcontextprivate.h: GL context abstraction
  * 
  * Copyright © 2014  Emmanuele Bassi
  *
@@ -21,7 +21,7 @@
 #ifndef __GDK_GL_CONTEXT_PRIVATE_H__
 #define __GDK_GL_CONTEXT_PRIVATE_H__
 
-#include "gdkglcontext.h"
+#include "cdkglcontext.h"
 
 G_BEGIN_DECLS
 
@@ -73,20 +73,20 @@ typedef struct {
   guint use_es : 1;
 } GdkGLContextPaintData;
 
-void                    gdk_gl_context_set_is_legacy            (GdkGLContext    *context,
+void                    cdk_gl_context_set_is_legacy            (GdkGLContext    *context,
                                                                  gboolean         is_legacy);
 
-void                    gdk_gl_context_upload_texture           (GdkGLContext    *context,
+void                    cdk_gl_context_upload_texture           (GdkGLContext    *context,
                                                                  cairo_surface_t *image_surface,
                                                                  int              width,
                                                                  int              height,
                                                                  guint            texture_target);
-GdkGLContextPaintData * gdk_gl_context_get_paint_data           (GdkGLContext    *context);
-gboolean                gdk_gl_context_use_texture_rectangle    (GdkGLContext    *context);
-gboolean                gdk_gl_context_has_framebuffer_blit     (GdkGLContext    *context);
-gboolean                gdk_gl_context_has_frame_terminator     (GdkGLContext    *context);
-gboolean                gdk_gl_context_has_unpack_subimage      (GdkGLContext    *context);
-void                    gdk_gl_context_end_frame                (GdkGLContext    *context,
+GdkGLContextPaintData * cdk_gl_context_get_paint_data           (GdkGLContext    *context);
+gboolean                cdk_gl_context_use_texture_rectangle    (GdkGLContext    *context);
+gboolean                cdk_gl_context_has_framebuffer_blit     (GdkGLContext    *context);
+gboolean                cdk_gl_context_has_frame_terminator     (GdkGLContext    *context);
+gboolean                cdk_gl_context_has_unpack_subimage      (GdkGLContext    *context);
+void                    cdk_gl_context_end_frame                (GdkGLContext    *context,
                                                                  cairo_region_t  *painted,
                                                                  cairo_region_t  *damage);
 

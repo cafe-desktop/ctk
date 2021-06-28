@@ -19,19 +19,19 @@
 
 #include <glib.h>
 #include <gio/gio.h>
-#include "gdkprivate-wayland.h"
+#include "cdkprivate-wayland.h"
 
-#include "gdkmonitor-wayland.h"
+#include "cdkmonitor-wayland.h"
 
-G_DEFINE_TYPE (GdkWaylandMonitor, gdk_wayland_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (GdkWaylandMonitor, cdk_wayland_monitor, GDK_TYPE_MONITOR)
 
 static void
-gdk_wayland_monitor_init (GdkWaylandMonitor *monitor)
+cdk_wayland_monitor_init (GdkWaylandMonitor *monitor)
 {
 }
 
 static void
-gdk_wayland_monitor_finalize (GObject *object)
+cdk_wayland_monitor_finalize (GObject *object)
 {
   GdkWaylandMonitor *monitor = (GdkWaylandMonitor *)object;
 
@@ -39,17 +39,17 @@ gdk_wayland_monitor_finalize (GObject *object)
 
   wl_output_destroy (monitor->output);
 
-  G_OBJECT_CLASS (gdk_wayland_monitor_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_wayland_monitor_parent_class)->finalize (object);
 }
 
 static void
-gdk_wayland_monitor_class_init (GdkWaylandMonitorClass *class)
+cdk_wayland_monitor_class_init (GdkWaylandMonitorClass *class)
 {
-  G_OBJECT_CLASS (class)->finalize = gdk_wayland_monitor_finalize;
+  G_OBJECT_CLASS (class)->finalize = cdk_wayland_monitor_finalize;
 }
 
 /**
- * gdk_wayland_monitor_get_wl_output:
+ * cdk_wayland_monitor_get_wl_output:
  * @monitor: (type GdkWaylandMonitor): a #GdkMonitor
  *
  * Returns the Wayland wl_output of a #GdkMonitor.
@@ -58,7 +58,7 @@ gdk_wayland_monitor_class_init (GdkWaylandMonitorClass *class)
  * Since: 3.22
  */
 struct wl_output *
-gdk_wayland_monitor_get_wl_output (GdkMonitor *monitor)
+cdk_wayland_monitor_get_wl_output (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_WAYLAND_MONITOR (monitor), NULL);
 

@@ -26,14 +26,14 @@
 #define __GDK_FRAME_CLOCK_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdkframetimings.h>
+#include <cdk/cdkframetimings.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_FRAME_CLOCK            (gdk_frame_clock_get_type ())
+#define GDK_TYPE_FRAME_CLOCK            (cdk_frame_clock_get_type ())
 #define GDK_FRAME_CLOCK(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_FRAME_CLOCK, GdkFrameClock))
 #define GDK_FRAME_CLOCK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_FRAME_CLOCK, GdkFrameClockClass))
 #define GDK_IS_FRAME_CLOCK(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_FRAME_CLOCK))
@@ -73,34 +73,34 @@ typedef enum {
 } GdkFrameClockPhase;
 
 GDK_AVAILABLE_IN_3_8
-GType    gdk_frame_clock_get_type             (void) G_GNUC_CONST;
+GType    cdk_frame_clock_get_type             (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_8
-gint64   gdk_frame_clock_get_frame_time            (GdkFrameClock *frame_clock);
+gint64   cdk_frame_clock_get_frame_time            (GdkFrameClock *frame_clock);
 
 GDK_AVAILABLE_IN_3_8
-void               gdk_frame_clock_request_phase (GdkFrameClock      *frame_clock,
+void               cdk_frame_clock_request_phase (GdkFrameClock      *frame_clock,
                                                   GdkFrameClockPhase  phase);
 
 GDK_AVAILABLE_IN_3_8
-void               gdk_frame_clock_begin_updating (GdkFrameClock      *frame_clock);
+void               cdk_frame_clock_begin_updating (GdkFrameClock      *frame_clock);
 GDK_AVAILABLE_IN_3_8
-void               gdk_frame_clock_end_updating   (GdkFrameClock      *frame_clock);
+void               cdk_frame_clock_end_updating   (GdkFrameClock      *frame_clock);
 
 /* Frame history */
 GDK_AVAILABLE_IN_3_8
-gint64           gdk_frame_clock_get_frame_counter (GdkFrameClock *frame_clock);
+gint64           cdk_frame_clock_get_frame_counter (GdkFrameClock *frame_clock);
 GDK_AVAILABLE_IN_3_8
-gint64           gdk_frame_clock_get_history_start (GdkFrameClock *frame_clock);
+gint64           cdk_frame_clock_get_history_start (GdkFrameClock *frame_clock);
 GDK_AVAILABLE_IN_3_8
-GdkFrameTimings *gdk_frame_clock_get_timings       (GdkFrameClock *frame_clock,
+GdkFrameTimings *cdk_frame_clock_get_timings       (GdkFrameClock *frame_clock,
                                                     gint64         frame_counter);
 
 GDK_AVAILABLE_IN_3_8
-GdkFrameTimings *gdk_frame_clock_get_current_timings (GdkFrameClock *frame_clock);
+GdkFrameTimings *cdk_frame_clock_get_current_timings (GdkFrameClock *frame_clock);
 
 GDK_AVAILABLE_IN_3_8
-void gdk_frame_clock_get_refresh_info (GdkFrameClock *frame_clock,
+void cdk_frame_clock_get_refresh_info (GdkFrameClock *frame_clock,
                                        gint64         base_time,
                                        gint64        *refresh_interval_return,
                                        gint64        *presentation_time_return);

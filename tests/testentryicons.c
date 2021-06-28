@@ -87,7 +87,7 @@ set_pixbuf (CtkWidget *button,
 
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
-      pixbuf = gdk_pixbuf_new_from_resource ("/org/ctk/libctk/inspector/logo.png", NULL);
+      pixbuf = cdk_pixbuf_new_from_resource ("/org/ctk/libctk/inspector/logo.png", NULL);
       ctk_entry_set_icon_from_pixbuf (entry, CTK_ENTRY_ICON_SECONDARY, pixbuf);
       g_object_unref (pixbuf);
     }

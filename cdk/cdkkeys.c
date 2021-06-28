@@ -24,10 +24,10 @@
 
 #include "config.h"
 
-#include "gdkkeysyms.h"
-#include "gdkkeysprivate.h"
-#include "gdkdisplay.h"
-#include "gdkdisplaymanagerprivate.h"
+#include "cdkkeysyms.h"
+#include "cdkkeysprivate.h"
+#include "cdkdisplay.h"
+#include "cdkdisplaymanagerprivate.h"
 
 
 /**
@@ -40,28 +40,28 @@
  * #GdkEventKey structure, which is passed to signal handlers for the
  * #CtkWidget::key-press-event and #CtkWidget::key-release-event signals.
  * The complete list of key values can be found in the
- * `gdk/gdkkeysyms.h` header file.
+ * `cdk/cdkkeysyms.h` header file.
  *
  * Key values are regularly updated from the upstream X.org X11 implementation,
  * so new values are added regularly. They will be prefixed with GDK_KEY_ rather
  * than XF86XK_ or XK_ (for older symbols).
  *
  * Key values can be converted into a string representation using
- * gdk_keyval_name(). The reverse function, converting a string to a key value,
- * is provided by gdk_keyval_from_name().
+ * cdk_keyval_name(). The reverse function, converting a string to a key value,
+ * is provided by cdk_keyval_from_name().
  *
- * The case of key values can be determined using gdk_keyval_is_upper() and
- * gdk_keyval_is_lower(). Key values can be converted to upper or lower case
- * using gdk_keyval_to_upper() and gdk_keyval_to_lower().
+ * The case of key values can be determined using cdk_keyval_is_upper() and
+ * cdk_keyval_is_lower(). Key values can be converted to upper or lower case
+ * using cdk_keyval_to_upper() and cdk_keyval_to_lower().
  *
  * When it makes sense, key values can be converted to and from
- * Unicode characters with gdk_keyval_to_unicode() and gdk_unicode_to_keyval().
+ * Unicode characters with cdk_keyval_to_unicode() and cdk_unicode_to_keyval().
  *
  * # Groups # {#key-group-explanation}
  *
- * One #GdkKeymap object exists for each user display. gdk_keymap_get_default()
+ * One #GdkKeymap object exists for each user display. cdk_keymap_get_default()
  * returns the #GdkKeymap for the default display; to obtain keymaps for other
- * displays, use gdk_keymap_get_for_display(). A keymap
+ * displays, use cdk_keymap_get_for_display(). A keymap
  * is a mapping from #GdkKeymapKey to key values. You can think of a #GdkKeymapKey
  * as a representation of a symbol printed on a physical keyboard key. That is, it
  * contains three pieces of information. First, it contains the hardware keycode;
@@ -83,7 +83,7 @@
  * In order to use a keymap to interpret a key event, it’s necessary to first
  * convert the keyboard state into an effective group and level. This is done via a
  * set of rules that varies widely according to type of keyboard and user
- * configuration. The function gdk_keymap_translate_keyboard_state() accepts a
+ * configuration. The function cdk_keymap_translate_keyboard_state() accepts a
  * keyboard state -- consisting of hardware keycode pressed, active modifiers, and
  * active group -- applies the appropriate rules, and returns the group/level to be
  * used to index the keymap, along with the modifiers which did not affect the
@@ -92,11 +92,11 @@
  * have multiple groups - e.g. the Enter key is always in group 0 regardless of
  * keyboard state.
  *
- * Note that gdk_keymap_translate_keyboard_state() also returns the keyval, i.e. it
+ * Note that cdk_keymap_translate_keyboard_state() also returns the keyval, i.e. it
  * goes ahead and performs the keymap lookup in addition to telling you which
  * effective group/level values were used for the lookup. #GdkEventKey already
  * contains this keyval, however, so you don’t normally need to call
- * gdk_keymap_translate_keyboard_state() just to get the keyval.
+ * cdk_keymap_translate_keyboard_state() just to get the keyval.
  */
 
 
@@ -108,20 +108,20 @@ enum {
 };
 
 
-static GdkModifierType gdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
+static GdkModifierType cdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
                                                           GdkModifierIntent  intent);
 
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GdkKeymap, gdk_keymap, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GdkKeymap, cdk_keymap, G_TYPE_OBJECT)
 
 static void
-gdk_keymap_class_init (GdkKeymapClass *klass)
+cdk_keymap_class_init (GdkKeymapClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  klass->get_modifier_mask = gdk_keymap_real_get_modifier_mask;
+  klass->get_modifier_mask = cdk_keymap_real_get_modifier_mask;
 
   /**
    * GdkKeymap::direction-changed:
@@ -166,7 +166,7 @@ gdk_keymap_class_init (GdkKeymapClass *klass)
    *
    * The ::state-changed signal is emitted when the state of the
    * keyboard changes, e.g when Caps Lock is turned on or off.
-   * See gdk_keymap_get_caps_lock_state().
+   * See cdk_keymap_get_caps_lock_state().
    *
    * Since: 2.16
    */
@@ -182,7 +182,7 @@ gdk_keymap_class_init (GdkKeymapClass *klass)
 }
 
 static void
-gdk_keymap_init (GdkKeymap *keymap)
+cdk_keymap_init (GdkKeymap *keymap)
 {
 }
 
@@ -190,7 +190,7 @@ gdk_keymap_init (GdkKeymap *keymap)
  */
 
 /**
- * gdk_keyval_to_upper:
+ * cdk_keyval_to_upper:
  * @keyval: a key value.
  *
  * Converts a key value to upper case, if applicable.
@@ -199,17 +199,17 @@ gdk_keymap_init (GdkKeymap *keymap)
  *   in upper case or it is not subject to case conversion.
  */
 guint
-gdk_keyval_to_upper (guint keyval)
+cdk_keyval_to_upper (guint keyval)
 {
   guint result;
 
-  gdk_keyval_convert_case (keyval, NULL, &result);
+  cdk_keyval_convert_case (keyval, NULL, &result);
 
   return result;
 }
 
 /**
- * gdk_keyval_to_lower:
+ * cdk_keyval_to_lower:
  * @keyval: a key value.
  *
  * Converts a key value to lower case, if applicable.
@@ -218,17 +218,17 @@ gdk_keyval_to_upper (guint keyval)
  *  in lower case or it is not subject to case conversion.
  */
 guint
-gdk_keyval_to_lower (guint keyval)
+cdk_keyval_to_lower (guint keyval)
 {
   guint result;
 
-  gdk_keyval_convert_case (keyval, &result, NULL);
+  cdk_keyval_convert_case (keyval, &result, NULL);
 
   return result;
 }
 
 /**
- * gdk_keyval_is_upper:
+ * cdk_keyval_is_upper:
  * @keyval: a key value.
  *
  * Returns %TRUE if the given key value is in upper case.
@@ -237,20 +237,20 @@ gdk_keyval_to_lower (guint keyval)
  *  case conversion.
  */
 gboolean
-gdk_keyval_is_upper (guint keyval)
+cdk_keyval_is_upper (guint keyval)
 {
   if (keyval)
     {
       guint upper_val = 0;
 
-      gdk_keyval_convert_case (keyval, NULL, &upper_val);
+      cdk_keyval_convert_case (keyval, NULL, &upper_val);
       return upper_val == keyval;
     }
   return FALSE;
 }
 
 /**
- * gdk_keyval_is_lower:
+ * cdk_keyval_is_lower:
  * @keyval: a key value.
  *
  * Returns %TRUE if the given key value is in lower case.
@@ -259,35 +259,35 @@ gdk_keyval_is_upper (guint keyval)
  *   subject to case conversion.
  */
 gboolean
-gdk_keyval_is_lower (guint keyval)
+cdk_keyval_is_lower (guint keyval)
 {
   if (keyval)
     {
       guint lower_val = 0;
 
-      gdk_keyval_convert_case (keyval, &lower_val, NULL);
+      cdk_keyval_convert_case (keyval, &lower_val, NULL);
       return lower_val == keyval;
     }
   return FALSE;
 }
 
 /**
- * gdk_keymap_get_default:
+ * cdk_keymap_get_default:
  *
  * Returns the #GdkKeymap attached to the default display.
  *
  * Returns: (transfer none): the #GdkKeymap attached to the default display.
  *
- * Deprecated: 3.22: Use gdk_keymap_get_for_display() instead
+ * Deprecated: 3.22: Use cdk_keymap_get_for_display() instead
  */
 GdkKeymap*
-gdk_keymap_get_default (void)
+cdk_keymap_get_default (void)
 {
-  return gdk_keymap_get_for_display (gdk_display_get_default ());
+  return cdk_keymap_get_for_display (cdk_display_get_default ());
 }
 
 /**
- * gdk_keymap_get_direction:
+ * cdk_keymap_get_direction:
  * @keymap: a #GdkKeymap
  *
  * Returns the direction of effective layout of the keymap.
@@ -297,7 +297,7 @@ gdk_keymap_get_default (void)
  *   otherwise.
  **/
 PangoDirection
-gdk_keymap_get_direction (GdkKeymap *keymap)
+cdk_keymap_get_direction (GdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), PANGO_DIRECTION_LTR);
 
@@ -305,7 +305,7 @@ gdk_keymap_get_direction (GdkKeymap *keymap)
 }
 
 /**
- * gdk_keymap_have_bidi_layouts:
+ * cdk_keymap_have_bidi_layouts:
  * @keymap: a #GdkKeymap
  *
  * Determines if keyboard layouts for both right-to-left and left-to-right
@@ -316,7 +316,7 @@ gdk_keymap_get_direction (GdkKeymap *keymap)
  * Since: 2.12
  **/
 gboolean
-gdk_keymap_have_bidi_layouts (GdkKeymap *keymap)
+cdk_keymap_have_bidi_layouts (GdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -324,7 +324,7 @@ gdk_keymap_have_bidi_layouts (GdkKeymap *keymap)
 }
 
 /**
- * gdk_keymap_get_caps_lock_state:
+ * cdk_keymap_get_caps_lock_state:
  * @keymap: a #GdkKeymap
  *
  * Returns whether the Caps Lock modifer is locked.
@@ -334,7 +334,7 @@ gdk_keymap_have_bidi_layouts (GdkKeymap *keymap)
  * Since: 2.16
  */
 gboolean
-gdk_keymap_get_caps_lock_state (GdkKeymap *keymap)
+cdk_keymap_get_caps_lock_state (GdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -342,7 +342,7 @@ gdk_keymap_get_caps_lock_state (GdkKeymap *keymap)
 }
 
 /**
- * gdk_keymap_get_num_lock_state:
+ * cdk_keymap_get_num_lock_state:
  * @keymap: a #GdkKeymap
  *
  * Returns whether the Num Lock modifer is locked.
@@ -352,7 +352,7 @@ gdk_keymap_get_caps_lock_state (GdkKeymap *keymap)
  * Since: 3.0
  */
 gboolean
-gdk_keymap_get_num_lock_state (GdkKeymap *keymap)
+cdk_keymap_get_num_lock_state (GdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -360,7 +360,7 @@ gdk_keymap_get_num_lock_state (GdkKeymap *keymap)
 }
 
 /**
- * gdk_keymap_get_scroll_lock_state:
+ * cdk_keymap_get_scroll_lock_state:
  * @keymap: a #GdkKeymap
  *
  * Returns whether the Scroll Lock modifer is locked.
@@ -370,7 +370,7 @@ gdk_keymap_get_num_lock_state (GdkKeymap *keymap)
  * Since: 3.18
  */
 gboolean
-gdk_keymap_get_scroll_lock_state (GdkKeymap *keymap)
+cdk_keymap_get_scroll_lock_state (GdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -378,7 +378,7 @@ gdk_keymap_get_scroll_lock_state (GdkKeymap *keymap)
 }
 
 /**
- * gdk_keymap_get_modifier_state:
+ * cdk_keymap_get_modifier_state:
  * @keymap: a #GdkKeymap
  *
  * Returns the current modifier state.
@@ -388,7 +388,7 @@ gdk_keymap_get_scroll_lock_state (GdkKeymap *keymap)
  * Since: 3.4
  */
 guint
-gdk_keymap_get_modifier_state (GdkKeymap *keymap)
+cdk_keymap_get_modifier_state (GdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -399,7 +399,7 @@ gdk_keymap_get_modifier_state (GdkKeymap *keymap)
 }
 
 /**
- * gdk_keymap_get_entries_for_keyval:
+ * cdk_keymap_get_entries_for_keyval:
  * @keymap: a #GdkKeymap
  * @keyval: a keyval, such as %GDK_KEY_a, %GDK_KEY_Up, %GDK_KEY_Return, etc.
  * @keys: (out) (array length=n_keys) (transfer full): return location
@@ -421,7 +421,7 @@ gdk_keymap_get_modifier_state (GdkKeymap *keymap)
  * Returns: %TRUE if keys were found and returned
  **/
 gboolean
-gdk_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
+cdk_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
                                    guint          keyval,
                                    GdkKeymapKey **keys,
                                    gint          *n_keys)
@@ -436,7 +436,7 @@ gdk_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
 }
 
 /**
- * gdk_keymap_get_entries_for_keycode:
+ * cdk_keymap_get_entries_for_keycode:
  * @keymap: a #GdkKeymap
  * @hardware_keycode: a keycode
  * @keys: (out) (array length=n_entries) (transfer full) (optional): return
@@ -450,12 +450,12 @@ gdk_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
  * keyval in @keyvals. Free the returned arrays with g_free().
  * When a keycode is pressed by the user, the keyval from
  * this list of entries is selected by considering the effective
- * keyboard group and level. See gdk_keymap_translate_keyboard_state().
+ * keyboard group and level. See cdk_keymap_translate_keyboard_state().
  *
  * Returns: %TRUE if there were any entries
  **/
 gboolean
-gdk_keymap_get_entries_for_keycode (GdkKeymap     *keymap,
+cdk_keymap_get_entries_for_keycode (GdkKeymap     *keymap,
                                     guint          hardware_keycode,
                                     GdkKeymapKey **keys,
                                     guint        **keyvals,
@@ -469,20 +469,20 @@ gdk_keymap_get_entries_for_keycode (GdkKeymap     *keymap,
 }
 
 /**
- * gdk_keymap_lookup_key:
+ * cdk_keymap_lookup_key:
  * @keymap: a #GdkKeymap
  * @key: a #GdkKeymapKey with keycode, group, and level initialized
  *
  * Looks up the keyval mapped to a keycode/group/level triplet.
  * If no keyval is bound to @key, returns 0. For normal user input,
- * you want to use gdk_keymap_translate_keyboard_state() instead of
+ * you want to use cdk_keymap_translate_keyboard_state() instead of
  * this function, since the effective group/level may not be
  * the same as the current keyboard state.
  *
  * Returns: a keyval, or 0 if none was mapped to the given @key
  **/
 guint
-gdk_keymap_lookup_key (GdkKeymap          *keymap,
+cdk_keymap_lookup_key (GdkKeymap          *keymap,
                        const GdkKeymapKey *key)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), 0);
@@ -492,7 +492,7 @@ gdk_keymap_lookup_key (GdkKeymap          *keymap,
 }
 
 /**
- * gdk_keymap_translate_keyboard_state:
+ * cdk_keymap_translate_keyboard_state:
  * @keymap: a #GdkKeymap
  * @hardware_keycode: a keycode
  * @state: a modifier state
@@ -523,7 +523,7 @@ gdk_keymap_lookup_key (GdkKeymap          *keymap,
  * |[<!-- language="C" -->
  * // We want to ignore irrelevant modifiers like ScrollLock
  * #define ALL_ACCELS_MASK (GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK)
- * gdk_keymap_translate_keyboard_state (keymap, event->hardware_keycode,
+ * cdk_keymap_translate_keyboard_state (keymap, event->hardware_keycode,
  *                                      event->state, event->group,
  *                                      &keyval, NULL, NULL, &consumed);
  * if (keyval == GDK_PLUS &&
@@ -555,7 +555,7 @@ gdk_keymap_lookup_key (GdkKeymap          *keymap,
  * Returns: %TRUE if there was a keyval bound to the keycode/state/group
  **/
 gboolean
-gdk_keymap_translate_keyboard_state (GdkKeymap       *keymap,
+cdk_keymap_translate_keyboard_state (GdkKeymap       *keymap,
                                      guint            hardware_keycode,
                                      GdkModifierType  state,
                                      gint             group,
@@ -577,7 +577,7 @@ gdk_keymap_translate_keyboard_state (GdkKeymap       *keymap,
 }
 
 /**
- * gdk_keymap_add_virtual_modifiers:
+ * cdk_keymap_add_virtual_modifiers:
  * @keymap: a #GdkKeymap
  * @state: (inout): pointer to the modifier mask to change
  *
@@ -595,7 +595,7 @@ gdk_keymap_translate_keyboard_state (GdkKeymap       *keymap,
  * Since: 2.20
  */
 void
-gdk_keymap_add_virtual_modifiers (GdkKeymap       *keymap,
+cdk_keymap_add_virtual_modifiers (GdkKeymap       *keymap,
 			          GdkModifierType *state)
 {
   g_return_if_fail (GDK_IS_KEYMAP (keymap));
@@ -604,7 +604,7 @@ gdk_keymap_add_virtual_modifiers (GdkKeymap       *keymap,
 }
 
 /**
- * gdk_keymap_map_virtual_modifiers:
+ * cdk_keymap_map_virtual_modifiers:
  * @keymap: a #GdkKeymap
  * @state: (inout): pointer to the modifier state to map
  *
@@ -623,7 +623,7 @@ gdk_keymap_add_virtual_modifiers (GdkKeymap       *keymap,
  * Since: 2.20
  */
 gboolean
-gdk_keymap_map_virtual_modifiers (GdkKeymap       *keymap,
+cdk_keymap_map_virtual_modifiers (GdkKeymap       *keymap,
                                   GdkModifierType *state)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
@@ -632,7 +632,7 @@ gdk_keymap_map_virtual_modifiers (GdkKeymap       *keymap,
 }
 
 static GdkModifierType
-gdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
+cdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
                                    GdkModifierIntent  intent)
 {
   switch (intent)
@@ -665,7 +665,7 @@ gdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
 }
 
 /**
- * gdk_keymap_get_modifier_mask:
+ * cdk_keymap_get_modifier_mask:
  * @keymap: a #GdkKeymap
  * @intent: the use case for the modifier mask
  *
@@ -676,7 +676,7 @@ gdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
  * virtual ones (e.g. it will return #GDK_MOD1_MASK rather than
  * #GDK_META_MASK if the backend maps MOD1 to META), so there are use
  * cases where the return value of this function has to be transformed
- * by gdk_keymap_add_virtual_modifiers() in order to contain the
+ * by cdk_keymap_add_virtual_modifiers() in order to contain the
  * expected result.
  *
  * Returns: the modifier mask used for @intent.
@@ -684,7 +684,7 @@ gdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
  * Since: 3.4
  **/
 GdkModifierType
-gdk_keymap_get_modifier_mask (GdkKeymap         *keymap,
+cdk_keymap_get_modifier_mask (GdkKeymap         *keymap,
                               GdkModifierIntent  intent)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), 0);
@@ -692,16 +692,16 @@ gdk_keymap_get_modifier_mask (GdkKeymap         *keymap,
   return GDK_KEYMAP_GET_CLASS (keymap)->get_modifier_mask (keymap, intent);
 }
 
-#include "gdkkeynames.c"
+#include "cdkkeynames.c"
 
 /**
- * gdk_keyval_name:
+ * cdk_keyval_name:
  * @keyval: a key value
  *
  * Converts a key value into a symbolic name.
  *
  * The names are the same as those in the
- * `gdk/gdkkeysyms.h` header file
+ * `cdk/cdkkeysyms.h` header file
  * but without the leading “GDK_KEY_”.
  *
  * Returns: (nullable) (transfer none): a string containing the name
@@ -709,32 +709,32 @@ gdk_keymap_get_modifier_mask (GdkKeymap         *keymap,
  *     should not be modified.
  */
 gchar *
-gdk_keyval_name (guint keyval)
+cdk_keyval_name (guint keyval)
 {
-  return _gdk_keyval_name (keyval);
+  return _cdk_keyval_name (keyval);
 }
 
 /**
- * gdk_keyval_from_name:
+ * cdk_keyval_from_name:
  * @keyval_name: a key name
  *
  * Converts a key name to a key value.
  *
  * The names are the same as those in the
- * `gdk/gdkkeysyms.h` header file
+ * `cdk/cdkkeysyms.h` header file
  * but without the leading “GDK_KEY_”.
  *
  * Returns: the corresponding key value, or %GDK_KEY_VoidSymbol
  *     if the key name is not a valid key
  */
 guint
-gdk_keyval_from_name (const gchar *keyval_name)
+cdk_keyval_from_name (const gchar *keyval_name)
 {
-  return _gdk_keyval_from_name (keyval_name);
+  return _cdk_keyval_from_name (keyval_name);
 }
 
 /**
- * gdk_keyval_convert_case:
+ * cdk_keyval_convert_case:
  * @symbol: a keyval
  * @lower: (out): return location for lowercase version of @symbol
  * @upper: (out): return location for uppercase version of @symbol
@@ -743,7 +743,7 @@ gdk_keyval_from_name (const gchar *keyval_name)
  * Examples of keyvals are #GDK_KEY_a, #GDK_KEY_Enter, #GDK_KEY_F1, etc.
  */
 void
-gdk_keyval_convert_case (guint symbol,
+cdk_keyval_convert_case (guint symbol,
                          guint *lower,
                          guint *upper)
 {
@@ -756,9 +756,9 @@ gdk_keyval_convert_case (guint symbol,
   if ((symbol & 0xff000000) == 0x01000000)
     {
       if (lower)
-        *lower = gdk_unicode_to_keyval (g_unichar_tolower (symbol & 0x00ffffff));
+        *lower = cdk_unicode_to_keyval (g_unichar_tolower (symbol & 0x00ffffff));
       if (upper)
-        *upper = gdk_unicode_to_keyval (g_unichar_toupper (symbol & 0x00ffffff));
+        *upper = cdk_unicode_to_keyval (g_unichar_toupper (symbol & 0x00ffffff));
       return;
     }
 

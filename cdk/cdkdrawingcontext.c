@@ -16,7 +16,7 @@
  */
 
 /**
- * SECTION:gdkdrawingcontext
+ * SECTION:cdkdrawingcontext
  * @Title: GdkDrawingContext
  * @Short_description: Drawing context for GDK windows
  *
@@ -26,8 +26,8 @@
  * It's possible to use a #GdkDrawingContext to draw on a #GdkWindow
  * via rendering API like Cairo or OpenGL.
  *
- * A #GdkDrawingContext can only be created by calling gdk_window_begin_draw_frame()
- * and will be valid until a call to gdk_window_end_draw_frame().
+ * A #GdkDrawingContext can only be created by calling cdk_window_begin_draw_frame()
+ * and will be valid until a call to cdk_window_end_draw_frame().
  *
  * #GdkDrawingContext is available since GDK 3.22
  */
@@ -36,17 +36,17 @@
 
 #include <cairo-gobject.h>
 
-#include "gdkdrawingcontextprivate.h"
+#include "cdkdrawingcontextprivate.h"
 
-#include "gdkrectangle.h"
-#include "gdkinternals.h"
-#include "gdkintl.h"
-#include "gdkframeclockidle.h"
-#include "gdkwindowimpl.h"
-#include "gdkglcontextprivate.h"
-#include "gdk-private.h"
+#include "cdkrectangle.h"
+#include "cdkinternals.h"
+#include "cdkintl.h"
+#include "cdkframeclockidle.h"
+#include "cdkwindowimpl.h"
+#include "cdkglcontextprivate.h"
+#include "cdk-private.h"
 
-G_DEFINE_TYPE (GdkDrawingContext, gdk_drawing_context, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GdkDrawingContext, cdk_drawing_context, G_TYPE_OBJECT)
 
 enum {
   PROP_0,
@@ -60,7 +60,7 @@ enum {
 static GParamSpec *obj_property[N_PROPS];
 
 static void
-gdk_drawing_context_dispose (GObject *gobject)
+cdk_drawing_context_dispose (GObject *gobject)
 {
   GdkDrawingContext *self = GDK_DRAWING_CONTEXT (gobject);
 
@@ -68,17 +68,17 @@ gdk_drawing_context_dispose (GObject *gobject)
    * onto the Cairo context
    */
   if (self->cr != NULL)
-    gdk_cairo_set_drawing_context (self->cr, NULL);
+    cdk_cairo_set_drawing_context (self->cr, NULL);
 
   g_clear_object (&self->window);
   g_clear_pointer (&self->clip, cairo_region_destroy);
   g_clear_pointer (&self->cr, cairo_destroy);
 
-  G_OBJECT_CLASS (gdk_drawing_context_parent_class)->dispose (gobject);
+  G_OBJECT_CLASS (cdk_drawing_context_parent_class)->dispose (gobject);
 }
 
 static void
-gdk_drawing_context_set_property (GObject      *gobject,
+cdk_drawing_context_set_property (GObject      *gobject,
                                   guint         prop_id,
                                   const GValue *value,
                                   GParamSpec   *pspec)
@@ -101,7 +101,7 @@ gdk_drawing_context_set_property (GObject      *gobject,
 }
 
 static void
-gdk_drawing_context_get_property (GObject    *gobject,
+cdk_drawing_context_get_property (GObject    *gobject,
                                   guint       prop_id,
                                   GValue     *value,
                                   GParamSpec *pspec)
@@ -124,7 +124,7 @@ gdk_drawing_context_get_property (GObject    *gobject,
 }
 
 static void
-gdk_drawing_context_constructed (GObject *gobject)
+cdk_drawing_context_constructed (GObject *gobject)
 {
   GdkDrawingContext *self = GDK_DRAWING_CONTEXT (gobject);
 
@@ -132,22 +132,22 @@ gdk_drawing_context_constructed (GObject *gobject)
     {
       g_critical ("The drawing context of type %s does not have a window "
                   "associated to it. Drawing contexts can only be created "
-                  "using gdk_window_begin_draw_frame().",
+                  "using cdk_window_begin_draw_frame().",
                   G_OBJECT_TYPE_NAME (gobject));
     }
 
-  G_OBJECT_CLASS (gdk_drawing_context_parent_class)->constructed (gobject);
+  G_OBJECT_CLASS (cdk_drawing_context_parent_class)->constructed (gobject);
 }
 
 static void
-gdk_drawing_context_class_init (GdkDrawingContextClass *klass)
+cdk_drawing_context_class_init (GdkDrawingContextClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
-  gobject_class->constructed = gdk_drawing_context_constructed;
-  gobject_class->set_property = gdk_drawing_context_set_property;
-  gobject_class->get_property = gdk_drawing_context_get_property;
-  gobject_class->dispose = gdk_drawing_context_dispose;
+  gobject_class->constructed = cdk_drawing_context_constructed;
+  gobject_class->set_property = cdk_drawing_context_set_property;
+  gobject_class->get_property = cdk_drawing_context_get_property;
+  gobject_class->dispose = cdk_drawing_context_dispose;
 
   /**
    * GdkDrawingContext:window:
@@ -180,21 +180,21 @@ gdk_drawing_context_class_init (GdkDrawingContextClass *klass)
 }
 
 static void
-gdk_drawing_context_init (GdkDrawingContext *self)
+cdk_drawing_context_init (GdkDrawingContext *self)
 {
 }
 
 static const cairo_user_data_key_t draw_context_key;
 
 void
-gdk_cairo_set_drawing_context (cairo_t           *cr,
+cdk_cairo_set_drawing_context (cairo_t           *cr,
                                GdkDrawingContext *context)
 {
   cairo_set_user_data (cr, &draw_context_key, context, NULL);
 }
 
 /**
- * gdk_cairo_get_drawing_context:
+ * cdk_cairo_get_drawing_context:
  * @cr: a Cairo context
  *
  * Retrieves the #GdkDrawingContext that created the Cairo
@@ -205,7 +205,7 @@ gdk_cairo_set_drawing_context (cairo_t           *cr,
  * Since: 3.22
  */
 GdkDrawingContext *
-gdk_cairo_get_drawing_context (cairo_t *cr)
+cdk_cairo_get_drawing_context (cairo_t *cr)
 {
   g_return_val_if_fail (cr != NULL, NULL);
 
@@ -213,7 +213,7 @@ gdk_cairo_get_drawing_context (cairo_t *cr)
 }
 
 /**
- * gdk_drawing_context_get_cairo_context:
+ * cdk_drawing_context_get_cairo_context:
  * @context:
  *
  * Retrieves a Cairo context to be used to draw on the #GdkWindow
@@ -221,7 +221,7 @@ gdk_cairo_get_drawing_context (cairo_t *cr)
  *
  * The returned context is guaranteed to be valid as long as the
  * #GdkDrawingContext is valid, that is between a call to
- * gdk_window_begin_draw_frame() and gdk_window_end_draw_frame().
+ * cdk_window_begin_draw_frame() and cdk_window_end_draw_frame().
  *
  * Returns: (transfer none): a Cairo context to be used to draw
  *   the contents of the #GdkWindow. The context is owned by the
@@ -230,7 +230,7 @@ gdk_cairo_get_drawing_context (cairo_t *cr)
  * Since: 3.22
  */
 cairo_t *
-gdk_drawing_context_get_cairo_context (GdkDrawingContext *context)
+cdk_drawing_context_get_cairo_context (GdkDrawingContext *context)
 {
   g_return_val_if_fail (GDK_IS_DRAWING_CONTEXT (context), NULL);
   g_return_val_if_fail (GDK_IS_WINDOW (context->window), NULL);
@@ -240,14 +240,14 @@ gdk_drawing_context_get_cairo_context (GdkDrawingContext *context)
       cairo_region_t *region;
       cairo_surface_t *surface;
 
-      surface = _gdk_window_ref_cairo_surface (context->window);
+      surface = _cdk_window_ref_cairo_surface (context->window);
       context->cr = cairo_create (surface);
 
-      gdk_cairo_set_drawing_context (context->cr, context);
+      cdk_cairo_set_drawing_context (context->cr, context);
 
-      region = gdk_window_get_current_paint_region (context->window);
+      region = cdk_window_get_current_paint_region (context->window);
       cairo_region_union (region, context->clip);
-      gdk_cairo_region (context->cr, region);
+      cdk_cairo_region (context->cr, region);
       cairo_clip (context->cr);
 
       cairo_region_destroy (region);
@@ -258,7 +258,7 @@ gdk_drawing_context_get_cairo_context (GdkDrawingContext *context)
 }
 
 /**
- * gdk_drawing_context_get_window:
+ * cdk_drawing_context_get_window:
  * @context: a #GdkDrawingContext
  *
  * Retrieves the window that created the drawing @context.
@@ -268,7 +268,7 @@ gdk_drawing_context_get_cairo_context (GdkDrawingContext *context)
  * Since: 3.22
  */
 GdkWindow *
-gdk_drawing_context_get_window (GdkDrawingContext *context)
+cdk_drawing_context_get_window (GdkDrawingContext *context)
 {
   g_return_val_if_fail (GDK_IS_DRAWING_CONTEXT (context), NULL);
 
@@ -276,7 +276,7 @@ gdk_drawing_context_get_window (GdkDrawingContext *context)
 }
 
 /**
- * gdk_drawing_context_get_clip:
+ * cdk_drawing_context_get_clip:
  * @context: a #GdkDrawingContext
  *
  * Retrieves a copy of the clip region used when creating the @context.
@@ -286,7 +286,7 @@ gdk_drawing_context_get_window (GdkDrawingContext *context)
  * Since: 3.22
  */
 cairo_region_t *
-gdk_drawing_context_get_clip (GdkDrawingContext *context)
+cdk_drawing_context_get_clip (GdkDrawingContext *context)
 {
   g_return_val_if_fail (GDK_IS_DRAWING_CONTEXT (context), NULL);
 
@@ -297,7 +297,7 @@ gdk_drawing_context_get_clip (GdkDrawingContext *context)
 }
 
 /**
- * gdk_drawing_context_is_valid:
+ * cdk_drawing_context_is_valid:
  * @context: a #GdkDrawingContext
  *
  * Checks whether the given #GdkDrawingContext is valid.
@@ -307,14 +307,14 @@ gdk_drawing_context_get_clip (GdkDrawingContext *context)
  * Since: 3.22
  */
 gboolean
-gdk_drawing_context_is_valid (GdkDrawingContext *context)
+cdk_drawing_context_is_valid (GdkDrawingContext *context)
 {
   g_return_val_if_fail (GDK_IS_DRAWING_CONTEXT (context), FALSE);
 
   if (context->window == NULL)
     return FALSE;
 
-  if (gdk_window_get_drawing_context (context->window) != context)
+  if (cdk_window_get_drawing_context (context->window) != context)
     return FALSE;
 
   return TRUE;

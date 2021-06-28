@@ -28,7 +28,7 @@
 #ifdef G_OS_WIN32
 
 #include <windows.h>
-#include <gdk/win32/gdkwin32.h>
+#include <cdk/win32/cdkwin32.h>
 #include <cairo-win32.h>
 
 typedef HANDLE HTHEME;
@@ -168,7 +168,7 @@ invalidate_win32_themes (GdkXEvent *xevent,
       theme_was_open |= ctk_win32_theme_close (theme);
     }
   if (theme_was_open)
-    ctk_style_context_reset_widgets (gdk_display_get_default_screen (gdk_window_get_display (event->any.window)));
+    ctk_style_context_reset_widgets (cdk_display_get_default_screen (cdk_window_get_display (event->any.window)));
 
   return GDK_FILTER_CONTINUE;
 }
@@ -231,7 +231,7 @@ ctk_win32_theme_init (void)
       use_xp_theme = FALSE;
     }
 
-  gdk_window_add_filter (NULL, invalidate_win32_themes, NULL);
+  cdk_window_add_filter (NULL, invalidate_win32_themes, NULL);
 }
 
 static HTHEME

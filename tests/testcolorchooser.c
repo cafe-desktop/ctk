@@ -63,7 +63,7 @@ main (int argc, char *argv[])
           g_print ("setting custom palette\n");
           for (i = 0; i < 9; i++)
             {
-              gdk_rgba_parse (&color, c[i]);
+              cdk_rgba_parse (&color, c[i]);
               for (j = 0; j < 5; j++)
                 {
                   colors[i*9 + j].red   = f[j]*color.red;

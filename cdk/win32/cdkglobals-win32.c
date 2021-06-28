@@ -24,25 +24,25 @@
  */
 
 #include "config.h"
-#include "gdktypes.h"
-#include "gdkprivate-win32.h"
+#include "cdktypes.h"
+#include "cdkprivate-win32.h"
 
-GdkDisplay	 *_gdk_display = NULL;
+GdkDisplay	 *_cdk_display = NULL;
 
-gint		  _gdk_offset_x, _gdk_offset_y;
+gint		  _cdk_offset_x, _cdk_offset_y;
 
-HDC		  _gdk_display_hdc;
-HINSTANCE	  _gdk_dll_hinstance;
-HINSTANCE	  _gdk_app_hmodule;
+HDC		  _cdk_display_hdc;
+HINSTANCE	  _cdk_dll_hinstance;
+HINSTANCE	  _cdk_app_hmodule;
 
-gint		  _gdk_input_ignore_core;
+gint		  _cdk_input_ignore_core;
 
-HKL		  _gdk_input_locale;
-gboolean	  _gdk_input_locale_is_ime = FALSE;
-UINT		  _gdk_input_codepage;
+HKL		  _cdk_input_locale;
+gboolean	  _cdk_input_locale_is_ime = FALSE;
+UINT		  _cdk_input_codepage;
 
-gint		  _gdk_input_ignore_wintab = FALSE;
-gint		  _gdk_max_colors = 0;
+gint		  _cdk_input_ignore_wintab = FALSE;
+gint		  _cdk_max_colors = 0;
 
 GdkWin32ModalOpKind	  _modal_operation_in_progress = GDK_WIN32_MODAL_OP_NONE;
 HWND              _modal_move_resize_window = NULL;

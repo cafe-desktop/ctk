@@ -21,7 +21,7 @@
 #if defined (GDK_WINDOWING_X11)
 #include <ctk/ctkx.h>
 #elif defined (GDK_WINDOWING_WIN32)
-#include "win32/gdkwin32.h"
+#include "win32/cdkwin32.h"
 #endif
 
 enum
@@ -82,7 +82,7 @@ blink (CtkWidget *widget,
   
   if (!blink_timeout)
     {
-      blink_timeout = gdk_threads_add_timeout (1000, blink_cb, window);
+      blink_timeout = cdk_threads_add_timeout (1000, blink_cb, window);
       ctk_widget_hide (window);
 
       g_object_set_data (G_OBJECT (window), "blink", GUINT_TO_POINTER (blink_timeout));

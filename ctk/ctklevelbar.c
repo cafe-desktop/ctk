@@ -503,7 +503,7 @@ ctk_level_bar_allocate_trough_continuous (CtkLevelBar *self,
                            &block_area,
                            baseline,
                            &clip);
-  gdk_rectangle_intersect (out_clip, &clip, out_clip);
+  cdk_rectangle_intersect (out_clip, &clip, out_clip);
 }
 
 static void
@@ -544,7 +544,7 @@ ctk_level_bar_allocate_trough_discrete (CtkLevelBar *self,
                                &block_area,
                                baseline,
                                &clip);
-      gdk_rectangle_intersect (out_clip, &clip, out_clip);
+      cdk_rectangle_intersect (out_clip, &clip, out_clip);
 
       if (self->priv->orientation == CTK_ORIENTATION_HORIZONTAL)
         block_area.x += block_area.width;

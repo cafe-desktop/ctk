@@ -416,7 +416,7 @@ ctk_menu_button_toggled (CtkToggleButton *button)
             ctk_menu_shell_select_first (CTK_MENU_SHELL (priv->menu), FALSE);
 
           if (event)
-            gdk_event_free (event);
+            cdk_event_free (event);
         }
     }
   else if (priv->popover)

@@ -25,11 +25,11 @@
 #ifndef __GDK_BROADWAY_WINDOW_H__
 #define __GDK_BROADWAY_WINDOW_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_BROADWAY_WINDOW              (gdk_broadway_window_get_type ())
+#define GDK_TYPE_BROADWAY_WINDOW              (cdk_broadway_window_get_type ())
 #define GDK_BROADWAY_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_WINDOW, GdkBroadwayWindow))
 #define GDK_BROADWAY_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_WINDOW, GdkBroadwayWindowClass))
 #define GDK_IS_BROADWAY_WINDOW(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_WINDOW))
@@ -44,10 +44,10 @@ typedef GdkWindow GdkBroadwayWindow;
 typedef struct _GdkBroadwayWindowClass GdkBroadwayWindowClass;
 
 GDK_AVAILABLE_IN_ALL
-GType    gdk_broadway_window_get_type          (void);
+GType    cdk_broadway_window_get_type          (void);
 
 GDK_AVAILABLE_IN_ALL
-guint32  gdk_broadway_get_last_seen_time (GdkWindow       *window);
+guint32  cdk_broadway_get_last_seen_time (GdkWindow       *window);
 
 G_END_DECLS
 

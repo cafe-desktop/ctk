@@ -40,7 +40,7 @@
 #include "ctklabel.h"
 #include "ctkfilechooserentry.h"
 #include "ctkfilefilterprivate.h"
-#include <quartz/gdkquartz-ctk-only.h>
+#include <quartz/cdkquartz-ctk-only.h>
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
 typedef struct {
@@ -452,7 +452,7 @@ ctk_file_chooser_native_quartz_show (CtkFileChooserNative *self)
   char *message = NULL;
 
   /* Not supported before MacOS X 10.6 */
-  if (gdk_quartz_osx_version () < GDK_OSX_SNOW_LEOPARD)
+  if (cdk_quartz_osx_version () < GDK_OSX_SNOW_LEOPARD)
     return FALSE;
 
   extra_widget = ctk_file_chooser_get_extra_widget (CTK_FILE_CHOOSER (self));
@@ -533,7 +533,7 @@ ctk_file_chooser_native_quartz_show (CtkFileChooserNative *self)
   if (transient_for)
     {
       ctk_widget_realize (CTK_WIDGET (transient_for));
-      data->parent = gdk_quartz_window_get_nswindow (ctk_widget_get_window (CTK_WIDGET (transient_for)));
+      data->parent = cdk_quartz_window_get_nswindow (ctk_widget_get_window (CTK_WIDGET (transient_for)));
 
       if (ctk_native_dialog_get_modal (CTK_NATIVE_DIALOG (self)))
         data->modal = TRUE;
@@ -567,7 +567,7 @@ ctk_file_chooser_native_quartz_hide (CtkFileChooserNative *self)
   FileChooserQuartzData *data = self->mode_data;
 
   /* Not supported before MacOS X 10.6 */
-  if (gdk_quartz_osx_version () < GDK_OSX_SNOW_LEOPARD)
+  if (cdk_quartz_osx_version () < GDK_OSX_SNOW_LEOPARD)
     return;
 
   /* This is always set while dialog visible */

@@ -188,7 +188,7 @@ _ctk_css_color_value_resolve (CtkCssValue             *color,
         _ctk_hsla_init_from_rgba (&hsla, _ctk_css_rgba_value_get_rgba (val));
         _ctk_hsla_shade (&hsla, &hsla, color->sym_col.shade.factor);
 
-        _gdk_rgba_init_from_hsla (&shade, &hsla);
+        _cdk_rgba_init_from_hsla (&shade, &hsla);
 
 	_ctk_css_value_unref (val);
 
@@ -843,7 +843,7 @@ _ctk_css_color_value_parse (CtkCssParser *parser)
   name = _ctk_css_parser_try_name (parser, TRUE);
   if (name)
     {
-      if (gdk_rgba_parse (&rgba, name))
+      if (cdk_rgba_parse (&rgba, name))
         {
           value = _ctk_css_color_value_new_literal (&rgba);
         }

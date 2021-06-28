@@ -36,16 +36,16 @@ toplevel_delete_event (CtkWidget *toplevel,
 		       GdkEvent  *event,
 		       gpointer   none)
 {
-  GdkWindow *gdk_win;
+  GdkWindow *cdk_win;
   CtkWidget *label = create_tab_label (toplevel);
 
-  gdk_win = ctk_widget_get_window (notebook);
-  g_assert (gdk_win);
+  cdk_win = ctk_widget_get_window (notebook);
+  g_assert (cdk_win);
 
   ctk_widget_hide (toplevel);
   ctk_widget_unrealize (toplevel);
 
-  ctk_widget_set_parent_window (toplevel, gdk_win);
+  ctk_widget_set_parent_window (toplevel, cdk_win);
   ctk_notebook_append_page (CTK_NOTEBOOK (notebook), toplevel, label);
 
   ctk_widget_show (toplevel);

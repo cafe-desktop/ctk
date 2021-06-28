@@ -24,38 +24,38 @@
 
 #include "config.h"
 
-#include "gdkconfig.h"
-#include "gdkdisplaymanagerprivate.h"
-#include "gdkdisplayprivate.h"
-#include "gdkinternals.h"
-#include "gdkkeysprivate.h"
-#include "gdkmarshalers.h"
-#include "gdkintl.h"
+#include "cdkconfig.h"
+#include "cdkdisplaymanagerprivate.h"
+#include "cdkdisplayprivate.h"
+#include "cdkinternals.h"
+#include "cdkkeysprivate.h"
+#include "cdkmarshalers.h"
+#include "cdkintl.h"
 
 #ifdef GDK_WINDOWING_X11
-#include "x11/gdkx.h"
-#include "x11/gdkprivate-x11.h"
+#include "x11/cdkx.h"
+#include "x11/cdkprivate-x11.h"
 #endif
 
 #ifdef GDK_WINDOWING_QUARTZ
-#include "quartz/gdkprivate-quartz.h"
+#include "quartz/cdkprivate-quartz.h"
 #endif
 
 #ifdef GDK_WINDOWING_BROADWAY
-#include "broadway/gdkprivate-broadway.h"
+#include "broadway/cdkprivate-broadway.h"
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
-#include "win32/gdkwin32.h"
-#include "win32/gdkprivate-win32.h"
+#include "win32/cdkwin32.h"
+#include "win32/cdkprivate-win32.h"
 #endif
 
 #ifdef GDK_WINDOWING_WAYLAND
-#include "wayland/gdkprivate-wayland.h"
+#include "wayland/cdkprivate-wayland.h"
 #endif
 
 /**
- * SECTION:gdkdisplaymanager
+ * SECTION:cdkdisplaymanager
  * @Short_description: Maintains a list of all open GdkDisplays
  * @Title: GdkDisplayManager
  *
@@ -63,7 +63,7 @@
  * notification when displays appear or disappear or the default display
  * changes.
  *
- * You can use gdk_display_manager_get() to obtain the #GdkDisplayManager
+ * You can use cdk_display_manager_get() to obtain the #GdkDisplayManager
  * singleton, but that should be rarely necessary. Typically, initializing
  * CTK+ opens a display that you can work with without ever accessing the
  * #GdkDisplayManager.
@@ -111,27 +111,27 @@ enum {
   LAST_SIGNAL
 };
 
-static void gdk_display_manager_class_init   (GdkDisplayManagerClass *klass);
-static void gdk_display_manager_set_property (GObject                *object,
+static void cdk_display_manager_class_init   (GdkDisplayManagerClass *klass);
+static void cdk_display_manager_set_property (GObject                *object,
                                               guint                   prop_id,
                                               const GValue           *value,
                                               GParamSpec             *pspec);
-static void gdk_display_manager_get_property (GObject                *object,
+static void cdk_display_manager_get_property (GObject                *object,
                                               guint                   prop_id,
                                               GValue                 *value,
                                               GParamSpec             *pspec);
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GdkDisplayManager, gdk_display_manager, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GdkDisplayManager, cdk_display_manager, G_TYPE_OBJECT)
 
 static void
-gdk_display_manager_class_init (GdkDisplayManagerClass *klass)
+cdk_display_manager_class_init (GdkDisplayManagerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->set_property = gdk_display_manager_set_property;
-  object_class->get_property = gdk_display_manager_get_property;
+  object_class->set_property = cdk_display_manager_set_property;
+  object_class->get_property = cdk_display_manager_get_property;
 
   /**
    * GdkDisplayManager::display-opened:
@@ -148,13 +148,13 @@ gdk_display_manager_class_init (GdkDisplayManagerClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GdkDisplayManagerClass, display_opened),
                   NULL, NULL,
-                  _gdk_marshal_VOID__OBJECT,
+                  _cdk_marshal_VOID__OBJECT,
                   G_TYPE_NONE,
                   1,
                   GDK_TYPE_DISPLAY);
   g_signal_set_va_marshaller (signals[DISPLAY_OPENED],
                               G_TYPE_FROM_CLASS (klass),
-                              _gdk_marshal_VOID__OBJECTv);
+                              _cdk_marshal_VOID__OBJECTv);
 
   g_object_class_install_property (object_class,
                                    PROP_DEFAULT_DISPLAY,
@@ -167,12 +167,12 @@ gdk_display_manager_class_init (GdkDisplayManagerClass *klass)
 }
 
 static void
-gdk_display_manager_init (GdkDisplayManager *manager)
+cdk_display_manager_init (GdkDisplayManager *manager)
 {
 }
 
 static void
-gdk_display_manager_set_property (GObject      *object,
+cdk_display_manager_set_property (GObject      *object,
                                   guint         prop_id,
                                   const GValue *value,
                                   GParamSpec   *pspec)
@@ -180,7 +180,7 @@ gdk_display_manager_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_DEFAULT_DISPLAY:
-      gdk_display_manager_set_default_display (GDK_DISPLAY_MANAGER (object),
+      cdk_display_manager_set_default_display (GDK_DISPLAY_MANAGER (object),
                                                g_value_get_object (value));
       break;
     default:
@@ -190,7 +190,7 @@ gdk_display_manager_set_property (GObject      *object,
 }
 
 static void
-gdk_display_manager_get_property (GObject      *object,
+cdk_display_manager_get_property (GObject      *object,
                                   guint         prop_id,
                                   GValue       *value,
                                   GParamSpec   *pspec)
@@ -199,7 +199,7 @@ gdk_display_manager_get_property (GObject      *object,
     {
     case PROP_DEFAULT_DISPLAY:
       g_value_set_object (value,
-                          gdk_display_manager_get_default_display (GDK_DISPLAY_MANAGER (object)));
+                          cdk_display_manager_get_default_display (GDK_DISPLAY_MANAGER (object)));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -210,7 +210,7 @@ gdk_display_manager_get_property (GObject      *object,
 static const gchar *allowed_backends;
 
 /**
- * gdk_set_allowed_backends:
+ * cdk_set_allowed_backends:
  * @backends: a comma-separated list of backends
  *
  * Sets a list of backends that GDK should try to use.
@@ -222,7 +222,7 @@ static const gchar *allowed_backends;
  *
  * For example,
  * |[<!-- language="C" -->
- * gdk_set_allowed_backends ("wayland,quartz,*");
+ * cdk_set_allowed_backends ("wayland,quartz,*");
  * ]|
  * instructs GDK to try the Wayland backend first,
  * followed by the Quartz backend, and then all
@@ -237,14 +237,14 @@ static const gchar *allowed_backends;
  * broadway, wayland. You can also include a * in the
  * list to try all remaining backends.
  *
- * This call must happen prior to gdk_display_open(),
+ * This call must happen prior to cdk_display_open(),
  * ctk_init(), ctk_init_with_args() or ctk_init_check()
  * in order to take effect.
  *
  * Since: 3.10
  */
 void
-gdk_set_allowed_backends (const gchar *backends)
+cdk_set_allowed_backends (const gchar *backends)
 {
   allowed_backends = g_strdup (backends);
 }
@@ -256,45 +256,45 @@ struct _GdkBackend {
   GdkDisplay * (* open_display) (const char *name);
 };
 
-static GdkBackend gdk_backends[] = {
+static GdkBackend cdk_backends[] = {
 #ifdef GDK_WINDOWING_QUARTZ
-  { "quartz",   _gdk_quartz_display_open },
+  { "quartz",   _cdk_quartz_display_open },
 #endif
 #ifdef GDK_WINDOWING_WIN32
-  { "win32",    _gdk_win32_display_open },
+  { "win32",    _cdk_win32_display_open },
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
-  { "wayland",  _gdk_wayland_display_open },
+  { "wayland",  _cdk_wayland_display_open },
 #endif
 #ifdef GDK_WINDOWING_X11
-  { "x11",      _gdk_x11_display_open },
+  { "x11",      _cdk_x11_display_open },
 #endif
 #ifdef GDK_WINDOWING_BROADWAY
-  { "broadway", _gdk_broadway_display_open },
+  { "broadway", _cdk_broadway_display_open },
 #endif
   /* NULL-terminating this array so we can use commas above */
   { NULL, NULL }
 };
 
 /**
- * gdk_display_manager_get:
+ * cdk_display_manager_get:
  *
  * Gets the singleton #GdkDisplayManager object.
  *
  * When called for the first time, this function consults the
  * `GDK_BACKEND` environment variable to find out which
  * of the supported GDK backends to use (in case GDK has been compiled
- * with multiple backends). Applications can use gdk_set_allowed_backends()
+ * with multiple backends). Applications can use cdk_set_allowed_backends()
  * to limit what backends can be used.
  *
  * Returns: (transfer none): The global #GdkDisplayManager singleton;
- *     gdk_parse_args(), gdk_init(), or gdk_init_check() must have
+ *     cdk_parse_args(), cdk_init(), or cdk_init_check() must have
  *     been called first.
  *
  * Since: 2.2
  **/
 GdkDisplayManager*
-gdk_display_manager_get (void)
+cdk_display_manager_get (void)
 {
   static GdkDisplayManager *manager = NULL;
 
@@ -305,7 +305,7 @@ gdk_display_manager_get (void)
 }
 
 /**
- * gdk_display_manager_get_default_display:
+ * cdk_display_manager_get_default_display:
  * @manager: a #GdkDisplayManager
  *
  * Gets the default #GdkDisplay.
@@ -316,17 +316,17 @@ gdk_display_manager_get (void)
  * Since: 2.2
  */
 GdkDisplay *
-gdk_display_manager_get_default_display (GdkDisplayManager *manager)
+cdk_display_manager_get_default_display (GdkDisplayManager *manager)
 {
   return manager->default_display;
 }
 
 /**
- * gdk_display_get_default:
+ * cdk_display_get_default:
  *
  * Gets the default #GdkDisplay. This is a convenience
  * function for:
- * `gdk_display_manager_get_default_display (gdk_display_manager_get ())`.
+ * `cdk_display_manager_get_default_display (cdk_display_manager_get ())`.
  *
  * Returns: (nullable) (transfer none): a #GdkDisplay, or %NULL if
  *   there is no default display.
@@ -334,16 +334,16 @@ gdk_display_manager_get_default_display (GdkDisplayManager *manager)
  * Since: 2.2
  */
 GdkDisplay *
-gdk_display_get_default (void)
+cdk_display_get_default (void)
 {
-  return gdk_display_manager_get_default_display (gdk_display_manager_get ());
+  return cdk_display_manager_get_default_display (cdk_display_manager_get ());
 }
 
 /**
- * gdk_screen_get_default:
+ * cdk_screen_get_default:
  *
  * Gets the default screen for the default display. (See
- * gdk_display_get_default ()).
+ * cdk_display_get_default ()).
  *
  * Returns: (nullable) (transfer none): a #GdkScreen, or %NULL if
  *     there is no default display.
@@ -351,11 +351,11 @@ gdk_display_get_default (void)
  * Since: 2.2
  */
 GdkScreen *
-gdk_screen_get_default (void)
+cdk_screen_get_default (void)
 {
   GdkDisplay *display;
 
-  display = gdk_display_get_default ();
+  display = cdk_display_get_default ();
 
   if (display)
     return GDK_DISPLAY_GET_CLASS (display)->get_default_screen (display);
@@ -364,7 +364,7 @@ gdk_screen_get_default (void)
 }
 
 /**
- * gdk_display_manager_set_default_display:
+ * cdk_display_manager_set_default_display:
  * @manager: a #GdkDisplayManager
  * @display: a #GdkDisplay
  * 
@@ -373,7 +373,7 @@ gdk_screen_get_default (void)
  * Since: 2.2
  **/
 void
-gdk_display_manager_set_default_display (GdkDisplayManager *manager,
+cdk_display_manager_set_default_display (GdkDisplayManager *manager,
                                          GdkDisplay        *display)
 {
   manager->default_display = display;
@@ -385,7 +385,7 @@ gdk_display_manager_set_default_display (GdkDisplayManager *manager,
 }
 
 /**
- * gdk_display_manager_list_displays:
+ * cdk_display_manager_list_displays:
  * @manager: a #GdkDisplayManager
  *
  * List all currently open displays.
@@ -397,13 +397,13 @@ gdk_display_manager_set_default_display (GdkDisplayManager *manager,
  * Since: 2.2
  **/
 GSList *
-gdk_display_manager_list_displays (GdkDisplayManager *manager)
+cdk_display_manager_list_displays (GdkDisplayManager *manager)
 {
   return g_slist_copy (manager->displays);
 }
 
 /**
- * gdk_display_manager_open_display:
+ * cdk_display_manager_open_display:
  * @manager: a #GdkDisplayManager
  * @name: the name of the display to open
  *
@@ -415,7 +415,7 @@ gdk_display_manager_list_displays (GdkDisplayManager *manager)
  * Since: 3.0
  */
 GdkDisplay *
-gdk_display_manager_open_display (GdkDisplayManager *manager,
+cdk_display_manager_open_display (GdkDisplayManager *manager,
                                   const gchar       *name)
 {
   const gchar *backend_list;
@@ -434,8 +434,8 @@ gdk_display_manager_open_display (GdkDisplayManager *manager,
   else if (g_strcmp0 (backend_list, "help") == 0)
     {
       fprintf (stderr, "Supported GDK backends:");
-      for (i = 0; gdk_backends[i].name != NULL; i++)
-        fprintf (stderr, " %s", gdk_backends[i].name);
+      for (i = 0; cdk_backends[i].name != NULL; i++)
+        fprintf (stderr, " %s", cdk_backends[i].name);
       fprintf (stderr, "\n");
 
       backend_list = allowed_backends;
@@ -452,14 +452,14 @@ gdk_display_manager_open_display (GdkDisplayManager *manager,
       if (!allow_any && !any && !strstr (allowed_backends, backend))
         continue;
 
-      for (j = 0; gdk_backends[j].name != NULL; j++)
+      for (j = 0; cdk_backends[j].name != NULL; j++)
         {
           if ((any && allow_any) ||
-              (any && strstr (allowed_backends, gdk_backends[j].name)) ||
-              g_str_equal (backend, gdk_backends[j].name))
+              (any && strstr (allowed_backends, cdk_backends[j].name)) ||
+              g_str_equal (backend, cdk_backends[j].name))
             {
-              GDK_NOTE (MISC, g_message ("Trying %s backend", gdk_backends[j].name));
-              display = gdk_backends[j].open_display (name);
+              GDK_NOTE (MISC, g_message ("Trying %s backend", cdk_backends[j].name));
+              display = cdk_backends[j].open_display (name);
               if (display)
                 break;
             }
@@ -472,11 +472,11 @@ gdk_display_manager_open_display (GdkDisplayManager *manager,
 }
 
 void
-_gdk_display_manager_add_display (GdkDisplayManager *manager,
+_cdk_display_manager_add_display (GdkDisplayManager *manager,
                                   GdkDisplay        *display)
 {
   if (manager->displays == NULL)
-    gdk_display_manager_set_default_display (manager, display);
+    cdk_display_manager_set_default_display (manager, display);
 
   manager->displays = g_slist_prepend (manager->displays, display);
 
@@ -485,7 +485,7 @@ _gdk_display_manager_add_display (GdkDisplayManager *manager,
 
 /* NB: This function can be called multiple times per display. */
 void
-_gdk_display_manager_remove_display (GdkDisplayManager *manager,
+_cdk_display_manager_remove_display (GdkDisplayManager *manager,
                                      GdkDisplay        *display)
 {
   manager->displays = g_slist_remove (manager->displays, display);
@@ -493,8 +493,8 @@ _gdk_display_manager_remove_display (GdkDisplayManager *manager,
   if (manager->default_display == display)
     {
       if (manager->displays)
-        gdk_display_manager_set_default_display (manager, manager->displays->data);
+        cdk_display_manager_set_default_display (manager, manager->displays->data);
       else
-        gdk_display_manager_set_default_display (manager, NULL);
+        cdk_display_manager_set_default_display (manager, NULL);
     }
 }

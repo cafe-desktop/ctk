@@ -1,6 +1,6 @@
 /*** BEGIN file-header ***/
 #include "config.h"
-#include "gdk.h"
+#include "cdk.h"
 
 /*** END file-header ***/
 

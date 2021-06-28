@@ -38,8 +38,8 @@ create_window (GdkWindow *parent,
       
   attributes_mask = GDK_WA_X | GDK_WA_Y;
       
-  window = gdk_window_new (parent, &attributes, attributes_mask);
-  gdk_window_set_user_data (window, darea);
+  window = cdk_window_new (parent, &attributes, attributes_mask);
+  cdk_window_set_user_data (window, darea);
 
   bg = g_new (GdkRGBA, 1);
   if (color)
@@ -52,10 +52,10 @@ create_window (GdkWindow *parent,
       bg->alpha = 1.0;
     }
   
-  gdk_window_set_background_rgba (window, bg);
+  cdk_window_set_background_rgba (window, bg);
   g_object_set_data_full (G_OBJECT (window), "color", bg, g_free);
   
-  gdk_window_show (window);
+  cdk_window_show (window);
   
   return window;
 }
@@ -225,7 +225,7 @@ remove_window_clicked (CtkWidget *button,
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
-    gdk_window_destroy (l->data);
+    cdk_window_destroy (l->data);
 
   g_list_free (selected);
 
@@ -241,16 +241,16 @@ save_window (GString *s,
   gint x, y;
   GdkRGBA *color;
 
-  gdk_window_get_position (window, &x, &y);
+  cdk_window_get_position (window, &x, &y);
   color = g_object_get_data (G_OBJECT (window), "color");
   
   g_string_append_printf (s, "%d,%d %dx%d (%f,%f,%f,%f) %d %d\n",
 			  x, y,
-                          gdk_window_get_width (window),
-                          gdk_window_get_height (window),
+                          cdk_window_get_width (window),
+                          cdk_window_get_height (window),
 			  color->red, color->green, color->blue, color->alpha,
-			  gdk_window_has_native (window),
-			  g_list_length (gdk_window_peek_children (window)));
+			  cdk_window_has_native (window),
+			  g_list_length (cdk_window_peek_children (window)));
 
   save_children (s, window);
 }
@@ -263,7 +263,7 @@ save_children (GString *s,
   GList *l;
   GdkWindow *child;
 
-  for (l = g_list_reverse (gdk_window_peek_children (window));
+  for (l = g_list_reverse (cdk_window_peek_children (window));
        l != NULL;
        l = l->next)
     {
@@ -324,14 +324,14 @@ destroy_children (GdkWindow *window)
   GList *l;
   GdkWindow *child;
 
-  for (l = gdk_window_peek_children (window);
+  for (l = cdk_window_peek_children (window);
        l != NULL;
        l = l->next)
     {
       child = l->data;
       
       destroy_children (child);
-      gdk_window_destroy (child);
+      cdk_window_destroy (child);
     }
 }
 
@@ -357,7 +357,7 @@ parse_window (GdkWindow *parent, char **lines)
       color.alpha = a;
       window = create_window (parent, x, y, w, h, &color);
       if (native)
-	gdk_window_ensure_native (window);
+	cdk_window_ensure_native (window);
       
       for (i = 0; i < n_children; i++)
 	lines = parse_window (window, lines);
@@ -408,7 +408,7 @@ move_window_clicked (CtkWidget *button,
     {
       window = l->data;
       
-      gdk_window_get_position (window, &x, &y);
+      cdk_window_get_position (window, &x, &y);
       
       switch (direction) {
       case CTK_DIR_UP:
@@ -427,7 +427,7 @@ move_window_clicked (CtkWidget *button,
 	break;
       }
 
-      gdk_window_move (window, x, y);
+      cdk_window_move (window, x, y);
     }
 
   g_list_free (selected);
@@ -448,9 +448,9 @@ manual_clicked (CtkWidget *button,
   if (selected == NULL)
     return;
 
-  gdk_window_get_position (selected->data, &x, &y);
-  w = gdk_window_get_width (selected->data);
-  h = gdk_window_get_height (selected->data);
+  cdk_window_get_position (selected->data, &x, &y);
+  w = cdk_window_get_width (selected->data);
+  h = cdk_window_get_height (selected->data);
 
   dialog = ctk_dialog_new_with_buttons ("Select new position and size",
 					CTK_WINDOW (main_window),
@@ -511,7 +511,7 @@ manual_clicked (CtkWidget *button,
     {
       window = l->data;
       
-      gdk_window_move_resize (window, x, y, w, h);
+      cdk_window_move_resize (window, x, y, w, h);
     }
 
   g_list_free (selected);
@@ -530,7 +530,7 @@ restack_clicked (CtkWidget *button,
       g_warning ("select two windows");
     }
 
-  gdk_window_restack (selected->data,
+  cdk_window_restack (selected->data,
 		      selected->next->data,
 		      GPOINTER_TO_INT (data));
 
@@ -574,7 +574,7 @@ scroll_window_clicked (CtkWidget *button,
     {
       window = l->data;
 
-      gdk_window_scroll (window, dx, dy);
+      cdk_window_scroll (window, dx, dy);
     }
 
   g_list_free (selected);
@@ -594,7 +594,7 @@ raise_window_clicked (CtkWidget *button,
     {
       window = l->data;
       
-      gdk_window_raise (window);
+      cdk_window_raise (window);
     }
 
   g_list_free (selected);
@@ -615,7 +615,7 @@ lower_window_clicked (CtkWidget *button,
     {
       window = l->data;
       
-      gdk_window_lower (window);
+      cdk_window_lower (window);
     }
 
   g_list_free (selected);
@@ -638,14 +638,14 @@ smaller_window_clicked (CtkWidget *button,
     {
       window = l->data;
       
-      w = gdk_window_get_width (window) - 10;
-      h = gdk_window_get_height (window) - 10;
+      w = cdk_window_get_width (window) - 10;
+      h = cdk_window_get_height (window) - 10;
       if (w < 1)
 	w = 1;
       if (h < 1)
 	h = 1;
       
-      gdk_window_resize (window, w, h);
+      cdk_window_resize (window, w, h);
     }
 
   g_list_free (selected);
@@ -665,10 +665,10 @@ larger_window_clicked (CtkWidget *button,
     {
       window = l->data;
       
-      w = gdk_window_get_width (window) + 10;
-      h = gdk_window_get_height (window) + 10;
+      w = cdk_window_get_width (window) + 10;
+      h = cdk_window_get_height (window) + 10;
       
-      gdk_window_resize (window, w, h);
+      cdk_window_resize (window, w, h);
     }
 
   g_list_free (selected);
@@ -687,7 +687,7 @@ native_window_clicked (CtkWidget *button,
     {
       window = l->data;
       
-      gdk_window_ensure_native (window);
+      cdk_window_ensure_native (window);
     }
   
   g_list_free (selected);
@@ -720,7 +720,7 @@ alpha_clicked (CtkWidget *button,
       if (color->alpha > 1)
 	color->alpha = 1;
 
-      gdk_window_set_background_rgba (window, color);
+      cdk_window_set_background_rgba (window, color);
     }
   
   g_list_free (selected);
@@ -760,7 +760,7 @@ render_window_cell (CtkTreeViewColumn *tree_column,
 		      0, &window,
 		      -1);
 
-  if (gdk_window_has_native (window))
+  if (cdk_window_has_native (window))
       name = g_strdup_printf ("%p (native)", window);
   else
       name = g_strdup_printf ("%p", window);
@@ -778,7 +778,7 @@ add_children (CtkTreeStore *store,
   GList *l;
   CtkTreeIter child_iter;
 
-  for (l = gdk_window_peek_children (window);
+  for (l = cdk_window_peek_children (window);
        l != NULL;
        l = l->next)
     {

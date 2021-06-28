@@ -24,19 +24,19 @@
 
 #include "config.h"
 
-#include "gdkproperty.h"
+#include "cdkproperty.h"
 
-#include "gdkmain.h"
-#include "gdkprivate.h"
-#include "gdkinternals.h"
-#include "gdkdisplay-broadway.h"
-#include "gdkscreen-broadway.h"
-#include "gdkselection.h"
+#include "cdkmain.h"
+#include "cdkprivate.h"
+#include "cdkinternals.h"
+#include "cdkdisplay-broadway.h"
+#include "cdkscreen-broadway.h"
+#include "cdkselection.h"
 
 #include <string.h>
 
 gboolean
-_gdk_broadway_window_get_property (GdkWindow   *window,
+_cdk_broadway_window_get_property (GdkWindow   *window,
 				   GdkAtom      property,
 				   GdkAtom      type,
 				   gulong       offset,
@@ -51,7 +51,7 @@ _gdk_broadway_window_get_property (GdkWindow   *window,
 }
 
 void
-_gdk_broadway_window_change_property (GdkWindow    *window,
+_cdk_broadway_window_change_property (GdkWindow    *window,
 				      GdkAtom       property,
 				      GdkAtom       type,
 				      gint          format,
@@ -63,7 +63,7 @@ _gdk_broadway_window_change_property (GdkWindow    *window,
 }
 
 void
-_gdk_broadway_window_delete_property (GdkWindow *window,
+_cdk_broadway_window_delete_property (GdkWindow *window,
 				      GdkAtom    property)
 {
   g_return_if_fail (!window || GDK_WINDOW_IS_BROADWAY (window));

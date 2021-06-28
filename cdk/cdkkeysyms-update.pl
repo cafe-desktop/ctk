@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-# Updates http://git.gnome.org/browse/ctk+/tree/gdk/gdkkeysyms.h from upstream (X.org 7.x),
+# Updates http://git.gnome.org/browse/ctk+/tree/cdk/cdkkeysyms.h from upstream (X.org 7.x),
 # from http://cgit.freedesktop.org/xorg/proto/x11proto/plain/keysymdef.h
 # 
 # Author  : Simos Xenitellis <simos at gnome dot org>.
@@ -9,11 +9,11 @@
 #
 # Input   : http://cgit.freedesktop.org/xorg/proto/x11proto/plain/keysymdef.h
 # Input   : http://cgit.freedesktop.org/xorg/proto/x11proto/plain/XF86keysym.h
-# Output  : http://git.gnome.org/browse/ctk+/tree/gdk/gdkkeysyms.h
+# Output  : http://git.gnome.org/browse/ctk+/tree/cdk/cdkkeysyms.h
 # 
 # Notes   : It downloads keysymdef.h from the Internet, if not found locally,
-# Notes   : and creates an updated gdkkeysyms.h
-# Notes   : This version updates the source of gdkkeysyms.h from CVS to the GIT server.
+# Notes   : and creates an updated cdkkeysyms.h
+# Notes   : This version updates the source of cdkkeysyms.h from CVS to the GIT server.
 
 use strict;
 
@@ -53,11 +53,11 @@ else
 # Source: http://cgit.freedesktop.org/xorg/proto/x11proto/plain/keysymdef.h
 die "Could not open file keysymdef.h: $!\n" unless open(IN_KEYSYMDEF, "<:utf8", "keysymdef.h");
 
-# Output: ctk+/gdk/gdkkeysyms.h
-die "Could not open file gdkkeysyms.h: $!\n" unless open(OUT_GDKKEYSYMS, ">:utf8", "gdkkeysyms.h");
+# Output: ctk+/cdk/cdkkeysyms.h
+die "Could not open file cdkkeysyms.h: $!\n" unless open(OUT_GDKKEYSYMS, ">:utf8", "cdkkeysyms.h");
 
-# Output: ctk+/gdk/gdkkeysyms-compat.h
-die "Could not open file gdkkeysyms-compat.h: $!\n" unless open(OUT_GDKKEYSYMS_COMPAT, ">:utf8", "gdkkeysyms-compat.h");
+# Output: ctk+/cdk/cdkkeysyms-compat.h
+die "Could not open file cdkkeysyms-compat.h: $!\n" unless open(OUT_GDKKEYSYMS_COMPAT, ">:utf8", "cdkkeysyms-compat.h");
 
 my $LICENSE_HEADER= <<EOF;
 /* GDK - The GIMP Drawing Kit
@@ -86,7 +86,7 @@ print OUT_GDKKEYSYMS_COMPAT $LICENSE_HEADER;
 print OUT_GDKKEYSYMS<<EOF;
 
 /*
- * File auto-generated from script http://git.gnome.org/browse/ctk+/tree/gdk/gdkkeysyms-update.pl
+ * File auto-generated from script http://git.gnome.org/browse/ctk+/tree/cdk/cdkkeysyms-update.pl
  * using the input file
  * http://cgit.freedesktop.org/xorg/proto/x11proto/plain/keysymdef.h
  * and
@@ -108,7 +108,7 @@ EOF
 
 print OUT_GDKKEYSYMS_COMPAT<<EOF;
 /*
- * Compatibility version of gdkkeysyms.h.
+ * Compatibility version of cdkkeysyms.h.
  *
  * In CTK3, keysyms changed to have a KEY_ prefix.  This is a compatibility header
  * your application can include to gain access to the old names as well.  Consider
@@ -198,4 +198,4 @@ print OUT_GDKKEYSYMS_COMPAT<<EOF;
 #endif /* __GDK_KEYSYMS_COMPAT_H__ */
 EOF
 
-printf "We just finished converting keysymdef.h to gdkkeysyms.h and gdkkeysyms-compat.h\nThank you\n";
+printf "We just finished converting keysymdef.h to cdkkeysyms.h and cdkkeysyms-compat.h\nThank you\n";

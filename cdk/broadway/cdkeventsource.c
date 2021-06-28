@@ -17,20 +17,20 @@
 
 #include "config.h"
 
-#include "gdkeventsource.h"
-#include "gdkdevicemanager-broadway.h"
+#include "cdkeventsource.h"
+#include "cdkdevicemanager-broadway.h"
 
-#include "gdkinternals.h"
+#include "cdkinternals.h"
 
 #include <stdlib.h>
 
-static gboolean gdk_event_source_prepare  (GSource     *source,
+static gboolean cdk_event_source_prepare  (GSource     *source,
                                            gint        *timeout);
-static gboolean gdk_event_source_check    (GSource     *source);
-static gboolean gdk_event_source_dispatch (GSource     *source,
+static gboolean cdk_event_source_check    (GSource     *source);
+static gboolean cdk_event_source_dispatch (GSource     *source,
                                            GSourceFunc  callback,
                                            gpointer     user_data);
-static void     gdk_event_source_finalize (GSource     *source);
+static void     cdk_event_source_finalize (GSource     *source);
 
 #define HAS_FOCUS(toplevel)                           \
   ((toplevel)->has_focus || (toplevel)->has_pointer_focus)
@@ -44,53 +44,53 @@ struct _GdkEventSource
 };
 
 static GSourceFuncs event_funcs = {
-  gdk_event_source_prepare,
-  gdk_event_source_check,
-  gdk_event_source_dispatch,
-  gdk_event_source_finalize
+  cdk_event_source_prepare,
+  cdk_event_source_check,
+  cdk_event_source_dispatch,
+  cdk_event_source_finalize
 };
 
 static GList *event_sources = NULL;
 
 static gboolean
-gdk_event_source_prepare (GSource *source,
+cdk_event_source_prepare (GSource *source,
                           gint    *timeout)
 {
   GdkDisplay *display = ((GdkEventSource*) source)->display;
   gboolean retval;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   *timeout = -1;
 
-  retval = (_gdk_event_queue_find_first (display) != NULL);
+  retval = (_cdk_event_queue_find_first (display) != NULL);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   return retval;
 }
 
 static gboolean
-gdk_event_source_check (GSource *source)
+cdk_event_source_check (GSource *source)
 {
   GdkEventSource *event_source = (GdkEventSource*) source;
   gboolean retval;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   if (event_source->display->event_pause_count > 0 ||
       event_source->event_poll_fd.revents & G_IO_IN)
-    retval = (_gdk_event_queue_find_first (event_source->display) != NULL);
+    retval = (_cdk_event_queue_find_first (event_source->display) != NULL);
   else
     retval = FALSE;
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   return retval;
 }
 
 void
-_gdk_broadway_events_got_input (BroadwayInputMsg *message)
+_cdk_broadway_events_got_input (BroadwayInputMsg *message)
 {
   GdkDisplay *display;
   GdkBroadwayDisplay *display_broadway;
@@ -103,7 +103,7 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
 
   display = NULL;
 
-  list = gdk_display_manager_list_displays (gdk_display_manager_get ());
+  list = cdk_display_manager_list_displays (cdk_display_manager_get ());
   for (d = list; d; d = d->next)
     {
       if (GDK_IS_BROADWAY_DISPLAY (d->data))
@@ -118,7 +118,7 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
 
   display_broadway = GDK_BROADWAY_DISPLAY (display);
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  device_manager = GDK_BROADWAY_DEVICE_MANAGER (gdk_display_get_device_manager (display));
+  device_manager = GDK_BROADWAY_DEVICE_MANAGER (cdk_display_get_device_manager (display));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   switch (message->base.type) {
@@ -126,7 +126,7 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->pointer.event_window_id));
     if (window)
       {
-	event = gdk_event_new (GDK_ENTER_NOTIFY);
+	event = cdk_event_new (GDK_ENTER_NOTIFY);
 	event->crossing.window = g_object_ref (window);
 	event->crossing.time = message->base.time;
 	event->crossing.x = message->pointer.win_x;
@@ -136,18 +136,18 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
 	event->crossing.state = message->pointer.state;
 	event->crossing.mode = message->crossing.mode;
 	event->crossing.detail = GDK_NOTIFY_ANCESTOR;
-	gdk_event_set_device (event, device_manager->core_pointer);
-	gdk_event_set_seat (event, gdk_device_get_seat (device_manager->core_pointer));
+	cdk_event_set_device (event, device_manager->core_pointer);
+	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
       }
     break;
   case BROADWAY_EVENT_LEAVE:
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->pointer.event_window_id));
     if (window)
       {
-	event = gdk_event_new (GDK_LEAVE_NOTIFY);
+	event = cdk_event_new (GDK_LEAVE_NOTIFY);
 	event->crossing.window = g_object_ref (window);
 	event->crossing.time = message->base.time;
 	event->crossing.x = message->pointer.win_x;
@@ -157,21 +157,21 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
 	event->crossing.state = message->pointer.state;
 	event->crossing.mode = message->crossing.mode;
 	event->crossing.detail = GDK_NOTIFY_ANCESTOR;
-	gdk_event_set_device (event, device_manager->core_pointer);
-	gdk_event_set_seat (event, gdk_device_get_seat (device_manager->core_pointer));
+	cdk_event_set_device (event, device_manager->core_pointer);
+	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
       }
     break;
   case BROADWAY_EVENT_POINTER_MOVE:
-    if (_gdk_broadway_moveresize_handle_event (display, message))
+    if (_cdk_broadway_moveresize_handle_event (display, message))
       break;
 
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->pointer.event_window_id));
     if (window)
       {
-	event = gdk_event_new (GDK_MOTION_NOTIFY);
+	event = cdk_event_new (GDK_MOTION_NOTIFY);
 	event->motion.window = g_object_ref (window);
 	event->motion.time = message->base.time;
 	event->motion.x = message->pointer.win_x;
@@ -179,24 +179,24 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
 	event->motion.x_root = message->pointer.root_x;
 	event->motion.y_root = message->pointer.root_y;
 	event->motion.state = message->pointer.state;
-	gdk_event_set_device (event, device_manager->core_pointer);
-	gdk_event_set_seat (event, gdk_device_get_seat (device_manager->core_pointer));
+	cdk_event_set_device (event, device_manager->core_pointer);
+	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
       }
 
     break;
   case BROADWAY_EVENT_BUTTON_PRESS:
   case BROADWAY_EVENT_BUTTON_RELEASE:
     if (message->base.type != 'b' &&
-	_gdk_broadway_moveresize_handle_event (display, message))
+	_cdk_broadway_moveresize_handle_event (display, message))
       break;
 
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->pointer.event_window_id));
     if (window)
       {
-	event = gdk_event_new (message->base.type == 'b' ? GDK_BUTTON_PRESS : GDK_BUTTON_RELEASE);
+	event = cdk_event_new (message->base.type == 'b' ? GDK_BUTTON_PRESS : GDK_BUTTON_RELEASE);
 	event->button.window = g_object_ref (window);
 	event->button.time = message->base.time;
 	event->button.x = message->pointer.win_x;
@@ -205,11 +205,11 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
 	event->button.y_root = message->pointer.root_y;
 	event->button.button = message->button.button;
 	event->button.state = message->pointer.state;
-	gdk_event_set_device (event, device_manager->core_pointer);
-	gdk_event_set_seat (event, gdk_device_get_seat (device_manager->core_pointer));
+	cdk_event_set_device (event, device_manager->core_pointer);
+	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
       }
 
     break;
@@ -217,7 +217,7 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->pointer.event_window_id));
     if (window)
       {
-	event = gdk_event_new (GDK_SCROLL);
+	event = cdk_event_new (GDK_SCROLL);
 	event->scroll.window = g_object_ref (window);
 	event->scroll.time = message->base.time;
 	event->scroll.x = message->pointer.win_x;
@@ -226,11 +226,11 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
 	event->scroll.y_root = message->pointer.root_y;
         event->scroll.state = message->pointer.state;
 	event->scroll.direction = message->scroll.dir == 0 ? GDK_SCROLL_UP : GDK_SCROLL_DOWN;
-	gdk_event_set_device (event, device_manager->core_pointer);
-	gdk_event_set_seat (event, gdk_device_get_seat (device_manager->core_pointer));
+	cdk_event_set_device (event, device_manager->core_pointer);
+	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
       }
 
     break;
@@ -251,14 +251,14 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
           event_type = GDK_TOUCH_END;
           break;
         default:
-          g_printerr ("_gdk_broadway_events_got_input - Unknown touch type %d\n", message->touch.touch_type);
+          g_printerr ("_cdk_broadway_events_got_input - Unknown touch type %d\n", message->touch.touch_type);
         }
 
         if (event_type != GDK_TOUCH_BEGIN &&
-            message->touch.is_emulated && _gdk_broadway_moveresize_handle_event (display, message))
+            message->touch.is_emulated && _cdk_broadway_moveresize_handle_event (display, message))
           break;
 
-	event = gdk_event_new (event_type);
+	event = cdk_event_new (event_type);
 	event->touch.window = g_object_ref (window);
 	event->touch.sequence = GUINT_TO_POINTER(message->touch.sequence_id);
 	event->touch.emulating_pointer = message->touch.is_emulated;
@@ -269,18 +269,18 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
 	event->touch.y_root = message->touch.root_y;
 	event->touch.state = message->touch.state;
 
-	gdk_event_set_device (event, device_manager->core_pointer);
-	gdk_event_set_source_device (event, device_manager->touchscreen);
-	gdk_event_set_seat (event, gdk_device_get_seat (device_manager->core_pointer));
+	cdk_event_set_device (event, device_manager->core_pointer);
+	cdk_event_set_source_device (event, device_manager->touchscreen);
+	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
         if (message->touch.is_emulated)
-          gdk_event_set_pointer_emulated (event, TRUE);
+          cdk_event_set_pointer_emulated (event, TRUE);
 
         if (event_type == GDK_TOUCH_BEGIN || event_type == GDK_TOUCH_UPDATE)
           event->touch.state |= GDK_BUTTON1_MASK;
 
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
       }
 
     break;
@@ -290,25 +290,25 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
 				  GINT_TO_POINTER (message->key.window_id));
     if (window)
       {
-	event = gdk_event_new (message->base.type == 'k' ? GDK_KEY_PRESS : GDK_KEY_RELEASE);
+	event = cdk_event_new (message->base.type == 'k' ? GDK_KEY_PRESS : GDK_KEY_RELEASE);
 	event->key.window = g_object_ref (window);
 	event->key.time = message->base.time;
 	event->key.keyval = message->key.key;
 	event->key.state = message->key.state;
 	event->key.hardware_keycode = message->key.key;
-        gdk_event_set_scancode (event, message->key.key);
+        cdk_event_set_scancode (event, message->key.key);
 	event->key.length = 0;
-	gdk_event_set_device (event, device_manager->core_keyboard);
-	gdk_event_set_seat (event, gdk_device_get_seat (device_manager->core_keyboard));
+	cdk_event_set_device (event, device_manager->core_keyboard);
+	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_keyboard));
 
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
       }
 
     break;
   case BROADWAY_EVENT_GRAB_NOTIFY:
   case BROADWAY_EVENT_UNGRAB_NOTIFY:
-    _gdk_display_device_grab_update (display, device_manager->core_pointer, device_manager->core_pointer, message->base.serial);
+    _cdk_display_device_grab_update (display, device_manager->core_pointer, device_manager->core_pointer, message->base.serial);
     break;
 
   case BROADWAY_EVENT_CONFIGURE_NOTIFY:
@@ -318,22 +318,22 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
 	window->x = message->configure_notify.x;
 	window->y = message->configure_notify.y;
 
-	event = gdk_event_new (GDK_CONFIGURE);
+	event = cdk_event_new (GDK_CONFIGURE);
 	event->configure.window = g_object_ref (window);
 	event->configure.x = message->configure_notify.x;
 	event->configure.y = message->configure_notify.y;
 	event->configure.width = message->configure_notify.width;
 	event->configure.height = message->configure_notify.height;
 
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
 
 	if (window->resize_count >= 1)
 	  {
 	    window->resize_count -= 1;
 
 	    if (window->resize_count == 0)
-	      _gdk_broadway_moveresize_configure_done (display, window);
+	      _cdk_broadway_moveresize_configure_done (display, window);
 	  }
       }
     break;
@@ -342,86 +342,86 @@ _gdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->delete_notify.id));
     if (window)
       {
-	event = gdk_event_new (GDK_DELETE);
+	event = cdk_event_new (GDK_DELETE);
 	event->any.window = g_object_ref (window);
 
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
       }
     break;
 
   case BROADWAY_EVENT_SCREEN_SIZE_CHANGED:
-    screen = gdk_display_get_default_screen (display);
-    window = gdk_screen_get_root_window (screen);
+    screen = cdk_display_get_default_screen (display);
+    window = cdk_screen_get_root_window (screen);
     window->width = message->screen_resize_notify.width;
     window->height = message->screen_resize_notify.height;
 
-    _gdk_window_update_size (window);
-    _gdk_broadway_screen_size_changed (screen, &message->screen_resize_notify);
+    _cdk_window_update_size (window);
+    _cdk_broadway_screen_size_changed (screen, &message->screen_resize_notify);
     break;
 
   case BROADWAY_EVENT_FOCUS:
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->focus.old_id));
     if (window)
       {
-	event = gdk_event_new (GDK_FOCUS_CHANGE);
+	event = cdk_event_new (GDK_FOCUS_CHANGE);
 	event->focus_change.window = g_object_ref (window);
 	event->focus_change.in = FALSE;
-	gdk_event_set_device (event, device_manager->core_pointer);
-	gdk_event_set_seat (event, gdk_device_get_seat (device_manager->core_pointer));
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	cdk_event_set_device (event, device_manager->core_pointer);
+	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
       }
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->focus.new_id));
     if (window)
       {
-	event = gdk_event_new (GDK_FOCUS_CHANGE);
+	event = cdk_event_new (GDK_FOCUS_CHANGE);
 	event->focus_change.window = g_object_ref (window);
 	event->focus_change.in = TRUE;
-	gdk_event_set_device (event, device_manager->core_pointer);
-	gdk_event_set_seat (event, gdk_device_get_seat (device_manager->core_pointer));
-	node = _gdk_event_queue_append (display, event);
-	_gdk_windowing_got_event (display, node, event, message->base.serial);
+	cdk_event_set_device (event, device_manager->core_pointer);
+	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
+	node = _cdk_event_queue_append (display, event);
+	_cdk_windowing_got_event (display, node, event, message->base.serial);
       }
     break;
 
   default:
-    g_printerr ("_gdk_broadway_events_got_input - Unknown input command %c\n", message->base.type);
+    g_printerr ("_cdk_broadway_events_got_input - Unknown input command %c\n", message->base.type);
     break;
   }
 }
 
 void
-_gdk_broadway_display_queue_events (GdkDisplay *display)
+_cdk_broadway_display_queue_events (GdkDisplay *display)
 {
 }
 
 static gboolean
-gdk_event_source_dispatch (GSource     *source,
+cdk_event_source_dispatch (GSource     *source,
                            GSourceFunc  callback,
                            gpointer     user_data)
 {
   GdkDisplay *display = ((GdkEventSource*) source)->display;
   GdkEvent *event;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
-  event = gdk_display_get_event (display);
+  event = cdk_display_get_event (display);
 
   if (event)
     {
-      _gdk_event_emit (event);
+      _cdk_event_emit (event);
 
-      gdk_event_free (event);
+      cdk_event_free (event);
     }
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   return TRUE;
 }
 
 static void
-gdk_event_source_finalize (GSource *source)
+cdk_event_source_finalize (GSource *source)
 {
   GdkEventSource *event_source = (GdkEventSource *)source;
 
@@ -429,7 +429,7 @@ gdk_event_source_finalize (GSource *source)
 }
 
 GSource *
-_gdk_broadway_event_source_new (GdkDisplay *display)
+_cdk_broadway_event_source_new (GdkDisplay *display)
 {
   GSource *source;
   GdkEventSource *event_source;
@@ -437,7 +437,7 @@ _gdk_broadway_event_source_new (GdkDisplay *display)
 
   source = g_source_new (&event_funcs, sizeof (GdkEventSource));
   name = g_strdup_printf ("GDK Broadway Event source (%s)",
-			  gdk_display_get_name (display));
+			  cdk_display_get_name (display));
   g_source_set_name (source, name);
   g_free (name);
   event_source = (GdkEventSource *) source;

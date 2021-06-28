@@ -25,7 +25,7 @@ AC_INIT([ctk+], [ctk_version],
         [ctk+])
 
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_SRCDIR([gdk/gdktypes.h])
+AC_CONFIG_SRCDIR([cdk/cdktypes.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_AUX_DIR([build-aux])
 
@@ -58,7 +58,7 @@ m4_define([pango_required_version], [1.41.0])
 m4_define([fribidi_required_version], [0.19.7])
 m4_define([atk_required_version], [2.32.0])
 m4_define([cairo_required_version], [1.14.0])
-m4_define([gdk_pixbuf_required_version], [2.30.0])
+m4_define([cdk_pixbuf_required_version], [2.30.0])
 m4_define([introspection_required_version], [1.39.0])
 m4_define([wayland_required_version], [1.14.91])
 m4_define([wayland_protocols_required_version], [1.17])
@@ -69,7 +69,7 @@ GLIB_REQUIRED_VERSION=glib_required_version
 PANGO_REQUIRED_VERSION=pango_required_version
 ATK_REQUIRED_VERSION=atk_required_version
 CAIRO_REQUIRED_VERSION=cairo_required_version
-GDK_PIXBUF_REQUIRED_VERSION=gdk_pixbuf_required_version
+GDK_PIXBUF_REQUIRED_VERSION=cdk_pixbuf_required_version
 INTROSPECTION_REQUIRED_VERSION=introspection_required_version
 
 AC_SUBST(GLIB_REQUIRED_VERSION)
@@ -324,23 +324,23 @@ AC_ARG_ENABLE(xdamage,
 
 AC_ARG_ENABLE(x11-backend,
               [AS_HELP_STRING([--enable-x11-backend],
-                              [enable the X11 gdk backend])],
+                              [enable the X11 cdk backend])],
 			      [backend_set=yes])
 AC_ARG_ENABLE(win32-backend,
               [AS_HELP_STRING([--enable-win32-backend],
-                              [enable the Win32 gdk backend])],
+                              [enable the Win32 cdk backend])],
 			      [backend_set=yes])
 AC_ARG_ENABLE(quartz-backend,
               [AS_HELP_STRING([--enable-quartz-backend],
-                              [enable the quartz gdk backend])],
+                              [enable the quartz cdk backend])],
 			      [backend_set=yes])
 AC_ARG_ENABLE(broadway-backend,
               [AS_HELP_STRING([--enable-broadway-backend],
-                              [enable the broadway (HTML5) gdk backend])],
+                              [enable the broadway (HTML5) cdk backend])],
 			      [backend_set=yes])
 AC_ARG_ENABLE(wayland-backend,
               [AS_HELP_STRING([--enable-wayland-backend],
-                              [enable the wayland gdk backend])],
+                              [enable the wayland cdk backend])],
 			      [backend_set=yes])
 AC_ARG_ENABLE(cloudproviders,
               [AS_HELP_STRING([--enable-cloudproviders],
@@ -564,7 +564,7 @@ PKG_CHECK_MODULES(BASE_DEPENDENCIES,
    fribidi >= fribidi_required_version dnl
    cairo >= cairo_required_version dnl
    cairo-gobject >= cairo_required_version dnl
-   gdk-pixbuf-2.0 >= gdk_pixbuf_required_version])
+   cdk-pixbuf-2.0 >= cdk_pixbuf_required_version])
 
 PKG_CHECK_MODULES(CAIRO_BACKEND, [$cairo_backends])
 
@@ -970,7 +970,7 @@ AC_CHECK_HEADER(sys/sysinfo.h,
                 AC_DEFINE(HAVE_SYS_SYSINFO_H, 1,
                           [Define to 1 if sys/sysinfo.h is available]))
 
-dnl Look for a host system's gdk-pixbuf-csource if we are cross-compiling
+dnl Look for a host system's cdk-pixbuf-csource if we are cross-compiling
 
 AM_CONDITIONAL(CROSS_COMPILING, test $cross_compiling = yes)
 
@@ -1338,7 +1338,7 @@ fi
 CFLAGS="$saved_cflags"
 LDFLAGS="$saved_ldflags"
 
-GDK_PACKAGES="$PANGO_PACKAGES gdk-pixbuf-2.0 >= gdk_pixbuf_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version"
+GDK_PACKAGES="$PANGO_PACKAGES cdk-pixbuf-2.0 >= cdk_pixbuf_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version"
 GDK_PRIVATE_PACKAGES="$GDK_GIO_PACKAGE $X_PACKAGES $WAYLAND_PACKAGES $cairo_backends epoxy >= epoxy_required_version $CLOUDPROVIDER_PACKAGES $PROFILER_PACKAGES fribidi >= fribidi_required_version"
 
 PKG_CHECK_MODULES(GDK_DEP, $GDK_PACKAGES $GDK_PRIVATE_PACKAGES)
@@ -1372,7 +1372,7 @@ fi
 
 PKG_CHECK_MODULES(ATK, $ATK_PACKAGES)
 
-CTK_PACKAGES="atk >= atk_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version gdk-pixbuf-2.0 >= gdk_pixbuf_required_version gio-2.0 >= glib_required_version"
+CTK_PACKAGES="atk >= atk_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version cdk-pixbuf-2.0 >= cdk_pixbuf_required_version gio-2.0 >= glib_required_version"
 CTK_PRIVATE_PACKAGES="$ATK_PACKAGES $WAYLAND_PACKAGES epoxy >= epoxy_required_version fribidi >= fribidi_required_version"
 if test "x$enable_x11_backend" = xyes -o "x$enable_wayland_backend" = xyes; then
   CTK_PRIVATE_PACKAGES="$CTK_PRIVATE_PACKAGES pangoft2"
@@ -1475,7 +1475,7 @@ AC_SUBST(ISO_CODES_PREFIX)
 AC_SUBST(CTK_DEBUG_FLAGS)
 AC_SUBST(CTK_XIM_FLAGS)
 
-GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
+GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs cdk-pixbuf-2.0`
 AC_SUBST(GDK_PIXBUF_LIBS)
 
 ################################################################
@@ -1838,10 +1838,10 @@ AM_CONDITIONAL([REBUILD_SCSS], [test "x$SASSC" != x])
 # Output commands
 ##################################################
 
-AC_CONFIG_COMMANDS([gdk/gdkconfig.h], [
-	outfile=gdkconfig.h-tmp
+AC_CONFIG_COMMANDS([cdk/cdkconfig.h], [
+	outfile=cdkconfig.h-tmp
 	cat > $outfile <<\_______EOF
-/* gdkconfig.h
+/* cdkconfig.h
  *
  * This is a generated file.  Please modify `configure.ac'
  */
@@ -1850,7 +1850,7 @@ AC_CONFIG_COMMANDS([gdk/gdkconfig.h], [
 #define __GDKCONFIG_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
 #include <glib.h>
@@ -1860,7 +1860,7 @@ G_BEGIN_DECLS
 _______EOF
 
 	cat >>$outfile <<_______EOF
-$gdk_windowing
+$cdk_windowing
 _______EOF
 
 	cat >>$outfile <<_______EOF
@@ -1871,14 +1871,14 @@ G_END_DECLS
 _______EOF
 
 
-	if cmp -s $outfile gdk/gdkconfig.h; then
-          AC_MSG_NOTICE([gdk/gdkconfig.h is unchanged])
+	if cmp -s $outfile cdk/cdkconfig.h; then
+          AC_MSG_NOTICE([cdk/cdkconfig.h is unchanged])
 	  rm -f $outfile
 	else
-	  mv $outfile gdk/gdkconfig.h
+	  mv $outfile cdk/cdkconfig.h
 	fi
 ],[
-gdk_windowing='$GDK_WINDOWING'
+cdk_windowing='$GDK_WINDOWING'
 ])
 
 dnl
@@ -1916,7 +1916,7 @@ INSTALL
 config.h.win32
 ctk-zip.sh
 Makefile
-gdk-3.0.pc
+cdk-3.0.pc
 ctk+-3.0.pc
 ctk+-unix-print-3.0.pc
 gail-3.0.pc
@@ -1949,14 +1949,14 @@ testsuite/css/Makefile
 testsuite/css/parser/Makefile
 testsuite/css/nodes/Makefile
 testsuite/css/style/Makefile
-testsuite/gdk/Makefile
+testsuite/cdk/Makefile
 testsuite/ctk/Makefile
 testsuite/reftests/Makefile
 testsuite/tools/Makefile
 docs/Makefile
 docs/reference/Makefile
-docs/reference/gdk/Makefile
-docs/reference/gdk/version.xml
+docs/reference/cdk/Makefile
+docs/reference/cdk/version.xml
 docs/reference/ctk/Makefile
 docs/reference/ctk/ctk3.types
 docs/reference/ctk/version.xml
@@ -1975,15 +1975,15 @@ win32/vs12/Makefile
 win32/vs14/Makefile
 win32/vs15/Makefile
 win32/vs16/Makefile
-gdk/Makefile
-gdk/broadway/Makefile
-gdk/x11/Makefile
-gdk/win32/Makefile
-gdk/win32/rc/Makefile
-gdk/win32/rc/gdk.rc
-gdk/quartz/Makefile
-gdk/wayland/Makefile
-gdk/gdkversionmacros.h
+cdk/Makefile
+cdk/broadway/Makefile
+cdk/x11/Makefile
+cdk/win32/Makefile
+cdk/win32/rc/Makefile
+cdk/win32/rc/cdk.rc
+cdk/quartz/Makefile
+cdk/wayland/Makefile
+cdk/cdkversionmacros.h
 ctk/Makefile
 ctk/makefile.msc
 ctk/ctkversion.h

@@ -23,15 +23,15 @@
 #include <glib.h>
 #include <gio/gdesktopappinfo.h>
 
-#include "gdkwayland.h"
-#include "gdkprivate-wayland.h"
-#include "gdkapplaunchcontextprivate.h"
-#include "gdkscreen.h"
-#include "gdkinternals.h"
-#include "gdkintl.h"
+#include "cdkwayland.h"
+#include "cdkprivate-wayland.h"
+#include "cdkapplaunchcontextprivate.h"
+#include "cdkscreen.h"
+#include "cdkinternals.h"
+#include "cdkintl.h"
 
 static char *
-gdk_wayland_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
+cdk_wayland_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
                                                       GAppInfo          *info,
                                                       GList             *files)
 {
@@ -52,7 +52,7 @@ gdk_wayland_app_launch_context_get_startup_notify_id (GAppLaunchContext *context
 }
 
 static void
-gdk_wayland_app_launch_context_launch_failed (GAppLaunchContext *context,
+cdk_wayland_app_launch_context_launch_failed (GAppLaunchContext *context,
                                               const char        *startup_notify_id)
 {
 }
@@ -72,30 +72,30 @@ struct _GdkWaylandAppLaunchContextClass
   GdkAppLaunchContextClass base_class;
 };
 
-GType gdk_wayland_app_launch_context_get_type (void);
+GType cdk_wayland_app_launch_context_get_type (void);
 
-G_DEFINE_TYPE (GdkWaylandAppLaunchContext, gdk_wayland_app_launch_context, GDK_TYPE_APP_LAUNCH_CONTEXT)
+G_DEFINE_TYPE (GdkWaylandAppLaunchContext, cdk_wayland_app_launch_context, GDK_TYPE_APP_LAUNCH_CONTEXT)
 
 static void
-gdk_wayland_app_launch_context_class_init (GdkWaylandAppLaunchContextClass *klass)
+cdk_wayland_app_launch_context_class_init (GdkWaylandAppLaunchContextClass *klass)
 {
   GAppLaunchContextClass *ctx_class = G_APP_LAUNCH_CONTEXT_CLASS (klass);
 
-  ctx_class->get_startup_notify_id = gdk_wayland_app_launch_context_get_startup_notify_id;
-  ctx_class->launch_failed = gdk_wayland_app_launch_context_launch_failed;
+  ctx_class->get_startup_notify_id = cdk_wayland_app_launch_context_get_startup_notify_id;
+  ctx_class->launch_failed = cdk_wayland_app_launch_context_launch_failed;
 }
 
 static void
-gdk_wayland_app_launch_context_init (GdkWaylandAppLaunchContext *ctx)
+cdk_wayland_app_launch_context_init (GdkWaylandAppLaunchContext *ctx)
 {
 }
 
 GdkAppLaunchContext *
-_gdk_wayland_display_get_app_launch_context (GdkDisplay *display)
+_cdk_wayland_display_get_app_launch_context (GdkDisplay *display)
 {
   GdkAppLaunchContext *ctx;
 
-  ctx = g_object_new (gdk_wayland_app_launch_context_get_type (),
+  ctx = g_object_new (cdk_wayland_app_launch_context_get_type (),
                       "display", display,
                       NULL);
 

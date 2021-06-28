@@ -71,7 +71,7 @@ find_toplevel_at_pointer (GdkDisplay *display)
   GdkWindow *pointer_window;
   CtkWidget *widget = NULL;
 
-  pointer_window = gdk_device_get_window_at_position (ctk_get_current_event_device (),
+  pointer_window = cdk_device_get_window_at_position (ctk_get_current_event_device (),
                                                       NULL, NULL);
 
   /* The user data field of a GdkWindow is used to store a pointer
@@ -80,7 +80,7 @@ find_toplevel_at_pointer (GdkDisplay *display)
   if (pointer_window)
     {
       gpointer widget_ptr;
-      gdk_window_get_user_data (pointer_window, &widget_ptr);
+      cdk_window_get_user_data (pointer_window, &widget_ptr);
       widget = widget_ptr;
     }
 
@@ -104,7 +104,7 @@ static CtkWidget *
 query_for_toplevel (GdkScreen  *screen,
                     const char *prompt)
 {
-  GdkDisplay *display = gdk_screen_get_display (screen);
+  GdkDisplay *display = cdk_screen_get_display (screen);
   CtkWidget *popup, *label, *frame;
   GdkCursor *cursor;
   CtkWidget *toplevel = NULL;
@@ -124,10 +124,10 @@ query_for_toplevel (GdkScreen  *screen,
   ctk_container_add (CTK_CONTAINER (frame), label);
 
   ctk_widget_show_all (popup);
-  cursor = gdk_cursor_new_from_name (display, "crosshair");
+  cursor = cdk_cursor_new_from_name (display, "crosshair");
   device = ctk_get_current_event_device ();
 
-  if (gdk_seat_grab (gdk_device_get_seat (device),
+  if (cdk_seat_grab (cdk_device_get_seat (device),
                      ctk_widget_get_window (popup),
                      GDK_SEAT_CAPABILITY_ALL_POINTING,
                      FALSE, cursor, NULL, NULL, NULL) == GDK_GRAB_SUCCESS)
@@ -144,14 +144,14 @@ query_for_toplevel (GdkScreen  *screen,
       while (!clicked)
         g_main_context_iteration (NULL, TRUE);
 
-      toplevel = find_toplevel_at_pointer (gdk_screen_get_display (screen));
+      toplevel = find_toplevel_at_pointer (cdk_screen_get_display (screen));
       if (toplevel == popup)
         toplevel = NULL;
     }
 
   g_object_unref (cursor);
   ctk_widget_destroy (popup);
-  gdk_display_flush (display);                 /* Really release the grab */
+  cdk_display_flush (display);                 /* Really release the grab */
 
   return toplevel;
 }
@@ -170,9 +170,9 @@ query_change_display (ChangeDisplayInfo *info)
                                  "to move to the new screen");
 
   if (toplevel)
-    ctk_window_set_screen (CTK_WINDOW (toplevel), gdk_display_get_default_screen (info->current_display));
+    ctk_window_set_screen (CTK_WINDOW (toplevel), cdk_display_get_default_screen (info->current_display));
   else
-    gdk_display_beep (gdk_screen_get_display (screen));
+    cdk_display_beep (cdk_screen_get_display (screen));
 }
 
 /* Called when the user clicks on a button in our dialog or
@@ -237,7 +237,7 @@ open_display_cb (CtkWidget         *button,
 
       if (strcmp (new_screen_name, "") != 0)
         {
-          result = gdk_display_open (new_screen_name);
+          result = cdk_display_open (new_screen_name);
           if (!result)
             {
               gchar *error_msg =
@@ -262,7 +262,7 @@ close_display_cb (CtkWidget         *button,
                   ChangeDisplayInfo *info)
 {
   if (info->current_display)
-    gdk_display_close (info->current_display);
+    cdk_display_close (info->current_display);
 }
 
 /* Called when the selected row in the display list changes.
@@ -424,7 +424,7 @@ static void
 add_display (ChangeDisplayInfo *info,
              GdkDisplay        *display)
 {
-  const gchar *name = gdk_display_get_name (display);
+  const gchar *name = cdk_display_get_name (display);
   CtkTreeIter iter;
 
   ctk_list_store_append (CTK_LIST_STORE (info->display_model), &iter);
@@ -454,8 +454,8 @@ display_opened_cb (GdkDisplayManager *manager,
 static void
 initialize_displays (ChangeDisplayInfo *info)
 {
-  GdkDisplayManager *manager = gdk_display_manager_get ();
-  GSList *displays = gdk_display_manager_list_displays (manager);
+  GdkDisplayManager *manager = cdk_display_manager_get ();
+  GSList *displays = cdk_display_manager_list_displays (manager);
   GSList *tmp_list;
 
   for (tmp_list = displays; tmp_list; tmp_list = tmp_list->next)
@@ -474,8 +474,8 @@ initialize_displays (ChangeDisplayInfo *info)
 static void
 destroy_info (ChangeDisplayInfo *info)
 {
-  GdkDisplayManager *manager = gdk_display_manager_get ();
-  GSList *displays = gdk_display_manager_list_displays (manager);
+  GdkDisplayManager *manager = cdk_display_manager_get ();
+  GSList *displays = cdk_display_manager_list_displays (manager);
   GSList *tmp_list;
 
   g_signal_handlers_disconnect_by_func (manager,

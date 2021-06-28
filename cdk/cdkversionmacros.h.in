@@ -1,4 +1,4 @@
-/* gdkversionmacros.h - version boundaries checks
+/* cdkversionmacros.h - version boundaries checks
  * Copyright (C) 2012 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -16,7 +16,7 @@
  */
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
 #ifndef __GDK_VERSION_MACROS_H__
@@ -35,7 +35,7 @@
 /**
  * GDK_DISABLE_DEPRECATION_WARNINGS:
  *
- * A macro that should be defined before including the gdk.h header.
+ * A macro that should be defined before including the cdk.h header.
  * If it is defined, no compiler warnings will be produced for uses
  * of deprecated GDK and CTK+ APIs.
  */
@@ -202,7 +202,7 @@
  * GDK_VERSION_MIN_REQUIRED:
  *
  * A macro that should be defined by the user prior to including
- * the gdk.h header.
+ * the cdk.h header.
  * The definition should be one of the predefined GDK version
  * macros: %GDK_VERSION_3_0, %GDK_VERSION_3_2,...
  *
@@ -222,7 +222,7 @@
  * GDK_VERSION_MAX_ALLOWED:
  *
  * A macro that should be defined by the user prior to including
- * the gdk.h header.
+ * the cdk.h header.
  * The definition should be one of the predefined GDK version
  * macros: %GDK_VERSION_3_0, %GDK_VERSION_3_2,...
  *

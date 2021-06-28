@@ -240,7 +240,7 @@ offscreen_window_from_parent2 (GdkWindow       *window,
 }
 
 static cairo_surface_t *
-gdk_offscreen_box_create_alpha_image_surface (GdkWindow *offscreen,
+cdk_offscreen_box_create_alpha_image_surface (GdkWindow *offscreen,
                                               gint       width,
                                               gint       height)
 {
@@ -284,10 +284,10 @@ ctk_offscreen_box_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
-  gdk_window_set_user_data (window, widget);
+  cdk_window_set_user_data (window, widget);
 
   g_signal_connect (window, "pick-embedded-child",
 		    G_CALLBACK (pick_offscreen_child), offscreen_box);
@@ -304,13 +304,13 @@ ctk_offscreen_box_realize (CtkWidget *widget)
       attributes.height = child_area.height;
       start_y += child_area.height;
     }
-  offscreen_box->offscreen_window1 = gdk_window_new (gdk_screen_get_root_window (ctk_widget_get_screen (widget)),
+  offscreen_box->offscreen_window1 = cdk_window_new (cdk_screen_get_root_window (ctk_widget_get_screen (widget)),
 						     &attributes, attributes_mask);
-  gdk_window_set_user_data (offscreen_box->offscreen_window1, widget);
+  cdk_window_set_user_data (offscreen_box->offscreen_window1, widget);
   if (offscreen_box->child1)
     ctk_widget_set_parent_window (offscreen_box->child1, offscreen_box->offscreen_window1);
 
-  gdk_offscreen_window_set_embedder (offscreen_box->offscreen_window1,
+  cdk_offscreen_window_set_embedder (offscreen_box->offscreen_window1,
 				     window);
 
   g_signal_connect (offscreen_box->offscreen_window1, "to-embedder",
@@ -328,24 +328,24 @@ ctk_offscreen_box_realize (CtkWidget *widget)
       attributes.width = child_area.width;
       attributes.height = child_area.height;
     }
-  offscreen_box->offscreen_window2 = gdk_window_new (gdk_screen_get_root_window (ctk_widget_get_screen (widget)),
+  offscreen_box->offscreen_window2 = cdk_window_new (cdk_screen_get_root_window (ctk_widget_get_screen (widget)),
 						     &attributes, attributes_mask);
-  gdk_window_set_user_data (offscreen_box->offscreen_window2, widget);
+  cdk_window_set_user_data (offscreen_box->offscreen_window2, widget);
   if (offscreen_box->child2)
     ctk_widget_set_parent_window (offscreen_box->child2, offscreen_box->offscreen_window2);
-  gdk_offscreen_window_set_embedder (offscreen_box->offscreen_window2,
+  cdk_offscreen_window_set_embedder (offscreen_box->offscreen_window2,
 				     window);
 
   g_signal_connect (offscreen_box->offscreen_window2, "create-surface",
-                    G_CALLBACK (gdk_offscreen_box_create_alpha_image_surface),
+                    G_CALLBACK (cdk_offscreen_box_create_alpha_image_surface),
                     offscreen_box);
   g_signal_connect (offscreen_box->offscreen_window2, "to-embedder",
 		    G_CALLBACK (offscreen_window_to_parent2), offscreen_box);
   g_signal_connect (offscreen_box->offscreen_window2, "from-embedder",
 		    G_CALLBACK (offscreen_window_from_parent2), offscreen_box);
 
-  gdk_window_show (offscreen_box->offscreen_window1);
-  gdk_window_show (offscreen_box->offscreen_window2);
+  cdk_window_show (offscreen_box->offscreen_window1);
+  cdk_window_show (offscreen_box->offscreen_window2);
 }
 
 static void
@@ -353,12 +353,12 @@ ctk_offscreen_box_unrealize (CtkWidget *widget)
 {
   CtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (widget);
 
-  gdk_window_set_user_data (offscreen_box->offscreen_window1, NULL);
-  gdk_window_destroy (offscreen_box->offscreen_window1);
+  cdk_window_set_user_data (offscreen_box->offscreen_window1, NULL);
+  cdk_window_destroy (offscreen_box->offscreen_window1);
   offscreen_box->offscreen_window1 = NULL;
 
-  gdk_window_set_user_data (offscreen_box->offscreen_window2, NULL);
-  gdk_window_destroy (offscreen_box->offscreen_window2);
+  cdk_window_set_user_data (offscreen_box->offscreen_window2, NULL);
+  cdk_window_destroy (offscreen_box->offscreen_window2);
   offscreen_box->offscreen_window2 = NULL;
 
   CTK_WIDGET_CLASS (ctk_offscreen_box_parent_class)->unrealize (widget);
@@ -554,7 +554,7 @@ ctk_offscreen_box_size_allocate (CtkWidget     *widget,
   border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (ctk_widget_get_window (widget),
+    cdk_window_move_resize (ctk_widget_get_window (widget),
                             allocation->x + border_width,
                             allocation->y + border_width,
                             allocation->width - border_width * 2,
@@ -577,7 +577,7 @@ ctk_offscreen_box_size_allocate (CtkWidget     *widget,
       start_y += CHILD1_SIZE_SCALE * child_requisition.height;
 
       if (ctk_widget_get_realized (widget))
-	gdk_window_move_resize (offscreen_box->offscreen_window1,
+	cdk_window_move_resize (offscreen_box->offscreen_window1,
 				child_allocation.x,
                                 child_allocation.y,
 				child_allocation.width,
@@ -602,7 +602,7 @@ ctk_offscreen_box_size_allocate (CtkWidget     *widget,
       start_y += CHILD2_SIZE_SCALE * child_requisition.height;
 
       if (ctk_widget_get_realized (widget))
-	gdk_window_move_resize (offscreen_box->offscreen_window2,
+	cdk_window_move_resize (offscreen_box->offscreen_window2,
 				child_allocation.x,
                                 child_allocation.y,
 				child_allocation.width,
@@ -617,7 +617,7 @@ static gboolean
 ctk_offscreen_box_damage (CtkWidget      *widget,
                           GdkEventExpose *event)
 {
-  gdk_window_invalidate_rect (ctk_widget_get_window (widget),
+  cdk_window_invalidate_rect (ctk_widget_get_window (widget),
                               NULL, FALSE);
 
   return TRUE;
@@ -638,7 +638,7 @@ ctk_offscreen_box_draw (CtkWidget *widget,
 
       if (offscreen_box->child1 && ctk_widget_get_visible (offscreen_box->child1))
         {
-          surface = gdk_offscreen_window_get_surface (offscreen_box->offscreen_window1);
+          surface = cdk_offscreen_window_get_surface (offscreen_box->offscreen_window1);
 
           cairo_set_source_surface (cr, surface, 0, 0);
           cairo_paint (cr);
@@ -649,7 +649,7 @@ ctk_offscreen_box_draw (CtkWidget *widget,
 
       if (offscreen_box->child2 && ctk_widget_get_visible (offscreen_box->child2))
         {
-          surface = gdk_offscreen_window_get_surface (offscreen_box->offscreen_window2);
+          surface = cdk_offscreen_window_get_surface (offscreen_box->offscreen_window2);
 
           ctk_widget_get_allocation (offscreen_box->child2, &child_area);
 
@@ -668,8 +668,8 @@ ctk_offscreen_box_draw (CtkWidget *widget,
       ctk_render_background (ctk_widget_get_style_context (widget), cr,
                              0, 0,
 
-                             gdk_window_get_width (offscreen_box->offscreen_window1),
-                             gdk_window_get_height (offscreen_box->offscreen_window1));
+                             cdk_window_get_width (offscreen_box->offscreen_window1),
+                             cdk_window_get_height (offscreen_box->offscreen_window1));
 
       if (offscreen_box->child1)
         ctk_container_propagate_draw (CTK_CONTAINER (widget),
@@ -680,8 +680,8 @@ ctk_offscreen_box_draw (CtkWidget *widget,
     {
       ctk_render_background (ctk_widget_get_style_context (widget), cr,
                              0, 0,
-                             gdk_window_get_width (offscreen_box->offscreen_window2),
-                             gdk_window_get_height (offscreen_box->offscreen_window2));
+                             cdk_window_get_width (offscreen_box->offscreen_window2),
+                             cdk_window_get_height (offscreen_box->offscreen_window2));
 
       if (offscreen_box->child2)
         ctk_container_propagate_draw (CTK_CONTAINER (widget),

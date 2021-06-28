@@ -18,11 +18,11 @@
 #ifndef __GDK_DEVICE_WIN32_H__
 #define __GDK_DEVICE_WIN32_H__
 
-#include <gdk/gdkdeviceprivate.h>
+#include <cdk/cdkdeviceprivate.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DEVICE_WIN32         (gdk_device_win32_get_type ())
+#define GDK_TYPE_DEVICE_WIN32         (cdk_device_win32_get_type ())
 #define GDK_DEVICE_WIN32(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_WIN32, GdkDeviceWin32))
 #define GDK_DEVICE_WIN32_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_WIN32, GdkDeviceWin32Class))
 #define GDK_IS_DEVICE_WIN32(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_WIN32))
@@ -42,9 +42,9 @@ struct _GdkDeviceWin32Class
   GdkDeviceClass parent_class;
 };
 
-GType gdk_device_win32_get_type (void) G_GNUC_CONST;
+GType cdk_device_win32_get_type (void) G_GNUC_CONST;
 
-GdkWindow *_gdk_device_win32_window_at_position (GdkDevice       *device,
+GdkWindow *_cdk_device_win32_window_at_position (GdkDevice       *device,
                                                  gdouble         *win_x,
                                                  gdouble         *win_y,
                                                  GdkModifierType *mask,

@@ -1,5 +1,5 @@
 /*
- * gdkwin32langnotification.h
+ * cdkwin32langnotification.h
  *
  * Copyright 2019 Руслан Ижбулатов <lrn1986@gmail.com>
  *
@@ -20,7 +20,7 @@
 #ifndef __GDK_WIN32_LANGNOTIFICATION_H__
 #define __GDK_WIN32_LANGNOTIFICATION_H__
 
-void _gdk_win32_lang_notification_init (void);
-void _gdk_win32_lang_notification_exit (void);
+void _cdk_win32_lang_notification_init (void);
+void _cdk_win32_lang_notification_exit (void);
 
 #endif

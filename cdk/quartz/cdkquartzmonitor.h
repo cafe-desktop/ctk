@@ -1,5 +1,5 @@
 /*
- * gdkquartzmonitor.h
+ * cdkquartzmonitor.h
  *
  * Copyright 2017 Tom Schoonjans
  *
@@ -21,14 +21,14 @@
 #define __GDK_QUARTZ_MONITOR_H__
 
 #if !defined (__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkquartz.h> can be included directly."
+#error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
-#include <gdk/gdkmonitor.h>
+#include <cdk/cdkmonitor.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_QUARTZ_MONITOR           (gdk_quartz_monitor_get_type ())
+#define GDK_TYPE_QUARTZ_MONITOR           (cdk_quartz_monitor_get_type ())
 #define GDK_QUARTZ_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_MONITOR, GdkQuartzMonitor))
 #define GDK_IS_QUARTZ_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_MONITOR))
 
@@ -36,7 +36,7 @@ typedef struct _GdkQuartzMonitor      GdkQuartzMonitor;
 typedef struct _GdkQuartzMonitorClass GdkQuartzMonitorClass;
 
 GDK_AVAILABLE_IN_3_22
-GType             gdk_quartz_monitor_get_type            (void) G_GNUC_CONST;
+GType             cdk_quartz_monitor_get_type            (void) G_GNUC_CONST;
 
 
 G_END_DECLS

@@ -28,7 +28,7 @@
 
 #include <gio/gio.h>
 #include <gmodule.h>
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctk.h>
 #include <libtracker-sparql/tracker-sparql.h>
 

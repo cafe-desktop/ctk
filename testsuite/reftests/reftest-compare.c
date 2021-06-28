@@ -31,7 +31,7 @@ get_surface_size (cairo_surface_t *surface,
   cairo_t *cr;
 
   cr = cairo_create (surface);
-  if (!gdk_cairo_get_clip_rectangle (cr, &area))
+  if (!cdk_cairo_get_clip_rectangle (cr, &area))
     {
       g_assert_not_reached ();
     }

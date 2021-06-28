@@ -4,8 +4,8 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir) 				\
 	-I$(top_srcdir)/ctk				\
 	-I$(top_builddir)/ctk				\
-	-I$(top_srcdir)/gdk				\
-	-I$(top_builddir)/gdk				\
+	-I$(top_srcdir)/cdk				\
+	-I$(top_builddir)/cdk				\
 	-DCTK_PRINT_BACKEND_ENABLE_UNSUPPORTED		\
 	$(CTK_DEP_CFLAGS)				\
 	$(CTK_DEBUG_FLAGS)

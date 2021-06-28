@@ -853,7 +853,7 @@ ctk_frame_allocate (CtkCssGadget        *gadget,
                            &clip);
 
   ctk_container_get_children_clip (CTK_CONTAINER (widget), out_clip);
-  gdk_rectangle_union (out_clip, &clip, out_clip);
+  cdk_rectangle_union (out_clip, &clip, out_clip);
 }
 
 static void

@@ -29,7 +29,7 @@ change_fullscreen_state (GSimpleAction *action,
 static CtkClipboard *
 get_clipboard (CtkWidget *widget)
 {
-  return ctk_widget_get_clipboard (widget, gdk_atom_intern_static_string ("CLIPBOARD"));
+  return ctk_widget_get_clipboard (widget, cdk_atom_intern_static_string ("CLIPBOARD"));
 }
 
 static void
@@ -206,7 +206,7 @@ plugin_action (GAction  *action,
   window = CTK_WINDOW (list->data);
   text = g_object_get_data ((GObject*)window, "plugman-text");
 
-  gdk_rgba_parse (&color, g_action_get_name (action));
+  cdk_rgba_parse (&color, g_action_get_name (action));
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_override_color (text, 0, &color);

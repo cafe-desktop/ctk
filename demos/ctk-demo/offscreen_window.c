@@ -260,10 +260,10 @@ ctk_rotated_bin_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
-  gdk_window_set_user_data (window, widget);
+  cdk_window_set_user_data (window, widget);
   g_signal_connect (window, "pick-embedded-child",
                     G_CALLBACK (pick_offscreen_child), bin);
 
@@ -278,18 +278,18 @@ ctk_rotated_bin_realize (CtkWidget *widget)
       attributes.width = child_allocation.width;
       attributes.height = child_allocation.height;
     }
-  bin->offscreen_window = gdk_window_new (gdk_screen_get_root_window (ctk_widget_get_screen (widget)),
+  bin->offscreen_window = cdk_window_new (cdk_screen_get_root_window (ctk_widget_get_screen (widget)),
                                           &attributes, attributes_mask);
-  gdk_window_set_user_data (bin->offscreen_window, widget);
+  cdk_window_set_user_data (bin->offscreen_window, widget);
   if (bin->child)
     ctk_widget_set_parent_window (bin->child, bin->offscreen_window);
-  gdk_offscreen_window_set_embedder (bin->offscreen_window, window);
+  cdk_offscreen_window_set_embedder (bin->offscreen_window, window);
   g_signal_connect (bin->offscreen_window, "to-embedder",
                     G_CALLBACK (offscreen_window_to_parent), bin);
   g_signal_connect (bin->offscreen_window, "from-embedder",
                     G_CALLBACK (offscreen_window_from_parent), bin);
 
-  gdk_window_show (bin->offscreen_window);
+  cdk_window_show (bin->offscreen_window);
 }
 
 static void
@@ -297,8 +297,8 @@ ctk_rotated_bin_unrealize (CtkWidget *widget)
 {
   CtkRotatedBin *bin = CTK_ROTATED_BIN (widget);
 
-  gdk_window_set_user_data (bin->offscreen_window, NULL);
-  gdk_window_destroy (bin->offscreen_window);
+  cdk_window_set_user_data (bin->offscreen_window, NULL);
+  cdk_window_destroy (bin->offscreen_window);
   bin->offscreen_window = NULL;
 
   CTK_WIDGET_CLASS (ctk_rotated_bin_parent_class)->unrealize (widget);
@@ -374,7 +374,7 @@ ctk_rotated_bin_set_angle (CtkRotatedBin *bin,
   bin->angle = angle;
   ctk_widget_queue_resize (CTK_WIDGET (bin));
 
-  gdk_window_geometry_changed (bin->offscreen_window);
+  cdk_window_geometry_changed (bin->offscreen_window);
 }
 
 static void
@@ -445,7 +445,7 @@ ctk_rotated_bin_size_allocate (CtkWidget     *widget,
   h = allocation->height - border_width * 2;
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (ctk_widget_get_window (widget),
+    cdk_window_move_resize (ctk_widget_get_window (widget),
                             allocation->x + border_width,
                             allocation->y + border_width,
                             w, h);
@@ -472,7 +472,7 @@ ctk_rotated_bin_size_allocate (CtkWidget     *widget,
                                       (h - c * child_allocation.height) / s);
 
       if (ctk_widget_get_realized (widget))
-        gdk_window_move_resize (bin->offscreen_window,
+        cdk_window_move_resize (bin->offscreen_window,
                                 child_allocation.x,
                                 child_allocation.y,
                                 child_allocation.width,
@@ -487,7 +487,7 @@ static gboolean
 ctk_rotated_bin_damage (CtkWidget      *widget,
                         GdkEventExpose *event)
 {
-  gdk_window_invalidate_rect (ctk_widget_get_window (widget),
+  cdk_window_invalidate_rect (ctk_widget_get_window (widget),
                               NULL, FALSE);
 
   return TRUE;
@@ -510,7 +510,7 @@ ctk_rotated_bin_draw (CtkWidget *widget,
 
       if (bin->child && ctk_widget_get_visible (bin->child))
         {
-          surface = gdk_offscreen_window_get_surface (bin->offscreen_window);
+          surface = cdk_offscreen_window_get_surface (bin->offscreen_window);
           ctk_widget_get_allocation (bin->child, &child_area);
 
           /* transform */
@@ -527,8 +527,8 @@ ctk_rotated_bin_draw (CtkWidget *widget,
           /* clip */
           cairo_rectangle (cr,
                            0, 0,
-                           gdk_window_get_width (bin->offscreen_window),
-                           gdk_window_get_height (bin->offscreen_window));
+                           cdk_window_get_width (bin->offscreen_window),
+                           cdk_window_get_height (bin->offscreen_window));
           cairo_clip (cr);
           /* paint */
           cairo_set_source_surface (cr, surface, 0, 0);
@@ -540,8 +540,8 @@ ctk_rotated_bin_draw (CtkWidget *widget,
       ctk_render_background (ctk_widget_get_style_context (widget),
                              cr,
                              0, 0,
-                             gdk_window_get_width (bin->offscreen_window),
-                             gdk_window_get_height (bin->offscreen_window));
+                             cdk_window_get_width (bin->offscreen_window),
+                             cdk_window_get_height (bin->offscreen_window));
 
       if (bin->child)
         ctk_container_propagate_draw (CTK_CONTAINER (widget),

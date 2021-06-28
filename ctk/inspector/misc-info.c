@@ -395,20 +395,20 @@ update_info (gpointer data)
       GdkFrameTimings *previous_timings;
 
       clock = GDK_FRAME_CLOCK (sl->priv->object);
-      frame = gdk_frame_clock_get_frame_counter (clock);
-      frame_time = gdk_frame_clock_get_frame_time (clock);
+      frame = cdk_frame_clock_get_frame_counter (clock);
+      frame_time = cdk_frame_clock_get_frame_time (clock);
 
       tmp = g_strdup_printf ("%"G_GINT64_FORMAT, frame);
       ctk_label_set_label (CTK_LABEL (sl->priv->framecount), tmp);
       g_free (tmp);
 
-      history_start = gdk_frame_clock_get_history_start (clock);
+      history_start = cdk_frame_clock_get_history_start (clock);
       history_len = frame - history_start;
 
       if (history_len > 0 && sl->priv->last_frame != frame)
         {
-          previous_timings = gdk_frame_clock_get_timings (clock, history_start);
-          previous_frame_time = gdk_frame_timings_get_frame_time (previous_timings);
+          previous_timings = cdk_frame_clock_get_timings (clock, history_start);
+          previous_frame_time = cdk_frame_timings_get_frame_time (previous_timings);
           tmp = g_strdup_printf ("%4.1f ⁄ s", (G_USEC_PER_SEC * history_len) / (double) (frame_time - previous_frame_time));
           ctk_label_set_label (CTK_LABEL (sl->priv->framerate), tmp);
           g_free (tmp);
@@ -538,7 +538,7 @@ map (CtkWidget *widget)
 
   CTK_WIDGET_CLASS (ctk_inspector_misc_info_parent_class)->map (widget);
 
-  sl->priv->update_source_id = gdk_threads_add_timeout_seconds (1, update_info, sl);
+  sl->priv->update_source_id = cdk_threads_add_timeout_seconds (1, update_info, sl);
   update_info (sl);
 }
 

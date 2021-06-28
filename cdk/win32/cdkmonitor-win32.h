@@ -22,9 +22,9 @@
 #include <glib.h>
 #include <gio/gio.h>
 
-#include "gdkmonitorprivate.h"
+#include "cdkmonitorprivate.h"
 
-#include "gdkwin32monitor.h"
+#include "cdkwin32monitor.h"
 
 /*
  * The number is the degrees the display is rotated clockwise
@@ -87,8 +87,8 @@ struct _GdkWin32MonitorClass {
   GdkMonitorClass parent_class;
 };
 
-int        _gdk_win32_monitor_compare  (GdkWin32Monitor *a, GdkWin32Monitor *b);
+int        _cdk_win32_monitor_compare  (GdkWin32Monitor *a, GdkWin32Monitor *b);
 
-const gchar *_gdk_win32_monitor_get_pixel_structure (GdkMonitor *monitor);
+const gchar *_cdk_win32_monitor_get_pixel_structure (GdkMonitor *monitor);
 
 #endif

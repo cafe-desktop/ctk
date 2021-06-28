@@ -26,7 +26,7 @@
 #define __GDK_TYPES_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
 /* GDK uses "glib". (And so does CTK).
@@ -36,12 +36,12 @@
 #include <glib-object.h>
 #include <cairo.h>
 
-/* The system specific file gdkconfig.h contains such configuration
+/* The system specific file cdkconfig.h contains such configuration
  * settings that are needed not only when compiling GDK (or CTK)
  * itself, but also occasionally when compiling programs that use GDK
  * (or CTK). One such setting is what windowing API backend is in use.
  */
-#include <gdk/gdkconfig.h>
+#include <cdk/cdkconfig.h>
 
 /* some common magic values */
 
@@ -298,7 +298,7 @@ typedef enum
  * mod key is problematic at best.
  * Ref: https://bugzilla.gnome.org/show_bug.cgi?id=736125.
  *
- * This enum is used with gdk_keymap_get_modifier_mask()
+ * This enum is used with cdk_keymap_get_modifier_mask()
  * in order to determine what modifiers the
  * currently used windowing system backend uses for particular
  * purposes. For example, on X11/Windows, the Control key is used for
@@ -339,7 +339,7 @@ typedef enum
  * @GDK_GRAB_FROZEN: the resource is frozen by an active grab of another client.
  * @GDK_GRAB_FAILED: the grab failed for some other reason. Since 3.16
  *
- * Returned by gdk_device_grab(), gdk_pointer_grab() and gdk_keyboard_grab() to
+ * Returned by cdk_device_grab(), cdk_pointer_grab() and cdk_keyboard_grab() to
  * indicate success or the reason for the failure of the grab attempt.
  */
 typedef enum
@@ -410,18 +410,18 @@ typedef enum
  * be sent, some of which are marked as a hint (the is_hint member is
  * %TRUE). To receive more motion events after a motion hint event,
  * the application needs to asks for more, by calling
- * gdk_event_request_motions().
+ * cdk_event_request_motions().
  * 
  * Since CTK 3.8, motion events are already compressed by default, independent
  * of this mechanism. This compression can be disabled with
- * gdk_window_set_event_compression(). See the documentation of that function
+ * cdk_window_set_event_compression(). See the documentation of that function
  * for details.
  *
  * If %GDK_TOUCH_MASK is enabled, the window will receive touch events
  * from touch-enabled devices. Those will come as sequences of #GdkEventTouch
  * with type %GDK_TOUCH_UPDATE, enclosed by two events with
  * type %GDK_TOUCH_BEGIN and %GDK_TOUCH_END (or %GDK_TOUCH_CANCEL).
- * gdk_event_get_event_sequence() returns the event sequence for these
+ * cdk_event_get_event_sequence() returns the event sequence for these
  * events, so different sequences may be distinguished.
  */
 typedef enum

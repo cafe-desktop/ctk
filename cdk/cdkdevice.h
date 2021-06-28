@@ -19,16 +19,16 @@
 #define __GDK_DEVICE_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdkversionmacros.h>
-#include <gdk/gdktypes.h>
+#include <cdk/cdkversionmacros.h>
+#include <cdk/cdktypes.h>
 
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DEVICE         (gdk_device_get_type ())
+#define GDK_TYPE_DEVICE         (cdk_device_get_type ())
 #define GDK_DEVICE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE, GdkDevice))
 #define GDK_IS_DEVICE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE))
 
@@ -123,111 +123,111 @@ struct _GdkTimeCoord
 };
 
 GDK_AVAILABLE_IN_ALL
-GType                 gdk_device_get_type       (void) G_GNUC_CONST;
+GType                 cdk_device_get_type       (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-const gchar *         gdk_device_get_name       (GdkDevice *device);
+const gchar *         cdk_device_get_name       (GdkDevice *device);
 GDK_AVAILABLE_IN_ALL
-gboolean              gdk_device_get_has_cursor (GdkDevice *device);
+gboolean              cdk_device_get_has_cursor (GdkDevice *device);
 
 /* Functions to configure a device */
 GDK_AVAILABLE_IN_ALL
-GdkInputSource gdk_device_get_source    (GdkDevice      *device);
+GdkInputSource cdk_device_get_source    (GdkDevice      *device);
 
 GDK_AVAILABLE_IN_ALL
-GdkInputMode   gdk_device_get_mode      (GdkDevice      *device);
+GdkInputMode   cdk_device_get_mode      (GdkDevice      *device);
 GDK_AVAILABLE_IN_ALL
-gboolean       gdk_device_set_mode      (GdkDevice      *device,
+gboolean       cdk_device_set_mode      (GdkDevice      *device,
                                          GdkInputMode    mode);
 
 GDK_AVAILABLE_IN_ALL
-gint           gdk_device_get_n_keys    (GdkDevice       *device);
+gint           cdk_device_get_n_keys    (GdkDevice       *device);
 GDK_AVAILABLE_IN_ALL
-gboolean       gdk_device_get_key       (GdkDevice       *device,
+gboolean       cdk_device_get_key       (GdkDevice       *device,
                                          guint            index_,
                                          guint           *keyval,
                                          GdkModifierType *modifiers);
 GDK_AVAILABLE_IN_ALL
-void           gdk_device_set_key       (GdkDevice      *device,
+void           cdk_device_set_key       (GdkDevice      *device,
                                          guint           index_,
                                          guint           keyval,
                                          GdkModifierType modifiers);
 
 GDK_AVAILABLE_IN_ALL
-GdkAxisUse     gdk_device_get_axis_use  (GdkDevice         *device,
+GdkAxisUse     cdk_device_get_axis_use  (GdkDevice         *device,
                                          guint              index_);
 GDK_AVAILABLE_IN_ALL
-void           gdk_device_set_axis_use  (GdkDevice         *device,
+void           cdk_device_set_axis_use  (GdkDevice         *device,
                                          guint              index_,
                                          GdkAxisUse         use);
 
 
 GDK_AVAILABLE_IN_ALL
-void     gdk_device_get_state    (GdkDevice         *device,
+void     cdk_device_get_state    (GdkDevice         *device,
                                   GdkWindow         *window,
                                   gdouble           *axes,
                                   GdkModifierType   *mask);
 GDK_AVAILABLE_IN_ALL
-void     gdk_device_get_position (GdkDevice         *device,
+void     cdk_device_get_position (GdkDevice         *device,
                                   GdkScreen        **screen,
                                   gint              *x,
                                   gint              *y);
 GDK_AVAILABLE_IN_ALL
 GdkWindow *
-         gdk_device_get_window_at_position
+         cdk_device_get_window_at_position
                                  (GdkDevice         *device,
                                   gint              *win_x,
                                   gint              *win_y);
 GDK_AVAILABLE_IN_3_10
-void     gdk_device_get_position_double (GdkDevice         *device,
+void     cdk_device_get_position_double (GdkDevice         *device,
                                          GdkScreen        **screen,
                                          gdouble           *x,
                                          gdouble           *y);
 GDK_AVAILABLE_IN_3_10
 GdkWindow *
-         gdk_device_get_window_at_position_double
+         cdk_device_get_window_at_position_double
                                  (GdkDevice         *device,
                                   gdouble           *win_x,
                                   gdouble           *win_y);
 GDK_AVAILABLE_IN_ALL
-gboolean gdk_device_get_history  (GdkDevice         *device,
+gboolean cdk_device_get_history  (GdkDevice         *device,
                                   GdkWindow         *window,
                                   guint32            start,
                                   guint32            stop,
                                   GdkTimeCoord    ***events,
                                   gint              *n_events);
 GDK_AVAILABLE_IN_ALL
-void     gdk_device_free_history (GdkTimeCoord     **events,
+void     cdk_device_free_history (GdkTimeCoord     **events,
                                   gint               n_events);
 
 GDK_AVAILABLE_IN_ALL
-gint     gdk_device_get_n_axes     (GdkDevice       *device);
+gint     cdk_device_get_n_axes     (GdkDevice       *device);
 GDK_AVAILABLE_IN_ALL
-GList *  gdk_device_list_axes      (GdkDevice       *device);
+GList *  cdk_device_list_axes      (GdkDevice       *device);
 GDK_AVAILABLE_IN_ALL
-gboolean gdk_device_get_axis_value (GdkDevice       *device,
+gboolean cdk_device_get_axis_value (GdkDevice       *device,
                                     gdouble         *axes,
                                     GdkAtom          axis_label,
                                     gdouble         *value);
 
 GDK_AVAILABLE_IN_ALL
-gboolean gdk_device_get_axis     (GdkDevice         *device,
+gboolean cdk_device_get_axis     (GdkDevice         *device,
                                   gdouble           *axes,
                                   GdkAxisUse         use,
                                   gdouble           *value);
 GDK_AVAILABLE_IN_ALL
-GdkDisplay * gdk_device_get_display (GdkDevice      *device);
+GdkDisplay * cdk_device_get_display (GdkDevice      *device);
 
 GDK_AVAILABLE_IN_ALL
-GdkDevice  * gdk_device_get_associated_device (GdkDevice     *device);
+GdkDevice  * cdk_device_get_associated_device (GdkDevice     *device);
 GDK_AVAILABLE_IN_ALL
-GList *      gdk_device_list_slave_devices    (GdkDevice     *device);
+GList *      cdk_device_list_slave_devices    (GdkDevice     *device);
 
 GDK_AVAILABLE_IN_ALL
-GdkDeviceType gdk_device_get_device_type (GdkDevice *device);
+GdkDeviceType cdk_device_get_device_type (GdkDevice *device);
 
-GDK_DEPRECATED_IN_3_20_FOR(gdk_seat_grab)
-GdkGrabStatus gdk_device_grab        (GdkDevice        *device,
+GDK_DEPRECATED_IN_3_20_FOR(cdk_seat_grab)
+GdkGrabStatus cdk_device_grab        (GdkDevice        *device,
                                       GdkWindow        *window,
                                       GdkGrabOwnership  grab_ownership,
                                       gboolean          owner_events,
@@ -235,35 +235,35 @@ GdkGrabStatus gdk_device_grab        (GdkDevice        *device,
                                       GdkCursor        *cursor,
                                       guint32           time_);
 
-GDK_DEPRECATED_IN_3_20_FOR(gdk_seat_ungrab)
-void          gdk_device_ungrab      (GdkDevice        *device,
+GDK_DEPRECATED_IN_3_20_FOR(cdk_seat_ungrab)
+void          cdk_device_ungrab      (GdkDevice        *device,
                                       guint32           time_);
 
 GDK_AVAILABLE_IN_ALL
-void          gdk_device_warp        (GdkDevice        *device,
+void          cdk_device_warp        (GdkDevice        *device,
                                       GdkScreen        *screen,
                                       gint              x,
                                       gint              y);
 
 GDK_DEPRECATED_IN_3_16
-gboolean gdk_device_grab_info_libctk_only (GdkDisplay  *display,
+gboolean cdk_device_grab_info_libctk_only (GdkDisplay  *display,
                                            GdkDevice   *device,
                                            GdkWindow  **grab_window,
                                            gboolean    *owner_events);
 
 GDK_AVAILABLE_IN_3_12
-GdkWindow *gdk_device_get_last_event_window (GdkDevice *device);
+GdkWindow *cdk_device_get_last_event_window (GdkDevice *device);
 
 GDK_AVAILABLE_IN_3_16
-const gchar *gdk_device_get_vendor_id       (GdkDevice *device);
+const gchar *cdk_device_get_vendor_id       (GdkDevice *device);
 GDK_AVAILABLE_IN_3_16
-const gchar *gdk_device_get_product_id      (GdkDevice *device);
+const gchar *cdk_device_get_product_id      (GdkDevice *device);
 
 GDK_AVAILABLE_IN_3_20
-GdkSeat     *gdk_device_get_seat            (GdkDevice *device);
+GdkSeat     *cdk_device_get_seat            (GdkDevice *device);
 
 GDK_AVAILABLE_IN_3_22
-GdkAxisFlags gdk_device_get_axes            (GdkDevice *device);
+GdkAxisFlags cdk_device_get_axes            (GdkDevice *device);
 
 G_END_DECLS
 

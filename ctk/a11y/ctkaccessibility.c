@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctkcombobox.h>
 #include <ctk/ctkentry.h>
 #include <ctk/ctknotebook.h>
@@ -603,7 +603,7 @@ gail_focus_notify_when_idle (CtkWidget *widget)
         }
     }
 
-  focus_notify_handler = gdk_threads_add_idle (gail_focus_idle_handler, widget);
+  focus_notify_handler = cdk_threads_add_idle (gail_focus_idle_handler, widget);
   g_source_set_name_by_id (focus_notify_handler, "[ctk+] gail_focus_idle_handler");
 }
 

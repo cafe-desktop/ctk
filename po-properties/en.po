@@ -13,137 +13,137 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gdk/gdkapplaunchcontext.c:129 gdk/gdkcursor.c:136
-#: gdk/gdkdevicemanager.c:146
+#: cdk/cdkapplaunchcontext.c:129 cdk/cdkcursor.c:136
+#: cdk/cdkdevicemanager.c:146
 msgid "Display"
 msgstr ""
 
-#: gdk/gdkcursor.c:128
+#: cdk/cdkcursor.c:128
 msgid "Cursor type"
 msgstr ""
 
-#: gdk/gdkcursor.c:129
+#: cdk/cdkcursor.c:129
 msgid "Standard cursor type"
 msgstr ""
 
-#: gdk/gdkcursor.c:137
+#: cdk/cdkcursor.c:137
 msgid "Display of this cursor"
 msgstr ""
 
-#: gdk/gdkdevice.c:111
+#: cdk/cdkdevice.c:111
 msgid "Device Display"
 msgstr ""
 
-#: gdk/gdkdevice.c:112
+#: cdk/cdkdevice.c:112
 msgid "Display which the device belongs to"
 msgstr ""
 
-#: gdk/gdkdevice.c:126
+#: cdk/cdkdevice.c:126
 msgid "Device manager"
 msgstr ""
 
-#: gdk/gdkdevice.c:127
+#: cdk/cdkdevice.c:127
 msgid "Device manager which the device belongs to"
 msgstr ""
 
-#: gdk/gdkdevice.c:141 gdk/gdkdevice.c:142
+#: cdk/cdkdevice.c:141 cdk/cdkdevice.c:142
 msgid "Device name"
 msgstr ""
 
-#: gdk/gdkdevice.c:156
+#: cdk/cdkdevice.c:156
 msgid "Device type"
 msgstr ""
 
-#: gdk/gdkdevice.c:157
+#: cdk/cdkdevice.c:157
 msgid "Device role in the device manager"
 msgstr ""
 
-#: gdk/gdkdevice.c:173
+#: cdk/cdkdevice.c:173
 msgid "Associated device"
 msgstr ""
 
-#: gdk/gdkdevice.c:174
+#: cdk/cdkdevice.c:174
 msgid "Associated pointer or keyboard with this device"
 msgstr ""
 
-#: gdk/gdkdevice.c:187
+#: cdk/cdkdevice.c:187
 msgid "Input source"
 msgstr ""
 
-#: gdk/gdkdevice.c:188
+#: cdk/cdkdevice.c:188
 msgid "Source type for the device"
 msgstr ""
 
-#: gdk/gdkdevice.c:203 gdk/gdkdevice.c:204
+#: cdk/cdkdevice.c:203 cdk/cdkdevice.c:204
 msgid "Input mode for the device"
 msgstr ""
 
-#: gdk/gdkdevice.c:219
+#: cdk/cdkdevice.c:219
 msgid "Whether the device has a cursor"
 msgstr ""
 
-#: gdk/gdkdevice.c:220
+#: cdk/cdkdevice.c:220
 msgid "Whether there is a visible cursor following device motion"
 msgstr ""
 
-#: gdk/gdkdevice.c:234 gdk/gdkdevice.c:235
+#: cdk/cdkdevice.c:234 cdk/cdkdevice.c:235
 msgid "Number of axes in the device"
 msgstr ""
 
-#: gdk/gdkdevicemanager.c:147
+#: cdk/cdkdevicemanager.c:147
 msgid "Display for the device manager"
 msgstr ""
 
-#: gdk/gdkdisplaymanager.c:117
+#: cdk/cdkdisplaymanager.c:117
 msgid "Default Display"
 msgstr ""
 
-#: gdk/gdkdisplaymanager.c:118
+#: cdk/cdkdisplaymanager.c:118
 msgid "The default display for GDK"
 msgstr ""
 
-#: gdk/gdkscreen.c:89
+#: cdk/cdkscreen.c:89
 msgid "Font options"
 msgstr ""
 
-#: gdk/gdkscreen.c:90
+#: cdk/cdkscreen.c:90
 msgid "The default font options for the screen"
 msgstr ""
 
-#: gdk/gdkscreen.c:97
+#: cdk/cdkscreen.c:97
 msgid "Font resolution"
 msgstr ""
 
-#: gdk/gdkscreen.c:98
+#: cdk/cdkscreen.c:98
 msgid "The resolution for fonts on the screen"
 msgstr ""
 
-#: gdk/gdkwindow.c:373 gdk/gdkwindow.c:374
+#: cdk/cdkwindow.c:373 cdk/cdkwindow.c:374
 msgid "Cursor"
 msgstr ""
 
-#: gdk/x11/gdkdevice-xi.c:133 gdk/x11/gdkdevice-xi.c:134
-#: gdk/x11/gdkdevice-xi2.c:124
+#: cdk/x11/cdkdevice-xi.c:133 cdk/x11/cdkdevice-xi.c:134
+#: cdk/x11/cdkdevice-xi2.c:124
 msgid "Device ID"
 msgstr ""
 
-#: gdk/x11/gdkdevice-xi2.c:125
+#: cdk/x11/cdkdevice-xi2.c:125
 msgid "Device identifier"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi2.c:112
+#: cdk/x11/cdkdevicemanager-xi2.c:112
 msgid "Opcode"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi2.c:113
+#: cdk/x11/cdkdevicemanager-xi2.c:113
 msgid "Opcode for XInput2 requests"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi.c:95
+#: cdk/x11/cdkdevicemanager-xi.c:95
 msgid "Event base"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi.c:96
+#: cdk/x11/cdkdevicemanager-xi.c:96
 msgid "Event base for XInput events"
 msgstr ""
 

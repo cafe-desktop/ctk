@@ -25,35 +25,35 @@
 #ifndef __GDK_X_H__
 #define __GDK_X_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
 #define __GDKX_H_INSIDE__
 
-#include <gdk/x11/gdkx11applaunchcontext.h>
-#include <gdk/x11/gdkx11cursor.h>
-#include <gdk/x11/gdkx11device.h>
-#include <gdk/x11/gdkx11device-core.h>
-#include <gdk/x11/gdkx11device-xi2.h>
-#include <gdk/x11/gdkx11devicemanager.h>
-#include <gdk/x11/gdkx11devicemanager-core.h>
-#include <gdk/x11/gdkx11devicemanager-xi2.h>
-#include <gdk/x11/gdkx11display.h>
-#include <gdk/x11/gdkx11displaymanager.h>
-#include <gdk/x11/gdkx11dnd.h>
-#include <gdk/x11/gdkx11glcontext.h>
-#include <gdk/x11/gdkx11keys.h>
-#include <gdk/x11/gdkx11monitor.h>
-#include <gdk/x11/gdkx11property.h>
-#include <gdk/x11/gdkx11screen.h>
-#include <gdk/x11/gdkx11selection.h>
-#include <gdk/x11/gdkx11utils.h>
-#include <gdk/x11/gdkx11visual.h>
-#include <gdk/x11/gdkx11window.h>
+#include <cdk/x11/cdkx11applaunchcontext.h>
+#include <cdk/x11/cdkx11cursor.h>
+#include <cdk/x11/cdkx11device.h>
+#include <cdk/x11/cdkx11device-core.h>
+#include <cdk/x11/cdkx11device-xi2.h>
+#include <cdk/x11/cdkx11devicemanager.h>
+#include <cdk/x11/cdkx11devicemanager-core.h>
+#include <cdk/x11/cdkx11devicemanager-xi2.h>
+#include <cdk/x11/cdkx11display.h>
+#include <cdk/x11/cdkx11displaymanager.h>
+#include <cdk/x11/cdkx11dnd.h>
+#include <cdk/x11/cdkx11glcontext.h>
+#include <cdk/x11/cdkx11keys.h>
+#include <cdk/x11/cdkx11monitor.h>
+#include <cdk/x11/cdkx11property.h>
+#include <cdk/x11/cdkx11screen.h>
+#include <cdk/x11/cdkx11selection.h>
+#include <cdk/x11/cdkx11utils.h>
+#include <cdk/x11/cdkx11visual.h>
+#include <cdk/x11/cdkx11window.h>
 
-#include <gdk/x11/gdkx-autocleanups.h>
+#include <cdk/x11/cdkx-autocleanups.h>
 
 #undef __GDKX_H_INSIDE__
 

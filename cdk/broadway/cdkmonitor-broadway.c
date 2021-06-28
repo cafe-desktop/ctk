@@ -20,18 +20,18 @@
 #include <glib.h>
 #include <gio/gio.h>
 
-#include "gdkmonitor-broadway.h"
-#include "gdkscreen-broadway.h"
+#include "cdkmonitor-broadway.h"
+#include "cdkscreen-broadway.h"
 
 
-G_DEFINE_TYPE (GdkBroadwayMonitor, gdk_broadway_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (GdkBroadwayMonitor, cdk_broadway_monitor, GDK_TYPE_MONITOR)
 
 static void
-gdk_broadway_monitor_init (GdkBroadwayMonitor *monitor)
+cdk_broadway_monitor_init (GdkBroadwayMonitor *monitor)
 {
 }
 
 static void
-gdk_broadway_monitor_class_init (GdkBroadwayMonitorClass *class)
+cdk_broadway_monitor_class_init (GdkBroadwayMonitorClass *class)
 {
 }

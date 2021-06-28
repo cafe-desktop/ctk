@@ -228,7 +228,7 @@ add_extra_css (const char *testname,
   ctk_css_provider_load_from_path (CTK_CSS_PROVIDER (provider),
                                    css_file,
                                    NULL);
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              provider,
                                              CTK_STYLE_PROVIDER_PRIORITY_FORCE);
 
@@ -243,7 +243,7 @@ remove_extra_css (CtkStyleProvider *provider)
   if (provider == NULL)
     return;
 
-  ctk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_remove_provider_for_screen (cdk_screen_get_default (),
                                                 provider);
 }
 

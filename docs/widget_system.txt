@@ -78,7 +78,7 @@ CTK_REALIZED:
 CTK_MAPPED:
 	Set by ctk_widget_map, unset by ctk_widget_unmap.
 	May only be set if CTK_WIDGET_REALIZED (widget).
-	Means: gdk_window_show() has been called on the widgets window(s).
+	Means: cdk_window_show() has been called on the widgets window(s).
 
 CTK_VISIBLE:
 	Set by ctk_widget_show.
@@ -382,7 +382,7 @@ The Map signal
 --------------
 
   1) Set the MAPPED flag
-  2) If the widget has any windows, gdk_window_show those windows
+  2) If the widget has any windows, cdk_window_show those windows
   3) call ctk_widget_map for all child widgets that are 
      VISIBLE, CHILD_VISIBLE and !MAPPED. (A widget will only
      be !CHILD_VISIBLE if the container set it that way, so
@@ -395,7 +395,7 @@ The Unmap signal
 
 When a widget receives the unmap signal, it must:
 
- 1) If the widget has a window, gdk_window_hide that window, 
+ 1) If the widget has a window, cdk_window_hide that window, 
  2) If the widget does not have a window, unmap all child widgets
  3) Do any other functions related to taking the widget offscreen
      (for instance, removing popup windows...)
@@ -409,8 +409,8 @@ When a widget receives the unrealize signal, it must
 
  1) For any windows other than widget->window do:
 
-    gdk_window_set_user_data (window, NULL);
-    gdk_window_destroy (window);
+    cdk_window_set_user_data (window, NULL);
+    cdk_window_destroy (window);
 
  2) Call the parent's unrealize handler
 

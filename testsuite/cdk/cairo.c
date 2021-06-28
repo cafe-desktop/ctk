@@ -1,4 +1,4 @@
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 static void
 test_set_source_big_pixbuf (void)
@@ -18,9 +18,9 @@ test_set_source_big_pixbuf (void)
 
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 10, 10);
   cr = cairo_create (surface);
-  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, WAY_TOO_BIG, 1);
+  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, WAY_TOO_BIG, 1);
 
-  gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+  cdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
   g_assert_cmpint (cairo_status (cr), !=, CAIRO_STATUS_SUCCESS);
 
   g_object_unref (pixbuf);
@@ -32,7 +32,7 @@ int
 main (int argc, char *argv[])
 {
   g_test_init (&argc, &argv, NULL);
-  gdk_init (&argc, &argv);
+  cdk_init (&argc, &argv);
 
   g_test_add_func ("/drawing/set-source-big-pixbuf", test_set_source_big_pixbuf);
 

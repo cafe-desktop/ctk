@@ -24,11 +24,11 @@
 
 #include "config.h"
 
-#include "gdkvisualprivate.h"
+#include "cdkvisualprivate.h"
 
-#include "gdkprivate-broadway.h"
-#include "gdkscreen-broadway.h"
-#include "gdkinternals.h"
+#include "cdkprivate-broadway.h"
+#include "cdkscreen-broadway.h"
+#include "cdkinternals.h"
 
 struct _GdkBroadwayVisual
 {
@@ -40,29 +40,29 @@ struct _GdkBroadwayVisualClass
   GObjectClass parent_class;
 };
 
-G_DEFINE_TYPE (GdkBroadwayVisual, gdk_broadway_visual, GDK_TYPE_VISUAL)
+G_DEFINE_TYPE (GdkBroadwayVisual, cdk_broadway_visual, GDK_TYPE_VISUAL)
 
 static void
-gdk_broadway_visual_finalize (GObject *object)
+cdk_broadway_visual_finalize (GObject *object)
 {
-  G_OBJECT_CLASS (gdk_broadway_visual_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_broadway_visual_parent_class)->finalize (object);
 }
 
 static void
-gdk_broadway_visual_class_init (GdkBroadwayVisualClass *visual_class)
+cdk_broadway_visual_class_init (GdkBroadwayVisualClass *visual_class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (visual_class);
 
-  object_class->finalize = gdk_broadway_visual_finalize;
+  object_class->finalize = cdk_broadway_visual_finalize;
 }
 
 static void
-gdk_broadway_visual_init (GdkBroadwayVisual *visual)
+cdk_broadway_visual_init (GdkBroadwayVisual *visual)
 {
 }
 
 void
-_gdk_broadway_screen_init_visuals (GdkScreen *screen)
+_cdk_broadway_screen_init_visuals (GdkScreen *screen)
 {
   GdkBroadwayScreen *broadway_screen;
   GdkVisual **visuals;
@@ -111,19 +111,19 @@ _gdk_broadway_screen_init_visuals (GdkScreen *screen)
 }
 
 gint
-_gdk_broadway_screen_visual_get_best_depth (GdkScreen * screen)
+_cdk_broadway_screen_visual_get_best_depth (GdkScreen * screen)
 {
   return GDK_BROADWAY_SCREEN (screen)->available_depths[0];
 }
 
 GdkVisualType
-_gdk_broadway_screen_visual_get_best_type (GdkScreen * screen)
+_cdk_broadway_screen_visual_get_best_type (GdkScreen * screen)
 {
   return GDK_BROADWAY_SCREEN (screen)->available_types[0];
 }
 
 GdkVisual *
-_gdk_broadway_screen_get_system_visual (GdkScreen * screen)
+_cdk_broadway_screen_get_system_visual (GdkScreen * screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -131,7 +131,7 @@ _gdk_broadway_screen_get_system_visual (GdkScreen * screen)
 }
 
 GdkVisual*
-_gdk_broadway_screen_visual_get_best (GdkScreen * screen)
+_cdk_broadway_screen_visual_get_best (GdkScreen * screen)
 {
   GdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
 
@@ -139,7 +139,7 @@ _gdk_broadway_screen_visual_get_best (GdkScreen * screen)
 }
 
 GdkVisual*
-_gdk_broadway_screen_visual_get_best_with_depth (GdkScreen * screen,
+_cdk_broadway_screen_visual_get_best_with_depth (GdkScreen * screen,
 						 gint depth)
 {
   GdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
@@ -158,7 +158,7 @@ _gdk_broadway_screen_visual_get_best_with_depth (GdkScreen * screen,
 }
 
 GdkVisual*
-_gdk_broadway_screen_visual_get_best_with_type (GdkScreen * screen,
+_cdk_broadway_screen_visual_get_best_with_type (GdkScreen * screen,
 						GdkVisualType visual_type)
 {
   GdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
@@ -177,7 +177,7 @@ _gdk_broadway_screen_visual_get_best_with_type (GdkScreen * screen,
 }
 
 GdkVisual*
-_gdk_broadway_screen_visual_get_best_with_both (GdkScreen * screen,
+_cdk_broadway_screen_visual_get_best_with_both (GdkScreen * screen,
 						gint          depth,
 						GdkVisualType visual_type)
 {
@@ -198,7 +198,7 @@ _gdk_broadway_screen_visual_get_best_with_both (GdkScreen * screen,
 }
 
 void
-_gdk_broadway_screen_query_depths  (GdkScreen * screen,
+_cdk_broadway_screen_query_depths  (GdkScreen * screen,
 				    gint **depths,
 				    gint  *count)
 {
@@ -209,7 +209,7 @@ _gdk_broadway_screen_query_depths  (GdkScreen * screen,
 }
 
 void
-_gdk_broadway_screen_query_visual_types (GdkScreen * screen,
+_cdk_broadway_screen_query_visual_types (GdkScreen * screen,
 					 GdkVisualType **visual_types,
 					 gint           *count)
 {
@@ -220,7 +220,7 @@ _gdk_broadway_screen_query_visual_types (GdkScreen * screen,
 }
 
 GList *
-_gdk_broadway_screen_list_visuals (GdkScreen *screen)
+_cdk_broadway_screen_list_visuals (GdkScreen *screen)
 {
   GList *list;
   GdkBroadwayScreen *broadway_screen;

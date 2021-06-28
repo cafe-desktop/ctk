@@ -1,6 +1,6 @@
 /* GDK - The GIMP Drawing Kit
  *
- * gdkglcontext-quartz.c: Quartz specific OpenGL wrappers
+ * cdkglcontext-quartz.c: Quartz specific OpenGL wrappers
  *
  * Copyright © 2014  Emmanuele Bassi
  * Copyright © 2014  Alexander Larsson
@@ -22,24 +22,24 @@
 
 #include "config.h"
 
-#include "gdkglcontext-quartz.h"
+#include "cdkglcontext-quartz.h"
 
-#include "gdkquartzdisplay.h"
-#include "gdkquartzglcontext.h"
-#include "gdkquartzwindow.h"
-#include "gdkprivate-quartz.h"
-#include "gdkquartz-ctk-only.h"
+#include "cdkquartzdisplay.h"
+#include "cdkquartzglcontext.h"
+#include "cdkquartzwindow.h"
+#include "cdkprivate-quartz.h"
+#include "cdkquartz-ctk-only.h"
 
-#include "gdkinternals.h"
+#include "cdkinternals.h"
 
-#include "gdkintl.h"
+#include "cdkintl.h"
 
-G_DEFINE_TYPE (GdkQuartzGLContext, gdk_quartz_gl_context, GDK_TYPE_GL_CONTEXT)
+G_DEFINE_TYPE (GdkQuartzGLContext, cdk_quartz_gl_context, GDK_TYPE_GL_CONTEXT)
 
-static void gdk_quartz_gl_context_dispose (GObject *gobject);
+static void cdk_quartz_gl_context_dispose (GObject *gobject);
 
 void
-gdk_quartz_window_invalidate_for_new_frame (GdkWindow      *window,
+cdk_quartz_window_invalidate_for_new_frame (GdkWindow      *window,
                                             cairo_region_t *update_area)
 {
   cairo_rectangle_int_t window_rect;
@@ -50,8 +50,8 @@ gdk_quartz_window_invalidate_for_new_frame (GdkWindow      *window,
 
   window_rect.x = 0;
   window_rect.y = 0;
-  window_rect.width = gdk_window_get_width (window);
-  window_rect.height = gdk_window_get_height (window);
+  window_rect.width = cdk_window_get_width (window);
+  window_rect.height = cdk_window_get_height (window);
 
   /* If nothing else is known, repaint everything so that the back
   buffer is fully up-to-date for the swapbuffer */
@@ -59,14 +59,14 @@ gdk_quartz_window_invalidate_for_new_frame (GdkWindow      *window,
 }
 
 static gboolean
-gdk_quartz_gl_context_realize (GdkGLContext *context,
+cdk_quartz_gl_context_realize (GdkGLContext *context,
                                GError      **error)
 {
   return TRUE;
 }
 
 static void
-gdk_quartz_gl_context_end_frame (GdkGLContext *context,
+cdk_quartz_gl_context_end_frame (GdkGLContext *context,
                                  cairo_region_t *painted,
                                  cairo_region_t *damage)
 {
@@ -76,34 +76,34 @@ gdk_quartz_gl_context_end_frame (GdkGLContext *context,
 }
 
 static void
-gdk_quartz_gl_context_class_init (GdkQuartzGLContextClass *klass)
+cdk_quartz_gl_context_class_init (GdkQuartzGLContextClass *klass)
 {
   GdkGLContextClass *context_class = GDK_GL_CONTEXT_CLASS (klass);
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
-  context_class->realize = gdk_quartz_gl_context_realize;
-  context_class->end_frame = gdk_quartz_gl_context_end_frame;
-  gobject_class->dispose = gdk_quartz_gl_context_dispose;
+  context_class->realize = cdk_quartz_gl_context_realize;
+  context_class->end_frame = cdk_quartz_gl_context_end_frame;
+  gobject_class->dispose = cdk_quartz_gl_context_dispose;
 }
 
 static void
-gdk_quartz_gl_context_init (GdkQuartzGLContext *self)
+cdk_quartz_gl_context_init (GdkQuartzGLContext *self)
 {
 }
 
 gboolean
-gdk_quartz_display_init_gl (GdkDisplay *display)
+cdk_quartz_display_init_gl (GdkDisplay *display)
 {
   return TRUE;
 }
 
 GdkGLContext *
-gdk_quartz_window_create_gl_context (GdkWindow     *window,
+cdk_quartz_window_create_gl_context (GdkWindow     *window,
                                      gboolean       attached,
                                      GdkGLContext  *share,
                                      GError       **error)
 {
-  GdkDisplay *display = gdk_window_get_display (window);
+  GdkDisplay *display = cdk_window_get_display (window);
   GdkQuartzGLContext *context;
   NSOpenGLContext *ctx;
   NSOpenGLPixelFormatAttribute attrs[] =
@@ -138,7 +138,7 @@ gdk_quartz_window_create_gl_context (GdkWindow     *window,
 
   if (attached)
     {
-      NSView *view = gdk_quartz_window_get_nsview (window);
+      NSView *view = cdk_quartz_window_get_nsview (window);
 
       if ([view respondsToSelector:@selector(setWantsBestResolutionOpenGLSurface:)])
         [view setWantsBestResolutionOpenGLSurface:YES];
@@ -165,7 +165,7 @@ gdk_quartz_window_create_gl_context (GdkWindow     *window,
 }
 
 static void
-gdk_quartz_gl_context_dispose (GObject *gobject)
+cdk_quartz_gl_context_dispose (GObject *gobject)
 {
   GdkQuartzGLContext *context_quartz = GDK_QUARTZ_GL_CONTEXT (gobject);
 
@@ -176,11 +176,11 @@ gdk_quartz_gl_context_dispose (GObject *gobject)
       context_quartz->gl_context = NULL;
     }
 
-  G_OBJECT_CLASS (gdk_quartz_gl_context_parent_class)->dispose (gobject);
+  G_OBJECT_CLASS (cdk_quartz_gl_context_parent_class)->dispose (gobject);
 }
 
 gboolean
-gdk_quartz_display_make_gl_context_current (GdkDisplay   *display,
+cdk_quartz_display_make_gl_context_current (GdkDisplay   *display,
                                             GdkGLContext *context)
 {
   GdkQuartzGLContext *context_quartz;

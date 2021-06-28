@@ -23,7 +23,7 @@
  */
 
 #include "config.h"
-#include "gdkrgba.h"
+#include "cdkrgba.h"
 #include <string.h>
 #include <errno.h>
 #include <math.h>
@@ -43,8 +43,8 @@
  * to this range when drawing.
  */
 
-G_DEFINE_BOXED_TYPE (GdkRGBA, gdk_rgba,
-                     gdk_rgba_copy, gdk_rgba_free)
+G_DEFINE_BOXED_TYPE (GdkRGBA, cdk_rgba,
+                     cdk_rgba_copy, cdk_rgba_free)
 
 /**
  * GdkRGBA:
@@ -59,33 +59,33 @@ G_DEFINE_BOXED_TYPE (GdkRGBA, gdk_rgba,
  */
 
 /**
- * gdk_rgba_copy:
+ * cdk_rgba_copy:
  * @rgba: a #GdkRGBA
  *
  * Makes a copy of a #GdkRGBA.
  *
- * The result must be freed through gdk_rgba_free().
+ * The result must be freed through cdk_rgba_free().
  *
  * Returns: A newly allocated #GdkRGBA, with the same contents as @rgba
  *
  * Since: 3.0
  */
 GdkRGBA *
-gdk_rgba_copy (const GdkRGBA *rgba)
+cdk_rgba_copy (const GdkRGBA *rgba)
 {
   return g_slice_dup (GdkRGBA, rgba);
 }
 
 /**
- * gdk_rgba_free:
+ * cdk_rgba_free:
  * @rgba: a #GdkRGBA
  *
- * Frees a #GdkRGBA created with gdk_rgba_copy()
+ * Frees a #GdkRGBA created with cdk_rgba_copy()
  *
  * Since: 3.0
  */
 void
-gdk_rgba_free (GdkRGBA *rgba)
+cdk_rgba_free (GdkRGBA *rgba)
 {
   g_slice_free (GdkRGBA, rgba);
 }
@@ -133,7 +133,7 @@ parse_rgb_value (const gchar  *str,
 }
 
 /**
- * gdk_rgba_parse:
+ * cdk_rgba_parse:
  * @rgba: the #GdkRGBA to fill in
  * @spec: the string specifying the color
  *
@@ -158,7 +158,7 @@ parse_rgb_value (const gchar  *str,
  * Since: 3.0
  */
 gboolean
-gdk_rgba_parse (GdkRGBA     *rgba,
+cdk_rgba_parse (GdkRGBA     *rgba,
                 const gchar *spec)
 {
   gboolean has_alpha;
@@ -278,7 +278,7 @@ gdk_rgba_parse (GdkRGBA     *rgba,
 #undef SKIP_WHITESPACES
 
 /**
- * gdk_rgba_hash:
+ * cdk_rgba_hash:
  * @p: (type GdkRGBA): a #GdkRGBA pointer
  *
  * A hash function suitable for using for a hash
@@ -289,7 +289,7 @@ gdk_rgba_parse (GdkRGBA     *rgba,
  * Since: 3.0
  */
 guint
-gdk_rgba_hash (gconstpointer p)
+cdk_rgba_hash (gconstpointer p)
 {
   const GdkRGBA *rgba = p;
 
@@ -300,7 +300,7 @@ gdk_rgba_hash (gconstpointer p)
 }
 
 /**
- * gdk_rgba_equal:
+ * cdk_rgba_equal:
  * @p1: (type GdkRGBA): a #GdkRGBA pointer
  * @p2: (type GdkRGBA): another #GdkRGBA pointer
  *
@@ -311,7 +311,7 @@ gdk_rgba_hash (gconstpointer p)
  * Since: 3.0
  */
 gboolean
-gdk_rgba_equal (gconstpointer p1,
+cdk_rgba_equal (gconstpointer p1,
                 gconstpointer p2)
 {
   const GdkRGBA *rgba1, *rgba2;
@@ -329,7 +329,7 @@ gdk_rgba_equal (gconstpointer p1,
 }
 
 /**
- * gdk_rgba_to_string:
+ * cdk_rgba_to_string:
  * @rgba: a #GdkRGBA
  *
  * Returns a textual specification of @rgba in the form
@@ -341,7 +341,7 @@ gdk_rgba_equal (gconstpointer p1,
  * is represented as a floating point value in the range 0 to 1.
  *
  * These string forms are string forms that are supported by
- * the CSS3 colors module, and can be parsed by gdk_rgba_parse().
+ * the CSS3 colors module, and can be parsed by cdk_rgba_parse().
  *
  * Note that this string representation may lose some
  * precision, since “r”, “g” and “b” are represented as 8-bit
@@ -353,7 +353,7 @@ gdk_rgba_equal (gconstpointer p1,
  * Since: 3.0
  */
 gchar *
-gdk_rgba_to_string (const GdkRGBA *rgba)
+cdk_rgba_to_string (const GdkRGBA *rgba)
 {
   if (rgba->alpha > 0.999)
     {

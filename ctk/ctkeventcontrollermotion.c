@@ -69,15 +69,15 @@ get_coords (CtkWidget      *widget,
   CtkAllocation alloc;
 
   ctk_widget_get_allocation (widget, &alloc);
-  gdk_event_get_coords (event, x, y);
+  cdk_event_get_coords (event, x, y);
 
   ancestor = ctk_widget_get_window (widget);
-  window = gdk_event_get_window (event);
+  window = cdk_event_get_window (event);
 
   while (window && ancestor && (window != ancestor))
     {
-      gdk_window_coords_to_parent (window, *x, *y, x, y);
-      window = gdk_window_get_parent (window);
+      cdk_window_coords_to_parent (window, *x, *y, x, y);
+      window = cdk_window_get_parent (window);
     }
 
   if (!ctk_widget_get_has_window (widget))
@@ -97,7 +97,7 @@ ctk_event_controller_motion_handle_event (CtkEventController *controller,
 
   widget = ctk_event_controller_get_widget (controller);
 
-  type = gdk_event_get_event_type (event);
+  type = cdk_event_get_event_type (event);
   if (type == GDK_ENTER_NOTIFY)
     {
       double x, y;

@@ -344,7 +344,7 @@ load_module (GSList      *module_list,
 		      if (info->display_init_func) 
 			{
 			  GSList *displays, *iter; 		  
-			  displays = gdk_display_manager_list_displays (gdk_display_manager_get ());
+			  displays = cdk_display_manager_list_displays (cdk_display_manager_get ());
 			  for (iter = displays; iter; iter = iter->next)
 			    {
 			      GdkDisplay *display = iter->data;
@@ -437,7 +437,7 @@ default_display_notify_cb (GdkDisplayManager *display_manager)
    * default display is first set to a non-NULL value.
    */
 
-  if (!gdk_display_get_default () || default_display_opened)
+  if (!cdk_display_get_default () || default_display_opened)
     return;
 
   default_display_opened = TRUE;
@@ -461,7 +461,7 @@ display_closed_cb (GdkDisplay *display,
   GdkScreen *screen;
   CtkSettings *settings;
 
-  screen = gdk_display_get_default_screen (display);
+  screen = cdk_display_get_default_screen (display);
   settings = ctk_settings_get_for_screen (screen);
   if (settings)
     g_object_set_data_full (G_OBJECT (settings),
@@ -491,9 +491,9 @@ display_opened_cb (GdkDisplayManager *display_manager,
     }
   
   g_value_init (&value, G_TYPE_STRING);
-  screen = gdk_display_get_default_screen (display);
+  screen = cdk_display_get_default_screen (display);
 
-  if (gdk_screen_get_setting (screen, "ctk-modules", &value))
+  if (cdk_screen_get_setting (screen, "ctk-modules", &value))
     {
       settings = ctk_settings_get_for_screen (screen);
       _ctk_modules_settings_changed (settings, g_value_get_string (&value));
@@ -526,8 +526,8 @@ _ctk_modules_init (gint        *argc,
       ctk_argv [*argc] = NULL;
     }
 
-  display_manager = gdk_display_manager_get ();
-  default_display_opened = gdk_display_get_default () != NULL;
+  display_manager = cdk_display_manager_get ();
+  default_display_opened = cdk_display_get_default () != NULL;
   g_signal_connect (display_manager, "notify::default-display",
                     G_CALLBACK (default_display_notify_cb),
                     NULL);

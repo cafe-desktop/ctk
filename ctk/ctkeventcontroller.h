@@ -27,7 +27,7 @@
 typedef struct _CtkEventController CtkEventController;
 typedef struct _CtkEventControllerClass CtkEventControllerClass;
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctktypes.h>
 #include <ctk/ctkenums.h>
 

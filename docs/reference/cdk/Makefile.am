@@ -3,44 +3,44 @@
 AUTOMAKE_OPTIONS = 1.6
 
 # The name of the module.
-DOC_MODULE=gdk3
+DOC_MODULE=cdk3
 
 # The top-level SGML file.
-DOC_MAIN_SGML_FILE=gdk-docs.sgml
+DOC_MAIN_SGML_FILE=cdk-docs.sgml
 
 # Extra options to supply to gtkdoc-scan
 SCAN_OPTIONS=--deprecated-guards=GDK_DISABLE_DEPRECATED \
              --ignore-decorators=G_GNUC_WARN_UNUSED_RESULT
 
 # The directory containing the source code. Relative to $(srcdir)
-DOC_SOURCE_DIR=$(top_srcdir)/gdk $(top_srcdir)/gdk/x11
+DOC_SOURCE_DIR=$(top_srcdir)/cdk $(top_srcdir)/cdk/x11
 
 # Used for dependencies
-HFILE_GLOB=$(top_srcdir)/gdk/*.h $(top_srcdir)/gdk/x11/gdkx.h
-CFILE_GLOB=$(top_srcdir)/gdk/*.c
+HFILE_GLOB=$(top_srcdir)/cdk/*.h $(top_srcdir)/cdk/x11/cdkx.h
+CFILE_GLOB=$(top_srcdir)/cdk/*.c
 
 # Header files to ignore when scanning
 IGNORE_HFILES= 			\
-	gdkintl.h		\
-	gdkmarshalers.h		\
-	gdkkeysyms.h		\
-	gdkinternals.h		\
-	gdkprivate.h		\
-	gdk-private.h		\
-	gdkapplaunchcontextprivate.h \
-	gdkcursorprivate.h	\
-	gdkdevicemanagerprivate.h \
-	gdkdeviceprivate.h	\
-	gdkdisplaymanagerprivate.h \
-	gdkdisplayprivate.h	\
-	gdkdndprivate.h		\
-	gdkframeclockprivate.h	\
-	gdkglcontextprivate.h	\
-	gdkkeysprivate.h	\
-	gdkscreenprivate.h	\
-	gdkseatdefaultprivate.h	\
-	gdkseatprivate.h	\
-	gdkvisualprivate.h	\
+	cdkintl.h		\
+	cdkmarshalers.h		\
+	cdkkeysyms.h		\
+	cdkinternals.h		\
+	cdkprivate.h		\
+	cdk-private.h		\
+	cdkapplaunchcontextprivate.h \
+	cdkcursorprivate.h	\
+	cdkdevicemanagerprivate.h \
+	cdkdeviceprivate.h	\
+	cdkdisplaymanagerprivate.h \
+	cdkdisplayprivate.h	\
+	cdkdndprivate.h		\
+	cdkframeclockprivate.h	\
+	cdkglcontextprivate.h	\
+	cdkkeysprivate.h	\
+	cdkscreenprivate.h	\
+	cdkseatdefaultprivate.h	\
+	cdkseatprivate.h	\
+	cdkvisualprivate.h	\
 	keyname-table.h		\
 	win32			\
 	x11			\
@@ -50,21 +50,21 @@ IGNORE_HFILES= 			\
 
 # Extra files to add when scanning
 EXTRA_HFILES=			\
-	$(top_srcdir)/gdk/x11/gdkx.h
+	$(top_srcdir)/cdk/x11/cdkx.h
 
 # CFLAGS and LDFLAGS for compiling scan program. Only needed
 # if $(DOC_MODULE).types is non-empty.
 AM_CPPFLAGS = 			\
 	-I$(top_srcdir)		\
 	-I$(top_builddir)	\
-	-I$(top_builddir)/gdk	\
+	-I$(top_builddir)/cdk	\
 	$(CTK_DEBUG_FLAGS)	\
 	$(GDK_DEP_CFLAGS)
 
-GTKDOC_LIBS = $(top_builddir)/gdk/libgdk-3.la $(GDK_DEP_LIBS)
+GTKDOC_LIBS = $(top_builddir)/cdk/libcdk-3.la $(GDK_DEP_LIBS)
 
 # Extra options to supply to gtkdoc-mkdb
-MKDB_OPTIONS=--output-format=xml --name-space=gdk
+MKDB_OPTIONS=--output-format=xml --name-space=cdk
 
 # Extra SGML files that are included by DOC_MAIN_SGML_FILE
 content_files = 		\

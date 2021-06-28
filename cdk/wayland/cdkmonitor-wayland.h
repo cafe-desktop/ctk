@@ -19,9 +19,9 @@
 #define __GDK_WAYLAND_MONITOR_PRIVATE_H__
 
 #include <glib.h>
-#include "gdkwaylandmonitor.h"
-#include "gdkmonitorprivate.h"
-#include "gdkprivate-wayland.h"
+#include "cdkwaylandmonitor.h"
+#include "cdkmonitorprivate.h"
+#include "cdkprivate-wayland.h"
 
 struct _GdkWaylandMonitor {
   GdkMonitor parent;

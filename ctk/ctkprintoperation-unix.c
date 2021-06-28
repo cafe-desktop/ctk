@@ -233,7 +233,7 @@ ctk_print_operation_unix_launch_preview (CtkPrintOperation *op,
   if (parent)
     screen = ctk_window_get_screen (parent);
   else
-    screen = gdk_screen_get_default ();
+    screen = cdk_screen_get_default ();
 
   fd = g_file_open_tmp ("settingsXXXXXX.ini", &settings_filename, &error);
   if (fd < 0) 
@@ -297,8 +297,8 @@ ctk_print_operation_unix_launch_preview (CtkPrintOperation *op,
   if (error != NULL)
     goto out;
 
-  context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
-  gdk_app_launch_context_set_screen (context, screen);
+  context = cdk_display_get_app_launch_context (cdk_screen_get_display (screen));
+  cdk_app_launch_context_set_screen (context, screen);
   g_app_info_launch (appinfo, NULL, G_APP_LAUNCH_CONTEXT (context), &error);
 
   g_object_unref (context);
@@ -393,9 +393,9 @@ unix_end_run (CtkPrintOperation *op,
       g_object_ref (op);
       if (!op_unix->data_sent)
 	{
-	  gdk_threads_leave ();  
+	  cdk_threads_leave ();  
 	  g_main_loop_run (op_unix->loop);
-	  gdk_threads_enter ();  
+	  cdk_threads_enter ();  
 	}
       g_main_loop_unref (op_unix->loop);
       op_unix->loop = NULL;
@@ -886,9 +886,9 @@ ctk_print_operation_unix_run_dialog (CtkPrintOperation *op,
       find_printer (printer_name,
 		    (GFunc) found_printer, &rdata);
 
-      gdk_threads_leave ();  
+      cdk_threads_leave ();  
       g_main_loop_run (rdata.loop);
-      gdk_threads_enter ();  
+      cdk_threads_enter ();  
 
       g_main_loop_unref (rdata.loop);
       rdata.loop = NULL;

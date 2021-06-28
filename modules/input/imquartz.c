@@ -27,11 +27,11 @@
 
 #include <AvailabilityMacros.h>
 
-#define CTK_COMPILATION 1 // For gdkquartz-ctk-only.h
+#define CTK_COMPILATION 1 // For cdkquartz-ctk-only.h
 
-#include "gdk/quartz/gdkinternal-quartz.h"
-#include "gdk/quartz/gdkquartz-ctk-only.h"
-#include "gdk/quartz/GdkQuartzView.h"
+#include "cdk/quartz/cdkinternal-quartz.h"
+#include "cdk/quartz/cdkquartz-ctk-only.h"
+#include "cdk/quartz/GdkQuartzView.h"
 
 #define CTK_IM_CONTEXT_TYPE_QUARTZ (type_quartz)
 #define CTK_IM_CONTEXT_QUARTZ(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_IM_CONTEXT_TYPE_QUARTZ, CtkIMContextQuartz))
@@ -216,7 +216,7 @@ quartz_filter_keypress (CtkIMContext *context,
   if (!GDK_IS_QUARTZ_WINDOW (qc->client_window))
     return FALSE;
 
-  NSEvent *nsevent = gdk_quartz_event_get_nsevent ((GdkEvent *)event);
+  NSEvent *nsevent = cdk_quartz_event_get_nsevent ((GdkEvent *)event);
 
   if (!nsevent)
     {
@@ -227,9 +227,9 @@ quartz_filter_keypress (CtkIMContext *context,
         return ctk_im_context_filter_keypress (qc->slave, event);
     }
 
-  nsview = gdk_quartz_window_get_nsview (qc->client_window);
+  nsview = cdk_quartz_window_get_nsview (qc->client_window);
 
-  win = (GdkWindow *)[(GdkQuartzView *)[[nsevent window] contentView] gdkWindow];
+  win = (GdkWindow *)[(GdkQuartzView *)[[nsevent window] contentView] cdkWindow];
   CTK_NOTE (MISC, g_print ("client_window: %p, win: %p, nsview: %p\n",
                            qc->client_window, win, nsview));
 
@@ -272,7 +272,7 @@ discard_preedit (CtkIMContext *context)
   if (!GDK_IS_QUARTZ_WINDOW (qc->client_window))
     return;
 
-  NSView *nsview = gdk_quartz_window_get_nsview (qc->client_window);
+  NSView *nsview = cdk_quartz_window_get_nsview (qc->client_window);
   if (!nsview)
     return;
 
@@ -353,7 +353,7 @@ quartz_set_cursor_location (CtkIMContext *context, GdkRectangle *area)
   qc->cursor_rect->width = area->width;
   qc->cursor_rect->height = area->height;
 
-  gdk_window_get_origin (qc->client_window, &x, &y);
+  cdk_window_get_origin (qc->client_window, &x, &y);
 
   qc->cursor_rect->x = area->x + x;
   qc->cursor_rect->y = area->y + y;
@@ -361,8 +361,8 @@ quartz_set_cursor_location (CtkIMContext *context, GdkRectangle *area)
   if (!GDK_IS_QUARTZ_WINDOW (qc->client_window))
     return;
 
-  nsview = gdk_quartz_window_get_nsview (qc->client_window);
-  win = (GdkWindow *)[ (GdkQuartzView*)nsview gdkWindow];
+  nsview = cdk_quartz_window_get_nsview (qc->client_window);
+  win = (GdkWindow *)[ (GdkQuartzView*)nsview cdkWindow];
   g_object_set_data (G_OBJECT (win), GIC_CURSOR_RECT, qc->cursor_rect);
 }
 

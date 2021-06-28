@@ -17,7 +17,7 @@
  */
 
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 #include "../../ctk/ctkkeyhash.h"
 #include "../../ctk/ctkprivate.h"
 
@@ -36,7 +36,7 @@ test_basic (void)
   GSList *keys;
 
   count = 0;
-  hash = _ctk_key_hash_new (gdk_keymap_get_default (), counting_destroy);
+  hash = _ctk_key_hash_new (cdk_keymap_get_default (), counting_destroy);
 
   keys = _ctk_key_hash_lookup (hash, 0, 0, 0, 0);
   g_assert (keys == NULL);
@@ -75,7 +75,7 @@ test_lookup (CtkKeyHash      *hash,
   GdkKeymapKey *keys;
   gint n_keys;
 
-  gdk_keymap_get_entries_for_keyval (gdk_keymap_get_default (), keyval, &keys, &n_keys);
+  cdk_keymap_get_entries_for_keyval (cdk_keymap_get_default (), keyval, &keys, &n_keys);
   if (n_keys == 0)
     return;
 
@@ -124,7 +124,7 @@ test_match (void)
     {  0, 0 }
   };
 
-  hash = _ctk_key_hash_new (gdk_keymap_get_default (), NULL);
+  hash = _ctk_key_hash_new (cdk_keymap_get_default (), NULL);
   add_entries (hash, entries);
 
   test_lookup (hash, GDK_KEY_a, GDK_CONTROL_MASK, DEFAULT_MASK, 4, 1, 1, 2, 2);
@@ -142,10 +142,10 @@ hyper_equals_super (void)
   GdkModifierType mods1, mods2;
 
   mods1 = GDK_HYPER_MASK;
-  gdk_keymap_map_virtual_modifiers (gdk_keymap_get_default (), &mods1);
+  cdk_keymap_map_virtual_modifiers (cdk_keymap_get_default (), &mods1);
   mods1 = mods1 & ~GDK_HYPER_MASK;
   mods2 = GDK_SUPER_MASK;
-  gdk_keymap_map_virtual_modifiers (gdk_keymap_get_default (), &mods2);
+  cdk_keymap_map_virtual_modifiers (cdk_keymap_get_default (), &mods2);
   mods2 = mods2 & ~GDK_SUPER_MASK;
 
   return mods1 == mods2;
@@ -163,7 +163,7 @@ test_virtual (void)
     {  0, 0 }
   };
 
-  hash = _ctk_key_hash_new (gdk_keymap_get_default (), NULL);
+  hash = _ctk_key_hash_new (cdk_keymap_get_default (), NULL);
   add_entries (hash, entries);
 
   test_lookup (hash, GDK_KEY_a, GDK_SUPER_MASK, DEFAULT_MASK, 2, 1, 1);
@@ -179,7 +179,7 @@ test_virtual (void)
       test_lookup (hash, GDK_KEY_d, GDK_HYPER_MASK, DEFAULT_MASK, 0);
 
       mods = GDK_HYPER_MASK;
-      gdk_keymap_map_virtual_modifiers (gdk_keymap_get_default (), &mods);
+      cdk_keymap_map_virtual_modifiers (cdk_keymap_get_default (), &mods);
       test_lookup (hash, GDK_KEY_d, mods, DEFAULT_MASK, 0);
     }
 

@@ -131,7 +131,7 @@ ctk_cairo_set_source_sys_color (cairo_t *cr,
   GdkRGBA rgba;
 
   ctk_win32_get_sys_color (id, &rgba);
-  gdk_cairo_set_source_rgba (cr, &rgba);
+  cdk_cairo_set_source_rgba (cr, &rgba);
 }
 
 static void
@@ -794,7 +794,7 @@ ctk_win32_get_sys_color (gint     id,
 {
   if (id < 0 || id >= G_N_ELEMENTS (win32_default_colors))
     {
-      gdk_rgba_parse (color, "black");
+      cdk_rgba_parse (color, "black");
       return;
     }
 

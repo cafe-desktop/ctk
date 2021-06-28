@@ -26,7 +26,7 @@
 #define __CTK_PRIVATE_H__
 
 #include <glib-object.h>
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include "ctkcsstypesprivate.h"
 #include "ctktexthandleprivate.h"

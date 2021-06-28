@@ -21,15 +21,15 @@
 #define __GDK_DEVICE_PAD_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdkversionmacros.h>
-#include <gdk/gdktypes.h>
+#include <cdk/cdkversionmacros.h>
+#include <cdk/cdktypes.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DEVICE_PAD         (gdk_device_pad_get_type ())
+#define GDK_TYPE_DEVICE_PAD         (cdk_device_pad_get_type ())
 #define GDK_DEVICE_PAD(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_PAD, GdkDevicePad))
 #define GDK_IS_DEVICE_PAD(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_PAD))
 
@@ -51,21 +51,21 @@ typedef enum {
 } GdkDevicePadFeature;
 
 GDK_AVAILABLE_IN_3_22
-GType gdk_device_pad_get_type          (void) G_GNUC_CONST;
+GType cdk_device_pad_get_type          (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-gint  gdk_device_pad_get_n_groups      (GdkDevicePad *pad);
+gint  cdk_device_pad_get_n_groups      (GdkDevicePad *pad);
 
 GDK_AVAILABLE_IN_3_22
-gint  gdk_device_pad_get_group_n_modes (GdkDevicePad *pad,
+gint  cdk_device_pad_get_group_n_modes (GdkDevicePad *pad,
                                         gint          group_idx);
 
 GDK_AVAILABLE_IN_3_22
-gint  gdk_device_pad_get_n_features    (GdkDevicePad        *pad,
+gint  cdk_device_pad_get_n_features    (GdkDevicePad        *pad,
                                         GdkDevicePadFeature  feature);
 
 GDK_AVAILABLE_IN_3_22
-gint  gdk_device_pad_get_feature_group (GdkDevicePad        *pad,
+gint  cdk_device_pad_get_feature_group (GdkDevicePad        *pad,
                                         GdkDevicePadFeature  feature,
                                         gint                 feature_idx);
 

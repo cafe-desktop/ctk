@@ -356,7 +356,7 @@ ctk_cell_renderer_spinner_render (CtkCellRenderer      *cellr,
   pix_rect.width -= xpad * 2;
   pix_rect.height -= ypad * 2;
 
-  if (!gdk_rectangle_intersect (cell_area, &pix_rect, &draw_rect))
+  if (!cdk_rectangle_intersect (cell_area, &pix_rect, &draw_rect))
     return;
 
   state = CTK_STATE_NORMAL;
@@ -380,7 +380,7 @@ ctk_cell_renderer_spinner_render (CtkCellRenderer      *cellr,
 
   cairo_save (cr);
 
-  gdk_cairo_rectangle (cr, cell_area);
+  cdk_cairo_rectangle (cr, cell_area);
   cairo_clip (cr);
 
   ctk_paint_spinner (ctk_widget_get_style (widget),

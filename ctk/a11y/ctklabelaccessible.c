@@ -1011,7 +1011,7 @@ ctk_label_accessible_get_character_extents (AtkText      *text,
   pango_extents_to_pixels (&char_rect, NULL);
 
   window = ctk_widget_get_window (widget);
-  gdk_window_get_origin (window, &x_window, &y_window);
+  cdk_window_get_origin (window, &x_window, &y_window);
 
   *x = x_window + x_layout + char_rect.x;
   *y = y_window + y_layout + char_rect.y;
@@ -1020,8 +1020,8 @@ ctk_label_accessible_get_character_extents (AtkText      *text,
 
   if (coords == ATK_XY_WINDOW)
     {
-      window = gdk_window_get_toplevel (window);
-      gdk_window_get_origin (window, &x_window, &y_window);
+      window = cdk_window_get_toplevel (window);
+      cdk_window_get_origin (window, &x_window, &y_window);
 
       *x -= x_window;
       *y -= y_window;
@@ -1051,15 +1051,15 @@ ctk_label_accessible_get_offset_at_point (AtkText      *atk_text,
   ctk_label_get_layout_offsets (label, &x_layout, &y_layout);
 
   window = ctk_widget_get_window (widget);
-  gdk_window_get_origin (window, &x_window, &y_window);
+  cdk_window_get_origin (window, &x_window, &y_window);
 
   x_local = x - x_layout - x_window;
   y_local = y - y_layout - y_window;
 
   if (coords == ATK_XY_WINDOW)
     {
-      window = gdk_window_get_toplevel (window);
-      gdk_window_get_origin (window, &x_window, &y_window);
+      window = cdk_window_get_toplevel (window);
+      cdk_window_get_origin (window, &x_window, &y_window);
 
       x_local += x_window;
       y_local += y_window;

@@ -88,7 +88,7 @@ static gboolean
 my_widget_button_press_event_handler (CtkWidget *widget, GdkEventButton *event)
 {
   /* Ignore double-clicks and triple-clicks */
-  if (gdk_event_triggers_context_menu ((GdkEvent *) event) &amp;&amp;
+  if (cdk_event_triggers_context_menu ((GdkEvent *) event) &amp;&amp;
       event->type == GDK_BUTTON_PRESS)
     {
       do_popup_menu (widget, event);
@@ -147,7 +147,7 @@ my_widget_popup_menu_handler (CtkWidget *widget)
     </note>
   </section>
 
-  <section id="checklist-gdkeventexpose-region">
+  <section id="checklist-cdkeventexpose-region">
     <title>Use GdkEventExpose.region</title>
 
     <formalpara>
@@ -184,10 +184,10 @@ my_widget_popup_menu_handler (CtkWidget *widget)
       Regions have an internal representation that is accessible as a
       list of rectangles.  To turn the
       <structfield>GdkEventExpose.region</structfield> field into such
-      a list, use gdk_region_get_rectangles():
+      a list, use cdk_region_get_rectangles():
     </para>
 
-    <programlisting id="gdkregion-get-rectangles">
+    <programlisting id="cdkregion-get-rectangles">
 static gboolean
 my_widget_expose_event_handler (CtkWidget *widget, GdkEventExpose *event)
 {
@@ -195,7 +195,7 @@ my_widget_expose_event_handler (CtkWidget *widget, GdkEventExpose *event)
   int n_rects;
   int i;
 
-  gdk_region_get_rectangles (event-&gt;region, &amp;rects, &amp;n_rects);
+  cdk_region_get_rectangles (event-&gt;region, &amp;rects, &amp;n_rects);
 
   for (i = 0; i &lt; n_rects; i++)
     {

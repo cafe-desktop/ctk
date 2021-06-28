@@ -23,8 +23,8 @@
  */
 
 static const struct {
-  const char *xname, *gdkname;
-} gdk_settings_map[] = {
+  const char *xname, *cdkname;
+} cdk_settings_map[] = {
   {"Net/DoubleClickTime",     "ctk-double-click-time"},
   {"Net/DoubleClickDistance", "ctk-double-click-distance"},
   {"Net/DndDragThreshold",    "ctk-dnd-drag-threshold"},
@@ -72,13 +72,13 @@ static const struct {
   {"Ctk/OverlayScrolling",    "ctk-overlay-scrolling"},
 
   /* These are here in order to be recognized, but are not sent to
-     ctk as they are handled internally by gdk: */
-  {"Gdk/WindowScalingFactor", "gdk-window-scaling-factor"},
-  {"Gdk/UnscaledDPI",         "gdk-unscaled-dpi"}
+     ctk as they are handled internally by cdk: */
+  {"Gdk/WindowScalingFactor", "cdk-window-scaling-factor"},
+  {"Gdk/UnscaledDPI",         "cdk-unscaled-dpi"}
 };
 
 static const char *
-gdk_from_xsettings_name (const char *xname)
+cdk_from_xsettings_name (const char *xname)
 {
   static GHashTable *hash = NULL;
   guint i;
@@ -87,9 +87,9 @@ gdk_from_xsettings_name (const char *xname)
   {
     hash = g_hash_table_new (g_str_hash, g_str_equal);
 
-    for (i = 0; i < G_N_ELEMENTS (gdk_settings_map); i++)
-      g_hash_table_insert (hash, (gpointer)gdk_settings_map[i].xname,
-                                 (gpointer)gdk_settings_map[i].gdkname);
+    for (i = 0; i < G_N_ELEMENTS (cdk_settings_map); i++)
+      g_hash_table_insert (hash, (gpointer)cdk_settings_map[i].xname,
+                                 (gpointer)cdk_settings_map[i].cdkname);
   }
 
   return g_hash_table_lookup (hash, xname);

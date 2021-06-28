@@ -29,7 +29,7 @@ request (CtkWidget      *widget,
 {
   gchar *str;
   GdkScreen *screen = ctk_widget_get_screen (widget);
-  gint i = gdk_screen_get_monitor_at_window (screen,
+  gint i = cdk_screen_get_monitor_at_window (screen,
                                              ctk_widget_get_window (widget));
 
   if (i < 0)
@@ -38,9 +38,9 @@ request (CtkWidget      *widget,
     {
       GdkRectangle monitor;
 
-      gdk_screen_get_monitor_geometry (screen,
+      cdk_screen_get_monitor_geometry (screen,
                                        i, &monitor);
-      primary_monitor = gdk_screen_get_primary_monitor (screen);
+      primary_monitor = cdk_screen_get_primary_monitor (screen);
 
       str = g_strdup_printf ("<big><span foreground='white' background='black'>"
 			     "Monitor %d of %d</span></big>\n"
@@ -75,13 +75,13 @@ main (int argc, char *argv[])
 
   ctk_init (&argc, &argv);
 
-  screen = gdk_screen_get_default ();
+  screen = cdk_screen_get_default ();
 
-  num_monitors = gdk_screen_get_n_monitors (screen);
+  num_monitors = cdk_screen_get_n_monitors (screen);
   if (num_monitors == 1)
     g_warning ("The default screen of the current display only has one monitor.");
 
-  primary_monitor = gdk_screen_get_primary_monitor (screen);
+  primary_monitor = cdk_screen_get_primary_monitor (screen);
 
   for (i = 0; i < num_monitors; i++)
     {
@@ -90,7 +90,7 @@ main (int argc, char *argv[])
       
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       
-      gdk_screen_get_monitor_geometry (screen, i, &monitor);
+      cdk_screen_get_monitor_geometry (screen, i, &monitor);
       ctk_window_set_default_size (CTK_WINDOW (window), 200, 200);
       ctk_window_move (CTK_WINDOW (window), (monitor.width - 200) / 2 + monitor.x,
 		       (monitor.height - 200) / 2 + monitor.y);

@@ -112,7 +112,7 @@ _ctk_accessibility_override_atk_util (void)
 }
 
 static void
-atk_key_event_from_gdk_event_key (GdkEventKey       *key,
+atk_key_event_from_cdk_event_key (GdkEventKey       *key,
                                   AtkKeyEventStruct *event)
 {
   if (key->type == GDK_KEY_PRESS)
@@ -129,7 +129,7 @@ atk_key_event_from_gdk_event_key (GdkEventKey       *key,
       g_unichar_isgraph (g_utf8_get_char (key->string)))
     event->string = key->string;
   else
-    event->string = gdk_keyval_name (key->keyval);
+    event->string = cdk_keyval_name (key->keyval);
 
   event->keycode = key->hardware_keycode;
   event->timestamp = key->time;
@@ -145,7 +145,7 @@ _ctk_accessibility_key_snooper (CtkWidget   *widget,
 
   result = FALSE;
 
-  atk_key_event_from_gdk_event_key (event, &atk_event);
+  atk_key_event_from_cdk_event_key (event, &atk_event);
 
   for (l = key_listener_list; l; l = l->next)
     {

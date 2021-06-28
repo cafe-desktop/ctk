@@ -18,7 +18,7 @@
 #ifndef __GDK_DND_PRIVATE_H__
 #define __GDK_DND_PRIVATE_H__
 
-#include "gdkdnd.h"
+#include "cdkdnd.h"
 
 G_BEGIN_DECLS
 
@@ -110,18 +110,18 @@ struct _GdkDragContext {
 
   GdkDevice *device;
 
-  guint drop_done : 1; /* Whether gdk_drag_drop_done() was performed */
+  guint drop_done : 1; /* Whether cdk_drag_drop_done() was performed */
 };
 
-GList *  gdk_drag_context_list (void);
+GList *  cdk_drag_context_list (void);
 
-void     gdk_drag_context_set_cursor          (GdkDragContext *context,
+void     cdk_drag_context_set_cursor          (GdkDragContext *context,
                                                GdkCursor      *cursor);
-void     gdk_drag_context_cancel              (GdkDragContext      *context,
+void     cdk_drag_context_cancel              (GdkDragContext      *context,
                                                GdkDragCancelReason  reason);
-gboolean gdk_drag_context_handle_source_event (GdkEvent *event);
-gboolean gdk_drag_context_handle_dest_event   (GdkEvent *event);
-GdkCursor * gdk_drag_get_cursor               (GdkDragContext *context,
+gboolean cdk_drag_context_handle_source_event (GdkEvent *event);
+gboolean cdk_drag_context_handle_dest_event   (GdkEvent *event);
+GdkCursor * cdk_drag_get_cursor               (GdkDragContext *context,
                                                GdkDragAction   action);
 
 G_END_DECLS

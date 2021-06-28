@@ -286,7 +286,7 @@ ctk_cell_renderer_text_class_init (CtkCellRendererTextClass *class)
                            CTK_PARAM_WRITABLE);
 
   /**
-   * CtkCellRendererText:background-gdk:
+   * CtkCellRendererText:background-cdk:
    *
    * Background color as a #GdkColor
    *
@@ -294,7 +294,7 @@ ctk_cell_renderer_text_class_init (CtkCellRendererTextClass *class)
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   text_cell_renderer_props[PROP_BACKGROUND_GDK] =
-      g_param_spec_boxed ("background-gdk",
+      g_param_spec_boxed ("background-cdk",
                           P_("Background color"),
                           P_("Background color as a GdkColor"),
                           GDK_TYPE_COLOR,
@@ -322,7 +322,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            CTK_PARAM_WRITABLE);
 
   /**
-   * CtkCellRendererText:foreground-gdk:
+   * CtkCellRendererText:foreground-cdk:
    *
    * Foreground color as a #GdkColor
    *
@@ -330,7 +330,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   text_cell_renderer_props[PROP_FOREGROUND_GDK] =
-      g_param_spec_boxed ("foreground-gdk",
+      g_param_spec_boxed ("foreground-cdk",
                           P_("Foreground color"),
                           P_("Foreground color as a GdkColor"),
                           GDK_TYPE_COLOR,
@@ -1187,7 +1187,7 @@ ctk_cell_renderer_text_set_property (GObject      *object,
 
         if (!g_value_get_string (value))
           set_bg_color (celltext, NULL);       /* reset to background_set to FALSE */
-        else if (gdk_rgba_parse (&rgba, g_value_get_string (value)))
+        else if (cdk_rgba_parse (&rgba, g_value_get_string (value)))
           set_bg_color (celltext, &rgba);
         else
           g_warning ("Don't know color '%s'", g_value_get_string (value));
@@ -1202,7 +1202,7 @@ ctk_cell_renderer_text_set_property (GObject      *object,
 
         if (!g_value_get_string (value))
           set_fg_color (celltext, NULL);       /* reset to foreground_set to FALSE */
-        else if (gdk_rgba_parse (&rgba, g_value_get_string (value)))
+        else if (cdk_rgba_parse (&rgba, g_value_get_string (value)))
           set_fg_color (celltext, &rgba);
         else
           g_warning ("Don't know color '%s'", g_value_get_string (value));
@@ -1848,8 +1848,8 @@ ctk_cell_renderer_text_render (CtkCellRenderer      *cell,
 
   if (priv->background_set && (flags & CTK_CELL_RENDERER_SELECTED) == 0)
     {
-      gdk_cairo_rectangle (cr, background_area);
-      gdk_cairo_set_source_rgba (cr, &priv->background);
+      cdk_cairo_rectangle (cr, background_area);
+      cdk_cairo_set_source_rgba (cr, &priv->background);
       cairo_fill (cr);
     }
 
@@ -1866,7 +1866,7 @@ ctk_cell_renderer_text_render (CtkCellRenderer      *cell,
 
   cairo_save (cr);
 
-  gdk_cairo_rectangle (cr, cell_area);
+  cdk_cairo_rectangle (cr, cell_area);
   cairo_clip (cr);
 
   ctk_render_layout (context, cr,
@@ -1952,7 +1952,7 @@ ctk_cell_renderer_text_popup_unmap (CtkMenu *menu,
   if (priv->entry_menu_popdown_timeout)
     return;
 
-  priv->entry_menu_popdown_timeout = gdk_threads_add_timeout (500, popdown_timeout,
+  priv->entry_menu_popdown_timeout = cdk_threads_add_timeout (500, popdown_timeout,
                                                     data);
   g_source_set_name_by_id (priv->entry_menu_popdown_timeout, "[ctk+] popdown_timeout");
 }

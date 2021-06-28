@@ -239,14 +239,14 @@ ctk_css_style_get_pango_attributes (CtkCssStyle *style)
     {
     case CTK_CSS_TEXT_DECORATION_LINE_UNDERLINE:
       attrs = add_pango_attr (attrs, pango_attr_underline_new (get_pango_underline_from_style (decoration_style)));
-      if (!gdk_rgba_equal (color, decoration_color))
+      if (!cdk_rgba_equal (color, decoration_color))
         attrs = add_pango_attr (attrs, pango_attr_underline_color_new (decoration_color->red * 65535. + 0.5,
                                                                        decoration_color->green * 65535. + 0.5,
                                                                        decoration_color->blue * 65535. + 0.5));
       break;
     case CTK_CSS_TEXT_DECORATION_LINE_LINE_THROUGH:
       attrs = add_pango_attr (attrs, pango_attr_strikethrough_new (TRUE));
-      if (!gdk_rgba_equal (color, decoration_color))
+      if (!cdk_rgba_equal (color, decoration_color))
         attrs = add_pango_attr (attrs, pango_attr_strikethrough_color_new (decoration_color->red * 65535. + 0.5,
                                                                            decoration_color->green * 65535. + 0.5,
                                                                            decoration_color->blue * 65535. + 0.5));

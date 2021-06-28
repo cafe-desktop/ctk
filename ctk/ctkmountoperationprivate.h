@@ -27,8 +27,8 @@
 #define __CTK_MOUNT_OPERATION_PRIVATE_H__
 
 #include <gio/gio.h>
-#include <gdk/gdk.h>
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk/cdk.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 
 struct _CtkMountOperationLookupContext;
 typedef struct _CtkMountOperationLookupContext CtkMountOperationLookupContext;

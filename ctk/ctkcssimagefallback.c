@@ -72,7 +72,7 @@ ctk_css_image_fallback_draw (CtkCssImage *image,
   if (fallback->used < 0)
     {
       if (fallback->color)
-        gdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (fallback->color));
+        cdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (fallback->color));
       else
         cairo_set_source_rgb (cr, 1.0, 0.0, 0.0);
 

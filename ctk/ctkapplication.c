@@ -21,7 +21,7 @@
 #include "config.h"
 
 #include "ctkapplication.h"
-#include "gdkprivate.h"
+#include "cdkprivate.h"
 
 #ifdef G_OS_UNIX
 #include <gio/gunixfdlist.h>
@@ -33,7 +33,7 @@
 #include <unistd.h>
 #endif
 
-#include "gdk/gdk-private.h"
+#include "cdk/cdk-private.h"
 
 #include "ctkapplicationprivate.h"
 #include "ctkclipboardprivate.h"
@@ -303,7 +303,7 @@ ctk_application_startup (GApplication *g_application)
 
   ctk_init (NULL, NULL);
 
-  application->priv->impl = ctk_application_impl_new (application, gdk_display_get_default ());
+  application->priv->impl = ctk_application_impl_new (application, cdk_display_get_default ());
   ctk_application_impl_startup (application->priv->impl, application->priv->register_session);
 
   ctk_application_load_resources (application);
@@ -355,7 +355,7 @@ ctk_application_add_platform_data (GApplication    *application,
    * So we do all the things... which currently is just one thing.
    */
   const gchar *desktop_startup_id =
-    GDK_PRIVATE_CALL (gdk_get_desktop_startup_id) ();
+    GDK_PRIVATE_CALL (cdk_get_desktop_startup_id) ();
   if (desktop_startup_id)
     g_variant_builder_add (builder, "{sv}", "desktop-startup-id",
                            g_variant_new_string (desktop_startup_id));
@@ -367,7 +367,7 @@ ctk_application_before_emit (GApplication *g_application,
 {
   CtkApplication *application = CTK_APPLICATION (g_application);
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   ctk_application_impl_before_emit (application->priv->impl, platform_data);
 }
@@ -383,12 +383,12 @@ ctk_application_after_emit (GApplication *application,
     {
       GdkDisplay *display;
 
-      display = gdk_display_get_default ();
+      display = cdk_display_get_default ();
       if (display)
-        gdk_display_notify_startup_complete (display, startup_notification_id);
+        cdk_display_notify_startup_complete (display, startup_notification_id);
     }
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static void
@@ -401,7 +401,7 @@ ctk_application_init (CtkApplication *application)
   application->priv->accels = ctk_application_accels_new ();
 
   /* getenv now at the latest */
-  GDK_PRIVATE_CALL (gdk_get_desktop_startup_id) ();
+  GDK_PRIVATE_CALL (cdk_get_desktop_startup_id) ();
 }
 
 static void
@@ -646,7 +646,7 @@ sysprof_profiler_method_call (GDBusConnection       *connection,
       int fd = -1;
       int idx;
 
-      if (GDK_PRIVATE_CALL (gdk_profiler_is_running) ())
+      if (GDK_PRIVATE_CALL (cdk_profiler_is_running) ())
         {
           g_dbus_method_invocation_return_error (invocation,
                                                  G_DBUS_ERROR,
@@ -662,13 +662,13 @@ sysprof_profiler_method_call (GDBusConnection       *connection,
       if (fd_list)
         fd = g_unix_fd_list_get (fd_list, idx, NULL);
 
-      GDK_PRIVATE_CALL (gdk_profiler_start) (fd);
+      GDK_PRIVATE_CALL (cdk_profiler_start) (fd);
 
       g_variant_unref (options);
     }
   else if (strcmp (method_name, "Stop") == 0)
     {
-      if (!GDK_PRIVATE_CALL (gdk_profiler_is_running) ())
+      if (!GDK_PRIVATE_CALL (cdk_profiler_is_running) ())
         {
           g_dbus_method_invocation_return_error (invocation,
                                                  G_DBUS_ERROR,
@@ -677,7 +677,7 @@ sysprof_profiler_method_call (GDBusConnection       *connection,
           return;
         }
 
-      GDK_PRIVATE_CALL (gdk_profiler_stop) ();
+      GDK_PRIVATE_CALL (cdk_profiler_stop) ();
     }
   else
     {

@@ -336,12 +336,12 @@ set_busy_cursor (CtkPlacesView *view,
   display = ctk_widget_get_display (widget);
 
   if (busy)
-    cursor = gdk_cursor_new_from_name (display, "progress");
+    cursor = cdk_cursor_new_from_name (display, "progress");
   else
     cursor = NULL;
 
-  gdk_window_set_cursor (ctk_widget_get_window (widget), cursor);
-  gdk_display_flush (display);
+  cdk_window_set_cursor (ctk_widget_get_window (widget), cursor);
+  cdk_display_flush (display);
 
   if (cursor)
     g_object_unref (cursor);
@@ -1787,7 +1787,7 @@ on_button_press_event (CtkPlacesViewRow *row,
                        GdkEventButton   *event)
 {
   if (row &&
-      gdk_event_triggers_context_menu ((GdkEvent*) event) &&
+      cdk_event_triggers_context_menu ((GdkEvent*) event) &&
       event->type == GDK_BUTTON_PRESS)
     {
       popup_menu (row, event);
@@ -1978,9 +1978,9 @@ on_listbox_row_activated (CtkPlacesView    *view,
   priv = ctk_places_view_get_instance_private (view);
 
   event = ctk_get_current_event ();
-  gdk_event_get_button (event, &button);
+  cdk_event_get_button (event, &button);
 
-  if (gdk_event_get_event_type (event) == GDK_BUTTON_RELEASE && button == GDK_BUTTON_MIDDLE)
+  if (cdk_event_get_event_type (event) == GDK_BUTTON_RELEASE && button == GDK_BUTTON_MIDDLE)
     open_flags = CTK_PLACES_OPEN_NEW_TAB;
   else
     open_flags = priv->current_open_flags;

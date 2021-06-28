@@ -92,7 +92,7 @@ ctk_drag_source_event_cb (CtkWidget *widget,
           GdkDragContext *context;
 
           sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (site->drag_gesture));
-          last_event = gdk_event_copy (ctk_gesture_get_last_event (site->drag_gesture, sequence));
+          last_event = cdk_event_copy (ctk_gesture_get_last_event (site->drag_gesture, sequence));
 
           button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (site->drag_gesture));
           ctk_event_controller_reset (CTK_EVENT_CONTROLLER (site->drag_gesture));
@@ -104,7 +104,7 @@ ctk_drag_source_event_cb (CtkWidget *widget,
           if (context != NULL && needs_icon)
             ctk_drag_set_icon_definition (context, site->image_def, 0, 0);
 
-          gdk_event_free (last_event);
+          cdk_event_free (last_event);
 
           return TRUE;
         }

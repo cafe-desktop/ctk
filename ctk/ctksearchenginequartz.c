@@ -16,7 +16,7 @@
  */
 
 #include <Cocoa/Cocoa.h>
-#include <quartz/gdkquartz.h>
+#include <quartz/cdkquartz.h>
 
 #include "ctksearchenginequartz.h"
 

@@ -2071,7 +2071,7 @@ ctk_container_idle_sizer (GdkFrameClock *clock,
     }
   else
     {
-      gdk_frame_clock_request_phase (clock,
+      cdk_frame_clock_request_phase (clock,
                                      GDK_FRAME_CLOCK_PHASE_LAYOUT);
     }
 }
@@ -2094,7 +2094,7 @@ ctk_container_start_idle_sizer (CtkContainer *container)
   container->priv->resize_clock = clock;
   container->priv->resize_handler = g_signal_connect (clock, "layout",
 						      G_CALLBACK (ctk_container_idle_sizer), container);
-  gdk_frame_clock_request_phase (clock,
+  cdk_frame_clock_request_phase (clock,
                                  GDK_FRAME_CLOCK_PHASE_LAYOUT);
 }
 
@@ -3625,7 +3625,7 @@ ctk_container_draw_forall (CtkWidget *widget,
       window = _ctk_widget_get_window (widget);
       if (window != ctk_widget_get_window (CTK_WIDGET (data->container)))
         {
-          siblings = gdk_window_peek_children (gdk_window_get_parent (window));
+          siblings = cdk_window_peek_children (cdk_window_get_parent (window));
           info.window_depth = g_list_index (siblings, window);
         }
       g_array_append_val (data->child_infos, info);
@@ -3698,7 +3698,7 @@ ctk_container_map (CtkWidget *widget)
                         NULL);
 
   if (_ctk_widget_get_has_window (widget))
-    gdk_window_show (_ctk_widget_get_window (widget));
+    cdk_window_show (_ctk_widget_get_window (widget));
 }
 
 static void
@@ -3712,7 +3712,7 @@ ctk_container_unmap (CtkWidget *widget)
    * window, e.g. a CtkSocket would)
    */
   if (_ctk_widget_get_has_window (widget))
-    gdk_window_hide (_ctk_widget_get_window (widget));
+    cdk_window_hide (_ctk_widget_get_window (widget));
 
   ctk_container_forall (CTK_CONTAINER (widget),
                         (CtkCallback)ctk_widget_unmap,
@@ -3733,7 +3733,7 @@ ctk_container_should_propagate_draw (CtkContainer   *container,
    * that is not the one the child widget is in.
    */
   if (_ctk_widget_get_has_window (child))
-    child_in_window = gdk_window_get_parent (_ctk_widget_get_window (child));
+    child_in_window = cdk_window_get_parent (_ctk_widget_get_window (child));
   else
     child_in_window = _ctk_widget_get_window (child);
   if (!ctk_cairo_should_draw_window (cr, child_in_window))
@@ -3758,7 +3758,7 @@ union_with_clip (CtkWidget *widget,
   if (clip->width == 0 || clip->height == 0)
     *clip = widget_clip;
   else
-    gdk_rectangle_union (&widget_clip, clip, clip);
+    cdk_rectangle_union (&widget_clip, clip, clip);
 }
 
 void
@@ -3826,10 +3826,10 @@ ctk_container_propagate_draw (CtkContainer *container,
 
   window = _ctk_widget_get_window (CTK_WIDGET (container));
 
-  for (w = _ctk_widget_get_window (child); w && w != window; w = gdk_window_get_parent (w))
+  for (w = _ctk_widget_get_window (child); w && w != window; w = cdk_window_get_parent (w))
     {
       int wx, wy;
-      gdk_window_get_position (w, &wx, &wy);
+      cdk_window_get_position (w, &wx, &wy);
       x += wx;
       y += wy;
     }

@@ -19,10 +19,10 @@
 #define __GDK_X11_DEVICE_MANAGER_H__
 
 #if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkx.h> can be included directly."
+#error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -30,7 +30,7 @@
 G_BEGIN_DECLS
 
 GDK_AVAILABLE_IN_3_2
-GdkDevice * gdk_x11_device_manager_lookup (GdkDeviceManager *device_manager,
+GdkDevice * cdk_x11_device_manager_lookup (GdkDeviceManager *device_manager,
                                            gint              device_id);
 
 G_END_DECLS

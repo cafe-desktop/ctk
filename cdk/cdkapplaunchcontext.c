@@ -1,4 +1,4 @@
-/* gdkapplaunchcontext.c - Ctk+ implementation for GAppLaunchContext
+/* cdkapplaunchcontext.c - Ctk+ implementation for GAppLaunchContext
 
    Copyright (C) 2007 Red Hat, Inc.
 
@@ -20,13 +20,13 @@
 
 #include "config.h"
 
-#include "gdkapplaunchcontextprivate.h"
-#include "gdkscreen.h"
-#include "gdkintl.h"
+#include "cdkapplaunchcontextprivate.h"
+#include "cdkscreen.h"
+#include "cdkintl.h"
 
 
 /**
- * SECTION:gdkapplaunchcontext
+ * SECTION:cdkapplaunchcontext
  * @Short_description: Startup notification for applications
  * @Title: Application launching
  *
@@ -40,10 +40,10 @@
  * |[<!-- language="C" -->
  * GdkAppLaunchContext *context;
  *
- * context = gdk_display_get_app_launch_context (display);
+ * context = cdk_display_get_app_launch_context (display);
  *
- * gdk_app_launch_context_set_screen (screen);
- * gdk_app_launch_context_set_timestamp (event->time);
+ * cdk_app_launch_context_set_screen (screen);
+ * cdk_app_launch_context_set_timestamp (event->time);
  *
  * if (!g_app_info_launch_default_for_uri ("http://www.ctk.org", context, &error))
  *   g_warning ("Launching failed: %s\n", error->message);
@@ -53,14 +53,14 @@
  */
 
 
-static void    gdk_app_launch_context_finalize    (GObject           *object);
-static gchar * gdk_app_launch_context_get_display (GAppLaunchContext *context,
+static void    cdk_app_launch_context_finalize    (GObject           *object);
+static gchar * cdk_app_launch_context_get_display (GAppLaunchContext *context,
                                                    GAppInfo          *info,
                                                    GList             *files);
-static gchar * gdk_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
+static gchar * cdk_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
                                                              GAppInfo          *info,
                                                              GList             *files);
-static void    gdk_app_launch_context_launch_failed (GAppLaunchContext *context,
+static void    cdk_app_launch_context_launch_failed (GAppLaunchContext *context,
                                                      const gchar       *startup_notify_id);
 
 
@@ -70,10 +70,10 @@ enum
   PROP_DISPLAY
 };
 
-G_DEFINE_TYPE (GdkAppLaunchContext, gdk_app_launch_context, G_TYPE_APP_LAUNCH_CONTEXT)
+G_DEFINE_TYPE (GdkAppLaunchContext, cdk_app_launch_context, G_TYPE_APP_LAUNCH_CONTEXT)
 
 static void
-gdk_app_launch_context_get_property (GObject    *object,
+cdk_app_launch_context_get_property (GObject    *object,
                                      guint       prop_id,
                                      GValue     *value,
                                      GParamSpec *pspec)
@@ -91,7 +91,7 @@ gdk_app_launch_context_get_property (GObject    *object,
 }
 
 static void
-gdk_app_launch_context_set_property (GObject      *object,
+cdk_app_launch_context_set_property (GObject      *object,
                                      guint         prop_id,
                                      const GValue *value,
                                      GParamSpec   *pspec)
@@ -109,19 +109,19 @@ gdk_app_launch_context_set_property (GObject      *object,
 }
 
 static void
-gdk_app_launch_context_class_init (GdkAppLaunchContextClass *klass)
+cdk_app_launch_context_class_init (GdkAppLaunchContextClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   GAppLaunchContextClass *context_class = G_APP_LAUNCH_CONTEXT_CLASS (klass);
 
-  gobject_class->set_property = gdk_app_launch_context_set_property,
-  gobject_class->get_property = gdk_app_launch_context_get_property;
+  gobject_class->set_property = cdk_app_launch_context_set_property,
+  gobject_class->get_property = cdk_app_launch_context_get_property;
 
-  gobject_class->finalize = gdk_app_launch_context_finalize;
+  gobject_class->finalize = cdk_app_launch_context_finalize;
 
-  context_class->get_display = gdk_app_launch_context_get_display;
-  context_class->get_startup_notify_id = gdk_app_launch_context_get_startup_notify_id;
-  context_class->launch_failed = gdk_app_launch_context_launch_failed;
+  context_class->get_display = cdk_app_launch_context_get_display;
+  context_class->get_startup_notify_id = cdk_app_launch_context_get_startup_notify_id;
+  context_class->launch_failed = cdk_app_launch_context_launch_failed;
 
   g_object_class_install_property (gobject_class, PROP_DISPLAY,
     g_param_spec_object ("display", P_("Display"), P_("Display"),
@@ -130,13 +130,13 @@ gdk_app_launch_context_class_init (GdkAppLaunchContextClass *klass)
 }
 
 static void
-gdk_app_launch_context_init (GdkAppLaunchContext *context)
+cdk_app_launch_context_init (GdkAppLaunchContext *context)
 {
   context->workspace = -1;
 }
 
 static void
-gdk_app_launch_context_finalize (GObject *object)
+cdk_app_launch_context_finalize (GObject *object)
 {
   GdkAppLaunchContext *context = GDK_APP_LAUNCH_CONTEXT (object);
 
@@ -151,11 +151,11 @@ gdk_app_launch_context_finalize (GObject *object)
 
   g_free (context->icon_name);
 
-  G_OBJECT_CLASS (gdk_app_launch_context_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_app_launch_context_parent_class)->finalize (object);
 }
 
 static gchar *
-gdk_app_launch_context_get_display (GAppLaunchContext *context,
+cdk_app_launch_context_get_display (GAppLaunchContext *context,
                                     GAppInfo          *info,
                                     GList             *files)
 {
@@ -164,31 +164,31 @@ gdk_app_launch_context_get_display (GAppLaunchContext *context,
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (ctx->screen)
-    return gdk_screen_make_display_name (ctx->screen);
+    return cdk_screen_make_display_name (ctx->screen);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (ctx->display)
     display = ctx->display;
   else
-    display = gdk_display_get_default ();
+    display = cdk_display_get_default ();
 
-  return g_strdup (gdk_display_get_name (display));
+  return g_strdup (cdk_display_get_name (display));
 }
 
 /**
- * gdk_app_launch_context_set_display:
+ * cdk_app_launch_context_set_display:
  * @context: a #GdkAppLaunchContext
  * @display: a #GdkDisplay
  *
  * Sets the display on which applications will be launched when
- * using this context. See also gdk_app_launch_context_set_screen().
+ * using this context. See also cdk_app_launch_context_set_screen().
  *
  * Since: 2.14
  *
- * Deprecated: 3.0: Use gdk_display_get_app_launch_context() instead
+ * Deprecated: 3.0: Use cdk_display_get_app_launch_context() instead
  */
 void
-gdk_app_launch_context_set_display (GdkAppLaunchContext *context,
+cdk_app_launch_context_set_display (GdkAppLaunchContext *context,
                                     GdkDisplay          *display)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
@@ -198,12 +198,12 @@ gdk_app_launch_context_set_display (GdkAppLaunchContext *context,
 }
 
 /**
- * gdk_app_launch_context_set_screen:
+ * cdk_app_launch_context_set_screen:
  * @context: a #GdkAppLaunchContext
  * @screen: a #GdkScreen
  *
  * Sets the screen on which applications will be launched when
- * using this context. See also gdk_app_launch_context_set_display().
+ * using this context. See also cdk_app_launch_context_set_display().
  *
  * If both @screen and @display are set, the @screen takes priority.
  * If neither @screen or @display are set, the default screen and
@@ -212,13 +212,13 @@ gdk_app_launch_context_set_display (GdkAppLaunchContext *context,
  * Since: 2.14
  */
 void
-gdk_app_launch_context_set_screen (GdkAppLaunchContext *context,
+cdk_app_launch_context_set_screen (GdkAppLaunchContext *context,
                                    GdkScreen           *screen)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
   g_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
 
-  g_return_if_fail (screen == NULL || gdk_screen_get_display (screen) == context->display);
+  g_return_if_fail (screen == NULL || cdk_screen_get_display (screen) == context->display);
 
   if (context->screen)
     {
@@ -231,7 +231,7 @@ gdk_app_launch_context_set_screen (GdkAppLaunchContext *context,
 }
 
 /**
- * gdk_app_launch_context_set_desktop:
+ * cdk_app_launch_context_set_desktop:
  * @context: a #GdkAppLaunchContext
  * @desktop: the number of a workspace, or -1
  *
@@ -247,7 +247,7 @@ gdk_app_launch_context_set_screen (GdkAppLaunchContext *context,
  * Since: 2.14
  */
 void
-gdk_app_launch_context_set_desktop (GdkAppLaunchContext *context,
+cdk_app_launch_context_set_desktop (GdkAppLaunchContext *context,
                                     gint                 desktop)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
@@ -256,7 +256,7 @@ gdk_app_launch_context_set_desktop (GdkAppLaunchContext *context,
 }
 
 /**
- * gdk_app_launch_context_set_timestamp:
+ * cdk_app_launch_context_set_timestamp:
  * @context: a #GdkAppLaunchContext
  * @timestamp: a timestamp
  *
@@ -271,7 +271,7 @@ gdk_app_launch_context_set_desktop (GdkAppLaunchContext *context,
  * Since: 2.14
  */
 void
-gdk_app_launch_context_set_timestamp (GdkAppLaunchContext *context,
+cdk_app_launch_context_set_timestamp (GdkAppLaunchContext *context,
                                       guint32              timestamp)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
@@ -280,7 +280,7 @@ gdk_app_launch_context_set_timestamp (GdkAppLaunchContext *context,
 }
 
 /**
- * gdk_app_launch_context_set_icon:
+ * cdk_app_launch_context_set_icon:
  * @context: a #GdkAppLaunchContext
  * @icon: (allow-none): a #GIcon, or %NULL
  *
@@ -290,12 +290,12 @@ gdk_app_launch_context_set_timestamp (GdkAppLaunchContext *context,
  * Window Managers can use this information when displaying startup
  * notification.
  *
- * See also gdk_app_launch_context_set_icon_name().
+ * See also cdk_app_launch_context_set_icon_name().
  *
  * Since: 2.14
  */
 void
-gdk_app_launch_context_set_icon (GdkAppLaunchContext *context,
+cdk_app_launch_context_set_icon (GdkAppLaunchContext *context,
                                  GIcon               *icon)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
@@ -312,13 +312,13 @@ gdk_app_launch_context_set_icon (GdkAppLaunchContext *context,
 }
 
 /**
- * gdk_app_launch_context_set_icon_name:
+ * cdk_app_launch_context_set_icon_name:
  * @context: a #GdkAppLaunchContext
  * @icon_name: (allow-none): an icon name, or %NULL
  *
  * Sets the icon for applications that are launched with this context.
  * The @icon_name will be interpreted in the same way as the Icon field
- * in desktop files. See also gdk_app_launch_context_set_icon().
+ * in desktop files. See also cdk_app_launch_context_set_icon().
  *
  * If both @icon and @icon_name are set, the @icon_name takes priority.
  * If neither @icon or @icon_name is set, the icon is taken from either
@@ -328,7 +328,7 @@ gdk_app_launch_context_set_icon (GdkAppLaunchContext *context,
  * Since: 2.14
  */
 void
-gdk_app_launch_context_set_icon_name (GdkAppLaunchContext *context,
+cdk_app_launch_context_set_icon_name (GdkAppLaunchContext *context,
                                       const char          *icon_name)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
@@ -338,7 +338,7 @@ gdk_app_launch_context_set_icon_name (GdkAppLaunchContext *context,
 }
 
 /**
- * gdk_app_launch_context_new:
+ * cdk_app_launch_context_new:
  *
  * Creates a new #GdkAppLaunchContext.
  *
@@ -346,16 +346,16 @@ gdk_app_launch_context_set_icon_name (GdkAppLaunchContext *context,
  *
  * Since: 2.14
  *
- * Deprecated: 3.0: Use gdk_display_get_app_launch_context() instead
+ * Deprecated: 3.0: Use cdk_display_get_app_launch_context() instead
  */
 GdkAppLaunchContext *
-gdk_app_launch_context_new (void)
+cdk_app_launch_context_new (void)
 {
-  return gdk_display_get_app_launch_context (gdk_display_get_default ());
+  return cdk_display_get_app_launch_context (cdk_display_get_default ());
 }
 
 static char *
-gdk_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
+cdk_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
                                               GAppInfo          *info,
                                               GList             *files)
 {
@@ -363,7 +363,7 @@ gdk_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
 }
 
 static void
-gdk_app_launch_context_launch_failed (GAppLaunchContext *context,
+cdk_app_launch_context_launch_failed (GAppLaunchContext *context,
                                       const gchar       *startup_notify_id)
 {
 }

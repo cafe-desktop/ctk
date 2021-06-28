@@ -27,7 +27,7 @@ AM_CPPFLAGS =						\
 	-I$(top_builddir)				\
 	-I$(top_builddir)/ctk				\
 	-I$(top_srcdir) 				\
-	-I$(top_srcdir)/gdk				\
+	-I$(top_srcdir)/cdk				\
 	$(GMODULE_CFLAGS)				\
 	$(CTK_DEBUG_FLAGS)				\
 	$(CTK_DEP_CFLAGS)				\
@@ -79,11 +79,11 @@ uninstall-ms-lib:
 endif
 
 libadd = 				\
-	$(top_builddir)/gdk/libgdk-3.la	\
+	$(top_builddir)/cdk/libcdk-3.la	\
 	$(GMODULE_LIBS) 		\
 	$(CTK_DEP_LIBS)
 deps = 					\
-	$(top_builddir)/gdk/libgdk-3.la
+	$(top_builddir)/cdk/libcdk-3.la
 
 # libtool stuff: set version and export symbols for resolving
 # since automake doesn't support conditionalized libsomething_la_LDFLAGS
@@ -601,7 +601,7 @@ ctk_private_h_sources =		\
 	ctkwin32themeprivate.h	\
 	ctkwindowprivate.h	\
 	ctktreemenu.h		\
-	gdkpixbufutilsprivate.h \
+	cdkpixbufutilsprivate.h \
 	open-type-layout.h	\
 	language-names.h	\
 	script-names.h
@@ -976,7 +976,7 @@ ctk_base_c_sources = 		\
 	ctkwindowgroup.c	\
 	ctkwin32draw.c		\
 	ctkwin32theme.c		\
-	gdkpixbufutils.c	\
+	cdkpixbufutils.c	\
 	language-names.c	\
 	script-names.c
 
@@ -1448,14 +1448,14 @@ ctkprivatetypebuiltins.c: $(ctk_private_type_h_sources)  ctkprivatetypebuiltins.
 	&& rm -f xgen-gptbc
 
 
-ctktypefuncs.inc: stamp-ctktypebuiltins.h stamp-ctkprivatetypebuiltins.h $(top_srcdir)/ctk/*.h $(top_srcdir)/ctk/a11y/*.h $(top_srcdir)/ctk/deprecated/*.h $(top_srcdir)/gdk/*.h Makefile
+ctktypefuncs.inc: stamp-ctktypebuiltins.h stamp-ctkprivatetypebuiltins.h $(top_srcdir)/ctk/*.h $(top_srcdir)/ctk/a11y/*.h $(top_srcdir)/ctk/deprecated/*.h $(top_srcdir)/cdk/*.h Makefile
 	$(AM_V_GEN) export LC_ALL=C ; \
 	  (echo '#undef CTK_COMPILATION' && echo '#include <ctk/ctkx.h>') > xgen-gtfsrc.c && \
 	  echo 'G_GNUC_BEGIN_IGNORE_DEPRECATIONS' > xgen-gtf && \
 	  ${CPP} $(DEFS) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) xgen-gtfsrc.c | \
 	  $(GREP) -o '\bg[td]k_[a-zA-Z0-9_]*_get_type\b' | \
 	  sort | uniq | \
-	  $(SED) '{ s/^/*tp++ = /; s/$$/();/; s/^.*\(gdk_x11\|ctk_plug_\|ctk_socket_\).*$$/#ifdef GDK_WINDOWING_X11\n&\n#endif/; }' >> xgen-gtf \
+	  $(SED) '{ s/^/*tp++ = /; s/$$/();/; s/^.*\(cdk_x11\|ctk_plug_\|ctk_socket_\).*$$/#ifdef GDK_WINDOWING_X11\n&\n#endif/; }' >> xgen-gtf \
 	&& cp xgen-gtf $@ && rm -f xgen-gtf
 $(srcdir)/ctktestutils.c: ctktypefuncs.inc
 
@@ -1553,7 +1553,7 @@ CTK_MSVC_GIR_CFLAGS =						\
 	-DINCLUDE_IM_ti_et			\
 	-DINCLUDE_IM_viqr			\
 	-DCTK_TEXT_USE_INTERNAL_UNSUPPORTED_API	\
-	-I.. -I../ctk -I../gdk
+	-I.. -I../ctk -I../cdk
 
 INTROSPECTION_INTERMEDIATE_ITEMS = \
 	$(top_builddir)/win32/Ctk-3.0.gir.msvc.introspect		\
@@ -1568,7 +1568,7 @@ Ctk_3_0_gir_MSVC_FILES =		\
 
 Ctk_3_0_gir_MSVC_EXPORT_PACKAGES = $(Ctk_3_0_gir_EXPORT_PACKAGES)
 Ctk_3_0_gir_MSVC_INCLUDE_GIRS = Atk-1.0
-Ctk_3_0_gir_MSVC_LIBS = ctk-3.0 gdk-3.0
+Ctk_3_0_gir_MSVC_LIBS = ctk-3.0 cdk-3.0
 Ctk_3_0_gir_MSVC_CFLAGS = $(CTK_MSVC_GIR_CFLAGS)
 Ctk_3_0_gir_MSVC_SCANNERFLAGS = --warn-all --include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Gdk-3.0.gir'
 
@@ -1623,17 +1623,17 @@ INTROSPECTION_SCANNER_ENV = CC="$(CC)"
 INTROSPECTION_COMPILER_ARGS = \
 	--includedir=$(srcdir) \
 	--includedir=. \
-	--includedir=../gdk
+	--includedir=../cdk
 
-Ctk-3.0.gir: $(INTROSPECTION_SCANNER) libctk-3.la $(top_builddir)/gdk/Gdk-3.0.gir Makefile
+Ctk-3.0.gir: $(INTROSPECTION_SCANNER) libctk-3.la $(top_builddir)/cdk/Gdk-3.0.gir Makefile
 Ctk_3_0_gir_SCANNERFLAGS = 			\
 	--warn-all				\
-	--add-include-path=$(top_builddir)/gdk	\
-	--include-uninstalled=$(top_builddir)/gdk/Gdk-3.0.gir
+	--add-include-path=$(top_builddir)/cdk	\
+	--include-uninstalled=$(top_builddir)/cdk/Gdk-3.0.gir
 Ctk_3_0_gir_INCLUDES = Atk-1.0
 Ctk_3_0_gir_C_INCLUDES = ctk/ctk.h ctk/ctk-a11y.h
 if USE_X11
-Ctk_3_0_gir_SCANNERFLAGS += --add-include-path=$(top_builddir)/gdk/x11
+Ctk_3_0_gir_SCANNERFLAGS += --add-include-path=$(top_builddir)/cdk/x11
 Ctk_3_0_gir_INCLUDES += xlib-2.0
 Ctk_3_0_gir_C_INCLUDES += ctk/ctkx.h
 endif
@@ -1641,7 +1641,7 @@ Ctk_3_0_gir_CFLAGS = \
 		$(AM_CPPFLAGS) \
 		-DCTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 Ctk_3_0_gir_FILES = $(introspection_files)
-Ctk_3_0_gir_LIBS = libctk-3.la $(top_builddir)/gdk/libgdk-3.la
+Ctk_3_0_gir_LIBS = libctk-3.la $(top_builddir)/cdk/libcdk-3.la
 Ctk_3_0_gir_EXPORT_PACKAGES = ctk+-3.0
 INTROSPECTION_GIRS = Ctk-3.0.gir
 
@@ -1668,7 +1668,7 @@ bin_PROGRAMS = \
 ctk_query_immodules_3_0_SOURCES = queryimmodules.c ctkutils.c
 ctk_query_immodules_3_0_LDADD = 		\
 	libctk-3.la				\
-	$(top_builddir)/gdk/libgdk-3.la		\
+	$(top_builddir)/cdk/libcdk-3.la		\
 	$(GMODULE_LIBS)				\
 	$(CTK_DEP_LIBS)
 
@@ -1678,25 +1678,25 @@ ctk_update_icon_cache_LDADD = $(GDK_PIXBUF_LIBS)
 ctk_encode_symbolic_svg_SOURCES = encodesymbolic.c
 ctk_encode_symbolic_svg_LDADD =			\
 	$(GDK_PIXBUF_LIBS)			\
-	$(top_builddir)/gdk/libgdk-3.la		\
+	$(top_builddir)/cdk/libcdk-3.la		\
 	$(CTK_DEP_LIBS)
 
 ctk_builder_tool_SOURCES = ctk-builder-tool.c
 ctk_builder_tool_LDADD =			\
 	libctk-3.la				\
-	$(top_builddir)/gdk/libgdk-3.la		\
+	$(top_builddir)/cdk/libcdk-3.la		\
 	$(CTK_DEP_LIBS)
 
 ctk_query_settings_SOURCES = ctk-query-settings.c
 ctk_query_settings_LDADD= 			\
 	libctk-3.la				\
-	$(top_builddir)/gdk/libgdk-3.la		\
+	$(top_builddir)/cdk/libcdk-3.la		\
 	$(CTK_DEP_LIBS)
 
 ctk_launch_SOURCES = ctk-launch.c
 ctk_launch_LDADD =				\
 	libctk-3.la				\
-	$(top_builddir)/gdk/libgdk-3.la		\
+	$(top_builddir)/cdk/libcdk-3.la		\
 	$(CTK_DEP_LIBS)
 
 if OS_WIN32

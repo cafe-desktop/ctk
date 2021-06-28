@@ -41,133 +41,133 @@ EXTRALIBS = \
 	$(CAIRO_LIBS) $(CAIRO_GOBJECT_LIBS) \
 	$(PANGOWIN32_LIBS) $(PANGOCAIRO_LIBS) $(INTL_LIBS)
 
-gdk-win32-backend :
+cdk-win32-backend :
 	cd win32
 	nmake -nologo -f makefile.msc
 	cd ..
 	
 all: \
 	..\config.h \
-	gdkconfig.h \
-	gdkenumtypes.h \
-	gdkenumtypes.c \
-	gdkmarshalers.h \
-	gdkmarshalers.c \
-	gdk-win32-backend \
-	libgdk-win32-$(CTK_VER)-0.dll \
-#	testgdk.exe \
-#	gdk-win32-$(CTK_VER)s.lib \
-#	gdk-x11-$(CTK_VER).dll \
+	cdkconfig.h \
+	cdkenumtypes.h \
+	cdkenumtypes.c \
+	cdkmarshalers.h \
+	cdkmarshalers.c \
+	cdk-win32-backend \
+	libcdk-win32-$(CTK_VER)-0.dll \
+#	testcdk.exe \
+#	cdk-win32-$(CTK_VER)s.lib \
+#	cdk-x11-$(CTK_VER).dll \
 
-gdk_OBJECTS = \
-	gdk.obj \
-	gdkapplaunchcontext.obj \
-	gdkcairo.obj \
-	gdkcolor.obj \
-	gdkcursor.obj \
-	gdkdevice.obj \
-	gdkdevicemanager.obj \
-	gdkdisplay.obj \
-	gdkdisplaymanager.obj \
-	gdkdnd.obj \
-	gdkenumtypes.obj \
-	gdkevents.obj \
-	gdkglobals.obj \
-	gdkkeynames.obj \
-	gdkkeys.obj \
-	gdkkeyuni.obj \
-	gdkmarshalers.obj \
-	gdkoffscreenwindow.obj \
-	gdkpango.obj \
-	gdkpixbuf-drawable.obj \
-	gdkrectangle.obj \
-	gdkrgba.obj \
-	gdkscreen.obj \
-	gdkselection.obj \
-	gdkvisual.obj \
-	gdkwindow.obj \
-	gdkwindowimpl.obj \
+cdk_OBJECTS = \
+	cdk.obj \
+	cdkapplaunchcontext.obj \
+	cdkcairo.obj \
+	cdkcolor.obj \
+	cdkcursor.obj \
+	cdkdevice.obj \
+	cdkdevicemanager.obj \
+	cdkdisplay.obj \
+	cdkdisplaymanager.obj \
+	cdkdnd.obj \
+	cdkenumtypes.obj \
+	cdkevents.obj \
+	cdkglobals.obj \
+	cdkkeynames.obj \
+	cdkkeys.obj \
+	cdkkeyuni.obj \
+	cdkmarshalers.obj \
+	cdkoffscreenwindow.obj \
+	cdkpango.obj \
+	cdkpixbuf-drawable.obj \
+	cdkrectangle.obj \
+	cdkrgba.obj \
+	cdkscreen.obj \
+	cdkselection.obj \
+	cdkvisual.obj \
+	cdkwindow.obj \
+	cdkwindowimpl.obj \
 
-gdk_public_h_sources = 				\
-	gdk.h					\
-	gdkapplaunchcontext.h			\
-	gdkcairo.h				\
-	gdkcolor.h				\
-	gdkcursor.h				\
-	gdkdevice.h				\
-	gdkdevicemanager.h			\
-	gdkdisplay.h				\
-	gdkdisplaymanager.h			\
-	gdkdnd.h				\
-	gdkevents.h				\
-	gdkkeys.h				\
-	gdkkeysyms.h				\
-	gdkkeysyms-compat.h			\
-	gdkmain.h				\
-	gdkpango.h				\
-	gdkpixbuf.h				\
-	gdkprivate.h				\
-	gdkproperty.h				\
-	gdkrectangle.h				\
-	gdkrgba.h				\
-	gdkscreen.h				\
-	gdkselection.h				\
-	gdktestutils.h				\
-	gdkthreads.h				\
-	gdktypes.h				\
-	gdkvisual.h				\
-	gdkwindow.h
+cdk_public_h_sources = 				\
+	cdk.h					\
+	cdkapplaunchcontext.h			\
+	cdkcairo.h				\
+	cdkcolor.h				\
+	cdkcursor.h				\
+	cdkdevice.h				\
+	cdkdevicemanager.h			\
+	cdkdisplay.h				\
+	cdkdisplaymanager.h			\
+	cdkdnd.h				\
+	cdkevents.h				\
+	cdkkeys.h				\
+	cdkkeysyms.h				\
+	cdkkeysyms-compat.h			\
+	cdkmain.h				\
+	cdkpango.h				\
+	cdkpixbuf.h				\
+	cdkprivate.h				\
+	cdkproperty.h				\
+	cdkrectangle.h				\
+	cdkrgba.h				\
+	cdkscreen.h				\
+	cdkselection.h				\
+	cdktestutils.h				\
+	cdkthreads.h				\
+	cdktypes.h				\
+	cdkvisual.h				\
+	cdkwindow.h
 
 # private marshalers
-gdkmarshalers.h : gdkmarshalers.list
-	$(GLIB)\gobject\glib-genmarshal --prefix=_gdk_marshal gdkmarshalers.list --header >>gdkmarshalers.h
+cdkmarshalers.h : cdkmarshalers.list
+	$(GLIB)\gobject\glib-genmarshal --prefix=_cdk_marshal cdkmarshalers.list --header >>cdkmarshalers.h
 
-gdkmarshalers.c : gdkmarshalers.list
-	$(GLIB)\gobject\glib-genmarshal --prefix=_gdk_marshal gdkmarshalers.list --body >gdkmarshalers.c
+cdkmarshalers.c : cdkmarshalers.list
+	$(GLIB)\gobject\glib-genmarshal --prefix=_cdk_marshal cdkmarshalers.list --body >cdkmarshalers.c
 
-gdkenumtypes.h: $(gdk_public_h_sources) gdkenumtypes.h.template
-	$(PERL) $(GLIB)\gobject\glib-mkenums --template gdkenumtypes.h.template \
-		$(gdk_public_h_sources) > gdkenumtypes.h
+cdkenumtypes.h: $(cdk_public_h_sources) cdkenumtypes.h.template
+	$(PERL) $(GLIB)\gobject\glib-mkenums --template cdkenumtypes.h.template \
+		$(cdk_public_h_sources) > cdkenumtypes.h
 
-gdkenumtypes.c: $(gdk_public_h_sources) gdkenumtypes.c.template
-	$(PERL) $(GLIB)\gobject\glib-mkenums --template gdkenumtypes.c.template \
-		$(gdk_public_h_sources) > gdkenumtypes.c
+cdkenumtypes.c: $(cdk_public_h_sources) cdkenumtypes.c.template
+	$(PERL) $(GLIB)\gobject\glib-mkenums --template cdkenumtypes.c.template \
+		$(cdk_public_h_sources) > cdkenumtypes.c
 
 ..\config.h : ..\config.h.win32
 	copy ..\config.h.win32 ..\config.h
 
-gdkconfig.h : gdkconfig.h.win32
-	copy gdkconfig.h.win32 gdkconfig.h
+cdkconfig.h : cdkconfig.h.win32
+	copy cdkconfig.h.win32 cdkconfig.h
 
-gdk.def: gdk.symbols
-	echo EXPORTS > gdk.def
+cdk.def: cdk.symbols
+	echo EXPORTS > cdk.def
 	cl /EP -DG_OS_WIN32 -DGDK_WINDOWING_WIN32 \
 		-DG_GNUC_CONST= \
-		gdk.symbols >> gdk.def
+		cdk.symbols >> cdk.def
 
 # /force /verbose:lib 
-libgdk-win32-$(CTK_VER)-0.dll : $(gdk_OBJECTS) gdk.def win32\gdk-win32.lib
-	$(CC) $(CFLAGS) -LD -Fe$@ $(gdk_OBJECTS) win32\gdk-win32.lib $(EXTRALIBS) \
-	gdi32.lib user32.lib imm32.lib shell32.lib ole32.lib uuid.lib win32\gdk.res \
-	$(LDFLAGS) /implib:gdk-win32-$(CTK_VER).lib /def:gdk.def
+libcdk-win32-$(CTK_VER)-0.dll : $(cdk_OBJECTS) cdk.def win32\cdk-win32.lib
+	$(CC) $(CFLAGS) -LD -Fe$@ $(cdk_OBJECTS) win32\cdk-win32.lib $(EXTRALIBS) \
+	gdi32.lib user32.lib imm32.lib shell32.lib ole32.lib uuid.lib win32\cdk.res \
+	$(LDFLAGS) /implib:cdk-win32-$(CTK_VER).lib /def:cdk.def
 
-gdk-win32-$(CTK_VER)s.lib : $(gdk_OBJECTS)
-	lib /out:gdk-win32-$(CTK_VER)s.lib $(gdk_OBJECTS) win32\gdk-win32.lib
+cdk-win32-$(CTK_VER)s.lib : $(cdk_OBJECTS)
+	lib /out:cdk-win32-$(CTK_VER)s.lib $(cdk_OBJECTS) win32\cdk-win32.lib
 
-gdk-x11-$(CTK_VER).dll : $(gdk_OBJECTS) gdk.def x11\gdk-x11.lib
-	$(CC) $(CFLAGS) -LD -Fegdk-x11-$(CTK_VER).dll $(gdk_OBJECTS) \
+cdk-x11-$(CTK_VER).dll : $(cdk_OBJECTS) cdk.def x11\cdk-x11.lib
+	$(CC) $(CFLAGS) -LD -Fecdk-x11-$(CTK_VER).dll $(cdk_OBJECTS) \
 	$(PANGO)\pango\pangox-$(PANGO_VER).lib \
-	x11\gdk-x11.lib $(X11_LIBS) $(EXTRALIBS) user32.lib $(LDFLAGS) /def:gdk.def
+	x11\cdk-x11.lib $(X11_LIBS) $(EXTRALIBS) user32.lib $(LDFLAGS) /def:cdk.def
 
-testgdk.exe : libgdk-win32-$(CTK_VER)-0.dll testgdk.obj
-	$(CC) -Fetestgdk.exe testgdk.obj gdk-win32-$(CTK_VER).lib $(EXTRALIBS) $(LDFLAGS)
+testcdk.exe : libcdk-win32-$(CTK_VER)-0.dll testcdk.obj
+	$(CC) -Fetestcdk.exe testcdk.obj cdk-win32-$(CTK_VER).lib $(EXTRALIBS) $(LDFLAGS)
 
 clean::
 	cd win32
 	nmake -f makefile.msc clean
 	cd ..
-	del gdkmarshalers.c
-	del gdkmarshalers.h
+	del cdkmarshalers.c
+	del cdkmarshalers.h
 	del *.dll
 	del *.obj
 	del *.lib

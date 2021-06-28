@@ -1,5 +1,5 @@
 /* CTK - The GIMP Toolkit
- * gdkasync.h: Utility functions using the Xlib asynchronous interfaces
+ * cdkasync.h: Utility functions using the Xlib asynchronous interfaces
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -19,7 +19,7 @@
 #ifndef __GDK_ASYNC_H__
 #define __GDK_ASYNC_H__
 
-#include "gdkdisplay.h"
+#include "cdkdisplay.h"
 #include <X11/Xlib.h>
 
 G_BEGIN_DECLS
@@ -45,7 +45,7 @@ struct _GdkChildInfoX11
   guint window_class : 2;
 };
 
-void _gdk_x11_send_client_message_async (GdkDisplay            *display,
+void _cdk_x11_send_client_message_async (GdkDisplay            *display,
 					 Window                 window,
 					 gboolean               propagate,
 					 glong                  event_mask,
@@ -53,14 +53,14 @@ void _gdk_x11_send_client_message_async (GdkDisplay            *display,
 					 GdkSendXEventCallback  callback,
 					 gpointer               data);
 
-gboolean _gdk_x11_get_window_child_info (GdkDisplay       *display,
+gboolean _cdk_x11_get_window_child_info (GdkDisplay       *display,
 					 Window            window,
 					 gboolean          get_wm_state,
 					 gboolean         *win_has_wm_state,
 					 GdkChildInfoX11 **children,
 					 guint            *nchildren);
 
-void _gdk_x11_roundtrip_async           (GdkDisplay           *display, 
+void _cdk_x11_roundtrip_async           (GdkDisplay           *display, 
 					 GdkRoundTripCallback callback,
 					 gpointer              data);
 

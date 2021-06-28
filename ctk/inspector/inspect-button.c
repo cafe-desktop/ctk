@@ -77,8 +77,8 @@ find_widget (CtkWidget      *widget,
           if (window == NULL)
             return;
 
-          twidth = gdk_window_get_width (window);
-          theight = gdk_window_get_height (window);
+          twidth = cdk_window_get_width (window);
+          theight = cdk_window_get_height (window);
 
           if (new_allocation.x < 0)
             {
@@ -95,13 +95,13 @@ find_widget (CtkWidget      *widget,
           if (new_allocation.y + new_allocation.height > theight)
             new_allocation.height = theight - new_allocation.y;
 
-          gdk_window_get_position (window, &tx, &ty);
+          cdk_window_get_position (window, &tx, &ty);
           new_allocation.x += tx;
           x_offset += tx;
           new_allocation.y += ty;
           y_offset += ty;
 
-          window = gdk_window_get_parent (window);
+          window = cdk_window_get_parent (window);
         }
     }
 
@@ -150,19 +150,19 @@ find_widget_at_pointer (GdkDevice *device)
   gint x, y;
   FindWidgetData data;
 
-  pointer_window = gdk_device_get_window_at_position (device, NULL, NULL);
+  pointer_window = cdk_device_get_window_at_position (device, NULL, NULL);
 
   if (pointer_window)
     {
       gpointer widget_ptr;
 
-      gdk_window_get_user_data (pointer_window, &widget_ptr);
+      cdk_window_get_user_data (pointer_window, &widget_ptr);
       widget = widget_ptr;
     }
 
   if (widget)
     {
-      gdk_window_get_device_position (ctk_widget_get_window (widget),
+      cdk_window_get_device_position (ctk_widget_get_window (widget),
                                       device, &x, &y, NULL);
 
       data.x = x;
@@ -231,11 +231,11 @@ on_inspect_widget (CtkWidget          *button,
 {
   CtkWidget *widget;
 
-  gdk_window_raise (ctk_widget_get_window (CTK_WIDGET (iw)));
+  cdk_window_raise (ctk_widget_get_window (CTK_WIDGET (iw)));
 
   clear_flash (iw);
 
-  widget = find_widget_at_pointer (gdk_event_get_device (event));
+  widget = find_widget_at_pointer (cdk_event_get_device (event));
 
   if (widget)
     select_widget (iw, widget);
@@ -248,7 +248,7 @@ on_highlight_widget (CtkWidget          *button,
 {
   CtkWidget *widget;
 
-  widget = find_widget_at_pointer (gdk_event_get_device (event));
+  widget = find_widget_at_pointer (cdk_event_get_device (event));
 
   if (widget == NULL)
     {
@@ -278,8 +278,8 @@ deemphasize_window (CtkWidget *window)
   GdkScreen *screen;
 
   screen = ctk_widget_get_screen (window);
-  if (gdk_screen_is_composited (screen) &&
-      ctk_widget_get_visual (window) == gdk_screen_get_rgba_visual (screen))
+  if (cdk_screen_is_composited (screen) &&
+      ctk_widget_get_visual (window) == cdk_screen_get_rgba_visual (screen))
     {
       cairo_rectangle_int_t rect;
       cairo_region_t *region;
@@ -291,7 +291,7 @@ deemphasize_window (CtkWidget *window)
       cairo_region_destroy (region);
     }
   else
-    gdk_window_lower (ctk_widget_get_window (window));
+    cdk_window_lower (ctk_widget_get_window (window));
 }
 
 static void
@@ -300,14 +300,14 @@ reemphasize_window (CtkWidget *window)
   GdkScreen *screen;
 
   screen = ctk_widget_get_screen (window);
-  if (gdk_screen_is_composited (screen) &&
-      ctk_widget_get_visual (window) == gdk_screen_get_rgba_visual (screen))
+  if (cdk_screen_is_composited (screen) &&
+      ctk_widget_get_visual (window) == cdk_screen_get_rgba_visual (screen))
     {
       ctk_widget_set_opacity (window, 1.0);
       ctk_widget_input_shape_combine_region (window, NULL);
     }
   else
-    gdk_window_raise (ctk_widget_get_window (window));
+    cdk_window_raise (ctk_widget_get_window (window));
 }
 
 static gboolean
@@ -322,7 +322,7 @@ property_query_event (CtkWidget *widget,
       g_signal_handlers_disconnect_by_func (widget, property_query_event, data);
       ctk_grab_remove (widget);
       if (iw->grabbed)
-        gdk_seat_ungrab (gdk_event_get_seat (event));
+        cdk_seat_ungrab (cdk_event_get_seat (event));
       reemphasize_window (CTK_WIDGET (iw));
 
       on_inspect_widget (widget, event, data);
@@ -340,7 +340,7 @@ property_query_event (CtkWidget *widget,
           g_signal_handlers_disconnect_by_func (widget, property_query_event, data);
           ctk_grab_remove (widget);
           if (iw->grabbed)
-            gdk_seat_ungrab (gdk_event_get_seat (event));
+            cdk_seat_ungrab (cdk_event_get_seat (event));
           reemphasize_window (CTK_WIDGET (iw));
 
           clear_flash (iw);
@@ -360,7 +360,7 @@ ctk_inspector_on_inspect (CtkWidget          *button,
 
   if (!iw->invisible)
     {
-      iw->invisible = ctk_invisible_new_for_screen (gdk_screen_get_default ());
+      iw->invisible = ctk_invisible_new_for_screen (cdk_screen_get_default ());
       ctk_widget_add_events (iw->invisible,
                              GDK_POINTER_MOTION_MASK |
                              GDK_BUTTON_PRESS_MASK |
@@ -371,9 +371,9 @@ ctk_inspector_on_inspect (CtkWidget          *button,
       ctk_widget_show (iw->invisible);
     }
 
-  display = gdk_display_get_default ();
-  cursor = gdk_cursor_new_from_name (display, "crosshair");
-  status = gdk_seat_grab (gdk_display_get_default_seat (display),
+  display = cdk_display_get_default ();
+  cursor = cdk_cursor_new_from_name (display, "crosshair");
+  status = cdk_seat_grab (cdk_display_get_default_seat (display),
                           ctk_widget_get_window (iw->invisible),
                           GDK_SEAT_CAPABILITY_ALL_POINTING, TRUE,
                           cursor, NULL, NULL, NULL);
@@ -483,8 +483,8 @@ ctk_inspector_window_select_widget_under_pointer (CtkInspectorWindow *iw)
   GdkDevice *device;
   CtkWidget *widget;
 
-  display = gdk_display_get_default ();
-  device = gdk_seat_get_pointer (gdk_display_get_default_seat (display));
+  display = cdk_display_get_default ();
+  device = cdk_seat_get_pointer (cdk_display_get_default_seat (display));
 
   widget = find_widget_at_pointer (device);
 

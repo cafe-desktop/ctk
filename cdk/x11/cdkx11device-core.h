@@ -18,11 +18,11 @@
 #ifndef __GDK_X11_DEVICE_CORE_H__
 #define __GDK_X11_DEVICE_CORE_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_DEVICE_CORE         (gdk_x11_device_core_get_type ())
+#define GDK_TYPE_X11_DEVICE_CORE         (cdk_x11_device_core_get_type ())
 #define GDK_X11_DEVICE_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_X11_DEVICE_CORE, GdkX11DeviceCore))
 #define GDK_X11_DEVICE_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_X11_DEVICE_CORE, GdkX11DeviceCoreClass))
 #define GDK_IS_X11_DEVICE_CORE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_X11_DEVICE_CORE))
@@ -34,7 +34,7 @@ typedef struct _GdkX11DeviceCoreClass GdkX11DeviceCoreClass;
 
 
 GDK_AVAILABLE_IN_ALL
-GType gdk_x11_device_core_get_type (void) G_GNUC_CONST;
+GType cdk_x11_device_core_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 

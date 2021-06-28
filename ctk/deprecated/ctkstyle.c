@@ -658,7 +658,7 @@ set_color_from_context (CtkStyle *style,
 
   if (!(color->alpha > 0.01))
     {
-      gdk_rgba_free (color);
+      cdk_rgba_free (color);
       return FALSE;
     }
 
@@ -666,7 +666,7 @@ set_color_from_context (CtkStyle *style,
   dest->red = CLAMP ((guint) (color->red * 65535), 0, 65535);
   dest->green = CLAMP ((guint) (color->green * 65535), 0, 65535);
   dest->blue = CLAMP ((guint) (color->blue * 65535), 0, 65535);
-  gdk_rgba_free (color);
+  cdk_rgba_free (color);
 
   return TRUE;
 }
@@ -885,7 +885,7 @@ ctk_style_new (void)
   path = ctk_widget_path_new ();
   ctk_widget_path_append_type (path, CTK_TYPE_WIDGET);
 
-  style = _ctk_style_new_for_path (gdk_screen_get_default (), path);
+  style = _ctk_style_new_for_path (cdk_screen_get_default (), path);
 
   ctk_widget_path_free (path);
 
@@ -1278,7 +1278,7 @@ ctk_style_real_set_background (CtkStyle    *style,
 			       GdkWindow   *window,
 			       CtkStateType state_type)
 {
-  gdk_window_set_background_pattern (window, style->background[state_type]);
+  cdk_window_set_background_pattern (window, style->background[state_type]);
 }
 
 /**
@@ -1353,12 +1353,12 @@ ctk_style_apply_default_background (CtkStyle          *style,
 
   if (style->background[state_type] == NULL)
     {
-      GdkWindow *parent = gdk_window_get_parent (window);
+      GdkWindow *parent = cdk_window_get_parent (window);
       int x_offset, y_offset;
 
       if (parent)
         {
-          gdk_window_get_position (window, &x_offset, &y_offset);
+          cdk_window_get_position (window, &x_offset, &y_offset);
           cairo_translate (cr, -x_offset, -y_offset);
           ctk_style_apply_default_background (style, cr,
                                               parent, state_type,
@@ -1367,7 +1367,7 @@ ctk_style_apply_default_background (CtkStyle          *style,
           goto out;
         }
       else
-        gdk_cairo_set_source_color (cr, &style->bg[state_type]);
+        cdk_cairo_set_source_color (cr, &style->bg[state_type]);
     }
   else
     cairo_set_source (cr, style->background[state_type]);
@@ -1440,7 +1440,7 @@ _cairo_draw_line (cairo_t  *cr,
 {
   cairo_save (cr);
 
-  gdk_cairo_set_source_color (cr, color);
+  cdk_cairo_set_source_color (cr, color);
   cairo_set_line_cap (cr, CAIRO_LINE_CAP_SQUARE);
 
   cairo_move_to (cr, x1 + 0.5, y1 + 0.5);
@@ -1735,7 +1735,7 @@ draw_arrow (cairo_t       *cr,
 	    gint           width,
 	    gint           height)
 {
-  gdk_cairo_set_source_color (cr, color);
+  cdk_cairo_set_source_color (cr, color);
   cairo_save (cr);
     
   if (arrow_type == CTK_ARROW_DOWN)
@@ -4051,7 +4051,7 @@ ctk_widget_get_default_style (void)
 {
   static CtkStyle *default_style = NULL;
   CtkStyle *style = NULL;
-  GdkScreen *screen = gdk_screen_get_default ();
+  GdkScreen *screen = cdk_screen_get_default ();
 
   if (screen)
     style = ctk_widget_get_default_style_for_screen (screen);

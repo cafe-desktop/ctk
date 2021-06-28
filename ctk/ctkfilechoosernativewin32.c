@@ -47,7 +47,7 @@
 #include "ctkfilechooserentry.h"
 #include "ctkfilefilterprivate.h"
 
-#include "win32/gdkwin32.h"
+#include "win32/cdkwin32.h"
 #include <shlobj.h>
 #include <windows.h>
 
@@ -942,7 +942,7 @@ ctk_file_chooser_native_win32_show (CtkFileChooserNative *self)
   if (transient_for)
     {
       ctk_widget_realize (CTK_WIDGET (transient_for));
-      data->parent = gdk_win32_window_get_handle (ctk_widget_get_window (CTK_WIDGET (transient_for)));
+      data->parent = cdk_win32_window_get_handle (ctk_widget_get_window (CTK_WIDGET (transient_for)));
 
       if (ctk_native_dialog_get_modal (CTK_NATIVE_DIALOG (self)))
         data->modal = TRUE;

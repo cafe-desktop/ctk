@@ -33,9 +33,9 @@
 
 #include "config.h"
 
-#include "gdkprivate-win32.h"
-#include "gdkdisplay-win32.h"
-#include "gdkmonitor-win32.h"
+#include "cdkprivate-win32.h"
+#include "cdkdisplay-win32.h"
+#include "cdkmonitor-win32.h"
 
 #include <glib.h>
 #include <gio/gio.h>
@@ -44,9 +44,9 @@
 #include <devpropdef.h>
 #include <setupapi.h>
 
-#include "gdkprivate-win32.h"
+#include "cdkprivate-win32.h"
 
-G_DEFINE_TYPE (GdkWin32Monitor, gdk_win32_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (GdkWin32Monitor, cdk_win32_monitor, GDK_TYPE_MONITOR)
 
 /* MinGW-w64 carelessly put DISPLAYCONFIG_OUTPUT_TECHNOLOGY_OTHER = -1 into this
  * enum, as documented by MSDN. However, with
@@ -340,7 +340,7 @@ get_monitor_devices (GdkWin32Display *win32_display)
           if (proptype == DEVPROP_TYPE_STRING)
             {
               gchar *manufacturer = g_utf16_to_utf8 (prop, -1, NULL, NULL, NULL);
-              gdk_monitor_set_manufacturer (mon, manufacturer);
+              cdk_monitor_set_manufacturer (mon, manufacturer);
               g_free (manufacturer);
             }
 
@@ -356,7 +356,7 @@ get_monitor_devices (GdkWin32Display *win32_display)
           if (proptype == DEVPROP_TYPE_STRING)
             {
               gchar *name = g_utf16_to_utf8 (prop, -1, NULL, NULL, NULL);
-              gdk_monitor_set_model (mon, name);
+              cdk_monitor_set_model (mon, name);
               g_free (name);
             }
 
@@ -382,7 +382,7 @@ get_monitor_devices (GdkWin32Display *win32_display)
                                 NULL, &edid_type,
                                 edid, &edid_size) == ERROR_SUCCESS)
             {
-              gdk_monitor_set_physical_size (mon,
+              cdk_monitor_set_physical_size (mon,
                                              ((edid[68] & 0x00F0) << 4) + edid[66],
                                              ((edid[68] & 0x000F) << 8) + edid[67]);
             }
@@ -517,12 +517,12 @@ populate_monitor_devices_from_display_config (GPtrArray *monitors)
         {
           /* monitorFriendlyDeviceName is usually nicer */
           gchar *name = g_utf16_to_utf8 (tdn.monitorFriendlyDeviceName, -1, NULL, NULL, NULL);
-          gdk_monitor_set_model (mon, name);
+          cdk_monitor_set_model (mon, name);
           g_free (name);
         }
 
       refresh = &dispconf_paths[path_index].targetInfo.refreshRate;
-      gdk_monitor_set_refresh_rate (mon,
+      cdk_monitor_set_refresh_rate (mon,
                                     refresh->Numerator * 1000 / refresh->Denominator);
     }
 
@@ -667,7 +667,7 @@ enum_monitor (HMONITOR hmonitor,
 
           mon = GDK_MONITOR (w32mon);
 
-          if (gdk_monitor_get_model (mon) == NULL)
+          if (cdk_monitor_get_model (mon) == NULL)
             {
               
               gchar *name = NULL;
@@ -681,18 +681,18 @@ enum_monitor (HMONITOR hmonitor,
                 name = g_utf16_to_utf8 (dd.DeviceName, -1, NULL, NULL, NULL);
 
               if (name != NULL)
-                gdk_monitor_set_model (mon, name);
+                cdk_monitor_set_model (mon, name);
 
               g_free (name);
             }
 
           /* GetDeviceCaps seems to provide a wild guess, prefer more precise EDID info */
-          if (gdk_monitor_get_width_mm (mon) == 0 &&
-              gdk_monitor_get_height_mm (mon) == 0)
+          if (cdk_monitor_get_width_mm (mon) == 0 &&
+              cdk_monitor_get_height_mm (mon) == 0)
             {
               HDC hDC = CreateDCW (L"DISPLAY", monitor_info.szDevice, NULL, NULL);
 
-              gdk_monitor_set_physical_size (mon,
+              cdk_monitor_set_physical_size (mon,
                                              GetDeviceCaps (hDC, HORZSIZE),
                                              GetDeviceCaps (hDC, VERTSIZE));
               DeleteDC (hDC);
@@ -702,8 +702,8 @@ enum_monitor (HMONITOR hmonitor,
            * prefer more precise refresh_rate found earlier,
            * which comes as a Numerator & Denominator pair and is more precise.
            */
-          if (gdk_monitor_get_refresh_rate (mon) == 0)
-            gdk_monitor_set_refresh_rate (mon, frequency * 1000);
+          if (cdk_monitor_get_refresh_rate (mon) == 0)
+            cdk_monitor_set_refresh_rate (mon, frequency * 1000);
 
           /* This is the reason this function exists. This data is not available
            * via other functions.
@@ -720,7 +720,7 @@ enum_monitor (HMONITOR hmonitor,
           else
             {
               /* First acquire the scale using the current screen */
-              scale = _gdk_win32_display_get_monitor_scale_factor (data->display, NULL, NULL, NULL);
+              scale = _cdk_win32_display_get_monitor_scale_factor (data->display, NULL, NULL, NULL);
 
               /* acquire the scale using the monitor which the window is nearest on Windows 8.1+ */
               if (data->display->have_at_least_win81)
@@ -728,17 +728,17 @@ enum_monitor (HMONITOR hmonitor,
                   HMONITOR hmonitor;
                   POINT pt;
 
-                  /* Not subtracting _gdk_offset_x and _gdk_offset_y because they will only
-                   * be added later on, in _gdk_win32_display_get_monitor_list().
+                  /* Not subtracting _cdk_offset_x and _cdk_offset_y because they will only
+                   * be added later on, in _cdk_win32_display_get_monitor_list().
                    */
                   pt.x = w32mon->work_rect.x + w32mon->work_rect.width / 2;
                   pt.y = w32mon->work_rect.y + w32mon->work_rect.height / 2;
                   hmonitor = MonitorFromPoint (pt, MONITOR_DEFAULTTONEAREST);
-                  scale = _gdk_win32_display_get_monitor_scale_factor (data->display, hmonitor, NULL, NULL);
+                  scale = _cdk_win32_display_get_monitor_scale_factor (data->display, hmonitor, NULL, NULL);
                 }
             }
 
-          gdk_monitor_set_scale_factor (mon, scale);
+          cdk_monitor_set_scale_factor (mon, scale);
           /* Now apply the scale to the work rectangle */
           w32mon->work_rect.x /= scale;
           w32mon->work_rect.y /= scale;
@@ -749,8 +749,8 @@ enum_monitor (HMONITOR hmonitor,
           rect.y = monitor_info.rcMonitor.top / scale;
           rect.width = (monitor_info.rcMonitor.right - monitor_info.rcMonitor.left) / scale;
           rect.height = (monitor_info.rcMonitor.bottom - monitor_info.rcMonitor.top) / scale;
-          gdk_monitor_set_position (mon, rect.x, rect.y);
-          gdk_monitor_set_size (mon, rect.width, rect.height);
+          cdk_monitor_set_position (mon, rect.x, rect.y);
+          cdk_monitor_set_size (mon, rect.width, rect.height);
 
           if (monitor_info.dwFlags & MONITORINFOF_PRIMARY && i != 0)
             {
@@ -797,7 +797,7 @@ prune_monitors (EnumMonitorData *data)
 }
 
 const gchar *
-_gdk_win32_monitor_get_pixel_structure (GdkMonitor *monitor)
+_cdk_win32_monitor_get_pixel_structure (GdkMonitor *monitor)
 {
   GdkWin32Monitor *w32_m;
   BOOL enabled = TRUE;
@@ -849,7 +849,7 @@ _gdk_win32_monitor_get_pixel_structure (GdkMonitor *monitor)
 }
 
 GPtrArray *
-_gdk_win32_display_get_monitor_list (GdkWin32Display *win32_display)
+_cdk_win32_display_get_monitor_list (GdkWin32Display *win32_display)
 {
   EnumMonitorData data;
   gint i;
@@ -881,8 +881,8 @@ _gdk_win32_display_get_monitor_list (GdkWin32Display *win32_display)
       prune_monitors (&data);
     }
 
-  _gdk_offset_x = G_MININT;
-  _gdk_offset_y = G_MININT;
+  _cdk_offset_x = G_MININT;
+  _cdk_offset_y = G_MININT;
 
   for (i = 0; i < data.monitors->len; i++)
     {
@@ -892,13 +892,13 @@ _gdk_win32_display_get_monitor_list (GdkWin32Display *win32_display)
       m = g_ptr_array_index (data.monitors, i);
 
       /* Calculate offset */
-      gdk_monitor_get_geometry (GDK_MONITOR (m), &rect);
-      _gdk_offset_x = MAX (_gdk_offset_x, -rect.x);
-      _gdk_offset_y = MAX (_gdk_offset_y, -rect.y);
+      cdk_monitor_get_geometry (GDK_MONITOR (m), &rect);
+      _cdk_offset_x = MAX (_cdk_offset_x, -rect.x);
+      _cdk_offset_y = MAX (_cdk_offset_y, -rect.y);
     }
 
   GDK_NOTE (MISC, g_print ("Multi-monitor offset: (%d,%d)\n",
-                           _gdk_offset_x, _gdk_offset_y));
+                           _cdk_offset_x, _cdk_offset_y));
 
   /* Translate monitor coords into GDK coordinate space */
   for (i = 0; i < data.monitors->len; i++)
@@ -908,13 +908,13 @@ _gdk_win32_display_get_monitor_list (GdkWin32Display *win32_display)
 
       m = g_ptr_array_index (data.monitors, i);
 
-      gdk_monitor_get_geometry (GDK_MONITOR (m), &rect);
-      rect.x += _gdk_offset_x;
-      rect.y += _gdk_offset_y;
-      gdk_monitor_set_position (GDK_MONITOR (m), rect.x, rect.y);
+      cdk_monitor_get_geometry (GDK_MONITOR (m), &rect);
+      rect.x += _cdk_offset_x;
+      rect.y += _cdk_offset_y;
+      cdk_monitor_set_position (GDK_MONITOR (m), rect.x, rect.y);
 
-      m->work_rect.x += _gdk_offset_x;
-      m->work_rect.y += _gdk_offset_y;
+      m->work_rect.x += _cdk_offset_x;
+      m->work_rect.y += _cdk_offset_y;
 
       GDK_NOTE (MISC, g_print ("Monitor %d: %dx%d@%+d%+d\n", i,
                                rect.width, rect.height, rect.x, rect.y));
@@ -924,17 +924,17 @@ _gdk_win32_display_get_monitor_list (GdkWin32Display *win32_display)
 }
 
 static void
-gdk_win32_monitor_finalize (GObject *object)
+cdk_win32_monitor_finalize (GObject *object)
 {
   GdkWin32Monitor *win32_monitor = GDK_WIN32_MONITOR (object);
 
   g_free (win32_monitor->instance_path);
 
-  G_OBJECT_CLASS (gdk_win32_monitor_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_win32_monitor_parent_class)->finalize (object);
 }
 
 int
-_gdk_win32_monitor_compare (GdkWin32Monitor *a,
+_cdk_win32_monitor_compare (GdkWin32Monitor *a,
                             GdkWin32Monitor *b)
 {
   if (a->instance_path != NULL &&
@@ -945,7 +945,7 @@ _gdk_win32_monitor_compare (GdkWin32Monitor *a,
 }
 
 static void
-gdk_win32_monitor_get_workarea (GdkMonitor   *monitor,
+cdk_win32_monitor_get_workarea (GdkMonitor   *monitor,
                                 GdkRectangle *dest)
 {
   GdkWin32Monitor *win32_monitor = GDK_WIN32_MONITOR (monitor);
@@ -954,14 +954,14 @@ gdk_win32_monitor_get_workarea (GdkMonitor   *monitor,
 }
 
 static void
-gdk_win32_monitor_init (GdkWin32Monitor *monitor)
+cdk_win32_monitor_init (GdkWin32Monitor *monitor)
 {
 }
 
 static void
-gdk_win32_monitor_class_init (GdkWin32MonitorClass *class)
+cdk_win32_monitor_class_init (GdkWin32MonitorClass *class)
 {
-  G_OBJECT_CLASS (class)->finalize = gdk_win32_monitor_finalize;
+  G_OBJECT_CLASS (class)->finalize = cdk_win32_monitor_finalize;
 
-  GDK_MONITOR_CLASS (class)->get_workarea = gdk_win32_monitor_get_workarea;
+  GDK_MONITOR_CLASS (class)->get_workarea = cdk_win32_monitor_get_workarea;
 }

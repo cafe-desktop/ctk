@@ -758,7 +758,7 @@ ctk_gears_realize (CtkWidget *widget)
   priv->vao = vao;
 
   /* Compile the vertex shader */
-  if (gdk_gl_context_get_use_es (context))
+  if (cdk_gl_context_get_use_es (context))
     p = vertex_shader_gles;
   else
     p = vertex_shader_gl;
@@ -769,7 +769,7 @@ ctk_gears_realize (CtkWidget *widget)
   g_print ("vertex shader info: %s\n", msg);
 
   /* Compile the fragment shader */
-  if (gdk_gl_context_get_use_es (context))
+  if (cdk_gl_context_get_use_es (context))
     p = fragment_shader_gles;
   else
     p = fragment_shader_gl;
@@ -881,8 +881,8 @@ ctk_gears_tick (CtkWidget     *widget,
   gint64 frame;
   char *s;
 
-  frame = gdk_frame_clock_get_frame_counter (frame_clock);
-  frame_time = gdk_frame_clock_get_frame_time (frame_clock);
+  frame = cdk_frame_clock_get_frame_counter (frame_clock);
+  frame_time = cdk_frame_clock_get_frame_time (frame_clock);
 
   if (priv->first_frame_time == 0)
     {
@@ -899,15 +899,15 @@ ctk_gears_tick (CtkWidget     *widget,
 
   ctk_widget_queue_draw (widget);
 
-  history_start = gdk_frame_clock_get_history_start (frame_clock);
+  history_start = cdk_frame_clock_get_history_start (frame_clock);
 
   if (priv->fps_label && frame % 60 == 0)
     {
       history_len = frame - history_start;
       if (history_len > 0)
         {
-          previous_timings = gdk_frame_clock_get_timings (frame_clock, frame - history_len);
-          previous_frame_time = gdk_frame_timings_get_frame_time (previous_timings);
+          previous_timings = cdk_frame_clock_get_timings (frame_clock, frame - history_len);
+          previous_frame_time = cdk_frame_timings_get_frame_time (previous_timings);
 
           s = g_strdup_printf ("FPS: %-4.1f", (G_USEC_PER_SEC * history_len) / (double)(frame_time - previous_frame_time));
           ctk_label_set_label (priv->fps_label, s);
@@ -915,11 +915,11 @@ ctk_gears_tick (CtkWidget     *widget,
         }
     }
 
-  timings = gdk_frame_clock_get_current_timings (frame_clock);
-  previous_timings = gdk_frame_clock_get_timings (frame_clock,
-                                                  gdk_frame_timings_get_frame_counter (timings) - 1);
+  timings = cdk_frame_clock_get_current_timings (frame_clock);
+  previous_timings = cdk_frame_clock_get_timings (frame_clock,
+                                                  cdk_frame_timings_get_frame_counter (timings) - 1);
   if (previous_timings != NULL)
-    previous_frame_time = gdk_frame_timings_get_frame_time (previous_timings);
+    previous_frame_time = cdk_frame_timings_get_frame_time (previous_timings);
 
   return G_SOURCE_CONTINUE;
 }

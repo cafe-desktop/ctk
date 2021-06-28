@@ -125,7 +125,7 @@ timeout_toggle_toggled (CtkToggleButton *toggle)
     }
   else
     {
-      timeout = gdk_threads_add_timeout (2000, timeout_handler, NULL);
+      timeout = cdk_threads_add_timeout (2000, timeout_handler, NULL);
     }
 }
 
@@ -261,7 +261,7 @@ main (int argc, char **argv)
 
   update_icon ();
 
-  timeout = gdk_threads_add_timeout (2000, timeout_handler, icon);
+  timeout = cdk_threads_add_timeout (2000, timeout_handler, icon);
 
   ctk_main ();
 

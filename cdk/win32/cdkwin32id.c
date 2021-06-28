@@ -23,14 +23,14 @@
  */
 
 #include "config.h"
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
-#include "gdkprivate-win32.h"
+#include "cdkprivate-win32.h"
 
 static GHashTable *handle_ht = NULL;
 
 static guint
-gdk_handle_hash (HANDLE *handle)
+cdk_handle_hash (HANDLE *handle)
 {
 #ifdef _WIN64
   return ((guint *) handle)[0] ^ ((guint *) handle)[1];
@@ -40,37 +40,37 @@ gdk_handle_hash (HANDLE *handle)
 }
 
 static gint
-gdk_handle_equal (HANDLE *a,
+cdk_handle_equal (HANDLE *a,
 		  HANDLE *b)
 {
   return (*a == *b);
 }
 
 void
-gdk_win32_handle_table_insert (HANDLE  *handle,
+cdk_win32_handle_table_insert (HANDLE  *handle,
 			       gpointer data)
 {
   g_return_if_fail (handle != NULL);
 
   if (!handle_ht)
-    handle_ht = g_hash_table_new ((GHashFunc) gdk_handle_hash,
-				  (GEqualFunc) gdk_handle_equal);
+    handle_ht = g_hash_table_new ((GHashFunc) cdk_handle_hash,
+				  (GEqualFunc) cdk_handle_equal);
 
   g_hash_table_insert (handle_ht, handle, data);
 }
 
 void
-gdk_win32_handle_table_remove (HANDLE handle)
+cdk_win32_handle_table_remove (HANDLE handle)
 {
   if (!handle_ht)
-    handle_ht = g_hash_table_new ((GHashFunc) gdk_handle_hash,
-				  (GEqualFunc) gdk_handle_equal);
+    handle_ht = g_hash_table_new ((GHashFunc) cdk_handle_hash,
+				  (GEqualFunc) cdk_handle_equal);
 
   g_hash_table_remove (handle_ht, &handle);
 }
 
 gpointer
-gdk_win32_handle_table_lookup (HWND handle)
+cdk_win32_handle_table_lookup (HWND handle)
 {
   gpointer data = NULL;
 

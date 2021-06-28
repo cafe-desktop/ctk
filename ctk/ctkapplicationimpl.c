@@ -22,15 +22,15 @@
 #include "ctkapplicationprivate.h"
 
 #ifdef GDK_WINDOWING_X11
-#include <gdk/x11/gdkx.h>
+#include <cdk/x11/cdkx.h>
 #endif
 
 #ifdef GDK_WINDOWING_WAYLAND
-#include <gdk/wayland/gdkwayland.h>
+#include <cdk/wayland/cdkwayland.h>
 #endif
 
 #ifdef GDK_WINDOWING_QUARTZ
-#include <gdk/quartz/gdkquartz.h>
+#include <cdk/quartz/cdkquartz.h>
 #endif
 
 G_DEFINE_TYPE (CtkApplicationImpl, ctk_application_impl, G_TYPE_OBJECT)

@@ -35,8 +35,8 @@ test_cursor_existence (gconstpointer name)
   GdkDisplay *display;
   GdkCursor *cursor;
 
-  display = gdk_display_get_default ();
-  cursor = gdk_cursor_new_from_name (display, name);
+  display = cdk_display_get_default ();
+  cursor = cdk_cursor_new_from_name (display, name);
   g_assert (cursor != NULL);
   g_object_unref (cursor);
 }

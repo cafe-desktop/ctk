@@ -15,6 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-#include "gdk3-win32.vs10.sourcefiles.filters"
+#include "cdk3-win32.vs10.sourcefiles.filters"
   </ItemGroup>
 </Project>

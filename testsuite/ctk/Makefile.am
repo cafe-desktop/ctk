@@ -5,8 +5,8 @@ NULL =
 AM_CPPFLAGS = \
 	-DCTK_LOCALEDIR=\"$(localedir)\"\
 	-I$(top_srcdir)			\
-	-I$(top_builddir)/gdk		\
-	-I$(top_srcdir)/gdk		\
+	-I$(top_builddir)/cdk		\
+	-I$(top_srcdir)/cdk		\
 	-I$(top_builddir)/ctk		\
 	-I$(top_srcdir)/ctk		\
 	$(CTK_DEBUG_FLAGS)		\
@@ -21,7 +21,7 @@ DEPS = \
 
 LDADD = \
 	$(top_builddir)/ctk/libctk-3.la	\
-	$(top_builddir)/gdk/libgdk-3.la	\
+	$(top_builddir)/cdk/libcdk-3.la	\
 	$(CTK_DEP_LIBS)
 
 BUILT_SOURCES =

@@ -26,11 +26,11 @@
 #define __GDK_PROPERTY_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdktypes.h>
-#include <gdk/gdkversionmacros.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkversionmacros.h>
 
 G_BEGIN_DECLS
 
@@ -42,7 +42,7 @@ G_BEGIN_DECLS
  * @GDK_PROP_MODE_APPEND: the new data is appended to the existing data.
  *
  * Describes how existing data is combined with new data when
- * using gdk_property_change().
+ * using cdk_property_change().
  */
 typedef enum
 {
@@ -53,16 +53,16 @@ typedef enum
 
 
 GDK_AVAILABLE_IN_ALL
-GdkAtom gdk_atom_intern (const gchar *atom_name,
+GdkAtom cdk_atom_intern (const gchar *atom_name,
                          gboolean     only_if_exists);
 GDK_AVAILABLE_IN_ALL
-GdkAtom gdk_atom_intern_static_string (const gchar *atom_name);
+GdkAtom cdk_atom_intern_static_string (const gchar *atom_name);
 GDK_AVAILABLE_IN_ALL
-gchar*  gdk_atom_name   (GdkAtom      atom);
+gchar*  cdk_atom_name   (GdkAtom      atom);
 
 
 GDK_AVAILABLE_IN_ALL
-gboolean gdk_property_get    (GdkWindow     *window,
+gboolean cdk_property_get    (GdkWindow     *window,
                               GdkAtom        property,
                               GdkAtom        type,
                               gulong         offset,
@@ -73,7 +73,7 @@ gboolean gdk_property_get    (GdkWindow     *window,
                               gint          *actual_length,
                               guchar       **data);
 GDK_AVAILABLE_IN_ALL
-void     gdk_property_change (GdkWindow     *window,
+void     cdk_property_change (GdkWindow     *window,
                               GdkAtom        property,
                               GdkAtom        type,
                               gint           format,
@@ -81,11 +81,11 @@ void     gdk_property_change (GdkWindow     *window,
                               const guchar  *data,
                               gint           nelements);
 GDK_AVAILABLE_IN_ALL
-void     gdk_property_delete (GdkWindow     *window,
+void     cdk_property_delete (GdkWindow     *window,
                               GdkAtom        property);
 
 GDK_AVAILABLE_IN_ALL
-gint   gdk_text_property_to_utf8_list_for_display (GdkDisplay     *display,
+gint   cdk_text_property_to_utf8_list_for_display (GdkDisplay     *display,
                                                    GdkAtom         encoding,
                                                    gint            format,
                                                    const guchar   *text,
@@ -93,7 +93,7 @@ gint   gdk_text_property_to_utf8_list_for_display (GdkDisplay     *display,
                                                    gchar        ***list);
 
 GDK_AVAILABLE_IN_ALL
-gchar *gdk_utf8_to_string_target                  (const gchar    *str);
+gchar *cdk_utf8_to_string_target                  (const gchar    *str);
 
 G_END_DECLS
 

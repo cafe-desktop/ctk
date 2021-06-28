@@ -1,5 +1,5 @@
 /* CTK - The GIMP Toolkit
- * gdkasync.c: Utility functions using the Xlib asynchronous interfaces
+ * cdkasync.c: Utility functions using the Xlib asynchronous interfaces
  * Copyright (C) 2003, Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -43,8 +43,8 @@ in this Software without prior written authorization from The Open Group.
 */
 #include "config.h"
 
-#include "gdkasync.h"
-#include "gdkprivate-x11.h"
+#include "cdkasync.h"
+#include "cdkprivate-x11.h"
 
 #include <X11/Xlibint.h>
 
@@ -169,7 +169,7 @@ send_event_handler (Display *dpy,
       if (state->callback)
         {
           guint id;
-          id = gdk_threads_add_idle (callback_idle, state);
+          id = cdk_threads_add_idle (callback_idle, state);
           g_source_set_name_by_id (id, "[ctk+] callback_idle");
         }
 
@@ -224,7 +224,7 @@ client_message_to_wire (XClientMessageEvent *ev,
 }
 
 void
-_gdk_x11_send_client_message_async (GdkDisplay           *display, 
+_cdk_x11_send_client_message_async (GdkDisplay           *display, 
 				    Window                window, 
 				    gboolean              propagate,
 				    glong                 event_mask,
@@ -531,7 +531,7 @@ get_child_info_handler (Display *dpy,
 }
 
 gboolean
-_gdk_x11_get_window_child_info (GdkDisplay       *display,
+_cdk_x11_get_window_child_info (GdkDisplay       *display,
 				Window            window,
 				gboolean          get_wm_state,
 				gboolean         *win_has_wm_state,
@@ -551,19 +551,19 @@ _gdk_x11_get_window_child_info (GdkDisplay       *display,
   
   dpy = GDK_DISPLAY_XDISPLAY (display);
   if (get_wm_state)
-    wm_state_atom = gdk_x11_get_xatom_by_name_for_display (display, "WM_STATE");
+    wm_state_atom = cdk_x11_get_xatom_by_name_for_display (display, "WM_STATE");
   else
     wm_state_atom = None;
 
   state.children = NULL;
   state.nchildren = 0;
 
-  gdk_x11_display_error_trap_push (display);
+  cdk_x11_display_error_trap_push (display);
   result = list_children_and_wm_state (dpy, window,
 				       win_has_wm_state ? wm_state_atom : None,
 				       &has_wm_state,
 				       &state.children, &state.nchildren);
-  gdk_x11_display_error_trap_pop_ignored (display);
+  cdk_x11_display_error_trap_pop_ignored (display);
   if (!result)
     {
       g_free (state.children);
@@ -703,7 +703,7 @@ roundtrip_handler (Display *dpy,
       if (state->callback)
         {
           guint id;
-          id = gdk_threads_add_idle (roundtrip_callback_idle, state);
+          id = cdk_threads_add_idle (roundtrip_callback_idle, state);
           g_source_set_name_by_id (id, "[ctk+] roundtrip_callback_idle");
         }
 
@@ -716,7 +716,7 @@ roundtrip_handler (Display *dpy,
 }
 
 void
-_gdk_x11_roundtrip_async (GdkDisplay           *display, 
+_cdk_x11_roundtrip_async (GdkDisplay           *display, 
 			  GdkRoundTripCallback callback,
 			  gpointer              data)
 {

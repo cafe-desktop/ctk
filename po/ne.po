@@ -22,76 +22,76 @@ msgstr ""
 "X-Generator: Poedit 2.0.3\n"
 "Plural-Forms: nplurals=2;plural=(n!=1);\n"
 
-#: gdk/broadway/gdkbroadway-server.c:144
+#: cdk/broadway/cdkbroadway-server.c:144
 #, fuzzy, c-format
 #| msgid "TGA image type not supported"
 msgid "Broadway display type not supported: %s"
 msgstr "फाइल प्रकार  %s (%s) समर्थित छैन"
 
-#: gdk/gdk.c:182
+#: cdk/cdk.c:182
 #, fuzzy, c-format
-msgid "Error parsing option --gdk-debug"
+msgid "Error parsing option --cdk-debug"
 msgstr "पद वर्णन विकल्पमा त्रुटि %s"
 
-#: gdk/gdk.c:202
+#: cdk/cdk.c:202
 #, fuzzy, c-format
-msgid "Error parsing option --gdk-no-debug"
+msgid "Error parsing option --cdk-no-debug"
 msgstr "पद वर्णन विकल्पमा त्रुटि %s"
 
 #. Description of --class=CLASS in --help output
-#: gdk/gdk.c:231
+#: cdk/cdk.c:231
 msgid "Program class as used by the window manager"
 msgstr "सञ्झ्याल प्रबन्धक द्वारा प्रयोग गरिएको जस्तो कार्यक्रम तह"
 
 #. Placeholder in --class=CLASS in --help output
-#: gdk/gdk.c:232
+#: cdk/cdk.c:232
 msgid "CLASS"
 msgstr "CLASS"
 
 #. Description of --name=NAME in --help output
-#: gdk/gdk.c:234
+#: cdk/cdk.c:234
 msgid "Program name as used by the window manager"
 msgstr "सञ्झ्याल प्रबन्धक द्वारा प्रयोग गरिएको जस्तो कार्यक्रम तह"
 
 #. Placeholder in --name=NAME in --help output
-#: gdk/gdk.c:235
+#: cdk/cdk.c:235
 msgid "NAME"
 msgstr "NAME"
 
 #. Description of --display=DISPLAY in --help output
-#: gdk/gdk.c:238
+#: cdk/cdk.c:238
 msgid "X display to use"
 msgstr "प्रयोग गरिने X प्रदर्शन"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: gdk/gdk.c:239
+#: cdk/cdk.c:239
 msgid "DISPLAY"
 msgstr "DISPLAY"
 
-#. Description of --gdk-debug=FLAGS in --help output
-#: gdk/gdk.c:243
+#. Description of --cdk-debug=FLAGS in --help output
+#: cdk/cdk.c:243
 msgid "GDK debugging flags to set"
 msgstr "GDK डिबग्गिङ फ्ल्यागहरू सेट भयो"
 
-#. Placeholder in --gdk-debug=FLAGS in --help output
-#. Placeholder in --gdk-no-debug=FLAGS in --help output
+#. Placeholder in --cdk-debug=FLAGS in --help output
+#. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:244 gdk/gdk.c:247 ctk/ctkmain.c:470 ctk/ctkmain.c:473
+#: cdk/cdk.c:244 cdk/cdk.c:247 ctk/ctkmain.c:470 ctk/ctkmain.c:473
 msgid "FLAGS"
 msgstr "FLAGS"
 
-#. Description of --gdk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:246
+#. Description of --cdk-no-debug=FLAGS in --help output
+#: cdk/cdk.c:246
 #, fuzzy
 msgid "GDK debugging flags to unset"
 msgstr "अनसेट गरिने Gdk डिबगिङ झन्डा"
 
-#: gdk/gdkwindow.c:2826
+#: cdk/cdkwindow.c:2826
 msgid "GL support disabled via GDK_DEBUG"
 msgstr ""
 
-#: gdk/gdkwindow.c:2837
+#: cdk/cdkwindow.c:2837
 msgid "The current backend does not support OpenGL"
 msgstr ""
 
@@ -106,444 +106,444 @@ msgstr ""
 #. * Scroll_lock   - Scroll lock
 #. * KP_Space      - Space (keypad)
 #.
-#: gdk/keyname-table.h:6843
+#: cdk/keyname-table.h:6843
 #, fuzzy
 msgctxt "keyboard label"
 msgid "BackSpace"
 msgstr "backspace"
 
-#: gdk/keyname-table.h:6844
+#: cdk/keyname-table.h:6844
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Tab"
 msgstr "ट्याब"
 
-#: gdk/keyname-table.h:6845
+#: cdk/keyname-table.h:6845
 msgctxt "keyboard label"
 msgid "Return"
 msgstr "Return"
 
-#: gdk/keyname-table.h:6846
+#: cdk/keyname-table.h:6846
 msgctxt "keyboard label"
 msgid "Pause"
 msgstr "Pause"
 
-#: gdk/keyname-table.h:6847
+#: cdk/keyname-table.h:6847
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Scroll_Lock"
 msgstr "स्क्रोल लक"
 
-#: gdk/keyname-table.h:6848
+#: cdk/keyname-table.h:6848
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Sys_Req"
 msgstr "Req"
 
-#: gdk/keyname-table.h:6849
+#: cdk/keyname-table.h:6849
 msgctxt "keyboard label"
 msgid "Escape"
 msgstr "इस्केप"
 
-#: gdk/keyname-table.h:6850
+#: cdk/keyname-table.h:6850
 msgctxt "keyboard label"
 msgid "Multi_key"
 msgstr "मल्टिकीइ"
 
-#: gdk/keyname-table.h:6851
+#: cdk/keyname-table.h:6851
 msgctxt "keyboard label"
 msgid "Home"
 msgstr "होम"
 
-#: gdk/keyname-table.h:6852
+#: cdk/keyname-table.h:6852
 msgctxt "keyboard label"
 msgid "Left"
 msgstr "_बायाँ:"
 
-#: gdk/keyname-table.h:6853
+#: cdk/keyname-table.h:6853
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Up"
 msgstr "माथि"
 
-#: gdk/keyname-table.h:6854
+#: cdk/keyname-table.h:6854
 msgctxt "keyboard label"
 msgid "Right"
 msgstr "_दायाँ:"
 
-#: gdk/keyname-table.h:6855
+#: cdk/keyname-table.h:6855
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Down"
 msgstr "तल"
 
-#: gdk/keyname-table.h:6856 ctk/ctkshortcutlabel.c:222
+#: cdk/keyname-table.h:6856 ctk/ctkshortcutlabel.c:222
 msgctxt "keyboard label"
 msgid "Page_Up"
 msgstr "पेज माथि"
 
-#: gdk/keyname-table.h:6857 ctk/ctkshortcutlabel.c:225
+#: cdk/keyname-table.h:6857 ctk/ctkshortcutlabel.c:225
 msgctxt "keyboard label"
 msgid "Page_Down"
 msgstr "पेज तल"
 
-#: gdk/keyname-table.h:6858
+#: cdk/keyname-table.h:6858
 msgctxt "keyboard label"
 msgid "End"
 msgstr "End"
 
-#: gdk/keyname-table.h:6859
+#: cdk/keyname-table.h:6859
 msgctxt "keyboard label"
 msgid "Begin"
 msgstr "सुरु"
 
-#: gdk/keyname-table.h:6860
+#: cdk/keyname-table.h:6860
 msgctxt "keyboard label"
 msgid "Print"
 msgstr "मुद्रण गर्नुहोस्"
 
-#: gdk/keyname-table.h:6861
+#: cdk/keyname-table.h:6861
 msgctxt "keyboard label"
 msgid "Insert"
 msgstr "घुसाउ"
 
-#: gdk/keyname-table.h:6862
+#: cdk/keyname-table.h:6862
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Num_Lock"
 msgstr "num lock"
 
 #. Translators: KP_ means 'key pad' here
-#: gdk/keyname-table.h:6864
+#: cdk/keyname-table.h:6864
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Space"
 msgstr "खालि छैन"
 
-#: gdk/keyname-table.h:6865
+#: cdk/keyname-table.h:6865
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Tab"
 msgstr "&[TAB]"
 
-#: gdk/keyname-table.h:6866
+#: cdk/keyname-table.h:6866
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Enter"
 msgstr "Enter"
 
-#: gdk/keyname-table.h:6867
+#: cdk/keyname-table.h:6867
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Home"
 msgstr "गृहपृष्ठ"
 
-#: gdk/keyname-table.h:6868
+#: cdk/keyname-table.h:6868
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Left"
 msgstr "_बायाँ:"
 
-#: gdk/keyname-table.h:6869
+#: cdk/keyname-table.h:6869
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Up"
 msgstr "माथि"
 
-#: gdk/keyname-table.h:6870
+#: cdk/keyname-table.h:6870
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Right"
 msgstr " अथवा दायाँ"
 
-#: gdk/keyname-table.h:6871
+#: cdk/keyname-table.h:6871
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Down"
 msgstr "No. तल:"
 
-#: gdk/keyname-table.h:6872
+#: cdk/keyname-table.h:6872
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Page_Up"
 msgstr "पेज माथि"
 
-#: gdk/keyname-table.h:6873
+#: cdk/keyname-table.h:6873
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Prior"
 msgstr "यो र प्राथमिक दृष्टान्तहरू"
 
-#: gdk/keyname-table.h:6874
+#: cdk/keyname-table.h:6874
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Page_Down"
 msgstr "पेज तल"
 
-#: gdk/keyname-table.h:6875
+#: cdk/keyname-table.h:6875
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Next"
 msgstr "^पछिल्लो"
 
-#: gdk/keyname-table.h:6876
+#: cdk/keyname-table.h:6876
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_End"
 msgstr "समाप्त:"
 
-#: gdk/keyname-table.h:6877
+#: cdk/keyname-table.h:6877
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Begin"
 msgstr "सुरु"
 
-#: gdk/keyname-table.h:6878
+#: cdk/keyname-table.h:6878
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Insert"
 msgstr "घुसाउ"
 
-#: gdk/keyname-table.h:6879
+#: cdk/keyname-table.h:6879
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Delete"
 msgstr "मेट्नुहोस्..."
 
-#: gdk/keyname-table.h:6880
+#: cdk/keyname-table.h:6880
 msgctxt "keyboard label"
 msgid "Delete"
 msgstr "हटाउनुहोस"
 
-#: gdk/keyname-table.h:6881
+#: cdk/keyname-table.h:6881
 msgctxt "keyboard label"
 msgid "MonBrightnessUp"
 msgstr ""
 
-#: gdk/keyname-table.h:6882
+#: cdk/keyname-table.h:6882
 msgctxt "keyboard label"
 msgid "MonBrightnessDown"
 msgstr ""
 
-#: gdk/keyname-table.h:6883
+#: cdk/keyname-table.h:6883
 msgctxt "keyboard label"
 msgid "KbdBrightnessUp"
 msgstr ""
 
-#: gdk/keyname-table.h:6884
+#: cdk/keyname-table.h:6884
 msgctxt "keyboard label"
 msgid "KbdBrightnessDown"
 msgstr ""
 
-#: gdk/keyname-table.h:6885
+#: cdk/keyname-table.h:6885
 msgctxt "keyboard label"
 msgid "AudioMute"
 msgstr ""
 
-#: gdk/keyname-table.h:6886
+#: cdk/keyname-table.h:6886
 msgctxt "keyboard label"
 msgid "AudioMicMute"
 msgstr ""
 
-#: gdk/keyname-table.h:6887
+#: cdk/keyname-table.h:6887
 msgctxt "keyboard label"
 msgid "AudioLowerVolume"
 msgstr ""
 
-#: gdk/keyname-table.h:6888
+#: cdk/keyname-table.h:6888
 msgctxt "keyboard label"
 msgid "AudioRaiseVolume"
 msgstr ""
 
-#: gdk/keyname-table.h:6889
+#: cdk/keyname-table.h:6889
 msgctxt "keyboard label"
 msgid "AudioPlay"
 msgstr "अडियोप्ले"
 
-#: gdk/keyname-table.h:6890
+#: cdk/keyname-table.h:6890
 msgctxt "keyboard label"
 msgid "AudioStop"
 msgstr "अडियोस्टप"
 
-#: gdk/keyname-table.h:6891
+#: cdk/keyname-table.h:6891
 msgctxt "keyboard label"
 msgid "AudioNext"
 msgstr "अडियोनेक्स"
 
-#: gdk/keyname-table.h:6892
+#: cdk/keyname-table.h:6892
 msgctxt "keyboard label"
 msgid "AudioPrev"
 msgstr "अडियोप्रेभ"
 
-#: gdk/keyname-table.h:6893
+#: cdk/keyname-table.h:6893
 msgctxt "keyboard label"
 msgid "AudioRecord"
 msgstr "अडियोरेकर्ड"
 
-#: gdk/keyname-table.h:6894
+#: cdk/keyname-table.h:6894
 msgctxt "keyboard label"
 msgid "AudioPause"
 msgstr "अडियोपज"
 
-#: gdk/keyname-table.h:6895
+#: cdk/keyname-table.h:6895
 msgctxt "keyboard label"
 msgid "AudioRewind"
 msgstr "अडियोरिवाइन्ड"
 
-#: gdk/keyname-table.h:6896
+#: cdk/keyname-table.h:6896
 msgctxt "keyboard label"
 msgid "AudioMedia"
 msgstr "अडियोमेडिया"
 
-#: gdk/keyname-table.h:6897
+#: cdk/keyname-table.h:6897
 msgctxt "keyboard label"
 msgid "ScreenSaver"
 msgstr "स्क्रिनसेभर"
 
-#: gdk/keyname-table.h:6898
+#: cdk/keyname-table.h:6898
 msgctxt "keyboard label"
 msgid "Battery"
 msgstr "ब्याट्री"
 
-#: gdk/keyname-table.h:6899
+#: cdk/keyname-table.h:6899
 msgctxt "keyboard label"
 msgid "Launch1"
 msgstr ""
 
-#: gdk/keyname-table.h:6900
+#: cdk/keyname-table.h:6900
 msgctxt "keyboard label"
 msgid "Forward"
 msgstr "पठाउनुहोस्"
 
-#: gdk/keyname-table.h:6901
+#: cdk/keyname-table.h:6901
 msgctxt "keyboard label"
 msgid "Back"
 msgstr "पछाडि"
 
-#: gdk/keyname-table.h:6902
+#: cdk/keyname-table.h:6902
 msgctxt "keyboard label"
 msgid "Sleep"
 msgstr "Sleep"
 
-#: gdk/keyname-table.h:6903
+#: cdk/keyname-table.h:6903
 msgctxt "keyboard label"
 msgid "Hibernate"
 msgstr "हाइबर्नेट गर्नुहोस्"
 
-#: gdk/keyname-table.h:6904
+#: cdk/keyname-table.h:6904
 #, fuzzy
 msgctxt "keyboard label"
 msgid "WLAN"
 msgstr "WLAN नियन्त्रक"
 
-#: gdk/keyname-table.h:6905
+#: cdk/keyname-table.h:6905
 #, fuzzy
 msgctxt "keyboard label"
 msgid "WebCam"
 msgstr "वेबक्याम"
 
-#: gdk/keyname-table.h:6906
+#: cdk/keyname-table.h:6906
 msgctxt "keyboard label"
 msgid "Display"
 msgstr "डिस्प्ले"
 
-#: gdk/keyname-table.h:6907
+#: cdk/keyname-table.h:6907
 msgctxt "keyboard label"
 msgid "TouchpadToggle"
 msgstr ""
 
-#: gdk/keyname-table.h:6908
+#: cdk/keyname-table.h:6908
 #, fuzzy
 msgctxt "keyboard label"
 msgid "WakeUp"
 msgstr "वेकअप डेटा प्राप्त गर्नुहोस्"
 
-#: gdk/keyname-table.h:6909
+#: cdk/keyname-table.h:6909
 msgctxt "keyboard label"
 msgid "Suspend"
 msgstr "निलम्बन गर्नुहोस्"
 
-#: gdk/mir/gdkmirglcontext.c:48 gdk/mir/gdkmirwindowimpl.c:2226
-#: gdk/wayland/gdkglcontext-wayland.c:468 gdk/win32/gdkglcontext-win32.c:796
-#: gdk/x11/gdkglcontext-x11.c:1274
+#: cdk/mir/cdkmirglcontext.c:48 cdk/mir/cdkmirwindowimpl.c:2226
+#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:796
+#: cdk/x11/cdkglcontext-x11.c:1274
 #, fuzzy
 msgid "No GL implementation is available"
 msgstr "प्रकार्य कार्यान्वयन उपलब्ध छैन।"
 
-#: gdk/mir/gdkmirglcontext.c:89 gdk/wayland/gdkglcontext-wayland.c:208
-#: gdk/win32/gdkglcontext-win32.c:747 gdk/x11/gdkglcontext-x11.c:720
-#: gdk/x11/gdkglcontext-x11.c:770
+#: cdk/mir/cdkmirglcontext.c:89 cdk/wayland/cdkglcontext-wayland.c:208
+#: cdk/win32/cdkglcontext-win32.c:747 cdk/x11/cdkglcontext-x11.c:720
+#: cdk/x11/cdkglcontext-x11.c:770
 #, fuzzy
 msgid "Unable to create a GL context"
 msgstr "सन्दर्भ सिर्जना गर्न असक्षम"
 
-#: gdk/mir/gdkmirwindowimpl.c:2188 gdk/mir/gdkmirwindowimpl.c:2198
-#: gdk/wayland/gdkglcontext-wayland.c:418 gdk/wayland/gdkglcontext-wayland.c:428
-#: gdk/win32/gdkglcontext-win32.c:702 gdk/x11/gdkglcontext-x11.c:968
+#: cdk/mir/cdkmirwindowimpl.c:2188 cdk/mir/cdkmirwindowimpl.c:2198
+#: cdk/wayland/cdkglcontext-wayland.c:418 cdk/wayland/cdkglcontext-wayland.c:428
+#: cdk/win32/cdkglcontext-win32.c:702 cdk/x11/cdkglcontext-x11.c:968
 msgid "No available configurations for the given pixel format"
 msgstr ""
 
-#: gdk/mir/gdkmirwindowimpl.c:2234
+#: cdk/mir/cdkmirwindowimpl.c:2234
 msgid "3.2 core GL profile is not available on EGL implementation"
 msgstr ""
 
-#: gdk/quartz/gdkglcontext-quartz.c:37
+#: cdk/quartz/cdkglcontext-quartz.c:37
 #, fuzzy
 msgid "Not implemented on OS X"
 msgstr "ओएस्(OS)"
 
-#: gdk/wayland/gdkglcontext-wayland.c:476
+#: cdk/wayland/cdkglcontext-wayland.c:476
 msgid "Core GL is not available on EGL implementation"
 msgstr ""
 
 #. Description of --sync in --help output
-#: gdk/win32/gdkmain-win32.c:53
+#: cdk/win32/cdkmain-win32.c:53
 msgid "Don't batch GDI requests"
 msgstr "GDI अनुरोधहरू समूहबद्ध नगर्नुहोस्"
 
 #. Description of --no-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:55
+#: cdk/win32/cdkmain-win32.c:55
 msgid "Don't use the Wintab API for tablet support"
 msgstr "ट्याबलेट समर्थनका लागि Wintab API प्रयोग नगर्नुहोस्"
 
 #. Description of --ignore-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:57
+#: cdk/win32/cdkmain-win32.c:57
 msgid "Same as --no-wintab"
 msgstr "--no-wintab जस्तै समान"
 
 #. Description of --use-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:59
+#: cdk/win32/cdkmain-win32.c:59
 msgid "Do use the Wintab API [default]"
 msgstr "API [पूर्वनिर्धारित] प्रयोग गर्नुहोस्"
 
 #. Description of --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:61
+#: cdk/win32/cdkmain-win32.c:61
 msgid "Size of the palette in 8 bit mode"
 msgstr "८ बिट मोडमा रङदानीको साइज"
 
 #. Placeholder in --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:62
+#: cdk/win32/cdkmain-win32.c:62
 msgid "COLORS"
 msgstr "COLORS"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:295
+#: cdk/x11/cdkapplaunchcontext-x11.c:295
 #, c-format
 msgid "Starting %s"
 msgstr "%s सुरु गरिँदैछ"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:308
+#: cdk/x11/cdkapplaunchcontext-x11.c:308
 #, c-format
 msgid "Opening %s"
 msgstr "%s खोलिदैछ"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:313
+#: cdk/x11/cdkapplaunchcontext-x11.c:313
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: gdk/x11/gdkglcontext-x11.c:996
+#: cdk/x11/cdkglcontext-x11.c:996
 #, c-format
 msgid "No available configurations for the given RGBA pixel format"
 msgstr ""
@@ -7423,8 +7423,8 @@ msgstr "परीक्षण मुद्रकमा मुद्रण गर
 #~ msgid "Error writing to image file: %s"
 #~ msgstr "छवि फाइलमा लेख्दा त्रुटि: %s"
 
-#~ msgid "This build of gdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "gdk-pixbuf को निर्माणले छवि ढाँचा बचत गर्न समर्थन गर्दैन: %s"
+#~ msgid "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "cdk-pixbuf को निर्माणले छवि ढाँचा बचत गर्न समर्थन गर्दैन: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "कलब्याकमा छवि बचत गर्न अपर्याप्त स्मृति"

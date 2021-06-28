@@ -18,11 +18,11 @@
 #ifndef __GDK_X11_DEVICE_MANAGER_CORE_H__
 #define __GDK_X11_DEVICE_MANAGER_CORE_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_DEVICE_MANAGER_CORE         (gdk_x11_device_manager_core_get_type ())
+#define GDK_TYPE_X11_DEVICE_MANAGER_CORE         (cdk_x11_device_manager_core_get_type ())
 #define GDK_X11_DEVICE_MANAGER_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_X11_DEVICE_MANAGER_CORE, GdkX11DeviceManagerCore))
 #define GDK_X11_DEVICE_MANAGER_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_X11_DEVICE_MANAGER_CORE, GdkX11DeviceManagerCoreClass))
 #define GDK_IS_X11_DEVICE_MANAGER_CORE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_X11_DEVICE_MANAGER_CORE))
@@ -34,7 +34,7 @@ typedef struct _GdkX11DeviceManagerCoreClass GdkX11DeviceManagerCoreClass;
 
 
 GDK_AVAILABLE_IN_ALL
-GType gdk_x11_device_manager_core_get_type (void) G_GNUC_CONST;
+GType cdk_x11_device_manager_core_get_type (void) G_GNUC_CONST;
 
 
 G_END_DECLS

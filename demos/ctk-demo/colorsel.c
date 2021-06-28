@@ -20,7 +20,7 @@ draw_callback (CtkWidget *widget,
                cairo_t   *cr,
                gpointer   data)
 {
-  gdk_cairo_set_source_rgba (cr, &color);
+  cdk_cairo_set_source_rgba (cr, &color);
   cairo_paint (cr);
 
   return TRUE;

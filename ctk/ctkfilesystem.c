@@ -105,11 +105,11 @@ volumes_changed (GVolumeMonitor *volume_monitor,
 {
   CtkFileSystem *file_system;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   file_system = CTK_FILE_SYSTEM (user_data);
   g_signal_emit (file_system, fs_signals[VOLUMES_CHANGED], 0, volume);
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static void
@@ -413,10 +413,10 @@ query_info_callback (GObject      *source_object,
 
   if (async_data->callback)
     {
-      gdk_threads_enter ();
+      cdk_threads_enter ();
       ((CtkFileSystemGetInfoCallback) async_data->callback) (async_data->cancellable,
 							     file_info, error, async_data->data);
-      gdk_threads_leave ();
+      cdk_threads_leave ();
     }
 
   if (file_info)
@@ -473,11 +473,11 @@ drive_poll_for_media_cb (GObject      *source_object,
   g_drive_poll_for_media_finish (G_DRIVE (source_object), result, &error);
   async_data = (AsyncFuncData *) user_data;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
   ((CtkFileSystemVolumeMountCallback) async_data->callback) (async_data->cancellable,
 							     (CtkFileSystemVolume *) source_object,
 							     error, async_data->data);
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   if (error)
     g_error_free (error);
@@ -494,11 +494,11 @@ volume_mount_cb (GObject      *source_object,
   g_volume_mount_finish (G_VOLUME (source_object), result, &error);
   async_data = (AsyncFuncData *) user_data;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
   ((CtkFileSystemVolumeMountCallback) async_data->callback) (async_data->cancellable,
 							     (CtkFileSystemVolume *) source_object,
 							     error, async_data->data);
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   if (error)
     g_error_free (error);
@@ -565,10 +565,10 @@ enclosing_volume_mount_cb (GObject      *source_object,
   if (error && g_error_matches (error, G_IO_ERROR, G_IO_ERROR_ALREADY_MOUNTED))
     g_clear_error (&error);
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
   ((CtkFileSystemVolumeMountCallback) async_data->callback) (async_data->cancellable, volume,
 							     error, async_data->data);
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   if (error)
     g_error_free (error);
@@ -737,7 +737,7 @@ get_surface_from_gicon (GIcon      *icon,
   if (pixbuf == NULL)
     return NULL;
 
-  surface = gdk_cairo_surface_create_from_pixbuf (pixbuf,
+  surface = cdk_cairo_surface_create_from_pixbuf (pixbuf,
                                                   ctk_widget_get_scale_factor (widget),
 					          ctk_widget_get_window (widget));
   g_object_unref (pixbuf);
@@ -833,13 +833,13 @@ _ctk_file_info_render_icon_internal (GFileInfo *info,
   if (thumbnail_path)
     {
       scale = ctk_widget_get_scale_factor (widget);
-      pixbuf = gdk_pixbuf_new_from_file_at_size (thumbnail_path,
+      pixbuf = cdk_pixbuf_new_from_file_at_size (thumbnail_path,
 						 icon_size*scale, icon_size*scale,
 						 NULL);
 
       if (pixbuf != NULL)
         {
-          surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale,
+          surface = cdk_cairo_surface_create_from_pixbuf (pixbuf, scale,
                                                           ctk_widget_get_window (widget));
           g_object_unref (pixbuf);
         }

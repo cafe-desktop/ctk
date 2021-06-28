@@ -225,7 +225,7 @@ set_styles (void)
       g_assert_not_reached ();
     }
 
-  screen = gdk_display_get_default_screen (gdk_display_get_default ());
+  screen = cdk_display_get_default_screen (cdk_display_get_default ());
 
   ctk_style_context_add_provider_for_screen (screen, CTK_STYLE_PROVIDER (provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);

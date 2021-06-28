@@ -447,7 +447,7 @@ ctk_box_gadget_allocate (CtkCssGadget        *gadget,
           if (i == 0)
             *out_clip = child_clip;
           else
-            gdk_rectangle_union (out_clip, &child_clip, out_clip);
+            cdk_rectangle_union (out_clip, &child_clip, out_clip);
 
           if (!priv->allocate_reverse)
             child_allocation.x += sizes[idx].minimum_size;
@@ -481,7 +481,7 @@ ctk_box_gadget_allocate (CtkCssGadget        *gadget,
           if (i == 0)
             *out_clip = child_clip;
           else
-            gdk_rectangle_union (out_clip, &child_clip, out_clip);
+            cdk_rectangle_union (out_clip, &child_clip, out_clip);
 
           if (!priv->allocate_reverse)
             child_allocation.y += sizes[idx].minimum_size;

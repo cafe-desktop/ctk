@@ -26,7 +26,7 @@ test_nonzerox (void)
   ctk_grid_attach (CTK_GRID (grid), ctk_label_new ("Right"), 2, 1, 1, 1);
 
   overlay = ctk_overlay_new ();
-  gdk_rgba_parse (&color, "red");
+  cdk_rgba_parse (&color, "red");
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_override_background_color (overlay, 0, &color);
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -102,7 +102,7 @@ test_relative (void)
   ctk_window_set_title (CTK_WINDOW (win), "Custom positioning");
 
   overlay = ctk_overlay_new ();
-  gdk_rgba_parse (&color, "yellow");
+  cdk_rgba_parse (&color, "yellow");
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_override_background_color (overlay, 0, &color);
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -379,7 +379,7 @@ test_stacking (void)
   grid = ctk_grid_new ();
   overlay = ctk_overlay_new ();
   main_child = ctk_event_box_new ();
-  gdk_rgba_parse (&color, "green");
+  cdk_rgba_parse (&color, "green");
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_override_background_color (main_child, 0, &color);
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -497,7 +497,7 @@ test_child_order (void)
 
       ctk_container_add (CTK_CONTAINER (ebox), button);
 
-      gdk_rgba_parse (&color, colors[i]);
+      cdk_rgba_parse (&color, colors[i]);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_widget_override_background_color (ebox, 0, &color);
  G_GNUC_END_IGNORE_DEPRECATIONS
@@ -507,7 +507,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     }
 
   ebox = ctk_event_box_new ();
-  gdk_rgba_parse (&color, "white");
+  cdk_rgba_parse (&color, "white");
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_override_background_color (ebox, 0, &color);
 G_GNUC_END_IGNORE_DEPRECATIONS

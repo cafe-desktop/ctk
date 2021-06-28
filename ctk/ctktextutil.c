@@ -235,7 +235,7 @@ _ctk_text_util_create_drag_icon (CtkWidget *widget,
   pixmap_width  = layout_width  / PANGO_SCALE;
   pixmap_height = layout_height / PANGO_SCALE;
 
-  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
+  surface = cdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR_ALPHA,
                                                pixmap_width, pixmap_height);
   cr = cairo_create (surface);
@@ -244,7 +244,7 @@ _ctk_text_util_create_drag_icon (CtkWidget *widget,
   ctk_style_context_get_color (style_context,
                                ctk_style_context_get_state (style_context),
                                &color);
-  gdk_cairo_set_source_rgba (cr, &color);
+  cdk_cairo_set_source_rgba (cr, &color);
   pango_cairo_show_layout (cr, layout);
 
   cairo_destroy (cr);
@@ -351,7 +351,7 @@ _ctk_text_util_create_rich_drag_icon (CtkWidget     *widget,
   layout_width = MIN (layout_width, DRAG_ICON_MAX_WIDTH);
   layout_height = MIN (layout_height, DRAG_ICON_MAX_HEIGHT);
 
-  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
+  surface = cdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR_ALPHA,
                                                layout_width, layout_height);
 

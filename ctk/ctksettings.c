@@ -35,25 +35,25 @@
 #include "ctkscrolledwindow.h"
 
 #ifdef GDK_WINDOWING_X11
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 #include <pango/pangofc-fontmap.h>
 #endif
 
 #ifdef GDK_WINDOWING_WAYLAND
-#include "wayland/gdkwayland.h"
+#include "wayland/cdkwayland.h"
 #include <pango/pangofc-fontmap.h>
 #endif
 
 #ifdef GDK_WINDOWING_BROADWAY
-#include "broadway/gdkbroadway.h"
+#include "broadway/cdkbroadway.h"
 #endif
 
 #ifdef GDK_WINDOWING_QUARTZ
-#include "quartz/gdkquartz.h"
+#include "quartz/cdkquartz.h"
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
-#include "win32/gdkwin32.h"
+#include "win32/cdkwin32.h"
 #endif
 
 #include "deprecated/ctkrc.h"
@@ -763,7 +763,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * Color names must be acceptable as identifiers in the
    * [ctkrc][ctk3-Resource-Files] syntax, and
    * color specifications must be in the format accepted by
-   * gdk_color_parse().
+   * cdk_color_parse().
    *
    * Note that due to the way the color tables from different sources are
    * merged, color specifications will be converted to hexadecimal form
@@ -810,7 +810,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * Since: 2.10
    *
    * Deprecated: 3.4. Generally, the behavior for touchscreen input should be
-   *             performed dynamically based on gdk_event_get_source_device().
+   *             performed dynamically based on cdk_event_get_source_device().
    */
   result = settings_install_property_parser (class,
                                              g_param_spec_boolean ("ctk-touchscreen-mode",
@@ -905,7 +905,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    * Since: 2.12
    *
    * Deprecated: 3.10: Generally, the behavior for touchscreen input should be
-   *             performed dynamically based on gdk_event_get_source_device().
+   *             performed dynamically based on cdk_event_get_source_device().
    */
   result = settings_install_property_parser (class,
                                              g_param_spec_boolean ("ctk-keynav-cursor-only",
@@ -942,7 +942,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
    *
    * When %TRUE, keyboard navigation and other input-related errors
    * will cause a beep. Since the error bell is implemented using
-   * gdk_window_beep(), the windowing system may offer ways to
+   * cdk_window_beep(), the windowing system may offer ways to
    * configure the error bell in many ways, such as flashing the
    * window or similar visual effects.
    *
@@ -1959,14 +1959,14 @@ ctk_settings_create_for_display (GdkDisplay *display)
 #ifdef GDK_WINDOWING_WAYLAND
     if (GDK_IS_WAYLAND_DISPLAY (display))
       {
-        if (gdk_wayland_display_query_registry (display,
+        if (cdk_wayland_display_query_registry (display,
                                                 "zwp_text_input_manager_v3"))
           {
             settings = g_object_new (CTK_TYPE_SETTINGS,
                                      "ctk-im-module", "wayland",
                                      NULL);
           }
-        else if (gdk_wayland_display_query_registry (display,
+        else if (cdk_wayland_display_query_registry (display,
                                                 "ctk_text_input_manager"))
           {
             settings = g_object_new (CTK_TYPE_SETTINGS,
@@ -1985,7 +1985,7 @@ ctk_settings_create_for_display (GdkDisplay *display)
 #endif
     settings = g_object_new (CTK_TYPE_SETTINGS, NULL);
 
-  settings->priv->screen = gdk_display_get_default_screen (display);
+  settings->priv->screen = cdk_display_get_default_screen (display);
 
   v.display = display;
   v.settings = settings;
@@ -2012,7 +2012,7 @@ ctk_settings_get_for_display (GdkDisplay *display)
   int i;
 
   /* If the display is closed, we don't want to recreate the settings! */
-  if G_UNLIKELY (gdk_display_is_closed (display))
+  if G_UNLIKELY (cdk_display_is_closed (display))
     return NULL;
 
   if G_UNLIKELY (display_settings == NULL)
@@ -2043,7 +2043,7 @@ ctk_settings_get_for_screen (GdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
-  return ctk_settings_get_for_display (gdk_screen_get_display (screen));
+  return ctk_settings_get_for_display (cdk_screen_get_display (screen));
 }
 
 /**
@@ -2058,7 +2058,7 @@ ctk_settings_get_for_screen (GdkScreen *screen)
 CtkSettings*
 ctk_settings_get_default (void)
 {
-  GdkDisplay *display = gdk_display_get_default ();
+  GdkDisplay *display = cdk_display_get_default ();
 
   if (display)
     return ctk_settings_get_for_display (display);
@@ -2946,7 +2946,7 @@ _ctk_settings_handle_event (GdkEventSetting *event)
   CtkSettings *settings;
   GParamSpec *pspec;
 
-  screen = gdk_window_get_screen (event->window);
+  screen = cdk_window_get_screen (event->window);
   settings = ctk_settings_get_for_screen (screen);
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (settings), event->name);
 
@@ -3016,7 +3016,7 @@ static void
 settings_update_double_click (CtkSettings *settings)
 {
   CtkSettingsPrivate *priv = settings->priv;
-  GdkDisplay *display = gdk_screen_get_display (priv->screen);
+  GdkDisplay *display = cdk_screen_get_display (priv->screen);
   gint double_click_time;
   gint double_click_distance;
 
@@ -3025,8 +3025,8 @@ settings_update_double_click (CtkSettings *settings)
                 "ctk-double-click-distance", &double_click_distance,
                 NULL);
 
-  gdk_display_set_double_click_time (display, double_click_time);
-  gdk_display_set_double_click_distance (display, double_click_distance);
+  cdk_display_set_double_click_time (display, double_click_time);
+  cdk_display_set_double_click_distance (display, double_click_distance);
 }
 
 static void
@@ -3049,7 +3049,7 @@ settings_update_cursor_theme (CtkSettings *settings)
   gchar *theme = NULL;
   gint size = 0;
 #if defined(GDK_WINDOWING_X11) || defined(GDK_WINDOWING_WAYLAND) || defined(GDK_WINDOWING_WIN32)
-  GdkDisplay *display = gdk_screen_get_display (settings->priv->screen);
+  GdkDisplay *display = cdk_screen_get_display (settings->priv->screen);
 #endif
 
   g_object_get (settings,
@@ -3060,17 +3060,17 @@ settings_update_cursor_theme (CtkSettings *settings)
     return;
 #ifdef GDK_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY (display))
-    gdk_x11_display_set_cursor_theme (display, theme, size);
+    cdk_x11_display_set_cursor_theme (display, theme, size);
   else
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (display))
-    gdk_wayland_display_set_cursor_theme (display, theme, size);
+    cdk_wayland_display_set_cursor_theme (display, theme, size);
   else
 #endif
 #ifdef GDK_WINDOWING_WIN32
   if (GDK_IS_WIN32_DISPLAY (display))
-    gdk_win32_display_set_cursor_theme (display, theme, size);
+    cdk_win32_display_set_cursor_theme (display, theme, size);
   else
 #endif
     g_warning ("CtkSettings Cursor Theme: Unsupported GDK backend");
@@ -3157,7 +3157,7 @@ settings_update_font_options (CtkSettings *settings)
 
   cairo_font_options_set_antialias (options, antialias_mode);
 
-  gdk_screen_set_font_options (priv->screen, options);
+  cdk_screen_set_font_options (priv->screen, options);
 
   cairo_font_options_destroy (options);
 }
@@ -3234,7 +3234,7 @@ settings_update_resolution (CtkSettings *settings)
             dpi *= scale;
         }
 
-      gdk_screen_set_resolution (priv->screen, dpi);
+      cdk_screen_set_resolution (priv->screen, dpi);
     }
 }
 
@@ -3525,7 +3525,7 @@ settings_update_xsetting (CtkSettings *settings,
 
       g_value_init (&val, value_type);
 
-      if (!gdk_screen_get_setting (priv->screen, pspec->name, &val))
+      if (!cdk_screen_get_setting (priv->screen, pspec->name, &val))
         return FALSE;
 
       g_param_value_validate (pspec, &val);
@@ -3545,7 +3545,7 @@ settings_update_xsetting (CtkSettings *settings,
 
       g_value_init (&val, G_TYPE_STRING);
 
-      if (!gdk_screen_get_setting (priv->screen, pspec->name, &val))
+      if (!cdk_screen_get_setting (priv->screen, pspec->name, &val))
         return FALSE;
 
       g_value_init (&gstring_value, G_TYPE_GSTRING);

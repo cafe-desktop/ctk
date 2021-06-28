@@ -463,7 +463,7 @@ create_pango_layout (CtkTextCellAccessible *text)
   pango_font_description_free (font_desc);
   pango_attr_list_unref (attributes);
   g_free (renderer_text);
-  gdk_rgba_free (foreground_rgba);
+  cdk_rgba_free (foreground_rgba);
 
   return layout;
 }
@@ -492,9 +492,9 @@ get_origins (CtkWidget *widget,
   else
     window = ctk_widget_get_window (widget);
 
-  gdk_window_get_origin (window, x_window, y_window);
-  window = gdk_window_get_toplevel (ctk_widget_get_window (widget));
-  gdk_window_get_origin (window, x_toplevel, y_toplevel);
+  cdk_window_get_origin (window, x_window, y_window);
+  window = cdk_window_get_toplevel (ctk_widget_get_window (widget));
+  cdk_window_get_origin (window, x_toplevel, y_toplevel);
 }
 
 static void

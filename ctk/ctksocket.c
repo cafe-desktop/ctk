@@ -42,8 +42,8 @@
 #include "ctkmain.h"
 #include "ctkwidgetprivate.h"
 
-#include <gdk/gdkx.h>
-#include <gdk/gdkprivate.h>
+#include <cdk/cdkx.h>
+#include <cdk/cdkprivate.h>
 
 #ifdef HAVE_XFIXES
 #include <X11/extensions/Xfixes.h>
@@ -146,11 +146,11 @@ static void     ctk_socket_forall               (CtkContainer     *container,
 static void     ctk_socket_add_window           (CtkSocket        *socket,
                                                  Window            xid,
                                                  gboolean          need_reparent);
-static GdkFilterReturn ctk_socket_filter_func   (GdkXEvent        *gdk_xevent,
+static GdkFilterReturn ctk_socket_filter_func   (GdkXEvent        *cdk_xevent,
                                                  GdkEvent         *event,
                                                  gpointer          data);
 
-static gboolean xembed_get_info                 (GdkWindow        *gdk_window,
+static gboolean xembed_get_info                 (GdkWindow        *cdk_window,
                                                  unsigned long    *version,
                                                  unsigned long    *flags);
 
@@ -420,7 +420,7 @@ ctk_socket_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
@@ -442,7 +442,7 @@ ctk_socket_realize (CtkWidget *widget)
 		(xattrs.your_event_mask & ~ButtonPressMask) |
 		SubstructureNotifyMask | SubstructureRedirectMask);
 
-  gdk_window_add_filter (window,
+  cdk_window_add_filter (window,
 			 ctk_socket_filter_func,
 			 widget);
 
@@ -450,7 +450,7 @@ ctk_socket_realize (CtkWidget *widget)
    * our window is passed to another application, SubstructureRedirectMask
    * will be set by the time the other app creates its window.
    */
-  gdk_display_sync (ctk_widget_get_display (widget));
+  cdk_display_sync (ctk_widget_get_display (widget));
 }
 
 /**
@@ -503,7 +503,7 @@ ctk_socket_size_request (CtkSocket *socket)
   int scale;
 
   display = ctk_widget_get_display (CTK_WIDGET (socket));
-  gdk_x11_display_error_trap_push (display);
+  cdk_x11_display_error_trap_push (display);
 
   private->request_width = 1;
   private->request_height = 1;
@@ -526,7 +526,7 @@ ctk_socket_size_request (CtkSocket *socket)
     }
   private->have_size = TRUE;
   
-  gdk_x11_display_error_trap_pop_ignored (display);
+  cdk_x11_display_error_trap_pop_ignored (display);
 }
 
 static void
@@ -597,10 +597,10 @@ ctk_socket_send_configure_event (CtkSocket *socket)
    * coordinates. We still aren't really ICCCM compliant, since
    * we don't send events when the real toplevel is moved.
    */
-  display = gdk_window_get_display (socket->priv->plug_window);
-  gdk_x11_display_error_trap_push (display);
-  gdk_window_get_origin (socket->priv->plug_window, &x, &y);
-  gdk_x11_display_error_trap_pop_ignored (display);
+  display = cdk_window_get_display (socket->priv->plug_window);
+  cdk_x11_display_error_trap_push (display);
+  cdk_window_get_origin (socket->priv->plug_window, &x, &y);
+  cdk_x11_display_error_trap_pop_ignored (display);
 
   ctk_widget_get_allocation (CTK_WIDGET(socket), &allocation);
   scale = ctk_widget_get_scale_factor (CTK_WIDGET(socket));
@@ -613,11 +613,11 @@ ctk_socket_send_configure_event (CtkSocket *socket)
   xconfigure.above = None;
   xconfigure.override_redirect = False;
 
-  gdk_x11_display_error_trap_push (display);
+  cdk_x11_display_error_trap_push (display);
   XSendEvent (GDK_WINDOW_XDISPLAY (socket->priv->plug_window),
 	      GDK_WINDOW_XID (socket->priv->plug_window),
 	      False, NoEventMask, (XEvent *)&xconfigure);
-  gdk_x11_display_error_trap_pop_ignored (display);
+  cdk_x11_display_error_trap_pop_ignored (display);
 }
 
 static void
@@ -630,7 +630,7 @@ ctk_socket_size_allocate (CtkWidget     *widget,
   ctk_widget_set_allocation (widget, allocation);
   if (ctk_widget_get_realized (widget))
     {
-      gdk_window_move_resize (ctk_widget_get_window (widget),
+      cdk_window_move_resize (ctk_widget_get_window (widget),
 			      allocation->x, allocation->y,
 			      allocation->width, allocation->height);
 
@@ -647,14 +647,14 @@ ctk_socket_size_allocate (CtkWidget     *widget,
 	}
       else if (private->plug_window)
 	{
-          GdkDisplay *display = gdk_window_get_display (private->plug_window);
+          GdkDisplay *display = cdk_window_get_display (private->plug_window);
 
-	  gdk_x11_display_error_trap_push (display);
+	  cdk_x11_display_error_trap_push (display);
 
 	  if (allocation->width != private->current_width ||
 	      allocation->height != private->current_height)
 	    {
-	      gdk_window_move_resize (private->plug_window,
+	      cdk_window_move_resize (private->plug_window,
 				      0, 0,
 				      allocation->width, allocation->height);
 	      if (private->resize_count)
@@ -669,7 +669,7 @@ ctk_socket_size_allocate (CtkWidget     *widget,
 
 	  if (private->need_map)
 	    {
-	      gdk_window_show (private->plug_window);
+	      cdk_window_show (private->plug_window);
 	      private->need_map = FALSE;
 	    }
 
@@ -682,40 +682,40 @@ ctk_socket_size_allocate (CtkWidget     *widget,
 				   allocation->width, allocation->height));
  	    }
 
-	  gdk_x11_display_error_trap_pop_ignored (display);
+	  cdk_x11_display_error_trap_pop_ignored (display);
 	}
     }
 }
 
 static void
 ctk_socket_send_key_event (CtkSocket *socket,
-			   GdkEvent  *gdk_event,
+			   GdkEvent  *cdk_event,
 			   gboolean   mask_key_presses)
 {
   XKeyEvent xkey;
-  GdkScreen *screen = gdk_window_get_screen (socket->priv->plug_window);
+  GdkScreen *screen = cdk_window_get_screen (socket->priv->plug_window);
 
   memset (&xkey, 0, sizeof (xkey));
-  xkey.type = (gdk_event->type == GDK_KEY_PRESS) ? KeyPress : KeyRelease;
+  xkey.type = (cdk_event->type == GDK_KEY_PRESS) ? KeyPress : KeyRelease;
   xkey.window = GDK_WINDOW_XID (socket->priv->plug_window);
-  xkey.root = GDK_WINDOW_XID (gdk_screen_get_root_window (screen));
+  xkey.root = GDK_WINDOW_XID (cdk_screen_get_root_window (screen));
   xkey.subwindow = None;
-  xkey.time = gdk_event->key.time;
+  xkey.time = cdk_event->key.time;
   xkey.x = 0;
   xkey.y = 0;
   xkey.x_root = 0;
   xkey.y_root = 0;
-  xkey.state = gdk_event->key.state;
-  xkey.keycode = gdk_event->key.hardware_keycode;
+  xkey.state = cdk_event->key.state;
+  xkey.keycode = cdk_event->key.hardware_keycode;
   xkey.same_screen = True;/* FIXME ? */
 
-  gdk_x11_display_error_trap_push (gdk_window_get_display (socket->priv->plug_window));
+  cdk_x11_display_error_trap_push (cdk_window_get_display (socket->priv->plug_window));
   XSendEvent (GDK_WINDOW_XDISPLAY (socket->priv->plug_window),
 	      GDK_WINDOW_XID (socket->priv->plug_window),
 	      False,
 	      (mask_key_presses ? KeyPressMask : NoEventMask),
 	      (XEvent *)&xkey);
-  gdk_x11_display_error_trap_pop_ignored (gdk_window_get_display (socket->priv->plug_window));
+  cdk_x11_display_error_trap_pop_ignored (cdk_window_get_display (socket->priv->plug_window));
 }
 
 static gboolean
@@ -725,19 +725,19 @@ activate_key (CtkAccelGroup  *accel_group,
 	      GdkModifierType accel_mods,
 	      GrabbedKey     *grabbed_key)
 {
-  GdkEvent *gdk_event = ctk_get_current_event ();
+  GdkEvent *cdk_event = ctk_get_current_event ();
   
   CtkSocket *socket = g_object_get_data (G_OBJECT (accel_group), "ctk-socket");
   gboolean retval = FALSE;
 
-  if (gdk_event && gdk_event->type == GDK_KEY_PRESS && socket->priv->plug_window)
+  if (cdk_event && cdk_event->type == GDK_KEY_PRESS && socket->priv->plug_window)
     {
-      ctk_socket_send_key_event (socket, gdk_event, FALSE);
+      ctk_socket_send_key_event (socket, cdk_event, FALSE);
       retval = TRUE;
     }
 
-  if (gdk_event)
-    gdk_event_free (gdk_event);
+  if (cdk_event)
+    cdk_event_free (cdk_event);
 
   return retval;
 }
@@ -1052,14 +1052,14 @@ ctk_socket_add_window (CtkSocket       *socket,
   unsigned long flags;
 
   if (GDK_IS_X11_DISPLAY (display))
-    private->plug_window = gdk_x11_window_lookup_for_display (display, xid);
+    private->plug_window = cdk_x11_window_lookup_for_display (display, xid);
   else
     private->plug_window = NULL;
 
   if (private->plug_window)
     {
       g_object_ref (private->plug_window);
-      gdk_window_get_user_data (private->plug_window, &user_data);
+      cdk_window_get_user_data (private->plug_window, &user_data);
     }
 
   if (user_data) /* A widget's window in this process */
@@ -1070,7 +1070,7 @@ ctk_socket_add_window (CtkSocket       *socket,
         {
           g_warning (G_STRLOC ": Can't add non-CtkPlug to CtkSocket");
           private->plug_window = NULL;
-          gdk_x11_display_error_trap_pop_ignored (display);
+          cdk_x11_display_error_trap_pop_ignored (display);
 
           return;
         }
@@ -1081,15 +1081,15 @@ ctk_socket_add_window (CtkSocket       *socket,
     {
       GdkDragProtocol protocol;
 
-      gdk_x11_display_error_trap_push (display);
+      cdk_x11_display_error_trap_push (display);
 
       if (!private->plug_window)
         {
           if (GDK_IS_X11_DISPLAY (display))
-            private->plug_window = gdk_x11_window_foreign_new_for_display (display, xid);
+            private->plug_window = cdk_x11_window_foreign_new_for_display (display, xid);
           if (!private->plug_window) /* was deleted before we could get it */
             {
-              gdk_x11_display_error_trap_pop_ignored (display);
+              cdk_x11_display_error_trap_pop_ignored (display);
               return;
             }
         }
@@ -1098,7 +1098,7 @@ ctk_socket_add_window (CtkSocket       *socket,
                     GDK_WINDOW_XID (private->plug_window),
                     StructureNotifyMask | PropertyChangeMask);
 
-      if (gdk_x11_display_error_trap_pop (display))
+      if (cdk_x11_display_error_trap_pop (display))
 	{
 	  g_object_unref (private->plug_window);
 	  private->plug_window = NULL;
@@ -1107,12 +1107,12 @@ ctk_socket_add_window (CtkSocket       *socket,
       
       /* OK, we now will reliably get destroy notification on socket->plug_window */
 
-      gdk_x11_display_error_trap_push (display);
+      cdk_x11_display_error_trap_push (display);
 
       if (need_reparent)
 	{
-	  gdk_window_hide (private->plug_window); /* Shouldn't actually be necessary for XEMBED, but just in case */
-	  gdk_window_reparent (private->plug_window,
+	  cdk_window_hide (private->plug_window); /* Shouldn't actually be necessary for XEMBED, but just in case */
+	  cdk_window_reparent (private->plug_window,
                                ctk_widget_get_window (widget),
                                0, 0);
 	}
@@ -1134,23 +1134,23 @@ ctk_socket_add_window (CtkSocket       *socket,
       private->need_map = private->is_mapped;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      protocol = gdk_window_get_drag_protocol (private->plug_window, NULL);
+      protocol = cdk_window_get_drag_protocol (private->plug_window, NULL);
       if (protocol)
 	ctk_drag_dest_set_proxy (widget, private->plug_window, protocol, TRUE);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-      gdk_x11_display_error_trap_pop_ignored (display);
+      cdk_x11_display_error_trap_pop_ignored (display);
 
-      gdk_window_add_filter (private->plug_window,
+      cdk_window_add_filter (private->plug_window,
 			     ctk_socket_filter_func,
 			     socket);
 
 #ifdef HAVE_XFIXES
-      gdk_x11_display_error_trap_push (display);
+      cdk_x11_display_error_trap_push (display);
       XFixesChangeSaveSet (GDK_DISPLAY_XDISPLAY (display),
                            GDK_WINDOW_XID (private->plug_window),
                            SetModeInsert, SaveSetRoot, SaveSetUnmap);
-      gdk_x11_display_error_trap_pop_ignored (display);
+      cdk_x11_display_error_trap_pop_ignored (display);
 #endif
       _ctk_xembed_send_message (private->plug_window,
                                 XEMBED_EMBEDDED_NOTIFY, 0,
@@ -1287,8 +1287,8 @@ xembed_get_info (GdkWindow     *window,
 		 unsigned long *version,
 		 unsigned long *flags)
 {
-  GdkDisplay *display = gdk_window_get_display (window);
-  Atom xembed_info_atom = gdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_INFO");
+  GdkDisplay *display = cdk_window_get_display (window);
+  Atom xembed_info_atom = cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_INFO");
   Atom type;
   int format;
   unsigned long nitems, bytes_after;
@@ -1296,14 +1296,14 @@ xembed_get_info (GdkWindow     *window,
   unsigned long *data_long;
   int status;
   
-  gdk_x11_display_error_trap_push (display);
+  cdk_x11_display_error_trap_push (display);
   status = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
 			       GDK_WINDOW_XID (window),
 			       xembed_info_atom,
 			       0, 2, False,
 			       xembed_info_atom, &type, &format,
 			       &nitems, &bytes_after, &data);
-  gdk_x11_display_error_trap_pop_ignored (display);
+  cdk_x11_display_error_trap_pop_ignored (display);
 
   if (status != Success)
     return FALSE;		/* Window vanished? */
@@ -1389,22 +1389,22 @@ handle_xembed_message (CtkSocket        *socket,
 static void
 _ctk_socket_accessible_embed (CtkWidget *socket, GdkWindow *window)
 {
-  GdkDisplay *display = gdk_window_get_display (window);
-  Atom net_at_spi_path_atom = gdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_AT_SPI_PATH");
+  GdkDisplay *display = cdk_window_get_display (window);
+  Atom net_at_spi_path_atom = cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_AT_SPI_PATH");
   Atom type;
   int format;
   unsigned long nitems, bytes_after;
   unsigned char *data;
   int status;
 
-  gdk_x11_display_error_trap_push (display);
+  cdk_x11_display_error_trap_push (display);
   status = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
 			       GDK_WINDOW_XID (window),
 			       net_at_spi_path_atom,
 			       0, INT_MAX / 4, False,
 			       net_at_spi_path_atom, &type, &format,
 			       &nitems, &bytes_after, &data);
-  gdk_x11_display_error_trap_pop_ignored (display);
+  cdk_x11_display_error_trap_pop_ignored (display);
 
   if (status != Success)
     return;			/* Window vanished? */
@@ -1439,7 +1439,7 @@ _ctk_socket_accessible_embed (CtkWidget *socket, GdkWindow *window)
 }
 
 static GdkFilterReturn
-ctk_socket_filter_func (GdkXEvent *gdk_xevent,
+ctk_socket_filter_func (GdkXEvent *cdk_xevent,
 			GdkEvent  *event,
 			gpointer   data)
 {
@@ -1460,13 +1460,13 @@ ctk_socket_filter_func (GdkXEvent *gdk_xevent,
     return return_val;
 
   widget = CTK_WIDGET (socket);
-  xevent = (XEvent *)gdk_xevent;
+  xevent = (XEvent *)cdk_xevent;
   display = ctk_widget_get_display (widget);
 
   switch (xevent->type)
     {
     case ClientMessage:
-      if (xevent->xclient.message_type == gdk_x11_get_xatom_by_name_for_display (display, "_XEMBED"))
+      if (xevent->xclient.message_type == cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED"))
 	{
 	  _ctk_xembed_push_message (xevent);
 	  handle_xembed_message (socket,
@@ -1543,7 +1543,7 @@ ctk_socket_filter_func (GdkXEvent *gdk_xevent,
 	    
 	    CTK_NOTE (PLUGSOCKET, g_message ("CtkSocket - destroy notify"));
 	    
-	    gdk_window_destroy_notify (private->plug_window);
+	    cdk_window_destroy_notify (private->plug_window);
 	    ctk_socket_end_embedding (socket);
 
 	    g_object_ref (widget);
@@ -1587,29 +1587,29 @@ ctk_socket_filter_func (GdkXEvent *gdk_xevent,
 	{
 	  GdkDragProtocol protocol;
 
-	  if (xevent->xproperty.atom == gdk_x11_get_xatom_by_name_for_display (display, "WM_NORMAL_HINTS"))
+	  if (xevent->xproperty.atom == cdk_x11_get_xatom_by_name_for_display (display, "WM_NORMAL_HINTS"))
 	    {
 	      CTK_NOTE (PLUGSOCKET, g_message ("CtkSocket - received PropertyNotify for plug's WM_NORMAL_HINTS"));
 	      private->have_size = FALSE;
 	      ctk_widget_queue_resize (widget);
 	      return_val = GDK_FILTER_REMOVE;
 	    }
-	  else if ((xevent->xproperty.atom == gdk_x11_get_xatom_by_name_for_display (display, "XdndAware")) ||
-	      (xevent->xproperty.atom == gdk_x11_get_xatom_by_name_for_display (display, "_MOTIF_DRAG_RECEIVER_INFO")))
+	  else if ((xevent->xproperty.atom == cdk_x11_get_xatom_by_name_for_display (display, "XdndAware")) ||
+	      (xevent->xproperty.atom == cdk_x11_get_xatom_by_name_for_display (display, "_MOTIF_DRAG_RECEIVER_INFO")))
 	    {
-	      gdk_x11_display_error_trap_push (display);
+	      cdk_x11_display_error_trap_push (display);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-              protocol = gdk_window_get_drag_protocol (private->plug_window, NULL);
+              protocol = cdk_window_get_drag_protocol (private->plug_window, NULL);
               if (protocol)
 		ctk_drag_dest_set_proxy (CTK_WIDGET (socket),
 					 private->plug_window,
 					 protocol, TRUE);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-	      gdk_x11_display_error_trap_pop_ignored (display);
+	      cdk_x11_display_error_trap_pop_ignored (display);
 	      return_val = GDK_FILTER_REMOVE;
 	    }
-	  else if (xevent->xproperty.atom == gdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_INFO"))
+	  else if (xevent->xproperty.atom == cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_INFO"))
 	    {
 	      unsigned long flags;
 	      
@@ -1624,9 +1624,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 			ctk_socket_handle_map_request (socket);
 		      else
 			{
-			  gdk_x11_display_error_trap_push (display);
-			  gdk_window_show (private->plug_window);
-			  gdk_x11_display_error_trap_pop_ignored (display);
+			  cdk_x11_display_error_trap_push (display);
+			  cdk_window_show (private->plug_window);
+			  cdk_x11_display_error_trap_pop_ignored (display);
 			  
 			  ctk_socket_unmap_notify (socket);
 			}

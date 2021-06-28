@@ -12,13 +12,13 @@ main (int argc, char **argv)
   if (!ctk_parse_args (&argc, &argv))
     return 1;
 
-  display_name = gdk_get_display_arg_name();
-  display = gdk_display_open(display_name);
+  display_name = cdk_get_display_arg_name();
+  display = cdk_display_open(display_name);
 
   if (!display)
     return 1;
 
-  gdk_display_manager_set_default_display (gdk_display_manager_get (), display);
+  cdk_display_manager_set_default_display (cdk_display_manager_get (), display);
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   g_signal_connect (win, "destroy",
@@ -35,7 +35,7 @@ main (int argc, char **argv)
 
   ctk_test_widget_wait_for_draw (win);
 
-  gdk_display_close (display);
+  cdk_display_close (display);
 
   return 0;
 }

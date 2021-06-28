@@ -220,11 +220,11 @@ ctk_cell_renderer_graph_render (CtkCellRenderer      *cell,
   cairo_line_to (cr, x + width, y + height);
   cairo_close_path (cr);
 
-  gdk_cairo_set_source_rgba (cr, &color);
+  cdk_cairo_set_source_rgba (cr, &color);
   cairo_stroke_preserve (cr);
 
   color.alpha *= 0.2;
-  gdk_cairo_set_source_rgba (cr, &color);
+  cdk_cairo_set_source_rgba (cr, &color);
   cairo_fill (cr);
 }
 

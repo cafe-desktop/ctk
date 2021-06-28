@@ -1,6 +1,6 @@
 /* GDK - The GIMP Drawing Kit
  *
- * gdkselection-win32.h: Private Win32 specific selection object
+ * cdkselection-win32.h: Private Win32 specific selection object
  *
  * Copyright © 2017 LRN
  *
@@ -23,11 +23,11 @@
 
 G_BEGIN_DECLS
 
-#define _gdk_win32_selection_get() (_win32_selection)
-#define _gdk_atom_array_index(a, i) (g_array_index (a, GdkAtom, i))
-#define _gdk_win32_selection_atom(i) (_gdk_atom_array_index (_gdk_win32_selection_get ()->known_atoms, i))
-#define _gdk_cf_array_index(a, i) (g_array_index (a, UINT, i))
-#define _gdk_win32_selection_cf(i) (_gdk_cf_array_index (_gdk_win32_selection_get ()->known_clipboard_formats, i))
+#define _cdk_win32_selection_get() (_win32_selection)
+#define _cdk_atom_array_index(a, i) (g_array_index (a, GdkAtom, i))
+#define _cdk_win32_selection_atom(i) (_cdk_atom_array_index (_cdk_win32_selection_get ()->known_atoms, i))
+#define _cdk_cf_array_index(a, i) (g_array_index (a, UINT, i))
+#define _cdk_win32_selection_cf(i) (_cdk_cf_array_index (_cdk_win32_selection_get ()->known_clipboard_formats, i))
 
 /* Maps targets to formats or vice versa, depending on the
  * semantics of the array that holds these.
@@ -114,7 +114,7 @@ enum _GdkWin32CFIndex
 
 typedef enum _GdkWin32CFIndex GdkWin32CFIndex;
 
-#define GDK_TYPE_WIN32_SELECTION         (gdk_win32_selection_get_type ())
+#define GDK_TYPE_WIN32_SELECTION         (cdk_win32_selection_get_type ())
 #define GDK_WIN32_SELECTION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_WIN32_SELECTION, GdkWin32Selection))
 #define GDK_WIN32_SELECTION_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_WIN32_SELECTION, GdkWin32SelectionClass))
 #define GDK_IS_WIN32_SELECTION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_WIN32_SELECTION))
@@ -202,17 +202,17 @@ struct _GdkWin32SelectionClass
   GObjectClass parent_class;
 };
 
-GType gdk_win32_selection_get_type (void) G_GNUC_CONST;
+GType cdk_win32_selection_get_type (void) G_GNUC_CONST;
 
-void    _gdk_win32_clear_clipboard_queue                          ();
-gchar * _gdk_win32_get_clipboard_format_name                      (UINT               fmt,
+void    _cdk_win32_clear_clipboard_queue                          ();
+gchar * _cdk_win32_get_clipboard_format_name                      (UINT               fmt,
                                                                    gboolean          *is_predefined);
-void    _gdk_win32_add_format_to_targets                          (UINT               format,
+void    _cdk_win32_add_format_to_targets                          (UINT               format,
                                                                    GArray            *array,
                                                                    GList            **list);
-gint    _gdk_win32_add_target_to_selformats                       (GdkAtom            target,
+gint    _cdk_win32_add_target_to_selformats                       (GdkAtom            target,
                                                                    GArray            *array);
-void    _gdk_win32_selection_property_change                      (GdkWin32Selection *win32_sel,
+void    _cdk_win32_selection_property_change                      (GdkWin32Selection *win32_sel,
                                                                    GdkWindow         *window,
                                                                    GdkAtom            property,
                                                                    GdkAtom            type,

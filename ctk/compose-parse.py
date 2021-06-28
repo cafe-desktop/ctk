@@ -23,7 +23,7 @@ import getopt
 # We grab files off the web, left and right.
 URL_COMPOSE = 'http://cgit.freedesktop.org/xorg/lib/libX11/plain/nls/en_US.UTF-8/Compose.pre'
 URL_KEYSYMSTXT = "http://www.cl.cam.ac.uk/~mgk25/ucs/keysyms.txt"
-URL_GDKKEYSYMSH = "http://git.gnome.org/browse/ctk%2B/plain/gdk/gdkkeysyms.h"
+URL_GDKKEYSYMSH = "http://git.gnome.org/browse/ctk%2B/plain/cdk/cdkkeysyms.h"
 URL_UNICODEDATATXT = 'http://www.unicode.org/Public/6.0.0/ucd/UnicodeData.txt'
 FILENAME_COMPOSE_SUPPLEMENTARY = 'ctk-compose-lookaside.txt'
 
@@ -232,12 +232,12 @@ def download_file(url):
                 	print "Using cached file for ", url
 	return localfilename
 
-def process_gdkkeysymsh():
-	""" Opens the gdkkeysyms.h file from CTK+/gdk/gdkkeysyms.h """
+def process_cdkkeysymsh():
+	""" Opens the cdkkeysyms.h file from CTK+/cdk/cdkkeysyms.h """
 	""" Fills up keysymdb with contents """
-	filename_gdkkeysymsh = download_file(URL_GDKKEYSYMSH)
+	filename_cdkkeysymsh = download_file(URL_GDKKEYSYMSH)
 	try: 
-		gdkkeysymsh = open(filename_gdkkeysymsh, 'r')
+		cdkkeysymsh = open(filename_cdkkeysymsh, 'r')
 	except IOError, (errno, strerror):
 		print "I/O error(%s): %s" % (errno, strerror)
 		sys.exit(-1)
@@ -245,23 +245,23 @@ def process_gdkkeysymsh():
 		print "Unexpected error: ", sys.exc_info()[0]
 		sys.exit(-1)
 
-	""" Parse the gdkkeysyms.h file and place contents in  keysymdb """
-	linenum_gdkkeysymsh = 0
+	""" Parse the cdkkeysyms.h file and place contents in  keysymdb """
+	linenum_cdkkeysymsh = 0
 	keysymdb = {}
-	for line in gdkkeysymsh.readlines():
-		linenum_gdkkeysymsh += 1
+	for line in cdkkeysymsh.readlines():
+		linenum_cdkkeysymsh += 1
 		line = line.strip()
 		if line == "" or not match('^#define GDK_KEY_', line):
 			continue
 		components = split('\s+', line)
 		if len(components) < 3:
 			print "Invalid line %(linenum)d in %(filename)s: %(line)s"\
-			% {'linenum': linenum_gdkkeysymsh, 'filename': filename_gdkkeysymsh, 'line': line}
+			% {'linenum': linenum_cdkkeysymsh, 'filename': filename_cdkkeysymsh, 'line': line}
 			print "Was expecting 3 items in the line"
 			sys.exit(-1)
 		if not match('^GDK_KEY_', components[1]):
 			print "Invalid line %(linenum)d in %(filename)s: %(line)s"\
-			% {'linenum': linenum_gdkkeysymsh, 'filename': filename_gdkkeysymsh, 'line': line}
+			% {'linenum': linenum_cdkkeysymsh, 'filename': filename_cdkkeysymsh, 'line': line}
 			print "Was expecting a keysym starting with GDK_KEY_"
 			sys.exit(-1)
 		if match('^0x[0-9a-fA-F]+$', components[2]):
@@ -271,10 +271,10 @@ def process_gdkkeysymsh():
 			keysymdb[components[1][8:]] = unival
 		else:
 			print "Invalid line %(linenum)d in %(filename)s: %(line)s"\
-			% {'linenum': linenum_gdkkeysymsh, 'filename': filename_gdkkeysymsh, 'line': line}
+			% {'linenum': linenum_cdkkeysymsh, 'filename': filename_cdkkeysymsh, 'line': line}
 			print "Was expecting a hexadecimal number at the end of the line"
 			sys.exit(-1)
-	gdkkeysymsh.close()
+	cdkkeysymsh.close()
 
 	""" Patch up the keysymdb with some of our own stuff """
 
@@ -428,7 +428,7 @@ def rename_combining(seq):
 
 
 keysymunicodedatabase = process_keysymstxt()
-keysymdatabase = process_gdkkeysymsh()
+keysymdatabase = process_cdkkeysymsh()
 
 """ Grab and open the compose file from upstream """
 filename_compose = download_file(URL_COMPOSE)

@@ -19,10 +19,10 @@
 #define __GDK_WAYLAND_WINDOW_H__
 
 #if !defined (__GDKWAYLAND_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkwayland.h> can be included directly."
+#error "Only <cdk/cdkwayland.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include <wayland-client.h>
 
@@ -35,7 +35,7 @@ typedef GdkWindow GdkWaylandWindow;
 #endif
 typedef struct _GdkWaylandWindowClass GdkWaylandWindowClass;
 
-#define GDK_TYPE_WAYLAND_WINDOW              (gdk_wayland_window_get_type())
+#define GDK_TYPE_WAYLAND_WINDOW              (cdk_wayland_window_get_type())
 #define GDK_WAYLAND_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_WINDOW, GdkWaylandWindow))
 #define GDK_WAYLAND_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WAYLAND_WINDOW, GdkWaylandWindowClass))
 #define GDK_IS_WAYLAND_WINDOW(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WAYLAND_WINDOW))
@@ -43,16 +43,16 @@ typedef struct _GdkWaylandWindowClass GdkWaylandWindowClass;
 #define GDK_WAYLAND_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WAYLAND_WINDOW, GdkWaylandWindowClass))
 
 GDK_AVAILABLE_IN_ALL
-GType                    gdk_wayland_window_get_type             (void);
+GType                    cdk_wayland_window_get_type             (void);
 
 GDK_AVAILABLE_IN_ALL
-struct wl_surface       *gdk_wayland_window_get_wl_surface       (GdkWindow *window);
+struct wl_surface       *cdk_wayland_window_get_wl_surface       (GdkWindow *window);
 
 GDK_AVAILABLE_IN_ALL
-void                     gdk_wayland_window_set_use_custom_surface (GdkWindow *window);
+void                     cdk_wayland_window_set_use_custom_surface (GdkWindow *window);
 
 GDK_AVAILABLE_IN_3_10
-void                     gdk_wayland_window_set_dbus_properties_libctk_only (GdkWindow  *window,
+void                     cdk_wayland_window_set_dbus_properties_libctk_only (GdkWindow  *window,
 									     const char *application_id,
 									     const char *app_menu_path,
 									     const char *menubar_path,
@@ -65,27 +65,27 @@ typedef void (*GdkWaylandWindowExported) (GdkWindow  *window,
                                           gpointer    user_data);
 
 GDK_AVAILABLE_IN_3_22
-gboolean                 gdk_wayland_window_export_handle (GdkWindow               *window,
+gboolean                 cdk_wayland_window_export_handle (GdkWindow               *window,
                                                            GdkWaylandWindowExported callback,
                                                            gpointer                 user_data,
                                                            GDestroyNotify           destroy_func);
 
 GDK_AVAILABLE_IN_3_22
-void                     gdk_wayland_window_unexport_handle (GdkWindow *window);
+void                     cdk_wayland_window_unexport_handle (GdkWindow *window);
 
 GDK_AVAILABLE_IN_3_22
-gboolean                 gdk_wayland_window_set_transient_for_exported (GdkWindow *window,
+gboolean                 cdk_wayland_window_set_transient_for_exported (GdkWindow *window,
                                                                         char      *parent_handle_str);
 
 GDK_AVAILABLE_IN_3_24
-void                     gdk_wayland_window_set_application_id (GdkWindow *window,
+void                     cdk_wayland_window_set_application_id (GdkWindow *window,
                                                                 const char *application_id);
 
 GDK_AVAILABLE_IN_3_22
-void gdk_wayland_window_announce_csd                        (GdkWindow *window);
+void cdk_wayland_window_announce_csd                        (GdkWindow *window);
 
 GDK_AVAILABLE_IN_3_24
-void gdk_wayland_window_announce_ssd                        (GdkWindow *window);
+void cdk_wayland_window_announce_ssd                        (GdkWindow *window);
 
 G_END_DECLS
 

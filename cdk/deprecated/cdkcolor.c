@@ -24,10 +24,10 @@
 
 #include "config.h"
 
-#include "gdkcolor.h"
+#include "cdkcolor.h"
 
-#include "gdkscreen.h"
-#include "gdkinternals.h"
+#include "cdkscreen.h"
+#include "cdkinternals.h"
 
 #include <time.h>
 
@@ -47,19 +47,19 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 
 /**
- * gdk_color_copy:
+ * cdk_color_copy:
  * @color: a #GdkColor
  *
  * Makes a copy of a #GdkColor.
  *
- * The result must be freed using gdk_color_free().
+ * The result must be freed using cdk_color_free().
  *
  * Returns: a copy of @color
  *
  * Deprecated: 3.14: Use #GdkRGBA
  */
 GdkColor*
-gdk_color_copy (const GdkColor *color)
+cdk_color_copy (const GdkColor *color)
 {
   GdkColor *new_color;
 
@@ -71,15 +71,15 @@ gdk_color_copy (const GdkColor *color)
 }
 
 /**
- * gdk_color_free:
+ * cdk_color_free:
  * @color: a #GdkColor
  *
- * Frees a #GdkColor created with gdk_color_copy().
+ * Frees a #GdkColor created with cdk_color_copy().
  *
  * Deprecated: 3.14: Use #GdkRGBA
  */
 void
-gdk_color_free (GdkColor *color)
+cdk_color_free (GdkColor *color)
 {
   g_return_if_fail (color != NULL);
 
@@ -87,7 +87,7 @@ gdk_color_free (GdkColor *color)
 }
 
 /**
- * gdk_color_hash:
+ * cdk_color_hash:
  * @color: a #GdkColor
  *
  * A hash function suitable for using for a hash
@@ -98,7 +98,7 @@ gdk_color_free (GdkColor *color)
  * Deprecated: 3.14: Use #GdkRGBA
  */
 guint
-gdk_color_hash (const GdkColor *color)
+cdk_color_hash (const GdkColor *color)
 {
   return ((color->red) +
           (color->green << 11) +
@@ -107,7 +107,7 @@ gdk_color_hash (const GdkColor *color)
 }
 
 /**
- * gdk_color_equal:
+ * cdk_color_equal:
  * @colora: a #GdkColor
  * @colorb: another #GdkColor
  *
@@ -118,7 +118,7 @@ gdk_color_hash (const GdkColor *color)
  * Deprecated: 3.14: Use #GdkRGBA
  */
 gboolean
-gdk_color_equal (const GdkColor *colora,
+cdk_color_equal (const GdkColor *colora,
                  const GdkColor *colorb)
 {
   g_return_val_if_fail (colora != NULL, FALSE);
@@ -129,12 +129,12 @@ gdk_color_equal (const GdkColor *colora,
           (colora->blue == colorb->blue));
 }
 
-G_DEFINE_BOXED_TYPE (GdkColor, gdk_color,
-                     gdk_color_copy,
-                     gdk_color_free)
+G_DEFINE_BOXED_TYPE (GdkColor, cdk_color,
+                     cdk_color_copy,
+                     cdk_color_free)
 
 /**
- * gdk_color_parse:
+ * cdk_color_parse:
  * @spec: the string specifying the color
  * @color: (out): the #GdkColor to fill in
  *
@@ -154,7 +154,7 @@ G_DEFINE_BOXED_TYPE (GdkColor, gdk_color,
  * Deprecated: 3.14: Use #GdkRGBA
  */
 gboolean
-gdk_color_parse (const gchar *spec,
+cdk_color_parse (const gchar *spec,
                  GdkColor    *color)
 {
   PangoColor pango_color;
@@ -172,14 +172,14 @@ gdk_color_parse (const gchar *spec,
 }
 
 /**
- * gdk_color_to_string:
+ * cdk_color_to_string:
  * @color: a #GdkColor
  *
  * Returns a textual specification of @color in the hexadecimal
  * form “\#rrrrggggbbbb” where “r”, “g” and “b” are hex digits
  * representing the red, green and blue components respectively.
  *
- * The returned string can be parsed by gdk_color_parse().
+ * The returned string can be parsed by cdk_color_parse().
  *
  * Returns: a newly-allocated text string
  *
@@ -188,7 +188,7 @@ gdk_color_parse (const gchar *spec,
  * Deprecated: 3.14: Use #GdkRGBA
  */
 gchar *
-gdk_color_to_string (const GdkColor *color)
+cdk_color_to_string (const GdkColor *color)
 {
   PangoColor pango_color;
 

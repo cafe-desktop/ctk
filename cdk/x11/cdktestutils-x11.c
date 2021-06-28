@@ -18,15 +18,15 @@
 
 #include "config.h"
 
-#include "gdktestutils.h"
+#include "cdktestutils.h"
 
-#include "gdkkeysyms.h"
-#include "gdkprivate-x11.h"
+#include "cdkkeysyms.h"
+#include "cdkprivate-x11.h"
 
 #include <X11/Xlib.h>
 
 void
-_gdk_x11_window_sync_rendering (GdkWindow *window)
+_cdk_x11_window_sync_rendering (GdkWindow *window)
 {
   Display *display = GDK_WINDOW_XDISPLAY (window);
   XImage *ximage;
@@ -41,7 +41,7 @@ _gdk_x11_window_sync_rendering (GdkWindow *window)
 }
 
 gboolean
-_gdk_x11_window_simulate_key (GdkWindow      *window,
+_cdk_x11_window_simulate_key (GdkWindow      *window,
                               gint            x,
                               gint            y,
                               guint           keyval,
@@ -62,7 +62,7 @@ _gdk_x11_window_simulate_key (GdkWindow      *window,
   if (!GDK_WINDOW_IS_MAPPED (window))
     return FALSE;
 
-  screen = gdk_window_get_screen (window);
+  screen = cdk_window_get_screen (window);
 
   if (x < 0 && y < 0)
     {
@@ -86,7 +86,7 @@ _gdk_x11_window_simulate_key (GdkWindow      *window,
   xev.y_root = 0;
   xev.state = modifiers;
   xev.keycode = 0;
-  success = gdk_keymap_get_entries_for_keyval (gdk_keymap_get_for_display (gdk_window_get_display (window)), keyval, &keys, &n_keys);
+  success = cdk_keymap_get_entries_for_keyval (cdk_keymap_get_for_display (cdk_window_get_display (window)), keyval, &keys, &n_keys);
   success &= n_keys > 0;
   if (success)
     {
@@ -108,7 +108,7 @@ _gdk_x11_window_simulate_key (GdkWindow      *window,
   g_free (keys);
   if (!success)
     return FALSE;
-  gdk_x11_display_error_trap_push (GDK_WINDOW_DISPLAY (window));
+  cdk_x11_display_error_trap_push (GDK_WINDOW_DISPLAY (window));
   xev.same_screen = XTranslateCoordinates (xev.display, xev.window, xev.root,
                                            xev.x, xev.y, &xev.x_root, &xev.y_root,
                                            &xev.subwindow);
@@ -119,12 +119,12 @@ _gdk_x11_window_simulate_key (GdkWindow      *window,
     success &= 0 != XWarpPointer (xev.display, None, xev.window, 0, 0, 0, 0, xev.x, xev.y);
   success &= 0 != XSendEvent (xev.display, xev.window, True, key_pressrelease == GDK_KEY_PRESS ? KeyPressMask : KeyReleaseMask, (XEvent*) &xev);
   XSync (xev.display, False);
-  success &= 0 == gdk_x11_display_error_trap_pop (GDK_WINDOW_DISPLAY (window));
+  success &= 0 == cdk_x11_display_error_trap_pop (GDK_WINDOW_DISPLAY (window));
   return success;
 }
 
 gboolean
-_gdk_x11_window_simulate_button (GdkWindow      *window,
+_cdk_x11_window_simulate_button (GdkWindow      *window,
                                  gint            x,
                                  gint            y,
                                  guint           button, /*1..3*/
@@ -145,7 +145,7 @@ _gdk_x11_window_simulate_button (GdkWindow      *window,
   if (!GDK_WINDOW_IS_MAPPED (window))
     return FALSE;
 
-  screen = gdk_window_get_screen (window);
+  screen = cdk_window_get_screen (window);
 
   if (x < 0 && y < 0)
     {
@@ -169,7 +169,7 @@ _gdk_x11_window_simulate_button (GdkWindow      *window,
   xev.y_root = 0;
   xev.state = modifiers;
   xev.button = button;
-  gdk_x11_display_error_trap_push (GDK_WINDOW_DISPLAY (window));
+  cdk_x11_display_error_trap_push (GDK_WINDOW_DISPLAY (window));
   xev.same_screen = XTranslateCoordinates (xev.display, xev.window, xev.root,
                                            xev.x, xev.y, &xev.x_root, &xev.y_root,
                                            &xev.subwindow);
@@ -179,6 +179,6 @@ _gdk_x11_window_simulate_button (GdkWindow      *window,
   success &= 0 != XWarpPointer (xev.display, None, xev.window, 0, 0, 0, 0, xev.x, xev.y);
   success &= 0 != XSendEvent (xev.display, xev.window, True, button_pressrelease == GDK_BUTTON_PRESS ? ButtonPressMask : ButtonReleaseMask, (XEvent*) &xev);
   XSync (xev.display, False);
-  success &= 0 == gdk_x11_display_error_trap_pop(GDK_WINDOW_DISPLAY (window));
+  success &= 0 == cdk_x11_display_error_trap_pop(GDK_WINDOW_DISPLAY (window));
   return success;
 }

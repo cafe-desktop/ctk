@@ -51,8 +51,8 @@
 #define FC_HINT_FULL        3
 #endif
 
-#include <gdkscreen-x11.h>
-#include <gdkprivate-x11.h>
+#include <cdkscreen-x11.h>
+#include <cdkprivate-x11.h>
 
 static gint
 parse_boolean (char *v)
@@ -180,7 +180,7 @@ init_xft_settings (GdkScreen *screen)
 }
 
 gboolean
-_gdk_x11_get_xft_setting (GdkScreen   *screen,
+_cdk_x11_get_xft_setting (GdkScreen   *screen,
 			  const gchar *name,
 			  GValue      *value)
 {

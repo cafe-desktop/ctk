@@ -699,12 +699,12 @@ set_busy_cursor (CtkRecentChooserDefault *impl,
   display = ctk_widget_get_display (CTK_WIDGET (toplevel));
 
   if (busy)
-    cursor = gdk_cursor_new_from_name (display, "progress");
+    cursor = cdk_cursor_new_from_name (display, "progress");
   else
     cursor = NULL;
 
-  gdk_window_set_cursor (ctk_widget_get_window (CTK_WIDGET (toplevel)), cursor);
-  gdk_display_flush (display);
+  cdk_window_set_cursor (ctk_widget_get_window (CTK_WIDGET (toplevel)), cursor);
+  cdk_display_flush (display);
 
   if (cursor)
     g_object_unref (cursor);
@@ -858,7 +858,7 @@ reload_recent_items (CtkRecentChooserDefault *impl)
   set_busy_cursor (impl, TRUE);
 
   impl->priv->load_state = LOAD_EMPTY;
-  impl->priv->load_id = gdk_threads_add_idle_full (G_PRIORITY_HIGH_IDLE + 30,
+  impl->priv->load_id = cdk_threads_add_idle_full (G_PRIORITY_HIGH_IDLE + 30,
                                              load_recent_items,
                                              impl,
                                              cleanup_after_load);
@@ -895,8 +895,8 @@ set_default_size (CtkRecentChooserDefault *impl)
 
   /* ... but no larger than the monitor */
   display = ctk_widget_get_display (widget);
-  monitor = gdk_display_get_monitor_at_window (display, ctk_widget_get_window (widget));
-  gdk_monitor_get_workarea (monitor, &workarea);
+  monitor = cdk_display_get_monitor_at_window (display, ctk_widget_get_window (widget));
+  cdk_monitor_get_workarea (monitor, &workarea);
 
   width = MIN (width, workarea.width * 3 / 4);
   height = MIN (height, workarea.height * 3 / 4);
@@ -1733,7 +1733,7 @@ recent_view_menu_popup (CtkRecentChooserDefault *impl,
 {
   recent_view_menu_build (impl);
   
-  if (event && gdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (event && cdk_event_triggers_context_menu ((GdkEvent *) event))
     ctk_menu_popup_at_pointer (CTK_MENU (impl->priv->recent_popup_menu), (GdkEvent *) event);
   else
     {
@@ -1762,7 +1762,7 @@ recent_view_button_press_cb (CtkWidget      *widget,
 {
   CtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
 
-  if (gdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (cdk_event_triggers_context_menu ((GdkEvent *) event))
     {
       CtkTreePath *path;
       gboolean res;

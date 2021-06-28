@@ -122,10 +122,10 @@ disable_toggled (CtkToggleButton       *button,
                  CtkInspectorCssEditor *ce)
 {
   if (ctk_toggle_button_get_active (button))
-    ctk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
+    ctk_style_context_remove_provider_for_screen (cdk_screen_get_default (),
                                                   CTK_STYLE_PROVIDER (ce->priv->provider));
   else
-    ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+    ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                                CTK_STYLE_PROVIDER (ce->priv->provider),
                                                CTK_STYLE_PROVIDER_PRIORITY_USER);
 }
@@ -286,7 +286,7 @@ static void
 create_provider (CtkInspectorCssEditor *ce)
 {
   ce->priv->provider = ctk_css_provider_new ();
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (ce->priv->provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_USER);
 
@@ -297,7 +297,7 @@ create_provider (CtkInspectorCssEditor *ce)
 static void
 destroy_provider (CtkInspectorCssEditor *ce)
 {
-  ctk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_remove_provider_for_screen (cdk_screen_get_default (),
                                                 CTK_STYLE_PROVIDER (ce->priv->provider));
   g_clear_object (&ce->priv->provider);
 }

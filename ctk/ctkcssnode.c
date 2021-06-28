@@ -700,7 +700,7 @@ ctk_css_node_get_timestamp (CtkCssNode *cssnode)
   if (frameclock == NULL)
     return 0;
 
-  return gdk_frame_clock_get_frame_time (frameclock);
+  return cdk_frame_clock_get_frame_time (frameclock);
 }
 
 static void

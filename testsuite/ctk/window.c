@@ -1,7 +1,7 @@
 #include <ctk/ctk.h>
 
 #ifdef GDK_WINDOWING_X11
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 #include <X11/Xatom.h>
 #endif
 
@@ -184,7 +184,7 @@ test_resize_popup (void)
 
   /* testcase for the dnd window */
   window = ctk_window_new (CTK_WINDOW_POPUP);
-  ctk_window_set_screen (CTK_WINDOW (window), gdk_screen_get_default ());
+  ctk_window_set_screen (CTK_WINDOW (window), cdk_screen_get_default ());
   ctk_window_resize (CTK_WINDOW (window), 1, 1);
   ctk_window_move (CTK_WINDOW (window), -99, -99);
 
@@ -380,9 +380,9 @@ test_hide_titlebar_when_maximized (void)
       gulong bytes_after;
       gulong *hide = NULL;
 
-      XGetWindowProperty (gdk_x11_get_default_xdisplay (),
+      XGetWindowProperty (cdk_x11_get_default_xdisplay (),
                           GDK_WINDOW_XID (ctk_widget_get_window (window)),
-                          gdk_x11_get_xatom_by_name ("_CTK_HIDE_TITLEBAR_WHEN_MAXIMIZED"),
+                          cdk_x11_get_xatom_by_name ("_CTK_HIDE_TITLEBAR_WHEN_MAXIMIZED"),
                           0,
                           G_MAXLONG,
                           False,

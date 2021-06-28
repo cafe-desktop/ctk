@@ -1,13 +1,13 @@
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctk.h>
-#include <gdkx.h>
+#include <cdkx.h>
 #include <stdio.h>
 #include <errno.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include <X11/extensions/shape.h>
 
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
@@ -35,7 +35,7 @@ find_toplevel_window (Window xid)
 
   do
     {
-      if (XQueryTree (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), xid, &root,
+      if (XQueryTree (GDK_DISPLAY_XDISPLAY (cdk_display_get_default ()), xid, &root,
 		      &parent, &children, &nchildren) == 0)
 	{
 	  g_warning ("Couldn't find window manager window");
@@ -57,18 +57,18 @@ add_border_to_shot (GdkPixbuf *pixbuf)
   GdkColorspace colorspace;
   int bits;
 
-  colorspace = gdk_pixbuf_get_colorspace (pixbuf);
-  bits = gdk_pixbuf_get_bits_per_sample (pixbuf);
-  retval = gdk_pixbuf_new (colorspace, TRUE, bits,
-			   gdk_pixbuf_get_width (pixbuf) + 2,
-			   gdk_pixbuf_get_height (pixbuf) + 2);
+  colorspace = cdk_pixbuf_get_colorspace (pixbuf);
+  bits = cdk_pixbuf_get_bits_per_sample (pixbuf);
+  retval = cdk_pixbuf_new (colorspace, TRUE, bits,
+			   cdk_pixbuf_get_width (pixbuf) + 2,
+			   cdk_pixbuf_get_height (pixbuf) + 2);
 
   /* Fill with solid black */
-  gdk_pixbuf_fill (retval, 0xFF);
-  gdk_pixbuf_copy_area (pixbuf,
+  cdk_pixbuf_fill (retval, 0xFF);
+  cdk_pixbuf_copy_area (pixbuf,
 			0, 0,
-			gdk_pixbuf_get_width (pixbuf),
-			gdk_pixbuf_get_height (pixbuf),
+			cdk_pixbuf_get_width (pixbuf),
+			cdk_pixbuf_get_height (pixbuf),
 			retval, 1, 1);
 
   return retval;
@@ -85,14 +85,14 @@ remove_shaped_area (GdkPixbuf *pixbuf,
   GdkColorspace colorspace;
   int bits;
 
-  colorspace = gdk_pixbuf_get_colorspace (pixbuf);
-  bits = gdk_pixbuf_get_bits_per_sample (pixbuf);
-  retval = gdk_pixbuf_new (colorspace, TRUE, bits,
-			   gdk_pixbuf_get_width (pixbuf),
-			   gdk_pixbuf_get_height (pixbuf));
+  colorspace = cdk_pixbuf_get_colorspace (pixbuf);
+  bits = cdk_pixbuf_get_bits_per_sample (pixbuf);
+  retval = cdk_pixbuf_new (colorspace, TRUE, bits,
+			   cdk_pixbuf_get_width (pixbuf),
+			   cdk_pixbuf_get_height (pixbuf));
   
-  gdk_pixbuf_fill (retval, 0);
-  rectangles = XShapeGetRectangles (GDK_DISPLAY_XDISPLAY (gdk_display_get_default ()), window,
+  cdk_pixbuf_fill (retval, 0);
+  rectangles = XShapeGetRectangles (GDK_DISPLAY_XDISPLAY (cdk_display_get_default ()), window,
 				    ShapeBounding, &rectangle_count, &rectangle_order);
 
   for (i = 0; i < rectangle_count; i++)
@@ -103,11 +103,11 @@ remove_shaped_area (GdkPixbuf *pixbuf,
 	{
 	  guchar *src_pixels, *dest_pixels;
 
-	  src_pixels = gdk_pixbuf_get_pixels (pixbuf) +
-	    y * gdk_pixbuf_get_rowstride (pixbuf) +
-	    rectangles[i].x * (gdk_pixbuf_get_has_alpha (pixbuf) ? 4 : 3);
-	  dest_pixels = gdk_pixbuf_get_pixels (retval) +
-	    y * gdk_pixbuf_get_rowstride (retval) +
+	  src_pixels = cdk_pixbuf_get_pixels (pixbuf) +
+	    y * cdk_pixbuf_get_rowstride (pixbuf) +
+	    rectangles[i].x * (cdk_pixbuf_get_has_alpha (pixbuf) ? 4 : 3);
+	  dest_pixels = cdk_pixbuf_get_pixels (retval) +
+	    y * cdk_pixbuf_get_rowstride (retval) +
 	    rectangles[i].x * 4;
 
 	  for (x = rectangles[i].x; x < rectangles[i].x + rectangles[i].width; x++)
@@ -117,7 +117,7 @@ remove_shaped_area (GdkPixbuf *pixbuf,
 	      *dest_pixels++ = *src_pixels ++;
 	      *dest_pixels++ = 255;
 
-	      if (gdk_pixbuf_get_has_alpha (pixbuf))
+	      if (cdk_pixbuf_get_has_alpha (pixbuf))
 		src_pixels++;
 	    }
 	}
@@ -150,11 +150,11 @@ take_window_shot (Window         child,
   else
     xid = child;
 
-  window = gdk_x11_window_foreign_new_for_display (gdk_display_get_default (), xid);
+  window = cdk_x11_window_foreign_new_for_display (cdk_display_get_default (), xid);
 
-  width = gdk_window_get_width (window);
-  height = gdk_window_get_height (window);
-  gdk_window_get_origin (window, &x_orig, &y_orig);
+  width = cdk_window_get_width (window);
+  height = cdk_window_get_height (window);
+  cdk_window_get_origin (window, &x_orig, &y_orig);
 
   if (x_orig < 0)
     {
@@ -170,13 +170,13 @@ take_window_shot (Window         child,
       y_orig = 0;
     }
 
-  if (x_orig + width > gdk_screen_width ())
-    width = gdk_screen_width () - x_orig;
+  if (x_orig + width > cdk_screen_width ())
+    width = cdk_screen_width () - x_orig;
 
-  if (y_orig + height > gdk_screen_height ())
-    height = gdk_screen_height () - y_orig;
+  if (y_orig + height > cdk_screen_height ())
+    height = cdk_screen_height () - y_orig;
 
-  tmp = gdk_pixbuf_get_from_window (window,
+  tmp = cdk_pixbuf_get_from_window (window,
 				    x, y, width, height);
 
   if (tmp != NULL)
@@ -210,7 +210,7 @@ window_is_csd (GdkWindow *window)
   GdkWMDecoration decorations = 0;
 
   /* FIXME: is this accurate? */
-  set = gdk_window_get_decorations (window, &decorations);
+  set = cdk_window_get_decorations (window, &decorations);
   return (set && (decorations == 0));
 }
 
@@ -229,7 +229,7 @@ shoot_one (WidgetInfo *info)
     }
 
   window = ctk_widget_get_window (info->window);
-  id = gdk_x11_window_get_xid (window);
+  id = cdk_x11_window_get_xid (window);
   if (window_is_csd (window))
     decor = (info->include_decorations) ? DECOR_NONE : DECOR_WINDOW_FRAME;
   screenshot = take_window_shot (id, decor);
@@ -237,7 +237,7 @@ shoot_one (WidgetInfo *info)
     {
       char *filename;
       filename = g_strdup_printf ("./%s.png", info->name);
-      gdk_pixbuf_save (screenshot, filename, "png", NULL, NULL);
+      cdk_pixbuf_save (screenshot, filename, "png", NULL, NULL);
       g_free (filename);
       g_object_unref (screenshot);
     }

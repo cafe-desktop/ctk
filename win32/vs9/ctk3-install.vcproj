@@ -144,56 +144,56 @@
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateCtkPC)"
-						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\cdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateCtkPC)"
-						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\cdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Debug|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateCtkPCX64)"
-						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\cdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateCtkPCX64)"
-						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\cdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Debug_Broadway|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateCtkPC) --broadway"
-						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\cdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release_Broadway|Win32">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateCtkPC) --broadway"
-						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\cdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Debug_Broadway|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateCtkPCX64) --broadway"
-						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\cdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 				<FileConfiguration Name="Release_Broadway|x64">
 					<Tool Name="VCCustomBuildTool"
 						Description="Generating .pc files..."
 						CommandLine="$(GenerateCtkPCX64) --broadway"
-						Outputs="..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
+						Outputs="..\cdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc"
 					/>
 				</FileConfiguration>
 			</File>

@@ -41,7 +41,7 @@
 #include "ctkfilechooserentry.h"
 #include "ctkfilefilterprivate.h"
 #ifdef GDK_WINDOWING_QUARTZ
-#include <gdk/quartz/gdkquartz.h>
+#include <cdk/quartz/cdkquartz.h>
 #endif
 
 /**
@@ -760,7 +760,7 @@ ctk_file_chooser_native_show (CtkNativeDialog *native)
 
 #if defined (GDK_WINDOWING_QUARTZ) && \
   MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
-    if (gdk_quartz_osx_version() >= GDK_OSX_SNOW_LEOPARD &&
+    if (cdk_quartz_osx_version() >= GDK_OSX_SNOW_LEOPARD &&
         ctk_file_chooser_native_quartz_show (self))
     self->mode = MODE_QUARTZ;
 #endif
@@ -791,7 +791,7 @@ ctk_file_chooser_native_hide (CtkNativeDialog *native)
     case MODE_QUARTZ:
 #if defined (GDK_WINDOWING_QUARTZ) && \
   MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
-      if (gdk_quartz_osx_version() >= GDK_OSX_SNOW_LEOPARD)
+      if (cdk_quartz_osx_version() >= GDK_OSX_SNOW_LEOPARD)
         ctk_file_chooser_native_quartz_hide (self);
 #endif
       break;

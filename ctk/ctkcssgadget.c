@@ -797,7 +797,7 @@ ctk_css_gadget_allocate (CtkCssGadget        *gadget,
   out_clip->height = MAX (0, allocation->height - margin.top - margin.bottom + shadow.top + shadow.bottom);
 
   if (content_clip.width > 0 && content_clip.height > 0)
-    gdk_rectangle_union (&content_clip, out_clip, out_clip);
+    cdk_rectangle_union (&content_clip, out_clip, out_clip);
 
   if (ctk_css_style_render_outline_get_clip (style,
                                              allocation->x + margin.left,
@@ -805,7 +805,7 @@ ctk_css_gadget_allocate (CtkCssGadget        *gadget,
                                              allocation->width - margin.left - margin.right,
                                              allocation->height - margin.top - margin.bottom,
                                              &tmp_clip))
-    gdk_rectangle_union (&tmp_clip, out_clip, out_clip);
+    cdk_rectangle_union (&tmp_clip, out_clip, out_clip);
 }
 
 /**

@@ -7,15 +7,15 @@ noinst_PROGRAMS = $(TEST_PROGS)
 AM_CPPFLAGS = 				\
 	$(GDK_DEP_CFLAGS) 		\
 	-I$(top_srcdir) 		\
-	-I$(top_builddir)/gdk 		\
+	-I$(top_builddir)/cdk 		\
 	$(NULL)
 
 LDADD = 				\
 	$(GDK_DEP_LIBS) 		\
-	$(top_builddir)/gdk/libgdk-3.la \
+	$(top_builddir)/cdk/libcdk-3.la \
 	$(NULL)
 
-#TEST_PROGS              += check-gdk-cairo
+#TEST_PROGS              += check-cdk-cairo
 
 TEST_PROGS += 				\
 	cairo				\
@@ -30,11 +30,11 @@ TEST_PROGS += 				\
 
 CLEANFILES = 			\
 	cairosurface.png	\
-	gdksurface.png		\
+	cdksurface.png		\
 	$(NULL)
 
 EXTRA_DIST += \
-	check-gdk-cairo.c	\
+	check-cdk-cairo.c	\
 	meson.build
 
 if BUILDOPT_INSTALL_TESTS

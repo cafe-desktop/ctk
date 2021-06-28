@@ -17,16 +17,16 @@
 
 #include "config.h"
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #ifdef GDK_WINDOWING_X11
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
-#include <wayland/gdkwayland.h>
+#include <wayland/cdkwayland.h>
 #endif
 #ifdef GDK_WINDOWING_WIN32
-#include <win32/gdkwin32.h>
+#include <win32/cdkwin32.h>
 #endif
 
 #include <stdlib.h>
@@ -411,7 +411,7 @@ check_table (CtkIMContextSimple    *context_simple,
 }
 
 /* Checks if a keysym is a dead key. Dead key keysym values are defined in
- * ../gdk/gdkkeysyms.h and the first is GDK_KEY_dead_grave. As X.Org is updated,
+ * ../cdk/cdkkeysyms.h and the first is GDK_KEY_dead_grave. As X.Org is updated,
  * more dead keys are added and we need to update the upper limit.
  * Currently, the upper limit is GDK_KEY_dead_dasia+1. The +1 has to do with
  * a temporary issue in the X.Org header files.
@@ -525,7 +525,7 @@ check_quartz_special_cases (CtkIMContextSimple *context_simple,
   if (value > 0)
     {
       ctk_im_context_simple_commit_char (CTK_IM_CONTEXT (context_simple),
-                                         gdk_keyval_to_unicode (value));
+                                         cdk_keyval_to_unicode (value));
       priv->compose_buffer[0] = 0;
 
       return TRUE;
@@ -722,7 +722,7 @@ ctk_check_algorithmically (const guint16       *compose_buffer,
 
   if (i > 0 && i == n_compose - 1)
     {
-      combination_buffer[0] = gdk_keyval_to_unicode (compose_buffer[i]);
+      combination_buffer[0] = cdk_keyval_to_unicode (compose_buffer[i]);
       combination_buffer[n_compose] = 0;
       i--;
       while (i >= 0)
@@ -764,7 +764,7 @@ ctk_check_algorithmically (const guint16       *compose_buffer,
 	    /* CASE (psili, 0x343); */
 #undef CASE
 	    default:
-	      combination_buffer[i+1] = gdk_keyval_to_unicode (compose_buffer[i]);
+	      combination_buffer[i+1] = cdk_keyval_to_unicode (compose_buffer[i]);
 	    }
 	  i--;
 	}
@@ -828,7 +828,7 @@ check_hex (CtkIMContextSimple *context_simple,
     {
       gunichar ch;
       
-      ch = gdk_keyval_to_unicode (priv->compose_buffer[i]);
+      ch = cdk_keyval_to_unicode (priv->compose_buffer[i]);
       
       if (ch == 0)
         return FALSE;
@@ -868,7 +868,7 @@ check_hex (CtkIMContextSimple *context_simple,
 static void
 beep_window (GdkWindow *window)
 {
-  GdkScreen *screen = gdk_window_get_screen (window);
+  GdkScreen *screen = cdk_window_get_screen (window);
   gboolean   beep;
 
   g_object_get (ctk_settings_get_for_screen (screen),
@@ -876,7 +876,7 @@ beep_window (GdkWindow *window)
                 NULL);
 
   if (beep)
-    gdk_window_beep (window);
+    cdk_window_beep (window);
 }
 
 static gboolean
@@ -903,11 +903,11 @@ no_sequence_matches (CtkIMContextSimple *context_simple,
       
       for (i=0; i < n_compose - len - 1; i++)
 	{
-	  GdkEvent *tmp_event = gdk_event_copy ((GdkEvent *)event);
+	  GdkEvent *tmp_event = cdk_event_copy ((GdkEvent *)event);
 	  tmp_event->key.keyval = priv->compose_buffer[len + i];
 	  
 	  ctk_im_context_filter_keypress (context, (GdkEventKey *)tmp_event);
-	  gdk_event_free (tmp_event);
+	  cdk_event_free (tmp_event);
 	}
 
       return ctk_im_context_filter_keypress (context, event);
@@ -921,7 +921,7 @@ no_sequence_matches (CtkIMContextSimple *context_simple,
 	  return TRUE;
 	}
   
-      ch = gdk_keyval_to_unicode (event->keyval);
+      ch = cdk_keyval_to_unicode (event->keyval);
       if (ch != 0 && !g_unichar_iscntrl (ch))
 	{
 	  ctk_im_context_simple_commit_char (context, ch);
@@ -935,7 +935,7 @@ no_sequence_matches (CtkIMContextSimple *context_simple,
 static gboolean
 is_hex_keyval (guint keyval)
 {
-  gunichar ch = gdk_keyval_to_unicode (keyval);
+  gunichar ch = cdk_keyval_to_unicode (keyval);
 
   return g_unichar_isxdigit (ch);
 }
@@ -943,7 +943,7 @@ is_hex_keyval (guint keyval)
 static guint
 canonical_hex_keyval (GdkEventKey *event)
 {
-  GdkKeymap *keymap = gdk_keymap_get_for_display (gdk_window_get_display (event->window));
+  GdkKeymap *keymap = cdk_keymap_get_for_display (cdk_window_get_display (event->window));
   guint keyval;
   guint *keyvals = NULL;
   gint n_vals = 0;
@@ -956,7 +956,7 @@ canonical_hex_keyval (GdkEventKey *event)
   /* See if this key would have generated a hex keyval in
    * any other state, and return that hex keyval if so
    */
-  gdk_keymap_get_entries_for_keycode (keymap,
+  cdk_keymap_get_entries_for_keycode (keymap,
 				      event->hardware_keycode,
 				      NULL,
 				      &keyvals, &n_vals);
@@ -990,7 +990,7 @@ ctk_im_context_simple_filter_keypress (CtkIMContext *context,
 {
   CtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
   CtkIMContextSimplePrivate *priv = context_simple->priv;
-  GdkDisplay *display = gdk_window_get_display (event->window);
+  GdkDisplay *display = cdk_window_get_display (event->window);
   GSList *tmp_list;  
   int n_compose = 0;
   GdkModifierType hex_mod_mask;
@@ -1049,7 +1049,7 @@ ctk_im_context_simple_filter_keypress (CtkIMContext *context,
     if (event->keyval == ctk_compose_ignore[i])
       return FALSE;
 
-  hex_mod_mask = gdk_keymap_get_modifier_mask (gdk_keymap_get_for_display (display),
+  hex_mod_mask = cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
                                                GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
   hex_mod_mask |= GDK_SHIFT_MASK;
 
@@ -1083,7 +1083,7 @@ ctk_im_context_simple_filter_keypress (CtkIMContext *context,
       GdkModifierType no_text_input_mask;
 
       no_text_input_mask =
-        gdk_keymap_get_modifier_mask (gdk_keymap_get_for_display (display),
+        cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
                                       GDK_MODIFIER_INTENT_NO_TEXT_INPUT);
 
       if (event->state & no_text_input_mask ||
@@ -1222,7 +1222,7 @@ ctk_im_context_simple_filter_keypress (CtkIMContext *context,
           guint16  output[2];
           gsize    output_size = 2;
 
-          switch (gdk_win32_keymap_check_compose (GDK_WIN32_KEYMAP (gdk_keymap_get_default ()),
+          switch (cdk_win32_keymap_check_compose (GDK_WIN32_KEYMAP (cdk_keymap_get_default ()),
                                                   priv->compose_buffer,
                                                   n_compose,
                                                   output, &output_size))
@@ -1233,7 +1233,7 @@ ctk_im_context_simple_filter_keypress (CtkIMContext *context,
             case GDK_WIN32_KEYMAP_MATCH_PARTIAL:
               for (i = 0; i < output_size; i++)
                 {
-                  output_char = gdk_keyval_to_unicode (output[i]);
+                  output_char = cdk_keyval_to_unicode (output[i]);
                   ctk_im_context_simple_commit_char (CTK_IM_CONTEXT (context_simple),
                                                      output_char);
                 }
@@ -1360,7 +1360,7 @@ ctk_im_context_simple_get_preedit_string (CtkIMContext   *context,
 
       while (priv->compose_buffer[hexchars] != 0)
 	{
-	  len += g_unichar_to_utf8 (gdk_keyval_to_unicode (priv->compose_buffer[hexchars]),
+	  len += g_unichar_to_utf8 (cdk_keyval_to_unicode (priv->compose_buffer[hexchars]),
 				    outbuf + len);
 	  ++hexchars;
 	}
@@ -1404,11 +1404,11 @@ ctk_im_context_simple_set_client_window  (CtkIMContext *context,
 
   /* Load compose table for X11 or Wayland. */
 #ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (gdk_window_get_display (window)))
+  if (GDK_IS_X11_DISPLAY (cdk_window_get_display (window)))
     run_compose_table = TRUE;
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (gdk_window_get_display (window)))
+  if (GDK_IS_WAYLAND_DISPLAY (cdk_window_get_display (window)))
     run_compose_table = TRUE;
 #endif
 

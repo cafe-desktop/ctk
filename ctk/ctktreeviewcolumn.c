@@ -986,7 +986,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       ctk_widget_get_realized (priv->tree_view))
     {
       if (priv->visible &&
-          gdk_window_is_visible (_ctk_tree_view_get_header_window (CTK_TREE_VIEW (priv->tree_view))))
+          cdk_window_is_visible (_ctk_tree_view_get_header_window (CTK_TREE_VIEW (priv->tree_view))))
 	{
           ctk_widget_show (priv->button);
 
@@ -994,12 +994,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	    {
 	      if (priv->resizable)
 		{
-		  gdk_window_show (priv->window);
-		  gdk_window_raise (priv->window);
+		  cdk_window_show (priv->window);
+		  cdk_window_raise (priv->window);
 		}
 	      else
 		{
-		  gdk_window_hide (priv->window);
+		  cdk_window_hide (priv->window);
 		}
 	    }
 	}
@@ -1007,7 +1007,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	{
 	  ctk_widget_hide (priv->button);
 	  if (priv->window)
-	    gdk_window_hide (priv->window);
+	    cdk_window_hide (priv->window);
 	}
     }
   
@@ -1336,15 +1336,15 @@ _ctk_tree_view_column_realize_button (CtkTreeViewColumn *column)
 		     GDK_POINTER_MOTION_MASK |
 		     GDK_KEY_PRESS_MASK);
   attributes_mask = GDK_WA_CURSOR | GDK_WA_X | GDK_WA_Y;
-  display = gdk_window_get_display (_ctk_tree_view_get_header_window (tree_view));
-  attr.cursor = gdk_cursor_new_from_name (display, "col-resize");
+  display = cdk_window_get_display (_ctk_tree_view_get_header_window (tree_view));
+  attr.cursor = cdk_cursor_new_from_name (display, "col-resize");
   attr.y = 0;
   attr.width = TREE_VIEW_DRAG_WIDTH;
   attr.height = _ctk_tree_view_get_header_height (tree_view);
 
   ctk_widget_get_allocation (priv->button, &allocation);
   attr.x       = (allocation.x + (rtl ? 0 : allocation.width)) - TREE_VIEW_DRAG_WIDTH / 2;
-  priv->window = gdk_window_new (_ctk_tree_view_get_header_window (tree_view),
+  priv->window = cdk_window_new (_ctk_tree_view_get_header_window (tree_view),
 				 &attr, attributes_mask);
   ctk_widget_register_window (CTK_WIDGET (tree_view), priv->window);
 
@@ -1364,7 +1364,7 @@ _ctk_tree_view_column_unrealize_button (CtkTreeViewColumn *column)
   g_return_if_fail (priv->window != NULL);
 
   ctk_widget_unregister_window (CTK_WIDGET (priv->tree_view), priv->window);
-  gdk_window_destroy (priv->window);
+  cdk_window_destroy (priv->window);
   priv->window = NULL;
 }
 
@@ -2125,7 +2125,7 @@ _ctk_tree_view_column_allocate (CtkTreeViewColumn *tree_column,
   if (priv->window)
     {
       rtl = (ctk_widget_get_direction (priv->tree_view) == CTK_TEXT_DIR_RTL);
-      gdk_window_move_resize (priv->window,
+      cdk_window_move_resize (priv->window,
 			      allocation.x + (rtl ? 0 : allocation.width) - TREE_VIEW_DRAG_WIDTH/2,
 			      allocation.y,
 			      TREE_VIEW_DRAG_WIDTH, allocation.height);

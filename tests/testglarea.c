@@ -257,14 +257,14 @@ realize (CtkWidget *widget)
     return;
 
   context = ctk_gl_area_get_context (CTK_GL_AREA (widget));
-  if (gdk_gl_context_get_use_es (context))
+  if (cdk_gl_context_get_use_es (context))
     {
       vertex = vertex_shader_code_gles;
       fragment = fragment_shader_code_gles;
     }
   else
     {
-      if (!gdk_gl_context_is_legacy (context))
+      if (!cdk_gl_context_is_legacy (context))
         {
           vertex = vertex_shader_code_330;
           fragment = fragment_shader_code_330;

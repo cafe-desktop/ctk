@@ -19,10 +19,10 @@
 #define __GDK_WIN32_KEYS_H__
 
 #if !defined (__GDKWIN32_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkwin32.h> can be included directly."
+#error "Only <cdk/cdkwin32.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
@@ -51,7 +51,7 @@ typedef GdkKeymap GdkWin32Keymap;
 #endif
 typedef struct _GdkWin32KeymapClass GdkWin32KeymapClass;
 
-#define GDK_TYPE_WIN32_KEYMAP              (gdk_win32_keymap_get_type())
+#define GDK_TYPE_WIN32_KEYMAP              (cdk_win32_keymap_get_type())
 #define GDK_WIN32_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_KEYMAP, GdkWin32Keymap))
 #define GDK_WIN32_KEYMAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_KEYMAP, GdkWin32KeymapClass))
 #define GDK_IS_WIN32_KEYMAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_KEYMAP))
@@ -59,10 +59,10 @@ typedef struct _GdkWin32KeymapClass GdkWin32KeymapClass;
 #define GDK_WIN32_KEYMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_KEYMAP, GdkWin32KeymapClass))
 
 GDK_AVAILABLE_IN_ALL
-GType gdk_win32_keymap_get_type (void);
+GType cdk_win32_keymap_get_type (void);
 
 GDK_AVAILABLE_IN_3_20
-GdkWin32KeymapMatch gdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
+GdkWin32KeymapMatch cdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
                                                     guint16        *compose_buffer,
                                                     gsize           compose_buffer_len,
                                                     guint16        *output,

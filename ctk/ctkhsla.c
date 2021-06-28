@@ -109,7 +109,7 @@ _ctk_hsla_init_from_rgba (CtkHSLA       *hsla,
 }
 
 void
-_gdk_rgba_init_from_hsla (GdkRGBA       *rgba,
+_cdk_rgba_init_from_hsla (GdkRGBA       *rgba,
                           const CtkHSLA *hsla)
 {
   gdouble hue;

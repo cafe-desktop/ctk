@@ -23,7 +23,7 @@
 #include <math.h>
 
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 
 /* exported for CtkBuilder */
 G_MODULE_EXPORT void signal_normal (CtkWindow *window, GParamSpec *spec);

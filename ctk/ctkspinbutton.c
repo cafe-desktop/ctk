@@ -881,8 +881,8 @@ ctk_spin_button_map (CtkWidget *widget)
   if (ctk_widget_get_realized (widget) && !ctk_widget_get_mapped (widget))
     {
       CTK_WIDGET_CLASS (ctk_spin_button_parent_class)->map (widget);
-      gdk_window_show (priv->down_panel);
-      gdk_window_show (priv->up_panel);
+      cdk_window_show (priv->down_panel);
+      cdk_window_show (priv->up_panel);
     }
 }
 
@@ -896,8 +896,8 @@ ctk_spin_button_unmap (CtkWidget *widget)
     {
       ctk_spin_button_stop_spinning (CTK_SPIN_BUTTON (widget));
 
-      gdk_window_hide (priv->down_panel);
-      gdk_window_hide (priv->up_panel);
+      cdk_window_hide (priv->down_panel);
+      cdk_window_hide (priv->up_panel);
       CTK_WIDGET_CLASS (ctk_spin_button_parent_class)->unmap (widget);
     }
 }
@@ -999,7 +999,7 @@ ctk_spin_button_realize (CtkWidget *widget)
   attributes.width = down_allocation.width;
   attributes.height = down_allocation.height;
 
-  priv->down_panel = gdk_window_new (ctk_widget_get_window (widget),
+  priv->down_panel = cdk_window_new (ctk_widget_get_window (widget),
                                      &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->down_panel);
 
@@ -1009,7 +1009,7 @@ ctk_spin_button_realize (CtkWidget *widget)
   attributes.width = up_allocation.width;
   attributes.height = up_allocation.height;
 
-  priv->up_panel = gdk_window_new (ctk_widget_get_window (widget),
+  priv->up_panel = cdk_window_new (ctk_widget_get_window (widget),
                                       &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->up_panel);
 
@@ -1037,14 +1037,14 @@ ctk_spin_button_unrealize (CtkWidget *widget)
   if (priv->down_panel)
     {
       ctk_widget_unregister_window (widget, priv->down_panel);
-      gdk_window_destroy (priv->down_panel);
+      cdk_window_destroy (priv->down_panel);
       priv->down_panel = NULL;
     }
 
   if (priv->up_panel)
     {
       ctk_widget_unregister_window (widget, priv->up_panel);
-      gdk_window_destroy (priv->up_panel);
+      cdk_window_destroy (priv->up_panel);
       priv->up_panel = NULL;
     }
 }
@@ -1232,12 +1232,12 @@ ctk_spin_button_size_allocate (CtkWidget     *widget,
       CtkAllocation button_alloc;
 
       ctk_css_gadget_get_border_allocation (priv->down_button, &button_alloc, NULL);
-      gdk_window_move_resize (priv->down_panel,
+      cdk_window_move_resize (priv->down_panel,
                               button_alloc.x, button_alloc.y,
                               button_alloc.width, button_alloc.height);
 
       ctk_css_gadget_get_border_allocation (priv->up_button, &button_alloc, NULL);
-      gdk_window_move_resize (priv->up_panel,
+      cdk_window_move_resize (priv->up_panel,
                               button_alloc.x, button_alloc.y,
                               button_alloc.width, button_alloc.height);
     }
@@ -1392,7 +1392,7 @@ start_spinning (CtkSpinButton *spin,
     {
       priv->timer_step = step;
       priv->need_timer = TRUE;
-      priv->timer = gdk_threads_add_timeout (TIMEOUT_INITIAL,
+      priv->timer = cdk_threads_add_timeout (TIMEOUT_INITIAL,
                                    (GSourceFunc) ctk_spin_button_timer,
                                    (gpointer) spin);
       g_source_set_name_by_id (priv->timer, "[ctk+] ctk_spin_button_timer");
@@ -1497,7 +1497,7 @@ ctk_spin_button_motion_notify (CtkWidget      *widget,
   if (event->window == priv->down_panel ||
       event->window == priv->up_panel)
     {
-      gdk_event_request_motions (event);
+      cdk_event_request_motions (event);
 
       priv->in_child = event->window;
       ctk_widget_queue_draw (widget);
@@ -1527,7 +1527,7 @@ ctk_spin_button_timer (CtkSpinButton *spin_button)
       if (priv->need_timer)
         {
           priv->need_timer = FALSE;
-          priv->timer = gdk_threads_add_timeout (TIMEOUT_REPEAT,
+          priv->timer = cdk_threads_add_timeout (TIMEOUT_REPEAT,
                                               (GSourceFunc) ctk_spin_button_timer,
                                               (gpointer) spin_button);
           g_source_set_name_by_id (priv->timer, "[ctk+] ctk_spin_button_timer");

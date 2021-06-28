@@ -4,8 +4,8 @@ include $(top_srcdir)/Makefile.decl
 AM_CPPFLAGS = \
 	-DCTK_LOCALEDIR=\"$(localedir)\" \
 	-I$(top_srcdir) 		\
-	-I$(top_srcdir)/gdk		\
-	-I$(top_builddir)/gdk		\
+	-I$(top_srcdir)/cdk		\
+	-I$(top_builddir)/cdk		\
 	$(CTK_DEBUG_FLAGS)		\
 	$(CTK_XIM_FLAGS)		\
 	$(CTK_DEP_CFLAGS)		\

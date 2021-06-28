@@ -443,10 +443,10 @@ ctk_misc_realize (CtkWidget *widget)
       attributes.event_mask = ctk_widget_get_events (widget);
       attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-      window = gdk_window_new (ctk_widget_get_parent_window (widget), &attributes, attributes_mask);
+      window = cdk_window_new (ctk_widget_get_parent_window (widget), &attributes, attributes_mask);
       ctk_widget_set_window (widget, window);
       ctk_widget_register_window (widget, window);
-      gdk_window_set_background_pattern (window, NULL);
+      cdk_window_set_background_pattern (window, NULL);
     }
 }
 

@@ -342,7 +342,7 @@ ctk_css_shadow_value_start_drawing (const CtkCssValue *shadow,
   if (!needs_blur (shadow))
     return cr;
 
-  gdk_cairo_get_clip_rectangle (cr, &clip_rect);
+  cdk_cairo_get_clip_rectangle (cr, &clip_rect);
 
   radius = _ctk_css_number_value_get (shadow->radius, 0);
   clip_radius = _ctk_cairo_blur_compute_pixels (radius);
@@ -420,7 +420,7 @@ ctk_css_shadow_value_finish_drawing (const CtkCssValue *shadow,
 
   _ctk_cairo_blur_surface (surface, x_scale * radius, blur_flags);
 
-  gdk_cairo_set_source_rgba (original_cr, _ctk_css_rgba_value_get_rgba (shadow->color));
+  cdk_cairo_set_source_rgba (original_cr, _ctk_css_rgba_value_get_rgba (shadow->color));
   if (blur_flags & CTK_BLUR_REPEAT)
     mask_surface_repeat (original_cr, surface);
   else
@@ -549,7 +549,7 @@ _ctk_css_shadow_value_paint_layout (const CtkCssValue *shadow,
                        _ctk_css_number_value_get (shadow->hoffset, 0),
                        _ctk_css_number_value_get (shadow->voffset, 0));
 
-      gdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));
+      cdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));
       cairo_mask_surface (cr, blurred_surface, 0, 0);
     }
   else
@@ -558,7 +558,7 @@ _ctk_css_shadow_value_paint_layout (const CtkCssValue *shadow,
       cairo_rel_move_to (cr,
                          _ctk_css_number_value_get (shadow->hoffset, 0),
                          _ctk_css_number_value_get (shadow->voffset, 0));
-      gdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));
+      cdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));
       _ctk_pango_fill_layout (cr, layout);
       cairo_rel_move_to (cr,
                          - _ctk_css_number_value_get (shadow->hoffset, 0),
@@ -583,7 +583,7 @@ _ctk_css_shadow_value_paint_icon (const CtkCssValue *shadow,
   cairo_save (cr);
   pattern = cairo_pattern_reference (cairo_get_source (cr));
 
-  gdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));
+  cdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));
   cr = ctk_css_shadow_value_start_drawing (shadow, cr, CTK_BLUR_X | CTK_BLUR_Y);
 
   cairo_translate (cr,
@@ -647,7 +647,7 @@ draw_shadow (const CtkCssValue   *shadow,
   if (has_empty_clip (cr))
     return;
 
-  gdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));
+  cdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));
   do_blur = (blur_flags & (CTK_BLUR_X | CTK_BLUR_Y)) != 0;
   if (do_blur)
     shadow_cr = ctk_css_shadow_value_start_drawing (shadow, cr, blur_flags);
@@ -856,7 +856,7 @@ draw_shadow_corner (const CtkCssValue   *shadow,
       g_hash_table_insert (corner_mask_cache, g_memdup (&key, sizeof (key)), mask);
     }
 
-  gdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));
+  cdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));
   pattern = cairo_pattern_create_for_surface (mask);
   cairo_matrix_init_identity (&matrix);
   cairo_matrix_scale (&matrix, sx, sy);
@@ -1025,7 +1025,7 @@ _ctk_css_shadow_value_paint_box (const CtkCssValue   *shadow,
 	{
 	  cairo_save (cr);
           /* Always clip with remaining to ensure we never draw any area twice */
-          gdk_cairo_region (cr, remaining);
+          cdk_cairo_region (cr, remaining);
           cairo_clip (cr);
 	  draw_shadow_corner (shadow, cr, &box, &clip_box, i, &r);
 	  cairo_restore (cr);
@@ -1039,7 +1039,7 @@ _ctk_css_shadow_value_paint_box (const CtkCssValue   *shadow,
 	{
 	  cairo_save (cr);
           /* Always clip with remaining to ensure we never draw any area twice */
-          gdk_cairo_region (cr, remaining);
+          cdk_cairo_region (cr, remaining);
           cairo_clip (cr);
 	  draw_shadow_side (shadow, cr, &box, &clip_box, i, &r);
 	  cairo_restore (cr);
@@ -1051,7 +1051,7 @@ _ctk_css_shadow_value_paint_box (const CtkCssValue   *shadow,
       /* Then the rest, which needs no blurring */
 
       cairo_save (cr);
-      gdk_cairo_region (cr, remaining);
+      cdk_cairo_region (cr, remaining);
       cairo_clip (cr);
       draw_shadow (shadow, cr, &box, &clip_box, CTK_BLUR_NONE);
       cairo_restore (cr);

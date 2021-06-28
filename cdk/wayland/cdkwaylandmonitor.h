@@ -1,5 +1,5 @@
 /*
- * gdkwaylandmonitor.h
+ * cdkwaylandmonitor.h
  *
  * Copyright 2016 Red Hat, Inc.
  *
@@ -23,14 +23,14 @@
 #define __GDK_WAYLAND_MONITOR_H__
 
 #if !defined (__GDKWAYLAND_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkwayland.h> can be included directly."
+#error "Only <cdk/cdkwayland.h> can be included directly."
 #endif
 
-#include <gdk/gdkmonitor.h>
+#include <cdk/cdkmonitor.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_WAYLAND_MONITOR           (gdk_wayland_monitor_get_type ())
+#define GDK_TYPE_WAYLAND_MONITOR           (cdk_wayland_monitor_get_type ())
 #define GDK_WAYLAND_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_MONITOR, GdkWaylandMonitor))
 #define GDK_IS_WAYLAND_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WAYLAND_MONITOR))
 
@@ -38,10 +38,10 @@ typedef struct _GdkWaylandMonitor      GdkWaylandMonitor;
 typedef struct _GdkWaylandMonitorClass GdkWaylandMonitorClass;
 
 GDK_AVAILABLE_IN_3_22
-GType             gdk_wayland_monitor_get_type            (void) G_GNUC_CONST;
+GType             cdk_wayland_monitor_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-struct wl_output *gdk_wayland_monitor_get_wl_output       (GdkMonitor *monitor);
+struct wl_output *cdk_wayland_monitor_get_wl_output       (GdkMonitor *monitor);
 
 G_END_DECLS
 

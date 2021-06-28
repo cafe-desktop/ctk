@@ -6,7 +6,7 @@
 !include config-msvc.mak
 !include create-lists-msvc.mak
 
-# Copy the pre-defined gdkconfig.h.[win32|win32_broadway]
+# Copy the pre-defined cdkconfig.h.[win32|win32_broadway]
 !if "$(CFG)" == "release" || "$(CFG)" == "Release"
 GDK_OLD_CFG = debug
 !else
@@ -16,26 +16,26 @@ GDK_OLD_CFG = release
 !ifdef BROADWAY
 GDK_CONFIG = broadway
 GDK_DEL_CONFIG = win32
-GDK_CONFIG_TEMPLATE = ..\gdk\gdkconfig.h.win32_broadway
+GDK_CONFIG_TEMPLATE = ..\cdk\cdkconfig.h.win32_broadway
 !else
 GDK_CONFIG = win32
 GDK_DEL_CONFIG = broadway
-GDK_CONFIG_TEMPLATE = ..\gdk\gdkconfig.h.win32
+GDK_CONFIG_TEMPLATE = ..\cdk\cdkconfig.h.win32
 !endif
 
-GDK_MARSHALERS_FLAGS = --prefix=_gdk_marshal --valist-marshallers
-GDK_RESOURCES_ARGS = ..\gdk\gdk.gresource.xml --target=$@ --sourcedir=..\gdk --c-name _gdk --manual-register
+GDK_MARSHALERS_FLAGS = --prefix=_cdk_marshal --valist-marshallers
+GDK_RESOURCES_ARGS = ..\cdk\cdk.gresource.xml --target=$@ --sourcedir=..\cdk --c-name _cdk --manual-register
 CTK_MARSHALERS_FLAGS = --prefix=_ctk_marshal --valist-marshallers
 CTK_RESOURCES_ARGS = ..\ctk\ctk.gresource.xml --target=$@ --sourcedir=..\ctk --c-name _ctk --manual-register
 
 all:	\
 	..\config.h	\
-	..\gdk\gdkconfig.h	\
-	..\gdk\gdkversionmacros.h	\
-	..\gdk\gdkmarshalers.h	\
-	..\gdk\gdkmarshalers.c	\
-	..\gdk\gdkresources.h	\
-	..\gdk\gdkresources.c	\
+	..\cdk\cdkconfig.h	\
+	..\cdk\cdkversionmacros.h	\
+	..\cdk\cdkmarshalers.h	\
+	..\cdk\cdkmarshalers.c	\
+	..\cdk\cdkresources.h	\
+	..\cdk\cdkresources.c	\
 	..\ctk\ctk-win32.rc	\
 	..\ctk\libctk3.manifest	\
 	..\ctk\ctkdbusgenerated.h	\
@@ -55,52 +55,52 @@ all:	\
 ..\demos\ctk-demo\demos.h: ..\demos\ctk-demo\demos.h.win32
 ..\ctk\ctk-win32.rc: ..\ctk\ctk-win32.rc.body
 
-..\gdk-$(CFG)-$(GDK_CONFIG)-build: $(GDK_CONFIG_TEMPLATE)
-	@if exist ..\gdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build del ..\gdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build
-	@if exist ..\gdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build del ..\gdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build
-	@if exist ..\gdk-$(CFG)-$(GDK_DEL_CONFIG)-build del ..\gdk-$(CFG)-$(GDK_DEL_CONFIG)-build
+..\cdk-$(CFG)-$(GDK_CONFIG)-build: $(GDK_CONFIG_TEMPLATE)
+	@if exist ..\cdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build del ..\cdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build
+	@if exist ..\cdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build del ..\cdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build
+	@if exist ..\cdk-$(CFG)-$(GDK_DEL_CONFIG)-build del ..\cdk-$(CFG)-$(GDK_DEL_CONFIG)-build
 	@copy $** $@
 	
-..\gdk\gdkconfig.h: ..\gdk-$(CFG)-$(GDK_CONFIG)-build
+..\cdk\cdkconfig.h: ..\cdk-$(CFG)-$(GDK_CONFIG)-build
 
 ..\config.h	\
-..\gdk\gdkconfig.h	\
+..\cdk\cdkconfig.h	\
 ..\ctk\ctk-win32.rc	\
 ..\demos\ctk-demo\demos.h:
 	@echo Copying $@...
 	@copy $** $@
 
-..\gdk\gdkversionmacros.h: ..\gdk\gdkversionmacros.h.in
+..\cdk\cdkversionmacros.h: ..\cdk\cdkversionmacros.h.in
 	@echo Generating $@...
-	@$(PYTHON) gen-gdkversionmacros-h.py --version=$(CTK_VERSION)
+	@$(PYTHON) gen-cdkversionmacros-h.py --version=$(CTK_VERSION)
 
-..\gdk\gdkmarshalers.h: ..\gdk\gdkmarshalers.list
+..\cdk\cdkmarshalers.h: ..\cdk\cdkmarshalers.list
 	@echo Generating $@...
 	@$(PYTHON) $(GLIB_GENMARSHAL) $(GDK_MARSHALERS_FLAGS) --header $** > $@.tmp
 	@move $@.tmp $@
 
-..\gdk\gdkmarshalers.c: ..\gdk\gdkmarshalers.list
+..\cdk\cdkmarshalers.c: ..\cdk\cdkmarshalers.list
 	@echo Generating $@...
 	@$(PYTHON) $(GLIB_GENMARSHAL) $(GDK_MARSHALERS_FLAGS) --body $** > $@.tmp
 	@move $@.tmp $@
 
-..\gdk\gdk.gresource.xml: $(GDK_RESOURCES)
+..\cdk\cdk.gresource.xml: $(GDK_RESOURCES)
 	@echo Generating $@...
 	@echo ^<?xml version='1.0' encoding='UTF-8'?^> >$@
 	@echo ^<gresources^> >> $@
-	@echo  ^<gresource prefix='/org/ctk/libgdk'^> >> $@
-	@for %%f in (..\gdk\resources\glsl\*.glsl) do @echo     ^<file alias='glsl/%%~nxf'^>resources/glsl/%%~nxf^</file^> >> $@
+	@echo  ^<gresource prefix='/org/ctk/libcdk'^> >> $@
+	@for %%f in (..\cdk\resources\glsl\*.glsl) do @echo     ^<file alias='glsl/%%~nxf'^>resources/glsl/%%~nxf^</file^> >> $@
 	@echo   ^</gresource^> >> $@
 	@echo ^</gresources^> >> $@
 
-..\gdk\gdkresources.h: ..\gdk\gdk.gresource.xml
+..\cdk\cdkresources.h: ..\cdk\cdk.gresource.xml
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
 	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
 	@start /min $(GLIB_COMPILE_RESOURCES) $(GDK_RESOURCES_ARGS) --generate-header
 
-..\gdk\gdkresources.c: ..\gdk\gdk.gresource.xml $(GDK_RESOURCES)
+..\cdk\cdkresources.c: ..\cdk\cdk.gresource.xml $(GDK_RESOURCES)
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
@@ -208,15 +208,15 @@ clean:
 	@-del /f /q ..\ctk\ctkdbusgenerated.h
 	@-del /f /q ..\ctk\libctk3.manifest
 	@-del /f /q ..\ctk\ctk-win32.rc
-	@-del /f /q ..\gdk\gdkresources.c
-	@-del /f /q ..\gdk\gdkresources.h
-	@-del /f /q ..\gdk\gdk.gresource.xml
-	@-del /f /q ..\gdk\gdkmarshalers.c
-	@-del /f /q ..\gdk\gdkmarshalers.h
-	@-del /f /q ..\gdk\gdkversionmacros.h
-	@-del /f /q ..\gdk\gdkconfig.h
-	@if exist ..\gdk-$(CFG)-$(GDK_CONFIG)-build del ..\gdk-$(CFG)-$(GDK_CONFIG)-build
-	@if exist ..\gdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build del ..\gdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build
-	@if exist ..\gdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build del ..\gdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build
-	@if exist ..\gdk-$(CFG)-$(GDK_DEL_CONFIG)-build del ..\gdk-$(CFG)-$(GDK_DEL_CONFIG)-build
+	@-del /f /q ..\cdk\cdkresources.c
+	@-del /f /q ..\cdk\cdkresources.h
+	@-del /f /q ..\cdk\cdk.gresource.xml
+	@-del /f /q ..\cdk\cdkmarshalers.c
+	@-del /f /q ..\cdk\cdkmarshalers.h
+	@-del /f /q ..\cdk\cdkversionmacros.h
+	@-del /f /q ..\cdk\cdkconfig.h
+	@if exist ..\cdk-$(CFG)-$(GDK_CONFIG)-build del ..\cdk-$(CFG)-$(GDK_CONFIG)-build
+	@if exist ..\cdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build del ..\cdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build
+	@if exist ..\cdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build del ..\cdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build
+	@if exist ..\cdk-$(CFG)-$(GDK_DEL_CONFIG)-build del ..\cdk-$(CFG)-$(GDK_DEL_CONFIG)-build
 	@-del /f /q ..\config.h

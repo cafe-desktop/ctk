@@ -16,7 +16,7 @@
  */
 
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 
 static void
 accel_edited_callback (CtkCellRendererText *cell,

@@ -127,7 +127,7 @@ create_completion_model (void)
   CtkTreeIter iter;
   GdkPixbuf *pixbuf;
 
-  pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **)book_closed_xpm);
+  pixbuf = cdk_pixbuf_new_from_xpm_data ((const char **)book_closed_xpm);
 
   store = ctk_list_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
 
@@ -392,7 +392,7 @@ main (int argc, char *argv[])
   ctk_entry_completion_set_text_column (completion, 0);
 
   /* Fill the completion dynamically */
-  gdk_threads_add_timeout (1000, (GSourceFunc) animation_timer, completion);
+  cdk_threads_add_timeout (1000, (GSourceFunc) animation_timer, completion);
 
   /* Fourth entry */
   ctk_box_pack_start (CTK_BOX (vbox), ctk_label_new ("Model-less entry completion"), FALSE, FALSE, 0);

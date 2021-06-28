@@ -34,17 +34,17 @@ create_color_pixbuf (const char *color)
         int num;
         guchar *pixels, *p;
 
-        if (!gdk_rgba_parse (&rgba, color))
+        if (!cdk_rgba_parse (&rgba, color))
                 return NULL;
 
-        pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
+        pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB,
                                  FALSE, 8,
                                  16, 16);
 
-        p = pixels = gdk_pixbuf_get_pixels (pixbuf);
+        p = pixels = cdk_pixbuf_get_pixels (pixbuf);
 
-        num = gdk_pixbuf_get_width (pixbuf) *
-                gdk_pixbuf_get_height (pixbuf);
+        num = cdk_pixbuf_get_width (pixbuf) *
+                cdk_pixbuf_get_height (pixbuf);
 
         for (x = 0; x < num; x++) {
                 p[0] = rgba.red * 255;
@@ -1076,7 +1076,7 @@ main (int argc, char **argv)
 					     "* { -CtkComboBox-appears-as-list: true; }", 
 					     -1, NULL);
 
-	    ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+	    ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
 						       CTK_STYLE_PROVIDER (provider),
 						       CTK_STYLE_PROVIDER_PRIORITY_FALLBACK);
 
@@ -1377,7 +1377,7 @@ main (int argc, char **argv)
         ctk_combo_box_set_active_iter (CTK_COMBO_BOX (combobox), &iter);
 
 #if 1
-	gdk_threads_add_timeout (1000, (GSourceFunc) capital_animation, model);
+	cdk_threads_add_timeout (1000, (GSourceFunc) capital_animation, model);
 #endif
 
         /* Aligned Food */

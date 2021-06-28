@@ -5,8 +5,8 @@ SUBDIRS = visuals
 
 AM_CPPFLAGS =				\
 	-I$(top_srcdir)			\
-	-I$(top_builddir)/gdk		\
-	-I$(top_srcdir)/gdk		\
+	-I$(top_builddir)/cdk		\
+	-I$(top_srcdir)/cdk		\
 	$(CTK_DEBUG_FLAGS)		\
 	$(CTK_DEP_CFLAGS)		\
 	$(GDK_DEP_CFLAGS)
@@ -16,7 +16,7 @@ DEPS = \
 
 LDADD = \
 	$(top_builddir)/ctk/libctk-3.la	\
-	$(top_builddir)/gdk/libgdk-3.la	\
+	$(top_builddir)/cdk/libcdk-3.la	\
 	$(CTK_DEP_LIBS)			\
 	$(GDK_DEP_LIBS)			\
 	-lm
@@ -172,7 +172,7 @@ noinst_PROGRAMS =  $(TEST_PROGS)	\
 	testactionbar			\
 	testwindowsize			\
 	testpopover			\
-	gdkgears			\
+	cdkgears			\
 	listmodel			\
 	testpopup			\
 	testpopupat			\
@@ -536,8 +536,8 @@ testtitlebar_SOURCES = testtitlebar.c
 
 testwindowsize_SOURCES = testwindowsize.c
 
-gdkgears_SOURCES =	\
-	gdkgears.c	\
+cdkgears_SOURCES =	\
+	cdkgears.c	\
 	ctkgears.c	\
 	ctkgears.h
 

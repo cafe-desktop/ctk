@@ -62,7 +62,7 @@ make_selection_dialog (GdkScreen * screen,
   double_entry->e2 = CTK_ENTRY (other_entry);
 
   if (!screen)
-    screen = gdk_screen_get_default ();
+    screen = cdk_screen_get_default ();
 
   window = g_object_new (CTK_TYPE_DIALOG,
 			   "screen", screen,
@@ -142,10 +142,10 @@ main (int argc, char *argv[])
 	  if (!g_ascii_strcasecmp (screen2_name, ""))
 	    g_printerr ("No display name, reverting to default display\n");
 	  
-	  dpy2 = gdk_display_open (screen2_name);
+	  dpy2 = cdk_display_open (screen2_name);
 	  if (dpy2)
 	    {
-	      scr2 = gdk_display_get_default_screen (dpy2);
+	      scr2 = cdk_display_get_default_screen (dpy2);
 	      correct_second_display = TRUE;
 	    }
 	  else

@@ -19,7 +19,7 @@
 #define __CTK_IM_CONTEXT_XIM_H__
 
 #include <ctk/ctk.h>
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 
 G_BEGIN_DECLS
 

@@ -22,7 +22,7 @@
 
 #include "ctkapplicationprivate.h"
 
-#include <gdk/wayland/gdkwayland.h>
+#include <cdk/wayland/cdkwayland.h>
 
 typedef CtkApplicationImplDBusClass CtkApplicationImplWaylandClass;
 
@@ -41,17 +41,17 @@ ctk_application_impl_wayland_handle_window_realize (CtkApplicationImpl *impl,
   CtkApplicationImplClass *impl_class =
     CTK_APPLICATION_IMPL_CLASS (ctk_application_impl_wayland_parent_class);
   CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   gchar *window_path;
 
-  gdk_window = ctk_widget_get_window (CTK_WIDGET (window));
+  cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (!GDK_IS_WAYLAND_WINDOW (gdk_window))
+  if (!GDK_IS_WAYLAND_WINDOW (cdk_window))
     return;
 
   window_path = ctk_application_impl_dbus_get_window_path (dbus, window);
 
-  gdk_wayland_window_set_dbus_properties_libctk_only (gdk_window,
+  cdk_wayland_window_set_dbus_properties_libctk_only (cdk_window,
                                                       dbus->application_id, dbus->app_menu_path, dbus->menubar_path,
                                                       window_path, dbus->object_path, dbus->unique_name);
 
@@ -68,7 +68,7 @@ ctk_application_impl_wayland_before_emit (CtkApplicationImpl *impl,
 
   g_variant_lookup (platform_data, "desktop-startup-id", "&s", &startup_notification_id);
 
-  gdk_wayland_display_set_startup_notification_id (gdk_display_get_default (), startup_notification_id);
+  cdk_wayland_display_set_startup_notification_id (cdk_display_get_default (), startup_notification_id);
 }
 
 static void

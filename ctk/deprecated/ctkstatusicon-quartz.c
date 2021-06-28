@@ -23,7 +23,7 @@
 
 #import <Cocoa/Cocoa.h>
 #define __CTK_H_INSIDE__
-#include <quartz/gdkquartz-ctk-only.h>
+#include <quartz/cdkquartz-ctk-only.h>
 #undef __CTK_H_INSIDE__
 
 #define QUARTZ_POOL_ALLOC NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]
@@ -104,7 +104,7 @@
     return;
   }
 
-  current_image = gdk_quartz_pixbuf_to_ns_image_libctk_only (pixbuf);
+  current_image = cdk_quartz_pixbuf_to_ns_image_libctk_only (pixbuf);
   [current_image retain];
 
   [ns_item setImage:current_image];

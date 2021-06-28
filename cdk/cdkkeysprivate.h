@@ -18,7 +18,7 @@
 #ifndef __GDK_KEYS_PRIVATE_H__
 #define __GDK_KEYS_PRIVATE_H__
 
-#include "gdkkeys.h"
+#include "cdkkeys.h"
 
 G_BEGIN_DECLS
 

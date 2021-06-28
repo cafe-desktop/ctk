@@ -20,14 +20,14 @@
 #include "config.h"
 
 #include <glib-object.h>
-#include "gdkdisplay.h"
-#include "gdkdevice.h"
-#include "gdkseatprivate.h"
-#include "gdkdeviceprivate.h"
-#include "gdkintl.h"
+#include "cdkdisplay.h"
+#include "cdkdevice.h"
+#include "cdkseatprivate.h"
+#include "cdkdeviceprivate.h"
+#include "cdkintl.h"
 
 /**
- * SECTION:gdkseat
+ * SECTION:cdkseat
  * @Short_description: Object representing an user seat
  * @Title: GdkSeat
  * @See_also: #GdkDisplay, #GdkDevice
@@ -60,15 +60,15 @@ enum {
 static guint signals[N_SIGNALS] = { 0 };
 static GParamSpec *props[N_PROPS] = { NULL };
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GdkSeat, gdk_seat, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GdkSeat, cdk_seat, G_TYPE_OBJECT)
 
 static void
-gdk_seat_set_property (GObject      *object,
+cdk_seat_set_property (GObject      *object,
                        guint         prop_id,
                        const GValue *value,
                        GParamSpec   *pspec)
 {
-  GdkSeatPrivate *priv = gdk_seat_get_instance_private (GDK_SEAT (object));
+  GdkSeatPrivate *priv = cdk_seat_get_instance_private (GDK_SEAT (object));
 
   switch (prop_id)
     {
@@ -82,12 +82,12 @@ gdk_seat_set_property (GObject      *object,
 }
 
 static void
-gdk_seat_get_property (GObject    *object,
+cdk_seat_get_property (GObject    *object,
                        guint       prop_id,
                        GValue     *value,
                        GParamSpec *pspec)
 {
-  GdkSeatPrivate *priv = gdk_seat_get_instance_private (GDK_SEAT (object));
+  GdkSeatPrivate *priv = cdk_seat_get_instance_private (GDK_SEAT (object));
 
   switch (prop_id)
     {
@@ -101,12 +101,12 @@ gdk_seat_get_property (GObject    *object,
 }
 
 static void
-gdk_seat_class_init (GdkSeatClass *klass)
+cdk_seat_class_init (GdkSeatClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->set_property = gdk_seat_set_property;
-  object_class->get_property = gdk_seat_get_property;
+  object_class->set_property = cdk_seat_set_property;
+  object_class->get_property = cdk_seat_get_property;
 
   /**
    * GdkSeat::device-added:
@@ -210,12 +210,12 @@ gdk_seat_class_init (GdkSeatClass *klass)
 }
 
 static void
-gdk_seat_init (GdkSeat *seat)
+cdk_seat_init (GdkSeat *seat)
 {
 }
 
 /**
- * gdk_seat_get_capabilities:
+ * cdk_seat_get_capabilities:
  * @seat: a #GdkSeat
  *
  * Returns the capabilities this #GdkSeat currently has.
@@ -225,7 +225,7 @@ gdk_seat_init (GdkSeat *seat)
  * Since: 3.20
  **/
 GdkSeatCapabilities
-gdk_seat_get_capabilities (GdkSeat *seat)
+cdk_seat_get_capabilities (GdkSeat *seat)
 {
   GdkSeatClass *seat_class;
 
@@ -236,7 +236,7 @@ gdk_seat_get_capabilities (GdkSeat *seat)
 }
 
 /**
- * gdk_seat_grab:
+ * cdk_seat_grab:
  * @seat: a #GdkSeat
  * @window: the #GdkWindow which will own the grab
  * @capabilities: capabilities that will be grabbed
@@ -258,7 +258,7 @@ gdk_seat_get_capabilities (GdkSeat *seat)
  * @prepare_func_data: user data to pass to @prepare_func
  *
  * Grabs the seat so that all events corresponding to the given @capabilities
- * are passed to this application until the seat is ungrabbed with gdk_seat_ungrab(),
+ * are passed to this application until the seat is ungrabbed with cdk_seat_ungrab(),
  * or the window becomes hidden. This overrides any previous grab on the
  * seat by this client.
  *
@@ -287,7 +287,7 @@ gdk_seat_get_capabilities (GdkSeat *seat)
  * Since: 3.20
  **/
 GdkGrabStatus
-gdk_seat_grab (GdkSeat                *seat,
+cdk_seat_grab (GdkSeat                *seat,
                GdkWindow              *window,
                GdkSeatCapabilities     capabilities,
                gboolean                owner_events,
@@ -311,15 +311,15 @@ gdk_seat_grab (GdkSeat                *seat,
 }
 
 /**
- * gdk_seat_ungrab:
+ * cdk_seat_ungrab:
  * @seat: a #GdkSeat
  *
- * Releases a grab added through gdk_seat_grab().
+ * Releases a grab added through cdk_seat_grab().
  *
  * Since: 3.20
  **/
 void
-gdk_seat_ungrab (GdkSeat *seat)
+cdk_seat_ungrab (GdkSeat *seat)
 {
   GdkSeatClass *seat_class;
 
@@ -330,7 +330,7 @@ gdk_seat_ungrab (GdkSeat *seat)
 }
 
 /**
- * gdk_seat_get_slaves:
+ * cdk_seat_get_slaves:
  * @seat: a #GdkSeat
  * @capabilities: capabilities to get devices for
  *
@@ -343,7 +343,7 @@ gdk_seat_ungrab (GdkSeat *seat)
  * Since: 3.20
  **/
 GList *
-gdk_seat_get_slaves (GdkSeat             *seat,
+cdk_seat_get_slaves (GdkSeat             *seat,
                      GdkSeatCapabilities  capabilities)
 {
   GdkSeatClass *seat_class;
@@ -355,7 +355,7 @@ gdk_seat_get_slaves (GdkSeat             *seat,
 }
 
 /**
- * gdk_seat_get_pointer:
+ * cdk_seat_get_pointer:
  * @seat: a #GdkSeat
  *
  * Returns the master device that routes pointer events.
@@ -366,7 +366,7 @@ gdk_seat_get_slaves (GdkSeat             *seat,
  * Since: 3.20
  **/
 GdkDevice *
-gdk_seat_get_pointer (GdkSeat *seat)
+cdk_seat_get_pointer (GdkSeat *seat)
 {
   GdkSeatClass *seat_class;
 
@@ -377,7 +377,7 @@ gdk_seat_get_pointer (GdkSeat *seat)
 }
 
 /**
- * gdk_seat_get_keyboard:
+ * cdk_seat_get_keyboard:
  * @seat: a #GdkSeat
  *
  * Returns the master device that routes keyboard events.
@@ -388,7 +388,7 @@ gdk_seat_get_pointer (GdkSeat *seat)
  * Since: 3.20
  **/
 GdkDevice *
-gdk_seat_get_keyboard (GdkSeat *seat)
+cdk_seat_get_keyboard (GdkSeat *seat)
 {
   GdkSeatClass *seat_class;
 
@@ -399,23 +399,23 @@ gdk_seat_get_keyboard (GdkSeat *seat)
 }
 
 void
-gdk_seat_device_added (GdkSeat   *seat,
+cdk_seat_device_added (GdkSeat   *seat,
                        GdkDevice *device)
 {
-  gdk_device_set_seat (device, seat);
+  cdk_device_set_seat (device, seat);
   g_signal_emit (seat, signals[DEVICE_ADDED], 0, device);
 }
 
 void
-gdk_seat_device_removed (GdkSeat   *seat,
+cdk_seat_device_removed (GdkSeat   *seat,
                          GdkDevice *device)
 {
-  gdk_device_set_seat (device, NULL);
+  cdk_device_set_seat (device, NULL);
   g_signal_emit (seat, signals[DEVICE_REMOVED], 0, device);
 }
 
 /**
- * gdk_seat_get_display:
+ * cdk_seat_get_display:
  * @seat: a #GdkSeat
  *
  * Returns the #GdkDisplay this seat belongs to.
@@ -424,9 +424,9 @@ gdk_seat_device_removed (GdkSeat   *seat,
  *          and must not be freed.
  **/
 GdkDisplay *
-gdk_seat_get_display (GdkSeat *seat)
+cdk_seat_get_display (GdkSeat *seat)
 {
-  GdkSeatPrivate *priv = gdk_seat_get_instance_private (seat);
+  GdkSeatPrivate *priv = cdk_seat_get_instance_private (seat);
 
   g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
 
@@ -434,21 +434,21 @@ gdk_seat_get_display (GdkSeat *seat)
 }
 
 void
-gdk_seat_tool_added (GdkSeat       *seat,
+cdk_seat_tool_added (GdkSeat       *seat,
                      GdkDeviceTool *tool)
 {
   g_signal_emit (seat, signals[TOOL_ADDED], 0, tool);
 }
 
 void
-gdk_seat_tool_removed (GdkSeat       *seat,
+cdk_seat_tool_removed (GdkSeat       *seat,
                        GdkDeviceTool *tool)
 {
   g_signal_emit (seat, signals[TOOL_REMOVED], 0, tool);
 }
 
 GdkDeviceTool *
-gdk_seat_get_tool (GdkSeat *seat,
+cdk_seat_get_tool (GdkSeat *seat,
                    guint64  serial,
                    guint64  hw_id)
 {

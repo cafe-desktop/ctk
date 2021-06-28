@@ -411,7 +411,7 @@ create_drag_window (CtkToolItem *toolitem)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y;
 
-  toolitem->priv->drag_window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  toolitem->priv->drag_window = cdk_window_new (ctk_widget_get_parent_window (widget),
 					  &attributes, attributes_mask);
   ctk_widget_register_window (widget, toolitem->priv->drag_window);
 }
@@ -439,7 +439,7 @@ destroy_drag_window (CtkToolItem *toolitem)
   if (toolitem->priv->drag_window)
     {
       ctk_widget_unregister_window (CTK_WIDGET (toolitem), toolitem->priv->drag_window);
-      gdk_window_destroy (toolitem->priv->drag_window);
+      cdk_window_destroy (toolitem->priv->drag_window);
       toolitem->priv->drag_window = NULL;
     }
 }
@@ -464,7 +464,7 @@ ctk_tool_item_map (CtkWidget *widget)
   toolitem = CTK_TOOL_ITEM (widget);
   CTK_WIDGET_CLASS (ctk_tool_item_parent_class)->map (widget);
   if (toolitem->priv->drag_window)
-    gdk_window_show (toolitem->priv->drag_window);
+    cdk_window_show (toolitem->priv->drag_window);
 }
 
 static void
@@ -474,7 +474,7 @@ ctk_tool_item_unmap (CtkWidget *widget)
 
   toolitem = CTK_TOOL_ITEM (widget);
   if (toolitem->priv->drag_window)
-    gdk_window_hide (toolitem->priv->drag_window);
+    cdk_window_hide (toolitem->priv->drag_window);
   CTK_WIDGET_CLASS (ctk_tool_item_parent_class)->unmap (widget);
 }
 
@@ -517,7 +517,7 @@ ctk_tool_item_size_allocate (CtkWidget     *widget,
   ctk_widget_set_allocation (widget, allocation);
 
   if (toolitem->priv->drag_window)
-    gdk_window_move_resize (toolitem->priv->drag_window,
+    cdk_window_move_resize (toolitem->priv->drag_window,
                             allocation->x,
                             allocation->y,
                             allocation->width,
@@ -1134,7 +1134,7 @@ ctk_tool_item_set_use_drag_window (CtkToolItem *toolitem,
 	    {
 	      create_drag_window(toolitem);
 	      if (ctk_widget_get_mapped (CTK_WIDGET (toolitem)))
-		gdk_window_show (toolitem->priv->drag_window);
+		cdk_window_show (toolitem->priv->drag_window);
 	    }
 	}
       else
@@ -1416,7 +1416,7 @@ ctk_tool_item_toolbar_reconfigured (CtkToolItem *tool_item)
   g_signal_emit (tool_item, toolitem_signals[TOOLBAR_RECONFIGURED], 0);
   
   if (tool_item->priv->drag_window)
-    gdk_window_raise (tool_item->priv->drag_window);
+    cdk_window_raise (tool_item->priv->drag_window);
 
   ctk_widget_queue_resize (CTK_WIDGET (tool_item));
 }

@@ -115,7 +115,7 @@
 115|CTK+ and friends|CTKtoolkit|CTK+ 2.24 ( STABLE ) released: This will be the latest 2.x release. http://ur1.ca/32cft #ctk|1296438857|0||2|0
 116|CTK+ and friends|CTKtoolkit|More progress on #Glade, the CTK+ #interface #designer: http://ur1.ca/2uzpa Note that Glade 3.8 -> #ctk2 and Glade 3.10-> #ctk3 #ctk|1295186227|0||0|2
 117|CTK+ and friends|CTKtoolkit|RT @prcutler RT @fcrozat: First shot at GNOME3 evaluation usb stick : http://bit.ly/i1wM8X #gnome #gnome3 #gnome-shell #opensuse #gnome|1295186033|0||1|0
-118|CTK+ and friends|CTKtoolkit|If you want to try the #wayland backend, checkout this branch: http://git.gnome.org/browse/ctk+/log/?h=gdk-backend-wayland #ctk|1294739562|0||1|5
+118|CTK+ and friends|CTKtoolkit|If you want to try the #wayland backend, checkout this branch: http://git.gnome.org/browse/ctk+/log/?h=cdk-backend-wayland #ctk|1294739562|0||1|5
 119|CTK+ and friends|CTKtoolkit|CTK+ 2.99.1 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2011-January/msg00005.html #ctk|1294738413|0||0|0
 120|CTK+ and friends|CTKtoolkit|CTK+ 2.99: It is now possible to include multiple GDK backends in a single library. Use --enable-{x11,win32,quartz}-backend #ctk|1294344201|0||0|0
 121|CTK+ and friends|CTKtoolkit|CTK+ 2.99: The removal of GSEALEd struct members has been completed in this release #ctk|1294344070|0||0|1
@@ -127,7 +127,7 @@
 127|CTK+ and friends|CTKtoolkit|RT @krietvel Blog post \"GDK 3.0 on Mac OS X\" http://bit.ly/ihr9kH or how GDK became awesome in CTK+ 3.0. #ctk #osx|1293728637|0||0|1
 128|CTK+ and friends|CTKtoolkit|RT @krietvel Blog post \"Refactoring CtkTreeView using CtkCellArea\" http://bit.ly/g9aArE #ctk|1293728607|0||0|0
 129|CTK+ and friends|CTKtoolkit|Also, the treeview-refactor branch has been merged too|1293036166|0||1|0
-130|CTK+ and friends|CTKtoolkit|New in CTK+ 2.91.7: gdk-backend branch have been merged: the goal is allowing to build a single gdk library that contains multiple backends|1293036118|0||0|0
+130|CTK+ and friends|CTKtoolkit|New in CTK+ 2.91.7: cdk-backend branch have been merged: the goal is allowing to build a single cdk library that contains multiple backends|1293036118|0||0|0
 131|CTK+ and friends|CTKtoolkit|CTK+ 2.91.7 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-December/msg00155.html #ctk|1293035980|0||1|2
 132|CTK+ and friends|CTKtoolkit|CTK+ 2.23.3 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-December/msg00156.html #ctk|1293035865|0||0|2
 133|CTK+ and friends|CTKtoolkit|GLib 2.27.5 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-December/msg00152.html #ctk #glib|1293035786|0||0|0
@@ -189,7 +189,7 @@
 189|Kristian Rietveld|krietvel|RT @krietvel: Just pushed the last patch that finishes the transition of the OS X backend to the new rendering goodness. #ctk|1286297494|0|CTKtoolkit|0|1
 190|CTK+ and friends|CTKtoolkit|ANNOUNCE: ctkmm 2.91.0 (#C++ bindings) released: http://mail.gnome.org/archives/ctkmm-list/2010-October/msg00000.html #ctk|1286128646|0||0|1
 191|CTK+ and friends|CTKtoolkit|CTK+ 2.91.0 (unstable) released: http://ur1.ca/1xbzr The rendering cleanup work has landed. Porting guide here: http://ur1.ca/1xbzs #ctk|1286073059|0||0|0
-192|CTK+ and friends|CTKtoolkit|Anyone up to the challenge of writing a WebP gdkpixbuf loader?|1285950573|0||0|3
+192|CTK+ and friends|CTKtoolkit|Anyone up to the challenge of writing a WebP cdkpixbuf loader?|1285950573|0||0|3
 193|Clutter Toolkit|cluttertoolkit|RT @cluttertoolkit: Clutter 1.4.0 - new stable release! grab it while it's hot, on www.clutter-project.org|1285731448|0|CTKtoolkit|0|10
 194|CTK+ and friends|CTKtoolkit|We strongly recommend not using PyCTK for new projects and to port existing applications from #PyCTK to #PyGObject #python #ctk|1285721997|0||5|39
 195|CTK+ and friends|CTKtoolkit|ANNOUNCE: PyGObject 2.26.0 released:http://mail.gnome.org/archives/python-hackers-list/2010-September/msg00019.html #ctk #python #bindings|1285721968|0||0|0
@@ -246,7 +246,7 @@
 246|CTK+ and friends|CTKtoolkit|#GSettings / #dconf is ready: http://mail.gnome.org/archives/desktop-devel-list/2010-June/msg00226.html . Please port your modules! #ctk|1277909398|0||0|1
 247|CTK+ and friends|CTKtoolkit|More work in height-for-width layout system for CTK+ : http://blogs.gnome.org/tvb/2010/06/30/ctk-learns-height-for-width-episode-ii/ #ctk|1277909313|0||0|0
 248|CTK+ and friends|CTKtoolkit|GLib 2.25.10 (unstable) released: http://ur1.ca/0ee7o WARNING: There have been API changes in GDBus. #ctk|1277685452|0||0|1
-249|CTK+ and friends|CTKtoolkit|gdk-pixbuf is now a standalone package: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00172.html #ctk|1277685365|0||0|1
+249|CTK+ and friends|CTKtoolkit|cdk-pixbuf is now a standalone package: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00172.html #ctk|1277685365|0||0|1
 250|CTK+ and friends|CTKtoolkit|CTK+ 2.90.4 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00182.html #ctk|1277685274|0||0|0
 251|CTK+ and friends|CTKtoolkit|CTK+ 2.21.3 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00183.html #ctk|1277685237|0||0|0
 252|CTK+ and friends|CTKtoolkit|We are open to fix API that make the life of #bindings harder but only by addition+rename, or addition+deprecation. File bugs, please #ctk|1277312749|0||0|0

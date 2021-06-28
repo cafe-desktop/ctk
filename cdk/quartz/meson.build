@@ -1,57 +1,57 @@
 
 add_languages(['objc'])
 
-gdk_quartz_sources = files(
+cdk_quartz_sources = files(
   'GdkQuartzView.c',
   'GdkQuartzNSWindow.c',
-  'gdkcursor-quartz.c',
-  'gdkdevice-core-quartz.c',
-  'gdkdevicemanager-core-quartz.c',
-  'gdkdisplay-quartz.c',
-  'gdkdisplaymanager-quartz.c',
-  'gdkdnd-quartz.c',
-  'gdkevents-quartz.c',
-  'gdkeventloop-quartz.c',
-  'gdkglcontext-quartz.c',
-  'gdkglobals-quartz.c',
-  'gdkkeys-quartz.c',
-  'gdkmonitor-quartz.c',
-  'gdkproperty-quartz.c',
-  'gdkscreen-quartz.c',
-  'gdkselection-quartz.c',
-  'gdktestutils-quartz.c',
-  'gdkutils-quartz.c',
-  'gdkvisual-quartz.c',
-  'gdkwindow-quartz.c',
+  'cdkcursor-quartz.c',
+  'cdkdevice-core-quartz.c',
+  'cdkdevicemanager-core-quartz.c',
+  'cdkdisplay-quartz.c',
+  'cdkdisplaymanager-quartz.c',
+  'cdkdnd-quartz.c',
+  'cdkevents-quartz.c',
+  'cdkeventloop-quartz.c',
+  'cdkglcontext-quartz.c',
+  'cdkglobals-quartz.c',
+  'cdkkeys-quartz.c',
+  'cdkmonitor-quartz.c',
+  'cdkproperty-quartz.c',
+  'cdkscreen-quartz.c',
+  'cdkselection-quartz.c',
+  'cdktestutils-quartz.c',
+  'cdkutils-quartz.c',
+  'cdkvisual-quartz.c',
+  'cdkwindow-quartz.c',
 )
 
-gdk_quartz_public_headers = files(
-  'gdkquartzcursor.h',
-  'gdkquartzdevice-core.h',
-  'gdkquartzdevicemanager-core.h',
-  'gdkquartzdisplay.h',
-  'gdkquartzdisplaymanager.h',
-  'gdkquartzdnd.h',
-  'gdkquartzkeys.h',
-  'gdkquartzmonitor.h',
-  'gdkquartzscreen.h',
-  'gdkquartzutils.h',
-  'gdkquartzvisual.h',
-  'gdkquartzwindow.h',
+cdk_quartz_public_headers = files(
+  'cdkquartzcursor.h',
+  'cdkquartzdevice-core.h',
+  'cdkquartzdevicemanager-core.h',
+  'cdkquartzdisplay.h',
+  'cdkquartzdisplaymanager.h',
+  'cdkquartzdnd.h',
+  'cdkquartzkeys.h',
+  'cdkquartzmonitor.h',
+  'cdkquartzscreen.h',
+  'cdkquartzutils.h',
+  'cdkquartzvisual.h',
+  'cdkquartzwindow.h',
 )
 
-install_headers(gdk_quartz_public_headers, subdir: 'ctk-3.0/gdk/quartz')
-install_headers('gdkquartz.h', subdir: 'ctk-3.0/gdk')
+install_headers(cdk_quartz_public_headers, subdir: 'ctk-3.0/cdk/quartz')
+install_headers('cdkquartz.h', subdir: 'ctk-3.0/cdk')
 
 core_graphics_dep = dependency('appleframeworks', modules : 'CoreGraphics', required : true)
 appkit_dep = dependency('appleframeworks', modules : 'AppKit', required : true)
 cocoa_dep = dependency('appleframeworks', modules : 'Cocoa', required : true)
 carbon_dep = dependency('appleframeworks', modules : 'Carbon', required : true)
 
-gdk_quartz_deps = [ core_graphics_dep, appkit_dep, cocoa_dep, carbon_dep ]
+cdk_quartz_deps = [ core_graphics_dep, appkit_dep, cocoa_dep, carbon_dep ]
 
-libgdk_quartz = static_library('gdk-quartz',
-  gdk_quartz_sources, gdkconfig, gdkenum_h,
-  include_directories: [confinc, gdkinc],
+libcdk_quartz = static_library('cdk-quartz',
+  cdk_quartz_sources, cdkconfig, cdkenum_h,
+  include_directories: [confinc, cdkinc],
   c_args: ['-DGDK_COMPILATION', '-DG_LOG_DOMAIN="Gdk"', '-xobjective-c'],
-  dependencies: [gdk_deps, gdk_quartz_deps])
+  dependencies: [cdk_deps, cdk_quartz_deps])

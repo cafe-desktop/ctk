@@ -1,4 +1,4 @@
-/* gdkdisplay-quartz.c
+/* cdkdisplay-quartz.c
  *
  * Copyright (C) 2005 Imendio AB
  *
@@ -18,20 +18,20 @@
 
 #include "config.h"
 
-#include <gdk/gdk.h>
-#include <gdk/gdkdisplayprivate.h>
-#include <gdk/gdkmonitorprivate.h>
+#include <cdk/cdk.h>
+#include <cdk/cdkdisplayprivate.h>
+#include <cdk/cdkmonitorprivate.h>
 
-#include "gdkprivate-quartz.h"
-#include "gdkquartzscreen.h"
-#include "gdkquartzwindow.h"
-#include "gdkquartzdisplay.h"
-#include "gdkquartzdevicemanager-core.h"
-#include "gdkscreen.h"
-#include "gdkmonitorprivate.h"
-#include "gdkdisplay-quartz.h"
-#include "gdkmonitor-quartz.h"
-#include "gdkglcontext-quartz.h"
+#include "cdkprivate-quartz.h"
+#include "cdkquartzscreen.h"
+#include "cdkquartzwindow.h"
+#include "cdkquartzdisplay.h"
+#include "cdkquartzdevicemanager-core.h"
+#include "cdkscreen.h"
+#include "cdkmonitorprivate.h"
+#include "cdkdisplay-quartz.h"
+#include "cdkmonitor-quartz.h"
+#include "cdkglcontext-quartz.h"
 
 /* Note about coordinates: There are three coordinate systems at play:
  *
@@ -68,14 +68,14 @@ static void display_reconfiguration_callback (CGDirectDisplayID            displ
                                               void                        *data);
 
 static GdkWindow *
-gdk_quartz_display_get_default_group (GdkDisplay *display)
+cdk_quartz_display_get_default_group (GdkDisplay *display)
 {
 /* X11-only. */
   return NULL;
 }
 
 GdkDeviceManager *
-_gdk_device_manager_new (GdkDisplay *display)
+_cdk_device_manager_new (GdkDisplay *display)
 {
   return g_object_new (GDK_TYPE_QUARTZ_DEVICE_MANAGER_CORE,
                        "display", display,
@@ -83,35 +83,35 @@ _gdk_device_manager_new (GdkDisplay *display)
 }
 
 GdkDisplay *
-_gdk_quartz_display_open (const gchar *display_name)
+_cdk_quartz_display_open (const gchar *display_name)
 {
-  if (_gdk_display != NULL)
+  if (_cdk_display != NULL)
     return NULL;
 
-  _gdk_display = g_object_new (gdk_quartz_display_get_type (), NULL);
-  _gdk_display->device_manager = _gdk_device_manager_new (_gdk_display);
+  _cdk_display = g_object_new (cdk_quartz_display_get_type (), NULL);
+  _cdk_display->device_manager = _cdk_device_manager_new (_cdk_display);
 
-  _gdk_screen = g_object_new (gdk_quartz_screen_get_type (), NULL);
-  _gdk_quartz_screen_init_visuals (_gdk_screen);
+  _cdk_screen = g_object_new (cdk_quartz_screen_get_type (), NULL);
+  _cdk_quartz_screen_init_visuals (_cdk_screen);
 
-  _gdk_quartz_window_init_windowing (_gdk_display, _gdk_screen);
+  _cdk_quartz_window_init_windowing (_cdk_display, _cdk_screen);
 
-  _gdk_quartz_events_init ();
+  _cdk_quartz_events_init ();
 
   /* Initialize application */
   [NSApplication sharedApplication];
 #if 0
   /* FIXME: Remove the #if 0 when we have these functions */
-  _gdk_quartz_dnd_init ();
+  _cdk_quartz_dnd_init ();
 #endif
 
-  g_signal_emit_by_name (_gdk_display, "opened");
+  g_signal_emit_by_name (_cdk_display, "opened");
 
-  return _gdk_display;
+  return _cdk_display;
 }
 
 static const gchar *
-gdk_quartz_display_get_name (GdkDisplay *display)
+cdk_quartz_display_get_name (GdkDisplay *display)
 {
   static gchar *display_name = NULL;
 
@@ -126,13 +126,13 @@ gdk_quartz_display_get_name (GdkDisplay *display)
 }
 
 static GdkScreen *
-gdk_quartz_display_get_default_screen (GdkDisplay *display)
+cdk_quartz_display_get_default_screen (GdkDisplay *display)
 {
-  return _gdk_screen;
+  return _cdk_screen;
 }
 
 static void
-gdk_quartz_display_beep (GdkDisplay *display)
+cdk_quartz_display_beep (GdkDisplay *display)
 {
   g_return_if_fail (GDK_IS_DISPLAY (display));
 
@@ -140,19 +140,19 @@ gdk_quartz_display_beep (GdkDisplay *display)
 }
 
 static void
-gdk_quartz_display_sync (GdkDisplay *display)
+cdk_quartz_display_sync (GdkDisplay *display)
 {
   /* Not needed. */
 }
 
 static void
-gdk_quartz_display_flush (GdkDisplay *display)
+cdk_quartz_display_flush (GdkDisplay *display)
 {
   /* Not needed. */
 }
 
 static gboolean
-gdk_quartz_display_supports_selection_notification (GdkDisplay *display)
+cdk_quartz_display_supports_selection_notification (GdkDisplay *display)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
   /* X11-only. */
@@ -160,7 +160,7 @@ gdk_quartz_display_supports_selection_notification (GdkDisplay *display)
 }
 
 static gboolean
-gdk_quartz_display_request_selection_notification (GdkDisplay *display,
+cdk_quartz_display_request_selection_notification (GdkDisplay *display,
                                                    GdkAtom     selection)
 {
   /* X11-only. */
@@ -168,28 +168,28 @@ gdk_quartz_display_request_selection_notification (GdkDisplay *display,
 }
 
 static gboolean
-gdk_quartz_display_supports_clipboard_persistence (GdkDisplay *display)
+cdk_quartz_display_supports_clipboard_persistence (GdkDisplay *display)
 {
   /* X11-only */
   return FALSE;
 }
 
 static gboolean
-gdk_quartz_display_supports_shapes (GdkDisplay *display)
+cdk_quartz_display_supports_shapes (GdkDisplay *display)
 {
   /* Not needed, nothing ever calls this.*/
   return FALSE;
 }
 
 static gboolean
-gdk_quartz_display_supports_input_shapes (GdkDisplay *display)
+cdk_quartz_display_supports_input_shapes (GdkDisplay *display)
 {
   /* Not needed, nothign ever calls this. */
   return FALSE;
 }
 
 static void
-gdk_quartz_display_store_clipboard (GdkDisplay    *display,
+cdk_quartz_display_store_clipboard (GdkDisplay    *display,
                                     GdkWindow     *clipboard_window,
                                     guint32        time_,
                                     const GdkAtom *targets,
@@ -202,21 +202,21 @@ gdk_quartz_display_store_clipboard (GdkDisplay    *display,
 
 
 static gboolean
-gdk_quartz_display_supports_composite (GdkDisplay *display)
+cdk_quartz_display_supports_composite (GdkDisplay *display)
 {
   /* X11-only. */
   return FALSE;
 }
 
 static gulong
-gdk_quartz_display_get_next_serial (GdkDisplay *display)
+cdk_quartz_display_get_next_serial (GdkDisplay *display)
 {
   /* X11-only. */
   return 0;
 }
 
 static void
-gdk_quartz_display_notify_startup_complete (GdkDisplay  *display,
+cdk_quartz_display_notify_startup_complete (GdkDisplay  *display,
                                             const gchar *startup_id)
 {
   /* This should call finishLaunching, but doing so causes Quartz to throw
@@ -227,13 +227,13 @@ gdk_quartz_display_notify_startup_complete (GdkDisplay  *display,
 }
 
 static void
-gdk_quartz_display_push_error_trap (GdkDisplay *display)
+cdk_quartz_display_push_error_trap (GdkDisplay *display)
 {
   /* X11-only. */
 }
 
 static gint
-gdk_quartz_display_pop_error_trap (GdkDisplay *display, gboolean ignore)
+cdk_quartz_display_pop_error_trap (GdkDisplay *display, gboolean ignore)
 {
   /* X11 only. */
   return 0;
@@ -263,13 +263,13 @@ get_active_displays (CGDirectDisplayID **displays)
 }
 
 static inline GdkRectangle
-cgrect_to_gdkrect (CGRect cgrect)
+cgrect_to_cdkrect (CGRect cgrect)
 {
-  GdkRectangle gdkrect = {(int)trunc (cgrect.origin.x),
+  GdkRectangle cdkrect = {(int)trunc (cgrect.origin.x),
                           (int)trunc (cgrect.origin.y),
                           (int)trunc (cgrect.size.width),
                           (int)trunc (cgrect.size.height)};
-  return gdkrect;
+  return cdkrect;
 }
 
 static void
@@ -286,7 +286,7 @@ configure_monitor (GdkMonitor       *monitor,
   disp_bounds.origin.x = disp_bounds.origin.x + display->geometry.origin.x;
   disp_bounds.origin.y =
     display->geometry.origin.y - main_bounds.size.height + disp_bounds.origin.y;
-  GdkRectangle disp_geometry = cgrect_to_gdkrect (disp_bounds);
+  GdkRectangle disp_geometry = cgrect_to_cdkrect (disp_bounds);
   CGDisplayModeRef mode = CGDisplayCopyDisplayMode (quartz_monitor->id);
   gint refresh_rate = (int)trunc (CGDisplayModeGetRefreshRate (mode));
 
@@ -294,7 +294,7 @@ configure_monitor (GdkMonitor       *monitor,
   monitor->height_mm = height;
   monitor->geometry = disp_geometry;
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1080
-  if (mode && gdk_quartz_osx_version () >= GDK_OSX_MOUNTAIN_LION)
+  if (mode && cdk_quartz_osx_version () >= GDK_OSX_MOUNTAIN_LION)
   {
     monitor->scale_factor = CGDisplayModeGetPixelWidth (mode) / CGDisplayModeGetWidth (mode);
     CGDisplayModeRelease (mode);
@@ -381,7 +381,7 @@ display_reconfiguration_callback (CGDirectDisplayID            cg_display,
           g_ptr_array_add (display->monitors, monitor);
           display_rect (display);
           configure_monitor (GDK_MONITOR (monitor), display);
-          gdk_display_monitor_added (GDK_DISPLAY (display),
+          cdk_display_monitor_added (GDK_DISPLAY (display),
                                      GDK_MONITOR (monitor));
         }
       else
@@ -402,7 +402,7 @@ display_reconfiguration_callback (CGDirectDisplayID            cg_display,
         {
           GdkQuartzMonitor *monitor = g_ptr_array_index (display->monitors,
                                                          index);
-          gdk_display_monitor_removed (GDK_DISPLAY (display),
+          cdk_display_monitor_removed (GDK_DISPLAY (display),
                                        GDK_MONITOR (monitor));
           g_ptr_array_remove_fast (display->monitors, monitor);
         }
@@ -413,18 +413,18 @@ display_reconfiguration_callback (CGDirectDisplayID            cg_display,
 
 
 static int
-gdk_quartz_display_get_n_monitors (GdkDisplay *display)
+cdk_quartz_display_get_n_monitors (GdkDisplay *display)
 {
   GdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
   return quartz_display->monitors->len;
 }
 
 static GdkMonitor *
-gdk_quartz_display_get_monitor (GdkDisplay *display,
+cdk_quartz_display_get_monitor (GdkDisplay *display,
                                 int         monitor_num)
 {
   GdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
-  int n_displays = gdk_quartz_display_get_n_monitors (display);
+  int n_displays = cdk_quartz_display_get_n_monitors (display);
 
   if (monitor_num >= 0 && monitor_num < n_displays)
     return g_ptr_array_index (quartz_display->monitors, monitor_num);
@@ -433,7 +433,7 @@ gdk_quartz_display_get_monitor (GdkDisplay *display,
 }
 
 static GdkMonitor *
-gdk_quartz_display_get_primary_monitor (GdkDisplay *display)
+cdk_quartz_display_get_primary_monitor (GdkDisplay *display)
 {
   GdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
   CGDirectDisplayID primary_id = CGMainDisplayID ();
@@ -449,7 +449,7 @@ gdk_quartz_display_get_primary_monitor (GdkDisplay *display)
 }
 
 static GdkMonitor *
-gdk_quartz_display_get_monitor_at_window (GdkDisplay *display,
+cdk_quartz_display_get_monitor_at_window (GdkDisplay *display,
                                           GdkWindow *window)
 {
   GdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
@@ -470,18 +470,18 @@ gdk_quartz_display_get_monitor_at_window (GdkDisplay *display,
   }
   if (!monitor)
     {
-      GdkRectangle rect = cgrect_to_gdkrect (NSRectToCGRect ([nswindow frame]));
-      monitor = gdk_display_get_monitor_at_point (display,
+      GdkRectangle rect = cgrect_to_cdkrect (NSRectToCGRect ([nswindow frame]));
+      monitor = cdk_display_get_monitor_at_point (display,
                                                  rect.x + rect.width/2,
                                                  rect.y + rect.height /2);
     }
   return monitor;
 }
 
-G_DEFINE_TYPE (GdkQuartzDisplay, gdk_quartz_display, GDK_TYPE_DISPLAY)
+G_DEFINE_TYPE (GdkQuartzDisplay, cdk_quartz_display, GDK_TYPE_DISPLAY)
 
 static void
-gdk_quartz_display_init (GdkQuartzDisplay *display)
+cdk_quartz_display_init (GdkQuartzDisplay *display)
 {
   uint32_t n_displays = 0, disp;
   CGDirectDisplayID *displays;
@@ -505,7 +505,7 @@ gdk_quartz_display_init (GdkQuartzDisplay *display)
 }
 
 static void
-gdk_quartz_display_dispose (GObject *object)
+cdk_quartz_display_dispose (GObject *object)
 {
   GdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (object);
 
@@ -513,79 +513,79 @@ gdk_quartz_display_dispose (GObject *object)
   CGDisplayRemoveReconfigurationCallback (display_reconfiguration_callback,
                                           quartz_display);
 
-  G_OBJECT_CLASS (gdk_quartz_display_parent_class)->dispose (object);
+  G_OBJECT_CLASS (cdk_quartz_display_parent_class)->dispose (object);
 }
 
 static void
-gdk_quartz_display_finalize (GObject *object)
+cdk_quartz_display_finalize (GObject *object)
 {
-  G_OBJECT_CLASS (gdk_quartz_display_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_quartz_display_parent_class)->finalize (object);
 }
 
 static void
-gdk_quartz_display_class_init (GdkQuartzDisplayClass *class)
+cdk_quartz_display_class_init (GdkQuartzDisplayClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
   GdkDisplayClass *display_class = GDK_DISPLAY_CLASS (class);
 
-  object_class->finalize = gdk_quartz_display_finalize;
-  object_class->dispose = gdk_quartz_display_dispose;
+  object_class->finalize = cdk_quartz_display_finalize;
+  object_class->dispose = cdk_quartz_display_dispose;
 
   display_class->window_type = GDK_TYPE_QUARTZ_WINDOW;
 
-  display_class->get_name = gdk_quartz_display_get_name;
-  display_class->get_default_screen = gdk_quartz_display_get_default_screen;
-  display_class->beep = gdk_quartz_display_beep;
-  display_class->sync = gdk_quartz_display_sync;
-  display_class->flush = gdk_quartz_display_flush;
-  display_class->has_pending = _gdk_quartz_display_has_pending;
-  display_class->queue_events = _gdk_quartz_display_queue_events;
-  display_class->get_default_group = gdk_quartz_display_get_default_group;
-  display_class->supports_selection_notification = gdk_quartz_display_supports_selection_notification;
-  display_class->request_selection_notification = gdk_quartz_display_request_selection_notification;
+  display_class->get_name = cdk_quartz_display_get_name;
+  display_class->get_default_screen = cdk_quartz_display_get_default_screen;
+  display_class->beep = cdk_quartz_display_beep;
+  display_class->sync = cdk_quartz_display_sync;
+  display_class->flush = cdk_quartz_display_flush;
+  display_class->has_pending = _cdk_quartz_display_has_pending;
+  display_class->queue_events = _cdk_quartz_display_queue_events;
+  display_class->get_default_group = cdk_quartz_display_get_default_group;
+  display_class->supports_selection_notification = cdk_quartz_display_supports_selection_notification;
+  display_class->request_selection_notification = cdk_quartz_display_request_selection_notification;
 
-  display_class->supports_shapes = gdk_quartz_display_supports_shapes;
-  display_class->supports_input_shapes = gdk_quartz_display_supports_input_shapes;
-  display_class->supports_composite = gdk_quartz_display_supports_composite;
-  display_class->supports_cursor_alpha = _gdk_quartz_display_supports_cursor_alpha;
-  display_class->supports_cursor_color = _gdk_quartz_display_supports_cursor_color;
+  display_class->supports_shapes = cdk_quartz_display_supports_shapes;
+  display_class->supports_input_shapes = cdk_quartz_display_supports_input_shapes;
+  display_class->supports_composite = cdk_quartz_display_supports_composite;
+  display_class->supports_cursor_alpha = _cdk_quartz_display_supports_cursor_alpha;
+  display_class->supports_cursor_color = _cdk_quartz_display_supports_cursor_color;
 
-  display_class->supports_clipboard_persistence = gdk_quartz_display_supports_clipboard_persistence;
-  display_class->store_clipboard = gdk_quartz_display_store_clipboard;
+  display_class->supports_clipboard_persistence = cdk_quartz_display_supports_clipboard_persistence;
+  display_class->store_clipboard = cdk_quartz_display_store_clipboard;
 
-  display_class->get_default_cursor_size = _gdk_quartz_display_get_default_cursor_size;
-  display_class->get_maximal_cursor_size = _gdk_quartz_display_get_maximal_cursor_size;
-  display_class->get_cursor_for_type = _gdk_quartz_display_get_cursor_for_type;
-  display_class->get_cursor_for_name = _gdk_quartz_display_get_cursor_for_name;
-  display_class->get_cursor_for_surface = _gdk_quartz_display_get_cursor_for_surface;
+  display_class->get_default_cursor_size = _cdk_quartz_display_get_default_cursor_size;
+  display_class->get_maximal_cursor_size = _cdk_quartz_display_get_maximal_cursor_size;
+  display_class->get_cursor_for_type = _cdk_quartz_display_get_cursor_for_type;
+  display_class->get_cursor_for_name = _cdk_quartz_display_get_cursor_for_name;
+  display_class->get_cursor_for_surface = _cdk_quartz_display_get_cursor_for_surface;
 
   /* display_class->get_app_launch_context = NULL; Has default. */
-  display_class->before_process_all_updates = _gdk_quartz_display_before_process_all_updates;
-  display_class->after_process_all_updates = _gdk_quartz_display_after_process_all_updates;
-  display_class->get_next_serial = gdk_quartz_display_get_next_serial;
-  display_class->notify_startup_complete = gdk_quartz_display_notify_startup_complete;
-  display_class->event_data_copy = _gdk_quartz_display_event_data_copy;
-  display_class->event_data_free = _gdk_quartz_display_event_data_free;
-  display_class->create_window_impl = _gdk_quartz_display_create_window_impl;
-  display_class->get_keymap = _gdk_quartz_display_get_keymap;
-  display_class->push_error_trap = gdk_quartz_display_push_error_trap;
-  display_class->pop_error_trap = gdk_quartz_display_pop_error_trap;
+  display_class->before_process_all_updates = _cdk_quartz_display_before_process_all_updates;
+  display_class->after_process_all_updates = _cdk_quartz_display_after_process_all_updates;
+  display_class->get_next_serial = cdk_quartz_display_get_next_serial;
+  display_class->notify_startup_complete = cdk_quartz_display_notify_startup_complete;
+  display_class->event_data_copy = _cdk_quartz_display_event_data_copy;
+  display_class->event_data_free = _cdk_quartz_display_event_data_free;
+  display_class->create_window_impl = _cdk_quartz_display_create_window_impl;
+  display_class->get_keymap = _cdk_quartz_display_get_keymap;
+  display_class->push_error_trap = cdk_quartz_display_push_error_trap;
+  display_class->pop_error_trap = cdk_quartz_display_pop_error_trap;
 
-  display_class->get_selection_owner = _gdk_quartz_display_get_selection_owner;
-  display_class->set_selection_owner = _gdk_quartz_display_set_selection_owner;
+  display_class->get_selection_owner = _cdk_quartz_display_get_selection_owner;
+  display_class->set_selection_owner = _cdk_quartz_display_set_selection_owner;
   display_class->send_selection_notify = NULL; /* Ignore. X11 stuff removed in master.  */
-  display_class->get_selection_property = _gdk_quartz_display_get_selection_property;
-  display_class->convert_selection = _gdk_quartz_display_convert_selection;
-  display_class->text_property_to_utf8_list = _gdk_quartz_display_text_property_to_utf8_list;
-  display_class->utf8_to_string_target = _gdk_quartz_display_utf8_to_string_target;
+  display_class->get_selection_property = _cdk_quartz_display_get_selection_property;
+  display_class->convert_selection = _cdk_quartz_display_convert_selection;
+  display_class->text_property_to_utf8_list = _cdk_quartz_display_text_property_to_utf8_list;
+  display_class->utf8_to_string_target = _cdk_quartz_display_utf8_to_string_target;
 
 /* display_class->get_default_seat; The parent class default works fine. */
 
-  display_class->get_n_monitors = gdk_quartz_display_get_n_monitors;
-  display_class->get_monitor = gdk_quartz_display_get_monitor;
-  display_class->get_primary_monitor = gdk_quartz_display_get_primary_monitor;
-  display_class->get_monitor_at_window = gdk_quartz_display_get_monitor_at_window;
-  display_class->make_gl_context_current = gdk_quartz_display_make_gl_context_current;
+  display_class->get_n_monitors = cdk_quartz_display_get_n_monitors;
+  display_class->get_monitor = cdk_quartz_display_get_monitor;
+  display_class->get_primary_monitor = cdk_quartz_display_get_primary_monitor;
+  display_class->get_monitor_at_window = cdk_quartz_display_get_monitor_at_window;
+  display_class->make_gl_context_current = cdk_quartz_display_make_gl_context_current;
 
   /**
    * GdkQuartzDisplay::monitors-changed:

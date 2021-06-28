@@ -21,7 +21,7 @@
 
 #include <gio/gio.h>
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include "ctksearchenginemodel.h"
 #include "ctkprivate.h"
@@ -128,7 +128,7 @@ ctk_search_engine_model_start (CtkSearchEngine *engine)
   if (model->query == NULL)
     return;
 
-  model->idle = gdk_threads_add_idle (do_search, engine);
+  model->idle = cdk_threads_add_idle (do_search, engine);
   g_source_set_name_by_id (model->idle, "[ctk+] ctk_search_engine_model_start");
 }
 

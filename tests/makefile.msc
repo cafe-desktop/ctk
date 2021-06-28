@@ -12,10 +12,10 @@ TOP = ..\..
 # Possibly override versions from build/win32/module.defs
 CTK_VER = 3.0
 
-GDK_LIBS = ../gdk/gdk-win32-$(CTK_VER).lib
+GDK_LIBS = ../cdk/cdk-win32-$(CTK_VER).lib
 CTK_LIBS = ../ctk/ctk-win32-$(CTK_VER).lib
 
-INCLUDES = -I . -I .. -I ../gdk -I ../ctk $(GDK_PIXBUF_CFLAGS)
+INCLUDES = -I . -I .. -I ../cdk -I ../ctk $(GDK_PIXBUF_CFLAGS)
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) $(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
 LDFLAGS = /link /machine:ix86 $(LINKDEBUG)
 DEFINES = -DG_LOG_DOMAIN=\"CtkTest\" -DCTK_VERSION=\"$(CTK_VER)\"

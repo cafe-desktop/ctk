@@ -63,9 +63,9 @@
  * definition, key combinations are bound to one or more specific
  * signal emissions on the target widget. Key combinations are strings
  * consisting of an optional #GdkModifierType name and
- * [key names][gdk3-Keyboard-Handling]
- * such as those defined in `gdk/gdkkeysyms.h`
- * or returned from gdk_keyval_name(), they have to be parsable by
+ * [key names][cdk3-Keyboard-Handling]
+ * such as those defined in `cdk/cdkkeysyms.h`
+ * or returned from cdk_keyval_name(), they have to be parsable by
  * ctk_accelerator_parse(). Specifications of signal emissions consist
  * of a string identifying the signal name, and a list of signal specific
  * arguments in parenthesis.
@@ -244,7 +244,7 @@ binding_key_hash_insert_entry (CtkKeyHash      *key_hash,
       if (keyval == GDK_KEY_Tab)
         keyval = GDK_KEY_ISO_Left_Tab;
       else
-        keyval = gdk_keyval_to_upper (keyval);
+        keyval = cdk_keyval_to_upper (keyval);
     }
 
   _ctk_key_hash_add_entry (key_hash, keyval, entry->modifiers & ~GDK_RELEASE_MASK, entry);
@@ -797,7 +797,7 @@ ctk_binding_set_activate (CtkBindingSet  *binding_set,
   g_return_val_if_fail (binding_set != NULL, FALSE);
   g_return_val_if_fail (G_IS_OBJECT (object), FALSE);
 
-  keyval = gdk_keyval_to_lower (keyval);
+  keyval = cdk_keyval_to_lower (keyval);
   modifiers = modifiers & BINDING_MOD_MASK ();
 
   entry = binding_ht_lookup_entry (binding_set, keyval, modifiers);
@@ -814,7 +814,7 @@ ctk_binding_entry_clear_internal (CtkBindingSet  *binding_set,
 {
   CtkBindingEntry *entry;
 
-  keyval = gdk_keyval_to_lower (keyval);
+  keyval = cdk_keyval_to_lower (keyval);
   modifiers = modifiers & BINDING_MOD_MASK ();
 
   entry = binding_ht_lookup_entry (binding_set, keyval, modifiers);
@@ -845,7 +845,7 @@ ctk_binding_entry_skip (CtkBindingSet  *binding_set,
 
   g_return_if_fail (binding_set != NULL);
 
-  keyval = gdk_keyval_to_lower (keyval);
+  keyval = cdk_keyval_to_lower (keyval);
   modifiers = modifiers & BINDING_MOD_MASK ();
 
   entry = binding_ht_lookup_entry (binding_set, keyval, modifiers);
@@ -874,7 +874,7 @@ ctk_binding_entry_remove (CtkBindingSet  *binding_set,
 
   g_return_if_fail (binding_set != NULL);
 
-  keyval = gdk_keyval_to_lower (keyval);
+  keyval = cdk_keyval_to_lower (keyval);
   modifiers = modifiers & BINDING_MOD_MASK ();
 
   entry = binding_ht_lookup_entry (binding_set, keyval, modifiers);
@@ -922,7 +922,7 @@ _ctk_binding_entry_add_signall (CtkBindingSet  *binding_set,
   g_return_if_fail (binding_set != NULL);
   g_return_if_fail (signal_name != NULL);
 
-  keyval = gdk_keyval_to_lower (keyval);
+  keyval = cdk_keyval_to_lower (keyval);
   modifiers = modifiers & BINDING_MOD_MASK ();
 
   signal = binding_signal_new (signal_name, g_slist_length (binding_args));
@@ -1554,7 +1554,7 @@ ctk_bindings_activate (GObject         *object,
   modifiers = modifiers & BINDING_MOD_MASK () & ~GDK_RELEASE_MASK;
 
   display = ctk_widget_get_display (CTK_WIDGET (object));
-  key_hash = binding_key_hash_for_keymap (gdk_keymap_get_for_display (display));
+  key_hash = binding_key_hash_for_keymap (cdk_keymap_get_for_display (display));
 
   entries = _ctk_key_hash_lookup_keyval (key_hash, keyval, modifiers);
 
@@ -1590,7 +1590,7 @@ ctk_bindings_activate_event (GObject     *object,
     return FALSE;
 
   display = ctk_widget_get_display (CTK_WIDGET (object));
-  key_hash = binding_key_hash_for_keymap (gdk_keymap_get_for_display (display));
+  key_hash = binding_key_hash_for_keymap (cdk_keymap_get_for_display (display));
 
   entries = _ctk_key_hash_lookup (key_hash,
                                   event->hardware_keycode,

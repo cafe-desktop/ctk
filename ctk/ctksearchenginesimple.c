@@ -23,7 +23,7 @@
 
 #include <gio/gio.h>
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include "ctksearchenginesimple.h"
 #include "ctkfilesystem.h"
@@ -185,7 +185,7 @@ send_batch (SearchThreadData *data)
       batch->hits = data->hits;
       batch->thread_data = data;
 
-      id = gdk_threads_add_idle (search_thread_add_hits_idle, batch);
+      id = cdk_threads_add_idle (search_thread_add_hits_idle, batch);
       g_source_set_name_by_id (id, "[ctk+] search_thread_add_hits_idle");
       data->got_results = TRUE;
     }
@@ -293,7 +293,7 @@ search_thread_func (gpointer user_data)
   if (!g_cancellable_is_cancelled (data->cancellable))
     send_batch (data);
 
-  id = gdk_threads_add_idle (search_thread_done_idle, data);
+  id = cdk_threads_add_idle (search_thread_done_idle, data);
   g_source_set_name_by_id (id, "[ctk+] search_thread_done_idle");
 
   return NULL;

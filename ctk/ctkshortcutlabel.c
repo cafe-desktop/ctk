@@ -157,7 +157,7 @@ get_labels (guint key, GdkModifierType modifier, guint *n_mods)
 
   *n_mods = i;
 
-  ch = gdk_keyval_to_unicode (key);
+  ch = cdk_keyval_to_unicode (key);
   if (ch && ch < 0x80 && g_unichar_isgraph (ch))
     {
       switch (ch)
@@ -225,7 +225,7 @@ get_labels (guint key, GdkModifierType modifier, guint *n_mods)
           labels[i++] = C_("keyboard label", "Page_Down");
           break;
         default:
-          tmp = gdk_keyval_name (gdk_keyval_to_lower (key));
+          tmp = cdk_keyval_name (cdk_keyval_to_lower (key));
           if (tmp != NULL)
             {
               if (tmp[0] != 0 && tmp[1] == 0)

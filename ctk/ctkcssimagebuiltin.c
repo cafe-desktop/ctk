@@ -61,7 +61,7 @@ ctk_css_image_builtin_draw_check (CtkCssImage *image,
   x = - (1 + exterior_size - (gint) width) / 2;
   y = - (1 + exterior_size - (gint) height) / 2;
 
-  gdk_cairo_set_source_rgba (cr, &builtin->fg_color);
+  cdk_cairo_set_source_rgba (cr, &builtin->fg_color);
 
   if (inconsistent)
     {
@@ -131,7 +131,7 @@ ctk_css_image_builtin_draw_option (CtkCssImage *image,
   x = - (1 + exterior_size - width) / 2;
   y = - (1 + exterior_size - height) / 2;
 
-  gdk_cairo_set_source_rgba (cr, &builtin->fg_color);
+  cdk_cairo_set_source_rgba (cr, &builtin->fg_color);
 
   pad = 1 + MAX (1, 2 * (exterior_size - 2) / 9);
   interior_size = MAX (1, exterior_size - 2 * pad);
@@ -209,7 +209,7 @@ ctk_css_image_builtin_draw_arrow (CtkCssImage            *image,
   cairo_rel_line_to (cr, size / 2.0, -size / 2.0);
   cairo_rel_line_to (cr, size / 2.0, size / 2.0);
 
-  gdk_cairo_set_source_rgba (cr, &builtin->fg_color);
+  cdk_cairo_set_source_rgba (cr, &builtin->fg_color);
   cairo_stroke (cr);
 }
 
@@ -303,7 +303,7 @@ ctk_css_image_builtin_draw_expander (CtkCssImage *image,
 
   cairo_set_line_width (cr, line_width);
 
-  gdk_cairo_set_source_rgba (cr, &builtin->fg_color);
+  cdk_cairo_set_source_rgba (cr, &builtin->fg_color);
 
   cairo_fill (cr);
 }
@@ -317,7 +317,7 @@ color_shade (const GdkRGBA *color,
 
   _ctk_hsla_init_from_rgba (&hsla, color);
   _ctk_hsla_shade (&hsla, &hsla, factor);
-  _gdk_rgba_init_from_hsla (color_return, &hsla);
+  _cdk_rgba_init_from_hsla (color_return, &hsla);
 }
 
 static void
@@ -332,19 +332,19 @@ render_dot (cairo_t       *cr,
 
   if (size == 2)
     {
-      gdk_cairo_set_source_rgba (cr, lighter);
+      cdk_cairo_set_source_rgba (cr, lighter);
       cairo_rectangle (cr, x, y, 1, 1);
       cairo_rectangle (cr, x + 1, y + 1, 1, 1);
       cairo_fill (cr);
     }
   else if (size == 3)
     {
-      gdk_cairo_set_source_rgba (cr, lighter);
+      cdk_cairo_set_source_rgba (cr, lighter);
       cairo_rectangle (cr, x, y, 2, 1);
       cairo_rectangle (cr, x, y, 1, 2);
       cairo_fill (cr);
 
-      gdk_cairo_set_source_rgba (cr, darker);
+      cdk_cairo_set_source_rgba (cr, darker);
       cairo_rectangle (cr, x + 1, y + 1, 2, 1);
       cairo_rectangle (cr, x + 2, y, 1, 2);
       cairo_fill (cr);
@@ -474,12 +474,12 @@ ctk_css_image_builtin_draw_grip (CtkCssImage            *image,
 
       while (xi < width)
         {
-          gdk_cairo_set_source_rgba (cr, &lighter);
+          cdk_cairo_set_source_rgba (cr, &lighter);
           add_path_line (cr, 0, 0, 0, height);
           cairo_stroke (cr);
           xi++;
 
-          gdk_cairo_set_source_rgba (cr, &darker);
+          cdk_cairo_set_source_rgba (cr, &darker);
           add_path_line (cr, xi, 0, xi, height);
           cairo_stroke (cr);
           xi += 2;
@@ -494,12 +494,12 @@ ctk_css_image_builtin_draw_grip (CtkCssImage            *image,
 
       while (yi < height)
         {
-          gdk_cairo_set_source_rgba (cr, &lighter);
+          cdk_cairo_set_source_rgba (cr, &lighter);
           add_path_line (cr, 0, yi, width, yi);
           cairo_stroke (cr);
           yi++;
 
-          gdk_cairo_set_source_rgba (cr, &darker);
+          cdk_cairo_set_source_rgba (cr, &darker);
           add_path_line (cr, 0, yi, width, yi);
           cairo_stroke (cr);
           yi += 2;
@@ -514,7 +514,7 @@ ctk_css_image_builtin_draw_grip (CtkCssImage            *image,
 
       while (xi > 3)
         {
-          gdk_cairo_set_source_rgba (cr, &darker);
+          cdk_cairo_set_source_rgba (cr, &darker);
           add_path_line (cr, xi, 0, 0, yi);
           cairo_stroke (cr);
 
@@ -527,7 +527,7 @@ ctk_css_image_builtin_draw_grip (CtkCssImage            *image,
           --xi;
           --yi;
 
-          gdk_cairo_set_source_rgba (cr, &lighter);
+          cdk_cairo_set_source_rgba (cr, &lighter);
           add_path_line (cr, xi, 0, 0, yi);
           cairo_stroke (cr);
 
@@ -544,14 +544,14 @@ ctk_css_image_builtin_draw_grip (CtkCssImage            *image,
 
       while (xi < (width - 3))
         {
-          gdk_cairo_set_source_rgba (cr, &lighter);
+          cdk_cairo_set_source_rgba (cr, &lighter);
           add_path_line (cr, xi, 0, width, yi);
           cairo_stroke (cr);
 
           ++xi;
           --yi;
 
-          gdk_cairo_set_source_rgba (cr, &darker);
+          cdk_cairo_set_source_rgba (cr, &darker);
           add_path_line (cr, xi, 0, width, yi);
           cairo_stroke (cr);
 
@@ -574,7 +574,7 @@ ctk_css_image_builtin_draw_grip (CtkCssImage            *image,
 
       while (xi > 3)
         {
-          gdk_cairo_set_source_rgba (cr, &darker);
+          cdk_cairo_set_source_rgba (cr, &darker);
           add_path_line (cr, 0, yi, xi, height);
           cairo_stroke (cr);
 
@@ -587,7 +587,7 @@ ctk_css_image_builtin_draw_grip (CtkCssImage            *image,
           --xi;
           ++yi;
 
-          gdk_cairo_set_source_rgba (cr, &lighter);
+          cdk_cairo_set_source_rgba (cr, &lighter);
           add_path_line (cr, 0, yi, xi, height);
           cairo_stroke (cr);
 
@@ -604,14 +604,14 @@ ctk_css_image_builtin_draw_grip (CtkCssImage            *image,
 
       while (xi < (width - 3))
         {
-          gdk_cairo_set_source_rgba (cr, &lighter);
+          cdk_cairo_set_source_rgba (cr, &lighter);
           add_path_line (cr, xi, height, width, yi);
           cairo_stroke (cr);
 
           ++xi;
           ++yi;
 
-          gdk_cairo_set_source_rgba (cr, &darker);
+          cdk_cairo_set_source_rgba (cr, &darker);
           add_path_line (cr, xi, height, width, yi);
           cairo_stroke (cr);
 
@@ -774,8 +774,8 @@ ctk_css_image_builtin_equal (CtkCssImage *image1,
   CtkCssImageBuiltin *builtin1 = CTK_CSS_IMAGE_BUILTIN (image1);
   CtkCssImageBuiltin *builtin2 = CTK_CSS_IMAGE_BUILTIN (image2);
 
-  return gdk_rgba_equal (&builtin1->fg_color, &builtin2->fg_color)
-      && gdk_rgba_equal (&builtin1->bg_color, &builtin2->bg_color);
+  return cdk_rgba_equal (&builtin1->fg_color, &builtin2->fg_color)
+      && cdk_rgba_equal (&builtin1->bg_color, &builtin2->bg_color);
 }
 
 static void

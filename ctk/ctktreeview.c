@@ -241,7 +241,7 @@ typedef enum {
 
 #define CTK_TREE_VIEW_PRIORITY_VALIDATE (GDK_PRIORITY_REDRAW + 5)
 #define CTK_TREE_VIEW_PRIORITY_SCROLL_SYNC (CTK_TREE_VIEW_PRIORITY_VALIDATE + 2)
-/* 3/5 of gdkframeclockidle.c's FRAME_INTERVAL (16667 microsecs) */
+/* 3/5 of cdkframeclockidle.c's FRAME_INTERVAL (16667 microsecs) */
 #define CTK_TREE_VIEW_TIME_MS_PER_IDLE 10
 #define SCROLL_EDGE_SIZE 15
 #define CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT 5000
@@ -2359,13 +2359,13 @@ ctk_tree_view_map_buttons (CtkTreeView *tree_view)
 	  window = _ctk_tree_view_column_get_window (column);
 	  if (ctk_tree_view_column_get_resizable (column))
 	    {
-	      gdk_window_raise (window);
-	      gdk_window_show (window);
+	      cdk_window_raise (window);
+	      cdk_window_show (window);
 	    }
 	  else
-	    gdk_window_hide (window);
+	    cdk_window_hide (window);
 	}
-      gdk_window_show (tree_view->priv->header_window);
+      cdk_window_show (tree_view->priv->header_window);
     }
 }
 
@@ -2391,11 +2391,11 @@ ctk_tree_view_map (CtkWidget *widget)
 	    ctk_widget_map (child->widget);
 	}
     }
-  gdk_window_show (tree_view->priv->bin_window);
+  cdk_window_show (tree_view->priv->bin_window);
 
   ctk_tree_view_map_buttons (tree_view);
 
-  gdk_window_show (ctk_widget_get_window (widget));
+  cdk_window_show (ctk_widget_get_window (widget));
 }
 
 static void
@@ -2416,7 +2416,7 @@ ctk_tree_view_bin_window_invalidate_handler (GdkWindow *window,
   CtkTreeView *tree_view;
   int y;
 
-  gdk_window_get_user_data (window, &widget);
+  cdk_window_get_user_data (window, &widget);
   tree_view = CTK_TREE_VIEW (widget);
 
   y = ctk_adjustment_get_value (tree_view->priv->vadjustment);
@@ -2470,7 +2470,7 @@ ctk_tree_view_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
@@ -2491,10 +2491,10 @@ ctk_tree_view_realize (CtkWidget *widget)
                            GDK_BUTTON_RELEASE_MASK |
                            ctk_widget_get_events (widget));
 
-  tree_view->priv->bin_window = gdk_window_new (window,
+  tree_view->priv->bin_window = cdk_window_new (window,
 						&attributes, attributes_mask);
   ctk_widget_register_window (widget, tree_view->priv->bin_window);
-  gdk_window_set_invalidate_handler (tree_view->priv->bin_window,
+  cdk_window_set_invalidate_handler (tree_view->priv->bin_window,
 				     ctk_tree_view_bin_window_invalidate_handler);
 
   ctk_widget_get_allocation (widget, &allocation);
@@ -2513,7 +2513,7 @@ ctk_tree_view_realize (CtkWidget *widget)
                            GDK_KEY_RELEASE_MASK |
                            ctk_widget_get_events (widget));
 
-  tree_view->priv->header_window = gdk_window_new (window,
+  tree_view->priv->header_window = cdk_window_new (window,
 						   &attributes, attributes_mask);
   ctk_widget_register_window (widget, tree_view->priv->header_window);
 
@@ -2594,24 +2594,24 @@ ctk_tree_view_unrealize (CtkWidget *widget)
     _ctk_tree_view_column_unrealize_button (CTK_TREE_VIEW_COLUMN (list->data));
 
   ctk_widget_unregister_window (widget, priv->bin_window);
-  gdk_window_destroy (priv->bin_window);
+  cdk_window_destroy (priv->bin_window);
   priv->bin_window = NULL;
 
   ctk_widget_unregister_window (widget, priv->header_window);
-  gdk_window_destroy (priv->header_window);
+  cdk_window_destroy (priv->header_window);
   priv->header_window = NULL;
 
   if (priv->drag_window)
     {
       ctk_widget_unregister_window (widget, priv->drag_window);
-      gdk_window_destroy (priv->drag_window);
+      cdk_window_destroy (priv->drag_window);
       priv->drag_window = NULL;
     }
 
   if (priv->drag_highlight_window)
     {
       ctk_widget_unregister_window (widget, priv->drag_highlight_window);
-      gdk_window_destroy (priv->drag_highlight_window);
+      cdk_window_destroy (priv->drag_highlight_window);
       priv->drag_highlight_window = NULL;
     }
 
@@ -2875,8 +2875,8 @@ ctk_tree_view_size_allocate_drag_column (CtkWidget *widget)
 
   drag_allocation.x = 0;
   drag_allocation.y = 0;
-  drag_allocation.width = gdk_window_get_width (tree_view->priv->drag_window);
-  drag_allocation.height = gdk_window_get_height (tree_view->priv->drag_window);
+  drag_allocation.width = cdk_window_get_width (tree_view->priv->drag_window);
+  drag_allocation.height = cdk_window_get_height (tree_view->priv->drag_window);
   ctk_widget_size_allocate (button, &drag_allocation);
 }
 
@@ -2965,15 +2965,15 @@ ctk_tree_view_size_allocate (CtkWidget     *widget,
   
   if (ctk_widget_get_realized (widget))
     {
-      gdk_window_move_resize (ctk_widget_get_window (widget),
+      cdk_window_move_resize (ctk_widget_get_window (widget),
 			      allocation->x, allocation->y,
 			      allocation->width, allocation->height);
-      gdk_window_move_resize (tree_view->priv->header_window,
+      cdk_window_move_resize (tree_view->priv->header_window,
 			      - (gint) ctk_adjustment_get_value (tree_view->priv->hadjustment),
 			      0,
 			      MAX (tree_view->priv->width, allocation->width),
 			      tree_view->priv->header_height);
-      gdk_window_move_resize (tree_view->priv->bin_window,
+      cdk_window_move_resize (tree_view->priv->bin_window,
 			      - (gint) ctk_adjustment_get_value (tree_view->priv->hadjustment),
 			      ctk_tree_view_get_effective_header_height (tree_view),
 			      MAX (tree_view->priv->width, allocation->width),
@@ -3309,7 +3309,7 @@ ctk_tree_view_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
-  gdk_event_get_state (event, &modifiers);
+  cdk_event_get_state (event, &modifiers);
 
   /* decide if we edit */
   if (button == GDK_BUTTON_PRIMARY &&
@@ -3596,11 +3596,11 @@ ctk_tree_view_button_release_drag_column (CtkTreeView *tree_view)
   ctk_widget_queue_resize (widget);
   if (ctk_tree_view_column_get_resizable (tree_view->priv->drag_column))
     {
-      gdk_window_raise (_ctk_tree_view_column_get_window (tree_view->priv->drag_column));
-      gdk_window_show (_ctk_tree_view_column_get_window (tree_view->priv->drag_column));
+      cdk_window_raise (_ctk_tree_view_column_get_window (tree_view->priv->drag_column));
+      cdk_window_show (_ctk_tree_view_column_get_window (tree_view->priv->drag_column));
     }
   else
-    gdk_window_hide (_ctk_tree_view_column_get_window (tree_view->priv->drag_column));
+    cdk_window_hide (_ctk_tree_view_column_get_window (tree_view->priv->drag_column));
 
   ctk_widget_grab_focus (button);
 
@@ -3620,7 +3620,7 @@ ctk_tree_view_button_release_drag_column (CtkTreeView *tree_view)
     }
   tree_view->priv->drag_column = NULL;
   ctk_widget_unregister_window (widget, tree_view->priv->drag_window);
-  gdk_window_destroy (tree_view->priv->drag_window);
+  cdk_window_destroy (tree_view->priv->drag_window);
   tree_view->priv->drag_window = NULL;
 
   for (l = tree_view->priv->column_drag_info; l != NULL; l = l->next)
@@ -3630,7 +3630,7 @@ ctk_tree_view_button_release_drag_column (CtkTreeView *tree_view)
   tree_view->priv->cur_reorder = NULL;
 
   if (tree_view->priv->drag_highlight_window)
-    gdk_window_hide (tree_view->priv->drag_highlight_window);
+    cdk_window_hide (tree_view->priv->drag_highlight_window);
 
   /* Reset our flags */
   tree_view->priv->drag_column_window_state = DRAG_COLUMN_WINDOW_STATE_UNSET;
@@ -3679,7 +3679,7 @@ ctk_tree_view_column_drag_gesture_end (CtkGestureDrag *gesture,
 
       ctk_tree_view_button_release_drag_column (tree_view);
       device = ctk_gesture_get_device (CTK_GESTURE (gesture));
-      gdk_seat_ungrab (gdk_device_get_seat (device));
+      cdk_seat_ungrab (cdk_device_get_seat (device));
     }
   else if (tree_view->priv->in_column_resize)
     ctk_tree_view_button_release_column_resize (tree_view);
@@ -3897,7 +3897,7 @@ do_prelight (CtkTreeView *tree_view,
   if (tree_view->priv->hover_expand)
     {
       tree_view->priv->auto_expand_timeout = 
-	gdk_threads_add_timeout (AUTO_EXPAND_TIMEOUT, auto_expand_timeout, tree_view);
+	cdk_threads_add_timeout (AUTO_EXPAND_TIMEOUT, auto_expand_timeout, tree_view);
       g_source_set_name_by_id (tree_view->priv->auto_expand_timeout, "[ctk+] auto_expand_timeout");
     }
 }
@@ -4066,7 +4066,7 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
 	  if (tree_view->priv->drag_highlight_window)
 	    {
 	      ctk_widget_unregister_window (CTK_WIDGET (tree_view), tree_view->priv->drag_highlight_window);
-	      gdk_window_destroy (tree_view->priv->drag_highlight_window);
+	      cdk_window_destroy (tree_view->priv->drag_highlight_window);
 	    }
 
 	  button = ctk_tree_view_column_get_button (tree_view->priv->drag_column);
@@ -4077,10 +4077,10 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
           ctk_widget_get_allocation (button, &drag_allocation);
 	  width = attributes.width = drag_allocation.width;
 	  height = attributes.height = drag_allocation.height;
-	  attributes.visual = gdk_screen_get_rgba_visual (ctk_widget_get_screen (widget));
+	  attributes.visual = cdk_screen_get_rgba_visual (ctk_widget_get_screen (widget));
 	  attributes.event_mask = GDK_VISIBILITY_NOTIFY_MASK | GDK_POINTER_MOTION_MASK;
 	  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
-	  tree_view->priv->drag_highlight_window = gdk_window_new (tree_view->priv->header_window, &attributes, attributes_mask);
+	  tree_view->priv->drag_highlight_window = cdk_window_new (tree_view->priv->header_window, &attributes, attributes_mask);
 	  ctk_widget_register_window (CTK_WIDGET (tree_view), tree_view->priv->drag_highlight_window);
 
 	  tree_view->priv->drag_column_window_state = DRAG_COLUMN_WINDOW_STATE_ORIGINAL;
@@ -4094,7 +4094,7 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
       width = ctk_tree_view_get_expander_size (tree_view);
 
       /* Get x, y, width, height of arrow */
-      gdk_window_get_origin (tree_view->priv->header_window, &x, &y);
+      cdk_window_get_origin (tree_view->priv->header_window, &x, &y);
       if (reorder->left_column)
 	{
 	  button = ctk_tree_view_column_get_button (reorder->left_column);
@@ -4118,7 +4118,7 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
 	  if (tree_view->priv->drag_highlight_window)
 	    {
 	      ctk_widget_unregister_window (CTK_WIDGET (tree_view), tree_view->priv->drag_highlight_window);
-	      gdk_window_destroy (tree_view->priv->drag_highlight_window);
+	      cdk_window_destroy (tree_view->priv->drag_highlight_window);
 	    }
 
 	  attributes.window_type = GDK_WINDOW_TEMP;
@@ -4130,7 +4130,7 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
           attributes.y = y;
 	  attributes.width = width;
 	  attributes.height = height;
-	  tree_view->priv->drag_highlight_window = gdk_window_new (gdk_screen_get_root_window (ctk_widget_get_screen (widget)),
+	  tree_view->priv->drag_highlight_window = cdk_window_new (cdk_screen_get_root_window (ctk_widget_get_screen (widget)),
 								   &attributes, attributes_mask);
 	  ctk_widget_register_window (CTK_WIDGET (tree_view), tree_view->priv->drag_highlight_window);
 
@@ -4146,8 +4146,8 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
           cairo_fill (cr);
           cairo_destroy (cr);
 
-          mask_region = gdk_cairo_region_create_from_surface (mask_image);
-	  gdk_window_shape_combine_region (tree_view->priv->drag_highlight_window,
+          mask_region = cdk_cairo_region_create_from_surface (mask_image);
+	  cdk_window_shape_combine_region (tree_view->priv->drag_highlight_window,
 					   mask_region, 0, 0);
 
           cairo_region_destroy (mask_region);
@@ -4155,7 +4155,7 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
 	}
 
       tree_view->priv->drag_column_window_state = DRAG_COLUMN_WINDOW_STATE_ARROW;
-      gdk_window_move (tree_view->priv->drag_highlight_window, x, y);
+      cdk_window_move (tree_view->priv->drag_highlight_window, x, y);
     }
   else if (arrow_type == DRAG_COLUMN_WINDOW_STATE_ARROW_LEFT ||
 	   arrow_type == DRAG_COLUMN_WINDOW_STATE_ARROW_RIGHT)
@@ -4168,7 +4168,7 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
 
       /* Get x, y, width, height of arrow */
       width = expander_size/2; /* remember, the arrow only takes half the available width */
-      gdk_window_get_origin (ctk_widget_get_window (widget),
+      cdk_window_get_origin (ctk_widget_get_window (widget),
                              &x, &y);
       if (arrow_type == DRAG_COLUMN_WINDOW_STATE_ARROW_RIGHT)
         {
@@ -4199,7 +4199,7 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
 	  if (tree_view->priv->drag_highlight_window)
 	    {
 	      ctk_widget_unregister_window (CTK_WIDGET (tree_view), tree_view->priv->drag_highlight_window);
-	      gdk_window_destroy (tree_view->priv->drag_highlight_window);
+	      cdk_window_destroy (tree_view->priv->drag_highlight_window);
 	    }
 
 	  attributes.window_type = GDK_WINDOW_TEMP;
@@ -4211,7 +4211,7 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
           attributes.y = y;
 	  attributes.width = width;
 	  attributes.height = height;
-	  tree_view->priv->drag_highlight_window = gdk_window_new (gdk_screen_get_root_window (ctk_widget_get_screen (widget)), &attributes, attributes_mask);
+	  tree_view->priv->drag_highlight_window = cdk_window_new (cdk_screen_get_root_window (ctk_widget_get_screen (widget)), &attributes, attributes_mask);
 	  ctk_widget_register_window (CTK_WIDGET (tree_view), tree_view->priv->drag_highlight_window);
 
 	  mask_image = cairo_image_surface_create (CAIRO_FORMAT_A1, width, height);
@@ -4232,8 +4232,8 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
           cairo_fill (cr);
           cairo_destroy (cr);
 
-          mask_region = gdk_cairo_region_create_from_surface (mask_image);
-	  gdk_window_shape_combine_region (tree_view->priv->drag_highlight_window,
+          mask_region = cdk_cairo_region_create_from_surface (mask_image);
+	  cdk_window_shape_combine_region (tree_view->priv->drag_highlight_window,
 					   mask_region, 0, 0);
 
           cairo_region_destroy (mask_region);
@@ -4241,17 +4241,17 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
 	}
 
       tree_view->priv->drag_column_window_state = arrow_type;
-      gdk_window_move (tree_view->priv->drag_highlight_window, x, y);
+      cdk_window_move (tree_view->priv->drag_highlight_window, x, y);
    }
   else
     {
       g_warning (G_STRLOC"Invalid CtkTreeViewColumnReorder struct");
-      gdk_window_hide (tree_view->priv->drag_highlight_window);
+      cdk_window_hide (tree_view->priv->drag_highlight_window);
       return;
     }
 
-  gdk_window_show (tree_view->priv->drag_highlight_window);
-  gdk_window_raise (tree_view->priv->drag_highlight_window);
+  cdk_window_show (tree_view->priv->drag_highlight_window);
+  cdk_window_raise (tree_view->priv->drag_highlight_window);
 }
 
 static gboolean
@@ -4387,13 +4387,13 @@ ctk_tree_view_motion_drag_column (CtkTreeView *tree_view,
   x += ctk_adjustment_get_value (tree_view->priv->hadjustment);
 
   /* Handle moving the header */
-  gdk_window_get_position (tree_view->priv->drag_window, &win_x, &win_y);
+  cdk_window_get_position (tree_view->priv->drag_window, &win_x, &win_y);
   ctk_widget_get_allocation (CTK_WIDGET (tree_view), &allocation);
   ctk_widget_get_allocation (button, &button_allocation);
   win_x = CLAMP (x - _ctk_tree_view_column_get_drag_x (column), 0,
                  MAX (tree_view->priv->width, allocation.width) - button_allocation.width);
-  gdk_window_move (tree_view->priv->drag_window, win_x, win_y);
-  gdk_window_raise (tree_view->priv->drag_window);
+  cdk_window_move (tree_view->priv->drag_window, win_x, win_y);
+  cdk_window_raise (tree_view->priv->drag_window);
 
   /* autoscroll, if needed */
   ctk_tree_view_horizontal_autoscroll (tree_view);
@@ -4727,7 +4727,7 @@ ctk_tree_view_update_rubber_band (CtkTreeView *tree_view)
   invalid_region = cairo_region_create_rectangle (&old_area);
   cairo_region_union_rectangle (invalid_region, &new_area);
 
-  gdk_window_invalidate_region (tree_view->priv->bin_window, invalid_region, TRUE);
+  cdk_window_invalidate_region (tree_view->priv->bin_window, invalid_region, TRUE);
 
   cairo_region_destroy (invalid_region);
 
@@ -4769,7 +4769,7 @@ ctk_tree_view_paint_rubber_band (CtkTreeView  *tree_view,
   rect.width = ABS (tree_view->priv->press_start_x - bin_x) + 1;
   rect.height = ABS (tree_view->priv->press_start_y - bin_y) + 1;
 
-  gdk_cairo_rectangle (cr, &rect);
+  cdk_cairo_rectangle (cr, &rect);
   cairo_clip (cr);
 
   ctk_render_background (context, cr,
@@ -4891,9 +4891,9 @@ invalidate_empty_focus (CtkTreeView *tree_view)
 
   area.x = 0;
   area.y = 0;
-  area.width = gdk_window_get_width (tree_view->priv->bin_window);
-  area.height = gdk_window_get_height (tree_view->priv->bin_window);
-  gdk_window_invalidate_rect (tree_view->priv->bin_window, &area, FALSE);
+  area.width = cdk_window_get_width (tree_view->priv->bin_window);
+  area.height = cdk_window_get_height (tree_view->priv->bin_window);
+  cdk_window_invalidate_rect (tree_view->priv->bin_window, &area, FALSE);
 }
 
 /* Draws background and a focus rectangle near the edge of the bin_window;
@@ -4909,8 +4909,8 @@ draw_empty (CtkTreeView *tree_view,
 
   context = ctk_widget_get_style_context (widget);
 
-  width = gdk_window_get_width (tree_view->priv->bin_window);
-  height = gdk_window_get_height (tree_view->priv->bin_window);
+  width = cdk_window_get_width (tree_view->priv->bin_window);
+  height = cdk_window_get_height (tree_view->priv->bin_window);
 
   ctk_render_background (context, cr, 0, 0, width, height);
 
@@ -4947,7 +4947,7 @@ ctk_tree_view_draw_line (CtkTreeView         *tree_view,
 
         color = _ctk_css_rgba_value_get_rgba (_ctk_style_context_peek_property (context, CTK_CSS_PROPERTY_BORDER_LEFT_COLOR));
 
-        gdk_cairo_set_source_rgba (cr, color);
+        cdk_cairo_set_source_rgba (cr, color);
         cairo_set_line_width (cr, tree_view->priv->tree_line_width);
         if (tree_view->priv->tree_line_dashes[0])
           cairo_set_dash (cr, tree_view->priv->tree_line_dashes, 2, 0.5);
@@ -4960,7 +4960,7 @@ ctk_tree_view_draw_line (CtkTreeView         *tree_view,
 
         color = _ctk_css_rgba_value_get_rgba (_ctk_style_context_peek_property (context, CTK_CSS_PROPERTY_BORDER_TOP_COLOR));
 
-        gdk_cairo_set_source_rgba (cr, color);
+        cdk_cairo_set_source_rgba (cr, color);
         cairo_set_line_width (cr, tree_view->priv->grid_line_width);
         if (tree_view->priv->grid_line_dashes[0])
           cairo_set_dash (cr, tree_view->priv->grid_line_dashes, 2, 0.5);
@@ -4973,7 +4973,7 @@ ctk_tree_view_draw_line (CtkTreeView         *tree_view,
 
         cairo_set_line_width (cr, 1.0);
         ctk_style_context_get_color (context, ctk_style_context_get_state (context), &color);
-        gdk_cairo_set_source_rgba (cr, &color);
+        cdk_cairo_set_source_rgba (cr, &color);
       }
       break;
 
@@ -5085,9 +5085,9 @@ ctk_tree_view_bin_draw (CtkWidget      *widget,
       return TRUE;
     }
 
-  bin_window_width = gdk_window_get_width (tree_view->priv->bin_window);
-  bin_window_height = gdk_window_get_height (tree_view->priv->bin_window);
-  if (!gdk_cairo_get_clip_rectangle (cr, &clip))
+  bin_window_width = cdk_window_get_width (tree_view->priv->bin_window);
+  bin_window_height = cdk_window_get_height (tree_view->priv->bin_window);
+  if (!cdk_cairo_get_clip_rectangle (cr, &clip))
     return TRUE;
 
   new_y = TREE_WINDOW_Y_TO_RBTREE_Y (tree_view, clip.y);
@@ -5283,7 +5283,7 @@ ctk_tree_view_bin_draw (CtkWidget      *widget,
 	      cell_area.height -= grid_line_width;
 	    }
 
-	  if (!gdk_rectangle_intersect (&clip, &background_area, NULL))
+	  if (!cdk_rectangle_intersect (&clip, &background_area, NULL))
 	    {
 	      cell_offset += ctk_tree_view_column_get_width (column);
 	      continue;
@@ -5517,7 +5517,7 @@ ctk_tree_view_bin_draw (CtkWidget      *widget,
           if (drag_tree != NULL)
              ctk_render_frame (context, cr,
                                0, ctk_tree_view_get_row_y_offset (tree_view, drag_tree, drag_node),
-                               gdk_window_get_width (tree_view->priv->bin_window),
+                               cdk_window_get_width (tree_view->priv->bin_window),
                                ctk_tree_view_get_row_height (tree_view, drag_node));
 
           ctk_style_context_restore (context);
@@ -5549,7 +5549,7 @@ ctk_tree_view_bin_draw (CtkWidget      *widget,
 
           ctk_render_focus (context, cr,
                             0, tmp_y,
-                            gdk_window_get_width (tree_view->priv->bin_window),
+                            cdk_window_get_width (tree_view->priv->bin_window),
                             tmp_height);
 
           ctk_style_context_restore (context);
@@ -5672,9 +5672,9 @@ ctk_tree_view_draw (CtkWidget *widget,
       view_rect.width = ctk_widget_get_allocated_width (widget);
       view_rect.height = ctk_widget_get_allocated_height (widget) - view_rect.y;
 
-      gdk_window_get_position (tree_view->priv->bin_window, &canvas_rect.x, &canvas_rect.y);
+      cdk_window_get_position (tree_view->priv->bin_window, &canvas_rect.x, &canvas_rect.y);
       canvas_rect.y = -ctk_adjustment_get_value (tree_view->priv->vadjustment);
-      canvas_rect.width = gdk_window_get_width (tree_view->priv->bin_window);
+      canvas_rect.width = cdk_window_get_width (tree_view->priv->bin_window);
       canvas_rect.height = ctk_tree_view_get_height (tree_view);
 
       _ctk_pixel_cache_draw (tree_view->priv->pixel_cache, cr, tree_view->priv->bin_window,
@@ -5693,16 +5693,16 @@ ctk_tree_view_draw (CtkWidget *widget,
         {
           cairo_set_source_rgba (cr, 0.0, 0.0, 0.0, 0.0);
           cairo_paint (cr);
-          gdk_cairo_set_source_rgba (cr, &color);
+          cdk_cairo_set_source_rgba (cr, &color);
           cairo_rectangle (cr,
                            1, 1,
-                           gdk_window_get_width (tree_view->priv->drag_highlight_window) - 2,
-                           gdk_window_get_height (tree_view->priv->drag_highlight_window) - 2);
+                           cdk_window_get_width (tree_view->priv->drag_highlight_window) - 2,
+                           cdk_window_get_height (tree_view->priv->drag_highlight_window) - 2);
           cairo_stroke (cr);
         }
       else
         {
-          gdk_cairo_set_source_rgba (cr, &color);
+          cdk_cairo_set_source_rgba (cr, &color);
           cairo_paint (cr);
         }
       cairo_restore (cr);
@@ -6137,7 +6137,7 @@ ctk_tree_view_key_press (CtkWidget   *widget,
             {
               GdkDevice *device;
 
-              device = gdk_event_get_device ((GdkEvent *) event);
+              device = cdk_event_get_device ((GdkEvent *) event);
               if (ctk_tree_view_real_start_interactive_search (tree_view,
                                                                device,
                                                                FALSE))
@@ -6157,7 +6157,7 @@ ctk_tree_view_key_press (CtkWidget   *widget,
           GdkEvent *new_event;
           gulong popup_menu_id;
 
-          new_event = gdk_event_copy ((GdkEvent *) event);
+          new_event = cdk_event_copy ((GdkEvent *) event);
           g_object_unref (((GdkEventKey *) new_event)->window);
           ((GdkEventKey *) new_event)->window =
             g_object_ref (ctk_widget_get_window (search_window));
@@ -6170,7 +6170,7 @@ ctk_tree_view_key_press (CtkWidget   *widget,
           /* Because we keep the focus on the treeview, we need to forward the
            * key events to the entry, when it is visible. */
           ctk_widget_event (search_window, new_event);
-          gdk_event_free (new_event);
+          cdk_event_free (new_event);
 
           g_signal_handler_disconnect (tree_view->priv->search_entry,
                                        popup_menu_id);
@@ -6266,7 +6266,7 @@ ctk_tree_view_focus_out (CtkWidget     *widget,
   /* destroy interactive search dialog */
   if (tree_view->priv->search_window)
     ctk_tree_view_search_window_hide (tree_view->priv->search_window, tree_view,
-                                      gdk_event_get_device ((GdkEvent *) event));
+                                      cdk_event_get_device ((GdkEvent *) event));
   return FALSE;
 }
 
@@ -6288,7 +6288,7 @@ ctk_tree_view_node_queue_redraw (CtkTreeView *tree_view,
   rect.width = ctk_widget_get_allocated_width (CTK_WIDGET (tree_view));
   rect.height = CTK_RBNODE_GET_HEIGHT (node);
 
-  gdk_window_invalidate_rect (tree_view->priv->bin_window,
+  cdk_window_invalidate_rect (tree_view->priv->bin_window,
 			      &rect, TRUE);
 }
 
@@ -7173,7 +7173,7 @@ install_presize_handler (CtkTreeView *tree_view)
   if (! tree_view->priv->validate_rows_timer)
     {
       tree_view->priv->validate_rows_timer =
-	gdk_threads_add_idle_full (CTK_TREE_VIEW_PRIORITY_VALIDATE, (GSourceFunc) validate_rows, tree_view, NULL);
+	cdk_threads_add_idle_full (CTK_TREE_VIEW_PRIORITY_VALIDATE, (GSourceFunc) validate_rows, tree_view, NULL);
       g_source_set_name_by_id (tree_view->priv->validate_rows_timer, "[ctk+] validate_rows");
     }
 }
@@ -7202,7 +7202,7 @@ install_scroll_sync_handler (CtkTreeView *tree_view)
   if (!tree_view->priv->scroll_sync_timer)
     {
       tree_view->priv->scroll_sync_timer =
-	gdk_threads_add_idle_full (CTK_TREE_VIEW_PRIORITY_SCROLL_SYNC, (GSourceFunc) scroll_sync_handler, tree_view, NULL);
+	cdk_threads_add_idle_full (CTK_TREE_VIEW_PRIORITY_SCROLL_SYNC, (GSourceFunc) scroll_sync_handler, tree_view, NULL);
       g_source_set_name_by_id (tree_view->priv->scroll_sync_timer, "[ctk+] scroll_sync_handler");
     }
 }
@@ -7521,13 +7521,13 @@ drag_scan_timeout (gpointer data)
   GdkRectangle visible_rect;
   GdkSeat *seat;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   tree_view = CTK_TREE_VIEW (data);
 
-  seat = gdk_display_get_default_seat (ctk_widget_get_display (CTK_WIDGET (tree_view)));
-  gdk_window_get_device_position (tree_view->priv->bin_window,
-                                  gdk_seat_get_pointer (seat),
+  seat = cdk_display_get_default_seat (ctk_widget_get_display (CTK_WIDGET (tree_view)));
+  cdk_window_get_device_position (tree_view->priv->bin_window,
+                                  cdk_seat_get_pointer (seat),
                                   &x, &y, &state);
 
   ctk_tree_view_get_visible_rect (tree_view, &visible_rect);
@@ -7558,7 +7558,7 @@ drag_scan_timeout (gpointer data)
         }
     }
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   return TRUE;
 }
@@ -7570,7 +7570,7 @@ add_scroll_timeout (CtkTreeView *tree_view)
   if (tree_view->priv->scroll_timeout == 0)
     {
       tree_view->priv->scroll_timeout =
-	gdk_threads_add_timeout (150, scroll_row_timeout, tree_view);
+	cdk_threads_add_timeout (150, scroll_row_timeout, tree_view);
       g_source_set_name_by_id (tree_view->priv->scroll_timeout, "[ctk+] scroll_row_timeout");
     }
 }
@@ -7776,7 +7776,7 @@ out:
     {
       CtkWidget *source_widget;
 
-      *suggested_action = gdk_drag_context_get_suggested_action (context);
+      *suggested_action = cdk_drag_context_get_suggested_action (context);
       source_widget = ctk_drag_get_source_widget (context);
 
       if (source_widget == widget)
@@ -7784,7 +7784,7 @@ out:
           /* Default to MOVE, unless the user has
            * pressed ctrl or shift to affect available actions
            */
-          if ((gdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
+          if ((cdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
             *suggested_action = GDK_ACTION_MOVE;
         }
 
@@ -8037,7 +8037,7 @@ ctk_tree_view_drag_data_get (CtkWidget        *widget,
     goto done;
 
   /* If drag_data_get does nothing, try providing row data. */
-  if (ctk_selection_data_get_target (selection_data) == gdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
+  if (ctk_selection_data_get_target (selection_data) == cdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
     {
       ctk_tree_set_row_drag_data (selection_data,
 				  model,
@@ -8133,7 +8133,7 @@ ctk_tree_view_drag_motion (CtkWidget        *widget,
   if (path == NULL && !empty)
     {
       /* Can't drop here. */
-      gdk_drag_status (context, 0, time);
+      cdk_drag_status (context, 0, time);
     }
   else
     {
@@ -8142,7 +8142,7 @@ ctk_tree_view_drag_motion (CtkWidget        *widget,
            pos == CTK_TREE_VIEW_DROP_INTO_OR_BEFORE))
         {
           tree_view->priv->open_dest_timeout =
-            gdk_threads_add_timeout (AUTO_EXPAND_TIMEOUT, open_row_timeout, tree_view);
+            cdk_threads_add_timeout (AUTO_EXPAND_TIMEOUT, open_row_timeout, tree_view);
           g_source_set_name_by_id (tree_view->priv->open_dest_timeout, "[ctk+] open_row_timeout");
         }
       else
@@ -8150,7 +8150,7 @@ ctk_tree_view_drag_motion (CtkWidget        *widget,
 	  add_scroll_timeout (tree_view);
 	}
 
-      if (target == gdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
+      if (target == cdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
         {
           /* Request data so we can use the source row when
            * determining whether to accept the drop
@@ -8161,7 +8161,7 @@ ctk_tree_view_drag_motion (CtkWidget        *widget,
       else
         {
           set_status_pending (context, 0);
-          gdk_drag_status (context, suggested_action, time);
+          cdk_drag_status (context, suggested_action, time);
         }
     }
 
@@ -8307,7 +8307,7 @@ ctk_tree_view_drag_data_received (CtkWidget        *widget,
             }
         }
 
-      gdk_drag_status (context, suggested_action, time);
+      cdk_drag_status (context, suggested_action, time);
 
       if (path)
         ctk_tree_path_free (path);
@@ -8347,7 +8347,7 @@ ctk_tree_view_drag_data_received (CtkWidget        *widget,
 
   ctk_drag_finish (context,
                    accepted,
-                   (gdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE),
+                   (cdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE),
                    time);
 
   if (ctk_tree_path_get_depth (dest_row) == 1 &&
@@ -10060,7 +10060,7 @@ ctk_tree_view_set_column_drag_info (CtkTreeView       *tree_view,
 	}
       else
 	{
-	  reorder->right_align = gdk_window_get_width (tree_view->priv->header_window)
+	  reorder->right_align = cdk_window_get_width (tree_view->priv->header_window)
                                  + TREE_VIEW_COLUMN_DRAG_DEAD_MULTIPLIER (tree_view);
 	}
     }
@@ -10104,7 +10104,7 @@ _ctk_tree_view_column_start_drag (CtkTreeView       *tree_view,
   attributes.event_mask = GDK_VISIBILITY_NOTIFY_MASK | GDK_POINTER_MOTION_MASK;
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  tree_view->priv->drag_window = gdk_window_new (tree_view->priv->header_window,
+  tree_view->priv->drag_window = cdk_window_new (tree_view->priv->header_window,
                                                  &attributes,
                                                  attributes_mask);
   ctk_widget_register_window (CTK_WIDGET (tree_view), tree_view->priv->drag_window);
@@ -10123,7 +10123,7 @@ _ctk_tree_view_column_start_drag (CtkTreeView       *tree_view,
   ctk_widget_size_allocate (button, &allocation);
 
   tree_view->priv->drag_column = column;
-  gdk_window_show (tree_view->priv->drag_window);
+  cdk_window_show (tree_view->priv->drag_window);
 
   ctk_widget_grab_focus (CTK_WIDGET (tree_view));
 
@@ -10132,7 +10132,7 @@ _ctk_tree_view_column_start_drag (CtkTreeView       *tree_view,
   /* Widget reparenting above unmaps and indirectly breaks
    * the implicit grab, replace it with an active one.
    */
-  gdk_seat_grab (gdk_device_get_seat (device),
+  cdk_seat_grab (cdk_device_get_seat (device),
                  tree_view->priv->drag_window,
                  GDK_SEAT_CAPABILITY_ALL, FALSE,
                  NULL, NULL, NULL, NULL);
@@ -10160,7 +10160,7 @@ ctk_tree_view_queue_draw_arrow (CtkTreeView        *tree_view,
   rect.y = ctk_tree_view_get_row_y_offset (tree_view, tree, node);
   rect.height = ctk_tree_view_get_row_height (tree_view, node);
 
-  gdk_window_invalidate_rect (tree_view->priv->bin_window, &rect, TRUE);
+  cdk_window_invalidate_rect (tree_view->priv->bin_window, &rect, TRUE);
 }
 
 void
@@ -10186,13 +10186,13 @@ _ctk_tree_view_queue_draw_node (CtkTreeView        *tree_view,
     {
       GdkRectangle new_rect;
 
-      gdk_rectangle_intersect (clip_rect, &rect, &new_rect);
+      cdk_rectangle_intersect (clip_rect, &rect, &new_rect);
 
-      gdk_window_invalidate_rect (tree_view->priv->bin_window, &new_rect, TRUE);
+      cdk_window_invalidate_rect (tree_view->priv->bin_window, &new_rect, TRUE);
     }
   else
     {
-      gdk_window_invalidate_rect (tree_view->priv->bin_window, &rect, TRUE);
+      cdk_window_invalidate_rect (tree_view->priv->bin_window, &rect, TRUE);
     }
 }
 
@@ -11152,10 +11152,10 @@ send_focus_change (CtkWidget *widget,
   GList *devices, *d;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  device_manager = gdk_display_get_device_manager (ctk_widget_get_display (widget));
-  devices = gdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
-  devices = g_list_concat (devices, gdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_SLAVE));
-  devices = g_list_concat (devices, gdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_FLOATING));
+  device_manager = cdk_display_get_device_manager (ctk_widget_get_display (widget));
+  devices = cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_SLAVE));
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_FLOATING));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   for (d = devices; d; d = d->next)
@@ -11164,7 +11164,7 @@ send_focus_change (CtkWidget *widget,
       GdkEvent *fevent;
       GdkWindow *window;
 
-      if (gdk_device_get_source (dev) != GDK_SOURCE_KEYBOARD)
+      if (cdk_device_get_source (dev) != GDK_SOURCE_KEYBOARD)
         continue;
 
       window = ctk_widget_get_window (widget);
@@ -11172,20 +11172,20 @@ send_focus_change (CtkWidget *widget,
       /* Skip non-master keyboards that haven't
        * selected for events from this window
        */
-      if (gdk_device_get_device_type (dev) != GDK_DEVICE_TYPE_MASTER &&
-          !gdk_window_get_device_events (window, dev))
+      if (cdk_device_get_device_type (dev) != GDK_DEVICE_TYPE_MASTER &&
+          !cdk_window_get_device_events (window, dev))
         continue;
 
-      fevent = gdk_event_new (GDK_FOCUS_CHANGE);
+      fevent = cdk_event_new (GDK_FOCUS_CHANGE);
 
       fevent->focus_change.type = GDK_FOCUS_CHANGE;
       fevent->focus_change.window = g_object_ref (window);
       fevent->focus_change.in = in;
-      gdk_event_set_device (fevent, device);
+      cdk_event_set_device (fevent, device);
 
       ctk_widget_send_focus_change (widget, fevent);
 
-      gdk_event_free (fevent);
+      cdk_event_free (fevent);
     }
 
   g_list_free (devices);
@@ -11350,7 +11350,7 @@ ctk_tree_view_real_start_interactive_search (CtkTreeView *tree_view,
     }
 
   tree_view->priv->typeselect_flush_timeout =
-    gdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
+    cdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
 		   (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
 		   tree_view);
   g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
@@ -11381,14 +11381,14 @@ ctk_tree_view_adjustment_changed (CtkAdjustment *adjustment,
     {
       gint dy;
 	
-      gdk_window_move (tree_view->priv->bin_window,
+      cdk_window_move (tree_view->priv->bin_window,
 		       - ctk_adjustment_get_value (tree_view->priv->hadjustment),
 		       ctk_tree_view_get_effective_header_height (tree_view));
-      gdk_window_move (tree_view->priv->header_window,
+      cdk_window_move (tree_view->priv->header_window,
 		       - ctk_adjustment_get_value (tree_view->priv->hadjustment),
 		       0);
       dy = tree_view->priv->dy - (int) ctk_adjustment_get_value (tree_view->priv->vadjustment);
-      gdk_window_scroll (tree_view->priv->bin_window, 0, dy);
+      cdk_window_scroll (tree_view->priv->bin_window, 0, dy);
 
       if (dy != 0)
         {
@@ -11827,11 +11827,11 @@ ctk_tree_view_set_headers_visible (CtkTreeView *tree_view,
 
   if (ctk_widget_get_realized (CTK_WIDGET (tree_view)))
     {
-      gdk_window_get_position (tree_view->priv->bin_window, &x, &y);
+      cdk_window_get_position (tree_view->priv->bin_window, &x, &y);
       if (headers_visible)
 	{
           ctk_widget_get_allocation (CTK_WIDGET (tree_view), &allocation);
-	  gdk_window_move_resize (tree_view->priv->bin_window,
+	  cdk_window_move_resize (tree_view->priv->bin_window,
                                   x, y  + ctk_tree_view_get_effective_header_height (tree_view),
                                   tree_view->priv->width, allocation.height -  + ctk_tree_view_get_effective_header_height (tree_view));
 
@@ -11840,7 +11840,7 @@ ctk_tree_view_set_headers_visible (CtkTreeView *tree_view,
  	}
       else
 	{
-	  gdk_window_move_resize (tree_view->priv->bin_window, x, y, tree_view->priv->width, ctk_tree_view_get_height (tree_view));
+	  cdk_window_move_resize (tree_view->priv->bin_window, x, y, tree_view->priv->width, ctk_tree_view_get_height (tree_view));
 
 	  for (list = tree_view->priv->columns; list; list = list->next)
 	    {
@@ -11850,7 +11850,7 @@ ctk_tree_view_set_headers_visible (CtkTreeView *tree_view,
               ctk_widget_hide (button);
 	      ctk_widget_unmap (button);
 	    }
-	  gdk_window_hide (tree_view->priv->header_window);
+	  cdk_window_hide (tree_view->priv->header_window);
 	}
     }
 
@@ -12139,7 +12139,7 @@ ctk_tree_view_remove_column (CtkTreeView       *tree_view,
 
       if (tree_view->priv->n_columns == 0 &&
 	  ctk_tree_view_get_headers_visible (tree_view))
-	gdk_window_hide (tree_view->priv->header_window);
+	cdk_window_hide (tree_view->priv->header_window);
 
       ctk_widget_queue_resize (CTK_WIDGET (tree_view));
     }
@@ -12187,7 +12187,7 @@ ctk_tree_view_insert_column (CtkTreeView       *tree_view,
       ctk_widget_get_realized (CTK_WIDGET (tree_view)) &&
       ctk_tree_view_get_headers_visible (tree_view))
     {
-      gdk_window_show (tree_view->priv->header_window);
+      cdk_window_show (tree_view->priv->header_window);
     }
 
   g_signal_connect (column, "notify::sizing",
@@ -14692,9 +14692,9 @@ ctk_tree_view_create_row_drag_icon (CtkTreeView  *tree_view,
   background_area.y = y;
   background_area.height = ctk_tree_view_get_row_height (tree_view, node);
 
-  bin_window_width = gdk_window_get_width (tree_view->priv->bin_window);
+  bin_window_width = cdk_window_get_width (tree_view->priv->bin_window);
 
-  surface = gdk_window_create_similar_surface (tree_view->priv->bin_window,
+  surface = cdk_window_create_similar_surface (tree_view->priv->bin_window,
                                                CAIRO_CONTENT_COLOR,
                                                bin_window_width + 2,
                                                background_area.height + 2);
@@ -15146,12 +15146,12 @@ ctk_tree_view_search_position_func (CtkTreeView *tree_view,
   ctk_widget_realize (search_window);
 
   display = ctk_widget_get_display (CTK_WIDGET (tree_view));
-  monitor = gdk_display_get_monitor_at_window (display, tree_window);
-  gdk_monitor_get_workarea (monitor, &workarea);
+  monitor = cdk_display_get_monitor_at_window (display, tree_window);
+  cdk_monitor_get_workarea (monitor, &workarea);
 
-  gdk_window_get_origin (tree_window, &tree_x, &tree_y);
-  tree_width = gdk_window_get_width (tree_window);
-  tree_height = gdk_window_get_height (tree_window);
+  cdk_window_get_origin (tree_window, &tree_x, &tree_y);
+  tree_width = cdk_window_get_width (tree_window);
+  tree_height = cdk_window_get_height (tree_window);
   ctk_widget_get_preferred_size (search_window, &requisition, NULL);
 
   if (tree_x + tree_width > workarea.x + workarea.width)
@@ -15195,7 +15195,7 @@ ctk_tree_view_search_preedit_changed (CtkIMContext *im_context,
     {
       g_source_remove (tree_view->priv->typeselect_flush_timeout);
       tree_view->priv->typeselect_flush_timeout =
-	gdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
+	cdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
 		       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
 		       tree_view);
       g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
@@ -15250,7 +15250,7 @@ ctk_tree_view_search_enable_popdown (CtkWidget *widget,
 				     gpointer   data)
 {
   guint id;
-  id = gdk_threads_add_timeout_full (G_PRIORITY_HIGH, 200, ctk_tree_view_real_search_enable_popdown, g_object_ref (data), g_object_unref);
+  id = cdk_threads_add_timeout_full (G_PRIORITY_HIGH, 200, ctk_tree_view_real_search_enable_popdown, g_object_ref (data), g_object_unref);
   g_source_set_name_by_id (id, "[ctk+] ctk_tree_view_real_search_enable_popdown");
 }
 
@@ -15275,7 +15275,7 @@ ctk_tree_view_search_button_press_event (CtkWidget *widget,
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
-  keyb_device = gdk_device_get_associated_device (event->device);
+  keyb_device = cdk_device_get_associated_device (event->device);
   ctk_tree_view_search_window_hide (widget, tree_view, keyb_device);
 
   return TRUE;
@@ -15305,7 +15305,7 @@ ctk_tree_view_search_scroll_event (CtkWidget *widget,
     {
       g_source_remove (tree_view->priv->typeselect_flush_timeout);
       tree_view->priv->typeselect_flush_timeout =
-	gdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
+	cdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
 		       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
 		       tree_view);
       g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
@@ -15330,7 +15330,7 @@ ctk_tree_view_search_key_press_event (CtkWidget *widget,
       && ctk_tree_view_search_key_cancels_search (event->keyval))
     {
       ctk_tree_view_search_window_hide (widget, tree_view,
-                                        gdk_event_get_device ((GdkEvent *) event));
+                                        cdk_event_get_device ((GdkEvent *) event));
       return TRUE;
     }
 
@@ -15379,7 +15379,7 @@ ctk_tree_view_search_key_press_event (CtkWidget *widget,
     {
       g_source_remove (tree_view->priv->typeselect_flush_timeout);
       tree_view->priv->typeselect_flush_timeout =
-	gdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
+	cdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
 		       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
 		       tree_view);
       g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
@@ -15632,7 +15632,7 @@ ctk_tree_view_search_init (CtkWidget   *entry,
     {
       g_source_remove (tree_view->priv->typeselect_flush_timeout);
       tree_view->priv->typeselect_flush_timeout =
-	gdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
+	cdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
 		       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
 		       tree_view);
       g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");

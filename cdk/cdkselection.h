@@ -26,16 +26,16 @@
 #define __GDK_SELECTION_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdktypes.h>
-#include <gdk/gdkversionmacros.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkversionmacros.h>
 
 G_BEGIN_DECLS
 
 /* Predefined atoms relating to selections. In general, one will need to use
- * gdk_intern_atom
+ * cdk_intern_atom
  */
 /**
  * GDK_SELECTION_PRIMARY:
@@ -153,24 +153,24 @@ G_BEGIN_DECLS
  */
 
 GDK_AVAILABLE_IN_ALL
-gboolean   gdk_selection_owner_set (GdkWindow	 *owner,
+gboolean   cdk_selection_owner_set (GdkWindow	 *owner,
 				    GdkAtom	  selection,
 				    guint32	  time_,
 				    gboolean      send_event);
 GDK_AVAILABLE_IN_ALL
-GdkWindow* gdk_selection_owner_get (GdkAtom	  selection);
+GdkWindow* cdk_selection_owner_get (GdkAtom	  selection);
 GDK_AVAILABLE_IN_ALL
-gboolean   gdk_selection_owner_set_for_display (GdkDisplay *display,
+gboolean   cdk_selection_owner_set_for_display (GdkDisplay *display,
 						GdkWindow  *owner,
 						GdkAtom     selection,
 						guint32     time_,
 						gboolean    send_event);
 GDK_AVAILABLE_IN_ALL
-GdkWindow *gdk_selection_owner_get_for_display (GdkDisplay *display,
+GdkWindow *cdk_selection_owner_get_for_display (GdkDisplay *display,
 						GdkAtom     selection);
 
 /**
- * gdk_selection_convert:
+ * cdk_selection_convert:
  * @requestor: a #GdkWindow.
  * @selection: an atom identifying the selection to get the
  *   contents of.
@@ -184,25 +184,25 @@ GdkWindow *gdk_selection_owner_get_for_display (GdkDisplay *display,
  * form.
  */
 GDK_AVAILABLE_IN_ALL
-void	   gdk_selection_convert   (GdkWindow	 *requestor,
+void	   cdk_selection_convert   (GdkWindow	 *requestor,
 				    GdkAtom	  selection,
 				    GdkAtom	  target,
 				    guint32	  time_);
 GDK_AVAILABLE_IN_ALL
-gint       gdk_selection_property_get (GdkWindow  *requestor,
+gint       cdk_selection_property_get (GdkWindow  *requestor,
 				       guchar	 **data,
 				       GdkAtom	  *prop_type,
 				       gint	  *prop_format);
 
 GDK_AVAILABLE_IN_ALL
-void	   gdk_selection_send_notify (GdkWindow      *requestor,
+void	   cdk_selection_send_notify (GdkWindow      *requestor,
 				      GdkAtom	      selection,
 				      GdkAtom	      target,
 				      GdkAtom	      property,
 				      guint32	      time_);
 
 GDK_AVAILABLE_IN_ALL
-void       gdk_selection_send_notify_for_display (GdkDisplay      *display,
+void       cdk_selection_send_notify_for_display (GdkDisplay      *display,
 						  GdkWindow       *requestor,
 						  GdkAtom     	   selection,
 						  GdkAtom     	   target,

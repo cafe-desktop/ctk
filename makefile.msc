@@ -1,7 +1,7 @@
 ## Makefile for building the Ctk+ dlls with Microsoft C
 ## Use: nmake -f makefile.msc
 
-PARTS = gdk ctk tests
+PARTS = cdk ctk tests
 
 all : \
 	config.h \

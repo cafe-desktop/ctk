@@ -27,7 +27,7 @@
 #ifndef __GDK_FRAME_CLOCK_PRIVATE_H__
 #define __GDK_FRAME_CLOCK_PRIVATE_H__
 
-#include <gdk/gdkframeclock.h>
+#include <cdk/cdkframeclock.h>
 
 G_BEGIN_DECLS
 
@@ -105,26 +105,26 @@ struct _GdkFrameTimings
   guint slept_before : 1;
 };
 
-void _gdk_frame_clock_freeze (GdkFrameClock *clock);
-void _gdk_frame_clock_thaw   (GdkFrameClock *clock);
+void _cdk_frame_clock_freeze (GdkFrameClock *clock);
+void _cdk_frame_clock_thaw   (GdkFrameClock *clock);
 
-void _gdk_frame_clock_begin_frame         (GdkFrameClock   *clock);
-void _gdk_frame_clock_debug_print_timings (GdkFrameClock   *clock,
+void _cdk_frame_clock_begin_frame         (GdkFrameClock   *clock);
+void _cdk_frame_clock_debug_print_timings (GdkFrameClock   *clock,
                                            GdkFrameTimings *timings);
-void _gdk_frame_clock_add_timings_to_profiler (GdkFrameClock *frame_clock,
+void _cdk_frame_clock_add_timings_to_profiler (GdkFrameClock *frame_clock,
                                                GdkFrameTimings *timings);
 
-GdkFrameTimings *_gdk_frame_timings_new   (gint64           frame_counter);
-gboolean         _gdk_frame_timings_steal (GdkFrameTimings *timings,
+GdkFrameTimings *_cdk_frame_timings_new   (gint64           frame_counter);
+gboolean         _cdk_frame_timings_steal (GdkFrameTimings *timings,
                                            gint64           frame_counter);
 
-void _gdk_frame_clock_emit_flush_events  (GdkFrameClock *frame_clock);
-void _gdk_frame_clock_emit_before_paint  (GdkFrameClock *frame_clock);
-void _gdk_frame_clock_emit_update        (GdkFrameClock *frame_clock);
-void _gdk_frame_clock_emit_layout        (GdkFrameClock *frame_clock);
-void _gdk_frame_clock_emit_paint         (GdkFrameClock *frame_clock);
-void _gdk_frame_clock_emit_after_paint   (GdkFrameClock *frame_clock);
-void _gdk_frame_clock_emit_resume_events (GdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_flush_events  (GdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_before_paint  (GdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_update        (GdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_layout        (GdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_paint         (GdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_after_paint   (GdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_resume_events (GdkFrameClock *frame_clock);
 
 G_END_DECLS
 

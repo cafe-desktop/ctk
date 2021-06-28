@@ -1,5 +1,5 @@
 /* GDK - The GIMP Drawing Kit
- * gdkdisplaymanager-win32.c
+ * cdkdisplaymanager-win32.c
  *
  * Copyright 2010 Hans Breuer
  *
@@ -19,12 +19,12 @@
 
 #include "config.h"
 
-#include "gdkwin32display.h"
-#include "gdkwin32displaymanager.h"
-#include "gdkprivate-win32.h"
+#include "cdkwin32display.h"
+#include "cdkwin32displaymanager.h"
+#include "cdkprivate-win32.h"
 
-#include "gdkdisplaymanagerprivate.h"
-#include "gdkinternals.h"
+#include "cdkdisplaymanagerprivate.h"
+#include "cdkinternals.h"
 
 struct _GdkWin32DisplayManager
 {
@@ -36,29 +36,29 @@ struct _GdkWin32DisplayManagerClass
   GdkDisplayManagerClass parent_instance;
 };
 
-G_DEFINE_TYPE (GdkWin32DisplayManager, gdk_win32_display_manager, GDK_TYPE_DISPLAY_MANAGER)
+G_DEFINE_TYPE (GdkWin32DisplayManager, cdk_win32_display_manager, GDK_TYPE_DISPLAY_MANAGER)
 
 static void
-gdk_win32_display_manager_init (GdkWin32DisplayManager *manager)
+cdk_win32_display_manager_init (GdkWin32DisplayManager *manager)
 {
 }
 
 static void
-gdk_win32_display_manager_finalize (GObject *object)
+cdk_win32_display_manager_finalize (GObject *object)
 {
   g_error ("A GdkWin32DisplayManager object was finalized. This should not happen");
-  G_OBJECT_CLASS (gdk_win32_display_manager_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_win32_display_manager_parent_class)->finalize (object);
 }
 
 static void
-gdk_win32_display_manager_class_init (GdkWin32DisplayManagerClass *class)
+cdk_win32_display_manager_class_init (GdkWin32DisplayManagerClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
-  object_class->finalize = gdk_win32_display_manager_finalize;
+  object_class->finalize = cdk_win32_display_manager_finalize;
 
 #if 0
-  manager_class->atom_intern = _gdk_win32_display_manager_atom_intern;
-  manager_class->get_atom_name = _gdk_win32_display_manager_get_atom_name;
+  manager_class->atom_intern = _cdk_win32_display_manager_atom_intern;
+  manager_class->get_atom_name = _cdk_win32_display_manager_get_atom_name;
 #endif
 }

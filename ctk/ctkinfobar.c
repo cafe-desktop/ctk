@@ -366,7 +366,7 @@ ctk_info_bar_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget), &attributes, attributes_mask);
+  window = cdk_window_new (ctk_widget_get_parent_window (widget), &attributes, attributes_mask);
   ctk_widget_register_window (widget, window);
   ctk_widget_set_window (widget, window);
 }
@@ -389,7 +389,7 @@ ctk_info_bar_size_allocate (CtkWidget     *widget,
 
   window = ctk_widget_get_window (widget);
   if (window != NULL)
-    gdk_window_move_resize (window,
+    cdk_window_move_resize (window,
                             allocation->x, allocation->y,
                             allocation->width, allocation->height);
 }

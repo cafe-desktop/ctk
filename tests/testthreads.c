@@ -59,7 +59,7 @@ counter (void *data)
   CtkWidget *label;
   CtkWidget *button;
 
-  gdk_threads_enter();
+  cdk_threads_enter();
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (window), name);
@@ -89,7 +89,7 @@ counter (void *data)
     {
       sprintf(buffer, "%d", counter);
       ctk_label_set_text (CTK_LABEL (label), buffer);
-      gdk_threads_leave();
+      cdk_threads_leave();
       counter++;
       /* Give someone else a chance to get the lock next time.
        * Only necessary because we don't do anything else while
@@ -97,7 +97,7 @@ counter (void *data)
        */
       sleep(0);
       
-      gdk_threads_enter();
+      cdk_threads_enter();
     }
 
   ctk_widget_destroy (window);
@@ -108,7 +108,7 @@ counter (void *data)
     ctk_main_quit();
   pthread_mutex_unlock (&nthreads_mutex);
 
-  gdk_threads_leave();
+  cdk_threads_leave();
 
   return NULL;
 }
@@ -121,7 +121,7 @@ main (int argc, char **argv)
 #ifdef USE_PTHREADS
   int i;
 
-  if (!gdk_threads_init())
+  if (!cdk_threads_init())
     {
       fprintf(stderr, "Could not initialize threads\n");
       exit(1);
@@ -147,9 +147,9 @@ main (int argc, char **argv)
 
   pthread_mutex_unlock (&nthreads_mutex);
 
-  gdk_threads_enter();
+  cdk_threads_enter();
   ctk_main();
-  gdk_threads_leave();
+  cdk_threads_leave();
   fprintf(stderr, "Done\n");
 #else /* !USE_PTHREADS */
   fprintf (stderr, "CTK+ not compiled with threads support\n");

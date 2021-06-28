@@ -24,8 +24,8 @@
 
 #include "config.h"
 
-#include "gdkkeysyms.h"
-#include "gdkinternals.h"
+#include "cdkkeysyms.h"
+#include "cdkinternals.h"
 
 /* Key handling not part of the keymap */
 
@@ -35,19 +35,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define GDK_NUM_KEYS G_N_ELEMENTS (gdk_keys_by_keyval)
+#define GDK_NUM_KEYS G_N_ELEMENTS (cdk_keys_by_keyval)
 
 static int
-gdk_keys_keyval_compare (const void *pkey, const void *pbase)
+cdk_keys_keyval_compare (const void *pkey, const void *pbase)
 {
-  return (*(int *) pkey) - ((gdk_key *) pbase)->keyval;
+  return (*(int *) pkey) - ((cdk_key *) pbase)->keyval;
 }
 
 static gchar*
-_gdk_keyval_name (guint keyval)
+_cdk_keyval_name (guint keyval)
 {
   static gchar buf[100];
-  gdk_key *found;
+  cdk_key *found;
 
   /* Check for directly encoded 24-bit UCS characters: */
   if ((keyval & 0xff000000) == 0x01000000)
@@ -56,13 +56,13 @@ _gdk_keyval_name (guint keyval)
       return buf;
     }
 
-  found = bsearch (&keyval, gdk_keys_by_keyval,
-		   GDK_NUM_KEYS, sizeof (gdk_key),
-		   gdk_keys_keyval_compare);
+  found = bsearch (&keyval, cdk_keys_by_keyval,
+		   GDK_NUM_KEYS, sizeof (cdk_key),
+		   cdk_keys_keyval_compare);
 
   if (found != NULL)
     {
-      while ((found > gdk_keys_by_keyval) &&
+      while ((found > cdk_keys_by_keyval) &&
              ((found - 1)->keyval == keyval))
         found--;
 	    
@@ -78,25 +78,25 @@ _gdk_keyval_name (guint keyval)
 }
 
 static int
-gdk_keys_name_compare (const void *pkey, const void *pbase)
+cdk_keys_name_compare (const void *pkey, const void *pbase)
 {
   return strcmp ((const char *) pkey, 
-		 (const char *) (keynames + ((const gdk_key *) pbase)->offset));
+		 (const char *) (keynames + ((const cdk_key *) pbase)->offset));
 }
 
 static guint
-_gdk_keyval_from_name (const gchar *keyval_name)
+_cdk_keyval_from_name (const gchar *keyval_name)
 {
-  gdk_key *found;
+  cdk_key *found;
 
   g_return_val_if_fail (keyval_name != NULL, 0);
 
   if (strncmp (keyval_name,"XF86", 4) == 0)
     keyval_name += 4;
 
-  found = bsearch (keyval_name, gdk_keys_by_name,
-		   GDK_NUM_KEYS, sizeof (gdk_key),
-		   gdk_keys_name_compare);
+  found = bsearch (keyval_name, cdk_keys_by_name,
+		   GDK_NUM_KEYS, sizeof (cdk_key),
+		   cdk_keys_name_compare);
   if (found != NULL)
     return found->keyval;
   else

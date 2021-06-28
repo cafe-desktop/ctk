@@ -1,5 +1,5 @@
 /*
- * gdkwin32monitor.h
+ * cdkwin32monitor.h
  *
  * Copyright 2016 Red Hat, Inc.
  *
@@ -24,14 +24,14 @@
 #define __GDK_WIN32_MONITOR_H__
 
 #if !defined (__GDKWIN32_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkwin32.h> can be included directly."
+#error "Only <cdk/cdkwin32.h> can be included directly."
 #endif
 
-#include <gdk/gdkmonitor.h>
+#include <cdk/cdkmonitor.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_WIN32_MONITOR           (gdk_win32_monitor_get_type ())
+#define GDK_TYPE_WIN32_MONITOR           (cdk_win32_monitor_get_type ())
 #define GDK_WIN32_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_MONITOR, GdkWin32Monitor))
 #define GDK_IS_WIN32_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_MONITOR))
 
@@ -43,7 +43,7 @@ typedef GdkMonitor GdkWin32Monitor;
 typedef struct _GdkWin32MonitorClass GdkWin32MonitorClass;
 
 GDK_AVAILABLE_IN_3_22
-GType             gdk_win32_monitor_get_type            (void) G_GNUC_CONST;
+GType             cdk_win32_monitor_get_type            (void) G_GNUC_CONST;
 
 G_END_DECLS
 

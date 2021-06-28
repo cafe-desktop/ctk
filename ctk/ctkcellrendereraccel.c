@@ -455,19 +455,19 @@ ctk_cell_renderer_accel_start_editing (CtkCellRenderer      *cell,
   window = ctk_widget_get_window (ctk_widget_get_toplevel (widget));
 
   if (event)
-    device = gdk_event_get_device (event);
+    device = cdk_event_get_device (event);
   else
     device = ctk_get_current_event_device ();
 
   if (!device || !window)
     return NULL;
 
-  if (gdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
-    pointer = gdk_device_get_associated_device (device);
+  if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+    pointer = cdk_device_get_associated_device (device);
   else
     pointer = device;
 
-  if (gdk_seat_grab (gdk_device_get_seat (pointer), window,
+  if (cdk_seat_grab (cdk_device_get_seat (pointer), window,
                      GDK_SEAT_CAPABILITY_ALL, FALSE,
                      NULL, event, NULL, NULL) != GDK_GRAB_SUCCESS)
     return NULL;
@@ -502,7 +502,7 @@ ctk_cell_renderer_accel_ungrab (CtkCellRendererAccel *accel)
 
   if (priv->grab_pointer)
     {
-      gdk_seat_ungrab (gdk_device_get_seat (priv->grab_pointer));
+      cdk_seat_ungrab (cdk_device_get_seat (priv->grab_pointer));
       priv->grab_pointer = NULL;
     }
 }
@@ -580,7 +580,7 @@ ctk_cell_editable_event_box_key_press_event (CtkWidget   *widget,
     }
   else
     {
-      _ctk_translate_keyboard_accel_state (gdk_keymap_get_for_display (display),
+      _ctk_translate_keyboard_accel_state (cdk_keymap_get_for_display (display),
                                            event->hardware_keycode,
                                            event->state,
                                            ctk_accelerator_get_default_mod_mask (),
@@ -588,7 +588,7 @@ ctk_cell_editable_event_box_key_press_event (CtkWidget   *widget,
                                            &keyval, NULL, NULL, &consumed_modifiers);
     }
 
-  accel_key = gdk_keyval_to_lower (keyval);
+  accel_key = cdk_keyval_to_lower (keyval);
   if (accel_key == GDK_KEY_ISO_Left_Tab) 
     accel_key = GDK_KEY_Tab;
 

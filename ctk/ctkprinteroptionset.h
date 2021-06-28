@@ -28,7 +28,7 @@
 #endif
 
 #include <glib-object.h>
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include "ctkprinteroption.h"
 
 G_BEGIN_DECLS

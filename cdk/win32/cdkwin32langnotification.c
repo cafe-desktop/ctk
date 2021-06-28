@@ -20,9 +20,9 @@
 #define COBJMACROS
 #include <msctf.h>
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
-#include "gdkprivate-win32.h"
+#include "cdkprivate-win32.h"
 
 struct _GdkWin32ALPNSink
 {
@@ -90,7 +90,7 @@ alpn_sink_on_activated (ITfActiveLanguageProfileNotifySink *This,
                         REFGUID                             guidProfile,
                         BOOL                                fActivated)
 {
-  _gdk_input_locale_is_ime = fActivated;
+  _cdk_input_locale_is_ime = fActivated;
   return S_OK;
 }
 
@@ -117,7 +117,7 @@ alpn_sink_new ()
 
 
 void
-_gdk_win32_lang_notification_init ()
+_cdk_win32_lang_notification_init ()
 {
   HRESULT hr;
   ITfThreadMgr *itf_threadmgr;
@@ -159,7 +159,7 @@ _gdk_win32_lang_notification_init ()
 }
 
 void
-_gdk_win32_lang_notification_exit ()
+_cdk_win32_lang_notification_exit ()
 {
   if (actlangchangenotify != NULL && itf_source != NULL)
     {

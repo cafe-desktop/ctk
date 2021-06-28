@@ -1140,7 +1140,7 @@ render_cell (CtkCellRenderer        *renderer,
         }
       else
         {
-          gdk_rectangle_union (&data->focus_rect, &cell_focus, &data->focus_rect);
+          cdk_rectangle_union (&data->focus_rect, &cell_focus, &data->focus_rect);
         }
     }
 
@@ -1204,7 +1204,7 @@ ctk_cell_area_real_render (CtkCellArea          *area,
 
       cairo_save (cr);
 
-      gdk_cairo_rectangle (cr, background_area);
+      cdk_cairo_rectangle (cr, background_area);
       cairo_clip (cr);
 
       ctk_render_focus (style_context, cr,

@@ -1,5 +1,5 @@
 /* GDK - The GIMP Drawing Kit
- * gdkdisplaymanager-x11.c
+ * cdkdisplaymanager-x11.c
  *
  * Copyright 2010 Red Hat, Inc.
  *
@@ -21,12 +21,12 @@
 
 #include "config.h"
 
-#include "gdkx11displaymanager.h"
-#include "gdkdisplaymanagerprivate.h"
-#include "gdkdisplay-x11.h"
-#include "gdkprivate-x11.h"
+#include "cdkx11displaymanager.h"
+#include "cdkdisplaymanagerprivate.h"
+#include "cdkdisplay-x11.h"
+#include "cdkprivate-x11.h"
 
-#include "gdkinternals.h"
+#include "cdkinternals.h"
 
 struct _GdkX11DisplayManager
 {
@@ -38,24 +38,24 @@ struct _GdkX11DisplayManagerClass
   GdkDisplayManagerClass parent_class;
 };
 
-G_DEFINE_TYPE (GdkX11DisplayManager, gdk_x11_display_manager, GDK_TYPE_DISPLAY_MANAGER)
+G_DEFINE_TYPE (GdkX11DisplayManager, cdk_x11_display_manager, GDK_TYPE_DISPLAY_MANAGER)
 
 static void
-gdk_x11_display_manager_init (GdkX11DisplayManager *manager)
+cdk_x11_display_manager_init (GdkX11DisplayManager *manager)
 {
 }
 
 static void
-gdk_x11_display_manager_finalize (GObject *object)
+cdk_x11_display_manager_finalize (GObject *object)
 {
   g_error ("A GdkX11DisplayManager object was finalized. This should not happen");
-  G_OBJECT_CLASS (gdk_x11_display_manager_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_x11_display_manager_parent_class)->finalize (object);
 }
 
 static void
-gdk_x11_display_manager_class_init (GdkX11DisplayManagerClass *class)
+cdk_x11_display_manager_class_init (GdkX11DisplayManagerClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
-  object_class->finalize = gdk_x11_display_manager_finalize;
+  object_class->finalize = cdk_x11_display_manager_finalize;
 }

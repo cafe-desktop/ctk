@@ -3467,16 +3467,16 @@ selection_data_get_buffer (CtkSelectionData *selection_data,
   CtkTextBuffer *src_buffer = NULL;
 
   /* If we can get the owner, the selection is in-process */
-  owner = gdk_selection_owner_get_for_display (ctk_selection_data_get_display (selection_data),
+  owner = cdk_selection_owner_get_for_display (ctk_selection_data_get_display (selection_data),
 					       ctk_selection_data_get_selection (selection_data));
 
   if (owner == NULL)
     return NULL;
   
-  if (gdk_window_get_window_type (owner) == GDK_WINDOW_FOREIGN)
+  if (cdk_window_get_window_type (owner) == GDK_WINDOW_FOREIGN)
     return NULL;
 
-  if (ctk_selection_data_get_data_type (selection_data) != gdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"))
+  if (ctk_selection_data_get_data_type (selection_data) != cdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"))
     return NULL;
 
   if (ctk_selection_data_get_length (selection_data) != sizeof (src_buffer))
@@ -3870,7 +3870,7 @@ ctk_text_buffer_paste_clipboard (CtkTextBuffer *buffer,
     data->replace_selection = TRUE;
 
   ctk_clipboard_request_contents (clipboard,
-				  gdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"),
+				  cdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"),
 				  clipboard_clipboard_buffer_received, data);
 }
 
@@ -4227,7 +4227,7 @@ ctk_text_buffer_get_target_list (CtkTextBuffer   *buffer,
   target_list = ctk_target_list_new (NULL, 0);
 
   ctk_target_list_add (target_list,
-                       gdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"),
+                       cdk_atom_intern_static_string ("CTK_TEXT_BUFFER_CONTENTS"),
                        CTK_TARGET_SAME_APP,
                        CTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS);
 

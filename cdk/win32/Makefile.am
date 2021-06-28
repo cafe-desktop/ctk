@@ -1,16 +1,16 @@
 ## Process this file with automake to produce Makefile.in
 include $(top_srcdir)/Makefile.decl
 
-libgdkincludedir = $(includedir)/ctk-3.0/gdk
-libgdkwin32includedir = $(includedir)/ctk-3.0/gdk/win32
+libcdkincludedir = $(includedir)/ctk-3.0/cdk
+libcdkwin32includedir = $(includedir)/ctk-3.0/cdk/win32
 
 AM_CPPFLAGS = \
 	-DG_LOG_DOMAIN=\"Gdk\"		\
 	-DG_LOG_USE_STRUCTURED=1	\
 	-DINSIDE_GDK_WIN32		\
 	-I$(top_srcdir)			\
-	-I$(top_srcdir)/gdk		\
-	-I$(top_builddir)/gdk		\
+	-I$(top_srcdir)/cdk		\
+	-I$(top_builddir)/cdk		\
 	$(GDK_HIDDEN_VISIBILITY_CFLAGS) \
 	$(CTK_DEBUG_FLAGS) 		\
 	$(GDK_DEP_CFLAGS)		\
@@ -23,7 +23,7 @@ endif #WIN32_GLES
 
 LDADDS = $(GDK_DEP_LIBS)
 
-noinst_LTLIBRARIES = libgdk-win32.la
+noinst_LTLIBRARIES = libcdk-win32.la
 
 SUBDIRS=rc
 
@@ -32,85 +32,85 @@ EXTRA_DIST += \
 	makefile.msc \
 	meson.build
 
-libgdk_win32_la_SOURCES = \
-	gdkcursor-win32.c \
-	gdkdevicemanager-win32.c \
-	gdkdevicemanager-win32.h \
-	gdkdevice-virtual.c \
-	gdkdevice-virtual.h \
-	gdkdevice-win32.c \
-	gdkdevice-win32.h \
-	gdkdevice-wintab.c \
-	gdkdevice-wintab.h \
-	gdkdisplay-win32.c \
-	gdkdisplay-win32.h \
-	gdkdisplaymanager-win32.c \
-	gdkdnd-win32.c \
-	gdkevents-win32.c \
-	gdkgeometry-win32.c \
-	gdkglcontext-win32.c \
-	gdkglcontext-win32.h \
-	gdkglobals-win32.c \
-	gdkkeys-win32.c \
-	gdkmain-win32.c \
-	gdkmonitor-win32.c \
-	gdkmonitor-win32.h \
-	gdkprivate-win32.h \
-	gdkproperty-win32.c \
-	gdkscreen-win32.c \
-	gdkselection-win32.c \
-	gdkselection-win32.h \
-	gdktestutils-win32.c \
-	gdkwin32cursor.h \
-	gdkwin32display.h \
-	gdkwin32displaymanager.h \
-	gdkwin32dnd.h \
-	gdkwin32dnd-private.h \
-	gdkwin32glcontext.h \
-	gdkwin32langnotification.c \
-	gdkwin32langnotification.h \
-	gdkwin32.h \
-	gdkwin32id.c \
-	gdkwin32keys.h \
-	gdkwin32monitor.h \
-	gdkwin32screen.h \
-	gdkwin32window.h \
-	gdkwindow-win32.c \
-	gdkwindow-win32.h \
+libcdk_win32_la_SOURCES = \
+	cdkcursor-win32.c \
+	cdkdevicemanager-win32.c \
+	cdkdevicemanager-win32.h \
+	cdkdevice-virtual.c \
+	cdkdevice-virtual.h \
+	cdkdevice-win32.c \
+	cdkdevice-win32.h \
+	cdkdevice-wintab.c \
+	cdkdevice-wintab.h \
+	cdkdisplay-win32.c \
+	cdkdisplay-win32.h \
+	cdkdisplaymanager-win32.c \
+	cdkdnd-win32.c \
+	cdkevents-win32.c \
+	cdkgeometry-win32.c \
+	cdkglcontext-win32.c \
+	cdkglcontext-win32.h \
+	cdkglobals-win32.c \
+	cdkkeys-win32.c \
+	cdkmain-win32.c \
+	cdkmonitor-win32.c \
+	cdkmonitor-win32.h \
+	cdkprivate-win32.h \
+	cdkproperty-win32.c \
+	cdkscreen-win32.c \
+	cdkselection-win32.c \
+	cdkselection-win32.h \
+	cdktestutils-win32.c \
+	cdkwin32cursor.h \
+	cdkwin32display.h \
+	cdkwin32displaymanager.h \
+	cdkwin32dnd.h \
+	cdkwin32dnd-private.h \
+	cdkwin32glcontext.h \
+	cdkwin32langnotification.c \
+	cdkwin32langnotification.h \
+	cdkwin32.h \
+	cdkwin32id.c \
+	cdkwin32keys.h \
+	cdkwin32monitor.h \
+	cdkwin32screen.h \
+	cdkwin32window.h \
+	cdkwindow-win32.c \
+	cdkwindow-win32.h \
 	pktdef.h \
 	wintab.h \
 	xcursors.h
 
-libgdkinclude_HEADERS =		\
-	gdkwin32.h
+libcdkinclude_HEADERS =		\
+	cdkwin32.h
 
-libgdkwin32include_HEADERS =	\
-	gdkwin32cursor.h	\
-	gdkwin32display.h	\
-	gdkwin32displaymanager.h\
-	gdkwin32dnd.h		\
-	gdkwin32glcontext.h	\
-	gdkwin32keys.h		\
-	gdkwin32misc.h		\
-	gdkwin32monitor.h	\
-	gdkwin32screen.h	\
-	gdkwin32window.h
+libcdkwin32include_HEADERS =	\
+	cdkwin32cursor.h	\
+	cdkwin32display.h	\
+	cdkwin32displaymanager.h\
+	cdkwin32dnd.h		\
+	cdkwin32glcontext.h	\
+	cdkwin32keys.h		\
+	cdkwin32misc.h		\
+	cdkwin32monitor.h	\
+	cdkwin32screen.h	\
+	cdkwin32window.h
 
 # ------------------- MSVC Build Items ----------------
-MSVCPROJS = gdk3-win32
+MSVCPROJS = cdk3-win32
 
-gdk3_win32_FILES = $(libgdk_win32_la_SOURCES)
-gdk3_win32_EXCLUDES = dummy
-gdk3_win32_HEADERS_DIR = $(libgdkwin32includedir)
+cdk3_win32_FILES = $(libcdk_win32_la_SOURCES)
+cdk3_win32_EXCLUDES = dummy
+cdk3_win32_HEADERS_DIR = $(libcdkwin32includedir)
 
-gdk3_win32_HEADERS_INST = $(libgdkwin32include_HEADERS)
+cdk3_win32_HEADERS_INST = $(libcdkwin32include_HEADERS)
 
-gdk3_win32_HEADERS_EXCLUDES = dummy
+cdk3_win32_HEADERS_EXCLUDES = dummy
 
 include $(top_srcdir)/win32/Makefile.msvcproj
 
 dist-hook: \
-	$(top_builddir)/win32/vs9/gdk3-win32.vcproj	\
-	$(top_builddir)/win32/vs9/gdk3-win32.headers
+	$(top_builddir)/win32/vs9/cdk3-win32.vcproj	\
+	$(top_builddir)/win32/vs9/cdk3-win32.headers
 
 -include $(top_srcdir)/git.mk

@@ -1,32 +1,32 @@
-gdk_wayland_sources = files(
-  'gdkapplaunchcontext-wayland.c',
-  'gdkcursor-wayland.c',
-  'gdkdevice-wayland.c',
-  'gdkdisplay-wayland.c',
-  'gdkdnd-wayland.c',
-  'gdkeventsource.c',
-  'gdkkeys-wayland.c',
-  'gdkglcontext-wayland.c',
-  'gdkmonitor-wayland.c',
-  'gdkscreen-wayland.c',
-  'gdkselection-wayland.c',
-  'gdkwindow-wayland.c',
+cdk_wayland_sources = files(
+  'cdkapplaunchcontext-wayland.c',
+  'cdkcursor-wayland.c',
+  'cdkdevice-wayland.c',
+  'cdkdisplay-wayland.c',
+  'cdkdnd-wayland.c',
+  'cdkeventsource.c',
+  'cdkkeys-wayland.c',
+  'cdkglcontext-wayland.c',
+  'cdkmonitor-wayland.c',
+  'cdkscreen-wayland.c',
+  'cdkselection-wayland.c',
+  'cdkwindow-wayland.c',
   'wm-button-layout-translation.c',
 )
 
-gdk_wayland_public_headers = files(
-  'gdkwaylanddevice.h',
-  'gdkwaylanddisplay.h',
-  'gdkwaylandglcontext.h',
-  'gdkwaylandmonitor.h',
-  'gdkwaylandselection.h',
-  'gdkwaylandwindow.h',
+cdk_wayland_public_headers = files(
+  'cdkwaylanddevice.h',
+  'cdkwaylanddisplay.h',
+  'cdkwaylandglcontext.h',
+  'cdkwaylandmonitor.h',
+  'cdkwaylandselection.h',
+  'cdkwaylandwindow.h',
 )
 
-install_headers(gdk_wayland_public_headers, subdir: 'ctk-3.0/gdk/wayland')
-install_headers('gdkwayland.h', subdir: 'ctk-3.0/gdk')
+install_headers(cdk_wayland_public_headers, subdir: 'ctk-3.0/cdk/wayland')
+install_headers('cdkwayland.h', subdir: 'ctk-3.0/cdk')
 
-gdk_wayland_deps = [
+cdk_wayland_deps = [
   shmlib,
   xkbdep,
   wlclientdep,
@@ -59,7 +59,7 @@ proto_sources = [
   ['primary-selection', 'unstable', 'v1', ],
 ]
 
-gdk_wayland_gen_headers = []
+cdk_wayland_gen_headers = []
 
 foreach p: proto_sources
   proto_name = p.get(0)
@@ -77,7 +77,7 @@ foreach p: proto_sources
     input = join_paths(proto_dir, '@0@/@1@/@2@.xml'.format(proto_stability, proto_name, output_base))
   endif
 
-  gdk_wayland_gen_headers += custom_target('@0@ client header'.format(output_base),
+  cdk_wayland_gen_headers += custom_target('@0@ client header'.format(output_base),
                                            input: input,
                                            output: '@0@-client-protocol.h'.format(output_base),
                                            command: [
@@ -86,7 +86,7 @@ foreach p: proto_sources
                                              '@INPUT@', '@OUTPUT@',
                                            ])
 
-  gdk_wayland_sources += custom_target('@0@ source'.format(output_base),
+  cdk_wayland_sources += custom_target('@0@ source'.format(output_base),
                                        input: input,
                                        output: '@0@-protocol.c'.format(output_base),
                                        command: [
@@ -96,12 +96,12 @@ foreach p: proto_sources
                                        ])
 endforeach
 
-libgdk_wayland = static_library('gdk-wayland',
-                                gdk_wayland_sources, gdk_wayland_gen_headers, gdkconfig, gdkenum_h,
-                                include_directories: [ confinc, gdkinc, ],
+libcdk_wayland = static_library('cdk-wayland',
+                                cdk_wayland_sources, cdk_wayland_gen_headers, cdkconfig, cdkenum_h,
+                                include_directories: [ confinc, cdkinc, ],
                                 c_args: [
                                   '-DGDK_COMPILATION',
                                   '-DG_LOG_DOMAIN="Gdk"',
                                 ] + common_cflags,
                                 link_args: common_ldflags,
-                                dependencies: [ gdk_deps, gdk_wayland_deps, ])
+                                dependencies: [ cdk_deps, cdk_wayland_deps, ])

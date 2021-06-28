@@ -30,15 +30,15 @@
 #include "ctkintl.h"
 
 #ifdef GDK_WINDOWING_X11
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 #endif
 
 #ifdef GDK_WINDOWING_BROADWAY
-#include "broadway/gdkbroadway.h"
+#include "broadway/cdkbroadway.h"
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
-#include "win32/gdkwin32.h"
+#include "win32/cdkwin32.h"
 #endif
 
 
@@ -52,7 +52,7 @@
  * between different processes or between different widgets in
  * the same process. Each clipboard is identified by a name encoded as a
  * #GdkAtom. (Conversion to and from strings can be done with
- * gdk_atom_intern() and gdk_atom_name().) The default clipboard
+ * cdk_atom_intern() and cdk_atom_name().) The default clipboard
  * corresponds to the “CLIPBOARD” atom; another commonly used clipboard
  * is the “PRIMARY” clipboard, which, in X, traditionally contains
  * the currently selected text.
@@ -325,7 +325,7 @@ clipboard_display_closed (GdkDisplay   *display,
  * to the default clipboard, i.e. they copy the selection to what the
  * user sees as the clipboard.
  *
- * (Passing #GDK_NONE is the same as using `gdk_atom_intern
+ * (Passing #GDK_NONE is the same as using `cdk_atom_intern
  * ("CLIPBOARD", FALSE)`.
  *
  * See the
@@ -354,7 +354,7 @@ ctk_clipboard_get_for_display (GdkDisplay *display,
 {
   g_return_val_if_fail (display != NULL, NULL); /* See bgo#463773; this is needed because Flash Player sucks */
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
-  g_return_val_if_fail (!gdk_display_is_closed (display), NULL);
+  g_return_val_if_fail (!cdk_display_is_closed (display), NULL);
 
   return clipboard_peek (display, selection, FALSE);
 }
@@ -375,7 +375,7 @@ ctk_clipboard_get_for_display (GdkDisplay *display,
 CtkClipboard *
 ctk_clipboard_get (GdkAtom selection)
 {
-  return ctk_clipboard_get_for_display (gdk_display_get_default (), selection);
+  return ctk_clipboard_get_for_display (cdk_display_get_default (), selection);
 }
 
 /**
@@ -433,14 +433,14 @@ static CtkWidget *
 make_clipboard_widget (GdkDisplay *display, 
 		       gboolean    provider)
 {
-  CtkWidget *widget = ctk_invisible_new_for_screen (gdk_display_get_default_screen (display));
+  CtkWidget *widget = ctk_invisible_new_for_screen (cdk_display_get_default_screen (display));
 
   g_signal_connect (widget, "selection-received",
 		    G_CALLBACK (selection_received), NULL);
 
   if (provider)
     {
-      /* We need this for gdk_x11_get_server_time() */
+      /* We need this for cdk_x11_get_server_time() */
       ctk_widget_add_events (widget, GDK_PROPERTY_CHANGE_MASK);
       
       g_signal_connect (widget, "selection-get",
@@ -493,7 +493,7 @@ clipboard_get_timestamp (CtkClipboard *clipboard)
 #ifdef GDK_WINDOWING_X11
       if (GDK_IS_X11_WINDOW (window))
 	{
-	  timestamp = gdk_x11_get_server_time (ctk_widget_get_window (clipboard_widget));
+	  timestamp = cdk_x11_get_server_time (ctk_widget_get_window (clipboard_widget));
 	}
       else
 #endif
@@ -507,7 +507,7 @@ clipboard_get_timestamp (CtkClipboard *clipboard)
 #if defined GDK_WINDOWING_BROADWAY
       if (GDK_IS_BROADWAY_WINDOW (window))
 	{
-	  timestamp = gdk_broadway_get_last_seen_time (window);
+	  timestamp = cdk_broadway_get_last_seen_time (window);
 	}
       else
 #endif
@@ -1042,21 +1042,21 @@ request_text_received_func (CtkClipboard     *clipboard,
        */
       GdkAtom target = ctk_selection_data_get_target (selection_data);
 
-      if (target == gdk_atom_intern_static_string ("text/plain;charset=utf-8"))
+      if (target == cdk_atom_intern_static_string ("text/plain;charset=utf-8"))
         {
           ctk_clipboard_request_contents (clipboard,
-                                          gdk_atom_intern_static_string ("UTF8_STRING"),
+                                          cdk_atom_intern_static_string ("UTF8_STRING"),
                                           request_text_received_func, info);
           return;
         }
-      else if (target == gdk_atom_intern_static_string ("UTF8_STRING"))
+      else if (target == cdk_atom_intern_static_string ("UTF8_STRING"))
 	{
 	  ctk_clipboard_request_contents (clipboard,
-					  gdk_atom_intern_static_string ("COMPOUND_TEXT"), 
+					  cdk_atom_intern_static_string ("COMPOUND_TEXT"), 
 					  request_text_received_func, info);
 	  return;
 	}
-      else if (target == gdk_atom_intern_static_string ("COMPOUND_TEXT"))
+      else if (target == cdk_atom_intern_static_string ("COMPOUND_TEXT"))
 	{
 	  ctk_clipboard_request_contents (clipboard,
 					  GDK_TARGET_STRING, 
@@ -1100,7 +1100,7 @@ ctk_clipboard_request_text (CtkClipboard                *clipboard,
   info->callback = callback;
   info->user_data = user_data;
 
-  ctk_clipboard_request_contents (clipboard, gdk_atom_intern_static_string ("text/plain;charset=utf-8"),
+  ctk_clipboard_request_contents (clipboard, cdk_atom_intern_static_string ("text/plain;charset=utf-8"),
 				  request_text_received_func,
 				  info);
 }
@@ -1198,24 +1198,24 @@ request_image_received_func (CtkClipboard     *clipboard,
        */
       GdkAtom target = ctk_selection_data_get_target (selection_data);
 
-      if (target == gdk_atom_intern_static_string ("image/png"))
+      if (target == cdk_atom_intern_static_string ("image/png"))
 	{
 	  ctk_clipboard_request_contents (clipboard,
-					  gdk_atom_intern_static_string ("image/jpeg"), 
+					  cdk_atom_intern_static_string ("image/jpeg"), 
 					  request_image_received_func, info);
 	  return;
 	}
-      else if (target == gdk_atom_intern_static_string ("image/jpeg"))
+      else if (target == cdk_atom_intern_static_string ("image/jpeg"))
 	{
 	  ctk_clipboard_request_contents (clipboard,
-					  gdk_atom_intern_static_string ("image/gif"), 
+					  cdk_atom_intern_static_string ("image/gif"), 
 					  request_image_received_func, info);
 	  return;
 	}
-      else if (target == gdk_atom_intern_static_string ("image/gif"))
+      else if (target == cdk_atom_intern_static_string ("image/gif"))
 	{
 	  ctk_clipboard_request_contents (clipboard,
-					  gdk_atom_intern_static_string ("image/bmp"), 
+					  cdk_atom_intern_static_string ("image/bmp"), 
 					  request_image_received_func, info);
 	  return;
 	}
@@ -1262,7 +1262,7 @@ ctk_clipboard_request_image (CtkClipboard                  *clipboard,
   info->user_data = user_data;
 
   ctk_clipboard_request_contents (clipboard, 
-				  gdk_atom_intern_static_string ("image/png"),
+				  cdk_atom_intern_static_string ("image/png"),
 				  request_image_received_func,
 				  info);
 }
@@ -1313,7 +1313,7 @@ ctk_clipboard_request_uris (CtkClipboard                *clipboard,
   info->callback = callback;
   info->user_data = user_data;
 
-  ctk_clipboard_request_contents (clipboard, gdk_atom_intern_static_string ("text/uri-list"),
+  ctk_clipboard_request_contents (clipboard, cdk_atom_intern_static_string ("text/uri-list"),
 				  request_uris_received_func,
 				  info);
 }
@@ -1362,7 +1362,7 @@ ctk_clipboard_request_targets (CtkClipboard                *clipboard,
   g_return_if_fail (callback != NULL);
 
   /* If the display supports change notification we cache targets */
-  if (gdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)) &&
+  if (cdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)) &&
       clipboard->n_cached_targets != -1)
     {
       (* callback) (clipboard, clipboard->cached_targets, clipboard->n_cached_targets, user_data);
@@ -1373,7 +1373,7 @@ ctk_clipboard_request_targets (CtkClipboard                *clipboard,
   info->callback = callback;
   info->user_data = user_data;
 
-  ctk_clipboard_request_contents (clipboard, gdk_atom_intern_static_string ("TARGETS"),
+  ctk_clipboard_request_contents (clipboard, cdk_atom_intern_static_string ("TARGETS"),
 				  request_targets_received_func,
 				  info);
 }
@@ -1432,9 +1432,9 @@ ctk_clipboard_wait_for_contents (CtkClipboard *clipboard,
 
   if (g_main_loop_is_running (results.loop))
     {
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       g_main_loop_run (results.loop);
-      gdk_threads_enter ();
+      cdk_threads_enter ();
     }
 
   g_main_loop_unref (results.loop);
@@ -1485,9 +1485,9 @@ ctk_clipboard_wait_for_text (CtkClipboard *clipboard)
 
   if (g_main_loop_is_running (results.loop))
     {
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       g_main_loop_run (results.loop);
-      gdk_threads_enter ();
+      cdk_threads_enter ();
     }
 
   g_main_loop_unref (results.loop);
@@ -1553,9 +1553,9 @@ ctk_clipboard_wait_for_rich_text (CtkClipboard  *clipboard,
 
   if (g_main_loop_is_running (results.loop))
     {
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       g_main_loop_run (results.loop);
-      gdk_threads_enter ();
+      cdk_threads_enter ();
     }
 
   g_main_loop_unref (results.loop);
@@ -1613,9 +1613,9 @@ ctk_clipboard_wait_for_image (CtkClipboard *clipboard)
 
   if (g_main_loop_is_running (results.loop))
     {
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       g_main_loop_run (results.loop);
-      gdk_threads_enter ();
+      cdk_threads_enter ();
     }
 
   g_main_loop_unref (results.loop);
@@ -1667,9 +1667,9 @@ ctk_clipboard_wait_for_uris (CtkClipboard *clipboard)
 
   if (g_main_loop_is_running (results.loop))
     {
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       g_main_loop_run (results.loop);
-      gdk_threads_enter ();
+      cdk_threads_enter ();
     }
 
   g_main_loop_unref (results.loop);
@@ -1717,7 +1717,7 @@ ctk_clipboard_wait_is_text_available (CtkClipboard *clipboard)
   CtkSelectionData *data;
   gboolean result = FALSE;
 
-  data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("TARGETS"));
+  data = ctk_clipboard_wait_for_contents (clipboard, cdk_atom_intern_static_string ("TARGETS"));
   if (data)
     {
       result = ctk_selection_data_targets_include_text (data);
@@ -1756,7 +1756,7 @@ ctk_clipboard_wait_is_rich_text_available (CtkClipboard  *clipboard,
   g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), FALSE);
   g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
 
-  data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("TARGETS"));
+  data = ctk_clipboard_wait_for_contents (clipboard, cdk_atom_intern_static_string ("TARGETS"));
   if (data)
     {
       result = ctk_selection_data_targets_include_rich_text (data, buffer);
@@ -1791,7 +1791,7 @@ ctk_clipboard_wait_is_image_available (CtkClipboard *clipboard)
   gboolean result = FALSE;
 
   data = ctk_clipboard_wait_for_contents (clipboard, 
-					  gdk_atom_intern_static_string ("TARGETS"));
+					  cdk_atom_intern_static_string ("TARGETS"));
   if (data)
     {
       result = ctk_selection_data_targets_include_image (data, FALSE);
@@ -1826,7 +1826,7 @@ ctk_clipboard_wait_is_uris_available (CtkClipboard *clipboard)
   gboolean result = FALSE;
 
   data = ctk_clipboard_wait_for_contents (clipboard, 
-					  gdk_atom_intern_static_string ("TARGETS"));
+					  cdk_atom_intern_static_string ("TARGETS"));
   if (data)
     {
       result = ctk_selection_data_targets_include_uri (data);
@@ -1866,7 +1866,7 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
   g_return_val_if_fail (clipboard != NULL, FALSE);
 
   /* If the display supports change notification we cache targets */
-  if (gdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)) &&
+  if (cdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)) &&
       clipboard->n_cached_targets != -1)
     {
       if (n_targets)
@@ -1885,7 +1885,7 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
   if (targets)
     *targets = NULL;      
 
-  data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("TARGETS"));
+  data = ctk_clipboard_wait_for_contents (clipboard, cdk_atom_intern_static_string ("TARGETS"));
 
   if (data)
     {
@@ -1894,7 +1894,7 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
        
       result = ctk_selection_data_get_targets (data, &tmp_targets, &tmp_n_targets);
  
-      if (gdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)))
+      if (cdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)))
  	{
  	  clipboard->n_cached_targets = tmp_n_targets;
  	  clipboard->cached_targets = g_memdup (tmp_targets,
@@ -1951,7 +1951,7 @@ clipboard_peek (GdkDisplay *display,
       g_object_set_data (G_OBJECT (display), I_("ctk-clipboard-list"), clipboards);
       g_signal_connect (display, "closed",
 			G_CALLBACK (clipboard_display_closed), clipboard);
-      gdk_display_request_selection_notification (display, selection);
+      cdk_display_request_selection_notification (display, selection);
     }
   
   return clipboard;
@@ -2024,7 +2024,7 @@ _ctk_clipboard_handle_event (GdkEventOwnerChange *event)
   GdkDisplay *display;
   CtkClipboard *clipboard;
   
-  display = gdk_window_get_display (event->window);
+  display = cdk_window_get_display (event->window);
   clipboard = clipboard_peek (display, event->selection, TRUE);
       
   if (clipboard)
@@ -2053,7 +2053,7 @@ ctk_clipboard_store_timeout (CtkClipboard *clipboard)
  *
  * This value is reset when the clipboard owner changes.
  * Where the clipboard data is stored is platform dependent,
- * see gdk_display_store_clipboard () for more information.
+ * see cdk_display_store_clipboard () for more information.
  * 
  * Since: 2.6
  */
@@ -2106,7 +2106,7 @@ ctk_clipboard_real_set_can_store (CtkClipboard         *clipboard,
   clipboard->n_storable_targets = n_targets;
   clipboard->storable_targets = g_new (GdkAtom, n_targets);
   for (i = 0; i < n_targets; i++)
-    clipboard->storable_targets[i] = gdk_atom_intern (targets[i].target, FALSE);
+    clipboard->storable_targets[i] = cdk_atom_intern (targets[i].target, FALSE);
 }
 
 static gboolean
@@ -2114,7 +2114,7 @@ ctk_clipboard_selection_notify (CtkWidget         *widget,
 				GdkEventSelection *event,
 				CtkClipboard      *clipboard)
 {
-  if (event->selection == gdk_atom_intern_static_string ("CLIPBOARD_MANAGER") &&
+  if (event->selection == cdk_atom_intern_static_string ("CLIPBOARD_MANAGER") &&
       clipboard->storing_selection)
     g_main_loop_quit (clipboard->store_loop);
 
@@ -2146,7 +2146,7 @@ ctk_clipboard_real_store (CtkClipboard *clipboard)
   if (clipboard->n_storable_targets < 0)
     return;
   
-  if (!gdk_display_supports_clipboard_persistence (clipboard->display))
+  if (!cdk_display_supports_clipboard_persistence (clipboard->display))
     return;
 
   g_object_ref (clipboard);
@@ -2157,7 +2157,7 @@ ctk_clipboard_real_store (CtkClipboard *clipboard)
 						  G_CALLBACK (ctk_clipboard_selection_notify),
 						  clipboard);
 
-  gdk_display_store_clipboard (clipboard->display,
+  cdk_display_store_clipboard (clipboard->display,
                                ctk_widget_get_window (clipboard_widget),
 			       clipboard_get_timestamp (clipboard),
 			       clipboard->storable_targets,
@@ -2171,9 +2171,9 @@ ctk_clipboard_real_store (CtkClipboard *clipboard)
 
   if (g_main_loop_is_running (clipboard->store_loop))
     {
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       g_main_loop_run (clipboard->store_loop);
-      gdk_threads_enter ();
+      cdk_threads_enter ();
     }
   
   g_main_loop_unref (clipboard->store_loop);
@@ -2198,7 +2198,7 @@ _ctk_clipboard_store_all (void)
   CtkClipboard *clipboard;
   GSList *displays, *list;
   
-  displays = gdk_display_manager_list_displays (gdk_display_manager_get ());
+  displays = cdk_display_manager_list_displays (cdk_display_manager_get ());
 
   list = displays;
   while (list)

@@ -17,9 +17,9 @@
 
 #include "config.h"
 
-#include "gdkcairo.h"
+#include "cdkcairo.h"
 
-#include "gdkinternals.h"
+#include "cdkinternals.h"
 
 #include <math.h>
 
@@ -41,7 +41,7 @@
 
 
 /**
- * gdk_cairo_get_clip_rectangle:
+ * cdk_cairo_get_clip_rectangle:
  * @cr: a cairo context
  * @rect: (out) (allow-none): return location for the clip, or %NULL
  *
@@ -53,7 +53,7 @@
  *     clipped and all drawing can be skipped
  */
 gboolean
-gdk_cairo_get_clip_rectangle (cairo_t      *cr,
+cdk_cairo_get_clip_rectangle (cairo_t      *cr,
                               GdkRectangle *rect)
 {
   double x1, y1, x2, y2;
@@ -80,7 +80,7 @@ gdk_cairo_get_clip_rectangle (cairo_t      *cr,
 }
 
 /**
- * gdk_cairo_set_source_color:
+ * cdk_cairo_set_source_color:
  * @cr: a cairo context
  * @color: a #GdkColor
  *
@@ -88,10 +88,10 @@ gdk_cairo_get_clip_rectangle (cairo_t      *cr,
  *
  * Since: 2.8
  *
- * Deprecated: 3.4: Use gdk_cairo_set_source_rgba() instead
+ * Deprecated: 3.4: Use cdk_cairo_set_source_rgba() instead
  */
 void
-gdk_cairo_set_source_color (cairo_t        *cr,
+cdk_cairo_set_source_color (cairo_t        *cr,
                             const GdkColor *color)
 {
   g_return_if_fail (cr != NULL);
@@ -104,7 +104,7 @@ gdk_cairo_set_source_color (cairo_t        *cr,
 }
 
 /**
- * gdk_cairo_set_source_rgba:
+ * cdk_cairo_set_source_rgba:
  * @cr: a cairo context
  * @rgba: a #GdkRGBA
  *
@@ -113,7 +113,7 @@ gdk_cairo_set_source_color (cairo_t        *cr,
  * Since: 3.0
  */
 void
-gdk_cairo_set_source_rgba (cairo_t       *cr,
+cdk_cairo_set_source_rgba (cairo_t       *cr,
                            const GdkRGBA *rgba)
 {
   g_return_if_fail (cr != NULL);
@@ -127,7 +127,7 @@ gdk_cairo_set_source_rgba (cairo_t       *cr,
 }
 
 /**
- * gdk_cairo_rectangle:
+ * cdk_cairo_rectangle:
  * @cr: a cairo context
  * @rectangle: a #GdkRectangle
  *
@@ -136,7 +136,7 @@ gdk_cairo_set_source_rgba (cairo_t       *cr,
  * Since: 2.8
  */
 void
-gdk_cairo_rectangle (cairo_t            *cr,
+cdk_cairo_rectangle (cairo_t            *cr,
                      const GdkRectangle *rectangle)
 {
   g_return_if_fail (cr != NULL);
@@ -148,7 +148,7 @@ gdk_cairo_rectangle (cairo_t            *cr,
 }
 
 /**
- * gdk_cairo_region:
+ * cdk_cairo_region:
  * @cr: a cairo context
  * @region: a #cairo_region_t
  *
@@ -157,7 +157,7 @@ gdk_cairo_rectangle (cairo_t            *cr,
  * Since: 2.8
  */
 void
-gdk_cairo_region (cairo_t              *cr,
+cdk_cairo_region (cairo_t              *cr,
                   const cairo_region_t *region)
 {
   cairo_rectangle_int_t box;
@@ -176,12 +176,12 @@ gdk_cairo_region (cairo_t              *cr,
 }
 
 static void
-gdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
+cdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
                                 const GdkPixbuf *pixbuf)
 {
   gint width, height;
-  guchar *gdk_pixels, *cairo_pixels;
-  int gdk_rowstride, cairo_stride;
+  guchar *cdk_pixels, *cairo_pixels;
+  int cdk_rowstride, cairo_stride;
   int n_channels;
   int j;
 
@@ -194,22 +194,22 @@ gdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
   g_assert (cairo_surface_get_type (surface) == CAIRO_SURFACE_TYPE_IMAGE);
   g_assert (cairo_image_surface_get_format (surface) == CAIRO_FORMAT_RGB24 ||
             cairo_image_surface_get_format (surface) == CAIRO_FORMAT_ARGB32);
-  g_assert (cairo_image_surface_get_width (surface) == gdk_pixbuf_get_width (pixbuf));
-  g_assert (cairo_image_surface_get_height (surface) == gdk_pixbuf_get_height (pixbuf));
+  g_assert (cairo_image_surface_get_width (surface) == cdk_pixbuf_get_width (pixbuf));
+  g_assert (cairo_image_surface_get_height (surface) == cdk_pixbuf_get_height (pixbuf));
 
   cairo_surface_flush (surface);
 
-  width = gdk_pixbuf_get_width (pixbuf);
-  height = gdk_pixbuf_get_height (pixbuf);
-  gdk_pixels = gdk_pixbuf_get_pixels (pixbuf);
-  gdk_rowstride = gdk_pixbuf_get_rowstride (pixbuf);
-  n_channels = gdk_pixbuf_get_n_channels (pixbuf);
+  width = cdk_pixbuf_get_width (pixbuf);
+  height = cdk_pixbuf_get_height (pixbuf);
+  cdk_pixels = cdk_pixbuf_get_pixels (pixbuf);
+  cdk_rowstride = cdk_pixbuf_get_rowstride (pixbuf);
+  n_channels = cdk_pixbuf_get_n_channels (pixbuf);
   cairo_stride = cairo_image_surface_get_stride (surface);
   cairo_pixels = cairo_image_surface_get_data (surface);
 
   for (j = height; j; j--)
     {
-      guchar *p = gdk_pixels;
+      guchar *p = cdk_pixels;
       guchar *q = cairo_pixels;
 
       if (n_channels == 3)
@@ -259,7 +259,7 @@ gdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
 #undef MULT
         }
 
-      gdk_pixels += gdk_rowstride;
+      cdk_pixels += cdk_rowstride;
       cairo_pixels += cairo_stride;
     }
 
@@ -267,7 +267,7 @@ gdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
 }
 
 /**
- * gdk_cairo_surface_create_from_pixbuf:
+ * cdk_cairo_surface_create_from_pixbuf:
  * @pixbuf: a #GdkPixbuf
  * @scale: the scale of the new surface, or 0 to use same as @window
  * @for_window: (allow-none): The window this will be drawn to, or %NULL
@@ -280,7 +280,7 @@ gdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
  * Since: 3.10
  */
 cairo_surface_t *
-gdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
+cdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
                                       int              scale,
                                       GdkWindow       *for_window)
 {
@@ -291,25 +291,25 @@ gdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
   g_return_val_if_fail (scale >= 0, NULL);
   g_return_val_if_fail (for_window == NULL || GDK_IS_WINDOW (for_window), NULL);
 
-  if (gdk_pixbuf_get_n_channels (pixbuf) == 3)
+  if (cdk_pixbuf_get_n_channels (pixbuf) == 3)
     format = CAIRO_FORMAT_RGB24;
   else
     format = CAIRO_FORMAT_ARGB32;
 
   surface =
-     gdk_window_create_similar_image_surface (for_window,
+     cdk_window_create_similar_image_surface (for_window,
 					      format,
-                                              gdk_pixbuf_get_width (pixbuf),
-                                              gdk_pixbuf_get_height (pixbuf),
+                                              cdk_pixbuf_get_width (pixbuf),
+                                              cdk_pixbuf_get_height (pixbuf),
 					      scale);
 
-  gdk_cairo_surface_paint_pixbuf (surface, pixbuf);
+  cdk_cairo_surface_paint_pixbuf (surface, pixbuf);
 
   return surface;
 }
 
 /**
- * gdk_cairo_set_source_pixbuf:
+ * cdk_cairo_set_source_pixbuf:
  * @cr: a cairo context
  * @pixbuf: a #GdkPixbuf
  * @pixbuf_x: X coordinate of location to place upper left corner of @pixbuf
@@ -323,7 +323,7 @@ gdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
  * Since: 2.8
  */
 void
-gdk_cairo_set_source_pixbuf (cairo_t         *cr,
+cdk_cairo_set_source_pixbuf (cairo_t         *cr,
                              const GdkPixbuf *pixbuf,
                              gdouble          pixbuf_x,
                              gdouble          pixbuf_y)
@@ -331,24 +331,24 @@ gdk_cairo_set_source_pixbuf (cairo_t         *cr,
   cairo_format_t format;
   cairo_surface_t *surface;
 
-  if (gdk_pixbuf_get_n_channels (pixbuf) == 3)
+  if (cdk_pixbuf_get_n_channels (pixbuf) == 3)
     format = CAIRO_FORMAT_RGB24;
   else
     format = CAIRO_FORMAT_ARGB32;
 
   surface = cairo_surface_create_similar_image (cairo_get_target (cr),
                                                 format,
-                                                gdk_pixbuf_get_width (pixbuf),
-                                                gdk_pixbuf_get_height (pixbuf));
+                                                cdk_pixbuf_get_width (pixbuf),
+                                                cdk_pixbuf_get_height (pixbuf));
 
-  gdk_cairo_surface_paint_pixbuf (surface, pixbuf);
+  cdk_cairo_surface_paint_pixbuf (surface, pixbuf);
 
   cairo_set_source_surface (cr, surface, pixbuf_x, pixbuf_y);
   cairo_surface_destroy (surface);
 }
 
 /**
- * gdk_cairo_set_source_window:
+ * cdk_cairo_set_source_window:
  * @cr: a cairo context
  * @window: a #GdkWindow
  * @x: X coordinate of location to place upper left corner of @window
@@ -366,7 +366,7 @@ gdk_cairo_set_source_pixbuf (cairo_t         *cr,
  * Since: 2.24
  */
 void
-gdk_cairo_set_source_window (cairo_t   *cr,
+cdk_cairo_set_source_window (cairo_t   *cr,
                              GdkWindow *window,
                              gdouble    x,
                              gdouble    y)
@@ -376,13 +376,13 @@ gdk_cairo_set_source_window (cairo_t   *cr,
   g_return_if_fail (cr != NULL);
   g_return_if_fail (GDK_IS_WINDOW (window));
 
-  surface = _gdk_window_ref_cairo_surface (window);
+  surface = _cdk_window_ref_cairo_surface (window);
   cairo_set_source_surface (cr, surface, x, y);
   cairo_surface_destroy (surface);
 }
 
 /*
- * _gdk_cairo_surface_extents:
+ * _cdk_cairo_surface_extents:
  * @surface: surface to measure
  * @extents: (out): rectangle to put the extents
  *
@@ -397,7 +397,7 @@ gdk_cairo_set_source_window (cairo_t   *cr,
  * Returns: %TRUE if the extents fit in a #GdkRectangle, %FALSE if not
  */
 gboolean
-_gdk_cairo_surface_extents (cairo_surface_t *surface,
+_cdk_cairo_surface_extents (cairo_surface_t *surface,
                             GdkRectangle    *extents)
 {
   double x1, x2, y1, y2;
@@ -440,7 +440,7 @@ _gdk_cairo_surface_extents (cairo_surface_t *surface,
  * bitmaps (and not pixmaps), with zero pixels being transparent.
  */
 /**
- * gdk_cairo_region_create_from_surface:
+ * cdk_cairo_region_create_from_surface:
  * @surface: a cairo surface
  *
  * Creates region that describes covers the area where the given
@@ -452,7 +452,7 @@ _gdk_cairo_surface_extents (cairo_surface_t *surface,
  * Returns: A #cairo_region_t; must be freed with cairo_region_destroy()
  */
 cairo_region_t *
-gdk_cairo_region_create_from_surface (cairo_surface_t *surface)
+cdk_cairo_region_create_from_surface (cairo_surface_t *surface)
 {
   cairo_region_t *region;
   GdkRectangle extents, rect;
@@ -461,7 +461,7 @@ gdk_cairo_region_create_from_surface (cairo_surface_t *surface)
   gint x, y, stride;
   guchar *data;
 
-  _gdk_cairo_surface_extents (surface, &extents);
+  _cdk_cairo_surface_extents (surface, &extents);
 
   if (cairo_surface_get_content (surface) == CAIRO_CONTENT_COLOR)
     return cairo_region_create_rectangle (&extents);
@@ -530,7 +530,7 @@ gdk_cairo_region_create_from_surface (cairo_surface_t *surface)
 }
 
 cairo_region_t *
-gdk_cairo_region_from_clip (cairo_t *cr)
+cdk_cairo_region_from_clip (cairo_t *cr)
 {
   cairo_rectangle_list_t *rectangles;
   cairo_region_t *region;

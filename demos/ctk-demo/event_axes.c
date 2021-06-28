@@ -13,7 +13,7 @@
  * a different hardware device is used to move the pointer, the
  * master device will be updated to match the axes it provides,
  * these changes can be tracked through GdkDevice::changed, or
- * checking gdk_event_get_source_device().
+ * checking cdk_event_get_source_device().
  *
  * On the other hand, this demo handles basic multitouch events,
  * each event coming from an specific touchpoint will contain a
@@ -84,7 +84,7 @@ axes_info_new (void)
   AxesInfo *info;
 
   info = g_new0 (AxesInfo, 1);
-  gdk_rgba_parse (&info->color, colors[cur_color]);
+  cdk_rgba_parse (&info->color, colors[cur_color]);
 
   cur_color = (cur_color + 1) % G_N_ELEMENTS (colors);
 
@@ -123,10 +123,10 @@ update_axes_from_event (GdkEvent  *event,
   gdouble x, y;
   AxesInfo *info;
 
-  device = gdk_event_get_device (event);
-  source_device = gdk_event_get_source_device (event);
-  sequence = gdk_event_get_event_sequence (event);
-  tool = gdk_event_get_device_tool (event);
+  device = cdk_event_get_device (event);
+  source_device = cdk_event_get_source_device (event);
+  sequence = cdk_event_get_event_sequence (event);
+  tool = cdk_event_get_device_tool (event);
 
   if (event->type == GDK_TOUCH_END ||
       event->type == GDK_TOUCH_CANCEL)
@@ -179,17 +179,17 @@ update_axes_from_event (GdkEvent  *event,
     {
       info->axes =
       g_memdup (event->motion.axes,
-                sizeof (gdouble) * gdk_device_get_n_axes (source_device));
+                sizeof (gdouble) * cdk_device_get_n_axes (source_device));
     }
   else if (event->type == GDK_BUTTON_PRESS ||
            event->type == GDK_BUTTON_RELEASE)
     {
       info->axes =
       g_memdup (event->button.axes,
-                sizeof (gdouble) * gdk_device_get_n_axes (source_device));
+                sizeof (gdouble) * cdk_device_get_n_axes (source_device));
     }
 
-  if (gdk_event_get_coords (event, &x, &y))
+  if (cdk_event_get_coords (event, &x, &y))
     {
       info->x = x;
       info->y = y;
@@ -232,12 +232,12 @@ draw_axes_info (cairo_t       *cr,
                 CtkAllocation *allocation)
 {
   gdouble pressure, tilt_x, tilt_y, distance, wheel, rotation, slider;
-  GdkAxisFlags axes = gdk_device_get_axes (info->last_source);
+  GdkAxisFlags axes = cdk_device_get_axes (info->last_source);
 
   cairo_save (cr);
 
   cairo_set_line_width (cr, 1);
-  gdk_cairo_set_source_rgba (cr, &info->color);
+  cdk_cairo_set_source_rgba (cr, &info->color);
 
   cairo_move_to (cr, 0, info->y);
   cairo_line_to (cr, allocation->width, info->y);
@@ -257,7 +257,7 @@ draw_axes_info (cairo_t       *cr,
     {
       cairo_pattern_t *pattern;
 
-      gdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_PRESSURE,
+      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_PRESSURE,
                            &pressure);
 
       pattern = cairo_pattern_create_radial (0, 0, 0, 0, 0, 100);
@@ -275,9 +275,9 @@ draw_axes_info (cairo_t       *cr,
   if (axes & GDK_AXIS_FLAG_XTILT &&
       axes & GDK_AXIS_FLAG_YTILT)
     {
-      gdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_XTILT,
+      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_XTILT,
                            &tilt_x);
-      gdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_YTILT,
+      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_YTILT,
                            &tilt_y);
 
       render_arrow (cr, tilt_x * 100, tilt_y * 100, "Tilt");
@@ -288,7 +288,7 @@ draw_axes_info (cairo_t       *cr,
       double dashes[] = { 5.0, 5.0 };
       cairo_text_extents_t extents;
 
-      gdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_DISTANCE,
+      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_DISTANCE,
                            &distance);
 
       cairo_save (cr);
@@ -312,7 +312,7 @@ draw_axes_info (cairo_t       *cr,
 
   if (axes & GDK_AXIS_FLAG_WHEEL)
     {
-      gdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_WHEEL,
+      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_WHEEL,
                            &wheel);
 
       cairo_save (cr);
@@ -327,7 +327,7 @@ draw_axes_info (cairo_t       *cr,
 
   if (axes & GDK_AXIS_FLAG_ROTATION)
     {
-      gdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_ROTATION,
+      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_ROTATION,
                            &rotation);
       rotation *= 2 * G_PI;
 
@@ -346,7 +346,7 @@ draw_axes_info (cairo_t       *cr,
     {
       cairo_pattern_t *pattern, *mask;
 
-      gdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_SLIDER,
+      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_SLIDER,
                            &slider);
 
       cairo_save (cr);
@@ -422,7 +422,7 @@ draw_device_info (CtkWidget        *widget,
 
   string = g_string_new (NULL);
   g_string_append_printf (string, "Source: %s",
-                          gdk_device_get_name (info->last_source));
+                          cdk_device_get_name (info->last_source));
 
   if (sequence)
     g_string_append_printf (string, "\nSequence: %d",
@@ -433,8 +433,8 @@ draw_device_info (CtkWidget        *widget,
       const gchar *tool_type;
       guint64 serial;
 
-      tool_type = tool_type_to_string (gdk_device_tool_get_tool_type (info->last_tool));
-      serial = gdk_device_tool_get_serial (info->last_tool);
+      tool_type = tool_type_to_string (cdk_device_tool_get_tool_type (info->last_tool));
+      serial = cdk_device_tool_get_serial (info->last_tool);
       g_string_append_printf (string, "\nTool: %s", tool_type);
 
       if (serial != 0)
@@ -448,7 +448,7 @@ draw_device_info (CtkWidget        *widget,
 
   pango_layout_get_pixel_size (layout, NULL, &height);
 
-  gdk_cairo_set_source_rgba (cr, &info->color);
+  cdk_cairo_set_source_rgba (cr, &info->color);
   cairo_set_line_width (cr, 10);
   cairo_move_to (cr, 0, *y);
 

@@ -20,7 +20,7 @@
 #include "config.h"
 #include <string.h>
 
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 
 #include "ctk/ctkintl.h"
 #include "ctk/ctkimmodule.h"

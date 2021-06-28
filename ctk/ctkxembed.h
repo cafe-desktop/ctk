@@ -20,7 +20,7 @@
 #define __CTK_XEMBED_H__
 
 #include "xembed.h"
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 
 G_BEGIN_DECLS
 

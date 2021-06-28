@@ -31,12 +31,12 @@ progressive_prepared_callback (GdkPixbufLoader *loader,
 
   image = CTK_WIDGET (data);
 
-  pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
+  pixbuf = cdk_pixbuf_loader_get_pixbuf (loader);
 
   /* Avoid displaying random memory contents, since the pixbuf
    * isn't filled in yet.
    */
-  gdk_pixbuf_fill (pixbuf, 0xaaaaaaff);
+  cdk_pixbuf_fill (pixbuf, 0xaaaaaaff);
 
   ctk_image_set_from_pixbuf (CTK_IMAGE (image), pixbuf);
 }
@@ -112,7 +112,7 @@ progressive_timeout (gpointer data)
           return FALSE; /* uninstall the timeout */
         }
 
-      if (!gdk_pixbuf_loader_write (pixbuf_loader,
+      if (!cdk_pixbuf_loader_write (pixbuf_loader,
                                     buf, bytes_read,
                                     &error))
         {
@@ -183,7 +183,7 @@ progressive_timeout (gpointer data)
            * it was incomplete.
            */
           error = NULL;
-          if (!gdk_pixbuf_loader_close (pixbuf_loader,
+          if (!cdk_pixbuf_loader_close (pixbuf_loader,
                                         &error))
             {
               CtkWidget *dialog;
@@ -243,11 +243,11 @@ progressive_timeout (gpointer data)
 
       if (pixbuf_loader)
         {
-          gdk_pixbuf_loader_close (pixbuf_loader, NULL);
+          cdk_pixbuf_loader_close (pixbuf_loader, NULL);
           g_object_unref (pixbuf_loader);
         }
 
-      pixbuf_loader = gdk_pixbuf_loader_new ();
+      pixbuf_loader = cdk_pixbuf_loader_new ();
 
       g_signal_connect (pixbuf_loader, "area-prepared",
                         G_CALLBACK (progressive_prepared_callback), image);
@@ -270,7 +270,7 @@ start_progressive_loading (CtkWidget *image)
    * The timeout simply simulates a slow data source by inserting
    * pauses in the reading process.
    */
-  load_timeout = gdk_threads_add_timeout (150,
+  load_timeout = cdk_threads_add_timeout (150,
                                 progressive_timeout,
                                 image);
   g_source_set_name_by_id (load_timeout, "[ctk+] progressive_timeout");
@@ -288,7 +288,7 @@ cleanup_callback (GObject   *object,
 
   if (pixbuf_loader)
     {
-      gdk_pixbuf_loader_close (pixbuf_loader, NULL);
+      cdk_pixbuf_loader_close (pixbuf_loader, NULL);
       g_object_unref (pixbuf_loader);
       pixbuf_loader = NULL;
     }

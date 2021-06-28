@@ -86,7 +86,7 @@
  */
 
 #include "config.h"
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include "ctkpopover.h"
 #include "ctkpopoverprivate.h"
 #include "ctktypebuiltins.h"
@@ -114,7 +114,7 @@
 #include "ctksettingsprivate.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
-#include "wayland/gdkwayland.h"
+#include "wayland/cdkwayland.h"
 #endif
 
 #define TAIL_GAP_WIDTH  24
@@ -337,7 +337,7 @@ ctk_popover_hide_internal (CtkPopover *popover)
   if (ctk_widget_get_realized (widget))
     {
       cairo_region_t *region = cairo_region_create ();
-      gdk_window_input_shape_combine_region (ctk_widget_get_parent_window (widget),
+      cdk_window_input_shape_combine_region (ctk_widget_get_parent_window (widget),
                                              region, 0, 0);
       cairo_region_destroy (region);
     }
@@ -429,7 +429,7 @@ ctk_popover_realize (CtkWidget *widget)
     GDK_LEAVE_NOTIFY_MASK;
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
@@ -580,7 +580,7 @@ show_animate_cb (CtkWidget     *widget,
 
   if (priv->first_frame_skipped)
     ctk_progress_tracker_advance_frame (&priv->tracker,
-                                        gdk_frame_clock_get_frame_time (frame_clock));
+                                        cdk_frame_clock_get_frame_time (frame_clock));
   else
     priv->first_frame_skipped = TRUE;
 
@@ -694,7 +694,7 @@ ctk_popover_map (CtkWidget *widget)
 
   CTK_WIDGET_CLASS (ctk_popover_parent_class)->map (widget);
 
-  gdk_window_show (ctk_widget_get_window (widget));
+  cdk_window_show (ctk_widget_get_window (widget));
   ctk_popover_update_position (CTK_POPOVER (widget));
 
   ctk_window_set_default (priv->window, priv->default_widget);
@@ -707,7 +707,7 @@ ctk_popover_unmap (CtkWidget *widget)
 
   priv->button_pressed = FALSE;
 
-  gdk_window_hide (ctk_widget_get_window (widget));
+  cdk_window_hide (ctk_widget_get_window (widget));
   CTK_WIDGET_CLASS (ctk_popover_parent_class)->unmap (widget);
 
   if (ctk_window_get_default_widget (priv->window) == priv->default_widget)
@@ -776,7 +776,7 @@ ctk_popover_get_gap_coords (CtkPopover      *popover,
 
       ctk_widget_translate_coordinates (priv->widget, CTK_WIDGET (priv->window),
                                         rect.x, rect.y, &rect.x, &rect.y);
-      gdk_window_get_origin (ctk_widget_get_window (CTK_WIDGET (popover)),
+      cdk_window_get_origin (ctk_widget_get_window (CTK_WIDGET (popover)),
                              &win_x, &win_y);
       rect.x -= win_x;
       rect.y -= win_y;
@@ -1002,22 +1002,22 @@ ctk_popover_update_shape (CtkPopover *popover)
 
   win = ctk_widget_get_window (widget);
   surface =
-    gdk_window_create_similar_surface (win,
+    cdk_window_create_similar_surface (win,
                                        CAIRO_CONTENT_COLOR_ALPHA,
-                                       gdk_window_get_width (win),
-                                       gdk_window_get_height (win));
+                                       cdk_window_get_width (win),
+                                       cdk_window_get_height (win));
 
   cr = cairo_create (surface);
   ctk_popover_fill_border_path (popover, cr);
   cairo_destroy (cr);
 
-  region = gdk_cairo_region_create_from_surface (surface);
+  region = cdk_cairo_region_create_from_surface (surface);
   cairo_surface_destroy (surface);
 
   ctk_widget_shape_combine_region (widget, region);
   cairo_region_destroy (region);
 
-  gdk_window_set_child_shapes (ctk_widget_get_parent_window (widget));
+  cdk_window_set_child_shapes (ctk_widget_get_parent_window (widget));
 }
 
 static void
@@ -1246,7 +1246,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 
       ctk_popover_apply_tail_path (popover, cr);
-      gdk_cairo_set_source_rgba (cr, &border_color);
+      cdk_cairo_set_source_rgba (cr, &border_color);
 
       cairo_set_line_width (cr, border.bottom + 1);
       cairo_stroke (cr);
@@ -1526,7 +1526,7 @@ ctk_popover_size_allocate (CtkWidget     *widget,
 
   if (ctk_widget_get_realized (widget))
     {
-      gdk_window_move_resize (ctk_widget_get_window (widget),
+      cdk_window_move_resize (ctk_widget_get_window (widget),
                               0, 0, allocation->width, allocation->height);
       ctk_popover_update_shape (popover);
     }
@@ -1678,7 +1678,7 @@ ctk_popover_show (CtkWidget *widget)
   priv->state = STATE_SHOWN;
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_input_shape_combine_region (ctk_widget_get_parent_window (widget),
+    cdk_window_input_shape_combine_region (ctk_widget_get_parent_window (widget),
                                            NULL, 0, 0);
 }
 

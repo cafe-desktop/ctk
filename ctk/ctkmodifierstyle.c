@@ -61,7 +61,7 @@ _ctk_modifier_style_init (CtkModifierStyle *modifier_style)
   priv->color_properties = g_hash_table_new_full (g_str_hash,
                                                   g_str_equal,
                                                   (GDestroyNotify) g_free,
-                                                  (GDestroyNotify) gdk_rgba_free);
+                                                  (GDestroyNotify) cdk_rgba_free);
   priv->style = ctk_style_properties_new ();
 }
 
@@ -258,7 +258,7 @@ _ctk_modifier_style_set_color_property (CtkModifierStyle *style,
   old_color = g_hash_table_lookup (priv->color_properties, str);
 
   if ((!color && !old_color) ||
-      (color && old_color && gdk_rgba_equal (color, old_color)))
+      (color && old_color && cdk_rgba_equal (color, old_color)))
     {
       g_free (str);
       return;
@@ -267,7 +267,7 @@ _ctk_modifier_style_set_color_property (CtkModifierStyle *style,
   if (color)
     {
       g_hash_table_insert (priv->color_properties, str,
-                           gdk_rgba_copy (color));
+                           cdk_rgba_copy (color));
     }
   else
     {

@@ -53,7 +53,7 @@ ctk_css_value_initial_compute (CtkCssValue             *value,
       if (settings)
         {
           GdkScreen *screen = _ctk_settings_get_screen (settings);
-          double resolution = gdk_screen_get_resolution (screen);
+          double resolution = cdk_screen_get_resolution (screen);
 
           if (resolution > 0.0)
             return _ctk_css_number_value_new (resolution, CTK_CSS_NUMBER);

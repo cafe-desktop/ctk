@@ -309,7 +309,7 @@ setup_im (CtkXIMInfo *info)
   setup_styles (info);
   reinitialize_all_ics (info);
 
-  display = gdk_screen_get_display (info->screen);
+  display = cdk_screen_get_display (info->screen);
   info->display_closed_cb = g_signal_connect (display, "closed",
 	                                      G_CALLBACK (xim_info_display_closed), info);
 }
@@ -374,7 +374,7 @@ static void
 xim_info_try_im (CtkXIMInfo *info)
 {
   GdkScreen *screen = info->screen;
-  GdkDisplay *display = gdk_screen_get_display (screen);
+  GdkDisplay *display = cdk_screen_get_display (screen);
 
   g_assert (info->im == NULL);
   if (info->reconnecting)
@@ -423,7 +423,7 @@ get_im (GdkWindow *client_window,
 {
   GSList *tmp_list;
   CtkXIMInfo *info;
-  GdkScreen *screen = gdk_window_get_screen (client_window);
+  GdkScreen *screen = cdk_window_get_screen (client_window);
 
   info = NULL;
   tmp_list = open_ims;
@@ -511,7 +511,7 @@ ctk_im_context_xim_finalize (GObject *obj)
 	{
 	  GdkDisplay *display;
 
-	  display = gdk_screen_get_display (context_xim->im_info->screen);
+	  display = cdk_screen_get_display (context_xim->im_info->screen);
 	  XUnregisterIMInstantiateCallback (GDK_DISPLAY_XDISPLAY (display),
 					    NULL, NULL, NULL,
 					    xim_instantiate_callback,
@@ -597,7 +597,7 @@ ctk_im_context_xim_new (void)
   CtkIMContextXIM *result;
   const gchar *charset;
 
-  if (!GDK_IS_X11_DISPLAY(gdk_display_get_default()))
+  if (!GDK_IS_X11_DISPLAY(cdk_display_get_default()))
     return NULL;
   result = g_object_new (CTK_TYPE_IM_CONTEXT_XIM, NULL);
 
@@ -656,8 +656,8 @@ ctk_im_context_xim_filter_keypress (CtkIMContext *context,
   if (event->type == GDK_KEY_RELEASE && !context_xim->filter_key_release)
     return FALSE;
 
-  root_window = gdk_screen_get_root_window (gdk_window_get_screen (event->window));
-  window = gdk_window_get_toplevel (event->window);
+  root_window = cdk_screen_get_root_window (cdk_window_get_screen (event->window));
+  window = cdk_window_get_toplevel (event->window);
 
   xevent.type = (event->type == GDK_KEY_PRESS) ? KeyPress : KeyRelease;
   xevent.serial = 0;		/* hope it doesn't matter */
@@ -1555,11 +1555,11 @@ widget_for_window (GdkWindow *window)
   while (window)
     {
       gpointer user_data;
-      gdk_window_get_user_data (window, &user_data);
+      cdk_window_get_user_data (window, &user_data);
       if (user_data)
 	return user_data;
 
-      window = gdk_window_get_parent (window);
+      window = cdk_window_get_parent (window);
     }
 
   return NULL;
@@ -1631,10 +1631,10 @@ on_status_toplevel_configure (CtkWidget         *toplevel,
   if (status_window->window)
     {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      height = gdk_screen_get_height (ctk_widget_get_screen (toplevel));
+      height = cdk_screen_get_height (ctk_widget_get_screen (toplevel));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-      gdk_window_get_frame_extents (ctk_widget_get_window (toplevel),
+      cdk_window_get_frame_extents (ctk_widget_get_window (toplevel),
                                     &rect);
       ctk_widget_get_preferred_size ( (status_window->window),
                                  &requisition, NULL);
@@ -1776,7 +1776,7 @@ ctk_im_context_xim_shutdown (void)
   while (open_ims)
     {
       CtkXIMInfo *info = open_ims->data;
-      GdkDisplay *display = gdk_screen_get_display (info->screen);
+      GdkDisplay *display = cdk_screen_get_display (info->screen);
 
       xim_info_display_closed (display, FALSE, info);
       open_ims = g_slist_remove_link (open_ims, open_ims);

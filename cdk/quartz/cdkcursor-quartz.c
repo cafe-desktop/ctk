@@ -1,4 +1,4 @@
-/* gdkcursor-quartz.c
+/* cdkcursor-quartz.c
  *
  * Copyright (C) 2005-2007 Imendio AB
  *
@@ -18,13 +18,13 @@
 
 #include "config.h"
 
-#include "gdkdisplay.h"
-#include "gdkcursor.h"
-#include "gdkcursorprivate.h"
-#include "gdkquartzcursor.h"
-#include "gdkprivate-quartz.h"
-#include "gdkinternal-quartz.h"
-#include "gdkquartz-ctk-only.h"
+#include "cdkdisplay.h"
+#include "cdkcursor.h"
+#include "cdkcursorprivate.h"
+#include "cdkquartzcursor.h"
+#include "cdkprivate-quartz.h"
+#include "cdkinternal-quartz.h"
+#include "cdkquartz-ctk-only.h"
 
 #include "xcursors.h"
 
@@ -44,14 +44,14 @@ struct _GdkQuartzCursorClass
 static GdkCursor *cached_xcursors[G_N_ELEMENTS (xcursors)];
 
 static GdkCursor *
-gdk_quartz_cursor_new_from_nscursor (NSCursor      *nscursor,
+cdk_quartz_cursor_new_from_nscursor (NSCursor      *nscursor,
                                      GdkCursorType  cursor_type)
 {
   GdkQuartzCursor *private;
 
   private = g_object_new (GDK_TYPE_QUARTZ_CURSOR,
                           "cursor-type", cursor_type,
-                          "display", _gdk_display,
+                          "display", _cdk_display,
                           NULL);
   private->nscursor = nscursor;
 
@@ -70,7 +70,7 @@ create_blank_cursor (void)
                                hotSpot:NSMakePoint(0.0, 0.0)];
   [nsimage release];
 
-  return gdk_quartz_cursor_new_from_nscursor (nscursor, GDK_BLANK_CURSOR);
+  return cdk_quartz_cursor_new_from_nscursor (nscursor, GDK_BLANK_CURSOR);
 }
 
 static gboolean
@@ -178,7 +178,7 @@ create_builtin_cursor (GdkCursorType cursor_type)
   nscursor = [[NSCursor alloc] initWithImage:image hotSpot:hotspot];
   [image release];
 
-  cursor = gdk_quartz_cursor_new_from_nscursor (nscursor, GDK_CURSOR_IS_PIXMAP);
+  cursor = cdk_quartz_cursor_new_from_nscursor (nscursor, GDK_CURSOR_IS_PIXMAP);
 
   cached_xcursors[cursor_type] = g_object_ref (cursor);
 
@@ -188,12 +188,12 @@ create_builtin_cursor (GdkCursorType cursor_type)
 }
 
 GdkCursor*
-_gdk_quartz_display_get_cursor_for_type (GdkDisplay    *display,
+_cdk_quartz_display_get_cursor_for_type (GdkDisplay    *display,
                                          GdkCursorType  cursor_type)
 {
   NSCursor *nscursor;
 
-  g_return_val_if_fail (display == gdk_display_get_default (), NULL);
+  g_return_val_if_fail (display == cdk_display_get_default (), NULL);
 
   switch (cursor_type)
     {
@@ -247,12 +247,12 @@ _gdk_quartz_display_get_cursor_for_type (GdkDisplay    *display,
     }
 
   [nscursor retain];
-  return gdk_quartz_cursor_new_from_nscursor (nscursor, cursor_type);
+  return cdk_quartz_cursor_new_from_nscursor (nscursor, cursor_type);
 }
 
 
 GdkCursor *
-_gdk_quartz_display_get_cursor_for_surface (GdkDisplay      *display,
+_cdk_quartz_display_get_cursor_for_surface (GdkDisplay      *display,
 					    cairo_surface_t *surface,
 					    gdouble          x,
 					    gdouble          y)
@@ -264,13 +264,13 @@ _gdk_quartz_display_get_cursor_for_surface (GdkDisplay      *display,
 
   GDK_QUARTZ_ALLOC_POOL;
 
-  pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0,
+  pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0,
 					cairo_image_surface_get_width (surface),
 					cairo_image_surface_get_height (surface));
-  image = gdk_quartz_pixbuf_to_ns_image_libctk_only (pixbuf);
+  image = cdk_quartz_pixbuf_to_ns_image_libctk_only (pixbuf);
   nscursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(x, y)];
 
-  cursor = gdk_quartz_cursor_new_from_nscursor (nscursor, GDK_CURSOR_IS_PIXMAP);
+  cursor = cdk_quartz_cursor_new_from_nscursor (nscursor, GDK_CURSOR_IS_PIXMAP);
 
   g_object_unref (pixbuf);
 
@@ -285,14 +285,14 @@ _gdk_quartz_display_get_cursor_for_surface (GdkDisplay      *display,
  * instead of in advance). WebKit does this too.
  */
 
-@interface gdkCoreCursor : NSCursor {
+@interface cdkCoreCursor : NSCursor {
 @private
 	int type;
 	BOOL override;
 }
 @end
 
-@implementation gdkCoreCursor
+@implementation cdkCoreCursor
 
 - (int)_coreCursorType
 {
@@ -302,9 +302,9 @@ _gdk_quartz_display_get_cursor_for_surface (GdkDisplay      *display,
 }
 
 #define CUSTOM_CURSOR_CTOR(name, id) \
-	+ (gdkCoreCursor *)name \
+	+ (cdkCoreCursor *)name \
 	{ \
-		gdkCoreCursor *obj; \
+		cdkCoreCursor *obj; \
 		obj = [self new]; \
 		if (obj) { \
 			obj->override = YES; \
@@ -312,29 +312,29 @@ _gdk_quartz_display_get_cursor_for_surface (GdkDisplay      *display,
 		} \
 		return obj; \
 	}
-CUSTOM_CURSOR_CTOR(gdkHelpCursor, 40)
-CUSTOM_CURSOR_CTOR(gdkProgressCursor, 4)
+CUSTOM_CURSOR_CTOR(cdkHelpCursor, 40)
+CUSTOM_CURSOR_CTOR(cdkProgressCursor, 4)
 /* TODO OS X doesn't seem to have a way to get this. There is an undocumented
  * method +[NSCursor _waitCursor], but it doesn't actually return this cursor,
  * but rather some odd low-quality non-animating version of this cursor. Use
  * the progress cursor instead for now.
  */
-CUSTOM_CURSOR_CTOR(gdkWaitCursor, 4)
-CUSTOM_CURSOR_CTOR(gdkAliasCursor, 2)
-CUSTOM_CURSOR_CTOR(gdkMoveCursor, 39)
+CUSTOM_CURSOR_CTOR(cdkWaitCursor, 4)
+CUSTOM_CURSOR_CTOR(cdkAliasCursor, 2)
+CUSTOM_CURSOR_CTOR(cdkMoveCursor, 39)
 /* TODO OS X doesn't seem to provide one; copy the move cursor for now
  *  since it looks similar to what we want. */
-CUSTOM_CURSOR_CTOR(gdkAllScrollCursor, 39)
-CUSTOM_CURSOR_CTOR(gdkNEResizeCursor, 29)
-CUSTOM_CURSOR_CTOR(gdkNWResizeCursor, 33)
-CUSTOM_CURSOR_CTOR(gdkSEResizeCursor, 35)
-CUSTOM_CURSOR_CTOR(gdkSWResizeCursor, 37)
-CUSTOM_CURSOR_CTOR(gdkEWResizeCursor, 28)
-CUSTOM_CURSOR_CTOR(gdkNSResizeCursor, 32)
-CUSTOM_CURSOR_CTOR(gdkNESWResizeCursor, 30)
-CUSTOM_CURSOR_CTOR(gdkNWSEResizeCursor, 34)
-CUSTOM_CURSOR_CTOR(gdkZoomInCursor, 42)
-CUSTOM_CURSOR_CTOR(gdkZoomOutCursor, 43)
+CUSTOM_CURSOR_CTOR(cdkAllScrollCursor, 39)
+CUSTOM_CURSOR_CTOR(cdkNEResizeCursor, 29)
+CUSTOM_CURSOR_CTOR(cdkNWResizeCursor, 33)
+CUSTOM_CURSOR_CTOR(cdkSEResizeCursor, 35)
+CUSTOM_CURSOR_CTOR(cdkSWResizeCursor, 37)
+CUSTOM_CURSOR_CTOR(cdkEWResizeCursor, 28)
+CUSTOM_CURSOR_CTOR(cdkNSResizeCursor, 32)
+CUSTOM_CURSOR_CTOR(cdkNESWResizeCursor, 30)
+CUSTOM_CURSOR_CTOR(cdkNWSEResizeCursor, 34)
+CUSTOM_CURSOR_CTOR(cdkZoomInCursor, 42)
+CUSTOM_CURSOR_CTOR(cdkZoomOutCursor, 43)
 
 @end
 
@@ -346,47 +346,47 @@ struct CursorsByName {
 static const struct CursorsByName cursors_by_name[] = {
   /* Link & Status */
   { "context-menu", @"contextualMenuCursor" },
-  { "help", @"gdkHelpCursor" },
+  { "help", @"cdkHelpCursor" },
   { "pointer", @"pointingHandCursor" },
-  { "progress", @"gdkProgressCursor" },
-  { "wait", @"gdkWaitCursor" },
+  { "progress", @"cdkProgressCursor" },
+  { "wait", @"cdkWaitCursor" },
   /* Selection */
   { "cell", @"crosshairCursor" },
   { "crosshair", @"crosshairCursor" },
   { "text", @"IBeamCursor" },
   { "vertical-text", @"IBeamCursorForVerticalLayout" },
   /* Drag & Drop */
-  { "alias", @"gdkAliasCursor" },
+  { "alias", @"cdkAliasCursor" },
   { "copy", @"dragCopyCursor" },
-  { "move", @"gdkMoveCursor" },
+  { "move", @"cdkMoveCursor" },
   { "no-drop", @"operationNotAllowedCursor" },
   { "not-allowed", @"operationNotAllowedCursor" },
   { "grab", @"openHandCursor" },
   { "grabbing", @"closedHandCursor" },
   /* Resize & Scrolling */
-  { "all-scroll", @"gdkAllScrollCursor" },
+  { "all-scroll", @"cdkAllScrollCursor" },
   { "col-resize", @"resizeLeftRightCursor" },
   { "row-resize", @"resizeUpDownCursor" },
   { "n-resize", @"resizeUpCursor" },
   { "e-resize", @"resizeRightCursor" },
   { "s-resize", @"resizeDownCursor" },
   { "w-resize", @"resizeLeftCursor" },
-  { "ne-resize", @"gdkNEResizeCursor" },
-  { "nw-resize", @"gdkNWResizeCursor" },
-  { "se-resize", @"gdkSEResizeCursor" },
-  { "sw-resize", @"gdkSWResizeCursor" },
-  { "ew-resize", @"gdkEWResizeCursor" },
-  { "ns-resize", @"gdkNSResizeCursor" },
-  { "nesw-resize", @"gdkNESWResizeCursor" },
-  { "nwse-resize", @"gdkNWSEResizeCursor" },
+  { "ne-resize", @"cdkNEResizeCursor" },
+  { "nw-resize", @"cdkNWResizeCursor" },
+  { "se-resize", @"cdkSEResizeCursor" },
+  { "sw-resize", @"cdkSWResizeCursor" },
+  { "ew-resize", @"cdkEWResizeCursor" },
+  { "ns-resize", @"cdkNSResizeCursor" },
+  { "nesw-resize", @"cdkNESWResizeCursor" },
+  { "nwse-resize", @"cdkNWSEResizeCursor" },
   /* Zoom */
-  { "zoom-in", @"gdkZoomInCursor" },
-  { "zoom-out", @"gdkZoomOutCursor" },
+  { "zoom-in", @"cdkZoomInCursor" },
+  { "zoom-out", @"cdkZoomOutCursor" },
   { NULL, NULL },
 };
 
 GdkCursor*
-_gdk_quartz_display_get_cursor_for_name (GdkDisplay  *display,
+_cdk_quartz_display_get_cursor_for_name (GdkDisplay  *display,
                                          const gchar *name)
 {
   NSCursor *nscursor;
@@ -404,20 +404,20 @@ _gdk_quartz_display_get_cursor_for_name (GdkDisplay  *display,
         selector = NSSelectorFromString(test->selector);
         break;
       }
-  nscursor = [[gdkCoreCursor class] performSelector:selector];
+  nscursor = [[cdkCoreCursor class] performSelector:selector];
 
   [nscursor retain];
-  return gdk_quartz_cursor_new_from_nscursor (nscursor, GDK_CURSOR_IS_PIXMAP);
+  return cdk_quartz_cursor_new_from_nscursor (nscursor, GDK_CURSOR_IS_PIXMAP);
 }
 
-G_DEFINE_TYPE (GdkQuartzCursor, gdk_quartz_cursor, GDK_TYPE_CURSOR)
+G_DEFINE_TYPE (GdkQuartzCursor, cdk_quartz_cursor, GDK_TYPE_CURSOR)
 
-static cairo_surface_t *gdk_quartz_cursor_get_surface (GdkCursor *cursor,
+static cairo_surface_t *cdk_quartz_cursor_get_surface (GdkCursor *cursor,
 						       gdouble *x_hot,
 						       gdouble *y_hot);
 
 static void
-gdk_quartz_cursor_finalize (GObject *object)
+cdk_quartz_cursor_finalize (GObject *object)
 {
   GdkQuartzCursor *private = GDK_QUARTZ_CURSOR (object);
 
@@ -427,36 +427,36 @@ gdk_quartz_cursor_finalize (GObject *object)
 }
 
 static void
-gdk_quartz_cursor_class_init (GdkQuartzCursorClass *quartz_cursor_class)
+cdk_quartz_cursor_class_init (GdkQuartzCursorClass *quartz_cursor_class)
 {
   GdkCursorClass *cursor_class = GDK_CURSOR_CLASS (quartz_cursor_class);
   GObjectClass *object_class = G_OBJECT_CLASS (quartz_cursor_class);
 
-  object_class->finalize = gdk_quartz_cursor_finalize;
+  object_class->finalize = cdk_quartz_cursor_finalize;
 
-  cursor_class->get_surface = gdk_quartz_cursor_get_surface;
+  cursor_class->get_surface = cdk_quartz_cursor_get_surface;
 }
 
 static void
-gdk_quartz_cursor_init (GdkQuartzCursor *cursor)
+cdk_quartz_cursor_init (GdkQuartzCursor *cursor)
 {
 }
 
 
 gboolean
-_gdk_quartz_display_supports_cursor_alpha (GdkDisplay *display)
+_cdk_quartz_display_supports_cursor_alpha (GdkDisplay *display)
 {
   return TRUE;
 }
 
 gboolean
-_gdk_quartz_display_supports_cursor_color (GdkDisplay *display)
+_cdk_quartz_display_supports_cursor_color (GdkDisplay *display)
 {
   return TRUE;
 }
 
 void
-_gdk_quartz_display_get_default_cursor_size (GdkDisplay *display,
+_cdk_quartz_display_get_default_cursor_size (GdkDisplay *display,
                                              guint      *width,
                                              guint      *height)
 {
@@ -466,7 +466,7 @@ _gdk_quartz_display_get_default_cursor_size (GdkDisplay *display,
 }
 
 void
-_gdk_quartz_display_get_maximal_cursor_size (GdkDisplay *display,
+_cdk_quartz_display_get_maximal_cursor_size (GdkDisplay *display,
                                              guint       *width,
                                              guint       *height)
 {
@@ -476,7 +476,7 @@ _gdk_quartz_display_get_maximal_cursor_size (GdkDisplay *display,
 }
 
 NSCursor *
-_gdk_quartz_cursor_get_ns_cursor (GdkCursor *cursor)
+_cdk_quartz_cursor_get_ns_cursor (GdkCursor *cursor)
 {
   GdkQuartzCursor *cursor_private;
 
@@ -491,7 +491,7 @@ _gdk_quartz_cursor_get_ns_cursor (GdkCursor *cursor)
 }
 
 static cairo_surface_t *
-gdk_quartz_cursor_get_surface (GdkCursor *cursor,
+cdk_quartz_cursor_get_surface (GdkCursor *cursor,
 			       gdouble *x_hot,
 			       gdouble *y_hot)
 {

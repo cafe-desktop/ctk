@@ -20,7 +20,7 @@
 
 #include <cairo.h>
 #include <pango/pango.h>
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include "ctkcssenumvalueprivate.h"
 

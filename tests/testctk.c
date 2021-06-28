@@ -38,8 +38,8 @@
 #endif
 
 #include "ctk/ctk.h"
-#include "gdk/gdk.h"
-#include "gdk/gdkkeysyms.h"
+#include "cdk/cdk.h"
+#include "cdk/cdkkeysyms.h"
 
 #ifdef G_OS_WIN32
 #define sleep(n) _sleep(n)
@@ -155,7 +155,7 @@ on_alpha_window_draw (CtkWidget *widget,
                                          height / 2,
 					 radius * 1.33);
 
-  if (gdk_screen_get_rgba_visual (ctk_widget_get_screen (widget)) &&
+  if (cdk_screen_get_rgba_visual (ctk_widget_get_screen (widget)) &&
       ctk_widget_is_composited (widget))
     cairo_set_source_rgba (cr, 1.0, 1.0, 1.0, 0.0); /* transparent */
   else
@@ -232,11 +232,11 @@ on_alpha_screen_changed (CtkWindow *window,
 			 CtkWidget *label)
 {
   GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
-  GdkVisual *visual = gdk_screen_get_rgba_visual (screen);
+  GdkVisual *visual = cdk_screen_get_rgba_visual (screen);
 
   if (!visual)
     {
-      visual = gdk_screen_get_system_visual (screen);
+      visual = cdk_screen_get_system_visual (screen);
       ctk_label_set_markup (CTK_LABEL (label), "<b>Screen doesn't support alpha</b>");
     }
   else
@@ -368,7 +368,7 @@ window_draw (CtkWidget *widget,
   ctk_widget_get_allocation (child, &allocation);
 
   /* the source data is the (composited) event box */
-  gdk_cairo_set_source_window (cr, ctk_widget_get_window (child),
+  cdk_cairo_set_source_window (cr, ctk_widget_get_window (child),
                                allocation.x,
                                allocation.y);
 
@@ -416,7 +416,7 @@ create_composited_window (CtkWidget *widget)
        * obviously must be performed after event box is realised.
        */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      gdk_window_set_composited (ctk_widget_get_window (event),
+      cdk_window_set_composited (ctk_widget_get_window (event),
                                  TRUE);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -449,8 +449,8 @@ pattern_set_bg (CtkWidget   *widget,
     { 0.67, 0.67, 1.0, 1.0 }
   };
     
-  gdk_window_set_user_data (child, widget);
-  gdk_window_set_background_rgba (child, &colors[level]);
+  cdk_window_set_user_data (child, widget);
+  cdk_window_set_background_rgba (child, &colors[level]);
 }
 
 static void
@@ -488,7 +488,7 @@ create_pattern (CtkWidget   *widget,
 	      attributes.event_mask = GDK_EXPOSURE_MASK;
 	      attributes.visual = ctk_widget_get_visual (widget);
 	      
-	      child = gdk_window_new (parent, &attributes,
+	      child = cdk_window_new (parent, &attributes,
 				      GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL);
 
 	      pattern_set_bg (widget, child, level);
@@ -496,7 +496,7 @@ create_pattern (CtkWidget   *widget,
 	      if (level < 2)
 		create_pattern (widget, child, level + 1, w, h);
 
-	      gdk_window_show (child);
+	      cdk_window_show (child);
 	    }
 	  j++;
 	  w *= 2;
@@ -517,7 +517,7 @@ pattern_hadj_changed (CtkAdjustment *adjustment,
 
   if (ctk_widget_get_realized (darea))
     {
-      gdk_window_scroll (ctk_widget_get_window (darea),
+      cdk_window_scroll (ctk_widget_get_window (darea),
                          *old_value - new_value, 0);
       *old_value = new_value;
     }
@@ -532,7 +532,7 @@ pattern_vadj_changed (CtkAdjustment *adjustment,
 
   if (ctk_widget_get_realized (darea))
     {
-      gdk_window_scroll (ctk_widget_get_window (darea),
+      cdk_window_scroll (ctk_widget_get_window (darea),
                          0, *old_value - new_value);
       *old_value = new_value;
     }
@@ -1146,10 +1146,10 @@ new_pixbuf (char      *filename,
   if (strcmp (filename, "test.xpm") == 0)
     pixbuf = NULL;
   else
-    pixbuf = gdk_pixbuf_new_from_file (filename, NULL);
+    pixbuf = cdk_pixbuf_new_from_file (filename, NULL);
 
   if (pixbuf == NULL)
-    pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) openfile);
+    pixbuf = cdk_pixbuf_new_from_xpm_data ((const char **) openfile);
   
   widget = ctk_image_new_from_pixbuf (pixbuf);
 
@@ -1545,7 +1545,7 @@ create_alpha_widgets (CtkWidget *widget)
 
       ctk_box_pack_start (CTK_BOX (main_hbox), vbox, FALSE, FALSE, 0);
 
-      /* Plain button (no gdkwindows */
+      /* Plain button (no cdkwindows */
 
       label = ctk_label_new ("non-window widget");
       ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
@@ -1999,7 +1999,7 @@ on_rotated_text_draw (CtkWidget *widget,
 
   if (tile_pixbuf)
     {
-      gdk_cairo_set_source_pixbuf (cr, tile_pixbuf, 0, 0);
+      cdk_cairo_set_source_pixbuf (cr, tile_pixbuf, 0, 0);
       cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
     }
   else
@@ -2076,7 +2076,7 @@ create_rotated_text (CtkWidget *widget)
       drawing_area = ctk_drawing_area_new ();
       ctk_box_pack_start (CTK_BOX (content_area), drawing_area, TRUE, TRUE, 0);
 
-      tile_pixbuf = gdk_pixbuf_new_from_file ("marble.xpm", NULL);
+      tile_pixbuf = cdk_pixbuf_new_from_file ("marble.xpm", NULL);
       
       g_signal_connect (drawing_area, "draw",
 			G_CALLBACK (on_rotated_text_draw), tile_pixbuf);
@@ -2428,7 +2428,7 @@ uposition_configure (CtkWidget *window)
   lx = g_object_get_data (G_OBJECT (window), "x");
   ly = g_object_get_data (G_OBJECT (window), "y");
 
-  gdk_window_get_root_origin (ctk_widget_get_window (window),
+  cdk_window_get_root_origin (ctk_widget_get_window (window),
                               &upositionx, &upositiony);
   sprintf (buffer, "%d", upositionx);
   ctk_label_set_text (lx, buffer);
@@ -2567,7 +2567,7 @@ create_pixbuf (CtkWidget *widget)
   CtkWidget *label;
   CtkWidget *separator;
   CtkWidget *pixbufwid;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
   if (!window)
     {
@@ -2594,9 +2594,9 @@ create_pixbuf (CtkWidget *widget)
       button = ctk_button_new ();
       ctk_box_pack_start (CTK_BOX (box2), button, FALSE, FALSE, 0);
 
-      gdk_window = ctk_widget_get_window (window);
+      cdk_window = ctk_widget_get_window (window);
 
-      pixbufwid = new_pixbuf ("test.xpm", gdk_window);
+      pixbufwid = new_pixbuf ("test.xpm", cdk_window);
 
       label = ctk_label_new ("Pixbuf\ntest");
       box3 = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
@@ -2608,7 +2608,7 @@ create_pixbuf (CtkWidget *widget)
       button = ctk_button_new ();
       ctk_box_pack_start (CTK_BOX (box2), button, FALSE, FALSE, 0);
 
-      pixbufwid = new_pixbuf ("test.xpm", gdk_window);
+      pixbufwid = new_pixbuf ("test.xpm", cdk_window);
 
       label = ctk_label_new ("Pixbuf\ntest");
       box3 = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
@@ -2793,7 +2793,7 @@ create_image (CtkWidget *widget)
                   ctk_image_new_from_icon_name ("dialog-warning",
                                                 CTK_ICON_SIZE_DIALOG));
 
-      pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) openfile);
+      pixbuf = cdk_pixbuf_new_from_xpm_data ((const char **) openfile);
       
       pack_image (vbox, "Pixbuf",
                   ctk_image_new_from_pixbuf (pixbuf));
@@ -3852,7 +3852,7 @@ entry_toggle_progress (CtkWidget *checkbutton,
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (checkbutton)))
     {
-      guint timeout = gdk_threads_add_timeout (100,
+      guint timeout = cdk_threads_add_timeout (100,
                                                entry_progress_timeout,
                                                entry);
       g_object_set_data_full (G_OBJECT (entry), "timeout-id",
@@ -4923,25 +4923,25 @@ set_cursor_from_name (CtkWidget *entry,
   GdkCursor *cursor;
 
   name = ctk_entry_get_text (CTK_ENTRY (entry));
-  cursor = gdk_cursor_new_from_name (ctk_widget_get_display (widget), name);
+  cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), name);
 
   if (cursor == NULL)
     {
       name = NULL;
-      cursor = gdk_cursor_new_for_display (ctk_widget_get_display (widget), GDK_BLANK_CURSOR);
+      cursor = cdk_cursor_new_for_display (ctk_widget_get_display (widget), GDK_BLANK_CURSOR);
     }
 
-  gdk_window_set_cursor (ctk_widget_get_window (widget), cursor);
+  cdk_window_set_cursor (ctk_widget_get_window (widget), cursor);
   g_object_unref (cursor);
 
   g_object_set_data_full (G_OBJECT (widget), "name", g_strdup (name), g_free);
 }
 
 #ifdef GDK_WINDOWING_X11
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
-#include "wayland/gdkwayland.h"
+#include "wayland/cdkwayland.h"
 #endif
 
 static void
@@ -4964,11 +4964,11 @@ change_cursor_theme (CtkWidget *widget,
   display = ctk_widget_get_display (widget);
 #ifdef GDK_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY (display))
-    gdk_x11_display_set_cursor_theme (display, theme, size);
+    cdk_x11_display_set_cursor_theme (display, theme, size);
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (display))
-    gdk_wayland_display_set_cursor_theme (display, theme, size);
+    cdk_wayland_display_set_cursor_theme (display, theme, size);
 #endif
 #endif
 }
@@ -5044,7 +5044,7 @@ create_cursors (CtkWidget *widget)
           ctk_entry_set_text (CTK_ENTRY (entry), "default");
           ctk_box_pack_start (CTK_BOX (hbox), entry, FALSE, TRUE, 0);
 
-          gdk_display_get_maximal_cursor_size (ctk_widget_get_display (vbox), &w, &h);
+          cdk_display_get_maximal_cursor_size (ctk_widget_get_display (vbox), &w, &h);
           size = ctk_spin_button_new_with_range (1.0, MIN (w, h), 1.0);
           ctk_spin_button_set_value (CTK_SPIN_BUTTON (size), 24.0);
           ctk_box_pack_start (CTK_BOX (hbox), size, TRUE, TRUE, 0);
@@ -5557,7 +5557,7 @@ screen_display_check (CtkWidget *widget, ScreenDisplaySelection *data)
   GdkScreen *current_screen = ctk_widget_get_screen (widget);
   
   display_name = ctk_entry_get_text (CTK_ENTRY (data->entry));
-  display = gdk_display_open (display_name);
+  display = cdk_display_open (display_name);
       
   if (!display)
     {
@@ -5591,7 +5591,7 @@ screen_display_check (CtkWidget *widget, ScreenDisplaySelection *data)
         }
       if (!found)
         ctk_combo_box_text_append_text (CTK_COMBO_BOX_TEXT (data->combo), display_name);
-      new_screen = gdk_display_get_default_screen (display);
+      new_screen = cdk_display_get_default_screen (display);
 
       ctk_window_set_screen (CTK_WINDOW (data->toplevel), new_screen);
       ctk_widget_destroy (data->dialog_window);
@@ -6215,10 +6215,10 @@ create_notebook (CtkWidget *widget)
       ctk_widget_realize (sample_notebook);
 
       if (!book_open)
-	book_open = gdk_pixbuf_new_from_xpm_data (book_open_xpm);
+	book_open = cdk_pixbuf_new_from_xpm_data (book_open_xpm);
 						  
       if (!book_closed)
-	book_closed = gdk_pixbuf_new_from_xpm_data (book_closed_xpm);
+	book_closed = cdk_pixbuf_new_from_xpm_data (book_closed_xpm);
 
       create_pages (CTK_NOTEBOOK (sample_notebook), 1, 5);
 
@@ -6854,7 +6854,7 @@ shape_pressed (CtkWidget *widget, GdkEventButton *event)
   p->y = (int) event->y;
 
   ctk_grab_add (widget);
-  gdk_seat_grab (gdk_event_get_seat ((GdkEvent *) event),
+  cdk_seat_grab (cdk_event_get_seat ((GdkEvent *) event),
                  ctk_widget_get_window (widget),
                  GDK_SEAT_CAPABILITY_ALL_POINTING,
                  TRUE, NULL, (GdkEvent *) event, NULL, NULL);
@@ -6865,7 +6865,7 @@ shape_released (CtkWidget      *widget,
                 GdkEventButton *event)
 {
   ctk_grab_remove (widget);
-  gdk_seat_ungrab (gdk_event_get_seat ((GdkEvent *) event));
+  cdk_seat_ungrab (cdk_event_get_seat ((GdkEvent *) event));
 }
 
 static void
@@ -6881,8 +6881,8 @@ shape_motion (CtkWidget      *widget,
    * Can't use event->x / event->y here 
    * because I need absolute coordinates.
    */
-  gdk_window_get_device_position (gdk_screen_get_root_window (ctk_widget_get_screen (widget)),
-                                  gdk_event_get_device ((GdkEvent *) event),
+  cdk_window_get_device_position (cdk_screen_get_root_window (ctk_widget_get_screen (widget)),
+                                  cdk_event_get_device ((GdkEvent *) event),
                                   &xp, &yp, NULL);
   ctk_window_move (CTK_WINDOW (widget), xp  - p->x, yp  - p->y);
 }
@@ -6923,18 +6923,18 @@ shape_create_icon (GdkScreen *screen,
 
   ctk_widget_realize (window);
 
-  pixbuf = gdk_pixbuf_new_from_file (xpm_file, NULL);
+  pixbuf = cdk_pixbuf_new_from_file (xpm_file, NULL);
   g_assert (pixbuf); /* FIXME: error handling */
 
   mask = cairo_image_surface_create (CAIRO_FORMAT_A1,
-                                     gdk_pixbuf_get_width (pixbuf),
-                                     gdk_pixbuf_get_height (pixbuf));
+                                     cdk_pixbuf_get_width (pixbuf),
+                                     cdk_pixbuf_get_height (pixbuf));
   cr = cairo_create (mask);
-  gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+  cdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
   cairo_paint (cr);
   cairo_destroy (cr);
 
-  mask_region = gdk_cairo_region_create_from_surface (mask);
+  mask_region = cdk_cairo_region_create_from_surface (mask);
                                                   
   cairo_region_translate (mask_region, px, py);
 
@@ -7054,7 +7054,7 @@ create_shapes (CtkWidget *widget)
           x += 20;
         }
 
-      gdk_window_shape_combine_region (ctk_widget_get_window (with_region),
+      cdk_window_shape_combine_region (ctk_widget_get_window (with_region),
                                        region,
                                        0, 0);
     }
@@ -7075,7 +7075,7 @@ create_wmhints (CtkWidget *widget)
   CtkWidget *button;
   CtkWidget *box1;
   CtkWidget *box2;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   GdkPixbuf *pixbuf;
   GList *list;
 
@@ -7095,20 +7095,20 @@ create_wmhints (CtkWidget *widget)
 
       ctk_widget_realize (window);
 
-      gdk_window = ctk_widget_get_window (window);
+      cdk_window = ctk_widget_get_window (window);
 
-      pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) openfile);
+      pixbuf = cdk_pixbuf_new_from_xpm_data ((const char **) openfile);
       list = g_list_prepend (NULL, pixbuf);
 
-      gdk_window_set_icon_list (gdk_window, list);
+      cdk_window_set_icon_list (cdk_window, list);
       
       g_list_free (list);
       g_object_unref (pixbuf);
 
-      gdk_window_set_icon_name (gdk_window, "WMHints Test Icon");
+      cdk_window_set_icon_name (cdk_window, "WMHints Test Icon");
   
-      gdk_window_set_decorations (gdk_window, GDK_DECOR_ALL | GDK_DECOR_MENU);
-      gdk_window_set_functions (gdk_window, GDK_FUNC_ALL | GDK_FUNC_RESIZE);
+      cdk_window_set_decorations (cdk_window, GDK_DECOR_ALL | GDK_DECOR_MENU);
+      cdk_window_set_functions (cdk_window, GDK_FUNC_ALL | GDK_FUNC_RESIZE);
       
       box1 = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
       ctk_container_add (CTK_CONTAINER (window), box1);
@@ -7643,18 +7643,18 @@ get_screen_corner (CtkWindow *window,
   switch (ctk_window_get_gravity (window))
     {
     case GDK_GRAVITY_SOUTH_EAST:
-      *x = gdk_screen_get_width (screen) - w;
-      *y = gdk_screen_get_height (screen) - h;
+      *x = cdk_screen_get_width (screen) - w;
+      *y = cdk_screen_get_height (screen) - h;
       break;
 
     case GDK_GRAVITY_NORTH_EAST:
-      *x = gdk_screen_get_width (screen) - w;
+      *x = cdk_screen_get_width (screen) - w;
       *y = 0;
       break;
 
     case GDK_GRAVITY_SOUTH_WEST:
       *x = 0;
-      *y = gdk_screen_get_height (screen) - h;
+      *y = cdk_screen_get_height (screen) - h;
       break;
 
     case GDK_GRAVITY_NORTH_WEST:
@@ -7663,28 +7663,28 @@ get_screen_corner (CtkWindow *window,
       break;
       
     case GDK_GRAVITY_SOUTH:
-      *x = (gdk_screen_get_width (screen) - w) / 2;
-      *y = gdk_screen_get_height (screen) - h;
+      *x = (cdk_screen_get_width (screen) - w) / 2;
+      *y = cdk_screen_get_height (screen) - h;
       break;
 
     case GDK_GRAVITY_NORTH:
-      *x = (gdk_screen_get_width (screen) - w) / 2;
+      *x = (cdk_screen_get_width (screen) - w) / 2;
       *y = 0;
       break;
 
     case GDK_GRAVITY_WEST:
       *x = 0;
-      *y = (gdk_screen_get_height (screen) - h) / 2;
+      *y = (cdk_screen_get_height (screen) - h) / 2;
       break;
 
     case GDK_GRAVITY_EAST:
-      *x = gdk_screen_get_width (screen) - w;
-      *y = (gdk_screen_get_height (screen) - h) / 2;
+      *x = cdk_screen_get_width (screen) - w;
+      *y = (cdk_screen_get_height (screen) - h) / 2;
       break;
 
     case GDK_GRAVITY_CENTER:
-      *x = (gdk_screen_get_width (screen) - w) / 2;
-      *y = (gdk_screen_get_height (screen) - h) / 2;
+      *x = (cdk_screen_get_width (screen) - w) / 2;
+      *y = (cdk_screen_get_height (screen) - h) / 2;
       break;
 
     case GDK_GRAVITY_STATIC:
@@ -8434,8 +8434,8 @@ find_widget (CtkWidget *widget, FindWidgetData *data)
 	{
 	  gint tx, ty, twidth, theight;
 	  
-          twidth = gdk_window_get_width (window);
-          theight = gdk_window_get_height (window);
+          twidth = cdk_window_get_width (window);
+          theight = cdk_window_get_height (window);
 
 	  if (new_allocation.x < 0)
 	    {
@@ -8452,13 +8452,13 @@ find_widget (CtkWidget *widget, FindWidgetData *data)
 	  if (new_allocation.y + new_allocation.height > theight)
 	    new_allocation.height = theight - new_allocation.y;
 
-	  gdk_window_get_position (window, &tx, &ty);
+	  cdk_window_get_position (window, &tx, &ty);
 	  new_allocation.x += tx;
 	  x_offset += tx;
 	  new_allocation.y += ty;
 	  y_offset += ty;
 
-	  window = gdk_window_get_parent (window);
+	  window = cdk_window_get_parent (window);
 	}
     }
 
@@ -8507,19 +8507,19 @@ find_widget_at_pointer (GdkDevice *device)
   gint x, y;
   FindWidgetData data;
  
- pointer_window = gdk_device_get_window_at_position (device, NULL, NULL);
+ pointer_window = cdk_device_get_window_at_position (device, NULL, NULL);
  
  if (pointer_window)
    {
      gpointer widget_ptr;
 
-     gdk_window_get_user_data (pointer_window, &widget_ptr);
+     cdk_window_get_user_data (pointer_window, &widget_ptr);
      widget = widget_ptr;
    }
 
  if (widget)
    {
-     gdk_window_get_device_position (ctk_widget_get_window (widget),
+     cdk_window_get_device_position (ctk_widget_get_window (widget),
                                      device,
 			             &x, &y, NULL);
      
@@ -8580,9 +8580,9 @@ snapshot_widget_event (CtkWidget	       *widget,
   if (event->type == GDK_BUTTON_RELEASE)
     {
       ctk_grab_remove (widget);
-      gdk_seat_ungrab (gdk_event_get_seat (event));
+      cdk_seat_ungrab (cdk_event_get_seat (event));
 
-      res_widget = find_widget_at_pointer (gdk_event_get_device (event));
+      res_widget = find_widget_at_pointer (cdk_event_get_device (event));
       if (data->is_toplevel && res_widget)
 	res_widget = ctk_widget_get_toplevel (res_widget);
       if (res_widget)
@@ -8602,7 +8602,7 @@ snapshot_widget_event (CtkWidget	       *widget,
           ctk_widget_draw (res_widget, cr);
           cairo_destroy (cr);
 
-          pixbuf = gdk_pixbuf_get_from_surface (surface,
+          pixbuf = cdk_pixbuf_get_from_surface (surface,
                                                 0, 0,
                                                 width, height);
           cairo_surface_destroy (surface);
@@ -8635,10 +8635,10 @@ snapshot_widget (CtkButton *button,
   data->is_toplevel = widget == data->toplevel_button;
 
   if (!data->cursor)
-    data->cursor = gdk_cursor_new_for_display (ctk_widget_get_display (widget),
+    data->cursor = cdk_cursor_new_for_display (ctk_widget_get_display (widget),
 					       GDK_TARGET);
 
-  gdk_seat_grab (gdk_device_get_seat (device),
+  cdk_seat_grab (cdk_device_get_seat (device),
                  ctk_widget_get_window (widget),
                  GDK_SEAT_CAPABILITY_ALL_POINTING,
                  TRUE, data->cursor, NULL, NULL, NULL);
@@ -8743,7 +8743,7 @@ selection_test_received (CtkWidget        *tree_view,
       char *name;
       CtkTreeIter iter;
 
-      name = gdk_atom_name (atoms[i]);
+      name = cdk_atom_name (atoms[i]);
       if (name != NULL)
         {
           ctk_list_store_insert_with_values (store, &iter, i, 0, name, -1);
@@ -8768,7 +8768,7 @@ selection_test_get_targets (CtkWidget *dialog, gint response, CtkWidget *tree_vi
     }
 
   if (targets_atom == GDK_NONE)
-    targets_atom = gdk_atom_intern ("TARGETS", FALSE);
+    targets_atom = cdk_atom_intern ("TARGETS", FALSE);
 
   ctk_selection_convert (tree_view, GDK_SELECTION_PRIMARY, targets_atom,
 			 GDK_CURRENT_TIME);
@@ -8865,7 +8865,7 @@ scroll_test_draw (CtkWidget     *widget,
   gint imin, imax, jmin, jmax;
   GdkRectangle clip;
   
-  gdk_cairo_get_clip_rectangle (cr, &clip);
+  cdk_cairo_get_clip_rectangle (cr, &clip);
 
   imin = (clip.x) / 10;
   imax = (clip.x + clip.width + 9) / 10;
@@ -8925,8 +8925,8 @@ scroll_test_adjustment_changed (CtkAdjustment *adjustment, CtkWidget *widget)
     return;
 
   window = ctk_widget_get_window (widget);
-  gdk_window_scroll (window, 0, dy);
-  gdk_window_process_updates (window, FALSE);
+  cdk_window_scroll (window, 0, dy);
+  cdk_window_process_updates (window, FALSE);
 }
 
 
@@ -9203,10 +9203,10 @@ layout_draw_handler (CtkWidget *widget, cairo_t *cr)
   if (!ctk_cairo_should_draw_window (cr, bin_window))
     return FALSE;
   
-  gdk_window_get_position (bin_window, &x, &y);
+  cdk_window_get_position (bin_window, &x, &y);
   cairo_translate (cr, x, y);
 
-  gdk_cairo_get_clip_rectangle (cr, &clip);
+  cdk_cairo_get_clip_rectangle (cr, &clip);
 
   imin = (clip.x) / 10;
   imax = (clip.x + clip.width + 9) / 10;
@@ -10004,8 +10004,8 @@ main (int argc, char *argv[])
   else
     g_warning ("Couldn't find file \"testctk.css\".");
 
-  display = gdk_display_get_default ();
-  screen = gdk_display_get_default_screen (display);
+  display = cdk_display_get_default ();
+  screen = cdk_display_get_default_screen (display);
 
   ctk_style_context_add_provider_for_screen (screen, CTK_STYLE_PROVIDER (provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);

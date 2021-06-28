@@ -21,7 +21,7 @@
  */
 
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 
 #include <stdio.h>
 

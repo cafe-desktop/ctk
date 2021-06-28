@@ -20,7 +20,7 @@
 #ifndef __GDK_DEVICE_PAD_PRIVATE_H__
 #define __GDK_DEVICE_PAD_PRIVATE_H__
 
-#include "gdkdevicepad.h"
+#include "cdkdevicepad.h"
 
 G_BEGIN_DECLS
 

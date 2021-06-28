@@ -1,4 +1,4 @@
-/* gdkquartzwindow.h
+/* cdkquartzwindow.h
  *
  * Copyright (C) 2005  Imendio AB
  * Copyright (C) 2010  Kristian Rietveld  <kris@ctk.org>
@@ -21,14 +21,14 @@
 #define __GDK_QUARTZ_WINDOW_H__
 
 #if !defined (__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkquartz.h> can be included directly."
+#error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_QUARTZ_WINDOW              (gdk_quartz_window_get_type ())
+#define GDK_TYPE_QUARTZ_WINDOW              (cdk_quartz_window_get_type ())
 #define GDK_QUARTZ_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_WINDOW, GdkQuartzWindow))
 #define GDK_QUARTZ_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_WINDOW, GdkQuartzWindowClass))
 #define GDK_IS_QUARTZ_WINDOW(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_WINDOW))
@@ -43,7 +43,7 @@ typedef GdkWindow GdkQuartzWindow;
 typedef struct _GdkQuartzWindowClass GdkQuartzWindowClass;
 
 GDK_AVAILABLE_IN_ALL
-GType     gdk_quartz_window_get_type     (void);
+GType     cdk_quartz_window_get_type     (void);
 
 G_END_DECLS
 

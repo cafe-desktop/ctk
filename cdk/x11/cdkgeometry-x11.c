@@ -17,12 +17,12 @@
 
 #include "config.h"
 
-#include "gdkinternals.h"
-#include "gdkrectangle.h"
-#include "gdkprivate-x11.h"
-#include "gdkscreen-x11.h"
-#include "gdkdisplay-x11.h"
-#include "gdkwindow-x11.h"
+#include "cdkinternals.h"
+#include "cdkrectangle.h"
+#include "cdkprivate-x11.h"
+#include "cdkscreen-x11.h"
+#include "cdkdisplay-x11.h"
+#include "cdkwindow-x11.h"
 
 
 typedef struct _GdkWindowQueueItem GdkWindowQueueItem;
@@ -36,7 +36,7 @@ struct _GdkWindowQueueItem
 };
 
 void
-_gdk_x11_window_move_resize_child (GdkWindow *window,
+_cdk_x11_window_move_resize_child (GdkWindow *window,
                                    gint       x,
                                    gint       y,
                                    gint       width,
@@ -71,16 +71,16 @@ _gdk_x11_window_move_resize_child (GdkWindow *window,
    * the window won't be visible anyway and thus it will be shaped
    * to nothing
    */
-  _gdk_x11_window_tmp_unset_parent_bg (window);
-  _gdk_x11_window_tmp_unset_bg (window, TRUE);
+  _cdk_x11_window_tmp_unset_parent_bg (window);
+  _cdk_x11_window_tmp_unset_bg (window, TRUE);
   XMoveResizeWindow (GDK_WINDOW_XDISPLAY (window),
                      GDK_WINDOW_XID (window),
                      (window->x + window->parent->abs_x) * impl->window_scale,
                      (window->y + window->parent->abs_y) * impl->window_scale,
                      width * impl->window_scale,
                      height * impl->window_scale);
-  _gdk_x11_window_tmp_reset_parent_bg (window);
-  _gdk_x11_window_tmp_reset_bg (window, TRUE);
+  _cdk_x11_window_tmp_reset_parent_bg (window);
+  _cdk_x11_window_tmp_reset_bg (window, TRUE);
 }
 
 static Bool
@@ -137,7 +137,7 @@ queue_item_free (GdkWindowQueueItem *item)
 }
 
 void
-_gdk_x11_display_free_translate_queue (GdkDisplay *display)
+_cdk_x11_display_free_translate_queue (GdkDisplay *display)
 {
   GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
 
@@ -150,7 +150,7 @@ _gdk_x11_display_free_translate_queue (GdkDisplay *display)
 }
 
 static void
-gdk_window_queue (GdkWindow          *window,
+cdk_window_queue (GdkWindow          *window,
 		  GdkWindowQueueItem *new_item)
 {
   GdkX11Display *display_x11 = GDK_X11_DISPLAY (GDK_WINDOW_DISPLAY (window));
@@ -215,17 +215,17 @@ gdk_window_queue (GdkWindow          *window,
 }
 
 void
-_gdk_x11_window_queue_antiexpose (GdkWindow *window,
+_cdk_x11_window_queue_antiexpose (GdkWindow *window,
 				  cairo_region_t *area)
 {
   GdkWindowQueueItem *item = g_new (GdkWindowQueueItem, 1);
   item->antiexpose_area = cairo_region_reference (area);
 
-  gdk_window_queue (window, item);
+  cdk_window_queue (window, item);
 }
 
 void
-_gdk_x11_window_process_expose (GdkWindow    *window,
+_cdk_x11_window_process_expose (GdkWindow    *window,
                                 gulong        serial,
                                 GdkRectangle *area)
 {
@@ -257,7 +257,7 @@ _gdk_x11_window_process_expose (GdkWindow    *window,
     }
 
   if (!cairo_region_is_empty (invalidate_region))
-    _gdk_window_invalidate_for_expose (window, invalidate_region);
+    _cdk_window_invalidate_for_expose (window, invalidate_region);
 
   cairo_region_destroy (invalidate_region);
 }

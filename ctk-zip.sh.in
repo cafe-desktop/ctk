@@ -20,7 +20,7 @@ rm $ZIP
 zip $ZIP -@ <<EOF
 etc/ctk-@CTK_API_VERSION@/ctkrc
 etc/ctk-@CTK_API_VERSION@/im-multipress.conf
-bin/libgdk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll
+bin/libcdk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll
 bin/libctk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll
 bin/libgailutil-@CTK_API_VERSION@-@GAIL_LT_CURRENT_MINUS_AGE@.dll
 bin/ctk-query-immodules-@CTK_API_VERSION@.exe
@@ -48,8 +48,8 @@ bin/ctk-builder-convert
 bin/ctk${APIVERSIONMAJOR}-demo.exe
 bin/ctk-update-icon-cache.exe
 share/man
-lib/libgdk-win32-@CTK_API_VERSION@.dll.a
-lib/gdk-win32-@CTK_API_VERSION@.lib
+lib/libcdk-win32-@CTK_API_VERSION@.dll.a
+lib/cdk-win32-@CTK_API_VERSION@.lib
 lib/libctk-win32-@CTK_API_VERSION@.dll.a
 lib/ctk-win32-@CTK_API_VERSION@.lib
 lib/libgailutil.dll.a

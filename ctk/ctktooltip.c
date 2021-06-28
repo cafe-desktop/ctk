@@ -40,7 +40,7 @@
 #include "ctkaccessible.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
-#include "wayland/gdkwayland.h"
+#include "wayland/cdkwayland.h"
 #endif
 
 
@@ -151,7 +151,7 @@ static inline GQuark tooltip_quark (void)
   static GQuark quark;
 
   if G_UNLIKELY (quark == 0)
-    quark = g_quark_from_static_string ("gdk-display-current-tooltip");
+    quark = g_quark_from_static_string ("cdk-display-current-tooltip");
   return quark;
 }
 
@@ -442,8 +442,8 @@ ctk_tooltip_trigger_tooltip_query (GdkDisplay *display)
   GdkDevice *device;
 
   /* Trigger logic as if the mouse moved */
-  device = gdk_seat_get_pointer (gdk_display_get_default_seat (display));
-  window = gdk_device_get_window_at_position (device, &x, &y);
+  device = cdk_seat_get_pointer (cdk_display_get_default_seat (display));
+  window = cdk_device_get_window_at_position (device, &x, &y);
   if (!window)
     return;
 
@@ -453,7 +453,7 @@ ctk_tooltip_trigger_tooltip_query (GdkDisplay *display)
   event.motion.y = y;
   event.motion.is_hint = FALSE;
 
-  gdk_window_get_root_coords (window, x, y, &x, &y);
+  cdk_window_get_root_coords (window, x, y, &x, &y);
   event.motion.x_root = x;
   event.motion.y_root = y;
 
@@ -587,7 +587,7 @@ window_to_alloc (CtkWidget *dest_widget,
       ctk_widget_get_parent (dest_widget))
     {
       gint wx, wy;
-      gdk_window_get_position (ctk_widget_get_window (dest_widget),
+      cdk_window_get_position (ctk_widget_get_window (dest_widget),
                                &wx, &wy);
 
       /* Offset coordinates if widget->window is smaller than
@@ -623,7 +623,7 @@ _ctk_widget_find_at_coords (GdkWindow *window,
 
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
 
-  gdk_window_get_user_data (window, (void **)&event_widget);
+  cdk_window_get_user_data (window, (void **)&event_widget);
 
   if (!event_widget)
     return NULL;
@@ -640,13 +640,13 @@ _ctk_widget_find_at_coords (GdkWindow *window,
     {
       gdouble px, py;
 
-      gdk_window_coords_to_parent (window,
+      cdk_window_coords_to_parent (window,
                                    child_loc.x, child_loc.y,
                                    &px, &py);
       child_loc.x = px;
       child_loc.y = py;
 
-      window = gdk_window_get_effective_parent (window);
+      window = cdk_window_get_effective_parent (window);
     }
 
   /* Failing to find widget->window can happen for e.g. a detached handle box;
@@ -711,7 +711,7 @@ find_topmost_widget_coords_from_event (GdkEvent *event,
   gdouble dx, dy;
   CtkWidget *tmp;
 
-  gdk_event_get_coords (event, &dx, &dy);
+  cdk_event_get_coords (event, &dx, &dy);
 
   /* Returns coordinates relative to tmp's allocation. */
   tmp = _ctk_widget_find_at_coords (event->any.window, dx, dy, &tx, &ty);
@@ -803,7 +803,7 @@ ctk_tooltip_set_last_window (CtkTooltip *tooltip,
 			       (gpointer *) &tooltip->last_window);
 
   if (window)
-    gdk_window_get_user_data (window, (gpointer *) &window_widget);
+    cdk_window_get_user_data (window, (gpointer *) &window_widget);
 
   if (window_widget)
     window_widget = ctk_widget_get_toplevel (window_widget);
@@ -889,14 +889,14 @@ ctk_tooltip_position (CtkTooltip *tooltip,
   anchor_rect.width = ctk_widget_get_allocated_width (new_tooltip_widget);
   anchor_rect.height = ctk_widget_get_allocated_height (new_tooltip_widget);
 
-  screen = gdk_window_get_screen (window);
+  screen = cdk_window_get_screen (window);
   settings = ctk_settings_get_for_screen (screen);
   g_object_get (settings,
                 "ctk-cursor-theme-size", &cursor_size,
                 NULL);
 
   if (cursor_size == 0)
-    cursor_size = gdk_display_get_default_cursor_size (display);
+    cursor_size = cdk_display_get_default_cursor_size (display);
 
   if (device)
     anchor_rect_padding = MAX (4, cursor_size - 32);
@@ -928,8 +928,8 @@ ctk_tooltip_position (CtkTooltip *tooltip,
        * far away from the pointer position.
        */
       widget_window = _ctk_widget_get_window (new_tooltip_widget);
-      effective_toplevel = gdk_window_get_effective_toplevel (widget_window);
-      gdk_window_get_device_position (effective_toplevel,
+      effective_toplevel = cdk_window_get_effective_toplevel (widget_window);
+      cdk_window_get_device_position (effective_toplevel,
                                       device,
                                       &pointer_x, &pointer_y, NULL);
 
@@ -958,7 +958,7 @@ ctk_tooltip_position (CtkTooltip *tooltip,
   ctk_window_set_transient_for (CTK_WINDOW (tooltip->current_window),
                                 CTK_WINDOW (toplevel));
 
-  gdk_window_move_to_rect (window,
+  cdk_window_move_to_rect (window,
                            &anchor_rect,
                            GDK_GRAVITY_SOUTH,
                            GDK_GRAVITY_NORTH,
@@ -995,11 +995,11 @@ ctk_tooltip_show_tooltip (GdkDisplay *display)
       if (!GDK_IS_WINDOW (window))
         return;
 
-      device = gdk_seat_get_pointer (gdk_display_get_default_seat (display));
+      device = cdk_seat_get_pointer (cdk_display_get_default_seat (display));
 
-      gdk_window_get_device_position (window, device, &x, &y, NULL);
+      cdk_window_get_device_position (window, device, &x, &y, NULL);
 
-      gdk_window_get_root_coords (window, x, y, &tx, &ty);
+      cdk_window_get_root_coords (window, x, y, &tx, &ty);
 
       tooltip_widget = _ctk_widget_find_at_coords (window, x, y, &x, &y);
     }
@@ -1074,7 +1074,7 @@ ctk_tooltip_hide_tooltip (CtkTooltip *tooltip)
       if (!tooltip->browse_mode_timeout_id)
         {
 	  tooltip->browse_mode_timeout_id =
-	    gdk_threads_add_timeout_full (0, timeout,
+	    cdk_threads_add_timeout_full (0, timeout,
 					  tooltip_browse_mode_expired,
 					  g_object_ref (tooltip),
 					  g_object_unref);
@@ -1138,7 +1138,7 @@ ctk_tooltip_start_delay (GdkDisplay *display)
   else
     timeout = HOVER_TIMEOUT;
 
-  tooltip->timeout_id = gdk_threads_add_timeout_full (0, timeout,
+  tooltip->timeout_id = cdk_threads_add_timeout_full (0, timeout,
 						      tooltip_popup_timeout,
 						      g_object_ref (display),
 						      g_object_unref);
@@ -1164,8 +1164,8 @@ _ctk_tooltip_focus_in (CtkWidget *widget)
 
   device = ctk_get_current_event_device ();
 
-  if (device && gdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
-    device = gdk_device_get_associated_device (device);
+  if (device && cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+    device = cdk_device_get_associated_device (device);
 
   /* This function should be called by either a focus in event,
    * or a key binding. In either case there should be a device.
@@ -1178,7 +1178,7 @@ _ctk_tooltip_focus_in (CtkWidget *widget)
 
   tooltip->keyboard_widget = g_object_ref (widget);
 
-  gdk_window_get_device_position (ctk_widget_get_window (widget),
+  cdk_window_get_device_position (ctk_widget_get_window (widget),
                                   device, &x, &y, NULL);
 
   return_value = ctk_tooltip_run_requery (&widget, tooltip, &x, &y);
@@ -1299,12 +1299,12 @@ tooltips_enabled (GdkEvent *event)
   GdkDevice *source_device;
   GdkInputSource source;
 
-  source_device = gdk_event_get_source_device (event);
+  source_device = cdk_event_get_source_device (event);
 
   if (!source_device)
     return FALSE;
 
-  source = gdk_device_get_source (source_device);
+  source = cdk_device_get_source (source_device);
 
   if (source != GDK_SOURCE_TOUCHSCREEN)
     return TRUE;
@@ -1331,7 +1331,7 @@ ctk_tooltip_handle_event_internal (GdkEvent *event)
 
   /* Returns coordinates relative to has_tooltip_widget's allocation. */
   has_tooltip_widget = find_topmost_widget_coords_from_event (event, &x, &y);
-  display = gdk_window_get_display (event->any.window);
+  display = cdk_window_get_display (event->any.window);
   current_tooltip = g_object_get_qdata (G_OBJECT (display), quark_current_tooltip);
 
   if (current_tooltip)
@@ -1360,7 +1360,7 @@ ctk_tooltip_handle_event_internal (GdkEvent *event)
     }
 
   /* Always poll for a next motion event */
-  gdk_event_request_motions (&event->motion);
+  cdk_event_request_motions (&event->motion);
 
   /* Hide the tooltip when there's no new tooltip widget */
   if (!has_tooltip_widget)

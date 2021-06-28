@@ -18,7 +18,7 @@
 #ifndef __CTK_WIN32_DRAW_H__
 #define __CTK_WIN32_DRAW_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <cairo.h>
 
 #include <ctk/ctkborder.h>

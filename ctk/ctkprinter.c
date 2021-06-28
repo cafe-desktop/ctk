@@ -1281,9 +1281,9 @@ ctk_enumerate_printers (CtkPrinterFunc func,
     {
       printer_list->loop = g_main_loop_new (NULL, FALSE);
 
-      gdk_threads_leave ();  
+      cdk_threads_leave ();  
       g_main_loop_run (printer_list->loop);
-      gdk_threads_enter ();  
+      cdk_threads_enter ();  
     }
 }
 

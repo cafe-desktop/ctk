@@ -33,9 +33,9 @@ int main (int argc, char *argv[])
   button = ctk_button_new ();
   ctk_container_add (CTK_CONTAINER (window), button);
 
-  display = gdk_display_open (NULL);
+  display = cdk_display_open (NULL);
 
-  ctk_window_set_screen (CTK_WINDOW (window), gdk_display_get_default_screen (display));
+  ctk_window_set_screen (CTK_WINDOW (window), cdk_display_get_default_screen (display));
 
   ctk_widget_show_all (window);
 

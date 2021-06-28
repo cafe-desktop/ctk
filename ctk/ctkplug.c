@@ -41,7 +41,7 @@
 
 #include "a11y/ctkplugaccessible.h"
 
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 
 /**
  * SECTION:ctkplug
@@ -433,9 +433,9 @@ _ctk_plug_add_to_socket (CtkPlug   *plug,
       GdkWindow *window;
 
       window = ctk_widget_get_window (widget);
-      gdk_window_reparent (window, priv->socket_window,
-                           -gdk_window_get_width (window),
-                           -gdk_window_get_height (window));
+      cdk_window_reparent (window, priv->socket_window,
+                           -cdk_window_get_width (window),
+                           -cdk_window_get_height (window));
     }
 
   ctk_widget_set_parent (widget, CTK_WIDGET (socket_));
@@ -454,7 +454,7 @@ _ctk_plug_add_to_socket (CtkPlug   *plug,
 static void
 ctk_plug_send_delete_event (CtkWidget *widget)
 {
-  GdkEvent *event = gdk_event_new (GDK_DELETE);
+  GdkEvent *event = cdk_event_new (GDK_DELETE);
 
   event->any.window = g_object_ref (ctk_widget_get_window (widget));
   event->any.send_event = FALSE;
@@ -466,7 +466,7 @@ ctk_plug_send_delete_event (CtkWidget *widget)
 
   g_object_unref (widget);
 
-  gdk_event_free (event);
+  cdk_event_free (event);
 }
 
 /**
@@ -502,11 +502,11 @@ _ctk_plug_remove_from_socket (CtkPlug   *plug,
 
   widget_was_visible = ctk_widget_get_visible (widget);
   window = ctk_widget_get_window (widget);
-  root_window = gdk_screen_get_root_window (ctk_widget_get_screen (widget));
+  root_window = cdk_screen_get_root_window (ctk_widget_get_screen (widget));
 
-  gdk_window_hide (window);
+  cdk_window_hide (window);
   _ctk_widget_set_in_reparent (widget, TRUE);
-  gdk_window_reparent (window, root_window, 0, 0);
+  cdk_window_reparent (window, root_window, 0, 0);
   ctk_widget_unparent (CTK_WIDGET (plug));
   _ctk_widget_set_in_reparent (widget, FALSE);
   
@@ -554,7 +554,7 @@ void
 ctk_plug_construct (CtkPlug *plug,
 		    Window   socket_id)
 {
-  ctk_plug_construct_for_display (plug, gdk_display_get_default (), socket_id);
+  ctk_plug_construct_for_display (plug, cdk_display_get_default (), socket_id);
 }
 
 /**
@@ -587,13 +587,13 @@ ctk_plug_construct_for_display (CtkPlug    *plug,
       gpointer user_data = NULL;
 
       if (GDK_IS_X11_DISPLAY (display))
-        priv->socket_window = gdk_x11_window_lookup_for_display (display, socket_id);
+        priv->socket_window = cdk_x11_window_lookup_for_display (display, socket_id);
       else
         priv->socket_window = NULL;
 
       if (priv->socket_window)
 	{
-	  gdk_window_get_user_data (priv->socket_window, &user_data);
+	  cdk_window_get_user_data (priv->socket_window, &user_data);
 
 	  if (user_data)
 	    {
@@ -609,7 +609,7 @@ ctk_plug_construct_for_display (CtkPlug    *plug,
 	    g_object_ref (priv->socket_window);
 	}
       else if (GDK_IS_X11_DISPLAY (display))
-        priv->socket_window = gdk_x11_window_foreign_new_for_display (display, socket_id);
+        priv->socket_window = cdk_x11_window_foreign_new_for_display (display, socket_id);
 
       if (priv->socket_window) {
 	g_signal_emit (plug, plug_signals[EMBEDDED], 0);
@@ -632,7 +632,7 @@ ctk_plug_construct_for_display (CtkPlug    *plug,
 CtkWidget*
 ctk_plug_new (Window socket_id)
 {
-  return ctk_plug_new_for_display (gdk_display_get_default (), socket_id);
+  return ctk_plug_new_for_display (cdk_display_get_default (), socket_id);
 }
 
 /**
@@ -701,10 +701,10 @@ static void
 xembed_set_info (GdkWindow     *window,
 		 unsigned long  flags)
 {
-  GdkDisplay *display = gdk_window_get_display (window);
+  GdkDisplay *display = cdk_window_get_display (window);
   unsigned long buffer[2];
 
-  Atom xembed_info_atom = gdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_INFO");
+  Atom xembed_info_atom = cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_INFO");
 
   buffer[0] = CTK_XEMBED_PROTOCOL_VERSION;
   buffer[1] = flags;
@@ -720,9 +720,9 @@ xembed_set_info (GdkWindow     *window,
 static void
 _ctk_plug_accessible_embed_set_info (CtkWidget *widget, GdkWindow *window)
 {
-  GdkDisplay *display = gdk_window_get_display (window);
+  GdkDisplay *display = cdk_window_get_display (window);
   gchar *buffer = ctk_plug_accessible_get_id (CTK_PLUG_ACCESSIBLE (ctk_widget_get_accessible (widget)));
-  Atom net_at_spi_path_atom = gdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_AT_SPI_PATH");
+  Atom net_at_spi_path_atom = cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_AT_SPI_PATH");
 
   if (!buffer)
     return;
@@ -835,15 +835,15 @@ handle_xembed_message (CtkPlug           *plug,
     }
 }
 static GdkFilterReturn
-ctk_plug_filter_func (GdkXEvent *gdk_xevent,
+ctk_plug_filter_func (GdkXEvent *cdk_xevent,
 		      GdkEvent  *event,
 		      gpointer   data)
 {
-  GdkScreen *screen = gdk_window_get_screen (event->any.window);
-  GdkDisplay *display = gdk_screen_get_display (screen);
+  GdkScreen *screen = cdk_window_get_screen (event->any.window);
+  GdkDisplay *display = cdk_screen_get_display (screen);
   CtkPlug *plug = CTK_PLUG (data);
   CtkPlugPrivate *priv = plug->priv;
-  XEvent *xevent = (XEvent *)gdk_xevent;
+  XEvent *xevent = (XEvent *)cdk_xevent;
   GHashTableIter iter;
   gpointer key;
   GdkFilterReturn return_val;
@@ -853,7 +853,7 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
   switch (xevent->type)
     {
     case ClientMessage:
-      if (xevent->xclient.message_type == gdk_x11_get_xatom_by_name_for_display (display, "_XEMBED"))
+      if (xevent->xclient.message_type == cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED"))
 	{
 	  _ctk_xembed_push_message (xevent);
 	  handle_xembed_message (plug,
@@ -866,7 +866,7 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
 
 	  return_val = GDK_FILTER_REMOVE;
 	}
-      else if (xevent->xclient.message_type == gdk_x11_get_xatom_by_name_for_display (display, "WM_DELETE_WINDOW"))
+      else if (xevent->xclient.message_type == cdk_x11_get_xatom_by_name_for_display (display, "WM_DELETE_WINDOW"))
 	{
 	  /* We filter these out because we take being reparented back to the
 	   * root window as the reliable end of the embedding protocol
@@ -912,7 +912,7 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
 		 * be invisible to the app.
 		 */
 
-		if (xre->parent == GDK_WINDOW_XID (gdk_screen_get_root_window (screen)))
+		if (xre->parent == GDK_WINDOW_XID (cdk_screen_get_root_window (screen)))
 		  {
 		    CTK_NOTE (PLUGSOCKET, g_message ("CtkPlug: calling ctk_plug_send_delete_event()"));
 		    ctk_plug_send_delete_event (widget);
@@ -924,17 +924,17 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
 	      goto done;
 	  }
 
-	if (xre->parent != GDK_WINDOW_XID (gdk_screen_get_root_window (screen)))
+	if (xre->parent != GDK_WINDOW_XID (cdk_screen_get_root_window (screen)))
 	  {
 	    /* Start of embedding protocol */
 
 	    CTK_NOTE (PLUGSOCKET, g_message ("CtkPlug: start of embedding"));
 
-            priv->socket_window = gdk_x11_window_lookup_for_display (display, xre->parent);
+            priv->socket_window = cdk_x11_window_lookup_for_display (display, xre->parent);
             if (priv->socket_window)
 	      {
 		gpointer user_data = NULL;
-		gdk_window_get_user_data (priv->socket_window, &user_data);
+		cdk_window_get_user_data (priv->socket_window, &user_data);
 
 		if (user_data)
 		  {
@@ -947,7 +947,7 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
 	      }
 	    else
 	      {
-		priv->socket_window = gdk_x11_window_foreign_new_for_display (display, xre->parent);
+		priv->socket_window = cdk_x11_window_foreign_new_for_display (display, xre->parent);
 		if (!priv->socket_window) /* Already gone */
 		  break; /* FIXME: shouldn't this unref the plug? i.e. "goto done;" instead */
 	      }
@@ -989,23 +989,23 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
         else
           event->key.type = GDK_KEY_RELEASE;
 
-        event->key.window = gdk_x11_window_lookup_for_display (display, xevent->xany.window);
+        event->key.window = cdk_x11_window_lookup_for_display (display, xevent->xany.window);
         event->key.send_event = TRUE;
         event->key.time = xevent->xkey.time;
         event->key.state = (GdkModifierType) xevent->xkey.state;
         event->key.hardware_keycode = xevent->xkey.keycode;
         event->key.keyval = GDK_KEY_VoidSymbol;
 
-        seat = gdk_display_get_default_seat (display);
-        keyboard = gdk_seat_get_keyboard (seat);
-        gdk_event_set_device (event, keyboard);
+        seat = cdk_display_get_default_seat (display);
+        keyboard = cdk_seat_get_keyboard (seat);
+        cdk_event_set_device (event, keyboard);
 
-        keymap = gdk_keymap_get_for_display (display);
+        keymap = cdk_keymap_get_for_display (display);
 
-        event->key.group = gdk_x11_keymap_get_group_for_state (keymap, xevent->xkey.state);
-        event->key.is_modifier = gdk_x11_keymap_key_is_modifier (keymap, event->key.hardware_keycode);
+        event->key.group = cdk_x11_keymap_get_group_for_state (keymap, xevent->xkey.state);
+        event->key.is_modifier = cdk_x11_keymap_key_is_modifier (keymap, event->key.hardware_keycode);
 
-        gdk_keymap_translate_keyboard_state (keymap,
+        cdk_keymap_translate_keyboard_state (keymap,
                                              event->key.hardware_keycode,
                                              event->key.state,
                                              event->key.group,
@@ -1013,7 +1013,7 @@ ctk_plug_filter_func (GdkXEvent *gdk_xevent,
                                              NULL, NULL, &consumed);
 
         state = event->key.state & ~consumed;
-        gdk_keymap_add_virtual_modifiers (keymap, &state);
+        cdk_keymap_add_virtual_modifiers (keymap, &state);
         event->key.state |= state;
 
         event->key.length = 0;
@@ -1032,7 +1032,7 @@ ctk_plug_realize (CtkWidget *widget)
   CtkPlug *plug = CTK_PLUG (widget);
   CtkPlugPrivate *priv = plug->priv;
   CtkWindow *window = CTK_WINDOW (widget);
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   GdkWindowAttr attributes;
   const gchar *title;
   gchar *wmclass_name, *wmclass_class;
@@ -1078,14 +1078,14 @@ ctk_plug_realize (CtkWidget *widget)
       GdkWindow *root_window;
       attributes.window_type = GDK_WINDOW_TOPLEVEL;
 
-      root_window = gdk_screen_get_root_window (screen);
+      root_window = cdk_screen_get_root_window (screen);
 
-      gdk_x11_display_error_trap_push (display);
+      cdk_x11_display_error_trap_push (display);
       if (priv->socket_window)
-        gdk_window = gdk_window_new (priv->socket_window,
+        cdk_window = cdk_window_new (priv->socket_window,
                                      &attributes, attributes_mask);
       else /* If it's a passive plug, we use the root window */
-        gdk_window = gdk_window_new (root_window,
+        cdk_window = cdk_window_new (root_window,
                                      &attributes, attributes_mask);
       /* Because the window isn't known to the window manager,
        * frame sync won't work. In theory, XEMBED could be extended
@@ -1093,21 +1093,21 @@ ctk_plug_realize (CtkWidget *widget)
        * it's just not worth the effort considering the current
        * minimal use of XEMBED.
        */
-      gdk_x11_window_set_frame_sync_enabled (gdk_window, FALSE);
-      ctk_widget_set_window (widget, gdk_window);
+      cdk_x11_window_set_frame_sync_enabled (cdk_window, FALSE);
+      ctk_widget_set_window (widget, cdk_window);
 
-      gdk_display_sync (ctk_widget_get_display (widget));
-      if (gdk_x11_display_error_trap_pop (display)) /* Uh-oh */
+      cdk_display_sync (ctk_widget_get_display (widget));
+      if (cdk_x11_display_error_trap_pop (display)) /* Uh-oh */
 	{
-	  gdk_x11_display_error_trap_push (display);
-	  gdk_window_destroy (gdk_window);
-	  gdk_x11_display_error_trap_pop_ignored (display);
-	  gdk_window = gdk_window_new (root_window,
+	  cdk_x11_display_error_trap_push (display);
+	  cdk_window_destroy (cdk_window);
+	  cdk_x11_display_error_trap_pop_ignored (display);
+	  cdk_window = cdk_window_new (root_window,
                                        &attributes, attributes_mask);
-          ctk_widget_set_window (widget, gdk_window);
+          ctk_widget_set_window (widget, cdk_window);
 	}
 
-      gdk_window_add_filter (gdk_window,
+      cdk_window_add_filter (cdk_window,
 			     ctk_plug_filter_func,
 			     widget);
 
@@ -1118,15 +1118,15 @@ ctk_plug_realize (CtkWidget *widget)
     }
   else
     {
-      gdk_window = gdk_window_new (ctk_widget_get_parent_window (widget),
+      cdk_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                    &attributes, attributes_mask);
-      ctk_widget_set_window (widget, gdk_window);
+      ctk_widget_set_window (widget, cdk_window);
     }
 
-  ctk_widget_register_window (widget, gdk_window);
+  ctk_widget_register_window (widget, cdk_window);
 
 #ifdef CTK_HAVE_ATK_PLUG_SET_CHILD
-  _ctk_plug_accessible_embed_set_info (widget, gdk_window);
+  _ctk_plug_accessible_embed_set_info (widget, cdk_window);
 #endif /* CTK_HAVE_ATK_PLUG_SET_CHILD */
 }
 
@@ -1148,8 +1148,8 @@ ctk_plug_hide (CtkWidget *widget)
     CTK_WIDGET_CLASS (bin_class)->hide (widget);
 }
 
-/* From gdkprivate.h */
-void gdk_synthesize_window_state (GdkWindow     *window,
+/* From cdkprivate.h */
+void cdk_synthesize_window_state (GdkWindow     *window,
                                   GdkWindowState unset_flags,
                                   GdkWindowState set_flags);
 
@@ -1172,7 +1172,7 @@ ctk_plug_map (CtkWidget *widget)
 
       xembed_set_info (ctk_widget_get_window (CTK_WIDGET (plug)), XEMBED_MAPPED);
 
-      gdk_synthesize_window_state (ctk_widget_get_window (widget),
+      cdk_synthesize_window_state (ctk_widget_get_window (widget),
 				   GDK_WINDOW_STATE_WITHDRAWN,
 				   0);
     }
@@ -1193,7 +1193,7 @@ ctk_plug_unmap (CtkWidget *widget)
 
       ctk_widget_set_mapped (widget, FALSE);
 
-      gdk_window_hide (window);
+      cdk_window_hide (window);
 
       child = ctk_bin_get_child (CTK_BIN (widget));
       if (child != NULL)
@@ -1201,7 +1201,7 @@ ctk_plug_unmap (CtkWidget *widget)
 
       xembed_set_info (ctk_widget_get_window (CTK_WIDGET (plug)), 0);
 
-      gdk_synthesize_window_state (window,
+      cdk_synthesize_window_state (window,
 				   0,
 				   GDK_WINDOW_STATE_WITHDRAWN);
     }

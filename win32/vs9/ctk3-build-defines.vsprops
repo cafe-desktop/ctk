@@ -9,14 +9,14 @@
 	>
 	<Tool
 		Name="VCCLCompilerTool"
-		AdditionalIncludeDirectories="..\..;$(GlibEtcInstallRoot)\include\gdk-pixbuf-2.0;$(GlibEtcInstallRoot)\include\pango-1.0;$(GlibEtcInstallRoot)\include\atk-1.0;$(GlibEtcInstallRoot)\include\cairo;$(GlibEtcInstallRoot)\include\gio-win32-2.0;$(GlibEtcInstallRoot)\include\glib-2.0;$(GlibEtcInstallRoot)\lib\glib-2.0\include;$(GlibEtcInstallRoot)\include\fribidi;$(GlibEtcInstallRoot)\include"
+		AdditionalIncludeDirectories="..\..;$(GlibEtcInstallRoot)\include\cdk-pixbuf-2.0;$(GlibEtcInstallRoot)\include\pango-1.0;$(GlibEtcInstallRoot)\include\atk-1.0;$(GlibEtcInstallRoot)\include\cairo;$(GlibEtcInstallRoot)\include\gio-win32-2.0;$(GlibEtcInstallRoot)\include\glib-2.0;$(GlibEtcInstallRoot)\lib\glib-2.0\include;$(GlibEtcInstallRoot)\include\fribidi;$(GlibEtcInstallRoot)\include"
 		PreprocessorDefinitions="HAVE_CONFIG_H;G_DISABLE_SINGLE_INCLUDES;ATK_DISABLE_SINGLE_INCLUDES;GDK_PIXBUF_DISABLE_SINGLE_INCLUDES;CTK_DISABLE_SINGLE_INCLUDES;_USE_MATH_DEFINES"
 		ForcedIncludeFiles="msvc_recommended_pragmas.h"
 		AdditionalOptions="/MP"
 	/>
 	<Tool
 		Name="VCLinkerTool"
-		AdditionalDependencies="gdk_pixbuf-2.0.lib pangocairo-1.0.lib pango-1.0.lib cairo-gobject.lib cairo.lib gio-2.0.lib gmodule-2.0.lib gobject-2.0.lib glib-2.0.lib intl.lib epoxy.lib"
+		AdditionalDependencies="cdk_pixbuf-2.0.lib pangocairo-1.0.lib pango-1.0.lib cairo-gobject.lib cairo.lib gio-2.0.lib gmodule-2.0.lib gobject-2.0.lib glib-2.0.lib intl.lib epoxy.lib"
 		AdditionalLibraryDirectories="$(GlibEtcInstallRoot)\lib"
 	/>
 	<UserMacro

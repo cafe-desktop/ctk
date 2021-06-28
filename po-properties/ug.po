@@ -19,144 +19,144 @@ msgstr ""
 "X-Poedit-Language: Uighur\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../gdk/gdkapplaunchcontext.c:129 ../gdk/gdkcursor.c:134
-#: ../gdk/gdkdevicemanager.c:170
+#: ../cdk/cdkapplaunchcontext.c:129 ../cdk/cdkcursor.c:134
+#: ../cdk/cdkdevicemanager.c:170
 msgid "Display"
 msgstr "كۆرسەتكۈچ"
 
-#: ../gdk/gdkcursor.c:126
+#: ../cdk/cdkcursor.c:126
 msgid "Cursor type"
 msgstr "نۇربەلگە تىپى"
 
-#: ../gdk/gdkcursor.c:127
+#: ../cdk/cdkcursor.c:127
 msgid "Standard cursor type"
 msgstr "ئۆلچەملىك نۇربەلگە تىپى"
 
-#: ../gdk/gdkcursor.c:135
+#: ../cdk/cdkcursor.c:135
 msgid "Display of this cursor"
 msgstr "بۇ نۇربەلگىنى كۆرسىتىش"
 
-#: ../gdk/gdkdevice.c:109
+#: ../cdk/cdkdevice.c:109
 msgid "Device Display"
 msgstr "ئۈسكۈنە كۆرسىتىش"
 
-#: ../gdk/gdkdevice.c:110
+#: ../cdk/cdkdevice.c:110
 msgid "Display which the device belongs to"
 msgstr "ئۈسكۈنە تەۋەلىكىنى كۆرسىتىدۇ"
 
-#: ../gdk/gdkdevice.c:124
+#: ../cdk/cdkdevice.c:124
 msgid "Device manager"
 msgstr "ئۈسكۈنە باشقۇرغۇچ"
 
-#: ../gdk/gdkdevice.c:125
+#: ../cdk/cdkdevice.c:125
 msgid "Device manager which the device belongs to"
 msgstr "ئۈسكۈنە تەۋەلىكىنى باشقۇرىدىغان باشقۇرغۇچ"
 
-#: ../gdk/gdkdevice.c:139 ../gdk/gdkdevice.c:140
+#: ../cdk/cdkdevice.c:139 ../cdk/cdkdevice.c:140
 msgid "Device name"
 msgstr "ئۈسكۈنە ئاتى"
 
-#: ../gdk/gdkdevice.c:154
+#: ../cdk/cdkdevice.c:154
 msgid "Device type"
 msgstr "ئۈسكۈنە تىپى"
 
-#: ../gdk/gdkdevice.c:155
+#: ../cdk/cdkdevice.c:155
 msgid "Device role in the device manager"
 msgstr "ئۈسكۈنىنىڭ ئۈسكۈنە باشقۇرغۇچتىكى رولى"
 
-#: ../gdk/gdkdevice.c:171
+#: ../cdk/cdkdevice.c:171
 msgid "Associated device"
 msgstr "باغلىنىشلىق ئۈسكۈنە"
 
-#: ../gdk/gdkdevice.c:172
+#: ../cdk/cdkdevice.c:172
 msgid "Associated pointer or keyboard with this device"
 msgstr "مۇشمۇ ئۈسكىنىگە باغلىنىشلىق بولغان كۆرسەتكۈچ(pointer) ياكى ھەرپتاختا"
 
-#: ../gdk/gdkdevice.c:185
+#: ../cdk/cdkdevice.c:185
 msgid "Input source"
 msgstr "كىرگۈزۈش مەنبەسى"
 
-#: ../gdk/gdkdevice.c:186
+#: ../cdk/cdkdevice.c:186
 msgid "Source type for the device"
 msgstr "ئۈسكۈنىنىڭ ئەسلى تىپى"
 
-#: ../gdk/gdkdevice.c:201 ../gdk/gdkdevice.c:202
+#: ../cdk/cdkdevice.c:201 ../cdk/cdkdevice.c:202
 msgid "Input mode for the device"
 msgstr "ئۈسكۈنىنىڭ كىرگۈزۈش ھالىتى"
 
-#: ../gdk/gdkdevice.c:217
+#: ../cdk/cdkdevice.c:217
 msgid "Whether the device has a cursor"
 msgstr "ئۈسكۈنىنىڭ نۇربەلگىسى بارمۇ يوق"
 
-#: ../gdk/gdkdevice.c:218
+#: ../cdk/cdkdevice.c:218
 msgid "Whether there is a visible cursor following device motion"
 msgstr "ئۈسكىنىنىڭ ھەرىكىتىگە ئەگىشىدىغان كۆرۈنىدىغان نۇربەلگە بارمۇ يوق"
 
-#: ../gdk/gdkdevice.c:232 ../gdk/gdkdevice.c:233
+#: ../cdk/cdkdevice.c:232 ../cdk/cdkdevice.c:233
 msgid "Number of axes in the device"
 msgstr "ئۈسكۈنىدىكى ئوق(كوئوردېنات ئوقلىرى) سانى"
 
-#: ../gdk/gdkdevicemanager.c:171
+#: ../cdk/cdkdevicemanager.c:171
 msgid "Display for the device manager"
 msgstr "ئۈسكۈنە باشقۇرغۇچ ئۈچۈن كۆرسىتىش"
 
-#: ../gdk/gdkdisplaymanager.c:163
+#: ../cdk/cdkdisplaymanager.c:163
 msgid "Default Display"
 msgstr "كۆڭۈلدىكى كۆرسەتكۈچ"
 
-#: ../gdk/gdkdisplaymanager.c:164
+#: ../cdk/cdkdisplaymanager.c:164
 msgid "The default display for GDK"
 msgstr "GDK نىڭ كۆڭۈلدىكى كۆرسەتكۈچى"
 
-#: ../gdk/gdkscreen.c:91
+#: ../cdk/cdkscreen.c:91
 msgid "Font options"
 msgstr "خەت نۇسخا تاللانمىلىرى"
 
-#: ../gdk/gdkscreen.c:92
+#: ../cdk/cdkscreen.c:92
 msgid "The default font options for the screen"
 msgstr "ئېكراندا كۆرسىتىلىدىغان كۆڭۈلدىكى خەت نۇسخىسىنىڭ تاللانمىلىرى"
 
-#: ../gdk/gdkscreen.c:99
+#: ../cdk/cdkscreen.c:99
 msgid "Font resolution"
 msgstr "خەت ئېنىقلىقى"
 
-#: ../gdk/gdkscreen.c:100
+#: ../cdk/cdkscreen.c:100
 msgid "The resolution for fonts on the screen"
 msgstr "ئېكراندا كۆرسىتىلىدىغان خەت نۇسخىسىنىڭ ئېنىقلىقى"
 
-#: ../gdk/gdkwindow.c:384 ../gdk/gdkwindow.c:385
+#: ../cdk/cdkwindow.c:384 ../cdk/cdkwindow.c:385
 msgid "Cursor"
 msgstr "نۇربەلگە"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:116
+#: ../cdk/x11/cdkdevicemanager-xi2.c:116
 msgid "Opcode"
 msgstr "Opcode"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:117
+#: ../cdk/x11/cdkdevicemanager-xi2.c:117
 msgid "Opcode for XInput2 requests"
 msgstr "XInput2 ئىلتىماسىنىڭ Opcode"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:123
+#: ../cdk/x11/cdkdevicemanager-xi2.c:123
 msgid "Major"
 msgstr "ئاساسىي"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:124
+#: ../cdk/x11/cdkdevicemanager-xi2.c:124
 msgid "Major version number"
 msgstr "ئاساسىي نەشر نومۇرى"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:130
+#: ../cdk/x11/cdkdevicemanager-xi2.c:130
 msgid "Minor"
 msgstr "قوشۇمچە"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:131
+#: ../cdk/x11/cdkdevicemanager-xi2.c:131
 msgid "Minor version number"
 msgstr "قوشۇمچە نەشر نومۇرى"
 
-#: ../gdk/x11/gdkdevice-xi2.c:138
+#: ../cdk/x11/cdkdevice-xi2.c:138
 msgid "Device ID"
 msgstr "ئۈسكۈنە ID سى"
 
-#: ../gdk/x11/gdkdevice-xi2.c:139
+#: ../cdk/x11/cdkdevice-xi2.c:139
 msgid "Device identifier"
 msgstr "ئۈسكۈنە بەلگىسى(كىملىكى)"
 

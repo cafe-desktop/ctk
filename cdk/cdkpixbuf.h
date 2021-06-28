@@ -26,25 +26,25 @@
 #define __GDK_PIXBUF_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
 #include <cairo.h>
-#include <gdk-pixbuf/gdk-pixbuf.h>
-#include <gdk/gdktypes.h>
-#include <gdk/gdkversionmacros.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkversionmacros.h>
 
 G_BEGIN_DECLS
 
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf *gdk_pixbuf_get_from_window  (GdkWindow       *window,
+GdkPixbuf *cdk_pixbuf_get_from_window  (GdkWindow       *window,
                                         gint             src_x,
                                         gint             src_y,
                                         gint             width,
                                         gint             height);
 
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf *gdk_pixbuf_get_from_surface (cairo_surface_t *surface,
+GdkPixbuf *cdk_pixbuf_get_from_surface (cairo_surface_t *surface,
                                         gint             src_x,
                                         gint             src_y,
                                         gint             width,

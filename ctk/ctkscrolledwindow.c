@@ -976,7 +976,7 @@ ctk_scrolled_window_invalidate_overshoot (CtkScrolledWindow *scrolled_window)
       rect.width = MAX_OVERSHOOT_DISTANCE;
       rect.height = child_allocation.height;
 
-      gdk_window_invalidate_rect (ctk_widget_get_window (CTK_WIDGET (scrolled_window)),
+      cdk_window_invalidate_rect (ctk_widget_get_window (CTK_WIDGET (scrolled_window)),
                                   &rect, TRUE);
     }
 
@@ -991,7 +991,7 @@ ctk_scrolled_window_invalidate_overshoot (CtkScrolledWindow *scrolled_window)
       rect.width = child_allocation.width;
       rect.height = MAX_OVERSHOOT_DISTANCE;
 
-      gdk_window_invalidate_rect (ctk_widget_get_window (CTK_WIDGET (scrolled_window)),
+      cdk_window_invalidate_rect (ctk_widget_get_window (CTK_WIDGET (scrolled_window)),
                                   &rect, TRUE);
     }
 }
@@ -1180,14 +1180,14 @@ translate_to_widget (CtkWidget *widget,
 
   event_widget = ctk_get_event_widget (event);
   event_widget_window = ctk_widget_get_window (event_widget);
-  gdk_event_get_coords (event, &event_x, &event_y);
+  cdk_event_get_coords (event, &event_x, &event_y);
   window = event->any.window;
   while (window && window != event_widget_window)
     {
-      gdk_window_get_position (window, &wx, &wy);
+      cdk_window_get_position (window, &wx, &wy);
       event_x += wx;
       event_y += wy;
-      window = gdk_window_get_effective_parent (window);
+      window = cdk_window_get_effective_parent (window);
     }
 
   if (!ctk_widget_get_has_window (event_widget))
@@ -1216,7 +1216,7 @@ event_close_to_indicator (CtkScrolledWindow *sw,
   priv = sw->priv;
 
   ctk_widget_get_allocation (indicator->scrollbar, &indicator_alloc);
-  gdk_window_get_position (indicator->window, &win_x, &win_y);
+  cdk_window_get_position (indicator->window, &win_x, &win_y);
   translate_to_widget (CTK_WIDGET (sw), event, &x, &y);
 
   if (indicator->over)
@@ -1277,7 +1277,7 @@ check_update_scrollbar_proximity (CtkScrolledWindow *sw,
   if (on_scrollbar)
     indicator_set_over (indicator, TRUE);
   else if (indicator_close && !on_other_scrollbar)
-    indicator->over_timeout_id = gdk_threads_add_timeout (30, enable_over_timeout_cb, indicator);
+    indicator->over_timeout_id = cdk_threads_add_timeout (30, enable_over_timeout_cb, indicator);
   else
     indicator_set_over (indicator, FALSE);
 
@@ -1426,7 +1426,7 @@ captured_event_cb (CtkWidget *widget,
 
   sw = CTK_SCROLLED_WINDOW (widget);
   priv = sw->priv;
-  source_device = gdk_event_get_source_device (event);
+  source_device = cdk_event_get_source_device (event);
 
   if (event->type == GDK_SCROLL)
     {
@@ -1448,7 +1448,7 @@ captured_event_cb (CtkWidget *widget,
       event->type != GDK_LEAVE_NOTIFY)
     return GDK_EVENT_PROPAGATE;
 
-  input_source = gdk_device_get_source (source_device);
+  input_source = cdk_device_get_source (source_device);
 
   if (input_source == GDK_SOURCE_KEYBOARD ||
       input_source == GDK_SOURCE_TOUCHSCREEN)
@@ -1766,7 +1766,7 @@ ctk_scrolled_window_allocate (CtkCssGadget        *gadget,
       if (priv->use_indicators)
         {
 	  if (ctk_widget_get_realized (widget))
-	    gdk_window_move_resize (priv->hindicator.window,
+	    cdk_window_move_resize (priv->hindicator.window,
 				    child_allocation.x,
 				    child_allocation.y,
 				    child_allocation.width,
@@ -1786,7 +1786,7 @@ ctk_scrolled_window_allocate (CtkCssGadget        *gadget,
       if (priv->use_indicators)
         {
 	  if (ctk_widget_get_realized (widget))
-	    gdk_window_move_resize (priv->vindicator.window,
+	    cdk_window_move_resize (priv->vindicator.window,
 				    child_allocation.x,
 				    child_allocation.y,
 				    child_allocation.width,
@@ -3393,7 +3393,7 @@ ctk_scrolled_window_size_allocate (CtkWidget     *widget,
   ctk_widget_set_allocation (widget, allocation);
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (ctk_widget_get_window (widget),
+    cdk_window_move_resize (ctk_widget_get_window (widget),
                             allocation->x, allocation->y,
                             allocation->width, allocation->height);
 
@@ -3438,13 +3438,13 @@ install_scroll_cursor (CtkScrolledWindow *scrolled_window,
   priv->scroll_window = window;
   g_object_weak_ref (G_OBJECT (priv->scroll_window), finalize_scroll_window, scrolled_window);
 
-  priv->scroll_cursor = gdk_window_get_cursor (priv->scroll_window);
+  priv->scroll_cursor = cdk_window_get_cursor (priv->scroll_window);
   if (priv->scroll_cursor)
     g_object_ref (priv->scroll_cursor);
 
-  display = gdk_window_get_display (priv->scroll_window);
-  cursor = gdk_cursor_new_from_name (display, "all-scroll");
-  gdk_window_set_cursor (priv->scroll_window, cursor);
+  display = cdk_window_get_display (priv->scroll_window);
+  cursor = cdk_cursor_new_from_name (display, "all-scroll");
+  cdk_window_set_cursor (priv->scroll_window, cursor);
   g_clear_object (&cursor);
 }
 
@@ -3455,7 +3455,7 @@ uninstall_scroll_cursor (CtkScrolledWindow *scrolled_window)
 
   if (priv->scroll_window)
     {
-      gdk_window_set_cursor (priv->scroll_window, priv->scroll_cursor);
+      cdk_window_set_cursor (priv->scroll_window, priv->scroll_cursor);
       g_object_weak_unref (G_OBJECT (priv->scroll_window), finalize_scroll_window, scrolled_window);
       clear_scroll_window (scrolled_window);
     }
@@ -3499,10 +3499,10 @@ ctk_scrolled_window_scroll_event (CtkWidget      *widget,
   priv = scrolled_window->priv;
 
   ctk_scrolled_window_invalidate_overshoot (scrolled_window);
-  source_device = gdk_event_get_source_device ((GdkEvent *) event);
-  input_source = gdk_device_get_source (source_device);
+  source_device = cdk_event_get_source_device ((GdkEvent *) event);
+  input_source = cdk_device_get_source (source_device);
 
-  if (gdk_event_get_scroll_deltas ((GdkEvent *) event, &delta_x, &delta_y))
+  if (cdk_event_get_scroll_deltas ((GdkEvent *) event, &delta_x, &delta_y))
     {
       if (priv->scroll_device != source_device)
         {
@@ -3514,7 +3514,7 @@ ctk_scrolled_window_scroll_event (CtkWidget      *widget,
 
       if (input_source == GDK_SOURCE_TRACKPOINT ||
           input_source == GDK_SOURCE_TOUCHPAD)
-        install_scroll_cursor (scrolled_window, gdk_event_get_window ((GdkEvent *)event));
+        install_scroll_cursor (scrolled_window, cdk_event_get_window ((GdkEvent *)event));
 
       if (shifted)
         {
@@ -3561,13 +3561,13 @@ ctk_scrolled_window_scroll_event (CtkWidget      *widget,
        * after scrolling finished, start kinetic scrolling when this
        * happens.
        */
-      if (gdk_event_is_scroll_stop_event ((GdkEvent *) event))
+      if (cdk_event_is_scroll_stop_event ((GdkEvent *) event))
         {
           handled = TRUE;
           start_deceleration = TRUE;
         }
     }
-  else if (gdk_event_get_scroll_direction ((GdkEvent *)event, &direction))
+  else if (cdk_event_get_scroll_direction ((GdkEvent *)event, &direction))
     {
       CtkWidget *range;
       gboolean may_scroll;
@@ -3624,7 +3624,7 @@ ctk_scrolled_window_scroll_event (CtkWidget      *widget,
       else if (_ctk_scrolled_window_get_overshoot (scrolled_window, NULL, NULL))
         {
           priv->scroll_events_overshoot_id =
-            gdk_threads_add_timeout (50, start_scroll_deceleration_cb, scrolled_window);
+            cdk_threads_add_timeout (50, start_scroll_deceleration_cb, scrolled_window);
           g_source_set_name_by_id (priv->scroll_events_overshoot_id,
                                    "[ctk+] start_scroll_deceleration_cb");
         }
@@ -3693,7 +3693,7 @@ scrolled_window_deceleration_cb (CtkWidget         *widget,
   gint64 current_time;
   gdouble position, elapsed;
 
-  current_time = gdk_frame_clock_get_frame_time (frame_clock);
+  current_time = cdk_frame_clock_get_frame_time (frame_clock);
   elapsed = (current_time - priv->last_deceleration_time) / (double)G_TIME_SPAN_SECOND;
   priv->last_deceleration_time = current_time;
 
@@ -3782,7 +3782,7 @@ ctk_scrolled_window_start_deceleration (CtkScrolledWindow *scrolled_window)
 
   frame_clock = ctk_widget_get_frame_clock (CTK_WIDGET (scrolled_window));
 
-  current_time = gdk_frame_clock_get_frame_time (frame_clock);
+  current_time = cdk_frame_clock_get_frame_time (frame_clock);
   elapsed = (current_time - priv->last_deceleration_time) / (double)G_TIME_SPAN_SECOND;
   priv->last_deceleration_time = current_time;
 
@@ -4246,12 +4246,12 @@ create_indicator_window (CtkScrolledWindow *scrolled_window,
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
   attributes.event_mask = ctk_widget_get_events (widget);
 
-  window = gdk_window_new (ctk_widget_get_window (widget),
+  window = cdk_window_new (ctk_widget_get_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_register_window (widget, window);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  gdk_window_set_background_rgba (window, &transparent);
+  cdk_window_set_background_rgba (window, &transparent);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (scrolled_window->priv->use_indicators)
@@ -4271,15 +4271,15 @@ indicator_set_fade (Indicator *indicator,
 
   visible = indicator->current_pos != 0.0 || indicator->target_pos != 0.0;
 
-  if (visible && !gdk_window_is_visible (indicator->window))
+  if (visible && !cdk_window_is_visible (indicator->window))
     {
-      gdk_window_show (indicator->window);
+      cdk_window_show (indicator->window);
       indicator->conceil_timer = g_timeout_add (INDICATOR_FADE_OUT_TIME, maybe_hide_indicator, indicator);
     }
-  if (!visible && gdk_window_is_visible (indicator->window) &&
+  if (!visible && cdk_window_is_visible (indicator->window) &&
       indicator->conceil_timer != 0)
     {
-      gdk_window_hide (indicator->window);
+      cdk_window_hide (indicator->window);
       g_source_remove (indicator->conceil_timer);
       indicator->conceil_timer = 0;
     }
@@ -4300,7 +4300,7 @@ indicator_fade_cb (CtkWidget     *widget,
   gdouble t;
 
   ctk_progress_tracker_advance_frame (&indicator->tracker,
-                                      gdk_frame_clock_get_frame_time (frame_clock));
+                                      cdk_frame_clock_get_frame_time (frame_clock));
   t = ctk_progress_tracker_get_ease_out_cubic (&indicator->tracker, FALSE);
 
   indicator_set_fade (indicator,
@@ -4354,7 +4354,7 @@ indicator_stop_fade (Indicator *indicator)
       indicator->conceil_timer = 0;
     }
 
-  gdk_window_hide (indicator->window);
+  cdk_window_hide (indicator->window);
   ctk_progress_tracker_finish (&indicator->tracker);
   indicator->current_pos = indicator->source_pos = indicator->target_pos = 0;
   indicator->last_scroll_time = 0;
@@ -4406,7 +4406,7 @@ setup_indicator (CtkScrolledWindow *scrolled_window,
   g_signal_connect (adjustment, "value-changed",
                     G_CALLBACK (indicator_value_changed), indicator);
 
-  gdk_window_hide (indicator->window);
+  cdk_window_hide (indicator->window);
   ctk_widget_set_opacity (scrollbar, 0.0);
   indicator->current_pos = 0.0;
 }
@@ -4455,7 +4455,7 @@ remove_indicator (CtkScrolledWindow *scrolled_window,
   g_object_unref (scrollbar);
 
   if (indicator->window)
-    gdk_window_hide (indicator->window);
+    cdk_window_hide (indicator->window);
 
   ctk_widget_set_opacity (scrollbar, 1.0);
   indicator->current_pos = 1.0;
@@ -4528,7 +4528,7 @@ ctk_scrolled_window_realize (CtkWidget *widget)
   attributes.event_mask = ctk_widget_get_events (widget) |
     GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_POINTER_MOTION_MASK;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
 
   ctk_widget_set_window (widget, window);
@@ -4568,7 +4568,7 @@ indicator_reset (Indicator *indicator)
 
   if (indicator->window)
     {
-      gdk_window_destroy (indicator->window);
+      cdk_window_destroy (indicator->window);
       indicator->window = NULL;
     }
 

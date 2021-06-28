@@ -26,10 +26,10 @@
 #define __GDK_X11_UTILS_H__
 
 #if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkx.h> can be included directly."
+#error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -37,16 +37,16 @@
 G_BEGIN_DECLS
 
 GDK_AVAILABLE_IN_ALL
-Window   gdk_x11_get_default_root_xwindow (void);
+Window   cdk_x11_get_default_root_xwindow (void);
 GDK_AVAILABLE_IN_ALL
-Display *gdk_x11_get_default_xdisplay     (void);
+Display *cdk_x11_get_default_xdisplay     (void);
 
 /**
  * GDK_ROOT_WINDOW:
  *
  * Obtains the Xlib window id of the root window of the current screen.
  */
-#define GDK_ROOT_WINDOW()             (gdk_x11_get_default_root_xwindow ())
+#define GDK_ROOT_WINDOW()             (cdk_x11_get_default_root_xwindow ())
 
 /**
  * GDK_XID_TO_POINTER:
@@ -68,12 +68,12 @@ Display *gdk_x11_get_default_xdisplay     (void);
 #define GDK_POINTER_TO_XID(pointer) GPOINTER_TO_UINT(pointer)
 
 GDK_AVAILABLE_IN_ALL
-void          gdk_x11_grab_server    (void);
+void          cdk_x11_grab_server    (void);
 GDK_AVAILABLE_IN_ALL
-void          gdk_x11_ungrab_server  (void);
+void          cdk_x11_ungrab_server  (void);
 
 GDK_DEPRECATED_IN_3_24
-cairo_pattern_t *gdk_x11_get_parent_relative_pattern (void);
+cairo_pattern_t *cdk_x11_get_parent_relative_pattern (void);
 
 G_END_DECLS
 

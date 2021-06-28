@@ -32,7 +32,7 @@ scribble_configure_event (CtkWidget         *widget,
     cairo_surface_destroy (surface);
 
   ctk_widget_get_allocation (widget, &allocation);
-  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
+  surface = cdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR,
                                                allocation.width,
                                                allocation.height);
@@ -78,13 +78,13 @@ draw_brush (CtkWidget *widget,
   /* Paint to the surface, where we store our state */
   cr = cairo_create (surface);
 
-  gdk_cairo_rectangle (cr, &update_rect);
+  cdk_cairo_rectangle (cr, &update_rect);
   cairo_fill (cr);
 
   cairo_destroy (cr);
 
   /* Now invalidate the affected region of the drawing area. */
-  gdk_window_invalidate_rect (ctk_widget_get_window (widget),
+  cdk_window_invalidate_rect (ctk_widget_get_window (widget),
                               &update_rect,
                               FALSE);
 }
@@ -116,7 +116,7 @@ scribble_motion_notify_event (CtkWidget      *widget,
     return FALSE; /* paranoia check, in case we haven't gotten a configure event */
 
   /* This call is very important; it requests the next motion event.
-   * If you don't call gdk_window_get_pointer() you'll only get
+   * If you don't call cdk_window_get_pointer() you'll only get
    * a single motion event. The reason is that we specified
    * GDK_POINTER_MOTION_HINT_MASK to ctk_widget_set_events().
    * If we hadn't specified that, we could just use event->x, event->y
@@ -126,7 +126,7 @@ scribble_motion_notify_event (CtkWidget      *widget,
    * can cope.
    */
 
-  gdk_window_get_device_position (event->window, event->device, &x, &y, &state);
+  cdk_window_get_device_position (event->window, event->device, &x, &y, &state);
 
   if (state & GDK_BUTTON1_MASK)
     draw_brush (widget, x, y);
@@ -149,7 +149,7 @@ checkerboard_draw (CtkWidget *da,
   /* At the start of a draw handler, a clip region has been set on
    * the Cairo context, and the contents have been cleared to the
    * widget's background color. The docs for
-   * gdk_window_begin_paint_region() give more details on how this
+   * cdk_window_begin_paint_region() give more details on how this
    * works.
    */
 

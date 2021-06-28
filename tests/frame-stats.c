@@ -108,21 +108,21 @@ on_frame_clock_after_paint (GdkFrameClock *frame_clock,
   frame_stats->frames_since_last_print++;
 
   for (frame_counter = frame_stats->last_handled_frame;
-       frame_counter < gdk_frame_clock_get_frame_counter (frame_clock);
+       frame_counter < cdk_frame_clock_get_frame_counter (frame_clock);
        frame_counter++)
     {
-      GdkFrameTimings *timings = gdk_frame_clock_get_timings (frame_clock, frame_counter);
-      GdkFrameTimings *previous_timings = gdk_frame_clock_get_timings (frame_clock, frame_counter - 1);
+      GdkFrameTimings *timings = cdk_frame_clock_get_timings (frame_clock, frame_counter);
+      GdkFrameTimings *previous_timings = cdk_frame_clock_get_timings (frame_clock, frame_counter - 1);
 
-      if (!timings || gdk_frame_timings_get_complete (timings))
+      if (!timings || cdk_frame_timings_get_complete (timings))
         frame_stats->last_handled_frame = frame_counter;
 
-      if (timings && gdk_frame_timings_get_complete (timings) && previous_timings &&
-          gdk_frame_timings_get_presentation_time (timings) != 0 &&
-          gdk_frame_timings_get_presentation_time (previous_timings) != 0)
+      if (timings && cdk_frame_timings_get_complete (timings) && previous_timings &&
+          cdk_frame_timings_get_presentation_time (timings) != 0 &&
+          cdk_frame_timings_get_presentation_time (previous_timings) != 0)
         {
-          double display_time = (gdk_frame_timings_get_presentation_time (timings) - gdk_frame_timings_get_presentation_time (previous_timings)) / 1000.;
-          double frame_latency = (gdk_frame_timings_get_presentation_time (previous_timings) - gdk_frame_timings_get_frame_time (previous_timings)) / 1000. + display_time / 2;
+          double display_time = (cdk_frame_timings_get_presentation_time (timings) - cdk_frame_timings_get_presentation_time (previous_timings)) / 1000.;
+          double frame_latency = (cdk_frame_timings_get_presentation_time (previous_timings) - cdk_frame_timings_get_frame_time (previous_timings)) / 1000. + display_time / 2;
 
           variable_add_weighted (&frame_stats->latency, frame_latency, display_time);
         }

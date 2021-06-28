@@ -96,7 +96,7 @@ change_justify_state (GSimpleAction *action,
 static CtkClipboard *
 get_clipboard (CtkWidget *widget)
 {
-  return ctk_widget_get_clipboard (widget, gdk_atom_intern_static_string ("CLIPBOARD"));
+  return ctk_widget_get_clipboard (widget, cdk_atom_intern_static_string ("CLIPBOARD"));
 }
 
 static void
@@ -574,7 +574,7 @@ bloat_pad_startup (GApplication *application)
   g_object_unref (icon);
   g_bytes_unref (bytes);
 
-  icon = G_ICON (gdk_pixbuf_new_from_resource ("/org/ctk/libctk/icons/16x16/actions/ctk-preferences.png", NULL));
+  icon = G_ICON (cdk_pixbuf_new_from_resource ("/org/ctk/libctk/icons/16x16/actions/ctk-preferences.png", NULL));
   item = g_menu_item_new ("Pixbuf", NULL);
   g_menu_item_set_icon (item, icon);
   g_menu_append_item (menu, item);

@@ -89,7 +89,7 @@ get_surface_extents (cairo_surface_t *surface,
   gboolean result;
 
   cr = cairo_create (surface);
-  result = gdk_cairo_get_clip_rectangle (cr, out_extents);
+  result = cdk_cairo_get_clip_rectangle (cr, out_extents);
   cairo_destroy (cr);
 
   return result;

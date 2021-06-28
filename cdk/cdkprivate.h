@@ -25,17 +25,17 @@
 #ifndef __GDK_PRIVATE_H__
 #define __GDK_PRIVATE_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-const char * _gdk_atom_name_const (GdkAtom atom);
+const char * _cdk_atom_name_const (GdkAtom atom);
 
 GDK_AVAILABLE_IN_ALL
-void gdk_window_destroy_notify	     (GdkWindow *window);
+void cdk_window_destroy_notify	     (GdkWindow *window);
 
 GDK_AVAILABLE_IN_ALL
-void gdk_synthesize_window_state (GdkWindow     *window,
+void cdk_synthesize_window_state (GdkWindow     *window,
                                   GdkWindowState unset_flags,
                                   GdkWindowState set_flags);
 

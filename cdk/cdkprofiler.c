@@ -1,6 +1,6 @@
 /* GDK - The GIMP Drawing Kit
  *
- * gdkprofiler.c: A simple profiler
+ * cdkprofiler.c: A simple profiler
  *
  * Copyright © 2018 Matthias Clasen
  *
@@ -26,9 +26,9 @@
 #include <unistd.h>
 #endif
 
-#include "gdkversionmacros.h"
-#include "gdkprofilerprivate.h"
-#include "gdkframeclockprivate.h"
+#include "cdkversionmacros.h"
+#include "cdkprofilerprivate.h"
+#include "cdkframeclockprivate.h"
 
 #ifdef HAVE_SYSPROF_CAPTURE
 
@@ -45,7 +45,7 @@ profiler_stop (void)
 }
 
 void
-gdk_profiler_start (int fd)
+cdk_profiler_start (int fd)
 {
   if (writer)
     return;
@@ -71,19 +71,19 @@ gdk_profiler_start (int fd)
 }
 
 void
-gdk_profiler_stop (void)
+cdk_profiler_stop (void)
 {
   running = FALSE;
 }
 
 gboolean
-gdk_profiler_is_running (void)
+cdk_profiler_is_running (void)
 {
   return running;
 }
 
 void
-gdk_profiler_add_mark (gint64      start,
+cdk_profiler_add_mark (gint64      start,
                        guint64     duration,
                        const char *name,
                        const char *message)
@@ -126,21 +126,21 @@ define_counter (const char *name,
 }
 
 guint
-gdk_profiler_define_counter (const char *name,
+cdk_profiler_define_counter (const char *name,
                              const char *description)
 {
   return define_counter (name, description, SYSPROF_CAPTURE_COUNTER_DOUBLE);
 }
 
 guint
-gdk_profiler_define_int_counter (const char *name,
+cdk_profiler_define_int_counter (const char *name,
                                  const char *description)
 {
   return define_counter (name, description, SYSPROF_CAPTURE_COUNTER_INT64);
 }
 
 void
-gdk_profiler_set_counter (guint  id,
+cdk_profiler_set_counter (guint  id,
                           gint64 time,
                           double val)
 {
@@ -157,7 +157,7 @@ gdk_profiler_set_counter (guint  id,
 }
 
 void
-gdk_profiler_set_int_counter (guint  id,
+cdk_profiler_set_int_counter (guint  id,
                               gint64 time,
                               gint64 val)
 {
@@ -176,23 +176,23 @@ gdk_profiler_set_int_counter (guint  id,
 #else
 
 void
-gdk_profiler_start (int fd)
+cdk_profiler_start (int fd)
 {
 }
 
 void
-gdk_profiler_stop (void)
+cdk_profiler_stop (void)
 {
 }
 
 gboolean
-gdk_profiler_is_running (void)
+cdk_profiler_is_running (void)
 {
   return FALSE;
 }
 
 void
-gdk_profiler_add_mark (gint64      start,
+cdk_profiler_add_mark (gint64      start,
                        guint64     duration,
                        const char *name,
                        const char *message)
@@ -200,28 +200,28 @@ gdk_profiler_add_mark (gint64      start,
 }
 
 guint
-gdk_profiler_define_counter (const char *name,
+cdk_profiler_define_counter (const char *name,
                              const char *description)
 {
  return 0;
 }
 
 void
-gdk_profiler_set_counter (guint  id,
+cdk_profiler_set_counter (guint  id,
                           gint64 time,
                           double value)
 {
 }
 
 guint
-gdk_profiler_define_int_counter (const char *name,
+cdk_profiler_define_int_counter (const char *name,
                                  const char *description)
 {
   return 0;
 }
 
 void
-gdk_profiler_set_int_counter (guint  id,
+cdk_profiler_set_int_counter (guint  id,
                               gint64 time,
                               gint64 value)
 {

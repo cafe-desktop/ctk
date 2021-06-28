@@ -24,12 +24,12 @@
 
 #include "config.h"
 
-#include "gdkselection.h"
+#include "cdkselection.h"
 
-#include "gdkproperty.h"
-#include "gdkprivate.h"
-#include "gdkprivate-broadway.h"
-#include "gdkdisplay-broadway.h"
+#include "cdkproperty.h"
+#include "cdkprivate.h"
+#include "cdkprivate-broadway.h"
+#include "cdkdisplay-broadway.h"
 
 #include <string.h>
 
@@ -51,7 +51,7 @@ static GSList *owner_list;
  * low code solution
  */
 void
-_gdk_broadway_selection_window_destroyed (GdkWindow *window)
+_cdk_broadway_selection_window_destroyed (GdkWindow *window)
 {
   GSList *tmp_list = owner_list;
   while (tmp_list)
@@ -68,7 +68,7 @@ _gdk_broadway_selection_window_destroyed (GdkWindow *window)
 }
 
 gboolean
-_gdk_broadway_display_set_selection_owner (GdkDisplay *display,
+_cdk_broadway_display_set_selection_owner (GdkDisplay *display,
 					   GdkWindow  *owner,
 					   GdkAtom     selection,
 					   guint32     time,
@@ -77,7 +77,7 @@ _gdk_broadway_display_set_selection_owner (GdkDisplay *display,
   GSList *tmp_list;
   OwnerInfo *info;
 
-  if (gdk_display_is_closed (display))
+  if (cdk_display_is_closed (display))
     return FALSE;
 
   tmp_list = owner_list;
@@ -97,7 +97,7 @@ _gdk_broadway_display_set_selection_owner (GdkDisplay *display,
     {
       info = g_new (OwnerInfo, 1);
       info->owner = owner;
-      info->serial = _gdk_display_get_next_serial (display);
+      info->serial = _cdk_display_get_next_serial (display);
 
       info->selection = selection;
 
@@ -108,13 +108,13 @@ _gdk_broadway_display_set_selection_owner (GdkDisplay *display,
 }
 
 GdkWindow *
-_gdk_broadway_display_get_selection_owner (GdkDisplay *display,
+_cdk_broadway_display_get_selection_owner (GdkDisplay *display,
 					   GdkAtom     selection)
 {
   GSList *tmp_list;
   OwnerInfo *info;
 
-  if (gdk_display_is_closed (display))
+  if (cdk_display_is_closed (display))
     return NULL;
 
   tmp_list = owner_list;
@@ -130,7 +130,7 @@ _gdk_broadway_display_get_selection_owner (GdkDisplay *display,
 }
 
 void
-_gdk_broadway_display_convert_selection (GdkDisplay *display,
+_cdk_broadway_display_convert_selection (GdkDisplay *display,
 					 GdkWindow *requestor,
 					 GdkAtom    selection,
 					 GdkAtom    target,
@@ -140,7 +140,7 @@ _gdk_broadway_display_convert_selection (GdkDisplay *display,
 }
 
 gint
-_gdk_broadway_display_get_selection_property (GdkDisplay *display,
+_cdk_broadway_display_get_selection_property (GdkDisplay *display,
 					      GdkWindow  *requestor,
 					      guchar    **data,
 					      GdkAtom    *ret_type,
@@ -159,7 +159,7 @@ _gdk_broadway_display_get_selection_property (GdkDisplay *display,
 }
 
 void
-_gdk_broadway_display_send_selection_notify (GdkDisplay      *display,
+_cdk_broadway_display_send_selection_notify (GdkDisplay      *display,
 					     GdkWindow       *requestor,
 					     GdkAtom          selection,
 					     GdkAtom          target,
@@ -251,7 +251,7 @@ make_list (const gchar  *text,
 }
 
 gint 
-_gdk_broadway_display_text_property_to_utf8_list (GdkDisplay    *display,
+_cdk_broadway_display_text_property_to_utf8_list (GdkDisplay    *display,
 						  GdkAtom        encoding,
 						  gint           format,
 						  const guchar  *text,
@@ -266,7 +266,7 @@ _gdk_broadway_display_text_property_to_utf8_list (GdkDisplay    *display,
     {
       return make_list ((gchar *)text, length, TRUE, list);
     }
-  else if (encoding == gdk_atom_intern_static_string ("UTF8_STRING"))
+  else if (encoding == cdk_atom_intern_static_string ("UTF8_STRING"))
     {
       return make_list ((gchar *)text, length, FALSE, list);
     }
@@ -277,7 +277,7 @@ _gdk_broadway_display_text_property_to_utf8_list (GdkDisplay    *display,
 }
 
 gchar *
-_gdk_broadway_display_utf8_to_string_target (GdkDisplay  *display,
+_cdk_broadway_display_utf8_to_string_target (GdkDisplay  *display,
 					     const gchar *str)
 {
   return g_strdup (str);

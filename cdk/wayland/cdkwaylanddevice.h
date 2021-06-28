@@ -19,10 +19,10 @@
 #define __GDK_WAYLAND_DEVICE_H__
 
 #if !defined (__GDKWAYLAND_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkwayland.h> can be included directly."
+#error "Only <cdk/cdkwayland.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include <wayland-client.h>
 
@@ -35,7 +35,7 @@ typedef GdkDevice GdkWaylandDevice;
 #endif
 typedef struct _GdkWaylandDeviceClass GdkWaylandDeviceClass;
 
-#define GDK_TYPE_WAYLAND_DEVICE         (gdk_wayland_device_get_type ())
+#define GDK_TYPE_WAYLAND_DEVICE         (cdk_wayland_device_get_type ())
 #define GDK_WAYLAND_DEVICE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_WAYLAND_DEVICE, GdkWaylandDevice))
 #define GDK_WAYLAND_DEVICE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_WAYLAND_DEVICE, GdkWaylandDeviceClass))
 #define GDK_IS_WAYLAND_DEVICE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_WAYLAND_DEVICE))
@@ -43,23 +43,23 @@ typedef struct _GdkWaylandDeviceClass GdkWaylandDeviceClass;
 #define GDK_WAYLAND_DEVICE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_WAYLAND_DEVICE, GdkWaylandDeviceClass))
 
 GDK_AVAILABLE_IN_ALL
-GType                gdk_wayland_device_get_type            (void);
+GType                cdk_wayland_device_get_type            (void);
 
 GDK_AVAILABLE_IN_ALL
-struct wl_seat      *gdk_wayland_device_get_wl_seat         (GdkDevice *device);
+struct wl_seat      *cdk_wayland_device_get_wl_seat         (GdkDevice *device);
 GDK_AVAILABLE_IN_ALL
-struct wl_pointer   *gdk_wayland_device_get_wl_pointer      (GdkDevice *device);
+struct wl_pointer   *cdk_wayland_device_get_wl_pointer      (GdkDevice *device);
 GDK_AVAILABLE_IN_ALL
-struct wl_keyboard  *gdk_wayland_device_get_wl_keyboard     (GdkDevice *device);
+struct wl_keyboard  *cdk_wayland_device_get_wl_keyboard     (GdkDevice *device);
 
 GDK_AVAILABLE_IN_3_20
-struct wl_seat      *gdk_wayland_seat_get_wl_seat           (GdkSeat   *seat);
+struct wl_seat      *cdk_wayland_seat_get_wl_seat           (GdkSeat   *seat);
 
 GDK_AVAILABLE_IN_3_22
-const gchar         *gdk_wayland_device_get_node_path       (GdkDevice *device);
+const gchar         *cdk_wayland_device_get_node_path       (GdkDevice *device);
 
 GDK_AVAILABLE_IN_3_22
-void                 gdk_wayland_device_pad_set_feedback (GdkDevice           *device,
+void                 cdk_wayland_device_pad_set_feedback (GdkDevice           *device,
                                                           GdkDevicePadFeature  element,
                                                           guint                idx,
                                                           const gchar         *label);

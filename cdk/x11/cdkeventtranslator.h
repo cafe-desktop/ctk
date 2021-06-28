@@ -18,14 +18,14 @@
 #ifndef __GDK_EVENT_TRANSLATOR_H__
 #define __GDK_EVENT_TRANSLATOR_H__
 
-#include "gdktypes.h"
-#include "gdkdisplay.h"
+#include "cdktypes.h"
+#include "cdkdisplay.h"
 
 #include <X11/Xlib.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_EVENT_TRANSLATOR         (_gdk_x11_event_translator_get_type ())
+#define GDK_TYPE_EVENT_TRANSLATOR         (_cdk_x11_event_translator_get_type ())
 #define GDK_EVENT_TRANSLATOR(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_EVENT_TRANSLATOR, GdkEventTranslator))
 #define GDK_IS_EVENT_TRANSLATOR(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_EVENT_TRANSLATOR))
 #define GDK_EVENT_TRANSLATOR_GET_IFACE(o) (G_TYPE_INSTANCE_GET_INTERFACE  ((o), GDK_TYPE_EVENT_TRANSLATOR, GdkEventTranslatorIface))
@@ -51,16 +51,16 @@ struct _GdkEventTranslatorIface
                                          XEvent             *xevent);
 };
 
-GType      _gdk_x11_event_translator_get_type (void) G_GNUC_CONST;
+GType      _cdk_x11_event_translator_get_type (void) G_GNUC_CONST;
 
-GdkEvent * _gdk_x11_event_translator_translate (GdkEventTranslator *translator,
+GdkEvent * _cdk_x11_event_translator_translate (GdkEventTranslator *translator,
                                                GdkDisplay         *display,
                                                XEvent             *xevent);
-GdkEventMask _gdk_x11_event_translator_get_handled_events   (GdkEventTranslator *translator);
-void         _gdk_x11_event_translator_select_window_events (GdkEventTranslator *translator,
+GdkEventMask _cdk_x11_event_translator_get_handled_events   (GdkEventTranslator *translator);
+void         _cdk_x11_event_translator_select_window_events (GdkEventTranslator *translator,
                                                              Window              window,
                                                              GdkEventMask        event_mask);
-GdkWindow *  _gdk_x11_event_translator_get_window           (GdkEventTranslator *translator,
+GdkWindow *  _cdk_x11_event_translator_get_window           (GdkEventTranslator *translator,
                                                              GdkDisplay         *display,
                                                              XEvent             *xevent);
 

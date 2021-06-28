@@ -638,7 +638,7 @@ preview_ready (CtkPrintOperationPreview *preview,
 
   g_object_ref (preview);
       
-  id = gdk_threads_add_idle_full (G_PRIORITY_DEFAULT_IDLE + 10,
+  id = cdk_threads_add_idle_full (G_PRIORITY_DEFAULT_IDLE + 10,
 				  preview_print_idle,
 				  pop,
 				  preview_print_idle_done);
@@ -3009,7 +3009,7 @@ print_pages (CtkPrintOperation       *op,
 			G_CALLBACK (handle_progress_response), op);
 
       priv->show_progress_timeout_id = 
-	gdk_threads_add_timeout (SHOW_PROGRESS_TIME, 
+	cdk_threads_add_timeout (SHOW_PROGRESS_TIME, 
 		       (GSourceFunc)show_progress_timeout,
 		       data);
       g_source_set_name_by_id (priv->show_progress_timeout_id, "[ctk+] show_progress_timeout");
@@ -3077,7 +3077,7 @@ print_pages (CtkPrintOperation       *op,
       priv->manual_number_up_layout = ctk_print_settings_get_number_up_layout (priv->print_settings);
     }
   
-  priv->print_pages_idle_id = gdk_threads_add_idle_full (G_PRIORITY_DEFAULT_IDLE + 10,
+  priv->print_pages_idle_id = cdk_threads_add_idle_full (G_PRIORITY_DEFAULT_IDLE + 10,
 					                 print_pages_idle, 
 					                 data, 
 					                 print_pages_idle_done);
@@ -3089,9 +3089,9 @@ print_pages (CtkPrintOperation       *op,
       priv->rloop = g_main_loop_new (NULL, FALSE);
 
       g_object_ref (op);
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       g_main_loop_run (priv->rloop);
-      gdk_threads_enter ();
+      cdk_threads_enter ();
       
       g_main_loop_unref (priv->rloop);
       priv->rloop = NULL;

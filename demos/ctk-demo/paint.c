@@ -71,7 +71,7 @@ drawing_area_map (CtkWidget *widget)
 
   CTK_WIDGET_CLASS (drawing_area_parent_class)->map (widget);
 
-  gdk_window_set_event_compression (ctk_widget_get_window (widget), TRUE);
+  cdk_window_set_event_compression (ctk_widget_get_window (widget), TRUE);
 
   ctk_widget_get_allocation (widget, &allocation);
   drawing_area_ensure_surface ((DrawingArea *) widget,
@@ -129,7 +129,7 @@ drawing_area_apply_stroke (DrawingArea   *area,
                            gdouble        y,
                            gdouble        pressure)
 {
-  if (gdk_device_tool_get_tool_type (tool) == GDK_DEVICE_TOOL_TYPE_ERASER)
+  if (cdk_device_tool_get_tool_type (tool) == GDK_DEVICE_TOOL_TYPE_ERASER)
     {
       cairo_set_line_width (area->cr, 10 * pressure);
       cairo_set_operator (area->cr, CAIRO_OPERATOR_DEST_OUT);

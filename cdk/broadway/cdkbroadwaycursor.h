@@ -26,14 +26,14 @@
 #define __GDK_BROADWAY_CURSOR_H__
 
 #if !defined (__GDKBROADWAY_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkbroadway.h> can be included directly."
+#error "Only <cdk/cdkbroadway.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_BROADWAY_CURSOR              (gdk_broadway_cursor_get_type ())
+#define GDK_TYPE_BROADWAY_CURSOR              (cdk_broadway_cursor_get_type ())
 #define GDK_BROADWAY_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_CURSOR, GdkBroadwayCursor))
 #define GDK_BROADWAY_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_CURSOR, GdkBroadwayCursorClass))
 #define GDK_IS_BROADWAY_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_CURSOR))
@@ -48,7 +48,7 @@ typedef GdkCursor GdkBroadwayCursor;
 typedef struct _GdkBroadwayCursorClass GdkBroadwayCursorClass;
 
 GDK_AVAILABLE_IN_ALL
-GType    gdk_broadway_cursor_get_type          (void);
+GType    cdk_broadway_cursor_get_type          (void);
 
 G_END_DECLS
 

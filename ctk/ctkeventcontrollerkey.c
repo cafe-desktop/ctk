@@ -39,7 +39,7 @@
 #include "ctkeventcontrollerkey.h"
 #include "ctkbindings.h"
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 struct _CtkEventControllerKey
 {
@@ -88,7 +88,7 @@ ctk_event_controller_key_handle_event (CtkEventController *controller,
                                        const GdkEvent     *event)
 {
   CtkEventControllerKey *key = CTK_EVENT_CONTROLLER_KEY (controller);
-  GdkEventType event_type = gdk_event_get_event_type (event);
+  GdkEventType event_type = cdk_event_get_event_type (event);
   GdkModifierType state;
   guint16 keycode;
   guint keyval;
@@ -116,7 +116,7 @@ ctk_event_controller_key_handle_event (CtkEventController *controller,
 
   key->current_event = event;
 
-  gdk_event_get_state (event, &state);
+  cdk_event_get_state (event, &state);
   if (key->state != state)
     {
       gboolean unused;
@@ -125,8 +125,8 @@ ctk_event_controller_key_handle_event (CtkEventController *controller,
       g_signal_emit (controller, signals[MODIFIERS], 0, state, &unused);
     }
 
-  gdk_event_get_keycode (event, &keycode);
-  gdk_event_get_keyval (event, &keyval);
+  cdk_event_get_keycode (event, &keycode);
+  cdk_event_get_keyval (event, &keyval);
 
   if (event_type == GDK_KEY_PRESS)
     {

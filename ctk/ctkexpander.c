@@ -641,7 +641,7 @@ ctk_expander_realize (CtkWidget *widget)
   ctk_widget_set_window (widget, window);
   g_object_ref (window);
 
-  priv->event_window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                        &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->event_window);
 
@@ -658,7 +658,7 @@ ctk_expander_unrealize (CtkWidget *widget)
     {
       ctk_gesture_set_window (priv->multipress_gesture, NULL);
       ctk_widget_unregister_window (widget, priv->event_window);
-      gdk_window_destroy (priv->event_window);
+      cdk_window_destroy (priv->event_window);
       priv->event_window = NULL;
     }
 
@@ -686,7 +686,7 @@ ctk_expander_size_allocate (CtkWidget     *widget,
       CtkAllocation title_allocation;
 
       ctk_css_gadget_get_border_allocation (priv->title_gadget, &title_allocation, NULL);
-      gdk_window_move_resize (priv->event_window,
+      cdk_window_move_resize (priv->event_window,
                               title_allocation.x, title_allocation.y,
                               title_allocation.width, title_allocation.height);
     }
@@ -703,7 +703,7 @@ ctk_expander_map (CtkWidget *widget)
   CTK_WIDGET_CLASS (ctk_expander_parent_class)->map (widget);
 
   if (priv->event_window)
-    gdk_window_show (priv->event_window);
+    cdk_window_show (priv->event_window);
 }
 
 static void
@@ -712,7 +712,7 @@ ctk_expander_unmap (CtkWidget *widget)
   CtkExpanderPrivate *priv = CTK_EXPANDER (widget)->priv;
 
   if (priv->event_window)
-    gdk_window_hide (priv->event_window);
+    cdk_window_hide (priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_expander_parent_class)->unmap (widget);
 
@@ -749,7 +749,7 @@ ctk_expander_redraw_expander (CtkExpander *expander)
   if (ctk_widget_get_realized (widget))
     {
       ctk_widget_get_allocation (widget, &allocation);
-      gdk_window_invalidate_rect (ctk_widget_get_window (widget), &allocation, FALSE);
+      cdk_window_invalidate_rect (ctk_widget_get_window (widget), &allocation, FALSE);
     }
 }
 
@@ -877,7 +877,7 @@ ctk_expander_drag_motion (CtkWidget        *widget,
 
   if (!priv->expanded && !priv->expand_timer)
     {
-      priv->expand_timer = gdk_threads_add_timeout (TIMEOUT_EXPAND, (GSourceFunc) expand_timeout, expander);
+      priv->expand_timer = cdk_threads_add_timeout (TIMEOUT_EXPAND, (GSourceFunc) expand_timeout, expander);
       g_source_set_name_by_id (priv->expand_timer, "[ctk+] expand_timeout");
     }
 

@@ -18,135 +18,135 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: gdk-pixbuf/gdk-pixbuf-simple-anim.c:165
+#: cdk-pixbuf/cdk-pixbuf-simple-anim.c:165
 msgid "Loop"
 msgstr "İlik"
 
 # ctk/ctkcolorsel.c:1669
 # tüklü
-#: gdk-pixbuf/gdk-pixbuf-simple-anim.c:166
+#: cdk-pixbuf/cdk-pixbuf-simple-anim.c:166
 msgid "Whether the animation should loop when it reaches the end"
 msgstr "Canlandırmanıñ soñuna irişken soñ ilik yapıp yapmaycağı"
 
-#: gdk-pixbuf/gdk-pixbuf.c:89
+#: cdk-pixbuf/cdk-pixbuf.c:89
 msgid "Number of Channels"
 msgstr "Kanal Sayısı"
 
-# gdk-pixbuf/io-xpm.c:1265
-#: gdk-pixbuf/gdk-pixbuf.c:90
+# cdk-pixbuf/io-xpm.c:1265
+#: cdk-pixbuf/cdk-pixbuf.c:90
 msgid "The number of samples per pixel"
 msgstr "Piksel başına nümüne sayısı"
 
 # ctk/ctkcolorsel.c:1833
-#: gdk-pixbuf/gdk-pixbuf.c:99
+#: cdk-pixbuf/cdk-pixbuf.c:99
 msgid "Colorspace"
 msgstr "Tüs-fezası"
 
-#: gdk-pixbuf/gdk-pixbuf.c:100
+#: cdk-pixbuf/cdk-pixbuf.c:100
 msgid "The colorspace in which the samples are interpreted"
 msgstr "Nümünelerniñ içinde tefsir etilecegi tüs-fezası"
 
 # ctk/ctklabel.c:212
-#: gdk-pixbuf/gdk-pixbuf.c:108
+#: cdk-pixbuf/cdk-pixbuf.c:108
 msgid "Has Alpha"
 msgstr "Alfası Bar"
 
-#: gdk-pixbuf/gdk-pixbuf.c:109
+#: cdk-pixbuf/cdk-pixbuf.c:109
 msgid "Whether the pixbuf has an alpha channel"
 msgstr "Piksel buferiniñ (pixbuf) alfa kanalına sahip olıp olmağanı"
 
-#: gdk-pixbuf/gdk-pixbuf.c:122
+#: cdk-pixbuf/cdk-pixbuf.c:122
 msgid "Bits per Sample"
 msgstr "Nümüne başına Bit"
 
 # ctk/ctktable.c:157
-#: gdk-pixbuf/gdk-pixbuf.c:123
+#: cdk-pixbuf/cdk-pixbuf.c:123
 msgid "The number of bits per sample"
 msgstr "Nümüne başına bit sayısı"
 
 # ctk/ctklayout.c:435 ctk/ctktreeviewcolumn.c:188 ctk/ctkwidget.c:424
-#: gdk-pixbuf/gdk-pixbuf.c:132 ctk/ctklayout.c:633 ctk/ctktreeviewcolumn.c:208
+#: cdk-pixbuf/cdk-pixbuf.c:132 ctk/ctklayout.c:633 ctk/ctktreeviewcolumn.c:208
 msgid "Width"
 msgstr "Kenişlik"
 
 # ctk/ctktable.c:166
-#: gdk-pixbuf/gdk-pixbuf.c:133
+#: cdk-pixbuf/cdk-pixbuf.c:133
 msgid "The number of columns of the pixbuf"
 msgstr "Piksel buferindeki (pixbuf) sutun sayısı"
 
 # ctk/ctklayout.c:444 ctk/ctkwidget.c:433
-#: gdk-pixbuf/gdk-pixbuf.c:142 ctk/ctklayout.c:642
+#: cdk-pixbuf/cdk-pixbuf.c:142 ctk/ctklayout.c:642
 msgid "Height"
 msgstr "Yükseklik"
 
 # ctk/ctktable.c:157
-#: gdk-pixbuf/gdk-pixbuf.c:143
+#: cdk-pixbuf/cdk-pixbuf.c:143
 msgid "The number of rows of the pixbuf"
 msgstr "Piksel buferindeki (pixbuf) saf sayısı"
 
 # ctk/ctktable.c:156
-#: gdk-pixbuf/gdk-pixbuf.c:159
+#: cdk-pixbuf/cdk-pixbuf.c:159
 msgid "Rowstride"
 msgstr "Saf-adımlaması"
 
 # ctk/ctkentry.c:447
-#: gdk-pixbuf/gdk-pixbuf.c:160
+#: cdk-pixbuf/cdk-pixbuf.c:160
 msgid ""
 "The number of bytes between the start of a row and the start of the next row"
 msgstr ""
 "Bir safnıñ başlanğıçı ile soñraki safnıñ başlanğıçı arasındaki bayt sayısı"
 
-#: gdk-pixbuf/gdk-pixbuf.c:169
+#: cdk-pixbuf/cdk-pixbuf.c:169
 msgid "Pixels"
 msgstr "Piksel"
 
-#: gdk-pixbuf/gdk-pixbuf.c:170
+#: cdk-pixbuf/cdk-pixbuf.c:170
 msgid "A pointer to the pixel data of the pixbuf"
 msgstr "Piksel buferiniñ (pixbuf) piksel verilerine bir noqtacı"
 
 # ctk/ctkbutton.c:239
-#: gdk/gdkdisplaymanager.c:103
+#: cdk/cdkdisplaymanager.c:103
 msgid "Default Display"
 msgstr "Ög-belgilengen Kösterim"
 
-#: gdk/gdkdisplaymanager.c:104
+#: cdk/cdkdisplaymanager.c:104
 msgid "The default display for GDK"
 msgstr "GDK içün ög-belgilengen kösterim"
 
 # ctk/ctkinputdialog.c:243
-#: gdk/gdkpango.c:538 ctk/ctkinvisible.c:86 ctk/ctkmountoperation.c:176
+#: cdk/cdkpango.c:538 ctk/ctkinvisible.c:86 ctk/ctkmountoperation.c:176
 #: ctk/ctkstatusicon.c:280 ctk/ctkwindow.c:626
 msgid "Screen"
 msgstr "Ekran"
 
 # tüklü
 # ctk/ctktreeview.c:458
-#: gdk/gdkpango.c:539
+#: cdk/cdkpango.c:539
 msgid "the GdkScreen for the renderer"
 msgstr "Qılıcı içün GdkScreen"
 
 # tüklü
 # ctk/ctkcellrenderertext.c:292 ctk/ctktexttag.c:367
-#: gdk/gdkscreen.c:75
+#: cdk/cdkscreen.c:75
 msgid "Font options"
 msgstr "Hurufat ihtiyariyatı"
 
-#: gdk/gdkscreen.c:76
+#: cdk/cdkscreen.c:76
 msgid "The default font options for the screen"
 msgstr "Ekran içün ög-belgilengen hurufat ihtiyariyatı"
 
 # ctk/ctkcellrenderertext.c:292 ctk/ctktexttag.c:367
-#: gdk/gdkscreen.c:83
+#: cdk/cdkscreen.c:83
 msgid "Font resolution"
 msgstr "Hurufat çezinirligi"
 
 # ctk/ctkrange.c:257
-#: gdk/gdkscreen.c:84
+#: cdk/cdkscreen.c:84
 msgid "The resolution for fonts on the screen"
 msgstr "Ekran üzerindeki hurufatlarnıñ çezinirligi"
 
 # ctk/ctksettings.c:151
-#: gdk/gdkwindow.c:496 gdk/gdkwindow.c:497
+#: cdk/cdkwindow.c:496 cdk/cdkwindow.c:497
 msgid "Cursor"
 msgstr "İmleç"
 
@@ -3708,7 +3708,7 @@ msgstr "Maska"
 msgid "Mask bitmap to use with GdkImage or GdkPixmap"
 msgstr "GdkImage ya da GdkPixmap ile qullanılacaq maska bit-haritası"
 
-# gdk-pixbuf/io-tiff.c:411
+# cdk-pixbuf/io-tiff.c:411
 #: ctk/ctkimage.c:255 ctk/ctkstatusicon.c:222
 msgid "Filename to load and display"
 msgstr "Yüklenip kösterilecek dosye adı"

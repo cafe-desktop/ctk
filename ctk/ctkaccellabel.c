@@ -877,7 +877,7 @@ _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
       seen_mod = TRUE;
     }
   
-  ch = gdk_keyval_to_unicode (accelerator_key);
+  ch = cdk_keyval_to_unicode (accelerator_key);
   if (ch && (ch == ' ' || g_unichar_isgraph (ch)))
     {
       if (seen_mod)
@@ -900,7 +900,7 @@ _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
     {
       gchar *tmp;
 
-      tmp = gdk_keyval_name (gdk_keyval_to_lower (accelerator_key));
+      tmp = cdk_keyval_name (cdk_keyval_to_lower (accelerator_key));
       if (tmp != NULL)
 	{
           if (seen_mod)

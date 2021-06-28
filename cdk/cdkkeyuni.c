@@ -24,12 +24,12 @@
 
 #include "config.h"
 
-#include "gdkkeys.h"
-#include "gdktypes.h"
+#include "cdkkeys.h"
+#include "cdktypes.h"
 
 #ifdef GDK_WINDOWING_WIN32
-#include "win32/gdkwin32.h"
-#include "win32/gdkprivate-win32.h"
+#include "win32/cdkwin32.h"
+#include "win32/cdkprivate-win32.h"
 #endif
 
 /* Thanks to Markus G. Kuhn <mkuhn@acm.org> for the ksysym<->Unicode
@@ -43,7 +43,7 @@
 static const struct {
   unsigned short keysym;
   unsigned short ucs;
-} gdk_keysym_to_unicode_tab[] = {
+} cdk_keysym_to_unicode_tab[] = {
   { 0x01a1, 0x0104 }, /*                     Aogonek Ą LATIN CAPITAL LETTER A WITH OGONEK */
   { 0x01a2, 0x02d8 }, /*                       breve ˘ BREVE */
   { 0x01a3, 0x0141 }, /*                     Lstroke Ł LATIN CAPITAL LETTER L WITH STROKE */
@@ -877,7 +877,7 @@ static const struct {
 };
 
 /**
- * gdk_keyval_to_unicode:
+ * cdk_keyval_to_unicode:
  * @keyval: a GDK key symbol 
  * 
  * Convert from a GDK key symbol to the corresponding ISO10646 (Unicode)
@@ -887,10 +887,10 @@ static const struct {
  *               is no corresponding character.
  **/
 guint32
-gdk_keyval_to_unicode (guint keyval)
+cdk_keyval_to_unicode (guint keyval)
 {
   int min = 0;
-  int max = G_N_ELEMENTS (gdk_keysym_to_unicode_tab) - 1;
+  int max = G_N_ELEMENTS (cdk_keysym_to_unicode_tab) - 1;
   int mid;
 
   /* First check for Latin-1 characters (1:1 mapping) */
@@ -904,25 +904,25 @@ gdk_keyval_to_unicode (guint keyval)
     return keyval & 0x00ffffff;
 
 #if defined(GDK_WINDOWING_WIN32)
-  if (GDK_IS_WIN32_DISPLAY (gdk_display_get_default ()) &&
+  if (GDK_IS_WIN32_DISPLAY (cdk_display_get_default ()) &&
       keyval == 0xffae)
     {
-      GdkWin32Keymap *keymap = GDK_WIN32_KEYMAP (gdk_keymap_get_default ());
+      GdkWin32Keymap *keymap = GDK_WIN32_KEYMAP (cdk_keymap_get_default ());
 
-      return (guint32) _gdk_win32_keymap_get_decimal_mark (keymap);
+      return (guint32) _cdk_win32_keymap_get_decimal_mark (keymap);
     }
 #endif
 
   /* binary search in table */
   while (max >= min) {
     mid = (min + max) / 2;
-    if (gdk_keysym_to_unicode_tab[mid].keysym < keyval)
+    if (cdk_keysym_to_unicode_tab[mid].keysym < keyval)
       min = mid + 1;
-    else if (gdk_keysym_to_unicode_tab[mid].keysym > keyval)
+    else if (cdk_keysym_to_unicode_tab[mid].keysym > keyval)
       max = mid - 1;
     else {
       /* found it */
-      return gdk_keysym_to_unicode_tab[mid].ucs;
+      return cdk_keysym_to_unicode_tab[mid].ucs;
     }
   }
   
@@ -933,7 +933,7 @@ gdk_keyval_to_unicode (guint keyval)
 static const struct {
   unsigned short keysym;
   unsigned short ucs;
-} gdk_unicode_to_keysym_tab[] = {
+} cdk_unicode_to_keysym_tab[] = {
   { 0x0abd, 0x002e }, /*                decimalpoint . FULL STOP */
   { 0x0ba3, 0x003c }, /*                   leftcaret < LESS-THAN SIGN */
   { 0x0ba6, 0x003e }, /*                  rightcaret > GREATER-THAN SIGN */
@@ -1687,7 +1687,7 @@ static const struct {
 };
 
 /**
- * gdk_unicode_to_keyval:
+ * cdk_unicode_to_keyval:
  * @wc: a ISO10646 encoded character
  * 
  * Convert from a ISO10646 character to a key symbol.
@@ -1697,10 +1697,10 @@ static const struct {
  *               wc | 0x01000000
  **/
 guint
-gdk_unicode_to_keyval (guint32 wc)
+cdk_unicode_to_keyval (guint32 wc)
 {
   int min = 0;
-  int max = G_N_ELEMENTS (gdk_unicode_to_keysym_tab) - 1;
+  int max = G_N_ELEMENTS (cdk_unicode_to_keysym_tab) - 1;
   int mid;
 
   /* First check for Latin-1 characters (1:1 mapping) */
@@ -1711,13 +1711,13 @@ gdk_unicode_to_keyval (guint32 wc)
   /* Binary search in table */
   while (max >= min) {
     mid = (min + max) / 2;
-    if (gdk_unicode_to_keysym_tab[mid].ucs < wc)
+    if (cdk_unicode_to_keysym_tab[mid].ucs < wc)
       min = mid + 1;
-    else if (gdk_unicode_to_keysym_tab[mid].ucs > wc)
+    else if (cdk_unicode_to_keysym_tab[mid].ucs > wc)
       max = mid - 1;
     else {
       /* found it */
-      return gdk_unicode_to_keysym_tab[mid].keysym;
+      return cdk_unicode_to_keysym_tab[mid].keysym;
     }
   }
   

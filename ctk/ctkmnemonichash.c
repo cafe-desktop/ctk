@@ -128,7 +128,7 @@ _ctk_mnemonic_hash_activate (CtkMnemonicHash *mnemonic_hash,
 
       if (ctk_widget_is_sensitive (widget) &&
 	  ctk_widget_get_mapped (widget) &&
-          window && gdk_window_is_viewable (window))
+          window && cdk_window_is_viewable (window))
 	{
 	  if (chosen_widget)
 	    {

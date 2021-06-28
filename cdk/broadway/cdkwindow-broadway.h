@@ -25,7 +25,7 @@
 #ifndef __GDK_WINDOW_BROADWAY_H__
 #define __GDK_WINDOW_BROADWAY_H__
 
-#include <gdk/gdkwindowimpl.h>
+#include <cdk/cdkwindowimpl.h>
 
 G_BEGIN_DECLS
 
@@ -35,7 +35,7 @@ typedef struct _GdkWindowImplBroadwayClass GdkWindowImplBroadwayClass;
 /* Window implementation for Broadway
  */
 
-#define GDK_TYPE_WINDOW_IMPL_BROADWAY              (gdk_window_impl_broadway_get_type ())
+#define GDK_TYPE_WINDOW_IMPL_BROADWAY              (cdk_window_impl_broadway_get_type ())
 #define GDK_WINDOW_IMPL_BROADWAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL_BROADWAY, GdkWindowImplBroadway))
 #define GDK_WINDOW_IMPL_BROADWAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL_BROADWAY, GdkWindowImplBroadwayClass))
 #define GDK_IS_WINDOW_IMPL_BROADWAY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL_BROADWAY))
@@ -80,7 +80,7 @@ struct _GdkWindowImplBroadwayClass
   GdkWindowImplClass parent_class;
 };
 
-GType gdk_window_impl_broadway_get_type (void);
+GType cdk_window_impl_broadway_get_type (void);
 
 G_END_DECLS
 

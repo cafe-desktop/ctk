@@ -21,193 +21,193 @@ msgstr ""
 "X-Launchpad-Export-Date: 2013-09-15 06:16+0000\n"
 "X-Project-Style: gnome\n"
 
-#: gdk/gdkapplaunchcontext.c:127 gdk/gdkcursor.c:139 gdk/gdkdevicemanager.c:185
-#: gdk/gdkglcontext.c:317 gdk/gdkseat.c:202 gdk/gdkseat.c:203
+#: cdk/cdkapplaunchcontext.c:127 cdk/cdkcursor.c:139 cdk/cdkdevicemanager.c:185
+#: cdk/cdkglcontext.c:317 cdk/cdkseat.c:202 cdk/cdkseat.c:203
 msgid "Display"
 msgstr "Uidheam-taisbeanaidh"
 
-#: gdk/gdkcursor.c:131
+#: cdk/cdkcursor.c:131
 msgid "Cursor type"
 msgstr "Seòrsa a’ chùrsair"
 
-#: gdk/gdkcursor.c:132
+#: cdk/cdkcursor.c:132
 msgid "Standard cursor type"
 msgstr "Seòrsa stannardach a’ chùrsair"
 
-#: gdk/gdkcursor.c:140
+#: cdk/cdkcursor.c:140
 msgid "Display of this cursor"
 msgstr "Taisbeanadh a’ chùrsair seo"
 
-#: gdk/gdkdevice.c:123
+#: cdk/cdkdevice.c:123
 msgid "Device Display"
 msgstr "Taisbeanadh an uidheim"
 
-#: gdk/gdkdevice.c:124
+#: cdk/cdkdevice.c:124
 msgid "Display which the device belongs to"
 msgstr "An taisbeanadh dhan a bhuineas an t-uidheam"
 
-#: gdk/gdkdevice.c:138
+#: cdk/cdkdevice.c:138
 msgid "Device manager"
 msgstr "Manaidsear nan uidheaman"
 
-#: gdk/gdkdevice.c:139
+#: cdk/cdkdevice.c:139
 msgid "Device manager which the device belongs to"
 msgstr "Manaidsear nan uidheaman dhan a bhuineas an t-uidheam"
 
-#: gdk/gdkdevice.c:152 gdk/gdkdevice.c:153
+#: cdk/cdkdevice.c:152 cdk/cdkdevice.c:153
 msgid "Device name"
 msgstr "Ainm an uidheim"
 
-#: gdk/gdkdevice.c:166
+#: cdk/cdkdevice.c:166
 msgid "Device type"
 msgstr "Seòrsa an uidheim"
 
-#: gdk/gdkdevice.c:167
+#: cdk/cdkdevice.c:167
 msgid "Device role in the device manager"
 msgstr "Dreuchd an uidheim ann am manaidsear nan uidheaman"
 
-#: gdk/gdkdevice.c:183
+#: cdk/cdkdevice.c:183
 msgid "Associated device"
 msgstr "Uidheam co-cheangailte"
 
-#: gdk/gdkdevice.c:184
+#: cdk/cdkdevice.c:184
 msgid "Associated pointer or keyboard with this device"
 msgstr "Tomhaire no meur-chlàr a tha co-cheangailte ris an uidheam seo"
 
-#: gdk/gdkdevice.c:197
+#: cdk/cdkdevice.c:197
 msgid "Input source"
 msgstr "Tùs an ion-chuir"
 
-#: gdk/gdkdevice.c:198
+#: cdk/cdkdevice.c:198
 msgid "Source type for the device"
 msgstr "Seòrsa an tùis airson an uidheim"
 
-#: gdk/gdkdevice.c:213 gdk/gdkdevice.c:214
+#: cdk/cdkdevice.c:213 cdk/cdkdevice.c:214
 msgid "Input mode for the device"
 msgstr "Modh an ion-chuir airson an uidheim"
 
-#: gdk/gdkdevice.c:229
+#: cdk/cdkdevice.c:229
 msgid "Whether the device has a cursor"
 msgstr "Co-dhiù a bheil cùrsair aig an uidheam gus nach eil"
 
-#: gdk/gdkdevice.c:230
+#: cdk/cdkdevice.c:230
 msgid "Whether there is a visible cursor following device motion"
 msgstr "Co-dhiù a bheil cùrsair follaiseach a leanas gluasadan an uidheim"
 
-#: gdk/gdkdevice.c:244 gdk/gdkdevice.c:245
+#: cdk/cdkdevice.c:244 cdk/cdkdevice.c:245
 msgid "Number of axes in the device"
 msgstr "Àireamh de dh’aislean san uidheam"
 
-#: gdk/gdkdevice.c:259 gdk/gdkdevice.c:260
+#: cdk/cdkdevice.c:259 cdk/cdkdevice.c:260
 msgid "Vendor ID"
 msgstr "ID an reiceadair"
 
-#: gdk/gdkdevice.c:274 gdk/gdkdevice.c:275
+#: cdk/cdkdevice.c:274 cdk/cdkdevice.c:275
 msgid "Product ID"
 msgstr "ID a’ bhathair"
 
-#: gdk/gdkdevice.c:289 gdk/gdkdevice.c:290
+#: cdk/cdkdevice.c:289 cdk/cdkdevice.c:290
 msgid "Seat"
 msgstr "Suidheachan"
 
-#: gdk/gdkdevice.c:306 gdk/gdkdevice.c:307
+#: cdk/cdkdevice.c:306 cdk/cdkdevice.c:307
 msgid "Number of concurrent touches"
 msgstr "Àireamh de shuathaidhean co-cheumnach"
 
-#: gdk/gdkdevice.c:321 gdk/gdkdevice.c:322
+#: cdk/cdkdevice.c:321 cdk/cdkdevice.c:322
 msgid "Axes"
 msgstr "Aislean"
 
-#: gdk/gdkdevice.c:328
+#: cdk/cdkdevice.c:328
 msgid "Tool"
 msgstr "Inneal"
 
-#: gdk/gdkdevice.c:329
+#: cdk/cdkdevice.c:329
 msgid "The tool that is currently used with this device"
 msgstr "An t-inneal thathar a’ cleachdadh leis an uidheam seo an-dràsta"
 
-#: gdk/gdkdevicemanager.c:186
+#: cdk/cdkdevicemanager.c:186
 msgid "Display for the device manager"
 msgstr "An taisbeanadh airson manaidsear nan uidheaman"
 
-#: gdk/gdkdisplaymanager.c:169
+#: cdk/cdkdisplaymanager.c:169
 msgid "Default Display"
 msgstr "An taisbeanadh bunaiteach"
 
-#: gdk/gdkdisplaymanager.c:170
+#: cdk/cdkdisplaymanager.c:170
 msgid "The default display for GDK"
 msgstr "An taisbeanadh bunaiteach airson GDK"
 
-#: gdk/gdkglcontext.c:318
+#: cdk/cdkglcontext.c:318
 msgid "The GDK display used to create the GL context"
 msgstr ""
 "An sealladh GDK a thèid a chleachdadh gus an co-theacsa GL a chruthachadh"
 
-#: gdk/gdkglcontext.c:333 ctk/ctkwidget.c:1344
+#: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1344
 msgid "Window"
 msgstr "Uinneag"
 
-#: gdk/gdkglcontext.c:334
+#: cdk/cdkglcontext.c:334
 msgid "The GDK window bound to the GL context"
 msgstr "An uinneag GDK a thèid a nasgadh ris a’ cho-theacs GL"
 
-#: gdk/gdkglcontext.c:349
+#: cdk/cdkglcontext.c:349
 msgid "Shared context"
 msgstr "Co-theacsa co-roinnte"
 
-#: gdk/gdkglcontext.c:350
+#: cdk/cdkglcontext.c:350
 msgid "The GL context this context shares data with"
 msgstr "An co-theacsa GL leis a’ cho-roinneas an co-theacsa seo dàta"
 
-#: gdk/gdkscreen.c:91
+#: cdk/cdkscreen.c:91
 msgid "Font options"
 msgstr "Roghainnean nan cruthan-clò"
 
-#: gdk/gdkscreen.c:92
+#: cdk/cdkscreen.c:92
 msgid "The default font options for the screen"
 msgstr "Roghainnean nan cruthan-clò airson na sgrìn"
 
-#: gdk/gdkscreen.c:99
+#: cdk/cdkscreen.c:99
 msgid "Font resolution"
 msgstr "Dùmhlachd-bhreacaidh a’ chrutha-chlò"
 
-#: gdk/gdkscreen.c:100
+#: cdk/cdkscreen.c:100
 msgid "The resolution for fonts on the screen"
 msgstr "Dùmhlachd-bhreacaidh airson cruthan-clò na sgrìn"
 
-#: gdk/gdkwindow.c:354 gdk/gdkwindow.c:355
+#: cdk/cdkwindow.c:354 cdk/cdkwindow.c:355
 msgid "Cursor"
 msgstr "Cùrsair"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:115
+#: cdk/x11/cdkdevicemanager-xi2.c:115
 msgid "Opcode"
 msgstr "Opcode"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:116
+#: cdk/x11/cdkdevicemanager-xi2.c:116
 msgid "Opcode for XInput2 requests"
 msgstr "Opcode airson iarrtasan XInput2"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:122
+#: cdk/x11/cdkdevicemanager-xi2.c:122
 msgid "Major"
 msgstr "Mòr-thionndadh"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:123
+#: cdk/x11/cdkdevicemanager-xi2.c:123
 msgid "Major version number"
 msgstr "Àireamh a’ mhòr-thionndaidh"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:129
+#: cdk/x11/cdkdevicemanager-xi2.c:129
 msgid "Minor"
 msgstr "Mion-tionndadh"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:130
+#: cdk/x11/cdkdevicemanager-xi2.c:130
 msgid "Minor version number"
 msgstr "Àireamh a’ mhion-tionndaidh"
 
-#: gdk/x11/gdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:143
 msgid "Device ID"
 msgstr "ID an uidheim"
 
-#: gdk/x11/gdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device identifier"
 msgstr "Aithnichear an uidheim"
 

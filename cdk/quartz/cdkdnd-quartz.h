@@ -1,4 +1,4 @@
-/* gdkdnd-quartz.h
+/* cdkdnd-quartz.h
  *
  * Copyright (C) 2005 Imendio AB
  * Copyright (C) 2010  Kristian Rietveld  <kris@ctk.org>
@@ -20,7 +20,7 @@
 #ifndef __GDK_QUARTZ_DND__
 #define __GDK_QUARTZ_DND__
 
-#include <gdkdndprivate.h>
+#include <cdkdndprivate.h>
 
 #include <AppKit/AppKit.h>
 

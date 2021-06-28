@@ -172,9 +172,9 @@ pspec_select_value (GParamSpec *pspec,
           !G_TYPE_IS_INTERFACE (pspec->value_type))
         {
           if (g_type_is_a (pspec->value_type, GDK_TYPE_PIXBUF))
-            object = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 32, 32);
+            object = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 32, 32);
           else if (g_type_is_a (pspec->value_type, GDK_TYPE_PIXBUF_ANIMATION))
-            object = gdk_pixbuf_simple_anim_new (32, 32, 15);
+            object = cdk_pixbuf_simple_anim_new (32, 32, 15);
           else
             object = g_object_new (pspec->value_type, NULL);
           g_object_ref_sink (object);

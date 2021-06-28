@@ -4,7 +4,7 @@ CTK_CFLAGS =	 				\
 
 CTK_LIBS = 					\
         $(top_builddir)/ctk/libctk-3.la 	\
-        $(top_builddir)/gdk/libgdk-3.la 	\
+        $(top_builddir)/cdk/libcdk-3.la 	\
         $(CTK_DEP_LIBS)
 
 

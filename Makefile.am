@@ -1,7 +1,7 @@
 ## Makefile.am for CTK+
 include $(top_srcdir)/Makefile.decl
 
-SRC_SUBDIRS = gdk ctk libgail-util modules demos tests testsuite examples
+SRC_SUBDIRS = cdk ctk libgail-util modules demos tests testsuite examples
 SUBDIRS = po po-properties $(SRC_SUBDIRS) docs m4macros win32
 
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
@@ -52,14 +52,14 @@ ctk+-x11-3.0.pc ctk+-win32-3.0.pc ctk+-quartz-3.0.pc ctk+-broadway-3.0.pc ctk+-w
 	rm -f $@ && \
 	cp ctk+-3.0.pc $@
 
-gdk-x11-3.0.pc gdk-win32-3.0.pc gdk-quartz-3.0.pc gdk-broadway-3.0.pc gdk-wayland-3.0.pc: gdk-3.0.pc
+cdk-x11-3.0.pc cdk-win32-3.0.pc cdk-quartz-3.0.pc cdk-broadway-3.0.pc cdk-wayland-3.0.pc: cdk-3.0.pc
 	rm -f $@ && \
-	cp gdk-3.0.pc $@
+	cp cdk-3.0.pc $@
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = gdk-3.0.pc ctk+-3.0.pc gail-3.0.pc
+pkgconfig_DATA = cdk-3.0.pc ctk+-3.0.pc gail-3.0.pc
 pkgconfig_DATA += ${GDK_BACKENDS:%=ctk+-%-3.0.pc}
-pkgconfig_DATA += ${GDK_BACKENDS:%=gdk-%-3.0.pc}
+pkgconfig_DATA += ${GDK_BACKENDS:%=cdk-%-3.0.pc}
 
 if OS_UNIX
 pkgconfig_DATA += ctk+-unix-print-3.0.pc
@@ -73,12 +73,12 @@ DISTCLEANFILES = \
 	ctk+-quartz-3.0.pc		\
 	ctk+-broadway-3.0.pc		\
 	ctk+-wayland-3.0.pc		\
-	gdk-3.0.pc			\
-	gdk-x11-3.0.pc			\
-	gdk-win32-3.0.pc		\
-	gdk-quartz-3.0.pc		\
-	gdk-broadway-3.0.pc		\
-	gdk-wayland-3.0.pc		\
+	cdk-3.0.pc			\
+	cdk-x11-3.0.pc			\
+	cdk-win32-3.0.pc		\
+	cdk-quartz-3.0.pc		\
+	cdk-broadway-3.0.pc		\
+	cdk-wayland-3.0.pc		\
 	gail-3.0.pc			\
 	config.lt
 

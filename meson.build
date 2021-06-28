@@ -29,7 +29,7 @@ fribidi_req        = '>= 0.19.7'
 atk_req            = '>= 2.35.1'
 at_spi2_atk_req    = '>= 2.15.1'
 cairo_req          = '>= 1.14.0'
-gdk_pixbuf_req     = '>= 2.30.0'
+cdk_pixbuf_req     = '>= 2.30.0'
 introspection_req  = '>= 1.39.0'
 wayland_proto_req  = '>= 1.17'
 wayland_req        = '>= 1.14.91'
@@ -349,7 +349,7 @@ if os_unix and not os_darwin
 endif
 
 confinc = include_directories('.')
-gdkinc = include_directories('gdk')
+cdkinc = include_directories('cdk')
 ctkinc = include_directories('ctk')
 libgailutilinc = include_directories('libgail-util')
 testinc = include_directories('tests')
@@ -444,8 +444,8 @@ endif
 
 pangocairo_dep = dependency('pangocairo', version: cairo_req,
                             fallback : ['pango', 'libpangocairo_dep'])
-pixbuf_dep     = dependency('gdk-pixbuf-2.0', version: gdk_pixbuf_req,
-                            fallback : ['gdk-pixbuf', 'gdkpixbuf_dep'])
+pixbuf_dep     = dependency('cdk-pixbuf-2.0', version: cdk_pixbuf_req,
+                            fallback : ['cdk-pixbuf', 'cdkpixbuf_dep'])
 epoxy_dep      = dependency('epoxy', version: epoxy_req,
                             fallback: ['libepoxy', 'libepoxy_dep'])
 atk_dep        = dependency('atk', version: atk_req,
@@ -498,7 +498,7 @@ else
   cdata.set_quoted('ISO_CODES_PREFIX', get_option('prefix'))
 endif
 
-pc_gdk_extra_libs = []
+pc_cdk_extra_libs = []
 
 cairo_found_type = cairo_dep.type_name()
 if cairo_found_type == 'internal'
@@ -647,25 +647,25 @@ if x11_enabled
 endif
 
 if broadway_enabled
-  pc_gdk_extra_libs += ['-lz']
+  pc_cdk_extra_libs += ['-lz']
 endif
 
 if quartz_enabled
-  pc_gdk_extra_libs += ['-Wl,-framework,Cocoa', '-Wl,-framework,Carbon', '-Wl,-framework,CoreGraphics']
+  pc_cdk_extra_libs += ['-Wl,-framework,Cocoa', '-Wl,-framework,Carbon', '-Wl,-framework,CoreGraphics']
 endif
 
 extra_demo_ldflags = []
 if win32_enabled
-  pc_gdk_extra_libs += ['-lgdi32', '-limm32', '-lshell32', '-lole32']
+  pc_cdk_extra_libs += ['-lgdi32', '-limm32', '-lshell32', '-lole32']
   if cc.get_id() == 'msvc'
     # Since the demo programs are now built as pure GUI programs, we
     # need to pass in /entry:mainCRTStartup so that they will properly
     # link on Visual Studio builds
     extra_demo_ldflags = ['/entry:mainCRTStartup']
   else
-    pc_gdk_extra_libs += ['-Wl,-luuid']
+    pc_cdk_extra_libs += ['-Wl,-luuid']
   endif
-  pc_gdk_extra_libs += ['-lwinmm', '-ldwmapi', '-lsetupapi', '-lcfgmgr32']
+  pc_cdk_extra_libs += ['-lwinmm', '-ldwmapi', '-lsetupapi', '-lcfgmgr32']
 
   # Check whether libepoxy is built with EGL support on Windows
   win32_has_egl = epoxy_dep.get_variable(
@@ -836,7 +836,7 @@ if os_darwin
 endif
 
 build_gir = get_option('introspection')
-subdir('gdk')
+subdir('cdk')
 subdir('ctk')
 subdir('modules')
 subdir('libgail-util')
@@ -870,9 +870,9 @@ pkgconf.set('host', '@0@-@1@'.format(host_machine.cpu_family(), host_machine.sys
 
 # Requires
 pango_pkgname = win32_enabled ? 'pangowin32' : 'pango'
-gdk_packages = ' '.join([ pango_pkgname, pango_req,
+cdk_packages = ' '.join([ pango_pkgname, pango_req,
                        'pangocairo', pango_req,
-                       'gdk-pixbuf-2.0', gdk_pixbuf_req ])
+                       'cdk-pixbuf-2.0', cdk_pixbuf_req ])
 
 cairo_packages = ''
 
@@ -887,8 +887,8 @@ elif cc.get_id() == 'msvc' and cairogobj_dep.found()
   cairo_libs += '-lcairo-gobject'
 endif
 
-gdk_packages += cairo_packages
-pkgconf.set('GDK_PACKAGES', gdk_packages)
+cdk_packages += cairo_packages
+pkgconf.set('GDK_PACKAGES', cdk_packages)
 
 if have_gio_unix
   gio_packages = ['gio-unix-2.0', glib_req]
@@ -904,13 +904,13 @@ pkgconf.set('GDK_PRIVATE_PACKAGES',
 ctk_packages = ' '.join([
     atk_dep.name(), atk_req,
     cairo_packages,
-    pixbuf_dep.name(), gdk_pixbuf_req,
+    pixbuf_dep.name(), cdk_pixbuf_req,
     'gio-2.0', glib_req,
 ])
 pkgconf.set('CTK_PACKAGES', ctk_packages)
 
 # Requires.private
-pc_gdk_extra_libs += cairo_libs
+pc_cdk_extra_libs += cairo_libs
 
 ctk_private_packages = atk_pkgs + wayland_pkgs + ['epoxy', epoxy_req, 'fribidi', fribidi_req]
 if wayland_enabled or x11_enabled
@@ -920,7 +920,7 @@ ctk_private_packages += gio_packages
 
 pkgconf.set('CTK_PRIVATE_PACKAGES', ' '.join(ctk_private_packages))
 
-pkgconf.set('GDK_EXTRA_LIBS', ' '.join(pc_gdk_extra_libs))
+pkgconf.set('GDK_EXTRA_LIBS', ' '.join(pc_cdk_extra_libs))
 pkgconf.set('GSK_EXTRA_LIBS', '')
 pkgconf.set('CTK_EXTRA_LIBS', '')
 
@@ -931,14 +931,14 @@ pkgconf.set('CTK_EXTRA_CFLAGS', '')
 pkg_install_dir = join_paths(get_option('libdir'), 'pkgconfig')
 
 ctk_pcs = ['ctk+-3.0.pc']
-gdk_pcs = ['gdk-3.0.pc']
+cdk_pcs = ['cdk-3.0.pc']
 
 pkg_targets = ''
 disabled_backends = []
 foreach backend: [ 'broadway', 'quartz', 'wayland', 'win32', 'x11']
   if get_variable('@0@_enabled'.format(backend))
     ctk_pcs += ['ctk+-@0@-3.0.pc'.format(backend)]
-    gdk_pcs += ['gdk-@0@-3.0.pc'.format(backend)]
+    cdk_pcs += ['cdk-@0@-3.0.pc'.format(backend)]
     pkg_targets += ' ' + backend
   else
     disabled_backends += [backend]
@@ -951,8 +951,8 @@ configure_file(input: 'gail-3.0.pc.in',
                configuration: pkgconf,
                install_dir: pkg_install_dir)
 
-foreach pkg: gdk_pcs
-  configure_file(input: 'gdk-3.0.pc.in',
+foreach pkg: cdk_pcs
+  configure_file(input: 'cdk-3.0.pc.in',
                  output: pkg,
                  configuration: pkgconf,
                  install_dir: pkg_install_dir)

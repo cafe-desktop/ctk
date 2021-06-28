@@ -24,15 +24,15 @@
 
 #include "config.h"
 
-#include "gdkwindowimpl.h"
+#include "cdkwindowimpl.h"
 
-#include "gdkinternals.h"
+#include "cdkinternals.h"
 
 
-G_DEFINE_TYPE (GdkWindowImpl, gdk_window_impl, G_TYPE_OBJECT);
+G_DEFINE_TYPE (GdkWindowImpl, cdk_window_impl, G_TYPE_OBJECT);
 
 static gboolean
-gdk_window_impl_beep (GdkWindow *window)
+cdk_window_impl_beep (GdkWindow *window)
 {
   /* FALSE means windows can't beep, so the display will be
    * made to beep instead. */
@@ -43,18 +43,18 @@ static GdkDisplay *
 get_display_for_window (GdkWindow *primary,
                         GdkWindow *secondary)
 {
-  GdkDisplay *display = gdk_window_get_display (primary);
+  GdkDisplay *display = cdk_window_get_display (primary);
 
   if (display)
     return display;
 
-  display = gdk_window_get_display (secondary);
+  display = cdk_window_get_display (secondary);
 
   if (display)
     return display;
 
   g_warning ("no display for window, using default");
-  return gdk_display_get_default ();
+  return cdk_display_get_default ();
 }
 
 static GdkMonitor *
@@ -70,12 +70,12 @@ get_monitor_for_rect (GdkDisplay         *display,
   gint y;
   gint i;
 
-  for (i = 0; i < gdk_display_get_n_monitors (display); i++)
+  for (i = 0; i < cdk_display_get_n_monitors (display); i++)
     {
-      monitor = gdk_display_get_monitor (display, i);
-      gdk_monitor_get_workarea (monitor, &workarea);
+      monitor = cdk_display_get_monitor (display, i);
+      cdk_monitor_get_workarea (monitor, &workarea);
 
-      if (gdk_rectangle_intersect (&workarea, rect, &intersection))
+      if (cdk_rectangle_intersect (&workarea, rect, &intersection))
         {
           if (intersection.width * intersection.height > biggest_area)
             {
@@ -91,7 +91,7 @@ get_monitor_for_rect (GdkDisplay         *display,
   x = rect->x + rect->width / 2;
   y = rect->y + rect->height / 2;
 
-  return gdk_display_get_monitor_at_point (display, x, y);
+  return cdk_display_get_monitor_at_point (display, x, y);
 }
 
 static gint
@@ -184,10 +184,10 @@ traverse_to_toplevel (GdkWindow *window,
   gdouble xf = x;
   gdouble yf = y;
 
-  while ((parent = gdk_window_get_effective_parent (window)) != NULL &&
-         (gdk_window_get_window_type (parent) != GDK_WINDOW_ROOT))
+  while ((parent = cdk_window_get_effective_parent (window)) != NULL &&
+         (cdk_window_get_window_type (parent) != GDK_WINDOW_ROOT))
     {
-      gdk_window_coords_to_parent (window, xf, yf, &xf, &yf);
+      cdk_window_coords_to_parent (window, xf, yf, &xf, &yf);
       window = parent;
     }
 
@@ -197,7 +197,7 @@ traverse_to_toplevel (GdkWindow *window,
 }
 
 static void
-gdk_window_impl_move_to_rect (GdkWindow          *window,
+cdk_window_impl_move_to_rect (GdkWindow          *window,
                               const GdkRectangle *rect,
                               GdkGravity          rect_anchor,
                               GdkGravity          window_anchor,
@@ -226,7 +226,7 @@ gdk_window_impl_move_to_rect (GdkWindow          *window,
                                                  &root_rect.x,
                                                  &root_rect.y);
 
-  gdk_window_get_root_coords (transient_for_toplevel,
+  cdk_window_get_root_coords (transient_for_toplevel,
                               root_rect.x,
                               root_rect.y,
                               &root_rect.x,
@@ -234,7 +234,7 @@ gdk_window_impl_move_to_rect (GdkWindow          *window,
 
   display = get_display_for_window (window, window->transient_for);
   monitor = get_monitor_for_rect (display, &root_rect);
-  gdk_monitor_get_workarea (monitor, &bounds);
+  cdk_monitor_get_workarea (monitor, &bounds);
 
   flipped_rect.width = window->width - window->shadow_left - window->shadow_right;
   flipped_rect.height = window->height - window->shadow_top - window->shadow_bottom;
@@ -314,9 +314,9 @@ gdk_window_impl_move_to_rect (GdkWindow          *window,
   final_rect.height += window->shadow_top + window->shadow_bottom;
 
   if (final_rect.width != window->width || final_rect.height != window->height)
-    gdk_window_move_resize (window, final_rect.x, final_rect.y, final_rect.width, final_rect.height);
+    cdk_window_move_resize (window, final_rect.x, final_rect.y, final_rect.width, final_rect.height);
   else
-    gdk_window_move (window, final_rect.x, final_rect.y);
+    cdk_window_move (window, final_rect.x, final_rect.y);
 
   g_signal_emit_by_name (window,
                          "moved-to-rect",
@@ -327,21 +327,21 @@ gdk_window_impl_move_to_rect (GdkWindow          *window,
 }
 
 static void
-gdk_window_impl_process_updates_recurse (GdkWindow      *window,
+cdk_window_impl_process_updates_recurse (GdkWindow      *window,
                                          cairo_region_t *region)
 {
-  _gdk_window_process_updates_recurse (window, region);
+  _cdk_window_process_updates_recurse (window, region);
 }
 
 static void
-gdk_window_impl_class_init (GdkWindowImplClass *impl_class)
+cdk_window_impl_class_init (GdkWindowImplClass *impl_class)
 {
-  impl_class->beep = gdk_window_impl_beep;
-  impl_class->move_to_rect = gdk_window_impl_move_to_rect;
-  impl_class->process_updates_recurse = gdk_window_impl_process_updates_recurse;
+  impl_class->beep = cdk_window_impl_beep;
+  impl_class->move_to_rect = cdk_window_impl_move_to_rect;
+  impl_class->process_updates_recurse = cdk_window_impl_process_updates_recurse;
 }
 
 static void
-gdk_window_impl_init (GdkWindowImpl *impl)
+cdk_window_impl_init (GdkWindowImpl *impl)
 {
 }

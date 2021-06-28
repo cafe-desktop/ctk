@@ -18,15 +18,15 @@
 #define __GDK_DRAWING_CONTEXT_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdkversionmacros.h>
-#include <gdk/gdktypes.h>
+#include <cdk/cdkversionmacros.h>
+#include <cdk/cdktypes.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DRAWING_CONTEXT (gdk_drawing_context_get_type ())
+#define GDK_TYPE_DRAWING_CONTEXT (cdk_drawing_context_get_type ())
 
 #define GDK_DRAWING_CONTEXT(obj)        (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_DRAWING_CONTEXT, GdkDrawingContext))
 #define GDK_IS_DRAWING_CONTEXT(obj)     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_DRAWING_CONTEXT))
@@ -35,18 +35,18 @@ typedef struct _GdkDrawingContext       GdkDrawingContext;
 typedef struct _GdkDrawingContextClass  GdkDrawingContextClass;
 
 GDK_AVAILABLE_IN_3_22
-GType gdk_drawing_context_get_type (void) G_GNUC_CONST;
+GType cdk_drawing_context_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-GdkWindow *     gdk_drawing_context_get_window          (GdkDrawingContext *context);
+GdkWindow *     cdk_drawing_context_get_window          (GdkDrawingContext *context);
 GDK_AVAILABLE_IN_3_22
-cairo_region_t *gdk_drawing_context_get_clip            (GdkDrawingContext *context);
+cairo_region_t *cdk_drawing_context_get_clip            (GdkDrawingContext *context);
 
 GDK_AVAILABLE_IN_3_22
-gboolean        gdk_drawing_context_is_valid            (GdkDrawingContext *context);
+gboolean        cdk_drawing_context_is_valid            (GdkDrawingContext *context);
 
 GDK_AVAILABLE_IN_3_22
-cairo_t *       gdk_drawing_context_get_cairo_context   (GdkDrawingContext *context);
+cairo_t *       cdk_drawing_context_get_cairo_context   (GdkDrawingContext *context);
 
 G_END_DECLS
 

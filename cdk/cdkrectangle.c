@@ -24,7 +24,7 @@
 
 #include "config.h"
 
-#include "gdkrectangle.h"
+#include "cdkrectangle.h"
 #include <cairo-gobject.h>
 
 
@@ -41,15 +41,15 @@
  *
  * A #GdkRectangle represents the position and size of a rectangle.
  * The intersection of two rectangles can be computed with
- * gdk_rectangle_intersect(). To find the union of two rectangles use
- * gdk_rectangle_union().
+ * cdk_rectangle_intersect(). To find the union of two rectangles use
+ * cdk_rectangle_union().
  *
  * #cairo_region_t is usually used for managing clipping of graphical operations.
  */
 
 
 /**
- * gdk_rectangle_union:
+ * cdk_rectangle_union:
  * @src1: a #GdkRectangle
  * @src2: a #GdkRectangle
  * @dest: (out): return location for the union of @src1 and @src2
@@ -63,7 +63,7 @@
  * zero width or height).
  */
 void
-gdk_rectangle_union (const GdkRectangle *src1,
+cdk_rectangle_union (const GdkRectangle *src1,
 		     const GdkRectangle *src2,
 		     GdkRectangle       *dest)
 {
@@ -82,7 +82,7 @@ gdk_rectangle_union (const GdkRectangle *src1,
 }
 
 /**
- * gdk_rectangle_intersect:
+ * cdk_rectangle_intersect:
  * @src1: a #GdkRectangle
  * @src2: a #GdkRectangle
  * @dest: (out caller-allocates) (allow-none): return location for the
@@ -98,7 +98,7 @@ gdk_rectangle_union (const GdkRectangle *src1,
  * Returns: %TRUE if the rectangles intersect.
  */
 gboolean
-gdk_rectangle_intersect (const GdkRectangle *src1,
+cdk_rectangle_intersect (const GdkRectangle *src1,
 			 const GdkRectangle *src2,
 			 GdkRectangle       *dest)
 {
@@ -137,7 +137,7 @@ gdk_rectangle_intersect (const GdkRectangle *src1,
 }
 
 /**
- * gdk_rectangle_equal:
+ * cdk_rectangle_equal:
  * @rect1: a #GdkRectangle
  * @rect2: a #GdkRectangle
  *
@@ -148,7 +148,7 @@ gdk_rectangle_intersect (const GdkRectangle *src1,
  * Since: 3.20
  */
 gboolean
-gdk_rectangle_equal (const GdkRectangle *rect1,
+cdk_rectangle_equal (const GdkRectangle *rect1,
                      const GdkRectangle *rect2)
 {
   return rect1->x == rect2->x
@@ -158,7 +158,7 @@ gdk_rectangle_equal (const GdkRectangle *rect1,
 }
 
 static GdkRectangle *
-gdk_rectangle_copy (const GdkRectangle *rectangle)
+cdk_rectangle_copy (const GdkRectangle *rectangle)
 {
   GdkRectangle *result = g_new (GdkRectangle, 1);
   *result = *rectangle;
@@ -169,7 +169,7 @@ gdk_rectangle_copy (const GdkRectangle *rectangle)
 /* Transforms between identical boxed types.
  */
 static void
-gdk_rectangle_value_transform_rect (const GValue *src_value, GValue *dest_value)
+cdk_rectangle_value_transform_rect (const GValue *src_value, GValue *dest_value)
 {
   g_value_set_boxed (dest_value, g_value_get_boxed (src_value));
 }
@@ -178,24 +178,24 @@ gdk_rectangle_value_transform_rect (const GValue *src_value, GValue *dest_value)
  * cairo_rectangle_int_t and GdkRectangle.
  */
 static void
-gdk_rectangle_register_value_transform_funcs (GType gtype_gdk_rectangle)
+cdk_rectangle_register_value_transform_funcs (GType gtype_cdk_rectangle)
 {
-  /* This function is called from the first call to gdk_rectangle_get_type(),
+  /* This function is called from the first call to cdk_rectangle_get_type(),
    * before g_once_init_leave() has been called.
-   * If gdk_rectangle_get_type() is called from here (e.g. via
+   * If cdk_rectangle_get_type() is called from here (e.g. via
    * GDK_TYPE_RECTANGLE), the program will wait indefinitely at
-   * g_once_init_enter() in gdk_rectangle_get_type().
+   * g_once_init_enter() in cdk_rectangle_get_type().
    */
   g_value_register_transform_func (CAIRO_GOBJECT_TYPE_RECTANGLE_INT,
-                                   gtype_gdk_rectangle,
-                                   gdk_rectangle_value_transform_rect);
-  g_value_register_transform_func (gtype_gdk_rectangle,
+                                   gtype_cdk_rectangle,
+                                   cdk_rectangle_value_transform_rect);
+  g_value_register_transform_func (gtype_cdk_rectangle,
                                    CAIRO_GOBJECT_TYPE_RECTANGLE_INT,
-                                   gdk_rectangle_value_transform_rect);
+                                   cdk_rectangle_value_transform_rect);
 }
 
-G_DEFINE_BOXED_TYPE_WITH_CODE (GdkRectangle, gdk_rectangle,
-                               gdk_rectangle_copy,
+G_DEFINE_BOXED_TYPE_WITH_CODE (GdkRectangle, cdk_rectangle,
+                               cdk_rectangle_copy,
                                g_free,
-                               gdk_rectangle_register_value_transform_funcs (g_define_type_id))
+                               cdk_rectangle_register_value_transform_funcs (g_define_type_id))
 

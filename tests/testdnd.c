@@ -333,17 +333,17 @@ target_drag_motion	   (CtkWidget	       *widget,
 	   G_OBJECT_TYPE_NAME (source_widget) :
 	   "NULL");
 
-  tmp_list = gdk_drag_context_list_targets (context);
+  tmp_list = cdk_drag_context_list_targets (context);
   while (tmp_list)
     {
-      char *name = gdk_atom_name (GDK_POINTER_TO_ATOM (tmp_list->data));
+      char *name = cdk_atom_name (GDK_POINTER_TO_ATOM (tmp_list->data));
       g_print ("%s\n", name);
       g_free (name);
       
       tmp_list = tmp_list->next;
     }
 
-  gdk_drag_status (context, gdk_drag_context_get_suggested_action (context), time);
+  cdk_drag_status (context, cdk_drag_context_get_suggested_action (context), time);
 
   return TRUE;
 }
@@ -360,10 +360,10 @@ target_drag_drop	   (CtkWidget	       *widget,
 
   ctk_image_set_from_pixbuf (CTK_IMAGE (widget), trashcan_closed);
 
-  if (gdk_drag_context_list_targets (context))
+  if (cdk_drag_context_list_targets (context))
     {
       ctk_drag_get_data (widget, context,
-			 GDK_POINTER_TO_ATOM (gdk_drag_context_list_targets (context)->data),
+			 GDK_POINTER_TO_ATOM (cdk_drag_context_list_targets (context)->data),
 			 time);
       return TRUE;
     }
@@ -481,7 +481,7 @@ popup_leave	   (CtkWidget	       *widget,
       if (!popdown_timer)
 	{
 	  g_print ("added popdown\n");
-	  popdown_timer = gdk_threads_add_timeout (500, popdown_cb, NULL);
+	  popdown_timer = cdk_threads_add_timeout (500, popdown_cb, NULL);
 	}
     }
 }
@@ -530,7 +530,7 @@ popup_cb (gpointer data)
       popped_up = TRUE;
     }
 
-  popdown_timer = gdk_threads_add_timeout (500, popdown_cb, NULL);
+  popdown_timer = cdk_threads_add_timeout (500, popdown_cb, NULL);
   g_print ("added popdown\n");
 
   popup_timer = FALSE;
@@ -546,7 +546,7 @@ popsite_motion	   (CtkWidget	       *widget,
 		    guint               time)
 {
   if (!popup_timer)
-    popup_timer = gdk_threads_add_timeout (500, popup_cb, NULL);
+    popup_timer = cdk_threads_add_timeout (500, popup_cb, NULL);
 
   return TRUE;
 }
@@ -600,9 +600,9 @@ main (int argc, char **argv)
   grid = ctk_grid_new ();
   ctk_container_add (CTK_CONTAINER (window), grid);
 
-  drag_icon = gdk_pixbuf_new_from_xpm_data (drag_icon_xpm);
-  trashcan_open = gdk_pixbuf_new_from_xpm_data (trashcan_open_xpm);
-  trashcan_closed = gdk_pixbuf_new_from_xpm_data (trashcan_closed_xpm);
+  drag_icon = cdk_pixbuf_new_from_xpm_data (drag_icon_xpm);
+  trashcan_open = cdk_pixbuf_new_from_xpm_data (trashcan_open_xpm);
+  trashcan_closed = cdk_pixbuf_new_from_xpm_data (trashcan_closed_xpm);
   
   label = ctk_label_new ("Drop Here\n");
 

@@ -33,7 +33,7 @@ fill_model (CtkTreeModel *model)
   CtkListStore *store = CTK_LIST_STORE (model);
   gint32 size;
   
-  pixbuf = gdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
+  pixbuf = cdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
 
   i = 0;
   
@@ -51,7 +51,7 @@ fill_model (CtkTreeModel *model)
     {
       GdkPixbuf *pb;
       size = g_random_int_range (20, 70);
-      pb = gdk_pixbuf_scale_simple (pixbuf, size, size, GDK_INTERP_NEAREST);
+      pb = cdk_pixbuf_scale_simple (pixbuf, size, size, GDK_INTERP_NEAREST);
 
       str = g_strdup_printf ("Icon %d", i);
       str2 = g_strdup_printf ("Icon <b>%d</b>", i);	
@@ -134,7 +134,7 @@ add_n_items (CtkIconView *icon_list, gint n)
   gint i;
 
   store = CTK_LIST_STORE (ctk_icon_view_get_model (icon_list));
-  pixbuf = gdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
+  pixbuf = cdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
 
 
   for (i = 0; i < n; i++)
@@ -176,11 +176,11 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
   gchar *str;
 
   store = CTK_LIST_STORE (ctk_icon_view_get_model (icon_list));
-  pixbuf = gdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
+  pixbuf = cdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
 
-  pb = gdk_pixbuf_scale_simple (pixbuf, 
-				2 * gdk_pixbuf_get_width (pixbuf),
-				2 * gdk_pixbuf_get_height (pixbuf),
+  pb = cdk_pixbuf_scale_simple (pixbuf, 
+				2 * cdk_pixbuf_get_width (pixbuf),
+				2 * cdk_pixbuf_get_height (pixbuf),
 				GDK_INTERP_BILINEAR);
 
   str = g_strdup_printf ("Some really long text");
@@ -194,9 +194,9 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
   g_object_unref (pb);
   g_free (str);
   
-  pb = gdk_pixbuf_scale_simple (pixbuf, 
-				3 * gdk_pixbuf_get_width (pixbuf),
-				3 * gdk_pixbuf_get_height (pixbuf),
+  pb = cdk_pixbuf_scale_simple (pixbuf, 
+				3 * cdk_pixbuf_get_width (pixbuf),
+				3 * cdk_pixbuf_get_height (pixbuf),
 				GDK_INTERP_BILINEAR);
 
   str = g_strdup ("see how long text behaves when placed underneath "
@@ -211,9 +211,9 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
   g_object_unref (pb);
   g_free (str);
 
-  pb = gdk_pixbuf_scale_simple (pixbuf, 
-				3 * gdk_pixbuf_get_width (pixbuf),
-				3 * gdk_pixbuf_get_height (pixbuf),
+  pb = cdk_pixbuf_scale_simple (pixbuf, 
+				3 * cdk_pixbuf_get_width (pixbuf),
+				3 * cdk_pixbuf_get_height (pixbuf),
 				GDK_INTERP_BILINEAR);
 
   str = g_strdup ("short text");
@@ -388,7 +388,7 @@ button_press_event_handler (CtkWidget      *widget,
 			    GdkEventButton *event)
 {
   /* Ignore double-clicks and triple-clicks */
-  if (gdk_event_triggers_context_menu ((GdkEvent *) event) &&
+  if (cdk_event_triggers_context_menu ((GdkEvent *) event) &&
       event->type == GDK_BUTTON_PRESS)
     {
       do_popup_menu (widget, event);

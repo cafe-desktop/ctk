@@ -16,7 +16,7 @@
  */
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
 #ifndef __GI_SCANNER__
@@ -35,8 +35,8 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkScreen, g_object_unref)
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkVisual, g_object_unref)
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkWindow, g_object_unref)
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkEvent, gdk_event_free)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkFrameTimings, gdk_frame_timings_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkRGBA, gdk_rgba_free)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkEvent, cdk_event_free)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkFrameTimings, cdk_frame_timings_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkRGBA, cdk_rgba_free)
 
 #endif

@@ -1,4 +1,4 @@
-/* gdkselection-quartz.c
+/* cdkselection-quartz.c
  *
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 1998-2002 Tor Lillqvist
@@ -20,14 +20,14 @@
 
 #include "config.h"
 
-#include "gdkselection.h"
-#include "gdkproperty.h"
-#include "gdkquartz.h"
-#include "gdkinternal-quartz.h"
-#include "gdkquartz-ctk-only.h"
+#include "cdkselection.h"
+#include "cdkproperty.h"
+#include "cdkquartz.h"
+#include "cdkinternal-quartz.h"
+#include "cdkquartz-ctk-only.h"
 
 gboolean
-_gdk_quartz_display_set_selection_owner (GdkDisplay *display,
+_cdk_quartz_display_set_selection_owner (GdkDisplay *display,
                                          GdkWindow  *owner,
                                          GdkAtom     selection,
                                          guint32     time,
@@ -38,7 +38,7 @@ _gdk_quartz_display_set_selection_owner (GdkDisplay *display,
 }
 
 GdkWindow*
-_gdk_quartz_display_get_selection_owner (GdkDisplay *display,
+_cdk_quartz_display_get_selection_owner (GdkDisplay *display,
                                          GdkAtom     selection)
 {
   /* FIXME: Implement */
@@ -46,7 +46,7 @@ _gdk_quartz_display_get_selection_owner (GdkDisplay *display,
 }
 
 void
-_gdk_quartz_display_convert_selection (GdkDisplay *display,
+_cdk_quartz_display_convert_selection (GdkDisplay *display,
                                        GdkWindow  *requestor,
                                        GdkAtom     selection,
                                        GdkAtom     target,
@@ -56,7 +56,7 @@ _gdk_quartz_display_convert_selection (GdkDisplay *display,
 }
 
 gint
-_gdk_quartz_display_get_selection_property (GdkDisplay *display,
+_cdk_quartz_display_get_selection_property (GdkDisplay *display,
                                             GdkWindow  *requestor,
                                             guchar    **data,
                                             GdkAtom    *ret_type,
@@ -67,7 +67,7 @@ _gdk_quartz_display_get_selection_property (GdkDisplay *display,
 }
 
 gchar *
-_gdk_quartz_display_utf8_to_string_target (GdkDisplay  *display,
+_cdk_quartz_display_utf8_to_string_target (GdkDisplay  *display,
                                            const gchar *str)
 {
   /* FIXME: Implement */
@@ -142,7 +142,7 @@ make_list (const gchar  *text,
 }
 
 gint
-_gdk_quartz_display_text_property_to_utf8_list (GdkDisplay    *display,
+_cdk_quartz_display_text_property_to_utf8_list (GdkDisplay    *display,
                                                 GdkAtom        encoding,
                                                 gint           format,
                                                 const guchar  *text,
@@ -156,15 +156,15 @@ _gdk_quartz_display_text_property_to_utf8_list (GdkDisplay    *display,
     {
       return make_list ((gchar *)text, length, TRUE, list);
     }
-  else if (encoding == gdk_atom_intern_static_string ("UTF8_STRING"))
+  else if (encoding == cdk_atom_intern_static_string ("UTF8_STRING"))
     {
       return make_list ((gchar *)text, length, FALSE, list);
     }
   else
     {
-      gchar *enc_name = gdk_atom_name (encoding);
+      gchar *enc_name = cdk_atom_name (encoding);
 
-      g_warning ("gdk_text_property_to_utf8_list_for_display: encoding %s not handled", enc_name);
+      g_warning ("cdk_text_property_to_utf8_list_for_display: encoding %s not handled", enc_name);
       g_free (enc_name);
 
       if (list)
@@ -187,22 +187,22 @@ _gdk_quartz_display_text_property_to_utf8_list (GdkDisplay    *display,
 #endif
 
 GdkAtom
-gdk_quartz_pasteboard_type_to_atom_libctk_only (NSString *type)
+cdk_quartz_pasteboard_type_to_atom_libctk_only (NSString *type)
 {
   if ([type isEqualToString:GDK_QUARTZ_STRING_PBOARD_TYPE])
-    return gdk_atom_intern_static_string ("UTF8_STRING");
+    return cdk_atom_intern_static_string ("UTF8_STRING");
   else if ([type isEqualToString:GDK_QUARTZ_TIFF_PBOARD_TYPE])
-    return gdk_atom_intern_static_string ("image/tiff");
+    return cdk_atom_intern_static_string ("image/tiff");
   else if ([type isEqualToString:GDK_QUARTZ_COLOR_PBOARD_TYPE])
-    return gdk_atom_intern_static_string ("application/x-color");
+    return cdk_atom_intern_static_string ("application/x-color");
   else if ([type isEqualToString:GDK_QUARTZ_URL_PBOARD_TYPE])
-    return gdk_atom_intern_static_string ("text/uri-list");
+    return cdk_atom_intern_static_string ("text/uri-list");
   else
-    return gdk_atom_intern ([type UTF8String], FALSE);
+    return cdk_atom_intern ([type UTF8String], FALSE);
 }
 
 NSString *
-gdk_quartz_target_to_pasteboard_type_libctk_only (const char *target)
+cdk_quartz_target_to_pasteboard_type_libctk_only (const char *target)
 {
   if (strcmp (target, "UTF8_STRING") == 0)
     return GDK_QUARTZ_STRING_PBOARD_TYPE;
@@ -217,10 +217,10 @@ gdk_quartz_target_to_pasteboard_type_libctk_only (const char *target)
 }
 
 NSString *
-gdk_quartz_atom_to_pasteboard_type_libctk_only (GdkAtom atom)
+cdk_quartz_atom_to_pasteboard_type_libctk_only (GdkAtom atom)
 {
-  gchar *target = gdk_atom_name (atom);
-  NSString *ret = gdk_quartz_target_to_pasteboard_type_libctk_only (target);
+  gchar *target = cdk_atom_name (atom);
+  NSString *ret = cdk_quartz_target_to_pasteboard_type_libctk_only (target);
   g_free (target);
 
   return ret;

@@ -404,7 +404,7 @@ _ctk_icon_factory_get_default_icons (void)
 {
   static CtkIconFactory *default_icons = NULL;
   CtkIconFactory *icons = NULL;
-  GdkScreen *screen = gdk_screen_get_default ();
+  GdkScreen *screen = cdk_screen_get_default ();
 
   if (screen)
     icons = g_object_get_data (G_OBJECT (screen), "ctk-default-icons");
@@ -1201,7 +1201,7 @@ ensure_filename_pixbuf (CtkIconSet    *icon_set,
     {
       GError *error = NULL;
 
-      source->filename_pixbuf = gdk_pixbuf_new_from_file (source->source.filename, &error);
+      source->filename_pixbuf = cdk_pixbuf_new_from_file (source->source.filename, &error);
 
       if (source->filename_pixbuf == NULL)
 	{
@@ -1388,9 +1388,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 	  if (scale != 1)
 	    {
 	      GdkPixbuf *tmp = pixbuf;
-	      pixbuf = gdk_pixbuf_scale_simple (pixbuf,
-						gdk_pixbuf_get_width (pixbuf) * scale,
-						gdk_pixbuf_get_height (pixbuf) * scale,
+	      pixbuf = cdk_pixbuf_scale_simple (pixbuf,
+						cdk_pixbuf_get_width (pixbuf) * scale,
+						cdk_pixbuf_get_height (pixbuf) * scale,
 						GDK_INTERP_BILINEAR);
 	      g_object_unref (tmp);
 	    }
@@ -1550,7 +1550,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
                                                       scale);
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
-  surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale, for_window);
+  surface = cdk_cairo_surface_create_from_pixbuf (pixbuf, scale, for_window);
   g_object_unref (pixbuf);
 
   return surface;

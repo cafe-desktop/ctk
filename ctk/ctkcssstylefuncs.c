@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 #include <cairo-gobject.h>
 
 #include "ctkcsscolorvalueprivate.h"
@@ -174,7 +174,7 @@ rgba_value_print (const GValue *value,
     g_string_append (string, "none");
   else
     {
-      char *s = gdk_rgba_to_string (rgba);
+      char *s = cdk_rgba_to_string (rgba);
       g_string_append (string, s);
       g_free (s);
     }
@@ -269,7 +269,7 @@ color_value_print (const GValue *value,
   else
     {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      char *s = gdk_color_to_string (color);
+      char *s = cdk_color_to_string (color);
 G_GNUC_END_IGNORE_DEPRECATIONS
       g_string_append (string, s);
       g_free (s);
@@ -749,7 +749,7 @@ pattern_value_parse (CtkCssParser *parser,
       path = g_file_get_path (file);
       g_object_unref (file);
 
-      pixbuf = gdk_pixbuf_new_from_file (path, &error);
+      pixbuf = cdk_pixbuf_new_from_file (path, &error);
       g_free (path);
       if (pixbuf == NULL)
         {
@@ -757,13 +757,13 @@ pattern_value_parse (CtkCssParser *parser,
           return FALSE;
         }
 
-      surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
+      surface = cdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
       pattern = cairo_pattern_create_for_surface (surface);
       cairo_surface_destroy (surface);
 
       cairo_matrix_init_scale (&matrix,
-                               gdk_pixbuf_get_width (pixbuf),
-                               gdk_pixbuf_get_height (pixbuf));
+                               cdk_pixbuf_get_width (pixbuf),
+                               cdk_pixbuf_get_height (pixbuf));
       cairo_pattern_set_matrix (pattern, &matrix);
 
       g_object_unref (pixbuf);

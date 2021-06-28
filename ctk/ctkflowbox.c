@@ -1596,7 +1596,7 @@ ctk_flow_box_size_allocate (CtkWidget     *widget,
 
   window = ctk_widget_get_window (widget);
   if (window != NULL)
-    gdk_window_move_resize (window,
+    cdk_window_move_resize (window,
                             allocation->x, allocation->y,
                             allocation->width, allocation->height);
 
@@ -2676,7 +2676,7 @@ ctk_flow_box_render (CtkCssGadget *gadget,
             {
               if ((vertical && rect.x == line_rect.x) ||
                   (!vertical && rect.y == line_rect.y))
-                gdk_rectangle_union (&rect, &line_rect, &line_rect);
+                cdk_rectangle_union (&rect, &line_rect, &line_rect);
               else
                 {
                   g_array_append_val (lines, line_rect);
@@ -2723,7 +2723,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
           ctk_style_context_get_border (context, state, &border);
 
           cairo_set_line_width (cr, border.left);
-          gdk_cairo_set_source_rgba (cr, &border_color);
+          cdk_cairo_set_source_rgba (cr, &border_color);
           cairo_stroke (cr);
         }
       g_array_free (lines, TRUE);
@@ -2843,8 +2843,8 @@ get_view_rect (CtkFlowBox   *box,
 
       rect->x = ctk_adjustment_get_value (priv->hadjustment);
       rect->y = ctk_adjustment_get_value (priv->vadjustment);
-      rect->width = gdk_window_get_width (view);
-      rect->height = gdk_window_get_height (view);
+      rect->width = cdk_window_get_width (view);
+      rect->height = cdk_window_get_height (view);
       return TRUE;
     }
 
@@ -3001,12 +3001,12 @@ ctk_flow_box_motion_notify_event (CtkWidget      *widget,
 
   while ((event_window != NULL) && (event_window != window))
     {
-      gdk_window_coords_to_parent (event_window,
+      cdk_window_coords_to_parent (event_window,
                                    relative_x, relative_y,
                                    &parent_x, &parent_y);
       relative_x = parent_x;
       relative_y = parent_y;
-      event_window = gdk_window_get_effective_parent (event_window);
+      event_window = cdk_window_get_effective_parent (event_window);
     }
 
   child = ctk_flow_box_get_child_at_pos (box, relative_x, relative_y);
@@ -3079,7 +3079,7 @@ ctk_flow_box_multipress_gesture_released (CtkGestureMultiPress *gesture,
 
           sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
           event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
-          source = gdk_device_get_source (gdk_event_get_source_device (event));
+          source = cdk_device_get_source (cdk_event_get_source_device (event));
 
           if (source == GDK_SOURCE_TOUCHSCREEN)
             modify = !modify;
@@ -3215,7 +3215,7 @@ ctk_flow_box_realize (CtkWidget *widget)
                                 | GDK_BUTTON_RELEASE_MASK;
   attributes.wclass = GDK_INPUT_OUTPUT;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (CTK_WIDGET (box)),
+  window = cdk_window_new (ctk_widget_get_parent_window (CTK_WIDGET (box)),
                            &attributes, GDK_WA_X | GDK_WA_Y);
   ctk_widget_register_window (CTK_WIDGET (box), window);
   ctk_widget_set_window (CTK_WIDGET (box), window);
@@ -3388,12 +3388,12 @@ ctk_flow_box_add_move_binding (CtkBindingSet   *binding_set,
   GdkModifierType extend_mod_mask = GDK_SHIFT_MASK;
   GdkModifierType modify_mod_mask = GDK_CONTROL_MASK;
 
-  display = gdk_display_get_default ();
+  display = cdk_display_get_default ();
   if (display)
     {
-      extend_mod_mask = gdk_keymap_get_modifier_mask (gdk_keymap_get_for_display (display),
+      extend_mod_mask = cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
                                                       GDK_MODIFIER_INTENT_EXTEND_SELECTION);
-      modify_mod_mask = gdk_keymap_get_modifier_mask (gdk_keymap_get_for_display (display),
+      modify_mod_mask = cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
                                                       GDK_MODIFIER_INTENT_MODIFY_SELECTION);
     }
 

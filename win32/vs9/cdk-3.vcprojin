@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="gdk-3"
+	Name="cdk-3"
 	ProjectGUID="{5AE8F5CE-9103-4951-AEDE-EA2F3B573BE8}"
-	RootNamespace="gdk3"
+	RootNamespace="cdk3"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="0"
 	>
@@ -31,7 +31,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\win32"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32"
 				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GdkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -53,7 +53,7 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_Broadway|Win32"
-			InheritedPropertySheets=".\ctk3-copy-gdk-broadway.vsprops"
+			InheritedPropertySheets=".\ctk3-copy-cdk-broadway.vsprops"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -63,7 +63,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\win32;..\..\gdk\broadway"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32;..\..\cdk\broadway"
 				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GdkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -95,7 +95,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\win32"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32"
 				PreprocessorDefinitions="$(GdkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -117,7 +117,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release_Broadway|Win32"
-			InheritedPropertySheets=".\ctk3-copy-gdk-broadway.vsprops"
+			InheritedPropertySheets=".\ctk3-copy-cdk-broadway.vsprops"
 			ConfigurationType="2"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
@@ -127,7 +127,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\win32;..\..\gdk\broadway"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32;..\..\cdk\broadway"
 				PreprocessorDefinitions="$(GdkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -159,7 +159,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\win32"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32"
 				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GdkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -181,7 +181,7 @@
 		</Configuration>
 		<Configuration
 			Name="Debug_Broadway|x64"
-			InheritedPropertySheets=".\ctk3-copy-gdk-broadway.vsprops"
+			InheritedPropertySheets=".\ctk3-copy-cdk-broadway.vsprops"
 			ConfigurationType="2"
 			CharacterSet="2"
 			>
@@ -191,7 +191,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\win32;..\..\gdk\broadway"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32;..\..\cdk\broadway"
 				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GdkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -223,7 +223,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\win32"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32"
 				PreprocessorDefinitions="$(GdkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -245,7 +245,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release_Broadway|x64"
-			InheritedPropertySheets=".\ctk3-copy-gdk-broadway.vsprops"
+			InheritedPropertySheets=".\ctk3-copy-cdk-broadway.vsprops"
 			ConfigurationType="2"
 			CharacterSet="2"
 			WholeProgramOptimization="1"
@@ -255,7 +255,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\win32;..\..\gdk\broadway"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32;..\..\cdk\broadway"
 				PreprocessorDefinitions="$(GdkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -290,15 +290,15 @@
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
-			<File RelativePath="..\..\gdk\win32\rc\gdk.rc" />
+			<File RelativePath="..\..\cdk\win32\rc\cdk.rc" />
 		</Filter>
 		<Filter
 			Name="Source Files"
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
-#include "gdk-3.sourcefiles"
-			<File RelativePath="..\..\gdk\gdkkeynames.c" />
+#include "cdk-3.sourcefiles"
+			<File RelativePath="..\..\cdk\cdkkeynames.c" />
 		</Filter>
 	</Files>
 </VisualStudioProject>

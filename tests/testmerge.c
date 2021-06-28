@@ -141,7 +141,7 @@ static void
 toggle_dynamic (CtkWidget    *button, 
 		CtkUIManager *merge)
 {
-  gdk_threads_add_timeout (2000, (GSourceFunc)delayed_toggle_dynamic, merge);
+  cdk_threads_add_timeout (2000, (GSourceFunc)delayed_toggle_dynamic, merge);
 }
 
 static void
@@ -459,7 +459,7 @@ area_press (CtkWidget      *drawing_area,
 {
   ctk_widget_grab_focus (drawing_area);
 
-  if (gdk_event_triggers_context_menu ((GdkEvent *) event) &&
+  if (cdk_event_triggers_context_menu ((GdkEvent *) event) &&
       event->type == GDK_BUTTON_PRESS)
     {
       CtkWidget *menu = ctk_ui_manager_get_widget (merge, "/FileMenu");

@@ -25,16 +25,16 @@
 #ifndef __GDK_WAYLAND_H__
 #define __GDK_WAYLAND_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #define __GDKWAYLAND_H_INSIDE__
 
-#include <gdk/wayland/gdkwaylanddevice.h>
-#include <gdk/wayland/gdkwaylanddisplay.h>
-#include <gdk/wayland/gdkwaylandmonitor.h>
-#include <gdk/wayland/gdkwaylandselection.h>
-#include <gdk/wayland/gdkwaylandwindow.h>
-#include <gdk/wayland/gdkwaylandglcontext.h>
+#include <cdk/wayland/cdkwaylanddevice.h>
+#include <cdk/wayland/cdkwaylanddisplay.h>
+#include <cdk/wayland/cdkwaylandmonitor.h>
+#include <cdk/wayland/cdkwaylandselection.h>
+#include <cdk/wayland/cdkwaylandwindow.h>
+#include <cdk/wayland/cdkwaylandglcontext.h>
 
 #undef __GDKWAYLAND_H_INSIDE__
 

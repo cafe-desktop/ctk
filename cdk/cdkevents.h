@@ -26,14 +26,14 @@
 #define __GDK_EVENTS_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdkversionmacros.h>
-#include <gdk/gdktypes.h>
-#include <gdk/gdkdnd.h>
-#include <gdk/gdkdevice.h>
-#include <gdk/gdkdevicetool.h>
+#include <cdk/cdkversionmacros.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkdnd.h>
+#include <cdk/cdkdevice.h>
+#include <cdk/cdkdevicetool.h>
 
 G_BEGIN_DECLS
 
@@ -50,8 +50,8 @@ G_BEGIN_DECLS
  */
 
 
-#define GDK_TYPE_EVENT          (gdk_event_get_type ())
-#define GDK_TYPE_EVENT_SEQUENCE (gdk_event_sequence_get_type ())
+#define GDK_TYPE_EVENT          (cdk_event_get_type ())
+#define GDK_TYPE_EVENT_SEQUENCE (cdk_event_sequence_get_type ())
 
 /**
  * GDK_PRIORITY_EVENTS:
@@ -154,9 +154,9 @@ typedef union  _GdkEvent	    GdkEvent;
  * GdkEventFunc:
  * @event: the #GdkEvent to process.
  * @data: (closure): user data set when the event handler was installed with
- *   gdk_event_handler_set().
+ *   cdk_event_handler_set().
  *
- * Specifies the type of function passed to gdk_event_handler_set() to
+ * Specifies the type of function passed to cdk_event_handler_set() to
  * handle all GDK events.
  */
 typedef void (*GdkEventFunc) (GdkEvent *event,
@@ -420,7 +420,7 @@ typedef enum
  * @GDK_SCROLL_LEFT: the window is scrolled to the left.
  * @GDK_SCROLL_RIGHT: the window is scrolled to the right.
  * @GDK_SCROLL_SMOOTH: the scrolling is determined by the delta values
- *   in #GdkEventScroll. See gdk_event_get_scroll_deltas(). Since: 3.4
+ *   in #GdkEventScroll. See cdk_event_get_scroll_deltas(). Since: 3.4
  *
  * Specifies the direction for #GdkEventScroll.
  */
@@ -666,7 +666,7 @@ struct _GdkEventVisibility
  * @is_hint: set to 1 if this event is just a hint, see the
  *   %GDK_POINTER_MOTION_HINT_MASK value of #GdkEventMask.
  * @device: the master device that the event originated from. Use
- * gdk_event_get_source_device() to get the slave device.
+ * cdk_event_get_source_device() to get the slave device.
  * @x_root: the x coordinate of the pointer relative to the root of the
  *   screen.
  * @y_root: the y coordinate of the pointer relative to the root of the
@@ -708,7 +708,7 @@ struct _GdkEventMotion
  *   and 3 is the right button. On 2-button mice, the middle button can
  *   often be simulated by pressing both mouse buttons together.
  * @device: the master device that the event originated from. Use
- * gdk_event_get_source_device() to get the slave device.
+ * cdk_event_get_source_device() to get the slave device.
  * @x_root: the x coordinate of the pointer relative to the root of the
  *   screen.
  * @y_root: the y coordinate of the pointer relative to the root of the
@@ -781,7 +781,7 @@ struct _GdkEventButton
  * @emulating_pointer: whether the event should be used for emulating
  *   pointer event
  * @device: the master device that the event originated from. Use
- * gdk_event_get_source_device() to get the slave device.
+ * cdk_event_get_source_device() to get the slave device.
  * @x_root: the x coordinate of the pointer relative to the root of the
  *   screen
  * @y_root: the y coordinate of the pointer relative to the root of the
@@ -792,7 +792,7 @@ struct _GdkEventButton
  * %GDK_TOUCH_END or %GDK_TOUCH_CANCEL.
  *
  * Touch events are grouped into sequences by means of the @sequence
- * field, which can also be obtained with gdk_event_get_event_sequence().
+ * field, which can also be obtained with cdk_event_get_event_sequence().
  * Each sequence begins with a %GDK_TOUCH_BEGIN event, followed by
  * any number of %GDK_TOUCH_UPDATE events, and ends with a %GDK_TOUCH_END
  * (or %GDK_TOUCH_CANCEL) event. With multitouch devices, there may be
@@ -829,7 +829,7 @@ struct _GdkEventTouch
  *   %GDK_SCROLL_DOWN, %GDK_SCROLL_LEFT, %GDK_SCROLL_RIGHT or
  *   %GDK_SCROLL_SMOOTH).
  * @device: the master device that the event originated from. Use
- * gdk_event_get_source_device() to get the slave device.
+ * cdk_event_get_source_device() to get the slave device.
  * @x_root: the x coordinate of the pointer relative to the root of the
  *   screen.
  * @y_root: the y coordinate of the pointer relative to the root of the
@@ -844,7 +844,7 @@ struct _GdkEventTouch
  * Some GDK backends can also generate “smooth” scroll events, which
  * can be recognized by the %GDK_SCROLL_SMOOTH scroll direction. For
  * these, the scroll deltas can be obtained with
- * gdk_event_get_scroll_deltas().
+ * cdk_event_get_scroll_deltas().
  */
 struct _GdkEventScroll
 {
@@ -873,14 +873,14 @@ struct _GdkEventScroll
  *   the modifier keys (e.g. Control, Shift and Alt) and the pointer
  *   buttons. See #GdkModifierType.
  * @keyval: the key that was pressed or released. See the
- *   `gdk/gdkkeysyms.h` header file for a
+ *   `cdk/cdkkeysyms.h` header file for a
  *   complete list of GDK key codes.
  * @length: the length of @string.
  * @string: a string containing an approximation of the text that
  *   would result from this keypress. The only correct way to handle text
  *   input of text is using input methods (see #CtkIMContext), so this
  *   field is deprecated and should never be used.
- *   (gdk_unicode_to_keyval() provides a non-deprecated way of getting
+ *   (cdk_unicode_to_keyval() provides a non-deprecated way of getting
  *   an approximate translation for a key.) The string is encoded in the
  *   encoding of the current locale (Note: this for backwards compatibility:
  *   strings in CTK+ and GDK are typically in UTF-8.) and NUL-terminated.
@@ -1078,7 +1078,7 @@ struct _GdkEventOwnerChange
  * @send_event: %TRUE if the event was sent explicitly.
  * @time: the time of the event in milliseconds.
  * @device: the master device that the event originated from. Use
- * gdk_event_get_source_device() to get the slave device.
+ * cdk_event_get_source_device() to get the slave device.
  *
  * Proximity events are generated when using GDK’s wrapper for the
  * XInput extension. The XInput extension is an add-on for standard X
@@ -1444,141 +1444,141 @@ union _GdkEvent
 };
 
 GDK_AVAILABLE_IN_ALL
-GType     gdk_event_get_type            (void) G_GNUC_CONST;
+GType     cdk_event_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_14
-GType     gdk_event_sequence_get_type   (void) G_GNUC_CONST;
+GType     cdk_event_sequence_get_type   (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_events_pending	 	(void);
+gboolean  cdk_events_pending	 	(void);
 GDK_AVAILABLE_IN_ALL
-GdkEvent* gdk_event_get			(void);
+GdkEvent* cdk_event_get			(void);
 
 GDK_AVAILABLE_IN_ALL
-GdkEvent* gdk_event_peek                (void);
+GdkEvent* cdk_event_peek                (void);
 GDK_AVAILABLE_IN_ALL
-void      gdk_event_put	 		(const GdkEvent *event);
+void      cdk_event_put	 		(const GdkEvent *event);
 
 GDK_AVAILABLE_IN_ALL
-GdkEvent* gdk_event_new                 (GdkEventType    type);
+GdkEvent* cdk_event_new                 (GdkEventType    type);
 GDK_AVAILABLE_IN_ALL
-GdkEvent* gdk_event_copy     		(const GdkEvent *event);
+GdkEvent* cdk_event_copy     		(const GdkEvent *event);
 GDK_AVAILABLE_IN_ALL
-void	  gdk_event_free     		(GdkEvent 	*event);
+void	  cdk_event_free     		(GdkEvent 	*event);
 
 GDK_AVAILABLE_IN_3_10
-GdkWindow *gdk_event_get_window         (const GdkEvent *event);
+GdkWindow *cdk_event_get_window         (const GdkEvent *event);
 
 GDK_AVAILABLE_IN_ALL
-guint32   gdk_event_get_time            (const GdkEvent  *event);
+guint32   cdk_event_get_time            (const GdkEvent  *event);
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_event_get_state           (const GdkEvent  *event,
+gboolean  cdk_event_get_state           (const GdkEvent  *event,
                                          GdkModifierType *state);
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_event_get_coords		(const GdkEvent  *event,
+gboolean  cdk_event_get_coords		(const GdkEvent  *event,
 					 gdouble	 *x_win,
 					 gdouble	 *y_win);
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_event_get_root_coords	(const GdkEvent *event,
+gboolean  cdk_event_get_root_coords	(const GdkEvent *event,
 					 gdouble	*x_root,
 					 gdouble	*y_root);
 GDK_AVAILABLE_IN_3_2
-gboolean  gdk_event_get_button          (const GdkEvent *event,
+gboolean  cdk_event_get_button          (const GdkEvent *event,
                                          guint          *button);
 GDK_AVAILABLE_IN_3_2
-gboolean  gdk_event_get_click_count     (const GdkEvent *event,
+gboolean  cdk_event_get_click_count     (const GdkEvent *event,
                                          guint          *click_count);
 GDK_AVAILABLE_IN_3_2
-gboolean  gdk_event_get_keyval          (const GdkEvent *event,
+gboolean  cdk_event_get_keyval          (const GdkEvent *event,
                                          guint          *keyval);
 GDK_AVAILABLE_IN_3_2
-gboolean  gdk_event_get_keycode         (const GdkEvent *event,
+gboolean  cdk_event_get_keycode         (const GdkEvent *event,
                                          guint16        *keycode);
 GDK_AVAILABLE_IN_3_2
-gboolean gdk_event_get_scroll_direction (const GdkEvent *event,
+gboolean cdk_event_get_scroll_direction (const GdkEvent *event,
                                          GdkScrollDirection *direction);
 GDK_AVAILABLE_IN_3_4
-gboolean  gdk_event_get_scroll_deltas   (const GdkEvent *event,
+gboolean  cdk_event_get_scroll_deltas   (const GdkEvent *event,
                                          gdouble         *delta_x,
                                          gdouble         *delta_y);
 
 GDK_AVAILABLE_IN_3_20
-gboolean  gdk_event_is_scroll_stop_event (const GdkEvent *event);
+gboolean  cdk_event_is_scroll_stop_event (const GdkEvent *event);
 
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_event_get_axis            (const GdkEvent  *event,
+gboolean  cdk_event_get_axis            (const GdkEvent  *event,
                                          GdkAxisUse       axis_use,
                                          gdouble         *value);
 GDK_AVAILABLE_IN_ALL
-void       gdk_event_set_device         (GdkEvent        *event,
+void       cdk_event_set_device         (GdkEvent        *event,
                                          GdkDevice       *device);
 GDK_AVAILABLE_IN_ALL
-GdkDevice* gdk_event_get_device         (const GdkEvent  *event);
+GdkDevice* cdk_event_get_device         (const GdkEvent  *event);
 GDK_AVAILABLE_IN_ALL
-void       gdk_event_set_source_device  (GdkEvent        *event,
+void       cdk_event_set_source_device  (GdkEvent        *event,
                                          GdkDevice       *device);
 GDK_AVAILABLE_IN_ALL
-GdkDevice* gdk_event_get_source_device  (const GdkEvent  *event);
+GdkDevice* cdk_event_get_source_device  (const GdkEvent  *event);
 GDK_AVAILABLE_IN_ALL
-void       gdk_event_request_motions    (const GdkEventMotion *event);
+void       cdk_event_request_motions    (const GdkEventMotion *event);
 GDK_AVAILABLE_IN_3_4
-gboolean   gdk_event_triggers_context_menu (const GdkEvent *event);
+gboolean   cdk_event_triggers_context_menu (const GdkEvent *event);
 
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_events_get_distance       (GdkEvent        *event1,
+gboolean  cdk_events_get_distance       (GdkEvent        *event1,
                                          GdkEvent        *event2,
                                          gdouble         *distance);
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_events_get_angle          (GdkEvent        *event1,
+gboolean  cdk_events_get_angle          (GdkEvent        *event1,
                                          GdkEvent        *event2,
                                          gdouble         *angle);
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_events_get_center         (GdkEvent        *event1,
+gboolean  cdk_events_get_center         (GdkEvent        *event1,
                                          GdkEvent        *event2,
                                          gdouble         *x,
                                          gdouble         *y);
 
 GDK_AVAILABLE_IN_ALL
-void	  gdk_event_handler_set 	(GdkEventFunc    func,
+void	  cdk_event_handler_set 	(GdkEventFunc    func,
 					 gpointer        data,
 					 GDestroyNotify  notify);
 
 GDK_AVAILABLE_IN_ALL
-void       gdk_event_set_screen         (GdkEvent        *event,
+void       cdk_event_set_screen         (GdkEvent        *event,
                                          GdkScreen       *screen);
 GDK_AVAILABLE_IN_ALL
-GdkScreen *gdk_event_get_screen         (const GdkEvent  *event);
+GdkScreen *cdk_event_get_screen         (const GdkEvent  *event);
 
 GDK_AVAILABLE_IN_3_4
-GdkEventSequence *gdk_event_get_event_sequence (const GdkEvent *event);
+GdkEventSequence *cdk_event_get_event_sequence (const GdkEvent *event);
 
 GDK_AVAILABLE_IN_3_10
-GdkEventType gdk_event_get_event_type   (const GdkEvent *event);
+GdkEventType cdk_event_get_event_type   (const GdkEvent *event);
 
 GDK_AVAILABLE_IN_3_20
-GdkSeat  *gdk_event_get_seat            (const GdkEvent *event);
+GdkSeat  *cdk_event_get_seat            (const GdkEvent *event);
 
 GDK_AVAILABLE_IN_ALL
-void	  gdk_set_show_events		(gboolean	 show_events);
+void	  cdk_set_show_events		(gboolean	 show_events);
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_get_show_events		(void);
+gboolean  cdk_get_show_events		(void);
 
 GDK_AVAILABLE_IN_ALL
-gboolean gdk_setting_get                (const gchar    *name,
+gboolean cdk_setting_get                (const gchar    *name,
                                          GValue         *value);
 
 GDK_AVAILABLE_IN_3_22
-GdkDeviceTool *gdk_event_get_device_tool (const GdkEvent *event);
+GdkDeviceTool *cdk_event_get_device_tool (const GdkEvent *event);
 
 GDK_AVAILABLE_IN_3_22
-void           gdk_event_set_device_tool (GdkEvent       *event,
+void           cdk_event_set_device_tool (GdkEvent       *event,
                                           GdkDeviceTool  *tool);
 
 GDK_AVAILABLE_IN_3_22
-int            gdk_event_get_scancode    (GdkEvent *event);
+int            cdk_event_get_scancode    (GdkEvent *event);
 
 GDK_AVAILABLE_IN_3_22
-gboolean       gdk_event_get_pointer_emulated (GdkEvent *event);
+gboolean       cdk_event_get_pointer_emulated (GdkEvent *event);
 
 G_END_DECLS
 

@@ -26,12 +26,12 @@ point_press (PointState *point,
   GdkEvent *ev;
 
   display = ctk_widget_get_display (widget);
-  seat = gdk_display_get_default_seat (display);
-  device = gdk_seat_get_pointer (seat);
+  seat = cdk_display_get_default_seat (display);
+  device = cdk_seat_get_pointer (seat);
 
   if (point == &mouse_state)
     {
-      ev = gdk_event_new (GDK_BUTTON_PRESS);
+      ev = cdk_event_new (GDK_BUTTON_PRESS);
       ev->any.window = g_object_ref (ctk_widget_get_window (widget));
       ev->button.time = GDK_CURRENT_TIME;
       ev->button.x = point->x;
@@ -43,7 +43,7 @@ point_press (PointState *point,
     }
   else
     {
-      ev = gdk_event_new (GDK_TOUCH_BEGIN);
+      ev = cdk_event_new (GDK_TOUCH_BEGIN);
       ev->any.window = g_object_ref (ctk_widget_get_window (widget));
       ev->touch.time = GDK_CURRENT_TIME;
       ev->touch.x = point->x;
@@ -54,11 +54,11 @@ point_press (PointState *point,
         ev->touch.emulating_pointer = TRUE;
     }
 
-  gdk_event_set_device (ev, device);
+  cdk_event_set_device (ev, device);
 
   ctk_main_do_event (ev);
 
-  gdk_event_free (ev);
+  cdk_event_free (ev);
 
   point->widget = widget;
 }
@@ -75,15 +75,15 @@ point_update (PointState *point,
   GdkEvent *ev;
 
   display = ctk_widget_get_display (widget);
-  seat = gdk_display_get_default_seat (display);
-  device = gdk_seat_get_pointer (seat);
+  seat = cdk_display_get_default_seat (display);
+  device = cdk_seat_get_pointer (seat);
 
   point->x = x;
   point->y = y;
 
   if (point == &mouse_state)
     {
-      ev = gdk_event_new (GDK_MOTION_NOTIFY);
+      ev = cdk_event_new (GDK_MOTION_NOTIFY);
       ev->any.window = g_object_ref (ctk_widget_get_window (widget));
       ev->button.time = GDK_CURRENT_TIME;
       ev->motion.x = x;
@@ -95,7 +95,7 @@ point_update (PointState *point,
       if (!point->widget || widget != point->widget)
         return;
 
-      ev = gdk_event_new (GDK_TOUCH_UPDATE);
+      ev = cdk_event_new (GDK_TOUCH_UPDATE);
       ev->any.window = g_object_ref (ctk_widget_get_window (widget));
       ev->touch.time = GDK_CURRENT_TIME;
       ev->touch.x = x;
@@ -107,11 +107,11 @@ point_update (PointState *point,
         ev->touch.emulating_pointer = TRUE;
     }
 
-  gdk_event_set_device (ev, device);
+  cdk_event_set_device (ev, device);
 
   ctk_main_do_event (ev);
 
-  gdk_event_free (ev);
+  cdk_event_free (ev);
 }
 
 static void
@@ -127,8 +127,8 @@ point_release (PointState *point,
     return;
 
   display = ctk_widget_get_display (point->widget);
-  seat = gdk_display_get_default_seat (display);
-  device = gdk_seat_get_pointer (seat);
+  seat = cdk_display_get_default_seat (display);
+  device = cdk_seat_get_pointer (seat);
 
   if (!point->widget)
     return;
@@ -138,7 +138,7 @@ point_release (PointState *point,
       if ((point->state & (GDK_BUTTON1_MASK << (button - 1))) == 0)
         return;
 
-      ev = gdk_event_new (GDK_BUTTON_RELEASE);
+      ev = cdk_event_new (GDK_BUTTON_RELEASE);
       ev->any.window = g_object_ref (ctk_widget_get_window (point->widget));
       ev->button.time = GDK_CURRENT_TIME;
       ev->button.x = point->x;
@@ -149,7 +149,7 @@ point_release (PointState *point,
     }
   else
     {
-      ev = gdk_event_new (GDK_TOUCH_END);
+      ev = cdk_event_new (GDK_TOUCH_END);
       ev->any.window = g_object_ref (ctk_widget_get_window (point->widget));
       ev->touch.time = GDK_CURRENT_TIME;
       ev->touch.x = point->x;
@@ -161,11 +161,11 @@ point_release (PointState *point,
         ev->touch.emulating_pointer = TRUE;
     }
 
-  gdk_event_set_device (ev, device);
+  cdk_event_set_device (ev, device);
 
   ctk_main_do_event (ev);
 
-  gdk_event_free (ev);
+  cdk_event_free (ev);
 }
 
 static const gchar *

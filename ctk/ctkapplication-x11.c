@@ -22,7 +22,7 @@
 
 #include "ctkapplicationprivate.h"
 
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 
 typedef CtkApplicationImplDBusClass CtkApplicationImplX11Class;
 
@@ -39,22 +39,22 @@ ctk_application_impl_x11_handle_window_realize (CtkApplicationImpl *impl,
                                                 CtkWindow          *window)
 {
   CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   gchar *window_path;
 
-  gdk_window = ctk_widget_get_window (CTK_WIDGET (window));
+  cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (!GDK_IS_X11_WINDOW (gdk_window))
+  if (!GDK_IS_X11_WINDOW (cdk_window))
     return;
 
   window_path = ctk_application_impl_dbus_get_window_path (dbus, window);
 
-  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_APPLICATION_ID", dbus->application_id);
-  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_UNIQUE_BUS_NAME", dbus->unique_name);
-  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_APPLICATION_OBJECT_PATH", dbus->object_path);
-  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_WINDOW_OBJECT_PATH", window_path);
-  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_APP_MENU_OBJECT_PATH", dbus->app_menu_path);
-  gdk_x11_window_set_utf8_property (gdk_window, "_CTK_MENUBAR_OBJECT_PATH", dbus->menubar_path);
+  cdk_x11_window_set_utf8_property (cdk_window, "_CTK_APPLICATION_ID", dbus->application_id);
+  cdk_x11_window_set_utf8_property (cdk_window, "_CTK_UNIQUE_BUS_NAME", dbus->unique_name);
+  cdk_x11_window_set_utf8_property (cdk_window, "_CTK_APPLICATION_OBJECT_PATH", dbus->object_path);
+  cdk_x11_window_set_utf8_property (cdk_window, "_CTK_WINDOW_OBJECT_PATH", window_path);
+  cdk_x11_window_set_utf8_property (cdk_window, "_CTK_APP_MENU_OBJECT_PATH", dbus->app_menu_path);
+  cdk_x11_window_set_utf8_property (cdk_window, "_CTK_MENUBAR_OBJECT_PATH", dbus->menubar_path);
 
   g_free (window_path);
 }
@@ -63,12 +63,12 @@ static GVariant *
 ctk_application_impl_x11_get_window_system_id (CtkApplicationImplDBus *dbus,
                                                CtkWindow              *window)
 {
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
 
-  gdk_window = ctk_widget_get_window (CTK_WIDGET (window));
+  cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (GDK_IS_X11_WINDOW (gdk_window))
-    return g_variant_new_uint32 (GDK_WINDOW_XID (gdk_window));
+  if (GDK_IS_X11_WINDOW (cdk_window))
+    return g_variant_new_uint32 (GDK_WINDOW_XID (cdk_window));
 
   return CTK_APPLICATION_IMPL_DBUS_CLASS (ctk_application_impl_x11_parent_class)->get_window_system_id (dbus, window);
 }
@@ -86,7 +86,7 @@ ctk_application_impl_x11_before_emit (CtkApplicationImpl *impl,
 
   g_variant_lookup (platform_data, "desktop-startup-id", "&s", &startup_notification_id);
 
-  gdk_x11_display_set_startup_notification_id (gdk_display_get_default (), startup_notification_id);
+  cdk_x11_display_set_startup_notification_id (cdk_display_get_default (), startup_notification_id);
 }
 
 static void

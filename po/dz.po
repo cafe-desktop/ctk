@@ -19,325 +19,325 @@ msgstr ""
 "X-Poedit-Country: BHUTAN\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: gdk/gdk.c:103
+#: cdk/cdk.c:103
 #, fuzzy, c-format
-msgid "Error parsing option --gdk-debug"
+msgid "Error parsing option --cdk-debug"
 msgstr "དཔར་བསྐྲུན་ལུ་འཛོལ་བ།"
 
-#: gdk/gdk.c:123
+#: cdk/cdk.c:123
 #, c-format
-msgid "Error parsing option --gdk-no-debug"
+msgid "Error parsing option --cdk-no-debug"
 msgstr ""
 
 #. Description of --class=CLASS in --help output
-#: gdk/gdk.c:151
+#: cdk/cdk.c:151
 msgid "Program class as used by the window manager"
 msgstr "སྒོ་སྒྲིག་གི་འཛིན་སྐྱོང་པ་གིས་ ལག་ལེན་འཐབ་མི་བཟུམ་མའི་ ལས་རིམ་དབྱེ་རིགས།"
 
 #. Placeholder in --class=CLASS in --help output
-#: gdk/gdk.c:152
+#: cdk/cdk.c:152
 msgid "CLASS"
 msgstr "དབྱེ་རིགས།"
 
 #. Description of --name=NAME in --help output
-#: gdk/gdk.c:154
+#: cdk/cdk.c:154
 msgid "Program name as used by the window manager"
 msgstr " སྒོ་སྒྲིག་འཛིན་སྐྱོང་པ་གིས་ ལག་ལེན་འཐབ་དོ་བཟུམ་མའི་ ལས་རིམ་མིང་།"
 
 #. Placeholder in --name=NAME in --help output
-#: gdk/gdk.c:155
+#: cdk/cdk.c:155
 msgid "NAME"
 msgstr "མིང༌། "
 
 #. Description of --display=DISPLAY in --help output
-#: gdk/gdk.c:157
+#: cdk/cdk.c:157
 msgid "X display to use"
 msgstr "ལག་ལེན་འཐབ་ནིའི་ X གི་བཀྲམ་སྟོན།"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: gdk/gdk.c:158
+#: cdk/cdk.c:158
 msgid "DISPLAY"
 msgstr "བཀྲམ་སྟོན།"
 
 #. Description of --screen=SCREEN in --help output
-#: gdk/gdk.c:160
+#: cdk/cdk.c:160
 msgid "X screen to use"
 msgstr "ལག་ལེན་འཐབ་ནིའི་ X གི་གསལ་གཞི།"
 
 #. Placeholder in --screen=SCREEN in --help output
-#: gdk/gdk.c:161
+#: cdk/cdk.c:161
 msgid "SCREEN"
 msgstr "གསལ་གཞི། "
 
-#. Description of --gdk-debug=FLAGS in --help output
-#: gdk/gdk.c:164
+#. Description of --cdk-debug=FLAGS in --help output
+#: cdk/cdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
 msgstr "ཇི་ཊི་ཀེ་+གིས་ གཞི་སྒྲིག་འབད་ནི་ལུ་ ཟུར་རྟགས་ཚུ་རྐྱེན་སེལ་འབད་དོ།"
 
-#. Placeholder in --gdk-debug=FLAGS in --help output
-#. Placeholder in --gdk-no-debug=FLAGS in --help output
+#. Placeholder in --cdk-debug=FLAGS in --help output
+#. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:165 gdk/gdk.c:168 ctk/ctkmain.c:533 ctk/ctkmain.c:536
+#: cdk/cdk.c:165 cdk/cdk.c:168 ctk/ctkmain.c:533 ctk/ctkmain.c:536
 msgid "FLAGS"
 msgstr "ཟུར་རྟགས། "
 
-#. Description of --gdk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:167
+#. Description of --cdk-no-debug=FLAGS in --help output
+#: cdk/cdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
 msgstr "ཇི་ཊི་ཀེ་+གིས་ སྒྲིག་བཤོལ་འབད་ནི་ལུ་ ཟུར་རྟགས་ཚུ་ རྐྱེན་སེལ་འབད་དོ།"
 
-#: gdk/keyname-table.h:3940
+#: cdk/keyname-table.h:3940
 #, fuzzy
 msgctxt "keyboard label"
 msgid "BackSpace"
 msgstr "ཚབ་བཙུགས།(_R)"
 
-#: gdk/keyname-table.h:3941
+#: cdk/keyname-table.h:3941
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Tab"
 msgstr "ཨེ་༤ཨེབ་ལྡེ།"
 
-#: gdk/keyname-table.h:3942
+#: cdk/keyname-table.h:3942
 msgctxt "keyboard label"
 msgid "Return"
 msgstr ""
 
-#: gdk/keyname-table.h:3943
+#: cdk/keyname-table.h:3943
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Pause"
 msgstr "ཐེམས་ཡོད།"
 
-#: gdk/keyname-table.h:3944
+#: cdk/keyname-table.h:3944
 msgctxt "keyboard label"
 msgid "Scroll_Lock"
 msgstr ""
 
-#: gdk/keyname-table.h:3945
+#: cdk/keyname-table.h:3945
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Sys_Req"
 msgstr "ཡིག་སྣོད་རིམ་ལུགས།"
 
-#: gdk/keyname-table.h:3946
+#: cdk/keyname-table.h:3946
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Escape"
 msgstr "ཀེ་ཀེ།"
 
-#: gdk/keyname-table.h:3947
+#: cdk/keyname-table.h:3947
 msgctxt "keyboard label"
 msgid "Multi_key"
 msgstr ""
 
-#: gdk/keyname-table.h:3948
+#: cdk/keyname-table.h:3948
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Home"
 msgstr "ཁྱིམ།"
 
-#: gdk/keyname-table.h:3949
+#: cdk/keyname-table.h:3949
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Left"
 msgstr "གཡོན་:(_L)"
 
-#: gdk/keyname-table.h:3950
+#: cdk/keyname-table.h:3950
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Up"
 msgstr "ཡར།(_U)"
 
-#: gdk/keyname-table.h:3951
+#: cdk/keyname-table.h:3951
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Right"
 msgstr "གཡས་:(_R)"
 
-#: gdk/keyname-table.h:3952
+#: cdk/keyname-table.h:3952
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Down"
 msgstr "མར།(_D)"
 
-#: gdk/keyname-table.h:3953
+#: cdk/keyname-table.h:3953
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Page_Up"
 msgstr "ཤོག་ལེབ་གཞི་སྒྲིག"
 
-#: gdk/keyname-table.h:3954
+#: cdk/keyname-table.h:3954
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Page_Down"
 msgstr "མར།(_D)"
 
-#: gdk/keyname-table.h:3955
+#: cdk/keyname-table.h:3955
 msgctxt "keyboard label"
 msgid "End"
 msgstr ""
 
-#: gdk/keyname-table.h:3956
+#: cdk/keyname-table.h:3956
 msgctxt "keyboard label"
 msgid "Begin"
 msgstr ""
 
-#: gdk/keyname-table.h:3957
+#: cdk/keyname-table.h:3957
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Print"
 msgstr "དཔར་བསྐྲུན།"
 
-#: gdk/keyname-table.h:3958
+#: cdk/keyname-table.h:3958
 msgctxt "keyboard label"
 msgid "Insert"
 msgstr ""
 
-#: gdk/keyname-table.h:3959
+#: cdk/keyname-table.h:3959
 msgctxt "keyboard label"
 msgid "Num_Lock"
 msgstr ""
 
-#: gdk/keyname-table.h:3960
+#: cdk/keyname-table.h:3960
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Space"
 msgstr "ཚབ་བཙུགས།(_R)"
 
-#: gdk/keyname-table.h:3961
+#: cdk/keyname-table.h:3961
 msgctxt "keyboard label"
 msgid "KP_Tab"
 msgstr ""
 
-#: gdk/keyname-table.h:3962
+#: cdk/keyname-table.h:3962
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Enter"
 msgstr "དཔར་འཕྲུལ།"
 
-#: gdk/keyname-table.h:3963
+#: cdk/keyname-table.h:3963
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Home"
 msgstr "ཁྱིམ།(_H)"
 
-#: gdk/keyname-table.h:3964
+#: cdk/keyname-table.h:3964
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Left"
 msgstr "གཡོན་:(_L)"
 
-#: gdk/keyname-table.h:3965
+#: cdk/keyname-table.h:3965
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Up"
 msgstr "ཡར།(_U)"
 
-#: gdk/keyname-table.h:3966
+#: cdk/keyname-table.h:3966
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Right"
 msgstr "གཡས་:(_R)"
 
-#: gdk/keyname-table.h:3967
+#: cdk/keyname-table.h:3967
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Down"
 msgstr "མར།(_D)"
 
-#: gdk/keyname-table.h:3968
+#: cdk/keyname-table.h:3968
 msgctxt "keyboard label"
 msgid "KP_Page_Up"
 msgstr ""
 
-#: gdk/keyname-table.h:3969
+#: cdk/keyname-table.h:3969
 msgctxt "keyboard label"
 msgid "KP_Prior"
 msgstr ""
 
-#: gdk/keyname-table.h:3970
+#: cdk/keyname-table.h:3970
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Page_Down"
 msgstr "ལྡེ་གདན་ཤོག་ལེབ་མར།(_D)"
 
-#: gdk/keyname-table.h:3971
+#: cdk/keyname-table.h:3971
 msgctxt "keyboard label"
 msgid "KP_Next"
 msgstr ""
 
-#: gdk/keyname-table.h:3972
+#: cdk/keyname-table.h:3972
 msgctxt "keyboard label"
 msgid "KP_End"
 msgstr ""
 
-#: gdk/keyname-table.h:3973
+#: cdk/keyname-table.h:3973
 msgctxt "keyboard label"
 msgid "KP_Begin"
 msgstr ""
 
-#: gdk/keyname-table.h:3974
+#: cdk/keyname-table.h:3974
 msgctxt "keyboard label"
 msgid "KP_Insert"
 msgstr ""
 
-#: gdk/keyname-table.h:3975
+#: cdk/keyname-table.h:3975
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Delete"
 msgstr "བཏོན་གཏང༌།(_D)"
 
-#: gdk/keyname-table.h:3976
+#: cdk/keyname-table.h:3976
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Delete"
 msgstr "བཏོན་གཏང༌།(_D)"
 
 #. Description of --sync in --help output
-#: gdk/win32/gdkmain-win32.c:54
+#: cdk/win32/cdkmain-win32.c:54
 msgid "Don't batch GDI requests"
 msgstr "ཇི་ཌི་ཨའི་གི་ཞུ་བ་ཚུ་ རུ་ཚན་མ་བཟོ།"
 
 #. Description of --no-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:56
+#: cdk/win32/cdkmain-win32.c:56
 msgid "Don't use the Wintab API for tablet support"
 msgstr "ཊེབ་ལེཊི་གི་ རྒྱབ་སྐྱོར་དོན་ལུ་ ཝིན་ཊེབ་ ཨེ་པི་ཨའི་ ལག་ལེན་མ་འཐབ།"
 
 #. Description of --ignore-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:58
+#: cdk/win32/cdkmain-win32.c:58
 msgid "Same as --no-wintab"
 msgstr "--ཨེན་ཨོ་-ཝིན་ཊེབ་དང་ཅོག་གཅིགཔ།"
 
 #. Description of --use-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:60
+#: cdk/win32/cdkmain-win32.c:60
 msgid "Do use the Wintab API [default]"
 msgstr "ཝིན་ཊེབ་ ཨེ་པི་ཨའི་ ལག་ལེན་མ་འཐབ། [སྔོན་སྒྲིག]"
 
 #. Description of --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:62
+#: cdk/win32/cdkmain-win32.c:62
 msgid "Size of the palette in 8 bit mode"
 msgstr "པེ་ལེཊི་གི་ཚད་ བིཊི་ ༨ ཀྱི་ཐབས་ལམ་ནང༌།"
 
 #. Placeholder in --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:63
+#: cdk/win32/cdkmain-win32.c:63
 msgid "COLORS"
 msgstr "ཚོས་གཞི། "
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:312
+#: cdk/x11/cdkapplaunchcontext-x11.c:312
 #, fuzzy, c-format
 msgid "Starting %s"
 msgstr "%dདཔར་བསྐྲུད་འབད་དོ།"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:316
+#: cdk/x11/cdkapplaunchcontext-x11.c:316
 #, fuzzy, c-format
 msgid "Opening %s"
 msgstr "'%s'ཁ་ཕྱེ།"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:321
+#: cdk/x11/cdkapplaunchcontext-x11.c:321
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
@@ -345,7 +345,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. Description of --sync in --help output
-#: gdk/x11/gdkmain-x11.c:96
+#: cdk/x11/cdkmain-x11.c:96
 msgid "Make X calls synchronous"
 msgstr "ཨེགསི་གི་འབོད་བརྡ་ཚུ་ མཉམ་བྱུང་བཟོ།"
 
@@ -4606,7 +4606,7 @@ msgstr ""
 #~ msgstr "གཟུགས་བརྙན་ཡིག་སྣོད་ %s ལུ་ འབྲི་ནི་ལུ་འཛོལ་བ།"
 
 #~ msgid ""
-#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ "This build of cdk-pixbuf does not support saving the image format: %s"
 #~ msgstr "ཇི་ཌི་ཀེ་པར་ཁོངས་འདི་གིས་ གཟུགས་བརྙན་རྩ་སྒྲིག་ %s དེ་ བསྲུང་ནི་ལུ་ རྒྱབ་སྐྱོར་མིན་འདུག"
 
 #~ msgid "Insufficient memory to save image to callback"

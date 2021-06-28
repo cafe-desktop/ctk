@@ -754,7 +754,7 @@ rgba_changed (GObject *object, GParamSpec *pspec, gpointer data)
   color = g_value_get_boxed (&val);
   ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (cb), &cb_color);
 
-  if (color != NULL && !gdk_rgba_equal (color, &cb_color))
+  if (color != NULL && !cdk_rgba_equal (color, &cb_color))
     {
       block_controller (G_OBJECT (cb));
       ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (cb), color);

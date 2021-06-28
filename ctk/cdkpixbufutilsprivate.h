@@ -18,15 +18,15 @@
 #ifndef __GDK_PIXBUF_UTILS_PRIVATE_H__
 #define __GDK_PIXBUF_UTILS_PRIVATE_H__
 
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 
 G_BEGIN_DECLS
 
-GdkPixbuf *_gdk_pixbuf_new_from_stream_scaled   (GInputStream  *stream,
+GdkPixbuf *_cdk_pixbuf_new_from_stream_scaled   (GInputStream  *stream,
                                                  gdouble        scale,
                                                  GCancellable  *cancellable,
                                                  GError       **error);
-GdkPixbuf *_gdk_pixbuf_new_from_resource_scaled (const gchar   *resource_path,
+GdkPixbuf *_cdk_pixbuf_new_from_resource_scaled (const gchar   *resource_path,
                                                  gdouble        scale,
                                                  GError       **error);
 

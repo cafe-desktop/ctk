@@ -433,7 +433,7 @@ accelerator_start_element (GMarkupParseContext *context,
   for (i = 0; names[i]; i++)
     {
       if (strcmp (names[i], "key") == 0)
-	key = gdk_keyval_from_name (values[i]);
+	key = cdk_keyval_from_name (values[i]);
       else if (strcmp (names[i], "modifiers") == 0)
 	{
 	  if (!_ctk_builder_flags_from_string (GDK_TYPE_MODIFIER_TYPE,

@@ -35,144 +35,144 @@ msgstr ""
 "X-Poedit-Language: Tamil\n"
 "X-Poedit-Country: INDIA\n"
 
-#: ../gdk/gdkapplaunchcontext.c:127 ../gdk/gdkcursor.c:139
-#: ../gdk/gdkdevicemanager.c:181
+#: ../cdk/cdkapplaunchcontext.c:127 ../cdk/cdkcursor.c:139
+#: ../cdk/cdkdevicemanager.c:181
 msgid "Display"
 msgstr "காட்சி"
 
-#: ../gdk/gdkcursor.c:131
+#: ../cdk/cdkcursor.c:131
 msgid "Cursor type"
 msgstr "நிலைக்காட்டி வகை"
 
-#: ../gdk/gdkcursor.c:132
+#: ../cdk/cdkcursor.c:132
 msgid "Standard cursor type"
 msgstr "இரண்டாவது நிலைக்காட்டி வகை"
 
-#: ../gdk/gdkcursor.c:140
+#: ../cdk/cdkcursor.c:140
 msgid "Display of this cursor"
 msgstr "இந்த நிலைக்காட்டியை காட்டவும்"
 
-#: ../gdk/gdkdevice.c:112
+#: ../cdk/cdkdevice.c:112
 msgid "Device Display"
 msgstr "சாதனத்தை காட்டு"
 
-#: ../gdk/gdkdevice.c:113
+#: ../cdk/cdkdevice.c:113
 msgid "Display which the device belongs to"
 msgstr "எதற்கு சாதனம் சொந்தமென காட்டவும்"
 
-#: ../gdk/gdkdevice.c:127
+#: ../cdk/cdkdevice.c:127
 msgid "Device manager"
 msgstr "சாதன மேலாளர் "
 
-#: ../gdk/gdkdevice.c:128
+#: ../cdk/cdkdevice.c:128
 msgid "Device manager which the device belongs to"
 msgstr "எந்த சாதனத்திற்கு உரிய சாதன மேலாளர்"
 
-#: ../gdk/gdkdevice.c:142 ../gdk/gdkdevice.c:143
+#: ../cdk/cdkdevice.c:142 ../cdk/cdkdevice.c:143
 msgid "Device name"
 msgstr "சாதனத்தின் பெயர்"
 
-#: ../gdk/gdkdevice.c:157
+#: ../cdk/cdkdevice.c:157
 msgid "Device type"
 msgstr "சாதன வகை"
 
-#: ../gdk/gdkdevice.c:158
+#: ../cdk/cdkdevice.c:158
 msgid "Device role in the device manager"
 msgstr "சாதன மேலாளரில் சாதனத்தின் பங்கு"
 
-#: ../gdk/gdkdevice.c:174
+#: ../cdk/cdkdevice.c:174
 msgid "Associated device"
 msgstr "தொடர்புடைய சாதனம்"
 
-#: ../gdk/gdkdevice.c:175
+#: ../cdk/cdkdevice.c:175
 msgid "Associated pointer or keyboard with this device"
 msgstr "இந்த சாதனத்துடன் தொடர்புடைய பாயின்டர் அல்லது விசைப்பலகை"
 
-#: ../gdk/gdkdevice.c:188
+#: ../cdk/cdkdevice.c:188
 msgid "Input source"
 msgstr "உள்ளீடு முறை"
 
-#: ../gdk/gdkdevice.c:189
+#: ../cdk/cdkdevice.c:189
 msgid "Source type for the device"
 msgstr "சாதனத்திற்கான மூல வகை"
 
-#: ../gdk/gdkdevice.c:204 ../gdk/gdkdevice.c:205
+#: ../cdk/cdkdevice.c:204 ../cdk/cdkdevice.c:205
 msgid "Input mode for the device"
 msgstr "சாதனத்திற்கான உள்ளீடு முறைமை"
 
-#: ../gdk/gdkdevice.c:220
+#: ../cdk/cdkdevice.c:220
 msgid "Whether the device has a cursor"
 msgstr "சாதனம் ஒரு கர்சரை கொண்டிருந்தால்"
 
-#: ../gdk/gdkdevice.c:221
+#: ../cdk/cdkdevice.c:221
 msgid "Whether there is a visible cursor following device motion"
 msgstr "பின்வரும் சாதன மோஷனில்  ஒரு கண்ணுக்கு தெரியும் கர்சர் இருந்தால்"
 
-#: ../gdk/gdkdevice.c:235 ../gdk/gdkdevice.c:236
+#: ../cdk/cdkdevice.c:235 ../cdk/cdkdevice.c:236
 msgid "Number of axes in the device"
 msgstr "சாதனத்திலுள்ள அச்சுகளின் எண்ணிக்கை"
 
-#: ../gdk/gdkdevicemanager.c:182
+#: ../cdk/cdkdevicemanager.c:182
 msgid "Display for the device manager"
 msgstr "சாதன மேலாளருக்காக காட்டவும் "
 
-#: ../gdk/gdkdisplaymanager.c:165
+#: ../cdk/cdkdisplaymanager.c:165
 msgid "Default Display"
 msgstr "கொடா நிலை காட்சி(திரை)"
 
-#: ../gdk/gdkdisplaymanager.c:166
+#: ../cdk/cdkdisplaymanager.c:166
 msgid "The default display for GDK"
 msgstr "GDK க்கான முன்னிருப்பு காட்சி"
 
-#: ../gdk/gdkscreen.c:91
+#: ../cdk/cdkscreen.c:91
 msgid "Font options"
 msgstr "எழுத்துரு விருப்பங்கள்"
 
-#: ../gdk/gdkscreen.c:92
+#: ../cdk/cdkscreen.c:92
 msgid "The default font options for the screen"
 msgstr "திரைக்கான முன்னிருப்பு எழுத்துரு விருப்பங்கள்"
 
-#: ../gdk/gdkscreen.c:99
+#: ../cdk/cdkscreen.c:99
 msgid "Font resolution"
 msgstr "எழுத்துரு திரைத்திறன்"
 
-#: ../gdk/gdkscreen.c:100
+#: ../cdk/cdkscreen.c:100
 msgid "The resolution for fonts on the screen"
 msgstr "திரையில் எழுத்துருக்களின் திரைத்திறன்"
 
-#: ../gdk/gdkwindow.c:311 ../gdk/gdkwindow.c:312
+#: ../cdk/cdkwindow.c:311 ../cdk/cdkwindow.c:312
 msgid "Cursor"
 msgstr "நிலைக்காட்டி"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:112
+#: ../cdk/x11/cdkdevicemanager-xi2.c:112
 msgid "Opcode"
 msgstr "Opcode"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:113
+#: ../cdk/x11/cdkdevicemanager-xi2.c:113
 msgid "Opcode for XInput2 requests"
 msgstr "XInput2 கோரிக்கைகளுக்கான Opcode "
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:119
+#: ../cdk/x11/cdkdevicemanager-xi2.c:119
 msgid "Major"
 msgstr "முக்கியம்"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:120
+#: ../cdk/x11/cdkdevicemanager-xi2.c:120
 msgid "Major version number"
 msgstr "முக்கிய பதிப்பு எண்"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:126
+#: ../cdk/x11/cdkdevicemanager-xi2.c:126
 msgid "Minor"
 msgstr "சிறிய"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:127
+#: ../cdk/x11/cdkdevicemanager-xi2.c:127
 msgid "Minor version number"
 msgstr "சிறிய பதிப்பு எண்"
 
-#: ../gdk/x11/gdkdevice-xi2.c:142
+#: ../cdk/x11/cdkdevice-xi2.c:142
 msgid "Device ID"
 msgstr "சாதன குறியீடு"
 
-#: ../gdk/x11/gdkdevice-xi2.c:143
+#: ../cdk/x11/cdkdevice-xi2.c:143
 msgid "Device identifier"
 msgstr "சாதன அடையாளங்காட்டி"
 

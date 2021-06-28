@@ -7,7 +7,7 @@
  */
 
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 
 /* Inserts a piece of text into the buffer, giving it the usual
  * appearance of a hyperlink in a web browser: blue and underlined.
@@ -217,9 +217,9 @@ set_cursor_if_appropriate (CtkTextView    *text_view,
       hovering_over_link = hovering;
 
       if (hovering_over_link)
-        gdk_window_set_cursor (ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT), hand_cursor);
+        cdk_window_set_cursor (ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT), hand_cursor);
       else
-        gdk_window_set_cursor (ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT), regular_cursor);
+        cdk_window_set_cursor (ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT), regular_cursor);
     }
 
   if (tags)
@@ -256,8 +256,8 @@ do_hypertext (CtkWidget *do_widget)
       GdkDisplay *display;
 
       display = ctk_widget_get_display (do_widget);
-      hand_cursor = gdk_cursor_new_from_name (display, "pointer");
-      regular_cursor = gdk_cursor_new_from_name (display, "text");
+      hand_cursor = cdk_cursor_new_from_name (display, "pointer");
+      regular_cursor = cdk_cursor_new_from_name (display, "text");
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_title (CTK_WINDOW (window), "Hypertext");

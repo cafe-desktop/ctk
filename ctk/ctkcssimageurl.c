@@ -39,14 +39,14 @@ ctk_css_image_url_load_image (CtkCssImageUrl  *url,
     return url->loaded_image;
 
   /* We special case resources here so we can use
-     gdk_pixbuf_new_from_resource, which in turn has some special casing
+     cdk_pixbuf_new_from_resource, which in turn has some special casing
      for GdkPixdata files to avoid duplicating the memory for the pixbufs */
   if (g_file_has_uri_scheme (url->file, "resource"))
     {
       char *uri = g_file_get_uri (url->file);
       char *resource_path = g_uri_unescape_string (uri + strlen ("resource://"), NULL);
 
-      pixbuf = gdk_pixbuf_new_from_resource (resource_path, &local_error);
+      pixbuf = cdk_pixbuf_new_from_resource (resource_path, &local_error);
       g_free (resource_path);
       g_free (uri);
     }
@@ -55,7 +55,7 @@ ctk_css_image_url_load_image (CtkCssImageUrl  *url,
       input = g_file_read (url->file, NULL, &local_error);
       if (input != NULL)
 	{
-          pixbuf = gdk_pixbuf_new_from_stream (G_INPUT_STREAM (input), NULL, &local_error);
+          pixbuf = cdk_pixbuf_new_from_stream (G_INPUT_STREAM (input), NULL, &local_error);
           g_object_unref (input);
 	}
       else

@@ -331,7 +331,7 @@ ctk_stack_switcher_drag_motion (CtkWidget      *widget,
 
   if (button && !priv->switch_timer)
     {
-      priv->switch_timer = gdk_threads_add_timeout (TIMEOUT_EXPAND,
+      priv->switch_timer = cdk_threads_add_timeout (TIMEOUT_EXPAND,
                                                     ctk_stack_switcher_switch_timeout,
                                                     self);
       g_source_set_name_by_id (priv->switch_timer, "[ctk+] ctk_stack_switcher_switch_timeout");
