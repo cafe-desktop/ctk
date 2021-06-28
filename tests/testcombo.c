@@ -37,7 +37,7 @@ create_color_pixbuf (const char *color)
         if (!cdk_rgba_parse (&rgba, color))
                 return NULL;
 
-        pixbuf = gdk_pixbuf_new (CDK_COLORSPACE_RGB,
+        pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
                                  FALSE, 8,
                                  16, 16);
 

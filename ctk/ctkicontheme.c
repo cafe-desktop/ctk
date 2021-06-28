@@ -4380,7 +4380,7 @@ ctk_icon_theme_color_symbolic_pixbuf (GdkPixbuf     *symbolic,
   width = gdk_pixbuf_get_width (symbolic);
   height = gdk_pixbuf_get_height (symbolic);
 
-  colored = gdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, width, height);
+  colored = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
 
   src_stride = gdk_pixbuf_get_rowstride (symbolic);
   src_data = gdk_pixbuf_get_pixels (symbolic);

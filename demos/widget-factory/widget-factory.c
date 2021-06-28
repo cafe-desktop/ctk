@@ -986,7 +986,7 @@ populate_flowbox (CtkWidget *flowbox)
 
   g_object_set_data (G_OBJECT (flowbox), "populated", GUINT_TO_POINTER (1));
 
-  pixbuf = gdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, 110, 70);
+  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 110, 70);
   gdk_pixbuf_fill (pixbuf, 0xffffffff);
   child = ctk_image_new_from_pixbuf (pixbuf);
   ctk_widget_show (child);

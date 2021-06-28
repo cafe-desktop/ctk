@@ -771,7 +771,7 @@ cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
       if (!GDI_CALL (GetDIBits, (hdc, ii.hbmColor, 0, h, bits, (BITMAPINFO *)&bmi, DIB_RGB_COLORS)))
 	goto out2;
 
-      pixbuf = gdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, w, h);
+      pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, w, h);
       pixels = gdk_pixbuf_get_pixels (pixbuf);
       rowstride = gdk_pixbuf_get_rowstride (pixbuf);
       no_alpha = TRUE;
@@ -824,7 +824,7 @@ cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
       if (!GDI_CALL (GetDIBits, (hdc, ii.hbmMask, 0, h*2, bits, (BITMAPINFO *)&bmi, DIB_RGB_COLORS)))
 	goto out2;
 
-      pixbuf = gdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, w, h);
+      pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, w, h);
       pixels = gdk_pixbuf_get_pixels (pixbuf);
       rowstride = gdk_pixbuf_get_rowstride (pixbuf);
       bpl = ((w-1)/32 + 1)*4;

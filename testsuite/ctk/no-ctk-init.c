@@ -29,7 +29,7 @@ test_cdk_cairo_set_source_pixbuf (void)
   cairo_t *cr;
   GdkPixbuf *pixbuf;
 
-  pixbuf = gdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, 5, 5);
+  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 5, 5);
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 10, 10);
   cr = cairo_create (surface);
 

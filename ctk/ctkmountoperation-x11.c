@@ -410,7 +410,7 @@ scaled_from_pixdata (guchar *pixdata,
   GdkPixbuf *dest;
 
   src = gdk_pixbuf_new_from_data (pixdata,
-                                  CDK_COLORSPACE_RGB,
+                                  GDK_COLORSPACE_RGB,
                                   TRUE,
                                   8,
                                   w, h, w * 4,
@@ -427,7 +427,7 @@ scaled_from_pixdata (guchar *pixdata,
 
       size = MAX (w, h);
 
-      tmp = gdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, size, size);
+      tmp = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, size, size);
 
       if (tmp != NULL)
         {
