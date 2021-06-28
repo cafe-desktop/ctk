@@ -790,8 +790,8 @@ msgid "Pixbuf"
 msgstr "Đệm điểm ảnh"
 
 #: ctk/deprecated/ctkstatusicon.c:227 ctk/ctkimage.c:240
-msgid "A CdkPixbuf to display"
-msgstr "CdkPixbuf cần hiển thị"
+msgid "A GdkPixbuf to display"
+msgstr "GdkPixbuf cần hiển thị"
 
 #: ctk/deprecated/ctkstatusicon.c:234 ctk/ctkimage.c:253
 #: ctk/ctkrecentmanager.c:293
@@ -4380,8 +4380,8 @@ msgid "Animation"
 msgstr "Hoạt cảnh"
 
 #: ctk/ctkimage.c:312
-msgid "CdkPixbufAnimation to display"
-msgstr "CdkPixbufAnimation cần hiển thị"
+msgid "GdkPixbufAnimation to display"
+msgstr "GdkPixbufAnimation cần hiển thị"
 
 #: ctk/ctkimage.c:356
 msgid "Resource"

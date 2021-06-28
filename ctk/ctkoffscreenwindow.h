@@ -67,7 +67,7 @@ CtkWidget       *ctk_offscreen_window_new         (void);
 CDK_AVAILABLE_IN_ALL
 cairo_surface_t *ctk_offscreen_window_get_surface (CtkOffscreenWindow *offscreen);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf       *ctk_offscreen_window_get_pixbuf  (CtkOffscreenWindow *offscreen);
+GdkPixbuf       *ctk_offscreen_window_get_pixbuf  (CtkOffscreenWindow *offscreen);
 
 G_END_DECLS
 

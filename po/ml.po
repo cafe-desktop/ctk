@@ -5547,7 +5547,7 @@ msgstr "ടെസ്റ്റ് പ്രിന്ററിലേക്ക് �
 #~ msgstr "TGA context struct-നുള്ള മെമ്മറി അനുവദിക്കുവാന്‍ സാധ്യമായില്ല"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "index അറ എഴുതുന്നതില്‍ പരാ‍ജയം\n"
 
 #, fuzzy

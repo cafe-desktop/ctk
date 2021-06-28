@@ -260,7 +260,7 @@ _cdk_quartz_display_get_cursor_for_surface (CdkDisplay      *display,
   NSImage *image;
   NSCursor *nscursor;
   CdkCursor *cursor;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   CDK_QUARTZ_ALLOC_POOL;
 

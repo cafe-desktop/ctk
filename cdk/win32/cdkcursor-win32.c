@@ -721,12 +721,12 @@ _cdk_win32_display_get_cursor_for_name (CdkDisplay  *display,
   return result;
 }
 
-CdkPixbuf *
+GdkPixbuf *
 cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
                                       gdouble *x_hot,
                                       gdouble *y_hot)
 {
-  CdkPixbuf *pixbuf = NULL;
+  GdkPixbuf *pixbuf = NULL;
   ICONINFO ii;
   struct
   {
@@ -902,7 +902,7 @@ _cdk_win32_cursor_get_surface (CdkCursor *cursor,
 			       gdouble *x_hot,
 			       gdouble *y_hot)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   cairo_surface_t *surface;
 
   g_return_val_if_fail (cursor != NULL, NULL);
@@ -925,7 +925,7 @@ _cdk_win32_display_get_cursor_for_surface (CdkDisplay      *display,
 					   gdouble          y)
 {
   HCURSOR hcursor;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   gint width, height;
 
   g_return_val_if_fail (surface != NULL, NULL);
@@ -1076,7 +1076,7 @@ create_color_bitmap (gint     size,
 }
 
 static gboolean
-pixbuf_to_hbitmaps_alpha_winxp (CdkPixbuf *pixbuf,
+pixbuf_to_hbitmaps_alpha_winxp (GdkPixbuf *pixbuf,
 				HBITMAP   *color,
 				HBITMAP   *mask)
 {
@@ -1154,7 +1154,7 @@ pixbuf_to_hbitmaps_alpha_winxp (CdkPixbuf *pixbuf,
 }
 
 static gboolean
-pixbuf_to_hbitmaps_normal (CdkPixbuf *pixbuf,
+pixbuf_to_hbitmaps_normal (GdkPixbuf *pixbuf,
 			   HBITMAP   *color,
 			   HBITMAP   *mask)
 {
@@ -1244,7 +1244,7 @@ pixbuf_to_hbitmaps_normal (CdkPixbuf *pixbuf,
 }
 
 static HICON
-pixbuf_to_hicon (CdkPixbuf *pixbuf,
+pixbuf_to_hicon (GdkPixbuf *pixbuf,
 		 gboolean   is_icon,
 		 gint       x,
 		 gint       y)
@@ -1274,13 +1274,13 @@ pixbuf_to_hicon (CdkPixbuf *pixbuf,
 }
 
 HICON
-_cdk_win32_pixbuf_to_hicon (CdkPixbuf *pixbuf)
+_cdk_win32_pixbuf_to_hicon (GdkPixbuf *pixbuf)
 {
   return pixbuf_to_hicon (pixbuf, TRUE, 0, 0);
 }
 
 HICON
-_cdk_win32_pixbuf_to_hcursor (CdkPixbuf *pixbuf,
+_cdk_win32_pixbuf_to_hcursor (GdkPixbuf *pixbuf,
 			      gint       x_hotspot,
 			      gint       y_hotspot)
 {
@@ -1288,7 +1288,7 @@ _cdk_win32_pixbuf_to_hcursor (CdkPixbuf *pixbuf,
 }
 
 HICON
-cdk_win32_pixbuf_to_hicon_libctk_only (CdkPixbuf *pixbuf)
+cdk_win32_pixbuf_to_hicon_libctk_only (GdkPixbuf *pixbuf)
 {
   return _cdk_win32_pixbuf_to_hicon (pixbuf);
 }

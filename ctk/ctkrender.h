@@ -143,13 +143,13 @@ void        ctk_render_activity    (CtkStyleContext     *context,
                                     gdouble              width,
                                     gdouble              height);
 CDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_load_icon)
-CdkPixbuf * ctk_render_icon_pixbuf (CtkStyleContext     *context,
+GdkPixbuf * ctk_render_icon_pixbuf (CtkStyleContext     *context,
                                     const CtkIconSource *source,
                                     CtkIconSize          size);
 CDK_AVAILABLE_IN_3_2
 void        ctk_render_icon        (CtkStyleContext     *context,
                                     cairo_t             *cr,
-                                    CdkPixbuf           *pixbuf,
+                                    GdkPixbuf           *pixbuf,
                                     gdouble              x,
                                     gdouble              y);
 CDK_AVAILABLE_IN_3_10

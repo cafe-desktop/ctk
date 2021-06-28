@@ -3708,7 +3708,7 @@ msgstr ""
 
 #: ../ctk/ctkimage.c:236
 #: ../ctk/ctkstatusicon.c:236
-msgid "A CdkPixbuf to display"
+msgid "A GdkPixbuf to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:243
@@ -3760,7 +3760,7 @@ msgid "Animation"
 msgstr "پویانمایی"
 
 #: ../ctk/ctkimage.c:295
-msgid "CdkPixbufAnimation to display"
+msgid "GdkPixbufAnimation to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:335

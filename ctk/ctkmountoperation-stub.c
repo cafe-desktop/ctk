@@ -47,7 +47,7 @@ _ctk_mount_operation_lookup_info (CtkMountOperationLookupContext *context,
                                   gint                            size_pixels,
                                   gchar                         **out_name,
                                   gchar                         **out_command_line,
-                                  CdkPixbuf                     **out_pixbuf)
+                                  GdkPixbuf                     **out_pixbuf)
 {
   return FALSE;
 }

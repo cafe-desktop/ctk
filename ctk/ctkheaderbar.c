@@ -210,7 +210,7 @@ _ctk_header_bar_update_window_icon (CtkHeaderBar *bar,
                                     CtkWindow    *window)
 {
   CtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   gint scale;
 
   if (priv->titlebar_icon == NULL)

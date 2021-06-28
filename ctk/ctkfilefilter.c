@@ -511,7 +511,7 @@ ctk_file_filter_add_pattern (CtkFileFilter *filter,
  * @filter: a #CtkFileFilter
  * 
  * Adds a rule allowing image files in the formats supported
- * by CdkPixbuf.
+ * by GdkPixbuf.
  * 
  * Since: 2.6
  **/
@@ -845,7 +845,7 @@ ctk_file_filter_to_gvariant (CtkFileFilter *filter)
 
 	    for (f = rule->u.pixbuf_formats; f; f = f->next)
 	      {
-                CdkPixbufFormat *fmt = f->data;
+                GdkPixbufFormat *fmt = f->data;
                 gchar **mime_types;
                 int i;
 

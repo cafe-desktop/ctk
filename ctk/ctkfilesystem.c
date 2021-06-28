@@ -711,7 +711,7 @@ get_surface_from_gicon (GIcon      *icon,
   CtkStyleContext *context;
   CtkIconTheme *icon_theme;
   CtkIconInfo *icon_info;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   cairo_surface_t *surface;
 
   context = ctk_widget_get_style_context (widget);
@@ -823,7 +823,7 @@ _ctk_file_info_render_icon_internal (GFileInfo *info,
                                      gboolean   symbolic)
 {
   GIcon *icon;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   const gchar *thumbnail_path;
   cairo_surface_t *surface = NULL;
   int scale;

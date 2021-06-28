@@ -3116,8 +3116,8 @@ msgstr "Pixbuf"
 
 #, fuzzy
 #: ../ctk/ctkimage.c:228 ../ctk/ctkstatusicon.c:219
-msgid "A CdkPixbuf to display"
-msgstr "𐑩 CdkPixbuf 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
+msgid "A GdkPixbuf to display"
+msgstr "𐑩 GdkPixbuf 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
 
 #, fuzzy
 #: ../ctk/ctkimage.c:235
@@ -3191,8 +3191,8 @@ msgstr "𐑨𐑯𐑩𐑥𐑱𐑖𐑩𐑯"
 
 #, fuzzy
 #: ../ctk/ctkimage.c:311
-msgid "CdkPixbufAnimation to display"
-msgstr "CdkPixbufAnimation 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
+msgid "GdkPixbufAnimation to display"
+msgstr "GdkPixbufAnimation 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
 
 #: ../ctk/ctkimage.c:351 ../ctk/ctkstatusicon.c:266
 msgid "Storage type"

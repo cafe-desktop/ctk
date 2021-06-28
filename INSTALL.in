@@ -3,10 +3,10 @@ Prerequisites
 
 CTK+ requires the following packages:
 
- - The GLib, Pango, CdkPixbuf, ATK and cairo libraries, available at
+ - The GLib, Pango, GdkPixbuf, ATK and cairo libraries, available at
    the same location as CTK+. CTK+ @CTK_VERSION@ requires at least
    GLib @GLIB_REQUIRED_VERSION@, Pango @PANGO_REQUIRED_VERSION@,
-   CdkPixbuf @CDK_PIXBUF_REQUIRED_VERSION@, ATK @ATK_REQUIRED_VERSION@
+   GdkPixbuf @CDK_PIXBUF_REQUIRED_VERSION@, ATK @ATK_REQUIRED_VERSION@
    and cairo @CAIRO_REQUIRED_VERSION@.
 
  - libepoxy, for cross-platform OpenGL support.

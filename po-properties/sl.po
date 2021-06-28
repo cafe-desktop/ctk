@@ -823,8 +823,8 @@ msgid "Pixbuf"
 msgstr "Medpomnilnik sličic"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A CdkPixbuf to display"
-msgstr "Predmet CdkPixbuf, ki naj se prikaže"
+msgid "A GdkPixbuf to display"
+msgstr "Predmet GdkPixbuf, ki naj se prikaže"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -4522,8 +4522,8 @@ msgid "Animation"
 msgstr "Animacija"
 
 #: ctk/ctkimage.c:329
-msgid "CdkPixbufAnimation to display"
-msgstr "CdkPixbufAnimation, ki naj se prikaže"
+msgid "GdkPixbufAnimation to display"
+msgstr "GdkPixbufAnimation, ki naj se prikaže"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"

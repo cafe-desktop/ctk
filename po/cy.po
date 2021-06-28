@@ -4734,7 +4734,7 @@ msgstr ""
 #~ msgstr "Methu dyrannu cof ar gyfer strwythur cyd-destun delwedd TGA"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Methu ysgrifennu mynegai ffolder\n"
 
 #, fuzzy

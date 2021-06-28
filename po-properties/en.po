@@ -3284,7 +3284,7 @@ msgid "Pixbuf"
 msgstr ""
 
 #: ctk/ctkimage.c:237 ctk/ctkstatusicon.c:205
-msgid "A CdkPixbuf to display"
+msgid "A GdkPixbuf to display"
 msgstr ""
 
 #: ctk/ctkimage.c:244 ctk/ctkrecentmanager.c:294 ctk/ctkstatusicon.c:212
@@ -3329,7 +3329,7 @@ msgid "Animation"
 msgstr ""
 
 #: ctk/ctkimage.c:296
-msgid "CdkPixbufAnimation to display"
+msgid "GdkPixbufAnimation to display"
 msgstr ""
 
 #: ctk/ctkimage.c:336 ctk/ctkstatusicon.c:252

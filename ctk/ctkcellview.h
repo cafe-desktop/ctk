@@ -78,7 +78,7 @@ CtkWidget        *ctk_cell_view_new_with_text           (const gchar     *text);
 CDK_AVAILABLE_IN_ALL
 CtkWidget        *ctk_cell_view_new_with_markup         (const gchar     *markup);
 CDK_AVAILABLE_IN_ALL
-CtkWidget        *ctk_cell_view_new_with_pixbuf         (CdkPixbuf       *pixbuf);
+CtkWidget        *ctk_cell_view_new_with_pixbuf         (GdkPixbuf       *pixbuf);
 CDK_AVAILABLE_IN_ALL
 void              ctk_cell_view_set_model               (CtkCellView     *cell_view,
                                                          CtkTreeModel    *model);

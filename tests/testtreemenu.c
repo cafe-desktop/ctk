@@ -6,10 +6,10 @@
  *******************************************************/
 
 #if _CTK_TREE_MENU_WAS_A_PUBLIC_CLASS_
-static CdkPixbuf *
+static GdkPixbuf *
 create_color_pixbuf (const char *color)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   CdkRGBA rgba;
 
   int x;
@@ -45,7 +45,7 @@ create_menu_grid_demo (void)
 {
   CtkWidget *menu;
   CtkTreeIter iter;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   CtkCellRenderer *cell = ctk_cell_renderer_pixbuf_new ();
   CtkListStore *store;
   

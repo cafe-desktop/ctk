@@ -4927,7 +4927,7 @@ msgstr ""
 #~ msgstr "Ga e kgone go šupa kgopolo bakeng sa struct sa dikagare sa TGA"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "E paletšwe go bala go tšwa faeleng ya motšwa-o-swere"
 
 #, fuzzy

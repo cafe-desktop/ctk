@@ -284,8 +284,8 @@ static const char * trashcan_open_xpm[] = {
 "                                                                ",
 "                                                                "};
 
-CdkPixbuf *trashcan_open;
-CdkPixbuf *trashcan_closed;
+GdkPixbuf *trashcan_open;
+GdkPixbuf *trashcan_closed;
 
 gboolean have_drag;
 
@@ -586,7 +586,7 @@ main (int argc, char **argv)
   CtkWidget *label;
   CtkWidget *pixmap;
   CtkWidget *button;
-  CdkPixbuf *drag_icon;
+  GdkPixbuf *drag_icon;
 
   test_init ();
   

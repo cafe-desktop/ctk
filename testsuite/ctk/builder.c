@@ -1193,7 +1193,7 @@ test_icon_view (void)
     "  <object class=\"CtkListStore\" id=\"liststore1\">"
     "    <columns>"
     "      <column type=\"gchararray\"/>"
-    "      <column type=\"CdkPixbuf\"/>"
+    "      <column type=\"GdkPixbuf\"/>"
     "    </columns>"
     "    <data>"
     "      <row>"

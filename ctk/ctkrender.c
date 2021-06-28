@@ -994,8 +994,8 @@ ctk_render_activity (CtkStyleContext *context,
   ctk_css_style_render_icon (ctk_style_context_lookup_style (context), cr, x, y, width, height, CTK_CSS_IMAGE_BUILTIN_SPINNER);
 }
 
-static CdkPixbuf *
-scale_or_ref (CdkPixbuf *src,
+static GdkPixbuf *
+scale_or_ref (GdkPixbuf *src,
               gint       width,
               gint       height)
 {
@@ -1008,13 +1008,13 @@ scale_or_ref (CdkPixbuf *src,
                                     CDK_INTERP_BILINEAR);
 }
 
-CdkPixbuf *
-ctk_render_icon_pixbuf_unpacked (CdkPixbuf           *base_pixbuf,
+GdkPixbuf *
+ctk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
                                  CtkIconSize          size,
                                  CtkCssIconEffect     icon_effect)
 {
-  CdkPixbuf *scaled;
-  CdkPixbuf *stated;
+  GdkPixbuf *scaled;
+  GdkPixbuf *stated;
   cairo_surface_t *surface;
 
   g_return_val_if_fail (base_pixbuf != NULL, NULL);
@@ -1068,13 +1068,13 @@ ctk_render_icon_pixbuf_unpacked (CdkPixbuf           *base_pixbuf,
  * Renders the icon specified by @source at the given @size, returning the result
  * in a pixbuf.
  *
- * Returns: (transfer full): a newly-created #CdkPixbuf containing the rendered icon
+ * Returns: (transfer full): a newly-created #GdkPixbuf containing the rendered icon
  *
  * Since: 3.0
  *
  * Deprecated: 3.10: Use ctk_icon_theme_load_icon() instead.
  **/
-CdkPixbuf *
+GdkPixbuf *
 ctk_render_icon_pixbuf (CtkStyleContext     *context,
                         const CtkIconSource *source,
                         CtkIconSize          size)
@@ -1097,7 +1097,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
  * ctk_render_icon:
  * @context: a #CtkStyleContext
  * @cr: a #cairo_t
- * @pixbuf: a #CdkPixbuf containing the icon to draw
+ * @pixbuf: a #GdkPixbuf containing the icon to draw
  * @x: X position for the @pixbuf
  * @y: Y position for the @pixbuf
  *
@@ -1115,7 +1115,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 void
 ctk_render_icon (CtkStyleContext *context,
                  cairo_t         *cr,
-                 CdkPixbuf       *pixbuf,
+                 GdkPixbuf       *pixbuf,
                  gdouble          x,
                  gdouble          y)
 {

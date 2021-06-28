@@ -4966,8 +4966,8 @@ msgstr "'%s' ছবি লোড করতে ব্যর্থ: কারণ �
 #~ msgid "Failed to allocate QTIF context structure."
 #~ msgstr "QTIF কনটেক্সট কাঠামো বরাদ্দ করতে ব্যর্থ।"
 
-#~ msgid "Failed to create CdkPixbufLoader object."
-#~ msgstr "CdkPixbufLoader অবজেক্ট তৈরি করতে ব্যর্থ।"
+#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgstr "GdkPixbufLoader অবজেক্ট তৈরি করতে ব্যর্থ।"
 
 #~ msgid "Failed to find an image data atom."
 #~ msgstr "ছবির তথ্যের অ্যাটম খুঁজে পেতে ব্যর্থ।"

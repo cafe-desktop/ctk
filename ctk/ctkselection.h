@@ -223,9 +223,9 @@ CDK_AVAILABLE_IN_ALL
 guchar * ctk_selection_data_get_text (const CtkSelectionData     *selection_data);
 CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_data_set_pixbuf   (CtkSelectionData  *selection_data,
-                                          CdkPixbuf         *pixbuf);
+                                          GdkPixbuf         *pixbuf);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf *ctk_selection_data_get_pixbuf (const CtkSelectionData  *selection_data);
+GdkPixbuf *ctk_selection_data_get_pixbuf (const CtkSelectionData  *selection_data);
 CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_data_set_uris (CtkSelectionData     *selection_data,
                                       gchar               **uris);

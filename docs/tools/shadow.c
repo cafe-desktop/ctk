@@ -52,12 +52,12 @@ create_blur_filter (int radius)
   
 }
 
-static CdkPixbuf *
-create_shadow (CdkPixbuf *src)
+static GdkPixbuf *
+create_shadow (GdkPixbuf *src)
 {
   int x, y, i, j;
   int width, height;
-  CdkPixbuf *dest;
+  GdkPixbuf *dest;
   static ConvFilter *filter = NULL;
   int src_rowstride, dest_rowstride;
   int src_bpp, dest_bpp;
@@ -132,10 +132,10 @@ create_shadow (CdkPixbuf *src)
   return dest;
 }
 
-CdkPixbuf *
-create_shadowed_pixbuf (CdkPixbuf *src)
+GdkPixbuf *
+create_shadowed_pixbuf (GdkPixbuf *src)
 {
-  CdkPixbuf *dest;
+  GdkPixbuf *dest;
   
   dest = create_shadow (src);
 

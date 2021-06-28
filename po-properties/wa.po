@@ -3067,7 +3067,7 @@ msgid "Pixbuf"
 msgstr ""
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A CdkPixbuf to display"
+msgid "A GdkPixbuf to display"
 msgstr ""
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
@@ -3112,8 +3112,8 @@ msgid "Animation"
 msgstr "Animåcion"
 
 #: ctk/ctkimage.c:287
-msgid "CdkPixbufAnimation to display"
-msgstr "Animåcion CdkPixbufAnimation a håyner"
+msgid "GdkPixbufAnimation to display"
+msgstr "Animåcion GdkPixbufAnimation a håyner"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"

@@ -83,7 +83,7 @@ GType                 ctk_status_icon_get_type           (void) G_GNUC_CONST;
 CDK_DEPRECATED_IN_3_14
 CtkStatusIcon        *ctk_status_icon_new                (void);
 CDK_DEPRECATED_IN_3_14
-CtkStatusIcon        *ctk_status_icon_new_from_pixbuf    (CdkPixbuf          *pixbuf);
+CtkStatusIcon        *ctk_status_icon_new_from_pixbuf    (GdkPixbuf          *pixbuf);
 CDK_DEPRECATED_IN_3_14
 CtkStatusIcon        *ctk_status_icon_new_from_file      (const gchar        *filename);
 CDK_DEPRECATED_IN_3_10_FOR(ctk_status_icon_new_from_icon_name)
@@ -95,7 +95,7 @@ CtkStatusIcon        *ctk_status_icon_new_from_gicon     (GIcon              *ic
 
 CDK_DEPRECATED_IN_3_14
 void                  ctk_status_icon_set_from_pixbuf    (CtkStatusIcon      *status_icon,
-							  CdkPixbuf          *pixbuf);
+							  GdkPixbuf          *pixbuf);
 CDK_DEPRECATED_IN_3_14
 void                  ctk_status_icon_set_from_file      (CtkStatusIcon      *status_icon,
 							  const gchar        *filename);
@@ -113,7 +113,7 @@ CDK_DEPRECATED_IN_3_14
 CtkImageType          ctk_status_icon_get_storage_type   (CtkStatusIcon      *status_icon);
 
 CDK_DEPRECATED_IN_3_14
-CdkPixbuf            *ctk_status_icon_get_pixbuf         (CtkStatusIcon      *status_icon);
+GdkPixbuf            *ctk_status_icon_get_pixbuf         (CtkStatusIcon      *status_icon);
 CDK_DEPRECATED_IN_3_10_FOR(ctk_status_icon_get_icon_name)
 const gchar *         ctk_status_icon_get_stock          (CtkStatusIcon      *status_icon);
 CDK_DEPRECATED_IN_3_14

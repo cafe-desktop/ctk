@@ -7810,7 +7810,7 @@ msgstr "परीक्षण मुद्रकमा मुद्रण गर
 #~ msgstr "TGA प्रसँग स्ट्रक्टका लागि स्मृति निर्धारण गर्न सक्दैन"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "अस्थायी फाइलबाट पढ्न असफल"
 
 #, fuzzy

@@ -303,7 +303,7 @@ cdk_cursor_new_from_name (CdkDisplay  *display,
 /**
  * cdk_cursor_new_from_pixbuf:
  * @display: the #CdkDisplay for which the cursor will be created
- * @pixbuf: the #CdkPixbuf containing the cursor image
+ * @pixbuf: the #GdkPixbuf containing the cursor image
  * @x: the horizontal offset of the “hotspot” of the cursor.
  * @y: the vertical offset of the “hotspot” of the cursor.
  *
@@ -332,7 +332,7 @@ cdk_cursor_new_from_name (CdkDisplay  *display,
  */
 CdkCursor *
 cdk_cursor_new_from_pixbuf (CdkDisplay *display,
-                            CdkPixbuf  *pixbuf,
+                            GdkPixbuf  *pixbuf,
                             gint        x,
                             gint        y)
 {
@@ -439,23 +439,23 @@ cdk_cursor_get_display (CdkCursor *cursor)
  * cdk_cursor_get_image:
  * @cursor: a #CdkCursor
  *
- * Returns a #CdkPixbuf with the image used to display the cursor.
+ * Returns a #GdkPixbuf with the image used to display the cursor.
  *
  * Note that depending on the capabilities of the windowing system and 
  * on the cursor, CDK may not be able to obtain the image data. In this 
  * case, %NULL is returned.
  *
- * Returns: (nullable) (transfer full): a #CdkPixbuf representing
+ * Returns: (nullable) (transfer full): a #GdkPixbuf representing
  *   @cursor, or %NULL
  *
  * Since: 2.8
  */
-CdkPixbuf*  
+GdkPixbuf*  
 cdk_cursor_get_image (CdkCursor *cursor)
 {
   int w, h;
   cairo_surface_t *surface;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   gchar buf[32];
   double x_hot, y_hot;
   double x_scale, y_scale;
@@ -477,7 +477,7 @@ cdk_cursor_get_image (CdkCursor *cursor)
 
   if (x_scale != 1)
     {
-      CdkPixbuf *old;
+      GdkPixbuf *old;
 
       old = pixbuf;
       pixbuf = cdk_pixbuf_scale_simple (old,

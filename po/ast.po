@@ -4679,7 +4679,7 @@ msgstr ""
 #~ msgstr "Nun pudo acutase memoria pa la estructura de contestu TGA"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Nun se pudo escribir l'índiz de la carpeta\n"
 
 #, fuzzy

@@ -68,8 +68,8 @@ struct _CtkThemingEngine
  * @render_handle: Renders a handle to drag UI elements, as in #CtkPaned.
  * @render_activity: Renders an area displaying activity, such as in #CtkSpinner,
  *                   or #CtkProgressBar.
- * @render_icon_pixbuf: Renders an icon as a #CdkPixbuf.
- * @render_icon: Renders an icon given as a #CdkPixbuf.
+ * @render_icon_pixbuf: Renders an icon as a #GdkPixbuf.
+ * @render_icon: Renders an icon given as a #GdkPixbuf.
  * @render_icon_surface: Renders an icon given as a #cairo_surface_t.
  *
  * Base class for theming engines.
@@ -169,12 +169,12 @@ struct _CtkThemingEngineClass
                             gdouble           width,
                             gdouble           height);
 
-  CdkPixbuf * (* render_icon_pixbuf) (CtkThemingEngine    *engine,
+  GdkPixbuf * (* render_icon_pixbuf) (CtkThemingEngine    *engine,
                                       const CtkIconSource *source,
                                       CtkIconSize          size);
   void (* render_icon) (CtkThemingEngine *engine,
                         cairo_t          *cr,
-			CdkPixbuf        *pixbuf,
+			GdkPixbuf        *pixbuf,
                         gdouble           x,
                         gdouble           y);
   void (* render_icon_surface) (CtkThemingEngine *engine,

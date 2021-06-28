@@ -1398,11 +1398,11 @@ filter_combo_changed_cb (CtkComboBox *combo_box,
   set_current_filter (impl, filter);
 }
 
-static CdkPixbuf *
+static GdkPixbuf *
 get_drag_pixbuf (CtkRecentChooserDefault *impl)
 {
   CtkRecentInfo *info;
-  CdkPixbuf *retval;
+  GdkPixbuf *retval;
   gint size;
   
   g_assert (CTK_IS_RECENT_CHOOSER_DEFAULT (impl));
@@ -1425,7 +1425,7 @@ recent_view_drag_begin_cb (CtkWidget      *widget,
 			   gpointer        user_data)
 {
   CtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   pixbuf = get_drag_pixbuf (impl);
   if (pixbuf)

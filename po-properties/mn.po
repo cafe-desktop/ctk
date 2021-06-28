@@ -3586,8 +3586,8 @@ msgstr "Pixbuf"
 
 # ctk/ctkimage.c:130
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A CdkPixbuf to display"
-msgstr "Дүрслэгдэж байна (CdkPixbuf)."
+msgid "A GdkPixbuf to display"
+msgstr "Дүрслэгдэж байна (GdkPixbuf)."
 
 # ctk/ctkfilesel.c:536 ctk/ctkimage.c:161
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
@@ -3640,8 +3640,8 @@ msgid "Animation"
 msgstr "Хөдөлгөөнт"
 
 #: ctk/ctkimage.c:287
-msgid "CdkPixbufAnimation to display"
-msgstr "CdkPixbufAnimation зурагдаж байна.."
+msgid "GdkPixbufAnimation to display"
+msgstr "GdkPixbufAnimation зурагдаж байна.."
 
 # ctk/ctkimage.c:203
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260

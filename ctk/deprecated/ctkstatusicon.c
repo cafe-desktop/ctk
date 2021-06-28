@@ -232,7 +232,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 				   PROP_PIXBUF,
 				   g_param_spec_object ("pixbuf",
 							P_("Pixbuf"),
-							P_("A CdkPixbuf to display"),
+							P_("A GdkPixbuf to display"),
 							CDK_TYPE_PIXBUF,
 							CTK_PARAM_READWRITE));
 
@@ -1210,7 +1210,7 @@ ctk_status_icon_new (void)
 
 /**
  * ctk_status_icon_new_from_pixbuf:
- * @pixbuf: a #CdkPixbuf
+ * @pixbuf: a #GdkPixbuf
  * 
  * Creates a status icon displaying @pixbuf. 
  *
@@ -1225,7 +1225,7 @@ ctk_status_icon_new (void)
  *   provide status notifications
  */
 CtkStatusIcon *
-ctk_status_icon_new_from_pixbuf (CdkPixbuf *pixbuf)
+ctk_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
 {
   return g_object_new (CTK_TYPE_STATUS_ICON,
 		       "pixbuf", pixbuf,
@@ -1399,7 +1399,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
   cairo_surface_t *surface;
   CtkWidget *widget;
 #ifndef CDK_WINDOWING_X11
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 #endif
   gint round_size;
   gint scale;
@@ -1808,7 +1808,7 @@ ctk_status_icon_take_image (CtkStatusIcon      *status_icon,
 /**
  * ctk_status_icon_set_from_pixbuf:
  * @status_icon: a #CtkStatusIcon
- * @pixbuf: (allow-none): a #CdkPixbuf or %NULL
+ * @pixbuf: (allow-none): a #GdkPixbuf or %NULL
  *
  * Makes @status_icon display @pixbuf.
  * See ctk_status_icon_new_from_pixbuf() for details.
@@ -1821,7 +1821,7 @@ ctk_status_icon_take_image (CtkStatusIcon      *status_icon,
  */
 void
 ctk_status_icon_set_from_pixbuf (CtkStatusIcon *status_icon,
-				 CdkPixbuf     *pixbuf)
+				 GdkPixbuf     *pixbuf)
 {
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));
@@ -1848,7 +1848,7 @@ void
 ctk_status_icon_set_from_file (CtkStatusIcon *status_icon,
  			       const gchar   *filename)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (filename != NULL);
@@ -1963,7 +1963,7 @@ ctk_status_icon_get_storage_type (CtkStatusIcon *status_icon)
  * ctk_status_icon_get_pixbuf:
  * @status_icon: a #CtkStatusIcon
  * 
- * Gets the #CdkPixbuf being displayed by the #CtkStatusIcon.
+ * Gets the #GdkPixbuf being displayed by the #CtkStatusIcon.
  * The storage type of the status icon must be %CTK_IMAGE_EMPTY or
  * %CTK_IMAGE_PIXBUF (see ctk_status_icon_get_storage_type()).
  * The caller of this function does not own a reference to the
@@ -1978,7 +1978,7 @@ ctk_status_icon_get_storage_type (CtkStatusIcon *status_icon)
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_status_icon_get_pixbuf (CtkStatusIcon *status_icon)
 {
   CtkStatusIconPrivate *priv;

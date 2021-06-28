@@ -84,7 +84,7 @@ ctktextchild.h, etc.):
                      (well, stores a list of child widgets, one per 
                      CtkTextView displaying the buffer)
 
-  Image:             stores a CdkPixbuf that behaves as a single 
+  Image:             stores a GdkPixbuf that behaves as a single 
                      character from an editing perspective.
 
 

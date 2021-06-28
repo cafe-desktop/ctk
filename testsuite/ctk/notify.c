@@ -360,7 +360,7 @@ test_type (gconstpointer data)
 
   /* non-CTK+ */
   if (g_str_equal (g_type_name (type), "AtkObject") ||
-      g_str_equal (g_type_name (type), "CdkPixbufSimpleAnim"))
+      g_str_equal (g_type_name (type), "GdkPixbufSimpleAnim"))
     return;
 
   /* Deprecated, not getting fixed */
@@ -466,7 +466,7 @@ test_type (gconstpointer data)
 
       /* non-CTK+ */
       if (g_str_equal (g_type_name (pspec->owner_type), "AtkObject") ||
-          g_str_equal (g_type_name (pspec->owner_type), "CdkPixbufSimpleAnim") || 
+          g_str_equal (g_type_name (pspec->owner_type), "GdkPixbufSimpleAnim") || 
           g_str_equal (g_type_name (pspec->owner_type), "GMountOperation")) 
         continue;
 

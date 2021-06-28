@@ -2090,7 +2090,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         {
           gchar *filename;
           GError *tmp_error = NULL;
-          CdkPixbuf *pixbuf = NULL;
+          GdkPixbuf *pixbuf = NULL;
 
           if (g_hash_table_contains (builder->priv->objects, string))
             {

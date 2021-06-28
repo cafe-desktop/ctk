@@ -25,7 +25,7 @@ drag_begin (CtkWidget      *widget,
 {
   CtkWidget *image = CTK_WIDGET (data);
 
-  CdkPixbuf *pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
+  GdkPixbuf *pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
 
   ctk_drag_set_icon_pixbuf (context, pixbuf, -2, -2);
 }
@@ -40,7 +40,7 @@ drag_data_get  (CtkWidget        *widget,
 {
   CtkWidget *image = CTK_WIDGET (data);
 
-  CdkPixbuf *pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
+  GdkPixbuf *pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
 
   ctk_selection_data_set_pixbuf (selection_data, pixbuf);
 }
@@ -57,7 +57,7 @@ drag_data_received (CtkWidget        *widget,
 {
   CtkWidget *image = CTK_WIDGET (data);
 
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   if (ctk_selection_data_get_length (selection_data) < 0)
     return;
@@ -97,7 +97,7 @@ main (int argc, char **argv)
   CtkWidget *window, *grid;
   CtkWidget *label, *image, *box;
   CtkIconTheme *theme;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   CtkIconSet *iconset;
   CtkIconSource *iconsource;
   gchar *icon_name = "gnome-terminal";

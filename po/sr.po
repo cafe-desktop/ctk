@@ -8827,7 +8827,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Pixbuf"
 #~ msgstr "Сличица"
 
-#~ msgid "A CdkPixbuf to display"
+#~ msgid "A GdkPixbuf to display"
 #~ msgstr "Гдк сличица за приказ"
 
 #~ msgid "Stock ID"
@@ -10940,7 +10940,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Pixel size to use for named icon"
 #~ msgstr "Величина у тачкама за именоване иконице"
 
-#~ msgid "CdkPixbufAnimation to display"
+#~ msgid "GdkPixbufAnimation to display"
 #~ msgstr "Гдк анимирана сличица за приказ"
 
 #~ msgid "Whether to use icon names fallback"

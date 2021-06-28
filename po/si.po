@@ -4823,7 +4823,7 @@ msgstr "'%s'පිළිඹිබුව පූරණය දෝෂසහිතය
 #~ msgstr "PNM සන්ධර්භ ව්‍යුහය සඳහා මතකය ප්‍රමාණවත් නැත"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "බහලුම් පටුන වෙත ලිවීම අසමත් විය\n"
 
 #, fuzzy

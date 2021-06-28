@@ -124,7 +124,7 @@ filter_changed (CtkFileChooserDialog *dialog,
 #define _(s) (s)
 
 static void
-size_prepared_cb (CdkPixbufLoader *loader,
+size_prepared_cb (GdkPixbufLoader *loader,
 		  int              width,
 		  int              height,
 		  int             *data)
@@ -145,14 +145,14 @@ size_prepared_cb (CdkPixbufLoader *loader,
 	cdk_pixbuf_loader_set_size (loader, width, height);
 }
 
-CdkPixbuf *
+GdkPixbuf *
 my_new_from_file_at_size (const char *filename,
 			  int         width,
 			  int         height,
 			  GError    **error)
 {
-	CdkPixbufLoader *loader;
-	CdkPixbuf       *pixbuf;
+	GdkPixbufLoader *loader;
+	GdkPixbuf       *pixbuf;
 	int              info[2];
 	struct stat st;
 
@@ -283,7 +283,7 @@ update_preview_cb (CtkFileChooser *chooser)
 
   if (filename)
     {
-      CdkPixbuf *pixbuf;
+      GdkPixbuf *pixbuf;
       GError *error = NULL;
 
       pixbuf = my_new_from_file_at_size (filename, 128, 128, &error);

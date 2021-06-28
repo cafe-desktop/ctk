@@ -4912,7 +4912,7 @@ msgstr ""
 #~ msgstr "Не можам да алоцирам меморија во TGA контекстот"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Не успеав да го запишам индексирањето на папката\n"
 
 #, fuzzy

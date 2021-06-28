@@ -43,7 +43,7 @@ void ctk_tooltip_set_text                (CtkTooltip         *tooltip,
                                           const gchar        *text);
 CDK_AVAILABLE_IN_ALL
 void ctk_tooltip_set_icon                (CtkTooltip         *tooltip,
-                                          CdkPixbuf          *pixbuf);
+                                          GdkPixbuf          *pixbuf);
 CDK_DEPRECATED_IN_3_10_FOR(ctk_tooltip_set_icon_from_icon_name)
 void ctk_tooltip_set_icon_from_stock     (CtkTooltip         *tooltip,
                                           const gchar        *stock_id,

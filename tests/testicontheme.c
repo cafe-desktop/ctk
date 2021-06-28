@@ -39,7 +39,7 @@ icon_loaded_cb (GObject *source_object,
 		GAsyncResult *res,
 		gpointer user_data)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   GError *error;
 
   error = NULL;
@@ -93,7 +93,7 @@ main (int argc, char *argv[])
   if (strcmp (argv[1], "display") == 0)
     {
       GError *error;
-      CdkPixbuf *pixbuf;
+      GdkPixbuf *pixbuf;
       CtkWidget *window, *image;
 
       if (argc < 4)
@@ -215,7 +215,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (icon_info)
 	{
-          CdkPixbuf *pixbuf;
+          GdkPixbuf *pixbuf;
 
           g_print ("Base size: %d, Scale: %d\n", ctk_icon_info_get_base_size (icon_info), ctk_icon_info_get_base_scale (icon_info));
 

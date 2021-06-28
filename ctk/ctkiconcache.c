@@ -476,14 +476,14 @@ pixbuf_destroy_cb (guchar   *pixels,
   _ctk_icon_cache_unref (cache);
 }
 
-CdkPixbuf *
+GdkPixbuf *
 _ctk_icon_cache_get_icon (CtkIconCache *cache,
 			  const gchar  *icon_name,
 			  gint          directory_index)
 {
   guint32 offset, image_data_offset, pixel_data_offset;
   guint32 length, type;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   CdkPixdata pixdata;
   GError *error = NULL;
 
@@ -524,7 +524,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   pixbuf = cdk_pixbuf_new_from_data (pixdata.pixel_data, CDK_COLORSPACE_RGB,
 				     (pixdata.pixdata_type & CDK_PIXDATA_COLOR_TYPE_MASK) == CDK_PIXDATA_COLOR_TYPE_RGBA,
 				     8, pixdata.width, pixdata.height, pixdata.rowstride,
-				     (CdkPixbufDestroyNotify)pixbuf_destroy_cb, 
+				     (GdkPixbufDestroyNotify)pixbuf_destroy_cb, 
 				     cache);
   if (!pixbuf)
     {

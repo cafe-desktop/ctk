@@ -3689,8 +3689,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:217 ../ctk/ctkstatusicon.c:224
-msgid "A CdkPixbuf to display"
-msgstr "CdkPixbuf ត្រូវ​ប​ង្ហាញ"
+msgid "A GdkPixbuf to display"
+msgstr "GdkPixbuf ត្រូវ​ប​ង្ហាញ"
 
 #: ../ctk/ctkimage.c:224 ../ctk/ctkrecentmanager.c:293
 #: ../ctk/ctkstatusicon.c:231
@@ -3735,8 +3735,8 @@ msgid "Animation"
 msgstr "ចលនា"
 
 #: ../ctk/ctkimage.c:276
-msgid "CdkPixbufAnimation to display"
-msgstr "CdkPixbufAnimation ត្រូវ​បង្ហាញ"
+msgid "GdkPixbufAnimation to display"
+msgstr "GdkPixbufAnimation ត្រូវ​បង្ហាញ"
 
 #: ../ctk/ctkimage.c:316 ../ctk/ctkstatusicon.c:271
 msgid "Storage type"

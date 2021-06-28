@@ -736,7 +736,7 @@ pattern_value_parse (CtkCssParser *parser,
     {
       GError *error = NULL;
       gchar *path;
-      CdkPixbuf *pixbuf;
+      GdkPixbuf *pixbuf;
       GFile *file;
       cairo_surface_t *surface;
       cairo_pattern_t *pattern;

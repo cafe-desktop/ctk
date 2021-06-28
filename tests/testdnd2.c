@@ -1,6 +1,6 @@
 #include <ctk/ctk.h>
 
-static CdkPixbuf *
+static GdkPixbuf *
 get_image_pixbuf (CtkImage *image)
 {
   const gchar *icon_name;
@@ -44,7 +44,7 @@ image_drag_begin (CtkWidget      *widget,
                   CdkDragContext *context,
                   gpointer        data)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   gint hotspot;
   gint hot_x, hot_y;
 
@@ -94,7 +94,7 @@ window_drag_begin (CtkWidget      *widget,
                    CdkDragContext *context,
                    gpointer        data)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   CtkWidget *window;
   CtkWidget *image;
   int hotspot;
@@ -163,7 +163,7 @@ image_drag_data_get (CtkWidget        *widget,
                      guint             time,
                      gpointer          data)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   const gchar *name;
 
   switch (info)
@@ -195,7 +195,7 @@ image_drag_data_received (CtkWidget        *widget,
                           guint32           time,
                           gpointer          data)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   gchar *text;
 
   if (ctk_selection_data_get_length (selection_data) == 0)

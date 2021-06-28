@@ -4897,7 +4897,7 @@ msgstr ""
 #~ msgstr "Ayikwazi ukunikezela uvimba wolwazi kwi-TGA context struct"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Ayiphumelelanga ukufunda kwifayili yexeshana"
 
 #, fuzzy

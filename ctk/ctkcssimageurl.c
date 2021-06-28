@@ -31,7 +31,7 @@ static CtkCssImage *
 ctk_css_image_url_load_image (CtkCssImageUrl  *url,
                               GError         **error)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   GError *local_error = NULL;
   GFileInputStream *input;
 

@@ -826,7 +826,7 @@ msgid "Pixbuf"
 msgstr "पिक्सबफ"
 
 #: ctk/deprecated/ctkstatusicon.c:228 ctk/ctkimage.c:256
-msgid "A CdkPixbuf to display"
+msgid "A GdkPixbuf to display"
 msgstr "एउटा जिडिके पिक्सबफ देखाउनको लागि"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:269 ctk/ctkrecentmanager.c:289
@@ -4765,7 +4765,7 @@ msgid "Animation"
 msgstr "रङ्गचित्राङकन"
 
 #: ctk/ctkimage.c:328
-msgid "CdkPixbufAnimation to display"
+msgid "GdkPixbufAnimation to display"
 msgstr "जिडिके पिक्सबफ चित्राङ्कन देखाउनलाई"
 
 #: ctk/ctkimage.c:372

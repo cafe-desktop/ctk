@@ -788,7 +788,7 @@ msgid "Pixbuf"
 msgstr "Myndminni (pixbuf)"
 
 #: ctk/deprecated/ctkstatusicon.c:228 ctk/ctkimage.c:256
-msgid "A CdkPixbuf to display"
+msgid "A GdkPixbuf to display"
 msgstr ""
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:269
@@ -4360,7 +4360,7 @@ msgid "Animation"
 msgstr "Hreyfing"
 
 #: ctk/ctkimage.c:328
-msgid "CdkPixbufAnimation to display"
+msgid "GdkPixbufAnimation to display"
 msgstr ""
 
 #: ctk/ctkimage.c:372

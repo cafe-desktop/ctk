@@ -1,6 +1,6 @@
 /* Pixbufs
  *
- * A CdkPixbuf represents an image, normally in RGB or RGBA format.
+ * A GdkPixbuf represents an image, normally in RGB or RGBA format.
  * Pixbufs are normally used to load files from disk and perform
  * image scaling.
  *
@@ -35,14 +35,14 @@ static const char *image_names[] = {
 static CtkWidget *window = NULL;
 
 /* Current frame */
-static CdkPixbuf *frame;
+static GdkPixbuf *frame;
 
 /* Background image */
-static CdkPixbuf *background;
+static GdkPixbuf *background;
 static gint back_width, back_height;
 
 /* Images */
-static CdkPixbuf *images[N_IMAGES];
+static GdkPixbuf *images[N_IMAGES];
 
 /* Widgets */
 static CtkWidget *da;

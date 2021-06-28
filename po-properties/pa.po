@@ -805,8 +805,8 @@ msgid "Pixbuf"
 msgstr "ਪਿਕਬਫ"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A CdkPixbuf to display"
-msgstr "ਵੇਖਾਉਣ ਲਈ CdkPixbuf"
+msgid "A GdkPixbuf to display"
+msgstr "ਵੇਖਾਉਣ ਲਈ GdkPixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -4492,8 +4492,8 @@ msgid "Animation"
 msgstr "ਸਜੀਵਤਾ"
 
 #: ctk/ctkimage.c:329
-msgid "CdkPixbufAnimation to display"
-msgstr "ਵੇਖਾਉਣ ਲਈ CdkPixbufAnimation"
+msgid "GdkPixbufAnimation to display"
+msgstr "ਵੇਖਾਉਣ ਲਈ GdkPixbufAnimation"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"

@@ -3270,7 +3270,7 @@ msgid "Pixbuf"
 msgstr "בילדבאַהאַלט"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A CdkPixbuf to display"
+msgid "A GdkPixbuf to display"
 msgstr "דער Cdk בילדבאַהאַלט צו װײַזן"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
@@ -3318,7 +3318,7 @@ msgid "Animation"
 msgstr "אַנימאַציע"
 
 #: ctk/ctkimage.c:287
-msgid "CdkPixbufAnimation to display"
+msgid "GdkPixbufAnimation to display"
 msgstr "Cdk בילדבאַהאַלט אַנימאַציע צו װײַזן"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260

@@ -1176,7 +1176,7 @@ ctk_cell_view_new_with_markup (const gchar *markup)
  * Since: 2.6
  */
 CtkWidget *
-ctk_cell_view_new_with_pixbuf (CdkPixbuf *pixbuf)
+ctk_cell_view_new_with_pixbuf (GdkPixbuf *pixbuf)
 {
   CtkCellView *cellview;
   CtkCellRenderer *renderer;

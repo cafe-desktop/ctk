@@ -157,12 +157,12 @@ static void ctk_theming_engine_render_activity  (CtkThemingEngine *engine,
                                                  gdouble           y,
                                                  gdouble           width,
                                                  gdouble           height);
-static CdkPixbuf * ctk_theming_engine_render_icon_pixbuf (CtkThemingEngine    *engine,
+static GdkPixbuf * ctk_theming_engine_render_icon_pixbuf (CtkThemingEngine    *engine,
                                                           const CtkIconSource *source,
                                                           CtkIconSize          size);
 static void ctk_theming_engine_render_icon (CtkThemingEngine *engine,
                                             cairo_t *cr,
-					    CdkPixbuf *pixbuf,
+					    GdkPixbuf *pixbuf,
                                             gdouble x,
                                             gdouble y);
 static void ctk_theming_engine_render_icon_surface (CtkThemingEngine *engine,
@@ -1178,7 +1178,7 @@ ctk_theming_engine_render_activity (CtkThemingEngine *engine,
   ctk_render_activity (engine->priv->context, cr, x, y, width, height);
 }
 
-static CdkPixbuf *
+static GdkPixbuf *
 ctk_theming_engine_render_icon_pixbuf (CtkThemingEngine    *engine,
                                        const CtkIconSource *source,
                                        CtkIconSize          size)
@@ -1189,7 +1189,7 @@ ctk_theming_engine_render_icon_pixbuf (CtkThemingEngine    *engine,
 static void
 ctk_theming_engine_render_icon (CtkThemingEngine *engine,
                                 cairo_t *cr,
-				CdkPixbuf *pixbuf,
+				GdkPixbuf *pixbuf,
                                 gdouble x,
                                 gdouble y)
 {

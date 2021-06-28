@@ -3806,8 +3806,8 @@ msgid "Pixbuf"
 msgstr "Буфер с пиксели"
 
 #: ../ctk/ctkimage.c:217 ../ctk/ctkstatusicon.c:224
-msgid "A CdkPixbuf to display"
-msgstr "CdkPixbuf за показване"
+msgid "A GdkPixbuf to display"
+msgstr "GdkPixbuf за показване"
 
 #: ../ctk/ctkimage.c:224 ../ctk/ctkrecentmanager.c:293
 #: ../ctk/ctkstatusicon.c:231
@@ -3855,8 +3855,8 @@ msgid "Animation"
 msgstr "Анимация"
 
 #: ../ctk/ctkimage.c:276
-msgid "CdkPixbufAnimation to display"
-msgstr "CdkPixbufAnimation за показване"
+msgid "GdkPixbufAnimation to display"
+msgstr "GdkPixbufAnimation за показване"
 
 #: ../ctk/ctkimage.c:316 ../ctk/ctkstatusicon.c:271
 msgid "Storage type"

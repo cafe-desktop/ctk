@@ -195,7 +195,7 @@ draw_from_gicon (CtkNumerableIcon *self)
 {
   CtkIconTheme *theme;
   CtkIconInfo *info;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   cairo_surface_t *surface;
 
   if (self->priv->style != NULL)
@@ -299,7 +299,7 @@ ctk_numerable_icon_ensure_emblem (CtkNumerableIcon *self)
   gdouble scale;
   PangoAttrList *attr_list;
   PangoAttribute *attr;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   /* don't draw anything if the count is zero */
   if (self->priv->rendered_string == NULL)

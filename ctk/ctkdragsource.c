@@ -361,15 +361,15 @@ ctk_drag_source_add_uri_targets (CtkWidget *widget)
 /**
  * ctk_drag_source_set_icon_pixbuf: (method)
  * @widget: a #CtkWidget
- * @pixbuf: the #CdkPixbuf for the drag icon
+ * @pixbuf: the #GdkPixbuf for the drag icon
  * 
  * Sets the icon that will be used for drags from a particular widget
- * from a #CdkPixbuf. CTK+ retains a reference for @pixbuf and will 
+ * from a #GdkPixbuf. CTK+ retains a reference for @pixbuf and will 
  * release it when it is no longer needed.
  */
 void 
 ctk_drag_source_set_icon_pixbuf (CtkWidget *widget,
-                                 CdkPixbuf *pixbuf)
+                                 GdkPixbuf *pixbuf)
 {
   CtkDragSourceSite *site;
 

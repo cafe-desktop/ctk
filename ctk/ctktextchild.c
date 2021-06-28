@@ -127,7 +127,7 @@ const CtkTextLineSegmentClass ctk_text_pixbuf_type = {
 };
 
 CtkTextLineSegment *
-_ctk_pixbuf_segment_new (CdkPixbuf *pixbuf)
+_ctk_pixbuf_segment_new (GdkPixbuf *pixbuf)
 {
   CtkTextLineSegment *seg;
 

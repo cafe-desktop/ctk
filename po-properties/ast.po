@@ -3501,8 +3501,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:238 ../ctk/ctkstatusicon.c:236
-msgid "A CdkPixbuf to display"
-msgstr "Un CdkPixbuf a amosar"
+msgid "A GdkPixbuf to display"
+msgstr "Un GdkPixbuf a amosar"
 
 #: ../ctk/ctkimage.c:245 ../ctk/ctkrecentmanager.c:294
 #: ../ctk/ctkstatusicon.c:243
@@ -3549,8 +3549,8 @@ msgid "Animation"
 msgstr "Animación"
 
 #: ../ctk/ctkimage.c:297
-msgid "CdkPixbufAnimation to display"
-msgstr "CdkPixbufAnimation a amosar"
+msgid "GdkPixbufAnimation to display"
+msgstr "GdkPixbufAnimation a amosar"
 
 #: ../ctk/ctkimage.c:337 ../ctk/ctkstatusicon.c:283
 msgid "Storage type"

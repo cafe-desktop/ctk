@@ -10,7 +10,7 @@
 #define ICC_PROFILE_SIZE        3966
 
 static gboolean
-save_image_png (const gchar *filename, CdkPixbuf *pixbuf, GError **error)
+save_image_png (const gchar *filename, GdkPixbuf *pixbuf, GError **error)
 {
 	gchar *contents = NULL;
 	gchar *contents_encode = NULL;
@@ -36,7 +36,7 @@ out:
 }
 
 static gboolean
-save_image_tiff (const gchar *filename, CdkPixbuf *pixbuf, GError **error)
+save_image_tiff (const gchar *filename, GdkPixbuf *pixbuf, GError **error)
 {
 	gchar *contents = NULL;
 	gchar *contents_encode = NULL;
@@ -64,7 +64,7 @@ static gboolean
 save_image_verify (const gchar *filename, GError **error)
 {
 	gboolean ret = FALSE;
-	CdkPixbuf *pixbuf = NULL;
+	GdkPixbuf *pixbuf = NULL;
 	const gchar *option;
 	gchar *icc_profile = NULL;
 	gsize len = 0;
@@ -104,7 +104,7 @@ int
 main (int argc, char **argv)
 {
 	CdkWindow *root;
-	CdkPixbuf *pixbuf;
+	GdkPixbuf *pixbuf;
 	gboolean ret;
 	gint retval = 1;
 	GError *error = NULL;

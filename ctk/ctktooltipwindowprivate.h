@@ -42,7 +42,7 @@ void            ctk_tooltip_window_set_label_markup             (CtkTooltipWindo
 void            ctk_tooltip_window_set_label_text               (CtkTooltipWindow *window,
                                                                  const char       *text);
 void            ctk_tooltip_window_set_image_icon               (CtkTooltipWindow *window,
-                                                                 CdkPixbuf        *pixbuf);
+                                                                 GdkPixbuf        *pixbuf);
 void            ctk_tooltip_window_set_image_icon_from_stock    (CtkTooltipWindow *window,
                                                                  const char       *stock_id,
                                                                  CtkIconSize       icon_size);

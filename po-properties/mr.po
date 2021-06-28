@@ -758,8 +758,8 @@ msgid "Pixbuf"
 msgstr "अक्षरबिंदुसंच"
 
 #: ../ctk/deprecated/ctkstatusicon.c:225 ../ctk/ctkimage.c:231
-msgid "A CdkPixbuf to display"
-msgstr "प्रदर्शित करण्यासाठीचे CdkPixbuf"
+msgid "A GdkPixbuf to display"
+msgstr "प्रदर्शित करण्यासाठीचे GdkPixbuf"
 
 #: ../ctk/deprecated/ctkstatusicon.c:232 ../ctk/ctkimage.c:246
 #: ../ctk/ctkrecentmanager.c:292
@@ -4334,8 +4334,8 @@ msgid "Animation"
 msgstr "गतीचित्रण"
 
 #: ../ctk/ctkimage.c:310
-msgid "CdkPixbufAnimation to display"
-msgstr "दर्शविण्याकरीताचे CdkPixbufAnimation"
+msgid "GdkPixbufAnimation to display"
+msgstr "दर्शविण्याकरीताचे GdkPixbufAnimation"
 
 #: ../ctk/ctkimage.c:357
 #| msgid "Input source"

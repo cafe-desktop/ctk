@@ -8877,7 +8877,7 @@ msgstr "Cetak untuk Uji Pencetak"
 #~ msgstr "Tak dapat memperuntukkan memori untuk struct konteks TGA"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Gagal membaca drpd fail sementara"
 
 #, fuzzy

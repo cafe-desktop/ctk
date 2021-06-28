@@ -6239,7 +6239,7 @@ Overview of Changes in CTK+ 3.9.10 to 3.9.12
  705181 Annoying beep on arrow keys when using IME on MacOS
  705182 Reset Cocoa IME state when immodule is reset
  705215 Minimum required cairo version should be 1.12 since 83c5e354b
- 705320 ctkicontheme: check for CdkPixbuf first
+ 705320 ctkicontheme: check for GdkPixbuf first
  705372 ctk_image_menu_item_new_from_stock deprecation warning point...
  705443 Fix image effects
  705498 build and enable wayland backend by default
@@ -6630,7 +6630,7 @@ Overview of Changes in CTK+ 3.7 to 3.9
  694339 Fix build of CTK+ on Windows
  694465 Allow backends to fail during initialisation
  695200 Switching apps while a combobox open makes the parent wi...
- 695228 CdkPixbuf:ERROR:cdk-pixbuf-animation.c:242:cdk_pixbuf_an...
+ 695228 GdkPixbuf:ERROR:cdk-pixbuf-animation.c:242:cdk_pixbuf_an...
  695278 Avoid passing a NULL title to setTitle
  695304 CtkTextView: don't popdown a bubble if we don't have one
  695312 Initial 'text' set in the non-numeric-only CtkSpinButton...
@@ -11951,7 +11951,7 @@ Overview of Changes from CTK+ 2.14.x to 2.15.0
  552545 leaks GpImage
  553374 cdk_pixdata_from_pixbuf fails for some images with use_rle set to TRUE
  555791 Natuilus Crashes when opening USB MP3 Player Contents
- 561186 CdkPixbuf API type checking needs cleanup
+ 561186 GdkPixbuf API type checking needs cleanup
  559009 ctk_radio_button_get_group documentation needs to say...
  523264 Update CTK+ reference documentation screenshots
  563876 [Regression] CTK_MODULES env var is no longer relevant
@@ -12747,7 +12747,7 @@ Overview of Changes from CTK+ 2.11.5 to 2.11.6
 
  * CtkBuilder:
  - The ctk-builder-convert script is more versatile
- - CtkBuilder suppports CdkPixbuf properties
+ - CtkBuilder suppports GdkPixbuf properties
  - CtkBuilder parses, but doesn't yet implement <accessibility> 
  - Support for accelerators in actions has been added
 
@@ -12767,7 +12767,7 @@ Overview of Changes from CTK+ 2.11.5 to 2.11.6
 
 * Bug fixes:
  452598 crash in Evolution: Added an Evolution attac...
- 447966 Add builder support for CdkPixbuf properties
+ 447966 Add builder support for GdkPixbuf properties
  453033 gnome-panel crashed with SIGSEGV in idle_populate_func()
  453365 cdk_pixbuf_get_file_info crashes on tif files
  361781 CtkViewport size request includes xthickness/ythickness f...
@@ -14973,7 +14973,7 @@ Overview of Changes from CTK+ 2.3.2 to CTK+ 2.3.3
 
 Overview of Changes from CTK+ 2.3.1 to CTK+ 2.3.2
 =================================================
-* CdkPixbuf
+* GdkPixbuf
  - Add functions to save pixbufs to non-file locations.  [Tim Evans]
  - Add a function to determine the type and size of a file without
    loading it completely.  [Matthias Clasen]
@@ -15243,7 +15243,7 @@ Overview of Changes in CTK+ 2.2.4
 
 Overview of Changes in CTK+ 2.2.3
 =================================
-* CdkPixbuf [Matthias Clasen]
+* GdkPixbuf [Matthias Clasen]
  - Fix some problems with overflows when scaling down [Tomas Ögren]
  - Many GIF bug fixes [Matthias, Federico Mena Quintero]
  - Prefer 32-bpp ICOs, fix bugs with them
@@ -15318,7 +15318,7 @@ Overview of Changes in CTK+ 2.2.3
 Overview of Changes in CTK+ 2.2.2
 =================================
 
-* CdkPixbuf [Matthias Clasen]
+* GdkPixbuf [Matthias Clasen]
  - Fix animation of slow-loading progressive GIFS
  - Fix long-standing animated GIF display bug with transparency
  - Misc bug and portability fixes [Rick Jones, Tim Mooney, Marijn Ross]
@@ -15650,7 +15650,7 @@ CTK+:
 * Allow accel_path = NULL for ctk_menu_item_set_accel_path().
 * Allow icon sizes to be changed via a CtkSetting [Bill Haneman, Brian Cameron, Owen]
 
-CdkPixbuf:
+GdkPixbuf:
 * Improve cdk-pixbuf loader tests [Soeren Sandmann]
 * Use iTXT chunks when necessary in PNG image saver [Matthias]
 * Add incremental loading for progressive jpegs [Matthias]
@@ -15791,7 +15791,7 @@ Overview of Changes in CTK+ 2.0.3
 * Include internal children when focusing. (Jonathan)
 * Win32 fixes (Tor Lillqvist, David Sterba)
 * Allow use of a pixmap as the drawable in cdk_pixmap_new(). (Kristian)
-* CdkPixbuf fixes (Matthias Clasen, Michael Natterer, Federico Mena Quintero)
+* GdkPixbuf fixes (Matthias Clasen, Michael Natterer, Federico Mena Quintero)
 * CtkMenu fixes. (Soeren Sandmann)
 * Find cdk-pixbuf-csource when cross-compiling. (Michael Natterer)
 * Misc input-method related fixes (Yao Zhang, Federico)
@@ -15958,12 +15958,12 @@ Overview of Changes in CTK+ 1.3.13
 * Add mouse cursor hiding for text widgets [Anders Carlsson]
 * Simple Hangul input module [Yusuke Tabata]
 * Removed the scary startup warning.
-* CdkPixbuf pixel handling fixes [Owen, Michael Hore, Jim Cape]
+* GdkPixbuf pixel handling fixes [Owen, Michael Hore, Jim Cape]
 * Converted CtkFileSelection and CtkFontSelection to use GtKTreeView widgets
   instead of the deprecated CtkCList [Owen]
 * ctkhsv.h was installed by mistake, fixed that. [reported by Ross Burton]
 * cdk_pixbuf_render_to_drawable() now also handles alpha pixbufs.
-* Made Ctkimage draw CtkPixmap, CtkImage, CdkPixbuf insensitive, prelighted,
+* Made Ctkimage draw CtkPixmap, CtkImage, GdkPixbuf insensitive, prelighted,
   etc. [Havoc, Owen]
 * Marked ctk_item_factory_path_from_widget() G_CONST_RETURN. [Matt Wilson]
 * ctk_image_menu_item_new_from_stock() now falls back to

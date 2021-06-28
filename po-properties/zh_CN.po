@@ -800,8 +800,8 @@ msgid "Pixbuf"
 msgstr "像素缓冲"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A CdkPixbuf to display"
-msgstr "要显示的 CdkPixbuf"
+msgid "A GdkPixbuf to display"
+msgstr "要显示的 GdkPixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -4421,8 +4421,8 @@ msgid "Animation"
 msgstr "动画"
 
 #: ctk/ctkimage.c:329
-msgid "CdkPixbufAnimation to display"
-msgstr "要显示的 CdkPixbufAnimation"
+msgid "GdkPixbufAnimation to display"
+msgstr "要显示的 GdkPixbufAnimation"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"

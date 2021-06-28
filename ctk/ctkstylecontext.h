@@ -1131,7 +1131,7 @@ CDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_lookup_icon)
 CtkIconSet * ctk_style_context_lookup_icon_set (CtkStyleContext *context,
                                                 const gchar     *stock_id);
 CDK_DEPRECATED_IN_3_10
-CdkPixbuf  * ctk_icon_set_render_icon_pixbuf   (CtkIconSet      *icon_set,
+GdkPixbuf  * ctk_icon_set_render_icon_pixbuf   (CtkIconSet      *icon_set,
                                                 CtkStyleContext *context,
                                                 CtkIconSize      size);
 CDK_DEPRECATED_IN_3_10

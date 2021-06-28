@@ -6464,7 +6464,7 @@ msgstr "ஒலியளவை குறைக்கவும்"
 #~ msgstr "TGA சூழல்-கட்டமைப்புக்கு நினைவகம் ஒதுக்கீட முடியவில்லை"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "அடைவு அகரவரிசையை எழுத முடியவில்லை\n"
 
 #, fuzzy

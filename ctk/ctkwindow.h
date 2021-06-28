@@ -300,7 +300,7 @@ CDK_AVAILABLE_IN_ALL
 GList*     ctk_window_get_icon_list                (CtkWindow  *window);
 CDK_AVAILABLE_IN_ALL
 void       ctk_window_set_icon                     (CtkWindow  *window,
-                                                    CdkPixbuf  *icon);
+                                                    GdkPixbuf  *icon);
 CDK_AVAILABLE_IN_ALL
 void       ctk_window_set_icon_name                (CtkWindow   *window,
 						    const gchar *name);
@@ -309,7 +309,7 @@ gboolean   ctk_window_set_icon_from_file           (CtkWindow   *window,
 						    const gchar *filename,
 						    GError     **err);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf* ctk_window_get_icon                     (CtkWindow  *window);
+GdkPixbuf* ctk_window_get_icon                     (CtkWindow  *window);
 CDK_AVAILABLE_IN_ALL
 const gchar * ctk_window_get_icon_name             (CtkWindow  *window);
 CDK_AVAILABLE_IN_ALL
@@ -317,7 +317,7 @@ void       ctk_window_set_default_icon_list        (GList      *list);
 CDK_AVAILABLE_IN_ALL
 GList*     ctk_window_get_default_icon_list        (void);
 CDK_AVAILABLE_IN_ALL
-void       ctk_window_set_default_icon             (CdkPixbuf  *icon);
+void       ctk_window_set_default_icon             (GdkPixbuf  *icon);
 CDK_AVAILABLE_IN_ALL
 void       ctk_window_set_default_icon_name        (const gchar *name);
 CDK_AVAILABLE_IN_ALL

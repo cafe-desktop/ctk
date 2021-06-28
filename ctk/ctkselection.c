@@ -458,7 +458,7 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
   /* Make sure png comes first */
   for (f = formats; f; f = f->next)
     {
-      CdkPixbufFormat *fmt = f->data;
+      GdkPixbufFormat *fmt = f->data;
       gchar *name; 
  
       name = cdk_pixbuf_format_get_name (fmt);
@@ -477,7 +477,7 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
 
   for (f = formats; f; f = f->next)
     {
-      CdkPixbufFormat *fmt = f->data;
+      GdkPixbufFormat *fmt = f->data;
 
       if (writable && !cdk_pixbuf_format_is_writable (fmt))
 	continue;
@@ -1720,9 +1720,9 @@ ctk_selection_data_get_text (const CtkSelectionData *selection_data)
 /**
  * ctk_selection_data_set_pixbuf:
  * @selection_data: a #CtkSelectionData
- * @pixbuf: a #CdkPixbuf
+ * @pixbuf: a #GdkPixbuf
  * 
- * Sets the contents of the selection from a #CdkPixbuf
+ * Sets the contents of the selection from a #GdkPixbuf
  * The pixbuf is converted to the form determined by
  * @selection_data->target.
  * 
@@ -1733,7 +1733,7 @@ ctk_selection_data_get_text (const CtkSelectionData *selection_data)
  **/
 gboolean
 ctk_selection_data_set_pixbuf (CtkSelectionData *selection_data,
-			       CdkPixbuf        *pixbuf)
+			       GdkPixbuf        *pixbuf)
 {
   GSList *formats, *f;
   gchar **mimes, **m;
@@ -1749,7 +1749,7 @@ ctk_selection_data_set_pixbuf (CtkSelectionData *selection_data,
 
   for (f = formats; f; f = f->next)
     {
-      CdkPixbufFormat *fmt = f->data;
+      GdkPixbufFormat *fmt = f->data;
 
       mimes = cdk_pixbuf_format_get_mime_types (fmt);
       for (m = mimes; *m; m++)
@@ -1788,21 +1788,21 @@ ctk_selection_data_set_pixbuf (CtkSelectionData *selection_data,
  * ctk_selection_data_get_pixbuf:
  * @selection_data: a #CtkSelectionData
  * 
- * Gets the contents of the selection data as a #CdkPixbuf.
+ * Gets the contents of the selection data as a #GdkPixbuf.
  * 
  * Returns: (nullable) (transfer full): if the selection data
  *   contained a recognized image type and it could be converted to a
- *   #CdkPixbuf, a newly allocated pixbuf is returned, otherwise
+ *   #GdkPixbuf, a newly allocated pixbuf is returned, otherwise
  *   %NULL.  If the result is non-%NULL it must be freed with
  *   g_object_unref().
  *
  * Since: 2.6
  **/
-CdkPixbuf *
+GdkPixbuf *
 ctk_selection_data_get_pixbuf (const CtkSelectionData *selection_data)
 {
-  CdkPixbufLoader *loader;
-  CdkPixbuf *result = NULL;
+  GdkPixbufLoader *loader;
+  GdkPixbuf *result = NULL;
 
   g_return_val_if_fail (selection_data != NULL, NULL);
 
@@ -2143,7 +2143,7 @@ ctk_selection_data_targets_include_rich_text (const CtkSelectionData *selection_
  *   how to convert a pixbuf into the format
  * 
  * Determines if any of the targets in @targets can be used to
- * provide a #CdkPixbuf.
+ * provide a #GdkPixbuf.
  * 
  * Returns: %TRUE if @targets include a suitable target for images,
  *   otherwise %FALSE.
@@ -2189,7 +2189,7 @@ ctk_targets_include_image (CdkAtom *targets,
  * 
  * Given a #CtkSelectionData object holding a list of targets,
  * determines if any of the targets in @targets can be used to
- * provide a #CdkPixbuf.
+ * provide a #GdkPixbuf.
  * 
  * Returns: %TRUE if @selection_data holds a list of targets,
  *   and a suitable target for images is included, otherwise %FALSE.

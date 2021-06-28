@@ -106,7 +106,7 @@ icon_loaded (GObject      *object,
   CtkIconInfo *info = CTK_ICON_INFO (object);
   GNSMenuItem *item = user_data;
   GError *error = NULL;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   gint scale = 1;
 
 #ifdef AVAILABLE_MAC_OS_X_VERSION_10_7_AND_LATER

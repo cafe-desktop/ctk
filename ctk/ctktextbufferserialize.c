@@ -511,7 +511,7 @@ serialize_text (CtkTextBuffer        *buffer,
 
 	  if (ch == 0xFFFC)
 	    {
-	      CdkPixbuf *pixbuf = ctk_text_iter_get_pixbuf (&iter);
+	      GdkPixbuf *pixbuf = ctk_text_iter_get_pixbuf (&iter);
 
 	      if (pixbuf)
 		{
@@ -577,7 +577,7 @@ serialize_pixbufs (SerializationContext *context,
 
   for (list = context->pixbufs; list != NULL; list = list->next)
     {
-      CdkPixbuf *pixbuf = list->data;
+      GdkPixbuf *pixbuf = list->data;
       CdkPixdata pixdata;
       guint8 *tmp;
       guint len;
@@ -654,7 +654,7 @@ typedef enum
 typedef struct
 {
   gchar *text;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   GSList *tags;
 } TextSpan;
 
@@ -1058,14 +1058,14 @@ typedef struct
 } Header;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-static CdkPixbuf *
+static GdkPixbuf *
 get_pixbuf_from_headers (GList   *headers,
                          int      id,
                          GError **error)
 {
   Header *header;
   CdkPixdata pixdata;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   header = g_list_nth_data (headers, id);
 
@@ -1120,7 +1120,7 @@ parse_apply_tag_element (GMarkupParseContext  *context,
   else if (ELEMENT_IS ("pixbuf"))
     {
       int int_id;
-      CdkPixbuf *pixbuf;
+      GdkPixbuf *pixbuf;
       TextSpan *span;
       const gchar *pixbuf_id;
 

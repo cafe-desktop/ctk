@@ -469,7 +469,7 @@ maybe_cache_image_data (Image       *image,
   if (!index_only && !image->image_data &&
       (g_str_has_suffix (path, ".png") || g_str_has_suffix (path, ".xpm")))
     {
-      CdkPixbuf *pixbuf;
+      GdkPixbuf *pixbuf;
       ImageData *idata;
       gchar *path2;
 

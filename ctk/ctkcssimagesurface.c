@@ -179,7 +179,7 @@ _ctk_css_image_surface_new (cairo_surface_t *surface)
 }
 
 CtkCssImage *
-_ctk_css_image_surface_new_for_pixbuf (CdkPixbuf *pixbuf)
+_ctk_css_image_surface_new_for_pixbuf (GdkPixbuf *pixbuf)
 {
   CtkCssImage *image;
   cairo_surface_t *surface;

@@ -98,7 +98,7 @@ typedef void (* CtkClipboardRichTextReceivedFunc) (CtkClipboard     *clipboard,
  * Since: 2.6
  */
 typedef void (* CtkClipboardImageReceivedFunc)    (CtkClipboard     *clipboard,
-						   CdkPixbuf        *pixbuf,
+						   GdkPixbuf        *pixbuf,
 						   gpointer          data);
 
 /**
@@ -220,7 +220,7 @@ void     ctk_clipboard_set_text       (CtkClipboard          *clipboard,
 				       gint                   len);
 CDK_AVAILABLE_IN_ALL
 void     ctk_clipboard_set_image      (CtkClipboard          *clipboard,
-				       CdkPixbuf             *pixbuf);
+				       GdkPixbuf             *pixbuf);
 
 CDK_AVAILABLE_IN_ALL
 void ctk_clipboard_request_contents  (CtkClipboard                     *clipboard,
@@ -260,7 +260,7 @@ guint8 *          ctk_clipboard_wait_for_rich_text (CtkClipboard  *clipboard,
                                                     CdkAtom       *format,
                                                     gsize         *length);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf *       ctk_clipboard_wait_for_image     (CtkClipboard  *clipboard);
+GdkPixbuf *       ctk_clipboard_wait_for_image     (CtkClipboard  *clipboard);
 CDK_AVAILABLE_IN_ALL
 gchar **          ctk_clipboard_wait_for_uris      (CtkClipboard  *clipboard);
 CDK_AVAILABLE_IN_ALL

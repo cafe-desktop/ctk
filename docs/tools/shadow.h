@@ -3,6 +3,6 @@
 
 #include <cdk-pixbuf/cdk-pixbuf.h>
 
-CdkPixbuf *create_shadowed_pixbuf (CdkPixbuf *src);
+GdkPixbuf *create_shadowed_pixbuf (GdkPixbuf *src);
 
 #endif /* __SHADOW_H__ */

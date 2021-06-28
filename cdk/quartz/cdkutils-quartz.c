@@ -26,7 +26,7 @@
 #include <cdkquartzutils.h>
 
 NSImage *
-cdk_quartz_pixbuf_to_ns_image_libctk_only (CdkPixbuf *pixbuf)
+cdk_quartz_pixbuf_to_ns_image_libctk_only (GdkPixbuf *pixbuf)
 {
   NSBitmapImageRep  *bitmap_rep;
   NSImage           *image;

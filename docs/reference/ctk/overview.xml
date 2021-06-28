@@ -71,11 +71,11 @@ framework.
 </varlistentry>
 
 <varlistentry>
-<term>CdkPixbuf</term>
+<term>GdkPixbuf</term>
 <listitem><para>
-This is a small library which allows you to create CdkPixbuf
+This is a small library which allows you to create GdkPixbuf
 ("pixel buffer") objects from image data or image files.
-Use a CdkPixbuf in combination with CtkImage to display images.
+Use a GdkPixbuf in combination with CtkImage to display images.
 </para></listitem>
 </varlistentry>
 

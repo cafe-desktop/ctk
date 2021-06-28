@@ -202,10 +202,10 @@ CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_translator_credits (CtkAboutDialog  *about,
                                                                 const gchar     *translator_credits);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf             *ctk_about_dialog_get_logo               (CtkAboutDialog  *about);
+GdkPixbuf             *ctk_about_dialog_get_logo               (CtkAboutDialog  *about);
 CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_logo               (CtkAboutDialog  *about,
-                                                                CdkPixbuf       *logo);
+                                                                GdkPixbuf       *logo);
 CDK_AVAILABLE_IN_ALL
 const gchar *          ctk_about_dialog_get_logo_icon_name     (CtkAboutDialog  *about);
 CDK_AVAILABLE_IN_ALL

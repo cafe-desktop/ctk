@@ -83,7 +83,7 @@ static void
 set_pixbuf (CtkWidget *button,
             CtkEntry  *entry)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {

@@ -895,9 +895,9 @@ pixbuf_clear_func (CtkClipboard *clipboard,
 /**
  * ctk_clipboard_set_image:
  * @clipboard: a #CtkClipboard object
- * @pixbuf:    a #CdkPixbuf 
+ * @pixbuf:    a #GdkPixbuf 
  * 
- * Sets the contents of the clipboard to the given #CdkPixbuf. 
+ * Sets the contents of the clipboard to the given #GdkPixbuf. 
  * CTK+ will take responsibility for responding for requests 
  * for the image, and for converting the image into the 
  * requested format.
@@ -906,7 +906,7 @@ pixbuf_clear_func (CtkClipboard *clipboard,
  **/
 void
 ctk_clipboard_set_image (CtkClipboard *clipboard,
-			  CdkPixbuf    *pixbuf)
+			  GdkPixbuf    *pixbuf)
 {
   CtkTargetList *list;
   CtkTargetEntry *targets;
@@ -1185,7 +1185,7 @@ request_image_received_func (CtkClipboard     *clipboard,
 			     gpointer          data)
 {
   RequestImageInfo *info = data;
-  CdkPixbuf *result = NULL;
+  GdkPixbuf *result = NULL;
 
   result = ctk_selection_data_get_pixbuf (selection_data);
 
@@ -1236,11 +1236,11 @@ request_image_received_func (CtkClipboard     *clipboard,
  * @user_data: user data to pass to @callback.
  *
  * Requests the contents of the clipboard as image. When the image is
- * later received, it will be converted to a #CdkPixbuf, and
+ * later received, it will be converted to a #GdkPixbuf, and
  * @callback will be called.
  *
  * The @pixbuf parameter to @callback will contain the resulting
- * #CdkPixbuf if the request succeeded, or %NULL if it failed. This
+ * #GdkPixbuf if the request succeeded, or %NULL if it failed. This
  * could happen for various reasons, in particular if the clipboard
  * was empty or if the contents of the clipboard could not be
  * converted into an image.
@@ -1568,7 +1568,7 @@ ctk_clipboard_wait_for_rich_text (CtkClipboard  *clipboard,
 
 static void 
 clipboard_image_received_func (CtkClipboard *clipboard,
-			       CdkPixbuf    *pixbuf,
+			       GdkPixbuf    *pixbuf,
 			       gpointer      data)
 {
   WaitResults *results = data;
@@ -1584,11 +1584,11 @@ clipboard_image_received_func (CtkClipboard *clipboard,
  * @clipboard: a #CtkClipboard
  *
  * Requests the contents of the clipboard as image and converts
- * the result to a #CdkPixbuf. This function waits for
+ * the result to a #GdkPixbuf. This function waits for
  * the data to be received using the main loop, so events,
  * timeouts, etc, may be dispatched during the wait.
  *
- * Returns: (nullable) (transfer full): a newly-allocated #CdkPixbuf
+ * Returns: (nullable) (transfer full): a newly-allocated #GdkPixbuf
  *     object which must be disposed with g_object_unref(), or
  *     %NULL if retrieving the selection data failed. (This could
  *     happen for various reasons, in particular if the clipboard
@@ -1597,7 +1597,7 @@ clipboard_image_received_func (CtkClipboard *clipboard,
  *
  * Since: 2.6
  **/
-CdkPixbuf *
+GdkPixbuf *
 ctk_clipboard_wait_for_image (CtkClipboard *clipboard)
 {
   WaitResults results;

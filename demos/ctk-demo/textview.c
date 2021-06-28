@@ -128,7 +128,7 @@ insert_text (CtkTextBuffer *buffer)
 {
   CtkTextIter iter;
   CtkTextIter start, end;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   CtkIconTheme *icon_theme;
 
   icon_theme = ctk_icon_theme_get_default ();

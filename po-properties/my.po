@@ -3035,8 +3035,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A CdkPixbuf to display"
-msgstr "ပြသမဲ့ CdkPixbuf တခု"
+msgid "A GdkPixbuf to display"
+msgstr "ပြသမဲ့ GdkPixbuf တခု"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3080,8 +3080,8 @@ msgid "Animation"
 msgstr "သက်၀င်လှုပ်ရှားမှု"
 
 #: ctk/ctkimage.c:287
-msgid "CdkPixbufAnimation to display"
-msgstr "ပြသမဲ့ CdkPixbufAnimation"
+msgid "GdkPixbufAnimation to display"
+msgstr "ပြသမဲ့ GdkPixbufAnimation"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"

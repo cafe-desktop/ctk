@@ -4701,7 +4701,7 @@ msgstr ""
 #~ msgstr "Niemahčyma prymierkavać pamiać na strukturu kantekstu TGA"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Niemahčyma zapisać indeks katalohu\n"
 
 #, fuzzy

@@ -17,7 +17,7 @@ typedef struct _CanvasItem CanvasItem;
 
 struct _CanvasItem
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   gdouble x, y;
 };
 
@@ -37,7 +37,7 @@ canvas_item_new (CtkWidget     *widget,
 {
   CanvasItem *item = NULL;
   const gchar *icon_name;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   CtkIconTheme *icon_theme;
   int width;
 
