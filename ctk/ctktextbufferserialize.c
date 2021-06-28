@@ -582,8 +582,8 @@ serialize_pixbufs (SerializationContext *context,
       guint8 *tmp;
       guint len;
 
-      cdk_pixdata_from_pixbuf (&pixdata, pixbuf, FALSE);
-      tmp = cdk_pixdata_serialize (&pixdata, &len);
+      gdk_pixdata_from_pixbuf (&pixdata, pixbuf, FALSE);
+      tmp = gdk_pixdata_serialize (&pixdata, &len);
 
       serialize_section_header (text, "CTKTEXTBUFFERPIXBDATA-0001", len);
       g_string_append_len (text, (gchar *) tmp, len);
@@ -1072,7 +1072,7 @@ get_pixbuf_from_headers (GList   *headers,
   if (!header)
     return NULL;
 
-  if (!cdk_pixdata_deserialize (&pixdata, header->length,
+  if (!gdk_pixdata_deserialize (&pixdata, header->length,
                                 (const guint8 *) header->start, error))
     return NULL;
 

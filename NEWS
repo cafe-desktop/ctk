@@ -11949,7 +11949,7 @@ Overview of Changes from CTK+ 2.14.x to 2.15.0
   85292 add an icon to ctkentry
  564881 ctkstatusicon.c: 'event' bug again
  552545 leaks GpImage
- 553374 cdk_pixdata_from_pixbuf fails for some images with use_rle set to TRUE
+ 553374 gdk_pixdata_from_pixbuf fails for some images with use_rle set to TRUE
  555791 Natuilus Crashes when opening USB MP3 Player Contents
  561186 GdkPixbuf API type checking needs cleanup
  559009 ctk_radio_button_get_group documentation needs to say...
