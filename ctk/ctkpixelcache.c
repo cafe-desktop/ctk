@@ -173,7 +173,7 @@ _ctk_pixel_cache_invalidate (CtkPixelCache  *cache,
 
 static void
 _ctk_pixel_cache_create_surface_if_needed (CtkPixelCache         *cache,
-                                           GdkWindow             *window,
+                                           CdkWindow             *window,
                                            cairo_rectangle_int_t *view_rect,
                                            cairo_rectangle_int_t *canvas_rect)
 {
@@ -326,7 +326,7 @@ _ctk_pixel_cache_set_position (CtkPixelCache         *cache,
 
 static void
 _ctk_pixel_cache_repaint (CtkPixelCache         *cache,
-                          GdkWindow             *window,
+                          CdkWindow             *window,
                           CtkPixelCacheDrawFunc  draw,
                           cairo_rectangle_int_t *view_rect,
                           cairo_rectangle_int_t *canvas_rect,
@@ -361,7 +361,7 @@ _ctk_pixel_cache_repaint (CtkPixelCache         *cache,
 #ifdef G_ENABLE_DEBUG
       if (CTK_DISPLAY_DEBUG_CHECK (cdk_window_get_display (window), PIXEL_CACHE))
         {
-          GdkRGBA colors[] = {
+          CdkRGBA colors[] = {
             { 1, 0, 0, 0.08},
             { 0, 1, 0, 0.08},
             { 0, 0, 1, 0.08},
@@ -420,7 +420,7 @@ context_is_unscaled (cairo_t *cr)
 void
 _ctk_pixel_cache_draw (CtkPixelCache         *cache,
                        cairo_t               *cr,
-                       GdkWindow             *window,
+                       CdkWindow             *window,
                        cairo_rectangle_int_t *view_rect,   /* View position in widget coords */
                        cairo_rectangle_int_t *canvas_rect, /* Size and position of canvas in view coords */
                        CtkPixelCacheDrawFunc  draw,

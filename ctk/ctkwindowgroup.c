@@ -55,7 +55,7 @@ typedef struct _CtkDeviceGrabInfo CtkDeviceGrabInfo;
 struct _CtkDeviceGrabInfo
 {
   CtkWidget *widget;
-  GdkDevice *device;
+  CdkDevice *device;
   guint block_others : 1;
 };
 
@@ -276,7 +276,7 @@ _ctk_window_group_remove_grab (CtkWindowGroup *window_group,
 void
 _ctk_window_group_add_device_grab (CtkWindowGroup *window_group,
                                    CtkWidget      *widget,
-                                   GdkDevice      *device,
+                                   CdkDevice      *device,
                                    gboolean        block_others)
 {
   CtkWindowGroupPrivate *priv;
@@ -295,12 +295,12 @@ _ctk_window_group_add_device_grab (CtkWindowGroup *window_group,
 void
 _ctk_window_group_remove_device_grab (CtkWindowGroup *window_group,
                                       CtkWidget      *widget,
-                                      GdkDevice      *device)
+                                      CdkDevice      *device)
 {
   CtkWindowGroupPrivate *priv;
   CtkDeviceGrabInfo *info;
   GSList *list, *node = NULL;
-  GdkDevice *other_device;
+  CdkDevice *other_device;
 
   priv = window_group->priv;
   other_device = cdk_device_get_associated_device (device);
@@ -333,7 +333,7 @@ _ctk_window_group_remove_device_grab (CtkWindowGroup *window_group,
 /**
  * ctk_window_group_get_current_device_grab:
  * @window_group: a #CtkWindowGroup
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Returns the current grab widget for @device, or %NULL if none.
  *
@@ -343,11 +343,11 @@ _ctk_window_group_remove_device_grab (CtkWindowGroup *window_group,
  */
 CtkWidget *
 ctk_window_group_get_current_device_grab (CtkWindowGroup *window_group,
-                                          GdkDevice      *device)
+                                          CdkDevice      *device)
 {
   CtkWindowGroupPrivate *priv;
   CtkDeviceGrabInfo *info;
-  GdkDevice *other_device;
+  CdkDevice *other_device;
   GSList *list;
 
   g_return_val_if_fail (CTK_IS_WINDOW_GROUP (window_group), NULL);
@@ -373,11 +373,11 @@ ctk_window_group_get_current_device_grab (CtkWindowGroup *window_group,
 gboolean
 _ctk_window_group_widget_is_blocked_for_device (CtkWindowGroup *window_group,
                                                 CtkWidget      *widget,
-                                                GdkDevice      *device)
+                                                CdkDevice      *device)
 {
   CtkWindowGroupPrivate *priv;
   CtkDeviceGrabInfo *info;
-  GdkDevice *other_device;
+  CdkDevice *other_device;
   GSList *list;
 
   priv = window_group->priv;

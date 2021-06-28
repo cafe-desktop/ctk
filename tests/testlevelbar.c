@@ -57,7 +57,7 @@ increase_level (gpointer data)
 
 static gboolean
 window_delete_event (CtkWidget *widget,
-                     GdkEvent *event,
+                     CdkEvent *event,
                      gpointer _data)
 {
   ctk_main_quit ();

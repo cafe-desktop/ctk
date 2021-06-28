@@ -87,10 +87,10 @@
       <para>
         The windowing system generates events for native windows. The GDK
         interface to the windowing system translates such native events into
-        <link linkend="GdkEvent"><structname>GdkEvent</structname></link>
+        <link linkend="CdkEvent"><structname>CdkEvent</structname></link>
         structures and sends them on to the CTK layer.  In turn, the CTK layer
         finds the widget that corresponds to a particular
-        <classname>GdkWindow</classname> and emits the corresponding event
+        <classname>CdkWindow</classname> and emits the corresponding event
         signals on that widget.
       </para>
 
@@ -207,17 +207,17 @@
         
       <para>
         Normally, there is only a single cairo context which is used in
-        the entire repaint, rather than one per GdkWindow. This means you
+        the entire repaint, rather than one per CdkWindow. This means you
         have to respect (and not reset) existing clip and transformations
         set on it.
       </para>
 
       <para>
-        Most widgets, including those that create their own GdkWindows have
+        Most widgets, including those that create their own CdkWindows have
         a transparent background, so they draw on top of whatever widgets
         are below them. This was not the case in CTK+ 2 where the theme set
         the background of most widgets to the default background color. (In
-        fact, transparent GdkWindows used to be impossible.)
+        fact, transparent CdkWindows used to be impossible.)
       </para>
 
       <para>
@@ -280,7 +280,7 @@
       linkend="cdk_window_begin_paint_region"><function>cdk_window_begin_paint_region()</function></link>
       and <link
       linkend="cdk_window_end_paint"><function>cdk_window_end_paint()</function></link>.
-      The first function tells a <classname>GdkWindow</classname> to
+      The first function tells a <classname>CdkWindow</classname> to
       create a temporary off-screen buffer for drawing.  All
       subsequent drawing operations to this window get automatically
       redirected to that buffer.  The second function actually paints

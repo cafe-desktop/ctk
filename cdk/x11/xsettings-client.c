@@ -62,11 +62,11 @@ struct _XSettingsBuffer
 };
 
 static void
-cdk_xsettings_notify (GdkX11Screen     *x11_screen,
+cdk_xsettings_notify (CdkX11Screen     *x11_screen,
                       const char       *name,
-		      GdkSettingAction  action)
+		      CdkSettingAction  action)
 {
-  GdkEvent new_event;
+  CdkEvent new_event;
 
   if (!g_str_has_prefix (name, "ctk-"))
     return;
@@ -102,7 +102,7 @@ value_equal (const GValue *value_a,
 }
 
 static void
-notify_changes (GdkX11Screen *x11_screen,
+notify_changes (CdkX11Screen *x11_screen,
 		GHashTable   *old_list)
 {
   GHashTableIter iter;
@@ -327,7 +327,7 @@ parse_settings (unsigned char *data,
 	case XSETTINGS_TYPE_COLOR:
           {
             unsigned short red, green, blue, alpha;
-            GdkRGBA rgba;
+            CdkRGBA rgba;
 
             if (!fetch_ushort (&buffer, &red) ||
                 !fetch_ushort (&buffer, &green) ||
@@ -399,10 +399,10 @@ parse_settings (unsigned char *data,
 }
 
 static void
-read_settings (GdkX11Screen *x11_screen,
+read_settings (CdkX11Screen *x11_screen,
                gboolean      do_notify)
 {
-  GdkScreen *screen = GDK_SCREEN (x11_screen);
+  CdkScreen *screen = GDK_SCREEN (x11_screen);
 
   Atom type;
   int format;
@@ -419,7 +419,7 @@ read_settings (GdkX11Screen *x11_screen,
 
   if (x11_screen->xsettings_manager_window)
     {
-      GdkDisplay *display = x11_screen->display;
+      CdkDisplay *display = x11_screen->display;
       Atom xsettings_atom = cdk_x11_get_xatom_by_name_for_display (display, "_XSETTINGS_SETTINGS");
 
       cdk_x11_display_error_trap_push (display);
@@ -447,7 +447,7 @@ read_settings (GdkX11Screen *x11_screen,
 	}
     }
 
-  /* Since we support scaling we look at the specific Gdk/UnscaledDPI
+  /* Since we support scaling we look at the specific Cdk/UnscaledDPI
      setting if it exists and use that instead of Xft/DPI if it is set */
   if (x11_screen->xsettings && !x11_screen->fixed_window_scale)
     {
@@ -511,21 +511,21 @@ read_settings (GdkX11Screen *x11_screen,
 }
 
 static Atom
-get_selection_atom (GdkX11Screen *x11_screen)
+get_selection_atom (CdkX11Screen *x11_screen)
 {
   return _cdk_x11_get_xatom_for_display_printf (x11_screen->display, "_XSETTINGS_S%d", x11_screen->screen_num);
 }
 
-static GdkFilterReturn
-cdk_xsettings_manager_window_filter (GdkXEvent *xevent,
-                                     GdkEvent  *event,
+static CdkFilterReturn
+cdk_xsettings_manager_window_filter (CdkXEvent *xevent,
+                                     CdkEvent  *event,
                                      gpointer   data);
 
 static void
-check_manager_window (GdkX11Screen *x11_screen,
+check_manager_window (CdkX11Screen *x11_screen,
                       gboolean      notify_changes)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   Display *xdisplay;
   Window manager_window_xid;
 
@@ -562,13 +562,13 @@ check_manager_window (GdkX11Screen *x11_screen,
   read_settings (x11_screen, notify_changes);
 }
 
-static GdkFilterReturn
-cdk_xsettings_root_window_filter (GdkXEvent *xevent,
-                                  GdkEvent  *event,
+static CdkFilterReturn
+cdk_xsettings_root_window_filter (CdkXEvent *xevent,
+                                  CdkEvent  *event,
                                   gpointer   data)
 {
-  GdkX11Screen *x11_screen = data;
-  GdkDisplay *display = x11_screen->display;
+  CdkX11Screen *x11_screen = data;
+  CdkDisplay *display = x11_screen->display;
   XEvent *xev = xevent;
 
   /* The checks here will not unlikely cause us to reread
@@ -587,12 +587,12 @@ cdk_xsettings_root_window_filter (GdkXEvent *xevent,
   return GDK_FILTER_CONTINUE;
 }
 
-static GdkFilterReturn
-cdk_xsettings_manager_window_filter (GdkXEvent *xevent,
-                                     GdkEvent  *event,
+static CdkFilterReturn
+cdk_xsettings_manager_window_filter (CdkXEvent *xevent,
+                                     CdkEvent  *event,
                                      gpointer   data)
 {
-  GdkX11Screen *x11_screen = data;
+  CdkX11Screen *x11_screen = data;
   XEvent *xev = xevent;
 
   if (xev->xany.type == DestroyNotify)
@@ -611,7 +611,7 @@ cdk_xsettings_manager_window_filter (GdkXEvent *xevent,
 }
 
 void
-_cdk_x11_xsettings_init (GdkX11Screen *x11_screen)
+_cdk_x11_xsettings_init (CdkX11Screen *x11_screen)
 {
   cdk_window_add_filter (cdk_screen_get_root_window (GDK_SCREEN (x11_screen)), cdk_xsettings_root_window_filter, x11_screen);
 
@@ -619,13 +619,13 @@ _cdk_x11_xsettings_init (GdkX11Screen *x11_screen)
 }
 
 void
-_cdk_x11_settings_force_reread (GdkX11Screen *x11_screen)
+_cdk_x11_settings_force_reread (CdkX11Screen *x11_screen)
 {
   read_settings (x11_screen, TRUE);
 }
 
 void
-_cdk_x11_xsettings_finish (GdkX11Screen *x11_screen)
+_cdk_x11_xsettings_finish (CdkX11Screen *x11_screen)
 {
   cdk_window_remove_filter (cdk_screen_get_root_window (GDK_SCREEN (x11_screen)), cdk_xsettings_root_window_filter, x11_screen);
   if (x11_screen->xsettings_manager_window)

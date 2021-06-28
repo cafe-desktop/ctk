@@ -31,17 +31,17 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_X11_MONITOR           (cdk_x11_monitor_get_type ())
-#define GDK_X11_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_MONITOR, GdkX11Monitor))
+#define GDK_X11_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_MONITOR, CdkX11Monitor))
 #define GDK_IS_X11_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_MONITOR))
 
-typedef struct _GdkX11Monitor      GdkX11Monitor;
-typedef struct _GdkX11MonitorClass GdkX11MonitorClass;
+typedef struct _CdkX11Monitor      CdkX11Monitor;
+typedef struct _CdkX11MonitorClass CdkX11MonitorClass;
 
 GDK_AVAILABLE_IN_3_22
 GType             cdk_x11_monitor_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-XID               cdk_x11_monitor_get_output          (GdkMonitor *monitor);
+XID               cdk_x11_monitor_get_output          (CdkMonitor *monitor);
 
 G_END_DECLS
 

@@ -37,21 +37,21 @@
 #include <string.h>
 #include <errno.h>
 
-struct _GdkBroadwayCursor
+struct _CdkBroadwayCursor
 {
-  GdkCursor cursor;
+  CdkCursor cursor;
 };
 
-struct _GdkBroadwayCursorClass
+struct _CdkBroadwayCursorClass
 {
-  GdkCursorClass cursor_class;
+  CdkCursorClass cursor_class;
 };
 
-/*** GdkBroadwayCursor ***/
+/*** CdkBroadwayCursor ***/
 
-G_DEFINE_TYPE (GdkBroadwayCursor, cdk_broadway_cursor, GDK_TYPE_CURSOR)
+G_DEFINE_TYPE (CdkBroadwayCursor, cdk_broadway_cursor, GDK_TYPE_CURSOR)
 
-static cairo_surface_t * cdk_broadway_cursor_get_surface (GdkCursor *cursor,
+static cairo_surface_t * cdk_broadway_cursor_get_surface (CdkCursor *cursor,
 							  gdouble   *x_hot,
 							  gdouble   *y_hot);
 
@@ -62,9 +62,9 @@ cdk_broadway_cursor_finalize (GObject *object)
 }
 
 static void
-cdk_broadway_cursor_class_init (GdkBroadwayCursorClass *xcursor_class)
+cdk_broadway_cursor_class_init (CdkBroadwayCursorClass *xcursor_class)
 {
-  GdkCursorClass *cursor_class = GDK_CURSOR_CLASS (xcursor_class);
+  CdkCursorClass *cursor_class = GDK_CURSOR_CLASS (xcursor_class);
   GObjectClass *object_class = G_OBJECT_CLASS (xcursor_class);
 
   object_class->finalize = cdk_broadway_cursor_finalize;
@@ -73,7 +73,7 @@ cdk_broadway_cursor_class_init (GdkBroadwayCursorClass *xcursor_class)
 }
 
 static void
-cdk_broadway_cursor_init (GdkBroadwayCursor *cursor)
+cdk_broadway_cursor_init (CdkBroadwayCursor *cursor)
 {
 }
 
@@ -81,15 +81,15 @@ cdk_broadway_cursor_init (GdkBroadwayCursor *cursor)
  * for a dead display.
  */
 void
-_cdk_broadway_cursor_display_finalize (GdkDisplay *display)
+_cdk_broadway_cursor_display_finalize (CdkDisplay *display)
 {
 }
 
-GdkCursor*
-_cdk_broadway_display_get_cursor_for_type (GdkDisplay    *display,
-					   GdkCursorType  cursor_type)
+CdkCursor*
+_cdk_broadway_display_get_cursor_for_type (CdkDisplay    *display,
+					   CdkCursorType  cursor_type)
 {
-  GdkBroadwayCursor *private;
+  CdkBroadwayCursor *private;
 
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
 
@@ -102,7 +102,7 @@ _cdk_broadway_display_get_cursor_for_type (GdkDisplay    *display,
 }
 
 static cairo_surface_t *
-cdk_broadway_cursor_get_surface (GdkCursor *cursor,
+cdk_broadway_cursor_get_surface (CdkCursor *cursor,
 				 gdouble *x_hot,
 				 gdouble *y_hot)
 {
@@ -112,34 +112,34 @@ cdk_broadway_cursor_get_surface (GdkCursor *cursor,
 }
 
 void
-_cdk_broadway_cursor_update_theme (GdkCursor *cursor)
+_cdk_broadway_cursor_update_theme (CdkCursor *cursor)
 {
   g_return_if_fail (cursor != NULL);
 }
 
-GdkCursor *
-_cdk_broadway_display_get_cursor_for_surface (GdkDisplay *display,
+CdkCursor *
+_cdk_broadway_display_get_cursor_for_surface (CdkDisplay *display,
 					      cairo_surface_t *surface,
 					      gdouble     x,
 					      gdouble     y)
 {
-  GdkBroadwayCursor *private;
-  GdkCursor *cursor;
+  CdkBroadwayCursor *private;
+  CdkCursor *cursor;
 
   private = g_object_new (GDK_TYPE_BROADWAY_CURSOR, 
                           "cursor-type", GDK_CURSOR_IS_PIXMAP,
                           "display", display,
                           NULL);
-  cursor = (GdkCursor *) private;
+  cursor = (CdkCursor *) private;
 
   return cursor;
 }
 
-GdkCursor*
-_cdk_broadway_display_get_cursor_for_name (GdkDisplay  *display,
+CdkCursor*
+_cdk_broadway_display_get_cursor_for_name (CdkDisplay  *display,
 					   const gchar *name)
 {
-  GdkBroadwayCursor *private;
+  CdkBroadwayCursor *private;
 
   private = g_object_new (GDK_TYPE_BROADWAY_CURSOR,
                           "cursor-type", GDK_CURSOR_IS_PIXMAP,
@@ -150,7 +150,7 @@ _cdk_broadway_display_get_cursor_for_name (GdkDisplay  *display,
 }
 
 gboolean
-_cdk_broadway_display_supports_cursor_alpha (GdkDisplay *display)
+_cdk_broadway_display_supports_cursor_alpha (CdkDisplay *display)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
 
@@ -158,7 +158,7 @@ _cdk_broadway_display_supports_cursor_alpha (GdkDisplay *display)
 }
 
 gboolean
-_cdk_broadway_display_supports_cursor_color (GdkDisplay *display)
+_cdk_broadway_display_supports_cursor_color (CdkDisplay *display)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
 
@@ -166,7 +166,7 @@ _cdk_broadway_display_supports_cursor_color (GdkDisplay *display)
 }
 
 void
-_cdk_broadway_display_get_default_cursor_size (GdkDisplay *display,
+_cdk_broadway_display_get_default_cursor_size (CdkDisplay *display,
 					       guint      *width,
 					       guint      *height)
 {
@@ -176,7 +176,7 @@ _cdk_broadway_display_get_default_cursor_size (GdkDisplay *display,
 }
 
 void
-_cdk_broadway_display_get_maximal_cursor_size (GdkDisplay *display,
+_cdk_broadway_display_get_maximal_cursor_size (CdkDisplay *display,
 					       guint       *width,
 					       guint       *height)
 {

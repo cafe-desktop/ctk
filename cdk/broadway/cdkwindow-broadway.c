@@ -43,7 +43,7 @@
 #include <string.h>
 
 /* Forward declarations */
-static void     cdk_window_broadway_set_background     (GdkWindow      *window,
+static void     cdk_window_broadway_set_background     (CdkWindow      *window,
                                                    cairo_pattern_t *pattern);
 
 static void        cdk_window_impl_broadway_finalize   (GObject            *object);
@@ -59,34 +59,34 @@ static const cairo_user_data_key_t cdk_broadway_cairo_key;
    GDK_WINDOW_TYPE (window) != GDK_WINDOW_FOREIGN && \
    GDK_WINDOW_TYPE (window) != GDK_WINDOW_OFFSCREEN)
 
-struct _GdkBroadwayWindow {
-  GdkWindow parent;
+struct _CdkBroadwayWindow {
+  CdkWindow parent;
 };
 
-struct _GdkBroadwayWindowClass {
-  GdkWindowClass parent_class;
+struct _CdkBroadwayWindowClass {
+  CdkWindowClass parent_class;
 };
 
-G_DEFINE_TYPE (GdkBroadwayWindow, cdk_broadway_window, GDK_TYPE_WINDOW)
+G_DEFINE_TYPE (CdkBroadwayWindow, cdk_broadway_window, GDK_TYPE_WINDOW)
 
 static void
-cdk_broadway_window_class_init (GdkBroadwayWindowClass *broadway_window_class)
+cdk_broadway_window_class_init (CdkBroadwayWindowClass *broadway_window_class)
 {
 }
 
 static void
-cdk_broadway_window_init (GdkBroadwayWindow *broadway_window)
+cdk_broadway_window_init (CdkBroadwayWindow *broadway_window)
 {
 }
 
-G_DEFINE_TYPE (GdkWindowImplBroadway,
+G_DEFINE_TYPE (CdkWindowImplBroadway,
 	       cdk_window_impl_broadway,
 	       GDK_TYPE_WINDOW_IMPL)
 
-static GdkDisplay *
+static CdkDisplay *
 find_broadway_display (void)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   GSList *list, *l;
 
   display = NULL;
@@ -109,7 +109,7 @@ static void
 update_dirty_windows_and_sync (void)
 {
   GList *l;
-  GdkBroadwayDisplay *display;
+  CdkBroadwayDisplay *display;
   gboolean updated_surface;
 
   display = GDK_BROADWAY_DISPLAY (find_broadway_display ());
@@ -118,7 +118,7 @@ update_dirty_windows_and_sync (void)
   updated_surface = FALSE;
   for (l = display->toplevels; l != NULL; l = l->next)
     {
-      GdkWindowImplBroadway *impl = l->data;
+      CdkWindowImplBroadway *impl = l->data;
 
       if (impl->dirty)
 	{
@@ -154,7 +154,7 @@ flush_idle (gpointer data)
    is frozen during e.g. window resizes so the paint will not happen
    and the window resize request is never flushed. */
 static void
-queue_flush (GdkWindow *window)
+queue_flush (CdkWindow *window)
 {
   if (flush_id == 0)
     {
@@ -164,7 +164,7 @@ queue_flush (GdkWindow *window)
 }
 
 static void
-cdk_window_impl_broadway_init (GdkWindowImplBroadway *impl)
+cdk_window_impl_broadway_init (CdkWindowImplBroadway *impl)
 {
   impl->toplevel_window_type = -1;
   impl->device_cursor = g_hash_table_new_full (NULL, NULL, NULL,
@@ -174,9 +174,9 @@ cdk_window_impl_broadway_init (GdkWindowImplBroadway *impl)
 static void
 cdk_window_impl_broadway_finalize (GObject *object)
 {
-  GdkWindow *wrapper;
-  GdkWindowImplBroadway *impl;
-  GdkBroadwayDisplay *broadway_display;
+  CdkWindow *wrapper;
+  CdkWindowImplBroadway *impl;
+  CdkBroadwayDisplay *broadway_display;
 
   g_return_if_fail (GDK_IS_WINDOW_IMPL_BROADWAY (object));
 
@@ -201,11 +201,11 @@ cdk_window_impl_broadway_finalize (GObject *object)
 }
 
 void
-_cdk_broadway_screen_init_root_window (GdkScreen * screen)
+_cdk_broadway_screen_init_root_window (CdkScreen * screen)
 {
-  GdkWindow *window;
-  GdkWindowImplBroadway *impl;
-  GdkBroadwayScreen *broadway_screen;
+  CdkWindow *window;
+  CdkWindowImplBroadway *impl;
+  CdkBroadwayScreen *broadway_screen;
 
   broadway_screen = GDK_BROADWAY_SCREEN (screen);
 
@@ -239,18 +239,18 @@ _cdk_broadway_screen_init_root_window (GdkScreen * screen)
 }
 
 static void
-on_frame_clock_after_paint (GdkFrameClock *clock,
-                            GdkWindow     *window)
+on_frame_clock_after_paint (CdkFrameClock *clock,
+                            CdkWindow     *window)
 {
   update_dirty_windows_and_sync ();
 }
 
 static void
-connect_frame_clock (GdkWindow *window)
+connect_frame_clock (CdkWindow *window)
 {
   if (WINDOW_IS_TOPLEVEL (window))
     {
-      GdkFrameClock *frame_clock = cdk_window_get_frame_clock (window);
+      CdkFrameClock *frame_clock = cdk_window_get_frame_clock (window);
 
       g_signal_connect (frame_clock, "after-paint",
                         G_CALLBACK (on_frame_clock_after_paint), window);
@@ -258,21 +258,21 @@ connect_frame_clock (GdkWindow *window)
 }
 
 void
-_cdk_broadway_display_create_window_impl (GdkDisplay    *display,
-					  GdkWindow     *window,
-					  GdkWindow     *real_parent,
-					  GdkScreen     *screen,
-					  GdkEventMask   event_mask,
-					  GdkWindowAttr *attributes,
+_cdk_broadway_display_create_window_impl (CdkDisplay    *display,
+					  CdkWindow     *window,
+					  CdkWindow     *real_parent,
+					  CdkScreen     *screen,
+					  CdkEventMask   event_mask,
+					  CdkWindowAttr *attributes,
 					  gint           attributes_mask)
 {
-  GdkWindowImplBroadway *impl;
-  GdkBroadwayDisplay *broadway_display;
+  CdkWindowImplBroadway *impl;
+  CdkBroadwayDisplay *broadway_display;
 
   broadway_display = GDK_BROADWAY_DISPLAY (display);
 
   impl = g_object_new (GDK_TYPE_WINDOW_IMPL_BROADWAY, NULL);
-  window->impl = (GdkWindowImpl *)impl;
+  window->impl = (CdkWindowImpl *)impl;
   impl->id = _cdk_broadway_server_new_window (broadway_display->server,
 					      window->x,
 					      window->y,
@@ -294,9 +294,9 @@ _cdk_broadway_display_create_window_impl (GdkDisplay    *display,
 }
 
 void
-_cdk_broadway_window_resize_surface (GdkWindow *window)
+_cdk_broadway_window_resize_surface (CdkWindow *window)
 {
-  GdkWindowImplBroadway *impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  CdkWindowImplBroadway *impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   if (impl->surface)
     {
@@ -319,15 +319,15 @@ _cdk_broadway_window_resize_surface (GdkWindow *window)
 static void
 ref_surface_destroyed (void *data)
 {
-  GdkWindowImplBroadway *impl = data;
+  CdkWindowImplBroadway *impl = data;
 
   impl->ref_surface = NULL;
 }
 
 static cairo_surface_t *
-cdk_window_broadway_ref_cairo_surface (GdkWindow *window)
+cdk_window_broadway_ref_cairo_surface (CdkWindow *window)
 {
-  GdkWindowImplBroadway *impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  CdkWindowImplBroadway *impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
   int w, h;
 
   if (GDK_IS_WINDOW_IMPL_BROADWAY (window) &&
@@ -359,12 +359,12 @@ cdk_window_broadway_ref_cairo_surface (GdkWindow *window)
 }
 
 static void
-_cdk_broadway_window_destroy (GdkWindow *window,
+_cdk_broadway_window_destroy (CdkWindow *window,
 			      gboolean   recursing,
 			      gboolean   foreign_destroy)
 {
-  GdkWindowImplBroadway *impl;
-  GdkBroadwayDisplay *broadway_display;
+  CdkWindowImplBroadway *impl;
+  CdkBroadwayDisplay *broadway_display;
 
   g_return_if_fail (GDK_IS_WINDOW (window));
 
@@ -394,19 +394,19 @@ _cdk_broadway_window_destroy (GdkWindow *window,
 }
 
 static void
-cdk_broadway_window_destroy_foreign (GdkWindow *window)
+cdk_broadway_window_destroy_foreign (CdkWindow *window)
 {
 }
 
 /* This function is called when the XWindow is really gone.
  */
 static void
-cdk_broadway_window_destroy_notify (GdkWindow *window)
+cdk_broadway_window_destroy_notify (CdkWindow *window)
 {
   if (!GDK_WINDOW_DESTROYED (window))
     {
       if (GDK_WINDOW_TYPE(window) != GDK_WINDOW_FOREIGN)
-	g_warning ("GdkWindow %p unexpectedly destroyed", window);
+	g_warning ("CdkWindow %p unexpectedly destroyed", window);
 
       _cdk_window_destroy (window, TRUE);
     }
@@ -415,10 +415,10 @@ cdk_broadway_window_destroy_notify (GdkWindow *window)
 }
 
 static void
-cdk_window_broadway_show (GdkWindow *window, gboolean already_mapped)
+cdk_window_broadway_show (CdkWindow *window, gboolean already_mapped)
 {
-  GdkWindowImplBroadway *impl;
-  GdkBroadwayDisplay *broadway_display;
+  CdkWindowImplBroadway *impl;
+  CdkBroadwayDisplay *broadway_display;
 
   impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
   impl->visible = TRUE;
@@ -436,10 +436,10 @@ cdk_window_broadway_show (GdkWindow *window, gboolean already_mapped)
 }
 
 static void
-cdk_window_broadway_hide (GdkWindow *window)
+cdk_window_broadway_hide (CdkWindow *window)
 {
-  GdkWindowImplBroadway *impl;
-  GdkBroadwayDisplay *broadway_display;
+  CdkWindowImplBroadway *impl;
+  CdkBroadwayDisplay *broadway_display;
 
   impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
   impl->visible = FALSE;
@@ -462,21 +462,21 @@ cdk_window_broadway_hide (GdkWindow *window)
 }
 
 static void
-cdk_window_broadway_withdraw (GdkWindow *window)
+cdk_window_broadway_withdraw (CdkWindow *window)
 {
   cdk_window_broadway_hide (window);
 }
 
 static void
-cdk_window_broadway_move_resize (GdkWindow *window,
+cdk_window_broadway_move_resize (CdkWindow *window,
 				 gboolean   with_move,
 				 gint       x,
 				 gint       y,
 				 gint       width,
 				 gint       height)
 {
-  GdkWindowImplBroadway *impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
-  GdkBroadwayDisplay *broadway_display;
+  CdkWindowImplBroadway *impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  CdkBroadwayDisplay *broadway_display;
   gboolean size_changed;
 
   size_changed = FALSE;
@@ -517,8 +517,8 @@ cdk_window_broadway_move_resize (GdkWindow *window,
 }
 
 static gboolean
-cdk_window_broadway_reparent (GdkWindow *window,
-			      GdkWindow *new_parent,
+cdk_window_broadway_reparent (CdkWindow *window,
+			      CdkWindow *new_parent,
 			      gint       x,
 			      gint       y)
 {
@@ -526,35 +526,35 @@ cdk_window_broadway_reparent (GdkWindow *window,
 }
 
 static void
-cdk_window_broadway_raise (GdkWindow *window)
+cdk_window_broadway_raise (CdkWindow *window)
 {
 }
 
 static void
-cdk_window_broadway_restack_under (GdkWindow *window,
+cdk_window_broadway_restack_under (CdkWindow *window,
 				   GList *native_siblings /* in requested order, first is bottom-most */)
 {
 }
 
 static void
-cdk_window_broadway_restack_toplevel (GdkWindow *window,
-				      GdkWindow *sibling,
+cdk_window_broadway_restack_toplevel (CdkWindow *window,
+				      CdkWindow *sibling,
 				      gboolean   above)
 {
 }
 
 static void
-cdk_window_broadway_lower (GdkWindow *window)
+cdk_window_broadway_lower (CdkWindow *window)
 {
 }
 
 
 static void
-cdk_broadway_window_focus (GdkWindow *window,
+cdk_broadway_window_focus (CdkWindow *window,
 			   guint32    timestamp)
 {
-  GdkWindowImplBroadway *impl;
-  GdkBroadwayDisplay *broadway_display;
+  CdkWindowImplBroadway *impl;
+  CdkBroadwayDisplay *broadway_display;
 
   g_return_if_fail (GDK_IS_WINDOW (window));
 
@@ -569,47 +569,47 @@ cdk_broadway_window_focus (GdkWindow *window,
 }
 
 static void
-cdk_broadway_window_set_type_hint (GdkWindow        *window,
-				   GdkWindowTypeHint hint)
+cdk_broadway_window_set_type_hint (CdkWindow        *window,
+				   CdkWindowTypeHint hint)
 {
 }
 
-static GdkWindowTypeHint
-cdk_broadway_window_get_type_hint (GdkWindow *window)
+static CdkWindowTypeHint
+cdk_broadway_window_get_type_hint (CdkWindow *window)
 {
   return GDK_WINDOW_TYPE_HINT_NORMAL;
 }
 
 static void
-cdk_broadway_window_set_modal_hint (GdkWindow *window,
+cdk_broadway_window_set_modal_hint (CdkWindow *window,
 				    gboolean   modal)
 {
 }
 
 static void
-cdk_broadway_window_set_skip_taskbar_hint (GdkWindow *window,
+cdk_broadway_window_set_skip_taskbar_hint (CdkWindow *window,
 					   gboolean   skips_taskbar)
 {
 }
 
 static void
-cdk_broadway_window_set_skip_pager_hint (GdkWindow *window,
+cdk_broadway_window_set_skip_pager_hint (CdkWindow *window,
 					 gboolean   skips_pager)
 {
 }
 
 static void
-cdk_broadway_window_set_urgency_hint (GdkWindow *window,
+cdk_broadway_window_set_urgency_hint (CdkWindow *window,
 				      gboolean   urgent)
 {
 }
 
 static void
-cdk_broadway_window_set_geometry_hints (GdkWindow         *window,
-					const GdkGeometry *geometry,
-					GdkWindowHints     geom_mask)
+cdk_broadway_window_set_geometry_hints (CdkWindow         *window,
+					const CdkGeometry *geometry,
+					CdkWindowHints     geom_mask)
 {
-  GdkWindowImplBroadway *impl;
+  CdkWindowImplBroadway *impl;
 
   impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
 
@@ -618,29 +618,29 @@ cdk_broadway_window_set_geometry_hints (GdkWindow         *window,
 }
 
 static void
-cdk_broadway_window_set_title (GdkWindow   *window,
+cdk_broadway_window_set_title (CdkWindow   *window,
 			       const gchar *title)
 {
 }
 
 static void
-cdk_broadway_window_set_role (GdkWindow   *window,
+cdk_broadway_window_set_role (CdkWindow   *window,
 			      const gchar *role)
 {
 }
 
 static void
-cdk_broadway_window_set_startup_id (GdkWindow   *window,
+cdk_broadway_window_set_startup_id (CdkWindow   *window,
 				    const gchar *startup_id)
 {
 }
 
 static void
-cdk_broadway_window_set_transient_for (GdkWindow *window,
-				       GdkWindow *parent)
+cdk_broadway_window_set_transient_for (CdkWindow *window,
+				       CdkWindow *parent)
 {
-  GdkBroadwayDisplay *display;
-  GdkWindowImplBroadway *impl;
+  CdkBroadwayDisplay *display;
+  CdkWindowImplBroadway *impl;
   int parent_id;
 
   impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
@@ -656,18 +656,18 @@ cdk_broadway_window_set_transient_for (GdkWindow *window,
 }
 
 static void
-cdk_window_broadway_set_background (GdkWindow      *window,
+cdk_window_broadway_set_background (CdkWindow      *window,
 				    cairo_pattern_t *pattern)
 {
   return;
 }
 
 static void
-cdk_window_broadway_set_device_cursor (GdkWindow *window,
-				       GdkDevice *device,
-				       GdkCursor *cursor)
+cdk_window_broadway_set_device_cursor (CdkWindow *window,
+				       CdkDevice *device,
+				       CdkCursor *cursor)
 {
-  GdkWindowImplBroadway *impl;
+  CdkWindowImplBroadway *impl;
 
   g_return_if_fail (GDK_IS_WINDOW (window));
   g_return_if_fail (GDK_IS_DEVICE (device));
@@ -688,13 +688,13 @@ cdk_window_broadway_set_device_cursor (GdkWindow *window,
 }
 
 static void
-cdk_window_broadway_get_geometry (GdkWindow *window,
+cdk_window_broadway_get_geometry (CdkWindow *window,
 				  gint      *x,
 				  gint      *y,
 				  gint      *width,
 				  gint      *height)
 {
-  GdkWindowImplBroadway *impl;
+  CdkWindowImplBroadway *impl;
 
   g_return_if_fail (GDK_IS_WINDOW (window));
 
@@ -714,13 +714,13 @@ cdk_window_broadway_get_geometry (GdkWindow *window,
 }
 
 static void
-cdk_window_broadway_get_root_coords (GdkWindow *window,
+cdk_window_broadway_get_root_coords (CdkWindow *window,
 				     gint       x,
 				     gint       y,
 				     gint      *root_x,
 				     gint      *root_y)
 {
-  GdkWindowImplBroadway *impl;
+  CdkWindowImplBroadway *impl;
 
   impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
 
@@ -731,8 +731,8 @@ cdk_window_broadway_get_root_coords (GdkWindow *window,
 }
 
 static void
-cdk_broadway_window_get_frame_extents (GdkWindow    *window,
-				       GdkRectangle *rect)
+cdk_broadway_window_get_frame_extents (CdkWindow    *window,
+				       CdkRectangle *rect)
 {
   g_return_if_fail (rect != NULL);
 
@@ -745,13 +745,13 @@ cdk_broadway_window_get_frame_extents (GdkWindow    *window,
 }
 
 static gboolean
-cdk_window_broadway_get_device_state (GdkWindow       *window,
-				      GdkDevice       *device,
+cdk_window_broadway_get_device_state (CdkWindow       *window,
+				      CdkDevice       *device,
 				      gdouble         *x,
 				      gdouble         *y,
-				      GdkModifierType *mask)
+				      CdkModifierType *mask)
 {
-  GdkWindow *child;
+  CdkWindow *child;
 
   g_return_val_if_fail (window == NULL || GDK_IS_WINDOW (window), FALSE);
 
@@ -765,8 +765,8 @@ cdk_window_broadway_get_device_state (GdkWindow       *window,
   return child != NULL;
 }
 
-static GdkEventMask
-cdk_window_broadway_get_events (GdkWindow *window)
+static CdkEventMask
+cdk_window_broadway_get_events (CdkWindow *window)
 {
   if (GDK_WINDOW_DESTROYED (window))
     return 0;
@@ -775,8 +775,8 @@ cdk_window_broadway_get_events (GdkWindow *window)
 }
 
 static void
-cdk_window_broadway_set_events (GdkWindow    *window,
-				GdkEventMask  event_mask)
+cdk_window_broadway_set_events (CdkWindow    *window,
+				CdkEventMask  event_mask)
 {
   if (!GDK_WINDOW_DESTROYED (window))
     {
@@ -784,7 +784,7 @@ cdk_window_broadway_set_events (GdkWindow    *window,
 }
 
 static void
-cdk_window_broadway_shape_combine_region (GdkWindow       *window,
+cdk_window_broadway_shape_combine_region (CdkWindow       *window,
 					  const cairo_region_t *shape_region,
 					  gint             offset_x,
 					  gint             offset_y)
@@ -792,7 +792,7 @@ cdk_window_broadway_shape_combine_region (GdkWindow       *window,
 }
 
 static void
-cdk_window_broadway_input_shape_combine_region (GdkWindow       *window,
+cdk_window_broadway_input_shape_combine_region (CdkWindow       *window,
 						const cairo_region_t *shape_region,
 						gint             offset_x,
 						gint             offset_y)
@@ -801,13 +801,13 @@ cdk_window_broadway_input_shape_combine_region (GdkWindow       *window,
 
 
 static void
-cdk_broadway_window_set_override_redirect (GdkWindow *window,
+cdk_broadway_window_set_override_redirect (CdkWindow *window,
 					   gboolean override_redirect)
 {
 }
 
 static void
-cdk_broadway_window_set_accept_focus (GdkWindow *window,
+cdk_broadway_window_set_accept_focus (CdkWindow *window,
 				      gboolean accept_focus)
 {
   accept_focus = accept_focus != FALSE;
@@ -819,7 +819,7 @@ cdk_broadway_window_set_accept_focus (GdkWindow *window,
 }
 
 static void
-cdk_broadway_window_set_focus_on_map (GdkWindow *window,
+cdk_broadway_window_set_focus_on_map (CdkWindow *window,
 				      gboolean focus_on_map)
 {
   focus_on_map = focus_on_map != FALSE;
@@ -832,13 +832,13 @@ cdk_broadway_window_set_focus_on_map (GdkWindow *window,
 
 
 static void
-cdk_broadway_window_set_icon_list (GdkWindow *window,
+cdk_broadway_window_set_icon_list (CdkWindow *window,
 				   GList     *pixbufs)
 {
 }
 
 static void
-cdk_broadway_window_set_icon_name (GdkWindow   *window,
+cdk_broadway_window_set_icon_name (CdkWindow   *window,
 				   const gchar *name)
 {
   if (GDK_WINDOW_DESTROYED (window) ||
@@ -850,7 +850,7 @@ cdk_broadway_window_set_icon_name (GdkWindow   *window,
 }
 
 static void
-cdk_broadway_window_iconify (GdkWindow *window)
+cdk_broadway_window_iconify (CdkWindow *window)
 {
   if (GDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
@@ -858,7 +858,7 @@ cdk_broadway_window_iconify (GdkWindow *window)
 }
 
 static void
-cdk_broadway_window_deiconify (GdkWindow *window)
+cdk_broadway_window_deiconify (CdkWindow *window)
 {
   if (GDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
@@ -866,16 +866,7 @@ cdk_broadway_window_deiconify (GdkWindow *window)
 }
 
 static void
-cdk_broadway_window_stick (GdkWindow *window)
-{
-  if (GDK_WINDOW_DESTROYED (window) ||
-      !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
-    return;
-
-}
-
-static void
-cdk_broadway_window_unstick (GdkWindow *window)
+cdk_broadway_window_stick (CdkWindow *window)
 {
   if (GDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
@@ -884,10 +875,19 @@ cdk_broadway_window_unstick (GdkWindow *window)
 }
 
 static void
-cdk_broadway_window_maximize (GdkWindow *window)
+cdk_broadway_window_unstick (CdkWindow *window)
 {
-  GdkWindowImplBroadway *impl;
-  GdkScreen *screen;
+  if (GDK_WINDOW_DESTROYED (window) ||
+      !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
+    return;
+
+}
+
+static void
+cdk_broadway_window_maximize (CdkWindow *window)
+{
+  CdkWindowImplBroadway *impl;
+  CdkScreen *screen;
 
   if (GDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
@@ -915,9 +915,9 @@ cdk_broadway_window_maximize (GdkWindow *window)
 }
 
 static void
-cdk_broadway_window_unmaximize (GdkWindow *window)
+cdk_broadway_window_unmaximize (CdkWindow *window)
 {
-  GdkWindowImplBroadway *impl;
+  CdkWindowImplBroadway *impl;
 
   if (GDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
@@ -940,7 +940,7 @@ cdk_broadway_window_unmaximize (GdkWindow *window)
 }
 
 static void
-cdk_broadway_window_fullscreen (GdkWindow *window)
+cdk_broadway_window_fullscreen (CdkWindow *window)
 {
   if (GDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
@@ -949,7 +949,7 @@ cdk_broadway_window_fullscreen (GdkWindow *window)
 }
 
 static void
-cdk_broadway_window_unfullscreen (GdkWindow *window)
+cdk_broadway_window_unfullscreen (CdkWindow *window)
 {
   if (GDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
@@ -958,7 +958,7 @@ cdk_broadway_window_unfullscreen (GdkWindow *window)
 }
 
 static void
-cdk_broadway_window_set_keep_above (GdkWindow *window,
+cdk_broadway_window_set_keep_above (CdkWindow *window,
 				    gboolean   setting)
 {
   g_return_if_fail (GDK_IS_WINDOW (window));
@@ -970,7 +970,7 @@ cdk_broadway_window_set_keep_above (GdkWindow *window,
 }
 
 static void
-cdk_broadway_window_set_keep_below (GdkWindow *window, gboolean setting)
+cdk_broadway_window_set_keep_below (CdkWindow *window, gboolean setting)
 {
   g_return_if_fail (GDK_IS_WINDOW (window));
 
@@ -980,8 +980,8 @@ cdk_broadway_window_set_keep_below (GdkWindow *window, gboolean setting)
 
 }
 
-static GdkWindow *
-cdk_broadway_window_get_group (GdkWindow *window)
+static CdkWindow *
+cdk_broadway_window_get_group (CdkWindow *window)
 {
   if (GDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
@@ -991,14 +991,14 @@ cdk_broadway_window_get_group (GdkWindow *window)
 }
 
 static void
-cdk_broadway_window_set_group (GdkWindow *window,
-			       GdkWindow *leader)
+cdk_broadway_window_set_group (CdkWindow *window,
+			       CdkWindow *leader)
 {
 }
 
 static void
-cdk_broadway_window_set_decorations (GdkWindow      *window,
-				     GdkWMDecoration decorations)
+cdk_broadway_window_set_decorations (CdkWindow      *window,
+				     CdkWMDecoration decorations)
 {
   if (GDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
@@ -1007,8 +1007,8 @@ cdk_broadway_window_set_decorations (GdkWindow      *window,
 }
 
 static gboolean
-cdk_broadway_window_get_decorations (GdkWindow       *window,
-				     GdkWMDecoration *decorations)
+cdk_broadway_window_get_decorations (CdkWindow       *window,
+				     CdkWMDecoration *decorations)
 {
   gboolean result = FALSE;
 
@@ -1020,8 +1020,8 @@ cdk_broadway_window_get_decorations (GdkWindow       *window,
 }
 
 static void
-cdk_broadway_window_set_functions (GdkWindow    *window,
-				   GdkWMFunction functions)
+cdk_broadway_window_set_functions (CdkWindow    *window,
+				   CdkWMFunction functions)
 {
   g_return_if_fail (GDK_IS_WINDOW (window));
 
@@ -1031,21 +1031,21 @@ cdk_broadway_window_set_functions (GdkWindow    *window,
 }
 
 static cairo_region_t *
-cdk_broadway_window_get_shape (GdkWindow *window)
+cdk_broadway_window_get_shape (CdkWindow *window)
 {
   return NULL;
 }
 
 static cairo_region_t *
-cdk_broadway_window_get_input_shape (GdkWindow *window)
+cdk_broadway_window_get_input_shape (CdkWindow *window)
 {
   return NULL;
 }
 
 static void
-cdk_broadway_window_end_paint (GdkWindow *window)
+cdk_broadway_window_end_paint (CdkWindow *window)
 {
-  GdkWindowImplBroadway *impl;
+  CdkWindowImplBroadway *impl;
   impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
   impl->dirty = TRUE;
 }
@@ -1054,12 +1054,12 @@ typedef struct _MoveResizeData MoveResizeData;
 
 struct _MoveResizeData
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
-  GdkWindow *moveresize_window;
-  GdkWindow *moveresize_emulation_window;
+  CdkWindow *moveresize_window;
+  CdkWindow *moveresize_emulation_window;
   gboolean is_resize;
-  GdkWindowEdge resize_edge;
+  CdkWindowEdge resize_edge;
   gint moveresize_button;
   gint moveresize_x;
   gint moveresize_y;
@@ -1068,16 +1068,16 @@ struct _MoveResizeData
   gint moveresize_orig_width;
   gint moveresize_orig_height;
   long moveresize_process_time;
-  GdkWindowHints moveresize_geom_mask;
-  GdkGeometry moveresize_geometry;
+  CdkWindowHints moveresize_geom_mask;
+  CdkGeometry moveresize_geometry;
   BroadwayInputMsg *moveresize_pending_event;
 };
 
 static MoveResizeData *
-get_move_resize_data (GdkDisplay *display,
+get_move_resize_data (CdkDisplay *display,
 		      gboolean    create)
 {
-  GdkBroadwayDisplay *broadway_display;
+  CdkBroadwayDisplay *broadway_display;
   MoveResizeData *mv_resize;
 
   broadway_display = GDK_BROADWAY_DISPLAY (display);
@@ -1189,11 +1189,11 @@ finish_drag (MoveResizeData *mv_resize)
 }
 
 static gboolean
-moveresize_lookahead (GdkDisplay *display,
+moveresize_lookahead (CdkDisplay *display,
 		      MoveResizeData *mv_resize,
 		      BroadwayInputMsg *event)
 {
-  GdkBroadwayDisplay *broadway_display;
+  CdkBroadwayDisplay *broadway_display;
 
   broadway_display = GDK_BROADWAY_DISPLAY (display);
 
@@ -1201,7 +1201,7 @@ moveresize_lookahead (GdkDisplay *display,
 }
 
 gboolean
-_cdk_broadway_moveresize_handle_event (GdkDisplay *display,
+_cdk_broadway_moveresize_handle_event (CdkDisplay *display,
 				       BroadwayInputMsg *event)
 {
   guint button_mask = 0;
@@ -1283,8 +1283,8 @@ _cdk_broadway_moveresize_handle_event (GdkDisplay *display,
 }
 
 gboolean
-_cdk_broadway_moveresize_configure_done (GdkDisplay *display,
-					 GdkWindow  *window)
+_cdk_broadway_moveresize_configure_done (CdkDisplay *display,
+					 CdkWindow  *window)
 {
   BroadwayInputMsg *tmp_event;
   MoveResizeData *mv_resize = get_move_resize_data (display, FALSE);
@@ -1307,9 +1307,9 @@ static void
 create_moveresize_window (MoveResizeData *mv_resize,
 			  guint32         timestamp)
 {
-  GdkWindowAttr attributes;
+  CdkWindowAttr attributes;
   gint attributes_mask;
-  GdkGrabStatus status;
+  CdkGrabStatus status;
 
   g_assert (mv_resize->moveresize_emulation_window == NULL);
 
@@ -1355,7 +1355,7 @@ create_moveresize_window (MoveResizeData *mv_resize,
 static void
 calculate_unmoving_origin (MoveResizeData *mv_resize)
 {
-  GdkRectangle rect;
+  CdkRectangle rect;
   gint width, height;
 
   if (mv_resize->moveresize_geom_mask & GDK_HINT_WIN_GRAVITY &&
@@ -1418,16 +1418,16 @@ calculate_unmoving_origin (MoveResizeData *mv_resize)
 }
 
 static void
-cdk_broadway_window_begin_resize_drag (GdkWindow     *window,
-				       GdkWindowEdge  edge,
-                                       GdkDevice     *device,
+cdk_broadway_window_begin_resize_drag (CdkWindow     *window,
+				       CdkWindowEdge  edge,
+                                       CdkDevice     *device,
 				       gint           button,
 				       gint           root_x,
 				       gint           root_y,
 				       guint32        timestamp)
 {
   MoveResizeData *mv_resize;
-  GdkWindowImplBroadway *impl;
+  CdkWindowImplBroadway *impl;
 
   impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
 
@@ -1459,15 +1459,15 @@ cdk_broadway_window_begin_resize_drag (GdkWindow     *window,
 }
 
 static void
-cdk_broadway_window_begin_move_drag (GdkWindow *window,
-                                     GdkDevice *device,
+cdk_broadway_window_begin_move_drag (CdkWindow *window,
+                                     CdkDevice *device,
 				     gint       button,
 				     gint       root_x,
 				     gint       root_y,
 				     guint32    timestamp)
 {
   MoveResizeData *mv_resize;
-  GdkWindowImplBroadway *impl;
+  CdkWindowImplBroadway *impl;
 
   impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
 
@@ -1498,13 +1498,13 @@ cdk_broadway_window_begin_move_drag (GdkWindow *window,
 }
 
 static gboolean
-cdk_broadway_window_beep (GdkWindow *window)
+cdk_broadway_window_beep (CdkWindow *window)
 {
   return FALSE;
 }
 
 static void
-cdk_broadway_window_set_opacity (GdkWindow *window,
+cdk_broadway_window_set_opacity (CdkWindow *window,
 				 gdouble    opacity)
 {
   g_return_if_fail (GDK_IS_WINDOW (window));
@@ -1520,35 +1520,35 @@ cdk_broadway_window_set_opacity (GdkWindow *window,
 }
 
 static void
-cdk_broadway_window_set_composited (GdkWindow *window,
+cdk_broadway_window_set_composited (CdkWindow *window,
 				    gboolean   composited)
 {
 }
 
 void
-_cdk_broadway_display_before_process_all_updates (GdkDisplay *display)
+_cdk_broadway_display_before_process_all_updates (CdkDisplay *display)
 {
 }
 
 void
-_cdk_broadway_display_after_process_all_updates (GdkDisplay *display)
+_cdk_broadway_display_after_process_all_updates (CdkDisplay *display)
 {
 }
 
 guint32
-cdk_broadway_get_last_seen_time (GdkWindow  *window)
+cdk_broadway_get_last_seen_time (CdkWindow  *window)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   display = cdk_window_get_display (window);
   return _cdk_broadway_server_get_last_seen_time (GDK_BROADWAY_DISPLAY (display)->server);
 }
 
 static void
-cdk_window_impl_broadway_class_init (GdkWindowImplBroadwayClass *klass)
+cdk_window_impl_broadway_class_init (CdkWindowImplBroadwayClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GdkWindowImplClass *impl_class = GDK_WINDOW_IMPL_CLASS (klass);
+  CdkWindowImplClass *impl_class = GDK_WINDOW_IMPL_CLASS (klass);
 
   object_class->finalize = cdk_window_impl_broadway_finalize;
 

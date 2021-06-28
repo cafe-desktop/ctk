@@ -4536,7 +4536,7 @@ msgstr ""
 #~ msgstr "Ne povas asignar koloromapa strukturo"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Faliis skribar dokumentuyala indexo\n"
 
 #, fuzzy

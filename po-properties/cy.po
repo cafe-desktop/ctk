@@ -1255,8 +1255,8 @@ msgid "Cell background color"
 msgstr "Lliw cefndir y gell"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Lliw cefndir y gell fel GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Lliw cefndir y gell fel CdkColor"
 
 # EFALLAI
 #: ctk/ctkcellrenderer.c:343
@@ -1510,8 +1510,8 @@ msgid "Background color"
 msgstr "Lliw'r cefndir"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Lliw'r cefndir fel GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Lliw'r cefndir fel CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1527,8 +1527,8 @@ msgid "Foreground color"
 msgstr "Lliw'r blaendir"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Lliw'r blaendir fel GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Lliw'r blaendir fel CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3146,8 +3146,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf i'w ddangos"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf i'w ddangos"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3193,8 +3193,8 @@ msgid "Animation"
 msgstr "Animeiddiad"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation i'w ddangos"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation i'w ddangos"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5859,8 +5859,8 @@ msgstr ""
 
 # EFALLAI (neilltuo?)
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Lliw cefndir fel lliw GdkColor (efallai heb ei neilltuo)"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Lliw cefndir fel lliw CdkColor (efallai heb ei neilltuo)"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5875,8 +5875,8 @@ msgstr ""
 "nodau wedi eu tagio"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Lliw'r blaendir fel GdkColor (efallai heb ei neilltuo)"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Lliw'r blaendir fel CdkColor (efallai heb ei neilltuo)"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6030,8 +6030,8 @@ msgstr "Lliw cefndir paragraff"
 
 # EFALLAI (neilltuo?)
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Lliw cefndir paragraff fel lliw GdkColor (efallai heb ei neilltuo)"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Lliw cefndir paragraff fel lliw CdkColor (efallai heb ei neilltuo)"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7016,9 +7016,9 @@ msgid "Events"
 msgstr "Digwyddiadau"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Y masg digwyddiadau sy'n penderfynu pa fath o GdkEvent fe fydd y teclyn "
+"Y masg digwyddiadau sy'n penderfynu pa fath o CdkEvent fe fydd y teclyn "
 "yma'n derbyn"
 
 #: ctk/ctkwidget.c:832
@@ -7530,8 +7530,8 @@ msgstr "Sut i arlunio'r bar statws modd mewnbwn"
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "Pwyntydd at ddata picsel y pixbuf"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "y GdkScreen ar gyfer y llunydd"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "y CdkScreen ar gyfer y llunydd"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "Yr addasydd sy'n dal gwerth y botwm troelli."
@@ -7554,7 +7554,7 @@ msgstr "Sut i arlunio'r bar statws modd mewnbwn"
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "Didfap i'w ddefnyddio fel masg wrth arlunio cefndir y testun"
 
-#~ msgid "The GdkFont that is currently selected"
+#~ msgid "The CdkFont that is currently selected"
 #~ msgstr "Y CtkFont sydd wedi ei ddewis yn gyfredol"
 
 #~ msgid "Deprecated property, use shadow_type instead"
@@ -7563,17 +7563,17 @@ msgstr "Sut i arlunio'r bar statws modd mewnbwn"
 #~ msgid "Pixmap"
 #~ msgstr "Didfap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "GdkPixmap i'w ddangos"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "CdkPixmap i'w ddangos"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "GdkImage i'w ddangos"
+#~ msgid "A CdkImage to display"
+#~ msgstr "CdkImage i'w ddangos"
 
 #~ msgid "Mask"
 #~ msgstr "Masg"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Didfap masg i'w ddefnyddio â GdkImage neu GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Didfap masg i'w ddefnyddio â CdkImage neu CdkPixmap"
 
 #~ msgid "Use separator"
 #~ msgstr "Defnyddio gwahanydd"

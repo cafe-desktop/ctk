@@ -6,7 +6,7 @@ int cursor_x, cursor_y;
 
 static void
 on_motion_notify (CtkWidget      *window,
-                  GdkEventMotion *event)
+                  CdkEventMotion *event)
 {
   if (event->window == ctk_widget_get_window (window))
     {

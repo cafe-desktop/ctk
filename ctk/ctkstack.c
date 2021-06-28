@@ -131,8 +131,8 @@ struct _CtkStackChildInfo {
 typedef struct {
   GList *children;
 
-  GdkWindow* bin_window;
-  GdkWindow* view_window;
+  CdkWindow* bin_window;
+  CdkWindow* view_window;
 
   CtkStackChildInfo *visible_child;
 
@@ -335,8 +335,8 @@ ctk_stack_realize (CtkWidget *widget)
   CtkStack *stack = CTK_STACK (widget);
   CtkStackPrivate *priv = ctk_stack_get_instance_private (stack);
   CtkAllocation allocation;
-  GdkWindowAttr attributes = { 0 };
-  GdkWindowAttributesType attributes_mask;
+  CdkWindowAttr attributes = { 0 };
+  CdkWindowAttributesType attributes_mask;
   CtkStackChildInfo *info;
   GList *l;
 
@@ -923,7 +923,7 @@ ctk_stack_progress_updated (CtkStack *stack)
 
 static gboolean
 ctk_stack_transition_cb (CtkWidget     *widget,
-                         GdkFrameClock *frame_clock,
+                         CdkFrameClock *frame_clock,
                          gpointer       user_data)
 {
   CtkStack *stack = CTK_STACK (widget);

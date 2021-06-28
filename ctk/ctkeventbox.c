@@ -46,7 +46,7 @@
 struct _CtkEventBoxPrivate
 {
   gboolean above_child;
-  GdkWindow *event_window;
+  CdkWindow *event_window;
 };
 
 enum {
@@ -391,8 +391,8 @@ ctk_event_box_realize (CtkWidget *widget)
 {
   CtkEventBoxPrivate *priv;
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
   gboolean visible_window;
 

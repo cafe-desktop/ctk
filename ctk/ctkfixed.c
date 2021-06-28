@@ -384,8 +384,8 @@ static void
 ctk_fixed_realize (CtkWidget *widget)
 {
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   if (!ctk_widget_get_has_window (widget))

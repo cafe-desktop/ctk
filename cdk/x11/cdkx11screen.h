@@ -37,38 +37,38 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_X11_SCREEN              (cdk_x11_screen_get_type ())
-#define GDK_X11_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_SCREEN, GdkX11Screen))
-#define GDK_X11_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_SCREEN, GdkX11ScreenClass))
+#define GDK_X11_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_SCREEN, CdkX11Screen))
+#define GDK_X11_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_SCREEN, CdkX11ScreenClass))
 #define GDK_IS_X11_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_SCREEN))
 #define GDK_IS_X11_SCREEN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_SCREEN))
-#define GDK_X11_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_SCREEN, GdkX11ScreenClass))
+#define GDK_X11_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_SCREEN, CdkX11ScreenClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkX11Screen GdkX11Screen;
+typedef struct _CdkX11Screen CdkX11Screen;
 #else
-typedef GdkScreen GdkX11Screen;
+typedef CdkScreen CdkX11Screen;
 #endif
-typedef struct _GdkX11ScreenClass GdkX11ScreenClass;
+typedef struct _CdkX11ScreenClass CdkX11ScreenClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_x11_screen_get_type          (void);
 
 GDK_AVAILABLE_IN_ALL
-Screen * cdk_x11_screen_get_xscreen       (GdkScreen   *screen);
+Screen * cdk_x11_screen_get_xscreen       (CdkScreen   *screen);
 GDK_AVAILABLE_IN_ALL
-int      cdk_x11_screen_get_screen_number (GdkScreen   *screen);
+int      cdk_x11_screen_get_screen_number (CdkScreen   *screen);
 
 GDK_AVAILABLE_IN_ALL
-const char* cdk_x11_screen_get_window_manager_name (GdkScreen *screen);
+const char* cdk_x11_screen_get_window_manager_name (CdkScreen *screen);
 
 GDK_AVAILABLE_IN_ALL
 gint     cdk_x11_get_default_screen       (void);
 
 /**
  * GDK_SCREEN_XDISPLAY:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
- * Returns the display of a X11 #GdkScreen.
+ * Returns the display of a X11 #CdkScreen.
  *
  * Returns: an Xlib Display*.
  */
@@ -76,9 +76,9 @@ gint     cdk_x11_get_default_screen       (void);
 
 /**
  * GDK_SCREEN_XSCREEN:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
- * Returns the screen of a X11 #GdkScreen.
+ * Returns the screen of a X11 #CdkScreen.
  *
  * Returns: an Xlib Screen*
  */
@@ -86,26 +86,26 @@ gint     cdk_x11_get_default_screen       (void);
 
 /**
  * GDK_SCREEN_XNUMBER:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
- * Returns the index of a X11 #GdkScreen.
+ * Returns the index of a X11 #CdkScreen.
  *
  * Returns: the position of @screen among the screens of its display
  */
 #define GDK_SCREEN_XNUMBER(screen) (cdk_x11_screen_get_screen_number (screen))
 
 GDK_AVAILABLE_IN_ALL
-gboolean cdk_x11_screen_supports_net_wm_hint (GdkScreen *screen,
-                                              GdkAtom    property);
+gboolean cdk_x11_screen_supports_net_wm_hint (CdkScreen *screen,
+                                              CdkAtom    property);
 
 GDK_AVAILABLE_IN_ALL
-XID      cdk_x11_screen_get_monitor_output   (GdkScreen *screen,
+XID      cdk_x11_screen_get_monitor_output   (CdkScreen *screen,
                                               gint       monitor_num);
 
 GDK_AVAILABLE_IN_3_10
-guint32  cdk_x11_screen_get_number_of_desktops (GdkScreen *screen);
+guint32  cdk_x11_screen_get_number_of_desktops (CdkScreen *screen);
 GDK_AVAILABLE_IN_3_10
-guint32  cdk_x11_screen_get_current_desktop    (GdkScreen *screen);
+guint32  cdk_x11_screen_get_current_desktop    (CdkScreen *screen);
 
 G_END_DECLS
 

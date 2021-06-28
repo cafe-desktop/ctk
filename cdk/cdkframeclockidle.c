@@ -42,7 +42,7 @@ typedef enum {
   SMOOTH_PHASE_STATE_AWAIT_DRAWN,
 } SmoothDeltaState;
 
-struct _GdkFrameClockIdlePrivate
+struct _CdkFrameClockIdlePrivate
 {
   gint64 frame_time;                   /* The exact time we last ran the clock cycle, or 0 if never */
   gint64 smoothed_frame_time_base;     /* A grid-aligned version of frame_time (grid size == refresh period), never more than half a grid from frame_time */
@@ -65,8 +65,8 @@ struct _GdkFrameClockIdlePrivate
   guint freeze_count;
   guint updating_count;
 
-  GdkFrameClockPhase requested;
-  GdkFrameClockPhase phase;
+  CdkFrameClockPhase requested;
+  CdkFrameClockPhase phase;
 
   guint in_paint_idle : 1;
   guint paint_is_thaw : 1;
@@ -78,7 +78,7 @@ struct _GdkFrameClockIdlePrivate
 static gboolean cdk_frame_clock_flush_idle (void *data);
 static gboolean cdk_frame_clock_paint_idle (void *data);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GdkFrameClockIdle, cdk_frame_clock_idle, GDK_TYPE_FRAME_CLOCK)
+G_DEFINE_TYPE_WITH_PRIVATE (CdkFrameClockIdle, cdk_frame_clock_idle, GDK_TYPE_FRAME_CLOCK)
 
 static gint64 sleep_serial;
 static gint64 sleep_source_prepare_time;
@@ -133,9 +133,9 @@ get_sleep_serial (void)
 }
 
 static void
-cdk_frame_clock_idle_init (GdkFrameClockIdle *frame_clock_idle)
+cdk_frame_clock_idle_init (CdkFrameClockIdle *frame_clock_idle)
 {
-  GdkFrameClockIdlePrivate *priv;
+  CdkFrameClockIdlePrivate *priv;
 
   frame_clock_idle->priv = priv =
     cdk_frame_clock_idle_get_instance_private (frame_clock_idle);
@@ -147,7 +147,7 @@ cdk_frame_clock_idle_init (GdkFrameClockIdle *frame_clock_idle)
 static void
 cdk_frame_clock_idle_dispose (GObject *object)
 {
-  GdkFrameClockIdlePrivate *priv = GDK_FRAME_CLOCK_IDLE (object)->priv;
+  CdkFrameClockIdlePrivate *priv = GDK_FRAME_CLOCK_IDLE (object)->priv;
 
   if (priv->flush_idle_id != 0)
     {
@@ -175,13 +175,13 @@ cdk_frame_clock_idle_dispose (GObject *object)
 /* Note: This is never called on first frame, so
  * smoothed_frame_time_base != 0 and we have a valid frame_interval. */
 static gint64
-compute_smooth_frame_time (GdkFrameClock *clock,
+compute_smooth_frame_time (CdkFrameClock *clock,
                            gint64 new_frame_time,
                            gboolean new_frame_time_is_vsync_related,
                            gint64 smoothed_frame_time_base,
                            gint64 frame_interval)
 {
-  GdkFrameClockIdlePrivate *priv = GDK_FRAME_CLOCK_IDLE (clock)->priv;
+  CdkFrameClockIdlePrivate *priv = GDK_FRAME_CLOCK_IDLE (clock)->priv;
   int frames_passed;
   gint64 new_smoothed_time;
   gint64 current_error;
@@ -243,9 +243,9 @@ compute_smooth_frame_time (GdkFrameClock *clock,
 }
 
 static gint64
-cdk_frame_clock_idle_get_frame_time (GdkFrameClock *clock)
+cdk_frame_clock_idle_get_frame_time (CdkFrameClock *clock)
 {
-  GdkFrameClockIdlePrivate *priv = GDK_FRAME_CLOCK_IDLE (clock)->priv;
+  CdkFrameClockIdlePrivate *priv = GDK_FRAME_CLOCK_IDLE (clock)->priv;
   gint64 now;
   gint64 new_smoothed_time;
 
@@ -290,10 +290,10 @@ cdk_frame_clock_idle_get_frame_time (GdkFrameClock *clock)
     (priv)->updating_count > 0))
 
 static void
-maybe_start_idle (GdkFrameClockIdle *clock_idle,
+maybe_start_idle (CdkFrameClockIdle *clock_idle,
                   gboolean caused_by_thaw)
 {
-  GdkFrameClockIdlePrivate *priv = clock_idle->priv;
+  CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
   if (RUN_FLUSH_IDLE (priv) || RUN_PAINT_IDLE (priv))
     {
@@ -331,9 +331,9 @@ maybe_start_idle (GdkFrameClockIdle *clock_idle,
 }
 
 static void
-maybe_stop_idle (GdkFrameClockIdle *clock_idle)
+maybe_stop_idle (CdkFrameClockIdle *clock_idle)
 {
-  GdkFrameClockIdlePrivate *priv = clock_idle->priv;
+  CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
   if (priv->flush_idle_id != 0 && !RUN_FLUSH_IDLE (priv))
     {
@@ -351,9 +351,9 @@ maybe_stop_idle (GdkFrameClockIdle *clock_idle)
 static gboolean
 cdk_frame_clock_flush_idle (void *data)
 {
-  GdkFrameClock *clock = GDK_FRAME_CLOCK (data);
-  GdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
-  GdkFrameClockIdlePrivate *priv = clock_idle->priv;
+  CdkFrameClock *clock = GDK_FRAME_CLOCK (data);
+  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
   priv->flush_idle_id = 0;
 
@@ -396,11 +396,11 @@ positive_modulo (int i, int n)
 static gboolean
 cdk_frame_clock_paint_idle (void *data)
 {
-  GdkFrameClock *clock = GDK_FRAME_CLOCK (data);
-  GdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
-  GdkFrameClockIdlePrivate *priv = clock_idle->priv;
+  CdkFrameClock *clock = GDK_FRAME_CLOCK (data);
+  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdlePrivate *priv = clock_idle->priv;
   gboolean skip_to_resume_events;
-  GdkFrameTimings *timings = NULL;
+  CdkFrameTimings *timings = NULL;
 
   priv->paint_idle_id = 0;
   priv->in_paint_idle = TRUE;
@@ -426,7 +426,7 @@ cdk_frame_clock_paint_idle (void *data)
           if (priv->freeze_count == 0)
             {
               gint64 frame_interval = FRAME_INTERVAL;
-              GdkFrameTimings *prev_timings = cdk_frame_clock_get_current_timings (clock);
+              CdkFrameTimings *prev_timings = cdk_frame_clock_get_current_timings (clock);
 
               if (prev_timings && prev_timings->refresh_interval)
                 frame_interval = prev_timings->refresh_interval;
@@ -666,21 +666,21 @@ cdk_frame_clock_paint_idle (void *data)
 }
 
 static void
-cdk_frame_clock_idle_request_phase (GdkFrameClock      *clock,
-                                    GdkFrameClockPhase  phase)
+cdk_frame_clock_idle_request_phase (CdkFrameClock      *clock,
+                                    CdkFrameClockPhase  phase)
 {
-  GdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
-  GdkFrameClockIdlePrivate *priv = clock_idle->priv;
+  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
   priv->requested |= phase;
   maybe_start_idle (clock_idle, FALSE);
 }
 
 static void
-cdk_frame_clock_idle_begin_updating (GdkFrameClock *clock)
+cdk_frame_clock_idle_begin_updating (CdkFrameClock *clock)
 {
-  GdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
-  GdkFrameClockIdlePrivate *priv = clock_idle->priv;
+  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
 #ifdef G_OS_WIN32
   /* We need a higher resolution timer while doing animations */
@@ -701,10 +701,10 @@ cdk_frame_clock_idle_begin_updating (GdkFrameClock *clock)
 }
 
 static void
-cdk_frame_clock_idle_end_updating (GdkFrameClock *clock)
+cdk_frame_clock_idle_end_updating (CdkFrameClock *clock)
 {
-  GdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
-  GdkFrameClockIdlePrivate *priv = clock_idle->priv;
+  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
   g_return_if_fail (priv->updating_count > 0);
 
@@ -726,10 +726,10 @@ cdk_frame_clock_idle_end_updating (GdkFrameClock *clock)
 }
 
 static void
-cdk_frame_clock_idle_freeze (GdkFrameClock *clock)
+cdk_frame_clock_idle_freeze (CdkFrameClock *clock)
 {
-  GdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
-  GdkFrameClockIdlePrivate *priv = clock_idle->priv;
+  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
 #ifdef G_ENABLE_DEBUG
   if (priv->freeze_count == 0)
@@ -744,10 +744,10 @@ cdk_frame_clock_idle_freeze (GdkFrameClock *clock)
 }
 
 static void
-cdk_frame_clock_idle_thaw (GdkFrameClock *clock)
+cdk_frame_clock_idle_thaw (CdkFrameClock *clock)
 {
-  GdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
-  GdkFrameClockIdlePrivate *priv = clock_idle->priv;
+  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
   g_return_if_fail (priv->freeze_count > 0);
 
@@ -781,10 +781,10 @@ cdk_frame_clock_idle_thaw (GdkFrameClock *clock)
 }
 
 static void
-cdk_frame_clock_idle_class_init (GdkFrameClockIdleClass *klass)
+cdk_frame_clock_idle_class_init (CdkFrameClockIdleClass *klass)
 {
   GObjectClass *gobject_class = (GObjectClass*) klass;
-  GdkFrameClockClass *frame_clock_class = (GdkFrameClockClass *)klass;
+  CdkFrameClockClass *frame_clock_class = (CdkFrameClockClass *)klass;
 
   gobject_class->dispose = cdk_frame_clock_idle_dispose;
 
@@ -796,10 +796,10 @@ cdk_frame_clock_idle_class_init (GdkFrameClockIdleClass *klass)
   frame_clock_class->thaw = cdk_frame_clock_idle_thaw;
 }
 
-GdkFrameClock *
+CdkFrameClock *
 _cdk_frame_clock_idle_new (void)
 {
-  GdkFrameClockIdle *clock;
+  CdkFrameClockIdle *clock;
 
   clock = g_object_new (GDK_TYPE_FRAME_CLOCK_IDLE, NULL);
 

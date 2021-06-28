@@ -1255,8 +1255,8 @@ msgid "Cell background color"
 msgstr "Բջջի ֆոնի գույնը"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Բջջի ֆոնի գույնը որպես GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Բջջի ֆոնի գույնը որպես CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 msgid "Editing"
@@ -1499,8 +1499,8 @@ msgid "Background color"
 msgstr "Ֆոնի գույնը"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Ֆոնի գույնը որպես GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Ֆոնի գույնը որպես CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1516,8 +1516,8 @@ msgid "Foreground color"
 msgstr "Առաջնային պլանի գույնը"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Առաջնային պլանի գույնը որպես GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Առաջնային պլանի գույնը որպես CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3082,8 +3082,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "Ցուցադրել GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "Ցուցադրել CdkPixbuf"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3129,8 +3129,8 @@ msgid "Animation"
 msgstr "Անիմացիա"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "Ցուցադրել GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "Ցուցադրել CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5700,8 +5700,8 @@ msgstr ""
 "Հաջորդ պիտակին հղվելու համար օգտագործվող անունը։ NULL անանուն պիտակների համար"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Ֆոնի գույնը որպես (հնարավորինս չբաշխված) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Ֆոնի գույնը որպես (հնարավորինս չբաշխված) CdkColor"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5716,8 +5716,8 @@ msgstr ""
 "պիտակավորված գրանշանների բարձրությունը"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Առաջնային պլանի գույնը որպես (հնարավորինս չբաշխված) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Առաջնային պլանի գույնը որպես (հնարավորինս չբաշխված) CdkColor"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -5869,8 +5869,8 @@ msgid "Paragraph background color"
 msgstr "Պարբերության ֆոնի գույն"
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Պարբերության ֆոնի գույնը որպես (հնարավորինս չբաշխված) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Պարբերության ֆոնի գույնը որպես (հնարավորինս չբաշխված) CdkColor"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -6811,9 +6811,9 @@ msgid "Events"
 msgstr "Իրադարձություններ"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Իրադարձության դիմակ, որը որոշում է ինչ տեսակի GdkEvents է այս վիջեթը ստանում"
+"Իրադարձության դիմակ, որը որոշում է ինչ տեսակի CdkEvents է այս վիջեթը ստանում"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7281,14 +7281,14 @@ msgstr "Ինչպես գծագրել աշխատավիճակի պատուհանի 
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "Ցուցադրել GdkPixmap"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "Ցուցադրել CdkPixmap"
 
 #~ msgid "Mask"
 #~ msgstr "Դիմակ"
 
-#~ msgid "Mask bitmap to use with GdkPixmap"
-#~ msgstr "GdkPixmap-ի հետ օգտագործվող բիթային դիմակ"
+#~ msgid "Mask bitmap to use with CdkPixmap"
+#~ msgstr "CdkPixmap-ի հետ օգտագործվող բիթային դիմակ"
 
 #~ msgid "Use separator"
 #~ msgstr "Օգտագործել բաժանիչ"

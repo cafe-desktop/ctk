@@ -34,11 +34,11 @@
 G_BEGIN_DECLS
 
 
-struct _GdkX11Display
+struct _CdkX11Display
 {
-  GdkDisplay parent_instance;
+  CdkDisplay parent_instance;
   Display *xdisplay;
-  GdkScreen *screen;
+  CdkScreen *screen;
   GList *screens;
 
   GSource *event_source;
@@ -55,7 +55,7 @@ struct _GdkX11Display
    */
   gboolean have_xkb_autorepeat;
 
-  GdkKeymap *keymap;
+  CdkKeymap *keymap;
   guint      keymap_serial;
 
   gboolean have_xfixes;
@@ -77,7 +77,7 @@ struct _GdkX11Display
   gboolean trusted_client;
 
   /* drag and drop information */
-  GdkDragContext *current_dest_drag;
+  CdkDragContext *current_dest_drag;
 
   /* Mapping to/from virtual atoms */
   GHashTable *atom_from_virtual;
@@ -85,7 +85,7 @@ struct _GdkX11Display
 
   /* Session Management leader window see ICCCM */
   Window leader_window;
-  GdkWindow *leader_cdk_window;
+  CdkWindow *leader_cdk_window;
   gboolean leader_window_title_set;
 
   /* List of functions to go from extension event => X window */
@@ -97,7 +97,7 @@ struct _GdkX11Display
   /* translation queue */
   GQueue *translate_queue;
 
-  /* input GdkWindow list */
+  /* input CdkWindow list */
   GList *input_windows;
 
   GPtrArray *monitors;
@@ -120,7 +120,7 @@ struct _GdkX11Display
   gint shape_event_base;
 
   /* The offscreen window that has the pointer in it (if any) */
-  GdkWindow *active_offscreen_window;
+  CdkWindow *active_offscreen_window;
 
   GSList *error_traps;
 
@@ -151,18 +151,18 @@ struct _GdkX11Display
   guint has_glx_create_es2_context : 1;
 };
 
-struct _GdkX11DisplayClass
+struct _CdkX11DisplayClass
 {
-  GdkDisplayClass parent_class;
+  CdkDisplayClass parent_class;
 };
 
-GdkScreen *_cdk_x11_display_screen_for_xrootwin (GdkDisplay  *display,
+CdkScreen *_cdk_x11_display_screen_for_xrootwin (CdkDisplay  *display,
                                                  Window       xrootwin);
-void       _cdk_x11_display_error_event         (GdkDisplay  *display,
+void       _cdk_x11_display_error_event         (CdkDisplay  *display,
                                                  XErrorEvent *error);
 
-GdkFilterReturn _cdk_wm_protocols_filter        (GdkXEvent   *xev,
-                                                 GdkEvent    *event,
+CdkFilterReturn _cdk_wm_protocols_filter        (CdkXEvent   *xev,
+                                                 CdkEvent    *event,
                                                  gpointer     data);
 
 G_END_DECLS

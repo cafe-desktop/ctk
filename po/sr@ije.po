@@ -4942,7 +4942,7 @@ msgstr ""
 #~ msgstr "Не могу да обезбједим меморију за TGA податке о смислу"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Не могу да читам из привремене датотеке"
 
 #, fuzzy

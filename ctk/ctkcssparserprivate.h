@@ -85,7 +85,7 @@ gboolean        _ctk_css_parser_try_enum          (CtkCssParser          *parser
                                                    GType                  enum_type,
                                                    int                   *value);
 gboolean        _ctk_css_parser_try_hash_color    (CtkCssParser          *parser,
-                                                   GdkRGBA               *rgba);
+                                                   CdkRGBA               *rgba);
 
 gboolean        _ctk_css_parser_has_number        (CtkCssParser          *parser);
 char *          _ctk_css_parser_read_string       (CtkCssParser          *parser);

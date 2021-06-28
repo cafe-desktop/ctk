@@ -353,7 +353,7 @@ static void
 render_frame_fill (cairo_t       *cr,
                    CtkRoundedBox *border_box,
                    const double   border_width[4],
-                   GdkRGBA        colors[4],
+                   CdkRGBA        colors[4],
                    guint          hidden_side)
 {
   CtkRoundedBox padding_box;
@@ -468,7 +468,7 @@ static void
 render_frame_stroke (cairo_t       *cr,
                      CtkRoundedBox *border_box,
                      const double   border_width[4],
-                     GdkRGBA        colors[4],
+                     CdkRGBA        colors[4],
                      guint          hidden_side,
                      CtkBorderStyle stroke_style)
 {
@@ -552,9 +552,9 @@ render_frame_stroke (cairo_t       *cr,
 }
 
 static void
-color_shade (const GdkRGBA *color,
+color_shade (const CdkRGBA *color,
              gdouble        factor,
-             GdkRGBA       *color_return)
+             CdkRGBA       *color_return)
 {
   CtkHSLA hsla;
 
@@ -568,7 +568,7 @@ render_border (cairo_t       *cr,
                CtkRoundedBox *border_box,
                const double   border_width[4],
                guint          hidden_side,
-               GdkRGBA        colors[4],
+               CdkRGBA        colors[4],
                CtkBorderStyle border_style[4])
 {
   guint i, j;
@@ -650,7 +650,7 @@ render_border (cairo_t       *cr,
         case CTK_BORDER_STYLE_RIDGE:
           {
             CtkRoundedBox other_box;
-            GdkRGBA other_colors[4];
+            CdkRGBA other_colors[4];
             guint dont_draw = hidden_side;
             double other_border[4];
 
@@ -729,7 +729,7 @@ ctk_css_style_render_border (CtkCssStyle      *style,
     {
       CtkBorderStyle border_style[4];
       CtkRoundedBox border_box;
-      GdkRGBA colors[4];
+      CdkRGBA colors[4];
 
       /* Optimize the most common case of "This widget has no border" */
       if (border_width[0] == 0 &&
@@ -763,7 +763,7 @@ ctk_css_style_render_border_get_clip (CtkCssStyle  *style,
                                       gdouble       y,
                                       gdouble       width,
                                       gdouble       height,
-                                      GdkRectangle *out_clip)
+                                      CdkRectangle *out_clip)
 {
   if (!ctk_css_style_render_has_border (style))
     return FALSE;
@@ -832,7 +832,7 @@ ctk_css_style_render_outline (CtkCssStyle *style,
   CtkBorderStyle border_style[4];
   CtkRoundedBox border_box;
   double border_width[4];
-  GdkRGBA colors[4];
+  CdkRGBA colors[4];
 
   border_style[0] = _ctk_css_border_style_value_get (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_OUTLINE_STYLE));
   if (border_style[0] != CTK_BORDER_STYLE_NONE)
@@ -860,7 +860,7 @@ ctk_css_style_render_outline_get_clip (CtkCssStyle  *style,
                                        gdouble       y,
                                        gdouble       width,
                                        gdouble       height,
-                                       GdkRectangle *out_clip)
+                                       CdkRectangle *out_clip)
 {
   cairo_rectangle_t rect;
 

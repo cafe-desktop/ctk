@@ -23,31 +23,31 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_DEVICE_WIN32         (cdk_device_win32_get_type ())
-#define GDK_DEVICE_WIN32(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_WIN32, GdkDeviceWin32))
-#define GDK_DEVICE_WIN32_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_WIN32, GdkDeviceWin32Class))
+#define GDK_DEVICE_WIN32(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_WIN32, CdkDeviceWin32))
+#define GDK_DEVICE_WIN32_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_WIN32, CdkDeviceWin32Class))
 #define GDK_IS_DEVICE_WIN32(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_WIN32))
 #define GDK_IS_DEVICE_WIN32_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE_WIN32))
-#define GDK_DEVICE_WIN32_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_WIN32, GdkDeviceWin32Class))
+#define GDK_DEVICE_WIN32_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_WIN32, CdkDeviceWin32Class))
 
-typedef struct _GdkDeviceWin32 GdkDeviceWin32;
-typedef struct _GdkDeviceWin32Class GdkDeviceWin32Class;
+typedef struct _CdkDeviceWin32 CdkDeviceWin32;
+typedef struct _CdkDeviceWin32Class CdkDeviceWin32Class;
 
-struct _GdkDeviceWin32
+struct _CdkDeviceWin32
 {
-  GdkDevice parent_instance;
+  CdkDevice parent_instance;
 };
 
-struct _GdkDeviceWin32Class
+struct _CdkDeviceWin32Class
 {
-  GdkDeviceClass parent_class;
+  CdkDeviceClass parent_class;
 };
 
 GType cdk_device_win32_get_type (void) G_GNUC_CONST;
 
-GdkWindow *_cdk_device_win32_window_at_position (GdkDevice       *device,
+CdkWindow *_cdk_device_win32_window_at_position (CdkDevice       *device,
                                                  gdouble         *win_x,
                                                  gdouble         *win_y,
-                                                 GdkModifierType *mask,
+                                                 CdkModifierType *mask,
                                                  gboolean         get_toplevel);
 
 G_END_DECLS

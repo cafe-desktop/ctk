@@ -5111,11 +5111,11 @@ msgstr "ପରୀକ୍ଷା ମୁଦ୍ରଣୀରେ ମୁଦ୍ରଣ କ
 #~ "'%s' ଚିତ୍ର ଫାଇଲ ଧାରଣ କରିବାରେ ଅସଫଳ: କାରଣ ଜଣା ନାହିଁ, ସମ୍ଭବତଃ ଏହା ଗୋଟିଏ ତୃଟିଯୁକ୍ତ ଚିତ୍ର "
 #~ "ଫାଇଲ ଅଟେ"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "ବିନ୍ଯାସ ପାଇଁ Gdkର ତୃଟିମୁକ୍ତିକରଣ ସୂଚକଗୁଡ଼ିକ"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "ବିନ୍ଯାସ ପାଇଁ Cdkର ତୃଟିମୁକ୍ତିକରଣ ସୂଚକଗୁଡ଼ିକ"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "ଅବିନ୍ଯାସ ପାଇଁ Gdkର ତୃଟିମୁକ୍ତିକରଣ ସୂଚକଗୁଡ଼ିକ"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "ଅବିନ୍ଯାସ ପାଇଁ Cdkର ତୃଟିମୁକ୍ତିକରଣ ସୂଚକଗୁଡ଼ିକ"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "'%s' ଚିତ୍ର ଫାଇଲରେ କୌଣସି ତଥ୍ଯ ନାହିଁ"
@@ -5535,7 +5535,7 @@ msgstr "ପରୀକ୍ଷା ମୁଦ୍ରଣୀରେ ମୁଦ୍ରଣ କ
 #~ msgstr "TGA ପ୍ରସଙ୍ଗ ଷ୍ଟ୍ରକ୍ଟ ପାଇଁ ସ୍ମୃତି ଯୋଗାଇ ହେଲା ନାହିଁ"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "ଫୋଲଡର ଅନୁକ୍ରମଣିକାକୁ ଲେଖିବାରେ ବିଫଳ\n"
 
 #, fuzzy

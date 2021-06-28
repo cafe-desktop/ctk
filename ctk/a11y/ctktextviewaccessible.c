@@ -452,8 +452,8 @@ ctk_text_view_accessible_get_offset_at_point (AtkText      *text,
   CtkTextIter iter;
   gint x_widget, y_widget, x_window, y_window, buff_x, buff_y;
   CtkWidget *widget;
-  GdkWindow *window;
-  GdkRectangle rect;
+  CdkWindow *window;
+  CdkRectangle rect;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
   if (widget == NULL)
@@ -511,8 +511,8 @@ ctk_text_view_accessible_get_character_extents (AtkText      *text,
   CtkTextBuffer *buffer;
   CtkTextIter iter;
   CtkWidget *widget;
-  GdkRectangle rectangle;
-  GdkWindow *window;
+  CdkRectangle rectangle;
+  CdkWindow *window;
   gint x_widget, y_widget, x_window, y_window;
 
   *x = 0;
@@ -728,7 +728,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
       g_object_get (tag, "foreground-set", &val_set, NULL);
       if (val_set)
         {
-          GdkRGBA *rgba;
+          CdkRGBA *rgba;
           gchar *value;
 
           g_object_get (tag, "foreground-rgba", &rgba, NULL);
@@ -751,7 +751,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
       g_object_get (tag, "background-set", &val_set, NULL);
       if (val_set)
         {
-          GdkRGBA *rgba;
+          CdkRGBA *rgba;
           gchar *value;
 
           g_object_get (tag, "background-rgba", &rgba, NULL);
@@ -1386,7 +1386,7 @@ ctk_text_view_accessible_scroll_substring_to(AtkText *text,
   /* Get current iter location to be able to scroll in a single direction. */
   if (use_align && (xalign == -1.0 || yalign == -1.0))
     {
-      GdkRectangle rect, irect;
+      CdkRectangle rect, irect;
 
       ctk_text_view_get_visible_rect (view, &rect);
       ctk_text_view_get_iter_location (view, &iter, &irect);
@@ -1440,7 +1440,7 @@ ctk_text_view_accessible_set_run_attributes (AtkEditableText *text,
   CtkTextIter start;
   CtkTextIter end;
   gint j;
-  GdkColor *color;
+  CdkColor *color;
   gchar** RGB_vals;
   GSList *l;
 
@@ -1549,7 +1549,7 @@ ctk_text_view_accessible_set_run_attributes (AtkEditableText *text,
       else if (!strcmp (name, atk_text_attribute_get_name (ATK_TEXT_ATTR_BG_COLOR)))
         {
           RGB_vals = g_strsplit (value, ",", 3);
-          color = g_malloc (sizeof (GdkColor));
+          color = g_malloc (sizeof (CdkColor));
           color->red = atoi (RGB_vals[0]);
           color->green = atoi (RGB_vals[1]);
           color->blue = atoi (RGB_vals[2]);
@@ -1559,7 +1559,7 @@ ctk_text_view_accessible_set_run_attributes (AtkEditableText *text,
       else if (!strcmp (name, atk_text_attribute_get_name (ATK_TEXT_ATTR_FG_COLOR)))
         {
           RGB_vals = g_strsplit (value, ",", 3);
-          color = g_malloc (sizeof (GdkColor));
+          color = g_malloc (sizeof (CdkColor));
           color->red = atoi (RGB_vals[0]);
           color->green = atoi (RGB_vals[1]);
           color->blue = atoi (RGB_vals[2]);
@@ -1949,7 +1949,7 @@ gail_streamable_content_get_n_mime_types (AtkStreamableContent *streamable)
     {
       gint i;
       gboolean advertises_plaintext = FALSE;
-      GdkAtom *atoms;
+      CdkAtom *atoms;
 
       atoms = ctk_text_buffer_get_serialize_formats (buffer, &n_mime_types);
       for (i = 0; i < n_mime_types-1; ++i)
@@ -1977,7 +1977,7 @@ gail_streamable_content_get_mime_type (AtkStreamableContent *streamable,
   if (buffer)
     {
       gint n_mime_types = 0;
-      GdkAtom *atoms;
+      CdkAtom *atoms;
 
       atoms = ctk_text_buffer_get_serialize_formats (buffer, &n_mime_types);
       if (i < n_mime_types)
@@ -1996,7 +1996,7 @@ gail_streamable_content_get_stream (AtkStreamableContent *streamable,
   CtkWidget *widget;
   CtkTextBuffer *buffer;
   gint i, n_mime_types = 0;
-  GdkAtom *atoms;
+  CdkAtom *atoms;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (streamable));
   if (widget == NULL)

@@ -30,17 +30,17 @@
 
 G_BEGIN_DECLS
   
-typedef struct _GdkX11Monitor GdkX11Monitor;
+typedef struct _CdkX11Monitor CdkX11Monitor;
 
-struct _GdkX11Screen
+struct _CdkX11Screen
 {
-  GdkScreen parent_instance;
+  CdkScreen parent_instance;
 
-  GdkDisplay *display;
+  CdkDisplay *display;
   Display *xdisplay;
   Screen *xscreen;
   Window xroot_window;
-  GdkWindow *root_window;
+  CdkWindow *root_window;
   gint screen_num;
 
   gint width;
@@ -62,7 +62,7 @@ struct _GdkX11Screen
   char *window_manager_name;
 
   /* X Settings */
-  GdkWindow *xsettings_manager_window;
+  CdkWindow *xsettings_manager_window;
   Atom xsettings_selection_atom;
   GHashTable *xsettings; /* string of GDK settings name => GValue */
 
@@ -81,52 +81,52 @@ struct _GdkX11Screen
 
   /* Visual Part */
   gint nvisuals;
-  GdkVisual **visuals;
-  GdkVisual *system_visual;
+  CdkVisual **visuals;
+  CdkVisual *system_visual;
   gint available_depths[7];
-  GdkVisualType available_types[6];
+  CdkVisualType available_types[6];
   gint16 navailable_depths;
   gint16 navailable_types;
   GHashTable *visual_hash;
-  GdkVisual *rgba_visual;
+  CdkVisual *rgba_visual;
 
   /* cache for window->translate vfunc */
   GC subwindow_gcs[32];
 };
 
-struct _GdkX11ScreenClass
+struct _CdkX11ScreenClass
 {
-  GdkScreenClass parent_class;
+  CdkScreenClass parent_class;
 
-  void (* window_manager_changed) (GdkX11Screen *x11_screen);
+  void (* window_manager_changed) (CdkX11Screen *x11_screen);
 };
 
 GType       _cdk_x11_screen_get_type (void);
-GdkScreen * _cdk_x11_screen_new      (GdkDisplay *display,
+CdkScreen * _cdk_x11_screen_new      (CdkDisplay *display,
 				      gint	  screen_number);
 
-void _cdk_x11_screen_setup                  (GdkScreen *screen);
-void _cdk_x11_screen_update_visuals_for_gl  (GdkScreen *screen);
-void _cdk_x11_screen_window_manager_changed (GdkScreen *screen);
-void _cdk_x11_screen_size_changed           (GdkScreen *screen,
+void _cdk_x11_screen_setup                  (CdkScreen *screen);
+void _cdk_x11_screen_update_visuals_for_gl  (CdkScreen *screen);
+void _cdk_x11_screen_window_manager_changed (CdkScreen *screen);
+void _cdk_x11_screen_size_changed           (CdkScreen *screen,
 					     XEvent    *event);
-void _cdk_x11_screen_process_owner_change   (GdkScreen *screen,
+void _cdk_x11_screen_process_owner_change   (CdkScreen *screen,
 					     XEvent    *event);
-void _cdk_x11_screen_get_edge_monitors      (GdkScreen *screen,
+void _cdk_x11_screen_get_edge_monitors      (CdkScreen *screen,
 					     gint      *top,
 					     gint      *bottom,
 					     gint      *left,
 					     gint      *right);
-void _cdk_x11_screen_set_window_scale       (GdkX11Screen *x11_screen,
+void _cdk_x11_screen_set_window_scale       (CdkX11Screen *x11_screen,
 					     int        scale);
-gboolean _cdk_x11_screen_get_monitor_work_area (GdkScreen    *screen,
-                                                GdkMonitor   *monitor,
-                                                GdkRectangle *area);
-void cdk_x11_screen_get_work_area           (GdkScreen    *screen,
-                                             GdkRectangle *area);
-gint cdk_x11_screen_get_width               (GdkScreen *screen);
-gint cdk_x11_screen_get_height              (GdkScreen *screen);
-gint cdk_x11_screen_get_number              (GdkScreen *screen);
+gboolean _cdk_x11_screen_get_monitor_work_area (CdkScreen    *screen,
+                                                CdkMonitor   *monitor,
+                                                CdkRectangle *area);
+void cdk_x11_screen_get_work_area           (CdkScreen    *screen,
+                                             CdkRectangle *area);
+gint cdk_x11_screen_get_width               (CdkScreen *screen);
+gint cdk_x11_screen_get_height              (CdkScreen *screen);
+gint cdk_x11_screen_get_number              (CdkScreen *screen);
 
 G_END_DECLS
 

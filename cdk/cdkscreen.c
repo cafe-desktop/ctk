@@ -33,15 +33,15 @@
 /**
  * SECTION:cdkscreen
  * @Short_description: Object representing a physical screen
- * @Title: GdkScreen
+ * @Title: CdkScreen
  *
- * #GdkScreen objects are the GDK representation of the screen on
+ * #CdkScreen objects are the GDK representation of the screen on
  * which windows can be displayed and on which the pointer moves.
  * X originally identified screens with physical screens, but
- * nowadays it is more common to have a single #GdkScreen which
+ * nowadays it is more common to have a single #CdkScreen which
  * combines several physical monitors (see cdk_screen_get_n_monitors()).
  *
- * GdkScreen is used throughout GDK and CTK+ to specify which screen
+ * CdkScreen is used throughout GDK and CTK+ to specify which screen
  * the top level windows are to be displayed on. it is also used to
  * query the screen specification and default settings such as
  * the default visual (cdk_screen_get_system_visual()), the dimensions
@@ -76,10 +76,10 @@ enum
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GdkScreen, cdk_screen, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CdkScreen, cdk_screen, G_TYPE_OBJECT)
 
 static void
-cdk_screen_class_init (GdkScreenClass *klass)
+cdk_screen_class_init (CdkScreenClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -107,7 +107,7 @@ cdk_screen_class_init (GdkScreenClass *klass)
 							G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
 
   /**
-   * GdkScreen::size-changed:
+   * CdkScreen::size-changed:
    * @screen: the object on which the signal is emitted
    * 
    * The ::size-changed signal is emitted when the pixel width or 
@@ -119,14 +119,14 @@ cdk_screen_class_init (GdkScreenClass *klass)
     g_signal_new (g_intern_static_string ("size-changed"),
                   G_OBJECT_CLASS_TYPE (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GdkScreenClass, size_changed),
+                  G_STRUCT_OFFSET (CdkScreenClass, size_changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE,
                   0);
 
   /**
-   * GdkScreen::composited-changed:
+   * CdkScreen::composited-changed:
    * @screen: the object on which the signal is emitted
    *
    * The ::composited-changed signal is emitted when the composited
@@ -138,14 +138,14 @@ cdk_screen_class_init (GdkScreenClass *klass)
     g_signal_new (g_intern_static_string ("composited-changed"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GdkScreenClass, composited_changed),
+		  G_STRUCT_OFFSET (CdkScreenClass, composited_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE,
 		  0);
 	
   /**
-   * GdkScreen::monitors-changed:
+   * CdkScreen::monitors-changed:
    * @screen: the object on which the signal is emitted
    *
    * The ::monitors-changed signal is emitted when the number, size
@@ -160,7 +160,7 @@ cdk_screen_class_init (GdkScreenClass *klass)
     g_signal_new (g_intern_static_string ("monitors-changed"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GdkScreenClass, monitors_changed),
+		  G_STRUCT_OFFSET (CdkScreenClass, monitors_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE,
@@ -168,7 +168,7 @@ cdk_screen_class_init (GdkScreenClass *klass)
 }
 
 static void
-cdk_screen_init (GdkScreen *screen)
+cdk_screen_init (CdkScreen *screen)
 {
   screen->resolution = -1.;
 }
@@ -176,7 +176,7 @@ cdk_screen_init (GdkScreen *screen)
 static void
 cdk_screen_finalize (GObject *object)
 {
-  GdkScreen *screen = GDK_SCREEN (object);
+  CdkScreen *screen = GDK_SCREEN (object);
 
   if (screen->font_options)
       cairo_font_options_destroy (screen->font_options);
@@ -185,7 +185,7 @@ cdk_screen_finalize (GObject *object)
 }
 
 void 
-_cdk_screen_close (GdkScreen *screen)
+_cdk_screen_close (CdkScreen *screen)
 {
   g_return_if_fail (GDK_IS_SCREEN (screen));
 
@@ -197,9 +197,9 @@ _cdk_screen_close (GdkScreen *screen)
 }
 
 static int
-get_monitor_num (GdkMonitor *monitor)
+get_monitor_num (CdkMonitor *monitor)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   int n_monitors, i;
 
   display = cdk_monitor_get_display (monitor);
@@ -214,7 +214,7 @@ get_monitor_num (GdkMonitor *monitor)
 
 /**
  * cdk_screen_get_monitor_at_point:
- * @screen: a #GdkScreen.
+ * @screen: a #CdkScreen.
  * @x: the x coordinate in the virtual screen.
  * @y: the y coordinate in the virtual screen.
  *
@@ -228,12 +228,12 @@ get_monitor_num (GdkMonitor *monitor)
  * Deprecated: 3.22: Use cdk_display_get_monitor_at_point() instead
  **/
 gint
-cdk_screen_get_monitor_at_point (GdkScreen *screen,
+cdk_screen_get_monitor_at_point (CdkScreen *screen,
 				 gint       x,
 				 gint       y)
 {
-  GdkDisplay *display;
-  GdkMonitor *monitor;
+  CdkDisplay *display;
+  CdkMonitor *monitor;
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), -1);
 
@@ -244,8 +244,8 @@ cdk_screen_get_monitor_at_point (GdkScreen *screen,
 
 /**
  * cdk_screen_get_monitor_at_window:
- * @screen: a #GdkScreen.
- * @window: a #GdkWindow
+ * @screen: a #CdkScreen.
+ * @window: a #CdkWindow
  *
  * Returns the number of the monitor in which the largest area of the
  * bounding rectangle of @window resides.
@@ -259,11 +259,11 @@ cdk_screen_get_monitor_at_point (GdkScreen *screen,
  * Deprecated: 3.22: Use cdk_display_get_monitor_at_window() instead
  **/
 gint
-cdk_screen_get_monitor_at_window (GdkScreen *screen,
-                                  GdkWindow *window)
+cdk_screen_get_monitor_at_window (CdkScreen *screen,
+                                  CdkWindow *window)
 {
-  GdkDisplay *display;
-  GdkMonitor *monitor;
+  CdkDisplay *display;
+  CdkMonitor *monitor;
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), -1);
   g_return_val_if_fail (GDK_IS_WINDOW (window), -1);
@@ -351,7 +351,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 /**
  * cdk_screen_set_font_options:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * @options: (allow-none): a #cairo_font_options_t, or %NULL to unset any
  *   previously set default font options.
  *
@@ -364,7 +364,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * Since: 2.10
  **/
 void
-cdk_screen_set_font_options (GdkScreen                  *screen,
+cdk_screen_set_font_options (CdkScreen                  *screen,
 			     const cairo_font_options_t *options)
 {
   g_return_if_fail (GDK_IS_SCREEN (screen));
@@ -385,7 +385,7 @@ cdk_screen_set_font_options (GdkScreen                  *screen,
 
 /**
  * cdk_screen_get_font_options:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * 
  * Gets any options previously set with cdk_screen_set_font_options().
  * 
@@ -395,7 +395,7 @@ cdk_screen_set_font_options (GdkScreen                  *screen,
  * Since: 2.10
  **/
 const cairo_font_options_t *
-cdk_screen_get_font_options (GdkScreen *screen)
+cdk_screen_get_font_options (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -404,7 +404,7 @@ cdk_screen_get_font_options (GdkScreen *screen)
 
 /**
  * cdk_screen_set_resolution:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * @dpi: the resolution in “dots per inch”. (Physical inches aren’t actually
  *   involved; the terminology is conventional.)
  
@@ -416,7 +416,7 @@ cdk_screen_get_font_options (GdkScreen *screen)
  * Since: 2.10
  **/
 void
-cdk_screen_set_resolution (GdkScreen *screen,
+cdk_screen_set_resolution (CdkScreen *screen,
 			   gdouble    dpi)
 {
   g_return_if_fail (GDK_IS_SCREEN (screen));
@@ -441,7 +441,7 @@ cdk_screen_set_resolution (GdkScreen *screen,
  * g_object_set(<CtkSetting>, "ctk-xft-dpi", ...);
  */
 void
-_cdk_screen_set_resolution (GdkScreen *screen,
+_cdk_screen_set_resolution (CdkScreen *screen,
                             gdouble    dpi)
 {
   g_return_if_fail (GDK_IS_SCREEN (screen));
@@ -459,7 +459,7 @@ _cdk_screen_set_resolution (GdkScreen *screen,
 
 /**
  * cdk_screen_get_resolution:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * 
  * Gets the resolution for font handling on the screen; see
  * cdk_screen_set_resolution() for full details.
@@ -470,7 +470,7 @@ _cdk_screen_set_resolution (GdkScreen *screen,
  * Since: 2.10
  **/
 gdouble
-cdk_screen_get_resolution (GdkScreen *screen)
+cdk_screen_get_resolution (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), -1.0);
 
@@ -483,7 +483,7 @@ cdk_screen_get_property (GObject      *object,
 			 GValue       *value,
 			 GParamSpec   *pspec)
 {
-  GdkScreen *screen = GDK_SCREEN (object);
+  CdkScreen *screen = GDK_SCREEN (object);
 
   switch (prop_id)
     {
@@ -505,7 +505,7 @@ cdk_screen_set_property (GObject      *object,
 			 const GValue *value,
 			 GParamSpec   *pspec)
 {
-  GdkScreen *screen = GDK_SCREEN (object);
+  CdkScreen *screen = GDK_SCREEN (object);
 
   switch (prop_id)
     {
@@ -523,7 +523,7 @@ cdk_screen_set_property (GObject      *object,
 
 /**
  * cdk_screen_get_display:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Gets the display to which the @screen belongs.
  *
@@ -531,8 +531,8 @@ cdk_screen_set_property (GObject      *object,
  *
  * Since: 2.2
  **/
-GdkDisplay *
-cdk_screen_get_display (GdkScreen *screen)
+CdkDisplay *
+cdk_screen_get_display (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -542,7 +542,7 @@ cdk_screen_get_display (GdkScreen *screen)
 
 /**
  * cdk_screen_get_width:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Gets the width of @screen in pixels. The returned size is in
  * ”application pixels”, not in ”device pixels” (see
@@ -555,7 +555,7 @@ cdk_screen_get_display (GdkScreen *screen)
  * Deprecated: 3.22: Use per-monitor information instead
  **/
 gint
-cdk_screen_get_width (GdkScreen *screen)
+cdk_screen_get_width (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
 
@@ -564,7 +564,7 @@ cdk_screen_get_width (GdkScreen *screen)
 
 /**
  * cdk_screen_get_height:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Gets the height of @screen in pixels. The returned size is in
  * ”application pixels”, not in ”device pixels” (see
@@ -577,7 +577,7 @@ cdk_screen_get_width (GdkScreen *screen)
  * Deprecated: 3.22: Use per-monitor information instead
  **/
 gint
-cdk_screen_get_height (GdkScreen *screen)
+cdk_screen_get_height (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
 
@@ -586,7 +586,7 @@ cdk_screen_get_height (GdkScreen *screen)
 
 /**
  * cdk_screen_get_width_mm:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Gets the width of @screen in millimeters.
  *
@@ -601,7 +601,7 @@ cdk_screen_get_height (GdkScreen *screen)
  * Deprecated: 3.22: Use per-monitor information instead
  **/
 gint
-cdk_screen_get_width_mm (GdkScreen *screen)
+cdk_screen_get_width_mm (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
 
@@ -610,7 +610,7 @@ cdk_screen_get_width_mm (GdkScreen *screen)
 
 /**
  * cdk_screen_get_height_mm:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Returns the height of @screen in millimeters.
  *
@@ -625,7 +625,7 @@ cdk_screen_get_width_mm (GdkScreen *screen)
  * Since: 2.2
  **/
 gint
-cdk_screen_get_height_mm (GdkScreen *screen)
+cdk_screen_get_height_mm (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
 
@@ -634,7 +634,7 @@ cdk_screen_get_height_mm (GdkScreen *screen)
 
 /**
  * cdk_screen_get_number:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Gets the index of @screen among the screens in the display
  * to which it belongs. (See cdk_screen_get_display())
@@ -646,7 +646,7 @@ cdk_screen_get_height_mm (GdkScreen *screen)
  * Deprecated: 3.22
  **/
 gint
-cdk_screen_get_number (GdkScreen *screen)
+cdk_screen_get_number (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
 
@@ -655,7 +655,7 @@ cdk_screen_get_number (GdkScreen *screen)
 
 /**
  * cdk_screen_get_root_window:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Gets the root window of @screen.
  *
@@ -663,19 +663,19 @@ cdk_screen_get_number (GdkScreen *screen)
  *
  * Since: 2.2
  **/
-GdkWindow *
-cdk_screen_get_root_window (GdkScreen *screen)
+CdkWindow *
+cdk_screen_get_root_window (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
   return GDK_SCREEN_GET_CLASS (screen)->get_root_window (screen);
 }
 
-static GdkMonitor *
-get_monitor (GdkScreen *screen,
+static CdkMonitor *
+get_monitor (CdkScreen *screen,
              gint       n)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   display = cdk_screen_get_display (screen);
   return cdk_display_get_monitor (display, n);
@@ -683,7 +683,7 @@ get_monitor (GdkScreen *screen,
 
 /**
  * cdk_screen_get_n_monitors:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Returns the number of monitors which @screen consists of.
  *
@@ -694,9 +694,9 @@ get_monitor (GdkScreen *screen,
  * Deprecated: 3.22: Use cdk_display_get_n_monitors() instead
  */
 gint
-cdk_screen_get_n_monitors (GdkScreen *screen)
+cdk_screen_get_n_monitors (CdkScreen *screen)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
 
@@ -706,7 +706,7 @@ cdk_screen_get_n_monitors (GdkScreen *screen)
 
 /**
  * cdk_screen_get_primary_monitor:
- * @screen: a #GdkScreen.
+ * @screen: a #CdkScreen.
  *
  * Gets the primary monitor for @screen.  The primary monitor
  * is considered the monitor where the “main desktop” lives.
@@ -724,10 +724,10 @@ cdk_screen_get_n_monitors (GdkScreen *screen)
  * Deprecated: 3.22: Use cdk_display_get_primary_monitor() instead
  */
 gint
-cdk_screen_get_primary_monitor (GdkScreen *screen)
+cdk_screen_get_primary_monitor (CdkScreen *screen)
 {
-  GdkDisplay *display;
-  GdkMonitor *primary;
+  CdkDisplay *display;
+  CdkMonitor *primary;
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
 
@@ -741,7 +741,7 @@ cdk_screen_get_primary_monitor (GdkScreen *screen)
 
 /**
  * cdk_screen_get_monitor_width_mm:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * @monitor_num: number of the monitor, between 0 and cdk_screen_get_n_monitors (screen)
  *
  * Gets the width in millimeters of the specified monitor, if available.
@@ -753,10 +753,10 @@ cdk_screen_get_primary_monitor (GdkScreen *screen)
  * Deprecated: 3.22: Use cdk_monitor_get_width_mm() instead
  */
 gint
-cdk_screen_get_monitor_width_mm	(GdkScreen *screen,
+cdk_screen_get_monitor_width_mm	(CdkScreen *screen,
 				 gint       monitor_num)
 {
-  GdkMonitor *monitor;
+  CdkMonitor *monitor;
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), -1);
 
@@ -769,7 +769,7 @@ cdk_screen_get_monitor_width_mm	(GdkScreen *screen,
 
 /**
  * cdk_screen_get_monitor_height_mm:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * @monitor_num: number of the monitor, between 0 and cdk_screen_get_n_monitors (screen)
  *
  * Gets the height in millimeters of the specified monitor.
@@ -781,10 +781,10 @@ cdk_screen_get_monitor_width_mm	(GdkScreen *screen,
  * Deprecated: 3.22: Use cdk_monitor_get_height_mm() instead
  */
 gint
-cdk_screen_get_monitor_height_mm (GdkScreen *screen,
+cdk_screen_get_monitor_height_mm (CdkScreen *screen,
                                   gint       monitor_num)
 {
-  GdkMonitor *monitor;
+  CdkMonitor *monitor;
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), -1);
 
@@ -797,7 +797,7 @@ cdk_screen_get_monitor_height_mm (GdkScreen *screen,
 
 /**
  * cdk_screen_get_monitor_plug_name:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * @monitor_num: number of the monitor, between 0 and cdk_screen_get_n_monitors (screen)
  *
  * Returns the output name of the specified monitor.
@@ -812,10 +812,10 @@ cdk_screen_get_monitor_height_mm (GdkScreen *screen,
  * Deprecated: 3.22: Use cdk_monitor_get_model() instead
  */
 gchar *
-cdk_screen_get_monitor_plug_name (GdkScreen *screen,
+cdk_screen_get_monitor_plug_name (CdkScreen *screen,
 				  gint       monitor_num)
 {
-  GdkMonitor *monitor;
+  CdkMonitor *monitor;
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -828,12 +828,12 @@ cdk_screen_get_monitor_plug_name (GdkScreen *screen,
 
 /**
  * cdk_screen_get_monitor_geometry:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * @monitor_num: the monitor number
- * @dest: (out) (allow-none): a #GdkRectangle to be filled with
+ * @dest: (out) (allow-none): a #CdkRectangle to be filled with
  *     the monitor geometry
  *
- * Retrieves the #GdkRectangle representing the size and position of
+ * Retrieves the #CdkRectangle representing the size and position of
  * the individual monitor within the entire screen area. The returned
  * geometry is in ”application pixels”, not in ”device pixels” (see
  * cdk_screen_get_monitor_scale_factor()).
@@ -849,11 +849,11 @@ cdk_screen_get_monitor_plug_name (GdkScreen *screen,
  * Deprecated: 3.22: Use cdk_monitor_get_geometry() instead
  */
 void
-cdk_screen_get_monitor_geometry (GdkScreen    *screen,
+cdk_screen_get_monitor_geometry (CdkScreen    *screen,
 				 gint          monitor_num,
-				 GdkRectangle *dest)
+				 CdkRectangle *dest)
 {
-  GdkMonitor *monitor;
+  CdkMonitor *monitor;
 
   g_return_if_fail (GDK_IS_SCREEN (screen));
 
@@ -866,12 +866,12 @@ cdk_screen_get_monitor_geometry (GdkScreen    *screen,
 
 /**
  * cdk_screen_get_monitor_workarea:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * @monitor_num: the monitor number
- * @dest: (out) (allow-none): a #GdkRectangle to be filled with
+ * @dest: (out) (allow-none): a #CdkRectangle to be filled with
  *     the monitor workarea
  *
- * Retrieves the #GdkRectangle representing the size and position of
+ * Retrieves the #CdkRectangle representing the size and position of
  * the “work area” on a monitor within the entire screen area. The returned
  * geometry is in ”application pixels”, not in ”device pixels” (see
  * cdk_screen_get_monitor_scale_factor()).
@@ -892,11 +892,11 @@ cdk_screen_get_monitor_geometry (GdkScreen    *screen,
  * Deprecated: 3.22: Use cdk_monitor_get_workarea() instead
  */
 void
-cdk_screen_get_monitor_workarea (GdkScreen    *screen,
+cdk_screen_get_monitor_workarea (CdkScreen    *screen,
                                  gint          monitor_num,
-                                 GdkRectangle *dest)
+                                 CdkRectangle *dest)
 {
-  GdkMonitor *monitor;
+  CdkMonitor *monitor;
 
   g_return_if_fail (GDK_IS_SCREEN (screen));
 
@@ -909,7 +909,7 @@ cdk_screen_get_monitor_workarea (GdkScreen    *screen,
 
 /**
  * cdk_screen_list_visuals:
- * @screen: the relevant #GdkScreen.
+ * @screen: the relevant #CdkScreen.
  *
  * Lists the available visuals for the specified @screen.
  * A visual describes a hardware image data format.
@@ -918,13 +918,13 @@ cdk_screen_get_monitor_workarea (GdkScreen    *screen,
  *
  * Call g_list_free() on the return value when you’re finished with it.
  *
- * Returns: (transfer container) (element-type GdkVisual):
+ * Returns: (transfer container) (element-type CdkVisual):
  *     a list of visuals; the list must be freed, but not its contents
  *
  * Since: 2.2
  **/
 GList *
-cdk_screen_list_visuals (GdkScreen *screen)
+cdk_screen_list_visuals (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -933,7 +933,7 @@ cdk_screen_list_visuals (GdkScreen *screen)
 
 /**
  * cdk_screen_get_system_visual:
- * @screen: a #GdkScreen.
+ * @screen: a #CdkScreen.
  *
  * Get the system’s default visual for @screen.
  * This is the visual for the root window of the display.
@@ -943,8 +943,8 @@ cdk_screen_list_visuals (GdkScreen *screen)
  *
  * Since: 2.2
  **/
-GdkVisual *
-cdk_screen_get_system_visual (GdkScreen * screen)
+CdkVisual *
+cdk_screen_get_system_visual (CdkScreen * screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -953,7 +953,7 @@ cdk_screen_get_system_visual (GdkScreen * screen)
 
 /**
  * cdk_screen_get_rgba_visual:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Gets a visual to use for creating windows with an alpha channel.
  * The windowing system on which CTK+ is running
@@ -975,8 +975,8 @@ cdk_screen_get_system_visual (GdkScreen * screen)
  *
  * Since: 2.8
  **/
-GdkVisual *
-cdk_screen_get_rgba_visual (GdkScreen *screen)
+CdkVisual *
+cdk_screen_get_rgba_visual (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -985,7 +985,7 @@ cdk_screen_get_rgba_visual (GdkScreen *screen)
 
 /**
  * cdk_screen_is_composited:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Returns whether windows with an RGBA visual can reasonably
  * be expected to have their alpha channel drawn correctly on
@@ -1000,7 +1000,7 @@ cdk_screen_get_rgba_visual (GdkScreen *screen)
  * Since: 2.10
  **/
 gboolean
-cdk_screen_is_composited (GdkScreen *screen)
+cdk_screen_is_composited (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
 
@@ -1009,10 +1009,10 @@ cdk_screen_is_composited (GdkScreen *screen)
 
 /**
  * cdk_screen_make_display_name:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Determines the name to pass to cdk_display_open() to get
- * a #GdkDisplay with this screen as the default screen.
+ * a #CdkDisplay with this screen as the default screen.
  *
  * Returns: a newly allocated string, free with g_free()
  *
@@ -1021,7 +1021,7 @@ cdk_screen_is_composited (GdkScreen *screen)
  * Deprecated: 3.22
  **/
 gchar *
-cdk_screen_make_display_name (GdkScreen *screen)
+cdk_screen_make_display_name (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -1030,7 +1030,7 @@ cdk_screen_make_display_name (GdkScreen *screen)
 
 /**
  * cdk_screen_get_active_window:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Returns the screen’s currently active window.
  *
@@ -1054,8 +1054,8 @@ cdk_screen_make_display_name (GdkScreen *screen)
  *
  * Deprecated: 3.22
  **/
-GdkWindow *
-cdk_screen_get_active_window (GdkScreen *screen)
+CdkWindow *
+cdk_screen_get_active_window (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -1064,9 +1064,9 @@ cdk_screen_get_active_window (GdkScreen *screen)
 
 /**
  * cdk_screen_get_window_stack:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
- * Returns a #GList of #GdkWindows representing the current
+ * Returns a #GList of #CdkWindows representing the current
  * window stack.
  *
  * On X11, this is done by inspecting the _NET_CLIENT_LIST_STACKING
@@ -1082,13 +1082,13 @@ cdk_screen_get_active_window (GdkScreen *screen)
  * windows it contains, so it should be freed using g_list_free() and
  * its windows unrefed using g_object_unref() when no longer needed.
  *
- * Returns: (nullable) (transfer full) (element-type GdkWindow): a
- *     list of #GdkWindows for the current window stack, or %NULL.
+ * Returns: (nullable) (transfer full) (element-type CdkWindow): a
+ *     list of #CdkWindows for the current window stack, or %NULL.
  *
  * Since: 2.10
  **/
 GList *
-cdk_screen_get_window_stack (GdkScreen *screen)
+cdk_screen_get_window_stack (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -1097,12 +1097,12 @@ cdk_screen_get_window_stack (GdkScreen *screen)
 
 /**
  * cdk_screen_get_setting:
- * @screen: the #GdkScreen where the setting is located
+ * @screen: the #CdkScreen where the setting is located
  * @name: the name of the setting
  * @value: location to store the value of the setting
  *
  * Retrieves a desktop-wide setting such as double-click time
- * for the #GdkScreen @screen.
+ * for the #CdkScreen @screen.
  *
  * FIXME needs a list of valid settings here, or a link to
  * more information.
@@ -1113,7 +1113,7 @@ cdk_screen_get_window_stack (GdkScreen *screen)
  * Since: 2.2
  **/
 gboolean
-cdk_screen_get_setting (GdkScreen   *screen,
+cdk_screen_get_setting (CdkScreen   *screen,
 			const gchar *name,
 			GValue      *value)
 {
@@ -1144,10 +1144,10 @@ cdk_screen_get_setting (GdkScreen   *screen,
  * Deprecated: 3.22: Use cdk_monitor_get_scale_factor() instead
  */
 gint
-cdk_screen_get_monitor_scale_factor (GdkScreen *screen,
+cdk_screen_get_monitor_scale_factor (CdkScreen *screen,
                                      gint       monitor_num)
 {
-  GdkMonitor *monitor;
+  CdkMonitor *monitor;
 
   g_return_val_if_fail (GDK_IS_SCREEN (screen), 1);
   g_return_val_if_fail (monitor_num >= 0, 1);

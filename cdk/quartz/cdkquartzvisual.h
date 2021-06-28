@@ -29,18 +29,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_QUARTZ_VISUAL              (cdk_quartz_visual_get_type ())
-#define GDK_QUARTZ_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_VISUAL, GdkQuartzVisual))
-#define GDK_QUARTZ_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_VISUAL, GdkQuartzVisualClass))
+#define GDK_QUARTZ_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_VISUAL, CdkQuartzVisual))
+#define GDK_QUARTZ_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_VISUAL, CdkQuartzVisualClass))
 #define GDK_IS_QUARTZ_VISUAL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_VISUAL))
 #define GDK_IS_QUARTZ_VISUAL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_QUARTZ_VISUAL))
-#define GDK_QUARTZ_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_VISUAL, GdkQuartzVisualClass))
+#define GDK_QUARTZ_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_VISUAL, CdkQuartzVisualClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkQuartzVisual GdkQuartzVisual;
+typedef struct _CdkQuartzVisual CdkQuartzVisual;
 #else
-typedef GdkVisual GdkQuartzVisual;
+typedef CdkVisual CdkQuartzVisual;
 #endif
-typedef struct _GdkQuartzVisualClass GdkQuartzVisualClass;
+typedef struct _CdkQuartzVisualClass CdkQuartzVisualClass;
 
 
 GDK_AVAILABLE_IN_ALL

@@ -27,9 +27,9 @@
 #include "cdkquartz-ctk-only.h"
 
 gboolean
-_cdk_quartz_display_set_selection_owner (GdkDisplay *display,
-                                         GdkWindow  *owner,
-                                         GdkAtom     selection,
+_cdk_quartz_display_set_selection_owner (CdkDisplay *display,
+                                         CdkWindow  *owner,
+                                         CdkAtom     selection,
                                          guint32     time,
                                          gint        send_event)
 {
@@ -37,29 +37,29 @@ _cdk_quartz_display_set_selection_owner (GdkDisplay *display,
   return TRUE;
 }
 
-GdkWindow*
-_cdk_quartz_display_get_selection_owner (GdkDisplay *display,
-                                         GdkAtom     selection)
+CdkWindow*
+_cdk_quartz_display_get_selection_owner (CdkDisplay *display,
+                                         CdkAtom     selection)
 {
   /* FIXME: Implement */
   return NULL;
 }
 
 void
-_cdk_quartz_display_convert_selection (GdkDisplay *display,
-                                       GdkWindow  *requestor,
-                                       GdkAtom     selection,
-                                       GdkAtom     target,
+_cdk_quartz_display_convert_selection (CdkDisplay *display,
+                                       CdkWindow  *requestor,
+                                       CdkAtom     selection,
+                                       CdkAtom     target,
                                        guint32     time)
 {
   /* FIXME: Implement */
 }
 
 gint
-_cdk_quartz_display_get_selection_property (GdkDisplay *display,
-                                            GdkWindow  *requestor,
+_cdk_quartz_display_get_selection_property (CdkDisplay *display,
+                                            CdkWindow  *requestor,
                                             guchar    **data,
-                                            GdkAtom    *ret_type,
+                                            CdkAtom    *ret_type,
                                             gint       *ret_format)
 {
   /* FIXME: Implement */
@@ -67,7 +67,7 @@ _cdk_quartz_display_get_selection_property (GdkDisplay *display,
 }
 
 gchar *
-_cdk_quartz_display_utf8_to_string_target (GdkDisplay  *display,
+_cdk_quartz_display_utf8_to_string_target (CdkDisplay  *display,
                                            const gchar *str)
 {
   /* FIXME: Implement */
@@ -142,8 +142,8 @@ make_list (const gchar  *text,
 }
 
 gint
-_cdk_quartz_display_text_property_to_utf8_list (GdkDisplay    *display,
-                                                GdkAtom        encoding,
+_cdk_quartz_display_text_property_to_utf8_list (CdkDisplay    *display,
+                                                CdkAtom        encoding,
                                                 gint           format,
                                                 const guchar  *text,
                                                 gint           length,
@@ -186,7 +186,7 @@ _cdk_quartz_display_text_property_to_utf8_list (GdkDisplay    *display,
 #define GDK_QUARTZ_TIFF_PBOARD_TYPE    NSPasteboardTypeTIFF
 #endif
 
-GdkAtom
+CdkAtom
 cdk_quartz_pasteboard_type_to_atom_libctk_only (NSString *type)
 {
   if ([type isEqualToString:GDK_QUARTZ_STRING_PBOARD_TYPE])
@@ -217,7 +217,7 @@ cdk_quartz_target_to_pasteboard_type_libctk_only (const char *target)
 }
 
 NSString *
-cdk_quartz_atom_to_pasteboard_type_libctk_only (GdkAtom atom)
+cdk_quartz_atom_to_pasteboard_type_libctk_only (CdkAtom atom)
 {
   gchar *target = cdk_atom_name (atom);
   NSString *ret = cdk_quartz_target_to_pasteboard_type_libctk_only (target);

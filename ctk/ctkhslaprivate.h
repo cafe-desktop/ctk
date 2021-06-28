@@ -37,9 +37,9 @@ void            _ctk_hsla_init              (CtkHSLA          *hsla,
                                              double            lightness,
                                              double            alpha);
 void            _ctk_hsla_init_from_rgba    (CtkHSLA          *hsla,
-                                             const GdkRGBA    *rgba);
+                                             const CdkRGBA    *rgba);
 /* Yes, I can name that function like this! */
-void            _cdk_rgba_init_from_hsla    (GdkRGBA          *rgba,
+void            _cdk_rgba_init_from_hsla    (CdkRGBA          *rgba,
                                              const CtkHSLA    *hsla);
 
 void            _ctk_hsla_shade             (CtkHSLA          *dest,

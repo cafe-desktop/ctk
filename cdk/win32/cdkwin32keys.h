@@ -27,7 +27,7 @@
 G_BEGIN_DECLS
 
 /**
- * GdkWin32KeymapMatch:
+ * CdkWin32KeymapMatch:
  * @GDK_WIN32_KEYMAP_MATCH_NONE: no matches found. Output is not valid.
  * @GDK_WIN32_KEYMAP_MATCH_INCOMPLETE: the sequence matches so far, but is incomplete. Output is not valid.
  * @GDK_WIN32_KEYMAP_MATCH_PARTIAL: the sequence matches up to the last key,
@@ -42,27 +42,27 @@ typedef enum
   GDK_WIN32_KEYMAP_MATCH_INCOMPLETE,
   GDK_WIN32_KEYMAP_MATCH_PARTIAL,
   GDK_WIN32_KEYMAP_MATCH_EXACT
-} GdkWin32KeymapMatch;
+} CdkWin32KeymapMatch;
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkWin32Keymap GdkWin32Keymap;
+typedef struct _CdkWin32Keymap CdkWin32Keymap;
 #else
-typedef GdkKeymap GdkWin32Keymap;
+typedef CdkKeymap CdkWin32Keymap;
 #endif
-typedef struct _GdkWin32KeymapClass GdkWin32KeymapClass;
+typedef struct _CdkWin32KeymapClass CdkWin32KeymapClass;
 
 #define GDK_TYPE_WIN32_KEYMAP              (cdk_win32_keymap_get_type())
-#define GDK_WIN32_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_KEYMAP, GdkWin32Keymap))
-#define GDK_WIN32_KEYMAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_KEYMAP, GdkWin32KeymapClass))
+#define GDK_WIN32_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_KEYMAP, CdkWin32Keymap))
+#define GDK_WIN32_KEYMAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_KEYMAP, CdkWin32KeymapClass))
 #define GDK_IS_WIN32_KEYMAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_KEYMAP))
 #define GDK_IS_WIN32_KEYMAP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WIN32_KEYMAP))
-#define GDK_WIN32_KEYMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_KEYMAP, GdkWin32KeymapClass))
+#define GDK_WIN32_KEYMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_KEYMAP, CdkWin32KeymapClass))
 
 GDK_AVAILABLE_IN_ALL
 GType cdk_win32_keymap_get_type (void);
 
 GDK_AVAILABLE_IN_3_20
-GdkWin32KeymapMatch cdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
+CdkWin32KeymapMatch cdk_win32_keymap_check_compose (CdkWin32Keymap *keymap,
                                                     guint16        *compose_buffer,
                                                     gsize           compose_buffer_len,
                                                     guint16        *output,

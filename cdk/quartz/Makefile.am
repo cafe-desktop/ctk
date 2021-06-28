@@ -4,7 +4,7 @@ libcdkincludedir = $(includedir)/ctk-3.0/cdk
 libcdkquartzincludedir = $(includedir)/ctk-3.0/cdk/quartz
 
 AM_CPPFLAGS = 				\
-	-DG_LOG_DOMAIN=\"Gdk\"		\
+	-DG_LOG_DOMAIN=\"Cdk\"		\
 	-DG_LOG_USE_STRUCTURED=1	\
 	-DGDK_COMPILATION		\
 	-I$(top_srcdir)			\
@@ -20,10 +20,10 @@ LDADDS = $(GDK_DEP_LIBS)
 noinst_LTLIBRARIES = libcdk-quartz.la
 
 libcdk_quartz_la_SOURCES =    	\
-	GdkQuartzView.c		\
-	GdkQuartzView.h		\
-	GdkQuartzNSWindow.c	\
-	GdkQuartzNSWindow.h	\
+	CdkQuartzView.c		\
+	CdkQuartzView.h		\
+	CdkQuartzNSWindow.c	\
+	CdkQuartzNSWindow.h	\
 	cdkcursor-quartz.c	\
 	cdkdevice-core-quartz.c	\
 	cdkdevicemanager-core-quartz.c	\

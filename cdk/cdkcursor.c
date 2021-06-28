@@ -54,13 +54,13 @@
  * Cursors by themselves are not very interesting, they must be be
  * bound to a window for users to see them. This is done with
  * cdk_window_set_cursor() or by setting the cursor member of the
- * #GdkWindowAttr passed to cdk_window_new().
+ * #CdkWindowAttr passed to cdk_window_new().
  */
 
 /**
- * GdkCursor:
+ * CdkCursor:
  *
- * A #GdkCursor represents a cursor. Its contents are private.
+ * A #CdkCursor represents a cursor. Its contents are private.
  */
 
 enum {
@@ -69,7 +69,7 @@ enum {
   PROP_DISPLAY
 };
 
-G_DEFINE_ABSTRACT_TYPE (GdkCursor, cdk_cursor, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (CdkCursor, cdk_cursor, G_TYPE_OBJECT)
 
 static void
 cdk_cursor_get_property (GObject    *object,
@@ -77,7 +77,7 @@ cdk_cursor_get_property (GObject    *object,
                          GValue     *value,
                          GParamSpec *pspec)
 {
-  GdkCursor *cursor = GDK_CURSOR (object);
+  CdkCursor *cursor = GDK_CURSOR (object);
 
   switch (prop_id)
     {
@@ -99,7 +99,7 @@ cdk_cursor_set_property (GObject      *object,
                          const GValue *value,
                          GParamSpec   *pspec)
 {
-  GdkCursor *cursor = GDK_CURSOR (object);
+  CdkCursor *cursor = GDK_CURSOR (object);
 
   switch (prop_id)
     {
@@ -118,7 +118,7 @@ cdk_cursor_set_property (GObject      *object,
 }
 
 static void
-cdk_cursor_class_init (GdkCursorClass *cursor_class)
+cdk_cursor_class_init (CdkCursorClass *cursor_class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (cursor_class);
 
@@ -143,13 +143,13 @@ cdk_cursor_class_init (GdkCursorClass *cursor_class)
 }
 
 static void
-cdk_cursor_init (GdkCursor *cursor)
+cdk_cursor_init (CdkCursor *cursor)
 {
 }
 
 /**
  * cdk_cursor_ref:
- * @cursor: a #GdkCursor
+ * @cursor: a #CdkCursor
  *
  * Adds a reference to @cursor.
  *
@@ -157,8 +157,8 @@ cdk_cursor_init (GdkCursor *cursor)
  *
  * Deprecated: 3.0: Use g_object_ref() instead
  */
-GdkCursor*
-cdk_cursor_ref (GdkCursor *cursor)
+CdkCursor*
+cdk_cursor_ref (CdkCursor *cursor)
 {
   g_return_val_if_fail (cursor != NULL, NULL);
 
@@ -167,7 +167,7 @@ cdk_cursor_ref (GdkCursor *cursor)
 
 /**
  * cdk_cursor_unref:
- * @cursor: a #GdkCursor
+ * @cursor: a #CdkCursor
  *
  * Removes a reference from @cursor, deallocating the cursor
  * if no references remain.
@@ -175,7 +175,7 @@ cdk_cursor_ref (GdkCursor *cursor)
  * Deprecated: 3.0: Use g_object_unref() instead
  */
 void
-cdk_cursor_unref (GdkCursor *cursor)
+cdk_cursor_unref (CdkCursor *cursor)
 {
   g_return_if_fail (cursor != NULL);
 
@@ -191,28 +191,28 @@ cdk_cursor_unref (GdkCursor *cursor)
  *
  * To make the cursor invisible, use %GDK_BLANK_CURSOR.
  *
- * Returns: a new #GdkCursor
+ * Returns: a new #CdkCursor
  *
  * Deprecated: 3.16: Use cdk_cursor_new_for_display() instead.
  */
-GdkCursor*
-cdk_cursor_new (GdkCursorType cursor_type)
+CdkCursor*
+cdk_cursor_new (CdkCursorType cursor_type)
 {
   return cdk_cursor_new_for_display (cdk_display_get_default (), cursor_type);
 }
 
 /**
  * cdk_cursor_get_cursor_type:
- * @cursor:  a #GdkCursor
+ * @cursor:  a #CdkCursor
  *
  * Returns the cursor type for this cursor.
  *
- * Returns: a #GdkCursorType
+ * Returns: a #CdkCursorType
  *
  * Since: 2.22
  **/
-GdkCursorType
-cdk_cursor_get_cursor_type (GdkCursor *cursor)
+CdkCursorType
+cdk_cursor_get_cursor_type (CdkCursor *cursor)
 {
   g_return_val_if_fail (cursor != NULL, GDK_BLANK_CURSOR);
 
@@ -221,18 +221,18 @@ cdk_cursor_get_cursor_type (GdkCursor *cursor)
 
 /**
  * cdk_cursor_new_for_display:
- * @display: the #GdkDisplay for which the cursor will be created
+ * @display: the #CdkDisplay for which the cursor will be created
  * @cursor_type: cursor to create
  *
  * Creates a new cursor from the set of builtin cursors.
  *
- * Returns: (nullable) (transfer full): a new #GdkCursor, or %NULL on failure
+ * Returns: (nullable) (transfer full): a new #CdkCursor, or %NULL on failure
  *
  * Since: 2.2
  **/
-GdkCursor*
-cdk_cursor_new_for_display (GdkDisplay    *display,
-                            GdkCursorType  cursor_type)
+CdkCursor*
+cdk_cursor_new_for_display (CdkDisplay    *display,
+                            CdkCursorType  cursor_type)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
 
@@ -241,7 +241,7 @@ cdk_cursor_new_for_display (GdkDisplay    *display,
 
 /**
  * cdk_cursor_new_from_name:
- * @display: the #GdkDisplay for which the cursor will be created
+ * @display: the #CdkDisplay for which the cursor will be created
  * @name: the name of the cursor
  *
  * Creates a new cursor by looking up @name in the current cursor
@@ -286,13 +286,13 @@ cdk_cursor_new_for_display (GdkDisplay    *display,
  * - ![](zoom_out_cursor.png) "zoom-out"
  *
  *
- * Returns: (nullable): a new #GdkCursor, or %NULL if there is no
+ * Returns: (nullable): a new #CdkCursor, or %NULL if there is no
  *   cursor with the given name
  *
  * Since: 2.8
  */
-GdkCursor*
-cdk_cursor_new_from_name (GdkDisplay  *display,
+CdkCursor*
+cdk_cursor_new_from_name (CdkDisplay  *display,
                           const gchar *name)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
@@ -302,8 +302,8 @@ cdk_cursor_new_from_name (GdkDisplay  *display,
 
 /**
  * cdk_cursor_new_from_pixbuf:
- * @display: the #GdkDisplay for which the cursor will be created
- * @pixbuf: the #GdkPixbuf containing the cursor image
+ * @display: the #CdkDisplay for which the cursor will be created
+ * @pixbuf: the #CdkPixbuf containing the cursor image
  * @x: the horizontal offset of the “hotspot” of the cursor.
  * @y: the vertical offset of the “hotspot” of the cursor.
  *
@@ -326,13 +326,13 @@ cdk_cursor_new_from_name (GdkDisplay  *display,
  * On the X backend, support for RGBA cursors requires a
  * sufficently new version of the X Render extension.
  *
- * Returns: a new #GdkCursor.
+ * Returns: a new #CdkCursor.
  *
  * Since: 2.4
  */
-GdkCursor *
-cdk_cursor_new_from_pixbuf (GdkDisplay *display,
-                            GdkPixbuf  *pixbuf,
+CdkCursor *
+cdk_cursor_new_from_pixbuf (CdkDisplay *display,
+                            CdkPixbuf  *pixbuf,
                             gint        x,
                             gint        y)
 {
@@ -340,7 +340,7 @@ cdk_cursor_new_from_pixbuf (GdkDisplay *display,
   const char *option;
   char *end;
   gint64 value;
-  GdkCursor *cursor;
+  CdkCursor *cursor;
  
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
   g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
@@ -378,7 +378,7 @@ cdk_cursor_new_from_pixbuf (GdkDisplay *display,
 
 /**
  * cdk_cursor_new_from_surface:
- * @display: the #GdkDisplay for which the cursor will be created
+ * @display: the #CdkDisplay for which the cursor will be created
  * @surface: the cairo image surface containing the cursor pixel data
  * @x: the horizontal offset of the “hotspot” of the cursor
  * @y: the vertical offset of the “hotspot” of the cursor
@@ -397,12 +397,12 @@ cdk_cursor_new_from_pixbuf (GdkDisplay *display,
  * On the X backend, support for RGBA cursors requires a
  * sufficently new version of the X Render extension.
  *
- * Returns: a new #GdkCursor.
+ * Returns: a new #CdkCursor.
  *
  * Since: 3.10
  */
-GdkCursor *
-cdk_cursor_new_from_surface (GdkDisplay      *display,
+CdkCursor *
+cdk_cursor_new_from_surface (CdkDisplay      *display,
 			     cairo_surface_t *surface,
 			     gdouble          x,
 			     gdouble          y)
@@ -418,17 +418,17 @@ cdk_cursor_new_from_surface (GdkDisplay      *display,
 }
 /**
  * cdk_cursor_get_display:
- * @cursor: a #GdkCursor.
+ * @cursor: a #CdkCursor.
  *
- * Returns the display on which the #GdkCursor is defined.
+ * Returns the display on which the #CdkCursor is defined.
  *
- * Returns: (transfer none): the #GdkDisplay associated to @cursor
+ * Returns: (transfer none): the #CdkDisplay associated to @cursor
  *
  * Since: 2.2
  */
 
-GdkDisplay *
-cdk_cursor_get_display (GdkCursor *cursor)
+CdkDisplay *
+cdk_cursor_get_display (CdkCursor *cursor)
 {
   g_return_val_if_fail (GDK_IS_CURSOR (cursor), NULL);
 
@@ -437,25 +437,25 @@ cdk_cursor_get_display (GdkCursor *cursor)
 
 /**
  * cdk_cursor_get_image:
- * @cursor: a #GdkCursor
+ * @cursor: a #CdkCursor
  *
- * Returns a #GdkPixbuf with the image used to display the cursor.
+ * Returns a #CdkPixbuf with the image used to display the cursor.
  *
  * Note that depending on the capabilities of the windowing system and 
  * on the cursor, GDK may not be able to obtain the image data. In this 
  * case, %NULL is returned.
  *
- * Returns: (nullable) (transfer full): a #GdkPixbuf representing
+ * Returns: (nullable) (transfer full): a #CdkPixbuf representing
  *   @cursor, or %NULL
  *
  * Since: 2.8
  */
-GdkPixbuf*  
-cdk_cursor_get_image (GdkCursor *cursor)
+CdkPixbuf*  
+cdk_cursor_get_image (CdkCursor *cursor)
 {
   int w, h;
   cairo_surface_t *surface;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gchar buf[32];
   double x_hot, y_hot;
   double x_scale, y_scale;
@@ -477,7 +477,7 @@ cdk_cursor_get_image (GdkCursor *cursor)
 
   if (x_scale != 1)
     {
-      GdkPixbuf *old;
+      CdkPixbuf *old;
 
       old = pixbuf;
       pixbuf = cdk_pixbuf_scale_simple (old,
@@ -498,7 +498,7 @@ cdk_cursor_get_image (GdkCursor *cursor)
 
 /**
  * cdk_cursor_get_surface:
- * @cursor: a #GdkCursor
+ * @cursor: a #CdkCursor
  * @x_hot: (optional) (out): Location to store the hotspot x position,
  *   or %NULL
  * @y_hot: (optional) (out): Location to store the hotspot y position,
@@ -516,7 +516,7 @@ cdk_cursor_get_image (GdkCursor *cursor)
  * Since: 3.10
  */
 cairo_surface_t *
-cdk_cursor_get_surface (GdkCursor *cursor,
+cdk_cursor_get_surface (CdkCursor *cursor,
 			gdouble   *x_hot,
 			gdouble   *y_hot)
 {

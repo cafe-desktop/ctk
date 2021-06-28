@@ -80,7 +80,7 @@ void       ctk_socket_add_id          (CtkSocket *socket_,
 GDK_AVAILABLE_IN_ALL
 Window     ctk_socket_get_id          (CtkSocket *socket_);
 GDK_AVAILABLE_IN_ALL
-GdkWindow *ctk_socket_get_plug_window (CtkSocket *socket_);
+CdkWindow *ctk_socket_get_plug_window (CtkSocket *socket_);
 
 G_END_DECLS
 

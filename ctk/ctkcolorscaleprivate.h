@@ -62,7 +62,7 @@ GType       ctk_color_scale_get_type (void) G_GNUC_CONST;
 CtkWidget * ctk_color_scale_new      (CtkAdjustment     *adjustment,
                                       CtkColorScaleType  type);
 void        ctk_color_scale_set_rgba (CtkColorScale     *scale,
-                                      const GdkRGBA     *color);
+                                      const CdkRGBA     *color);
 
 void        ctk_color_scale_draw_trough (CtkColorScale  *scale,
                                          cairo_t        *cr,

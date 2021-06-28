@@ -74,7 +74,7 @@ CtkTextHandleMode
                 _ctk_text_handle_get_mode     (CtkTextHandle         *handle);
 void            _ctk_text_handle_set_position (CtkTextHandle         *handle,
                                                CtkTextHandlePosition  pos,
-                                               GdkRectangle          *rect);
+                                               CdkRectangle          *rect);
 void            _ctk_text_handle_set_visible  (CtkTextHandle         *handle,
                                                CtkTextHandlePosition  pos,
                                                gboolean               visible);

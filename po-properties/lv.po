@@ -813,8 +813,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf, ko attēlot"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf, ko attēlot"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2185,16 +2185,16 @@ msgid "Cell background color"
 msgstr "Šūnas fona krāsa"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Šūnas fona krāsa kā GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Šūnas fona krāsa kā CdkColor"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Šūnas fona RGBA krāsa"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Šūnas fona krāsa kā GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Šūnas fona krāsa kā CdkRGBA"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2431,16 +2431,16 @@ msgid "Background color"
 msgstr "Fona krāsa"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
-msgstr "Fona krāsa kā GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Fona krāsa kā CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Fona krāsa kā RGBA"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
-msgstr "Fona krāsa kā GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Fona krāsa kā CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
@@ -2451,16 +2451,16 @@ msgid "Foreground color as a string"
 msgstr "Priekšplāna krāsa kā virkne"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
-msgstr "Priekšplāna krāsa kā GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Priekšplāna krāsa kā CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Priekšplāna krāsa kā RGBA"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
-msgstr "Priekšplāna krāsa kā GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Priekšplāna krāsa kā CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
@@ -2926,8 +2926,8 @@ msgid "Color"
 msgstr "Krāsa"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Pašreizējā krāsa kā GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Pašreizējā krāsa kā CdkRGBA"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4157,8 +4157,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Punktu skaits, kas vajadzīgs, lai izsauktu šo žestu"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "GdkWindow, par kuru saņemt notikumus"
+msgid "CdkWindow to receive events about"
+msgstr "CdkWindow, par kuru saņemt notikumus"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4495,8 +4495,8 @@ msgid "Animation"
 msgstr "Animācija"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation, ko attēlot"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation, ko attēlot"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7723,16 +7723,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Apmales stils ap statusa joslas tekstu"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "Asociētais GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "Asociētais CdkScreen"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "Asociētais GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "Asociētais CdkFrameClock"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
 msgid "Text direction"
@@ -8029,16 +8029,16 @@ msgid "Paragraph background color"
 msgstr "Rindkopas fona krāsa"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
-msgstr "Rindkopas fona krāsa kā GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Rindkopas fona krāsa kā CdkColor"
 
 #: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "Rindkopas fona RGBA"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Rindkopas fona RGBA kā GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Rindkopas fona RGBA kā CdkRGBA"
 
 #: ctk/ctktexttag.c:663
 msgid "Fallback"
@@ -9026,8 +9026,8 @@ msgid "Events"
 msgstr "Notikumi"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "Notikuma maska, kas nosaka, kāda veida GdkEvents ir šī logdaļa saņem"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "Notikuma maska, kas nosaka, kāda veida CdkEvents ir šī logdaļa saņem"
 
 #: ctk/ctkwidget.c:1263
 msgid "No show all"

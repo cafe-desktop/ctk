@@ -56,13 +56,13 @@
 
 
 /* This is the window corresponding to the key window */
-static GdkWindow   *current_keyboard_window;
+static CdkWindow   *current_keyboard_window;
 
 
-static void append_event                        (GdkEvent  *event,
+static void append_event                        (CdkEvent  *event,
                                                  gboolean   windowing);
 
-static GdkWindow *find_toplevel_under_pointer   (GdkDisplay *display,
+static CdkWindow *find_toplevel_under_pointer   (CdkDisplay *display,
                                                  NSPoint     screen_point,
                                                  gint       *x,
                                                  gint       *y);
@@ -75,7 +75,7 @@ cdk_quartz_ns_notification_callback (CFNotificationCenterRef  center,
                                      const void              *object,
                                      CFDictionaryRef          userInfo)
 {
-  GdkEvent new_event;
+  CdkEvent new_event;
 
   new_event.type = GDK_SETTING;
   new_event.setting.window = cdk_screen_get_root_window (_cdk_screen);
@@ -105,7 +105,7 @@ cdk_quartz_events_init_notifications (void)
   notifications_initialized = TRUE;
 
   /* Initialize any handlers for notifications we want to push to CTK
-   * through GdkEventSettings.
+   * through CdkEventSettings.
    */
 
   /* This is an undocumented *distributed* notification to listen for changes
@@ -129,7 +129,7 @@ _cdk_quartz_events_init (void)
 }
 
 gboolean
-_cdk_quartz_display_has_pending (GdkDisplay *display)
+_cdk_quartz_display_has_pending (CdkDisplay *display)
 {
   return (_cdk_event_queue_find_first (display) ||
          (_cdk_quartz_event_loop_check_pending ()));
@@ -138,12 +138,12 @@ _cdk_quartz_display_has_pending (GdkDisplay *display)
 void
 _cdk_quartz_events_break_all_grabs (guint32 time)
 {
-  GdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
+  CdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
   cdk_seat_ungrab (seat);
 }
 
 static void
-fixup_event (GdkEvent *event)
+fixup_event (CdkEvent *event)
 {
   if (event->any.window)
     g_object_ref (event->any.window);
@@ -155,7 +155,7 @@ fixup_event (GdkEvent *event)
 }
 
 static void
-append_event (GdkEvent *event,
+append_event (CdkEvent *event,
               gboolean  windowing)
 {
   GList *node;
@@ -169,17 +169,17 @@ append_event (GdkEvent *event,
 
 static gint
 cdk_event_apply_filters (NSEvent *nsevent,
-			 GdkEvent *event,
+			 CdkEvent *event,
 			 GList **filters)
 {
   GList *tmp_list;
-  GdkFilterReturn result;
+  CdkFilterReturn result;
 
   tmp_list = *filters;
 
   while (tmp_list)
     {
-      GdkEventFilter *filter = (GdkEventFilter*) tmp_list->data;
+      CdkEventFilter *filter = (CdkEventFilter*) tmp_list->data;
       GList *node;
 
       if ((filter->flags & GDK_EVENT_FILTER_REMOVED) != 0)
@@ -242,10 +242,10 @@ get_mouse_button_from_ns_event (NSEvent *event)
     }
 }
 
-static GdkModifierType
+static CdkModifierType
 get_mouse_button_modifiers_from_ns_buttons (NSUInteger nsbuttons)
 {
-  GdkModifierType modifiers = 0;
+  CdkModifierType modifiers = 0;
 
   if (nsbuttons & (1 << 0))
     modifiers |= GDK_BUTTON1_MASK;
@@ -261,11 +261,11 @@ get_mouse_button_modifiers_from_ns_buttons (NSUInteger nsbuttons)
   return modifiers;
 }
 
-static GdkModifierType
+static CdkModifierType
 get_mouse_button_modifiers_from_ns_event (NSEvent *event)
 {
   int button;
-  GdkModifierType state = 0;
+  CdkModifierType state = 0;
 
   /* This maps buttons 1 to 5 to GDK_BUTTON[1-5]_MASK */
   button = get_mouse_button_from_ns_event (event);
@@ -275,10 +275,10 @@ get_mouse_button_modifiers_from_ns_event (NSEvent *event)
   return state;
 }
 
-static GdkModifierType
+static CdkModifierType
 get_keyboard_modifiers_from_ns_flags (NSUInteger nsflags)
 {
-  GdkModifierType modifiers = 0;
+  CdkModifierType modifiers = 0;
 
   if (nsflags & GDK_QUARTZ_ALPHA_SHIFT_KEY_MASK)
     modifiers |= GDK_LOCK_MASK;
@@ -294,14 +294,14 @@ get_keyboard_modifiers_from_ns_flags (NSUInteger nsflags)
   return modifiers;
 }
 
-static GdkModifierType
+static CdkModifierType
 get_keyboard_modifiers_from_ns_event (NSEvent *nsevent)
 {
   return get_keyboard_modifiers_from_ns_flags ([nsevent modifierFlags]);
 }
 
 /* Return an event mask from an NSEvent */
-static GdkEventMask
+static CdkEventMask
 get_event_mask_from_ns_event (NSEvent *nsevent)
 {
   switch ([nsevent type])
@@ -332,7 +332,7 @@ get_event_mask_from_ns_event (NSEvent *nsevent)
 	      GDK_BUTTON3_MASK);
     case GDK_QUARTZ_OTHER_MOUSE_DRAGGED:
       {
-	GdkEventMask mask;
+	CdkEventMask mask;
 
 	mask = (GDK_POINTER_MOTION_MASK |
 		GDK_POINTER_MOTION_HINT_MASK |
@@ -379,15 +379,15 @@ get_event_mask_from_ns_event (NSEvent *nsevent)
 }
 
 static void
-get_window_point_from_screen_point (GdkWindow *window,
+get_window_point_from_screen_point (CdkWindow *window,
                                     NSPoint    screen_point,
                                     gint      *x,
                                     gint      *y)
 {
   NSPoint point;
-  GdkQuartzNSWindow *nswindow;
+  CdkQuartzNSWindow *nswindow;
 
-  nswindow = (GdkQuartzNSWindow*)(((GdkWindowImplQuartz *)window->impl)->toplevel);
+  nswindow = (CdkQuartzNSWindow*)(((CdkWindowImplQuartz *)window->impl)->toplevel);
   point = [nswindow convertPointFromScreen:screen_point];
   *x = point.x;
   *y = window->height - point.y;
@@ -409,21 +409,21 @@ is_mouse_button_press_event (NSEventType type)
   return FALSE;
 }
 
-static GdkWindow *
+static CdkWindow *
 get_toplevel_from_ns_event (NSEvent *nsevent,
                             NSPoint *screen_point,
                             gint    *x,
                             gint    *y)
 {
-  GdkWindow *toplevel = NULL;
+  CdkWindow *toplevel = NULL;
 
   if ([nsevent window])
     {
-      GdkQuartzView *view;
+      CdkQuartzView *view;
       NSPoint point, view_point;
       NSRect view_frame;
 
-      view = (GdkQuartzView *)[[nsevent window] contentView];
+      view = (CdkQuartzView *)[[nsevent window] contentView];
 
       toplevel = [view cdkWindow];
 
@@ -487,7 +487,7 @@ get_toplevel_from_ns_event (NSEvent *nsevent,
         }
       else
         {
-	  *screen_point = [(GdkQuartzNSWindow*)[nsevent window] convertPointToScreen:point];
+	  *screen_point = [(CdkQuartzNSWindow*)[nsevent window] convertPointToScreen:point];
           *x = point.x;
           *y = toplevel->height - point.y;
         }
@@ -510,13 +510,13 @@ get_toplevel_from_ns_event (NSEvent *nsevent,
   return toplevel;
 }
 
-static GdkEvent *
-create_focus_event (GdkWindow *window,
+static CdkEvent *
+create_focus_event (CdkWindow *window,
 		    gboolean   in)
 {
-  GdkEvent *event;
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkSeat *seat = cdk_display_get_default_seat (display);
+  CdkEvent *event;
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkSeat *seat = cdk_display_get_default_seat (display);
 
   event = cdk_event_new (GDK_FOCUS_CHANGE);
   event->focus_change.window = window;
@@ -530,13 +530,13 @@ create_focus_event (GdkWindow *window,
 
 
 static void
-generate_motion_event (GdkWindow *window)
+generate_motion_event (CdkWindow *window)
 {
   NSPoint screen_point;
-  GdkEvent *event;
+  CdkEvent *event;
   gint x, y, x_root, y_root;
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkSeat *seat = cdk_display_get_default_seat (display);
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkSeat *seat = cdk_display_get_default_seat (display);
 
   event = cdk_event_new (GDK_MOTION_NOTIFY);
   event->any.window = NULL;
@@ -566,15 +566,15 @@ generate_motion_event (GdkWindow *window)
 
 /* Note: Used to both set a new focus window and to unset the old one. */
 void
-_cdk_quartz_events_update_focus_window (GdkWindow *window,
+_cdk_quartz_events_update_focus_window (CdkWindow *window,
 					gboolean   got_focus)
 {
-  GdkEvent *event;
+  CdkEvent *event;
 
   if (got_focus && window == current_keyboard_window)
     return;
 
-  /* FIXME: Don't do this when grabbed? Or make GdkQuartzNSWindow
+  /* FIXME: Don't do this when grabbed? Or make CdkQuartzNSWindow
    * disallow it in the first place instead?
    */
   
@@ -610,16 +610,16 @@ _cdk_quartz_events_update_focus_window (GdkWindow *window,
 }
 
 void
-_cdk_quartz_events_send_map_event (GdkWindow *window)
+_cdk_quartz_events_send_map_event (CdkWindow *window)
 {
-  GdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   if (!impl->toplevel)
     return;
 
   if (window->event_mask & GDK_STRUCTURE_MASK)
     {
-      GdkEvent event;
+      CdkEvent event;
 
       event.any.type = GDK_MAP;
       event.any.window = window;
@@ -628,15 +628,15 @@ _cdk_quartz_events_send_map_event (GdkWindow *window)
     }
 }
 
-static GdkWindow *
-find_toplevel_under_pointer (GdkDisplay *display,
+static CdkWindow *
+find_toplevel_under_pointer (CdkDisplay *display,
                              NSPoint     screen_point,
                              gint       *x,
                              gint       *y)
 {
-  GdkWindow *toplevel;
-  GdkPointerWindowInfo *info;
-  GdkSeat *seat = cdk_display_get_default_seat (display);
+  CdkWindow *toplevel;
+  CdkPointerWindowInfo *info;
+  CdkSeat *seat = cdk_display_get_default_seat (display);
 
   info = _cdk_display_get_pointer_info (display, cdk_seat_get_pointer (seat));
   toplevel = info->toplevel_under_pointer;
@@ -644,7 +644,7 @@ find_toplevel_under_pointer (GdkDisplay *display,
   if (!(toplevel && WINDOW_IS_TOPLEVEL (toplevel)))
     {
       gint cdk_x = 0, cdk_y = 0;
-      GdkDevice *pointer = cdk_seat_get_pointer(seat);
+      CdkDevice *pointer = cdk_seat_get_pointer(seat);
       _cdk_quartz_window_nspoint_to_cdk_xy (screen_point, &cdk_x, &cdk_y);
       toplevel = cdk_device_get_window_at_position (pointer, &cdk_x, &cdk_y);
 
@@ -674,15 +674,15 @@ find_toplevel_under_pointer (GdkDisplay *display,
   return toplevel;
 }
 
-static GdkWindow *
+static CdkWindow *
 find_toplevel_for_keyboard_event (NSEvent *nsevent)
 {
-  GdkQuartzView *view = (GdkQuartzView *)[[nsevent window] contentView];
-  GdkWindow *window  = [view cdkWindow];
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkSeat *seat = cdk_display_get_default_seat (display);
-  GdkDevice *device = cdk_seat_get_keyboard (seat);
-  GdkDeviceGrabInfo *grab = _cdk_display_get_last_device_grab (display, device);
+  CdkQuartzView *view = (CdkQuartzView *)[[nsevent window] contentView];
+  CdkWindow *window  = [view cdkWindow];
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkSeat *seat = cdk_display_get_default_seat (display);
+  CdkDevice *device = cdk_seat_get_keyboard (seat);
+  CdkDeviceGrabInfo *grab = _cdk_display_get_last_device_grab (display, device);
 
   if (grab && grab->window && !grab->owner_events)
     window = cdk_window_get_effective_toplevel (grab->window);
@@ -690,17 +690,17 @@ find_toplevel_for_keyboard_event (NSEvent *nsevent)
   return window;
 }
 
-static GdkWindow *
+static CdkWindow *
 find_toplevel_for_mouse_event (NSEvent    *nsevent,
                                gint       *x,
                                gint       *y)
 {
   NSPoint screen_point;
   NSEventType event_type;
-  GdkWindow *toplevel;
-  GdkDisplay *display;
-  GdkDeviceGrabInfo *grab;
-  GdkSeat *seat;
+  CdkWindow *toplevel;
+  CdkDisplay *display;
+  CdkDeviceGrabInfo *grab;
+  CdkSeat *seat;
 
   toplevel = get_toplevel_from_ns_event (nsevent, &screen_point, x, y);
 
@@ -736,7 +736,7 @@ find_toplevel_for_mouse_event (NSEvent    *nsevent,
            * reported with respect to the key window, which could be
            * wrong.
            */
-          GdkWindow *toplevel_under_pointer;
+          CdkWindow *toplevel_under_pointer;
           gint x_tmp, y_tmp;
 
           toplevel_under_pointer = find_toplevel_under_pointer (display,
@@ -754,7 +754,7 @@ find_toplevel_for_mouse_event (NSEvent    *nsevent,
       else
         {
           /* Finally check the grab window. */
-          GdkWindow *grab_toplevel;
+          CdkWindow *grab_toplevel;
 
           grab_toplevel = cdk_window_get_effective_toplevel (grab->window);
           get_window_point_from_screen_point (grab_toplevel, screen_point,
@@ -768,7 +768,7 @@ find_toplevel_for_mouse_event (NSEvent    *nsevent,
   else 
     {
       /* The non-grabbed case. */
-      GdkWindow *toplevel_under_pointer;
+      CdkWindow *toplevel_under_pointer;
       gint x_tmp, y_tmp;
 
       /* Ignore all events but mouse moved that might be on the title
@@ -789,11 +789,11 @@ find_toplevel_for_mouse_event (NSEvent    *nsevent,
       if (toplevel_under_pointer
           && WINDOW_IS_TOPLEVEL (toplevel_under_pointer))
         {
-          GdkWindowImplQuartz *toplevel_impl;
+          CdkWindowImplQuartz *toplevel_impl;
 
           toplevel = toplevel_under_pointer;
 
-          toplevel_impl = (GdkWindowImplQuartz *)toplevel->impl;
+          toplevel_impl = (CdkWindowImplQuartz *)toplevel->impl;
 
           *x = x_tmp;
           *y = y_tmp;
@@ -808,19 +808,19 @@ find_toplevel_for_mouse_event (NSEvent    *nsevent,
 /* This function finds the correct window to send an event to, taking
  * into account grabs, event propagation, and event masks.
  */
-static GdkWindow *
+static CdkWindow *
 find_window_for_ns_event (NSEvent *nsevent, 
                           gint    *x, 
                           gint    *y,
                           gint    *x_root,
                           gint    *y_root)
 {
-  GdkQuartzView *view;
-  GdkWindow *toplevel;
+  CdkQuartzView *view;
+  CdkWindow *toplevel;
   NSPoint screen_point;
   NSEventType event_type;
 
-  view = (GdkQuartzView *)[[nsevent window] contentView];
+  view = (CdkQuartzView *)[[nsevent window] contentView];
 
   toplevel = get_toplevel_from_ns_event (nsevent, &screen_point, x, y);
   if (!toplevel)
@@ -870,18 +870,18 @@ find_window_for_ns_event (NSEvent *nsevent,
 }
 
 static void
-fill_crossing_event (GdkWindow       *toplevel,
-                     GdkEvent        *event,
+fill_crossing_event (CdkWindow       *toplevel,
+                     CdkEvent        *event,
                      NSEvent         *nsevent,
                      gint             x,
                      gint             y,
                      gint             x_root,
                      gint             y_root,
-                     GdkEventType     event_type,
-                     GdkCrossingMode  mode,
-                     GdkNotifyType    detail)
+                     CdkEventType     event_type,
+                     CdkCrossingMode  mode,
+                     CdkNotifyType    detail)
 {
-  GdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
+  CdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
 
   event->any.type = event_type;
   event->crossing.window = toplevel;
@@ -917,8 +917,8 @@ fill_crossing_event (GdkWindow       *toplevel,
 */
 #ifdef AVAILABLE_MAC_OS_X_VERSION_10_8_AND_LATER
 static void
-fill_pinch_event (GdkWindow *window,
-                  GdkEvent  *event,
+fill_pinch_event (CdkWindow *window,
+                  CdkEvent  *event,
                   NSEvent   *nsevent,
                   gint       x,
                   gint       y,
@@ -930,7 +930,7 @@ fill_pinch_event (GdkWindow *window,
     FP_STATE_IDLE,
     FP_STATE_UPDATE
   } last_state = FP_STATE_IDLE;
-  GdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
+  CdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
 
   event->any.type = GDK_TOUCHPAD_PINCH;
   event->touchpad_pinch.window = window;
@@ -1012,19 +1012,19 @@ fill_pinch_event (GdkWindow *window,
 #endif /* OSX Version >= 10.8 */
 
 static void
-fill_button_event (GdkWindow *window,
-                   GdkEvent  *event,
+fill_button_event (CdkWindow *window,
+                   CdkEvent  *event,
                    NSEvent   *nsevent,
                    gint       x,
                    gint       y,
                    gint       x_root,
                    gint       y_root)
 {
-  GdkEventType type;
-  GdkDevice *event_device = NULL;
+  CdkEventType type;
+  CdkDevice *event_device = NULL;
   gdouble *axes = NULL;
   gint state;
-  GdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
+  CdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
 
   state = get_keyboard_modifiers_from_ns_event (nsevent) |
          _cdk_quartz_events_get_current_mouse_modifiers ();
@@ -1080,16 +1080,16 @@ fill_button_event (GdkWindow *window,
 }
 
 static void
-fill_motion_event (GdkWindow *window,
-                   GdkEvent  *event,
+fill_motion_event (CdkWindow *window,
+                   CdkEvent  *event,
                    NSEvent   *nsevent,
                    gint       x,
                    gint       y,
                    gint       x_root,
                    gint       y_root)
 {
-  GdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
-  GdkDevice *event_device = NULL;
+  CdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
+  CdkDevice *event_device = NULL;
   gdouble *axes = NULL;
 
   event_device = _cdk_quartz_device_manager_core_device_for_ns_event (cdk_display_get_device_manager (_cdk_display),
@@ -1124,8 +1124,8 @@ fill_motion_event (GdkWindow *window,
 }
 
 static void
-fill_scroll_event (GdkWindow          *window,
-                   GdkEvent           *event,
+fill_scroll_event (CdkWindow          *window,
+                   CdkEvent           *event,
                    NSEvent            *nsevent,
                    gint                x,
                    gint                y,
@@ -1133,9 +1133,9 @@ fill_scroll_event (GdkWindow          *window,
                    gint                y_root,
                    gdouble             delta_x,
                    gdouble             delta_y,
-                   GdkScrollDirection  direction)
+                   CdkScrollDirection  direction)
 {
-  GdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
+  CdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
   NSPoint point;
 
   point = [nsevent locationInWindow];
@@ -1156,17 +1156,17 @@ fill_scroll_event (GdkWindow          *window,
 }
 
 static void
-fill_key_event (GdkWindow    *window,
-                GdkEvent     *event,
+fill_key_event (CdkWindow    *window,
+                CdkEvent     *event,
                 NSEvent      *nsevent,
-                GdkEventType  type)
+                CdkEventType  type)
 {
-  GdkEventPrivate *priv;
-  GdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
+  CdkEventPrivate *priv;
+  CdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
   gchar buf[7];
   gunichar c = 0;
 
-  priv = (GdkEventPrivate *) event;
+  priv = (CdkEventPrivate *) event;
   priv->windowing_data = [nsevent retain];
 
   event->any.type = type;
@@ -1285,8 +1285,8 @@ fill_key_event (GdkWindow    *window,
 }
 
 static gboolean
-synthesize_crossing_event (GdkWindow *window,
-                           GdkEvent  *event,
+synthesize_crossing_event (CdkWindow *window,
+                           CdkEvent  *event,
                            NSEvent   *nsevent,
                            gint       x,
                            gint       y,
@@ -1332,10 +1332,10 @@ synthesize_crossing_event (GdkWindow *window,
 }
 
 void
-_cdk_quartz_synthesize_null_key_event (GdkWindow *window)
+_cdk_quartz_synthesize_null_key_event (CdkWindow *window)
 {
-  GdkEvent *event;
-  GdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
+  CdkEvent *event;
+  CdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
 
   event = cdk_event_new (GDK_KEY_PRESS);
   event->any.type = GDK_KEY_PRESS;
@@ -1350,7 +1350,7 @@ _cdk_quartz_synthesize_null_key_event (GdkWindow *window)
   append_event(event, FALSE);
 }
 
-GdkModifierType
+CdkModifierType
 _cdk_quartz_events_get_current_keyboard_modifiers (void)
 {
   if (cdk_quartz_osx_version () >= GDK_OSX_SNOW_LEOPARD)
@@ -1360,7 +1360,7 @@ _cdk_quartz_events_get_current_keyboard_modifiers (void)
   else
     {
       guint carbon_modifiers = GetCurrentKeyModifiers ();
-      GdkModifierType modifiers = 0;
+      CdkModifierType modifiers = 0;
 
       if (carbon_modifiers & alphaLock)
         modifiers |= GDK_LOCK_MASK;
@@ -1377,7 +1377,7 @@ _cdk_quartz_events_get_current_keyboard_modifiers (void)
     }
 }
 
-GdkModifierType
+CdkModifierType
 _cdk_quartz_events_get_current_mouse_modifiers (void)
 {
   NSUInteger buttons = 0;
@@ -1397,15 +1397,15 @@ _cdk_quartz_events_get_current_mouse_modifiers (void)
 /* Detect window resizing */
 
 static gboolean
-test_resize (NSEvent *event, GdkWindow *toplevel, gint x, gint y)
+test_resize (NSEvent *event, CdkWindow *toplevel, gint x, gint y)
 {
-  GdkWindowImplQuartz *toplevel_impl;
+  CdkWindowImplQuartz *toplevel_impl;
   gboolean lion;
 
   /* Resizing from the resize indicator only begins if an GDK_QUARTZ_LEFT_MOUSE_BUTTON
    * event is received in the resizing area.
    */
-  toplevel_impl = (GdkWindowImplQuartz *)toplevel->impl;
+  toplevel_impl = (CdkWindowImplQuartz *)toplevel->impl;
   if ([toplevel_impl->toplevel showsResizeIndicator])
   if ([event type] == GDK_QUARTZ_LEFT_MOUSE_DOWN &&
       [toplevel_impl->toplevel showsResizeIndicator])
@@ -1441,7 +1441,7 @@ test_resize (NSEvent *event, GdkWindow *toplevel, gint x, gint y)
    * do receive, for instance, a right mouse down event for a GDK window
    * for x-coordinate range [-3, 0], but we do not want to forward this
    * into GDK. Forwarding such events into GDK will confuse the pointer
-   * window finding code, because there are no GdkWindows present in
+   * window finding code, because there are no CdkWindows present in
    * the range [-3, 0].
    */
   lion = cdk_quartz_osx_version () >= GDK_OSX_LION;
@@ -1468,12 +1468,12 @@ test_resize (NSEvent *event, GdkWindow *toplevel, gint x, gint y)
 #endif
 
 static gboolean
-cdk_event_translate (GdkEvent *event,
+cdk_event_translate (CdkEvent *event,
                      NSEvent  *nsevent)
 {
   NSEventType event_type;
   NSWindow *nswindow;
-  GdkWindow *window;
+  CdkWindow *window;
   int x, y;
   int x_root, y_root;
   gboolean return_val;
@@ -1499,7 +1499,7 @@ cdk_event_translate (GdkEvent *event,
   if (_cdk_default_filters)
     {
       /* Apply global filters */
-      GdkFilterReturn result;
+      CdkFilterReturn result;
 
       result = cdk_event_apply_filters (nsevent, event, &_cdk_default_filters);
       if (result != GDK_FILTER_CONTINUE)
@@ -1521,13 +1521,13 @@ cdk_event_translate (GdkEvent *event,
   nswindow = [nsevent window];
 
   /* Ignore events for windows not created by GDK. */
-  if (nswindow && ![[nswindow contentView] isKindOfClass:[GdkQuartzView class]])
+  if (nswindow && ![[nswindow contentView] isKindOfClass:[CdkQuartzView class]])
     return FALSE;
 
   /* Ignore events for ones with no windows */
   if (!nswindow)
     {
-      GdkWindow *toplevel = NULL;
+      CdkWindow *toplevel = NULL;
 
       if (event_type == GDK_QUARTZ_MOUSE_MOVED)
         {
@@ -1551,16 +1551,16 @@ cdk_event_translate (GdkEvent *event,
    * dragged. This is a workaround for the window getting events for
    * the window title.
    */
-  if ([(GdkQuartzNSWindow *)nswindow isInMove])
+  if ([(CdkQuartzNSWindow *)nswindow isInMove])
     {
       _cdk_quartz_events_break_all_grabs (get_time_from_ns_event (nsevent));
       return FALSE;
     }
 
   /* Also when in a manual resize or move , we ignore events so that
-   * these are pushed to GdkQuartzNSWindow's sendEvent handler.
+   * these are pushed to CdkQuartzNSWindow's sendEvent handler.
    */
-  if ([(GdkQuartzNSWindow *)nswindow isInManualResizeOrMove])
+  if ([(CdkQuartzNSWindow *)nswindow isInManualResizeOrMove])
     return FALSE;
 
   /* Find the right GDK window to send the event to, taking grabs and
@@ -1577,7 +1577,7 @@ cdk_event_translate (GdkEvent *event,
   /* Apply any window filters. */
   if (GDK_IS_WINDOW (window))
     {
-      GdkFilterReturn result;
+      CdkFilterReturn result;
 
       if (window->filters)
 	{
@@ -1604,7 +1604,7 @@ cdk_event_translate (GdkEvent *event,
        event_type == GDK_QUARTZ_OTHER_MOUSE_DOWN ||
        event_type == GDK_QUARTZ_LEFT_MOUSE_DOWN))
     {
-      GdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+      CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
 
       if (![NSApp isActive])
         {
@@ -1613,8 +1613,8 @@ cdk_event_translate (GdkEvent *event,
         }
       else if (![impl->toplevel isKeyWindow])
         {
-          GdkDeviceGrabInfo *grab;
-          GdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
+          CdkDeviceGrabInfo *grab;
+          CdkSeat *seat = cdk_display_get_default_seat (_cdk_display);
 
           grab = _cdk_display_get_last_device_grab (_cdk_display,
                                                     cdk_seat_get_pointer (seat));
@@ -1646,7 +1646,7 @@ cdk_event_translate (GdkEvent *event,
 
     case GDK_QUARTZ_SCROLL_WHEEL:
       {
-        GdkScrollDirection direction;
+        CdkScrollDirection direction;
 	float dx;
 	float dy;
 #ifdef AVAILABLE_MAC_OS_X_VERSION_10_7_AND_LATER
@@ -1693,7 +1693,7 @@ cdk_event_translate (GdkEvent *event,
 	    if (cdk_quartz_osx_version() >= GDK_OSX_LION &&
 		[nsevent hasPreciseScrollingDeltas])
               {
-                GdkEvent *emulated_event;
+                CdkEvent *emulated_event;
 
                 emulated_event = cdk_event_new (GDK_SCROLL);
                 cdk_event_set_pointer_emulated (emulated_event, TRUE);
@@ -1733,7 +1733,7 @@ cdk_event_translate (GdkEvent *event,
     case GDK_QUARTZ_KEY_UP:
     case GDK_QUARTZ_FLAGS_CHANGED:
       {
-        GdkEventType type;
+        CdkEventType type;
 
         type = _cdk_quartz_keys_event_type (nsevent);
         if (type == GDK_NOTHING)
@@ -1770,14 +1770,14 @@ cdk_event_translate (GdkEvent *event,
 }
 
 void
-_cdk_quartz_display_queue_events (GdkDisplay *display)
+_cdk_quartz_display_queue_events (CdkDisplay *display)
 {  
   NSEvent *nsevent;
 
   nsevent = _cdk_quartz_event_loop_get_pending ();
   if (nsevent)
     {
-      GdkEvent *event;
+      CdkEvent *event;
       GList *node;
 
       event = cdk_event_new (GDK_NOTHING);
@@ -1785,13 +1785,13 @@ _cdk_quartz_display_queue_events (GdkDisplay *display)
       event->any.window = NULL;
       event->any.send_event = FALSE;
 
-      ((GdkEventPrivate *)event)->flags |= GDK_EVENT_PENDING;
+      ((CdkEventPrivate *)event)->flags |= GDK_EVENT_PENDING;
 
       node = _cdk_event_queue_append (display, event);
 
       if (cdk_event_translate (event, nsevent))
         {
-	  ((GdkEventPrivate *)event)->flags &= ~GDK_EVENT_PENDING;
+	  ((CdkEventPrivate *)event)->flags &= ~GDK_EVENT_PENDING;
           _cdk_windowing_got_event (display, node, event, 0);
         }
       else
@@ -1810,14 +1810,14 @@ _cdk_quartz_display_queue_events (GdkDisplay *display)
 }
 
 void
-_cdk_quartz_screen_broadcast_client_message (GdkScreen *screen,
-                                             GdkEvent  *event)
+_cdk_quartz_screen_broadcast_client_message (CdkScreen *screen,
+                                             CdkEvent  *event)
 {
   /* Not supported. */
 }
 
 gboolean
-_cdk_quartz_screen_get_setting (GdkScreen   *screen,
+_cdk_quartz_screen_get_setting (CdkScreen   *screen,
                                 const gchar *name,
                                 GValue      *value)
 {
@@ -1901,12 +1901,12 @@ _cdk_quartz_screen_get_setting (GdkScreen   *screen,
 }
 
 void
-_cdk_quartz_display_event_data_copy (GdkDisplay     *display,
-                                     const GdkEvent *src,
-                                     GdkEvent       *dst)
+_cdk_quartz_display_event_data_copy (CdkDisplay     *display,
+                                     const CdkEvent *src,
+                                     CdkEvent       *dst)
 {
-  GdkEventPrivate *priv_src = (GdkEventPrivate *) src;
-  GdkEventPrivate *priv_dst = (GdkEventPrivate *) dst;
+  CdkEventPrivate *priv_src = (CdkEventPrivate *) src;
+  CdkEventPrivate *priv_dst = (CdkEventPrivate *) dst;
 
   if (priv_src->windowing_data)
     {
@@ -1916,10 +1916,10 @@ _cdk_quartz_display_event_data_copy (GdkDisplay     *display,
 }
 
 void
-_cdk_quartz_display_event_data_free (GdkDisplay *display,
-                                     GdkEvent   *event)
+_cdk_quartz_display_event_data_free (CdkDisplay *display,
+                                     CdkEvent   *event)
 {
-  GdkEventPrivate *priv = (GdkEventPrivate *) event;
+  CdkEventPrivate *priv = (CdkEventPrivate *) event;
 
   if (priv->windowing_data)
     {

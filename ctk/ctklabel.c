@@ -328,7 +328,7 @@ typedef struct
 
 struct _CtkLabelSelectionInfo
 {
-  GdkWindow *window;
+  CdkWindow *window;
   gint selection_anchor;
   gint selection_end;
   CtkWidget *popup_menu;
@@ -426,9 +426,9 @@ static void ctk_label_map               (CtkWidget        *widget);
 static void ctk_label_unmap             (CtkWidget        *widget);
 
 static gboolean ctk_label_motion            (CtkWidget        *widget,
-					     GdkEventMotion   *event);
+					     CdkEventMotion   *event);
 static gboolean ctk_label_leave_notify      (CtkWidget        *widget,
-                                             GdkEventCrossing *event);
+                                             CdkEventCrossing *event);
 
 static void     ctk_label_grab_focus        (CtkWidget        *widget);
 
@@ -458,7 +458,7 @@ static void ctk_label_recalculate                (CtkLabel      *label);
 static void ctk_label_hierarchy_changed          (CtkWidget     *widget,
 						  CtkWidget     *old_toplevel);
 static void ctk_label_screen_changed             (CtkWidget     *widget,
-						  GdkScreen     *old_screen);
+						  CdkScreen     *old_screen);
 static gboolean ctk_label_popup_menu             (CtkWidget     *widget);
 
 static void ctk_label_create_window       (CtkLabel *label);
@@ -481,7 +481,7 @@ static gboolean ctk_label_mnemonic_activate (CtkWidget         *widget,
 static void     ctk_label_setup_mnemonic    (CtkLabel          *label,
 					     guint              last_key);
 static void     ctk_label_drag_data_get     (CtkWidget         *widget,
-					     GdkDragContext    *context,
+					     CdkDragContext    *context,
 					     CtkSelectionData  *selection_data,
 					     guint              info,
 					     guint              time);
@@ -516,7 +516,7 @@ static void ctk_label_move_cursor        (CtkLabel        *label,
 static void ctk_label_copy_clipboard     (CtkLabel        *label);
 static void ctk_label_select_all         (CtkLabel        *label);
 static void ctk_label_do_popup           (CtkLabel        *label,
-					  const GdkEvent  *event);
+					  const CdkEvent  *event);
 static gint ctk_label_move_forward_word  (CtkLabel        *label,
 					  gint             start);
 static gint ctk_label_move_backward_word (CtkLabel        *label,
@@ -1430,7 +1430,7 @@ attribute_from_text (CtkBuilder   *builder,
   PangoAttrType   type;
   PangoLanguage  *language;
   PangoFontDescription *font_desc;
-  GdkColor       *color;
+  CdkColor       *color;
   GValue          val = G_VALUE_INIT;
 
   if (!ctk_builder_value_from_string_type (builder, PANGO_TYPE_ATTR_TYPE, name, &val, error))
@@ -2001,7 +2001,7 @@ label_mnemonics_visible_changed (CtkWindow  *window,
 
 static void
 ctk_label_screen_changed (CtkWidget *widget,
-			  GdkScreen *old_screen)
+			  CdkScreen *old_screen)
 {
   CtkSettings *settings;
   gboolean shortcuts_connected;
@@ -3495,7 +3495,7 @@ ctk_label_update_layout_attributes (CtkLabel *label)
 
   if (priv->select_info && priv->select_info->links)
     {
-      GdkRGBA link_color;
+      CdkRGBA link_color;
       PangoAttribute *attribute;
       GList *list;
 
@@ -4078,7 +4078,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
 ctk_label_get_ink_rect (CtkLabel     *label,
-                        GdkRectangle *rect)
+                        CdkRectangle *rect)
 {
   CtkLabelPrivate *priv = label->priv;
   CtkStyleContext *context;
@@ -4104,7 +4104,7 @@ ctk_label_size_allocate (CtkWidget     *widget,
 {
   CtkLabel *label = CTK_LABEL (widget);
   CtkLabelPrivate *priv = label->priv;
-  GdkRectangle clip_rect, clip;
+  CdkRectangle clip_rect, clip;
 
   CTK_WIDGET_CLASS (ctk_label_parent_class)->size_allocate (widget, allocation);
 
@@ -4141,8 +4141,8 @@ ctk_label_update_cursor (CtkLabel *label)
 
   if (ctk_widget_get_realized (widget))
     {
-      GdkDisplay *display;
-      GdkCursor *cursor;
+      CdkDisplay *display;
+      CdkCursor *cursor;
 
       if (ctk_widget_is_sensitive (widget))
         {
@@ -4374,7 +4374,7 @@ ctk_label_render (CtkCssGadget *gadget,
           CtkLabelLink *active_link;
           gint range[2];
           cairo_region_t *clip;
-          GdkRectangle rect;
+          CdkRectangle rect;
 
           if (info->selectable &&
               ctk_widget_has_focus (widget) &&
@@ -4966,8 +4966,8 @@ ctk_label_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
   CtkLabelPrivate *priv = label->priv;
   CtkLabelSelectionInfo *info = priv->select_info;
   CtkWidget *widget = CTK_WIDGET (label);
-  GdkEventSequence *sequence;
-  const GdkEvent *event;
+  CdkEventSequence *sequence;
+  const CdkEvent *event;
   guint button;
 
   if (info == NULL)
@@ -5049,7 +5049,7 @@ ctk_label_multipress_gesture_released (CtkGestureMultiPress *gesture,
 {
   CtkLabelPrivate *priv = label->priv;
   CtkLabelSelectionInfo *info = priv->select_info;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   gint index;
 
   if (info == NULL)
@@ -5111,7 +5111,7 @@ connect_mnemonics_visible_notify (CtkLabel *label)
 
 static void
 drag_begin_cb (CtkWidget      *widget,
-               GdkDragContext *context,
+               CdkDragContext *context,
                gpointer        data)
 {
   CtkLabel *label = CTK_LABEL (widget);
@@ -5164,9 +5164,9 @@ ctk_label_drag_gesture_begin (CtkGestureDrag *gesture,
 {
   CtkLabelPrivate *priv = label->priv;
   CtkLabelSelectionInfo *info = priv->select_info;
-  GdkModifierType state_mask;
-  GdkEventSequence *sequence;
-  const GdkEvent *event;
+  CdkModifierType state_mask;
+  CdkEventSequence *sequence;
+  const CdkEvent *event;
   gint min, max, index;
 
   if (!info || !info->selectable)
@@ -5234,7 +5234,7 @@ ctk_label_drag_gesture_update (CtkGestureDrag *gesture,
   CtkLabelPrivate *priv = label->priv;
   CtkLabelSelectionInfo *info = priv->select_info;
   CtkWidget *widget = CTK_WIDGET (label);
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   gdouble x, y;
   gint index;
 
@@ -5252,7 +5252,7 @@ ctk_label_drag_gesture_update (CtkGestureDrag *gesture,
 				    x, y))
 	{
 	  CtkTargetList *target_list = ctk_target_list_new (NULL, 0);
-          const GdkEvent *event;
+          const CdkEvent *event;
 
           event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
 	  ctk_target_list_add_text_targets (target_list, 0);
@@ -5261,7 +5261,7 @@ ctk_label_drag_gesture_update (CtkGestureDrag *gesture,
                             G_CALLBACK (drag_begin_cb), NULL);
 	  ctk_drag_begin_with_coordinates (widget, target_list,
                                            GDK_ACTION_COPY,
-                                           1, (GdkEvent*) event,
+                                           1, (CdkEvent*) event,
                                            info->drag_start_x,
                                            info->drag_start_y);
 
@@ -5383,11 +5383,11 @@ ctk_label_update_active_link (CtkWidget *widget,
 
 static gboolean
 ctk_label_motion (CtkWidget      *widget,
-                  GdkEventMotion *event)
+                  CdkEventMotion *event)
 {
   gdouble x, y;
 
-  cdk_event_get_coords ((GdkEvent *) event, &x, &y);
+  cdk_event_get_coords ((CdkEvent *) event, &x, &y);
   ctk_label_update_active_link (widget, x, y);
 
   return CTK_WIDGET_CLASS (ctk_label_parent_class)->motion_notify_event (widget, event);
@@ -5395,7 +5395,7 @@ ctk_label_motion (CtkWidget      *widget,
 
 static gboolean
 ctk_label_leave_notify (CtkWidget        *widget,
-                        GdkEventCrossing *event)
+                        CdkEventCrossing *event)
 {
   CtkLabel *label = CTK_LABEL (widget);
   CtkLabelPrivate *priv = label->priv;
@@ -5419,7 +5419,7 @@ ctk_label_create_window (CtkLabel *label)
   CtkLabelPrivate *priv = label->priv;
   CtkAllocation allocation;
   CtkWidget *widget;
-  GdkWindowAttr attributes;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   g_assert (priv->select_info);
@@ -5698,7 +5698,7 @@ ctk_label_set_selection_text (CtkLabel         *label,
 
 static void
 ctk_label_drag_data_get (CtkWidget        *widget,
-			 GdkDragContext   *context,
+			 CdkDragContext   *context,
 			 CtkSelectionData *selection_data,
 			 guint             info,
 			 guint             time)
@@ -6179,7 +6179,7 @@ get_better_cursor (CtkLabel *label,
 		   gint      *y)
 {
   CtkLabelPrivate *priv = label->priv;
-  GdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (label)));
+  CdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (label)));
   PangoDirection keymap_direction = cdk_keymap_get_direction (keymap);
   PangoDirection cursor_direction = get_cursor_direction (label);
   gboolean split_cursor;
@@ -6285,7 +6285,7 @@ ctk_label_move_visually (CtkLabel *label,
 	strong = TRUE;
       else
 	{
-	  GdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (label)));
+	  CdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (label)));
 	  PangoDirection keymap_direction = cdk_keymap_get_direction (keymap);
 
 	  strong = keymap_direction == get_cursor_direction (label);
@@ -6622,7 +6622,7 @@ ctk_label_popup_menu (CtkWidget *widget)
 
 static void
 ctk_label_do_popup (CtkLabel       *label,
-                    const GdkEvent *event)
+                    const CdkEvent *event)
 {
   CtkLabelPrivate *priv = label->priv;
   CtkWidget *menuitem;

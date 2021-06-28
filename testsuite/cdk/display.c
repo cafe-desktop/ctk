@@ -5,7 +5,7 @@
 static void
 test_unset_display_subprocess1 (void)
 {
-  GdkDisplayManager *manager;
+  CdkDisplayManager *manager;
 
   g_unsetenv ("DISPLAY");
 
@@ -37,7 +37,7 @@ test_unset_display (void)
 static void
 test_bad_display_subprocess1 (void)
 {
-  GdkDisplayManager *manager;
+  CdkDisplayManager *manager;
 
   g_setenv ("DISPLAY", "poo", TRUE);
 

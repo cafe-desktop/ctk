@@ -29,18 +29,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_QUARTZ_WINDOW              (cdk_quartz_window_get_type ())
-#define GDK_QUARTZ_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_WINDOW, GdkQuartzWindow))
-#define GDK_QUARTZ_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_WINDOW, GdkQuartzWindowClass))
+#define GDK_QUARTZ_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_WINDOW, CdkQuartzWindow))
+#define GDK_QUARTZ_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_WINDOW, CdkQuartzWindowClass))
 #define GDK_IS_QUARTZ_WINDOW(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_WINDOW))
 #define GDK_IS_QUARTZ_WINDOW_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_QUARTZ_WINDOW))
-#define GDK_QUARTZ_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_WINDOW, GdkQuartzWindowClass))
+#define GDK_QUARTZ_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_WINDOW, CdkQuartzWindowClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkQuartzWindow GdkQuartzWindow;
+typedef struct _CdkQuartzWindow CdkQuartzWindow;
 #else
-typedef GdkWindow GdkQuartzWindow;
+typedef CdkWindow CdkQuartzWindow;
 #endif
-typedef struct _GdkQuartzWindowClass GdkQuartzWindowClass;
+typedef struct _CdkQuartzWindowClass CdkQuartzWindowClass;
 
 GDK_AVAILABLE_IN_ALL
 GType     cdk_quartz_window_get_type     (void);

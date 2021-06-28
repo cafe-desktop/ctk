@@ -133,7 +133,7 @@ msgstr "उपकरण"
 
 #: cdk/cdkdevice.c:329
 #, fuzzy
-#| msgid "The GdkFont that is currently selected"
+#| msgid "The CdkFont that is currently selected"
 msgid "The tool that is currently used with this device"
 msgstr "यस प्रकारको यन्त्र हाल समर्थित छैन"
 
@@ -826,7 +826,7 @@ msgid "Pixbuf"
 msgstr "पिक्सबफ"
 
 #: ctk/deprecated/ctkstatusicon.c:228 ctk/ctkimage.c:256
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr "एउटा जिडिके पिक्सबफ देखाउनको लागि"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:269 ctk/ctkrecentmanager.c:289
@@ -2287,7 +2287,7 @@ msgid "Cell background color"
 msgstr "कोठाको पृष्ठभूमिको रङ्ग"
 
 #: ctk/ctkcellrenderer.c:403
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr "एउटा जिडिके रङ्ग जस्तो कोठाको पृष्ठभूमिको रङ्ग "
 
 #: ctk/ctkcellrenderer.c:417
@@ -2298,8 +2298,8 @@ msgstr "कोठाको पृष्ठभूमिको रङ्गको 
 
 #: ctk/ctkcellrenderer.c:418
 #, fuzzy
-#| msgid "Cell background color as a GdkColor"
-msgid "Cell background color as a GdkRGBA"
+#| msgid "Cell background color as a CdkColor"
+msgid "Cell background color as a CdkRGBA"
 msgstr "एउटा जिडिके रङ्ग जस्तो कोठाको पृष्ठभूमिको रङ्ग "
 
 #: ctk/ctkcellrenderer.c:425
@@ -2545,7 +2545,7 @@ msgid "Background color"
 msgstr "पृष्ठभूमिको रङ्ग"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:231
-msgid "Background color as a GdkColor"
+msgid "Background color as a CdkColor"
 msgstr "जिडिके रङ्ग जस्तो पृष्ठभूमिको रङ्ग"
 
 #: ctk/ctkcellrenderertext.c:313
@@ -2556,8 +2556,8 @@ msgstr "रङको हेक्साडेसिमल RGBA मान"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:246
 #, fuzzy
-#| msgid "Background color as a GdkColor"
-msgid "Background color as a GdkRGBA"
+#| msgid "Background color as a CdkColor"
+msgid "Background color as a CdkRGBA"
 msgstr "पृष्ठभूमी रङ"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:261
@@ -2569,7 +2569,7 @@ msgid "Foreground color as a string"
 msgstr "सूत्र जस्तो दृष्य जगतको रङ्ग"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:277
-msgid "Foreground color as a GdkColor"
+msgid "Foreground color as a CdkColor"
 msgstr "जिडिके रङ्ग जस्तो दृष्य जगतको रङ्ग"
 
 #: ctk/ctkcellrenderertext.c:349
@@ -2580,8 +2580,8 @@ msgstr "दृष्य जगतको रङ्ग"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:292
 #, fuzzy
-#| msgid "Foreground color as a GdkColor"
-msgid "Foreground color as a GdkRGBA"
+#| msgid "Foreground color as a CdkColor"
+msgid "Foreground color as a CdkRGBA"
 msgstr "अग्रभूमि रङ चयन गर्नुहोस्"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:856 ctk/ctktexttag.c:308 ctk/ctktextview.c:820
@@ -3059,8 +3059,8 @@ msgstr "रङ्ग"
 
 #: ctk/ctkcolorchooser.c:68
 #, fuzzy
-#| msgid "Foreground color as a GdkColor"
-msgid "Current color, as a GdkRGBA"
+#| msgid "Foreground color as a CdkColor"
+msgid "Current color, as a CdkRGBA"
 msgstr "रङको इतिहासमा हालको रङ थप्नुहोस्"
 
 #: ctk/ctkcolorchooser.c:88
@@ -4370,7 +4370,7 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "टेवलमा पंक्तिहरुको संख्या"
 
 #: ctk/ctkgesture.c:886 ctk/ctkgesture.c:887
-msgid "GdkWindow to receive events about"
+msgid "CdkWindow to receive events about"
 msgstr ""
 
 #: ctk/ctkgesturelongpress.c:284
@@ -4765,7 +4765,7 @@ msgid "Animation"
 msgstr "रङ्गचित्राङकन"
 
 #: ctk/ctkimage.c:328
-msgid "GdkPixbufAnimation to display"
+msgid "CdkPixbufAnimation to display"
 msgstr "जिडिके पिक्सबफ चित्राङ्कन देखाउनलाई"
 
 #: ctk/ctkimage.c:372
@@ -8329,7 +8329,7 @@ msgstr "स्टाटसबार पाठको वरिपरि बिभ
 
 #: ctk/ctkstylecontext.c:229
 #, fuzzy
-msgid "The associated GdkScreen"
+msgid "The associated CdkScreen"
 msgstr "सहायक"
 
 #: ctk/ctkstylecontext.c:235
@@ -8338,7 +8338,7 @@ msgstr ""
 
 #: ctk/ctkstylecontext.c:236
 #, fuzzy
-msgid "The associated GdkFrameClock"
+msgid "The associated CdkFrameClock"
 msgstr "सहायक"
 
 #: ctk/ctkstylecontext.c:243 ctk/ctktexttag.c:299
@@ -8652,7 +8652,7 @@ msgstr "अनुच्छेद पृष्ठभूमिको रङ"
 
 #: ctk/ctktexttag.c:630
 #, fuzzy
-msgid "Paragraph background color as a GdkColor"
+msgid "Paragraph background color as a CdkColor"
 msgstr "जीडीके रङका रूपमा अनुच्छेद पृष्ठभूमिको रङ (संभवतः नछुट्याइएको)"
 
 #: ctk/ctktexttag.c:644
@@ -8662,7 +8662,7 @@ msgstr "अनुच्छेद पृष्ठभूमिको रङ"
 
 #: ctk/ctktexttag.c:645
 #, fuzzy
-msgid "Paragraph background RGBA as a GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
 msgstr "स्ट्रिङ जस्तो अनुच्छेद पृष्ठभूमिको रङ"
 
 #: ctk/ctktexttag.c:662
@@ -9735,7 +9735,7 @@ msgid "Events"
 msgstr "घटनाहरू"
 
 #: ctk/ctkwidget.c:1247
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr "घटना मुकुण्डो जसमा यो औजारले कस्तो किसिमको जीटीके घटना प्राप्त गर्छ भन्ने कुराको निर्धारण हुन्छ "
 
 #: ctk/ctkwidget.c:1254
@@ -10422,14 +10422,14 @@ msgstr "पूर्वनिर्धारित फाँट शीर्ष�
 #~ msgid "Whether the statusbar has a grip for resizing the toplevel"
 #~ msgstr "माथिल्लो अवस्थाको पुनराकृतिको लागि जहा स्टाटसबारसँग एउटा डोरी छ"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
 #~ msgstr "जीडीके रङ्गका रूपमा पृष्टभूमि रङ्ग (संभवतः नछुट्याइएको)"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
 #~ msgstr "जिडिके रङ्ग जस्तो अघिल्तिरको रङ्ग"
 
 #, fuzzy
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 #~ msgstr "जीडीके रङ्गका रूपमा पृष्टभूमि रङ्ग (संभवतः नछुट्याइएको)"
 
 #~ msgid "Horizontal Adjustment for the widget"
@@ -10496,7 +10496,7 @@ msgstr "पूर्वनिर्धारित फाँट शीर्ष�
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "पिक्सबफको पिक्सेल तथ्याङ्कलाई एउटा सङ्केतक"
 
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "रेण्डरकर्ताका लागि जिडिके स्क्रिन"
 
 #, fuzzy
@@ -10523,16 +10523,16 @@ msgstr "पूर्वनिर्धारित फाँट शीर्ष�
 #~ msgid "Pixmap"
 #~ msgstr "पिक्सनक्शाङ्कन"
 
-#~ msgid "A GdkPixmap to display"
+#~ msgid "A CdkPixmap to display"
 #~ msgstr "एउटा जिडिके पिक्सम्याप देखाउनको लागि"
 
-#~ msgid "A GdkImage to display"
+#~ msgid "A CdkImage to display"
 #~ msgstr "एउटा जिडिके चित्र देखाउनको लागि"
 
 #~ msgid "Mask"
 #~ msgstr "मुकुन्डो"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
 #~ msgstr "जीटीके छविचित्र वा जीटीके पिक्सनक्सासँग प्रयोग हुने मुकुण्डोको विटनक्सा "
 
 #~ msgid "Whether to put a separator between the message dialog's text and the buttons"

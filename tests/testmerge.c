@@ -454,12 +454,12 @@ create_tree_view (CtkUIManager *merge)
 
 static gboolean
 area_press (CtkWidget      *drawing_area,
-	    GdkEventButton *event,
+	    CdkEventButton *event,
 	    CtkUIManager   *merge)
 {
   ctk_widget_grab_focus (drawing_area);
 
-  if (cdk_event_triggers_context_menu ((GdkEvent *) event) &&
+  if (cdk_event_triggers_context_menu ((CdkEvent *) event) &&
       event->type == GDK_BUTTON_PRESS)
     {
       CtkWidget *menu = ctk_ui_manager_get_widget (merge, "/FileMenu");

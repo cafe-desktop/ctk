@@ -74,7 +74,7 @@ ctk_window_accessible_notify_ctk (GObject    *obj,
 
 static gboolean
 window_state_event_cb (CtkWidget           *widget,
-                       GdkEventWindowState *event)
+                       CdkEventWindowState *event)
 {
   AtkObject* obj;
 
@@ -240,8 +240,8 @@ ctk_window_accessible_ref_state_set (AtkObject *accessible)
   AtkStateSet *state_set;
   CtkWidget *widget;
   CtkWindow *window;
-  GdkWindow *cdk_window;
-  GdkWindowState state;
+  CdkWindow *cdk_window;
+  CdkWindowState state;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
   if (widget == NULL)
@@ -319,7 +319,7 @@ static AtkAttributeSet *
 ctk_widget_accessible_get_attributes (AtkObject *obj)
 {
   CtkWidget *window;
-  GdkWindowTypeHint hint;
+  CdkWindowTypeHint hint;
   AtkAttributeSet *attributes;
   AtkAttribute *attr;
   GEnumClass *class;
@@ -382,8 +382,8 @@ ctk_window_accessible_get_extents (AtkComponent  *component,
                                    AtkCoordType   coord_type)
 {
   CtkWidget *widget;
-  GdkWindow *window;
-  GdkRectangle rect;
+  CdkWindow *window;
+  CdkRectangle rect;
   gint x_toplevel, y_toplevel;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
@@ -430,8 +430,8 @@ ctk_window_accessible_get_size (AtkComponent *component,
                                 gint         *height)
 {
   CtkWidget *widget;
-  GdkWindow *window;
-  GdkRectangle rect;
+  CdkWindow *window;
+  CdkRectangle rect;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (component));
   if (widget == NULL)

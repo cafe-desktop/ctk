@@ -29,7 +29,7 @@
 
 /**
  * cdk_pointer_ungrab:
- * @time_: a timestamp from a #GdkEvent, or %GDK_CURRENT_TIME if no 
+ * @time_: a timestamp from a #CdkEvent, or %GDK_CURRENT_TIME if no 
  *  timestamp is available.
  *
  * Ungrabs the pointer on the default display, if it is grabbed by this 
@@ -65,7 +65,7 @@ cdk_pointer_is_grabbed (void)
 
 /**
  * cdk_keyboard_ungrab:
- * @time_: a timestamp from a #GdkEvent, or %GDK_CURRENT_TIME if no
+ * @time_: a timestamp from a #CdkEvent, or %GDK_CURRENT_TIME if no
  *        timestamp is available.
  * 
  * Ungrabs the keyboard on the default display, if it is grabbed by this 
@@ -88,7 +88,7 @@ cdk_keyboard_ungrab (guint32 time)
  * Obtains the window underneath the mouse pointer, returning the
  * location of that window in @win_x, @win_y. Returns %NULL if the
  * window under the mouse pointer is not known to GDK (if the window
- * belongs to another application and a #GdkWindow hasn’t been created
+ * belongs to another application and a #CdkWindow hasn’t been created
  * for it with cdk_window_foreign_new())
  *
  * NOTE: For multihead-aware widgets or applications use
@@ -98,7 +98,7 @@ cdk_keyboard_ungrab (guint32 time)
  *
  * Deprecated: 3.0: Use cdk_device_get_window_at_position() instead.
  **/
-GdkWindow*
+CdkWindow*
 cdk_window_at_pointer (gint *win_x,
 		       gint *win_y)
 {

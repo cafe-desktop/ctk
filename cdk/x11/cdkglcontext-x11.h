@@ -36,9 +36,9 @@
 
 G_BEGIN_DECLS
 
-struct _GdkX11GLContext
+struct _CdkX11GLContext
 {
-  GdkGLContext parent_instance;
+  CdkGLContext parent_instance;
 
   GLXContext glx_context;
   GLXFBConfig glx_config;
@@ -51,20 +51,20 @@ struct _GdkX11GLContext
   guint do_blit_swap : 1;
 };
 
-struct _GdkX11GLContextClass
+struct _CdkX11GLContextClass
 {
-  GdkGLContextClass parent_class;
+  CdkGLContextClass parent_class;
 };
 
-gboolean        cdk_x11_screen_init_gl                          (GdkScreen         *screen);
-GdkGLContext *  cdk_x11_window_create_gl_context                (GdkWindow         *window,
+gboolean        cdk_x11_screen_init_gl                          (CdkScreen         *screen);
+CdkGLContext *  cdk_x11_window_create_gl_context                (CdkWindow         *window,
 								 gboolean           attached,
-                                                                 GdkGLContext      *share,
+                                                                 CdkGLContext      *share,
                                                                  GError           **error);
-void            cdk_x11_window_invalidate_for_new_frame         (GdkWindow         *window,
+void            cdk_x11_window_invalidate_for_new_frame         (CdkWindow         *window,
                                                                  cairo_region_t    *update_area);
-gboolean        cdk_x11_display_make_gl_context_current         (GdkDisplay        *display,
-                                                                 GdkGLContext      *context);
+gboolean        cdk_x11_display_make_gl_context_current         (CdkDisplay        *display,
+                                                                 CdkGLContext      *context);
 
 G_END_DECLS
 

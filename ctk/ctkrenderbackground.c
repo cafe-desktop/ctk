@@ -58,7 +58,7 @@ struct _CtkThemingBackground {
 static void
 _ctk_theming_background_paint_color (CtkThemingBackground *bg,
                                      cairo_t              *cr,
-                                     const GdkRGBA        *bg_color,
+                                     const CdkRGBA        *bg_color,
                                      CtkCssValue          *background_image)
 {
   gint n_values = _ctk_css_array_value_get_n_values (background_image);
@@ -345,7 +345,7 @@ ctk_css_style_render_background (CtkCssStyle      *style,
   CtkCssValue *background_image;
   CtkCssValue *blend_modes;
   CtkCssValue *box_shadow;
-  const GdkRGBA *bg_color;
+  const CdkRGBA *bg_color;
   gboolean needs_push_group;
   gint number_of_layers;
 
@@ -429,7 +429,7 @@ corner_value_is_right_angle (CtkCssValue *value)
 gboolean
 ctk_css_style_render_background_is_opaque (CtkCssStyle *style)
 {
-  const GdkRGBA *color;
+  const CdkRGBA *color;
 
   color = _ctk_css_rgba_value_get_rgba (ctk_css_style_get_value (style, CTK_CSS_PROPERTY_BACKGROUND_COLOR));
 

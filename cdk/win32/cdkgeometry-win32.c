@@ -44,12 +44,12 @@
 
 #define SIZE_LIMIT 32767
 
-typedef struct _GdkWindowParentPos GdkWindowParentPos;
+typedef struct _CdkWindowParentPos CdkWindowParentPos;
 
 static void
-tmp_unset_bg (GdkWindow *window)
+tmp_unset_bg (CdkWindow *window)
 {
-  GdkWindowImplWin32 *impl;
+  CdkWindowImplWin32 *impl;
 
   impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
@@ -57,9 +57,9 @@ tmp_unset_bg (GdkWindow *window)
 }
 
 static void
-tmp_reset_bg (GdkWindow *window)
+tmp_reset_bg (CdkWindow *window)
 {
-  GdkWindowImplWin32 *impl;
+  CdkWindowImplWin32 *impl;
 
   impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
@@ -67,13 +67,13 @@ tmp_reset_bg (GdkWindow *window)
 }
 
 void
-_cdk_window_move_resize_child (GdkWindow *window,
+_cdk_window_move_resize_child (CdkWindow *window,
 			       gint       x,
 			       gint       y,
 			       gint       width,
 			       gint       height)
 {
-  GdkWindowImplWin32 *impl;
+  CdkWindowImplWin32 *impl;
 
   g_return_if_fail (window != NULL);
   g_return_if_fail (GDK_IS_WINDOW (window));
@@ -122,7 +122,7 @@ _cdk_window_move_resize_child (GdkWindow *window,
 }
 
 void
-_cdk_win32_window_tmp_unset_bg (GdkWindow *window,
+_cdk_win32_window_tmp_unset_bg (CdkWindow *window,
 				gboolean recurse)
 {
   g_return_if_fail (GDK_IS_WINDOW (window));
@@ -148,7 +148,7 @@ _cdk_win32_window_tmp_unset_bg (GdkWindow *window,
 }
 
 void
-_cdk_win32_window_tmp_unset_parent_bg (GdkWindow *window)
+_cdk_win32_window_tmp_unset_parent_bg (CdkWindow *window)
 {
   if (GDK_WINDOW_TYPE (window->parent) == GDK_WINDOW_ROOT)
     return;
@@ -158,7 +158,7 @@ _cdk_win32_window_tmp_unset_parent_bg (GdkWindow *window)
 }
 
 void
-_cdk_win32_window_tmp_reset_bg (GdkWindow *window,
+_cdk_win32_window_tmp_reset_bg (CdkWindow *window,
 				gboolean   recurse)
 {
   g_return_if_fail (GDK_IS_WINDOW (window));

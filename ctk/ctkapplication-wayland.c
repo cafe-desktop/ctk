@@ -41,7 +41,7 @@ ctk_application_impl_wayland_handle_window_realize (CtkApplicationImpl *impl,
   CtkApplicationImplClass *impl_class =
     CTK_APPLICATION_IMPL_CLASS (ctk_application_impl_wayland_parent_class);
   CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
   gchar *window_path;
 
   cdk_window = ctk_widget_get_window (CTK_WIDGET (window));

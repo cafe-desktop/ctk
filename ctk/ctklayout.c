@@ -55,7 +55,7 @@
  * lower overhead. If you just need to position child widgets at specific
  * points, then #CtkFixed provides that functionality on its own.
  *
- * When handling expose events on a #CtkLayout, you must draw to the #GdkWindow
+ * When handling expose events on a #CtkLayout, you must draw to the #CdkWindow
  * returned by ctk_layout_get_bin_window(), rather than to the one returned by
  * ctk_widget_get_window() as you would for a #CtkDrawingArea.
  */
@@ -79,8 +79,8 @@ struct _CtkLayoutPrivate
 
   /* Properties */
 
-  GdkVisibilityState visibility;
-  GdkWindow *bin_window;
+  CdkVisibilityState visibility;
+  CdkWindow *bin_window;
 
   GList *children;
 
@@ -199,11 +199,11 @@ ctk_layout_new (CtkAdjustment *hadjustment,
  *
  * Retrieve the bin window of the layout used for drawing operations.
  *
- * Returns: (transfer none): a #GdkWindow
+ * Returns: (transfer none): a #CdkWindow
  *
  * Since: 2.14
  **/
-GdkWindow*
+CdkWindow*
 ctk_layout_get_bin_window (CtkLayout *layout)
 {
   g_return_val_if_fail (CTK_IS_LAYOUT (layout), NULL);
@@ -885,8 +885,8 @@ ctk_layout_realize (CtkWidget *widget)
   CtkLayout *layout = CTK_LAYOUT (widget);
   CtkLayoutPrivate *priv = layout->priv;
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   GList *tmp_list;
   gint attributes_mask;
 

@@ -62,18 +62,18 @@ struct _CtkIMContextClass
 
   /* Virtual functions */
   void     (*set_client_window)   (CtkIMContext   *context,
-				   GdkWindow      *window);
+				   CdkWindow      *window);
   void     (*get_preedit_string)  (CtkIMContext   *context,
 				   gchar         **str,
 				   PangoAttrList **attrs,
 				   gint           *cursor_pos);
   gboolean (*filter_keypress)     (CtkIMContext   *context,
-			           GdkEventKey    *event);
+			           CdkEventKey    *event);
   void     (*focus_in)            (CtkIMContext   *context);
   void     (*focus_out)           (CtkIMContext   *context);
   void     (*reset)               (CtkIMContext   *context);
   void     (*set_cursor_location) (CtkIMContext   *context,
-				   GdkRectangle   *area);
+				   CdkRectangle   *area);
   void     (*set_use_preedit)     (CtkIMContext   *context,
 				   gboolean        use_preedit);
   void     (*set_surrounding)     (CtkIMContext   *context,
@@ -98,7 +98,7 @@ GType    ctk_im_context_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
 void     ctk_im_context_set_client_window   (CtkIMContext       *context,
-					     GdkWindow          *window);
+					     CdkWindow          *window);
 GDK_AVAILABLE_IN_ALL
 void     ctk_im_context_get_preedit_string  (CtkIMContext       *context,
 					     gchar             **str,
@@ -106,7 +106,7 @@ void     ctk_im_context_get_preedit_string  (CtkIMContext       *context,
 					     gint               *cursor_pos);
 GDK_AVAILABLE_IN_ALL
 gboolean ctk_im_context_filter_keypress     (CtkIMContext       *context,
-					     GdkEventKey        *event);
+					     CdkEventKey        *event);
 GDK_AVAILABLE_IN_ALL
 void     ctk_im_context_focus_in            (CtkIMContext       *context);
 GDK_AVAILABLE_IN_ALL
@@ -115,7 +115,7 @@ GDK_AVAILABLE_IN_ALL
 void     ctk_im_context_reset               (CtkIMContext       *context);
 GDK_AVAILABLE_IN_ALL
 void     ctk_im_context_set_cursor_location (CtkIMContext       *context,
-					     const GdkRectangle *area);
+					     const CdkRectangle *area);
 GDK_AVAILABLE_IN_ALL
 void     ctk_im_context_set_use_preedit     (CtkIMContext       *context,
 					     gboolean            use_preedit);

@@ -57,14 +57,14 @@ test_basic (void)
 typedef struct
 {
   guint           keyval;
-  GdkModifierType modifiers;
+  CdkModifierType modifiers;
 } Entry;
 
 static void
 test_lookup (CtkKeyHash      *hash,
              guint            keyval,
-             GdkModifierType  modifiers,
-             GdkModifierType  mask,
+             CdkModifierType  modifiers,
+             CdkModifierType  mask,
              gint             n_results,
              ...)
 {
@@ -72,7 +72,7 @@ test_lookup (CtkKeyHash      *hash,
   gint d;
   GSList *res, *l;
   gint i;
-  GdkKeymapKey *keys;
+  CdkKeymapKey *keys;
   gint n_keys;
 
   cdk_keymap_get_entries_for_keyval (cdk_keymap_get_default (), keyval, &keys, &n_keys);
@@ -139,7 +139,7 @@ test_match (void)
 static gboolean
 hyper_equals_super (void)
 {
-  GdkModifierType mods1, mods2;
+  CdkModifierType mods1, mods2;
 
   mods1 = GDK_HYPER_MASK;
   cdk_keymap_map_virtual_modifiers (cdk_keymap_get_default (), &mods1);
@@ -172,7 +172,7 @@ test_virtual (void)
   test_lookup (hash, GDK_KEY_c, GDK_META_MASK,  DEFAULT_MASK, 2, 3, 3);
   if (hyper_equals_super ())
     {
-      GdkModifierType mods;
+      CdkModifierType mods;
 
       /* test that colocated virtual modifiers don't count twice */
       test_lookup (hash, GDK_KEY_d, GDK_SUPER_MASK, DEFAULT_MASK, 0);

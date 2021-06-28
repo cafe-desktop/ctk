@@ -1349,7 +1349,7 @@ msgid "Cell background color"
 msgstr ""
 
 #: ctk/ctkcellrenderer.c:384
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr ""
 
 #: ctk/ctkcellrenderer.c:397
@@ -1357,7 +1357,7 @@ msgid "Cell background RGBA color"
 msgstr ""
 
 #: ctk/ctkcellrenderer.c:398
-msgid "Cell background color as a GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
 msgstr ""
 
 #: ctk/ctkcellrenderer.c:405
@@ -1597,7 +1597,7 @@ msgid "Background color"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkcellview.c:197
-msgid "Background color as a GdkColor"
+msgid "Background color as a CdkColor"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:311
@@ -1605,7 +1605,7 @@ msgid "Background color as RGBA"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:312 ctk/ctkcellview.c:211
-msgid "Background color as a GdkRGBA"
+msgid "Background color as a CdkRGBA"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:318 ctk/ctktexttag.c:220
@@ -1622,7 +1622,7 @@ msgid "Foreground color"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:327
-msgid "Foreground color as a GdkColor"
+msgid "Foreground color as a CdkColor"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:341
@@ -1630,7 +1630,7 @@ msgid "Foreground color as RGBA"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:342
-msgid "Foreground color as a GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctkentry.c:755 ctk/ctktexttag.c:245
@@ -3284,7 +3284,7 @@ msgid "Pixbuf"
 msgstr ""
 
 #: ctk/ctkimage.c:237 ctk/ctkstatusicon.c:205
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr ""
 
 #: ctk/ctkimage.c:244 ctk/ctkrecentmanager.c:294 ctk/ctkstatusicon.c:212
@@ -3329,7 +3329,7 @@ msgid "Animation"
 msgstr ""
 
 #: ctk/ctkimage.c:296
-msgid "GdkPixbufAnimation to display"
+msgid "CdkPixbufAnimation to display"
 msgstr ""
 
 #: ctk/ctkimage.c:336 ctk/ctkstatusicon.c:252
@@ -5679,7 +5679,7 @@ msgid "CtkStyleContext to get style from"
 msgstr ""
 
 #: ctk/ctkstylecontext.c:547
-msgid "The associated GdkScreen"
+msgid "The associated CdkScreen"
 msgstr ""
 
 #: ctk/ctkstylecontext.c:553
@@ -5839,7 +5839,7 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr ""
 
 #: ctk/ctktexttag.c:205
-msgid "Background color as a (possibly unallocated) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ctk/ctktexttag.c:212
@@ -5853,7 +5853,7 @@ msgid ""
 msgstr ""
 
 #: ctk/ctktexttag.c:229
-msgid "Foreground color as a (possibly unallocated) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ctk/ctktexttag.c:237
@@ -5987,7 +5987,7 @@ msgid "Paragraph background color"
 msgstr ""
 
 #: ctk/ctktexttag.c:530
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ctk/ctktexttag.c:548
@@ -6916,7 +6916,7 @@ msgid "Events"
 msgstr ""
 
 #: ctk/ctkwidget.c:1014
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
 
 #: ctk/ctkwidget.c:1021

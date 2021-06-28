@@ -26,18 +26,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_DEVICE_WINTAB         (cdk_device_wintab_get_type ())
-#define GDK_DEVICE_WINTAB(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_WINTAB, GdkDeviceWintab))
-#define GDK_DEVICE_WINTAB_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_WINTAB, GdkDeviceWintabClass))
+#define GDK_DEVICE_WINTAB(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_WINTAB, CdkDeviceWintab))
+#define GDK_DEVICE_WINTAB_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_WINTAB, CdkDeviceWintabClass))
 #define GDK_IS_DEVICE_WINTAB(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_WINTAB))
 #define GDK_IS_DEVICE_WINTAB_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE_WINTAB))
-#define GDK_DEVICE_WINTAB_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_WINTAB, GdkDeviceWintabClass))
+#define GDK_DEVICE_WINTAB_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_WINTAB, CdkDeviceWintabClass))
 
-typedef struct _GdkDeviceWintab GdkDeviceWintab;
-typedef struct _GdkDeviceWintabClass GdkDeviceWintabClass;
+typedef struct _CdkDeviceWintab CdkDeviceWintab;
+typedef struct _CdkDeviceWintabClass CdkDeviceWintabClass;
 
-struct _GdkDeviceWintab
+struct _CdkDeviceWintab
 {
-  GdkDevice parent_instance;
+  CdkDevice parent_instance;
 
   gboolean sends_core;
   gint *last_axis_data;
@@ -53,15 +53,15 @@ struct _GdkDeviceWintab
   AXIS orientation_axes[2];
 };
 
-struct _GdkDeviceWintabClass
+struct _CdkDeviceWintabClass
 {
-  GdkDeviceClass parent_class;
+  CdkDeviceClass parent_class;
 };
 
 GType cdk_device_wintab_get_type (void) G_GNUC_CONST;
 
-void         _cdk_device_wintab_translate_axes (GdkDeviceWintab *device,
-                                                GdkWindow       *window,
+void         _cdk_device_wintab_translate_axes (CdkDeviceWintab *device,
+                                                CdkWindow       *window,
                                                 gdouble         *axes,
                                                 gdouble         *x,
                                                 gdouble         *y);

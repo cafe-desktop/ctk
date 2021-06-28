@@ -129,7 +129,7 @@ color_picked (GObject      *source,
     }
   else
     {
-      GdkRGBA c;
+      CdkRGBA c;
 
       g_variant_get (ret, "(@a{sv})", &dict);
 
@@ -168,7 +168,7 @@ ctk_color_picker_shell_pick (CtkColorPicker      *cp,
                      picker);
 }
 
-static GdkRGBA *
+static CdkRGBA *
 ctk_color_picker_shell_pick_finish (CtkColorPicker  *cp,
                                      GAsyncResult    *res,
                                      GError         **error)

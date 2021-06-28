@@ -115,7 +115,7 @@ struct _CtkTextBufferClass
 
   void (* insert_pixbuf)          (CtkTextBuffer      *buffer,
                                    CtkTextIter        *iter,
-                                   GdkPixbuf          *pixbuf);
+                                   CdkPixbuf          *pixbuf);
 
   void (* insert_child_anchor)    (CtkTextBuffer      *buffer,
                                    CtkTextIter        *iter,
@@ -275,7 +275,7 @@ gchar          *ctk_text_buffer_get_slice           (CtkTextBuffer     *buffer,
 GDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_insert_pixbuf         (CtkTextBuffer *buffer,
                                             CtkTextIter   *iter,
-                                            GdkPixbuf     *pixbuf);
+                                            CdkPixbuf     *pixbuf);
 
 /* Insert a child anchor */
 GDK_AVAILABLE_IN_ALL

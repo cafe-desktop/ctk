@@ -183,7 +183,7 @@ static void     ctk_status_icon_get_property     (GObject        *object,
 static void     ctk_status_icon_size_allocate    (CtkStatusIcon  *status_icon,
 						  CtkAllocation  *allocation);
 static void     ctk_status_icon_screen_changed   (CtkStatusIcon  *status_icon,
-						  GdkScreen      *old_screen);
+						  CdkScreen      *old_screen);
 static void     ctk_status_icon_embedded_changed (CtkStatusIcon *status_icon);
 static void     ctk_status_icon_orientation_changed (CtkStatusIcon *status_icon);
 static void     ctk_status_icon_padding_changed  (CtkStatusIcon *status_icon);
@@ -193,7 +193,7 @@ static void     ctk_status_icon_color_changed    (CtkTrayIcon   *tray,
                                                   GParamSpec    *pspec,
                                                   CtkStatusIcon *status_icon);
 static gboolean ctk_status_icon_scroll           (CtkStatusIcon  *status_icon,
-						  GdkEventScroll *event);
+						  CdkEventScroll *event);
 static gboolean ctk_status_icon_query_tooltip    (CtkStatusIcon *status_icon,
 						  gint           x,
 						  gint           y,
@@ -201,13 +201,13 @@ static gboolean ctk_status_icon_query_tooltip    (CtkStatusIcon *status_icon,
 						  CtkTooltip    *tooltip);
 
 static gboolean ctk_status_icon_key_press        (CtkStatusIcon  *status_icon,
-						  GdkEventKey    *event);
+						  CdkEventKey    *event);
 static void     ctk_status_icon_popup_menu       (CtkStatusIcon  *status_icon);
 #endif
 static gboolean ctk_status_icon_button_press     (CtkStatusIcon  *status_icon,
-						  GdkEventButton *event);
+						  CdkEventButton *event);
 static gboolean ctk_status_icon_button_release   (CtkStatusIcon  *status_icon,
-						  GdkEventButton *event);
+						  CdkEventButton *event);
 static void     ctk_status_icon_reset_image_data (CtkStatusIcon  *status_icon);
 static void     ctk_status_icon_update_image    (CtkStatusIcon *status_icon);
 
@@ -232,7 +232,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 				   PROP_PIXBUF,
 				   g_param_spec_object ("pixbuf",
 							P_("Pixbuf"),
-							P_("A GdkPixbuf to display"),
+							P_("A CdkPixbuf to display"),
 							GDK_TYPE_PIXBUF,
 							CTK_PARAM_READWRITE));
 
@@ -529,7 +529,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
   /**
    * CtkStatusIcon::button-press-event:
    * @status_icon: the object which received the signal
-   * @event: (type Gdk.EventButton): the #GdkEventButton which triggered 
+   * @event: (type Cdk.EventButton): the #CdkEventButton which triggered 
    *                                 this signal
    *
    * The ::button-press-event signal will be emitted when a button
@@ -556,7 +556,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
   /**
    * CtkStatusIcon::button-release-event:
    * @status_icon: the object which received the signal
-   * @event: (type Gdk.EventButton): the #GdkEventButton which triggered 
+   * @event: (type Cdk.EventButton): the #CdkEventButton which triggered 
    *                                 this signal
    *
    * The ::button-release-event signal will be emitted when a button
@@ -583,7 +583,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
   /**
    * CtkStatusIcon::scroll-event:
    * @status_icon: the object which received the signal.
-   * @event: (type Gdk.EventScroll): the #GdkEventScroll which triggered 
+   * @event: (type Cdk.EventScroll): the #CdkEventScroll which triggered 
    *                                 this signal
    *
    * The ::scroll-event signal is emitted when a button in the 4 to 7
@@ -655,11 +655,11 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 
 static void
 build_button_event (CtkStatusIconPrivate *priv,
-		    GdkEventButton       *e,
+		    CdkEventButton       *e,
 		    guint                 button)
 {
   POINT pos;
-  GdkRectangle monitor0;
+  CdkRectangle monitor0;
 
   /* We know that cdk/win32 puts the primary monitor at index 0 */
   cdk_screen_get_monitor_geometry (cdk_screen_get_default (), 0, &monitor0);
@@ -680,7 +680,7 @@ build_button_event (CtkStatusIconPrivate *priv,
 typedef struct
 {
   CtkStatusIcon *status_icon;
-  GdkEventButton *event;
+  CdkEventButton *event;
 } ButtonCallbackData;
 
 static gboolean
@@ -693,7 +693,7 @@ button_callback (gpointer data)
   else
     ctk_status_icon_button_release (bc->status_icon, bc->event);
 
-  cdk_event_free ((GdkEvent *) bc->event);
+  cdk_event_free ((CdkEvent *) bc->event);
   g_free (data);
 
   return G_SOURCE_REMOVE;
@@ -785,7 +785,7 @@ wndproc (HWND   hwnd,
 
 	buttondown0:
 	  bc = g_new (ButtonCallbackData, 1);
-	  bc->event = (GdkEventButton *) cdk_event_new (GDK_BUTTON_PRESS);
+	  bc->event = (CdkEventButton *) cdk_event_new (GDK_BUTTON_PRESS);
 	  bc->status_icon = find_status_icon (wparam);
 	  build_button_event (bc->status_icon->priv, bc->event, button);
 	  g_idle_add (button_callback, bc);
@@ -811,7 +811,7 @@ wndproc (HWND   hwnd,
 
 	buttonup0:
 	  bc = g_new (ButtonCallbackData, 1);
-	  bc->event = (GdkEventButton *) cdk_event_new (GDK_BUTTON_RELEASE);
+	  bc->event = (CdkEventButton *) cdk_event_new (GDK_BUTTON_RELEASE);
 	  bc->status_icon = find_status_icon (wparam);
 	  build_button_event (bc->status_icon->priv, bc->event, button);
 	  g_idle_add (button_callback, bc);
@@ -1210,7 +1210,7 @@ ctk_status_icon_new (void)
 
 /**
  * ctk_status_icon_new_from_pixbuf:
- * @pixbuf: a #GdkPixbuf
+ * @pixbuf: a #CdkPixbuf
  * 
  * Creates a status icon displaying @pixbuf. 
  *
@@ -1225,7 +1225,7 @@ ctk_status_icon_new (void)
  *   provide status notifications
  */
 CtkStatusIcon *
-ctk_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
+ctk_status_icon_new_from_pixbuf (CdkPixbuf *pixbuf)
 {
   return g_object_new (CTK_TYPE_STATUS_ICON,
 		       "pixbuf", pixbuf,
@@ -1399,7 +1399,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
   cairo_surface_t *surface;
   CtkWidget *widget;
 #ifndef GDK_WINDOWING_X11
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 #endif
   gint round_size;
   gint scale;
@@ -1523,7 +1523,7 @@ ctk_status_icon_size_allocate (CtkStatusIcon *status_icon,
 
 static void
 ctk_status_icon_screen_changed (CtkStatusIcon *status_icon,
-				GdkScreen *old_screen)
+				CdkScreen *old_screen)
 {
   CtkStatusIconPrivate *priv = status_icon->priv;
 
@@ -1588,7 +1588,7 @@ static void
 ctk_status_icon_fg_changed (CtkStatusIcon *status_icon)
 {
   CtkStatusIconPrivate *priv = status_icon->priv;
-  GdkRGBA *rgba;
+  CdkRGBA *rgba;
 
   g_object_get (priv->tray_icon, "fg-color", &rgba, NULL);
 
@@ -1623,7 +1623,7 @@ ctk_status_icon_color_changed (CtkTrayIcon   *tray,
 
   if (name)
     {
-      GdkRGBA rgba;
+      CdkRGBA rgba;
 
       g_object_get (priv->tray_icon, pspec->name, &rgba, NULL);
 
@@ -1635,7 +1635,7 @@ ctk_status_icon_color_changed (CtkTrayIcon   *tray,
 
 static gboolean
 ctk_status_icon_key_press (CtkStatusIcon  *status_icon,
-			   GdkEventKey    *event)
+			   CdkEventKey    *event)
 {
   guint state, keyval;
 
@@ -1665,7 +1665,7 @@ ctk_status_icon_popup_menu (CtkStatusIcon  *status_icon)
 
 static gboolean
 ctk_status_icon_button_press (CtkStatusIcon  *status_icon,
-			      GdkEventButton *event)
+			      CdkEventButton *event)
 {
   gboolean handled = FALSE;
 
@@ -1675,7 +1675,7 @@ ctk_status_icon_button_press (CtkStatusIcon  *status_icon,
   if (handled)
     return TRUE;
 
-  if (cdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (cdk_event_triggers_context_menu ((CdkEvent *) event))
     {
       emit_popup_menu_signal (status_icon, event->button, event->time);
       return TRUE;
@@ -1691,7 +1691,7 @@ ctk_status_icon_button_press (CtkStatusIcon  *status_icon,
 
 static gboolean
 ctk_status_icon_button_release (CtkStatusIcon  *status_icon,
-				GdkEventButton *event)
+				CdkEventButton *event)
 {
   gboolean handled = FALSE;
   g_signal_emit (status_icon,
@@ -1704,7 +1704,7 @@ ctk_status_icon_button_release (CtkStatusIcon  *status_icon,
 
 static gboolean
 ctk_status_icon_scroll (CtkStatusIcon  *status_icon,
-			GdkEventScroll *event)
+			CdkEventScroll *event)
 {
   gboolean handled = FALSE;
   g_signal_emit (status_icon,
@@ -1808,7 +1808,7 @@ ctk_status_icon_take_image (CtkStatusIcon      *status_icon,
 /**
  * ctk_status_icon_set_from_pixbuf:
  * @status_icon: a #CtkStatusIcon
- * @pixbuf: (allow-none): a #GdkPixbuf or %NULL
+ * @pixbuf: (allow-none): a #CdkPixbuf or %NULL
  *
  * Makes @status_icon display @pixbuf.
  * See ctk_status_icon_new_from_pixbuf() for details.
@@ -1821,7 +1821,7 @@ ctk_status_icon_take_image (CtkStatusIcon      *status_icon,
  */
 void
 ctk_status_icon_set_from_pixbuf (CtkStatusIcon *status_icon,
-				 GdkPixbuf     *pixbuf)
+				 CdkPixbuf     *pixbuf)
 {
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
@@ -1848,7 +1848,7 @@ void
 ctk_status_icon_set_from_file (CtkStatusIcon *status_icon,
  			       const gchar   *filename)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (filename != NULL);
@@ -1963,7 +1963,7 @@ ctk_status_icon_get_storage_type (CtkStatusIcon *status_icon)
  * ctk_status_icon_get_pixbuf:
  * @status_icon: a #CtkStatusIcon
  * 
- * Gets the #GdkPixbuf being displayed by the #CtkStatusIcon.
+ * Gets the #CdkPixbuf being displayed by the #CtkStatusIcon.
  * The storage type of the status icon must be %CTK_IMAGE_EMPTY or
  * %CTK_IMAGE_PIXBUF (see ctk_status_icon_get_storage_type()).
  * The caller of this function does not own a reference to the
@@ -1978,7 +1978,7 @@ ctk_status_icon_get_storage_type (CtkStatusIcon *status_icon)
  *   provide status notifications; there is no direct replacement
  *   for this function
  */
-GdkPixbuf *
+CdkPixbuf *
 ctk_status_icon_get_pixbuf (CtkStatusIcon *status_icon)
 {
   CtkStatusIconPrivate *priv;
@@ -2114,9 +2114,9 @@ ctk_status_icon_get_size (CtkStatusIcon *status_icon)
 /**
  * ctk_status_icon_set_screen:
  * @status_icon: a #CtkStatusIcon
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
- * Sets the #GdkScreen where @status_icon is displayed; if
+ * Sets the #CdkScreen where @status_icon is displayed; if
  * the icon is already mapped, it will be unmapped, and
  * then remapped on the new screen.
  *
@@ -2124,12 +2124,12 @@ ctk_status_icon_get_size (CtkStatusIcon *status_icon)
  *
  * Deprecated: 3.14: Use #GNotification and #CtkApplication to
  *   provide status notifications; there is no direct replacement
- *   for this function, as CTK typically only has one #GdkScreen
+ *   for this function, as CTK typically only has one #CdkScreen
  *   and notifications are managed by the platform
  */
 void
 ctk_status_icon_set_screen (CtkStatusIcon *status_icon,
-                            GdkScreen     *screen)
+                            CdkScreen     *screen)
 {
   g_return_if_fail (GDK_IS_SCREEN (screen));
 
@@ -2143,9 +2143,9 @@ ctk_status_icon_set_screen (CtkStatusIcon *status_icon,
  * ctk_status_icon_get_screen:
  * @status_icon: a #CtkStatusIcon
  *
- * Returns the #GdkScreen associated with @status_icon.
+ * Returns the #CdkScreen associated with @status_icon.
  *
- * Returns: (transfer none): a #GdkScreen.
+ * Returns: (transfer none): a #CdkScreen.
  *
  * Since: 2.12
  *
@@ -2153,7 +2153,7 @@ ctk_status_icon_set_screen (CtkStatusIcon *status_icon,
  *   provide status notifications; there is no direct replacement
  *   for this function, as notifications are managed by the platform
  */
-GdkScreen *
+CdkScreen *
 ctk_status_icon_get_screen (CtkStatusIcon *status_icon)
 {
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
@@ -2311,11 +2311,11 @@ ctk_status_icon_position_menu (CtkMenu  *menu,
   CtkAllocation allocation;
   CtkTrayIcon *tray_icon;
   CtkWidget *widget;
-  GdkScreen *screen;
+  CdkScreen *screen;
   CtkTextDirection direction;
   CtkRequisition menu_req;
-  GdkRectangle monitor;
-  GdkWindow *window;
+  CdkRectangle monitor;
+  CdkWindow *window;
   gint monitor_num, height, width, xoffset, yoffset;
 
   g_return_if_fail (CTK_IS_MENU (menu));
@@ -2457,8 +2457,8 @@ ctk_status_icon_position_menu (CtkMenu  *menu,
  */
 gboolean
 ctk_status_icon_get_geometry (CtkStatusIcon    *status_icon,
-			      GdkScreen       **screen,
-			      GdkRectangle     *area,
+			      CdkScreen       **screen,
+			      CdkRectangle     *area,
 			      CtkOrientation   *orientation)
 {
 #ifdef GDK_WINDOWING_X11   

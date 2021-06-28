@@ -22,7 +22,7 @@ int
 main (int argc,
       char **argv)
 {
-  GdkPixbuf *pixbuf, *otherpix;
+  CdkPixbuf *pixbuf, *otherpix;
   CtkWidget *image, *image2, *hbox, *vbox, *label, *toplevel;
   GIcon *emblemed;
   GEmblem *emblem;

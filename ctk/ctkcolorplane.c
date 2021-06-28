@@ -193,9 +193,9 @@ static void
 set_cross_cursor (CtkWidget *widget,
                   gboolean   enabled)
 {
-  GdkCursor *cursor = NULL;
-  GdkWindow *window;
-  GdkDevice *device;
+  CdkCursor *cursor = NULL;
+  CdkWindow *window;
+  CdkDevice *device;
 
   window = ctk_widget_get_window (widget);
   device = ctk_gesture_get_device (CTK_COLOR_PLANE (widget)->priv->drag_gesture);
@@ -310,7 +310,7 @@ error:
 
 static gboolean
 plane_key_press (CtkWidget   *widget,
-                 GdkEventKey *event)
+                 CdkEventKey *event)
 {
   CtkColorPlane *plane = CTK_COLOR_PLANE (widget);
   gdouble step;

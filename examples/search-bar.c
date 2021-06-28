@@ -2,7 +2,7 @@
 
 static gboolean
 window_key_press_event_cb (CtkWidget *window,
-    GdkEvent *event,
+    CdkEvent *event,
     CtkSearchBar *search_bar)
 {
   return ctk_search_bar_handle_event (search_bar, event);

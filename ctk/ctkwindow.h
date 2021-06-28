@@ -203,9 +203,9 @@ GDK_DEPRECATED_IN_3_8_FOR(ctk_widget_get_opacity)
 gdouble    ctk_window_get_opacity              (CtkWindow           *window);
 GDK_AVAILABLE_IN_ALL
 void       ctk_window_set_type_hint            (CtkWindow           *window, 
-						GdkWindowTypeHint    hint);
+						CdkWindowTypeHint    hint);
 GDK_AVAILABLE_IN_ALL
-GdkWindowTypeHint ctk_window_get_type_hint     (CtkWindow           *window);
+CdkWindowTypeHint ctk_window_get_type_hint     (CtkWindow           *window);
 GDK_AVAILABLE_IN_ALL
 void       ctk_window_set_skip_taskbar_hint    (CtkWindow           *window,
                                                 gboolean             setting);
@@ -260,22 +260,22 @@ gboolean   ctk_window_get_resizable            (CtkWindow           *window);
 
 GDK_AVAILABLE_IN_ALL
 void       ctk_window_set_gravity              (CtkWindow           *window,
-                                                GdkGravity           gravity);
+                                                CdkGravity           gravity);
 GDK_AVAILABLE_IN_ALL
-GdkGravity ctk_window_get_gravity              (CtkWindow           *window);
+CdkGravity ctk_window_get_gravity              (CtkWindow           *window);
 
 
 GDK_AVAILABLE_IN_ALL
 void       ctk_window_set_geometry_hints       (CtkWindow           *window,
 						CtkWidget           *geometry_widget,
-						GdkGeometry         *geometry,
-						GdkWindowHints       geom_mask);
+						CdkGeometry         *geometry,
+						CdkWindowHints       geom_mask);
 
 GDK_AVAILABLE_IN_ALL
 void	   ctk_window_set_screen	       (CtkWindow	    *window,
-						GdkScreen	    *screen);
+						CdkScreen	    *screen);
 GDK_AVAILABLE_IN_ALL
-GdkScreen* ctk_window_get_screen	       (CtkWindow	    *window);
+CdkScreen* ctk_window_get_screen	       (CtkWindow	    *window);
 
 GDK_AVAILABLE_IN_ALL
 gboolean   ctk_window_is_active                (CtkWindow           *window);
@@ -300,7 +300,7 @@ GDK_AVAILABLE_IN_ALL
 GList*     ctk_window_get_icon_list                (CtkWindow  *window);
 GDK_AVAILABLE_IN_ALL
 void       ctk_window_set_icon                     (CtkWindow  *window,
-                                                    GdkPixbuf  *icon);
+                                                    CdkPixbuf  *icon);
 GDK_AVAILABLE_IN_ALL
 void       ctk_window_set_icon_name                (CtkWindow   *window,
 						    const gchar *name);
@@ -309,7 +309,7 @@ gboolean   ctk_window_set_icon_from_file           (CtkWindow   *window,
 						    const gchar *filename,
 						    GError     **err);
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf* ctk_window_get_icon                     (CtkWindow  *window);
+CdkPixbuf* ctk_window_get_icon                     (CtkWindow  *window);
 GDK_AVAILABLE_IN_ALL
 const gchar * ctk_window_get_icon_name             (CtkWindow  *window);
 GDK_AVAILABLE_IN_ALL
@@ -317,7 +317,7 @@ void       ctk_window_set_default_icon_list        (GList      *list);
 GDK_AVAILABLE_IN_ALL
 GList*     ctk_window_get_default_icon_list        (void);
 GDK_AVAILABLE_IN_ALL
-void       ctk_window_set_default_icon             (GdkPixbuf  *icon);
+void       ctk_window_set_default_icon             (CdkPixbuf  *icon);
 GDK_AVAILABLE_IN_ALL
 void       ctk_window_set_default_icon_name        (const gchar *name);
 GDK_AVAILABLE_IN_ALL
@@ -352,19 +352,19 @@ void     ctk_window_remove_mnemonic       (CtkWindow       *window,
 GDK_AVAILABLE_IN_ALL
 gboolean ctk_window_mnemonic_activate     (CtkWindow       *window,
 					   guint            keyval,
-					   GdkModifierType  modifier);
+					   CdkModifierType  modifier);
 GDK_AVAILABLE_IN_ALL
 void     ctk_window_set_mnemonic_modifier (CtkWindow       *window,
-					   GdkModifierType  modifier);
+					   CdkModifierType  modifier);
 GDK_AVAILABLE_IN_ALL
-GdkModifierType ctk_window_get_mnemonic_modifier (CtkWindow *window);
+CdkModifierType ctk_window_get_mnemonic_modifier (CtkWindow *window);
 
 GDK_AVAILABLE_IN_ALL
 gboolean ctk_window_activate_key          (CtkWindow        *window,
-					   GdkEventKey      *event);
+					   CdkEventKey      *event);
 GDK_AVAILABLE_IN_ALL
 gboolean ctk_window_propagate_key_event   (CtkWindow        *window,
-					   GdkEventKey      *event);
+					   CdkEventKey      *event);
 
 GDK_AVAILABLE_IN_ALL
 void     ctk_window_present            (CtkWindow *window);
@@ -389,7 +389,7 @@ GDK_AVAILABLE_IN_ALL
 void     ctk_window_unfullscreen  (CtkWindow *window);
 GDK_AVAILABLE_IN_3_18
 void     ctk_window_fullscreen_on_monitor(CtkWindow *window,
-                                          GdkScreen *screen,
+                                          CdkScreen *screen,
                                           gint monitor);
 GDK_AVAILABLE_IN_3_10
 void     ctk_window_close         (CtkWindow *window);
@@ -400,7 +400,7 @@ void     ctk_window_set_keep_below    (CtkWindow *window, gboolean setting);
 
 GDK_AVAILABLE_IN_ALL
 void ctk_window_begin_resize_drag (CtkWindow     *window,
-                                   GdkWindowEdge  edge,
+                                   CdkWindowEdge  edge,
                                    gint           button,
                                    gint           root_x,
                                    gint           root_y,
@@ -483,7 +483,7 @@ GDK_DEPRECATED_IN_3_14
 gboolean ctk_window_resize_grip_is_visible (CtkWindow    *window);
 GDK_DEPRECATED_IN_3_14
 gboolean ctk_window_get_resize_grip_area   (CtkWindow    *window,
-                                            GdkRectangle *rect);
+                                            CdkRectangle *rect);
 
 GDK_AVAILABLE_IN_3_10
 void     ctk_window_set_titlebar           (CtkWindow    *window,

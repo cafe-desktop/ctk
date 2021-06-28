@@ -132,13 +132,13 @@ ctk_xembed_get_time (void)
  * Sends a generic XEMBED message to a particular window.
  **/
 void
-_ctk_xembed_send_message (GdkWindow        *recipient,
+_ctk_xembed_send_message (CdkWindow        *recipient,
 			  XEmbedMessageType message,
 			  glong             detail,
 			  glong             data1,
 			  glong             data2)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   XClientMessageEvent xclient;
 
   if (!recipient)
@@ -180,7 +180,7 @@ _ctk_xembed_send_message (GdkWindow        *recipient,
  * will be correctly filled in.
  **/
 void
-_ctk_xembed_send_focus_message (GdkWindow        *recipient,
+_ctk_xembed_send_focus_message (CdkWindow        *recipient,
 				XEmbedMessageType message_type,
 				glong             detail)
 {

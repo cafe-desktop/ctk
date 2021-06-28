@@ -148,7 +148,7 @@ void                           ctk_tool_palette_add_drag_dest         (CtkToolPa
                                                                        CtkWidget                 *widget,
                                                                        CtkDestDefaults            flags,
                                                                        CtkToolPaletteDragTargets  targets,
-                                                                       GdkDragAction              actions);
+                                                                       CdkDragAction              actions);
 
 
 GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)

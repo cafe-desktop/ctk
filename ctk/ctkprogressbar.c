@@ -1198,7 +1198,7 @@ ctk_progress_bar_get_preferred_height (CtkWidget *widget,
 
 static gboolean
 tick_cb (CtkWidget     *widget,
-         GdkFrameClock *frame_clock,
+         CdkFrameClock *frame_clock,
          gpointer       user_data)
 {
   CtkProgressBar *pbar = CTK_PROGRESS_BAR (widget);

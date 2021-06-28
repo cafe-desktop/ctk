@@ -23,7 +23,7 @@
 G_BEGIN_DECLS
 
 gboolean ctk_font_chooser_widget_handle_event (CtkWidget   *widget,
-                                               GdkEventKey *event);
+                                               CdkEventKey *event);
 
 GAction *ctk_font_chooser_widget_get_tweak_action (CtkWidget *fontchooser);
 

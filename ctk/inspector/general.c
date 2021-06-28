@@ -84,7 +84,7 @@ static void
 init_version (CtkInspectorGeneral *gen)
 {
   const gchar *backend;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   display = cdk_display_get_default ();
 
@@ -257,7 +257,7 @@ init_gl (CtkInspectorGeneral *gen)
 #ifdef GDK_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY (cdk_display_get_default ()))
     {
-      GdkDisplay *display = cdk_display_get_default ();
+      CdkDisplay *display = cdk_display_get_default ();
       Display *dpy = GDK_DISPLAY_XDISPLAY (display);
       int error_base, event_base;
       gchar *version;
@@ -283,7 +283,7 @@ init_gl (CtkInspectorGeneral *gen)
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (cdk_display_get_default ()))
     {
-      GdkDisplay *display = cdk_display_get_default ();
+      CdkDisplay *display = cdk_display_get_default ();
       EGLDisplay dpy;
       EGLint major, minor;
       gchar *version;
@@ -357,7 +357,7 @@ init_env (CtkInspectorGeneral *gen)
 }
 
 static const char *
-translate_subpixel_layout (GdkSubpixelLayout subpixel)
+translate_subpixel_layout (CdkSubpixelLayout subpixel)
 {
   switch (subpixel)
     {
@@ -372,13 +372,13 @@ translate_subpixel_layout (GdkSubpixelLayout subpixel)
 }
 
 static void
-populate_display (GdkScreen *screen, CtkInspectorGeneral *gen)
+populate_display (CdkScreen *screen, CtkInspectorGeneral *gen)
 {
   gchar *name;
   gint i;
   GList *children, *l;
   CtkWidget *child;
-  GdkDisplay *display;
+  CdkDisplay *display;
   int n_monitors;
   CtkListBox *list;
 
@@ -414,11 +414,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     {
       gchar *name;
       gchar *value;
-      GdkRectangle rect;
+      CdkRectangle rect;
       gint scale;
       const char *manufacturer;
       const char *model;
-      GdkMonitor *monitor;
+      CdkMonitor *monitor;
 
       monitor = cdk_display_get_monitor (display, i);
 
@@ -468,7 +468,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 static void
 init_display (CtkInspectorGeneral *gen)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   screen = cdk_screen_get_default ();
 
@@ -483,14 +483,14 @@ static void populate_seats (CtkInspectorGeneral *gen);
 
 static void
 add_device (CtkInspectorGeneral *gen,
-            GdkDevice           *device)
+            CdkDevice           *device)
 {
   const gchar *name, *value;
   GString *str;
   int i;
   guint n_touches;
   gchar *text;
-  GdkAxisFlags axes;
+  CdkAxisFlags axes;
   const char *axis_name[] = {
     "Ignore",
     "X",
@@ -547,10 +547,10 @@ add_device (CtkInspectorGeneral *gen,
 }
 
 static char *
-get_seat_capabilities (GdkSeat *seat)
+get_seat_capabilities (CdkSeat *seat)
 {
   struct {
-    GdkSeatCapabilities cap;
+    CdkSeatCapabilities cap;
     const char *name;
   } caps[] = {
     { GDK_SEAT_CAPABILITY_POINTER,       "Pointer" },
@@ -560,7 +560,7 @@ get_seat_capabilities (GdkSeat *seat)
     { 0, NULL }
   };
   GString *str;
-  GdkSeatCapabilities capabilities;
+  CdkSeatCapabilities capabilities;
   int i;
 
   str = g_string_new ("");
@@ -580,7 +580,7 @@ get_seat_capabilities (GdkSeat *seat)
 
 static void
 add_seat (CtkInspectorGeneral *gen,
-          GdkSeat             *seat,
+          CdkSeat             *seat,
           int                  num)
 {
   char *text;
@@ -612,7 +612,7 @@ add_seat (CtkInspectorGeneral *gen,
 static void
 populate_seats (CtkInspectorGeneral *gen)
 {
-  GdkDisplay *display = cdk_display_get_default ();
+  CdkDisplay *display = cdk_display_get_default ();
   GList *list, *l;
   int i;
 
@@ -632,7 +632,7 @@ populate_seats (CtkInspectorGeneral *gen)
 static void
 init_device (CtkInspectorGeneral *gen)
 {
-  GdkDisplay *display = cdk_display_get_default ();
+  CdkDisplay *display = cdk_display_get_default ();
 
   g_signal_connect_swapped (display, "seat-added", G_CALLBACK (populate_seats), gen);
   g_signal_connect_swapped (display, "seat-removed", G_CALLBACK (populate_seats), gen);

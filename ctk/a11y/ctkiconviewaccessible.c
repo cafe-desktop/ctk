@@ -206,14 +206,14 @@ ctk_icon_view_item_accessible_set_image_description (AtkImage    *image,
 }
 
 typedef struct {
-  GdkRectangle box;
+  CdkRectangle box;
   gboolean     pixbuf_found;
 } GetPixbufBoxData;
 
 static gboolean
 get_pixbuf_foreach (CtkCellRenderer    *renderer,
-                    const GdkRectangle *cell_area,
-                    const GdkRectangle *cell_background,
+                    const CdkRectangle *cell_area,
+                    const CdkRectangle *cell_background,
                     GetPixbufBoxData   *data)
 {
   if (CTK_IS_CELL_RENDERER_PIXBUF (renderer))
@@ -227,7 +227,7 @@ get_pixbuf_foreach (CtkCellRenderer    *renderer,
 static gboolean
 get_pixbuf_box (CtkIconView     *icon_view,
                 CtkIconViewItem *item,
-                GdkRectangle    *box)
+                CdkRectangle    *box)
 {
   GetPixbufBoxData data = { { 0, }, FALSE };
   CtkCellAreaContext *context;
@@ -276,7 +276,7 @@ ctk_icon_view_item_accessible_get_image_size (AtkImage *image,
                                               gint     *height)
 {
   CtkIconViewItemAccessible *item;
-  GdkRectangle box;
+  CdkRectangle box;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
 
@@ -303,7 +303,7 @@ ctk_icon_view_item_accessible_get_image_position (AtkImage    *image,
                                                   AtkCoordType coord_type)
 {
   CtkIconViewItemAccessible *item;
-  GdkRectangle box;
+  CdkRectangle box;
 
   item = CTK_ICON_VIEW_ITEM_ACCESSIBLE (image);
 
@@ -700,7 +700,7 @@ ctk_icon_view_item_accessible_is_showing (CtkIconViewItemAccessible *item)
 {
   CtkAllocation allocation;
   CtkIconView *icon_view;
-  GdkRectangle visible_rect;
+  CdkRectangle visible_rect;
   gboolean is_showing;
 
   /* An item is considered "SHOWING" if any part of the item

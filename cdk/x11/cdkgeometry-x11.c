@@ -25,24 +25,24 @@
 #include "cdkwindow-x11.h"
 
 
-typedef struct _GdkWindowQueueItem GdkWindowQueueItem;
-typedef struct _GdkWindowParentPos GdkWindowParentPos;
+typedef struct _CdkWindowQueueItem CdkWindowQueueItem;
+typedef struct _CdkWindowParentPos CdkWindowParentPos;
 
-struct _GdkWindowQueueItem
+struct _CdkWindowQueueItem
 {
-  GdkWindow *window;
+  CdkWindow *window;
   gulong serial;
   cairo_region_t *antiexpose_area;
 };
 
 void
-_cdk_x11_window_move_resize_child (GdkWindow *window,
+_cdk_x11_window_move_resize_child (CdkWindow *window,
                                    gint       x,
                                    gint       y,
                                    gint       width,
                                    gint       height)
 {
-  GdkWindowImplX11 *impl;
+  CdkWindowImplX11 *impl;
 
   g_return_if_fail (window != NULL);
   g_return_if_fail (GDK_IS_WINDOW (window));
@@ -124,7 +124,7 @@ queue_delete_link (GQueue *queue,
 }
 
 static void
-queue_item_free (GdkWindowQueueItem *item)
+queue_item_free (CdkWindowQueueItem *item)
 {
   if (item->window)
     {
@@ -137,9 +137,9 @@ queue_item_free (GdkWindowQueueItem *item)
 }
 
 void
-_cdk_x11_display_free_translate_queue (GdkDisplay *display)
+_cdk_x11_display_free_translate_queue (CdkDisplay *display)
 {
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
 
   if (display_x11->translate_queue)
     {
@@ -150,10 +150,10 @@ _cdk_x11_display_free_translate_queue (GdkDisplay *display)
 }
 
 static void
-cdk_window_queue (GdkWindow          *window,
-		  GdkWindowQueueItem *new_item)
+cdk_window_queue (CdkWindow          *window,
+		  CdkWindowQueueItem *new_item)
 {
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (GDK_WINDOW_DISPLAY (window));
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (GDK_WINDOW_DISPLAY (window));
   
   if (!display_x11->translate_queue)
     display_x11->translate_queue = g_queue_new ();
@@ -169,7 +169,7 @@ cdk_window_queue (GdkWindow          *window,
       
       while (tmp_list)
 	{
-	  GdkWindowQueueItem *item = tmp_list->data;
+	  CdkWindowQueueItem *item = tmp_list->data;
 	  GList *next = tmp_list->next;
 	  
 	  /* an overflow-safe (item->serial < serial) */
@@ -195,7 +195,7 @@ cdk_window_queue (GdkWindow          *window,
       
       while (tmp_list)
 	{
-	  GdkWindowQueueItem *item = tmp_list->data;
+	  CdkWindowQueueItem *item = tmp_list->data;
 	  GList *next = tmp_list->next;
 	  
 	  queue_delete_link (display_x11->translate_queue, tmp_list);
@@ -215,22 +215,22 @@ cdk_window_queue (GdkWindow          *window,
 }
 
 void
-_cdk_x11_window_queue_antiexpose (GdkWindow *window,
+_cdk_x11_window_queue_antiexpose (CdkWindow *window,
 				  cairo_region_t *area)
 {
-  GdkWindowQueueItem *item = g_new (GdkWindowQueueItem, 1);
+  CdkWindowQueueItem *item = g_new (CdkWindowQueueItem, 1);
   item->antiexpose_area = cairo_region_reference (area);
 
   cdk_window_queue (window, item);
 }
 
 void
-_cdk_x11_window_process_expose (GdkWindow    *window,
+_cdk_x11_window_process_expose (CdkWindow    *window,
                                 gulong        serial,
-                                GdkRectangle *area)
+                                CdkRectangle *area)
 {
   cairo_region_t *invalidate_region = cairo_region_create_rectangle (area);
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (GDK_WINDOW_DISPLAY (window));
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (GDK_WINDOW_DISPLAY (window));
 
   if (display_x11->translate_queue)
     {
@@ -238,7 +238,7 @@ _cdk_x11_window_process_expose (GdkWindow    *window,
 
       while (tmp_list)
         {
-          GdkWindowQueueItem *item = tmp_list->data;
+          CdkWindowQueueItem *item = tmp_list->data;
           GList *next = tmp_list->next;
 
           /* an overflow-safe (serial < item->serial) */

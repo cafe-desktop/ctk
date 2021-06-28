@@ -174,7 +174,7 @@ int                     ctk_win32_get_sys_metric                (gint           
 const char *            ctk_win32_get_sys_color_name_for_id     (gint            id);
 int                     ctk_win32_get_sys_color_id_for_name     (const char     *name);
 void                    ctk_win32_get_sys_color                 (gint            id,
-                                                                 GdkRGBA        *color);
+                                                                 CdkRGBA        *color);
 
 G_END_DECLS
 

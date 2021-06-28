@@ -32,8 +32,8 @@ INCLUDES = -FImsvc_recommended_pragmas.h \
 DEFINES = \
 	-DHAVE_CONFIG_H \
 	-DGDK_VERSION=\"$(CTK_VER)\" \
-	-DG_LOG_DOMAIN=\"Gdk\" \
-	-DGDK_COMPILATION -DG_LOG_DOMAIN=\"Gdk\"
+	-DG_LOG_DOMAIN=\"Cdk\" \
+	-DGDK_COMPILATION -DG_LOG_DOMAIN=\"Cdk\"
 
 EXTRALIBS = \
 	$(WTKIT)\lib\i386\wntab32x.lib \

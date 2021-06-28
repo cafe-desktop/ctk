@@ -136,11 +136,11 @@ struct _CtkCellRendererClass
   void               (* get_aligned_area)                (CtkCellRenderer      *cell,
                                                           CtkWidget            *widget,
 							  CtkCellRendererState  flags,
-                                                          const GdkRectangle   *cell_area,
-                                                          GdkRectangle         *aligned_area);
+                                                          const CdkRectangle   *cell_area,
+                                                          CdkRectangle         *aligned_area);
   void               (* get_size)                        (CtkCellRenderer      *cell,
                                                           CtkWidget            *widget,
-                                                          const GdkRectangle   *cell_area,
+                                                          const CdkRectangle   *cell_area,
                                                           gint                 *x_offset,
                                                           gint                 *y_offset,
                                                           gint                 *width,
@@ -148,22 +148,22 @@ struct _CtkCellRendererClass
   void               (* render)                          (CtkCellRenderer      *cell,
                                                           cairo_t              *cr,
                                                           CtkWidget            *widget,
-                                                          const GdkRectangle   *background_area,
-                                                          const GdkRectangle   *cell_area,
+                                                          const CdkRectangle   *background_area,
+                                                          const CdkRectangle   *cell_area,
                                                           CtkCellRendererState  flags);
   gboolean           (* activate)                        (CtkCellRenderer      *cell,
-                                                          GdkEvent             *event,
+                                                          CdkEvent             *event,
                                                           CtkWidget            *widget,
                                                           const gchar          *path,
-                                                          const GdkRectangle   *background_area,
-                                                          const GdkRectangle   *cell_area,
+                                                          const CdkRectangle   *background_area,
+                                                          const CdkRectangle   *cell_area,
                                                           CtkCellRendererState  flags);
   CtkCellEditable *  (* start_editing)                   (CtkCellRenderer      *cell,
-                                                          GdkEvent             *event,
+                                                          CdkEvent             *event,
                                                           CtkWidget            *widget,
                                                           const gchar          *path,
-                                                          const GdkRectangle   *background_area,
-                                                          const GdkRectangle   *cell_area,
+                                                          const CdkRectangle   *background_area,
+                                                          const CdkRectangle   *cell_area,
                                                           CtkCellRendererState  flags);
 
   /* Signals */
@@ -218,13 +218,13 @@ GDK_AVAILABLE_IN_ALL
 void               ctk_cell_renderer_get_aligned_area               (CtkCellRenderer    *cell,
 								     CtkWidget          *widget,
 								     CtkCellRendererState flags,
-								     const GdkRectangle *cell_area,
-								     GdkRectangle       *aligned_area);
+								     const CdkRectangle *cell_area,
+								     CdkRectangle       *aligned_area);
 
 GDK_DEPRECATED_IN_3_0_FOR(ctk_cell_renderer_get_preferred_size)
 void             ctk_cell_renderer_get_size       (CtkCellRenderer      *cell,
                                                    CtkWidget            *widget,
-                                                   const GdkRectangle   *cell_area,
+                                                   const CdkRectangle   *cell_area,
                                                    gint                 *x_offset,
                                                    gint                 *y_offset,
                                                    gint                 *width,
@@ -233,24 +233,24 @@ GDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_render         (CtkCellRenderer      *cell,
                                                    cairo_t              *cr,
 						   CtkWidget            *widget,
-						   const GdkRectangle   *background_area,
-						   const GdkRectangle   *cell_area,
+						   const CdkRectangle   *background_area,
+						   const CdkRectangle   *cell_area,
 						   CtkCellRendererState  flags);
 GDK_AVAILABLE_IN_ALL
 gboolean         ctk_cell_renderer_activate       (CtkCellRenderer      *cell,
-						   GdkEvent             *event,
+						   CdkEvent             *event,
 						   CtkWidget            *widget,
 						   const gchar          *path,
-						   const GdkRectangle   *background_area,
-						   const GdkRectangle   *cell_area,
+						   const CdkRectangle   *background_area,
+						   const CdkRectangle   *cell_area,
 						   CtkCellRendererState  flags);
 GDK_AVAILABLE_IN_ALL
 CtkCellEditable *ctk_cell_renderer_start_editing  (CtkCellRenderer      *cell,
-						   GdkEvent             *event,
+						   CdkEvent             *event,
 						   CtkWidget            *widget,
 						   const gchar          *path,
-						   const GdkRectangle   *background_area,
-						   const GdkRectangle   *cell_area,
+						   const CdkRectangle   *background_area,
+						   const CdkRectangle   *cell_area,
 						   CtkCellRendererState  flags);
 
 GDK_AVAILABLE_IN_ALL
@@ -302,7 +302,7 @@ void             ctk_cell_renderer_stop_editing   (CtkCellRenderer      *cell,
 
 
 void            _ctk_cell_renderer_calc_offset    (CtkCellRenderer      *cell,
-                                                   const GdkRectangle   *cell_area,
+                                                   const CdkRectangle   *cell_area,
                                                    CtkTextDirection      direction,
                                                    gint                  width,
                                                    gint                  height,

@@ -4087,7 +4087,7 @@ msgid "Clip area"
 msgstr "Iseci oblast"
 
 # Treba proveriti na šta se odnosi.
-# Možda je ovo „https://developer.gnome.org/cdk3/stable/GdkFrameClock.html“
+# Možda je ovo „https://developer.gnome.org/cdk3/stable/CdkFrameClock.html“
 #: ctk/inspector/misc-info.ui:430
 msgid "Frame Clock"
 msgstr "Vreme osvežavanja okvira"
@@ -7319,8 +7319,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Pixbuf"
 #~ msgstr "Sličica"
 
-#~ msgid "A GdkPixbuf to display"
-#~ msgstr "Gdk sličica za prikaz"
+#~ msgid "A CdkPixbuf to display"
+#~ msgstr "Cdk sličica za prikaz"
 
 #~ msgid "Stock ID"
 #~ msgstr "ID pripremljene"
@@ -8069,14 +8069,14 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Cell background color"
 #~ msgstr "Boja pozadine ćelije"
 
-#~ msgid "Cell background color as a GdkColor"
-#~ msgstr "Boja pozadine ćelije kao Gdk boja"
+#~ msgid "Cell background color as a CdkColor"
+#~ msgstr "Boja pozadine ćelije kao Cdk boja"
 
 #~ msgid "Cell background RGBA color"
 #~ msgstr "RGBA boja pozadine ćelije"
 
-#~ msgid "Cell background color as a GdkRGBA"
-#~ msgstr "Boja pozadine ćelije kao GdkRGBA"
+#~ msgid "Cell background color as a CdkRGBA"
+#~ msgstr "Boja pozadine ćelije kao CdkRGBA"
 
 #~ msgid "Whether the cell renderer is currently in editing mode"
 #~ msgstr "Da li je iscrtavač ćelije trenutno u režimu menjanja"
@@ -8222,14 +8222,14 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Background color"
 #~ msgstr "Boja pozadine"
 
-#~ msgid "Background color as a GdkColor"
-#~ msgstr "Boja pozadine kao Gdk boja"
+#~ msgid "Background color as a CdkColor"
+#~ msgstr "Boja pozadine kao Cdk boja"
 
 #~ msgid "Background color as RGBA"
 #~ msgstr "Boja pozadine kao RGBA"
 
-#~ msgid "Background color as a GdkRGBA"
-#~ msgstr "Boja pozadine kao GdkRGBA"
+#~ msgid "Background color as a CdkRGBA"
+#~ msgstr "Boja pozadine kao CdkRGBA"
 
 #~ msgid "Foreground color name"
 #~ msgstr "Naziv boje iscrtavanja"
@@ -8237,14 +8237,14 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Foreground color as a string"
 #~ msgstr "Boja iscrtavanja kao niz znakova"
 
-#~ msgid "Foreground color as a GdkColor"
-#~ msgstr "Boja iscrtavanja kao Gdk boja"
+#~ msgid "Foreground color as a CdkColor"
+#~ msgstr "Boja iscrtavanja kao Cdk boja"
 
 #~ msgid "Foreground color as RGBA"
 #~ msgstr "Boja iscrtavanja kao RGBA"
 
-#~ msgid "Foreground color as a GdkRGBA"
-#~ msgstr "Boja iscrtavanja kao GdkRGBA"
+#~ msgid "Foreground color as a CdkRGBA"
+#~ msgstr "Boja iscrtavanja kao CdkRGBA"
 
 #~ msgid "Whether the text can be modified by the user"
 #~ msgstr "Da li korisnik može menjati tekst"
@@ -8521,8 +8521,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Whether to show the color editor right away"
 #~ msgstr "Da li će biti prikazan uređivač boja"
 
-#~ msgid "Current color, as a GdkRGBA"
-#~ msgstr "Tekuća boja, kao GdkRGBA"
+#~ msgid "Current color, as a CdkRGBA"
+#~ msgstr "Tekuća boja, kao CdkRGBA"
 
 #~ msgid "Whether alpha should be shown"
 #~ msgstr "Da li se providnost prikazuje ili ne"
@@ -9259,8 +9259,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Number of points needed to trigger the gesture"
 #~ msgstr "Broj tačaka potrebnih za okidanje pokreta"
 
-#~ msgid "GdkWindow to receive events about"
-#~ msgstr "Gdk prozor o kome se primaju događaji"
+#~ msgid "CdkWindow to receive events about"
+#~ msgstr "Cdk prozor o kome se primaju događaji"
 
 #~ msgid "Factor by which to modify the default timeout"
 #~ msgstr "Činilac po kojem treba menjati podrazumevano vreme isteka"
@@ -9453,8 +9453,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Pixel size to use for named icon"
 #~ msgstr "Veličina u tačkama za imenovane ikonice"
 
-#~ msgid "GdkPixbufAnimation to display"
-#~ msgstr "Gdk animirana sličica za prikaz"
+#~ msgid "CdkPixbufAnimation to display"
+#~ msgstr "Cdk animirana sličica za prikaz"
 
 #~ msgid "Whether to use icon names fallback"
 #~ msgstr "Da li da koristi prebacivanje imena ikonice"
@@ -11416,11 +11416,11 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Style of bevel around the statusbar text"
 #~ msgstr "Način prikaza udubljenja oko teksta na traci stanja"
 
-#~ msgid "The associated GdkScreen"
-#~ msgstr "Povezani Gdk ekran"
+#~ msgid "The associated CdkScreen"
+#~ msgstr "Povezani Cdk ekran"
 
-#~ msgid "The associated GdkFrameClock"
-#~ msgstr "Pridruženi časovnik Gdk kadra"
+#~ msgid "The associated CdkFrameClock"
+#~ msgstr "Pridruženi časovnik Cdk kadra"
 
 #~ msgid "The parent style context"
 #~ msgstr "Sadržaj roditeljskog stila"
@@ -11604,14 +11604,14 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Paragraph background color"
 #~ msgstr "Boja pozadine pasusa"
 
-#~ msgid "Paragraph background color as a GdkColor"
-#~ msgstr "Boja pozadine pasusa kao Gdk boja"
+#~ msgid "Paragraph background color as a CdkColor"
+#~ msgstr "Boja pozadine pasusa kao Cdk boja"
 
 #~ msgid "Paragraph background RGBA"
 #~ msgstr "RGBA pozadine pasusa"
 
-#~ msgid "Paragraph background RGBA as a GdkRGBA"
-#~ msgstr "RGBA pozadine pasusa kao Gdk boja"
+#~ msgid "Paragraph background RGBA as a CdkRGBA"
+#~ msgstr "RGBA pozadine pasusa kao Cdk boja"
 
 #~ msgid "Whether font fallback is enabled."
 #~ msgstr "Da li je font za odstupanje uključen."
@@ -12239,9 +12239,9 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr ""
 #~ "Stil elementa, koji sadrži podatke o tome kako će izgledati (boja itd.)"
 
-#~ msgid "The event mask that decides what kind of GdkEvents this widget gets"
+#~ msgid "The event mask that decides what kind of CdkEvents this widget gets"
 #~ msgstr ""
-#~ "Maska za događaje koja određuje koje vrste GdkEvents-a ovaj element prima"
+#~ "Maska za događaje koja određuje koje vrste CdkEvents-a ovaj element prima"
 
 #~ msgid "Whether ctk_widget_show_all() should not affect this widget"
 #~ msgstr "Da li „ctk_widget_show_all()“ ne treba da utiče na ovaj element"

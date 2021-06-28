@@ -40,17 +40,17 @@ G_BEGIN_DECLS
 /* Window implementation for Win32
  */
 
-typedef struct _GdkWindowImplWin32 GdkWindowImplWin32;
-typedef struct _GdkWindowImplWin32Class GdkWindowImplWin32Class;
+typedef struct _CdkWindowImplWin32 CdkWindowImplWin32;
+typedef struct _CdkWindowImplWin32Class CdkWindowImplWin32Class;
 
 #define GDK_TYPE_WINDOW_IMPL_WIN32              (_cdk_window_impl_win32_get_type ())
-#define GDK_WINDOW_IMPL_WIN32(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL_WIN32, GdkWindowImplWin32))
-#define GDK_WINDOW_IMPL_WIN32_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL_WIN32, GdkWindowImplWin32Class))
+#define GDK_WINDOW_IMPL_WIN32(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL_WIN32, CdkWindowImplWin32))
+#define GDK_WINDOW_IMPL_WIN32_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL_WIN32, CdkWindowImplWin32Class))
 #define GDK_IS_WINDOW_IMPL_WIN32(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL_WIN32))
 #define GDK_IS_WINDOW_IMPL_WIN32_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WINDOW_IMPL_WIN32))
-#define GDK_WINDOW_IMPL_WIN32_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WINDOW_IMPL_WIN32, GdkWindowImplWin32Class))
+#define GDK_WINDOW_IMPL_WIN32_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WINDOW_IMPL_WIN32, CdkWindowImplWin32Class))
 
-enum _GdkWin32AeroSnapCombo
+enum _CdkWin32AeroSnapCombo
 {
   GDK_WIN32_AEROSNAP_COMBO_NOTHING = 0,
   GDK_WIN32_AEROSNAP_COMBO_UP,
@@ -66,9 +66,9 @@ enum _GdkWin32AeroSnapCombo
   GDK_WIN32_AEROSNAP_COMBO_SHIFTRIGHT
 };
 
-typedef enum _GdkWin32AeroSnapCombo GdkWin32AeroSnapCombo;
+typedef enum _CdkWin32AeroSnapCombo CdkWin32AeroSnapCombo;
 
-enum _GdkWin32AeroSnapState
+enum _CdkWin32AeroSnapState
 {
   GDK_WIN32_AEROSNAP_STATE_UNDETERMINED = 0,
   GDK_WIN32_AEROSNAP_STATE_HALFLEFT,
@@ -78,9 +78,9 @@ enum _GdkWin32AeroSnapState
   GDK_WIN32_AEROSNAP_STATE_MAXIMIZE
 };
 
-typedef enum _GdkWin32AeroSnapState GdkWin32AeroSnapState;
+typedef enum _CdkWin32AeroSnapState CdkWin32AeroSnapState;
 
-struct _GdkRectangleDouble
+struct _CdkRectangleDouble
 {
   gdouble x;
   gdouble y;
@@ -88,9 +88,9 @@ struct _GdkRectangleDouble
   gdouble height;
 };
 
-typedef struct _GdkRectangleDouble GdkRectangleDouble;
+typedef struct _CdkRectangleDouble CdkRectangleDouble;
 
-enum _GdkW32WindowDragOp
+enum _CdkW32WindowDragOp
 {
   GDK_WIN32_DRAGOP_NONE = 0,
   GDK_WIN32_DRAGOP_RESIZE,
@@ -98,31 +98,31 @@ enum _GdkW32WindowDragOp
   GDK_WIN32_DRAGOP_COUNT
 };
 
-typedef enum _GdkW32WindowDragOp GdkW32WindowDragOp;
+typedef enum _CdkW32WindowDragOp CdkW32WindowDragOp;
 
-typedef enum _GdkWin32MonitorDpiType
+typedef enum _CdkWin32MonitorDpiType
 {
   MDT_EFFECTIVE_DPI  = 0,
   MDT_ANGULAR_DPI    = 1,
   MDT_RAW_DPI        = 2,
   MDT_DEFAULT        = MDT_EFFECTIVE_DPI
-} GdkWin32MonitorDpiType;
+} CdkWin32MonitorDpiType;
 
-struct _GdkW32DragMoveResizeContext
+struct _CdkW32DragMoveResizeContext
 {
   /* The window that is being moved/resized */
-  GdkWindow         *window;
+  CdkWindow         *window;
 
   /* The kind of drag-operation going on. */
-  GdkW32WindowDragOp op;
+  CdkW32WindowDragOp op;
 
   /* The edge that was grabbed for resizing. Not used for moving. */
-  GdkWindowEdge      edge;
+  CdkWindowEdge      edge;
 
   /* The device used to initiate the op.
    * We grab it at the beginning and ungrab it at the end.
    */
-  GdkDevice         *device;
+  CdkDevice         *device;
 
   /* The button pressed down to initiate the op.
    * The op will be canceled only when *this* button
@@ -151,7 +151,7 @@ struct _GdkW32DragMoveResizeContext
   gboolean           native_move_resize_pending;
 
   /* The cursor we should use while the operation is running. */
-  GdkCursor         *cursor;
+  CdkCursor         *cursor;
 
   /* This window looks like an outline and is drawn under the window
    * that is being dragged. It indicates the shape the dragged window
@@ -168,13 +168,13 @@ struct _GdkW32DragMoveResizeContext
   gint               indicator_surface_height;
 
   /* Size/position of shape_indicator */
-  GdkRectangle       indicator_window_rect;
+  CdkRectangle       indicator_window_rect;
 
   /* Indicator will animate to occupy this rectangle */
-  GdkRectangle       indicator_target;
+  CdkRectangle       indicator_target;
 
   /* Indicator will start animating from this rectangle */
-  GdkRectangle       indicator_start;
+  CdkRectangle       indicator_start;
 
   /* Timestamp of the animation start */
   gint64             indicator_start_time;
@@ -210,7 +210,7 @@ struct _GdkW32DragMoveResizeContext
    */
   gboolean           revealed;
 
-  /* Arrays of GdkRectangle pairs, describing the areas of the virtual
+  /* Arrays of CdkRectangle pairs, describing the areas of the virtual
    * desktop that trigger various AeroSnap window transofrmations
    * Coordinates are GDK screen coordinates.
    */
@@ -222,33 +222,33 @@ struct _GdkW32DragMoveResizeContext
   /* Current pointer position will result in this kind of snapping,
    * if the drag op is finished.
    */
-  GdkWin32AeroSnapState current_snap;
+  CdkWin32AeroSnapState current_snap;
 };
 
-typedef struct _GdkW32DragMoveResizeContext GdkW32DragMoveResizeContext;
+typedef struct _CdkW32DragMoveResizeContext CdkW32DragMoveResizeContext;
 
-struct _GdkWindowImplWin32
+struct _CdkWindowImplWin32
 {
-  GdkWindowImpl parent_instance;
+  CdkWindowImpl parent_instance;
 
-  GdkWindow *wrapper;
+  CdkWindow *wrapper;
   HANDLE handle;
 
   gint8 toplevel_window_type;
 
-  GdkCursor *cursor;
+  CdkCursor *cursor;
   HICON   hicon_big;
   HICON   hicon_small;
 
   /* Window size hints */
   gint hint_flags;
-  GdkGeometry hints;
+  CdkGeometry hints;
 
-  GdkEventMask native_event_mask;
+  CdkEventMask native_event_mask;
 
-  GdkWindowTypeHint type_hint;
+  CdkWindowTypeHint type_hint;
 
-  GdkWindow *transient_owner;
+  CdkWindow *transient_owner;
   GSList    *transient_children;
   gint       num_transients;
   gboolean   changing_state;
@@ -314,26 +314,26 @@ struct _GdkWindowImplWin32
   int              hdc_count;
   HBITMAP          saved_dc_bitmap; /* Original bitmap for dc */
 
-  GdkW32DragMoveResizeContext drag_move_resize_context;
+  CdkW32DragMoveResizeContext drag_move_resize_context;
 
   /* Remembers where the window was snapped.
    * Some snap operations change their meaning if
    * the window is already snapped.
    */
-  GdkWin32AeroSnapState snap_state;
+  CdkWin32AeroSnapState snap_state;
 
   /* Remembers window position before it was snapped.
    * This is used to unsnap it.
    * Position and size are percentages of the workarea
    * of the monitor on which the window was before it was snapped.
    */
-  GdkRectangleDouble *snap_stash;
+  CdkRectangleDouble *snap_stash;
 
   /* Also remember the same position, but in absolute form. */
-  GdkRectangle *snap_stash_int;
+  CdkRectangle *snap_stash_int;
 
   /* Decorations set by cdk_window_set_decorations() or NULL if unset */
-  GdkWMDecoration* decorations;
+  CdkWMDecoration* decorations;
 
   /* No. of windows to force layered windows off */
   guint suppress_layered;
@@ -356,27 +356,27 @@ struct _GdkWindowImplWin32
 #endif
 };
 
-struct _GdkWindowImplWin32Class
+struct _CdkWindowImplWin32Class
 {
-  GdkWindowImplClass parent_class;
+  CdkWindowImplClass parent_class;
 };
 
 GType _cdk_window_impl_win32_get_type (void);
 
-void  _cdk_win32_window_tmp_unset_bg  (GdkWindow *window,
+void  _cdk_win32_window_tmp_unset_bg  (CdkWindow *window,
 				       gboolean   recurse);
-void  _cdk_win32_window_tmp_reset_bg  (GdkWindow *window,
+void  _cdk_win32_window_tmp_reset_bg  (CdkWindow *window,
 				       gboolean   recurse);
 
-void  _cdk_win32_window_tmp_unset_parent_bg (GdkWindow *window);
-void  _cdk_win32_window_tmp_reset_parent_bg (GdkWindow *window);
+void  _cdk_win32_window_tmp_unset_parent_bg (CdkWindow *window);
+void  _cdk_win32_window_tmp_reset_parent_bg (CdkWindow *window);
 
-void  _cdk_win32_window_update_style_bits   (GdkWindow *window);
+void  _cdk_win32_window_update_style_bits   (CdkWindow *window);
 
-gint  _cdk_win32_window_get_scale_factor    (GdkWindow *window);
+gint  _cdk_win32_window_get_scale_factor    (CdkWindow *window);
 
 #ifdef GDK_WIN32_ENABLE_EGL
-EGLSurface _cdk_win32_window_get_egl_surface (GdkWindow *window,
+EGLSurface _cdk_win32_window_get_egl_surface (CdkWindow *window,
                                               EGLConfig  config,
                                               gboolean   is_dummy);
 #endif

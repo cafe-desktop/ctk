@@ -46,20 +46,20 @@ struct _SelectionBuffer
   GCancellable *cancellable;
   GByteArray *data;
   GList *requestors;
-  GdkAtom selection;
-  GdkAtom target;
+  CdkAtom selection;
+  CdkAtom target;
   gint ref_count;
 };
 
 struct _StoredSelection
 {
-  GdkWaylandSelection *selection;
-  GdkWindow *source;
+  CdkWaylandSelection *selection;
+  CdkWindow *source;
   GCancellable *cancellable;
   guchar *data;
   gsize data_len;
-  GdkAtom type;
-  GdkAtom selection_atom;
+  CdkAtom type;
+  CdkAtom selection_atom;
   GPtrArray *pending_writes; /* Array of AsyncWriteData */
 };
 
@@ -67,7 +67,7 @@ struct _DataOfferData
 {
   GDestroyNotify destroy_notify;
   gpointer offer_data;
-  GList *targets; /* List of GdkAtom */
+  GList *targets; /* List of CdkAtom */
 };
 
 struct _AsyncWriteData
@@ -90,9 +90,9 @@ enum {
   N_ATOMS
 };
 
-static GdkAtom atoms[N_ATOMS] = { 0 };
+static CdkAtom atoms[N_ATOMS] = { 0 };
 
-struct _GdkWaylandSelection
+struct _CdkWaylandSelection
 {
   /* Destination-side data */
   SelectionData selections[N_ATOMS];
@@ -100,33 +100,33 @@ struct _GdkWaylandSelection
 
   /* Source-side data */
   GPtrArray *stored_selections; /* Array of StoredSelection */
-  GdkAtom current_request_selection;
+  CdkAtom current_request_selection;
   GArray *source_targets;
-  GdkAtom requested_target;
+  CdkAtom requested_target;
 
   gpointer primary_source;
-  GdkWindow *primary_owner;
+  CdkWindow *primary_owner;
 
   struct wl_data_source *clipboard_source;
-  GdkWindow *clipboard_owner;
+  CdkWindow *clipboard_owner;
 
-  struct wl_data_source *dnd_source; /* Owned by the GdkDragContext */
-  GdkWindow *dnd_owner;
+  struct wl_data_source *dnd_source; /* Owned by the CdkDragContext */
+  CdkWindow *dnd_owner;
 };
 
 static void selection_buffer_read (SelectionBuffer *buffer);
 static void async_write_data_write (AsyncWriteData *write_data);
 static void async_write_data_free (AsyncWriteData *write_data);
-static void emit_selection_clear (GdkDisplay *display, GdkAtom selection);
-static void emit_empty_selection_notify (GdkWindow *requestor,
-                                         GdkAtom    selection,
-                                         GdkAtom    target);
-static void cdk_wayland_selection_handle_next_request (GdkWaylandSelection *wayland_selection);
+static void emit_selection_clear (CdkDisplay *display, CdkAtom selection);
+static void emit_empty_selection_notify (CdkWindow *requestor,
+                                         CdkAtom    selection,
+                                         CdkAtom    target);
+static void cdk_wayland_selection_handle_next_request (CdkWaylandSelection *wayland_selection);
 
 static void
 selection_buffer_notify (SelectionBuffer *buffer)
 {
-  GdkEvent *event;
+  CdkEvent *event;
   GList *l;
 
   for (l = buffer->requestors; l; l = l->next)
@@ -147,8 +147,8 @@ selection_buffer_notify (SelectionBuffer *buffer)
 
 static SelectionBuffer *
 selection_buffer_new (GInputStream *stream,
-                      GdkAtom       selection,
-                      GdkAtom       target)
+                      CdkAtom       selection,
+                      CdkAtom       target)
 {
   SelectionBuffer *buffer;
 
@@ -223,7 +223,7 @@ selection_buffer_cancel_and_unref (SelectionBuffer *buffer_data)
 
 static void
 selection_buffer_add_requestor (SelectionBuffer *buffer,
-                                GdkWindow       *requestor)
+                                CdkWindow       *requestor)
 {
   if (!g_list_find (buffer->requestors, requestor))
     buffer->requestors = g_list_prepend (buffer->requestors,
@@ -232,7 +232,7 @@ selection_buffer_add_requestor (SelectionBuffer *buffer,
 
 static gboolean
 selection_buffer_remove_requestor (SelectionBuffer *buffer,
-                                   GdkWindow       *requestor)
+                                   CdkWindow       *requestor)
 {
   GList *link = g_list_find (buffer->requestors, requestor);
 
@@ -323,10 +323,10 @@ data_offer_data_free (DataOfferData *info)
 }
 
 static StoredSelection *
-stored_selection_new (GdkWaylandSelection *wayland_selection,
-                      GdkWindow           *source,
-                      GdkAtom              selection,
-                      GdkAtom              type)
+stored_selection_new (CdkWaylandSelection *wayland_selection,
+                      CdkWindow           *source,
+                      CdkAtom              selection,
+                      CdkAtom              type)
 {
   StoredSelection *stored_selection;
 
@@ -344,7 +344,7 @@ stored_selection_new (GdkWaylandSelection *wayland_selection,
 
 static void
 stored_selection_add_data (StoredSelection *stored_selection,
-                           GdkPropMode      mode,
+                           CdkPropMode      mode,
                            guchar          *data,
                            gsize            data_len)
 {
@@ -405,18 +405,18 @@ stored_selection_cancel_write (StoredSelection *stored_selection)
   g_ptr_array_set_size (stored_selection->pending_writes, 0);
 }
 
-GdkWaylandSelection *
+CdkWaylandSelection *
 cdk_wayland_selection_new (void)
 {
-  GdkWaylandSelection *selection;
+  CdkWaylandSelection *selection;
   gint i;
 
   /* init atoms */
   atoms[ATOM_PRIMARY] = cdk_atom_intern_static_string ("PRIMARY");
   atoms[ATOM_CLIPBOARD] = cdk_atom_intern_static_string ("CLIPBOARD");
-  atoms[ATOM_DND] = cdk_atom_intern_static_string ("GdkWaylandSelection");
+  atoms[ATOM_DND] = cdk_atom_intern_static_string ("CdkWaylandSelection");
 
-  selection = g_new0 (GdkWaylandSelection, 1);
+  selection = g_new0 (CdkWaylandSelection, 1);
   for (i = 0; i < G_N_ELEMENTS (selection->selections); i++)
     {
       selection->selections[i].buffers =
@@ -430,15 +430,15 @@ cdk_wayland_selection_new (void)
   selection->stored_selections =
     g_ptr_array_new_with_free_func ((GDestroyNotify) stored_selection_free);
 
-  selection->source_targets = g_array_new (FALSE, FALSE, sizeof (GdkAtom));
+  selection->source_targets = g_array_new (FALSE, FALSE, sizeof (CdkAtom));
   return selection;
 }
 
 static void
 primary_selection_source_destroy (gpointer primary_source)
 {
-  GdkDisplay *display = cdk_display_get_default ();
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkDisplay *display = cdk_display_get_default ();
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
 
   if (display_wayland->zwp_primary_selection_manager_v1)
     zwp_primary_selection_source_v1_destroy (primary_source);
@@ -447,7 +447,7 @@ primary_selection_source_destroy (gpointer primary_source)
 }
 
 void
-cdk_wayland_selection_free (GdkWaylandSelection *selection)
+cdk_wayland_selection_free (CdkWaylandSelection *selection)
 {
   gint i;
 
@@ -474,9 +474,9 @@ data_offer_offer (void                 *data,
                   struct wl_data_offer *wl_data_offer,
                   const char           *type)
 {
-  GdkWaylandSelection *selection = data;
+  CdkWaylandSelection *selection = data;
   DataOfferData *info;
-  GdkAtom atom = cdk_atom_intern (type, FALSE);
+  CdkAtom atom = cdk_atom_intern (type, FALSE);
 
   info = g_hash_table_lookup (selection->offers, wl_data_offer);
 
@@ -489,10 +489,10 @@ data_offer_offer (void                 *data,
   info->targets = g_list_prepend (info->targets, atom);
 }
 
-static inline GdkDragAction
+static inline CdkDragAction
 _wl_to_cdk_actions (uint32_t dnd_actions)
 {
-  GdkDragAction actions = 0;
+  CdkDragAction actions = 0;
 
   if (dnd_actions & WL_DATA_DEVICE_MANAGER_DND_ACTION_COPY)
     actions |= GDK_ACTION_COPY;
@@ -509,10 +509,10 @@ data_offer_source_actions (void                 *data,
                            struct wl_data_offer *wl_data_offer,
                            uint32_t              source_actions)
 {
-  GdkDragContext *drop_context;
-  GdkDisplay *display;
-  GdkDevice *device;
-  GdkSeat *seat;
+  CdkDragContext *drop_context;
+  CdkDisplay *display;
+  CdkDevice *device;
+  CdkSeat *seat;
 
   display = cdk_display_get_default ();
   seat = cdk_display_get_default_seat (display);
@@ -534,10 +534,10 @@ data_offer_action (void                 *data,
                    struct wl_data_offer *wl_data_offer,
                    uint32_t              action)
 {
-  GdkDragContext *drop_context;
-  GdkDisplay *display;
-  GdkDevice *device;
-  GdkSeat *seat;
+  CdkDragContext *drop_context;
+  CdkDisplay *display;
+  CdkDevice *device;
+  CdkSeat *seat;
 
   display = cdk_display_get_default ();
   seat = cdk_display_get_default_seat (display);
@@ -562,9 +562,9 @@ primary_offer_offer (void       *data,
                      gpointer    offer,
                      const char *type)
 {
-  GdkWaylandSelection *selection = data;
+  CdkWaylandSelection *selection = data;
   DataOfferData *info;
-  GdkAtom atom = cdk_atom_intern (type, FALSE);
+  CdkAtom atom = cdk_atom_intern (type, FALSE);
 
   info = g_hash_table_lookup (selection->offers, offer);
 
@@ -602,8 +602,8 @@ static const struct zwp_primary_selection_offer_v1_listener zwp_primary_offer_li
 };
 
 SelectionData *
-selection_lookup_offer_by_atom (GdkWaylandSelection *selection,
-                                GdkAtom              selection_atom)
+selection_lookup_offer_by_atom (CdkWaylandSelection *selection,
+                                CdkAtom              selection_atom)
 {
   if (selection_atom == atoms[ATOM_PRIMARY])
     return &selection->selections[ATOM_PRIMARY];
@@ -616,10 +616,10 @@ selection_lookup_offer_by_atom (GdkWaylandSelection *selection,
 }
 
 void
-cdk_wayland_selection_ensure_offer (GdkDisplay           *display,
+cdk_wayland_selection_ensure_offer (CdkDisplay           *display,
                                     struct wl_data_offer *wl_offer)
 {
-  GdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
+  CdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
   DataOfferData *info;
 
   info = g_hash_table_lookup (selection->offers, wl_offer);
@@ -636,11 +636,11 @@ cdk_wayland_selection_ensure_offer (GdkDisplay           *display,
 }
 
 void
-cdk_wayland_selection_ensure_primary_offer (GdkDisplay *display,
+cdk_wayland_selection_ensure_primary_offer (CdkDisplay *display,
                                             gpointer    ctk_offer)
 {
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
-  GdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
   DataOfferData *info;
 
   info = g_hash_table_lookup (selection->offers, ctk_offer);
@@ -669,11 +669,11 @@ cdk_wayland_selection_ensure_primary_offer (GdkDisplay *display,
 }
 
 void
-cdk_wayland_selection_set_offer (GdkDisplay *display,
-                                 GdkAtom     selection_atom,
+cdk_wayland_selection_set_offer (CdkDisplay *display,
+                                 CdkAtom     selection_atom,
                                  gpointer    wl_offer)
 {
-  GdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
+  CdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
   struct wl_data_offer *prev_offer;
   SelectionData *selection_data;
   DataOfferData *info;
@@ -696,10 +696,10 @@ cdk_wayland_selection_set_offer (GdkDisplay *display,
 }
 
 gpointer
-cdk_wayland_selection_get_offer (GdkDisplay *display,
-                                 GdkAtom     selection_atom)
+cdk_wayland_selection_get_offer (CdkDisplay *display,
+                                 CdkAtom     selection_atom)
 {
-  GdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
+  CdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
   const SelectionData *data;
 
   data = selection_lookup_offer_by_atom (selection, selection_atom);
@@ -711,10 +711,10 @@ cdk_wayland_selection_get_offer (GdkDisplay *display,
 }
 
 GList *
-cdk_wayland_selection_get_targets (GdkDisplay *display,
-                                   GdkAtom     selection_atom)
+cdk_wayland_selection_get_targets (CdkDisplay *display,
+                                   CdkAtom     selection_atom)
 {
-  GdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
+  CdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
   const SelectionData *data;
 
   data = selection_lookup_offer_by_atom (selection, selection_atom);
@@ -726,11 +726,11 @@ cdk_wayland_selection_get_targets (GdkDisplay *display,
 }
 
 static void
-cdk_wayland_selection_emit_request (GdkWindow *window,
-                                    GdkAtom    selection,
-                                    GdkAtom    target)
+cdk_wayland_selection_emit_request (CdkWindow *window,
+                                    CdkAtom    selection,
+                                    CdkAtom    target)
 {
-  GdkEvent *event;
+  CdkEvent *event;
 
   event = cdk_event_new (GDK_SELECTION_REQUEST);
   event->selection.window = g_object_ref (window);
@@ -823,10 +823,10 @@ async_write_data_write (AsyncWriteData *write_data)
 }
 
 static StoredSelection *
-cdk_wayland_selection_find_stored_selection (GdkWaylandSelection *wayland_selection,
-                                             GdkWindow           *window,
-                                             GdkAtom              selection,
-                                             GdkAtom              type)
+cdk_wayland_selection_find_stored_selection (CdkWaylandSelection *wayland_selection,
+                                             CdkWindow           *window,
+                                             CdkAtom              selection,
+                                             CdkAtom              type)
 {
   gint i;
 
@@ -846,8 +846,8 @@ cdk_wayland_selection_find_stored_selection (GdkWaylandSelection *wayland_select
 }
 
 static void
-cdk_wayland_selection_reset_selection (GdkWaylandSelection *wayland_selection,
-                                       GdkAtom              selection)
+cdk_wayland_selection_reset_selection (CdkWaylandSelection *wayland_selection,
+                                       CdkAtom              selection)
 {
   gint i = 0;
 
@@ -865,14 +865,14 @@ cdk_wayland_selection_reset_selection (GdkWaylandSelection *wayland_selection,
 }
 
 void
-cdk_wayland_selection_store (GdkWindow    *window,
-                             GdkAtom       type,
-                             GdkPropMode   mode,
+cdk_wayland_selection_store (CdkWindow    *window,
+                             CdkAtom       type,
+                             CdkPropMode   mode,
                              const guchar *data,
                              gint          len)
 {
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
   StoredSelection *stored_selection;
 
   if (type == cdk_atom_intern_static_string ("NULL"))
@@ -920,10 +920,10 @@ cdk_wayland_selection_store (GdkWindow    *window,
 }
 
 static SelectionBuffer *
-cdk_wayland_selection_lookup_requestor_buffer (GdkWindow *requestor)
+cdk_wayland_selection_lookup_requestor_buffer (CdkWindow *requestor)
 {
-  GdkDisplay *display = cdk_window_get_display (requestor);
-  GdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
+  CdkDisplay *display = cdk_window_get_display (requestor);
+  CdkWaylandSelection *selection = cdk_wayland_display_get_selection (display);
   SelectionBuffer *buffer_data;
   GHashTableIter iter;
   gint i;
@@ -943,10 +943,10 @@ cdk_wayland_selection_lookup_requestor_buffer (GdkWindow *requestor)
 }
 
 static gboolean
-cdk_wayland_selection_source_handles_target (GdkWaylandSelection *wayland_selection,
-                                             GdkAtom              target)
+cdk_wayland_selection_source_handles_target (CdkWaylandSelection *wayland_selection,
+                                             CdkAtom              target)
 {
-  GdkAtom atom;
+  CdkAtom atom;
   guint i;
 
   if (target == GDK_NONE)
@@ -954,7 +954,7 @@ cdk_wayland_selection_source_handles_target (GdkWaylandSelection *wayland_select
 
   for (i = 0; i < wayland_selection->source_targets->len; i++)
     {
-      atom = g_array_index (wayland_selection->source_targets, GdkAtom, i);
+      atom = g_array_index (wayland_selection->source_targets, CdkAtom, i);
 
       if (atom == target)
         return TRUE;
@@ -964,7 +964,7 @@ cdk_wayland_selection_source_handles_target (GdkWaylandSelection *wayland_select
 }
 
 static void
-cdk_wayland_selection_handle_next_request (GdkWaylandSelection *wayland_selection)
+cdk_wayland_selection_handle_next_request (CdkWaylandSelection *wayland_selection)
 {
   gint i;
 
@@ -986,10 +986,10 @@ cdk_wayland_selection_handle_next_request (GdkWaylandSelection *wayland_selectio
 }
 
 static gboolean
-cdk_wayland_selection_request_target (GdkWaylandSelection *wayland_selection,
-                                      GdkWindow           *window,
-                                      GdkAtom              selection,
-                                      GdkAtom              target,
+cdk_wayland_selection_request_target (CdkWaylandSelection *wayland_selection,
+                                      CdkWindow           *window,
+                                      CdkAtom              selection,
+                                      CdkAtom              target,
                                       gint                 fd)
 {
   StoredSelection *stored_selection;
@@ -1045,9 +1045,9 @@ data_source_send (void                  *data,
                   const char            *mime_type,
                   int32_t                fd)
 {
-  GdkWaylandSelection *wayland_selection = data;
-  GdkWindow *window;
-  GdkAtom selection;
+  CdkWaylandSelection *wayland_selection = data;
+  CdkWindow *window;
+  CdkAtom selection;
 
   GDK_NOTE (EVENTS,
             g_message ("data source send, source = %p, mime_type = %s, fd = %d",
@@ -1088,10 +1088,10 @@ static void
 data_source_cancelled (void                  *data,
                        struct wl_data_source *source)
 {
-  GdkWaylandSelection *wayland_selection = data;
-  GdkDragContext *context;
-  GdkDisplay *display;
-  GdkAtom atom;
+  CdkWaylandSelection *wayland_selection = data;
+  CdkDragContext *context;
+  CdkDisplay *display;
+  CdkAtom atom;
 
   GDK_NOTE (EVENTS,
             g_message ("data source cancelled, source = %p", source));
@@ -1119,7 +1119,7 @@ static void
 data_source_dnd_drop_performed (void                  *data,
                                 struct wl_data_source *source)
 {
-  GdkDragContext *context;
+  CdkDragContext *context;
 
   context = cdk_wayland_drag_context_lookup_by_data_source (source);
 
@@ -1133,8 +1133,8 @@ static void
 data_source_dnd_finished (void                  *data,
                           struct wl_data_source *source)
 {
-  GdkDisplay *display = cdk_display_get_default ();
-  GdkDragContext *context;
+  CdkDisplay *display = cdk_display_get_default ();
+  CdkDragContext *context;
 
   context = cdk_wayland_drag_context_lookup_by_data_source (source);
 
@@ -1158,7 +1158,7 @@ data_source_action (void                  *data,
                     struct wl_data_source *source,
                     uint32_t               action)
 {
-  GdkDragContext *context;
+  CdkDragContext *context;
 
   GDK_NOTE (EVENTS,
             g_message ("data source action, source = %p action=%x",
@@ -1188,7 +1188,7 @@ primary_source_send (void       *data,
                      const char *mime_type,
                      int32_t     fd)
 {
-  GdkWaylandSelection *wayland_selection = data;
+  CdkWaylandSelection *wayland_selection = data;
 
   GDK_NOTE (EVENTS,
             g_message ("primary source send, source = %p, mime_type = %s, fd = %d",
@@ -1229,8 +1229,8 @@ static void
 primary_source_cancelled (void     *data,
                           gpointer  source)
 {
-  GdkDisplay *display;
-  GdkAtom atom;
+  CdkDisplay *display;
+  CdkAtom atom;
 
   GDK_NOTE (EVENTS,
             g_message ("primary source cancelled, source = %p", source));
@@ -1268,13 +1268,13 @@ static const struct zwp_primary_selection_source_v1_listener zwp_primary_source_
 };
 
 struct wl_data_source *
-cdk_wayland_selection_get_data_source (GdkWindow *owner,
-                                       GdkAtom    selection)
+cdk_wayland_selection_get_data_source (CdkWindow *owner,
+                                       CdkAtom    selection)
 {
-  GdkDisplay *display = cdk_window_get_display (owner);
-  GdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
+  CdkDisplay *display = cdk_window_get_display (owner);
+  CdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
   gpointer source = NULL;
-  GdkWaylandDisplay *display_wayland;
+  CdkWaylandDisplay *display_wayland;
 
   if (selection == atoms[ATOM_DND])
     {
@@ -1350,10 +1350,10 @@ cdk_wayland_selection_get_data_source (GdkWindow *owner,
 }
 
 void
-cdk_wayland_selection_unset_data_source (GdkDisplay *display,
-                                         GdkAtom     selection)
+cdk_wayland_selection_unset_data_source (CdkDisplay *display,
+                                         CdkAtom     selection)
 {
-  GdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
+  CdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
 
   if (selection == atoms[ATOM_CLIPBOARD])
     {
@@ -1377,11 +1377,11 @@ cdk_wayland_selection_unset_data_source (GdkDisplay *display,
     }
 }
 
-GdkWindow *
-_cdk_wayland_display_get_selection_owner (GdkDisplay *display,
-                                          GdkAtom     selection)
+CdkWindow *
+_cdk_wayland_display_get_selection_owner (CdkDisplay *display,
+                                          CdkAtom     selection)
 {
-  GdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
+  CdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
 
   if (selection == atoms[ATOM_CLIPBOARD])
     return wayland_selection->clipboard_owner;
@@ -1394,14 +1394,14 @@ _cdk_wayland_display_get_selection_owner (GdkDisplay *display,
 }
 
 gboolean
-_cdk_wayland_display_set_selection_owner (GdkDisplay *display,
-                                          GdkWindow  *owner,
-                                          GdkAtom     selection,
+_cdk_wayland_display_set_selection_owner (CdkDisplay *display,
+                                          CdkWindow  *owner,
+                                          CdkAtom     selection,
                                           guint32     time,
                                           gboolean    send_event)
 {
-  GdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
-  GdkSeat *seat = cdk_display_get_default_seat (display);
+  CdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
+  CdkSeat *seat = cdk_display_get_default_seat (display);
 
   cdk_wayland_selection_reset_selection (wayland_selection, selection);
 
@@ -1435,20 +1435,20 @@ _cdk_wayland_display_set_selection_owner (GdkDisplay *display,
 }
 
 void
-_cdk_wayland_display_send_selection_notify (GdkDisplay *dispay,
-                                            GdkWindow  *requestor,
-                                            GdkAtom     selection,
-                                            GdkAtom     target,
-                                            GdkAtom     property,
+_cdk_wayland_display_send_selection_notify (CdkDisplay *dispay,
+                                            CdkWindow  *requestor,
+                                            CdkAtom     selection,
+                                            CdkAtom     target,
+                                            CdkAtom     property,
                                             guint32     time)
 {
 }
 
 gint
-_cdk_wayland_display_get_selection_property (GdkDisplay  *display,
-                                             GdkWindow   *requestor,
+_cdk_wayland_display_get_selection_property (CdkDisplay  *display,
+                                             CdkWindow   *requestor,
                                              guchar     **data,
-                                             GdkAtom     *ret_type,
+                                             CdkAtom     *ret_type,
                                              gint        *ret_format)
 {
   SelectionBuffer *buffer_data;
@@ -1490,11 +1490,11 @@ _cdk_wayland_display_get_selection_property (GdkDisplay  *display,
 }
 
 static void
-emit_empty_selection_notify (GdkWindow *requestor,
-                             GdkAtom    selection,
-                             GdkAtom    target)
+emit_empty_selection_notify (CdkWindow *requestor,
+                             CdkAtom    selection,
+                             CdkAtom    target)
 {
-  GdkEvent *event;
+  CdkEvent *event;
 
   event = cdk_event_new (GDK_SELECTION_NOTIFY);
   event->selection.window = g_object_ref (requestor);
@@ -1510,11 +1510,11 @@ emit_empty_selection_notify (GdkWindow *requestor,
 }
 
 static void
-emit_selection_clear (GdkDisplay *display,
-                      GdkAtom     selection)
+emit_selection_clear (CdkDisplay *display,
+                      CdkAtom     selection)
 {
-  GdkEvent *event;
-  GdkWindow *window;
+  CdkEvent *event;
+  CdkWindow *window;
 
   event = cdk_event_new (GDK_SELECTION_CLEAR);
   event->selection.selection = selection;
@@ -1532,14 +1532,14 @@ emit_selection_clear (GdkDisplay *display,
 }
 
 void
-_cdk_wayland_display_convert_selection (GdkDisplay *display,
-                                        GdkWindow  *requestor,
-                                        GdkAtom     selection,
-                                        GdkAtom     target,
+_cdk_wayland_display_convert_selection (CdkDisplay *display,
+                                        CdkWindow  *requestor,
+                                        CdkAtom     selection,
+                                        CdkAtom     target,
                                         guint32     time)
 {
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
-  GdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
   const SelectionData *selection_data;
   SelectionBuffer *buffer_data;
   gpointer offer;
@@ -1586,7 +1586,7 @@ _cdk_wayland_display_convert_selection (GdkDisplay *display,
     {
       GInputStream *stream = NULL;
       int pipe_fd[2], natoms = 0;
-      GdkAtom *targets = NULL;
+      CdkAtom *targets = NULL;
 
       if (target == cdk_atom_intern_static_string ("TARGETS"))
         {
@@ -1594,7 +1594,7 @@ _cdk_wayland_display_convert_selection (GdkDisplay *display,
           GList *l;
 
           natoms = g_list_length (target_list);
-          targets = g_new0 (GdkAtom, natoms);
+          targets = g_new0 (CdkAtom, natoms);
 
           for (l = target_list; l; l = l->next)
             targets[i++] = l->data;
@@ -1628,7 +1628,7 @@ _cdk_wayland_display_convert_selection (GdkDisplay *display,
       if (targets)
         {
           /* Store directly the local atoms */
-          selection_buffer_append_data (buffer_data, targets, natoms * sizeof (GdkAtom));
+          selection_buffer_append_data (buffer_data, targets, natoms * sizeof (CdkAtom));
           g_free (targets);
         }
 
@@ -1644,8 +1644,8 @@ _cdk_wayland_display_convert_selection (GdkDisplay *display,
 }
 
 gint
-_cdk_wayland_display_text_property_to_utf8_list (GdkDisplay    *display,
-                                                 GdkAtom        encoding,
+_cdk_wayland_display_text_property_to_utf8_list (CdkDisplay    *display,
+                                                 CdkAtom        encoding,
                                                  gint           format,
                                                  const guchar  *text,
                                                  gint           length,
@@ -1736,7 +1736,7 @@ sanitize_utf8 (const gchar *src,
 }
 
 gchar *
-_cdk_wayland_display_utf8_to_string_target (GdkDisplay  *display,
+_cdk_wayland_display_utf8_to_string_target (CdkDisplay  *display,
                                             const gchar *str)
 {
   /* This is mainly needed when interfacing with old clients through
@@ -1750,13 +1750,13 @@ _cdk_wayland_display_utf8_to_string_target (GdkDisplay  *display,
 }
 
 void
-cdk_wayland_selection_add_targets (GdkWindow *window,
-                                   GdkAtom    selection,
+cdk_wayland_selection_add_targets (CdkWindow *window,
+                                   CdkAtom    selection,
                                    guint      ntargets,
-                                   GdkAtom   *targets)
+                                   CdkAtom   *targets)
 {
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
   gpointer data_source;
   guint i;
 
@@ -1779,14 +1779,14 @@ cdk_wayland_selection_add_targets (GdkWindow *window,
 
   if (selection == atoms[ATOM_CLIPBOARD])
     {
-      GdkSeat *seat;
+      CdkSeat *seat;
 
       seat = cdk_display_get_default_seat (display);
       cdk_wayland_seat_set_selection (seat, data_source);
     }
   else if (selection == atoms[ATOM_PRIMARY])
     {
-      GdkSeat *seat;
+      CdkSeat *seat;
 
       seat = cdk_display_get_default_seat (display);
       cdk_wayland_seat_set_primary (seat, data_source);
@@ -1794,10 +1794,10 @@ cdk_wayland_selection_add_targets (GdkWindow *window,
 }
 
 void
-cdk_wayland_selection_clear_targets (GdkDisplay *display,
-                                     GdkAtom     selection)
+cdk_wayland_selection_clear_targets (CdkDisplay *display,
+                                     CdkAtom     selection)
 {
-  GdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
+  CdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
 
   wayland_selection->requested_target = GDK_NONE;
   g_array_set_size (wayland_selection->source_targets, 0);
@@ -1805,10 +1805,10 @@ cdk_wayland_selection_clear_targets (GdkDisplay *display,
 }
 
 gboolean
-cdk_wayland_selection_set_current_offer_actions (GdkDisplay *display,
+cdk_wayland_selection_set_current_offer_actions (CdkDisplay *display,
                                                  uint32_t    action)
 {
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
   struct wl_data_offer *offer;
   uint32_t all_actions = 0;
 

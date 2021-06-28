@@ -18,13 +18,13 @@
 
 #include "cdkpixbufutilsprivate.h"
 
-static GdkPixbuf *
-load_from_stream (GdkPixbufLoader  *loader,
+static CdkPixbuf *
+load_from_stream (CdkPixbufLoader  *loader,
                   GInputStream     *stream,
                   GCancellable     *cancellable,
                   GError          **error)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gssize n_read;
   guchar buffer[65536];
   gboolean res;
@@ -70,7 +70,7 @@ load_from_stream (GdkPixbufLoader  *loader,
 }
 
 static void
-size_prepared_cb (GdkPixbufLoader *loader,
+size_prepared_cb (CdkPixbufLoader *loader,
                   gint             width,
                   gint             height,
                   gpointer         data)
@@ -87,14 +87,14 @@ size_prepared_cb (GdkPixbufLoader *loader,
  * load the image at its original size times the
  * given scale.
  */
-GdkPixbuf *
+CdkPixbuf *
 _cdk_pixbuf_new_from_stream_scaled (GInputStream  *stream,
                                     gdouble        scale,
                                     GCancellable  *cancellable,
                                     GError       **error)
 {
-  GdkPixbufLoader *loader;
-  GdkPixbuf *pixbuf;
+  CdkPixbufLoader *loader;
+  CdkPixbuf *pixbuf;
 
   loader = cdk_pixbuf_loader_new ();
 
@@ -112,13 +112,13 @@ _cdk_pixbuf_new_from_stream_scaled (GInputStream  *stream,
  * load the image at its original size times the
  * given scale.
  */
-GdkPixbuf *
+CdkPixbuf *
 _cdk_pixbuf_new_from_resource_scaled (const gchar  *resource_path,
                                       gdouble       scale,
                                       GError      **error)
 {
   GInputStream *stream;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   stream = g_resources_open_stream (resource_path, 0, error);
   if (stream == NULL)

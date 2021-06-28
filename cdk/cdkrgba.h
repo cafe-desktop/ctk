@@ -34,7 +34,7 @@
 
 G_BEGIN_DECLS
 
-struct _GdkRGBA
+struct _CdkRGBA
 {
   gdouble red;
   gdouble green;
@@ -48,9 +48,9 @@ GDK_AVAILABLE_IN_ALL
 GType     cdk_rgba_get_type  (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GdkRGBA * cdk_rgba_copy      (const GdkRGBA *rgba);
+CdkRGBA * cdk_rgba_copy      (const CdkRGBA *rgba);
 GDK_AVAILABLE_IN_ALL
-void      cdk_rgba_free      (GdkRGBA       *rgba);
+void      cdk_rgba_free      (CdkRGBA       *rgba);
 
 GDK_AVAILABLE_IN_ALL
 guint     cdk_rgba_hash      (gconstpointer  p);
@@ -59,10 +59,10 @@ gboolean  cdk_rgba_equal     (gconstpointer  p1,
                               gconstpointer  p2);
 
 GDK_AVAILABLE_IN_ALL
-gboolean  cdk_rgba_parse     (GdkRGBA       *rgba,
+gboolean  cdk_rgba_parse     (CdkRGBA       *rgba,
                               const gchar   *spec);
 GDK_AVAILABLE_IN_ALL
-gchar *   cdk_rgba_to_string (const GdkRGBA *rgba);
+gchar *   cdk_rgba_to_string (const CdkRGBA *rgba);
 
 
 G_END_DECLS

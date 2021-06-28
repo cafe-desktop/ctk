@@ -8688,11 +8688,11 @@ msgstr "Presi en prova presilo"
 #~ msgid "Unable to locate theme engine in module_path: \"%s\","
 #~ msgstr "Neeblas trovi etosan maŝinon en module_path: \"%s\","
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Gdk malcimigaj flagoj por marki"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Cdk malcimigaj flagoj por marki"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Gdk malcimigaj flagoj por malmarki"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Cdk malcimigaj flagoj por malmarki"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "Bilda dosiero \"%s\" enhavas neniun datumon"

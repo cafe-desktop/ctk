@@ -8832,10 +8832,10 @@ msgstr "Print to Test Printer"
 #~ msgid "Error creating folder '%s': %s"
 #~ msgstr "Error creating folder '%s': %s"
 
-#~ msgid "Gdk debugging flags to set"
+#~ msgid "Cdk debugging flags to set"
 #~ msgstr "GDK debugging flags to set"
 
-#~ msgid "Gdk debugging flags to unset"
+#~ msgid "Cdk debugging flags to unset"
 #~ msgstr "GDK debugging flags to unset"
 
 #~ msgid "Image file '%s' contains no data"
@@ -9284,8 +9284,8 @@ msgstr "Print to Test Printer"
 #~ msgid "Failed to allocate QTIF context structure."
 #~ msgstr "Failed to allocate QTIF context structure."
 
-#~ msgid "Failed to create GdkPixbufLoader object."
-#~ msgstr "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgstr "Failed to create CdkPixbufLoader object."
 
 #~ msgid "Failed to find an image data atom."
 #~ msgstr "Failed to find an image data atom."

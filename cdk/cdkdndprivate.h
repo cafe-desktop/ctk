@@ -23,106 +23,106 @@
 G_BEGIN_DECLS
 
 
-#define GDK_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_DRAG_CONTEXT, GdkDragContextClass))
+#define GDK_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_DRAG_CONTEXT, CdkDragContextClass))
 #define GDK_IS_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_DRAG_CONTEXT))
-#define GDK_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_DRAG_CONTEXT, GdkDragContextClass))
+#define GDK_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_DRAG_CONTEXT, CdkDragContextClass))
 
-typedef struct _GdkDragContextClass GdkDragContextClass;
+typedef struct _CdkDragContextClass CdkDragContextClass;
 
 
-struct _GdkDragContextClass {
+struct _CdkDragContextClass {
   GObjectClass parent_class;
 
-  GdkWindow * (*find_window)   (GdkDragContext  *context,
-                                GdkWindow       *drag_window,
-                                GdkScreen       *screen,
+  CdkWindow * (*find_window)   (CdkDragContext  *context,
+                                CdkWindow       *drag_window,
+                                CdkScreen       *screen,
                                 gint             x_root,
                                 gint             y_root,
-                                GdkDragProtocol *protocol);
-  GdkAtom     (*get_selection) (GdkDragContext  *context);
-  gboolean    (*drag_motion)   (GdkDragContext  *context,
-                                GdkWindow       *dest_window,
-                                GdkDragProtocol  protocol,
+                                CdkDragProtocol *protocol);
+  CdkAtom     (*get_selection) (CdkDragContext  *context);
+  gboolean    (*drag_motion)   (CdkDragContext  *context,
+                                CdkWindow       *dest_window,
+                                CdkDragProtocol  protocol,
                                 gint             root_x,
                                 gint             root_y,
-                                GdkDragAction    suggested_action,
-                                GdkDragAction    possible_actions,
+                                CdkDragAction    suggested_action,
+                                CdkDragAction    possible_actions,
                                 guint32          time_);
-  void        (*drag_status)   (GdkDragContext  *context,
-                                GdkDragAction    action,
+  void        (*drag_status)   (CdkDragContext  *context,
+                                CdkDragAction    action,
                                 guint32          time_);
-  void        (*drag_abort)    (GdkDragContext  *context,
+  void        (*drag_abort)    (CdkDragContext  *context,
                                 guint32          time_);
-  void        (*drag_drop)     (GdkDragContext  *context,
+  void        (*drag_drop)     (CdkDragContext  *context,
                                 guint32          time_);
-  void        (*drop_reply)    (GdkDragContext  *context,
+  void        (*drop_reply)    (CdkDragContext  *context,
                                 gboolean         accept,
                                 guint32          time_);
-  void        (*drop_finish)   (GdkDragContext  *context,
+  void        (*drop_finish)   (CdkDragContext  *context,
                                 gboolean         success,
                                 guint32          time_);
-  gboolean    (*drop_status)   (GdkDragContext  *context);
-  GdkWindow*  (*get_drag_window) (GdkDragContext *context);
-  void        (*set_hotspot)   (GdkDragContext  *context,
+  gboolean    (*drop_status)   (CdkDragContext  *context);
+  CdkWindow*  (*get_drag_window) (CdkDragContext *context);
+  void        (*set_hotspot)   (CdkDragContext  *context,
                                 gint             hot_x,
                                 gint             hot_y);
-  void        (*drop_done)     (GdkDragContext   *context,
+  void        (*drop_done)     (CdkDragContext   *context,
                                 gboolean          success);
 
-  gboolean    (*manage_dnd)     (GdkDragContext  *context,
-                                 GdkWindow       *ipc_window,
-                                 GdkDragAction    actions);
-  void        (*set_cursor)     (GdkDragContext  *context,
-                                 GdkCursor       *cursor);
-  void        (*cancel)         (GdkDragContext      *context,
-                                 GdkDragCancelReason  reason);
-  void        (*drop_performed) (GdkDragContext  *context,
+  gboolean    (*manage_dnd)     (CdkDragContext  *context,
+                                 CdkWindow       *ipc_window,
+                                 CdkDragAction    actions);
+  void        (*set_cursor)     (CdkDragContext  *context,
+                                 CdkCursor       *cursor);
+  void        (*cancel)         (CdkDragContext      *context,
+                                 CdkDragCancelReason  reason);
+  void        (*drop_performed) (CdkDragContext  *context,
                                  guint32          time);
-  void        (*dnd_finished)   (GdkDragContext  *context);
+  void        (*dnd_finished)   (CdkDragContext  *context);
 
-  gboolean    (*handle_event)   (GdkDragContext  *context,
-                                 const GdkEvent  *event);
-  void        (*action_changed) (GdkDragContext  *context,
-                                 GdkDragAction    action);
+  gboolean    (*handle_event)   (CdkDragContext  *context,
+                                 const CdkEvent  *event);
+  void        (*action_changed) (CdkDragContext  *context,
+                                 CdkDragAction    action);
 
-  void        (*commit_drag_status) (GdkDragContext  *context);
+  void        (*commit_drag_status) (CdkDragContext  *context);
 };
 
-struct _GdkDragContext {
+struct _CdkDragContext {
   GObject parent_instance;
 
   /*< private >*/
-  GdkDragProtocol protocol;
+  CdkDragProtocol protocol;
 
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   gboolean is_source;
-  GdkWindow *source_window;
-  GdkWindow *dest_window;
-  GdkWindow *drag_window;
+  CdkWindow *source_window;
+  CdkWindow *dest_window;
+  CdkWindow *drag_window;
 
   GList *targets;
-  GdkDragAction actions;
-  GdkDragAction suggested_action;
-  GdkDragAction action;
+  CdkDragAction actions;
+  CdkDragAction suggested_action;
+  CdkDragAction action;
 
   guint32 start_time;
 
-  GdkDevice *device;
+  CdkDevice *device;
 
   guint drop_done : 1; /* Whether cdk_drag_drop_done() was performed */
 };
 
 GList *  cdk_drag_context_list (void);
 
-void     cdk_drag_context_set_cursor          (GdkDragContext *context,
-                                               GdkCursor      *cursor);
-void     cdk_drag_context_cancel              (GdkDragContext      *context,
-                                               GdkDragCancelReason  reason);
-gboolean cdk_drag_context_handle_source_event (GdkEvent *event);
-gboolean cdk_drag_context_handle_dest_event   (GdkEvent *event);
-GdkCursor * cdk_drag_get_cursor               (GdkDragContext *context,
-                                               GdkDragAction   action);
+void     cdk_drag_context_set_cursor          (CdkDragContext *context,
+                                               CdkCursor      *cursor);
+void     cdk_drag_context_cancel              (CdkDragContext      *context,
+                                               CdkDragCancelReason  reason);
+gboolean cdk_drag_context_handle_source_event (CdkEvent *event);
+gboolean cdk_drag_context_handle_dest_event   (CdkEvent *event);
+CdkCursor * cdk_drag_get_cursor               (CdkDragContext *context,
+                                               CdkDragAction   action);
 
 G_END_DECLS
 

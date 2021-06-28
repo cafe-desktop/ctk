@@ -26,7 +26,7 @@
 #include <cdkquartzutils.h>
 
 NSImage *
-cdk_quartz_pixbuf_to_ns_image_libctk_only (GdkPixbuf *pixbuf)
+cdk_quartz_pixbuf_to_ns_image_libctk_only (CdkPixbuf *pixbuf)
 {
   NSBitmapImageRep  *bitmap_rep;
   NSImage           *image;
@@ -91,10 +91,10 @@ cdk_quartz_pixbuf_to_ns_image_libctk_only (GdkPixbuf *pixbuf)
 }
 
 NSEvent *
-cdk_quartz_event_get_nsevent (GdkEvent *event)
+cdk_quartz_event_get_nsevent (CdkEvent *event)
 {
   /* FIXME: If the event here is unallocated, we crash. */
-  return ((GdkEventPrivate *) event)->windowing_data;
+  return ((CdkEventPrivate *) event)->windowing_data;
 }
 
 /*

@@ -32,19 +32,19 @@
 G_BEGIN_DECLS
 
 /**
- * GdkFrameClock:
+ * CdkFrameClock:
  * @parent_instance: The parent instance.
  */
-struct _GdkFrameClock
+struct _CdkFrameClock
 {
   GObject parent_instance;
 
   /*< private >*/
-  GdkFrameClockPrivate *priv;
+  CdkFrameClockPrivate *priv;
 };
 
 /**
- * GdkFrameClockClass:
+ * CdkFrameClockClass:
  * @parent_class: The parent class.
 
  * @get_frame_time: Gets the time that should currently be used for
@@ -55,33 +55,33 @@ struct _GdkFrameClock
  * @freeze: 
  * @thaw: 
  */
-struct _GdkFrameClockClass
+struct _CdkFrameClockClass
 {
   GObjectClass parent_class;
 
   /*< public >*/
 
-  gint64   (* get_frame_time) (GdkFrameClock *clock);
+  gint64   (* get_frame_time) (CdkFrameClock *clock);
 
-  void     (* request_phase)  (GdkFrameClock      *clock,
-                               GdkFrameClockPhase  phase);
-  void     (* begin_updating) (GdkFrameClock      *clock);
-  void     (* end_updating)   (GdkFrameClock      *clock);
+  void     (* request_phase)  (CdkFrameClock      *clock,
+                               CdkFrameClockPhase  phase);
+  void     (* begin_updating) (CdkFrameClock      *clock);
+  void     (* end_updating)   (CdkFrameClock      *clock);
 
-  void     (* freeze)         (GdkFrameClock *clock);
-  void     (* thaw)           (GdkFrameClock *clock);
+  void     (* freeze)         (CdkFrameClock *clock);
+  void     (* thaw)           (CdkFrameClock *clock);
 
   /* signals */
-  /* void (* flush_events)       (GdkFrameClock *clock); */
-  /* void (* before_paint)       (GdkFrameClock *clock); */
-  /* void (* update)             (GdkFrameClock *clock); */
-  /* void (* layout)             (GdkFrameClock *clock); */
-  /* void (* paint)              (GdkFrameClock *clock); */
-  /* void (* after_paint)        (GdkFrameClock *clock); */
-  /* void (* resume_events)      (GdkFrameClock *clock); */
+  /* void (* flush_events)       (CdkFrameClock *clock); */
+  /* void (* before_paint)       (CdkFrameClock *clock); */
+  /* void (* update)             (CdkFrameClock *clock); */
+  /* void (* layout)             (CdkFrameClock *clock); */
+  /* void (* paint)              (CdkFrameClock *clock); */
+  /* void (* after_paint)        (CdkFrameClock *clock); */
+  /* void (* resume_events)      (CdkFrameClock *clock); */
 };
 
-struct _GdkFrameTimings
+struct _CdkFrameTimings
 {
   /*< private >*/
   guint ref_count;
@@ -105,26 +105,26 @@ struct _GdkFrameTimings
   guint slept_before : 1;
 };
 
-void _cdk_frame_clock_freeze (GdkFrameClock *clock);
-void _cdk_frame_clock_thaw   (GdkFrameClock *clock);
+void _cdk_frame_clock_freeze (CdkFrameClock *clock);
+void _cdk_frame_clock_thaw   (CdkFrameClock *clock);
 
-void _cdk_frame_clock_begin_frame         (GdkFrameClock   *clock);
-void _cdk_frame_clock_debug_print_timings (GdkFrameClock   *clock,
-                                           GdkFrameTimings *timings);
-void _cdk_frame_clock_add_timings_to_profiler (GdkFrameClock *frame_clock,
-                                               GdkFrameTimings *timings);
+void _cdk_frame_clock_begin_frame         (CdkFrameClock   *clock);
+void _cdk_frame_clock_debug_print_timings (CdkFrameClock   *clock,
+                                           CdkFrameTimings *timings);
+void _cdk_frame_clock_add_timings_to_profiler (CdkFrameClock *frame_clock,
+                                               CdkFrameTimings *timings);
 
-GdkFrameTimings *_cdk_frame_timings_new   (gint64           frame_counter);
-gboolean         _cdk_frame_timings_steal (GdkFrameTimings *timings,
+CdkFrameTimings *_cdk_frame_timings_new   (gint64           frame_counter);
+gboolean         _cdk_frame_timings_steal (CdkFrameTimings *timings,
                                            gint64           frame_counter);
 
-void _cdk_frame_clock_emit_flush_events  (GdkFrameClock *frame_clock);
-void _cdk_frame_clock_emit_before_paint  (GdkFrameClock *frame_clock);
-void _cdk_frame_clock_emit_update        (GdkFrameClock *frame_clock);
-void _cdk_frame_clock_emit_layout        (GdkFrameClock *frame_clock);
-void _cdk_frame_clock_emit_paint         (GdkFrameClock *frame_clock);
-void _cdk_frame_clock_emit_after_paint   (GdkFrameClock *frame_clock);
-void _cdk_frame_clock_emit_resume_events (GdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_flush_events  (CdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_before_paint  (CdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_update        (CdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_layout        (CdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_paint         (CdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_after_paint   (CdkFrameClock *frame_clock);
+void _cdk_frame_clock_emit_resume_events (CdkFrameClock *frame_clock);
 
 G_END_DECLS
 

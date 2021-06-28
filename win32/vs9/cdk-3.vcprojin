@@ -32,7 +32,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32"
-				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GdkDefines)"
+				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(CdkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -42,7 +42,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GdkAdditionalLibs)"
+				AdditionalDependencies="$(CdkAdditionalLibs)"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
@@ -64,7 +64,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32;..\..\cdk\broadway"
-				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GdkDefines)"
+				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(CdkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -74,7 +74,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GdkAdditionalLibs) $(GdkBroadwayAdditionalLibs)"
+				AdditionalDependencies="$(CdkAdditionalLibs) $(CdkBroadwayAdditionalLibs)"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
@@ -96,7 +96,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32"
-				PreprocessorDefinitions="$(GdkDefines)"
+				PreprocessorDefinitions="$(CdkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -104,7 +104,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GdkAdditionalLibs)"
+				AdditionalDependencies="$(CdkAdditionalLibs)"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
@@ -128,7 +128,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32;..\..\cdk\broadway"
-				PreprocessorDefinitions="$(GdkDefines)"
+				PreprocessorDefinitions="$(CdkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -136,7 +136,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GdkAdditionalLibs) $(GdkBroadwayAdditionalLibs)"
+				AdditionalDependencies="$(CdkAdditionalLibs) $(CdkBroadwayAdditionalLibs)"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
@@ -160,7 +160,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32"
-				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GdkDefines)"
+				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(CdkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -170,7 +170,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GdkAdditionalLibs)"
+				AdditionalDependencies="$(CdkAdditionalLibs)"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
@@ -192,7 +192,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32;..\..\cdk\broadway"
-				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GdkDefines)"
+				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(CdkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -202,7 +202,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GdkAdditionalLibs) $(GdkBroadwayAdditionalLibs)"
+				AdditionalDependencies="$(CdkAdditionalLibs) $(CdkBroadwayAdditionalLibs)"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
@@ -224,7 +224,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32"
-				PreprocessorDefinitions="$(GdkDefines)"
+				PreprocessorDefinitions="$(CdkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -232,7 +232,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GdkAdditionalLibs)"
+				AdditionalDependencies="$(CdkAdditionalLibs)"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
@@ -256,7 +256,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\win32;..\..\cdk\broadway"
-				PreprocessorDefinitions="$(GdkDefines)"
+				PreprocessorDefinitions="$(CdkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
@@ -264,7 +264,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="$(GdkAdditionalLibs) $(GdkBroadwayAdditionalLibs)"
+				AdditionalDependencies="$(CdkAdditionalLibs) $(CdkBroadwayAdditionalLibs)"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"

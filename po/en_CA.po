@@ -4430,11 +4430,11 @@ msgid ""
 msgstr ""
 "Failed to load image '%s': reason not known, probably a corrupt image file"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Gdk debugging flags to set"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Cdk debugging flags to set"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Gdk debugging flags to unset"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Cdk debugging flags to unset"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "Image file '%s' contains no data"
@@ -4875,7 +4875,7 @@ msgstr ""
 #~ msgstr "Cannot allocate memory for TGA context struct"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Failed to write folder index\n"
 
 #, fuzzy

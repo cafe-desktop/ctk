@@ -242,7 +242,7 @@ ctk_css_palette_value_parse (CtkCssParser *parser)
   return result;
 }
 
-const GdkRGBA *
+const CdkRGBA *
 ctk_css_palette_value_get_color (CtkCssValue *value,
                                  const char  *name)
 {

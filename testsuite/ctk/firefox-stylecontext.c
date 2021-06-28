@@ -6,7 +6,7 @@ test_init_of_theme (void)
   CtkStyleContext *context;
   CtkCssProvider *provider;
   CtkWidgetPath *path;
-  GdkRGBA before, after;
+  CdkRGBA before, after;
   char *css;
 
   /* Test that a style context actually uses the theme loaded for the 

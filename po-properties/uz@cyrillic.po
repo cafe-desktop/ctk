@@ -1199,8 +1199,8 @@ msgid "Cell background color"
 msgstr "Катакнинг орқа фон ранги"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Катак орқа фон ранги GdkColor сифатида"
+msgid "Cell background color as a CdkColor"
+msgstr "Катак орқа фон ранги CdkColor сифатида"
 
 #: ctk/ctkcellrenderer.c:343
 msgid "Editing"
@@ -1441,8 +1441,8 @@ msgid "Background color"
 msgstr "Орқа фон ранги"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "GdkColor форматидаги орқа фон ранги"
+msgid "Background color as a CdkColor"
+msgstr "CdkColor форматидаги орқа фон ранги"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1458,8 +1458,8 @@ msgid "Foreground color"
 msgstr "Олд фон ранги"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "GdkColor форматидаги олд фон ранги"
+msgid "Foreground color as a CdkColor"
+msgstr "CdkColor форматидаги олд фон ранги"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -2997,7 +2997,7 @@ msgid "Pixbuf"
 msgstr ""
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr ""
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
@@ -3042,8 +3042,8 @@ msgid "Animation"
 msgstr "Анимация"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "Кўрсатиладиган GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "Кўрсатиладиган CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5523,7 +5523,7 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr ""
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ctk/ctktexttag.c:194
@@ -5537,7 +5537,7 @@ msgid ""
 msgstr ""
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ctk/ctktexttag.c:218
@@ -5675,7 +5675,7 @@ msgid "Paragraph background color"
 msgstr ""
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ctk/ctktexttag.c:530
@@ -6086,7 +6086,7 @@ msgstr ""
 #: ctk/ctktrayicon-x11.c:134
 #, fuzzy
 msgid "Foreground color for symbolic icons"
-msgstr "GdkColor форматидаги олд фон ранги"
+msgstr "CdkColor форматидаги олд фон ранги"
 
 #: ctk/ctktrayicon-x11.c:141
 #, fuzzy
@@ -6600,7 +6600,7 @@ msgid "Events"
 msgstr "Ҳодисалар"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
 
 #: ctk/ctkwidget.c:832
@@ -7046,11 +7046,11 @@ msgstr ""
 #~ msgid "Pixels"
 #~ msgstr "Пикселлар"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "Рендерер учун GdkScreen"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "Рендерер учун CdkScreen"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "Жорий танланган GdkFont"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "Жорий танланган CdkFont"
 
 #~ msgid "Use separator"
 #~ msgstr "Ажратувчидан фойдаланиш"

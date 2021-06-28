@@ -106,7 +106,7 @@ gicon_to_string (GIcon *icon)
 }
 
 static void
-end_startup_notification (GdkDisplay *display,
+end_startup_notification (CdkDisplay *display,
                           const char *startup_id)
 {
   cdk_x11_display_broadcast_startup_message (display, "remove",
@@ -131,7 +131,7 @@ end_startup_notification (GdkDisplay *display,
 
 typedef struct
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   char *startup_id;
   GTimeVal time;
 } StartupNotificationData;
@@ -225,7 +225,7 @@ startup_timeout (void *data)
 
 
 static void
-add_startup_timeout (GdkScreen  *screen,
+add_startup_timeout (CdkScreen  *screen,
                      const char *startup_id)
 {
   StartupTimeoutData *data;
@@ -264,8 +264,8 @@ cdk_x11_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
                                                   GList             *files)
 {
   static int sequence = 0;
-  GdkDisplay *display;
-  GdkScreen *screen;
+  CdkDisplay *display;
+  CdkScreen *screen;
   int files_count;
   char *description;
   char *icon_name;
@@ -277,7 +277,7 @@ cdk_x11_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
   guint32 timestamp;
   char *startup_id;
   GFileInfo *fileinfo;
-  GdkAppLaunchContext *ctx;
+  CdkAppLaunchContext *ctx;
 
   ctx = GDK_APP_LAUNCH_CONTEXT (context);
 
@@ -394,8 +394,8 @@ static void
 cdk_x11_app_launch_context_launch_failed (GAppLaunchContext *context,
                                           const gchar       *startup_notify_id)
 {
-  GdkAppLaunchContext *ctx;
-  GdkScreen *screen;
+  CdkAppLaunchContext *ctx;
+  CdkScreen *screen;
   StartupTimeoutData *data;
   StartupNotificationData *sn_data;
   GSList *l;
@@ -432,21 +432,21 @@ cdk_x11_app_launch_context_launch_failed (GAppLaunchContext *context,
     }
 }
 
-struct _GdkX11AppLaunchContext
+struct _CdkX11AppLaunchContext
 {
-  GdkAppLaunchContext parent_instance;
+  CdkAppLaunchContext parent_instance;
 };
 
-struct _GdkX11AppLaunchContextClass
+struct _CdkX11AppLaunchContextClass
 {
-  GdkAppLaunchContextClass parent_class;
+  CdkAppLaunchContextClass parent_class;
 };
 
 
-G_DEFINE_TYPE (GdkX11AppLaunchContext, cdk_x11_app_launch_context, GDK_TYPE_APP_LAUNCH_CONTEXT)
+G_DEFINE_TYPE (CdkX11AppLaunchContext, cdk_x11_app_launch_context, GDK_TYPE_APP_LAUNCH_CONTEXT)
 
 static void
-cdk_x11_app_launch_context_class_init (GdkX11AppLaunchContextClass *klass)
+cdk_x11_app_launch_context_class_init (CdkX11AppLaunchContextClass *klass)
 {
   GAppLaunchContextClass *ctx_class = G_APP_LAUNCH_CONTEXT_CLASS (klass);
 
@@ -455,14 +455,14 @@ cdk_x11_app_launch_context_class_init (GdkX11AppLaunchContextClass *klass)
 }
 
 static void
-cdk_x11_app_launch_context_init (GdkX11AppLaunchContext *ctx)
+cdk_x11_app_launch_context_init (CdkX11AppLaunchContext *ctx)
 {
 }
 
-GdkAppLaunchContext *
-_cdk_x11_display_get_app_launch_context (GdkDisplay *display)
+CdkAppLaunchContext *
+_cdk_x11_display_get_app_launch_context (CdkDisplay *display)
 {
-  GdkAppLaunchContext *ctx;
+  CdkAppLaunchContext *ctx;
   const gchar *display_name;
 
   ctx = g_object_new (GDK_TYPE_X11_APP_LAUNCH_CONTEXT,

@@ -93,10 +93,10 @@ on_page_reordered (CtkNotebook *notebook, CtkWidget *child, guint page_num, gpoi
 
 static void
 on_notebook_drag_begin (CtkWidget      *widget,
-                        GdkDragContext *context,
+                        CdkDragContext *context,
                         gpointer        data)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   guint page_num;
 
   page_num = ctk_notebook_get_current_page (CTK_NOTEBOOK (widget));
@@ -135,7 +135,7 @@ remove_in_idle (gpointer data)
 
 static void
 on_button_drag_data_received (CtkWidget        *widget,
-                              GdkDragContext   *context,
+                              CdkDragContext   *context,
                               gint              x,
                               gint              y,
                               CtkSelectionData *data,

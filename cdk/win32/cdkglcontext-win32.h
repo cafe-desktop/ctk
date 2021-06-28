@@ -37,9 +37,9 @@
 
 G_BEGIN_DECLS
 
-struct _GdkWin32GLContext
+struct _CdkWin32GLContext
 {
-  GdkGLContext parent_instance;
+  CdkGLContext parent_instance;
 
   /* WGL Context Items */
   HGLRC hglrc;
@@ -58,36 +58,36 @@ struct _GdkWin32GLContext
 #endif
 };
 
-struct _GdkWin32GLContextClass
+struct _CdkWin32GLContextClass
 {
-  GdkGLContextClass parent_class;
+  CdkGLContextClass parent_class;
 };
 
-GdkGLContext *
-_cdk_win32_window_create_gl_context (GdkWindow *window,
+CdkGLContext *
+_cdk_win32_window_create_gl_context (CdkWindow *window,
                                      gboolean attached,
-                                     GdkGLContext *share,
+                                     CdkGLContext *share,
                                      GError **error);
 
 void
-_cdk_win32_window_invalidate_for_new_frame (GdkWindow *window,
+_cdk_win32_window_invalidate_for_new_frame (CdkWindow *window,
                                             cairo_region_t *update_area);
 
 void
-_cdk_win32_gl_context_end_frame (GdkGLContext *context,
+_cdk_win32_gl_context_end_frame (CdkGLContext *context,
                                  cairo_region_t *painted,
                                  cairo_region_t *damage);
 
 gboolean
-_cdk_win32_display_make_gl_context_current (GdkDisplay *display,
-                                            GdkGLContext *context);
+_cdk_win32_display_make_gl_context_current (CdkDisplay *display,
+                                            CdkGLContext *context);
 
 gboolean
-_cdk_win32_gl_context_realize (GdkGLContext *context,
+_cdk_win32_gl_context_realize (CdkGLContext *context,
                                GError **error);
 
 void
-_cdk_win32_window_invalidate_egl_framebuffer (GdkWindow *window);
+_cdk_win32_window_invalidate_egl_framebuffer (CdkWindow *window);
 
 G_END_DECLS
 

@@ -1249,8 +1249,8 @@ msgid "Cell background color"
 msgstr "უჯრის ფონის ფერი"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "უჯრის ფონის ფერი GdkColor სახით"
+msgid "Cell background color as a CdkColor"
+msgstr "უჯრის ფონის ფერი CdkColor სახით"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1498,8 +1498,8 @@ msgid "Background color"
 msgstr "ფონის ფერი"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "ფონის ფერი GdkColor ფორმატში"
+msgid "Background color as a CdkColor"
+msgstr "ფონის ფერი CdkColor ფორმატში"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1515,8 +1515,8 @@ msgid "Foreground color"
 msgstr "ტექსტის ფერი"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "ტექსტის ფერი GdkColor ფორმატში"
+msgid "Foreground color as a CdkColor"
+msgstr "ტექსტის ფერი CdkColor ფორმატში"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3125,8 +3125,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf ობიექტი საჩვენებლად"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf ობიექტი საჩვენებლად"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3171,8 +3171,8 @@ msgid "Animation"
 msgstr "ანიმაცია"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation ობიექტი საჩვენებლად"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation ობიექტი საჩვენებლად"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5748,7 +5748,7 @@ msgstr "გააჩნია მონიშნული"
 #: ctk/ctktextbuffer.c:226
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "მიმდინარე არჩეული GdkFont შრიფტი"
+msgstr "მიმდინარე არჩეული CdkFont შრიფტი"
 
 #: ctk/ctktextbuffer.c:242
 msgid "Cursor position"
@@ -5801,8 +5801,8 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr "ტექტური ჭდის დამოწმებისსახელი. NULL უსახელო ჭდეებისთვის"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "ფონის ფერი (შესაძლოა განუსაზღვრელიც) GdkColor სტრუქტურიდან"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "ფონის ფერი (შესაძლოა განუსაზღვრელიც) CdkColor სტრუქტურიდან"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5816,8 +5816,8 @@ msgstr ""
 "ფონის ფერის გამოყენება სრული სტრიქონისთვის თუ მხოლოდ ჭდეების სიმბოლოებისთვის"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "ტექსტის ფერი (შესაძლოა განუსაზღვრელიც) GdkColor სტრუქტურიდან"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "ტექსტის ფერი (შესაძლოა განუსაზღვრელიც) CdkColor სტრუქტურიდან"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -5966,8 +5966,8 @@ msgid "Paragraph background color"
 msgstr "პარაგრაფის ფონის ფერი"
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "პარაგრაფის ფონის ფერი როგორც (შესაძლოა განუსაზღვრელიც) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "პარაგრაფის ფონის ფერი როგორც (შესაძლოა განუსაზღვრელიც) CdkColor"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -6942,9 +6942,9 @@ msgid "Events"
 msgstr "მოვლენა"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"მართვის ელემენტის მიერ GdkEvents მოვლენების ტიპების აღქმის განმსაზღვრელი "
+"მართვის ელემენტის მიერ CdkEvents მოვლენების ტიპების აღქმის განმსაზღვრელი "
 "შაბლონი"
 
 #: ctk/ctkwidget.c:832
@@ -7479,8 +7479,8 @@ msgstr "შეტანის მეთოდის სტატუსის გ
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "წერტილოვანი ნახატი ტექსტის ფონისათვის"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "მიმდინარე არჩეული GdkFont შრიფტი"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "მიმდინარე არჩეული CdkFont შრიფტი"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "პარამეტრი მოძველდა, მის ნაცვლად გამოიყენეთ \"ჩრდილის ტიპი\"."
@@ -7488,17 +7488,17 @@ msgstr "შეტანის მეთოდის სტატუსის გ
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "GdkPixmap ობიექტი საჩვენებლად"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "CdkPixmap ობიექტი საჩვენებლად"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "GdkImage ობიექტი საჩვენებლად"
+#~ msgid "A CdkImage to display"
+#~ msgstr "CdkImage ობიექტი საჩვენებლად"
 
 #~ msgid "Mask"
 #~ msgstr "ტრაფარეტი"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "GdkImage ან GdkPixmap ნახატების წერტილოვანი ტრაფარეტი"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "CdkImage ან CdkPixmap ნახატების წერტილოვანი ტრაფარეტი"
 
 #~ msgid "Use separator"
 #~ msgstr "გამყოფის გამოყენება"

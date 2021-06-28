@@ -90,7 +90,7 @@
  * set the title property explicitly when constructing a CtkAboutDialog,
  * as shown in the following example:
  * |[<!-- language="C" -->
- * GdkPixbuf *example_logo = cdk_pixbuf_new_from_file ("./logo.png", NULL);
+ * CdkPixbuf *example_logo = cdk_pixbuf_new_from_file ("./logo.png", NULL);
  * ctk_show_about_dialog (NULL,
  *                        "program-name", "ExampleCode",
  *                        "logo", example_logo,
@@ -179,8 +179,8 @@ struct _CtkAboutDialogPrivate
   CtkWidget *credits_grid;
   CtkWidget *license_view;
 
-  GdkCursor *hand_cursor;
-  GdkCursor *regular_cursor;
+  CdkCursor *hand_cursor;
+  CdkCursor *regular_cursor;
 
   GSList *visited_links;
 
@@ -231,7 +231,7 @@ static void                 follow_if_link                  (CtkAboutDialog     
                                                              CtkTextIter        *iter);
 static void                 set_cursor_if_appropriate       (CtkAboutDialog     *about,
                                                              CtkTextView        *text_view,
-                                                             GdkDevice          *device,
+                                                             CdkDevice          *device,
                                                              gint                x,
                                                              gint                y);
 static void                 populate_credits_page           (CtkAboutDialog     *about);
@@ -242,13 +242,13 @@ static gboolean             ctk_about_dialog_activate_link  (CtkAboutDialog     
 static gboolean             emit_activate_link              (CtkAboutDialog     *about,
 							     const gchar        *uri);
 static gboolean             text_view_key_press_event       (CtkWidget          *text_view,
-							     GdkEventKey        *event,
+							     CdkEventKey        *event,
 							     CtkAboutDialog     *about);
 static gboolean             text_view_event_after           (CtkWidget          *text_view,
-							     GdkEvent           *event,
+							     CdkEvent           *event,
 							     CtkAboutDialog     *about);
 static gboolean             text_view_motion_notify_event   (CtkWidget          *text_view,
-							     GdkEventMotion     *event,
+							     CdkEventMotion     *event,
 							     CtkAboutDialog     *about);
 static void                 toggle_credits                  (CtkToggleButton    *button,
                                                              gpointer            user_data);
@@ -801,7 +801,7 @@ ctk_about_dialog_realize (CtkWidget *widget)
 {
   CtkAboutDialog *about = CTK_ABOUT_DIALOG (widget);
   CtkAboutDialogPrivate *priv = about->priv;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   CTK_WIDGET_CLASS (ctk_about_dialog_parent_class)->realize (widget);
 
@@ -1739,7 +1739,7 @@ ctk_about_dialog_set_translator_credits (CtkAboutDialog *about,
  *
  * Since: 2.6
  */
-GdkPixbuf *
+CdkPixbuf *
 ctk_about_dialog_get_logo (CtkAboutDialog *about)
 {
   CtkAboutDialogPrivate *priv;
@@ -1757,7 +1757,7 @@ ctk_about_dialog_get_logo (CtkAboutDialog *about)
 /**
  * ctk_about_dialog_set_logo:
  * @about: a #CtkAboutDialog
- * @logo: (allow-none): a #GdkPixbuf, or %NULL
+ * @logo: (allow-none): a #CdkPixbuf, or %NULL
  *
  * Sets the pixbuf to be displayed as logo in the about dialog.
  * If it is %NULL, the default window icon set with
@@ -1767,7 +1767,7 @@ ctk_about_dialog_get_logo (CtkAboutDialog *about)
  */
 void
 ctk_about_dialog_set_logo (CtkAboutDialog *about,
-                           GdkPixbuf      *logo)
+                           CdkPixbuf      *logo)
 {
   CtkAboutDialogPrivate *priv;
 
@@ -1922,7 +1922,7 @@ follow_if_link (CtkAboutDialog *about,
 
       if (uri && !g_slist_find_custom (priv->visited_links, uri, (GCompareFunc)strcmp))
         {
-          GdkRGBA visited_link_color;
+          CdkRGBA visited_link_color;
           CtkStateFlags state;
           CtkStyleContext *context = ctk_widget_get_style_context (CTK_WIDGET (about));
           ctk_style_context_save (context);
@@ -1942,7 +1942,7 @@ follow_if_link (CtkAboutDialog *about,
 
 static gboolean
 text_view_key_press_event (CtkWidget      *text_view,
-                           GdkEventKey    *event,
+                           CdkEventKey    *event,
                            CtkAboutDialog *about)
 {
   CtkTextIter iter;
@@ -1968,18 +1968,18 @@ text_view_key_press_event (CtkWidget      *text_view,
 
 static gboolean
 text_view_event_after (CtkWidget      *text_view,
-                       GdkEvent       *event,
+                       CdkEvent       *event,
                        CtkAboutDialog *about)
 {
   CtkTextIter start, end, iter;
   CtkTextBuffer *buffer;
-  GdkEventButton *button_event;
+  CdkEventButton *button_event;
   gint x, y;
 
   if (event->type != GDK_BUTTON_RELEASE)
     return FALSE;
 
-  button_event = (GdkEventButton *)event;
+  button_event = (CdkEventButton *)event;
 
   if (button_event->button != GDK_BUTTON_PRIMARY)
     return FALSE;
@@ -2005,7 +2005,7 @@ text_view_event_after (CtkWidget      *text_view,
 static void
 set_cursor_if_appropriate (CtkAboutDialog *about,
                            CtkTextView    *text_view,
-                           GdkDevice      *device,
+                           CdkDevice      *device,
                            gint            x,
                            gint            y)
 {
@@ -2044,7 +2044,7 @@ set_cursor_if_appropriate (CtkAboutDialog *about,
 
 static gboolean
 text_view_motion_notify_event (CtkWidget      *text_view,
-                               GdkEventMotion *event,
+                               CdkEventMotion *event,
                                CtkAboutDialog *about)
 {
   gint x, y;
@@ -2067,9 +2067,9 @@ text_buffer_new (CtkAboutDialog  *about,
   gchar **p;
   gchar *q0, *q1, *q2, *r1, *r2;
   CtkTextBuffer *buffer;
-  GdkRGBA color;
-  GdkRGBA link_color;
-  GdkRGBA visited_link_color;
+  CdkRGBA color;
+  CdkRGBA link_color;
+  CdkRGBA visited_link_color;
   CtkAboutDialogPrivate *priv = about->priv;
   CtkTextIter start_iter, end_iter;
   CtkTextTag *tag;

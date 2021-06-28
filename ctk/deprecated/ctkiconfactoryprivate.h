@@ -23,7 +23,7 @@
 GList *     _ctk_icon_factory_list_ids                  (void);
 void        _ctk_icon_factory_ensure_default_icons      (void);
 
-GdkPixbuf * ctk_icon_set_render_icon_pixbuf_for_scale   (CtkIconSet             *icon_set,
+CdkPixbuf * ctk_icon_set_render_icon_pixbuf_for_scale   (CtkIconSet             *icon_set,
                                                          CtkCssStyle            *style,
                                                          CtkTextDirection        direction,
                                                          CtkIconSize             size,

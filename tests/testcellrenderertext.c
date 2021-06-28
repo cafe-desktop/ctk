@@ -171,7 +171,7 @@ create_tree (gboolean rtl)
   CtkListStore *list_store;
   CtkTreeViewColumn *column;
   CtkCellRenderer *renderer;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   sw = ctk_scrolled_window_new (NULL, NULL);
   ctk_scrolled_window_set_shadow_type (CTK_SCROLLED_WINDOW (sw), CTK_SHADOW_IN);

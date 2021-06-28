@@ -39,8 +39,8 @@ struct _CtkCssImageBuiltin
 {
   CtkCssImage   parent;
 
-  GdkRGBA       fg_color;
-  GdkRGBA       bg_color;
+  CdkRGBA       fg_color;
+  CdkRGBA       bg_color;
 };
 
 struct _CtkCssImageBuiltinClass

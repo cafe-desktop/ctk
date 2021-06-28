@@ -20,19 +20,19 @@
 
 static void
 drag_begin (CtkWidget      *widget,
-	    GdkDragContext *context,
+	    CdkDragContext *context,
 	    gpointer        data)
 {
   CtkWidget *image = CTK_WIDGET (data);
 
-  GdkPixbuf *pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
+  CdkPixbuf *pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
 
   ctk_drag_set_icon_pixbuf (context, pixbuf, -2, -2);
 }
 
 void  
 drag_data_get  (CtkWidget        *widget,
-		GdkDragContext   *context,
+		CdkDragContext   *context,
 		CtkSelectionData *selection_data,
 		guint             info,
 		guint             time,
@@ -40,14 +40,14 @@ drag_data_get  (CtkWidget        *widget,
 {
   CtkWidget *image = CTK_WIDGET (data);
 
-  GdkPixbuf *pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
+  CdkPixbuf *pixbuf = ctk_image_get_pixbuf (CTK_IMAGE (image));
 
   ctk_selection_data_set_pixbuf (selection_data, pixbuf);
 }
 
 static void
 drag_data_received (CtkWidget        *widget,
-		    GdkDragContext   *context,
+		    CdkDragContext   *context,
 		    gint              x,
 		    gint              y,
 		    CtkSelectionData *selection_data,
@@ -57,7 +57,7 @@ drag_data_received (CtkWidget        *widget,
 {
   CtkWidget *image = CTK_WIDGET (data);
 
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   if (ctk_selection_data_get_length (selection_data) < 0)
     return;
@@ -97,14 +97,14 @@ main (int argc, char **argv)
   CtkWidget *window, *grid;
   CtkWidget *label, *image, *box;
   CtkIconTheme *theme;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   CtkIconSet *iconset;
   CtkIconSource *iconsource;
   gchar *icon_name = "gnome-terminal";
   gchar *anim_filename = NULL;
   GIcon *icon;
   GFile *file;
-  GdkGeometry geo;
+  CdkGeometry geo;
 
   ctk_init (&argc, &argv);
 

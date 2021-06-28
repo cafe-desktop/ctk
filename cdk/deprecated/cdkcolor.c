@@ -38,67 +38,67 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * @Short_description: Manipulation of colors
  * @Title: Colors
  *
- * A #GdkColor represents a color.
+ * A #CdkColor represents a color.
  *
  * When working with cairo, it is often more convenient
- * to use a #GdkRGBA instead, and #GdkColor has been
- * deprecated in favor of #GdkRGBA.
+ * to use a #CdkRGBA instead, and #CdkColor has been
+ * deprecated in favor of #CdkRGBA.
  */
 
 
 /**
  * cdk_color_copy:
- * @color: a #GdkColor
+ * @color: a #CdkColor
  *
- * Makes a copy of a #GdkColor.
+ * Makes a copy of a #CdkColor.
  *
  * The result must be freed using cdk_color_free().
  *
  * Returns: a copy of @color
  *
- * Deprecated: 3.14: Use #GdkRGBA
+ * Deprecated: 3.14: Use #CdkRGBA
  */
-GdkColor*
-cdk_color_copy (const GdkColor *color)
+CdkColor*
+cdk_color_copy (const CdkColor *color)
 {
-  GdkColor *new_color;
+  CdkColor *new_color;
 
   g_return_val_if_fail (color != NULL, NULL);
 
-  new_color = g_slice_new (GdkColor);
+  new_color = g_slice_new (CdkColor);
   *new_color = *color;
   return new_color;
 }
 
 /**
  * cdk_color_free:
- * @color: a #GdkColor
+ * @color: a #CdkColor
  *
- * Frees a #GdkColor created with cdk_color_copy().
+ * Frees a #CdkColor created with cdk_color_copy().
  *
- * Deprecated: 3.14: Use #GdkRGBA
+ * Deprecated: 3.14: Use #CdkRGBA
  */
 void
-cdk_color_free (GdkColor *color)
+cdk_color_free (CdkColor *color)
 {
   g_return_if_fail (color != NULL);
 
-  g_slice_free (GdkColor, color);
+  g_slice_free (CdkColor, color);
 }
 
 /**
  * cdk_color_hash:
- * @color: a #GdkColor
+ * @color: a #CdkColor
  *
  * A hash function suitable for using for a hash
- * table that stores #GdkColors.
+ * table that stores #CdkColors.
  *
  * Returns: The hash function applied to @color
  *
- * Deprecated: 3.14: Use #GdkRGBA
+ * Deprecated: 3.14: Use #CdkRGBA
  */
 guint
-cdk_color_hash (const GdkColor *color)
+cdk_color_hash (const CdkColor *color)
 {
   return ((color->red) +
           (color->green << 11) +
@@ -108,18 +108,18 @@ cdk_color_hash (const GdkColor *color)
 
 /**
  * cdk_color_equal:
- * @colora: a #GdkColor
- * @colorb: another #GdkColor
+ * @colora: a #CdkColor
+ * @colorb: another #CdkColor
  *
  * Compares two colors.
  *
  * Returns: %TRUE if the two colors compare equal
  *
- * Deprecated: 3.14: Use #GdkRGBA
+ * Deprecated: 3.14: Use #CdkRGBA
  */
 gboolean
-cdk_color_equal (const GdkColor *colora,
-                 const GdkColor *colorb)
+cdk_color_equal (const CdkColor *colora,
+                 const CdkColor *colorb)
 {
   g_return_val_if_fail (colora != NULL, FALSE);
   g_return_val_if_fail (colorb != NULL, FALSE);
@@ -129,17 +129,17 @@ cdk_color_equal (const GdkColor *colora,
           (colora->blue == colorb->blue));
 }
 
-G_DEFINE_BOXED_TYPE (GdkColor, cdk_color,
+G_DEFINE_BOXED_TYPE (CdkColor, cdk_color,
                      cdk_color_copy,
                      cdk_color_free)
 
 /**
  * cdk_color_parse:
  * @spec: the string specifying the color
- * @color: (out): the #GdkColor to fill in
+ * @color: (out): the #CdkColor to fill in
  *
  * Parses a textual specification of a color and fill in the
- * @red, @green, and @blue fields of a #GdkColor.
+ * @red, @green, and @blue fields of a #CdkColor.
  *
  * The string can either one of a large set of standard names
  * (taken from the X11 `rgb.txt` file), or it can be a hexadecimal
@@ -151,11 +151,11 @@ G_DEFINE_BOXED_TYPE (GdkColor, cdk_color,
  *
  * Returns: %TRUE if the parsing succeeded
  *
- * Deprecated: 3.14: Use #GdkRGBA
+ * Deprecated: 3.14: Use #CdkRGBA
  */
 gboolean
 cdk_color_parse (const gchar *spec,
-                 GdkColor    *color)
+                 CdkColor    *color)
 {
   PangoColor pango_color;
 
@@ -173,7 +173,7 @@ cdk_color_parse (const gchar *spec,
 
 /**
  * cdk_color_to_string:
- * @color: a #GdkColor
+ * @color: a #CdkColor
  *
  * Returns a textual specification of @color in the hexadecimal
  * form “\#rrrrggggbbbb” where “r”, “g” and “b” are hex digits
@@ -185,10 +185,10 @@ cdk_color_parse (const gchar *spec,
  *
  * Since: 2.12
  *
- * Deprecated: 3.14: Use #GdkRGBA
+ * Deprecated: 3.14: Use #CdkRGBA
  */
 gchar *
-cdk_color_to_string (const GdkColor *color)
+cdk_color_to_string (const CdkColor *color)
 {
   PangoColor pango_color;
 

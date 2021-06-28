@@ -33,13 +33,13 @@
  * @Short_description: Simple graphical data types
  * @Title: Points and Rectangles
  *
- * GDK provides the #GdkPoint and #GdkRectangle data types for representing pixels
+ * GDK provides the #CdkPoint and #CdkRectangle data types for representing pixels
  * and sets of pixels on the screen. Together with Cairo’s #cairo_region_t data
  * type, they make up the central types for representing graphical data.
  *
- * A #GdkPoint represents an x and y coordinate of a point.
+ * A #CdkPoint represents an x and y coordinate of a point.
  *
- * A #GdkRectangle represents the position and size of a rectangle.
+ * A #CdkRectangle represents the position and size of a rectangle.
  * The intersection of two rectangles can be computed with
  * cdk_rectangle_intersect(). To find the union of two rectangles use
  * cdk_rectangle_union().
@@ -50,8 +50,8 @@
 
 /**
  * cdk_rectangle_union:
- * @src1: a #GdkRectangle
- * @src2: a #GdkRectangle
+ * @src1: a #CdkRectangle
+ * @src2: a #CdkRectangle
  * @dest: (out): return location for the union of @src1 and @src2
  *
  * Calculates the union of two rectangles.
@@ -63,9 +63,9 @@
  * zero width or height).
  */
 void
-cdk_rectangle_union (const GdkRectangle *src1,
-		     const GdkRectangle *src2,
-		     GdkRectangle       *dest)
+cdk_rectangle_union (const CdkRectangle *src1,
+		     const CdkRectangle *src2,
+		     CdkRectangle       *dest)
 {
   gint dest_x, dest_y;
   
@@ -83,8 +83,8 @@ cdk_rectangle_union (const GdkRectangle *src1,
 
 /**
  * cdk_rectangle_intersect:
- * @src1: a #GdkRectangle
- * @src2: a #GdkRectangle
+ * @src1: a #CdkRectangle
+ * @src2: a #CdkRectangle
  * @dest: (out caller-allocates) (allow-none): return location for the
  * intersection of @src1 and @src2, or %NULL
  *
@@ -98,9 +98,9 @@ cdk_rectangle_union (const GdkRectangle *src1,
  * Returns: %TRUE if the rectangles intersect.
  */
 gboolean
-cdk_rectangle_intersect (const GdkRectangle *src1,
-			 const GdkRectangle *src2,
-			 GdkRectangle       *dest)
+cdk_rectangle_intersect (const CdkRectangle *src1,
+			 const CdkRectangle *src2,
+			 CdkRectangle       *dest)
 {
   gint dest_x, dest_y;
   gint dest_x2, dest_y2;
@@ -138,8 +138,8 @@ cdk_rectangle_intersect (const GdkRectangle *src1,
 
 /**
  * cdk_rectangle_equal:
- * @rect1: a #GdkRectangle
- * @rect2: a #GdkRectangle
+ * @rect1: a #CdkRectangle
+ * @rect2: a #CdkRectangle
  *
  * Checks if the two given rectangles are equal.
  *
@@ -148,8 +148,8 @@ cdk_rectangle_intersect (const GdkRectangle *src1,
  * Since: 3.20
  */
 gboolean
-cdk_rectangle_equal (const GdkRectangle *rect1,
-                     const GdkRectangle *rect2)
+cdk_rectangle_equal (const CdkRectangle *rect1,
+                     const CdkRectangle *rect2)
 {
   return rect1->x == rect2->x
       && rect1->y == rect2->y
@@ -157,10 +157,10 @@ cdk_rectangle_equal (const GdkRectangle *rect1,
       && rect1->height == rect2->height;
 }
 
-static GdkRectangle *
-cdk_rectangle_copy (const GdkRectangle *rectangle)
+static CdkRectangle *
+cdk_rectangle_copy (const CdkRectangle *rectangle)
 {
-  GdkRectangle *result = g_new (GdkRectangle, 1);
+  CdkRectangle *result = g_new (CdkRectangle, 1);
   *result = *rectangle;
 
   return result;
@@ -175,7 +175,7 @@ cdk_rectangle_value_transform_rect (const GValue *src_value, GValue *dest_value)
 }
 
 /* Allow GValue transformation between the identical structs
- * cairo_rectangle_int_t and GdkRectangle.
+ * cairo_rectangle_int_t and CdkRectangle.
  */
 static void
 cdk_rectangle_register_value_transform_funcs (GType gtype_cdk_rectangle)
@@ -194,7 +194,7 @@ cdk_rectangle_register_value_transform_funcs (GType gtype_cdk_rectangle)
                                    cdk_rectangle_value_transform_rect);
 }
 
-G_DEFINE_BOXED_TYPE_WITH_CODE (GdkRectangle, cdk_rectangle,
+G_DEFINE_BOXED_TYPE_WITH_CODE (CdkRectangle, cdk_rectangle,
                                cdk_rectangle_copy,
                                g_free,
                                cdk_rectangle_register_value_transform_funcs (g_define_type_id))

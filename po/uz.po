@@ -4300,7 +4300,7 @@ msgstr ""
 #~ msgstr "Sarlavha yozishda xatolik yuz berdi\n"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Jild indeksini yozishda xatolik yuz berdi\n"
 
 #, fuzzy

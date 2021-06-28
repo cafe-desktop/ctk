@@ -69,7 +69,7 @@ struct _CtkCellRendererAccelClass
   void (* accel_edited)  (CtkCellRendererAccel *accel,
 		 	  const gchar          *path_string,
 			  guint                 accel_key,
-			  GdkModifierType       accel_mods,
+			  CdkModifierType       accel_mods,
 			  guint                 hardware_keycode);
 
   void (* accel_cleared) (CtkCellRendererAccel *accel,

@@ -60,9 +60,9 @@ struct _CtkColorSwatchClass
 GType       ctk_color_swatch_get_type         (void) G_GNUC_CONST;
 CtkWidget * ctk_color_swatch_new              (void);
 void        ctk_color_swatch_set_rgba         (CtkColorSwatch *swatch,
-                                               const GdkRGBA  *color);
+                                               const CdkRGBA  *color);
 gboolean    ctk_color_swatch_get_rgba         (CtkColorSwatch *swatch,
-                                               GdkRGBA        *color);
+                                               CdkRGBA        *color);
 void        ctk_color_swatch_set_hsva         (CtkColorSwatch *swatch,
                                                gdouble         h,
                                                gdouble         s,

@@ -37,11 +37,11 @@ copy "$(BinDir)\ctk-query-settings.exe" $(CopyDir)\bin
 copy "$(BinDir)\ctk-query-settings.pdb" $(CopyDir)\bin
 copy "$(BinDir)\ctk-builder-tool.exe" $(CopyDir)\bin
 copy "$(BinDir)\ctk-builder-tool.pdb" $(CopyDir)\bin
-if exist $(BinDir)\Gdk-3.0.gir copy "$(BinDir)\Gdk-3.0.gir" $(CopyDir)\share\gir-1.0
-if exist $(BinDir)\GdkWin32-3.0.gir copy "$(BinDir)\GdkWin32-3.0.gir" $(CopyDir)\share\gir-1.0
+if exist $(BinDir)\Cdk-3.0.gir copy "$(BinDir)\Cdk-3.0.gir" $(CopyDir)\share\gir-1.0
+if exist $(BinDir)\CdkWin32-3.0.gir copy "$(BinDir)\CdkWin32-3.0.gir" $(CopyDir)\share\gir-1.0
 if exist $(BinDir)\Ctk-3.0.gir copy "$(BinDir)\Ctk-3.0.gir" $(CopyDir)\share\gir-1.0
-if exist $(BinDir)\Gdk-3.0.typelib copy "$(BinDir)\Gdk-3.0.typelib" $(CopyDir)\lib\girepository-1.0
-if exist $(BinDir)\GdkWin32-3.0.typelib copy "$(BinDir)\GdkWin32-3.0.typelib" $(CopyDir)\lib\girepository-1.0
+if exist $(BinDir)\Cdk-3.0.typelib copy "$(BinDir)\Cdk-3.0.typelib" $(CopyDir)\lib\girepository-1.0
+if exist $(BinDir)\CdkWin32-3.0.typelib copy "$(BinDir)\CdkWin32-3.0.typelib" $(CopyDir)\lib\girepository-1.0
 if exist $(BinDir)\Ctk-3.0.typelib copy "$(BinDir)\Ctk-3.0.typelib" $(CopyDir)\lib\girepository-1.0
 goto DONE_BIN
 
@@ -72,11 +72,11 @@ copy .\Release\$(Platform)\bin\ctk-query-settings.exe $(CopyDir)\bin
 copy .\Release\$(Platform)\bin\ctk-query-settings.pdb $(CopyDir)\bin
 copy .\Release\$(Platform)\bin\ctk-builder-tool.exe $(CopyDir)\bin
 copy .\Release\$(Platform)\bin\ctk-builder-tool.pdb $(CopyDir)\bin
-if exist .\Release\$(Platform)\bin\Gdk-3.0.gir copy .\Release\$(Platform)\bin\Gdk-3.0.gir $(CopyDir)\share\gir-1.0
-if exist .\Release\$(Platform)\bin\GdkWin32-3.0.gir copy .\Release\$(Platform)\bin\GdkWin32-3.0.gir $(CopyDir)\share\gir-1.0
+if exist .\Release\$(Platform)\bin\Cdk-3.0.gir copy .\Release\$(Platform)\bin\Cdk-3.0.gir $(CopyDir)\share\gir-1.0
+if exist .\Release\$(Platform)\bin\CdkWin32-3.0.gir copy .\Release\$(Platform)\bin\CdkWin32-3.0.gir $(CopyDir)\share\gir-1.0
 if exist .\Release\$(Platform)\bin\Ctk-3.0.gir copy .\Release\$(Platform)\bin\Ctk-3.0.gir $(CopyDir)\share\gir-1.0
-if exist .\Release\$(Platform)\bin\Gdk-3.0.typelib copy .\Release\$(Platform)\bin\Gdk-3.0.typelib $(CopyDir)\lib\girepository-1.0
-if exist .\Release\$(Platform)\bin\GdkWin32-3.0.typelib copy .\Release\$(Platform)\bin\GdkWin32-3.0.typelib $(CopyDir)\lib\girepository-1.0
+if exist .\Release\$(Platform)\bin\Cdk-3.0.typelib copy .\Release\$(Platform)\bin\Cdk-3.0.typelib $(CopyDir)\lib\girepository-1.0
+if exist .\Release\$(Platform)\bin\CdkWin32-3.0.typelib copy .\Release\$(Platform)\bin\CdkWin32-3.0.typelib $(CopyDir)\lib\girepository-1.0
 if exist .\Release\$(Platform)\bin\Ctk-3.0.typelib copy .\Release\$(Platform)\bin\Ctk-3.0.typelib $(CopyDir)\lib\girepository-1.0
 
 goto DONE_BIN
@@ -102,11 +102,11 @@ copy .\Debug\$(Platform)\bin\ctk-query-settings.exe $(CopyDir)\bin
 copy .\Debug\$(Platform)\bin\ctk-query-settings.pdb $(CopyDir)\bin
 copy .\Debug\$(Platform)\bin\ctk-builder-tool.exe $(CopyDir)\bin
 copy .\Debug\$(Platform)\bin\ctk-builder-tool.pdb $(CopyDir)\bin
-if exist .\Debug\$(Platform)\bin\Gdk-3.0.gir copy .\Debug\$(Platform)\bin\Gdk-3.0.gir $(CopyDir)\share\gir-1.0
-if exist .\Debug\$(Platform)\bin\GdkWin32-3.0.gir copy .\Debug\$(Platform)\bin\GdkWin32-3.0.gir $(CopyDir)\share\gir-1.0
+if exist .\Debug\$(Platform)\bin\Cdk-3.0.gir copy .\Debug\$(Platform)\bin\Cdk-3.0.gir $(CopyDir)\share\gir-1.0
+if exist .\Debug\$(Platform)\bin\CdkWin32-3.0.gir copy .\Debug\$(Platform)\bin\CdkWin32-3.0.gir $(CopyDir)\share\gir-1.0
 if exist .\Debug\$(Platform)\bin\Ctk-3.0.gir copy .\Debug\$(Platform)\bin\Ctk-3.0.gir $(CopyDir)\share\gir-1.0
-if exist .\Debug\$(Platform)\bin\Gdk-3.0.typelib copy .\Debug\$(Platform)\bin\Gdk-3.0.typelib $(CopyDir)\lib\girepository-1.0
-if exist .\Debug\$(Platform)\bin\GdkWin32-3.0.typelib copy .\Debug\$(Platform)\bin\GdkWin32-3.0.typelib $(CopyDir)\lib\girepository-1.0
+if exist .\Debug\$(Platform)\bin\Cdk-3.0.typelib copy .\Debug\$(Platform)\bin\Cdk-3.0.typelib $(CopyDir)\lib\girepository-1.0
+if exist .\Debug\$(Platform)\bin\CdkWin32-3.0.typelib copy .\Debug\$(Platform)\bin\CdkWin32-3.0.typelib $(CopyDir)\lib\girepository-1.0
 if exist .\Debug\$(Platform)\bin\Ctk-3.0.typelib copy .\Debug\$(Platform)\bin\Ctk-3.0.typelib $(CopyDir)\lib\girepository-1.0
 
 :DONE_BIN

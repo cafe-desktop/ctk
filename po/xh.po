@@ -4420,11 +4420,11 @@ msgstr ""
 "Ukufaka umfanekiso akuphumelelanga '%s': isizathu asaziwa, mhlawumbi "
 "yifayili yomfanekiso eyonakeleyo"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Ii-Gdk onokuzimisa ukulungisa iziphene kwinkqubo"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Ii-Cdk onokuzimisa ukulungisa iziphene kwinkqubo"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Ii-flags ze-Gdk ezilungisa iziphene azimiselwanga"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Ii-flags ze-Cdk ezilungisa iziphene azimiselwanga"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "Ifayili yemifanekiso '%s' ayiqulathanga data"
@@ -4897,7 +4897,7 @@ msgstr ""
 #~ msgstr "Ayikwazi ukunikezela uvimba wolwazi kwi-TGA context struct"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Ayiphumelelanga ukufunda kwifayili yexeshana"
 
 #, fuzzy

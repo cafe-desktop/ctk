@@ -72,8 +72,8 @@ struct _CtkViewportPrivate
   CtkAdjustment  *vadjustment;
   CtkShadowType   shadow_type;
 
-  GdkWindow      *bin_window;
-  GdkWindow      *view_window;
+  CdkWindow      *bin_window;
+  CdkWindow      *view_window;
 
   CtkCssGadget *gadget;
 
@@ -759,11 +759,11 @@ ctk_viewport_get_shadow_type (CtkViewport *viewport)
  *
  * Gets the bin window of the #CtkViewport.
  *
- * Returns: (transfer none): a #GdkWindow
+ * Returns: (transfer none): a #CdkWindow
  *
  * Since: 2.20
  **/
-GdkWindow*
+CdkWindow*
 ctk_viewport_get_bin_window (CtkViewport *viewport)
 {
   g_return_val_if_fail (CTK_IS_VIEWPORT (viewport), NULL);
@@ -777,11 +777,11 @@ ctk_viewport_get_bin_window (CtkViewport *viewport)
  *
  * Gets the view window of the #CtkViewport.
  *
- * Returns: (transfer none): a #GdkWindow
+ * Returns: (transfer none): a #CdkWindow
  *
  * Since: 2.22
  **/
-GdkWindow*
+CdkWindow*
 ctk_viewport_get_view_window (CtkViewport *viewport)
 {
   g_return_val_if_fail (CTK_IS_VIEWPORT (viewport), NULL);
@@ -790,7 +790,7 @@ ctk_viewport_get_view_window (CtkViewport *viewport)
 }
 
 static void
-ctk_viewport_bin_window_invalidate_handler (GdkWindow *window,
+ctk_viewport_bin_window_invalidate_handler (CdkWindow *window,
 					    cairo_region_t *region)
 {
   gpointer widget;
@@ -834,8 +834,8 @@ ctk_viewport_realize (CtkWidget *widget)
   CtkAllocation allocation;
   CtkAllocation view_allocation;
   CtkWidget *child;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
   gint event_mask;
 

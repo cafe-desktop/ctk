@@ -278,7 +278,7 @@ struct _CtkContainerPrivate
 {
   CtkWidget *focus_child;
 
-  GdkFrameClock *resize_clock;
+  CdkFrameClock *resize_clock;
   guint resize_handler;
 
   guint border_width : 16;
@@ -2035,7 +2035,7 @@ ctk_container_needs_idle_sizer (CtkContainer *container)
 }
 
 static void
-ctk_container_idle_sizer (GdkFrameClock *clock,
+ctk_container_idle_sizer (CdkFrameClock *clock,
 			  CtkContainer  *container)
 {
   /* We validate the style contexts in a single loop before even trying
@@ -2079,7 +2079,7 @@ ctk_container_idle_sizer (GdkFrameClock *clock,
 static void
 ctk_container_start_idle_sizer (CtkContainer *container)
 {
-  GdkFrameClock *clock;
+  CdkFrameClock *clock;
 
   if (container->priv->resize_handler != 0)
     return;
@@ -2876,7 +2876,7 @@ ctk_container_focus_sort_tab (CtkContainer     *container,
 static gboolean
 get_allocation_coords (CtkContainer  *container,
                        CtkWidget     *widget,
-                       GdkRectangle  *allocation)
+                       CdkRectangle  *allocation)
 {
   ctk_widget_get_allocation (widget, allocation);
 
@@ -2921,7 +2921,7 @@ find_old_focus (CtkContainer *container,
 
 static gboolean
 old_focus_coords (CtkContainer *container,
-                  GdkRectangle *old_focus_rect)
+                  CdkRectangle *old_focus_rect)
 {
   CtkWidget *widget = CTK_WIDGET (container);
   CtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
@@ -2952,8 +2952,8 @@ up_down_compare (gconstpointer a,
                  gconstpointer b,
                  gpointer      data)
 {
-  GdkRectangle allocation1;
-  GdkRectangle allocation2;
+  CdkRectangle allocation1;
+  CdkRectangle allocation2;
   CompareInfo *compare = data;
   gint y1, y2;
 
@@ -2985,7 +2985,7 @@ ctk_container_focus_sort_up_down (CtkContainer     *container,
 {
   CompareInfo compare;
   GList *tmp_list;
-  GdkRectangle old_allocation;
+  CdkRectangle old_allocation;
 
   compare.container = container;
   compare.reverse = (direction == CTK_DIR_UP);
@@ -3015,7 +3015,7 @@ ctk_container_focus_sort_up_down (CtkContainer     *container,
           CtkWidget *child = tmp_list->data;
           GList *next = tmp_list->next;
           gint child_x1, child_x2;
-          GdkRectangle child_allocation;
+          CdkRectangle child_allocation;
 
           if (child != old_focus)
             {
@@ -3047,7 +3047,7 @@ ctk_container_focus_sort_up_down (CtkContainer     *container,
        */
       CtkAllocation allocation;
       CtkWidget *widget = CTK_WIDGET (container);
-      GdkRectangle old_focus_rect;
+      CdkRectangle old_focus_rect;
 
       _ctk_widget_get_allocation (widget, &allocation);
 
@@ -3082,8 +3082,8 @@ left_right_compare (gconstpointer a,
                     gconstpointer b,
                     gpointer      data)
 {
-  GdkRectangle allocation1;
-  GdkRectangle allocation2;
+  CdkRectangle allocation1;
+  CdkRectangle allocation2;
   CompareInfo *compare = data;
   gint x1, x2;
 
@@ -3115,7 +3115,7 @@ ctk_container_focus_sort_left_right (CtkContainer     *container,
 {
   CompareInfo compare;
   GList *tmp_list;
-  GdkRectangle old_allocation;
+  CdkRectangle old_allocation;
 
   compare.container = container;
   compare.reverse = (direction == CTK_DIR_LEFT);
@@ -3145,7 +3145,7 @@ ctk_container_focus_sort_left_right (CtkContainer     *container,
           CtkWidget *child = tmp_list->data;
           GList *next = tmp_list->next;
           gint child_y1, child_y2;
-          GdkRectangle child_allocation;
+          CdkRectangle child_allocation;
 
           if (child != old_focus)
             {
@@ -3177,7 +3177,7 @@ ctk_container_focus_sort_left_right (CtkContainer     *container,
        */
       CtkAllocation allocation;
       CtkWidget *widget = CTK_WIDGET (container);
-      GdkRectangle old_focus_rect;
+      CdkRectangle old_focus_rect;
 
       _ctk_widget_get_allocation (widget, &allocation);
 
@@ -3616,7 +3616,7 @@ ctk_container_draw_forall (CtkWidget *widget,
   } *data = client_data;
   ChildOrderInfo info;
   GList *siblings;
-  GdkWindow *window;
+  CdkWindow *window;
 
   if (ctk_container_should_propagate_draw (data->container, widget, data->cr))
     {
@@ -3724,7 +3724,7 @@ ctk_container_should_propagate_draw (CtkContainer   *container,
                                      CtkWidget      *child,
                                      cairo_t        *cr)
 {
-  GdkWindow *child_in_window;
+  CdkWindow *child_in_window;
 
   if (!_ctk_widget_is_drawable (child))
     return FALSE;
@@ -3746,7 +3746,7 @@ static void
 union_with_clip (CtkWidget *widget,
                  gpointer   data)
 {
-  GdkRectangle *clip = data;
+  CdkRectangle *clip = data;
   CtkAllocation widget_clip;
 
   if (!ctk_widget_is_visible (widget) ||
@@ -3780,7 +3780,7 @@ ctk_container_get_children_clip (CtkContainer  *container,
  *
  * When a container receives a call to the draw function, it must send
  * synthetic #CtkWidget::draw calls to all children that don’t have their
- * own #GdkWindows. This function provides a convenient way of doing this.
+ * own #CdkWindows. This function provides a convenient way of doing this.
  * A container, when it receives a call to its #CtkWidget::draw function,
  * calls ctk_container_propagate_draw() once for each child, passing in
  * the @cr the container received.
@@ -3800,7 +3800,7 @@ ctk_container_propagate_draw (CtkContainer *container,
                               cairo_t      *cr)
 {
   CtkAllocation allocation;
-  GdkWindow *window, *w;
+  CdkWindow *window, *w;
   int x, y;
 
   g_return_if_fail (CTK_IS_CONTAINER (container));

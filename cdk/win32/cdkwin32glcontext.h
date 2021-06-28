@@ -30,17 +30,17 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_WIN32_GL_CONTEXT		(cdk_win32_gl_context_get_type ())
-#define GDK_WIN32_GL_CONTEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_WIN32_GL_CONTEXT, GdkWin32GLContext))
+#define GDK_WIN32_GL_CONTEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_WIN32_GL_CONTEXT, CdkWin32GLContext))
 #define GDK_WIN32_IS_GL_CONTEXT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_WIN32_GL_CONTEXT))
 
-typedef struct _GdkWin32GLContext		GdkWin32GLContext;
-typedef struct _GdkWin32GLContextClass	GdkWin32GLContextClass;
+typedef struct _CdkWin32GLContext		CdkWin32GLContext;
+typedef struct _CdkWin32GLContextClass	CdkWin32GLContextClass;
 
 GDK_AVAILABLE_IN_3_16
 GType cdk_win32_gl_context_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_16
-gboolean        cdk_win32_display_get_wgl_version (GdkDisplay *display,
+gboolean        cdk_win32_display_get_wgl_version (CdkDisplay *display,
                                                    gint       *major,
                                                    gint       *minor);
 

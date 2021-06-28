@@ -73,9 +73,9 @@
 #include <X11/extensions/Xrandr.h>
 #endif
 
-typedef struct _GdkErrorTrap  GdkErrorTrap;
+typedef struct _CdkErrorTrap  CdkErrorTrap;
 
-struct _GdkErrorTrap
+struct _CdkErrorTrap
 {
   /* Next sequence when trap was pushed, i.e. first sequence to
    * ignore
@@ -94,11 +94,11 @@ struct _GdkErrorTrap
 static void   cdk_x11_display_dispose            (GObject            *object);
 static void   cdk_x11_display_finalize           (GObject            *object);
 
-static void     cdk_x11_display_event_translator_init (GdkEventTranslatorIface *iface);
+static void     cdk_x11_display_event_translator_init (CdkEventTranslatorIface *iface);
 
-static gboolean cdk_x11_display_translate_event (GdkEventTranslator *translator,
-                                                 GdkDisplay         *display,
-                                                 GdkEvent           *event,
+static gboolean cdk_x11_display_translate_event (CdkEventTranslator *translator,
+                                                 CdkDisplay         *display,
+                                                 CdkEvent           *event,
                                                  XEvent             *xevent);
 
 static void cdk_internal_connection_watch (Display  *display,
@@ -107,9 +107,9 @@ static void cdk_internal_connection_watch (Display  *display,
 					   gboolean  opening,
 					   XPointer *watch_data);
 
-typedef struct _GdkEventTypeX11 GdkEventTypeX11;
+typedef struct _CdkEventTypeX11 CdkEventTypeX11;
 
-struct _GdkEventTypeX11
+struct _CdkEventTypeX11
 {
   gint base;
   gint n_events;
@@ -173,19 +173,19 @@ static const char *const precache_atoms[] = {
 
 static char *cdk_sm_client_id;
 
-G_DEFINE_TYPE_WITH_CODE (GdkX11Display, cdk_x11_display, GDK_TYPE_DISPLAY,
+G_DEFINE_TYPE_WITH_CODE (CdkX11Display, cdk_x11_display, GDK_TYPE_DISPLAY,
                          G_IMPLEMENT_INTERFACE (GDK_TYPE_EVENT_TRANSLATOR,
                                                 cdk_x11_display_event_translator_init))
 
 
 static void
-cdk_x11_display_init (GdkX11Display *display)
+cdk_x11_display_init (CdkX11Display *display)
 {
   display->monitors = g_ptr_array_new_with_free_func (g_object_unref);
 }
 
 static void
-cdk_x11_display_event_translator_init (GdkEventTranslatorIface *iface)
+cdk_x11_display_event_translator_init (CdkEventTranslatorIface *iface)
 {
   iface->translate_event = cdk_x11_display_translate_event;
 }
@@ -196,14 +196,14 @@ cdk_x11_display_event_translator_init (GdkEventTranslatorIface *iface)
                         GDK_WINDOW_STATE_BOTTOM_TILED)
 
 static void
-do_edge_constraint_state_check (GdkWindow      *window,
-                                GdkWindowState  old_state,
-                                GdkWindowState *set,
-                                GdkWindowState *unset)
+do_edge_constraint_state_check (CdkWindow      *window,
+                                CdkWindowState  old_state,
+                                CdkWindowState *set,
+                                CdkWindowState *unset)
 {
-  GdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (window);
-  GdkWindowState local_set, local_unset;
-  GdkScreen *screen = GDK_WINDOW_SCREEN (window);
+  CdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (window);
+  CdkWindowState local_set, local_unset;
+  CdkScreen *screen = GDK_WINDOW_SCREEN (window);
   guint edge_constraints;
 
   local_set = *set;
@@ -344,10 +344,10 @@ do_edge_constraint_state_check (GdkWindow      *window,
 }
 
 static void
-do_net_wm_state_changes (GdkWindow *window)
+do_net_wm_state_changes (CdkWindow *window)
 {
-  GdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (window);
-  GdkWindowState old_state, set, unset;
+  CdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (window);
+  CdkWindowState old_state, set, unset;
 
   if (GDK_WINDOW_DESTROYED (window) ||
       cdk_window_get_window_type (window) != GDK_WINDOW_TOPLEVEL)
@@ -425,10 +425,10 @@ do_net_wm_state_changes (GdkWindow *window)
 }
 
 static void
-cdk_check_wm_desktop_changed (GdkWindow *window)
+cdk_check_wm_desktop_changed (CdkWindow *window)
 {
-  GdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (window);
-  GdkDisplay *display = GDK_WINDOW_DISPLAY (window);
+  CdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (window);
+  CdkDisplay *display = GDK_WINDOW_DISPLAY (window);
 
   Atom type;
   gint format;
@@ -460,11 +460,11 @@ cdk_check_wm_desktop_changed (GdkWindow *window)
 }
 
 static void
-cdk_check_wm_state_changed (GdkWindow *window)
+cdk_check_wm_state_changed (CdkWindow *window)
 {
-  GdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (window);
-  GdkDisplay *display = GDK_WINDOW_DISPLAY (window);
-  GdkScreen *screen = GDK_WINDOW_SCREEN (window);
+  CdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (window);
+  CdkDisplay *display = GDK_WINDOW_DISPLAY (window);
+  CdkScreen *screen = GDK_WINDOW_SCREEN (window);
 
   Atom type;
   gint format;
@@ -538,10 +538,10 @@ cdk_check_wm_state_changed (GdkWindow *window)
 }
 
 static void
-cdk_check_edge_constraints_changed (GdkWindow *window)
+cdk_check_edge_constraints_changed (CdkWindow *window)
 {
-  GdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (window);
-  GdkDisplay *display = GDK_WINDOW_DISPLAY (window);
+  CdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (window);
+  CdkDisplay *display = GDK_WINDOW_DISPLAY (window);
 
   Atom type;
   gint format;
@@ -616,22 +616,22 @@ get_event_xwindow (XEvent             *xevent)
 }
 
 static gboolean
-cdk_x11_display_translate_event (GdkEventTranslator *translator,
-                                 GdkDisplay         *display,
-                                 GdkEvent           *event,
+cdk_x11_display_translate_event (CdkEventTranslator *translator,
+                                 CdkDisplay         *display,
+                                 CdkEvent           *event,
                                  XEvent             *xevent)
 {
   Window xwindow;
-  GdkWindow *window;
+  CdkWindow *window;
   gboolean is_substructure;
-  GdkWindowImplX11 *window_impl = NULL;
-  GdkScreen *screen = NULL;
-  GdkX11Screen *x11_screen = NULL;
-  GdkToplevelX11 *toplevel = NULL;
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkWindowImplX11 *window_impl = NULL;
+  CdkScreen *screen = NULL;
+  CdkX11Screen *x11_screen = NULL;
+  CdkToplevelX11 *toplevel = NULL;
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
   gboolean return_val;
 
-  /* Find the GdkWindow that this event relates to. If that's
+  /* Find the CdkWindow that this event relates to. If that's
    * not the same as the window that the event was sent to,
    * we are getting an event from SubstructureNotifyMask.
    * We ignore such events for internal operation, but we
@@ -694,7 +694,7 @@ cdk_x11_display_translate_event (GdkEventTranslator *translator,
     }
 
   /* We do a "manual" conversion of the XEvent to a
-   *  GdkEvent. The structures are mostly the same so
+   *  CdkEvent. The structures are mostly the same so
    *  the conversion is fairly straightforward. We also
    *  optionally print debugging info regarding events
    *  received.
@@ -727,7 +727,7 @@ cdk_x11_display_translate_event (GdkEventTranslator *translator,
         }
 
       {
-	GdkRectangle expose_rect;
+	CdkRectangle expose_rect;
         int x2, y2;
 
         expose_rect.x = xevent->xexpose.x / window_impl->window_scale;
@@ -747,7 +747,7 @@ cdk_x11_display_translate_event (GdkEventTranslator *translator,
 
     case GraphicsExpose:
       {
-	GdkRectangle expose_rect;
+	CdkRectangle expose_rect;
         int x2, y2;
 
         GDK_NOTE (EVENTS,
@@ -1209,7 +1209,7 @@ cdk_x11_display_translate_event (GdkEventTranslator *translator,
 	{
 	  XDamageNotifyEvent *damage_event = (XDamageNotifyEvent *) xevent;
 	  XserverRegion repair;
-	  GdkRectangle rect;
+	  CdkRectangle rect;
           int x2, y2;
 
 	  rect.x = window->x + damage_event->area.x / window_impl->window_scale;
@@ -1278,8 +1278,8 @@ cdk_x11_display_translate_event (GdkEventTranslator *translator,
   return return_val;
 }
 
-static GdkFrameTimings *
-find_frame_timings (GdkFrameClock *clock,
+static CdkFrameTimings *
+find_frame_timings (CdkFrameClock *clock,
                     guint64        serial)
 {
   gint64 start_frame, end_frame, i;
@@ -1288,7 +1288,7 @@ find_frame_timings (GdkFrameClock *clock,
   end_frame = cdk_frame_clock_get_frame_counter (clock);
   for (i = end_frame; i >= start_frame; i--)
     {
-      GdkFrameTimings *timings = cdk_frame_clock_get_timings (clock, i);
+      CdkFrameTimings *timings = cdk_frame_clock_get_timings (clock, i);
 
       if (timings->cookie == serial)
         return timings;
@@ -1307,7 +1307,7 @@ find_frame_timings (GdkFrameClock *clock,
  * time source, then the time synchronization will be less accurate.
  */
 gint64
-server_time_to_monotonic_time (GdkX11Display *display_x11,
+server_time_to_monotonic_time (CdkX11Display *display_x11,
                                gint64         server_time)
 {
   if (display_x11->server_time_query_time == 0 ||
@@ -1338,14 +1338,14 @@ server_time_to_monotonic_time (GdkX11Display *display_x11,
     return server_time - display_x11->server_time_offset;
 }
 
-GdkFilterReturn
-_cdk_wm_protocols_filter (GdkXEvent *xev,
-			  GdkEvent  *event,
+CdkFilterReturn
+_cdk_wm_protocols_filter (CdkXEvent *xev,
+			  CdkEvent  *event,
 			  gpointer   data)
 {
   XEvent *xevent = (XEvent *)xev;
-  GdkWindow *win = event->any.window;
-  GdkDisplay *display;
+  CdkWindow *win = event->any.window;
+  CdkDisplay *display;
   Atom atom;
 
   if (!GDK_IS_X11_WINDOW (win) || GDK_WINDOW_DESTROYED (win))
@@ -1360,7 +1360,7 @@ _cdk_wm_protocols_filter (GdkXEvent *xev,
    * in the message for everything that gets stuffed in */
   if (xevent->xclient.message_type == cdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_FRAME_DRAWN"))
     {
-      GdkWindowImplX11 *window_impl;
+      CdkWindowImplX11 *window_impl;
       window_impl = GDK_WINDOW_IMPL_X11 (win->impl);
       if (window_impl->toplevel)
         {
@@ -1373,8 +1373,8 @@ _cdk_wm_protocols_filter (GdkXEvent *xev,
           gint64 frame_drawn_time = server_time_to_monotonic_time (GDK_X11_DISPLAY (display), ((guint64)d3 << 32) | d2);
           gint64 refresh_interval, presentation_time;
 
-          GdkFrameClock *clock = cdk_window_get_frame_clock (win);
-          GdkFrameTimings *timings = find_frame_timings (clock, serial);
+          CdkFrameClock *clock = cdk_window_get_frame_clock (win);
+          CdkFrameTimings *timings = find_frame_timings (clock, serial);
 
           if (timings)
             timings->drawn_time = frame_drawn_time;
@@ -1398,7 +1398,7 @@ _cdk_wm_protocols_filter (GdkXEvent *xev,
 
   if (xevent->xclient.message_type == cdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_FRAME_TIMINGS"))
     {
-      GdkWindowImplX11 *window_impl;
+      CdkWindowImplX11 *window_impl;
       window_impl = GDK_WINDOW_IMPL_X11 (win->impl);
       if (window_impl->toplevel)
         {
@@ -1409,8 +1409,8 @@ _cdk_wm_protocols_filter (GdkXEvent *xev,
 
           guint64 serial = ((guint64)d1 << 32) | d0;
 
-          GdkFrameClock *clock = cdk_window_get_frame_clock (win);
-          GdkFrameTimings *timings = find_frame_timings (clock, serial);
+          CdkFrameClock *clock = cdk_window_get_frame_clock (win);
+          CdkFrameTimings *timings = find_frame_timings (clock, serial);
 
           if (timings)
             {
@@ -1462,7 +1462,7 @@ _cdk_wm_protocols_filter (GdkXEvent *xev,
     }
   else if (atom == cdk_x11_get_xatom_by_name_for_display (display, "WM_TAKE_FOCUS"))
     {
-      GdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (win);
+      CdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (win);
 
       /* There is no way of knowing reliably whether we are viewable;
        * so trap errors asynchronously around the XSetInputFocus call
@@ -1496,7 +1496,7 @@ _cdk_wm_protocols_filter (GdkXEvent *xev,
   else if (atom == cdk_x11_get_xatom_by_name_for_display (display, "_NET_WM_SYNC_REQUEST") &&
 	   GDK_X11_DISPLAY (display)->use_sync)
     {
-      GdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (win);
+      CdkToplevelX11 *toplevel = _cdk_x11_window_get_toplevel (win);
       if (toplevel)
 	{
 #ifdef HAVE_XSYNC
@@ -1511,29 +1511,29 @@ _cdk_wm_protocols_filter (GdkXEvent *xev,
 }
 
 static void
-cdk_event_init (GdkDisplay *display)
+cdk_event_init (CdkDisplay *display)
 {
-  GdkX11Display *display_x11;
-  GdkDeviceManager *device_manager;
+  CdkX11Display *display_x11;
+  CdkDeviceManager *device_manager;
 
   display_x11 = GDK_X11_DISPLAY (display);
   display_x11->event_source = cdk_x11_event_source_new (display);
 
-  cdk_x11_event_source_add_translator ((GdkEventSource *) display_x11->event_source,
+  cdk_x11_event_source_add_translator ((CdkEventSource *) display_x11->event_source,
                                        GDK_EVENT_TRANSLATOR (display));
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   device_manager = cdk_display_get_device_manager (display);
-  cdk_x11_event_source_add_translator ((GdkEventSource *) display_x11->event_source,
+  cdk_x11_event_source_add_translator ((CdkEventSource *) display_x11->event_source,
                                         GDK_EVENT_TRANSLATOR (device_manager));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
-set_sm_client_id (GdkDisplay  *display,
+set_sm_client_id (CdkDisplay  *display,
                   const gchar *sm_client_id)
 {
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
 
   if (cdk_display_is_closed (display))
     return;
@@ -1548,13 +1548,13 @@ set_sm_client_id (GdkDisplay  *display,
                      cdk_x11_get_xatom_by_name_for_display (display, "SM_CLIENT_ID"));
 }
 
-GdkDisplay *
+CdkDisplay *
 _cdk_x11_display_open (const gchar *display_name)
 {
   Display *xdisplay;
-  GdkDisplay *display;
-  GdkX11Display *display_x11;
-  GdkWindowAttr attr;
+  CdkDisplay *display;
+  CdkX11Display *display_x11;
+  CdkWindowAttr attr;
   gint argc;
   gchar *argv[1];
 
@@ -1808,9 +1808,9 @@ _cdk_x11_display_open (const gchar *display_name)
 /*
  * XLib internal connection handling
  */
-typedef struct _GdkInternalConnection GdkInternalConnection;
+typedef struct _CdkInternalConnection CdkInternalConnection;
 
-struct _GdkInternalConnection
+struct _CdkInternalConnection
 {
   gint	         fd;
   GSource	*source;
@@ -1822,7 +1822,7 @@ process_internal_connection (GIOChannel  *gioc,
 			     GIOCondition cond,
 			     gpointer     data)
 {
-  GdkInternalConnection *connection = (GdkInternalConnection *)data;
+  CdkInternalConnection *connection = (CdkInternalConnection *)data;
 
   cdk_threads_enter ();
 
@@ -1834,20 +1834,20 @@ process_internal_connection (GIOChannel  *gioc,
 }
 
 static gulong
-cdk_x11_display_get_next_serial (GdkDisplay *display)
+cdk_x11_display_get_next_serial (CdkDisplay *display)
 {
   return NextRequest (GDK_DISPLAY_XDISPLAY (display));
 }
 
 
-static GdkInternalConnection *
+static CdkInternalConnection *
 cdk_add_connection_handler (Display *display,
 			    guint    fd)
 {
   GIOChannel *io_channel;
-  GdkInternalConnection *connection;
+  CdkInternalConnection *connection;
 
-  connection = g_new (GdkInternalConnection, 1);
+  connection = g_new (CdkInternalConnection, 1);
 
   connection->fd = fd;
   connection->display = display;
@@ -1865,7 +1865,7 @@ cdk_add_connection_handler (Display *display,
 }
 
 static void
-cdk_remove_connection_handler (GdkInternalConnection *connection)
+cdk_remove_connection_handler (CdkInternalConnection *connection)
 {
   g_source_destroy (connection->source);
   g_free (connection);
@@ -1881,26 +1881,26 @@ cdk_internal_connection_watch (Display  *display,
   if (opening)
     *watch_data = (XPointer)cdk_add_connection_handler (display, fd);
   else
-    cdk_remove_connection_handler ((GdkInternalConnection *)*watch_data);
+    cdk_remove_connection_handler ((CdkInternalConnection *)*watch_data);
 }
 
 static const gchar *
-cdk_x11_display_get_name (GdkDisplay *display)
+cdk_x11_display_get_name (CdkDisplay *display)
 {
   return (gchar *) DisplayString (GDK_X11_DISPLAY (display)->xdisplay);
 }
 
-static GdkScreen *
-cdk_x11_display_get_default_screen (GdkDisplay *display)
+static CdkScreen *
+cdk_x11_display_get_default_screen (CdkDisplay *display)
 {
   return GDK_X11_DISPLAY (display)->screen;
 }
 
 gboolean
-_cdk_x11_display_is_root_window (GdkDisplay *display,
+_cdk_x11_display_is_root_window (CdkDisplay *display,
 				 Window      xroot_window)
 {
-  GdkX11Display *display_x11;
+  CdkX11Display *display_x11;
 
   display_x11 = GDK_X11_DISPLAY (display);
 
@@ -1908,17 +1908,17 @@ _cdk_x11_display_is_root_window (GdkDisplay *display,
 }
 
 struct XPointerUngrabInfo {
-  GdkDisplay *display;
+  CdkDisplay *display;
   guint32 time;
 };
 
 static void
-device_grab_update_callback (GdkDisplay *display,
+device_grab_update_callback (CdkDisplay *display,
                              gpointer    data,
                              gulong      serial)
 {
-  GdkPointerWindowInfo *pointer_info;
-  GdkDevice *device = data;
+  CdkPointerWindowInfo *pointer_info;
+  CdkDevice *device = data;
 
   pointer_info = _cdk_display_get_pointer_info (display, device);
   _cdk_display_device_grab_update (display, device,
@@ -1932,8 +1932,8 @@ device_grab_update_callback (GdkDisplay *display,
   )
 
 void
-_cdk_x11_display_update_grab_info (GdkDisplay *display,
-                                   GdkDevice  *device,
+_cdk_x11_display_update_grab_info (CdkDisplay *display,
+                                   CdkDevice  *device,
                                    gint        status)
 {
   if (status == GrabSuccess)
@@ -1941,12 +1941,12 @@ _cdk_x11_display_update_grab_info (GdkDisplay *display,
 }
 
 void
-_cdk_x11_display_update_grab_info_ungrab (GdkDisplay *display,
-                                          GdkDevice  *device,
+_cdk_x11_display_update_grab_info_ungrab (CdkDisplay *display,
+                                          CdkDevice  *device,
                                           guint32     time,
                                           gulong      serial)
 {
-  GdkDeviceGrabInfo *grab;
+  CdkDeviceGrabInfo *grab;
 
   XFlush (GDK_DISPLAY_XDISPLAY (display));
 
@@ -1962,7 +1962,7 @@ _cdk_x11_display_update_grab_info_ungrab (GdkDisplay *display,
 }
 
 static void
-cdk_x11_display_beep (GdkDisplay *display)
+cdk_x11_display_beep (CdkDisplay *display)
 {
 #ifdef HAVE_XKB
   XkbBell (GDK_DISPLAY_XDISPLAY (display), None, 0, None);
@@ -1972,26 +1972,26 @@ cdk_x11_display_beep (GdkDisplay *display)
 }
 
 static void
-cdk_x11_display_sync (GdkDisplay *display)
+cdk_x11_display_sync (CdkDisplay *display)
 {
   XSync (GDK_DISPLAY_XDISPLAY (display), False);
 }
 
 static void
-cdk_x11_display_flush (GdkDisplay *display)
+cdk_x11_display_flush (CdkDisplay *display)
 {
   if (!display->closed)
     XFlush (GDK_DISPLAY_XDISPLAY (display));
 }
 
 static gboolean
-cdk_x11_display_has_pending (GdkDisplay *display)
+cdk_x11_display_has_pending (CdkDisplay *display)
 {
   return XPending (GDK_DISPLAY_XDISPLAY (display));
 }
 
-static GdkWindow *
-cdk_x11_display_get_default_group (GdkDisplay *display)
+static CdkWindow *
+cdk_x11_display_get_default_group (CdkDisplay *display)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
 
@@ -2000,7 +2000,7 @@ cdk_x11_display_get_default_group (GdkDisplay *display)
 
 /**
  * cdk_x11_display_grab:
- * @display: (type GdkX11Display): a #GdkDisplay 
+ * @display: (type CdkX11Display): a #CdkDisplay 
  * 
  * Call XGrabServer() on @display. 
  * To ungrab the display again, use cdk_x11_display_ungrab(). 
@@ -2010,9 +2010,9 @@ cdk_x11_display_get_default_group (GdkDisplay *display)
  * Since: 2.2
  **/
 void
-cdk_x11_display_grab (GdkDisplay *display)
+cdk_x11_display_grab (CdkDisplay *display)
 {
-  GdkX11Display *display_x11;
+  CdkX11Display *display_x11;
   
   g_return_if_fail (GDK_IS_DISPLAY (display));
   
@@ -2025,7 +2025,7 @@ cdk_x11_display_grab (GdkDisplay *display)
 
 /**
  * cdk_x11_display_ungrab:
- * @display: (type GdkX11Display): a #GdkDisplay
+ * @display: (type CdkX11Display): a #CdkDisplay
  * 
  * Ungrab @display after it has been grabbed with 
  * cdk_x11_display_grab(). 
@@ -2033,9 +2033,9 @@ cdk_x11_display_grab (GdkDisplay *display)
  * Since: 2.2
  **/
 void
-cdk_x11_display_ungrab (GdkDisplay *display)
+cdk_x11_display_ungrab (CdkDisplay *display)
 {
-  GdkX11Display *display_x11;
+  CdkX11Display *display_x11;
   
   g_return_if_fail (GDK_IS_DISPLAY (display));
   
@@ -2053,7 +2053,7 @@ cdk_x11_display_ungrab (GdkDisplay *display)
 static void
 cdk_x11_display_dispose (GObject *object)
 {
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (object);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (object);
 
   _cdk_screen_close (display_x11->screen);
 
@@ -2070,7 +2070,7 @@ cdk_x11_display_dispose (GObject *object)
 static void
 cdk_x11_display_finalize (GObject *object)
 {
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (object);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (object);
 
   /* Keymap */
   if (display_x11->keymap)
@@ -2091,10 +2091,10 @@ cdk_x11_display_finalize (GObject *object)
   /* List of event window extraction functions */
   g_slist_free_full (display_x11->event_types, g_free);
 
-  /* input GdkWindow list */
+  /* input CdkWindow list */
   g_list_free_full (display_x11->input_windows, g_free);
 
-  /* Free all GdkScreens */
+  /* Free all CdkScreens */
   g_object_unref (display_x11->screen);
   g_list_free_full (display_x11->screens, g_object_unref);
 
@@ -2110,7 +2110,7 @@ cdk_x11_display_finalize (GObject *object)
   /* error traps */
   while (display_x11->error_traps != NULL)
     {
-      GdkErrorTrap *trap = display_x11->error_traps->data;
+      CdkErrorTrap *trap = display_x11->error_traps->data;
 
       display_x11->error_traps =
         g_slist_delete_link (display_x11->error_traps,
@@ -2119,7 +2119,7 @@ cdk_x11_display_finalize (GObject *object)
       if (trap->end_sequence == 0)
         g_warning ("Display finalized with an unpopped error trap");
 
-      g_slice_free (GdkErrorTrap, trap);
+      g_slice_free (CdkErrorTrap, trap);
     }
 
   G_OBJECT_CLASS (cdk_x11_display_parent_class)->finalize (object);
@@ -2129,17 +2129,17 @@ cdk_x11_display_finalize (GObject *object)
  * cdk_x11_lookup_xdisplay:
  * @xdisplay: a pointer to an X Display
  * 
- * Find the #GdkDisplay corresponding to @xdisplay, if any exists.
+ * Find the #CdkDisplay corresponding to @xdisplay, if any exists.
  * 
- * Returns: (transfer none) (type GdkX11Display): the #GdkDisplay, if found, otherwise %NULL.
+ * Returns: (transfer none) (type CdkX11Display): the #CdkDisplay, if found, otherwise %NULL.
  *
  * Since: 2.2
  **/
-GdkDisplay *
+CdkDisplay *
 cdk_x11_lookup_xdisplay (Display *xdisplay)
 {
   GSList *list, *l;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   display = NULL;
 
@@ -2162,23 +2162,23 @@ cdk_x11_lookup_xdisplay (Display *xdisplay)
 
 /**
  * _cdk_x11_display_screen_for_xrootwin:
- * @display: a #GdkDisplay
+ * @display: a #CdkDisplay
  * @xrootwin: window ID for one of of the screen’s of the display.
  * 
- * Given the root window ID of one of the screen’s of a #GdkDisplay,
+ * Given the root window ID of one of the screen’s of a #CdkDisplay,
  * finds the screen.
  * 
- * Returns: (transfer none): the #GdkScreen corresponding to
+ * Returns: (transfer none): the #CdkScreen corresponding to
  *     @xrootwin, or %NULL.
  **/
-GdkScreen *
-_cdk_x11_display_screen_for_xrootwin (GdkDisplay *display,
+CdkScreen *
+_cdk_x11_display_screen_for_xrootwin (CdkDisplay *display,
 				      Window      xrootwin)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
   XWindowAttributes attrs;
   gboolean result;
-  GdkX11Display *display_x11;
+  CdkX11Display *display_x11;
   GList *l;
 
   screen = cdk_display_get_default_screen (display);
@@ -2209,25 +2209,25 @@ _cdk_x11_display_screen_for_xrootwin (GdkDisplay *display,
 
 /**
  * cdk_x11_display_get_xdisplay:
- * @display: (type GdkX11Display): a #GdkDisplay
+ * @display: (type CdkX11Display): a #CdkDisplay
  *
- * Returns the X display of a #GdkDisplay.
+ * Returns the X display of a #CdkDisplay.
  *
  * Returns: (transfer none): an X display
  *
  * Since: 2.2
  */
 Display *
-cdk_x11_display_get_xdisplay (GdkDisplay *display)
+cdk_x11_display_get_xdisplay (CdkDisplay *display)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
   return GDK_X11_DISPLAY (display)->xdisplay;
 }
 
 static void
-cdk_x11_display_make_default (GdkDisplay *display)
+cdk_x11_display_make_default (CdkDisplay *display)
 {
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
   const gchar *startup_id;
 
   g_free (display_x11->startup_notification_id);
@@ -2239,14 +2239,14 @@ cdk_x11_display_make_default (GdkDisplay *display)
 }
 
 static void
-broadcast_xmessage (GdkDisplay *display,
+broadcast_xmessage (CdkDisplay *display,
 		    const char *message_type,
 		    const char *message_type_begin,
 		    const char *message)
 {
   Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
-  GdkScreen *screen = cdk_display_get_default_screen (display);
-  GdkWindow *root_window = cdk_screen_get_root_window (screen);
+  CdkScreen *screen = cdk_display_get_default_screen (display);
+  CdkWindow *root_window = cdk_screen_get_root_window (screen);
   Window xroot_window = GDK_WINDOW_XID (root_window);
   
   Atom type_atom;
@@ -2331,7 +2331,7 @@ broadcast_xmessage (GdkDisplay *display,
 
 /**
  * cdk_x11_display_broadcast_startup_message:
- * @display: (type GdkX11Display): a #GdkDisplay
+ * @display: (type CdkX11Display): a #CdkDisplay
  * @message_type: startup notification message type ("new", "change",
  * or "remove")
  * @...: a list of key/value pairs (as strings), terminated by a
@@ -2350,7 +2350,7 @@ broadcast_xmessage (GdkDisplay *display,
  * Since: 2.12
  **/
 void
-cdk_x11_display_broadcast_startup_message (GdkDisplay *display,
+cdk_x11_display_broadcast_startup_message (CdkDisplay *display,
 					   const char *message_type,
 					   ...)
 {
@@ -2395,14 +2395,14 @@ cdk_x11_display_broadcast_startup_message (GdkDisplay *display,
 }
 
 static void
-cdk_x11_display_notify_startup_complete (GdkDisplay  *display,
+cdk_x11_display_notify_startup_complete (CdkDisplay  *display,
                                          const gchar *startup_id)
 {
   gchar *free_this = NULL;
 
   if (startup_id == NULL)
     {
-      GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+      CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
 
       startup_id = free_this = display_x11->startup_notification_id;
       display_x11->startup_notification_id = NULL;
@@ -2419,20 +2419,20 @@ cdk_x11_display_notify_startup_complete (GdkDisplay  *display,
 }
 
 static gboolean
-cdk_x11_display_supports_selection_notification (GdkDisplay *display)
+cdk_x11_display_supports_selection_notification (CdkDisplay *display)
 {
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
 
   return display_x11->have_xfixes;
 }
 
 static gboolean
-cdk_x11_display_request_selection_notification (GdkDisplay *display,
-						GdkAtom     selection)
+cdk_x11_display_request_selection_notification (CdkDisplay *display,
+						CdkAtom     selection)
 
 {
 #ifdef HAVE_XFIXES
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
   Atom atom;
 
   if (display_x11->have_xfixes)
@@ -2453,7 +2453,7 @@ cdk_x11_display_request_selection_notification (GdkDisplay *display,
 }
 
 static gboolean
-cdk_x11_display_supports_clipboard_persistence (GdkDisplay *display)
+cdk_x11_display_supports_clipboard_persistence (CdkDisplay *display)
 {
   Atom clipboard_manager;
 
@@ -2463,13 +2463,13 @@ cdk_x11_display_supports_clipboard_persistence (GdkDisplay *display)
 }
 
 static void
-cdk_x11_display_store_clipboard (GdkDisplay    *display,
-				 GdkWindow     *clipboard_window,
+cdk_x11_display_store_clipboard (CdkDisplay    *display,
+				 CdkWindow     *clipboard_window,
 				 guint32        time_,
-				 const GdkAtom *targets,
+				 const CdkAtom *targets,
 				 gint           n_targets)
 {
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
   Atom clipboard_manager, save_targets;
 
   g_return_if_fail (GDK_WINDOW_IS_X11 (clipboard_window));
@@ -2511,7 +2511,7 @@ cdk_x11_display_store_clipboard (GdkDisplay    *display,
 
 /**
  * cdk_x11_display_get_user_time:
- * @display: (type GdkX11Display): a #GdkDisplay
+ * @display: (type CdkX11Display): a #CdkDisplay
  *
  * Returns the timestamp of the last user interaction on 
  * @display. The timestamp is taken from events caused
@@ -2523,19 +2523,19 @@ cdk_x11_display_store_clipboard (GdkDisplay    *display,
  * Since: 2.8
  */
 guint32
-cdk_x11_display_get_user_time (GdkDisplay *display)
+cdk_x11_display_get_user_time (CdkDisplay *display)
 {
   return GDK_X11_DISPLAY (display)->user_time;
 }
 
 static gboolean
-cdk_x11_display_supports_shapes (GdkDisplay *display)
+cdk_x11_display_supports_shapes (CdkDisplay *display)
 {
   return GDK_X11_DISPLAY (display)->have_shapes;
 }
 
 static gboolean
-cdk_x11_display_supports_input_shapes (GdkDisplay *display)
+cdk_x11_display_supports_input_shapes (CdkDisplay *display)
 {
   return GDK_X11_DISPLAY (display)->have_input_shapes;
 }
@@ -2543,7 +2543,7 @@ cdk_x11_display_supports_input_shapes (GdkDisplay *display)
 
 /**
  * cdk_x11_display_get_startup_notification_id:
- * @display: (type GdkX11Display): a #GdkDisplay
+ * @display: (type CdkX11Display): a #CdkDisplay
  *
  * Gets the startup notification ID for a display.
  * 
@@ -2552,14 +2552,14 @@ cdk_x11_display_supports_input_shapes (GdkDisplay *display)
  * Since: 2.12
  */
 const gchar *
-cdk_x11_display_get_startup_notification_id (GdkDisplay *display)
+cdk_x11_display_get_startup_notification_id (CdkDisplay *display)
 {
   return GDK_X11_DISPLAY (display)->startup_notification_id;
 }
 
 /**
  * cdk_x11_display_set_startup_notification_id:
- * @display: (type GdkX11Display): a #GdkDisplay
+ * @display: (type CdkX11Display): a #CdkDisplay
  * @startup_id: the startup notification ID (must be valid utf8)
  *
  * Sets the startup notification ID for a display.
@@ -2580,10 +2580,10 @@ cdk_x11_display_get_startup_notification_id (GdkDisplay *display)
  * Since: 3.0
  **/
 void
-cdk_x11_display_set_startup_notification_id (GdkDisplay  *display,
+cdk_x11_display_set_startup_notification_id (CdkDisplay  *display,
                                              const gchar *startup_id)
 {
-  GdkX11Display *display_x11;
+  CdkX11Display *display_x11;
   gchar *time_str;
 
   display_x11 = GDK_X11_DISPLAY (display);
@@ -2632,9 +2632,9 @@ cdk_x11_display_set_startup_notification_id (GdkDisplay  *display,
 }
 
 static gboolean
-cdk_x11_display_supports_composite (GdkDisplay *display)
+cdk_x11_display_supports_composite (CdkDisplay *display)
 {
-  GdkX11Display *x11_display = GDK_X11_DISPLAY (display);
+  CdkX11Display *x11_display = GDK_X11_DISPLAY (display);
 
   return x11_display->have_xcomposite &&
 	 x11_display->have_xdamage &&
@@ -2643,7 +2643,7 @@ cdk_x11_display_supports_composite (GdkDisplay *display)
 
 /**
  * cdk_x11_register_standard_event_type:
- * @display: (type GdkX11Display): a #GdkDisplay
+ * @display: (type CdkX11Display): a #CdkDisplay
  * @event_base: first event type code to register
  * @n_events: number of event type codes to register
  *
@@ -2663,15 +2663,15 @@ cdk_x11_display_supports_composite (GdkDisplay *display)
  * Since: 2.4
  **/
 void
-cdk_x11_register_standard_event_type (GdkDisplay *display,
+cdk_x11_register_standard_event_type (CdkDisplay *display,
 				      gint        event_base,
 				      gint        n_events)
 {
-  GdkEventTypeX11 *event_type;
-  GdkX11Display *display_x11;
+  CdkEventTypeX11 *event_type;
+  CdkX11Display *display_x11;
 
   display_x11 = GDK_X11_DISPLAY (display);
-  event_type = g_new (GdkEventTypeX11, 1);
+  event_type = g_new (CdkEventTypeX11, 1);
 
   event_type->base = event_base;
   event_type->n_events = n_events;
@@ -2705,10 +2705,10 @@ _cdk_x11_decode_request_code(Display *dpy, int code)
 
 /* delivers an error event from the error handler in cdkmain-x11.c */
 void
-_cdk_x11_display_error_event (GdkDisplay  *display,
+_cdk_x11_display_error_event (CdkDisplay  *display,
                               XErrorEvent *error)
 {
-  GdkX11Display *display_x11;
+  CdkX11Display *display_x11;
   GSList *tmp_list;
   gboolean ignore;
 
@@ -2719,7 +2719,7 @@ _cdk_x11_display_error_event (GdkDisplay  *display,
        tmp_list != NULL;
        tmp_list = tmp_list->next)
     {
-      GdkErrorTrap *trap;
+      CdkErrorTrap *trap;
 
       trap = tmp_list->data;
 
@@ -2770,7 +2770,7 @@ _cdk_x11_display_error_event (GdkDisplay  *display,
 }
 
 static void
-delete_outdated_error_traps (GdkX11Display *display_x11)
+delete_outdated_error_traps (CdkX11Display *display_x11)
 {
   GSList *tmp_list;
   gulong processed_sequence;
@@ -2780,7 +2780,7 @@ delete_outdated_error_traps (GdkX11Display *display_x11)
   tmp_list = display_x11->error_traps;
   while (tmp_list != NULL)
     {
-      GdkErrorTrap *trap = tmp_list->data;
+      CdkErrorTrap *trap = tmp_list->data;
 
       if (trap->end_sequence != 0 &&
           SEQUENCE_COMPARE (trap->end_sequence, <=, processed_sequence))
@@ -2790,7 +2790,7 @@ delete_outdated_error_traps (GdkX11Display *display_x11)
           tmp_list = tmp_list->next;
           display_x11->error_traps =
             g_slist_delete_link (display_x11->error_traps, free_me);
-          g_slice_free (GdkErrorTrap, trap);
+          g_slice_free (CdkErrorTrap, trap);
         }
       else
         {
@@ -2801,7 +2801,7 @@ delete_outdated_error_traps (GdkX11Display *display_x11)
 
 /**
  * cdk_x11_display_error_trap_push:
- * @display: (type GdkX11Display): a #GdkDisplay
+ * @display: (type CdkX11Display): a #CdkDisplay
  *
  * Begins a range of X requests on @display for which X error events
  * will be ignored. Unignored errors (when no trap is pushed) will abort
@@ -2814,10 +2814,10 @@ delete_outdated_error_traps (GdkX11Display *display_x11)
  * Since: 3.0
  */
 void
-cdk_x11_display_error_trap_push (GdkDisplay *display)
+cdk_x11_display_error_trap_push (CdkDisplay *display)
 {
-  GdkX11Display *display_x11;
-  GdkErrorTrap *trap;
+  CdkX11Display *display_x11;
+  CdkErrorTrap *trap;
 
   display_x11 = GDK_X11_DISPLAY (display);
 
@@ -2826,7 +2826,7 @@ cdk_x11_display_error_trap_push (GdkDisplay *display)
   /* set up the Xlib callback to tell us about errors */
   _cdk_x11_error_handler_push ();
 
-  trap = g_slice_new0 (GdkErrorTrap);
+  trap = g_slice_new0 (CdkErrorTrap);
 
   trap->start_sequence = XNextRequest (display_x11->xdisplay);
   trap->error_code = Success;
@@ -2836,11 +2836,11 @@ cdk_x11_display_error_trap_push (GdkDisplay *display)
 }
 
 static gint
-cdk_x11_display_error_trap_pop_internal (GdkDisplay *display,
+cdk_x11_display_error_trap_pop_internal (CdkDisplay *display,
                                          gboolean    need_code)
 {
-  GdkX11Display *display_x11;
-  GdkErrorTrap *trap;
+  CdkX11Display *display_x11;
+  CdkErrorTrap *trap;
   GSList *tmp_list;
   int result;
 
@@ -2906,7 +2906,7 @@ cdk_x11_display_error_trap_pop_internal (GdkDisplay *display,
 
 /**
  * cdk_x11_display_set_window_scale:
- * @display: (type GdkX11Display): the display
+ * @display: (type CdkX11Display): the display
  * @scale: The new scale value
  *
  * Forces a specific window scale for all windows on this display,
@@ -2920,10 +2920,10 @@ cdk_x11_display_error_trap_pop_internal (GdkDisplay *display,
  * Since: 3.10
  */
 void
-cdk_x11_display_set_window_scale (GdkDisplay *display,
+cdk_x11_display_set_window_scale (CdkDisplay *display,
                                   gint        scale)
 {
-  GdkX11Screen *x11_screen;
+  CdkX11Screen *x11_screen;
   gboolean need_reread_settings = FALSE;
 
   g_return_if_fail (GDK_IS_X11_DISPLAY (display));
@@ -2951,7 +2951,7 @@ cdk_x11_display_set_window_scale (GdkDisplay *display,
 
 /**
  * cdk_x11_display_error_trap_pop:
- * @display: (type GdkX11Display): the display
+ * @display: (type CdkX11Display): the display
  *
  * Pops the error trap pushed by cdk_x11_display_error_trap_push().
  * Will XSync() if necessary and will always block until
@@ -2969,7 +2969,7 @@ cdk_x11_display_set_window_scale (GdkDisplay *display,
  * Returns: X error code or 0 on success
  */
 gint
-cdk_x11_display_error_trap_pop (GdkDisplay *display)
+cdk_x11_display_error_trap_pop (CdkDisplay *display)
 {
   g_return_val_if_fail (GDK_IS_X11_DISPLAY (display), Success);
 
@@ -2978,7 +2978,7 @@ cdk_x11_display_error_trap_pop (GdkDisplay *display)
 
 /**
  * cdk_x11_display_error_trap_pop_ignored:
- * @display: (type GdkX11Display): the display
+ * @display: (type CdkX11Display): the display
  *
  * Pops the error trap pushed by cdk_x11_display_error_trap_push().
  * Does not block to see if an error occurred; merely records the
@@ -2991,7 +2991,7 @@ cdk_x11_display_error_trap_pop (GdkDisplay *display)
  * Since: 3.0
  */
 void
-cdk_x11_display_error_trap_pop_ignored (GdkDisplay *display)
+cdk_x11_display_error_trap_pop_ignored (CdkDisplay *display)
 {
   g_return_if_fail (GDK_IS_X11_DISPLAY (display));
 
@@ -3031,7 +3031,7 @@ cdk_x11_set_sm_client_id (const gchar *sm_client_id)
 }
 
 static gint
-pop_error_trap (GdkDisplay *display,
+pop_error_trap (CdkDisplay *display,
                 gboolean    ignored)
 {
   if (ignored)
@@ -3045,10 +3045,10 @@ pop_error_trap (GdkDisplay *display,
     }
 }
 
-static GdkKeymap *
-cdk_x11_display_get_keymap (GdkDisplay *display)
+static CdkKeymap *
+cdk_x11_display_get_keymap (CdkDisplay *display)
 {
-  GdkX11Display *display_x11;
+  CdkX11Display *display_x11;
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
   display_x11 = GDK_X11_DISPLAY (display);
 
@@ -3060,8 +3060,8 @@ cdk_x11_display_get_keymap (GdkDisplay *display)
   return display_x11->keymap;
 }
 
-static GdkSeat *
-cdk_x11_display_get_default_seat (GdkDisplay *display)
+static CdkSeat *
+cdk_x11_display_get_default_seat (CdkDisplay *display)
 {
   GList *seats, *l;
   int device_id;
@@ -3073,7 +3073,7 @@ cdk_x11_display_get_default_seat (GdkDisplay *display)
    * This path always triggers for core events, so we can freely use XInput below. */
   if (g_list_length (seats) == 1)
     {
-      GdkSeat *seat = seats->data;
+      CdkSeat *seat = seats->data;
 
       g_list_free (seats);
       return seat;
@@ -3086,13 +3086,13 @@ cdk_x11_display_get_default_seat (GdkDisplay *display)
 
   for (l = seats; l; l = l->next)
     {
-      GdkDevice *pointer;
+      CdkDevice *pointer;
 
       pointer = cdk_seat_get_pointer (l->data);
 
       if (cdk_x11_device_get_id (pointer) == device_id || !result)
         {
-          GdkSeat *seat = l->data;
+          CdkSeat *seat = l->data;
           g_list_free (seats);
 
           return seat;
@@ -3105,30 +3105,30 @@ cdk_x11_display_get_default_seat (GdkDisplay *display)
 }
 
 static int
-cdk_x11_display_get_n_monitors (GdkDisplay *display)
+cdk_x11_display_get_n_monitors (CdkDisplay *display)
 {
-  GdkX11Display *x11_display = GDK_X11_DISPLAY (display);
+  CdkX11Display *x11_display = GDK_X11_DISPLAY (display);
 
   return x11_display->monitors->len;
 }
 
 
-static GdkMonitor *
-cdk_x11_display_get_monitor (GdkDisplay *display,
+static CdkMonitor *
+cdk_x11_display_get_monitor (CdkDisplay *display,
                              int         monitor_num)
 {
-  GdkX11Display *x11_display = GDK_X11_DISPLAY (display);
+  CdkX11Display *x11_display = GDK_X11_DISPLAY (display);
 
   if (0 <= monitor_num && monitor_num < x11_display->monitors->len)
-    return (GdkMonitor *)x11_display->monitors->pdata[monitor_num];
+    return (CdkMonitor *)x11_display->monitors->pdata[monitor_num];
 
   return NULL;
 }
 
-static GdkMonitor *
-cdk_x11_display_get_primary_monitor (GdkDisplay *display)
+static CdkMonitor *
+cdk_x11_display_get_primary_monitor (CdkDisplay *display)
 {
-  GdkX11Display *x11_display = GDK_X11_DISPLAY (display);
+  CdkX11Display *x11_display = GDK_X11_DISPLAY (display);
 
   if (0 <= x11_display->primary_monitor && x11_display->primary_monitor < x11_display->monitors->len)
     return x11_display->monitors->pdata[x11_display->primary_monitor];
@@ -3137,10 +3137,10 @@ cdk_x11_display_get_primary_monitor (GdkDisplay *display)
 }
 
 static void
-cdk_x11_display_class_init (GdkX11DisplayClass * class)
+cdk_x11_display_class_init (CdkX11DisplayClass * class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GdkDisplayClass *display_class = GDK_DISPLAY_CLASS (class);
+  CdkDisplayClass *display_class = GDK_DISPLAY_CLASS (class);
 
   object_class->dispose = cdk_x11_display_dispose;
   object_class->finalize = cdk_x11_display_finalize;

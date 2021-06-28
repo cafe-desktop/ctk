@@ -76,7 +76,7 @@ static gboolean
 _ctk_gesture_zoom_get_distance (CtkGestureZoom *zoom,
                                 gdouble        *distance)
 {
-  const GdkEvent *last_event;
+  const CdkEvent *last_event;
   gdouble x1, y1, x2, y2;
   CtkGesture *gesture;
   GList *sequences = NULL;
@@ -144,7 +144,7 @@ _ctk_gesture_zoom_check_emit (CtkGestureZoom *gesture)
 
 static gboolean
 ctk_gesture_zoom_filter_event (CtkEventController *controller,
-                               const GdkEvent     *event)
+                               const CdkEvent     *event)
 {
   /* Let 2-finger touchpad pinch events go through */
   if (event->type == GDK_TOUCHPAD_PINCH)
@@ -160,7 +160,7 @@ ctk_gesture_zoom_filter_event (CtkEventController *controller,
 
 static void
 ctk_gesture_zoom_begin (CtkGesture       *gesture,
-                        GdkEventSequence *sequence)
+                        CdkEventSequence *sequence)
 {
   CtkGestureZoom *zoom = CTK_GESTURE_ZOOM (gesture);
   CtkGestureZoomPrivate *priv;
@@ -171,7 +171,7 @@ ctk_gesture_zoom_begin (CtkGesture       *gesture,
 
 static void
 ctk_gesture_zoom_update (CtkGesture       *gesture,
-                         GdkEventSequence *sequence)
+                         CdkEventSequence *sequence)
 {
   _ctk_gesture_zoom_check_emit (CTK_GESTURE_ZOOM (gesture));
 }

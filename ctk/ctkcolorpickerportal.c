@@ -153,7 +153,7 @@ portal_response_received (GDBusConnection *connection,
 
   if (response == 0)
     {
-      GdkRGBA c;
+      CdkRGBA c;
 
       c.alpha = 1.0;
       if (g_variant_lookup (ret, "color", "(ddd)", &c.red, &c.green, &c.blue))
@@ -221,7 +221,7 @@ ctk_color_picker_portal_pick (CtkColorPicker      *cp,
                      NULL);
 }
 
-static GdkRGBA *
+static CdkRGBA *
 ctk_color_picker_portal_pick_finish (CtkColorPicker  *cp,
                                      GAsyncResult    *res,
                                      GError         **error)

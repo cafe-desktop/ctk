@@ -194,7 +194,7 @@ static gboolean
 on_window_draw (CtkWidget *widget,
                 cairo_t   *cr)
 {
-  GdkRectangle allocation;
+  CdkRectangle allocation;
   double cx, cy, r;
 
   cairo_set_source_rgb (cr, 1., 1., 1.);
@@ -220,7 +220,7 @@ on_window_draw (CtkWidget *widget,
 
       if (displayed_frame->frame_counter == 0)
         {
-          GdkFrameClock *frame_clock = ctk_widget_get_frame_clock (window);
+          CdkFrameClock *frame_clock = ctk_widget_get_frame_clock (window);
           displayed_frame->frame_counter = cdk_frame_clock_get_frame_counter (frame_clock);
         }
     }
@@ -231,13 +231,13 @@ on_window_draw (CtkWidget *widget,
 static void
 collect_old_frames (void)
 {
-  GdkFrameClock *frame_clock = ctk_widget_get_frame_clock (window);
+  CdkFrameClock *frame_clock = ctk_widget_get_frame_clock (window);
   GList *l, *l_next;
 
   for (l = past_frames; l; l = l_next)
     {
       FrameData *frame_data = l->data;
-      GdkFrameTimings *timings;
+      CdkFrameTimings *timings;
       gboolean remove = FALSE;
       l_next = l->next;
 
@@ -303,10 +303,10 @@ print_statistics (void)
 }
 
 static void
-on_update (GdkFrameClock *frame_clock,
+on_update (CdkFrameClock *frame_clock,
            gpointer       data)
 {
-  GdkFrameTimings *timings = cdk_frame_clock_get_current_timings (frame_clock);
+  CdkFrameTimings *timings = cdk_frame_clock_get_current_timings (frame_clock);
   gint64 frame_time = cdk_frame_timings_get_frame_time (timings);
   gint64 predicted_presentation_time = cdk_frame_timings_get_predicted_presentation_time (timings);
   gint64 refresh_interval;
@@ -365,7 +365,7 @@ int
 main(int argc, char **argv)
 {
   GError *error = NULL;
-  GdkFrameClock *frame_clock;
+  CdkFrameClock *frame_clock;
 
   if (!ctk_init_with_args (&argc, &argv, "",
                            options, NULL, &error))

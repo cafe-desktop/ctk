@@ -1785,16 +1785,16 @@ msgid "Cell background color"
 msgstr "అర బ్యాక్‌గ్రౌండ్ రంగు"
 
 #: ../ctk/ctkcellrenderer.c:397
-msgid "Cell background color as a GdkColor"
-msgstr "Gdk రంగు వలె అర బ్యాక్‌గ్రౌండ్ రంగు"
+msgid "Cell background color as a CdkColor"
+msgstr "Cdk రంగు వలె అర బ్యాక్‌గ్రౌండ్ రంగు"
 
 #: ../ctk/ctkcellrenderer.c:410
 msgid "Cell background RGBA color"
 msgstr "సెల్ నేపథ్య RGBA రంగు"
 
 #: ../ctk/ctkcellrenderer.c:411
-msgid "Cell background color as a GdkRGBA"
-msgstr "ఒక GdkRGBA గా సెల్ నేపథ్య రంగు"
+msgid "Cell background color as a CdkRGBA"
+msgstr "ఒక CdkRGBA గా సెల్ నేపథ్య రంగు"
 
 #: ../ctk/ctkcellrenderer.c:418
 msgid "Editing"
@@ -2049,8 +2049,8 @@ msgstr "బ్యాక్‌గ్రౌండ్ రంగు"
 
 #: ../ctk/ctkcellrenderertext.c:304 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:219
-msgid "Background color as a GdkColor"
-msgstr "ఒక Gdk రంగు వలె బ్యాక్‌గ్రౌండ్ రంగు"
+msgid "Background color as a CdkColor"
+msgstr "ఒక Cdk రంగు వలె బ్యాక్‌గ్రౌండ్ రంగు"
 
 #: ../ctk/ctkcellrenderertext.c:318
 msgid "Background color as RGBA"
@@ -2058,8 +2058,8 @@ msgstr "RGBA గా నేపథ్య రంగు"
 
 #: ../ctk/ctkcellrenderertext.c:319 ../ctk/ctkcellview.c:219
 #: ../ctk/ctktexttag.c:234
-msgid "Background color as a GdkRGBA"
-msgstr "ఒక GdkRGBA గా నేపథ్య రంగు"
+msgid "Background color as a CdkRGBA"
+msgstr "ఒక CdkRGBA గా నేపథ్య రంగు"
 
 #: ../ctk/ctkcellrenderertext.c:325 ../ctk/ctktexttag.c:249
 msgid "Foreground color name"
@@ -2075,16 +2075,16 @@ msgid "Foreground color"
 msgstr "ఫోర్‌గ్రౌండ్ రంగు"
 
 #: ../ctk/ctkcellrenderertext.c:341 ../ctk/ctktexttag.c:265
-msgid "Foreground color as a GdkColor"
-msgstr "ఒక Gdk రంగు వలె ఫోర్‌గ్రౌండ్ రంగు"
+msgid "Foreground color as a CdkColor"
+msgstr "ఒక Cdk రంగు వలె ఫోర్‌గ్రౌండ్ రంగు"
 
 #: ../ctk/ctkcellrenderertext.c:355
 msgid "Foreground color as RGBA"
 msgstr "GBA గా ముందుభాగం రంగు"
 
 #: ../ctk/ctkcellrenderertext.c:356 ../ctk/ctktexttag.c:280
-msgid "Foreground color as a GdkRGBA"
-msgstr "ఒక GdkRGBA గా ముందుభాగం రంగు"
+msgid "Foreground color as a CdkRGBA"
+msgstr "ఒక CdkRGBA గా ముందుభాగం రంగు"
 
 #: ../ctk/ctkcellrenderertext.c:364 ../ctk/ctkentry.c:755
 #: ../ctk/ctktexttag.c:296 ../ctk/ctktextview.c:702
@@ -2561,8 +2561,8 @@ msgid "Color"
 msgstr "రంగు"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "ప్రస్తుత రంగు, GdkRGBA వలె"
+msgid "Current color, as a CdkRGBA"
+msgstr "ప్రస్తుత రంగు, CdkRGBA వలె"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -3779,7 +3779,7 @@ msgid "Pixbuf"
 msgstr "పిక్స్‍‌బఫ్"
 
 #: ../ctk/ctkimage.c:217 ../ctk/ctkstatusicon.c:224
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr "ప్రదర్శించుటకు జిడికెఫిక్స్‍‌బఫ్"
 
 #: ../ctk/ctkimage.c:224 ../ctk/ctkrecentmanager.c:293
@@ -3827,7 +3827,7 @@ msgid "Animation"
 msgstr "యానిమేషన్"
 
 #: ../ctk/ctkimage.c:276
-msgid "GdkPixbufAnimation to display"
+msgid "CdkPixbufAnimation to display"
 msgstr "ప్రదర్శించుటకు జిడికెపిక్స్‍‌బఫ్‌యానిమేషన్"
 
 #: ../ctk/ctkimage.c:316 ../ctk/ctkstatusicon.c:271
@@ -6520,7 +6520,7 @@ msgid "The title of this tray icon"
 msgstr "ఈ ట్రే ప్రతిమయొక్క శీర్షిక"
 
 #: ../ctk/ctkstylecontext.c:443
-msgid "The associated GdkScreen"
+msgid "The associated CdkScreen"
 msgstr "cdkతెర అనుబంధం "
 
 #: ../ctk/ctkstylecontext.c:449
@@ -6803,16 +6803,16 @@ msgid "Paragraph background color"
 msgstr "పరిచ్చేదము బ్యాక్‌గ్రౌండ్ వర్ణము"
 
 #: ../ctk/ctktexttag.c:582
-msgid "Paragraph background color as a GdkColor"
-msgstr "ఒక GdkColor వలె పరిచ్ఛేదము నేపథ్యం రంగు"
+msgid "Paragraph background color as a CdkColor"
+msgstr "ఒక CdkColor వలె పరిచ్ఛేదము నేపథ్యం రంగు"
 
 #: ../ctk/ctktexttag.c:596
 msgid "Paragraph background RGBA"
 msgstr "పేరా నేపథ్యం RGBA"
 
 #: ../ctk/ctktexttag.c:597
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "ఒక GdkRGBA గా పేరా RGBA నేపథ్యం"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "ఒక CdkRGBA గా పేరా RGBA నేపథ్యం"
 
 #: ../ctk/ctktexttag.c:615
 msgid "Margin Accumulates"
@@ -7765,8 +7765,8 @@ msgid "Events"
 msgstr "ఘటనలు"
 
 #: ../ctk/ctkwidget.c:1096
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "ఈ విడ్జట్ యెటువంటి GdkEventsను పొందుతుందో ఘటనా తొడుగు నిర్ణయిస్తుంది"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "ఈ విడ్జట్ యెటువంటి CdkEventsను పొందుతుందో ఘటనా తొడుగు నిర్ణయిస్తుంది"
 
 #: ../ctk/ctkwidget.c:1103
 msgid "No show all"
@@ -8367,14 +8367,14 @@ msgstr "ఉపయోగించడానికి రంగును ప్ర�
 #~ msgid "Whether the statusbar has a grip for resizing the toplevel"
 #~ msgstr "పైస్థాయిని పునఃపరిమాణం చేయుటకు స్థితిపట్టీ పట్టు కలిగివుందా"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
-#~ msgstr "GdkColor వలె బ్యాక్‌గ్రౌండ్ వర్ణము"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
+#~ msgstr "CdkColor వలె బ్యాక్‌గ్రౌండ్ వర్ణము"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
-#~ msgstr "GdkColor వలె ఫోర్‌గ్రౌండ్ వర్ణము"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
+#~ msgstr "CdkColor వలె ఫోర్‌గ్రౌండ్ వర్ణము"
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-#~ msgstr "GdkColor వలె పరిచ్ఛేదము బ్యాక్‌గ్రౌండ్ వర్ణము"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+#~ msgstr "CdkColor వలె పరిచ్ఛేదము బ్యాక్‌గ్రౌండ్ వర్ణము"
 
 #~ msgid "Horizontal Adjustment for the widget"
 #~ msgstr "విడ్జట్ కొరకు హారిజాంటల్ సర్దుబాటు"
@@ -8449,8 +8449,8 @@ msgstr "ఉపయోగించడానికి రంగును ప్ర�
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "పిక్సెల్ బఫర్ యొక్క పిక్సెల్ దత్తాంశమునకు సూచిక"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "సమర్పించుదానికొరకు Gdk తెర"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "సమర్పించుదానికొరకు Cdk తెర"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "భ్రమణబోత్తము యొక్క విలువను పట్టివుంచే సర్దుబాటు."
@@ -8470,8 +8470,8 @@ msgstr "ఉపయోగించడానికి రంగును ప్ర�
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "ఛాయను లేదా బ్యాక్‌గ్రౌండును లేఖిస్తున్నప్పుడు సరైన స్థితిని పంపవలెనా"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "ప్రస్తుతం యెంపికకాబడిన GdkFont"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "ప్రస్తుతం యెంపికకాబడిన CdkFont"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "నిరోదించబడిన లక్షణం, బదులుగా నీడ రకమును వుపయోగించుము (_t)"
@@ -8479,16 +8479,16 @@ msgstr "ఉపయోగించడానికి రంగును ప్ర�
 #~ msgid "Pixmap"
 #~ msgstr "పిక్స్‍‌మాప్"
 
-#~ msgid "A GdkPixmap to display"
+#~ msgid "A CdkPixmap to display"
 #~ msgstr "ప్రదర్శించుటకు జిడికెపిక్స్‍‌మాప్"
 
-#~ msgid "A GdkImage to display"
+#~ msgid "A CdkImage to display"
 #~ msgstr "ప్రదర్శించుటకు జిడికెప్రతిబింబము"
 
 #~ msgid "Mask"
 #~ msgstr "తొడుగు"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
 #~ msgstr "జిడికెప్రతిబింబము లేదా జిడికెపిక్స్‍‌మాప్‌తో వుపయోగించుటకు తొడుగు బిట్‌మాప్"
 
 #~ msgid "Use separator"

@@ -135,7 +135,7 @@ state_flags_changed (CtkWidget *w, CtkStateFlags old_flags, CtkInspectorMiscInfo
 }
 
 static void
-allocation_changed (CtkWidget *w, GdkRectangle *allocation, CtkInspectorMiscInfo *sl)
+allocation_changed (CtkWidget *w, CdkRectangle *allocation, CtkInspectorMiscInfo *sl)
 {
   CtkAllocation alloc;
   CtkAllocation clip;
@@ -386,13 +386,13 @@ update_info (gpointer data)
 
   if (GDK_IS_FRAME_CLOCK (sl->priv->object))
     {
-      GdkFrameClock *clock;
+      CdkFrameClock *clock;
       gint64 frame;
       gint64 frame_time;
       gint64 history_start;
       gint64 history_len;
       gint64 previous_frame_time;
-      GdkFrameTimings *previous_timings;
+      CdkFrameTimings *previous_timings;
 
       clock = GDK_FRAME_CLOCK (sl->priv->object);
       frame = cdk_frame_clock_get_frame_counter (clock);

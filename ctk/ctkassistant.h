@@ -186,16 +186,16 @@ const gchar *         ctk_assistant_get_page_title        (CtkAssistant         
 GDK_DEPRECATED_IN_3_2
 void                  ctk_assistant_set_page_header_image (CtkAssistant         *assistant,
                                                            CtkWidget            *page,
-                                                           GdkPixbuf            *pixbuf);
+                                                           CdkPixbuf            *pixbuf);
 GDK_DEPRECATED_IN_3_2
-GdkPixbuf            *ctk_assistant_get_page_header_image (CtkAssistant         *assistant,
+CdkPixbuf            *ctk_assistant_get_page_header_image (CtkAssistant         *assistant,
                                                            CtkWidget            *page);
 GDK_DEPRECATED_IN_3_2
 void                  ctk_assistant_set_page_side_image   (CtkAssistant         *assistant,
                                                            CtkWidget            *page,
-                                                           GdkPixbuf            *pixbuf);
+                                                           CdkPixbuf            *pixbuf);
 GDK_DEPRECATED_IN_3_2
-GdkPixbuf            *ctk_assistant_get_page_side_image   (CtkAssistant         *assistant,
+CdkPixbuf            *ctk_assistant_get_page_side_image   (CtkAssistant         *assistant,
                                                            CtkWidget            *page);
 
 GDK_AVAILABLE_IN_ALL

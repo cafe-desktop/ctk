@@ -1710,16 +1710,16 @@ msgid "Cell background color"
 msgstr "كاتەكچە تەگلىك رەڭگى"
 
 #: ../ctk/ctkcellrenderer.c:397
-msgid "Cell background color as a GdkColor"
-msgstr "GdkColor دا ئىپادىلەنگەن كاتەكچە تەگلىك رەڭگى"
+msgid "Cell background color as a CdkColor"
+msgstr "CdkColor دا ئىپادىلەنگەن كاتەكچە تەگلىك رەڭگى"
 
 #: ../ctk/ctkcellrenderer.c:410
 msgid "Cell background RGBA color"
 msgstr "كاتەكچە تەگلىكنىڭ RGBA رەڭگى"
 
 #: ../ctk/ctkcellrenderer.c:411
-msgid "Cell background color as a GdkRGBA"
-msgstr "GdkRGBA دا ئىپادىلەنگەن كاتەكچە تەگلىك رەڭگى"
+msgid "Cell background color as a CdkRGBA"
+msgstr "CdkRGBA دا ئىپادىلەنگەن كاتەكچە تەگلىك رەڭگى"
 
 #: ../ctk/ctkcellrenderer.c:418
 msgid "Editing"
@@ -1967,8 +1967,8 @@ msgstr "تەگلىك رەڭگى"
 
 #: ../ctk/ctkcellrenderertext.c:304 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:219
-msgid "Background color as a GdkColor"
-msgstr "GdkColor شەكلىدە ئىپادىلەنگەن تەگلىك رەڭگى"
+msgid "Background color as a CdkColor"
+msgstr "CdkColor شەكلىدە ئىپادىلەنگەن تەگلىك رەڭگى"
 
 #: ../ctk/ctkcellrenderertext.c:318
 msgid "Background color as RGBA"
@@ -1976,8 +1976,8 @@ msgstr "RGBA شەكلىدە ئىپادىلەنگەن تەگلىك رەڭگى"
 
 #: ../ctk/ctkcellrenderertext.c:319 ../ctk/ctkcellview.c:219
 #: ../ctk/ctktexttag.c:234
-msgid "Background color as a GdkRGBA"
-msgstr "GdkRGBA دا ئىپادىلەنگەن تەگلىك رەڭگى"
+msgid "Background color as a CdkRGBA"
+msgstr "CdkRGBA دا ئىپادىلەنگەن تەگلىك رەڭگى"
 
 #: ../ctk/ctkcellrenderertext.c:325 ../ctk/ctktexttag.c:249
 msgid "Foreground color name"
@@ -1993,16 +1993,16 @@ msgid "Foreground color"
 msgstr "ئالدى كۆرۈنۈش رەڭگى"
 
 #: ../ctk/ctkcellrenderertext.c:341 ../ctk/ctktexttag.c:265
-msgid "Foreground color as a GdkColor"
-msgstr "GdkColor شەكلىدە ئىپادىلەنگەن ئالدى كۆرۈنۈش رەڭگى"
+msgid "Foreground color as a CdkColor"
+msgstr "CdkColor شەكلىدە ئىپادىلەنگەن ئالدى كۆرۈنۈش رەڭگى"
 
 #: ../ctk/ctkcellrenderertext.c:355
 msgid "Foreground color as RGBA"
 msgstr "RGBA شەكلىدە ئىپادىلەنگەن ئالدى كۆرۈنۈش رەڭگى"
 
 #: ../ctk/ctkcellrenderertext.c:356 ../ctk/ctktexttag.c:280
-msgid "Foreground color as a GdkRGBA"
-msgstr "GdkRGBA شەكلىدە ئىپادىلەنگەن ئالدى كۆرۈنۈش رەڭگى"
+msgid "Foreground color as a CdkRGBA"
+msgstr "CdkRGBA شەكلىدە ئىپادىلەنگەن ئالدى كۆرۈنۈش رەڭگى"
 
 #: ../ctk/ctkcellrenderertext.c:364 ../ctk/ctkentry.c:755
 #: ../ctk/ctktexttag.c:296 ../ctk/ctktextview.c:704
@@ -2466,8 +2466,8 @@ msgid "Color"
 msgstr "رەڭ"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "نۆۋەتتىكى رەڭ، GdkRGBA دەك"
+msgid "Current color, as a CdkRGBA"
+msgstr "نۆۋەتتىكى رەڭ، CdkRGBA دەك"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -3660,8 +3660,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:217 ../ctk/ctkstatusicon.c:224
-msgid "A GdkPixbuf to display"
-msgstr "كۆرسىتىدىغان GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "كۆرسىتىدىغان CdkPixbuf"
 
 #: ../ctk/ctkimage.c:224 ../ctk/ctkrecentmanager.c:293
 #: ../ctk/ctkstatusicon.c:231
@@ -3706,8 +3706,8 @@ msgid "Animation"
 msgstr "جانلاندۇرۇم"
 
 #: ../ctk/ctkimage.c:276
-msgid "GdkPixbufAnimation to display"
-msgstr "كۆرسىتىدىغان GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "كۆرسىتىدىغان CdkPixbufAnimation"
 
 #: ../ctk/ctkimage.c:316 ../ctk/ctkstatusicon.c:271
 msgid "Storage type"
@@ -6265,8 +6265,8 @@ msgid "The title of this tray icon"
 msgstr "بۇ قوندۇرما سىنبەلگىنىڭ ماۋزۇسى"
 
 #: ../ctk/ctkstylecontext.c:442
-msgid "The associated GdkScreen"
-msgstr "مۇناسىۋەتلىك GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "مۇناسىۋەتلىك CdkScreen"
 
 #: ../ctk/ctkstylecontext.c:448
 msgid "Direction"
@@ -6534,16 +6534,16 @@ msgid "Paragraph background color"
 msgstr "ئابزاس تەگلىك رەڭگى"
 
 #: ../ctk/ctktexttag.c:582
-msgid "Paragraph background color as a GdkColor"
-msgstr "ئابزاس رەڭگىنى GdkColor بىلەن ئىپادىلەش"
+msgid "Paragraph background color as a CdkColor"
+msgstr "ئابزاس رەڭگىنى CdkColor بىلەن ئىپادىلەش"
 
 #: ../ctk/ctktexttag.c:596
 msgid "Paragraph background RGBA"
 msgstr "ئابزاس رەڭگىنىڭ  RGBA ئى"
 
 #: ../ctk/ctktexttag.c:597
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "GdkRGBA دا ئىپادىلەنگەن پاراگراف RGBA ئى"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "CdkRGBA دا ئىپادىلەنگەن پاراگراف RGBA ئى"
 
 #: ../ctk/ctktexttag.c:615
 msgid "Margin Accumulates"
@@ -7475,8 +7475,8 @@ msgid "Events"
 msgstr "ھادىسە"
 
 #: ../ctk/ctkwidget.c:1089
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "بۇ ۋىجېتنىڭ قايسى خىل GdkEvents ھادىسە ماسكىسىنى قوبۇل قىلىشنى جەزملەشكە ئىشلىتىلىدۇ"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "بۇ ۋىجېتنىڭ قايسى خىل CdkEvents ھادىسە ماسكىسىنى قوبۇل قىلىشنى جەزملەشكە ئىشلىتىلىدۇ"
 
 #: ../ctk/ctkwidget.c:1096
 msgid "No show all"
@@ -7998,14 +7998,14 @@ msgstr "ئىشلىتىدىغان رەڭ Profile نىڭ ماۋزۇسى"
 #~ "ئەگەر بەت تەڭشەك بىرىكمىسى CtkPrintDialog غا سىڭدۈرۈلسە ئۇنداقتا TRUE "
 #~ "بولىدۇ"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
-#~ msgstr "GdkColor (تېخى تەقسىملەنمىگەن) ئۇسۇلىدا ئىپادىلەنگەن تەگلىك رەڭگى"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
+#~ msgstr "CdkColor (تېخى تەقسىملەنمىگەن) ئۇسۇلىدا ئىپادىلەنگەن تەگلىك رەڭگى"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
 #~ msgstr ""
-#~ "GdkColor (تېخى تەقسىملەنمىگەن) ئۇسۇلىدا ئىپادىلەنگەن ئالدى كۆرۈنۈش رەڭگى"
+#~ "CdkColor (تېخى تەقسىملەنمىگەن) ئۇسۇلىدا ئىپادىلەنگەن ئالدى كۆرۈنۈش رەڭگى"
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 #~ msgstr ""
-#~ "GdkColor (تەقسىملەنمىگەن بولۇشى مۇمكىن) شەكلىدە ئىپادىلەنگەن ئابزاس "
+#~ "CdkColor (تەقسىملەنمىگەن بولۇشى مۇمكىن) شەكلىدە ئىپادىلەنگەن ئابزاس "
 #~ "تەگلىك رەڭگى"

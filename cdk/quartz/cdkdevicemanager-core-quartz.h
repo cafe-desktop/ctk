@@ -27,24 +27,24 @@
 
 G_BEGIN_DECLS
 
-struct _GdkQuartzDeviceManagerCore
+struct _CdkQuartzDeviceManagerCore
 {
-  GdkDeviceManager parent_object;
-  GdkDevice *core_pointer;
-  GdkDevice *core_keyboard;
+  CdkDeviceManager parent_object;
+  CdkDevice *core_pointer;
+  CdkDevice *core_keyboard;
   GList *known_tablet_devices;
   guint num_active_devices;
 };
 
-struct _GdkQuartzDeviceManagerCoreClass
+struct _CdkQuartzDeviceManagerCoreClass
 {
-  GdkDeviceManagerClass parent_class;
+  CdkDeviceManagerClass parent_class;
 };
 
-void       _cdk_quartz_device_manager_register_device_for_ns_event (GdkDeviceManager *device_manager,
+void       _cdk_quartz_device_manager_register_device_for_ns_event (CdkDeviceManager *device_manager,
                                                                     NSEvent          *nsevent);
 
-GdkDevice *_cdk_quartz_device_manager_core_device_for_ns_event (GdkDeviceManager *device_manager,
+CdkDevice *_cdk_quartz_device_manager_core_device_for_ns_event (CdkDeviceManager *device_manager,
                                                                 NSEvent          *ns_event);
 
 G_END_DECLS

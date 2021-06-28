@@ -33,10 +33,10 @@ create_tab_label (CtkWidget *toplevel)
 
 static void
 toplevel_delete_event (CtkWidget *toplevel,
-		       GdkEvent  *event,
+		       CdkEvent  *event,
 		       gpointer   none)
 {
-  GdkWindow *cdk_win;
+  CdkWindow *cdk_win;
   CtkWidget *label = create_tab_label (toplevel);
 
   cdk_win = ctk_widget_get_window (notebook);

@@ -26,7 +26,7 @@
 static void
 fill_model (CtkTreeModel *model)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   int i;
   char *str, *str2;
   CtkTreeIter iter;
@@ -49,7 +49,7 @@ fill_model (CtkTreeModel *model)
 
   while (i < NUMBER_OF_ITEMS - 1)
     {
-      GdkPixbuf *pb;
+      CdkPixbuf *pb;
       size = g_random_int_range (20, 70);
       pb = cdk_pixbuf_scale_simple (pixbuf, size, size, GDK_INTERP_NEAREST);
 
@@ -129,7 +129,7 @@ add_n_items (CtkIconView *icon_list, gint n)
 
   CtkTreeIter iter;
   CtkListStore *store;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gchar *str, *str2;
   gint i;
 
@@ -172,7 +172,7 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
   CtkListStore *store;
   CtkTreeIter iter;
 
-  GdkPixbuf *pixbuf, *pb;
+  CdkPixbuf *pixbuf, *pb;
   gchar *str;
 
   store = CTK_LIST_STORE (ctk_icon_view_get_model (icon_list));
@@ -329,7 +329,7 @@ item_cb (CtkWidget *menuitem,
 
 static void
 do_popup_menu (CtkWidget      *icon_list, 
-	       GdkEventButton *event)
+	       CdkEventButton *event)
 {
   CtkIconView *icon_view = CTK_ICON_VIEW (icon_list); 
   CtkWidget *menu;
@@ -385,10 +385,10 @@ do_popup_menu (CtkWidget      *icon_list,
 
 static gboolean
 button_press_event_handler (CtkWidget      *widget, 
-			    GdkEventButton *event)
+			    CdkEventButton *event)
 {
   /* Ignore double-clicks and triple-clicks */
-  if (cdk_event_triggers_context_menu ((GdkEvent *) event) &&
+  if (cdk_event_triggers_context_menu ((CdkEvent *) event) &&
       event->type == GDK_BUTTON_PRESS)
     {
       do_popup_menu (widget, event);

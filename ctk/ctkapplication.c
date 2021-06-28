@@ -177,7 +177,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (CtkApplication, ctk_application, G_TYPE_APPLICATION)
 
 static gboolean
 ctk_application_focus_in_event_cb (CtkWindow      *window,
-                                   GdkEventFocus  *event,
+                                   CdkEventFocus  *event,
                                    CtkApplication *application)
 {
   CtkApplicationPrivate *priv = application->priv;
@@ -381,7 +381,7 @@ ctk_application_after_emit (GApplication *application,
   g_variant_lookup (platform_data, "desktop-startup-id", "&s", &startup_notification_id);
   if (startup_notification_id)
     {
-      GdkDisplay *display;
+      CdkDisplay *display;
 
       display = cdk_display_get_default ();
       if (display)

@@ -46,8 +46,8 @@ typedef struct _CtkGestureMultiPressPrivate CtkGestureMultiPressPrivate;
 
 struct _CtkGestureMultiPressPrivate
 {
-  GdkRectangle rect;
-  GdkDevice *current_device;
+  CdkRectangle rect;
+  CdkDevice *current_device;
   gdouble initial_press_x;
   gdouble initial_press_y;
   guint double_click_timeout_id;
@@ -192,14 +192,14 @@ _ctk_gesture_multi_press_check_within_threshold (CtkGestureMultiPress *gesture,
 
 static void
 ctk_gesture_multi_press_begin (CtkGesture       *gesture,
-                               GdkEventSequence *sequence)
+                               CdkEventSequence *sequence)
 {
   CtkGestureMultiPress *multi_press;
   CtkGestureMultiPressPrivate *priv;
   guint n_presses, button = 1;
-  GdkEventSequence *current;
-  const GdkEvent *event;
-  GdkDevice *device;
+  CdkEventSequence *current;
+  const CdkEvent *event;
+  CdkDevice *device;
   gdouble x, y;
 
   if (!ctk_gesture_handles_sequence (gesture, sequence))
@@ -252,10 +252,10 @@ ctk_gesture_multi_press_begin (CtkGesture       *gesture,
 
 static void
 ctk_gesture_multi_press_update (CtkGesture       *gesture,
-                                GdkEventSequence *sequence)
+                                CdkEventSequence *sequence)
 {
   CtkGestureMultiPress *multi_press;
-  GdkEventSequence *current;
+  CdkEventSequence *current;
   gdouble x, y;
 
   multi_press = CTK_GESTURE_MULTI_PRESS (gesture);
@@ -268,11 +268,11 @@ ctk_gesture_multi_press_update (CtkGesture       *gesture,
 
 static void
 ctk_gesture_multi_press_end (CtkGesture       *gesture,
-                             GdkEventSequence *sequence)
+                             CdkEventSequence *sequence)
 {
   CtkGestureMultiPress *multi_press;
   CtkGestureMultiPressPrivate *priv;
-  GdkEventSequence *current;
+  CdkEventSequence *current;
   gdouble x, y;
   gboolean interpreted;
   CtkEventSequenceState state;
@@ -291,7 +291,7 @@ ctk_gesture_multi_press_end (CtkGesture       *gesture,
 
 static void
 ctk_gesture_multi_press_cancel (CtkGesture       *gesture,
-                                GdkEventSequence *sequence)
+                                CdkEventSequence *sequence)
 {
   _ctk_gesture_multi_press_stop (CTK_GESTURE_MULTI_PRESS (gesture));
   CTK_GESTURE_CLASS (ctk_gesture_multi_press_parent_class)->cancel (gesture, sequence);
@@ -434,7 +434,7 @@ ctk_gesture_multi_press_new (CtkWidget *widget)
  **/
 void
 ctk_gesture_multi_press_set_area (CtkGestureMultiPress *gesture,
-                                  const GdkRectangle   *rect)
+                                  const CdkRectangle   *rect)
 {
   CtkGestureMultiPressPrivate *priv;
 
@@ -467,7 +467,7 @@ ctk_gesture_multi_press_set_area (CtkGestureMultiPress *gesture,
  **/
 gboolean
 ctk_gesture_multi_press_get_area (CtkGestureMultiPress *gesture,
-                                  GdkRectangle         *rect)
+                                  CdkRectangle         *rect)
 {
   CtkGestureMultiPressPrivate *priv;
 

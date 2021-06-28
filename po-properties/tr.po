@@ -810,8 +810,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Gösterilecek GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "Gösterilecek CdkPixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2187,16 +2187,16 @@ msgid "Cell background color"
 msgstr "Hücre arkaplanın rengi"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Bir GdkColor olarak hücre arkaplanın rengi"
+msgid "Cell background color as a CdkColor"
+msgstr "Bir CdkColor olarak hücre arkaplanın rengi"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Hücre arkaplan RGBA rengi"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Bir GdkRGBA olarak hücre arkaplan rengi"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Bir CdkRGBA olarak hücre arkaplan rengi"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2433,16 +2433,16 @@ msgid "Background color"
 msgstr "Arkaplan rengi"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
-msgstr "Bir GdkColor olarak arkaplan rengi"
+msgid "Background color as a CdkColor"
+msgstr "Bir CdkColor olarak arkaplan rengi"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Bir RGBA olarak arkaplan rengi"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
-msgstr "Bir GdkRGBA olarak arkaplan rengi"
+msgid "Background color as a CdkRGBA"
+msgstr "Bir CdkRGBA olarak arkaplan rengi"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
@@ -2453,16 +2453,16 @@ msgid "Foreground color as a string"
 msgstr "Bir dizge olarak önplan rengi"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
-msgstr "Bir GdkColor olarak önplan rengi"
+msgid "Foreground color as a CdkColor"
+msgstr "Bir CdkColor olarak önplan rengi"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "RGBA olarak önplan rengi"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
-msgstr "Bir GdkRGBA olarak önplan rengi"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Bir CdkRGBA olarak önplan rengi"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
@@ -2931,8 +2931,8 @@ msgid "Color"
 msgstr "Renk"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Bir GdkRGBA olarak şu anki renk"
+msgid "Current color, as a CdkRGBA"
+msgstr "Bir CdkRGBA olarak şu anki renk"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4169,8 +4169,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Hareketi tetiklemek için gereken nokta sayısı"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "İlgili olayları alacak GdkWindow"
+msgid "CdkWindow to receive events about"
+msgstr "İlgili olayları alacak CdkWindow"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4508,8 +4508,8 @@ msgid "Animation"
 msgstr "Canlandırma"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "Gösterilecek GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "Gösterilecek CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7745,16 +7745,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Durum çubuğu metni etrafındaki kenar biçemi"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "İlişkili GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "İlişkili CdkScreen"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "ÇerçeveSaat"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "İlişkili GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "İlişkili CdkFrameClock"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
 msgid "Text direction"
@@ -8052,16 +8052,16 @@ msgid "Paragraph background color"
 msgstr "Paragraf arkaplanı rengi"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
-msgstr "Bir GdkColor olarak paragraf arkaplan rengi"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Bir CdkColor olarak paragraf arkaplan rengi"
 
 #: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "Paragraf arkaplan RGBA"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "GdkRGBA olarak paragraf arkaplan RGBA'sı"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "CdkRGBA olarak paragraf arkaplan RGBA'sı"
 
 #: ctk/ctktexttag.c:663
 msgid "Fallback"
@@ -9048,8 +9048,8 @@ msgid "Events"
 msgstr "Eylemler"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "Bu parçanın alacağı GdkEvents çeşidini belirleyen eylem maskesi"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "Bu parçanın alacağı CdkEvents çeşidini belirleyen eylem maskesi"
 
 #: ctk/ctkwidget.c:1263
 msgid "No show all"

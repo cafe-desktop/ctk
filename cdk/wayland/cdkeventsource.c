@@ -23,20 +23,20 @@
 #include <unistd.h>
 #include <errno.h>
 
-typedef struct _GdkWaylandEventSource {
+typedef struct _CdkWaylandEventSource {
   GSource source;
   GPollFD pfd;
   uint32_t mask;
-  GdkDisplay *display;
+  CdkDisplay *display;
   gboolean reading;
-} GdkWaylandEventSource;
+} CdkWaylandEventSource;
 
 static gboolean
 cdk_event_source_prepare (GSource *base,
                           gint    *timeout)
 {
-  GdkWaylandEventSource *source = (GdkWaylandEventSource *) base;
-  GdkWaylandDisplay *display = (GdkWaylandDisplay *) source->display;
+  CdkWaylandEventSource *source = (CdkWaylandEventSource *) base;
+  CdkWaylandDisplay *display = (CdkWaylandDisplay *) source->display;
 
   *timeout = -1;
 
@@ -74,8 +74,8 @@ cdk_event_source_prepare (GSource *base,
 static gboolean
 cdk_event_source_check (GSource *base)
 {
-  GdkWaylandEventSource *source = (GdkWaylandEventSource *) base;
-  GdkWaylandDisplay *display_wayland = (GdkWaylandDisplay *) source->display;
+  CdkWaylandEventSource *source = (CdkWaylandEventSource *) base;
+  CdkWaylandDisplay *display_wayland = (CdkWaylandDisplay *) source->display;
 
   if (source->display->event_pause_count > 0)
     {
@@ -111,9 +111,9 @@ cdk_event_source_dispatch (GSource     *base,
 			   GSourceFunc  callback,
 			   gpointer     data)
 {
-  GdkWaylandEventSource *source = (GdkWaylandEventSource *) base;
-  GdkDisplay *display = source->display;
-  GdkEvent *event;
+  CdkWaylandEventSource *source = (CdkWaylandEventSource *) base;
+  CdkDisplay *display = source->display;
+  CdkEvent *event;
 
   cdk_threads_enter ();
 
@@ -134,8 +134,8 @@ cdk_event_source_dispatch (GSource     *base,
 static void
 cdk_event_source_finalize (GSource *base)
 {
-  GdkWaylandEventSource *source = (GdkWaylandEventSource *) base;
-  GdkWaylandDisplay *display = (GdkWaylandDisplay *) source->display;
+  CdkWaylandEventSource *source = (CdkWaylandEventSource *) base;
+  CdkWaylandDisplay *display = (CdkWaylandDisplay *) source->display;
 
   if (source->reading)
     wl_display_cancel_read (display->wl_display);
@@ -150,8 +150,8 @@ static GSourceFuncs wl_glib_source_funcs = {
 };
 
 void
-_cdk_wayland_display_deliver_event (GdkDisplay *display,
-                                    GdkEvent   *event)
+_cdk_wayland_display_deliver_event (CdkDisplay *display,
+                                    CdkEvent   *event)
 {
   GList *node;
 
@@ -161,20 +161,20 @@ _cdk_wayland_display_deliver_event (GdkDisplay *display,
 }
 
 GSource *
-_cdk_wayland_display_event_source_new (GdkDisplay *display)
+_cdk_wayland_display_event_source_new (CdkDisplay *display)
 {
   GSource *source;
-  GdkWaylandEventSource *wl_source;
-  GdkWaylandDisplay *display_wayland;
+  CdkWaylandEventSource *wl_source;
+  CdkWaylandDisplay *display_wayland;
   char *name;
 
   source = g_source_new (&wl_glib_source_funcs,
-			 sizeof (GdkWaylandEventSource));
+			 sizeof (CdkWaylandEventSource));
   name = g_strdup_printf ("GDK Wayland Event source (%s)",
                           cdk_display_get_name (display));
   g_source_set_name (source, name);
   g_free (name);
-  wl_source = (GdkWaylandEventSource *) source;
+  wl_source = (CdkWaylandEventSource *) source;
 
   display_wayland = GDK_WAYLAND_DISPLAY (display);
   wl_source->display = display;
@@ -190,13 +190,13 @@ _cdk_wayland_display_event_source_new (GdkDisplay *display)
 }
 
 void
-_cdk_wayland_display_queue_events (GdkDisplay *display)
+_cdk_wayland_display_queue_events (CdkDisplay *display)
 {
-  GdkWaylandDisplay *display_wayland;
-  GdkWaylandEventSource *source;
+  CdkWaylandDisplay *display_wayland;
+  CdkWaylandEventSource *source;
 
   display_wayland = GDK_WAYLAND_DISPLAY (display);
-  source = (GdkWaylandEventSource *) display_wayland->event_source;
+  source = (CdkWaylandEventSource *) display_wayland->event_source;
 
   if (wl_display_dispatch_pending (display_wayland->wl_display) < 0)
     {

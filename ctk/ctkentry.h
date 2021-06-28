@@ -186,7 +186,7 @@ void       ctk_entry_set_buffer                 (CtkEntry       *entry,
 
 GDK_AVAILABLE_IN_ALL
 void       ctk_entry_get_text_area              (CtkEntry       *entry,
-                                                 GdkRectangle   *text_area);
+                                                 CdkRectangle   *text_area);
 
 GDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_visibility 		(CtkEntry      *entry,
@@ -315,7 +315,7 @@ void           ctk_entry_set_placeholder_text    (CtkEntry             *entry,
 GDK_AVAILABLE_IN_ALL
 void           ctk_entry_set_icon_from_pixbuf            (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
-							  GdkPixbuf            *pixbuf);
+							  CdkPixbuf            *pixbuf);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_entry_set_icon_from_icon_name)
 void           ctk_entry_set_icon_from_stock             (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
@@ -332,7 +332,7 @@ GDK_AVAILABLE_IN_ALL
 CtkImageType ctk_entry_get_icon_storage_type             (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf*   ctk_entry_get_icon_pixbuf                   (CtkEntry             *entry,
+CdkPixbuf*   ctk_entry_get_icon_pixbuf                   (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_entry_get_icon_name)
 const gchar* ctk_entry_get_icon_stock                    (CtkEntry             *entry,
@@ -379,17 +379,17 @@ GDK_AVAILABLE_IN_ALL
 void         ctk_entry_set_icon_drag_source              (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
 							  CtkTargetList        *target_list,
-							  GdkDragAction         actions);
+							  CdkDragAction         actions);
 GDK_AVAILABLE_IN_ALL
 gint         ctk_entry_get_current_icon_drag_source      (CtkEntry             *entry);
 GDK_AVAILABLE_IN_ALL
 void         ctk_entry_get_icon_area                     (CtkEntry             *entry,
                                                           CtkEntryIconPosition  icon_pos,
-                                                          GdkRectangle         *icon_area);
+                                                          CdkRectangle         *icon_area);
 
 GDK_AVAILABLE_IN_ALL
 gboolean    ctk_entry_im_context_filter_keypress         (CtkEntry             *entry,
-                                                          GdkEventKey          *event);
+                                                          CdkEventKey          *event);
 GDK_AVAILABLE_IN_ALL
 void        ctk_entry_reset_im_context                   (CtkEntry             *entry);
 

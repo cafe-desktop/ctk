@@ -27,16 +27,16 @@
 #include "cdkdevice-win32.h"
 #include "cdkwin32.h"
 
-G_DEFINE_TYPE (GdkDeviceVirtual, cdk_device_virtual, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkDeviceVirtual, cdk_device_virtual, GDK_TYPE_DEVICE)
 
 void
-_cdk_device_virtual_set_active (GdkDevice *device,
-				GdkDevice *new_active)
+_cdk_device_virtual_set_active (CdkDevice *device,
+				CdkDevice *new_active)
 {
-  GdkDeviceVirtual *virtual = GDK_DEVICE_VIRTUAL (device);
+  CdkDeviceVirtual *virtual = GDK_DEVICE_VIRTUAL (device);
   int n_axes, i;
-  GdkAtom label_atom;
-  GdkAxisUse use;
+  CdkAtom label_atom;
+  CdkAxisUse use;
   gdouble min_value, max_value, resolution;
 
   if (virtual->active_device == new_active)
@@ -63,11 +63,11 @@ _cdk_device_virtual_set_active (GdkDevice *device,
 }
 
 static gboolean
-cdk_device_virtual_get_history (GdkDevice      *device,
-				GdkWindow      *window,
+cdk_device_virtual_get_history (CdkDevice      *device,
+				CdkWindow      *window,
 				guint32         start,
 				guint32         stop,
-				GdkTimeCoord ***events,
+				CdkTimeCoord ***events,
 				gint           *n_events)
 {
   /* History is only per slave device */
@@ -75,25 +75,25 @@ cdk_device_virtual_get_history (GdkDevice      *device,
 }
 
 static void
-cdk_device_virtual_get_state (GdkDevice       *device,
-			      GdkWindow       *window,
+cdk_device_virtual_get_state (CdkDevice       *device,
+			      CdkWindow       *window,
 			      gdouble         *axes,
-			      GdkModifierType *mask)
+			      CdkModifierType *mask)
 {
-  GdkDeviceVirtual *virtual = GDK_DEVICE_VIRTUAL (device);
-  GdkDevice *active = virtual->active_device;
+  CdkDeviceVirtual *virtual = GDK_DEVICE_VIRTUAL (device);
+  CdkDevice *active = virtual->active_device;
 
   GDK_DEVICE_GET_CLASS (active)->get_state (active,
 					    window, axes, mask);
 }
 
 static void
-cdk_device_virtual_set_window_cursor (GdkDevice *device,
-				      GdkWindow *window,
-				      GdkCursor *cursor)
+cdk_device_virtual_set_window_cursor (CdkDevice *device,
+				      CdkWindow *window,
+				      CdkCursor *cursor)
 {
-  GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
-  GdkCursor *previous_cursor = impl->cursor;
+  CdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  CdkCursor *previous_cursor = impl->cursor;
 
   if (cursor != NULL && GDK_WIN32_CURSOR (cursor)->hcursor != NULL)
     {
@@ -122,8 +122,8 @@ cdk_device_virtual_set_window_cursor (GdkDevice *device,
 }
 
 static void
-cdk_device_virtual_warp (GdkDevice *device,
-			 GdkScreen *screen,
+cdk_device_virtual_warp (CdkDevice *device,
+			 CdkScreen *screen,
 			 gdouble   x,
 			 gdouble   y)
 {
@@ -131,17 +131,17 @@ cdk_device_virtual_warp (GdkDevice *device,
 }
 
 static void
-cdk_device_virtual_query_state (GdkDevice        *device,
-				GdkWindow        *window,
-				GdkWindow       **root_window,
-				GdkWindow       **child_window,
+cdk_device_virtual_query_state (CdkDevice        *device,
+				CdkWindow        *window,
+				CdkWindow       **root_window,
+				CdkWindow       **child_window,
 				gdouble          *root_x,
 				gdouble          *root_y,
 				gdouble          *win_x,
 				gdouble          *win_y,
-				GdkModifierType  *mask)
+				CdkModifierType  *mask)
 {
-  GdkDeviceVirtual *virtual = GDK_DEVICE_VIRTUAL (device);
+  CdkDeviceVirtual *virtual = GDK_DEVICE_VIRTUAL (device);
 
   _cdk_device_query_state (virtual->active_device,
 			   window, root_window, child_window,
@@ -150,16 +150,16 @@ cdk_device_virtual_query_state (GdkDevice        *device,
 			   mask);
 }
 
-static GdkGrabStatus
-cdk_device_virtual_grab (GdkDevice    *device,
-			 GdkWindow    *window,
+static CdkGrabStatus
+cdk_device_virtual_grab (CdkDevice    *device,
+			 CdkWindow    *window,
 			 gboolean      owner_events,
-			 GdkEventMask  event_mask,
-			 GdkWindow    *confine_to,
-			 GdkCursor    *cursor,
+			 CdkEventMask  event_mask,
+			 CdkWindow    *confine_to,
+			 CdkCursor    *cursor,
 			 guint32       time_)
 {
-  GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  CdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
   if (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
     {
@@ -185,11 +185,11 @@ cdk_device_virtual_grab (GdkDevice    *device,
 }
 
 static void
-cdk_device_virtual_ungrab (GdkDevice *device,
+cdk_device_virtual_ungrab (CdkDevice *device,
                          guint32    time_)
 {
-  GdkDeviceGrabInfo *info;
-  GdkDisplay *display;
+  CdkDeviceGrabInfo *info;
+  CdkDisplay *display;
 
   display = cdk_device_get_display (device);
   info = _cdk_display_get_last_device_grab (display, device);
@@ -213,16 +213,16 @@ cdk_device_virtual_ungrab (GdkDevice *device,
 }
 
 static void
-cdk_device_virtual_select_window_events (GdkDevice    *device,
-					 GdkWindow    *window,
-					 GdkEventMask  event_mask)
+cdk_device_virtual_select_window_events (CdkDevice    *device,
+					 CdkWindow    *window,
+					 CdkEventMask  event_mask)
 {
 }
 
 static void
-cdk_device_virtual_class_init (GdkDeviceVirtualClass *klass)
+cdk_device_virtual_class_init (CdkDeviceVirtualClass *klass)
 {
-  GdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_device_virtual_get_history;
   device_class->get_state = cdk_device_virtual_get_state;
@@ -236,6 +236,6 @@ cdk_device_virtual_class_init (GdkDeviceVirtualClass *klass)
 }
 
 static void
-cdk_device_virtual_init (GdkDeviceVirtual *device_virtual)
+cdk_device_virtual_init (CdkDeviceVirtual *device_virtual)
 {
 }

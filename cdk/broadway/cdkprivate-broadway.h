@@ -41,168 +41,168 @@
 
 void _cdk_broadway_resync_windows (void);
 
-void     _cdk_broadway_window_register_dnd (GdkWindow      *window);
-GdkDragContext * _cdk_broadway_window_drag_begin (GdkWindow *window,
-						  GdkDevice *device,
+void     _cdk_broadway_window_register_dnd (CdkWindow      *window);
+CdkDragContext * _cdk_broadway_window_drag_begin (CdkWindow *window,
+						  CdkDevice *device,
 						  GList     *targets,
                                                   gint       x_root,
                                                   gint       y_root);
-void     _cdk_broadway_window_translate         (GdkWindow *window,
+void     _cdk_broadway_window_translate         (CdkWindow *window,
 						 cairo_region_t *area,
 						 gint       dx,
 						 gint       dy);
-gboolean _cdk_broadway_window_get_property (GdkWindow   *window,
-					    GdkAtom      property,
-					    GdkAtom      type,
+gboolean _cdk_broadway_window_get_property (CdkWindow   *window,
+					    CdkAtom      property,
+					    CdkAtom      type,
 					    gulong       offset,
 					    gulong       length,
 					    gint         pdelete,
-					    GdkAtom     *actual_property_type,
+					    CdkAtom     *actual_property_type,
 					    gint        *actual_format_type,
 					    gint        *actual_length,
 					    guchar     **data);
-void _cdk_broadway_window_change_property (GdkWindow    *window,
-					   GdkAtom       property,
-					   GdkAtom       type,
+void _cdk_broadway_window_change_property (CdkWindow    *window,
+					   CdkAtom       property,
+					   CdkAtom       type,
 					   gint          format,
-					   GdkPropMode   mode,
+					   CdkPropMode   mode,
 					   const guchar *data,
 					   gint          nelements);
-void _cdk_broadway_window_delete_property (GdkWindow *window,
-					   GdkAtom    property);
-gboolean _cdk_broadway_moveresize_handle_event   (GdkDisplay *display,
+void _cdk_broadway_window_delete_property (CdkWindow *window,
+					   CdkAtom    property);
+gboolean _cdk_broadway_moveresize_handle_event   (CdkDisplay *display,
 						  BroadwayInputMsg *msg);
-gboolean _cdk_broadway_moveresize_configure_done (GdkDisplay *display,
-						  GdkWindow  *window);
+gboolean _cdk_broadway_moveresize_configure_done (CdkDisplay *display,
+						  CdkWindow  *window);
 
 
-void     _cdk_broadway_selection_window_destroyed (GdkWindow *window);
-void     _cdk_broadway_window_grab_check_destroy (GdkWindow *window);
-void     _cdk_broadway_window_grab_check_unmap (GdkWindow *window,
+void     _cdk_broadway_selection_window_destroyed (CdkWindow *window);
+void     _cdk_broadway_window_grab_check_destroy (CdkWindow *window);
+void     _cdk_broadway_window_grab_check_unmap (CdkWindow *window,
 						gulong     serial);
 
-void _cdk_keymap_keys_changed     (GdkDisplay      *display);
-gint _cdk_broadway_get_group_for_state (GdkDisplay      *display,
-					GdkModifierType  state);
-void _cdk_keymap_add_virtual_modifiers_compat (GdkKeymap       *keymap,
-                                               GdkModifierType *modifiers);
-gboolean _cdk_keymap_key_is_modifier   (GdkKeymap       *keymap,
+void _cdk_keymap_keys_changed     (CdkDisplay      *display);
+gint _cdk_broadway_get_group_for_state (CdkDisplay      *display,
+					CdkModifierType  state);
+void _cdk_keymap_add_virtual_modifiers_compat (CdkKeymap       *keymap,
+                                               CdkModifierType *modifiers);
+gboolean _cdk_keymap_key_is_modifier   (CdkKeymap       *keymap,
 					guint            keycode);
 
-void _cdk_broadway_screen_events_init   (GdkScreen *screen);
-GdkVisual *_cdk_broadway_screen_get_system_visual (GdkScreen * screen);
-gint _cdk_broadway_screen_visual_get_best_depth (GdkScreen * screen);
-GdkVisualType _cdk_broadway_screen_visual_get_best_type (GdkScreen * screen);
-GdkVisual *_cdk_broadway_screen_get_system_visual (GdkScreen * screen);
-GdkVisual*_cdk_broadway_screen_visual_get_best (GdkScreen * screen);
-GdkVisual*_cdk_broadway_screen_visual_get_best_with_depth (GdkScreen * screen,
+void _cdk_broadway_screen_events_init   (CdkScreen *screen);
+CdkVisual *_cdk_broadway_screen_get_system_visual (CdkScreen * screen);
+gint _cdk_broadway_screen_visual_get_best_depth (CdkScreen * screen);
+CdkVisualType _cdk_broadway_screen_visual_get_best_type (CdkScreen * screen);
+CdkVisual *_cdk_broadway_screen_get_system_visual (CdkScreen * screen);
+CdkVisual*_cdk_broadway_screen_visual_get_best (CdkScreen * screen);
+CdkVisual*_cdk_broadway_screen_visual_get_best_with_depth (CdkScreen * screen,
 							   gint depth);
-GdkVisual*_cdk_broadway_screen_visual_get_best_with_type (GdkScreen * screen,
-							  GdkVisualType visual_type);
-GdkVisual*_cdk_broadway_screen_visual_get_best_with_both (GdkScreen * screen,
+CdkVisual*_cdk_broadway_screen_visual_get_best_with_type (CdkScreen * screen,
+							  CdkVisualType visual_type);
+CdkVisual*_cdk_broadway_screen_visual_get_best_with_both (CdkScreen * screen,
 							  gint          depth,
-							  GdkVisualType visual_type);
-void _cdk_broadway_screen_query_depths  (GdkScreen * screen,
+							  CdkVisualType visual_type);
+void _cdk_broadway_screen_query_depths  (CdkScreen * screen,
 					 gint **depths,
 					 gint  *count);
-void _cdk_broadway_screen_query_visual_types (GdkScreen * screen,
-					      GdkVisualType **visual_types,
+void _cdk_broadway_screen_query_visual_types (CdkScreen * screen,
+					      CdkVisualType **visual_types,
 					      gint           *count);
-GList *_cdk_broadway_screen_list_visuals (GdkScreen *screen);
-void _cdk_broadway_screen_size_changed (GdkScreen *screen, 
+GList *_cdk_broadway_screen_list_visuals (CdkScreen *screen);
+void _cdk_broadway_screen_size_changed (CdkScreen *screen, 
 					BroadwayInputScreenResizeNotify *msg);
 
 void _cdk_broadway_events_got_input      (BroadwayInputMsg *message);
 
-void _cdk_broadway_screen_init_root_window (GdkScreen *screen);
-void _cdk_broadway_screen_init_visuals (GdkScreen *screen);
-void _cdk_broadway_display_init_dnd (GdkDisplay *display);
-GdkDisplay * _cdk_broadway_display_open (const gchar *display_name);
-void _cdk_broadway_display_queue_events (GdkDisplay *display);
-GdkDragProtocol _cdk_broadway_window_get_drag_protocol (GdkWindow *window,
-							GdkWindow **target);
-GdkCursor*_cdk_broadway_display_get_cursor_for_type (GdkDisplay    *display,
-						     GdkCursorType  cursor_type);
-GdkCursor*_cdk_broadway_display_get_cursor_for_name (GdkDisplay  *display,
+void _cdk_broadway_screen_init_root_window (CdkScreen *screen);
+void _cdk_broadway_screen_init_visuals (CdkScreen *screen);
+void _cdk_broadway_display_init_dnd (CdkDisplay *display);
+CdkDisplay * _cdk_broadway_display_open (const gchar *display_name);
+void _cdk_broadway_display_queue_events (CdkDisplay *display);
+CdkDragProtocol _cdk_broadway_window_get_drag_protocol (CdkWindow *window,
+							CdkWindow **target);
+CdkCursor*_cdk_broadway_display_get_cursor_for_type (CdkDisplay    *display,
+						     CdkCursorType  cursor_type);
+CdkCursor*_cdk_broadway_display_get_cursor_for_name (CdkDisplay  *display,
 						     const gchar *name);
-GdkCursor *_cdk_broadway_display_get_cursor_for_surface (GdkDisplay *display,
+CdkCursor *_cdk_broadway_display_get_cursor_for_surface (CdkDisplay *display,
 							 cairo_surface_t *surface,
 							 gdouble     x,
 							 gdouble     y);
-gboolean _cdk_broadway_display_supports_cursor_alpha (GdkDisplay *display);
-gboolean _cdk_broadway_display_supports_cursor_color (GdkDisplay *display);
-void _cdk_broadway_display_get_default_cursor_size (GdkDisplay *display,
+gboolean _cdk_broadway_display_supports_cursor_alpha (CdkDisplay *display);
+gboolean _cdk_broadway_display_supports_cursor_color (CdkDisplay *display);
+void _cdk_broadway_display_get_default_cursor_size (CdkDisplay *display,
 						    guint       *width,
 						    guint       *height);
-void _cdk_broadway_display_get_maximal_cursor_size (GdkDisplay *display,
+void _cdk_broadway_display_get_maximal_cursor_size (CdkDisplay *display,
 						    guint       *width,
 						    guint       *height);
-void       _cdk_broadway_display_before_process_all_updates (GdkDisplay *display);
-void       _cdk_broadway_display_after_process_all_updates  (GdkDisplay *display);
-void       _cdk_broadway_display_create_window_impl     (GdkDisplay    *display,
-							 GdkWindow     *window,
-							 GdkWindow     *real_parent,
-							 GdkScreen     *screen,
-							 GdkEventMask   event_mask,
-							 GdkWindowAttr *attributes,
+void       _cdk_broadway_display_before_process_all_updates (CdkDisplay *display);
+void       _cdk_broadway_display_after_process_all_updates  (CdkDisplay *display);
+void       _cdk_broadway_display_create_window_impl     (CdkDisplay    *display,
+							 CdkWindow     *window,
+							 CdkWindow     *real_parent,
+							 CdkScreen     *screen,
+							 CdkEventMask   event_mask,
+							 CdkWindowAttr *attributes,
 							 gint           attributes_mask);
-gboolean _cdk_broadway_display_set_selection_owner (GdkDisplay *display,
-						    GdkWindow  *owner,
-						    GdkAtom     selection,
+gboolean _cdk_broadway_display_set_selection_owner (CdkDisplay *display,
+						    CdkWindow  *owner,
+						    CdkAtom     selection,
 						    guint32     time,
 						    gboolean    send_event);
-GdkWindow * _cdk_broadway_display_get_selection_owner (GdkDisplay *display,
-						       GdkAtom     selection);
-gint _cdk_broadway_display_get_selection_property (GdkDisplay *display,
-						   GdkWindow  *requestor,
+CdkWindow * _cdk_broadway_display_get_selection_owner (CdkDisplay *display,
+						       CdkAtom     selection);
+gint _cdk_broadway_display_get_selection_property (CdkDisplay *display,
+						   CdkWindow  *requestor,
 						   guchar    **data,
-						   GdkAtom    *ret_type,
+						   CdkAtom    *ret_type,
 						   gint       *ret_format);
-void _cdk_broadway_display_send_selection_notify (GdkDisplay       *display,
-						  GdkWindow       *requestor,
-						  GdkAtom          selection,
-						  GdkAtom          target,
-						  GdkAtom          property, 
+void _cdk_broadway_display_send_selection_notify (CdkDisplay       *display,
+						  CdkWindow       *requestor,
+						  CdkAtom          selection,
+						  CdkAtom          target,
+						  CdkAtom          property, 
 						  guint32          time);
-void _cdk_broadway_display_convert_selection (GdkDisplay *display,
-					      GdkWindow *requestor,
-					      GdkAtom    selection,
-					      GdkAtom    target,
+void _cdk_broadway_display_convert_selection (CdkDisplay *display,
+					      CdkWindow *requestor,
+					      CdkAtom    selection,
+					      CdkAtom    target,
 					      guint32    time);
-gint _cdk_broadway_display_text_property_to_utf8_list (GdkDisplay    *display,
-						       GdkAtom        encoding,
+gint _cdk_broadway_display_text_property_to_utf8_list (CdkDisplay    *display,
+						       CdkAtom        encoding,
 						       gint           format,
 						       const guchar  *text,
 						       gint           length,
 						       gchar       ***list);
-gchar *_cdk_broadway_display_utf8_to_string_target (GdkDisplay  *display,
+gchar *_cdk_broadway_display_utf8_to_string_target (CdkDisplay  *display,
 						    const gchar *str);
-GdkKeymap* _cdk_broadway_display_get_keymap (GdkDisplay *display);
-void _cdk_broadway_display_consume_all_input (GdkDisplay *display);
-BroadwayInputMsg * _cdk_broadway_display_block_for_input (GdkDisplay *display,
+CdkKeymap* _cdk_broadway_display_get_keymap (CdkDisplay *display);
+void _cdk_broadway_display_consume_all_input (CdkDisplay *display);
+BroadwayInputMsg * _cdk_broadway_display_block_for_input (CdkDisplay *display,
 							  char op,
 							  guint32 serial,
 							  gboolean remove);
 
 /* Window methods - testing */
-void     _cdk_broadway_window_sync_rendering    (GdkWindow       *window);
-gboolean _cdk_broadway_window_simulate_key      (GdkWindow       *window,
+void     _cdk_broadway_window_sync_rendering    (CdkWindow       *window);
+gboolean _cdk_broadway_window_simulate_key      (CdkWindow       *window,
 						 gint             x,
 						 gint             y,
 						 guint            keyval,
-						 GdkModifierType  modifiers,
-						 GdkEventType     key_pressrelease);
-gboolean _cdk_broadway_window_simulate_button   (GdkWindow       *window,
+						 CdkModifierType  modifiers,
+						 CdkEventType     key_pressrelease);
+gboolean _cdk_broadway_window_simulate_button   (CdkWindow       *window,
 						 gint             x,
 						 gint             y,
 						 guint            button,
-						 GdkModifierType  modifiers,
-						 GdkEventType     button_pressrelease);
-void _cdk_broadway_window_resize_surface        (GdkWindow *window);
+						 CdkModifierType  modifiers,
+						 CdkEventType     button_pressrelease);
+void _cdk_broadway_window_resize_surface        (CdkWindow *window);
 
-void _cdk_broadway_cursor_update_theme (GdkCursor *cursor);
-void _cdk_broadway_cursor_display_finalize (GdkDisplay *display);
+void _cdk_broadway_cursor_update_theme (CdkCursor *cursor);
+void _cdk_broadway_cursor_display_finalize (CdkDisplay *display);
 
-#define GDK_WINDOW_IS_BROADWAY(win)   (GDK_IS_WINDOW_IMPL_BROADWAY (((GdkWindow *)win)->impl))
+#define GDK_WINDOW_IS_BROADWAY(win)   (GDK_IS_WINDOW_IMPL_BROADWAY (((CdkWindow *)win)->impl))
 
 #endif /* __GDK_PRIVATE_BROADWAY_H__ */

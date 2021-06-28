@@ -37,61 +37,61 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_X11_WINDOW              (cdk_x11_window_get_type ())
-#define GDK_X11_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_WINDOW, GdkX11Window))
-#define GDK_X11_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_WINDOW, GdkX11WindowClass))
+#define GDK_X11_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_WINDOW, CdkX11Window))
+#define GDK_X11_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_WINDOW, CdkX11WindowClass))
 #define GDK_IS_X11_WINDOW(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_WINDOW))
 #define GDK_IS_X11_WINDOW_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_WINDOW))
-#define GDK_X11_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_WINDOW, GdkX11WindowClass))
+#define GDK_X11_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_WINDOW, CdkX11WindowClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkX11Window GdkX11Window;
+typedef struct _CdkX11Window CdkX11Window;
 #else
-typedef GdkWindow GdkX11Window;
+typedef CdkWindow CdkX11Window;
 #endif
-typedef struct _GdkX11WindowClass GdkX11WindowClass;
+typedef struct _CdkX11WindowClass CdkX11WindowClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_x11_window_get_type          (void);
 
 GDK_AVAILABLE_IN_ALL
-Window   cdk_x11_window_get_xid           (GdkWindow   *window);
+Window   cdk_x11_window_get_xid           (CdkWindow   *window);
 GDK_AVAILABLE_IN_ALL
-void     cdk_x11_window_set_user_time     (GdkWindow   *window,
+void     cdk_x11_window_set_user_time     (CdkWindow   *window,
                                            guint32      timestamp);
 GDK_AVAILABLE_IN_3_4
-void     cdk_x11_window_set_utf8_property    (GdkWindow *window,
+void     cdk_x11_window_set_utf8_property    (CdkWindow *window,
 					      const gchar *name,
 					      const gchar *value);
 GDK_AVAILABLE_IN_3_2
-void     cdk_x11_window_set_theme_variant (GdkWindow   *window,
+void     cdk_x11_window_set_theme_variant (CdkWindow   *window,
                                            char        *variant);
 GDK_DEPRECATED_IN_3_12_FOR(cdk_window_set_shadow_width)
-void     cdk_x11_window_set_frame_extents (GdkWindow *window,
+void     cdk_x11_window_set_frame_extents (CdkWindow *window,
                                            int        left,
                                            int        right,
                                            int        top,
                                            int        bottom);
 GDK_AVAILABLE_IN_3_4
-void     cdk_x11_window_set_hide_titlebar_when_maximized (GdkWindow *window,
+void     cdk_x11_window_set_hide_titlebar_when_maximized (CdkWindow *window,
                                                           gboolean   hide_titlebar_when_maximized);
 GDK_AVAILABLE_IN_ALL
-void     cdk_x11_window_move_to_current_desktop (GdkWindow   *window);
+void     cdk_x11_window_move_to_current_desktop (CdkWindow   *window);
 
 GDK_AVAILABLE_IN_3_10
-guint32  cdk_x11_window_get_desktop             (GdkWindow   *window);
+guint32  cdk_x11_window_get_desktop             (CdkWindow   *window);
 GDK_AVAILABLE_IN_3_10
-void     cdk_x11_window_move_to_desktop         (GdkWindow   *window,
+void     cdk_x11_window_move_to_desktop         (CdkWindow   *window,
                                                  guint32      desktop);
 
 GDK_AVAILABLE_IN_3_8
-void     cdk_x11_window_set_frame_sync_enabled (GdkWindow *window,
+void     cdk_x11_window_set_frame_sync_enabled (CdkWindow *window,
                                                 gboolean   frame_sync_enabled);
 
 /**
  * GDK_WINDOW_XDISPLAY:
- * @win: a #GdkWindow.
+ * @win: a #CdkWindow.
  *
- * Returns the display of a #GdkWindow.
+ * Returns the display of a #CdkWindow.
  *
  * Returns: an Xlib Display*.
  */
@@ -99,22 +99,22 @@ void     cdk_x11_window_set_frame_sync_enabled (GdkWindow *window,
 
 /**
  * GDK_WINDOW_XID:
- * @win: a #GdkWindow.
+ * @win: a #CdkWindow.
  *
- * Returns the X window belonging to a #GdkWindow.
+ * Returns the X window belonging to a #CdkWindow.
  *
  * Returns: the Xlib Window of @win.
  */
 #define GDK_WINDOW_XID(win)           (cdk_x11_window_get_xid (win))
 
 GDK_AVAILABLE_IN_ALL
-guint32       cdk_x11_get_server_time  (GdkWindow       *window);
+guint32       cdk_x11_get_server_time  (CdkWindow       *window);
 
 GDK_AVAILABLE_IN_ALL
-GdkWindow  *cdk_x11_window_foreign_new_for_display (GdkDisplay *display,
+CdkWindow  *cdk_x11_window_foreign_new_for_display (CdkDisplay *display,
                                                     Window      window);
 GDK_AVAILABLE_IN_ALL
-GdkWindow  *cdk_x11_window_lookup_for_display      (GdkDisplay *display,
+CdkWindow  *cdk_x11_window_lookup_for_display      (CdkDisplay *display,
                                                     Window      window);
 
 G_END_DECLS

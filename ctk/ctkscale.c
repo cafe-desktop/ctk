@@ -207,7 +207,7 @@ static void     ctk_scale_value_style_changed     (CtkCssNode        *node,
                                                    CtkCssStyleChange *change,
                                                    CtkScale          *scale);
 static void     ctk_scale_screen_changed          (CtkWidget      *widget,
-                                                   GdkScreen      *old_screen);
+                                                   CdkScreen      *old_screen);
 static gboolean ctk_scale_draw                    (CtkWidget      *widget,
                                                    cairo_t        *cr);
 static void     ctk_scale_real_get_layout_offsets (CtkScale       *scale,
@@ -1623,7 +1623,7 @@ ctk_scale_mark_style_changed (CtkCssNode        *node,
 
 static void
 ctk_scale_screen_changed (CtkWidget *widget,
-                          GdkScreen *old_screen)
+                          CdkScreen *old_screen)
 {
   ctk_scale_clear_value_layout (CTK_SCALE (widget));
   ctk_scale_clear_mark_layouts (CTK_SCALE (widget));

@@ -28,50 +28,50 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GdkBroadwayScreen GdkBroadwayScreen;
-typedef struct _GdkBroadwayScreenClass GdkBroadwayScreenClass;
+typedef struct _CdkBroadwayScreen CdkBroadwayScreen;
+typedef struct _CdkBroadwayScreenClass CdkBroadwayScreenClass;
 
 #define GDK_TYPE_BROADWAY_SCREEN              (cdk_broadway_screen_get_type ())
-#define GDK_BROADWAY_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_SCREEN, GdkBroadwayScreen))
-#define GDK_BROADWAY_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_SCREEN, GdkBroadwayScreenClass))
+#define GDK_BROADWAY_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_SCREEN, CdkBroadwayScreen))
+#define GDK_BROADWAY_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_SCREEN, CdkBroadwayScreenClass))
 #define GDK_IS_BROADWAY_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_SCREEN))
 #define GDK_IS_BROADWAY_SCREEN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_BROADWAY_SCREEN))
-#define GDK_BROADWAY_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_SCREEN, GdkBroadwayScreenClass))
+#define GDK_BROADWAY_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_SCREEN, CdkBroadwayScreenClass))
 
-typedef struct _GdkBroadwayMonitor GdkBroadwayMonitor;
+typedef struct _CdkBroadwayMonitor CdkBroadwayMonitor;
 
-struct _GdkBroadwayScreen
+struct _CdkBroadwayScreen
 {
-  GdkScreen parent_instance;
+  CdkScreen parent_instance;
 
-  GdkDisplay *display;
-  GdkWindow *root_window;
+  CdkDisplay *display;
+  CdkWindow *root_window;
 
   int width;
   int height;
 
   /* Visual Part */
-  GdkVisual **visuals;
+  CdkVisual **visuals;
   gint nvisuals;
-  GdkVisual *system_visual;
-  GdkVisual *rgba_visual;
+  CdkVisual *system_visual;
+  CdkVisual *rgba_visual;
   gint available_depths[7];
   gint navailable_depths;
-  GdkVisualType available_types[6];
+  CdkVisualType available_types[6];
   gint navailable_types;
 };
 
-struct _GdkBroadwayScreenClass
+struct _CdkBroadwayScreenClass
 {
-  GdkScreenClass parent_class;
+  CdkScreenClass parent_class;
 
-  void (* window_manager_changed) (GdkBroadwayScreen *screen);
+  void (* window_manager_changed) (CdkBroadwayScreen *screen);
 };
 
 GType       cdk_broadway_screen_get_type (void);
-GdkScreen * _cdk_broadway_screen_new      (GdkDisplay *display,
+CdkScreen * _cdk_broadway_screen_new      (CdkDisplay *display,
 					   gint	  screen_number);
-void _cdk_broadway_screen_setup           (GdkScreen *screen);
+void _cdk_broadway_screen_setup           (CdkScreen *screen);
 
 G_END_DECLS
 

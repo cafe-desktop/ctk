@@ -26,22 +26,22 @@ G_BEGIN_DECLS
 
 typedef struct _CtkKeyHash CtkKeyHash;
 
-CtkKeyHash *_ctk_key_hash_new           (GdkKeymap       *keymap,
+CtkKeyHash *_ctk_key_hash_new           (CdkKeymap       *keymap,
 					 GDestroyNotify   item_destroy_notify);
 void        _ctk_key_hash_add_entry     (CtkKeyHash      *key_hash,
 					 guint            keyval,
-					 GdkModifierType  modifiers,
+					 CdkModifierType  modifiers,
 					 gpointer         value);
 void        _ctk_key_hash_remove_entry  (CtkKeyHash      *key_hash,
 					 gpointer         value);
 GSList *    _ctk_key_hash_lookup        (CtkKeyHash      *key_hash,
 					 guint16          hardware_keycode,
-					 GdkModifierType  state,
-					 GdkModifierType  mask,
+					 CdkModifierType  state,
+					 CdkModifierType  mask,
 					 gint             group);
 GSList *    _ctk_key_hash_lookup_keyval (CtkKeyHash      *key_hash,
 					 guint            keyval,
-					 GdkModifierType  modifiers);
+					 CdkModifierType  modifiers);
 void        _ctk_key_hash_free          (CtkKeyHash      *key_hash);
 
 G_END_DECLS

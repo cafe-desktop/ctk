@@ -390,9 +390,9 @@ ctk_search_entry_new (void)
 }
 
 gboolean
-ctk_search_entry_is_keynav_event (GdkEvent *event)
+ctk_search_entry_is_keynav_event (CdkEvent *event)
 {
-  GdkModifierType state = 0;
+  CdkModifierType state = 0;
   guint keyval;
 
   if (!cdk_event_get_keyval (event, &keyval))
@@ -443,7 +443,7 @@ ctk_search_entry_is_keynav_event (GdkEvent *event)
  */
 gboolean
 ctk_search_entry_handle_event (CtkSearchEntry *entry,
-                               GdkEvent       *event)
+                               CdkEvent       *event)
 {
   CtkSearchEntryPrivate *priv = GET_PRIV (entry);
   gboolean handled;

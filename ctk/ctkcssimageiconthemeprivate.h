@@ -40,10 +40,10 @@ struct _CtkCssImageIconTheme
   CtkCssImage parent;
 
   CtkIconTheme *icon_theme;
-  GdkRGBA color;
-  GdkRGBA success;
-  GdkRGBA warning;
-  GdkRGBA error;
+  CdkRGBA color;
+  CdkRGBA success;
+  CdkRGBA warning;
+  CdkRGBA error;
   gint scale;
   char *name;
 };

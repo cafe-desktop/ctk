@@ -29,14 +29,14 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_QUARTZ_DISPLAY_MANAGER    (cdk_quartz_display_manager_get_type ())
-#define GDK_QUARTZ_DISPLAY_MANAGER(object) (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_DISPLAY_MANAGER, GdkQuartzDisplayManager))
+#define GDK_QUARTZ_DISPLAY_MANAGER(object) (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_DISPLAY_MANAGER, CdkQuartzDisplayManager))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkQuartzDisplayManager GdkQuartzDisplayManager;
+typedef struct _CdkQuartzDisplayManager CdkQuartzDisplayManager;
 #else
-typedef GdkDisplayManager _GdkQuartzDisplayManager;
+typedef CdkDisplayManager _CdkQuartzDisplayManager;
 #endif
-typedef struct _GdkDisplayManagerClass GdkQuartzDisplayManagerClass;
+typedef struct _CdkDisplayManagerClass CdkQuartzDisplayManagerClass;
 
 
 GDK_AVAILABLE_IN_ALL

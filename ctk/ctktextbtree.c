@@ -1305,7 +1305,7 @@ insert_pixbuf_or_widget_segment (CtkTextIter        *iter,
      
 void
 _ctk_text_btree_insert_pixbuf (CtkTextIter *iter,
-                              GdkPixbuf   *pixbuf)
+                              CdkPixbuf   *pixbuf)
 {
   CtkTextLineSegment *seg;
   

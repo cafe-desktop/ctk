@@ -22,34 +22,34 @@
 
 G_BEGIN_DECLS
 
-#define GDK_DISPLAY_MANAGER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_DISPLAY_MANAGER, GdkDisplayManagerClass))
+#define GDK_DISPLAY_MANAGER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_DISPLAY_MANAGER, CdkDisplayManagerClass))
 #define GDK_IS_DISPLAY_MANAGER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_DISPLAY_MANAGER))
-#define GDK_DISPLAY_MANAGER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_DISPLAY_MANAGER, GdkDisplayManagerClass))
+#define GDK_DISPLAY_MANAGER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_DISPLAY_MANAGER, CdkDisplayManagerClass))
 
-typedef struct _GdkDisplayManagerClass GdkDisplayManagerClass;
+typedef struct _CdkDisplayManagerClass CdkDisplayManagerClass;
 
-struct _GdkDisplayManager
+struct _CdkDisplayManager
 {
   GObject parent_instance;
 
-  GdkDisplay *default_display;
+  CdkDisplay *default_display;
 
   GSList *displays;
 };
 
-struct _GdkDisplayManagerClass
+struct _CdkDisplayManagerClass
 {
   GObjectClass parent_class;
 
   /* signals */
-  void         (*display_opened)      (GdkDisplayManager *manager,
-                                       GdkDisplay        *display);
+  void         (*display_opened)      (CdkDisplayManager *manager,
+                                       CdkDisplay        *display);
 };
 
-void            _cdk_display_manager_add_display        (GdkDisplayManager      *manager,
-                                                         GdkDisplay             *display);
-void            _cdk_display_manager_remove_display     (GdkDisplayManager      *manager,
-                                                         GdkDisplay             *display);
+void            _cdk_display_manager_add_display        (CdkDisplayManager      *manager,
+                                                         CdkDisplay             *display);
+void            _cdk_display_manager_remove_display     (CdkDisplayManager      *manager,
+                                                         CdkDisplay             *display);
 
 G_END_DECLS
 

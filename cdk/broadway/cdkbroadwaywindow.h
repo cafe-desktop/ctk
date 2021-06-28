@@ -30,24 +30,24 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_BROADWAY_WINDOW              (cdk_broadway_window_get_type ())
-#define GDK_BROADWAY_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_WINDOW, GdkBroadwayWindow))
-#define GDK_BROADWAY_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_WINDOW, GdkBroadwayWindowClass))
+#define GDK_BROADWAY_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_WINDOW, CdkBroadwayWindow))
+#define GDK_BROADWAY_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_WINDOW, CdkBroadwayWindowClass))
 #define GDK_IS_BROADWAY_WINDOW(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_WINDOW))
 #define GDK_IS_BROADWAY_WINDOW_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_BROADWAY_WINDOW))
-#define GDK_BROADWAY_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_WINDOW, GdkBroadwayWindowClass))
+#define GDK_BROADWAY_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_WINDOW, CdkBroadwayWindowClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkBroadwayWindow GdkBroadwayWindow;
+typedef struct _CdkBroadwayWindow CdkBroadwayWindow;
 #else
-typedef GdkWindow GdkBroadwayWindow;
+typedef CdkWindow CdkBroadwayWindow;
 #endif
-typedef struct _GdkBroadwayWindowClass GdkBroadwayWindowClass;
+typedef struct _CdkBroadwayWindowClass CdkBroadwayWindowClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_broadway_window_get_type          (void);
 
 GDK_AVAILABLE_IN_ALL
-guint32  cdk_broadway_get_last_seen_time (GdkWindow       *window);
+guint32  cdk_broadway_get_last_seen_time (CdkWindow       *window);
 
 G_END_DECLS
 

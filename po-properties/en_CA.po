@@ -1254,8 +1254,8 @@ msgid "Cell background color"
 msgstr "Cell background colour"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Cell background colour as a GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Cell background colour as a CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1506,8 +1506,8 @@ msgid "Background color"
 msgstr "Background colour"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Background colour as a GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Background colour as a CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1523,8 +1523,8 @@ msgid "Foreground color"
 msgstr "Foreground colour"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Foreground colour as a GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Foreground colour as a CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3134,8 +3134,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
+msgstr "A CdkPixbuf to display"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3179,8 +3179,8 @@ msgid "Animation"
 msgstr "Animation"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation to display"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation to display"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5794,8 +5794,8 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr "Name used to refer to the text tag. NULL for anonymous tags"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Background colour as a (possibly unallocated) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Background colour as a (possibly unallocated) CdkColor"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5810,8 +5810,8 @@ msgstr ""
 "height of the tagged characters"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Foreground colour as a (possibly unallocated) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Foreground colour as a (possibly unallocated) CdkColor"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -5958,8 +5958,8 @@ msgid "Paragraph background color"
 msgstr "Paragraph background colour"
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Paragraph background colour as a (possibly unallocated) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Paragraph background colour as a (possibly unallocated) CdkColor"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -6912,8 +6912,8 @@ msgid "Events"
 msgstr "Events"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "The event mask that decides what kind of CdkEvents this widget gets"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7415,8 +7415,8 @@ msgstr "How to draw the input method statusbar"
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "A pointer to the pixel data of the pixbuf"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "the CdkScreen for the renderer"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "The adjustment that holds the value of the spinbutton."
@@ -7439,8 +7439,8 @@ msgstr "How to draw the input method statusbar"
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "Bitmap to use as a mask when drawing the text background"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "The GdkFont that is currently selected"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "The CdkFont that is currently selected"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "Deprecated property, use shadow_type instead"
@@ -7448,17 +7448,17 @@ msgstr "How to draw the input method statusbar"
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "A GdkPixmap to display"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "A CdkPixmap to display"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "A GdkImage to display"
+#~ msgid "A CdkImage to display"
+#~ msgstr "A CdkImage to display"
 
 #~ msgid "Mask"
 #~ msgstr "Mask"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Mask bitmap to use with GdkImage or GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Mask bitmap to use with CdkImage or CdkPixmap"
 
 #~ msgid "Use separator"
 #~ msgstr "Use separator"

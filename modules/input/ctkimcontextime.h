@@ -38,13 +38,13 @@ struct _CtkIMContextIME
 {
   CtkIMContext object;
 
-  GdkWindow *client_window;
-  GdkWindow *toplevel;
+  CdkWindow *client_window;
+  CdkWindow *toplevel;
   guint use_preedit : 1;
   guint preediting : 1;
   guint opened : 1;
   guint focus : 1;
-  GdkRectangle cursor_location;
+  CdkRectangle cursor_location;
   gchar *commit_string;
 
   CtkIMContextIMEPrivate *priv;

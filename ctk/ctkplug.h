@@ -84,17 +84,17 @@ CtkWidget *ctk_plug_new                   (Window      socket_id);
 
 GDK_AVAILABLE_IN_ALL
 void       ctk_plug_construct_for_display (CtkPlug    *plug,
-                                           GdkDisplay *display,
+                                           CdkDisplay *display,
                                            Window      socket_id);
 GDK_AVAILABLE_IN_ALL
-CtkWidget *ctk_plug_new_for_display       (GdkDisplay *display,
+CtkWidget *ctk_plug_new_for_display       (CdkDisplay *display,
                                            Window      socket_id);
 GDK_AVAILABLE_IN_ALL
 Window     ctk_plug_get_id                (CtkPlug    *plug);
 GDK_AVAILABLE_IN_ALL
 gboolean   ctk_plug_get_embedded          (CtkPlug    *plug);
 GDK_AVAILABLE_IN_ALL
-GdkWindow *ctk_plug_get_socket_window     (CtkPlug    *plug);
+CdkWindow *ctk_plug_get_socket_window     (CtkPlug    *plug);
 
 G_END_DECLS
 

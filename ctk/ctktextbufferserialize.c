@@ -66,7 +66,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     }
   else if (value->g_type == GDK_TYPE_COLOR)
     {
-      GdkColor *color = g_value_get_boxed (value);
+      CdkColor *color = g_value_get_boxed (value);
 
       return g_strdup_printf ("%x:%x:%x", color->red, color->green, color->blue);
     }
@@ -138,7 +138,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     }
   else if (value->g_type == GDK_TYPE_COLOR)
     {
-      GdkColor color;
+      CdkColor color;
       const gchar *old;
       gchar *tmp;
 
@@ -511,7 +511,7 @@ serialize_text (CtkTextBuffer        *buffer,
 
 	  if (ch == 0xFFFC)
 	    {
-	      GdkPixbuf *pixbuf = ctk_text_iter_get_pixbuf (&iter);
+	      CdkPixbuf *pixbuf = ctk_text_iter_get_pixbuf (&iter);
 
 	      if (pixbuf)
 		{
@@ -577,8 +577,8 @@ serialize_pixbufs (SerializationContext *context,
 
   for (list = context->pixbufs; list != NULL; list = list->next)
     {
-      GdkPixbuf *pixbuf = list->data;
-      GdkPixdata pixdata;
+      CdkPixbuf *pixbuf = list->data;
+      CdkPixdata pixdata;
       guint8 *tmp;
       guint len;
 
@@ -654,7 +654,7 @@ typedef enum
 typedef struct
 {
   gchar *text;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   GSList *tags;
 } TextSpan;
 
@@ -1058,14 +1058,14 @@ typedef struct
 } Header;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-static GdkPixbuf *
+static CdkPixbuf *
 get_pixbuf_from_headers (GList   *headers,
                          int      id,
                          GError **error)
 {
   Header *header;
-  GdkPixdata pixdata;
-  GdkPixbuf *pixbuf;
+  CdkPixdata pixdata;
+  CdkPixbuf *pixbuf;
 
   header = g_list_nth_data (headers, id);
 
@@ -1120,7 +1120,7 @@ parse_apply_tag_element (GMarkupParseContext  *context,
   else if (ELEMENT_IS ("pixbuf"))
     {
       int int_id;
-      GdkPixbuf *pixbuf;
+      CdkPixbuf *pixbuf;
       TextSpan *span;
       const gchar *pixbuf_id;
 

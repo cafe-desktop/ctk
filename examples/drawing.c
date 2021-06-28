@@ -19,7 +19,7 @@ clear_surface (void)
 /* Create a new surface of the appropriate size to store our scribbles */
 static gboolean
 configure_event_cb (CtkWidget         *widget,
-                    GdkEventConfigure *event,
+                    CdkEventConfigure *event,
                     gpointer           data)
 {
   if (surface)
@@ -74,12 +74,12 @@ draw_brush (CtkWidget *widget,
 
 /* Handle button press events by either drawing a rectangle
  * or clearing the surface, depending on which button was pressed.
- * The ::button-press signal handler receives a GdkEventButton
+ * The ::button-press signal handler receives a CdkEventButton
  * struct which contains this information.
  */
 static gboolean
 button_press_event_cb (CtkWidget      *widget,
-                       GdkEventButton *event,
+                       CdkEventButton *event,
                        gpointer        data)
 {
   /* paranoia check, in case we haven't gotten a configure event */
@@ -102,11 +102,11 @@ button_press_event_cb (CtkWidget      *widget,
 
 /* Handle motion events by continuing to draw if button 1 is
  * still held down. The ::motion-notify signal handler receives
- * a GdkEventMotion struct which contains this information.
+ * a CdkEventMotion struct which contains this information.
  */
 static gboolean
 motion_notify_event_cb (CtkWidget      *widget,
-                        GdkEventMotion *event,
+                        CdkEventMotion *event,
                         gpointer        data)
 {
   /* paranoia check, in case we haven't gotten a configure event */

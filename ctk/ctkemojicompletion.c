@@ -327,7 +327,7 @@ move_active_variation (CtkEmojiCompletion *completion,
 
 static gboolean
 entry_key_press (CtkEntry           *entry,
-                 GdkEventKey        *event,
+                 CdkEventKey        *event,
                  CtkEmojiCompletion *completion)
 {
   guint keyval;
@@ -335,7 +335,7 @@ entry_key_press (CtkEntry           *entry,
   if (!ctk_widget_get_visible (CTK_WIDGET (completion)))
     return FALSE;
 
-  cdk_event_get_keyval ((GdkEvent*)event, &keyval);
+  cdk_event_get_keyval ((CdkEvent*)event, &keyval);
 
   if (keyval == GDK_KEY_Escape)
     {

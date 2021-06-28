@@ -8819,11 +8819,11 @@ msgstr "چاپ به چاپگر آزمایشی"
 #~ msgid "Unable to find include file: \"%s\""
 #~ msgstr "نمی‌توان پرونده‌ی درجی را یافت: «%s»"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "پرچم‌های اشکال‌زدایی Gdk که باید یک شوند"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "پرچم‌های اشکال‌زدایی Cdk که باید یک شوند"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "پرچم‌های اشکال‌زدایی Gdk که باید صفر شوند"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "پرچم‌های اشکال‌زدایی Cdk که باید صفر شوند"
 
 #~ msgid "Error creating folder '%s': %s"
 #~ msgstr "خطا هنگام ایجاد پوشه «%s» : %s"
@@ -9268,7 +9268,7 @@ msgstr "چاپ به چاپگر آزمایشی"
 #~ msgstr "نمی‌توان برای ساختار زمینه‌ی TGA حافظه تخصیص داد"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "خواندن از پرونده‌ی موقت شکست خورد"
 
 #, fuzzy

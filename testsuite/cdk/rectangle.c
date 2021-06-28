@@ -3,12 +3,12 @@
 static void
 test_rectangle_equal (void)
 {
-  GdkRectangle a = { 0, 0, 1, 1 };
-  GdkRectangle b = { 1, 1, 2, 2 };
-  GdkRectangle c = { 0, 0, 2, 2 };
-  GdkRectangle d = { 0, 0, 1, 1 };
-  GdkRectangle e = { 0, 0, 0, 0 };
-  GdkRectangle f = { 1, 1, 0, 0 };
+  CdkRectangle a = { 0, 0, 1, 1 };
+  CdkRectangle b = { 1, 1, 2, 2 };
+  CdkRectangle c = { 0, 0, 2, 2 };
+  CdkRectangle d = { 0, 0, 1, 1 };
+  CdkRectangle e = { 0, 0, 0, 0 };
+  CdkRectangle f = { 1, 1, 0, 0 };
 
   g_assert_true (!cdk_rectangle_equal (&a, &b));
   g_assert_true (!cdk_rectangle_equal (&a, &c));
@@ -20,14 +20,14 @@ test_rectangle_equal (void)
 static void
 test_rectangle_intersect (void)
 {
-  GdkRectangle a = { 0, 0, 10, 10 };
-  GdkRectangle b = { 5, 5, 10, 10 };
-  GdkRectangle c = { 0, 0, 0, 0 };
-  GdkRectangle d = { 5, 5, 5, 5 };
-  GdkRectangle e = { 0, 0, 10, 10 };
-  GdkRectangle f = { 20, 20, 10, 10 };
-  GdkRectangle g = { 0, 0, 0, 0 };
-  GdkRectangle h = { 10, 10, 0, 0 };
+  CdkRectangle a = { 0, 0, 10, 10 };
+  CdkRectangle b = { 5, 5, 10, 10 };
+  CdkRectangle c = { 0, 0, 0, 0 };
+  CdkRectangle d = { 5, 5, 5, 5 };
+  CdkRectangle e = { 0, 0, 10, 10 };
+  CdkRectangle f = { 20, 20, 10, 10 };
+  CdkRectangle g = { 0, 0, 0, 0 };
+  CdkRectangle h = { 10, 10, 0, 0 };
   gboolean res;
 
   res = cdk_rectangle_intersect (&a, &b, &c);
@@ -47,13 +47,13 @@ test_rectangle_intersect (void)
 static void
 test_rectangle_union (void)
 {
-  GdkRectangle a = { 0, 0, 10, 10 };
-  GdkRectangle b = { 5, 5, 10, 10 };
-  GdkRectangle c = { 0, 0, 0, 0 };
-  GdkRectangle d = { 0, 0, 15, 15 };
-  GdkRectangle e = { 0, 0, 0, 0 };
-  GdkRectangle f = { 50, 50, 0, 0 };
-  GdkRectangle g = { 0, 0, 50, 50 };
+  CdkRectangle a = { 0, 0, 10, 10 };
+  CdkRectangle b = { 5, 5, 10, 10 };
+  CdkRectangle c = { 0, 0, 0, 0 };
+  CdkRectangle d = { 0, 0, 15, 15 };
+  CdkRectangle e = { 0, 0, 0, 0 };
+  CdkRectangle f = { 50, 50, 0, 0 };
+  CdkRectangle g = { 0, 0, 50, 50 };
 
   cdk_rectangle_union (&a, &b, &c);
   g_assert_true (cdk_rectangle_equal (&c, &d));

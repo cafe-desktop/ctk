@@ -112,7 +112,7 @@ var GDK_CROSSING_NORMAL = 0;
 var GDK_CROSSING_GRAB = 1;
 var GDK_CROSSING_UNGRAB = 2;
 
-// GdkModifierType
+// CdkModifierType
 var GDK_SHIFT_MASK = 1 << 0;
 var GDK_LOCK_MASK     = 1 << 1;
 var GDK_CONTROL_MASK  = 1 << 2;

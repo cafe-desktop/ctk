@@ -9,7 +9,7 @@ typedef struct FrameStats FrameStats;
 
 struct FrameStats
 {
-  GdkFrameClock *frame_clock;
+  CdkFrameClock *frame_clock;
 
   int num_stats;
   double last_print_time;
@@ -71,7 +71,7 @@ print_variable (const char *description,
 }
 
 static void
-on_frame_clock_after_paint (GdkFrameClock *frame_clock,
+on_frame_clock_after_paint (CdkFrameClock *frame_clock,
                             FrameStats    *frame_stats)
 {
   gint64 frame_counter;
@@ -111,8 +111,8 @@ on_frame_clock_after_paint (GdkFrameClock *frame_clock,
        frame_counter < cdk_frame_clock_get_frame_counter (frame_clock);
        frame_counter++)
     {
-      GdkFrameTimings *timings = cdk_frame_clock_get_timings (frame_clock, frame_counter);
-      GdkFrameTimings *previous_timings = cdk_frame_clock_get_timings (frame_clock, frame_counter - 1);
+      CdkFrameTimings *timings = cdk_frame_clock_get_timings (frame_clock, frame_counter);
+      CdkFrameTimings *previous_timings = cdk_frame_clock_get_timings (frame_clock, frame_counter - 1);
 
       if (!timings || cdk_frame_timings_get_complete (timings))
         frame_stats->last_handled_frame = frame_counter;

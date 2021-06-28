@@ -1738,16 +1738,16 @@ msgid "Cell background color"
 msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ​ក្រឡា"
 
 #: ../ctk/ctkcellrenderer.c:397
-msgid "Cell background color as a GdkColor"
-msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ​ក្រឡា​ជា GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ​ក្រឡា​ជា CdkColor"
 
 #: ../ctk/ctkcellrenderer.c:410
 msgid "Cell background RGBA color"
 msgstr "ពណ៌ RGBA នៃ​ផ្ទៃខាងក្រោយ​ក្រឡា"
 
 #: ../ctk/ctkcellrenderer.c:411
-msgid "Cell background color as a GdkRGBA"
-msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ​ក្រឡា​ជា GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ​ក្រឡា​ជា CdkRGBA"
 
 #: ../ctk/ctkcellrenderer.c:418
 msgid "Editing"
@@ -1996,8 +1996,8 @@ msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ"
 
 #: ../ctk/ctkcellrenderertext.c:304 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:219
-msgid "Background color as a GdkColor"
-msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ​ជា GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ​ជា CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:318
 msgid "Background color as RGBA"
@@ -2005,8 +2005,8 @@ msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ​ជា RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:319 ../ctk/ctkcellview.c:219
 #: ../ctk/ctktexttag.c:234
-msgid "Background color as a GdkRGBA"
-msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ​ជា GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "ពណ៌​ផ្ទៃ​ខាងក្រោយ​ជា CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:325 ../ctk/ctktexttag.c:249
 msgid "Foreground color name"
@@ -2022,16 +2022,16 @@ msgid "Foreground color"
 msgstr "ពណ៌​ផ្ទៃ​ខាងមុខ"
 
 #: ../ctk/ctkcellrenderertext.c:341 ../ctk/ctktexttag.c:265
-msgid "Foreground color as a GdkColor"
-msgstr "ពណ៌​ផ្ទៃ​ខាងមុខ​ជា GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "ពណ៌​ផ្ទៃ​ខាងមុខ​ជា CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:355
 msgid "Foreground color as RGBA"
 msgstr "ពណ៌​ផ្ទៃ​ខាងមុខ​ជា RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:356 ../ctk/ctktexttag.c:280
-msgid "Foreground color as a GdkRGBA"
-msgstr "ពណ៌​ផ្ទៃ​ខាងមុខ​ជា GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "ពណ៌​ផ្ទៃ​ខាងមុខ​ជា CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:364 ../ctk/ctkentry.c:755
 #: ../ctk/ctktexttag.c:296 ../ctk/ctktextview.c:702
@@ -2501,8 +2501,8 @@ msgid "Color"
 msgstr "ពណ៌"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "ពណ៌​បច្ចុប្បន្ន​ជា GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "ពណ៌​បច្ចុប្បន្ន​ជា CdkRGBA"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -3689,8 +3689,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:217 ../ctk/ctkstatusicon.c:224
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf ត្រូវ​ប​ង្ហាញ"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf ត្រូវ​ប​ង្ហាញ"
 
 #: ../ctk/ctkimage.c:224 ../ctk/ctkrecentmanager.c:293
 #: ../ctk/ctkstatusicon.c:231
@@ -3735,8 +3735,8 @@ msgid "Animation"
 msgstr "ចលនា"
 
 #: ../ctk/ctkimage.c:276
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation ត្រូវ​បង្ហាញ"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation ត្រូវ​បង្ហាញ"
 
 #: ../ctk/ctkimage.c:316 ../ctk/ctkstatusicon.c:271
 msgid "Storage type"
@@ -6325,8 +6325,8 @@ msgid "The title of this tray icon"
 msgstr "ចំណងជើង​រូបតំណាង​ថាស"
 
 #: ../ctk/ctkstylecontext.c:441
-msgid "The associated GdkScreen"
-msgstr "GdkScreen ដែល​ទាក់ទង​គ្នា"
+msgid "The associated CdkScreen"
+msgstr "CdkScreen ដែល​ទាក់ទង​គ្នា"
 
 #: ../ctk/ctkstylecontext.c:447
 msgid "Direction"
@@ -6603,16 +6603,16 @@ msgid "Paragraph background color"
 msgstr "ពណ៌​ផ្ទៃខាងក្រោយ​កថាខណ្ឌ"
 
 #: ../ctk/ctktexttag.c:582
-msgid "Paragraph background color as a GdkColor"
-msgstr "ពណ៌​ផ្ទៃខាងក្រោយ​កថាខណ្ឌ​ជា GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "ពណ៌​ផ្ទៃខាងក្រោយ​កថាខណ្ឌ​ជា CdkColor"
 
 #: ../ctk/ctktexttag.c:596
 msgid "Paragraph background RGBA"
 msgstr "RGBA របស់​ផ្ទៃខាងក្រោយ​កថាខណ្ឌ"
 
 #: ../ctk/ctktexttag.c:597
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "RGBA របស់​ផ្ទៃខាងក្រោយ​កថាខណ្ឌ​ជា GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "RGBA របស់​ផ្ទៃខាងក្រោយ​កថាខណ្ឌ​ជា CdkRGBA"
 
 #: ../ctk/ctktexttag.c:615
 msgid "Margin Accumulates"
@@ -7548,8 +7548,8 @@ msgid "Events"
 msgstr "ព្រឹត្តិការណ៍"
 
 #: ../ctk/ctkwidget.c:1096
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "របាំង​ព្រឹត្តិការណ៍​ដែល​នឹង​ជ្រើស​យក​ប្រភេទ​នៃ​ធាតុក្រាហ្វិក GdkEvents នេះ"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "របាំង​ព្រឹត្តិការណ៍​ដែល​នឹង​ជ្រើស​យក​ប្រភេទ​នៃ​ធាតុក្រាហ្វិក CdkEvents នេះ"
 
 #: ../ctk/ctkwidget.c:1103
 msgid "No show all"

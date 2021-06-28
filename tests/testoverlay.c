@@ -12,7 +12,7 @@ test_nonzerox (void)
   CtkWidget *overlay;
   CtkWidget *text;
   CtkWidget *child;
-  GdkRGBA color;
+  CdkRGBA color;
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (win), "Non-zero X");
@@ -96,7 +96,7 @@ test_relative (void)
   CtkWidget *overlay;
   CtkWidget *text;
   CtkWidget *child;
-  GdkRGBA color;
+  CdkRGBA color;
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (win), "Custom positioning");
@@ -297,7 +297,7 @@ test_builder (void)
 }
 
 static void
-on_enter (CtkWidget *overlay, GdkEventCrossing *event, CtkWidget *child)
+on_enter (CtkWidget *overlay, CdkEventCrossing *event, CtkWidget *child)
 {
   if (event->window != ctk_widget_get_window (child))
     return;
@@ -371,7 +371,7 @@ test_stacking (void)
   CtkWidget *grid;
   CtkWidget *check1;
   CtkWidget *check2;
-  GdkRGBA color;
+  CdkRGBA color;
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_title (CTK_WINDOW (win), "Stacking");
@@ -473,7 +473,7 @@ test_child_order (void)
   CtkWidget *button;
   CtkWidget *label;
   CtkWidget *ebox;
-  GdkRGBA color;
+  CdkRGBA color;
   int i;
 
   win = ctk_window_new (CTK_WINDOW_TOPLEVEL);

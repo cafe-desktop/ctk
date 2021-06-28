@@ -6035,11 +6035,11 @@ msgstr "ஒலியளவை குறைக்கவும்"
 #~ "'%s' உருவக் கோப்பை ஏற்ற முடியவில்லை: காரணம் தெரியாது, ஊழலாக்கபட்ட உருவக் கோப்பாக "
 #~ "இருக்கலாம்"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "அமைக்க Gdk பிழைதிருத்தம் கொடிகள் "
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "அமைக்க Cdk பிழைதிருத்தம் கொடிகள் "
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "அமைவு நீக்க Gdk பிழைதிருத்தம் கொடிகள் "
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "அமைவு நீக்க Cdk பிழைதிருத்தம் கொடிகள் "
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "'%s' உருவக் கோப்பில் தரவு ஏதும் கிடையாது"
@@ -6464,7 +6464,7 @@ msgstr "ஒலியளவை குறைக்கவும்"
 #~ msgstr "TGA சூழல்-கட்டமைப்புக்கு நினைவகம் ஒதுக்கீட முடியவில்லை"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "அடைவு அகரவரிசையை எழுத முடியவில்லை\n"
 
 #, fuzzy

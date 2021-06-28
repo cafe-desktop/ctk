@@ -802,8 +802,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Bistaratu beharreko GdkPixbuf-a"
+msgid "A CdkPixbuf to display"
+msgstr "Bistaratu beharreko CdkPixbuf-a"
 
 #
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
@@ -2167,16 +2167,16 @@ msgid "Cell background color"
 msgstr "Gelaxkaren atzeko planoaren kolorea"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Gelaxkaren atzeko planoaren kolorea GdkColor gisa"
+msgid "Cell background color as a CdkColor"
+msgstr "Gelaxkaren atzeko planoaren kolorea CdkColor gisa"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Gelaxkaren atzeko planoaren RGBA kolorea"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Gelaxkaren atzeko planoaren kolorea GdkRGBA gisa"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Gelaxkaren atzeko planoaren kolorea CdkRGBA gisa"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2410,16 +2410,16 @@ msgid "Background color"
 msgstr "Atzeko planoaren kolorea"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
-msgstr "Atzeko planoaren kolorea GdkColor gisa"
+msgid "Background color as a CdkColor"
+msgstr "Atzeko planoaren kolorea CdkColor gisa"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Atzeko planoaren kolorea RGBA gisa"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
-msgstr "Atzeko planoaren kolorea GdkRGBA gisa"
+msgid "Background color as a CdkRGBA"
+msgstr "Atzeko planoaren kolorea CdkRGBA gisa"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
@@ -2430,16 +2430,16 @@ msgid "Foreground color as a string"
 msgstr "Aurreko planoaren kolorea kate gisa"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
-msgstr "Aurreko planoaren kolorea GdkColor gisa"
+msgid "Foreground color as a CdkColor"
+msgstr "Aurreko planoaren kolorea CdkColor gisa"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Aurreko planoaren kolorea RGBA gisa"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
-msgstr "Aurreko planoaren kolorea GdkRGBA gisa"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Aurreko planoaren kolorea CdkRGBA gisa"
 
 #
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
@@ -2911,8 +2911,8 @@ msgid "Color"
 msgstr "Kolorea"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Uneko kolorea, GdkRGBA gisa"
+msgid "Current color, as a CdkRGBA"
+msgstr "Uneko kolorea, CdkRGBA gisa"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4136,8 +4136,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Keinua abiarazteko behar diren puntuen kopurua"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "GdkWindow, horren gertaerak jasotzeko"
+msgid "CdkWindow to receive events about"
+msgstr "CdkWindow, horren gertaerak jasotzeko"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4480,8 +4480,8 @@ msgid "Animation"
 msgstr "Animazioa"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "Bistaratu beharreko GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "Bistaratu beharreko CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7654,16 +7654,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Egoera-barrako testuaren inguruko alaka-estiloa"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "Esleitutako GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "Esleitutako CdkScreen"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "Esleitutako GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "Esleitutako CdkFrameClock"
 
 #
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
@@ -7945,16 +7945,16 @@ msgid "Paragraph background color"
 msgstr "Paragrafoaren atzeko planoaren kolorea"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
-msgstr "Paragrafoaren atzeko planoaren kolorea GdkColor gisa"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Paragrafoaren atzeko planoaren kolorea CdkColor gisa"
 
 #: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "Paragrafoaren atzeko planoaren RGBA"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Paragrafoaren atzeko planoaren RGBA GdkRGBA gisa"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Paragrafoaren atzeko planoaren RGBA CdkRGBA gisa"
 
 #: ctk/ctktexttag.c:663
 msgid "Fallback"
@@ -8938,8 +8938,8 @@ msgid "Events"
 msgstr "Gertaerak"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "Trepeta honek zein motatako GdkEvents eskuratuko duen erabakitzen duen gertaera-maskara"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "Trepeta honek zein motatako CdkEvents eskuratuko duen erabakitzen duen gertaera-maskara"
 
 #: ctk/ctkwidget.c:1263
 msgid "No show all"
@@ -9587,15 +9587,15 @@ msgstr "Erabiliko den kolore-profilaren titulua"
 #~ msgid "Event base for XInput events"
 #~ msgstr "Gertaeren oinarria XInput gertaerentzako"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
 #~ msgstr ""
-#~ "Atzeko planoaren kolorea GdkColor gisa (baliteke esleitu gabea izatea) "
+#~ "Atzeko planoaren kolorea CdkColor gisa (baliteke esleitu gabea izatea) "
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
 #~ msgstr ""
-#~ "Aurreko planoaren kolorea GdkColor gisa (baliteke esleitu gabea izatea) "
+#~ "Aurreko planoaren kolorea CdkColor gisa (baliteke esleitu gabea izatea) "
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 #~ msgstr ""
-#~ "Paragrafoaren atzeko planoaren kolorea GdkColor gisa (baliteke esleitu "
+#~ "Paragrafoaren atzeko planoaren kolorea CdkColor gisa (baliteke esleitu "
 #~ "gabea izatea) "

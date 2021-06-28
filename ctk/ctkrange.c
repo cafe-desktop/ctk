@@ -87,7 +87,7 @@ struct _CtkRangePrivate
   CtkSensitivityType lower_sensitivity;
   CtkSensitivityType upper_sensitivity;
 
-  GdkWindow         *event_window;
+  CdkWindow         *event_window;
 
   /* Steppers are: < > ---- < >
    *               a b      c d
@@ -221,9 +221,9 @@ static void ctk_range_long_press_gesture_pressed  (CtkGestureLongPress  *gesture
 
 
 static gboolean ctk_range_scroll_event   (CtkWidget        *widget,
-                                      GdkEventScroll   *event);
+                                      CdkEventScroll   *event);
 static gboolean ctk_range_event       (CtkWidget       *widget,
-                                       GdkEvent        *event);
+                                       CdkEvent        *event);
 static void update_slider_position   (CtkRange	       *range,
 				      gint              mouse_x,
 				      gint              mouse_y);
@@ -239,7 +239,7 @@ static void ctk_range_move_slider              (CtkRange         *range,
 /* Internals */
 static void          ctk_range_compute_slider_position  (CtkRange      *range,
                                                          gdouble        adjustment_value,
-                                                         GdkRectangle  *slider_rect);
+                                                         CdkRectangle  *slider_rect);
 static gboolean      ctk_range_scroll                   (CtkRange      *range,
                                                          CtkScrollType  scroll);
 static void          ctk_range_update_mouse_location    (CtkRange      *range);
@@ -257,7 +257,7 @@ static gboolean      ctk_range_real_change_value        (CtkRange      *range,
                                                          CtkScrollType  scroll,
                                                          gdouble        value);
 static gboolean      ctk_range_key_press                (CtkWidget     *range,
-							 GdkEventKey   *event);
+							 CdkEventKey   *event);
 static void          ctk_range_state_flags_changed      (CtkWidget     *widget,
                                                          CtkStateFlags  previous_state);
 static void          ctk_range_direction_changed        (CtkWidget     *widget,
@@ -1310,7 +1310,7 @@ measure_one_gadget (CtkCssGadget *gadget,
  **/
 void
 ctk_range_get_range_rect (CtkRange     *range,
-                          GdkRectangle *range_rect)
+                          CdkRectangle *range_rect)
 {
   CtkRangePrivate *priv;
 
@@ -2215,8 +2215,8 @@ ctk_range_realize (CtkWidget *widget)
   CtkAllocation allocation;
   CtkRange *range = CTK_RANGE (widget);
   CtkRangePrivate *priv = range->priv;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_set_realized (widget, TRUE);
@@ -2598,13 +2598,13 @@ coord_to_value (CtkRange *range,
 
 static gboolean
 ctk_range_key_press (CtkWidget   *widget,
-		     GdkEventKey *event)
+		     CdkEventKey *event)
 {
-  GdkDevice *device;
+  CdkDevice *device;
   CtkRange *range = CTK_RANGE (widget);
   CtkRangePrivate *priv = range->priv;
 
-  device = cdk_event_get_device ((GdkEvent *) event);
+  device = cdk_event_get_device ((CdkEvent *) event);
   device = cdk_device_get_associated_device (device);
 
   if (ctk_gesture_is_active (priv->drag_gesture) &&
@@ -2685,14 +2685,14 @@ ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 {
   CtkWidget *widget = CTK_WIDGET (range);
   CtkRangePrivate *priv = range->priv;
-  GdkDevice *source_device;
-  GdkEventSequence *sequence;
-  const GdkEvent *event;
-  GdkInputSource source;
+  CdkDevice *source_device;
+  CdkEventSequence *sequence;
+  const CdkEvent *event;
+  CdkInputSource source;
   gboolean primary_warps;
   gboolean shift_pressed;
   guint button;
-  GdkModifierType state_mask;
+  CdkModifierType state_mask;
   CtkAllocation slider_alloc;
 
   if (!ctk_widget_has_focus (widget))
@@ -2704,7 +2704,7 @@ ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
   cdk_event_get_state (event, &state_mask);
   shift_pressed = (state_mask & GDK_SHIFT_MASK) != 0;
 
-  source_device = cdk_event_get_source_device ((GdkEvent *) event);
+  source_device = cdk_event_get_source_device ((CdkEvent *) event);
   source = cdk_device_get_source (source_device);
 
   priv->mouse_x = x;
@@ -2764,7 +2764,7 @@ ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
             (!primary_warps && button == GDK_BUTTON_MIDDLE)))
     {
       /* warp to location */
-      GdkRectangle slider;
+      CdkRectangle slider;
       gdouble slider_low_value, slider_high_value, new_value;
 
       slider_high_value =
@@ -2941,7 +2941,7 @@ remove_autoscroll (CtkRange *range)
 
 static gboolean
 autoscroll_cb (CtkWidget     *widget,
-               GdkFrameClock *frame_clock,
+               CdkFrameClock *frame_clock,
                gpointer       data)
 {
   CtkRange *range = CTK_RANGE (data);
@@ -3035,7 +3035,7 @@ stop_scrolling (CtkRange *range)
 /**
  * _ctk_range_get_wheel_delta:
  * @range: a #CtkRange
- * @event: A #GdkEventScroll
+ * @event: A #CdkEventScroll
  *
  * Returns a good step value for the mouse wheel.
  *
@@ -3045,7 +3045,7 @@ stop_scrolling (CtkRange *range)
  **/
 gdouble
 _ctk_range_get_wheel_delta (CtkRange       *range,
-                            GdkEventScroll *event)
+                            CdkEventScroll *event)
 {
   CtkRangePrivate *priv = range->priv;
   CtkAdjustment *adjustment = priv->adjustment;
@@ -3054,7 +3054,7 @@ _ctk_range_get_wheel_delta (CtkRange       *range,
   gdouble page_size;
   gdouble page_increment;
   gdouble scroll_unit;
-  GdkScrollDirection direction;
+  CdkScrollDirection direction;
   CtkOrientation move_orientation;
 
   page_size = ctk_adjustment_get_page_size (adjustment);
@@ -3075,7 +3075,7 @@ _ctk_range_get_wheel_delta (CtkRange       *range,
   else
     scroll_unit = page_increment;
 
-  if (cdk_event_get_scroll_deltas ((GdkEvent *) event, &dx, &dy))
+  if (cdk_event_get_scroll_deltas ((CdkEvent *) event, &dx, &dy))
     {
 #ifdef GDK_WINDOWING_QUARTZ
       scroll_unit = 1;
@@ -3092,7 +3092,7 @@ _ctk_range_get_wheel_delta (CtkRange       *range,
           delta = dy * scroll_unit;
         }
     }
-  else if (cdk_event_get_scroll_direction ((GdkEvent *) event, &direction))
+  else if (cdk_event_get_scroll_direction ((CdkEvent *) event, &direction))
     {
       if (direction == GDK_SCROLL_LEFT || direction == GDK_SCROLL_RIGHT)
         move_orientation = CTK_ORIENTATION_HORIZONTAL;
@@ -3113,7 +3113,7 @@ _ctk_range_get_wheel_delta (CtkRange       *range,
 
 static gboolean
 ctk_range_scroll_event (CtkWidget      *widget,
-			GdkEventScroll *event)
+			CdkEventScroll *event)
 {
   CtkRange *range = CTK_RANGE (widget);
   CtkRangePrivate *priv = range->priv;
@@ -3200,7 +3200,7 @@ ctk_range_drag_gesture_begin (CtkGestureDrag *gesture,
 
 static gboolean
 ctk_range_event (CtkWidget *widget,
-                 GdkEvent  *event)
+                 CdkEvent  *event)
 {
   CtkRange *range = CTK_RANGE (widget);
   CtkRangePrivate *priv = range->priv;
@@ -3472,7 +3472,7 @@ ctk_range_move_slider (CtkRange     *range,
 }
 
 static gboolean
-rectangle_contains_point (GdkRectangle *rect,
+rectangle_contains_point (CdkRectangle *rect,
                           gint          x,
                           gint          y)
 {
@@ -3488,7 +3488,7 @@ ctk_range_update_mouse_location (CtkRange *range)
   gint x, y;
   CtkCssGadget *old_location;
   CtkWidget *widget = CTK_WIDGET (range);
-  GdkRectangle trough_alloc, slider_alloc, slider_trace;
+  CdkRectangle trough_alloc, slider_alloc, slider_trace;
 
   old_location = priv->mouse_location;
 
@@ -3546,7 +3546,7 @@ ctk_range_update_mouse_location (CtkRange *range)
 static void
 ctk_range_compute_slider_position (CtkRange     *range,
                                    gdouble       adjustment_value,
-                                   GdkRectangle *slider_rect)
+                                   CdkRectangle *slider_rect)
 {
   CtkRangePrivate *priv = range->priv;
   CtkAllocation trough_content_alloc;
@@ -3753,7 +3753,7 @@ static void
 ctk_range_calc_marks (CtkRange *range)
 {
   CtkRangePrivate *priv = range->priv;
-  GdkRectangle slider;
+  CdkRectangle slider;
   gint i;
 
   for (i = 0; i < priv->n_marks; i++)

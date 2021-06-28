@@ -104,17 +104,17 @@
  * Use this macro to guard code that is specific to the Wayland backend.
  */
 
-typedef struct _GdkPredicate  GdkPredicate;
+typedef struct _CdkPredicate  CdkPredicate;
 
-struct _GdkPredicate
+struct _CdkPredicate
 {
-  GdkEventFunc func;
+  CdkEventFunc func;
   gpointer data;
 };
 
-typedef struct _GdkThreadsDispatch GdkThreadsDispatch;
+typedef struct _CdkThreadsDispatch CdkThreadsDispatch;
 
-struct _GdkThreadsDispatch
+struct _CdkThreadsDispatch
 {
   GSourceFunc func;
   gpointer data;
@@ -453,10 +453,10 @@ cdk_get_display_arg_name (void)
  * Returns: (nullable) (transfer none): the default display, if it
  *   could be opened, otherwise %NULL.
  */
-GdkDisplay *
+CdkDisplay *
 cdk_display_open_default (void)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   g_return_val_if_fail (cdk_initialized, NULL);
 
@@ -510,7 +510,7 @@ cdk_should_use_portal (void)
  * Deprecated: 3.16: This symbol was never meant to be used outside
  *   of CTK+
  */
-GdkDisplay *
+CdkDisplay *
 cdk_display_open_default_libctk_only (void)
 {
   return cdk_display_open_default ();
@@ -760,7 +760,7 @@ cdk_threads_set_lock_functions (GCallback enter_fn,
 static gboolean
 cdk_threads_dispatch (gpointer data)
 {
-  GdkThreadsDispatch *dispatch = data;
+  CdkThreadsDispatch *dispatch = data;
   gboolean ret = FALSE;
 
   cdk_threads_enter ();
@@ -776,12 +776,12 @@ cdk_threads_dispatch (gpointer data)
 static void
 cdk_threads_dispatch_free (gpointer data)
 {
-  GdkThreadsDispatch *dispatch = data;
+  CdkThreadsDispatch *dispatch = data;
 
   if (dispatch->destroy && dispatch->data)
     dispatch->destroy (dispatch->data);
 
-  g_slice_free (GdkThreadsDispatch, data);
+  g_slice_free (CdkThreadsDispatch, data);
 }
 
 
@@ -845,11 +845,11 @@ cdk_threads_add_idle_full (gint           priority,
                            gpointer       data,
                            GDestroyNotify notify)
 {
-  GdkThreadsDispatch *dispatch;
+  CdkThreadsDispatch *dispatch;
 
   g_return_val_if_fail (function != NULL, 0);
 
-  dispatch = g_slice_new (GdkThreadsDispatch);
+  dispatch = g_slice_new (CdkThreadsDispatch);
   dispatch->func = function;
   dispatch->data = data;
   dispatch->destroy = notify;
@@ -948,11 +948,11 @@ cdk_threads_add_timeout_full (gint           priority,
                               gpointer       data,
                               GDestroyNotify notify)
 {
-  GdkThreadsDispatch *dispatch;
+  CdkThreadsDispatch *dispatch;
 
   g_return_val_if_fail (function != NULL, 0);
 
-  dispatch = g_slice_new (GdkThreadsDispatch);
+  dispatch = g_slice_new (CdkThreadsDispatch);
   dispatch->func = function;
   dispatch->data = data;
   dispatch->destroy = notify;
@@ -1014,11 +1014,11 @@ cdk_threads_add_timeout_seconds_full (gint           priority,
                                       gpointer       data,
                                       GDestroyNotify notify)
 {
-  GdkThreadsDispatch *dispatch;
+  CdkThreadsDispatch *dispatch;
 
   g_return_val_if_fail (function != NULL, 0);
 
-  dispatch = g_slice_new (GdkThreadsDispatch);
+  dispatch = g_slice_new (CdkThreadsDispatch);
   dispatch->func = function;
   dispatch->data = data;
   dispatch->destroy = notify;

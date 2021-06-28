@@ -294,7 +294,7 @@ libcdk = library('cdk-3',
                  include_directories: [confinc, cdkx11_inc, wlinc],
                  c_args: [
                    '-DGDK_COMPILATION',
-                   '-DG_LOG_DOMAIN="Gdk"',
+                   '-DG_LOG_DOMAIN="Cdk"',
                  ] + common_cflags,
                  link_whole: cdk_backends,
                  link_args: cdk_link_args,
@@ -314,7 +314,7 @@ if build_gir
   if pixbuf_dep.type_name() == 'internal'
     cdk_gir_inc += subproject('cdk-pixbuf').get_variable('cdkpixbuf_gir').get(0)
   else
-    cdk_gir_inc += 'GdkPixbuf-2.0'
+    cdk_gir_inc += 'CdkPixbuf-2.0'
   endif
 
   if pango_dep.type_name() == 'internal'
@@ -327,9 +327,9 @@ if build_gir
   cdk_gir_sources += cdk_sources + cdk_enums + [cdkconfig]
   cdk_gir = gnome.generate_gir(libcdk,
                                sources: cdk_gir_sources,
-                               namespace: 'Gdk',
+                               namespace: 'Cdk',
                                nsversion: ctk_api_version,
-                               identifier_prefix: 'Gdk',
+                               identifier_prefix: 'Cdk',
                                symbol_prefix: 'cdk',
                                export_packages: 'cdk-3.0',
                                includes: cdk_gir_inc,
@@ -344,9 +344,9 @@ if build_gir
   if x11_enabled
     cdk_x11_gir = gnome.generate_gir(libcdk,
                                      sources: cdk_x11_public_headers + cdk_x11_sources,
-                                     namespace: 'GdkX11',
+                                     namespace: 'CdkX11',
                                      nsversion: ctk_api_version,
-                                     identifier_prefix: 'Gdk',
+                                     identifier_prefix: 'Cdk',
                                      symbol_prefix: 'cdk',
                                      export_packages: 'cdk-x11-3.0',
                                      includes: cdk_gir_inc + [ cdk_gir[0], 'xlib-2.0', ],
@@ -362,9 +362,9 @@ if build_gir
   if win32_enabled
     cdk_win32_gir = gnome.generate_gir(libcdk,
                                      sources: cdk_win32_public_headers + cdk_win32_sources,
-                                     namespace: 'GdkWin32',
+                                     namespace: 'CdkWin32',
                                      nsversion: ctk_api_version,
-                                     identifier_prefix: 'Gdk',
+                                     identifier_prefix: 'Cdk',
                                      symbol_prefix: 'cdk',
                                      export_packages: 'cdk-win32-3.0',
                                      includes: cdk_gir_inc + [cdk_gir[0]],

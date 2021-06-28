@@ -36,13 +36,13 @@
 #include "cdkmonitor-win32.h"
 #include "cdkwin32.h"
 
-GdkAtom
-_cdk_win32_display_manager_atom_intern (GdkDisplayManager *manager,
+CdkAtom
+_cdk_win32_display_manager_atom_intern (CdkDisplayManager *manager,
 					const gchar *atom_name,
 					gint         only_if_exists)
 {
   ATOM win32_atom;
-  GdkAtom retval;
+  CdkAtom retval;
   static GHashTable *atom_hash = NULL;
 
   if (!atom_hash)
@@ -87,8 +87,8 @@ _cdk_win32_display_manager_atom_intern (GdkDisplayManager *manager,
 }
 
 gchar *
-_cdk_win32_display_manager_get_atom_name (GdkDisplayManager *manager,
-					  GdkAtom            atom)
+_cdk_win32_display_manager_get_atom_name (CdkDisplayManager *manager,
+					  CdkAtom            atom)
 {
   ATOM win32_atom;
   gchar name[256];
@@ -116,13 +116,13 @@ _cdk_win32_display_manager_get_atom_name (GdkDisplayManager *manager,
 }
 
 gint
-_cdk_win32_window_get_property (GdkWindow   *window,
-		  GdkAtom      property,
-		  GdkAtom      type,
+_cdk_win32_window_get_property (CdkWindow   *window,
+		  CdkAtom      property,
+		  CdkAtom      type,
 		  gulong       offset,
 		  gulong       length,
 		  gint         pdelete,
-		  GdkAtom     *actual_property_type,
+		  CdkAtom     *actual_property_type,
 		  gint        *actual_format_type,
 		  gint        *actual_length,
 		  guchar     **data)
@@ -139,15 +139,15 @@ _cdk_win32_window_get_property (GdkWindow   *window,
 }
 
 void
-_cdk_win32_window_change_property (GdkWindow         *window,
-                                   GdkAtom            property,
-                                   GdkAtom            type,
+_cdk_win32_window_change_property (CdkWindow         *window,
+                                   CdkAtom            property,
+                                   CdkAtom            type,
                                    gint               format,
-                                   GdkPropMode        mode,
+                                   CdkPropMode        mode,
                                    const guchar      *data,
                                    gint               nelements)
 {
-  GdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
+  CdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
 
   g_return_if_fail (window != NULL);
   g_return_if_fail (GDK_IS_WINDOW (window));
@@ -205,8 +205,8 @@ _cdk_win32_window_change_property (GdkWindow         *window,
 }
 
 void
-_cdk_win32_window_delete_property (GdkWindow *window,
-				   GdkAtom    property)
+_cdk_win32_window_delete_property (CdkWindow *window,
+				   CdkAtom    property)
 {
   gchar *prop_name;
 
@@ -227,7 +227,7 @@ _cdk_win32_window_delete_property (GdkWindow *window,
     _cdk_selection_property_delete (window);
   else if (property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_WM_TRANSIENT_FOR))
     {
-      GdkScreen *screen;
+      CdkScreen *screen;
 
       screen = cdk_window_get_screen (window);
       cdk_window_set_transient_for (window, cdk_screen_get_root_window (screen));
@@ -306,7 +306,7 @@ _get_system_font_name (HDC hdc)
 
 */
 gboolean
-_cdk_win32_screen_get_setting (GdkScreen   *screen,
+_cdk_win32_screen_get_setting (CdkScreen   *screen,
                         const gchar *name,
                         GValue      *value)
 {
@@ -385,7 +385,7 @@ _cdk_win32_screen_get_setting (GdkScreen   *screen,
   else if (strcmp ("ctk-xft-rgba", name) == 0)
     {
       const gchar *rgb_value;
-      GdkMonitor *monitor;
+      CdkMonitor *monitor;
       monitor = cdk_display_get_monitor (cdk_display_get_default (), 0);
       rgb_value = _cdk_win32_monitor_get_pixel_structure (monitor);
       g_value_set_static_string (value, rgb_value);

@@ -83,14 +83,14 @@ gchar*        cdk_get_display        (void);
 
 #ifndef GDK_MULTIDEVICE_SAFE
 GDK_DEPRECATED_IN_3_0_FOR(cdk_device_grab)
-GdkGrabStatus cdk_pointer_grab       (GdkWindow    *window,
+CdkGrabStatus cdk_pointer_grab       (CdkWindow    *window,
                                       gboolean      owner_events,
-                                      GdkEventMask  event_mask,
-                                      GdkWindow    *confine_to,
-                                      GdkCursor    *cursor,
+                                      CdkEventMask  event_mask,
+                                      CdkWindow    *confine_to,
+                                      CdkCursor    *cursor,
                                       guint32       time_);
 GDK_DEPRECATED_IN_3_0_FOR(cdk_device_grab)
-GdkGrabStatus cdk_keyboard_grab      (GdkWindow    *window,
+CdkGrabStatus cdk_keyboard_grab      (CdkWindow    *window,
                                       gboolean      owner_events,
                                       guint32       time_);
 #endif /* GDK_MULTIDEVICE_SAFE */

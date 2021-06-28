@@ -97,9 +97,9 @@ void           ctk_viewport_set_shadow_type (CtkViewport   *viewport,
 GDK_AVAILABLE_IN_ALL
 CtkShadowType  ctk_viewport_get_shadow_type (CtkViewport   *viewport);
 GDK_AVAILABLE_IN_ALL
-GdkWindow*     ctk_viewport_get_bin_window  (CtkViewport   *viewport);
+CdkWindow*     ctk_viewport_get_bin_window  (CtkViewport   *viewport);
 GDK_AVAILABLE_IN_ALL
-GdkWindow*     ctk_viewport_get_view_window (CtkViewport   *viewport);
+CdkWindow*     ctk_viewport_get_view_window (CtkViewport   *viewport);
 
 
 G_END_DECLS

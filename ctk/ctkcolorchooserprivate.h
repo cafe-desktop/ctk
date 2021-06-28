@@ -23,7 +23,7 @@
 G_BEGIN_DECLS
 
 void _ctk_color_chooser_color_activated (CtkColorChooser *chooser,
-                                         const GdkRGBA   *color);
+                                         const CdkRGBA   *color);
 
 cairo_pattern_t * _ctk_color_chooser_get_checkered_pattern (void);
 

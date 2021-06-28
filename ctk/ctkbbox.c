@@ -1028,7 +1028,7 @@ ctk_button_box_size_allocate (CtkWidget     *widget,
 {
   CtkButtonBoxPrivate *priv = CTK_BUTTON_BOX (widget)->priv;
   CtkCssGadget *gadget;
-  GdkRectangle clip;
+  CdkRectangle clip;
 
   if (priv->layout_style == CTK_BUTTONBOX_EXPAND)
     gadget = ctk_box_get_gadget (CTK_BOX (widget));

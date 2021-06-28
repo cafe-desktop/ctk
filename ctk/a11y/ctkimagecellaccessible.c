@@ -94,7 +94,7 @@ ctk_image_cell_accessible_get_image_size (AtkImage *image,
 {
   CtkImageCellAccessible *cell = CTK_IMAGE_CELL_ACCESSIBLE (image);
   CtkCellRenderer *cell_renderer;
-  GdkPixbuf *pixbuf = NULL;
+  CdkPixbuf *pixbuf = NULL;
 
   *width = 0;
   *height = 0;

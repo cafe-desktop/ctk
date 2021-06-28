@@ -151,7 +151,7 @@ struct _CtkCellViewPrivate
 
   CtkCssGadget        *gadget;
 
-  GdkRGBA              background;
+  CdkRGBA              background;
 
   gulong               size_changed_id;
   gulong               row_changed_id;
@@ -222,7 +222,7 @@ ctk_cell_view_class_init (CtkCellViewClass *klass)
   /**
    * CtkCellView:background-cdk:
    *
-   * The background color as a #GdkColor
+   * The background color as a #CdkColor
    *
    * Deprecated: 3.4: Use #CtkCellView:background-rgba instead.
    */
@@ -231,14 +231,14 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                                    PROP_BACKGROUND_GDK,
                                    g_param_spec_boxed ("background-cdk",
                                                       P_("Background color"),
-                                                      P_("Background color as a GdkColor"),
+                                                      P_("Background color as a CdkColor"),
                                                       GDK_TYPE_COLOR,
                                                       CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkCellView:background-rgba:
    *
-   * The background color as a #GdkRGBA
+   * The background color as a #CdkRGBA
    *
    * Since: 3.0
    */
@@ -246,7 +246,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                    PROP_BACKGROUND_RGBA,
                                    g_param_spec_boxed ("background-rgba",
                                                       P_("Background RGBA color"),
-                                                      P_("Background color as a GdkRGBA"),
+                                                      P_("Background color as a CdkRGBA"),
                                                       GDK_TYPE_RGBA,
                                                       CTK_PARAM_READWRITE));
 
@@ -408,7 +408,7 @@ ctk_cell_view_get_property (GObject    *object,
       break;
     case PROP_BACKGROUND_GDK:
       {
-	GdkColor color;
+	CdkColor color;
 	
 	color.red = (guint) (view->priv->background.red * 65535);
 	color.green = (guint) (view->priv->background.green * 65535);
@@ -470,7 +470,7 @@ ctk_cell_view_set_property (GObject      *object,
       break;
     case PROP_BACKGROUND:
       {
-        GdkRGBA color;
+        CdkRGBA color;
 
 	if (!g_value_get_string (value))
           ctk_cell_view_set_background_rgba (view, NULL);
@@ -485,8 +485,8 @@ ctk_cell_view_set_property (GObject      *object,
       break;
     case PROP_BACKGROUND_GDK:
       {
-        GdkColor *color;
-        GdkRGBA rgba;
+        CdkColor *color;
+        CdkRGBA rgba;
 
         color = g_value_get_boxed (value);
 
@@ -892,7 +892,7 @@ ctk_cell_view_render (CtkCssGadget *gadget,
 {
   CtkWidget *widget;
   CtkCellView *cellview;
-  GdkRectangle area;
+  CdkRectangle area;
   CtkCellRendererState state;
 
   widget = ctk_css_gadget_get_owner (gadget);
@@ -1176,7 +1176,7 @@ ctk_cell_view_new_with_markup (const gchar *markup)
  * Since: 2.6
  */
 CtkWidget *
-ctk_cell_view_new_with_pixbuf (GdkPixbuf *pixbuf)
+ctk_cell_view_new_with_pixbuf (CdkPixbuf *pixbuf)
 {
   CtkCellView *cellview;
   CtkCellRenderer *renderer;
@@ -1401,7 +1401,7 @@ ctk_cell_view_get_size_of_row (CtkCellView    *cell_view,
  */
 void
 ctk_cell_view_set_background_color (CtkCellView    *cell_view,
-                                    const GdkColor *color)
+                                    const CdkColor *color)
 {
   g_return_if_fail (CTK_IS_CELL_VIEW (cell_view));
 
@@ -1441,7 +1441,7 @@ ctk_cell_view_set_background_color (CtkCellView    *cell_view,
  */
 void
 ctk_cell_view_set_background_rgba (CtkCellView   *cell_view,
-                                   const GdkRGBA *rgba)
+                                   const CdkRGBA *rgba)
 {
   g_return_if_fail (CTK_IS_CELL_VIEW (cell_view));
 

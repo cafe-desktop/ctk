@@ -520,7 +520,7 @@ ctk_menu_item_accessible_get_keybinding (AtkAction *action,
   temp_item = item;
   while (TRUE)
     {
-      GdkModifierType mnemonic_modifier = 0;
+      CdkModifierType mnemonic_modifier = 0;
       guint key_val;
       gchar *key, *temp_keybinding;
 
@@ -594,7 +594,7 @@ ctk_menu_item_accessible_get_keybinding (AtkAction *action,
       if (CTK_IS_ACCEL_LABEL (child))
         {
           guint accel_key;
-          GdkModifierType accel_mods;
+          CdkModifierType accel_mods;
 
           ctk_accel_label_get_accel (CTK_ACCEL_LABEL (child), &accel_key, &accel_mods);
 

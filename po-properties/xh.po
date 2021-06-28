@@ -1311,8 +1311,8 @@ msgid "Cell background color"
 msgstr "Umbala wokuvela ngasemva kwi-cell"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Umbala wokuvela ngasemva kwi-cell njenge-GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Umbala wokuvela ngasemva kwi-cell njenge-CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1574,8 +1574,8 @@ msgid "Background color"
 msgstr "Umbala wokuvela ngasemva"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Umbala wokuvela ngasemva njenge-GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Umbala wokuvela ngasemva njenge-CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1591,8 +1591,8 @@ msgid "Foreground color"
 msgstr "Umbala wokuvela ngaphambili"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Umbala wokuvela ngaphambili njenge-GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Umbala wokuvela ngaphambili njenge-CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3272,8 +3272,8 @@ msgid "Pixbuf"
 msgstr "I-Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "I-GdkPixbuf emayibonakaliswe"
+msgid "A CdkPixbuf to display"
+msgstr "I-CdkPixbuf emayibonakaliswe"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3321,8 +3321,8 @@ msgid "Animation"
 msgstr "Upopayi"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "I-GdkPixbufAnimation emayibonakaliswe"
+msgid "CdkPixbufAnimation to display"
+msgstr "I-CdkPixbufAnimation emayibonakaliswe"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -4273,7 +4273,7 @@ msgstr ""
 #: ctk/ctkprinter.c:133
 #, fuzzy
 msgid "Backend for the printer"
-msgstr "i-GdkScreen yomnikezeli"
+msgstr "i-CdkScreen yomnikezeli"
 
 #: ctk/ctkprinter.c:139
 #, fuzzy
@@ -6047,7 +6047,7 @@ msgstr "Ukukhetha I-hover"
 #: ctk/ctktextbuffer.c:226
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "I-GdkFont ekhethiweyo ngalo mzuzu"
+msgstr "I-CdkFont ekhethiweyo ngalo mzuzu"
 
 #: ctk/ctktextbuffer.c:242
 #, fuzzy
@@ -6105,8 +6105,8 @@ msgstr ""
 "ezingenagama zisebenzisa u-NULL"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Umbala wokuvela ngasemva njenge-GdkColor (usenokunganikwa)"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Umbala wokuvela ngasemva njenge-CdkColor (usenokunganikwa)"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -6121,8 +6121,8 @@ msgstr ""
 "umphakamo weempawu ezineziphawuli nje kuphela"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Umbala wokuvela ngaphambili njenge-GdkColor (usenokunganikwa)"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Umbala wokuvela ngaphambili njenge-CdkColor (usenokunganikwa)"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6282,8 +6282,8 @@ msgstr "Umbala wokuvela ngasemva kwi-cell"
 
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Umbala wokuvela ngasemva njenge-GdkColor (usenokunganikwa)"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Umbala wokuvela ngasemva njenge-CdkColor (usenokunganikwa)"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7295,9 +7295,9 @@ msgid "Events"
 msgstr "Izehlo"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Isigqubuthelo sesehlo esikhetha uhlobo lwe-GdkEvents olufunyanwa sesi sixhobo"
+"Isigqubuthelo sesehlo esikhetha uhlobo lwe-CdkEvents olufunyanwa sesi sixhobo"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7824,8 +7824,8 @@ msgstr ""
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "Isalathisi esiya kwi-data ye-pixel ye-pixbuf"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "i-GdkScreen yomnikezeli"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "i-CdkScreen yomnikezeli"
 
 #, fuzzy
 #~ msgid "The adjustment that holds the value of the spinbutton."
@@ -7851,8 +7851,8 @@ msgstr ""
 #~ "I-bitmap esetyenziswa njengesigqubuthelo xa kuzotywa umbhalo wokuvela "
 #~ "ngasemva"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "I-GdkFont ekhethiweyo ngalo mzuzu"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "I-CdkFont ekhethiweyo ngalo mzuzu"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "Into eyaliweyo, sebenzisa shadow_type endaweni yayo"
@@ -7860,18 +7860,18 @@ msgstr ""
 #~ msgid "Pixmap"
 #~ msgstr "I-Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "I-GdkPixmap emayibonakaliswe"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "I-CdkPixmap emayibonakaliswe"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "I-GdkImage emayibonakaliswe"
+#~ msgid "A CdkImage to display"
+#~ msgstr "I-CdkImage emayibonakaliswe"
 
 #~ msgid "Mask"
 #~ msgstr "Isigqubuthelo"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
 #~ msgstr ""
-#~ "Isiqgubuthelo se-bitmap esisetyenziswa ne-GdkImage okanye i-GdkPixmap"
+#~ "Isiqgubuthelo se-bitmap esisetyenziswa ne-CdkImage okanye i-CdkPixmap"
 
 #~ msgid "Use separator"
 #~ msgstr "Sebenzisa isahluli"

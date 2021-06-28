@@ -58,21 +58,21 @@ CtkModifierStyle * _ctk_modifier_style_new (void);
 
 void _ctk_modifier_style_set_background_color (CtkModifierStyle *style,
                                                CtkStateFlags     state,
-                                               const GdkRGBA    *color);
+                                               const CdkRGBA    *color);
 void _ctk_modifier_style_set_color            (CtkModifierStyle *style,
                                                CtkStateFlags     state,
-                                               const GdkRGBA    *color);
+                                               const CdkRGBA    *color);
 void _ctk_modifier_style_set_font             (CtkModifierStyle           *style,
                                                const PangoFontDescription *font_desc);
 
 void _ctk_modifier_style_map_color            (CtkModifierStyle *style,
                                                const gchar      *name,
-                                               const GdkRGBA    *color);
+                                               const CdkRGBA    *color);
 
 void _ctk_modifier_style_set_color_property   (CtkModifierStyle *style,
                                                GType             widget_type,
                                                const gchar      *prop_name,
-                                               const GdkRGBA    *color);
+                                               const CdkRGBA    *color);
 
 G_END_DECLS
 

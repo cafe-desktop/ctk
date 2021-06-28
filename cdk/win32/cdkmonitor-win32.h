@@ -48,28 +48,28 @@
  * flipped both horizontally and vertically
  * (rgb -> vbgr; bgr -> vrgb).
  */
-typedef enum _GdkWin32MonitorRotation {
+typedef enum _CdkWin32MonitorRotation {
   GDK_WIN32_MONITOR_ROTATION_UNKNOWN = 0,
   GDK_WIN32_MONITOR_ROTATION_0 = 1,
   GDK_WIN32_MONITOR_ROTATION_90 = 2,
   GDK_WIN32_MONITOR_ROTATION_180 = 3,
   GDK_WIN32_MONITOR_ROTATION_270 = 4,
-} GdkWin32MonitorRotation;
+} CdkWin32MonitorRotation;
 
-struct _GdkWin32Monitor
+struct _CdkWin32Monitor
 {
-  GdkMonitor parent;
+  CdkMonitor parent;
 
   /* work area */
-  GdkRectangle work_rect;
+  CdkRectangle work_rect;
 
-  /* Device instance path (used to match GdkWin32Monitor to monitor device) */
+  /* Device instance path (used to match CdkWin32Monitor to monitor device) */
   gchar *instance_path;
 
   /* Indicates display rotation and its normal proportions.
    * Used to determine pixel structure for subpixel smoothing.
    */
-  GdkWin32MonitorRotation orientation;
+  CdkWin32MonitorRotation orientation;
 
   /* TRUE if monitor is made up by us
    * (this happens when system has logical monitors, but no physical ones).
@@ -83,12 +83,12 @@ struct _GdkWin32Monitor
   guint remove : 1;
 };
 
-struct _GdkWin32MonitorClass {
-  GdkMonitorClass parent_class;
+struct _CdkWin32MonitorClass {
+  CdkMonitorClass parent_class;
 };
 
-int        _cdk_win32_monitor_compare  (GdkWin32Monitor *a, GdkWin32Monitor *b);
+int        _cdk_win32_monitor_compare  (CdkWin32Monitor *a, CdkWin32Monitor *b);
 
-const gchar *_cdk_win32_monitor_get_pixel_structure (GdkMonitor *monitor);
+const gchar *_cdk_win32_monitor_get_pixel_structure (CdkMonitor *monitor);
 
 #endif

@@ -24,14 +24,14 @@
 #include "cdkscreen-x11.h"
 
 
-G_DEFINE_TYPE (GdkX11Monitor, cdk_x11_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (CdkX11Monitor, cdk_x11_monitor, GDK_TYPE_MONITOR)
 
 static gboolean
-cdk_monitor_has_fullscreen_window (GdkMonitor *monitor)
+cdk_monitor_has_fullscreen_window (CdkMonitor *monitor)
 {
-  GdkScreen *screen = cdk_display_get_default_screen (monitor->display);
+  CdkScreen *screen = cdk_display_get_default_screen (monitor->display);
   GList *toplevels, *l;
-  GdkWindow *window;
+  CdkWindow *window;
   gboolean has_fullscreen;
 
   toplevels = cdk_screen_get_toplevel_windows (screen);
@@ -58,11 +58,11 @@ cdk_monitor_has_fullscreen_window (GdkMonitor *monitor)
 }
 
 static void
-cdk_x11_monitor_get_workarea (GdkMonitor   *monitor,
-                              GdkRectangle *dest)
+cdk_x11_monitor_get_workarea (CdkMonitor   *monitor,
+                              CdkRectangle *dest)
 {
-  GdkScreen *screen = cdk_display_get_default_screen (monitor->display);
-  GdkRectangle workarea;
+  CdkScreen *screen = cdk_display_get_default_screen (monitor->display);
+  CdkRectangle workarea;
 
   cdk_monitor_get_geometry (monitor, dest);
 
@@ -90,18 +90,18 @@ cdk_x11_monitor_get_workarea (GdkMonitor   *monitor,
 }
 
 static void
-cdk_x11_monitor_init (GdkX11Monitor *monitor)
+cdk_x11_monitor_init (CdkX11Monitor *monitor)
 {
 }
 
 static void
-cdk_x11_monitor_class_init (GdkX11MonitorClass *class)
+cdk_x11_monitor_class_init (CdkX11MonitorClass *class)
 {
   GDK_MONITOR_CLASS (class)->get_workarea = cdk_x11_monitor_get_workarea;
 }
 
 XID
-cdk_x11_monitor_get_output (GdkMonitor *monitor)
+cdk_x11_monitor_get_output (CdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_X11_MONITOR (monitor), 0);
 

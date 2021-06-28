@@ -922,7 +922,7 @@ ctk_rc_style_init (CtkRcStyle *style)
 
   for (i = 0; i < 5; i++)
     {
-      static const GdkColor init_color = { 0, 0, 0, 0, };
+      static const CdkColor init_color = { 0, 0, 0, 0, };
 
       style->bg_pixmap_name[i] = NULL;
       style->color_flags[i] = 0;
@@ -1211,7 +1211,7 @@ ctk_rc_style_real_create_style (CtkRcStyle *rc_style)
  *
  * This function recomputes the styles for all widgets that use a
  * particular #CtkSettings object. (There is one #CtkSettings object
- * per #GdkScreen, see ctk_settings_get_for_screen()); It is useful
+ * per #CdkScreen, see ctk_settings_get_for_screen()); It is useful
  * when some global parameter has changed that affects the appearance
  * of all widgets, because when a widget gets a new style, it will
  * both redraw and recompute any cached information about its
@@ -1431,7 +1431,7 @@ ctk_rc_scanner_new (void)
 static gboolean
 lookup_color (CtkRcStyle *style,
               const char *color_name,
-              GdkColor   *color)
+              CdkColor   *color)
 {
   CtkRcStylePrivate *priv = CTK_RC_STYLE_GET_PRIVATE (style);
   GSList *iter;
@@ -1439,7 +1439,7 @@ lookup_color (CtkRcStyle *style,
   for (iter = priv->color_hashes; iter != NULL; iter = iter->next)
     {
       GHashTable *hash  = iter->data;
-      GdkColor   *match = g_hash_table_lookup (hash, color_name);
+      CdkColor   *match = g_hash_table_lookup (hash, color_name);
 
       if (match)
         {
@@ -1628,7 +1628,7 @@ ctk_rc_parse_priority (GScanner	           *scanner,
 /**
  * ctk_rc_parse_color:
  * @scanner: a #GScanner
- * @color: (out): a pointer to a #GdkColor in which to store
+ * @color: (out): a pointer to a #CdkColor in which to store
  *     the result
  *
  * Parses a color in the format expected
@@ -1644,7 +1644,7 @@ ctk_rc_parse_priority (GScanner	           *scanner,
  */
 guint
 ctk_rc_parse_color (GScanner *scanner,
-		    GdkColor *color)
+		    CdkColor *color)
 {
   return ctk_rc_parse_color_full (scanner, NULL, color);
 }
@@ -1653,7 +1653,7 @@ ctk_rc_parse_color (GScanner *scanner,
  * ctk_rc_parse_color_full:
  * @scanner: a #GScanner
  * @style: (allow-none): a #CtkRcStyle, or %NULL
- * @color: (out): a pointer to a #GdkColor in which to store
+ * @color: (out): a pointer to a #CdkColor in which to store
  *     the result
  *
  * Parses a color in the format expected
@@ -1670,7 +1670,7 @@ ctk_rc_parse_color (GScanner *scanner,
 guint
 ctk_rc_parse_color_full (GScanner   *scanner,
                          CtkRcStyle *style,
-                         GdkColor   *color)
+                         CdkColor   *color)
 {
   guint token;
 
@@ -1684,7 +1684,7 @@ ctk_rc_parse_color_full (GScanner   *scanner,
   switch (token)
     {
       gint token_int;
-      GdkColor c1, c2;
+      CdkColor c1, c2;
       gboolean negate;
       gdouble l;
 

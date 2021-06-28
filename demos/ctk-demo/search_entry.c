@@ -153,11 +153,11 @@ create_search_menu (CtkWidget *entry)
 static void
 icon_press_cb (CtkEntry       *entry,
                gint            position,
-               GdkEventButton *event,
+               CdkEventButton *event,
                gpointer        data)
 {
   if (position == CTK_ENTRY_ICON_PRIMARY)
-    ctk_menu_popup_at_pointer (CTK_MENU (menu), (GdkEvent *) event);
+    ctk_menu_popup_at_pointer (CTK_MENU (menu), (CdkEvent *) event);
 }
 
 static void

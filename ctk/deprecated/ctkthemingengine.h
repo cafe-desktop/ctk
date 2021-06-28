@@ -68,8 +68,8 @@ struct _CtkThemingEngine
  * @render_handle: Renders a handle to drag UI elements, as in #CtkPaned.
  * @render_activity: Renders an area displaying activity, such as in #CtkSpinner,
  *                   or #CtkProgressBar.
- * @render_icon_pixbuf: Renders an icon as a #GdkPixbuf.
- * @render_icon: Renders an icon given as a #GdkPixbuf.
+ * @render_icon_pixbuf: Renders an icon as a #CdkPixbuf.
+ * @render_icon: Renders an icon given as a #CdkPixbuf.
  * @render_icon_surface: Renders an icon given as a #cairo_surface_t.
  *
  * Base class for theming engines.
@@ -169,12 +169,12 @@ struct _CtkThemingEngineClass
                             gdouble           width,
                             gdouble           height);
 
-  GdkPixbuf * (* render_icon_pixbuf) (CtkThemingEngine    *engine,
+  CdkPixbuf * (* render_icon_pixbuf) (CtkThemingEngine    *engine,
                                       const CtkIconSource *source,
                                       CtkIconSize          size);
   void (* render_icon) (CtkThemingEngine *engine,
                         cairo_t          *cr,
-			GdkPixbuf        *pixbuf,
+			CdkPixbuf        *pixbuf,
                         gdouble           x,
                         gdouble           y);
   void (* render_icon_surface) (CtkThemingEngine *engine,
@@ -224,7 +224,7 @@ void ctk_theming_engine_get_style          (CtkThemingEngine *engine,
 GDK_DEPRECATED_IN_3_14
 gboolean ctk_theming_engine_lookup_color (CtkThemingEngine *engine,
                                           const gchar      *color_name,
-                                          GdkRGBA          *color);
+                                          CdkRGBA          *color);
 
 GDK_DEPRECATED_IN_3_14
 const CtkWidgetPath * ctk_theming_engine_get_path (CtkThemingEngine *engine);
@@ -254,15 +254,15 @@ CtkJunctionSides ctk_theming_engine_get_junction_sides (CtkThemingEngine *engine
 GDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_color            (CtkThemingEngine *engine,
                                               CtkStateFlags     state,
-                                              GdkRGBA          *color);
+                                              CdkRGBA          *color);
 GDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_background_color (CtkThemingEngine *engine,
                                               CtkStateFlags     state,
-                                              GdkRGBA          *color);
+                                              CdkRGBA          *color);
 GDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_border_color     (CtkThemingEngine *engine,
                                               CtkStateFlags     state,
-                                              GdkRGBA          *color);
+                                              CdkRGBA          *color);
 
 GDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_border  (CtkThemingEngine *engine,
@@ -285,7 +285,7 @@ GDK_DEPRECATED_IN_3_14
 CtkThemingEngine * ctk_theming_engine_load (const gchar *name);
 
 GDK_DEPRECATED_IN_3_14
-GdkScreen * ctk_theming_engine_get_screen (CtkThemingEngine *engine);
+CdkScreen * ctk_theming_engine_get_screen (CtkThemingEngine *engine);
 
 G_END_DECLS
 

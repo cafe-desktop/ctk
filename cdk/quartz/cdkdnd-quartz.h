@@ -26,17 +26,17 @@
 
 G_BEGIN_DECLS
 
-struct _GdkQuartzDragContext
+struct _CdkQuartzDragContext
 {
-  GdkDragContext context;
+  CdkDragContext context;
 
   id <NSDraggingInfo> dragging_info;
-  GdkDevice *device;
+  CdkDevice *device;
 };
 
-struct _GdkQuartzDragContextClass
+struct _CdkQuartzDragContextClass
 {
-  GdkDragContextClass context_class;
+  CdkDragContextClass context_class;
 };
 
 G_END_DECLS

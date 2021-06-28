@@ -24,7 +24,7 @@
 G_BEGIN_DECLS
 
 
-CtkCssValue *   _ctk_css_color_value_new_literal        (const GdkRGBA  *color);
+CtkCssValue *   _ctk_css_color_value_new_literal        (const CdkRGBA  *color);
 CtkCssValue *   _ctk_css_color_value_new_rgba           (double          red,
                                                          double          green,
                                                          double          blue,

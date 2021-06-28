@@ -46,7 +46,7 @@
  * left corner and coordinates increase up and to the
  * right. Coordinates below or left of the origin are negative.
  *
- * 3. Gdk coordinates origin is at the upper left corner of the
+ * 3. Cdk coordinates origin is at the upper left corner of the
  * imaginary rectangle enclosing all monitors and like Core Graphics
  * increase down and to the right. There are no negative coordinates.
  *
@@ -54,9 +54,9 @@
  * recomputed with new pointers whenever the monitor arrangement
  * changes so we can't cache the references it provides. CoreGraphics
  * screen IDs are constant between reboots so those are what we use to
- * map GdkMonitors and screens, but the sizes and origins must be
- * converted to Gdk coordinates to make sense to Gdk and we must
- * frequently convert between Gdk and AppKit coordinates when
+ * map CdkMonitors and screens, but the sizes and origins must be
+ * converted to Cdk coordinates to make sense to Cdk and we must
+ * frequently convert between Cdk and AppKit coordinates when
  * determining the drawable area of a monitor and placing windows and
  * views (the latter containing our cairo surfaces for drawing on).
  */
@@ -67,22 +67,22 @@ static void display_reconfiguration_callback (CGDirectDisplayID            displ
                                               CGDisplayChangeSummaryFlags  flags,
                                               void                        *data);
 
-static GdkWindow *
-cdk_quartz_display_get_default_group (GdkDisplay *display)
+static CdkWindow *
+cdk_quartz_display_get_default_group (CdkDisplay *display)
 {
 /* X11-only. */
   return NULL;
 }
 
-GdkDeviceManager *
-_cdk_device_manager_new (GdkDisplay *display)
+CdkDeviceManager *
+_cdk_device_manager_new (CdkDisplay *display)
 {
   return g_object_new (GDK_TYPE_QUARTZ_DEVICE_MANAGER_CORE,
                        "display", display,
                        NULL);
 }
 
-GdkDisplay *
+CdkDisplay *
 _cdk_quartz_display_open (const gchar *display_name)
 {
   if (_cdk_display != NULL)
@@ -111,7 +111,7 @@ _cdk_quartz_display_open (const gchar *display_name)
 }
 
 static const gchar *
-cdk_quartz_display_get_name (GdkDisplay *display)
+cdk_quartz_display_get_name (CdkDisplay *display)
 {
   static gchar *display_name = NULL;
 
@@ -125,14 +125,14 @@ cdk_quartz_display_get_name (GdkDisplay *display)
   return display_name;
 }
 
-static GdkScreen *
-cdk_quartz_display_get_default_screen (GdkDisplay *display)
+static CdkScreen *
+cdk_quartz_display_get_default_screen (CdkDisplay *display)
 {
   return _cdk_screen;
 }
 
 static void
-cdk_quartz_display_beep (GdkDisplay *display)
+cdk_quartz_display_beep (CdkDisplay *display)
 {
   g_return_if_fail (GDK_IS_DISPLAY (display));
 
@@ -140,19 +140,19 @@ cdk_quartz_display_beep (GdkDisplay *display)
 }
 
 static void
-cdk_quartz_display_sync (GdkDisplay *display)
+cdk_quartz_display_sync (CdkDisplay *display)
 {
   /* Not needed. */
 }
 
 static void
-cdk_quartz_display_flush (GdkDisplay *display)
+cdk_quartz_display_flush (CdkDisplay *display)
 {
   /* Not needed. */
 }
 
 static gboolean
-cdk_quartz_display_supports_selection_notification (GdkDisplay *display)
+cdk_quartz_display_supports_selection_notification (CdkDisplay *display)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
   /* X11-only. */
@@ -160,39 +160,39 @@ cdk_quartz_display_supports_selection_notification (GdkDisplay *display)
 }
 
 static gboolean
-cdk_quartz_display_request_selection_notification (GdkDisplay *display,
-                                                   GdkAtom     selection)
+cdk_quartz_display_request_selection_notification (CdkDisplay *display,
+                                                   CdkAtom     selection)
 {
   /* X11-only. */
   return FALSE;
 }
 
 static gboolean
-cdk_quartz_display_supports_clipboard_persistence (GdkDisplay *display)
+cdk_quartz_display_supports_clipboard_persistence (CdkDisplay *display)
 {
   /* X11-only */
   return FALSE;
 }
 
 static gboolean
-cdk_quartz_display_supports_shapes (GdkDisplay *display)
+cdk_quartz_display_supports_shapes (CdkDisplay *display)
 {
   /* Not needed, nothing ever calls this.*/
   return FALSE;
 }
 
 static gboolean
-cdk_quartz_display_supports_input_shapes (GdkDisplay *display)
+cdk_quartz_display_supports_input_shapes (CdkDisplay *display)
 {
   /* Not needed, nothign ever calls this. */
   return FALSE;
 }
 
 static void
-cdk_quartz_display_store_clipboard (GdkDisplay    *display,
-                                    GdkWindow     *clipboard_window,
+cdk_quartz_display_store_clipboard (CdkDisplay    *display,
+                                    CdkWindow     *clipboard_window,
                                     guint32        time_,
-                                    const GdkAtom *targets,
+                                    const CdkAtom *targets,
                                     gint           n_targets)
 {
   /* MacOS persists pasteboard items automatically, no application
@@ -202,21 +202,21 @@ cdk_quartz_display_store_clipboard (GdkDisplay    *display,
 
 
 static gboolean
-cdk_quartz_display_supports_composite (GdkDisplay *display)
+cdk_quartz_display_supports_composite (CdkDisplay *display)
 {
   /* X11-only. */
   return FALSE;
 }
 
 static gulong
-cdk_quartz_display_get_next_serial (GdkDisplay *display)
+cdk_quartz_display_get_next_serial (CdkDisplay *display)
 {
   /* X11-only. */
   return 0;
 }
 
 static void
-cdk_quartz_display_notify_startup_complete (GdkDisplay  *display,
+cdk_quartz_display_notify_startup_complete (CdkDisplay  *display,
                                             const gchar *startup_id)
 {
   /* This should call finishLaunching, but doing so causes Quartz to throw
@@ -227,13 +227,13 @@ cdk_quartz_display_notify_startup_complete (GdkDisplay  *display,
 }
 
 static void
-cdk_quartz_display_push_error_trap (GdkDisplay *display)
+cdk_quartz_display_push_error_trap (CdkDisplay *display)
 {
   /* X11-only. */
 }
 
 static gint
-cdk_quartz_display_pop_error_trap (GdkDisplay *display, gboolean ignore)
+cdk_quartz_display_pop_error_trap (CdkDisplay *display, gboolean ignore)
 {
   /* X11 only. */
   return 0;
@@ -243,7 +243,7 @@ cdk_quartz_display_pop_error_trap (GdkDisplay *display, gboolean ignore)
    to the system, some of which may not be drawable either because
    they're asleep or are mirroring another monitor. The NSScreens
    array contains only the monitors that are currently drawable and we
-   use the index of the screens array placing GdkNSViews, so we'll use
+   use the index of the screens array placing CdkNSViews, so we'll use
    the same for determining the number of monitors and indexing them.
  */
 
@@ -262,10 +262,10 @@ get_active_displays (CGDirectDisplayID **displays)
   return n_displays;
 }
 
-static inline GdkRectangle
+static inline CdkRectangle
 cgrect_to_cdkrect (CGRect cgrect)
 {
-  GdkRectangle cdkrect = {(int)trunc (cgrect.origin.x),
+  CdkRectangle cdkrect = {(int)trunc (cgrect.origin.x),
                           (int)trunc (cgrect.origin.y),
                           (int)trunc (cgrect.size.width),
                           (int)trunc (cgrect.size.height)};
@@ -273,20 +273,20 @@ cgrect_to_cdkrect (CGRect cgrect)
 }
 
 static void
-configure_monitor (GdkMonitor       *monitor,
-                   GdkQuartzDisplay *display)
+configure_monitor (CdkMonitor       *monitor,
+                   CdkQuartzDisplay *display)
 {
-  GdkQuartzMonitor *quartz_monitor = GDK_QUARTZ_MONITOR (monitor);
+  CdkQuartzMonitor *quartz_monitor = GDK_QUARTZ_MONITOR (monitor);
   CGSize disp_size = CGDisplayScreenSize (quartz_monitor->id);
   gint width = (int)trunc (disp_size.width);
   gint height = (int)trunc (disp_size.height);
   CGRect disp_bounds = CGDisplayBounds (quartz_monitor->id);
   CGRect main_bounds = CGDisplayBounds (CGMainDisplayID());
-  /* Change origin to Gdk coordinates. */
+  /* Change origin to Cdk coordinates. */
   disp_bounds.origin.x = disp_bounds.origin.x + display->geometry.origin.x;
   disp_bounds.origin.y =
     display->geometry.origin.y - main_bounds.size.height + disp_bounds.origin.y;
-  GdkRectangle disp_geometry = cgrect_to_cdkrect (disp_bounds);
+  CdkRectangle disp_geometry = cgrect_to_cdkrect (disp_bounds);
   CGDisplayModeRef mode = CGDisplayCopyDisplayMode (quartz_monitor->id);
   gint refresh_rate = (int)trunc (CGDisplayModeGetRefreshRate (mode));
 
@@ -307,7 +307,7 @@ configure_monitor (GdkMonitor       *monitor,
 }
 
 static void
-display_rect (GdkQuartzDisplay *display)
+display_rect (CdkQuartzDisplay *display)
 {
   uint32_t disp, n_displays = 0;
   float min_x = 0.0, max_x = 0.0, min_y = 0.0, max_y = 0.0;
@@ -345,7 +345,7 @@ display_rect (GdkQuartzDisplay *display)
 static gboolean
 same_monitor (gconstpointer a, gconstpointer b)
 {
-  GdkQuartzMonitor *mon_a = GDK_QUARTZ_MONITOR (a);
+  CdkQuartzMonitor *mon_a = GDK_QUARTZ_MONITOR (a);
   CGDirectDisplayID disp_id = (CGDirectDisplayID)GPOINTER_TO_INT (b);
   if (!mon_a)
     return FALSE;
@@ -357,7 +357,7 @@ display_reconfiguration_callback (CGDirectDisplayID            cg_display,
                                   CGDisplayChangeSummaryFlags  flags,
                                   void                        *data)
 {
-  GdkQuartzDisplay *display = data;
+  CdkQuartzDisplay *display = data;
 
   /* Ignore the begin configuration signal. */
   if (flags & kCGDisplayBeginConfigurationFlag)
@@ -367,7 +367,7 @@ display_reconfiguration_callback (CGDirectDisplayID            cg_display,
                kCGDisplaySetMainFlag | kCGDisplayMirrorFlag |
                kCGDisplayUnMirrorFlag))
     {
-      GdkQuartzMonitor *monitor = NULL;
+      CdkQuartzMonitor *monitor = NULL;
       guint index;
 
       if (!g_ptr_array_find_with_equal_func (display->monitors,
@@ -400,7 +400,7 @@ display_reconfiguration_callback (CGDirectDisplayID            cg_display,
                                             same_monitor,
                                             &index))
         {
-          GdkQuartzMonitor *monitor = g_ptr_array_index (display->monitors,
+          CdkQuartzMonitor *monitor = g_ptr_array_index (display->monitors,
                                                          index);
           cdk_display_monitor_removed (GDK_DISPLAY (display),
                                        GDK_MONITOR (monitor));
@@ -413,17 +413,17 @@ display_reconfiguration_callback (CGDirectDisplayID            cg_display,
 
 
 static int
-cdk_quartz_display_get_n_monitors (GdkDisplay *display)
+cdk_quartz_display_get_n_monitors (CdkDisplay *display)
 {
-  GdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
+  CdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
   return quartz_display->monitors->len;
 }
 
-static GdkMonitor *
-cdk_quartz_display_get_monitor (GdkDisplay *display,
+static CdkMonitor *
+cdk_quartz_display_get_monitor (CdkDisplay *display,
                                 int         monitor_num)
 {
-  GdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
+  CdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
   int n_displays = cdk_quartz_display_get_n_monitors (display);
 
   if (monitor_num >= 0 && monitor_num < n_displays)
@@ -432,12 +432,12 @@ cdk_quartz_display_get_monitor (GdkDisplay *display,
   return NULL;
 }
 
-static GdkMonitor *
-cdk_quartz_display_get_primary_monitor (GdkDisplay *display)
+static CdkMonitor *
+cdk_quartz_display_get_primary_monitor (CdkDisplay *display)
 {
-  GdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
+  CdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
   CGDirectDisplayID primary_id = CGMainDisplayID ();
-  GdkMonitor *monitor = NULL;
+  CdkMonitor *monitor = NULL;
   guint index;
 
   if (g_ptr_array_find_with_equal_func (quartz_display->monitors,
@@ -448,17 +448,17 @@ cdk_quartz_display_get_primary_monitor (GdkDisplay *display)
   return monitor;
 }
 
-static GdkMonitor *
-cdk_quartz_display_get_monitor_at_window (GdkDisplay *display,
-                                          GdkWindow *window)
+static CdkMonitor *
+cdk_quartz_display_get_monitor_at_window (CdkDisplay *display,
+                                          CdkWindow *window)
 {
-  GdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
   NSWindow *nswindow = impl->toplevel;
   NSScreen *screen = [nswindow screen];
-  GdkMonitor *monitor = NULL;
+  CdkMonitor *monitor = NULL;
   if (screen)
   {
-    GdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
+    CdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (display);
     guint index;
     CGDirectDisplayID disp_id =
       [[[screen deviceDescription]
@@ -470,7 +470,7 @@ cdk_quartz_display_get_monitor_at_window (GdkDisplay *display,
   }
   if (!monitor)
     {
-      GdkRectangle rect = cgrect_to_cdkrect (NSRectToCGRect ([nswindow frame]));
+      CdkRectangle rect = cgrect_to_cdkrect (NSRectToCGRect ([nswindow frame]));
       monitor = cdk_display_get_monitor_at_point (display,
                                                  rect.x + rect.width/2,
                                                  rect.y + rect.height /2);
@@ -478,10 +478,10 @@ cdk_quartz_display_get_monitor_at_window (GdkDisplay *display,
   return monitor;
 }
 
-G_DEFINE_TYPE (GdkQuartzDisplay, cdk_quartz_display, GDK_TYPE_DISPLAY)
+G_DEFINE_TYPE (CdkQuartzDisplay, cdk_quartz_display, GDK_TYPE_DISPLAY)
 
 static void
-cdk_quartz_display_init (GdkQuartzDisplay *display)
+cdk_quartz_display_init (CdkQuartzDisplay *display)
 {
   uint32_t n_displays = 0, disp;
   CGDirectDisplayID *displays;
@@ -491,7 +491,7 @@ cdk_quartz_display_init (GdkQuartzDisplay *display)
   display->monitors = g_ptr_array_new_full (n_displays, g_object_unref);
   for (disp = 0; disp < n_displays; ++disp)
     {
-      GdkQuartzMonitor *monitor = g_object_new (GDK_TYPE_QUARTZ_MONITOR,
+      CdkQuartzMonitor *monitor = g_object_new (GDK_TYPE_QUARTZ_MONITOR,
                                                        "display", display, NULL);
       monitor->id = displays[disp];
       g_ptr_array_add (display->monitors, monitor);
@@ -507,7 +507,7 @@ cdk_quartz_display_init (GdkQuartzDisplay *display)
 static void
 cdk_quartz_display_dispose (GObject *object)
 {
-  GdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (object);
+  CdkQuartzDisplay *quartz_display = GDK_QUARTZ_DISPLAY (object);
 
   g_ptr_array_free (quartz_display->monitors, TRUE);
   CGDisplayRemoveReconfigurationCallback (display_reconfiguration_callback,
@@ -523,10 +523,10 @@ cdk_quartz_display_finalize (GObject *object)
 }
 
 static void
-cdk_quartz_display_class_init (GdkQuartzDisplayClass *class)
+cdk_quartz_display_class_init (CdkQuartzDisplayClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  GdkDisplayClass *display_class = GDK_DISPLAY_CLASS (class);
+  CdkDisplayClass *display_class = GDK_DISPLAY_CLASS (class);
 
   object_class->finalize = cdk_quartz_display_finalize;
   object_class->dispose = cdk_quartz_display_dispose;
@@ -588,7 +588,7 @@ cdk_quartz_display_class_init (GdkQuartzDisplayClass *class)
   display_class->make_gl_context_current = cdk_quartz_display_make_gl_context_current;
 
   /**
-   * GdkQuartzDisplay::monitors-changed:
+   * CdkQuartzDisplay::monitors-changed:
    * @display: The object on which the signal is emitted
    *
    * The ::monitors-changed signal is emitted whenever the arrangement

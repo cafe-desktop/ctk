@@ -40,7 +40,7 @@ close_cb (CtkWidget *w, gint *flag)
 }
 
 gint
-delete_cb (CtkWidget *w, GdkEvent *event, gint *flag)
+delete_cb (CtkWidget *w, CdkEvent *event, gint *flag)
 {
   *flag = 1;
   return TRUE;

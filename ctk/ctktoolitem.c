@@ -89,7 +89,7 @@ struct _CtkToolItemPrivate
   guint is_important          : 1;
   guint use_action_appearance : 1;
 
-  GdkWindow *drag_window;
+  CdkWindow *drag_window;
   gchar *menu_item_id;
   CtkWidget *menu_item;
 
@@ -391,7 +391,7 @@ create_drag_window (CtkToolItem *toolitem)
 {
   CtkAllocation allocation;
   CtkWidget *widget;
-  GdkWindowAttr attributes;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   g_return_if_fail (toolitem->priv->use_drag_window == TRUE);
@@ -420,7 +420,7 @@ static void
 ctk_tool_item_realize (CtkWidget *widget)
 {
   CtkToolItem *toolitem;
-  GdkWindow *window;
+  CdkWindow *window;
 
   toolitem = CTK_TOOL_ITEM (widget);
   ctk_widget_set_realized (widget, TRUE);

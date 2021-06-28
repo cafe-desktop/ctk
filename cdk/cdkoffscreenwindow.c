@@ -39,40 +39,40 @@
  * GDK_POINTER_MOTION_HINT_MASK isn't effective
  */
 
-typedef struct _GdkOffscreenWindow      GdkOffscreenWindow;
-typedef struct _GdkOffscreenWindowClass GdkOffscreenWindowClass;
+typedef struct _CdkOffscreenWindow      CdkOffscreenWindow;
+typedef struct _CdkOffscreenWindowClass CdkOffscreenWindowClass;
 
-struct _GdkOffscreenWindow
+struct _CdkOffscreenWindow
 {
-  GdkWindowImpl parent_instance;
+  CdkWindowImpl parent_instance;
 
-  GdkWindow *wrapper;
+  CdkWindow *wrapper;
 
   cairo_surface_t *surface;
-  GdkWindow *embedder;
+  CdkWindow *embedder;
 };
 
-struct _GdkOffscreenWindowClass
+struct _CdkOffscreenWindowClass
 {
-  GdkWindowImplClass parent_class;
+  CdkWindowImplClass parent_class;
 };
 
 #define GDK_TYPE_OFFSCREEN_WINDOW            (cdk_offscreen_window_get_type())
-#define GDK_OFFSCREEN_WINDOW(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_OFFSCREEN_WINDOW, GdkOffscreenWindow))
+#define GDK_OFFSCREEN_WINDOW(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_OFFSCREEN_WINDOW, CdkOffscreenWindow))
 #define GDK_IS_OFFSCREEN_WINDOW(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_OFFSCREEN_WINDOW))
-#define GDK_OFFSCREEN_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_OFFSCREEN_WINDOW, GdkOffscreenWindowClass))
+#define GDK_OFFSCREEN_WINDOW_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_OFFSCREEN_WINDOW, CdkOffscreenWindowClass))
 #define GDK_IS_OFFSCREEN_WINDOW_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_OFFSCREEN_WINDOW))
-#define GDK_OFFSCREEN_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_OFFSCREEN_WINDOW, GdkOffscreenWindowClass))
+#define GDK_OFFSCREEN_WINDOW_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_OFFSCREEN_WINDOW, CdkOffscreenWindowClass))
 
-static void       cdk_offscreen_window_hide               (GdkWindow                  *window);
+static void       cdk_offscreen_window_hide               (CdkWindow                  *window);
 
-G_DEFINE_TYPE (GdkOffscreenWindow, cdk_offscreen_window, GDK_TYPE_WINDOW_IMPL)
+G_DEFINE_TYPE (CdkOffscreenWindow, cdk_offscreen_window, GDK_TYPE_WINDOW_IMPL)
 
 
 static void
 cdk_offscreen_window_finalize (GObject *object)
 {
-  GdkOffscreenWindow *offscreen = GDK_OFFSCREEN_WINDOW (object);
+  CdkOffscreenWindow *offscreen = GDK_OFFSCREEN_WINDOW (object);
 
   if (offscreen->surface)
     cairo_surface_destroy (offscreen->surface);
@@ -81,12 +81,12 @@ cdk_offscreen_window_finalize (GObject *object)
 }
 
 static void
-cdk_offscreen_window_init (GdkOffscreenWindow *window)
+cdk_offscreen_window_init (CdkOffscreenWindow *window)
 {
 }
 
 static void
-cdk_offscreen_window_destroy (GdkWindow *window,
+cdk_offscreen_window_destroy (CdkWindow *window,
                               gboolean   recursing,
                               gboolean   foreign_destroy)
 {
@@ -97,11 +97,11 @@ cdk_offscreen_window_destroy (GdkWindow *window,
 }
 
 static cairo_surface_t *
-get_surface (GdkOffscreenWindow *offscreen)
+get_surface (CdkOffscreenWindow *offscreen)
 {
   if (! offscreen->surface)
     {
-      GdkWindow *window = offscreen->wrapper;
+      CdkWindow *window = offscreen->wrapper;
 
       g_signal_emit_by_name (window, "create-surface",
                              window->width,
@@ -113,10 +113,10 @@ get_surface (GdkOffscreenWindow *offscreen)
 }
 
 static gboolean
-is_parent_of (GdkWindow *parent,
-	      GdkWindow *child)
+is_parent_of (CdkWindow *parent,
+	      CdkWindow *child)
 {
-  GdkWindow *w;
+  CdkWindow *w;
 
   w = child;
   while (w != NULL)
@@ -131,20 +131,20 @@ is_parent_of (GdkWindow *parent,
 }
 
 static cairo_surface_t *
-cdk_offscreen_window_ref_cairo_surface (GdkWindow *window)
+cdk_offscreen_window_ref_cairo_surface (CdkWindow *window)
 {
-  GdkOffscreenWindow *offscreen = GDK_OFFSCREEN_WINDOW (window->impl);
+  CdkOffscreenWindow *offscreen = GDK_OFFSCREEN_WINDOW (window->impl);
 
   return cairo_surface_reference (get_surface (offscreen));
 }
 
 cairo_surface_t *
-_cdk_offscreen_window_create_surface (GdkWindow *offscreen,
+_cdk_offscreen_window_create_surface (CdkWindow *offscreen,
                                       gint       width,
                                       gint       height)
 {
-  GdkOffscreenWindow *impl;
-  GdkWindow *derived;
+  CdkOffscreenWindow *impl;
+  CdkWindow *derived;
 
   g_return_val_if_fail (GDK_IS_OFFSCREEN_WINDOW (offscreen->impl), NULL);
 
@@ -157,11 +157,11 @@ _cdk_offscreen_window_create_surface (GdkWindow *offscreen,
 }
 
 void
-_cdk_offscreen_window_new (GdkWindow     *window,
-			   GdkWindowAttr *attributes,
+_cdk_offscreen_window_new (CdkWindow     *window,
+			   CdkWindowAttr *attributes,
 			   gint           attributes_mask)
 {
-  GdkOffscreenWindow *offscreen;
+  CdkOffscreenWindow *offscreen;
 
   g_return_if_fail (attributes != NULL);
 
@@ -177,12 +177,12 @@ _cdk_offscreen_window_new (GdkWindow     *window,
 }
 
 static gboolean
-cdk_offscreen_window_reparent (GdkWindow *window,
-			       GdkWindow *new_parent,
+cdk_offscreen_window_reparent (CdkWindow *window,
+			       CdkWindow *new_parent,
 			       gint       x,
 			       gint       y)
 {
-  GdkWindow *old_parent;
+  CdkWindow *old_parent;
   gboolean was_mapped;
 
   if (new_parent)
@@ -219,14 +219,14 @@ cdk_offscreen_window_reparent (GdkWindow *window,
 }
 
 static void
-cdk_offscreen_window_set_device_cursor (GdkWindow     *window,
-					GdkDevice     *device,
-					GdkCursor     *cursor)
+cdk_offscreen_window_set_device_cursor (CdkWindow     *window,
+					CdkDevice     *device,
+					CdkCursor     *cursor)
 {
 }
 
 static void
-from_embedder (GdkWindow *window,
+from_embedder (CdkWindow *window,
 	       double embedder_x, double embedder_y,
 	       double *offscreen_x, double *offscreen_y)
 {
@@ -238,7 +238,7 @@ from_embedder (GdkWindow *window,
 }
 
 static void
-to_embedder (GdkWindow *window,
+to_embedder (CdkWindow *window,
 	     double offscreen_x, double offscreen_y,
 	     double *embedder_x, double *embedder_y)
 {
@@ -250,13 +250,13 @@ to_embedder (GdkWindow *window,
 }
 
 static void
-cdk_offscreen_window_get_root_coords (GdkWindow *window,
+cdk_offscreen_window_get_root_coords (CdkWindow *window,
 				      gint       x,
 				      gint       y,
 				      gint      *root_x,
 				      gint      *root_y)
 {
-  GdkOffscreenWindow *offscreen;
+  CdkOffscreenWindow *offscreen;
   int tmpx, tmpy;
 
   tmpx = x;
@@ -284,16 +284,16 @@ cdk_offscreen_window_get_root_coords (GdkWindow *window,
 }
 
 static gboolean
-cdk_offscreen_window_get_device_state (GdkWindow       *window,
-                                       GdkDevice       *device,
+cdk_offscreen_window_get_device_state (CdkWindow       *window,
+                                       CdkDevice       *device,
                                        gdouble         *x,
                                        gdouble         *y,
-                                       GdkModifierType *mask)
+                                       CdkModifierType *mask)
 {
-  GdkOffscreenWindow *offscreen;
+  CdkOffscreenWindow *offscreen;
   double tmpx, tmpy;
   double dtmpx, dtmpy;
-  GdkModifierType tmpmask;
+  CdkModifierType tmpmask;
 
   tmpx = 0;
   tmpy = 0;
@@ -321,7 +321,7 @@ cdk_offscreen_window_get_device_state (GdkWindow       *window,
 
 /**
  * cdk_offscreen_window_get_surface:
- * @window: a #GdkWindow
+ * @window: a #CdkWindow
  *
  * Gets the offscreen surface that an offscreen window renders into.
  * If you need to keep this around over window resizes, you need to
@@ -331,9 +331,9 @@ cdk_offscreen_window_get_device_state (GdkWindow       *window,
  *   %NULL if not offscreen
  */
 cairo_surface_t *
-cdk_offscreen_window_get_surface (GdkWindow *window)
+cdk_offscreen_window_get_surface (CdkWindow *window)
 {
-  GdkOffscreenWindow *offscreen;
+  CdkOffscreenWindow *offscreen;
 
   g_return_val_if_fail (GDK_IS_WINDOW (window), FALSE);
 
@@ -346,28 +346,28 @@ cdk_offscreen_window_get_surface (GdkWindow *window)
 }
 
 static void
-cdk_offscreen_window_raise (GdkWindow *window)
+cdk_offscreen_window_raise (CdkWindow *window)
 {
   /* cdk_window_raise already changed the stacking order */
   _cdk_synthesize_crossing_events_for_geometry_change (window);
 }
 
 static void
-cdk_offscreen_window_lower (GdkWindow *window)
+cdk_offscreen_window_lower (CdkWindow *window)
 {
   /* cdk_window_lower already changed the stacking order */
   _cdk_synthesize_crossing_events_for_geometry_change (window);
 }
 
 static void
-cdk_offscreen_window_move_resize_internal (GdkWindow *window,
+cdk_offscreen_window_move_resize_internal (CdkWindow *window,
                                            gint       x,
                                            gint       y,
                                            gint       width,
                                            gint       height,
                                            gboolean   send_expose_events)
 {
-  GdkOffscreenWindow *offscreen;
+  CdkOffscreenWindow *offscreen;
 
   offscreen = GDK_OFFSCREEN_WINDOW (window->impl);
 
@@ -416,7 +416,7 @@ cdk_offscreen_window_move_resize_internal (GdkWindow *window,
 }
 
 static void
-cdk_offscreen_window_move_resize (GdkWindow *window,
+cdk_offscreen_window_move_resize (CdkWindow *window,
                                   gboolean   with_move,
                                   gint       x,
                                   gint       y,
@@ -441,22 +441,22 @@ cdk_offscreen_window_move_resize (GdkWindow *window,
 }
 
 static void
-cdk_offscreen_window_show (GdkWindow *window,
+cdk_offscreen_window_show (CdkWindow *window,
 			   gboolean already_mapped)
 {
-  GdkRectangle area = { 0, 0, window->width, window->height };
+  CdkRectangle area = { 0, 0, window->width, window->height };
 
   cdk_window_invalidate_rect (window, &area, FALSE);
 }
 
 
 static void
-cdk_offscreen_window_hide (GdkWindow *window)
+cdk_offscreen_window_hide (CdkWindow *window)
 {
   /* TODO: This needs updating to the new grab world */
 #if 0
-  GdkOffscreenWindow *offscreen;
-  GdkDisplay *display;
+  CdkOffscreenWindow *offscreen;
+  CdkDisplay *display;
 
   g_return_if_fail (window != NULL);
 
@@ -483,30 +483,30 @@ cdk_offscreen_window_hide (GdkWindow *window)
 }
 
 static void
-cdk_offscreen_window_withdraw (GdkWindow *window)
+cdk_offscreen_window_withdraw (CdkWindow *window)
 {
 }
 
-static GdkEventMask
-cdk_offscreen_window_get_events (GdkWindow *window)
+static CdkEventMask
+cdk_offscreen_window_get_events (CdkWindow *window)
 {
   return 0;
 }
 
 static void
-cdk_offscreen_window_set_events (GdkWindow       *window,
-				 GdkEventMask     event_mask)
+cdk_offscreen_window_set_events (CdkWindow       *window,
+				 CdkEventMask     event_mask)
 {
 }
 
 static void
-cdk_offscreen_window_set_background (GdkWindow      *window,
+cdk_offscreen_window_set_background (CdkWindow      *window,
 				     cairo_pattern_t *pattern)
 {
 }
 
 static void
-cdk_offscreen_window_shape_combine_region (GdkWindow       *window,
+cdk_offscreen_window_shape_combine_region (CdkWindow       *window,
 					   const cairo_region_t *shape_region,
 					   gint             offset_x,
 					   gint             offset_y)
@@ -514,7 +514,7 @@ cdk_offscreen_window_shape_combine_region (GdkWindow       *window,
 }
 
 static void
-cdk_offscreen_window_input_shape_combine_region (GdkWindow       *window,
+cdk_offscreen_window_input_shape_combine_region (CdkWindow       *window,
 						 const cairo_region_t *shape_region,
 						 gint             offset_x,
 						 gint             offset_y)
@@ -522,7 +522,7 @@ cdk_offscreen_window_input_shape_combine_region (GdkWindow       *window,
 }
 
 static void
-cdk_offscreen_window_get_geometry (GdkWindow *window,
+cdk_offscreen_window_get_geometry (CdkWindow *window,
 				   gint      *x,
 				   gint      *y,
 				   gint      *width,
@@ -542,30 +542,30 @@ cdk_offscreen_window_get_geometry (GdkWindow *window,
 }
 
 static void
-cdk_offscreen_window_queue_antiexpose (GdkWindow *window,
+cdk_offscreen_window_queue_antiexpose (CdkWindow *window,
 				       cairo_region_t *area)
 {
 }
 
 /**
  * cdk_offscreen_window_set_embedder:
- * @window: a #GdkWindow
- * @embedder: the #GdkWindow that @window gets embedded in
+ * @window: a #CdkWindow
+ * @embedder: the #CdkWindow that @window gets embedded in
  *
  * Sets @window to be embedded in @embedder.
  *
  * To fully embed an offscreen window, in addition to calling this
- * function, it is also necessary to handle the #GdkWindow::pick-embedded-child
- * signal on the @embedder and the #GdkWindow::to-embedder and
- * #GdkWindow::from-embedder signals on @window.
+ * function, it is also necessary to handle the #CdkWindow::pick-embedded-child
+ * signal on the @embedder and the #CdkWindow::to-embedder and
+ * #CdkWindow::from-embedder signals on @window.
  *
  * Since: 2.18
  */
 void
-cdk_offscreen_window_set_embedder (GdkWindow     *window,
-				   GdkWindow     *embedder)
+cdk_offscreen_window_set_embedder (CdkWindow     *window,
+				   CdkWindow     *embedder)
 {
-  GdkOffscreenWindow *offscreen;
+  CdkOffscreenWindow *offscreen;
 
   g_return_if_fail (GDK_IS_WINDOW (window));
 
@@ -591,19 +591,19 @@ cdk_offscreen_window_set_embedder (GdkWindow     *window,
 
 /**
  * cdk_offscreen_window_get_embedder:
- * @window: a #GdkWindow
+ * @window: a #CdkWindow
  *
  * Gets the window that @window is embedded in.
  *
- * Returns: (nullable) (transfer none): the embedding #GdkWindow, or
+ * Returns: (nullable) (transfer none): the embedding #CdkWindow, or
  *     %NULL if @window is not an mbedded offscreen window
  *
  * Since: 2.18
  */
-GdkWindow *
-cdk_offscreen_window_get_embedder (GdkWindow *window)
+CdkWindow *
+cdk_offscreen_window_get_embedder (CdkWindow *window)
 {
-  GdkOffscreenWindow *offscreen;
+  CdkOffscreenWindow *offscreen;
 
   g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
 
@@ -616,37 +616,37 @@ cdk_offscreen_window_get_embedder (GdkWindow *window)
 }
 
 static void
-cdk_offscreen_window_do_nothing (GdkWindow *window)
+cdk_offscreen_window_do_nothing (CdkWindow *window)
 {
 }
 
 static void
-cdk_offscreen_window_set_boolean (GdkWindow *window,
+cdk_offscreen_window_set_boolean (CdkWindow *window,
                                   gboolean   setting)
 {
 }
 
 static void
-cdk_offscreen_window_set_string (GdkWindow *window,
+cdk_offscreen_window_set_string (CdkWindow *window,
 				 const gchar *setting)
 {
 }
 
 static void
-cdk_offscreen_window_set_list (GdkWindow *window,
+cdk_offscreen_window_set_list (CdkWindow *window,
                                GList *list)
 {
 }
 
 static void
-cdk_offscreen_window_set_wmfunctions (GdkWindow	    *window,
-				      GdkWMFunction  functions)
+cdk_offscreen_window_set_wmfunctions (CdkWindow	    *window,
+				      CdkWMFunction  functions)
 {
 }
 
 static void
-cdk_offscreen_window_begin_move_drag (GdkWindow *window,
-                                      GdkDevice *device,
+cdk_offscreen_window_begin_move_drag (CdkWindow *window,
+                                      CdkDevice *device,
                                       gint       button,
                                       gint       root_x,
                                       gint       root_y,
@@ -655,14 +655,14 @@ cdk_offscreen_window_begin_move_drag (GdkWindow *window,
 }
 
 static void
-cdk_offscreen_window_set_transient_for (GdkWindow *window,
-					GdkWindow *another)
+cdk_offscreen_window_set_transient_for (CdkWindow *window,
+					CdkWindow *another)
 {
 }
 
 static void
-cdk_offscreen_window_get_frame_extents (GdkWindow    *window,
-					GdkRectangle *rect)
+cdk_offscreen_window_get_frame_extents (CdkWindow    *window,
+					CdkRectangle *rect)
 {
   rect->x = window->x;
   rect->y = window->y;
@@ -671,9 +671,9 @@ cdk_offscreen_window_get_frame_extents (GdkWindow    *window,
 }
 
 static gint
-cdk_offscreen_window_get_scale_factor (GdkWindow *window)
+cdk_offscreen_window_get_scale_factor (CdkWindow *window)
 {
-  GdkOffscreenWindow *offscreen;
+  CdkOffscreenWindow *offscreen;
 
   if (GDK_WINDOW_DESTROYED (window))
     return 1;
@@ -686,20 +686,20 @@ cdk_offscreen_window_get_scale_factor (GdkWindow *window)
 }
 
 static void
-cdk_offscreen_window_set_opacity (GdkWindow *window, gdouble opacity)
+cdk_offscreen_window_set_opacity (CdkWindow *window, gdouble opacity)
 {
 }
 
 static gboolean
-cdk_offscreen_window_beep (GdkWindow *window)
+cdk_offscreen_window_beep (CdkWindow *window)
 {
   return FALSE;
 }
 
 static void
-cdk_offscreen_window_class_init (GdkOffscreenWindowClass *klass)
+cdk_offscreen_window_class_init (CdkOffscreenWindowClass *klass)
 {
-  GdkWindowImplClass *impl_class = GDK_WINDOW_IMPL_CLASS (klass);
+  CdkWindowImplClass *impl_class = GDK_WINDOW_IMPL_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = cdk_offscreen_window_finalize;

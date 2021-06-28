@@ -22,7 +22,7 @@ static gint num_windows = 0;
 
 static gboolean
 on_delete_event (CtkWidget *w,
-                 GdkEvent *event,
+                 CdkEvent *event,
                  gpointer user_data)
 {
   num_windows--;

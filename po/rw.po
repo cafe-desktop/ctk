@@ -4753,11 +4753,11 @@ msgid ""
 msgstr "Kuri Ibirimo Ishusho OYA a Ishusho IDOSIYE"
 
 #, fuzzy
-#~ msgid "Gdk debugging flags to set"
+#~ msgid "Cdk debugging flags to set"
 #~ msgstr "Amabendera Kuri Gushyiraho"
 
 #, fuzzy
-#~ msgid "Gdk debugging flags to unset"
+#~ msgid "Cdk debugging flags to unset"
 #~ msgstr "Amabendera Kuri"
 
 #, fuzzy
@@ -5290,7 +5290,7 @@ msgstr "Kuri Ibirimo Ishusho OYA a Ishusho IDOSIYE"
 #~ msgstr "Ububiko kugirango Imvugiro"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Kuri Gusoma Bivuye By'igihe gito IDOSIYE"
 
 #, fuzzy

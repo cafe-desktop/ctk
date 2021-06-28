@@ -82,12 +82,12 @@ reftest_uninhibit_snapshot (void)
 }
 
 static void
-check_for_draw (GdkEvent *event, gpointer data)
+check_for_draw (CdkEvent *event, gpointer data)
 {
   if (event->type == GDK_EXPOSE)
     {
       reftest_uninhibit_snapshot ();
-      cdk_event_handler_set ((GdkEventFunc) ctk_main_do_event, NULL, NULL);
+      cdk_event_handler_set ((CdkEventFunc) ctk_main_do_event, NULL, NULL);
     }
 
   ctk_main_do_event (event);
@@ -128,7 +128,7 @@ snapshot_widget (CtkWidget *widget, SnapshotMode mode)
     {
     case SNAPSHOT_WINDOW:
       {
-        GdkWindow *window = ctk_widget_get_window (widget);
+        CdkWindow *window = ctk_widget_get_window (widget);
         if (cdk_window_get_window_type (window) == GDK_WINDOW_TOPLEVEL ||
             cdk_window_get_window_type (window) == GDK_WINDOW_FOREIGN)
           {

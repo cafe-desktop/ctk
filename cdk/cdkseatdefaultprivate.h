@@ -24,37 +24,37 @@
 #include "cdkseatprivate.h"
 
 #define GDK_TYPE_SEAT_DEFAULT         (cdk_seat_default_get_type ())
-#define GDK_SEAT_DEFAULT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_SEAT_DEFAULT, GdkSeatDefault))
+#define GDK_SEAT_DEFAULT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_SEAT_DEFAULT, CdkSeatDefault))
 #define GDK_IS_SEAT_DEFAULT(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_SEAT_DEFAULT))
-#define GDK_SEAT_DEFAULT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_SEAT_DEFAULT, GdkSeatDefaultClass))
+#define GDK_SEAT_DEFAULT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_SEAT_DEFAULT, CdkSeatDefaultClass))
 #define GDK_IS_SEAT_DEFAULT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_SEAT_DEFAULT))
-#define GDK_SEAT_DEFAULT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_SEAT_DEFAULT, GdkSeatDefaultClass))
+#define GDK_SEAT_DEFAULT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_SEAT_DEFAULT, CdkSeatDefaultClass))
 
-typedef struct _GdkSeatDefault GdkSeatDefault;
-typedef struct _GdkSeatDefaultClass GdkSeatDefaultClass;
+typedef struct _CdkSeatDefault CdkSeatDefault;
+typedef struct _CdkSeatDefaultClass CdkSeatDefaultClass;
 
-struct _GdkSeatDefault
+struct _CdkSeatDefault
 {
-  GdkSeat parent_instance;
+  CdkSeat parent_instance;
 };
 
-struct _GdkSeatDefaultClass
+struct _CdkSeatDefaultClass
 {
-  GdkSeatClass parent_class;
+  CdkSeatClass parent_class;
 };
 
 GType     cdk_seat_default_get_type     (void) G_GNUC_CONST;
 
-GdkSeat * cdk_seat_default_new_for_master_pair (GdkDevice *pointer,
-                                                GdkDevice *keyboard);
+CdkSeat * cdk_seat_default_new_for_master_pair (CdkDevice *pointer,
+                                                CdkDevice *keyboard);
 
-void      cdk_seat_default_add_slave    (GdkSeatDefault *seat,
-                                         GdkDevice      *device);
-void      cdk_seat_default_remove_slave (GdkSeatDefault *seat,
-                                         GdkDevice      *device);
-void      cdk_seat_default_add_tool     (GdkSeatDefault *seat,
-                                         GdkDeviceTool  *tool);
-void      cdk_seat_default_remove_tool  (GdkSeatDefault *seat,
-                                         GdkDeviceTool  *tool);
+void      cdk_seat_default_add_slave    (CdkSeatDefault *seat,
+                                         CdkDevice      *device);
+void      cdk_seat_default_remove_slave (CdkSeatDefault *seat,
+                                         CdkDevice      *device);
+void      cdk_seat_default_add_tool     (CdkSeatDefault *seat,
+                                         CdkDeviceTool  *tool);
+void      cdk_seat_default_remove_tool  (CdkSeatDefault *seat,
+                                         CdkDeviceTool  *tool);
 
 #endif /* __GDK_SEAT_DEFAULT_PRIVATE_H__ */

@@ -31,11 +31,11 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_BROADWAY_MONITOR           (cdk_broadway_monitor_get_type ())
-#define GDK_BROADWAY_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_MONITOR, GdkBroadwayMonitor))
+#define GDK_BROADWAY_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_MONITOR, CdkBroadwayMonitor))
 #define GDK_IS_BROADWAY_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_MONITOR))
 
-typedef struct _GdkBroadwayMonitor      GdkBroadwayMonitor;
-typedef struct _GdkBroadwayMonitorClass GdkBroadwayMonitorClass;
+typedef struct _CdkBroadwayMonitor      CdkBroadwayMonitor;
+typedef struct _CdkBroadwayMonitorClass CdkBroadwayMonitorClass;
 
 GDK_AVAILABLE_IN_3_22
 GType             cdk_broadway_monitor_get_type            (void) G_GNUC_CONST;

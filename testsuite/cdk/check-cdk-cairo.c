@@ -50,9 +50,9 @@ static void
 test_surface_orientation (void)
 {
 	cairo_surface_t *surface;
-	GdkPixbuf* pixbuf;
-	GdkPixbuf* pbuf_platform;
-	GdkPixbuf* pbuf_imagesrf;
+	CdkPixbuf* pixbuf;
+	CdkPixbuf* pbuf_platform;
+	CdkPixbuf* pbuf_imagesrf;
 	GError   * error = NULL;
 	cairo_surface_t* surface;
 	cairo_t* cr;

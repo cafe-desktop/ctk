@@ -76,7 +76,7 @@ GType        ctk_color_button_get_type      (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
 CtkWidget *  ctk_color_button_new           (void);
 GDK_AVAILABLE_IN_ALL
-CtkWidget *  ctk_color_button_new_with_rgba (const GdkRGBA  *rgba);
+CtkWidget *  ctk_color_button_new_with_rgba (const CdkRGBA  *rgba);
 GDK_AVAILABLE_IN_ALL
 void         ctk_color_button_set_title     (CtkColorButton *button,
                                              const gchar    *title);
@@ -84,13 +84,13 @@ GDK_AVAILABLE_IN_ALL
 const gchar *ctk_color_button_get_title     (CtkColorButton *button);
 
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_button_new_with_rgba)
-CtkWidget *ctk_color_button_new_with_color (const GdkColor *color);
+CtkWidget *ctk_color_button_new_with_color (const CdkColor *color);
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
 void       ctk_color_button_set_color      (CtkColorButton *button,
-                                            const GdkColor *color);
+                                            const CdkColor *color);
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
 void       ctk_color_button_get_color      (CtkColorButton *button,
-                                            GdkColor       *color);
+                                            CdkColor       *color);
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
 void       ctk_color_button_set_alpha      (CtkColorButton *button,
                                             guint16         alpha);
@@ -103,10 +103,10 @@ GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_use_alpha)
 gboolean     ctk_color_button_get_use_alpha (CtkColorButton *button);
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
 void         ctk_color_button_set_rgba      (CtkColorButton *button,
-                                             const GdkRGBA  *rgba);
+                                             const CdkRGBA  *rgba);
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
 void         ctk_color_button_get_rgba      (CtkColorButton *button,
-                                             GdkRGBA        *rgba);
+                                             CdkRGBA        *rgba);
 
 G_END_DECLS
 

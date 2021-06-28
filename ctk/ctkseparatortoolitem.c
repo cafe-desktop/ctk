@@ -53,7 +53,7 @@
 struct _CtkSeparatorToolItemPrivate
 {
   CtkCssGadget *gadget;
-  GdkWindow *event_window;
+  CdkWindow *event_window;
   guint draw : 1;
 };
 
@@ -88,9 +88,9 @@ static void     ctk_separator_tool_item_unrealize         (CtkWidget            
 static void     ctk_separator_tool_item_map               (CtkWidget                 *widget);
 static void     ctk_separator_tool_item_unmap             (CtkWidget                 *widget);
 static gboolean ctk_separator_tool_item_button_event      (CtkWidget                 *widget,
-                                                           GdkEventButton            *event);
+                                                           CdkEventButton            *event);
 static gboolean ctk_separator_tool_item_motion_event      (CtkWidget                 *widget,
-                                                           GdkEventMotion            *event);
+                                                           CdkEventMotion            *event);
 
 G_DEFINE_TYPE_WITH_PRIVATE (CtkSeparatorToolItem, ctk_separator_tool_item, CTK_TYPE_TOOL_ITEM)
 
@@ -281,8 +281,8 @@ ctk_separator_tool_item_realize (CtkWidget *widget)
   CtkAllocation allocation;
   CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
   CtkSeparatorToolItemPrivate *priv = separator->priv;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_set_realized (widget, TRUE);
@@ -353,7 +353,7 @@ ctk_separator_tool_item_unmap (CtkWidget *widget)
 
 static gboolean
 ctk_separator_tool_item_motion_event (CtkWidget      *widget,
-                                      GdkEventMotion *event)
+                                      CdkEventMotion *event)
 {
   CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
   CtkSeparatorToolItemPrivate *priv = separator->priv;
@@ -366,7 +366,7 @@ ctk_separator_tool_item_motion_event (CtkWidget      *widget,
 
 static gboolean
 ctk_separator_tool_item_button_event (CtkWidget      *widget,
-                                      GdkEventButton *event)
+                                      CdkEventButton *event)
 {
   CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
   CtkSeparatorToolItemPrivate *priv = separator->priv;

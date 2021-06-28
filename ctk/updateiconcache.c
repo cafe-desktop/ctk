@@ -163,7 +163,7 @@ has_theme_index (const gchar *path)
 
 typedef struct
 {
-  GdkPixdata pixdata;
+  CdkPixdata pixdata;
   gboolean has_pixdata;
   guint32 offset;
   guint size;
@@ -469,7 +469,7 @@ maybe_cache_image_data (Image       *image,
   if (!index_only && !image->image_data &&
       (g_str_has_suffix (path, ".png") || g_str_has_suffix (path, ".xpm")))
     {
-      GdkPixbuf *pixbuf;
+      CdkPixbuf *pixbuf;
       ImageData *idata;
       gchar *path2;
 
@@ -819,9 +819,9 @@ write_image_data (FILE *cache, ImageData *image_data, int offset)
   guint8 *s;
   guint len;
   gint i;
-  GdkPixdata *pixdata = &image_data->pixdata;
+  CdkPixdata *pixdata = &image_data->pixdata;
 
-  /* Type 0 is GdkPixdata */
+  /* Type 0 is CdkPixdata */
   if (!write_card32 (cache, 0))
     return FALSE;
 

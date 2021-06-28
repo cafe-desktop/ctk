@@ -26,7 +26,7 @@
 
 static gboolean 
 tick_callback_for_1_frame (CtkWidget     *widget,
-                           GdkFrameClock *frame_clock,
+                           CdkFrameClock *frame_clock,
                            gpointer       unused)
 {
   reftest_uninhibit_snapshot ();
@@ -47,7 +47,7 @@ inhibit_for_1_frame (CtkWidget *widget)
 
 static gboolean 
 tick_callback_for_2_frames (CtkWidget     *widget,
-                            GdkFrameClock *frame_clock,
+                            CdkFrameClock *frame_clock,
                             gpointer       unused)
 {
   inhibit_for_1_frame (widget);
@@ -69,7 +69,7 @@ inhibit_for_2_frames (CtkWidget *widget)
 
 static gboolean 
 tick_callback_for_3_frames (CtkWidget     *widget,
-                            GdkFrameClock *frame_clock,
+                            CdkFrameClock *frame_clock,
                             gpointer       unused)
 {
   inhibit_for_2_frames (widget);

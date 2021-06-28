@@ -72,7 +72,7 @@ struct _ChildInfoState
   gboolean get_wm_state;
   Window *children;
   guint nchildren;
-  GdkChildInfoX11 *child_info;
+  CdkChildInfoX11 *child_info;
   ChildInfoChildState *child_states;
 
   guint current_child;
@@ -98,7 +98,7 @@ struct _SendEventState
   gulong send_event_req;
   gulong get_input_focus_req;
   gboolean have_error;
-  GdkSendXEventCallback callback;
+  CdkSendXEventCallback callback;
   gpointer data;
 };
 
@@ -115,8 +115,8 @@ struct _RoundtripState
   Display *dpy;
   _XAsyncHandler async;
   gulong get_input_focus_req;
-  GdkDisplay *display;
-  GdkRoundTripCallback callback;
+  CdkDisplay *display;
+  CdkRoundTripCallback callback;
   gpointer data;
 };
 
@@ -224,12 +224,12 @@ client_message_to_wire (XClientMessageEvent *ev,
 }
 
 void
-_cdk_x11_send_client_message_async (GdkDisplay           *display, 
+_cdk_x11_send_client_message_async (CdkDisplay           *display, 
 				    Window                window, 
 				    gboolean              propagate,
 				    glong                 event_mask,
 				    XClientMessageEvent  *event_send,
-				    GdkSendXEventCallback callback,
+				    CdkSendXEventCallback callback,
 				    gpointer              data)
 {
   Display *dpy;
@@ -401,7 +401,7 @@ handle_get_wa_reply (Display                   *dpy,
 		     ChildInfoState            *state,
 		     xGetWindowAttributesReply *repl)
 {
-  GdkChildInfoX11 *child = &state->child_info[state->n_children_found];
+  CdkChildInfoX11 *child = &state->child_info[state->n_children_found];
   child->is_mapped = repl->mapState != IsUnmapped;
   child->window_class = repl->class;
 }
@@ -411,7 +411,7 @@ handle_get_geometry_reply (Display           *dpy,
 			   ChildInfoState    *state,
 			   xGetGeometryReply *repl)
 {
-  GdkChildInfoX11 *child = &state->child_info[state->n_children_found];
+  CdkChildInfoX11 *child = &state->child_info[state->n_children_found];
   
   child->x = cvtINT16toInt (repl->x);
   child->y = cvtINT16toInt (repl->y);
@@ -424,7 +424,7 @@ handle_get_property_reply (Display           *dpy,
 			   ChildInfoState    *state,
 			   xGetPropertyReply *repl)
 {
-  GdkChildInfoX11 *child = &state->child_info[state->n_children_found];
+  CdkChildInfoX11 *child = &state->child_info[state->n_children_found];
   child->has_wm_state = repl->propertyType != None;
 
   /* Since we called GetProperty with longLength of 0, we don't
@@ -531,11 +531,11 @@ get_child_info_handler (Display *dpy,
 }
 
 gboolean
-_cdk_x11_get_window_child_info (GdkDisplay       *display,
+_cdk_x11_get_window_child_info (CdkDisplay       *display,
 				Window            window,
 				gboolean          get_wm_state,
 				gboolean         *win_has_wm_state,
-				GdkChildInfoX11 **children,
+				CdkChildInfoX11 **children,
 				guint            *nchildren)
 {
   Display *dpy;
@@ -584,7 +584,7 @@ _cdk_x11_get_window_child_info (GdkDisplay       *display,
     }
 
   state.get_wm_state = get_wm_state;
-  state.child_info = g_new (GdkChildInfoX11, state.nchildren);
+  state.child_info = g_new (CdkChildInfoX11, state.nchildren);
   state.child_states = g_new (ChildInfoChildState, state.nchildren);
   state.current_child = 0;
   state.n_children_found = 0;
@@ -716,8 +716,8 @@ roundtrip_handler (Display *dpy,
 }
 
 void
-_cdk_x11_roundtrip_async (GdkDisplay           *display, 
-			  GdkRoundTripCallback callback,
+_cdk_x11_roundtrip_async (CdkDisplay           *display, 
+			  CdkRoundTripCallback callback,
 			  gpointer              data)
 {
   Display *dpy;

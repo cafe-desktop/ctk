@@ -35,11 +35,11 @@ static void     cdk_event_source_finalize (GSource     *source);
 #define HAS_FOCUS(toplevel)                           \
   ((toplevel)->has_focus || (toplevel)->has_pointer_focus)
 
-struct _GdkEventSource
+struct _CdkEventSource
 {
   GSource source;
 
-  GdkDisplay *display;
+  CdkDisplay *display;
   GPollFD event_poll_fd;
 };
 
@@ -56,7 +56,7 @@ static gboolean
 cdk_event_source_prepare (GSource *source,
                           gint    *timeout)
 {
-  GdkDisplay *display = ((GdkEventSource*) source)->display;
+  CdkDisplay *display = ((CdkEventSource*) source)->display;
   gboolean retval;
 
   cdk_threads_enter ();
@@ -73,7 +73,7 @@ cdk_event_source_prepare (GSource *source,
 static gboolean
 cdk_event_source_check (GSource *source)
 {
-  GdkEventSource *event_source = (GdkEventSource*) source;
+  CdkEventSource *event_source = (CdkEventSource*) source;
   gboolean retval;
 
   cdk_threads_enter ();
@@ -92,12 +92,12 @@ cdk_event_source_check (GSource *source)
 void
 _cdk_broadway_events_got_input (BroadwayInputMsg *message)
 {
-  GdkDisplay *display;
-  GdkBroadwayDisplay *display_broadway;
-  GdkBroadwayDeviceManager *device_manager;
-  GdkScreen *screen;
-  GdkWindow *window;
-  GdkEvent *event = NULL;
+  CdkDisplay *display;
+  CdkBroadwayDisplay *display_broadway;
+  CdkBroadwayDeviceManager *device_manager;
+  CdkScreen *screen;
+  CdkWindow *window;
+  CdkEvent *event = NULL;
   GList *node;
   GSList *list, *d;
 
@@ -238,7 +238,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->touch.event_window_id));
     if (window)
       {
-        GdkEventType event_type = 0;
+        CdkEventType event_type = 0;
 
         switch (message->touch.touch_type) {
         case 0:
@@ -392,7 +392,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
 }
 
 void
-_cdk_broadway_display_queue_events (GdkDisplay *display)
+_cdk_broadway_display_queue_events (CdkDisplay *display)
 {
 }
 
@@ -401,8 +401,8 @@ cdk_event_source_dispatch (GSource     *source,
                            GSourceFunc  callback,
                            gpointer     user_data)
 {
-  GdkDisplay *display = ((GdkEventSource*) source)->display;
-  GdkEvent *event;
+  CdkDisplay *display = ((CdkEventSource*) source)->display;
+  CdkEvent *event;
 
   cdk_threads_enter ();
 
@@ -423,24 +423,24 @@ cdk_event_source_dispatch (GSource     *source,
 static void
 cdk_event_source_finalize (GSource *source)
 {
-  GdkEventSource *event_source = (GdkEventSource *)source;
+  CdkEventSource *event_source = (CdkEventSource *)source;
 
   event_sources = g_list_remove (event_sources, event_source);
 }
 
 GSource *
-_cdk_broadway_event_source_new (GdkDisplay *display)
+_cdk_broadway_event_source_new (CdkDisplay *display)
 {
   GSource *source;
-  GdkEventSource *event_source;
+  CdkEventSource *event_source;
   char *name;
 
-  source = g_source_new (&event_funcs, sizeof (GdkEventSource));
+  source = g_source_new (&event_funcs, sizeof (CdkEventSource));
   name = g_strdup_printf ("GDK Broadway Event source (%s)",
 			  cdk_display_get_name (display));
   g_source_set_name (source, name);
   g_free (name);
-  event_source = (GdkEventSource *) source;
+  event_source = (CdkEventSource *) source;
   event_source->display = display;
 
   g_source_set_priority (source, GDK_PRIORITY_EVENTS);

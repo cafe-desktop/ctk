@@ -45,14 +45,14 @@ CtkGesture *      ctk_gesture_stylus_new      (CtkWidget *widget);
 
 GDK_AVAILABLE_IN_3_24
 gboolean          ctk_gesture_stylus_get_axis (CtkGestureStylus *gesture,
-					       GdkAxisUse        axis,
+					       CdkAxisUse        axis,
 					       gdouble          *value);
 GDK_AVAILABLE_IN_3_24
 gboolean          ctk_gesture_stylus_get_axes (CtkGestureStylus  *gesture,
-					       GdkAxisUse         axes[],
+					       CdkAxisUse         axes[],
 					       gdouble          **values);
 GDK_AVAILABLE_IN_3_24
-GdkDeviceTool *   ctk_gesture_stylus_get_device_tool (CtkGestureStylus *gesture);
+CdkDeviceTool *   ctk_gesture_stylus_get_device_tool (CtkGestureStylus *gesture);
 
 G_END_DECLS
 

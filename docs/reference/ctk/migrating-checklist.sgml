@@ -48,7 +48,7 @@
 
         <programlisting id="do_popup_menu">
 static void
-do_popup_menu (CtkWidget *my_widget, GdkEventButton *event)
+do_popup_menu (CtkWidget *my_widget, CdkEventButton *event)
 {
   CtkWidget *menu;
   int button, event_time;
@@ -85,10 +85,10 @@ do_popup_menu (CtkWidget *my_widget, GdkEventButton *event)
 
         <programlisting>
 static gboolean
-my_widget_button_press_event_handler (CtkWidget *widget, GdkEventButton *event)
+my_widget_button_press_event_handler (CtkWidget *widget, CdkEventButton *event)
 {
   /* Ignore double-clicks and triple-clicks */
-  if (cdk_event_triggers_context_menu ((GdkEvent *) event) &amp;&amp;
+  if (cdk_event_triggers_context_menu ((CdkEvent *) event) &amp;&amp;
       event->type == GDK_BUTTON_PRESS)
     {
       do_popup_menu (widget, event);
@@ -148,19 +148,19 @@ my_widget_popup_menu_handler (CtkWidget *widget)
   </section>
 
   <section id="checklist-cdkeventexpose-region">
-    <title>Use GdkEventExpose.region</title>
+    <title>Use CdkEventExpose.region</title>
 
     <formalpara>
       <title>Why</title>
       <para>
         The <structfield>region</structfield> field of
-        <structname>GdkEventExpose</structname> allows you to redraw
-        less than the traditional <structfield>GdkEventRegion.area</structfield>.
+        <structname>CdkEventExpose</structname> allows you to redraw
+        less than the traditional <structfield>CdkEventRegion.area</structfield>.
       </para>
     </formalpara>
 
     <para>
-      In early CTK+ versions, the <structname>GdkEventExpose</structname>
+      In early CTK+ versions, the <structname>CdkEventExpose</structname>
       structure only had an <structfield>area</structfield> field to
       let you determine the region that you needed to redraw. In current
       CTK+, this field still exists for compatibility and as a simple
@@ -173,25 +173,25 @@ my_widget_popup_menu_handler (CtkWidget *widget)
     <para>
       Widgets that are very expensive to re-render, such as an image
       editor, may prefer to use the
-      <structfield>GdkEventExpose.region</structfield> field to paint
+      <structfield>CdkEventExpose.region</structfield> field to paint
       as little as possible.  Widgets that just use a few drawing
       primitives, such as labels and buttons, may prefer to use the
-      traditional <structfield>GdkEventExpose.area</structfield> field
+      traditional <structfield>CdkEventExpose.area</structfield> field
       for simplicity.
     </para>
 
     <para>
       Regions have an internal representation that is accessible as a
       list of rectangles.  To turn the
-      <structfield>GdkEventExpose.region</structfield> field into such
+      <structfield>CdkEventExpose.region</structfield> field into such
       a list, use cdk_region_get_rectangles():
     </para>
 
     <programlisting id="cdkregion-get-rectangles">
 static gboolean
-my_widget_expose_event_handler (CtkWidget *widget, GdkEventExpose *event)
+my_widget_expose_event_handler (CtkWidget *widget, CdkEventExpose *event)
 {
-  GdkRectangle *rects;
+  CdkRectangle *rects;
   int n_rects;
   int i;
 
@@ -225,7 +225,7 @@ my_widget_expose_event_handler (CtkWidget *widget, GdkEventExpose *event)
     </formalpara>
 
     <para>
-      In a <structname>GdkEventKey</structname>, the
+      In a <structname>CdkEventKey</structname>, the
       <structfield>state</structfield> field is a bit mask which
       indicates the modifier state at the time the key was pressed.
       Modifiers are keys like <keycap>Control</keycap> and
@@ -264,9 +264,9 @@ my_widget_expose_event_handler (CtkWidget *widget, GdkEventExpose *event)
 
     <programlisting id="default-mod-mask">
 static gboolean
-my_widget_key_press_event_handler (CtkWidget *widget, GdkEventKey *event)
+my_widget_key_press_event_handler (CtkWidget *widget, CdkEventKey *event)
 {
-  GdkModifierType modifiers;
+  CdkModifierType modifiers;
 
   modifiers = ctk_accelerator_get_default_mod_mask (<!-- -->);
 

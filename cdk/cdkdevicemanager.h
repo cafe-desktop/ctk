@@ -28,7 +28,7 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_DEVICE_MANAGER         (cdk_device_manager_get_type ())
-#define GDK_DEVICE_MANAGER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_MANAGER, GdkDeviceManager))
+#define GDK_DEVICE_MANAGER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_MANAGER, CdkDeviceManager))
 #define GDK_IS_DEVICE_MANAGER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_MANAGER))
 
 
@@ -36,12 +36,12 @@ GDK_AVAILABLE_IN_ALL
 GType        cdk_device_manager_get_type           (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GdkDisplay * cdk_device_manager_get_display        (GdkDeviceManager *device_manager);
+CdkDisplay * cdk_device_manager_get_display        (CdkDeviceManager *device_manager);
 GDK_DEPRECATED_IN_3_20
-GList *      cdk_device_manager_list_devices       (GdkDeviceManager *device_manager,
-                                                    GdkDeviceType     type);
+GList *      cdk_device_manager_list_devices       (CdkDeviceManager *device_manager,
+                                                    CdkDeviceType     type);
 GDK_DEPRECATED_IN_3_20
-GdkDevice *  cdk_device_manager_get_client_pointer (GdkDeviceManager *device_manager);
+CdkDevice *  cdk_device_manager_get_client_pointer (CdkDeviceManager *device_manager);
 
 G_END_DECLS
 

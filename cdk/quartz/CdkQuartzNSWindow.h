@@ -1,4 +1,4 @@
-/* GdkQuartzNSWindow.h
+/* CdkQuartzNSWindow.h
  *
  * Copyright (C) 2005-2007 Imendio AB
  *
@@ -21,7 +21,7 @@
 #include <glib.h>
 #include <cdk.h>
 
-@interface GdkQuartzNSWindow : NSWindow {
+@interface CdkQuartzNSWindow : NSWindow {
   BOOL    inMove;
   BOOL    inShowOrHide;
   BOOL    initialPositionKnown;
@@ -33,7 +33,7 @@
   NSPoint initialMoveLocation;
   NSPoint initialResizeLocation;
   NSRect  initialResizeFrame;
-  GdkWindowEdge resizeEdge;
+  CdkWindowEdge resizeEdge;
 
   NSRect  lastUnmaximizedFrame;
   NSRect  lastMaximizedFrame;
@@ -45,7 +45,7 @@
 -(void)beginManualMove;
 -(BOOL)trackManualMove;
 -(BOOL)isInManualResizeOrMove;
--(void)beginManualResize:(GdkWindowEdge)edge;
+-(void)beginManualResize:(CdkWindowEdge)edge;
 -(BOOL)trackManualResize;
 -(void)showAndMakeKey:(BOOL)makeKey;
 -(void)hide;

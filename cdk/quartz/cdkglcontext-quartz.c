@@ -34,12 +34,12 @@
 
 #include "cdkintl.h"
 
-G_DEFINE_TYPE (GdkQuartzGLContext, cdk_quartz_gl_context, GDK_TYPE_GL_CONTEXT)
+G_DEFINE_TYPE (CdkQuartzGLContext, cdk_quartz_gl_context, GDK_TYPE_GL_CONTEXT)
 
 static void cdk_quartz_gl_context_dispose (GObject *gobject);
 
 void
-cdk_quartz_window_invalidate_for_new_frame (GdkWindow      *window,
+cdk_quartz_window_invalidate_for_new_frame (CdkWindow      *window,
                                             cairo_region_t *update_area)
 {
   cairo_rectangle_int_t window_rect;
@@ -59,26 +59,26 @@ cdk_quartz_window_invalidate_for_new_frame (GdkWindow      *window,
 }
 
 static gboolean
-cdk_quartz_gl_context_realize (GdkGLContext *context,
+cdk_quartz_gl_context_realize (CdkGLContext *context,
                                GError      **error)
 {
   return TRUE;
 }
 
 static void
-cdk_quartz_gl_context_end_frame (GdkGLContext *context,
+cdk_quartz_gl_context_end_frame (CdkGLContext *context,
                                  cairo_region_t *painted,
                                  cairo_region_t *damage)
 {
-  GdkQuartzGLContext *context_quartz = GDK_QUARTZ_GL_CONTEXT (context);
+  CdkQuartzGLContext *context_quartz = GDK_QUARTZ_GL_CONTEXT (context);
 
   [context_quartz->gl_context flushBuffer];
 }
 
 static void
-cdk_quartz_gl_context_class_init (GdkQuartzGLContextClass *klass)
+cdk_quartz_gl_context_class_init (CdkQuartzGLContextClass *klass)
 {
-  GdkGLContextClass *context_class = GDK_GL_CONTEXT_CLASS (klass);
+  CdkGLContextClass *context_class = GDK_GL_CONTEXT_CLASS (klass);
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
   context_class->realize = cdk_quartz_gl_context_realize;
@@ -87,24 +87,24 @@ cdk_quartz_gl_context_class_init (GdkQuartzGLContextClass *klass)
 }
 
 static void
-cdk_quartz_gl_context_init (GdkQuartzGLContext *self)
+cdk_quartz_gl_context_init (CdkQuartzGLContext *self)
 {
 }
 
 gboolean
-cdk_quartz_display_init_gl (GdkDisplay *display)
+cdk_quartz_display_init_gl (CdkDisplay *display)
 {
   return TRUE;
 }
 
-GdkGLContext *
-cdk_quartz_window_create_gl_context (GdkWindow     *window,
+CdkGLContext *
+cdk_quartz_window_create_gl_context (CdkWindow     *window,
                                      gboolean       attached,
-                                     GdkGLContext  *share,
+                                     CdkGLContext  *share,
                                      GError       **error)
 {
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkQuartzGLContext *context;
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkQuartzGLContext *context;
   NSOpenGLContext *ctx;
   NSOpenGLPixelFormatAttribute attrs[] =
     {
@@ -167,7 +167,7 @@ cdk_quartz_window_create_gl_context (GdkWindow     *window,
 static void
 cdk_quartz_gl_context_dispose (GObject *gobject)
 {
-  GdkQuartzGLContext *context_quartz = GDK_QUARTZ_GL_CONTEXT (gobject);
+  CdkQuartzGLContext *context_quartz = GDK_QUARTZ_GL_CONTEXT (gobject);
 
   if (context_quartz->gl_context != NULL)
     {
@@ -180,10 +180,10 @@ cdk_quartz_gl_context_dispose (GObject *gobject)
 }
 
 gboolean
-cdk_quartz_display_make_gl_context_current (GdkDisplay   *display,
-                                            GdkGLContext *context)
+cdk_quartz_display_make_gl_context_current (CdkDisplay   *display,
+                                            CdkGLContext *context)
 {
-  GdkQuartzGLContext *context_quartz;
+  CdkQuartzGLContext *context_quartz;
 
   if (context == NULL)
     {

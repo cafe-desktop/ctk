@@ -27,12 +27,12 @@ G_BEGIN_DECLS
 /* Latest version we implement */
 #define CTK_XEMBED_PROTOCOL_VERSION 1
 
-void _ctk_xembed_send_message       (GdkWindow         *recipient,
+void _ctk_xembed_send_message       (CdkWindow         *recipient,
 				     XEmbedMessageType  message,
 				     glong              detail,
 				     glong              data1,
 				     glong              data2);
-void _ctk_xembed_send_focus_message (GdkWindow         *recipient,
+void _ctk_xembed_send_focus_message (CdkWindow         *recipient,
 				     XEmbedMessageType  message,
 				     glong              detail);
 

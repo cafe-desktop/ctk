@@ -48,7 +48,7 @@ static void ctk_cell_renderer_toggle_set_property  (GObject                    *
 						    GParamSpec                 *pspec);
 static void ctk_cell_renderer_toggle_get_size   (CtkCellRenderer            *cell,
 						 CtkWidget                  *widget,
-						 const GdkRectangle         *cell_area,
+						 const CdkRectangle         *cell_area,
 						 gint                       *x_offset,
 						 gint                       *y_offset,
 						 gint                       *width,
@@ -56,15 +56,15 @@ static void ctk_cell_renderer_toggle_get_size   (CtkCellRenderer            *cel
 static void ctk_cell_renderer_toggle_render     (CtkCellRenderer            *cell,
 						 cairo_t                    *cr,
 						 CtkWidget                  *widget,
-						 const GdkRectangle         *background_area,
-						 const GdkRectangle         *cell_area,
+						 const CdkRectangle         *background_area,
+						 const CdkRectangle         *cell_area,
 						 CtkCellRendererState        flags);
 static gboolean ctk_cell_renderer_toggle_activate  (CtkCellRenderer            *cell,
-						    GdkEvent                   *event,
+						    CdkEvent                   *event,
 						    CtkWidget                  *widget,
 						    const gchar                *path,
-						    const GdkRectangle         *background_area,
-						    const GdkRectangle         *cell_area,
+						    const CdkRectangle         *background_area,
+						    const CdkRectangle         *cell_area,
 						    CtkCellRendererState        flags);
 
 
@@ -348,7 +348,7 @@ calc_indicator_size (CtkStyleContext *context,
 static void
 ctk_cell_renderer_toggle_get_size (CtkCellRenderer    *cell,
 				   CtkWidget          *widget,
-				   const GdkRectangle *cell_area,
+				   const CdkRectangle *cell_area,
 				   gint               *x_offset,
 				   gint               *y_offset,
 				   gint               *width,
@@ -410,8 +410,8 @@ static void
 ctk_cell_renderer_toggle_render (CtkCellRenderer      *cell,
 				 cairo_t              *cr,
 				 CtkWidget            *widget,
-				 const GdkRectangle   *background_area,
-				 const GdkRectangle   *cell_area,
+				 const CdkRectangle   *background_area,
+				 const CdkRectangle   *cell_area,
 				 CtkCellRendererState  flags)
 {
   CtkCellRendererToggle *celltoggle = CTK_CELL_RENDERER_TOGGLE (cell);
@@ -490,11 +490,11 @@ ctk_cell_renderer_toggle_render (CtkCellRenderer      *cell,
 
 static gint
 ctk_cell_renderer_toggle_activate (CtkCellRenderer      *cell,
-				   GdkEvent             *event,
+				   CdkEvent             *event,
 				   CtkWidget            *widget,
 				   const gchar          *path,
-				   const GdkRectangle   *background_area,
-				   const GdkRectangle   *cell_area,
+				   const CdkRectangle   *background_area,
+				   const CdkRectangle   *cell_area,
 				   CtkCellRendererState  flags)
 {
   CtkCellRendererTogglePrivate *priv;

@@ -40,112 +40,112 @@ G_BEGIN_DECLS
 /**
  * GDK_SELECTION_PRIMARY:
  *
- * A #GdkAtom representing the `PRIMARY` selection.
+ * A #CdkAtom representing the `PRIMARY` selection.
  */
 #define GDK_SELECTION_PRIMARY 		_GDK_MAKE_ATOM (1)
 
 /**
  * GDK_SELECTION_SECONDARY:
  *
- * A #GdkAtom representing the `SECONDARY` selection.
+ * A #CdkAtom representing the `SECONDARY` selection.
  */
 #define GDK_SELECTION_SECONDARY 	_GDK_MAKE_ATOM (2)
 
 /**
  * GDK_SELECTION_CLIPBOARD:
  *
- * A #GdkAtom representing the `CLIPBOARD` selection.
+ * A #CdkAtom representing the `CLIPBOARD` selection.
  */
 #define GDK_SELECTION_CLIPBOARD 	_GDK_MAKE_ATOM (69)
 
 /**
  * GDK_TARGET_BITMAP:
  *
- * A #GdkAtom representing the `BITMAP` selection target.
+ * A #CdkAtom representing the `BITMAP` selection target.
  */
 #define GDK_TARGET_BITMAP 		_GDK_MAKE_ATOM (5)
 
 /**
  * GDK_TARGET_COLORMAP:
  *
- * A #GdkAtom representing the `COLORMAP` selection target.
+ * A #CdkAtom representing the `COLORMAP` selection target.
  */
 #define GDK_TARGET_COLORMAP 		_GDK_MAKE_ATOM (7)
 
 /**
  * GDK_TARGET_DRAWABLE:
  *
- * A #GdkAtom representing the `DRAWABLE` selection target.
+ * A #CdkAtom representing the `DRAWABLE` selection target.
  */
 #define GDK_TARGET_DRAWABLE 		_GDK_MAKE_ATOM (17)
 
 /**
  * GDK_TARGET_PIXMAP:
  *
- * A #GdkAtom representing the `PIXMAP` selection target.
+ * A #CdkAtom representing the `PIXMAP` selection target.
  */
 #define GDK_TARGET_PIXMAP 		_GDK_MAKE_ATOM (20)
 
 /**
  * GDK_TARGET_STRING:
  *
- * A #GdkAtom representing the `STRING` selection target.
+ * A #CdkAtom representing the `STRING` selection target.
  */
 #define GDK_TARGET_STRING 		_GDK_MAKE_ATOM (31)
 
 /**
  * GDK_SELECTION_TYPE_ATOM:
  *
- * A #GdkAtom representing the `ATOM` selection type.
+ * A #CdkAtom representing the `ATOM` selection type.
  */
 #define GDK_SELECTION_TYPE_ATOM 	_GDK_MAKE_ATOM (4)
 
 /**
  * GDK_SELECTION_TYPE_BITMAP:
  *
- * A #GdkAtom representing the `BITMAP` selection type.
+ * A #CdkAtom representing the `BITMAP` selection type.
  */
 #define GDK_SELECTION_TYPE_BITMAP 	_GDK_MAKE_ATOM (5)
 
 /**
  * GDK_SELECTION_TYPE_COLORMAP:
  *
- * A #GdkAtom representing the `COLORMAP` selection type.
+ * A #CdkAtom representing the `COLORMAP` selection type.
  */
 #define GDK_SELECTION_TYPE_COLORMAP 	_GDK_MAKE_ATOM (7)
 
 /**
  * GDK_SELECTION_TYPE_DRAWABLE:
  *
- * A #GdkAtom representing the `DRAWABLE` selection type.
+ * A #CdkAtom representing the `DRAWABLE` selection type.
  */
 #define GDK_SELECTION_TYPE_DRAWABLE 	_GDK_MAKE_ATOM (17)
 
 /**
  * GDK_SELECTION_TYPE_INTEGER:
  *
- * A #GdkAtom representing the `INTEGER` selection type.
+ * A #CdkAtom representing the `INTEGER` selection type.
  */
 #define GDK_SELECTION_TYPE_INTEGER 	_GDK_MAKE_ATOM (19)
 
 /**
  * GDK_SELECTION_TYPE_PIXMAP:
  *
- * A #GdkAtom representing the `PIXMAP` selection type.
+ * A #CdkAtom representing the `PIXMAP` selection type.
  */
 #define GDK_SELECTION_TYPE_PIXMAP 	_GDK_MAKE_ATOM (20)
 
 /**
  * GDK_SELECTION_TYPE_WINDOW:
  *
- * A #GdkAtom representing the `WINDOW` selection type.
+ * A #CdkAtom representing the `WINDOW` selection type.
  */
 #define GDK_SELECTION_TYPE_WINDOW 	_GDK_MAKE_ATOM (33)
 
 /**
  * GDK_SELECTION_TYPE_STRING:
  *
- * A #GdkAtom representing the `STRING` selection type.
+ * A #CdkAtom representing the `STRING` selection type.
  */
 #define GDK_SELECTION_TYPE_STRING 	_GDK_MAKE_ATOM (31)
 
@@ -153,25 +153,25 @@ G_BEGIN_DECLS
  */
 
 GDK_AVAILABLE_IN_ALL
-gboolean   cdk_selection_owner_set (GdkWindow	 *owner,
-				    GdkAtom	  selection,
+gboolean   cdk_selection_owner_set (CdkWindow	 *owner,
+				    CdkAtom	  selection,
 				    guint32	  time_,
 				    gboolean      send_event);
 GDK_AVAILABLE_IN_ALL
-GdkWindow* cdk_selection_owner_get (GdkAtom	  selection);
+CdkWindow* cdk_selection_owner_get (CdkAtom	  selection);
 GDK_AVAILABLE_IN_ALL
-gboolean   cdk_selection_owner_set_for_display (GdkDisplay *display,
-						GdkWindow  *owner,
-						GdkAtom     selection,
+gboolean   cdk_selection_owner_set_for_display (CdkDisplay *display,
+						CdkWindow  *owner,
+						CdkAtom     selection,
 						guint32     time_,
 						gboolean    send_event);
 GDK_AVAILABLE_IN_ALL
-GdkWindow *cdk_selection_owner_get_for_display (GdkDisplay *display,
-						GdkAtom     selection);
+CdkWindow *cdk_selection_owner_get_for_display (CdkDisplay *display,
+						CdkAtom     selection);
 
 /**
  * cdk_selection_convert:
- * @requestor: a #GdkWindow.
+ * @requestor: a #CdkWindow.
  * @selection: an atom identifying the selection to get the
  *   contents of.
  * @target: the form in which to retrieve the selection.
@@ -184,29 +184,29 @@ GdkWindow *cdk_selection_owner_get_for_display (GdkDisplay *display,
  * form.
  */
 GDK_AVAILABLE_IN_ALL
-void	   cdk_selection_convert   (GdkWindow	 *requestor,
-				    GdkAtom	  selection,
-				    GdkAtom	  target,
+void	   cdk_selection_convert   (CdkWindow	 *requestor,
+				    CdkAtom	  selection,
+				    CdkAtom	  target,
 				    guint32	  time_);
 GDK_AVAILABLE_IN_ALL
-gint       cdk_selection_property_get (GdkWindow  *requestor,
+gint       cdk_selection_property_get (CdkWindow  *requestor,
 				       guchar	 **data,
-				       GdkAtom	  *prop_type,
+				       CdkAtom	  *prop_type,
 				       gint	  *prop_format);
 
 GDK_AVAILABLE_IN_ALL
-void	   cdk_selection_send_notify (GdkWindow      *requestor,
-				      GdkAtom	      selection,
-				      GdkAtom	      target,
-				      GdkAtom	      property,
+void	   cdk_selection_send_notify (CdkWindow      *requestor,
+				      CdkAtom	      selection,
+				      CdkAtom	      target,
+				      CdkAtom	      property,
 				      guint32	      time_);
 
 GDK_AVAILABLE_IN_ALL
-void       cdk_selection_send_notify_for_display (GdkDisplay      *display,
-						  GdkWindow       *requestor,
-						  GdkAtom     	   selection,
-						  GdkAtom     	   target,
-						  GdkAtom     	   property,
+void       cdk_selection_send_notify_for_display (CdkDisplay      *display,
+						  CdkWindow       *requestor,
+						  CdkAtom     	   selection,
+						  CdkAtom     	   target,
+						  CdkAtom     	   property,
 						  guint32     	   time_);
 
 G_END_DECLS

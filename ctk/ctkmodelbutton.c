@@ -895,7 +895,7 @@ ctk_model_button_size_allocate (CtkWidget     *widget,
                                 CtkAllocation *allocation)
 {
   CtkCssGadget *gadget;
-  GdkRectangle clip;
+  CdkRectangle clip;
 
   if (CTK_MODEL_BUTTON (widget)->iconic)
     gadget = CTK_BUTTON (widget)->priv->gadget;
@@ -926,7 +926,7 @@ ctk_model_button_allocate (CtkCssGadget        *gadget,
   CtkWidget *child;
   gint check_min_width, check_nat_width;
   gint check_min_height, check_nat_height;
-  GdkRectangle check_clip;
+  CdkRectangle check_clip;
 
   widget = ctk_css_gadget_get_owner (gadget);
   button = CTK_MODEL_BUTTON (widget);

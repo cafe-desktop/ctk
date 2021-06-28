@@ -120,8 +120,8 @@ get_current_selection_modifiers (CtkWidget *widget,
                                  gboolean  *modify,
                                  gboolean  *extend)
 {
-  GdkModifierType state = 0;
-  GdkModifierType mask;
+  CdkModifierType state = 0;
+  CdkModifierType mask;
 
   *modify = FALSE;
   *extend = FALSE;
@@ -139,18 +139,18 @@ get_current_selection_modifiers (CtkWidget *widget,
 
 static void
 path_from_horizontal_line_rects (cairo_t      *cr,
-                                 GdkRectangle *lines,
+                                 CdkRectangle *lines,
                                  gint          n_lines)
 {
   gint start_line, end_line;
-  GdkRectangle *r;
+  CdkRectangle *r;
   gint i;
 
   /* Join rows vertically by extending to the middle */
   for (i = 0; i < n_lines - 1; i++)
     {
-      GdkRectangle *r1 = &lines[i];
-      GdkRectangle *r2 = &lines[i+1];
+      CdkRectangle *r1 = &lines[i];
+      CdkRectangle *r2 = &lines[i+1];
       gint gap, old;
 
       gap = r2->y - (r1->y + r1->height);
@@ -197,18 +197,18 @@ path_from_horizontal_line_rects (cairo_t      *cr,
 
 static void
 path_from_vertical_line_rects (cairo_t      *cr,
-                               GdkRectangle *lines,
+                               CdkRectangle *lines,
                                gint          n_lines)
 {
   gint start_line, end_line;
-  GdkRectangle *r;
+  CdkRectangle *r;
   gint i;
 
   /* Join rows horizontally by extending to the middle */
   for (i = 0; i < n_lines - 1; i++)
     {
-      GdkRectangle *r1 = &lines[i];
-      GdkRectangle *r2 = &lines[i+1];
+      CdkRectangle *r1 = &lines[i];
+      CdkRectangle *r2 = &lines[i+1];
       gint gap, old;
 
       gap = r2->x - (r1->x + r1->width);
@@ -1589,7 +1589,7 @@ ctk_flow_box_size_allocate (CtkWidget     *widget,
                             CtkAllocation *allocation)
 {
   CtkAllocation clip;
-  GdkWindow *window;
+  CdkWindow *window;
   CtkAllocation child_allocation;
 
   ctk_widget_set_allocation (widget, allocation);
@@ -2636,7 +2636,7 @@ ctk_flow_box_render (CtkCssGadget *gadget,
     {
       CtkStyleContext *context;
       GSequenceIter *iter, *iter1, *iter2;
-      GdkRectangle line_rect, rect;
+      CdkRectangle line_rect, rect;
       GArray *lines;
       gboolean vertical;
 
@@ -2660,7 +2660,7 @@ ctk_flow_box_render (CtkCssGadget *gadget,
         }
 
       line_rect.width = 0;
-      lines = g_array_new (FALSE, FALSE, sizeof (GdkRectangle));
+      lines = g_array_new (FALSE, FALSE, sizeof (CdkRectangle));
 
       for (iter = iter1;
            !g_sequence_iter_is_end (iter);
@@ -2696,12 +2696,12 @@ ctk_flow_box_render (CtkCssGadget *gadget,
           CtkStateFlags state;
           cairo_path_t *path;
           CtkBorder border;
-          GdkRGBA border_color;
+          CdkRGBA border_color;
 
           if (vertical)
-            path_from_vertical_line_rects (cr, (GdkRectangle *)lines->data, lines->len);
+            path_from_vertical_line_rects (cr, (CdkRectangle *)lines->data, lines->len);
           else
-            path_from_horizontal_line_rects (cr, (GdkRectangle *)lines->data, lines->len);
+            path_from_horizontal_line_rects (cr, (CdkRectangle *)lines->data, lines->len);
 
           /* For some reason we need to copy and reapply the path,
            * or it gets eaten by ctk_render_background()
@@ -2753,7 +2753,7 @@ remove_autoscroll (CtkFlowBox *box)
 
 static gboolean
 autoscroll_cb (CtkWidget     *widget,
-               GdkFrameClock *frame_clock,
+               CdkFrameClock *frame_clock,
                gpointer       data)
 {
   CtkFlowBox *box = CTK_FLOW_BOX (data);
@@ -2794,7 +2794,7 @@ autoscroll_cb (CtkWidget     *widget,
 
   if (priv->rubberband_select)
     {
-      GdkEventSequence *sequence;
+      CdkEventSequence *sequence;
       gdouble x, y;
       CtkFlowBoxChild *child;
 
@@ -2829,11 +2829,11 @@ add_autoscroll (CtkFlowBox *box)
 
 static gboolean
 get_view_rect (CtkFlowBox   *box,
-               GdkRectangle *rect)
+               CdkRectangle *rect)
 {
   CtkFlowBoxPrivate *priv = BOX_PRIV (box);
   CtkWidget *parent;
-  GdkWindow *view;
+  CdkWindow *view;
 
   parent = ctk_widget_get_parent (CTK_WIDGET (box));
   if (CTK_IS_VIEWPORT (parent))
@@ -2858,7 +2858,7 @@ update_autoscroll_mode (CtkFlowBox *box,
 {
   CtkFlowBoxPrivate *priv = BOX_PRIV (box);
   CtkScrollType mode = CTK_SCROLL_NONE;
-  GdkRectangle rect;
+  CdkRectangle rect;
   gint size, pos;
 
   if (priv->rubberband_select && get_view_rect (box, &rect))
@@ -2896,7 +2896,7 @@ update_autoscroll_mode (CtkFlowBox *box,
 
 static gboolean
 ctk_flow_box_enter_notify_event (CtkWidget        *widget,
-                                 GdkEventCrossing *event)
+                                 CdkEventCrossing *event)
 {
   CtkFlowBox *box = CTK_FLOW_BOX (widget);
   CtkFlowBoxChild *child;
@@ -2912,7 +2912,7 @@ ctk_flow_box_enter_notify_event (CtkWidget        *widget,
 
 static gboolean
 ctk_flow_box_leave_notify_event (CtkWidget        *widget,
-                                 GdkEventCrossing *event)
+                                 CdkEventCrossing *event)
 {
   CtkFlowBox *box = CTK_FLOW_BOX (widget);
   CtkFlowBoxChild *child = NULL;
@@ -2983,12 +2983,12 @@ ctk_flow_box_drag_gesture_update (CtkGestureDrag *gesture,
 
 static gboolean
 ctk_flow_box_motion_notify_event (CtkWidget      *widget,
-                                  GdkEventMotion *event)
+                                  CdkEventMotion *event)
 {
   CtkFlowBox *box = CTK_FLOW_BOX (widget);
   CtkFlowBoxChild *child;
-  GdkWindow *window;
-  GdkWindow *event_window;
+  CdkWindow *window;
+  CdkWindow *event_window;
   gint relative_x;
   gint relative_y;
   gdouble parent_x;
@@ -3064,9 +3064,9 @@ ctk_flow_box_multipress_gesture_released (CtkGestureMultiPress *gesture,
         ctk_flow_box_select_and_activate (box, priv->active_child);
       else
         {
-          GdkEventSequence *sequence;
-          GdkInputSource source;
-          const GdkEvent *event;
+          CdkEventSequence *sequence;
+          CdkInputSource source;
+          const CdkEvent *event;
           gboolean modify;
           gboolean extend;
 
@@ -3144,7 +3144,7 @@ ctk_flow_box_drag_gesture_end (CtkGestureDrag *gesture,
                                CtkFlowBox     *box)
 {
   CtkFlowBoxPrivate *priv = BOX_PRIV (box);
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
 
   if (!priv->rubberband_select)
     return;
@@ -3171,7 +3171,7 @@ ctk_flow_box_drag_gesture_end (CtkGestureDrag *gesture,
 
 static gboolean
 ctk_flow_box_key_press_event (CtkWidget   *widget,
-                              GdkEventKey *event)
+                              CdkEventKey *event)
 {
   CtkFlowBox *box = CTK_FLOW_BOX (widget);
   CtkFlowBoxPrivate *priv = BOX_PRIV (box);
@@ -3195,8 +3195,8 @@ ctk_flow_box_realize (CtkWidget *widget)
 {
   CtkFlowBox *box = CTK_FLOW_BOX (widget);
   CtkAllocation allocation;
-  GdkWindowAttr attributes = {0};
-  GdkWindow *window;
+  CdkWindowAttr attributes = {0};
+  CdkWindow *window;
 
   ctk_widget_get_allocation (CTK_WIDGET (box), &allocation);
   ctk_widget_set_realized (CTK_WIDGET (box), TRUE);
@@ -3380,13 +3380,13 @@ ctk_flow_box_focus (CtkWidget        *widget,
 static void
 ctk_flow_box_add_move_binding (CtkBindingSet   *binding_set,
                                guint            keyval,
-                               GdkModifierType  modmask,
+                               CdkModifierType  modmask,
                                CtkMovementStep  step,
                                gint             count)
 {
-  GdkDisplay *display;
-  GdkModifierType extend_mod_mask = GDK_SHIFT_MASK;
-  GdkModifierType modify_mod_mask = GDK_CONTROL_MASK;
+  CdkDisplay *display;
+  CdkModifierType extend_mod_mask = GDK_SHIFT_MASK;
+  CdkModifierType modify_mod_mask = GDK_CONTROL_MASK;
 
   display = cdk_display_get_default ();
   if (display)

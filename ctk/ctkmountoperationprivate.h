@@ -33,14 +33,14 @@
 struct _CtkMountOperationLookupContext;
 typedef struct _CtkMountOperationLookupContext CtkMountOperationLookupContext;
 
-CtkMountOperationLookupContext *_ctk_mount_operation_lookup_context_get  (GdkDisplay *display);
+CtkMountOperationLookupContext *_ctk_mount_operation_lookup_context_get  (CdkDisplay *display);
 
 gboolean _ctk_mount_operation_lookup_info         (CtkMountOperationLookupContext *context,
                                                    GPid                            pid,
                                                    gint                            size_pixels,
                                                    gchar                         **out_name,
                                                    gchar                         **out_command_line,
-                                                   GdkPixbuf                     **out_pixbuf);
+                                                   CdkPixbuf                     **out_pixbuf);
 
 void     _ctk_mount_operation_lookup_context_free (CtkMountOperationLookupContext *context);
 

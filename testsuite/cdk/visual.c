@@ -9,13 +9,13 @@
 static void
 test_rgba_visual (void)
 {
-  GdkScreen *screen;
-  GdkVisual *visual;
+  CdkScreen *screen;
+  CdkVisual *visual;
   guint32 r_mask, g_mask, b_mask;
   gint r_shift, g_shift, b_shift;
   gint r_precision, g_precision, b_precision;
   gint depth;
-  GdkVisualType type;
+  CdkVisualType type;
 
   g_test_bug ("764210");
 
@@ -53,10 +53,10 @@ test_rgba_visual (void)
 static void
 test_list_visuals (void)
 {
-  GdkScreen *screen;
-  GdkVisual *visual;
-  GdkVisual *rgba_visual;
-  GdkVisual *system_visual;
+  CdkScreen *screen;
+  CdkVisual *visual;
+  CdkVisual *rgba_visual;
+  CdkVisual *system_visual;
   GList *list, *l;
   gboolean found_system, found_rgba;
 
@@ -88,7 +88,7 @@ test_list_visuals (void)
 static void
 test_depth (void)
 {
-  GdkVisual *visual;
+  CdkVisual *visual;
   gint *depths;
   gint n_depths;
   gint i, j;
@@ -130,8 +130,8 @@ test_depth (void)
 static void
 test_type (void)
 {
-  GdkVisual *visual;
-  GdkVisualType *types;
+  CdkVisual *visual;
+  CdkVisualType *types;
   gint n_types;
   gint i, j;
   gboolean is_type;

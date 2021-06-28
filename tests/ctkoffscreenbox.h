@@ -25,8 +25,8 @@ struct _CtkOffscreenBox
   CtkWidget *child1;
   CtkWidget *child2;
 
-  GdkWindow *offscreen_window1;
-  GdkWindow *offscreen_window2;
+  CdkWindow *offscreen_window1;
+  CdkWindow *offscreen_window2;
 
   gdouble angle;
 };

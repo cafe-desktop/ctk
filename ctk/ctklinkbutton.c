@@ -104,15 +104,15 @@ static void     ctk_link_button_set_property (GObject          *object,
 					      const GValue     *value,
 					      GParamSpec       *pspec);
 static gboolean ctk_link_button_button_press (CtkWidget        *widget,
-					      GdkEventButton   *event);
+					      CdkEventButton   *event);
 static void     ctk_link_button_clicked      (CtkButton        *button);
 static gboolean ctk_link_button_popup_menu   (CtkWidget        *widget);
 static void     ctk_link_button_realize      (CtkWidget        *widget);
 static void     ctk_link_button_unrealize    (CtkWidget        *widget);
 static void     ctk_link_button_drag_begin   (CtkWidget        *widget,
-                                              GdkDragContext   *context);
+                                              CdkDragContext   *context);
 static void ctk_link_button_drag_data_get_cb (CtkWidget        *widget,
-					      GdkDragContext   *context,
+					      CdkDragContext   *context,
 					      CtkSelectionData *selection,
 					      guint             _info,
 					      guint             _time,
@@ -298,8 +298,8 @@ static void
 set_hand_cursor (CtkWidget *widget,
 		 gboolean   show_hand)
 {
-  GdkDisplay *display;
-  GdkCursor *cursor;
+  CdkDisplay *display;
+  CdkCursor *cursor;
 
   display = ctk_widget_get_display (widget);
 
@@ -352,7 +352,7 @@ copy_activate_cb (CtkWidget     *widget,
 
 static void
 ctk_link_button_do_popup (CtkLinkButton  *link_button,
-                          const GdkEvent *event)
+                          const CdkEvent *event)
 {
   CtkLinkButtonPrivate *priv = link_button->priv;
 
@@ -394,17 +394,17 @@ ctk_link_button_do_popup (CtkLinkButton  *link_button,
 
 static gboolean
 ctk_link_button_button_press (CtkWidget      *widget,
-			      GdkEventButton *event)
+			      CdkEventButton *event)
 {
   if (!ctk_widget_has_focus (widget))
     ctk_widget_grab_focus (widget);
 
   /* Don't popup the menu if there's no URI set,
    * otherwise the menu item will trigger a warning */
-  if (cdk_event_triggers_context_menu ((GdkEvent *) event) &&
+  if (cdk_event_triggers_context_menu ((CdkEvent *) event) &&
       CTK_LINK_BUTTON (widget)->priv->uri != NULL)
     {
-      ctk_link_button_do_popup (CTK_LINK_BUTTON (widget), (GdkEvent *) event);
+      ctk_link_button_do_popup (CTK_LINK_BUTTON (widget), (CdkEvent *) event);
 
       return TRUE;
     }
@@ -458,14 +458,14 @@ ctk_link_button_popup_menu (CtkWidget *widget)
 
 static void
 ctk_link_button_drag_begin (CtkWidget      *widget,
-                            GdkDragContext *context)
+                            CdkDragContext *context)
 {
   ctk_drag_set_icon_name (context, "text-x-generic", 0, 0);
 }
 
 static void
 ctk_link_button_drag_data_get_cb (CtkWidget        *widget,
-				  GdkDragContext   *context,
+				  CdkDragContext   *context,
 				  CtkSelectionData *selection,
 				  guint             _info,
 				  guint             _time,

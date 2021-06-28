@@ -38,7 +38,7 @@ void           _ctk_pixel_cache_invalidate       (CtkPixelCache         *cache,
                                                   cairo_region_t        *region);
 void           _ctk_pixel_cache_draw             (CtkPixelCache         *cache,
                                                   cairo_t               *cr,
-                                                  GdkWindow             *window,
+                                                  CdkWindow             *window,
                                                   cairo_rectangle_int_t *view_rect,
                                                   cairo_rectangle_int_t *canvas_rect,
                                                   CtkPixelCacheDrawFunc  draw,

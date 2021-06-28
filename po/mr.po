@@ -6130,8 +6130,8 @@ msgstr "आवाज कमी करतो"
 #~ "प्रतिमा '%s' ला सुरु करण्यात असफल: कारण माहीत नाही , बहुदा ही एक दुषित प्रतिमा "
 #~ "फाइल असावी "
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "निर्धारित करायचे Gdk त्रुटीनिर्वारण ध्वज"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "निर्धारित करायचे Cdk त्रुटीनिर्वारण ध्वज"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "अनिर्धारित करायचे Gdk त्रुटीनिर्वारण ध्वज"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "अनिर्धारित करायचे Cdk त्रुटीनिर्वारण ध्वज"

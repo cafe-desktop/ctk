@@ -99,7 +99,7 @@ static void
 select_swatch (CtkColorChooserWidget *cc,
                CtkColorSwatch        *swatch)
 {
-  GdkRGBA color;
+  CdkRGBA color;
 
   if (cc->priv->current == swatch)
     return;
@@ -125,7 +125,7 @@ static void
 swatch_activate (CtkColorSwatch        *swatch,
                  CtkColorChooserWidget *cc)
 {
-  GdkRGBA color;
+  CdkRGBA color;
 
   ctk_color_swatch_get_rgba (swatch, &color);
   _ctk_color_chooser_color_activated (CTK_COLOR_CHOOSER (cc), &color);
@@ -135,7 +135,7 @@ static void
 swatch_customize (CtkColorSwatch        *swatch,
                   CtkColorChooserWidget *cc)
 {
-  GdkRGBA color;
+  CdkRGBA color;
 
   ctk_color_swatch_get_rgba (swatch, &color);
   ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (cc->priv->editor), &color);
@@ -172,7 +172,7 @@ button_activate (CtkColorSwatch        *swatch,
                  CtkColorChooserWidget *cc)
 {
   /* somewhat random, makes the hairline nicely visible */
-  GdkRGBA color = { 0.75, 0.25, 0.25, 1.0 };
+  CdkRGBA color = { 0.75, 0.25, 0.25, 1.0 };
 
   ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (cc->priv->editor), &color);
 
@@ -193,7 +193,7 @@ save_custom_colors (CtkColorChooserWidget *cc)
 {
   GVariantBuilder builder;
   GVariant *variant;
-  GdkRGBA color;
+  CdkRGBA color;
   GList *children, *l;
   CtkWidget *child;
 
@@ -266,7 +266,7 @@ ctk_color_chooser_widget_set_show_editor (CtkColorChooserWidget *cc,
 {
   if (show_editor)
     {
-      GdkRGBA color = { 0.75, 0.25, 0.25, 1.0 };
+      CdkRGBA color = { 0.75, 0.25, 0.25, 1.0 };
 
       if (cc->priv->current)
         ctk_color_swatch_get_rgba (cc->priv->current, &color);
@@ -298,7 +298,7 @@ scale_round (gdouble value, gdouble scale)
 }
 
 static gchar *
-accessible_color_name (GdkRGBA *color)
+accessible_color_name (CdkRGBA *color)
 {
   if (color->alpha < 1.0)
     return g_strdup_printf (_("Red %d%%, Green %d%%, Blue %d%%, Alpha %d%%"),
@@ -339,7 +339,7 @@ add_palette (CtkColorChooserWidget  *cc,
              CtkOrientation          orientation,
              gint                    colors_per_line,
              gint                    n_colors,
-             GdkRGBA                *colors,
+             CdkRGBA                *colors,
              const gchar           **names)
 {
   CtkWidget *grid;
@@ -489,7 +489,7 @@ add_default_palette (CtkColorChooserWidget *cc)
     NC_("Color name", "Dark Gray 4"),
     NC_("Color name", "Black"),
   };
-  GdkRGBA colors[9*5];
+  CdkRGBA colors[9*5];
   gint i, j;
 
   for (i = 0; i < 9; i++)
@@ -509,7 +509,7 @@ ctk_color_chooser_widget_init (CtkColorChooserWidget *cc)
   CtkWidget *button;
   CtkWidget *label;
   gint i;
-  GdkRGBA color;
+  CdkRGBA color;
   GVariant *variant;
   GVariantIter iter;
   gboolean selected;
@@ -613,7 +613,7 @@ ctk_color_chooser_widget_get_property (GObject    *object,
     {
     case PROP_RGBA:
       {
-        GdkRGBA color;
+        CdkRGBA color;
 
         ctk_color_chooser_get_rgba (cc, &color);
         g_value_set_boxed (value, &color);
@@ -702,7 +702,7 @@ ctk_color_chooser_widget_class_init (CtkColorChooserWidgetClass *class)
 
 static void
 ctk_color_chooser_widget_get_rgba (CtkColorChooser *chooser,
-                                   GdkRGBA         *color)
+                                   CdkRGBA         *color)
 {
   CtkColorChooserWidget *cc = CTK_COLOR_CHOOSER_WIDGET (chooser);
 
@@ -724,7 +724,7 @@ ctk_color_chooser_widget_get_rgba (CtkColorChooser *chooser,
 
 static void
 add_custom_color (CtkColorChooserWidget *cc,
-                  const GdkRGBA         *color)
+                  const CdkRGBA         *color)
 {
   CtkWidget *last;
   CtkWidget *p;
@@ -757,14 +757,14 @@ add_custom_color (CtkColorChooserWidget *cc,
 
 static void
 ctk_color_chooser_widget_set_rgba (CtkColorChooser *chooser,
-                                   const GdkRGBA   *color)
+                                   const CdkRGBA   *color)
 {
   CtkColorChooserWidget *cc = CTK_COLOR_CHOOSER_WIDGET (chooser);
   GList *children, *l;
   GList *palettes, *p;
   CtkColorSwatch *swatch;
   CtkWidget *w;
-  GdkRGBA c;
+  CdkRGBA c;
 
   palettes = ctk_container_get_children (CTK_CONTAINER (cc->priv->palette));
   for (p = palettes; p; p = p->next)
@@ -800,7 +800,7 @@ ctk_color_chooser_widget_add_palette (CtkColorChooser *chooser,
                                       CtkOrientation   orientation,
                                       gint             colors_per_line,
                                       gint             n_colors,
-                                      GdkRGBA         *colors)
+                                      CdkRGBA         *colors)
 {
   CtkColorChooserWidget *cc = CTK_COLOR_CHOOSER_WIDGET (chooser);
 

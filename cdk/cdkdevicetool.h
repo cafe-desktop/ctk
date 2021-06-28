@@ -29,13 +29,13 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_DEVICE_TOOL    (cdk_device_tool_get_type ())
-#define GDK_DEVICE_TOOL(o)      (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_TOOL, GdkDeviceTool))
+#define GDK_DEVICE_TOOL(o)      (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_TOOL, CdkDeviceTool))
 #define GDK_IS_DEVICE_TOOL(o)   (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_TOOL))
 
-typedef struct _GdkDeviceTool GdkDeviceTool;
+typedef struct _CdkDeviceTool CdkDeviceTool;
 
 /**
- * GdkDeviceToolType:
+ * CdkDeviceToolType:
  * @GDK_DEVICE_TOOL_TYPE_UNKNOWN: Tool is of an unknown type.
  * @GDK_DEVICE_TOOL_TYPE_PEN: Tool is a standard tablet stylus.
  * @GDK_DEVICE_TOOL_TYPE_ERASER: Tool is standard tablet eraser.
@@ -59,19 +59,19 @@ typedef enum {
   GDK_DEVICE_TOOL_TYPE_AIRBRUSH,
   GDK_DEVICE_TOOL_TYPE_MOUSE,
   GDK_DEVICE_TOOL_TYPE_LENS,
-} GdkDeviceToolType;
+} CdkDeviceToolType;
 
 GDK_AVAILABLE_IN_3_22
 GType cdk_device_tool_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-guint64 cdk_device_tool_get_serial (GdkDeviceTool *tool);
+guint64 cdk_device_tool_get_serial (CdkDeviceTool *tool);
 
 GDK_AVAILABLE_IN_3_22
-guint64 cdk_device_tool_get_hardware_id (GdkDeviceTool *tool);
+guint64 cdk_device_tool_get_hardware_id (CdkDeviceTool *tool);
 
 GDK_AVAILABLE_IN_3_22
-GdkDeviceToolType cdk_device_tool_get_tool_type (GdkDeviceTool *tool);
+CdkDeviceToolType cdk_device_tool_get_tool_type (CdkDeviceTool *tool);
 
 G_END_DECLS
 

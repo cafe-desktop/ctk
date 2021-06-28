@@ -27,18 +27,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_X11_APP_LAUNCH_CONTEXT              (cdk_x11_app_launch_context_get_type ())
-#define GDK_X11_APP_LAUNCH_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_APP_LAUNCH_CONTEXT, GdkX11AppLaunchContext))
-#define GDK_X11_APP_LAUNCH_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_APP_LAUNCH_CONTEXT, GdkX11AppLaunchContextClass))
+#define GDK_X11_APP_LAUNCH_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_APP_LAUNCH_CONTEXT, CdkX11AppLaunchContext))
+#define GDK_X11_APP_LAUNCH_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_APP_LAUNCH_CONTEXT, CdkX11AppLaunchContextClass))
 #define GDK_IS_X11_APP_LAUNCH_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_APP_LAUNCH_CONTEXT))
 #define GDK_IS_X11_APP_LAUNCH_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_APP_LAUNCH_CONTEXT))
-#define GDK_X11_APP_LAUNCH_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_APP_LAUNCH_CONTEXT, GdkX11AppLaunchContextClass))
+#define GDK_X11_APP_LAUNCH_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_APP_LAUNCH_CONTEXT, CdkX11AppLaunchContextClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkX11AppLaunchContext GdkX11AppLaunchContext;
+typedef struct _CdkX11AppLaunchContext CdkX11AppLaunchContext;
 #else
-typedef GdkAppLaunchContext GdkX11AppLaunchContext;
+typedef CdkAppLaunchContext CdkX11AppLaunchContext;
 #endif
-typedef struct _GdkX11AppLaunchContextClass GdkX11AppLaunchContextClass;
+typedef struct _CdkX11AppLaunchContextClass CdkX11AppLaunchContextClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_x11_app_launch_context_get_type (void);

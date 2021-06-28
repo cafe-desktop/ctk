@@ -1301,8 +1301,8 @@ msgid "Cell background color"
 msgstr "Bakgrunnsfargen til cella"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Bakgrunnsfargen til cella, som ein GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Bakgrunnsfargen til cella, som ein CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1560,8 +1560,8 @@ msgid "Background color"
 msgstr "Bakgrunnsfarge"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Bakgrunnsfarge, som ein GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Bakgrunnsfarge, som ein CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1577,8 +1577,8 @@ msgid "Foreground color"
 msgstr "Framgrunnsfarge"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Framgrunnsfarge, som ein GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Framgrunnsfarge, som ein CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3236,8 +3236,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "Eit GdkPixbuf som skal visast"
+msgid "A CdkPixbuf to display"
+msgstr "Eit CdkPixbuf som skal visast"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3284,8 +3284,8 @@ msgid "Animation"
 msgstr "Animasjon"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation som skal visast"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation som skal visast"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5952,7 +5952,7 @@ msgstr "Det valde året"
 #: ctk/ctktextbuffer.c:226
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "GdkFont som er vald no"
+msgstr "CdkFont som er vald no"
 
 #: ctk/ctktextbuffer.c:242
 #, fuzzy
@@ -6006,8 +6006,8 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr ""
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Bakgrunnsfarge som ein GdkColor (treng ikkje vera allokert)"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Bakgrunnsfarge som ein CdkColor (treng ikkje vera allokert)"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -6022,8 +6022,8 @@ msgstr ""
 "teikna"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Framgrunnsfarge som ein GdkColor (treng ikkje vera allokert)"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Framgrunnsfarge som ein CdkColor (treng ikkje vera allokert)"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6178,8 +6178,8 @@ msgstr "Bakgrunnsfargen til cella"
 
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Bakgrunnsfarge som ein GdkColor (treng ikkje vera allokert)"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Bakgrunnsfarge som ein CdkColor (treng ikkje vera allokert)"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7174,8 +7174,8 @@ msgid "Events"
 msgstr "Hendingar"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "Hendingsmaska som avgjer kva slags GdkEvents dette elementet får"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "Hendingsmaska som avgjer kva slags CdkEvents dette elementet får"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7685,7 +7685,7 @@ msgstr "Korleis statuslinja for inndatametoden skal teiknast"
 #~ msgstr "Tal på pikslar mellom rullefelta og vindauget som vert rulla"
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "Modellen for trevisinga"
 
 #, fuzzy
@@ -7710,8 +7710,8 @@ msgstr "Korleis statuslinja for inndatametoden skal teiknast"
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "Bitkart som skal brukast som maske når tekstbakgrunnen vert teikna"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "GdkFont som er vald no"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "CdkFont som er vald no"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "Utfasa eigenskap. Bruk shadow_type i staden"
@@ -7719,17 +7719,17 @@ msgstr "Korleis statuslinja for inndatametoden skal teiknast"
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "Eit GdkPixmap som skal visast"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "Eit CdkPixmap som skal visast"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "Eit GdkImage som skal visast"
+#~ msgid "A CdkImage to display"
+#~ msgstr "Eit CdkImage som skal visast"
 
 #~ msgid "Mask"
 #~ msgstr "Maske"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Maskebitkart som skal brukast med GdkImage eller GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Maskebitkart som skal brukast med CdkImage eller CdkPixmap"
 
 #, fuzzy
 #~ msgid "Use separator"

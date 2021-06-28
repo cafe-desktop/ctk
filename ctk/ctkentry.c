@@ -188,7 +188,7 @@ struct _CtkEntryPrivate
   CtkIMContext          *im_context;
   CtkWidget             *popup_menu;
 
-  GdkWindow             *text_area;
+  CdkWindow             *text_area;
   CtkAllocation          text_allocation;
   int                    text_baseline;
 
@@ -285,7 +285,7 @@ struct _CtkEntryPrivate
 
 struct _EntryIconInfo
 {
-  GdkWindow *window;
+  CdkWindow *window;
   gchar *tooltip;
   guint insensitive    : 1;
   guint nonactivatable : 1;
@@ -293,11 +293,11 @@ struct _EntryIconInfo
   guint in_drag        : 1;
   guint pressed        : 1;
 
-  GdkDragAction actions;
+  CdkDragAction actions;
   CtkTargetList *target_list;
   CtkCssGadget *gadget;
-  GdkEventSequence *current_sequence;
-  GdkDevice *device;
+  CdkEventSequence *current_sequence;
+  CdkDevice *device;
 };
 
 struct _CtkEntryPasswordHint
@@ -443,19 +443,19 @@ static void   ctk_entry_size_allocate        (CtkWidget        *widget,
 static gint   ctk_entry_draw                 (CtkWidget        *widget,
                                               cairo_t          *cr);
 static gboolean ctk_entry_event              (CtkWidget        *widget,
-                                              GdkEvent         *event);
+                                              CdkEvent         *event);
 static gint   ctk_entry_enter_notify         (CtkWidget        *widget,
-                                              GdkEventCrossing *event);
+                                              CdkEventCrossing *event);
 static gint   ctk_entry_leave_notify         (CtkWidget        *widget,
-                                              GdkEventCrossing *event);
+                                              CdkEventCrossing *event);
 static gint   ctk_entry_key_press            (CtkWidget        *widget,
-					      GdkEventKey      *event);
+					      CdkEventKey      *event);
 static gint   ctk_entry_key_release          (CtkWidget        *widget,
-					      GdkEventKey      *event);
+					      CdkEventKey      *event);
 static gint   ctk_entry_focus_in             (CtkWidget        *widget,
-					      GdkEventFocus    *event);
+					      CdkEventFocus    *event);
 static gint   ctk_entry_focus_out            (CtkWidget        *widget,
-					      GdkEventFocus    *event);
+					      CdkEventFocus    *event);
 static void   ctk_entry_grab_focus           (CtkWidget        *widget);
 static void   ctk_entry_style_updated        (CtkWidget        *widget);
 static gboolean ctk_entry_query_tooltip      (CtkWidget        *widget,
@@ -468,39 +468,39 @@ static void   ctk_entry_direction_changed    (CtkWidget        *widget,
 static void   ctk_entry_state_flags_changed  (CtkWidget        *widget,
 					      CtkStateFlags     previous_state);
 static void   ctk_entry_screen_changed       (CtkWidget        *widget,
-					      GdkScreen        *old_screen);
+					      CdkScreen        *old_screen);
 
 static gboolean ctk_entry_drag_drop          (CtkWidget        *widget,
-                                              GdkDragContext   *context,
+                                              CdkDragContext   *context,
                                               gint              x,
                                               gint              y,
                                               guint             time);
 static gboolean ctk_entry_drag_motion        (CtkWidget        *widget,
-					      GdkDragContext   *context,
+					      CdkDragContext   *context,
 					      gint              x,
 					      gint              y,
 					      guint             time);
 static void     ctk_entry_drag_leave         (CtkWidget        *widget,
-					      GdkDragContext   *context,
+					      CdkDragContext   *context,
 					      guint             time);
 static void     ctk_entry_drag_data_received (CtkWidget        *widget,
-					      GdkDragContext   *context,
+					      CdkDragContext   *context,
 					      gint              x,
 					      gint              y,
 					      CtkSelectionData *selection_data,
 					      guint             info,
 					      guint             time);
 static void     ctk_entry_drag_data_get      (CtkWidget        *widget,
-					      GdkDragContext   *context,
+					      CdkDragContext   *context,
 					      CtkSelectionData *selection_data,
 					      guint             info,
 					      guint             time);
 static void     ctk_entry_drag_data_delete   (CtkWidget        *widget,
-					      GdkDragContext   *context);
+					      CdkDragContext   *context);
 static void     ctk_entry_drag_begin         (CtkWidget        *widget,
-                                              GdkDragContext   *context);
+                                              CdkDragContext   *context);
 static void     ctk_entry_drag_end           (CtkWidget        *widget,
-                                              GdkDragContext   *context);
+                                              CdkDragContext   *context);
 
 
 /* CtkEditable method implementations
@@ -528,7 +528,7 @@ static gboolean ctk_entry_get_selection_bounds (CtkEditable *editable,
 /* CtkCellEditable method implementations
  */
 static void ctk_entry_start_editing (CtkCellEditable *cell_editable,
-				     GdkEvent        *event);
+				     CdkEvent        *event);
 
 /* Default signal handlers
  */
@@ -558,9 +558,9 @@ static void ctk_entry_select_all         (CtkEntry        *entry);
 static void ctk_entry_real_activate      (CtkEntry        *entry);
 static gboolean ctk_entry_popup_menu     (CtkWidget       *widget);
 
-static void keymap_direction_changed     (GdkKeymap       *keymap,
+static void keymap_direction_changed     (CdkKeymap       *keymap,
 					  CtkEntry        *entry);
-static void keymap_state_changed         (GdkKeymap       *keymap,
+static void keymap_state_changed         (CdkKeymap       *keymap,
 					  CtkEntry        *entry);
 static void remove_capslock_feedback     (CtkEntry        *entry);
 
@@ -627,10 +627,10 @@ static void         ctk_entry_delete_whitespace        (CtkEntry       *entry);
 static void         ctk_entry_select_word              (CtkEntry       *entry);
 static void         ctk_entry_select_line              (CtkEntry       *entry);
 static void         ctk_entry_paste                    (CtkEntry       *entry,
-							GdkAtom         selection);
+							CdkAtom         selection);
 static void         ctk_entry_update_primary_selection (CtkEntry       *entry);
 static void         ctk_entry_do_popup                 (CtkEntry       *entry,
-							const GdkEvent *event);
+							const CdkEvent *event);
 static gboolean     ctk_entry_mnemonic_activate        (CtkWidget      *widget,
 							gboolean        group_cycling);
 static void         ctk_entry_grab_notify              (CtkWidget      *widget,
@@ -2983,7 +2983,7 @@ ctk_entry_dispose (GObject *object)
 {
   CtkEntry *entry = CTK_ENTRY (object);
   CtkEntryPrivate *priv = entry->priv;
-  GdkKeymap *keymap;
+  CdkKeymap *keymap;
 
   ctk_entry_set_icon_from_pixbuf (entry, CTK_ENTRY_ICON_PRIMARY, NULL);
   ctk_entry_set_icon_tooltip_markup (entry, CTK_ENTRY_ICON_PRIMARY, NULL);
@@ -3154,8 +3154,8 @@ update_cursors (CtkWidget *widget)
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = NULL;
-  GdkDisplay *display;
-  GdkCursor *cursor;
+  CdkDisplay *display;
+  CdkCursor *cursor;
   gint i;
 
   for (i = 0; i < MAX_ICONS; i++)
@@ -3195,7 +3195,7 @@ realize_icon_info (CtkWidget            *widget,
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
   EntryIconInfo *icon_info = priv->icons[icon_pos];
-  GdkWindowAttr attributes;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   g_return_if_fail (icon_info != NULL);
@@ -3404,7 +3404,7 @@ ctk_entry_realize (CtkWidget *widget)
   CtkEntry *entry;
   CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
-  GdkWindowAttr attributes;
+  CdkWindowAttr attributes;
   gint attributes_mask;
   int i;
 
@@ -3792,7 +3792,7 @@ static void
 ctk_entry_size_allocate (CtkWidget     *widget,
 			 CtkAllocation *allocation)
 {
-  GdkRectangle clip;
+  CdkRectangle clip;
 
   ctk_widget_set_allocation (widget, allocation);
 
@@ -3840,7 +3840,7 @@ ctk_entry_allocate (CtkCssGadget        *gadget,
     {
       EntryIconInfo *icon_info = priv->icons[i];
       CtkAllocation icon_alloc;
-      GdkRectangle clip;
+      CdkRectangle clip;
       gint dummy, width, height;
 
       if (!icon_info)
@@ -3884,7 +3884,7 @@ ctk_entry_allocate (CtkCssGadget        *gadget,
     {
       int extra_width, req_width;
       CtkAllocation progress_alloc;
-      GdkRectangle clip;
+      CdkRectangle clip;
 
       ctk_css_gadget_get_preferred_size (priv->progress_gadget,
                                          CTK_ORIENTATION_HORIZONTAL,
@@ -3970,7 +3970,7 @@ ctk_entry_draw_undershoot (CtkEntry *entry,
   CtkStyleContext *context;
   gint min_offset, max_offset;
   CtkAllocation allocation;
-  GdkRectangle rect;
+  CdkRectangle rect;
   gboolean rtl;
 
   context = ctk_widget_get_style_context (CTK_WIDGET (entry));
@@ -4075,7 +4075,7 @@ ctk_entry_render (CtkCssGadget *gadget,
 
 static gint
 ctk_entry_enter_notify (CtkWidget        *widget,
-                        GdkEventCrossing *event)
+                        CdkEventCrossing *event)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -4103,7 +4103,7 @@ ctk_entry_enter_notify (CtkWidget        *widget,
 
 static gint
 ctk_entry_leave_notify (CtkWidget        *widget,
-                        GdkEventCrossing *event)
+                        CdkEventCrossing *event)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -4217,7 +4217,7 @@ ctk_entry_move_handle (CtkEntry              *entry,
   else
     {
       CtkAllocation allocation;
-      GdkRectangle rect;
+      CdkRectangle rect;
 
       ctk_widget_get_allocation (CTK_WIDGET (entry), &allocation);
       rect.x = x + priv->text_allocation.x - allocation.x;
@@ -4299,12 +4299,12 @@ ctk_entry_update_handles (CtkEntry          *entry,
 
 static gboolean
 ctk_entry_event (CtkWidget *widget,
-                 GdkEvent  *event)
+                 CdkEvent  *event)
 {
   CtkEntryPrivate *priv = CTK_ENTRY (widget)->priv;
   EntryIconInfo *icon_info = NULL;
-  GdkEventSequence *sequence;
-  GdkDevice *device;
+  CdkEventSequence *sequence;
+  CdkDevice *device;
   gdouble x, y;
   gint i;
 
@@ -4312,7 +4312,7 @@ ctk_entry_event (CtkWidget *widget,
       priv->mouse_cursor_obscured &&
       event->any.window == priv->text_area)
     {
-      GdkCursor *cursor;
+      CdkCursor *cursor;
 
       cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
       cdk_window_set_cursor (priv->text_area, cursor);
@@ -4432,7 +4432,7 @@ gesture_get_current_point_in_layout (CtkGestureSingle *gesture,
                                      gint             *y)
 {
   gint tx, ty;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   gdouble px, py;
 
   sequence = ctk_gesture_single_get_current_sequence (gesture);
@@ -4455,8 +4455,8 @@ ctk_entry_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
   CtkEditable *editable = CTK_EDITABLE (entry);
   CtkWidget *widget = CTK_WIDGET (entry);
   CtkEntryPrivate *priv = entry->priv;
-  GdkEventSequence *current;
-  const GdkEvent *event;
+  CdkEventSequence *current;
+  const CdkEvent *event;
   gint x, y, sel_start, sel_end;
   guint button;
   gint tmp_pos;
@@ -4501,7 +4501,7 @@ ctk_entry_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
       gboolean have_selection = ctk_editable_get_selection_bounds (editable, &sel_start, &sel_end);
       CtkTextHandleMode mode;
       gboolean is_touchscreen, extend_selection;
-      GdkDevice *source;
+      CdkDevice *source;
 
       source = cdk_event_get_source_device (event);
       is_touchscreen = ctk_simulate_touchscreen () ||
@@ -4681,8 +4681,8 @@ ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
 {
   CtkWidget *widget = CTK_WIDGET (entry);
   CtkEntryPrivate *priv = entry->priv;
-  GdkEventSequence *sequence;
-  const GdkEvent *event;
+  CdkEventSequence *sequence;
+  const CdkEvent *event;
   gint x, y;
 
   ctk_entry_selection_bubble_popup_unset (entry);
@@ -4693,7 +4693,7 @@ ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
 
   if (priv->mouse_cursor_obscured)
     {
-      GdkCursor *cursor;
+      CdkCursor *cursor;
 
       cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
       cdk_window_set_cursor (priv->text_area, cursor);
@@ -4723,7 +4723,7 @@ ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
 
           button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (gesture));
           ctk_drag_begin_with_coordinates (widget, target_list, actions,
-                                           button, (GdkEvent*) event,
+                                           button, (CdkEvent*) event,
                                            priv->drag_start_x + ranges[0],
                                            priv->drag_start_y);
           g_free (ranges);
@@ -4735,8 +4735,8 @@ ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
     }
   else
     {
-      GdkInputSource input_source;
-      GdkDevice *source;
+      CdkInputSource input_source;
+      CdkDevice *source;
       guint length;
       gint tmp_pos;
 
@@ -4815,9 +4815,9 @@ ctk_entry_drag_gesture_end (CtkGestureDrag *gesture,
 {
   CtkEntryPrivate *priv = entry->priv;
   gboolean in_drag, is_touchscreen;
-  GdkEventSequence *sequence;
-  const GdkEvent *event;
-  GdkDevice *source;
+  CdkEventSequence *sequence;
+  const CdkEvent *event;
+  CdkDevice *source;
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   in_drag = priv->in_drag;
@@ -4850,9 +4850,9 @@ ctk_entry_drag_gesture_end (CtkGestureDrag *gesture,
 }
 
 static void
-set_invisible_cursor (GdkWindow *window)
+set_invisible_cursor (CdkWindow *window)
 {
-  GdkCursor *cursor;
+  CdkCursor *cursor;
 
   cursor = cdk_cursor_new_from_name (cdk_window_get_display (window), "none");
   cdk_window_set_cursor (window, cursor);
@@ -4876,7 +4876,7 @@ ctk_entry_obscure_mouse_cursor (CtkEntry *entry)
 
 static gint
 ctk_entry_key_press (CtkWidget   *widget,
-		     GdkEventKey *event)
+		     CdkEventKey *event)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -4927,7 +4927,7 @@ out:
 
 static gint
 ctk_entry_key_release (CtkWidget   *widget,
-		       GdkEventKey *event)
+		       CdkEventKey *event)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -4954,11 +4954,11 @@ out:
 
 static gint
 ctk_entry_focus_in (CtkWidget     *widget,
-		    GdkEventFocus *event)
+		    CdkEventFocus *event)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
-  GdkKeymap *keymap;
+  CdkKeymap *keymap;
 
   ctk_widget_queue_draw (widget);
 
@@ -4992,12 +4992,12 @@ ctk_entry_focus_in (CtkWidget     *widget,
 
 static gint
 ctk_entry_focus_out (CtkWidget     *widget,
-		     GdkEventFocus *event)
+		     CdkEventFocus *event)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
   CtkEntryCompletion *completion;
-  GdkKeymap *keymap;
+  CdkKeymap *keymap;
 
   ctk_entry_selection_bubble_popup_unset (entry);
 
@@ -5118,7 +5118,7 @@ ctk_entry_state_flags_changed (CtkWidget     *widget,
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
-  GdkCursor *cursor;
+  CdkCursor *cursor;
 
   if (ctk_widget_get_realized (widget))
     {
@@ -5152,7 +5152,7 @@ ctk_entry_state_flags_changed (CtkWidget     *widget,
 
 static void
 ctk_entry_screen_changed (CtkWidget *widget,
-			  GdkScreen *old_screen)
+			  CdkScreen *old_screen)
 {
   ctk_entry_recompute (CTK_ENTRY (widget));
 }
@@ -5319,7 +5319,7 @@ ctk_cell_editable_entry_activated (CtkEntry *entry, gpointer data)
 
 static gboolean
 ctk_cell_editable_key_press_event (CtkEntry    *entry,
-				   GdkEventKey *key_event,
+				   CdkEventKey *key_event,
 				   gpointer     data)
 {
   CtkEntryPrivate *priv = entry->priv;
@@ -5347,7 +5347,7 @@ ctk_cell_editable_key_press_event (CtkEntry    *entry,
 
 static void
 ctk_entry_start_editing (CtkCellEditable *cell_editable,
-			 GdkEvent        *event)
+			 CdkEvent        *event)
 {
   g_signal_connect (cell_editable, "activate",
 		    G_CALLBACK (ctk_cell_editable_entry_activated), NULL);
@@ -5575,7 +5575,7 @@ get_better_cursor_x (CtkEntry *entry,
 		     gint      offset)
 {
   CtkEntryPrivate *priv = entry->priv;
-  GdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (entry)));
+  CdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (entry)));
   PangoDirection keymap_direction = cdk_keymap_get_direction (keymap);
   gboolean split_cursor;
   
@@ -6056,7 +6056,7 @@ ctk_entry_real_activate (CtkEntry *entry)
 }
 
 static void
-keymap_direction_changed (GdkKeymap *keymap,
+keymap_direction_changed (CdkKeymap *keymap,
                           CtkEntry  *entry)
 {
   ctk_entry_recompute (entry);
@@ -6247,7 +6247,7 @@ static void
 update_im_cursor_location (CtkEntry *entry)
 {
   CtkEntryPrivate *priv = entry->priv;
-  GdkRectangle area;
+  CdkRectangle area;
   gint strong_x;
   gint strong_xoffset;
   gint area_width, area_height;
@@ -6302,7 +6302,7 @@ ctk_entry_get_placeholder_text_color (CtkEntry   *entry,
 {
   CtkWidget *widget = CTK_WIDGET (entry);
   CtkStyleContext *context;
-  GdkRGBA fg = { 0.5, 0.5, 0.5 };
+  CdkRGBA fg = { 0.5, 0.5, 0.5 };
 
   context = ctk_widget_get_style_context (widget);
   ctk_style_context_lookup_color (context, "placeholder_text_color", &fg);
@@ -6404,8 +6404,8 @@ ctk_entry_create_layout (CtkEntry *entry,
         {
           if (ctk_widget_has_focus (widget))
 	    {
-	      GdkDisplay *display = ctk_widget_get_display (widget);
-	      GdkKeymap *keymap = cdk_keymap_get_for_display (display);
+	      CdkDisplay *display = ctk_widget_get_display (widget);
+	      CdkKeymap *keymap = cdk_keymap_get_for_display (display);
 	      if (cdk_keymap_get_direction (keymap) == PANGO_DIRECTION_RTL)
 		pango_dir = PANGO_DIRECTION_RTL;
 	      else
@@ -6611,8 +6611,8 @@ ctk_entry_draw_cursor (CtkEntry  *entry,
     }
   else /* overwrite_mode */
     {
-      GdkRGBA cursor_color;
-      GdkRectangle rect;
+      CdkRGBA cursor_color;
+      CdkRectangle rect;
 
       cairo_save (cr);
 
@@ -6628,7 +6628,7 @@ ctk_entry_draw_cursor (CtkEntry  *entry,
 
       if (!block_at_line_end)
         {
-          GdkRGBA color;
+          CdkRGBA color;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           ctk_style_context_get_background_color (context,
@@ -6787,7 +6787,7 @@ ctk_entry_reset_im_context (CtkEntry *entry)
 /**
  * ctk_entry_im_context_filter_keypress:
  * @entry: a #CtkEntry
- * @event: (type Gdk.EventKey): the key event
+ * @event: (type Cdk.EventKey): the key event
  *
  * Allow the #CtkEntry input method to internally handle key press
  * and release events. If this function returns %TRUE, then no further
@@ -6806,7 +6806,7 @@ ctk_entry_reset_im_context (CtkEntry *entry)
  */
 gboolean
 ctk_entry_im_context_filter_keypress (CtkEntry    *entry,
-                                      GdkEventKey *event)
+                                      CdkEventKey *event)
 {
   CtkEntryPrivate *priv;
 
@@ -7122,7 +7122,7 @@ ctk_entry_move_visually (CtkEntry *entry,
 	strong = TRUE;
       else
 	{
-	  GdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (entry)));
+	  CdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (entry)));
 	  PangoDirection keymap_direction = cdk_keymap_get_direction (keymap);
 
 	  strong = keymap_direction == priv->resolved_dir;
@@ -7385,7 +7385,7 @@ paste_received (CtkClipboard *clipboard,
 
 static void
 ctk_entry_paste (CtkEntry *entry,
-		 GdkAtom   selection)
+		 CdkAtom   selection)
 {
   g_object_ref (entry);
   ctk_clipboard_request_text (ctk_widget_get_clipboard (CTK_WIDGET (entry), selection),
@@ -7666,7 +7666,7 @@ ctk_entry_set_buffer (CtkEntry       *entry,
  **/
 void
 ctk_entry_get_text_area (CtkEntry     *entry,
-                         GdkRectangle *text_area)
+                         CdkRectangle *text_area)
 {
   CtkEntryPrivate *priv;
 
@@ -8471,7 +8471,7 @@ ctk_entry_get_alignment (CtkEntry *entry)
  * ctk_entry_set_icon_from_pixbuf:
  * @entry: a #CtkEntry
  * @icon_pos: Icon position
- * @pixbuf: (allow-none): A #GdkPixbuf, or %NULL
+ * @pixbuf: (allow-none): A #CdkPixbuf, or %NULL
  *
  * Sets the icon shown in the specified position using a pixbuf.
  *
@@ -8482,7 +8482,7 @@ ctk_entry_get_alignment (CtkEntry *entry)
 void
 ctk_entry_set_icon_from_pixbuf (CtkEntry             *entry,
                                 CtkEntryIconPosition  icon_pos,
-                                GdkPixbuf            *pixbuf)
+                                CdkPixbuf            *pixbuf)
 {
   CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
@@ -8791,21 +8791,21 @@ ctk_entry_get_icon_activatable (CtkEntry             *entry,
  *
  * Unlike the other methods of setting and getting icon data, this
  * method will work regardless of whether the icon was set using a
- * #GdkPixbuf, a #GIcon, a stock item, or an icon name.
+ * #CdkPixbuf, a #GIcon, a stock item, or an icon name.
  *
- * Returns: (transfer none) (nullable): A #GdkPixbuf, or %NULL if no icon is
+ * Returns: (transfer none) (nullable): A #CdkPixbuf, or %NULL if no icon is
  *     set for this position.
  *
  * Since: 2.16
  */
-GdkPixbuf *
+CdkPixbuf *
 ctk_entry_get_icon_pixbuf (CtkEntry             *entry,
                            CtkEntryIconPosition  icon_pos)
 {
   CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
   cairo_surface_t *surface;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   int width, height;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);
@@ -9117,7 +9117,7 @@ void
 ctk_entry_set_icon_drag_source (CtkEntry             *entry,
                                 CtkEntryIconPosition  icon_pos,
                                 CtkTargetList        *target_list,
-                                GdkDragAction         actions)
+                                CdkDragAction         actions)
 {
   CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
@@ -9198,7 +9198,7 @@ ctk_entry_get_current_icon_drag_source (CtkEntry *entry)
 void
 ctk_entry_get_icon_area (CtkEntry             *entry,
                          CtkEntryIconPosition  icon_pos,
-                         GdkRectangle         *icon_area)
+                         CdkRectangle         *icon_area)
 {
   CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
@@ -9557,7 +9557,7 @@ popup_menu_detach (CtkWidget *attach_widget,
 typedef struct
 {
   CtkEntry *entry;
-  GdkEvent *trigger_event;
+  CdkEvent *trigger_event;
 } PopupInfo;
 
 static void
@@ -9568,7 +9568,7 @@ popup_targets_received (CtkClipboard     *clipboard,
   PopupInfo *info = user_data;
   CtkEntry *entry = info->entry;
   CtkEntryPrivate *info_entry_priv = entry->priv;
-  GdkRectangle rect = { 0, 0, 1, 0 };
+  CdkRectangle rect = { 0, 0, 1, 0 };
 
   if (ctk_widget_get_realized (CTK_WIDGET (entry)))
     {
@@ -9658,7 +9658,7 @@ popup_targets_received (CtkClipboard     *clipboard,
 
 static void
 ctk_entry_do_popup (CtkEntry       *entry,
-                    const GdkEvent *event)
+                    const CdkEvent *event)
 {
   PopupInfo *info = g_slice_new (PopupInfo);
 
@@ -9890,7 +9890,7 @@ ctk_entry_selection_bubble_popup_set (CtkEntry *entry)
 
 static void
 ctk_entry_drag_begin (CtkWidget      *widget,
-                      GdkDragContext *context)
+                      CdkDragContext *context)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -9938,7 +9938,7 @@ ctk_entry_drag_begin (CtkWidget      *widget,
 
 static void
 ctk_entry_drag_end (CtkWidget      *widget,
-                    GdkDragContext *context)
+                    CdkDragContext *context)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -9955,7 +9955,7 @@ ctk_entry_drag_end (CtkWidget      *widget,
 
 static void
 ctk_entry_drag_leave (CtkWidget        *widget,
-		      GdkDragContext   *context,
+		      CdkDragContext   *context,
 		      guint             time)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
@@ -9968,14 +9968,14 @@ ctk_entry_drag_leave (CtkWidget        *widget,
 
 static gboolean
 ctk_entry_drag_drop  (CtkWidget        *widget,
-		      GdkDragContext   *context,
+		      CdkDragContext   *context,
 		      gint              x,
 		      gint              y,
 		      guint             time)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
-  GdkAtom target = GDK_NONE;
+  CdkAtom target = GDK_NONE;
 
   if (priv->editable)
     target = ctk_drag_dest_find_target (widget, context, NULL);
@@ -9990,7 +9990,7 @@ ctk_entry_drag_drop  (CtkWidget        *widget,
 
 static gboolean
 ctk_entry_drag_motion (CtkWidget        *widget,
-		       GdkDragContext   *context,
+		       CdkDragContext   *context,
 		       gint              x,
 		       gint              y,
 		       guint             time)
@@ -9998,7 +9998,7 @@ ctk_entry_drag_motion (CtkWidget        *widget,
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
   CtkWidget *source_widget;
-  GdkDragAction suggested_action;
+  CdkDragAction suggested_action;
   gint new_position, old_position;
   gint sel1, sel2;
 
@@ -10057,7 +10057,7 @@ ctk_entry_drag_motion (CtkWidget        *widget,
 
 static void
 ctk_entry_drag_data_received (CtkWidget        *widget,
-			      GdkDragContext   *context,
+			      CdkDragContext   *context,
 			      gint              x,
 			      gint              y,
 			      CtkSelectionData *selection_data,
@@ -10109,7 +10109,7 @@ ctk_entry_drag_data_received (CtkWidget        *widget,
 
 static void
 ctk_entry_drag_data_get (CtkWidget        *widget,
-			 GdkDragContext   *context,
+			 CdkDragContext   *context,
 			 CtkSelectionData *selection_data,
 			 guint             info,
 			 guint             time)
@@ -10145,7 +10145,7 @@ ctk_entry_drag_data_get (CtkWidget        *widget,
 
 static void
 ctk_entry_drag_data_delete (CtkWidget      *widget,
-			    GdkDragContext *context)
+			    CdkDragContext *context)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -10503,7 +10503,7 @@ ctk_entry_get_cursor_hadjustment (CtkEntry *entry)
 
 static gboolean
 tick_cb (CtkWidget     *widget,
-         GdkFrameClock *frame_clock,
+         CdkFrameClock *frame_clock,
          gpointer       user_data)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
@@ -10868,7 +10868,7 @@ remove_capslock_feedback (CtkEntry *entry)
 }
 
 static void
-keymap_state_changed (GdkKeymap *keymap, 
+keymap_state_changed (CdkKeymap *keymap, 
                       CtkEntry  *entry)
 {
   CtkEntryPrivate *priv = entry->priv;
@@ -11092,7 +11092,7 @@ static void
 ctk_entry_insert_emoji (CtkEntry *entry)
 {
   CtkWidget *chooser;
-  GdkRectangle rect;
+  CdkRectangle rect;
 
   if (ctk_entry_get_input_hints (entry) & CTK_INPUT_HINT_NO_EMOJI)
     return;
@@ -11121,7 +11121,7 @@ ctk_entry_insert_emoji (CtkEntry *entry)
 static void
 pick_emoji (CtkEntry *entry,
             int       icon,
-            GdkEvent *event,
+            CdkEvent *event,
             gpointer  data)
 {
   if (icon == CTK_ENTRY_ICON_SECONDARY)

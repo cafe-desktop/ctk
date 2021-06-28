@@ -10,7 +10,7 @@ typedef struct
   CtkEventBox parent_instance;
   cairo_surface_t *surface;
   cairo_t *cr;
-  GdkRGBA draw_color;
+  CdkRGBA draw_color;
 
   CtkGesture *stylus_gesture;
 } DrawingArea;
@@ -124,7 +124,7 @@ drawing_area_class_init (DrawingAreaClass *klass)
 
 static void
 drawing_area_apply_stroke (DrawingArea   *area,
-                           GdkDeviceTool *tool,
+                           CdkDeviceTool *tool,
                            gdouble        x,
                            gdouble        y,
                            gdouble        pressure)
@@ -166,7 +166,7 @@ stylus_gesture_motion (CtkGestureStylus *gesture,
                        gdouble           y,
                        DrawingArea      *area)
 {
-  GdkDeviceTool *tool;
+  CdkDeviceTool *tool;
   gdouble pressure;
 
   tool = ctk_gesture_stylus_get_device_tool (gesture);
@@ -181,7 +181,7 @@ stylus_gesture_motion (CtkGestureStylus *gesture,
 static void
 drawing_area_init (DrawingArea *area)
 {
-  const GdkRGBA draw_rgba = { 0, 0, 0, 1 };
+  const CdkRGBA draw_rgba = { 0, 0, 0, 1 };
   ctk_event_box_set_visible_window (CTK_EVENT_BOX (area), TRUE);
 
   area->stylus_gesture = ctk_gesture_stylus_new (CTK_WIDGET (area));
@@ -201,7 +201,7 @@ drawing_area_new (void)
 
 void
 drawing_area_set_color (DrawingArea *area,
-                        GdkRGBA     *color)
+                        CdkRGBA     *color)
 {
   area->draw_color = *color;
 }
@@ -210,7 +210,7 @@ static void
 color_button_color_set (CtkColorButton *button,
                         DrawingArea    *draw_area)
 {
-  GdkRGBA color;
+  CdkRGBA color;
 
   ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (button), &color);
   drawing_area_set_color (draw_area, &color);
@@ -224,7 +224,7 @@ do_paint (CtkWidget *toplevel)
   if (!window)
     {
       CtkWidget *draw_area, *headerbar, *colorbutton;
-      const GdkRGBA draw_rgba = { 0, 0, 0, 1 };
+      const CdkRGBA draw_rgba = { 0, 0, 0, 1 };
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 

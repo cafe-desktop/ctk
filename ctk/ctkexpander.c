@@ -150,7 +150,7 @@ enum
 struct _CtkExpanderPrivate
 {
   CtkWidget        *label_widget;
-  GdkWindow        *event_window;
+  CdkWindow        *event_window;
 
   CtkCssGadget     *gadget;
   CtkCssGadget     *title_gadget;
@@ -189,18 +189,18 @@ static gboolean ctk_expander_draw           (CtkWidget        *widget,
                                              cairo_t          *cr);
 
 static gboolean ctk_expander_enter_notify   (CtkWidget        *widget,
-                                             GdkEventCrossing *event);
+                                             CdkEventCrossing *event);
 static gboolean ctk_expander_leave_notify   (CtkWidget        *widget,
-                                             GdkEventCrossing *event);
+                                             CdkEventCrossing *event);
 static gboolean ctk_expander_focus          (CtkWidget        *widget,
                                              CtkDirectionType  direction);
 static gboolean ctk_expander_drag_motion    (CtkWidget        *widget,
-                                             GdkDragContext   *context,
+                                             CdkDragContext   *context,
                                              gint              x,
                                              gint              y,
                                              guint             time);
 static void     ctk_expander_drag_leave     (CtkWidget        *widget,
-                                             GdkDragContext   *context,
+                                             CdkDragContext   *context,
                                              guint             time);
 
 static void ctk_expander_add    (CtkContainer *container,
@@ -615,8 +615,8 @@ ctk_expander_realize (CtkWidget *widget)
 {
   CtkAllocation title_allocation;
   CtkExpanderPrivate *priv;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   priv = CTK_EXPANDER (widget)->priv;
@@ -808,7 +808,7 @@ ctk_expander_direction_changed (CtkWidget        *widget,
 
 static gboolean
 ctk_expander_enter_notify (CtkWidget        *widget,
-                           GdkEventCrossing *event)
+                           CdkEventCrossing *event)
 {
   CtkExpander *expander = CTK_EXPANDER (widget);
 
@@ -832,7 +832,7 @@ ctk_expander_enter_notify (CtkWidget        *widget,
 
 static gboolean
 ctk_expander_leave_notify (CtkWidget        *widget,
-                           GdkEventCrossing *event)
+                           CdkEventCrossing *event)
 {
   CtkExpander *expander = CTK_EXPANDER (widget);
 
@@ -867,7 +867,7 @@ expand_timeout (gpointer data)
 
 static gboolean
 ctk_expander_drag_motion (CtkWidget        *widget,
-                          GdkDragContext   *context,
+                          CdkDragContext   *context,
                           gint              x,
                           gint              y,
                           guint             time)
@@ -886,7 +886,7 @@ ctk_expander_drag_motion (CtkWidget        *widget,
 
 static void
 ctk_expander_drag_leave (CtkWidget      *widget,
-                         GdkDragContext *context,
+                         CdkDragContext *context,
                          guint           time)
 {
   CtkExpander *expander = CTK_EXPANDER (widget);

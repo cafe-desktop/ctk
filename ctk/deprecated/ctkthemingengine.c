@@ -157,12 +157,12 @@ static void ctk_theming_engine_render_activity  (CtkThemingEngine *engine,
                                                  gdouble           y,
                                                  gdouble           width,
                                                  gdouble           height);
-static GdkPixbuf * ctk_theming_engine_render_icon_pixbuf (CtkThemingEngine    *engine,
+static CdkPixbuf * ctk_theming_engine_render_icon_pixbuf (CtkThemingEngine    *engine,
                                                           const CtkIconSource *source,
                                                           CtkIconSize          size);
 static void ctk_theming_engine_render_icon (CtkThemingEngine *engine,
                                             cairo_t *cr,
-					    GdkPixbuf *pixbuf,
+					    CdkPixbuf *pixbuf,
                                             gdouble x,
                                             gdouble y);
 static void ctk_theming_engine_render_icon_surface (CtkThemingEngine *engine,
@@ -495,7 +495,7 @@ ctk_theming_engine_get_style (CtkThemingEngine *engine,
 gboolean
 ctk_theming_engine_lookup_color (CtkThemingEngine *engine,
                                  const gchar      *color_name,
-                                 GdkRGBA          *color)
+                                 CdkRGBA          *color)
 {
   CtkThemingEnginePrivate *priv;
 
@@ -708,7 +708,7 @@ ctk_theming_engine_get_junction_sides (CtkThemingEngine *engine)
 void
 ctk_theming_engine_get_color (CtkThemingEngine *engine,
                               CtkStateFlags     state,
-                              GdkRGBA          *color)
+                              CdkRGBA          *color)
 {
   CtkThemingEnginePrivate *priv;
 
@@ -733,7 +733,7 @@ ctk_theming_engine_get_color (CtkThemingEngine *engine,
 void
 ctk_theming_engine_get_background_color (CtkThemingEngine *engine,
                                          CtkStateFlags     state,
-                                         GdkRGBA          *color)
+                                         CdkRGBA          *color)
 {
   CtkThemingEnginePrivate *priv;
 
@@ -758,7 +758,7 @@ ctk_theming_engine_get_background_color (CtkThemingEngine *engine,
 void
 ctk_theming_engine_get_border_color (CtkThemingEngine *engine,
                                      CtkStateFlags     state,
-                                     GdkRGBA          *color)
+                                     CdkRGBA          *color)
 {
   CtkThemingEnginePrivate *priv;
 
@@ -1002,13 +1002,13 @@ ctk_theming_engine_load (const gchar *name)
  * ctk_theming_engine_get_screen:
  * @engine: a #CtkThemingEngine
  *
- * Returns the #GdkScreen to which @engine currently rendering to.
+ * Returns the #CdkScreen to which @engine currently rendering to.
  *
- * Returns: (nullable) (transfer none): a #GdkScreen, or %NULL.
+ * Returns: (nullable) (transfer none): a #CdkScreen, or %NULL.
  *
  * Deprecated: 3.14
  **/
-GdkScreen *
+CdkScreen *
 ctk_theming_engine_get_screen (CtkThemingEngine *engine)
 {
   CtkThemingEnginePrivate *priv;
@@ -1178,7 +1178,7 @@ ctk_theming_engine_render_activity (CtkThemingEngine *engine,
   ctk_render_activity (engine->priv->context, cr, x, y, width, height);
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 ctk_theming_engine_render_icon_pixbuf (CtkThemingEngine    *engine,
                                        const CtkIconSource *source,
                                        CtkIconSize          size)
@@ -1189,7 +1189,7 @@ ctk_theming_engine_render_icon_pixbuf (CtkThemingEngine    *engine,
 static void
 ctk_theming_engine_render_icon (CtkThemingEngine *engine,
                                 cairo_t *cr,
-				GdkPixbuf *pixbuf,
+				CdkPixbuf *pixbuf,
                                 gdouble x,
                                 gdouble y)
 {

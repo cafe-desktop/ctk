@@ -343,7 +343,7 @@ test_type (gconstpointer data)
   GParamSpec **pspecs;
   guint n_pspecs, i;
   GType type;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   type = * (GType *) data;
 
@@ -360,7 +360,7 @@ test_type (gconstpointer data)
 
   /* non-CTK+ */
   if (g_str_equal (g_type_name (type), "AtkObject") ||
-      g_str_equal (g_type_name (type), "GdkPixbufSimpleAnim"))
+      g_str_equal (g_type_name (type), "CdkPixbufSimpleAnim"))
     return;
 
   /* Deprecated, not getting fixed */
@@ -393,12 +393,12 @@ test_type (gconstpointer data)
       g_type_is_a (type, CTK_TYPE_PRINT_JOB) ||
 #endif
       g_type_is_a (type, cdk_pixbuf_simple_anim_iter_get_type ()) ||
-      g_str_equal (g_type_name (type), "GdkX11DeviceManagerXI2") ||
-      g_str_equal (g_type_name (type), "GdkX11DeviceManagerCore") ||
-      g_str_equal (g_type_name (type), "GdkX11Display") ||
-      g_str_equal (g_type_name (type), "GdkX11DisplayManager") ||
-      g_str_equal (g_type_name (type), "GdkX11Screen") ||
-      g_str_equal (g_type_name (type), "GdkX11GLContext"))
+      g_str_equal (g_type_name (type), "CdkX11DeviceManagerXI2") ||
+      g_str_equal (g_type_name (type), "CdkX11DeviceManagerCore") ||
+      g_str_equal (g_type_name (type), "CdkX11Display") ||
+      g_str_equal (g_type_name (type), "CdkX11DisplayManager") ||
+      g_str_equal (g_type_name (type), "CdkX11Screen") ||
+      g_str_equal (g_type_name (type), "CdkX11GLContext"))
     return;
 
   /* This throws a critical when the connection is dropped */
@@ -434,7 +434,7 @@ test_type (gconstpointer data)
     instance = G_OBJECT (g_object_ref (ctk_settings_get_default ()));
   else if (g_type_is_a (type, GDK_TYPE_WINDOW))
     {
-      GdkWindowAttr attributes;
+      CdkWindowAttr attributes;
       attributes.wclass = GDK_INPUT_OUTPUT;
       attributes.window_type = GDK_WINDOW_TEMP;
       attributes.event_mask = 0;
@@ -442,7 +442,7 @@ test_type (gconstpointer data)
       attributes.height = 100;
       instance = G_OBJECT (g_object_ref (cdk_window_new (NULL, &attributes, 0)));
     }
-  else if (g_str_equal (g_type_name (type), "GdkX11Cursor"))
+  else if (g_str_equal (g_type_name (type), "CdkX11Cursor"))
     instance = g_object_new (type, "display", display, NULL);
   else
     instance = g_object_new (type, NULL);
@@ -466,7 +466,7 @@ test_type (gconstpointer data)
 
       /* non-CTK+ */
       if (g_str_equal (g_type_name (pspec->owner_type), "AtkObject") ||
-          g_str_equal (g_type_name (pspec->owner_type), "GdkPixbufSimpleAnim") || 
+          g_str_equal (g_type_name (pspec->owner_type), "CdkPixbufSimpleAnim") || 
           g_str_equal (g_type_name (pspec->owner_type), "GMountOperation")) 
         continue;
 
@@ -539,7 +539,7 @@ test_type (gconstpointer data)
       if (type == CTK_TYPE_COLOR_BUTTON && pspec->owner_type == CTK_TYPE_BUTTON)
         continue;
 
-      /* GdkOffscreenWindow is missing many implementations */
+      /* CdkOffscreenWindow is missing many implementations */
       if (type == CTK_TYPE_OFFSCREEN_WINDOW)
         continue;
 

@@ -25,28 +25,28 @@
 
 G_BEGIN_DECLS
 
-#define GDK_GL_CONTEXT_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_GL_CONTEXT, GdkGLContextClass))
+#define GDK_GL_CONTEXT_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_GL_CONTEXT, CdkGLContextClass))
 #define GDK_IS_GL_CONTEXT_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_GL_CONTEXT))
-#define GDK_GL_CONTEXT_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_CONTEXT, GdkGLContextClass))
+#define GDK_GL_CONTEXT_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_CONTEXT, CdkGLContextClass))
 
-typedef struct _GdkGLContextClass       GdkGLContextClass;
+typedef struct _CdkGLContextClass       CdkGLContextClass;
 
-struct _GdkGLContext
+struct _CdkGLContext
 {
   GObject parent_instance;
 };
 
-struct _GdkGLContextClass
+struct _CdkGLContextClass
 {
   GObjectClass parent_class;
 
-  gboolean (* realize) (GdkGLContext *context,
+  gboolean (* realize) (CdkGLContext *context,
                         GError **error);
 
-  void (* end_frame)    (GdkGLContext *context,
+  void (* end_frame)    (CdkGLContext *context,
                          cairo_region_t *painted,
                          cairo_region_t *damage);
-  gboolean (* texture_from_surface) (GdkGLContext    *context,
+  gboolean (* texture_from_surface) (CdkGLContext    *context,
                                      cairo_surface_t *surface,
                                      cairo_region_t  *region);
 };
@@ -57,36 +57,36 @@ typedef struct {
   guint uv_location;
   guint map_location;
   guint flip_location;
-} GdkGLContextProgram;
+} CdkGLContextProgram;
 
 typedef struct {
   guint vertex_array_object;
   guint tmp_framebuffer;
   guint tmp_vertex_buffer;
 
-  GdkGLContextProgram texture_2d_quad_program;
-  GdkGLContextProgram texture_rect_quad_program;
+  CdkGLContextProgram texture_2d_quad_program;
+  CdkGLContextProgram texture_rect_quad_program;
 
-  GdkGLContextProgram *current_program;
+  CdkGLContextProgram *current_program;
 
   guint is_legacy : 1;
   guint use_es : 1;
-} GdkGLContextPaintData;
+} CdkGLContextPaintData;
 
-void                    cdk_gl_context_set_is_legacy            (GdkGLContext    *context,
+void                    cdk_gl_context_set_is_legacy            (CdkGLContext    *context,
                                                                  gboolean         is_legacy);
 
-void                    cdk_gl_context_upload_texture           (GdkGLContext    *context,
+void                    cdk_gl_context_upload_texture           (CdkGLContext    *context,
                                                                  cairo_surface_t *image_surface,
                                                                  int              width,
                                                                  int              height,
                                                                  guint            texture_target);
-GdkGLContextPaintData * cdk_gl_context_get_paint_data           (GdkGLContext    *context);
-gboolean                cdk_gl_context_use_texture_rectangle    (GdkGLContext    *context);
-gboolean                cdk_gl_context_has_framebuffer_blit     (GdkGLContext    *context);
-gboolean                cdk_gl_context_has_frame_terminator     (GdkGLContext    *context);
-gboolean                cdk_gl_context_has_unpack_subimage      (GdkGLContext    *context);
-void                    cdk_gl_context_end_frame                (GdkGLContext    *context,
+CdkGLContextPaintData * cdk_gl_context_get_paint_data           (CdkGLContext    *context);
+gboolean                cdk_gl_context_use_texture_rectangle    (CdkGLContext    *context);
+gboolean                cdk_gl_context_has_framebuffer_blit     (CdkGLContext    *context);
+gboolean                cdk_gl_context_has_frame_terminator     (CdkGLContext    *context);
+gboolean                cdk_gl_context_has_unpack_subimage      (CdkGLContext    *context);
+void                    cdk_gl_context_end_frame                (CdkGLContext    *context,
                                                                  cairo_region_t  *painted,
                                                                  cairo_region_t  *damage);
 

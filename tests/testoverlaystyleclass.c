@@ -2,7 +2,7 @@
 
 static void
 child_size_allocate (CtkWidget *child,
-                     GdkRectangle *allocation,
+                     CdkRectangle *allocation,
                      gpointer user_data)
 {
   CtkStyleContext *context;
@@ -19,7 +19,7 @@ child_size_allocate (CtkWidget *child,
 static gboolean
 overlay_get_child_position (CtkOverlay *overlay,
                             CtkWidget *child,
-                            GdkRectangle *allocation,
+                            CdkRectangle *allocation,
                             gpointer user_data)
 {
   CtkWidget *custom_child = user_data;

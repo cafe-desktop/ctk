@@ -139,7 +139,7 @@ rgba_value_parse (CtkCssParser *parser,
                   GValue       *value)
 {
   CtkSymbolicColor *symbolic;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -168,7 +168,7 @@ static void
 rgba_value_print (const GValue *value,
                   GString      *string)
 {
-  const GdkRGBA *rgba = g_value_get_boxed (value);
+  const CdkRGBA *rgba = g_value_get_boxed (value);
 
   if (rgba == NULL)
     g_string_append (string, "none");
@@ -186,7 +186,7 @@ rgba_value_compute (CtkStyleProviderPrivate *provider,
                     CtkCssStyle             *parent_values,
                     CtkCssValue             *specified)
 {
-  GdkRGBA white = { 1, 1, 1, 1 };
+  CdkRGBA white = { 1, 1, 1, 1 };
   const GValue *value;
 
   value = _ctk_css_typed_value_get (specified);
@@ -198,7 +198,7 @@ rgba_value_compute (CtkStyleProviderPrivate *provider,
       CtkSymbolicColor *symbolic = g_value_get_boxed (value);
       CtkCssValue *val;
       GValue new_value = G_VALUE_INIT;
-      GdkRGBA rgba;
+      CdkRGBA rgba;
 
       val = _ctk_css_color_value_resolve (_ctk_symbolic_color_get_css_value (symbolic),
                                           provider,
@@ -227,7 +227,7 @@ color_value_parse (CtkCssParser *parser,
                    GValue       *value)
 {
   CtkSymbolicColor *symbolic;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -237,7 +237,7 @@ color_value_parse (CtkCssParser *parser,
 
   if (ctk_symbolic_color_resolve (symbolic, NULL, &rgba))
     {
-      GdkColor color;
+      CdkColor color;
 
       color.red = rgba.red * 65535. + 0.5;
       color.green = rgba.green * 65535. + 0.5;
@@ -262,7 +262,7 @@ static void
 color_value_print (const GValue *value,
                    GString      *string)
 {
-  const GdkColor *color = g_value_get_boxed (value);
+  const CdkColor *color = g_value_get_boxed (value);
 
   if (color == NULL)
     g_string_append (string, "none");
@@ -282,7 +282,7 @@ color_value_compute (CtkStyleProviderPrivate *provider,
                      CtkCssStyle             *parent_values,
                      CtkCssValue             *specified)
 {
-  GdkColor color = { 0, 65535, 65535, 65535 };
+  CdkColor color = { 0, 65535, 65535, 65535 };
   const GValue *value;
 
   value = _ctk_css_typed_value_get (specified);
@@ -300,7 +300,7 @@ color_value_compute (CtkStyleProviderPrivate *provider,
                                           NULL);
       if (val != NULL)
         {
-          const GdkRGBA *rgba = _ctk_css_rgba_value_get_rgba (val);
+          const CdkRGBA *rgba = _ctk_css_rgba_value_get_rgba (val);
           color.red = rgba->red * 65535. + 0.5;
           color.green = rgba->green * 65535. + 0.5;
           color.blue = rgba->blue * 65535. + 0.5;
@@ -736,7 +736,7 @@ pattern_value_parse (CtkCssParser *parser,
     {
       GError *error = NULL;
       gchar *path;
-      GdkPixbuf *pixbuf;
+      CdkPixbuf *pixbuf;
       GFile *file;
       cairo_surface_t *surface;
       cairo_pattern_t *pattern;

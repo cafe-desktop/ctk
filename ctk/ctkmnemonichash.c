@@ -111,7 +111,7 @@ _ctk_mnemonic_hash_activate (CtkMnemonicHash *mnemonic_hash,
 {
   GSList *list, *targets;
   CtkWidget *widget, *chosen_widget;
-  GdkWindow *window;
+  CdkWindow *window;
   gboolean overloaded;
 
   targets = g_hash_table_lookup (mnemonic_hash->hash,

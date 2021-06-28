@@ -80,7 +80,7 @@ GType ctk_pad_controller_get_type           (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_3_22
 CtkPadController *ctk_pad_controller_new    (CtkWindow        *window,
                                              GActionGroup     *group,
-                                             GdkDevice        *pad);
+                                             CdkDevice        *pad);
 
 GDK_AVAILABLE_IN_3_22
 void  ctk_pad_controller_set_action_entries (CtkPadController        *controller,

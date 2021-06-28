@@ -153,7 +153,7 @@ struct _CtkComboBoxPrivate
   CtkCssGadget *gadget;
 
   guint popup_idle_id;
-  GdkEvent *trigger_event;
+  CdkEvent *trigger_event;
   guint scroll_timer;
   guint resize_idle_id;
 
@@ -180,7 +180,7 @@ struct _CtkComboBoxPrivate
   gpointer                    row_separator_data;
   GDestroyNotify              row_separator_destroy;
 
-  GdkDevice *grab_pointer;
+  CdkDevice *grab_pointer;
 
   gchar *tearoff_title;
 };
@@ -311,7 +311,7 @@ static void     ctk_combo_box_forall               (CtkContainer     *container,
                                                     CtkCallback       callback,
                                                     gpointer          callback_data);
 static gboolean ctk_combo_box_scroll_event         (CtkWidget        *widget,
-                                                    GdkEventScroll   *event);
+                                                    CdkEventScroll   *event);
 static void     ctk_combo_box_set_active_internal  (CtkComboBox      *combo_box,
                                                     CtkTreePath      *path);
 
@@ -353,20 +353,20 @@ static void     ctk_combo_box_list_setup           (CtkComboBox      *combo_box)
 static void     ctk_combo_box_list_destroy         (CtkComboBox      *combo_box);
 
 static gboolean ctk_combo_box_list_button_released (CtkWidget        *widget,
-                                                    GdkEventButton   *event,
+                                                    CdkEventButton   *event,
                                                     gpointer          data);
 static gboolean ctk_combo_box_list_key_press       (CtkWidget        *widget,
-                                                    GdkEventKey      *event,
+                                                    CdkEventKey      *event,
                                                     gpointer          data);
 static gboolean ctk_combo_box_list_enter_notify    (CtkWidget        *widget,
-                                                    GdkEventCrossing *event,
+                                                    CdkEventCrossing *event,
                                                     gpointer          data);
 static void     ctk_combo_box_list_auto_scroll     (CtkComboBox   *combo,
                                                     gint           x,
                                                     gint           y);
 static gboolean ctk_combo_box_list_scroll_timeout  (CtkComboBox   *combo);
 static gboolean ctk_combo_box_list_button_pressed  (CtkWidget        *widget,
-                                                    GdkEventButton   *event,
+                                                    CdkEventButton   *event,
                                                     gpointer          data);
 
 static gboolean ctk_combo_box_list_select_func     (CtkTreeSelection *selection,
@@ -388,17 +388,17 @@ static void     ctk_combo_box_menu_destroy         (CtkComboBox      *combo_box)
 
 
 static gboolean ctk_combo_box_menu_button_press    (CtkWidget        *widget,
-                                                    GdkEventButton   *event,
+                                                    CdkEventButton   *event,
                                                     gpointer          user_data);
 static void     ctk_combo_box_menu_activate        (CtkWidget        *menu,
                                                     const gchar      *path,
                                                     CtkComboBox      *combo_box);
 static void     ctk_combo_box_update_sensitivity   (CtkComboBox      *combo_box);
 static gboolean ctk_combo_box_menu_key_press       (CtkWidget        *widget,
-                                                    GdkEventKey      *event,
+                                                    CdkEventKey      *event,
                                                     gpointer          data);
 static void     ctk_combo_box_menu_popup           (CtkComboBox      *combo_box,
-                                                    const GdkEvent   *trigger_event);
+                                                    const CdkEvent   *trigger_event);
 
 /* cell layout */
 static CtkCellArea *ctk_combo_box_cell_layout_get_area       (CtkCellLayout    *cell_layout);
@@ -445,7 +445,7 @@ static GObject *ctk_combo_box_buildable_get_internal_child   (CtkBuildable *buil
 
 /* CtkCellEditable method implementations */
 static void     ctk_combo_box_start_editing                  (CtkCellEditable *cell_editable,
-                                                              GdkEvent        *event);
+                                                              CdkEvent        *event);
 
 G_DEFINE_TYPE_WITH_CODE (CtkComboBox, ctk_combo_box, CTK_TYPE_BIN,
                          G_ADD_PRIVATE (CtkComboBox)
@@ -1806,7 +1806,7 @@ ctk_combo_box_detacher (CtkWidget *widget,
 
 static gboolean
 ctk_combo_box_grab_broken_event (CtkWidget          *widget,
-                                 GdkEventGrabBroken *event,
+                                 CdkEventGrabBroken *event,
                                  gpointer            user_data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (user_data);
@@ -1915,12 +1915,12 @@ ctk_combo_box_list_position (CtkComboBox *combo_box,
 {
   CtkComboBoxPrivate *priv = combo_box->priv;
   CtkAllocation content_allocation;
-  GdkDisplay *display;
-  GdkMonitor *monitor;
-  GdkRectangle area;
+  CdkDisplay *display;
+  CdkMonitor *monitor;
+  CdkRectangle area;
   CtkRequisition popup_req;
   CtkPolicyType hpolicy, vpolicy;
-  GdkWindow *window;
+  CdkWindow *window;
 
   /* under windows, the drop down list is as wide as the combo box itself.
      see bug #340204 */
@@ -2100,7 +2100,7 @@ update_menu_sensitivity (CtkComboBox *combo_box,
 
 static void
 ctk_combo_box_menu_popup (CtkComboBox    *combo_box,
-                          const GdkEvent *trigger_event)
+                          const CdkEvent *trigger_event)
 {
   CtkComboBoxPrivate *priv = combo_box->priv;
   gint active_item;
@@ -2234,11 +2234,11 @@ ctk_combo_box_menu_popup (CtkComboBox    *combo_box,
 }
 
 static gboolean
-popup_grab_on_window (GdkWindow *window,
-                      GdkDevice *pointer)
+popup_grab_on_window (CdkWindow *window,
+                      CdkDevice *pointer)
 {
-  GdkGrabStatus status;
-  GdkSeat *seat;
+  CdkGrabStatus status;
+  CdkSeat *seat;
 
   seat = cdk_device_get_seat (pointer);
   status = cdk_seat_grab (seat, window,
@@ -2273,23 +2273,23 @@ ctk_combo_box_popup (CtkComboBox *combo_box)
 /**
  * ctk_combo_box_popup_for_device:
  * @combo_box: a #CtkComboBox
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Pops up the menu or dropdown list of @combo_box, the popup window
  * will be grabbed so only @device and its associated pointer/keyboard
- * are the only #GdkDevices able to send events to it.
+ * are the only #CdkDevices able to send events to it.
  *
  * Since: 3.0
  **/
 void
 ctk_combo_box_popup_for_device (CtkComboBox *combo_box,
-                                GdkDevice   *device)
+                                CdkDevice   *device)
 {
   CtkComboBoxPrivate *priv;
   gint x, y, width, height;
   CtkTreePath *path = NULL, *ppath;
   CtkWidget *toplevel;
-  GdkDevice *pointer;
+  CdkDevice *pointer;
 
   g_return_if_fail (CTK_IS_COMBO_BOX (combo_box));
   g_return_if_fail (GDK_IS_DEVICE (device));
@@ -2374,13 +2374,13 @@ ctk_combo_box_popup_for_device (CtkComboBox *combo_box,
 static void
 ctk_combo_box_real_popup (CtkComboBox *combo_box)
 {
-  GdkDevice *device;
+  CdkDevice *device;
 
   device = ctk_get_current_event_device ();
 
   if (!device)
     {
-      GdkDisplay *display;
+      CdkDisplay *display;
 
       /* No device was set, pick the first master device */
       display = ctk_widget_get_display (CTK_WIDGET (combo_box));
@@ -2699,7 +2699,7 @@ tree_first (CtkComboBox  *combo,
 
 static gboolean
 ctk_combo_box_scroll_event (CtkWidget          *widget,
-                            GdkEventScroll     *event)
+                            CdkEventScroll     *event)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (widget);
   CtkComboBoxPrivate *priv = combo_box->priv;
@@ -2797,7 +2797,7 @@ ctk_combo_box_menu_destroy (CtkComboBox *combo_box)
 /* callbacks */
 static gboolean
 ctk_combo_box_menu_button_press (CtkWidget      *widget,
-                                 GdkEventButton *event,
+                                 CdkEventButton *event,
                                  gpointer        user_data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (user_data);
@@ -2810,7 +2810,7 @@ ctk_combo_box_menu_button_press (CtkWidget      *widget,
           !ctk_widget_has_focus (priv->button))
         ctk_widget_grab_focus (priv->button);
 
-      ctk_combo_box_menu_popup (combo_box, (const GdkEvent *) event);
+      ctk_combo_box_menu_popup (combo_box, (const CdkEvent *) event);
 
       return TRUE;
     }
@@ -3094,13 +3094,13 @@ ctk_combo_box_list_destroy (CtkComboBox *combo_box)
 
 static gboolean
 ctk_combo_box_list_button_pressed (CtkWidget      *widget,
-                                   GdkEventButton *event,
+                                   CdkEventButton *event,
                                    gpointer        data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (data);
   CtkComboBoxPrivate *priv = combo_box->priv;
 
-  CtkWidget *ewidget = ctk_get_event_widget ((GdkEvent *)event);
+  CtkWidget *ewidget = ctk_get_event_widget ((CdkEvent *)event);
 
   if (ewidget == priv->popup_window)
     return TRUE;
@@ -3132,7 +3132,7 @@ ctk_combo_box_list_button_pressed (CtkWidget      *widget,
 
 static gboolean
 ctk_combo_box_list_button_released (CtkWidget      *widget,
-                                    GdkEventButton *event,
+                                    CdkEventButton *event,
                                     gpointer        data)
 {
   gboolean ret;
@@ -3140,14 +3140,14 @@ ctk_combo_box_list_button_released (CtkWidget      *widget,
   CtkTreeIter iter;
   CtkTreeViewColumn *column;
   gint x;
-  GdkRectangle cell_area;
+  CdkRectangle cell_area;
 
   CtkComboBox *combo_box = CTK_COMBO_BOX (data);
   CtkComboBoxPrivate *priv = combo_box->priv;
 
   gboolean popup_in_progress = FALSE;
 
-  CtkWidget *ewidget = ctk_get_event_widget ((GdkEvent *)event);
+  CtkWidget *ewidget = ctk_get_event_widget ((CdkEvent *)event);
 
   if (priv->popup_in_progress)
     {
@@ -3221,7 +3221,7 @@ ctk_combo_box_list_button_released (CtkWidget      *widget,
 
 static gboolean
 ctk_combo_box_menu_key_press (CtkWidget   *widget,
-                              GdkEventKey *event,
+                              CdkEventKey *event,
                               gpointer     data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (data);
@@ -3239,7 +3239,7 @@ ctk_combo_box_menu_key_press (CtkWidget   *widget,
 
 static gboolean
 ctk_combo_box_list_key_press (CtkWidget   *widget,
-                              GdkEventKey *event,
+                              CdkEventKey *event,
                               gpointer     data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (data);
@@ -3343,7 +3343,7 @@ ctk_combo_box_list_scroll_timeout (CtkComboBox *combo_box)
 
 static gboolean
 ctk_combo_box_list_enter_notify (CtkWidget        *widget,
-                                 GdkEventCrossing *event,
+                                 CdkEventCrossing *event,
                                  gpointer          data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (data);
@@ -4342,7 +4342,7 @@ ctk_combo_box_finalize (GObject *object)
 
 static gboolean
 ctk_cell_editable_key_press (CtkWidget   *widget,
-                             GdkEventKey *event,
+                             CdkEventKey *event,
                              gpointer     data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (data);
@@ -4421,7 +4421,7 @@ popup_idle (gpointer data)
 
 static void
 ctk_combo_box_start_editing (CtkCellEditable *cell_editable,
-                             GdkEvent        *event)
+                             CdkEvent        *event)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (cell_editable);
   CtkComboBoxPrivate *priv = combo_box->priv;

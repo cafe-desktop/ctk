@@ -27,7 +27,7 @@
 #include "cdktypes.h"
 #include "cdkprivate-win32.h"
 
-GdkDisplay	 *_cdk_display = NULL;
+CdkDisplay	 *_cdk_display = NULL;
 
 gint		  _cdk_offset_x, _cdk_offset_y;
 
@@ -44,8 +44,8 @@ UINT		  _cdk_input_codepage;
 gint		  _cdk_input_ignore_wintab = FALSE;
 gint		  _cdk_max_colors = 0;
 
-GdkWin32ModalOpKind	  _modal_operation_in_progress = GDK_WIN32_MODAL_OP_NONE;
+CdkWin32ModalOpKind	  _modal_operation_in_progress = GDK_WIN32_MODAL_OP_NONE;
 HWND              _modal_move_resize_window = NULL;
 
 /* The singleton selection object pointer */
-GdkWin32Selection *_win32_selection = NULL;
+CdkWin32Selection *_win32_selection = NULL;

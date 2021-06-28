@@ -283,7 +283,7 @@ ctk_render_background_get_clip (CtkStyleContext *context,
                                 gdouble          y,
                                 gdouble          width,
                                 gdouble          height,
-                                GdkRectangle    *out_clip)
+                                CdkRectangle    *out_clip)
 {
   CtkBorder shadow;
 
@@ -476,7 +476,7 @@ ctk_do_render_layout (CtkStyleContext *context,
                       gdouble          y,
                       PangoLayout     *layout)
 {
-  const GdkRGBA *fg_color;
+  const CdkRGBA *fg_color;
 
   cairo_save (cr);
   fg_color = _ctk_css_rgba_value_get_rgba (_ctk_style_context_peek_property (context, CTK_CSS_PROPERTY_COLOR));
@@ -526,7 +526,7 @@ ctk_do_render_line (CtkStyleContext *context,
                     gdouble          x1,
                     gdouble          y1)
 {
-  const GdkRGBA *color;
+  const CdkRGBA *color;
 
   cairo_save (cr);
 
@@ -994,8 +994,8 @@ ctk_render_activity (CtkStyleContext *context,
   ctk_css_style_render_icon (ctk_style_context_lookup_style (context), cr, x, y, width, height, CTK_CSS_IMAGE_BUILTIN_SPINNER);
 }
 
-static GdkPixbuf *
-scale_or_ref (GdkPixbuf *src,
+static CdkPixbuf *
+scale_or_ref (CdkPixbuf *src,
               gint       width,
               gint       height)
 {
@@ -1008,13 +1008,13 @@ scale_or_ref (GdkPixbuf *src,
                                     GDK_INTERP_BILINEAR);
 }
 
-GdkPixbuf *
-ctk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
+CdkPixbuf *
+ctk_render_icon_pixbuf_unpacked (CdkPixbuf           *base_pixbuf,
                                  CtkIconSize          size,
                                  CtkCssIconEffect     icon_effect)
 {
-  GdkPixbuf *scaled;
-  GdkPixbuf *stated;
+  CdkPixbuf *scaled;
+  CdkPixbuf *stated;
   cairo_surface_t *surface;
 
   g_return_val_if_fail (base_pixbuf != NULL, NULL);
@@ -1068,13 +1068,13 @@ ctk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
  * Renders the icon specified by @source at the given @size, returning the result
  * in a pixbuf.
  *
- * Returns: (transfer full): a newly-created #GdkPixbuf containing the rendered icon
+ * Returns: (transfer full): a newly-created #CdkPixbuf containing the rendered icon
  *
  * Since: 3.0
  *
  * Deprecated: 3.10: Use ctk_icon_theme_load_icon() instead.
  **/
-GdkPixbuf *
+CdkPixbuf *
 ctk_render_icon_pixbuf (CtkStyleContext     *context,
                         const CtkIconSource *source,
                         CtkIconSize          size)
@@ -1097,7 +1097,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
  * ctk_render_icon:
  * @context: a #CtkStyleContext
  * @cr: a #cairo_t
- * @pixbuf: a #GdkPixbuf containing the icon to draw
+ * @pixbuf: a #CdkPixbuf containing the icon to draw
  * @x: X position for the @pixbuf
  * @y: Y position for the @pixbuf
  *
@@ -1115,7 +1115,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 void
 ctk_render_icon (CtkStyleContext *context,
                  cairo_t         *cr,
-                 GdkPixbuf       *pixbuf,
+                 CdkPixbuf       *pixbuf,
                  gdouble          x,
                  gdouble          y)
 {

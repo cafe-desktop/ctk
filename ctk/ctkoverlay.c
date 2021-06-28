@@ -72,7 +72,7 @@ typedef struct _CtkOverlayChild CtkOverlayChild;
 struct _CtkOverlayChild
 {
   CtkWidget *widget;
-  GdkWindow *window;
+  CdkWindow *window;
   gboolean pass_through;
 };
 
@@ -140,14 +140,14 @@ ctk_overlay_compute_child_allocation (CtkOverlay      *overlay,
     }
 }
 
-static GdkWindow *
+static CdkWindow *
 ctk_overlay_create_child_window (CtkOverlay *overlay,
                                  CtkOverlayChild *child)
 {
   CtkWidget *widget = CTK_WIDGET (overlay);
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_overlay_compute_child_allocation (overlay, child, &allocation, NULL);
@@ -803,7 +803,7 @@ ctk_overlay_class_init (CtkOverlayClass *klass)
    * CtkOverlay::get-child-position:
    * @overlay: the #CtkOverlay
    * @widget: the child widget to position
-   * @allocation: (type Gdk.Rectangle) (out caller-allocates): return
+   * @allocation: (type Cdk.Rectangle) (out caller-allocates): return
    *   location for the allocation
    *
    * The ::get-child-position signal is emitted to determine

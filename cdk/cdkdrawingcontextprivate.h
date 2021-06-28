@@ -5,21 +5,21 @@
 
 G_BEGIN_DECLS
 
-#define GDK_DRAWING_CONTEXT_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_DRAWING_CONTEXT, GdkDrawingContextClass))
+#define GDK_DRAWING_CONTEXT_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_DRAWING_CONTEXT, CdkDrawingContextClass))
 #define GDK_IS_DRAWING_CONTEXT_CLASS(klass)     (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_DRAWING_CONTEXT))
-#define GDK_DRAWING_CONTEXT_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_DRAWING_CONTEXT, GdkDrawingContextClass))
+#define GDK_DRAWING_CONTEXT_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_DRAWING_CONTEXT, CdkDrawingContextClass))
 
-struct _GdkDrawingContext
+struct _CdkDrawingContext
 {
   GObject parent_instance;
 
-  GdkWindow *window;
+  CdkWindow *window;
 
   cairo_region_t *clip;
   cairo_t *cr;
 };
 
-struct _GdkDrawingContextClass
+struct _CdkDrawingContextClass
 {
   GObjectClass parent_instance;
 };

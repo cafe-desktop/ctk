@@ -33,29 +33,29 @@
 
 G_BEGIN_DECLS
 
-struct _GdkWaylandGLContext
+struct _CdkWaylandGLContext
 {
-  GdkGLContext parent_instance;
+  CdkGLContext parent_instance;
 
   EGLContext egl_context;
   EGLConfig egl_config;
   gboolean is_attached;
 };
 
-struct _GdkWaylandGLContextClass
+struct _CdkWaylandGLContextClass
 {
-  GdkGLContextClass parent_class;
+  CdkGLContextClass parent_class;
 };
 
-gboolean        cdk_wayland_display_init_gl                         (GdkDisplay        *display);
-GdkGLContext *  cdk_wayland_window_create_gl_context                (GdkWindow         *window,
+gboolean        cdk_wayland_display_init_gl                         (CdkDisplay        *display);
+CdkGLContext *  cdk_wayland_window_create_gl_context                (CdkWindow         *window,
 								     gboolean           attach,
-                                                                     GdkGLContext      *share,
+                                                                     CdkGLContext      *share,
                                                                      GError           **error);
-void            cdk_wayland_window_invalidate_for_new_frame         (GdkWindow         *window,
+void            cdk_wayland_window_invalidate_for_new_frame         (CdkWindow         *window,
                                                                      cairo_region_t    *update_area);
-gboolean        cdk_wayland_display_make_gl_context_current         (GdkDisplay        *display,
-                                                                     GdkGLContext      *context);
+gboolean        cdk_wayland_display_make_gl_context_current         (CdkDisplay        *display,
+                                                                     CdkGLContext      *context);
 
 G_END_DECLS
 

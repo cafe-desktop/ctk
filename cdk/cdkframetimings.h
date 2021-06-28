@@ -27,29 +27,29 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GdkFrameTimings GdkFrameTimings;
+typedef struct _CdkFrameTimings CdkFrameTimings;
 
 GDK_AVAILABLE_IN_3_8
 GType            cdk_frame_timings_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_8
-GdkFrameTimings *cdk_frame_timings_ref   (GdkFrameTimings *timings);
+CdkFrameTimings *cdk_frame_timings_ref   (CdkFrameTimings *timings);
 GDK_AVAILABLE_IN_3_8
-void             cdk_frame_timings_unref (GdkFrameTimings *timings);
+void             cdk_frame_timings_unref (CdkFrameTimings *timings);
 
 GDK_AVAILABLE_IN_3_8
-gint64           cdk_frame_timings_get_frame_counter     (GdkFrameTimings *timings);
+gint64           cdk_frame_timings_get_frame_counter     (CdkFrameTimings *timings);
 GDK_AVAILABLE_IN_3_8
-gboolean         cdk_frame_timings_get_complete          (GdkFrameTimings *timings);
+gboolean         cdk_frame_timings_get_complete          (CdkFrameTimings *timings);
 GDK_AVAILABLE_IN_3_8
-gint64           cdk_frame_timings_get_frame_time        (GdkFrameTimings *timings);
+gint64           cdk_frame_timings_get_frame_time        (CdkFrameTimings *timings);
 GDK_AVAILABLE_IN_3_8
-gint64           cdk_frame_timings_get_presentation_time (GdkFrameTimings *timings);
+gint64           cdk_frame_timings_get_presentation_time (CdkFrameTimings *timings);
 GDK_AVAILABLE_IN_3_8
-gint64           cdk_frame_timings_get_refresh_interval  (GdkFrameTimings *timings);
+gint64           cdk_frame_timings_get_refresh_interval  (CdkFrameTimings *timings);
 
 GDK_AVAILABLE_IN_3_8
-gint64           cdk_frame_timings_get_predicted_presentation_time (GdkFrameTimings *timings);
+gint64           cdk_frame_timings_get_predicted_presentation_time (CdkFrameTimings *timings);
 
 G_END_DECLS
 

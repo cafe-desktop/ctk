@@ -146,7 +146,7 @@ msgstr "Forhander-id"
 msgid "Product ID"
 msgstr "Produkt-id"
 
-# https://developer.gnome.org/cdk3/unstable/GdkSeat.html
+# https://developer.gnome.org/cdk3/unstable/CdkSeat.html
 # Ikke til meget hjælp.  Lad os sige sæde, så
 #: cdk/cdkdevice.c:289 cdk/cdkdevice.c:290
 msgid "Seat"
@@ -870,8 +870,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "En GdkPixbuf der skal vises"
+msgid "A CdkPixbuf to display"
+msgstr "En CdkPixbuf der skal vises"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2273,16 +2273,16 @@ msgid "Cell background color"
 msgstr "Cellebaggrundsfarve"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Cellebaggrundsfarve som en GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Cellebaggrundsfarve som en CdkColor"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Cellebaggrundsfarve i RGBA"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Cellebaggrundsfarve som en GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Cellebaggrundsfarve som en CdkRGBA"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2521,16 +2521,16 @@ msgid "Background color"
 msgstr "Baggrundsfarve"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:231
-msgid "Background color as a GdkColor"
-msgstr "Baggrundsfarve som en GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Baggrundsfarve som en CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Baggrundsfarve som RGBA"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:246
-msgid "Background color as a GdkRGBA"
-msgstr "Baggrundsfarve som en GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Baggrundsfarve som en CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:261
 msgid "Foreground color name"
@@ -2541,16 +2541,16 @@ msgid "Foreground color as a string"
 msgstr "Forgrundsfarve som en streng"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:277
-msgid "Foreground color as a GdkColor"
-msgstr "Forgrundsfarve som en GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Forgrundsfarve som en CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Forgrundsfarve som RGBA"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:292
-msgid "Foreground color as a GdkRGBA"
-msgstr "Forgrundsfarve som en GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Forgrundsfarve som en CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:308
 #: ctk/ctktextview.c:825
@@ -3018,8 +3018,8 @@ msgid "Color"
 msgstr "Farve"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Nuværende farve som en GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Nuværende farve som en CdkRGBA"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4283,8 +4283,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Nødvendigt antal punkter for at udløse gestussen"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "GdkWindow hvorfra der skal modtages hændelser"
+msgid "CdkWindow to receive events about"
+msgstr "CdkWindow hvorfra der skal modtages hændelser"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4622,8 +4622,8 @@ msgid "Animation"
 msgstr "Animation"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation der skal vises"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation der skal vises"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7899,17 +7899,17 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Kanttype omkring statuslinjeteksten"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "Den tilknyttede GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "Den tilknyttede CdkScreen"
 
-# https://developer.gnome.org/cdk3/unstable/cdk3-GdkFrameClock.html
+# https://developer.gnome.org/cdk3/unstable/cdk3-CdkFrameClock.html
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "Grafiksynkroniseringsur"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "Den tilknyttede GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "Den tilknyttede CdkFrameClock"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:299
 msgid "Text direction"
@@ -8208,16 +8208,16 @@ msgid "Paragraph background color"
 msgstr "Paragraf-baggrundsfarve"
 
 #: ctk/ctktexttag.c:630
-msgid "Paragraph background color as a GdkColor"
-msgstr "Paragraf-baggrundsfarve som en GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Paragraf-baggrundsfarve som en CdkColor"
 
 #: ctk/ctktexttag.c:644
 msgid "Paragraph background RGBA"
 msgstr "Paragraf-baggrund RGBA"
 
 #: ctk/ctktexttag.c:645
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Paragraf-baggrund RGBA som en GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Paragraf-baggrund RGBA som en CdkRGBA"
 
 #: ctk/ctktexttag.c:662
 msgid "Fallback"
@@ -9224,9 +9224,9 @@ msgid "Events"
 msgstr "Hændelser"
 
 #: ctk/ctkwidget.c:1253
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Hændelsesmasken der bestemmer hvilke former for GdkEvents kontrollen modtager"
+"Hændelsesmasken der bestemmer hvilke former for CdkEvents kontrollen modtager"
 
 #: ctk/ctkwidget.c:1260
 msgid "No show all"
@@ -9876,14 +9876,14 @@ msgstr "Titlen på den farveprofil der skal bruges"
 #~ msgid "Event base for XInput events"
 #~ msgstr "Hændelsesbase for XInput-hændelser"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
-#~ msgstr "Baggrundsfarve som en (evt. ikke-allokeret) GdkColor"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
+#~ msgstr "Baggrundsfarve som en (evt. ikke-allokeret) CdkColor"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
-#~ msgstr "Forgrundsfarve som en (evt. ikke-allokeret) GdkColor"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
+#~ msgstr "Forgrundsfarve som en (evt. ikke-allokeret) CdkColor"
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-#~ msgstr "Paragraf-baggrundsfarve som en (evt. ikke-allokeret) GdkColor"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+#~ msgstr "Paragraf-baggrundsfarve som en (evt. ikke-allokeret) CdkColor"
 
 #~ msgid ""
 #~ "The label for the link to the website of the program. If this is not set, "
@@ -9975,8 +9975,8 @@ msgstr "Titlen på den farveprofil der skal bruges"
 #~ msgid "Mask"
 #~ msgstr "Maske"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "optegnerens GdkScreen"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "optegnerens CdkScreen"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "Justeringen som indeholder værdien for rulleknappen."

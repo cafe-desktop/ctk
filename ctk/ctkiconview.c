@@ -83,7 +83,7 @@ typedef struct _CtkIconViewChild CtkIconViewChild;
 struct _CtkIconViewChild
 {
   CtkWidget    *widget;
-  GdkRectangle  area;
+  CdkRectangle  area;
 };
 
 /* Signals */
@@ -165,17 +165,17 @@ static void             ctk_icon_view_size_allocate             (CtkWidget      
 static gboolean         ctk_icon_view_draw                      (CtkWidget          *widget,
                                                                  cairo_t            *cr);
 static gboolean         ctk_icon_view_motion                    (CtkWidget          *widget,
-								 GdkEventMotion     *event);
+								 CdkEventMotion     *event);
 static gboolean         ctk_icon_view_leave                     (CtkWidget          *widget,
-								 GdkEventCrossing   *event);
+								 CdkEventCrossing   *event);
 static gboolean         ctk_icon_view_button_press              (CtkWidget          *widget,
-								 GdkEventButton     *event);
+								 CdkEventButton     *event);
 static gboolean         ctk_icon_view_button_release            (CtkWidget          *widget,
-								 GdkEventButton     *event);
+								 CdkEventButton     *event);
 static gboolean         ctk_icon_view_key_press                 (CtkWidget          *widget,
-								 GdkEventKey        *event);
+								 CdkEventKey        *event);
 static gboolean         ctk_icon_view_key_release               (CtkWidget          *widget,
-								 GdkEventKey        *event);
+								 CdkEventKey        *event);
 
 
 /* CtkContainer vfuncs */
@@ -216,7 +216,7 @@ static void                 ctk_icon_view_queue_draw_path                (CtkIco
 static void                 ctk_icon_view_queue_draw_item                (CtkIconView            *icon_view,
 									  CtkIconViewItem        *item);
 static void                 ctk_icon_view_start_rubberbanding            (CtkIconView            *icon_view,
-                                                                          GdkDevice              *device,
+                                                                          CdkDevice              *device,
 									  gint                    x,
 									  gint                    y);
 static void                 ctk_icon_view_stop_rubberbanding             (CtkIconView            *icon_view);
@@ -264,7 +264,7 @@ static void                 ctk_icon_view_item_selected_changed          (CtkIco
 static void                 ctk_icon_view_add_editable                   (CtkCellArea            *area,
 									  CtkCellRenderer        *renderer,
 									  CtkCellEditable        *editable,
-									  GdkRectangle           *cell_area,
+									  CdkRectangle           *cell_area,
 									  const gchar            *path,
 									  CtkIconView            *icon_view);
 static void                 ctk_icon_view_remove_editable                (CtkCellArea            *area,
@@ -276,40 +276,40 @@ static void                 update_pixbuf_cell                           (CtkIco
 
 /* Source side drag signals */
 static void ctk_icon_view_drag_begin       (CtkWidget        *widget,
-                                            GdkDragContext   *context);
+                                            CdkDragContext   *context);
 static void ctk_icon_view_drag_end         (CtkWidget        *widget,
-                                            GdkDragContext   *context);
+                                            CdkDragContext   *context);
 static void ctk_icon_view_drag_data_get    (CtkWidget        *widget,
-                                            GdkDragContext   *context,
+                                            CdkDragContext   *context,
                                             CtkSelectionData *selection_data,
                                             guint             info,
                                             guint             time);
 static void ctk_icon_view_drag_data_delete (CtkWidget        *widget,
-                                            GdkDragContext   *context);
+                                            CdkDragContext   *context);
 
 /* Target side drag signals */
 static void     ctk_icon_view_drag_leave         (CtkWidget        *widget,
-                                                  GdkDragContext   *context,
+                                                  CdkDragContext   *context,
                                                   guint             time);
 static gboolean ctk_icon_view_drag_motion        (CtkWidget        *widget,
-                                                  GdkDragContext   *context,
+                                                  CdkDragContext   *context,
                                                   gint              x,
                                                   gint              y,
                                                   guint             time);
 static gboolean ctk_icon_view_drag_drop          (CtkWidget        *widget,
-                                                  GdkDragContext   *context,
+                                                  CdkDragContext   *context,
                                                   gint              x,
                                                   gint              y,
                                                   guint             time);
 static void     ctk_icon_view_drag_data_received (CtkWidget        *widget,
-                                                  GdkDragContext   *context,
+                                                  CdkDragContext   *context,
                                                   gint              x,
                                                   gint              y,
                                                   CtkSelectionData *selection_data,
                                                   guint             info,
                                                   guint             time);
 static gboolean ctk_icon_view_maybe_begin_drag   (CtkIconView             *icon_view,
-					   	  GdkEventMotion          *event);
+					   	  CdkEventMotion          *event);
 
 static void     remove_scroll_timeout            (CtkIconView *icon_view);
 
@@ -686,7 +686,7 @@ ctk_icon_view_class_init (CtkIconViewClass *klass)
                                            g_param_spec_boxed ("selection-box-color",
                                                                P_("Selection Box Color"),
                                                                P_("Color of the selection box"),
-                                                               g_type_from_name ("GdkColor"),
+                                                               g_type_from_name ("CdkColor"),
                                                                CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
 
@@ -1305,8 +1305,8 @@ ctk_icon_view_realize (CtkWidget *widget)
 {
   CtkIconView *icon_view = CTK_ICON_VIEW (widget);
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_set_realized (widget, TRUE);
@@ -1890,7 +1890,7 @@ ctk_icon_view_draw (CtkWidget *widget,
   for (icons = icon_view->priv->items; icons; icons = icons->next)
     {
       CtkIconViewItem *item = icons->data;
-      GdkRectangle paint_area;
+      CdkRectangle paint_area;
 
       paint_area.x      = item->cell_area.x      - icon_view->priv->item_padding;
       paint_area.y      = item->cell_area.y      - icon_view->priv->item_padding;
@@ -1918,7 +1918,7 @@ ctk_icon_view_draw (CtkWidget *widget,
   if (dest_item &&
       dest_pos != CTK_ICON_VIEW_NO_DROP)
     {
-      GdkRectangle rect = { 0 };
+      CdkRectangle rect = { 0 };
 
       switch (dest_pos)
 	{
@@ -1981,7 +1981,7 @@ rubberband_scroll_timeout (gpointer data)
 
 static gboolean
 ctk_icon_view_motion (CtkWidget      *widget,
-		      GdkEventMotion *event)
+		      CdkEventMotion *event)
 {
   CtkAllocation allocation;
   CtkIconView *icon_view;
@@ -2054,7 +2054,7 @@ ctk_icon_view_motion (CtkWidget      *widget,
 
 static gboolean
 ctk_icon_view_leave (CtkWidget        *widget,
-                     GdkEventCrossing *event)
+                     CdkEventCrossing *event)
 {
   CtkIconView *icon_view;
   CtkIconViewPrivate *priv;
@@ -2144,7 +2144,7 @@ static void
 ctk_icon_view_add_editable (CtkCellArea            *area,
 			    CtkCellRenderer        *renderer,
 			    CtkCellEditable        *editable,
-			    GdkRectangle           *cell_area,
+			    CdkRectangle           *cell_area,
 			    const gchar            *path,
 			    CtkIconView            *icon_view)
 {
@@ -2288,7 +2288,7 @@ ctk_icon_view_get_cursor (CtkIconView      *icon_view,
 
 static gboolean
 ctk_icon_view_button_press (CtkWidget      *widget,
-			    GdkEventButton *event)
+			    CdkEventButton *event)
 {
   CtkIconView *icon_view;
   CtkIconViewItem *item;
@@ -2305,8 +2305,8 @@ ctk_icon_view_button_press (CtkWidget      *widget,
 
   if (event->button == GDK_BUTTON_PRIMARY && event->type == GDK_BUTTON_PRESS)
     {
-      GdkModifierType extend_mod_mask;
-      GdkModifierType modify_mod_mask;
+      CdkModifierType extend_mod_mask;
+      CdkModifierType modify_mod_mask;
 
       extend_mod_mask =
         ctk_widget_get_modifier_mask (widget, GDK_MODIFIER_INTENT_EXTEND_SELECTION);
@@ -2444,14 +2444,14 @@ ctk_icon_view_button_press (CtkWidget      *widget,
 }
 
 static gboolean
-button_event_modifies_selection (GdkEventButton *event)
+button_event_modifies_selection (CdkEventButton *event)
 {
         return (event->state & (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) != 0;
 }
 
 static gboolean
 ctk_icon_view_button_release (CtkWidget      *widget,
-			      GdkEventButton *event)
+			      CdkEventButton *event)
 {
   CtkIconView *icon_view;
 
@@ -2491,7 +2491,7 @@ ctk_icon_view_button_release (CtkWidget      *widget,
 
 static gboolean
 ctk_icon_view_key_press (CtkWidget      *widget,
-			 GdkEventKey    *event)
+			 CdkEventKey    *event)
 {
   CtkIconView *icon_view = CTK_ICON_VIEW (widget);
 
@@ -2508,7 +2508,7 @@ ctk_icon_view_key_press (CtkWidget      *widget,
 
 static gboolean
 ctk_icon_view_key_release (CtkWidget      *widget,
-			   GdkEventKey    *event)
+			   CdkEventKey    *event)
 {
   CtkIconView *icon_view = CTK_ICON_VIEW (widget);
 
@@ -2523,8 +2523,8 @@ ctk_icon_view_update_rubberband (gpointer data)
 {
   CtkIconView *icon_view;
   gint x, y;
-  GdkRectangle old_area;
-  GdkRectangle new_area;
+  CdkRectangle old_area;
+  CdkRectangle new_area;
   cairo_region_t *invalid_region;
   
   icon_view = CTK_ICON_VIEW (data);
@@ -2565,7 +2565,7 @@ ctk_icon_view_update_rubberband (gpointer data)
 
 static void
 ctk_icon_view_start_rubberbanding (CtkIconView  *icon_view,
-                                   GdkDevice    *device,
+                                   CdkDevice    *device,
 				   gint          x,
 				   gint          y)
 {
@@ -2656,14 +2656,14 @@ ctk_icon_view_update_rubberband_selection (CtkIconView *icon_view)
 
 
 typedef struct {
-  GdkRectangle hit_rect;
+  CdkRectangle hit_rect;
   gboolean     hit;
 } HitTestData;
 
 static gboolean 
 hit_test (CtkCellRenderer    *renderer,
-	  const GdkRectangle *cell_area,
-	  const GdkRectangle *cell_background,
+	  const CdkRectangle *cell_area,
+	  const CdkRectangle *cell_background,
 	  HitTestData        *data)
 {
   if (MIN (data->hit_rect.x + data->hit_rect.width, cell_area->x + cell_area->width) - 
@@ -2685,7 +2685,7 @@ ctk_icon_view_item_hit_test (CtkIconView      *icon_view,
 {
   HitTestData data = { { x, y, width, height }, FALSE };
   CtkCellAreaContext *context;
-  GdkRectangle *item_area = &item->cell_area;
+  CdkRectangle *item_area = &item->cell_area;
    
   if (MIN (x + width, item_area->x + item_area->width) - MAX (x, item_area->x) <= 0 ||
       MIN (y + height, item_area->y + item_area->height) - MAX (y, item_area->y) <= 0)
@@ -3100,7 +3100,7 @@ ctk_icon_view_paint_item (CtkIconView     *icon_view,
                           gint             y,
                           gboolean         draw_focus)
 {
-  GdkRectangle cell_area;
+  CdkRectangle cell_area;
   CtkStateFlags state = 0;
   CtkCellRendererState flags = 0;
   CtkStyleContext *style_context;
@@ -3169,7 +3169,7 @@ ctk_icon_view_paint_rubberband (CtkIconView *icon_view,
 {
   CtkIconViewPrivate *priv = icon_view->priv;
   CtkStyleContext *context;
-  GdkRectangle rect;
+  CdkRectangle rect;
 
   cairo_save (cr);
 
@@ -3221,8 +3221,8 @@ static void
 ctk_icon_view_queue_draw_item (CtkIconView     *icon_view,
 			       CtkIconViewItem *item)
 {
-  GdkRectangle  rect;
-  GdkRectangle *item_area = &item->cell_area;
+  CdkRectangle  rect;
+  CdkRectangle *item_area = &item->cell_area;
 
   rect.x      = item_area->x - icon_view->priv->item_padding;
   rect.y      = item_area->y - icon_view->priv->item_padding;
@@ -3325,7 +3325,7 @@ _ctk_icon_view_get_item_at_coords (CtkIconView          *icon_view,
   for (items = icon_view->priv->items; items; items = items->next)
     {
       CtkIconViewItem *item = items->data;
-      GdkRectangle    *item_area = &item->cell_area;
+      CdkRectangle    *item_area = &item->cell_area;
 
       if (x >= item_area->x - icon_view->priv->column_spacing/2 && 
 	  x <= item_area->x + item_area->width + icon_view->priv->column_spacing/2 &&
@@ -3670,7 +3670,7 @@ ctk_icon_view_real_move_cursor (CtkIconView     *icon_view,
 				CtkMovementStep  step,
 				gint             count)
 {
-  GdkModifierType state;
+  CdkModifierType state;
 
   g_return_val_if_fail (CTK_ICON_VIEW (icon_view), FALSE);
   g_return_val_if_fail (step == CTK_MOVEMENT_LOGICAL_POSITIONS ||
@@ -3687,8 +3687,8 @@ ctk_icon_view_real_move_cursor (CtkIconView     *icon_view,
 
   if (ctk_get_current_event_state (&state))
     {
-      GdkModifierType extend_mod_mask;
-      GdkModifierType modify_mod_mask;
+      CdkModifierType extend_mod_mask;
+      CdkModifierType modify_mod_mask;
 
       extend_mod_mask =
         ctk_widget_get_modifier_mask (CTK_WIDGET (icon_view),
@@ -4222,7 +4222,7 @@ ctk_icon_view_scroll_to_path (CtkIconView *icon_view,
       CtkAllocation allocation;
       gint x, y;
       gfloat offset;
-      GdkRectangle item_area = 
+      CdkRectangle item_area = 
 	{ 
 	  item->cell_area.x - icon_view->priv->item_padding, 
 	  item->cell_area.y - icon_view->priv->item_padding, 
@@ -4258,7 +4258,7 @@ ctk_icon_view_scroll_to_item (CtkIconView     *icon_view,
   CtkAdjustment *hadj, *vadj;
   CtkAllocation allocation;
   gint x, y;
-  GdkRectangle item_area;
+  CdkRectangle item_area;
 
   item_area.x = item->cell_area.x - priv->item_padding;
   item_area.y = item->cell_area.y - priv->item_padding;
@@ -4546,7 +4546,7 @@ gboolean
 ctk_icon_view_get_cell_rect (CtkIconView     *icon_view,
                              CtkTreePath     *path,
                              CtkCellRenderer *cell,
-                             GdkRectangle    *rect)
+                             CdkRectangle    *rect)
 {
   CtkIconViewItem *item = NULL;
   gint x, y;
@@ -4632,7 +4632,7 @@ ctk_icon_view_set_tooltip_cell (CtkIconView     *icon_view,
                                 CtkTreePath     *path,
                                 CtkCellRenderer *cell)
 {
-  GdkRectangle rect;
+  CdkRectangle rect;
 
   g_return_if_fail (CTK_IS_ICON_VIEW (icon_view));
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
@@ -4861,7 +4861,7 @@ ctk_icon_view_get_visible_range (CtkIconView  *icon_view,
   for (icons = icon_view->priv->items; icons; icons = icons->next) 
     {
       CtkIconViewItem *item = icons->data;
-      GdkRectangle    *item_area = &item->cell_area;
+      CdkRectangle    *item_area = &item->cell_area;
 
       if ((item_area->x + item_area->width >= (int)ctk_adjustment_get_value (icon_view->priv->hadjustment)) &&
 	  (item_area->y + item_area->height >= (int)ctk_adjustment_get_value (icon_view->priv->vadjustment)) &&
@@ -6057,16 +6057,16 @@ ctk_icon_view_get_item_padding (CtkIconView *icon_view)
  * since the data doesn’t result from a drop.
  */
 static void
-set_status_pending (GdkDragContext *context,
-                    GdkDragAction   suggested_action)
+set_status_pending (CdkDragContext *context,
+                    CdkDragAction   suggested_action)
 {
   g_object_set_data (G_OBJECT (context),
                      I_("ctk-icon-view-status-pending"),
                      GINT_TO_POINTER (suggested_action));
 }
 
-static GdkDragAction
-get_status_pending (GdkDragContext *context)
+static CdkDragAction
+get_status_pending (CdkDragContext *context)
 {
   return GPOINTER_TO_INT (g_object_get_data (G_OBJECT (context),
                                              "ctk-icon-view-status-pending"));
@@ -6083,7 +6083,7 @@ unset_reorderable (CtkIconView *icon_view)
 }
 
 static void
-set_source_row (GdkDragContext *context,
+set_source_row (CdkDragContext *context,
                 CtkTreeModel   *model,
                 CtkTreePath    *source_row)
 {
@@ -6099,7 +6099,7 @@ set_source_row (GdkDragContext *context,
 }
 
 static CtkTreePath*
-get_source_row (GdkDragContext *context)
+get_source_row (CdkDragContext *context)
 {
   CtkTreeRowReference *ref;
 
@@ -6128,7 +6128,7 @@ dest_row_free (gpointer data)
 }
 
 static void
-set_dest_row (GdkDragContext *context,
+set_dest_row (CdkDragContext *context,
 	      CtkTreeModel   *model,
 	      CtkTreePath    *dest_row,
 	      gboolean        empty_view_drop,
@@ -6155,7 +6155,7 @@ set_dest_row (GdkDragContext *context,
 }
 
 static CtkTreePath*
-get_dest_row (GdkDragContext *context)
+get_dest_row (CdkDragContext *context)
 {
   DestRow *dr;
 
@@ -6219,7 +6219,7 @@ remove_scroll_timeout (CtkIconView *icon_view)
 static void
 ctk_icon_view_autoscroll (CtkIconView *icon_view)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   gint px, py, width, height;
   gint hoffset, voffset;
 
@@ -6257,11 +6257,11 @@ drag_scroll_timeout (gpointer data)
 
 static gboolean
 set_destination (CtkIconView    *icon_view,
-		 GdkDragContext *context,
+		 CdkDragContext *context,
 		 gint            x,
 		 gint            y,
-		 GdkDragAction  *suggested_action,
-		 GdkAtom        *target)
+		 CdkDragAction  *suggested_action,
+		 CdkAtom        *target)
 {
   CtkWidget *widget;
   CtkTreePath *path = NULL;
@@ -6409,10 +6409,10 @@ get_logical_destination (CtkIconView *icon_view,
 
 static gboolean
 ctk_icon_view_maybe_begin_drag (CtkIconView    *icon_view,
-				GdkEventMotion *event)
+				CdkEventMotion *event)
 {
   CtkWidget *widget = CTK_WIDGET (icon_view);
-  GdkDragContext *context;
+  CdkDragContext *context;
   CtkTreePath *path = NULL;
   gint button;
   CtkTreeModel *model;
@@ -6462,7 +6462,7 @@ ctk_icon_view_maybe_begin_drag (CtkIconView    *icon_view,
                                              ctk_drag_source_get_target_list (widget),
                                              icon_view->priv->source_actions,
                                              button,
-                                             (GdkEvent*)event,
+                                             (CdkEvent*)event,
                                              icon_view->priv->press_start_x,
                                              icon_view->priv->press_start_y);
 
@@ -6478,7 +6478,7 @@ ctk_icon_view_maybe_begin_drag (CtkIconView    *icon_view,
 /* Source side drag signals */
 static void 
 ctk_icon_view_drag_begin (CtkWidget      *widget,
-			  GdkDragContext *context)
+			  CdkDragContext *context)
 {
   CtkIconView *icon_view;
   CtkIconViewItem *item;
@@ -6518,14 +6518,14 @@ ctk_icon_view_drag_begin (CtkWidget      *widget,
 
 static void 
 ctk_icon_view_drag_end (CtkWidget      *widget,
-			GdkDragContext *context)
+			CdkDragContext *context)
 {
   /* do nothing */
 }
 
 static void 
 ctk_icon_view_drag_data_get (CtkWidget        *widget,
-			     GdkDragContext   *context,
+			     CdkDragContext   *context,
 			     CtkSelectionData *selection_data,
 			     guint             info,
 			     guint             time)
@@ -6571,7 +6571,7 @@ ctk_icon_view_drag_data_get (CtkWidget        *widget,
 
 static void 
 ctk_icon_view_drag_data_delete (CtkWidget      *widget,
-				GdkDragContext *context)
+				CdkDragContext *context)
 {
   CtkTreeModel *model;
   CtkIconView *icon_view;
@@ -6602,7 +6602,7 @@ ctk_icon_view_drag_data_delete (CtkWidget      *widget,
 /* Target side drag signals */
 static void
 ctk_icon_view_drag_leave (CtkWidget      *widget,
-			  GdkDragContext *context,
+			  CdkDragContext *context,
 			  guint           time)
 {
   CtkIconView *icon_view;
@@ -6619,7 +6619,7 @@ ctk_icon_view_drag_leave (CtkWidget      *widget,
 
 static gboolean 
 ctk_icon_view_drag_motion (CtkWidget      *widget,
-			   GdkDragContext *context,
+			   CdkDragContext *context,
 			   gint            x,
 			   gint            y,
 			   guint           time)
@@ -6627,8 +6627,8 @@ ctk_icon_view_drag_motion (CtkWidget      *widget,
   CtkTreePath *path = NULL;
   CtkIconViewDropPosition pos;
   CtkIconView *icon_view;
-  GdkDragAction suggested_action = 0;
-  GdkAtom target;
+  CdkDragAction suggested_action = 0;
+  CdkAtom target;
   gboolean empty;
 
   icon_view = CTK_ICON_VIEW (widget);
@@ -6681,15 +6681,15 @@ ctk_icon_view_drag_motion (CtkWidget      *widget,
 
 static gboolean 
 ctk_icon_view_drag_drop (CtkWidget      *widget,
-			 GdkDragContext *context,
+			 CdkDragContext *context,
 			 gint            x,
 			 gint            y,
 			 guint           time)
 {
   CtkIconView *icon_view;
   CtkTreePath *path;
-  GdkDragAction suggested_action = 0;
-  GdkAtom target = GDK_NONE;
+  CdkDragAction suggested_action = 0;
+  CdkAtom target = GDK_NONE;
   CtkTreeModel *model;
   gboolean drop_append_mode;
 
@@ -6736,7 +6736,7 @@ ctk_icon_view_drag_drop (CtkWidget      *widget,
 
 static void
 ctk_icon_view_drag_data_received (CtkWidget        *widget,
-				  GdkDragContext   *context,
+				  CdkDragContext   *context,
 				  gint              x,
 				  gint              y,
 				  CtkSelectionData *selection_data,
@@ -6748,7 +6748,7 @@ ctk_icon_view_drag_data_received (CtkWidget        *widget,
   CtkTreeModel *model;
   CtkIconView *icon_view;
   CtkTreePath *dest_row;
-  GdkDragAction suggested_action;
+  CdkDragAction suggested_action;
   gboolean drop_append_mode;
   
   icon_view = CTK_ICON_VIEW (widget);  
@@ -6838,10 +6838,10 @@ ctk_icon_view_drag_data_received (CtkWidget        *widget,
  **/
 void
 ctk_icon_view_enable_model_drag_source (CtkIconView              *icon_view,
-					GdkModifierType           start_button_mask,
+					CdkModifierType           start_button_mask,
 					const CtkTargetEntry     *targets,
 					gint                      n_targets,
-					GdkDragAction             actions)
+					CdkDragAction             actions)
 {
   g_return_if_fail (CTK_IS_ICON_VIEW (icon_view));
 
@@ -6873,7 +6873,7 @@ void
 ctk_icon_view_enable_model_drag_dest (CtkIconView          *icon_view,
 				      const CtkTargetEntry *targets,
 				      gint                  n_targets,
-				      GdkDragAction         actions)
+				      CdkDragAction         actions)
 {
   g_return_if_fail (CTK_IS_ICON_VIEW (icon_view));
 
@@ -7125,7 +7125,7 @@ ctk_icon_view_create_drag_icon (CtkIconView *icon_view,
       
       if (index == item->index)
 	{
-	  GdkRectangle rect = { 
+	  CdkRectangle rect = { 
 	    item->cell_area.x - icon_view->priv->item_padding, 
 	    item->cell_area.y - icon_view->priv->item_padding, 
 	    item->cell_area.width  + icon_view->priv->item_padding * 2, 

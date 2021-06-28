@@ -1778,16 +1778,16 @@ msgid "Cell background color"
 msgstr "Boja pozadine polja"
 
 #: ../ctk/ctkcellrenderer.c:397
-msgid "Cell background color as a GdkColor"
-msgstr "Boja pozadine polja kao GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Boja pozadine polja kao CdkColor"
 
 #: ../ctk/ctkcellrenderer.c:410
 msgid "Cell background RGBA color"
 msgstr "RGBA boja pozadine ćelije"
 
 #: ../ctk/ctkcellrenderer.c:411
-msgid "Cell background color as a GdkRGBA"
-msgstr "Boja pozadine ćelije kao GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Boja pozadine ćelije kao CdkRGBA"
 
 #: ../ctk/ctkcellrenderer.c:418
 msgid "Editing"
@@ -2040,8 +2040,8 @@ msgstr "Boja pozadine"
 
 #: ../ctk/ctkcellrenderertext.c:304 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:219
-msgid "Background color as a GdkColor"
-msgstr "Boja pozadine kao GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Boja pozadine kao CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:318
 msgid "Background color as RGBA"
@@ -2049,8 +2049,8 @@ msgstr "Boja pozadine kao RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:319 ../ctk/ctkcellview.c:219
 #: ../ctk/ctktexttag.c:234
-msgid "Background color as a GdkRGBA"
-msgstr "Boja pozadine kao GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Boja pozadine kao CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:325 ../ctk/ctktexttag.c:249
 msgid "Foreground color name"
@@ -2066,16 +2066,16 @@ msgid "Foreground color"
 msgstr "Boja teksta"
 
 #: ../ctk/ctkcellrenderertext.c:341 ../ctk/ctktexttag.c:265
-msgid "Foreground color as a GdkColor"
-msgstr "Boja teksta kao GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Boja teksta kao CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:355
 msgid "Foreground color as RGBA"
 msgstr "Boja teksta kao RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:356 ../ctk/ctktexttag.c:280
-msgid "Foreground color as a GdkRGBA"
-msgstr "Boja iscrtavanja kao GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Boja iscrtavanja kao CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:364 ../ctk/ctkentry.c:755
 #: ../ctk/ctktexttag.c:296 ../ctk/ctktextview.c:704
@@ -2552,8 +2552,8 @@ msgid "Color"
 msgstr "Boja"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Tekuća boja, kao GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Tekuća boja, kao CdkRGBA"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -3795,8 +3795,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:219 ../ctk/ctkstatusicon.c:224
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf koji će se prikazati"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf koji će se prikazati"
 
 #: ../ctk/ctkimage.c:226 ../ctk/ctkrecentmanager.c:293
 #: ../ctk/ctkstatusicon.c:231
@@ -3843,8 +3843,8 @@ msgid "Animation"
 msgstr "Animacija"
 
 #: ../ctk/ctkimage.c:278
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation koji će se prikazati"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation koji će se prikazati"
 
 #: ../ctk/ctkimage.c:325
 msgid "Resource"
@@ -6535,8 +6535,8 @@ msgid "The title of this tray icon"
 msgstr "Naslov ove ikonice fioke"
 
 #: ../ctk/ctkstylecontext.c:442
-msgid "The associated GdkScreen"
-msgstr "Povezani Gdk ekran"
+msgid "The associated CdkScreen"
+msgstr "Povezani Cdk ekran"
 
 #: ../ctk/ctkstylecontext.c:448
 msgid "Direction"
@@ -6821,16 +6821,16 @@ msgid "Paragraph background color"
 msgstr "Boja pozadine pasusa"
 
 #: ../ctk/ctktexttag.c:582
-msgid "Paragraph background color as a GdkColor"
-msgstr "Boja pozadine pasusa kao Gdk boja"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Boja pozadine pasusa kao Cdk boja"
 
 #: ../ctk/ctktexttag.c:596
 msgid "Paragraph background RGBA"
 msgstr "Pozadina pasusa RGBA"
 
 #: ../ctk/ctktexttag.c:597
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Pozadina pasusua RGBA kao GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Pozadina pasusua RGBA kao CdkRGBA"
 
 #: ../ctk/ctktexttag.c:615
 msgid "Margin Accumulates"
@@ -7783,9 +7783,9 @@ msgid "Events"
 msgstr "Događaji"
 
 #: ../ctk/ctkwidget.c:1089
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Maska događaja koja odlučuje koji tip GdkEvents će ovaj grafički element "
+"Maska događaja koja odlučuje koji tip CdkEvents će ovaj grafički element "
 "primiti"
 
 #: ../ctk/ctkwidget.c:1096

@@ -195,7 +195,7 @@
  *
  * |[<!-- language="C" -->
  * CtkAllocation allocation;
- * GdkRectangle  cell_area = { 0, };
+ * CdkRectangle  cell_area = { 0, };
  * CtkTreeIter   iter;
  * gint          minimum_width;
  * gint          natural_width;
@@ -379,22 +379,22 @@ static void      ctk_cell_area_real_foreach                        (CtkCellArea 
 static void      ctk_cell_area_real_foreach_alloc                  (CtkCellArea         *area,
 								    CtkCellAreaContext  *context,
 								    CtkWidget           *widget,
-								    const GdkRectangle  *cell_area,
-								    const GdkRectangle  *background_area,
+								    const CdkRectangle  *cell_area,
+								    const CdkRectangle  *background_area,
 								    CtkCellAllocCallback callback,
 								    gpointer             callback_data);
 static gint      ctk_cell_area_real_event                          (CtkCellArea          *area,
                                                                     CtkCellAreaContext   *context,
                                                                     CtkWidget            *widget,
-                                                                    GdkEvent             *event,
-                                                                    const GdkRectangle   *cell_area,
+                                                                    CdkEvent             *event,
+                                                                    const CdkRectangle   *cell_area,
                                                                     CtkCellRendererState  flags);
 static void      ctk_cell_area_real_render                         (CtkCellArea          *area,
                                                                     CtkCellAreaContext   *context,
                                                                     CtkWidget            *widget,
                                                                     cairo_t              *cr,
-                                                                    const GdkRectangle   *background_area,
-                                                                    const GdkRectangle   *cell_area,
+                                                                    const CdkRectangle   *background_area,
+                                                                    const CdkRectangle   *cell_area,
                                                                     CtkCellRendererState  flags,
                                                                     gboolean              paint_focus);
 static void      ctk_cell_area_real_apply_attributes               (CtkCellArea           *area,
@@ -433,7 +433,7 @@ static gboolean  ctk_cell_area_real_is_activatable                 (CtkCellArea 
 static gboolean  ctk_cell_area_real_activate                       (CtkCellArea           *area,
                                                                     CtkCellAreaContext    *context,
                                                                     CtkWidget             *widget,
-                                                                    const GdkRectangle    *cell_area,
+                                                                    const CdkRectangle    *cell_area,
                                                                     CtkCellRendererState   flags,
                                                                     gboolean               edit_only);
 static gboolean  ctk_cell_area_real_focus                          (CtkCellArea           *area,
@@ -479,7 +479,7 @@ typedef struct {
 /* Used in foreach loop to get a cell's allocation */
 typedef struct {
   CtkCellRenderer *renderer;
-  GdkRectangle     allocation;
+  CdkRectangle     allocation;
 } RendererAllocationData;
 
 /* Used in foreach loop to render cells */
@@ -487,7 +487,7 @@ typedef struct {
   CtkCellArea         *area;
   CtkWidget           *widget;
   cairo_t             *cr;
-  GdkRectangle         focus_rect;
+  CdkRectangle         focus_rect;
   CtkCellRendererState render_flags;
   guint                paint_focus : 1;
   guint                focus_all   : 1;
@@ -499,7 +499,7 @@ typedef struct {
   gint             x;
   gint             y;
   CtkCellRenderer *renderer;
-  GdkRectangle     cell_area;
+  CdkRectangle     cell_area;
 } CellByPositionData;
 
 /* Attribute/Cell metadata */
@@ -532,7 +532,7 @@ static gint            cell_attribute_find (CellAttribute         *cell_attribut
 static void            ctk_cell_area_add_editable     (CtkCellArea        *area,
                                                        CtkCellRenderer    *renderer,
                                                        CtkCellEditable    *editable,
-                                                       const GdkRectangle *cell_area);
+                                                       const CdkRectangle *cell_area);
 static void            ctk_cell_area_remove_editable  (CtkCellArea        *area,
                                                        CtkCellRenderer    *renderer,
                                                        CtkCellEditable    *editable);
@@ -702,7 +702,7 @@ ctk_cell_area_class_init (CtkCellAreaClass *class)
    * @area: the #CtkCellArea where editing started
    * @renderer: the #CtkCellRenderer that started the edited
    * @editable: the #CtkCellEditable widget to add
-   * @cell_area: the #CtkWidget relative #GdkRectangle coordinates
+   * @cell_area: the #CtkWidget relative #CdkRectangle coordinates
    *             where @editable should be added
    * @path: the #CtkTreePath string this edit was initiated for
    *
@@ -1018,8 +1018,8 @@ static void
 ctk_cell_area_real_foreach_alloc (CtkCellArea         *area,
 				  CtkCellAreaContext  *context,
 				  CtkWidget           *widget,
-				  const GdkRectangle  *cell_area,
-				  const GdkRectangle  *background_area,
+				  const CdkRectangle  *cell_area,
+				  const CdkRectangle  *background_area,
 				  CtkCellAllocCallback callback,
 				  gpointer             callback_data)
 {
@@ -1031,8 +1031,8 @@ static gint
 ctk_cell_area_real_event (CtkCellArea          *area,
                           CtkCellAreaContext   *context,
                           CtkWidget            *widget,
-                          GdkEvent             *event,
-                          const GdkRectangle   *cell_area,
+                          CdkEvent             *event,
+                          const CdkRectangle   *cell_area,
                           CtkCellRendererState  flags)
 {
   CtkCellAreaPrivate *priv = area->priv;
@@ -1040,7 +1040,7 @@ ctk_cell_area_real_event (CtkCellArea          *area,
 
   if (event->type == GDK_KEY_PRESS && (flags & CTK_CELL_RENDERER_FOCUSED) != 0)
     {
-      GdkEventKey *key_event = (GdkEventKey *)event;
+      CdkEventKey *key_event = (CdkEventKey *)event;
 
       /* Cancel any edits in progress */
       if (priv->edited_cell && (key_event->keyval == GDK_KEY_Escape))
@@ -1051,13 +1051,13 @@ ctk_cell_area_real_event (CtkCellArea          *area,
     }
   else if (event->type == GDK_BUTTON_PRESS)
     {
-      GdkEventButton *button_event = (GdkEventButton *)event;
+      CdkEventButton *button_event = (CdkEventButton *)event;
 
       if (button_event->button == GDK_BUTTON_PRIMARY)
         {
           CtkCellRenderer *renderer = NULL;
           CtkCellRenderer *focus_renderer;
-          GdkRectangle     alloc_area;
+          CdkRectangle     alloc_area;
           gint             event_x, event_y;
 
           /* We may need some semantics to tell us the offset of the event
@@ -1110,13 +1110,13 @@ ctk_cell_area_real_event (CtkCellArea          *area,
 
 static gboolean
 render_cell (CtkCellRenderer        *renderer,
-             const GdkRectangle     *cell_area,
-             const GdkRectangle     *cell_background,
+             const CdkRectangle     *cell_area,
+             const CdkRectangle     *cell_background,
              CellRenderData         *data)
 {
   CtkCellRenderer      *focus_cell;
   CtkCellRendererState  flags;
-  GdkRectangle          inner_area;
+  CdkRectangle          inner_area;
 
   focus_cell = ctk_cell_area_get_focus_cell (data->area);
   flags      = data->render_flags;
@@ -1129,7 +1129,7 @@ render_cell (CtkCellRenderer        *renderer,
         (renderer == focus_cell ||
          ctk_cell_area_is_focus_sibling (data->area, focus_cell, renderer)))))
     {
-      GdkRectangle cell_focus;
+      CdkRectangle cell_focus;
 
       ctk_cell_renderer_get_aligned_area (renderer, data->widget, flags, &inner_area, &cell_focus);
 
@@ -1155,8 +1155,8 @@ ctk_cell_area_real_render (CtkCellArea          *area,
                            CtkCellAreaContext   *context,
                            CtkWidget            *widget,
                            cairo_t              *cr,
-                           const GdkRectangle   *background_area,
-                           const GdkRectangle   *cell_area,
+                           const CdkRectangle   *background_area,
+                           const CdkRectangle   *cell_area,
                            CtkCellRendererState  flags,
                            gboolean              paint_focus)
 {
@@ -1395,12 +1395,12 @@ static gboolean
 ctk_cell_area_real_activate (CtkCellArea         *area,
                              CtkCellAreaContext  *context,
                              CtkWidget           *widget,
-                             const GdkRectangle  *cell_area,
+                             const CdkRectangle  *cell_area,
                              CtkCellRendererState flags,
                              gboolean             edit_only)
 {
   CtkCellAreaPrivate *priv = area->priv;
-  GdkRectangle        renderer_area;
+  CdkRectangle        renderer_area;
   CtkCellRenderer    *activate_cell = NULL;
   CtkCellRendererMode mode;
 
@@ -1746,8 +1746,8 @@ void
 ctk_cell_area_foreach_alloc (CtkCellArea          *area,
                              CtkCellAreaContext   *context,
                              CtkWidget            *widget,
-                             const GdkRectangle   *cell_area,
-                             const GdkRectangle   *background_area,
+                             const CdkRectangle   *cell_area,
+                             const CdkRectangle   *background_area,
                              CtkCellAllocCallback  callback,
                              gpointer              callback_data)
 {
@@ -1767,7 +1767,7 @@ ctk_cell_area_foreach_alloc (CtkCellArea          *area,
  * @area: a #CtkCellArea
  * @context: the #CtkCellAreaContext for this row of data.
  * @widget: the #CtkWidget that @area is rendering to
- * @event: the #GdkEvent to handle
+ * @event: the #CdkEvent to handle
  * @cell_area: the @widget relative coordinates for @area
  * @flags: the #CtkCellRendererState for @area in this row.
  *
@@ -1781,8 +1781,8 @@ gint
 ctk_cell_area_event (CtkCellArea          *area,
                      CtkCellAreaContext   *context,
                      CtkWidget            *widget,
-                     GdkEvent             *event,
-                     const GdkRectangle   *cell_area,
+                     CdkEvent             *event,
+                     const CdkRectangle   *cell_area,
                      CtkCellRendererState  flags)
 {
   CtkCellAreaClass *class;
@@ -1824,8 +1824,8 @@ ctk_cell_area_render (CtkCellArea          *area,
                       CtkCellAreaContext   *context,
                       CtkWidget            *widget,
                       cairo_t              *cr,
-                      const GdkRectangle   *background_area,
-                      const GdkRectangle   *cell_area,
+                      const CdkRectangle   *background_area,
+                      const CdkRectangle   *cell_area,
                       CtkCellRendererState  flags,
                       gboolean              paint_focus)
 {
@@ -1849,8 +1849,8 @@ ctk_cell_area_render (CtkCellArea          *area,
 
 static gboolean
 get_cell_allocation (CtkCellRenderer        *renderer,
-                     const GdkRectangle     *cell_area,
-                     const GdkRectangle     *cell_background,
+                     const CdkRectangle     *cell_area,
+                     const CdkRectangle     *cell_background,
                      RendererAllocationData *data)
 {
   if (data->renderer == renderer)
@@ -1879,8 +1879,8 @@ ctk_cell_area_get_cell_allocation (CtkCellArea          *area,
                                    CtkCellAreaContext   *context,
                                    CtkWidget            *widget,
                                    CtkCellRenderer      *renderer,
-                                   const GdkRectangle   *cell_area,
-                                   GdkRectangle         *allocation)
+                                   const CdkRectangle   *cell_area,
+                                   CdkRectangle         *allocation)
 {
   RendererAllocationData data = { renderer, { 0, } };
 
@@ -1899,8 +1899,8 @@ ctk_cell_area_get_cell_allocation (CtkCellArea          *area,
 
 static gboolean
 get_cell_by_position (CtkCellRenderer     *renderer,
-                      const GdkRectangle  *cell_area,
-                      const GdkRectangle  *cell_background,
+                      const CdkRectangle  *cell_area,
+                      const CdkRectangle  *cell_background,
                       CellByPositionData  *data)
 {
   if (data->x >= cell_area->x && data->x < cell_area->x + cell_area->width &&
@@ -1936,10 +1936,10 @@ CtkCellRenderer *
 ctk_cell_area_get_cell_at_position (CtkCellArea          *area,
                                     CtkCellAreaContext   *context,
                                     CtkWidget            *widget,
-                                    const GdkRectangle   *cell_area,
+                                    const CdkRectangle   *cell_area,
                                     gint                  x,
                                     gint                  y,
-                                    GdkRectangle         *alloc_area)
+                                    CdkRectangle         *alloc_area)
 {
   CellByPositionData data = { x, y, NULL, { 0, } };
 
@@ -2939,7 +2939,7 @@ gboolean
 ctk_cell_area_activate (CtkCellArea         *area,
                         CtkCellAreaContext  *context,
                         CtkWidget           *widget,
-                        const GdkRectangle  *cell_area,
+                        const CdkRectangle  *cell_area,
                         CtkCellRendererState flags,
                         gboolean             edit_only)
 {
@@ -3233,7 +3233,7 @@ static void
 ctk_cell_area_add_editable (CtkCellArea        *area,
                             CtkCellRenderer    *renderer,
                             CtkCellEditable    *editable,
-                            const GdkRectangle *cell_area)
+                            const CdkRectangle *cell_area)
 {
   g_signal_emit (area, cell_area_signals[SIGNAL_ADD_EDITABLE], 0,
                  renderer, editable, cell_area, area->priv->current_path);
@@ -3375,8 +3375,8 @@ ctk_cell_area_get_edit_widget (CtkCellArea *area)
  * @area: a #CtkCellArea
  * @widget: the #CtkWidget that @area is rendering onto
  * @renderer: the #CtkCellRenderer in @area to activate
- * @event: the #GdkEvent for which cell activation should occur
- * @cell_area: the #GdkRectangle in @widget relative coordinates
+ * @event: the #CdkEvent for which cell activation should occur
+ * @cell_area: the #CdkRectangle in @widget relative coordinates
  *             of @renderer for the current row.
  * @flags: the #CtkCellRendererState for @renderer
  *
@@ -3393,8 +3393,8 @@ gboolean
 ctk_cell_area_activate_cell (CtkCellArea          *area,
                              CtkWidget            *widget,
                              CtkCellRenderer      *renderer,
-                             GdkEvent             *event,
-                             const GdkRectangle   *cell_area,
+                             CdkEvent             *event,
+                             const CdkRectangle   *cell_area,
                              CtkCellRendererState  flags)
 {
   CtkCellRendererMode mode;
@@ -3425,7 +3425,7 @@ ctk_cell_area_activate_cell (CtkCellArea          *area,
   else if (mode == CTK_CELL_RENDERER_MODE_EDITABLE)
     {
       CtkCellEditable *editable_widget;
-      GdkRectangle inner_area;
+      CdkRectangle inner_area;
 
       ctk_cell_area_inner_cell_area (area, widget, cell_area, &inner_area);
 
@@ -3545,8 +3545,8 @@ ctk_cell_area_stop_editing (CtkCellArea *area,
 void
 ctk_cell_area_inner_cell_area (CtkCellArea        *area,
                                CtkWidget          *widget,
-                               const GdkRectangle *cell_area,
-                               GdkRectangle       *inner_area)
+                               const CdkRectangle *cell_area,
+                               CdkRectangle       *inner_area)
 {
   CtkBorder border;
   CtkStyleContext *context;

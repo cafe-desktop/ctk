@@ -37,7 +37,7 @@ typedef enum
     GDK_QUARTZ_OTHER_MOUSE_DOWN = NSOtherMouseDown,
     GDK_QUARTZ_RIGHT_MOUSE_DOWN = NSRightMouseDown,
     GDK_QUARTZ_LEFT_MOUSE_DOWN = NSLeftMouseDown,
-  } GdkQuartzEventType;
+  } CdkQuartzEventType;
 
 typedef enum
   {
@@ -47,7 +47,7 @@ typedef enum
     GDK_QUARTZ_ALPHA_SHIFT_KEY_MASK = NSAlphaShiftKeyMask,
     GDK_QUARTZ_COMMAND_KEY_MASK = NSCommandKeyMask,
     GDK_QUARTZ_ANY_EVENT_MASK = NSAnyEventMask,
-  } GdkQuartzEventModifierFlags;
+  } CdkQuartzEventModifierFlags;
 
 
 #else
@@ -69,7 +69,7 @@ typedef enum
     GDK_QUARTZ_OTHER_MOUSE_DOWN = NSEventTypeOtherMouseDown,
     GDK_QUARTZ_RIGHT_MOUSE_DOWN = NSEventTypeRightMouseDown,
     GDK_QUARTZ_LEFT_MOUSE_DOWN = NSEventTypeLeftMouseDown,
-  } GdkQuartzEventType;
+  } CdkQuartzEventType;
 
 typedef enum
   {
@@ -78,7 +78,7 @@ typedef enum
    GDK_QUARTZ_SHIFT_KEY_MASK = NSEventModifierFlagShift,
    GDK_QUARTZ_ALPHA_SHIFT_KEY_MASK = NSEventModifierFlagCapsLock,
    GDK_QUARTZ_COMMAND_KEY_MASK = NSEventModifierFlagCommand,
-  } GdkQuartzEventModifierFlags;
+  } CdkQuartzEventModifierFlags;
 
 
 #endif

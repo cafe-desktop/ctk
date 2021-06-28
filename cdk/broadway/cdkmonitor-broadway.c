@@ -24,14 +24,14 @@
 #include "cdkscreen-broadway.h"
 
 
-G_DEFINE_TYPE (GdkBroadwayMonitor, cdk_broadway_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (CdkBroadwayMonitor, cdk_broadway_monitor, GDK_TYPE_MONITOR)
 
 static void
-cdk_broadway_monitor_init (GdkBroadwayMonitor *monitor)
+cdk_broadway_monitor_init (CdkBroadwayMonitor *monitor)
 {
 }
 
 static void
-cdk_broadway_monitor_class_init (GdkBroadwayMonitorClass *class)
+cdk_broadway_monitor_class_init (CdkBroadwayMonitorClass *class)
 {
 }

@@ -48,12 +48,12 @@ typedef enum {
   LAST_SEL_TYPE
 } SelType;
 
-GdkAtom seltypes[LAST_SEL_TYPE];
+CdkAtom seltypes[LAST_SEL_TYPE];
 
 typedef struct _Target {
   gchar *target_name;
   SelType type;
-  GdkAtom target;
+  CdkAtom target;
   gint format;
 } Target;
 
@@ -167,7 +167,7 @@ selection_get (CtkWidget *widget,
 {
   guchar *buffer;
   gint len;
-  GdkAtom type = GDK_NONE;
+  CdkAtom type = GDK_NONE;
 
   if (!selection_string)
     {
@@ -195,7 +195,7 @@ selection_get (CtkWidget *widget,
 }
 
 gint
-selection_clear (CtkWidget *widget, GdkEventSelection *event)
+selection_clear (CtkWidget *widget, CdkEventSelection *event)
 {
   have_selection = FALSE;
   ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON(selection_button), FALSE);
@@ -206,8 +206,8 @@ selection_clear (CtkWidget *widget, GdkEventSelection *event)
 gchar *
 stringify_atom (guchar *data, gint *position)
 {
-  gchar *str = cdk_atom_name (*(GdkAtom *)(data+*position));
-  *position += sizeof(GdkAtom);
+  gchar *str = cdk_atom_name (*(CdkAtom *)(data+*position));
+  *position += sizeof(CdkAtom);
     
   return str;
 }
@@ -273,7 +273,7 @@ selection_received (CtkWidget *widget, CtkSelectionData *selection_data)
   char *str;
   guchar *data;
   CtkTextBuffer *buffer;
-  GdkAtom type;
+  CdkAtom type;
 
   if (ctk_selection_data_get_length (selection_data) < 0)
     {
@@ -357,7 +357,7 @@ void
 paste (CtkWidget *dialog, gint response, CtkWidget *entry)
 {
   const char *name;
-  GdkAtom atom;
+  CdkAtom atom;
 
   if (response != CTK_RESPONSE_APPLY)
     {

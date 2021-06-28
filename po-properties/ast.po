@@ -1431,16 +1431,16 @@ msgid "Cell background color"
 msgstr "Color de fondu de la caxella"
 
 #: ../ctk/ctkcellrenderer.c:384
-msgid "Cell background color as a GdkColor"
-msgstr "Color de fondu de la caxella como GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Color de fondu de la caxella como CdkColor"
 
 #: ../ctk/ctkcellrenderer.c:397
 msgid "Cell background RGBA color"
 msgstr "Color de fondu RGBA de la caxella"
 
 #: ../ctk/ctkcellrenderer.c:398
-msgid "Cell background color as a GdkRGBA"
-msgstr "Color de fondu de la caxella como GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Color de fondu de la caxella como CdkRGBA"
 
 #: ../ctk/ctkcellrenderer.c:405
 msgid "Editing"
@@ -1694,8 +1694,8 @@ msgstr "Color de fondu"
 
 #: ../ctk/ctkcellrenderertext.c:296 ../ctk/ctkcellview.c:199
 #: ../ctk/ctktexttag.c:208
-msgid "Background color as a GdkColor"
-msgstr "Color de fondu como GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Color de fondu como CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:310
 msgid "Background color as RGBA"
@@ -1703,8 +1703,8 @@ msgstr "Color de fondu como RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:311 ../ctk/ctkcellview.c:213
 #: ../ctk/ctktexttag.c:223
-msgid "Background color as a GdkRGBA"
-msgstr "Color de fondu como GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Color de fondu como CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:317 ../ctk/ctktexttag.c:238
 msgid "Foreground color name"
@@ -1720,16 +1720,16 @@ msgid "Foreground color"
 msgstr "Color de primer planu"
 
 #: ../ctk/ctkcellrenderertext.c:326 ../ctk/ctktexttag.c:247
-msgid "Foreground color as a GdkColor"
-msgstr "Color de primer planu como GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Color de primer planu como CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:340
 msgid "Foreground color as RGBA"
 msgstr "Color de primer planu como RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:341 ../ctk/ctktexttag.c:262
-msgid "Foreground color as a GdkRGBA"
-msgstr "Color de primer planu como GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Color de primer planu como CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:349 ../ctk/ctkentry.c:761
 #: ../ctk/ctktexttag.c:278 ../ctk/ctktextview.c:686
@@ -3501,8 +3501,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:238 ../ctk/ctkstatusicon.c:236
-msgid "A GdkPixbuf to display"
-msgstr "Un GdkPixbuf a amosar"
+msgid "A CdkPixbuf to display"
+msgstr "Un CdkPixbuf a amosar"
 
 #: ../ctk/ctkimage.c:245 ../ctk/ctkrecentmanager.c:294
 #: ../ctk/ctkstatusicon.c:243
@@ -3549,8 +3549,8 @@ msgid "Animation"
 msgstr "Animación"
 
 #: ../ctk/ctkimage.c:297
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation a amosar"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation a amosar"
 
 #: ../ctk/ctkimage.c:337 ../ctk/ctkstatusicon.c:283
 msgid "Storage type"
@@ -6133,8 +6133,8 @@ msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext del qu'obtener l'estilu"
 
 #: ../ctk/ctkstylecontext.c:433
-msgid "The associated GdkScreen"
-msgstr "La GdkScreen asociada"
+msgid "The associated CdkScreen"
+msgstr "La CdkScreen asociada"
 
 #: ../ctk/ctkstylecontext.c:439
 msgid "Direction"
@@ -6471,16 +6471,16 @@ msgid "Paragraph background color"
 msgstr "Color de fondu del párrafu"
 
 #: ../ctk/ctktexttag.c:562
-msgid "Paragraph background color as a GdkColor"
-msgstr "Color de fondu del párrafu como un GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Color de fondu del párrafu como un CdkColor"
 
 #: ../ctk/ctktexttag.c:576
 msgid "Paragraph background RGBA"
 msgstr "Fondu de párrafu RGBA"
 
 #: ../ctk/ctktexttag.c:577
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Color de fondu del párrafu como un GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Color de fondu del párrafu como un CdkRGBA"
 
 #: ../ctk/ctktexttag.c:595
 msgid "Margin Accumulates"
@@ -7461,7 +7461,7 @@ msgid "Events"
 msgstr "Eventos"
 
 #: ../ctk/ctkwidget.c:1061
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
 "La mázcara d'eventos que decide qué triba de CtkEvents recibe esti widget"
 
@@ -8026,15 +8026,15 @@ msgstr "El títulu del perfil de color qu'usar"
 #~ "Indica si la barra d'estáu tien un tirador pa redimensionar el nivel "
 #~ "superior"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
-#~ msgstr "Color de fondu como un (dablemente non asignáu) GdkColor"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
+#~ msgstr "Color de fondu como un (dablemente non asignáu) CdkColor"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
-#~ msgstr "Color de frente como un (dablemente non asignáu) GdkColor"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
+#~ msgstr "Color de frente como un (dablemente non asignáu) CdkColor"
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 #~ msgstr ""
-#~ "Color de fondu del párrafu como un (dablemente non asignáu) GdkColor"
+#~ "Color de fondu del párrafu como un (dablemente non asignáu) CdkColor"
 
 #~ msgid "Horizontal Adjustment for the widget"
 #~ msgstr "Axuste horizontal pal widget"
@@ -8117,8 +8117,8 @@ msgstr "El títulu del perfil de color qu'usar"
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "Un punteru al datu de píxel del búfer de píxeles"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "El GdkScreen pal renderizador"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "El CdkScreen pal renderizador"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "L'axuste que caltién el valor del botón incrementable."
@@ -8140,8 +8140,8 @@ msgstr "El títulu del perfil de color qu'usar"
 #~ "Indica si se tien de pasar un estáu apropiáu al dibuxar una solombra o "
 #~ "fondu"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "La GdkFont que ta anguaño esbillada"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "La CdkFont que ta anguaño esbillada"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "Propiedá obsoleta, use shadow_type en so llugar"
@@ -8149,17 +8149,17 @@ msgstr "El títulu del perfil de color qu'usar"
 #~ msgid "Pixmap"
 #~ msgstr "Mapa de píxeles"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "Un GdkPixmap a amosar"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "Un CdkPixmap a amosar"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "Un GdkImage a amosar"
+#~ msgid "A CdkImage to display"
+#~ msgstr "Un CdkImage a amosar"
 
 #~ msgid "Mask"
 #~ msgstr "Mázcara"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Mázcara de mapa de bits pa usar con GdkImage o GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Mázcara de mapa de bits pa usar con CdkImage o CdkPixmap"
 
 #~ msgid "Use separator"
 #~ msgstr "Usar separtador"

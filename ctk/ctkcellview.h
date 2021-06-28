@@ -78,7 +78,7 @@ CtkWidget        *ctk_cell_view_new_with_text           (const gchar     *text);
 GDK_AVAILABLE_IN_ALL
 CtkWidget        *ctk_cell_view_new_with_markup         (const gchar     *markup);
 GDK_AVAILABLE_IN_ALL
-CtkWidget        *ctk_cell_view_new_with_pixbuf         (GdkPixbuf       *pixbuf);
+CtkWidget        *ctk_cell_view_new_with_pixbuf         (CdkPixbuf       *pixbuf);
 GDK_AVAILABLE_IN_ALL
 void              ctk_cell_view_set_model               (CtkCellView     *cell_view,
                                                          CtkTreeModel    *model);
@@ -91,7 +91,7 @@ GDK_AVAILABLE_IN_ALL
 CtkTreePath      *ctk_cell_view_get_displayed_row       (CtkCellView     *cell_view);
 GDK_AVAILABLE_IN_ALL
 void              ctk_cell_view_set_background_rgba     (CtkCellView     *cell_view,
-                                                         const GdkRGBA   *rgba);
+                                                         const CdkRGBA   *rgba);
 GDK_AVAILABLE_IN_ALL
 gboolean          ctk_cell_view_get_draw_sensitive      (CtkCellView     *cell_view);
 GDK_AVAILABLE_IN_ALL
@@ -109,7 +109,7 @@ gboolean          ctk_cell_view_get_size_of_row         (CtkCellView     *cell_v
                                                          CtkRequisition  *requisition);
 GDK_DEPRECATED_IN_3_4_FOR(ctk_cell_view_set_background_rgba)
 void              ctk_cell_view_set_background_color    (CtkCellView     *cell_view,
-                                                         const GdkColor  *color);
+                                                         const CdkColor  *color);
 
 G_END_DECLS
 

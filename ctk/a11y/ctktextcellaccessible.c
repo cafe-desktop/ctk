@@ -368,7 +368,7 @@ get_widget (CtkTextCellAccessible *text)
 static PangoLayout *
 create_pango_layout (CtkTextCellAccessible *text)
 {
-  GdkRGBA *foreground_rgba;
+  CdkRGBA *foreground_rgba;
   PangoAttrList *attr_list, *attributes;
   PangoLayout *layout;
   PangoUnderline uline, underline;
@@ -485,7 +485,7 @@ get_origins (CtkWidget *widget,
              gint      *x_toplevel,
              gint      *y_toplevel)
 {
-  GdkWindow *window;
+  CdkWindow *window;
 
   if (CTK_IS_TREE_VIEW (widget))
     window = ctk_tree_view_get_bin_window (CTK_TREE_VIEW (widget));
@@ -509,7 +509,7 @@ ctk_text_cell_accessible_get_character_extents (AtkText      *text,
   CtkRendererCellAccessible *gail_renderer;
   CtkRequisition min_size;
   CtkCellRendererText *ctk_renderer;
-  GdkRectangle rendered_rect;
+  CdkRectangle rendered_rect;
   CtkWidget *widget;
   AtkObject *parent;
   PangoRectangle char_rect;
@@ -598,7 +598,7 @@ ctk_text_cell_accessible_get_offset_at_point (AtkText      *text,
   CtkCellRendererText *ctk_renderer;
   CtkRequisition min_size;
   CtkWidget *widget;
-  GdkRectangle rendered_rect;
+  CdkRectangle rendered_rect;
   CtkTextCellAccessible *text_cell = CTK_TEXT_CELL_ACCESSIBLE (text);
   gchar *renderer_text;
   gfloat xalign, yalign;

@@ -221,7 +221,7 @@ static void
 realize (CtkWidget *widget)
 {
   const char *vertex_path, *fragment_path;
-  GdkGLContext *context;
+  CdkGLContext *context;
 
   ctk_gl_area_make_current (CTK_GL_AREA (widget));
 
@@ -293,7 +293,7 @@ draw_triangle (void)
 
 static gboolean
 render (CtkGLArea    *area,
-        GdkGLContext *context)
+        CdkGLContext *context)
 {
   if (ctk_gl_area_get_error (area) != NULL)
     return FALSE;

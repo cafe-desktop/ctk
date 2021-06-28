@@ -78,8 +78,8 @@ static void      ctk_cell_area_box_foreach                        (CtkCellArea  
 static void      ctk_cell_area_box_foreach_alloc                  (CtkCellArea          *area,
                                                                    CtkCellAreaContext   *context,
                                                                    CtkWidget            *widget,
-                                                                   const GdkRectangle   *cell_area,
-                                                                   const GdkRectangle   *background_area,
+                                                                   const CdkRectangle   *cell_area,
+                                                                   const CdkRectangle   *background_area,
                                                                    CtkCellAllocCallback  callback,
                                                                    gpointer              callback_data);
 static void      ctk_cell_area_box_apply_attributes               (CtkCellArea          *area,
@@ -1151,8 +1151,8 @@ static void
 ctk_cell_area_box_foreach_alloc (CtkCellArea          *area,
                                  CtkCellAreaContext   *context,
                                  CtkWidget            *widget,
-                                 const GdkRectangle   *cell_area,
-                                 const GdkRectangle   *background_area,
+                                 const CdkRectangle   *cell_area,
+                                 const CdkRectangle   *background_area,
                                  CtkCellAllocCallback  callback,
                                  gpointer              callback_data)
 {
@@ -1160,7 +1160,7 @@ ctk_cell_area_box_foreach_alloc (CtkCellArea          *area,
   CtkCellAreaBoxPrivate *priv     = box->priv;
   CtkCellAreaBoxContext *box_context = CTK_CELL_AREA_BOX_CONTEXT (context);
   GSList                *allocated_cells, *l;
-  GdkRectangle           cell_alloc, cell_background;
+  CdkRectangle           cell_alloc, cell_background;
   gboolean               rtl;
 
   rtl = (priv->orientation == CTK_ORIENTATION_HORIZONTAL &&

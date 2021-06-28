@@ -40,14 +40,14 @@ typedef void     (*CtkModuleInitFunc)        (gint        *argc,
 
 /**
  * CtkModuleDisplayInitFunc:
- * @display: an open #GdkDisplay
+ * @display: an open #CdkDisplay
  *
  * A multihead-aware CTK+ module may have a ctk_module_display_init() function
  * with this prototype. CTK+ calls this function for each opened display.
  *
  * Since: 2.2
  */
-typedef void     (*CtkModuleDisplayInitFunc) (GdkDisplay   *display);
+typedef void     (*CtkModuleDisplayInitFunc) (CdkDisplay   *display);
 
 
 G_END_DECLS

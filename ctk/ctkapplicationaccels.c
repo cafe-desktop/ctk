@@ -27,7 +27,7 @@
 typedef struct
 {
   guint           key;
-  GdkModifierType modifier;
+  CdkModifierType modifier;
 } AccelKey;
 
 struct _CtkApplicationAccels
@@ -353,7 +353,7 @@ gboolean
 ctk_application_accels_activate (CtkApplicationAccels *accels,
                                  GActionGroup         *action_group,
                                  guint                 key,
-                                 GdkModifierType       modifier)
+                                 CdkModifierType       modifier)
 {
   AccelKey accel_key = { key, modifier };
   const gchar **actions;

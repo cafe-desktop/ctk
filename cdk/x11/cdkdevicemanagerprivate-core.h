@@ -25,22 +25,22 @@
 
 G_BEGIN_DECLS
 
-struct _GdkX11DeviceManagerCore
+struct _CdkX11DeviceManagerCore
 {
-  GdkDeviceManager parent_object;
-  GdkDevice *core_pointer;
-  GdkDevice *core_keyboard;
+  CdkDeviceManager parent_object;
+  CdkDevice *core_pointer;
+  CdkDevice *core_keyboard;
 };
 
-struct _GdkX11DeviceManagerCoreClass
+struct _CdkX11DeviceManagerCoreClass
 {
-  GdkDeviceManagerClass parent_class;
+  CdkDeviceManagerClass parent_class;
 };
 
-void            _cdk_device_manager_core_handle_focus           (GdkWindow   *window,
+void            _cdk_device_manager_core_handle_focus           (CdkWindow   *window,
                                                                  Window       original,
-                                                                 GdkDevice   *device,
-                                                                 GdkDevice   *source_device,
+                                                                 CdkDevice   *device,
+                                                                 CdkDevice   *source_device,
                                                                  gboolean     focus_in,
                                                                  int          detail,
                                                                  gboolean     in);

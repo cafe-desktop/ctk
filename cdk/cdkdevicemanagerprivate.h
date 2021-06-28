@@ -23,37 +23,37 @@
 G_BEGIN_DECLS
 
 
-#define GDK_DEVICE_MANAGER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_MANAGER, GdkDeviceManagerClass))
+#define GDK_DEVICE_MANAGER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_MANAGER, CdkDeviceManagerClass))
 #define GDK_IS_DEVICE_MANAGER_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE_MANAGER))
-#define GDK_DEVICE_MANAGER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_MANAGER, GdkDeviceManagerClass))
+#define GDK_DEVICE_MANAGER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_MANAGER, CdkDeviceManagerClass))
 
 
-typedef struct _GdkDeviceManagerClass GdkDeviceManagerClass;
+typedef struct _CdkDeviceManagerClass CdkDeviceManagerClass;
 
-struct _GdkDeviceManager
+struct _CdkDeviceManager
 {
   GObject parent_instance;
 
   /*< private >*/
-  GdkDisplay *display;
+  CdkDisplay *display;
 };
 
-struct _GdkDeviceManagerClass
+struct _CdkDeviceManagerClass
 {
   GObjectClass parent_class;
 
   /* Signals */
-  void (* device_added)   (GdkDeviceManager *device_manager,
-                           GdkDevice        *device);
-  void (* device_removed) (GdkDeviceManager *device_manager,
-                           GdkDevice        *device);
-  void (* device_changed) (GdkDeviceManager *device_manager,
-                           GdkDevice        *device);
+  void (* device_added)   (CdkDeviceManager *device_manager,
+                           CdkDevice        *device);
+  void (* device_removed) (CdkDeviceManager *device_manager,
+                           CdkDevice        *device);
+  void (* device_changed) (CdkDeviceManager *device_manager,
+                           CdkDevice        *device);
 
   /* VMethods */
-  GList *     (* list_devices)       (GdkDeviceManager *device_manager,
-                                      GdkDeviceType     type);
-  GdkDevice * (* get_client_pointer) (GdkDeviceManager *device_manager);
+  GList *     (* list_devices)       (CdkDeviceManager *device_manager,
+                                      CdkDeviceType     type);
+  CdkDevice * (* get_client_pointer) (CdkDeviceManager *device_manager);
 };
 
 G_END_DECLS

@@ -36,12 +36,12 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_CURSOR              (cdk_cursor_get_type ())
-#define GDK_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_CURSOR, GdkCursor))
+#define GDK_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_CURSOR, CdkCursor))
 #define GDK_IS_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_CURSOR))
 
 
 /**
- * GdkCursorType:
+ * CdkCursorType:
  * @GDK_X_CURSOR: ![](X_cursor.png)
  * @GDK_ARROW: ![](arrow.png)
  * @GDK_BASED_ARROW_DOWN: ![](based_arrow_down.png)
@@ -213,7 +213,7 @@ typedef enum
   GDK_LAST_CURSOR,
   GDK_BLANK_CURSOR        = -2,
   GDK_CURSOR_IS_PIXMAP 	  = -1
-} GdkCursorType;
+} CdkCursorType;
 
 /* Cursors
  */
@@ -222,37 +222,37 @@ GDK_AVAILABLE_IN_ALL
 GType      cdk_cursor_get_type           (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GdkCursor* cdk_cursor_new_for_display	 (GdkDisplay      *display,
-					  GdkCursorType    cursor_type);
+CdkCursor* cdk_cursor_new_for_display	 (CdkDisplay      *display,
+					  CdkCursorType    cursor_type);
 GDK_DEPRECATED_IN_3_16_FOR(cdk_cursor_new_for_display)
-GdkCursor* cdk_cursor_new		 (GdkCursorType	   cursor_type);
+CdkCursor* cdk_cursor_new		 (CdkCursorType	   cursor_type);
 GDK_AVAILABLE_IN_ALL
-GdkCursor* cdk_cursor_new_from_pixbuf	 (GdkDisplay      *display,
-					  GdkPixbuf       *pixbuf,
+CdkCursor* cdk_cursor_new_from_pixbuf	 (CdkDisplay      *display,
+					  CdkPixbuf       *pixbuf,
 					  gint             x,
 					  gint             y);
 GDK_AVAILABLE_IN_3_10
-GdkCursor* cdk_cursor_new_from_surface	 (GdkDisplay      *display,
+CdkCursor* cdk_cursor_new_from_surface	 (CdkDisplay      *display,
 					  cairo_surface_t *surface,
 					  gdouble          x,
 					  gdouble          y);
 GDK_AVAILABLE_IN_ALL
-GdkCursor*  cdk_cursor_new_from_name	 (GdkDisplay      *display,
+CdkCursor*  cdk_cursor_new_from_name	 (CdkDisplay      *display,
 					  const gchar     *name);
 GDK_AVAILABLE_IN_ALL
-GdkDisplay* cdk_cursor_get_display	 (GdkCursor	  *cursor);
+CdkDisplay* cdk_cursor_get_display	 (CdkCursor	  *cursor);
 GDK_DEPRECATED_IN_3_0_FOR(g_object_ref)
-GdkCursor * cdk_cursor_ref               (GdkCursor       *cursor);
+CdkCursor * cdk_cursor_ref               (CdkCursor       *cursor);
 GDK_DEPRECATED_IN_3_0_FOR(g_object_unref)
-void        cdk_cursor_unref             (GdkCursor       *cursor);
+void        cdk_cursor_unref             (CdkCursor       *cursor);
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf*  cdk_cursor_get_image         (GdkCursor       *cursor);
+CdkPixbuf*  cdk_cursor_get_image         (CdkCursor       *cursor);
 GDK_AVAILABLE_IN_3_10
-cairo_surface_t *cdk_cursor_get_surface  (GdkCursor       *cursor,
+cairo_surface_t *cdk_cursor_get_surface  (CdkCursor       *cursor,
 					  gdouble         *x_hot,
 					  gdouble         *y_hot);
 GDK_AVAILABLE_IN_ALL
-GdkCursorType cdk_cursor_get_cursor_type (GdkCursor       *cursor);
+CdkCursorType cdk_cursor_get_cursor_type (CdkCursor       *cursor);
 
 
 G_END_DECLS

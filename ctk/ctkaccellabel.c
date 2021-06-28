@@ -126,7 +126,7 @@ struct _CtkAccelLabelPrivate
   guint16        accel_string_width; /* seems to be private */
 
   guint           accel_key;         /* manual accel key specification if != 0 */
-  GdkModifierType accel_mods;
+  CdkModifierType accel_mods;
 };
 
 GParamSpec *props[LAST_PROP] = { NULL, };
@@ -583,7 +583,7 @@ ctk_accel_label_reset (CtkAccelLabel *accel_label)
 static void
 check_accel_changed (CtkAccelGroup  *accel_group,
 		     guint           keyval,
-		     GdkModifierType modifier,
+		     CdkModifierType modifier,
 		     GClosure       *accel_closure,
 		     CtkAccelLabel  *accel_label)
 {
@@ -773,7 +773,7 @@ append_keyval_symbol (guint    accelerator_key,
 gchar *
 _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
 					      guint               accelerator_key,
-					      GdkModifierType     accelerator_mods)
+					      CdkModifierType     accelerator_mods)
 {
   GString *gstring;
   gboolean seen_mod = FALSE;
@@ -950,7 +950,7 @@ ctk_accel_label_refetch (CtkAccelLabel *accel_label)
     {
       gboolean have_accel = FALSE;
       guint accel_key;
-      GdkModifierType accel_mods;
+      CdkModifierType accel_mods;
 
       /* First check for a manual accel set with _set_accel() */
       if (accel_label->priv->accel_key)
@@ -1017,7 +1017,7 @@ ctk_accel_label_refetch (CtkAccelLabel *accel_label)
 void
 ctk_accel_label_set_accel (CtkAccelLabel   *accel_label,
                            guint            accelerator_key,
-                           GdkModifierType  accelerator_mods)
+                           CdkModifierType  accelerator_mods)
 {
   g_return_if_fail (CTK_IS_ACCEL_LABEL (accel_label));
 
@@ -1041,7 +1041,7 @@ ctk_accel_label_set_accel (CtkAccelLabel   *accel_label,
 void
 ctk_accel_label_get_accel (CtkAccelLabel   *accel_label,
                            guint           *accelerator_key,
-                           GdkModifierType *accelerator_mods)
+                           CdkModifierType *accelerator_mods)
 {
   g_return_if_fail (CTK_IS_ACCEL_LABEL (accel_label));
 

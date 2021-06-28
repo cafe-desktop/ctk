@@ -36,7 +36,7 @@ struct _CtkIMContextXIM
   gchar *locale;
   gchar *mb_charset;
 
-  GdkWindow *client_window;
+  CdkWindow *client_window;
   CtkWidget *client_widget;
 
   /* The status window for this input context; we claim the
@@ -73,7 +73,7 @@ struct _CtkIMContextXIM
 
 struct _CtkXIMInfo
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
   XIM im;
   char *locale;
   XIMStyle preedit_style_setting;
@@ -106,14 +106,14 @@ static void     ctk_im_context_xim_class_init         (CtkIMContextXIMClass  *cl
 static void     ctk_im_context_xim_init               (CtkIMContextXIM       *im_context_xim);
 static void     ctk_im_context_xim_finalize           (GObject               *obj);
 static void     ctk_im_context_xim_set_client_window  (CtkIMContext          *context,
-						       GdkWindow             *client_window);
+						       CdkWindow             *client_window);
 static gboolean ctk_im_context_xim_filter_keypress    (CtkIMContext          *context,
-						       GdkEventKey           *key);
+						       CdkEventKey           *key);
 static void     ctk_im_context_xim_reset              (CtkIMContext          *context);
 static void     ctk_im_context_xim_focus_in           (CtkIMContext          *context);
 static void     ctk_im_context_xim_focus_out          (CtkIMContext          *context);
 static void     ctk_im_context_xim_set_cursor_location (CtkIMContext          *context,
-						       GdkRectangle		*area);
+						       CdkRectangle		*area);
 static void     ctk_im_context_xim_set_use_preedit    (CtkIMContext          *context,
 						       gboolean		      use_preedit);
 static void     ctk_im_context_xim_get_preedit_string (CtkIMContext          *context,
@@ -123,7 +123,7 @@ static void     ctk_im_context_xim_get_preedit_string (CtkIMContext          *co
 
 static void reinitialize_ic      (CtkIMContextXIM *context_xim);
 static void set_ic_client_window (CtkIMContextXIM *context_xim,
-				  GdkWindow       *client_window);
+				  CdkWindow       *client_window);
 
 static void setup_styles (CtkXIMInfo *info);
 
@@ -140,7 +140,7 @@ static void xim_destroy_callback   (XIM      xim,
 				    XPointer call_data);
 
 static XIC       ctk_im_context_xim_get_ic            (CtkIMContextXIM *context_xim);
-static void           xim_info_display_closed (GdkDisplay *display,
+static void           xim_info_display_closed (CdkDisplay *display,
 			                       gboolean    is_error,
 			                       CtkXIMInfo *info);
 
@@ -265,7 +265,7 @@ setup_im (CtkXIMInfo *info)
 {
   XIMValuesList *ic_values = NULL;
   XIMCallback im_destroy_callback;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   if (info->im == NULL)
     return;
@@ -315,7 +315,7 @@ setup_im (CtkXIMInfo *info)
 }
 
 static void
-xim_info_display_closed (GdkDisplay *display,
+xim_info_display_closed (CdkDisplay *display,
 			 gboolean    is_error,
 			 CtkXIMInfo *info)
 {
@@ -373,8 +373,8 @@ xim_instantiate_callback (Display *display, XPointer client_data,
 static void
 xim_info_try_im (CtkXIMInfo *info)
 {
-  GdkScreen *screen = info->screen;
-  GdkDisplay *display = cdk_screen_get_display (screen);
+  CdkScreen *screen = info->screen;
+  CdkDisplay *display = cdk_screen_get_display (screen);
 
   g_assert (info->im == NULL);
   if (info->reconnecting)
@@ -418,12 +418,12 @@ xim_destroy_callback (XIM      xim,
 } 
 
 static CtkXIMInfo *
-get_im (GdkWindow *client_window,
+get_im (CdkWindow *client_window,
 	const char *locale)
 {
   GSList *tmp_list;
   CtkXIMInfo *info;
-  GdkScreen *screen = cdk_window_get_screen (client_window);
+  CdkScreen *screen = cdk_window_get_screen (client_window);
 
   info = NULL;
   tmp_list = open_ims;
@@ -509,7 +509,7 @@ ctk_im_context_xim_finalize (GObject *obj)
     {
       if (context_xim->im_info->reconnecting)
 	{
-	  GdkDisplay *display;
+	  CdkDisplay *display;
 
 	  display = cdk_screen_get_display (context_xim->im_info->screen);
 	  XUnregisterIMInstantiateCallback (GDK_DISPLAY_XDISPLAY (display),
@@ -562,7 +562,7 @@ reinitialize_ic (CtkIMContextXIM *context_xim)
 
 static void
 set_ic_client_window (CtkIMContextXIM *context_xim,
-		      GdkWindow       *client_window)
+		      CdkWindow       *client_window)
 {
   reinitialize_ic (context_xim);
   if (context_xim->client_window)
@@ -584,7 +584,7 @@ set_ic_client_window (CtkIMContextXIM *context_xim,
 
 static void
 ctk_im_context_xim_set_client_window (CtkIMContext          *context,
-				      GdkWindow             *client_window)
+				      CdkWindow             *client_window)
 {
   CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
 
@@ -635,7 +635,7 @@ mb_to_utf8 (CtkIMContextXIM *context_xim,
 
 static gboolean
 ctk_im_context_xim_filter_keypress (CtkIMContext *context,
-				    GdkEventKey  *event)
+				    CdkEventKey  *event)
 {
   CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   XIC ic = ctk_im_context_xim_get_ic (context_xim);
@@ -646,8 +646,8 @@ ctk_im_context_xim_filter_keypress (CtkIMContext *context,
   KeySym keysym;
   Status status;
   gboolean result = FALSE;
-  GdkWindow *root_window;
-  GdkWindow *window;
+  CdkWindow *root_window;
+  CdkWindow *window;
   XKeyPressedEvent xevent;
 
   if (context_xim->client_window == NULL)
@@ -770,7 +770,7 @@ ctk_im_context_xim_focus_out (CtkIMContext *context)
 
 static void
 ctk_im_context_xim_set_cursor_location (CtkIMContext *context,
-					GdkRectangle *area)
+					CdkRectangle *area)
 {
   CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
   XIC ic = ctk_im_context_xim_get_ic (context_xim);
@@ -1445,11 +1445,11 @@ ctk_im_context_xim_get_ic (CtkIMContextXIM *context_xim)
  * For B) we basically have to depend on our callers
  * calling ::focus-in and ::focus-out at the right time.
  *
- * The toplevel is computed by walking up the GdkWindow
+ * The toplevel is computed by walking up the CdkWindow
  * hierarchy from context->client_window until we find a
  * window that is owned by some widget, and then calling
  * ctk_widget_get_toplevel() on that widget. This should
- * handle both cases where we might have GdkWindows without widgets,
+ * handle both cases where we might have CdkWindows without widgets,
  * and cases where CtkWidgets have strange window hierarchies
  * (like a torn off CtkHandleBox.)
  *
@@ -1550,7 +1550,7 @@ on_client_widget_hierarchy_changed (CtkWidget       *widget,
  * widget owning the nearest parent that has a widget.
  */
 static CtkWidget *
-widget_for_window (GdkWindow *window)
+widget_for_window (CdkWindow *window)
 {
   while (window)
     {
@@ -1620,10 +1620,10 @@ on_status_toplevel_notify_screen (CtkWindow    *toplevel,
  */
 static gboolean
 on_status_toplevel_configure (CtkWidget         *toplevel,
-			      GdkEventConfigure *event,
+			      CdkEventConfigure *event,
 			      StatusWindow      *status_window)
 {
-  GdkRectangle rect;
+  CdkRectangle rect;
   CtkRequisition requisition;
   gint y;
   gint height;
@@ -1776,7 +1776,7 @@ ctk_im_context_xim_shutdown (void)
   while (open_ims)
     {
       CtkXIMInfo *info = open_ims->data;
-      GdkDisplay *display = cdk_screen_get_display (info->screen);
+      CdkDisplay *display = cdk_screen_get_display (info->screen);
 
       xim_info_display_closed (display, FALSE, info);
       open_ims = g_slist_remove_link (open_ims, open_ims);

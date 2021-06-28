@@ -56,7 +56,7 @@ struct _CtkCellAccessibleParentIface
                                  AtkCoordType             coord_type);
   void     ( *get_cell_area)    (CtkCellAccessibleParent *parent,
                                  CtkCellAccessible       *cell,
-                                 GdkRectangle            *cell_rect);
+                                 CdkRectangle            *cell_rect);
   gboolean ( *grab_focus)       (CtkCellAccessibleParent *parent,
                                  CtkCellAccessible       *cell);
   int      ( *get_child_index)  (CtkCellAccessibleParent *parent,
@@ -99,7 +99,7 @@ void     ctk_cell_accessible_parent_get_cell_extents (CtkCellAccessibleParent *p
 GDK_AVAILABLE_IN_ALL
 void     ctk_cell_accessible_parent_get_cell_area    (CtkCellAccessibleParent *parent,
                                                       CtkCellAccessible       *cell,
-                                                      GdkRectangle            *cell_rect);
+                                                      CdkRectangle            *cell_rect);
 GDK_AVAILABLE_IN_ALL
 gboolean ctk_cell_accessible_parent_grab_focus       (CtkCellAccessibleParent *parent,
                                                       CtkCellAccessible       *cell);

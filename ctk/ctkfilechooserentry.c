@@ -85,9 +85,9 @@ static void     ctk_file_chooser_entry_finalize       (GObject          *object)
 static void     ctk_file_chooser_entry_dispose        (GObject          *object);
 static void     ctk_file_chooser_entry_grab_focus     (CtkWidget        *widget);
 static gboolean ctk_file_chooser_entry_tab_handler    (CtkWidget *widget,
-						       GdkEventKey *event);
+						       CdkEventKey *event);
 static gboolean ctk_file_chooser_entry_focus_out_event (CtkWidget       *widget,
-							GdkEventFocus   *event);
+							CdkEventFocus   *event);
 
 #ifdef G_OS_WIN32
 static gint     insert_text_callback      (CtkFileChooserEntry *widget,
@@ -497,11 +497,11 @@ start_explicit_completion (CtkFileChooserEntry *chooser_entry)
 
 static gboolean
 ctk_file_chooser_entry_tab_handler (CtkWidget *widget,
-				    GdkEventKey *event)
+				    CdkEventKey *event)
 {
   CtkFileChooserEntry *chooser_entry;
   CtkEditable *editable;
-  GdkModifierType state;
+  CdkModifierType state;
   gint start, end;
 
   chooser_entry = CTK_FILE_CHOOSER_ENTRY (widget);
@@ -538,7 +538,7 @@ ctk_file_chooser_entry_tab_handler (CtkWidget *widget,
 
 static gboolean
 ctk_file_chooser_entry_focus_out_event (CtkWidget     *widget,
-					GdkEventFocus *event)
+					CdkEventFocus *event)
 {
   CtkFileChooserEntry *chooser_entry = CTK_FILE_CHOOSER_ENTRY (widget);
 

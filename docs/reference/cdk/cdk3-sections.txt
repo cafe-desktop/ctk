@@ -31,7 +31,7 @@ cdk_screen_height_mm
 
 <SUBSECTION>
 cdk_pointer_grab
-GdkGrabStatus
+CdkGrabStatus
 cdk_pointer_ungrab
 cdk_pointer_is_grabbed
 cdk_set_double_click_time
@@ -72,7 +72,7 @@ GDK_TYPE_GRAB_STATUS
 
 <SUBSECTION Private>
 GDK_TYPE_STATUS
-GdkStatus
+CdkStatus
 GDKVAR
 cdk_axis_use_get_type
 cdk_byte_order_get_type
@@ -114,8 +114,8 @@ cdk_pre_parse_libctk_only
 
 <SECTION>
 <FILE>cdkdisplay</FILE>
-<TITLE>GdkDisplay</TITLE>
-GdkDisplay
+<TITLE>CdkDisplay</TITLE>
+CdkDisplay
 cdk_display_open
 cdk_display_get_default
 cdk_display_get_name
@@ -176,13 +176,13 @@ GDK_DISPLAY_GET_CLASS
 <SUBSECTION Private>
 cdk_display_open_default_libctk_only
 cdk_display_get_type
-GdkDisplayClass
+CdkDisplayClass
 </SECTION>
 
 <SECTION>
 <FILE>cdkdisplaymanager</FILE>
-<TITLE>GdkDisplayManager</TITLE>
-GdkDisplayManager
+<TITLE>CdkDisplayManager</TITLE>
+CdkDisplayManager
 cdk_display_manager_get
 cdk_display_manager_get_default_display
 cdk_display_manager_set_default_display
@@ -196,14 +196,14 @@ GDK_DISPLAY_MANAGER_GET_CLASS
 GDK_IS_DISPLAY_MANAGER_CLASS
 GDK_IS_DISPLAY_MANAGER
 GDK_TYPE_DISPLAY_MANAGER
-GdkDisplayManagerClass
+CdkDisplayManagerClass
 cdk_display_manager_get_type
 </SECTION>
 
 <SECTION>
 <FILE>cdkscreen</FILE>
-<TITLE>GdkScreen</TITLE>
-GdkScreen
+<TITLE>CdkScreen</TITLE>
+CdkScreen
 cdk_screen_get_default
 cdk_screen_get_system_visual
 cdk_screen_get_rgba_visual
@@ -244,7 +244,7 @@ GDK_SCREEN_CLASS
 GDK_IS_SCREEN_CLASS
 GDK_SCREEN_GET_CLASS
 <SUBSECTION Private>
-GdkScreenClass
+CdkScreenClass
 cdk_screen_get_type
 </SECTION>
 
@@ -258,7 +258,7 @@ cdk_pixbuf_get_from_surface
 <SECTION>
 <TITLE>Colors</TITLE>
 <FILE>colors</FILE>
-GdkColor
+CdkColor
 cdk_color_copy
 cdk_color_free
 cdk_color_parse
@@ -276,7 +276,7 @@ cdk_color_get_type
 <SECTION>
 <TITLE>RGBA Colors</TITLE>
 <FILE>rgba_colors</FILE>
-GdkRGBA
+CdkRGBA
 cdk_rgba_copy
 cdk_rgba_free
 cdk_rgba_parse
@@ -294,9 +294,9 @@ cdk_rgba_get_type
 <SECTION>
 <TITLE>Visuals</TITLE>
 <FILE>visuals</FILE>
-GdkVisual
-GdkVisualType
-GdkByteOrder
+CdkVisual
+CdkVisualType
+CdkByteOrder
 cdk_query_depths
 cdk_query_visual_types
 cdk_list_visuals
@@ -328,24 +328,24 @@ GDK_VISUAL_CLASS
 GDK_VISUAL_GET_CLASS
 
 <SUBSECTION Private>
-GdkVisualClass
+CdkVisualClass
 cdk_visual_get_type
 </SECTION>
 
 <SECTION>
 <TITLE>Windows</TITLE>
 <FILE>windows</FILE>
-GdkWindow
-GdkWindowType
-GdkWindowWindowClass
-GdkWindowHints
-GdkGeometry
-GdkGravity
-GdkAnchorHints
-GdkWindowEdge
-GdkWindowTypeHint
-GdkWindowAttr
-GdkWindowAttributesType
+CdkWindow
+CdkWindowType
+CdkWindowWindowClass
+CdkWindowHints
+CdkGeometry
+CdkGravity
+CdkAnchorHints
+CdkWindowEdge
+CdkWindowTypeHint
+CdkWindowAttr
+CdkWindowAttributesType
 cdk_window_new
 cdk_window_destroy
 cdk_window_get_window_type
@@ -372,7 +372,7 @@ cdk_window_unmaximize
 cdk_window_fullscreen
 cdk_window_fullscreen_on_monitor
 cdk_window_unfullscreen
-GdkFullscreenMode
+CdkFullscreenMode
 cdk_window_get_fullscreen_mode
 cdk_window_set_fullscreen_mode
 cdk_window_set_keep_above
@@ -418,13 +418,13 @@ cdk_window_begin_draw_frame
 cdk_window_end_draw_frame
 cdk_window_should_draw
 cdk_window_get_visible_region
-GdkWindowInvalidateHandlerFunc
+CdkWindowInvalidateHandlerFunc
 cdk_window_set_invalidate_handler
 
 <SUBSECTION>
 cdk_window_invalidate_rect
 cdk_window_invalidate_region
-GdkWindowChildFunc
+CdkWindowChildFunc
 cdk_window_invalidate_maybe_recurse
 cdk_window_get_update_area
 cdk_window_freeze_updates
@@ -445,9 +445,9 @@ cdk_window_set_focus_on_map
 cdk_window_get_focus_on_map
 cdk_window_add_filter
 cdk_window_remove_filter
-GdkFilterFunc
-GdkFilterReturn
-GdkXEvent
+CdkFilterFunc
+CdkFilterReturn
+CdkXEvent
 cdk_window_shape_combine_region
 cdk_window_set_child_shapes
 cdk_window_merge_child_shapes
@@ -485,8 +485,8 @@ cdk_window_get_root_coords
 cdk_window_get_pointer
 cdk_window_get_device_position
 cdk_window_get_device_position_double
-GdkModifierType
-GdkModifierIntent
+CdkModifierType
+CdkModifierIntent
 cdk_window_get_parent
 cdk_window_get_toplevel
 cdk_window_get_children
@@ -502,9 +502,9 @@ cdk_window_set_group
 cdk_window_get_group
 cdk_window_set_decorations
 cdk_window_get_decorations
-GdkWMDecoration
+CdkWMDecoration
 cdk_window_set_functions
-GdkWMFunction
+CdkWMFunction
 cdk_get_default_root_window
 
 <SUBSECTION>
@@ -550,10 +550,10 @@ GDK_TYPE_WM_FUNCTION
 <SUBSECTION Private>
 cdk_window_get_type
 cdk_window_window_class_get_type
-GdkWindowClass
-GdkWindowImpl
-GdkWindowImplClass
-GdkWindowRedirect
+CdkWindowClass
+CdkWindowImpl
+CdkWindowImplClass
+CdkWindowRedirect
 cdk_window_impl_get_type
 cdk_window_freeze_toplevel_updates_libctk_only
 cdk_window_thaw_toplevel_updates_libctk_only
@@ -592,7 +592,7 @@ cdk_selection_send_notify_for_display
 <SECTION>
 <TITLE>Properties and Atoms</TITLE>
 <FILE>properties</FILE>
-GdkAtom
+CdkAtom
 GDK_ATOM_TO_POINTER
 GDK_POINTER_TO_ATOM
 GDK_NONE
@@ -603,7 +603,7 @@ cdk_atom_intern_static_string
 cdk_atom_name
 cdk_property_get
 cdk_property_change
-GdkPropMode
+CdkPropMode
 cdk_property_delete
 
 <SUBSECTION Standard>
@@ -642,10 +642,10 @@ cdk_cairo_draw_from_gl
 <SECTION>
 <TITLE>Points, Rectangles and Regions</TITLE>
 <FILE>regions</FILE>
-GdkPoint
+CdkPoint
 
 <SUBSECTION>
-GdkRectangle
+CdkRectangle
 cdk_rectangle_intersect
 cdk_rectangle_union
 cdk_rectangle_equal
@@ -674,8 +674,8 @@ cdk_threads_add_timeout_seconds_full
 <SECTION>
 <TITLE>Keyboard Handling</TITLE>
 <FILE>keys</FILE>
-GdkKeymap
-GdkKeymapKey
+CdkKeymap
+CdkKeymapKey
 cdk_keymap_get_default
 cdk_keymap_get_for_display
 cdk_keymap_lookup_key
@@ -716,21 +716,21 @@ GDK_IS_KEYMAP_CLASS
 GDK_KEYMAP_GET_CLASS
 
 <SUBSECTION Private>
-GdkKeymapClass
+CdkKeymapClass
 cdk_keymap_get_type
 </SECTION>
 
 <SECTION>
-<TITLE>GdkDevice</TITLE>
+<TITLE>CdkDevice</TITLE>
 <FILE>cdkdevice</FILE>
-GdkDevice
-GdkInputSource
-GdkInputMode
-GdkAxisUse
-GdkAxisFlags
-GdkDeviceToolType
-GdkDeviceType
-GdkGrabOwnership
+CdkDevice
+CdkInputSource
+CdkInputMode
+CdkAxisUse
+CdkAxisFlags
+CdkDeviceToolType
+CdkDeviceType
+CdkGrabOwnership
 
 <SUBSECTION>
 cdk_device_get_name
@@ -766,7 +766,7 @@ cdk_device_get_window_at_position
 cdk_device_get_window_at_position_double
 cdk_device_get_history
 cdk_device_free_history
-GdkTimeCoord
+CdkTimeCoord
 cdk_device_get_axis
 cdk_device_list_axes
 cdk_device_get_axis_value
@@ -791,17 +791,17 @@ GDK_IS_DEVICE_CLASS
 GDK_TYPE_DEVICE
 
 <SUBSECTION Private>
-GdkDeviceClass
+CdkDeviceClass
 cdk_device_get_type
 cdk_device_type_get_type
 GDK_MAX_TIMECOORD_AXES
 </SECTION>
 
 <SECTION>
-<TITLE>GdkDevicePad</TITLE>
+<TITLE>CdkDevicePad</TITLE>
 <FILE>cdkdevicepad</FILE>
-GdkDevicePad
-GdkDevicePadFeature
+CdkDevicePad
+CdkDevicePadFeature
 cdk_device_pad_get_n_groups
 cdk_device_pad_get_group_n_modes
 cdk_device_pad_get_n_features
@@ -817,11 +817,11 @@ cdk_device_pad_get_type
 </SECTION>
 
 <SECTION>
-<TITLE>GdkSeat</TITLE>
+<TITLE>CdkSeat</TITLE>
 <FILE>cdkseat</FILE>
-GdkSeat
-GdkSeatCapabilities
-GdkSeatGrabPrepareFunc
+CdkSeat
+CdkSeatCapabilities
+CdkSeatGrabPrepareFunc
 cdk_seat_get_display
 cdk_seat_grab
 cdk_seat_ungrab
@@ -842,9 +842,9 @@ cdk_seat_capabilities_get_type
 </SECTION>
 
 <SECTION>
-<TITLE>GdkDeviceManager</TITLE>
+<TITLE>CdkDeviceManager</TITLE>
 <FILE>cdkdevicemanager</FILE>
-GdkDeviceManager
+CdkDeviceManager
 cdk_disable_multidevice
 cdk_device_manager_get_display
 cdk_device_manager_list_devices
@@ -859,15 +859,15 @@ GDK_IS_DEVICE_MANAGER_CLASS
 GDK_TYPE_DEVICE_MANAGER
 
 <SUBSECTION Private>
-GdkDeviceManagerClass
+CdkDeviceManagerClass
 cdk_device_manager_get_type
 </SECTION>
 
 <SECTION>
 <TITLE>Events</TITLE>
 <FILE>events</FILE>
-GdkEventType
-GdkEventMask
+CdkEventType
+CdkEventMask
 GDK_CURRENT_TIME
 GDK_PRIORITY_EVENTS
 GDK_PRIORITY_REDRAW
@@ -899,7 +899,7 @@ cdk_event_get_state
 cdk_event_get_time
 cdk_event_get_window
 cdk_event_get_event_type
-GdkEventSequence
+CdkEventSequence
 cdk_event_get_event_sequence
 cdk_event_request_motions
 cdk_events_get_angle
@@ -912,7 +912,7 @@ cdk_event_get_pointer_emulated
 
 <SUBSECTION>
 cdk_event_handler_set
-GdkEventFunc
+CdkEventFunc
 
 <SUBSECTION>
 cdk_get_show_events
@@ -937,43 +937,43 @@ GDK_TYPE_EVENT_TYPE
 <SECTION>
 <TITLE>Event Structures</TITLE>
 <FILE>event_structs</FILE>
-GdkEvent
+CdkEvent
 
 <SUBSECTION>
-GdkEventAny
-GdkEventKey
-GdkEventButton
-GdkEventTouch
-GdkEventScroll
-GdkEventMotion
-GdkEventExpose
-GdkEventVisibility
-GdkEventCrossing
-GdkEventFocus
-GdkEventConfigure
-GdkEventProperty
-GdkEventSelection
-GdkEventDND
-GdkEventProximity
-GdkEventWindowState
-GdkEventSetting
-GdkEventOwnerChange
-GdkEventGrabBroken
-GdkEventTouchpadSwipe
-GdkEventTouchpadPinch
-GdkEventPadButton
-GdkEventPadAxis
-GdkEventPadGroupMode
+CdkEventAny
+CdkEventKey
+CdkEventButton
+CdkEventTouch
+CdkEventScroll
+CdkEventMotion
+CdkEventExpose
+CdkEventVisibility
+CdkEventCrossing
+CdkEventFocus
+CdkEventConfigure
+CdkEventProperty
+CdkEventSelection
+CdkEventDND
+CdkEventProximity
+CdkEventWindowState
+CdkEventSetting
+CdkEventOwnerChange
+CdkEventGrabBroken
+CdkEventTouchpadSwipe
+CdkEventTouchpadPinch
+CdkEventPadButton
+CdkEventPadAxis
+CdkEventPadGroupMode
 
 <SUBSECTION>
-GdkScrollDirection
-GdkVisibilityState
-GdkCrossingMode
-GdkNotifyType
-GdkPropertyState
-GdkWindowState
-GdkSettingAction
-GdkOwnerChange
+CdkScrollDirection
+CdkVisibilityState
+CdkCrossingMode
+CdkNotifyType
+CdkPropertyState
+CdkWindowState
+CdkSettingAction
+CdkOwnerChange
 
 <SUBSECTION Standard>
 GDK_TYPE_CROSSING_MODE
@@ -994,8 +994,8 @@ cdk_owner_change_get_type
 <SECTION>
 <TITLE>Cursors</TITLE>
 <FILE>cursors</FILE>
-GdkCursor
-GdkCursorType
+CdkCursor
+CdkCursorType
 cdk_cursor_new
 cdk_cursor_new_from_pixbuf
 cdk_cursor_new_from_surface
@@ -1020,8 +1020,8 @@ cdk_cursor_get_type
 <SECTION>
 <TITLE>Drag and Drop</TITLE>
 <FILE>dnd</FILE>
-GdkDragContext
-GdkDragCancelReason
+CdkDragContext
+CdkDragCancelReason
 cdk_drag_get_selection
 cdk_drag_abort
 cdk_drop_reply
@@ -1033,8 +1033,8 @@ cdk_drag_begin_for_device
 cdk_drag_begin_from_point
 cdk_drag_motion
 cdk_drop_finish
-GdkDragProtocol
-GdkDragAction
+CdkDragProtocol
+CdkDragAction
 cdk_drag_status
 cdk_drag_drop_succeeded
 cdk_window_get_drag_protocol
@@ -1063,7 +1063,7 @@ GDK_TYPE_DRAG_ACTION
 GDK_TYPE_DRAG_PROTOCOL
 
 <SUBSECTION Private>
-GdkDragContextClass
+CdkDragContextClass
 cdk_drag_context_get_type
 </SECTION>
 
@@ -1275,7 +1275,7 @@ cdk_wayland_display_get_xdg_shell
 cdk_wayland_display_query_registry
 cdk_wayland_window_get_wl_surface
 cdk_wayland_window_set_use_custom_surface
-GdkWaylandWindowExported
+CdkWaylandWindowExported
 cdk_wayland_window_export_handle
 cdk_wayland_window_unexport_handle
 cdk_wayland_window_set_transient_for_exported
@@ -1317,7 +1317,7 @@ cdk_wayland_window_get_type
 <SECTION>
 <TITLE>Application launching</TITLE>
 <FILE>cdkapplaunchcontext</FILE>
-GdkAppLaunchContext
+CdkAppLaunchContext
 cdk_app_launch_context_new
 cdk_app_launch_context_set_display
 cdk_app_launch_context_set_screen
@@ -1332,7 +1332,7 @@ GDK_APP_LAUNCH_CONTEXT_GET_CLASS
 GDK_IS_APP_LAUNCH_CONTEXT
 GDK_IS_APP_LAUNCH_CONTEXT_CLASS
 GDK_TYPE_APP_LAUNCH_CONTEXT
-GdkAppLaunchContextClass
+CdkAppLaunchContextClass
 <SUBSECTION Private>
 cdk_app_launch_context_get_type
 </SECTION>
@@ -1346,11 +1346,11 @@ cdk_test_simulate_key
 </SECTION>
 
 <SECTION>
-<TITLE>GdkFrameClock</TITLE>
+<TITLE>CdkFrameClock</TITLE>
 <FILE>cdkframeclock</FILE>
-GdkFrameClock
+CdkFrameClock
 cdk_frame_clock_get_frame_time
-GdkFrameClockPhase
+CdkFrameClockPhase
 cdk_frame_clock_request_phase
 cdk_frame_clock_begin_updating
 cdk_frame_clock_end_updating
@@ -1360,14 +1360,14 @@ cdk_frame_clock_get_timings
 cdk_frame_clock_get_current_timings
 cdk_frame_clock_get_refresh_info
 <SUBSECTION Private>
-GdkFrameClockPrivate
+CdkFrameClockPrivate
 cdk_frame_clock_get_type
 </SECTION>
 
 <SECTION>
-<TITLE>GdkFrameTimings</TITLE>
+<TITLE>CdkFrameTimings</TITLE>
 <FILE>cdkframetimings</FILE>
-GdkFrameTimings
+CdkFrameTimings
 cdk_frame_timings_ref
 cdk_frame_timings_unref
 cdk_frame_timings_get_frame_counter
@@ -1382,7 +1382,7 @@ cdk_frame_get_type
 
 <SECTION>
 <FILE>cdkglcontext</FILE>
-GdkGLContext
+CdkGLContext
 cdk_gl_context_get_display
 cdk_gl_context_get_window
 cdk_gl_context_get_shared_context
@@ -1400,7 +1400,7 @@ cdk_gl_context_get_use_es
 cdk_gl_context_is_legacy
 
 <SUBSECTION>
-GdkGLError
+CdkGLError
 cdk_gl_context_realize
 cdk_gl_context_make_current
 cdk_gl_context_get_current
@@ -1422,7 +1422,7 @@ GDK_TYPE_GL_PROFILE
 
 <SECTION>
 <FILE>cdkmonitor</FILE>
-GdkMonitor
+CdkMonitor
 cdk_monitor_get_display
 cdk_monitor_get_geometry
 cdk_monitor_get_workarea
@@ -1432,13 +1432,13 @@ cdk_monitor_get_manufacturer
 cdk_monitor_get_model
 cdk_monitor_get_scale_factor
 cdk_monitor_get_refresh_rate
-GdkSubpixelLayout
+CdkSubpixelLayout
 cdk_monitor_get_subpixel_layout
 cdk_monitor_is_primary
 
 <SUBSECTION Standard>
 cdk_monitor_get_type
-GdkMonitorClass
+CdkMonitorClass
 GDK_TYPE_MONITOR
 GDK_MONITOR
 GDK_IS_MONITOR
@@ -1446,7 +1446,7 @@ GDK_IS_MONITOR
 
 <SECTION>
 <FILE>cdkdrawingcontext</FILE>
-GdkDrawingContext
+CdkDrawingContext
 cdk_drawing_context_get_window
 cdk_drawing_context_get_clip
 cdk_drawing_context_get_cairo_context
@@ -1454,7 +1454,7 @@ cdk_drawing_context_is_valid
 
 <SUBSECTION Standard>
 cdk_drawing_context_get_type
-GdkDrawingContextClass
+CdkDrawingContextClass
 GDK_TYPE_DRAWING_CONTEXT
 GDK_DRAWING_CONTEXT
 GDK_IS_DRAWING_CONTEXT

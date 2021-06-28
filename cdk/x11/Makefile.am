@@ -5,7 +5,7 @@ libcdkincludedir = $(includedir)/ctk-3.0/cdk
 libcdkx11includedir = $(includedir)/ctk-3.0/cdk/x11
 
 AM_CPPFLAGS = 				\
-	-DG_LOG_DOMAIN=\"Gdk\"		\
+	-DG_LOG_DOMAIN=\"Cdk\"		\
 	-DG_LOG_USE_STRUCTURED=1	\
 	-DGDK_COMPILATION		\
 	-I$(top_srcdir)			\

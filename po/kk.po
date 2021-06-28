@@ -9022,11 +9022,11 @@ msgstr "Сынау принтеріне баспаға шығару"
 #~ msgid "--- No Tip ---"
 #~ msgstr "--- Кеңес жоқ ---"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Gdk жөндеу жалаушалары орнатылған"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Cdk жөндеу жалаушалары орнатылған"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Gdk жөндеу жалаушалары орнатылмаған"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Cdk жөндеу жалаушалары орнатылмаған"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "'%s' сурет файлында ақпарат жоқ"

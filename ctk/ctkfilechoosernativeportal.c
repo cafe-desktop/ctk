@@ -427,7 +427,7 @@ window_handle_exported (CtkWindow  *window,
 
   if (data->modal)
     {
-      GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
+      CdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
 
       data->grab_widget = ctk_invisible_new_for_screen (screen);
       ctk_grab_add (CTK_WIDGET (data->grab_widget));

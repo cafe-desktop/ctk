@@ -242,10 +242,10 @@ ctk_event_controller_scroll_get_property (GObject    *object,
 
 static gboolean
 ctk_event_controller_scroll_handle_event (CtkEventController *controller,
-                                          const GdkEvent     *event)
+                                          const CdkEvent     *event)
 {
   CtkEventControllerScroll *scroll = CTK_EVENT_CONTROLLER_SCROLL (controller);
-  GdkScrollDirection direction = GDK_SCROLL_SMOOTH;
+  CdkScrollDirection direction = GDK_SCROLL_SMOOTH;
   gdouble dx = 0, dy = 0;
 
   if (cdk_event_get_event_type (event) != GDK_SCROLL)
@@ -258,8 +258,8 @@ ctk_event_controller_scroll_handle_event (CtkEventController *controller,
 
   if (cdk_event_get_scroll_deltas (event, &dx, &dy))
     {
-      GdkDevice *device = cdk_event_get_source_device (event);
-      GdkInputSource input_source = cdk_device_get_source (device);
+      CdkDevice *device = cdk_event_get_source_device (event);
+      CdkInputSource input_source = cdk_device_get_source (device);
 
       if (!scroll->active &&
           (input_source == GDK_SOURCE_TRACKPOINT ||

@@ -95,7 +95,7 @@ static guint run_loop_n_pollfds;    /* Number of file descriptors in the array *
 static GPollFD event_poll_fd;
 
 /* Current NSEvents that we've gotten from Cocoa but haven't yet converted
- * to GdkEvents. We wait until our dispatch() function to do the conversion
+ * to CdkEvents. We wait until our dispatch() function to do the conversion
  * since the conversion can conceivably cause signals to be emmitted
  * or other things that shouldn’t happen inside a poll function.
  */
@@ -157,12 +157,12 @@ static const char *const state_names[]  = {
 typedef enum
   {
    GDK_QUARTZ_EVENT_MASK_ANY = NSAnyEventMask,
-  } GdkQuartzEventMask;
+  } CdkQuartzEventMask;
 #else
 typedef enum
   {
    GDK_QUARTZ_EVENT_MASK_ANY = NSEventMaskAny,
-  } GdkQuartzEventMask;
+  } CdkQuartzEventMask;
 #endif
 
 static SelectThreadState select_thread_state = BEFORE_START;
@@ -702,7 +702,7 @@ cdk_event_dispatch (GSource     *source,
 		    GSourceFunc  callback,
 		    gpointer     user_data)
 {
-  GdkEvent *event;
+  CdkEvent *event;
 
   cdk_threads_enter ();
 

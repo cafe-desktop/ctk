@@ -8916,11 +8916,11 @@ msgstr "ਟੈਸਟ ਪਰਿੰਟਰ ਲਈ ਪਰਿੰਟ ਕਰੋ"
 #~ msgid "Unable to locate theme engine in module_path: \"%s\","
 #~ msgstr "ਮੋਡੀਊਲ ਮਾਰਗ ਵਿੱਚ ਸਰੂਪ ਇੰਜਣ ਨੂੰ ਸਥਾਪਤ ਕਰਨ ਵਿੱਚ ਅਸਫ਼ਲ: \"%s\","
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "ਸੈੱਟ ਕਰਨ ਲਈ Gdk ਡੀਬੱਗ ਫਲੈਗ"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "ਸੈੱਟ ਕਰਨ ਲਈ Cdk ਡੀਬੱਗ ਫਲੈਗ"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "ਅਣ-ਸੈੱਟ ਕਰਨ ਲਈ Gdk ਫਲੈਗ"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "ਅਣ-ਸੈੱਟ ਕਰਨ ਲਈ Cdk ਫਲੈਗ"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "ਚਿੱਤਰ ਫਾਇਲ '%s' ਵਿੱਚ ਕੋਈ ਡਾਟਾ ਨਹੀਂ ਹੈ"
@@ -9359,8 +9359,8 @@ msgstr "ਟੈਸਟ ਪਰਿੰਟਰ ਲਈ ਪਰਿੰਟ ਕਰੋ"
 #~ msgid "Failed to allocate QTIF context structure."
 #~ msgstr "QTIF context struct ਲਈ ਲਈ ਲੋੜੀਦੀ ਮੈਮੋਰੀ ਨਹੀਂ ਹੈ"
 
-#~ msgid "Failed to create GdkPixbufLoader object."
-#~ msgstr "GdkPixbufLoader ਆਬਜੈਕਟ ਬਣਾਉਣ ਲਈ ਫੇਲ੍ਹ ਹੈ।"
+#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgstr "CdkPixbufLoader ਆਬਜੈਕਟ ਬਣਾਉਣ ਲਈ ਫੇਲ੍ਹ ਹੈ।"
 
 #~ msgid "Failed to find an image data atom."
 #~ msgstr "ਚਿੱਤਰ ਡਾਟਾ ਐਟਮ ਲੱਭਣ ਲਈ ਫੇਲ੍ਹ ਹੈ।"

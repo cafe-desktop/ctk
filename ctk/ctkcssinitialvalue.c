@@ -52,7 +52,7 @@ ctk_css_value_initial_compute (CtkCssValue             *value,
       settings = _ctk_style_provider_private_get_settings (provider);
       if (settings)
         {
-          GdkScreen *screen = _ctk_settings_get_screen (settings);
+          CdkScreen *screen = _ctk_settings_get_screen (settings);
           double resolution = cdk_screen_get_resolution (screen);
 
           if (resolution > 0.0)

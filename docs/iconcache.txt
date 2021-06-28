@@ -83,7 +83,7 @@ ImageData:
 N/A			N/A		PIXEL_DATA
 
 IMAGE_PIXEL_DATA_TYPE
-0 GdkPixdata format
+0 CdkPixdata format
 
 MetaData:
 4			CARD32		EMBEDDED_RECT_OFFSET

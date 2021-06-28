@@ -29,15 +29,15 @@
 
 G_BEGIN_DECLS
 
-const char * _cdk_atom_name_const (GdkAtom atom);
+const char * _cdk_atom_name_const (CdkAtom atom);
 
 GDK_AVAILABLE_IN_ALL
-void cdk_window_destroy_notify	     (GdkWindow *window);
+void cdk_window_destroy_notify	     (CdkWindow *window);
 
 GDK_AVAILABLE_IN_ALL
-void cdk_synthesize_window_state (GdkWindow     *window,
-                                  GdkWindowState unset_flags,
-                                  GdkWindowState set_flags);
+void cdk_synthesize_window_state (CdkWindow     *window,
+                                  CdkWindowState unset_flags,
+                                  CdkWindowState set_flags);
 
 G_END_DECLS
 

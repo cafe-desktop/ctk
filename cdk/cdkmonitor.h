@@ -33,14 +33,14 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_MONITOR           (cdk_monitor_get_type ())
-#define GDK_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_MONITOR, GdkMonitor))
+#define GDK_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_MONITOR, CdkMonitor))
 #define GDK_IS_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_MONITOR))
 
-typedef struct _GdkMonitor      GdkMonitor;
-typedef struct _GdkMonitorClass GdkMonitorClass;
+typedef struct _CdkMonitor      CdkMonitor;
+typedef struct _CdkMonitorClass CdkMonitorClass;
 
 /**
- * GdkSubpixelLayout:
+ * CdkSubpixelLayout:
  * @GDK_SUBPIXEL_LAYOUT_UNKNOWN: The layout is not known
  * @GDK_SUBPIXEL_LAYOUT_NONE: Not organized in this way
  * @GDK_SUBPIXEL_LAYOUT_HORIZONTAL_RGB: The layout is horizontal, the order is RGB
@@ -60,35 +60,35 @@ typedef enum {
   GDK_SUBPIXEL_LAYOUT_HORIZONTAL_BGR,
   GDK_SUBPIXEL_LAYOUT_VERTICAL_RGB,
   GDK_SUBPIXEL_LAYOUT_VERTICAL_BGR
-} GdkSubpixelLayout;
+} CdkSubpixelLayout;
 
 GDK_AVAILABLE_IN_3_22
 GType             cdk_monitor_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-GdkDisplay  *     cdk_monitor_get_display         (GdkMonitor   *monitor);
+CdkDisplay  *     cdk_monitor_get_display         (CdkMonitor   *monitor);
 GDK_AVAILABLE_IN_3_22
-void              cdk_monitor_get_geometry        (GdkMonitor   *monitor,
-                                                   GdkRectangle *geometry);
+void              cdk_monitor_get_geometry        (CdkMonitor   *monitor,
+                                                   CdkRectangle *geometry);
 GDK_AVAILABLE_IN_3_22
-void              cdk_monitor_get_workarea        (GdkMonitor   *monitor,
-                                                   GdkRectangle *workarea);
+void              cdk_monitor_get_workarea        (CdkMonitor   *monitor,
+                                                   CdkRectangle *workarea);
 GDK_AVAILABLE_IN_3_22
-int               cdk_monitor_get_width_mm        (GdkMonitor   *monitor);
+int               cdk_monitor_get_width_mm        (CdkMonitor   *monitor);
 GDK_AVAILABLE_IN_3_22
-int               cdk_monitor_get_height_mm       (GdkMonitor   *monitor);
+int               cdk_monitor_get_height_mm       (CdkMonitor   *monitor);
 GDK_AVAILABLE_IN_3_22
-const char *      cdk_monitor_get_manufacturer    (GdkMonitor   *monitor);
+const char *      cdk_monitor_get_manufacturer    (CdkMonitor   *monitor);
 GDK_AVAILABLE_IN_3_22
-const char *      cdk_monitor_get_model           (GdkMonitor   *monitor);
+const char *      cdk_monitor_get_model           (CdkMonitor   *monitor);
 GDK_AVAILABLE_IN_3_22
-int               cdk_monitor_get_scale_factor    (GdkMonitor   *monitor);
+int               cdk_monitor_get_scale_factor    (CdkMonitor   *monitor);
 GDK_AVAILABLE_IN_3_22
-int               cdk_monitor_get_refresh_rate    (GdkMonitor   *monitor);
+int               cdk_monitor_get_refresh_rate    (CdkMonitor   *monitor);
 GDK_AVAILABLE_IN_3_22
-GdkSubpixelLayout cdk_monitor_get_subpixel_layout (GdkMonitor   *monitor);
+CdkSubpixelLayout cdk_monitor_get_subpixel_layout (CdkMonitor   *monitor);
 GDK_AVAILABLE_IN_3_22
-gboolean          cdk_monitor_is_primary          (GdkMonitor   *monitor);
+gboolean          cdk_monitor_is_primary          (CdkMonitor   *monitor);
 
 G_END_DECLS
 

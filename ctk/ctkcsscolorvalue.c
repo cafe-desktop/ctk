@@ -106,7 +106,7 @@ ctk_css_value_color_get_fallback (guint                    property_id,
                                   CtkCssStyle             *style,
                                   CtkCssStyle             *parent_style)
 {
-  static const GdkRGBA transparent = { 0, 0, 0, 0 };
+  static const CdkRGBA transparent = { 0, 0, 0, 0 };
 
   switch (property_id)
     {
@@ -179,7 +179,7 @@ _ctk_css_color_value_resolve (CtkCssValue             *color,
       {
 	CtkCssValue *val;
         CtkHSLA hsla;
-	GdkRGBA shade;
+	CdkRGBA shade;
 
 	val = _ctk_css_color_value_resolve (color->sym_col.shade.color, provider, current, cycle_list);
 	if (val == NULL)
@@ -199,7 +199,7 @@ _ctk_css_color_value_resolve (CtkCssValue             *color,
     case COLOR_TYPE_ALPHA:
       {
 	CtkCssValue *val;
-	GdkRGBA alpha;
+	CdkRGBA alpha;
 
 	val = _ctk_css_color_value_resolve (color->sym_col.alpha.color, provider, current, cycle_list);
 	if (val == NULL)
@@ -217,7 +217,7 @@ _ctk_css_color_value_resolve (CtkCssValue             *color,
     case COLOR_TYPE_MIX:
       {
 	CtkCssValue *val;
-	GdkRGBA color1, color2, res;
+	CdkRGBA color1, color2, res;
 
 	val = _ctk_css_color_value_resolve (color->sym_col.mix.color1, provider, current, cycle_list);
 	if (val == NULL)
@@ -242,7 +242,7 @@ _ctk_css_color_value_resolve (CtkCssValue             *color,
       break;
     case COLOR_TYPE_WIN32:
       {
-	GdkRGBA res;
+	CdkRGBA res;
 
         ctk_win32_theme_get_color (color->sym_col.win32.theme,
 			           color->sym_col.win32.id,
@@ -451,7 +451,7 @@ static const CtkCssValueClass CTK_CSS_VALUE_COLOR = {
 };
 
 CtkCssValue *
-_ctk_css_color_value_new_literal (const GdkRGBA *color)
+_ctk_css_color_value_new_literal (const CdkRGBA *color)
 {
   CtkCssValue *value;
 
@@ -470,7 +470,7 @@ _ctk_css_color_value_new_rgba (double red,
                                double blue,
                                double alpha)
 {
-  GdkRGBA rgba = { red, green, blue, alpha };
+  CdkRGBA rgba = { red, green, blue, alpha };
 
   return _ctk_css_color_value_new_literal (&rgba);
 }
@@ -651,7 +651,7 @@ _ctk_css_color_value_parse_function (CtkCssParser   *parser,
 
   if (color == COLOR_RGB || color == COLOR_RGBA)
     {
-      GdkRGBA rgba;
+      CdkRGBA rgba;
       double tmp;
       guint i;
 
@@ -794,7 +794,7 @@ CtkCssValue *
 _ctk_css_color_value_parse (CtkCssParser *parser)
 {
   CtkCssValue *value;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
   guint color;
   const char *names[] = {"rgba", "rgb",  "lighter", "darker", "shade", "alpha", "mix",
 			 CTK_WIN32_THEME_SYMBOLIC_COLOR_NAME};
@@ -805,7 +805,7 @@ _ctk_css_color_value_parse (CtkCssParser *parser)
 
   if (_ctk_css_parser_try (parser, "transparent", TRUE))
     {
-      GdkRGBA transparent = { 0, 0, 0, 0 };
+      CdkRGBA transparent = { 0, 0, 0, 0 };
       
       return _ctk_css_color_value_new_literal (&transparent);
     }

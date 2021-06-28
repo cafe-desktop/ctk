@@ -22,8 +22,8 @@
 static void
 set_fullscreen_monitor_cb (CtkWidget *widget, gpointer user_data)
 {
-  GdkFullscreenMode mode = (GdkFullscreenMode) GPOINTER_TO_INT (user_data);
-  GdkWindow  *window;
+  CdkFullscreenMode mode = (CdkFullscreenMode) GPOINTER_TO_INT (user_data);
+  CdkWindow  *window;
 
   window = ctk_widget_get_parent_window (widget);
   cdk_window_set_fullscreen_mode (window, mode);
@@ -33,7 +33,7 @@ set_fullscreen_monitor_cb (CtkWidget *widget, gpointer user_data)
 static void
 remove_fullscreen_cb (CtkWidget *widget, gpointer user_data)
 {
-  GdkWindow  *window;
+  CdkWindow  *window;
 
   window = ctk_widget_get_parent_window (widget);
   cdk_window_unfullscreen (window);

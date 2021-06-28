@@ -49,7 +49,7 @@ CtkWidget  * ctk_event_controller_get_widget     (CtkEventController *controller
 
 GDK_AVAILABLE_IN_3_14
 gboolean     ctk_event_controller_handle_event   (CtkEventController *controller,
-                                                  const GdkEvent     *event);
+                                                  const CdkEvent     *event);
 GDK_AVAILABLE_IN_3_14
 void         ctk_event_controller_reset          (CtkEventController *controller);
 

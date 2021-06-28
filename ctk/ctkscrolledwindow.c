@@ -199,7 +199,7 @@
 typedef struct
 {
   CtkWidget *scrollbar;
-  GdkWindow *window;
+  CdkWindow *window;
   gboolean   over; /* either mouse over, or while dragging */
   gint64     last_scroll_time;
   guint      conceil_timer;
@@ -260,9 +260,9 @@ struct _CtkScrolledWindowPrivate
   gint64 last_deceleration_time;
 
   GArray *scroll_history;
-  GdkDevice *scroll_device;
-  GdkWindow *scroll_window;
-  GdkCursor *scroll_cursor;
+  CdkDevice *scroll_device;
+  CdkWindow *scroll_window;
+  CdkCursor *scroll_cursor;
 
   /* These two gestures are mutually exclusive */
   CtkGesture *drag_gesture;
@@ -271,7 +271,7 @@ struct _CtkScrolledWindowPrivate
   gdouble drag_start_x;
   gdouble drag_start_y;
 
-  GdkDevice             *drag_device;
+  CdkDevice             *drag_device;
   guint                  kinetic_scrolling         : 1;
   guint                  capture_button_press      : 1;
   guint                  in_drag                   : 1;
@@ -331,7 +331,7 @@ static gboolean ctk_scrolled_window_draw               (CtkWidget         *widge
 static void     ctk_scrolled_window_size_allocate      (CtkWidget         *widget,
                                                         CtkAllocation     *allocation);
 static gboolean ctk_scrolled_window_scroll_event       (CtkWidget         *widget,
-                                                        GdkEventScroll    *event);
+                                                        CdkEventScroll    *event);
 static gboolean ctk_scrolled_window_focus              (CtkWidget         *widget,
                                                         CtkDirectionType   direction);
 static void     ctk_scrolled_window_add                (CtkContainer      *container,
@@ -420,7 +420,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (CtkScrolledWindow, ctk_scrolled_window, CTK_TYPE_BIN
 static void
 add_scroll_binding (CtkBindingSet  *binding_set,
 		    guint           keyval,
-		    GdkModifierType mask,
+		    CdkModifierType mask,
 		    CtkScrollType   scroll,
 		    gboolean        horizontal)
 {
@@ -438,7 +438,7 @@ add_scroll_binding (CtkBindingSet  *binding_set,
 
 static void
 add_tab_bindings (CtkBindingSet    *binding_set,
-		  GdkModifierType   modifiers,
+		  CdkModifierType   modifiers,
 		  CtkDirectionType  direction)
 {
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_Tab, modifiers,
@@ -451,7 +451,7 @@ add_tab_bindings (CtkBindingSet    *binding_set,
 
 static gboolean
 ctk_scrolled_window_leave_notify (CtkWidget        *widget,
-                                  GdkEventCrossing *event)
+                                  CdkEventCrossing *event)
 {
   CtkScrolledWindowPrivate *priv = CTK_SCROLLED_WINDOW (widget)->priv;
 
@@ -930,9 +930,9 @@ scrolled_window_drag_begin_cb (CtkScrolledWindow *scrolled_window,
 {
   CtkScrolledWindowPrivate *priv = scrolled_window->priv;
   CtkEventSequenceState state;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   CtkWidget *event_widget;
-  const GdkEvent *event;
+  const CdkEvent *event;
 
   priv->in_drag = FALSE;
   priv->drag_start_x = priv->unclamped_hadj_value;
@@ -940,7 +940,7 @@ scrolled_window_drag_begin_cb (CtkScrolledWindow *scrolled_window,
   ctk_scrolled_window_cancel_deceleration (scrolled_window);
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   event = ctk_gesture_get_last_event (gesture, sequence);
-  event_widget = ctk_get_event_widget ((GdkEvent *) event);
+  event_widget = ctk_get_event_widget ((CdkEvent *) event);
 
   if (event_widget == priv->vscrollbar || event_widget == priv->hscrollbar ||
       (!may_hscroll (scrolled_window) && !may_vscroll (scrolled_window)))
@@ -958,7 +958,7 @@ ctk_scrolled_window_invalidate_overshoot (CtkScrolledWindow *scrolled_window)
 {
   CtkAllocation child_allocation;
   gint overshoot_x, overshoot_y;
-  GdkRectangle rect;
+  CdkRectangle rect;
 
   if (!_ctk_scrolled_window_get_overshoot (scrolled_window, &overshoot_x, &overshoot_y))
     return;
@@ -1011,7 +1011,7 @@ scrolled_window_drag_update_cb (CtkScrolledWindow *scrolled_window,
 
   if (!priv->capture_button_press)
     {
-      GdkEventSequence *sequence;
+      CdkEventSequence *sequence;
 
       sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
       ctk_gesture_set_sequence_state (gesture, sequence,
@@ -1039,7 +1039,7 @@ scrolled_window_drag_update_cb (CtkScrolledWindow *scrolled_window,
 
 static void
 scrolled_window_drag_end_cb (CtkScrolledWindow *scrolled_window,
-                             GdkEventSequence  *sequence,
+                             CdkEventSequence  *sequence,
                              CtkGesture        *gesture)
 {
   CtkScrolledWindowPrivate *priv = scrolled_window->priv;
@@ -1087,7 +1087,7 @@ scrolled_window_long_press_cb (CtkScrolledWindow *scrolled_window,
                                gdouble            y,
                                CtkGesture        *gesture)
 {
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   ctk_gesture_set_sequence_state (gesture, sequence,
@@ -1099,8 +1099,8 @@ scrolled_window_long_press_cancelled_cb (CtkScrolledWindow *scrolled_window,
                                          CtkGesture        *gesture)
 {
   CtkScrolledWindowPrivate *priv = scrolled_window->priv;
-  GdkEventSequence *sequence;
-  const GdkEvent *event;
+  CdkEventSequence *sequence;
+  const CdkEvent *event;
 
   sequence = ctk_gesture_get_last_updated_sequence (gesture);
   event = ctk_gesture_get_last_event (gesture, sequence);
@@ -1167,13 +1167,13 @@ indicator_set_over (Indicator *indicator,
 
 static void
 translate_to_widget (CtkWidget *widget,
-                     GdkEvent  *event,
+                     CdkEvent  *event,
                      gint      *x,
                      gint      *y)
 {
   CtkWidget *event_widget;
-  GdkWindow *event_widget_window;
-  GdkWindow *window;
+  CdkWindow *event_widget_window;
+  CdkWindow *window;
   gdouble event_x, event_y;
   gint wx, wy;
   CtkAllocation allocation;
@@ -1205,7 +1205,7 @@ translate_to_widget (CtkWidget *widget,
 static gboolean
 event_close_to_indicator (CtkScrolledWindow *sw,
                           Indicator         *indicator,
-                          GdkEvent          *event)
+                          CdkEvent          *event)
 {
   CtkScrolledWindowPrivate *priv;
   CtkAllocation indicator_alloc;
@@ -1252,7 +1252,7 @@ enable_over_timeout_cb (gpointer user_data)
 static gboolean
 check_update_scrollbar_proximity (CtkScrolledWindow *sw,
                                   Indicator         *indicator,
-                                  GdkEvent          *event)
+                                  CdkEvent          *event)
 {
   CtkScrolledWindowPrivate *priv = sw->priv;
   gboolean indicator_close, on_scrollbar, on_other_scrollbar;
@@ -1320,7 +1320,7 @@ get_scroll_unit (CtkScrolledWindow *sw,
 
 static void
 scroll_history_push (CtkScrolledWindow *sw,
-                     GdkEventScroll    *event,
+                     CdkEventScroll    *event,
                      gboolean           shifted)
 {
   CtkScrolledWindowPrivate *priv = sw->priv;
@@ -1415,12 +1415,12 @@ static void uninstall_scroll_cursor (CtkScrolledWindow *scrolled_window);
 
 static gboolean
 captured_event_cb (CtkWidget *widget,
-                   GdkEvent  *event)
+                   CdkEvent  *event)
 {
   CtkScrolledWindowPrivate *priv;
   CtkScrolledWindow *sw;
-  GdkInputSource input_source;
-  GdkDevice *source_device;
+  CdkInputSource input_source;
+  CdkDevice *source_device;
   CtkWidget *event_widget;
   gboolean on_scrollbar;
 
@@ -1942,7 +1942,7 @@ ctk_scrolled_window_draw_scrollbars_junction (CtkScrolledWindow *scrolled_window
   CtkWidget *widget = CTK_WIDGET (scrolled_window);
   CtkAllocation content_allocation, hscr_allocation, vscr_allocation;
   CtkStyleContext *context;
-  GdkRectangle junction_rect;
+  CdkRectangle junction_rect;
   gboolean is_rtl;
 
   is_rtl = ctk_widget_get_direction (widget) == CTK_TEXT_DIR_RTL;
@@ -1989,7 +1989,7 @@ ctk_scrolled_window_draw_overshoot (CtkScrolledWindow *scrolled_window,
   CtkWidget *widget = CTK_WIDGET (scrolled_window);
   gint overshoot_x, overshoot_y;
   CtkStyleContext *context;
-  GdkRectangle rect;
+  CdkRectangle rect;
 
   if (!_ctk_scrolled_window_get_overshoot (scrolled_window, &overshoot_x, &overshoot_y))
     return;
@@ -2038,7 +2038,7 @@ ctk_scrolled_window_draw_undershoot (CtkScrolledWindow *scrolled_window,
   CtkScrolledWindowPrivate *priv = scrolled_window->priv;
   CtkWidget *widget = CTK_WIDGET (scrolled_window);
   CtkStyleContext *context;
-  GdkRectangle rect;
+  CdkRectangle rect;
   CtkAdjustment *adj;
 
   context = ctk_widget_get_style_context (widget);
@@ -3426,11 +3426,11 @@ finalize_scroll_window (gpointer data,
 
 static void
 install_scroll_cursor (CtkScrolledWindow *scrolled_window,
-                       GdkWindow         *window)
+                       CdkWindow         *window)
 {
   CtkScrolledWindowPrivate *priv = scrolled_window->priv;
-  GdkDisplay *display;
-  GdkCursor *cursor;
+  CdkDisplay *display;
+  CdkCursor *cursor;
 
   if (priv->scroll_window)
     return;
@@ -3481,17 +3481,17 @@ start_scroll_deceleration_cb (gpointer user_data)
 
 static gboolean
 ctk_scrolled_window_scroll_event (CtkWidget      *widget,
-				  GdkEventScroll *event)
+				  CdkEventScroll *event)
 {
   CtkScrolledWindowPrivate *priv;
   CtkScrolledWindow *scrolled_window;
   gboolean handled = FALSE;
   gdouble delta_x;
   gdouble delta_y;
-  GdkScrollDirection direction;
+  CdkScrollDirection direction;
   gboolean shifted, start_deceleration = FALSE;
-  GdkDevice *source_device;
-  GdkInputSource input_source;
+  CdkDevice *source_device;
+  CdkInputSource input_source;
 
   shifted = (event->state & GDK_SHIFT_MASK) != 0;
 
@@ -3499,10 +3499,10 @@ ctk_scrolled_window_scroll_event (CtkWidget      *widget,
   priv = scrolled_window->priv;
 
   ctk_scrolled_window_invalidate_overshoot (scrolled_window);
-  source_device = cdk_event_get_source_device ((GdkEvent *) event);
+  source_device = cdk_event_get_source_device ((CdkEvent *) event);
   input_source = cdk_device_get_source (source_device);
 
-  if (cdk_event_get_scroll_deltas ((GdkEvent *) event, &delta_x, &delta_y))
+  if (cdk_event_get_scroll_deltas ((CdkEvent *) event, &delta_x, &delta_y))
     {
       if (priv->scroll_device != source_device)
         {
@@ -3514,7 +3514,7 @@ ctk_scrolled_window_scroll_event (CtkWidget      *widget,
 
       if (input_source == GDK_SOURCE_TRACKPOINT ||
           input_source == GDK_SOURCE_TOUCHPAD)
-        install_scroll_cursor (scrolled_window, cdk_event_get_window ((GdkEvent *)event));
+        install_scroll_cursor (scrolled_window, cdk_event_get_window ((CdkEvent *)event));
 
       if (shifted)
         {
@@ -3561,13 +3561,13 @@ ctk_scrolled_window_scroll_event (CtkWidget      *widget,
        * after scrolling finished, start kinetic scrolling when this
        * happens.
        */
-      if (cdk_event_is_scroll_stop_event ((GdkEvent *) event))
+      if (cdk_event_is_scroll_stop_event ((CdkEvent *) event))
         {
           handled = TRUE;
           start_deceleration = TRUE;
         }
     }
-  else if (cdk_event_get_scroll_direction ((GdkEvent *)event, &direction))
+  else if (cdk_event_get_scroll_direction ((CdkEvent *)event, &direction))
     {
       CtkWidget *range;
       gboolean may_scroll;
@@ -3684,7 +3684,7 @@ _ctk_scrolled_window_set_adjustment_value (CtkScrolledWindow *scrolled_window,
 
 static gboolean
 scrolled_window_deceleration_cb (CtkWidget         *widget,
-                                 GdkFrameClock     *frame_clock,
+                                 CdkFrameClock     *frame_clock,
                                  gpointer           user_data)
 {
   CtkScrolledWindow *scrolled_window = user_data;
@@ -3774,7 +3774,7 @@ static void
 ctk_scrolled_window_start_deceleration (CtkScrolledWindow *scrolled_window)
 {
   CtkScrolledWindowPrivate *priv = scrolled_window->priv;
-  GdkFrameClock *frame_clock;
+  CdkFrameClock *frame_clock;
   gint64 current_time;
   double elapsed;
 
@@ -4075,8 +4075,8 @@ ctk_scrolled_window_remove (CtkContainer *container,
  * scrolled window. If a child has native scrolling, use
  * ctk_container_add() instead of this function.
  *
- * The viewport scrolls the child by moving its #GdkWindow, and takes
- * the size of the child to be the size of its toplevel #GdkWindow. 
+ * The viewport scrolls the child by moving its #CdkWindow, and takes
+ * the size of the child to be the size of its toplevel #CdkWindow. 
  * This will be very wrong for most widgets that support native scrolling;
  * for example, if you add a widget such as #CtkTreeView with a viewport,
  * the whole widget will scroll, including the column headings. Thus, 
@@ -4182,7 +4182,7 @@ static void
 ctk_scrolled_window_update_animating (CtkScrolledWindow *sw)
 {
   CtkAdjustment *adjustment;
-  GdkFrameClock *clock = NULL;
+  CdkFrameClock *clock = NULL;
   guint duration = 0;
 
   if (ctk_widget_should_animate (CTK_WIDGET (sw)))
@@ -4222,15 +4222,15 @@ ctk_scrolled_window_unmap (CtkWidget *widget)
   indicator_stop_fade (&scrolled_window->priv->vindicator);
 }
 
-static GdkWindow *
+static CdkWindow *
 create_indicator_window (CtkScrolledWindow *scrolled_window,
                          CtkWidget         *child)
 {
   CtkWidget *widget = CTK_WIDGET (scrolled_window);
-  GdkRGBA transparent = { 0, 0, 0, 0 };
+  CdkRGBA transparent = { 0, 0, 0, 0 };
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_scrolled_window_allocate_scrollbar (scrolled_window, child, &allocation);
@@ -4293,7 +4293,7 @@ indicator_set_fade (Indicator *indicator,
 
 static gboolean
 indicator_fade_cb (CtkWidget     *widget,
-                   GdkFrameClock *frame_clock,
+                   CdkFrameClock *frame_clock,
                    gpointer       user_data)
 {
   Indicator *indicator = user_data;
@@ -4509,9 +4509,9 @@ ctk_scrolled_window_realize (CtkWidget *widget)
 {
   CtkScrolledWindow *scrolled_window = CTK_SCROLLED_WINDOW (widget);
   CtkScrolledWindowPrivate *priv = scrolled_window->priv;
-  GdkWindow *window;
+  CdkWindow *window;
   CtkAllocation allocation;
-  GdkWindowAttr attributes;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_get_allocation (widget, &allocation);

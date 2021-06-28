@@ -82,7 +82,7 @@ struct _CtkCssNodeClass
   /* get style provider to use or NULL to use parent's */
   CtkStyleProviderPrivate *(* get_style_provider)       (CtkCssNode            *cssnode);
   /* get frame clock or NULL (only relevant for root node) */
-  GdkFrameClock *       (* get_frame_clock)             (CtkCssNode            *cssnode);
+  CdkFrameClock *       (* get_frame_clock)             (CtkCssNode            *cssnode);
   CtkCssStyle *         (* update_style)                (CtkCssNode            *cssnode,
                                                          CtkCssChange           pending_changes,
                                                          gint64                 timestamp,

@@ -1229,7 +1229,7 @@ msgid "Cell background color"
 msgstr ""
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr ""
 
 #: ctk/ctkcellrenderer.c:343
@@ -1472,8 +1472,8 @@ msgid "Background color"
 msgstr "Coleur di fond"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Coleur di fond come valixhance GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Coleur di fond come valixhance CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1489,8 +1489,8 @@ msgid "Foreground color"
 msgstr "Coleur di dvant"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Coleur di dvant come valixhance GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Coleur di dvant come valixhance CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3067,7 +3067,7 @@ msgid "Pixbuf"
 msgstr ""
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr ""
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
@@ -3112,8 +3112,8 @@ msgid "Animation"
 msgstr "Animåcion"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "Animåcion GdkPixbufAnimation a håyner"
+msgid "CdkPixbufAnimation to display"
+msgstr "Animåcion CdkPixbufAnimation a håyner"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5666,7 +5666,7 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr ""
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ctk/ctktexttag.c:194
@@ -5680,7 +5680,7 @@ msgid ""
 msgstr ""
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ctk/ctktexttag.c:218
@@ -5822,8 +5822,8 @@ msgid "Paragraph background color"
 msgstr "Coleur di fond do hagnon"
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Coleur di fond do hagnon d' tecse, come valixhance GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Coleur di fond do hagnon d' tecse, come valixhance CdkColor"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -6763,7 +6763,7 @@ msgid "Events"
 msgstr "Evenmints"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
 
 #: ctk/ctkwidget.c:832
@@ -7241,8 +7241,8 @@ msgstr "Kimint dessiner l' båre d' estat del metôde d' intrêye"
 #~ msgid "Pixmap"
 #~ msgstr "Imådje picsmap"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "Ene imådje GdkImage a håyner"
+#~ msgid "A CdkImage to display"
+#~ msgstr "Ene imådje CdkImage a håyner"
 
 #~ msgid ""
 #~ "If TRUE, the window has no mimimum size. Setting this to TRUE is 99% of "

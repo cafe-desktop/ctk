@@ -107,7 +107,7 @@ msgstr "Leverantörs-ID"
 msgid "Product ID"
 msgstr "Produkt-ID"
 
-# The GdkSeat object represents a collection of input devices that belong to an user.
+# The CdkSeat object represents a collection of input devices that belong to an user.
 #: cdk/cdkdevice.c:289 cdk/cdkdevice.c:290
 msgid "Seat"
 msgstr "Säte"
@@ -827,8 +827,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "En GdkPixbuf att visa"
+msgid "A CdkPixbuf to display"
+msgstr "En CdkPixbuf att visa"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2221,16 +2221,16 @@ msgid "Cell background color"
 msgstr "Cellbakgrundsfärg"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Cellbakgrundsfärg som en GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Cellbakgrundsfärg som en CdkColor"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "RGBA-färg för cellbakgrund"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Cellbakgrundsfärg som en GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Cellbakgrundsfärg som en CdkRGBA"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2472,16 +2472,16 @@ msgid "Background color"
 msgstr "Bakgrundsfärg"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
-msgstr "Bakgrundsfärg som en GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Bakgrundsfärg som en CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Bakgrundsfärg som RGBA"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
-msgstr "Bakgrundsfärg som en GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Bakgrundsfärg som en CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
@@ -2492,16 +2492,16 @@ msgid "Foreground color as a string"
 msgstr "Förgrundsfärg som en sträng"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
-msgstr "Förgrundsfärg som en GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Förgrundsfärg som en CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Förgrundsfärg som RGBA"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
-msgstr "Förgrundsfärg som en GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Förgrundsfärg som en CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
@@ -2973,8 +2973,8 @@ msgid "Color"
 msgstr "Färg"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Aktuell färg, som en GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Aktuell färg, som en CdkRGBA"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4220,8 +4220,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Antalet punkter som krävs för att utlösa gesten"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "GdkWindow att erhålla händelser om"
+msgid "CdkWindow to receive events about"
+msgstr "CdkWindow att erhålla händelser om"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4557,8 +4557,8 @@ msgid "Animation"
 msgstr "Animering"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation att visa"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation att visa"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7820,16 +7820,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Stil på avfasningen runt statusradstexten"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "Associerad GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "Associerad CdkScreen"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "Inramad klocka"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "Associerad GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "Associerad CdkFrameClock"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
 msgid "Text direction"
@@ -8127,16 +8127,16 @@ msgid "Paragraph background color"
 msgstr "Styckebakgrundsfärg"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
-msgstr "Styckebakgrundsfärg som en GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Styckebakgrundsfärg som en CdkColor"
 
 #: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "Styckets bakgrund RGBA"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Styckets bakgrund RGBA som en GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Styckets bakgrund RGBA som en CdkRGBA"
 
 #: ctk/ctktexttag.c:663
 msgid "Fallback"
@@ -9129,9 +9129,9 @@ msgid "Events"
 msgstr "Händelser"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Händelsemasken som avgör vilken typ av GdkEvent som denna "
+"Händelsemasken som avgör vilken typ av CdkEvent som denna "
 "gränssnittskomponent får"
 
 #: ctk/ctkwidget.c:1263

@@ -22,7 +22,7 @@
  * @Short_description: Pad device interface
  * @Title: CtkDevicePad
  *
- * #GdkDevicePad is an interface implemented by devices of type
+ * #CdkDevicePad is an interface implemented by devices of type
  * %GDK_SOURCE_TABLET_PAD, it allows querying the features provided
  * by the pad device.
  *
@@ -37,7 +37,7 @@
  * effective (current) for each given group, different groups may have
  * different current modes. The number of available modes in a group can
  * be found out through cdk_device_pad_get_group_n_modes(), and the current
- * mode for a given group will be notified through the #GdkEventPadGroupMode
+ * mode for a given group will be notified through the #CdkEventPadGroupMode
  * event.
  *
  */
@@ -48,16 +48,16 @@
 #include "cdkdevicepadprivate.h"
 #include "cdkdeviceprivate.h"
 
-G_DEFINE_INTERFACE (GdkDevicePad, cdk_device_pad, GDK_TYPE_DEVICE)
+G_DEFINE_INTERFACE (CdkDevicePad, cdk_device_pad, GDK_TYPE_DEVICE)
 
 static void
-cdk_device_pad_default_init (GdkDevicePadInterface *pad)
+cdk_device_pad_default_init (CdkDevicePadInterface *pad)
 {
 }
 
 /**
  * cdk_device_pad_get_n_groups:
- * @pad: a #GdkDevicePad
+ * @pad: a #CdkDevicePad
  *
  * Returns the number of groups this pad device has. Pads have
  * at least one group. A pad group is a subcollection of
@@ -69,9 +69,9 @@ cdk_device_pad_default_init (GdkDevicePadInterface *pad)
  * Since: 3.22
  **/
 gint
-cdk_device_pad_get_n_groups (GdkDevicePad *pad)
+cdk_device_pad_get_n_groups (CdkDevicePad *pad)
 {
-  GdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
+  CdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
 
   g_return_val_if_fail (GDK_IS_DEVICE_PAD (pad), 0);
 
@@ -80,7 +80,7 @@ cdk_device_pad_get_n_groups (GdkDevicePad *pad)
 
 /**
  * cdk_device_pad_get_group_n_modes:
- * @pad: a #GdkDevicePad
+ * @pad: a #CdkDevicePad
  * @group_idx: group to get the number of available modes from
  *
  * Returns the number of modes that @group may have.
@@ -90,10 +90,10 @@ cdk_device_pad_get_n_groups (GdkDevicePad *pad)
  * Since: 3.22
  **/
 gint
-cdk_device_pad_get_group_n_modes (GdkDevicePad *pad,
+cdk_device_pad_get_group_n_modes (CdkDevicePad *pad,
                                   gint          group_idx)
 {
-  GdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
+  CdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
 
   g_return_val_if_fail (GDK_IS_DEVICE_PAD (pad), 0);
   g_return_val_if_fail (group_idx >= 0, 0);
@@ -103,7 +103,7 @@ cdk_device_pad_get_group_n_modes (GdkDevicePad *pad,
 
 /**
  * cdk_device_pad_get_n_features:
- * @pad: a #GdkDevicePad
+ * @pad: a #CdkDevicePad
  * @feature: a pad feature
  *
  * Returns the number of features a tablet pad has.
@@ -113,10 +113,10 @@ cdk_device_pad_get_group_n_modes (GdkDevicePad *pad,
  * Since: 3.22
  **/
 gint
-cdk_device_pad_get_n_features (GdkDevicePad        *pad,
-                               GdkDevicePadFeature  feature)
+cdk_device_pad_get_n_features (CdkDevicePad        *pad,
+                               CdkDevicePadFeature  feature)
 {
-  GdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
+  CdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
 
   g_return_val_if_fail (GDK_IS_DEVICE_PAD (pad), 0);
 
@@ -125,7 +125,7 @@ cdk_device_pad_get_n_features (GdkDevicePad        *pad,
 
 /**
  * cdk_device_pad_get_feature_group:
- * @pad: a #GdkDevicePad
+ * @pad: a #CdkDevicePad
  * @feature: the feature type to get the group from
  * @feature_idx: the index of the feature to get the group from
  *
@@ -137,11 +137,11 @@ cdk_device_pad_get_n_features (GdkDevicePad        *pad,
  * Since: 3.22
  **/
 gint
-cdk_device_pad_get_feature_group (GdkDevicePad        *pad,
-                                  GdkDevicePadFeature  feature,
+cdk_device_pad_get_feature_group (CdkDevicePad        *pad,
+                                  CdkDevicePadFeature  feature,
                                   gint                 idx)
 {
-  GdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
+  CdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
 
   g_return_val_if_fail (GDK_IS_DEVICE_PAD (pad), -1);
   g_return_val_if_fail (idx >= 0, -1);

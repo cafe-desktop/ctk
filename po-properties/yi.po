@@ -1306,8 +1306,8 @@ msgid "Cell background color"
 msgstr "צעל הינטערפֿאַרב"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "צעל הינטערפֿאַרב װי אַ GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "צעל הינטערפֿאַרב װי אַ CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1563,8 +1563,8 @@ msgid "Background color"
 msgstr "הינטערפֿאַרב"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "הינטערפֿאַרב װי אַ GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "הינטערפֿאַרב װי אַ CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1580,8 +1580,8 @@ msgid "Foreground color"
 msgstr "פֿאַר־פֿאַרב"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "פֿאַר־פֿאַרב װי אַ GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "פֿאַר־פֿאַרב װי אַ CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -2120,7 +2120,7 @@ msgstr "אַקטיװ"
 #: ctk/ctkcombobox.c:768
 #, fuzzy
 msgid "The item which is currently active"
-msgstr "די איצטיקע־סעלעקטירטע Gdk שריפֿט"
+msgstr "די איצטיקע־סעלעקטירטע Cdk שריפֿט"
 
 #: ctk/ctkcombobox.c:787 ctk/ctkuimanager.c:224
 msgid "Add tearoffs to menus"
@@ -3270,8 +3270,8 @@ msgid "Pixbuf"
 msgstr "בילדבאַהאַלט"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "דער Gdk בילדבאַהאַלט צו װײַזן"
+msgid "A CdkPixbuf to display"
+msgstr "דער Cdk בילדבאַהאַלט צו װײַזן"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3318,8 +3318,8 @@ msgid "Animation"
 msgstr "אַנימאַציע"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "Gdk בילדבאַהאַלט אַנימאַציע צו װײַזן"
+msgid "CdkPixbufAnimation to display"
+msgstr "Cdk בילדבאַהאַלט אַנימאַציע צו װײַזן"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -4560,7 +4560,7 @@ msgstr "סעלעקטירטער טעקע־נאָמען"
 #: ctk/ctkprintunixdialog.c:325
 #, fuzzy
 msgid "The CtkPrinter which is selected"
-msgstr "די איצטיקע־סעלעקטירטע Gdk שריפֿט"
+msgstr "די איצטיקע־סעלעקטירטע Cdk שריפֿט"
 
 #: ctk/ctkprintunixdialog.c:332
 msgid "Manual Capabilities"
@@ -5991,7 +5991,7 @@ msgstr "סעלעקטירטער טעקע־נאָמען"
 #: ctk/ctktextbuffer.c:226
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "די איצטיקע־סעלעקטירטע Gdk שריפֿט"
+msgstr "די איצטיקע־סעלעקטירטע Cdk שריפֿט"
 
 #: ctk/ctktextbuffer.c:242
 #, fuzzy
@@ -6047,8 +6047,8 @@ msgstr ""
 "נאָמען װאָס מען ניצט צו רעדן װעגן דעם טעקסט הענטל; נוליק פֿאַר אַנאָנימע הענטלעך"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "הינטער־פֿאַרב װי אַ Gdk פֿאַרב (אפֿשר אַ ניט־אױסגעטײלטע)"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "הינטער־פֿאַרב װי אַ Cdk פֿאַרב (אפֿשר אַ ניט־אױסגעטײלטע)"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -6063,8 +6063,8 @@ msgstr ""
 "מיט צוגעלײגטע הענטלעך"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "פֿאַר־פֿאַרב װי אַ Gdk פֿאַרב (אפֿשר אַ ניט־אױסגעטײלטע)"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "פֿאַר־פֿאַרב װי אַ Cdk פֿאַרב (אפֿשר אַ ניט־אױסגעטײלטע)"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6218,8 +6218,8 @@ msgstr "צעל הינטערפֿאַרב"
 
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "הינטער־פֿאַרב װי אַ Gdk פֿאַרב (אפֿשר אַ ניט־אױסגעטײלטע)"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "הינטער־פֿאַרב װי אַ Cdk פֿאַרב (אפֿשר אַ ניט־אױסגעטײלטע)"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7214,8 +7214,8 @@ msgid "Events"
 msgstr "טרעפֿענישן"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "די מאַסקע װאָס שטעלט פֿעסט װאָסערע Gdk טרעפֿענישן דאָס צעפּיכעסל באַקומט"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "די מאַסקע װאָס שטעלט פֿעסט װאָסערע Cdk טרעפֿענישן דאָס צעפּיכעסל באַקומט"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7724,7 +7724,7 @@ msgstr "װי צו צײכענען דעם אַרײַנשרײַב־מכשיר װײ�
 #~ msgstr "װיפֿל בילדצעלן ליגן צװישן דורכבלעטערערס און זײערע פֿענצטערס"
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "דער מאָדעל פֿאַר דעם בױם־געשטאַלט"
 
 #, fuzzy
@@ -7749,8 +7749,8 @@ msgstr "װי צו צײכענען דעם אַרײַנשרײַב־מכשיר װײ�
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "ביטמאַפּע צו ניצן װי אַ מאַסקע בשעת מען צײכנט דעם טעקסט־הינטערגרונט"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "די איצטיקע־סעלעקטירטע Gdk שריפֿט"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "די איצטיקע־סעלעקטירטע Cdk שריפֿט"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "ניט־רעקאָמענדירטע נאַטור; בעסער צו ניצן שאָטן־סאָרט"
@@ -7758,17 +7758,17 @@ msgstr "װי צו צײכענען דעם אַרײַנשרײַב־מכשיר װײ�
 #~ msgid "Pixmap"
 #~ msgstr "בילדבאַהאַלט"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "דער Gdk בילדבאַהאַלט צו װײַזן"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "דער Cdk בילדבאַהאַלט צו װײַזן"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "דער Gdk בילדבאַהאַלט צו װײַזן"
+#~ msgid "A CdkImage to display"
+#~ msgstr "דער Cdk בילדבאַהאַלט צו װײַזן"
 
 #~ msgid "Mask"
 #~ msgstr "מאַסקע"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "מאַסקע־ביטמאַפּע צו ניצן מיט GdkImage אָדער GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "מאַסקע־ביטמאַפּע צו ניצן מיט CdkImage אָדער CdkPixmap"
 
 #, fuzzy
 #~ msgid "Use separator"

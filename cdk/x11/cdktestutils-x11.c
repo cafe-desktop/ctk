@@ -26,7 +26,7 @@
 #include <X11/Xlib.h>
 
 void
-_cdk_x11_window_sync_rendering (GdkWindow *window)
+_cdk_x11_window_sync_rendering (CdkWindow *window)
 {
   Display *display = GDK_WINDOW_XDISPLAY (window);
   XImage *ximage;
@@ -41,15 +41,15 @@ _cdk_x11_window_sync_rendering (GdkWindow *window)
 }
 
 gboolean
-_cdk_x11_window_simulate_key (GdkWindow      *window,
+_cdk_x11_window_simulate_key (CdkWindow      *window,
                               gint            x,
                               gint            y,
                               guint           keyval,
-                              GdkModifierType modifiers,
-                              GdkEventType    key_pressrelease)
+                              CdkModifierType modifiers,
+                              CdkEventType    key_pressrelease)
 {
-  GdkScreen *screen;
-  GdkKeymapKey *keys = NULL;
+  CdkScreen *screen;
+  CdkKeymapKey *keys = NULL;
   gboolean success;
   gint n_keys = 0;
   XKeyEvent xev = {
@@ -124,14 +124,14 @@ _cdk_x11_window_simulate_key (GdkWindow      *window,
 }
 
 gboolean
-_cdk_x11_window_simulate_button (GdkWindow      *window,
+_cdk_x11_window_simulate_button (CdkWindow      *window,
                                  gint            x,
                                  gint            y,
                                  guint           button, /*1..3*/
-                                 GdkModifierType modifiers,
-                                 GdkEventType    button_pressrelease)
+                                 CdkModifierType modifiers,
+                                 CdkEventType    button_pressrelease)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
   XButtonEvent xev = {
     0,  /* type */
     0,  /* serial */

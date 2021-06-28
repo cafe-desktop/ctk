@@ -5304,7 +5304,7 @@ msgstr ""
 
 # cdk-pixbuf/io-xbm.c:427
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Түр зуурын файлаас уншигдсангүй"
 
 # cdk-pixbuf/io-tiff.c:273

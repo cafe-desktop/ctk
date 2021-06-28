@@ -269,7 +269,7 @@ static void     ctk_file_chooser_button_finalize           (GObject          *ob
 /* CtkWidget Functions */
 static void     ctk_file_chooser_button_destroy            (CtkWidget        *widget);
 static void     ctk_file_chooser_button_drag_data_received (CtkWidget        *widget,
-							    GdkDragContext   *context,
+							    CdkDragContext   *context,
 							    gint              x,
 							    gint              y,
 							    CtkSelectionData *data,
@@ -283,7 +283,7 @@ static gboolean ctk_file_chooser_button_mnemonic_activate  (CtkWidget        *wi
 							    gboolean          group_cycling);
 static void     ctk_file_chooser_button_style_updated      (CtkWidget        *widget);
 static void     ctk_file_chooser_button_screen_changed     (CtkWidget        *widget,
-							    GdkScreen        *old_screen);
+							    CdkScreen        *old_screen);
 static void     ctk_file_chooser_button_state_flags_changed (CtkWidget       *widget,
                                                              CtkStateFlags    previous_state);
 
@@ -346,7 +346,7 @@ static void     chooser_notify_cb                (GObject        *dialog,
 						  GParamSpec     *pspec,
 						  gpointer        user_data);
 static gboolean dialog_delete_event_cb           (CtkWidget      *dialog,
-						  GdkEvent       *event,
+						  CdkEvent       *event,
 						  gpointer        user_data);
 static void     dialog_response_cb               (CtkDialog      *dialog,
 						  gint            response,
@@ -1181,7 +1181,7 @@ dnd_select_folder_get_info_cb (GCancellable *cancellable,
 
 static void
 ctk_file_chooser_button_drag_data_received (CtkWidget	     *widget,
-					    GdkDragContext   *context,
+					    CdkDragContext   *context,
 					    gint	      x,
 					    gint	      y,
 					    CtkSelectionData *data,
@@ -1509,7 +1509,7 @@ ctk_file_chooser_button_style_updated (CtkWidget *widget)
 
 static void
 ctk_file_chooser_button_screen_changed (CtkWidget *widget,
-					GdkScreen *old_screen)
+					CdkScreen *old_screen)
 {
   if (CTK_WIDGET_CLASS (ctk_file_chooser_button_parent_class)->screen_changed)
     CTK_WIDGET_CLASS (ctk_file_chooser_button_parent_class)->screen_changed (widget,
@@ -2922,7 +2922,7 @@ chooser_notify_cb (GObject    *dialog,
 
 static gboolean
 dialog_delete_event_cb (CtkWidget *dialog,
-			GdkEvent  *event,
+			CdkEvent  *event,
 		        gpointer   user_data)
 {
   g_signal_emit_by_name (dialog, "response", CTK_RESPONSE_DELETE_EVENT);

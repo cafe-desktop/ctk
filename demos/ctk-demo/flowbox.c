@@ -15,7 +15,7 @@ draw_color (CtkWidget  *drawingarea,
             cairo_t    *cr,
             const char *color_name)
 {
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 
   if (cdk_rgba_parse (&rgba, color_name))
     {

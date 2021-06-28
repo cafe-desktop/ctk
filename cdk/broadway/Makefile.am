@@ -6,7 +6,7 @@ libcdkincludedir = $(includedir)/ctk-3.0/cdk
 libcdkbroadwayincludedir = $(includedir)/ctk-3.0/cdk/broadway
 
 AM_CPPFLAGS =				\
-	-DG_LOG_DOMAIN=\"Gdk\"		\
+	-DG_LOG_DOMAIN=\"Cdk\"		\
 	-DG_LOG_USE_STRUCTURED=1	\
 	-DGDK_COMPILATION		\
 	-DGDK_DISABLE_DEPRECATION_WARNINGS \

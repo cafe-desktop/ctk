@@ -36,13 +36,13 @@
 #include <string.h>
 
 gboolean
-_cdk_broadway_window_get_property (GdkWindow   *window,
-				   GdkAtom      property,
-				   GdkAtom      type,
+_cdk_broadway_window_get_property (CdkWindow   *window,
+				   CdkAtom      property,
+				   CdkAtom      type,
 				   gulong       offset,
 				   gulong       length,
 				   gint         pdelete,
-				   GdkAtom     *actual_property_type,
+				   CdkAtom     *actual_property_type,
 				   gint        *actual_format_type,
 				   gint        *actual_length,
 				   guchar     **data)
@@ -51,11 +51,11 @@ _cdk_broadway_window_get_property (GdkWindow   *window,
 }
 
 void
-_cdk_broadway_window_change_property (GdkWindow    *window,
-				      GdkAtom       property,
-				      GdkAtom       type,
+_cdk_broadway_window_change_property (CdkWindow    *window,
+				      CdkAtom       property,
+				      CdkAtom       type,
 				      gint          format,
-				      GdkPropMode   mode,
+				      CdkPropMode   mode,
 				      const guchar *data,
 				      gint          nelements)
 {
@@ -63,8 +63,8 @@ _cdk_broadway_window_change_property (GdkWindow    *window,
 }
 
 void
-_cdk_broadway_window_delete_property (GdkWindow *window,
-				      GdkAtom    property)
+_cdk_broadway_window_delete_property (CdkWindow *window,
+				      CdkAtom    property)
 {
   g_return_if_fail (!window || GDK_WINDOW_IS_BROADWAY (window));
 }

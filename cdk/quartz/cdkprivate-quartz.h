@@ -26,12 +26,12 @@
 
 #include "config.h"
 
-#define GDK_WINDOW_IS_QUARTZ(win)        (GDK_IS_WINDOW_IMPL_QUARTZ (((GdkWindow *)win)->impl))
+#define GDK_WINDOW_IS_QUARTZ(win)        (GDK_IS_WINDOW_IMPL_QUARTZ (((CdkWindow *)win)->impl))
 
 
 /* Display */
 
-GdkDisplay *    _cdk_quartz_display_open (const gchar *name);
+CdkDisplay *    _cdk_quartz_display_open (const gchar *name);
 
 
 #endif /* __GDK_PRIVATE_QUARTZ_H__ */

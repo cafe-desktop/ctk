@@ -85,7 +85,7 @@ msgstr "FLAGS"
 #: cdk/cdk.c:246
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "अनसेट गरिने Gdk डिबगिङ झन्डा"
+msgstr "अनसेट गरिने Cdk डिबगिङ झन्डा"
 
 #: cdk/cdkwindow.c:2826
 msgid "GL support disabled via GDK_DEBUG"
@@ -7388,11 +7388,11 @@ msgstr "परीक्षण मुद्रकमा मुद्रण गर
 #~ msgid "Failed to load image '%s': reason not known, probably a corrupt image file"
 #~ msgstr "छवि '%s' लोड गर्न असफल: कारण अज्ञात, संभवत एउटा नष्ट छवि फाइल"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "सेट गरिने Gdk त्रुटि सच्याउने झण्डाहरू"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "सेट गरिने Cdk त्रुटि सच्याउने झण्डाहरू"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "सेट हटाउनका लागि Gdk त्रुटि सच्याउने झण्डाहरू"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "सेट हटाउनका लागि Cdk त्रुटि सच्याउने झण्डाहरू"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "छवि फाइल '%s' मा डेटा छैन"
@@ -7810,7 +7810,7 @@ msgstr "परीक्षण मुद्रकमा मुद्रण गर
 #~ msgstr "TGA प्रसँग स्ट्रक्टका लागि स्मृति निर्धारण गर्न सक्दैन"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "अस्थायी फाइलबाट पढ्न असफल"
 
 #, fuzzy

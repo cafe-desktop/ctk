@@ -222,8 +222,8 @@ ctk_entry_icon_accessible_do_action (AtkAction *action,
   CtkEntryIconAccessible *icon = (CtkEntryIconAccessible *)action;
   CtkWidget *widget;
   CtkEntry *ctk_entry;
-  GdkEvent event;
-  GdkRectangle icon_area;
+  CdkEvent event;
+  CdkRectangle icon_area;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (icon->entry));
   if (widget == NULL)
@@ -298,7 +298,7 @@ ctk_entry_icon_accessible_get_extents (AtkComponent   *component,
                                        AtkCoordType    coord_type)
 {
   CtkEntryIconAccessible *icon = CTK_ENTRY_ICON_ACCESSIBLE (component);
-  GdkRectangle icon_area;
+  CdkRectangle icon_area;
   CtkEntry *ctk_entry;
   CtkWidget *widget;
 
@@ -324,7 +324,7 @@ ctk_entry_icon_accessible_get_position (AtkComponent   *component,
                                         AtkCoordType    coord_type)
 {
   CtkEntryIconAccessible *icon = CTK_ENTRY_ICON_ACCESSIBLE (component);
-  GdkRectangle icon_area;
+  CdkRectangle icon_area;
   CtkEntry *ctk_entry;
   CtkWidget *widget;
 
@@ -347,7 +347,7 @@ ctk_entry_icon_accessible_get_size (AtkComponent *component,
                                 gint         *height)
 {
   CtkEntryIconAccessible *icon = CTK_ENTRY_ICON_ACCESSIBLE (component);
-  GdkRectangle icon_area;
+  CdkRectangle icon_area;
   CtkEntry *ctk_entry;
   CtkWidget *widget;
 
@@ -957,7 +957,7 @@ ctk_entry_accessible_get_character_extents (AtkText      *text,
   PangoRectangle char_rect;
   gchar *entry_text;
   gint index, x_layout, y_layout;
-  GdkWindow *window;
+  CdkWindow *window;
   gint x_window, y_window;
   CtkAllocation allocation;
 
@@ -1007,7 +1007,7 @@ ctk_entry_accessible_get_offset_at_point (AtkText      *atk_text,
   gint index, x_layout, y_layout;
   gint x_window, y_window;
   gint x_local, y_local;
-  GdkWindow *window;
+  CdkWindow *window;
   glong offset;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (atk_text));

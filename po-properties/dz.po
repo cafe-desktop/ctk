@@ -1271,7 +1271,7 @@ msgid "Cell background color"
 msgstr "ནང་ཐིག་རྒྱབ་གཞིའི་ཚོས་གཞི།"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr "ནང་ཐིག་རྒྱབ་གཞིའི་ཚོས་གཞི་ ཇི་ཌི་ཀེ་ ཚོས་གཞི་བཟུམ་ཅིག་སྦེ།"
 
 #: ctk/ctkcellrenderer.c:343
@@ -1522,7 +1522,7 @@ msgid "Background color"
 msgstr "རྒྱབ་གཞིའི་ཚོས་གཞི།"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
+msgid "Background color as a CdkColor"
 msgstr "རྒྱབ་གཞིའི་ཚོས་གཞི་ ཇི་ཌི་ཀེ་ཚོས་གཞི་ བཟུམ་ཅིག་སྦེ།"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
@@ -1539,7 +1539,7 @@ msgid "Foreground color"
 msgstr "གདོང་གཞིའི་ཚོས་གཞི།"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
+msgid "Foreground color as a CdkColor"
 msgstr "གདོང་གཞིའི་ཚོས་གཞི་ ཇི་ཌི་ཀེ་ཚོས་གཞི་ བཟུམ་ཅིག་སྦེ།"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
@@ -3155,8 +3155,8 @@ msgid "Pixbuf"
 msgstr "པར་ཁོངས།"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "བཀྲམ་སྟོན་འབད་ནིའི་ GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "བཀྲམ་སྟོན་འབད་ནིའི་ CdkPixbuf"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3202,8 +3202,8 @@ msgid "Animation"
 msgstr "བསྒུལ་བཟོ།"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "བཀྲམ་སྟོན་འབད་ནིའི་ GdkPixbufAnimation།"
+msgid "CdkPixbufAnimation to display"
+msgstr "བཀྲམ་སྟོན་འབད་ནིའི་ CdkPixbufAnimation།"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5837,8 +5837,8 @@ msgstr ""
 "ཅིན།"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "རྒྱབ་གཞིའི་ཚོས་གཞི་ GdkColor བཟུམ་ཅིག་སྦེ། (སྐལ་སྤྲོད་མ་འབདཝ་འོང་)"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "རྒྱབ་གཞིའི་ཚོས་གཞི་ CdkColor བཟུམ་ཅིག་སྦེ། (སྐལ་སྤྲོད་མ་འབདཝ་འོང་)"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5853,8 +5853,8 @@ msgstr ""
 "མཐོ་ཚད་རྐྱངམ་ཅིག་ནང་ བཀང་དགོཔ་ཨིན་ན་མེན།"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "གདོང་གཞིའི་ཚོས་གཞི་ GdkColorབཟུམ་ཅིག་སྦེ། (སྐལ་སྤྲོད་མ་འབདཝ་་འོང་)"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "གདོང་གཞིའི་ཚོས་གཞི་ CdkColorབཟུམ་ཅིག་སྦེ། (སྐལ་སྤྲོད་མ་འབདཝ་་འོང་)"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6003,7 +6003,7 @@ msgid "Paragraph background color"
 msgstr "དོན་མཚམས་རྒྱབ་གཞིའི་ཚོས་གཞི།"
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 msgstr "དནོ་མཚམས་རྒྱབ་གཞིའི་ཚོས་གཞི་ ཇི་ཌི་ཀེ་ཚོས་གཞི་བཟུམ་ཅིག་སྦེ། (སྐལ་སྤྲོད་མ་འབདཝ་འོང་)"
 
 #: ctk/ctktexttag.c:530
@@ -6955,9 +6955,9 @@ msgid "Events"
 msgstr "བྱུང་ལས།"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"ཝིཌི་གེཊི་འདི་ལུ་ GdkEvents ག་ཅི་བཟུམ་ཅིག་ འཐོབ་ནི་ཨིན་ན་ གྲོས་ཐག་གཅད་མི་ བྱུང་ལས་ཀྱི་གདོང་ཁེབས།"
+"ཝིཌི་གེཊི་འདི་ལུ་ CdkEvents ག་ཅི་བཟུམ་ཅིག་ འཐོབ་ནི་ཨིན་ན་ གྲོས་ཐག་གཅད་མི་ བྱུང་ལས་ཀྱི་གདོང་ཁེབས།"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7462,7 +7462,7 @@ msgstr "ཨིན་པུཊི་ཐབས་ཤེས་ཀྱི་ གན�
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "པར་ཁོངས་ཀྱི་ པིག་སེལ་གནད་སྡུད་ལུ་ དཔག་བྱེད་ཅིག"
 
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "ལྷག་སྟོན་པའི་དོན་ལུ་ ཇི་ཌི་ཀེ་གསལ་གཞི།"
 
 #, fuzzy
@@ -7487,7 +7487,7 @@ msgstr "ཨིན་པུཊི་ཐབས་ཤེས་ཀྱི་ གན�
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "ཚིག་ཡིག་གི་རྒྱབ་གཞི་འབྲི་བའི་སྐབས་ གདོང་ཁེབས་བཟུམ་ཅིག་སྦེ་ ལག་ལེན་འཐབ་ནིའི་བིཊི་མེཔ།"
 
-#~ msgid "The GdkFont that is currently selected"
+#~ msgid "The CdkFont that is currently selected"
 #~ msgstr "ད་ལྟོ་སེལ་འཐུ་འབད་མི་ ཇི་ཌི་ཀེ་ཡིག་གཟུགས།"
 
 #~ msgid "Deprecated property, use shadow_type instead"
@@ -7496,17 +7496,17 @@ msgstr "ཨིན་པུཊི་ཐབས་ཤེས་ཀྱི་ གན�
 #~ msgid "Pixmap"
 #~ msgstr "པར་ཁྲ།"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "བཀྲམ་སྟོན་འབད་ནིའི་ GdkPixmap།"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "བཀྲམ་སྟོན་འབད་ནིའི་ CdkPixmap།"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "བཀྲམ་སྟོན་འབད་ནིའི་ GdkImage།"
+#~ msgid "A CdkImage to display"
+#~ msgstr "བཀྲམ་སྟོན་འབད་ནིའི་ CdkImage།"
 
 #~ msgid "Mask"
 #~ msgstr "གདོང་ཁེབས"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "GdkImage or GdkPixmapདང་གཅིག་ཁར་ ལག་ལེན་འཐབ་ནིའི་ གདོང་ཁེབས་ཀྱི་བིཊི་མེཔ།"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "CdkImage or CdkPixmapདང་གཅིག་ཁར་ ལག་ལེན་འཐབ་ནིའི་ གདོང་ཁེབས་ཀྱི་བིཊི་མེཔ།"
 
 #~ msgid "Use separator"
 #~ msgstr "དབྱེ་བྱེད་ལག་ལེན་འཐབ།"

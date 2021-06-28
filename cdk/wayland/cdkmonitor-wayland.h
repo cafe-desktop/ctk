@@ -23,8 +23,8 @@
 #include "cdkmonitorprivate.h"
 #include "cdkprivate-wayland.h"
 
-struct _GdkWaylandMonitor {
-  GdkMonitor parent;
+struct _CdkWaylandMonitor {
+  CdkMonitor parent;
 
   guint32 id;
   guint32 version;
@@ -41,8 +41,8 @@ struct _GdkWaylandMonitor {
   gboolean xdg_output_done;
 };
 
-struct _GdkWaylandMonitorClass {
-  GdkMonitorClass parent_class;
+struct _CdkWaylandMonitorClass {
+  CdkMonitorClass parent_class;
 };
 
 #endif

@@ -51,7 +51,7 @@ struct _CtkIMContextWaylandClass
 struct _CtkIMContextWayland
 {
   CtkIMContextSimple parent_instance;
-  GdkWindow *window;
+  CdkWindow *window;
   CtkWidget *widget;
 
   CtkGesture *gesture;
@@ -205,7 +205,7 @@ registry_handle_global (void               *data,
                         uint32_t            version)
 {
   CtkIMContextWaylandGlobal *global = data;
-  GdkSeat *seat = cdk_display_get_default_seat (cdk_display_get_default ());
+  CdkSeat *seat = cdk_display_get_default_seat (cdk_display_get_default ());
 
   if (strcmp (interface, "ctk_text_input_manager") == 0)
     {
@@ -241,7 +241,7 @@ static const struct wl_registry_listener registry_listener = {
 };
 
 static void
-ctk_im_context_wayland_global_init (GdkDisplay *display)
+ctk_im_context_wayland_global_init (CdkDisplay *display)
 {
   g_return_if_fail (global == NULL);
 
@@ -445,7 +445,7 @@ released_cb (CtkGestureMultiPress *gesture,
 
 static void
 ctk_im_context_wayland_set_client_window (CtkIMContext *context,
-                                          GdkWindow    *window)
+                                          CdkWindow    *window)
 {
   CtkIMContextWayland *context_wayland = CTK_IM_CONTEXT_WAYLAND (context);
   CtkWidget *widget = NULL;
@@ -523,7 +523,7 @@ ctk_im_context_wayland_get_preedit_string (CtkIMContext   *context,
 
 static gboolean
 ctk_im_context_wayland_filter_keypress (CtkIMContext *context,
-                                        GdkEventKey  *key)
+                                        CdkEventKey  *key)
 {
   /* This is done by the compositor */
   return CTK_IM_CONTEXT_CLASS (parent_class)->filter_keypress (context, key);
@@ -567,7 +567,7 @@ ctk_im_context_wayland_reset (CtkIMContext *context)
 
 static void
 ctk_im_context_wayland_set_cursor_location (CtkIMContext *context,
-                                            GdkRectangle *rect)
+                                            CdkRectangle *rect)
 {
   CtkIMContextWayland *context_wayland;
 

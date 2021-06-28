@@ -60,7 +60,7 @@ struct _CtkAdjustmentPrivate {
   gint64 start_time;
   gint64 end_time;
   guint tick_id;
-  GdkFrameClock *clock;
+  CdkFrameClock *clock;
 };
 
 enum
@@ -451,7 +451,7 @@ adjustment_set_value (CtkAdjustment *adjustment,
     }
 }
 
-static void ctk_adjustment_on_frame_clock_update (GdkFrameClock *clock,
+static void ctk_adjustment_on_frame_clock_update (CdkFrameClock *clock,
                                                   CtkAdjustment *adjustment);
 
 static void
@@ -492,7 +492,7 @@ ease_out_cubic (gdouble t)
 }
 
 static void
-ctk_adjustment_on_frame_clock_update (GdkFrameClock *clock,
+ctk_adjustment_on_frame_clock_update (CdkFrameClock *clock,
                                       CtkAdjustment *adjustment)
 {
   CtkAdjustmentPrivate *priv = adjustment->priv;
@@ -989,7 +989,7 @@ ctk_adjustment_get_minimum_increment (CtkAdjustment *adjustment)
 
 void
 ctk_adjustment_enable_animation (CtkAdjustment *adjustment,
-                                 GdkFrameClock *clock,
+                                 CdkFrameClock *clock,
                                  guint          duration)
 {
   CtkAdjustmentPrivate *priv = adjustment->priv;

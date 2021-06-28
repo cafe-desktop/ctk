@@ -37,32 +37,32 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_X11_CURSOR              (cdk_x11_cursor_get_type ())
-#define GDK_X11_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_CURSOR, GdkX11Cursor))
-#define GDK_X11_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_CURSOR, GdkX11CursorClass))
+#define GDK_X11_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_CURSOR, CdkX11Cursor))
+#define GDK_X11_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_CURSOR, CdkX11CursorClass))
 #define GDK_IS_X11_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_CURSOR))
 #define GDK_IS_X11_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_CURSOR))
-#define GDK_X11_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_CURSOR, GdkX11CursorClass))
+#define GDK_X11_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_CURSOR, CdkX11CursorClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkX11Cursor GdkX11Cursor;
+typedef struct _CdkX11Cursor CdkX11Cursor;
 #else
-typedef GdkCursor GdkX11Cursor;
+typedef CdkCursor CdkX11Cursor;
 #endif
-typedef struct _GdkX11CursorClass GdkX11CursorClass;
+typedef struct _CdkX11CursorClass CdkX11CursorClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_x11_cursor_get_type          (void);
 
 GDK_AVAILABLE_IN_ALL
-Display *cdk_x11_cursor_get_xdisplay      (GdkCursor   *cursor);
+Display *cdk_x11_cursor_get_xdisplay      (CdkCursor   *cursor);
 GDK_AVAILABLE_IN_ALL
-Cursor   cdk_x11_cursor_get_xcursor       (GdkCursor   *cursor);
+Cursor   cdk_x11_cursor_get_xcursor       (CdkCursor   *cursor);
 
 /**
  * GDK_CURSOR_XDISPLAY:
- * @cursor: a #GdkCursor.
+ * @cursor: a #CdkCursor.
  *
- * Returns the display of a #GdkCursor.
+ * Returns the display of a #CdkCursor.
  *
  * Returns: an Xlib Display*.
  */
@@ -70,9 +70,9 @@ Cursor   cdk_x11_cursor_get_xcursor       (GdkCursor   *cursor);
 
 /**
  * GDK_CURSOR_XCURSOR:
- * @cursor: a #GdkCursor.
+ * @cursor: a #CdkCursor.
  *
- * Returns the X cursor belonging to a #GdkCursor.
+ * Returns the X cursor belonging to a #CdkCursor.
  *
  * Returns: an Xlib Cursor.
  */

@@ -37,17 +37,17 @@ G_BEGIN_DECLS
 /* Rectangle utilities
  */
 GDK_AVAILABLE_IN_ALL
-gboolean cdk_rectangle_intersect (const GdkRectangle *src1,
-                                  const GdkRectangle *src2,
-                                  GdkRectangle       *dest);
+gboolean cdk_rectangle_intersect (const CdkRectangle *src1,
+                                  const CdkRectangle *src2,
+                                  CdkRectangle       *dest);
 GDK_AVAILABLE_IN_ALL
-void     cdk_rectangle_union     (const GdkRectangle *src1,
-                                  const GdkRectangle *src2,
-                                  GdkRectangle       *dest);
+void     cdk_rectangle_union     (const CdkRectangle *src1,
+                                  const CdkRectangle *src2,
+                                  CdkRectangle       *dest);
 
 GDK_AVAILABLE_IN_3_20
-gboolean cdk_rectangle_equal     (const GdkRectangle *rect1,
-                                  const GdkRectangle *rect2);
+gboolean cdk_rectangle_equal     (const CdkRectangle *rect1,
+                                  const CdkRectangle *rect2);
 
 GDK_AVAILABLE_IN_ALL
 GType cdk_rectangle_get_type (void) G_GNUC_CONST;

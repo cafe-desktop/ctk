@@ -85,9 +85,9 @@ GDK_AVAILABLE_IN_ALL
 CtkWindow *      ctk_mount_operation_get_parent (CtkMountOperation *op);
 GDK_AVAILABLE_IN_ALL
 void             ctk_mount_operation_set_screen (CtkMountOperation *op,
-                                                 GdkScreen         *screen);
+                                                 CdkScreen         *screen);
 GDK_AVAILABLE_IN_ALL
-GdkScreen       *ctk_mount_operation_get_screen (CtkMountOperation *op);
+CdkScreen       *ctk_mount_operation_get_screen (CtkMountOperation *op);
 
 G_END_DECLS
 

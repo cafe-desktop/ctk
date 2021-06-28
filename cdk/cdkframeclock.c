@@ -33,7 +33,7 @@
  * @Short_description: Frame clock syncs painting to a window or display
  * @Title: Frame clock
  *
- * A #GdkFrameClock tells the application when to update and repaint a
+ * A #CdkFrameClock tells the application when to update and repaint a
  * window. This may be synced to the vertical refresh rate of the
  * monitor, for example. Even when the frame clock uses a simple timer
  * rather than a hardware-based vertical sync, the frame clock helps
@@ -42,7 +42,7 @@
  * stop painting when it knows the frames will not be visible, or
  * scale back animation framerates.
  *
- * #GdkFrameClock is designed to be compatible with an OpenGL-based
+ * #CdkFrameClock is designed to be compatible with an OpenGL-based
  * implementation or with mozRequestAnimationFrame in Firefox,
  * for example.
  *
@@ -50,9 +50,9 @@
  * cdk_frame_clock_request_phase(). At some later point that makes
  * sense for the synchronization being implemented, the clock will
  * process a frame and emit signals for each phase that has been
- * requested. (See the signals of the #GdkFrameClock class for
+ * requested. (See the signals of the #CdkFrameClock class for
  * documentation of the phases. %GDK_FRAME_CLOCK_PHASE_UPDATE and the
- * #GdkFrameClock::update signal are most interesting for application
+ * #CdkFrameClock::update signal are most interesting for application
  * writers, and are used to update the animations, using the frame time
  * given by cdk_frame_clock_get_frame_time().
  *
@@ -64,7 +64,7 @@
  * are called at a “similar” time get the same value. This means that
  * if different animations are timed by looking at the difference in
  * time between an initial value from cdk_frame_clock_get_frame_time()
- * and the value inside the #GdkFrameClock::update signal of the clock,
+ * and the value inside the #CdkFrameClock::update signal of the clock,
  * they will stay exactly synchronized.
  */
 
@@ -87,20 +87,20 @@ static guint fps_counter;
 
 #define FRAME_HISTORY_MAX_LENGTH 16
 
-struct _GdkFrameClockPrivate
+struct _CdkFrameClockPrivate
 {
   gint64 frame_counter;
   gint n_timings;
   gint current;
-  GdkFrameTimings *timings[FRAME_HISTORY_MAX_LENGTH];
+  CdkFrameTimings *timings[FRAME_HISTORY_MAX_LENGTH];
 };
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GdkFrameClock, cdk_frame_clock, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (CdkFrameClock, cdk_frame_clock, G_TYPE_OBJECT)
 
 static void
 cdk_frame_clock_finalize (GObject *object)
 {
-  GdkFrameClockPrivate *priv = GDK_FRAME_CLOCK (object)->priv;
+  CdkFrameClockPrivate *priv = GDK_FRAME_CLOCK (object)->priv;
   int i;
 
   for (i = 0; i < FRAME_HISTORY_MAX_LENGTH; i++)
@@ -111,14 +111,14 @@ cdk_frame_clock_finalize (GObject *object)
 }
 
 static void
-cdk_frame_clock_class_init (GdkFrameClockClass *klass)
+cdk_frame_clock_class_init (CdkFrameClockClass *klass)
 {
   GObjectClass *gobject_class = (GObjectClass*) klass;
 
   gobject_class->finalize     = cdk_frame_clock_finalize;
 
   /**
-   * GdkFrameClock::flush-events:
+   * CdkFrameClock::flush-events:
    * @clock: the frame clock emitting the signal
    *
    * This signal is used to flush pending motion events that
@@ -134,7 +134,7 @@ cdk_frame_clock_class_init (GdkFrameClockClass *klass)
                   G_TYPE_NONE, 0);
 
   /**
-   * GdkFrameClock::before-paint:
+   * CdkFrameClock::before-paint:
    * @clock: the frame clock emitting the signal
    *
    * This signal begins processing of the frame. Applications
@@ -149,7 +149,7 @@ cdk_frame_clock_class_init (GdkFrameClockClass *klass)
                   G_TYPE_NONE, 0);
 
   /**
-   * GdkFrameClock::update:
+   * CdkFrameClock::update:
    * @clock: the frame clock emitting the signal
    *
    * This signal is emitted as the first step of toolkit and
@@ -168,7 +168,7 @@ cdk_frame_clock_class_init (GdkFrameClockClass *klass)
                   G_TYPE_NONE, 0);
 
   /**
-   * GdkFrameClock::layout:
+   * CdkFrameClock::layout:
    * @clock: the frame clock emitting the signal
    *
    * This signal is emitted as the second step of toolkit and
@@ -185,7 +185,7 @@ cdk_frame_clock_class_init (GdkFrameClockClass *klass)
                   G_TYPE_NONE, 0);
 
   /**
-   * GdkFrameClock::paint:
+   * CdkFrameClock::paint:
    * @clock: the frame clock emitting the signal
    *
    * This signal is emitted as the third step of toolkit and
@@ -203,7 +203,7 @@ cdk_frame_clock_class_init (GdkFrameClockClass *klass)
                   G_TYPE_NONE, 0);
 
   /**
-   * GdkFrameClock::after-paint:
+   * CdkFrameClock::after-paint:
    * @clock: the frame clock emitting the signal
    *
    * This signal ends processing of the frame. Applications
@@ -218,7 +218,7 @@ cdk_frame_clock_class_init (GdkFrameClockClass *klass)
                   G_TYPE_NONE, 0);
 
   /**
-   * GdkFrameClock::resume-events:
+   * CdkFrameClock::resume-events:
    * @clock: the frame clock emitting the signal
    *
    * This signal is emitted after processing of the frame is
@@ -235,9 +235,9 @@ cdk_frame_clock_class_init (GdkFrameClockClass *klass)
 }
 
 static void
-cdk_frame_clock_init (GdkFrameClock *clock)
+cdk_frame_clock_init (CdkFrameClock *clock)
 {
-  GdkFrameClockPrivate *priv;
+  CdkFrameClockPrivate *priv;
 
   clock->priv = priv = cdk_frame_clock_get_instance_private (clock);
 
@@ -252,7 +252,7 @@ cdk_frame_clock_init (GdkFrameClock *clock)
 
 /**
  * cdk_frame_clock_get_frame_time:
- * @frame_clock: a #GdkFrameClock
+ * @frame_clock: a #CdkFrameClock
  *
  * Gets the time that should currently be used for animations.  Inside
  * the processing of a frame, it’s the time used to compute the
@@ -266,7 +266,7 @@ cdk_frame_clock_init (GdkFrameClock *clock)
  *  of g_get_monotonic_time().
  */
 gint64
-cdk_frame_clock_get_frame_time (GdkFrameClock *frame_clock)
+cdk_frame_clock_get_frame_time (CdkFrameClock *frame_clock)
 {
   g_return_val_if_fail (GDK_IS_FRAME_CLOCK (frame_clock), 0);
 
@@ -275,7 +275,7 @@ cdk_frame_clock_get_frame_time (GdkFrameClock *frame_clock)
 
 /**
  * cdk_frame_clock_request_phase:
- * @frame_clock: a #GdkFrameClock
+ * @frame_clock: a #CdkFrameClock
  * @phase: the phase that is requested
  *
  * Asks the frame clock to run a particular phase. The signal
@@ -292,8 +292,8 @@ cdk_frame_clock_get_frame_time (GdkFrameClock *frame_clock)
  * Since: 3.8
  */
 void
-cdk_frame_clock_request_phase (GdkFrameClock      *frame_clock,
-                               GdkFrameClockPhase  phase)
+cdk_frame_clock_request_phase (CdkFrameClock      *frame_clock,
+                               CdkFrameClockPhase  phase)
 {
   g_return_if_fail (GDK_IS_FRAME_CLOCK (frame_clock));
 
@@ -302,7 +302,7 @@ cdk_frame_clock_request_phase (GdkFrameClock      *frame_clock,
 
 /**
  * cdk_frame_clock_begin_updating:
- * @frame_clock: a #GdkFrameClock
+ * @frame_clock: a #CdkFrameClock
  *
  * Starts updates for an animation. Until a matching call to
  * cdk_frame_clock_end_updating() is made, the frame clock will continually
@@ -314,7 +314,7 @@ cdk_frame_clock_request_phase (GdkFrameClock      *frame_clock,
  * Since: 3.8
  */
 void
-cdk_frame_clock_begin_updating (GdkFrameClock *frame_clock)
+cdk_frame_clock_begin_updating (CdkFrameClock *frame_clock)
 {
   g_return_if_fail (GDK_IS_FRAME_CLOCK (frame_clock));
 
@@ -323,7 +323,7 @@ cdk_frame_clock_begin_updating (GdkFrameClock *frame_clock)
 
 /**
  * cdk_frame_clock_end_updating:
- * @frame_clock: a #GdkFrameClock
+ * @frame_clock: a #CdkFrameClock
  *
  * Stops updates for an animation. See the documentation for
  * cdk_frame_clock_begin_updating().
@@ -331,7 +331,7 @@ cdk_frame_clock_begin_updating (GdkFrameClock *frame_clock)
  * Since: 3.8
  */
 void
-cdk_frame_clock_end_updating (GdkFrameClock *frame_clock)
+cdk_frame_clock_end_updating (CdkFrameClock *frame_clock)
 {
   g_return_if_fail (GDK_IS_FRAME_CLOCK (frame_clock));
 
@@ -339,7 +339,7 @@ cdk_frame_clock_end_updating (GdkFrameClock *frame_clock)
 }
 
 void
-_cdk_frame_clock_freeze (GdkFrameClock *clock)
+_cdk_frame_clock_freeze (CdkFrameClock *clock)
 {
   g_return_if_fail (GDK_IS_FRAME_CLOCK (clock));
 
@@ -348,7 +348,7 @@ _cdk_frame_clock_freeze (GdkFrameClock *clock)
 
 
 void
-_cdk_frame_clock_thaw (GdkFrameClock *clock)
+_cdk_frame_clock_thaw (CdkFrameClock *clock)
 {
   g_return_if_fail (GDK_IS_FRAME_CLOCK (clock));
 
@@ -357,9 +357,9 @@ _cdk_frame_clock_thaw (GdkFrameClock *clock)
 
 /**
  * cdk_frame_clock_get_frame_counter:
- * @frame_clock: a #GdkFrameClock
+ * @frame_clock: a #CdkFrameClock
  *
- * A #GdkFrameClock maintains a 64-bit counter that increments for
+ * A #CdkFrameClock maintains a 64-bit counter that increments for
  * each frame drawn.
  *
  * Returns: inside frame processing, the value of the frame counter
@@ -368,9 +368,9 @@ _cdk_frame_clock_thaw (GdkFrameClock *clock)
  * Since: 3.8
  */
 gint64
-cdk_frame_clock_get_frame_counter (GdkFrameClock *frame_clock)
+cdk_frame_clock_get_frame_counter (CdkFrameClock *frame_clock)
 {
-  GdkFrameClockPrivate *priv;
+  CdkFrameClockPrivate *priv;
 
   g_return_val_if_fail (GDK_IS_FRAME_CLOCK (frame_clock), 0);
 
@@ -381,9 +381,9 @@ cdk_frame_clock_get_frame_counter (GdkFrameClock *frame_clock)
 
 /**
  * cdk_frame_clock_get_history_start:
- * @frame_clock: a #GdkFrameClock
+ * @frame_clock: a #CdkFrameClock
  *
- * #GdkFrameClock internally keeps a history of #GdkFrameTimings
+ * #CdkFrameClock internally keeps a history of #CdkFrameTimings
  * objects for recent frames that can be retrieved with
  * cdk_frame_clock_get_timings(). The set of stored frames
  * is the set from the counter values given by
@@ -392,13 +392,13 @@ cdk_frame_clock_get_frame_counter (GdkFrameClock *frame_clock)
  *
  * Returns: the frame counter value for the oldest frame
  *  that is available in the internal frame history of the
- *  #GdkFrameClock.
+ *  #CdkFrameClock.
  * Since: 3.8
  */
 gint64
-cdk_frame_clock_get_history_start (GdkFrameClock *frame_clock)
+cdk_frame_clock_get_history_start (CdkFrameClock *frame_clock)
 {
-  GdkFrameClockPrivate *priv;
+  CdkFrameClockPrivate *priv;
 
   g_return_val_if_fail (GDK_IS_FRAME_CLOCK (frame_clock), 0);
 
@@ -408,9 +408,9 @@ cdk_frame_clock_get_history_start (GdkFrameClock *frame_clock)
 }
 
 void
-_cdk_frame_clock_begin_frame (GdkFrameClock *frame_clock)
+_cdk_frame_clock_begin_frame (CdkFrameClock *frame_clock)
 {
-  GdkFrameClockPrivate *priv;
+  CdkFrameClockPrivate *priv;
 
   g_return_if_fail (GDK_IS_FRAME_CLOCK (frame_clock));
 
@@ -437,24 +437,24 @@ _cdk_frame_clock_begin_frame (GdkFrameClock *frame_clock)
 
 /**
  * cdk_frame_clock_get_timings:
- * @frame_clock: a #GdkFrameClock
+ * @frame_clock: a #CdkFrameClock
  * @frame_counter: the frame counter value identifying the frame to
  *  be received.
  *
- * Retrieves a #GdkFrameTimings object holding timing information
- * for the current frame or a recent frame. The #GdkFrameTimings
+ * Retrieves a #CdkFrameTimings object holding timing information
+ * for the current frame or a recent frame. The #CdkFrameTimings
  * object may not yet be complete: see cdk_frame_timings_get_complete().
  *
- * Returns: (nullable) (transfer none): the #GdkFrameTimings object for
+ * Returns: (nullable) (transfer none): the #CdkFrameTimings object for
  *  the specified frame, or %NULL if it is not available. See
  *  cdk_frame_clock_get_history_start().
  * Since: 3.8
  */
-GdkFrameTimings *
-cdk_frame_clock_get_timings (GdkFrameClock *frame_clock,
+CdkFrameTimings *
+cdk_frame_clock_get_timings (CdkFrameClock *frame_clock,
                              gint64         frame_counter)
 {
-  GdkFrameClockPrivate *priv;
+  CdkFrameClockPrivate *priv;
   gint pos;
 
   g_return_val_if_fail (GDK_IS_FRAME_CLOCK (frame_clock), NULL);
@@ -474,20 +474,20 @@ cdk_frame_clock_get_timings (GdkFrameClock *frame_clock,
 
 /**
  * cdk_frame_clock_get_current_timings:
- * @frame_clock: a #GdkFrameClock
+ * @frame_clock: a #CdkFrameClock
  *
  * Gets the frame timings for the current frame.
  *
- * Returns: (nullable) (transfer none): the #GdkFrameTimings for the
+ * Returns: (nullable) (transfer none): the #CdkFrameTimings for the
  *  frame currently being processed, or even no frame is being
  *  processed, for the previous frame. Before any frames have been
  *  processed, returns %NULL.
  * Since: 3.8
  */
-GdkFrameTimings *
-cdk_frame_clock_get_current_timings (GdkFrameClock *frame_clock)
+CdkFrameTimings *
+cdk_frame_clock_get_current_timings (CdkFrameClock *frame_clock)
 {
-  GdkFrameClockPrivate *priv;
+  CdkFrameClockPrivate *priv;
 
   g_return_val_if_fail (GDK_IS_FRAME_CLOCK (frame_clock), 0);
 
@@ -499,14 +499,14 @@ cdk_frame_clock_get_current_timings (GdkFrameClock *frame_clock)
 
 #ifdef G_ENABLE_DEBUG
 void
-_cdk_frame_clock_debug_print_timings (GdkFrameClock   *clock,
-                                      GdkFrameTimings *timings)
+_cdk_frame_clock_debug_print_timings (CdkFrameClock   *clock,
+                                      CdkFrameTimings *timings)
 {
   GString *str;
 
   gint64 previous_frame_time = 0;
   gint64 previous_smoothed_frame_time = 0;
-  GdkFrameTimings *previous_timings = cdk_frame_clock_get_timings (clock,
+  CdkFrameTimings *previous_timings = cdk_frame_clock_get_timings (clock,
                                                                    timings->frame_counter - 1);
 
   if (previous_timings != NULL)
@@ -551,7 +551,7 @@ _cdk_frame_clock_debug_print_timings (GdkFrameClock   *clock,
 
 /**
  * cdk_frame_clock_get_refresh_info:
- * @frame_clock: a #GdkFrameClock
+ * @frame_clock: a #CdkFrameClock
  * @base_time: base time for determining a presentaton time
  * @refresh_interval_return: (out) (optional): a location to store the
  * determined refresh interval, or %NULL. A default refresh interval of
@@ -569,7 +569,7 @@ _cdk_frame_clock_debug_print_timings (GdkFrameClock   *clock,
  * Since: 3.8
  */
 void
-cdk_frame_clock_get_refresh_info (GdkFrameClock *frame_clock,
+cdk_frame_clock_get_refresh_info (CdkFrameClock *frame_clock,
                                   gint64         base_time,
                                   gint64        *refresh_interval_return,
                                   gint64        *presentation_time_return)
@@ -583,7 +583,7 @@ cdk_frame_clock_get_refresh_info (GdkFrameClock *frame_clock,
 
   while (TRUE)
     {
-      GdkFrameTimings *timings = cdk_frame_clock_get_timings (frame_clock, frame_counter);
+      CdkFrameTimings *timings = cdk_frame_clock_get_timings (frame_clock, frame_counter);
       gint64 presentation_time;
       gint64 refresh_interval;
 
@@ -628,50 +628,50 @@ cdk_frame_clock_get_refresh_info (GdkFrameClock *frame_clock,
 }
 
 void
-_cdk_frame_clock_emit_flush_events (GdkFrameClock *frame_clock)
+_cdk_frame_clock_emit_flush_events (CdkFrameClock *frame_clock)
 {
   g_signal_emit (frame_clock, signals[FLUSH_EVENTS], 0);
 }
 
 void
-_cdk_frame_clock_emit_before_paint (GdkFrameClock *frame_clock)
+_cdk_frame_clock_emit_before_paint (CdkFrameClock *frame_clock)
 {
   g_signal_emit (frame_clock, signals[BEFORE_PAINT], 0);
 }
 
 void
-_cdk_frame_clock_emit_update (GdkFrameClock *frame_clock)
+_cdk_frame_clock_emit_update (CdkFrameClock *frame_clock)
 {
   g_signal_emit (frame_clock, signals[UPDATE], 0);
 }
 
 void
-_cdk_frame_clock_emit_layout (GdkFrameClock *frame_clock)
+_cdk_frame_clock_emit_layout (CdkFrameClock *frame_clock)
 {
   g_signal_emit (frame_clock, signals[LAYOUT], 0);
 }
 
 void
-_cdk_frame_clock_emit_paint (GdkFrameClock *frame_clock)
+_cdk_frame_clock_emit_paint (CdkFrameClock *frame_clock)
 {
   g_signal_emit (frame_clock, signals[PAINT], 0);
 }
 
 void
-_cdk_frame_clock_emit_after_paint (GdkFrameClock *frame_clock)
+_cdk_frame_clock_emit_after_paint (CdkFrameClock *frame_clock)
 {
   g_signal_emit (frame_clock, signals[AFTER_PAINT], 0);
 }
 
 void
-_cdk_frame_clock_emit_resume_events (GdkFrameClock *frame_clock)
+_cdk_frame_clock_emit_resume_events (CdkFrameClock *frame_clock)
 {
   g_signal_emit (frame_clock, signals[RESUME_EVENTS], 0);
 }
 
 #ifdef G_ENABLE_DEBUG
 static gint64
-guess_refresh_interval (GdkFrameClock *frame_clock)
+guess_refresh_interval (CdkFrameClock *frame_clock)
 {
   gint64 interval;
   gint64 i;
@@ -682,7 +682,7 @@ guess_refresh_interval (GdkFrameClock *frame_clock)
        i < cdk_frame_clock_get_frame_counter (frame_clock);
        i++)
     {
-      GdkFrameTimings *t, *before;
+      CdkFrameTimings *t, *before;
       gint64 ts, before_ts;
 
       t = cdk_frame_clock_get_timings (frame_clock, i);
@@ -705,9 +705,9 @@ guess_refresh_interval (GdkFrameClock *frame_clock)
 }
 
 static double
-frame_clock_get_fps (GdkFrameClock *frame_clock)
+frame_clock_get_fps (CdkFrameClock *frame_clock)
 {
-  GdkFrameTimings *start, *end;
+  CdkFrameTimings *start, *end;
   gint64 start_counter, end_counter;
   gint64 start_timestamp, end_timestamp;
   gint64 interval;
@@ -742,8 +742,8 @@ frame_clock_get_fps (GdkFrameClock *frame_clock)
 #endif
 
 void
-_cdk_frame_clock_add_timings_to_profiler (GdkFrameClock   *clock,
-                                          GdkFrameTimings *timings)
+_cdk_frame_clock_add_timings_to_profiler (CdkFrameClock   *clock,
+                                          CdkFrameTimings *timings)
 {
 #ifdef G_ENABLE_DEBUG
   cdk_profiler_add_mark (timings->frame_time * 1000,

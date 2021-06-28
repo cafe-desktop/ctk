@@ -163,7 +163,7 @@ ctk_application_impl_prefers_app_menu (CtkApplicationImpl *impl)
 
 CtkApplicationImpl *
 ctk_application_impl_new (CtkApplication *application,
-                          GdkDisplay     *display)
+                          CdkDisplay     *display)
 {
   CtkApplicationImpl *impl;
   GType impl_type;

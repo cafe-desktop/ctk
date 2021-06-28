@@ -621,7 +621,7 @@ init_font_scale (CtkInspectorVisual *vis)
 static void
 scale_changed (CtkAdjustment *adjustment, CtkInspectorVisual *vis)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   gint scale;
 
   scale = ctk_adjustment_get_value (adjustment);
@@ -634,7 +634,7 @@ static void
 init_scale (CtkInspectorVisual *vis)
 {
 #if defined (GDK_WINDOWING_X11)
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   screen = cdk_screen_get_default ();
   if (GDK_IS_X11_SCREEN (screen))
@@ -802,7 +802,7 @@ keynav_failed (CtkWidget *widget, CtkDirectionType direction, CtkInspectorVisual
 static void
 init_gl (CtkInspectorVisual *vis)
 {
-  GdkGLFlags flags;
+  CdkGLFlags flags;
 
   flags = GDK_PRIVATE_CALL (cdk_gl_get_flags) ();
 
@@ -837,7 +837,7 @@ init_gl (CtkInspectorVisual *vis)
 static void
 init_rendering_mode (CtkInspectorVisual *vis)
 {
-  GdkRenderingMode mode;
+  CdkRenderingMode mode;
 
   mode = GDK_PRIVATE_CALL (cdk_display_get_rendering_mode) (cdk_display_get_default ());
   ctk_combo_box_set_active (CTK_COMBO_BOX (vis->priv->rendering_mode_combo), mode);
@@ -847,7 +847,7 @@ static void
 rendering_mode_changed (CtkComboBox        *c,
                         CtkInspectorVisual *vis)
 {
-  GdkRenderingMode mode;
+  CdkRenderingMode mode;
 
   mode = ctk_combo_box_get_active (c);
   GDK_PRIVATE_CALL (cdk_display_set_rendering_mode) (cdk_display_get_default (), mode);
@@ -855,9 +855,9 @@ rendering_mode_changed (CtkComboBox        *c,
 
 static void
 update_gl_flag (CtkSwitch  *sw,
-                GdkGLFlags  flag)
+                CdkGLFlags  flag)
 {
-  GdkGLFlags flags;
+  CdkGLFlags flags;
 
   flags = GDK_PRIVATE_CALL (cdk_gl_get_flags) ();
 

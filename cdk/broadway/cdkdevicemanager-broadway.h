@@ -23,30 +23,30 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_BROADWAY_DEVICE_MANAGER         (cdk_broadway_device_manager_get_type ())
-#define GDK_BROADWAY_DEVICE_MANAGER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_BROADWAY_DEVICE_MANAGER, GdkBroadwayDeviceManager))
-#define GDK_BROADWAY_DEVICE_MANAGER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_BROADWAY_DEVICE_MANAGER, GdkBroadwayDeviceManagerClass))
+#define GDK_BROADWAY_DEVICE_MANAGER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_BROADWAY_DEVICE_MANAGER, CdkBroadwayDeviceManager))
+#define GDK_BROADWAY_DEVICE_MANAGER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_BROADWAY_DEVICE_MANAGER, CdkBroadwayDeviceManagerClass))
 #define GDK_IS_BROADWAY_DEVICE_MANAGER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_BROADWAY_DEVICE_MANAGER))
 #define GDK_IS_BROADWAY_DEVICE_MANAGER_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_BROADWAY_DEVICE_MANAGER))
-#define GDK_BROADWAY_DEVICE_MANAGER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_BROADWAY_DEVICE_MANAGER, GdkBroadwayDeviceManagerClass))
+#define GDK_BROADWAY_DEVICE_MANAGER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_BROADWAY_DEVICE_MANAGER, CdkBroadwayDeviceManagerClass))
 
-typedef struct _GdkBroadwayDeviceManager GdkBroadwayDeviceManager;
-typedef struct _GdkBroadwayDeviceManagerClass GdkBroadwayDeviceManagerClass;
+typedef struct _CdkBroadwayDeviceManager CdkBroadwayDeviceManager;
+typedef struct _CdkBroadwayDeviceManagerClass CdkBroadwayDeviceManagerClass;
 
-struct _GdkBroadwayDeviceManager
+struct _CdkBroadwayDeviceManager
 {
-  GdkDeviceManager parent_object;
-  GdkDevice *core_pointer;
-  GdkDevice *core_keyboard;
-  GdkDevice *touchscreen;
+  CdkDeviceManager parent_object;
+  CdkDevice *core_pointer;
+  CdkDevice *core_keyboard;
+  CdkDevice *touchscreen;
 };
 
-struct _GdkBroadwayDeviceManagerClass
+struct _CdkBroadwayDeviceManagerClass
 {
-  GdkDeviceManagerClass parent_class;
+  CdkDeviceManagerClass parent_class;
 };
 
 GType cdk_broadway_device_manager_get_type (void) G_GNUC_CONST;
-GdkDeviceManager *_cdk_broadway_device_manager_new (GdkDisplay *display);
+CdkDeviceManager *_cdk_broadway_device_manager_new (CdkDisplay *display);
 
 G_END_DECLS
 

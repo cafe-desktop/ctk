@@ -1473,8 +1473,8 @@ msgid "Cell background color"
 msgstr "رنگ پس‌زمینه‌ی خانه"
 
 #: ../ctk/ctkcellrenderer.c:384
-msgid "Cell background color as a GdkColor"
-msgstr "رنگ پس‌زمینه‌ی خانه به‌عنوان یک GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "رنگ پس‌زمینه‌ی خانه به‌عنوان یک CdkColor"
 
 #: ../ctk/ctkcellrenderer.c:397
 #, fuzzy
@@ -1484,9 +1484,9 @@ msgstr "رنگ پس‌زمینه‌ی خانه"
 
 #: ../ctk/ctkcellrenderer.c:398
 #, fuzzy
-#| msgid "Cell background color as a GdkColor"
-msgid "Cell background color as a GdkRGBA"
-msgstr "رنگ پس‌زمینه‌ی خانه به‌عنوان یک GdkColor"
+#| msgid "Cell background color as a CdkColor"
+msgid "Cell background color as a CdkRGBA"
+msgstr "رنگ پس‌زمینه‌ی خانه به‌عنوان یک CdkColor"
 
 #: ../ctk/ctkcellrenderer.c:405
 msgid "Editing"
@@ -1762,8 +1762,8 @@ msgstr "رنگ پس‌زمینه"
 #: ../ctk/ctkcellrenderertext.c:296
 #: ../ctk/ctkcellview.c:199
 #: ../ctk/ctktexttag.c:208
-msgid "Background color as a GdkColor"
-msgstr "رنگ پس‌زمینه به‌عنوان یک GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "رنگ پس‌زمینه به‌عنوان یک CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:310
 #, fuzzy
@@ -1775,9 +1775,9 @@ msgstr "نام رنگ پس‌زمینه"
 #: ../ctk/ctkcellview.c:213
 #: ../ctk/ctktexttag.c:223
 #, fuzzy
-#| msgid "Background color as a GdkColor"
-msgid "Background color as a GdkRGBA"
-msgstr "رنگ پس‌زمینه به‌عنوان یک GdkColor"
+#| msgid "Background color as a CdkColor"
+msgid "Background color as a CdkRGBA"
+msgstr "رنگ پس‌زمینه به‌عنوان یک CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:317
 #: ../ctk/ctktexttag.c:238
@@ -1797,8 +1797,8 @@ msgstr "رنگ پیش‌زمینه"
 
 #: ../ctk/ctkcellrenderertext.c:326
 #: ../ctk/ctktexttag.c:247
-msgid "Foreground color as a GdkColor"
-msgstr "رنگ پیش‌زمینه به‌عنوان یک GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "رنگ پیش‌زمینه به‌عنوان یک CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:340
 #, fuzzy
@@ -1809,9 +1809,9 @@ msgstr "نام رنگ پیش‌زمینه"
 #: ../ctk/ctkcellrenderertext.c:341
 #: ../ctk/ctktexttag.c:262
 #, fuzzy
-#| msgid "Foreground color as a GdkColor"
-msgid "Foreground color as a GdkRGBA"
-msgstr "رنگ پیش‌زمینه به‌عنوان یک GdkColor"
+#| msgid "Foreground color as a CdkColor"
+msgid "Foreground color as a CdkRGBA"
+msgstr "رنگ پیش‌زمینه به‌عنوان یک CdkColor"
 
 # hich-yek, hich-kodaam, be-hich-vajh, aslan
 #: ../ctk/ctkcellrenderertext.c:349
@@ -3708,7 +3708,7 @@ msgstr ""
 
 #: ../ctk/ctkimage.c:236
 #: ../ctk/ctkstatusicon.c:236
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:243
@@ -3760,7 +3760,7 @@ msgid "Animation"
 msgstr "پویانمایی"
 
 #: ../ctk/ctkimage.c:295
-msgid "GdkPixbufAnimation to display"
+msgid "CdkPixbufAnimation to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:335
@@ -6267,7 +6267,7 @@ msgid "CtkStyleContext to get style from"
 msgstr ""
 
 #: ../ctk/ctkstylecontext.c:545
-msgid "The associated GdkScreen"
+msgid "The associated CdkScreen"
 msgstr ""
 
 #: ../ctk/ctkstylecontext.c:551
@@ -6380,7 +6380,7 @@ msgstr "سال انتخاب شده"
 #: ../ctk/ctktextbuffer.c:237
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "GdkFontی که هم‌اکنون انتخاب شده است"
+msgstr "CdkFontی که هم‌اکنون انتخاب شده است"
 
 #: ../ctk/ctktextbuffer.c:253
 #, fuzzy
@@ -6588,7 +6588,7 @@ msgstr "رنگ پس‌زمینه‌ی خانه"
 
 #: ../ctk/ctktexttag.c:562
 #, fuzzy
-msgid "Paragraph background color as a GdkColor"
+msgid "Paragraph background color as a CdkColor"
 msgstr "رنگ پس‌زمینه به‌عنوان یک رشته"
 
 #: ../ctk/ctktexttag.c:576
@@ -6598,7 +6598,7 @@ msgstr "رنگ پس‌زمینه‌ی خانه"
 
 #: ../ctk/ctktexttag.c:577
 #, fuzzy
-msgid "Paragraph background rgba as a GdkRGBA"
+msgid "Paragraph background rgba as a CdkRGBA"
 msgstr "رنگ پس‌زمینه به‌عنوان یک رشته"
 
 #: ../ctk/ctktexttag.c:595
@@ -7581,7 +7581,7 @@ msgid "Events"
 msgstr "رویدادها"
 
 #: ../ctk/ctkwidget.c:1042
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
 
 #: ../ctk/ctkwidget.c:1049
@@ -8114,8 +8114,8 @@ msgstr "موقعیت اولیه‌ی پنجره"
 #~ msgstr "پویانمایی"
 
 #, fuzzy
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-#~ msgstr "رنگ پس‌زمینه‌ی خانه به‌عنوان یک GdkColor"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+#~ msgstr "رنگ پس‌زمینه‌ی خانه به‌عنوان یک CdkColor"
 
 #, fuzzy
 #~ msgid "Whether the animation should loop when it reaches the end"
@@ -8150,7 +8150,7 @@ msgstr "موقعیت اولیه‌ی پنجره"
 #~ msgstr "سطرها"
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "مدل نمایش درختی"
 
 #~ msgid "Has separator"
@@ -8160,8 +8160,8 @@ msgstr "موقعیت اولیه‌ی پنجره"
 #~ msgid "Invisible char set"
 #~ msgstr "نویسه‌ی نامرئی"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "GdkFontی که هم‌اکنون انتخاب شده است"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "CdkFontی که هم‌اکنون انتخاب شده است"
 
 #~ msgid "Pixmap"
 #~ msgstr "نقشه‌نقطه‌ای"

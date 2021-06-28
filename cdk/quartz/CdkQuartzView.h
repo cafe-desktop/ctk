@@ -1,4 +1,4 @@
-/* GdkQuartzView.h
+/* CdkQuartzView.h
  *
  * Copyright (C) 2005 Imendio AB
  *
@@ -33,17 +33,17 @@
 #define GIC_FILTER_PASSTHRU	0
 #define GIC_FILTER_FILTERED	1
 
-@interface GdkQuartzView : NSView <NSTextInputClient>
+@interface CdkQuartzView : NSView <NSTextInputClient>
 {
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
   NSTrackingRectTag trackingRect;
   BOOL needsInvalidateShadow;
   NSRange markedRange;
   NSRange selectedRange;
 }
 
-- (void)setGdkWindow: (GdkWindow *)window;
-- (GdkWindow *)cdkWindow;
+- (void)setCdkWindow: (CdkWindow *)window;
+- (CdkWindow *)cdkWindow;
 - (NSTrackingRectTag)trackingRect;
 - (void)setNeedsInvalidateShadow: (BOOL)invalidate;
 

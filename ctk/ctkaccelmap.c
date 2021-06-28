@@ -209,7 +209,7 @@ _ctk_accel_path_is_valid (const gchar *accel_path)
 void
 ctk_accel_map_add_entry (const gchar    *accel_path,
 			 guint           accel_key,
-			 GdkModifierType accel_mods)
+			 CdkModifierType accel_mods)
 {
   AccelEntry *entry;
 
@@ -305,7 +305,7 @@ g_hash_table_slist_values (GHashTable *hash_table)
 static gboolean
 internal_change_entry (const gchar    *accel_path,
 		       guint           accel_key,
-		       GdkModifierType accel_mods,
+		       CdkModifierType accel_mods,
 		       gboolean        replace,
 		       gboolean	       simulate)
 {
@@ -495,7 +495,7 @@ internal_change_entry (const gchar    *accel_path,
 gboolean
 ctk_accel_map_change_entry (const gchar    *accel_path,
 			    guint           accel_key,
-			    GdkModifierType accel_mods,
+			    CdkModifierType accel_mods,
 			    gboolean        replace)
 {
   g_return_val_if_fail (_ctk_accel_path_is_valid (accel_path), FALSE);
@@ -507,7 +507,7 @@ static guint
 accel_map_parse_accel_path (GScanner *scanner)
 {
   guint accel_key = 0;
-  GdkModifierType accel_mods = 0;
+  CdkModifierType accel_mods = 0;
   gchar *path, *accel;
   
   /* parse accel path */
@@ -712,7 +712,7 @@ static void
 accel_map_print (gpointer        data,
 		 const gchar    *accel_path,
 		 guint           accel_key,
-		 GdkModifierType accel_mods,
+		 CdkModifierType accel_mods,
 		 gboolean        changed)
 {
   GString *gstring = g_string_new (changed ? NULL : "; ");

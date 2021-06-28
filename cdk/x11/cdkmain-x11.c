@@ -79,17 +79,17 @@
  * ]|
  */
 
-typedef struct _GdkPredicate GdkPredicate;
+typedef struct _CdkPredicate CdkPredicate;
 
-struct _GdkPredicate
+struct _CdkPredicate
 {
-  GdkEventFunc func;
+  CdkEventFunc func;
   gpointer data;
 };
 
 /* non-GDK previous error handler */
-typedef int (*GdkXErrorHandler) (Display *, XErrorEvent *);
-static GdkXErrorHandler _cdk_old_error_handler;
+typedef int (*CdkXErrorHandler) (Display *, XErrorEvent *);
+static CdkXErrorHandler _cdk_old_error_handler;
 /* number of times we've pushed the GDK error handler */
 static int _cdk_error_handler_push_count = 0;
 
@@ -115,7 +115,7 @@ _cdk_x11_windowing_init (void)
                          NULL);
 }
 
-GdkGrabStatus
+CdkGrabStatus
 _cdk_x11_convert_grab_status (gint status)
 {
   switch (status)
@@ -139,7 +139,7 @@ _cdk_x11_convert_grab_status (gint status)
 
 /*
  * _cdk_x11_window_grab_check_unmap:
- * @window: a #GdkWindow
+ * @window: a #CdkWindow
  * @serial: serial from Unmap event (or from NextRequest(display)
  *   if the unmap is being done by this client.)
  *
@@ -148,11 +148,11 @@ _cdk_x11_convert_grab_status (gint status)
  * the pointer we keep to it.
  **/
 void
-_cdk_x11_window_grab_check_unmap (GdkWindow *window,
+_cdk_x11_window_grab_check_unmap (CdkWindow *window,
                                   gulong     serial)
 {
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkDeviceManager *device_manager;
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkDeviceManager *device_manager;
   GList *devices, *d;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -173,17 +173,17 @@ _cdk_x11_window_grab_check_unmap (GdkWindow *window,
 
 /*
  * _cdk_x11_window_grab_check_destroy:
- * @window: a #GdkWindow
+ * @window: a #CdkWindow
  * 
  * Checks to see if window is the current grab window, and if
  * so, clear the current grab window.
  **/
 void
-_cdk_x11_window_grab_check_destroy (GdkWindow *window)
+_cdk_x11_window_grab_check_destroy (CdkWindow *window)
 {
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkDeviceManager *device_manager;
-  GdkDeviceGrabInfo *grab;
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkDeviceManager *device_manager;
+  CdkDeviceGrabInfo *grab;
   GList *devices, *d;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -271,17 +271,17 @@ cdk_x_error (Display	 *xdisplay,
 {
   if (error->error_code)
     {
-      GdkDisplay *error_display;
-      GdkDisplayManager *manager;
+      CdkDisplay *error_display;
+      CdkDisplayManager *manager;
       GSList *displays;
 
-      /* Figure out which GdkDisplay if any got the error. */
+      /* Figure out which CdkDisplay if any got the error. */
       error_display = NULL;
       manager = cdk_display_manager_get ();
       displays = cdk_display_manager_list_displays (manager);
       while (displays != NULL)
         {
-          GdkX11Display *cdk_display = displays->data;
+          CdkX11Display *cdk_display = displays->data;
 
           if (GDK_IS_X11_DISPLAY (cdk_display) &&
               xdisplay == cdk_display->xdisplay)
@@ -314,7 +314,7 @@ cdk_x_error (Display	 *xdisplay,
 void
 _cdk_x11_error_handler_push (void)
 {
-  GdkXErrorHandler previous;
+  CdkXErrorHandler previous;
 
   previous = XSetErrorHandler (cdk_x_error);
 
@@ -346,7 +346,7 @@ _cdk_x11_error_handler_pop  (void)
 }
 
 gint
-_cdk_x11_display_send_xevent (GdkDisplay *display,
+_cdk_x11_display_send_xevent (CdkDisplay *display,
                               Window      window,
                               gboolean    propagate,
                               glong       event_mask,

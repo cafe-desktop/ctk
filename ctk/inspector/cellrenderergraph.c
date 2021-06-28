@@ -115,7 +115,7 @@ ctk_cell_renderer_graph_set_property (GObject      *object,
 static void
 ctk_cell_renderer_graph_get_size (CtkCellRenderer    *cell,
                                   CtkWidget          *widget,
-                                  const GdkRectangle *cell_area,
+                                  const CdkRectangle *cell_area,
                                   gint               *x_offset,
                                   gint               *y_offset,
                                   gint               *width,
@@ -156,8 +156,8 @@ static void
 ctk_cell_renderer_graph_render (CtkCellRenderer      *cell,
                                 cairo_t              *cr,
                                 CtkWidget            *widget,
-                                const GdkRectangle   *background_area,
-                                const GdkRectangle   *cell_area,
+                                const CdkRectangle   *background_area,
+                                const CdkRectangle   *cell_area,
                                 CtkCellRendererState  flags)
 {
   CtkCellRendererGraph *graph = CTK_CELL_RENDERER_GRAPH (cell);
@@ -166,7 +166,7 @@ ctk_cell_renderer_graph_render (CtkCellRenderer      *cell,
   double minimum, maximum, diff;
   double x, y, width, height;
   int xpad, ypad;
-  GdkRGBA color;
+  CdkRGBA color;
   guint i, n;
 
 #define LINE_WIDTH 1.0

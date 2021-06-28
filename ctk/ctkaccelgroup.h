@@ -71,7 +71,7 @@ typedef struct _CtkAccelGroupEntry        CtkAccelGroupEntry;
 typedef gboolean (*CtkAccelGroupActivate) (CtkAccelGroup  *accel_group,
 					   GObject        *acceleratable,
 					   guint           keyval,
-					   GdkModifierType modifier);
+					   CdkModifierType modifier);
 
 /**
  * CtkAccelGroupFindFunc:
@@ -110,7 +110,7 @@ struct _CtkAccelGroupClass
 
   void	(*accel_changed)	(CtkAccelGroup	*accel_group,
 				 guint           keyval,
-				 GdkModifierType modifier,
+				 CdkModifierType modifier,
 				 GClosure       *accel_closure);
 
   /*< private >*/
@@ -131,7 +131,7 @@ struct _CtkAccelGroupClass
 struct _CtkAccelKey
 {
   guint           accel_key;
-  GdkModifierType accel_mods;
+  CdkModifierType accel_mods;
   guint           accel_flags : 16;
 };
 
@@ -144,7 +144,7 @@ CtkAccelGroup* ctk_accel_group_new	      	  (void);
 GDK_AVAILABLE_IN_ALL
 gboolean       ctk_accel_group_get_is_locked      (CtkAccelGroup  *accel_group);
 GDK_AVAILABLE_IN_ALL
-GdkModifierType 
+CdkModifierType 
                ctk_accel_group_get_modifier_mask  (CtkAccelGroup  *accel_group);
 GDK_AVAILABLE_IN_ALL
 void	       ctk_accel_group_lock		  (CtkAccelGroup  *accel_group);
@@ -153,7 +153,7 @@ void	       ctk_accel_group_unlock		  (CtkAccelGroup  *accel_group);
 GDK_AVAILABLE_IN_ALL
 void	       ctk_accel_group_connect		  (CtkAccelGroup  *accel_group,
 						   guint	   accel_key,
-						   GdkModifierType accel_mods,
+						   CdkModifierType accel_mods,
 						   CtkAccelFlags   accel_flags,
 						   GClosure	  *closure);
 GDK_AVAILABLE_IN_ALL
@@ -166,13 +166,13 @@ gboolean       ctk_accel_group_disconnect	  (CtkAccelGroup  *accel_group,
 GDK_AVAILABLE_IN_ALL
 gboolean       ctk_accel_group_disconnect_key	  (CtkAccelGroup  *accel_group,
 						   guint	   accel_key,
-						   GdkModifierType accel_mods);
+						   CdkModifierType accel_mods);
 GDK_AVAILABLE_IN_ALL
 gboolean       ctk_accel_group_activate           (CtkAccelGroup   *accel_group,
                                                    GQuark	   accel_quark,
                                                    GObject	  *acceleratable,
                                                    guint	   accel_key,
-                                                   GdkModifierType accel_mods);
+                                                   CdkModifierType accel_mods);
 
 
 /* --- CtkActivatable glue --- */
@@ -183,7 +183,7 @@ void		_ctk_accel_group_detach		(CtkAccelGroup	*accel_group,
 GDK_AVAILABLE_IN_ALL
 gboolean        ctk_accel_groups_activate      	(GObject	*object,
 						 guint		 accel_key,
-						 GdkModifierType accel_mods);
+						 CdkModifierType accel_mods);
 GDK_AVAILABLE_IN_ALL
 GSList*	        ctk_accel_groups_from_object    (GObject	*object);
 GDK_AVAILABLE_IN_ALL
@@ -197,42 +197,42 @@ CtkAccelGroup*	ctk_accel_group_from_accel_closure (GClosure    *closure);
 /* --- Accelerators--- */
 GDK_AVAILABLE_IN_ALL
 gboolean ctk_accelerator_valid		      (guint	        keyval,
-					       GdkModifierType  modifiers) G_GNUC_CONST;
+					       CdkModifierType  modifiers) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
 void	 ctk_accelerator_parse		      (const gchar     *accelerator,
 					       guint	       *accelerator_key,
-					       GdkModifierType *accelerator_mods);
+					       CdkModifierType *accelerator_mods);
 GDK_AVAILABLE_IN_3_4
 void ctk_accelerator_parse_with_keycode       (const gchar     *accelerator,
                                                guint           *accelerator_key,
                                                guint          **accelerator_codes,
-                                               GdkModifierType *accelerator_mods);
+                                               CdkModifierType *accelerator_mods);
 GDK_AVAILABLE_IN_ALL
 gchar*	 ctk_accelerator_name		      (guint	        accelerator_key,
-					       GdkModifierType  accelerator_mods);
+					       CdkModifierType  accelerator_mods);
 GDK_AVAILABLE_IN_3_4
-gchar*	 ctk_accelerator_name_with_keycode    (GdkDisplay      *display,
+gchar*	 ctk_accelerator_name_with_keycode    (CdkDisplay      *display,
                                                guint            accelerator_key,
                                                guint            keycode,
-                                               GdkModifierType  accelerator_mods);
+                                               CdkModifierType  accelerator_mods);
 GDK_AVAILABLE_IN_ALL
 gchar*   ctk_accelerator_get_label            (guint           accelerator_key,
-                                               GdkModifierType accelerator_mods);
+                                               CdkModifierType accelerator_mods);
 GDK_AVAILABLE_IN_3_4
-gchar*   ctk_accelerator_get_label_with_keycode (GdkDisplay      *display,
+gchar*   ctk_accelerator_get_label_with_keycode (CdkDisplay      *display,
                                                  guint            accelerator_key,
                                                  guint            keycode,
-                                                 GdkModifierType  accelerator_mods);
+                                                 CdkModifierType  accelerator_mods);
 GDK_AVAILABLE_IN_ALL
-void	 ctk_accelerator_set_default_mod_mask (GdkModifierType  default_mod_mask);
+void	 ctk_accelerator_set_default_mod_mask (CdkModifierType  default_mod_mask);
 GDK_AVAILABLE_IN_ALL
-GdkModifierType
+CdkModifierType
 	 ctk_accelerator_get_default_mod_mask (void);
 
 GDK_AVAILABLE_IN_ALL
 CtkAccelGroupEntry*	ctk_accel_group_query	(CtkAccelGroup	*accel_group,
 						 guint		 accel_key,
-						 GdkModifierType accel_mods,
+						 CdkModifierType accel_mods,
 						 guint          *n_entries);
 
 struct _CtkAccelGroupEntry

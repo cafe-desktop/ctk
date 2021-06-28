@@ -42,7 +42,7 @@ GDK_CFLAGS_DEFINES =	\
 
 
 AM_CPPFLAGS =				\
-	-DG_LOG_DOMAIN=\"Gdk\"		\
+	-DG_LOG_DOMAIN=\"Cdk\"		\
 	$(GDK_CFLAGS_DEFINES)		\
 	-I$(top_builddir)		\
 	-I$(top_builddir)/cdk		\
@@ -246,17 +246,17 @@ introspection_files = 		\
 	$(cdk_c_sources)	\
 	$(cdk_built_sources)
 
-Gdk-3.0.gir: libcdk-3.la Makefile
-Gdk_3_0_gir_SCANNERFLAGS = 	\
+Cdk-3.0.gir: libcdk-3.la Makefile
+Cdk_3_0_gir_SCANNERFLAGS = 	\
 	--c-include="cdk/cdk.h"
-Gdk_3_0_gir_INCLUDES = Gio-2.0 GdkPixbuf-2.0 Pango-1.0 cairo-1.0
-Gdk_3_0_gir_LIBS = libcdk-3.la
-Gdk_3_0_gir_FILES = $(introspection_files)
-Gdk_3_0_gir_CFLAGS = $(AM_CPPFLAGS)
-Gdk_3_0_gir_EXPORT_PACKAGES = cdk-3.0
-INTROSPECTION_GIRS += Gdk-3.0.gir
+Cdk_3_0_gir_INCLUDES = Gio-2.0 CdkPixbuf-2.0 Pango-1.0 cairo-1.0
+Cdk_3_0_gir_LIBS = libcdk-3.la
+Cdk_3_0_gir_FILES = $(introspection_files)
+Cdk_3_0_gir_CFLAGS = $(AM_CPPFLAGS)
+Cdk_3_0_gir_EXPORT_PACKAGES = cdk-3.0
+INTROSPECTION_GIRS += Cdk-3.0.gir
 if OS_WIN32
-Gdk_3_0_gir_CFLAGS += -I$(srcdir)/win32 -I$(srcdir)
+Cdk_3_0_gir_CFLAGS += -I$(srcdir)/win32 -I$(srcdir)
 endif
 if USE_X11
 x11_introspection_files = 		\
@@ -310,17 +310,17 @@ x11_introspection_files = 		\
 	x11/cdkx11visual.h		\
 	x11/cdkx11window.h
 
-GdkX11-3.0.gir: libcdk-3.la Gdk-3.0.gir Makefile
-GdkX11_3_0_gir_SCANNERFLAGS = 		\
-	--identifier-prefix=Gdk		\
+CdkX11-3.0.gir: libcdk-3.la Cdk-3.0.gir Makefile
+CdkX11_3_0_gir_SCANNERFLAGS = 		\
+	--identifier-prefix=Cdk		\
 	--c-include="cdk/cdkx.h"	\
-	--include-uninstalled=$(top_builddir)/cdk/Gdk-3.0.gir
-GdkX11_3_0_gir_INCLUDES = Gio-2.0 GdkPixbuf-2.0 Pango-1.0 xlib-2.0
-GdkX11_3_0_gir_LIBS = libcdk-3.la
-GdkX11_3_0_gir_FILES = $(x11_introspection_files)
-GdkX11_3_0_gir_CFLAGS = $(AM_CPPFLAGS) -L$(top_builddir)/cdk
-GdkX11_3_0_gir_EXPORT_PACKAGES = cdk-x11-3.0
-INTROSPECTION_GIRS += GdkX11-3.0.gir
+	--include-uninstalled=$(top_builddir)/cdk/Cdk-3.0.gir
+CdkX11_3_0_gir_INCLUDES = Gio-2.0 CdkPixbuf-2.0 Pango-1.0 xlib-2.0
+CdkX11_3_0_gir_LIBS = libcdk-3.la
+CdkX11_3_0_gir_FILES = $(x11_introspection_files)
+CdkX11_3_0_gir_CFLAGS = $(AM_CPPFLAGS) -L$(top_builddir)/cdk
+CdkX11_3_0_gir_EXPORT_PACKAGES = cdk-x11-3.0
+INTROSPECTION_GIRS += CdkX11-3.0.gir
 
 endif # USE_X11
 
@@ -355,16 +355,16 @@ w32_introspection_files =		\
 	win32/cdkwindow-win32.c
 
 if OS_WIN32
-GdkWin32-3.0.gir: libcdk-3.la Gdk-3.0.gir Makefile
-GdkWin32_3_0_gir_SCANNERFLAGS = \
-	--identifier-prefix=Gdk		\
+CdkWin32-3.0.gir: libcdk-3.la Cdk-3.0.gir Makefile
+CdkWin32_3_0_gir_SCANNERFLAGS = \
+	--identifier-prefix=Cdk		\
 	--c-include="cdk/cdkwin32.h"	\
-	--include-uninstalled=$(top_builddir)/cdk/Gdk-3.0.gir
-GdkWin32_3_0_gir_INCLUDES = Gio-2.0 GdkPixbuf-2.0 Pango-1.0
-GdkWin32_3_0_gir_LIBS = libcdk-3.la
-GdkWin32_3_0_gir_FILES = $(w32_introspection_files)
-GdkWin32_3_0_gir_CFLAGS = $(AM_CPPFLAGS) -L$(top_builddir)/cdk -I$(srcdir)/win32 -I$(srcdir)
-INTROSPECTION_GIRS += GdkWin32-3.0.gir
+	--include-uninstalled=$(top_builddir)/cdk/Cdk-3.0.gir
+CdkWin32_3_0_gir_INCLUDES = Gio-2.0 CdkPixbuf-2.0 Pango-1.0
+CdkWin32_3_0_gir_LIBS = libcdk-3.la
+CdkWin32_3_0_gir_FILES = $(w32_introspection_files)
+CdkWin32_3_0_gir_CFLAGS = $(AM_CPPFLAGS) -L$(top_builddir)/cdk -I$(srcdir)/win32 -I$(srcdir)
+INTROSPECTION_GIRS += CdkWin32-3.0.gir
 
 endif # OS_WIN32
 
@@ -514,33 +514,33 @@ include $(top_srcdir)/win32/Makefile.msvcproj
 
 if HAVE_INTROSPECTION
 # Introspection Items for MSVC
-MSVC_INTROSPECT_GIRS = Gdk-3.0.gir GdkWin32-3.0.gir
+MSVC_INTROSPECT_GIRS = Cdk-3.0.gir CdkWin32-3.0.gir
 
 BASE_MSVC_GIR_CFLAGS =			\
 	$(GDK_CFLAGS_DEFINES)		\
 	-I.. -I../cdk -I../cdk/win32
 
 INTROSPECTION_INTERMEDIATE_ITEMS = \
-	$(top_builddir)/win32/Gdk-3.0.gir.msvc.introspect	\
-	$(top_builddir)/win32/Gdk_3_0_gir_list			\
-	$(top_builddir)/win32/GdkWin32-3.0.gir.msvc.introspect	\
-	$(top_builddir)/win32/GdkWin32_3_0_gir_list
+	$(top_builddir)/win32/Cdk-3.0.gir.msvc.introspect	\
+	$(top_builddir)/win32/Cdk_3_0_gir_list			\
+	$(top_builddir)/win32/CdkWin32-3.0.gir.msvc.introspect	\
+	$(top_builddir)/win32/CdkWin32_3_0_gir_list
 
-Gdk_3_0_gir_MSVC_FILES = $(introspection_files)
-Gdk_3_0_gir_MSVC_EXPORT_PACKAGES = $(Gdk_3_0_gir_EXPORT_PACKAGES)
-Gdk_3_0_gir_MSVC_INCLUDE_GIRS = $(Gdk_3_0_gir_INCLUDES)
-Gdk_3_0_gir_MSVC_LIBS = cdk-3.0
-Gdk_3_0_gir_MSVC_CFLAGS = $(BASE_MSVC_GIR_CFLAGS)
-Gdk_3_0_gir_MSVC_SCANNERFLAGS = $(Gdk_3_0_gir_SCANNERFLAGS)
+Cdk_3_0_gir_MSVC_FILES = $(introspection_files)
+Cdk_3_0_gir_MSVC_EXPORT_PACKAGES = $(Cdk_3_0_gir_EXPORT_PACKAGES)
+Cdk_3_0_gir_MSVC_INCLUDE_GIRS = $(Cdk_3_0_gir_INCLUDES)
+Cdk_3_0_gir_MSVC_LIBS = cdk-3.0
+Cdk_3_0_gir_MSVC_CFLAGS = $(BASE_MSVC_GIR_CFLAGS)
+Cdk_3_0_gir_MSVC_SCANNERFLAGS = $(Cdk_3_0_gir_SCANNERFLAGS)
 
-GdkWin32_3_0_gir_MSVC_FILES = $(w32_introspection_files)
-GdkWin32_3_0_gir_MSVC_INCLUDE_GIRS = $(GdkWin32_3_0_gir_INCLUDES)
-GdkWin32_3_0_gir_MSVC_LIBS = $(Gdk_3_0_gir_MSVC_LIBS)
-GdkWin32_3_0_gir_MSVC_CFLAGS = $(BASE_MSVC_GIR_CFLAGS)
-GdkWin32_3_0_gir_MSVC_SCANNERFLAGS =	\
-	--identifier-prefix=Gdk		\
+CdkWin32_3_0_gir_MSVC_FILES = $(w32_introspection_files)
+CdkWin32_3_0_gir_MSVC_INCLUDE_GIRS = $(CdkWin32_3_0_gir_INCLUDES)
+CdkWin32_3_0_gir_MSVC_LIBS = $(Cdk_3_0_gir_MSVC_LIBS)
+CdkWin32_3_0_gir_MSVC_CFLAGS = $(BASE_MSVC_GIR_CFLAGS)
+CdkWin32_3_0_gir_MSVC_SCANNERFLAGS =	\
+	--identifier-prefix=Cdk		\
 	--c-include="cdk/cdkwin32.h"	\
-	--include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Gdk-3.0.gir'
+	--include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Cdk-3.0.gir'
 
 include $(top_srcdir)/win32/Makefile.msvc-introspection
 

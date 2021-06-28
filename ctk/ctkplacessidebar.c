@@ -207,16 +207,16 @@ struct _CtkPlacesSidebarClass {
                                       const gchar        *primary,
                                       const gchar        *secondary);
   void    (* show_connect_to_server) (CtkPlacesSidebar   *sidebar);
-  GdkDragAction (* drag_action_requested)  (CtkPlacesSidebar   *sidebar,
-                                      GdkDragContext     *context,
+  CdkDragAction (* drag_action_requested)  (CtkPlacesSidebar   *sidebar,
+                                      CdkDragContext     *context,
                                       GFile              *dest_file,
                                       GList              *source_file_list);
-  GdkDragAction (* drag_action_ask)  (CtkPlacesSidebar   *sidebar,
-                                      GdkDragAction       actions);
+  CdkDragAction (* drag_action_ask)  (CtkPlacesSidebar   *sidebar,
+                                      CdkDragAction       actions);
   void    (* drag_perform_drop)      (CtkPlacesSidebar   *sidebar,
                                       GFile              *dest_file,
                                       GList              *source_file_list,
-                                      GdkDragAction       action);
+                                      CdkDragAction       action);
   void    (* show_enter_location)    (CtkPlacesSidebar   *sidebar);
 
   void    (* show_other_locations)   (CtkPlacesSidebar   *sidebar);
@@ -296,10 +296,10 @@ static void  check_unmount_and_eject       (GMount   *mount,
                                             gboolean *show_unmount,
                                             gboolean *show_eject);
 static gboolean on_button_press_event (CtkWidget      *widget,
-                                       GdkEventButton *event,
+                                       CdkEventButton *event,
                                        CtkSidebarRow  *sidebar);
 static gboolean on_button_release_event (CtkWidget      *widget,
-                                         GdkEventButton *event,
+                                         CdkEventButton *event,
                                          CtkSidebarRow  *sidebar);
 static void popup_menu_cb    (CtkSidebarRow   *row);
 static void long_press_cb    (CtkGesture      *gesture,
@@ -400,13 +400,13 @@ emit_unmount_operation (CtkPlacesSidebar *sidebar,
   g_signal_emit (sidebar, places_sidebar_signals[UNMOUNT], 0, mount_op);
 }
 
-static GdkDragAction
+static CdkDragAction
 emit_drag_action_requested (CtkPlacesSidebar *sidebar,
-                            GdkDragContext   *context,
+                            CdkDragContext   *context,
                             GFile            *dest_file,
                             GList            *source_file_list)
 {
-  GdkDragAction ret_action = 0;
+  CdkDragAction ret_action = 0;
 
   g_signal_emit (sidebar, places_sidebar_signals[DRAG_ACTION_REQUESTED], 0,
                  context, dest_file, source_file_list, &ret_action);
@@ -414,11 +414,11 @@ emit_drag_action_requested (CtkPlacesSidebar *sidebar,
   return ret_action;
 }
 
-static GdkDragAction
+static CdkDragAction
 emit_drag_action_ask (CtkPlacesSidebar *sidebar,
-                      GdkDragAction     actions)
+                      CdkDragAction     actions)
 {
-  GdkDragAction ret_action = 0;
+  CdkDragAction ret_action = 0;
 
   g_signal_emit (sidebar, places_sidebar_signals[DRAG_ACTION_ASK], 0,
                  actions, &ret_action);
@@ -430,7 +430,7 @@ static void
 emit_drag_perform_drop (CtkPlacesSidebar *sidebar,
                         GFile            *dest_file,
                         GList            *source_file_list,
-                        GdkDragAction     action)
+                        CdkDragAction     action)
 {
   g_signal_emit (sidebar, places_sidebar_signals[DRAG_PERFORM_DROP], 0,
                  dest_file, source_file_list, action);
@@ -1556,7 +1556,7 @@ update_places (CtkPlacesSidebar *sidebar)
 static gboolean
 check_valid_drop_target (CtkPlacesSidebar *sidebar,
                          CtkSidebarRow    *row,
-                         GdkDragContext   *context)
+                         CdkDragContext   *context)
 {
   CtkPlacesSidebarPlaceType place_type;
   CtkPlacesSidebarSectionType section_type;
@@ -1645,7 +1645,7 @@ check_valid_drop_target (CtkPlacesSidebar *sidebar,
 static void
 update_possible_drop_targets (CtkPlacesSidebar *sidebar,
                               gboolean          dragging,
-                              GdkDragContext   *context)
+                              CdkDragContext   *context)
 {
   GList *rows;
   GList *l;
@@ -1664,10 +1664,10 @@ update_possible_drop_targets (CtkPlacesSidebar *sidebar,
 
 static gboolean
 get_drag_data (CtkWidget      *list_box,
-               GdkDragContext *context,
+               CdkDragContext *context,
                guint           time)
 {
-  GdkAtom target;
+  CdkAtom target;
 
   target = ctk_drag_dest_find_target (list_box, context, NULL);
 
@@ -1695,7 +1695,7 @@ free_drag_data (CtkPlacesSidebar *sidebar)
 static void
 start_drop_feedback (CtkPlacesSidebar *sidebar,
                      CtkSidebarRow    *row,
-                     GdkDragContext   *context)
+                     CdkDragContext   *context)
 {
   if (sidebar->drag_data_info != DND_CTK_SIDEBAR_ROW)
     {
@@ -1740,7 +1740,7 @@ stop_drop_feedback (CtkPlacesSidebar *sidebar)
 
 static gboolean
 on_motion_notify_event (CtkWidget      *widget,
-                        GdkEventMotion *event,
+                        CdkEventMotion *event,
                         gpointer        user_data)
 {
   CtkPlacesSidebar *sidebar = CTK_PLACES_SIDEBAR (user_data);
@@ -1758,7 +1758,7 @@ on_motion_notify_event (CtkWidget      *widget,
       sidebar->dragging_over = TRUE;
 
       ctk_drag_begin_with_coordinates (widget, sidebar->source_targets, GDK_ACTION_MOVE,
-                                       GDK_BUTTON_PRIMARY, (GdkEvent*)event,
+                                       GDK_BUTTON_PRIMARY, (CdkEvent*)event,
                                        -1, -1);
     }
 
@@ -1767,7 +1767,7 @@ on_motion_notify_event (CtkWidget      *widget,
 
 static void
 drag_begin_callback (CtkWidget      *widget,
-                     GdkDragContext *context,
+                     CdkDragContext *context,
                      gpointer        user_data)
 {
   CtkPlacesSidebar *sidebar = CTK_PLACES_SIDEBAR (user_data);
@@ -1803,7 +1803,7 @@ create_placeholder_row (CtkPlacesSidebar *sidebar)
 
 static gboolean
 drag_motion_callback (CtkWidget      *widget,
-                      GdkDragContext *context,
+                      CdkDragContext *context,
                       gint            x,
                       gint            y,
                       guint           time,
@@ -2001,14 +2001,14 @@ drop_files_as_bookmarks (CtkPlacesSidebar *sidebar,
 
 static void
 drag_data_get_callback (CtkWidget        *widget,
-                        GdkDragContext   *context,
+                        CdkDragContext   *context,
                         CtkSelectionData *data,
                         guint             info,
                         guint             time,
                         gpointer          user_data)
 {
   CtkPlacesSidebar *sidebar = CTK_PLACES_SIDEBAR (user_data);
-  GdkAtom target = ctk_selection_data_get_target (data);
+  CdkAtom target = ctk_selection_data_get_target (data);
 
   if (target == cdk_atom_intern_static_string ("DND_CTK_SIDEBAR_ROW"))
     {
@@ -2022,7 +2022,7 @@ drag_data_get_callback (CtkWidget        *widget,
 
 static void
 drag_data_received_callback (CtkWidget        *list_box,
-                             GdkDragContext   *context,
+                             CdkDragContext   *context,
                              int               x,
                              int               y,
                              CtkSelectionData *selection_data,
@@ -2100,7 +2100,7 @@ drag_data_received_callback (CtkWidget        *list_box,
   else
     {
       /* Dropping URIs! */
-      GdkDragAction real_action;
+      CdkDragAction real_action;
       gchar **uris;
       GList *source_file_list;
 
@@ -2145,7 +2145,7 @@ out:
 
 static void
 drag_end_callback (CtkWidget      *widget,
-                   GdkDragContext *context,
+                   CdkDragContext *context,
                    gpointer        user_data)
 {
   stop_drop_feedback (CTK_PLACES_SIDEBAR (user_data));
@@ -2171,7 +2171,7 @@ drag_end_callback (CtkWidget      *widget,
  */
 static void
 drag_leave_callback (CtkWidget      *widget,
-                     GdkDragContext *context,
+                     CdkDragContext *context,
                      guint           time,
                      gpointer        user_data)
 {
@@ -2191,7 +2191,7 @@ drag_leave_callback (CtkWidget      *widget,
 
 static gboolean
 drag_drop_callback (CtkWidget      *list_box,
-                    GdkDragContext *context,
+                    CdkDragContext *context,
                     gint            x,
                     gint            y,
                     guint           time,
@@ -3454,7 +3454,7 @@ stop_shortcut_cb (GSimpleAction *action,
 
 static gboolean
 on_key_press_event (CtkWidget        *widget,
-                    GdkEventKey      *event,
+                    CdkEventKey      *event,
                     CtkPlacesSidebar *sidebar)
 {
   guint modifiers;
@@ -3784,7 +3784,7 @@ on_row_activated (CtkListBox    *list_box,
 
 static gboolean
 on_button_press_event (CtkWidget      *widget,
-                       GdkEventButton *event,
+                       CdkEventButton *event,
                        CtkSidebarRow  *row)
 {
   CtkPlacesSidebar *sidebar;
@@ -3812,7 +3812,7 @@ on_button_press_event (CtkWidget      *widget,
 
 static gboolean
 on_button_release_event (CtkWidget      *widget,
-                         GdkEventButton *event,
+                         CdkEventButton *event,
                          CtkSidebarRow  *row)
 {
   gboolean ret = FALSE;
@@ -4594,7 +4594,7 @@ ctk_places_sidebar_class_init (CtkPlacesSidebarClass *class)
   /**
    * CtkPlacesSidebar::drag-action-requested:
    * @sidebar: the object which received the signal.
-   * @context: (type Gdk.DragContext): #GdkDragContext with information about the drag operation
+   * @context: (type Cdk.DragContext): #CdkDragContext with information about the drag operation
    * @dest_file: (type Gio.File): #GFile with the tentative location that is being hovered for a drop
    * @source_file_list: (type GLib.List) (element-type GFile) (transfer none):
 	 *   List of #GFile that are being dragged
@@ -5585,7 +5585,7 @@ ctk_places_sidebar_get_nth_bookmark (CtkPlacesSidebar *sidebar,
 void
 ctk_places_sidebar_set_drop_targets_visible (CtkPlacesSidebar *sidebar,
                                              gboolean          visible,
-                                             GdkDragContext   *context)
+                                             CdkDragContext   *context)
 {
   if (visible)
     {

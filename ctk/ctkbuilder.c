@@ -1799,7 +1799,7 @@ ctk_builder_connect_signals_full (CtkBuilder            *builder,
  * initialised beforehand.
  *
  * This function can handle char, uchar, boolean, int, uint, long,
- * ulong, enum, flags, float, double, string, #GdkColor, #GdkRGBA and
+ * ulong, enum, flags, float, double, string, #CdkColor, #CdkRGBA and
  * #CtkAdjustment type values. Support for #CtkWidget type values is
  * still to come.
  *
@@ -2035,9 +2035,9 @@ ctk_builder_value_from_string_type (CtkBuilder   *builder,
       }
       break;
     case G_TYPE_BOXED:
-      if (G_VALUE_HOLDS (value, g_type_from_name ("GdkColor")))
+      if (G_VALUE_HOLDS (value, g_type_from_name ("CdkColor")))
         {
-          GdkColor color = { 0, };
+          CdkColor color = { 0, };
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           if (cdk_color_parse (string, &color))
@@ -2055,7 +2055,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         }
       else if (G_VALUE_HOLDS (value, GDK_TYPE_RGBA))
         {
-          GdkRGBA rgba = { 0 };
+          CdkRGBA rgba = { 0 };
 
           if (cdk_rgba_parse (&rgba, string))
             g_value_set_boxed (value, &rgba);
@@ -2090,7 +2090,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         {
           gchar *filename;
           GError *tmp_error = NULL;
-          GdkPixbuf *pixbuf = NULL;
+          CdkPixbuf *pixbuf = NULL;
 
           if (g_hash_table_contains (builder->priv->objects, string))
             {

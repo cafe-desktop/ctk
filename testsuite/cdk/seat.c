@@ -3,8 +3,8 @@
 static void
 test_list_seats (void)
 {
-  GdkDisplay *display;
-  GdkSeat *seat0, *seat;
+  CdkDisplay *display;
+  CdkSeat *seat0, *seat;
   GList *list, *l;
   gboolean found_default;
 
@@ -33,10 +33,10 @@ test_list_seats (void)
 static void
 test_default_seat (void)
 {
-  GdkDisplay *display;
-  GdkSeat *seat0;
-  GdkSeatCapabilities caps;
-  GdkDevice *pointer0, *keyboard0, *device;
+  CdkDisplay *display;
+  CdkSeat *seat0;
+  CdkSeatCapabilities caps;
+  CdkDevice *pointer0, *keyboard0, *device;
   GList *slaves, *l;
 
   display = cdk_display_get_default ();

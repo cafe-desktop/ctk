@@ -179,7 +179,7 @@ refresh_and_emit_app_selected (CtkAppChooserWidget *self,
 
 static GAppInfo *
 get_app_info_for_event (CtkAppChooserWidget *self,
-                        GdkEventButton      *event)
+                        CdkEventButton      *event)
 {
   CtkTreePath *path = NULL;
   CtkTreeIter iter;
@@ -224,7 +224,7 @@ popup_menu_detach (CtkWidget *attach_widget,
 
 static gboolean
 widget_button_press_event_cb (CtkWidget      *widget,
-                              GdkEventButton *event,
+                              CdkEventButton *event,
                               gpointer        user_data)
 {
   CtkAppChooserWidget *self = user_data;
@@ -257,7 +257,7 @@ widget_button_press_event_cb (CtkWidget      *widget,
 
       if (n_children > 0)
         /* actually popup the menu */
-        ctk_menu_popup_at_pointer (CTK_MENU (menu), (GdkEvent *) event);
+        ctk_menu_popup_at_pointer (CTK_MENU (menu), (CdkEvent *) event);
 
       g_list_free (children);
     }

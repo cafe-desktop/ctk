@@ -35,63 +35,63 @@
 static void   cdk_broadway_screen_dispose     (GObject *object);
 static void   cdk_broadway_screen_finalize    (GObject *object);
 
-G_DEFINE_TYPE (GdkBroadwayScreen, cdk_broadway_screen, GDK_TYPE_SCREEN)
+G_DEFINE_TYPE (CdkBroadwayScreen, cdk_broadway_screen, GDK_TYPE_SCREEN)
 
 static void
-cdk_broadway_screen_init (GdkBroadwayScreen *screen)
+cdk_broadway_screen_init (CdkBroadwayScreen *screen)
 {
   screen->width = 1024;
   screen->height = 768;
 }
 
-static GdkDisplay *
-cdk_broadway_screen_get_display (GdkScreen *screen)
+static CdkDisplay *
+cdk_broadway_screen_get_display (CdkScreen *screen)
 {
   return GDK_BROADWAY_SCREEN (screen)->display;
 }
 
 static gint
-cdk_broadway_screen_get_width (GdkScreen *screen)
+cdk_broadway_screen_get_width (CdkScreen *screen)
 {
   return GDK_BROADWAY_SCREEN (screen)->width;
 }
 
 static gint
-cdk_broadway_screen_get_height (GdkScreen *screen)
+cdk_broadway_screen_get_height (CdkScreen *screen)
 {
   return GDK_BROADWAY_SCREEN (screen)->height;
 }
 
 static gint
-cdk_broadway_screen_get_width_mm (GdkScreen *screen)
+cdk_broadway_screen_get_width_mm (CdkScreen *screen)
 {
   return cdk_screen_get_width (screen) * 25.4 / 96;
 }
 
 static gint
-cdk_broadway_screen_get_height_mm (GdkScreen *screen)
+cdk_broadway_screen_get_height_mm (CdkScreen *screen)
 {
   return cdk_screen_get_height (screen) * 25.4 / 96;
 }
 
 static gint
-cdk_broadway_screen_get_number (GdkScreen *screen)
+cdk_broadway_screen_get_number (CdkScreen *screen)
 {
   return 0;
 }
 
-static GdkWindow *
-cdk_broadway_screen_get_root_window (GdkScreen *screen)
+static CdkWindow *
+cdk_broadway_screen_get_root_window (CdkScreen *screen)
 {
   return GDK_BROADWAY_SCREEN (screen)->root_window;
 }
 
 void
-_cdk_broadway_screen_size_changed (GdkScreen                       *screen,
+_cdk_broadway_screen_size_changed (CdkScreen                       *screen,
                                    BroadwayInputScreenResizeNotify *msg)
 {
-  GdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
-  GdkMonitor *monitor;
+  CdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  CdkMonitor *monitor;
   gint width, height;
   GList *toplevels, *l;
 
@@ -114,8 +114,8 @@ _cdk_broadway_screen_size_changed (GdkScreen                       *screen,
   toplevels = cdk_screen_get_toplevel_windows (screen);
   for (l = toplevels; l != NULL; l = l->next)
     {
-      GdkWindow *toplevel = l->data;
-      GdkWindowImplBroadway *toplevel_impl = GDK_WINDOW_IMPL_BROADWAY (toplevel->impl);
+      CdkWindow *toplevel = l->data;
+      CdkWindowImplBroadway *toplevel_impl = GDK_WINDOW_IMPL_BROADWAY (toplevel->impl);
 
       if (toplevel_impl->maximized)
 	cdk_window_move_resize (toplevel, 0, 0,
@@ -127,7 +127,7 @@ _cdk_broadway_screen_size_changed (GdkScreen                       *screen,
 static void
 cdk_broadway_screen_dispose (GObject *object)
 {
-  GdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (object);
+  CdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (object);
 
   if (broadway_screen->root_window)
     _cdk_window_destroy (broadway_screen->root_window, TRUE);
@@ -138,7 +138,7 @@ cdk_broadway_screen_dispose (GObject *object)
 static void
 cdk_broadway_screen_finalize (GObject *object)
 {
-  GdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (object);
+  CdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (object);
   gint          i;
 
   if (broadway_screen->root_window)
@@ -152,20 +152,20 @@ cdk_broadway_screen_finalize (GObject *object)
   G_OBJECT_CLASS (cdk_broadway_screen_parent_class)->finalize (object);
 }
 
-static GdkVisual *
-cdk_broadway_screen_get_rgba_visual (GdkScreen *screen)
+static CdkVisual *
+cdk_broadway_screen_get_rgba_visual (CdkScreen *screen)
 {
-  GdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  CdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
 
   return broadway_screen->rgba_visual;
 }
 
-GdkScreen *
-_cdk_broadway_screen_new (GdkDisplay *display,
+CdkScreen *
+_cdk_broadway_screen_new (CdkDisplay *display,
 			  gint	 screen_number)
 {
-  GdkScreen *screen;
-  GdkBroadwayScreen *broadway_screen;
+  CdkScreen *screen;
+  CdkBroadwayScreen *broadway_screen;
 
   screen = g_object_new (GDK_TYPE_BROADWAY_SCREEN, NULL);
 
@@ -183,43 +183,43 @@ _cdk_broadway_screen_new (GdkDisplay *display,
  * is_composited to avoid a race condition here.
  */
 void
-_cdk_broadway_screen_setup (GdkScreen *screen)
+_cdk_broadway_screen_setup (CdkScreen *screen)
 {
 }
 
 static gboolean
-cdk_broadway_screen_is_composited (GdkScreen *screen)
+cdk_broadway_screen_is_composited (CdkScreen *screen)
 {
   return TRUE;
 }
 
 
 static gchar *
-cdk_broadway_screen_make_display_name (GdkScreen *screen)
+cdk_broadway_screen_make_display_name (CdkScreen *screen)
 {
   return g_strdup ("browser");
 }
 
-static GdkWindow *
-cdk_broadway_screen_get_active_window (GdkScreen *screen)
+static CdkWindow *
+cdk_broadway_screen_get_active_window (CdkScreen *screen)
 {
   return NULL;
 }
 
 static GList *
-cdk_broadway_screen_get_window_stack (GdkScreen *screen)
+cdk_broadway_screen_get_window_stack (CdkScreen *screen)
 {
   return NULL;
 }
 
 static void
-cdk_broadway_screen_broadcast_client_message (GdkScreen *screen,
-					      GdkEvent  *event)
+cdk_broadway_screen_broadcast_client_message (CdkScreen *screen,
+					      CdkEvent  *event)
 {
 }
 
 static gboolean
-cdk_broadway_screen_get_setting (GdkScreen   *screen,
+cdk_broadway_screen_get_setting (CdkScreen   *screen,
 				 const gchar *name,
 				 GValue      *value)
 {
@@ -227,15 +227,15 @@ cdk_broadway_screen_get_setting (GdkScreen   *screen,
 }
 
 void
-_cdk_broadway_screen_events_init (GdkScreen *screen)
+_cdk_broadway_screen_events_init (CdkScreen *screen)
 {
 }
 
 static void
-cdk_broadway_screen_class_init (GdkBroadwayScreenClass *klass)
+cdk_broadway_screen_class_init (CdkBroadwayScreenClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GdkScreenClass *screen_class = GDK_SCREEN_CLASS (klass);
+  CdkScreenClass *screen_class = GDK_SCREEN_CLASS (klass);
 
   object_class->dispose = cdk_broadway_screen_dispose;
   object_class->finalize = cdk_broadway_screen_finalize;

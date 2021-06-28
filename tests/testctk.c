@@ -56,7 +56,7 @@ file_exists (const char *filename)
 }
 
 CtkWidget *
-shape_create_icon (GdkScreen *screen,
+shape_create_icon (CdkScreen *screen,
 		   char      *xpm_file,
 		   gint       x,
 		   gint       y,
@@ -228,11 +228,11 @@ build_alpha_widgets (void)
 
 static void
 on_alpha_screen_changed (CtkWindow *window,
-			 GdkScreen *old_screen,
+			 CdkScreen *old_screen,
 			 CtkWidget *label)
 {
-  GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
-  GdkVisual *visual = cdk_screen_get_rgba_visual (screen);
+  CdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
+  CdkVisual *visual = cdk_screen_get_rgba_visual (screen);
 
   if (!visual)
     {
@@ -412,7 +412,7 @@ create_composited_window (CtkWidget *widget)
       /* realise and show everything */
       ctk_widget_realize (button);
 
-      /* set the event box GdkWindow to be composited.
+      /* set the event box CdkWindow to be composited.
        * obviously must be performed after event box is realised.
        */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -440,10 +440,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
 pattern_set_bg (CtkWidget   *widget,
-		GdkWindow   *child,
+		CdkWindow   *child,
 		gint         level)
 {
-  static GdkRGBA colors[] = {
+  static CdkRGBA colors[] = {
     { 0.27, 0.27, 1.0, 1.0 },
     { 0.53, 0.53, 1.0, 1.0},
     { 0.67, 0.67, 1.0, 1.0 }
@@ -455,7 +455,7 @@ pattern_set_bg (CtkWidget   *widget,
 
 static void
 create_pattern (CtkWidget   *widget,
-		GdkWindow   *parent,
+		CdkWindow   *parent,
 		gint         level,
 		gint         width,
 		gint         height)
@@ -463,7 +463,7 @@ create_pattern (CtkWidget   *widget,
   gint h = 1;
   gint i = 0;
     
-  GdkWindow *child;
+  CdkWindow *child;
 
   while (2 * h <= height)
     {
@@ -477,7 +477,7 @@ create_pattern (CtkWidget   *widget,
 	      gint x = w  - 1;
 	      gint y = h - 1;
 	      
-	      GdkWindowAttr attributes;
+	      CdkWindowAttr attributes;
 
 	      attributes.window_type = GDK_WINDOW_CHILD;
 	      attributes.x = x;
@@ -542,7 +542,7 @@ static void
 pattern_realize (CtkWidget *widget,
 		 gpointer   data)
 {
-  GdkWindow *window;
+  CdkWindow *window;
 
   window = ctk_widget_get_window (widget);
   pattern_set_bg (widget, window, 0);
@@ -1138,10 +1138,10 @@ create_button_box (CtkWidget *widget)
 
 static CtkWidget*
 new_pixbuf (char      *filename,
-	    GdkWindow *window)
+	    CdkWindow *window)
 {
   CtkWidget *widget;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   if (strcmp (filename, "test.xpm") == 0)
     pixbuf = NULL;
@@ -1982,7 +1982,7 @@ on_rotated_text_unrealize (CtkWidget *widget)
 static gboolean
 on_rotated_text_draw (CtkWidget *widget,
                       cairo_t   *cr,
-	              GdkPixbuf *tile_pixbuf)
+	              CdkPixbuf *tile_pixbuf)
 {
   static const gchar *words[] = { "The", "grand", "old", "Duke", "of", "York",
                                   "had", "10,000", "men" };
@@ -2054,7 +2054,7 @@ create_rotated_text (CtkWidget *widget)
       CtkRequisition requisition;
       CtkWidget *content_area;
       CtkWidget *drawing_area;
-      GdkPixbuf *tile_pixbuf;
+      CdkPixbuf *tile_pixbuf;
 
       window = ctk_dialog_new_with_buttons ("Rotated Text",
 					    CTK_WINDOW (ctk_widget_get_toplevel (widget)), 0,
@@ -2232,7 +2232,7 @@ create_reparent (CtkWidget *widget)
  * Resize Grips
  */
 static gboolean
-grippy_button_press (CtkWidget *area, GdkEventButton *event, GdkWindowEdge edge)
+grippy_button_press (CtkWidget *area, CdkEventButton *event, CdkWindowEdge edge)
 {
   if (event->type == GDK_BUTTON_PRESS) 
     {
@@ -2249,7 +2249,7 @@ grippy_button_press (CtkWidget *area, GdkEventButton *event, GdkWindowEdge edge)
 }
 
 static gboolean
-grippy_draw (CtkWidget *area, cairo_t *cr, GdkWindowEdge edge)
+grippy_draw (CtkWidget *area, cairo_t *cr, CdkWindowEdge edge)
 {
   CtkStyleContext *context;
   CtkJunctionSides sides;
@@ -2567,7 +2567,7 @@ create_pixbuf (CtkWidget *widget)
   CtkWidget *label;
   CtkWidget *separator;
   CtkWidget *pixbufwid;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
 
   if (!window)
     {
@@ -2769,7 +2769,7 @@ create_image (CtkWidget *widget)
   if (window == NULL)
     {
       CtkWidget *vbox;
-      GdkPixbuf *pixbuf;
+      CdkPixbuf *pixbuf;
         
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       
@@ -2900,7 +2900,7 @@ create_listbox (CtkWidget *widget)
   if (!window)
     {
       CtkWidget *hbox, *vbox, *scrolled, *scrolled_box, *list, *label, *button;
-      GdkScreen *screen = ctk_widget_get_screen (widget);
+      CdkScreen *screen = ctk_widget_get_screen (widget);
       int i;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -2981,7 +2981,7 @@ create_listbox (CtkWidget *widget)
  */
 
 static CtkWidget*
-create_menu (GdkScreen *screen, gint depth, gint length)
+create_menu (CdkScreen *screen, gint depth, gint length)
 {
   CtkWidget *menu;
   CtkWidget *menuitem;
@@ -3034,7 +3034,7 @@ create_menu (GdkScreen *screen, gint depth, gint length)
 }
 
 static CtkWidget*
-create_table_menu (GdkScreen *screen, gint cols, gint rows)
+create_table_menu (CdkScreen *screen, gint cols, gint rows)
 {
   CtkWidget *menu;
   CtkWidget *menuitem;
@@ -3238,7 +3238,7 @@ create_menus (CtkWidget *widget)
       CtkWidget *menuitem;
       CtkAccelGroup *accel_group;
       CtkWidget *image;
-      GdkScreen *screen = ctk_widget_get_screen (widget);
+      CdkScreen *screen = ctk_widget_get_screen (widget);
       
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
@@ -3389,7 +3389,7 @@ accel_button_new (CtkAccelGroup *accel_group,
 		  const gchar   *accel)
 {
   guint keyval;
-  GdkModifierType modifiers;
+  CdkModifierType modifiers;
   CtkWidget *button;
   CtkWidget *label;
 
@@ -3598,7 +3598,7 @@ create_modal_window (CtkWidget *widget)
  */
 
 static void
-make_message_dialog (GdkScreen *screen,
+make_message_dialog (CdkScreen *screen,
 		     CtkWidget **dialog,
                      CtkMessageType  type,
                      CtkButtonsType  buttons,
@@ -3638,7 +3638,7 @@ create_message_dialog (CtkWidget *widget)
   static CtkWidget *warning = NULL;
   static CtkWidget *error = NULL;
   static CtkWidget *question = NULL;
-  GdkScreen *screen = ctk_widget_get_screen (widget);
+  CdkScreen *screen = ctk_widget_get_screen (widget);
 
   make_message_dialog (screen, &info, CTK_MESSAGE_INFO, CTK_BUTTONS_OK, CTK_RESPONSE_OK);
   make_message_dialog (screen, &warning, CTK_MESSAGE_WARNING, CTK_BUTTONS_CLOSE, CTK_RESPONSE_CLOSE);
@@ -3655,7 +3655,7 @@ static CtkWidget *sw_float_parent;
 static gulong sw_destroyed_handler = 0;
 
 static gboolean
-scrolled_windows_delete_cb (CtkWidget *widget, GdkEventAny *event, CtkWidget *scrollwin)
+scrolled_windows_delete_cb (CtkWidget *widget, CdkEventAny *event, CtkWidget *scrollwin)
 {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_reparent (scrollwin, sw_parent);
@@ -4045,7 +4045,7 @@ event_box_draw (CtkWidget *widget,
 
 static void
 event_box_label_pressed (CtkWidget        *widget,
-			 GdkEventButton   *event,
+			 CdkEventButton   *event,
 			 gpointer user_data)
 {
   g_print ("clicked on event box\n");
@@ -4191,7 +4191,7 @@ size_group_vsize_changed (CtkSpinButton *spin_button,
 }
 
 static CtkWidget *
-create_size_group_window (GdkScreen    *screen,
+create_size_group_window (CdkScreen    *screen,
 			  CtkSizeGroup *master_size_group)
 {
   CtkWidget *content_area;
@@ -4881,7 +4881,7 @@ cursor_model (void)
 
 static gint
 cursor_event (CtkWidget *widget,
-              GdkEvent  *event,
+              CdkEvent  *event,
               CtkWidget *entry)
 {
   const gchar *name;
@@ -4920,7 +4920,7 @@ set_cursor_from_name (CtkWidget *entry,
                       CtkWidget *widget)
 {
   const gchar *name;
-  GdkCursor *cursor;
+  CdkCursor *cursor;
 
   name = ctk_entry_get_text (CTK_ENTRY (entry));
   cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), name);
@@ -4952,7 +4952,7 @@ change_cursor_theme (CtkWidget *widget,
   const gchar *theme;
   gint size;
   GList *children;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   children = ctk_container_get_children (CTK_CONTAINER (data));
 
@@ -5551,10 +5551,10 @@ static void
 screen_display_check (CtkWidget *widget, ScreenDisplaySelection *data)
 {
   const gchar *display_name;
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkWidget *dialog;
-  GdkScreen *new_screen = NULL;
-  GdkScreen *current_screen = ctk_widget_get_screen (widget);
+  CdkScreen *new_screen = NULL;
+  CdkScreen *current_screen = ctk_widget_get_screen (widget);
   
   display_name = ctk_entry_get_text (CTK_ENTRY (data->entry));
   display = cdk_display_open (display_name);
@@ -5611,7 +5611,7 @@ create_display_screen (CtkWidget *widget)
   CtkWidget *label_dpy, *applyb, *cancelb;
   CtkWidget *bbox;
   ScreenDisplaySelection *scr_dpy_data;
-  GdkScreen *screen = ctk_widget_get_screen (widget);
+  CdkScreen *screen = ctk_widget_get_screen (widget);
 
   window = g_object_new (ctk_window_get_type (),
 			 "screen", screen,
@@ -5890,7 +5890,7 @@ create_range_controls (CtkWidget *widget)
 }
 
 struct {
-  GdkColor color;
+  CdkColor color;
   gchar *name;
 } text_colors[] = {
  { { 0, 0x0000, 0x0000, 0x0000 }, "black" },
@@ -5957,12 +5957,12 @@ static const char * book_closed_xpm[] = {
 "      ..        ",
 "                "};
 
-GdkPixbuf *book_open;
-GdkPixbuf *book_closed;
+CdkPixbuf *book_open;
+CdkPixbuf *book_closed;
 CtkWidget *sample_notebook;
 
 static void
-set_page_image (CtkNotebook *notebook, gint page_num, GdkPixbuf *pixbuf)
+set_page_image (CtkNotebook *notebook, gint page_num, CdkPixbuf *pixbuf)
 {
   CtkWidget *page_widget;
   CtkWidget *pixwid;
@@ -6841,7 +6841,7 @@ create_paned_keyboard_navigation (CtkWidget *widget)
 typedef struct _cursoroffset {gint x,y;} CursorOffset;
 
 static void
-shape_pressed (CtkWidget *widget, GdkEventButton *event)
+shape_pressed (CtkWidget *widget, CdkEventButton *event)
 {
   CursorOffset *p;
 
@@ -6854,23 +6854,23 @@ shape_pressed (CtkWidget *widget, GdkEventButton *event)
   p->y = (int) event->y;
 
   ctk_grab_add (widget);
-  cdk_seat_grab (cdk_event_get_seat ((GdkEvent *) event),
+  cdk_seat_grab (cdk_event_get_seat ((CdkEvent *) event),
                  ctk_widget_get_window (widget),
                  GDK_SEAT_CAPABILITY_ALL_POINTING,
-                 TRUE, NULL, (GdkEvent *) event, NULL, NULL);
+                 TRUE, NULL, (CdkEvent *) event, NULL, NULL);
 }
 
 static void
 shape_released (CtkWidget      *widget,
-                GdkEventButton *event)
+                CdkEventButton *event)
 {
   ctk_grab_remove (widget);
-  cdk_seat_ungrab (cdk_event_get_seat ((GdkEvent *) event));
+  cdk_seat_ungrab (cdk_event_get_seat ((CdkEvent *) event));
 }
 
 static void
 shape_motion (CtkWidget      *widget,
-	      GdkEventMotion *event)
+	      CdkEventMotion *event)
 {
   gint xp, yp;
   CursorOffset * p;
@@ -6882,13 +6882,13 @@ shape_motion (CtkWidget      *widget,
    * because I need absolute coordinates.
    */
   cdk_window_get_device_position (cdk_screen_get_root_window (ctk_widget_get_screen (widget)),
-                                  cdk_event_get_device ((GdkEvent *) event),
+                                  cdk_event_get_device ((CdkEvent *) event),
                                   &xp, &yp, NULL);
   ctk_window_move (CTK_WINDOW (widget), xp  - p->x, yp  - p->y);
 }
 
 CtkWidget *
-shape_create_icon (GdkScreen *screen,
+shape_create_icon (CdkScreen *screen,
 		   char      *xpm_file,
 		   gint       x,
 		   gint       y,
@@ -6902,7 +6902,7 @@ shape_create_icon (GdkScreen *screen,
   CursorOffset* icon_pos;
   cairo_surface_t *mask;
   cairo_region_t *mask_region;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   cairo_t *cr;
 
   /*
@@ -6972,7 +6972,7 @@ create_shapes (CtkWidget *widget)
   static CtkWidget *sheets = NULL;
   static CtkWidget *rings = NULL;
   static CtkWidget *with_region = NULL;
-  GdkScreen *screen = ctk_widget_get_screen (widget);
+  CdkScreen *screen = ctk_widget_get_screen (widget);
   
   if (!(file_exists ("Modeller.xpm") &&
 	file_exists ("FilesQueue.xpm") &&
@@ -7040,7 +7040,7 @@ create_shapes (CtkWidget *widget)
         {
           while (y < 270)
             {
-              GdkRectangle rect;
+              CdkRectangle rect;
               rect.x = x;
               rect.y = y;
               rect.width = 10;
@@ -7075,8 +7075,8 @@ create_wmhints (CtkWidget *widget)
   CtkWidget *button;
   CtkWidget *box1;
   CtkWidget *box2;
-  GdkWindow *cdk_window;
-  GdkPixbuf *pixbuf;
+  CdkWindow *cdk_window;
+  CdkPixbuf *pixbuf;
   GList *list;
 
   if (!window)
@@ -7156,7 +7156,7 @@ create_wmhints (CtkWidget *widget)
 
 static gint
 window_state_callback (CtkWidget *widget,
-                       GdkEventWindowState *event,
+                       CdkEventWindowState *event,
                        gpointer data)
 {
   CtkWidget *label = data;
@@ -7460,7 +7460,7 @@ create_window_states (CtkWidget *widget)
 
 static gint
 configure_event_callback (CtkWidget *widget,
-                          GdkEventConfigure *event,
+                          CdkEventConfigure *event,
                           gpointer data)
 {
   CtkWidget *label = data;
@@ -7636,7 +7636,7 @@ get_screen_corner (CtkWindow *window,
                    gint      *y)
 {
   int w, h;
-  GdkScreen * screen = ctk_window_get_screen (window);
+  CdkScreen * screen = ctk_window_get_screen (window);
   
   ctk_window_get_size (CTK_WINDOW (window), &w, &h);
 
@@ -7716,7 +7716,7 @@ move_gravity_window_to_starting_position (CtkWidget *widget,
 
 static CtkWidget*
 make_gravity_window (CtkWidget   *destroy_with,
-                     GdkGravity   gravity,
+                     CdkGravity   gravity,
                      const gchar *title)
 {
   CtkWidget *window;
@@ -8429,7 +8429,7 @@ find_widget (CtkWidget *widget, FindWidgetData *data)
 
   if (ctk_widget_get_parent (widget) && !data->first)
     {
-      GdkWindow *window = ctk_widget_get_window (widget);
+      CdkWindow *window = ctk_widget_get_window (widget);
       while (window != ctk_widget_get_window (ctk_widget_get_parent (widget)))
 	{
 	  gint tx, ty, twidth, theight;
@@ -8500,10 +8500,10 @@ find_widget (CtkWidget *widget, FindWidgetData *data)
 }
 
 static CtkWidget *
-find_widget_at_pointer (GdkDevice *device)
+find_widget_at_pointer (CdkDevice *device)
 {
   CtkWidget *widget = NULL;
-  GdkWindow *pointer_window;
+  CdkWindow *pointer_window;
   gint x, y;
   FindWidgetData data;
  
@@ -8539,7 +8539,7 @@ find_widget_at_pointer (GdkDevice *device)
 struct SnapshotData {
   CtkWidget *toplevel_button;
   CtkWidget **window;
-  GdkCursor *cursor;
+  CdkCursor *cursor;
   gboolean in_query;
   gboolean is_toplevel;
   gint handler;
@@ -8569,7 +8569,7 @@ destroy_snapshot_data (CtkWidget             *widget,
 
 static gint
 snapshot_widget_event (CtkWidget	       *widget,
-		       GdkEvent	       *event,
+		       CdkEvent	       *event,
 		       struct SnapshotData *data)
 {
   CtkWidget *res_widget = NULL;
@@ -8589,7 +8589,7 @@ snapshot_widget_event (CtkWidget	       *widget,
 	{
 	  cairo_surface_t *surface;
 	  CtkWidget *window, *image;
-          GdkPixbuf *pixbuf;
+          CdkPixbuf *pixbuf;
           int width, height;
           cairo_t *cr;
 
@@ -8626,7 +8626,7 @@ snapshot_widget (CtkButton *button,
 		 struct SnapshotData *data)
 {
   CtkWidget *widget = CTK_WIDGET (button);
-  GdkDevice *device;
+  CdkDevice *device;
 
   device = ctk_get_current_event_device ();
   if (device == NULL)
@@ -8713,7 +8713,7 @@ selection_test_received (CtkWidget        *tree_view,
 {
   CtkTreeModel *model;
   CtkListStore *store;
-  GdkAtom *atoms;
+  CdkAtom *atoms;
   int i, l;
 
   if (ctk_selection_data_get_length (selection_data) < 0)
@@ -8759,7 +8759,7 @@ selection_test_received (CtkWidget        *tree_view,
 void
 selection_test_get_targets (CtkWidget *dialog, gint response, CtkWidget *tree_view)
 {
-  static GdkAtom targets_atom = GDK_NONE;
+  static CdkAtom targets_atom = GDK_NONE;
 
   if (response != CTK_RESPONSE_APPLY)
     {
@@ -8863,7 +8863,7 @@ scroll_test_draw (CtkWidget     *widget,
 {
   gint i,j;
   gint imin, imax, jmin, jmax;
-  GdkRectangle clip;
+  CdkRectangle clip;
   
   cdk_cairo_get_clip_rectangle (cr, &clip);
 
@@ -8884,7 +8884,7 @@ scroll_test_draw (CtkWidget     *widget,
 }
 
 static gint
-scroll_test_scroll (CtkWidget *widget, GdkEventScroll *event,
+scroll_test_scroll (CtkWidget *widget, CdkEventScroll *event,
 		    CtkAdjustment *adjustment)
 {
   gdouble new_value = ctk_adjustment_get_value (adjustment) + ((event->direction == GDK_SCROLL_UP) ?
@@ -8897,7 +8897,7 @@ scroll_test_scroll (CtkWidget *widget, GdkEventScroll *event,
 }
 
 static void
-scroll_test_configure (CtkWidget *widget, GdkEventConfigure *event,
+scroll_test_configure (CtkWidget *widget, CdkEventConfigure *event,
 		       CtkAdjustment *adjustment)
 {
   CtkAllocation allocation;
@@ -8915,7 +8915,7 @@ scroll_test_configure (CtkWidget *widget, GdkEventConfigure *event,
 static void
 scroll_test_adjustment_changed (CtkAdjustment *adjustment, CtkWidget *widget)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   gint dy;
 
   dy = scroll_test_pos - (int)ctk_adjustment_get_value (adjustment);
@@ -8939,8 +8939,8 @@ create_scroll_test (CtkWidget *widget)
   CtkWidget *drawing_area;
   CtkWidget *scrollbar;
   CtkAdjustment *adjustment;
-  GdkGeometry geometry;
-  GdkWindowHints geometry_mask;
+  CdkGeometry geometry;
+  CdkWindowHints geometry_mask;
 
   if (!window)
     {
@@ -9192,8 +9192,8 @@ static gboolean
 layout_draw_handler (CtkWidget *widget, cairo_t *cr)
 {
   CtkLayout *layout;
-  GdkWindow *bin_window;
-  GdkRectangle clip;
+  CdkWindow *bin_window;
+  CdkRectangle clip;
   gint i,j,x,y;
   gint imin, imax, jmin, jmax;
 
@@ -9774,7 +9774,7 @@ create_main_window (void)
   CtkWidget *label;
   gchar buffer[64];
   CtkWidget *separator;
-  GdkGeometry geometry;
+  CdkGeometry geometry;
   int i;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -9978,8 +9978,8 @@ int
 main (int argc, char *argv[])
 {
   CtkCssProvider *provider, *memory_provider;
-  GdkDisplay *display;
-  GdkScreen *screen;
+  CdkDisplay *display;
+  CdkScreen *screen;
   CtkBindingSet *binding_set;
   int i;
   gboolean done_benchmarks = FALSE;

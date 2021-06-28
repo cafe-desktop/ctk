@@ -131,12 +131,12 @@ ctk_drag_dest_set_internal (CtkWidget       *widget,
  * |[<!-- language="C" -->
  * static void
  * drag_motion (CtkWidget *widget,
- *              GdkDragContext *context,
+ *              CdkDragContext *context,
  *              gint x,
  *              gint y,
  *              guint time)
  * {
-*   GdkModifierType mask;
+*   CdkModifierType mask;
  *
  *   cdk_window_get_pointer (ctk_widget_get_window (widget),
  *                           NULL, NULL, &mask);
@@ -152,7 +152,7 @@ ctk_drag_dest_set (CtkWidget            *widget,
                    CtkDestDefaults       flags,
                    const CtkTargetEntry *targets,
                    gint                  n_targets,
-                   GdkDragAction         actions)
+                   CdkDragAction         actions)
 {
   CtkDragDestSite *site;
 
@@ -190,8 +190,8 @@ ctk_drag_dest_set (CtkWidget            *widget,
  */
 void
 ctk_drag_dest_set_proxy (CtkWidget       *widget,
-                         GdkWindow       *proxy_window,
-                         GdkDragProtocol  protocol,
+                         CdkWindow       *proxy_window,
+                         CdkDragProtocol  protocol,
                          gboolean         use_coordinates)
 {
   CtkDragDestSite *site;
@@ -456,9 +456,9 @@ ctk_drag_dest_get_track_motion (CtkWidget *widget)
  * Returns: (transfer none): first target that the source offers
  *     and the dest can accept, or %GDK_NONE
  */
-GdkAtom
+CdkAtom
 ctk_drag_dest_find_target (CtkWidget      *widget,
-                           GdkDragContext *context,
+                           CdkDragContext *context,
                            CtkTargetList  *target_list)
 {
   GList *tmp_target;

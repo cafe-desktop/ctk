@@ -98,16 +98,16 @@ gboolean   ctk_accel_label_refetch           (CtkAccelLabel *accel_label);
 GDK_AVAILABLE_IN_3_6
 void       ctk_accel_label_set_accel         (CtkAccelLabel   *accel_label,
                                               guint            accelerator_key,
-                                              GdkModifierType  accelerator_mods);
+                                              CdkModifierType  accelerator_mods);
 GDK_AVAILABLE_IN_3_12
 void       ctk_accel_label_get_accel         (CtkAccelLabel   *accel_label,
                                               guint           *accelerator_key,
-                                              GdkModifierType *accelerator_mods);
+                                              CdkModifierType *accelerator_mods);
 
 /* private */
 gchar *    _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
 							 guint               accelerator_key,
-							 GdkModifierType     accelerator_mods);
+							 CdkModifierType     accelerator_mods);
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkAccelLabel, g_object_unref)
 

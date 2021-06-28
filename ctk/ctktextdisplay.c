@@ -108,7 +108,7 @@ struct _CtkTextRenderer
   CtkWidget *widget;
   cairo_t *cr;
 
-  GdkRGBA *error_color;	/* Error underline color for this widget */
+  CdkRGBA *error_color;	/* Error underline color for this widget */
   GList *widgets;      	/* widgets encountered when drawing */
 
   guint state : 2;
@@ -126,7 +126,7 @@ G_DEFINE_TYPE (CtkTextRenderer, _ctk_text_renderer, PANGO_TYPE_RENDERER)
 static void
 text_renderer_set_rgba (CtkTextRenderer *text_renderer,
 			PangoRenderPart  part,
-			const GdkRGBA   *rgba)
+			const CdkRGBA   *rgba)
 {
   PangoRenderer *renderer = PANGO_RENDERER (text_renderer);
   PangoColor color = { 0, };
@@ -175,8 +175,8 @@ ctk_text_renderer_prepare_run (PangoRenderer  *renderer,
 {
   CtkStyleContext *context;
   CtkTextRenderer *text_renderer = CTK_TEXT_RENDERER (renderer);
-  GdkRGBA *bg_rgba = NULL;
-  GdkRGBA *fg_rgba = NULL;
+  CdkRGBA *bg_rgba = NULL;
+  CdkRGBA *fg_rgba = NULL;
   CtkTextAppearance *appearance;
 
   PANGO_RENDERER_CLASS (_ctk_text_renderer_parent_class)->prepare_run (renderer, run);
@@ -219,7 +219,7 @@ ctk_text_renderer_prepare_run (PangoRenderer  *renderer,
 
   if (CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (appearance))
     {
-      GdkRGBA rgba;
+      CdkRGBA rgba;
 
       CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (appearance, &rgba);
       text_renderer_set_rgba (text_renderer, PANGO_RENDER_PART_STRIKETHROUGH, &rgba);
@@ -229,7 +229,7 @@ ctk_text_renderer_prepare_run (PangoRenderer  *renderer,
 
   if (CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (appearance))
     {
-      GdkRGBA rgba;
+      CdkRGBA rgba;
 
       CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (appearance, &rgba);
       text_renderer_set_rgba (text_renderer, PANGO_RENDER_PART_UNDERLINE, &rgba);
@@ -238,7 +238,7 @@ ctk_text_renderer_prepare_run (PangoRenderer  *renderer,
     {
       if (!text_renderer->error_color)
         {
-	  GdkColor *color = NULL;
+	  CdkColor *color = NULL;
 
           ctk_style_context_get_style (context,
                                        "error-underline-color", &color,
@@ -246,7 +246,7 @@ ctk_text_renderer_prepare_run (PangoRenderer  *renderer,
 
 	  if (color)
 	    {
-	      GdkRGBA rgba;
+	      CdkRGBA rgba;
 
 	      rgba.red = color->red / 65535.;
 	      rgba.green = color->green / 65535.;
@@ -260,7 +260,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	    }
 	  else
 	    {
-	      static const GdkRGBA red = { 1, 0, 0, 1 };
+	      static const CdkRGBA red = { 1, 0, 0, 1 };
 	      text_renderer->error_color = cdk_rgba_copy (&red);
 	    }
         }
@@ -279,7 +279,7 @@ set_color (CtkTextRenderer *text_renderer,
            PangoRenderPart  part)
 {
   PangoColor *color;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
   guint16 alpha;
 
   cairo_save (text_renderer->cr);
@@ -421,7 +421,7 @@ ctk_text_renderer_draw_shape (PangoRenderer   *renderer,
       /* This happens if we have an empty widget anchor. Draw
        * something empty-looking.
        */
-      GdkRectangle shape_rect;
+      CdkRectangle shape_rect;
       cairo_t *cr;
 
       shape_rect.x = PANGO_PIXELS (x);
@@ -454,7 +454,7 @@ ctk_text_renderer_draw_shape (PangoRenderer   *renderer,
   else if (GDK_IS_PIXBUF (attr->data))
     {
       cairo_t *cr = text_renderer->cr;
-      GdkPixbuf *pixbuf = GDK_PIXBUF (attr->data);
+      CdkPixbuf *pixbuf = GDK_PIXBUF (attr->data);
       
       cairo_save (cr);
 
@@ -521,7 +521,7 @@ text_renderer_begin (CtkTextRenderer *text_renderer,
 {
   CtkStyleContext *context;
   CtkStateFlags state;
-  GdkRGBA color;
+  CdkRGBA color;
   CtkCssNode *text_node;
 
   text_renderer->widget = widget;
@@ -586,7 +586,7 @@ get_selected_clip (CtkTextRenderer    *text_renderer,
 
   for (i=0; i < n_ranges; i++)
     {
-      GdkRectangle rect;
+      CdkRectangle rect;
 
       rect.x = x + PANGO_PIXELS (ranges[2*i]);
       rect.y = y;
@@ -611,7 +611,7 @@ render_para (CtkTextRenderer    *text_renderer,
   int byte_offset = 0;
   PangoLayoutIter *iter;
   int screen_width;
-  GdkRGBA selection;
+  CdkRGBA selection;
   gboolean first = TRUE;
   CtkCssNode *selection_node;
 
@@ -791,8 +791,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		   (line_display->insert_index < byte_offset + line->length ||
 		    (at_last_line && line_display->insert_index == byte_offset + line->length)))
 	    {
-	      GdkRectangle cursor_rect;
-              GdkRGBA cursor_color;
+	      CdkRectangle cursor_rect;
+              CdkRGBA cursor_color;
               cairo_t *cr = text_renderer->cr;
 
               /* we draw text using base color on filled cursor rectangle of cursor color
@@ -815,7 +815,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
               /* draw text under the cursor if any */
               if (!line_display->cursor_at_line_end)
                 {
-                  GdkRGBA color;
+                  CdkRGBA color;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                   ctk_style_context_get_background_color (context, ctk_style_context_get_state (context), &color);
@@ -867,7 +867,7 @@ ctk_text_layout_draw (CtkTextLayout *layout,
   GSList *line_list;
   GSList *tmp_list;
   GList *tmp_widgets;
-  GdkRectangle clip;
+  CdkRectangle clip;
 
   g_return_if_fail (CTK_IS_TEXT_LAYOUT (layout));
   g_return_if_fail (layout->default_style != NULL);

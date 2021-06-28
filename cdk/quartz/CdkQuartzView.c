@@ -1,4 +1,4 @@
-/* GdkQuartzView.m
+/* CdkQuartzView.m
  *
  * Copyright (C) 2005-2007 Imendio AB
  * Copyright (C) 2011 Hiroyuki Yamamoto
@@ -19,13 +19,13 @@
 
 #include <AvailabilityMacros.h>
 #include "config.h"
-#import "GdkQuartzView.h"
+#import "CdkQuartzView.h"
 #include "cdkquartzwindow.h"
 #include "cdkprivate-quartz.h"
 #include "cdkquartz.h"
 #include "cdkinternal-quartz.h"
 
-@implementation GdkQuartzView
+@implementation CdkQuartzView
 
 -(id)initWithFrame: (NSRect)frameRect
 {
@@ -87,7 +87,7 @@
 {
   GDK_NOTE (EVENTS, g_message ("firstRectForCharacterRange"));
   gint ns_x, ns_y;
-  GdkRectangle *rect;
+  CdkRectangle *rect;
 
   rect = g_object_get_data (G_OBJECT (cdk_window), GIC_CURSOR_RECT);
   if (rect)
@@ -259,12 +259,12 @@
   [super dealloc];
 }
 
--(void)setGdkWindow: (GdkWindow *)window
+-(void)setCdkWindow: (CdkWindow *)window
 {
   cdk_window = window;
 }
 
--(GdkWindow *)cdkWindow
+-(CdkWindow *)cdkWindow
 {
   return cdk_window;
 }
@@ -284,15 +284,15 @@
   if (GDK_WINDOW_DESTROYED (cdk_window))
     return YES;
 
-  /* A view is opaque if its GdkWindow doesn't have the RGBA visual */
+  /* A view is opaque if its CdkWindow doesn't have the RGBA visual */
   return cdk_window_get_visual (cdk_window) !=
     cdk_screen_get_rgba_visual (_cdk_screen);
 }
 
 -(void)drawRect: (NSRect)rect
 {
-  GdkRectangle cdk_rect;
-  GdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (cdk_window->impl);
+  CdkRectangle cdk_rect;
+  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (cdk_window->impl);
   const NSRect *drawn_rects;
   NSInteger count;
   int i;
@@ -369,7 +369,7 @@
  */
 -(void)updateTrackingRect
 {
-  GdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (cdk_window->impl);
+  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (cdk_window->impl);
   NSRect rect;
 
   if (!impl || !impl->toplevel)

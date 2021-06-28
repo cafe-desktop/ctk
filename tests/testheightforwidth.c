@@ -987,7 +987,7 @@ create_window (void)
 }
 
 static gboolean
-main_window_delete_cb (CtkWidget *widget, GdkEvent *event, gpointer user_data)
+main_window_delete_cb (CtkWidget *widget, CdkEvent *event, gpointer user_data)
 {
   gsize i;
 

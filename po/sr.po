@@ -4177,7 +4177,7 @@ msgid "Clip area"
 msgstr "Исеци област"
 
 # Треба проверити на шта се односи.
-# Можда је ово „https://developer.gnome.org/cdk3/stable/GdkFrameClock.html“
+# Можда је ово „https://developer.gnome.org/cdk3/stable/CdkFrameClock.html“
 #: ctk/inspector/misc-info.ui:430
 msgid "Frame Clock"
 msgstr "Време освежавања оквира"
@@ -8827,7 +8827,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Pixbuf"
 #~ msgstr "Сличица"
 
-#~ msgid "A GdkPixbuf to display"
+#~ msgid "A CdkPixbuf to display"
 #~ msgstr "Гдк сличица за приказ"
 
 #~ msgid "Stock ID"
@@ -9571,13 +9571,13 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Cell background color"
 #~ msgstr "Боја позадине ћелије"
 
-#~ msgid "Cell background color as a GdkColor"
+#~ msgid "Cell background color as a CdkColor"
 #~ msgstr "Боја позадине ћелије као Гдк боја"
 
 #~ msgid "Cell background RGBA color"
 #~ msgstr "РГБА боја позадине ћелије"
 
-#~ msgid "Cell background color as a GdkRGBA"
+#~ msgid "Cell background color as a CdkRGBA"
 #~ msgstr "Боја позадине ћелије као ГдкРГБА"
 
 #~ msgid "Whether the cell renderer is currently in editing mode"
@@ -9724,13 +9724,13 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Background color"
 #~ msgstr "Боја позадине"
 
-#~ msgid "Background color as a GdkColor"
+#~ msgid "Background color as a CdkColor"
 #~ msgstr "Боја позадине као Гдк боја"
 
 #~ msgid "Background color as RGBA"
 #~ msgstr "Боја позадине као РГБА"
 
-#~ msgid "Background color as a GdkRGBA"
+#~ msgid "Background color as a CdkRGBA"
 #~ msgstr "Боја позадине као ГдкРГБА"
 
 #~ msgid "Foreground color name"
@@ -9739,13 +9739,13 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Foreground color as a string"
 #~ msgstr "Боја исцртавања као низ знакова"
 
-#~ msgid "Foreground color as a GdkColor"
+#~ msgid "Foreground color as a CdkColor"
 #~ msgstr "Боја исцртавања као Гдк боја"
 
 #~ msgid "Foreground color as RGBA"
 #~ msgstr "Боја исцртавања као РГБА"
 
-#~ msgid "Foreground color as a GdkRGBA"
+#~ msgid "Foreground color as a CdkRGBA"
 #~ msgstr "Боја исцртавања као ГдкРГБА"
 
 #~ msgid "Whether the text can be modified by the user"
@@ -10017,7 +10017,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Whether to show the color editor right away"
 #~ msgstr "Да ли ће бити приказан уређивач боја"
 
-#~ msgid "Current color, as a GdkRGBA"
+#~ msgid "Current color, as a CdkRGBA"
 #~ msgstr "Текућа боја, као ГдкРГБА"
 
 #~ msgid "Whether alpha should be shown"
@@ -10752,7 +10752,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Number of points needed to trigger the gesture"
 #~ msgstr "Број тачака потребних за окидање покрета"
 
-#~ msgid "GdkWindow to receive events about"
+#~ msgid "CdkWindow to receive events about"
 #~ msgstr "Гдк прозор о коме се примају догађаји"
 
 #~ msgid "Factor by which to modify the default timeout"
@@ -10940,7 +10940,7 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Pixel size to use for named icon"
 #~ msgstr "Величина у тачкама за именоване иконице"
 
-#~ msgid "GdkPixbufAnimation to display"
+#~ msgid "CdkPixbufAnimation to display"
 #~ msgstr "Гдк анимирана сличица за приказ"
 
 #~ msgid "Whether to use icon names fallback"
@@ -12882,10 +12882,10 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Style of bevel around the statusbar text"
 #~ msgstr "Начин приказа удубљења око текста на траци стања"
 
-#~ msgid "The associated GdkScreen"
+#~ msgid "The associated CdkScreen"
 #~ msgstr "Повезани Гдк екран"
 
-#~ msgid "The associated GdkFrameClock"
+#~ msgid "The associated CdkFrameClock"
 #~ msgstr "Придружени часовник Гдк кадра"
 
 #~ msgid "The parent style context"
@@ -13070,13 +13070,13 @@ msgstr "Штампај на пробном штампачу"
 #~ msgid "Paragraph background color"
 #~ msgstr "Боја позадине пасуса"
 
-#~ msgid "Paragraph background color as a GdkColor"
+#~ msgid "Paragraph background color as a CdkColor"
 #~ msgstr "Боја позадине пасуса као Гдк боја"
 
 #~ msgid "Paragraph background RGBA"
 #~ msgstr "РГБА позадине пасуса"
 
-#~ msgid "Paragraph background RGBA as a GdkRGBA"
+#~ msgid "Paragraph background RGBA as a CdkRGBA"
 #~ msgstr "РГБА позадине пасуса као Гдк боја"
 
 #~ msgid "Whether font fallback is enabled."
@@ -13687,9 +13687,9 @@ msgstr "Штампај на пробном штампачу"
 #~ msgstr ""
 #~ "Стил елемента, који садржи податке о томе како ће изгледати (боја итд.)"
 
-#~ msgid "The event mask that decides what kind of GdkEvents this widget gets"
+#~ msgid "The event mask that decides what kind of CdkEvents this widget gets"
 #~ msgstr ""
-#~ "Маска за догађаје која одређује које врсте GdkEvents-а овај елемент прима"
+#~ "Маска за догађаје која одређује које врсте CdkEvents-а овај елемент прима"
 
 #~ msgid "Whether ctk_widget_show_all() should not affect this widget"
 #~ msgstr "Да ли „ctk_widget_show_all()“ не треба да утиче на овај елемент"

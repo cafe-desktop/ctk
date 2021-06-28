@@ -53,15 +53,15 @@ struct _CtkMenuPrivate
   gint                position_x;
   gint                position_y;
 
-  GdkWindow         *rect_window;
-  GdkRectangle       rect;
+  CdkWindow         *rect_window;
+  CdkRectangle       rect;
   CtkWidget         *widget;
-  GdkGravity         rect_anchor;
-  GdkGravity         menu_anchor;
-  GdkAnchorHints     anchor_hints;
+  CdkGravity         rect_anchor;
+  CdkGravity         menu_anchor;
+  CdkAnchorHints     anchor_hints;
   gint               rect_anchor_dx;
   gint               rect_anchor_dy;
-  GdkWindowTypeHint  menu_type_hint;
+  CdkWindowTypeHint  menu_type_hint;
   gboolean           emulated_move_to_rect;
 
   guint toggle_size;
@@ -78,8 +78,8 @@ struct _CtkMenuPrivate
   CtkWidget     *tearoff_scrollbar;
   CtkAdjustment *tearoff_adjustment;
 
-  GdkWindow *view_window;
-  GdkWindow *bin_window;
+  CdkWindow *view_window;
+  CdkWindow *bin_window;
 
   CtkCssGadget *top_arrow_gadget;
   CtkCssGadget *bottom_arrow_gadget;
@@ -143,8 +143,8 @@ struct _CtkMenuPrivate
 
 G_GNUC_INTERNAL
 void ctk_menu_update_scroll_offset (CtkMenu            *menu,
-                                    const GdkRectangle *flipped_rect,
-                                    const GdkRectangle *final_rect,
+                                    const CdkRectangle *flipped_rect,
+                                    const CdkRectangle *final_rect,
                                     gboolean            flipped_x,
                                     gboolean            flipped_y,
                                     gpointer            user_data);

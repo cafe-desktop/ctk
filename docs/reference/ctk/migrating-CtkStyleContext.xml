@@ -129,7 +129,7 @@
         a progressbar or a spinner.
       </member>
       <member>
-        ctk_render_icon_pixbuf(): Renders an icon into a #GdkPixbuf.
+        ctk_render_icon_pixbuf(): Renders an icon into a #CdkPixbuf.
       </member>
     </simplelist>
 
@@ -174,7 +174,7 @@
       The installed properties depend on the #CtkThemingEngine:name property,
       so they should be added in the <literal>constructed()</literal> vfunc.
       For example, if an engine with the name "Clearlooks" installs a
-      "focus-color" property with the type #GdkRGBA, the property
+      "focus-color" property with the type #CdkRGBA, the property
       <literal>-Clearlooks-focus-color</literal> will be registered and
       accepted in CSS like this:
       <informalexample><programlisting>
@@ -379,24 +379,24 @@
       symbolic colors and custom CSS, where necessary. text_aa should
       really not be used anywhere, anyway, and the white and black colors
       that were available in CtkStyle can just be replaced by literal
-      GdkRGBA structs.
+      CdkRGBA structs.
     </para>
 
     <para>
       Access to colors has also changed a bit. With #CtkStyle, the common
       way to access colors is:
       <informalexample><programlisting>
-      GdkColor *color1;
-      GdkColor color2;
+      CdkColor *color1;
+      CdkColor color2;
 
       color1 = &amp;style->bg[CTK_STATE_PRELIGHT];
       ctk_style_lookup_color (style, "focus_color", &amp;color2);
       </programlisting></informalexample>
-      With #CtkStyleContext, you generally use #GdkRGBA instead of #GdkColor
+      With #CtkStyleContext, you generally use #CdkRGBA instead of #CdkColor
       and the code looks like this:
       <informalexample><programlisting>
-      GdkRGBA *color1;
-      GdkRGBA  color2;
+      CdkRGBA *color1;
+      CdkRGBA  color2;
 
       ctk_style_context_get (context, CTK_STATE_FLAG_PRELIGHT,
                              "background-color", &amp;color1,
@@ -408,7 +408,7 @@
       cdk_rgba_free (color1);
       </programlisting></informalexample>
       Note that the memory handling here is different: ctk_style_context_get()
-      expects the address of a GdkRGBA* and returns a newly allocated struct,
+      expects the address of a CdkRGBA* and returns a newly allocated struct,
       ctk_style_context_lookup_color() expects the address of an existing
       struct, and fills it.
     </para>

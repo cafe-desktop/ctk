@@ -66,7 +66,7 @@ _ctk_win32_embed_pop_message (void)
 }
 
 void
-_ctk_win32_embed_send (GdkWindow               *recipient,
+_ctk_win32_embed_send (CdkWindow               *recipient,
 		       CtkWin32EmbedMessageType message,
 		       WPARAM		        wparam,
 		       LPARAM			lparam)
@@ -77,7 +77,7 @@ _ctk_win32_embed_send (GdkWindow               *recipient,
 }
 
 void
-_ctk_win32_embed_send_focus_message (GdkWindow               *recipient,
+_ctk_win32_embed_send_focus_message (CdkWindow               *recipient,
 				     CtkWin32EmbedMessageType message,
 				     WPARAM		      wparam)
 {

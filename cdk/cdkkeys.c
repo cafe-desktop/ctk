@@ -36,8 +36,8 @@
  * @Title: Key Values
  *
  * Key values are the codes which are sent whenever a key is pressed or released.
- * They appear in the #GdkEventKey.keyval field of the
- * #GdkEventKey structure, which is passed to signal handlers for the
+ * They appear in the #CdkEventKey.keyval field of the
+ * #CdkEventKey structure, which is passed to signal handlers for the
  * #CtkWidget::key-press-event and #CtkWidget::key-release-event signals.
  * The complete list of key values can be found in the
  * `cdk/cdkkeysyms.h` header file.
@@ -59,10 +59,10 @@
  *
  * # Groups # {#key-group-explanation}
  *
- * One #GdkKeymap object exists for each user display. cdk_keymap_get_default()
- * returns the #GdkKeymap for the default display; to obtain keymaps for other
+ * One #CdkKeymap object exists for each user display. cdk_keymap_get_default()
+ * returns the #CdkKeymap for the default display; to obtain keymaps for other
  * displays, use cdk_keymap_get_for_display(). A keymap
- * is a mapping from #GdkKeymapKey to key values. You can think of a #GdkKeymapKey
+ * is a mapping from #CdkKeymapKey to key values. You can think of a #CdkKeymapKey
  * as a representation of a symbol printed on a physical keyboard key. That is, it
  * contains three pieces of information. First, it contains the hardware keycode;
  * this is an identifying number for a physical key. Second, it contains the
@@ -72,7 +72,7 @@
  * it. The level indicates whether to use the “1” or the “!” symbol.  The letter
  * keys are considered to have a lowercase letter at level 0, and an uppercase
  * letter at level 1, though only the uppercase letter is printed.  Third, the
- * #GdkKeymapKey contains a group; groups are not used on standard US keyboards,
+ * #CdkKeymapKey contains a group; groups are not used on standard US keyboards,
  * but are used in many other countries. On a keyboard with groups, there can be 3
  * or 4 symbols printed on a single key. The group indicates movement in a
  * horizontal direction. Usually groups are used for two different languages.  In
@@ -94,7 +94,7 @@
  *
  * Note that cdk_keymap_translate_keyboard_state() also returns the keyval, i.e. it
  * goes ahead and performs the keymap lookup in addition to telling you which
- * effective group/level values were used for the lookup. #GdkEventKey already
+ * effective group/level values were used for the lookup. #CdkEventKey already
  * contains this keyval, however, so you don’t normally need to call
  * cdk_keymap_translate_keyboard_state() just to get the keyval.
  */
@@ -108,23 +108,23 @@ enum {
 };
 
 
-static GdkModifierType cdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
-                                                          GdkModifierIntent  intent);
+static CdkModifierType cdk_keymap_real_get_modifier_mask (CdkKeymap         *keymap,
+                                                          CdkModifierIntent  intent);
 
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GdkKeymap, cdk_keymap, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CdkKeymap, cdk_keymap, G_TYPE_OBJECT)
 
 static void
-cdk_keymap_class_init (GdkKeymapClass *klass)
+cdk_keymap_class_init (CdkKeymapClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   klass->get_modifier_mask = cdk_keymap_real_get_modifier_mask;
 
   /**
-   * GdkKeymap::direction-changed:
+   * CdkKeymap::direction-changed:
    * @keymap: the object on which the signal is emitted
    *
    * The ::direction-changed signal gets emitted when the direction of
@@ -136,13 +136,13 @@ cdk_keymap_class_init (GdkKeymapClass *klass)
     g_signal_new (g_intern_static_string ("direction-changed"),
 		  G_OBJECT_CLASS_TYPE (object_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GdkKeymapClass, direction_changed),
+		  G_STRUCT_OFFSET (CdkKeymapClass, direction_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE,
 		  0);
   /**
-   * GdkKeymap::keys-changed:
+   * CdkKeymap::keys-changed:
    * @keymap: the object on which the signal is emitted
    *
    * The ::keys-changed signal is emitted when the mapping represented by
@@ -154,14 +154,14 @@ cdk_keymap_class_init (GdkKeymapClass *klass)
     g_signal_new (g_intern_static_string ("keys-changed"),
 		  G_OBJECT_CLASS_TYPE (object_class),
 		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GdkKeymapClass, keys_changed),
+		  G_STRUCT_OFFSET (CdkKeymapClass, keys_changed),
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE,
 		  0);
 
   /**
-   * GdkKeymap::state-changed:
+   * CdkKeymap::state-changed:
    * @keymap: the object on which the signal is emitted
    *
    * The ::state-changed signal is emitted when the state of the
@@ -174,7 +174,7 @@ cdk_keymap_class_init (GdkKeymapClass *klass)
     g_signal_new (g_intern_static_string ("state_changed"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GdkKeymapClass, state_changed),
+                  G_STRUCT_OFFSET (CdkKeymapClass, state_changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE,
@@ -182,7 +182,7 @@ cdk_keymap_class_init (GdkKeymapClass *klass)
 }
 
 static void
-cdk_keymap_init (GdkKeymap *keymap)
+cdk_keymap_init (CdkKeymap *keymap)
 {
 }
 
@@ -274,13 +274,13 @@ cdk_keyval_is_lower (guint keyval)
 /**
  * cdk_keymap_get_default:
  *
- * Returns the #GdkKeymap attached to the default display.
+ * Returns the #CdkKeymap attached to the default display.
  *
- * Returns: (transfer none): the #GdkKeymap attached to the default display.
+ * Returns: (transfer none): the #CdkKeymap attached to the default display.
  *
  * Deprecated: 3.22: Use cdk_keymap_get_for_display() instead
  */
-GdkKeymap*
+CdkKeymap*
 cdk_keymap_get_default (void)
 {
   return cdk_keymap_get_for_display (cdk_display_get_default ());
@@ -288,7 +288,7 @@ cdk_keymap_get_default (void)
 
 /**
  * cdk_keymap_get_direction:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  *
  * Returns the direction of effective layout of the keymap.
  *
@@ -297,7 +297,7 @@ cdk_keymap_get_default (void)
  *   otherwise.
  **/
 PangoDirection
-cdk_keymap_get_direction (GdkKeymap *keymap)
+cdk_keymap_get_direction (CdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), PANGO_DIRECTION_LTR);
 
@@ -306,7 +306,7 @@ cdk_keymap_get_direction (GdkKeymap *keymap)
 
 /**
  * cdk_keymap_have_bidi_layouts:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  *
  * Determines if keyboard layouts for both right-to-left and left-to-right
  * languages are in use.
@@ -316,7 +316,7 @@ cdk_keymap_get_direction (GdkKeymap *keymap)
  * Since: 2.12
  **/
 gboolean
-cdk_keymap_have_bidi_layouts (GdkKeymap *keymap)
+cdk_keymap_have_bidi_layouts (CdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -325,7 +325,7 @@ cdk_keymap_have_bidi_layouts (GdkKeymap *keymap)
 
 /**
  * cdk_keymap_get_caps_lock_state:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  *
  * Returns whether the Caps Lock modifer is locked.
  *
@@ -334,7 +334,7 @@ cdk_keymap_have_bidi_layouts (GdkKeymap *keymap)
  * Since: 2.16
  */
 gboolean
-cdk_keymap_get_caps_lock_state (GdkKeymap *keymap)
+cdk_keymap_get_caps_lock_state (CdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -343,7 +343,7 @@ cdk_keymap_get_caps_lock_state (GdkKeymap *keymap)
 
 /**
  * cdk_keymap_get_num_lock_state:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  *
  * Returns whether the Num Lock modifer is locked.
  *
@@ -352,7 +352,7 @@ cdk_keymap_get_caps_lock_state (GdkKeymap *keymap)
  * Since: 3.0
  */
 gboolean
-cdk_keymap_get_num_lock_state (GdkKeymap *keymap)
+cdk_keymap_get_num_lock_state (CdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -361,7 +361,7 @@ cdk_keymap_get_num_lock_state (GdkKeymap *keymap)
 
 /**
  * cdk_keymap_get_scroll_lock_state:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  *
  * Returns whether the Scroll Lock modifer is locked.
  *
@@ -370,7 +370,7 @@ cdk_keymap_get_num_lock_state (GdkKeymap *keymap)
  * Since: 3.18
  */
 gboolean
-cdk_keymap_get_scroll_lock_state (GdkKeymap *keymap)
+cdk_keymap_get_scroll_lock_state (CdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -379,7 +379,7 @@ cdk_keymap_get_scroll_lock_state (GdkKeymap *keymap)
 
 /**
  * cdk_keymap_get_modifier_state:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  *
  * Returns the current modifier state.
  *
@@ -388,7 +388,7 @@ cdk_keymap_get_scroll_lock_state (GdkKeymap *keymap)
  * Since: 3.4
  */
 guint
-cdk_keymap_get_modifier_state (GdkKeymap *keymap)
+cdk_keymap_get_modifier_state (CdkKeymap *keymap)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -400,10 +400,10 @@ cdk_keymap_get_modifier_state (GdkKeymap *keymap)
 
 /**
  * cdk_keymap_get_entries_for_keyval:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  * @keyval: a keyval, such as %GDK_KEY_a, %GDK_KEY_Up, %GDK_KEY_Return, etc.
  * @keys: (out) (array length=n_keys) (transfer full): return location
- *     for an array of #GdkKeymapKey
+ *     for an array of #CdkKeymapKey
  * @n_keys: return location for number of elements in returned array
  *
  * Obtains a list of keycode/group/level combinations that will
@@ -413,7 +413,7 @@ cdk_keymap_get_modifier_state (GdkKeymap *keymap)
  * right symbol is used. On US keyboards, the shift key changes the
  * keyboard level, and there are no groups. A group switch key might
  * convert a keyboard between Hebrew to English modes, for example.
- * #GdkEventKey contains a %group field that indicates the active
+ * #CdkEventKey contains a %group field that indicates the active
  * keyboard group. The level is computed from the modifier mask.
  * The returned array should be freed
  * with g_free().
@@ -421,9 +421,9 @@ cdk_keymap_get_modifier_state (GdkKeymap *keymap)
  * Returns: %TRUE if keys were found and returned
  **/
 gboolean
-cdk_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
+cdk_keymap_get_entries_for_keyval (CdkKeymap     *keymap,
                                    guint          keyval,
-                                   GdkKeymapKey **keys,
+                                   CdkKeymapKey **keys,
                                    gint          *n_keys)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
@@ -437,16 +437,16 @@ cdk_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
 
 /**
  * cdk_keymap_get_entries_for_keycode:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  * @hardware_keycode: a keycode
  * @keys: (out) (array length=n_entries) (transfer full) (optional): return
- *     location for array of #GdkKeymapKey, or %NULL
+ *     location for array of #CdkKeymapKey, or %NULL
  * @keyvals: (out) (array length=n_entries) (transfer full) (optional): return
  *     location for array of keyvals, or %NULL
  * @n_entries: length of @keys and @keyvals
  *
  * Returns the keyvals bound to @hardware_keycode.
- * The Nth #GdkKeymapKey in @keys is bound to the Nth
+ * The Nth #CdkKeymapKey in @keys is bound to the Nth
  * keyval in @keyvals. Free the returned arrays with g_free().
  * When a keycode is pressed by the user, the keyval from
  * this list of entries is selected by considering the effective
@@ -455,9 +455,9 @@ cdk_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
  * Returns: %TRUE if there were any entries
  **/
 gboolean
-cdk_keymap_get_entries_for_keycode (GdkKeymap     *keymap,
+cdk_keymap_get_entries_for_keycode (CdkKeymap     *keymap,
                                     guint          hardware_keycode,
-                                    GdkKeymapKey **keys,
+                                    CdkKeymapKey **keys,
                                     guint        **keyvals,
                                     gint          *n_entries)
 {
@@ -470,8 +470,8 @@ cdk_keymap_get_entries_for_keycode (GdkKeymap     *keymap,
 
 /**
  * cdk_keymap_lookup_key:
- * @keymap: a #GdkKeymap
- * @key: a #GdkKeymapKey with keycode, group, and level initialized
+ * @keymap: a #CdkKeymap
+ * @key: a #CdkKeymapKey with keycode, group, and level initialized
  *
  * Looks up the keyval mapped to a keycode/group/level triplet.
  * If no keyval is bound to @key, returns 0. For normal user input,
@@ -482,8 +482,8 @@ cdk_keymap_get_entries_for_keycode (GdkKeymap     *keymap,
  * Returns: a keyval, or 0 if none was mapped to the given @key
  **/
 guint
-cdk_keymap_lookup_key (GdkKeymap          *keymap,
-                       const GdkKeymapKey *key)
+cdk_keymap_lookup_key (CdkKeymap          *keymap,
+                       const CdkKeymapKey *key)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), 0);
   g_return_val_if_fail (key != NULL, 0);
@@ -493,7 +493,7 @@ cdk_keymap_lookup_key (GdkKeymap          *keymap,
 
 /**
  * cdk_keymap_translate_keyboard_state:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  * @hardware_keycode: a keycode
  * @state: a modifier state
  * @group: active keyboard group
@@ -504,7 +504,7 @@ cdk_keymap_lookup_key (GdkKeymap          *keymap,
  * @consumed_modifiers: (out) (allow-none): return location for modifiers
  *     that were used to determine the group or level, or %NULL
  *
- * Translates the contents of a #GdkEventKey into a keyval, effective
+ * Translates the contents of a #CdkEventKey into a keyval, effective
  * group, and level. Modifiers that affected the translation and
  * are thus unavailable for application use are returned in
  * @consumed_modifiers.
@@ -512,7 +512,7 @@ cdk_keymap_lookup_key (GdkKeymap          *keymap,
  * groups and levels. The @effective_group is the group that was
  * actually used for the translation; some keys such as Enter are not
  * affected by the active keyboard group. The @level is derived from
- * @state. For convenience, #GdkEventKey already contains the translated
+ * @state. For convenience, #CdkEventKey already contains the translated
  * keyval, so this function isn’t as useful as you might think.
  *
  * @consumed_modifiers gives modifiers that should be masked outfrom @state
@@ -555,14 +555,14 @@ cdk_keymap_lookup_key (GdkKeymap          *keymap,
  * Returns: %TRUE if there was a keyval bound to the keycode/state/group
  **/
 gboolean
-cdk_keymap_translate_keyboard_state (GdkKeymap       *keymap,
+cdk_keymap_translate_keyboard_state (CdkKeymap       *keymap,
                                      guint            hardware_keycode,
-                                     GdkModifierType  state,
+                                     CdkModifierType  state,
                                      gint             group,
                                      guint           *keyval,
                                      gint            *effective_group,
                                      gint            *level,
-                                     GdkModifierType *consumed_modifiers)
+                                     CdkModifierType *consumed_modifiers)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
@@ -578,7 +578,7 @@ cdk_keymap_translate_keyboard_state (GdkKeymap       *keymap,
 
 /**
  * cdk_keymap_add_virtual_modifiers:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  * @state: (inout): pointer to the modifier mask to change
  *
  * Maps the non-virtual modifiers (i.e Mod2, Mod3, ...) which are set
@@ -595,8 +595,8 @@ cdk_keymap_translate_keyboard_state (GdkKeymap       *keymap,
  * Since: 2.20
  */
 void
-cdk_keymap_add_virtual_modifiers (GdkKeymap       *keymap,
-			          GdkModifierType *state)
+cdk_keymap_add_virtual_modifiers (CdkKeymap       *keymap,
+			          CdkModifierType *state)
 {
   g_return_if_fail (GDK_IS_KEYMAP (keymap));
 
@@ -605,7 +605,7 @@ cdk_keymap_add_virtual_modifiers (GdkKeymap       *keymap,
 
 /**
  * cdk_keymap_map_virtual_modifiers:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  * @state: (inout): pointer to the modifier state to map
  *
  * Maps the virtual modifiers (i.e. Super, Hyper and Meta) which
@@ -623,17 +623,17 @@ cdk_keymap_add_virtual_modifiers (GdkKeymap       *keymap,
  * Since: 2.20
  */
 gboolean
-cdk_keymap_map_virtual_modifiers (GdkKeymap       *keymap,
-                                  GdkModifierType *state)
+cdk_keymap_map_virtual_modifiers (CdkKeymap       *keymap,
+                                  CdkModifierType *state)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
 
   return GDK_KEYMAP_GET_CLASS(keymap)->map_virtual_modifiers (keymap, state);
 }
 
-static GdkModifierType
-cdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
-                                   GdkModifierIntent  intent)
+static CdkModifierType
+cdk_keymap_real_get_modifier_mask (CdkKeymap         *keymap,
+                                   CdkModifierIntent  intent)
 {
   switch (intent)
     {
@@ -666,7 +666,7 @@ cdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
 
 /**
  * cdk_keymap_get_modifier_mask:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  * @intent: the use case for the modifier mask
  *
  * Returns the modifier mask the @keymap’s windowing system backend
@@ -683,9 +683,9 @@ cdk_keymap_real_get_modifier_mask (GdkKeymap         *keymap,
  *
  * Since: 3.4
  **/
-GdkModifierType
-cdk_keymap_get_modifier_mask (GdkKeymap         *keymap,
-                              GdkModifierIntent  intent)
+CdkModifierType
+cdk_keymap_get_modifier_mask (CdkKeymap         *keymap,
+                              CdkModifierIntent  intent)
 {
   g_return_val_if_fail (GDK_IS_KEYMAP (keymap), 0);
 

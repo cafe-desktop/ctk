@@ -477,9 +477,9 @@ static void     ctk_file_chooser_widget_hierarchy_changed (CtkWidget          *w
                                                             CtkWidget          *previous_toplevel);
 static void     ctk_file_chooser_widget_style_updated  (CtkWidget             *widget);
 static void     ctk_file_chooser_widget_screen_changed (CtkWidget             *widget,
-                                                        GdkScreen             *previous_screen);
+                                                        CdkScreen             *previous_screen);
 static gboolean ctk_file_chooser_widget_key_press_event (CtkWidget            *widget,
-                                                         GdkEventKey          *event);
+                                                         CdkEventKey          *event);
 
 static gboolean       ctk_file_chooser_widget_set_current_folder           (CtkFileChooser    *chooser,
                                                                             GFile             *folder,
@@ -1301,7 +1301,7 @@ places_sidebar_show_error_message_cb (CtkPlacesSidebar *sidebar,
 }
 
 static gboolean
-key_is_left_or_right (GdkEventKey *event)
+key_is_left_or_right (CdkEventKey *event)
 {
   guint modifiers;
 
@@ -1316,9 +1316,9 @@ key_is_left_or_right (GdkEventKey *event)
 
 static gboolean
 should_trigger_location_entry (CtkFileChooserWidget *impl,
-                               GdkEventKey          *event)
+                               CdkEventKey          *event)
 {
-  GdkModifierType no_text_input_mask;
+  CdkModifierType no_text_input_mask;
 
   if (impl->priv->operation_mode == OPERATION_MODE_SEARCH)
     return FALSE;
@@ -1344,7 +1344,7 @@ should_trigger_location_entry (CtkFileChooserWidget *impl,
  */
 static gboolean
 browse_files_key_press_event_cb (CtkWidget   *widget,
-                                 GdkEventKey *event,
+                                 CdkEventKey *event,
                                  gpointer     data)
 {
   CtkFileChooserWidget *impl = (CtkFileChooserWidget *) data;
@@ -1399,7 +1399,7 @@ browse_files_key_press_event_cb (CtkWidget   *widget,
   if (event->keyval == GDK_KEY_Escape &&
       priv->operation_mode == OPERATION_MODE_SEARCH)
     {
-      ctk_search_entry_handle_event (CTK_SEARCH_ENTRY (priv->search_entry), (GdkEvent *)event);
+      ctk_search_entry_handle_event (CTK_SEARCH_ENTRY (priv->search_entry), (CdkEvent *)event);
       return TRUE;
     }
 
@@ -1408,7 +1408,7 @@ browse_files_key_press_event_cb (CtkWidget   *widget,
 
 static gboolean
 ctk_file_chooser_widget_key_press_event (CtkWidget   *widget,
-                                         GdkEventKey *event)
+                                         CdkEventKey *event)
 {
   CtkFileChooserWidget *impl = (CtkFileChooserWidget *) widget;
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -1422,7 +1422,7 @@ ctk_file_chooser_widget_key_press_event (CtkWidget   *widget,
           return TRUE;
         }
     }
-  else if (ctk_search_entry_handle_event (CTK_SEARCH_ENTRY (priv->search_entry), (GdkEvent *)event))
+  else if (ctk_search_entry_handle_event (CTK_SEARCH_ENTRY (priv->search_entry), (CdkEvent *)event))
     {
       if (priv->operation_mode != OPERATION_MODE_SEARCH)
         operation_mode_set (impl, OPERATION_MODE_SEARCH);
@@ -1654,7 +1654,7 @@ rename_selected_cb (CtkTreeModel *model,
 {
   CtkFileChooserWidget *impl = data;
   CtkFileChooserWidgetPrivate *priv = impl->priv;
-  GdkRectangle rect;
+  CdkRectangle rect;
   gchar *filename;
 
   ctk_tree_model_get (model, iter,
@@ -2060,7 +2060,7 @@ out:
 
 static void
 file_list_drag_data_received_cb (CtkWidget        *widget,
-                                 GdkDragContext   *context,
+                                 CdkDragContext   *context,
                                  gint              x,
                                  gint              y,
                                  CtkSelectionData *selection_data,
@@ -2111,7 +2111,7 @@ file_list_drag_data_received_cb (CtkWidget        *widget,
 /* Don't do anything with the drag_drop signal */
 static gboolean
 file_list_drag_drop_cb (CtkWidget             *widget,
-                        GdkDragContext        *context,
+                        CdkDragContext        *context,
                         gint                   x,
                         gint                   y,
                         guint                  time_,
@@ -2123,7 +2123,7 @@ file_list_drag_drop_cb (CtkWidget             *widget,
 
 static void
 file_list_drag_begin_cb (CtkWidget            *widget,
-                         GdkDragContext       *context,
+                         CdkDragContext       *context,
                          CtkFileChooserWidget *impl)
 {
   ctk_places_sidebar_set_drop_targets_visible (CTK_PLACES_SIDEBAR (impl->priv->places_sidebar),
@@ -2135,7 +2135,7 @@ file_list_drag_begin_cb (CtkWidget            *widget,
    dropping the dragged item onto a tree item */
 static gboolean
 file_list_drag_motion_cb (CtkWidget             *widget,
-                          GdkDragContext        *context,
+                          CdkDragContext        *context,
                           gint                   x,
                           gint                   y,
                           guint                  time_,
@@ -2147,7 +2147,7 @@ file_list_drag_motion_cb (CtkWidget             *widget,
 
 static void
 file_list_drag_end_cb (CtkWidget      *widget,
-                       GdkDragContext *context,
+                       CdkDragContext *context,
                        gpointer        user_data)
 {
   CtkFileChooserWidget *impl;
@@ -2392,7 +2392,7 @@ file_list_show_popover (CtkFileChooserWidget *impl,
                         gdouble               y)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
-  GdkRectangle rect;
+  CdkRectangle rect;
   CtkTreeSelection *selection;
   CtkTreeModel *model;
   GList *list;
@@ -2445,7 +2445,7 @@ list_popup_menu_cb (CtkWidget            *widget,
  */
 static gboolean
 list_button_press_event_cb (CtkWidget            *widget,
-                            GdkEventButton       *event,
+                            CdkEventButton       *event,
                             CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -2457,11 +2457,11 @@ list_button_press_event_cb (CtkWidget            *widget,
   if (in_press)
     return FALSE;
 
-  if (!cdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (!cdk_event_triggers_context_menu ((CdkEvent *) event))
     return FALSE;
 
   in_press = TRUE;
-  ctk_widget_event (priv->browse_files_tree_view, (GdkEvent *) event);
+  ctk_widget_event (priv->browse_files_tree_view, (CdkEvent *) event);
   in_press = FALSE;
 
   file_list_show_popover (impl, event->x, event->y);
@@ -2665,7 +2665,7 @@ location_entry_create (CtkFileChooserWidget *impl)
 
 static gboolean
 external_entry_key_press (CtkWidget            *entry,
-                          GdkEventKey          *event,
+                          CdkEventKey          *event,
                           CtkFileChooserWidget *impl)
 {
   /* Since the entry is not a descendent of the file chooser widget
@@ -3625,7 +3625,7 @@ cancel_all_operations (CtkFileChooserWidget *impl)
 /* Removes the settings signal handler.  It's safe to call multiple times */
 static void
 remove_settings_signal (CtkFileChooserWidget *impl,
-                        GdkScreen             *screen)
+                        CdkScreen             *screen)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
 
@@ -3835,7 +3835,7 @@ ctk_file_chooser_widget_style_updated (CtkWidget *widget)
 
 static void
 ctk_file_chooser_widget_screen_changed (CtkWidget *widget,
-                                         GdkScreen *previous_screen)
+                                         CdkScreen *previous_screen)
 {
   CtkFileChooserWidget *impl;
 
@@ -4383,8 +4383,8 @@ set_busy_cursor (CtkFileChooserWidget *impl,
 {
   CtkWidget *widget;
   CtkWindow *toplevel;
-  GdkDisplay *display;
-  GdkCursor *cursor;
+  CdkDisplay *display;
+  CdkCursor *cursor;
 
   toplevel = get_toplevel (CTK_WIDGET (impl));
   widget = CTK_WIDGET (toplevel);
@@ -6374,7 +6374,7 @@ find_good_size_from_style (CtkWidget *widget,
 {
   CtkStyleContext *context;
   double font_size;
-  GdkScreen *screen;
+  CdkScreen *screen;
   double resolution;
 
   context = ctk_widget_get_style_context (widget);
@@ -6383,7 +6383,7 @@ find_good_size_from_style (CtkWidget *widget,
   if (screen)
     {
       resolution = cdk_screen_get_resolution (screen);
-      if (resolution < 0.0) /* will be -1 if the resolution is not defined in the GdkScreen */
+      if (resolution < 0.0) /* will be -1 if the resolution is not defined in the CdkScreen */
         resolution = 96.0;
     }
   else
@@ -8293,7 +8293,7 @@ show_hidden_handler (CtkFileChooserWidget *impl)
 static void
 add_normal_and_shifted_binding (CtkBindingSet   *binding_set,
                                 guint            keyval,
-                                GdkModifierType  modifiers,
+                                CdkModifierType  modifiers,
                                 const gchar     *signal_name)
 {
   ctk_binding_entry_add_signal (binding_set,

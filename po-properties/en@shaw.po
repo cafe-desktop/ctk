@@ -112,8 +112,8 @@ msgstr "𐑕𐑒𐑮𐑰𐑯"
 
 #, fuzzy
 #: ../cdk/cdkpango.c:539
-msgid "the GdkScreen for the renderer"
-msgstr "𐑞 GdkScreen 𐑓𐑹 𐑞 renderer"
+msgid "the CdkScreen for the renderer"
+msgstr "𐑞 CdkScreen 𐑓𐑹 𐑞 renderer"
 
 #: ../cdk/cdkscreen.c:75
 msgid "Font options"
@@ -1175,8 +1175,8 @@ msgstr "𐑕𐑧𐑤 𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼"
 
 #, fuzzy
 #: ../ctk/ctkcellrenderer.c:287
-msgid "Cell background color as a GdkColor"
-msgstr "𐑕𐑧𐑤 𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "𐑕𐑧𐑤 𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 CdkColor"
 
 #: ../ctk/ctkcellrenderer.c:294
 msgid "Editing"
@@ -1475,8 +1475,8 @@ msgstr "𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼"
 
 #, fuzzy
 #: ../ctk/ctkcellrenderertext.c:237 ../ctk/ctkcellview.c:168
-msgid "Background color as a GdkColor"
-msgstr "𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:244 ../ctk/ctktexttag.c:217
 msgid "Foreground color name"
@@ -1493,8 +1493,8 @@ msgstr "𐑓𐑹𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼"
 
 #, fuzzy
 #: ../ctk/ctkcellrenderertext.c:253
-msgid "Foreground color as a GdkColor"
-msgstr "𐑓𐑹𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "𐑓𐑹𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:261 ../ctk/ctkentry.c:662
 #: ../ctk/ctktexttag.c:251 ../ctk/ctktextview.c:576
@@ -2882,8 +2882,8 @@ msgstr "𐑞 𐑕𐑑𐑮𐑦𐑙 𐑞𐑨𐑑 𐑮𐑧𐑐𐑮𐑩𐑟𐑧𐑯�
 
 #, fuzzy
 #: ../ctk/ctkfontsel.c:204
-msgid "The GdkFont that is currently selected"
-msgstr "𐑞 GdkFont 𐑞𐑨𐑑 𐑦𐑟 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛"
+msgid "The CdkFont that is currently selected"
+msgstr "𐑞 CdkFont 𐑞𐑨𐑑 𐑦𐑟 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑕𐑩𐑤𐑧𐑒𐑑𐑩𐑛"
 
 #: ../ctk/ctkfontsel.c:210
 msgid "Preview text"
@@ -3116,8 +3116,8 @@ msgstr "Pixbuf"
 
 #, fuzzy
 #: ../ctk/ctkimage.c:228 ../ctk/ctkstatusicon.c:219
-msgid "A GdkPixbuf to display"
-msgstr "𐑩 GdkPixbuf 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
+msgid "A CdkPixbuf to display"
+msgstr "𐑩 CdkPixbuf 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
 
 #, fuzzy
 #: ../ctk/ctkimage.c:235
@@ -3126,8 +3126,8 @@ msgstr "Pixmap"
 
 #, fuzzy
 #: ../ctk/ctkimage.c:236
-msgid "A GdkPixmap to display"
-msgstr "𐑩 GdkPixmap 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
+msgid "A CdkPixmap to display"
+msgstr "𐑩 CdkPixmap 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
 
 #: ../ctk/ctkimage.c:243 ../ctk/ctkmessagedialog.c:262
 msgid "Image"
@@ -3135,8 +3135,8 @@ msgstr "𐑦𐑥𐑦𐑡"
 
 #, fuzzy
 #: ../ctk/ctkimage.c:244
-msgid "A GdkImage to display"
-msgstr "𐑩 GdkImage 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
+msgid "A CdkImage to display"
+msgstr "𐑩 CdkImage 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
 
 #: ../ctk/ctkimage.c:251
 msgid "Mask"
@@ -3144,8 +3144,8 @@ msgstr "𐑥𐑭𐑕𐑒"
 
 #, fuzzy
 #: ../ctk/ctkimage.c:252
-msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-msgstr "𐑥𐑭𐑕𐑒 𐑚𐑦𐑑𐑥𐑨𐑐 𐑑 𐑿𐑕 𐑢𐑦𐑞 GdkImage 𐑹 GdkPixmap"
+msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+msgstr "𐑥𐑭𐑕𐑒 𐑚𐑦𐑑𐑥𐑨𐑐 𐑑 𐑿𐑕 𐑢𐑦𐑞 CdkImage 𐑹 CdkPixmap"
 
 #: ../ctk/ctkimage.c:259 ../ctk/ctkrecentmanager.c:214
 #: ../ctk/ctkstatusicon.c:226
@@ -3191,8 +3191,8 @@ msgstr "𐑨𐑯𐑩𐑥𐑱𐑖𐑩𐑯"
 
 #, fuzzy
 #: ../ctk/ctkimage.c:311
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱"
 
 #: ../ctk/ctkimage.c:351 ../ctk/ctkstatusicon.c:266
 msgid "Storage type"
@@ -5837,8 +5837,8 @@ msgstr "𐑯𐑱𐑥 𐑿𐑟𐑛 𐑑 𐑮𐑦𐑓𐑻 𐑑 𐑞 𐑑𐑧𐑒�
 
 #, fuzzy
 #: ../ctk/ctktexttag.c:192
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 (𐑐𐑪𐑕𐑩𐑚𐑩𐑤𐑦 𐑩𐑯𐑨𐑤𐑩𐑒𐑱𐑑𐑦𐑛) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 (𐑐𐑪𐑕𐑩𐑚𐑩𐑤𐑦 𐑩𐑯𐑨𐑤𐑩𐑒𐑱𐑑𐑦𐑛) CdkColor"
 
 #: ../ctk/ctktexttag.c:199
 msgid "Background full height"
@@ -5862,8 +5862,8 @@ msgstr "𐑚𐑦𐑑𐑥𐑨𐑐 𐑑 𐑿𐑕 𐑨𐑟 𐑩 𐑥𐑭𐑕𐑒 �
 
 #, fuzzy
 #: ../ctk/ctktexttag.c:226
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "𐑓𐑹𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 (𐑐𐑪𐑕𐑩𐑚𐑩𐑤𐑦 𐑩𐑯𐑨𐑤𐑩𐑒𐑱𐑑𐑦𐑛) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "𐑓𐑹𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 (𐑐𐑪𐑕𐑩𐑚𐑩𐑤𐑦 𐑩𐑯𐑨𐑤𐑩𐑒𐑱𐑑𐑦𐑛) CdkColor"
 
 #, fuzzy
 #: ../ctk/ctktexttag.c:234
@@ -6026,8 +6026,8 @@ msgstr "𐑐𐑨𐑮𐑩𐑜𐑮𐑭𐑓 𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒�
 
 #, fuzzy
 #: ../ctk/ctktexttag.c:536
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "𐑐𐑨𐑮𐑩𐑜𐑮𐑭𐑓 𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 (𐑐𐑪𐑕𐑩𐑚𐑩𐑤𐑦 𐑩𐑯𐑨𐑤𐑩𐑒𐑱𐑑𐑦𐑛) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "𐑐𐑨𐑮𐑩𐑜𐑮𐑭𐑓 𐑚𐑨𐑒𐑜𐑮𐑬𐑯𐑛 𐑒𐑳𐑤𐑼 𐑨𐑟 𐑩 (𐑐𐑪𐑕𐑩𐑚𐑩𐑤𐑦 𐑩𐑯𐑨𐑤𐑩𐑒𐑱𐑑𐑦𐑛) CdkColor"
 
 #: ../ctk/ctktexttag.c:554
 msgid "Margin Accumulates"
@@ -7004,8 +7004,8 @@ msgstr "𐑦𐑝𐑧𐑯𐑑𐑕"
 
 #, fuzzy
 #: ../ctk/ctkwidget.c:682
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "𐑞 𐑦𐑝𐑧𐑯𐑑 𐑥𐑭𐑕𐑒 𐑞𐑨𐑑 𐑛𐑦𐑕𐑲𐑛𐑟 𐑢𐑪𐑑 𐑒𐑲𐑯𐑛 𐑝 GdkEvents 𐑞𐑦𐑕 𐑢𐑦𐑡𐑩𐑑 𐑜𐑧𐑑𐑕"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "𐑞 𐑦𐑝𐑧𐑯𐑑 𐑥𐑭𐑕𐑒 𐑞𐑨𐑑 𐑛𐑦𐑕𐑲𐑛𐑟 𐑢𐑪𐑑 𐑒𐑲𐑯𐑛 𐑝 CdkEvents 𐑞𐑦𐑕 𐑢𐑦𐑡𐑩𐑑 𐑜𐑧𐑑𐑕"
 
 #: ../ctk/ctkwidget.c:689
 msgid "Extension events"

@@ -180,7 +180,7 @@ gint ctk_dialog_get_response_for_widget (CtkDialog *dialog,
                                          CtkWidget *widget);
 
 GDK_DEPRECATED_IN_3_10
-gboolean ctk_alternative_dialog_button_order (GdkScreen *screen);
+gboolean ctk_alternative_dialog_button_order (CdkScreen *screen);
 GDK_DEPRECATED_IN_3_10
 void     ctk_dialog_set_alternative_button_order (CtkDialog *dialog,
                                                   gint       first_response_id,

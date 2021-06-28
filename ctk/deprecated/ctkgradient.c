@@ -283,7 +283,7 @@ ctk_gradient_resolve (CtkGradient         *gradient,
   for (i = 0; i < gradient->stops->len; i++)
     {
       ColorStop *stop;
-      GdkRGBA color;
+      CdkRGBA color;
 
       stop = &g_array_index (gradient->stops, ColorStop, i);
 
@@ -329,7 +329,7 @@ _ctk_gradient_resolve_full (CtkGradient             *gradient,
     {
       ColorStop *stop;
       CtkCssValue *val;
-      GdkRGBA rgba;
+      CdkRGBA rgba;
 
       stop = &g_array_index (gradient->stops, ColorStop, i);
 

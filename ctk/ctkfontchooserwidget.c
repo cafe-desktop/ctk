@@ -178,7 +178,7 @@ static void ctk_font_chooser_widget_get_property         (GObject         *objec
 static void ctk_font_chooser_widget_finalize             (GObject         *object);
 
 static void ctk_font_chooser_widget_screen_changed       (CtkWidget       *widget,
-                                                          GdkScreen       *previous_screen);
+                                                          CdkScreen       *previous_screen);
 
 static gboolean ctk_font_chooser_widget_find_font        (CtkFontChooserWidget *fontchooser,
                                                           const PangoFontDescription *font_desc,
@@ -578,7 +578,7 @@ cursor_changed_cb (CtkTreeView *treeview,
 
 static gboolean
 resize_by_scroll_cb (CtkWidget      *scrolled_window,
-                     GdkEventScroll *event,
+                     CdkEventScroll *event,
                      gpointer        user_data)
 {
   CtkFontChooserWidget *fc = user_data;
@@ -1274,7 +1274,7 @@ fontconfig_changed (CtkFontChooserWidget *fontchooser)
 
 static void
 ctk_font_chooser_widget_screen_changed (CtkWidget *widget,
-                                        GdkScreen *previous_screen)
+                                        CdkScreen *previous_screen)
 {
   CtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (widget);
   CtkSettings *settings;
@@ -2551,11 +2551,11 @@ ctk_font_chooser_widget_iface_init (CtkFontChooserIface *iface)
 
 gboolean
 ctk_font_chooser_widget_handle_event (CtkWidget   *widget,
-                                      GdkEventKey *key_event)
+                                      CdkEventKey *key_event)
 {
   CtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (widget);
   CtkFontChooserWidgetPrivate *priv = fontchooser->priv;
-  GdkEvent *event = (GdkEvent *)key_event;
+  CdkEvent *event = (CdkEvent *)key_event;
 
   return ctk_search_entry_handle_event (CTK_SEARCH_ENTRY (priv->search_entry), event);
 }

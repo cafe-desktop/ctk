@@ -41,12 +41,12 @@
 
 #include <xkbcommon/xkbcommon.h>
 
-typedef struct _GdkWaylandKeymap          GdkWaylandKeymap;
-typedef struct _GdkWaylandKeymapClass     GdkWaylandKeymapClass;
+typedef struct _CdkWaylandKeymap          CdkWaylandKeymap;
+typedef struct _CdkWaylandKeymapClass     CdkWaylandKeymapClass;
 
-struct _GdkWaylandKeymap
+struct _CdkWaylandKeymap
 {
-  GdkKeymap parent_instance;
+  CdkKeymap parent_instance;
 
   struct xkb_keymap *xkb_keymap;
   struct xkb_state *xkb_state;
@@ -55,23 +55,23 @@ struct _GdkWaylandKeymap
   gboolean bidi;
 };
 
-struct _GdkWaylandKeymapClass
+struct _CdkWaylandKeymapClass
 {
-  GdkKeymapClass parent_class;
+  CdkKeymapClass parent_class;
 };
 
 #define GDK_TYPE_WAYLAND_KEYMAP          (_cdk_wayland_keymap_get_type ())
-#define GDK_WAYLAND_KEYMAP(object)       (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_KEYMAP, GdkWaylandKeymap))
+#define GDK_WAYLAND_KEYMAP(object)       (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_KEYMAP, CdkWaylandKeymap))
 #define GDK_IS_WAYLAND_KEYMAP(object)    (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WAYLAND_KEYMAP))
 
 GType _cdk_wayland_keymap_get_type (void);
 
-G_DEFINE_TYPE (GdkWaylandKeymap, _cdk_wayland_keymap, GDK_TYPE_KEYMAP)
+G_DEFINE_TYPE (CdkWaylandKeymap, _cdk_wayland_keymap, GDK_TYPE_KEYMAP)
 
 static void
 cdk_wayland_keymap_finalize (GObject *object)
 {
-  GdkWaylandKeymap *keymap = GDK_WAYLAND_KEYMAP (object);
+  CdkWaylandKeymap *keymap = GDK_WAYLAND_KEYMAP (object);
 
   xkb_keymap_unref (keymap->xkb_keymap);
   xkb_state_unref (keymap->xkb_state);
@@ -81,9 +81,9 @@ cdk_wayland_keymap_finalize (GObject *object)
 }
 
 static PangoDirection
-cdk_wayland_keymap_get_direction (GdkKeymap *keymap)
+cdk_wayland_keymap_get_direction (CdkKeymap *keymap)
 {
-  GdkWaylandKeymap *keymap_wayland = GDK_WAYLAND_KEYMAP (keymap);
+  CdkWaylandKeymap *keymap_wayland = GDK_WAYLAND_KEYMAP (keymap);
   gint i;
 
   for (i = 0; i < xkb_keymap_num_layouts (keymap_wayland->xkb_keymap); i++)
@@ -96,38 +96,38 @@ cdk_wayland_keymap_get_direction (GdkKeymap *keymap)
 }
 
 static gboolean
-cdk_wayland_keymap_have_bidi_layouts (GdkKeymap *keymap)
+cdk_wayland_keymap_have_bidi_layouts (CdkKeymap *keymap)
 {
-  GdkWaylandKeymap *keymap_wayland = GDK_WAYLAND_KEYMAP (keymap);
+  CdkWaylandKeymap *keymap_wayland = GDK_WAYLAND_KEYMAP (keymap);
 
   return keymap_wayland->bidi;
 }
 
 static gboolean
-cdk_wayland_keymap_get_caps_lock_state (GdkKeymap *keymap)
+cdk_wayland_keymap_get_caps_lock_state (CdkKeymap *keymap)
 {
   return xkb_state_led_name_is_active (GDK_WAYLAND_KEYMAP (keymap)->xkb_state,
                                        XKB_LED_NAME_CAPS);
 }
 
 static gboolean
-cdk_wayland_keymap_get_num_lock_state (GdkKeymap *keymap)
+cdk_wayland_keymap_get_num_lock_state (CdkKeymap *keymap)
 {
   return xkb_state_led_name_is_active (GDK_WAYLAND_KEYMAP (keymap)->xkb_state,
                                        XKB_LED_NAME_NUM);
 }
 
 static gboolean
-cdk_wayland_keymap_get_scroll_lock_state (GdkKeymap *keymap)
+cdk_wayland_keymap_get_scroll_lock_state (CdkKeymap *keymap)
 {
   return xkb_state_led_name_is_active (GDK_WAYLAND_KEYMAP (keymap)->xkb_state,
                                        XKB_LED_NAME_SCROLL);
 }
 
 static gboolean
-cdk_wayland_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
+cdk_wayland_keymap_get_entries_for_keyval (CdkKeymap     *keymap,
 					   guint          keyval,
-					   GdkKeymapKey **keys,
+					   CdkKeymapKey **keys,
 					   gint          *n_keys)
 {
   struct xkb_keymap *xkb_keymap = GDK_WAYLAND_KEYMAP (keymap)->xkb_keymap;
@@ -135,7 +135,7 @@ cdk_wayland_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
   guint keycode;
   xkb_keycode_t min_keycode, max_keycode;
 
-  retval = g_array_new (FALSE, FALSE, sizeof (GdkKeymapKey));
+  retval = g_array_new (FALSE, FALSE, sizeof (CdkKeymapKey));
 
   min_keycode = xkb_keymap_min_keycode (xkb_keymap);
   max_keycode = xkb_keymap_max_keycode (xkb_keymap);
@@ -156,7 +156,7 @@ cdk_wayland_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
                 {
                   if (syms[sym] == keyval)
                     {
-                      GdkKeymapKey key;
+                      CdkKeymapKey key;
 
                       key.keycode = keycode;
                       key.group = layout;
@@ -170,15 +170,15 @@ cdk_wayland_keymap_get_entries_for_keyval (GdkKeymap     *keymap,
     }
 
   *n_keys = retval->len;
-  *keys = (GdkKeymapKey*) g_array_free (retval, FALSE);
+  *keys = (CdkKeymapKey*) g_array_free (retval, FALSE);
 
   return TRUE;
 }
 
 static gboolean
-cdk_wayland_keymap_get_entries_for_keycode (GdkKeymap     *keymap,
+cdk_wayland_keymap_get_entries_for_keycode (CdkKeymap     *keymap,
 					    guint          hardware_keycode,
-					    GdkKeymapKey **keys,
+					    CdkKeymapKey **keys,
 					    guint        **keyvals,
 					    gint          *n_entries)
 {
@@ -196,7 +196,7 @@ cdk_wayland_keymap_get_entries_for_keycode (GdkKeymap     *keymap,
  if (n_entries)
     *n_entries = num_entries;
   if (keys)
-    *keys = g_new0 (GdkKeymapKey, num_entries);
+    *keys = g_new0 (CdkKeymapKey, num_entries);
   if (keyvals)
     *keyvals = g_new0 (guint, num_entries);
 
@@ -227,8 +227,8 @@ cdk_wayland_keymap_get_entries_for_keycode (GdkKeymap     *keymap,
 }
 
 static guint
-cdk_wayland_keymap_lookup_key (GdkKeymap          *keymap,
-			       const GdkKeymapKey *key)
+cdk_wayland_keymap_lookup_key (CdkKeymap          *keymap,
+			       const CdkKeymapKey *key)
 {
   struct xkb_keymap *xkb_keymap = GDK_WAYLAND_KEYMAP (keymap)->xkb_keymap;
   const xkb_keysym_t *syms;
@@ -247,7 +247,7 @@ cdk_wayland_keymap_lookup_key (GdkKeymap          *keymap,
 
 static guint32
 get_xkb_modifiers (struct xkb_keymap *xkb_keymap,
-                   GdkModifierType    state)
+                   CdkModifierType    state)
 {
   guint32 mods = 0;
 
@@ -277,11 +277,11 @@ get_xkb_modifiers (struct xkb_keymap *xkb_keymap,
   return mods;
 }
 
-static GdkModifierType
+static CdkModifierType
 get_cdk_modifiers (struct xkb_keymap *xkb_keymap,
                    guint32            mods)
 {
-  GdkModifierType state = 0;
+  CdkModifierType state = 0;
 
   if (mods & (1 << xkb_keymap_mod_get_index (xkb_keymap, XKB_MOD_NAME_SHIFT)))
     state |= GDK_SHIFT_MASK;
@@ -316,14 +316,14 @@ get_cdk_modifiers (struct xkb_keymap *xkb_keymap,
 }
 
 static gboolean
-cdk_wayland_keymap_translate_keyboard_state (GdkKeymap       *keymap,
+cdk_wayland_keymap_translate_keyboard_state (CdkKeymap       *keymap,
 					     guint            hardware_keycode,
-					     GdkModifierType  state,
+					     CdkModifierType  state,
 					     gint             group,
 					     guint           *keyval,
 					     gint            *effective_group,
 					     gint            *effective_level,
-					     GdkModifierType *consumed_modifiers)
+					     CdkModifierType *consumed_modifiers)
 {
   struct xkb_keymap *xkb_keymap;
   struct xkb_state *xkb_state;
@@ -364,7 +364,7 @@ cdk_wayland_keymap_translate_keyboard_state (GdkKeymap       *keymap,
 }
 
 static guint
-cdk_wayland_keymap_get_modifier_state (GdkKeymap *keymap)
+cdk_wayland_keymap_get_modifier_state (CdkKeymap *keymap)
 {
   struct xkb_keymap *xkb_keymap = GDK_WAYLAND_KEYMAP (keymap)->xkb_keymap;
   struct xkb_state *xkb_state = GDK_WAYLAND_KEYMAP (keymap)->xkb_state;
@@ -376,14 +376,14 @@ cdk_wayland_keymap_get_modifier_state (GdkKeymap *keymap)
 }
 
 static void
-cdk_wayland_keymap_add_virtual_modifiers (GdkKeymap       *keymap,
-					  GdkModifierType *state)
+cdk_wayland_keymap_add_virtual_modifiers (CdkKeymap       *keymap,
+					  CdkModifierType *state)
 {
   struct xkb_keymap *xkb_keymap;
   struct xkb_state *xkb_state;
   xkb_mod_index_t idx;
   uint32_t mods, real;
-  struct { const char *name; GdkModifierType mask; } vmods[] = {
+  struct { const char *name; CdkModifierType mask; } vmods[] = {
     { "Super", GDK_SUPER_MASK },
     { "Hyper", GDK_HYPER_MASK },
     { "Meta", GDK_META_MASK },
@@ -414,8 +414,8 @@ cdk_wayland_keymap_add_virtual_modifiers (GdkKeymap       *keymap,
 }
 
 static gboolean
-cdk_wayland_keymap_map_virtual_modifiers (GdkKeymap       *keymap,
-					  GdkModifierType *state)
+cdk_wayland_keymap_map_virtual_modifiers (CdkKeymap       *keymap,
+					  CdkModifierType *state)
 {
   struct xkb_keymap *xkb_keymap;
   struct xkb_state *xkb_state;
@@ -438,10 +438,10 @@ cdk_wayland_keymap_map_virtual_modifiers (GdkKeymap       *keymap,
 }
 
 static void
-_cdk_wayland_keymap_class_init (GdkWaylandKeymapClass *klass)
+_cdk_wayland_keymap_class_init (CdkWaylandKeymapClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GdkKeymapClass *keymap_class = GDK_KEYMAP_CLASS (klass);
+  CdkKeymapClass *keymap_class = GDK_KEYMAP_CLASS (klass);
 
   object_class->finalize = cdk_wayland_keymap_finalize;
 
@@ -460,12 +460,12 @@ _cdk_wayland_keymap_class_init (GdkWaylandKeymapClass *klass)
 }
 
 static void
-_cdk_wayland_keymap_init (GdkWaylandKeymap *keymap)
+_cdk_wayland_keymap_init (CdkWaylandKeymap *keymap)
 {
 }
 
 static void
-update_direction (GdkWaylandKeymap *keymap)
+update_direction (CdkWaylandKeymap *keymap)
 {
   gint num_layouts;
   gint i;
@@ -534,10 +534,10 @@ update_direction (GdkWaylandKeymap *keymap)
     keymap->bidi = TRUE;
 }
 
-GdkKeymap *
+CdkKeymap *
 _cdk_wayland_keymap_new (void)
 {
-  GdkWaylandKeymap *keymap;
+  CdkWaylandKeymap *keymap;
   struct xkb_context *context;
   struct xkb_rule_names names;
 
@@ -600,12 +600,12 @@ print_modifiers (struct xkb_keymap *keymap)
 #endif
 
 void
-_cdk_wayland_keymap_update_from_fd (GdkKeymap *keymap,
+_cdk_wayland_keymap_update_from_fd (CdkKeymap *keymap,
                                     uint32_t   format,
                                     uint32_t   fd,
                                     uint32_t   size)
 {
-  GdkWaylandKeymap *keymap_wayland = GDK_WAYLAND_KEYMAP (keymap);
+  CdkWaylandKeymap *keymap_wayland = GDK_WAYLAND_KEYMAP (keymap);
   struct xkb_context *context;
   struct xkb_keymap *xkb_keymap;
   char *map_str;
@@ -646,19 +646,19 @@ _cdk_wayland_keymap_update_from_fd (GdkKeymap *keymap,
 }
 
 struct xkb_keymap *
-_cdk_wayland_keymap_get_xkb_keymap (GdkKeymap *keymap)
+_cdk_wayland_keymap_get_xkb_keymap (CdkKeymap *keymap)
 {
   return GDK_WAYLAND_KEYMAP (keymap)->xkb_keymap;
 }
 
 struct xkb_state *
-_cdk_wayland_keymap_get_xkb_state (GdkKeymap *keymap)
+_cdk_wayland_keymap_get_xkb_state (CdkKeymap *keymap)
 {
   return GDK_WAYLAND_KEYMAP (keymap)->xkb_state;
 }
 
 gboolean
-_cdk_wayland_keymap_key_is_modifier (GdkKeymap *keymap,
+_cdk_wayland_keymap_key_is_modifier (CdkKeymap *keymap,
                                      guint      keycode)
 {
   struct xkb_keymap *xkb_keymap = GDK_WAYLAND_KEYMAP (keymap)->xkb_keymap;

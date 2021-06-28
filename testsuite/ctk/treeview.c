@@ -184,7 +184,7 @@ test_row_separator_height (void)
   CtkListStore *store;
   CtkWidget *window;
   CtkWidget *tree_view;
-  GdkRectangle rect = { 0, }, cell_rect = { 0, };
+  CdkRectangle rect = { 0, }, cell_rect = { 0, };
 
   store = ctk_list_store_new (1, G_TYPE_STRING);
   ctk_list_store_insert_with_values (store, &iter, 0, 0, "Row content", -1);

@@ -127,15 +127,15 @@ struct _CtkPanedPrivate
   CtkPaned       *first_paned;
   CtkWidget      *child1;
   CtkWidget      *child2;
-  GdkWindow      *child1_window;
-  GdkWindow      *child2_window;
+  CdkWindow      *child1_window;
+  CdkWindow      *child2_window;
   CtkWidget      *last_child1_focus;
   CtkWidget      *last_child2_focus;
   CtkWidget      *saved_focus;
   CtkOrientation  orientation;
 
-  GdkRectangle   handle_pos;
-  GdkWindow     *handle;
+  CdkRectangle   handle_pos;
+  CdkWindow     *handle;
 
   CtkCssGadget  *gadget;
   CtkCssGadget  *handle_gadget;
@@ -236,9 +236,9 @@ static void     ctk_paned_direction_changed     (CtkWidget        *widget,
 static gboolean ctk_paned_draw                  (CtkWidget        *widget,
 						 cairo_t          *cr);
 static gboolean ctk_paned_enter                 (CtkWidget        *widget,
-						 GdkEventCrossing *event);
+						 CdkEventCrossing *event);
 static gboolean ctk_paned_leave                 (CtkWidget        *widget,
-						 GdkEventCrossing *event);
+						 CdkEventCrossing *event);
 static gboolean ctk_paned_focus                 (CtkWidget        *widget,
 						 CtkDirectionType  direction);
 static void     ctk_paned_add                   (CtkContainer     *container,
@@ -289,7 +289,7 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 static void
 add_tab_bindings (CtkBindingSet    *binding_set,
-		  GdkModifierType   modifiers)
+		  CdkModifierType   modifiers)
 {
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_Tab, modifiers,
                                 "toggle-handle-focus", 0);
@@ -300,7 +300,7 @@ add_tab_bindings (CtkBindingSet    *binding_set,
 static void
 add_move_binding (CtkBindingSet   *binding_set,
 		  guint            keyval,
-		  GdkModifierType  mask,
+		  CdkModifierType  mask,
 		  CtkScrollType    scroll)
 {
   ctk_binding_entry_add_signal (binding_set, keyval, mask,
@@ -752,10 +752,10 @@ gesture_drag_begin_cb (CtkGestureDrag *gesture,
                        CtkPaned       *paned)
 {
   CtkPanedPrivate *priv = paned->priv;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   CtkAllocation allocation;
-  const GdkEvent *event;
-  GdkDevice *device;
+  const CdkEvent *event;
+  CdkDevice *device;
   gboolean is_touch;
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
@@ -1318,7 +1318,7 @@ ctk_paned_set_child_visible (CtkPaned  *paned,
 
   if (ctk_widget_get_mapped (CTK_WIDGET (paned)))
     {
-      GdkWindow *window = id == CHILD1 ? priv->child1_window : priv->child2_window;
+      CdkWindow *window = id == CHILD1 ? priv->child1_window : priv->child2_window;
 
       if (visible != cdk_window_is_visible (window))
         {
@@ -1332,7 +1332,7 @@ ctk_paned_set_child_visible (CtkPaned  *paned,
 
 static void
 ctk_paned_child_allocate (CtkWidget           *child,
-                          GdkWindow           *child_window, /* can be NULL */
+                          CdkWindow           *child_window, /* can be NULL */
                           const CtkAllocation *window_allocation,
                           CtkAllocation       *child_allocation)
 {
@@ -1380,7 +1380,7 @@ ctk_paned_allocate (CtkCssGadget        *gadget,
       CtkAllocation child1_allocation, window1_allocation;
       CtkAllocation child2_allocation, window2_allocation;
       CtkAllocation priv_child1_allocation;
-      GdkRectangle old_handle_pos;
+      CdkRectangle old_handle_pos;
       gint handle_size;
 
       ctk_css_gadget_get_preferred_size (priv->handle_gadget,
@@ -1503,7 +1503,7 @@ ctk_paned_allocate (CtkCssGadget        *gadget,
            old_handle_pos.width != priv->handle_pos.width ||
            old_handle_pos.height != priv->handle_pos.height))
         {
-          GdkWindow *window;
+          CdkWindow *window;
 
           window = ctk_widget_get_window (widget);
           cdk_window_invalidate_rect (window, &old_handle_pos, FALSE);
@@ -1601,14 +1601,14 @@ ctk_paned_allocate (CtkCssGadget        *gadget,
   cdk_rectangle_union (out_clip, &clip, out_clip);
 }
 
-static GdkWindow *
+static CdkWindow *
 ctk_paned_create_child_window (CtkPaned  *paned,
                                CtkWidget *child) /* may be NULL */
 {
   CtkWidget *widget = CTK_WIDGET (paned);
   CtkPanedPrivate *priv = paned->priv;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   attributes.window_type = GDK_WINDOW_CHILD;
@@ -1667,8 +1667,8 @@ ctk_paned_realize (CtkWidget *widget)
 {
   CtkPaned *paned = CTK_PANED (widget);
   CtkPanedPrivate *priv = paned->priv;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_set_realized (widget, TRUE);
@@ -2014,7 +2014,7 @@ update_drag (CtkPaned *paned,
 
 static gboolean
 ctk_paned_enter (CtkWidget        *widget,
-		 GdkEventCrossing *event)
+		 CdkEventCrossing *event)
 {
   CtkPaned *paned = CTK_PANED (widget);
   CtkPanedPrivate *priv = paned->priv;
@@ -2035,7 +2035,7 @@ ctk_paned_enter (CtkWidget        *widget,
 
 static gboolean
 ctk_paned_leave (CtkWidget        *widget,
-		 GdkEventCrossing *event)
+		 CdkEventCrossing *event)
 {
   CtkPaned *paned = CTK_PANED (widget);
   CtkPanedPrivate *priv = paned->priv;
@@ -2078,7 +2078,7 @@ ctk_paned_state_flags_changed (CtkWidget     *widget,
 {
   CtkPaned *paned = CTK_PANED (widget);
   CtkPanedPrivate *priv = paned->priv;
-  GdkCursor *cursor;
+  CdkCursor *cursor;
 
   if (ctk_widget_get_realized (widget))
     {
@@ -3084,7 +3084,7 @@ ctk_paned_toggle_handle_focus (CtkPaned *paned)
  * ctk_paned_get_handle_window:
  * @paned: a #CtkPaned
  *
- * Returns the #GdkWindow of the handle. This function is
+ * Returns the #CdkWindow of the handle. This function is
  * useful when handling button or motion events because it
  * enables the callback to distinguish between the window
  * of the paned, a child and the handle.
@@ -3093,7 +3093,7 @@ ctk_paned_toggle_handle_focus (CtkPaned *paned)
  *
  * Since: 2.20
  **/
-GdkWindow *
+CdkWindow *
 ctk_paned_get_handle_window (CtkPaned *paned)
 {
   g_return_val_if_fail (CTK_IS_PANED (paned), NULL);

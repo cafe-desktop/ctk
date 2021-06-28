@@ -28,7 +28,7 @@ G_BEGIN_DECLS
 struct _CtkAccelGroupPrivate
 {
   guint               lock_count;
-  GdkModifierType     modifier_mask;
+  CdkModifierType     modifier_mask;
   GSList             *acceleratables;
   guint               n_accels;
   CtkAccelGroupEntry *priv_accels;

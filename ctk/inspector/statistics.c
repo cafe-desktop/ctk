@@ -254,7 +254,7 @@ type_data_free (gpointer data)
 
 static gboolean
 key_press_event (CtkWidget              *window,
-                 GdkEvent               *event,
+                 CdkEvent               *event,
                  CtkInspectorStatistics *sl)
 {
   if (ctk_widget_get_mapped (CTK_WIDGET (sl)))

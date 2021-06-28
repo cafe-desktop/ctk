@@ -77,11 +77,11 @@ static void ctk_cell_renderer_combo_set_property (GObject      *object,
 						  GParamSpec   *pspec);
 
 static CtkCellEditable *ctk_cell_renderer_combo_start_editing (CtkCellRenderer     *cell,
-                                                               GdkEvent            *event,
+                                                               CdkEvent            *event,
                                                                CtkWidget           *widget,
                                                                const gchar         *path,
-                                                               const GdkRectangle  *background_area,
-                                                               const GdkRectangle  *cell_area,
+                                                               const CdkRectangle  *background_area,
+                                                               const CdkRectangle  *cell_area,
                                                                CtkCellRendererState flags);
 
 enum {
@@ -400,7 +400,7 @@ ctk_cell_renderer_combo_editing_done (CtkCellEditable *combo,
 
 static gboolean
 ctk_cell_renderer_combo_focus_out_event (CtkWidget *widget,
-					 GdkEvent  *event,
+					 CdkEvent  *event,
 					 gpointer   data)
 {
   
@@ -446,11 +446,11 @@ find_text (CtkTreeModel *model,
 
 static CtkCellEditable *
 ctk_cell_renderer_combo_start_editing (CtkCellRenderer     *cell,
-                                       GdkEvent            *event,
+                                       CdkEvent            *event,
                                        CtkWidget           *widget,
                                        const gchar         *path,
-                                       const GdkRectangle  *background_area,
-                                       const GdkRectangle  *cell_area,
+                                       const CdkRectangle  *background_area,
+                                       const CdkRectangle  *cell_area,
                                        CtkCellRendererState flags)
 {
   CtkCellRendererCombo *cell_combo;

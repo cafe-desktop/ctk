@@ -111,14 +111,14 @@ static const guint16 ctk_compose_ignore[] = {
 
 static void     ctk_im_context_simple_finalize           (GObject                  *obj);
 static gboolean ctk_im_context_simple_filter_keypress    (CtkIMContext             *context,
-							  GdkEventKey              *key);
+							  CdkEventKey              *key);
 static void     ctk_im_context_simple_reset              (CtkIMContext             *context);
 static void     ctk_im_context_simple_get_preedit_string (CtkIMContext             *context,
 							  gchar                   **str,
 							  PangoAttrList           **attrs,
 							  gint                     *cursor_pos);
 static void     ctk_im_context_simple_set_client_window  (CtkIMContext             *context,
-                                                          GdkWindow                *window);
+                                                          CdkWindow                *window);
 
 G_DEFINE_TYPE_WITH_PRIVATE (CtkIMContextSimple, ctk_im_context_simple, CTK_TYPE_IM_CONTEXT)
 
@@ -866,9 +866,9 @@ check_hex (CtkIMContextSimple *context_simple,
 }
 
 static void
-beep_window (GdkWindow *window)
+beep_window (CdkWindow *window)
 {
-  GdkScreen *screen = cdk_window_get_screen (window);
+  CdkScreen *screen = cdk_window_get_screen (window);
   gboolean   beep;
 
   g_object_get (ctk_settings_get_for_screen (screen),
@@ -882,7 +882,7 @@ beep_window (GdkWindow *window)
 static gboolean
 no_sequence_matches (CtkIMContextSimple *context_simple,
                      gint                n_compose,
-                     GdkEventKey        *event)
+                     CdkEventKey        *event)
 {
   CtkIMContextSimplePrivate *priv = context_simple->priv;
   CtkIMContext *context;
@@ -903,10 +903,10 @@ no_sequence_matches (CtkIMContextSimple *context_simple,
       
       for (i=0; i < n_compose - len - 1; i++)
 	{
-	  GdkEvent *tmp_event = cdk_event_copy ((GdkEvent *)event);
+	  CdkEvent *tmp_event = cdk_event_copy ((CdkEvent *)event);
 	  tmp_event->key.keyval = priv->compose_buffer[len + i];
 	  
-	  ctk_im_context_filter_keypress (context, (GdkEventKey *)tmp_event);
+	  ctk_im_context_filter_keypress (context, (CdkEventKey *)tmp_event);
 	  cdk_event_free (tmp_event);
 	}
 
@@ -941,9 +941,9 @@ is_hex_keyval (guint keyval)
 }
 
 static guint
-canonical_hex_keyval (GdkEventKey *event)
+canonical_hex_keyval (CdkEventKey *event)
 {
-  GdkKeymap *keymap = cdk_keymap_get_for_display (cdk_window_get_display (event->window));
+  CdkKeymap *keymap = cdk_keymap_get_for_display (cdk_window_get_display (event->window));
   guint keyval;
   guint *keyvals = NULL;
   gint n_vals = 0;
@@ -986,14 +986,14 @@ canonical_hex_keyval (GdkEventKey *event)
 
 static gboolean
 ctk_im_context_simple_filter_keypress (CtkIMContext *context,
-				       GdkEventKey  *event)
+				       CdkEventKey  *event)
 {
   CtkIMContextSimple *context_simple = CTK_IM_CONTEXT_SIMPLE (context);
   CtkIMContextSimplePrivate *priv = context_simple->priv;
-  GdkDisplay *display = cdk_window_get_display (event->window);
+  CdkDisplay *display = cdk_window_get_display (event->window);
   GSList *tmp_list;  
   int n_compose = 0;
-  GdkModifierType hex_mod_mask;
+  CdkModifierType hex_mod_mask;
   gboolean have_hex_mods;
   gboolean is_hex_start;
   gboolean is_hex_end;
@@ -1080,7 +1080,7 @@ ctk_im_context_simple_filter_keypress (CtkIMContext *context,
       (priv->in_hex_sequence && !hex_keyval &&
        !is_hex_start && !is_hex_end && !is_escape && !is_backspace))
     {
-      GdkModifierType no_text_input_mask;
+      CdkModifierType no_text_input_mask;
 
       no_text_input_mask =
         cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
@@ -1394,7 +1394,7 @@ ctk_im_context_simple_get_preedit_string (CtkIMContext   *context,
 
 static void
 ctk_im_context_simple_set_client_window  (CtkIMContext *context,
-                                          GdkWindow    *window)
+                                          CdkWindow    *window)
 {
   CtkIMContextSimple *im_context_simple = CTK_IM_CONTEXT_SIMPLE (context);
   gboolean run_compose_table = FALSE;

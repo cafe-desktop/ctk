@@ -362,7 +362,7 @@ void                   ctk_tree_view_get_cursor                    (CtkTreeView 
 
 /* Layout information */
 GDK_AVAILABLE_IN_ALL
-GdkWindow             *ctk_tree_view_get_bin_window                (CtkTreeView               *tree_view);
+CdkWindow             *ctk_tree_view_get_bin_window                (CtkTreeView               *tree_view);
 GDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_get_path_at_pos               (CtkTreeView               *tree_view,
 								    gint                       x,
@@ -375,15 +375,15 @@ GDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_get_cell_area                 (CtkTreeView               *tree_view,
 								    CtkTreePath               *path,
 								    CtkTreeViewColumn         *column,
-								    GdkRectangle              *rect);
+								    CdkRectangle              *rect);
 GDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_get_background_area           (CtkTreeView               *tree_view,
 								    CtkTreePath               *path,
 								    CtkTreeViewColumn         *column,
-								    GdkRectangle              *rect);
+								    CdkRectangle              *rect);
 GDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_get_visible_rect              (CtkTreeView               *tree_view,
-								    GdkRectangle              *visible_rect);
+								    CdkRectangle              *visible_rect);
 GDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_get_visible_range             (CtkTreeView               *tree_view,
 								    CtkTreePath              **start_path,
@@ -400,15 +400,15 @@ gboolean               ctk_tree_view_is_blank_at_pos               (CtkTreeView 
 /* Drag-and-Drop support */
 GDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_enable_model_drag_source      (CtkTreeView               *tree_view,
-								    GdkModifierType            start_button_mask,
+								    CdkModifierType            start_button_mask,
 								    const CtkTargetEntry      *targets,
 								    gint                       n_targets,
-								    GdkDragAction              actions);
+								    CdkDragAction              actions);
 GDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_enable_model_drag_dest        (CtkTreeView               *tree_view,
 								    const CtkTargetEntry      *targets,
 								    gint                       n_targets,
-								    GdkDragAction              actions);
+								    CdkDragAction              actions);
 GDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_unset_rows_drag_source        (CtkTreeView               *tree_view);
 GDK_AVAILABLE_IN_ALL

@@ -23,7 +23,7 @@ test_one_accel (const char *accel,
 		gboolean    has_keysym)
 {
   guint accel_key;
-  GdkModifierType mods;
+  CdkModifierType mods;
   guint *keycodes;
   char *label, *name;
 
@@ -36,7 +36,7 @@ test_one_accel (const char *accel,
   if (has_keysym)
     {
       guint accel_key_2;
-      GdkModifierType mods_2;
+      CdkModifierType mods_2;
 
       ctk_accelerator_parse (accel,
                              &accel_key_2,

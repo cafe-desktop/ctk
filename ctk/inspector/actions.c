@@ -239,7 +239,7 @@ row_activated (CtkTreeView         *tv,
                CtkInspectorActions *sl)
 {
   CtkTreeIter iter;
-  GdkRectangle rect;
+  CdkRectangle rect;
   CtkWidget *popover;
   gchar *prefix;
   gchar *name;

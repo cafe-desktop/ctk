@@ -7,13 +7,13 @@ static void
 test_to_text_list (void)
 {
 #ifdef GDK_WINDOWING_X11
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   display = cdk_display_get_default ();
 
   if (GDK_IS_X11_DISPLAY (display))
     {
-      GdkAtom encoding;
+      CdkAtom encoding;
       gint format;
       const guchar *text;
       gint length;

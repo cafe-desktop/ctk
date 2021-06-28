@@ -35,10 +35,10 @@
 G_BEGIN_DECLS
 
 
-typedef struct _GdkKeymapKey GdkKeymapKey;
+typedef struct _CdkKeymapKey CdkKeymapKey;
 
 /**
- * GdkKeymapKey:
+ * CdkKeymapKey:
  * @keycode: the hardware keycode. This is an identifying number for a
  *   physical key.
  * @group: indicates movement in a horizontal direction. Usually groups are used
@@ -52,9 +52,9 @@ typedef struct _GdkKeymapKey GdkKeymapKey;
  *   letter at level 0, and an uppercase letter at level 1, though only the
  *   uppercase letter is printed.
  *
- * A #GdkKeymapKey is a hardware key that can be mapped to a keyval.
+ * A #CdkKeymapKey is a hardware key that can be mapped to a keyval.
  */
-struct _GdkKeymapKey
+struct _CdkKeymapKey
 {
   guint keycode;
   gint  group;
@@ -63,13 +63,13 @@ struct _GdkKeymapKey
 
 
 #define GDK_TYPE_KEYMAP              (cdk_keymap_get_type ())
-#define GDK_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_KEYMAP, GdkKeymap))
+#define GDK_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_KEYMAP, CdkKeymap))
 #define GDK_IS_KEYMAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_KEYMAP))
 
 /**
- * GdkKeymap:
+ * CdkKeymap:
  *
- * A #GdkKeymap defines the translation from keyboard state
+ * A #CdkKeymap defines the translation from keyboard state
  * (including a hardware key, a modifier mask, and active keyboard group)
  * to a keyval. This translation has two phases. The first phase is
  * to determine the effective keyboard group and level for the keyboard
@@ -81,55 +81,55 @@ GDK_AVAILABLE_IN_ALL
 GType cdk_keymap_get_type (void) G_GNUC_CONST;
 
 GDK_DEPRECATED_IN_3_22_FOR(cdk_keymap_get_for_display)
-GdkKeymap* cdk_keymap_get_default     (void);
+CdkKeymap* cdk_keymap_get_default     (void);
 GDK_AVAILABLE_IN_ALL
-GdkKeymap* cdk_keymap_get_for_display (GdkDisplay *display);
+CdkKeymap* cdk_keymap_get_for_display (CdkDisplay *display);
 
 GDK_AVAILABLE_IN_ALL
-guint          cdk_keymap_lookup_key               (GdkKeymap           *keymap,
-						    const GdkKeymapKey  *key);
+guint          cdk_keymap_lookup_key               (CdkKeymap           *keymap,
+						    const CdkKeymapKey  *key);
 GDK_AVAILABLE_IN_ALL
-gboolean       cdk_keymap_translate_keyboard_state (GdkKeymap           *keymap,
+gboolean       cdk_keymap_translate_keyboard_state (CdkKeymap           *keymap,
 						    guint                hardware_keycode,
-						    GdkModifierType      state,
+						    CdkModifierType      state,
 						    gint                 group,
 						    guint               *keyval,
 						    gint                *effective_group,
 						    gint                *level,
-						    GdkModifierType     *consumed_modifiers);
+						    CdkModifierType     *consumed_modifiers);
 GDK_AVAILABLE_IN_ALL
-gboolean       cdk_keymap_get_entries_for_keyval   (GdkKeymap           *keymap,
+gboolean       cdk_keymap_get_entries_for_keyval   (CdkKeymap           *keymap,
 						    guint                keyval,
-						    GdkKeymapKey       **keys,
+						    CdkKeymapKey       **keys,
 						    gint                *n_keys);
 GDK_AVAILABLE_IN_ALL
-gboolean       cdk_keymap_get_entries_for_keycode  (GdkKeymap           *keymap,
+gboolean       cdk_keymap_get_entries_for_keycode  (CdkKeymap           *keymap,
 						    guint                hardware_keycode,
-						    GdkKeymapKey       **keys,
+						    CdkKeymapKey       **keys,
 						    guint              **keyvals,
 						    gint                *n_entries);
 
 GDK_AVAILABLE_IN_ALL
-PangoDirection cdk_keymap_get_direction            (GdkKeymap           *keymap);
+PangoDirection cdk_keymap_get_direction            (CdkKeymap           *keymap);
 GDK_AVAILABLE_IN_ALL
-gboolean       cdk_keymap_have_bidi_layouts        (GdkKeymap           *keymap);
+gboolean       cdk_keymap_have_bidi_layouts        (CdkKeymap           *keymap);
 GDK_AVAILABLE_IN_ALL
-gboolean       cdk_keymap_get_caps_lock_state      (GdkKeymap           *keymap);
+gboolean       cdk_keymap_get_caps_lock_state      (CdkKeymap           *keymap);
 GDK_AVAILABLE_IN_ALL
-gboolean       cdk_keymap_get_num_lock_state       (GdkKeymap           *keymap);
+gboolean       cdk_keymap_get_num_lock_state       (CdkKeymap           *keymap);
 GDK_AVAILABLE_IN_3_18
-gboolean       cdk_keymap_get_scroll_lock_state    (GdkKeymap           *keymap);
+gboolean       cdk_keymap_get_scroll_lock_state    (CdkKeymap           *keymap);
 GDK_AVAILABLE_IN_3_4
-guint          cdk_keymap_get_modifier_state       (GdkKeymap           *keymap);
+guint          cdk_keymap_get_modifier_state       (CdkKeymap           *keymap);
 GDK_AVAILABLE_IN_ALL
-void           cdk_keymap_add_virtual_modifiers    (GdkKeymap           *keymap,
-                                                    GdkModifierType     *state);
+void           cdk_keymap_add_virtual_modifiers    (CdkKeymap           *keymap,
+                                                    CdkModifierType     *state);
 GDK_AVAILABLE_IN_ALL
-gboolean       cdk_keymap_map_virtual_modifiers    (GdkKeymap           *keymap,
-                                                    GdkModifierType     *state);
+gboolean       cdk_keymap_map_virtual_modifiers    (CdkKeymap           *keymap,
+                                                    CdkModifierType     *state);
 GDK_AVAILABLE_IN_3_4
-GdkModifierType cdk_keymap_get_modifier_mask       (GdkKeymap           *keymap,
-                                                    GdkModifierIntent    intent);
+CdkModifierType cdk_keymap_get_modifier_mask       (CdkKeymap           *keymap,
+                                                    CdkModifierIntent    intent);
 
 
 /* Key values

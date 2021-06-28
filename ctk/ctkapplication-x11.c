@@ -39,7 +39,7 @@ ctk_application_impl_x11_handle_window_realize (CtkApplicationImpl *impl,
                                                 CtkWindow          *window)
 {
   CtkApplicationImplDBus *dbus = (CtkApplicationImplDBus *) impl;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
   gchar *window_path;
 
   cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
@@ -63,7 +63,7 @@ static GVariant *
 ctk_application_impl_x11_get_window_system_id (CtkApplicationImplDBus *dbus,
                                                CtkWindow              *window)
 {
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
 
   cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 

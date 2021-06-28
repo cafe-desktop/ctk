@@ -27,17 +27,17 @@
 #include "cdkx11monitor.h"
 
 
-struct _GdkX11Monitor
+struct _CdkX11Monitor
 {
-  GdkMonitor parent;
+  CdkMonitor parent;
 
   XID output;
   guint add     : 1;
   guint remove  : 1;
 };
 
-struct _GdkX11MonitorClass {
-  GdkMonitorClass parent_class;
+struct _CdkX11MonitorClass {
+  CdkMonitorClass parent_class;
 };
 
 #endif

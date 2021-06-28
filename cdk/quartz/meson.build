@@ -2,8 +2,8 @@
 add_languages(['objc'])
 
 cdk_quartz_sources = files(
-  'GdkQuartzView.c',
-  'GdkQuartzNSWindow.c',
+  'CdkQuartzView.c',
+  'CdkQuartzNSWindow.c',
   'cdkcursor-quartz.c',
   'cdkdevice-core-quartz.c',
   'cdkdevicemanager-core-quartz.c',
@@ -53,5 +53,5 @@ cdk_quartz_deps = [ core_graphics_dep, appkit_dep, cocoa_dep, carbon_dep ]
 libcdk_quartz = static_library('cdk-quartz',
   cdk_quartz_sources, cdkconfig, cdkenum_h,
   include_directories: [confinc, cdkinc],
-  c_args: ['-DGDK_COMPILATION', '-DG_LOG_DOMAIN="Gdk"', '-xobjective-c'],
+  c_args: ['-DGDK_COMPILATION', '-DG_LOG_DOMAIN="Cdk"', '-xobjective-c'],
   dependencies: [cdk_deps, cdk_quartz_deps])

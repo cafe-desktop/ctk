@@ -209,7 +209,7 @@ ctk_print_operation_unix_launch_preview (CtkPrintOperation *op,
                                          const gchar       *filename)
 {
   GAppInfo *appinfo;
-  GdkAppLaunchContext *context;
+  CdkAppLaunchContext *context;
   gchar *cmd;
   gchar *preview_cmd;
   CtkSettings *settings;
@@ -223,7 +223,7 @@ ctk_print_operation_unix_launch_preview (CtkPrintOperation *op,
   gchar *quoted_settings_filename;
   gboolean filename_used = FALSE;
   gboolean settings_used = FALSE;
-  GdkScreen *screen;
+  CdkScreen *screen;
   GError *error = NULL;
   gint fd;
   gboolean retval;

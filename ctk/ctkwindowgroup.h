@@ -80,7 +80,7 @@ GDK_AVAILABLE_IN_ALL
 CtkWidget *      ctk_window_group_get_current_grab (CtkWindowGroup *window_group);
 GDK_AVAILABLE_IN_ALL
 CtkWidget *      ctk_window_group_get_current_device_grab (CtkWindowGroup *window_group,
-                                                           GdkDevice      *device);
+                                                           CdkDevice      *device);
 
 
 G_END_DECLS

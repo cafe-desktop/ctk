@@ -73,22 +73,22 @@ gboolean _ctk_single_string_accumulator   (GSignalInvocationHint *ihint,
                                            const GValue          *handler_return,
                                            gpointer               dummy);
 
-GdkModifierType _ctk_replace_virtual_modifiers (GdkKeymap       *keymap,
-                                                GdkModifierType  modifiers);
-GdkModifierType _ctk_get_primary_accel_mod     (void);
+CdkModifierType _ctk_replace_virtual_modifiers (CdkKeymap       *keymap,
+                                                CdkModifierType  modifiers);
+CdkModifierType _ctk_get_primary_accel_mod     (void);
 
-gboolean _ctk_translate_keyboard_accel_state   (GdkKeymap       *keymap,
+gboolean _ctk_translate_keyboard_accel_state   (CdkKeymap       *keymap,
                                                 guint            hardware_keycode,
-                                                GdkModifierType  state,
-                                                GdkModifierType  accel_mask,
+                                                CdkModifierType  state,
+                                                CdkModifierType  accel_mask,
                                                 gint             group,
                                                 guint           *keyval,
                                                 gint            *effective_group,
                                                 gint            *level,
-                                                GdkModifierType *consumed_modifiers);
+                                                CdkModifierType *consumed_modifiers);
 
 gboolean        _ctk_propagate_captured_event  (CtkWidget       *widget,
-                                                GdkEvent        *event,
+                                                CdkEvent        *event,
                                                 CtkWidget       *topmost);
 
 
@@ -109,7 +109,7 @@ void _ctk_load_dll_with_libctk3_manifest (const char *dllname);
 
 gboolean        ctk_simulate_touchscreen (void);
 
-guint ctk_get_display_debug_flags (GdkDisplay *display);
+guint ctk_get_display_debug_flags (CdkDisplay *display);
 
 #ifdef G_ENABLE_DEBUG
 

@@ -51,7 +51,7 @@ entry_dialog_response (CtkDialog        *dialog,
 }
 
 void
-make_selection_dialog (GdkScreen * screen,
+make_selection_dialog (CdkScreen * screen,
 		       CtkWidget * entry,
 		       CtkWidget * other_entry)
 {
@@ -102,8 +102,8 @@ main (int argc, char *argv[])
   CtkWidget *dialog, *display_entry, *dialog_label;
   CtkWidget *entry, *entry2;
   CtkWidget *content_area;
-  GdkDisplay *dpy2;
-  GdkScreen *scr2 = NULL;	/* Quiet GCC */
+  CdkDisplay *dpy2;
+  CdkScreen *scr2 = NULL;	/* Quiet GCC */
   gboolean correct_second_display = FALSE;
 
   ctk_init (&argc, &argv);

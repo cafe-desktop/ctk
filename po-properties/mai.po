@@ -1228,7 +1228,7 @@ msgid "Cell background color"
 msgstr "सेल पृष्ठभूमि रँग"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr "जीडीके-रँग जहिना विषय पृष्ठभूमि रँग"
 
 #: ctk/ctkcellrenderer.c:343
@@ -1475,8 +1475,8 @@ msgid "Background color"
 msgstr "पृष्ठभूमि रँग"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Gdk रँग क' तरह पृष्ठभूमि रँग"
+msgid "Background color as a CdkColor"
+msgstr "Cdk रँग क' तरह पृष्ठभूमि रँग"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1492,8 +1492,8 @@ msgid "Foreground color"
 msgstr "अग्रभूमि रंग"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Gdk रँग क' तरह पृष्ठ भूमि रँग"
+msgid "Foreground color as a CdkColor"
+msgstr "Cdk रँग क' तरह पृष्ठ भूमि रँग"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3040,8 +3040,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "प्रदर्शित कएल जाए बला GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "प्रदर्शित कएल जाए बला CdkPixbuf"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3085,8 +3085,8 @@ msgid "Animation"
 msgstr "एनीमेशन"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "प्रदर्शित कएल जाए बला Gdk Pixbuf एनीमेशन"
+msgid "CdkPixbufAnimation to display"
+msgstr "प्रदर्शित कएल जाए बला Cdk Pixbuf एनीमेशन"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5598,7 +5598,7 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr "पाठ टैग क' हबाला दएबला प्रयुक्त नाम. बेनामी टैग लेल रिक्त"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
 msgstr "जीडीके-रँगक तरह पृष्ठभूमि रँग (संभवतः बिनु आबंटित)"
 
 #: ctk/ctktexttag.c:194
@@ -5614,7 +5614,7 @@ msgstr ""
 "उँचाइ तक"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
 msgstr "जीडीके-रँग क' तरह अग्रभूमि रँग (संभवतः गैर आबंटित)"
 
 #: ctk/ctktexttag.c:218
@@ -5764,7 +5764,7 @@ msgid "Paragraph background color"
 msgstr "अनुच्छेद पृष्ठभूमि रँग"
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 msgstr "जीडीके-रँगक तरह पृष्ठभूमि रँग (संभवतः असंभाजित)"
 
 #: ctk/ctktexttag.c:530
@@ -6707,8 +6707,8 @@ msgid "Events"
 msgstr "घटना"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "मुखौटा जे निर्धारित करैत अछि जे कओन प्रकारक GdkEvents ई विजेट पाबैत अछि"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "मुखौटा जे निर्धारित करैत अछि जे कओन प्रकारक CdkEvents ई विजेट पाबैत अछि"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7205,8 +7205,8 @@ msgstr "आगत विधि प्रस्थति बार कहिन�
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "pixbuf क' पिक्सेल आँकड़ामे संकेतक"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "रेंडरर क' लेल GdkScreen स्क्रीन"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "रेंडरर क' लेल CdkScreen स्क्रीन"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "समायोजन जे स्पिनबटनक मान राखैत अछि."
@@ -7227,8 +7227,8 @@ msgstr "आगत विधि प्रस्थति बार कहिन�
 #~ msgstr ""
 #~ "की विधिवत स्थिति भेजनाइ अछि जखन छाया अथवा पृष्ठभूमि चित्रित कएल जाए रहल अछि"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "GdkFont जे मोजुदा रूपसँ चुनल अछि"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "CdkFont जे मोजुदा रूपसँ चुनल अछि"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "गुणधर्म, एकर स्थान पर shadow type क' प्रयोग करू"
@@ -7236,17 +7236,17 @@ msgstr "आगत विधि प्रस्थति बार कहिन�
 #~ msgid "Pixmap"
 #~ msgstr "पिक्समैप"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "प्रदर्शित कएल जाएबला GdkPixmap"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "प्रदर्शित कएल जाएबला CdkPixmap"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "प्रदर्शित कएल जाएबला GdkImage"
+#~ msgid "A CdkImage to display"
+#~ msgstr "प्रदर्शित कएल जाएबला CdkImage"
 
 #~ msgid "Mask"
 #~ msgstr "मास्क"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "GdkImage अथवा Gdk pixmap क' सँग प्रयुक्त हएबला बिटमैप मास्क"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "CdkImage अथवा Cdk pixmap क' सँग प्रयुक्त हएबला बिटमैप मास्क"
 
 #~ msgid "Use separator"
 #~ msgstr "विभाजक प्रयोग करू"

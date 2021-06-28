@@ -46,7 +46,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkWidgetAccessible, ctk_widget_accessible, CTK_TYPE_AC
 /* Translate CtkWidget::focus-in/out-event to AtkObject::focus-event */
 static gboolean
 focus_cb (CtkWidget     *widget,
-          GdkEventFocus *event)
+          CdkEventFocus *event)
 {
   AtkObject *obj;
 
@@ -570,7 +570,7 @@ ctk_widget_accessible_get_extents (AtkComponent   *component,
                                    gint           *height,
                                    AtkCoordType    coord_type)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   gint x_window, y_window;
   gint x_toplevel, y_toplevel;
   CtkWidget *widget;
@@ -677,7 +677,7 @@ ctk_widget_accessible_set_extents (AtkComponent *component,
   if (coord_type == ATK_XY_WINDOW)
     {
       gint x_current, y_current;
-      GdkWindow *window = ctk_widget_get_window (widget);
+      CdkWindow *window = ctk_widget_get_window (widget);
 
       cdk_window_get_origin (window, &x_current, &y_current);
       x_current += x;
@@ -717,7 +717,7 @@ ctk_widget_accessible_set_position (AtkComponent *component,
       if (coord_type == ATK_XY_WINDOW)
         {
           gint x_current, y_current;
-          GdkWindow *window = ctk_widget_get_window (widget);
+          CdkWindow *window = ctk_widget_get_window (widget);
 
           cdk_window_get_origin (window, &x_current, &y_current);
           x_current += x;
@@ -791,7 +791,7 @@ ctk_widget_accessible_on_screen (CtkWidget *widget)
     {
       CtkAllocation viewport_allocation;
       CtkAdjustment *adjustment;
-      GdkRectangle visible_rect;
+      CdkRectangle visible_rect;
 
       ctk_widget_get_allocation (viewport, &viewport_allocation);
 

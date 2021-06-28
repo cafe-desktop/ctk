@@ -75,7 +75,7 @@ ctk_cell_accessible_parent_get_cell_extents (CtkCellAccessibleParent *parent,
 void
 ctk_cell_accessible_parent_get_cell_area (CtkCellAccessibleParent *parent,
                                           CtkCellAccessible       *cell,
-                                          GdkRectangle            *cell_rect)
+                                          CdkRectangle            *cell_rect)
 {
   CtkCellAccessibleParentIface *iface;
 

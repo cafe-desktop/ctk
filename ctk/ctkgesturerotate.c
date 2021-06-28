@@ -78,7 +78,7 @@ _ctk_gesture_rotate_get_angle (CtkGestureRotate *rotate,
                                gdouble          *angle)
 {
   CtkGestureRotatePrivate *priv;
-  const GdkEvent *last_event;
+  const CdkEvent *last_event;
   gdouble x1, y1, x2, y2;
   CtkGesture *gesture;
   gdouble dx, dy;
@@ -151,7 +151,7 @@ _ctk_gesture_rotate_check_emit (CtkGestureRotate *gesture)
 
 static void
 ctk_gesture_rotate_begin (CtkGesture       *gesture,
-                          GdkEventSequence *sequence)
+                          CdkEventSequence *sequence)
 {
   CtkGestureRotate *rotate = CTK_GESTURE_ROTATE (gesture);
   CtkGestureRotatePrivate *priv;
@@ -162,14 +162,14 @@ ctk_gesture_rotate_begin (CtkGesture       *gesture,
 
 static void
 ctk_gesture_rotate_update (CtkGesture       *gesture,
-                           GdkEventSequence *sequence)
+                           CdkEventSequence *sequence)
 {
   _ctk_gesture_rotate_check_emit (CTK_GESTURE_ROTATE (gesture));
 }
 
 static gboolean
 ctk_gesture_rotate_filter_event (CtkEventController *controller,
-                                 const GdkEvent     *event)
+                                 const CdkEvent     *event)
 {
   /* Let 2-finger touchpad pinch events go through */
   if (event->type == GDK_TOUCHPAD_PINCH)
@@ -185,7 +185,7 @@ ctk_gesture_rotate_filter_event (CtkEventController *controller,
 
 static gboolean
 ctk_gesture_rotate_handle_event (CtkEventController *controller,
-                                 const GdkEvent     *event)
+                                 const CdkEvent     *event)
 {
   CtkGestureRotate *rotate = CTK_GESTURE_ROTATE (controller);
   CtkGestureRotatePrivate *priv;

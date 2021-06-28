@@ -54,7 +54,7 @@ typedef struct _CtkColorSelectionClass  CtkColorSelectionClass;
  *
  * Deprecated: 3.4
  */
-typedef void (* CtkColorSelectionChangePaletteFunc) (const GdkColor    *colors,
+typedef void (* CtkColorSelectionChangePaletteFunc) (const CdkColor    *colors,
                                                      gint               n_colors);
 
 /**
@@ -66,8 +66,8 @@ typedef void (* CtkColorSelectionChangePaletteFunc) (const GdkColor    *colors,
  * Since: 2.2
  * Deprecated: 3.4
  */
-typedef void (* CtkColorSelectionChangePaletteWithScreenFunc) (GdkScreen         *screen,
-							       const GdkColor    *colors,
+typedef void (* CtkColorSelectionChangePaletteWithScreenFunc) (CdkScreen         *screen,
+							       const CdkColor    *colors,
 							       gint               n_colors);
 
 struct _CtkColorSelection
@@ -130,26 +130,26 @@ guint16  ctk_color_selection_get_previous_alpha  (CtkColorSelection *colorsel);
 
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
 void     ctk_color_selection_set_current_rgba    (CtkColorSelection *colorsel,
-                                                  const GdkRGBA     *rgba);
+                                                  const CdkRGBA     *rgba);
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
 void     ctk_color_selection_get_current_rgba    (CtkColorSelection *colorsel,
-                                                  GdkRGBA           *rgba);
+                                                  CdkRGBA           *rgba);
 GDK_DEPRECATED_IN_3_4
 void     ctk_color_selection_set_previous_rgba   (CtkColorSelection *colorsel,
-                                                  const GdkRGBA     *rgba);
+                                                  const CdkRGBA     *rgba);
 GDK_DEPRECATED_IN_3_4
 void     ctk_color_selection_get_previous_rgba   (CtkColorSelection *colorsel,
-                                                  GdkRGBA           *rgba);
+                                                  CdkRGBA           *rgba);
 
 GDK_DEPRECATED_IN_3_4
 gboolean ctk_color_selection_is_adjusting        (CtkColorSelection *colorsel);
 
 GDK_DEPRECATED_IN_3_4
 gboolean ctk_color_selection_palette_from_string (const gchar       *str,
-                                                  GdkColor         **colors,
+                                                  CdkColor         **colors,
                                                   gint              *n_colors);
 GDK_DEPRECATED_IN_3_4
-gchar*   ctk_color_selection_palette_to_string   (const GdkColor    *colors,
+gchar*   ctk_color_selection_palette_to_string   (const CdkColor    *colors,
                                                   gint               n_colors);
 
 GDK_DEPRECATED_IN_3_4
@@ -157,16 +157,16 @@ CtkColorSelectionChangePaletteWithScreenFunc ctk_color_selection_set_change_pale
 
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
 void     ctk_color_selection_set_current_color   (CtkColorSelection *colorsel,
-                                                  const GdkColor    *color);
+                                                  const CdkColor    *color);
 GDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
 void     ctk_color_selection_get_current_color   (CtkColorSelection *colorsel,
-                                                  GdkColor          *color);
+                                                  CdkColor          *color);
 GDK_DEPRECATED_IN_3_4
 void     ctk_color_selection_set_previous_color  (CtkColorSelection *colorsel,
-                                                  const GdkColor    *color);
+                                                  const CdkColor    *color);
 GDK_DEPRECATED_IN_3_4
 void     ctk_color_selection_get_previous_color  (CtkColorSelection *colorsel,
-                                                  GdkColor          *color);
+                                                  CdkColor          *color);
 
 
 G_END_DECLS

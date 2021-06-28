@@ -24,23 +24,23 @@
 
 #include "cdkprivate-win32.h"
 
-struct _GdkWin32ALPNSink
+struct _CdkWin32ALPNSink
 {
   ITfActiveLanguageProfileNotifySink itf_alpn_sink;
 
   gint ref_count;
 };
 
-typedef struct _GdkWin32ALPNSink GdkWin32ALPNSink;
+typedef struct _CdkWin32ALPNSink CdkWin32ALPNSink;
 
-static GdkWin32ALPNSink *actlangchangenotify = NULL;
+static CdkWin32ALPNSink *actlangchangenotify = NULL;
 static ITfSource *itf_source = NULL;
 static DWORD actlangchangenotify_id = 0;
 
 static ULONG STDMETHODCALLTYPE
 alpn_sink_addref (ITfActiveLanguageProfileNotifySink *This)
 {
-  GdkWin32ALPNSink *alpn_sink = (GdkWin32ALPNSink *) This;
+  CdkWin32ALPNSink *alpn_sink = (CdkWin32ALPNSink *) This;
   int ref_count = ++alpn_sink->ref_count;
 
   return ref_count;
@@ -73,7 +73,7 @@ alpn_sink_queryinterface (ITfActiveLanguageProfileNotifySink *This,
 static ULONG STDMETHODCALLTYPE
 alpn_sink_release (ITfActiveLanguageProfileNotifySink *This)
 {
-  GdkWin32ALPNSink *alpn_sink = (GdkWin32ALPNSink *) This;
+  CdkWin32ALPNSink *alpn_sink = (CdkWin32ALPNSink *) This;
   int ref_count = --alpn_sink->ref_count;
 
   if (ref_count == 0)
@@ -101,12 +101,12 @@ static ITfActiveLanguageProfileNotifySinkVtbl alpn_sink_vtbl = {
   alpn_sink_on_activated,
 };
 
-static GdkWin32ALPNSink *
+static CdkWin32ALPNSink *
 alpn_sink_new ()
 {
-  GdkWin32ALPNSink *result;
+  CdkWin32ALPNSink *result;
 
-  result = g_new0 (GdkWin32ALPNSink, 1);
+  result = g_new0 (CdkWin32ALPNSink, 1);
   result->itf_alpn_sink.lpVtbl = &alpn_sink_vtbl;
   result->ref_count = 0;
 

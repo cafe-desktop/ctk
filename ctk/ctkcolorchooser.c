@@ -57,7 +57,7 @@ ctk_color_chooser_default_init (CtkColorChooserInterface *iface)
    * CtkColorChooser:rgba:
    *
    * The ::rgba property contains the currently selected color,
-   * as a #GdkRGBA struct. The property can be set to change
+   * as a #CdkRGBA struct. The property can be set to change
    * the current selection programmatically.
    *
    * Since: 3.4
@@ -65,7 +65,7 @@ ctk_color_chooser_default_init (CtkColorChooserInterface *iface)
   g_object_interface_install_property (iface,
       g_param_spec_boxed ("rgba",
                           P_("Color"),
-                          P_("Current color, as a GdkRGBA"),
+                          P_("Current color, as a CdkRGBA"),
                           GDK_TYPE_RGBA,
                           CTK_PARAM_READWRITE));
 
@@ -73,7 +73,7 @@ ctk_color_chooser_default_init (CtkColorChooserInterface *iface)
    * CtkColorChooser:use-alpha:
    *
    * When ::use-alpha is %TRUE, colors may have alpha (translucency)
-   * information. When it is %FALSE, the #GdkRGBA struct obtained
+   * information. When it is %FALSE, the #CdkRGBA struct obtained
    * via the #CtkColorChooser:rgba property will be forced to have
    * alpha == 1.
    *
@@ -114,7 +114,7 @@ ctk_color_chooser_default_init (CtkColorChooserInterface *iface)
 
 void
 _ctk_color_chooser_color_activated (CtkColorChooser *chooser,
-                                    const GdkRGBA   *color)
+                                    const CdkRGBA   *color)
 {
   g_signal_emit (chooser, signals[COLOR_ACTIVATED], 0, color);
 }
@@ -122,7 +122,7 @@ _ctk_color_chooser_color_activated (CtkColorChooser *chooser,
 /**
  * ctk_color_chooser_get_rgba:
  * @chooser: a #CtkColorChooser
- * @color: (out): a #GdkRGBA to fill in with the current color
+ * @color: (out): a #CdkRGBA to fill in with the current color
  *
  * Gets the currently-selected color.
  *
@@ -130,7 +130,7 @@ _ctk_color_chooser_color_activated (CtkColorChooser *chooser,
  */
 void
 ctk_color_chooser_get_rgba (CtkColorChooser *chooser,
-                            GdkRGBA         *color)
+                            CdkRGBA         *color)
 {
   g_return_if_fail (CTK_IS_COLOR_CHOOSER (chooser));
 
@@ -148,7 +148,7 @@ ctk_color_chooser_get_rgba (CtkColorChooser *chooser,
  */
 void
 ctk_color_chooser_set_rgba (CtkColorChooser *chooser,
-                            const GdkRGBA   *color)
+                            const CdkRGBA   *color)
 {
   g_return_if_fail (CTK_IS_COLOR_CHOOSER (chooser));
   g_return_if_fail (color != NULL);
@@ -232,7 +232,7 @@ ctk_color_chooser_add_palette (CtkColorChooser *chooser,
                                CtkOrientation   orientation,
                                gint             colors_per_line,
                                gint             n_colors,
-                               GdkRGBA         *colors)
+                               CdkRGBA         *colors)
 {
   g_return_if_fail (CTK_IS_COLOR_CHOOSER (chooser));
 

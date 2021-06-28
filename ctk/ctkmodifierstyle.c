@@ -73,8 +73,8 @@ ctk_modifier_style_get_style_property (CtkStyleProvider *provider,
                                        GValue           *value)
 {
   CtkModifierStylePrivate *priv;
-  GdkRGBA *rgba;
-  GdkColor color;
+  CdkRGBA *rgba;
+  CdkColor color;
   gchar *str;
 
   /* Reject non-color types for now */
@@ -158,7 +158,7 @@ static void
 modifier_style_set_color (CtkModifierStyle *style,
                           const gchar      *prop,
                           CtkStateFlags     state,
-                          const GdkRGBA    *color)
+                          const CdkRGBA    *color)
 {
   CtkModifierStylePrivate *priv;
 
@@ -179,7 +179,7 @@ modifier_style_set_color (CtkModifierStyle *style,
 void
 _ctk_modifier_style_set_background_color (CtkModifierStyle *style,
                                           CtkStateFlags     state,
-                                          const GdkRGBA    *color)
+                                          const CdkRGBA    *color)
 {
   g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
 
@@ -189,7 +189,7 @@ _ctk_modifier_style_set_background_color (CtkModifierStyle *style,
 void
 _ctk_modifier_style_set_color (CtkModifierStyle *style,
                                CtkStateFlags     state,
-                               const GdkRGBA    *color)
+                               const CdkRGBA    *color)
 {
   g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));
 
@@ -219,7 +219,7 @@ _ctk_modifier_style_set_font (CtkModifierStyle           *style,
 void
 _ctk_modifier_style_map_color (CtkModifierStyle *style,
                                const gchar      *name,
-                               const GdkRGBA    *color)
+                               const CdkRGBA    *color)
 {
   CtkModifierStylePrivate *priv;
   CtkSymbolicColor *symbolic_color = NULL;
@@ -242,10 +242,10 @@ void
 _ctk_modifier_style_set_color_property (CtkModifierStyle *style,
                                         GType             widget_type,
                                         const gchar      *prop_name,
-                                        const GdkRGBA    *color)
+                                        const CdkRGBA    *color)
 {
   CtkModifierStylePrivate *priv;
-  const GdkRGBA *old_color;
+  const CdkRGBA *old_color;
   gchar *str;
 
   g_return_if_fail (CTK_IS_MODIFIER_STYLE (style));

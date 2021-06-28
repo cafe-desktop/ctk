@@ -35,11 +35,11 @@ static void     cdk_event_source_finalize (GSource     *source);
 #define HAS_FOCUS(toplevel)                           \
   ((toplevel)->has_focus || (toplevel)->has_pointer_focus)
 
-struct _GdkEventSource
+struct _CdkEventSource
 {
   GSource source;
 
-  GdkDisplay *display;
+  CdkDisplay *display;
   GPollFD event_poll_fd;
   GList *translators;
 };
@@ -53,11 +53,11 @@ static GSourceFuncs event_funcs = {
 
 static gint
 cdk_event_apply_filters (XEvent    *xevent,
-			 GdkEvent  *event,
-			 GdkWindow *window)
+			 CdkEvent  *event,
+			 CdkWindow *window)
 {
   GList *tmp_list;
-  GdkFilterReturn result;
+  CdkFilterReturn result;
 
   if (window == NULL)
     tmp_list = _cdk_default_filters;
@@ -66,7 +66,7 @@ cdk_event_apply_filters (XEvent    *xevent,
 
   while (tmp_list)
     {
-      GdkEventFilter *filter = (GdkEventFilter*) tmp_list->data;
+      CdkEventFilter *filter = (CdkEventFilter*) tmp_list->data;
       GList *node;
 
       if ((filter->flags & GDK_EVENT_FILTER_REMOVED) != 0)
@@ -92,19 +92,19 @@ cdk_event_apply_filters (XEvent    *xevent,
   return GDK_FILTER_CONTINUE;
 }
 
-static GdkWindow *
-cdk_event_source_get_filter_window (GdkEventSource      *event_source,
+static CdkWindow *
+cdk_event_source_get_filter_window (CdkEventSource      *event_source,
                                     XEvent              *xevent,
-                                    GdkEventTranslator **event_translator)
+                                    CdkEventTranslator **event_translator)
 {
   GList *list = event_source->translators;
-  GdkWindow *window;
+  CdkWindow *window;
 
   *event_translator = NULL;
 
   while (list)
     {
-      GdkEventTranslator *translator = list->data;
+      CdkEventTranslator *translator = list->data;
 
       list = list->next;
       window = _cdk_x11_event_translator_get_window (translator,
@@ -127,10 +127,10 @@ cdk_event_source_get_filter_window (GdkEventSource      *event_source,
 }
 
 static void
-handle_focus_change (GdkEventCrossing *event)
+handle_focus_change (CdkEventCrossing *event)
 {
-  GdkToplevelX11 *toplevel;
-  GdkX11Screen *x11_screen;
+  CdkToplevelX11 *toplevel;
+  CdkX11Screen *x11_screen;
   gboolean focus_in, had_focus;
 
   toplevel = _cdk_x11_window_get_toplevel (event->window);
@@ -153,27 +153,27 @@ handle_focus_change (GdkEventCrossing *event)
 
   if (HAS_FOCUS (toplevel) != had_focus)
     {
-      GdkEvent *focus_event;
+      CdkEvent *focus_event;
 
       focus_event = cdk_event_new (GDK_FOCUS_CHANGE);
       focus_event->focus_change.window = g_object_ref (event->window);
       focus_event->focus_change.send_event = FALSE;
       focus_event->focus_change.in = focus_in;
-      cdk_event_set_device (focus_event, cdk_event_get_device ((GdkEvent *) event));
+      cdk_event_set_device (focus_event, cdk_event_get_device ((CdkEvent *) event));
 
       cdk_event_put (focus_event);
       cdk_event_free (focus_event);
     }
 }
 
-static GdkEvent *
-cdk_event_source_translate_event (GdkEventSource *event_source,
+static CdkEvent *
+cdk_event_source_translate_event (CdkEventSource *event_source,
                                   XEvent         *xevent)
 {
-  GdkEvent *event = cdk_event_new (GDK_NOTHING);
-  GdkFilterReturn result = GDK_FILTER_CONTINUE;
-  GdkEventTranslator *event_translator;
-  GdkWindow *filter_window;
+  CdkEvent *event = cdk_event_new (GDK_NOTHING);
+  CdkFilterReturn result = GDK_FILTER_CONTINUE;
+  CdkEventTranslator *event_translator;
+  CdkWindow *filter_window;
   Display *dpy;
 
   dpy = GDK_DISPLAY_XDISPLAY (event_source->display);
@@ -237,7 +237,7 @@ cdk_event_source_translate_event (GdkEventSource *event_source,
 
       while (list && !event)
         {
-          GdkEventTranslator *translator = list->data;
+          CdkEventTranslator *translator = list->data;
 
           list = list->next;
           event = _cdk_x11_event_translator_translate (translator,
@@ -264,7 +264,7 @@ cdk_event_source_translate_event (GdkEventSource *event_source,
 }
 
 static gboolean
-cdk_check_xpending (GdkDisplay *display)
+cdk_check_xpending (CdkDisplay *display)
 {
   return XPending (GDK_DISPLAY_XDISPLAY (display));
 }
@@ -273,7 +273,7 @@ static gboolean
 cdk_event_source_prepare (GSource *source,
                           gint    *timeout)
 {
-  GdkDisplay *display = ((GdkEventSource*) source)->display;
+  CdkDisplay *display = ((CdkEventSource*) source)->display;
   gboolean retval;
 
   cdk_threads_enter ();
@@ -294,7 +294,7 @@ cdk_event_source_prepare (GSource *source,
 static gboolean
 cdk_event_source_check (GSource *source)
 {
-  GdkEventSource *event_source = (GdkEventSource*) source;
+  CdkEventSource *event_source = (CdkEventSource*) source;
   gboolean retval;
 
   cdk_threads_enter ();
@@ -313,16 +313,16 @@ cdk_event_source_check (GSource *source)
 }
 
 void
-_cdk_x11_display_queue_events (GdkDisplay *display)
+_cdk_x11_display_queue_events (CdkDisplay *display)
 {
-  GdkEvent *event;
+  CdkEvent *event;
   XEvent xevent;
   Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
-  GdkEventSource *event_source;
-  GdkX11Display *display_x11;
+  CdkEventSource *event_source;
+  CdkX11Display *display_x11;
 
   display_x11 = GDK_X11_DISPLAY (display);
-  event_source = (GdkEventSource *) display_x11->event_source;
+  event_source = (CdkEventSource *) display_x11->event_source;
 
   while (!_cdk_event_queue_find_first (display) && XPending (xdisplay))
     {
@@ -355,8 +355,8 @@ cdk_event_source_dispatch (GSource     *source,
                            GSourceFunc  callback,
                            gpointer     user_data)
 {
-  GdkDisplay *display = ((GdkEventSource*) source)->display;
-  GdkEvent *event;
+  CdkDisplay *display = ((CdkEventSource*) source)->display;
+  CdkEvent *event;
 
   cdk_threads_enter ();
 
@@ -377,27 +377,27 @@ cdk_event_source_dispatch (GSource     *source,
 static void
 cdk_event_source_finalize (GSource *source)
 {
-  GdkEventSource *event_source = (GdkEventSource *)source;
+  CdkEventSource *event_source = (CdkEventSource *)source;
 
   g_list_free (event_source->translators);
   event_source->translators = NULL;
 }
 
 GSource *
-cdk_x11_event_source_new (GdkDisplay *display)
+cdk_x11_event_source_new (CdkDisplay *display)
 {
   GSource *source;
-  GdkEventSource *event_source;
-  GdkX11Display *display_x11;
+  CdkEventSource *event_source;
+  CdkX11Display *display_x11;
   int connection_number;
   char *name;
 
-  source = g_source_new (&event_funcs, sizeof (GdkEventSource));
+  source = g_source_new (&event_funcs, sizeof (CdkEventSource));
   name = g_strdup_printf ("GDK X11 Event source (%s)",
                           cdk_display_get_name (display));
   g_source_set_name (source, name);
   g_free (name);
-  event_source = (GdkEventSource *) source;
+  event_source = (CdkEventSource *) source;
   event_source->display = display;
 
   display_x11 = GDK_X11_DISPLAY (display);
@@ -415,8 +415,8 @@ cdk_x11_event_source_new (GdkDisplay *display)
 }
 
 void
-cdk_x11_event_source_add_translator (GdkEventSource     *source,
-                                     GdkEventTranslator *translator)
+cdk_x11_event_source_add_translator (CdkEventSource     *source,
+                                     CdkEventTranslator *translator)
 {
   g_return_if_fail (GDK_IS_EVENT_TRANSLATOR (translator));
 
@@ -424,9 +424,9 @@ cdk_x11_event_source_add_translator (GdkEventSource     *source,
 }
 
 void
-cdk_x11_event_source_select_events (GdkEventSource *source,
+cdk_x11_event_source_select_events (CdkEventSource *source,
                                     Window          window,
-                                    GdkEventMask    event_mask,
+                                    CdkEventMask    event_mask,
                                     unsigned int    extra_x_mask)
 {
   unsigned int xmask = extra_x_mask;
@@ -437,8 +437,8 @@ cdk_x11_event_source_select_events (GdkEventSource *source,
 
   while (list)
     {
-      GdkEventTranslator *translator = list->data;
-      GdkEventMask translator_mask, mask;
+      CdkEventTranslator *translator = list->data;
+      CdkEventMask translator_mask, mask;
 
       translator_mask = _cdk_x11_event_translator_get_handled_events (translator);
       mask = event_mask & translator_mask;

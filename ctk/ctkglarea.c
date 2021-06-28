@@ -38,7 +38,7 @@
  *
  * #CtkGLArea is a widget that allows drawing with OpenGL.
  *
- * #CtkGLArea sets up its own #GdkGLContext for the window it creates, and
+ * #CtkGLArea sets up its own #CdkGLContext for the window it creates, and
  * creates a custom GL framebuffer that the widget will do GL rendering onto.
  * It also ensures that this framebuffer is the default GL rendering target
  * when rendering.
@@ -47,7 +47,7 @@
  * or subclass #CtkGLArea and override the @CtkGLAreaClass.render() virtual
  * function.
  *
- * The #CtkGLArea widget ensures that the #GdkGLContext is associated with
+ * The #CtkGLArea widget ensures that the #CdkGLContext is associated with
  * the widget's drawing area, and it is kept updated when the size and
  * position of the drawing area changes.
  *
@@ -69,10 +69,10 @@
  *
  * |[<!-- language="C" -->
  *   static gboolean
- *   render (CtkGLArea *area, GdkGLContext *context)
+ *   render (CtkGLArea *area, CdkGLContext *context)
  *   {
  *     // inside this function it's safe to use GL; the given
- *     // #GdkGLContext has been made current to the drawable
+ *     // #CdkGLContext has been made current to the drawable
  *     // surface used by the #CtkGLArea and the viewport has
  *     // already been set to be the size of the allocation
  *
@@ -93,7 +93,7 @@
  * If you need to initialize OpenGL state, e.g. buffer objects or
  * shaders, you should use the #CtkWidget::realize signal; you
  * can use the #CtkWidget::unrealize signal to clean up. Since the
- * #GdkGLContext creation and initialization may fail, you will
+ * #CdkGLContext creation and initialization may fail, you will
  * need to check for errors, using ctk_gl_area_get_error(). An example
  * of how to safely initialize the GL state is:
  *
@@ -133,13 +133,13 @@
  *   }
  * ]|
  *
- * If you need to change the options for creating the #GdkGLContext
+ * If you need to change the options for creating the #CdkGLContext
  * you should use the #CtkGLArea::create-context signal.
  */
 
 typedef struct {
-  GdkGLContext *context;
-  GdkWindow *event_window;
+  CdkGLContext *context;
+  CdkWindow *event_window;
   GError *error;
 
   gboolean have_buffers;
@@ -282,7 +282,7 @@ ctk_gl_area_realize (CtkWidget *widget)
   CtkGLArea *area = CTK_GL_AREA (widget);
   CtkGLAreaPrivate *priv = ctk_gl_area_get_instance_private (area);
   CtkAllocation allocation;
-  GdkWindowAttr attributes;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   CTK_WIDGET_CLASS (ctk_gl_area_parent_class)->realize (widget);
@@ -332,13 +332,13 @@ ctk_gl_area_notify (GObject    *object,
     G_OBJECT_CLASS (ctk_gl_area_parent_class)->notify (object, pspec);
 }
 
-static GdkGLContext *
+static CdkGLContext *
 ctk_gl_area_real_create_context (CtkGLArea *area)
 {
   CtkGLAreaPrivate *priv = ctk_gl_area_get_instance_private (area);
   CtkWidget *widget = CTK_WIDGET (area);
   GError *error = NULL;
-  GdkGLContext *context;
+  CdkGLContext *context;
 
   context = cdk_window_create_gl_context (ctk_widget_get_window (widget), &error);
   if (error != NULL)
@@ -771,9 +771,9 @@ ctk_gl_area_class_init (CtkGLAreaClass *klass)
   /**
    * CtkGLArea:context:
    *
-   * The #GdkGLContext used by the #CtkGLArea widget.
+   * The #CdkGLContext used by the #CtkGLArea widget.
    *
-   * The #CtkGLArea widget is responsible for creating the #GdkGLContext
+   * The #CtkGLArea widget is responsible for creating the #CdkGLContext
    * instance. If you need to render with other kinds of buffers (stencil,
    * depth, etc), use render buffers.
    *
@@ -869,7 +869,7 @@ ctk_gl_area_class_init (CtkGLAreaClass *klass)
   /**
    * CtkGLArea:use-es:
    *
-   * If set to %TRUE the widget will try to create a #GdkGLContext using
+   * If set to %TRUE the widget will try to create a #CdkGLContext using
    * OpenGL ES instead of OpenGL.
    *
    * See also: cdk_gl_context_set_use_es()
@@ -895,7 +895,7 @@ ctk_gl_area_class_init (CtkGLAreaClass *klass)
   /**
    * CtkGLArea::render:
    * @area: the #CtkGLArea that emitted the signal
-   * @context: the #GdkGLContext used by @area
+   * @context: the #CdkGLContext used by @area
    *
    * The ::render signal is emitted every time the contents
    * of the #CtkGLArea should be redrawn.
@@ -966,7 +966,7 @@ ctk_gl_area_class_init (CtkGLAreaClass *klass)
    * ctk_gl_area_set_error() to register a more detailed error
    * of how the construction failed.
    *
-   * Returns: (transfer full): a newly created #GdkGLContext;
+   * Returns: (transfer full): a newly created #CdkGLContext;
    *     the #CtkGLArea widget will take ownership of the returned value.
    *
    * Since: 3.16
@@ -1063,7 +1063,7 @@ ctk_gl_area_get_error (CtkGLArea *area)
  *
  * Sets whether the @area should create an OpenGL or an OpenGL ES context.
  *
- * You should check the capabilities of the #GdkGLContext before drawing
+ * You should check the capabilities of the #CdkGLContext before drawing
  * with either API.
  *
  * Since: 3.22
@@ -1405,13 +1405,13 @@ ctk_gl_area_set_auto_render (CtkGLArea *area,
  * ctk_gl_area_get_context:
  * @area: a #CtkGLArea
  *
- * Retrieves the #GdkGLContext used by @area.
+ * Retrieves the #CdkGLContext used by @area.
  *
- * Returns: (transfer none): the #GdkGLContext
+ * Returns: (transfer none): the #CdkGLContext
  *
  * Since: 3.16
  */
-GdkGLContext *
+CdkGLContext *
 ctk_gl_area_get_context (CtkGLArea *area)
 {
   CtkGLAreaPrivate *priv = ctk_gl_area_get_instance_private (area);
@@ -1425,7 +1425,7 @@ ctk_gl_area_get_context (CtkGLArea *area)
  * ctk_gl_area_make_current:
  * @area: a #CtkGLArea
  *
- * Ensures that the #GdkGLContext used by @area is associated with
+ * Ensures that the #CdkGLContext used by @area is associated with
  * the #CtkGLArea.
  *
  * This function is automatically called before emitting the

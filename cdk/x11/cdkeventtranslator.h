@@ -26,42 +26,42 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_EVENT_TRANSLATOR         (_cdk_x11_event_translator_get_type ())
-#define GDK_EVENT_TRANSLATOR(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_EVENT_TRANSLATOR, GdkEventTranslator))
+#define GDK_EVENT_TRANSLATOR(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_EVENT_TRANSLATOR, CdkEventTranslator))
 #define GDK_IS_EVENT_TRANSLATOR(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_EVENT_TRANSLATOR))
-#define GDK_EVENT_TRANSLATOR_GET_IFACE(o) (G_TYPE_INSTANCE_GET_INTERFACE  ((o), GDK_TYPE_EVENT_TRANSLATOR, GdkEventTranslatorIface))
+#define GDK_EVENT_TRANSLATOR_GET_IFACE(o) (G_TYPE_INSTANCE_GET_INTERFACE  ((o), GDK_TYPE_EVENT_TRANSLATOR, CdkEventTranslatorIface))
 
-typedef struct _GdkEventTranslatorIface GdkEventTranslatorIface;
-typedef struct _GdkEventTranslator GdkEventTranslator; /* Dummy typedef */
+typedef struct _CdkEventTranslatorIface CdkEventTranslatorIface;
+typedef struct _CdkEventTranslator CdkEventTranslator; /* Dummy typedef */
 
-struct _GdkEventTranslatorIface
+struct _CdkEventTranslatorIface
 {
   GTypeInterface iface;
 
   /* VMethods */
-  gboolean (* translate_event) (GdkEventTranslator *translator,
-                                GdkDisplay         *display,
-                                GdkEvent           *event,
+  gboolean (* translate_event) (CdkEventTranslator *translator,
+                                CdkDisplay         *display,
+                                CdkEvent           *event,
                                 XEvent             *xevent);
 
-  GdkEventMask (* get_handled_events)   (GdkEventTranslator *translator);
-  void         (* select_window_events) (GdkEventTranslator *translator,
+  CdkEventMask (* get_handled_events)   (CdkEventTranslator *translator);
+  void         (* select_window_events) (CdkEventTranslator *translator,
                                          Window              window,
-                                         GdkEventMask        event_mask);
-  GdkWindow *  (* get_window)           (GdkEventTranslator *translator,
+                                         CdkEventMask        event_mask);
+  CdkWindow *  (* get_window)           (CdkEventTranslator *translator,
                                          XEvent             *xevent);
 };
 
 GType      _cdk_x11_event_translator_get_type (void) G_GNUC_CONST;
 
-GdkEvent * _cdk_x11_event_translator_translate (GdkEventTranslator *translator,
-                                               GdkDisplay         *display,
+CdkEvent * _cdk_x11_event_translator_translate (CdkEventTranslator *translator,
+                                               CdkDisplay         *display,
                                                XEvent             *xevent);
-GdkEventMask _cdk_x11_event_translator_get_handled_events   (GdkEventTranslator *translator);
-void         _cdk_x11_event_translator_select_window_events (GdkEventTranslator *translator,
+CdkEventMask _cdk_x11_event_translator_get_handled_events   (CdkEventTranslator *translator);
+void         _cdk_x11_event_translator_select_window_events (CdkEventTranslator *translator,
                                                              Window              window,
-                                                             GdkEventMask        event_mask);
-GdkWindow *  _cdk_x11_event_translator_get_window           (GdkEventTranslator *translator,
-                                                             GdkDisplay         *display,
+                                                             CdkEventMask        event_mask);
+CdkWindow *  _cdk_x11_event_translator_get_window           (CdkEventTranslator *translator,
+                                                             CdkDisplay         *display,
                                                              XEvent             *xevent);
 
 G_END_DECLS

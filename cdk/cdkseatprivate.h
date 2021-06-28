@@ -20,59 +20,59 @@
 #ifndef __GDK_SEAT_PRIVATE_H__
 #define __GDK_SEAT_PRIVATE_H__
 
-typedef struct _GdkSeatClass GdkSeatClass;
+typedef struct _CdkSeatClass CdkSeatClass;
 
 #include "cdkseat.h"
 
-#define GDK_SEAT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_SEAT, GdkSeatClass))
+#define GDK_SEAT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_SEAT, CdkSeatClass))
 #define GDK_IS_SEAT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_SEAT))
-#define GDK_SEAT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_SEAT, GdkSeatClass))
+#define GDK_SEAT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_SEAT, CdkSeatClass))
 
-struct _GdkSeatClass
+struct _CdkSeatClass
 {
   GObjectClass parent_class;
 
-  void (* device_added)   (GdkSeat   *seat,
-                           GdkDevice *device);
-  void (* device_removed) (GdkSeat   *seat,
-                           GdkDevice *device);
-  void (* device_changed) (GdkSeat   *seat,
-                           GdkDevice *device);
+  void (* device_added)   (CdkSeat   *seat,
+                           CdkDevice *device);
+  void (* device_removed) (CdkSeat   *seat,
+                           CdkDevice *device);
+  void (* device_changed) (CdkSeat   *seat,
+                           CdkDevice *device);
 
-  GdkSeatCapabilities (*get_capabilities) (GdkSeat *seat);
+  CdkSeatCapabilities (*get_capabilities) (CdkSeat *seat);
 
-  GdkGrabStatus (* grab)   (GdkSeat                *seat,
-                            GdkWindow              *window,
-                            GdkSeatCapabilities     capabilities,
+  CdkGrabStatus (* grab)   (CdkSeat                *seat,
+                            CdkWindow              *window,
+                            CdkSeatCapabilities     capabilities,
                             gboolean                owner_events,
-                            GdkCursor              *cursor,
-                            const GdkEvent         *event,
-                            GdkSeatGrabPrepareFunc  prepare_func,
+                            CdkCursor              *cursor,
+                            const CdkEvent         *event,
+                            CdkSeatGrabPrepareFunc  prepare_func,
                             gpointer                prepare_func_data);
-  void          (* ungrab) (GdkSeat                *seat);
+  void          (* ungrab) (CdkSeat                *seat);
 
-  GdkDevice * (* get_master) (GdkSeat             *seat,
-                              GdkSeatCapabilities  capability);
-  GList *     (* get_slaves) (GdkSeat             *seat,
-                              GdkSeatCapabilities  capabilities);
+  CdkDevice * (* get_master) (CdkSeat             *seat,
+                              CdkSeatCapabilities  capability);
+  GList *     (* get_slaves) (CdkSeat             *seat,
+                              CdkSeatCapabilities  capabilities);
 
-  GdkDeviceTool * (* get_tool) (GdkSeat *seat,
+  CdkDeviceTool * (* get_tool) (CdkSeat *seat,
                                 guint64  serial,
                                 guint64  tool_id);
 };
 
-void cdk_seat_device_added   (GdkSeat   *seat,
-                              GdkDevice *device);
-void cdk_seat_device_removed (GdkSeat   *seat,
-                              GdkDevice *device);
+void cdk_seat_device_added   (CdkSeat   *seat,
+                              CdkDevice *device);
+void cdk_seat_device_removed (CdkSeat   *seat,
+                              CdkDevice *device);
 
-void cdk_seat_tool_added     (GdkSeat       *seat,
-                              GdkDeviceTool *tool);
-void cdk_seat_tool_removed   (GdkSeat       *seat,
-                              GdkDeviceTool *tool);
+void cdk_seat_tool_added     (CdkSeat       *seat,
+                              CdkDeviceTool *tool);
+void cdk_seat_tool_removed   (CdkSeat       *seat,
+                              CdkDeviceTool *tool);
 
-GdkDeviceTool *
-     cdk_seat_get_tool       (GdkSeat   *seat,
+CdkDeviceTool *
+     cdk_seat_get_tool       (CdkSeat   *seat,
                               guint64    serial,
                               guint64    hw_id);
 

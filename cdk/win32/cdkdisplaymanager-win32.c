@@ -26,32 +26,32 @@
 #include "cdkdisplaymanagerprivate.h"
 #include "cdkinternals.h"
 
-struct _GdkWin32DisplayManager
+struct _CdkWin32DisplayManager
 {
-  GdkDisplayManager parent_instance;
+  CdkDisplayManager parent_instance;
 };
 
-struct _GdkWin32DisplayManagerClass
+struct _CdkWin32DisplayManagerClass
 {
-  GdkDisplayManagerClass parent_instance;
+  CdkDisplayManagerClass parent_instance;
 };
 
-G_DEFINE_TYPE (GdkWin32DisplayManager, cdk_win32_display_manager, GDK_TYPE_DISPLAY_MANAGER)
+G_DEFINE_TYPE (CdkWin32DisplayManager, cdk_win32_display_manager, GDK_TYPE_DISPLAY_MANAGER)
 
 static void
-cdk_win32_display_manager_init (GdkWin32DisplayManager *manager)
+cdk_win32_display_manager_init (CdkWin32DisplayManager *manager)
 {
 }
 
 static void
 cdk_win32_display_manager_finalize (GObject *object)
 {
-  g_error ("A GdkWin32DisplayManager object was finalized. This should not happen");
+  g_error ("A CdkWin32DisplayManager object was finalized. This should not happen");
   G_OBJECT_CLASS (cdk_win32_display_manager_parent_class)->finalize (object);
 }
 
 static void
-cdk_win32_display_manager_class_init (GdkWin32DisplayManagerClass *class)
+cdk_win32_display_manager_class_init (CdkWin32DisplayManagerClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 

@@ -22,20 +22,20 @@
 
 G_BEGIN_DECLS
 
-#define GDK_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_VISUAL, GdkVisualClass))
+#define GDK_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_VISUAL, CdkVisualClass))
 #define GDK_IS_VISUAL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_VISUAL))
-#define GDK_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_VISUAL, GdkVisualClass))
+#define GDK_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_VISUAL, CdkVisualClass))
 
-typedef struct _GdkVisualClass    GdkVisualClass;
+typedef struct _CdkVisualClass    CdkVisualClass;
 
-struct _GdkVisual
+struct _CdkVisual
 {
   GObject parent_instance;
 
   /*< private >*/
-  GdkVisualType type;
+  CdkVisualType type;
   gint depth;
-  GdkByteOrder byte_order;
+  CdkByteOrder byte_order;
   gint colormap_size;
   gint bits_per_rgb;
 
@@ -43,10 +43,10 @@ struct _GdkVisual
   guint32 green_mask;
   guint32 blue_mask;
 
-  GdkScreen *screen;
+  CdkScreen *screen;
 };
 
-struct _GdkVisualClass
+struct _CdkVisualClass
 {
   GObjectClass parent_class;
 };

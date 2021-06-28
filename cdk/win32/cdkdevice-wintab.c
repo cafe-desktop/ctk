@@ -25,23 +25,23 @@
 #include "cdkwin32.h"
 #include "cdkdevice-wintab.h"
 
-G_DEFINE_TYPE (GdkDeviceWintab, cdk_device_wintab, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkDeviceWintab, cdk_device_wintab, GDK_TYPE_DEVICE)
 
 static gboolean
-cdk_device_wintab_get_history (GdkDevice      *device,
-                               GdkWindow      *window,
+cdk_device_wintab_get_history (CdkDevice      *device,
+                               CdkWindow      *window,
                                guint32         start,
                                guint32         stop,
-                               GdkTimeCoord ***events,
+                               CdkTimeCoord ***events,
                                gint           *n_events)
 {
   return FALSE;
 }
 
-static GdkModifierType
+static CdkModifierType
 get_current_mask (void)
 {
-  GdkModifierType mask;
+  CdkModifierType mask;
   BYTE kbd[256];
 
   GetKeyboardState (kbd);
@@ -65,12 +65,12 @@ get_current_mask (void)
 }
 
 static void
-cdk_device_wintab_get_state (GdkDevice       *device,
-                             GdkWindow       *window,
+cdk_device_wintab_get_state (CdkDevice       *device,
+                             CdkWindow       *window,
                              gdouble         *axes,
-                             GdkModifierType *mask)
+                             CdkModifierType *mask)
 {
-  GdkDeviceWintab *device_wintab;
+  CdkDeviceWintab *device_wintab;
 
   device_wintab = GDK_DEVICE_WINTAB (device);
 
@@ -92,36 +92,36 @@ cdk_device_wintab_get_state (GdkDevice       *device,
 }
 
 static void
-cdk_device_wintab_set_window_cursor (GdkDevice *device,
-                                     GdkWindow *window,
-                                     GdkCursor *cursor)
+cdk_device_wintab_set_window_cursor (CdkDevice *device,
+                                     CdkWindow *window,
+                                     CdkCursor *cursor)
 {
 }
 
 static void
-cdk_device_wintab_warp (GdkDevice *device,
-                        GdkScreen *screen,
+cdk_device_wintab_warp (CdkDevice *device,
+                        CdkScreen *screen,
                         gdouble   x,
                         gdouble   y)
 {
 }
 
 static void
-cdk_device_wintab_query_state (GdkDevice        *device,
-                               GdkWindow        *window,
-                               GdkWindow       **root_window,
-                               GdkWindow       **child_window,
+cdk_device_wintab_query_state (CdkDevice        *device,
+                               CdkWindow        *window,
+                               CdkWindow       **root_window,
+                               CdkWindow       **child_window,
                                gdouble          *root_x,
                                gdouble          *root_y,
                                gdouble          *win_x,
                                gdouble          *win_y,
-                               GdkModifierType  *mask)
+                               CdkModifierType  *mask)
 {
-  GdkDeviceWintab *device_wintab;
-  GdkScreen *screen;
+  CdkDeviceWintab *device_wintab;
+  CdkScreen *screen;
   POINT point;
   HWND hwnd, hwndc;
-  GdkWindowImplWin32 *impl;
+  CdkWindowImplWin32 *impl;
 
   device_wintab = GDK_DEVICE_WINTAB (device);
   screen = cdk_window_get_screen (window);
@@ -178,50 +178,50 @@ cdk_device_wintab_query_state (GdkDevice        *device,
     }
 }
 
-static GdkGrabStatus
-cdk_device_wintab_grab (GdkDevice    *device,
-                        GdkWindow    *window,
+static CdkGrabStatus
+cdk_device_wintab_grab (CdkDevice    *device,
+                        CdkWindow    *window,
                         gboolean      owner_events,
-                        GdkEventMask  event_mask,
-                        GdkWindow    *confine_to,
-                        GdkCursor    *cursor,
+                        CdkEventMask  event_mask,
+                        CdkWindow    *confine_to,
+                        CdkCursor    *cursor,
                         guint32       time_)
 {
   return GDK_GRAB_SUCCESS;
 }
 
 static void
-cdk_device_wintab_ungrab (GdkDevice *device,
+cdk_device_wintab_ungrab (CdkDevice *device,
                           guint32    time_)
 {
 }
 
-static GdkWindow *
-cdk_device_wintab_window_at_position (GdkDevice       *device,
+static CdkWindow *
+cdk_device_wintab_window_at_position (CdkDevice       *device,
                                       gdouble         *win_x,
                                       gdouble         *win_y,
-                                      GdkModifierType *mask,
+                                      CdkModifierType *mask,
                                       gboolean         get_toplevel)
 {
   return NULL;
 }
 
 static void
-cdk_device_wintab_select_window_events (GdkDevice    *device,
-                                        GdkWindow    *window,
-                                        GdkEventMask  event_mask)
+cdk_device_wintab_select_window_events (CdkDevice    *device,
+                                        CdkWindow    *window,
+                                        CdkEventMask  event_mask)
 {
 }
 
 void
-_cdk_device_wintab_translate_axes (GdkDeviceWintab *device_wintab,
-                                   GdkWindow       *window,
+_cdk_device_wintab_translate_axes (CdkDeviceWintab *device_wintab,
+                                   CdkWindow       *window,
                                    gdouble         *axes,
                                    gdouble         *x,
                                    gdouble         *y)
 {
-  GdkDevice *device;
-  GdkWindow *impl_window;
+  CdkDevice *device;
+  CdkWindow *impl_window;
   gint root_x, root_y;
   gdouble temp_x, temp_y;
   gint i;
@@ -234,7 +234,7 @@ _cdk_device_wintab_translate_axes (GdkDeviceWintab *device_wintab,
 
   for (i = 0; i < cdk_device_get_n_axes (device); i++)
     {
-      GdkAxisUse use;
+      CdkAxisUse use;
 
       use = cdk_device_get_axis_use (device, i);
 
@@ -273,9 +273,9 @@ _cdk_device_wintab_translate_axes (GdkDeviceWintab *device_wintab,
 }
 
 static void
-cdk_device_wintab_class_init (GdkDeviceWintabClass *klass)
+cdk_device_wintab_class_init (CdkDeviceWintabClass *klass)
 {
-  GdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_device_wintab_get_history;
   device_class->get_state = cdk_device_wintab_get_state;
@@ -289,6 +289,6 @@ cdk_device_wintab_class_init (GdkDeviceWintabClass *klass)
 }
 
 static void
-cdk_device_wintab_init (GdkDeviceWintab *device_wintab)
+cdk_device_wintab_init (CdkDeviceWintab *device_wintab)
 {
 }

@@ -34,17 +34,17 @@ struct _CtkGestureClass
   gboolean (* check)  (CtkGesture       *gesture);
 
   void     (* begin)  (CtkGesture       *gesture,
-                       GdkEventSequence *sequence);
+                       CdkEventSequence *sequence);
   void     (* update) (CtkGesture       *gesture,
-                       GdkEventSequence *sequence);
+                       CdkEventSequence *sequence);
   void     (* end)    (CtkGesture       *gesture,
-                       GdkEventSequence *sequence);
+                       CdkEventSequence *sequence);
 
   void     (* cancel) (CtkGesture       *gesture,
-                       GdkEventSequence *sequence);
+                       CdkEventSequence *sequence);
 
   void     (* sequence_state_changed) (CtkGesture            *gesture,
-                                       GdkEventSequence      *sequence,
+                                       CdkEventSequence      *sequence,
                                        CtkEventSequenceState  state);
 
   /*< private >*/
@@ -57,17 +57,17 @@ G_BEGIN_DECLS
 gboolean _ctk_gesture_check                  (CtkGesture       *gesture);
 
 gboolean _ctk_gesture_handled_sequence_press (CtkGesture       *gesture,
-                                              GdkEventSequence *sequence);
+                                              CdkEventSequence *sequence);
 
 gboolean _ctk_gesture_get_pointer_emulating_sequence
                                                 (CtkGesture        *gesture,
-                                                 GdkEventSequence **sequence);
+                                                 CdkEventSequence **sequence);
 
 gboolean _ctk_gesture_cancel_sequence        (CtkGesture       *gesture,
-                                              GdkEventSequence *sequence);
+                                              CdkEventSequence *sequence);
 
 gboolean _ctk_gesture_get_last_update_time   (CtkGesture       *gesture,
-                                              GdkEventSequence *sequence,
+                                              CdkEventSequence *sequence,
                                               guint32          *evtime);
 
 G_END_DECLS

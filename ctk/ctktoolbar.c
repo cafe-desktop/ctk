@@ -126,7 +126,7 @@ struct _CtkToolbarPrivate
   CtkWidget       *arrow;
   CtkWidget       *arrow_button;
 
-  GdkWindow       *event_window;
+  CdkWindow       *event_window;
 
   CtkCssGadget    *gadget;
   CtkAllocation    prev_allocation;
@@ -216,7 +216,7 @@ static gboolean   ctk_toolbar_focus                (CtkWidget           *widget,
 static void       ctk_toolbar_move_focus           (CtkWidget           *widget,
 						    CtkDirectionType     dir);
 static void       ctk_toolbar_screen_changed       (CtkWidget           *widget,
-						    GdkScreen           *previous_screen);
+						    CdkScreen           *previous_screen);
 static void       ctk_toolbar_map                  (CtkWidget           *widget);
 static void       ctk_toolbar_unmap                (CtkWidget           *widget);
 static void       ctk_toolbar_set_child_property   (CtkContainer        *container,
@@ -251,9 +251,9 @@ static void       ctk_toolbar_real_style_changed   (CtkToolbar          *toolbar
 static gboolean   ctk_toolbar_focus_home_or_end    (CtkToolbar          *toolbar,
 						    gboolean             focus_home);
 static gboolean   ctk_toolbar_button_press         (CtkWidget           *toolbar,
-						    GdkEventButton      *event);
+						    CdkEventButton      *event);
 static gboolean   ctk_toolbar_arrow_button_press   (CtkWidget           *button,
-						    GdkEventButton      *event,
+						    CdkEventButton      *event,
 						    CtkToolbar          *toolbar);
 static void       ctk_toolbar_arrow_button_clicked (CtkWidget           *button,
 						    CtkToolbar          *toolbar);
@@ -375,7 +375,7 @@ add_arrow_bindings (CtkBindingSet   *binding_set,
 
 static void
 add_ctrl_tab_bindings (CtkBindingSet    *binding_set,
-		       GdkModifierType   modifiers,
+		       CdkModifierType   modifiers,
 		       CtkDirectionType  direction)
 {
   ctk_binding_entry_add_signal (binding_set,
@@ -873,8 +873,8 @@ ctk_toolbar_realize (CtkWidget *widget)
   CtkAllocation allocation;
   CtkToolbar *toolbar = CTK_TOOLBAR (widget);
   CtkToolbarPrivate *priv = toolbar->priv;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_set_realized (widget, TRUE);
@@ -2096,7 +2096,7 @@ settings_change_notify (CtkSettings      *settings,
 
 static void
 ctk_toolbar_screen_changed (CtkWidget *widget,
-			    GdkScreen *previous_screen)
+			    CdkScreen *previous_screen)
 {
   CtkToolbar *toolbar = CTK_TOOLBAR (widget);
   CtkToolbarPrivate *priv = toolbar->priv;
@@ -2624,7 +2624,7 @@ ctk_toolbar_real_style_changed (CtkToolbar     *toolbar,
 
 static void
 show_menu (CtkToolbar     *toolbar,
-	   GdkEventButton *event)
+	   CdkEventButton *event)
 {
   CtkToolbarPrivate *priv = toolbar->priv;
   CtkRequisition minimum_size;
@@ -2650,7 +2650,7 @@ show_menu (CtkToolbar     *toolbar,
                                 priv->arrow_button,
                                 GDK_GRAVITY_SOUTH_EAST,
                                 GDK_GRAVITY_NORTH_WEST,
-                                (GdkEvent *) event);
+                                (CdkEvent *) event);
 
       break;
 
@@ -2665,7 +2665,7 @@ show_menu (CtkToolbar     *toolbar,
                                 priv->arrow_button,
                                 GDK_GRAVITY_NORTH_EAST,
                                 GDK_GRAVITY_NORTH_WEST,
-                                (GdkEvent *) event);
+                                (CdkEvent *) event);
 
       break;
     }
@@ -2691,7 +2691,7 @@ ctk_toolbar_arrow_button_clicked (CtkWidget  *button,
 
 static gboolean
 ctk_toolbar_arrow_button_press (CtkWidget      *button,
-				GdkEventButton *event,
+				CdkEventButton *event,
 				CtkToolbar     *toolbar)
 {
   show_menu (toolbar, event);
@@ -2702,9 +2702,9 @@ ctk_toolbar_arrow_button_press (CtkWidget      *button,
 
 static gboolean
 ctk_toolbar_button_press (CtkWidget      *toolbar,
-    			  GdkEventButton *event)
+    			  CdkEventButton *event)
 {
-  if (cdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (cdk_event_triggers_context_menu ((CdkEvent *) event))
     {
       gboolean return_value;
 

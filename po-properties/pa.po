@@ -125,7 +125,7 @@ msgid "Tool"
 msgstr "ਟੂਲ"
 
 #: cdk/cdkdevice.c:329
-#| msgid "The GdkFont that is currently selected"
+#| msgid "The CdkFont that is currently selected"
 msgid "The tool that is currently used with this device"
 msgstr "ਟੂਲ, ਜੋ ਕਿ ਇਸ ਵੇਲੇ ਇਸ ਡਿਵਾਈਸ ਨਾਲ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ"
 
@@ -805,8 +805,8 @@ msgid "Pixbuf"
 msgstr "ਪਿਕਬਫ"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "ਵੇਖਾਉਣ ਲਈ GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "ਵੇਖਾਉਣ ਲਈ CdkPixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2168,16 +2168,16 @@ msgid "Cell background color"
 msgstr "ਸੈਲ ਬੈਕਗਰਾਊਂਡ ਰੰਗ"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "ਸੈਲ ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਇੱਕ GdkColor ਵਾਂਗ"
+msgid "Cell background color as a CdkColor"
+msgstr "ਸੈਲ ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਇੱਕ CdkColor ਵਾਂਗ"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "ਸੈਲ ਬੈਕਗਰਾਊਂਡ RGBA ਰੰਗ"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "ਸੈਲ ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਇੱਕ GdkRGBA ਵਾਂਗ"
+msgid "Cell background color as a CdkRGBA"
+msgstr "ਸੈਲ ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਇੱਕ CdkRGBA ਵਾਂਗ"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2412,16 +2412,16 @@ msgid "Background color"
 msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:231
-msgid "Background color as a GdkColor"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਇੱਕ GdkColor ਵਾਂਗ"
+msgid "Background color as a CdkColor"
+msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਇੱਕ CdkColor ਵਾਂਗ"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "RGBA ਵਜੋਂ ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਨਾਂ"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:246
-msgid "Background color as a GdkRGBA"
-msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਇੱਕ GdkRGBA ਵਾਂਗ"
+msgid "Background color as a CdkRGBA"
+msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਇੱਕ CdkRGBA ਵਾਂਗ"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:261
 msgid "Foreground color name"
@@ -2432,16 +2432,16 @@ msgid "Foreground color as a string"
 msgstr "ਫਾਰਗਰਾਊਂਡ ਰੰਗ ਇੱਕ ਸਤਰ ਵਾਂਗ"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:277
-msgid "Foreground color as a GdkColor"
-msgstr "ਫਾਰਗਰਾਊਂਡ GdkColor ਵਾਂਗ"
+msgid "Foreground color as a CdkColor"
+msgstr "ਫਾਰਗਰਾਊਂਡ CdkColor ਵਾਂਗ"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "RGBA ਵਜੋਂ ਫਾਰਗਰਾਊਂਡ ਰੰਗ ਨਾਂ"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:292
-msgid "Foreground color as a GdkRGBA"
-msgstr "ਫਾਰਗਰਾਊਂਡ GdkRGBA ਵਾਂਗ"
+msgid "Foreground color as a CdkRGBA"
+msgstr "ਫਾਰਗਰਾਊਂਡ CdkRGBA ਵਾਂਗ"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:308
 #: ctk/ctktextview.c:825
@@ -2908,8 +2908,8 @@ msgid "Color"
 msgstr "ਰੰਗ"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "ਮੌਜੂਦਾ ਰੰਗ GdkRGBA ਵਜੋਂ"
+msgid "Current color, as a CdkRGBA"
+msgstr "ਮੌਜੂਦਾ ਰੰਗ CdkRGBA ਵਜੋਂ"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4158,8 +4158,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "ਜੈਸਚਰ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਚਾਹੀਦੇ ਬਿੰਦੂਆਂ ਦੀ ਗਿਣਤੀ"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "ਈਵੈਂਟ ਪ੍ਰਾਪਤ ਕਰਨ ਵਾਲੀ GdkWindow"
+msgid "CdkWindow to receive events about"
+msgstr "ਈਵੈਂਟ ਪ੍ਰਾਪਤ ਕਰਨ ਵਾਲੀ CdkWindow"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4492,8 +4492,8 @@ msgid "Animation"
 msgstr "ਸਜੀਵਤਾ"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "ਵੇਖਾਉਣ ਲਈ GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "ਵੇਖਾਉਣ ਲਈ CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7717,16 +7717,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "ਹਾਲਤ-ਪੱਟੀ ਦੁਆਲੇ bevel ਦਾ ਸਟਾਇਲ"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "ਸਬੰਧਤ GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "ਸਬੰਧਤ CdkScreen"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "ਫਰੇਕਘੜੀ"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "ਸਬੰਧਿਤ GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "ਸਬੰਧਿਤ CdkFrameClock"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:299
 msgid "Text direction"
@@ -8020,16 +8020,16 @@ msgid "Paragraph background color"
 msgstr "ਪੈਰਾ ਬੈਕਗਰਾਊਂਡ ਰੰਗ"
 
 #: ctk/ctktexttag.c:630
-msgid "Paragraph background color as a GdkColor"
-msgstr "ਪੈਰਾ ਬੈਕਗਰਾਊਂਡ ਰੰਗ GdkColor ਵਾਂਗ"
+msgid "Paragraph background color as a CdkColor"
+msgstr "ਪੈਰਾ ਬੈਕਗਰਾਊਂਡ ਰੰਗ CdkColor ਵਾਂਗ"
 
 #: ctk/ctktexttag.c:644
 msgid "Paragraph background RGBA"
 msgstr "ਪੈਰਾ ਬੈਕਗਰਾਊਂਡ RGBA"
 
 #: ctk/ctktexttag.c:645
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "ਪੈਰਾ ਬੈਕਗਰਾਊਂਡ ਰੰਗ GdkRGBA ਵਾਂਗ"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "ਪੈਰਾ ਬੈਕਗਰਾਊਂਡ ਰੰਗ CdkRGBA ਵਾਂਗ"
 
 #: ctk/ctktexttag.c:662
 msgid "Fallback"
@@ -9013,9 +9013,9 @@ msgid "Events"
 msgstr "ਘਟਨਾਵਾਂ"
 
 #: ctk/ctkwidget.c:1253
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"ਘਟਨਾ-ਮਖੌਟਾ, ਜੋ ਕਿ ਇਹ ਸੈੱਟ ਕਰਦੇ ਹਨ ਕਿ ਇਹ ਵਿਦਗਿਟ ਕਿਸਤਰ੍ਹਾਂ ਦਾ GdkEvents ਨੂੰ"
+"ਘਟਨਾ-ਮਖੌਟਾ, ਜੋ ਕਿ ਇਹ ਸੈੱਟ ਕਰਦੇ ਹਨ ਕਿ ਇਹ ਵਿਦਗਿਟ ਕਿਸਤਰ੍ਹਾਂ ਦਾ CdkEvents ਨੂੰ"
 " ਪਰਾਪਤ ਕਰਦਾ ਹੈ"
 
 #: ctk/ctkwidget.c:1260
@@ -9669,14 +9669,14 @@ msgstr "ਵਰਤਣ ਲਈ ਰੰਗ ਪਰੋਫਾਇਲ ਦਾ ਨਾਂ"
 #~ msgid "Event base for XInput events"
 #~ msgstr "XInput ਈਵੈਂਟ ਲਈ ਈਵੈਂਟ ਬੇਸ"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
-#~ msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਸੰਭਵ ਹੋਵੇ (ਨਾ ਵਰਤਿਆ ਗਿਆ) ਤਾਂ GdkColor"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
+#~ msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਸੰਭਵ ਹੋਵੇ (ਨਾ ਵਰਤਿਆ ਗਿਆ) ਤਾਂ CdkColor"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
-#~ msgstr "ਫਾਰਗਰਾਊਂਡ ਦਾ ਰੰਗ ਸੰਭਵ ਹੋਵੇ (ਨਾ ਵਰਤਿਆ ਗਿਆ) ਤਾਂ GdkColor"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
+#~ msgstr "ਫਾਰਗਰਾਊਂਡ ਦਾ ਰੰਗ ਸੰਭਵ ਹੋਵੇ (ਨਾ ਵਰਤਿਆ ਗਿਆ) ਤਾਂ CdkColor"
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-#~ msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਸੰਭਵ ਹੋਵੇ (ਨਾ ਵਰਤਿਆ ਗਿਆ) ਤਾਂ GdkColor"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+#~ msgstr "ਬੈਕਗਰਾਊਂਡ ਰੰਗ ਸੰਭਵ ਹੋਵੇ (ਨਾ ਵਰਤਿਆ ਗਿਆ) ਤਾਂ CdkColor"
 
 #~ msgid "Number of steps"
 #~ msgstr "ਪਗ਼ਾਂ ਦੀ ਗਿਣਤੀ"
@@ -9755,8 +9755,8 @@ msgstr "ਵਰਤਣ ਲਈ ਰੰਗ ਪਰੋਫਾਇਲ ਦਾ ਨਾਂ"
 #~ msgid "Whether the statusbar has a grip for resizing the toplevel"
 #~ msgstr "ਕੀ ਹਾਲਤ-ਪੱਟੀ ਉਪਰੀ ਦੇ ਮੁੜ-ਅਕਾਰ ਨੂੰ ਵੇਖੇ"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "ਰੈਂਡਰਿੰਗ ਲਈ GdkScreen"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "ਰੈਂਡਰਿੰਗ ਲਈ CdkScreen"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "ਅਨਕੂਲਤਾ, ਜੋ ਕਿ ਸਪਿਨ-ਬਟਨ ਦੇ ਮੁੱਲ ਨੂੰ ਸੰਭਾਲਦੀ ਹੈ।"
@@ -9782,17 +9782,17 @@ msgstr "ਵਰਤਣ ਲਈ ਰੰਗ ਪਰੋਫਾਇਲ ਦਾ ਨਾਂ"
 #~ msgid "Pixmap"
 #~ msgstr "ਪਿਕਪੈਮ"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "ਵੇਖਾਉਣ ਲਈ GdkPixmap"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "ਵੇਖਾਉਣ ਲਈ CdkPixmap"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "ਵੇਖਾਉਣ ਲਈ GdkImage"
+#~ msgid "A CdkImage to display"
+#~ msgstr "ਵੇਖਾਉਣ ਲਈ CdkImage"
 
 #~ msgid "Mask"
 #~ msgstr "ਮਖੌਟਾ"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "GdkImage ਜਾਂ GdkPixmap ਨਾਲ ਵਰਤਣ ਲਈ ਬਿੱਟਮੈਪ ਕੱਜ ਦਿਉ"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "CdkImage ਜਾਂ CdkPixmap ਨਾਲ ਵਰਤਣ ਲਈ ਬਿੱਟਮੈਪ ਕੱਜ ਦਿਉ"
 
 #~ msgid ""
 #~ "Whether to put a separator between the message dialog's text and the "

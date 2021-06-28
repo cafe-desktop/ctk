@@ -823,8 +823,8 @@ msgid "Pixbuf"
 msgstr "Medpomnilnik sličic"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Predmet GdkPixbuf, ki naj se prikaže"
+msgid "A CdkPixbuf to display"
+msgstr "Predmet CdkPixbuf, ki naj se prikaže"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2206,16 +2206,16 @@ msgid "Cell background color"
 msgstr "Barva ozadja celice"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Barva ozadja celice (GdkColor)"
+msgid "Cell background color as a CdkColor"
+msgstr "Barva ozadja celice (CdkColor)"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Barva ozadja celice (RGBA)"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Barva ozadja celice (GdkRGBA)"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Barva ozadja celice (CdkRGBA)"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2452,16 +2452,16 @@ msgid "Background color"
 msgstr "Barva ozadja"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
-msgstr "Barva ozadja (GdkColor)"
+msgid "Background color as a CdkColor"
+msgstr "Barva ozadja (CdkColor)"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Barva ozadja (RGBA)"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
-msgstr "Barva ozadja (GdkRGBA)"
+msgid "Background color as a CdkRGBA"
+msgstr "Barva ozadja (CdkRGBA)"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
@@ -2472,16 +2472,16 @@ msgid "Foreground color as a string"
 msgstr "Barva ospredja kot niz"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
-msgstr "Barva ospredja (GdkColor)"
+msgid "Foreground color as a CdkColor"
+msgstr "Barva ospredja (CdkColor)"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Barva ospredja (RGBA)"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
-msgstr "Barva ospredja (GdkRGBA)"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Barva ospredja (CdkRGBA)"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
@@ -2951,8 +2951,8 @@ msgid "Color"
 msgstr "Barva"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Trenutna barva (kot GdkRGBA)"
+msgid "Current color, as a CdkRGBA"
+msgstr "Trenutna barva (kot CdkRGBA)"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4186,7 +4186,7 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Število točk, ki sprožijo potezo"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
+msgid "CdkWindow to receive events about"
 msgstr "Predmet CtkWindow, ki prejme dogodke"
 
 #: ctk/ctkgesturelongpress.c:285
@@ -4522,8 +4522,8 @@ msgid "Animation"
 msgstr "Animacija"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation, ki naj se prikaže"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation, ki naj se prikaže"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7758,16 +7758,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Slog obrobe okoli besedila vrstice stanja"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "Povezan predmet GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "Povezan predmet CdkScreen"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "Ura okna"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "Povezan predmet GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "Povezan predmet CdkFrameClock"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
 msgid "Text direction"
@@ -8064,16 +8064,16 @@ msgid "Paragraph background color"
 msgstr "Barva ozadja odstavka"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
-msgstr "Barva ozadja odstavka kot (po možnosti ni rezerviran) GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Barva ozadja odstavka kot (po možnosti ni rezerviran) CdkColor"
 
 #: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "Barva ozadja odstavka (RGBA)"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Barva ozadja odstavka (RGBA kot GdkRGBA)"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Barva ozadja odstavka (RGBA kot CdkRGBA)"
 
 #: ctk/ctktexttag.c:663
 msgid "Fallback"
@@ -9062,8 +9062,8 @@ msgid "Events"
 msgstr "Dogodki"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "Maska dogodkov, ki določa katere vrste GdkEvents bo dobival ta gradnik"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "Maska dogodkov, ki določa katere vrste CdkEvents bo dobival ta gradnik"
 
 #: ctk/ctkwidget.c:1263
 msgid "No show all"

@@ -161,7 +161,7 @@ struct _CtkWindowPopover
 {
   CtkWidget *widget;
   CtkWidget *parent;
-  GdkWindow *window;
+  CdkWindow *window;
   CtkPositionType pos;
   cairo_rectangle_int_t rect;
   gulong unmap_id;
@@ -179,13 +179,13 @@ struct _CtkWindowPrivate
   CtkWindow             *transient_parent;
   CtkWindowGeometryInfo *geometry_info;
   CtkWindowGroup        *group;
-  GdkScreen             *screen;
-  GdkDisplay            *display;
+  CdkScreen             *screen;
+  CdkDisplay            *display;
   CtkApplication        *application;
 
   GList                 *popovers;
 
-  GdkModifierType        mnemonic_modifier;
+  CdkModifierType        mnemonic_modifier;
 
   gchar   *startup_id;
   gchar   *title;
@@ -209,7 +209,7 @@ struct _CtkWindowPrivate
   CtkWidget *titlebar;
   CtkWidget *popup_menu;
 
-  GdkWindow *border_window[8];
+  CdkWindow *border_window[8];
   gint       initial_fullscreen_monitor;
   guint      edge_constraints;
 
@@ -251,7 +251,7 @@ struct _CtkWindowPrivate
   guint    transient_parent_group    : 1;
   guint    type                      : 4; /* CtkWindowType */
   guint    urgent                    : 1;
-  guint    gravity                   : 5; /* GdkGravity */
+  guint    gravity                   : 5; /* CdkGravity */
   guint    csd_requested             : 1;
   guint    client_decorated          : 1; /* Decorations drawn client-side */
   guint    use_client_shadow         : 1; /* Decorations use client-side shadows */
@@ -265,12 +265,12 @@ struct _CtkWindowPrivate
 
   guint    use_subsurface            : 1;
 
-  GdkWindowTypeHint type_hint;
+  CdkWindowTypeHint type_hint;
 
   CtkGesture *multipress_gesture;
   CtkGesture *drag_gesture;
 
-  GdkWindow *hardcoded_window;
+  CdkWindow *hardcoded_window;
 
   CtkCssNode *decoration_node;
 };
@@ -340,7 +340,7 @@ enum {
 
 static GParamSpec *window_props[LAST_ARG] = { NULL, };
 
-/* Must be kept in sync with GdkWindowEdge ! */
+/* Must be kept in sync with CdkWindowEdge ! */
 typedef enum
 {
   CTK_WINDOW_REGION_EDGE_NW,
@@ -366,17 +366,17 @@ typedef struct
 } CtkWindowIconInfo;
 
 typedef struct {
-  GdkGeometry    geometry; /* Last set of geometry hints we set */
-  GdkWindowHints flags;
-  GdkRectangle   configure_request;
+  CdkGeometry    geometry; /* Last set of geometry hints we set */
+  CdkWindowHints flags;
+  CdkRectangle   configure_request;
 } CtkWindowLastGeometryInfo;
 
 struct _CtkWindowGeometryInfo
 {
   /* Properties that the app has set on the window
    */
-  GdkGeometry    geometry;	/* Geometry hints */
-  GdkWindowHints mask;
+  CdkGeometry    geometry;	/* Geometry hints */
+  CdkWindowHints mask;
   /* from last ctk_window_resize () - if > 0, indicates that
    * we should resize to this size.
    */
@@ -423,21 +423,21 @@ static void ctk_window_unrealize          (CtkWidget         *widget);
 static void ctk_window_size_allocate      (CtkWidget         *widget,
 					   CtkAllocation     *allocation);
 static gboolean ctk_window_map_event      (CtkWidget         *widget,
-                                           GdkEventAny       *event);
+                                           CdkEventAny       *event);
 static gint ctk_window_configure_event    (CtkWidget         *widget,
-					   GdkEventConfigure *event);
+					   CdkEventConfigure *event);
 static gboolean ctk_window_event          (CtkWidget         *widget,
-                                           GdkEvent          *event);
+                                           CdkEvent          *event);
 static gint ctk_window_key_press_event    (CtkWidget         *widget,
-					   GdkEventKey       *event);
+					   CdkEventKey       *event);
 static gint ctk_window_key_release_event  (CtkWidget         *widget,
-					   GdkEventKey       *event);
+					   CdkEventKey       *event);
 static gint ctk_window_focus_in_event     (CtkWidget         *widget,
-					   GdkEventFocus     *event);
+					   CdkEventFocus     *event);
 static gint ctk_window_focus_out_event    (CtkWidget         *widget,
-					   GdkEventFocus     *event);
+					   CdkEventFocus     *event);
 static gboolean ctk_window_state_event    (CtkWidget          *widget,
-                                           GdkEventWindowState *event);
+                                           CdkEventWindowState *event);
 static void ctk_window_remove             (CtkContainer      *container,
                                            CtkWidget         *widget);
 static void ctk_window_check_resize       (CtkContainer      *container);
@@ -465,17 +465,17 @@ static void ctk_window_transient_parent_realized   (CtkWidget  *parent,
 static void ctk_window_transient_parent_unrealized (CtkWidget  *parent,
 						    CtkWidget  *window);
 
-static GdkScreen *ctk_window_check_screen (CtkWindow *window);
+static CdkScreen *ctk_window_check_screen (CtkWindow *window);
 
 static CtkWindowGeometryInfo* ctk_window_get_geometry_info         (CtkWindow    *window,
                                                                     gboolean      create);
 
-static gboolean ctk_window_compare_hints             (GdkGeometry  *geometry_a,
+static gboolean ctk_window_compare_hints             (CdkGeometry  *geometry_a,
                                                       guint         flags_a,
-                                                      GdkGeometry  *geometry_b,
+                                                      CdkGeometry  *geometry_b,
                                                       guint         flags_b);
 static void     ctk_window_constrain_size            (CtkWindow    *window,
-                                                      GdkGeometry  *geometry,
+                                                      CdkGeometry  *geometry,
                                                       guint         flags,
                                                       gint          width,
                                                       gint          height,
@@ -487,15 +487,15 @@ static void     ctk_window_constrain_position        (CtkWindow    *window,
                                                       gint         *x,
                                                       gint         *y);
 static void     ctk_window_update_fixed_size         (CtkWindow    *window,
-                                                      GdkGeometry  *new_geometry,
+                                                      CdkGeometry  *new_geometry,
                                                       gint          new_width,
                                                       gint          new_height);
 static void     ctk_window_compute_hints             (CtkWindow    *window,
-                                                      GdkGeometry  *new_geometry,
+                                                      CdkGeometry  *new_geometry,
                                                       guint        *new_flags);
 static void     ctk_window_compute_configure_request (CtkWindow    *window,
-                                                      GdkRectangle *request,
-                                                      GdkGeometry  *geometry,
+                                                      CdkRectangle *request,
+                                                      CdkGeometry  *geometry,
                                                       guint        *flags);
 
 static void     ctk_window_set_default_size_internal (CtkWindow    *window,
@@ -516,7 +516,7 @@ static void     get_shadow_width                      (CtkWindow    *window,
 
 static CtkKeyHash *ctk_window_get_key_hash        (CtkWindow   *window);
 static void        ctk_window_free_key_hash       (CtkWindow   *window);
-static void	   ctk_window_on_composited_changed (GdkScreen *screen,
+static void	   ctk_window_on_composited_changed (CdkScreen *screen,
 						     CtkWindow *window);
 #ifdef GDK_WINDOWING_X11
 static void        ctk_window_on_theme_variant_changed (CtkSettings *settings,
@@ -526,7 +526,7 @@ static void        ctk_window_on_theme_variant_changed (CtkSettings *settings,
 static void        ctk_window_set_theme_variant         (CtkWindow  *window);
 
 static void        ctk_window_do_popup         (CtkWindow      *window,
-                                                GdkEventButton *event);
+                                                CdkEventButton *event);
 
 static void ctk_window_get_preferred_width (CtkWidget *widget,
                                             gint      *minimum_size,
@@ -604,7 +604,7 @@ static void on_titlebar_title_notify (CtkHeaderBar *titlebar,
                                       GParamSpec   *pspec,
                                       CtkWindow    *self);
 static CtkWindowRegion get_active_region_type (CtkWindow   *window,
-                                               GdkEventAny *event,
+                                               CdkEventAny *event,
                                                gint         x,
                                                gint         y);
 
@@ -617,7 +617,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkWindow, ctk_window, CTK_TYPE_BIN,
 
 static void
 add_tab_bindings (CtkBindingSet    *binding_set,
-		  GdkModifierType   modifiers,
+		  CdkModifierType   modifiers,
 		  CtkDirectionType  direction)
 {
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_Tab, modifiers,
@@ -1038,7 +1038,7 @@ ctk_window_class_init (CtkWindowClass *klass)
   /**
    * CtkWindow:gravity:
    *
-   * The window gravity of the window. See ctk_window_move() and #GdkGravity for
+   * The window gravity of the window. See ctk_window_move() and #CdkGravity for
    * more details about window gravity.
    *
    * Since: 2.4
@@ -1315,14 +1315,14 @@ send_delete_event (gpointer data)
 {
   CtkWidget *window = data;
   CtkWindowPrivate *priv = CTK_WINDOW (window)->priv;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
 
   priv->delete_event_handler = 0;
 
   cdk_window = _ctk_widget_get_window (window);
   if (cdk_window)
     {
-      GdkEvent *event;
+      CdkEvent *event;
 
       event = cdk_event_new (GDK_DELETE);
       event->any.window = g_object_ref (cdk_window);
@@ -1378,7 +1378,7 @@ popover_destroy (CtkWindowPopover *popover)
 
 static gboolean
 ctk_window_titlebar_action (CtkWindow      *window,
-                            const GdkEvent *event,
+                            const CdkEvent *event,
                             guint           button,
                             gint            n_press)
 {
@@ -1422,7 +1422,7 @@ ctk_window_titlebar_action (CtkWindow      *window,
   else if (g_str_equal (action, "minimize"))
     cdk_window_iconify (_ctk_widget_get_window (CTK_WIDGET (window)));
   else if (g_str_equal (action, "menu"))
-    ctk_window_do_popup (window, (GdkEventButton*) event);
+    ctk_window_do_popup (window, (CdkEventButton*) event);
   else
     {
       g_warning ("Unsupported titlebar action %s", action);
@@ -1442,10 +1442,10 @@ multipress_gesture_pressed_cb (CtkGestureMultiPress *gesture,
                                CtkWindow            *window)
 {
   CtkWidget *event_widget, *widget;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   CtkWindowRegion region;
   CtkWindowPrivate *priv;
-  const GdkEvent *event;
+  const CdkEvent *event;
   guint button;
   gboolean window_drag = FALSE;
 
@@ -1461,7 +1461,7 @@ multipress_gesture_pressed_cb (CtkGestureMultiPress *gesture,
   if (n_press > 1)
     ctk_gesture_set_state (priv->drag_gesture, CTK_EVENT_SEQUENCE_DENIED);
 
-  region = get_active_region_type (window, (GdkEventAny*) event, x, y);
+  region = get_active_region_type (window, (CdkEventAny*) event, x, y);
 
   if (cdk_display_device_is_grabbed (ctk_widget_get_display (widget),
                                      ctk_gesture_get_device (CTK_GESTURE (gesture))))
@@ -1490,7 +1490,7 @@ multipress_gesture_pressed_cb (CtkGestureMultiPress *gesture,
   else if (button != GDK_BUTTON_PRIMARY)
     return;
 
-  event_widget = ctk_get_event_widget ((GdkEvent *) event);
+  event_widget = ctk_get_event_widget ((CdkEvent *) event);
 
   if (region == CTK_WINDOW_REGION_TITLE)
     cdk_window_raise (_ctk_widget_get_window (widget));
@@ -1526,8 +1526,8 @@ multipress_gesture_pressed_cb (CtkGestureMultiPress *gesture,
 
           cdk_event_get_root_coords (event, &x_root, &y_root);
           cdk_window_begin_resize_drag_for_device (_ctk_widget_get_window (widget),
-                                                   (GdkWindowEdge) region,
-                                                   cdk_event_get_device ((GdkEvent *) event),
+                                                   (CdkWindowEdge) region,
+                                                   cdk_event_get_device ((CdkEvent *) event),
                                                    GDK_BUTTON_PRIMARY,
                                                    x_root, y_root,
                                                    cdk_event_get_time (event));
@@ -1546,11 +1546,11 @@ drag_gesture_begin_cb (CtkGestureDrag *gesture,
                        gdouble         y,
                        CtkWindow      *window)
 {
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   CtkWindowRegion region;
   CtkWidget *event_widget;
   gboolean widget_drag;
-  const GdkEvent *event;
+  const CdkEvent *event;
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
@@ -1558,7 +1558,7 @@ drag_gesture_begin_cb (CtkGestureDrag *gesture,
   if (!event)
     return;
 
-  region = get_active_region_type (window, (GdkEventAny*) event, x, y);
+  region = get_active_region_type (window, (CdkEventAny*) event, x, y);
 
   switch (region)
     {
@@ -1566,7 +1566,7 @@ drag_gesture_begin_cb (CtkGestureDrag *gesture,
         /* Claim it */
         break;
       case CTK_WINDOW_REGION_CONTENT:
-        event_widget = ctk_get_event_widget ((GdkEvent *) event);
+        event_widget = ctk_get_event_widget ((CdkEvent *) event);
 
         ctk_widget_style_get (event_widget, "window-dragging", &widget_drag, NULL);
 
@@ -1597,15 +1597,15 @@ drag_gesture_update_cb (CtkGestureDrag *gesture,
   if (ABS (offset_x) > double_click_distance ||
       ABS (offset_y) > double_click_distance)
     {
-      GdkEventSequence *sequence;
+      CdkEventSequence *sequence;
       gdouble start_x, start_y;
       gint x_root, y_root;
-      const GdkEvent *event;
+      const CdkEvent *event;
       CtkWidget *event_widget;
 
       sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
       event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
-      event_widget = ctk_get_event_widget ((GdkEvent *) event);
+      event_widget = ctk_get_event_widget ((CdkEvent *) event);
 
       /* Check whether the target widget should be left alone at handling
        * the sequence, this is better done late to give room for gestures
@@ -2495,7 +2495,7 @@ ctk_window_set_role (CtkWindow   *window,
  * Startup notification identifiers are used by desktop environment to 
  * track application startup, to provide user feedback and other 
  * features. This function changes the corresponding property on the
- * underlying GdkWindow. Normally, startup identifier is managed 
+ * underlying CdkWindow. Normally, startup identifier is managed 
  * automatically and you should only use this function in special cases
  * like transferring focus from other processes. You should use this
  * function before calling ctk_window_present() or any equivalent
@@ -2522,7 +2522,7 @@ ctk_window_set_startup_id (CtkWindow   *window,
 
   if (_ctk_widget_get_realized (widget))
     {
-      GdkWindow *cdk_window;
+      CdkWindow *cdk_window;
       guint32 timestamp = extract_time_from_startup_id (priv->startup_id);
 
       cdk_window = _ctk_widget_get_window (widget);
@@ -2868,7 +2868,7 @@ ctk_window_remove_mnemonic (CtkWindow *window,
 gboolean
 ctk_window_mnemonic_activate (CtkWindow      *window,
 			      guint           keyval,
-			      GdkModifierType modifier)
+			      CdkModifierType modifier)
 {
   CtkWindowPrivate *priv;
 
@@ -2896,7 +2896,7 @@ ctk_window_mnemonic_activate (CtkWindow      *window,
  **/
 void
 ctk_window_set_mnemonic_modifier (CtkWindow      *window,
-				  GdkModifierType modifier)
+				  CdkModifierType modifier)
 {
   CtkWindowPrivate *priv;
 
@@ -2919,7 +2919,7 @@ ctk_window_set_mnemonic_modifier (CtkWindow      *window,
  * Returns: the modifier mask used to activate
  *               mnemonics on this window.
  **/
-GdkModifierType
+CdkModifierType
 ctk_window_get_mnemonic_modifier (CtkWindow *window)
 {
   g_return_val_if_fail (CTK_IS_WINDOW (window), 0);
@@ -3594,10 +3594,10 @@ ctk_window_set_application (CtkWindow      *window,
  **/
 void
 ctk_window_set_type_hint (CtkWindow           *window, 
-			  GdkWindowTypeHint    hint)
+			  CdkWindowTypeHint    hint)
 {
   CtkWindowPrivate *priv;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -3625,7 +3625,7 @@ ctk_window_set_type_hint (CtkWindow           *window,
  *
  * Returns: the type hint for @window.
  **/
-GdkWindowTypeHint
+CdkWindowTypeHint
 ctk_window_get_type_hint (CtkWindow *window)
 {
   g_return_val_if_fail (CTK_IS_WINDOW (window), GDK_WINDOW_TYPE_HINT_NORMAL);
@@ -3946,7 +3946,7 @@ static void
 ctk_window_apply_hide_titlebar_when_maximized (CtkWindow *window)
 {
 #ifdef GDK_WINDOWING_X11
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
   gboolean setting;
 
   setting = window->priv->hide_titlebar_when_maximized;
@@ -4054,13 +4054,13 @@ ctk_window_get_geometry_info (CtkWindow *window,
  * This function sets up hints about how a window can be resized by
  * the user.  You can set a minimum and maximum size; allowed resize
  * increments (e.g. for xterm, you can only resize by the size of a
- * character); aspect ratios; and more. See the #GdkGeometry struct.
+ * character); aspect ratios; and more. See the #CdkGeometry struct.
  */
 void
 ctk_window_set_geometry_hints (CtkWindow       *window,
 			       CtkWidget       *geometry_widget,
-			       GdkGeometry     *geometry,
-			       GdkWindowHints   geom_mask)
+			       CdkGeometry     *geometry,
+			       CdkWindowHints   geom_mask)
 {
   CtkWindowGeometryInfo *info;
 
@@ -4103,9 +4103,9 @@ unset_titlebar (CtkWindow *window)
 static gboolean
 ctk_window_supports_client_shadow (CtkWindow *window)
 {
-  GdkDisplay *display;
-  GdkScreen *screen;
-  GdkVisual *visual;
+  CdkDisplay *display;
+  CdkScreen *screen;
+  CdkVisual *visual;
 
   screen = _ctk_window_get_screen (window);
   display = cdk_screen_get_display (screen);
@@ -4147,7 +4147,7 @@ ctk_window_enable_csd (CtkWindow *window)
 {
   CtkWindowPrivate *priv = window->priv;
   CtkWidget *widget = CTK_WIDGET (window);
-  GdkVisual *visual;
+  CdkVisual *visual;
 
   /* We need a visual with alpha for client shadows */
   if (priv->use_client_shadow)
@@ -4306,7 +4306,7 @@ ctk_window_set_decorated (CtkWindow *window,
                           gboolean   setting)
 {
   CtkWindowPrivate *priv;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -4379,7 +4379,7 @@ ctk_window_set_deletable (CtkWindow *window,
 			  gboolean   setting)
 {
   CtkWindowPrivate *priv;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -4467,7 +4467,7 @@ icon_list_from_theme (CtkWindow   *window,
   GList *list;
 
   CtkIconTheme *icon_theme;
-  GdkPixbuf *icon;
+  CdkPixbuf *icon;
   gint *sizes;
   gint i;
 
@@ -4506,7 +4506,7 @@ ctk_window_realize_icon (CtkWindow *window)
   CtkWindowPrivate *priv = window->priv;
   CtkWidget *widget;
   CtkWindowIconInfo *info;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
   GList *icon_list;
 
   widget = CTK_WIDGET (window);
@@ -4575,12 +4575,12 @@ ctk_window_realize_icon (CtkWindow *window)
     }
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 icon_from_list (GList *list,
                 gint   size)
 {
-  GdkPixbuf *best;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *best;
+  CdkPixbuf *pixbuf;
   GList *l;
 
   best = NULL;
@@ -4601,7 +4601,7 @@ icon_from_list (GList *list,
   return best;
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 icon_from_name (const gchar *name,
                 gint         size)
 {
@@ -4610,7 +4610,7 @@ icon_from_name (const gchar *name,
                                    CTK_ICON_LOOKUP_FORCE_SIZE, NULL);
 }
 
-GdkPixbuf *
+CdkPixbuf *
 ctk_window_get_icon_for_size (CtkWindow *window,
                               gint       size)
 {
@@ -4664,7 +4664,7 @@ ctk_window_unrealize_icon (CtkWindow *window)
 /**
  * ctk_window_set_icon_list:
  * @window: a #CtkWindow
- * @list: (element-type GdkPixbuf): list of #GdkPixbuf
+ * @list: (element-type CdkPixbuf): list of #CdkPixbuf
  *
  * Sets up the icon representing a #CtkWindow. The icon is used when
  * the window is minimized (also known as iconified).  Some window
@@ -4733,7 +4733,7 @@ ctk_window_set_icon_list (CtkWindow  *window,
  * The list is copied, but the reference count on each
  * member won’t be incremented.
  *
- * Returns: (element-type GdkPixbuf) (transfer container): copy of window’s icon list
+ * Returns: (element-type CdkPixbuf) (transfer container): copy of window’s icon list
  **/
 GList*
 ctk_window_get_icon_list (CtkWindow  *window)
@@ -4777,7 +4777,7 @@ ctk_window_get_icon_list (CtkWindow  *window)
  **/
 void
 ctk_window_set_icon (CtkWindow  *window,
-                     GdkPixbuf  *icon)
+                     CdkPixbuf  *icon)
 {
   GList *list;
   
@@ -4879,7 +4879,7 @@ ctk_window_get_icon_name (CtkWindow *window)
  *
  * Returns: (transfer none) (nullable): icon for window or %NULL if none
  **/
-GdkPixbuf*
+CdkPixbuf*
 ctk_window_get_icon (CtkWindow  *window)
 {
   CtkWindowIconInfo *info;
@@ -4895,12 +4895,12 @@ ctk_window_get_icon (CtkWindow  *window)
 
 /* Load pixbuf, printing warning on failure if error == NULL
  */
-static GdkPixbuf *
+static CdkPixbuf *
 load_pixbuf_verbosely (const char *filename,
 		       GError    **err)
 {
   GError *local_err = NULL;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   pixbuf = cdk_pixbuf_new_from_file (filename, &local_err);
 
@@ -4940,7 +4940,7 @@ ctk_window_set_icon_from_file (CtkWindow   *window,
 			       const gchar *filename,
 			       GError     **err)
 {
-  GdkPixbuf *pixbuf = load_pixbuf_verbosely (filename, err);
+  CdkPixbuf *pixbuf = load_pixbuf_verbosely (filename, err);
 
   if (pixbuf)
     {
@@ -4955,7 +4955,7 @@ ctk_window_set_icon_from_file (CtkWindow   *window,
 
 /**
  * ctk_window_set_default_icon_list:
- * @list: (element-type GdkPixbuf) (transfer container): a list of #GdkPixbuf
+ * @list: (element-type CdkPixbuf) (transfer container): a list of #CdkPixbuf
  *
  * Sets an icon list to be used as fallback for windows that haven't
  * had ctk_window_set_icon_list() called on them to set up a
@@ -5015,7 +5015,7 @@ ctk_window_set_default_icon_list (GList *list)
  * Since: 2.4
  **/
 void
-ctk_window_set_default_icon (GdkPixbuf *icon)
+ctk_window_set_default_icon (CdkPixbuf *icon)
 {
   GList *list;
   
@@ -5109,7 +5109,7 @@ gboolean
 ctk_window_set_default_icon_from_file (const gchar *filename,
 				       GError     **err)
 {
-  GdkPixbuf *pixbuf = load_pixbuf_verbosely (filename, err);
+  CdkPixbuf *pixbuf = load_pixbuf_verbosely (filename, err);
 
   if (pixbuf)
     {
@@ -5130,7 +5130,7 @@ ctk_window_set_default_icon_from_file (const gchar *filename,
  * but the pixbufs in the list have not had their reference count
  * incremented.
  * 
- * Returns: (element-type GdkPixbuf) (transfer container): copy of default icon list 
+ * Returns: (element-type CdkPixbuf) (transfer container): copy of default icon list 
  **/
 GList*
 ctk_window_get_default_icon_list (void)
@@ -5527,7 +5527,7 @@ ctk_window_get_size (CtkWindow *window,
     }
   else
     {
-      GdkRectangle configure_request;
+      CdkRectangle configure_request;
 
       ctk_window_compute_configure_request (window,
                                             &configure_request,
@@ -5780,7 +5780,7 @@ ctk_window_get_position (CtkWindow *window,
 {
   CtkWindowPrivate *priv;
   CtkWidget *widget;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -5803,7 +5803,7 @@ ctk_window_get_position (CtkWindow *window,
         }
       else
         {
-          GdkRectangle configure_request;
+          CdkRectangle configure_request;
           
           ctk_window_compute_configure_request (window,
                                                 &configure_request,
@@ -5816,7 +5816,7 @@ ctk_window_get_position (CtkWindow *window,
     }
   else
     {
-      GdkRectangle frame_extents;
+      CdkRectangle frame_extents;
       
       gint x, y;
       gint w, h;
@@ -6120,7 +6120,7 @@ ctk_window_should_use_csd (CtkWindow *window)
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
-      GdkDisplay *cdk_display = ctk_widget_get_display (CTK_WIDGET (window));
+      CdkDisplay *cdk_display = ctk_widget_get_display (CTK_WIDGET (window));
       return !cdk_wayland_display_prefers_ssd (cdk_display);
     }
 #endif
@@ -6259,9 +6259,9 @@ ctk_window_map (CtkWidget *widget)
   CtkWidget *child;
   CtkWindow *window = CTK_WINDOW (widget);
   CtkWindowPrivate *priv = window->priv;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
   GList *link;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   if (!_ctk_widget_is_toplevel (widget))
     {
@@ -6377,7 +6377,7 @@ ctk_window_map (CtkWidget *widget)
 
 static gboolean
 ctk_window_map_event (CtkWidget   *widget,
-                      GdkEventAny *event)
+                      CdkEventAny *event)
 {
   if (!_ctk_widget_get_mapped (widget))
     {
@@ -6400,8 +6400,8 @@ ctk_window_unmap (CtkWidget *widget)
   CtkWindowPrivate *priv = window->priv;
   CtkWidget *child;
   CtkWindowGeometryInfo *info;
-  GdkWindow *cdk_window;
-  GdkWindowState state;
+  CdkWindow *cdk_window;
+  CdkWindowState state;
   GList *link;
 
   if (!_ctk_widget_is_toplevel (CTK_WIDGET (widget)))
@@ -6509,10 +6509,10 @@ ctk_window_guess_default_size (CtkWindow *window,
                                gint      *height)
 {
   CtkWidget *widget;
-  GdkDisplay *display;
-  GdkWindow *cdkwindow;
-  GdkMonitor *monitor;
-  GdkRectangle workarea;
+  CdkDisplay *display;
+  CdkWindow *cdkwindow;
+  CdkMonitor *monitor;
+  CdkRectangle workarea;
   int minimum, natural;
 
   widget = CTK_WIDGET (window);
@@ -6567,7 +6567,7 @@ ctk_window_get_remembered_size (CtkWindow *window,
                                 int       *height)
 {
   CtkWindowGeometryInfo *info;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
 
   *width = 0;
   *height = 0;
@@ -6705,8 +6705,8 @@ popover_realize (CtkWidget        *widget,
                  CtkWindow        *window)
 {
   cairo_rectangle_int_t rect;
-  GdkWindow *parent_window;
-  GdkWindowAttr attributes;
+  CdkWindow *parent_window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   if (popover->window)
@@ -7075,8 +7075,8 @@ update_border_windows (CtkWindow *window)
       resize_n = resize_s = resize_e = resize_w = TRUE;
       if (priv->geometry_info)
         {
-          GdkGeometry *geometry = &priv->geometry_info->geometry;
-          GdkWindowHints flags = priv->geometry_info->mask;
+          CdkGeometry *geometry = &priv->geometry_info->geometry;
+          CdkWindowHints flags = priv->geometry_info->mask;
 
           if ((flags & GDK_HINT_MIN_SIZE) && (flags & GDK_HINT_MAX_SIZE))
             {
@@ -7221,7 +7221,7 @@ static void
 update_shadow_width (CtkWindow *window,
                      CtkBorder *border)
 {
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
 
   cdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
 
@@ -7298,7 +7298,7 @@ update_opaque_region (CtkWindow           *window,
 
   if (!ctk_widget_get_app_paintable (widget))
     {
-      const GdkRGBA *color;
+      const CdkRGBA *color;
       color = _ctk_css_rgba_value_get_rgba (_ctk_style_context_peek_property (context, CTK_CSS_PROPERTY_BACKGROUND_COLOR));
       is_opaque = (color->alpha >= 1.0);
     }
@@ -7353,9 +7353,9 @@ ctk_window_realize (CtkWidget *widget)
   CtkAllocation allocation;
   CtkAllocation child_allocation;
   CtkWindow *window;
-  GdkWindow *parent_window;
-  GdkWindow *cdk_window;
-  GdkWindowAttr attributes;
+  CdkWindow *parent_window;
+  CdkWindow *cdk_window;
+  CdkWindowAttr attributes;
   CtkBorder window_border;
   gint attributes_mask;
   CtkWindowPrivate *priv;
@@ -7413,7 +7413,7 @@ ctk_window_realize (CtkWidget *widget)
       allocation.width == 1 &&
       allocation.height == 1)
     {
-      GdkRectangle request;
+      CdkRectangle request;
 
       ctk_window_compute_configure_request (window, &request, NULL, NULL);
 
@@ -7925,7 +7925,7 @@ ctk_window_size_allocate (CtkWidget     *widget,
 
 static gint
 ctk_window_configure_event (CtkWidget         *widget,
-			    GdkEventConfigure *event)
+			    CdkEventConfigure *event)
 {
   CtkAllocation allocation;
   CtkWindow *window = CTK_WINDOW (widget);
@@ -7993,10 +7993,10 @@ ctk_window_configure_event (CtkWidget         *widget,
 
 static void
 update_edge_constraints (CtkWindow           *window,
-                         GdkEventWindowState *event)
+                         CdkEventWindowState *event)
 {
   CtkWindowPrivate *priv = window->priv;
-  GdkWindowState state = event->new_window_state;
+  CdkWindowState state = event->new_window_state;
 
   priv->edge_constraints = (state & GDK_WINDOW_STATE_TOP_TILED) |
                            (state & GDK_WINDOW_STATE_TOP_RESIZABLE) |
@@ -8012,7 +8012,7 @@ update_edge_constraints (CtkWindow           *window,
 
 static gboolean
 ctk_window_state_event (CtkWidget           *widget,
-                        GdkEventWindowState *event)
+                        CdkEventWindowState *event)
 {
   CtkWindow *window = CTK_WINDOW (widget);
   CtkWindowPrivate *priv = window->priv;
@@ -8118,11 +8118,11 @@ ctk_window_get_has_resize_grip (CtkWindow *window)
 /**
  * ctk_window_get_resize_grip_area:
  * @window: a #CtkWindow
- * @rect: (out): a pointer to a #GdkRectangle which we should store
+ * @rect: (out): a pointer to a #CdkRectangle which we should store
  *     the resize grip area
  *
  * If a window has a resize grip, this will retrieve the grip
- * position, width and height into the specified #GdkRectangle.
+ * position, width and height into the specified #CdkRectangle.
  *
  * Returns: %TRUE if the resize grip’s area was retrieved
  *
@@ -8132,7 +8132,7 @@ ctk_window_get_has_resize_grip (CtkWindow *window)
  */
 gboolean
 ctk_window_get_resize_grip_area (CtkWindow    *window,
-                                 GdkRectangle *rect)
+                                 CdkRectangle *rect)
 {
   g_return_val_if_fail (CTK_IS_WINDOW (window), FALSE);
 
@@ -8147,7 +8147,7 @@ ctk_window_get_resize_grip_area (CtkWindow    *window,
 gboolean
 _ctk_window_query_nonaccels (CtkWindow      *window,
 			     guint           accel_key,
-			     GdkModifierType accel_mods)
+			     CdkModifierType accel_mods)
 {
   CtkWindowPrivate *priv;
 
@@ -8183,7 +8183,7 @@ _ctk_window_query_nonaccels (CtkWindow      *window,
 /**
  * ctk_window_propagate_key_event:
  * @window:  a #CtkWindow
- * @event:   a #GdkEventKey
+ * @event:   a #CdkEventKey
  *
  * Propagate a key press or release event to the focus widget and
  * up the focus container chain until a widget handles @event.
@@ -8198,7 +8198,7 @@ _ctk_window_query_nonaccels (CtkWindow      *window,
  */
 gboolean
 ctk_window_propagate_key_event (CtkWindow        *window,
-                                GdkEventKey      *event)
+                                CdkEventKey      *event)
 {
   CtkWindowPrivate *priv = window->priv;
   gboolean handled = FALSE;
@@ -8220,7 +8220,7 @@ ctk_window_propagate_key_event (CtkWindow        *window,
       
       if (ctk_widget_is_sensitive (focus))
         {
-          handled = ctk_widget_event (focus, (GdkEvent*) event);
+          handled = ctk_widget_event (focus, (CdkEvent*) event);
           if (handled)
             break;
         }
@@ -8242,7 +8242,7 @@ ctk_window_propagate_key_event (CtkWindow        *window,
 
 static gint
 ctk_window_key_press_event (CtkWidget   *widget,
-			    GdkEventKey *event)
+			    CdkEventKey *event)
 {
   CtkWindow *window = CTK_WINDOW (widget);
   gboolean handled = FALSE;
@@ -8264,7 +8264,7 @@ ctk_window_key_press_event (CtkWidget   *widget,
 
 static gint
 ctk_window_key_release_event (CtkWidget   *widget,
-			      GdkEventKey *event)
+			      CdkEventKey *event)
 {
   CtkWindow *window = CTK_WINDOW (widget);
   gboolean handled = FALSE;
@@ -8281,7 +8281,7 @@ ctk_window_key_release_event (CtkWidget   *widget,
 }
 
 static CtkWindowRegion
-get_active_region_type (CtkWindow *window, GdkEventAny *event, gint x, gint y)
+get_active_region_type (CtkWindow *window, CdkEventAny *event, gint x, gint y)
 {
   CtkWindowPrivate *priv = window->priv;
   CtkAllocation allocation;
@@ -8308,9 +8308,9 @@ get_active_region_type (CtkWindow *window, GdkEventAny *event, gint x, gint y)
 
 static gboolean
 controller_handle_wm_event (CtkGesture     *gesture,
-                            const GdkEvent *event)
+                            const CdkEvent *event)
 {
-  GdkEventSequence *seq;
+  CdkEventSequence *seq;
   gboolean retval;
 
   seq = cdk_event_get_event_sequence (event);
@@ -8330,7 +8330,7 @@ controller_handle_wm_event (CtkGesture     *gesture,
 
 static gboolean
 ctk_window_handle_wm_event (CtkWindow *window,
-                            GdkEvent  *event,
+                            CdkEvent  *event,
                             gboolean   run_drag)
 {
   gboolean retval = GDK_EVENT_PROPAGATE;
@@ -8344,18 +8344,18 @@ ctk_window_handle_wm_event (CtkWindow *window,
 
       if (run_drag && priv->drag_gesture)
         retval |= controller_handle_wm_event (priv->drag_gesture,
-                                              (const GdkEvent*) event);
+                                              (const CdkEvent*) event);
 
       if (priv->multipress_gesture)
         retval |= controller_handle_wm_event (priv->multipress_gesture,
-                                              (const GdkEvent*) event);
+                                              (const CdkEvent*) event);
     }
 
   return retval;
 }
 
 gboolean
-_ctk_window_check_handle_wm_event (GdkEvent *event)
+_ctk_window_check_handle_wm_event (CdkEvent *event)
 {
   CtkWindowPrivate *priv;
   CtkWidget *widget;
@@ -8386,7 +8386,7 @@ _ctk_window_check_handle_wm_event (GdkEvent *event)
 
 static gboolean
 ctk_window_event (CtkWidget *widget,
-                  GdkEvent  *event)
+                  CdkEvent  *event)
 {
   if (widget != ctk_get_event_widget (event))
     return ctk_window_handle_wm_event (CTK_WINDOW (widget), event, FALSE);
@@ -8410,8 +8410,8 @@ static void
 do_focus_change (CtkWidget *widget,
 		 gboolean   in)
 {
-  GdkWindow *window;
-  GdkDeviceManager *device_manager;
+  CdkWindow *window;
+  CdkDeviceManager *device_manager;
   GList *devices, *d;
 
   g_object_ref (widget);
@@ -8425,8 +8425,8 @@ do_focus_change (CtkWidget *widget,
 
   for (d = devices; d; d = d->next)
     {
-      GdkDevice *dev = d->data;
-      GdkEvent *fevent;
+      CdkDevice *dev = d->data;
+      CdkEvent *fevent;
 
       if (cdk_device_get_source (dev) != GDK_SOURCE_KEYBOARD)
         continue;
@@ -8470,8 +8470,8 @@ ctk_window_has_mnemonic_modifier_pressed (CtkWindow *window)
 
   for (s = seats; s; s = s->next)
     {
-      GdkDevice *dev = cdk_seat_get_pointer (s->data);
-      GdkModifierType mask;
+      CdkDevice *dev = cdk_seat_get_pointer (s->data);
+      CdkModifierType mask;
 
       cdk_device_get_state (dev, _ctk_widget_get_window (CTK_WIDGET (window)),
                             NULL, &mask);
@@ -8489,7 +8489,7 @@ ctk_window_has_mnemonic_modifier_pressed (CtkWindow *window)
 
 static gint
 ctk_window_focus_in_event (CtkWidget     *widget,
-			   GdkEventFocus *event)
+			   CdkEventFocus *event)
 {
   CtkWindow *window = CTK_WINDOW (widget);
 
@@ -8512,7 +8512,7 @@ ctk_window_focus_in_event (CtkWidget     *widget,
 
 static gint
 ctk_window_focus_out_event (CtkWidget     *widget,
-			    GdkEventFocus *event)
+			    CdkEventFocus *event)
 {
   CtkWindow *window = CTK_WINDOW (widget);
 
@@ -9147,11 +9147,11 @@ popup_menu_detach (CtkWidget *widget,
   CTK_WINDOW (widget)->priv->popup_menu = NULL;
 }
 
-static GdkWindowState
+static CdkWindowState
 ctk_window_get_state (CtkWindow *window)
 {
-  GdkWindowState state;
-  GdkWindow *cdk_window;
+  CdkWindowState state;
+  CdkWindow *cdk_window;
 
   cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
@@ -9169,7 +9169,7 @@ restore_window_clicked (CtkMenuItem *menuitem,
 {
   CtkWindow *window = CTK_WINDOW (user_data);
   CtkWindowPrivate *priv = window->priv;
-  GdkWindowState state;
+  CdkWindowState state;
 
   if (priv->maximized)
     {
@@ -9228,7 +9228,7 @@ maximize_window_clicked (CtkMenuItem *menuitem,
                          gpointer     user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
-  GdkWindowState state;
+  CdkWindowState state;
 
   state = ctk_window_get_state (window);
 
@@ -9259,11 +9259,11 @@ close_window_clicked (CtkMenuItem *menuitem,
 
 static void
 ctk_window_do_popup_fallback (CtkWindow      *window,
-                              GdkEventButton *event)
+                              CdkEventButton *event)
 {
   CtkWindowPrivate *priv = window->priv;
   CtkWidget *menuitem;
-  GdkWindowState state;
+  CdkWindowState state;
   gboolean maximized, iconified;
 
   if (priv->popup_menu)
@@ -9359,15 +9359,15 @@ ctk_window_do_popup_fallback (CtkWindow      *window,
   g_signal_connect (G_OBJECT (menuitem), "activate",
                     G_CALLBACK (close_window_clicked), window);
   ctk_menu_shell_append (CTK_MENU_SHELL (priv->popup_menu), menuitem);
-  ctk_menu_popup_at_pointer (CTK_MENU (priv->popup_menu), (GdkEvent *) event);
+  ctk_menu_popup_at_pointer (CTK_MENU (priv->popup_menu), (CdkEvent *) event);
 }
 
 static void
 ctk_window_do_popup (CtkWindow      *window,
-                     GdkEventButton *event)
+                     CdkEventButton *event)
 {
   if (!cdk_window_show_window_menu (_ctk_widget_get_window (CTK_WIDGET (window)),
-                                    (GdkEvent *) event))
+                                    (CdkEvent *) event))
     ctk_window_do_popup_fallback (window, event);
 }
 
@@ -9376,7 +9376,7 @@ ctk_window_do_popup (CtkWindow      *window,
  *********************************/
 
 static void
-geometry_size_to_pixels (GdkGeometry *geometry,
+geometry_size_to_pixels (CdkGeometry *geometry,
 			 guint        flags,
 			 gint        *width,
 			 gint        *height)
@@ -9413,7 +9413,7 @@ geometry_size_to_pixels (GdkGeometry *geometry,
 /* This function doesn't constrain to geometry hints */
 static void 
 ctk_window_compute_configure_request_size (CtkWindow   *window,
-                                           GdkGeometry *geometry,
+                                           CdkGeometry *geometry,
                                            guint        flags,
                                            gint        *width,
                                            gint        *height)
@@ -9502,10 +9502,10 @@ get_effective_position (CtkWindow *window)
   return pos;
 }
 
-static GdkMonitor *
+static CdkMonitor *
 get_center_monitor_of_window (CtkWindow *window)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   /* We could try to sort out the relative positions of the monitors and
    * stuff, or we could just be losers and assume you have a row
@@ -9515,12 +9515,12 @@ get_center_monitor_of_window (CtkWindow *window)
   return cdk_display_get_monitor (display, cdk_display_get_n_monitors (display) / 2);
 }
 
-static GdkMonitor *
+static CdkMonitor *
 get_monitor_containing_pointer (CtkWindow *window)
 {
   gint px, py;
-  GdkDisplay *display;
-  GdkDevice *pointer;
+  CdkDisplay *display;
+  CdkDevice *pointer;
 
   display = cdk_screen_get_display (ctk_window_check_screen (window));
   pointer = cdk_seat_get_pointer (cdk_display_get_default_seat (display));
@@ -9536,8 +9536,8 @@ center_window_on_monitor (CtkWindow *window,
                           gint      *x,
                           gint      *y)
 {
-  GdkRectangle area;
-  GdkMonitor *monitor;
+  CdkRectangle area;
+  CdkMonitor *monitor;
 
   monitor = get_monitor_containing_pointer (window);
 
@@ -9578,7 +9578,7 @@ clamp_window_to_rectangle (gint               *x,
                            gint               *y,
                            gint                w,
                            gint                h,
-                           const GdkRectangle *rect)
+                           const CdkRectangle *rect)
 {
   /* If it is too large, center it. If it fits on the monitor but is
    * partially outside, move it to the closest edge. Do this
@@ -9591,18 +9591,18 @@ clamp_window_to_rectangle (gint               *x,
 
 static void
 ctk_window_compute_configure_request (CtkWindow    *window,
-                                      GdkRectangle *request,
-                                      GdkGeometry  *geometry,
+                                      CdkRectangle *request,
+                                      CdkGeometry  *geometry,
                                       guint        *flags)
 {
   CtkWindowPrivate *priv = window->priv;
-  GdkGeometry new_geometry;
+  CdkGeometry new_geometry;
   guint new_flags;
   int w, h;
   CtkWindowPosition pos;
   CtkWidget *parent_widget;
   CtkWindowGeometryInfo *info;
-  GdkScreen *screen;
+  CdkScreen *screen;
   int x, y;
 
   screen = ctk_window_check_screen (window);
@@ -9656,11 +9656,11 @@ ctk_window_compute_configure_request (CtkWindow    *window,
 
         case CTK_WIN_POS_CENTER_ON_PARENT:
           {
-            GdkDisplay *display;
+            CdkDisplay *display;
             CtkAllocation allocation;
-            GdkWindow *cdk_window;
-            GdkMonitor *monitor;
-            GdkRectangle area;
+            CdkWindow *cdk_window;
+            CdkMonitor *monitor;
+            CdkRectangle area;
             gint ox, oy;
 
             g_assert (_ctk_widget_get_mapped (parent_widget)); /* established earlier */
@@ -9689,10 +9689,10 @@ ctk_window_compute_configure_request (CtkWindow    *window,
 
         case CTK_WIN_POS_MOUSE:
           {
-            GdkRectangle area;
-            GdkDisplay *display;
-            GdkDevice *pointer;
-            GdkMonitor *monitor;
+            CdkRectangle area;
+            CdkDisplay *display;
+            CdkDevice *pointer;
+            CdkMonitor *monitor;
             gint px, py;
 
             display = cdk_screen_get_display (screen);
@@ -9797,10 +9797,10 @@ ctk_window_move_resize (CtkWindow *window)
   CtkWidget *widget;
   CtkContainer *container;
   CtkWindowGeometryInfo *info;
-  GdkGeometry new_geometry;
-  GdkWindow *cdk_window;
+  CdkGeometry new_geometry;
+  CdkWindow *cdk_window;
   guint new_flags;
-  GdkRectangle new_request;
+  CdkRectangle new_request;
   gboolean configure_request_size_changed;
   gboolean configure_request_pos_changed;
   gboolean hints_changed; /* do we need to send these again */
@@ -10164,9 +10164,9 @@ ctk_window_move_resize (CtkWindow *window)
 /* Compare two sets of Geometry hints for equality.
  */
 static gboolean
-ctk_window_compare_hints (GdkGeometry *geometry_a,
+ctk_window_compare_hints (CdkGeometry *geometry_a,
 			  guint        flags_a,
-			  GdkGeometry *geometry_b,
+			  CdkGeometry *geometry_b,
 			  guint        flags_b)
 {
   if (flags_a != flags_b)
@@ -10206,7 +10206,7 @@ ctk_window_compare_hints (GdkGeometry *geometry_a,
 
 static void 
 ctk_window_constrain_size (CtkWindow   *window,
-			   GdkGeometry *geometry,
+			   CdkGeometry *geometry,
 			   guint        flags,
 			   gint         width,
 			   gint         height,
@@ -10237,7 +10237,7 @@ ctk_window_constrain_size (CtkWindow   *window,
  */
 static void
 ctk_window_update_fixed_size (CtkWindow   *window,
-                              GdkGeometry *new_geometry,
+                              CdkGeometry *new_geometry,
                               gint         new_width,
                               gint         new_height)
 {
@@ -10283,7 +10283,7 @@ ctk_window_update_fixed_size (CtkWindow   *window,
  */
 static void
 ctk_window_compute_hints (CtkWindow   *window,
-			  GdkGeometry *new_geometry,
+			  CdkGeometry *new_geometry,
 			  guint       *new_flags)
 {
   CtkWindowPrivate *priv = window->priv;
@@ -10535,7 +10535,7 @@ ctk_window_present_with_time (CtkWindow *window,
 {
   CtkWindowPrivate *priv;
   CtkWidget *widget;
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10556,7 +10556,7 @@ ctk_window_present_with_time (CtkWindow *window,
 #ifdef GDK_WINDOWING_X11
 	  if (GDK_IS_X11_WINDOW(cdk_window))
 	    {
-	      GdkDisplay *display;
+	      CdkDisplay *display;
 
 	      display = ctk_widget_get_display (widget);
 	      timestamp = cdk_x11_display_get_user_time (display);
@@ -10597,7 +10597,7 @@ ctk_window_present_with_time (CtkWindow *window,
 void
 ctk_window_iconify (CtkWindow *window)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10625,7 +10625,7 @@ ctk_window_iconify (CtkWindow *window)
 void
 ctk_window_deiconify (CtkWindow *window)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10657,7 +10657,7 @@ ctk_window_deiconify (CtkWindow *window)
 void
 ctk_window_stick (CtkWindow *window)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10686,7 +10686,7 @@ ctk_window_stick (CtkWindow *window)
 void
 ctk_window_unstick (CtkWindow *window)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10721,7 +10721,7 @@ ctk_window_unstick (CtkWindow *window)
 void
 ctk_window_maximize (CtkWindow *window)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10750,7 +10750,7 @@ ctk_window_maximize (CtkWindow *window)
 void
 ctk_window_unmaximize (CtkWindow *window)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10782,7 +10782,7 @@ ctk_window_unmaximize (CtkWindow *window)
 void
 ctk_window_fullscreen (CtkWindow *window)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10797,7 +10797,7 @@ ctk_window_fullscreen (CtkWindow *window)
 /**
  * ctk_window_fullscreen_on_monitor:
  * @window: a #CtkWindow
- * @screen: a #GdkScreen to draw to
+ * @screen: a #CdkScreen to draw to
  * @monitor: which monitor to go fullscreen on
  *
  * Asks to place @window in the fullscreen state. Note that you shouldn't assume
@@ -10810,12 +10810,12 @@ ctk_window_fullscreen (CtkWindow *window)
  */
 void
 ctk_window_fullscreen_on_monitor (CtkWindow *window,
-                                  GdkScreen *screen,
+                                  CdkScreen *screen,
                                   gint monitor)
 {
   CtkWindowPrivate *priv;
   CtkWidget *widget;
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
   g_return_if_fail (GDK_IS_SCREEN (screen));
@@ -10855,7 +10855,7 @@ ctk_window_fullscreen_on_monitor (CtkWindow *window,
 void
 ctk_window_unfullscreen (CtkWindow *window)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10900,7 +10900,7 @@ void
 ctk_window_set_keep_above (CtkWindow *window,
 			   gboolean   setting)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -10947,7 +10947,7 @@ void
 ctk_window_set_keep_below (CtkWindow *window,
 			   gboolean   setting)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
 
@@ -11016,7 +11016,7 @@ ctk_window_get_resizable (CtkWindow *window)
  * @gravity: window gravity
  *
  * Window gravity defines the meaning of coordinates passed to
- * ctk_window_move(). See ctk_window_move() and #GdkGravity for
+ * ctk_window_move(). See ctk_window_move() and #CdkGravity for
  * more details.
  *
  * The default window gravity is #GDK_GRAVITY_NORTH_WEST which will
@@ -11025,7 +11025,7 @@ ctk_window_get_resizable (CtkWindow *window)
  **/
 void
 ctk_window_set_gravity (CtkWindow *window,
-			GdkGravity gravity)
+			CdkGravity gravity)
 {
   CtkWindowPrivate *priv;
 
@@ -11053,7 +11053,7 @@ ctk_window_set_gravity (CtkWindow *window,
  *
  * Returns: (transfer none): window gravity
  **/
-GdkGravity
+CdkGravity
 ctk_window_get_gravity (CtkWindow *window)
 {
   g_return_val_if_fail (CTK_IS_WINDOW (window), 0);
@@ -11079,14 +11079,14 @@ ctk_window_get_gravity (CtkWindow *window)
  */
 void
 ctk_window_begin_resize_drag  (CtkWindow     *window,
-                               GdkWindowEdge  edge,
+                               CdkWindowEdge  edge,
                                gint           button,
                                gint           root_x,
                                gint           root_y,
                                guint32        timestamp)
 {
   CtkWidget *widget;
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
   widget = CTK_WIDGET (window);
@@ -11123,7 +11123,7 @@ ctk_window_begin_move_drag  (CtkWindow *window,
                              guint32    timestamp)
 {
   CtkWidget *widget;
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
   widget = CTK_WIDGET (window);
@@ -11140,9 +11140,9 @@ ctk_window_begin_move_drag  (CtkWindow *window,
 /**
  * ctk_window_set_screen:
  * @window: a #CtkWindow.
- * @screen: a #GdkScreen.
+ * @screen: a #CdkScreen.
  *
- * Sets the #GdkScreen where the @window is displayed; if
+ * Sets the #CdkScreen where the @window is displayed; if
  * the window is already mapped, it will be unmapped, and
  * then remapped on the new screen.
  *
@@ -11150,11 +11150,11 @@ ctk_window_begin_move_drag  (CtkWindow *window,
  */
 void
 ctk_window_set_screen (CtkWindow *window,
-		       GdkScreen *screen)
+		       CdkScreen *screen)
 {
   CtkWindowPrivate *priv;
   CtkWidget *widget;
-  GdkScreen *previous_screen;
+  CdkScreen *previous_screen;
   gboolean was_rgba;
   gboolean was_mapped;
 
@@ -11213,7 +11213,7 @@ ctk_window_set_screen (CtkWindow *window,
 
   if (was_rgba && priv->use_client_shadow)
     {
-      GdkVisual *visual;
+      CdkVisual *visual;
 
       visual = cdk_screen_get_rgba_visual (screen);
       if (visual)
@@ -11230,7 +11230,7 @@ static void
 ctk_window_set_theme_variant (CtkWindow *window)
 {
 #ifdef GDK_WINDOWING_X11
-  GdkWindow *cdk_window;
+  CdkWindow *cdk_window;
   gboolean   dark_theme_requested;
 
   g_object_get (ctk_settings_get_for_screen (window->priv->screen),
@@ -11257,7 +11257,7 @@ ctk_window_on_theme_variant_changed (CtkSettings *settings,
 #endif
 
 static void
-ctk_window_on_composited_changed (GdkScreen *screen,
+ctk_window_on_composited_changed (CdkScreen *screen,
 				  CtkWindow *window)
 {
   CtkWidget *widget = CTK_WIDGET (window);
@@ -11266,7 +11266,7 @@ ctk_window_on_composited_changed (GdkScreen *screen,
   _ctk_widget_propagate_composited_changed (widget);
 }
 
-static GdkScreen *
+static CdkScreen *
 ctk_window_check_screen (CtkWindow *window)
 {
   CtkWindowPrivate *priv = window->priv;
@@ -11285,13 +11285,13 @@ ctk_window_check_screen (CtkWindow *window)
  * ctk_window_get_screen:
  * @window: a #CtkWindow.
  *
- * Returns the #GdkScreen associated with @window.
+ * Returns the #CdkScreen associated with @window.
  *
- * Returns: (transfer none): a #GdkScreen.
+ * Returns: (transfer none): a #CdkScreen.
  *
  * Since: 2.2
  */
-GdkScreen*
+CdkScreen*
 ctk_window_get_screen (CtkWindow *window)
 {
   g_return_val_if_fail (CTK_IS_WINDOW (window), NULL);
@@ -11299,7 +11299,7 @@ ctk_window_get_screen (CtkWindow *window)
   return window->priv->screen;
 }
 
-GdkScreen *
+CdkScreen *
 _ctk_window_get_screen (CtkWindow *window)
 {
   return window->priv->screen;
@@ -11628,7 +11628,7 @@ ctk_XParseGeometry (const char   *string,
  * main (int argc, char *argv[])
  * {
  *   CtkWidget *window, *vbox;
- *   GdkGeometry size_hints = {
+ *   CdkGeometry size_hints = {
  *     100, 50, 0, 0, 100, 50, 10,
  *     10, 0.0, 0.0, GDK_GRAVITY_NORTH_WEST
  *   };
@@ -11678,9 +11678,9 @@ ctk_window_parse_geometry (CtkWindow   *window,
   gint result, x = 0, y = 0;
   guint w, h;
   CtkWidget *child;
-  GdkGravity grav;
+  CdkGravity grav;
   gboolean size_set, pos_set;
-  GdkScreen *screen;
+  CdkScreen *screen;
   
   g_return_val_if_fail (CTK_IS_WINDOW (window), FALSE);
   g_return_val_if_fail (geometry != NULL, FALSE);
@@ -11767,12 +11767,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 static gboolean
 ctk_window_activate_menubar (CtkWindow   *window,
-                             GdkEventKey *event)
+                             CdkEventKey *event)
 {
   CtkWindowPrivate *priv = window->priv;
   gchar *accel = NULL;
   guint keyval = 0;
-  GdkModifierType mods = 0;
+  CdkModifierType mods = 0;
 
   g_object_get (ctk_widget_get_settings (CTK_WIDGET (window)),
                 "ctk-menu-bar-accel", &accel,
@@ -11923,7 +11923,7 @@ window_key_entry_destroy (gpointer data)
 static void
 add_to_key_hash (CtkWindow      *window,
 		 guint           keyval,
-		 GdkModifierType modifiers,
+		 CdkModifierType modifiers,
 		 gboolean        is_mnemonic,
 		 gpointer        data)
 {
@@ -11952,7 +11952,7 @@ add_to_key_hash (CtkWindow      *window,
 static CtkKeyHash *
 ctk_window_get_key_hash (CtkWindow *window)
 {
-  GdkScreen *screen = ctk_window_check_screen (window);
+  CdkScreen *screen = ctk_window_check_screen (window);
   CtkKeyHash *key_hash = g_object_get_qdata (G_OBJECT (window), quark_ctk_window_key_hash);
   
   if (key_hash)
@@ -11980,7 +11980,7 @@ ctk_window_free_key_hash (CtkWindow *window)
 /**
  * ctk_window_activate_key:
  * @window:  a #CtkWindow
- * @event:   a #GdkEventKey
+ * @event:   a #CdkEventKey
  *
  * Activates mnemonics and accelerators for this #CtkWindow. This is normally
  * called by the default ::key_press_event handler for toplevel windows,
@@ -11993,7 +11993,7 @@ ctk_window_free_key_hash (CtkWindow *window)
  */
 gboolean
 ctk_window_activate_key (CtkWindow   *window,
-			 GdkEventKey *event)
+			 CdkEventKey *event)
 {
   CtkKeyHash *key_hash;
   CtkWindowKeyEntry *found_entry = NULL;
@@ -12449,7 +12449,7 @@ ctk_window_set_has_user_ref_count (CtkWindow *window,
 static void
 ensure_state_flag_backdrop (CtkWidget *widget)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   gboolean window_focused = TRUE;
 
   window = _ctk_widget_get_window (widget);
@@ -12912,7 +12912,7 @@ ctk_window_set_use_subsurface (CtkWindow *window,
 
 void
 ctk_window_set_hardcoded_window (CtkWindow *window,
-                                 GdkWindow *cdk_window)
+                                 CdkWindow *cdk_window)
 {
   CtkWindowPrivate *priv = window->priv;
 
@@ -12930,7 +12930,7 @@ typedef struct {
 } WaylandWindowHandleExportedData;
 
 static void
-wayland_window_handle_exported (GdkWindow  *window,
+wayland_window_handle_exported (CdkWindow  *window,
                                 const char *wayland_handle_str,
                                 gpointer    user_data)
 {
@@ -12952,7 +12952,7 @@ ctk_window_export_handle (CtkWindow               *window,
 #ifdef GDK_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
-      GdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
+      CdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
       char *handle_str;
       guint32 xid = (guint32) cdk_x11_window_get_xid (cdk_window);
 
@@ -12965,7 +12965,7 @@ ctk_window_export_handle (CtkWindow               *window,
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
-      GdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
+      CdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
       WaylandWindowHandleExportedData *data;
 
       data = g_new0 (WaylandWindowHandleExportedData, 1);
@@ -12999,7 +12999,7 @@ ctk_window_unexport_handle (CtkWindow *window)
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
-      GdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
+      CdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
       cdk_wayland_window_unexport_handle (cdk_window);
     }

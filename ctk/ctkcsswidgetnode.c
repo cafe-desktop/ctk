@@ -56,7 +56,7 @@ ctk_css_widget_node_style_changed (CtkCssNode        *cssnode,
 
 static gboolean
 ctk_css_widget_node_queue_callback (CtkWidget     *widget,
-                                    GdkFrameClock *frame_clock,
+                                    CdkFrameClock *frame_clock,
                                     gpointer       user_data)
 {
   CtkCssNode *node = user_data;
@@ -253,7 +253,7 @@ ctk_css_widget_node_get_style_provider (CtkCssNode *node)
   return CTK_STYLE_PROVIDER_PRIVATE (cascade);
 }
 
-static GdkFrameClock *
+static CdkFrameClock *
 ctk_css_widget_node_get_frame_clock (CtkCssNode *node)
 {
   CtkCssWidgetNode *widget_node = CTK_CSS_WIDGET_NODE (node);

@@ -66,7 +66,7 @@ set_adjustment_to_fraction (CtkAdjustment *adjustment,
 
 gboolean
 scroll_viewport (CtkWidget     *viewport,
-                 GdkFrameClock *frame_clock,
+                 CdkFrameClock *frame_clock,
                  gpointer       user_data)
 {
   static gint64 start_time;

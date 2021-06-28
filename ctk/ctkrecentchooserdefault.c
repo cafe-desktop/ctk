@@ -264,14 +264,14 @@ static void show_private_toggled_cb   (CtkCheckMenuItem  *menu_item,
 static gboolean recent_view_popup_menu_cb   (CtkWidget      *widget,
 					     gpointer        user_data);
 static gboolean recent_view_button_press_cb (CtkWidget      *widget,
-					     GdkEventButton *event,
+					     CdkEventButton *event,
 					     gpointer        user_data);
 
 static void     recent_view_drag_begin_cb         (CtkWidget        *widget,
-						   GdkDragContext   *context,
+						   CdkDragContext   *context,
 						   gpointer          user_data);
 static void     recent_view_drag_data_get_cb      (CtkWidget        *widget,
-						   GdkDragContext   *context,
+						   CdkDragContext   *context,
 						   CtkSelectionData *selection_data,
 						   guint             info,
 						   guint32           time_,
@@ -689,8 +689,8 @@ set_busy_cursor (CtkRecentChooserDefault *impl,
 		 gboolean                 busy)
 {
   CtkWindow *toplevel;
-  GdkDisplay *display;
-  GdkCursor *cursor;
+  CdkDisplay *display;
+  CdkCursor *cursor;
 
   toplevel = get_toplevel (CTK_WIDGET (impl));
   if (!toplevel || !ctk_widget_get_realized (CTK_WIDGET (toplevel)))
@@ -873,10 +873,10 @@ set_default_size (CtkRecentChooserDefault *impl)
   CtkWidget *widget;
   gint width, height;
   double font_size;
-  GdkDisplay *display;
-  GdkMonitor *monitor;
+  CdkDisplay *display;
+  CdkMonitor *monitor;
   CtkRequisition req;
-  GdkRectangle workarea;
+  CdkRectangle workarea;
   CtkStyleContext *context;
 
   widget = CTK_WIDGET (impl);
@@ -1398,11 +1398,11 @@ filter_combo_changed_cb (CtkComboBox *combo_box,
   set_current_filter (impl, filter);
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 get_drag_pixbuf (CtkRecentChooserDefault *impl)
 {
   CtkRecentInfo *info;
-  GdkPixbuf *retval;
+  CdkPixbuf *retval;
   gint size;
   
   g_assert (CTK_IS_RECENT_CHOOSER_DEFAULT (impl));
@@ -1421,11 +1421,11 @@ get_drag_pixbuf (CtkRecentChooserDefault *impl)
 
 static void
 recent_view_drag_begin_cb (CtkWidget      *widget,
-			   GdkDragContext *context,
+			   CdkDragContext *context,
 			   gpointer        user_data)
 {
   CtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   pixbuf = get_drag_pixbuf (impl);
   if (pixbuf)
@@ -1465,7 +1465,7 @@ append_uri_to_urilist (CtkTreeModel *model,
 
 static void
 recent_view_drag_data_get_cb (CtkWidget        *widget,
-			      GdkDragContext   *context,
+			      CdkDragContext   *context,
 			      CtkSelectionData *selection_data,
 			      guint             info,
 			      guint32           time_,
@@ -1729,19 +1729,19 @@ recent_view_menu_build (CtkRecentChooserDefault *impl)
 
 static void
 recent_view_menu_popup (CtkRecentChooserDefault *impl,
-			GdkEventButton          *event)
+			CdkEventButton          *event)
 {
   recent_view_menu_build (impl);
   
-  if (event && cdk_event_triggers_context_menu ((GdkEvent *) event))
-    ctk_menu_popup_at_pointer (CTK_MENU (impl->priv->recent_popup_menu), (GdkEvent *) event);
+  if (event && cdk_event_triggers_context_menu ((CdkEvent *) event))
+    ctk_menu_popup_at_pointer (CTK_MENU (impl->priv->recent_popup_menu), (CdkEvent *) event);
   else
     {
       ctk_menu_popup_at_widget (CTK_MENU (impl->priv->recent_popup_menu),
                                 impl->priv->recent_view,
                                 GDK_GRAVITY_CENTER,
                                 GDK_GRAVITY_CENTER,
-                                (GdkEvent *) event);
+                                (CdkEvent *) event);
 
       ctk_menu_shell_select_first (CTK_MENU_SHELL (impl->priv->recent_popup_menu), FALSE);
     }
@@ -1757,12 +1757,12 @@ recent_view_popup_menu_cb (CtkWidget *widget,
 
 static gboolean
 recent_view_button_press_cb (CtkWidget      *widget,
-			     GdkEventButton *event,
+			     CdkEventButton *event,
 			     gpointer        user_data)
 {
   CtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
 
-  if (cdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (cdk_event_triggers_context_menu ((CdkEvent *) event))
     {
       CtkTreePath *path;
       gboolean res;

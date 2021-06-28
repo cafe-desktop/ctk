@@ -52,30 +52,30 @@
 #define BTN_STYLUS3 0x149 /* Linux 4.15 */
 #endif
 
-typedef struct _GdkWaylandDevicePad GdkWaylandDevicePad;
-typedef struct _GdkWaylandDevicePadClass GdkWaylandDevicePadClass;
+typedef struct _CdkWaylandDevicePad CdkWaylandDevicePad;
+typedef struct _CdkWaylandDevicePadClass CdkWaylandDevicePadClass;
 
-typedef struct _GdkWaylandTouchData GdkWaylandTouchData;
-typedef struct _GdkWaylandPointerFrameData GdkWaylandPointerFrameData;
-typedef struct _GdkWaylandPointerData GdkWaylandPointerData;
-typedef struct _GdkWaylandTabletData GdkWaylandTabletData;
-typedef struct _GdkWaylandTabletToolData GdkWaylandTabletToolData;
-typedef struct _GdkWaylandTabletPadGroupData GdkWaylandTabletPadGroupData;
-typedef struct _GdkWaylandTabletPadData GdkWaylandTabletPadData;
+typedef struct _CdkWaylandTouchData CdkWaylandTouchData;
+typedef struct _CdkWaylandPointerFrameData CdkWaylandPointerFrameData;
+typedef struct _CdkWaylandPointerData CdkWaylandPointerData;
+typedef struct _CdkWaylandTabletData CdkWaylandTabletData;
+typedef struct _CdkWaylandTabletToolData CdkWaylandTabletToolData;
+typedef struct _CdkWaylandTabletPadGroupData CdkWaylandTabletPadGroupData;
+typedef struct _CdkWaylandTabletPadData CdkWaylandTabletPadData;
 
-struct _GdkWaylandTouchData
+struct _CdkWaylandTouchData
 {
   uint32_t id;
   gdouble x;
   gdouble y;
-  GdkWindow *window;
+  CdkWindow *window;
   uint32_t touch_down_serial;
   guint initial_touch : 1;
 };
 
-struct _GdkWaylandPointerFrameData
+struct _CdkWaylandPointerFrameData
 {
-  GdkEvent *event;
+  CdkEvent *event;
 
   /* Specific to the scroll event */
   gdouble delta_x, delta_y;
@@ -84,22 +84,22 @@ struct _GdkWaylandPointerFrameData
   enum wl_pointer_axis_source source;
 };
 
-struct _GdkWaylandPointerData {
-  GdkWindow *focus;
+struct _CdkWaylandPointerData {
+  CdkWindow *focus;
 
   double surface_x, surface_y;
 
-  GdkModifierType button_modifiers;
+  CdkModifierType button_modifiers;
 
   uint32_t time;
   uint32_t enter_serial;
   uint32_t press_serial;
 
-  GdkWindow *grab_window;
+  CdkWindow *grab_window;
   uint32_t grab_time;
 
   struct wl_surface *pointer_surface;
-  GdkCursor *cursor;
+  CdkCursor *cursor;
   guint cursor_timeout_id;
   guint cursor_image_index;
   guint cursor_image_delay;
@@ -108,25 +108,25 @@ struct _GdkWaylandPointerData {
   GSList *pointer_surface_outputs;
 
   /* Accumulated event data for a pointer frame */
-  GdkWaylandPointerFrameData frame;
+  CdkWaylandPointerFrameData frame;
 };
 
-struct _GdkWaylandTabletToolData
+struct _CdkWaylandTabletToolData
 {
-  GdkSeat *seat;
+  CdkSeat *seat;
   struct zwp_tablet_tool_v2 *wp_tablet_tool;
-  GdkAxisFlags axes;
-  GdkDeviceToolType type;
+  CdkAxisFlags axes;
+  CdkDeviceToolType type;
   guint64 hardware_serial;
   guint64 hardware_id_wacom;
 
-  GdkDeviceTool *tool;
-  GdkWaylandTabletData *current_tablet;
+  CdkDeviceTool *tool;
+  CdkWaylandTabletData *current_tablet;
 };
 
-struct _GdkWaylandTabletPadGroupData
+struct _CdkWaylandTabletPadGroupData
 {
-  GdkWaylandTabletPadData *pad;
+  CdkWaylandTabletPadData *pad;
   struct zwp_tablet_pad_group_v2 *wp_tablet_pad_group;
   GList *rings;
   GList *strips;
@@ -143,13 +143,13 @@ struct _GdkWaylandTabletPadGroupData
   } axis_tmp_info;
 };
 
-struct _GdkWaylandTabletPadData
+struct _CdkWaylandTabletPadData
 {
-  GdkSeat *seat;
+  CdkSeat *seat;
   struct zwp_tablet_pad_v2 *wp_tablet_pad;
-  GdkDevice *device;
+  CdkDevice *device;
 
-  GdkWaylandTabletData *current_tablet;
+  CdkWaylandTabletData *current_tablet;
 
   guint enter_serial;
   uint32_t n_buttons;
@@ -160,7 +160,7 @@ struct _GdkWaylandTabletPadData
   GList *mode_groups;
 };
 
-struct _GdkWaylandTabletData
+struct _CdkWaylandTabletData
 {
   struct zwp_tablet_v2 *wp_tablet;
   gchar *name;
@@ -168,24 +168,24 @@ struct _GdkWaylandTabletData
   uint32_t vid;
   uint32_t pid;
 
-  GdkDevice *master;
-  GdkDevice *stylus_device;
-  GdkDevice *eraser_device;
-  GdkDevice *current_device;
-  GdkSeat *seat;
-  GdkWaylandPointerData pointer_info;
+  CdkDevice *master;
+  CdkDevice *stylus_device;
+  CdkDevice *eraser_device;
+  CdkDevice *current_device;
+  CdkSeat *seat;
+  CdkWaylandPointerData pointer_info;
 
   GList *pads;
 
-  GdkWaylandTabletToolData *current_tool;
+  CdkWaylandTabletToolData *current_tool;
 
   gint axis_indices[GDK_AXIS_LAST];
   gdouble *axes;
 };
 
-struct _GdkWaylandSeat
+struct _CdkWaylandSeat
 {
-  GdkSeat parent_instance;
+  CdkSeat parent_instance;
 
   guint32 id;
   struct wl_seat *wl_seat;
@@ -196,33 +196,33 @@ struct _GdkWaylandSeat
   struct zwp_pointer_gesture_pinch_v1 *wp_pointer_gesture_pinch;
   struct zwp_tablet_seat_v2 *wp_tablet_seat;
 
-  GdkDisplay *display;
-  GdkDeviceManager *device_manager;
+  CdkDisplay *display;
+  CdkDeviceManager *device_manager;
 
-  GdkDevice *master_pointer;
-  GdkDevice *master_keyboard;
-  GdkDevice *pointer;
-  GdkDevice *wheel_scrolling;
-  GdkDevice *finger_scrolling;
-  GdkDevice *continuous_scrolling;
-  GdkDevice *keyboard;
-  GdkDevice *touch_master;
-  GdkDevice *touch;
-  GdkCursor *cursor;
-  GdkKeymap *keymap;
+  CdkDevice *master_pointer;
+  CdkDevice *master_keyboard;
+  CdkDevice *pointer;
+  CdkDevice *wheel_scrolling;
+  CdkDevice *finger_scrolling;
+  CdkDevice *continuous_scrolling;
+  CdkDevice *keyboard;
+  CdkDevice *touch_master;
+  CdkDevice *touch;
+  CdkCursor *cursor;
+  CdkKeymap *keymap;
 
   GHashTable *touches;
   GList *tablets;
   GList *tablet_tools;
   GList *tablet_pads;
 
-  GdkWaylandPointerData pointer_info;
-  GdkWaylandPointerData touch_info;
+  CdkWaylandPointerData pointer_info;
+  CdkWaylandPointerData touch_info;
 
-  GdkModifierType key_modifiers;
-  GdkWindow *keyboard_focus;
-  GdkAtom pending_selection;
-  GdkWindow *grab_window;
+  CdkModifierType key_modifiers;
+  CdkWindow *keyboard_focus;
+  CdkAtom pending_selection;
+  CdkWindow *grab_window;
   uint32_t grab_time;
   gboolean have_server_repeat;
   uint32_t server_repeat_rate;
@@ -240,47 +240,47 @@ struct _GdkWaylandSeat
   struct ctk_primary_selection_device *ctk_primary_data_device;
   struct zwp_primary_selection_device_v1 *zwp_primary_data_device_v1;
   struct wl_data_device *data_device;
-  GdkDragContext *drop_context;
+  CdkDragContext *drop_context;
 
   /* Source/dest for non-local dnd */
-  GdkWindow *foreign_dnd_window;
+  CdkWindow *foreign_dnd_window;
 
   /* Some tracking on gesture events */
   guint gesture_n_fingers;
   gdouble gesture_scale;
 
-  GdkCursor *grab_cursor;
+  CdkCursor *grab_cursor;
 };
 
-G_DEFINE_TYPE (GdkWaylandSeat, cdk_wayland_seat, GDK_TYPE_SEAT)
+G_DEFINE_TYPE (CdkWaylandSeat, cdk_wayland_seat, GDK_TYPE_SEAT)
 
-struct _GdkWaylandDevice
+struct _CdkWaylandDevice
 {
-  GdkDevice parent_instance;
-  GdkWaylandTouchData *emulating_touch; /* Only used on wd->touch_master */
-  GdkWaylandPointerData *pointer;
+  CdkDevice parent_instance;
+  CdkWaylandTouchData *emulating_touch; /* Only used on wd->touch_master */
+  CdkWaylandPointerData *pointer;
 };
 
-struct _GdkWaylandDeviceClass
+struct _CdkWaylandDeviceClass
 {
-  GdkDeviceClass parent_class;
+  CdkDeviceClass parent_class;
 };
 
-G_DEFINE_TYPE (GdkWaylandDevice, cdk_wayland_device, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkWaylandDevice, cdk_wayland_device, GDK_TYPE_DEVICE)
 
-struct _GdkWaylandDevicePad
+struct _CdkWaylandDevicePad
 {
-  GdkWaylandDevice parent_instance;
+  CdkWaylandDevice parent_instance;
 };
 
-struct _GdkWaylandDevicePadClass
+struct _CdkWaylandDevicePadClass
 {
-  GdkWaylandDeviceClass parent_class;
+  CdkWaylandDeviceClass parent_class;
 };
 
-static void cdk_wayland_device_pad_iface_init (GdkDevicePadInterface *iface);
+static void cdk_wayland_device_pad_iface_init (CdkDevicePadInterface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (GdkWaylandDevicePad, cdk_wayland_device_pad,
+G_DEFINE_TYPE_WITH_CODE (CdkWaylandDevicePad, cdk_wayland_device_pad,
                          GDK_TYPE_WAYLAND_DEVICE,
                          G_IMPLEMENT_INTERFACE (GDK_TYPE_DEVICE_PAD,
                                                 cdk_wayland_device_pad_iface_init))
@@ -288,63 +288,63 @@ G_DEFINE_TYPE_WITH_CODE (GdkWaylandDevicePad, cdk_wayland_device_pad,
 #define GDK_TYPE_WAYLAND_DEVICE_PAD (cdk_wayland_device_pad_get_type ())
 
 #define GDK_TYPE_WAYLAND_DEVICE_MANAGER        (cdk_wayland_device_manager_get_type ())
-#define GDK_WAYLAND_DEVICE_MANAGER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_WAYLAND_DEVICE_MANAGER, GdkWaylandDeviceManager))
-#define GDK_WAYLAND_DEVICE_MANAGER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_WAYLAND_DEVICE_MANAGER, GdkWaylandDeviceManagerClass))
+#define GDK_WAYLAND_DEVICE_MANAGER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_WAYLAND_DEVICE_MANAGER, CdkWaylandDeviceManager))
+#define GDK_WAYLAND_DEVICE_MANAGER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_WAYLAND_DEVICE_MANAGER, CdkWaylandDeviceManagerClass))
 #define GDK_IS_WAYLAND_DEVICE_MANAGER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_WAYLAND_DEVICE_MANAGER))
 #define GDK_IS_WAYLAND_DEVICE_MANAGER_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_WAYLAND_DEVICE_MANAGER))
-#define GDK_WAYLAND_DEVICE_MANAGER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_WAYLAND_DEVICE_MANAGER, GdkWaylandDeviceManagerClass))
+#define GDK_WAYLAND_DEVICE_MANAGER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_WAYLAND_DEVICE_MANAGER, CdkWaylandDeviceManagerClass))
 
-#define GDK_SLOT_TO_EVENT_SEQUENCE(s) ((GdkEventSequence *) GUINT_TO_POINTER((s) + 1))
+#define GDK_SLOT_TO_EVENT_SEQUENCE(s) ((CdkEventSequence *) GUINT_TO_POINTER((s) + 1))
 #define GDK_EVENT_SEQUENCE_TO_SLOT(s) (GPOINTER_TO_UINT(s) - 1)
 
-typedef struct _GdkWaylandDeviceManager GdkWaylandDeviceManager;
-typedef struct _GdkWaylandDeviceManagerClass GdkWaylandDeviceManagerClass;
+typedef struct _CdkWaylandDeviceManager CdkWaylandDeviceManager;
+typedef struct _CdkWaylandDeviceManagerClass CdkWaylandDeviceManagerClass;
 
-struct _GdkWaylandDeviceManager
+struct _CdkWaylandDeviceManager
 {
-  GdkDeviceManager parent_object;
+  CdkDeviceManager parent_object;
   GList *devices;
 };
 
-struct _GdkWaylandDeviceManagerClass
+struct _CdkWaylandDeviceManagerClass
 {
-  GdkDeviceManagerClass parent_class;
+  CdkDeviceManagerClass parent_class;
 };
 
-static void init_pointer_data (GdkWaylandPointerData *pointer_data,
-                               GdkDisplay            *display_wayland,
-                               GdkDevice             *master);
+static void init_pointer_data (CdkWaylandPointerData *pointer_data,
+                               CdkDisplay            *display_wayland,
+                               CdkDevice             *master);
 
 static void
-pointer_surface_update_scale (GdkDevice *device);
+pointer_surface_update_scale (CdkDevice *device);
 
 
-static void deliver_key_event (GdkWaylandSeat       *seat,
+static void deliver_key_event (CdkWaylandSeat       *seat,
                                uint32_t              time_,
                                uint32_t              key,
                                uint32_t              state,
                                gboolean              from_key_repeat);
 GType cdk_wayland_device_manager_get_type (void);
 
-G_DEFINE_TYPE (GdkWaylandDeviceManager,
+G_DEFINE_TYPE (CdkWaylandDeviceManager,
 	       cdk_wayland_device_manager, GDK_TYPE_DEVICE_MANAGER)
 
 static gboolean
-cdk_wayland_device_get_history (GdkDevice      *device,
-                                GdkWindow      *window,
+cdk_wayland_device_get_history (CdkDevice      *device,
+                                CdkWindow      *window,
                                 guint32         start,
                                 guint32         stop,
-                                GdkTimeCoord ***events,
+                                CdkTimeCoord ***events,
                                 gint           *n_events)
 {
   return FALSE;
 }
 
 static void
-cdk_wayland_device_get_state (GdkDevice       *device,
-                              GdkWindow       *window,
+cdk_wayland_device_get_state (CdkDevice       *device,
+                              CdkWindow       *window,
                               gdouble         *axes,
-                              GdkModifierType *mask)
+                              CdkModifierType *mask)
 {
   gdouble x, y;
 
@@ -358,7 +358,7 @@ cdk_wayland_device_get_state (GdkDevice       *device,
 }
 
 static void
-cdk_wayland_pointer_stop_cursor_animation (GdkWaylandPointerData *pointer)
+cdk_wayland_pointer_stop_cursor_animation (CdkWaylandPointerData *pointer)
 {
   if (pointer->cursor_timeout_id > 0)
     {
@@ -369,15 +369,15 @@ cdk_wayland_pointer_stop_cursor_animation (GdkWaylandPointerData *pointer)
   pointer->cursor_image_index = 0;
 }
 
-static GdkWaylandTabletData *
-cdk_wayland_device_manager_find_tablet (GdkWaylandSeat *seat,
-                                        GdkDevice      *device)
+static CdkWaylandTabletData *
+cdk_wayland_device_manager_find_tablet (CdkWaylandSeat *seat,
+                                        CdkDevice      *device)
 {
   GList *l;
 
   for (l = seat->tablets; l; l = l->next)
     {
-      GdkWaylandTabletData *tablet = l->data;
+      CdkWaylandTabletData *tablet = l->data;
 
       if (tablet->master == device ||
           tablet->stylus_device == device ||
@@ -388,15 +388,15 @@ cdk_wayland_device_manager_find_tablet (GdkWaylandSeat *seat,
   return NULL;
 }
 
-static GdkWaylandTabletPadData *
-cdk_wayland_device_manager_find_pad (GdkWaylandSeat *seat,
-                                     GdkDevice      *device)
+static CdkWaylandTabletPadData *
+cdk_wayland_device_manager_find_pad (CdkWaylandSeat *seat,
+                                     CdkDevice      *device)
 {
   GList *l;
 
   for (l = seat->tablet_pads; l; l = l->next)
     {
-      GdkWaylandTabletPadData *pad = l->data;
+      CdkWaylandTabletPadData *pad = l->data;
 
       if (pad->device == device)
         return pad;
@@ -407,15 +407,15 @@ cdk_wayland_device_manager_find_pad (GdkWaylandSeat *seat,
 
 
 static gboolean
-cdk_wayland_device_update_window_cursor (GdkDevice *device)
+cdk_wayland_device_update_window_cursor (CdkDevice *device)
 {
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
-  GdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
+  CdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
   struct wl_buffer *buffer;
   int x, y, w, h, scale;
   guint next_image_index, next_image_delay;
   gboolean retval = G_SOURCE_REMOVE;
-  GdkWaylandTabletData *tablet;
+  CdkWaylandTabletData *tablet;
 
   tablet = cdk_wayland_device_manager_find_tablet (seat, device);
 
@@ -504,12 +504,12 @@ cdk_wayland_device_update_window_cursor (GdkDevice *device)
 }
 
 static void
-cdk_wayland_device_set_window_cursor (GdkDevice *device,
-                                      GdkWindow *window,
-                                      GdkCursor *cursor)
+cdk_wayland_device_set_window_cursor (CdkDevice *device,
+                                      CdkWindow *window,
+                                      CdkCursor *cursor)
 {
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
-  GdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
+  CdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
 
   if (device == seat->touch_master)
     return;
@@ -545,21 +545,21 @@ cdk_wayland_device_set_window_cursor (GdkDevice *device,
 }
 
 static void
-cdk_wayland_device_warp (GdkDevice *device,
-                         GdkScreen *screen,
+cdk_wayland_device_warp (CdkDevice *device,
+                         CdkScreen *screen,
                          gdouble    x,
                          gdouble    y)
 {
 }
 
 static void
-get_coordinates (GdkDevice *device,
+get_coordinates (CdkDevice *device,
                  double    *x,
                  double    *y,
                  double    *x_root,
                  double    *y_root)
 {
-  GdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
+  CdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
   int root_x, root_y;
 
   if (x)
@@ -586,12 +586,12 @@ get_coordinates (GdkDevice *device,
     *y_root = root_y;
 }
 
-static GdkModifierType
-device_get_modifiers (GdkDevice *device)
+static CdkModifierType
+device_get_modifiers (CdkDevice *device)
 {
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
-  GdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
-  GdkModifierType mask;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
+  CdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
+  CdkModifierType mask;
 
   mask = seat->key_modifiers;
 
@@ -602,19 +602,19 @@ device_get_modifiers (GdkDevice *device)
 }
 
 static void
-cdk_wayland_device_query_state (GdkDevice        *device,
-                                GdkWindow        *window,
-                                GdkWindow       **root_window,
-                                GdkWindow       **child_window,
+cdk_wayland_device_query_state (CdkDevice        *device,
+                                CdkWindow        *window,
+                                CdkWindow       **root_window,
+                                CdkWindow       **child_window,
                                 gdouble          *root_x,
                                 gdouble          *root_y,
                                 gdouble          *win_x,
                                 gdouble          *win_y,
-                                GdkModifierType  *mask)
+                                CdkModifierType  *mask)
 {
-  GdkWaylandSeat *seat;
-  GdkWaylandPointerData *pointer;
-  GdkScreen *default_screen;
+  CdkWaylandSeat *seat;
+  CdkWaylandPointerData *pointer;
+  CdkScreen *default_screen;
 
   seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
   pointer = GDK_WAYLAND_DEVICE (device)->pointer;
@@ -632,15 +632,15 @@ cdk_wayland_device_query_state (GdkDevice        *device,
 }
 
 static void
-emulate_crossing (GdkWindow       *window,
-                  GdkWindow       *subwindow,
-                  GdkDevice       *device,
-                  GdkDevice       *source,
-                  GdkEventType     type,
-                  GdkCrossingMode  mode,
+emulate_crossing (CdkWindow       *window,
+                  CdkWindow       *subwindow,
+                  CdkDevice       *device,
+                  CdkDevice       *source,
+                  CdkEventType     type,
+                  CdkCrossingMode  mode,
                   guint32          time_)
 {
-  GdkEvent *event;
+  CdkEvent *event;
 
   event = cdk_event_new (type);
   event->crossing.window = window ? g_object_ref (window) : NULL;
@@ -662,16 +662,16 @@ emulate_crossing (GdkWindow       *window,
 }
 
 static void
-emulate_touch_crossing (GdkWindow           *window,
-                        GdkWindow           *subwindow,
-                        GdkDevice           *device,
-                        GdkDevice           *source,
-                        GdkWaylandTouchData *touch,
-                        GdkEventType         type,
-                        GdkCrossingMode      mode,
+emulate_touch_crossing (CdkWindow           *window,
+                        CdkWindow           *subwindow,
+                        CdkDevice           *device,
+                        CdkDevice           *source,
+                        CdkWaylandTouchData *touch,
+                        CdkEventType         type,
+                        CdkCrossingMode      mode,
                         guint32              time_)
 {
-  GdkEvent *event;
+  CdkEvent *event;
 
   event = cdk_event_new (type);
   event->crossing.window = window ? g_object_ref (window) : NULL;
@@ -692,12 +692,12 @@ emulate_touch_crossing (GdkWindow           *window,
 }
 
 static void
-emulate_focus (GdkWindow *window,
-               GdkDevice *device,
+emulate_focus (CdkWindow *window,
+               CdkDevice *device,
                gboolean   focus_in,
                guint32    time_)
 {
-  GdkEvent *event;
+  CdkEvent *event;
 
   event = cdk_event_new (GDK_FOCUS_CHANGE);
   event->focus_change.window = g_object_ref (window);
@@ -710,10 +710,10 @@ emulate_focus (GdkWindow *window,
 }
 
 static void
-device_emit_grab_crossing (GdkDevice       *device,
-                           GdkWindow       *from,
-                           GdkWindow       *to,
-                           GdkCrossingMode  mode,
+device_emit_grab_crossing (CdkDevice       *device,
+                           CdkWindow       *from,
+                           CdkWindow       *to,
+                           CdkCrossingMode  mode,
                            guint32          time_)
 {
   if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
@@ -732,11 +732,11 @@ device_emit_grab_crossing (GdkDevice       *device,
     }
 }
 
-static GdkWindow *
-cdk_wayland_device_get_focus (GdkDevice *device)
+static CdkWindow *
+cdk_wayland_device_get_focus (CdkDevice *device)
 {
-  GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
-  GdkWaylandPointerData *pointer;
+  CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
+  CdkWaylandPointerData *pointer;
 
   if (device == wayland_seat->master_keyboard)
     return wayland_seat->keyboard_focus;
@@ -752,25 +752,25 @@ cdk_wayland_device_get_focus (GdkDevice *device)
 }
 
 static void
-device_maybe_emit_grab_crossing (GdkDevice *device,
-                                 GdkWindow *window,
+device_maybe_emit_grab_crossing (CdkDevice *device,
+                                 CdkWindow *window,
                                  guint32    time)
 {
-  GdkWindow *native = cdk_wayland_device_get_focus (device);
-  GdkWindow *focus = cdk_window_get_toplevel (window);
+  CdkWindow *native = cdk_wayland_device_get_focus (device);
+  CdkWindow *focus = cdk_window_get_toplevel (window);
 
   if (focus != native)
     device_emit_grab_crossing (device, focus, window, GDK_CROSSING_GRAB, time);
 }
 
-static GdkWindow*
-device_maybe_emit_ungrab_crossing (GdkDevice      *device,
+static CdkWindow*
+device_maybe_emit_ungrab_crossing (CdkDevice      *device,
                                    guint32         time)
 {
-  GdkDeviceGrabInfo *grab;
-  GdkWindow *focus = NULL;
-  GdkWindow *native = NULL;
-  GdkWindow *prev_focus = NULL;
+  CdkDeviceGrabInfo *grab;
+  CdkWindow *focus = NULL;
+  CdkWindow *native = NULL;
+  CdkWindow *prev_focus = NULL;
 
   focus = cdk_wayland_device_get_focus (device);
   grab = _cdk_display_get_last_device_grab (cdk_device_get_display (device), device);
@@ -788,17 +788,17 @@ device_maybe_emit_ungrab_crossing (GdkDevice      *device,
   return prev_focus;
 }
 
-static GdkGrabStatus
-cdk_wayland_device_grab (GdkDevice    *device,
-                         GdkWindow    *window,
+static CdkGrabStatus
+cdk_wayland_device_grab (CdkDevice    *device,
+                         CdkWindow    *window,
                          gboolean      owner_events,
-                         GdkEventMask  event_mask,
-                         GdkWindow    *confine_to,
-                         GdkCursor    *cursor,
+                         CdkEventMask  event_mask,
+                         CdkWindow    *confine_to,
+                         CdkCursor    *cursor,
                          guint32       time_)
 {
-  GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
-  GdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
+  CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
+  CdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
 
   if (cdk_window_get_window_type (window) == GDK_WINDOW_TEMP &&
       cdk_window_is_visible (window))
@@ -850,11 +850,11 @@ cdk_wayland_device_grab (GdkDevice    *device,
 }
 
 static void
-cdk_wayland_device_ungrab (GdkDevice *device,
+cdk_wayland_device_ungrab (CdkDevice *device,
                            guint32    time_)
 {
-  GdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
-  GdkWindow *prev_focus;
+  CdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
+  CdkWindow *prev_focus;
 
   prev_focus = device_maybe_emit_ungrab_crossing (device, time_);
 
@@ -876,14 +876,14 @@ cdk_wayland_device_ungrab (GdkDevice *device,
     }
 }
 
-static GdkWindow *
-cdk_wayland_device_window_at_position (GdkDevice       *device,
+static CdkWindow *
+cdk_wayland_device_window_at_position (CdkDevice       *device,
                                        gdouble         *win_x,
                                        gdouble         *win_y,
-                                       GdkModifierType *mask,
+                                       CdkModifierType *mask,
                                        gboolean         get_toplevel)
 {
-  GdkWaylandPointerData *pointer;
+  CdkWaylandPointerData *pointer;
 
   pointer = GDK_WAYLAND_DEVICE(device)->pointer;
 
@@ -901,16 +901,16 @@ cdk_wayland_device_window_at_position (GdkDevice       *device,
 }
 
 static void
-cdk_wayland_device_select_window_events (GdkDevice    *device,
-                                         GdkWindow    *window,
-                                         GdkEventMask  event_mask)
+cdk_wayland_device_select_window_events (CdkDevice    *device,
+                                         CdkWindow    *window,
+                                         CdkEventMask  event_mask)
 {
 }
 
 static void
-cdk_wayland_device_class_init (GdkWaylandDeviceClass *klass)
+cdk_wayland_device_class_init (CdkWaylandDeviceClass *klass)
 {
-  GdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_wayland_device_get_history;
   device_class->get_state = cdk_wayland_device_get_state;
@@ -924,9 +924,9 @@ cdk_wayland_device_class_init (GdkWaylandDeviceClass *klass)
 }
 
 static void
-cdk_wayland_device_init (GdkWaylandDevice *device_core)
+cdk_wayland_device_init (CdkWaylandDevice *device_core)
 {
-  GdkDevice *device;
+  CdkDevice *device;
 
   device = GDK_DEVICE (device_core);
 
@@ -935,10 +935,10 @@ cdk_wayland_device_init (GdkWaylandDevice *device_core)
 }
 
 static gint
-cdk_wayland_device_pad_get_n_groups (GdkDevicePad *pad)
+cdk_wayland_device_pad_get_n_groups (CdkDevicePad *pad)
 {
-  GdkSeat *seat = cdk_device_get_seat (GDK_DEVICE (pad));
-  GdkWaylandTabletPadData *data;
+  CdkSeat *seat = cdk_device_get_seat (GDK_DEVICE (pad));
+  CdkWaylandTabletPadData *data;
 
   data = cdk_wayland_device_manager_find_pad (GDK_WAYLAND_SEAT (seat),
                                               GDK_DEVICE (pad));
@@ -948,12 +948,12 @@ cdk_wayland_device_pad_get_n_groups (GdkDevicePad *pad)
 }
 
 static gint
-cdk_wayland_device_pad_get_group_n_modes (GdkDevicePad *pad,
+cdk_wayland_device_pad_get_group_n_modes (CdkDevicePad *pad,
                                           gint          n_group)
 {
-  GdkSeat *seat = cdk_device_get_seat (GDK_DEVICE (pad));
-  GdkWaylandTabletPadGroupData *group;
-  GdkWaylandTabletPadData *data;
+  CdkSeat *seat = cdk_device_get_seat (GDK_DEVICE (pad));
+  CdkWaylandTabletPadGroupData *group;
+  CdkWaylandTabletPadData *data;
 
   data = cdk_wayland_device_manager_find_pad (GDK_WAYLAND_SEAT (seat),
                                               GDK_DEVICE (pad));
@@ -967,11 +967,11 @@ cdk_wayland_device_pad_get_group_n_modes (GdkDevicePad *pad,
 }
 
 static gint
-cdk_wayland_device_pad_get_n_features (GdkDevicePad        *pad,
-                                       GdkDevicePadFeature  feature)
+cdk_wayland_device_pad_get_n_features (CdkDevicePad        *pad,
+                                       CdkDevicePadFeature  feature)
 {
-  GdkSeat *seat = cdk_device_get_seat (GDK_DEVICE (pad));
-  GdkWaylandTabletPadData *data;
+  CdkSeat *seat = cdk_device_get_seat (GDK_DEVICE (pad));
+  CdkWaylandTabletPadData *data;
 
   data = cdk_wayland_device_manager_find_pad (GDK_WAYLAND_SEAT (seat),
                                               GDK_DEVICE (pad));
@@ -991,13 +991,13 @@ cdk_wayland_device_pad_get_n_features (GdkDevicePad        *pad,
 }
 
 static gint
-cdk_wayland_device_pad_get_feature_group (GdkDevicePad        *pad,
-                                          GdkDevicePadFeature  feature,
+cdk_wayland_device_pad_get_feature_group (CdkDevicePad        *pad,
+                                          CdkDevicePadFeature  feature,
                                           gint                 idx)
 {
-  GdkSeat *seat = cdk_device_get_seat (GDK_DEVICE (pad));
-  GdkWaylandTabletPadGroupData *group;
-  GdkWaylandTabletPadData *data;
+  CdkSeat *seat = cdk_device_get_seat (GDK_DEVICE (pad));
+  CdkWaylandTabletPadGroupData *group;
+  CdkWaylandTabletPadData *data;
   GList *l;
   gint i;
 
@@ -1041,7 +1041,7 @@ cdk_wayland_device_pad_get_feature_group (GdkDevicePad        *pad,
 }
 
 static void
-cdk_wayland_device_pad_iface_init (GdkDevicePadInterface *iface)
+cdk_wayland_device_pad_iface_init (CdkDevicePadInterface *iface)
 {
   iface->get_n_groups = cdk_wayland_device_pad_get_n_groups;
   iface->get_group_n_modes = cdk_wayland_device_pad_get_group_n_modes;
@@ -1050,29 +1050,29 @@ cdk_wayland_device_pad_iface_init (GdkDevicePadInterface *iface)
 }
 
 static void
-cdk_wayland_device_pad_class_init (GdkWaylandDevicePadClass *klass)
+cdk_wayland_device_pad_class_init (CdkWaylandDevicePadClass *klass)
 {
 }
 
 static void
-cdk_wayland_device_pad_init (GdkWaylandDevicePad *pad)
+cdk_wayland_device_pad_init (CdkWaylandDevicePad *pad)
 {
 }
 
 /**
  * cdk_wayland_device_get_wl_seat:
- * @device: (type GdkWaylandDevice): a #GdkDevice
+ * @device: (type CdkWaylandDevice): a #CdkDevice
  *
- * Returns the Wayland wl_seat of a #GdkDevice.
+ * Returns the Wayland wl_seat of a #CdkDevice.
  *
  * Returns: (transfer none): a Wayland wl_seat
  *
  * Since: 3.10
  */
 struct wl_seat *
-cdk_wayland_device_get_wl_seat (GdkDevice *device)
+cdk_wayland_device_get_wl_seat (CdkDevice *device)
 {
-  GdkWaylandSeat *seat;
+  CdkWaylandSeat *seat;
 
   g_return_val_if_fail (GDK_IS_WAYLAND_DEVICE (device), NULL);
 
@@ -1082,18 +1082,18 @@ cdk_wayland_device_get_wl_seat (GdkDevice *device)
 
 /**
  * cdk_wayland_device_get_wl_pointer:
- * @device: (type GdkWaylandDevice): a #GdkDevice
+ * @device: (type CdkWaylandDevice): a #CdkDevice
  *
- * Returns the Wayland wl_pointer of a #GdkDevice.
+ * Returns the Wayland wl_pointer of a #CdkDevice.
  *
  * Returns: (transfer none): a Wayland wl_pointer
  *
  * Since: 3.10
  */
 struct wl_pointer *
-cdk_wayland_device_get_wl_pointer (GdkDevice *device)
+cdk_wayland_device_get_wl_pointer (CdkDevice *device)
 {
-  GdkWaylandSeat *seat;
+  CdkWaylandSeat *seat;
 
   g_return_val_if_fail (GDK_IS_WAYLAND_DEVICE (device), NULL);
 
@@ -1103,18 +1103,18 @@ cdk_wayland_device_get_wl_pointer (GdkDevice *device)
 
 /**
  * cdk_wayland_device_get_wl_keyboard:
- * @device: (type GdkWaylandDevice): a #GdkDevice
+ * @device: (type CdkWaylandDevice): a #CdkDevice
  *
- * Returns the Wayland wl_keyboard of a #GdkDevice.
+ * Returns the Wayland wl_keyboard of a #CdkDevice.
  *
  * Returns: (transfer none): a Wayland wl_keyboard
  *
  * Since: 3.10
  */
 struct wl_keyboard *
-cdk_wayland_device_get_wl_keyboard (GdkDevice *device)
+cdk_wayland_device_get_wl_keyboard (CdkDevice *device)
 {
-  GdkWaylandSeat *seat;
+  CdkWaylandSeat *seat;
 
   g_return_val_if_fail (GDK_IS_WAYLAND_DEVICE (device), NULL);
 
@@ -1122,18 +1122,18 @@ cdk_wayland_device_get_wl_keyboard (GdkDevice *device)
   return seat->wl_keyboard;
 }
 
-GdkKeymap *
-_cdk_wayland_device_get_keymap (GdkDevice *device)
+CdkKeymap *
+_cdk_wayland_device_get_keymap (CdkDevice *device)
 {
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
   return seat->keymap;
 }
 
 static void
-emit_selection_owner_change (GdkWindow *window,
-                             GdkAtom    atom)
+emit_selection_owner_change (CdkWindow *window,
+                             CdkAtom    atom)
 {
-  GdkEvent *event;
+  CdkEvent *event;
 
   event = cdk_event_new (GDK_OWNER_CHANGE);
   event->owner_change.window = g_object_ref (window);
@@ -1152,7 +1152,7 @@ data_device_data_offer (void                  *data,
                         struct wl_data_device *data_device,
                         struct wl_data_offer  *offer)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
 
   GDK_NOTE (EVENTS,
             g_message ("data device data offer, data device %p, offer %p",
@@ -1170,9 +1170,9 @@ data_device_enter (void                  *data,
                    wl_fixed_t             y,
                    struct wl_data_offer  *offer)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWindow *dest_window, *dnd_owner;
-  GdkAtom selection;
+  CdkWaylandSeat *seat = data;
+  CdkWindow *dest_window, *dnd_owner;
+  CdkAtom selection;
 
   dest_window = wl_surface_get_user_data (surface);
 
@@ -1215,7 +1215,7 @@ static void
 data_device_leave (void                  *data,
                    struct wl_data_device *data_device)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
 
   GDK_NOTE (EVENTS,
             g_message ("data device leave, data device %p", data_device));
@@ -1239,7 +1239,7 @@ data_device_motion (void                  *data,
                     wl_fixed_t             x,
                     wl_fixed_t             y)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
 
   GDK_NOTE (EVENTS,
             g_message ("data device motion, data_device = %p, time = %d, x = %f, y = %f",
@@ -1264,7 +1264,7 @@ static void
 data_device_drop (void                  *data,
                   struct wl_data_device *data_device)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
 
   GDK_NOTE (EVENTS,
             g_message ("data device drop, data device %p", data_device));
@@ -1278,8 +1278,8 @@ data_device_selection (void                  *data,
                        struct wl_data_device *wl_data_device,
                        struct wl_data_offer  *offer)
 {
-  GdkWaylandSeat *seat = data;
-  GdkAtom selection;
+  CdkWaylandSeat *seat = data;
+  CdkAtom selection;
 
   GDK_NOTE (EVENTS,
             g_message ("data device selection, data device %p, data offer %p",
@@ -1313,7 +1313,7 @@ primary_selection_data_offer (void     *data,
                               gpointer  primary_selection_device,
                               gpointer  primary_offer)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
 
   GDK_NOTE (EVENTS,
             g_message ("primary selection offer, device %p, data offer %p",
@@ -1347,8 +1347,8 @@ primary_selection_selection (void     *data,
                              gpointer  primary_selection_device,
                              gpointer  primary_offer)
 {
-  GdkWaylandSeat *seat = data;
-  GdkAtom selection;
+  CdkWaylandSeat *seat = data;
+  CdkAtom selection;
 
   if (!seat->keyboard_focus)
     return;
@@ -1392,18 +1392,18 @@ static const struct zwp_primary_selection_device_v1_listener zwp_primary_device_
   zwp_primary_selection_v1_selection,
 };
 
-static GdkDevice * get_scroll_device (GdkWaylandSeat              *seat,
+static CdkDevice * get_scroll_device (CdkWaylandSeat              *seat,
                                       enum wl_pointer_axis_source  source);
 
-static GdkEvent *
-create_scroll_event (GdkWaylandSeat        *seat,
-                     GdkWaylandPointerData *pointer_info,
-                     GdkDevice             *device,
-                     GdkDevice             *source_device,
+static CdkEvent *
+create_scroll_event (CdkWaylandSeat        *seat,
+                     CdkWaylandPointerData *pointer_info,
+                     CdkDevice             *device,
+                     CdkDevice             *source_device,
                      gboolean               emulated)
 {
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkEvent *event;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkEvent *event;
 
   event = cdk_event_new (GDK_SCROLL);
   event->scroll.window = g_object_ref (pointer_info->focus);
@@ -1425,11 +1425,11 @@ create_scroll_event (GdkWaylandSeat        *seat,
 }
 
 static void
-flush_discrete_scroll_event (GdkWaylandSeat     *seat,
-                             GdkScrollDirection  direction)
+flush_discrete_scroll_event (CdkWaylandSeat     *seat,
+                             CdkScrollDirection  direction)
 {
-  GdkEvent *event;
-  GdkDevice *source;
+  CdkEvent *event;
+  CdkDevice *source;
 
   source = get_scroll_device (seat, seat->pointer_info.frame.source);
   event = create_scroll_event (seat, &seat->pointer_info,
@@ -1440,13 +1440,13 @@ flush_discrete_scroll_event (GdkWaylandSeat     *seat,
 }
 
 static void
-flush_smooth_scroll_event (GdkWaylandSeat *seat,
+flush_smooth_scroll_event (CdkWaylandSeat *seat,
                            gdouble         delta_x,
                            gdouble         delta_y,
                            gboolean        is_stop)
 {
-  GdkEvent *event;
-  GdkDevice *source;
+  CdkEvent *event;
+  CdkDevice *source;
 
   source = get_scroll_device (seat, seat->pointer_info.frame.source);
   event = create_scroll_event (seat, &seat->pointer_info,
@@ -1460,14 +1460,14 @@ flush_smooth_scroll_event (GdkWaylandSeat *seat,
 }
 
 static void
-flush_scroll_event (GdkWaylandSeat             *seat,
-                    GdkWaylandPointerFrameData *pointer_frame)
+flush_scroll_event (CdkWaylandSeat             *seat,
+                    CdkWaylandPointerFrameData *pointer_frame)
 {
   gboolean is_stop = FALSE;
 
   if (pointer_frame->discrete_x || pointer_frame->discrete_y)
     {
-      GdkScrollDirection direction;
+      CdkScrollDirection direction;
 
       if (pointer_frame->discrete_x > 0)
         direction = GDK_SCROLL_LEFT;
@@ -1507,7 +1507,7 @@ flush_scroll_event (GdkWaylandSeat             *seat,
 }
 
 static void
-cdk_wayland_seat_flush_frame_event (GdkWaylandSeat *seat)
+cdk_wayland_seat_flush_frame_event (CdkWaylandSeat *seat)
 {
   if (seat->pointer_info.frame.event)
     {
@@ -1522,9 +1522,9 @@ cdk_wayland_seat_flush_frame_event (GdkWaylandSeat *seat)
     }
 }
 
-static GdkEvent *
-cdk_wayland_seat_get_frame_event (GdkWaylandSeat *seat,
-                                  GdkEventType    evtype)
+static CdkEvent *
+cdk_wayland_seat_get_frame_event (CdkWaylandSeat *seat,
+                                  CdkEventType    evtype)
 {
   if (seat->pointer_info.frame.event &&
       seat->pointer_info.frame.event->type != evtype)
@@ -1542,9 +1542,9 @@ pointer_handle_enter (void              *data,
                       wl_fixed_t         sx,
                       wl_fixed_t         sy)
 {
-  GdkWaylandSeat *seat = data;
-  GdkEvent *event;
-  GdkWaylandDisplay *display_wayland =
+  CdkWaylandSeat *seat = data;
+  CdkEvent *event;
+  CdkWaylandDisplay *display_wayland =
     GDK_WAYLAND_DISPLAY (seat->display);
 
   if (!surface)
@@ -1598,9 +1598,9 @@ pointer_handle_leave (void              *data,
                       uint32_t           serial,
                       struct wl_surface *surface)
 {
-  GdkWaylandSeat *seat = data;
-  GdkEvent *event;
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandSeat *seat = data;
+  CdkEvent *event;
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
 
   if (!surface)
     return;
@@ -1653,9 +1653,9 @@ pointer_handle_motion (void              *data,
                        wl_fixed_t         sx,
                        wl_fixed_t         sy)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkEvent *event;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkEvent *event;
 
   if (!seat->pointer_info.focus)
     return;
@@ -1698,9 +1698,9 @@ pointer_handle_button (void              *data,
                        uint32_t           button,
                        uint32_t           state)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkEvent *event;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkEvent *event;
   uint32_t modifier;
   int cdk_button;
 
@@ -1791,9 +1791,9 @@ pointer_handle_axis (void              *data,
                      uint32_t           axis,
                      wl_fixed_t         value)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandPointerFrameData *pointer_frame = &seat->pointer_info.frame;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandSeat *seat = data;
+  CdkWaylandPointerFrameData *pointer_frame = &seat->pointer_info.frame;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
 
   if (!seat->pointer_info.focus)
     return;
@@ -1826,7 +1826,7 @@ static void
 pointer_handle_frame (void              *data,
                       struct wl_pointer *pointer)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
 
   GDK_NOTE (EVENTS,
             g_message ("frame, seat %p", seat));
@@ -1859,8 +1859,8 @@ pointer_handle_axis_source (void                        *data,
                             struct wl_pointer           *pointer,
                             enum wl_pointer_axis_source  source)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandPointerFrameData *pointer_frame = &seat->pointer_info.frame;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandPointerFrameData *pointer_frame = &seat->pointer_info.frame;
 
   if (!seat->pointer_info.focus)
     return;
@@ -1877,8 +1877,8 @@ pointer_handle_axis_stop (void              *data,
                           uint32_t           time,
                           uint32_t           axis)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandPointerFrameData *pointer_frame = &seat->pointer_info.frame;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandPointerFrameData *pointer_frame = &seat->pointer_info.frame;
 
   if (!seat->pointer_info.focus)
     return;
@@ -1909,8 +1909,8 @@ pointer_handle_axis_discrete (void              *data,
                               uint32_t           axis,
                               int32_t            value)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandPointerFrameData *pointer_frame = &seat->pointer_info.frame;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandPointerFrameData *pointer_frame = &seat->pointer_info.frame;
 
   if (!seat->pointer_info.focus)
     return;
@@ -1939,7 +1939,7 @@ keyboard_handle_keymap (void               *data,
                         int                 fd,
                         uint32_t            size)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
   PangoDirection direction;
 
   direction = cdk_keymap_get_direction (seat->keymap);
@@ -1960,9 +1960,9 @@ keyboard_handle_enter (void               *data,
                        struct wl_surface  *surface,
                        struct wl_array    *keys)
 {
-  GdkWaylandSeat *seat = data;
-  GdkEvent *event;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandSeat *seat = data;
+  CdkEvent *event;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
 
   if (!surface)
     return;
@@ -1998,7 +1998,7 @@ keyboard_handle_enter (void               *data,
     }
 }
 
-static void stop_key_repeat (GdkWaylandSeat *seat);
+static void stop_key_repeat (CdkWaylandSeat *seat);
 
 static void
 keyboard_handle_leave (void               *data,
@@ -2006,9 +2006,9 @@ keyboard_handle_leave (void               *data,
                        uint32_t            serial,
                        struct wl_surface  *surface)
 {
-  GdkWaylandSeat *seat = data;
-  GdkEvent *event;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandSeat *seat = data;
+  CdkEvent *event;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
 
   if (!seat->keyboard_focus)
     return;
@@ -2044,7 +2044,7 @@ keyboard_handle_leave (void               *data,
 static gboolean keyboard_repeat (gpointer data);
 
 static void
-translate_keyboard_string (GdkEventKey *event)
+translate_keyboard_string (CdkEventKey *event)
 {
   gunichar c = 0;
   gchar buf[7];
@@ -2111,7 +2111,7 @@ translate_keyboard_string (GdkEventKey *event)
 }
 
 static GSettings *
-get_keyboard_settings (GdkWaylandSeat *seat)
+get_keyboard_settings (CdkWaylandSeat *seat)
 {
   if (!seat->keyboard_settings)
     {
@@ -2131,7 +2131,7 @@ get_keyboard_settings (GdkWaylandSeat *seat)
 }
 
 static gboolean
-get_key_repeat (GdkWaylandSeat *seat,
+get_key_repeat (CdkWaylandSeat *seat,
                 guint          *delay,
                 guint          *interval)
 {
@@ -2172,7 +2172,7 @@ get_key_repeat (GdkWaylandSeat *seat,
 }
 
 static void
-stop_key_repeat (GdkWaylandSeat *seat)
+stop_key_repeat (CdkWaylandSeat *seat)
 {
   if (seat->repeat_timer)
     {
@@ -2184,16 +2184,16 @@ stop_key_repeat (GdkWaylandSeat *seat)
 }
 
 static void
-deliver_key_event (GdkWaylandSeat *seat,
+deliver_key_event (CdkWaylandSeat *seat,
                    uint32_t        time_,
                    uint32_t        key,
                    uint32_t        state,
                    gboolean        from_key_repeat)
 {
-  GdkEvent *event;
+  CdkEvent *event;
   struct xkb_state *xkb_state;
   struct xkb_keymap *xkb_keymap;
-  GdkKeymap *keymap;
+  CdkKeymap *keymap;
   xkb_keysym_t sym;
   guint delay, interval, timeout;
   gint64 begin_time, now;
@@ -2286,7 +2286,7 @@ sync_after_repeat_callback (void               *data,
                             struct wl_callback *callback,
                             uint32_t            time)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
 
   g_clear_pointer (&seat->repeat_callback, wl_callback_destroy);
   deliver_key_event (seat, seat->keyboard_time, seat->repeat_key, 1, TRUE);
@@ -2299,8 +2299,8 @@ static const struct wl_callback_listener sync_after_repeat_callback_listener = {
 static gboolean
 keyboard_repeat (gpointer data)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
 
   /* Ping the server and wait for the timeout.  We won't process
    * key repeat until it responds, since a hung server could lead
@@ -2326,8 +2326,8 @@ keyboard_handle_key (void               *data,
                      uint32_t            key,
                      uint32_t            state_w)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
 
   if (!seat->keyboard_focus)
     return;
@@ -2349,8 +2349,8 @@ keyboard_handle_modifiers (void               *data,
                            uint32_t            mods_locked,
                            uint32_t            group)
 {
-  GdkWaylandSeat *seat = data;
-  GdkKeymap *keymap;
+  CdkWaylandSeat *seat = data;
+  CdkKeymap *keymap;
   struct xkb_state *xkb_state;
   PangoDirection direction;
 
@@ -2373,21 +2373,21 @@ keyboard_handle_repeat_info (void               *data,
                              int32_t             rate,
                              int32_t             delay)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
 
   seat->have_server_repeat = TRUE;
   seat->server_repeat_rate = rate;
   seat->server_repeat_delay = delay;
 }
 
-static GdkWaylandTouchData *
-cdk_wayland_seat_add_touch (GdkWaylandSeat    *seat,
+static CdkWaylandTouchData *
+cdk_wayland_seat_add_touch (CdkWaylandSeat    *seat,
                             uint32_t           id,
                             struct wl_surface *surface)
 {
-  GdkWaylandTouchData *touch;
+  CdkWaylandTouchData *touch;
 
-  touch = g_new0 (GdkWaylandTouchData, 1);
+  touch = g_new0 (CdkWaylandTouchData, 1);
   touch->id = id;
   touch->window = wl_surface_get_user_data (surface);
   touch->initial_touch = (g_hash_table_size (seat->touches) == 0);
@@ -2397,29 +2397,29 @@ cdk_wayland_seat_add_touch (GdkWaylandSeat    *seat,
   return touch;
 }
 
-static GdkWaylandTouchData *
-cdk_wayland_seat_get_touch (GdkWaylandSeat *seat,
+static CdkWaylandTouchData *
+cdk_wayland_seat_get_touch (CdkWaylandSeat *seat,
                             uint32_t        id)
 {
   return g_hash_table_lookup (seat->touches, GUINT_TO_POINTER (id));
 }
 
 static void
-cdk_wayland_seat_remove_touch (GdkWaylandSeat *seat,
+cdk_wayland_seat_remove_touch (CdkWaylandSeat *seat,
                                uint32_t        id)
 {
   g_hash_table_remove (seat->touches, GUINT_TO_POINTER (id));
 }
 
-static GdkEvent *
-_create_touch_event (GdkWaylandSeat       *seat,
-                     GdkWaylandTouchData  *touch,
-                     GdkEventType          evtype,
+static CdkEvent *
+_create_touch_event (CdkWaylandSeat       *seat,
+                     CdkWaylandTouchData  *touch,
+                     CdkEventType          evtype,
                      uint32_t              time)
 {
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
   gint x_root, y_root;
-  GdkEvent *event;
+  CdkEvent *event;
 
   event = cdk_event_new (evtype);
   event->touch.window = g_object_ref (touch->window);
@@ -2450,10 +2450,10 @@ _create_touch_event (GdkWaylandSeat       *seat,
 }
 
 static void
-mimic_pointer_emulating_touch_info (GdkDevice           *device,
-                                    GdkWaylandTouchData *touch)
+mimic_pointer_emulating_touch_info (CdkDevice           *device,
+                                    CdkWaylandTouchData *touch)
 {
-  GdkWaylandPointerData *pointer;
+  CdkWaylandPointerData *pointer;
 
   pointer = GDK_WAYLAND_DEVICE (device)->pointer;
   g_set_object (&pointer->focus, touch->window);
@@ -2463,11 +2463,11 @@ mimic_pointer_emulating_touch_info (GdkDevice           *device,
 }
 
 static void
-touch_handle_master_pointer_crossing (GdkWaylandSeat      *seat,
-                                      GdkWaylandTouchData *touch,
+touch_handle_master_pointer_crossing (CdkWaylandSeat      *seat,
+                                      CdkWaylandTouchData *touch,
                                       uint32_t             time)
 {
-  GdkWaylandPointerData *pointer;
+  CdkWaylandPointerData *pointer;
 
   pointer = GDK_WAYLAND_DEVICE (seat->touch_master)->pointer;
 
@@ -2499,10 +2499,10 @@ touch_handle_down (void              *data,
                    wl_fixed_t         x,
                    wl_fixed_t         y)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkWaylandTouchData *touch;
-  GdkEvent *event;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandTouchData *touch;
+  CdkEvent *event;
 
   _cdk_wayland_display_update_serial (display, serial);
 
@@ -2533,10 +2533,10 @@ touch_handle_up (void            *data,
                  uint32_t         time,
                  int32_t          id)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkWaylandTouchData *touch;
-  GdkEvent *event;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandTouchData *touch;
+  CdkEvent *event;
 
   _cdk_wayland_display_update_serial (display, serial);
 
@@ -2562,9 +2562,9 @@ touch_handle_motion (void            *data,
                      wl_fixed_t       x,
                      wl_fixed_t       y)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandTouchData *touch;
-  GdkEvent *event;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandTouchData *touch;
+  CdkEvent *event;
 
   touch = cdk_wayland_seat_get_touch (seat, id);
   touch->x = wl_fixed_to_double (x);
@@ -2591,10 +2591,10 @@ static void
 touch_handle_cancel (void            *data,
                      struct wl_touch *wl_touch)
 {
-  GdkWaylandSeat *wayland_seat = data;
-  GdkWaylandTouchData *touch;
+  CdkWaylandSeat *wayland_seat = data;
+  CdkWaylandTouchData *touch;
   GHashTableIter iter;
-  GdkEvent *event;
+  CdkEvent *event;
 
   if (GDK_WAYLAND_DEVICE (wayland_seat->touch_master)->emulating_touch)
     {
@@ -2616,15 +2616,15 @@ touch_handle_cancel (void            *data,
 }
 
 static void
-emit_gesture_swipe_event (GdkWaylandSeat          *seat,
-                          GdkTouchpadGesturePhase  phase,
+emit_gesture_swipe_event (CdkWaylandSeat          *seat,
+                          CdkTouchpadGesturePhase  phase,
                           guint32                  _time,
                           guint32                  n_fingers,
                           gdouble                  dx,
                           gdouble                  dy)
 {
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkEvent *event;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkEvent *event;
 
   if (!seat->pointer_info.focus)
     return;
@@ -2667,8 +2667,8 @@ gesture_swipe_begin (void                                *data,
                      struct wl_surface                   *surface,
                      uint32_t                             fingers)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
 
   _cdk_wayland_display_update_serial (display, serial);
 
@@ -2685,7 +2685,7 @@ gesture_swipe_update (void                                *data,
                       wl_fixed_t                           dx,
                       wl_fixed_t                           dy)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
 
   emit_gesture_swipe_event (seat,
                             GDK_TOUCHPAD_GESTURE_PHASE_UPDATE,
@@ -2702,9 +2702,9 @@ gesture_swipe_end (void                                *data,
                    uint32_t                             time,
                    int32_t                              cancelled)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkTouchpadGesturePhase phase;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkTouchpadGesturePhase phase;
 
   _cdk_wayland_display_update_serial (display, serial);
 
@@ -2717,8 +2717,8 @@ gesture_swipe_end (void                                *data,
 }
 
 static void
-emit_gesture_pinch_event (GdkWaylandSeat          *seat,
-                          GdkTouchpadGesturePhase  phase,
+emit_gesture_pinch_event (CdkWaylandSeat          *seat,
+                          CdkTouchpadGesturePhase  phase,
                           guint32                  _time,
                           guint                    n_fingers,
                           gdouble                  dx,
@@ -2726,8 +2726,8 @@ emit_gesture_pinch_event (GdkWaylandSeat          *seat,
                           gdouble                  scale,
                           gdouble                  angle_delta)
 {
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkEvent *event;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkEvent *event;
 
   if (!seat->pointer_info.focus)
     return;
@@ -2772,8 +2772,8 @@ gesture_pinch_begin (void                                *data,
                      struct wl_surface                   *surface,
                      uint32_t                             fingers)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
 
   _cdk_wayland_display_update_serial (display, serial);
   emit_gesture_pinch_event (seat,
@@ -2791,7 +2791,7 @@ gesture_pinch_update (void                                *data,
                       wl_fixed_t                           scale,
                       wl_fixed_t                           rotation)
 {
-  GdkWaylandSeat *seat = data;
+  CdkWaylandSeat *seat = data;
 
   emit_gesture_pinch_event (seat,
                             GDK_TOUCHPAD_GESTURE_PHASE_UPDATE, time,
@@ -2809,9 +2809,9 @@ gesture_pinch_end (void                                *data,
                    uint32_t                             time,
                    int32_t                              cancelled)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkTouchpadGesturePhase phase;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkTouchpadGesturePhase phase;
 
   _cdk_wayland_display_update_serial (display, serial);
 
@@ -2824,11 +2824,11 @@ gesture_pinch_end (void                                *data,
                             0, 0, 1, 0);
 }
 
-static GdkDevice *
-tablet_select_device_for_tool (GdkWaylandTabletData *tablet,
-                               GdkDeviceTool        *tool)
+static CdkDevice *
+tablet_select_device_for_tool (CdkWaylandTabletData *tablet,
+                               CdkDeviceTool        *tool)
 {
-  GdkDevice *device;
+  CdkDevice *device;
 
   if (cdk_device_tool_get_tool_type (tool) == GDK_DEVICE_TOOL_TYPE_ERASER)
     device = tablet->eraser_device;
@@ -2839,8 +2839,8 @@ tablet_select_device_for_tool (GdkWaylandTabletData *tablet,
 }
 
 static void
-_cdk_wayland_seat_remove_tool (GdkWaylandSeat           *seat,
-                               GdkWaylandTabletToolData *tool)
+_cdk_wayland_seat_remove_tool (CdkWaylandSeat           *seat,
+                               CdkWaylandTabletToolData *tool)
 {
   seat->tablet_tools = g_list_remove (seat->tablet_tools, tool);
 
@@ -2852,10 +2852,10 @@ _cdk_wayland_seat_remove_tool (GdkWaylandSeat           *seat,
 }
 
 static void
-_cdk_wayland_seat_remove_tablet (GdkWaylandSeat       *seat,
-                                 GdkWaylandTabletData *tablet)
+_cdk_wayland_seat_remove_tablet (CdkWaylandSeat       *seat,
+                                 CdkWaylandTabletData *tablet)
 {
-  GdkWaylandDeviceManager *device_manager =
+  CdkWaylandDeviceManager *device_manager =
     GDK_WAYLAND_DEVICE_MANAGER (seat->device_manager);
 
   seat->tablets = g_list_remove (seat->tablets, tablet);
@@ -2864,7 +2864,7 @@ _cdk_wayland_seat_remove_tablet (GdkWaylandSeat       *seat,
 
   while (tablet->pads)
     {
-      GdkWaylandTabletPadData *pad = tablet->pads->data;
+      CdkWaylandTabletPadData *pad = tablet->pads->data;
 
       pad->current_tablet = NULL;
       tablet->pads = g_list_remove (tablet->pads, pad);
@@ -2902,10 +2902,10 @@ _cdk_wayland_seat_remove_tablet (GdkWaylandSeat       *seat,
 }
 
 static void
-_cdk_wayland_seat_remove_tablet_pad (GdkWaylandSeat          *seat,
-                                     GdkWaylandTabletPadData *pad)
+_cdk_wayland_seat_remove_tablet_pad (CdkWaylandSeat          *seat,
+                                     CdkWaylandTabletPadData *pad)
 {
-  GdkWaylandDeviceManager *device_manager =
+  CdkWaylandDeviceManager *device_manager =
     GDK_WAYLAND_DEVICE_MANAGER (seat->device_manager);
 
   seat->tablet_pads = g_list_remove (seat->tablet_pads, pad);
@@ -2920,11 +2920,11 @@ _cdk_wayland_seat_remove_tablet_pad (GdkWaylandSeat          *seat,
   g_free (pad);
 }
 
-static GdkWaylandTabletPadGroupData *
-tablet_pad_lookup_button_group (GdkWaylandTabletPadData *pad,
+static CdkWaylandTabletPadGroupData *
+tablet_pad_lookup_button_group (CdkWaylandTabletPadData *pad,
                                 uint32_t                 button)
 {
-  GdkWaylandTabletPadGroupData *group;
+  CdkWaylandTabletPadGroupData *group;
   GList *l;
 
   for (l = pad->mode_groups; l; l = l->next)
@@ -2943,7 +2943,7 @@ tablet_handle_name (void                 *data,
                     struct zwp_tablet_v2 *wp_tablet,
                     const char           *name)
 {
-  GdkWaylandTabletData *tablet = data;
+  CdkWaylandTabletData *tablet = data;
 
   tablet->name = g_strdup (name);
 }
@@ -2954,7 +2954,7 @@ tablet_handle_id (void                 *data,
                   uint32_t              vid,
                   uint32_t              pid)
 {
-  GdkWaylandTabletData *tablet = data;
+  CdkWaylandTabletData *tablet = data;
 
   tablet->vid = vid;
   tablet->pid = pid;
@@ -2965,7 +2965,7 @@ tablet_handle_path (void                 *data,
                     struct zwp_tablet_v2 *wp_tablet,
                     const char           *path)
 {
-  GdkWaylandTabletData *tablet = data;
+  CdkWaylandTabletData *tablet = data;
 
   tablet->path = g_strdup (path);
 }
@@ -2974,12 +2974,12 @@ static void
 tablet_handle_done (void                 *data,
                     struct zwp_tablet_v2 *wp_tablet)
 {
-  GdkWaylandTabletData *tablet = data;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tablet->seat);
-  GdkDisplay *display = cdk_seat_get_display (GDK_SEAT (seat));
-  GdkWaylandDeviceManager *device_manager =
+  CdkWaylandTabletData *tablet = data;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tablet->seat);
+  CdkDisplay *display = cdk_seat_get_display (GDK_SEAT (seat));
+  CdkWaylandDeviceManager *device_manager =
     GDK_WAYLAND_DEVICE_MANAGER (seat->device_manager);
-  GdkDevice *master, *stylus_device, *eraser_device;
+  CdkDevice *master, *stylus_device, *eraser_device;
   gchar *master_name, *eraser_name;
   gchar *vid, *pid;
 
@@ -3058,7 +3058,7 @@ static void
 tablet_handle_removed (void                 *data,
                        struct zwp_tablet_v2 *wp_tablet)
 {
-  GdkWaylandTabletData *tablet = data;
+  CdkWaylandTabletData *tablet = data;
 
   _cdk_wayland_seat_remove_tablet (GDK_WAYLAND_SEAT (tablet->seat), tablet);
 }
@@ -3117,9 +3117,9 @@ seat_handle_capabilities (void                    *data,
                           struct wl_seat          *wl_seat,
                           enum wl_seat_capability  caps)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandDeviceManager *device_manager = GDK_WAYLAND_DEVICE_MANAGER (seat->device_manager);
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandSeat *seat = data;
+  CdkWaylandDeviceManager *device_manager = GDK_WAYLAND_DEVICE_MANAGER (seat->device_manager);
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
 
   GDK_NOTE (MISC,
             g_message ("seat %p with %s%s%s", wl_seat,
@@ -3316,11 +3316,11 @@ seat_handle_capabilities (void                    *data,
     cdk_drag_context_set_device (seat->drop_context, seat->touch_master);
 }
 
-static GdkDevice *
-get_scroll_device (GdkWaylandSeat              *seat,
+static CdkDevice *
+get_scroll_device (CdkWaylandSeat              *seat,
                    enum wl_pointer_axis_source  source)
 {
-  GdkWaylandDeviceManager *device_manager = GDK_WAYLAND_DEVICE_MANAGER (seat->device_manager);
+  CdkWaylandDeviceManager *device_manager = GDK_WAYLAND_DEVICE_MANAGER (seat->device_manager);
 
   if (!seat->pointer)
     return NULL;
@@ -3418,7 +3418,7 @@ tablet_tool_handle_type (void                      *data,
                          struct zwp_tablet_tool_v2 *wp_tablet_tool,
                          uint32_t                   tool_type)
 {
-  GdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletToolData *tool = data;
 
   switch (tool_type)
     {
@@ -3455,7 +3455,7 @@ tablet_tool_handle_hardware_serial (void                      *data,
                                     uint32_t                   serial_hi,
                                     uint32_t                   serial_lo)
 {
-  GdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletToolData *tool = data;
 
   tool->hardware_serial = ((guint64) serial_hi) << 32 | serial_lo;
 }
@@ -3466,7 +3466,7 @@ tablet_tool_handle_hardware_id_wacom (void                      *data,
                                       uint32_t                   id_hi,
                                       uint32_t                   id_lo)
 {
-  GdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletToolData *tool = data;
 
   tool->hardware_id_wacom = ((guint64) id_hi) << 32 | id_lo;
 }
@@ -3476,7 +3476,7 @@ tablet_tool_handle_capability (void                      *data,
                                struct zwp_tablet_tool_v2 *wp_tablet_tool,
                                uint32_t                   capability)
 {
-  GdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletToolData *tool = data;
 
   switch (capability)
     {
@@ -3502,7 +3502,7 @@ static void
 tablet_tool_handle_done (void                      *data,
                          struct zwp_tablet_tool_v2 *wp_tablet_tool)
 {
-  GdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletToolData *tool = data;
 
   tool->tool = cdk_device_tool_new (tool->hardware_serial,
                                     tool->hardware_id_wacom,
@@ -3514,18 +3514,18 @@ static void
 tablet_tool_handle_removed (void                      *data,
                             struct zwp_tablet_tool_v2 *wp_tablet_tool)
 {
-  GdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletToolData *tool = data;
 
   _cdk_wayland_seat_remove_tool (GDK_WAYLAND_SEAT (tool->seat), tool);
 }
 
 static void
-cdk_wayland_tablet_flush_frame_event (GdkWaylandTabletData *tablet,
+cdk_wayland_tablet_flush_frame_event (CdkWaylandTabletData *tablet,
                                       guint32               time)
 {
-  GdkEventType event_type;
-  GdkWindow *window;
-  GdkEvent *event;
+  CdkEventType event_type;
+  CdkWindow *window;
+  CdkEvent *event;
 
   event = tablet->pointer_info.frame.event;
   tablet->pointer_info.frame.event = NULL;
@@ -3580,9 +3580,9 @@ cdk_wayland_tablet_flush_frame_event (GdkWaylandTabletData *tablet,
   g_object_unref (window);
 }
 
-static GdkEvent *
-cdk_wayland_tablet_get_frame_event (GdkWaylandTabletData *tablet,
-                                    GdkEventType          evtype)
+static CdkEvent *
+cdk_wayland_tablet_get_frame_event (CdkWaylandTabletData *tablet,
+                                    CdkEventType          evtype)
 {
   if (tablet->pointer_info.frame.event &&
       tablet->pointer_info.frame.event->type != evtype)
@@ -3593,8 +3593,8 @@ cdk_wayland_tablet_get_frame_event (GdkWaylandTabletData *tablet,
 }
 
 static void
-cdk_wayland_device_tablet_clone_tool_axes (GdkWaylandTabletData *tablet,
-                                           GdkDeviceTool        *tool)
+cdk_wayland_device_tablet_clone_tool_axes (CdkWaylandTabletData *tablet,
+                                           CdkDeviceTool        *tool)
 {
   gint axis_pos;
 
@@ -3651,12 +3651,12 @@ cdk_wayland_device_tablet_clone_tool_axes (GdkWaylandTabletData *tablet,
 }
 
 static void
-cdk_wayland_mimic_device_axes (GdkDevice *master,
-                               GdkDevice *slave)
+cdk_wayland_mimic_device_axes (CdkDevice *master,
+                               CdkDevice *slave)
 {
   gdouble axis_min, axis_max, axis_resolution;
-  GdkAtom axis_label;
-  GdkAxisUse axis_use;
+  CdkAtom axis_label;
+  CdkAxisUse axis_use;
   gint axis_count;
   gint i;
 
@@ -3682,12 +3682,12 @@ tablet_tool_handle_proximity_in (void                      *data,
                                  struct zwp_tablet_v2      *wp_tablet,
                                  struct wl_surface         *surface)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = zwp_tablet_v2_get_user_data (wp_tablet);
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tablet->seat);
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkWindow *window = wl_surface_get_user_data (surface);
-  GdkEvent *event;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = zwp_tablet_v2_get_user_data (wp_tablet);
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tablet->seat);
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWindow *window = wl_surface_get_user_data (surface);
+  CdkEvent *event;
 
   if (!surface)
       return;
@@ -3724,11 +3724,11 @@ static void
 tablet_tool_handle_proximity_out (void                      *data,
                                   struct zwp_tablet_tool_v2 *wp_tablet_tool)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
-  GdkEvent *event;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkEvent *event;
 #ifdef G_ENABLE_DEBUG
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tool->seat);
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tool->seat);
 #endif
 
   GDK_NOTE (EVENTS,
@@ -3752,13 +3752,13 @@ tablet_tool_handle_proximity_out (void                      *data,
 }
 
 static void
-tablet_create_button_event_frame (GdkWaylandTabletData *tablet,
-                                  GdkEventType          evtype,
+tablet_create_button_event_frame (CdkWaylandTabletData *tablet,
+                                  CdkEventType          evtype,
                                   guint                 button)
 {
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tablet->seat);
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkEvent *event;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tablet->seat);
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkEvent *event;
 
   event = cdk_wayland_tablet_get_frame_event (tablet, evtype);
   event->button.window = g_object_ref (tablet->pointer_info.focus);
@@ -3782,10 +3782,10 @@ tablet_tool_handle_down (void                      *data,
                          struct zwp_tablet_tool_v2 *wp_tablet_tool,
                          uint32_t                   serial)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tool->seat);
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tool->seat);
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
 
   if (!tablet->pointer_info.focus)
     return;
@@ -3801,8 +3801,8 @@ static void
 tablet_tool_handle_up (void                      *data,
                        struct zwp_tablet_tool_v2 *wp_tablet_tool)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
 
   if (!tablet->pointer_info.focus)
     return;
@@ -3817,11 +3817,11 @@ tablet_tool_handle_motion (void                      *data,
                            wl_fixed_t                 sx,
                            wl_fixed_t                 sy)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tool->seat);
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
-  GdkEvent *event;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tool->seat);
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkEvent *event;
 
   tablet->pointer_info.surface_x = wl_fixed_to_double (sx);
   tablet->pointer_info.surface_y = wl_fixed_to_double (sy);
@@ -3853,8 +3853,8 @@ tablet_tool_handle_pressure (void                      *data,
                              struct zwp_tablet_tool_v2 *wp_tablet_tool,
                              uint32_t                   pressure)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
   gint axis_index = tablet->axis_indices[GDK_AXIS_PRESSURE];
 
   _cdk_device_translate_axis (tablet->current_device, axis_index,
@@ -3870,8 +3870,8 @@ tablet_tool_handle_distance (void                      *data,
                              struct zwp_tablet_tool_v2 *wp_tablet_tool,
                              uint32_t                   distance)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
   gint axis_index = tablet->axis_indices[GDK_AXIS_DISTANCE];
 
   _cdk_device_translate_axis (tablet->current_device, axis_index,
@@ -3888,8 +3888,8 @@ tablet_tool_handle_tilt (void                      *data,
                          wl_fixed_t                 xtilt,
                          wl_fixed_t                 ytilt)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
   gint xtilt_axis_index = tablet->axis_indices[GDK_AXIS_XTILT];
   gint ytilt_axis_index = tablet->axis_indices[GDK_AXIS_YTILT];
 
@@ -3913,9 +3913,9 @@ tablet_tool_handle_button (void                      *data,
                            uint32_t                   button,
                            uint32_t                   state)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
-  GdkEventType evtype;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkEventType evtype;
   guint n_button;
 
   if (!tablet->pointer_info.focus)
@@ -3947,8 +3947,8 @@ tablet_tool_handle_rotation (void                      *data,
                              struct zwp_tablet_tool_v2 *wp_tablet_tool,
                              wl_fixed_t                 degrees)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
   gint axis_index = tablet->axis_indices[GDK_AXIS_ROTATION];
 
   _cdk_device_translate_axis (tablet->current_device, axis_index,
@@ -3966,8 +3966,8 @@ tablet_tool_handle_slider (void                      *data,
                            struct zwp_tablet_tool_v2 *wp_tablet_tool,
                            int32_t                    position)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
   gint axis_index = tablet->axis_indices[GDK_AXIS_SLIDER];
 
   _cdk_device_translate_axis (tablet->current_device, axis_index,
@@ -3984,10 +3984,10 @@ tablet_tool_handle_wheel (void                      *data,
                           int32_t                    degrees,
                           int32_t                    clicks)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tablet->seat);
-  GdkEvent *event;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (tablet->seat);
+  CdkEvent *event;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet tool %d wheel %d/%d",
@@ -4017,9 +4017,9 @@ tablet_tool_handle_frame (void                      *data,
                           struct zwp_tablet_tool_v2 *wl_tablet_tool,
                           uint32_t                   time)
 {
-  GdkWaylandTabletToolData *tool = data;
-  GdkWaylandTabletData *tablet = tool->current_tablet;
-  GdkEvent *frame_event;
+  CdkWaylandTabletToolData *tool = data;
+  CdkWaylandTabletData *tablet = tool->current_tablet;
+  CdkEvent *frame_event;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet frame, time %d", time));
@@ -4063,7 +4063,7 @@ tablet_pad_ring_handle_source (void                          *data,
                                struct zwp_tablet_pad_ring_v2 *wp_tablet_pad_ring,
                                uint32_t                       source)
 {
-  GdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadGroupData *group = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad ring handle source, ring = %p source = %d",
@@ -4077,7 +4077,7 @@ tablet_pad_ring_handle_angle (void                          *data,
                               struct zwp_tablet_pad_ring_v2 *wp_tablet_pad_ring,
                               wl_fixed_t                     angle)
 {
-  GdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadGroupData *group = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad ring handle angle, ring = %p angle = %f",
@@ -4090,7 +4090,7 @@ static void
 tablet_pad_ring_handle_stop (void                          *data,
                              struct zwp_tablet_pad_ring_v2 *wp_tablet_pad_ring)
 {
-  GdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadGroupData *group = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad ring handle stop, ring = %p", wp_tablet_pad_ring));
@@ -4103,10 +4103,10 @@ tablet_pad_ring_handle_frame (void                          *data,
                               struct zwp_tablet_pad_ring_v2 *wp_tablet_pad_ring,
                               uint32_t                       time)
 {
-  GdkWaylandTabletPadGroupData *group = data;
-  GdkWaylandTabletPadData *pad = group->pad;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (pad->seat);
-  GdkEvent *event;
+  CdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadData *pad = group->pad;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (pad->seat);
+  CdkEvent *event;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad ring handle frame, ring = %p", wp_tablet_pad_ring));
@@ -4137,7 +4137,7 @@ tablet_pad_strip_handle_source (void                           *data,
                                 struct zwp_tablet_pad_strip_v2 *wp_tablet_pad_strip,
                                 uint32_t                        source)
 {
-  GdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadGroupData *group = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad strip handle source, strip = %p source = %d",
@@ -4151,7 +4151,7 @@ tablet_pad_strip_handle_position (void                           *data,
                                   struct zwp_tablet_pad_strip_v2 *wp_tablet_pad_strip,
                                   uint32_t                        position)
 {
-  GdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadGroupData *group = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad strip handle position, strip = %p position = %d",
@@ -4164,7 +4164,7 @@ static void
 tablet_pad_strip_handle_stop (void                           *data,
                               struct zwp_tablet_pad_strip_v2 *wp_tablet_pad_strip)
 {
-  GdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadGroupData *group = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad strip handle stop, strip = %p",
@@ -4178,10 +4178,10 @@ tablet_pad_strip_handle_frame (void                           *data,
                                struct zwp_tablet_pad_strip_v2 *wp_tablet_pad_strip,
                                uint32_t                        time)
 {
-  GdkWaylandTabletPadGroupData *group = data;
-  GdkWaylandTabletPadData *pad = group->pad;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (pad->seat);
-  GdkEvent *event;
+  CdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadData *pad = group->pad;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (pad->seat);
+  CdkEvent *event;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad strip handle frame, strip = %p",
@@ -4214,7 +4214,7 @@ tablet_pad_group_handle_buttons (void                           *data,
                                  struct zwp_tablet_pad_group_v2 *wp_tablet_pad_group,
                                  struct wl_array                *buttons)
 {
-  GdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadGroupData *group = data;
   uint32_t *p;
 
   GDK_NOTE (EVENTS,
@@ -4234,7 +4234,7 @@ tablet_pad_group_handle_ring (void                           *data,
                               struct zwp_tablet_pad_group_v2 *wp_tablet_pad_group,
                               struct zwp_tablet_pad_ring_v2  *wp_tablet_pad_ring)
 {
-  GdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadGroupData *group = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad group handle ring, pad group = %p, ring = %p",
@@ -4253,7 +4253,7 @@ tablet_pad_group_handle_strip (void                           *data,
                                struct zwp_tablet_pad_group_v2 *wp_tablet_pad_group,
                                struct zwp_tablet_pad_strip_v2 *wp_tablet_pad_strip)
 {
-  GdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadGroupData *group = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad group handle strip, pad group = %p, strip = %p",
@@ -4272,7 +4272,7 @@ tablet_pad_group_handle_modes (void                           *data,
                                struct zwp_tablet_pad_group_v2 *wp_tablet_pad_group,
                                uint32_t                        modes)
 {
-  GdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadGroupData *group = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad group handle modes, pad group = %p, n_modes = %d",
@@ -4297,10 +4297,10 @@ tablet_pad_group_handle_mode (void                           *data,
                               uint32_t                        serial,
                               uint32_t                        mode)
 {
-  GdkWaylandTabletPadGroupData *group = data;
-  GdkWaylandTabletPadData *pad = group->pad;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (pad->seat);
-  GdkEvent *event;
+  CdkWaylandTabletPadGroupData *group = data;
+  CdkWaylandTabletPadData *pad = group->pad;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (pad->seat);
+  CdkEvent *event;
   guint n_group;
 
   GDK_NOTE (EVENTS,
@@ -4337,14 +4337,14 @@ tablet_pad_handle_group (void                           *data,
                          struct zwp_tablet_pad_v2       *wp_tablet_pad,
                          struct zwp_tablet_pad_group_v2 *wp_tablet_pad_group)
 {
-  GdkWaylandTabletPadData *pad = data;
-  GdkWaylandTabletPadGroupData *group;
+  CdkWaylandTabletPadData *pad = data;
+  CdkWaylandTabletPadGroupData *group;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad handle group, pad group = %p, group = %p",
                        wp_tablet_pad_group, wp_tablet_pad_group));
 
-  group = g_new0 (GdkWaylandTabletPadGroupData, 1);
+  group = g_new0 (CdkWaylandTabletPadGroupData, 1);
   group->wp_tablet_pad_group = wp_tablet_pad_group;
   group->pad = pad;
 
@@ -4359,7 +4359,7 @@ tablet_pad_handle_path (void                     *data,
                         struct zwp_tablet_pad_v2 *wp_tablet_pad,
                         const char               *path)
 {
-  GdkWaylandTabletPadData *pad = data;
+  CdkWaylandTabletPadData *pad = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad handle path, pad = %p, path = %s",
@@ -4373,7 +4373,7 @@ tablet_pad_handle_buttons (void                     *data,
                            struct zwp_tablet_pad_v2 *wp_tablet_pad,
                            uint32_t                  buttons)
 {
-  GdkWaylandTabletPadData *pad = data;
+  CdkWaylandTabletPadData *pad = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad handle buttons, pad = %p, n_buttons = %d",
@@ -4386,9 +4386,9 @@ static void
 tablet_pad_handle_done (void                     *data,
                         struct zwp_tablet_pad_v2 *wp_tablet_pad)
 {
-  GdkWaylandTabletPadData *pad = data;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (pad->seat);
-  GdkWaylandDeviceManager *device_manager =
+  CdkWaylandTabletPadData *pad = data;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (pad->seat);
+  CdkWaylandDeviceManager *device_manager =
     GDK_WAYLAND_DEVICE_MANAGER (seat->device_manager);
 
   GDK_NOTE (EVENTS,
@@ -4416,10 +4416,10 @@ tablet_pad_handle_button (void                     *data,
                           uint32_t                  button,
                           uint32_t                  state)
 {
-  GdkWaylandTabletPadData *pad = data;
-  GdkWaylandTabletPadGroupData *group;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (pad->seat);
-  GdkEvent *event;
+  CdkWaylandTabletPadData *pad = data;
+  CdkWaylandTabletPadGroupData *group;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (pad->seat);
+  CdkEvent *event;
   gint n_group;
 
   GDK_NOTE (EVENTS,
@@ -4451,8 +4451,8 @@ tablet_pad_handle_enter (void                     *data,
                          struct zwp_tablet_v2     *wp_tablet,
                          struct wl_surface        *surface)
 {
-  GdkWaylandTabletPadData *pad = data;
-  GdkWaylandTabletData *tablet = zwp_tablet_v2_get_user_data (wp_tablet);
+  CdkWaylandTabletPadData *pad = data;
+  CdkWaylandTabletData *tablet = zwp_tablet_v2_get_user_data (wp_tablet);
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad handle enter, pad = %p, tablet = %p surface = %p",
@@ -4469,7 +4469,7 @@ tablet_pad_handle_leave (void                     *data,
                          uint32_t                  serial,
                          struct wl_surface        *surface)
 {
-  GdkWaylandTabletPadData *pad = data;
+  CdkWaylandTabletPadData *pad = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad handle leave, pad = %p, surface = %p",
@@ -4486,7 +4486,7 @@ static void
 tablet_pad_handle_removed (void                     *data,
                            struct zwp_tablet_pad_v2 *wp_tablet_pad)
 {
-  GdkWaylandTabletPadData *pad = data;
+  CdkWaylandTabletPadData *pad = data;
 
   GDK_NOTE (EVENTS,
             g_message ("tablet pad handle removed, pad = %p", wp_tablet_pad));
@@ -4517,10 +4517,10 @@ tablet_seat_handle_tablet_added (void                      *data,
                                  struct zwp_tablet_seat_v2 *wp_tablet_seat,
                                  struct zwp_tablet_v2      *wp_tablet)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandTabletData *tablet;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandTabletData *tablet;
 
-  tablet = g_new0 (GdkWaylandTabletData, 1);
+  tablet = g_new0 (CdkWaylandTabletData, 1);
   tablet->seat = GDK_SEAT (seat);
 
   tablet->wp_tablet = wp_tablet;
@@ -4536,10 +4536,10 @@ tablet_seat_handle_tool_added (void                      *data,
                                struct zwp_tablet_seat_v2 *wp_tablet_seat,
                                struct zwp_tablet_tool_v2 *wp_tablet_tool)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandTabletToolData *tool;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandTabletToolData *tool;
 
-  tool = g_new0 (GdkWaylandTabletToolData, 1);
+  tool = g_new0 (CdkWaylandTabletToolData, 1);
   tool->wp_tablet_tool = wp_tablet_tool;
   tool->seat = GDK_SEAT (seat);
 
@@ -4554,10 +4554,10 @@ tablet_seat_handle_pad_added (void                      *data,
                               struct zwp_tablet_seat_v2 *wp_tablet_seat,
                               struct zwp_tablet_pad_v2  *wp_tablet_pad)
 {
-  GdkWaylandSeat *seat = data;
-  GdkWaylandTabletPadData *pad;
+  CdkWaylandSeat *seat = data;
+  CdkWaylandTabletPadData *pad;
 
-  pad = g_new0 (GdkWaylandTabletPadData, 1);
+  pad = g_new0 (CdkWaylandTabletPadData, 1);
   pad->wp_tablet_pad = wp_tablet_pad;
   pad->seat = GDK_SEAT (seat);
 
@@ -4574,17 +4574,17 @@ static const struct zwp_tablet_seat_v2_listener tablet_seat_listener = {
 };
 
 static void
-on_monitors_changed (GdkScreen      *screen,
-                     GdkWaylandSeat *seat)
+on_monitors_changed (CdkScreen      *screen,
+                     CdkWaylandSeat *seat)
 {
   pointer_surface_update_scale (seat->master_pointer);
 }
 
 static void
-init_devices (GdkWaylandSeat *seat)
+init_devices (CdkWaylandSeat *seat)
 {
-  GdkWaylandDeviceManager *device_manager = GDK_WAYLAND_DEVICE_MANAGER (seat->device_manager);
-  GdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandDeviceManager *device_manager = GDK_WAYLAND_DEVICE_MANAGER (seat->device_manager);
+  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (seat->display);
 
   /* pointer */
   seat->master_pointer = g_object_new (GDK_TYPE_WAYLAND_DEVICE,
@@ -4630,11 +4630,11 @@ init_devices (GdkWaylandSeat *seat)
 }
 
 static void
-pointer_surface_update_scale (GdkDevice *device)
+pointer_surface_update_scale (CdkDevice *device)
 {
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
-  GdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
+  CdkWaylandPointerData *pointer = GDK_WAYLAND_DEVICE (device)->pointer;
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (seat->display);
   guint32 scale;
   GSList *l;
 
@@ -4667,9 +4667,9 @@ pointer_surface_enter (void              *data,
                        struct wl_output  *output)
 
 {
-  GdkDevice *device = data;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
-  GdkWaylandTabletData *tablet;
+  CdkDevice *device = data;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
+  CdkWaylandTabletData *tablet;
 
   GDK_NOTE (EVENTS,
             g_message ("pointer surface of seat %p entered output %p",
@@ -4696,9 +4696,9 @@ pointer_surface_leave (void              *data,
                        struct wl_surface *wl_surface,
                        struct wl_output  *output)
 {
-  GdkDevice *device = data;
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
-  GdkWaylandTabletData *tablet;
+  CdkDevice *device = data;
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
+  CdkWaylandTabletData *tablet;
 
   GDK_NOTE (EVENTS,
             g_message ("pointer surface of seat %p left output %p",
@@ -4725,11 +4725,11 @@ static const struct wl_surface_listener pointer_surface_listener = {
   pointer_surface_leave
 };
 
-static GdkWindow *
-create_foreign_dnd_window (GdkDisplay *display)
+static CdkWindow *
+create_foreign_dnd_window (CdkDisplay *display)
 {
-  GdkWindowAttr attrs;
-  GdkScreen *screen;
+  CdkWindowAttr attrs;
+  CdkScreen *screen;
   guint mask;
 
   screen = cdk_display_get_default_screen (display);
@@ -4746,7 +4746,7 @@ create_foreign_dnd_window (GdkDisplay *display)
 }
 
 static void
-cdk_wayland_pointer_data_finalize (GdkWaylandPointerData *pointer)
+cdk_wayland_pointer_data_finalize (CdkWaylandPointerData *pointer)
 {
   g_clear_object (&pointer->focus);
   g_clear_object (&pointer->cursor);
@@ -4757,7 +4757,7 @@ cdk_wayland_pointer_data_finalize (GdkWaylandPointerData *pointer)
 static void
 cdk_wayland_seat_finalize (GObject *object)
 {
-  GdkWaylandSeat *seat = GDK_WAYLAND_SEAT (object);
+  CdkWaylandSeat *seat = GDK_WAYLAND_SEAT (object);
   GList *l;
 
   for (l = seat->tablet_tools; l != NULL; l = l->next)
@@ -4783,11 +4783,11 @@ cdk_wayland_seat_finalize (GObject *object)
   G_OBJECT_CLASS (cdk_wayland_seat_parent_class)->finalize (object);
 }
 
-static GdkSeatCapabilities
-cdk_wayland_seat_get_capabilities (GdkSeat *seat)
+static CdkSeatCapabilities
+cdk_wayland_seat_get_capabilities (CdkSeat *seat)
 {
-  GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
-  GdkSeatCapabilities caps = 0;
+  CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
+  CdkSeatCapabilities caps = 0;
 
   if (wayland_seat->master_pointer)
     caps |= GDK_SEAT_CAPABILITY_POINTER;
@@ -4800,8 +4800,8 @@ cdk_wayland_seat_get_capabilities (GdkSeat *seat)
 }
 
 static void
-cdk_wayland_seat_set_grab_window (GdkWaylandSeat *seat,
-                                  GdkWindow      *window)
+cdk_wayland_seat_set_grab_window (CdkWaylandSeat *seat,
+                                  CdkWindow      *window)
 {
   if (seat->grab_window)
     {
@@ -4820,20 +4820,20 @@ cdk_wayland_seat_set_grab_window (GdkWaylandSeat *seat,
     }
 }
 
-static GdkGrabStatus
-cdk_wayland_seat_grab (GdkSeat                *seat,
-                       GdkWindow              *window,
-                       GdkSeatCapabilities     capabilities,
+static CdkGrabStatus
+cdk_wayland_seat_grab (CdkSeat                *seat,
+                       CdkWindow              *window,
+                       CdkSeatCapabilities     capabilities,
                        gboolean                owner_events,
-                       GdkCursor              *cursor,
-                       const GdkEvent         *event,
-                       GdkSeatGrabPrepareFunc  prepare_func,
+                       CdkCursor              *cursor,
+                       const CdkEvent         *event,
+                       CdkSeatGrabPrepareFunc  prepare_func,
                        gpointer                prepare_func_data)
 {
-  GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
+  CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
   guint32 evtime = event ? cdk_event_get_time (event) : GDK_CURRENT_TIME;
-  GdkDisplay *display = cdk_seat_get_display (seat);
-  GdkWindow *native;
+  CdkDisplay *display = cdk_seat_get_display (seat);
+  CdkWindow *native;
   GList *l;
 
   native = cdk_window_get_toplevel (window);
@@ -4862,7 +4862,7 @@ cdk_wayland_seat_grab (GdkSeat                *seat,
   if (!cdk_window_is_visible (window))
     {
       cdk_wayland_seat_set_grab_window (wayland_seat, NULL);
-      g_critical ("Window %p has not been made visible in GdkSeatGrabPrepareFunc",
+      g_critical ("Window %p has not been made visible in CdkSeatGrabPrepareFunc",
                   window);
       return GDK_GRAB_NOT_VIEWABLE;
     }
@@ -4935,7 +4935,7 @@ cdk_wayland_seat_grab (GdkSeat                *seat,
     {
       for (l = wayland_seat->tablets; l; l = l->next)
         {
-          GdkWaylandTabletData *tablet = l->data;
+          CdkWaylandTabletData *tablet = l->data;
 
           device_maybe_emit_grab_crossing (tablet->master, native, evtime);
 
@@ -4958,11 +4958,11 @@ cdk_wayland_seat_grab (GdkSeat                *seat,
 }
 
 static void
-cdk_wayland_seat_ungrab (GdkSeat *seat)
+cdk_wayland_seat_ungrab (CdkSeat *seat)
 {
-  GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
-  GdkDisplay *display = cdk_seat_get_display (seat);
-  GdkDeviceGrabInfo *grab;
+  CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
+  CdkDisplay *display = cdk_seat_get_display (seat);
+  CdkDeviceGrabInfo *grab;
   GList *l;
 
   g_clear_object (&wayland_seat->grab_cursor);
@@ -4979,7 +4979,7 @@ cdk_wayland_seat_ungrab (GdkSeat *seat)
 
   if (wayland_seat->master_keyboard)
     {
-      GdkWindow *prev_focus;
+      CdkWindow *prev_focus;
 
       prev_focus = device_maybe_emit_ungrab_crossing (wayland_seat->master_keyboard,
                                                       GDK_CURRENT_TIME);
@@ -4997,7 +4997,7 @@ cdk_wayland_seat_ungrab (GdkSeat *seat)
 
   for (l = wayland_seat->tablets; l; l = l->next)
     {
-      GdkWaylandTabletData *tablet = l->data;
+      CdkWaylandTabletData *tablet = l->data;
 
       grab = _cdk_display_get_last_device_grab (display, tablet->master);
 
@@ -5006,11 +5006,11 @@ cdk_wayland_seat_ungrab (GdkSeat *seat)
     }
 }
 
-static GdkDevice *
-cdk_wayland_seat_get_master (GdkSeat             *seat,
-                             GdkSeatCapabilities  capabilities)
+static CdkDevice *
+cdk_wayland_seat_get_master (CdkSeat             *seat,
+                             CdkSeatCapabilities  capabilities)
 {
-  GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
+  CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
 
   if (capabilities == GDK_SEAT_CAPABILITY_POINTER)
     return wayland_seat->master_pointer;
@@ -5023,10 +5023,10 @@ cdk_wayland_seat_get_master (GdkSeat             *seat,
 }
 
 static GList *
-cdk_wayland_seat_get_slaves (GdkSeat             *seat,
-                             GdkSeatCapabilities  capabilities)
+cdk_wayland_seat_get_slaves (CdkSeat             *seat,
+                             CdkSeatCapabilities  capabilities)
 {
-  GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
+  CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
   GList *slaves = NULL;
 
   if (wayland_seat->finger_scrolling && (capabilities & GDK_SEAT_CAPABILITY_POINTER))
@@ -5048,7 +5048,7 @@ cdk_wayland_seat_get_slaves (GdkSeat             *seat,
 
       for (l = wayland_seat->tablets; l; l = l->next)
         {
-          GdkWaylandTabletData *tablet = l->data;
+          CdkWaylandTabletData *tablet = l->data;
 
           slaves = g_list_prepend (slaves, tablet->stylus_device);
           slaves = g_list_prepend (slaves, tablet->eraser_device);
@@ -5059,10 +5059,10 @@ cdk_wayland_seat_get_slaves (GdkSeat             *seat,
 }
 
 static void
-cdk_wayland_seat_class_init (GdkWaylandSeatClass *klass)
+cdk_wayland_seat_class_init (CdkWaylandSeatClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GdkSeatClass *seat_class = GDK_SEAT_CLASS (klass);
+  CdkSeatClass *seat_class = GDK_SEAT_CLASS (klass);
 
   object_class->finalize = cdk_wayland_seat_finalize;
 
@@ -5074,16 +5074,16 @@ cdk_wayland_seat_class_init (GdkWaylandSeatClass *klass)
 }
 
 static void
-cdk_wayland_seat_init (GdkWaylandSeat *seat)
+cdk_wayland_seat_init (CdkWaylandSeat *seat)
 {
 }
 
 static void
-init_pointer_data (GdkWaylandPointerData *pointer_data,
-                   GdkDisplay            *display,
-                   GdkDevice             *master)
+init_pointer_data (CdkWaylandPointerData *pointer_data,
+                   CdkDisplay            *display,
+                   CdkDevice             *master)
 {
-  GdkWaylandDisplay *display_wayland;
+  CdkWaylandDisplay *display_wayland;
 
   display_wayland = GDK_WAYLAND_DISPLAY (display);
 
@@ -5096,13 +5096,13 @@ init_pointer_data (GdkWaylandPointerData *pointer_data,
 }
 
 void
-_cdk_wayland_device_manager_add_seat (GdkDeviceManager *device_manager,
+_cdk_wayland_device_manager_add_seat (CdkDeviceManager *device_manager,
                                       guint32           id,
 				      struct wl_seat   *wl_seat)
 {
-  GdkDisplay *display;
-  GdkWaylandDisplay *display_wayland;
-  GdkWaylandSeat *seat;
+  CdkDisplay *display;
+  CdkWaylandDisplay *display_wayland;
+  CdkWaylandSeat *seat;
 
   display = cdk_device_manager_get_display (device_manager);
   display_wayland = GDK_WAYLAND_DISPLAY (display);
@@ -5167,17 +5167,17 @@ _cdk_wayland_device_manager_add_seat (GdkDeviceManager *device_manager,
 }
 
 void
-_cdk_wayland_device_manager_remove_seat (GdkDeviceManager *manager,
+_cdk_wayland_device_manager_remove_seat (CdkDeviceManager *manager,
                                          guint32           id)
 {
-  GdkDisplay *display = cdk_device_manager_get_display (manager);
+  CdkDisplay *display = cdk_device_manager_get_display (manager);
   GList *l, *seats;
 
   seats = cdk_display_list_seats (display);
 
   for (l = seats; l != NULL; l = l->next)
     {
-      GdkWaylandSeat *seat = l->data;
+      CdkWaylandSeat *seat = l->data;
 
       if (seat->id != id)
         continue;
@@ -5198,7 +5198,7 @@ free_device (gpointer data)
 static void
 cdk_wayland_device_manager_finalize (GObject *object)
 {
-  GdkWaylandDeviceManager *device_manager;
+  CdkWaylandDeviceManager *device_manager;
 
   device_manager = GDK_WAYLAND_DEVICE_MANAGER (object);
 
@@ -5208,10 +5208,10 @@ cdk_wayland_device_manager_finalize (GObject *object)
 }
 
 static GList *
-cdk_wayland_device_manager_list_devices (GdkDeviceManager *device_manager,
-                                         GdkDeviceType     type)
+cdk_wayland_device_manager_list_devices (CdkDeviceManager *device_manager,
+                                         CdkDeviceType     type)
 {
-  GdkWaylandDeviceManager *wayland_device_manager;
+  CdkWaylandDeviceManager *wayland_device_manager;
   GList *devices = NULL, *l;
 
   wayland_device_manager = GDK_WAYLAND_DEVICE_MANAGER (device_manager);
@@ -5225,16 +5225,16 @@ cdk_wayland_device_manager_list_devices (GdkDeviceManager *device_manager,
   return devices;
 }
 
-static GdkDevice *
-cdk_wayland_device_manager_get_client_pointer (GdkDeviceManager *device_manager)
+static CdkDevice *
+cdk_wayland_device_manager_get_client_pointer (CdkDeviceManager *device_manager)
 {
-  GdkWaylandDeviceManager *wayland_device_manager;
-  GdkWaylandSeat *seat;
-  GdkDevice *device;
+  CdkWaylandDeviceManager *wayland_device_manager;
+  CdkWaylandSeat *seat;
+  CdkDevice *device;
 
   wayland_device_manager = GDK_WAYLAND_DEVICE_MANAGER (device_manager);
 
-  /* Find the master pointer of the first GdkWaylandSeat we find */
+  /* Find the master pointer of the first CdkWaylandSeat we find */
   device = wayland_device_manager->devices->data;
   seat = GDK_WAYLAND_SEAT (cdk_device_get_seat (device));
 
@@ -5242,9 +5242,9 @@ cdk_wayland_device_manager_get_client_pointer (GdkDeviceManager *device_manager)
 }
 
 static void
-cdk_wayland_device_manager_class_init (GdkWaylandDeviceManagerClass *klass)
+cdk_wayland_device_manager_class_init (CdkWaylandDeviceManagerClass *klass)
 {
-  GdkDeviceManagerClass *device_manager_class = GDK_DEVICE_MANAGER_CLASS (klass);
+  CdkDeviceManagerClass *device_manager_class = GDK_DEVICE_MANAGER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = cdk_wayland_device_manager_finalize;
@@ -5253,12 +5253,12 @@ cdk_wayland_device_manager_class_init (GdkWaylandDeviceManagerClass *klass)
 }
 
 static void
-cdk_wayland_device_manager_init (GdkWaylandDeviceManager *device_manager)
+cdk_wayland_device_manager_init (CdkWaylandDeviceManager *device_manager)
 {
 }
 
-GdkDeviceManager *
-_cdk_wayland_device_manager_new (GdkDisplay *display)
+CdkDeviceManager *
+_cdk_wayland_device_manager_new (CdkDisplay *display)
 {
   return g_object_new (GDK_TYPE_WAYLAND_DEVICE_MANAGER,
                        "display", display,
@@ -5266,12 +5266,12 @@ _cdk_wayland_device_manager_new (GdkDisplay *display)
 }
 
 uint32_t
-_cdk_wayland_device_get_implicit_grab_serial (GdkWaylandDevice *device,
-                                              const GdkEvent   *event)
+_cdk_wayland_device_get_implicit_grab_serial (CdkWaylandDevice *device,
+                                              const CdkEvent   *event)
 {
-  GdkSeat *seat = cdk_device_get_seat (GDK_DEVICE (device));
-  GdkEventSequence *sequence = NULL;
-  GdkWaylandTouchData *touch = NULL;
+  CdkSeat *seat = cdk_device_get_seat (GDK_DEVICE (device));
+  CdkEventSequence *sequence = NULL;
+  CdkWaylandTouchData *touch = NULL;
 
   if (event)
     sequence = cdk_event_get_event_sequence (event);
@@ -5285,13 +5285,13 @@ _cdk_wayland_device_get_implicit_grab_serial (GdkWaylandDevice *device,
 
   if (event)
     {
-      GdkDevice *source = cdk_event_get_source_device (event);
-      GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
+      CdkDevice *source = cdk_event_get_source_device (event);
+      CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
       GList *l;
 
       for (l = wayland_seat->tablets; l; l = l->next)
         {
-          GdkWaylandTabletData *tablet = l->data;
+          CdkWaylandTabletData *tablet = l->data;
 
           if (tablet->current_device == source)
             return tablet->pointer_info.press_serial;
@@ -5302,11 +5302,11 @@ _cdk_wayland_device_get_implicit_grab_serial (GdkWaylandDevice *device,
 }
 
 uint32_t
-_cdk_wayland_seat_get_last_implicit_grab_serial (GdkSeat           *seat,
-                                                 GdkEventSequence **sequence)
+_cdk_wayland_seat_get_last_implicit_grab_serial (CdkSeat           *seat,
+                                                 CdkEventSequence **sequence)
 {
-  GdkWaylandSeat *wayland_seat;
-  GdkWaylandTouchData *touch;
+  CdkWaylandSeat *wayland_seat;
+  CdkWaylandTouchData *touch;
   GHashTableIter iter;
   GList *l;
   uint32_t serial;
@@ -5324,7 +5324,7 @@ _cdk_wayland_seat_get_last_implicit_grab_serial (GdkSeat           *seat,
 
   for (l = wayland_seat->tablets; l; l = l->next)
     {
-      GdkWaylandTabletData *tablet = l->data;
+      CdkWaylandTabletData *tablet = l->data;
 
       if (tablet->pointer_info.press_serial > serial)
         serial = tablet->pointer_info.press_serial;
@@ -5344,12 +5344,12 @@ _cdk_wayland_seat_get_last_implicit_grab_serial (GdkSeat           *seat,
 }
 
 void
-cdk_wayland_device_unset_touch_grab (GdkDevice        *cdk_device,
-                                     GdkEventSequence *sequence)
+cdk_wayland_device_unset_touch_grab (CdkDevice        *cdk_device,
+                                     CdkEventSequence *sequence)
 {
-  GdkWaylandSeat *seat;
-  GdkWaylandTouchData *touch;
-  GdkEvent *event;
+  CdkWaylandSeat *seat;
+  CdkWaylandTouchData *touch;
+  CdkEvent *event;
 
   g_return_if_fail (GDK_IS_WAYLAND_DEVICE (cdk_device));
 
@@ -5372,11 +5372,11 @@ cdk_wayland_device_unset_touch_grab (GdkDevice        *cdk_device,
 }
 
 void
-cdk_wayland_seat_set_global_cursor (GdkSeat   *seat,
-                                    GdkCursor *cursor)
+cdk_wayland_seat_set_global_cursor (CdkSeat   *seat,
+                                    CdkCursor *cursor)
 {
-  GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
-  GdkDevice *pointer;
+  CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
+  CdkDevice *pointer;
 
   pointer = cdk_seat_get_pointer (seat);
 
@@ -5387,9 +5387,9 @@ cdk_wayland_seat_set_global_cursor (GdkSeat   *seat,
 }
 
 struct wl_data_device *
-cdk_wayland_device_get_data_device (GdkDevice *cdk_device)
+cdk_wayland_device_get_data_device (CdkDevice *cdk_device)
 {
-  GdkWaylandSeat *seat;
+  CdkWaylandSeat *seat;
 
   g_return_val_if_fail (GDK_IS_WAYLAND_DEVICE (cdk_device), NULL);
 
@@ -5398,11 +5398,11 @@ cdk_wayland_device_get_data_device (GdkDevice *cdk_device)
 }
 
 void
-cdk_wayland_seat_set_selection (GdkSeat               *seat,
+cdk_wayland_seat_set_selection (CdkSeat               *seat,
                                 struct wl_data_source *source)
 {
-  GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
-  GdkWaylandDisplay *display_wayland;
+  CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
+  CdkWaylandDisplay *display_wayland;
 
   display_wayland = GDK_WAYLAND_DISPLAY (wayland_seat->display);
 
@@ -5411,11 +5411,11 @@ cdk_wayland_seat_set_selection (GdkSeat               *seat,
 }
 
 void
-cdk_wayland_seat_set_primary (GdkSeat  *seat,
+cdk_wayland_seat_set_primary (CdkSeat  *seat,
                               gpointer  source)
 {
-  GdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
-  GdkWaylandDisplay *display_wayland;
+  CdkWaylandSeat *wayland_seat = GDK_WAYLAND_SEAT (seat);
+  CdkWaylandDisplay *display_wayland;
   guint32 serial;
 
   if (source)
@@ -5437,36 +5437,36 @@ cdk_wayland_seat_set_primary (GdkSeat  *seat,
 
 /**
  * cdk_wayland_seat_get_wl_seat:
- * @device: (type GdkWaylandDevice): a #GdkDevice
+ * @device: (type CdkWaylandDevice): a #CdkDevice
  *
- * Returns the Wayland wl_seat of a #GdkSeat.
+ * Returns the Wayland wl_seat of a #CdkSeat.
  *
  * Returns: (transfer none): a Wayland wl_seat
  *
  * Since: 3.20
  */
 struct wl_seat *
-cdk_wayland_seat_get_wl_seat (GdkSeat *seat)
+cdk_wayland_seat_get_wl_seat (CdkSeat *seat)
 {
   g_return_val_if_fail (GDK_IS_WAYLAND_SEAT (seat), NULL);
 
   return GDK_WAYLAND_SEAT (seat)->wl_seat;
 }
 
-GdkDragContext *
-cdk_wayland_device_get_drop_context (GdkDevice *device)
+CdkDragContext *
+cdk_wayland_device_get_drop_context (CdkDevice *device)
 {
-  GdkSeat *seat = cdk_device_get_seat (device);
+  CdkSeat *seat = cdk_device_get_seat (device);
 
   return GDK_WAYLAND_SEAT (seat)->drop_context;
 }
 
 /**
  * cdk_wayland_device_get_node_path:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Returns the /dev/input/event* path of this device.
- * For #GdkDevices that possibly coalesce multiple hardware
+ * For #CdkDevices that possibly coalesce multiple hardware
  * devices (eg. mouse, keyboard, touch,...), this function
  * will return %NULL.
  *
@@ -5476,12 +5476,12 @@ cdk_wayland_device_get_drop_context (GdkDevice *device)
  * Returns: the /dev/input/event* path of this device
  **/
 const gchar *
-cdk_wayland_device_get_node_path (GdkDevice *device)
+cdk_wayland_device_get_node_path (CdkDevice *device)
 {
-  GdkWaylandTabletData *tablet;
-  GdkWaylandTabletPadData *pad;
+  CdkWaylandTabletData *tablet;
+  CdkWaylandTabletPadData *pad;
 
-  GdkSeat *seat;
+  CdkSeat *seat;
 
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
 
@@ -5509,14 +5509,14 @@ cdk_wayland_device_get_node_path (GdkDevice *device)
  * compositor to provide user feedback of the actions available/performed.
  **/
 void
-cdk_wayland_device_pad_set_feedback (GdkDevice           *device,
-                                     GdkDevicePadFeature  feature,
+cdk_wayland_device_pad_set_feedback (CdkDevice           *device,
+                                     CdkDevicePadFeature  feature,
                                      guint                feature_idx,
                                      const gchar         *label)
 {
-  GdkWaylandTabletPadData *pad;
-  GdkWaylandTabletPadGroupData *group;
-  GdkSeat *seat;
+  CdkWaylandTabletPadData *pad;
+  CdkWaylandTabletPadGroupData *group;
+  CdkSeat *seat;
 
   seat = cdk_device_get_seat (device);
   pad = cdk_wayland_device_manager_find_pad (GDK_WAYLAND_SEAT (seat),

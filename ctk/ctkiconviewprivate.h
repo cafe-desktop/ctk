@@ -24,7 +24,7 @@
 typedef struct _CtkIconViewItem CtkIconViewItem;
 struct _CtkIconViewItem
 {
-  GdkRectangle cell_area;
+  CdkRectangle cell_area;
 
   gint index;
   
@@ -50,7 +50,7 @@ struct _CtkIconViewPrivate
 
   CtkSelectionMode selection_mode;
 
-  GdkWindow *bin_window;
+  CdkWindow *bin_window;
 
   GList *children;
 
@@ -63,7 +63,7 @@ struct _CtkIconViewPrivate
 
   gint rubberband_x1, rubberband_y1;
   gint rubberband_x2, rubberband_y2;
-  GdkDevice *rubberband_device;
+  CdkDevice *rubberband_device;
   CtkCssNode *rubberband_node;
 
   guint scroll_timeout_id;
@@ -95,13 +95,13 @@ struct _CtkIconViewPrivate
   CtkCellRenderer *text_cell;
 
   /* Drag-and-drop. */
-  GdkModifierType start_button_mask;
+  CdkModifierType start_button_mask;
   gint pressed_button;
   gint press_start_x;
   gint press_start_y;
 
-  GdkDragAction source_actions;
-  GdkDragAction dest_actions;
+  CdkDragAction source_actions;
+  CdkDragAction dest_actions;
 
   CtkTreeRowReference *dest_item;
   CtkIconViewDropPosition dest_pos;

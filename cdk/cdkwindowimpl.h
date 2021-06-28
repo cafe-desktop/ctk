@@ -31,98 +31,98 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_WINDOW_IMPL           (cdk_window_impl_get_type ())
-#define GDK_WINDOW_IMPL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL, GdkWindowImpl))
-#define GDK_WINDOW_IMPL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL, GdkWindowImplClass))
+#define GDK_WINDOW_IMPL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL, CdkWindowImpl))
+#define GDK_WINDOW_IMPL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL, CdkWindowImplClass))
 #define GDK_IS_WINDOW_IMPL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL))
 #define GDK_IS_WINDOW_IMPL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WINDOW_IMPL))
-#define GDK_WINDOW_IMPL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WINDOW_IMPL, GdkWindowImplClass))
+#define GDK_WINDOW_IMPL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WINDOW_IMPL, CdkWindowImplClass))
 
-typedef struct _GdkWindowImpl       GdkWindowImpl;
-typedef struct _GdkWindowImplClass  GdkWindowImplClass;
+typedef struct _CdkWindowImpl       CdkWindowImpl;
+typedef struct _CdkWindowImplClass  CdkWindowImplClass;
 
-struct _GdkWindowImpl
+struct _CdkWindowImpl
 {
   GObject parent;
 };
 
-struct _GdkWindowImplClass
+struct _CdkWindowImplClass
 {
   GObjectClass parent_class;
 
   cairo_surface_t *
-               (* ref_cairo_surface)    (GdkWindow       *window);
+               (* ref_cairo_surface)    (CdkWindow       *window);
   cairo_surface_t *
-               (* create_similar_image_surface) (GdkWindow *     window,
+               (* create_similar_image_surface) (CdkWindow *     window,
                                                  cairo_format_t  format,
                                                  int             width,
                                                  int             height);
 
-  void         (* show)                 (GdkWindow       *window,
+  void         (* show)                 (CdkWindow       *window,
 					 gboolean         already_mapped);
-  void         (* hide)                 (GdkWindow       *window);
-  void         (* withdraw)             (GdkWindow       *window);
-  void         (* raise)                (GdkWindow       *window);
-  void         (* lower)                (GdkWindow       *window);
-  void         (* restack_under)        (GdkWindow       *window,
+  void         (* hide)                 (CdkWindow       *window);
+  void         (* withdraw)             (CdkWindow       *window);
+  void         (* raise)                (CdkWindow       *window);
+  void         (* lower)                (CdkWindow       *window);
+  void         (* restack_under)        (CdkWindow       *window,
 					 GList           *native_siblings);
-  void         (* restack_toplevel)     (GdkWindow       *window,
-					 GdkWindow       *sibling,
+  void         (* restack_toplevel)     (CdkWindow       *window,
+					 CdkWindow       *sibling,
 					 gboolean        above);
 
-  void         (* move_resize)          (GdkWindow       *window,
+  void         (* move_resize)          (CdkWindow       *window,
                                          gboolean         with_move,
                                          gint             x,
                                          gint             y,
                                          gint             width,
                                          gint             height);
-  void         (* move_to_rect)         (GdkWindow       *window,
-                                         const GdkRectangle *rect,
-                                         GdkGravity       rect_anchor,
-                                         GdkGravity       window_anchor,
-                                         GdkAnchorHints   anchor_hints,
+  void         (* move_to_rect)         (CdkWindow       *window,
+                                         const CdkRectangle *rect,
+                                         CdkGravity       rect_anchor,
+                                         CdkGravity       window_anchor,
+                                         CdkAnchorHints   anchor_hints,
                                          gint             rect_anchor_dx,
                                          gint             rect_anchor_dy);
-  void         (* set_background)       (GdkWindow       *window,
+  void         (* set_background)       (CdkWindow       *window,
                                          cairo_pattern_t *pattern);
 
-  GdkEventMask (* get_events)           (GdkWindow       *window);
-  void         (* set_events)           (GdkWindow       *window,
-                                         GdkEventMask     event_mask);
+  CdkEventMask (* get_events)           (CdkWindow       *window);
+  void         (* set_events)           (CdkWindow       *window,
+                                         CdkEventMask     event_mask);
   
-  gboolean     (* reparent)             (GdkWindow       *window,
-                                         GdkWindow       *new_parent,
+  gboolean     (* reparent)             (CdkWindow       *window,
+                                         CdkWindow       *new_parent,
                                          gint             x,
                                          gint             y);
 
-  void         (* set_device_cursor)    (GdkWindow       *window,
-                                         GdkDevice       *device,
-                                         GdkCursor       *cursor);
+  void         (* set_device_cursor)    (CdkWindow       *window,
+                                         CdkDevice       *device,
+                                         CdkCursor       *cursor);
 
-  void         (* get_geometry)         (GdkWindow       *window,
+  void         (* get_geometry)         (CdkWindow       *window,
                                          gint            *x,
                                          gint            *y,
                                          gint            *width,
                                          gint            *height);
-  void         (* get_root_coords)      (GdkWindow       *window,
+  void         (* get_root_coords)      (CdkWindow       *window,
 					 gint             x,
 					 gint             y,
                                          gint            *root_x,
                                          gint            *root_y);
-  gboolean     (* get_device_state)     (GdkWindow       *window,
-                                         GdkDevice       *device,
+  gboolean     (* get_device_state)     (CdkWindow       *window,
+                                         CdkDevice       *device,
                                          gdouble         *x,
                                          gdouble         *y,
-                                         GdkModifierType *mask);
-  gboolean    (* begin_paint)           (GdkWindow       *window);
-  void        (* end_paint)             (GdkWindow       *window);
+                                         CdkModifierType *mask);
+  gboolean    (* begin_paint)           (CdkWindow       *window);
+  void        (* end_paint)             (CdkWindow       *window);
 
-  cairo_region_t * (* get_shape)        (GdkWindow       *window);
-  cairo_region_t * (* get_input_shape)  (GdkWindow       *window);
-  void         (* shape_combine_region) (GdkWindow       *window,
+  cairo_region_t * (* get_shape)        (CdkWindow       *window);
+  cairo_region_t * (* get_input_shape)  (CdkWindow       *window);
+  void         (* shape_combine_region) (CdkWindow       *window,
                                          const cairo_region_t *shape_region,
                                          gint             offset_x,
                                          gint             offset_y);
-  void         (* input_shape_combine_region) (GdkWindow       *window,
+  void         (* input_shape_combine_region) (CdkWindow       *window,
 					       const cairo_region_t *shape_region,
 					       gint             offset_x,
 					       gint             offset_y);
@@ -131,7 +131,7 @@ struct _GdkWindowImplClass
    * layer a chance to save the region for later use in avoiding duplicate
    * exposes.
    */
-  void     (* queue_antiexpose)     (GdkWindow       *window,
+  void     (* queue_antiexpose)     (CdkWindow       *window,
                                      cairo_region_t  *update_area);
 
 /* Called to do the windowing system specific part of cdk_window_destroy(),
@@ -147,7 +147,7 @@ struct _GdkWindowImplClass
  *     windowing system calls should be made. (This may never happen
  *     for some windowing systems.)
  */
-  void         (* destroy)              (GdkWindow       *window,
+  void         (* destroy)              (CdkWindow       *window,
 					 gboolean         recursing,
 					 gboolean         foreign_destroy);
 
@@ -157,164 +157,164 @@ struct _GdkWindowImplClass
   * the window out of it's current heirarchy, hide it, and then
   * send a message to the owner requesting that the window be destroyed.
   */
-  void         (*destroy_foreign)       (GdkWindow       *window);
+  void         (*destroy_foreign)       (CdkWindow       *window);
 
   /* optional */
-  gboolean     (* beep)                 (GdkWindow       *window);
+  gboolean     (* beep)                 (CdkWindow       *window);
 
-  void         (* focus)                (GdkWindow       *window,
+  void         (* focus)                (CdkWindow       *window,
 					 guint32          timestamp);
-  void         (* set_type_hint)        (GdkWindow       *window,
-					 GdkWindowTypeHint hint);
-  GdkWindowTypeHint (* get_type_hint)   (GdkWindow       *window);
-  void         (* set_modal_hint)       (GdkWindow *window,
+  void         (* set_type_hint)        (CdkWindow       *window,
+					 CdkWindowTypeHint hint);
+  CdkWindowTypeHint (* get_type_hint)   (CdkWindow       *window);
+  void         (* set_modal_hint)       (CdkWindow *window,
 					 gboolean   modal);
-  void         (* set_skip_taskbar_hint) (GdkWindow *window,
+  void         (* set_skip_taskbar_hint) (CdkWindow *window,
 					  gboolean   skips_taskbar);
-  void         (* set_skip_pager_hint)  (GdkWindow *window,
+  void         (* set_skip_pager_hint)  (CdkWindow *window,
 					 gboolean   skips_pager);
-  void         (* set_urgency_hint)     (GdkWindow *window,
+  void         (* set_urgency_hint)     (CdkWindow *window,
 					 gboolean   urgent);
-  void         (* set_geometry_hints)   (GdkWindow         *window,
-					 const GdkGeometry *geometry,
-					 GdkWindowHints     geom_mask);
-  void         (* set_title)            (GdkWindow   *window,
+  void         (* set_geometry_hints)   (CdkWindow         *window,
+					 const CdkGeometry *geometry,
+					 CdkWindowHints     geom_mask);
+  void         (* set_title)            (CdkWindow   *window,
 					 const gchar *title);
-  void         (* set_role)             (GdkWindow   *window,
+  void         (* set_role)             (CdkWindow   *window,
 					 const gchar *role);
-  void         (* set_startup_id)       (GdkWindow   *window,
+  void         (* set_startup_id)       (CdkWindow   *window,
 					 const gchar *startup_id);
-  void         (* set_transient_for)    (GdkWindow *window,
-					 GdkWindow *parent);
-  void         (* get_frame_extents)    (GdkWindow    *window,
-					 GdkRectangle *rect);
-  void         (* set_override_redirect) (GdkWindow *window,
+  void         (* set_transient_for)    (CdkWindow *window,
+					 CdkWindow *parent);
+  void         (* get_frame_extents)    (CdkWindow    *window,
+					 CdkRectangle *rect);
+  void         (* set_override_redirect) (CdkWindow *window,
 					  gboolean override_redirect);
-  void         (* set_accept_focus)     (GdkWindow *window,
+  void         (* set_accept_focus)     (CdkWindow *window,
 					 gboolean accept_focus);
-  void         (* set_focus_on_map)     (GdkWindow *window,
+  void         (* set_focus_on_map)     (CdkWindow *window,
 					 gboolean focus_on_map);
-  void         (* set_icon_list)        (GdkWindow *window,
+  void         (* set_icon_list)        (CdkWindow *window,
 					 GList     *pixbufs);
-  void         (* set_icon_name)        (GdkWindow   *window,
+  void         (* set_icon_name)        (CdkWindow   *window,
 					 const gchar *name);
-  void         (* iconify)              (GdkWindow *window);
-  void         (* deiconify)            (GdkWindow *window);
-  void         (* stick)                (GdkWindow *window);
-  void         (* unstick)              (GdkWindow *window);
-  void         (* maximize)             (GdkWindow *window);
-  void         (* unmaximize)           (GdkWindow *window);
-  void         (* fullscreen)           (GdkWindow *window);
-  void         (* fullscreen_on_monitor) (GdkWindow *window, gint monitor);
-  void         (* apply_fullscreen_mode) (GdkWindow *window);
-  void         (* unfullscreen)         (GdkWindow *window);
-  void         (* set_keep_above)       (GdkWindow *window,
+  void         (* iconify)              (CdkWindow *window);
+  void         (* deiconify)            (CdkWindow *window);
+  void         (* stick)                (CdkWindow *window);
+  void         (* unstick)              (CdkWindow *window);
+  void         (* maximize)             (CdkWindow *window);
+  void         (* unmaximize)           (CdkWindow *window);
+  void         (* fullscreen)           (CdkWindow *window);
+  void         (* fullscreen_on_monitor) (CdkWindow *window, gint monitor);
+  void         (* apply_fullscreen_mode) (CdkWindow *window);
+  void         (* unfullscreen)         (CdkWindow *window);
+  void         (* set_keep_above)       (CdkWindow *window,
 					 gboolean   setting);
-  void         (* set_keep_below)       (GdkWindow *window,
+  void         (* set_keep_below)       (CdkWindow *window,
 					 gboolean   setting);
-  GdkWindow *  (* get_group)            (GdkWindow *window);
-  void         (* set_group)            (GdkWindow *window,
-					 GdkWindow *leader);
-  void         (* set_decorations)      (GdkWindow      *window,
-					 GdkWMDecoration decorations);
-  gboolean     (* get_decorations)      (GdkWindow       *window,
-					 GdkWMDecoration *decorations);
-  void         (* set_functions)        (GdkWindow    *window,
-					 GdkWMFunction functions);
-  void         (* begin_resize_drag)    (GdkWindow     *window,
-                                         GdkWindowEdge  edge,
-                                         GdkDevice     *device,
+  CdkWindow *  (* get_group)            (CdkWindow *window);
+  void         (* set_group)            (CdkWindow *window,
+					 CdkWindow *leader);
+  void         (* set_decorations)      (CdkWindow      *window,
+					 CdkWMDecoration decorations);
+  gboolean     (* get_decorations)      (CdkWindow       *window,
+					 CdkWMDecoration *decorations);
+  void         (* set_functions)        (CdkWindow    *window,
+					 CdkWMFunction functions);
+  void         (* begin_resize_drag)    (CdkWindow     *window,
+                                         CdkWindowEdge  edge,
+                                         CdkDevice     *device,
                                          gint           button,
                                          gint           root_x,
                                          gint           root_y,
                                          guint32        timestamp);
-  void         (* begin_move_drag)      (GdkWindow *window,
-                                         GdkDevice     *device,
+  void         (* begin_move_drag)      (CdkWindow *window,
+                                         CdkDevice     *device,
                                          gint       button,
                                          gint       root_x,
                                          gint       root_y,
                                          guint32    timestamp);
-  void         (* enable_synchronized_configure) (GdkWindow *window);
-  void         (* configure_finished)   (GdkWindow *window);
-  void         (* set_opacity)          (GdkWindow *window,
+  void         (* enable_synchronized_configure) (CdkWindow *window);
+  void         (* configure_finished)   (CdkWindow *window);
+  void         (* set_opacity)          (CdkWindow *window,
 					 gdouble    opacity);
-  void         (* set_composited)       (GdkWindow *window,
+  void         (* set_composited)       (CdkWindow *window,
                                          gboolean   composited);
-  void         (* destroy_notify)       (GdkWindow *window);
-  GdkDragProtocol (* get_drag_protocol) (GdkWindow *window,
-                                         GdkWindow **target);
-  void         (* register_dnd)         (GdkWindow *window);
-  GdkDragContext * (*drag_begin)        (GdkWindow *window,
-                                         GdkDevice *device,
+  void         (* destroy_notify)       (CdkWindow *window);
+  CdkDragProtocol (* get_drag_protocol) (CdkWindow *window,
+                                         CdkWindow **target);
+  void         (* register_dnd)         (CdkWindow *window);
+  CdkDragContext * (*drag_begin)        (CdkWindow *window,
+                                         CdkDevice *device,
                                          GList     *targets,
                                          gint       x_root,
                                          gint       y_root);
 
-  void         (*process_updates_recurse) (GdkWindow      *window,
+  void         (*process_updates_recurse) (CdkWindow      *window,
                                            cairo_region_t *region);
 
-  void         (*sync_rendering)          (GdkWindow      *window);
-  gboolean     (*simulate_key)            (GdkWindow      *window,
+  void         (*sync_rendering)          (CdkWindow      *window);
+  gboolean     (*simulate_key)            (CdkWindow      *window,
                                            gint            x,
                                            gint            y,
                                            guint           keyval,
-                                           GdkModifierType modifiers,
-                                           GdkEventType    event_type);
-  gboolean     (*simulate_button)         (GdkWindow      *window,
+                                           CdkModifierType modifiers,
+                                           CdkEventType    event_type);
+  gboolean     (*simulate_button)         (CdkWindow      *window,
                                            gint            x,
                                            gint            y,
                                            guint           button,
-                                           GdkModifierType modifiers,
-                                           GdkEventType    event_type);
+                                           CdkModifierType modifiers,
+                                           CdkEventType    event_type);
 
-  gboolean     (*get_property)            (GdkWindow      *window,
-                                           GdkAtom         property,
-                                           GdkAtom         type,
+  gboolean     (*get_property)            (CdkWindow      *window,
+                                           CdkAtom         property,
+                                           CdkAtom         type,
                                            gulong          offset,
                                            gulong          length,
                                            gint            pdelete,
-                                           GdkAtom        *actual_type,
+                                           CdkAtom        *actual_type,
                                            gint           *actual_format,
                                            gint           *actual_length,
                                            guchar        **data);
-  void         (*change_property)         (GdkWindow      *window,
-                                           GdkAtom         property,
-                                           GdkAtom         type,
+  void         (*change_property)         (CdkWindow      *window,
+                                           CdkAtom         property,
+                                           CdkAtom         type,
                                            gint            format,
-                                           GdkPropMode     mode,
+                                           CdkPropMode     mode,
                                            const guchar   *data,
                                            gint            n_elements);
-  void         (*delete_property)         (GdkWindow      *window,
-                                           GdkAtom         property);
+  void         (*delete_property)         (CdkWindow      *window,
+                                           CdkAtom         property);
 
-  gint         (* get_scale_factor)       (GdkWindow      *window);
-  void         (* get_unscaled_size)      (GdkWindow      *window,
+  gint         (* get_scale_factor)       (CdkWindow      *window);
+  void         (* get_unscaled_size)      (CdkWindow      *window,
                                            int            *unscaled_width,
                                            int            *unscaled_height);
 
-  void         (* set_opaque_region)      (GdkWindow      *window,
+  void         (* set_opaque_region)      (CdkWindow      *window,
                                            cairo_region_t *region);
-  void         (* set_shadow_width)       (GdkWindow      *window,
+  void         (* set_shadow_width)       (CdkWindow      *window,
                                            gint            left,
                                            gint            right,
                                            gint            top,
                                            gint            bottom);
-  gboolean     (* show_window_menu)       (GdkWindow      *window,
-                                           GdkEvent       *event);
-  GdkGLContext *(*create_gl_context)      (GdkWindow      *window,
+  gboolean     (* show_window_menu)       (CdkWindow      *window,
+                                           CdkEvent       *event);
+  CdkGLContext *(*create_gl_context)      (CdkWindow      *window,
 					   gboolean        attached,
-                                           GdkGLContext   *share,
+                                           CdkGLContext   *share,
                                            GError        **error);
-  gboolean     (* realize_gl_context)     (GdkWindow      *window,
-                                           GdkGLContext   *context,
+  gboolean     (* realize_gl_context)     (CdkWindow      *window,
+                                           CdkGLContext   *context,
                                            GError        **error);
-  void         (*invalidate_for_new_frame)(GdkWindow      *window,
+  void         (*invalidate_for_new_frame)(CdkWindow      *window,
                                            cairo_region_t *update_area);
 
-  GdkDrawingContext *(* create_draw_context)  (GdkWindow            *window,
+  CdkDrawingContext *(* create_draw_context)  (CdkWindow            *window,
                                                const cairo_region_t *region);
-  void               (* destroy_draw_context) (GdkWindow            *window,
-                                               GdkDrawingContext    *context);
+  void               (* destroy_draw_context) (CdkWindow            *window,
+                                               CdkDrawingContext    *context);
 };
 
 /* Interface Functions */

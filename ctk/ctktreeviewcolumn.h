@@ -248,7 +248,7 @@ void                    ctk_tree_view_column_cell_set_cell_data  (CtkTreeViewCol
 								  gboolean                 is_expanded);
 GDK_AVAILABLE_IN_ALL
 void                    ctk_tree_view_column_cell_get_size       (CtkTreeViewColumn       *tree_column,
-								  const GdkRectangle      *cell_area,
+								  const CdkRectangle      *cell_area,
 								  gint                    *x_offset,
 								  gint                    *y_offset,
 								  gint                    *width,

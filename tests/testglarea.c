@@ -249,7 +249,7 @@ static void
 realize (CtkWidget *widget)
 {
   const char *fragment, *vertex;
-  GdkGLContext *context;
+  CdkGLContext *context;
 
   ctk_gl_area_make_current (CTK_GL_AREA (widget));
 
@@ -320,7 +320,7 @@ draw_triangle (void)
 
 static gboolean
 render (CtkGLArea    *area,
-        GdkGLContext *context)
+        CdkGLContext *context)
 {
   glClearColor (0.5, 0.5, 0.5, 1.0);
   glClear (GL_COLOR_BUFFER_BIT);

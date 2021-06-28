@@ -67,10 +67,10 @@ G_BEGIN_DECLS
 
 /* Type definitions for the basic structures.
  */
-typedef struct _GdkPoint              GdkPoint;
+typedef struct _CdkPoint              CdkPoint;
 
 /**
- * GdkRectangle:
+ * CdkRectangle:
  *
  * Defines the position and size of a rectangle. It is identical to
  * #cairo_rectangle_int_t.
@@ -78,77 +78,77 @@ typedef struct _GdkPoint              GdkPoint;
 #ifdef __GI_SCANNER__
 /* The introspection scanner is currently unable to lookup how
  * cairo_rectangle_int_t is actually defined. This prevents
- * introspection data for the GdkRectangle type to include fields
+ * introspection data for the CdkRectangle type to include fields
  * descriptions. To workaround this issue, we define it with the same
  * content as cairo_rectangle_int_t, but only under the introspection
  * define.
  */
-struct _GdkRectangle
+struct _CdkRectangle
 {
     int x, y;
     int width, height;
 };
-typedef struct _GdkRectangle          GdkRectangle;
+typedef struct _CdkRectangle          CdkRectangle;
 #else
-typedef cairo_rectangle_int_t         GdkRectangle;
+typedef cairo_rectangle_int_t         CdkRectangle;
 #endif
 
 /**
- * GdkAtom:
+ * CdkAtom:
  *
  * An opaque type representing a string as an index into a table
  * of strings on the X server.
  */
-typedef struct _GdkAtom            *GdkAtom;
+typedef struct _CdkAtom            *CdkAtom;
 
 /**
  * GDK_ATOM_TO_POINTER:
- * @atom: a #GdkAtom.
+ * @atom: a #CdkAtom.
  *
- * Converts a #GdkAtom into a pointer type.
+ * Converts a #CdkAtom into a pointer type.
  */
 #define GDK_ATOM_TO_POINTER(atom) (atom)
 
 /**
  * GDK_POINTER_TO_ATOM:
- * @ptr: a pointer containing a #GdkAtom.
+ * @ptr: a pointer containing a #CdkAtom.
  *
- * Extracts a #GdkAtom from a pointer. The #GdkAtom must have been
+ * Extracts a #CdkAtom from a pointer. The #CdkAtom must have been
  * stored in the pointer with GDK_ATOM_TO_POINTER().
  */
-#define GDK_POINTER_TO_ATOM(ptr)  ((GdkAtom)(ptr))
+#define GDK_POINTER_TO_ATOM(ptr)  ((CdkAtom)(ptr))
 
-#define _GDK_MAKE_ATOM(val) ((GdkAtom)GUINT_TO_POINTER(val))
+#define _GDK_MAKE_ATOM(val) ((CdkAtom)GUINT_TO_POINTER(val))
 
 /**
  * GDK_NONE:
  *
- * A null value for #GdkAtom, used in a similar way as
+ * A null value for #CdkAtom, used in a similar way as
  * `None` in the Xlib API.
  */
 #define GDK_NONE            _GDK_MAKE_ATOM (0)
 
 /* Forward declarations of commonly used types */
-typedef struct _GdkColor              GdkColor;
-typedef struct _GdkRGBA               GdkRGBA;
-typedef struct _GdkCursor             GdkCursor;
-typedef struct _GdkVisual             GdkVisual;
-typedef struct _GdkDevice             GdkDevice;
-typedef struct _GdkDragContext        GdkDragContext;
+typedef struct _CdkColor              CdkColor;
+typedef struct _CdkRGBA               CdkRGBA;
+typedef struct _CdkCursor             CdkCursor;
+typedef struct _CdkVisual             CdkVisual;
+typedef struct _CdkDevice             CdkDevice;
+typedef struct _CdkDragContext        CdkDragContext;
 
-typedef struct _GdkDisplayManager     GdkDisplayManager;
-typedef struct _GdkDeviceManager      GdkDeviceManager;
-typedef struct _GdkDisplay            GdkDisplay;
-typedef struct _GdkScreen             GdkScreen;
-typedef struct _GdkWindow             GdkWindow;
-typedef struct _GdkKeymap             GdkKeymap;
-typedef struct _GdkAppLaunchContext   GdkAppLaunchContext;
-typedef struct _GdkSeat               GdkSeat;
+typedef struct _CdkDisplayManager     CdkDisplayManager;
+typedef struct _CdkDeviceManager      CdkDeviceManager;
+typedef struct _CdkDisplay            CdkDisplay;
+typedef struct _CdkScreen             CdkScreen;
+typedef struct _CdkWindow             CdkWindow;
+typedef struct _CdkKeymap             CdkKeymap;
+typedef struct _CdkAppLaunchContext   CdkAppLaunchContext;
+typedef struct _CdkSeat               CdkSeat;
 
-typedef struct _GdkGLContext          GdkGLContext;
+typedef struct _CdkGLContext          CdkGLContext;
 
 /**
- * GdkByteOrder:
+ * CdkByteOrder:
  * @GDK_LSB_FIRST: The values are stored with the least-significant byte
  *   first. For instance, the 32-bit value 0xffeecc would be stored
  *   in memory as 0xcc, 0xee, 0xff, 0x00.
@@ -163,12 +163,12 @@ typedef enum
 {
   GDK_LSB_FIRST,
   GDK_MSB_FIRST
-} GdkByteOrder;
+} CdkByteOrder;
 
 /* Types of modifiers.
  */
 /**
- * GdkModifierType:
+ * CdkModifierType:
  * @GDK_SHIFT_MASK: the Shift key.
  * @GDK_LOCK_MASK: a Lock key (depending on the modifier mapping of the
  *  X server this may either be CapsLock or ShiftLock).
@@ -274,10 +274,10 @@ typedef enum
   /* Combination of GDK_SHIFT_MASK..GDK_BUTTON5_MASK + GDK_SUPER_MASK
      + GDK_HYPER_MASK + GDK_META_MASK + GDK_RELEASE_MASK */
   GDK_MODIFIER_MASK = 0x5c001fff
-} GdkModifierType;
+} CdkModifierType;
 
 /**
- * GdkModifierIntent:
+ * CdkModifierIntent:
  * @GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR: the primary modifier used to invoke
  *  menu accelerators.
  * @GDK_MODIFIER_INTENT_CONTEXT_MENU: the modifier used to invoke context menus.
@@ -317,7 +317,7 @@ typedef enum
   GDK_MODIFIER_INTENT_NO_TEXT_INPUT,
   GDK_MODIFIER_INTENT_SHIFT_GROUP,
   GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK,
-} GdkModifierIntent;
+} CdkModifierIntent;
 
 typedef enum
 {
@@ -326,10 +326,10 @@ typedef enum
   GDK_ERROR_PARAM = -2,
   GDK_ERROR_FILE  = -3,
   GDK_ERROR_MEM   = -4
-} GdkStatus;
+} CdkStatus;
 
 /**
- * GdkGrabStatus:
+ * CdkGrabStatus:
  * @GDK_GRAB_SUCCESS: the resource was successfully grabbed.
  * @GDK_GRAB_ALREADY_GRABBED: the resource is actively grabbed by another client.
  * @GDK_GRAB_INVALID_TIME: the resource was grabbed more recently than the
@@ -350,10 +350,10 @@ typedef enum
   GDK_GRAB_NOT_VIEWABLE    = 3,
   GDK_GRAB_FROZEN          = 4,
   GDK_GRAB_FAILED          = 5
-} GdkGrabStatus;
+} CdkGrabStatus;
 
 /**
- * GdkGrabOwnership:
+ * CdkGrabOwnership:
  * @GDK_OWNERSHIP_NONE: All other devices’ events are allowed.
  * @GDK_OWNERSHIP_WINDOW: Other devices’ events are blocked for the grab window.
  * @GDK_OWNERSHIP_APPLICATION: Other devices’ events are blocked for the whole application.
@@ -365,10 +365,10 @@ typedef enum
   GDK_OWNERSHIP_NONE,
   GDK_OWNERSHIP_WINDOW,
   GDK_OWNERSHIP_APPLICATION
-} GdkGrabOwnership;
+} CdkGrabOwnership;
 
 /**
- * GdkEventMask:
+ * CdkEventMask:
  * @GDK_EXPOSURE_MASK: receive expose events
  * @GDK_POINTER_MOTION_MASK: receive all pointer motion events
  * @GDK_POINTER_MOTION_HINT_MASK: deprecated. see the explanation above
@@ -398,7 +398,7 @@ typedef enum
  * @GDK_ALL_EVENTS_MASK: the combination of all the above event masks.
  *
  * A set of bit-flags to indicate which events a window is to receive.
- * Most of these masks map onto one or more of the #GdkEventType event types
+ * Most of these masks map onto one or more of the #CdkEventType event types
  * above.
  *
  * See the [input handling overview][chap-input-handling] for details of
@@ -418,7 +418,7 @@ typedef enum
  * for details.
  *
  * If %GDK_TOUCH_MASK is enabled, the window will receive touch events
- * from touch-enabled devices. Those will come as sequences of #GdkEventTouch
+ * from touch-enabled devices. Those will come as sequences of #CdkEventTouch
  * with type %GDK_TOUCH_UPDATE, enclosed by two events with
  * type %GDK_TOUCH_BEGIN and %GDK_TOUCH_END (or %GDK_TOUCH_CANCEL).
  * cdk_event_get_event_sequence() returns the event sequence for these
@@ -452,28 +452,28 @@ typedef enum
   GDK_TOUCHPAD_GESTURE_MASK     = 1 << 24,
   GDK_TABLET_PAD_MASK           = 1 << 25,
   GDK_ALL_EVENTS_MASK           = 0x3FFFFFE
-} GdkEventMask;
+} CdkEventMask;
 
 /**
- * GdkPoint:
+ * CdkPoint:
  * @x: the x coordinate of the point.
  * @y: the y coordinate of the point.
  *
  * Defines the x and y coordinates of a point.
  */
-struct _GdkPoint
+struct _CdkPoint
 {
   gint x;
   gint y;
 };
 
 /**
- * GdkGLError:
+ * CdkGLError:
  * @GDK_GL_ERROR_NOT_AVAILABLE: OpenGL support is not available
  * @GDK_GL_ERROR_UNSUPPORTED_FORMAT: The requested visual format is not supported
  * @GDK_GL_ERROR_UNSUPPORTED_PROFILE: The requested profile is not supported
  *
- * Error enumeration for #GdkGLContext.
+ * Error enumeration for #CdkGLContext.
  *
  * Since: 3.16
  */
@@ -481,10 +481,10 @@ typedef enum {
   GDK_GL_ERROR_NOT_AVAILABLE,
   GDK_GL_ERROR_UNSUPPORTED_FORMAT,
   GDK_GL_ERROR_UNSUPPORTED_PROFILE
-} GdkGLError;
+} CdkGLError;
 
 /**
- * GdkWindowTypeHint:
+ * CdkWindowTypeHint:
  * @GDK_WINDOW_TYPE_HINT_NORMAL: Normal toplevel window.
  * @GDK_WINDOW_TYPE_HINT_DIALOG: Dialog window.
  * @GDK_WINDOW_TYPE_HINT_MENU: Window used to implement a menu; CTK+ uses
@@ -529,10 +529,10 @@ typedef enum
   GDK_WINDOW_TYPE_HINT_NOTIFICATION,
   GDK_WINDOW_TYPE_HINT_COMBO,
   GDK_WINDOW_TYPE_HINT_DND
-} GdkWindowTypeHint;
+} CdkWindowTypeHint;
 
 /**
- * GdkAxisUse:
+ * CdkAxisUse:
  * @GDK_AXIS_IGNORE: the axis is ignored.
  * @GDK_AXIS_X: the axis is used as the x axis.
  * @GDK_AXIS_Y: the axis is used as the y axis.
@@ -566,10 +566,10 @@ typedef enum
   GDK_AXIS_ROTATION,
   GDK_AXIS_SLIDER,
   GDK_AXIS_LAST
-} GdkAxisUse;
+} CdkAxisUse;
 
 /**
- * GdkAxisFlags:
+ * CdkAxisFlags:
  * @GDK_AXIS_FLAG_X: X axis is present
  * @GDK_AXIS_FLAG_Y: Y axis is present
  * @GDK_AXIS_FLAG_PRESSURE: Pressure axis is present
@@ -595,7 +595,7 @@ typedef enum
   GDK_AXIS_FLAG_DISTANCE = 1 << GDK_AXIS_DISTANCE,
   GDK_AXIS_FLAG_ROTATION = 1 << GDK_AXIS_ROTATION,
   GDK_AXIS_FLAG_SLIDER   = 1 << GDK_AXIS_SLIDER,
-} GdkAxisFlags;
+} CdkAxisFlags;
 
 G_END_DECLS
 

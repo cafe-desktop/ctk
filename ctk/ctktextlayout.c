@@ -1462,7 +1462,7 @@ ctk_text_attr_appearance_destroy (PangoAttribute *attr)
 }
 
 static gboolean 
-rgba_equal (const GdkRGBA *rgba1, const GdkRGBA *rgba2)
+rgba_equal (const CdkRGBA *rgba1, const CdkRGBA *rgba2)
 {
   if (rgba1 && rgba2)
     return cdk_rgba_equal (rgba1, rgba2);
@@ -1477,8 +1477,8 @@ static gboolean
 underline_equal (const CtkTextAppearance *appearance1,
                  const CtkTextAppearance *appearance2)
 {
-  GdkRGBA c1;
-  GdkRGBA c2;
+  CdkRGBA c1;
+  CdkRGBA c2;
 
   CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (appearance1, &c1);
   CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (appearance2, &c2);
@@ -1493,8 +1493,8 @@ static gboolean
 strikethrough_equal (const CtkTextAppearance *appearance1,
                      const CtkTextAppearance *appearance2)
 {
-  GdkRGBA c1;
-  GdkRGBA c2;
+  CdkRGBA c1;
+  CdkRGBA c2;
 
   CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (appearance1, &c1);
   CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (appearance2, &c2);
@@ -1582,7 +1582,7 @@ add_generic_attrs (CtkTextLayout      *layout,
 
   if (CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (appearance))
     {
-      GdkRGBA rgba;
+      CdkRGBA rgba;
 
       CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (appearance, &rgba);
 
@@ -1608,7 +1608,7 @@ add_generic_attrs (CtkTextLayout      *layout,
 
   if (CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (appearance))
     {
-      GdkRGBA rgba;
+      CdkRGBA rgba;
 
       CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (appearance, &rgba);
 
@@ -1814,7 +1814,7 @@ get_block_cursor (CtkTextLayout      *layout,
 		  CtkTextLineDisplay *display,
 		  const CtkTextIter  *insert_iter,
 		  gint                insert_index,
-		  GdkRectangle       *pos,
+		  CdkRectangle       *pos,
 		  gboolean           *cursor_at_line_end)
 {
   PangoRectangle pango_pos;
@@ -1962,7 +1962,7 @@ allocate_child_widgets (CtkTextLayout      *text_layout,
 }
 
 static void
-convert_color (GdkRGBA        *result,
+convert_color (CdkRGBA        *result,
 	       PangoAttrColor *attr)
 {
   result->red = attr->color.red / 65535.;
@@ -2013,7 +2013,7 @@ add_preedit_attrs (CtkTextLayout     *layout,
       while (tmp_list)
 	{
 	  PangoAttribute *attr = tmp_list->data;
-	  GdkRGBA rgba;
+	  CdkRGBA rgba;
 	  
 	  switch (attr->klass->type)
 	    {
@@ -2843,8 +2843,8 @@ ctk_text_layout_get_iter_at_position (CtkTextLayout *layout,
 void
 ctk_text_layout_get_cursor_locations (CtkTextLayout  *layout,
                                       CtkTextIter    *iter,
-                                      GdkRectangle   *strong_pos,
-                                      GdkRectangle   *weak_pos)
+                                      CdkRectangle   *strong_pos,
+                                      CdkRectangle   *weak_pos)
 {
   CtkTextLine *line;
   CtkTextLineDisplay *display;
@@ -2897,7 +2897,7 @@ ctk_text_layout_get_cursor_locations (CtkTextLayout  *layout,
 /**
  * _ctk_text_layout_get_block_cursor:
  * @layout: a #CtkTextLayout
- * @pos: a #GdkRectangle to store block cursor position
+ * @pos: a #CdkRectangle to store block cursor position
  *
  * If layout is to display a block cursor, calculates its position
  * and returns %TRUE. Otherwise it returns %FALSE. In case when
@@ -2907,12 +2907,12 @@ ctk_text_layout_get_cursor_locations (CtkTextLayout  *layout,
  **/
 gboolean
 _ctk_text_layout_get_block_cursor (CtkTextLayout *layout,
-				   GdkRectangle  *pos)
+				   CdkRectangle  *pos)
 {
   CtkTextLine *line;
   CtkTextLineDisplay *display;
   CtkTextIter iter;
-  GdkRectangle rect;
+  CdkRectangle rect;
   gboolean block = FALSE;
 
   g_return_val_if_fail (layout != NULL, FALSE);
@@ -2995,7 +2995,7 @@ ctk_text_layout_get_line_yrange (CtkTextLayout     *layout,
 void
 ctk_text_layout_get_iter_location (CtkTextLayout     *layout,
                                    const CtkTextIter *iter,
-                                   GdkRectangle      *rect)
+                                   CdkRectangle      *rect)
 {
   PangoRectangle pango_rect;
   CtkTextLine *line;
@@ -3190,7 +3190,7 @@ ctk_text_layout_clamp_iter_to_vrange (CtkTextLayout *layout,
                                       gint           top,
                                       gint           bottom)
 {
-  GdkRectangle iter_rect;
+  CdkRectangle iter_rect;
 
   ctk_text_layout_get_iter_location (layout, iter, &iter_rect);
 

@@ -62,7 +62,7 @@ G_BEGIN_DECLS
  * Returns: %TRUE to stop further processing of @event, %FALSE to continue.
  */
 typedef gint (*CtkKeySnoopFunc) (CtkWidget   *grab_widget,
-                                 GdkEventKey *event,
+                                 CdkEventKey *event,
                                  gpointer     func_data);
 
 /* CTK+ version
@@ -149,7 +149,7 @@ GDK_AVAILABLE_IN_ALL
 gboolean       ctk_events_pending       (void);
 
 GDK_AVAILABLE_IN_ALL
-void       ctk_main_do_event       (GdkEvent           *event);
+void       ctk_main_do_event       (CdkEvent           *event);
 GDK_AVAILABLE_IN_ALL
 void       ctk_main                (void);
 GDK_AVAILABLE_IN_ALL
@@ -175,11 +175,11 @@ void       ctk_grab_remove         (CtkWidget          *widget);
 
 GDK_AVAILABLE_IN_ALL
 void       ctk_device_grab_add     (CtkWidget          *widget,
-                                    GdkDevice          *device,
+                                    CdkDevice          *device,
                                     gboolean            block_others);
 GDK_AVAILABLE_IN_ALL
 void       ctk_device_grab_remove  (CtkWidget          *widget,
-                                    GdkDevice          *device);
+                                    CdkDevice          *device);
 
 GDK_DEPRECATED_IN_3_4
 guint      ctk_key_snooper_install (CtkKeySnoopFunc snooper,
@@ -188,20 +188,20 @@ GDK_DEPRECATED_IN_3_4
 void       ctk_key_snooper_remove  (guint           snooper_handler_id);
 
 GDK_AVAILABLE_IN_ALL
-GdkEvent * ctk_get_current_event        (void);
+CdkEvent * ctk_get_current_event        (void);
 GDK_AVAILABLE_IN_ALL
 guint32    ctk_get_current_event_time   (void);
 GDK_AVAILABLE_IN_ALL
-gboolean   ctk_get_current_event_state  (GdkModifierType *state);
+gboolean   ctk_get_current_event_state  (CdkModifierType *state);
 GDK_AVAILABLE_IN_ALL
-GdkDevice *ctk_get_current_event_device (void);
+CdkDevice *ctk_get_current_event_device (void);
 
 GDK_AVAILABLE_IN_ALL
-CtkWidget *ctk_get_event_widget         (GdkEvent        *event);
+CtkWidget *ctk_get_event_widget         (CdkEvent        *event);
 
 GDK_AVAILABLE_IN_ALL
 void       ctk_propagate_event          (CtkWidget       *widget,
-                                         GdkEvent        *event);
+                                         CdkEvent        *event);
 
 
 G_END_DECLS

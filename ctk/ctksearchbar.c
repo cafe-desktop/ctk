@@ -99,7 +99,7 @@ stop_search_cb (CtkWidget    *entry,
 
 static gboolean
 entry_key_pressed_event_cb (CtkWidget    *widget,
-                            GdkEvent     *event,
+                            CdkEvent     *event,
                             CtkSearchBar *bar)
 {
   if (event->key.keyval == GDK_KEY_Escape)
@@ -121,7 +121,7 @@ preedit_changed_cb (CtkEntry  *entry,
 
 static gboolean
 ctk_search_bar_handle_event_for_entry (CtkSearchBar *bar,
-                                       GdkEvent     *event)
+                                       CdkEvent     *event)
 {
   CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
   gboolean handled;
@@ -161,7 +161,7 @@ ctk_search_bar_handle_event_for_entry (CtkSearchBar *bar,
 /**
  * ctk_search_bar_handle_event:
  * @bar: a #CtkSearchBar
- * @event: a #GdkEvent containing key press events
+ * @event: a #CdkEvent containing key press events
  *
  * This function should be called when the top-level
  * window which contains the search bar received a key event.
@@ -180,7 +180,7 @@ ctk_search_bar_handle_event_for_entry (CtkSearchBar *bar,
  * |[<!-- language="C" -->
  * static gboolean
  * on_key_press_event (CtkWidget *widget,
- *                     GdkEvent  *event,
+ *                     CdkEvent  *event,
  *                     gpointer   user_data)
  * {
  *   CtkSearchBar *bar = CTK_SEARCH_BAR (user_data);
@@ -210,7 +210,7 @@ ctk_search_bar_handle_event_for_entry (CtkSearchBar *bar,
  */
 gboolean
 ctk_search_bar_handle_event (CtkSearchBar *bar,
-                             GdkEvent     *event)
+                             CdkEvent     *event)
 {
   CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
   gboolean handled;

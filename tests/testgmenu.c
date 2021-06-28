@@ -599,7 +599,7 @@ create_add_remove_buttons (GActionGroup *group,
 
 static gboolean
 on_delete_event (CtkWidget   *widget,
-		 GdkEvent    *event,
+		 CdkEvent    *event,
 		 gpointer     user_data)
 {
   ctk_main_quit ();

@@ -8,8 +8,8 @@ static void
 set_cursor (CtkWidget *button, gpointer data)
 {
   CtkWidget *toplevel;
-  GdkCursor *cursor = data;
-  GdkWindow *window;
+  CdkCursor *cursor = data;
+  CdkWindow *window;
 
   toplevel = ctk_widget_get_toplevel (button);
   window = ctk_widget_get_window (toplevel);
@@ -43,8 +43,8 @@ add_button (CtkWidget   *section,
             const gchar *css_name)
 {
   CtkWidget *image, *button;
-  GdkDisplay *display;
-  GdkCursor *cursor;
+  CdkDisplay *display;
+  CdkCursor *cursor;
 
   display = ctk_widget_get_display (section);
   cursor = cdk_cursor_new_from_name (display, css_name);

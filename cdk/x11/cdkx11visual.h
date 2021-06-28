@@ -37,29 +37,29 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_X11_VISUAL              (cdk_x11_visual_get_type ())
-#define GDK_X11_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_VISUAL, GdkX11Visual))
-#define GDK_X11_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_VISUAL, GdkX11VisualClass))
+#define GDK_X11_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_VISUAL, CdkX11Visual))
+#define GDK_X11_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_VISUAL, CdkX11VisualClass))
 #define GDK_IS_X11_VISUAL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_VISUAL))
 #define GDK_IS_X11_VISUAL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_VISUAL))
-#define GDK_X11_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_VISUAL, GdkX11VisualClass))
+#define GDK_X11_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_VISUAL, CdkX11VisualClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkX11Visual GdkX11Visual;
+typedef struct _CdkX11Visual CdkX11Visual;
 #else
-typedef GdkVisual GdkX11Visual;
+typedef CdkVisual CdkX11Visual;
 #endif
-typedef struct _GdkX11VisualClass GdkX11VisualClass;
+typedef struct _CdkX11VisualClass CdkX11VisualClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_x11_visual_get_type          (void);
 
 GDK_AVAILABLE_IN_ALL
-Visual * cdk_x11_visual_get_xvisual       (GdkVisual   *visual);
+Visual * cdk_x11_visual_get_xvisual       (CdkVisual   *visual);
 
 #define GDK_VISUAL_XVISUAL(visual)    (cdk_x11_visual_get_xvisual (visual))
 
 GDK_AVAILABLE_IN_ALL
-GdkVisual* cdk_x11_screen_lookup_visual (GdkScreen *screen,
+CdkVisual* cdk_x11_screen_lookup_visual (CdkScreen *screen,
                                          VisualID   xvisualid);
 
 G_END_DECLS

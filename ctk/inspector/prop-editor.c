@@ -745,8 +745,8 @@ rgba_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
   CtkColorChooser *cb = CTK_COLOR_CHOOSER (data);
   GValue val = G_VALUE_INIT;
-  GdkRGBA *color;
-  GdkRGBA cb_color;
+  CdkRGBA *color;
+  CdkRGBA cb_color;
 
   g_value_init (&val, GDK_TYPE_RGBA);
   get_property_value (object, pspec, &val);
@@ -766,8 +766,8 @@ rgba_changed (GObject *object, GParamSpec *pspec, gpointer data)
 static void
 color_modified (CtkColorButton *cb, GParamSpec *ignored, ObjectProperty *p)
 {
-  GdkRGBA rgba;
-  GdkColor color;
+  CdkRGBA rgba;
+  CdkColor color;
   GValue val = G_VALUE_INIT;
 
   ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (cb), &rgba);
@@ -787,8 +787,8 @@ color_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
   CtkColorChooser *cb = CTK_COLOR_CHOOSER (data);
   GValue val = G_VALUE_INIT;
-  GdkColor *color;
-  GdkRGBA rgba;
+  CdkColor *color;
+  CdkRGBA rgba;
 
   g_value_init (&val, GDK_TYPE_COLOR);
   get_property_value (object, pspec, &val);
@@ -1095,7 +1095,7 @@ property_editor (GObject                *object,
                           object, spec, G_CALLBACK (rgba_modified));
     }
   else if (type == G_TYPE_PARAM_BOXED &&
-           G_PARAM_SPEC_VALUE_TYPE (spec) == g_type_from_name ("GdkColor"))
+           G_PARAM_SPEC_VALUE_TYPE (spec) == g_type_from_name ("CdkColor"))
     {
       prop_edit = ctk_color_chooser_widget_new ();
       ctk_color_chooser_set_use_alpha (CTK_COLOR_CHOOSER (prop_edit), FALSE);

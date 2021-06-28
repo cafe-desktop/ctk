@@ -835,8 +835,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Un GdkPixbuf de afișat"
+msgid "A CdkPixbuf to display"
+msgstr "Un CdkPixbuf de afișat"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2223,16 +2223,16 @@ msgid "Cell background color"
 msgstr "Culoare fundal celulă"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Culoarea fundalului celulei ca GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Culoarea fundalului celulei ca CdkColor"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Culoare RGBA fundal celulă"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Culoarea fundalului celulei ca GdkColor"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Culoarea fundalului celulei ca CdkColor"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2471,16 +2471,16 @@ msgid "Background color"
 msgstr "Culoare fundal"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
-msgstr "Culoare fundal ca GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Culoare fundal ca CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Culoare fundal ca RGBA"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
-msgstr "Culoare fundal ca GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Culoare fundal ca CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
@@ -2491,16 +2491,16 @@ msgid "Foreground color as a string"
 msgstr "Culoare prim-plan ca șir de caractere"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
-msgstr "Culoare prim-plan ca GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Culoare prim-plan ca CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Culoare prim-plan ca RGBA"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
-msgstr "Culoare prim-plan ca GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Culoare prim-plan ca CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
@@ -2978,8 +2978,8 @@ msgid "Color"
 msgstr "Culoare"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Culoarea curentă, ca GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Culoarea curentă, ca CdkRGBA"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4232,8 +4232,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Numărul de puncte necesar pentru a declanșa gestul"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "GdkWindow despre care se primesc evenimente"
+msgid "CdkWindow to receive events about"
+msgstr "CdkWindow despre care se primesc evenimente"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4571,8 +4571,8 @@ msgid "Animation"
 msgstr "Animație"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation de afișat"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation de afișat"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7841,16 +7841,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Stilul dungilor din jurul barei de stare"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "Dispozitiv asociat GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "Dispozitiv asociat CdkScreen"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "GdkFrameClock asociat"
+msgid "The associated CdkFrameClock"
+msgstr "CdkFrameClock asociat"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
 msgid "Text direction"
@@ -8152,16 +8152,16 @@ msgid "Paragraph background color"
 msgstr "Culoare fundal paragraf"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
-msgstr "Culoare fundal paragraf ca GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Culoare fundal paragraf ca CdkColor"
 
 #: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "RGBA fundal paragraf"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "RGBA fundal paragraf ca GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "RGBA fundal paragraf ca CdkRGBA"
 
 #: ctk/ctktexttag.c:663
 msgid "Fallback"
@@ -9176,9 +9176,9 @@ msgid "Events"
 msgstr "Evenimente"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Filtrul de evenimente care decide ce fel de evenimente GdkEvents primește "
+"Filtrul de evenimente care decide ce fel de evenimente CdkEvents primește "
 "acest widget"
 
 #: ctk/ctkwidget.c:1263
@@ -9771,14 +9771,14 @@ msgstr "Titlul profilului de culoare de folosit"
 #~ msgid "Name of default font to use"
 #~ msgstr "Numele fontului implicit de utilizat"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
-#~ msgstr "Culoare de fundal ca GdkColor (posibil nealocată)"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
+#~ msgstr "Culoare de fundal ca CdkColor (posibil nealocată)"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
-#~ msgstr "Culoare de prim-plan ca GdkColor (posibil nealocată)"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
+#~ msgstr "Culoare de prim-plan ca CdkColor (posibil nealocată)"
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-#~ msgstr "Culoare de fundal paragraf ca GdkColor (posibil nealocată)"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+#~ msgstr "Culoare de fundal paragraf ca CdkColor (posibil nealocată)"
 
 # Got confused... Mișu
 #~ msgid "Dash pattern used to draw the focus indicator"
@@ -9872,8 +9872,8 @@ msgstr "Titlul profilului de culoare de folosit"
 #~ "CtkAdjustment ce determină valorile poziției verticale ale acestui "
 #~ "„viewport”"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "valoare GdkScreen pentru afișare"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "valoare CdkScreen pentru afișare"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "Ajustarea valorii butonului de incrementare."
@@ -9901,17 +9901,17 @@ msgstr "Titlul profilului de culoare de folosit"
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "Un GdkPixmap de afișat"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "Un CdkPixmap de afișat"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "Un GdkImage de afișat"
+#~ msgid "A CdkImage to display"
+#~ msgstr "Un CdkImage de afișat"
 
 #~ msgid "Mask"
 #~ msgstr "Mască"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Bitmap mască pentru a fi utilizat cu GdkImage sau GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Bitmap mască pentru a fi utilizat cu CdkImage sau CdkPixmap"
 
 #~ msgid ""
 #~ "Whether to put a separator between the message dialog's text and the "

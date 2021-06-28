@@ -55,7 +55,7 @@ void            ctk_application_accels_foreach_key                  (CtkApplicat
 gboolean        ctk_application_accels_activate                     (CtkApplicationAccels *accels,
                                                                      GActionGroup         *action_group,
                                                                      guint                 key,
-                                                                     GdkModifierType       modifier);
+                                                                     CdkModifierType       modifier);
 
 G_END_DECLS
 

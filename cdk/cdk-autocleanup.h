@@ -21,22 +21,22 @@
 
 #ifndef __GI_SCANNER__
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkAppLaunchContext, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkCursor, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkDevice, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkDeviceManager, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkDisplay, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkDisplayManager, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkDragContext, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkFrameClock, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkGLContext, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkKeymap, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkScreen, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkVisual, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkWindow, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkAppLaunchContext, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkCursor, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkDevice, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkDeviceManager, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkDisplay, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkDisplayManager, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkDragContext, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkFrameClock, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkGLContext, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkKeymap, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkScreen, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkVisual, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkWindow, g_object_unref)
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkEvent, cdk_event_free)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkFrameTimings, cdk_frame_timings_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkRGBA, cdk_rgba_free)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkEvent, cdk_event_free)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkFrameTimings, cdk_frame_timings_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkRGBA, cdk_rgba_free)
 
 #endif

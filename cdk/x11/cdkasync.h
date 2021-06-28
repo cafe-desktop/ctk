@@ -24,16 +24,16 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GdkChildInfoX11 GdkChildInfoX11;
+typedef struct _CdkChildInfoX11 CdkChildInfoX11;
 
-typedef void (*GdkSendXEventCallback) (Window   window,
+typedef void (*CdkSendXEventCallback) (Window   window,
 				       gboolean success,
 				       gpointer data);
-typedef void (*GdkRoundTripCallback)  (GdkDisplay *display,
+typedef void (*CdkRoundTripCallback)  (CdkDisplay *display,
 				       gpointer data,
 				       gulong serial);
 
-struct _GdkChildInfoX11
+struct _CdkChildInfoX11
 {
   Window window;
   gint x;
@@ -45,23 +45,23 @@ struct _GdkChildInfoX11
   guint window_class : 2;
 };
 
-void _cdk_x11_send_client_message_async (GdkDisplay            *display,
+void _cdk_x11_send_client_message_async (CdkDisplay            *display,
 					 Window                 window,
 					 gboolean               propagate,
 					 glong                  event_mask,
 					 XClientMessageEvent   *event_send,
-					 GdkSendXEventCallback  callback,
+					 CdkSendXEventCallback  callback,
 					 gpointer               data);
 
-gboolean _cdk_x11_get_window_child_info (GdkDisplay       *display,
+gboolean _cdk_x11_get_window_child_info (CdkDisplay       *display,
 					 Window            window,
 					 gboolean          get_wm_state,
 					 gboolean         *win_has_wm_state,
-					 GdkChildInfoX11 **children,
+					 CdkChildInfoX11 **children,
 					 guint            *nchildren);
 
-void _cdk_x11_roundtrip_async           (GdkDisplay           *display, 
-					 GdkRoundTripCallback callback,
+void _cdk_x11_roundtrip_async           (CdkDisplay           *display, 
+					 CdkRoundTripCallback callback,
 					 gpointer              data);
 
 G_END_DECLS

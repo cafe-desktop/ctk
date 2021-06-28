@@ -32,8 +32,8 @@
 		Value="CTK_PREFIX=\&quot;$(CtkDummyPrefix)\&quot;"
 	/>
 	<UserMacro
-		Name="GdkDefines"
-		Value="GDK_COMPILATION;G_LOG_DOMAIN=\&quot;Gdk\&quot;"
+		Name="CdkDefines"
+		Value="GDK_COMPILATION;G_LOG_DOMAIN=\&quot;Cdk\&quot;"
 	/>
 	<UserMacro
 		Name="CtkIncludedImmodulesDefines"
@@ -44,20 +44,20 @@
 		Value="CTK_COMPILATION;G_LOG_DOMAIN=\&quot;Ctk\&quot;;CTK_HOST=\&quot;i686-pc-vs$(VSVer)\&quot;;CTK_PRINT_BACKENDS=\&quot;file\&quot;;CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(CtkIncludedImmodulesDefines);CTK_LIBDIR=\&quot;$(CtkDummyPrefix)/lib\&quot;;CTK_DATADIR=\&quot;$(CtkDummyPrefix)/share\&quot;CTK_DATA_PREFIX=\&quot;$(CtkDummyPrefix)\&quot;;CTK_SYSCONFDIR=\&quot;$(CtkDummyPrefix)/etc\&quot;;MULTIPRESS_CONFDIR=\&quot;$(CtkDummyPrefix)/etc/ctk-$(ApiVersion)\&quot;;MULTIPRESS_LOCALEDIR=\&quot;$(CtkDummyPrefix)/share/locale\&quot;;CTK_VERSION=\&quot;$(CtkVersion)/etc\&quot;;CTK_BINARY_VERSION=\&quot;$(CtkBinaryVersion)/etc\&quot;;GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED"
 	/>
 	<UserMacro
-		Name="CtkGdkCommonLibs"
+		Name="CtkCdkCommonLibs"
 		Value="pangowin32-1.0.lib fribidi.lib imm32.lib"
 	/>
 	<UserMacro
-		Name="GdkBroadwayAdditionalLibs"
+		Name="CdkBroadwayAdditionalLibs"
 		Value="ws2_32.lib"
 	/>
 	<UserMacro
-		Name="GdkAdditionalLibs"
-		Value="winmm.lib dwmapi.lib setupapi.lib $(CtkGdkCommonLibs)"
+		Name="CdkAdditionalLibs"
+		Value="winmm.lib dwmapi.lib setupapi.lib $(CtkCdkCommonLibs)"
 	/>
 	<UserMacro
 		Name="CtkAdditionalLibs"
-		Value="atk-1.0.lib winspool.lib comctl32.lib $(CtkGdkCommonLibs)"
+		Value="atk-1.0.lib winspool.lib comctl32.lib $(CtkCdkCommonLibs)"
 	/>
 	<UserMacro
 		Name="CtkIntrospectNMakeCmd"
@@ -65,6 +65,6 @@
 	/>
 	<UserMacro
 		Name="CtkIntrospectBuiltFiles"
-		Value="$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.typelib;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\GdkWin32-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\GdkWin32-3.0.typelib;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Gdk-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Gdk-3.0.typelib"
+		Value="$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.typelib;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\CdkWin32-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\CdkWin32-3.0.typelib;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Cdk-3.0.gir;$(SolutionDir)\$(ConfigurationName)\$(PlatformName)\bin\Cdk-3.0.typelib"
 	/>
 </VisualStudioPropertySheet>

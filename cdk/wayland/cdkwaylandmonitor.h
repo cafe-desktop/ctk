@@ -31,17 +31,17 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_WAYLAND_MONITOR           (cdk_wayland_monitor_get_type ())
-#define GDK_WAYLAND_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_MONITOR, GdkWaylandMonitor))
+#define GDK_WAYLAND_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_MONITOR, CdkWaylandMonitor))
 #define GDK_IS_WAYLAND_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WAYLAND_MONITOR))
 
-typedef struct _GdkWaylandMonitor      GdkWaylandMonitor;
-typedef struct _GdkWaylandMonitorClass GdkWaylandMonitorClass;
+typedef struct _CdkWaylandMonitor      CdkWaylandMonitor;
+typedef struct _CdkWaylandMonitorClass CdkWaylandMonitorClass;
 
 GDK_AVAILABLE_IN_3_22
 GType             cdk_wayland_monitor_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-struct wl_output *cdk_wayland_monitor_get_wl_output       (GdkMonitor *monitor);
+struct wl_output *cdk_wayland_monitor_get_wl_output       (CdkMonitor *monitor);
 
 G_END_DECLS
 

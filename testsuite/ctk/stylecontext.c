@@ -152,8 +152,8 @@ test_match (void)
   CtkCssProvider *provider;
   GError *error;
   const gchar *data;
-  GdkRGBA color;
-  GdkRGBA expected;
+  CdkRGBA color;
+  CdkRGBA expected;
 
   error = NULL;
   provider = ctk_css_provider_new ();
@@ -272,8 +272,8 @@ test_basic_properties (void)
 {
   CtkStyleContext *context;
   CtkWidgetPath *path;
-  GdkRGBA *color;
-  GdkRGBA *bg_color;
+  CdkRGBA *color;
+  CdkRGBA *bg_color;
   PangoFontDescription *font;
 
   context = ctk_style_context_new ();
@@ -408,7 +408,7 @@ static void
 test_style_priorities_equal (PrioritiesFixture *f,
                              gconstpointer      unused)
 {
-  GdkRGBA color, ref_color;
+  CdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
@@ -429,7 +429,7 @@ static void
 test_style_priorities_screen_only (PrioritiesFixture *f,
                                    gconstpointer      unused)
 {
-  GdkRGBA color, ref_color;
+  CdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
@@ -446,7 +446,7 @@ static void
 test_style_priorities_context_only (PrioritiesFixture *f,
                                     gconstpointer      unused)
 {
-  GdkRGBA color, ref_color;
+  CdkRGBA color, ref_color;
 
   ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->red_provider),
                                   CTK_STYLE_PROVIDER_PRIORITY_USER);
@@ -462,7 +462,7 @@ static void
 test_style_priorities_screen_higher (PrioritiesFixture *f,
                                      gconstpointer      unused)
 {
-  GdkRGBA color, ref_color;
+  CdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
@@ -481,7 +481,7 @@ static void
 test_style_priorities_context_higher (PrioritiesFixture *f,
                                       gconstpointer      unused)
 {
-  GdkRGBA color, ref_color;
+  CdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
@@ -500,7 +500,7 @@ static void
 test_style_priorities_two_screen (PrioritiesFixture *f,
                                   gconstpointer      unused)
 {
-  GdkRGBA color, ref_color;
+  CdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
@@ -520,7 +520,7 @@ static void
 test_style_priorities_two_context (PrioritiesFixture *f,
                                    gconstpointer      unused)
 {
-  GdkRGBA color, ref_color;
+  CdkRGBA color, ref_color;
 
   ctk_style_context_add_provider (f->context, CTK_STYLE_PROVIDER (f->blue_provider),
                                   CTK_STYLE_PROVIDER_PRIORITY_USER);
@@ -538,7 +538,7 @@ static void
 test_style_priorities_three_screen_higher (PrioritiesFixture *f,
                                            gconstpointer      unused)
 {
-  GdkRGBA color, ref_color;
+  CdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),
@@ -560,7 +560,7 @@ static void
 test_style_priorities_three_context_higher (PrioritiesFixture *f,
                                             gconstpointer      unused)
 {
-  GdkRGBA color, ref_color;
+  CdkRGBA color, ref_color;
 
   ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (f->blue_provider),

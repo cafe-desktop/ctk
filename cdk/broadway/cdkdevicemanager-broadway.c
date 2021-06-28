@@ -32,16 +32,16 @@
 static void    cdk_broadway_device_manager_finalize    (GObject *object);
 static void    cdk_broadway_device_manager_constructed (GObject *object);
 
-static GList * cdk_broadway_device_manager_list_devices (GdkDeviceManager *device_manager,
-							 GdkDeviceType     type);
-static GdkDevice * cdk_broadway_device_manager_get_client_pointer (GdkDeviceManager *device_manager);
+static GList * cdk_broadway_device_manager_list_devices (CdkDeviceManager *device_manager,
+							 CdkDeviceType     type);
+static CdkDevice * cdk_broadway_device_manager_get_client_pointer (CdkDeviceManager *device_manager);
 
-G_DEFINE_TYPE (GdkBroadwayDeviceManager, cdk_broadway_device_manager, GDK_TYPE_DEVICE_MANAGER)
+G_DEFINE_TYPE (CdkBroadwayDeviceManager, cdk_broadway_device_manager, GDK_TYPE_DEVICE_MANAGER)
 
 static void
-cdk_broadway_device_manager_class_init (GdkBroadwayDeviceManagerClass *klass)
+cdk_broadway_device_manager_class_init (CdkBroadwayDeviceManagerClass *klass)
 {
-  GdkDeviceManagerClass *device_manager_class = GDK_DEVICE_MANAGER_CLASS (klass);
+  CdkDeviceManagerClass *device_manager_class = GDK_DEVICE_MANAGER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = cdk_broadway_device_manager_finalize;
@@ -50,9 +50,9 @@ cdk_broadway_device_manager_class_init (GdkBroadwayDeviceManagerClass *klass)
   device_manager_class->get_client_pointer = cdk_broadway_device_manager_get_client_pointer;
 }
 
-static GdkDevice *
-create_core_pointer (GdkDeviceManager *device_manager,
-                     GdkDisplay       *display)
+static CdkDevice *
+create_core_pointer (CdkDeviceManager *device_manager,
+                     CdkDisplay       *display)
 {
   return g_object_new (GDK_TYPE_BROADWAY_DEVICE,
                        "name", "Core Pointer",
@@ -65,9 +65,9 @@ create_core_pointer (GdkDeviceManager *device_manager,
                        NULL);
 }
 
-static GdkDevice *
-create_core_keyboard (GdkDeviceManager *device_manager,
-                      GdkDisplay       *display)
+static CdkDevice *
+create_core_keyboard (CdkDeviceManager *device_manager,
+                      CdkDisplay       *display)
 {
   return g_object_new (GDK_TYPE_BROADWAY_DEVICE,
                        "name", "Core Keyboard",
@@ -80,9 +80,9 @@ create_core_keyboard (GdkDeviceManager *device_manager,
                        NULL);
 }
 
-static GdkDevice *
-create_touchscreen (GdkDeviceManager *device_manager,
-                    GdkDisplay       *display)
+static CdkDevice *
+create_touchscreen (CdkDeviceManager *device_manager,
+                    CdkDisplay       *display)
 {
   return g_object_new (GDK_TYPE_BROADWAY_DEVICE,
                        "name", "Touchscreen",
@@ -96,14 +96,14 @@ create_touchscreen (GdkDeviceManager *device_manager,
 }
 
 static void
-cdk_broadway_device_manager_init (GdkBroadwayDeviceManager *device_manager)
+cdk_broadway_device_manager_init (CdkBroadwayDeviceManager *device_manager)
 {
 }
 
 static void
 cdk_broadway_device_manager_finalize (GObject *object)
 {
-  GdkBroadwayDeviceManager *device_manager;
+  CdkBroadwayDeviceManager *device_manager;
 
   device_manager = GDK_BROADWAY_DEVICE_MANAGER (object);
 
@@ -117,9 +117,9 @@ cdk_broadway_device_manager_finalize (GObject *object)
 static void
 cdk_broadway_device_manager_constructed (GObject *object)
 {
-  GdkBroadwayDeviceManager *device_manager;
-  GdkDisplay *display;
-  GdkSeat *seat;
+  CdkBroadwayDeviceManager *device_manager;
+  CdkDisplay *display;
+  CdkSeat *seat;
 
   device_manager = GDK_BROADWAY_DEVICE_MANAGER (object);
   display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (object));
@@ -141,10 +141,10 @@ cdk_broadway_device_manager_constructed (GObject *object)
 
 
 static GList *
-cdk_broadway_device_manager_list_devices (GdkDeviceManager *device_manager,
-					  GdkDeviceType     type)
+cdk_broadway_device_manager_list_devices (CdkDeviceManager *device_manager,
+					  CdkDeviceType     type)
 {
-  GdkBroadwayDeviceManager *broadway_device_manager = (GdkBroadwayDeviceManager *) device_manager;
+  CdkBroadwayDeviceManager *broadway_device_manager = (CdkBroadwayDeviceManager *) device_manager;
   GList *devices = NULL;
 
   if (type == GDK_DEVICE_TYPE_MASTER)
@@ -161,16 +161,16 @@ cdk_broadway_device_manager_list_devices (GdkDeviceManager *device_manager,
   return devices;
 }
 
-static GdkDevice *
-cdk_broadway_device_manager_get_client_pointer (GdkDeviceManager *device_manager)
+static CdkDevice *
+cdk_broadway_device_manager_get_client_pointer (CdkDeviceManager *device_manager)
 {
-  GdkBroadwayDeviceManager *broadway_device_manager = (GdkBroadwayDeviceManager *) device_manager;
+  CdkBroadwayDeviceManager *broadway_device_manager = (CdkBroadwayDeviceManager *) device_manager;
 
   return broadway_device_manager->core_pointer;
 }
 
-GdkDeviceManager *
-_cdk_broadway_device_manager_new (GdkDisplay *display)
+CdkDeviceManager *
+_cdk_broadway_device_manager_new (CdkDisplay *display)
 {
   return g_object_new (GDK_TYPE_BROADWAY_DEVICE_MANAGER,
 		       "display", display,

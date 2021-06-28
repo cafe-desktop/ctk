@@ -1927,16 +1927,16 @@ msgid "Cell background color"
 msgstr "Color de fondo d'a celda"
 
 #: ../ctk/ctkcellrenderer.c:402
-msgid "Cell background color as a GdkColor"
-msgstr "A color de fondo d'a celda como GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "A color de fondo d'a celda como CdkColor"
 
 #: ../ctk/ctkcellrenderer.c:415
 msgid "Cell background RGBA color"
 msgstr "Color de fondo RGBA d'a celda"
 
 #: ../ctk/ctkcellrenderer.c:416
-msgid "Cell background color as a GdkRGBA"
-msgstr "A color de fondo d'a celda como GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "A color de fondo d'a celda como CdkRGBA"
 
 #: ../ctk/ctkcellrenderer.c:423
 msgid "Editing"
@@ -2201,8 +2201,8 @@ msgstr "Color de fondo"
 
 #: ../ctk/ctkcellrenderertext.c:302 ../ctk/ctkcellview.c:206
 #: ../ctk/ctktexttag.c:219
-msgid "Background color as a GdkColor"
-msgstr "A color de fondo como GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "A color de fondo como CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:316
 msgid "Background color as RGBA"
@@ -2210,8 +2210,8 @@ msgstr "A color de fondo como RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:317 ../ctk/ctkcellview.c:220
 #: ../ctk/ctktexttag.c:234
-msgid "Background color as a GdkRGBA"
-msgstr "A color de fondo como GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "A color de fondo como CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:323 ../ctk/ctktexttag.c:249
 msgid "Foreground color name"
@@ -2227,16 +2227,16 @@ msgid "Foreground color"
 msgstr "Color d'o primer plan"
 
 #: ../ctk/ctkcellrenderertext.c:339 ../ctk/ctktexttag.c:265
-msgid "Foreground color as a GdkColor"
-msgstr "A color de primer plan como GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "A color de primer plan como CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:353
 msgid "Foreground color as RGBA"
 msgstr "Color d'o primer plan como RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:354 ../ctk/ctktexttag.c:280
-msgid "Foreground color as a GdkRGBA"
-msgstr "A color d'o primer plan como GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "A color d'o primer plan como CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:362 ../ctk/ctkentry.c:778
 #: ../ctk/ctktexttag.c:296 ../ctk/ctktextview.c:736
@@ -2718,8 +2718,8 @@ msgid "Color"
 msgstr "Color"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Color actual como GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Color actual como CdkRGBA"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4117,8 +4117,8 @@ msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:231 ../ctk/ctkstatusicon.c:223
 #, fuzzy
-msgid "A GdkPixbuf to display"
-msgstr "Un GdkPixbuf ta amostrar"
+msgid "A CdkPixbuf to display"
+msgstr "Un CdkPixbuf ta amostrar"
 
 #: ../ctk/ctkimage.c:238
 msgid "Surface"
@@ -4175,8 +4175,8 @@ msgstr "Animación"
 
 #: ../ctk/ctkimage.c:310
 #, fuzzy
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation ta amostrar"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation ta amostrar"
 
 #: ../ctk/ctkimage.c:357
 msgid "Resource"
@@ -7281,8 +7281,8 @@ msgstr "O titol d'iste icono d'a servilla"
 
 #: ../ctk/ctkstylecontext.c:445
 #, fuzzy
-msgid "The associated GdkScreen"
-msgstr "A GdkScreen asociada"
+msgid "The associated CdkScreen"
+msgstr "A CdkScreen asociada"
 
 #: ../ctk/ctkstylecontext.c:451
 #, fuzzy
@@ -7291,8 +7291,8 @@ msgstr "FrameClock"
 
 #: ../ctk/ctkstylecontext.c:452
 #, fuzzy
-msgid "The associated GdkFrameClock"
-msgstr "O GdkFrameClock asociau"
+msgid "The associated CdkFrameClock"
+msgstr "O CdkFrameClock asociau"
 
 #: ../ctk/ctkstylecontext.c:459 ../ctk/ctktexttag.c:287
 #, fuzzy
@@ -7632,8 +7632,8 @@ msgstr "Color de fondo d'o parágrafo"
 
 #: ../ctk/ctktexttag.c:582
 #, fuzzy
-msgid "Paragraph background color as a GdkColor"
-msgstr "Color de fondo d'o paragrafo como un GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Color de fondo d'o paragrafo como un CdkColor"
 
 #: ../ctk/ctktexttag.c:596
 #, fuzzy
@@ -7642,8 +7642,8 @@ msgstr "Fondo de parágrafo RGBA"
 
 #: ../ctk/ctktexttag.c:597
 #, fuzzy
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Color de fondo d'o párrafo como un GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Color de fondo d'o párrafo como un CdkRGBA"
 
 #: ../ctk/ctktexttag.c:615
 #, fuzzy
@@ -8673,7 +8673,7 @@ msgid "Events"
 msgstr "Eventos"
 
 #: ../ctk/ctkwidget.c:1269
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
 "A mascareta d'eventos que decide que tipo de CtkEvents recibe iste widget"
 

@@ -42,7 +42,7 @@ gboolean        ctk_css_style_render_border_get_clip    (CtkCssStyle            
                                                          gdouble                 y,
                                                          gdouble                 width,
                                                          gdouble                 height,
-                                                         GdkRectangle           *out_clip) G_GNUC_WARN_UNUSED_RESULT;
+                                                         CdkRectangle           *out_clip) G_GNUC_WARN_UNUSED_RESULT;
 
 gboolean        ctk_css_style_render_has_outline        (CtkCssStyle            *style);
 void            ctk_css_style_render_outline            (CtkCssStyle            *style,
@@ -56,7 +56,7 @@ gboolean        ctk_css_style_render_outline_get_clip   (CtkCssStyle            
                                                          gdouble                 y,
                                                          gdouble                 width,
                                                          gdouble                 height,
-                                                         GdkRectangle           *out_clip) G_GNUC_WARN_UNUSED_RESULT;
+                                                         CdkRectangle           *out_clip) G_GNUC_WARN_UNUSED_RESULT;
 
 
 G_END_DECLS

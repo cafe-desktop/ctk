@@ -49,9 +49,9 @@ static guint signals[N_SIGNALS] = { 0, };
 
 static gboolean
 ctk_gesture_stylus_handle_event (CtkEventController *controller,
-                                 const GdkEvent     *event)
+                                 const CdkEvent     *event)
 {
-  GdkModifierType modifiers;
+  CdkModifierType modifiers;
   guint n_signal;
   gdouble x, y;
 
@@ -167,10 +167,10 @@ ctk_gesture_stylus_new (CtkWidget *widget)
                        NULL);
 }
 
-static const GdkEvent *
+static const CdkEvent *
 gesture_get_current_event (CtkGestureStylus *gesture)
 {
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
 
@@ -194,10 +194,10 @@ gesture_get_current_event (CtkGestureStylus *gesture)
  **/
 gboolean
 ctk_gesture_stylus_get_axis (CtkGestureStylus *gesture,
-			     GdkAxisUse        axis,
+			     CdkAxisUse        axis,
 			     gdouble          *value)
 {
-  const GdkEvent *event;
+  const CdkEvent *event;
 
   g_return_val_if_fail (CTK_IS_GESTURE_STYLUS (gesture), FALSE);
   g_return_val_if_fail (axis < GDK_AXIS_LAST, FALSE);
@@ -227,10 +227,10 @@ ctk_gesture_stylus_get_axis (CtkGestureStylus *gesture,
  **/
 gboolean
 ctk_gesture_stylus_get_axes (CtkGestureStylus  *gesture,
-			     GdkAxisUse         axes[],
+			     CdkAxisUse         axes[],
 			     gdouble          **values)
 {
-  const GdkEvent *event;
+  const CdkEvent *event;
   GArray *array;
   gint i = 0;
 
@@ -269,7 +269,7 @@ ctk_gesture_stylus_get_axes (CtkGestureStylus  *gesture,
  * ctk_gesture_stylus_get_device_tool:
  * @gesture: a #CtkGestureStylus
  *
- * Returns the #GdkDeviceTool currently driving input through this gesture.
+ * Returns the #CdkDeviceTool currently driving input through this gesture.
  * This function must be called from either the #CtkGestureStylus::down,
  * #CtkGestureStylus::motion, #CtkGestureStylus::up or #CtkGestureStylus::proximity
  * signal handlers.
@@ -278,10 +278,10 @@ ctk_gesture_stylus_get_axes (CtkGestureStylus  *gesture,
  *
  * Since: 3.24
  **/
-GdkDeviceTool *
+CdkDeviceTool *
 ctk_gesture_stylus_get_device_tool (CtkGestureStylus *gesture)
 {
-  const GdkEvent *event;
+  const CdkEvent *event;
 
   g_return_val_if_fail (CTK_IS_GESTURE_STYLUS (gesture), FALSE);
 

@@ -39,10 +39,10 @@ G_BEGIN_DECLS
 
 GDK_AVAILABLE_IN_ALL
 void ctk_drag_source_set  (CtkWidget            *widget,
-			   GdkModifierType       start_button_mask,
+			   CdkModifierType       start_button_mask,
 			   const CtkTargetEntry *targets,
 			   gint                  n_targets,
-			   GdkDragAction         actions);
+			   CdkDragAction         actions);
 
 GDK_AVAILABLE_IN_ALL
 void ctk_drag_source_unset (CtkWidget        *widget);
@@ -61,7 +61,7 @@ void           ctk_drag_source_add_uri_targets   (CtkWidget    *widget);
 
 GDK_AVAILABLE_IN_ALL
 void ctk_drag_source_set_icon_pixbuf  (CtkWidget       *widget,
-				       GdkPixbuf       *pixbuf);
+				       CdkPixbuf       *pixbuf);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_drag_source_set_icon_name)
 void ctk_drag_source_set_icon_stock   (CtkWidget       *widget,
 				       const gchar     *stock_id);

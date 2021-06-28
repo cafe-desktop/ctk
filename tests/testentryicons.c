@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 static void
-clear_pressed (CtkEntry *entry, gint icon, GdkEvent *event, gpointer data)
+clear_pressed (CtkEntry *entry, gint icon, CdkEvent *event, gpointer data)
 {
    if (icon == CTK_ENTRY_ICON_SECONDARY)
      ctk_entry_set_text (entry, "");
@@ -10,7 +10,7 @@ clear_pressed (CtkEntry *entry, gint icon, GdkEvent *event, gpointer data)
 
 static void
 drag_begin_cb (CtkWidget      *widget,
-               GdkDragContext *context,
+               CdkDragContext *context,
                gpointer        user_data)
 {
   gint pos;
@@ -22,7 +22,7 @@ drag_begin_cb (CtkWidget      *widget,
 
 static void
 drag_data_get_cb (CtkWidget        *widget,
-                  GdkDragContext   *context,
+                  CdkDragContext   *context,
                   CtkSelectionData *data,
                   guint             info,
                   guint             time,
@@ -83,7 +83,7 @@ static void
 set_pixbuf (CtkWidget *button,
             CtkEntry  *entry)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {

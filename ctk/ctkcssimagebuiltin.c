@@ -309,9 +309,9 @@ ctk_css_image_builtin_draw_expander (CtkCssImage *image,
 }
 
 static void
-color_shade (const GdkRGBA *color,
+color_shade (const CdkRGBA *color,
              gdouble        factor,
-             GdkRGBA       *color_return)
+             CdkRGBA       *color_return)
 {
   CtkHSLA hsla;
 
@@ -322,8 +322,8 @@ color_shade (const GdkRGBA *color,
 
 static void
 render_dot (cairo_t       *cr,
-            const GdkRGBA *lighter,
-            const GdkRGBA *darker,
+            const CdkRGBA *lighter,
+            const CdkRGBA *darker,
             gdouble        x,
             gdouble        y,
             gdouble        size)
@@ -384,7 +384,7 @@ ctk_css_image_builtin_draw_grip (CtkCssImage            *image,
                                  CtkCssImageBuiltinType  image_type)
 {
   CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
-  GdkRGBA lighter, darker;
+  CdkRGBA lighter, darker;
 
   cairo_set_line_width (cr, 1.0);
 
@@ -634,7 +634,7 @@ ctk_css_image_builtin_draw_pane_separator (CtkCssImage *image,
                                            double       height)
 {
   CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
-  GdkRGBA lighter, darker;
+  CdkRGBA lighter, darker;
   gint xx, yy;
 
   cairo_set_line_width (cr, 1.0);
@@ -657,7 +657,7 @@ ctk_css_image_builtin_draw_handle (CtkCssImage *image,
                                    double       height)
 {
   CtkCssImageBuiltin *builtin = CTK_CSS_IMAGE_BUILTIN (image);
-  GdkRGBA lighter, darker;
+  CdkRGBA lighter, darker;
   gint xx, yy;
 
   cairo_set_line_width (cr, 1.0);

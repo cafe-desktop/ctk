@@ -24,7 +24,7 @@
 G_BEGIN_DECLS
 
 #define _cdk_win32_selection_get() (_win32_selection)
-#define _cdk_atom_array_index(a, i) (g_array_index (a, GdkAtom, i))
+#define _cdk_atom_array_index(a, i) (g_array_index (a, CdkAtom, i))
 #define _cdk_win32_selection_atom(i) (_cdk_atom_array_index (_cdk_win32_selection_get ()->known_atoms, i))
 #define _cdk_cf_array_index(a, i) (g_array_index (a, UINT, i))
 #define _cdk_win32_selection_cf(i) (_cdk_cf_array_index (_cdk_win32_selection_get ()->known_clipboard_formats, i))
@@ -35,20 +35,20 @@ G_BEGIN_DECLS
  */
 typedef struct {
   gint format;
-  GdkAtom target;
+  CdkAtom target;
   gboolean transmute;
-} GdkSelTargetFormat;
+} CdkSelTargetFormat;
 
 /* We emulate the GDK_SELECTION window properties of windows (as used
  * in the X11 backend) by using a hash table from window handles to
- * GdkSelProp structs.
+ * CdkSelProp structs.
  */
 typedef struct {
   guchar *data;
   gsize   length;
   gint    bitness;
-  GdkAtom target;
-} GdkSelProp;
+  CdkAtom target;
+} CdkSelProp;
 
 /* OLE-based DND state */
 typedef enum {
@@ -57,11 +57,11 @@ typedef enum {
   GDK_WIN32_DND_DROPPED,
   GDK_WIN32_DND_FAILED,
   GDK_WIN32_DND_DRAGGING,
-} GdkWin32DndState;
+} CdkWin32DndState;
 
-enum _GdkWin32AtomIndex
+enum _CdkWin32AtomIndex
 {
-/* GdkAtoms: properties, targets and types */
+/* CdkAtoms: properties, targets and types */
   GDK_WIN32_ATOM_INDEX_GDK_SELECTION = 0,
   GDK_WIN32_ATOM_INDEX_CLIPBOARD_MANAGER,
   GDK_WIN32_ATOM_INDEX_WM_TRANSIENT_FOR,
@@ -92,9 +92,9 @@ enum _GdkWin32AtomIndex
   GDK_WIN32_ATOM_INDEX_LAST
 };
 
-typedef enum _GdkWin32AtomIndex GdkWin32AtomIndex;
+typedef enum _CdkWin32AtomIndex CdkWin32AtomIndex;
 
-enum _GdkWin32CFIndex
+enum _CdkWin32CFIndex
 {
   GDK_WIN32_CF_INDEX_PNG = 0,
   GDK_WIN32_CF_INDEX_JFIF,
@@ -112,36 +112,36 @@ enum _GdkWin32CFIndex
   GDK_WIN32_CF_INDEX_LAST
 };
 
-typedef enum _GdkWin32CFIndex GdkWin32CFIndex;
+typedef enum _CdkWin32CFIndex CdkWin32CFIndex;
 
 #define GDK_TYPE_WIN32_SELECTION         (cdk_win32_selection_get_type ())
-#define GDK_WIN32_SELECTION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_WIN32_SELECTION, GdkWin32Selection))
-#define GDK_WIN32_SELECTION_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_WIN32_SELECTION, GdkWin32SelectionClass))
+#define GDK_WIN32_SELECTION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_WIN32_SELECTION, CdkWin32Selection))
+#define GDK_WIN32_SELECTION_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_WIN32_SELECTION, CdkWin32SelectionClass))
 #define GDK_IS_WIN32_SELECTION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_WIN32_SELECTION))
 #define GDK_IS_WIN32_SELECTION_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_WIN32_SELECTION))
-#define GDK_WIN32_SELECTION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_WIN32_SELECTION, GdkWin32SelectionClass))
+#define GDK_WIN32_SELECTION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_WIN32_SELECTION, CdkWin32SelectionClass))
 
-typedef struct _GdkWin32Selection GdkWin32Selection;
-typedef struct _GdkWin32SelectionClass GdkWin32SelectionClass;
+typedef struct _CdkWin32Selection CdkWin32Selection;
+typedef struct _CdkWin32SelectionClass CdkWin32SelectionClass;
 
 /* This object is just a sink to hold all the selection- and dnd-related data
  * that otherwise would be in global variables.
  */
-struct _GdkWin32Selection
+struct _CdkWin32Selection
 {
   GObject *parent_instance;
   GHashTable *sel_prop_table;
-  GdkSelProp *dropfiles_prop;
+  CdkSelProp *dropfiles_prop;
   /* We store the owner of each selection in this table. Obviously, this only
    * is valid intra-app, and in fact it is necessary for the intra-app DND to work.
    */
   GHashTable *sel_owner_table;
 
-  /* GdkAtoms for well-known image formats */
-  GdkAtom *known_pixbuf_formats;
+  /* CdkAtoms for well-known image formats */
+  CdkAtom *known_pixbuf_formats;
   int n_known_pixbuf_formats;
 
-  /* GArray of GdkAtoms for various known Selection and DnD strings.
+  /* GArray of CdkAtoms for various known Selection and DnD strings.
    * Size is guaranteed to be at least GDK_WIN32_ATOM_INDEX_LAST
    */
   GArray *known_atoms;
@@ -151,29 +151,29 @@ struct _GdkWin32Selection
    */
   GArray *known_clipboard_formats;
 
-  GdkWin32DndState  dnd_target_state;
-  GdkWin32DndState  dnd_source_state;
+  CdkWin32DndState  dnd_target_state;
+  CdkWin32DndState  dnd_source_state;
 
   /* Holds a reference to the data object for the target drop site.
    */
   IDataObject      *dnd_data_object_target;
 
   /* Carries DnD target context from idroptarget_*() to convert_selection() */
-  GdkDragContext   *target_drag_context;
+  CdkDragContext   *target_drag_context;
 
   /* Carries W32 format ID from idataobject_getdata() to property_change() */
   UINT              property_change_format;
   /* Carries the W32-wrapped data between idataobject_getdata() and property_change() */
   LPSTGMEDIUM       property_change_data;
-  /* Carries the transmute field of the GdkSelTargetFormat from from idataobject_getdata() to property_change() */
+  /* Carries the transmute field of the CdkSelTargetFormat from from idataobject_getdata() to property_change() */
   gboolean          property_change_transmute;
   /* Carries the target atom from GDK_SELECTION_REQUEST issuer to property_change() */
-  GdkAtom           property_change_target_atom;
+  CdkAtom           property_change_target_atom;
 
   /* TRUE when we are emptying the clipboard ourselves */
   gboolean          ignore_destroy_clipboard;
 
-  /* Array of GdkSelTargetFormats describing the targets supported by the clipboard selection */
+  /* Array of CdkSelTargetFormats describing the targets supported by the clipboard selection */
   GArray           *clipboard_selection_targets;
 
   /* Same for the DnD selection (applies for both LOCAL and OLE2 DnD) */
@@ -191,13 +191,13 @@ struct _GdkWin32Selection
    */
   HWND              clipboard_opened_for;
 
-  /* A target-keyed hash table of GArrays of GdkSelTargetFormats describing compatibility formats for a target */
+  /* A target-keyed hash table of GArrays of CdkSelTargetFormats describing compatibility formats for a target */
   GHashTable       *compatibility_formats;
-  /* A format-keyed hash table of GArrays of GdkAtoms describing compatibility targets for a format */
+  /* A format-keyed hash table of GArrays of CdkAtoms describing compatibility targets for a format */
   GHashTable       *compatibility_targets;
 };
 
-struct _GdkWin32SelectionClass
+struct _CdkWin32SelectionClass
 {
   GObjectClass parent_class;
 };
@@ -210,14 +210,14 @@ gchar * _cdk_win32_get_clipboard_format_name                      (UINT         
 void    _cdk_win32_add_format_to_targets                          (UINT               format,
                                                                    GArray            *array,
                                                                    GList            **list);
-gint    _cdk_win32_add_target_to_selformats                       (GdkAtom            target,
+gint    _cdk_win32_add_target_to_selformats                       (CdkAtom            target,
                                                                    GArray            *array);
-void    _cdk_win32_selection_property_change                      (GdkWin32Selection *win32_sel,
-                                                                   GdkWindow         *window,
-                                                                   GdkAtom            property,
-                                                                   GdkAtom            type,
+void    _cdk_win32_selection_property_change                      (CdkWin32Selection *win32_sel,
+                                                                   CdkWindow         *window,
+                                                                   CdkAtom            property,
+                                                                   CdkAtom            type,
                                                                    gint               format,
-                                                                   GdkPropMode        mode,
+                                                                   CdkPropMode        mode,
                                                                    const guchar      *data,
                                                                    gint               nelements);
 

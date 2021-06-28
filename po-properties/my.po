@@ -1223,8 +1223,8 @@ msgid "Cell background color"
 msgstr "အခန်းငယ် နောက်ခံ အရောင်"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "GdkColor တမျိုးအနေဖြင့် အခန်းငယ် နောက်ခံ အရောင်"
+msgid "Cell background color as a CdkColor"
+msgstr "CdkColor တမျိုးအနေဖြင့် အခန်းငယ် နောက်ခံ အရောင်"
 
 #: ctk/ctkcellrenderer.c:343
 msgid "Editing"
@@ -1471,8 +1471,8 @@ msgid "Background color"
 msgstr "နောက်ခံ အရောင်"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "GdkColor တခု အဖြစ် နောက်ခံ အရောင်"
+msgid "Background color as a CdkColor"
+msgstr "CdkColor တခု အဖြစ် နောက်ခံ အရောင်"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1488,8 +1488,8 @@ msgid "Foreground color"
 msgstr "အနီးမြင်ကွင်း အရောင်"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "GdkColor တခု အဖြစ် အနီးမြင်ကွင်း အရောင်"
+msgid "Foreground color as a CdkColor"
+msgstr "CdkColor တခု အဖြစ် အနီးမြင်ကွင်း အရောင်"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3035,8 +3035,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "ပြသမဲ့ GdkPixbuf တခု"
+msgid "A CdkPixbuf to display"
+msgstr "ပြသမဲ့ CdkPixbuf တခု"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3080,8 +3080,8 @@ msgid "Animation"
 msgstr "သက်၀င်လှုပ်ရှားမှု"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "ပြသမဲ့ GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "ပြသမဲ့ CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5603,8 +5603,8 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr "စာသား စာအမှတ်ဆီ ရည်ညွှန်းဖို့ သုံးစွဲတဲ့ အမည်။ အမည်မသိ စာအမှတ်များအတွက် NULL"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "GdkColor (သတ်မှတ်မထားတာ ဖြစ်နိုင်တယ်) တခုကို နောက်ခံအရောင်အဖြစ်"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "CdkColor (သတ်မှတ်မထားတာ ဖြစ်နိုင်တယ်) တခုကို နောက်ခံအရောင်အဖြစ်"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5617,8 +5617,8 @@ msgid ""
 msgstr "နောက်ခံအရောင်က အမြင့်တခုလုံးကို ဖြည့်ထား၊ မထား (သို့) စာအမှတ် အက္ခရာများရဲ့ အမြင့်သာ ဟုတ်၊ မဟုတ်"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "GdkColor (သတ်မှတ်မထားတာ ဖြစ်နိုင်တယ်) တခုအဖြစ် အနီးကပ်မြင်ကွင်း"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "CdkColor (သတ်မှတ်မထားတာ ဖြစ်နိုင်တယ်) တခုအဖြစ် အနီးကပ်မြင်ကွင်း"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -5764,7 +5764,7 @@ msgid "Paragraph background color"
 msgstr "စာပုဒ် နောက်ခံ အရောင်"
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 msgstr "ဂျီဒီကေအရောင်တခုလို စာပုဒ် နောက်ခံ အရောင်"
 
 #: ctk/ctktexttag.c:530
@@ -6706,8 +6706,8 @@ msgid "Events"
 msgstr "ဖြစ်ရပ်များ"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "ဒီ widget ရရှိတဲ့ GdkEvents အမျိုးအစားကို ဆုံးဖြတ်ပေးတဲ့ ဖြစ်ရပ် မျက်နှာဖုံး"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "ဒီ widget ရရှိတဲ့ CdkEvents အမျိုးအစားကို ဆုံးဖြတ်ပေးတဲ့ ဖြစ်ရပ် မျက်နှာဖုံး"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7198,8 +7198,8 @@ msgstr "ထည့်သွင်းမှု နည်းလမ်း statusbar 
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "pixbuf ရဲ့ pixel အချက်အလက်ကြမ်းဆီ ညွှန်​ပြတံ တခု"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "သရုပ်ဖေါ်ပေးသူရဲ့ GdkScreen"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "သရုပ်ဖေါ်ပေးသူရဲ့ CdkScreen"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "လည်ပတ်တဲ့ ခလုတ်ရဲ့ တန်ဖိုးကို ထိန်းထားတဲ့ တန်းညှိခြင်း။"
@@ -7219,8 +7219,8 @@ msgstr "ထည့်သွင်းမှု နည်းလမ်း statusbar 
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "အရိပ် (သို့) နောက်ခံကို ရေးဆွဲတဲ့အခါ သင့်လျှော်တဲ့ အခြေအနေတခုကို ပေးအပ်၊ မပေးအပ်"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "လတ်တလော ရွေးချယ်ထားတဲ့ GdkFont"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "လတ်တလော ရွေးချယ်ထားတဲ့ CdkFont"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "ငြင်းပယ်ခံရတဲ့ ဂုဏ်အင်္ဂါရပ်၊ ၄င်းအစား shadow_type ကို သုံးစွဲပါ"
@@ -7228,17 +7228,17 @@ msgstr "ထည့်သွင်းမှု နည်းလမ်း statusbar 
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "ပြသမဲ့ GdkPixmap"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "ပြသမဲ့ CdkPixmap"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "ပြသမဲ့ GdkImage"
+#~ msgid "A CdkImage to display"
+#~ msgstr "ပြသမဲ့ CdkImage"
 
 #~ msgid "Mask"
 #~ msgstr "မျက်နှာဖုံး"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "GdkImage (သို့) GdkPixmapနဲ့ သုံးစွဲမဲ့ မျက်နှာဖုံး bitmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "CdkImage (သို့) CdkPixmapနဲ့ သုံးစွဲမဲ့ မျက်နှာဖုံး bitmap"
 
 #~ msgid "Use separator"
 #~ msgstr "ပုဒ်ခွဲကို သုံးစွဲပါ"

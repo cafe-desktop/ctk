@@ -51,7 +51,7 @@
  * value.  As a result, if the object is modified, it is up to the
  * application writer to call ctk_tree_model_row_changed() to emit the
  * #CtkTreeModel::row_changed signal.  This most commonly affects lists with
- * #GdkPixbufs stored.
+ * #CdkPixbufs stored.
  *
  * An example for creating a simple list store:
  * |[<!-- language="C" -->
@@ -407,7 +407,7 @@ iter_is_valid (CtkTreeIter  *iter,
  *
  * As an example, `ctk_list_store_new (3, G_TYPE_INT, G_TYPE_STRING,
  * GDK_TYPE_PIXBUF);` will create a new #CtkListStore with three columns, of type
- * int, string and #GdkPixbuf respectively.
+ * int, string and #CdkPixbuf respectively.
  *
  * Returns: a new #CtkListStore
  */

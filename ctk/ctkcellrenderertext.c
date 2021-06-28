@@ -58,16 +58,16 @@ static void ctk_cell_renderer_text_set_property  (GObject                  *obje
 static void ctk_cell_renderer_text_render     (CtkCellRenderer          *cell,
 					       cairo_t                  *cr,
 					       CtkWidget                *widget,
-					       const GdkRectangle       *background_area,
-					       const GdkRectangle       *cell_area,
+					       const CdkRectangle       *background_area,
+					       const CdkRectangle       *cell_area,
 					       CtkCellRendererState      flags);
 
 static CtkCellEditable *ctk_cell_renderer_text_start_editing (CtkCellRenderer      *cell,
-							      GdkEvent             *event,
+							      CdkEvent             *event,
 							      CtkWidget            *widget,
 							      const gchar          *path,
-							      const GdkRectangle   *background_area,
-							      const GdkRectangle   *cell_area,
+							      const CdkRectangle   *background_area,
+							      const CdkRectangle   *cell_area,
 							      CtkCellRendererState  flags);
 
 static void       ctk_cell_renderer_text_get_preferred_width            (CtkCellRenderer       *cell,
@@ -86,8 +86,8 @@ static void       ctk_cell_renderer_text_get_preferred_height_for_width (CtkCell
 static void       ctk_cell_renderer_text_get_aligned_area               (CtkCellRenderer       *cell,
 									 CtkWidget             *widget,
 									 CtkCellRendererState   flags,
-									 const GdkRectangle    *cell_area,
-									 GdkRectangle          *aligned_area);
+									 const CdkRectangle    *cell_area,
+									 CdkRectangle          *aligned_area);
 
 
 
@@ -165,8 +165,8 @@ struct _CtkCellRendererTextPrivate
   CtkWidget *entry;
 
   PangoAttrList        *extra_attrs;
-  GdkRGBA               foreground;
-  GdkRGBA               background;
+  CdkRGBA               foreground;
+  CdkRGBA               background;
   PangoAlignment        align;
   PangoEllipsizeMode    ellipsize;
   PangoFontDescription *font;
@@ -288,7 +288,7 @@ ctk_cell_renderer_text_class_init (CtkCellRendererTextClass *class)
   /**
    * CtkCellRendererText:background-cdk:
    *
-   * Background color as a #GdkColor
+   * Background color as a #CdkColor
    *
    * Deprecated: 3.4: Use #CtkCellRendererText:background-rgba instead.
    */
@@ -296,7 +296,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   text_cell_renderer_props[PROP_BACKGROUND_GDK] =
       g_param_spec_boxed ("background-cdk",
                           P_("Background color"),
-                          P_("Background color as a GdkColor"),
+                          P_("Background color as a CdkColor"),
                           GDK_TYPE_COLOR,
                           CTK_PARAM_READWRITE | G_PARAM_DEPRECATED);
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -304,14 +304,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkCellRendererText:background-rgba:
    *
-   * Background color as a #GdkRGBA
+   * Background color as a #CdkRGBA
    *
    * Since: 3.0
    */
   text_cell_renderer_props[PROP_BACKGROUND_RGBA] =
       g_param_spec_boxed ("background-rgba",
                           P_("Background color as RGBA"),
-                          P_("Background color as a GdkRGBA"),
+                          P_("Background color as a CdkRGBA"),
                           GDK_TYPE_RGBA,
                           CTK_PARAM_READWRITE);
   text_cell_renderer_props[PROP_FOREGROUND] =
@@ -324,7 +324,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkCellRendererText:foreground-cdk:
    *
-   * Foreground color as a #GdkColor
+   * Foreground color as a #CdkColor
    *
    * Deprecated: 3.4: Use #CtkCellRendererText:foreground-rgba instead.
    */
@@ -332,7 +332,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   text_cell_renderer_props[PROP_FOREGROUND_GDK] =
       g_param_spec_boxed ("foreground-cdk",
                           P_("Foreground color"),
-                          P_("Foreground color as a GdkColor"),
+                          P_("Foreground color as a CdkColor"),
                           GDK_TYPE_COLOR,
                           CTK_PARAM_READWRITE | G_PARAM_DEPRECATED);
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -340,14 +340,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkCellRendererText:foreground-rgba:
    *
-   * Foreground color as a #GdkRGBA
+   * Foreground color as a #CdkRGBA
    *
    * Since: 3.0
    */
   text_cell_renderer_props[PROP_FOREGROUND_RGBA] =
       g_param_spec_boxed ("foreground-rgba",
                           P_("Foreground color as RGBA"),
-                          P_("Foreground color as a GdkRGBA"),
+                          P_("Foreground color as a CdkRGBA"),
                           GDK_TYPE_RGBA,
                           CTK_PARAM_READWRITE);
 
@@ -765,7 +765,7 @@ ctk_cell_renderer_text_get_property (GObject        *object,
 
     case PROP_BACKGROUND_GDK:
       {
-        GdkColor color;
+        CdkColor color;
 
         color.red = (guint16) (priv->background.red * 65535);
         color.green = (guint16) (priv->background.green * 65535);
@@ -777,7 +777,7 @@ ctk_cell_renderer_text_get_property (GObject        *object,
 
     case PROP_FOREGROUND_GDK:
       {
-        GdkColor color;
+        CdkColor color;
 
         color.red = (guint16) (priv->foreground.red * 65535);
         color.green = (guint16) (priv->foreground.green * 65535);
@@ -948,7 +948,7 @@ ctk_cell_renderer_text_get_property (GObject        *object,
 
 static void
 set_bg_color (CtkCellRendererText *celltext,
-              GdkRGBA             *rgba)
+              CdkRGBA             *rgba)
 {
   CtkCellRendererTextPrivate *priv = celltext->priv;
 
@@ -975,7 +975,7 @@ set_bg_color (CtkCellRendererText *celltext,
 
 static void
 set_fg_color (CtkCellRendererText *celltext,
-              GdkRGBA             *rgba)
+              CdkRGBA             *rgba)
 {
   CtkCellRendererTextPrivate *priv = celltext->priv;
 
@@ -1183,7 +1183,7 @@ ctk_cell_renderer_text_set_property (GObject      *object,
 
     case PROP_BACKGROUND:
       {
-        GdkRGBA rgba;
+        CdkRGBA rgba;
 
         if (!g_value_get_string (value))
           set_bg_color (celltext, NULL);       /* reset to background_set to FALSE */
@@ -1198,7 +1198,7 @@ ctk_cell_renderer_text_set_property (GObject      *object,
 
     case PROP_FOREGROUND:
       {
-        GdkRGBA rgba;
+        CdkRGBA rgba;
 
         if (!g_value_get_string (value))
           set_fg_color (celltext, NULL);       /* reset to foreground_set to FALSE */
@@ -1213,12 +1213,12 @@ ctk_cell_renderer_text_set_property (GObject      *object,
 
     case PROP_BACKGROUND_GDK:
       {
-        GdkColor *color;
+        CdkColor *color;
 
         color = g_value_get_boxed (value);
         if (color)
           {
-            GdkRGBA rgba;
+            CdkRGBA rgba;
 
             rgba.red = color->red / 65535.;
             rgba.green = color->green / 65535.;
@@ -1236,12 +1236,12 @@ ctk_cell_renderer_text_set_property (GObject      *object,
 
     case PROP_FOREGROUND_GDK:
       {
-        GdkColor *color;
+        CdkColor *color;
 
         color = g_value_get_boxed (value);
         if (color)
           {
-            GdkRGBA rgba;
+            CdkRGBA rgba;
 
             rgba.red = color->red / 65535.;
             rgba.green = color->green / 65535.;
@@ -1553,7 +1553,7 @@ add_attr (PangoAttrList  *attr_list,
 static PangoLayout*
 get_layout (CtkCellRendererText *celltext,
             CtkWidget           *widget,
-            const GdkRectangle  *cell_area,
+            const CdkRectangle  *cell_area,
             CtkCellRendererState flags)
 {
   CtkCellRendererTextPrivate *priv = celltext->priv;
@@ -1608,7 +1608,7 @@ get_layout (CtkCellRendererText *celltext,
       PangoColor color;
       guint16 alpha;
       CtkStyleContext *context;
-      GdkRGBA fg = { 0.5, 0.5, 0.5, 1.0 };
+      CdkRGBA fg = { 0.5, 0.5, 0.5, 1.0 };
 
       context = ctk_widget_get_style_context (widget);
       ctk_style_context_lookup_color (context, "placeholder_text_color", &fg);
@@ -1716,7 +1716,7 @@ get_layout (CtkCellRendererText *celltext,
 static void
 get_size (CtkCellRenderer    *cell,
 	  CtkWidget          *widget,
-	  const GdkRectangle *cell_area,
+	  const CdkRectangle *cell_area,
 	  PangoLayout        *layout,
 	  gint               *x_offset,
 	  gint               *y_offset,
@@ -1828,8 +1828,8 @@ static void
 ctk_cell_renderer_text_render (CtkCellRenderer      *cell,
 			       cairo_t              *cr,
 			       CtkWidget            *widget,
-			       const GdkRectangle   *background_area,
-			       const GdkRectangle   *cell_area,
+			       const CdkRectangle   *background_area,
+			       const CdkRectangle   *cell_area,
 			       CtkCellRendererState  flags)
 
 {
@@ -1980,7 +1980,7 @@ ctk_cell_renderer_text_populate_popup (CtkEntry *entry,
 
 static gboolean
 ctk_cell_renderer_text_focus_out_event (CtkWidget *entry,
-		                        GdkEvent  *event,
+		                        CdkEvent  *event,
 					gpointer   data)
 {
   CtkCellRendererTextPrivate *priv;
@@ -2002,11 +2002,11 @@ ctk_cell_renderer_text_focus_out_event (CtkWidget *entry,
 
 static CtkCellEditable *
 ctk_cell_renderer_text_start_editing (CtkCellRenderer      *cell,
-				      GdkEvent             *event,
+				      CdkEvent             *event,
 				      CtkWidget            *widget,
 				      const gchar          *path,
-				      const GdkRectangle   *background_area,
-				      const GdkRectangle   *cell_area,
+				      const CdkRectangle   *background_area,
+				      const CdkRectangle   *cell_area,
 				      CtkCellRendererState  flags)
 {
   CtkCellRendererText *celltext;
@@ -2239,8 +2239,8 @@ static void
 ctk_cell_renderer_text_get_aligned_area (CtkCellRenderer       *cell,
 					 CtkWidget             *widget,
 					 CtkCellRendererState   flags,
-					 const GdkRectangle    *cell_area,
-					 GdkRectangle          *aligned_area)
+					 const CdkRectangle    *cell_area,
+					 CdkRectangle          *aligned_area)
 {
   CtkCellRendererText *celltext = CTK_CELL_RENDERER_TEXT (cell);
   PangoLayout *layout;

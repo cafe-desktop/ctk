@@ -24,19 +24,19 @@
 
 G_BEGIN_DECLS
 
-#define GDK_APP_LAUNCH_CONTEXT_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), GDK_TYPE_APP_LAUNCH_CONTEXT, GdkAppLaunchContextClass))
+#define GDK_APP_LAUNCH_CONTEXT_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), GDK_TYPE_APP_LAUNCH_CONTEXT, CdkAppLaunchContextClass))
 #define GDK_IS_APP_LAUNCH_CONTEXT_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GDK_TYPE_APP_LAUNCH_CONTEXT))
-#define GDK_APP_LAUNCH_CONTEXT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_APP_LAUNCH_CONTEXT, GdkAppLaunchContextClass))
+#define GDK_APP_LAUNCH_CONTEXT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_APP_LAUNCH_CONTEXT, CdkAppLaunchContextClass))
 
 
-typedef GAppLaunchContextClass GdkAppLaunchContextClass;
+typedef GAppLaunchContextClass CdkAppLaunchContextClass;
 
-struct _GdkAppLaunchContext
+struct _CdkAppLaunchContext
 {
   GAppLaunchContext parent_instance;
 
-  GdkDisplay *display;
-  GdkScreen *screen;
+  CdkDisplay *display;
+  CdkScreen *screen;
   gint workspace;
   guint32 timestamp;
   GIcon *icon;

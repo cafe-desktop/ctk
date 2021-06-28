@@ -46,7 +46,7 @@
 
 #include "cdkprivate-win32.h"
 
-G_DEFINE_TYPE (GdkWin32Monitor, cdk_win32_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (CdkWin32Monitor, cdk_win32_monitor, GDK_TYPE_MONITOR)
 
 /* MinGW-w64 carelessly put DISPLAYCONFIG_OUTPUT_TECHNOLOGY_OTHER = -1 into this
  * enum, as documented by MSDN. However, with
@@ -249,7 +249,7 @@ get_device_property (HDEVINFO          device_infoset,
 }
 
 static GPtrArray *
-get_monitor_devices (GdkWin32Display *win32_display)
+get_monitor_devices (CdkWin32Display *win32_display)
 {
   GPtrArray *monitor_array;
   HDEVINFO device_infoset;
@@ -274,8 +274,8 @@ get_monitor_devices (GdkWin32Display *win32_display)
       gunichar2 *prop;
       DWORD proptype;
       HKEY device_registry_key;
-      GdkWin32Monitor *w32mon;
-      GdkMonitor *mon;
+      CdkWin32Monitor *w32mon;
+      CdkMonitor *mon;
       unsigned char *edid;
       DWORD edid_size;
       DWORD edid_type;
@@ -468,8 +468,8 @@ populate_monitor_devices_from_display_config (GPtrArray *monitors)
     {
       fixedDISPLAYCONFIG_TARGET_DEVICE_NAME tdn;
       gint i;
-      GdkWin32Monitor *w32mon;
-      GdkMonitor *mon;
+      CdkWin32Monitor *w32mon;
+      CdkMonitor *mon;
       gchar *path, *path_lower;
       DISPLAYCONFIG_RATIONAL *refresh;
 
@@ -497,7 +497,7 @@ populate_monitor_devices_from_display_config (GPtrArray *monitors)
 
       for (i = 0, w32mon = NULL; i < monitors->len; i++)
         {
-          GdkWin32Monitor *m = g_ptr_array_index (monitors, i);
+          CdkWin32Monitor *m = g_ptr_array_index (monitors, i);
 
           if (g_strcmp0 (m->instance_path, path_lower) != 0)
             continue;
@@ -535,7 +535,7 @@ populate_monitor_devices_from_display_config (GPtrArray *monitors)
 typedef struct {
   GPtrArray *monitors;
   gboolean have_monitor_devices;
-  GdkWin32Display *display;
+  CdkWin32Display *display;
 } EnumMonitorData;
 
 static BOOL CALLBACK
@@ -559,7 +559,7 @@ enum_monitor (HMONITOR hmonitor,
       DEVMODEW dm;
       DWORD i_monitor;
       DWORD frequency;
-      GdkWin32MonitorRotation orientation;
+      CdkWin32MonitorRotation orientation;
 
       memset (&dd, 0, sizeof (dd));
       dd.cb = sizeof (dd);
@@ -615,9 +615,9 @@ enum_monitor (HMONITOR hmonitor,
           DISPLAY_DEVICEW dd_monitor;
           gchar *device_id_lower, *tmp;
           DWORD i;
-          GdkWin32Monitor *w32mon;
-          GdkMonitor *mon;
-          GdkRectangle rect;
+          CdkWin32Monitor *w32mon;
+          CdkMonitor *mon;
+          CdkRectangle rect;
           guint scale;
 
           memset (&dd_monitor, 0, sizeof (dd_monitor));
@@ -640,7 +640,7 @@ enum_monitor (HMONITOR hmonitor,
               /* Match this monitor to one of the monitor devices we found earlier */
               for (i = 0, w32mon = NULL; i < data->monitors->len; i++)
                 {
-                  GdkWin32Monitor *m = g_ptr_array_index (data->monitors, i);
+                  CdkWin32Monitor *m = g_ptr_array_index (data->monitors, i);
 
                   if (g_strcmp0 (device_id_lower, m->instance_path) != 0)
                     continue;
@@ -757,7 +757,7 @@ enum_monitor (HMONITOR hmonitor,
               /* Put primary monitor at index 0, just in case somebody needs
                * to know which one is the primary.
                */
-              GdkWin32Monitor *temp = g_ptr_array_index (data->monitors, 0);
+              CdkWin32Monitor *temp = g_ptr_array_index (data->monitors, 0);
               g_ptr_array_index (data->monitors, 0) = w32mon;
               g_ptr_array_index (data->monitors, i) = temp;
             }
@@ -787,7 +787,7 @@ prune_monitors (EnumMonitorData *data)
 
   for (i = 0; i < data->monitors->len; i++)
     {
-      GdkWin32Monitor *m;
+      CdkWin32Monitor *m;
 
       m = g_ptr_array_index (data->monitors, i);
 
@@ -797,9 +797,9 @@ prune_monitors (EnumMonitorData *data)
 }
 
 const gchar *
-_cdk_win32_monitor_get_pixel_structure (GdkMonitor *monitor)
+_cdk_win32_monitor_get_pixel_structure (CdkMonitor *monitor)
 {
-  GdkWin32Monitor *w32_m;
+  CdkWin32Monitor *w32_m;
   BOOL enabled = TRUE;
   unsigned int smoothing_orientation = FE_FONTSMOOTHINGORIENTATIONRGB;
   UINT cleartype = FE_FONTSMOOTHINGCLEARTYPE;
@@ -849,7 +849,7 @@ _cdk_win32_monitor_get_pixel_structure (GdkMonitor *monitor)
 }
 
 GPtrArray *
-_cdk_win32_display_get_monitor_list (GdkWin32Display *win32_display)
+_cdk_win32_display_get_monitor_list (CdkWin32Display *win32_display)
 {
   EnumMonitorData data;
   gint i;
@@ -886,8 +886,8 @@ _cdk_win32_display_get_monitor_list (GdkWin32Display *win32_display)
 
   for (i = 0; i < data.monitors->len; i++)
     {
-      GdkWin32Monitor *m;
-      GdkRectangle rect;
+      CdkWin32Monitor *m;
+      CdkRectangle rect;
 
       m = g_ptr_array_index (data.monitors, i);
 
@@ -903,8 +903,8 @@ _cdk_win32_display_get_monitor_list (GdkWin32Display *win32_display)
   /* Translate monitor coords into GDK coordinate space */
   for (i = 0; i < data.monitors->len; i++)
     {
-      GdkWin32Monitor *m;
-      GdkRectangle rect;
+      CdkWin32Monitor *m;
+      CdkRectangle rect;
 
       m = g_ptr_array_index (data.monitors, i);
 
@@ -926,7 +926,7 @@ _cdk_win32_display_get_monitor_list (GdkWin32Display *win32_display)
 static void
 cdk_win32_monitor_finalize (GObject *object)
 {
-  GdkWin32Monitor *win32_monitor = GDK_WIN32_MONITOR (object);
+  CdkWin32Monitor *win32_monitor = GDK_WIN32_MONITOR (object);
 
   g_free (win32_monitor->instance_path);
 
@@ -934,8 +934,8 @@ cdk_win32_monitor_finalize (GObject *object)
 }
 
 int
-_cdk_win32_monitor_compare (GdkWin32Monitor *a,
-                            GdkWin32Monitor *b)
+_cdk_win32_monitor_compare (CdkWin32Monitor *a,
+                            CdkWin32Monitor *b)
 {
   if (a->instance_path != NULL &&
       b->instance_path != NULL)
@@ -945,21 +945,21 @@ _cdk_win32_monitor_compare (GdkWin32Monitor *a,
 }
 
 static void
-cdk_win32_monitor_get_workarea (GdkMonitor   *monitor,
-                                GdkRectangle *dest)
+cdk_win32_monitor_get_workarea (CdkMonitor   *monitor,
+                                CdkRectangle *dest)
 {
-  GdkWin32Monitor *win32_monitor = GDK_WIN32_MONITOR (monitor);
+  CdkWin32Monitor *win32_monitor = GDK_WIN32_MONITOR (monitor);
 
   *dest = win32_monitor->work_rect;
 }
 
 static void
-cdk_win32_monitor_init (GdkWin32Monitor *monitor)
+cdk_win32_monitor_init (CdkWin32Monitor *monitor)
 {
 }
 
 static void
-cdk_win32_monitor_class_init (GdkWin32MonitorClass *class)
+cdk_win32_monitor_class_init (CdkWin32MonitorClass *class)
 {
   G_OBJECT_CLASS (class)->finalize = cdk_win32_monitor_finalize;
 

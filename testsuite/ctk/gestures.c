@@ -13,17 +13,17 @@ static PointState touch_state[10]; /* touchpoint 0 gets pointer emulation,
                                     * use it first in tests for consistency.
                                     */
 
-#define EVENT_SEQUENCE(point) (GdkEventSequence*) ((point) - touch_state + 1)
+#define EVENT_SEQUENCE(point) (CdkEventSequence*) ((point) - touch_state + 1)
 
 static void
 point_press (PointState *point,
              CtkWidget  *widget,
              guint       button)
 {
-  GdkDisplay *display;
-  GdkDevice *device;
-  GdkSeat *seat;
-  GdkEvent *ev;
+  CdkDisplay *display;
+  CdkDevice *device;
+  CdkSeat *seat;
+  CdkEvent *ev;
 
   display = ctk_widget_get_display (widget);
   seat = cdk_display_get_default_seat (display);
@@ -69,10 +69,10 @@ point_update (PointState *point,
               gdouble     x,
               gdouble     y)
 {
-  GdkDisplay *display;
-  GdkDevice *device;
-  GdkSeat *seat;
-  GdkEvent *ev;
+  CdkDisplay *display;
+  CdkDevice *device;
+  CdkSeat *seat;
+  CdkEvent *ev;
 
   display = ctk_widget_get_display (widget);
   seat = cdk_display_get_default_seat (display);
@@ -118,10 +118,10 @@ static void
 point_release (PointState *point,
                guint       button)
 {
-  GdkDisplay *display;
-  GdkDevice *device;
-  GdkSeat *seat;
-  GdkEvent *ev;
+  CdkDisplay *display;
+  CdkDevice *device;
+  CdkSeat *seat;
+  CdkEvent *ev;
 
   if (point->widget == NULL)
     return;
@@ -200,7 +200,7 @@ typedef struct {
 } LegacyData;
 
 static gboolean
-legacy_cb (CtkWidget *w, GdkEventButton *button, gpointer data)
+legacy_cb (CtkWidget *w, CdkEventButton *button, gpointer data)
 {
   LegacyData *ld = data;
 
@@ -220,7 +220,7 @@ static void
 press_cb (CtkGesture *g, gint n_press, gdouble x, gdouble y, gpointer data)
 {
   CtkEventController *c = CTK_EVENT_CONTROLLER (g);
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   CtkPropagationPhase phase;
   GestureData *gd = data;
   const gchar *name;
@@ -242,7 +242,7 @@ press_cb (CtkGesture *g, gint n_press, gdouble x, gdouble y, gpointer data)
 }
 
 static void
-cancel_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
+cancel_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -255,7 +255,7 @@ cancel_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
 }
 
 static void
-begin_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
+begin_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -271,7 +271,7 @@ begin_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
 }
 
 static void
-end_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
+end_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -284,7 +284,7 @@ end_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
 }
 
 static void
-update_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
+update_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -297,7 +297,7 @@ update_cb (CtkGesture *g, GdkEventSequence *sequence, gpointer data)
 }
 
 static void
-state_changed_cb (CtkGesture *g, GdkEventSequence *sequence, CtkEventSequenceState state, gpointer data)
+state_changed_cb (CtkGesture *g, CdkEventSequence *sequence, CtkEventSequenceState state, gpointer data)
 {
   GestureData *gd = data;
   const gchar *name;

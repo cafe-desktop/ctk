@@ -73,8 +73,8 @@ static const struct {
 
   /* These are here in order to be recognized, but are not sent to
      ctk as they are handled internally by cdk: */
-  {"Gdk/WindowScalingFactor", "cdk-window-scaling-factor"},
-  {"Gdk/UnscaledDPI",         "cdk-unscaled-dpi"}
+  {"Cdk/WindowScalingFactor", "cdk-window-scaling-factor"},
+  {"Cdk/UnscaledDPI",         "cdk-unscaled-dpi"}
 };
 
 static const char *

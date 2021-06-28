@@ -48,7 +48,7 @@ typedef struct _CtkGestureSinglePrivate CtkGestureSinglePrivate;
 
 struct _CtkGestureSinglePrivate
 {
-  GdkEventSequence *current_sequence;
+  CdkEventSequence *current_sequence;
   guint button;
   guint current_button;
   guint touch_only : 1;
@@ -119,7 +119,7 @@ ctk_gesture_single_set_property (GObject      *object,
 
 static void
 ctk_gesture_single_cancel (CtkGesture       *gesture,
-                           GdkEventSequence *sequence)
+                           CdkEventSequence *sequence)
 {
   CtkGestureSinglePrivate *priv;
 
@@ -131,12 +131,12 @@ ctk_gesture_single_cancel (CtkGesture       *gesture,
 
 static gboolean
 ctk_gesture_single_handle_event (CtkEventController *controller,
-                                 const GdkEvent     *event)
+                                 const CdkEvent     *event)
 {
-  GdkEventSequence *sequence = NULL;
+  CdkEventSequence *sequence = NULL;
   CtkGestureSinglePrivate *priv;
-  GdkDevice *source_device;
-  GdkInputSource source;
+  CdkDevice *source_device;
+  CdkInputSource source;
   guint button = 0, i;
   gboolean retval, test_touchscreen = FALSE;
 
@@ -301,7 +301,7 @@ static void
 _ctk_gesture_single_update_evmask (CtkGestureSingle *gesture)
 {
   CtkGestureSinglePrivate *priv;
-  GdkEventMask evmask;
+  CdkEventMask evmask;
 
   priv = ctk_gesture_single_get_instance_private (gesture);
   evmask = GDK_TOUCH_MASK;
@@ -515,7 +515,7 @@ ctk_gesture_single_get_current_button (CtkGestureSingle *gesture)
  *
  * Since: 3.14
  **/
-GdkEventSequence *
+CdkEventSequence *
 ctk_gesture_single_get_current_sequence (CtkGestureSingle *gesture)
 {
   CtkGestureSinglePrivate *priv;

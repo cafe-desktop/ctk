@@ -31,28 +31,28 @@
 #include "cdkdisplaymanagerprivate.h"
 #include "cdkinternals.h"
 
-struct _GdkQuartzDisplayManager
+struct _CdkQuartzDisplayManager
 {
-  GdkDisplayManager parent;
+  CdkDisplayManager parent;
 };
 
 
-G_DEFINE_TYPE (GdkQuartzDisplayManager, cdk_quartz_display_manager, GDK_TYPE_DISPLAY_MANAGER)
+G_DEFINE_TYPE (CdkQuartzDisplayManager, cdk_quartz_display_manager, GDK_TYPE_DISPLAY_MANAGER)
 
 static void
-cdk_quartz_display_manager_init (GdkQuartzDisplayManager *manager)
+cdk_quartz_display_manager_init (CdkQuartzDisplayManager *manager)
 {
 }
 
 static void
 cdk_quartz_display_manager_finalize (GObject *object)
 {
-  g_error ("A GdkQuartzDisplayManager object was finalized. This should not happen");
+  g_error ("A CdkQuartzDisplayManager object was finalized. This should not happen");
   G_OBJECT_CLASS (cdk_quartz_display_manager_parent_class)->finalize (object);
 }
 
 static void
-cdk_quartz_display_manager_class_init (GdkQuartzDisplayManagerClass *class)
+cdk_quartz_display_manager_class_init (CdkQuartzDisplayManagerClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 

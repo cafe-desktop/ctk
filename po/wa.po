@@ -76,7 +76,7 @@ msgstr "WAITROÛLE"
 #: cdk/cdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
-msgstr "Drapeas di disbugaedje Gdk a mete"
+msgstr "Drapeas di disbugaedje Cdk a mete"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -90,7 +90,7 @@ msgstr "DRAPEAS"
 #: cdk/cdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "Drapeas di disbugaedje Gdk a dismete"
+msgstr "Drapeas di disbugaedje Cdk a dismete"
 
 #: cdk/keyname-table.h:3940
 #, fuzzy
@@ -4821,7 +4821,7 @@ msgstr ""
 #~ msgstr "Dji n' a savou alouwer del memwere pol sitructeure di contecse TGA"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Li scrijhaedje di l' indecse do ridant a fwait berwete\n"
 
 #, fuzzy

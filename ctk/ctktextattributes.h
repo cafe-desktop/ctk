@@ -69,8 +69,8 @@ typedef struct _CtkTextAppearance CtkTextAppearance;
 
 /**
  * CtkTextAppearance:
- * @bg_color: Background #GdkColor.
- * @fg_color: Foreground #GdkColor.
+ * @bg_color: Background #CdkColor.
+ * @fg_color: Foreground #CdkColor.
  * @rise: Super/subscript rise, can be negative.
  * @underline: #PangoUnderline
  * @strikethrough: Strikethrough style
@@ -84,13 +84,13 @@ typedef struct _CtkTextAppearance CtkTextAppearance;
  * @is_text: This are only used when we are actually laying
  *   out and rendering a paragraph; not when a #CtkTextAppearance is
  *   part of a #CtkTextAttributes.
- * @rgba: #GdkRGBA
+ * @rgba: #CdkRGBA
  */
 struct _CtkTextAppearance
 {
   /*< public >*/
-  GdkColor bg_color; /* pixel is taken for underline color */
-  GdkColor fg_color; /* pixel is taken for strikethrough color */
+  CdkColor bg_color; /* pixel is taken for underline color */
+  CdkColor fg_color; /* pixel is taken for strikethrough color */
 
   /* super/subscript rise, can be negative */
   gint rise;
@@ -120,12 +120,12 @@ struct _CtkTextAppearance
    * content does not vary across architectures.
    */
   union {
-    GdkRGBA *rgba[2];
+    CdkRGBA *rgba[2];
     /*< private >*/
     guint padding[4];
   };
 #else
-  GdkRGBA *rgba[2];
+  CdkRGBA *rgba[2];
 #if (defined(__SIZEOF_INT__) && defined(__SIZEOF_POINTER__)) && (__SIZEOF_INT__ == __SIZEOF_POINTER__)
   /* unusable, just for ABI compat */
   /*< private >*/
@@ -193,7 +193,7 @@ struct _CtkTextAttributes
   PangoLanguage *language;
 
   /*< private >*/
-  GdkColor *pg_bg_color;
+  CdkColor *pg_bg_color;
 
   /*< public >*/
   guint invisible : 1;
@@ -202,7 +202,7 @@ struct _CtkTextAttributes
   guint no_fallback: 1;
 
   /*< private >*/
-  GdkRGBA *pg_bg_rgba;
+  CdkRGBA *pg_bg_rgba;
 
   /*< public >*/
   gint letter_spacing;

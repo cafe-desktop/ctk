@@ -72,7 +72,7 @@ msgstr "muinu"
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:164
 #| msgid "GDK debugging flags to set"
-msgid "Gdk debugging flags to set"
+msgid "Cdk debugging flags to set"
 msgstr "bendila biobio bia GDK, si sasila bio"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -89,7 +89,7 @@ msgstr "bisinsu"
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:167
 #| msgid "GDK debugging flags to unset"
-msgid "Gdk debugging flags to unset"
+msgid "Cdk debugging flags to unset"
 msgstr "bendila biobio bia GDK, kusasidi bio ko"
 
 #: ../cdk/keyname-table.h:3940
@@ -942,8 +942,8 @@ msgstr ""
 
 #: ../cdk-pixbuf/io-qtif.c:317
 #| msgid "Failed to write folder index\n"
-msgid "Failed to create GdkPixbufLoader object."
-msgstr "GdkPixbufLoader bu ivaanga yo nkatu"
+msgid "Failed to create CdkPixbufLoader object."
+msgstr "CdkPixbufLoader bu ivaanga yo nkatu"
 
 #: ../cdk-pixbuf/io-qtif.c:421
 msgid "Failed to find an image data atom."

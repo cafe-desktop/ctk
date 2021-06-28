@@ -122,8 +122,8 @@ msgstr "Ekran"
 # tüklü
 # ctk/ctktreeview.c:458
 #: cdk/cdkpango.c:539
-msgid "the GdkScreen for the renderer"
-msgstr "Qılıcı içün GdkScreen"
+msgid "the CdkScreen for the renderer"
+msgstr "Qılıcı içün CdkScreen"
 
 # tüklü
 # ctk/ctkcellrenderertext.c:292 ctk/ctktexttag.c:367
@@ -1336,8 +1336,8 @@ msgstr "Hüceyre arqa-zemini tüsü"
 
 # ctk/ctkcellrenderertext.c:187 ctk/ctktexttag.c:217
 #: ctk/ctkcellrenderer.c:287
-msgid "Cell background color as a GdkColor"
-msgstr "Bir GdkColor olaraq hüceyre arqa-zemini tüsü"
+msgid "Cell background color as a CdkColor"
+msgstr "Bir CdkColor olaraq hüceyre arqa-zemini tüsü"
 
 # ctk/ctktreeviewcolumn.c:179
 #: ctk/ctkcellrenderer.c:294
@@ -1669,8 +1669,8 @@ msgstr "Arqa-zemin tüsü"
 
 # ctk/ctkcellrenderertext.c:187 ctk/ctktexttag.c:217
 #: ctk/ctkcellrenderertext.c:237 ctk/ctkcellview.c:168
-msgid "Background color as a GdkColor"
-msgstr "Bir GdkColor olaraq arqa-zemin tüsü"
+msgid "Background color as a CdkColor"
+msgstr "Bir CdkColor olaraq arqa-zemin tüsü"
 
 # ctk/ctkcellrenderertext.c:194 ctk/ctktexttag.c:242
 #: ctk/ctkcellrenderertext.c:244 ctk/ctktexttag.c:217
@@ -1689,8 +1689,8 @@ msgstr "Ög-zemin tüsü"
 
 # ctk/ctkcellrenderertext.c:203 ctk/ctktexttag.c:251
 #: ctk/ctkcellrenderertext.c:253
-msgid "Foreground color as a GdkColor"
-msgstr "Bir GdkColor olaraq ög-zemin tüsü"
+msgid "Foreground color as a CdkColor"
+msgstr "Bir CdkColor olaraq ög-zemin tüsü"
 
 # ctk/ctkcellrenderertext.c:211 ctk/ctkentry.c:396 ctk/ctktexttag.c:276
 # ctk/ctktextview.c:552
@@ -3420,8 +3420,8 @@ msgstr "Bu hurufatnı temsil etken tizgi"
 
 # ctk/ctkfontsel.c:193
 #: ctk/ctkfontsel.c:204
-msgid "The GdkFont that is currently selected"
-msgstr "Hal-hazırda saylanğan GdkFont"
+msgid "The CdkFont that is currently selected"
+msgstr "Hal-hazırda saylanğan CdkFont"
 
 # ctk/ctkfontsel.c:199
 #: ctk/ctkfontsel.c:210
@@ -3679,16 +3679,16 @@ msgid "Pixbuf"
 msgstr "Piksel Buferi (Pixbuf)"
 
 #: ctk/ctkimage.c:223 ctk/ctkstatusicon.c:214
-msgid "A GdkPixbuf to display"
-msgstr "Kösterilecek GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "Kösterilecek CdkPixbuf"
 
 #: ctk/ctkimage.c:230
 msgid "Pixmap"
 msgstr "Piksel Haritası (Pixmap)"
 
 #: ctk/ctkimage.c:231
-msgid "A GdkPixmap to display"
-msgstr "Kösterilecek GdkPixmap"
+msgid "A CdkPixmap to display"
+msgstr "Kösterilecek CdkPixmap"
 
 # ctk/ctknotebook.c:324
 #: ctk/ctkimage.c:238 ctk/ctkmessagedialog.c:215
@@ -3696,8 +3696,8 @@ msgid "Image"
 msgstr "Suret"
 
 #: ctk/ctkimage.c:239
-msgid "A GdkImage to display"
-msgstr "Kösterilecek GdkImage"
+msgid "A CdkImage to display"
+msgstr "Kösterilecek CdkImage"
 
 # ctk/ctkcellrenderertext.c:162
 #: ctk/ctkimage.c:246
@@ -3705,8 +3705,8 @@ msgid "Mask"
 msgstr "Maska"
 
 #: ctk/ctkimage.c:247
-msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-msgstr "GdkImage ya da GdkPixmap ile qullanılacaq maska bit-haritası"
+msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+msgstr "CdkImage ya da CdkPixmap ile qullanılacaq maska bit-haritası"
 
 # cdk-pixbuf/io-tiff.c:411
 #: ctk/ctkimage.c:255 ctk/ctkstatusicon.c:222
@@ -3753,8 +3753,8 @@ msgid "Animation"
 msgstr "Canlandırma"
 
 #: ctk/ctkimage.c:306
-msgid "GdkPixbufAnimation to display"
-msgstr "Kösterilecek GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "Kösterilecek CdkPixbufAnimation"
 
 # ctk/ctkcurve.c:120
 #: ctk/ctkimage.c:346 ctk/ctkstatusicon.c:261
@@ -6898,8 +6898,8 @@ msgstr ""
 
 # ctk/ctkcellrenderertext.c:187 ctk/ctktexttag.c:217
 #: ctk/ctktexttag.c:192
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Bir GdkColor (belki tahsis etilmegen) olaraq arqa-zemin tüsü"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Bir CdkColor (belki tahsis etilmegen) olaraq arqa-zemin tüsü"
 
 # ctk/ctktexttag.c:224
 #: ctk/ctktexttag.c:199
@@ -6929,8 +6929,8 @@ msgstr ""
 
 # ctk/ctkcellrenderertext.c:203 ctk/ctktexttag.c:251
 #: ctk/ctktexttag.c:226
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Bir GdkColor (belki tahsis etilmegen) olaraq ög-zemin tüsü"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Bir CdkColor (belki tahsis etilmegen) olaraq ög-zemin tüsü"
 
 # ctk/ctktexttag.c:259
 #: ctk/ctktexttag.c:234
@@ -7118,8 +7118,8 @@ msgstr "Paragraf arqa-zemini tüsü"
 
 # ctk/ctkcellrenderertext.c:187 ctk/ctktexttag.c:217
 #: ctk/ctktexttag.c:536
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Bir GdkColor (belki tahsis etilmegen) olaraq paragraf arqa-zemini tüsü"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Bir CdkColor (belki tahsis etilmegen) olaraq paragraf arqa-zemini tüsü"
 
 #: ctk/ctktexttag.c:554
 msgid "Margin Accumulates"
@@ -8231,9 +8231,9 @@ msgstr "Vaqialar"
 
 # ctk/ctkwidget.c:513
 #: ctk/ctkwidget.c:664
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Bu pencereçikniñ alacağı GdkEvent çeşitlerini qararlaştırğan vaqia maskası"
+"Bu pencereçikniñ alacağı CdkEvent çeşitlerini qararlaştırğan vaqia maskası"
 
 # ctk/ctkwidget.c:520
 #: ctk/ctkwidget.c:671

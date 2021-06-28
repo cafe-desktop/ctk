@@ -28,32 +28,32 @@
 
 #include "cdkinternals.h"
 
-struct _GdkX11DisplayManager
+struct _CdkX11DisplayManager
 {
-  GdkDisplayManager parent;
+  CdkDisplayManager parent;
 };
 
-struct _GdkX11DisplayManagerClass
+struct _CdkX11DisplayManagerClass
 {
-  GdkDisplayManagerClass parent_class;
+  CdkDisplayManagerClass parent_class;
 };
 
-G_DEFINE_TYPE (GdkX11DisplayManager, cdk_x11_display_manager, GDK_TYPE_DISPLAY_MANAGER)
+G_DEFINE_TYPE (CdkX11DisplayManager, cdk_x11_display_manager, GDK_TYPE_DISPLAY_MANAGER)
 
 static void
-cdk_x11_display_manager_init (GdkX11DisplayManager *manager)
+cdk_x11_display_manager_init (CdkX11DisplayManager *manager)
 {
 }
 
 static void
 cdk_x11_display_manager_finalize (GObject *object)
 {
-  g_error ("A GdkX11DisplayManager object was finalized. This should not happen");
+  g_error ("A CdkX11DisplayManager object was finalized. This should not happen");
   G_OBJECT_CLASS (cdk_x11_display_manager_parent_class)->finalize (object);
 }
 
 static void
-cdk_x11_display_manager_class_init (GdkX11DisplayManagerClass *class)
+cdk_x11_display_manager_class_init (CdkX11DisplayManagerClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 

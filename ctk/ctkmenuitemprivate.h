@@ -29,7 +29,7 @@ G_BEGIN_DECLS
 struct _CtkMenuItemPrivate
 {
   CtkWidget *submenu;
-  GdkWindow *event_window;
+  CdkWindow *event_window;
 
   guint16 toggle_size;
   guint16 accelerator_width;

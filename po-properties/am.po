@@ -1235,7 +1235,7 @@ msgid "Cell background color"
 msgstr ""
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr ""
 
 #: ctk/ctkcellrenderer.c:343
@@ -1478,8 +1478,8 @@ msgid "Background color"
 msgstr "የመደቡ ቀለም"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "የመደቡ ቀለም በGdkColor ይቅለም"
+msgid "Background color as a CdkColor"
+msgstr "የመደቡ ቀለም በCdkColor ይቅለም"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1495,7 +1495,7 @@ msgid "Foreground color"
 msgstr "የፊት ለፊቱ ቀለም"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
+msgid "Foreground color as a CdkColor"
 msgstr ""
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
@@ -3074,7 +3074,7 @@ msgid "Pixbuf"
 msgstr ""
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr ""
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
@@ -3120,7 +3120,7 @@ msgid "Animation"
 msgstr ""
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
+msgid "CdkPixbufAnimation to display"
 msgstr ""
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
@@ -5672,7 +5672,7 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr ""
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ctk/ctktexttag.c:194
@@ -5686,7 +5686,7 @@ msgid ""
 msgstr ""
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ctk/ctktexttag.c:218
@@ -5819,7 +5819,7 @@ msgstr "የመደቡ ቀለም ስም"
 #: ctk/ctktexttag.c:496
 #, fuzzy
 msgid "Paragraph background color as a string"
-msgstr "የመደቡ ቀለም በGdkColor ይቅለም"
+msgstr "የመደቡ ቀለም በCdkColor ይቅለም"
 
 #: ctk/ctktexttag.c:511
 #, fuzzy
@@ -5828,8 +5828,8 @@ msgstr "የመደቡ ቀለም"
 
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "የመደቡ ቀለም በGdkColor ይቅለም"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "የመደቡ ቀለም በCdkColor ይቅለም"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -6760,7 +6760,7 @@ msgid "Events"
 msgstr ""
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
 
 #: ctk/ctkwidget.c:832

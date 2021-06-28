@@ -106,7 +106,7 @@ icon_loaded (GObject      *object,
   CtkIconInfo *info = CTK_ICON_INFO (object);
   GNSMenuItem *item = user_data;
   GError *error = NULL;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gint scale = 1;
 
 #ifdef AVAILABLE_MAC_OS_X_VERSION_10_7_AND_LATER
@@ -272,10 +272,10 @@ icon_loaded (GObject      *object,
     {
       static gboolean parsed;
 
-      static GdkRGBA foreground;
-      static GdkRGBA success;
-      static GdkRGBA warning;
-      static GdkRGBA error;
+      static CdkRGBA foreground;
+      static CdkRGBA success;
+      static CdkRGBA warning;
+      static CdkRGBA error;
 
       CtkIconTheme *theme;
       CtkIconInfo *info;
@@ -332,7 +332,7 @@ icon_loaded (GObject      *object,
   if (accel != NULL)
     {
       guint key;
-      GdkModifierType mask;
+      CdkModifierType mask;
       unichar character;
       NSUInteger modifiers;
 

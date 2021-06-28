@@ -20,23 +20,23 @@
 #include "cdkeventtranslator.h"
 #include "cdkwindow-x11.h"
 
-typedef GdkEventTranslatorIface GdkEventTranslatorInterface;
-G_DEFINE_INTERFACE (GdkEventTranslator, _cdk_x11_event_translator, G_TYPE_OBJECT);
+typedef CdkEventTranslatorIface CdkEventTranslatorInterface;
+G_DEFINE_INTERFACE (CdkEventTranslator, _cdk_x11_event_translator, G_TYPE_OBJECT);
 
 
 static void
-_cdk_x11_event_translator_default_init (GdkEventTranslatorInterface *iface)
+_cdk_x11_event_translator_default_init (CdkEventTranslatorInterface *iface)
 {
 }
 
 
-GdkEvent *
-_cdk_x11_event_translator_translate (GdkEventTranslator *translator,
-                                     GdkDisplay         *display,
+CdkEvent *
+_cdk_x11_event_translator_translate (CdkEventTranslator *translator,
+                                     CdkDisplay         *display,
                                      XEvent             *xevent)
 {
-  GdkEventTranslatorIface *iface;
-  GdkEvent *event;
+  CdkEventTranslatorIface *iface;
+  CdkEvent *event;
 
   g_return_val_if_fail (GDK_IS_EVENT_TRANSLATOR (translator), NULL);
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
@@ -56,10 +56,10 @@ _cdk_x11_event_translator_translate (GdkEventTranslator *translator,
   return NULL;
 }
 
-GdkEventMask
-_cdk_x11_event_translator_get_handled_events (GdkEventTranslator *translator)
+CdkEventMask
+_cdk_x11_event_translator_get_handled_events (CdkEventTranslator *translator)
 {
-  GdkEventTranslatorIface *iface;
+  CdkEventTranslatorIface *iface;
 
   g_return_val_if_fail (GDK_IS_EVENT_TRANSLATOR (translator), 0);
 
@@ -72,11 +72,11 @@ _cdk_x11_event_translator_get_handled_events (GdkEventTranslator *translator)
 }
 
 void
-_cdk_x11_event_translator_select_window_events (GdkEventTranslator *translator,
+_cdk_x11_event_translator_select_window_events (CdkEventTranslator *translator,
                                                 Window              window,
-                                                GdkEventMask        event_mask)
+                                                CdkEventMask        event_mask)
 {
-  GdkEventTranslatorIface *iface;
+  CdkEventTranslatorIface *iface;
 
   g_return_if_fail (GDK_IS_EVENT_TRANSLATOR (translator));
 
@@ -86,12 +86,12 @@ _cdk_x11_event_translator_select_window_events (GdkEventTranslator *translator,
     iface->select_window_events (translator, window, event_mask);
 }
 
-GdkWindow *
-_cdk_x11_event_translator_get_window (GdkEventTranslator *translator,
-                                      GdkDisplay         *display,
+CdkWindow *
+_cdk_x11_event_translator_get_window (CdkEventTranslator *translator,
+                                      CdkDisplay         *display,
                                       XEvent             *xevent)
 {
-  GdkEventTranslatorIface *iface;
+  CdkEventTranslatorIface *iface;
 
   g_return_val_if_fail (GDK_IS_EVENT_TRANSLATOR (translator), NULL);
 

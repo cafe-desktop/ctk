@@ -25,8 +25,8 @@
 
 #include <cdk/x11/cdkx11screen.h>
 
-void _cdk_x11_xsettings_init            (GdkX11Screen        *x11_screen);
-void _cdk_x11_xsettings_finish          (GdkX11Screen        *x11_screen);
-void _cdk_x11_settings_force_reread     (GdkX11Screen        *x11_screen);
+void _cdk_x11_xsettings_init            (CdkX11Screen        *x11_screen);
+void _cdk_x11_xsettings_finish          (CdkX11Screen        *x11_screen);
+void _cdk_x11_settings_force_reread     (CdkX11Screen        *x11_screen);
 
 #endif /* XSETTINGS_CLIENT_H */

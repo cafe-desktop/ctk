@@ -83,7 +83,7 @@ ctk_css_style_render_icon (CtkCssStyle            *style,
 
 gboolean
 get_surface_extents (cairo_surface_t *surface,
-                     GdkRectangle    *out_extents)
+                     CdkRectangle    *out_extents)
 {
   cairo_t *cr;
   gboolean result;
@@ -104,7 +104,7 @@ ctk_css_style_render_icon_surface (CtkCssStyle            *style,
 {
   const CtkCssValue *shadows;
   cairo_matrix_t matrix, transform_matrix, saved_matrix;
-  GdkRectangle extents;
+  CdkRectangle extents;
 
   g_return_if_fail (CTK_IS_CSS_STYLE (style));
   g_return_if_fail (cr != NULL);
@@ -184,7 +184,7 @@ ctk_cairo_rectangle_transform (cairo_rectangle_int_t       *dest,
 
 void
 ctk_css_style_render_icon_get_extents (CtkCssStyle  *style,
-                                       GdkRectangle *extents,
+                                       CdkRectangle *extents,
                                        gint          x,
                                        gint          y,
                                        gint          width,
@@ -192,7 +192,7 @@ ctk_css_style_render_icon_get_extents (CtkCssStyle  *style,
 {
   cairo_matrix_t transform_matrix, matrix;
   CtkBorder border;
-  GdkRectangle rect;
+  CdkRectangle rect;
 
   g_return_if_fail (CTK_IS_CSS_STYLE (style));
   g_return_if_fail (extents != NULL);

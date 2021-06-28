@@ -1,7 +1,7 @@
 /* Images
  *
  * CtkImage is used to display an image; the image can be in a number of formats.
- * Typically, you load an image into a GdkPixbuf, then display the pixbuf.
+ * Typically, you load an image into a CdkPixbuf, then display the pixbuf.
  *
  * This demo code shows some of the more obscure cases, in the simple
  * case a call to ctk_image_new_from_file() is all you need.
@@ -18,15 +18,15 @@
 #include <errno.h>
 
 static CtkWidget *window = NULL;
-static GdkPixbufLoader *pixbuf_loader = NULL;
+static CdkPixbufLoader *pixbuf_loader = NULL;
 static guint load_timeout = 0;
 static GInputStream * image_stream = NULL;
 
 static void
-progressive_prepared_callback (GdkPixbufLoader *loader,
+progressive_prepared_callback (CdkPixbufLoader *loader,
                                gpointer         data)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   CtkWidget *image;
 
   image = CTK_WIDGET (data);
@@ -42,7 +42,7 @@ progressive_prepared_callback (GdkPixbufLoader *loader,
 }
 
 static void
-progressive_updated_callback (GdkPixbufLoader *loader,
+progressive_updated_callback (CdkPixbufLoader *loader,
                               gint                 x,
                               gint                 y,
                               gint                 width,
@@ -50,7 +50,7 @@ progressive_updated_callback (GdkPixbufLoader *loader,
                               gpointer     data)
 {
   CtkWidget *image;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   image = CTK_WIDGET (data);
 

@@ -1795,16 +1795,16 @@ msgid "Cell background color"
 msgstr "Цвят на фона на клетка"
 
 #: ../ctk/ctkcellrenderer.c:397
-msgid "Cell background color as a GdkColor"
-msgstr "Цвят на фона на клетката като GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Цвят на фона на клетката като CdkColor"
 
 #: ../ctk/ctkcellrenderer.c:410
 msgid "Cell background RGBA color"
 msgstr "Цвят на фона на клетка в RGBA"
 
 #: ../ctk/ctkcellrenderer.c:411
-msgid "Cell background color as a GdkRGBA"
-msgstr "Цвят на фона на клетката като GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Цвят на фона на клетката като CdkRGBA"
 
 #: ../ctk/ctkcellrenderer.c:418
 msgid "Editing"
@@ -2058,8 +2058,8 @@ msgstr "Цвят на фон"
 
 #: ../ctk/ctkcellrenderertext.c:304 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:219
-msgid "Background color as a GdkColor"
-msgstr "Цвят на фон като GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Цвят на фон като CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:318
 msgid "Background color as RGBA"
@@ -2067,8 +2067,8 @@ msgstr "Цвят на фон в RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:319 ../ctk/ctkcellview.c:219
 #: ../ctk/ctktexttag.c:234
-msgid "Background color as a GdkRGBA"
-msgstr "Цвят на фон като GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Цвят на фон като CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:325 ../ctk/ctktexttag.c:249
 msgid "Foreground color name"
@@ -2084,16 +2084,16 @@ msgid "Foreground color"
 msgstr "Цвят на преден план"
 
 #: ../ctk/ctkcellrenderertext.c:341 ../ctk/ctktexttag.c:265
-msgid "Foreground color as a GdkColor"
-msgstr "Цвят на преден план като GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Цвят на преден план като CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:355
 msgid "Foreground color as RGBA"
 msgstr "Цвят на преден план в RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:356 ../ctk/ctktexttag.c:280
-msgid "Foreground color as a GdkRGBA"
-msgstr "Цвят на преден план като GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Цвят на преден план като CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:364 ../ctk/ctkentry.c:755
 #: ../ctk/ctktexttag.c:296 ../ctk/ctktextview.c:704
@@ -2569,8 +2569,8 @@ msgid "Color"
 msgstr "Цвят"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Текущият цвят като GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Текущият цвят като CdkRGBA"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -3806,8 +3806,8 @@ msgid "Pixbuf"
 msgstr "Буфер с пиксели"
 
 #: ../ctk/ctkimage.c:217 ../ctk/ctkstatusicon.c:224
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf за показване"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf за показване"
 
 #: ../ctk/ctkimage.c:224 ../ctk/ctkrecentmanager.c:293
 #: ../ctk/ctkstatusicon.c:231
@@ -3855,8 +3855,8 @@ msgid "Animation"
 msgstr "Анимация"
 
 #: ../ctk/ctkimage.c:276
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation за показване"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation за показване"
 
 #: ../ctk/ctkimage.c:316 ../ctk/ctkstatusicon.c:271
 msgid "Storage type"
@@ -6573,8 +6573,8 @@ msgid "The title of this tray icon"
 msgstr "Заглавието на тази икона за панела"
 
 #: ../ctk/ctkstylecontext.c:442
-msgid "The associated GdkScreen"
-msgstr "Свързаната структура GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "Свързаната структура CdkScreen"
 
 #: ../ctk/ctkstylecontext.c:448
 msgid "Direction"
@@ -6861,16 +6861,16 @@ msgid "Paragraph background color"
 msgstr "Цвят на фона на абзаца"
 
 #: ../ctk/ctktexttag.c:582
-msgid "Paragraph background color as a GdkColor"
-msgstr "Цвят на фона на абзаца като GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Цвят на фона на абзаца като CdkColor"
 
 #: ../ctk/ctktexttag.c:596
 msgid "Paragraph background RGBA"
 msgstr "Цвят на фона на абзаца в RGBA"
 
 #: ../ctk/ctktexttag.c:597
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Цвят на фона на абзаца в RGBA като GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Цвят на фона на абзаца в RGBA като CdkRGBA"
 
 #: ../ctk/ctktexttag.c:615
 msgid "Margin Accumulates"
@@ -7832,9 +7832,9 @@ msgid "Events"
 msgstr "Събития"
 
 #: ../ctk/ctkwidget.c:1089
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Маската на събития, които определят видовете GdkEvents, които този графичен "
+"Маската на събития, които определят видовете CdkEvents, които този графичен "
 "обект получава"
 
 #: ../ctk/ctkwidget.c:1096

@@ -318,7 +318,7 @@ show_variations (CtkEmojiChooser *chooser,
 
 static void
 update_hover (CtkWidget *widget,
-              GdkEvent  *event,
+              CdkEvent  *event,
               gpointer   data)
 {
   if (event->type == GDK_ENTER_NOTIFY)

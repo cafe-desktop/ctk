@@ -29,18 +29,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_QUARTZ_CURSOR              (cdk_quartz_cursor_get_type ())
-#define GDK_QUARTZ_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_CURSOR, GdkQuartzCursor))
-#define GDK_QUARTZ_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_CURSOR, GdkQuartzCursorClass))
+#define GDK_QUARTZ_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_CURSOR, CdkQuartzCursor))
+#define GDK_QUARTZ_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_CURSOR, CdkQuartzCursorClass))
 #define GDK_IS_QUARTZ_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_CURSOR))
 #define GDK_IS_QUARTZ_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_QUARTZ_CURSOR))
-#define GDK_QUARTZ_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_CURSOR, GdkQuartzCursorClass))
+#define GDK_QUARTZ_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_CURSOR, CdkQuartzCursorClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkQuartzCursor GdkQuartzCursor;
+typedef struct _CdkQuartzCursor CdkQuartzCursor;
 #else
-typedef GdkCursor GdkQuartzCursor;
+typedef CdkCursor CdkQuartzCursor;
 #endif
-typedef struct _GdkQuartzCursorClass GdkQuartzCursorClass;
+typedef struct _CdkQuartzCursorClass CdkQuartzCursorClass;
 
 GDK_AVAILABLE_IN_ALL
 GType cdk_quartz_cursor_get_type (void);

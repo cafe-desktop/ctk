@@ -151,7 +151,7 @@ struct _CtkWidgetPrivate
    * not have a window. (Which will be indicated by the
    * no_window field being set).
    */
-  GdkWindow *window;
+  CdkWindow *window;
   GList *registered_windows;
 
   /* The widget's parent */
@@ -228,20 +228,20 @@ void              _ctk_widget_grab_notify                  (CtkWidget *widget,
 void              _ctk_widget_propagate_hierarchy_changed  (CtkWidget *widget,
                                                             CtkWidget *previous_toplevel);
 void              _ctk_widget_propagate_screen_changed     (CtkWidget *widget,
-                                                            GdkScreen *previous_screen);
+                                                            CdkScreen *previous_screen);
 void              _ctk_widget_propagate_composited_changed (CtkWidget *widget);
 
 void              _ctk_widget_set_device_window            (CtkWidget *widget,
-                                                            GdkDevice *device,
-                                                            GdkWindow *pointer_window);
-GdkWindow *       _ctk_widget_get_device_window            (CtkWidget *widget,
-                                                            GdkDevice *device);
+                                                            CdkDevice *device,
+                                                            CdkWindow *pointer_window);
+CdkWindow *       _ctk_widget_get_device_window            (CtkWidget *widget,
+                                                            CdkDevice *device);
 GList *           _ctk_widget_list_devices                 (CtkWidget *widget);
 
 void              _ctk_widget_synthesize_crossing          (CtkWidget       *from,
                                                             CtkWidget       *to,
-                                                            GdkDevice       *device,
-                                                            GdkCrossingMode  mode);
+                                                            CdkDevice       *device,
+                                                            CdkCrossingMode  mode);
 
 static inline gpointer _ctk_widget_peek_request_cache           (CtkWidget *widget);
 
@@ -256,13 +256,13 @@ gboolean          _ctk_widget_supports_clip                (CtkWidget *widget);
 void              _ctk_widget_set_simple_clip              (CtkWidget *widget,
                                                             CtkAllocation *content_clip);
 
-typedef gboolean (*CtkCapturedEventHandler) (CtkWidget *widget, GdkEvent *event);
+typedef gboolean (*CtkCapturedEventHandler) (CtkWidget *widget, CdkEvent *event);
 
 void              _ctk_widget_set_captured_event_handler (CtkWidget               *widget,
                                                           CtkCapturedEventHandler  handler);
 
 gboolean          _ctk_widget_captured_event               (CtkWidget *widget,
-                                                            GdkEvent  *event);
+                                                            CdkEvent  *event);
 
 CtkWidgetPath *   _ctk_widget_create_path                  (CtkWidget    *widget);
 void              ctk_widget_clear_path                    (CtkWidget    *widget);
@@ -281,7 +281,7 @@ void              _ctk_widget_remove_controller            (CtkWidget           
 GList *           _ctk_widget_list_controllers             (CtkWidget           *widget,
                                                             CtkPropagationPhase  phase);
 gboolean          _ctk_widget_consumes_motion              (CtkWidget           *widget,
-                                                            GdkEventSequence    *sequence);
+                                                            CdkEventSequence    *sequence);
 
 gboolean          ctk_widget_has_tick_callback             (CtkWidget *widget);
 
@@ -299,7 +299,7 @@ gboolean          ctk_widget_query_tooltip                 (CtkWidget  *widget,
                                                             CtkTooltip *tooltip);
 
 void              ctk_widget_render                        (CtkWidget            *widget,
-                                                            GdkWindow            *window,
+                                                            CdkWindow            *window,
                                                             const cairo_region_t *region);
 
 
@@ -400,7 +400,7 @@ _ctk_widget_peek_request_cache (CtkWidget *widget)
   return &widget->priv->requests;
 }
 
-static inline GdkWindow *
+static inline CdkWindow *
 _ctk_widget_get_window (CtkWidget *widget)
 {
   return widget->priv->window;

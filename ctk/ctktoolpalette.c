@@ -75,7 +75,7 @@
  * |[<!-- language="C" -->
  * static void
  * passive_canvas_drag_data_received (CtkWidget        *widget,
- *                                    GdkDragContext   *context,
+ *                                    CdkDragContext   *context,
  *                                    gint              x,
  *                                    gint              y,
  *                                    CtkSelectionData *selection,
@@ -180,8 +180,8 @@ struct _CtkToolPaletteDragData
   CtkWidget      *item;
 };
 
-static GdkAtom dnd_target_atom_item = GDK_NONE;
-static GdkAtom dnd_target_atom_group = GDK_NONE;
+static CdkAtom dnd_target_atom_item = GDK_NONE;
+static CdkAtom dnd_target_atom_group = GDK_NONE;
 
 static const CtkTargetEntry dnd_targets[] =
 {
@@ -713,8 +713,8 @@ static void
 ctk_tool_palette_realize (CtkWidget *widget)
 {
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
   guint border_width;
 
@@ -903,7 +903,7 @@ ctk_tool_palette_get_child_property (CtkContainer *container,
 
 static void
 ctk_tool_palette_screen_changed (CtkWidget *widget,
-                                 GdkScreen *previous_screen)
+                                 CdkScreen *previous_screen)
 {
   CtkToolPalette *palette = CTK_TOOL_PALETTE (widget);
 
@@ -1581,7 +1581,7 @@ ctk_tool_palette_get_drag_item (CtkToolPalette         *palette,
                                 const CtkSelectionData *selection)
 {
   CtkToolPaletteDragData *data;
-  GdkAtom target;
+  CdkAtom target;
 
   g_return_val_if_fail (CTK_IS_TOOL_PALETTE (palette), NULL);
   g_return_val_if_fail (NULL != selection, NULL);
@@ -1649,7 +1649,7 @@ ctk_tool_palette_set_drag_source (CtkToolPalette            *palette,
  *     on that widget
  * @targets: the #CtkToolPaletteDragTargets which the widget
  *     should support
- * @actions: the #GdkDragActions which the widget should suppport
+ * @actions: the #CdkDragActions which the widget should suppport
  *
  * Sets @palette as drag source (see ctk_tool_palette_set_drag_source())
  * and sets @widget as a drag destination for drags from @palette.
@@ -1662,7 +1662,7 @@ ctk_tool_palette_add_drag_dest (CtkToolPalette            *palette,
                                 CtkWidget                 *widget,
                                 CtkDestDefaults            flags,
                                 CtkToolPaletteDragTargets  targets,
-                                GdkDragAction              actions)
+                                CdkDragAction              actions)
 {
   CtkTargetEntry entries[G_N_ELEMENTS (dnd_targets)];
   gint n_entries = 0;
@@ -1722,14 +1722,14 @@ _ctk_tool_palette_get_item_size (CtkToolPalette *palette,
 
 static void
 ctk_tool_palette_item_drag_data_get (CtkWidget        *widget,
-                                     GdkDragContext   *context,
+                                     CdkDragContext   *context,
                                      CtkSelectionData *selection,
                                      guint             info,
                                      guint             time,
                                      gpointer          data)
 {
   CtkToolPaletteDragData drag_data = { CTK_TOOL_PALETTE (data), NULL };
-  GdkAtom target;
+  CdkAtom target;
 
   target = ctk_selection_data_get_target (selection);
 
@@ -1743,14 +1743,14 @@ ctk_tool_palette_item_drag_data_get (CtkWidget        *widget,
 
 static void
 ctk_tool_palette_child_drag_data_get (CtkWidget        *widget,
-                                      GdkDragContext   *context,
+                                      CdkDragContext   *context,
                                       CtkSelectionData *selection,
                                       guint             info,
                                       guint             time,
                                       gpointer          data)
 {
   CtkToolPaletteDragData drag_data = { CTK_TOOL_PALETTE (data), NULL };
-  GdkAtom target;
+  CdkAtom target;
 
   target = ctk_selection_data_get_target (selection);
 

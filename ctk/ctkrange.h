@@ -125,7 +125,7 @@ gint               ctk_range_get_min_slider_size           (CtkRange      *range
 
 GDK_AVAILABLE_IN_ALL
 void               ctk_range_get_range_rect                (CtkRange      *range,
-                                                            GdkRectangle  *range_rect);
+                                                            CdkRectangle  *range_rect);
 GDK_AVAILABLE_IN_ALL
 void               ctk_range_get_slider_range              (CtkRange      *range,
                                                             gint          *slider_start,

@@ -43,7 +43,7 @@ struct _ChangeDisplayInfo
 
   CtkTreeModel *display_model;
 
-  GdkDisplay *current_display;
+  CdkDisplay *current_display;
 };
 
 /* These enumerations provide symbolic names for the columns
@@ -66,15 +66,15 @@ enum
 /* Finds the toplevel window under the mouse pointer, if any.
  */
 static CtkWidget *
-find_toplevel_at_pointer (GdkDisplay *display)
+find_toplevel_at_pointer (CdkDisplay *display)
 {
-  GdkWindow *pointer_window;
+  CdkWindow *pointer_window;
   CtkWidget *widget = NULL;
 
   pointer_window = cdk_device_get_window_at_position (ctk_get_current_event_device (),
                                                       NULL, NULL);
 
-  /* The user data field of a GdkWindow is used to store a pointer
+  /* The user data field of a CdkWindow is used to store a pointer
    * to the widget that created it.
    */
   if (pointer_window)
@@ -89,7 +89,7 @@ find_toplevel_at_pointer (GdkDisplay *display)
 
 static gboolean
 button_release_event_cb (CtkWidget       *widget,
-                         GdkEventButton  *event,
+                         CdkEventButton  *event,
                          gboolean        *clicked)
 {
   *clicked = TRUE;
@@ -101,14 +101,14 @@ button_release_event_cb (CtkWidget       *widget,
  * window under the pointer, or NULL, if there is none.
  */
 static CtkWidget *
-query_for_toplevel (GdkScreen  *screen,
+query_for_toplevel (CdkScreen  *screen,
                     const char *prompt)
 {
-  GdkDisplay *display = cdk_screen_get_display (screen);
+  CdkDisplay *display = cdk_screen_get_display (screen);
   CtkWidget *popup, *label, *frame;
-  GdkCursor *cursor;
+  CdkCursor *cursor;
   CtkWidget *toplevel = NULL;
-  GdkDevice *device;
+  CdkDevice *device;
 
   popup = ctk_window_new (CTK_WINDOW_POPUP);
   ctk_window_set_screen (CTK_WINDOW (popup), screen);
@@ -162,7 +162,7 @@ query_for_toplevel (GdkScreen  *screen,
 static void
 query_change_display (ChangeDisplayInfo *info)
 {
-  GdkScreen *screen = ctk_widget_get_screen (info->window);
+  CdkScreen *screen = ctk_widget_get_screen (info->window);
   CtkWidget *toplevel;
 
   toplevel = query_for_toplevel (screen,
@@ -203,7 +203,7 @@ open_display_cb (CtkWidget         *button,
   CtkWidget *display_entry;
   CtkWidget *dialog_label;
   gchar *new_screen_name = NULL;
-  GdkDisplay *result = NULL;
+  CdkDisplay *result = NULL;
 
   dialog = ctk_dialog_new_with_buttons ("Open Display",
                                         CTK_WINDOW (info->window),
@@ -392,7 +392,7 @@ create_display_frame (ChangeDisplayInfo *info)
  * Remove it from our list of displays.
  */
 static void
-display_closed_cb (GdkDisplay        *display,
+display_closed_cb (CdkDisplay        *display,
                    gboolean           is_error,
                    ChangeDisplayInfo *info)
 {
@@ -403,7 +403,7 @@ display_closed_cb (GdkDisplay        *display,
        valid;
        valid = ctk_tree_model_iter_next (info->display_model, &iter))
     {
-      GdkDisplay *tmp_display;
+      CdkDisplay *tmp_display;
 
       ctk_tree_model_get (info->display_model, &iter,
                           DISPLAY_COLUMN_DISPLAY, &tmp_display,
@@ -422,7 +422,7 @@ display_closed_cb (GdkDisplay        *display,
  */
 static void
 add_display (ChangeDisplayInfo *info,
-             GdkDisplay        *display)
+             CdkDisplay        *display)
 {
   const gchar *name = cdk_display_get_name (display);
   CtkTreeIter iter;
@@ -440,8 +440,8 @@ add_display (ChangeDisplayInfo *info,
 /* Called when a new display is opened
  */
 static void
-display_opened_cb (GdkDisplayManager *manager,
-                   GdkDisplay        *display,
+display_opened_cb (CdkDisplayManager *manager,
+                   CdkDisplay        *display,
                    ChangeDisplayInfo *info)
 {
   add_display (info, display);
@@ -454,7 +454,7 @@ display_opened_cb (GdkDisplayManager *manager,
 static void
 initialize_displays (ChangeDisplayInfo *info)
 {
-  GdkDisplayManager *manager = cdk_display_manager_get ();
+  CdkDisplayManager *manager = cdk_display_manager_get ();
   GSList *displays = cdk_display_manager_list_displays (manager);
   GSList *tmp_list;
 
@@ -474,7 +474,7 @@ initialize_displays (ChangeDisplayInfo *info)
 static void
 destroy_info (ChangeDisplayInfo *info)
 {
-  GdkDisplayManager *manager = cdk_display_manager_get ();
+  CdkDisplayManager *manager = cdk_display_manager_get ();
   GSList *displays = cdk_display_manager_list_displays (manager);
   GSList *tmp_list;
 

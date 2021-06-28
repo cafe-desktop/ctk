@@ -3,7 +3,7 @@
 static void
 color_changed (GObject *o, GParamSpec *pspect, gpointer data)
 {
-  GdkRGBA color;
+  CdkRGBA color;
 
   ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (o), &color);
   g_print ("color changed: %g %g %g %g\n",
@@ -13,7 +13,7 @@ color_changed (GObject *o, GParamSpec *pspect, gpointer data)
 static void
 dialog_response (CtkDialog *dialog, gint response)
 {
-  GdkRGBA color;
+  CdkRGBA color;
 
   switch (response)
     {
@@ -55,8 +55,8 @@ main (int argc, char *argv[])
       else if (g_strcmp0 (argv[i], "--palette") == 0)
         {
           const gchar *c[9] = { "red", "maroon", "yellow", "green", "blue", "magenta", "DarkOliveGreen4", "khaki2", "thistle1" };
-          GdkRGBA color;
-          GdkRGBA colors[9*9];
+          CdkRGBA color;
+          CdkRGBA colors[9*9];
           gint i,j;
           gdouble f[5] = { 0.2, 0.35, 0.5, 0.65, 0.8 };
 

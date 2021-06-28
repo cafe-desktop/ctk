@@ -22,7 +22,7 @@ static void
 accel_edited_callback (CtkCellRendererText *cell,
                        const char          *path_string,
                        guint                keyval,
-                       GdkModifierType      mask,
+                       CdkModifierType      mask,
                        guint                hardware_keycode,
                        gpointer             data)
 {

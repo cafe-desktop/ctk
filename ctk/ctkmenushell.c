@@ -121,19 +121,19 @@ static void ctk_menu_shell_realize           (CtkWidget         *widget);
 static void ctk_menu_shell_finalize          (GObject           *object);
 static void ctk_menu_shell_dispose           (GObject           *object);
 static gint ctk_menu_shell_button_press      (CtkWidget         *widget,
-                                              GdkEventButton    *event);
+                                              CdkEventButton    *event);
 static gint ctk_menu_shell_button_release    (CtkWidget         *widget,
-                                              GdkEventButton    *event);
+                                              CdkEventButton    *event);
 static gint ctk_menu_shell_key_press         (CtkWidget         *widget,
-                                              GdkEventKey       *event);
+                                              CdkEventKey       *event);
 static gint ctk_menu_shell_enter_notify      (CtkWidget         *widget,
-                                              GdkEventCrossing  *event);
+                                              CdkEventCrossing  *event);
 static gint ctk_menu_shell_leave_notify      (CtkWidget         *widget,
-                                              GdkEventCrossing  *event);
+                                              CdkEventCrossing  *event);
 static void ctk_menu_shell_screen_changed    (CtkWidget         *widget,
-                                              GdkScreen         *previous_screen);
+                                              CdkScreen         *previous_screen);
 static gboolean ctk_menu_shell_grab_broken       (CtkWidget         *widget,
-                                              GdkEventGrabBroken *event);
+                                              CdkEventGrabBroken *event);
 static void ctk_menu_shell_add               (CtkContainer      *container,
                                               CtkWidget         *widget);
 static void ctk_menu_shell_remove            (CtkContainer      *container,
@@ -149,7 +149,7 @@ static void ctk_real_menu_shell_deactivate   (CtkMenuShell      *menu_shell);
 static gint ctk_menu_shell_is_item           (CtkMenuShell      *menu_shell,
                                               CtkWidget         *child);
 static CtkWidget *ctk_menu_shell_get_item    (CtkMenuShell      *menu_shell,
-                                              GdkEvent          *event);
+                                              CdkEvent          *event);
 static GType    ctk_menu_shell_child_type  (CtkContainer      *container);
 static void ctk_menu_shell_real_select_item  (CtkMenuShell      *menu_shell,
                                               CtkWidget         *menu_item);
@@ -165,7 +165,7 @@ static void ctk_real_menu_shell_cycle_focus      (CtkMenuShell      *menu_shell,
 
 static void     ctk_menu_shell_reset_key_hash    (CtkMenuShell *menu_shell);
 static gboolean ctk_menu_shell_activate_mnemonic (CtkMenuShell *menu_shell,
-                                                  GdkEventKey  *event);
+                                                  CdkEventKey  *event);
 static gboolean ctk_menu_shell_real_move_selected (CtkMenuShell  *menu_shell, 
                                                    gint           distance);
 
@@ -586,8 +586,8 @@ static void
 ctk_menu_shell_realize (CtkWidget *widget)
 {
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_set_realized (widget, TRUE);
@@ -624,7 +624,7 @@ ctk_menu_shell_activate (CtkMenuShell *menu_shell)
 
   if (!priv->active)
     {
-      GdkDevice *device;
+      CdkDevice *device;
 
       device = ctk_get_current_event_device ();
 
@@ -638,7 +638,7 @@ ctk_menu_shell_activate (CtkMenuShell *menu_shell)
 
 static gint
 ctk_menu_shell_button_press (CtkWidget      *widget,
-                             GdkEventButton *event)
+                             CdkEventButton *event)
 {
   CtkMenuShell *menu_shell;
   CtkMenuShellPrivate *priv;
@@ -652,9 +652,9 @@ ctk_menu_shell_button_press (CtkWidget      *widget,
   priv = menu_shell->priv;
 
   if (priv->parent_menu_shell)
-    return ctk_widget_event (priv->parent_menu_shell, (GdkEvent*) event);
+    return ctk_widget_event (priv->parent_menu_shell, (CdkEvent*) event);
 
-  menu_item = ctk_menu_shell_get_item (menu_shell, (GdkEvent *)event);
+  menu_item = ctk_menu_shell_get_item (menu_shell, (CdkEvent *)event);
 
   if (menu_item && _ctk_menu_item_is_selectable (menu_item))
     {
@@ -707,7 +707,7 @@ ctk_menu_shell_button_press (CtkWidget      *widget,
     }
   else
     {
-      widget = ctk_get_event_widget ((GdkEvent*) event);
+      widget = ctk_get_event_widget ((CdkEvent*) event);
       if (widget == CTK_WIDGET (menu_shell))
         {
           ctk_menu_shell_deactivate (menu_shell);
@@ -729,7 +729,7 @@ ctk_menu_shell_button_press (CtkWidget      *widget,
 
 static gboolean
 ctk_menu_shell_grab_broken (CtkWidget          *widget,
-                            GdkEventGrabBroken *event)
+                            CdkEventGrabBroken *event)
 {
   CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
   CtkMenuShellPrivate *priv = menu_shell->priv;
@@ -747,7 +747,7 @@ ctk_menu_shell_grab_broken (CtkWidget          *widget,
 
 static gint
 ctk_menu_shell_button_release (CtkWidget      *widget,
-                               GdkEventButton *event)
+                               CdkEventButton *event)
 {
   CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
   CtkMenuShellPrivate *priv = menu_shell->priv;
@@ -773,11 +773,11 @@ ctk_menu_shell_button_release (CtkWidget      *widget,
         {
           priv->button = 0;
           if (priv->parent_menu_shell)
-            return ctk_widget_event (priv->parent_menu_shell, (GdkEvent*) event);
+            return ctk_widget_event (priv->parent_menu_shell, (CdkEvent*) event);
         }
 
       priv->button = 0;
-      menu_item = ctk_menu_shell_get_item (menu_shell, (GdkEvent*) event);
+      menu_item = ctk_menu_shell_get_item (menu_shell, (CdkEvent*) event);
 
       if ((event->time - priv->activate_time) > MENU_SHELL_TIMEOUT)
         {
@@ -843,7 +843,7 @@ ctk_menu_shell_button_release (CtkWidget      *widget,
           else if (priv->parent_menu_shell)
             {
               priv->active = TRUE;
-              ctk_widget_event (priv->parent_menu_shell, (GdkEvent*) event);
+              ctk_widget_event (priv->parent_menu_shell, (CdkEvent*) event);
               deactivate = FALSE;
             }
 
@@ -950,7 +950,7 @@ _ctk_menu_shell_update_mnemonics (CtkMenuShell *menu_shell)
 
 static gint
 ctk_menu_shell_key_press (CtkWidget   *widget,
-                          GdkEventKey *event)
+                          CdkEventKey *event)
 {
   CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
   CtkMenuShellPrivate *priv = menu_shell->priv;
@@ -960,7 +960,7 @@ ctk_menu_shell_key_press (CtkWidget   *widget,
 
   if (!(priv->active_menu_item || priv->in_unselectable_item) &&
       priv->parent_menu_shell)
-    return ctk_widget_event (priv->parent_menu_shell, (GdkEvent *)event);
+    return ctk_widget_event (priv->parent_menu_shell, (CdkEvent *)event);
 
   if (ctk_bindings_activate_event (G_OBJECT (widget), event))
     return TRUE;
@@ -977,7 +977,7 @@ ctk_menu_shell_key_press (CtkWidget   *widget,
 
 static gint
 ctk_menu_shell_enter_notify (CtkWidget        *widget,
-                             GdkEventCrossing *event)
+                             CdkEventCrossing *event)
 {
   CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
   CtkMenuShellPrivate *priv = menu_shell->priv;
@@ -992,7 +992,7 @@ ctk_menu_shell_enter_notify (CtkWidget        *widget,
       CtkWidget *menu_item;
       CtkWidget *parent;
 
-      menu_item = ctk_get_event_widget ((GdkEvent*) event);
+      menu_item = ctk_get_event_widget ((CdkEvent*) event);
 
       if (!menu_item)
         return TRUE;
@@ -1031,9 +1031,9 @@ ctk_menu_shell_enter_notify (CtkWidget        *widget,
 
                   if (!ctk_widget_get_visible (CTK_MENU_ITEM (menu_item)->priv->submenu))
                     {
-                      GdkDevice *source_device;
+                      CdkDevice *source_device;
 
-                      source_device = cdk_event_get_source_device ((GdkEvent *) event);
+                      source_device = cdk_event_get_source_device ((CdkEvent *) event);
 
                       if (cdk_device_get_source (source_device) == GDK_SOURCE_TOUCHSCREEN)
                         _ctk_menu_item_popup_submenu (menu_item, TRUE);
@@ -1043,7 +1043,7 @@ ctk_menu_shell_enter_notify (CtkWidget        *widget,
         }
       else if (priv->parent_menu_shell)
         {
-          ctk_widget_event (priv->parent_menu_shell, (GdkEvent*) event);
+          ctk_widget_event (priv->parent_menu_shell, (CdkEvent*) event);
         }
     }
 
@@ -1052,7 +1052,7 @@ ctk_menu_shell_enter_notify (CtkWidget        *widget,
 
 static gint
 ctk_menu_shell_leave_notify (CtkWidget        *widget,
-                             GdkEventCrossing *event)
+                             CdkEventCrossing *event)
 {
   if (event->mode == GDK_CROSSING_CTK_GRAB ||
       event->mode == GDK_CROSSING_CTK_UNGRAB ||
@@ -1063,7 +1063,7 @@ ctk_menu_shell_leave_notify (CtkWidget        *widget,
     {
       CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
       CtkMenuShellPrivate *priv = menu_shell->priv;
-      CtkWidget *event_widget = ctk_get_event_widget ((GdkEvent*) event);
+      CtkWidget *event_widget = ctk_get_event_widget ((CdkEvent*) event);
       CtkMenuItem *menu_item;
 
       if (!event_widget || !CTK_IS_MENU_ITEM (event_widget))
@@ -1088,7 +1088,7 @@ ctk_menu_shell_leave_notify (CtkWidget        *widget,
         }
       else if (priv->parent_menu_shell)
         {
-          ctk_widget_event (priv->parent_menu_shell, (GdkEvent*) event);
+          ctk_widget_event (priv->parent_menu_shell, (CdkEvent*) event);
         }
     }
 
@@ -1097,7 +1097,7 @@ ctk_menu_shell_leave_notify (CtkWidget        *widget,
 
 static void
 ctk_menu_shell_screen_changed (CtkWidget *widget,
-                               GdkScreen *previous_screen)
+                               CdkScreen *previous_screen)
 {
   ctk_menu_shell_reset_key_hash (CTK_MENU_SHELL (widget));
 }
@@ -1213,11 +1213,11 @@ ctk_menu_shell_is_item (CtkMenuShell *menu_shell,
 
 static CtkWidget*
 ctk_menu_shell_get_item (CtkMenuShell *menu_shell,
-                         GdkEvent     *event)
+                         CdkEvent     *event)
 {
   CtkWidget *menu_item;
 
-  menu_item = ctk_get_event_widget ((GdkEvent*) event);
+  menu_item = ctk_get_event_widget ((CdkEvent*) event);
 
   while (menu_item && !CTK_IS_MENU_ITEM (menu_item))
     menu_item = ctk_widget_get_parent (menu_item);
@@ -1771,8 +1771,8 @@ ctk_menu_shell_get_key_hash (CtkMenuShell *menu_shell,
   if (!priv->key_hash && create && ctk_widget_has_screen (widget))
     {
       CtkMnemonicHash *mnemonic_hash = ctk_menu_shell_get_mnemonic_hash (menu_shell, FALSE);
-      GdkScreen *screen = ctk_widget_get_screen (widget);
-      GdkKeymap *keymap = cdk_keymap_get_for_display (cdk_screen_get_display (screen));
+      CdkScreen *screen = ctk_widget_get_screen (widget);
+      CdkKeymap *keymap = cdk_keymap_get_for_display (cdk_screen_get_display (screen));
 
       if (!mnemonic_hash)
         return NULL;
@@ -1801,7 +1801,7 @@ ctk_menu_shell_reset_key_hash (CtkMenuShell *menu_shell)
 
 static gboolean
 ctk_menu_shell_activate_mnemonic (CtkMenuShell *menu_shell,
-                                  GdkEventKey  *event)
+                                  CdkEventKey  *event)
 {
   CtkMnemonicHash *mnemonic_hash;
   CtkKeyHash *key_hash;
@@ -1860,7 +1860,7 @@ _ctk_menu_shell_remove_mnemonic (CtkMenuShell *menu_shell,
 
 void
 _ctk_menu_shell_set_grab_device (CtkMenuShell *menu_shell,
-                                 GdkDevice    *device)
+                                 CdkDevice    *device)
 {
   CtkMenuShellPrivate *priv;
 
@@ -1877,7 +1877,7 @@ _ctk_menu_shell_set_grab_device (CtkMenuShell *menu_shell,
     priv->grab_pointer = device;
 }
 
-GdkDevice *
+CdkDevice *
 _ctk_menu_shell_get_grab_device (CtkMenuShell *menu_shell)
 {
   g_return_val_if_fail (CTK_IS_MENU_SHELL (menu_shell), NULL);

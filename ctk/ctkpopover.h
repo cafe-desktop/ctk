@@ -76,10 +76,10 @@ CtkWidget *     ctk_popover_get_relative_to (CtkPopover            *popover);
 
 GDK_AVAILABLE_IN_3_12
 void            ctk_popover_set_pointing_to (CtkPopover            *popover,
-                                             const GdkRectangle    *rect);
+                                             const CdkRectangle    *rect);
 GDK_AVAILABLE_IN_3_12
 gboolean        ctk_popover_get_pointing_to (CtkPopover            *popover,
-                                             GdkRectangle          *rect);
+                                             CdkRectangle          *rect);
 GDK_AVAILABLE_IN_3_12
 void            ctk_popover_set_position    (CtkPopover            *popover,
                                              CtkPositionType        position);

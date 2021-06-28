@@ -101,7 +101,7 @@ libcdk_wayland = static_library('cdk-wayland',
                                 include_directories: [ confinc, cdkinc, ],
                                 c_args: [
                                   '-DGDK_COMPILATION',
-                                  '-DG_LOG_DOMAIN="Gdk"',
+                                  '-DG_LOG_DOMAIN="Cdk"',
                                 ] + common_cflags,
                                 link_args: common_ldflags,
                                 dependencies: [ cdk_deps, cdk_wayland_deps, ])

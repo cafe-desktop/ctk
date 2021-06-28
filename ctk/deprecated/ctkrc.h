@@ -91,10 +91,10 @@ struct _CtkRcStyle
   PangoFontDescription *font_desc;
 
   CtkRcFlags color_flags[5];
-  GdkColor   fg[5];
-  GdkColor   bg[5];
-  GdkColor   text[5];
-  GdkColor   base[5];
+  CdkColor   fg[5];
+  CdkColor   bg[5];
+  CdkColor   text[5];
+  CdkColor   base[5];
 
   gint xthickness;
   gint ythickness;
@@ -358,11 +358,11 @@ GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 GScanner* ctk_rc_scanner_new    (void);
 GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_color    (GScanner            *scanner,
-                                 GdkColor            *color);
+                                 CdkColor            *color);
 GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_color_full (GScanner          *scanner,
                                    CtkRcStyle        *style,
-                                   GdkColor          *color);
+                                   CdkColor          *color);
 GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_state    (GScanner            *scanner,
                                  CtkStateType        *state);

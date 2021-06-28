@@ -1275,8 +1275,8 @@ msgid "Cell background color"
 msgstr "Koler fonu jačejki"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Koler fonu jačejki jak GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Koler fonu jačejki jak CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1529,8 +1529,8 @@ msgid "Background color"
 msgstr "Koler fonu"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Koler fonu jak GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Koler fonu jak CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1546,8 +1546,8 @@ msgid "Foreground color"
 msgstr "Koler elementu"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Koler elementu jak GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Koler elementu jak CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3179,8 +3179,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "Abjekt GdkPixbuf, kab pakazać"
+msgid "A CdkPixbuf to display"
+msgstr "Abjekt CdkPixbuf, kab pakazać"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3226,8 +3226,8 @@ msgid "Animation"
 msgstr "Animacyja"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "Abjekt GdkPixbufAnimation, kab pakazać"
+msgid "CdkPixbufAnimation to display"
+msgstr "Abjekt CdkPixbufAnimation, kab pakazać"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5879,8 +5879,8 @@ msgstr ""
 "pazbaŭlenych nazvaŭ"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Koler fonu jak (vierahodna, niavyznačany) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Koler fonu jak (vierahodna, niavyznačany) CdkColor"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5895,8 +5895,8 @@ msgstr ""
 "vyšyniu aznačanych znakaŭ"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Koler elementu jak (vierahodna niavyznačany) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Koler elementu jak (vierahodna niavyznačany) CdkColor"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6050,8 +6050,8 @@ msgid "Paragraph background color"
 msgstr "Koler fonu parahrafu"
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Koler fonu parahrafu jak (vierahodna niavyznačany) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Koler fonu parahrafu jak (vierahodna niavyznačany) CdkColor"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7032,9 +7032,9 @@ msgid "Events"
 msgstr "Zdareńni"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Maska zdareńniaŭ, jakaja akreślivaje, jakija typy zdareńniaŭ GdkEvents "
+"Maska zdareńniaŭ, jakaja akreślivaje, jakija typy zdareńniaŭ CdkEvents "
 "atrymvaje hety widget"
 
 #: ctk/ctkwidget.c:832
@@ -7544,8 +7544,8 @@ msgstr "Sposab rysavańnia paneli stanu metadu ŭvodu"
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "Pakaźnik dla źviestak pikselaŭ buferu piksmapy"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "GdkScreen dla elementu renderavańnia"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "CdkScreen dla elementu renderavańnia"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "Nałada, jakaja vyznačaje značeńnie pola"
@@ -7569,8 +7569,8 @@ msgstr "Sposab rysavańnia paneli stanu metadu ŭvodu"
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "Bitmapa, užyvanaja jak maska rysavańnia fonu tekstu"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "Dziejna abrany GdkFont"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "Dziejna abrany CdkFont"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "Sastarełaja ŭłaścivaść, užyj zamiest hetaha shadow_type"
@@ -7578,17 +7578,17 @@ msgstr "Sposab rysavańnia paneli stanu metadu ŭvodu"
 #~ msgid "Pixmap"
 #~ msgstr "Piksmapa"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "Abjekt GdkPixmap, kab pakazać"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "Abjekt CdkPixmap, kab pakazać"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "Vyjava GdkImage, kab pakazać"
+#~ msgid "A CdkImage to display"
+#~ msgstr "Vyjava CdkImage, kab pakazać"
 
 #~ msgid "Mask"
 #~ msgstr "Maska"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Bitmapavaja maska, ŭžyvanaja ŭ spałučeńni z GdkImage albo GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Bitmapavaja maska, ŭžyvanaja ŭ spałučeńni z CdkImage albo CdkPixmap"
 
 #~ msgid "Use separator"
 #~ msgstr "Z separataram"
