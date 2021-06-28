@@ -5357,7 +5357,7 @@ ctk_icon_theme_add_builtin_icon (const gchar *icon_name,
   gpointer key;
 
   g_return_if_fail (icon_name != NULL);
-  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
   
   if (!icon_theme_builtin_icons)
     icon_theme_builtin_icons = g_hash_table_new (g_str_hash, g_str_equal);
@@ -5517,7 +5517,7 @@ ctk_icon_theme_lookup_by_gicon_for_scale (CtkIconTheme       *icon_theme,
   g_return_val_if_fail (G_IS_ICON (icon), NULL);
   g_warn_if_fail ((flags & CTK_ICON_LOOKUP_GENERIC_FALLBACK) == 0);
 
-  if (CDK_IS_PIXBUF (icon))
+  if (GDK_IS_PIXBUF (icon))
     {
       GdkPixbuf *pixbuf;
 
@@ -5634,7 +5634,7 @@ ctk_icon_info_new_for_pixbuf (CtkIconTheme *icon_theme,
   CtkIconInfo *info;
 
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
-  g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
+  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
 
   info = icon_info_new (ICON_THEME_DIR_UNTHEMED, 0, 1);
   info->pixbuf = g_object_ref (pixbuf);

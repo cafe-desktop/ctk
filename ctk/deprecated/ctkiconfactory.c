@@ -2027,7 +2027,7 @@ ctk_icon_source_set_pixbuf (CtkIconSource *source,
                             GdkPixbuf     *pixbuf)
 {
   g_return_if_fail (source != NULL);
-  g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
 
   if (source->type == CTK_ICON_SOURCE_PIXBUF &&
       source->source.pixbuf == pixbuf)

@@ -451,7 +451,7 @@ ctk_text_renderer_draw_shape (PangoRenderer   *renderer,
 
       unset_color (text_renderer);
     }
-  else if (CDK_IS_PIXBUF (attr->data))
+  else if (GDK_IS_PIXBUF (attr->data))
     {
       cairo_t *cr = text_renderer->cr;
       GdkPixbuf *pixbuf = GDK_PIXBUF (attr->data);

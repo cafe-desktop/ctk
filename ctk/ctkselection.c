@@ -1743,7 +1743,7 @@ ctk_selection_data_set_pixbuf (CtkSelectionData *selection_data,
   gsize len;
 
   g_return_val_if_fail (selection_data != NULL, FALSE);
-  g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), FALSE);
+  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), FALSE);
 
   formats = gdk_pixbuf_get_formats ();
 

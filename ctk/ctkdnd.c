@@ -2228,7 +2228,7 @@ ctk_drag_set_icon_pixbuf (CdkDragContext *context,
   CtkImageDefinition *def;
 
   g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
-  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
 
   def = ctk_image_definition_new_pixbuf (pixbuf, 1);
   set_icon_helper (context, def, hot_x, hot_y);

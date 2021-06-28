@@ -785,7 +785,7 @@ ctk_image_new_from_animation (GdkPixbufAnimation *animation)
 {
   CtkImage *image;
 
-  g_return_val_if_fail (CDK_IS_PIXBUF_ANIMATION (animation), NULL);
+  g_return_val_if_fail (GDK_IS_PIXBUF_ANIMATION (animation), NULL);
   
   image = g_object_new (CTK_TYPE_IMAGE, NULL);
 
@@ -1104,7 +1104,7 @@ ctk_image_set_from_pixbuf (CtkImage  *image,
 
   g_return_if_fail (CTK_IS_IMAGE (image));
   g_return_if_fail (pixbuf == NULL ||
-                    CDK_IS_PIXBUF (pixbuf));
+                    GDK_IS_PIXBUF (pixbuf));
 
   priv = image->priv;
 
@@ -1219,7 +1219,7 @@ ctk_image_set_from_animation (CtkImage           *image,
 
   g_return_if_fail (CTK_IS_IMAGE (image));
   g_return_if_fail (animation == NULL ||
-                    CDK_IS_PIXBUF_ANIMATION (animation));
+                    GDK_IS_PIXBUF_ANIMATION (animation));
 
   priv = image->priv;
 

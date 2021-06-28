@@ -1943,7 +1943,7 @@ ctk_text_buffer_insert_pixbuf (CtkTextBuffer *buffer,
 {
   g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
   g_return_if_fail (ctk_text_iter_get_buffer (iter) == buffer);
   
   g_signal_emit (buffer, signals[INSERT_PIXBUF], 0,

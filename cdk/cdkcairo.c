@@ -287,7 +287,7 @@ cdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
   cairo_format_t format;
   cairo_surface_t *surface;
 
-  g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
+  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
   g_return_val_if_fail (scale >= 0, NULL);
   g_return_val_if_fail (for_window == NULL || CDK_IS_WINDOW (for_window), NULL);
 

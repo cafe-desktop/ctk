@@ -184,7 +184,7 @@ _ctk_css_image_surface_new_for_pixbuf (GdkPixbuf *pixbuf)
   CtkCssImage *image;
   cairo_surface_t *surface;
 
-  g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
+  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
 
   surface = cdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
 

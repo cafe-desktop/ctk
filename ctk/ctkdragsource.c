@@ -374,7 +374,7 @@ ctk_drag_source_set_icon_pixbuf (CtkWidget *widget,
   CtkDragSourceSite *site;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
 
   site = g_object_get_data (G_OBJECT (widget), "ctk-site-data");
   g_return_if_fail (site != NULL); 

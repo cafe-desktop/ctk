@@ -913,7 +913,7 @@ ctk_clipboard_set_image (CtkClipboard *clipboard,
   gint n_targets;
 
   g_return_if_fail (clipboard != NULL);
-  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
 
   list = ctk_target_list_new (NULL, 0);
   ctk_target_list_add_image_targets (list, 0, TRUE);

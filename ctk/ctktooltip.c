@@ -282,7 +282,7 @@ ctk_tooltip_set_icon (CtkTooltip *tooltip,
 		      GdkPixbuf  *pixbuf)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
-  g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
 
   ctk_tooltip_window_set_image_icon (CTK_TOOLTIP_WINDOW (tooltip->window), pixbuf);
 }
