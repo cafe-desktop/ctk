@@ -4403,7 +4403,7 @@ msgstr ""
 #~ msgstr "የአሁኑን ቀለም"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "የአሁኑን ቀለም"
 
 #, fuzzy

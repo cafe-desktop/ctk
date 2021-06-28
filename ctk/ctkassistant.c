@@ -96,8 +96,8 @@ struct _CtkAssistantPage
   CtkWidget *page;
   CtkWidget *regular_title;
   CtkWidget *current_title;
-  GdkPixbuf *header_image;
-  GdkPixbuf *sidebar_image;
+  CdkPixbuf *header_image;
+  CdkPixbuf *sidebar_image;
 };
 
 struct _CtkAssistantPrivate
@@ -138,7 +138,7 @@ static void     ctk_assistant_destroy            (CtkWidget         *widget);
 static void     ctk_assistant_map                (CtkWidget         *widget);
 static void     ctk_assistant_unmap              (CtkWidget         *widget);
 static gboolean ctk_assistant_delete_event       (CtkWidget         *widget,
-                                                  GdkEventAny       *event);
+                                                  CdkEventAny       *event);
 static void     ctk_assistant_add                (CtkContainer      *container,
                                                   CtkWidget         *page);
 static void     ctk_assistant_remove             (CtkContainer      *container,
@@ -171,10 +171,10 @@ static GList*     find_page                                  (CtkAssistant  *ass
                                                               CtkWidget     *page);
 static void       ctk_assistant_do_set_page_header_image     (CtkAssistant  *assistant,
                                                               CtkWidget     *page,
-                                                              GdkPixbuf     *pixbuf);
+                                                              CdkPixbuf     *pixbuf);
 static void       ctk_assistant_do_set_page_side_image       (CtkAssistant  *assistant,
                                                               CtkWidget     *page,
-                                                              GdkPixbuf     *pixbuf);
+                                                              CdkPixbuf     *pixbuf);
 
 static void       on_assistant_close                         (CtkWidget     *widget,
 							      CtkAssistant  *assistant);
@@ -1106,7 +1106,7 @@ static gboolean
 alternative_button_order (CtkAssistant *assistant)
 {
   CtkSettings *settings;
-  GdkScreen *screen;
+  CdkScreen *screen;
   gboolean result;
 
   screen   = ctk_widget_get_screen (CTK_WIDGET (assistant));
@@ -1439,7 +1439,7 @@ ctk_assistant_unmap (CtkWidget *widget)
 
 static gboolean
 ctk_assistant_delete_event (CtkWidget   *widget,
-                            GdkEventAny *event)
+                            CdkEventAny *event)
 {
   CtkAssistant *assistant = CTK_ASSISTANT (widget);
   CtkAssistantPrivate *priv = assistant->priv;
@@ -2169,7 +2169,7 @@ ctk_assistant_get_page_type (CtkAssistant *assistant,
 void
 ctk_assistant_set_page_header_image (CtkAssistant *assistant,
                                      CtkWidget    *page,
-                                     GdkPixbuf    *pixbuf)
+                                     CdkPixbuf    *pixbuf)
 {
   g_return_if_fail (CTK_IS_ASSISTANT (assistant));
   g_return_if_fail (CTK_IS_WIDGET (page));
@@ -2181,7 +2181,7 @@ ctk_assistant_set_page_header_image (CtkAssistant *assistant,
 static void
 ctk_assistant_do_set_page_header_image (CtkAssistant *assistant,
                                         CtkWidget    *page,
-                                        GdkPixbuf    *pixbuf)
+                                        CdkPixbuf    *pixbuf)
 {
   CtkAssistantPage *page_info;
   GList *child;
@@ -2222,7 +2222,7 @@ ctk_assistant_do_set_page_header_image (CtkAssistant *assistant,
  * Deprecated: 3.2: Since CTK+ 3.2, a header is no longer shown;
  *     add your header decoration to the page content instead.
  */
-GdkPixbuf*
+CdkPixbuf*
 ctk_assistant_get_page_header_image (CtkAssistant *assistant,
                                      CtkWidget    *page)
 {
@@ -2260,7 +2260,7 @@ ctk_assistant_get_page_header_image (CtkAssistant *assistant,
 void
 ctk_assistant_set_page_side_image (CtkAssistant *assistant,
                                    CtkWidget    *page,
-                                   GdkPixbuf    *pixbuf)
+                                   CdkPixbuf    *pixbuf)
 {
   g_return_if_fail (CTK_IS_ASSISTANT (assistant));
   g_return_if_fail (CTK_IS_WIDGET (page));
@@ -2272,7 +2272,7 @@ ctk_assistant_set_page_side_image (CtkAssistant *assistant,
 static void
 ctk_assistant_do_set_page_side_image (CtkAssistant *assistant,
                                       CtkWidget    *page,
-                                      GdkPixbuf    *pixbuf)
+                                      CdkPixbuf    *pixbuf)
 {
   CtkAssistantPage *page_info;
   GList *child;
@@ -2313,7 +2313,7 @@ ctk_assistant_do_set_page_side_image (CtkAssistant *assistant,
  * Deprecated: 3.2: Since CTK+ 3.2, sidebar images are not
  *     shown anymore.
  */
-GdkPixbuf*
+CdkPixbuf*
 ctk_assistant_get_page_side_image (CtkAssistant *assistant,
                                    CtkWidget    *page)
 {

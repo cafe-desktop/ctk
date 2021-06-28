@@ -49,7 +49,7 @@
 
 struct _CtkColorSwatchPrivate
 {
-  GdkRGBA color;
+  CdkRGBA color;
   gdouble radius[4];
   gchar *icon;
   guint    has_color        : 1;
@@ -57,7 +57,7 @@ struct _CtkColorSwatchPrivate
   guint    selectable       : 1;
   guint    has_menu         : 1;
 
-  GdkWindow *event_window;
+  CdkWindow *event_window;
 
   CtkGesture *long_press_gesture;
   CtkGesture *multipress_gesture;
@@ -171,8 +171,8 @@ ctk_color_swatch_render (CtkCssGadget *gadget,
 }
 
 static void
-drag_set_color_icon (GdkDragContext *context,
-                     const GdkRGBA  *color)
+drag_set_color_icon (CdkDragContext *context,
+                     const CdkRGBA  *color)
 {
   cairo_surface_t *surface;
   cairo_t *cr;
@@ -191,10 +191,10 @@ drag_set_color_icon (GdkDragContext *context,
 
 static void
 swatch_drag_begin (CtkWidget      *widget,
-                   GdkDragContext *context)
+                   CdkDragContext *context)
 {
   CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
-  GdkRGBA color;
+  CdkRGBA color;
 
   ctk_color_swatch_get_rgba (swatch, &color);
   drag_set_color_icon (context, &color);
@@ -202,14 +202,14 @@ swatch_drag_begin (CtkWidget      *widget,
 
 static void
 swatch_drag_data_get (CtkWidget        *widget,
-                      GdkDragContext   *context,
+                      CdkDragContext   *context,
                       CtkSelectionData *selection_data,
                       guint             info,
                       guint             time)
 {
   CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
   guint16 vals[4];
-  GdkRGBA color;
+  CdkRGBA color;
 
   ctk_color_swatch_get_rgba (swatch, &color);
 
@@ -225,7 +225,7 @@ swatch_drag_data_get (CtkWidget        *widget,
 
 static void
 swatch_drag_data_received (CtkWidget        *widget,
-                           GdkDragContext   *context,
+                           CdkDragContext   *context,
                            gint              x,
                            gint              y,
                            CtkSelectionData *selection_data,
@@ -234,7 +234,7 @@ swatch_drag_data_received (CtkWidget        *widget,
 {
   gint length;
   guint16 *vals;
-  GdkRGBA color;
+  CdkRGBA color;
 
   length = ctk_selection_data_get_length (selection_data);
 
@@ -295,7 +295,7 @@ ctk_color_swatch_measure (CtkCssGadget   *gadget,
 
 static gboolean
 swatch_key_press (CtkWidget   *widget,
-                  GdkEventKey *event)
+                  CdkEventKey *event)
 {
   CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
 
@@ -322,7 +322,7 @@ swatch_key_press (CtkWidget   *widget,
 
 static gboolean
 swatch_enter_notify (CtkWidget        *widget,
-                     GdkEventCrossing *event)
+                     CdkEventCrossing *event)
 {
   ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_PRELIGHT, FALSE);
 
@@ -331,7 +331,7 @@ swatch_enter_notify (CtkWidget        *widget,
 
 static gboolean
 swatch_leave_notify (CtkWidget        *widget,
-                     GdkEventCrossing *event)
+                     CdkEventCrossing *event)
 {
   ctk_widget_unset_state_flags (widget, CTK_STATE_FLAG_PRELIGHT);
 
@@ -452,8 +452,8 @@ swatch_realize (CtkWidget *widget)
 {
   CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_get_allocation (widget, &allocation);
@@ -599,7 +599,7 @@ swatch_get_property (GObject    *object,
                      GParamSpec *pspec)
 {
   CtkColorSwatch *swatch = CTK_COLOR_SWATCH (object);
-  GdkRGBA color;
+  CdkRGBA color;
 
   switch (prop_id)
     {
@@ -783,7 +783,7 @@ static const CtkTargetEntry dnd_targets[] = {
 
 void
 ctk_color_swatch_set_rgba (CtkColorSwatch *swatch,
-                           const GdkRGBA  *color)
+                           const CdkRGBA  *color)
 {
   CtkStyleContext *context;
 
@@ -817,7 +817,7 @@ ctk_color_swatch_set_rgba (CtkColorSwatch *swatch,
 
 gboolean
 ctk_color_swatch_get_rgba (CtkColorSwatch *swatch,
-                           GdkRGBA        *color)
+                           CdkRGBA        *color)
 {
   if (swatch->priv->has_color)
     {

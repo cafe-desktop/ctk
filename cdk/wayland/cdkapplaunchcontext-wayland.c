@@ -35,7 +35,7 @@ cdk_wayland_app_launch_context_get_startup_notify_id (GAppLaunchContext *context
                                                       GAppInfo          *info,
                                                       GList             *files)
 {
-  GdkWaylandDisplay *display;
+  CdkWaylandDisplay *display;
   gchar *id = NULL;
 
   g_object_get (context, "display", &display, NULL);
@@ -57,27 +57,27 @@ cdk_wayland_app_launch_context_launch_failed (GAppLaunchContext *context,
 {
 }
 
-typedef struct _GdkWaylandAppLaunchContext GdkWaylandAppLaunchContext;
-typedef struct _GdkWaylandAppLaunchContextClass GdkWaylandAppLaunchContextClass;
+typedef struct _CdkWaylandAppLaunchContext CdkWaylandAppLaunchContext;
+typedef struct _CdkWaylandAppLaunchContextClass CdkWaylandAppLaunchContextClass;
 
-struct _GdkWaylandAppLaunchContext
+struct _CdkWaylandAppLaunchContext
 {
-  GdkAppLaunchContext base;
+  CdkAppLaunchContext base;
   gchar *name;
   guint serial;
 };
 
-struct _GdkWaylandAppLaunchContextClass
+struct _CdkWaylandAppLaunchContextClass
 {
-  GdkAppLaunchContextClass base_class;
+  CdkAppLaunchContextClass base_class;
 };
 
 GType cdk_wayland_app_launch_context_get_type (void);
 
-G_DEFINE_TYPE (GdkWaylandAppLaunchContext, cdk_wayland_app_launch_context, GDK_TYPE_APP_LAUNCH_CONTEXT)
+G_DEFINE_TYPE (CdkWaylandAppLaunchContext, cdk_wayland_app_launch_context, GDK_TYPE_APP_LAUNCH_CONTEXT)
 
 static void
-cdk_wayland_app_launch_context_class_init (GdkWaylandAppLaunchContextClass *klass)
+cdk_wayland_app_launch_context_class_init (CdkWaylandAppLaunchContextClass *klass)
 {
   GAppLaunchContextClass *ctx_class = G_APP_LAUNCH_CONTEXT_CLASS (klass);
 
@@ -86,14 +86,14 @@ cdk_wayland_app_launch_context_class_init (GdkWaylandAppLaunchContextClass *klas
 }
 
 static void
-cdk_wayland_app_launch_context_init (GdkWaylandAppLaunchContext *ctx)
+cdk_wayland_app_launch_context_init (CdkWaylandAppLaunchContext *ctx)
 {
 }
 
-GdkAppLaunchContext *
-_cdk_wayland_display_get_app_launch_context (GdkDisplay *display)
+CdkAppLaunchContext *
+_cdk_wayland_display_get_app_launch_context (CdkDisplay *display)
 {
-  GdkAppLaunchContext *ctx;
+  CdkAppLaunchContext *ctx;
 
   ctx = g_object_new (cdk_wayland_app_launch_context_get_type (),
                       "display", display,

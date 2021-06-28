@@ -66,7 +66,7 @@ void        ctk_render_background_get_clip  (CtkStyleContext     *context,
                                              gdouble              y,
                                              gdouble              width,
                                              gdouble              height,
-                                             GdkRectangle        *out_clip);
+                                             CdkRectangle        *out_clip);
 
 GDK_AVAILABLE_IN_ALL
 void        ctk_render_frame       (CtkStyleContext     *context,
@@ -143,13 +143,13 @@ void        ctk_render_activity    (CtkStyleContext     *context,
                                     gdouble              width,
                                     gdouble              height);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_load_icon)
-GdkPixbuf * ctk_render_icon_pixbuf (CtkStyleContext     *context,
+CdkPixbuf * ctk_render_icon_pixbuf (CtkStyleContext     *context,
                                     const CtkIconSource *source,
                                     CtkIconSize          size);
 GDK_AVAILABLE_IN_3_2
 void        ctk_render_icon        (CtkStyleContext     *context,
                                     cairo_t             *cr,
-                                    GdkPixbuf           *pixbuf,
+                                    CdkPixbuf           *pixbuf,
                                     gdouble              x,
                                     gdouble              y);
 GDK_AVAILABLE_IN_3_10

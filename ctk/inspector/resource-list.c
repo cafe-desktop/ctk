@@ -392,12 +392,12 @@ move_search_to_row (CtkInspectorResourceList *sl,
 
 static gboolean
 key_press_event (CtkWidget                *window,
-                 GdkEvent                 *event,
+                 CdkEvent                 *event,
                  CtkInspectorResourceList *sl)
 {
   if (ctk_widget_get_mapped (CTK_WIDGET (sl)))
     {
-      GdkModifierType default_accel;
+      CdkModifierType default_accel;
       gboolean search_started;
 
       search_started = ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (sl->priv->search_bar));

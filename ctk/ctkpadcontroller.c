@@ -21,7 +21,7 @@
  * SECTION:ctkpadcontroller
  * @Short_description: Controller for drawing tablet pads
  * @Title: CtkPadController
- * @See_also: #CtkEventController, #GdkDevicePad
+ * @See_also: #CtkEventController, #CdkDevicePad
  *
  * #CtkPadController is an event controller for the pads found in drawing
  * tablets (The collection of buttons and tactile sensors often found around
@@ -82,7 +82,7 @@
 struct _CtkPadController {
   CtkEventController parent_instance;
   GActionGroup *action_group;
-  GdkDevice *pad;
+  CdkDevice *pad;
 
   GList *entries;
 };
@@ -170,7 +170,7 @@ ctk_pad_controller_activate_action_with_axis (CtkPadController        *controlle
 
 static void
 ctk_pad_controller_handle_mode_switch (CtkPadController *controller,
-                                       GdkDevice        *pad,
+                                       CdkDevice        *pad,
                                        guint             group,
                                        guint             mode)
 {
@@ -208,7 +208,7 @@ ctk_pad_controller_handle_mode_switch (CtkPadController *controller,
 
 static gboolean
 ctk_pad_controller_filter_event (CtkEventController *controller,
-                                 const GdkEvent     *event)
+                                 const CdkEvent     *event)
 {
   CtkPadController *pad_controller = CTK_PAD_CONTROLLER (controller);
 
@@ -228,7 +228,7 @@ ctk_pad_controller_filter_event (CtkEventController *controller,
 
 static gboolean
 ctk_pad_controller_handle_event (CtkEventController *controller,
-                                 const GdkEvent     *event)
+                                 const CdkEvent     *event)
 {
   CtkPadController *pad_controller = CTK_PAD_CONTROLLER (controller);
   const CtkPadActionEntry *entry;
@@ -283,7 +283,7 @@ ctk_pad_controller_handle_event (CtkEventController *controller,
 
 static void
 ctk_pad_controller_set_pad (CtkPadController *controller,
-                            GdkDevice        *pad)
+                            CdkDevice        *pad)
 {
   g_return_if_fail (!pad || GDK_IS_DEVICE (pad));
   g_return_if_fail (!pad || cdk_device_get_source (pad) == GDK_SOURCE_TABLET_PAD);
@@ -412,7 +412,7 @@ ctk_pad_controller_init (CtkPadController *controller)
 CtkPadController *
 ctk_pad_controller_new (CtkWindow    *window,
                         GActionGroup *group,
-                        GdkDevice    *pad)
+                        CdkDevice    *pad)
 {
   g_return_val_if_fail (CTK_IS_WINDOW (window), NULL);
   g_return_val_if_fail (G_IS_ACTION_GROUP (group), NULL);

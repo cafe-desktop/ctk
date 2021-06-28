@@ -145,7 +145,7 @@ struct _CtkKeySnooperData
 };
 
 static gint  ctk_invoke_key_snoopers     (CtkWidget          *grab_widget,
-                                          GdkEvent           *event);
+                                          CdkEvent           *event);
 
 static CtkWindowGroup *ctk_main_get_window_group (CtkWidget   *widget);
 
@@ -159,7 +159,7 @@ static GSList *main_loops = NULL;      /* stack of currently executing main loop
 static GSList *key_snoopers = NULL;
 
 typedef struct {
-  GdkDisplay *display;
+  CdkDisplay *display;
   guint flags;
 } DisplayDebugFlags;
 
@@ -655,7 +655,7 @@ do_pre_parse_initialization (int    *argc,
     g_error ("CTK+ 2.x symbols detected. Using CTK+ 2.x and CTK+ 3 in the same process is not supported");
 
   GDK_PRIVATE_CALL (cdk_pre_parse) ();
-  cdk_event_handler_set ((GdkEventFunc)ctk_main_do_event, NULL, NULL);
+  cdk_event_handler_set ((CdkEventFunc)ctk_main_do_event, NULL, NULL);
 
   env_string = g_getenv ("CTK_DEBUG");
   if (env_string != NULL)
@@ -709,7 +709,7 @@ gettext_initialization (void)
 }
 
 static void
-default_display_notify_cb (GdkDisplayManager *dm)
+default_display_notify_cb (CdkDisplayManager *dm)
 {
   _ctk_accessibility_init ();
   debug_flags[0].display = cdk_display_get_default ();
@@ -719,7 +719,7 @@ static void
 do_post_parse_initialization (int    *argc,
                               char ***argv)
 {
-  GdkDisplayManager *display_manager;
+  CdkDisplayManager *display_manager;
 
   if (ctk_initialized)
     return;
@@ -821,7 +821,7 @@ post_parse_hook (GOptionContext *context,
 }
 
 guint
-ctk_get_display_debug_flags (GdkDisplay *display)
+ctk_get_display_debug_flags (CdkDisplay *display)
 {
   gint i;
 
@@ -835,7 +835,7 @@ ctk_get_display_debug_flags (GdkDisplay *display)
 }
 
 void
-ctk_set_display_debug_flags (GdkDisplay *display,
+ctk_set_display_debug_flags (CdkDisplay *display,
                              guint       flags)
 {
   gint i;
@@ -1463,8 +1463,8 @@ ctk_main_iteration_do (gboolean blocking)
 }
 
 static void
-rewrite_events_translate (GdkWindow *old_window,
-                          GdkWindow *new_window,
+rewrite_events_translate (CdkWindow *old_window,
+                          CdkWindow *new_window,
                           gdouble   *x,
                           gdouble   *y)
 {
@@ -1478,9 +1478,9 @@ rewrite_events_translate (GdkWindow *old_window,
   *y += old_origin_y - new_origin_y;
 }
 
-static GdkEvent *
-rewrite_event_for_window (GdkEvent  *event,
-                          GdkWindow *new_window)
+static CdkEvent *
+rewrite_event_for_window (CdkEvent  *event,
+                          CdkWindow *new_window)
 {
   event = cdk_event_copy (event);
 
@@ -1547,15 +1547,15 @@ rewrite_event_for_window (GdkEvent  *event,
  * are delivered normally, otherwise, the event is delivered in terms of the
  * grab window.
  */
-static GdkEvent *
-rewrite_event_for_grabs (GdkEvent *event)
+static CdkEvent *
+rewrite_event_for_grabs (CdkEvent *event)
 {
-  GdkWindow *grab_window;
+  CdkWindow *grab_window;
   CtkWidget *event_widget, *grab_widget;
   gpointer grab_widget_ptr;
   gboolean owner_events;
-  GdkDisplay *display;
-  GdkDevice *device;
+  CdkDisplay *display;
+  CdkDevice *device;
 
   switch (event->type)
     {
@@ -1687,14 +1687,14 @@ check_event_in_child_popover (CtkWidget *event_widget,
  * 5. After finishing the delivery the event is popped from the event stack.
  */
 void
-ctk_main_do_event (GdkEvent *event)
+ctk_main_do_event (CdkEvent *event)
 {
   CtkWidget *event_widget;
   CtkWidget *grab_widget = NULL;
   CtkWidget *topmost_widget = NULL;
   CtkWindowGroup *window_group;
-  GdkEvent *rewritten_event = NULL;
-  GdkDevice *device;
+  CdkEvent *rewritten_event = NULL;
+  CdkDevice *device;
   GList *tmp_list;
 
   if (event->type == GDK_SETTING)
@@ -1710,17 +1710,17 @@ ctk_main_do_event (GdkEvent *event)
     }
 
   /* Find the widget which got the event. We store the widget
-   * in the user_data field of GdkWindow's. Ignore the event
+   * in the user_data field of CdkWindow's. Ignore the event
    * if we don't have a widget for it, except for GDK_PROPERTY_NOTIFY
    * events which are handled specially. Though this happens rarely,
-   * bogus events can occur for e.g. destroyed GdkWindows.
+   * bogus events can occur for e.g. destroyed CdkWindows.
    */
   event_widget = ctk_get_event_widget (event);
   if (!event_widget)
     {
       /* To handle selection INCR transactions, we select
        * PropertyNotify events on the requestor window and create
-       * a corresponding (fake) GdkWindow so that events get here.
+       * a corresponding (fake) CdkWindow so that events get here.
        * There won't be a widget though, so we have to handle
        * them specially
        */
@@ -2055,7 +2055,7 @@ typedef struct
   gboolean   is_grabbed;
   gboolean   from_grab;
   GList     *notified_windows;
-  GdkDevice *device;
+  CdkDevice *device;
 } GrabNotifyInfo;
 
 static void
@@ -2063,12 +2063,12 @@ synth_crossing_for_grab_notify (CtkWidget       *from,
                                 CtkWidget       *to,
                                 GrabNotifyInfo  *info,
                                 GList           *devices,
-                                GdkCrossingMode  mode)
+                                CdkCrossingMode  mode)
 {
   while (devices)
     {
-      GdkDevice *device = devices->data;
-      GdkWindow *from_window, *to_window;
+      CdkDevice *device = devices->data;
+      CdkWindow *from_window, *to_window;
 
       /* Do not propagate events more than once to
        * the same windows if non-multidevice aware.
@@ -2177,7 +2177,7 @@ ctk_grab_notify_foreach (CtkWidget *child,
 
 static void
 ctk_grab_notify (CtkWindowGroup *group,
-                 GdkDevice      *device,
+                 CdkDevice      *device,
                  CtkWidget      *old_grab_widget,
                  CtkWidget      *new_grab_widget,
                  gboolean        from_grab)
@@ -2304,7 +2304,7 @@ ctk_grab_remove (CtkWidget *widget)
 /**
  * ctk_device_grab_add:
  * @widget: a #CtkWidget
- * @device: a #GdkDevice to grab on.
+ * @device: a #CdkDevice to grab on.
  * @block_others: %TRUE to prevent other devices to interact with @widget.
  *
  * Adds a CTK+ grab on @device, so all the events on @device and its
@@ -2316,7 +2316,7 @@ ctk_grab_remove (CtkWidget *widget)
  */
 void
 ctk_device_grab_add (CtkWidget *widget,
-                     GdkDevice *device,
+                     CdkDevice *device,
                      gboolean   block_others)
 {
   CtkWindowGroup *group;
@@ -2337,7 +2337,7 @@ ctk_device_grab_add (CtkWidget *widget,
 /**
  * ctk_device_grab_remove:
  * @widget: a #CtkWidget
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Removes a device grab from the given widget.
  *
@@ -2348,7 +2348,7 @@ ctk_device_grab_add (CtkWidget *widget,
  */
 void
 ctk_device_grab_remove (CtkWidget *widget,
-                        GdkDevice *device)
+                        CdkDevice *device)
 {
   CtkWindowGroup *group;
   CtkWidget *new_grab_widget;
@@ -2429,12 +2429,12 @@ ctk_key_snooper_remove (guint snooper_id)
 
 static gint
 ctk_invoke_key_snoopers (CtkWidget *grab_widget,
-                         GdkEvent  *event)
+                         CdkEvent  *event)
 {
   GSList *slist;
   gint return_val = FALSE;
 
-  return_val = _ctk_accessibility_key_snooper (grab_widget, (GdkEventKey *) event);
+  return_val = _ctk_accessibility_key_snooper (grab_widget, (CdkEventKey *) event);
 
   slist = key_snoopers;
   while (slist && !return_val)
@@ -2443,7 +2443,7 @@ ctk_invoke_key_snoopers (CtkWidget *grab_widget,
 
       data = slist->data;
       slist = slist->next;
-      return_val = (*data->func) (grab_widget, (GdkEventKey*) event, data->func_data);
+      return_val = (*data->func) (grab_widget, (CdkEventKey*) event, data->func_data);
     }
 
   return return_val;
@@ -2455,14 +2455,14 @@ ctk_invoke_key_snoopers (CtkWidget *grab_widget,
  * Obtains a copy of the event currently being processed by CTK+.
  *
  * For example, if you are handling a #CtkButton::clicked signal,
- * the current event will be the #GdkEventButton that triggered
+ * the current event will be the #CdkEventButton that triggered
  * the ::clicked signal.
  *
  * Returns: (transfer full) (nullable): a copy of the current event, or
  *     %NULL if there is no current event. The returned event must be
  *     freed with cdk_event_free().
  */
-GdkEvent*
+CdkEvent*
 ctk_get_current_event (void)
 {
   if (current_events)
@@ -2501,7 +2501,7 @@ ctk_get_current_event_time (void)
  *     had a state field
  */
 gboolean
-ctk_get_current_event_state (GdkModifierType *state)
+ctk_get_current_event_state (CdkModifierType *state)
 {
   g_return_val_if_fail (state != NULL, FALSE);
 
@@ -2520,9 +2520,9 @@ ctk_get_current_event_state (GdkModifierType *state)
  * If there is a current event and it has a device, return that
  * device, otherwise return %NULL.
  *
- * Returns: (transfer none) (nullable): a #GdkDevice, or %NULL
+ * Returns: (transfer none) (nullable): a #CdkDevice, or %NULL
  */
-GdkDevice *
+CdkDevice *
 ctk_get_current_event_device (void)
 {
   if (current_events)
@@ -2533,7 +2533,7 @@ ctk_get_current_event_device (void)
 
 /**
  * ctk_get_event_widget:
- * @event: a #GdkEvent
+ * @event: a #CdkEvent
  *
  * If @event is %NULL or the event was not associated with any widget,
  * returns %NULL, otherwise returns the widget that received the event
@@ -2543,7 +2543,7 @@ ctk_get_current_event_device (void)
  *     received @event, or %NULL
  */
 CtkWidget*
-ctk_get_event_widget (GdkEvent *event)
+ctk_get_event_widget (CdkEvent *event)
 {
   CtkWidget *widget;
   gpointer widget_ptr;
@@ -2561,7 +2561,7 @@ ctk_get_event_widget (GdkEvent *event)
 
 static gboolean
 propagate_event_up (CtkWidget *widget,
-                    GdkEvent  *event,
+                    CdkEvent  *event,
                     CtkWidget *topmost)
 {
   gboolean handled_event = FALSE;
@@ -2603,7 +2603,7 @@ propagate_event_up (CtkWidget *widget,
 
 static gboolean
 propagate_event_down (CtkWidget *widget,
-                      GdkEvent  *event,
+                      CdkEvent  *event,
                       CtkWidget *topmost)
 {
   gint handled_event = FALSE;
@@ -2647,12 +2647,12 @@ propagate_event_down (CtkWidget *widget,
 
 static gboolean
 propagate_event (CtkWidget *widget,
-                 GdkEvent  *event,
+                 CdkEvent  *event,
                  gboolean   captured,
                  CtkWidget *topmost)
 {
   gboolean handled_event = FALSE;
-  gboolean (* propagate_func) (CtkWidget *widget, GdkEvent  *event);
+  gboolean (* propagate_func) (CtkWidget *widget, CdkEvent  *event);
 
   propagate_func = captured ? _ctk_widget_captured_event : ctk_widget_event;
 
@@ -2716,7 +2716,7 @@ propagate_event (CtkWidget *widget,
  */
 void
 ctk_propagate_event (CtkWidget *widget,
-                     GdkEvent  *event)
+                     CdkEvent  *event)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (event != NULL);
@@ -2726,7 +2726,7 @@ ctk_propagate_event (CtkWidget *widget,
 
 gboolean
 _ctk_propagate_captured_event (CtkWidget *widget,
-                               GdkEvent  *event,
+                               CdkEvent  *event,
                                CtkWidget *topmost)
 {
   return propagate_event (widget, event, TRUE, topmost);

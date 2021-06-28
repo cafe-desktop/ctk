@@ -178,7 +178,7 @@ GDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_popup            (CtkComboBox     *combo_box);
 GDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_popup_for_device (CtkComboBox     *combo_box,
-                                              GdkDevice       *device);
+                                              CdkDevice       *device);
 GDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_popdown          (CtkComboBox     *combo_box);
 GDK_AVAILABLE_IN_ALL

@@ -60,7 +60,7 @@ libcdk_broadway = static_library('cdk-broadway',
   include_directories: [confinc, cdkinc],
   c_args: [
     '-DGDK_COMPILATION',
-    '-DG_LOG_DOMAIN="Gdk"',
+    '-DG_LOG_DOMAIN="Cdk"',
   ] + common_cflags,
   link_args: common_ldflags,
   dependencies: [cdk_deps, cdk_broadway_deps])
@@ -73,6 +73,6 @@ executable('broadwayd',
   clienthtml_h, broadwayjs_h,
   'broadwayd.c', 'broadway-server.c', 'broadway-buffer.c', 'broadway-output.c',
   include_directories: [confinc, cdkinc, include_directories('.')],
-  c_args: ['-DGDK_COMPILATION', '-DG_LOG_DOMAIN="Gdk"', ],
+  c_args: ['-DGDK_COMPILATION', '-DG_LOG_DOMAIN="Cdk"', ],
   dependencies : [broadwayd_syslib, cdk_deps],
   install : true)

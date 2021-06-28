@@ -28,25 +28,25 @@ G_BEGIN_DECLS
 
 #define GDK_TYPE_DRAWING_CONTEXT (cdk_drawing_context_get_type ())
 
-#define GDK_DRAWING_CONTEXT(obj)        (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_DRAWING_CONTEXT, GdkDrawingContext))
+#define GDK_DRAWING_CONTEXT(obj)        (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_DRAWING_CONTEXT, CdkDrawingContext))
 #define GDK_IS_DRAWING_CONTEXT(obj)     (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_DRAWING_CONTEXT))
 
-typedef struct _GdkDrawingContext       GdkDrawingContext;
-typedef struct _GdkDrawingContextClass  GdkDrawingContextClass;
+typedef struct _CdkDrawingContext       CdkDrawingContext;
+typedef struct _CdkDrawingContextClass  CdkDrawingContextClass;
 
 GDK_AVAILABLE_IN_3_22
 GType cdk_drawing_context_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-GdkWindow *     cdk_drawing_context_get_window          (GdkDrawingContext *context);
+CdkWindow *     cdk_drawing_context_get_window          (CdkDrawingContext *context);
 GDK_AVAILABLE_IN_3_22
-cairo_region_t *cdk_drawing_context_get_clip            (GdkDrawingContext *context);
+cairo_region_t *cdk_drawing_context_get_clip            (CdkDrawingContext *context);
 
 GDK_AVAILABLE_IN_3_22
-gboolean        cdk_drawing_context_is_valid            (GdkDrawingContext *context);
+gboolean        cdk_drawing_context_is_valid            (CdkDrawingContext *context);
 
 GDK_AVAILABLE_IN_3_22
-cairo_t *       cdk_drawing_context_get_cairo_context   (GdkDrawingContext *context);
+cairo_t *       cdk_drawing_context_get_cairo_context   (CdkDrawingContext *context);
 
 G_END_DECLS
 

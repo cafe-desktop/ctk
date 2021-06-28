@@ -189,15 +189,15 @@ struct _CtkSpinButtonPrivate
 {
   CtkAdjustment *adjustment;
 
-  GdkWindow     *down_panel;
-  GdkWindow     *up_panel;
+  CdkWindow     *down_panel;
+  CdkWindow     *up_panel;
 
   CtkCssGadget  *gadget;
   CtkCssGadget  *down_button;
   CtkCssGadget  *up_button;
 
-  GdkWindow     *click_child;
-  GdkWindow     *in_child;
+  CdkWindow     *click_child;
+  CdkWindow     *in_child;
 
   guint32        timer;
 
@@ -275,17 +275,17 @@ static void ctk_spin_button_size_allocate  (CtkWidget          *widget,
 static gint ctk_spin_button_draw           (CtkWidget          *widget,
                                             cairo_t            *cr);
 static gint ctk_spin_button_button_press   (CtkWidget          *widget,
-                                            GdkEventButton     *event);
+                                            CdkEventButton     *event);
 static gint ctk_spin_button_button_release (CtkWidget          *widget,
-                                            GdkEventButton     *event);
+                                            CdkEventButton     *event);
 static gint ctk_spin_button_motion_notify  (CtkWidget          *widget,
-                                            GdkEventMotion     *event);
+                                            CdkEventMotion     *event);
 static gint ctk_spin_button_enter_notify   (CtkWidget          *widget,
-                                            GdkEventCrossing   *event);
+                                            CdkEventCrossing   *event);
 static gint ctk_spin_button_leave_notify   (CtkWidget          *widget,
-                                            GdkEventCrossing   *event);
+                                            CdkEventCrossing   *event);
 static gint ctk_spin_button_focus_out      (CtkWidget          *widget,
-                                            GdkEventFocus      *event);
+                                            CdkEventFocus      *event);
 static void ctk_spin_button_grab_notify    (CtkWidget          *widget,
                                             gboolean            was_grabbed);
 static void ctk_spin_button_state_flags_changed  (CtkWidget     *widget,
@@ -295,9 +295,9 @@ static gboolean ctk_spin_button_stop_spinning  (CtkSpinButton      *spin);
 static void ctk_spin_button_value_changed  (CtkAdjustment      *adjustment,
                                             CtkSpinButton      *spin_button);
 static gint ctk_spin_button_key_release    (CtkWidget          *widget,
-                                            GdkEventKey        *event);
+                                            CdkEventKey        *event);
 static gint ctk_spin_button_scroll         (CtkWidget          *widget,
-                                            GdkEventScroll     *event);
+                                            CdkEventScroll     *event);
 static void ctk_spin_button_direction_changed (CtkWidget        *widget,
                                                CtkTextDirection  previous_dir);
 static void ctk_spin_button_activate       (CtkEntry           *entry);
@@ -701,11 +701,11 @@ ctk_spin_button_get_property (GObject      *object,
 
 static void
 swipe_gesture_begin (CtkGesture       *gesture,
-                     GdkEventSequence *sequence,
+                     CdkEventSequence *sequence,
                      CtkSpinButton    *spin_button)
 {
-  GdkEventSequence *current;
-  const GdkEvent *event;
+  CdkEventSequence *current;
+  const CdkEvent *event;
 
   current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   event = ctk_gesture_get_last_event (gesture, current);
@@ -720,7 +720,7 @@ swipe_gesture_begin (CtkGesture       *gesture,
 
 static void
 swipe_gesture_update (CtkGesture       *gesture,
-                      GdkEventSequence *sequence,
+                      CdkEventSequence *sequence,
                       CtkSpinButton    *spin_button)
 {
   gdouble vel_y;
@@ -941,7 +941,7 @@ ctk_spin_button_panel_get_state (CtkSpinButton *spin_button,
     }
   else
     {
-      GdkWindow *panel_win;
+      CdkWindow *panel_win;
 
       panel_win = panel == UP_PANEL ? priv->up_panel : priv->down_panel;
 
@@ -972,7 +972,7 @@ ctk_spin_button_realize (CtkWidget *widget)
   CtkSpinButton *spin_button = CTK_SPIN_BUTTON (widget);
   CtkSpinButtonPrivate *priv = spin_button->priv;
   CtkAllocation down_allocation, up_allocation;
-  GdkWindowAttr attributes;
+  CdkWindowAttr attributes;
   gint attributes_mask;
   gboolean return_val;
 
@@ -1254,7 +1254,7 @@ ctk_spin_button_draw (CtkWidget *widget,
 
 static gint
 ctk_spin_button_enter_notify (CtkWidget        *widget,
-                              GdkEventCrossing *event)
+                              CdkEventCrossing *event)
 {
   CtkSpinButton *spin = CTK_SPIN_BUTTON (widget);
   CtkSpinButtonPrivate *priv = spin->priv;
@@ -1272,7 +1272,7 @@ ctk_spin_button_enter_notify (CtkWidget        *widget,
 
 static gint
 ctk_spin_button_leave_notify (CtkWidget        *widget,
-                              GdkEventCrossing *event)
+                              CdkEventCrossing *event)
 {
   CtkSpinButton *spin = CTK_SPIN_BUTTON (widget);
   CtkSpinButtonPrivate *priv = spin->priv;
@@ -1289,7 +1289,7 @@ ctk_spin_button_leave_notify (CtkWidget        *widget,
 
 static gint
 ctk_spin_button_focus_out (CtkWidget     *widget,
-                           GdkEventFocus *event)
+                           CdkEventFocus *event)
 {
   if (ctk_editable_get_editable (CTK_EDITABLE (widget)))
     ctk_spin_button_update (CTK_SPIN_BUTTON (widget));
@@ -1330,7 +1330,7 @@ ctk_spin_button_state_flags_changed (CtkWidget     *widget,
 
 static gint
 ctk_spin_button_scroll (CtkWidget      *widget,
-                        GdkEventScroll *event)
+                        CdkEventScroll *event)
 {
   CtkSpinButton *spin = CTK_SPIN_BUTTON (widget);
   CtkSpinButtonPrivate *priv = spin->priv;
@@ -1379,7 +1379,7 @@ ctk_spin_button_stop_spinning (CtkSpinButton *spin)
 
 static void
 start_spinning (CtkSpinButton *spin,
-                GdkWindow     *click_child,
+                CdkWindow     *click_child,
                 gdouble        step)
 {
   CtkSpinButtonPrivate *priv;
@@ -1404,7 +1404,7 @@ start_spinning (CtkSpinButton *spin,
 
 static gint
 ctk_spin_button_button_press (CtkWidget      *widget,
-                              GdkEventButton *event)
+                              CdkEventButton *event)
 {
   CtkSpinButton *spin = CTK_SPIN_BUTTON (widget);
   CtkSpinButtonPrivate *priv = spin->priv;
@@ -1442,14 +1442,14 @@ ctk_spin_button_button_press (CtkWidget      *widget,
 
 static gint
 ctk_spin_button_button_release (CtkWidget      *widget,
-                                GdkEventButton *event)
+                                CdkEventButton *event)
 {
   CtkSpinButton *spin = CTK_SPIN_BUTTON (widget);
   CtkSpinButtonPrivate *priv = spin->priv;
 
   if (event->button == priv->button)
     {
-      GdkWindow *click_child = priv->click_child;
+      CdkWindow *click_child = priv->click_child;
 
       ctk_spin_button_stop_spinning (spin);
 
@@ -1486,7 +1486,7 @@ ctk_spin_button_button_release (CtkWidget      *widget,
 
 static gint
 ctk_spin_button_motion_notify (CtkWidget      *widget,
-                               GdkEventMotion *event)
+                               CdkEventMotion *event)
 {
   CtkSpinButton *spin = CTK_SPIN_BUTTON (widget);
   CtkSpinButtonPrivate *priv = spin->priv;
@@ -1674,7 +1674,7 @@ ctk_spin_button_real_change_value (CtkSpinButton *spin,
 
 static gint
 ctk_spin_button_key_release (CtkWidget   *widget,
-                             GdkEventKey *event)
+                             CdkEventKey *event)
 {
   CtkSpinButton *spin = CTK_SPIN_BUTTON (widget);
   CtkSpinButtonPrivate *priv = spin->priv;
@@ -2640,8 +2640,8 @@ ctk_spin_button_update (CtkSpinButton *spin_button)
 
 void
 _ctk_spin_button_get_panels (CtkSpinButton  *spin_button,
-                             GdkWindow     **down_panel,
-                             GdkWindow     **up_panel)
+                             CdkWindow     **down_panel,
+                             CdkWindow     **up_panel)
 {
   if (down_panel != NULL)
     *down_panel = spin_button->priv->down_panel;

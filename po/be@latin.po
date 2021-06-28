@@ -4246,11 +4246,11 @@ msgstr ""
 "Niemahčyma adčytać vyjavu \"%s\": pryčyna nieviadomaja; fajł vyjavy "
 "vierahodna paškodžany"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Ściažki adsočki Gdk"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Ściažki adsočki Cdk"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Vyčyščanyja ściažki adsočki Gdk"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Vyčyščanyja ściažki adsočki Cdk"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "Fajł vyjavy '%s' biaź źviestak"
@@ -4701,7 +4701,7 @@ msgstr ""
 #~ msgstr "Niemahčyma prymierkavać pamiać na strukturu kantekstu TGA"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Niemahčyma zapisać indeks katalohu\n"
 
 #, fuzzy

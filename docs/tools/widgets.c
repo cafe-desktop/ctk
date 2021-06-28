@@ -550,7 +550,7 @@ create_icon_view (void)
   CtkWidget *icon_view;
   CtkListStore *list_store;
   CtkTreeIter iter;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   WidgetInfo *info;
 
   widget = ctk_frame_new (NULL);
@@ -591,7 +591,7 @@ create_color_button (void)
   CtkWidget *vbox;
   CtkWidget *picker;
   CtkWidget *align;
-  GdkColor color;
+  CdkColor color;
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 3);
   align = ctk_alignment_new (0.5, 0.5, 0.0, 0.0);

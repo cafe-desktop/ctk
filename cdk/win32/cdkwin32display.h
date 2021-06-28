@@ -34,24 +34,24 @@
 G_BEGIN_DECLS
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkWin32Display GdkWin32Display;
+typedef struct _CdkWin32Display CdkWin32Display;
 #else
-typedef GdkDisplay GdkWin32Display;
+typedef CdkDisplay CdkWin32Display;
 #endif
-typedef struct _GdkWin32DisplayClass GdkWin32DisplayClass;
+typedef struct _CdkWin32DisplayClass CdkWin32DisplayClass;
 
 #define GDK_TYPE_WIN32_DISPLAY              (cdk_win32_display_get_type())
-#define GDK_WIN32_DISPLAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_DISPLAY, GdkWin32Display))
-#define GDK_WIN32_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_DISPLAY, GdkWin32DisplayClass))
+#define GDK_WIN32_DISPLAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_DISPLAY, CdkWin32Display))
+#define GDK_WIN32_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_DISPLAY, CdkWin32DisplayClass))
 #define GDK_IS_WIN32_DISPLAY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_DISPLAY))
 #define GDK_IS_WIN32_DISPLAY_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WIN32_DISPLAY))
-#define GDK_WIN32_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_DISPLAY, GdkWin32DisplayClass))
+#define GDK_WIN32_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_DISPLAY, CdkWin32DisplayClass))
 
 GDK_AVAILABLE_IN_ALL
 GType      cdk_win32_display_get_type            (void);
 
 GDK_AVAILABLE_IN_3_18
-void       cdk_win32_display_set_cursor_theme    (GdkDisplay  *display,
+void       cdk_win32_display_set_cursor_theme    (CdkDisplay  *display,
                                                   const gchar *name,
                                                   gint         size);
 

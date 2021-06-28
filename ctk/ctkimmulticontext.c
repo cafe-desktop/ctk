@@ -42,8 +42,8 @@ struct _CtkIMMulticontextPrivate
 {
   CtkIMContext          *slave;
 
-  GdkWindow             *client_window;
-  GdkRectangle           cursor_location;
+  CdkWindow             *client_window;
+  CdkRectangle           cursor_location;
 
   gchar                 *context_id;
   gchar                 *context_id_aux;
@@ -62,18 +62,18 @@ static void     ctk_im_multicontext_set_slave          (CtkIMMulticontext       
 							gboolean                 finalizing);
 
 static void     ctk_im_multicontext_set_client_window  (CtkIMContext            *context,
-							GdkWindow               *window);
+							CdkWindow               *window);
 static void     ctk_im_multicontext_get_preedit_string (CtkIMContext            *context,
 							gchar                  **str,
 							PangoAttrList          **attrs,
 							gint                   *cursor_pos);
 static gboolean ctk_im_multicontext_filter_keypress    (CtkIMContext            *context,
-							GdkEventKey             *event);
+							CdkEventKey             *event);
 static void     ctk_im_multicontext_focus_in           (CtkIMContext            *context);
 static void     ctk_im_multicontext_focus_out          (CtkIMContext            *context);
 static void     ctk_im_multicontext_reset              (CtkIMContext            *context);
 static void     ctk_im_multicontext_set_cursor_location (CtkIMContext            *context,
-							GdkRectangle		*area);
+							CdkRectangle		*area);
 static void     ctk_im_multicontext_set_use_preedit    (CtkIMContext            *context,
 							gboolean                 use_preedit);
 static gboolean ctk_im_multicontext_get_surrounding    (CtkIMContext            *context,
@@ -299,12 +299,12 @@ im_module_setting_changed (CtkSettings *settings,
 
 static void
 ctk_im_multicontext_set_client_window (CtkIMContext *context,
-				       GdkWindow    *window)
+				       CdkWindow    *window)
 {
   CtkIMMulticontext *multicontext = CTK_IM_MULTICONTEXT (context);
   CtkIMMulticontextPrivate *priv = multicontext->priv;
   CtkIMContext *slave;
-  GdkScreen *screen;
+  CdkScreen *screen;
   CtkSettings *settings;
   gboolean connected;
 
@@ -355,7 +355,7 @@ ctk_im_multicontext_get_preedit_string (CtkIMContext   *context,
 
 static gboolean
 ctk_im_multicontext_filter_keypress (CtkIMContext *context,
-				     GdkEventKey  *event)
+				     CdkEventKey  *event)
 {
   CtkIMMulticontext *multicontext = CTK_IM_MULTICONTEXT (context);
   CtkIMContext *slave = ctk_im_multicontext_get_slave (multicontext);
@@ -366,8 +366,8 @@ ctk_im_multicontext_filter_keypress (CtkIMContext *context,
     }
   else
     {
-      GdkDisplay *display;
-      GdkModifierType no_text_input_mask;
+      CdkDisplay *display;
+      CdkModifierType no_text_input_mask;
 
       display = cdk_window_get_display (event->window);
 
@@ -437,7 +437,7 @@ ctk_im_multicontext_reset (CtkIMContext   *context)
 
 static void
 ctk_im_multicontext_set_cursor_location (CtkIMContext   *context,
-					 GdkRectangle   *area)
+					 CdkRectangle   *area)
 {
   CtkIMMulticontext *multicontext = CTK_IM_MULTICONTEXT (context);
   CtkIMMulticontextPrivate *priv = multicontext->priv;

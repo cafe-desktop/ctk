@@ -29,21 +29,21 @@
 #include "cdkinternals.h"
 
 
-G_DEFINE_TYPE (GdkWindowImpl, cdk_window_impl, G_TYPE_OBJECT);
+G_DEFINE_TYPE (CdkWindowImpl, cdk_window_impl, G_TYPE_OBJECT);
 
 static gboolean
-cdk_window_impl_beep (GdkWindow *window)
+cdk_window_impl_beep (CdkWindow *window)
 {
   /* FALSE means windows can't beep, so the display will be
    * made to beep instead. */
   return FALSE;
 }
 
-static GdkDisplay *
-get_display_for_window (GdkWindow *primary,
-                        GdkWindow *secondary)
+static CdkDisplay *
+get_display_for_window (CdkWindow *primary,
+                        CdkWindow *secondary)
 {
-  GdkDisplay *display = cdk_window_get_display (primary);
+  CdkDisplay *display = cdk_window_get_display (primary);
 
   if (display)
     return display;
@@ -57,15 +57,15 @@ get_display_for_window (GdkWindow *primary,
   return cdk_display_get_default ();
 }
 
-static GdkMonitor *
-get_monitor_for_rect (GdkDisplay         *display,
-                      const GdkRectangle *rect)
+static CdkMonitor *
+get_monitor_for_rect (CdkDisplay         *display,
+                      const CdkRectangle *rect)
 {
   gint biggest_area = G_MININT;
-  GdkMonitor *best_monitor = NULL;
-  GdkMonitor *monitor;
-  GdkRectangle workarea;
-  GdkRectangle intersection;
+  CdkMonitor *best_monitor = NULL;
+  CdkMonitor *monitor;
+  CdkRectangle workarea;
+  CdkRectangle intersection;
   gint x;
   gint y;
   gint i;
@@ -95,7 +95,7 @@ get_monitor_for_rect (GdkDisplay         *display,
 }
 
 static gint
-get_anchor_x_sign (GdkGravity anchor)
+get_anchor_x_sign (CdkGravity anchor)
 {
   switch (anchor)
     {
@@ -119,7 +119,7 @@ get_anchor_x_sign (GdkGravity anchor)
 }
 
 static gint
-get_anchor_y_sign (GdkGravity anchor)
+get_anchor_y_sign (CdkGravity anchor)
 {
   switch (anchor)
     {
@@ -173,14 +173,14 @@ maybe_flip_position (gint      bounds_pos,
   return primary;
 }
 
-static GdkWindow *
-traverse_to_toplevel (GdkWindow *window,
+static CdkWindow *
+traverse_to_toplevel (CdkWindow *window,
                       gint       x,
                       gint       y,
                       gint      *toplevel_x,
                       gint      *toplevel_y)
 {
-  GdkWindow *parent;
+  CdkWindow *parent;
   gdouble xf = x;
   gdouble yf = y;
 
@@ -197,21 +197,21 @@ traverse_to_toplevel (GdkWindow *window,
 }
 
 static void
-cdk_window_impl_move_to_rect (GdkWindow          *window,
-                              const GdkRectangle *rect,
-                              GdkGravity          rect_anchor,
-                              GdkGravity          window_anchor,
-                              GdkAnchorHints      anchor_hints,
+cdk_window_impl_move_to_rect (CdkWindow          *window,
+                              const CdkRectangle *rect,
+                              CdkGravity          rect_anchor,
+                              CdkGravity          window_anchor,
+                              CdkAnchorHints      anchor_hints,
                               gint                rect_anchor_dx,
                               gint                rect_anchor_dy)
 {
-  GdkWindow *transient_for_toplevel;
-  GdkDisplay *display;
-  GdkMonitor *monitor;
-  GdkRectangle bounds;
-  GdkRectangle root_rect = *rect;
-  GdkRectangle flipped_rect;
-  GdkRectangle final_rect;
+  CdkWindow *transient_for_toplevel;
+  CdkDisplay *display;
+  CdkMonitor *monitor;
+  CdkRectangle bounds;
+  CdkRectangle root_rect = *rect;
+  CdkRectangle flipped_rect;
+  CdkRectangle final_rect;
   gboolean flipped_x;
   gboolean flipped_y;
 
@@ -327,14 +327,14 @@ cdk_window_impl_move_to_rect (GdkWindow          *window,
 }
 
 static void
-cdk_window_impl_process_updates_recurse (GdkWindow      *window,
+cdk_window_impl_process_updates_recurse (CdkWindow      *window,
                                          cairo_region_t *region)
 {
   _cdk_window_process_updates_recurse (window, region);
 }
 
 static void
-cdk_window_impl_class_init (GdkWindowImplClass *impl_class)
+cdk_window_impl_class_init (CdkWindowImplClass *impl_class)
 {
   impl_class->beep = cdk_window_impl_beep;
   impl_class->move_to_rect = cdk_window_impl_move_to_rect;
@@ -342,6 +342,6 @@ cdk_window_impl_class_init (GdkWindowImplClass *impl_class)
 }
 
 static void
-cdk_window_impl_init (GdkWindowImpl *impl)
+cdk_window_impl_init (CdkWindowImpl *impl)
 {
 }

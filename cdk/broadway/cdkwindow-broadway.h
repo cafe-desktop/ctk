@@ -29,31 +29,31 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GdkWindowImplBroadway GdkWindowImplBroadway;
-typedef struct _GdkWindowImplBroadwayClass GdkWindowImplBroadwayClass;
+typedef struct _CdkWindowImplBroadway CdkWindowImplBroadway;
+typedef struct _CdkWindowImplBroadwayClass CdkWindowImplBroadwayClass;
 
 /* Window implementation for Broadway
  */
 
 #define GDK_TYPE_WINDOW_IMPL_BROADWAY              (cdk_window_impl_broadway_get_type ())
-#define GDK_WINDOW_IMPL_BROADWAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL_BROADWAY, GdkWindowImplBroadway))
-#define GDK_WINDOW_IMPL_BROADWAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL_BROADWAY, GdkWindowImplBroadwayClass))
+#define GDK_WINDOW_IMPL_BROADWAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL_BROADWAY, CdkWindowImplBroadway))
+#define GDK_WINDOW_IMPL_BROADWAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL_BROADWAY, CdkWindowImplBroadwayClass))
 #define GDK_IS_WINDOW_IMPL_BROADWAY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL_BROADWAY))
 #define GDK_IS_WINDOW_IMPL_BROADWAY_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WINDOW_IMPL_BROADWAY))
-#define GDK_WINDOW_IMPL_BROADWAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WINDOW_IMPL_BROADWAY, GdkWindowImplBroadwayClass))
+#define GDK_WINDOW_IMPL_BROADWAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WINDOW_IMPL_BROADWAY, CdkWindowImplBroadwayClass))
 
-struct _GdkWindowImplBroadway
+struct _CdkWindowImplBroadway
 {
-  GdkWindowImpl parent_instance;
+  CdkWindowImpl parent_instance;
 
-  GdkWindow *wrapper;
-  GdkScreen *screen;
+  CdkWindow *wrapper;
+  CdkScreen *screen;
 
   cairo_surface_t *surface;
   cairo_surface_t *last_surface;
   cairo_surface_t *ref_surface;
 
-  GdkCursor *cursor;
+  CdkCursor *cursor;
   GHashTable *device_cursor;
 
   int id;
@@ -71,13 +71,13 @@ struct _GdkWindowImplBroadway
   gboolean dirty;
   gboolean last_synced;
 
-  GdkGeometry geometry_hints;
-  GdkWindowHints geometry_hints_mask;
+  CdkGeometry geometry_hints;
+  CdkWindowHints geometry_hints_mask;
 };
 
-struct _GdkWindowImplBroadwayClass
+struct _CdkWindowImplBroadwayClass
 {
-  GdkWindowImplClass parent_class;
+  CdkWindowImplClass parent_class;
 };
 
 GType cdk_window_impl_broadway_get_type (void);

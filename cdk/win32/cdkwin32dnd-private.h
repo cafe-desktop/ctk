@@ -26,15 +26,15 @@
 
 G_BEGIN_DECLS
 
-struct _GdkWin32DragContext
+struct _CdkWin32DragContext
 {
-  GdkDragContext context;
-  GdkWindow *ipc_window;
-  GdkWindow *drag_window;
-  GdkCursor *cursor;
-  GdkSeat *grab_seat;
-  GdkDragAction actions;
-  GdkDragAction current_action;
+  CdkDragContext context;
+  CdkWindow *ipc_window;
+  CdkWindow *drag_window;
+  CdkCursor *cursor;
+  CdkSeat *grab_seat;
+  CdkDragAction actions;
+  CdkDragAction current_action;
 
   guint drag_status : 4;             /* Current status of drag */
   guint drop_failed : 1;             /* Whether the drop was unsuccessful */
@@ -62,9 +62,9 @@ struct _GdkWin32DragContext
   GArray *droptarget_format_target_map;
 };
 
-struct _GdkWin32DragContextClass
+struct _CdkWin32DragContextClass
 {
-  GdkDragContextClass parent_class;
+  CdkDragContextClass parent_class;
 };
 
 G_END_DECLS

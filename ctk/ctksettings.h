@@ -90,7 +90,7 @@ GType           ctk_settings_get_type                (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
 CtkSettings*    ctk_settings_get_default             (void);
 GDK_AVAILABLE_IN_ALL
-CtkSettings*    ctk_settings_get_for_screen          (GdkScreen *screen);
+CtkSettings*    ctk_settings_get_for_screen          (CdkScreen *screen);
 
 GDK_DEPRECATED_IN_3_16
 void            ctk_settings_install_property        (GParamSpec         *pspec);

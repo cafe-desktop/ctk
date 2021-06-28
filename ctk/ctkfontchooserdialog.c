@@ -129,7 +129,7 @@ font_activated_cb (CtkFontChooser *fontchooser,
 
 static gboolean
 ctk_font_chooser_dialog_key_press_event (CtkWidget   *dialog,
-                                         GdkEventKey *event)
+                                         CdkEventKey *event)
 {
   CtkFontChooserDialog *fdialog = CTK_FONT_CHOOSER_DIALOG (dialog);
   gboolean handled = FALSE;

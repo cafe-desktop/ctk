@@ -18,7 +18,7 @@
  */
 
 #include "config.h"
-/* GdkScreen is deprecated, but we need to support it still so silence the warnings.*/
+/* CdkScreen is deprecated, but we need to support it still so silence the warnings.*/
 #define GDK_DISABLE_DEPRECATION_WARNINGS 1
 #include <cdk/cdk.h>
 
@@ -28,7 +28,7 @@
  
 
 /* A couple of notes about this file are in order.  In GDK, a
- * GdkScreen can contain multiple monitors.  A GdkScreen has an
+ * CdkScreen can contain multiple monitors.  A CdkScreen has an
  * associated root window, in which the monitors are placed.  The
  * root window "spans" all monitors.  The origin is at the top-left
  * corner of the root window.
@@ -46,15 +46,15 @@
  * on this!
  *
  * Upon start up and changes in the layout of screens, we calculate the
- * size of the GdkScreen root window that is needed to be able to place
+ * size of the CdkScreen root window that is needed to be able to place
  * all monitors in the root window.  Once that size is known, we iterate
  * over the monitors and translate their Cocoa position to a position
- * in the root window of the GdkScreen.  This happens below in the
+ * in the root window of the CdkScreen.  This happens below in the
  * function cdk_quartz_screen_calculate_layout().
  *
  * A Cocoa coordinate is always relative to the origin of the monitor
  * coordinate space.  Such coordinates are mapped to their respective
- * position in the GdkScreen root window (_cdk_quartz_window_xy_to_cdk_xy)
+ * position in the CdkScreen root window (_cdk_quartz_window_xy_to_cdk_xy)
  * and vice versa (_cdk_quartz_window_cdk_xy_to_xy).  Both functions can
  * be found in cdkwindow-quartz.c.  Note that Cocoa coordinates can have
  * negative values (in case a monitor is located left or below of screen 0),
@@ -63,19 +63,19 @@
 
 static void  cdk_quartz_screen_dispose          (GObject          *object);
 static void  cdk_quartz_screen_finalize         (GObject          *object);
-static void  cdk_quartz_screen_calculate_layout (GdkQuartzScreen  *screen,
-                                                 GdkQuartzDisplay *display);
-static void  cdk_quartz_screen_reconfigure      (GdkQuartzDisplay *display,
-                                                 GdkQuartzScreen  *screen);
+static void  cdk_quartz_screen_calculate_layout (CdkQuartzScreen  *screen,
+                                                 CdkQuartzDisplay *display);
+static void  cdk_quartz_screen_reconfigure      (CdkQuartzDisplay *display,
+                                                 CdkQuartzScreen  *screen);
 
 static const double dpi = 72.0;
 
-G_DEFINE_TYPE (GdkQuartzScreen, cdk_quartz_screen, GDK_TYPE_SCREEN);
+G_DEFINE_TYPE (CdkQuartzScreen, cdk_quartz_screen, GDK_TYPE_SCREEN);
 
 static void
-cdk_quartz_screen_init (GdkQuartzScreen *quartz_screen)
+cdk_quartz_screen_init (CdkQuartzScreen *quartz_screen)
 {
-  GdkScreen *screen = GDK_SCREEN (quartz_screen);
+  CdkScreen *screen = GDK_SCREEN (quartz_screen);
   /* Screen resolution is used exclusively to pass to Pango for font
    * scaling. There's a long discussion in
    * https://bugzilla.gnome.org/show_bug.cgi?id=787867 exploring how
@@ -96,7 +96,7 @@ cdk_quartz_screen_init (GdkQuartzScreen *quartz_screen)
 static void
 cdk_quartz_screen_dispose (GObject *object)
 {
-  GdkQuartzScreen *screen = GDK_QUARTZ_SCREEN (object);
+  CdkQuartzScreen *screen = GDK_QUARTZ_SCREEN (object);
 
   if (screen->screen_changed_id)
     {
@@ -119,8 +119,8 @@ cdk_quartz_screen_finalize (GObject *object)
 @end
 
 static void
-cdk_quartz_screen_calculate_layout (GdkQuartzScreen *screen,
-                                    GdkQuartzDisplay *display)
+cdk_quartz_screen_calculate_layout (CdkQuartzScreen *screen,
+                                    CdkQuartzDisplay *display)
 {
   if (!display)
     display = GDK_QUARTZ_DISPLAY (cdk_screen_get_display (GDK_SCREEN (screen)));
@@ -136,7 +136,7 @@ cdk_quartz_screen_calculate_layout (GdkQuartzScreen *screen,
  }
 
 void
-_cdk_quartz_screen_update_window_sizes (GdkScreen *screen)
+_cdk_quartz_screen_update_window_sizes (CdkScreen *screen)
 {
   GList *windows, *list;
 
@@ -148,7 +148,7 @@ _cdk_quartz_screen_update_window_sizes (GdkScreen *screen)
    * This data is updated when the monitor configuration is changed.
    */
 
-  /* FIXME: At some point, fetch the root window from GdkScreen.  But
+  /* FIXME: At some point, fetch the root window from CdkScreen.  But
    * on OS X will we only have a single root window anyway.
    */
   _cdk_root->x = 0;
@@ -171,7 +171,7 @@ _cdk_quartz_screen_update_window_sizes (GdkScreen *screen)
 }
 
 static void
-cdk_quartz_screen_reconfigure (GdkQuartzDisplay *display, GdkQuartzScreen *screen)
+cdk_quartz_screen_reconfigure (CdkQuartzDisplay *display, CdkQuartzScreen *screen)
 {
   int width, height;
 
@@ -189,77 +189,77 @@ cdk_quartz_screen_reconfigure (GdkQuartzDisplay *display, GdkQuartzScreen *scree
     g_signal_emit_by_name (screen, "size-changed");
 }
 
-static GdkDisplay *
-cdk_quartz_screen_get_display (GdkScreen *screen)
+static CdkDisplay *
+cdk_quartz_screen_get_display (CdkScreen *screen)
 {
   return _cdk_display;
 }
 
-static GdkWindow *
-cdk_quartz_screen_get_root_window (GdkScreen *screen)
+static CdkWindow *
+cdk_quartz_screen_get_root_window (CdkScreen *screen)
 {
   return _cdk_root;
 }
 
 static gint
-cdk_quartz_screen_get_number (GdkScreen *screen)
+cdk_quartz_screen_get_number (CdkScreen *screen)
 {
   return 0;
 }
 
 static gint
-cdk_quartz_screen_get_width (GdkScreen *screen)
+cdk_quartz_screen_get_width (CdkScreen *screen)
 {
   return GDK_QUARTZ_SCREEN (screen)->width;
 }
 
 static gint
-cdk_quartz_screen_get_height (GdkScreen *screen)
+cdk_quartz_screen_get_height (CdkScreen *screen)
 {
   return GDK_QUARTZ_SCREEN (screen)->height;
 }
 
 static gchar *
-cdk_quartz_screen_make_display_name (GdkScreen *screen)
+cdk_quartz_screen_make_display_name (CdkScreen *screen)
 {
   return g_strdup (cdk_display_get_name (_cdk_display));
 }
 
-static GdkWindow *
-cdk_quartz_screen_get_active_window (GdkScreen *screen)
+static CdkWindow *
+cdk_quartz_screen_get_active_window (CdkScreen *screen)
 {
   return NULL;
 }
 
 static GList *
-cdk_quartz_screen_get_window_stack (GdkScreen *screen)
+cdk_quartz_screen_get_window_stack (CdkScreen *screen)
 {
   return NULL;
 }
 
 static gboolean
-cdk_quartz_screen_is_composited (GdkScreen *screen)
+cdk_quartz_screen_is_composited (CdkScreen *screen)
 {
   return TRUE;
 }
 
 static gint
-cdk_quartz_screen_get_width_mm (GdkScreen *screen)
+cdk_quartz_screen_get_width_mm (CdkScreen *screen)
 {
   return GDK_QUARTZ_SCREEN (screen)->mm_width;
 }
 
 static gint
-cdk_quartz_screen_get_height_mm (GdkScreen *screen)
+cdk_quartz_screen_get_height_mm (CdkScreen *screen)
 {
   return GDK_QUARTZ_SCREEN (screen)->mm_height;
 }
 
 static void
-cdk_quartz_screen_class_init (GdkQuartzScreenClass *klass)
+cdk_quartz_screen_class_init (CdkQuartzScreenClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GdkScreenClass *screen_class = GDK_SCREEN_CLASS (klass);
+  CdkScreenClass *screen_class = GDK_SCREEN_CLASS (klass);
 
   object_class->dispose = cdk_quartz_screen_dispose;
   object_class->finalize = cdk_quartz_screen_finalize;

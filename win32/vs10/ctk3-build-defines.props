@@ -7,13 +7,13 @@
     <CtkBinaryVersion>3.0.0</CtkBinaryVersion>
     <CtkDummyPrefix>/dummy</CtkDummyPrefix>
     <CtkPrefixDefine>CTK_PREFIX=\"$(CtkDummyPrefix)\"</CtkPrefixDefine>
-    <GdkDefines>GDK_COMPILATION;G_LOG_DOMAIN="Gdk"</GdkDefines>
+    <CdkDefines>GDK_COMPILATION;G_LOG_DOMAIN="Cdk"</CdkDefines>
     <CtkIncludedImmodulesDefines>INCLUDE_IM_am_et;INCLUDE_IM_cedilla;INCLUDE_IM_cyrillic_translit;INCLUDE_IM_ime;INCLUDE_IM_inuktitut;INCLUDE_IM_ipa;INCLUDE_IM_multipress;INCLUDE_IM_thai;INCLUDE_IM_ti_er;INCLUDE_IM_ti_et;INCLUDE_IM_viqr</CtkIncludedImmodulesDefines>
     <CtkDefines>CTK_COMPILATION;G_LOG_DOMAIN="Ctk";CTK_HOST="i686-pc-vs$(VSVer)";CTK_PRINT_BACKENDS="file";CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(CtkIncludedImmodulesDefines);CTK_LIBDIR="$(CtkDummyPrefix)/lib";CTK_DATADIR="$(CtkDummyPrefix)/share";CTK_DATA_PREFIX="$(CtkDummyPrefix)";CTK_SYSCONFDIR="$(CtkDummyPrefix)/etc";MULTIPRESS_CONFDIR="$(CtkDummyPrefix)/etc/ctk-$(ApiVersion)";MULTIPRESS_LOCALEDIR="$(CtkDummyPrefix)/share/locale";CTK_VERSION="$(CtkVersion)/etc";CTK_BINARY_VERSION="$(CtkBinaryVersion)/etc";GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED</CtkDefines>
-    <CtkGdkCommonLibs>pangowin32-1.0.lib;fribidi.lib;imm32.lib</CtkGdkCommonLibs>
-    <GdkAdditionalLibs>winmm.lib;dwmapi.lib;setupapi.lib;$(CtkGdkCommonLibs)</GdkAdditionalLibs>
-    <GdkBroadwayAdditionalLibs>ws2_32.lib</GdkBroadwayAdditionalLibs>
-    <CtkAdditionalLibs>atk-1.0.lib;winspool.lib;comctl32.lib;$(CtkGdkCommonLibs)</CtkAdditionalLibs>
+    <CtkCdkCommonLibs>pangowin32-1.0.lib;fribidi.lib;imm32.lib</CtkCdkCommonLibs>
+    <CdkAdditionalLibs>winmm.lib;dwmapi.lib;setupapi.lib;$(CtkCdkCommonLibs)</CdkAdditionalLibs>
+    <CdkBroadwayAdditionalLibs>ws2_32.lib</CdkBroadwayAdditionalLibs>
+    <CtkAdditionalLibs>atk-1.0.lib;winspool.lib;comctl32.lib;$(CtkCdkCommonLibs)</CtkAdditionalLibs>
     <CtkIntrospectNMakeCmd>cd ..
 set VCInstallDir=$(VCInstallDir)
 nmake -f ctk-introspection-msvc.mak CFG=$(Configuration) PREFIX=$(GlibEtcInstallRoot)</CtkIntrospectNMakeCmd>
@@ -52,8 +52,8 @@ nmake -f ctk-introspection-msvc.mak CFG=$(Configuration) PREFIX=$(GlibEtcInstall
     <BuildMacro Include="CtkPrefixDefine">
       <Value>$(CtkPrefixDefine)</Value>
     </BuildMacro>
-    <BuildMacro Include="GdkDefines">
-      <Value>$(GdkDefines)</Value>
+    <BuildMacro Include="CdkDefines">
+      <Value>$(CdkDefines)</Value>
     </BuildMacro>
     <BuildMacro Include="CtkIncludedImmodulesDefines">
       <Value>$(CtkIncludedImmodulesDefines)</Value>
@@ -61,14 +61,14 @@ nmake -f ctk-introspection-msvc.mak CFG=$(Configuration) PREFIX=$(GlibEtcInstall
     <BuildMacro Include="CtkDefines">
       <Value>$(CtkDefines)</Value>
     </BuildMacro>
-    <BuildMacro Include="CtkGdkCommonLibs">
-      <Value>$(CtkGdkCommonLibs)</Value>
+    <BuildMacro Include="CtkCdkCommonLibs">
+      <Value>$(CtkCdkCommonLibs)</Value>
     </BuildMacro>
-    <BuildMacro Include="GdkAdditionalLibs">
-      <Value>$(GdkAdditionalLibs)</Value>
+    <BuildMacro Include="CdkAdditionalLibs">
+      <Value>$(CdkAdditionalLibs)</Value>
     </BuildMacro>
-    <BuildMacro Include="GdkBroadwayAdditionalLibs">
-      <Value>$(GdkBroadwayAdditionalLibs)</Value>
+    <BuildMacro Include="CdkBroadwayAdditionalLibs">
+      <Value>$(CdkBroadwayAdditionalLibs)</Value>
     </BuildMacro>
     <BuildMacro Include="CtkAdditionalLibs">
       <Value>$(CtkAdditionalLibs)</Value>

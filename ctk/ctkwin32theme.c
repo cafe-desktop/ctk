@@ -145,9 +145,9 @@ ctk_win32_theme_equal (CtkWin32Theme *theme1,
 
 #ifdef G_OS_WIN32
 
-static GdkFilterReturn
-invalidate_win32_themes (GdkXEvent *xevent,
-                         GdkEvent  *event,
+static CdkFilterReturn
+invalidate_win32_themes (CdkXEvent *xevent,
+                         CdkEvent  *event,
                          gpointer   unused)
 {
   GHashTableIter iter;
@@ -487,7 +487,7 @@ ctk_win32_theme_get_size (CtkWin32Theme *theme,
 void
 ctk_win32_theme_get_color (CtkWin32Theme *theme,
                            gint           id,
-                           GdkRGBA       *color)
+                           CdkRGBA       *color)
 {
 #ifdef G_OS_WIN32
   HTHEME htheme;

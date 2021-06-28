@@ -22,11 +22,11 @@
 #include "cdkquartz.h"
 #include "cdkinternal-quartz.h"
 
-GdkDisplay *_cdk_display = NULL;
-GdkScreen *_cdk_screen = NULL;
-GdkWindow *_cdk_root = NULL;
+CdkDisplay *_cdk_display = NULL;
+CdkScreen *_cdk_screen = NULL;
+CdkWindow *_cdk_root = NULL;
 
-GdkOSXVersion
+CdkOSXVersion
 cdk_quartz_osx_version (void)
 {
   static gint32 minor = GDK_OSX_UNSUPPORTED;

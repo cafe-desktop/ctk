@@ -133,15 +133,15 @@ static void	ctk_scale_button_get_property	(GObject             *object,
 static void ctk_scale_button_set_orientation_private (CtkScaleButton *button,
                                                       CtkOrientation  orientation);
 static gboolean	ctk_scale_button_scroll		(CtkWidget           *widget,
-						 GdkEventScroll      *event);
+						 CdkEventScroll      *event);
 static void     ctk_scale_button_clicked        (CtkButton           *button);
 static void     ctk_scale_button_popup          (CtkWidget           *widget);
 static void     ctk_scale_button_popdown        (CtkWidget           *widget);
 static gboolean cb_button_press			(CtkWidget           *widget,
-						 GdkEventButton      *event,
+						 CdkEventButton      *event,
 						 gpointer             user_data);
 static gboolean cb_button_release		(CtkWidget           *widget,
-						 GdkEventButton      *event,
+						 CdkEventButton      *event,
 						 gpointer             user_data);
 static void     cb_button_clicked               (CtkWidget           *button,
                                                  gpointer             user_data);
@@ -778,7 +778,7 @@ ctk_scale_button_set_orientation_private (CtkScaleButton *button,
 
 static gboolean
 ctk_scale_button_scroll (CtkWidget      *widget,
-			 GdkEventScroll *event)
+			 CdkEventScroll *event)
 {
   CtkScaleButton *button;
   CtkScaleButtonPrivate *priv;
@@ -924,7 +924,7 @@ cb_button_timeout (gpointer user_data)
 
 static gboolean
 cb_button_press (CtkWidget      *widget,
-		 GdkEventButton *event,
+		 CdkEventButton *event,
 		 gpointer        user_data)
 {
   CtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
@@ -950,7 +950,7 @@ cb_button_press (CtkWidget      *widget,
 
 static gboolean
 cb_button_release (CtkWidget      *widget,
-		   GdkEventButton *event,
+		   CdkEventButton *event,
 		   gpointer        user_data)
 {
   CtkScaleButton *button = CTK_SCALE_BUTTON (user_data);

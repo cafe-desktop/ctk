@@ -71,8 +71,8 @@ msgstr "𐑕𐑒𐑮𐑰𐑯"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:164
-msgid "Gdk debugging flags to set"
-msgstr "Gdk 𐑛𐑰𐑚𐑳𐑜𐑦𐑙 𐑓𐑤𐑨𐑜𐑟 𐑑 𐑕𐑧𐑑"
+msgid "Cdk debugging flags to set"
+msgstr "Cdk 𐑛𐑰𐑚𐑳𐑜𐑦𐑙 𐑓𐑤𐑨𐑜𐑟 𐑑 𐑕𐑧𐑑"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -84,8 +84,8 @@ msgstr "𐑓𐑤𐑨𐑜𐑟"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:167
-msgid "Gdk debugging flags to unset"
-msgstr "Gdk 𐑛𐑰𐑚𐑳𐑜𐑦𐑙 𐑓𐑤𐑨𐑜𐑟 𐑑 𐑩𐑯𐑕𐑧𐑑"
+msgid "Cdk debugging flags to unset"
+msgstr "Cdk 𐑛𐑰𐑚𐑳𐑜𐑦𐑙 𐑓𐑤𐑨𐑜𐑟 𐑑 𐑩𐑯𐑕𐑧𐑑"
 
 #, fuzzy
 #: ../cdk/keyname-table.h:3940
@@ -937,8 +937,8 @@ msgstr "𐑓𐑱𐑤𐑛 𐑑 𐑨𐑤𐑴𐑒𐑱𐑑 QTIF 𐑒𐑪𐑯𐑑𐑧
 
 #, fuzzy
 #: ../cdk-pixbuf/io-qtif.c:317
-msgid "Failed to create GdkPixbufLoader object."
-msgstr "𐑓𐑱𐑤𐑛 𐑑 𐑒𐑮𐑦𐑱𐑑 GdkPixbufLoader 𐑩𐑚𐑡𐑧𐑒𐑑."
+msgid "Failed to create CdkPixbufLoader object."
+msgstr "𐑓𐑱𐑤𐑛 𐑑 𐑒𐑮𐑦𐑱𐑑 CdkPixbufLoader 𐑩𐑚𐑡𐑧𐑒𐑑."
 
 #: ../cdk-pixbuf/io-qtif.c:421
 msgid "Failed to find an image data atom."

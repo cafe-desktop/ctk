@@ -20,46 +20,46 @@
 
 /**
  * SECTION:cdkglcontext
- * @Title: GdkGLContext
+ * @Title: CdkGLContext
  * @Short_description: OpenGL context
  *
- * #GdkGLContext is an object representing the platform-specific
+ * #CdkGLContext is an object representing the platform-specific
  * OpenGL drawing context.
  *
- * #GdkGLContexts are created for a #GdkWindow using
+ * #CdkGLContexts are created for a #CdkWindow using
  * cdk_window_create_gl_context(), and the context will match
- * the #GdkVisual of the window.
+ * the #CdkVisual of the window.
  *
- * A #GdkGLContext is not tied to any particular normal framebuffer.
- * For instance, it cannot draw to the #GdkWindow back buffer. The GDK
+ * A #CdkGLContext is not tied to any particular normal framebuffer.
+ * For instance, it cannot draw to the #CdkWindow back buffer. The GDK
  * repaint system is in full control of the painting to that. Instead,
  * you can create render buffers or textures and use cdk_cairo_draw_from_gl()
  * in the draw function of your widget to draw them. Then GDK will handle
  * the integration of your rendering with that of other widgets.
  *
- * Support for #GdkGLContext is platform-specific, context creation
+ * Support for #CdkGLContext is platform-specific, context creation
  * can fail, returning %NULL context.
  *
- * A #GdkGLContext has to be made "current" in order to start using
+ * A #CdkGLContext has to be made "current" in order to start using
  * it, otherwise any OpenGL call will be ignored.
  *
  * ## Creating a new OpenGL context ##
  *
- * In order to create a new #GdkGLContext instance you need a
- * #GdkWindow, which you typically get during the realize call
+ * In order to create a new #CdkGLContext instance you need a
+ * #CdkWindow, which you typically get during the realize call
  * of a widget.
  *
- * A #GdkGLContext is not realized until either cdk_gl_context_make_current(),
+ * A #CdkGLContext is not realized until either cdk_gl_context_make_current(),
  * or until it is realized using cdk_gl_context_realize(). It is possible to
  * specify details of the GL context like the OpenGL version to be used, or
  * whether the GL context should have extra state validation enabled after
  * calling cdk_window_create_gl_context() by calling cdk_gl_context_realize().
  * If the realization fails you have the option to change the settings of the
- * #GdkGLContext and try again.
+ * #CdkGLContext and try again.
  *
- * ## Using a GdkGLContext ##
+ * ## Using a CdkGLContext ##
  *
- * You will need to make the #GdkGLContext the current context
+ * You will need to make the #CdkGLContext the current context
  * before issuing OpenGL calls; the system sends OpenGL commands to
  * whichever context is current. It is possible to have multiple
  * contexts, so you always need to ensure that the one which you
@@ -71,8 +71,8 @@
  *
  * You can now perform your drawing using OpenGL commands.
  *
- * You can check which #GdkGLContext is the current one by using
- * cdk_gl_context_get_current(); you can also unset any #GdkGLContext
+ * You can check which #CdkGLContext is the current one by using
+ * cdk_gl_context_get_current(); you can also unset any #CdkGLContext
  * that is currently set by calling cdk_gl_context_clear_current().
  */
 
@@ -88,9 +88,9 @@
 #include <epoxy/gl.h>
 
 typedef struct {
-  GdkDisplay *display;
-  GdkWindow *window;
-  GdkGLContext *shared_context;
+  CdkDisplay *display;
+  CdkWindow *window;
+  CdkGLContext *shared_context;
 
   int major;
   int minor;
@@ -108,8 +108,8 @@ typedef struct {
 
   int use_es;
 
-  GdkGLContextPaintData *paint_data;
-} GdkGLContextPrivate;
+  CdkGLContextPaintData *paint_data;
+} CdkGLContextPrivate;
 
 enum {
   PROP_0,
@@ -125,16 +125,16 @@ static GParamSpec *obj_pspecs[LAST_PROP] = { NULL, };
 
 G_DEFINE_QUARK (cdk-gl-error-quark, cdk_gl_error)
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GdkGLContext, cdk_gl_context, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (CdkGLContext, cdk_gl_context, G_TYPE_OBJECT)
 
 static GPrivate thread_current_context = G_PRIVATE_INIT (g_object_unref);
 
 static void
 cdk_gl_context_dispose (GObject *gobject)
 {
-  GdkGLContext *context = GDK_GL_CONTEXT (gobject);
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
-  GdkGLContext *current;
+  CdkGLContext *context = GDK_GL_CONTEXT (gobject);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContext *current;
 
   current = g_private_get (&thread_current_context);
   if (current == context)
@@ -150,8 +150,8 @@ cdk_gl_context_dispose (GObject *gobject)
 static void
 cdk_gl_context_finalize (GObject *gobject)
 {
-  GdkGLContext *context = GDK_GL_CONTEXT (gobject);
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContext *context = GDK_GL_CONTEXT (gobject);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_clear_pointer (&priv->paint_data, g_free);
   G_OBJECT_CLASS (cdk_gl_context_parent_class)->finalize (gobject);
@@ -163,13 +163,13 @@ cdk_gl_context_set_property (GObject      *gobject,
                              const GValue *value,
                              GParamSpec   *pspec)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private ((GdkGLContext *) gobject);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private ((CdkGLContext *) gobject);
 
   switch (prop_id)
     {
     case PROP_DISPLAY:
       {
-        GdkDisplay *display = g_value_get_object (value);
+        CdkDisplay *display = g_value_get_object (value);
 
         if (display)
           g_object_ref (display);
@@ -183,7 +183,7 @@ cdk_gl_context_set_property (GObject      *gobject,
 
     case PROP_WINDOW:
       {
-        GdkWindow *window = g_value_get_object (value);
+        CdkWindow *window = g_value_get_object (value);
 
         if (window)
           g_object_ref (window);
@@ -197,7 +197,7 @@ cdk_gl_context_set_property (GObject      *gobject,
 
     case PROP_SHARED_CONTEXT:
       {
-        GdkGLContext *context = g_value_get_object (value);
+        CdkGLContext *context = g_value_get_object (value);
 
         if (context != NULL)
           priv->shared_context = g_object_ref (context);
@@ -215,7 +215,7 @@ cdk_gl_context_get_property (GObject    *gobject,
                              GValue     *value,
                              GParamSpec *pspec)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private ((GdkGLContext *) gobject);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private ((CdkGLContext *) gobject);
 
   switch (prop_id)
     {
@@ -237,13 +237,13 @@ cdk_gl_context_get_property (GObject    *gobject,
 }
 
 void
-cdk_gl_context_upload_texture (GdkGLContext    *context,
+cdk_gl_context_upload_texture (CdkGLContext    *context,
                                cairo_surface_t *image_surface,
                                int              width,
                                int              height,
                                guint            texture_target)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_if_fail (GDK_IS_GL_CONTEXT (context));
 
@@ -289,7 +289,7 @@ cdk_gl_context_upload_texture (GdkGLContext    *context,
 }
 
 static gboolean
-cdk_gl_context_real_realize (GdkGLContext  *self,
+cdk_gl_context_real_realize (CdkGLContext  *self,
                              GError       **error)
 {
   g_set_error_literal (error, GDK_GL_ERROR, GDK_GL_ERROR_NOT_AVAILABLE,
@@ -299,16 +299,16 @@ cdk_gl_context_real_realize (GdkGLContext  *self,
 }
 
 static void
-cdk_gl_context_class_init (GdkGLContextClass *klass)
+cdk_gl_context_class_init (CdkGLContextClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
   klass->realize = cdk_gl_context_real_realize;
 
   /**
-   * GdkGLContext:display:
+   * CdkGLContext:display:
    *
-   * The #GdkDisplay used to create the #GdkGLContext.
+   * The #CdkDisplay used to create the #CdkGLContext.
    *
    * Since: 3.16
    */
@@ -322,9 +322,9 @@ cdk_gl_context_class_init (GdkGLContextClass *klass)
                          G_PARAM_STATIC_STRINGS);
 
   /**
-   * GdkGLContext:window:
+   * CdkGLContext:window:
    *
-   * The #GdkWindow the gl context is bound to.
+   * The #CdkWindow the gl context is bound to.
    *
    * Since: 3.16
    */
@@ -338,9 +338,9 @@ cdk_gl_context_class_init (GdkGLContextClass *klass)
                          G_PARAM_STATIC_STRINGS);
 
   /**
-   * GdkGLContext:shared-context:
+   * CdkGLContext:shared-context:
    *
-   * The #GdkGLContext that this context is sharing data with, or %NULL
+   * The #CdkGLContext that this context is sharing data with, or %NULL
    *
    * Since: 3.16
    */
@@ -362,16 +362,16 @@ cdk_gl_context_class_init (GdkGLContextClass *klass)
 }
 
 static void
-cdk_gl_context_init (GdkGLContext *self)
+cdk_gl_context_init (CdkGLContext *self)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (self);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (self);
 
   priv->use_es = -1;
 }
 
 /*< private >
  * cdk_gl_context_end_frame:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  * @painted: The area that has been redrawn this frame
  * @damage: The area that we know is actually different from the last frame
  *
@@ -384,7 +384,7 @@ cdk_gl_context_init (GdkGLContext *self)
  * Since: 3.16
  */
 void
-cdk_gl_context_end_frame (GdkGLContext   *context,
+cdk_gl_context_end_frame (CdkGLContext   *context,
                           cairo_region_t *painted,
                           cairo_region_t *damage)
 {
@@ -393,15 +393,15 @@ cdk_gl_context_end_frame (GdkGLContext   *context,
   GDK_GL_CONTEXT_GET_CLASS (context)->end_frame (context, painted, damage);
 }
 
-GdkGLContextPaintData *
-cdk_gl_context_get_paint_data (GdkGLContext *context)
+CdkGLContextPaintData *
+cdk_gl_context_get_paint_data (CdkGLContext *context)
 {
 
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   if (priv->paint_data == NULL)
     {
-      priv->paint_data = g_new0 (GdkGLContextPaintData, 1);
+      priv->paint_data = g_new0 (CdkGLContextPaintData, 1);
       priv->paint_data->is_legacy = priv->is_legacy;
       priv->paint_data->use_es = priv->use_es;
     }
@@ -410,56 +410,56 @@ cdk_gl_context_get_paint_data (GdkGLContext *context)
 }
 
 gboolean
-cdk_gl_context_use_texture_rectangle (GdkGLContext *context)
+cdk_gl_context_use_texture_rectangle (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   return priv->use_texture_rectangle;
 }
 
 gboolean
-cdk_gl_context_has_framebuffer_blit (GdkGLContext *context)
+cdk_gl_context_has_framebuffer_blit (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   return priv->has_gl_framebuffer_blit;
 }
 
 gboolean
-cdk_gl_context_has_frame_terminator (GdkGLContext *context)
+cdk_gl_context_has_frame_terminator (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   return priv->has_frame_terminator;
 }
 
 gboolean
-cdk_gl_context_has_unpack_subimage (GdkGLContext *context)
+cdk_gl_context_has_unpack_subimage (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   return priv->has_unpack_subimage;
 }
 
 /**
  * cdk_gl_context_set_debug_enabled:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  * @enabled: whether to enable debugging in the context
  *
- * Sets whether the #GdkGLContext should perform extra validations and
+ * Sets whether the #CdkGLContext should perform extra validations and
  * run time checking. This is useful during development, but has
  * additional overhead.
  *
- * The #GdkGLContext must not be realized or made current prior to
+ * The #CdkGLContext must not be realized or made current prior to
  * calling this function.
  *
  * Since: 3.16
  */
 void
-cdk_gl_context_set_debug_enabled (GdkGLContext *context,
+cdk_gl_context_set_debug_enabled (CdkGLContext *context,
                                   gboolean      enabled)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_if_fail (GDK_IS_GL_CONTEXT (context));
   g_return_if_fail (!priv->realized);
@@ -471,7 +471,7 @@ cdk_gl_context_set_debug_enabled (GdkGLContext *context,
 
 /**
  * cdk_gl_context_get_debug_enabled:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  *
  * Retrieves the value set using cdk_gl_context_set_debug_enabled().
  *
@@ -480,9 +480,9 @@ cdk_gl_context_set_debug_enabled (GdkGLContext *context,
  * Since: 3.16
  */
 gboolean
-cdk_gl_context_get_debug_enabled (GdkGLContext *context)
+cdk_gl_context_get_debug_enabled (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), FALSE);
 
@@ -491,26 +491,26 @@ cdk_gl_context_get_debug_enabled (GdkGLContext *context)
 
 /**
  * cdk_gl_context_set_forward_compatible:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  * @compatible: whether the context should be forward compatible
  *
- * Sets whether the #GdkGLContext should be forward compatible.
+ * Sets whether the #CdkGLContext should be forward compatible.
  *
  * Forward compatibile contexts must not support OpenGL functionality that
  * has been marked as deprecated in the requested version; non-forward
  * compatible contexts, on the other hand, must support both deprecated and
  * non deprecated functionality.
  *
- * The #GdkGLContext must not be realized or made current prior to calling
+ * The #CdkGLContext must not be realized or made current prior to calling
  * this function.
  *
  * Since: 3.16
  */
 void
-cdk_gl_context_set_forward_compatible (GdkGLContext *context,
+cdk_gl_context_set_forward_compatible (CdkGLContext *context,
                                        gboolean      compatible)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_if_fail (GDK_IS_GL_CONTEXT (context));
   g_return_if_fail (!priv->realized);
@@ -522,7 +522,7 @@ cdk_gl_context_set_forward_compatible (GdkGLContext *context,
 
 /**
  * cdk_gl_context_get_forward_compatible:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  *
  * Retrieves the value set using cdk_gl_context_set_forward_compatible().
  *
@@ -531,9 +531,9 @@ cdk_gl_context_set_forward_compatible (GdkGLContext *context,
  * Since: 3.16
  */
 gboolean
-cdk_gl_context_get_forward_compatible (GdkGLContext *context)
+cdk_gl_context_get_forward_compatible (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), FALSE);
 
@@ -542,7 +542,7 @@ cdk_gl_context_get_forward_compatible (GdkGLContext *context)
 
 /**
  * cdk_gl_context_set_required_version:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  * @major: the major version to request
  * @minor: the minor version to request
  *
@@ -550,17 +550,17 @@ cdk_gl_context_get_forward_compatible (GdkGLContext *context)
  *
  * Setting @major and @minor to zero will use the default values.
  *
- * The #GdkGLContext must not be realized or made current prior to calling
+ * The #CdkGLContext must not be realized or made current prior to calling
  * this function.
  *
  * Since: 3.16
  */
 void
-cdk_gl_context_set_required_version (GdkGLContext *context,
+cdk_gl_context_set_required_version (CdkGLContext *context,
                                      int           major,
                                      int           minor)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
   int version, min_ver;
 
   g_return_if_fail (GDK_IS_GL_CONTEXT (context));
@@ -593,7 +593,7 @@ cdk_gl_context_set_required_version (GdkGLContext *context,
 
 /**
  * cdk_gl_context_get_required_version:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  * @major: (out) (nullable): return location for the major version to request
  * @minor: (out) (nullable): return location for the minor version to request
  *
@@ -603,11 +603,11 @@ cdk_gl_context_set_required_version (GdkGLContext *context,
  * Since: 3.16
  */
 void
-cdk_gl_context_get_required_version (GdkGLContext *context,
+cdk_gl_context_get_required_version (CdkGLContext *context,
                                      int          *major,
                                      int          *minor)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
   int default_major, default_minor;
   int maj, min;
 
@@ -642,11 +642,11 @@ cdk_gl_context_get_required_version (GdkGLContext *context,
 
 /**
  * cdk_gl_context_is_legacy:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  *
- * Whether the #GdkGLContext is in legacy mode or not.
+ * Whether the #CdkGLContext is in legacy mode or not.
  *
- * The #GdkGLContext must be realized before calling this function.
+ * The #CdkGLContext must be realized before calling this function.
  *
  * When realizing a GL context, GDK will try to use the OpenGL 3.2 core
  * profile; this profile removes all the OpenGL API that was deprecated
@@ -666,9 +666,9 @@ cdk_gl_context_get_required_version (GdkGLContext *context,
  * Since: 3.20
  */
 gboolean
-cdk_gl_context_is_legacy (GdkGLContext *context)
+cdk_gl_context_is_legacy (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), FALSE);
   g_return_val_if_fail (priv->realized, FALSE);
@@ -677,17 +677,17 @@ cdk_gl_context_is_legacy (GdkGLContext *context)
 }
 
 void
-cdk_gl_context_set_is_legacy (GdkGLContext *context,
+cdk_gl_context_set_is_legacy (CdkGLContext *context,
                               gboolean      is_legacy)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   priv->is_legacy = !!is_legacy;
 }
 
 /**
  * cdk_gl_context_set_use_es:
- * @context: a #GdkGLContext:
+ * @context: a #CdkGLContext:
  * @use_es: whether the context should use OpenGL ES instead of OpenGL,
  *   or -1 to allow auto-detection
  *
@@ -707,10 +707,10 @@ cdk_gl_context_set_is_legacy (GdkGLContext *context,
  * Since: 3.22
  */
 void
-cdk_gl_context_set_use_es (GdkGLContext *context,
+cdk_gl_context_set_use_es (CdkGLContext *context,
                            int           use_es)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_if_fail (GDK_IS_GL_CONTEXT (context));
   g_return_if_fail (!priv->realized);
@@ -721,18 +721,18 @@ cdk_gl_context_set_use_es (GdkGLContext *context,
 
 /**
  * cdk_gl_context_get_use_es:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  *
  * Checks whether the @context is using an OpenGL or OpenGL ES profile.
  *
- * Returns: %TRUE if the #GdkGLContext is using an OpenGL ES profile
+ * Returns: %TRUE if the #CdkGLContext is using an OpenGL ES profile
  *
  * Since: 3.22
  */
 gboolean
-cdk_gl_context_get_use_es (GdkGLContext *context)
+cdk_gl_context_get_use_es (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), FALSE);
 
@@ -744,22 +744,22 @@ cdk_gl_context_get_use_es (GdkGLContext *context)
 
 /**
  * cdk_gl_context_realize:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  * @error: return location for a #GError
  *
- * Realizes the given #GdkGLContext.
+ * Realizes the given #CdkGLContext.
  *
- * It is safe to call this function on a realized #GdkGLContext.
+ * It is safe to call this function on a realized #CdkGLContext.
  *
  * Returns: %TRUE if the context is realized
  *
  * Since: 3.16
  */
 gboolean
-cdk_gl_context_realize (GdkGLContext  *context,
+cdk_gl_context_realize (CdkGLContext  *context,
                         GError       **error)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), FALSE);
 
@@ -772,9 +772,9 @@ cdk_gl_context_realize (GdkGLContext  *context,
 }
 
 static void
-cdk_gl_context_check_extensions (GdkGLContext *context)
+cdk_gl_context_check_extensions (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
   gboolean has_npot, has_texture_rectangle;
 
   if (!priv->realized)
@@ -857,17 +857,17 @@ cdk_gl_context_check_extensions (GdkGLContext *context)
 
 /**
  * cdk_gl_context_make_current:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  *
  * Makes the @context the current one.
  *
  * Since: 3.16
  */
 void
-cdk_gl_context_make_current (GdkGLContext *context)
+cdk_gl_context_make_current (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
-  GdkGLContext *current;
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContext *current;
 
   g_return_if_fail (GDK_IS_GL_CONTEXT (context));
 
@@ -875,7 +875,7 @@ cdk_gl_context_make_current (GdkGLContext *context)
   if (current == context)
     return;
 
-  /* we need to realize the GdkGLContext if it wasn't explicitly realized */
+  /* we need to realize the CdkGLContext if it wasn't explicitly realized */
   if (!priv->realized)
     {
       GError *error = NULL;
@@ -898,18 +898,18 @@ cdk_gl_context_make_current (GdkGLContext *context)
 
 /**
  * cdk_gl_context_get_display:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  *
- * Retrieves the #GdkDisplay the @context is created for
+ * Retrieves the #CdkDisplay the @context is created for
  *
- * Returns: (nullable) (transfer none): a #GdkDisplay or %NULL
+ * Returns: (nullable) (transfer none): a #CdkDisplay or %NULL
  *
  * Since: 3.16
  */
-GdkDisplay *
-cdk_gl_context_get_display (GdkGLContext *context)
+CdkDisplay *
+cdk_gl_context_get_display (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), NULL);
 
@@ -918,18 +918,18 @@ cdk_gl_context_get_display (GdkGLContext *context)
 
 /**
  * cdk_gl_context_get_window:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  *
- * Retrieves the #GdkWindow used by the @context.
+ * Retrieves the #CdkWindow used by the @context.
  *
- * Returns: (nullable) (transfer none): a #GdkWindow or %NULL
+ * Returns: (nullable) (transfer none): a #CdkWindow or %NULL
  *
  * Since: 3.16
  */
-GdkWindow *
-cdk_gl_context_get_window (GdkGLContext *context)
+CdkWindow *
+cdk_gl_context_get_window (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), NULL);
 
@@ -938,18 +938,18 @@ cdk_gl_context_get_window (GdkGLContext *context)
 
 /**
  * cdk_gl_context_get_shared_context:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  *
- * Retrieves the #GdkGLContext that this @context share data with.
+ * Retrieves the #CdkGLContext that this @context share data with.
  *
- * Returns: (nullable) (transfer none): a #GdkGLContext or %NULL
+ * Returns: (nullable) (transfer none): a #CdkGLContext or %NULL
  *
  * Since: 3.16
  */
-GdkGLContext *
-cdk_gl_context_get_shared_context (GdkGLContext *context)
+CdkGLContext *
+cdk_gl_context_get_shared_context (CdkGLContext *context)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), NULL);
 
@@ -958,7 +958,7 @@ cdk_gl_context_get_shared_context (GdkGLContext *context)
 
 /**
  * cdk_gl_context_get_version:
- * @context: a #GdkGLContext
+ * @context: a #CdkGLContext
  * @major: (out): return location for the major version
  * @minor: (out): return location for the minor version
  *
@@ -969,11 +969,11 @@ cdk_gl_context_get_shared_context (GdkGLContext *context)
  * Since: 3.16
  */
 void
-cdk_gl_context_get_version (GdkGLContext *context,
+cdk_gl_context_get_version (CdkGLContext *context,
                             int          *major,
                             int          *minor)
 {
-  GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
+  CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_return_if_fail (GDK_IS_GL_CONTEXT (context));
   g_return_if_fail (priv->realized);
@@ -987,7 +987,7 @@ cdk_gl_context_get_version (GdkGLContext *context,
 /**
  * cdk_gl_context_clear_current:
  *
- * Clears the current #GdkGLContext.
+ * Clears the current #CdkGLContext.
  *
  * Any OpenGL call after this function returns will be ignored
  * until cdk_gl_context_make_current() is called.
@@ -997,12 +997,12 @@ cdk_gl_context_get_version (GdkGLContext *context,
 void
 cdk_gl_context_clear_current (void)
 {
-  GdkGLContext *current;
+  CdkGLContext *current;
 
   current = g_private_get (&thread_current_context);
   if (current != NULL)
     {
-      GdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (current);
+      CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (current);
 
       if (cdk_display_make_gl_context_current (priv->display, NULL))
         g_private_replace (&thread_current_context, NULL);
@@ -1012,16 +1012,16 @@ cdk_gl_context_clear_current (void)
 /**
  * cdk_gl_context_get_current:
  *
- * Retrieves the current #GdkGLContext.
+ * Retrieves the current #CdkGLContext.
  *
- * Returns: (nullable) (transfer none): the current #GdkGLContext, or %NULL
+ * Returns: (nullable) (transfer none): the current #CdkGLContext, or %NULL
  *
  * Since: 3.16
  */
-GdkGLContext *
+CdkGLContext *
 cdk_gl_context_get_current (void)
 {
-  GdkGLContext *current;
+  CdkGLContext *current;
 
   current = g_private_get (&thread_current_context);
 
@@ -1037,7 +1037,7 @@ cdk_gl_context_get_current (void)
  *
  * Since: 3.16
  */
-GdkGLFlags
+CdkGLFlags
 cdk_gl_get_flags (void)
 {
   return _cdk_gl_flags;
@@ -1045,14 +1045,14 @@ cdk_gl_get_flags (void)
 
 /**
  * cdk_gl_set_flags:
- * @flags: #GdkGLFlags to set
+ * @flags: #CdkGLFlags to set
  *
  * Sets GL flags.
  *
  * Since: 3.16
  */
 void
-cdk_gl_set_flags (GdkGLFlags flags)
+cdk_gl_set_flags (CdkGLFlags flags)
 {
   _cdk_gl_flags = flags;
 }

@@ -897,7 +897,7 @@ ctk_css_gadget_draw (CtkCssGadget *gadget,
 
 #ifdef G_ENABLE_DEBUG
   {
-    GdkDisplay *display = ctk_widget_get_display (ctk_css_gadget_get_owner (gadget));
+    CdkDisplay *display = ctk_widget_get_display (ctk_css_gadget_get_owner (gadget));
     CtkDebugFlag flags = ctk_get_display_debug_flags (display);
     if G_UNLIKELY (flags & CTK_DEBUG_LAYOUT)
       {

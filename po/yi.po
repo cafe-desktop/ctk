@@ -4895,7 +4895,7 @@ msgstr ""
 #~ msgstr "ניט גענוג זכּרון פֿאַר TGA קאָנטעקסט־סטרוקטור"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "דורכפֿאַל אין שרײַבן צײַטװײַליקע טעקע בשעת אַרײַנשטעלן XBM בילד"
 
 #, fuzzy

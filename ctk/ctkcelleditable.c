@@ -106,7 +106,7 @@ ctk_cell_editable_default_init (CtkCellEditableInterface *iface)
 /**
  * ctk_cell_editable_start_editing:
  * @cell_editable: A #CtkCellEditable
- * @event: (nullable): The #GdkEvent that began the editing process, or
+ * @event: (nullable): The #CdkEvent that began the editing process, or
  *   %NULL if editing was initiated programmatically
  * 
  * Begins editing on a @cell_editable.
@@ -122,7 +122,7 @@ ctk_cell_editable_default_init (CtkCellEditableInterface *iface)
  **/
 void
 ctk_cell_editable_start_editing (CtkCellEditable *cell_editable,
-				 GdkEvent        *event)
+				 CdkEvent        *event)
 {
   g_return_if_fail (CTK_IS_CELL_EDITABLE (cell_editable));
 

@@ -1,6 +1,6 @@
 #include <ctk/ctk.h>
 
-static GdkPixbuf *
+static CdkPixbuf *
 get_image_pixbuf (CtkImage *image)
 {
   const gchar *icon_name;
@@ -41,10 +41,10 @@ enum {
 
 static void
 image_drag_begin (CtkWidget      *widget,
-                  GdkDragContext *context,
+                  CdkDragContext *context,
                   gpointer        data)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gint hotspot;
   gint hot_x, hot_y;
 
@@ -81,7 +81,7 @@ window_destroyed (CtkWidget *window, gpointer data)
 }
 
 static void
-window_drag_end (CtkWidget *ebox, GdkDragContext *context, gpointer data)
+window_drag_end (CtkWidget *ebox, CdkDragContext *context, gpointer data)
 {
   CtkWidget *window = data;
 
@@ -91,10 +91,10 @@ window_drag_end (CtkWidget *ebox, GdkDragContext *context, gpointer data)
 
 static void
 window_drag_begin (CtkWidget      *widget,
-                   GdkDragContext *context,
+                   CdkDragContext *context,
                    gpointer        data)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   CtkWidget *window;
   CtkWidget *image;
   int hotspot;
@@ -157,13 +157,13 @@ update_dest_target_list (CtkWidget *ebox)
 
 void
 image_drag_data_get (CtkWidget        *widget,
-                     GdkDragContext   *context,
+                     CdkDragContext   *context,
                      CtkSelectionData *selection_data,
                      guint             info,
                      guint             time,
                      gpointer          data)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   const gchar *name;
 
   switch (info)
@@ -187,7 +187,7 @@ image_drag_data_get (CtkWidget        *widget,
 
 static void
 image_drag_data_received (CtkWidget        *widget,
-                          GdkDragContext   *context,
+                          CdkDragContext   *context,
                           gint              x,
                           gint              y,
                           CtkSelectionData *selection_data,
@@ -195,7 +195,7 @@ image_drag_data_received (CtkWidget        *widget,
                           guint32           time,
                           gpointer          data)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gchar *text;
 
   if (ctk_selection_data_get_length (selection_data) == 0)
@@ -271,7 +271,7 @@ make_image2 (const gchar *icon_name, int hotspot)
 
 static void
 spinner_drag_begin (CtkWidget      *widget,
-                    GdkDragContext *context,
+                    CdkDragContext *context,
                     gpointer        data)
 {
   CtkWidget *spinner;
@@ -287,7 +287,7 @@ spinner_drag_begin (CtkWidget      *widget,
 
 static void
 spinner_drag_end (CtkWidget      *widget,
-                  GdkDragContext *context,
+                  CdkDragContext *context,
                   gpointer        data)
 {
   CtkWidget *spinner;
@@ -299,7 +299,7 @@ spinner_drag_end (CtkWidget      *widget,
 
 static gboolean
 spinner_drag_failed (CtkWidget      *widget,
-                     GdkDragContext *context,
+                     CdkDragContext *context,
                      CtkDragResult   result,
                      gpointer        data)
 {
@@ -316,7 +316,7 @@ spinner_drag_failed (CtkWidget      *widget,
 
 void
 spinner_drag_data_get (CtkWidget        *widget,
-                       GdkDragContext   *context,
+                       CdkDragContext   *context,
                        CtkSelectionData *selection_data,
                        guint             info,
                        guint             time,

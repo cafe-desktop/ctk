@@ -27,28 +27,28 @@
 G_BEGIN_DECLS
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkX11Keymap GdkX11Keymap;
+typedef struct _CdkX11Keymap CdkX11Keymap;
 #else
-typedef GdkKeymap GdkX11Keymap;
+typedef CdkKeymap CdkX11Keymap;
 #endif
-typedef struct _GdkX11KeymapClass GdkX11KeymapClass;
+typedef struct _CdkX11KeymapClass CdkX11KeymapClass;
 
 #define GDK_TYPE_X11_KEYMAP              (cdk_x11_keymap_get_type())
-#define GDK_X11_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_KEYMAP, GdkX11Keymap))
-#define GDK_X11_KEYMAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_KEYMAP, GdkX11KeymapClass))
+#define GDK_X11_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_KEYMAP, CdkX11Keymap))
+#define GDK_X11_KEYMAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_KEYMAP, CdkX11KeymapClass))
 #define GDK_IS_X11_KEYMAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_KEYMAP))
 #define GDK_IS_X11_KEYMAP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_KEYMAP))
-#define GDK_X11_KEYMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_KEYMAP, GdkX11KeymapClass))
+#define GDK_X11_KEYMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_KEYMAP, CdkX11KeymapClass))
 
 GDK_AVAILABLE_IN_ALL
 GType cdk_x11_keymap_get_type (void);
 
 GDK_AVAILABLE_IN_3_6
-gint cdk_x11_keymap_get_group_for_state (GdkKeymap *keymap,
+gint cdk_x11_keymap_get_group_for_state (CdkKeymap *keymap,
                                          guint      state);
 
 GDK_AVAILABLE_IN_3_6
-gboolean cdk_x11_keymap_key_is_modifier (GdkKeymap *keymap,
+gboolean cdk_x11_keymap_key_is_modifier (CdkKeymap *keymap,
                                          guint      keycode);
 G_END_DECLS
 

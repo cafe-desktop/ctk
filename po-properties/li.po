@@ -1314,8 +1314,8 @@ msgid "Cell background color"
 msgstr "Sel-achtergróndjkleur"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Sel-achtergróndjkleur es ein GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Sel-achtergróndjkleur es ein CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1572,8 +1572,8 @@ msgid "Background color"
 msgstr "Achtergróndjkleur"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Achtergróndjkleur es ein GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Achtergróndjkleur es ein CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1589,8 +1589,8 @@ msgid "Foreground color"
 msgstr "Veurgróndjkleur"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Veurgróndjkleur es ein GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Veurgróndjkleur es ein CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -2135,7 +2135,7 @@ msgstr "Aktief"
 #: ctk/ctkcombobox.c:768
 #, fuzzy
 msgid "The item which is currently active"
-msgstr "'t GdkFont det noe is geselekteerd."
+msgstr "'t CdkFont det noe is geselekteerd."
 
 #: ctk/ctkcombobox.c:787 ctk/ctkuimanager.c:224
 msgid "Add tearoffs to menus"
@@ -3284,8 +3284,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "Ein te tuine GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "Ein te tuine CdkPixbuf"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3334,8 +3334,8 @@ msgid "Animation"
 msgstr "Animasie"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation veur te tuine"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation veur te tuine"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -4583,7 +4583,7 @@ msgstr "De noe geselekteerde besjtandjsnaam"
 #: ctk/ctkprintunixdialog.c:325
 #, fuzzy
 msgid "The CtkPrinter which is selected"
-msgstr "'t GdkFont det noe is geselekteerd."
+msgstr "'t CdkFont det noe is geselekteerd."
 
 #: ctk/ctkprintunixdialog.c:332
 msgid "Manual Capabilities"
@@ -6023,7 +6023,7 @@ msgstr "De noe geselekteerde besjtandjsnaam"
 #: ctk/ctktextbuffer.c:226
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "'t GdkFont det noe is geselekteerd."
+msgstr "'t CdkFont det noe is geselekteerd."
 
 #: ctk/ctktextbuffer.c:242
 #, fuzzy
@@ -6080,8 +6080,8 @@ msgstr ""
 "ittekètte."
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Achtergróndjkleur es ein (mäögelik neet geallokeerde) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Achtergróndjkleur es ein (mäögelik neet geallokeerde) CdkColor"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -6096,8 +6096,8 @@ msgstr ""
 "gemarkeerde teikes"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Veurgróndjkleur es ein (mäögelik neet geallokeerde) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Veurgróndjkleur es ein (mäögelik neet geallokeerde) CdkColor"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6253,8 +6253,8 @@ msgstr "Sel-achtergróndjkleur"
 
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Achtergróndjkleur es ein (mäögelik neet geallokeerde) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Achtergróndjkleur es ein (mäögelik neet geallokeerde) CdkColor"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7249,8 +7249,8 @@ msgid "Events"
 msgstr "Gebäörtenisse"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "'t gebäörtenismasker det bepaalt welke GdkEvents dit widget óntvink"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "'t gebäörtenismasker det bepaalt welke CdkEvents dit widget óntvink"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7761,7 +7761,7 @@ msgstr "Wie de sjtatusbalk veur inveurmetood moot waere geteikend"
 #~ msgstr "'t deil pixels tösje de sjuufbalk en 't kórrespóngderende vinster"
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "'t model van de TreeView"
 
 #, fuzzy
@@ -7787,8 +7787,8 @@ msgstr "Wie de sjtatusbalk veur inveurmetood moot waere geteikend"
 #~ msgstr ""
 #~ "Bitmap die gebroek weurt es masker bie 't teikene van de teksachtergróndj"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "'t GdkFont det noe is geselekteerd."
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "'t CdkFont det noe is geselekteerd."
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr ""
@@ -7797,17 +7797,17 @@ msgstr "Wie de sjtatusbalk veur inveurmetood moot waere geteikend"
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "Ein te tuine GdkPixmap"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "Ein te tuine CdkPixmap"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "Ein te tuine GdkImage"
+#~ msgid "A CdkImage to display"
+#~ msgstr "Ein te tuine CdkImage"
 
 #~ msgid "Mask"
 #~ msgstr "Masker"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Te gebroeke bitmapmasker veur GdkImage of GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Te gebroeke bitmapmasker veur CdkImage of CdkPixmap"
 
 #, fuzzy
 #~ msgid "Use separator"

@@ -79,8 +79,8 @@ typedef struct {
   CtkRevealerTransitionType transition_type;
   guint transition_duration;
 
-  GdkWindow* bin_window;
-  GdkWindow* view_window;
+  CdkWindow* bin_window;
+  CdkWindow* view_window;
 
   gdouble current_pos;
   gdouble source_pos;
@@ -347,8 +347,8 @@ ctk_revealer_real_realize (CtkWidget *widget)
   CtkRevealer *revealer = CTK_REVEALER (widget);
   CtkRevealerPrivate *priv = ctk_revealer_get_instance_private (revealer);
   CtkAllocation allocation;
-  GdkWindowAttr attributes = { 0 };
-  GdkWindowAttributesType attributes_mask;
+  CdkWindowAttr attributes = { 0 };
+  CdkWindowAttributesType attributes_mask;
   CtkAllocation child_allocation;
   CtkWidget *child;
   CtkRevealerTransitionType transition;
@@ -570,7 +570,7 @@ ctk_revealer_set_position (CtkRevealer *revealer,
 
 static gboolean
 ctk_revealer_animate_cb (CtkWidget     *widget,
-                         GdkFrameClock *frame_clock,
+                         CdkFrameClock *frame_clock,
                          gpointer       user_data)
 {
   CtkRevealer *revealer = CTK_REVEALER (widget);

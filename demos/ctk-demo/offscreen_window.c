@@ -21,7 +21,7 @@ struct _CtkRotatedBin
   CtkContainer container;
 
   CtkWidget *child;
-  GdkWindow *offscreen_window;
+  CdkWindow *offscreen_window;
   gdouble angle;
 };
 
@@ -48,7 +48,7 @@ static void     ctk_rotated_bin_get_preferred_height (CtkWidget *widget,
 static void     ctk_rotated_bin_size_allocate (CtkWidget       *widget,
                                                CtkAllocation   *allocation);
 static gboolean ctk_rotated_bin_damage        (CtkWidget       *widget,
-                                               GdkEventExpose  *event);
+                                               CdkEventExpose  *event);
 static gboolean ctk_rotated_bin_draw          (CtkWidget       *widget,
                                                cairo_t         *cr);
 
@@ -180,8 +180,8 @@ ctk_rotated_bin_new (void)
   return g_object_new (CTK_TYPE_ROTATED_BIN, NULL);
 }
 
-static GdkWindow *
-pick_offscreen_child (GdkWindow     *offscreen_window,
+static CdkWindow *
+pick_offscreen_child (CdkWindow     *offscreen_window,
                       double         widget_x,
                       double         widget_y,
                       CtkRotatedBin *bin)
@@ -204,7 +204,7 @@ pick_offscreen_child (GdkWindow     *offscreen_window,
 }
 
 static void
-offscreen_window_to_parent (GdkWindow     *offscreen_window,
+offscreen_window_to_parent (CdkWindow     *offscreen_window,
                             double         offscreen_x,
                             double         offscreen_y,
                             double        *parent_x,
@@ -215,7 +215,7 @@ offscreen_window_to_parent (GdkWindow     *offscreen_window,
 }
 
 static void
-offscreen_window_from_parent (GdkWindow     *window,
+offscreen_window_from_parent (CdkWindow     *window,
                               double         parent_x,
                               double         parent_y,
                               double        *offscreen_x,
@@ -230,8 +230,8 @@ ctk_rotated_bin_realize (CtkWidget *widget)
 {
   CtkRotatedBin *bin = CTK_ROTATED_BIN (widget);
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
   guint border_width;
   CtkRequisition child_requisition;
@@ -485,7 +485,7 @@ ctk_rotated_bin_size_allocate (CtkWidget     *widget,
 
 static gboolean
 ctk_rotated_bin_damage (CtkWidget      *widget,
-                        GdkEventExpose *event)
+                        CdkEventExpose *event)
 {
   cdk_window_invalidate_rect (ctk_widget_get_window (widget),
                               NULL, FALSE);
@@ -498,7 +498,7 @@ ctk_rotated_bin_draw (CtkWidget *widget,
                       cairo_t   *cr)
 {
   CtkRotatedBin *bin = CTK_ROTATED_BIN (widget);
-  GdkWindow *window;
+  CdkWindow *window;
   gdouble s, c;
   gdouble w, h;
 

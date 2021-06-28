@@ -73,7 +73,7 @@ struct _CtkEntryCompletionPrivate
 
   GSource *check_completion_idle;
 
-  GdkDevice *device;
+  CdkDevice *device;
 };
 
 void     _ctk_entry_completion_resize_popup (CtkEntryCompletion *completion);

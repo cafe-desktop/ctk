@@ -46,7 +46,7 @@ struct _CtkColorPickerInterface {
                              GAsyncReadyCallback  callback,
                              gpointer             user_data);
 
-  GdkRGBA * (* pick_finish) (CtkColorPicker      *picker,
+  CdkRGBA * (* pick_finish) (CtkColorPicker      *picker,
                              GAsyncResult        *res,
                              GError             **error);
 };
@@ -60,7 +60,7 @@ void             ctk_color_picker_pick        (CtkColorPicker       *picker,
                                                GAsyncReadyCallback   callback,
                                                gpointer              user_data);
 GDK_AVAILABLE_IN_ALL
-GdkRGBA *        ctk_color_picker_pick_finish (CtkColorPicker       *picker,
+CdkRGBA *        ctk_color_picker_pick_finish (CtkColorPicker       *picker,
                                                GAsyncResult         *res,
                                                GError              **error);
 

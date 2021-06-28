@@ -25,7 +25,7 @@ int main (int argc, char *argv[])
 {
   CtkWidget *window;
   CtkWidget *button;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   ctk_parse_args (&argc, &argv);
 

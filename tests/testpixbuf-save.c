@@ -6,7 +6,7 @@
 #include <ctk/ctk.h>
 
 static void
-compare_pixbufs (GdkPixbuf *pixbuf, GdkPixbuf *compare, const gchar *file_type)
+compare_pixbufs (CdkPixbuf *pixbuf, CdkPixbuf *compare, const gchar *file_type)
 {
         if ((cdk_pixbuf_get_width (pixbuf) !=
              cdk_pixbuf_get_width (compare)) ||
@@ -70,16 +70,16 @@ compare_pixbufs (GdkPixbuf *pixbuf, GdkPixbuf *compare, const gchar *file_type)
 static gboolean
 save_to_loader (const gchar *buf, gsize count, GError **err, gpointer data)
 {
-        GdkPixbufLoader *loader = data;
+        CdkPixbufLoader *loader = data;
 
         return cdk_pixbuf_loader_write (loader, (const guchar *)buf, count, err);
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 buffer_to_pixbuf (const gchar *buf, gsize count, GError **err)
 {
-        GdkPixbufLoader *loader;
-        GdkPixbuf *pixbuf;
+        CdkPixbufLoader *loader;
+        CdkPixbuf *pixbuf;
 
         loader = cdk_pixbuf_loader_new ();
         if (cdk_pixbuf_loader_write (loader, (const guchar *)buf, count, err) &&
@@ -93,7 +93,7 @@ buffer_to_pixbuf (const gchar *buf, gsize count, GError **err)
 }
 
 static void
-do_compare (GdkPixbuf *pixbuf, GdkPixbuf *compare, GError *err)
+do_compare (CdkPixbuf *pixbuf, CdkPixbuf *compare, GError *err)
 {
         if (compare == NULL) {
                 fprintf (stderr, "%s", err->message);
@@ -105,16 +105,16 @@ do_compare (GdkPixbuf *pixbuf, GdkPixbuf *compare, GError *err)
 }
 
 static void
-keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
+keypress_check (CtkWidget *widget, CdkEventKey *evt, gpointer data)
 {
-        GdkPixbuf *pixbuf;
+        CdkPixbuf *pixbuf;
         CtkDrawingArea *da = (CtkDrawingArea*)data;
         GError *err = NULL;
         gchar *buffer;
         gsize count;
-        GdkPixbufLoader *loader;
+        CdkPixbufLoader *loader;
 
-        pixbuf = (GdkPixbuf *) g_object_get_data (G_OBJECT (da), "pixbuf");
+        pixbuf = (CdkPixbuf *) g_object_get_data (G_OBJECT (da), "pixbuf");
 
         if (evt->keyval == 'q')
                 ctk_main_quit ();
@@ -287,7 +287,7 @@ keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
                         fprintf (stderr, "PIXBUF NULL\n");
                         return;
                 } else {
-                        GdkPixbuf *alpha_buf;
+                        CdkPixbuf *alpha_buf;
 
                         alpha_buf = cdk_pixbuf_add_alpha (pixbuf,
                                                           FALSE, 0, 0, 0);
@@ -310,9 +310,9 @@ close_app (CtkWidget *widget, gpointer data)
 static gboolean
 draw_cb (CtkWidget *drawing_area, cairo_t *cr, gpointer data)
 {
-        GdkPixbuf *pixbuf;
+        CdkPixbuf *pixbuf;
          
-        pixbuf = (GdkPixbuf *) g_object_get_data (G_OBJECT (drawing_area),
+        pixbuf = (CdkPixbuf *) g_object_get_data (G_OBJECT (drawing_area),
 						  "pixbuf");
 
         cdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
@@ -322,17 +322,17 @@ draw_cb (CtkWidget *drawing_area, cairo_t *cr, gpointer data)
 }
 
 static int
-configure_cb (CtkWidget *drawing_area, GdkEventConfigure *evt, gpointer data)
+configure_cb (CtkWidget *drawing_area, CdkEventConfigure *evt, gpointer data)
 {
-        GdkPixbuf *pixbuf;
+        CdkPixbuf *pixbuf;
                            
-        pixbuf = (GdkPixbuf *) g_object_get_data (G_OBJECT (drawing_area),   
+        pixbuf = (CdkPixbuf *) g_object_get_data (G_OBJECT (drawing_area),   
 						  "pixbuf");
     
         g_print ("X:%d Y:%d\n", evt->width, evt->height);
         if (evt->width != cdk_pixbuf_get_width (pixbuf) || evt->height != cdk_pixbuf_get_height (pixbuf)) {
-                GdkWindow *root;
-                GdkPixbuf *new_pixbuf;
+                CdkWindow *root;
+                CdkPixbuf *new_pixbuf;
 
                 root = cdk_get_default_root_window ();
                 new_pixbuf = cdk_pixbuf_get_from_window (root,
@@ -347,11 +347,11 @@ configure_cb (CtkWidget *drawing_area, GdkEventConfigure *evt, gpointer data)
 int
 main (int argc, char **argv)
 {   
-        GdkWindow     *root;
+        CdkWindow     *root;
         CtkWidget     *window;
         CtkWidget     *vbox;
         CtkWidget     *drawing_area;
-        GdkPixbuf     *pixbuf;    
+        CdkPixbuf     *pixbuf;    
    
         ctk_init (&argc, &argv);   
 

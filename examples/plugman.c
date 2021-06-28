@@ -199,7 +199,7 @@ plugin_action (GAction  *action,
   GList *list;
   CtkWindow *window;
   CtkWidget *text;
-  GdkRGBA color;
+  CdkRGBA color;
 
   app = g_application_get_default ();
   list = ctk_application_get_windows (CTK_APPLICATION (app));

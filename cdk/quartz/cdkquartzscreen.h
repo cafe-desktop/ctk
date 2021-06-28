@@ -28,18 +28,18 @@ G_BEGIN_DECLS
 #include <cdk/cdk.h>
 
 #define GDK_TYPE_QUARTZ_SCREEN              (cdk_quartz_screen_get_type ())
-#define GDK_QUARTZ_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_SCREEN, GdkQuartzScreen))
-#define GDK_QUARTZ_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_SCREEN, GdkQuartzScreenClass))
+#define GDK_QUARTZ_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_SCREEN, CdkQuartzScreen))
+#define GDK_QUARTZ_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_SCREEN, CdkQuartzScreenClass))
 #define GDK_IS_QUARTZ_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_SCREEN))
 #define GDK_IS_QUARTZ_SCREEN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_QUARTZ_SCREEN))
-#define GDK_QUARTZ_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_SCREEN, GdkQuartzScreenClass))
+#define GDK_QUARTZ_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_SCREEN, CdkQuartzScreenClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkQuartzScreen GdkQuartzScreen;
+typedef struct _CdkQuartzScreen CdkQuartzScreen;
 #else
-typedef GdkScreen GdkQuartzScreen;
+typedef CdkScreen CdkQuartzScreen;
 #endif
-typedef struct _GdkQuartzScreenClass GdkQuartzScreenClass;
+typedef struct _CdkQuartzScreenClass CdkQuartzScreenClass;
 
 
 GDK_AVAILABLE_IN_ALL

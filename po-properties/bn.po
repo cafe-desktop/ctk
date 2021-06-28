@@ -1252,8 +1252,8 @@ msgid "Cell background color"
 msgstr "সেলের পটভূমির রং"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "GdkColor হিসেবে সেলের পটভূমির রং"
+msgid "Cell background color as a CdkColor"
+msgstr "CdkColor হিসেবে সেলের পটভূমির রং"
 
 #: ctk/ctkcellrenderer.c:343
 msgid "Editing"
@@ -1501,7 +1501,7 @@ msgid "Background color"
 msgstr "পটভূমির রং"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
+msgid "Background color as a CdkColor"
 msgstr "জিডিকে-কালার হিসাবে পটভূমির রং"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
@@ -1518,8 +1518,8 @@ msgid "Foreground color"
 msgstr "পুরোভূমির রং"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "GdkColor হিসেবে পুরোভূমির রং"
+msgid "Foreground color as a CdkColor"
+msgstr "CdkColor হিসেবে পুরোভূমির রং"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3106,8 +3106,8 @@ msgid "Pixbuf"
 msgstr "পিক্সবাফ"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "প্রদর্শনের জন্য একটি GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "প্রদর্শনের জন্য একটি CdkPixbuf"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3153,8 +3153,8 @@ msgid "Animation"
 msgstr "আ্যনিমেশন"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "যে GdkPixbufAnimation প্রদর্শন করা হবে"
+msgid "CdkPixbufAnimation to display"
+msgstr "যে CdkPixbufAnimation প্রদর্শন করা হবে"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5729,8 +5729,8 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr "টেক্সট ট্যাগকে উল্লেখ করতে ব্যবহৃত নাম। বেনামী ট্যাগের জন্য NULL"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "GdkColor হিসেবে পটভূমির রং (সম্ভব হলে বরাদ্দ না করা অবস্থায়)"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "CdkColor হিসেবে পটভূমির রং (সম্ভব হলে বরাদ্দ না করা অবস্থায়)"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5743,8 +5743,8 @@ msgid ""
 msgstr "পটভূমির রং দিয়ে লাইনের সম্পূর্ণ উচ্চতা নাকি ট্যাগযুক্ত অক্ষর পর্যন্ত ভরাট করা হয়"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "GdkColor হিসেবে পুরোভূমির রং (সম্ভব হলে বরাদ্দ না করা অবস্থায়)"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "CdkColor হিসেবে পুরোভূমির রং (সম্ভব হলে বরাদ্দ না করা অবস্থায়)"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -5895,8 +5895,8 @@ msgstr "অনুচ্ছেদের পটভূমির রং"
 
 # FIXME: Possibly == সম্ভবত ?
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "GdkColor হিসেবে অনুচ্ছেদের পটভূমির রং (সম্ভবত অবরাদ্দকৃত)"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "CdkColor হিসেবে অনুচ্ছেদের পটভূমির রং (সম্ভবত অবরাদ্দকৃত)"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -6836,9 +6836,9 @@ msgid "Events"
 msgstr "ইভেন্ট"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"যে ইভেন্ট মাস্কটি নির্ধারণ করে এই উইজেটটি কি ধরনের GdkEvents গ্রহণ করতে পারে"
+"যে ইভেন্ট মাস্কটি নির্ধারণ করে এই উইজেটটি কি ধরনের CdkEvents গ্রহণ করতে পারে"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7336,8 +7336,8 @@ msgstr "যে ভাবে ইনপুট পদ্ধতির স্ট্�
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "pixbuf-এর পিক্সেল তথ্য নির্দেশক একটি পয়েন্টার"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "রেন্ডারারের GdkScreen"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "রেন্ডারারের CdkScreen"
 
 # স্পিনবাটনের মান ধারনকারী সমন্বয় (Adjustment)
 #~ msgid "The adjustment that holds the value of the spinbutton."
@@ -7358,7 +7358,7 @@ msgstr "যে ভাবে ইনপুট পদ্ধতির স্ট্�
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "ছায়া অথবা পটভূমি প্রদর্শনের সময় সঠিক অবস্থার ইঙ্গিত চিহ্নিত করা হবে কি না"
 
-#~ msgid "The GdkFont that is currently selected"
+#~ msgid "The CdkFont that is currently selected"
 #~ msgstr "বর্তমানে বাছাইকৃত জিডিকে-ফন্ট"
 
 #~ msgid "Deprecated property, use shadow_type instead"
@@ -7368,18 +7368,18 @@ msgstr "যে ভাবে ইনপুট পদ্ধতির স্ট্�
 #~ msgid "Pixmap"
 #~ msgstr "পিক্সম্যাপ"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "প্রদর্শনের জন্য একটি GdkPixmap"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "প্রদর্শনের জন্য একটি CdkPixmap"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "প্রদর্শনের জন্য একটি GdkImage"
+#~ msgid "A CdkImage to display"
+#~ msgstr "প্রদর্শনের জন্য একটি CdkImage"
 
 # FIXME
 #~ msgid "Mask"
 #~ msgstr "ছাঁচ"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "GdkImage বা GdkPixmap এর সাথে ব্যবহারের জন্য মাস্ক"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "CdkImage বা CdkPixmap এর সাথে ব্যবহারের জন্য মাস্ক"
 
 #~ msgid "Use separator"
 #~ msgstr "বিভাজক ব্যবহার করো"

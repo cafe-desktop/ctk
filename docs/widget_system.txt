@@ -62,18 +62,18 @@ CtkWidget, public flags:
 CTK_TOPLEVEL:
 	Widgets without a real parent, as there are CtkWindows and
 	CtkMenus have this flag set throughout their lifetime.
-	Toplevel widgets always contain their own GdkWindow.
+	Toplevel widgets always contain their own CdkWindow.
 	
 CTK_NO_WINDOW:
 	This flag is indicative for a widget that does not provide
-	its own GdkWindow. Visible action (e.g. drawing) is performed
-	on the parent's GdkWindow.
+	its own CdkWindow. Visible action (e.g. drawing) is performed
+	on the parent's CdkWindow.
 
 CTK_REALIZED:
 	Set by ctk_widget_realize, unset by ctk_widget_unrealize.
 	Relies on ((widget->parent && widget->parent->window)
 	           || CTK_WIDGET_TOPLEVEL (widget));
-	Means: widget has an associated GdkWindow (XWindow).
+	Means: widget has an associated CdkWindow (XWindow).
 
 CTK_MAPPED:
 	Set by ctk_widget_map, unset by ctk_widget_unmap.

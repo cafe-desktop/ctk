@@ -76,7 +76,7 @@ entry_size_allocate_cb (CtkEntry      *entry,
 static void
 entry_icon_press_cb (CtkEntry             *entry,
                      CtkEntryIconPosition  icon_pos,
-                     GdkEvent             *event,
+                     CdkEvent             *event,
                      gpointer              user_data)
 {
   CtkWidget *popover = user_data;
@@ -97,7 +97,7 @@ day_selected_cb (CtkCalendar *calendar,
   cairo_rectangle_int_t rect;
   CtkAllocation allocation;
   CtkWidget *popover;
-  GdkEvent *event;
+  CdkEvent *event;
 
   event = ctk_get_current_event ();
 

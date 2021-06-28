@@ -36,7 +36,7 @@
       scrolling has been added with a separate event mask. Widgets now
       need to have either GDK_SCROLL_MASK or GDK_SMOOTH_SCROLL_MASK in
       their event mask to receive scroll events. In addition, the
-      GdkScrollDirection enumeration has gained a new member,
+      CdkScrollDirection enumeration has gained a new member,
       GDK_SCROLL_SMOOTH, so switch statements will have to be amended
       to cover this case.
     </para>
@@ -165,7 +165,7 @@
 
     <para>
       The way widget drawing happens has changed. Earlier versions handled
-      one expose event per GdkWindow, each with a separate cairo_t. Now we
+      one expose event per CdkWindow, each with a separate cairo_t. Now we
       only handle the expose event on the toplevel and reuse the same
       cairo_t (with the right translation and clipping) for the entire
       widget hierarchy, recursing down via the CtkWidget::draw signal.
@@ -183,7 +183,7 @@
       slightly slower, but allowed us to implement a offscreen surface
       scrolling method which better fits modern hardware. Most scrolling
       widgets in Ctk+ have been converted to use this model for scrolling,
-      but external widgets implementing scrolling using GdkWindow may see
+      but external widgets implementing scrolling using CdkWindow may see
       some slowdown.
     </para>
   </section>

@@ -399,7 +399,7 @@ while in C++ you must write:
 <informalexample>
 <programlisting>
   cdk_window_set_events (cdk_window,
-                         (GdkEventMask) GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+                         (CdkEventMask) GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
 </programlisting>
 </informalexample>
 There are very few functions that require this cast, however.
@@ -445,7 +445,7 @@ file of unknown type.
 </para>
 <para>
 To load an image or animation file asynchronously (without blocking), use
-#GdkPixbufLoader.
+#CdkPixbufLoader.
 </para>
 </answer>
 
@@ -555,7 +555,7 @@ cdk_screen_get_system_visual() in that case. Additionally, note that this
 will change from screen to screen, so it needs to be repeated whenever the
 window is moved to a different screen.
 <informalexample><programlisting>
-GdkVisual *visual;
+CdkVisual *visual;
 
 visual = cdk_screen_get_rgba_visual (screen);
 if (visual == NULL)
@@ -975,12 +975,12 @@ Render extension).
 
 <qandaentry>
 <question><para>
-Can I use cairo to draw on a #GdkPixbuf ?
+Can I use cairo to draw on a #CdkPixbuf ?
 </para></question>
 
 <answer><para>
 No, at least not yet. The cairo image surface does not support the
-pixel format used by GdkPixbuf.
+pixel format used by CdkPixbuf.
 </para></answer>
 </qandaentry>
 

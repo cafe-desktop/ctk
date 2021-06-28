@@ -22,19 +22,19 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GdkEventSource GdkEventSource;
+typedef struct _CdkEventSource CdkEventSource;
 
 G_GNUC_INTERNAL
-GSource * cdk_x11_event_source_new            (GdkDisplay *display);
+GSource * cdk_x11_event_source_new            (CdkDisplay *display);
 
 G_GNUC_INTERNAL
-void      cdk_x11_event_source_add_translator (GdkEventSource  *source,
-                                               GdkEventTranslator *translator);
+void      cdk_x11_event_source_add_translator (CdkEventSource  *source,
+                                               CdkEventTranslator *translator);
 
 G_GNUC_INTERNAL
-void      cdk_x11_event_source_select_events  (GdkEventSource *source,
+void      cdk_x11_event_source_select_events  (CdkEventSource *source,
                                                Window          window,
-                                               GdkEventMask    event_mask,
+                                               CdkEventMask    event_mask,
                                                unsigned int    extra_x_mask);
 
 

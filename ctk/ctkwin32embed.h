@@ -78,11 +78,11 @@ typedef enum {					/* send or post? */
 guint _ctk_win32_embed_message_type (CtkWin32EmbedMessageType type);
 void _ctk_win32_embed_push_message (MSG *msg);
 void _ctk_win32_embed_pop_message (void);
-void _ctk_win32_embed_send (GdkWindow		    *recipient,
+void _ctk_win32_embed_send (CdkWindow		    *recipient,
 			    CtkWin32EmbedMessageType message,
 			    WPARAM		     wparam,
 			    LPARAM                   lparam);
-void _ctk_win32_embed_send_focus_message (GdkWindow		  *recipient,
+void _ctk_win32_embed_send_focus_message (CdkWindow		  *recipient,
 					  CtkWin32EmbedMessageType message,
 					  WPARAM	           wparam);
 void     _ctk_win32_embed_set_focus_wrapped  (void);

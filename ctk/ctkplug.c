@@ -66,7 +66,7 @@
  *
  * The #CtkPlug and #CtkSocket widgets are only available when CTK+
  * is compiled for the X11 platform and %GDK_WINDOWING_X11 is defined.
- * They can only be used on a #GdkX11Display. To use #CtkPlug and
+ * They can only be used on a #CdkX11Display. To use #CtkPlug and
  * #CtkSocket, you need to include the `ctk/ctkx.h` header.
  */
 
@@ -75,7 +75,7 @@ struct _CtkPlugPrivate
   CtkWidget      *modality_window;
   CtkWindowGroup *modality_group;
 
-  GdkWindow      *socket_window;
+  CdkWindow      *socket_window;
 
   GHashTable     *grabbed_keys;
 
@@ -94,9 +94,9 @@ static void            ctk_plug_hide                  (CtkWidget        *widget)
 static void            ctk_plug_map                   (CtkWidget        *widget);
 static void            ctk_plug_unmap                 (CtkWidget        *widget);
 static gboolean        ctk_plug_key_press_event       (CtkWidget        *widget,
-						       GdkEventKey      *event);
+						       CdkEventKey      *event);
 static gboolean        ctk_plug_focus_event           (CtkWidget        *widget,
-						       GdkEventFocus    *event);
+						       CdkEventFocus    *event);
 static void            ctk_plug_set_focus             (CtkWindow        *window,
 						       CtkWidget        *focus);
 static gboolean        ctk_plug_focus                 (CtkWidget        *widget,
@@ -104,7 +104,7 @@ static gboolean        ctk_plug_focus                 (CtkWidget        *widget,
 static void            ctk_plug_check_resize          (CtkContainer     *container);
 static void            ctk_plug_keys_changed          (CtkWindow        *window);
 
-static void            xembed_set_info                (GdkWindow        *window,
+static void            xembed_set_info                (CdkWindow        *window,
 				                       unsigned long     flags);
 
 static CtkBinClass *bin_class = NULL;
@@ -112,7 +112,7 @@ static CtkBinClass *bin_class = NULL;
 typedef struct
 {
   guint			 accelerator_key;
-  GdkModifierType	 accelerator_mods;
+  CdkModifierType	 accelerator_mods;
 } GrabbedKey;
 
 enum {
@@ -389,7 +389,7 @@ ctk_plug_get_embedded (CtkPlug *plug)
  *
  * Since: 2.14
  **/
-GdkWindow *
+CdkWindow *
 ctk_plug_get_socket_window (CtkPlug *plug)
 {
   g_return_val_if_fail (CTK_IS_PLUG (plug), NULL);
@@ -430,7 +430,7 @@ _ctk_plug_add_to_socket (CtkPlug   *plug,
 
   if (ctk_widget_get_realized (widget))
     {
-      GdkWindow *window;
+      CdkWindow *window;
 
       window = ctk_widget_get_window (widget);
       cdk_window_reparent (window, priv->socket_window,
@@ -454,7 +454,7 @@ _ctk_plug_add_to_socket (CtkPlug   *plug,
 static void
 ctk_plug_send_delete_event (CtkWidget *widget)
 {
-  GdkEvent *event = cdk_event_new (GDK_DELETE);
+  CdkEvent *event = cdk_event_new (GDK_DELETE);
 
   event->any.window = g_object_ref (ctk_widget_get_window (widget));
   event->any.send_event = FALSE;
@@ -482,8 +482,8 @@ _ctk_plug_remove_from_socket (CtkPlug   *plug,
 {
   CtkPlugPrivate *priv;
   CtkWidget *widget;
-  GdkWindow *window;
-  GdkWindow *root_window;
+  CdkWindow *window;
+  CdkWindow *root_window;
   gboolean result;
   gboolean widget_was_visible;
 
@@ -560,7 +560,7 @@ ctk_plug_construct (CtkPlug *plug,
 /**
  * ctk_plug_construct_for_display:
  * @plug: a #CtkPlug.
- * @display: the #GdkDisplay associated with @socket_id’s 
+ * @display: the #CdkDisplay associated with @socket_id’s 
  *	     #CtkSocket.
  * @socket_id: the XID of the socket’s window.
  *
@@ -572,7 +572,7 @@ ctk_plug_construct (CtkPlug *plug,
  **/
 void
 ctk_plug_construct_for_display (CtkPlug    *plug,
-				GdkDisplay *display,
+				CdkDisplay *display,
 				Window      socket_id)
 {
   CtkPlugPrivate *priv;
@@ -637,7 +637,7 @@ ctk_plug_new (Window socket_id)
 
 /**
  * ctk_plug_new_for_display:
- * @display: the #GdkDisplay on which @socket_id is displayed
+ * @display: the #CdkDisplay on which @socket_id is displayed
  * @socket_id: the XID of the socket’s window.
  * 
  * Create a new plug widget inside the #CtkSocket identified by socket_id.
@@ -647,7 +647,7 @@ ctk_plug_new (Window socket_id)
  * Since: 2.2
  */
 CtkWidget*
-ctk_plug_new_for_display (GdkDisplay *display,
+ctk_plug_new_for_display (CdkDisplay *display,
 			  Window      socket_id)
 {
   CtkPlug *plug;
@@ -698,10 +698,10 @@ ctk_plug_unrealize (CtkWidget *widget)
 }
 
 static void
-xembed_set_info (GdkWindow     *window,
+xembed_set_info (CdkWindow     *window,
 		 unsigned long  flags)
 {
-  GdkDisplay *display = cdk_window_get_display (window);
+  CdkDisplay *display = cdk_window_get_display (window);
   unsigned long buffer[2];
 
   Atom xembed_info_atom = cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_INFO");
@@ -718,9 +718,9 @@ xembed_set_info (GdkWindow     *window,
 
 #ifdef CTK_HAVE_ATK_PLUG_SET_CHILD
 static void
-_ctk_plug_accessible_embed_set_info (CtkWidget *widget, GdkWindow *window)
+_ctk_plug_accessible_embed_set_info (CtkWidget *widget, CdkWindow *window)
 {
-  GdkDisplay *display = cdk_window_get_display (window);
+  CdkDisplay *display = cdk_window_get_display (window);
   gchar *buffer = ctk_plug_accessible_get_id (CTK_PLUG_ACCESSIBLE (ctk_widget_get_accessible (widget)));
   Atom net_at_spi_path_atom = cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_AT_SPI_PATH");
 
@@ -834,19 +834,19 @@ handle_xembed_message (CtkPlug           *plug,
       break;
     }
 }
-static GdkFilterReturn
-ctk_plug_filter_func (GdkXEvent *cdk_xevent,
-		      GdkEvent  *event,
+static CdkFilterReturn
+ctk_plug_filter_func (CdkXEvent *cdk_xevent,
+		      CdkEvent  *event,
 		      gpointer   data)
 {
-  GdkScreen *screen = cdk_window_get_screen (event->any.window);
-  GdkDisplay *display = cdk_screen_get_display (screen);
+  CdkScreen *screen = cdk_window_get_screen (event->any.window);
+  CdkDisplay *display = cdk_screen_get_display (screen);
   CtkPlug *plug = CTK_PLUG (data);
   CtkPlugPrivate *priv = plug->priv;
   XEvent *xevent = (XEvent *)cdk_xevent;
   GHashTableIter iter;
   gpointer key;
-  GdkFilterReturn return_val;
+  CdkFilterReturn return_val;
 
   return_val = GDK_FILTER_CONTINUE;
 
@@ -979,10 +979,10 @@ ctk_plug_filter_func (GdkXEvent *cdk_xevent,
     case KeyPress:
     case KeyRelease:
       {
-        GdkModifierType state, consumed;
-        GdkDevice *keyboard;
-        GdkKeymap *keymap;
-        GdkSeat *seat;
+        CdkModifierType state, consumed;
+        CdkDevice *keyboard;
+        CdkKeymap *keymap;
+        CdkSeat *seat;
 
         if (xevent->type == KeyPress)
           event->key.type = GDK_KEY_PRESS;
@@ -992,7 +992,7 @@ ctk_plug_filter_func (GdkXEvent *cdk_xevent,
         event->key.window = cdk_x11_window_lookup_for_display (display, xevent->xany.window);
         event->key.send_event = TRUE;
         event->key.time = xevent->xkey.time;
-        event->key.state = (GdkModifierType) xevent->xkey.state;
+        event->key.state = (CdkModifierType) xevent->xkey.state;
         event->key.hardware_keycode = xevent->xkey.keycode;
         event->key.keyval = GDK_KEY_VoidSymbol;
 
@@ -1032,12 +1032,12 @@ ctk_plug_realize (CtkWidget *widget)
   CtkPlug *plug = CTK_PLUG (widget);
   CtkPlugPrivate *priv = plug->priv;
   CtkWindow *window = CTK_WINDOW (widget);
-  GdkWindow *cdk_window;
-  GdkWindowAttr attributes;
+  CdkWindow *cdk_window;
+  CdkWindowAttr attributes;
   const gchar *title;
   gchar *wmclass_name, *wmclass_class;
   gint attributes_mask;
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   ctk_widget_set_realized (widget, TRUE);
 
@@ -1074,8 +1074,8 @@ ctk_plug_realize (CtkWidget *widget)
 
   if (ctk_widget_is_toplevel (widget))
     {
-      GdkDisplay *display = ctk_widget_get_display (widget);
-      GdkWindow *root_window;
+      CdkDisplay *display = ctk_widget_get_display (widget);
+      CdkWindow *root_window;
       attributes.window_type = GDK_WINDOW_TOPLEVEL;
 
       root_window = cdk_screen_get_root_window (screen);
@@ -1149,9 +1149,9 @@ ctk_plug_hide (CtkWidget *widget)
 }
 
 /* From cdkprivate.h */
-void cdk_synthesize_window_state (GdkWindow     *window,
-                                  GdkWindowState unset_flags,
-                                  GdkWindowState set_flags);
+void cdk_synthesize_window_state (CdkWindow     *window,
+                                  CdkWindowState unset_flags,
+                                  CdkWindowState set_flags);
 
 static void
 ctk_plug_map (CtkWidget *widget)
@@ -1186,7 +1186,7 @@ ctk_plug_unmap (CtkWidget *widget)
   if (ctk_widget_is_toplevel (widget))
     {
       CtkPlug *plug = CTK_PLUG (widget);
-      GdkWindow *window;
+      CdkWindow *window;
       CtkWidget *child;
 
       window = ctk_widget_get_window (widget);
@@ -1211,7 +1211,7 @@ ctk_plug_unmap (CtkWidget *widget)
 
 static gboolean
 ctk_plug_key_press_event (CtkWidget   *widget,
-			  GdkEventKey *event)
+			  CdkEventKey *event)
 {
   if (ctk_widget_is_toplevel (widget))
     return CTK_WIDGET_CLASS (ctk_plug_parent_class)->key_press_event (widget, event);
@@ -1221,7 +1221,7 @@ ctk_plug_key_press_event (CtkWidget   *widget,
 
 static gboolean
 ctk_plug_focus_event (CtkWidget      *widget,
-		      GdkEventFocus  *event)
+		      CdkEventFocus  *event)
 {
   /* We eat focus-in events and focus-out events, since they
    * can be generated by something like a keyboard grab on
@@ -1305,7 +1305,7 @@ remove_grabbed_key (gpointer key, gpointer val, gpointer data)
 static void
 keys_foreach (CtkWindow      *window,
 	      guint           keyval,
-	      GdkModifierType modifiers,
+	      CdkModifierType modifiers,
 	      gboolean        is_mnemonic,
 	      gpointer        data)
 {

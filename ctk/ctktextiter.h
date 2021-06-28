@@ -156,7 +156,7 @@ gchar   *ctk_text_iter_get_visible_text  (const CtkTextIter  *start,
                                           const CtkTextIter  *end);
 
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf* ctk_text_iter_get_pixbuf (const CtkTextIter *iter);
+CdkPixbuf* ctk_text_iter_get_pixbuf (const CtkTextIter *iter);
 GDK_AVAILABLE_IN_ALL
 GSList  *  ctk_text_iter_get_marks  (const CtkTextIter *iter);
 

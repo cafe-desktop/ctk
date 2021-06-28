@@ -1431,8 +1431,8 @@ msgstr "Нүдний дэвсгэр өнгө"
 
 # ctk/ctkcellrenderertext.c:207 ctk/ctktexttag.c:218
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Нүдний дэвсгэр өнгө GdkColor шиг"
+msgid "Cell background color as a CdkColor"
+msgstr "Нүдний дэвсгэр өнгө CdkColor шиг"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1715,8 +1715,8 @@ msgstr "Дэвсгэр өнгө"
 
 # ctk/ctkcellrenderertext.c:207 ctk/ctktexttag.c:218
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "GdkColor шиг дэвсгэр өнгө"
+msgid "Background color as a CdkColor"
+msgstr "CdkColor шиг дэвсгэр өнгө"
 
 # ctk/ctkcellrenderertext.c:214 ctk/ctktexttag.c:243
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
@@ -1736,8 +1736,8 @@ msgstr "Тэмдэгтийн өнгө "
 
 # ctk/ctkcellrenderertext.c:223 ctk/ctktexttag.c:252
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "GdkColor шиг тэмдэгтийн өнгө "
+msgid "Foreground color as a CdkColor"
+msgstr "CdkColor шиг тэмдэгтийн өнгө "
 
 # ctk/ctkcellrenderertext.c:231 ctk/ctkentry.c:455 ctk/ctktexttag.c:277
 # ctk/ctktextview.c:568
@@ -3586,8 +3586,8 @@ msgstr "Pixbuf"
 
 # ctk/ctkimage.c:130
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "Дүрслэгдэж байна (GdkPixbuf)."
+msgid "A CdkPixbuf to display"
+msgstr "Дүрслэгдэж байна (CdkPixbuf)."
 
 # ctk/ctkfilesel.c:536 ctk/ctkimage.c:161
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
@@ -3640,8 +3640,8 @@ msgid "Animation"
 msgstr "Хөдөлгөөнт"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation зурагдаж байна.."
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation зурагдаж байна.."
 
 # ctk/ctkimage.c:203
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
@@ -6513,7 +6513,7 @@ msgstr "Сонгогдсон жил"
 #: ctk/ctktextbuffer.c:226
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "GdkFont нь сонгогдсон байгаа нь."
+msgstr "CdkFont нь сонгогдсон байгаа нь."
 
 # ctk/ctkentry.c:435 ctk/ctklabel.c:358
 #: ctk/ctktextbuffer.c:242
@@ -6573,8 +6573,8 @@ msgstr "Текст тагийг явуулахад нэр хэрэглэдэг. 
 
 # ctk/ctkcellrenderertext.c:207 ctk/ctktexttag.c:218
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr " GdkColor дэвсгэрийн өнгө"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr " CdkColor дэвсгэрийн өнгө"
 
 # ctk/ctktexttag.c:225
 #: ctk/ctktexttag.c:194
@@ -6591,8 +6591,8 @@ msgstr ""
 
 # ctk/ctkcellrenderertext.c:223 ctk/ctktexttag.c:252
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "GdkColor урд дэвсгэрийн өнгө"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "CdkColor урд дэвсгэрийн өнгө"
 
 # ctk/ctktexttag.c:268
 #: ctk/ctktexttag.c:218
@@ -6766,8 +6766,8 @@ msgstr "Нүдний дэвсгэр өнгө"
 # ctk/ctkcellrenderertext.c:207 ctk/ctktexttag.c:218
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr " GdkColor дэвсгэрийн өнгө"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr " CdkColor дэвсгэрийн өнгө"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7840,9 +7840,9 @@ msgid "Events"
 msgstr "Үйл явдал"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Үйл явдал маск нь энэ удирдлагын элемент ямар төрлийн GdkEvents вэ гэдгийг "
+"Үйл явдал маск нь энэ удирдлагын элемент ямар төрлийн CdkEvents вэ гэдгийг "
 "шийддэг"
 
 #: ctk/ctkwidget.c:832
@@ -8404,7 +8404,7 @@ msgstr "Төлөвийн самбарыг оруулах аргыг хэрхэн
 #~ msgstr "pixbuf -н пиксел өгөгдлийг заагч"
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "Модоор харуулах загвар"
 
 #, fuzzy
@@ -8432,8 +8432,8 @@ msgstr "Төлөвийн самбарыг оруулах аргыг хэрхэн
 #~ msgstr "Ар талын дэвсгэрийг чирэхэд битмэпийг маск шиг ашиглана."
 
 # ctk/ctkfontsel.c:210
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "GdkFont нь сонгогдсон байгаа нь."
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "CdkFont нь сонгогдсон байгаа нь."
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "shadow_type хэрэглэхийн оронд шинж чанарын эсрэг."
@@ -8443,19 +8443,19 @@ msgstr "Төлөвийн самбарыг оруулах аргыг хэрхэн
 #~ msgstr "Уусалттай зураг"
 
 # ctk/ctkimage.c:138
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "Уусалттай зураг зурагдаж байна (GdkPixmap)"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "Уусалттай зураг зурагдаж байна (CdkPixmap)"
 
 # ctk/ctkimage.c:146
-#~ msgid "A GdkImage to display"
-#~ msgstr "Зурагдаж байна (GdkImage)"
+#~ msgid "A CdkImage to display"
+#~ msgstr "Зурагдаж байна (CdkImage)"
 
 # ctk/ctkimage.c:153
 #~ msgid "Mask"
 #~ msgstr "Маск"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "GdkImage болон GdkPixmap -д ашиглагдаж байгаа бит зургийн маск"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "CdkImage болон CdkPixmap -д ашиглагдаж байгаа бит зургийн маск"
 
 # ctk/ctkdialog.c:128
 #~ msgid "Use separator"

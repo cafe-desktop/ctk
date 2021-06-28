@@ -77,7 +77,7 @@
  *
  * For CTK+ widgets, any #CtkStyleContext returned by
  * ctk_widget_get_style_context() will already have a #CtkWidgetPath, a
- * #GdkScreen and RTL/LTR information set. The style context will also be
+ * #CdkScreen and RTL/LTR information set. The style context will also be
  * updated automatically if any of these settings change on the widget.
  *
  * If you are using the theming layer standalone, you will need to set a
@@ -131,7 +131,7 @@ struct PropertyValue
 
 struct _CtkStyleContextPrivate
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   guint cascade_changed_id;
   CtkStyleCascade *cascade;
@@ -140,7 +140,7 @@ struct _CtkStyleContextPrivate
   GSList *saved_nodes;
   GArray *property_cache;
 
-  GdkFrameClock *frame_clock;
+  CdkFrameClock *frame_clock;
 
   CtkCssStyleChange *invalidating_context;
 };
@@ -227,14 +227,14 @@ ctk_style_context_class_init (CtkStyleContextClass *klass)
   properties[PROP_SCREEN] =
       g_param_spec_object ("screen",
                            P_("Screen"),
-                           P_("The associated GdkScreen"),
+                           P_("The associated CdkScreen"),
                            GDK_TYPE_SCREEN,
                            CTK_PARAM_READWRITE);
 
   properties[PROP_FRAME_CLOCK] =
       g_param_spec_object ("paint-clock",
                            P_("FrameClock"),
-                           P_("The associated GdkFrameClock"),
+                           P_("The associated CdkFrameClock"),
                            GDK_TYPE_FRAME_CLOCK,
                            CTK_PARAM_READWRITE);
 
@@ -653,10 +653,10 @@ ctk_style_context_remove_provider (CtkStyleContext  *context,
 
 /**
  * ctk_style_context_reset_widgets:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * This function recomputes the styles for all widgets under a particular
- * #GdkScreen. This is useful when some global parameter has changed that
+ * #CdkScreen. This is useful when some global parameter has changed that
  * affects the appearance of all widgets, because when a widget gets a new
  * style, it will both redraw and recompute any cached information about
  * its appearance. As an example, it is used when the color scheme changes
@@ -665,7 +665,7 @@ ctk_style_context_remove_provider (CtkStyleContext  *context,
  * Since: 3.0
  **/
 void
-ctk_style_context_reset_widgets (GdkScreen *screen)
+ctk_style_context_reset_widgets (CdkScreen *screen)
 {
   GList *list, *toplevels;
 
@@ -685,7 +685,7 @@ ctk_style_context_reset_widgets (GdkScreen *screen)
 
 /**
  * ctk_style_context_add_provider_for_screen:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * @provider: a #CtkStyleProvider
  * @priority: the priority of the style provider. The lower
  *            it is, the earlier it will be used in the style
@@ -706,7 +706,7 @@ ctk_style_context_reset_widgets (GdkScreen *screen)
  * Since: 3.0
  **/
 void
-ctk_style_context_add_provider_for_screen (GdkScreen        *screen,
+ctk_style_context_add_provider_for_screen (CdkScreen        *screen,
                                            CtkStyleProvider *provider,
                                            guint             priority)
 {
@@ -722,7 +722,7 @@ ctk_style_context_add_provider_for_screen (GdkScreen        *screen,
 
 /**
  * ctk_style_context_remove_provider_for_screen:
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  * @provider: a #CtkStyleProvider
  *
  * Removes @provider from the global style providers list in @screen.
@@ -730,7 +730,7 @@ ctk_style_context_add_provider_for_screen (GdkScreen        *screen,
  * Since: 3.0
  **/
 void
-ctk_style_context_remove_provider_for_screen (GdkScreen        *screen,
+ctk_style_context_remove_provider_for_screen (CdkScreen        *screen,
                                               CtkStyleProvider *provider)
 {
   CtkStyleCascade *cascade;
@@ -1668,11 +1668,11 @@ _ctk_style_context_peek_style_property (CtkStyleContext *context,
         {
           G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-          /* Resolve symbolic colors to GdkColor/GdkRGBA */
+          /* Resolve symbolic colors to CdkColor/CdkRGBA */
           if (G_VALUE_TYPE (&pcache->value) == CTK_TYPE_SYMBOLIC_COLOR)
             {
               CtkSymbolicColor *color;
-              GdkRGBA rgba;
+              CdkRGBA rgba;
 
               color = g_value_dup_boxed (&pcache->value);
 
@@ -1689,7 +1689,7 @@ _ctk_style_context_peek_style_property (CtkStyleContext *context,
                     g_value_set_boxed (&pcache->value, &rgba);
                   else
                     {
-                      GdkColor rgb;
+                      CdkColor rgb;
 
                       rgb.red = rgba.red * 65535. + 0.5;
                       rgb.green = rgba.green * 65535. + 0.5;
@@ -1957,7 +1957,7 @@ ctk_style_context_lookup_icon_set (CtkStyleContext *context,
 /**
  * ctk_style_context_set_screen:
  * @context: a #CtkStyleContext
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Attaches @context to the given screen.
  *
@@ -1972,7 +1972,7 @@ ctk_style_context_lookup_icon_set (CtkStyleContext *context,
  **/
 void
 ctk_style_context_set_screen (CtkStyleContext *context,
-                              GdkScreen       *screen)
+                              CdkScreen       *screen)
 {
   CtkStyleContextPrivate *priv;
   CtkStyleCascade *screen_cascade;
@@ -2005,11 +2005,11 @@ ctk_style_context_set_screen (CtkStyleContext *context,
  * ctk_style_context_get_screen:
  * @context: a #CtkStyleContext
  *
- * Returns the #GdkScreen to which @context is attached.
+ * Returns the #CdkScreen to which @context is attached.
  *
- * Returns: (transfer none): a #GdkScreen.
+ * Returns: (transfer none): a #CdkScreen.
  **/
-GdkScreen *
+CdkScreen *
 ctk_style_context_get_screen (CtkStyleContext *context)
 {
   g_return_val_if_fail (CTK_IS_STYLE_CONTEXT (context), NULL);
@@ -2019,8 +2019,8 @@ ctk_style_context_get_screen (CtkStyleContext *context)
 
 /**
  * ctk_style_context_set_frame_clock:
- * @context: a #GdkFrameClock
- * @frame_clock: a #GdkFrameClock
+ * @context: a #CdkFrameClock
+ * @frame_clock: a #CdkFrameClock
  *
  * Attaches @context to the given frame clock.
  *
@@ -2034,7 +2034,7 @@ ctk_style_context_get_screen (CtkStyleContext *context)
  **/
 void
 ctk_style_context_set_frame_clock (CtkStyleContext *context,
-                                   GdkFrameClock   *frame_clock)
+                                   CdkFrameClock   *frame_clock)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (frame_clock == NULL || GDK_IS_FRAME_CLOCK (frame_clock));
@@ -2047,14 +2047,14 @@ ctk_style_context_set_frame_clock (CtkStyleContext *context,
  * ctk_style_context_get_frame_clock:
  * @context: a #CtkStyleContext
  *
- * Returns the #GdkFrameClock to which @context is attached.
+ * Returns the #CdkFrameClock to which @context is attached.
  *
- * Returns: (nullable) (transfer none): a #GdkFrameClock, or %NULL
+ * Returns: (nullable) (transfer none): a #CdkFrameClock, or %NULL
  *  if @context does not have an attached frame clock.
  *
  * Since: 3.8
  **/
-GdkFrameClock *
+CdkFrameClock *
 ctk_style_context_get_frame_clock (CtkStyleContext *context)
 {
   g_return_val_if_fail (CTK_IS_STYLE_CONTEXT (context), NULL);
@@ -2187,7 +2187,7 @@ ctk_style_context_get_junction_sides (CtkStyleContext *context)
 gboolean
 _ctk_style_context_resolve_color (CtkStyleContext    *context,
                                   CtkCssValue        *color,
-                                  GdkRGBA            *result)
+                                  CdkRGBA            *result)
 {
   CtkCssValue *val;
 
@@ -2220,7 +2220,7 @@ _ctk_style_context_resolve_color (CtkStyleContext    *context,
 gboolean
 ctk_style_context_lookup_color (CtkStyleContext *context,
                                 const gchar     *color_name,
-                                GdkRGBA         *color)
+                                CdkRGBA         *color)
 {
   CtkCssValue *value;
 
@@ -2238,7 +2238,7 @@ ctk_style_context_lookup_color (CtkStyleContext *context,
 /**
  * ctk_style_context_notify_state_change:
  * @context: a #CtkStyleContext
- * @window: a #GdkWindow
+ * @window: a #CdkWindow
  * @region_id: (allow-none): animatable region to notify on, or %NULL.
  *     See ctk_style_context_push_animatable_region()
  * @state: state to trigger transition for
@@ -2292,7 +2292,7 @@ ctk_style_context_lookup_color (CtkStyleContext *context,
  **/
 void
 ctk_style_context_notify_state_change (CtkStyleContext *context,
-                                       GdkWindow       *window,
+                                       CdkWindow       *window,
                                        gpointer         region_id,
                                        CtkStateType     state,
                                        gboolean         state_value)
@@ -2332,7 +2332,7 @@ ctk_style_context_cancel_animations (CtkStyleContext *context,
 /**
  * ctk_style_context_scroll_animations:
  * @context: a #CtkStyleContext
- * @window: a #GdkWindow used previously in
+ * @window: a #CdkWindow used previously in
  *          ctk_style_context_notify_state_change()
  * @dx: Amount to scroll in the X axis
  * @dy: Amount to scroll in the Y axis
@@ -2348,7 +2348,7 @@ ctk_style_context_cancel_animations (CtkStyleContext *context,
  **/
 void
 ctk_style_context_scroll_animations (CtkStyleContext *context,
-                                     GdkWindow       *window,
+                                     CdkWindow       *window,
                                      gint             dx,
                                      gint             dy)
 {
@@ -2453,7 +2453,7 @@ ctk_style_context_invalidate (CtkStyleContext *context)
 /**
  * ctk_style_context_set_background:
  * @context: a #CtkStyleContext
- * @window: a #GdkWindow
+ * @window: a #CdkWindow
  *
  * Sets the background of @window to the background pattern or
  * color specified in @context for its current state.
@@ -2466,7 +2466,7 @@ ctk_style_context_invalidate (CtkStyleContext *context)
  **/
 void
 ctk_style_context_set_background (CtkStyleContext *context,
-                                  GdkWindow       *window)
+                                  CdkWindow       *window)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (GDK_IS_WINDOW (window));
@@ -2482,7 +2482,7 @@ ctk_style_context_set_background (CtkStyleContext *context,
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (ctk_css_style_render_background_is_opaque (ctk_style_context_lookup_style (context)))
     {
-      const GdkRGBA *color;
+      const CdkRGBA *color;
 
       color = _ctk_css_rgba_value_get_rgba (_ctk_style_context_peek_property (context, CTK_CSS_PROPERTY_BACKGROUND_COLOR));
 
@@ -2490,7 +2490,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     }
   else
     {
-      GdkRGBA transparent = { 0.0, 0.0, 0.0, 0.0 };
+      CdkRGBA transparent = { 0.0, 0.0, 0.0, 0.0 };
       cdk_window_set_background_rgba (window, &transparent);
     }
 G_GNUC_END_IGNORE_DEPRECATIONS
@@ -2512,9 +2512,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 void
 ctk_style_context_get_color (CtkStyleContext *context,
                              CtkStateFlags    state,
-                             GdkRGBA         *color)
+                             CdkRGBA         *color)
 {
-  GdkRGBA *c;
+  CdkRGBA *c;
 
   g_return_if_fail (color != NULL);
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
@@ -2552,9 +2552,9 @@ ctk_style_context_get_color (CtkStyleContext *context,
 void
 ctk_style_context_get_background_color (CtkStyleContext *context,
                                         CtkStateFlags    state,
-                                        GdkRGBA         *color)
+                                        CdkRGBA         *color)
 {
-  GdkRGBA *c;
+  CdkRGBA *c;
 
   g_return_if_fail (color != NULL);
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
@@ -2583,9 +2583,9 @@ ctk_style_context_get_background_color (CtkStyleContext *context,
 void
 ctk_style_context_get_border_color (CtkStyleContext *context,
                                     CtkStateFlags    state,
-                                    GdkRGBA         *color)
+                                    CdkRGBA         *color)
 {
-  GdkRGBA *c;
+  CdkRGBA *c;
 
   g_return_if_fail (color != NULL);
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
@@ -2781,10 +2781,10 @@ ctk_style_context_get_font (CtkStyleContext *context,
 
 void
 _ctk_style_context_get_cursor_color (CtkStyleContext *context,
-                                     GdkRGBA         *primary_color,
-                                     GdkRGBA         *secondary_color)
+                                     CdkRGBA         *primary_color,
+                                     CdkRGBA         *secondary_color)
 {
-  GdkRGBA *pc, *sc;
+  CdkRGBA *pc, *sc;
 
   ctk_style_context_get (context,
                          ctk_style_context_get_state (context),
@@ -2813,8 +2813,8 @@ draw_insertion_cursor (CtkStyleContext *context,
                        gboolean         draw_arrow)
 
 {
-  GdkRGBA primary_color;
-  GdkRGBA secondary_color;
+  CdkRGBA primary_color;
+  CdkRGBA secondary_color;
   gint stem_width;
   gint offset;
 
@@ -2984,7 +2984,7 @@ ctk_render_insertion_cursor (CtkStyleContext *context,
 void
 ctk_draw_insertion_cursor (CtkWidget          *widget,
                            cairo_t            *cr,
-                           const GdkRectangle *location,
+                           const CdkRectangle *location,
                            gboolean            is_primary,
                            CtkTextDirection    direction,
                            gboolean            draw_arrow)
@@ -3037,7 +3037,7 @@ ctk_style_context_get_change (CtkStyleContext *context)
 
 void
 _ctk_style_context_get_icon_extents (CtkStyleContext *context,
-                                     GdkRectangle    *extents,
+                                     CdkRectangle    *extents,
                                      gint             x,
                                      gint             y,
                                      gint             width,
@@ -3096,7 +3096,7 @@ _ctk_style_context_get_attributes (AtkAttributeSet *attributes,
                                    CtkStyleContext *context,
                                    CtkStateFlags    flags)
 {
-  GdkRGBA color;
+  CdkRGBA color;
   gchar *value;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS

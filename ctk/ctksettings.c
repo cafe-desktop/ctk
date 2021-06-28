@@ -119,7 +119,7 @@ struct _CtkSettingsPrivate
 {
   GData *queued_settings;      /* of type CtkSettingsValue* */
   CtkSettingsPropertyValue *property_values;
-  GdkScreen *screen;
+  CdkScreen *screen;
   GSList *style_cascades;
   CtkCssProvider *theme_provider;
   CtkCssProvider *key_theme_provider;
@@ -265,7 +265,7 @@ static void    settings_update_xsettings         (CtkSettings           *setting
 static void ctk_settings_load_from_key_file      (CtkSettings           *settings,
                                                   const gchar           *path,
                                                   CtkSettingsSource      source);
-static void settings_update_provider             (GdkScreen             *screen,
+static void settings_update_provider             (CdkScreen             *screen,
                                                   CtkCssProvider       **old,
                                                   CtkCssProvider        *new);
 
@@ -281,7 +281,7 @@ static GSList           *object_list = NULL;
 static guint             class_n_properties = 0;
 
 typedef struct {
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkSettings *settings;
 } DisplaySettings;
 
@@ -959,10 +959,10 @@ ctk_settings_class_init (CtkSettingsClass *class)
   g_assert (result == PROP_ERROR_BELL);
 
   /**
-   * CtkSettings:color-hash: (type GLib.HashTable(utf8,Gdk.Color)) (transfer container)
+   * CtkSettings:color-hash: (type GLib.HashTable(utf8,Cdk.Color)) (transfer container)
    *
    * Holds a hash table representation of the #CtkSettings:ctk-color-scheme
-   * setting, mapping color names to #GdkColors.
+   * setting, mapping color names to #CdkColors.
    *
    * Since: 2.10
    *
@@ -1912,7 +1912,7 @@ settings_init_style (CtkSettings *settings)
 }
 
 static void
-settings_display_closed (GdkDisplay *display,
+settings_display_closed (CdkDisplay *display,
                          gboolean    is_error,
                          gpointer    data)
 {
@@ -1935,7 +1935,7 @@ settings_display_closed (GdkDisplay *display,
 }
 
 static CtkSettings *
-ctk_settings_create_for_display (GdkDisplay *display)
+ctk_settings_create_for_display (CdkDisplay *display)
 {
   CtkSettings *settings;
   DisplaySettings v;
@@ -2006,7 +2006,7 @@ ctk_settings_create_for_display (GdkDisplay *display)
 }
 
 static CtkSettings *
-ctk_settings_get_for_display (GdkDisplay *display)
+ctk_settings_get_for_display (CdkDisplay *display)
 {
   DisplaySettings *ds;
   int i;
@@ -2030,7 +2030,7 @@ ctk_settings_get_for_display (GdkDisplay *display)
 
 /**
  * ctk_settings_get_for_screen:
- * @screen: a #GdkScreen.
+ * @screen: a #CdkScreen.
  *
  * Gets the #CtkSettings object for @screen, creating it if necessary.
  *
@@ -2039,7 +2039,7 @@ ctk_settings_get_for_display (GdkDisplay *display)
  * Since: 2.2
  */
 CtkSettings *
-ctk_settings_get_for_screen (GdkScreen *screen)
+ctk_settings_get_for_screen (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -2058,7 +2058,7 @@ ctk_settings_get_for_screen (GdkScreen *screen)
 CtkSettings*
 ctk_settings_get_default (void)
 {
-  GdkDisplay *display = cdk_display_get_default ();
+  CdkDisplay *display = cdk_display_get_default ();
 
   if (display)
     return ctk_settings_get_for_display (display);
@@ -2366,7 +2366,7 @@ settings_install_property_parser (CtkSettingsClass   *class,
 CtkRcPropertyParser
 _ctk_rc_property_parser_from_type (GType type)
 {
-  if (type == g_type_from_name ("GdkColor"))
+  if (type == g_type_from_name ("CdkColor"))
     return ctk_rc_property_parse_color;
   else if (type == CTK_TYPE_REQUISITION)
     return ctk_rc_property_parse_requisition;
@@ -2606,7 +2606,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * ctk_rc_property_parse_color:
  * @pspec: a #GParamSpec
  * @gstring: the #GString to be parsed
- * @property_value: a #GValue which must hold #GdkColor values.
+ * @property_value: a #GValue which must hold #CdkColor values.
  *
  * A #CtkRcPropertyParser for use with ctk_settings_install_property_parser()
  * or ctk_widget_class_install_style_property_parser() which parses a
@@ -2616,14 +2616,14 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * between 0 and 1.
  *
  * Returns: %TRUE if @gstring could be parsed and @property_value
- * has been set to the resulting #GdkColor.
+ * has been set to the resulting #CdkColor.
  **/
 gboolean
 ctk_rc_property_parse_color (const GParamSpec *pspec,
                              const GString    *gstring,
                              GValue           *property_value)
 {
-  GdkColor color = { 0, 0, 0, 0, };
+  CdkColor color = { 0, 0, 0, 0, };
   GScanner *scanner;
   gboolean success;
 
@@ -2940,9 +2940,9 @@ ctk_rc_property_parse_border (const GParamSpec *pspec,
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 void
-_ctk_settings_handle_event (GdkEventSetting *event)
+_ctk_settings_handle_event (CdkEventSetting *event)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
   CtkSettings *settings;
   GParamSpec *pspec;
 
@@ -3016,7 +3016,7 @@ static void
 settings_update_double_click (CtkSettings *settings)
 {
   CtkSettingsPrivate *priv = settings->priv;
-  GdkDisplay *display = cdk_screen_get_display (priv->screen);
+  CdkDisplay *display = cdk_screen_get_display (priv->screen);
   gint double_click_time;
   gint double_click_distance;
 
@@ -3049,7 +3049,7 @@ settings_update_cursor_theme (CtkSettings *settings)
   gchar *theme = NULL;
   gint size = 0;
 #if defined(GDK_WINDOWING_X11) || defined(GDK_WINDOWING_WAYLAND) || defined(GDK_WINDOWING_WIN32)
-  GdkDisplay *display = cdk_screen_get_display (settings->priv->screen);
+  CdkDisplay *display = cdk_screen_get_display (settings->priv->screen);
 #endif
 
   g_object_get (settings,
@@ -3239,7 +3239,7 @@ settings_update_resolution (CtkSettings *settings)
 }
 
 static void
-settings_update_provider (GdkScreen       *screen,
+settings_update_provider (CdkScreen       *screen,
                           CtkCssProvider **old,
                           CtkCssProvider  *new)
 {
@@ -3353,7 +3353,7 @@ settings_update_key_theme (CtkSettings *settings)
 }
 
 
-GdkScreen *
+CdkScreen *
 _ctk_settings_get_screen (CtkSettings *settings)
 {
   return settings->priv->screen;

@@ -43,7 +43,7 @@ void    ctk_css_style_render_icon_surface       (CtkCssStyle            *style,
                                                  double                  y);
 
 void    ctk_css_style_render_icon_get_extents   (CtkCssStyle            *style,
-                                                 GdkRectangle           *extents,
+                                                 CdkRectangle           *extents,
                                                  gint                    x,
                                                  gint                    y,
                                                  gint                    width,

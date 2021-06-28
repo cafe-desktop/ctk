@@ -4564,10 +4564,10 @@ msgstr ""
 "གཟུགས་བརྙན་ ’%s’ དེ་ མངོན་གསལ་འབད་མ་ཚུགས།། གནད་དོན་ཧ་མ་གོ ངན་ཅན་གཟུགས་བརྙན་ཡིག་སྣོད་ཅིག་"
 "ཨིནམ་འོང་ནི་མས།"
 
-#~ msgid "Gdk debugging flags to set"
+#~ msgid "Cdk debugging flags to set"
 #~ msgstr "གཞི་སྒྲིག་འབད་ནི་ལུ་ ཇི་ཌི་ཀེ་གིས་ ཟུར་རྟགས་རྐྱེན་སེལ་རྐྱབ་དོ།"
 
-#~ msgid "Gdk debugging flags to unset"
+#~ msgid "Cdk debugging flags to unset"
 #~ msgstr "སྒྲིག་བཤོལ་འབད་ནི་ལུ་ ཇི་ཌི་ཀེ་གིས་ ཟུར་རྟགས་ཚུ་ རྐྱེན་སེལ་རྐྱབ་དོ།"
 
 #~ msgid "Image file '%s' contains no data"
@@ -5026,7 +5026,7 @@ msgstr ""
 #~ msgstr "ཊི་ཇི་ཨེ་གི་ སྐབས་འབབ་གཞི་བཀོད་ཀྱི་དོན་ལུ་ དྲན་ཚད་སྤྲོད་མི་ཚུགས་པས།"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "ཚིག་མཛོད་ཟུར་ཐོ་ འབྲི་མ་ཚུགས།\n"
 
 #, fuzzy

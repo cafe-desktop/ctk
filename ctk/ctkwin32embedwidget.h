@@ -48,7 +48,7 @@ struct _CtkWin32EmbedWidget
 {
   CtkWindow window;
 
-  GdkWindow *parent_window;
+  CdkWindow *parent_window;
   gpointer old_window_procedure;
 };
 

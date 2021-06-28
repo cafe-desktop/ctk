@@ -29,14 +29,14 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_BROADWAY_DISPLAY_MANAGER    (cdk_broadway_display_manager_get_type ())
-#define GDK_BROADWAY_DISPLAY_MANAGER(object) (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_DISPLAY_MANAGER, GdkBroadwayDisplayManager))
+#define GDK_BROADWAY_DISPLAY_MANAGER(object) (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_DISPLAY_MANAGER, CdkBroadwayDisplayManager))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkBroadwayDisplayManager GdkBroadwayDisplayManager;
+typedef struct _CdkBroadwayDisplayManager CdkBroadwayDisplayManager;
 #else
-typedef GdkDisplayManager _GdkBroadwayDisplayManager;
+typedef CdkDisplayManager _CdkBroadwayDisplayManager;
 #endif
-typedef struct _GdkDisplayManagerClass GdkBroadwayDisplayManagerClass;
+typedef struct _CdkDisplayManagerClass CdkBroadwayDisplayManagerClass;
 
 GDK_AVAILABLE_IN_ALL
 GType cdk_broadway_display_manager_get_type (void);

@@ -103,7 +103,7 @@ static GSList*
 test_find_widget_input_windows (CtkWidget *widget,
                                 gboolean   input_only)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   GList *node, *children;
   GSList *matches = NULL;
   gpointer udata;
@@ -125,7 +125,7 @@ test_find_widget_input_windows (CtkWidget *widget,
 
 static gboolean
 quit_main_loop_callback (CtkWidget     *widget,
-                         GdkFrameClock *frame_clock,
+                         CdkFrameClock *frame_clock,
                          gpointer       user_data)
 {
   ctk_main_quit ();
@@ -167,11 +167,11 @@ ctk_test_widget_wait_for_draw (CtkWidget *widget)
 /**
  * ctk_test_widget_send_key:
  * @widget: Widget to generate a key press and release on.
- * @keyval: A Gdk keyboard value.
+ * @keyval: A Cdk keyboard value.
  * @modifiers: Keyboard modifiers the event is setup with.
  *
  * This function will generate keyboard press and release events in
- * the middle of the first GdkWindow found that belongs to @widget.
+ * the middle of the first CdkWindow found that belongs to @widget.
  * For windowless widgets like #CtkButton (which returns %FALSE from
  * ctk_widget_get_has_window()), this will often be an
  * input-only event window. For other widgets, this is usually widget->window.
@@ -186,7 +186,7 @@ ctk_test_widget_wait_for_draw (CtkWidget *widget)
 gboolean
 ctk_test_widget_send_key (CtkWidget      *widget,
                           guint           keyval,
-                          GdkModifierType modifiers)
+                          CdkModifierType modifiers)
 {
   gboolean k1res, k2res;
   GSList *iwindows = test_find_widget_input_windows (widget, FALSE);
@@ -207,7 +207,7 @@ ctk_test_widget_send_key (CtkWidget      *widget,
  * @modifiers: Keyboard modifiers the event is setup with.
  *
  * This function will generate a @button click (button press and button
- * release event) in the middle of the first GdkWindow found that belongs
+ * release event) in the middle of the first CdkWindow found that belongs
  * to @widget.
  * For windowless widgets like #CtkButton (which returns %FALSE from
  * ctk_widget_get_has_window()), this will often be an
@@ -225,7 +225,7 @@ ctk_test_widget_send_key (CtkWidget      *widget,
 gboolean
 ctk_test_widget_click (CtkWidget      *widget,
                        guint           button,
-                       GdkModifierType modifiers)
+                       CdkModifierType modifiers)
 {
   gboolean b1res, b2res;
   GSList *iwindows = test_find_widget_input_windows (widget, FALSE);
@@ -260,7 +260,7 @@ ctk_test_spin_button_click (CtkSpinButton  *spinner,
                             guint           button,
                             gboolean        upwards)
 {
-  GdkWindow *down_panel = NULL, *up_panel = NULL, *panel;
+  CdkWindow *down_panel = NULL, *up_panel = NULL, *panel;
   gboolean b1res = FALSE, b2res = FALSE;
 
   _ctk_spin_button_get_panels (spinner, &down_panel, &up_panel);
@@ -749,7 +749,7 @@ ctk_test_list_all_types (guint *n_types)
 /**
  * ctk_test_register_all_types:
  *
- * Force registration of all core Ctk+ and Gdk object types.
+ * Force registration of all core Ctk+ and Cdk object types.
  * This allowes to refer to any of those object types via
  * g_type_from_name() after calling this function.
  *

@@ -210,7 +210,7 @@ _ctk_header_bar_update_window_icon (CtkHeaderBar *bar,
                                     CtkWindow    *window)
 {
   CtkHeaderBarPrivate *priv = ctk_header_bar_get_instance_private (bar);
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gint scale;
 
   if (priv->titlebar_icon == NULL)
@@ -1930,7 +1930,7 @@ ctk_header_bar_unrealize (CtkWidget *widget)
 
 static gboolean
 window_state_changed (CtkWidget           *window,
-                      GdkEventWindowState *event,
+                      CdkEventWindowState *event,
                       gpointer             data)
 {
   CtkHeaderBar *bar = CTK_HEADER_BAR (data);

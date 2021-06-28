@@ -829,7 +829,7 @@ draw_spinbutton (CtkWidget *widget,
   CtkStyleContext *down_context;
   CtkIconTheme *icon_theme;
   CtkIconInfo *icon_info;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gint icon_width, icon_height, icon_size;
   gint button_width;
   gint contents_x, contents_y, contents_width, contents_height;

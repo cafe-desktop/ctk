@@ -309,7 +309,7 @@ ctk_model_menu_item_set_accel (CtkModelMenuItem *item,
 {
   CtkWidget *child;
   GList *children;
-  GdkModifierType modifiers;
+  CdkModifierType modifiers;
   guint key;
 
   if (accel)
@@ -381,7 +381,7 @@ ctk_model_menu_item_get_accel (CtkModelMenuItem *item)
   if (accel_label)
     {
       guint key;
-      GdkModifierType mods;
+      CdkModifierType mods;
 
       ctk_accel_label_get_accel (CTK_ACCEL_LABEL (accel_label), &key, &mods);
 

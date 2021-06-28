@@ -87,7 +87,7 @@ static void ctk_cell_renderer_spinner_set_property (GObject         *object,
                                                     GParamSpec      *pspec);
 static void ctk_cell_renderer_spinner_get_size     (CtkCellRenderer *cell,
                                                     CtkWidget          *widget,
-                                                    const GdkRectangle *cell_area,
+                                                    const CdkRectangle *cell_area,
                                                     gint               *x_offset,
                                                     gint               *y_offset,
                                                     gint               *width,
@@ -95,8 +95,8 @@ static void ctk_cell_renderer_spinner_get_size     (CtkCellRenderer *cell,
 static void ctk_cell_renderer_spinner_render       (CtkCellRenderer      *cell,
                                                     cairo_t              *cr,
                                                     CtkWidget            *widget,
-                                                    const GdkRectangle   *background_area,
-                                                    const GdkRectangle   *cell_area,
+                                                    const CdkRectangle   *background_area,
+                                                    const CdkRectangle   *cell_area,
                                                     CtkCellRendererState  flags);
 
 G_DEFINE_TYPE_WITH_PRIVATE (CtkCellRendererSpinner, ctk_cell_renderer_spinner, CTK_TYPE_CELL_RENDERER)
@@ -270,7 +270,7 @@ ctk_cell_renderer_spinner_set_property (GObject      *object,
 static void
 ctk_cell_renderer_spinner_get_size (CtkCellRenderer    *cellr,
                                     CtkWidget          *widget,
-                                    const GdkRectangle *cell_area,
+                                    const CdkRectangle *cell_area,
                                     gint               *x_offset,
                                     gint               *y_offset,
                                     gint               *width,
@@ -329,21 +329,21 @@ static void
 ctk_cell_renderer_spinner_render (CtkCellRenderer      *cellr,
                                   cairo_t              *cr,
                                   CtkWidget            *widget,
-                                  const GdkRectangle   *background_area,
-                                  const GdkRectangle   *cell_area,
+                                  const CdkRectangle   *background_area,
+                                  const CdkRectangle   *cell_area,
                                   CtkCellRendererState  flags)
 {
   CtkCellRendererSpinner *cell = CTK_CELL_RENDERER_SPINNER (cellr);
   CtkCellRendererSpinnerPrivate *priv = cell->priv;
   CtkStateType state;
-  GdkRectangle pix_rect;
-  GdkRectangle draw_rect;
+  CdkRectangle pix_rect;
+  CdkRectangle draw_rect;
   gint xpad, ypad;
 
   if (!priv->active)
     return;
 
-  ctk_cell_renderer_spinner_get_size (cellr, widget, (GdkRectangle *) cell_area,
+  ctk_cell_renderer_spinner_get_size (cellr, widget, (CdkRectangle *) cell_area,
                                       &pix_rect.x, &pix_rect.y,
                                       &pix_rect.width, &pix_rect.height);
 

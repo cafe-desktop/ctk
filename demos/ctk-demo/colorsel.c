@@ -10,7 +10,7 @@
 
 static CtkWidget *window = NULL;
 static CtkWidget *da;
-static GdkRGBA color;
+static CdkRGBA color;
 static CtkWidget *frame;
 
 /* draw callback for the drawing area

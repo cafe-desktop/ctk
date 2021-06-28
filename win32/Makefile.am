@@ -3,11 +3,11 @@ include $(top_srcdir)/Makefile.decl
 if HAVE_INTROSPECTION
 GENERATED_ITEMS = \
 	introspection.body.mak	\
-	Gdk_3_0_gir_list		\
-	GdkWin32_3_0_gir_list	\
+	Cdk_3_0_gir_list		\
+	CdkWin32_3_0_gir_list	\
 	Ctk_3_0_gir_list
 
-MSVC_INTROSPECTION_INTERMEDIATE_FILES = Gdk-3.0.gir.msvc.introspect GdkWin32-3.0.gir.msvc.introspect Ctk-3.0.gir.msvc.introspect
+MSVC_INTROSPECTION_INTERMEDIATE_FILES = Cdk-3.0.gir.msvc.introspect CdkWin32-3.0.gir.msvc.introspect Ctk-3.0.gir.msvc.introspect
 
 introspection.body.mak: $(MSVC_INTROSPECTION_INTERMEDIATE_FILES)
 	-$(RM) introspection.body.mak

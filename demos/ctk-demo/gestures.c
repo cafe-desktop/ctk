@@ -15,7 +15,7 @@ static gboolean long_pressed = FALSE;
 
 static gboolean
 touchpad_swipe_gesture_begin (CtkGesture       *gesture,
-                              GdkEventSequence *sequence,
+                              CdkEventSequence *sequence,
                               CtkWidget        *widget)
 {
   /* Disallow touchscreen events here */
@@ -47,7 +47,7 @@ long_press_gesture_pressed (CtkGestureLongPress *gesture,
 
 static void
 long_press_gesture_end (CtkGesture       *gesture,
-                        GdkEventSequence *sequence,
+                        CdkEventSequence *sequence,
                         CtkWidget        *widget)
 {
   long_pressed = FALSE;

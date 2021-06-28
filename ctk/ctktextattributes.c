@@ -375,7 +375,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (&vals->appearance))
         {
-          GdkRGBA rgba;
+          CdkRGBA rgba;
 
           CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA (&vals->appearance, &rgba);
           CTK_TEXT_APPEARANCE_SET_UNDERLINE_RGBA (&dest->appearance, &rgba);
@@ -387,7 +387,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (&vals->appearance))
         {
-          GdkRGBA rgba;
+          CdkRGBA rgba;
 
           CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA (&vals->appearance, &rgba);
           CTK_TEXT_APPEARANCE_SET_STRIKETHROUGH_RGBA (&dest->appearance, &rgba);

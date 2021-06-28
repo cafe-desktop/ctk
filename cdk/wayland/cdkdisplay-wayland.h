@@ -54,18 +54,18 @@ G_BEGIN_DECLS
 
 #define GDK_ZWP_POINTER_GESTURES_V1_VERSION 1
 
-typedef struct _GdkWaylandSelection GdkWaylandSelection;
+typedef struct _CdkWaylandSelection CdkWaylandSelection;
 
-typedef enum _GdkWaylandShellVariant
+typedef enum _CdkWaylandShellVariant
 {
   GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL,
   GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6,
-} GdkWaylandShellVariant;
+} CdkWaylandShellVariant;
 
-struct _GdkWaylandDisplay
+struct _CdkWaylandDisplay
 {
-  GdkDisplay parent_instance;
-  GdkScreen *screen;
+  CdkDisplay parent_instance;
+  CdkScreen *screen;
 
   /* Startup notification */
   gchar *startup_notification_id;
@@ -75,7 +75,7 @@ struct _GdkWaylandDisplay
 
   uint32_t xdg_wm_base_id;
   uint32_t zxdg_shell_v6_id;
-  GdkWaylandShellVariant shell_variant;
+  CdkWaylandShellVariant shell_variant;
 
   /* Wayland fields below */
   struct wl_display *wl_display;
@@ -130,7 +130,7 @@ struct _GdkWaylandDisplay
 
   struct xkb_context *xkb_context;
 
-  GdkWaylandSelection *selection;
+  CdkWaylandSelection *selection;
 
   GPtrArray *monitors;
 
@@ -149,9 +149,9 @@ struct _GdkWaylandDisplay
   EGLint egl_min_swap_interval;
 };
 
-struct _GdkWaylandDisplayClass
+struct _CdkWaylandDisplayClass
 {
-  GdkDisplayClass parent_class;
+  CdkDisplayClass parent_class;
 };
 
 G_END_DECLS

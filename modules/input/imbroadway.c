@@ -34,7 +34,7 @@
 typedef struct _CtkIMContextBroadway
 {
   CtkIMContextSimple parent;
-  GdkWindow *client_window;
+  CdkWindow *client_window;
 } CtkIMContextBroadway;
 
 typedef struct _CtkIMContextBroadwayClass
@@ -66,7 +66,7 @@ static const CtkIMContextInfo *info_list[] =
 #endif
 
 static void
-broadway_set_client_window (CtkIMContext *context, GdkWindow *window)
+broadway_set_client_window (CtkIMContext *context, CdkWindow *window)
 {
   CtkIMContextBroadway *bw = CTK_IM_CONTEXT_BROADWAY (context);
 
@@ -77,7 +77,7 @@ static void
 broadway_focus_in (CtkIMContext *context)
 {
   CtkIMContextBroadway *bw = CTK_IM_CONTEXT_BROADWAY (context);
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   if (bw->client_window)
     {
@@ -90,7 +90,7 @@ static void
 broadway_focus_out (CtkIMContext *context)
 {
   CtkIMContextBroadway *bw = CTK_IM_CONTEXT_BROADWAY (context);
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   if (bw->client_window)
     {

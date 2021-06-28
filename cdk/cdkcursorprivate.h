@@ -29,25 +29,25 @@
 
 G_BEGIN_DECLS
 
-#define GDK_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_CURSOR, GdkCursorClass))
+#define GDK_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_CURSOR, CdkCursorClass))
 #define GDK_IS_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_CURSOR))
-#define GDK_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_CURSOR, GdkCursorClass))
+#define GDK_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_CURSOR, CdkCursorClass))
 
-typedef struct _GdkCursorClass GdkCursorClass;
+typedef struct _CdkCursorClass CdkCursorClass;
 
-struct _GdkCursor
+struct _CdkCursor
 {
   GObject parent_instance;
 
-  GdkDisplay *display;
-  GdkCursorType type;
+  CdkDisplay *display;
+  CdkCursorType type;
 };
 
-struct _GdkCursorClass
+struct _CdkCursorClass
 {
   GObjectClass parent_class;
 
-  cairo_surface_t * (* get_surface) (GdkCursor *cursor,
+  cairo_surface_t * (* get_surface) (CdkCursor *cursor,
 				     gdouble   *x_hot,
 				     gdouble   *y_hot);
 };

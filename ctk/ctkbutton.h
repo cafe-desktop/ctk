@@ -164,7 +164,7 @@ GDK_AVAILABLE_IN_3_6
 gboolean              ctk_button_get_always_show_image (CtkButton   *button);
 
 GDK_AVAILABLE_IN_ALL
-GdkWindow*            ctk_button_get_event_window   (CtkButton      *button);
+CdkWindow*            ctk_button_get_event_window   (CtkButton      *button);
 
 
 G_END_DECLS

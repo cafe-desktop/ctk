@@ -29,7 +29,7 @@ CtkCssValue *   ctk_css_palette_value_new_default       (void);
 
 CtkCssValue *   ctk_css_palette_value_parse             (CtkCssParser        *parser);
 
-const GdkRGBA * ctk_css_palette_value_get_color         (CtkCssValue         *value,
+const CdkRGBA * ctk_css_palette_value_get_color         (CtkCssValue         *value,
                                                          const char          *color_name);
 
 G_END_DECLS

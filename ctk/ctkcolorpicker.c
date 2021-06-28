@@ -40,7 +40,7 @@ ctk_color_picker_pick (CtkColorPicker      *picker,
   CTK_COLOR_PICKER_GET_INTERFACE (picker)->pick (picker, callback, user_data);
 }
 
-GdkRGBA *
+CdkRGBA *
 ctk_color_picker_pick_finish (CtkColorPicker  *picker,
                               GAsyncResult    *res,
                               GError         **error)

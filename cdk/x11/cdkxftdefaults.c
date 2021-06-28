@@ -147,9 +147,9 @@ get_integer_default (Display *dpy,
 }
 
 static void
-init_xft_settings (GdkScreen *screen)
+init_xft_settings (CdkScreen *screen)
 {
-  GdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
+  CdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
   Display *xdisplay = GDK_SCREEN_XDISPLAY (screen);
   double dpi_double;
   gboolean b;
@@ -180,11 +180,11 @@ init_xft_settings (GdkScreen *screen)
 }
 
 gboolean
-_cdk_x11_get_xft_setting (GdkScreen   *screen,
+_cdk_x11_get_xft_setting (CdkScreen   *screen,
 			  const gchar *name,
 			  GValue      *value)
 {
-  GdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
+  CdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
   
   if (strncmp (name, "ctk-xft-", 8) != 0)
     return FALSE;

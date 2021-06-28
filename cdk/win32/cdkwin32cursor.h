@@ -34,18 +34,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_WIN32_CURSOR              (cdk_win32_cursor_get_type ())
-#define GDK_WIN32_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_CURSOR, GdkWin32Cursor))
-#define GDK_WIN32_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_CURSOR, GdkWin32CursorClass))
+#define GDK_WIN32_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_CURSOR, CdkWin32Cursor))
+#define GDK_WIN32_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_CURSOR, CdkWin32CursorClass))
 #define GDK_IS_WIN32_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_CURSOR))
 #define GDK_IS_WIN32_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WIN32_CURSOR))
-#define GDK_WIN32_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_CURSOR, GdkWin32CursorClass))
+#define GDK_WIN32_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_CURSOR, CdkWin32CursorClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkWin32Cursor GdkWin32Cursor;
+typedef struct _CdkWin32Cursor CdkWin32Cursor;
 #else
-typedef GdkCursor GdkWin32Cursor;
+typedef CdkCursor CdkWin32Cursor;
 #endif
-typedef struct _GdkWin32CursorClass GdkWin32CursorClass;
+typedef struct _CdkWin32CursorClass CdkWin32CursorClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_win32_cursor_get_type          (void);

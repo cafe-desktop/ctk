@@ -7197,12 +7197,12 @@ msgstr "Druk na toetsdrukker"
 #~ msgid "Unable to locate theme engine in module_path: \"%s\","
 #~ msgstr "Kan nie tema-enjin vind in module _pad: \"%s\","
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Gdk-ontfoutvlaggies om te gebruik"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Cdk-ontfoutvlaggies om te gebruik"
 
 #, fuzzy
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Gdk-ontfoutvlaggies om te gebruik"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Cdk-ontfoutvlaggies om te gebruik"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "Beeldlêer '%s' bevat geen data nie"

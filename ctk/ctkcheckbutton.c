@@ -490,7 +490,7 @@ ctk_check_button_size_allocate (CtkWidget     *widget,
   CtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (widget));
   CtkButton *button = CTK_BUTTON (widget);
   CtkCssGadget *gadget;
-  GdkRectangle clip;
+  CdkRectangle clip;
   PangoContext *pango_context;
   PangoFontMetrics *metrics;
 

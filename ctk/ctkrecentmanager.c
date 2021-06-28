@@ -160,7 +160,7 @@ struct _CtkRecentInfo
 
   gboolean is_private;
 
-  GdkPixbuf *icon;
+  CdkPixbuf *icon;
 
   gint ref_count;
 };
@@ -1949,7 +1949,7 @@ ctk_recent_info_last_application (CtkRecentInfo *info)
   return g_strdup (name);
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 get_icon_for_mime_type (const gchar *mime_type,
                         gint         pixel_size)
 {
@@ -1957,7 +1957,7 @@ get_icon_for_mime_type (const gchar *mime_type,
   char *content_type;
   GIcon *icon;
   CtkIconInfo *info;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   icon_theme = ctk_icon_theme_get_default ();
 
@@ -1983,12 +1983,12 @@ get_icon_for_mime_type (const gchar *mime_type,
   return pixbuf;
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 get_icon_fallback (const gchar *icon_name,
                    gint         size)
 {
   CtkIconTheme *icon_theme;
-  GdkPixbuf *retval;
+  CdkPixbuf *retval;
 
   icon_theme = ctk_icon_theme_get_default ();
 
@@ -2008,16 +2008,16 @@ get_icon_fallback (const gchar *icon_name,
  *
  * Retrieves the icon of size @size associated to the resource MIME type.
  *
- * Returns: (nullable) (transfer full): a #GdkPixbuf containing the icon,
+ * Returns: (nullable) (transfer full): a #CdkPixbuf containing the icon,
  *     or %NULL. Use g_object_unref() when finished using the icon.
  *
  * Since: 2.10
  */
-GdkPixbuf *
+CdkPixbuf *
 ctk_recent_info_get_icon (CtkRecentInfo *info,
                           gint           size)
 {
-  GdkPixbuf *retval = NULL;
+  CdkPixbuf *retval = NULL;
 
   g_return_val_if_fail (info != NULL, NULL);
 

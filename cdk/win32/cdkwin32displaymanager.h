@@ -27,18 +27,18 @@
 G_BEGIN_DECLS
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkWin32DisplayManager GdkWin32DisplayManager;
+typedef struct _CdkWin32DisplayManager CdkWin32DisplayManager;
 #else
-typedef GdkDisplayManager GdkWin32DisplayManager;
+typedef CdkDisplayManager CdkWin32DisplayManager;
 #endif
-typedef struct _GdkWin32DisplayManagerClass GdkWin32DisplayManagerClass;
+typedef struct _CdkWin32DisplayManagerClass CdkWin32DisplayManagerClass;
 
 #define GDK_TYPE_WIN32_DISPLAY_MANAGER              (cdk_win32_display_manager_get_type())
-#define GDK_WIN32_DISPLAY_MANAGER(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_DISPLAY_MANAGER, GdkWin32DisplayManager))
-#define GDK_WIN32_DISPLAY_MANAGER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_DISPLAY_MANAGER, GdkWin32DisplayManagerClass))
+#define GDK_WIN32_DISPLAY_MANAGER(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_DISPLAY_MANAGER, CdkWin32DisplayManager))
+#define GDK_WIN32_DISPLAY_MANAGER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_DISPLAY_MANAGER, CdkWin32DisplayManagerClass))
 #define GDK_IS_WIN32_DISPLAY_MANAGER(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_DISPLAY_MANAGER))
 #define GDK_IS_WIN32_DISPLAY_MANAGER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WIN32_DISPLAY_MANAGER))
-#define GDK_WIN32_DISPLAY_MANAGER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_DISPLAY_MANAGER, GdkWin32DisplayManagerClass))
+#define GDK_WIN32_DISPLAY_MANAGER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_DISPLAY_MANAGER, CdkWin32DisplayManagerClass))
 
 GDK_AVAILABLE_IN_ALL
 GType      cdk_win32_display_manager_get_type            (void);

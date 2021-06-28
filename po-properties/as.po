@@ -775,8 +775,8 @@ msgid "Pixbuf"
 msgstr "পিক্সবাফ"
 
 #: ../ctk/deprecated/ctkstatusicon.c:225 ../ctk/ctkimage.c:231
-msgid "A GdkPixbuf to display"
-msgstr "প্ৰদৰ্শনেৰ বাবে এটা GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "প্ৰদৰ্শনেৰ বাবে এটা CdkPixbuf"
 
 #: ../ctk/deprecated/ctkstatusicon.c:232 ../ctk/ctkimage.c:246
 #: ../ctk/ctkrecentmanager.c:292
@@ -2142,16 +2142,16 @@ msgid "Cell background color"
 msgstr "কোষৰ পটভূমিৰ ৰং"
 
 #: ../ctk/ctkcellrenderer.c:403
-msgid "Cell background color as a GdkColor"
-msgstr "GdkColor হিচাপে কোষৰ পটভূমিৰ ৰং"
+msgid "Cell background color as a CdkColor"
+msgstr "CdkColor হিচাপে কোষৰ পটভূমিৰ ৰং"
 
 #: ../ctk/ctkcellrenderer.c:417
 msgid "Cell background RGBA color"
 msgstr "কোষৰ পটভূমিৰ RGBA ৰং"
 
 #: ../ctk/ctkcellrenderer.c:418
-msgid "Cell background color as a GdkRGBA"
-msgstr "GdkRGBA হিচাপে কোষৰ পটভূমিৰ ৰং"
+msgid "Cell background color as a CdkRGBA"
+msgstr "CdkRGBA হিচাপে কোষৰ পটভূমিৰ ৰং"
 
 #: ../ctk/ctkcellrenderer.c:425
 msgid "Editing"
@@ -2396,7 +2396,7 @@ msgstr "পটভূমিৰ ৰং"
 
 #: ../ctk/ctkcellrenderertext.c:303 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:220
-msgid "Background color as a GdkColor"
+msgid "Background color as a CdkColor"
 msgstr "জিডিকে-কালাৰ হিচাপে পটভূমিৰ ৰং"
 
 #: ../ctk/ctkcellrenderertext.c:318
@@ -2405,8 +2405,8 @@ msgstr "RGBA হিচাপে পটভূমিৰ ৰঙ"
 
 #: ../ctk/ctkcellrenderertext.c:319 ../ctk/ctkcellview.c:220
 #: ../ctk/ctktexttag.c:235
-msgid "Background color as a GdkRGBA"
-msgstr "GdkRGBA হিচাপে পটভূমিৰ ৰং"
+msgid "Background color as a CdkRGBA"
+msgstr "CdkRGBA হিচাপে পটভূমিৰ ৰং"
 
 #: ../ctk/ctkcellrenderertext.c:325 ../ctk/ctktexttag.c:250
 msgid "Foreground color name"
@@ -2417,16 +2417,16 @@ msgid "Foreground color as a string"
 msgstr "পংক্তি হিচাপে পুৰভূমিৰ ৰং"
 
 #: ../ctk/ctkcellrenderertext.c:342 ../ctk/ctktexttag.c:266
-msgid "Foreground color as a GdkColor"
-msgstr "GdkColor হিচাপে পুৰভূমিৰ ৰং"
+msgid "Foreground color as a CdkColor"
+msgstr "CdkColor হিচাপে পুৰভূমিৰ ৰং"
 
 #: ../ctk/ctkcellrenderertext.c:357
 msgid "Foreground color as RGBA"
 msgstr " RGBA হিচাপে পুৰভূমিৰ ৰং"
 
 #: ../ctk/ctkcellrenderertext.c:358 ../ctk/ctktexttag.c:281
-msgid "Foreground color as a GdkRGBA"
-msgstr " GdkRGBA হিচাপে পুৰভূমিৰ ৰং"
+msgid "Foreground color as a CdkRGBA"
+msgstr " CdkRGBA হিচাপে পুৰভূমিৰ ৰং"
 
 #: ../ctk/ctkcellrenderertext.c:366 ../ctk/ctkentry.c:789
 #: ../ctk/ctktexttag.c:297 ../ctk/ctktextview.c:748
@@ -2896,8 +2896,8 @@ msgid "Color"
 msgstr "ৰঙ"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "বৰ্তমান ৰঙ, এটা GdkRGBA হিচাপে"
+msgid "Current color, as a CdkRGBA"
+msgstr "বৰ্তমান ৰঙ, এটা CdkRGBA হিচাপে"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4089,8 +4089,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "ভঙ্গি ট্ৰিগাৰ কৰিবলে প্ৰয়োজনীয় বিন্দুসমূহৰ সংখ্যা"
 
 #: ../ctk/ctkgesture.c:712 ../ctk/ctkgesture.c:713
-msgid "GdkWindow to receive events about"
-msgstr "চিহ্নিত বস্তুৰ ঘটনাবোৰ গ্ৰহণ কৰিবলে GdkWindow"
+msgid "CdkWindow to receive events about"
+msgstr "চিহ্নিত বস্তুৰ ঘটনাবোৰ গ্ৰহণ কৰিবলে CdkWindow"
 
 #: ../ctk/ctkgesturepan.c:238
 #| msgid "Allow folder creation"
@@ -4386,8 +4386,8 @@ msgid "Animation"
 msgstr "এনিমেষণ"
 
 #: ../ctk/ctkimage.c:310
-msgid "GdkPixbufAnimation to display"
-msgstr "যি GdkPixbufAnimation প্ৰদৰ্শন কৰা হ'ব"
+msgid "CdkPixbufAnimation to display"
+msgstr "যি CdkPixbufAnimation প্ৰদৰ্শন কৰা হ'ব"
 
 #: ../ctk/ctkimage.c:357
 msgid "Resource"
@@ -7179,16 +7179,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "স্ট্যাটাসবাৰ লিখনিৰ চাৰপাশে প্ৰদৰ্শিত বেভেলৰ ধৰণ"
 
 #: ../ctk/ctkstylecontext.c:252
-msgid "The associated GdkScreen"
-msgstr "সংযুক্ত GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "সংযুক্ত CdkScreen"
 
 #: ../ctk/ctkstylecontext.c:258
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ../ctk/ctkstylecontext.c:259
-msgid "The associated GdkFrameClock"
-msgstr "সংযুক্ত GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "সংযুক্ত CdkFrameClock"
 
 #: ../ctk/ctkstylecontext.c:266 ../ctk/ctktexttag.c:288
 msgid "Text direction"
@@ -7468,16 +7468,16 @@ msgid "Paragraph background color"
 msgstr "অনুচ্ছেদেৰ পটভূমিৰ ৰং"
 
 #: ../ctk/ctktexttag.c:583
-msgid "Paragraph background color as a GdkColor"
-msgstr "এটা GdkColor হিচাপে দফা পটভূমীৰ ৰঙ"
+msgid "Paragraph background color as a CdkColor"
+msgstr "এটা CdkColor হিচাপে দফা পটভূমীৰ ৰঙ"
 
 #: ../ctk/ctktexttag.c:597
 msgid "Paragraph background RGBA"
 msgstr "দফাৰ পটভূমিৰ RGBA"
 
 #: ../ctk/ctktexttag.c:598
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "GdkRGBA হিচাপে দফাৰ পটভূমী RGBA "
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "CdkRGBA হিচাপে দফাৰ পটভূমী RGBA "
 
 #: ../ctk/ctktexttag.c:616
 msgid "Margin Accumulates"
@@ -8360,9 +8360,9 @@ msgid "Events"
 msgstr "ঘটনাসমূহ "
 
 #: ../ctk/ctkwidget.c:1354
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"যি ইভেন্ট মাস্কটি নিৰ্ধাৰণ কৰি এই উইজেটটি কি ধৰনেৰ GdkEvents গ্ৰহণ কৰিব পাৰে"
+"যি ইভেন্ট মাস্কটি নিৰ্ধাৰণ কৰি এই উইজেটটি কি ধৰনেৰ CdkEvents গ্ৰহণ কৰিব পাৰে"
 
 #: ../ctk/ctkwidget.c:1361
 msgid "No show all"

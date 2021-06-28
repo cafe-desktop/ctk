@@ -284,8 +284,8 @@ static const char * trashcan_open_xpm[] = {
 "                                                                ",
 "                                                                "};
 
-GdkPixbuf *trashcan_open;
-GdkPixbuf *trashcan_closed;
+CdkPixbuf *trashcan_open;
+CdkPixbuf *trashcan_closed;
 
 gboolean have_drag;
 
@@ -304,7 +304,7 @@ static guint n_targets = sizeof(target_table) / sizeof(target_table[0]);
 
 void  
 target_drag_leave	   (CtkWidget	       *widget,
-			    GdkDragContext     *context,
+			    CdkDragContext     *context,
 			    guint               time)
 {
   g_print("leave\n");
@@ -314,7 +314,7 @@ target_drag_leave	   (CtkWidget	       *widget,
 
 gboolean
 target_drag_motion	   (CtkWidget	       *widget,
-			    GdkDragContext     *context,
+			    CdkDragContext     *context,
 			    gint                x,
 			    gint                y,
 			    guint               time)
@@ -350,7 +350,7 @@ target_drag_motion	   (CtkWidget	       *widget,
 
 gboolean
 target_drag_drop	   (CtkWidget	       *widget,
-			    GdkDragContext     *context,
+			    CdkDragContext     *context,
 			    gint                x,
 			    gint                y,
 			    guint               time)
@@ -373,7 +373,7 @@ target_drag_drop	   (CtkWidget	       *widget,
 
 void  
 target_drag_data_received  (CtkWidget          *widget,
-			    GdkDragContext     *context,
+			    CdkDragContext     *context,
 			    gint                x,
 			    gint                y,
 			    CtkSelectionData   *selection_data,
@@ -393,7 +393,7 @@ target_drag_data_received  (CtkWidget          *widget,
   
 void  
 label_drag_data_received  (CtkWidget          *widget,
-			    GdkDragContext     *context,
+			    CdkDragContext     *context,
 			    gint                x,
 			    gint                y,
 			    CtkSelectionData   *selection_data,
@@ -413,7 +413,7 @@ label_drag_data_received  (CtkWidget          *widget,
 
 void  
 source_drag_data_get  (CtkWidget          *widget,
-		       GdkDragContext     *context,
+		       CdkDragContext     *context,
 		       CtkSelectionData   *selection_data,
 		       guint               info,
 		       guint               time,
@@ -451,7 +451,7 @@ popdown_cb (gpointer data)
 
 gboolean
 popup_motion	   (CtkWidget	       *widget,
-		    GdkDragContext     *context,
+		    CdkDragContext     *context,
 		    gint                x,
 		    gint                y,
 		    guint               time)
@@ -472,7 +472,7 @@ popup_motion	   (CtkWidget	       *widget,
 
 void  
 popup_leave	   (CtkWidget	       *widget,
-		    GdkDragContext     *context,
+		    CdkDragContext     *context,
 		    guint               time)
 {
   if (in_popup)
@@ -540,7 +540,7 @@ popup_cb (gpointer data)
 
 gboolean
 popsite_motion	   (CtkWidget	       *widget,
-		    GdkDragContext     *context,
+		    CdkDragContext     *context,
 		    gint                x,
 		    gint                y,
 		    guint               time)
@@ -553,7 +553,7 @@ popsite_motion	   (CtkWidget	       *widget,
 
 void  
 popsite_leave	   (CtkWidget	       *widget,
-		    GdkDragContext     *context,
+		    CdkDragContext     *context,
 		    guint               time)
 {
   if (popup_timer)
@@ -565,7 +565,7 @@ popsite_leave	   (CtkWidget	       *widget,
 
 void  
 source_drag_data_delete  (CtkWidget          *widget,
-			  GdkDragContext     *context,
+			  CdkDragContext     *context,
 			  gpointer            data)
 {
   g_print ("Delete the data!\n");
@@ -586,7 +586,7 @@ main (int argc, char **argv)
   CtkWidget *label;
   CtkWidget *pixmap;
   CtkWidget *button;
-  GdkPixbuf *drag_icon;
+  CdkPixbuf *drag_icon;
 
   test_init ();
   

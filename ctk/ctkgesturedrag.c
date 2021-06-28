@@ -60,7 +60,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (CtkGestureDrag, ctk_gesture_drag, CTK_TYPE_GESTURE_S
 
 static gboolean
 ctk_gesture_drag_filter_event (CtkEventController *controller,
-                               const GdkEvent     *event)
+                               const CdkEvent     *event)
 {
   /* Let touchpad swipe events go through, only if they match n-points  */
   if (event->type == GDK_TOUCHPAD_SWIPE)
@@ -80,10 +80,10 @@ ctk_gesture_drag_filter_event (CtkEventController *controller,
 
 static void
 ctk_gesture_drag_begin (CtkGesture       *gesture,
-                        GdkEventSequence *sequence)
+                        CdkEventSequence *sequence)
 {
   CtkGestureDragPrivate *priv;
-  GdkEventSequence *current;
+  CdkEventSequence *current;
 
   current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
 
@@ -97,7 +97,7 @@ ctk_gesture_drag_begin (CtkGesture       *gesture,
 
 static void
 ctk_gesture_drag_update (CtkGesture       *gesture,
-                         GdkEventSequence *sequence)
+                         CdkEventSequence *sequence)
 {
   CtkGestureDragPrivate *priv;
   gdouble x, y;
@@ -112,10 +112,10 @@ ctk_gesture_drag_update (CtkGesture       *gesture,
 
 static void
 ctk_gesture_drag_end (CtkGesture       *gesture,
-                      GdkEventSequence *sequence)
+                      CdkEventSequence *sequence)
 {
   CtkGestureDragPrivate *priv;
-  GdkEventSequence *current;
+  CdkEventSequence *current;
   gdouble x, y;
 
   current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
@@ -250,7 +250,7 @@ ctk_gesture_drag_get_start_point (CtkGestureDrag *gesture,
                                   gdouble        *y)
 {
   CtkGestureDragPrivate *priv;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
 
   g_return_val_if_fail (CTK_IS_GESTURE_DRAG (gesture), FALSE);
 
@@ -290,7 +290,7 @@ ctk_gesture_drag_get_offset (CtkGestureDrag *gesture,
                              gdouble        *y)
 {
   CtkGestureDragPrivate *priv;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
 
   g_return_val_if_fail (CTK_IS_GESTURE_DRAG (gesture), FALSE);
 

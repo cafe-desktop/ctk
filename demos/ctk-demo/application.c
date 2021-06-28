@@ -482,7 +482,7 @@ demo_application_window_size_allocate (CtkWidget     *widget,
 
 static gboolean
 demo_application_window_state_event (CtkWidget           *widget,
-                                     GdkEventWindowState *event)
+                                     CdkEventWindowState *event)
 {
   DemoApplicationWindow *window = (DemoApplicationWindow *)widget;
   gboolean res = GDK_EVENT_PROPAGATE;

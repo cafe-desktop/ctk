@@ -35,7 +35,7 @@
  * @Short_description: RGBA colors
  * @Title: RGBA Colors
  *
- * #GdkRGBA is a convenient way to pass rgba colors around.
+ * #CdkRGBA is a convenient way to pass rgba colors around.
  * It’s based on cairo’s way to deal with colors and mirrors its behavior.
  * All values are in the range from 0.0 to 1.0 inclusive. So the color
  * (0.0, 0.0, 0.0, 0.0) represents transparent black and
@@ -43,51 +43,51 @@
  * to this range when drawing.
  */
 
-G_DEFINE_BOXED_TYPE (GdkRGBA, cdk_rgba,
+G_DEFINE_BOXED_TYPE (CdkRGBA, cdk_rgba,
                      cdk_rgba_copy, cdk_rgba_free)
 
 /**
- * GdkRGBA:
+ * CdkRGBA:
  * @red: The intensity of the red channel from 0.0 to 1.0 inclusive
  * @green: The intensity of the green channel from 0.0 to 1.0 inclusive
  * @blue: The intensity of the blue channel from 0.0 to 1.0 inclusive
  * @alpha: The opacity of the color from 0.0 for completely translucent to
  *   1.0 for opaque
  *
- * A #GdkRGBA is used to represent a (possibly translucent)
+ * A #CdkRGBA is used to represent a (possibly translucent)
  * color, in a way that is compatible with cairo’s notion of color.
  */
 
 /**
  * cdk_rgba_copy:
- * @rgba: a #GdkRGBA
+ * @rgba: a #CdkRGBA
  *
- * Makes a copy of a #GdkRGBA.
+ * Makes a copy of a #CdkRGBA.
  *
  * The result must be freed through cdk_rgba_free().
  *
- * Returns: A newly allocated #GdkRGBA, with the same contents as @rgba
+ * Returns: A newly allocated #CdkRGBA, with the same contents as @rgba
  *
  * Since: 3.0
  */
-GdkRGBA *
-cdk_rgba_copy (const GdkRGBA *rgba)
+CdkRGBA *
+cdk_rgba_copy (const CdkRGBA *rgba)
 {
-  return g_slice_dup (GdkRGBA, rgba);
+  return g_slice_dup (CdkRGBA, rgba);
 }
 
 /**
  * cdk_rgba_free:
- * @rgba: a #GdkRGBA
+ * @rgba: a #CdkRGBA
  *
- * Frees a #GdkRGBA created with cdk_rgba_copy()
+ * Frees a #CdkRGBA created with cdk_rgba_copy()
  *
  * Since: 3.0
  */
 void
-cdk_rgba_free (GdkRGBA *rgba)
+cdk_rgba_free (CdkRGBA *rgba)
 {
-  g_slice_free (GdkRGBA, rgba);
+  g_slice_free (CdkRGBA, rgba);
 }
 
 #define SKIP_WHITESPACES(s) while (*(s) == ' ') (s)++;
@@ -134,11 +134,11 @@ parse_rgb_value (const gchar  *str,
 
 /**
  * cdk_rgba_parse:
- * @rgba: the #GdkRGBA to fill in
+ * @rgba: the #CdkRGBA to fill in
  * @spec: the string specifying the color
  *
  * Parses a textual representation of a color, filling in
- * the @red, @green, @blue and @alpha fields of the @rgba #GdkRGBA.
+ * the @red, @green, @blue and @alpha fields of the @rgba #CdkRGBA.
  *
  * The string can be either one of:
  * - A standard name (Taken from the X11 rgb.txt file).
@@ -158,7 +158,7 @@ parse_rgb_value (const gchar  *str,
  * Since: 3.0
  */
 gboolean
-cdk_rgba_parse (GdkRGBA     *rgba,
+cdk_rgba_parse (CdkRGBA     *rgba,
                 const gchar *spec)
 {
   gboolean has_alpha;
@@ -279,10 +279,10 @@ cdk_rgba_parse (GdkRGBA     *rgba,
 
 /**
  * cdk_rgba_hash:
- * @p: (type GdkRGBA): a #GdkRGBA pointer
+ * @p: (type CdkRGBA): a #CdkRGBA pointer
  *
  * A hash function suitable for using for a hash
- * table that stores #GdkRGBAs.
+ * table that stores #CdkRGBAs.
  *
  * Returns: The hash value for @p
  *
@@ -291,7 +291,7 @@ cdk_rgba_parse (GdkRGBA     *rgba,
 guint
 cdk_rgba_hash (gconstpointer p)
 {
-  const GdkRGBA *rgba = p;
+  const CdkRGBA *rgba = p;
 
   return ((guint) (rgba->red * 65535) +
           ((guint) (rgba->green * 65535) << 11) +
@@ -301,8 +301,8 @@ cdk_rgba_hash (gconstpointer p)
 
 /**
  * cdk_rgba_equal:
- * @p1: (type GdkRGBA): a #GdkRGBA pointer
- * @p2: (type GdkRGBA): another #GdkRGBA pointer
+ * @p1: (type CdkRGBA): a #CdkRGBA pointer
+ * @p2: (type CdkRGBA): another #CdkRGBA pointer
  *
  * Compares two RGBA colors.
  *
@@ -314,7 +314,7 @@ gboolean
 cdk_rgba_equal (gconstpointer p1,
                 gconstpointer p2)
 {
-  const GdkRGBA *rgba1, *rgba2;
+  const CdkRGBA *rgba1, *rgba2;
 
   rgba1 = p1;
   rgba2 = p2;
@@ -330,7 +330,7 @@ cdk_rgba_equal (gconstpointer p1,
 
 /**
  * cdk_rgba_to_string:
- * @rgba: a #GdkRGBA
+ * @rgba: a #CdkRGBA
  *
  * Returns a textual specification of @rgba in the form
  * `rgb(r,g,b)` or
@@ -353,7 +353,7 @@ cdk_rgba_equal (gconstpointer p1,
  * Since: 3.0
  */
 gchar *
-cdk_rgba_to_string (const GdkRGBA *rgba)
+cdk_rgba_to_string (const CdkRGBA *rgba)
 {
   if (rgba->alpha > 0.999)
     {

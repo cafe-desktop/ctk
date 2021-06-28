@@ -82,7 +82,7 @@ static void ctk_cell_renderer_set_property  (GObject              *object,
 					     const GValue         *value,
 					     GParamSpec           *pspec);
 static void set_cell_bg_color               (CtkCellRenderer      *cell,
-					     GdkRGBA              *rgba);
+					     CdkRGBA              *rgba);
 
 /* Fallback CtkCellRenderer    implementation to use remaining ->get_size() implementations */
 static CtkSizeRequestMode ctk_cell_renderer_real_get_request_mode(CtkCellRenderer         *cell);
@@ -107,8 +107,8 @@ static void ctk_cell_renderer_real_get_preferred_width_for_height(CtkCellRendere
 static void ctk_cell_renderer_real_get_aligned_area              (CtkCellRenderer         *cell,
 								  CtkWidget               *widget,
 								  CtkCellRendererState     flags,
-								  const GdkRectangle      *cell_area,
-								  GdkRectangle            *aligned_area);
+								  const CdkRectangle      *cell_area,
+								  CdkRectangle            *aligned_area);
 
 
 struct _CtkCellRendererPrivate
@@ -130,7 +130,7 @@ struct _CtkCellRendererPrivate
   guint sensitive           : 1;
   guint editing             : 1;
 
-  GdkRGBA cell_background;
+  CdkRGBA cell_background;
 };
 
 struct _CtkCellRendererClassPrivate
@@ -398,7 +398,7 @@ ctk_cell_renderer_class_init (CtkCellRendererClass *class)
   /**
    * CtkCellRenderer:cell-background-cdk:
    *
-   * Cell background as a #GdkColor
+   * Cell background as a #CdkColor
    *
    * Deprecated: 3.4: Use #CtkCellRenderer:cell-background-rgba instead.
    */
@@ -407,14 +407,14 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 				   PROP_CELL_BACKGROUND_GDK,
 				   g_param_spec_boxed ("cell-background-cdk",
 						       P_("Cell background color"),
-						       P_("Cell background color as a GdkColor"),
+						       P_("Cell background color as a CdkColor"),
 						       GDK_TYPE_COLOR,
 						       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkCellRenderer:cell-background-rgba:
    *
-   * Cell background as a #GdkRGBA
+   * Cell background as a #CdkRGBA
    *
    * Since: 3.0
    */
@@ -422,7 +422,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 				   PROP_CELL_BACKGROUND_RGBA,
 				   g_param_spec_boxed ("cell-background-rgba",
 						       P_("Cell background RGBA color"),
-						       P_("Cell background color as a GdkRGBA"),
+						       P_("Cell background color as a CdkRGBA"),
 						       GDK_TYPE_RGBA,
 						       CTK_PARAM_READWRITE));
 
@@ -535,7 +535,7 @@ ctk_cell_renderer_get_property (GObject     *object,
       break;
     case PROP_CELL_BACKGROUND_GDK:
       {
-	GdkColor color;
+	CdkColor color;
 
 	color.red = (guint16) (priv->cell_background.red * 65535);
 	color.green = (guint16) (priv->cell_background.green * 65535);
@@ -648,7 +648,7 @@ ctk_cell_renderer_set_property (GObject      *object,
       break;
     case PROP_CELL_BACKGROUND:
       {
-        GdkRGBA rgba;
+        CdkRGBA rgba;
 
         if (!g_value_get_string (value))
           set_cell_bg_color (cell, NULL);
@@ -662,12 +662,12 @@ ctk_cell_renderer_set_property (GObject      *object,
       break;
     case PROP_CELL_BACKGROUND_GDK:
       {
-        GdkColor *color;
+        CdkColor *color;
 
         color = g_value_get_boxed (value);
         if (color)
           {
-            GdkRGBA rgba;
+            CdkRGBA rgba;
 
             rgba.red = color->red / 65535.;
             rgba.green = color->green / 65535.;
@@ -701,7 +701,7 @@ ctk_cell_renderer_set_property (GObject      *object,
 
 static void
 set_cell_bg_color (CtkCellRenderer *cell,
-                   GdkRGBA         *rgba)
+                   CdkRGBA         *rgba)
 {
   CtkCellRendererPrivate *priv = cell->priv;
 
@@ -750,7 +750,7 @@ set_cell_bg_color (CtkCellRenderer *cell,
 void
 ctk_cell_renderer_get_size (CtkCellRenderer    *cell,
 			    CtkWidget          *widget,
-			    const GdkRectangle *cell_area,
+			    const CdkRectangle *cell_area,
 			    gint               *x_offset,
 			    gint               *y_offset,
 			    gint               *width,
@@ -795,8 +795,8 @@ void
 ctk_cell_renderer_render (CtkCellRenderer      *cell,
                           cairo_t              *cr,
                           CtkWidget            *widget,
-                          const GdkRectangle   *background_area,
-                          const GdkRectangle   *cell_area,
+                          const CdkRectangle   *background_area,
+                          const CdkRectangle   *cell_area,
                           CtkCellRendererState  flags)
 {
   gboolean selected = FALSE;
@@ -843,7 +843,7 @@ ctk_cell_renderer_render (CtkCellRenderer      *cell,
 /**
  * ctk_cell_renderer_activate:
  * @cell: a #CtkCellRenderer
- * @event: a #GdkEvent
+ * @event: a #CdkEvent
  * @widget: widget that received the event
  * @path: widget-dependent string representation of the event location; 
  *    e.g. for #CtkTreeView, a string representation of #CtkTreePath
@@ -859,11 +859,11 @@ ctk_cell_renderer_render (CtkCellRenderer      *cell,
  **/
 gboolean
 ctk_cell_renderer_activate (CtkCellRenderer      *cell,
-			    GdkEvent             *event,
+			    CdkEvent             *event,
 			    CtkWidget            *widget,
 			    const gchar          *path,
-			    const GdkRectangle   *background_area,
-			    const GdkRectangle   *cell_area,
+			    const CdkRectangle   *background_area,
+			    const CdkRectangle   *cell_area,
 			    CtkCellRendererState  flags)
 {
   CtkCellRendererPrivate *priv;
@@ -882,15 +882,15 @@ ctk_cell_renderer_activate (CtkCellRenderer      *cell,
 						       event,
 						       widget,
 						       path,
-						       (GdkRectangle *) background_area,
-						       (GdkRectangle *) cell_area,
+						       (CdkRectangle *) background_area,
+						       (CdkRectangle *) cell_area,
 						       flags);
 }
 
 /**
  * ctk_cell_renderer_start_editing:
  * @cell: a #CtkCellRenderer
- * @event: (nullable): a #GdkEvent
+ * @event: (nullable): a #CdkEvent
  * @widget: widget that received the event
  * @path: widget-dependent string representation of the event location;
  *    e.g. for #CtkTreeView, a string representation of #CtkTreePath
@@ -906,11 +906,11 @@ ctk_cell_renderer_activate (CtkCellRenderer      *cell,
  **/
 CtkCellEditable *
 ctk_cell_renderer_start_editing (CtkCellRenderer      *cell,
-				 GdkEvent             *event,
+				 CdkEvent             *event,
 				 CtkWidget            *widget,
 				 const gchar          *path,
-				 const GdkRectangle   *background_area,
-				 const GdkRectangle   *cell_area,
+				 const CdkRectangle   *background_area,
+				 const CdkRectangle   *cell_area,
 				 CtkCellRendererState  flags)
 
 {
@@ -931,8 +931,8 @@ ctk_cell_renderer_start_editing (CtkCellRenderer      *cell,
 								event,
 								widget,
 								path,
-								(GdkRectangle *) background_area,
-								(GdkRectangle *) cell_area,
+								(CdkRectangle *) background_area,
+								(CdkRectangle *) cell_area,
 								flags);
   if (editable == NULL)
     return NULL;
@@ -1395,8 +1395,8 @@ static void
 ctk_cell_renderer_real_get_aligned_area (CtkCellRenderer         *cell,
 					 CtkWidget               *widget,
 					 CtkCellRendererState     flags,
-					 const GdkRectangle      *cell_area,
-					 GdkRectangle            *aligned_area)
+					 const CdkRectangle      *cell_area,
+					 CdkRectangle            *aligned_area)
 {
   gint opposite_size, x_offset, y_offset;
   gint natural_size;
@@ -1456,7 +1456,7 @@ ctk_cell_renderer_real_get_aligned_area (CtkCellRenderer         *cell,
  */
 void
 _ctk_cell_renderer_calc_offset    (CtkCellRenderer      *cell,
-				   const GdkRectangle   *cell_area,
+				   const CdkRectangle   *cell_area,
 				   CtkTextDirection      direction,
 				   gint                  width,
 				   gint                  height,
@@ -1780,8 +1780,8 @@ void
 ctk_cell_renderer_get_aligned_area (CtkCellRenderer      *cell,
 				    CtkWidget            *widget,
 				    CtkCellRendererState  flags,
-				    const GdkRectangle   *cell_area,
-				    GdkRectangle         *aligned_area)
+				    const CdkRectangle   *cell_area,
+				    CdkRectangle         *aligned_area)
 {
   CtkCellRendererClass *klass;
 

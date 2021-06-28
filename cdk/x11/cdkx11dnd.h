@@ -27,18 +27,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_X11_DRAG_CONTEXT              (cdk_x11_drag_context_get_type ())
-#define GDK_X11_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_DRAG_CONTEXT, GdkX11DragContext))
-#define GDK_X11_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_DRAG_CONTEXT, GdkX11DragContextClass))
+#define GDK_X11_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_DRAG_CONTEXT, CdkX11DragContext))
+#define GDK_X11_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_DRAG_CONTEXT, CdkX11DragContextClass))
 #define GDK_IS_X11_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_DRAG_CONTEXT))
 #define GDK_IS_X11_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_DRAG_CONTEXT))
-#define GDK_X11_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_DRAG_CONTEXT, GdkX11DragContextClass))
+#define GDK_X11_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_DRAG_CONTEXT, CdkX11DragContextClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkX11DragContext GdkX11DragContext;
+typedef struct _CdkX11DragContext CdkX11DragContext;
 #else
-typedef GdkDragContext GdkX11DragContext;
+typedef CdkDragContext CdkX11DragContext;
 #endif
-typedef struct _GdkX11DragContextClass GdkX11DragContextClass;
+typedef struct _CdkX11DragContextClass CdkX11DragContextClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_x11_drag_context_get_type (void);

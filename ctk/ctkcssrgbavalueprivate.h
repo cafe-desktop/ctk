@@ -26,9 +26,9 @@
 
 G_BEGIN_DECLS
 
-CtkCssValue *   _ctk_css_rgba_value_new_from_rgba (const GdkRGBA          *rgba);
+CtkCssValue *   _ctk_css_rgba_value_new_from_rgba (const CdkRGBA          *rgba);
 
-const GdkRGBA * _ctk_css_rgba_value_get_rgba      (const CtkCssValue      *rgba);
+const CdkRGBA * _ctk_css_rgba_value_get_rgba      (const CtkCssValue      *rgba);
 
 
 G_END_DECLS

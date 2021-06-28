@@ -25,18 +25,18 @@
 #include <cdk/cdkseatprivate.h>
 
 #define GDK_TYPE_WAYLAND_SEAT         (cdk_wayland_seat_get_type ())
-#define GDK_WAYLAND_SEAT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_WAYLAND_SEAT, GdkWaylandSeat))
-#define GDK_WAYLAND_SEAT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_WAYLAND_SEAT, GdkWaylandSeatClass))
+#define GDK_WAYLAND_SEAT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_WAYLAND_SEAT, CdkWaylandSeat))
+#define GDK_WAYLAND_SEAT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_WAYLAND_SEAT, CdkWaylandSeatClass))
 #define GDK_IS_WAYLAND_SEAT(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_WAYLAND_SEAT))
 #define GDK_IS_WAYLAND_SEAT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_WAYLAND_SEAT))
-#define GDK_WAYLAND_SEAT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_WAYLAND_SEAT, GdkWaylandSeatClass))
+#define GDK_WAYLAND_SEAT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_WAYLAND_SEAT, CdkWaylandSeatClass))
 
-typedef struct _GdkWaylandSeat GdkWaylandSeat;
-typedef struct _GdkWaylandSeatClass GdkWaylandSeatClass;
+typedef struct _CdkWaylandSeat CdkWaylandSeat;
+typedef struct _CdkWaylandSeatClass CdkWaylandSeatClass;
 
-struct _GdkWaylandSeatClass
+struct _CdkWaylandSeatClass
 {
-  GdkSeatClass parent_class;
+  CdkSeatClass parent_class;
 };
 
 GType cdk_wayland_seat_get_type (void) G_GNUC_CONST;

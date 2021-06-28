@@ -38,13 +38,13 @@ G_BEGIN_DECLS
 struct _CtkSelectionData
 {
   /*< private >*/
-  GdkAtom       selection;
-  GdkAtom       target;
-  GdkAtom       type;
+  CdkAtom       selection;
+  CdkAtom       target;
+  CdkAtom       type;
   gint          format;
   guchar       *data;
   gint          length;
-  GdkDisplay   *display;
+  CdkDisplay   *display;
 };
 
 struct _CtkTargetList
@@ -55,15 +55,15 @@ struct _CtkTargetList
 };
 
 gboolean _ctk_selection_clear           (CtkWidget         *widget,
-                                         GdkEventSelection *event);
+                                         CdkEventSelection *event);
 gboolean _ctk_selection_request         (CtkWidget         *widget,
-                                         GdkEventSelection *event);
-gboolean _ctk_selection_incr_event      (GdkWindow         *window,
-                                         GdkEventProperty  *event);
+                                         CdkEventSelection *event);
+gboolean _ctk_selection_incr_event      (CdkWindow         *window,
+                                         CdkEventProperty  *event);
 gboolean _ctk_selection_notify          (CtkWidget         *widget,
-                                         GdkEventSelection *event);
+                                         CdkEventSelection *event);
 gboolean _ctk_selection_property_notify (CtkWidget         *widget,
-                                         GdkEventProperty  *event);
+                                         CdkEventProperty  *event);
 
 G_END_DECLS
 

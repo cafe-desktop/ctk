@@ -47,7 +47,7 @@ ctk_css_image_icon_theme_draw (CtkCssImage        *image,
   CtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
   GError *error = NULL;
   CtkIconInfo *icon_info;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gint size;
 
   size = floor (MIN (width, height));

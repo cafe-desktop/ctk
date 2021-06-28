@@ -158,7 +158,7 @@ foreground color &mdash; use CSS to override their default values.
   CtkTextBuffer *buffer;
   CtkTextIter start, end;
   PangoFontDescription *font_desc;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
   CtkTextTag *tag;
   CtkCssProvider *provider;
   CtkStyleContext *context;

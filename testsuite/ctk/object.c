@@ -63,7 +63,7 @@ list_ignore_properties (gboolean buglist)
     { "CtkCellView",            "background",           (void*) "", },                  /* "" is not a valid background color */
     { "CtkColorButton",         "color",                (void*) NULL, },                /* not a valid boxed color */
     { "CtkInputDialog",         "has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
-    { "CtkInvisible",           "screen",               (void*) MATCH_ANY_VALUE },      /* cannot create GdkScreen */
+    { "CtkInvisible",           "screen",               (void*) MATCH_ANY_VALUE },      /* cannot create CdkScreen */
     { "CtkMessageDialog",       "has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
     { "CtkFontSelectionDialog", "has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
     { "CtkColorSelectionDialog","has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
@@ -82,10 +82,10 @@ list_ignore_properties (gboolean buglist)
     { "CtkTextView",            "overwrite",            (void*) MATCH_ANY_VALUE },      /* needs text buffer */
     { "CtkToolbar",             "icon-size",            (void*) CTK_ICON_SIZE_INVALID },
     { "CtkTreeView",            "expander-column",      (void*) MATCH_ANY_VALUE },      /* assertion list != NULL */
-    { "CtkWindow",              "screen",               (void*) MATCH_ANY_VALUE },      /* cannot create GdkScreen */
+    { "CtkWindow",              "screen",               (void*) MATCH_ANY_VALUE },      /* cannot create CdkScreen */
     { NULL, NULL, NULL }
   };
-  /* properties suspected to be Gdk/Ctk+ bugs */
+  /* properties suspected to be Cdk/Ctk+ bugs */
   static const IgnoreProperty bug_properties[] = {
     { "CtkComboBox",            "active",               (void*) MATCH_ANY_VALUE },      /* FIXME: triggers NULL model bug */
     { "CtkCTree",               "spacing",              (void*) MATCH_ANY_VALUE },      /* FIXME: triggers signedness bug */

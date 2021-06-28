@@ -188,7 +188,7 @@ ctk_css_image_gradient_draw_circle (CtkCssImageGradient *image,
 {
   cairo_pattern_t *pattern = image->pattern;
   double x0, y0, x1, y1, r0, r1;
-  GdkRGBA color0, color1;
+  CdkRGBA color0, color1;
   double offset0, offset1;
   int n_stops;
 

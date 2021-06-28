@@ -822,7 +822,7 @@ msgid "Pixbuf"
 msgstr "Сличица"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr "Гдк сличица за приказ"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
@@ -2199,7 +2199,7 @@ msgid "Cell background color"
 msgstr "Боја позадине ћелије"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr "Боја позадине ћелије као Гдк боја"
 
 #: ctk/ctkcellrenderer.c:424
@@ -2207,7 +2207,7 @@ msgid "Cell background RGBA color"
 msgstr "РГБА боја позадине ћелије"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
 msgstr "Боја позадине ћелије као ГдкРГБА"
 
 #: ctk/ctkcellrenderer.c:432
@@ -2444,7 +2444,7 @@ msgid "Background color"
 msgstr "Боја позадине"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
+msgid "Background color as a CdkColor"
 msgstr "Боја позадине као Гдк боја"
 
 #: ctk/ctkcellrenderertext.c:313
@@ -2452,7 +2452,7 @@ msgid "Background color as RGBA"
 msgstr "Боја позадине као РГБА"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
+msgid "Background color as a CdkRGBA"
 msgstr "Боја позадине као ГдкРГБА"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
@@ -2464,7 +2464,7 @@ msgid "Foreground color as a string"
 msgstr "Боја исцртавања као низ знакова"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
+msgid "Foreground color as a CdkColor"
 msgstr "Боја исцртавања као Гдк боја"
 
 #: ctk/ctkcellrenderertext.c:349
@@ -2472,7 +2472,7 @@ msgid "Foreground color as RGBA"
 msgstr "Боја исцртавања као РГБА"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
 msgstr "Боја исцртавања као ГдкРГБА"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
@@ -2947,7 +2947,7 @@ msgid "Color"
 msgstr "Боја"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
+msgid "Current color, as a CdkRGBA"
 msgstr "Текућа боја, као ГдкРГБА"
 
 #: ctk/ctkcolorchooser.c:88
@@ -4186,7 +4186,7 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Број тачака потребних за окидање покрета"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
+msgid "CdkWindow to receive events about"
 msgstr "Гдк прозор о коме се примају догађаји"
 
 #: ctk/ctkgesturelongpress.c:285
@@ -4526,7 +4526,7 @@ msgid "Animation"
 msgstr "Анимација"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
+msgid "CdkPixbufAnimation to display"
 msgstr "Гдк анимирана сличица за приказ"
 
 #: ctk/ctkimage.c:373
@@ -7770,7 +7770,7 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Начин приказа удубљења око текста на траци стања"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
+msgid "The associated CdkScreen"
 msgstr "Повезани Гдк екран"
 
 #: ctk/ctkstylecontext.c:236
@@ -7778,7 +7778,7 @@ msgid "FrameClock"
 msgstr "Часовник кадра"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
+msgid "The associated CdkFrameClock"
 msgstr "Придружени часовник Гдк кадра"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
@@ -8074,7 +8074,7 @@ msgid "Paragraph background color"
 msgstr "Боја позадине пасуса"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
+msgid "Paragraph background color as a CdkColor"
 msgstr "Боја позадине пасуса као Гдк боја"
 
 #: ctk/ctktexttag.c:645
@@ -8082,7 +8082,7 @@ msgid "Paragraph background RGBA"
 msgstr "РГБА позадине пасуса"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
 msgstr "РГБА позадине пасуса као Гдк боја"
 
 #: ctk/ctktexttag.c:663
@@ -9072,9 +9072,9 @@ msgid "Events"
 msgstr "Догађаји"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Маска за догађаје која одређује које врсте GdkEvents-а овај елемент прима"
+"Маска за догађаје која одређује које врсте CdkEvents-а овај елемент прима"
 
 #: ctk/ctkwidget.c:1263
 msgid "No show all"

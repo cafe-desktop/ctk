@@ -23,23 +23,23 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_BROADWAY_DEVICE         (cdk_broadway_device_get_type ())
-#define GDK_BROADWAY_DEVICE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_BROADWAY_DEVICE, GdkBroadwayDevice))
-#define GDK_BROADWAY_DEVICE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_BROADWAY_DEVICE, GdkBroadwayDeviceClass))
+#define GDK_BROADWAY_DEVICE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_BROADWAY_DEVICE, CdkBroadwayDevice))
+#define GDK_BROADWAY_DEVICE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_BROADWAY_DEVICE, CdkBroadwayDeviceClass))
 #define GDK_IS_BROADWAY_DEVICE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_BROADWAY_DEVICE))
 #define GDK_IS_BROADWAY_DEVICE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_BROADWAY_DEVICE))
-#define GDK_BROADWAY_DEVICE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_BROADWAY_DEVICE, GdkBroadwayDeviceClass))
+#define GDK_BROADWAY_DEVICE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_BROADWAY_DEVICE, CdkBroadwayDeviceClass))
 
-typedef struct _GdkBroadwayDevice GdkBroadwayDevice;
-typedef struct _GdkBroadwayDeviceClass GdkBroadwayDeviceClass;
+typedef struct _CdkBroadwayDevice CdkBroadwayDevice;
+typedef struct _CdkBroadwayDeviceClass CdkBroadwayDeviceClass;
 
-struct _GdkBroadwayDevice
+struct _CdkBroadwayDevice
 {
-  GdkDevice parent_instance;
+  CdkDevice parent_instance;
 };
 
-struct _GdkBroadwayDeviceClass
+struct _CdkBroadwayDeviceClass
 {
-  GdkDeviceClass parent_class;
+  CdkDeviceClass parent_class;
 };
 
 G_GNUC_INTERNAL

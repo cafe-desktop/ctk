@@ -234,11 +234,11 @@
       removed. All drawing in CTK+ 3 is done via cairo.
     </para>
     <para>
-      The #GdkGC and #GdkImage objects, as well as all the functions using
+      The #CdkGC and #CdkImage objects, as well as all the functions using
       them, are gone. This includes the <literal>cdk_draw</literal> family
       of functions like cdk_draw_rectangle() and cdk_draw_drawable(). As
-      #GdkGC is roughly equivalent to #cairo_t and #GdkImage was used for
-      drawing images to GdkWindows, which cairo supports automatically,
+      #CdkGC is roughly equivalent to #cairo_t and #CdkImage was used for
+      drawing images to CdkWindows, which cairo supports automatically,
       a transition is usually straightforward.
     </para>
     <para>
@@ -247,7 +247,7 @@
       was replaced.
     </para>
     <example>
-       <title>Drawing a GdkPixbuf onto a GdkWindow</title>
+       <title>Drawing a CdkPixbuf onto a CdkWindow</title>
          <para>
            Drawing a pixbuf onto a drawable used to be done like this:
            <informalexample><programlisting>
@@ -269,19 +269,19 @@ cairo_paint (cr);
 cairo_destroy (cr);
            </programlisting></informalexample>
            Note that very similar code can be used when porting code
-           using GdkPixmap to #cairo_surface_t by calling
+           using CdkPixmap to #cairo_surface_t by calling
            cairo_set_source_surface() instead of
            cdk_cairo_set_source_pixbuf().
          </para>
       </example>
       <example>
-        <title>Drawing a tiled GdkPixmap to a GdkWindow</title>
+        <title>Drawing a tiled CdkPixmap to a CdkWindow</title>
         <para>
           Tiled pixmaps are often used for drawing backgrounds.
           Old code looked something like this:
           <informalexample><programlisting>
-GdkGCValues gc_values;
-GdkGC *gc;
+CdkGCValues gc_values;
+CdkGC *gc;
 
 /* setup */
 gc = ctk_widget_get_style (widget)->black_gc;
@@ -321,7 +321,7 @@ cdk_cairo_set_source_pixbuf() instead of cairo_set_source_surface().
           Drawing layouts clipped is often used to avoid overdraw or to
           allow drawing selections. Code would have looked like this:
           <informalexample><programlisting>
-GdkGC *gc;
+CdkGC *gc;
 
 /* setup */
 gc = ctk_widget_get_style (widget)->text_gc[state];
@@ -335,7 +335,7 @@ cdk_gc_set_clip_rectangle (gc, NULL);
           <informalexample><programlisting>
 CtkStyleContext *context;
 CtkStateFlags flags;
-GdkRGBA rgba;
+CdkRGBA rgba;
 cairo_t *cr;
 
 cr = cdk_cairo_create (drawable);
@@ -363,7 +363,7 @@ cairo_destroy (cr);
       <title>What should you be aware of ?</title>
       <formalpara><title>No more stippling</title>
         <para>
-          Stippling is the usage of a bi-level mask, called a #GdkBitmap.
+          Stippling is the usage of a bi-level mask, called a #CdkBitmap.
           It was often used to achieve a checkerboard effect. You can use
           cairo_mask() to achieve this effect. To get a checkerbox mask,
           you can use code like this:
@@ -666,7 +666,7 @@ ctk_fixed_get_preferred_height (CtkWidget *widget,
   </section>
 
   <section>
-    <title>Replace GdkRegion by cairo_region_t</title>
+    <title>Replace CdkRegion by cairo_region_t</title>
 
     <para>
       Starting with version 1.10, cairo provides a region API that is
@@ -678,13 +678,13 @@ ctk_fixed_get_preferred_height (CtkWidget *widget,
       find-and-replace task. Please refer to the following table:
       <table>
         <tgroup cols="2">
-          <title>GdkRegion to cairo_region_t</title>
+          <title>CdkRegion to cairo_region_t</title>
           <thead>
             <row><entry>GDK</entry><entry>cairo</entry></row>
           </thead>
           <tbody>
-            <row><entry>#GdkRegion</entry><entry>#cairo_region_t</entry></row>
-            <row><entry>#GdkRectangle</entry><entry>#cairo_rectangle_int_t</entry></row>
+            <row><entry>#CdkRegion</entry><entry>#cairo_region_t</entry></row>
+            <row><entry>#CdkRectangle</entry><entry>#cairo_rectangle_int_t</entry></row>
             <row><entry>cdk_rectangle_intersect()</entry><entry>this function is still there</entry></row>
             <row><entry>cdk_rectangle_union()</entry><entry>this function is still there</entry></row>
             <row><entry>cdk_region_new()</entry><entry>cairo_region_create()</entry></row>
@@ -713,9 +713,9 @@ ctk_fixed_get_preferred_height (CtkWidget *widget,
   </section>
 
   <section>
-    <title>Replace GdkPixmap by cairo surfaces</title>
+    <title>Replace CdkPixmap by cairo surfaces</title>
     <para>
-      The #GdkPixmap object and related functions have been removed.
+      The #CdkPixmap object and related functions have been removed.
       In the cairo-centric world of CTK+ 3, cairo surfaces take over
       the role of pixmaps.
     </para>
@@ -725,10 +725,10 @@ ctk_fixed_get_preferred_height (CtkWidget *widget,
         One place where pixmaps were commonly used is to create custom
         cursors:
       <informalexample><programlisting>
-GdkCursor *cursor;
-GdkPixmap *pixmap;
+CdkCursor *cursor;
+CdkPixmap *pixmap;
 cairo_t *cr;
-GdkColor fg = { 0, 0, 0, 0 };
+CdkColor fg = { 0, 0, 0, 0 };
 
 pixmap = cdk_pixmap_new (NULL, 1, 1, 1);
 
@@ -744,10 +744,10 @@ g_object_unref (pixmap);
       The same can be achieved without pixmaps, by drawing onto
       an image surface:
       <informalexample><programlisting>
-GdkCursor *cursor;
+CdkCursor *cursor;
 cairo_surface_t *s;
 cairo_t *cr;
-GdkPixbuf *pixbuf;
+CdkPixbuf *pixbuf;
 
 s = cairo_image_surface_create (CAIRO_FORMAT_A1, 3, 3);
 cr = cairo_create (s);
@@ -770,11 +770,11 @@ g_object_unref (pixbuf);
   </section>
 
   <section>
-    <title>Replace GdkColormap by GdkVisual</title>
+    <title>Replace CdkColormap by CdkVisual</title>
     <para>
       For drawing with cairo, it is not necessary to allocate colors, and
-      a #GdkVisual provides enough information for cairo to handle colors
-      in 'native' surfaces. Therefore, #GdkColormap and related functions
+      a #CdkVisual provides enough information for cairo to handle colors
+      in 'native' surfaces. Therefore, #CdkColormap and related functions
       have been removed in CTK+ 3, and visuals are used instead. The
       colormap-handling functions of #CtkWidget (ctk_widget_set_colormap(),
       etc) have been removed and ctk_widget_set_visual() has been added.
@@ -786,11 +786,11 @@ g_object_unref (pixbuf);
     <informalexample><programlisting>
 static void
 on_alpha_screen_changed (CtkWidget *widget,
-                         GdkScreen *old_screen,
+                         CdkScreen *old_screen,
                          CtkWidget *label)
 {
-  GdkScreen *screen = ctk_widget_get_screen (widget);
-  GdkColormap *colormap = cdk_screen_get_rgba_colormap (screen);
+  CdkScreen *screen = ctk_widget_get_screen (widget);
+  CdkColormap *colormap = cdk_screen_get_rgba_colormap (screen);
 
   if (colormap == NULL)
     colormap = cdk_screen_get_default_colormap (screen);
@@ -804,11 +804,11 @@ on_alpha_screen_changed (CtkWidget *widget,
     <informalexample><programlisting>
 static void
 on_alpha_screen_changed (CtkWindow *window,
-                         GdkScreen *old_screen,
+                         CdkScreen *old_screen,
                          CtkWidget *label)
 {
-  GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
-  GdkVisual *visual = cdk_screen_get_rgba_visual (screen);
+  CdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
+  CdkVisual *visual = cdk_screen_get_rgba_visual (screen);
 
   if (visual == NULL)
     visual = cdk_screen_get_system_visual (screen);
@@ -820,20 +820,20 @@ on_alpha_screen_changed (CtkWindow *window,
   </section>
 
   <section>
-    <title>GdkDrawable is gone</title>
+    <title>CdkDrawable is gone</title>
 
     <para>
-      #GdkDrawable has been removed in CTK+ 3, together with #GdkPixmap
-      and #GdkImage. The only remaining drawable class is #GdkWindow.
+      #CdkDrawable has been removed in CTK+ 3, together with #CdkPixmap
+      and #CdkImage. The only remaining drawable class is #CdkWindow.
       For dealing with image data, you should use a #cairo_surface_t or
-      a #GdkPixbuf.
+      a #CdkPixbuf.
     </para>
 
     <para>
-      GdkDrawable functions that are useful with windows have been replaced
-      by corresponding GdkWindow functions:
+      CdkDrawable functions that are useful with windows have been replaced
+      by corresponding CdkWindow functions:
       <table>
-        <title>GdkDrawable to GdkWindow</title>
+        <title>CdkDrawable to CdkWindow</title>
         <tgroup cols="2">
           <thead>
             <row><entry>GDK 2.x</entry><entry>GDK 3</entry></row>
@@ -860,12 +860,12 @@ on_alpha_screen_changed (CtkWindow *window,
     </para>
 
     <para>
-      The special-purpose GdkEventClient events and the cdk_add_client_message_filter() and cdk_display_add_client_message_filter() functions have been
+      The special-purpose CdkEventClient events and the cdk_add_client_message_filter() and cdk_display_add_client_message_filter() functions have been
       removed. Receiving X11 ClientMessage events is still possible, using
       the general cdk_window_add_filter() API. A client message filter like
 <informalexample><programlisting>
-static GdkFilterReturn
-message_filter (GdkXEvent *xevent, GdkEvent *event, gpointer data)
+static CdkFilterReturn
+message_filter (CdkXEvent *xevent, CdkEvent *event, gpointer data)
 {
   XClientMessageEvent *evt = (XClientMessageEvent *)xevent;
 
@@ -879,11 +879,11 @@ cdk_display_add_client_message_filter (display, message_type, message_filter, NU
 </programlisting></informalexample>
     then looks like this:
     <informalexample><programlisting>
-static GdkFilterReturn
-event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer data)
+static CdkFilterReturn
+event_filter (CdkXEvent *xevent, CdkEvent *event, gpointer data)
 {
   XClientMessageEvent *evt;
-  GdkAtom message_type;
+  CdkAtom message_type;
 
   if (((XEvent *)xevent)->type != ClientMessage)
     return GDK_FILTER_CONTINUE;
@@ -935,7 +935,7 @@ cdk_window_add_filter (NULL, message_filter, NULL);
       </programlisting></informalexample>
       In CTK+ 3, GDK can be built with multiple backends, and currently
       used backend has to be determined at runtime, typically using
-      type-check macros on a #GdkDisplay or #GdkWindow. You still need
+      type-check macros on a #CdkDisplay or #CdkWindow. You still need
       to use the GDK_WINDOWING macros to only compile code referring
       to supported backends:
       <informalexample><programlisting>

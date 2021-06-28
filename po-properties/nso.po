@@ -1313,8 +1313,8 @@ msgid "Cell background color"
 msgstr "Mmala o bonagalago ka morago wa sele"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Mmala o bonagalago ka morago ga sele bjalo ka Mmala wa Gdk"
+msgid "Cell background color as a CdkColor"
+msgstr "Mmala o bonagalago ka morago ga sele bjalo ka Mmala wa Cdk"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1580,8 +1580,8 @@ msgid "Background color"
 msgstr "Mmala o bonagalago ka morago"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Mmala o bonagalago ka morago bjalo ka Mmala wa Gdk"
+msgid "Background color as a CdkColor"
+msgstr "Mmala o bonagalago ka morago bjalo ka Mmala wa Cdk"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1597,8 +1597,8 @@ msgid "Foreground color"
 msgstr "Mmala o bonagalago ka pele"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Mmala o bonagalago ka pele bjalo ka Mmala wa Gdk"
+msgid "Foreground color as a CdkColor"
+msgstr "Mmala o bonagalago ka pele bjalo ka Mmala wa Cdk"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3296,8 +3296,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf yeo e swanetšego go bontšhwa"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf yeo e swanetšego go bontšhwa"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3350,8 +3350,8 @@ msgid "Animation"
 msgstr "Tsošološo"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation yeo e swanetšego go bontšhwa"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation yeo e swanetšego go bontšhwa"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -6112,7 +6112,7 @@ msgstr "Mmotwana wa Kgetho"
 #: ctk/ctktextbuffer.c:226
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "Fonto ya Gdk yeo e kgethilwego gona bjale"
+msgstr "Fonto ya Cdk yeo e kgethilwego gona bjale"
 
 #: ctk/ctktextbuffer.c:242
 #, fuzzy
@@ -6169,9 +6169,9 @@ msgstr ""
 "di-tag tšeo di sa tsebjwego ka maina"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
 msgstr ""
-"Mmala o bonagalago ka morago bjalo ka (mohlomongwe o sa abjwago) GdkColor"
+"Mmala o bonagalago ka morago bjalo ka (mohlomongwe o sa abjwago) CdkColor"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -6186,9 +6186,9 @@ msgstr ""
 "goba feela bophagamo bja ditlhaka tše swailwego"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
 msgstr ""
-"Mmala o bonagalago ka pele bjalo ka (mohlomongwe o sa abjwago) GdkColor"
+"Mmala o bonagalago ka pele bjalo ka (mohlomongwe o sa abjwago) CdkColor"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6360,9 +6360,9 @@ msgstr "Mmala o bonagalago ka morago wa sele"
 
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 msgstr ""
-"Mmala o bonagalago ka morago bjalo ka (mohlomongwe o sa abjwago) GdkColor"
+"Mmala o bonagalago ka morago bjalo ka (mohlomongwe o sa abjwago) CdkColor"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7408,9 +7408,9 @@ msgid "Events"
 msgstr "Ditiragalo"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Seširo sa tiragalo seo se phethago gore ke Ditiragalo tša mohuta ofe tša Gdk "
+"Seširo sa tiragalo seo se phethago gore ke Ditiragalo tša mohuta ofe tša Cdk "
 "tšeo sedirišwa se se di hwetšago"
 
 #: ctk/ctkwidget.c:832
@@ -7960,7 +7960,7 @@ msgstr "Kamoo o ka thalago bara e bontšhago boemo ya mokgwa wa tsebišo"
 #~ msgstr "Selaetši sa tsebišo ya dikarolwana tše bopago seswantšho sa pixbuf"
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "Mohlala wa go lebelela mohlare"
 
 #, fuzzy
@@ -7988,8 +7988,8 @@ msgstr "Kamoo o ka thalago bara e bontšhago boemo ya mokgwa wa tsebišo"
 #~ "Bitmap yeo e swanetšego go dirišwa bjalo ka seširo ge o thala bokamorago "
 #~ "bja sengwalwa"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "Fonto ya Gdk yeo e kgethilwego gona bjale"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "Fonto ya Cdk yeo e kgethilwego gona bjale"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr ""
@@ -7998,17 +7998,17 @@ msgstr "Kamoo o ka thalago bara e bontšhago boemo ya mokgwa wa tsebišo"
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "GdkPixmap yeo e swanetšego go bontšhwa"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "CdkPixmap yeo e swanetšego go bontšhwa"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "GdkImage yeo e swanetšego go bontšhwa"
+#~ msgid "A CdkImage to display"
+#~ msgstr "CdkImage yeo e swanetšego go bontšhwa"
 
 #~ msgid "Mask"
 #~ msgstr "Seširo"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Bitmap ya seširo yeo e tla dirišwago le GdkImage goba GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Bitmap ya seširo yeo e tla dirišwago le CdkImage goba CdkPixmap"
 
 #~ msgid "Use separator"
 #~ msgstr "Diriša searodi"

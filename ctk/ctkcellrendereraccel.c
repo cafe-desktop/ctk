@@ -58,15 +58,15 @@ static void ctk_cell_renderer_accel_get_preferred_width
                                                   gint            *natural_size);
 static CtkCellEditable *
            ctk_cell_renderer_accel_start_editing (CtkCellRenderer      *cell,
-                                                  GdkEvent             *event,
+                                                  CdkEvent             *event,
                                                   CtkWidget            *widget,
                                                   const gchar          *path,
-                                                  const GdkRectangle   *background_area,
-                                                  const GdkRectangle   *cell_area,
+                                                  const CdkRectangle   *background_area,
+                                                  const CdkRectangle   *cell_area,
                                                   CtkCellRendererState  flags);
 static gchar *convert_keysym_state_to_string     (CtkCellRendererAccel *accel,
                                                   guint                 keysym,
-                                                  GdkModifierType       mask,
+                                                  CdkModifierType       mask,
                                                   guint                 keycode);
 static CtkWidget *ctk_cell_editable_event_box_new (CtkCellRenderer          *cell,
                                                    CtkCellRendererAccelMode  mode,
@@ -92,11 +92,11 @@ struct _CtkCellRendererAccelPrivate
   CtkWidget *sizing_label;
 
   CtkCellRendererAccelMode accel_mode;
-  GdkModifierType accel_mods;
+  CdkModifierType accel_mods;
   guint accel_key;
   guint keycode;
 
-  GdkDevice *grab_pointer;
+  CdkDevice *grab_pointer;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (CtkCellRendererAccel, ctk_cell_renderer_accel, CTK_TYPE_CELL_RENDERER_TEXT)
@@ -261,7 +261,7 @@ ctk_cell_renderer_accel_new (void)
 static gchar *
 convert_keysym_state_to_string (CtkCellRendererAccel *accel,
                                 guint                 keysym,
-                                GdkModifierType       mask,
+                                CdkModifierType       mask,
                                 guint                 keycode)
 {
   CtkCellRendererAccelPrivate *priv = accel->priv;
@@ -427,11 +427,11 @@ ctk_cell_renderer_accel_get_preferred_width (CtkCellRenderer *cell,
 
 static CtkCellEditable *
 ctk_cell_renderer_accel_start_editing (CtkCellRenderer      *cell,
-                                       GdkEvent             *event,
+                                       CdkEvent             *event,
                                        CtkWidget            *widget,
                                        const gchar          *path,
-                                       const GdkRectangle   *background_area,
-                                       const GdkRectangle   *cell_area,
+                                       const CdkRectangle   *background_area,
+                                       const CdkRectangle   *cell_area,
                                        CtkCellRendererState  flags)
 {
   CtkCellRendererAccelPrivate *priv;
@@ -440,8 +440,8 @@ ctk_cell_renderer_accel_start_editing (CtkCellRenderer      *cell,
   CtkWidget *label;
   CtkWidget *eventbox;
   gboolean editable;
-  GdkDevice *device, *pointer;
-  GdkWindow *window;
+  CdkDevice *device, *pointer;
+  CdkWindow *window;
 
   celltext = CTK_CELL_RENDERER_TEXT (cell);
   accel = CTK_CELL_RENDERER_ACCEL (cell);
@@ -535,7 +535,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkCellEditableEventBox, ctk_cell_editable_event_box, C
 
 static void
 ctk_cell_editable_event_box_start_editing (CtkCellEditable *cell_editable,
-                                           GdkEvent        *event)
+                                           CdkEvent        *event)
 {
   /* do nothing, because we are pointless */
 }
@@ -548,16 +548,16 @@ ctk_cell_editable_event_box_cell_editable_init (CtkCellEditableIface *iface)
 
 static gboolean
 ctk_cell_editable_event_box_key_press_event (CtkWidget   *widget,
-                                             GdkEventKey *event)
+                                             CdkEventKey *event)
 {
   CtkCellEditableEventBox *box = (CtkCellEditableEventBox*)widget;
-  GdkModifierType accel_mods = 0;
+  CdkModifierType accel_mods = 0;
   guint accel_key;
   guint keyval;
   gboolean edited;
   gboolean cleared;
-  GdkModifierType consumed_modifiers;
-  GdkDisplay *display;
+  CdkModifierType consumed_modifiers;
+  CdkDisplay *display;
 
   display = ctk_widget_get_display (widget);
 

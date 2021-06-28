@@ -109,12 +109,12 @@ static void      ctk_style_real_unrealize      (CtkStyle	*style);
 static void      ctk_style_real_copy           (CtkStyle	*style,
 						CtkStyle	*src);
 static void      ctk_style_real_set_background (CtkStyle	*style,
-						GdkWindow	*window,
+						CdkWindow	*window,
 						CtkStateType	 state_type);
 static CtkStyle *ctk_style_real_clone          (CtkStyle	*style);
 static void      ctk_style_real_init_from_rc   (CtkStyle	*style,
                                                 CtkRcStyle	*rc_style);
-static GdkPixbuf *ctk_default_render_icon      (CtkStyle            *style,
+static CdkPixbuf *ctk_default_render_icon      (CtkStyle            *style,
                                                 const CtkIconSource *source,
                                                 CtkTextDirection     direction,
                                                 CtkStateType         state,
@@ -309,7 +309,7 @@ static void ctk_default_draw_resize_grip (CtkStyle       *style,
                                           CtkStateType    state_type,
                                           CtkWidget      *widget,
                                           const gchar    *detail,
-                                          GdkWindowEdge   edge,
+                                          CdkWindowEdge   edge,
                                           gint            x,
                                           gint            y,
                                           gint            width,
@@ -352,19 +352,19 @@ static const CtkBorder default_option_indicator_spacing = { 7, 5, 2, 2 };
 #define CTK_WEAK_GRAY		0x7530, 0x7530, 0x7530
 
 /* --- variables --- */
-static const GdkColor ctk_default_normal_fg =      { 0, CTK_BLACK };
-static const GdkColor ctk_default_active_fg =      { 0, CTK_BLACK };
-static const GdkColor ctk_default_prelight_fg =    { 0, CTK_BLACK };
-static const GdkColor ctk_default_selected_fg =    { 0, CTK_WHITE };
-static const GdkColor ctk_default_insensitive_fg = { 0, CTK_WEAK_GRAY };
+static const CdkColor ctk_default_normal_fg =      { 0, CTK_BLACK };
+static const CdkColor ctk_default_active_fg =      { 0, CTK_BLACK };
+static const CdkColor ctk_default_prelight_fg =    { 0, CTK_BLACK };
+static const CdkColor ctk_default_selected_fg =    { 0, CTK_WHITE };
+static const CdkColor ctk_default_insensitive_fg = { 0, CTK_WEAK_GRAY };
 
-static const GdkColor ctk_default_normal_bg =      { 0, CTK_GRAY };
-static const GdkColor ctk_default_active_bg =      { 0, CTK_DARK_GRAY };
-static const GdkColor ctk_default_prelight_bg =    { 0, CTK_LIGHT_GRAY };
-static const GdkColor ctk_default_selected_bg =    { 0, CTK_BLUE };
-static const GdkColor ctk_default_insensitive_bg = { 0, CTK_GRAY };
-static const GdkColor ctk_default_selected_base =  { 0, CTK_BLUE };
-static const GdkColor ctk_default_active_base =    { 0, CTK_VERY_DARK_GRAY };
+static const CdkColor ctk_default_normal_bg =      { 0, CTK_GRAY };
+static const CdkColor ctk_default_active_bg =      { 0, CTK_DARK_GRAY };
+static const CdkColor ctk_default_prelight_bg =    { 0, CTK_LIGHT_GRAY };
+static const CdkColor ctk_default_selected_bg =    { 0, CTK_BLUE };
+static const CdkColor ctk_default_insensitive_bg = { 0, CTK_GRAY };
+static const CdkColor ctk_default_selected_base =  { 0, CTK_BLUE };
+static const CdkColor ctk_default_active_base =    { 0, CTK_VERY_DARK_GRAY };
 
 static GQuark quark_default_style;
 
@@ -619,8 +619,8 @@ set_color_from_context (CtkStyle *style,
                         CtkStyleContext *context,
                         CtkRcFlags prop)
 {
-  GdkRGBA *color = NULL;
-  GdkColor *dest = { 0 }; /* Shut up gcc */
+  CdkRGBA *color = NULL;
+  CdkColor *dest = { 0 }; /* Shut up gcc */
   CtkStateFlags flags;
 
   flags = ctk_style_context_get_state (context);
@@ -679,7 +679,7 @@ set_color (CtkStyle        *style,
 {
   /* Try to fill in the values from the associated CtkStyleContext.
    * Since fully-transparent black is a very common default (e.g. for 
-   * background-color properties), and we must store the result in a GdkColor
+   * background-color properties), and we must store the result in a CdkColor
    * to retain API compatibility, in case the fetched color is fully transparent
    * we give themes a fallback style class they can style, before using the
    * hardcoded default values.
@@ -845,7 +845,7 @@ ctk_style_copy (CtkStyle *style)
 }
 
 CtkStyle*
-_ctk_style_new_for_path (GdkScreen     *screen,
+_ctk_style_new_for_path (CdkScreen     *screen,
                          CtkWidgetPath *path)
 {
   CtkStyleContext *context;
@@ -915,7 +915,7 @@ ctk_style_has_context (CtkStyle *style)
 /**
  * ctk_style_attach: (skip)
  * @style: a #CtkStyle.
- * @window: a #GdkWindow.
+ * @window: a #CdkWindow.
  *
  * Attaches a style to a window; this process allocates the
  * colors and creates the GC’s for the style - it specializes
@@ -936,7 +936,7 @@ ctk_style_has_context (CtkStyle *style)
  */
 CtkStyle*
 ctk_style_attach (CtkStyle  *style,
-                  GdkWindow *window)
+                  CdkWindow *window)
 {
   g_return_val_if_fail (CTK_IS_STYLE (style), NULL);
   g_return_val_if_fail (window != NULL, NULL);
@@ -993,7 +993,7 @@ ctk_style_lookup_icon_set (CtkStyle   *style,
  * ctk_style_lookup_color:
  * @style: a #CtkStyle
  * @color_name: the name of the logical color to look up
- * @color: (out): the #GdkColor to fill in
+ * @color: (out): the #CdkColor to fill in
  *
  * Looks up @color_name in the style’s logical color mappings,
  * filling in @color and returning %TRUE if found, otherwise
@@ -1010,11 +1010,11 @@ ctk_style_lookup_icon_set (CtkStyle   *style,
 gboolean
 ctk_style_lookup_color (CtkStyle   *style,
                         const char *color_name,
-                        GdkColor   *color)
+                        CdkColor   *color)
 {
   CtkStylePrivate *priv;
   gboolean result;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 
   g_return_val_if_fail (CTK_IS_STYLE (style), FALSE);
   g_return_val_if_fail (color_name != NULL, FALSE);
@@ -1041,7 +1041,7 @@ ctk_style_lookup_color (CtkStyle   *style,
 /**
  * ctk_style_set_background:
  * @style: a #CtkStyle
- * @window: a #GdkWindow
+ * @window: a #CdkWindow
  * @state_type: a state
  * 
  * Sets the background of @window to the background color or pixmap
@@ -1051,7 +1051,7 @@ ctk_style_lookup_color (CtkStyle   *style,
  */
 void
 ctk_style_set_background (CtkStyle    *style,
-                          GdkWindow   *window,
+                          CdkWindow   *window,
                           CtkStateType state_type)
 {
   g_return_if_fail (CTK_IS_STYLE (style));
@@ -1275,7 +1275,7 @@ ctk_style_real_unrealize (CtkStyle *style)
 
 static void
 ctk_style_real_set_background (CtkStyle    *style,
-			       GdkWindow   *window,
+			       CdkWindow   *window,
 			       CtkStateType state_type)
 {
   cdk_window_set_background_pattern (window, style->background[state_type]);
@@ -1297,12 +1297,12 @@ ctk_style_real_set_background (CtkStyle    *style,
  * according to the given parameters and returns the result in a
  * pixbuf.
  *
- * Returns: (transfer full): a newly-created #GdkPixbuf
+ * Returns: (transfer full): a newly-created #CdkPixbuf
  *     containing the rendered icon
  *
  * Deprecated:3.0: Use ctk_render_icon_pixbuf() instead
  */
-GdkPixbuf *
+CdkPixbuf *
 ctk_style_render_icon (CtkStyle            *style,
                        const CtkIconSource *source,
                        CtkTextDirection     direction,
@@ -1311,7 +1311,7 @@ ctk_style_render_icon (CtkStyle            *style,
                        CtkWidget           *widget,
                        const gchar         *detail)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   
   g_return_val_if_fail (CTK_IS_STYLE (style), NULL);
   g_return_val_if_fail (CTK_STYLE_GET_CLASS (style)->render_icon != NULL, NULL);
@@ -1342,7 +1342,7 @@ ctk_style_render_icon (CtkStyle            *style,
 void
 ctk_style_apply_default_background (CtkStyle          *style,
                                     cairo_t           *cr,
-                                    GdkWindow         *window,
+                                    CdkWindow         *window,
                                     CtkStateType       state_type,
                                     gint               x,
                                     gint               y,
@@ -1353,7 +1353,7 @@ ctk_style_apply_default_background (CtkStyle          *style,
 
   if (style->background[state_type] == NULL)
     {
-      GdkWindow *parent = cdk_window_get_parent (window);
+      CdkWindow *parent = cdk_window_get_parent (window);
       int x_offset, y_offset;
 
       if (parent)
@@ -1379,7 +1379,7 @@ out:
   cairo_restore (cr);
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 ctk_default_render_icon (CtkStyle            *style,
                          const CtkIconSource *source,
                          CtkTextDirection     direction,
@@ -1391,7 +1391,7 @@ ctk_default_render_icon (CtkStyle            *style,
   CtkStyleContext *context;
   CtkStylePrivate *priv;
   CtkStateFlags flags = 0;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -1432,7 +1432,7 @@ ctk_default_render_icon (CtkStyle            *style,
 
 static void
 _cairo_draw_line (cairo_t  *cr,
-                  GdkColor *color,
+                  CdkColor *color,
                   gint      x1,
                   gint      y1,
                   gint      x2,
@@ -1728,7 +1728,7 @@ ctk_default_draw_shadow (CtkStyle      *style,
 
 static void
 draw_arrow (cairo_t       *cr,
-	    GdkColor      *color,
+	    CdkColor      *color,
 	    CtkArrowType   arrow_type,
 	    gint           x,
 	    gint           y,
@@ -1872,18 +1872,18 @@ ctk_default_draw_diamond (CtkStyle      *style,
 {
   gint half_width;
   gint half_height;
-  GdkColor *outer_nw = NULL;
-  GdkColor *outer_ne = NULL;
-  GdkColor *outer_sw = NULL;
-  GdkColor *outer_se = NULL;
-  GdkColor *middle_nw = NULL;
-  GdkColor *middle_ne = NULL;
-  GdkColor *middle_sw = NULL;
-  GdkColor *middle_se = NULL;
-  GdkColor *inner_nw = NULL;
-  GdkColor *inner_ne = NULL;
-  GdkColor *inner_sw = NULL;
-  GdkColor *inner_se = NULL;
+  CdkColor *outer_nw = NULL;
+  CdkColor *outer_ne = NULL;
+  CdkColor *outer_sw = NULL;
+  CdkColor *outer_se = NULL;
+  CdkColor *middle_nw = NULL;
+  CdkColor *middle_ne = NULL;
+  CdkColor *middle_sw = NULL;
+  CdkColor *middle_se = NULL;
+  CdkColor *inner_nw = NULL;
+  CdkColor *inner_ne = NULL;
+  CdkColor *inner_sw = NULL;
+  CdkColor *inner_se = NULL;
   
   half_width = width / 2;
   half_height = height / 2;
@@ -2785,7 +2785,7 @@ ctk_default_draw_resize_grip (CtkStyle       *style,
                               CtkStateType    state_type,
                               CtkWidget      *widget,
                               const gchar    *detail,
-                              GdkWindowEdge   edge,
+                              CdkWindowEdge   edge,
                               gint            x,
                               gint            y,
                               gint            width,
@@ -2882,7 +2882,7 @@ ctk_default_draw_spinner (CtkStyle     *style,
                           gint          width,
                           gint          height)
 {
-  GdkColor *color;
+  CdkColor *color;
   guint num_steps;
   gdouble dx, dy;
   gdouble radius;
@@ -2938,8 +2938,8 @@ ctk_default_draw_spinner (CtkStyle     *style,
 }
 
 void
-_ctk_style_shade (const GdkColor *a,
-                  GdkColor       *b,
+_ctk_style_shade (const CdkColor *a,
+                  CdkColor       *b,
                   gdouble         k)
 {
   gdouble red;
@@ -3952,7 +3952,7 @@ ctk_paint_resize_grip (CtkStyle           *style,
                        CtkStateType        state_type,
                        CtkWidget          *widget,
                        const gchar        *detail,
-                       GdkWindowEdge       edge,
+                       CdkWindowEdge       edge,
                        gint                x,
                        gint                y,
                        gint                width,
@@ -4014,7 +4014,7 @@ ctk_paint_spinner (CtkStyle           *style,
 }
 
 static CtkStyle *
-ctk_widget_get_default_style_for_screen (GdkScreen *screen)
+ctk_widget_get_default_style_for_screen (CdkScreen *screen)
 {
   CtkStyle *default_style;
 
@@ -4051,7 +4051,7 @@ ctk_widget_get_default_style (void)
 {
   static CtkStyle *default_style = NULL;
   CtkStyle *style = NULL;
-  GdkScreen *screen = cdk_screen_get_default ();
+  CdkScreen *screen = cdk_screen_get_default ();
 
   if (screen)
     style = ctk_widget_get_default_style_for_screen (screen);
@@ -4070,7 +4070,7 @@ ctk_widget_get_default_style (void)
  * @widget: a #CtkWidget
  *
  * This function attaches the widget’s #CtkStyle to the widget's
- * #GdkWindow. It is a replacement for
+ * #CdkWindow. It is a replacement for
  *
  * |[
  * widget->style = ctk_style_attach (widget->style, widget->window);
@@ -4275,7 +4275,7 @@ static void
 ctk_widget_modify_color_component (CtkWidget      *widget,
                                    CtkRcFlags      component,
                                    CtkStateType    state,
-                                   const GdkColor *color)
+                                   const CdkColor *color)
 {
   CtkRcStyle *rc_style = ctk_widget_get_modifier_style (widget);
 
@@ -4325,10 +4325,10 @@ ctk_widget_modify_color_component (CtkWidget      *widget,
 void
 ctk_widget_modify_fg (CtkWidget      *widget,
                       CtkStateType    state,
-                      const GdkColor *color)
+                      const CdkColor *color)
 {
   CtkStateFlags flags;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (state >= CTK_STATE_NORMAL && state <= CTK_STATE_INSENSITIVE);
@@ -4393,10 +4393,10 @@ ctk_widget_modify_fg (CtkWidget      *widget,
 void
 ctk_widget_modify_bg (CtkWidget      *widget,
                       CtkStateType    state,
-                      const GdkColor *color)
+                      const CdkColor *color)
 {
   CtkStateFlags flags;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (state >= CTK_STATE_NORMAL && state <= CTK_STATE_INSENSITIVE);
@@ -4454,7 +4454,7 @@ ctk_widget_modify_bg (CtkWidget      *widget,
 void
 ctk_widget_modify_text (CtkWidget      *widget,
                         CtkStateType    state,
-                        const GdkColor *color)
+                        const CdkColor *color)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (state >= CTK_STATE_NORMAL && state <= CTK_STATE_INSENSITIVE);
@@ -4491,7 +4491,7 @@ ctk_widget_modify_text (CtkWidget      *widget,
 void
 ctk_widget_modify_base (CtkWidget      *widget,
                         CtkStateType    state,
-                        const GdkColor *color)
+                        const CdkColor *color)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (state >= CTK_STATE_NORMAL && state <= CTK_STATE_INSENSITIVE);
@@ -4522,10 +4522,10 @@ ctk_widget_modify_base (CtkWidget      *widget,
  */
 void
 ctk_widget_modify_cursor (CtkWidget      *widget,
-                          const GdkColor *primary,
-                          const GdkColor *secondary)
+                          const CdkColor *primary,
+                          const CdkColor *secondary)
 {
-  GdkRGBA primary_rgba, secondary_rgba;
+  CdkRGBA primary_rgba, secondary_rgba;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -4749,7 +4749,7 @@ ctk_widget_class_path (CtkWidget *widget,
  * that theme engines can special-case rendering for that widget or
  * code.
  *
- * The pixels in the returned #GdkPixbuf are shared with the rest of
+ * The pixels in the returned #CdkPixbuf are shared with the rest of
  * the application and should not be modified. The pixbuf should be
  * freed after use with g_object_unref().
  *
@@ -4758,7 +4758,7 @@ ctk_widget_class_path (CtkWidget *widget,
  *
  * Deprecated: 3.0: Use ctk_widget_render_icon_pixbuf() instead.
  **/
-GdkPixbuf*
+CdkPixbuf*
 ctk_widget_render_icon (CtkWidget      *widget,
                         const gchar    *stock_id,
                         CtkIconSize     size,

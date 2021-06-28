@@ -75,7 +75,7 @@
  * ctk_show_uri_on_window() is a convenient way to launch applications for URIs.
  *
  * Another object that is worth mentioning in this context is
- * #GdkAppLaunchContext, which provides visual feedback when lauching
+ * #CdkAppLaunchContext, which provides visual feedback when lauching
  * applications.
  */
 
@@ -109,7 +109,7 @@ static void   ctk_mount_operation_aborted      (GMountOperation *op);
 struct _CtkMountOperationPrivate {
   CtkWindow *parent_window;
   CtkDialog *dialog;
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   /* bus proxy */
   _CtkMountOperationHandler *handler;
@@ -1152,7 +1152,7 @@ add_pid_to_process_list_store (CtkMountOperation              *mount_operation,
 {
   gchar *command_line;
   gchar *name;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gchar *markup;
   CtkTreeIter iter;
 
@@ -1376,7 +1376,7 @@ on_end_process_activated (CtkMenuItem *item,
 
 static gboolean
 do_popup_menu_for_process_tree_view (CtkWidget         *widget,
-                                     const GdkEvent    *event,
+                                     const CdkEvent    *event,
                                      CtkMountOperation *op)
 {
   CtkWidget *menu;
@@ -1431,7 +1431,7 @@ on_popup_menu_for_process_tree_view (CtkWidget *widget,
 
 static gboolean
 on_button_press_event_for_process_tree_view (CtkWidget      *widget,
-                                             GdkEventButton *event,
+                                             CdkEventButton *event,
                                              gpointer        user_data)
 {
   CtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
@@ -1439,9 +1439,9 @@ on_button_press_event_for_process_tree_view (CtkWidget      *widget,
 
   ret = FALSE;
 
-  if (cdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (cdk_event_triggers_context_menu ((CdkEvent *) event))
     {
-      ret = do_popup_menu_for_process_tree_view (widget, (GdkEvent *) event, op);
+      ret = do_popup_menu_for_process_tree_view (widget, (CdkEvent *) event, op);
     }
 
   return ret;
@@ -1834,7 +1834,7 @@ ctk_mount_operation_get_parent (CtkMountOperation *op)
 /**
  * ctk_mount_operation_set_screen:
  * @op: a #CtkMountOperation
- * @screen: a #GdkScreen
+ * @screen: a #CdkScreen
  *
  * Sets the screen to show windows of the #CtkMountOperation on.
  *
@@ -1842,7 +1842,7 @@ ctk_mount_operation_get_parent (CtkMountOperation *op)
  */
 void
 ctk_mount_operation_set_screen (CtkMountOperation *op,
-                                GdkScreen         *screen)
+                                CdkScreen         *screen)
 {
   CtkMountOperationPrivate *priv;
 
@@ -1876,7 +1876,7 @@ ctk_mount_operation_set_screen (CtkMountOperation *op,
  *
  * Since: 2.14
  */
-GdkScreen *
+CdkScreen *
 ctk_mount_operation_get_screen (CtkMountOperation *op)
 {
   CtkMountOperationPrivate *priv;

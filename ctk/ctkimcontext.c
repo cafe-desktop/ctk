@@ -127,7 +127,7 @@ static void     ctk_im_context_real_get_preedit_string (CtkIMContext   *context,
 							PangoAttrList **attrs,
 							gint           *cursor_pos);
 static gboolean ctk_im_context_real_filter_keypress    (CtkIMContext   *context,
-							GdkEventKey    *event);
+							CdkEventKey    *event);
 static gboolean ctk_im_context_real_get_surrounding    (CtkIMContext   *context,
 							gchar         **text,
 							gint           *cursor_index);
@@ -372,7 +372,7 @@ ctk_im_context_real_get_preedit_string (CtkIMContext       *context,
 
 static gboolean
 ctk_im_context_real_filter_keypress (CtkIMContext       *context,
-				     GdkEventKey        *event)
+				     CdkEventKey        *event)
 {
   return FALSE;
 }
@@ -449,13 +449,13 @@ ctk_im_context_real_get_surrounding (CtkIMContext *context,
  *           that the previous client window no longer exists.
  * 
  * Set the client window for the input context; this is the
- * #GdkWindow in which the input appears. This window is
+ * #CdkWindow in which the input appears. This window is
  * used in order to correctly position status windows, and may
  * also be used for purposes internal to the input method.
  **/
 void
 ctk_im_context_set_client_window (CtkIMContext *context,
-				  GdkWindow    *window)
+				  CdkWindow    *window)
 {
   CtkIMContextClass *klass;
   
@@ -511,7 +511,7 @@ ctk_im_context_get_preedit_string (CtkIMContext   *context,
  **/
 gboolean
 ctk_im_context_filter_keypress (CtkIMContext *context,
-				GdkEventKey  *key)
+				CdkEventKey  *key)
 {
   CtkIMContextClass *klass;
   
@@ -596,7 +596,7 @@ ctk_im_context_reset (CtkIMContext   *context)
  **/
 void
 ctk_im_context_set_cursor_location (CtkIMContext       *context,
-				    const GdkRectangle *area)
+				    const CdkRectangle *area)
 {
   CtkIMContextClass *klass;
   
@@ -604,7 +604,7 @@ ctk_im_context_set_cursor_location (CtkIMContext       *context,
 
   klass = CTK_IM_CONTEXT_GET_CLASS (context);
   if (klass->set_cursor_location)
-    klass->set_cursor_location (context, (GdkRectangle *) area);
+    klass->set_cursor_location (context, (CdkRectangle *) area);
 }
 
 /**

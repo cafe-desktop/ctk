@@ -39,18 +39,18 @@ static GOptionEntry args[] = {
   { NULL }
 };
 
-static GdkPixbuf *
+static CdkPixbuf *
 load_symbolic_svg (char *file_data, gsize file_len,
                    int width,
                    int height,
-                   const GdkRGBA  *fg,
-                   const GdkRGBA  *success_color,
-                   const GdkRGBA  *warning_color,
-                   const GdkRGBA  *error_color,
+                   const CdkRGBA  *fg,
+                   const CdkRGBA  *success_color,
+                   const CdkRGBA  *warning_color,
+                   const CdkRGBA  *error_color,
                    GError        **error)
 {
   GInputStream *stream;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gchar *css_fg;
   gchar *css_success;
   gchar *css_warning;
@@ -125,8 +125,8 @@ load_symbolic_svg (char *file_data, gsize file_len,
 }
 
 static void
-extract_plane (GdkPixbuf *src,
-               GdkPixbuf *dst,
+extract_plane (CdkPixbuf *src,
+               CdkPixbuf *dst,
                int from_plane,
                int to_plane)
 {
@@ -160,16 +160,16 @@ extract_plane (GdkPixbuf *src,
     }
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 make_symbolic_pixbuf (char *file,
                       int width,
                       int height,
                       GError        **error)
 
 {
-  GdkRGBA r = { 1,0,0,1}, g = {0,1,0,1};
-  GdkPixbuf *loaded;
-  GdkPixbuf *pixbuf;
+  CdkRGBA r = { 1,0,0,1}, g = {0,1,0,1};
+  CdkPixbuf *loaded;
+  CdkPixbuf *pixbuf;
   int plane;
   gchar *file_data;
   gsize file_len;
@@ -222,7 +222,7 @@ main (int argc, char **argv)
 {
   gchar *path, *basename, *pngpath, *pngfile, *dot;
   GOptionContext *context;
-  GdkPixbuf *symbolic;
+  CdkPixbuf *symbolic;
   GError *error;
   int width, height;
   gchar **sizev;

@@ -88,7 +88,7 @@ struct _CtkTextTagClass
 
   gboolean (* event) (CtkTextTag        *tag,
                       GObject           *event_object, /* widget, canvas item, whatever */
-                      GdkEvent          *event,        /* the event itself */
+                      CdkEvent          *event,        /* the event itself */
                       const CtkTextIter *iter);        /* location of event in buffer */
 
   /* Padding for future expansion */
@@ -110,7 +110,7 @@ void         ctk_text_tag_set_priority (CtkTextTag        *tag,
 GDK_AVAILABLE_IN_ALL
 gboolean     ctk_text_tag_event        (CtkTextTag        *tag,
                                         GObject           *event_object,
-                                        GdkEvent          *event,
+                                        CdkEvent          *event,
                                         const CtkTextIter *iter);
 GDK_AVAILABLE_IN_3_20
 void         ctk_text_tag_changed      (CtkTextTag        *tag,

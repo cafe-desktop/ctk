@@ -1809,16 +1809,16 @@ msgid "Cell background color"
 msgstr "କୋଷ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderer.c:392
-msgid "Cell background color as a GdkColor"
-msgstr "GdkColor ପରି କୋଷ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
+msgid "Cell background color as a CdkColor"
+msgstr "CdkColor ପରି କୋଷ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderer.c:405
 msgid "Cell background RGBA color"
 msgstr "କୋଷ ପୃଷ୍ଠଭୂମି RGBA ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderer.c:406
-msgid "Cell background color as a GdkRGBA"
-msgstr "GdkRGBA ପରି କୋଷ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
+msgid "Cell background color as a CdkRGBA"
+msgstr "CdkRGBA ପରି କୋଷ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderer.c:413
 msgid "Editing"
@@ -2074,8 +2074,8 @@ msgstr "ପ୍ରୁଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderertext.c:302 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:214
-msgid "Background color as a GdkColor"
-msgstr "ଗୋଟିଏ GdkColor ପରି ଶୀର୍ଷକର ପ୍ରୁଷ୍ଠଭୂମି ରଙ୍ଗ"
+msgid "Background color as a CdkColor"
+msgstr "ଗୋଟିଏ CdkColor ପରି ଶୀର୍ଷକର ପ୍ରୁଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderertext.c:316
 msgid "Background color as RGBA"
@@ -2083,8 +2083,8 @@ msgstr "RGBA ପରି ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderertext.c:317 ../ctk/ctkcellview.c:219
 #: ../ctk/ctktexttag.c:229
-msgid "Background color as a GdkRGBA"
-msgstr "ଗୋଟିଏ GdkRGBA ପରି ପ୍ରୁଷ୍ଠଭୂମି ରଙ୍ଗ"
+msgid "Background color as a CdkRGBA"
+msgstr "ଗୋଟିଏ CdkRGBA ପରି ପ୍ରୁଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderertext.c:323 ../ctk/ctktexttag.c:244
 msgid "Foreground color name"
@@ -2100,16 +2100,16 @@ msgid "Foreground color"
 msgstr "ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderertext.c:339 ../ctk/ctktexttag.c:260
-msgid "Foreground color as a GdkColor"
-msgstr "ଗୋଟିଏ GdkColor ପରି ପୃଷ୍ଠଭୂମି ରଙ୍ଗଙ୍ଗ"
+msgid "Foreground color as a CdkColor"
+msgstr "ଗୋଟିଏ CdkColor ପରି ପୃଷ୍ଠଭୂମି ରଙ୍ଗଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderertext.c:353
 msgid "Foreground color as RGBA"
 msgstr "RGBA ପରି ପ୍ରଚ୍ଛଦଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderertext.c:354 ../ctk/ctktexttag.c:275
-msgid "Foreground color as a GdkRGBA"
-msgstr "GdkRGBA ପରି ପ୍ରଚ୍ଛଦଭୂମି ରଙ୍ଗ"
+msgid "Foreground color as a CdkRGBA"
+msgstr "CdkRGBA ପରି ପ୍ରଚ୍ଛଦଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctkcellrenderertext.c:362 ../ctk/ctkentry.c:758
 #: ../ctk/ctktexttag.c:291 ../ctk/ctktextview.c:684
@@ -2579,9 +2579,9 @@ msgid "Color"
 msgstr "ରଙ୍ଗ"
 
 #: ../ctk/ctkcolorchooser.c:68
-#| msgid "Foreground color as a GdkRGBA"
-msgid "Current color, as a GdkRGBA"
-msgstr "ପ୍ରଚଳିତ ରଙ୍ଗ, GdkRGBA ପରି"
+#| msgid "Foreground color as a CdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "ପ୍ରଚଳିତ ରଙ୍ଗ, CdkRGBA ପରି"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -3800,8 +3800,8 @@ msgid "Pixbuf"
 msgstr "ପିକ୍ସବଫ୍"
 
 #: ../ctk/ctkimage.c:217 ../ctk/ctkstatusicon.c:223
-msgid "A GdkPixbuf to display"
-msgstr "ପ୍ରଦର୍ଶନ କରିବାକୁ ଥିବା ଏକ Gdkପିକ୍ସବଫ୍"
+msgid "A CdkPixbuf to display"
+msgstr "ପ୍ରଦର୍ଶନ କରିବାକୁ ଥିବା ଏକ Cdkପିକ୍ସବଫ୍"
 
 #: ../ctk/ctkimage.c:224 ../ctk/ctkrecentmanager.c:293
 #: ../ctk/ctkstatusicon.c:230
@@ -3849,8 +3849,8 @@ msgid "Animation"
 msgstr "ଜୀବନାୟନ"
 
 #: ../ctk/ctkimage.c:276
-msgid "GdkPixbufAnimation to display"
-msgstr "ପ୍ରଦର୍ଶନ କରିବାକୁ ଥିବା ଏକ Gdkପିକ୍ସବଫ୍ ଜୀବନଚିତ୍ର"
+msgid "CdkPixbufAnimation to display"
+msgstr "ପ୍ରଦର୍ଶନ କରିବାକୁ ଥିବା ଏକ Cdkପିକ୍ସବଫ୍ ଜୀବନଚିତ୍ର"
 
 #: ../ctk/ctkimage.c:316 ../ctk/ctkstatusicon.c:270
 msgid "Storage type"
@@ -6450,8 +6450,8 @@ msgid "The title of this tray icon"
 msgstr "ଏହି ଟ୍ରେ ଚିତ୍ରସଂକେତର ଶୀର୍ଷକ"
 
 #: ../ctk/ctkstylecontext.c:443
-msgid "The associated GdkScreen"
-msgstr "ସମ୍ପୃକ୍ତ GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "ସମ୍ପୃକ୍ତ CdkScreen"
 
 #: ../ctk/ctkstylecontext.c:449
 msgid "Direction"
@@ -6743,8 +6743,8 @@ msgid "Paragraph background color"
 msgstr "ପରିଚ୍ଛେଦ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctktexttag.c:577
-msgid "Paragraph background color as a GdkColor"
-msgstr "GdkColor ଭାବରେ ପରିଚ୍ଛେଦ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
+msgid "Paragraph background color as a CdkColor"
+msgstr "CdkColor ଭାବରେ ପରିଚ୍ଛେଦ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctktexttag.c:591
 msgid "Paragraph background RGBA"
@@ -6753,7 +6753,7 @@ msgstr "ପରିଚ୍ଛେଦ ପୃଷ୍ଠଭୂମି RGBA"
 #: ../ctk/ctktexttag.c:592
 #, fuzzy
 #| msgid "Paragraph background color as a string"
-msgid "Paragraph background RGBA as a GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
 msgstr "ଗୋଟିଏ ବାକ୍ଯଖଣ୍ଡ ଭାବରେ ପରିଚ୍ଛେଦ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #: ../ctk/ctktexttag.c:610
@@ -7743,9 +7743,9 @@ msgid "Events"
 msgstr "ଘଟଣା"
 
 #: ../ctk/ctkwidget.c:1094
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"ଏହି ୱିଜେଟ କେଉଁ ପ୍ରକାରର GdkEvents ପାଇଥାଏ ତାହା ଏହି ଘଟଣା ମାସ୍କଟି ସ୍ଥିର କରିଥାଏ"
+"ଏହି ୱିଜେଟ କେଉଁ ପ୍ରକାରର CdkEvents ପାଇଥାଏ ତାହା ଏହି ଘଟଣା ମାସ୍କଟି ସ୍ଥିର କରିଥାଏ"
 
 #: ../ctk/ctkwidget.c:1101
 msgid "No show all"
@@ -8360,14 +8360,14 @@ msgstr "ବ୍ୟବହାର କରିବାକୁ ଥିବା ରଙ୍ଗ �
 #~ msgid "Whether the statusbar has a grip for resizing the toplevel"
 #~ msgstr "ଉପର ସ୍ତରକୁ ପୁନଃ ଆକୃତି ଦେବା ପାଇଁ ସ୍ଥିତିପଟିରେ ଧରିଅଛି"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
-#~ msgstr "ପୃଷ୍ଠଭୂମି ରଙ୍ଗ (ସମ୍ଭବତଃ ଅବଣ୍ଟିତ) GdkColor"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
+#~ msgstr "ପୃଷ୍ଠଭୂମି ରଙ୍ଗ (ସମ୍ଭବତଃ ଅବଣ୍ଟିତ) CdkColor"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
-#~ msgstr "GdkColor ପରି ପୃଷ୍ଠଭୂମି ରଙ୍ଗ (ସମ୍ଭବତଃ ବଣ୍ଟାହୋଇନଥିବା)"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
+#~ msgstr "CdkColor ପରି ପୃଷ୍ଠଭୂମି ରଙ୍ଗ (ସମ୍ଭବତଃ ବଣ୍ଟାହୋଇନଥିବା)"
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-#~ msgstr "ଗୋଟିଏ (ସମ୍ଭବତଃ ଅବଣ୍ଟିତ) GdkColor ଭାବେ ପରିଚ୍ଛେଦ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+#~ msgstr "ଗୋଟିଏ (ସମ୍ଭବତଃ ଅବଣ୍ଟିତ) CdkColor ଭାବେ ପରିଚ୍ଛେଦ ପୃଷ୍ଠଭୂମି ରଙ୍ଗ"
 
 #~ msgid "Horizontal Adjustment for the widget"
 #~ msgstr "ୱିଜେଟ ପାଇଁ ଭୂସମାନ୍ତର ନିୟନ୍ତ୍ରଣ"
@@ -8444,8 +8444,8 @@ msgstr "ବ୍ୟବହାର କରିବାକୁ ଥିବା ରଙ୍ଗ �
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "pixbuf ର ପିକ୍ସେଲ ତଥ୍ଯ ପାଇଁ ଗୋଟିଏ ସୂଚକ"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "ଚିତ୍ରକ ପାଇଁ GdkScreen"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "ଚିତ୍ରକ ପାଇଁ CdkScreen"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "ସ୍ପିନ ବଟନର ମୂଲ୍ୟକୁ ଧରିରଖିଥିବା ମେଳ।"
@@ -8465,8 +8465,8 @@ msgstr "ବ୍ୟବହାର କରିବାକୁ ଥିବା ରଙ୍ଗ �
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "ଛାୟା କିମ୍ବା ପୃଷ୍ଠଭୂମି ଅଙ୍କନ କରୁଥିବା ସମୟରେ ପଠାଯାଉଥିବା ପ୍ରକୃତ ସ୍ଥିତି"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "ବର୍ତ୍ତମାନ ବଛାଯାଇଥିବା GdkFont"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "ବର୍ତ୍ତମାନ ବଛାଯାଇଥିବା CdkFont"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "ଅପସନ୍ଦ ଗୁଣଧର୍ମ, ଏହା ପରିବର୍ତ୍ତେ ଛାୟା ପ୍ରକାରକୁ ବ୍ୟବହାର କରନ୍ତୁ"
@@ -8474,17 +8474,17 @@ msgstr "ବ୍ୟବହାର କରିବାକୁ ଥିବା ରଙ୍ଗ �
 #~ msgid "Pixmap"
 #~ msgstr "ପିକ୍ସମ୍ଯାପ"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "ଦର୍ଶାଇବା ପାଇଁ GdkPixmap"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "ଦର୍ଶାଇବା ପାଇଁ CdkPixmap"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "ଦର୍ଶାଇବା ପାଇଁ ଗୋଟିଏ GdkImage"
+#~ msgid "A CdkImage to display"
+#~ msgstr "ଦର୍ଶାଇବା ପାଇଁ ଗୋଟିଏ CdkImage"
 
 #~ msgid "Mask"
 #~ msgstr "ମୁଖା"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "GdkImage ଅଥବା GdkPixmap ସହିତ ବ୍ୟବହାର କରିବା ପାଇଁ ଥିବା ବିଟମ୍ୟାପ ମୁଖା"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "CdkImage ଅଥବା CdkPixmap ସହିତ ବ୍ୟବହାର କରିବା ପାଇଁ ଥିବା ବିଟମ୍ୟାପ ମୁଖା"
 
 #~ msgid "Use separator"
 #~ msgstr "ବିଭାଜକ ବ୍ଯବହାର କରନ୍ତୁ"

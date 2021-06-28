@@ -1275,8 +1275,8 @@ msgid "Cell background color"
 msgstr "Ngjyra e sfondit të kutisë"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Ngjyra e sfondit të kutisë e shprehur si GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Ngjyra e sfondit të kutisë e shprehur si CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 msgid "Editing"
@@ -1526,8 +1526,8 @@ msgid "Background color"
 msgstr "Ngjyra e sfondit"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Ngjyra e sfondit shprehur si GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Ngjyra e sfondit shprehur si CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1543,8 +1543,8 @@ msgid "Foreground color"
 msgstr "Ngjyra e përparme"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Ngjyra e përparme e shprehur si GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Ngjyra e përparme e shprehur si CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3193,8 +3193,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf që do të shfaqet"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf që do të shfaqet"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3241,8 +3241,8 @@ msgid "Animation"
 msgstr "Animacioni"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation për t'u shfaqur"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation për t'u shfaqur"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5945,8 +5945,8 @@ msgstr ""
 "anonimë"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Ngjyrë sfondi si GdkColor (mundësisht e papërdorur)"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Ngjyrë sfondi si CdkColor (mundësisht e papërdorur)"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5961,8 +5961,8 @@ msgstr ""
 "lartësinë e gërmave të markuara"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Ngjyrë e përparme si (mundësisht e pazënë) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Ngjyrë e përparme si (mundësisht e pazënë) CdkColor"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6112,8 +6112,8 @@ msgid "Paragraph background color"
 msgstr "Ngjyra e sfondit të paragrafit"
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Ngjyra e sfondit të paragrafit si GdkColor (mundësisht e papërdorur)"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Ngjyra e sfondit të paragrafit si CdkColor (mundësisht e papërdorur)"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7108,8 +7108,8 @@ msgid "Events"
 msgstr "Evente"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "Maska që përcakton se çfarë lloji GdkEvents ka marrë ky widget"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "Maska që përcakton se çfarë lloji CdkEvents ka marrë ky widget"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7624,8 +7624,8 @@ msgstr "Tregon si duhet shfaqur metod e input e panelit të gjendjes"
 #~ msgstr "Një kursor tek e dhëna pixel e pixbuf"
 
 # (pofilter) startcaps: checks that the message starts with the correct capitalisation
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "GdkScreen për vizatuesin"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "CdkScreen për vizatuesin"
 
 # (pofilter) doublequoting: checks whether doublequoting is consistent between the two strings
 #~ msgid "The adjustment that holds the value of the spinbutton."
@@ -7650,8 +7650,8 @@ msgstr "Tregon si duhet shfaqur metod e input e panelit të gjendjes"
 #~ msgstr ""
 #~ "Bitmap për t'u përdorur si maskë gjatë krijimit të sfondit të tekstit"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "GdkFont që është aktualisht e zgjedhur"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "CdkFont që është aktualisht e zgjedhur"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "Veti e papëlqyeshme, përdorni shadow_type më mirë"
@@ -7660,17 +7660,17 @@ msgstr "Tregon si duhet shfaqur metod e input e panelit të gjendjes"
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "GdkPixmap që do të shfaqet"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "CdkPixmap që do të shfaqet"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "GdkImage që do të shfaqet"
+#~ msgid "A CdkImage to display"
+#~ msgstr "CdkImage që do të shfaqet"
 
 #~ msgid "Mask"
 #~ msgstr "Maska"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Maskë bitmap për t'u përdorur me GdkImage ose GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Maskë bitmap për t'u përdorur me CdkImage ose CdkPixmap"
 
 #~ msgid "Use separator"
 #~ msgstr "Përdor ndarës"

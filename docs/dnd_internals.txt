@@ -44,11 +44,11 @@ in the structures CtkSourceInfo and CtkDestInfo.
 The CtkSourceInfo structure is created when the drag
 begins, and persists until the drag either completes
 or times out. A pointer to it is stored in 
-dataset-data for the GdkDragContext, however there
+dataset-data for the CdkDragContext, however there
 is no ownership. If the SourceInfo is destroyed
 before the context, the field is simply cleared.
 
-A CtkDestInfo is attached to each GdkDragContext
+A CtkDestInfo is attached to each CdkDragContext
 that is received for an incoming drag. In contrast
 to the SourceInfo the DestInfo is "owned" by the
 context, and when the context is destroyed, destroyed.
@@ -61,50 +61,50 @@ used by anything other than the DND code in CTK+.
 
 /* Drag and Drop */
 
-GdkDragContext * cdk_drag_context_new        (void);
+CdkDragContext * cdk_drag_context_new        (void);
 
-These create and refcount GdkDragContexts in a
+These create and refcount CdkDragContexts in a
 straightforward manner.
 
 /* Destination side */
 
-void             cdk_drag_status        (GdkDragContext   *context,
-				         GdkDragAction     action,
+void             cdk_drag_status        (CdkDragContext   *context,
+				         CdkDragAction     action,
 					 guint32           time);
-void             cdk_drop_reply         (GdkDragContext   *context,
+void             cdk_drop_reply         (CdkDragContext   *context,
 					 gboolean          ok,
 					 guint32           time);
-void             cdk_drop_finish        (GdkDragContext   *context,
+void             cdk_drop_finish        (CdkDragContext   *context,
 					 gboolean          success,
 					 guint32           time);
-GdkAtom          cdk_drag_get_selection (GdkDragContext   *context);
+CdkAtom          cdk_drag_get_selection (CdkDragContext   *context);
 
 /* Source side */
 
-GdkDragContext * cdk_drag_begin      (GdkWindow      *window,
+CdkDragContext * cdk_drag_begin      (CdkWindow      *window,
 				      GList          *targets,
-				      GdkDragAction   actions);
+				      CdkDragAction   actions);
 gboolean         cdk_drag_get_protocol (guint32          xid,
-					GdkDragProtocol *protocol);
-void             cdk_drag_find_window (GdkDragContext   *context,
-				       GdkWindow       *drag_window,
+					CdkDragProtocol *protocol);
+void             cdk_drag_find_window (CdkDragContext   *context,
+				       CdkWindow       *drag_window,
 			 	       gint             x_root,
 				       gint             y_root,
-				       GdkWindow      **dest_window,
-				       GdkDragProtocol *protocol);
-gboolean        cdk_drag_motion      (GdkDragContext *context,
-				      GdkWindow      *dest_window,
-				      GdkDragProtocol protocol,
+				       CdkWindow      **dest_window,
+				       CdkDragProtocol *protocol);
+gboolean        cdk_drag_motion      (CdkDragContext *context,
+				      CdkWindow      *dest_window,
+				      CdkDragProtocol protocol,
 				      gint            x_root, 
 				      gint            y_root,
-				      GdkDragAction   action,
+				      CdkDragAction   action,
 				      guint32         time);
-void            cdk_drag_drop        (GdkDragContext *context,
+void            cdk_drag_drop        (CdkDragContext *context,
 				      guint32         time);
-void            cdk_drag_abort       (GdkDragContext *context,
+void            cdk_drag_abort       (CdkDragContext *context,
 				      guint32         time);
 
-GdkAtom       cdk_drag_get_selection (GdkDragContext *context);
+CdkAtom       cdk_drag_get_selection (CdkDragContext *context);
 
 Retrieves the selection that will be used to communicate
 the data for the drag context (valid on both source
@@ -161,7 +161,7 @@ the taskbar.
 
 Internally, when the outer drag enters a proxy dest site, a
 new source drag is created, with SourceInfo and
-GdkDragContext. From the GDK side, it looks much like a
+CdkDragContext. From the GDK side, it looks much like a
 normal source drag; on the CTK+ side, most of the code is
 disjoint. The need to pass in a specific target window
 is the reason why the GDK DND API splits

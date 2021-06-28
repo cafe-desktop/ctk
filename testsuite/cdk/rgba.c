@@ -4,8 +4,8 @@
 static void
 test_color_parse (void)
 {
-  GdkRGBA color;
-  GdkRGBA expected;
+  CdkRGBA color;
+  CdkRGBA expected;
   gboolean res;
 
   res = cdk_rgba_parse (&color, "foo");
@@ -62,8 +62,8 @@ test_color_parse (void)
 static void
 test_color_to_string (void)
 {
-  GdkRGBA rgba;
-  GdkRGBA out;
+  CdkRGBA rgba;
+  CdkRGBA out;
   gchar *res;
   gchar *res_de;
   gchar *res_en;
@@ -101,8 +101,8 @@ test_color_to_string (void)
 static void
 test_color_copy (void)
 {
-  GdkRGBA rgba;
-  GdkRGBA *out;
+  CdkRGBA rgba;
+  CdkRGBA *out;
 
   rgba.red = 0.0;
   rgba.green = 0.1;
@@ -118,7 +118,7 @@ test_color_copy (void)
 static void
 test_color_parse_nonsense (void)
 {
-  GdkRGBA color;
+  CdkRGBA color;
   gboolean res;
 
   g_test_bug ("667485");

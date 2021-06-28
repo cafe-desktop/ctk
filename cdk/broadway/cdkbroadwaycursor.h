@@ -34,18 +34,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_BROADWAY_CURSOR              (cdk_broadway_cursor_get_type ())
-#define GDK_BROADWAY_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_CURSOR, GdkBroadwayCursor))
-#define GDK_BROADWAY_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_CURSOR, GdkBroadwayCursorClass))
+#define GDK_BROADWAY_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_CURSOR, CdkBroadwayCursor))
+#define GDK_BROADWAY_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_CURSOR, CdkBroadwayCursorClass))
 #define GDK_IS_BROADWAY_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_CURSOR))
 #define GDK_IS_BROADWAY_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_BROADWAY_CURSOR))
-#define GDK_BROADWAY_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_CURSOR, GdkBroadwayCursorClass))
+#define GDK_BROADWAY_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_CURSOR, CdkBroadwayCursorClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkBroadwayCursor GdkBroadwayCursor;
+typedef struct _CdkBroadwayCursor CdkBroadwayCursor;
 #else
-typedef GdkCursor GdkBroadwayCursor;
+typedef CdkCursor CdkBroadwayCursor;
 #endif
-typedef struct _GdkBroadwayCursorClass GdkBroadwayCursorClass;
+typedef struct _CdkBroadwayCursorClass CdkBroadwayCursorClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_broadway_cursor_get_type          (void);

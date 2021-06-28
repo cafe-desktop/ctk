@@ -9116,10 +9116,10 @@ msgstr "Udskriv til testprinter"
 #~ msgid "--- No Tip ---"
 #~ msgstr "--- Ingen hjælp ---"
 
-#~ msgid "Gdk debugging flags to set"
+#~ msgid "Cdk debugging flags to set"
 #~ msgstr "GDK-fejlretningsflag der skal angives"
 
-#~ msgid "Gdk debugging flags to unset"
+#~ msgid "Cdk debugging flags to unset"
 #~ msgstr "GDK-fejlretningsflag der skal fjernes"
 
 #~ msgid "Image file '%s' contains no data"
@@ -9575,8 +9575,8 @@ msgstr "Udskriv til testprinter"
 #~ msgid "Failed to allocate QTIF context structure."
 #~ msgstr "Kunne ikke allokere QTIF-kontekststruktur."
 
-#~ msgid "Failed to create GdkPixbufLoader object."
-#~ msgstr "Kunne ikke oprette objekt af typen GdkPixbufLoader."
+#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgstr "Kunne ikke oprette objekt af typen CdkPixbufLoader."
 
 #~ msgid "Failed to find an image data atom."
 #~ msgstr "Kunne ikke finde et billeddataatom."

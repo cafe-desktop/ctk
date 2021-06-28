@@ -347,7 +347,7 @@ load_module (GSList      *module_list,
 			  displays = cdk_display_manager_list_displays (cdk_display_manager_get ());
 			  for (iter = displays; iter; iter = iter->next)
 			    {
-			      GdkDisplay *display = iter->data;
+			      CdkDisplay *display = iter->data;
 			  (* info->display_init_func) (display);
 			    }
 			  g_slist_free (displays);
@@ -429,7 +429,7 @@ load_modules (const char *module_str)
 }
 
 static void
-default_display_notify_cb (GdkDisplayManager *display_manager)
+default_display_notify_cb (CdkDisplayManager *display_manager)
 {
   GSList *slist;
 
@@ -455,10 +455,10 @@ default_display_notify_cb (GdkDisplayManager *display_manager)
 }
 
 static void
-display_closed_cb (GdkDisplay *display,
+display_closed_cb (CdkDisplay *display,
 		   gboolean    is_error)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
   CtkSettings *settings;
 
   screen = cdk_display_get_default_screen (display);
@@ -471,12 +471,12 @@ display_closed_cb (GdkDisplay *display,
 		   
 
 static void
-display_opened_cb (GdkDisplayManager *display_manager,
-		   GdkDisplay        *display)
+display_opened_cb (CdkDisplayManager *display_manager,
+		   CdkDisplay        *display)
 {
   GValue value = G_VALUE_INIT;
   GSList *slist;
-  GdkScreen *screen;
+  CdkScreen *screen;
   CtkSettings *settings;
 
   for (slist = ctk_modules; slist; slist = slist->next)
@@ -511,7 +511,7 @@ _ctk_modules_init (gint        *argc,
 		   gchar     ***argv,
 		   const gchar *ctk_modules_args)
 {
-  GdkDisplayManager *display_manager;
+  CdkDisplayManager *display_manager;
   gint i;
 
   g_assert (ctk_argv == NULL);

@@ -28,28 +28,28 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_QUARTZ_DRAG_CONTEXT              (cdk_quartz_drag_context_get_type ())
-#define GDK_QUARTZ_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_DRAG_CONTEXT, GdkQuartzDragContext))
-#define GDK_QUARTZ_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_DRAG_CONTEXT, GdkQuartzDragContextClass))
+#define GDK_QUARTZ_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_DRAG_CONTEXT, CdkQuartzDragContext))
+#define GDK_QUARTZ_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_DRAG_CONTEXT, CdkQuartzDragContextClass))
 #define GDK_IS_QUARTZ_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_DRAG_CONTEXT))
 #define GDK_IS_QUARTZ_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_QUARTZ_DRAG_CONTEXT))
-#define GDK_QUARTZ_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_DRAG_CONTEXT, GdkQuartzDragContextClass))
+#define GDK_QUARTZ_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_DRAG_CONTEXT, CdkQuartzDragContextClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkQuartzDragContext GdkQuartzDragContext;
+typedef struct _CdkQuartzDragContext CdkQuartzDragContext;
 #else
-typedef GdkDragContext GdkQuartzDragContext;
+typedef CdkDragContext CdkQuartzDragContext;
 #endif
-typedef struct _GdkQuartzDragContextClass GdkQuartzDragContextClass;
+typedef struct _CdkQuartzDragContextClass CdkQuartzDragContextClass;
 
 
 GDK_AVAILABLE_IN_ALL
 GType     cdk_quartz_drag_context_get_type (void);
 
 GDK_AVAILABLE_IN_ALL
-id        cdk_quartz_drag_context_get_dragging_info_libctk_only (GdkDragContext *context);
+id        cdk_quartz_drag_context_get_dragging_info_libctk_only (CdkDragContext *context);
 
 GDK_AVAILABLE_IN_ALL
-GdkDragContext *cdk_quartz_drag_source_context_libctk_only (void);
+CdkDragContext *cdk_quartz_drag_source_context_libctk_only (void);
 
 G_END_DECLS
 

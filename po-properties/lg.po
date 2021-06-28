@@ -32,7 +32,7 @@ msgid "Screen"
 msgstr ""
 
 #: ../cdk/cdkpango.c:539
-msgid "the GdkScreen for the renderer"
+msgid "the CdkScreen for the renderer"
 msgstr ""
 
 #: ../cdk/cdkscreen.c:75
@@ -1065,7 +1065,7 @@ msgid "Cell background color"
 msgstr ""
 
 #: ../ctk/ctkcellrenderer.c:287
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr ""
 
 #: ../ctk/ctkcellrenderer.c:294
@@ -1345,7 +1345,7 @@ msgid "Background color"
 msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:237 ../ctk/ctkcellview.c:168
-msgid "Background color as a GdkColor"
+msgid "Background color as a CdkColor"
 msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:244 ../ctk/ctktexttag.c:217
@@ -1361,7 +1361,7 @@ msgid "Foreground color"
 msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:253
-msgid "Foreground color as a GdkColor"
+msgid "Foreground color as a CdkColor"
 msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:261 ../ctk/ctkentry.c:662
@@ -2786,7 +2786,7 @@ msgid "The string that represents this font"
 msgstr ""
 
 #: ../ctk/ctkfontsel.c:204
-msgid "The GdkFont that is currently selected"
+msgid "The CdkFont that is currently selected"
 msgstr ""
 
 #: ../ctk/ctkfontsel.c:210
@@ -3010,7 +3010,7 @@ msgid "Pixbuf"
 msgstr ""
 
 #: ../ctk/ctkimage.c:225 ../ctk/ctkstatusicon.c:214
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:232
@@ -3018,7 +3018,7 @@ msgid "Pixmap"
 msgstr ""
 
 #: ../ctk/ctkimage.c:233
-msgid "A GdkPixmap to display"
+msgid "A CdkPixmap to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:240 ../ctk/ctkmessagedialog.c:305
@@ -3026,7 +3026,7 @@ msgid "Image"
 msgstr ""
 
 #: ../ctk/ctkimage.c:241
-msgid "A GdkImage to display"
+msgid "A CdkImage to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:248
@@ -3034,7 +3034,7 @@ msgid "Mask"
 msgstr ""
 
 #: ../ctk/ctkimage.c:249
-msgid "Mask bitmap to use with GdkImage or GdkPixmap"
+msgid "Mask bitmap to use with CdkImage or CdkPixmap"
 msgstr ""
 
 #: ../ctk/ctkimage.c:257 ../ctk/ctkstatusicon.c:222
@@ -3075,7 +3075,7 @@ msgid "Animation"
 msgstr ""
 
 #: ../ctk/ctkimage.c:308
-msgid "GdkPixbufAnimation to display"
+msgid "CdkPixbufAnimation to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:348 ../ctk/ctkstatusicon.c:261
@@ -5703,7 +5703,7 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr ""
 
 #: ../ctk/ctktexttag.c:192
-msgid "Background color as a (possibly unallocated) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ../ctk/ctktexttag.c:199
@@ -5725,7 +5725,7 @@ msgid "Bitmap to use as a mask when drawing the text background"
 msgstr ""
 
 #: ../ctk/ctktexttag.c:226
-msgid "Foreground color as a (possibly unallocated) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ../ctk/ctktexttag.c:234
@@ -5871,7 +5871,7 @@ msgid "Paragraph background color"
 msgstr ""
 
 #: ../ctk/ctktexttag.c:536
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 msgstr ""
 
 #: ../ctk/ctktexttag.c:554
@@ -6784,7 +6784,7 @@ msgid "Events"
 msgstr ""
 
 #: ../ctk/ctkwidget.c:665
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
 
 #: ../ctk/ctkwidget.c:672

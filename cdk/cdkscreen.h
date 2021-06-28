@@ -34,7 +34,7 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_SCREEN            (cdk_screen_get_type ())
-#define GDK_SCREEN(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_SCREEN, GdkScreen))
+#define GDK_SCREEN(object)         (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_SCREEN, CdkScreen))
 #define GDK_IS_SCREEN(object)      (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_SCREEN))
 
 
@@ -42,91 +42,91 @@ GDK_AVAILABLE_IN_ALL
 GType        cdk_screen_get_type              (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GdkVisual *  cdk_screen_get_system_visual     (GdkScreen   *screen);
+CdkVisual *  cdk_screen_get_system_visual     (CdkScreen   *screen);
 GDK_AVAILABLE_IN_ALL
-GdkVisual *  cdk_screen_get_rgba_visual       (GdkScreen   *screen);
+CdkVisual *  cdk_screen_get_rgba_visual       (CdkScreen   *screen);
 GDK_AVAILABLE_IN_ALL
-gboolean     cdk_screen_is_composited         (GdkScreen   *screen);
+gboolean     cdk_screen_is_composited         (CdkScreen   *screen);
 
 GDK_AVAILABLE_IN_ALL
-GdkWindow *  cdk_screen_get_root_window       (GdkScreen   *screen);
+CdkWindow *  cdk_screen_get_root_window       (CdkScreen   *screen);
 GDK_AVAILABLE_IN_ALL
-GdkDisplay * cdk_screen_get_display           (GdkScreen   *screen);
+CdkDisplay * cdk_screen_get_display           (CdkScreen   *screen);
 GDK_DEPRECATED_IN_3_22
-gint         cdk_screen_get_number            (GdkScreen   *screen);
+gint         cdk_screen_get_number            (CdkScreen   *screen);
 GDK_DEPRECATED_IN_3_22
-gint         cdk_screen_get_width             (GdkScreen   *screen);
+gint         cdk_screen_get_width             (CdkScreen   *screen);
 GDK_DEPRECATED_IN_3_22
-gint         cdk_screen_get_height            (GdkScreen   *screen);
+gint         cdk_screen_get_height            (CdkScreen   *screen);
 GDK_DEPRECATED_IN_3_22
-gint         cdk_screen_get_width_mm          (GdkScreen   *screen);
+gint         cdk_screen_get_width_mm          (CdkScreen   *screen);
 GDK_DEPRECATED_IN_3_22
-gint         cdk_screen_get_height_mm         (GdkScreen   *screen);
+gint         cdk_screen_get_height_mm         (CdkScreen   *screen);
 
 GDK_AVAILABLE_IN_ALL
-GList *      cdk_screen_list_visuals          (GdkScreen   *screen);
+GList *      cdk_screen_list_visuals          (CdkScreen   *screen);
 GDK_AVAILABLE_IN_ALL
-GList *      cdk_screen_get_toplevel_windows  (GdkScreen   *screen);
+GList *      cdk_screen_get_toplevel_windows  (CdkScreen   *screen);
 GDK_DEPRECATED_IN_3_22
-gchar *      cdk_screen_make_display_name     (GdkScreen   *screen);
+gchar *      cdk_screen_make_display_name     (CdkScreen   *screen);
 
 GDK_DEPRECATED_IN_3_22_FOR(cdk_display_get_n_monitors)
-gint         cdk_screen_get_n_monitors        (GdkScreen    *screen);
+gint         cdk_screen_get_n_monitors        (CdkScreen    *screen);
 GDK_DEPRECATED_IN_3_22_FOR(cdk_display_get_primary_monitor)
-gint         cdk_screen_get_primary_monitor   (GdkScreen    *screen);
+gint         cdk_screen_get_primary_monitor   (CdkScreen    *screen);
 GDK_DEPRECATED_IN_3_22_FOR(cdk_monitor_get_geometry)
-void         cdk_screen_get_monitor_geometry  (GdkScreen    *screen,
+void         cdk_screen_get_monitor_geometry  (CdkScreen    *screen,
                                                gint          monitor_num,
-                                               GdkRectangle *dest);
+                                               CdkRectangle *dest);
 GDK_DEPRECATED_IN_3_22_FOR(cdk_monitor_get_workarea)
-void         cdk_screen_get_monitor_workarea  (GdkScreen    *screen,
+void         cdk_screen_get_monitor_workarea  (CdkScreen    *screen,
                                                gint          monitor_num,
-                                               GdkRectangle *dest);
+                                               CdkRectangle *dest);
 
 GDK_DEPRECATED_IN_3_22_FOR(cdk_display_get_monitor_at_point)
-gint          cdk_screen_get_monitor_at_point  (GdkScreen *screen,
+gint          cdk_screen_get_monitor_at_point  (CdkScreen *screen,
                                                 gint       x,
                                                 gint       y);
 GDK_DEPRECATED_IN_3_22_FOR(cdk_display_get_monitor_at_window)
-gint          cdk_screen_get_monitor_at_window (GdkScreen *screen,
-                                                GdkWindow *window);
+gint          cdk_screen_get_monitor_at_window (CdkScreen *screen,
+                                                CdkWindow *window);
 GDK_DEPRECATED_IN_3_22_FOR(cdk_monitor_get_width_mm)
-gint          cdk_screen_get_monitor_width_mm  (GdkScreen *screen,
+gint          cdk_screen_get_monitor_width_mm  (CdkScreen *screen,
                                                 gint       monitor_num);
 GDK_DEPRECATED_IN_3_22_FOR(cdk_monitor_get_height_mm)
-gint          cdk_screen_get_monitor_height_mm (GdkScreen *screen,
+gint          cdk_screen_get_monitor_height_mm (CdkScreen *screen,
                                                 gint       monitor_num);
 GDK_DEPRECATED_IN_3_22_FOR(cdk_monitor_get_model)
-gchar *       cdk_screen_get_monitor_plug_name (GdkScreen *screen,
+gchar *       cdk_screen_get_monitor_plug_name (CdkScreen *screen,
                                                 gint       monitor_num);
 GDK_DEPRECATED_IN_3_22_FOR(cdk_monitor_get_scale_factor)
-gint          cdk_screen_get_monitor_scale_factor (GdkScreen *screen,
+gint          cdk_screen_get_monitor_scale_factor (CdkScreen *screen,
                                                    gint       monitor_num);
 
 GDK_AVAILABLE_IN_ALL
-GdkScreen *cdk_screen_get_default (void);
+CdkScreen *cdk_screen_get_default (void);
 
 GDK_AVAILABLE_IN_ALL
-gboolean   cdk_screen_get_setting (GdkScreen   *screen,
+gboolean   cdk_screen_get_setting (CdkScreen   *screen,
                                    const gchar *name,
                                    GValue      *value);
 
 GDK_AVAILABLE_IN_ALL
-void                        cdk_screen_set_font_options (GdkScreen                  *screen,
+void                        cdk_screen_set_font_options (CdkScreen                  *screen,
                                                          const cairo_font_options_t *options);
 GDK_AVAILABLE_IN_ALL
-const cairo_font_options_t *cdk_screen_get_font_options (GdkScreen                  *screen);
+const cairo_font_options_t *cdk_screen_get_font_options (CdkScreen                  *screen);
 
 GDK_AVAILABLE_IN_ALL
-void    cdk_screen_set_resolution (GdkScreen *screen,
+void    cdk_screen_set_resolution (CdkScreen *screen,
                                    gdouble    dpi);
 GDK_AVAILABLE_IN_ALL
-gdouble cdk_screen_get_resolution (GdkScreen *screen);
+gdouble cdk_screen_get_resolution (CdkScreen *screen);
 
 GDK_DEPRECATED_IN_3_22
-GdkWindow *cdk_screen_get_active_window (GdkScreen *screen);
+CdkWindow *cdk_screen_get_active_window (CdkScreen *screen);
 GDK_AVAILABLE_IN_ALL
-GList     *cdk_screen_get_window_stack  (GdkScreen *screen);
+GList     *cdk_screen_get_window_stack  (CdkScreen *screen);
 
 G_END_DECLS
 

@@ -36,7 +36,7 @@ G_BEGIN_DECLS
 
 
 #define GDK_TYPE_DISPLAY_MANAGER              (cdk_display_manager_get_type ())
-#define GDK_DISPLAY_MANAGER(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_DISPLAY_MANAGER, GdkDisplayManager))
+#define GDK_DISPLAY_MANAGER(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_DISPLAY_MANAGER, CdkDisplayManager))
 #define GDK_IS_DISPLAY_MANAGER(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_DISPLAY_MANAGER))
 
 
@@ -44,16 +44,16 @@ GDK_AVAILABLE_IN_ALL
 GType              cdk_display_manager_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GdkDisplayManager *cdk_display_manager_get                 (void);
+CdkDisplayManager *cdk_display_manager_get                 (void);
 GDK_AVAILABLE_IN_ALL
-GdkDisplay *       cdk_display_manager_get_default_display (GdkDisplayManager *manager);
+CdkDisplay *       cdk_display_manager_get_default_display (CdkDisplayManager *manager);
 GDK_AVAILABLE_IN_ALL
-void               cdk_display_manager_set_default_display (GdkDisplayManager *manager,
-                                                            GdkDisplay        *display);
+void               cdk_display_manager_set_default_display (CdkDisplayManager *manager,
+                                                            CdkDisplay        *display);
 GDK_AVAILABLE_IN_ALL
-GSList *           cdk_display_manager_list_displays       (GdkDisplayManager *manager);
+GSList *           cdk_display_manager_list_displays       (CdkDisplayManager *manager);
 GDK_AVAILABLE_IN_ALL
-GdkDisplay *       cdk_display_manager_open_display        (GdkDisplayManager *manager,
+CdkDisplay *       cdk_display_manager_open_display        (CdkDisplayManager *manager,
                                                             const gchar       *name);
 
 G_END_DECLS

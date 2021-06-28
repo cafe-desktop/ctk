@@ -2,10 +2,10 @@
 #include "cdk-private.h"
 #include "cdkprofilerprivate.h"
 
-GdkPrivateVTable *
+CdkPrivateVTable *
 cdk__private__ (void)
 {
-  static GdkPrivateVTable table = {
+  static CdkPrivateVTable table = {
     cdk_device_grab_info,
     cdk_display_open_default,
     cdk_add_option_entries,

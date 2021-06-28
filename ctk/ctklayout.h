@@ -76,7 +76,7 @@ GDK_AVAILABLE_IN_ALL
 CtkWidget*     ctk_layout_new             (CtkAdjustment *hadjustment,
 				           CtkAdjustment *vadjustment);
 GDK_AVAILABLE_IN_ALL
-GdkWindow*     ctk_layout_get_bin_window  (CtkLayout     *layout);
+CdkWindow*     ctk_layout_get_bin_window  (CtkLayout     *layout);
 GDK_AVAILABLE_IN_ALL
 void           ctk_layout_put             (CtkLayout     *layout,
 		                           CtkWidget     *child_widget,

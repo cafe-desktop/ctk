@@ -58,13 +58,13 @@ gboolean       _ctk_style_context_check_region_name          (const gchar     *s
 
 gboolean       _ctk_style_context_resolve_color              (CtkStyleContext    *context,
                                                               CtkCssValue        *color,
-                                                              GdkRGBA            *result);
+                                                              CdkRGBA            *result);
 void           _ctk_style_context_get_cursor_color           (CtkStyleContext    *context,
-                                                              GdkRGBA            *primary_color,
-                                                              GdkRGBA            *secondary_color);
+                                                              CdkRGBA            *primary_color,
+                                                              CdkRGBA            *secondary_color);
 
 void           _ctk_style_context_get_icon_extents           (CtkStyleContext    *context,
-                                                              GdkRectangle       *extents,
+                                                              CdkRectangle       *extents,
                                                               gint                x,
                                                               gint                y,
                                                               gint                width,

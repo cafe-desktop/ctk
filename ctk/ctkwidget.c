@@ -667,30 +667,30 @@ static void     ctk_widget_real_style_updated    (CtkWidget         *widget);
 static gboolean ctk_widget_real_show_help        (CtkWidget         *widget,
                                                   CtkWidgetHelpType  help_type);
 static gboolean _ctk_widget_run_controllers      (CtkWidget           *widget,
-                                                  const GdkEvent      *event,
+                                                  const CdkEvent      *event,
                                                   CtkPropagationPhase  phase);
 
 static void	ctk_widget_dispatch_child_properties_changed	(CtkWidget        *object,
 								 guint             n_pspecs,
 								 GParamSpec      **pspecs);
 static gboolean         ctk_widget_real_scroll_event            (CtkWidget        *widget,
-                                                                 GdkEventScroll   *event);
+                                                                 CdkEventScroll   *event);
 static gboolean         ctk_widget_real_button_event            (CtkWidget        *widget,
-                                                                 GdkEventButton   *event);
+                                                                 CdkEventButton   *event);
 static gboolean         ctk_widget_real_motion_event            (CtkWidget        *widget,
-                                                                 GdkEventMotion   *event);
+                                                                 CdkEventMotion   *event);
 static gboolean		ctk_widget_real_key_press_event   	(CtkWidget        *widget,
-								 GdkEventKey      *event);
+								 CdkEventKey      *event);
 static gboolean		ctk_widget_real_key_release_event 	(CtkWidget        *widget,
-								 GdkEventKey      *event);
+								 CdkEventKey      *event);
 static gboolean		ctk_widget_real_focus_in_event   	 (CtkWidget       *widget,
-								  GdkEventFocus   *event);
+								  CdkEventFocus   *event);
 static gboolean		ctk_widget_real_focus_out_event   	(CtkWidget        *widget,
-								 GdkEventFocus    *event);
+								 CdkEventFocus    *event);
 static gboolean         ctk_widget_real_touch_event             (CtkWidget        *widget,
-                                                                 GdkEventTouch    *event);
+                                                                 CdkEventTouch    *event);
 static gboolean         ctk_widget_real_grab_broken_event       (CtkWidget          *widget,
-                                                                 GdkEventGrabBroken *event);
+                                                                 CdkEventGrabBroken *event);
 static gboolean		ctk_widget_real_focus			(CtkWidget        *widget,
 								 CtkDirectionType  direction);
 static void             ctk_widget_real_move_focus              (CtkWidget        *widget,
@@ -713,7 +713,7 @@ static void		ctk_widget_propagate_state		(CtkWidget	  *widget,
 static void             ctk_widget_update_alpha                 (CtkWidget        *widget);
 
 static gint		ctk_widget_event_internal		(CtkWidget	  *widget,
-								 GdkEvent	  *event);
+								 CdkEvent	  *event);
 static gboolean		ctk_widget_real_mnemonic_activate	(CtkWidget	  *widget,
 								 gboolean	   group_cycling);
 static void             ctk_widget_real_get_width               (CtkWidget        *widget,
@@ -739,7 +739,7 @@ static void		ctk_widget_accessible_interface_init	(AtkImplementorIface *iface);
 static AtkObject*	ctk_widget_ref_accessible		(AtkImplementor *implementor);
 static void             ctk_widget_invalidate_widget_windows    (CtkWidget        *widget,
 								 cairo_region_t        *region);
-static GdkScreen *      ctk_widget_get_screen_unchecked         (CtkWidget        *widget);
+static CdkScreen *      ctk_widget_get_screen_unchecked         (CtkWidget        *widget);
 static gboolean         ctk_widget_real_can_activate_accel      (CtkWidget *widget,
                                                                  guint      signal_id);
 
@@ -805,17 +805,17 @@ static void ctk_widget_set_usize_internal (CtkWidget          *widget,
 					   gint                height);
 
 static void ctk_widget_add_events_internal (CtkWidget *widget,
-                                            GdkDevice *device,
+                                            CdkDevice *device,
                                             gint       events);
 static void ctk_widget_set_device_enabled_internal (CtkWidget *widget,
-                                                    GdkDevice *device,
+                                                    CdkDevice *device,
                                                     gboolean   recurse,
                                                     gboolean   enabled);
 
-static void ctk_widget_on_frame_clock_update (GdkFrameClock *frame_clock,
+static void ctk_widget_on_frame_clock_update (CdkFrameClock *frame_clock,
                                               CtkWidget     *widget);
 
-static gboolean event_window_is_still_viewable (GdkEvent *event);
+static gboolean event_window_is_still_viewable (CdkEvent *event);
 
 static void ctk_widget_update_input_shape (CtkWidget *widget);
 
@@ -1253,7 +1253,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   widget_props[PROP_EVENTS] =
       g_param_spec_flags ("events",
                           P_("Events"),
-                          P_("The event mask that decides what kind of GdkEvents this widget gets"),
+                          P_("The event mask that decides what kind of CdkEvents this widget gets"),
                           GDK_TYPE_EVENT_MASK,
                           GDK_STRUCTURE_MASK,
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
@@ -1274,7 +1274,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * whether it will provide a tooltip or not.
  *
  * Note that setting this property to %TRUE for the first time will change
- * the event masks of the GdkWindows of this widget to include leave-notify
+ * the event masks of the CdkWindows of this widget to include leave-notify
  * and motion-notify events.  This cannot and will not be undone when the
  * property is set to %FALSE again.
  *
@@ -1736,7 +1736,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * @widget: the object which received the signal.
    *
    * The ::realize signal is emitted when @widget is associated with a
-   * #GdkWindow, which means that ctk_widget_realize() has been called or the
+   * #CdkWindow, which means that ctk_widget_realize() has been called or the
    * widget has been mapped (that is, it is going to be drawn).
    */
   widget_signals[REALIZE] =
@@ -1752,7 +1752,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * CtkWidget::unrealize:
    * @widget: the object which received the signal.
    *
-   * The ::unrealize signal is emitted when the #GdkWindow associated with
+   * The ::unrealize signal is emitted when the #CdkWindow associated with
    * @widget is destroyed, which means that ctk_widget_unrealize() has been
    * called or the widget has been unmapped (that is, it is going to be
    * hidden).
@@ -2121,7 +2121,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::event:
    * @widget: the object which received the signal.
-   * @event: the #GdkEvent which triggered this signal
+   * @event: the #CdkEvent which triggered this signal
    *
    * The CTK+ main loop will emit three signals for each GDK event delivered
    * to a widget: one generic ::event signal, another, more specific,
@@ -2150,7 +2150,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::event-after:
    * @widget: the object which received the signal.
-   * @event: the #GdkEvent which triggered this signal
+   * @event: the #CdkEvent which triggered this signal
    *
    * After the emission of the #CtkWidget::event signal and (optionally)
    * the second more specific signal, ::event-after will be emitted
@@ -2170,13 +2170,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::button-press-event:
    * @widget: the object which received the signal.
-   * @event: (type Gdk.EventButton): the #GdkEventButton which triggered
+   * @event: (type Cdk.EventButton): the #CdkEventButton which triggered
    *   this signal.
    *
    * The ::button-press-event signal will be emitted when a button
    * (typically from a mouse) is pressed.
    *
-   * To receive this signal, the #GdkWindow associated to the
+   * To receive this signal, the #CdkWindow associated to the
    * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
@@ -2199,13 +2199,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::button-release-event:
    * @widget: the object which received the signal.
-   * @event: (type Gdk.EventButton): the #GdkEventButton which triggered
+   * @event: (type Cdk.EventButton): the #CdkEventButton which triggered
    *   this signal.
    *
    * The ::button-release-event signal will be emitted when a button
    * (typically from a mouse) is released.
    *
-   * To receive this signal, the #GdkWindow associated to the
+   * To receive this signal, the #CdkWindow associated to the
    * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
@@ -2240,14 +2240,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::scroll-event:
    * @widget: the object which received the signal.
-   * @event: (type Gdk.EventScroll): the #GdkEventScroll which triggered
+   * @event: (type Cdk.EventScroll): the #CdkEventScroll which triggered
    *   this signal.
    *
    * The ::scroll-event signal is emitted when a button in the 4 to 7
    * range is pressed. Wheel mice are usually configured to generate
    * button press events for buttons 4 and 5 when the wheel is turned.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_SCROLL_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
@@ -2270,13 +2270,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::motion-notify-event:
    * @widget: the object which received the signal.
-   * @event: (type Gdk.EventMotion): the #GdkEventMotion which triggered
+   * @event: (type Cdk.EventMotion): the #CdkEventMotion which triggered
    *   this signal.
    *
    * The ::motion-notify-event signal is emitted when the pointer moves
-   * over the widget's #GdkWindow.
+   * over the widget's #CdkWindow.
    *
-   * To receive this signal, the #GdkWindow associated to the widget
+   * To receive this signal, the #CdkWindow associated to the widget
    * needs to enable the #GDK_POINTER_MOTION_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
@@ -2304,7 +2304,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * status of @widgets screen changes.
    * See cdk_screen_is_composited().
    *
-   * Deprecated: 3.22: Use GdkScreen::composited-changed instead.
+   * Deprecated: 3.22: Use CdkScreen::composited-changed instead.
    */
   widget_signals[COMPOSITED_CHANGED] =
     g_signal_new (I_("composited-changed"),
@@ -2346,12 +2346,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * @widget: the object which received the signal.
    * @event: the event which triggered this signal
    *
-   * The ::destroy-event signal is emitted when a #GdkWindow is destroyed.
+   * The ::destroy-event signal is emitted when a #CdkWindow is destroyed.
    * You rarely get this signal, because most widgets disconnect themselves
    * from their window before they destroy it, so no widget owns the
    * window at destroy time.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
    * automatically for all new windows.
    *
@@ -2373,12 +2373,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::key-press-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventKey): the #GdkEventKey which triggered this signal.
+   * @event: (type Cdk.EventKey): the #CdkEventKey which triggered this signal.
    *
    * The ::key-press-event signal is emitted when a key is pressed. The signal
    * emission will reoccur at the key-repeat rate when the key is kept pressed.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_KEY_PRESS_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
@@ -2401,11 +2401,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::key-release-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventKey): the #GdkEventKey which triggered this signal.
+   * @event: (type Cdk.EventKey): the #CdkEventKey which triggered this signal.
    *
    * The ::key-release-event signal is emitted when a key is released.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_KEY_RELEASE_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
@@ -2428,13 +2428,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::enter-notify-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventCrossing): the #GdkEventCrossing which triggered
+   * @event: (type Cdk.EventCrossing): the #CdkEventCrossing which triggered
    *   this signal.
    *
    * The ::enter-notify-event will be emitted when the pointer enters
    * the @widget's window.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_ENTER_NOTIFY_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
@@ -2457,13 +2457,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::leave-notify-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventCrossing): the #GdkEventCrossing which triggered
+   * @event: (type Cdk.EventCrossing): the #CdkEventCrossing which triggered
    *   this signal.
    *
    * The ::leave-notify-event will be emitted when the pointer leaves
    * the @widget's window.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
@@ -2486,13 +2486,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::configure-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventConfigure): the #GdkEventConfigure which triggered
+   * @event: (type Cdk.EventConfigure): the #CdkEventConfigure which triggered
    *   this signal.
    *
    * The ::configure-event signal will be emitted when the size, position or
    * stacking of the @widget's window has changed.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
    * automatically for all new windows.
    *
@@ -2514,13 +2514,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::focus-in-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventFocus): the #GdkEventFocus which triggered
+   * @event: (type Cdk.EventFocus): the #CdkEventFocus which triggered
    *   this signal.
    *
    * The ::focus-in-event signal will be emitted when the keyboard focus
    * enters the @widget's window.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_FOCUS_CHANGE_MASK mask.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
@@ -2541,13 +2541,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::focus-out-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventFocus): the #GdkEventFocus which triggered this
+   * @event: (type Cdk.EventFocus): the #CdkEventFocus which triggered this
    *   signal.
    *
    * The ::focus-out-event signal will be emitted when the keyboard focus
    * leaves the @widget's window.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_FOCUS_CHANGE_MASK mask.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
@@ -2568,12 +2568,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::map-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventAny): the #GdkEventAny which triggered this signal.
+   * @event: (type Cdk.EventAny): the #CdkEventAny which triggered this signal.
    *
    * The ::map-event signal will be emitted when the @widget's window is
    * mapped. A window is mapped when it becomes visible on the screen.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
    * automatically for all new windows.
    *
@@ -2595,12 +2595,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::unmap-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventAny): the #GdkEventAny which triggered this signal
+   * @event: (type Cdk.EventAny): the #CdkEventAny which triggered this signal
    *
    * The ::unmap-event signal will be emitted when the @widget's window is
    * unmapped. A window is unmapped when it becomes invisible on the screen.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
    * automatically for all new windows.
    *
@@ -2622,13 +2622,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::property-notify-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventProperty): the #GdkEventProperty which triggered
+   * @event: (type Cdk.EventProperty): the #CdkEventProperty which triggered
    *   this signal.
    *
    * The ::property-notify-event signal will be emitted when a property on
    * the @widget's window has been changed or deleted.
    *
-   * To receive this signal, the #GdkWindow associated to the widget needs
+   * To receive this signal, the #CdkWindow associated to the widget needs
    * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
@@ -2649,7 +2649,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::selection-clear-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventSelection): the #GdkEventSelection which triggered
+   * @event: (type Cdk.EventSelection): the #CdkEventSelection which triggered
    *   this signal.
    *
    * The ::selection-clear-event signal will be emitted when the
@@ -2673,7 +2673,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::selection-request-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventSelection): the #GdkEventSelection which triggered
+   * @event: (type Cdk.EventSelection): the #CdkEventSelection which triggered
    *   this signal.
    *
    * The ::selection-request-event signal will be emitted when
@@ -2698,7 +2698,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::selection-notify-event:
    * @widget: the object which received the signal.
-   * @event: (type Gdk.EventSelection):
+   * @event: (type Cdk.EventSelection):
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event. %FALSE to propagate the event further.
    */
@@ -2759,10 +2759,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::proximity-in-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventProximity): the #GdkEventProximity which triggered
+   * @event: (type Cdk.EventProximity): the #CdkEventProximity which triggered
    *   this signal.
    *
-   * To receive this signal the #GdkWindow associated to the widget needs
+   * To receive this signal the #CdkWindow associated to the widget needs
    * to enable the #GDK_PROXIMITY_IN_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
@@ -2785,10 +2785,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::proximity-out-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventProximity): the #GdkEventProximity which triggered
+   * @event: (type Cdk.EventProximity): the #CdkEventProximity which triggered
    *   this signal.
    *
-   * To receive this signal the #GdkWindow associated to the widget needs
+   * To receive this signal the #CdkWindow associated to the widget needs
    * to enable the #GDK_PROXIMITY_OUT_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
@@ -2962,12 +2962,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * |[<!-- language="C" -->
    * static void
    * drag_motion (CtkWidget      *widget,
-   *              GdkDragContext *context,
+   *              CdkDragContext *context,
    *              gint            x,
    *              gint            y,
    *              guint           time)
    * {
-   *   GdkAtom target;
+   *   CdkAtom target;
    *
    *   PrivateData *private_data = GET_PRIVATE_DATA (widget);
    *
@@ -2992,7 +2992,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *
    * static void
    * drag_data_received (CtkWidget        *widget,
-   *                     GdkDragContext   *context,
+   *                     CdkDragContext   *context,
    *                     gint              x,
    *                     gint              y,
    *                     CtkSelectionData *selection_data,
@@ -3142,7 +3142,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * |[<!-- language="C" -->
    * void
    * drag_data_received (CtkWidget          *widget,
-   *                     GdkDragContext     *context,
+   *                     CdkDragContext     *context,
    *                     gint                x,
    *                     gint                y,
    *                     CtkSelectionData   *data,
@@ -3151,7 +3151,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * {
    *   if ((data->length >= 0) && (data->format == 8))
    *     {
-   *       GdkDragAction action;
+   *       CdkDragAction action;
    *
    *       // handle data here
    *
@@ -3204,13 +3204,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::visibility-notify-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventVisibility): the #GdkEventVisibility which
+   * @event: (type Cdk.EventVisibility): the #CdkEventVisibility which
    *   triggered this signal.
    *
    * The ::visibility-notify-event will be emitted when the @widget's
    * window is obscured or unobscured.
    *
-   * To receive this signal the #GdkWindow associated to the widget needs
+   * To receive this signal the #CdkWindow associated to the widget needs
    * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
@@ -3237,13 +3237,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::window-state-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventWindowState): the #GdkEventWindowState which
+   * @event: (type Cdk.EventWindowState): the #CdkEventWindowState which
    *   triggered this signal.
    *
    * The ::window-state-event will be emitted when the state of the
    * toplevel window associated to the @widget changes.
    *
-   * To receive this signal the #GdkWindow associated to the widget
+   * To receive this signal the #CdkWindow associated to the widget
    * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
    * this mask automatically for all new windows.
    *
@@ -3265,7 +3265,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   /**
    * CtkWidget::damage-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventExpose): the #GdkEventExpose event
+   * @event: (type Cdk.EventExpose): the #CdkEventExpose event
    *
    * Emitted when a redirected window belonging to @widget gets drawn into.
    * The region/area members of the event shows what area of the redirected
@@ -3291,7 +3291,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 /**
    * CtkWidget::grab-broken-event:
    * @widget: the object which received the signal
-   * @event: (type Gdk.EventGrabBroken): the #GdkEventGrabBroken event
+   * @event: (type Cdk.EventGrabBroken): the #CdkEventGrabBroken event
    *
    * Emitted when a pointer or keyboard grab on a window belonging
    * to @widget gets broken.
@@ -4097,12 +4097,12 @@ ctk_widget_get_property (GObject         *object,
 
 static void
 _ctk_widget_emulate_press (CtkWidget      *widget,
-                           const GdkEvent *event)
+                           const CdkEvent *event)
 {
   CtkWidget *event_widget, *next_child, *parent;
-  GdkEvent *press;
+  CdkEvent *press;
 
-  event_widget = ctk_get_event_widget ((GdkEvent *) event);
+  event_widget = ctk_get_event_widget ((CdkEvent *) event);
 
   if (event_widget == widget)
     return;
@@ -4170,13 +4170,13 @@ _ctk_widget_emulate_press (CtkWidget      *widget,
   cdk_event_free (press);
 }
 
-static const GdkEvent *
+static const CdkEvent *
 _ctk_widget_get_last_event (CtkWidget        *widget,
-                            GdkEventSequence *sequence)
+                            CdkEventSequence *sequence)
 {
   CtkWidgetPrivate *priv = widget->priv;
   EventControllerData *data;
-  const GdkEvent *event;
+  const CdkEvent *event;
   GList *l;
 
   for (l = priv->event_controllers; l; l = l->next)
@@ -4197,8 +4197,8 @@ _ctk_widget_get_last_event (CtkWidget        *widget,
 
 static gboolean
 _ctk_widget_get_emulating_sequence (CtkWidget         *widget,
-                                    GdkEventSequence  *sequence,
-                                    GdkEventSequence **sequence_out)
+                                    CdkEventSequence  *sequence,
+                                    CdkEventSequence **sequence_out)
 {
   CtkWidgetPrivate *priv = widget->priv;
   GList *l;
@@ -4207,7 +4207,7 @@ _ctk_widget_get_emulating_sequence (CtkWidget         *widget,
 
   if (sequence)
     {
-      const GdkEvent *last_event;
+      const CdkEvent *last_event;
 
       last_event = _ctk_widget_get_last_event (widget, sequence);
 
@@ -4239,7 +4239,7 @@ _ctk_widget_get_emulating_sequence (CtkWidget         *widget,
 
 static gboolean
 ctk_widget_needs_press_emulation (CtkWidget        *widget,
-                                  GdkEventSequence *sequence)
+                                  CdkEventSequence *sequence)
 {
   CtkWidgetPrivate *priv = widget->priv;
   gboolean sequence_press_handled = FALSE;
@@ -4273,15 +4273,15 @@ ctk_widget_needs_press_emulation (CtkWidget        *widget,
 
 static gint
 _ctk_widget_set_sequence_state_internal (CtkWidget             *widget,
-                                         GdkEventSequence      *sequence,
+                                         CdkEventSequence      *sequence,
                                          CtkEventSequenceState  state,
                                          CtkGesture            *emitter)
 {
   gboolean emulates_pointer, sequence_handled = FALSE;
   CtkWidgetPrivate *priv = widget->priv;
-  const GdkEvent *mimic_event;
+  const CdkEvent *mimic_event;
   GList *group = NULL, *l;
-  GdkEventSequence *seq;
+  CdkEventSequence *seq;
   gint n_handled = 0;
 
   if (!priv->event_controllers && state != CTK_EVENT_SEQUENCE_CLAIMED)
@@ -4365,12 +4365,12 @@ _ctk_widget_set_sequence_state_internal (CtkWidget             *widget,
 
 static gboolean
 _ctk_widget_cancel_sequence (CtkWidget        *widget,
-                             GdkEventSequence *sequence)
+                             CdkEventSequence *sequence)
 {
   CtkWidgetPrivate *priv = widget->priv;
   gboolean emulates_pointer;
   gboolean handled = FALSE;
-  GdkEventSequence *seq;
+  CdkEventSequence *seq;
   GList *l;
 
   emulates_pointer = _ctk_widget_get_emulating_sequence (widget, sequence, &seq);
@@ -4871,7 +4871,7 @@ ctk_widget_real_show (CtkWidget *widget)
 }
 
 static void
-ctk_widget_show_map_callback (CtkWidget *widget, GdkEvent *event, gint *flag)
+ctk_widget_show_map_callback (CtkWidget *widget, CdkEvent *event, gint *flag)
 {
   *flag = TRUE;
   g_signal_handlers_disconnect_by_func (widget,
@@ -5101,8 +5101,8 @@ _ctk_widget_enable_device_events (CtkWidget *widget)
 
   while (g_hash_table_iter_next (&iter, &key, &value))
     {
-      GdkDevice *device;
-      GdkEventMask event_mask;
+      CdkDevice *device;
+      CdkEventMask event_mask;
 
       device = key;
       event_mask = GPOINTER_TO_UINT (value);
@@ -5112,7 +5112,7 @@ _ctk_widget_enable_device_events (CtkWidget *widget)
 
 typedef struct {
   CtkWidget *widget;
-  GdkDevice *device;
+  CdkDevice *device;
   gboolean enabled;
 } DeviceEnableData;
 
@@ -5128,9 +5128,9 @@ static void
 device_enable_foreach_window (gpointer win,
                               gpointer user_data)
 {
-  GdkWindow *window = win;
+  CdkWindow *window = win;
   DeviceEnableData *data = user_data;
-  GdkEventMask events;
+  CdkEventMask events;
   CtkWidget *window_widget;
   GList *window_list;
 
@@ -5151,7 +5151,7 @@ device_enable_foreach_window (gpointer win,
 
 void
 ctk_widget_set_device_enabled_internal (CtkWidget *widget,
-                                        GdkDevice *device,
+                                        CdkDevice *device,
                                         gboolean   recurse,
                                         gboolean   enabled)
 {
@@ -5163,7 +5163,7 @@ ctk_widget_set_device_enabled_internal (CtkWidget *widget,
 
   if (_ctk_widget_get_has_window (widget))
     {
-      GdkWindow *window;
+      CdkWindow *window;
 
       window = _ctk_widget_get_window (widget);
       device_enable_foreach_window (window, &data);
@@ -5230,7 +5230,7 @@ unref_tick_callback_info (CtkWidget           *widget,
 
   if (priv->tick_callbacks == NULL && priv->clock_tick_id)
     {
-      GdkFrameClock *frame_clock = ctk_widget_get_frame_clock (widget);
+      CdkFrameClock *frame_clock = ctk_widget_get_frame_clock (widget);
       g_signal_handler_disconnect (frame_clock, priv->clock_tick_id);
       priv->clock_tick_id = 0;
       cdk_frame_clock_end_updating (frame_clock);
@@ -5264,7 +5264,7 @@ destroy_tick_callbacks (CtkWidget *widget)
 }
 
 static void
-ctk_widget_on_frame_clock_update (GdkFrameClock *frame_clock,
+ctk_widget_on_frame_clock_update (CdkFrameClock *frame_clock,
                                   CtkWidget     *widget)
 {
   CtkWidgetPrivate *priv = widget->priv;
@@ -5323,8 +5323,8 @@ static guint tick_callback_id;
  * trying to display isolated frames at particular times.
  *
  * This is a more convenient alternative to connecting directly to the
- * #GdkFrameClock::update signal of #GdkFrameClock, since you don't
- * have to worry about when a #GdkFrameClock is assigned to a widget.
+ * #CdkFrameClock::update signal of #CdkFrameClock, since you don't
+ * have to worry about when a #CdkFrameClock is assigned to a widget.
  *
  * Returns: an id for the connection of this callback. Remove the callback
  *     by passing it to ctk_widget_remove_tick_callback()
@@ -5339,7 +5339,7 @@ ctk_widget_add_tick_callback (CtkWidget       *widget,
 {
   CtkWidgetPrivate *priv;
   CtkTickCallbackInfo *info;
-  GdkFrameClock *frame_clock;
+  CdkFrameClock *frame_clock;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -5412,7 +5412,7 @@ ctk_widget_has_tick_callback (CtkWidget *widget)
 
 static void
 ctk_widget_connect_frame_clock (CtkWidget     *widget,
-                                GdkFrameClock *frame_clock)
+                                CdkFrameClock *frame_clock)
 {
   CtkWidgetPrivate *priv = widget->priv;
 
@@ -5437,7 +5437,7 @@ ctk_widget_connect_frame_clock (CtkWidget     *widget,
 
 static void
 ctk_widget_disconnect_frame_clock (CtkWidget     *widget,
-                                   GdkFrameClock *frame_clock)
+                                   CdkFrameClock *frame_clock)
 {
   CtkWidgetPrivate *priv = widget->priv;
 
@@ -5661,7 +5661,7 @@ ctk_widget_queue_draw_area (CtkWidget *widget,
 			    gint       width,
 			    gint       height)
 {
-  GdkRectangle rect;
+  CdkRectangle rect;
   cairo_region_t *region;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -5691,7 +5691,7 @@ ctk_widget_queue_draw_area (CtkWidget *widget,
 void
 ctk_widget_queue_draw (CtkWidget *widget)
 {
-  GdkRectangle rect;
+  CdkRectangle rect;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -5848,12 +5848,12 @@ ctk_widget_queue_resize_no_redraw (CtkWidget *widget)
  *
  * Unrealized widgets do not have a frame clock.
  *
- * Returns: (nullable) (transfer none): a #GdkFrameClock,
+ * Returns: (nullable) (transfer none): a #CdkFrameClock,
  * or %NULL if widget is unrealized
  *
  * Since: 3.8
  */
-GdkFrameClock*
+CdkFrameClock*
 ctk_widget_get_frame_clock (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
@@ -5867,7 +5867,7 @@ ctk_widget_get_frame_clock (CtkWidget *widget)
        * reparenting windows and widgets.
        */
       CtkWidget *toplevel = _ctk_widget_get_toplevel (widget);
-      GdkWindow *window = _ctk_widget_get_window (toplevel);
+      CdkWindow *window = _ctk_widget_get_window (toplevel);
       g_assert (window != NULL);
 
       return cdk_window_get_frame_clock (window);
@@ -5942,7 +5942,7 @@ ctk_widget_get_child_requisition (CtkWidget	 *widget,
 }
 
 static gboolean
-invalidate_predicate (GdkWindow *window,
+invalidate_predicate (CdkWindow *window,
 		      gpointer   data)
 {
   gpointer user_data;
@@ -6006,9 +6006,9 @@ ctk_widget_size_allocate_with_baseline (CtkWidget     *widget,
 					gint           baseline)
 {
   CtkWidgetPrivate *priv;
-  GdkRectangle real_allocation;
-  GdkRectangle old_allocation, old_clip;
-  GdkRectangle adjusted_allocation;
+  CdkRectangle real_allocation;
+  CdkRectangle old_allocation, old_clip;
+  CdkRectangle adjusted_allocation;
   gboolean alloc_needed;
   gboolean size_changed;
   gboolean baseline_changed;
@@ -6344,7 +6344,7 @@ ctk_widget_translate_coordinates (CtkWidget  *src_widget,
   CtkWidgetPrivate *src_priv;
   CtkWidgetPrivate *dest_priv;
   CtkWidget *ancestor;
-  GdkWindow *window;
+  CdkWindow *window;
   GList *dest_list = NULL;
 
   g_return_val_if_fail (CTK_IS_WIDGET (src_widget), FALSE);
@@ -6688,7 +6688,7 @@ ctk_widget_add_accelerator (CtkWidget      *widget,
 			    const gchar    *accel_signal,
 			    CtkAccelGroup  *accel_group,
 			    guint           accel_key,
-			    GdkModifierType accel_mods,
+			    CdkModifierType accel_mods,
 			    CtkAccelFlags   accel_flags)
 {
   GClosure *closure;
@@ -6744,7 +6744,7 @@ gboolean
 ctk_widget_remove_accelerator (CtkWidget      *widget,
 			       CtkAccelGroup  *accel_group,
 			       guint           accel_key,
-			       GdkModifierType accel_mods)
+			       CdkModifierType accel_mods)
 {
   CtkAccelGroupEntry *ag_entry;
   GList *slist, *clist;
@@ -6989,10 +6989,10 @@ ctk_cairo_set_marked_for_draw (cairo_t  *cr,
  */
 gboolean
 ctk_cairo_should_draw_window (cairo_t   *cr,
-                              GdkWindow *window)
+                              CdkWindow *window)
 {
-  GdkDrawingContext *context;
-  GdkWindow *tmp;
+  CdkDrawingContext *context;
+  CdkWindow *tmp;
 
   g_return_val_if_fail (cr != NULL, FALSE);
   g_return_val_if_fail (GDK_IS_WINDOW (window), FALSE);
@@ -7034,7 +7034,7 @@ ctk_widget_draw_internal (CtkWidget *widget,
 
   if (cdk_cairo_get_clip_rectangle (cr, NULL))
     {
-      GdkWindow *event_window = NULL;
+      CdkWindow *event_window = NULL;
       gboolean result;
       gboolean push_group;
 
@@ -7045,7 +7045,7 @@ ctk_widget_draw_internal (CtkWidget *widget,
        */
       if (!ctk_cairo_is_marked_for_draw (cr))
         {
-          GdkDrawingContext *context = cdk_cairo_get_drawing_context (cr);
+          CdkDrawingContext *context = cdk_cairo_get_drawing_context (cr);
 
           if (context != NULL)
             {
@@ -7178,7 +7178,7 @@ ctk_widget_draw (CtkWidget *widget,
   was_marked = ctk_cairo_is_marked_for_draw (cr);
 
   /* We mark the window so that ctk_cairo_should_draw_window()
-   * will always return TRUE, and all GdkWindows get drawn
+   * will always return TRUE, and all CdkWindows get drawn
    */
   ctk_cairo_set_marked_for_draw (cr, TRUE);
 
@@ -7191,33 +7191,33 @@ ctk_widget_draw (CtkWidget *widget,
 
 static gboolean
 ctk_widget_real_scroll_event (CtkWidget      *widget,
-                              GdkEventScroll *event)
+                              CdkEventScroll *event)
 {
-  return _ctk_widget_run_controllers (widget, (GdkEvent *) event,
+  return _ctk_widget_run_controllers (widget, (CdkEvent *) event,
                                       CTK_PHASE_BUBBLE);
 }
 
 static gboolean
 ctk_widget_real_button_event (CtkWidget      *widget,
-                              GdkEventButton *event)
+                              CdkEventButton *event)
 {
-  return _ctk_widget_run_controllers (widget, (GdkEvent *) event,
+  return _ctk_widget_run_controllers (widget, (CdkEvent *) event,
                                       CTK_PHASE_BUBBLE);
 }
 
 static gboolean
 ctk_widget_real_motion_event (CtkWidget      *widget,
-                              GdkEventMotion *event)
+                              CdkEventMotion *event)
 {
-  return _ctk_widget_run_controllers (widget, (GdkEvent *) event,
+  return _ctk_widget_run_controllers (widget, (CdkEvent *) event,
                                       CTK_PHASE_BUBBLE);
 }
 
 static gboolean
 ctk_widget_real_key_press_event (CtkWidget         *widget,
-				 GdkEventKey       *event)
+				 CdkEventKey       *event)
 {
-  if (_ctk_widget_run_controllers (widget, (GdkEvent *) event,
+  if (_ctk_widget_run_controllers (widget, (CdkEvent *) event,
                                    CTK_PHASE_BUBBLE))
     return GDK_EVENT_STOP;
 
@@ -7226,9 +7226,9 @@ ctk_widget_real_key_press_event (CtkWidget         *widget,
 
 static gboolean
 ctk_widget_real_key_release_event (CtkWidget         *widget,
-				   GdkEventKey       *event)
+				   CdkEventKey       *event)
 {
-  if (_ctk_widget_run_controllers (widget, (GdkEvent *) event,
+  if (_ctk_widget_run_controllers (widget, (CdkEvent *) event,
                                    CTK_PHASE_BUBBLE))
     return GDK_EVENT_STOP;
 
@@ -7237,7 +7237,7 @@ ctk_widget_real_key_release_event (CtkWidget         *widget,
 
 static gboolean
 ctk_widget_real_focus_in_event (CtkWidget     *widget,
-                                GdkEventFocus *event)
+                                CdkEventFocus *event)
 {
   ctk_widget_queue_draw (widget);
 
@@ -7246,7 +7246,7 @@ ctk_widget_real_focus_in_event (CtkWidget     *widget,
 
 static gboolean
 ctk_widget_real_focus_out_event (CtkWidget     *widget,
-                                 GdkEventFocus *event)
+                                 CdkEventFocus *event)
 {
   ctk_widget_queue_draw (widget);
 
@@ -7255,13 +7255,13 @@ ctk_widget_real_focus_out_event (CtkWidget     *widget,
 
 static gboolean
 ctk_widget_real_touch_event (CtkWidget     *widget,
-                             GdkEventTouch *event)
+                             CdkEventTouch *event)
 {
-  GdkEvent *bevent;
+  CdkEvent *bevent;
   gboolean return_val = FALSE;
 
   if (!event->emulating_pointer)
-    return _ctk_widget_run_controllers (widget, (GdkEvent*) event,
+    return _ctk_widget_run_controllers (widget, (CdkEvent*) event,
                                         CTK_PHASE_BUBBLE);
 
   if (event->type == GDK_TOUCH_UPDATE ||
@@ -7280,7 +7280,7 @@ ctk_widget_real_touch_event (CtkWidget     *widget,
       bevent->motion.is_hint = FALSE;
       bevent->motion.axes = g_memdup (event->axes,
                                       sizeof (gdouble) * cdk_device_get_n_axes (event->device));
-      cdk_event_set_source_device (bevent, cdk_event_get_source_device ((GdkEvent*)event));
+      cdk_event_set_source_device (bevent, cdk_event_get_source_device ((CdkEvent*)event));
 
       if (event->type == GDK_TOUCH_UPDATE)
         bevent->motion.state |= GDK_BUTTON1_MASK;
@@ -7293,7 +7293,7 @@ ctk_widget_real_touch_event (CtkWidget     *widget,
   if (event->type == GDK_TOUCH_BEGIN ||
       event->type == GDK_TOUCH_END)
     {
-      GdkEventType type;
+      CdkEventType type;
       gint signum;
 
       if (event->type == GDK_TOUCH_BEGIN)
@@ -7319,7 +7319,7 @@ ctk_widget_real_touch_event (CtkWidget     *widget,
       bevent->button.device = event->device;
       bevent->button.axes = g_memdup (event->axes,
                                       sizeof (gdouble) * cdk_device_get_n_axes (event->device));
-      cdk_event_set_source_device (bevent, cdk_event_get_source_device ((GdkEvent*)event));
+      cdk_event_set_source_device (bevent, cdk_event_get_source_device ((CdkEvent*)event));
 
       if (event->type == GDK_TOUCH_END)
         bevent->button.state |= GDK_BUTTON1_MASK;
@@ -7334,9 +7334,9 @@ ctk_widget_real_touch_event (CtkWidget     *widget,
 
 static gboolean
 ctk_widget_real_grab_broken_event (CtkWidget          *widget,
-                                   GdkEventGrabBroken *event)
+                                   CdkEventGrabBroken *event)
 {
-  return _ctk_widget_run_controllers (widget, (GdkEvent*) event,
+  return _ctk_widget_run_controllers (widget, (CdkEvent*) event,
                                       CTK_PHASE_BUBBLE);
 }
 
@@ -7346,7 +7346,7 @@ ctk_widget_real_grab_broken_event (CtkWidget          *widget,
 /**
  * ctk_widget_event:
  * @widget: a #CtkWidget
- * @event: a #GdkEvent
+ * @event: a #CdkEvent
  *
  * Rarely-used function. This function is used to emit
  * the event signals on a widget (those signals should never
@@ -7362,7 +7362,7 @@ ctk_widget_real_grab_broken_event (CtkWidget          *widget,
  **/
 gboolean
 ctk_widget_event (CtkWidget *widget,
-		  GdkEvent  *event)
+		  CdkEvent  *event)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
   g_return_val_if_fail (WIDGET_REALIZED_FOR_EVENT (widget, event), TRUE);
@@ -7385,11 +7385,11 @@ _ctk_widget_set_captured_event_handler (CtkWidget               *widget,
   g_object_set_data (G_OBJECT (widget), "captured-event-handler", callback);
 }
 
-static GdkEventMask
+static CdkEventMask
 _ctk_widget_get_controllers_evmask (CtkWidget *widget)
 {
   EventControllerData *data;
-  GdkEventMask evmask = 0;
+  CdkEventMask evmask = 0;
   CtkWidgetPrivate *priv;
   GList *l;
 
@@ -7407,7 +7407,7 @@ _ctk_widget_get_controllers_evmask (CtkWidget *widget)
 
 static gboolean
 _ctk_widget_run_controllers (CtkWidget           *widget,
-                             const GdkEvent      *event,
+                             const CdkEvent      *event,
                              CtkPropagationPhase  phase)
 {
   EventControllerData *data;
@@ -7454,7 +7454,7 @@ _ctk_widget_run_controllers (CtkWidget           *widget,
 static void
 cancel_event_sequence_on_hierarchy (CtkWidget        *widget,
                                     CtkWidget        *event_widget,
-                                    GdkEventSequence *sequence)
+                                    CdkEventSequence *sequence)
 {
   gboolean cancel = TRUE;
 
@@ -7475,7 +7475,7 @@ cancel_event_sequence_on_hierarchy (CtkWidget        *widget,
 
 gboolean
 _ctk_widget_captured_event (CtkWidget *widget,
-                            GdkEvent  *event)
+                            CdkEvent  *event)
 {
   gboolean return_val = FALSE;
   CtkCapturedEventHandler handler;
@@ -7524,11 +7524,11 @@ _ctk_widget_captured_event (CtkWidget *widget,
 /* Returns TRUE if a translation should be done */
 static gboolean
 _ctk_widget_get_translation_to_window (CtkWidget      *widget,
-				       GdkWindow      *window,
+				       CdkWindow      *window,
 				       int            *x,
 				       int            *y)
 {
-  GdkWindow *w, *widget_window;
+  CdkWindow *w, *widget_window;
 
   if (!_ctk_widget_get_has_window (widget))
     {
@@ -7583,7 +7583,7 @@ _ctk_widget_get_translation_to_window (CtkWidget      *widget,
 void
 ctk_cairo_transform_to_window (cairo_t   *cr,
                                CtkWidget *widget,
-                               GdkWindow *window)
+                               CdkWindow *window)
 {
   int x, y;
 
@@ -7598,7 +7598,7 @@ ctk_cairo_transform_to_window (cairo_t   *cr,
 /**
  * ctk_widget_send_expose:
  * @widget: a #CtkWidget
- * @event: a expose #GdkEvent
+ * @event: a expose #CdkEvent
  *
  * Very rarely-used function. This function is used to emit
  * an expose event on a widget. This function is not normally used
@@ -7621,7 +7621,7 @@ ctk_cairo_transform_to_window (cairo_t   *cr,
  */
 gint
 ctk_widget_send_expose (CtkWidget *widget,
-			GdkEvent  *event)
+			CdkEvent  *event)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
   g_return_val_if_fail (ctk_widget_get_realized (widget), TRUE);
@@ -7634,7 +7634,7 @@ ctk_widget_send_expose (CtkWidget *widget,
 }
 
 static gboolean
-event_window_is_still_viewable (GdkEvent *event)
+event_window_is_still_viewable (CdkEvent *event)
 {
   /* Check that we think the event's window is viewable before
    * delivering the event, to prevent surprises. We do this here
@@ -7675,7 +7675,7 @@ event_window_is_still_viewable (GdkEvent *event)
 
 static gint
 ctk_widget_event_internal (CtkWidget *widget,
-			   GdkEvent  *event)
+			   CdkEvent  *event)
 {
   gboolean return_val = FALSE, handled;
 
@@ -7848,7 +7848,7 @@ ctk_widget_activate (CtkWidget *widget)
 
 static void
 ctk_widget_reparent_subwindows (CtkWidget *widget,
-				GdkWindow *new_window)
+				CdkWindow *new_window)
 {
   CtkWidgetPrivate *priv = widget->priv;
 
@@ -7859,7 +7859,7 @@ ctk_widget_reparent_subwindows (CtkWidget *widget,
 
       for (tmp_list = children; tmp_list; tmp_list = tmp_list->next)
 	{
-	  GdkWindow *window = tmp_list->data;
+	  CdkWindow *window = tmp_list->data;
 	  gpointer child;
 
 	  cdk_window_get_user_data (window, &child);
@@ -7874,7 +7874,7 @@ ctk_widget_reparent_subwindows (CtkWidget *widget,
     }
   else
    {
-     GdkWindow *parent;
+     CdkWindow *parent;
      GList *tmp_list, *children;
 
      parent = cdk_window_get_parent (priv->window);
@@ -7887,7 +7887,7 @@ ctk_widget_reparent_subwindows (CtkWidget *widget,
 
 	 for (tmp_list = children; tmp_list; tmp_list = tmp_list->next)
 	   {
-	     GdkWindow *window = tmp_list->data;
+	     CdkWindow *window = tmp_list->data;
 	     gpointer child;
 
 	     cdk_window_get_user_data (window, &child);
@@ -7913,7 +7913,7 @@ ctk_widget_reparent_fixup_child (CtkWidget *widget,
     {
       if (priv->window)
 	g_object_unref (priv->window);
-      priv->window = (GdkWindow*) client_data;
+      priv->window = (CdkWindow*) client_data;
       if (priv->window)
 	g_object_ref (priv->window);
 
@@ -7988,12 +7988,12 @@ ctk_widget_reparent (CtkWidget *widget,
  **/
 gboolean
 ctk_widget_intersect (CtkWidget	         *widget,
-		      const GdkRectangle *area,
-		      GdkRectangle       *intersection)
+		      const CdkRectangle *area,
+		      CdkRectangle       *intersection)
 {
   CtkWidgetPrivate *priv;
-  GdkRectangle *dest;
-  GdkRectangle tmp;
+  CdkRectangle *dest;
+  CdkRectangle tmp;
   gint return_val;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
@@ -8039,7 +8039,7 @@ cairo_region_t *
 ctk_widget_region_intersect (CtkWidget            *widget,
 			     const cairo_region_t *region)
 {
-  GdkRectangle rect;
+  CdkRectangle rect;
   cairo_region_t *dest;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
@@ -8730,7 +8730,7 @@ _ctk_widget_set_has_grab (CtkWidget *widget,
 /**
  * ctk_widget_device_is_shadowed:
  * @widget: a #CtkWidget
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Returns %TRUE if @device has been shadowed by a CTK+
  * device grab on another widget, so it would stop sending
@@ -8745,7 +8745,7 @@ _ctk_widget_set_has_grab (CtkWidget *widget,
  **/
 gboolean
 ctk_widget_device_is_shadowed (CtkWidget *widget,
-                               GdkDevice *device)
+                               CdkDevice *device)
 {
   CtkWindowGroup *group;
   CtkWidget *grab_widget, *toplevel;
@@ -9162,10 +9162,10 @@ ctk_widget_is_visible (CtkWidget *widget)
  * @widget: a #CtkWidget
  * @has_window: whether or not @widget has a window.
  *
- * Specifies whether @widget has a #GdkWindow of its own. Note that
+ * Specifies whether @widget has a #CdkWindow of its own. Note that
  * all realized widgets have a non-%NULL “window” pointer
  * (ctk_widget_get_window() never returns a %NULL window when a widget
- * is realized), but for many of them it’s actually the #GdkWindow of
+ * is realized), but for many of them it’s actually the #CdkWindow of
  * one of its parent widgets. Widgets that do not create a %window for
  * themselves in #CtkWidget::realize must announce this by
  * calling this function with @has_window = %FALSE.
@@ -9188,7 +9188,7 @@ ctk_widget_set_has_window (CtkWidget *widget,
  * ctk_widget_get_has_window:
  * @widget: a #CtkWidget
  *
- * Determines whether @widget has a #GdkWindow of its own. See
+ * Determines whether @widget has a #CdkWindow of its own. See
  * ctk_widget_set_has_window().
  *
  * Returns: %TRUE if @widget has a window, %FALSE otherwise
@@ -9276,7 +9276,7 @@ ctk_widget_get_realized (CtkWidget *widget)
  * @realized: %TRUE to mark the widget as realized
  *
  * Marks the widget as being realized. This function must only be 
- * called after all #GdkWindows for the @widget have been created 
+ * called after all #CdkWindows for the @widget have been created 
  * and registered.
  *
  * This function should only ever be called in a derived widget's
@@ -9772,7 +9772,7 @@ _ctk_widget_get_modifier_properties (CtkWidget *widget)
 void
 ctk_widget_override_color (CtkWidget     *widget,
                            CtkStateFlags  state,
-                           const GdkRGBA *color)
+                           const CdkRGBA *color)
 {
   CtkModifierStyle *style;
 
@@ -9806,7 +9806,7 @@ ctk_widget_override_color (CtkWidget     *widget,
 void
 ctk_widget_override_background_color (CtkWidget     *widget,
                                       CtkStateFlags  state,
-                                      const GdkRGBA *color)
+                                      const CdkRGBA *color)
 {
   CtkModifierStyle *style;
 
@@ -9868,7 +9868,7 @@ ctk_widget_override_font (CtkWidget                  *widget,
 void
 ctk_widget_override_symbolic_color (CtkWidget     *widget,
                                     const gchar   *name,
-                                    const GdkRGBA *color)
+                                    const CdkRGBA *color)
 {
   CtkModifierStyle *style;
 
@@ -9893,7 +9893,7 @@ ctk_widget_override_symbolic_color (CtkWidget     *widget,
  * style properties. All other style values are left untouched.
  * See also ctk_widget_modify_style().
  *
- * Note that the underlying properties have the #GdkColor type,
+ * Note that the underlying properties have the #CdkColor type,
  * so the alpha value in @primary and @secondary will be ignored.
  *
  * Since: 3.0
@@ -9905,8 +9905,8 @@ ctk_widget_override_symbolic_color (CtkWidget     *widget,
  */
 void
 ctk_widget_override_cursor (CtkWidget     *widget,
-                            const GdkRGBA *cursor,
-                            const GdkRGBA *secondary_cursor)
+                            const CdkRGBA *cursor,
+                            const CdkRGBA *secondary_cursor)
 {
   CtkModifierStyle *style;
 
@@ -9937,14 +9937,14 @@ ctk_widget_real_style_set (CtkWidget *widget,
 
 typedef struct {
   CtkWidget *previous_toplevel;
-  GdkScreen *previous_screen;
-  GdkScreen *new_screen;
+  CdkScreen *previous_screen;
+  CdkScreen *new_screen;
 } HierarchyChangedInfo;
 
 static void
 do_screen_change (CtkWidget *widget,
-		  GdkScreen *old_screen,
-		  GdkScreen *new_screen)
+		  CdkScreen *old_screen,
+		  CdkScreen *new_screen)
 {
   if (old_screen != new_screen)
     {
@@ -10082,7 +10082,7 @@ ctk_widget_propagate_screen_changed_recurse (CtkWidget *widget,
 gboolean
 ctk_widget_is_composited (CtkWidget *widget)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
 
@@ -10121,7 +10121,7 @@ _ctk_widget_propagate_composited_changed (CtkWidget *widget)
  **/
 void
 _ctk_widget_propagate_screen_changed (CtkWidget    *widget,
-				      GdkScreen    *previous_screen)
+				      CdkScreen    *previous_screen)
 {
   HierarchyChangedInfo info;
 
@@ -10412,7 +10412,7 @@ update_pango_context (CtkWidget    *widget,
 {
   PangoFontDescription *font_desc;
   CtkStyleContext *style_context;
-  GdkScreen *screen;
+  CdkScreen *screen;
   cairo_font_options_t *font_options;
 
   style_context = _ctk_widget_get_style_context (widget);
@@ -10471,7 +10471,7 @@ ctk_widget_update_pango_context (CtkWidget *widget)
  *   previously set default font options.
  *
  * Sets the #cairo_font_options_t used for Pango rendering in this widget.
- * When not set, the default font options for the #GdkScreen will be used.
+ * When not set, the default font options for the #CdkScreen will be used.
  *
  * Since: 3.18
  **/
@@ -10500,7 +10500,7 @@ ctk_widget_set_font_options (CtkWidget                  *widget,
  * @widget: a #CtkWidget
  *
  * Returns the #cairo_font_options_t used for Pango rendering. When not set,
- * the defaults font options for the #GdkScreen will be used.
+ * the defaults font options for the #CdkScreen will be used.
  *
  * Returns: (transfer none) (nullable): the #cairo_font_options_t or %NULL if not set
  *
@@ -10594,7 +10594,7 @@ ctk_widget_get_font_map (CtkWidget *widget)
 PangoContext *
 ctk_widget_create_pango_context (CtkWidget *widget)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   PangoContext *context;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
@@ -10655,7 +10655,7 @@ ctk_widget_create_pango_layout (CtkWidget   *widget,
  * #CTK_STOCK_OPEN or #CTK_STOCK_OK. @size should be a size
  * such as #CTK_ICON_SIZE_MENU.
  *
- * The pixels in the returned #GdkPixbuf are shared with the rest of
+ * The pixels in the returned #CdkPixbuf are shared with the rest of
  * the application and should not be modified. The pixbuf should be freed
  * after use with g_object_unref().
  *
@@ -10666,7 +10666,7 @@ ctk_widget_create_pango_layout (CtkWidget   *widget,
  *
  * Deprecated: 3.10: Use ctk_icon_theme_load_icon() instead.
  **/
-GdkPixbuf*
+CdkPixbuf*
 ctk_widget_render_icon_pixbuf (CtkWidget   *widget,
                                const gchar *stock_id,
                                CtkIconSize  size)
@@ -10705,9 +10705,9 @@ ctk_widget_render_icon_pixbuf (CtkWidget   *widget,
  */
 void
 ctk_widget_set_parent_window (CtkWidget *widget,
-                              GdkWindow *parent_window)
+                              CdkWindow *parent_window)
 {
-  GdkWindow *old_parent_window;
+  CdkWindow *old_parent_window;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
@@ -10748,11 +10748,11 @@ ctk_widget_set_parent_window (CtkWidget *widget,
  * Returns: (transfer none) (nullable): the parent window of @widget, or %NULL
  * if it does not have a parent window.
  **/
-GdkWindow *
+CdkWindow *
 ctk_widget_get_parent_window (CtkWidget *widget)
 {
   CtkWidgetPrivate *priv;
-  GdkWindow *parent_window;
+  CdkWindow *parent_window;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -10850,7 +10850,7 @@ ctk_widget_get_child_visible (CtkWidget *widget)
   return widget->priv->child_visible;
 }
 
-static GdkScreen *
+static CdkScreen *
 ctk_widget_get_screen_unchecked (CtkWidget *widget)
 {
   CtkWidget *toplevel;
@@ -10872,7 +10872,7 @@ ctk_widget_get_screen_unchecked (CtkWidget *widget)
  * ctk_widget_get_screen:
  * @widget: a #CtkWidget
  *
- * Get the #GdkScreen from the toplevel window associated with
+ * Get the #CdkScreen from the toplevel window associated with
  * this widget. This function can only be called after the widget
  * has been added to a widget hierarchy with a #CtkWindow
  * at the top.
@@ -10881,14 +10881,14 @@ ctk_widget_get_screen_unchecked (CtkWidget *widget)
  * resources when a widget has been realized, and you should
  * free those resources when the widget is unrealized.
  *
- * Returns: (transfer none): the #GdkScreen for the toplevel for this widget.
+ * Returns: (transfer none): the #CdkScreen for the toplevel for this widget.
  *
  * Since: 2.2
  **/
-GdkScreen*
+CdkScreen*
 ctk_widget_get_screen (CtkWidget *widget)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -10904,12 +10904,12 @@ ctk_widget_get_screen (CtkWidget *widget)
  * ctk_widget_has_screen:
  * @widget: a #CtkWidget
  *
- * Checks whether there is a #GdkScreen is associated with
+ * Checks whether there is a #CdkScreen is associated with
  * this widget. All toplevel widgets have an associated
  * screen, and all widgets added into a hierarchy with a toplevel
  * window at the top.
  *
- * Returns: %TRUE if there is a #GdkScreen associated
+ * Returns: %TRUE if there is a #CdkScreen associated
  *   with the widget.
  *
  * Since: 2.2
@@ -10962,8 +10962,8 @@ gint
 ctk_widget_get_scale_factor (CtkWidget *widget)
 {
   CtkWidget *toplevel;
-  GdkDisplay *display;
-  GdkMonitor *monitor;
+  CdkDisplay *display;
+  CdkMonitor *monitor;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 1);
 
@@ -10987,7 +10987,7 @@ ctk_widget_get_scale_factor (CtkWidget *widget)
  * ctk_widget_get_display:
  * @widget: a #CtkWidget
  *
- * Get the #GdkDisplay for the toplevel window associated with
+ * Get the #CdkDisplay for the toplevel window associated with
  * this widget. This function can only be called after the widget
  * has been added to a widget hierarchy with a #CtkWindow at the top.
  *
@@ -10995,11 +10995,11 @@ ctk_widget_get_scale_factor (CtkWidget *widget)
  * resources when a widget has been realized, and you should
  * free those resources when the widget is unrealized.
  *
- * Returns: (transfer none): the #GdkDisplay for the toplevel for this widget.
+ * Returns: (transfer none): the #CdkDisplay for the toplevel for this widget.
  *
  * Since: 2.2
  **/
-GdkDisplay*
+CdkDisplay*
 ctk_widget_get_display (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
@@ -11016,17 +11016,17 @@ ctk_widget_get_display (CtkWidget *widget)
  * hierarchy with #CtkWindow at the top.
  *
  * The root window is useful for such purposes as creating a popup
- * #GdkWindow associated with the window. In general, you should only
+ * #CdkWindow associated with the window. In general, you should only
  * create display specific resources when a widget has been realized,
  * and you should free those resources when the widget is unrealized.
  *
- * Returns: (transfer none): the #GdkWindow root window for the toplevel for this widget.
+ * Returns: (transfer none): the #CdkWindow root window for the toplevel for this widget.
  *
  * Since: 2.2
  *
  * Deprecated: 3.12: Use cdk_screen_get_root_window() instead
  */
-GdkWindow*
+CdkWindow*
 ctk_widget_get_root_window (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
@@ -11310,7 +11310,7 @@ ctk_widget_has_size_request (CtkWidget *widget)
  * @widget: a #CtkWidget
  * @events: event mask
  *
- * Sets the event mask (see #GdkEventMask) for a widget. The event
+ * Sets the event mask (see #CdkEventMask) for a widget. The event
  * mask determines which events a widget will receive. Keep in mind
  * that different widgets have different default event masks, and by
  * changing the event mask you may disrupt a widget’s functionality,
@@ -11343,10 +11343,10 @@ ctk_widget_set_events (CtkWidget *widget,
 /**
  * ctk_widget_set_device_events:
  * @widget: a #CtkWidget
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  * @events: event mask
  *
- * Sets the device event mask (see #GdkEventMask) for a widget. The event
+ * Sets the device event mask (see #CdkEventMask) for a widget. The event
  * mask determines which events a widget will receive from @device. Keep
  * in mind that different widgets have different default event masks, and by
  * changing the event mask you may disrupt a widget’s functionality,
@@ -11362,8 +11362,8 @@ ctk_widget_set_events (CtkWidget *widget,
  **/
 void
 ctk_widget_set_device_events (CtkWidget    *widget,
-                              GdkDevice    *device,
-                              GdkEventMask  events)
+                              CdkDevice    *device,
+                              CdkEventMask  events)
 {
   GHashTable *device_events;
 
@@ -11386,13 +11386,13 @@ ctk_widget_set_device_events (CtkWidget    *widget,
 /**
  * ctk_widget_set_device_enabled:
  * @widget: a #CtkWidget
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  * @enabled: whether to enable the device
  *
- * Enables or disables a #GdkDevice to interact with @widget
+ * Enables or disables a #CdkDevice to interact with @widget
  * and all its children.
  *
- * It does so by descending through the #GdkWindow hierarchy
+ * It does so by descending through the #CdkWindow hierarchy
  * and enabling the same mask that is has for core events
  * (i.e. the one that cdk_window_get_events() returns).
  *
@@ -11400,7 +11400,7 @@ ctk_widget_set_device_events (CtkWidget    *widget,
  */
 void
 ctk_widget_set_device_enabled (CtkWidget *widget,
-                               GdkDevice *device,
+                               CdkDevice *device,
                                gboolean   enabled)
 {
   GList *enabled_devices;
@@ -11421,7 +11421,7 @@ ctk_widget_set_device_enabled (CtkWidget *widget,
 /**
  * ctk_widget_get_device_enabled:
  * @widget: a #CtkWidget
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Returns whether @device can interact with @widget and its
  * children. See ctk_widget_set_device_enabled().
@@ -11432,7 +11432,7 @@ ctk_widget_set_device_enabled (CtkWidget *widget,
  */
 gboolean
 ctk_widget_get_device_enabled (CtkWidget *widget,
-                               GdkDevice *device)
+                               CdkDevice *device)
 {
   GList *enabled_devices;
 
@@ -11446,18 +11446,18 @@ ctk_widget_get_device_enabled (CtkWidget *widget,
 
 static void
 ctk_widget_add_events_internal_list (CtkWidget    *widget,
-                                     GdkDevice    *device,
-                                     GdkEventMask  events,
+                                     CdkDevice    *device,
+                                     CdkEventMask  events,
                                      GList        *window_list)
 {
-  GdkEventMask controllers_mask;
+  CdkEventMask controllers_mask;
   GList *l;
 
   controllers_mask = _ctk_widget_get_controllers_evmask (widget);
 
   for (l = window_list; l != NULL; l = l->next)
     {
-      GdkWindow *window = l->data;
+      CdkWindow *window = l->data;
       CtkWidget *window_widget;
 
       cdk_window_get_user_data (window, (gpointer *)&window_widget);
@@ -11484,7 +11484,7 @@ ctk_widget_add_events_internal_list (CtkWidget    *widget,
 
 static void
 ctk_widget_add_events_internal (CtkWidget *widget,
-                                GdkDevice *device,
+                                CdkDevice *device,
                                 gint       events)
 {
   CtkWidgetPrivate *priv = widget->priv;
@@ -11506,7 +11506,7 @@ ctk_widget_add_events_internal (CtkWidget *widget,
 /**
  * ctk_widget_add_events:
  * @widget: a #CtkWidget
- * @events: an event mask, see #GdkEventMask
+ * @events: an event mask, see #CdkEventMask
  *
  * Adds the events in the bitfield @events to the event mask for
  * @widget. See ctk_widget_set_events() and the
@@ -11536,8 +11536,8 @@ ctk_widget_add_events (CtkWidget *widget,
 /**
  * ctk_widget_add_device_events:
  * @widget: a #CtkWidget
- * @device: a #GdkDevice
- * @events: an event mask, see #GdkEventMask
+ * @device: a #CdkDevice
+ * @events: an event mask, see #CdkEventMask
  *
  * Adds the device events in the bitfield @events to the event mask for
  * @widget. See ctk_widget_set_device_events() for details.
@@ -11546,10 +11546,10 @@ ctk_widget_add_events (CtkWidget *widget,
  **/
 void
 ctk_widget_add_device_events (CtkWidget    *widget,
-                              GdkDevice    *device,
-                              GdkEventMask  events)
+                              CdkDevice    *device,
+                              CdkEventMask  events)
 {
-  GdkEventMask old_events;
+  CdkEventMask old_events;
   GHashTable *device_events;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
@@ -11663,7 +11663,7 @@ ctk_widget_get_ancestor (CtkWidget *widget,
  * @visual: (allow-none): visual to be used or %NULL to unset a previous one
  *
  * Sets the visual that should be used for by widget and its children for
- * creating #GdkWindows. The visual must be on the same #GdkScreen as
+ * creating #CdkWindows. The visual must be on the same #CdkScreen as
  * returned by ctk_widget_get_screen(), so handling the
  * #CtkWidget::screen-changed signal is necessary.
  *
@@ -11672,7 +11672,7 @@ ctk_widget_get_ancestor (CtkWidget *widget,
  **/
 void
 ctk_widget_set_visual (CtkWidget *widget,
-                       GdkVisual *visual)
+                       CdkVisual *visual)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (visual == NULL || GDK_IS_VISUAL (visual));
@@ -11694,12 +11694,12 @@ ctk_widget_set_visual (CtkWidget *widget,
  *
  * Returns: (transfer none): the visual for @widget
  **/
-GdkVisual*
+CdkVisual*
 ctk_widget_get_visual (CtkWidget *widget)
 {
   CtkWidget *w;
-  GdkVisual *visual;
-  GdkScreen *screen;
+  CdkVisual *visual;
+  CdkScreen *screen;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
 
@@ -11733,7 +11733,7 @@ ctk_widget_get_visual (CtkWidget *widget)
  *
  * Note that this function can only be called when the #CtkWidget
  * is attached to a toplevel, since the settings object is specific
- * to a particular #GdkScreen.
+ * to a particular #CdkScreen.
  *
  * Returns: (transfer none): the relevant #CtkSettings object
  */
@@ -11749,7 +11749,7 @@ ctk_widget_get_settings (CtkWidget *widget)
  * ctk_widget_get_events:
  * @widget: a #CtkWidget
  *
- * Returns the event mask (see #GdkEventMask) for the widget. These are the
+ * Returns the event mask (see #CdkEventMask) for the widget. These are the
  * events that the widget will receive.
  *
  * Note: Internally, the widget event mask will be the logical OR of the event
@@ -11771,7 +11771,7 @@ ctk_widget_get_events (CtkWidget *widget)
 /**
  * ctk_widget_get_device_events:
  * @widget: a #CtkWidget
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Returns the events mask for the widget corresponding to an specific device. These
  * are the events that the widget will receive when @device operates on it.
@@ -11780,9 +11780,9 @@ ctk_widget_get_events (CtkWidget *widget)
  *
  * Since: 3.0
  **/
-GdkEventMask
+CdkEventMask
 ctk_widget_get_device_events (CtkWidget *widget,
-                              GdkDevice *device)
+                              CdkDevice *device)
 {
   GHashTable *device_events;
 
@@ -11829,7 +11829,7 @@ ctk_widget_get_pointer (CtkWidget *widget,
 
   if (_ctk_widget_get_realized (widget))
     {
-      GdkSeat *seat;
+      CdkSeat *seat;
 
       seat = cdk_display_get_default_seat (ctk_widget_get_display (widget));
       cdk_window_get_device_position (priv->window,
@@ -12561,7 +12561,7 @@ ctk_widget_real_adjust_baseline_request (CtkWidget *widget,
 
 static gboolean
 is_my_window (CtkWidget *widget,
-              GdkWindow *window)
+              CdkWindow *window)
 {
   gpointer user_data;
 
@@ -12572,15 +12572,15 @@ is_my_window (CtkWidget *widget,
 /*
  * _ctk_widget_get_device_window:
  * @widget: a #CtkWidget
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Returns: (nullable): the window of @widget that @device is in, or %NULL
  */
-GdkWindow *
+CdkWindow *
 _ctk_widget_get_device_window (CtkWidget *widget,
-                               GdkDevice *device)
+                               CdkDevice *device)
 {
-  GdkWindow *window;
+  CdkWindow *window;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
@@ -12597,8 +12597,8 @@ _ctk_widget_get_device_window (CtkWidget *widget,
 
 static void
 list_devices (CtkWidget        *widget,
-              GdkDeviceManager *device_manager,
-              GdkDeviceType     device_type,
+              CdkDeviceManager *device_manager,
+              CdkDeviceType     device_type,
               GList           **result)
 {
   GList *devices;
@@ -12610,10 +12610,10 @@ list_devices (CtkWidget        *widget,
 
   for (l = devices; l; l = l->next)
     {
-      GdkDevice *device = l->data;
+      CdkDevice *device = l->data;
       if (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
         {
-          GdkWindow *window = cdk_device_get_last_event_window (device);
+          CdkWindow *window = cdk_device_get_last_event_window (device);
           if (window && is_my_window (widget, window))
             *result = g_list_prepend (*result, device);
         }
@@ -12625,7 +12625,7 @@ list_devices (CtkWidget        *widget,
  * _ctk_widget_list_devices:
  * @widget: a #CtkWidget
  *
- * Returns the list of #GdkDevices that is currently on top
+ * Returns the list of #CdkDevices that is currently on top
  * of any window belonging to @widget.
  * Free the list with g_list_free(), the elements are owned
  * by CTK+ and must not be freed.
@@ -12633,8 +12633,8 @@ list_devices (CtkWidget        *widget,
 GList *
 _ctk_widget_list_devices (CtkWidget *widget)
 {
-  GdkDisplay *display;
-  GdkDeviceManager *device_manager;
+  CdkDisplay *display;
+  CdkDeviceManager *device_manager;
   GList *result = NULL;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
@@ -12656,13 +12656,13 @@ _ctk_widget_list_devices (CtkWidget *widget)
 
 static void
 synth_crossing (CtkWidget       *widget,
-                GdkEventType     type,
-                GdkWindow       *window,
-                GdkDevice       *device,
-                GdkCrossingMode  mode,
-                GdkNotifyType    detail)
+                CdkEventType     type,
+                CdkWindow       *window,
+                CdkDevice       *device,
+                CdkCrossingMode  mode,
+                CdkNotifyType    detail)
 {
-  GdkEvent *event;
+  CdkEvent *event;
 
   event = cdk_event_new (type);
 
@@ -12698,7 +12698,7 @@ synth_crossing (CtkWidget       *widget,
  * _ctk_widget_synthesize_crossing:
  * @from: the #CtkWidget the virtual pointer is leaving.
  * @to: the #CtkWidget the virtual pointer is moving to.
- * @mode: the #GdkCrossingMode to place on the synthesized events.
+ * @mode: the #CdkCrossingMode to place on the synthesized events.
  *
  * Generate crossing event(s) on widget state (sensitivity) or CTK+ grab change.
  *
@@ -12728,10 +12728,10 @@ synth_crossing (CtkWidget       *widget,
 void
 _ctk_widget_synthesize_crossing (CtkWidget       *from,
 				 CtkWidget       *to,
-                                 GdkDevice       *device,
-				 GdkCrossingMode  mode)
+                                 CdkDevice       *device,
+				 CdkCrossingMode  mode)
 {
-  GdkWindow *from_window = NULL, *to_window = NULL;
+  CdkWindow *from_window = NULL, *to_window = NULL;
 
   g_return_if_fail (from != NULL || to != NULL);
 
@@ -12756,7 +12756,7 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
   else if (from_window != NULL && to_window == NULL)
     {
       GList *from_ancestors = NULL, *list;
-      GdkWindow *from_ancestor = from_window;
+      CdkWindow *from_ancestor = from_window;
 
       while (from_ancestor != NULL)
 	{
@@ -12770,7 +12770,7 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
 		      device, mode, GDK_NOTIFY_ANCESTOR);
       for (list = g_list_last (from_ancestors); list; list = list->prev)
 	{
-	  synth_crossing (NULL, GDK_LEAVE_NOTIFY, (GdkWindow *) list->data,
+	  synth_crossing (NULL, GDK_LEAVE_NOTIFY, (CdkWindow *) list->data,
 			  device, mode, GDK_NOTIFY_VIRTUAL);
 	}
 
@@ -12781,7 +12781,7 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
   else if (from_window == NULL && to_window != NULL)
     {
       GList *to_ancestors = NULL, *list;
-      GdkWindow *to_ancestor = to_window;
+      CdkWindow *to_ancestor = to_window;
 
       while (to_ancestor != NULL)
 	{
@@ -12795,7 +12795,7 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
 
       for (list = to_ancestors; list; list = list->next)
 	{
-	  synth_crossing (NULL, GDK_ENTER_NOTIFY, (GdkWindow *) list->data,
+	  synth_crossing (NULL, GDK_ENTER_NOTIFY, (CdkWindow *) list->data,
 			  device, mode, GDK_NOTIFY_VIRTUAL);
 	}
       synth_crossing (to, GDK_ENTER_NOTIFY, to_window,
@@ -12808,7 +12808,7 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
   else
     {
       GList *from_ancestors = NULL, *to_ancestors = NULL, *list;
-      GdkWindow *from_ancestor = from_window, *to_ancestor = to_window;
+      CdkWindow *from_ancestor = from_window, *to_ancestor = to_window;
 
       while (from_ancestor != NULL || to_ancestor != NULL)
 	{
@@ -12835,7 +12835,7 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
 	    synth_crossing (from, GDK_LEAVE_NOTIFY, from_window,
 			    device, mode, GDK_NOTIFY_INFERIOR);
 	  for (list = to_ancestors; list; list = list->next)
-	    synth_crossing (NULL, GDK_ENTER_NOTIFY, (GdkWindow *) list->data,
+	    synth_crossing (NULL, GDK_ENTER_NOTIFY, (CdkWindow *) list->data,
 			    device, mode, GDK_NOTIFY_VIRTUAL);
 	  synth_crossing (to, GDK_ENTER_NOTIFY, to_window,
 			  device, mode, GDK_NOTIFY_ANCESTOR);
@@ -12846,7 +12846,7 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
 			  device, mode, GDK_NOTIFY_ANCESTOR);
 	  for (list = g_list_last (from_ancestors); list; list = list->prev)
 	    {
-	      synth_crossing (NULL, GDK_LEAVE_NOTIFY, (GdkWindow *) list->data,
+	      synth_crossing (NULL, GDK_LEAVE_NOTIFY, (CdkWindow *) list->data,
 			      device, mode, GDK_NOTIFY_VIRTUAL);
 	    }
 	  if (mode != GDK_CROSSING_CTK_GRAB)
@@ -12868,12 +12868,12 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
 
 	  for (list = g_list_last (from_ancestors); list; list = list->prev)
 	    {
-	      synth_crossing (NULL, GDK_LEAVE_NOTIFY, (GdkWindow *) list->data,
+	      synth_crossing (NULL, GDK_LEAVE_NOTIFY, (CdkWindow *) list->data,
 			      device, mode, GDK_NOTIFY_NONLINEAR_VIRTUAL);
 	    }
 	  for (list = to_ancestors; list; list = list->next)
 	    {
-	      synth_crossing (NULL, GDK_ENTER_NOTIFY, (GdkWindow *) list->data,
+	      synth_crossing (NULL, GDK_ENTER_NOTIFY, (CdkWindow *) list->data,
 			      device, mode, GDK_NOTIFY_NONLINEAR_VIRTUAL);
 	    }
 	  synth_crossing (to, GDK_ENTER_NOTIFY, to_window,
@@ -12941,8 +12941,8 @@ ctk_widget_propagate_state (CtkWidget    *widget,
 
           for (d = devices; d; d = d->next)
             {
-              GdkWindow *window;
-              GdkDevice *device;
+              CdkWindow *window;
+              CdkDevice *device;
 
               device = d->data;
               window = _ctk_widget_get_device_window (widget, device);
@@ -15112,14 +15112,14 @@ ctk_widget_set_margin_bottom (CtkWidget *widget,
 /**
  * ctk_widget_get_clipboard:
  * @widget: a #CtkWidget
- * @selection: a #GdkAtom which identifies the clipboard
+ * @selection: a #CdkAtom which identifies the clipboard
  *             to use. %GDK_SELECTION_CLIPBOARD gives the
  *             default clipboard. Another common value
  *             is %GDK_SELECTION_PRIMARY, which gives
  *             the primary X selection.
  *
  * Returns the clipboard object for the given selection to
- * be used with @widget. @widget must have a #GdkDisplay
+ * be used with @widget. @widget must have a #CdkDisplay
  * associated with it, so must be attached to a toplevel
  * window.
  *
@@ -15131,7 +15131,7 @@ ctk_widget_set_margin_bottom (CtkWidget *widget,
  * Since: 2.2
  **/
 CtkClipboard *
-ctk_widget_get_clipboard (CtkWidget *widget, GdkAtom selection)
+ctk_widget_get_clipboard (CtkWidget *widget, CdkAtom selection)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (ctk_widget_has_screen (widget), NULL);
@@ -15406,7 +15406,7 @@ tooltip_query_idle (gpointer data)
 static void
 ctk_widget_queue_tooltip_query (CtkWidget *widget)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   display = ctk_widget_get_display (widget);
 
@@ -15639,7 +15639,7 @@ ctk_widget_set_clip (CtkWidget           *widget,
          _ctk_widget_get_window (widget) == _ctk_widget_get_window (priv->parent))
     {
       CtkWidgetPrivate *parent_priv = priv->parent->priv;
-      GdkRectangle union_rect;
+      CdkRectangle union_rect;
 
       cdk_rectangle_union (&priv->clip,
                            &parent_priv->clip,
@@ -15699,7 +15699,7 @@ _ctk_widget_set_simple_clip (CtkWidget     *widget,
 
   if (CTK_IS_CONTAINER (widget))
     {
-      GdkRectangle children_clip;
+      CdkRectangle children_clip;
 
       ctk_container_get_children_clip (CTK_CONTAINER (widget), &children_clip);
 
@@ -15912,7 +15912,7 @@ ctk_widget_get_requisition (CtkWidget      *widget,
 /**
  * ctk_widget_set_window:
  * @widget: a #CtkWidget
- * @window: (transfer full): a #GdkWindow
+ * @window: (transfer full): a #CdkWindow
  *
  * Sets a widget’s window. This function should only be used in a
  * widget’s #CtkWidget::realize implementation. The %window passed is
@@ -15920,7 +15920,7 @@ ctk_widget_get_requisition (CtkWidget      *widget,
  * window of its parent widget as returned by
  * ctk_widget_get_parent_window().
  *
- * Widgets must indicate whether they will create their own #GdkWindow
+ * Widgets must indicate whether they will create their own #CdkWindow
  * by calling ctk_widget_set_has_window(). This is usually done in the
  * widget’s init() function.
  *
@@ -15930,7 +15930,7 @@ ctk_widget_get_requisition (CtkWidget      *widget,
  */
 void
 ctk_widget_set_window (CtkWidget *widget,
-                       GdkWindow *window)
+                       CdkWindow *window)
 {
   CtkWidgetPrivate *priv;
 
@@ -15950,9 +15950,9 @@ ctk_widget_set_window (CtkWidget *widget,
 /**
  * ctk_widget_register_window:
  * @widget: a #CtkWidget
- * @window: a #GdkWindow
+ * @window: a #CdkWindow
  *
- * Registers a #GdkWindow with the widget and sets it up so that
+ * Registers a #CdkWindow with the widget and sets it up so that
  * the widget receives events for it. Call ctk_widget_unregister_window()
  * when destroying the window.
  *
@@ -15965,7 +15965,7 @@ ctk_widget_set_window (CtkWidget *widget,
  */
 void
 ctk_widget_register_window (CtkWidget    *widget,
-			    GdkWindow    *window)
+			    CdkWindow    *window)
 {
   CtkWidgetPrivate *priv;
   gpointer user_data;
@@ -15985,9 +15985,9 @@ ctk_widget_register_window (CtkWidget    *widget,
 /**
  * ctk_widget_unregister_window:
  * @widget: a #CtkWidget
- * @window: a #GdkWindow
+ * @window: a #CdkWindow
  *
- * Unregisters a #GdkWindow from the widget that was previously set up with
+ * Unregisters a #CdkWindow from the widget that was previously set up with
  * ctk_widget_register_window(). You need to call this when the window is
  * no longer used by the widget, such as when you destroy it.
  *
@@ -15995,7 +15995,7 @@ ctk_widget_register_window (CtkWidget    *widget,
  */
 void
 ctk_widget_unregister_window (CtkWidget    *widget,
-			      GdkWindow    *window)
+			      CdkWindow    *window)
 {
   CtkWidgetPrivate *priv;
   gpointer user_data;
@@ -16021,7 +16021,7 @@ ctk_widget_unregister_window (CtkWidget    *widget,
  *
  * Since: 2.14
  */
-GdkWindow*
+CdkWindow*
 ctk_widget_get_window (CtkWidget *widget)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
@@ -16053,7 +16053,7 @@ ctk_widget_get_support_multidevice (CtkWidget *widget)
  *
  * Enables or disables multiple pointer awareness. If this setting is %TRUE,
  * @widget will start receiving multiple, per device enter/leave events. Note
- * that if custom #GdkWindows are created in #CtkWidget::realize,
+ * that if custom #CdkWindows are created in #CtkWidget::realize,
  * cdk_window_set_support_multidevice() will have to be called manually on them.
  *
  * Since: 3.0
@@ -16193,7 +16193,7 @@ _ctk_widget_set_has_focus (CtkWidget *widget,
 /**
  * ctk_widget_send_focus_change:
  * @widget: a #CtkWidget
- * @event: a #GdkEvent of type GDK_FOCUS_CHANGE
+ * @event: a #CdkEvent of type GDK_FOCUS_CHANGE
  *
  * Sends the focus change @event to @widget
  *
@@ -16206,7 +16206,7 @@ _ctk_widget_set_has_focus (CtkWidget *widget,
  * An example of its usage is:
  *
  * |[<!-- language="C" -->
- *   GdkEvent *fevent = cdk_event_new (GDK_FOCUS_CHANGE);
+ *   CdkEvent *fevent = cdk_event_new (GDK_FOCUS_CHANGE);
  *
  *   fevent->focus_change.type = GDK_FOCUS_CHANGE;
  *   fevent->focus_change.in = TRUE;
@@ -16226,7 +16226,7 @@ _ctk_widget_set_has_focus (CtkWidget *widget,
  */
 gboolean
 ctk_widget_send_focus_change (CtkWidget *widget,
-                              GdkEvent  *event)
+                              CdkEvent  *event)
 {
   gboolean res;
 
@@ -16654,8 +16654,8 @@ ctk_widget_get_style_context (CtkWidget *widget)
 
   if (G_UNLIKELY (priv->context == NULL))
     {
-      GdkScreen *screen;
-      GdkFrameClock *frame_clock;
+      CdkScreen *screen;
+      CdkFrameClock *frame_clock;
 
       priv->context = ctk_style_context_new_for_node (priv->cssnode);
 
@@ -16700,11 +16700,11 @@ _ctk_widget_invalidate_style_context (CtkWidget    *widget,
  *
  * Since: 3.4
  **/
-GdkModifierType
+CdkModifierType
 ctk_widget_get_modifier_mask (CtkWidget         *widget,
-                              GdkModifierIntent  intent)
+                              CdkModifierIntent  intent)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
 
@@ -17359,7 +17359,7 @@ event_controller_grab_notify (CtkWidget           *widget,
                               gboolean             was_grabbed,
                               EventControllerData *data)
 {
-  GdkDevice *device = NULL;
+  CdkDevice *device = NULL;
 
   if (CTK_IS_GESTURE (data->controller))
     device = ctk_gesture_get_device (CTK_GESTURE (data->controller));
@@ -17383,13 +17383,13 @@ _ctk_widget_update_evmask (CtkWidget *widget)
 
 static void
 event_controller_sequence_state_changed (CtkGesture            *gesture,
-                                         GdkEventSequence      *sequence,
+                                         CdkEventSequence      *sequence,
                                          CtkEventSequenceState  state,
                                          CtkWidget             *widget)
 {
   gboolean handled = FALSE;
   CtkWidget *event_widget;
-  const GdkEvent *event;
+  const CdkEvent *event;
 
   handled = _ctk_widget_set_sequence_state_internal (widget, sequence,
                                                      state, gesture);
@@ -17402,7 +17402,7 @@ event_controller_sequence_state_changed (CtkGesture            *gesture,
   if (!event)
     return;
 
-  event_widget = ctk_get_event_widget ((GdkEvent *) event);
+  event_widget = ctk_get_event_widget ((CdkEvent *) event);
   cancel_event_sequence_on_hierarchy (widget, event_widget, sequence);
 }
 
@@ -17515,7 +17515,7 @@ _ctk_widget_list_controllers (CtkWidget           *widget,
 
 gboolean
 _ctk_widget_consumes_motion (CtkWidget        *widget,
-                             GdkEventSequence *sequence)
+                             CdkEventSequence *sequence)
 {
   EventControllerData *data;
   CtkWidgetPrivate *priv;
@@ -17563,11 +17563,11 @@ ctk_widget_reset_controllers (CtkWidget *widget)
 
 void
 ctk_widget_render (CtkWidget            *widget,
-                   GdkWindow            *window,
+                   CdkWindow            *window,
                    const cairo_region_t *region)
 {
   CtkWidgetPrivate *priv = ctk_widget_get_instance_private (widget);
-  GdkDrawingContext *context;
+  CdkDrawingContext *context;
   gboolean do_clip;
   cairo_t *cr;
   int x, y;
@@ -17590,7 +17590,7 @@ ctk_widget_render (CtkWidget            *widget,
   else
     {
       /* This is annoying, but it has to stay because Firefox
-       * disables double buffering on a top-level GdkWindow,
+       * disables double buffering on a top-level CdkWindow,
        * which breaks the drawing context.
        *
        * Candidate for deletion in the next major API bump.

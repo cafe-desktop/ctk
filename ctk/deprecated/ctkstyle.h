@@ -78,16 +78,16 @@ typedef enum
 
 /**
  * CtkStyle:
- * @fg: Set of foreground #GdkColor
- * @bg: Set of background #GdkColor
- * @light: Set of light #GdkColor
- * @dark: Set of dark #GdkColor
- * @mid: Set of mid #GdkColor
- * @text: Set of text #GdkColor
- * @base: Set of base #GdkColor
+ * @fg: Set of foreground #CdkColor
+ * @bg: Set of background #CdkColor
+ * @light: Set of light #CdkColor
+ * @dark: Set of dark #CdkColor
+ * @mid: Set of mid #CdkColor
+ * @text: Set of text #CdkColor
+ * @base: Set of base #CdkColor
  * @text_aa: Color halfway between text/base
- * @black: #GdkColor to use for black
- * @white: #GdkColor to use for white
+ * @black: #CdkColor to use for black
+ * @white: #CdkColor to use for white
  * @font_desc: #PangoFontDescription
  * @xthickness: Thickness in X direction
  * @ythickness: Thickness in Y direction
@@ -100,17 +100,17 @@ struct _CtkStyle
 
   /*< public >*/
 
-  GdkColor fg[5];
-  GdkColor bg[5];
-  GdkColor light[5];
-  GdkColor dark[5];
-  GdkColor mid[5];
-  GdkColor text[5];
-  GdkColor base[5];
-  GdkColor text_aa[5];          /* Halfway between text/base */
+  CdkColor fg[5];
+  CdkColor bg[5];
+  CdkColor light[5];
+  CdkColor dark[5];
+  CdkColor mid[5];
+  CdkColor text[5];
+  CdkColor base[5];
+  CdkColor text_aa[5];          /* Halfway between text/base */
 
-  GdkColor black;
-  GdkColor white;
+  CdkColor black;
+  CdkColor white;
   PangoFontDescription *font_desc;
 
   gint xthickness;
@@ -122,7 +122,7 @@ struct _CtkStyle
 
   gint attach_count;
 
-  GdkVisual *visual;
+  CdkVisual *visual;
   PangoFontDescription *private_font_desc; /* Font description for style->private_font or %NULL */
 
   /* the RcStyle from which this style was created */
@@ -200,11 +200,11 @@ struct _CtkStyleClass
                                  CtkRcStyle             *rc_style);
 
   void (*set_background)        (CtkStyle               *style,
-                                 GdkWindow              *window,
+                                 CdkWindow              *window,
                                  CtkStateType            state_type);
 
 
-  GdkPixbuf * (* render_icon)   (CtkStyle               *style,
+  CdkPixbuf * (* render_icon)   (CtkStyle               *style,
                                  const CtkIconSource    *source,
                                  CtkTextDirection        direction,
                                  CtkStateType            state,
@@ -404,7 +404,7 @@ struct _CtkStyleClass
                                  CtkStateType            state_type,
                                  CtkWidget              *widget,
                                  const gchar            *detail,
-                                 GdkWindowEdge           edge,
+                                 CdkWindowEdge           edge,
                                  gint                    x,
                                  gint                    y,
                                  gint                    width,
@@ -444,17 +444,17 @@ GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 CtkStyle* ctk_style_copy                     (CtkStyle     *style);
 GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 CtkStyle* ctk_style_attach                   (CtkStyle     *style,
-                                              GdkWindow    *window);
+                                              CdkWindow    *window);
 GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void      ctk_style_detach                   (CtkStyle     *style);
 GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void      ctk_style_set_background           (CtkStyle     *style,
-                                              GdkWindow    *window,
+                                              CdkWindow    *window,
                                               CtkStateType  state_type);
 GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_background)
 void      ctk_style_apply_default_background (CtkStyle     *style,
                                               cairo_t      *cr,
-                                              GdkWindow    *window,
+                                              CdkWindow    *window,
                                               CtkStateType  state_type,
                                               gint          x,
                                               gint          y,
@@ -467,10 +467,10 @@ CtkIconSet* ctk_style_lookup_icon_set        (CtkStyle     *style,
 GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and a style class)
 gboolean    ctk_style_lookup_color           (CtkStyle     *style,
                                               const gchar  *color_name,
-                                              GdkColor     *color);
+                                              CdkColor     *color);
 
 GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_icon)
-GdkPixbuf*  ctk_style_render_icon     (CtkStyle            *style,
+CdkPixbuf*  ctk_style_render_icon     (CtkStyle            *style,
                                        const CtkIconSource *source,
                                        CtkTextDirection     direction,
                                        CtkStateType         state,
@@ -685,7 +685,7 @@ void ctk_paint_resize_grip       (CtkStyle           *style,
                                   CtkStateType        state_type,
                                   CtkWidget          *widget,
                                   const gchar        *detail,
-                                  GdkWindowEdge       edge,
+                                  CdkWindowEdge       edge,
                                   gint                x,
                                   gint                y,
                                   gint                width,
@@ -720,10 +720,10 @@ void ctk_style_get                (CtkStyle    *style,
 
 
 /* --- private API --- */
-CtkStyle*     _ctk_style_new_for_path     (GdkScreen          *screen,
+CtkStyle*     _ctk_style_new_for_path     (CdkScreen          *screen,
                                            CtkWidgetPath      *path);
-void          _ctk_style_shade            (const GdkColor     *a,
-                                           GdkColor           *b,
+void          _ctk_style_shade            (const CdkColor     *a,
+                                           CdkColor           *b,
                                            gdouble             k);
 
 GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
@@ -748,23 +748,23 @@ CtkRcStyle *ctk_widget_get_modifier_style (CtkWidget            *widget);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_color)
 void        ctk_widget_modify_fg          (CtkWidget            *widget,
                                            CtkStateType          state,
-                                           const GdkColor       *color);
+                                           const CdkColor       *color);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_background_color)
 void        ctk_widget_modify_bg          (CtkWidget            *widget,
                                            CtkStateType          state,
-                                           const GdkColor       *color);
+                                           const CdkColor       *color);
 GDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
 void        ctk_widget_modify_text        (CtkWidget            *widget,
                                            CtkStateType          state,
-                                           const GdkColor       *color);
+                                           const CdkColor       *color);
 GDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
 void        ctk_widget_modify_base        (CtkWidget            *widget,
                                            CtkStateType          state,
-                                           const GdkColor       *color);
+                                           const CdkColor       *color);
 GDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
 void        ctk_widget_modify_cursor      (CtkWidget            *widget,
-                                           const GdkColor       *primary,
-                                           const GdkColor       *secondary);
+                                           const CdkColor       *primary,
+                                           const CdkColor       *secondary);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_font)
 void        ctk_widget_modify_font        (CtkWidget            *widget,
                                            PangoFontDescription *font_desc);
@@ -783,7 +783,7 @@ void       ctk_widget_class_path          (CtkWidget *widget,
                                            gchar    **path,
                                            gchar    **path_reversed);
 GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_render_icon_pixbuf)
-GdkPixbuf *ctk_widget_render_icon         (CtkWidget   *widget,
+CdkPixbuf *ctk_widget_render_icon         (CtkWidget   *widget,
                                            const gchar *stock_id,
                                            CtkIconSize  size,
                                            const gchar *detail);

@@ -38,7 +38,7 @@
 #include "cdkkeysprivate.h"
 #include "cdkwin32keys.h"
 
-enum _GdkWin32KeyLevelState
+enum _CdkWin32KeyLevelState
 {
   GDK_WIN32_LEVEL_NONE = 0,
   GDK_WIN32_LEVEL_SHIFT,
@@ -51,9 +51,9 @@ enum _GdkWin32KeyLevelState
   GDK_WIN32_LEVEL_COUNT
 };
 
-typedef enum _GdkWin32KeyLevelState GdkWin32KeyLevelState;
+typedef enum _CdkWin32KeyLevelState CdkWin32KeyLevelState;
 
-struct _GdkWin32KeyNode
+struct _CdkWin32KeyNode
 {
   /* Non-spacing version of the dead key */
   guint                  undead_cdk_keycode;
@@ -62,20 +62,20 @@ struct _GdkWin32KeyNode
   guint8                 vk;
 
   /* Level for which this virtual key code produces this cdk_keycode */
-  GdkWin32KeyLevelState  level;
+  CdkWin32KeyLevelState  level;
 
   /* GDK (X11) code for this key */
   guint                  cdk_keycode;
 
-  /* Array of GdkWin32KeyNode should be sorted by cdk_keycode, then by level */
+  /* Array of CdkWin32KeyNode should be sorted by cdk_keycode, then by level */
   GArray                *combinations;
 };
 
-typedef struct _GdkWin32KeyNode GdkWin32KeyNode;
+typedef struct _CdkWin32KeyNode CdkWin32KeyNode;
 
 /*
 Example:
-  GdkWin32KeyNode
+  CdkWin32KeyNode
   {
     undead_cdk_keycode = 0x0b4 GDK_KEY_acute (')
     vk = 0xde VK_OEM_7
@@ -83,7 +83,7 @@ Example:
     cdk_keycode = 0xfe51 GDK_KEY_dead_acute
     combinations = 
     {
-      GdkWin32KeyNode
+      CdkWin32KeyNode
       {
         undead_cdk_keycode = 0x061 GDK_KEY_a (a)
         level = GDK_WIN32_LEVEL_NONE
@@ -91,7 +91,7 @@ Example:
         cdk_keycode = 0xe1 GDK_KEY_aacute á
         combinations = NULL
       },
-      GdkWin32KeyNode
+      CdkWin32KeyNode
       {
         unicode_char = 0x041 GDK_KEY_A (A)
         level = GDK_WIN32_LEVEL_SHIFT
@@ -123,7 +123,7 @@ does not match at all
 and the caller will try other matching mechanisms for compose_buffer
 */
 
-struct _GdkWin32KeyGroupOptions
+struct _CdkWin32KeyGroupOptions
 {
   /* character that should be used as the decimal separator */
   wchar_t         decimal_mark;
@@ -137,16 +137,16 @@ struct _GdkWin32KeyGroupOptions
   GArray         *dead_keys;
 };
 
-typedef struct _GdkWin32KeyGroupOptions GdkWin32KeyGroupOptions;
+typedef struct _CdkWin32KeyGroupOptions CdkWin32KeyGroupOptions;
 
-struct _GdkWin32KeymapClass
+struct _CdkWin32KeymapClass
 {
-  GdkKeymapClass parent_class;
+  CdkKeymapClass parent_class;
 };
 
-struct _GdkWin32Keymap
+struct _CdkWin32Keymap
 {
-  GdkKeymap parent_instance;
+  CdkKeymap parent_instance;
 
   /* length = what GetKeyboardLayoutList() returns, type = HKL.
    * When it changes, recreate the keymap and repopulate the options.
@@ -161,7 +161,7 @@ struct _GdkWin32Keymap
    */
   guint  *keysym_tab;
 
-  /* length = length(layout_handles), type =  GdkWin32KeyGroupOptions
+  /* length = length(layout_handles), type =  CdkWin32KeyGroupOptions
    * Kept separate from layout_handles because layout_handles is
    * populated by W32 API.
    */
@@ -174,33 +174,33 @@ struct _GdkWin32Keymap
   guint8 active_layout;
 };
 
-G_DEFINE_TYPE (GdkWin32Keymap, cdk_win32_keymap, GDK_TYPE_KEYMAP)
+G_DEFINE_TYPE (CdkWin32Keymap, cdk_win32_keymap, GDK_TYPE_KEYMAP)
 
 guint _cdk_keymap_serial = 0;
 
-static GdkKeymap *default_keymap = NULL;
+static CdkKeymap *default_keymap = NULL;
 
 #define KEY_STATE_SIZE 256
 
-static void update_keymap (GdkKeymap *cdk_keymap);
+static void update_keymap (CdkKeymap *cdk_keymap);
 
 static void
-cdk_win32_key_group_options_clear (GdkWin32KeyGroupOptions *options)
+cdk_win32_key_group_options_clear (CdkWin32KeyGroupOptions *options)
 {
   g_clear_pointer (&options->dead_keys, g_array_unref);
 }
 
 static void
-cdk_win32_key_node_clear (GdkWin32KeyNode *node)
+cdk_win32_key_node_clear (CdkWin32KeyNode *node)
 {
   g_clear_pointer (&node->combinations, g_array_unref);
 }
 
 static void
-cdk_win32_keymap_init (GdkWin32Keymap *keymap)
+cdk_win32_keymap_init (CdkWin32Keymap *keymap)
 {
   keymap->layout_handles = g_array_new (FALSE, FALSE, sizeof (HKL));
-  keymap->options = g_array_new (FALSE, FALSE, sizeof (GdkWin32KeyGroupOptions));
+  keymap->options = g_array_new (FALSE, FALSE, sizeof (CdkWin32KeyGroupOptions));
   g_array_set_clear_func (keymap->options, (GDestroyNotify) cdk_win32_key_group_options_clear);
   keymap->keysym_tab = NULL;
   keymap->active_layout = 0;
@@ -210,7 +210,7 @@ cdk_win32_keymap_init (GdkWin32Keymap *keymap)
 static void
 cdk_win32_keymap_finalize (GObject *object)
 {
-  GdkWin32Keymap *keymap = GDK_WIN32_KEYMAP (object);
+  CdkWin32Keymap *keymap = GDK_WIN32_KEYMAP (object);
 
   g_clear_pointer (&keymap->keysym_tab, g_free);
   g_clear_pointer (&keymap->layout_handles, g_array_unref);
@@ -221,17 +221,17 @@ cdk_win32_keymap_finalize (GObject *object)
 
 #ifdef G_ENABLE_DEBUG
 static void
-print_keysym_tab (GdkWin32Keymap *keymap)
+print_keysym_tab (CdkWin32Keymap *keymap)
 {
   gint                      li;
-  GdkWin32KeyGroupOptions  *options;
+  CdkWin32KeyGroupOptions  *options;
   gint                      vk;
-  GdkWin32KeyLevelState     level;
+  CdkWin32KeyLevelState     level;
   gint                      group_size = keymap->layout_handles->len;
 
   for (li = 0; li < group_size; li++)
     {
-      options = &g_array_index (keymap->options, GdkWin32KeyGroupOptions, li);
+      options = &g_array_index (keymap->options, CdkWin32KeyGroupOptions, li);
       g_print ("keymap %d (0x%p):%s\n",
                li, g_array_index (keymap->layout_handles, HKL, li),
                options->has_altgr ? " (uses AltGr)" : "");
@@ -419,7 +419,7 @@ handle_special (guint  vk,
 
 static void
 set_level_vks (guchar               *key_state,
-	       GdkWin32KeyLevelState level)
+	       CdkWin32KeyLevelState level)
 {
   switch (level)
     {
@@ -541,12 +541,12 @@ handle_dead (guint  keysym,
  * return current decimal mark as unicode character
  */
 guint32
-_cdk_win32_keymap_get_decimal_mark (GdkWin32Keymap *keymap)
+_cdk_win32_keymap_get_decimal_mark (CdkWin32Keymap *keymap)
 {
   if (keymap != NULL &&
       keymap->layout_handles->len > 0 &&
-      g_array_index (keymap->options, GdkWin32KeyGroupOptions, keymap->active_layout).decimal_mark)
-    return g_array_index (keymap->options, GdkWin32KeyGroupOptions, keymap->active_layout).decimal_mark;
+      g_array_index (keymap->options, CdkWin32KeyGroupOptions, keymap->active_layout).decimal_mark)
+    return g_array_index (keymap->options, CdkWin32KeyGroupOptions, keymap->active_layout).decimal_mark;
 
   return (guint32) '.';
 }
@@ -567,7 +567,7 @@ layouts_are_the_same (GArray *array, HKL *hkls, gint hkls_len)
 }
 
 static void
-check_that_active_layout_is_in_sync (GdkWin32Keymap *keymap)
+check_that_active_layout_is_in_sync (CdkWin32Keymap *keymap)
 {
   HKL     hkl;
   HKL     cached_hkl;
@@ -593,8 +593,8 @@ static gint
 sort_key_nodes_by_cdk_keyval (gconstpointer a,
                               gconstpointer b)
 {
-  const GdkWin32KeyNode *one = a;
-  const GdkWin32KeyNode *two = b;
+  const CdkWin32KeyNode *one = a;
+  const CdkWin32KeyNode *two = b;
 
   if (one->cdk_keycode < two->cdk_keycode)
     return -1;
@@ -610,7 +610,7 @@ sort_key_nodes_by_cdk_keyval (gconstpointer a,
 }
 
 static void
-update_keymap (GdkKeymap *cdk_keymap)
+update_keymap (CdkKeymap *cdk_keymap)
 {
   int                      hkls_len;
   static int               hkls_size = 0;
@@ -618,9 +618,9 @@ update_keymap (GdkKeymap *cdk_keymap)
   gboolean                 no_list;
   static guint             current_serial = 0;
   gint                     i, group;
-  GdkWin32KeyLevelState    level;
-  GdkWin32KeyGroupOptions *options;
-  GdkWin32Keymap          *keymap = GDK_WIN32_KEYMAP (cdk_keymap);
+  CdkWin32KeyLevelState    level;
+  CdkWin32KeyGroupOptions *options;
+  CdkWin32Keymap          *keymap = GDK_WIN32_KEYMAP (cdk_keymap);
   gint                     keysym_tab_size;
 
   guchar                   key_state[KEY_STATE_SIZE];
@@ -698,12 +698,12 @@ update_keymap (GdkKeymap *cdk_keymap)
 
   for (i = 0; i < hkls_len; i++)
     {
-      options = &g_array_index (keymap->options, GdkWin32KeyGroupOptions, i);
+      options = &g_array_index (keymap->options, CdkWin32KeyGroupOptions, i);
 
       options->decimal_mark = 0;
       options->scancode_rshift = 0;
       options->has_altgr = FALSE;
-      options->dead_keys = g_array_new (FALSE, FALSE, sizeof (GdkWin32KeyNode));
+      options->dead_keys = g_array_new (FALSE, FALSE, sizeof (CdkWin32KeyNode));
       g_array_set_clear_func (options->dead_keys, (GDestroyNotify) cdk_win32_key_node_clear);
 
       g_array_index (keymap->layout_handles, HKL, i) = hkls[i];
@@ -716,12 +716,12 @@ update_keymap (GdkKeymap *cdk_keymap)
     {
       for (group = 0; group < hkls_len; group++)
         {
-          options = &g_array_index (keymap->options, GdkWin32KeyGroupOptions, group);
+          options = &g_array_index (keymap->options, CdkWin32KeyGroupOptions, group);
           scancode = MapVirtualKeyEx (vk, 0, hkls[group]);
           keygroup = &keymap->keysym_tab[(vk * hkls_len + group) * GDK_WIN32_LEVEL_COUNT];
 
           /* MapVirtualKeyEx() fails to produce a scancode for VK_DIVIDE and VK_PAUSE.
-           * Ignore that, handle_special() will figure out a Gdk keyval for these
+           * Ignore that, handle_special() will figure out a Cdk keyval for these
            * without needing a scancode.
            */
           if (scancode == 0 &&
@@ -760,7 +760,7 @@ update_keymap (GdkKeymap *cdk_keymap)
                   wchar_t         wcs[10];
                   gint            k;
                   guint           keysym;
-                  GdkWin32KeyNode dead_key;
+                  CdkWin32KeyNode dead_key;
 
                   wcs[0] = wcs[1] = 0;
                   k = ToUnicodeEx (vk, scancode, key_state,
@@ -848,16 +848,16 @@ update_keymap (GdkKeymap *cdk_keymap)
 
   for (group = 0; group < hkls_len; group++)
     {
-      options = &g_array_index (keymap->options, GdkWin32KeyGroupOptions, group);
+      options = &g_array_index (keymap->options, CdkWin32KeyGroupOptions, group);
 
       for (i = 0; i < options->dead_keys->len; i++)
         {
           wchar_t          wcs[10];
           gint             k;
-          GdkWin32KeyNode *dead_key;
-          GdkWin32KeyNode  combo;
+          CdkWin32KeyNode *dead_key;
+          CdkWin32KeyNode  combo;
 
-          dead_key = &g_array_index (options->dead_keys, GdkWin32KeyNode, i);
+          dead_key = &g_array_index (options->dead_keys, CdkWin32KeyNode, i);
 
           for (vk = 0; vk < KEY_STATE_SIZE; vk++)
             {
@@ -906,7 +906,7 @@ update_keymap (GdkKeymap *cdk_keymap)
 
                       if (dead_key->combinations == NULL)
                         {
-                          dead_key->combinations = g_array_new (FALSE, FALSE, sizeof (GdkWin32KeyNode));
+                          dead_key->combinations = g_array_new (FALSE, FALSE, sizeof (CdkWin32KeyNode));
                           g_array_set_clear_func (dead_key->combinations, (GDestroyNotify) cdk_win32_key_node_clear);
                         }
 
@@ -980,14 +980,14 @@ find_deadkey_by_keyval (GArray *dead_keys, guint16 keyval, gsize *index)
 
   while (deadkey_i != deadkey_i_max)
     {
-      GdkWin32KeyNode *dead_key;
+      CdkWin32KeyNode *dead_key;
       gsize middle;
 
-      if (g_array_index (dead_keys, GdkWin32KeyNode, deadkey_i).cdk_keycode == keyval)
+      if (g_array_index (dead_keys, CdkWin32KeyNode, deadkey_i).cdk_keycode == keyval)
         {
           break;
         }
-      else if (g_array_index (dead_keys, GdkWin32KeyNode, deadkey_i_max).cdk_keycode == keyval)
+      else if (g_array_index (dead_keys, CdkWin32KeyNode, deadkey_i_max).cdk_keycode == keyval)
         {
           deadkey_i = deadkey_i_max;
           break;
@@ -998,7 +998,7 @@ find_deadkey_by_keyval (GArray *dead_keys, guint16 keyval, gsize *index)
         }
 
       middle = deadkey_i + (deadkey_i_max - deadkey_i) / 2;
-      dead_key = &g_array_index (dead_keys, GdkWin32KeyNode, middle);
+      dead_key = &g_array_index (dead_keys, CdkWin32KeyNode, middle);
 
       if (dead_key->cdk_keycode < keyval)
         deadkey_i = middle;
@@ -1008,7 +1008,7 @@ find_deadkey_by_keyval (GArray *dead_keys, guint16 keyval, gsize *index)
         deadkey_i = deadkey_i_max = middle;
     }
 
-  if (g_array_index (dead_keys, GdkWin32KeyNode, deadkey_i).cdk_keycode == keyval)
+  if (g_array_index (dead_keys, CdkWin32KeyNode, deadkey_i).cdk_keycode == keyval)
     {
       *index = deadkey_i;
 
@@ -1018,8 +1018,8 @@ find_deadkey_by_keyval (GArray *dead_keys, guint16 keyval, gsize *index)
   return FALSE;
 }
 
-GdkWin32KeymapMatch
-cdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
+CdkWin32KeymapMatch
+cdk_win32_keymap_check_compose (CdkWin32Keymap *keymap,
                                 guint16        *compose_buffer,
                                 gsize           compose_buffer_len,
                                 guint16        *output,
@@ -1028,9 +1028,9 @@ cdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
   gint partial_match;
   guint8 active_group;
   gsize deadkey_i, node_i;
-  GdkWin32KeyNode *dead_key;
-  GdkWin32KeyGroupOptions *options;
-  GdkWin32KeymapMatch match;
+  CdkWin32KeyNode *dead_key;
+  CdkWin32KeyGroupOptions *options;
+  CdkWin32KeymapMatch match;
   gsize output_size;
 
   g_return_val_if_fail (output != NULL && output_len != NULL, GDK_WIN32_KEYMAP_MATCH_NONE);
@@ -1041,7 +1041,7 @@ cdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
   output_size = *output_len;
 
   active_group = _cdk_win32_keymap_get_active_group (keymap);
-  options = &g_array_index (keymap->options, GdkWin32KeyGroupOptions, active_group);
+  options = &g_array_index (keymap->options, CdkWin32KeyGroupOptions, active_group);
 
   partial_match = -1;
   match = GDK_WIN32_KEYMAP_MATCH_NONE;
@@ -1049,13 +1049,13 @@ cdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
   if (find_deadkey_by_keyval (options->dead_keys, compose_buffer[0], &deadkey_i))
     {
       while (deadkey_i > 0 &&
-             g_array_index (options->dead_keys, GdkWin32KeyNode, deadkey_i - 1).cdk_keycode == compose_buffer[0])
+             g_array_index (options->dead_keys, CdkWin32KeyNode, deadkey_i - 1).cdk_keycode == compose_buffer[0])
         deadkey_i--;
 
       /* Hardcoded 2-tier tree here (dead key + non dead key = character).
        * TODO: support trees with arbitrary depth for dead key chaining.
        */
-      dead_key = &g_array_index (options->dead_keys, GdkWin32KeyNode, deadkey_i);
+      dead_key = &g_array_index (options->dead_keys, CdkWin32KeyNode, deadkey_i);
 
       /* "Partial match" means "matched the whole sequence except the last key"
        * (right now the sequence only has 2 keys, so this turns into "matched
@@ -1075,9 +1075,9 @@ cdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
            node_i < dead_key->combinations->len;
            node_i++)
         {
-          GdkWin32KeyNode *node;
+          CdkWin32KeyNode *node;
 
-          node = &g_array_index (dead_key->combinations, GdkWin32KeyNode, node_i);
+          node = &g_array_index (dead_key->combinations, CdkWin32KeyNode, node_i);
 
           if (keymap->keysym_tab[(node->vk * keymap->layout_handles->len + active_group) * GDK_WIN32_LEVEL_COUNT + node->level] == compose_buffer[1])
             {
@@ -1102,7 +1102,7 @@ cdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
     {
       if (compose_buffer_len == 2)
         {
-          dead_key = &g_array_index (options->dead_keys, GdkWin32KeyNode, partial_match);
+          dead_key = &g_array_index (options->dead_keys, CdkWin32KeyNode, partial_match);
           *output_len = 0;
 
           if (output_size >= 1)
@@ -1118,7 +1118,7 @@ cdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
                * contents as-is, but space version of a dead key need to be looked up separately.
                */
               if (find_deadkey_by_keyval (options->dead_keys, compose_buffer[1], &second_deadkey_i))
-                output[(*output_len)++] = g_array_index (options->dead_keys, GdkWin32KeyNode, second_deadkey_i).undead_cdk_keycode;
+                output[(*output_len)++] = g_array_index (options->dead_keys, CdkWin32KeyNode, second_deadkey_i).undead_cdk_keycode;
               else
                 output[(*output_len)++] = compose_buffer[1];
             }
@@ -1131,17 +1131,17 @@ cdk_win32_keymap_check_compose (GdkWin32Keymap *keymap,
 }
 
 guint8
-_cdk_win32_keymap_get_rshift_scancode (GdkWin32Keymap *keymap)
+_cdk_win32_keymap_get_rshift_scancode (CdkWin32Keymap *keymap)
 {
   if (keymap != NULL &&
       keymap->layout_handles->len > 0)
-    return g_array_index (keymap->options, GdkWin32KeyGroupOptions, keymap->active_layout).scancode_rshift;
+    return g_array_index (keymap->options, CdkWin32KeyGroupOptions, keymap->active_layout).scancode_rshift;
 
   return 0;
 }
 
 void
-_cdk_win32_keymap_set_active_layout (GdkWin32Keymap *keymap,
+_cdk_win32_keymap_set_active_layout (CdkWin32Keymap *keymap,
                                      HKL             hkl)
 {
   if (keymap != NULL &&
@@ -1156,17 +1156,17 @@ _cdk_win32_keymap_set_active_layout (GdkWin32Keymap *keymap,
 }
 
 gboolean
-_cdk_win32_keymap_has_altgr (GdkWin32Keymap *keymap)
+_cdk_win32_keymap_has_altgr (CdkWin32Keymap *keymap)
 {
   if (keymap != NULL &&
       keymap->layout_handles->len > 0)
-    return g_array_index (keymap->options, GdkWin32KeyGroupOptions, keymap->active_layout).has_altgr;
+    return g_array_index (keymap->options, CdkWin32KeyGroupOptions, keymap->active_layout).has_altgr;
 
   return FALSE;
 }
 
 guint8
-_cdk_win32_keymap_get_active_group (GdkWin32Keymap *keymap)
+_cdk_win32_keymap_get_active_group (CdkWin32Keymap *keymap)
 {
   if (keymap != NULL &&
       keymap->layout_handles->len > 0)
@@ -1175,8 +1175,8 @@ _cdk_win32_keymap_get_active_group (GdkWin32Keymap *keymap)
   return 0;
 }
 
-GdkKeymap*
-_cdk_win32_display_get_keymap (GdkDisplay *display)
+CdkKeymap*
+_cdk_win32_display_get_keymap (CdkDisplay *display)
 {
   g_return_val_if_fail (display == cdk_display_get_default (), NULL);
 
@@ -1206,10 +1206,10 @@ get_hkl_direction (HKL hkl)
 }
 
 static PangoDirection
-cdk_win32_keymap_get_direction (GdkKeymap *cdk_keymap)
+cdk_win32_keymap_get_direction (CdkKeymap *cdk_keymap)
 {
   HKL active_hkl;
-  GdkWin32Keymap *keymap;
+  CdkWin32Keymap *keymap;
 
   if (cdk_keymap == NULL || cdk_keymap != cdk_keymap_get_default ())
     keymap = GDK_WIN32_KEYMAP (cdk_keymap_get_default ());
@@ -1227,9 +1227,9 @@ cdk_win32_keymap_get_direction (GdkKeymap *cdk_keymap)
 }
 
 static gboolean
-cdk_win32_keymap_have_bidi_layouts (GdkKeymap *cdk_keymap)
+cdk_win32_keymap_have_bidi_layouts (CdkKeymap *cdk_keymap)
 {
-  GdkWin32Keymap *keymap;
+  CdkWin32Keymap *keymap;
   gboolean        have_rtl = FALSE;
   gboolean        have_ltr = FALSE;
   gint            group;
@@ -1253,7 +1253,7 @@ cdk_win32_keymap_have_bidi_layouts (GdkKeymap *cdk_keymap)
 }
 
 static gboolean
-cdk_win32_keymap_get_caps_lock_state (GdkKeymap *keymap)
+cdk_win32_keymap_get_caps_lock_state (CdkKeymap *keymap)
 {
   (void) keymap;
 
@@ -1261,7 +1261,7 @@ cdk_win32_keymap_get_caps_lock_state (GdkKeymap *keymap)
 }
 
 static gboolean
-cdk_win32_keymap_get_num_lock_state (GdkKeymap *keymap)
+cdk_win32_keymap_get_num_lock_state (CdkKeymap *keymap)
 {
   (void) keymap;
 
@@ -1269,7 +1269,7 @@ cdk_win32_keymap_get_num_lock_state (GdkKeymap *keymap)
 }
 
 static gboolean
-cdk_win32_keymap_get_scroll_lock_state (GdkKeymap *keymap)
+cdk_win32_keymap_get_scroll_lock_state (CdkKeymap *keymap)
 {
   (void) keymap;
 
@@ -1277,9 +1277,9 @@ cdk_win32_keymap_get_scroll_lock_state (GdkKeymap *keymap)
 }
 
 static gboolean
-cdk_win32_keymap_get_entries_for_keyval (GdkKeymap     *cdk_keymap,
+cdk_win32_keymap_get_entries_for_keyval (CdkKeymap     *cdk_keymap,
                                          guint          keyval,
-                                         GdkKeymapKey **keys,
+                                         CdkKeymapKey **keys,
                                          gint          *n_keys)
 {
   GArray *retval;
@@ -1289,13 +1289,13 @@ cdk_win32_keymap_get_entries_for_keyval (GdkKeymap     *cdk_keymap,
   g_return_val_if_fail (n_keys != NULL, FALSE);
   g_return_val_if_fail (keyval != 0, FALSE);
 
-  retval = g_array_new (FALSE, FALSE, sizeof (GdkKeymapKey));
+  retval = g_array_new (FALSE, FALSE, sizeof (CdkKeymapKey));
 
   /* Accept only the default keymap */
   if (cdk_keymap == NULL || cdk_keymap == cdk_keymap_get_default ())
     {
       gint vk;
-      GdkWin32Keymap *keymap;
+      CdkWin32Keymap *keymap;
 
       if (cdk_keymap == NULL)
         keymap = GDK_WIN32_KEYMAP (cdk_keymap_get_default ());
@@ -1310,7 +1310,7 @@ cdk_win32_keymap_get_entries_for_keyval (GdkKeymap     *cdk_keymap,
 
           for (group = 0; group < keymap->layout_handles->len; group++)
             {
-              GdkWin32KeyLevelState    level;
+              CdkWin32KeyLevelState    level;
 
               for (level = GDK_WIN32_LEVEL_NONE; level < GDK_WIN32_LEVEL_COUNT; level++)
                 {
@@ -1320,7 +1320,7 @@ cdk_win32_keymap_get_entries_for_keyval (GdkKeymap     *cdk_keymap,
 
                   if (keygroup[level] == keyval)
                     {
-                      GdkKeymapKey key;
+                      CdkKeymapKey key;
 
                       key.keycode = vk;
                       key.group = group;
@@ -1341,7 +1341,7 @@ cdk_win32_keymap_get_entries_for_keyval (GdkKeymap     *cdk_keymap,
                keyval, cdk_keyval_name (keyval));
       for (i = 0; i < retval->len; i++)
         {
-          GdkKeymapKey *entry = (GdkKeymapKey *) retval->data + i;
+          CdkKeymapKey *entry = (CdkKeymapKey *) retval->data + i;
           g_print ("  %#.02x %d %d", entry->keycode, entry->group, entry->level);
         }
       g_print ("\n");
@@ -1350,7 +1350,7 @@ cdk_win32_keymap_get_entries_for_keyval (GdkKeymap     *cdk_keymap,
 
   if (retval->len > 0)
     {
-      *keys = (GdkKeymapKey*) retval->data;
+      *keys = (CdkKeymapKey*) retval->data;
       *n_keys = retval->len;
     }
   else
@@ -1365,16 +1365,16 @@ cdk_win32_keymap_get_entries_for_keyval (GdkKeymap     *cdk_keymap,
 }
 
 static gboolean
-cdk_win32_keymap_get_entries_for_keycode (GdkKeymap     *cdk_keymap,
+cdk_win32_keymap_get_entries_for_keycode (CdkKeymap     *cdk_keymap,
                                           guint          hardware_keycode,
-                                          GdkKeymapKey **keys,
+                                          CdkKeymapKey **keys,
                                           guint        **keyvals,
                                           gint          *n_entries)
 {
   GArray         *key_array;
   GArray         *keyval_array;
   gint            group;
-  GdkWin32Keymap *keymap;
+  CdkWin32Keymap *keymap;
 
   g_return_val_if_fail (cdk_keymap == NULL || GDK_IS_KEYMAP (cdk_keymap), FALSE);
   g_return_val_if_fail (n_entries != NULL, FALSE);
@@ -1395,7 +1395,7 @@ cdk_win32_keymap_get_entries_for_keycode (GdkKeymap     *cdk_keymap,
     }
 
   if (keys)
-    key_array = g_array_new (FALSE, FALSE, sizeof (GdkKeymapKey));
+    key_array = g_array_new (FALSE, FALSE, sizeof (CdkKeymapKey));
   else
     key_array = NULL;
 
@@ -1409,13 +1409,13 @@ cdk_win32_keymap_get_entries_for_keycode (GdkKeymap     *cdk_keymap,
 
   for (group = 0; group < keymap->layout_handles->len; group++)
     {
-      GdkWin32KeyLevelState    level;
+      CdkWin32KeyLevelState    level;
 
       for (level = GDK_WIN32_LEVEL_NONE; level < GDK_WIN32_LEVEL_COUNT; level++)
         {
           if (key_array)
             {
-              GdkKeymapKey key;
+              CdkKeymapKey key;
 
               key.keycode = hardware_keycode;
               key.group = group;
@@ -1438,7 +1438,7 @@ cdk_win32_keymap_get_entries_for_keycode (GdkKeymap     *cdk_keymap,
       (keyval_array && keyval_array->len > 0))
     {
       if (keys)
-        *keys = (GdkKeymapKey*) key_array->data;
+        *keys = (CdkKeymapKey*) key_array->data;
 
       if (keyvals)
         *keyvals = (guint*) keyval_array->data;
@@ -1461,11 +1461,11 @@ cdk_win32_keymap_get_entries_for_keycode (GdkKeymap     *cdk_keymap,
 }
 
 static guint
-cdk_win32_keymap_lookup_key (GdkKeymap          *cdk_keymap,
-                             const GdkKeymapKey *key)
+cdk_win32_keymap_lookup_key (CdkKeymap          *cdk_keymap,
+                             const CdkKeymapKey *key)
 {
   guint sym;
-  GdkWin32Keymap *keymap;
+  CdkWin32Keymap *keymap;
 
   g_return_val_if_fail (cdk_keymap == NULL || GDK_IS_KEYMAP (cdk_keymap), 0);
   g_return_val_if_fail (key != NULL, 0);
@@ -1491,20 +1491,20 @@ cdk_win32_keymap_lookup_key (GdkKeymap          *cdk_keymap,
 }
 
 static gboolean
-cdk_win32_keymap_translate_keyboard_state (GdkKeymap       *cdk_keymap,
+cdk_win32_keymap_translate_keyboard_state (CdkKeymap       *cdk_keymap,
                                            guint            hardware_keycode,
-                                           GdkModifierType  state,
+                                           CdkModifierType  state,
                                            gint             group,
                                            guint           *keyval,
                                            gint            *effective_group,
                                            gint            *level,
-                                           GdkModifierType *consumed_modifiers)
+                                           CdkModifierType *consumed_modifiers)
 {
-  GdkWin32Keymap *keymap;
+  CdkWin32Keymap *keymap;
   guint tmp_keyval;
   guint *keygroup;
-  GdkWin32KeyLevelState shift_level;
-  GdkModifierType modifiers = GDK_SHIFT_MASK | GDK_LOCK_MASK | GDK_MOD2_MASK;
+  CdkWin32KeyLevelState shift_level;
+  CdkModifierType modifiers = GDK_SHIFT_MASK | GDK_LOCK_MASK | GDK_MOD2_MASK;
 
   g_return_val_if_fail (cdk_keymap == NULL || GDK_IS_KEYMAP (cdk_keymap), FALSE);
 
@@ -1666,24 +1666,24 @@ cdk_win32_keymap_translate_keyboard_state (GdkKeymap       *cdk_keymap,
 }
 
 static void
-cdk_win32_keymap_add_virtual_modifiers (GdkKeymap       *keymap,
-                                        GdkModifierType *state)
+cdk_win32_keymap_add_virtual_modifiers (CdkKeymap       *keymap,
+                                        CdkModifierType *state)
 {
 }
 
 static gboolean
-cdk_win32_keymap_map_virtual_modifiers (GdkKeymap       *keymap,
-                                        GdkModifierType *state)
+cdk_win32_keymap_map_virtual_modifiers (CdkKeymap       *keymap,
+                                        CdkModifierType *state)
 {
   /* FIXME: Is this the right thing to do? */
   return TRUE;
 }
 
 static void
-cdk_win32_keymap_class_init (GdkWin32KeymapClass *klass)
+cdk_win32_keymap_class_init (CdkWin32KeymapClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GdkKeymapClass *keymap_class = GDK_KEYMAP_CLASS (klass);
+  CdkKeymapClass *keymap_class = GDK_KEYMAP_CLASS (klass);
 
   object_class->finalize = cdk_win32_keymap_finalize;
 

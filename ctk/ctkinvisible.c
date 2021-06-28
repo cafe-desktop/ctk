@@ -45,7 +45,7 @@
 
 struct _CtkInvisiblePrivate
 {
-  GdkScreen    *screen;
+  CdkScreen    *screen;
   gboolean      has_user_ref_count;
 };
 
@@ -135,7 +135,7 @@ ctk_invisible_destroy (CtkWidget *widget)
 
 /**
  * ctk_invisible_new_for_screen:
- * @screen: a #GdkScreen which identifies on which
+ * @screen: a #CdkScreen which identifies on which
  *	    the new #CtkInvisible will be created.
  *
  * Creates a new #CtkInvisible object for a specified screen
@@ -145,7 +145,7 @@ ctk_invisible_destroy (CtkWidget *widget)
  * Since: 2.2
  **/
 CtkWidget* 
-ctk_invisible_new_for_screen (GdkScreen *screen)
+ctk_invisible_new_for_screen (CdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
   
@@ -168,19 +168,19 @@ ctk_invisible_new (void)
 /**
  * ctk_invisible_set_screen:
  * @invisible: a #CtkInvisible.
- * @screen: a #GdkScreen.
+ * @screen: a #CdkScreen.
  *
- * Sets the #GdkScreen where the #CtkInvisible object will be displayed.
+ * Sets the #CdkScreen where the #CtkInvisible object will be displayed.
  *
  * Since: 2.2
  **/ 
 void
 ctk_invisible_set_screen (CtkInvisible *invisible,
-			  GdkScreen    *screen)
+			  CdkScreen    *screen)
 {
   CtkInvisiblePrivate *priv;
   CtkWidget *widget;
-  GdkScreen *previous_screen;
+  CdkScreen *previous_screen;
   gboolean was_realized;
 
   g_return_if_fail (CTK_IS_INVISIBLE (invisible));
@@ -212,13 +212,13 @@ ctk_invisible_set_screen (CtkInvisible *invisible,
  * ctk_invisible_get_screen:
  * @invisible: a #CtkInvisible.
  *
- * Returns the #GdkScreen object associated with @invisible
+ * Returns the #CdkScreen object associated with @invisible
  *
- * Returns: (transfer none): the associated #GdkScreen.
+ * Returns: (transfer none): the associated #CdkScreen.
  *
  * Since: 2.2
  **/
-GdkScreen *
+CdkScreen *
 ctk_invisible_get_screen (CtkInvisible *invisible)
 {
   g_return_val_if_fail (CTK_IS_INVISIBLE (invisible), NULL);
@@ -229,9 +229,9 @@ ctk_invisible_get_screen (CtkInvisible *invisible)
 static void
 ctk_invisible_realize (CtkWidget *widget)
 {
-  GdkWindow *parent;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *parent;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_set_realized (widget, TRUE);

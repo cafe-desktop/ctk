@@ -44,10 +44,10 @@ typedef enum
   GDK_OSX_BIGSUR = 16,
   GDK_OSX_CURRENT = 15,
   GDK_OSX_NEW = 99
-} GdkOSXVersion;
+} CdkOSXVersion;
 
 GDK_AVAILABLE_IN_ALL
-GdkOSXVersion cdk_quartz_osx_version (void);
+CdkOSXVersion cdk_quartz_osx_version (void);
 
 G_END_DECLS
 

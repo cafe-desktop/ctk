@@ -62,7 +62,7 @@ int                     ctk_win32_theme_get_size        (CtkWin32Theme  *theme,
 			                                 int             id);
 void                    ctk_win32_theme_get_color       (CtkWin32Theme  *theme,
                                                          gint            id,
-                                                         GdkRGBA        *color);
+                                                         CdkRGBA        *color);
 
 G_END_DECLS
 

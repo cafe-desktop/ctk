@@ -32,8 +32,8 @@ static char *cursor_names[] = {
 static void
 test_cursor_existence (gconstpointer name)
 {
-  GdkDisplay *display;
-  GdkCursor *cursor;
+  CdkDisplay *display;
+  CdkCursor *cursor;
 
   display = cdk_display_get_default ();
   cursor = cdk_cursor_new_from_name (display, name);

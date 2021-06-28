@@ -34,18 +34,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_WIN32_WINDOW              (cdk_win32_window_get_type ())
-#define GDK_WIN32_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_WINDOW, GdkWin32Window))
-#define GDK_WIN32_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_WINDOW, GdkWin32WindowClass))
+#define GDK_WIN32_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_WINDOW, CdkWin32Window))
+#define GDK_WIN32_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_WINDOW, CdkWin32WindowClass))
 #define GDK_IS_WIN32_WINDOW(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_WINDOW))
 #define GDK_IS_WIN32_WINDOW_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WIN32_WINDOW))
-#define GDK_WIN32_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_WINDOW, GdkWin32WindowClass))
+#define GDK_WIN32_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_WINDOW, CdkWin32WindowClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkWin32Window GdkWin32Window;
+typedef struct _CdkWin32Window CdkWin32Window;
 #else
-typedef GdkWindow GdkWin32Window;
+typedef CdkWindow CdkWin32Window;
 #endif
-typedef struct _GdkWin32WindowClass GdkWin32WindowClass;
+typedef struct _CdkWin32WindowClass CdkWin32WindowClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_win32_window_get_type          (void);

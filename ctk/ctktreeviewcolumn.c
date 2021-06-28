@@ -85,7 +85,7 @@ static void ctk_tree_view_column_update_button                 (CtkTreeViewColum
 
 /* Button signal handlers */
 static gint ctk_tree_view_column_button_event                  (CtkWidget               *widget,
-								GdkEvent                *event,
+								CdkEvent                *event,
 								gpointer                 data);
 static void ctk_tree_view_column_button_clicked                (CtkWidget               *widget,
 								gpointer                 data);
@@ -104,7 +104,7 @@ static void ctk_tree_view_column_context_changed               (CtkCellAreaConte
 static void ctk_tree_view_column_add_editable_callback         (CtkCellArea             *area,
 								CtkCellRenderer         *renderer,
 								CtkCellEditable         *edit_widget,
-								GdkRectangle            *cell_area,
+								CdkRectangle            *cell_area,
 								const gchar             *path_string,
 								gpointer                 user_data);
 static void ctk_tree_view_column_remove_editable_callback      (CtkCellArea             *area,
@@ -131,7 +131,7 @@ struct _CtkTreeViewColumnPrivate
   CtkWidget *child;
   CtkWidget *arrow;
   CtkWidget *alignment;
-  GdkWindow *window;
+  CdkWindow *window;
   gulong property_changed_signal;
   gfloat xalign;
 
@@ -1039,7 +1039,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 static gint
 ctk_tree_view_column_button_event (CtkWidget *widget,
-				   GdkEvent  *event,
+				   CdkEvent  *event,
 				   gpointer   data)
 {
   CtkTreeViewColumn        *column = (CtkTreeViewColumn *) data;
@@ -1049,7 +1049,7 @@ ctk_tree_view_column_button_event (CtkWidget *widget,
 
   if (event->type == GDK_BUTTON_PRESS &&
       priv->reorderable &&
-      ((GdkEventButton *)event)->button == GDK_BUTTON_PRIMARY)
+      ((CdkEventButton *)event)->button == GDK_BUTTON_PRIMARY)
     {
       priv->maybe_reordered = TRUE;
       priv->drag_x = event->button.x;
@@ -1066,8 +1066,8 @@ ctk_tree_view_column_button_event (CtkWidget *widget,
       (ctk_drag_check_threshold (widget,
 				 priv->drag_x,
 				 priv->drag_y,
-				 (gint) ((GdkEventMotion *)event)->x,
-				 (gint) ((GdkEventMotion *)event)->y)))
+				 (gint) ((CdkEventMotion *)event)->x,
+				 (gint) ((CdkEventMotion *)event)->y)))
     {
       priv->maybe_reordered = FALSE;
       _ctk_tree_view_column_start_drag (CTK_TREE_VIEW (priv->tree_view), column,
@@ -1266,7 +1266,7 @@ static void
 ctk_tree_view_column_add_editable_callback (CtkCellArea       *area,
                                             CtkCellRenderer   *renderer,
                                             CtkCellEditable   *edit_widget,
-                                            GdkRectangle      *cell_area,
+                                            CdkRectangle      *cell_area,
                                             const gchar       *path_string,
                                             gpointer           user_data)
 {
@@ -1312,10 +1312,10 @@ _ctk_tree_view_column_realize_button (CtkTreeViewColumn *column)
   CtkTreeViewColumnPrivate *priv = column->priv;
   CtkAllocation allocation;
   CtkTreeView *tree_view;
-  GdkWindowAttr attr;
+  CdkWindowAttr attr;
   guint attributes_mask;
   gboolean rtl;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   tree_view = (CtkTreeView *)priv->tree_view;
   rtl       = (ctk_widget_get_direction (priv->tree_view) == CTK_TEXT_DIR_RTL);
@@ -1473,8 +1473,8 @@ _ctk_tree_view_column_get_edited_cell (CtkTreeViewColumn *column)
 
 CtkCellRenderer *
 _ctk_tree_view_column_get_cell_at_pos (CtkTreeViewColumn *column,
-                                       GdkRectangle      *cell_area,
-                                       GdkRectangle      *background_area,
+                                       CdkRectangle      *cell_area,
+                                       CdkRectangle      *background_area,
                                        gint               x,
                                        gint               y)
 {
@@ -1518,13 +1518,13 @@ _ctk_tree_view_column_get_cell_at_pos (CtkTreeViewColumn *column,
 
 gboolean
 _ctk_tree_view_column_is_blank_at_pos (CtkTreeViewColumn *column,
-                                       GdkRectangle      *cell_area,
-                                       GdkRectangle      *background_area,
+                                       CdkRectangle      *cell_area,
+                                       CdkRectangle      *background_area,
                                        gint               x,
                                        gint               y)
 {
   CtkCellRenderer *match;
-  GdkRectangle cell_alloc, aligned_area, inner_area;
+  CdkRectangle cell_alloc, aligned_area, inner_area;
   CtkTreeViewColumnPrivate *priv = column->priv;
 
   match = _ctk_tree_view_column_get_cell_at_pos (column,
@@ -2836,7 +2836,7 @@ ctk_tree_view_column_cell_set_cell_data (CtkTreeViewColumn *tree_column,
  **/
 void
 ctk_tree_view_column_cell_get_size (CtkTreeViewColumn  *tree_column,
-				    const GdkRectangle *cell_area,
+				    const CdkRectangle *cell_area,
 				    gint               *x_offset,
 				    gint               *y_offset,
 				    gint               *width,
@@ -2891,8 +2891,8 @@ ctk_tree_view_column_cell_get_size (CtkTreeViewColumn  *tree_column,
 void
 _ctk_tree_view_column_cell_render (CtkTreeViewColumn  *tree_column,
 				   cairo_t            *cr,
-				   const GdkRectangle *background_area,
-				   const GdkRectangle *cell_area,
+				   const CdkRectangle *background_area,
+				   const CdkRectangle *cell_area,
 				   guint               flags,
                                    gboolean            draw_focus)
 {
@@ -2917,8 +2917,8 @@ _ctk_tree_view_column_cell_render (CtkTreeViewColumn  *tree_column,
 
 gboolean
 _ctk_tree_view_column_cell_event (CtkTreeViewColumn  *tree_column,
-				  GdkEvent           *event,
-				  const GdkRectangle *cell_area,
+				  CdkEvent           *event,
+				  const CdkRectangle *cell_area,
 				  guint               flags)
 {
   CtkTreeViewColumnPrivate *priv;
@@ -3046,8 +3046,8 @@ ctk_tree_view_column_cell_get_position (CtkTreeViewColumn *tree_column,
 					gint              *width)
 {
   CtkTreeViewColumnPrivate *priv;
-  GdkRectangle cell_area;
-  GdkRectangle allocation;
+  CdkRectangle cell_area;
+  CdkRectangle allocation;
 
   g_return_val_if_fail (CTK_IS_TREE_VIEW_COLUMN (tree_column), FALSE);
   g_return_val_if_fail (CTK_IS_CELL_RENDERER (cell_renderer), FALSE);
@@ -3133,7 +3133,7 @@ ctk_tree_view_column_get_button (CtkTreeViewColumn *tree_column)
   return tree_column->priv->button;
 }
 
-GdkWindow *
+CdkWindow *
 _ctk_tree_view_column_get_window (CtkTreeViewColumn  *column)
 {
   return column->priv->window;

@@ -31,7 +31,7 @@
 
 #include "cdk/quartz/cdkinternal-quartz.h"
 #include "cdk/quartz/cdkquartz-ctk-only.h"
-#include "cdk/quartz/GdkQuartzView.h"
+#include "cdk/quartz/CdkQuartzView.h"
 
 #define CTK_IM_CONTEXT_TYPE_QUARTZ (type_quartz)
 #define CTK_IM_CONTEXT_QUARTZ(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_IM_CONTEXT_TYPE_QUARTZ, CtkIMContextQuartz))
@@ -47,11 +47,11 @@ typedef struct _CtkIMContextQuartz
 {
   CtkIMContext parent;
   CtkIMContext *slave;
-  GdkWindow *client_window;
+  CdkWindow *client_window;
   gchar *preedit_str;
   unsigned int cursor_index;
   unsigned int selected_len;
-  GdkRectangle *cursor_rect;
+  CdkRectangle *cursor_rect;
   gboolean focused;
 } CtkIMContextQuartz;
 
@@ -136,7 +136,7 @@ quartz_get_preedit_string (CtkIMContext *context,
 
 static gboolean
 output_result (CtkIMContext *context,
-               GdkWindow *win)
+               CdkWindow *win)
 {
   CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
   gboolean retval = FALSE;
@@ -204,19 +204,19 @@ output_result (CtkIMContext *context,
 
 static gboolean
 quartz_filter_keypress (CtkIMContext *context,
-                        GdkEventKey *event)
+                        CdkEventKey *event)
 {
   CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
   gboolean retval;
   NSView *nsview;
-  GdkWindow *win;
+  CdkWindow *win;
 
   CTK_NOTE (MISC, g_print ("quartz_filter_keypress\n"));
 
   if (!GDK_IS_QUARTZ_WINDOW (qc->client_window))
     return FALSE;
 
-  NSEvent *nsevent = cdk_quartz_event_get_nsevent ((GdkEvent *)event);
+  NSEvent *nsevent = cdk_quartz_event_get_nsevent ((CdkEvent *)event);
 
   if (!nsevent)
     {
@@ -229,7 +229,7 @@ quartz_filter_keypress (CtkIMContext *context,
 
   nsview = cdk_quartz_window_get_nsview (qc->client_window);
 
-  win = (GdkWindow *)[(GdkQuartzView *)[[nsevent window] contentView] cdkWindow];
+  win = (CdkWindow *)[(CdkQuartzView *)[[nsevent window] contentView] cdkWindow];
   CTK_NOTE (MISC, g_print ("client_window: %p, win: %p, nsview: %p\n",
                            qc->client_window, win, nsview));
 
@@ -277,7 +277,7 @@ discard_preedit (CtkIMContext *context)
     return;
 
   /* reset any partial input for this NSView */
-  [(GdkQuartzView *)nsview unmarkText];
+  [(CdkQuartzView *)nsview unmarkText];
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 1060
   NSInputManager *currentInputManager = [NSInputManager currentInputManager];
   [currentInputManager markedTextAbandoned:nsview];
@@ -302,7 +302,7 @@ quartz_reset (CtkIMContext *context)
 }
 
 static void
-quartz_set_client_window (CtkIMContext *context, GdkWindow *window)
+quartz_set_client_window (CtkIMContext *context, CdkWindow *window)
 {
   CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
 
@@ -333,12 +333,12 @@ quartz_focus_out (CtkIMContext *context)
 }
 
 static void
-quartz_set_cursor_location (CtkIMContext *context, GdkRectangle *area)
+quartz_set_cursor_location (CtkIMContext *context, CdkRectangle *area)
 {
   CtkIMContextQuartz *qc = CTK_IM_CONTEXT_QUARTZ (context);
   gint x, y;
   NSView *nsview;
-  GdkWindow *win;
+  CdkWindow *win;
 
   CTK_NOTE (MISC, g_print ("quartz_set_cursor_location\n"));
 
@@ -362,7 +362,7 @@ quartz_set_cursor_location (CtkIMContext *context, GdkRectangle *area)
     return;
 
   nsview = cdk_quartz_window_get_nsview (qc->client_window);
-  win = (GdkWindow *)[ (GdkQuartzView*)nsview cdkWindow];
+  win = (CdkWindow *)[ (CdkQuartzView*)nsview cdkWindow];
   g_object_set_data (G_OBJECT (win), GIC_CURSOR_RECT, qc->cursor_rect);
 }
 
@@ -424,7 +424,7 @@ ctk_im_context_quartz_init (CtkIMContext *im_context)
   qc->preedit_str = g_strdup ("");
   qc->cursor_index = 0;
   qc->selected_len = 0;
-  qc->cursor_rect = g_malloc (sizeof (GdkRectangle));
+  qc->cursor_rect = g_malloc (sizeof (CdkRectangle));
   qc->focused = FALSE;
 
   qc->slave = g_object_new (CTK_TYPE_IM_CONTEXT_SIMPLE, NULL);

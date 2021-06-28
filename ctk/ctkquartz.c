@@ -25,7 +25,7 @@
 
 static gboolean
 _cairo_surface_extents (cairo_surface_t *surface,
-                            GdkRectangle *extents)
+                            CdkRectangle *extents)
 {
   double x1, x2, y1, y2;
   cairo_t *cr;
@@ -164,7 +164,7 @@ _ctk_quartz_pasteboard_types_to_atom_list (NSArray *array)
 
   for (i = 0; i < count; i++) 
     {
-      GdkAtom atom = cdk_quartz_pasteboard_type_to_atom_libctk_only ([array objectAtIndex:i]);
+      CdkAtom atom = cdk_quartz_pasteboard_type_to_atom_libctk_only ([array objectAtIndex:i]);
 
       result = g_list_prepend (result, GDK_ATOM_TO_POINTER (atom));
     }
@@ -174,8 +174,8 @@ _ctk_quartz_pasteboard_types_to_atom_list (NSArray *array)
 
 CtkSelectionData *
 _ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
-						GdkAtom       target,
-						GdkAtom       selection)
+						CdkAtom       target,
+						CdkAtom       selection)
 {
   CtkSelectionData *selection_data = NULL;
 
@@ -280,7 +280,7 @@ _ctk_quartz_set_selection_data_for_pasteboard (NSPasteboard     *pasteboard,
 					       CtkSelectionData *selection_data)
 {
   NSString *type;
-  GdkDisplay *display;
+  CdkDisplay *display;
   gint format;
   const guchar *data;
   NSUInteger length;

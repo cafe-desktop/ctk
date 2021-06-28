@@ -47,9 +47,9 @@ struct _CtkEventControllerKey
   CtkIMContext *im_context;
   GHashTable *pressed_keys;
 
-  GdkModifierType state;
+  CdkModifierType state;
 
-  const GdkEvent *current_event;
+  const CdkEvent *current_event;
 };
 
 struct _CtkEventControllerKeyClass
@@ -85,11 +85,11 @@ ctk_event_controller_finalize (GObject *object)
 
 static gboolean
 ctk_event_controller_key_handle_event (CtkEventController *controller,
-                                       const GdkEvent     *event)
+                                       const CdkEvent     *event)
 {
   CtkEventControllerKey *key = CTK_EVENT_CONTROLLER_KEY (controller);
-  GdkEventType event_type = cdk_event_get_event_type (event);
-  GdkModifierType state;
+  CdkEventType event_type = cdk_event_get_event_type (event);
+  CdkModifierType state;
   guint16 keycode;
   guint keyval;
   gboolean handled = FALSE;
@@ -108,7 +108,7 @@ ctk_event_controller_key_handle_event (CtkEventController *controller,
     return FALSE;
 
   if (key->im_context &&
-      ctk_im_context_filter_keypress (key->im_context, (GdkEventKey *) event))
+      ctk_im_context_filter_keypress (key->im_context, (CdkEventKey *) event))
     {
       g_signal_emit (controller, signals[IM_UPDATE], 0);
       return TRUE;
@@ -165,7 +165,7 @@ ctk_event_controller_key_class_init (CtkEventControllerKeyClass *klass)
    * @controller: the object which received the signal.
    * @keyval: the pressed key.
    * @keycode: the raw code of the pressed key.
-   * @state: the bitmask, representing the state of modifier keys and pointer buttons. See #GdkModifierType.
+   * @state: the bitmask, representing the state of modifier keys and pointer buttons. See #CdkModifierType.
    *
    * This signal is emitted whenever a key is pressed.
    *
@@ -189,7 +189,7 @@ ctk_event_controller_key_class_init (CtkEventControllerKeyClass *klass)
    * @controller: the object which received the signal.
    * @keyval: the released key.
    * @keycode: the raw code of the released key.
-   * @state: the bitmask, representing the state of modifier keys and pointer buttons. See #GdkModifierType.
+   * @state: the bitmask, representing the state of modifier keys and pointer buttons. See #CdkModifierType.
    *
    * This signal is emitted whenever a key is released.
    *
@@ -299,9 +299,9 @@ ctk_event_controller_key_forward (CtkEventControllerKey *controller,
   if (!ctk_widget_get_realized (widget))
     ctk_widget_realize (widget);
 
-  if (_ctk_widget_captured_event (widget, (GdkEvent *) controller->current_event))
+  if (_ctk_widget_captured_event (widget, (CdkEvent *) controller->current_event))
     return TRUE;
-  if (ctk_widget_event (widget, (GdkEvent *) controller->current_event))
+  if (ctk_widget_event (widget, (CdkEvent *) controller->current_event))
     return TRUE;
 
   return FALSE;

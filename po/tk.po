@@ -4480,7 +4480,7 @@ msgstr ""
 #~ msgstr "Resim faýla ýazmakda hata boldy: %s"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Wagtlaýyn faýldan okamakda hata boldy"
 
 #, fuzzy

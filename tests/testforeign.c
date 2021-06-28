@@ -25,7 +25,7 @@ update_ui (void)
 }
 
 static void
-exported_callback (GdkWindow  *window,
+exported_callback (CdkWindow  *window,
                    const char *handle,
                    gpointer    user_data)
 {
@@ -68,7 +68,7 @@ int
 main (int   argc,
       char *argv[])
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkWidget *vbox;
   CtkWidget *hbox;
   CtkWidget *export_button;

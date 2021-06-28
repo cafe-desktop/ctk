@@ -22,7 +22,7 @@ static cairo_surface_t *surface = NULL;
 /* Create a new surface of the appropriate size to store our scribbles */
 static gboolean
 scribble_configure_event (CtkWidget         *widget,
-                          GdkEventConfigure *event,
+                          CdkEventConfigure *event,
                           gpointer           data)
 {
   CtkAllocation allocation;
@@ -67,7 +67,7 @@ draw_brush (CtkWidget *widget,
             gdouble    x,
             gdouble    y)
 {
-  GdkRectangle update_rect;
+  CdkRectangle update_rect;
   cairo_t *cr;
 
   update_rect.x = x - 3;
@@ -91,7 +91,7 @@ draw_brush (CtkWidget *widget,
 
 static gboolean
 scribble_button_press_event (CtkWidget      *widget,
-                             GdkEventButton *event,
+                             CdkEventButton *event,
                              gpointer        data)
 {
   if (surface == NULL)
@@ -106,11 +106,11 @@ scribble_button_press_event (CtkWidget      *widget,
 
 static gboolean
 scribble_motion_notify_event (CtkWidget      *widget,
-                              GdkEventMotion *event,
+                              CdkEventMotion *event,
                               gpointer        data)
 {
   int x, y;
-  GdkModifierType state;
+  CdkModifierType state;
 
   if (surface == NULL)
     return FALSE; /* paranoia check, in case we haven't gotten a configure event */

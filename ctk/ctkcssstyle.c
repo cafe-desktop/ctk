@@ -224,8 +224,8 @@ ctk_css_style_get_pango_attributes (CtkCssStyle *style)
   PangoAttrList *attrs = NULL;
   CtkTextDecorationLine decoration_line;
   CtkTextDecorationStyle decoration_style;
-  const GdkRGBA *color;
-  const GdkRGBA *decoration_color;
+  const CdkRGBA *color;
+  const CdkRGBA *decoration_color;
   gint letter_spacing;
   const char *font_feature_settings;
 

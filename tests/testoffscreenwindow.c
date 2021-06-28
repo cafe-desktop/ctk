@@ -17,7 +17,7 @@ da_draw (CtkWidget *widget,
 
 static gboolean
 offscreen_damage (CtkWidget      *widget,
-                  GdkEventExpose *event,
+                  CdkEventExpose *event,
                   CtkWidget      *da)
 {
   ctk_widget_queue_draw (da);
@@ -26,7 +26,7 @@ offscreen_damage (CtkWidget      *widget,
 }
 
 static gboolean
-da_button_press (CtkWidget *area, GdkEventButton *event, CtkWidget *button)
+da_button_press (CtkWidget *area, CdkEventButton *event, CtkWidget *button)
 {
   ctk_widget_set_size_request (button, 150, 60);
   return TRUE;

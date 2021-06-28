@@ -66,11 +66,11 @@ void            ctk_test_widget_wait_for_draw   (CtkWidget      *widget);
 GDK_DEPRECATED_IN_3_20
 gboolean        ctk_test_widget_click           (CtkWidget      *widget,
                                                  guint           button,
-                                                 GdkModifierType modifiers);
+                                                 CdkModifierType modifiers);
 GDK_AVAILABLE_IN_ALL
 gboolean        ctk_test_widget_send_key        (CtkWidget      *widget,
                                                  guint           keyval,
-                                                 GdkModifierType modifiers);
+                                                 CdkModifierType modifiers);
 /* operate on CtkEntry, CtkText, CtkTextView or CtkLabel */
 GDK_DEPRECATED_IN_3_20
 void            ctk_test_text_set               (CtkWidget      *widget,

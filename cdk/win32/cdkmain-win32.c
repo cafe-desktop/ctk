@@ -159,7 +159,7 @@ static_printf (const gchar *format,
 }
 
 gchar *
-_cdk_win32_color_to_string (const GdkColor *color)
+_cdk_win32_color_to_string (const CdkColor *color)
 {
   return static_printf ("(%.04x,%.04x,%.04x):%.06x",
 			color->red, color->green,
@@ -280,7 +280,7 @@ _cdk_win32_print_dc (HDC hdc)
 }
 
 gchar *
-_cdk_win32_drag_protocol_to_string (GdkDragProtocol protocol)
+_cdk_win32_drag_protocol_to_string (CdkDragProtocol protocol)
 {
   switch (protocol)
     {
@@ -300,7 +300,7 @@ _cdk_win32_drag_protocol_to_string (GdkDragProtocol protocol)
 }
 
 gchar *
-_cdk_win32_window_state_to_string (GdkWindowState state)
+_cdk_win32_window_state_to_string (CdkWindowState state)
 {
   gchar buf[100];
   gchar *bufp = buf;
@@ -446,7 +446,7 @@ _cdk_win32_window_pos_bits_to_string (UINT flags)
 }
 
 gchar *
-_cdk_win32_drag_action_to_string (GdkDragAction actions)
+_cdk_win32_drag_action_to_string (CdkDragAction actions)
 {
   gchar buf[100];
   gchar *bufp = buf;
@@ -913,7 +913,7 @@ _cdk_win32_rect_to_string (const RECT *rect)
 }
 
 gchar *
-_cdk_win32_cdkrectangle_to_string (const GdkRectangle *rect)
+_cdk_win32_cdkrectangle_to_string (const CdkRectangle *rect)
 {
   return static_printf ("%dx%d@%+d%+d",
 			rect->width, rect->height,
@@ -931,7 +931,7 @@ _cdk_win32_cairo_region_to_string (const cairo_region_t *rgn)
 }
 
 gchar *
-_cdk_win32_window_description (GdkWindow *d)
+_cdk_win32_window_description (CdkWindow *d)
 {
   g_return_val_if_fail (GDK_IS_WINDOW (d), NULL);
 

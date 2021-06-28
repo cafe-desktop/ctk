@@ -55,7 +55,7 @@ struct _CtkTreeViewAccessibleCellInfo
 static int              cell_info_get_index             (CtkTreeView                     *tree_view,
                                                          CtkTreeViewAccessibleCellInfo   *info);
 static gboolean         is_cell_showing                 (CtkTreeView            *tree_view,
-                                                         GdkRectangle           *cell_rect);
+                                                         CdkRectangle           *cell_rect);
 
 static void             cell_info_new                   (CtkTreeViewAccessible  *accessible,
                                                          CtkRBTree              *tree,
@@ -993,7 +993,7 @@ static void atk_selection_interface_init (AtkSelectionIface *iface)
 static void
 ctk_tree_view_accessible_get_cell_area (CtkCellAccessibleParent *parent,
                                         CtkCellAccessible       *cell,
-                                        GdkRectangle            *cell_rect)
+                                        CdkRectangle            *cell_rect)
 {
   CtkWidget *widget;
   CtkTreeView *tree_view;
@@ -1081,8 +1081,8 @@ ctk_tree_view_accessible_get_cell_extents (CtkCellAccessibleParent *parent,
 {
   CtkWidget *widget;
   CtkTreeView *tree_view;
-  GdkWindow *bin_window;
-  GdkRectangle cell_rect;
+  CdkWindow *bin_window;
+  CdkRectangle cell_rect;
   gint w_x, w_y;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (parent));
@@ -1096,7 +1096,7 @@ ctk_tree_view_accessible_get_cell_extents (CtkCellAccessibleParent *parent,
 
   if (coord_type == ATK_XY_WINDOW)
     {
-      GdkWindow *window;
+      CdkWindow *window;
       gint x_toplevel, y_toplevel;
 
       window = cdk_window_get_toplevel (bin_window);
@@ -1476,10 +1476,10 @@ _ctk_tree_view_accessible_reorder (CtkTreeView *treeview)
 
 static gboolean
 is_cell_showing (CtkTreeView  *tree_view,
-                 GdkRectangle *cell_rect)
+                 CdkRectangle *cell_rect)
 {
-  GdkRectangle rect, *visible_rect;
-  GdkRectangle rect1, *tree_cell_rect;
+  CdkRectangle rect, *visible_rect;
+  CdkRectangle rect1, *tree_cell_rect;
   gint bx, by;
   gboolean is_showing;
 

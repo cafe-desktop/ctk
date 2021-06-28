@@ -32,29 +32,29 @@
 G_BEGIN_DECLS
 
 GDK_DEPRECATED_IN_3_22_FOR(cdk_window_begin_draw_frame() and cdk_drawing_context_get_cairo_context())
-cairo_t  * cdk_cairo_create             (GdkWindow          *window);
+cairo_t  * cdk_cairo_create             (CdkWindow          *window);
 
 GDK_AVAILABLE_IN_ALL
 gboolean   cdk_cairo_get_clip_rectangle (cairo_t            *cr,
-                                         GdkRectangle       *rect);
+                                         CdkRectangle       *rect);
 
 GDK_AVAILABLE_IN_ALL
 void       cdk_cairo_set_source_rgba    (cairo_t              *cr,
-                                         const GdkRGBA        *rgba);
+                                         const CdkRGBA        *rgba);
 GDK_AVAILABLE_IN_ALL
 void       cdk_cairo_set_source_pixbuf  (cairo_t              *cr,
-                                         const GdkPixbuf      *pixbuf,
+                                         const CdkPixbuf      *pixbuf,
                                          gdouble               pixbuf_x,
                                          gdouble               pixbuf_y);
 GDK_AVAILABLE_IN_ALL
 void       cdk_cairo_set_source_window  (cairo_t              *cr,
-                                         GdkWindow            *window,
+                                         CdkWindow            *window,
                                          gdouble               x,
                                          gdouble               y);
 
 GDK_AVAILABLE_IN_ALL
 void       cdk_cairo_rectangle          (cairo_t              *cr,
-                                         const GdkRectangle   *rectangle);
+                                         const CdkRectangle   *rectangle);
 GDK_AVAILABLE_IN_ALL
 void       cdk_cairo_region             (cairo_t              *cr,
                                          const cairo_region_t *region);
@@ -66,15 +66,15 @@ cairo_region_t *
 
 GDK_DEPRECATED_IN_3_4_FOR(cdk_cairo_set_source_rgba)
 void       cdk_cairo_set_source_color   (cairo_t              *cr,
-                                         const GdkColor       *color);
+                                         const CdkColor       *color);
 
 GDK_AVAILABLE_IN_3_10
-cairo_surface_t * cdk_cairo_surface_create_from_pixbuf      (const GdkPixbuf *pixbuf,
+cairo_surface_t * cdk_cairo_surface_create_from_pixbuf      (const CdkPixbuf *pixbuf,
                                                              int scale,
-                                                             GdkWindow *for_window);
+                                                             CdkWindow *for_window);
 GDK_AVAILABLE_IN_3_16
 void       cdk_cairo_draw_from_gl (cairo_t              *cr,
-                                   GdkWindow            *window,
+                                   CdkWindow            *window,
                                    int                   source,
                                    int                   source_type,
                                    int                   buffer_scale,
@@ -84,7 +84,7 @@ void       cdk_cairo_draw_from_gl (cairo_t              *cr,
                                    int                   height);
 
 GDK_AVAILABLE_IN_3_22
-GdkDrawingContext *     cdk_cairo_get_drawing_context   (cairo_t *cr);
+CdkDrawingContext *     cdk_cairo_get_drawing_context   (cairo_t *cr);
 
 G_END_DECLS
 

@@ -26,13 +26,13 @@
 #include "cdkbroadwaymonitor.h"
 
 
-struct _GdkBroadwayMonitor
+struct _CdkBroadwayMonitor
 {
-  GdkMonitor parent;
+  CdkMonitor parent;
 };
 
-struct _GdkBroadwayMonitorClass {
-  GdkMonitorClass parent_class;
+struct _CdkBroadwayMonitorClass {
+  CdkMonitorClass parent_class;
 };
 
 #endif

@@ -785,8 +785,8 @@ msgid "Pixbuf"
 msgstr "பிக்ஸ்பப்"
 
 #: ../ctk/deprecated/ctkstatusicon.c:225 ../ctk/ctkimage.c:231
-msgid "A GdkPixbuf to display"
-msgstr "காண்பிக்க ஓர் GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "காண்பிக்க ஓர் CdkPixbuf"
 
 #: ../ctk/deprecated/ctkstatusicon.c:232 ../ctk/ctkimage.c:246
 #: ../ctk/ctkrecentmanager.c:292
@@ -2160,16 +2160,16 @@ msgid "Cell background color"
 msgstr "செல் பின்னணி வண்ணம்"
 
 #: ../ctk/ctkcellrenderer.c:403
-msgid "Cell background color as a GdkColor"
-msgstr "செல் பின்னணி வண்ணம் ஓர் GdkColorராக"
+msgid "Cell background color as a CdkColor"
+msgstr "செல் பின்னணி வண்ணம் ஓர் CdkColorராக"
 
 #: ../ctk/ctkcellrenderer.c:417
 msgid "Cell background RGBA color"
 msgstr "செல் பின்னணி RGBA  வண்ணம்"
 
 #: ../ctk/ctkcellrenderer.c:418
-msgid "Cell background color as a GdkRGBA"
-msgstr "ஓர் GdkRGBA ஆக செல் பின்னணி வண்ணம் "
+msgid "Cell background color as a CdkRGBA"
+msgstr "ஓர் CdkRGBA ஆக செல் பின்னணி வண்ணம் "
 
 #: ../ctk/ctkcellrenderer.c:425
 msgid "Editing"
@@ -2414,8 +2414,8 @@ msgstr "பின்னணி வண்ணம்"
 
 #: ../ctk/ctkcellrenderertext.c:303 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:220
-msgid "Background color as a GdkColor"
-msgstr "பின்னணி வண்ணம் ஓர் GdkColorராக"
+msgid "Background color as a CdkColor"
+msgstr "பின்னணி வண்ணம் ஓர் CdkColorராக"
 
 #: ../ctk/ctkcellrenderertext.c:318
 msgid "Background color as RGBA"
@@ -2423,8 +2423,8 @@ msgstr "RGBA ஆக பின்னணி வண்ணம்"
 
 #: ../ctk/ctkcellrenderertext.c:319 ../ctk/ctkcellview.c:220
 #: ../ctk/ctktexttag.c:235
-msgid "Background color as a GdkRGBA"
-msgstr "ஓர் GdkRGBA ஆக பின்னணி வண்ணம் "
+msgid "Background color as a CdkRGBA"
+msgstr "ஓர் CdkRGBA ஆக பின்னணி வண்ணம் "
 
 #: ../ctk/ctkcellrenderertext.c:325 ../ctk/ctktexttag.c:250
 msgid "Foreground color name"
@@ -2435,16 +2435,16 @@ msgid "Foreground color as a string"
 msgstr "முன்னணி வண்ணம் ஓர் சரமாக"
 
 #: ../ctk/ctkcellrenderertext.c:342 ../ctk/ctktexttag.c:266
-msgid "Foreground color as a GdkColor"
-msgstr "முன்னணி வண்ணம் ஓர் GdkColorராக"
+msgid "Foreground color as a CdkColor"
+msgstr "முன்னணி வண்ணம் ஓர் CdkColorராக"
 
 #: ../ctk/ctkcellrenderertext.c:357
 msgid "Foreground color as RGBA"
 msgstr "RGBA ஆக முன்னணி வண்ணம்"
 
 #: ../ctk/ctkcellrenderertext.c:358 ../ctk/ctktexttag.c:281
-msgid "Foreground color as a GdkRGBA"
-msgstr "ஓர் GdkRGBA ஆக முன்னணி வண்ணம் "
+msgid "Foreground color as a CdkRGBA"
+msgstr "ஓர் CdkRGBA ஆக முன்னணி வண்ணம் "
 
 #: ../ctk/ctkcellrenderertext.c:366 ../ctk/ctkentry.c:794
 #: ../ctk/ctktexttag.c:297 ../ctk/ctktextview.c:748
@@ -2920,8 +2920,8 @@ msgid "Color"
 msgstr "நிறம்"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "தற்போதைய நிறம், GdkRGBA ஆக"
+msgid "Current color, as a CdkRGBA"
+msgstr "தற்போதைய நிறம், CdkRGBA ஆக"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4088,8 +4088,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "சைகையைத் தூண்டுவதற்குத் தேவையான புள்ளிகளின் எண்ணிக்கை"
 
 #: ../ctk/ctkgesture.c:712 ../ctk/ctkgesture.c:713
-msgid "GdkWindow to receive events about"
-msgstr "நிகழ்வுகளைப் பெறுவதற்கான GdkWindow"
+msgid "CdkWindow to receive events about"
+msgstr "நிகழ்வுகளைப் பெறுவதற்கான CdkWindow"
 
 #: ../ctk/ctkgesturepan.c:238
 #| msgid "Allow folder creation"
@@ -4391,8 +4391,8 @@ msgid "Animation"
 msgstr "அசைவூட்டம்"
 
 #: ../ctk/ctkimage.c:310
-msgid "GdkPixbufAnimation to display"
-msgstr "காட்சிக்கான GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "காட்சிக்கான CdkPixbufAnimation"
 
 #: ../ctk/ctkimage.c:357
 msgid "Resource"
@@ -7218,16 +7218,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "நிலைமைப்பட்டை உரையை சுற்றி பெவலின் பாங்கு"
 
 #: ../ctk/ctkstylecontext.c:252
-msgid "The associated GdkScreen"
-msgstr "ஒன்றுசேர்க்கப்பட்ட GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "ஒன்றுசேர்க்கப்பட்ட CdkScreen"
 
 #: ../ctk/ctkstylecontext.c:258
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ../ctk/ctkstylecontext.c:259
-msgid "The associated GdkFrameClock"
-msgstr "இணைக்கப்பட்ட GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "இணைக்கப்பட்ட CdkFrameClock"
 
 #: ../ctk/ctkstylecontext.c:266 ../ctk/ctktexttag.c:288
 msgid "Text direction"
@@ -7506,16 +7506,16 @@ msgid "Paragraph background color"
 msgstr "பத்தி பின்னணி நிறம்"
 
 #: ../ctk/ctktexttag.c:583
-msgid "Paragraph background color as a GdkColor"
-msgstr "ஒரு GdkColor போன்ற பத்தி பின்னணி வண்ணம்"
+msgid "Paragraph background color as a CdkColor"
+msgstr "ஒரு CdkColor போன்ற பத்தி பின்னணி வண்ணம்"
 
 #: ../ctk/ctktexttag.c:597
 msgid "Paragraph background RGBA"
 msgstr "RGBA பத்தி பின்னணி"
 
 #: ../ctk/ctktexttag.c:598
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "RGBA ஆனது ஒரு GdkRGBA பத்தி பின்னணியாக"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "RGBA ஆனது ஒரு CdkRGBA பத்தி பின்னணியாக"
 
 #: ../ctk/ctktexttag.c:616
 msgid "Margin Accumulates"
@@ -8392,8 +8392,8 @@ msgid "Events"
 msgstr "நிகழ்வுகள்"
 
 #: ../ctk/ctkwidget.c:1354
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "The event mask that decides what kind of CdkEvents this widget gets"
 
 #: ../ctk/ctkwidget.c:1361
 msgid "No show all"
@@ -9074,14 +9074,14 @@ msgstr "பயன்படுத்துவதற்கான வண்ண வ�
 #~ msgid "Whether the statusbar has a grip for resizing the toplevel"
 #~ msgstr "நிலைப்பட்டை ஒரு கிரிப்பை மேல் நிலையை மறுஅளவிட கொண்டுள்ளதா"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
-#~ msgstr "பின்னணி நிறத்தை ஒரு (இருக்கும் ஒதுக்கப்படாதது) GdkColor ஆக"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
+#~ msgstr "பின்னணி நிறத்தை ஒரு (இருக்கும் ஒதுக்கப்படாதது) CdkColor ஆக"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
-#~ msgstr "முன்னணி நிறத்தை ஒரு (இருக்கும் ஒதுக்கப்படாதது) GdkColor ஆக"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
+#~ msgstr "முன்னணி நிறத்தை ஒரு (இருக்கும் ஒதுக்கப்படாதது) CdkColor ஆக"
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-#~ msgstr "பத்தி பின்னணி நிறம் (ஒதுக்கப்படாதது) GdkColor ஆக"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+#~ msgstr "பத்தி பின்னணி நிறம் (ஒதுக்கப்படாதது) CdkColor ஆக"
 
 #~ msgid "Horizontal Adjustment for the widget"
 #~ msgstr "சாளரத்தின் கிடைமட்ட ஒழுங்கு"
@@ -9162,7 +9162,7 @@ msgstr "பயன்படுத்துவதற்கான வண்ண வ�
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "பிக்ஸ்பஃப் இன் பிக்ஸல் தரவுக்கு ஒரு சுட்டி"
 
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "வரைவிக்கு ஜிடிகே திரை "
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
@@ -9183,8 +9183,8 @@ msgstr "பயன்படுத்துவதற்கான வண்ண வ�
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "ஒரு நிழல் அல்லது பின்புலம் வரையும் போது சரியான நிலையை தாண்டுவதா"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "இந்த GdkFont தற்போது தேர்ந்தெடுக்கப்பட்டுள்ளது"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "இந்த CdkFont தற்போது தேர்ந்தெடுக்கப்பட்டுள்ளது"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "கைவிடப்பட்ட சொத்து, நிழல்வகையை பயன்படுத்துக "
@@ -9192,17 +9192,17 @@ msgstr "பயன்படுத்துவதற்கான வண்ண வ�
 #~ msgid "Pixmap"
 #~ msgstr "பிக்ஸ்படம்"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "காண்பிக்க ஓர் GdkPixmap"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "காண்பிக்க ஓர் CdkPixmap"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "காண்பிக்க ஓர் GdkImage"
+#~ msgid "A CdkImage to display"
+#~ msgstr "காண்பிக்க ஓர் CdkImage"
 
 #~ msgid "Mask"
 #~ msgstr "முகமூடி"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "GdkImage அல்லது GdkPixmap உடன் பயன்படுத்த மாஸ்க் பிட்மேப் "
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "CdkImage அல்லது CdkPixmap உடன் பயன்படுத்த மாஸ்க் பிட்மேப் "
 
 #~ msgid ""
 #~ "Whether to put a separator between the message dialog's text and the "

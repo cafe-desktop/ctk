@@ -40,34 +40,34 @@ G_BEGIN_DECLS
 
 /* Debugging support */
 
-typedef struct _GdkColorInfo           GdkColorInfo;
-typedef struct _GdkEventFilter         GdkEventFilter;
-typedef struct _GdkClientFilter        GdkClientFilter;
+typedef struct _CdkColorInfo           CdkColorInfo;
+typedef struct _CdkEventFilter         CdkEventFilter;
+typedef struct _CdkClientFilter        CdkClientFilter;
 
 typedef enum {
   GDK_COLOR_WRITEABLE = 1 << 0
-} GdkColorInfoFlags;
+} CdkColorInfoFlags;
 
-struct _GdkColorInfo
+struct _CdkColorInfo
 {
-  GdkColorInfoFlags flags;
+  CdkColorInfoFlags flags;
   guint ref_count;
 };
 
 typedef enum {
   GDK_EVENT_FILTER_REMOVED = 1 << 0
-} GdkEventFilterFlags;
+} CdkEventFilterFlags;
 
-struct _GdkEventFilter {
-  GdkFilterFunc function;
+struct _CdkEventFilter {
+  CdkFilterFunc function;
   gpointer data;
-  GdkEventFilterFlags flags;
+  CdkEventFilterFlags flags;
   guint ref_count;
 };
 
-struct _GdkClientFilter {
-  GdkAtom       type;
-  GdkFilterFunc function;
+struct _CdkClientFilter {
+  CdkAtom       type;
+  CdkFilterFunc function;
   gpointer      data;
 };
 
@@ -86,13 +86,13 @@ typedef enum {
   GDK_DEBUG_FRAMES        = 1 << 11,
   GDK_DEBUG_SETTINGS      = 1 << 12,
   GDK_DEBUG_OPENGL        = 1 << 13,
-} GdkDebugFlag;
+} CdkDebugFlag;
 
 typedef enum {
   GDK_RENDERING_MODE_SIMILAR = 0,
   GDK_RENDERING_MODE_IMAGE,
   GDK_RENDERING_MODE_RECORDING
-} GdkRenderingMode;
+} CdkRenderingMode;
 
 typedef enum {
   GDK_GL_DISABLE                = 1 << 0,
@@ -102,14 +102,14 @@ typedef enum {
   GDK_GL_TEXTURE_RECTANGLE      = 1 << 4,
   GDK_GL_LEGACY                 = 1 << 5,
   GDK_GL_GLES                   = 1 << 6
-} GdkGLFlags;
+} CdkGLFlags;
 
 extern GList            *_cdk_default_filters;
-extern GdkWindow        *_cdk_parent_root;
+extern CdkWindow        *_cdk_parent_root;
 
 extern guint _cdk_debug_flags;
 extern guint _cdk_gl_flags;
-extern GdkRenderingMode    _cdk_rendering_mode;
+extern CdkRenderingMode    _cdk_rendering_mode;
 extern gboolean _cdk_debug_updates;
 
 #ifdef G_ENABLE_DEBUG
@@ -136,30 +136,30 @@ typedef enum
   GDK_ARG_BOOL,
   GDK_ARG_NOBOOL,
   GDK_ARG_CALLBACK
-} GdkArgType;
+} CdkArgType;
 
-typedef struct _GdkArgContext GdkArgContext;
-typedef struct _GdkArgDesc GdkArgDesc;
+typedef struct _CdkArgContext CdkArgContext;
+typedef struct _CdkArgDesc CdkArgDesc;
 
-typedef void (*GdkArgFunc) (const char *name, const char *arg, gpointer data);
+typedef void (*CdkArgFunc) (const char *name, const char *arg, gpointer data);
 
-struct _GdkArgContext
+struct _CdkArgContext
 {
   GPtrArray *tables;
   gpointer cb_data;
 };
 
-struct _GdkArgDesc
+struct _CdkArgDesc
 {
   const char *name;
-  GdkArgType type;
+  CdkArgType type;
   gpointer location;
-  GdkArgFunc callback;
+  CdkArgFunc callback;
 };
 
 /* Event handling */
 
-typedef struct _GdkEventPrivate GdkEventPrivate;
+typedef struct _CdkEventPrivate CdkEventPrivate;
 
 typedef enum
 {
@@ -179,18 +179,18 @@ typedef enum
    * only those events until we finish the frame.
    */
   GDK_EVENT_FLUSHED = 1 << 2
-} GdkEventFlags;
+} CdkEventFlags;
 
-struct _GdkEventPrivate
+struct _CdkEventPrivate
 {
-  GdkEvent   event;
+  CdkEvent   event;
   guint      flags;
-  GdkScreen *screen;
+  CdkScreen *screen;
   gpointer   windowing_data;
-  GdkDevice *device;
-  GdkDevice *source_device;
-  GdkSeat   *seat;
-  GdkDeviceTool *tool;
+  CdkDevice *device;
+  CdkDevice *source_device;
+  CdkSeat   *seat;
+  CdkDeviceTool *tool;
   guint16    key_scancode;
 
 #ifdef GDK_WINDOWING_WIN32
@@ -199,24 +199,24 @@ struct _GdkEventPrivate
 #endif
 };
 
-typedef struct _GdkWindowPaint GdkWindowPaint;
+typedef struct _CdkWindowPaint CdkWindowPaint;
 
-struct _GdkWindow
+struct _CdkWindow
 {
   GObject parent_instance;
 
-  GdkWindowImpl *impl; /* window-system-specific delegate object */
+  CdkWindowImpl *impl; /* window-system-specific delegate object */
 
-  GdkWindow *parent;
-  GdkWindow *transient_for;
-  GdkVisual *visual;
+  CdkWindow *parent;
+  CdkWindow *transient_for;
+  CdkVisual *visual;
 
   gpointer user_data;
 
   gint x;
   gint y;
 
-  GdkEventMask event_mask;
+  CdkEventMask event_mask;
   guint8 window_type;
 
   guint8 depth;
@@ -313,7 +313,7 @@ struct _GdkWindow
     gboolean surface_needs_composite;
     gboolean use_gl;
   } current_paint;
-  GdkGLContext *gl_paint_context;
+  CdkGLContext *gl_paint_context;
 
   cairo_region_t *update_area;
   guint update_freeze_count;
@@ -324,8 +324,8 @@ struct _GdkWindow
   /* We store the old expose areas to support buffer-age optimizations */
   cairo_region_t *old_updated_area[2];
 
-  GdkWindowState old_state;
-  GdkWindowState state;
+  CdkWindowState old_state;
+  CdkWindowState state;
 
   guint synthesized_crossing_event_id;
 
@@ -354,10 +354,10 @@ struct _GdkWindow
   guint event_compression : 1;
   guint frame_clock_events_paused : 1;
 
-  /* The GdkWindow that has the impl, ref:ed if another window.
+  /* The CdkWindow that has the impl, ref:ed if another window.
    * This ref is required to keep the wrapper of the impl window alive
-   * for as long as any GdkWindow references the impl. */
-  GdkWindow *impl_window;
+   * for as long as any CdkWindow references the impl. */
+  CdkWindow *impl_window;
 
   guint update_and_descendants_freeze_count;
 
@@ -375,7 +375,7 @@ struct _GdkWindow
      the window hierarchy from the toplevel and down */
   cairo_region_t *clip_region;
 
-  GdkCursor *cursor;
+  CdkCursor *cursor;
   GHashTable *device_cursor;
 
   cairo_region_t *shape;
@@ -388,117 +388,117 @@ struct _GdkWindow
   gulong device_added_handler_id;
   gulong device_changed_handler_id;
 
-  GdkFrameClock *frame_clock; /* NULL to use from parent or default */
-  GdkWindowInvalidateHandlerFunc invalidate_handler;
+  CdkFrameClock *frame_clock; /* NULL to use from parent or default */
+  CdkWindowInvalidateHandlerFunc invalidate_handler;
 
-  GdkDrawingContext *drawing_context;
+  CdkDrawingContext *drawing_context;
 
   cairo_region_t *opaque_region;
 };
 
-#define GDK_WINDOW_TYPE(d) ((((GdkWindow *)(d)))->window_type)
-#define GDK_WINDOW_DESTROYED(d) (((GdkWindow *)(d))->destroyed)
+#define GDK_WINDOW_TYPE(d) ((((CdkWindow *)(d)))->window_type)
+#define GDK_WINDOW_DESTROYED(d) (((CdkWindow *)(d))->destroyed)
 
 extern gchar     *_cdk_display_name;
 extern gint       _cdk_screen_number;
 extern gchar     *_cdk_display_arg_name;
 extern gboolean   _cdk_disable_multidevice;
 
-GdkEvent* _cdk_event_unqueue (GdkDisplay *display);
+CdkEvent* _cdk_event_unqueue (CdkDisplay *display);
 
-void _cdk_event_filter_unref        (GdkWindow      *window,
-				     GdkEventFilter *filter);
+void _cdk_event_filter_unref        (CdkWindow      *window,
+				     CdkEventFilter *filter);
 
-void     cdk_event_set_pointer_emulated (GdkEvent *event,
+void     cdk_event_set_pointer_emulated (CdkEvent *event,
                                          gboolean  emulated);
 
-void     cdk_event_set_scancode        (GdkEvent *event,
+void     cdk_event_set_scancode        (CdkEvent *event,
                                         guint16 scancode);
 
-void     cdk_event_set_seat              (GdkEvent *event,
-                                          GdkSeat  *seat);
+void     cdk_event_set_seat              (CdkEvent *event,
+                                          CdkSeat  *seat);
 
 /* The IME IM module needs this symbol exported. */
 _GDK_EXTERN
-gboolean cdk_event_is_allocated      (const GdkEvent *event);
+gboolean cdk_event_is_allocated      (const CdkEvent *event);
 
-void   _cdk_event_emit               (GdkEvent   *event);
-GList* _cdk_event_queue_find_first   (GdkDisplay *display);
-void   _cdk_event_queue_remove_link  (GdkDisplay *display,
+void   _cdk_event_emit               (CdkEvent   *event);
+GList* _cdk_event_queue_find_first   (CdkDisplay *display);
+void   _cdk_event_queue_remove_link  (CdkDisplay *display,
                                       GList      *node);
-GList* _cdk_event_queue_append       (GdkDisplay *display,
-                                      GdkEvent   *event);
-GList* _cdk_event_queue_insert_after (GdkDisplay *display,
-                                      GdkEvent   *after_event,
-                                      GdkEvent   *event);
-GList* _cdk_event_queue_insert_before(GdkDisplay *display,
-                                      GdkEvent   *after_event,
-                                      GdkEvent   *event);
+GList* _cdk_event_queue_append       (CdkDisplay *display,
+                                      CdkEvent   *event);
+GList* _cdk_event_queue_insert_after (CdkDisplay *display,
+                                      CdkEvent   *after_event,
+                                      CdkEvent   *event);
+GList* _cdk_event_queue_insert_before(CdkDisplay *display,
+                                      CdkEvent   *after_event,
+                                      CdkEvent   *event);
 
-void    _cdk_event_queue_handle_motion_compression (GdkDisplay *display);
-void    _cdk_event_queue_flush                     (GdkDisplay       *display);
+void    _cdk_event_queue_handle_motion_compression (CdkDisplay *display);
+void    _cdk_event_queue_flush                     (CdkDisplay       *display);
 
-void   _cdk_event_button_generate    (GdkDisplay *display,
-                                      GdkEvent   *event);
+void   _cdk_event_button_generate    (CdkDisplay *display,
+                                      CdkEvent   *event);
 
-void _cdk_windowing_event_data_copy (const GdkEvent *src,
-                                     GdkEvent       *dst);
-void _cdk_windowing_event_data_free (GdkEvent       *event);
+void _cdk_windowing_event_data_copy (const CdkEvent *src,
+                                     CdkEvent       *dst);
+void _cdk_windowing_event_data_free (CdkEvent       *event);
 
-void _cdk_set_window_state (GdkWindow *window,
-                            GdkWindowState new_state);
+void _cdk_set_window_state (CdkWindow *window,
+                            CdkWindowState new_state);
 
 gboolean        _cdk_cairo_surface_extents       (cairo_surface_t *surface,
-                                                  GdkRectangle    *extents);
+                                                  CdkRectangle    *extents);
 void            cdk_gl_texture_from_surface      (cairo_surface_t *surface,
                                                   cairo_region_t  *region);
 
 typedef struct {
   float x1, y1, x2, y2;
   float u1, v1, u2, v2;
-} GdkTexturedQuad;
+} CdkTexturedQuad;
 
-void           cdk_gl_texture_quads               (GdkGLContext *paint_context,
+void           cdk_gl_texture_quads               (CdkGLContext *paint_context,
                                                    guint texture_target,
                                                    int n_quads,
-                                                   GdkTexturedQuad *quads,
+                                                   CdkTexturedQuad *quads,
                                                    gboolean flip_colors);
 
 void            cdk_cairo_surface_mark_as_direct (cairo_surface_t *surface,
-                                                  GdkWindow       *window);
+                                                  CdkWindow       *window);
 cairo_region_t *cdk_cairo_region_from_clip       (cairo_t         *cr);
 
 void            cdk_cairo_set_drawing_context    (cairo_t           *cr,
-                                                  GdkDrawingContext *context);
+                                                  CdkDrawingContext *context);
 
 /*************************************
  * Interfaces used by windowing code *
  *************************************/
 
 cairo_surface_t *
-           _cdk_window_ref_cairo_surface (GdkWindow *window);
+           _cdk_window_ref_cairo_surface (CdkWindow *window);
 
-void       _cdk_window_destroy           (GdkWindow      *window,
+void       _cdk_window_destroy           (CdkWindow      *window,
                                           gboolean        foreign_destroy);
-void       _cdk_window_clear_update_area (GdkWindow      *window);
-void       _cdk_window_update_size       (GdkWindow      *window);
-gboolean   _cdk_window_update_viewable   (GdkWindow      *window);
-GdkGLContext * cdk_window_get_paint_gl_context (GdkWindow *window,
+void       _cdk_window_clear_update_area (CdkWindow      *window);
+void       _cdk_window_update_size       (CdkWindow      *window);
+gboolean   _cdk_window_update_viewable   (CdkWindow      *window);
+CdkGLContext * cdk_window_get_paint_gl_context (CdkWindow *window,
                                                 GError   **error);
-void cdk_window_get_unscaled_size (GdkWindow *window,
+void cdk_window_get_unscaled_size (CdkWindow *window,
                                    int *unscaled_width,
                                    int *unscaled_height);
 
-GdkDrawingContext *cdk_window_get_drawing_context (GdkWindow *window);
+CdkDrawingContext *cdk_window_get_drawing_context (CdkWindow *window);
 
-cairo_region_t *cdk_window_get_current_paint_region (GdkWindow *window);
+cairo_region_t *cdk_window_get_current_paint_region (CdkWindow *window);
 
-void       _cdk_window_process_updates_recurse (GdkWindow *window,
+void       _cdk_window_process_updates_recurse (CdkWindow *window,
                                                 cairo_region_t *expose_region);
 
-void       _cdk_screen_set_resolution    (GdkScreen      *screen,
+void       _cdk_screen_set_resolution    (CdkScreen      *screen,
                                           gdouble         dpi);
-void       _cdk_screen_close             (GdkScreen      *screen);
+void       _cdk_screen_close             (CdkScreen      *screen);
 
 /*****************************************
  * Interfaces provided by windowing code *
@@ -506,65 +506,65 @@ void       _cdk_screen_close             (GdkScreen      *screen);
 
 /* Font/string functions implemented in module-specific code */
 
-void _cdk_cursor_destroy (GdkCursor *cursor);
+void _cdk_cursor_destroy (CdkCursor *cursor);
 
 extern const GOptionEntry _cdk_windowing_args[];
 
-void _cdk_windowing_got_event                (GdkDisplay       *display,
+void _cdk_windowing_got_event                (CdkDisplay       *display,
                                               GList            *event_link,
-                                              GdkEvent         *event,
+                                              CdkEvent         *event,
                                               gulong            serial);
 
 #define GDK_WINDOW_IS_MAPPED(window) (((window)->state & GDK_WINDOW_STATE_WITHDRAWN) == 0)
 
-void _cdk_window_invalidate_for_expose (GdkWindow       *window,
+void _cdk_window_invalidate_for_expose (CdkWindow       *window,
                                         cairo_region_t       *region);
 
-GdkWindow * _cdk_window_find_child_at (GdkWindow *window,
+CdkWindow * _cdk_window_find_child_at (CdkWindow *window,
                                        double x, double y);
-GdkWindow * _cdk_window_find_descendant_at (GdkWindow *toplevel,
+CdkWindow * _cdk_window_find_descendant_at (CdkWindow *toplevel,
                                             double x, double y,
                                             double *found_x,
                                             double *found_y);
 
-GdkEvent * _cdk_make_event (GdkWindow    *window,
-                            GdkEventType  type,
-                            GdkEvent     *event_in_queue,
+CdkEvent * _cdk_make_event (CdkWindow    *window,
+                            CdkEventType  type,
+                            CdkEvent     *event_in_queue,
                             gboolean      before_event);
-gboolean _cdk_window_event_parent_of (GdkWindow *parent,
-                                      GdkWindow *child);
+gboolean _cdk_window_event_parent_of (CdkWindow *parent,
+                                      CdkWindow *child);
 
-void _cdk_synthesize_crossing_events (GdkDisplay                 *display,
-                                      GdkWindow                  *src,
-                                      GdkWindow                  *dest,
-                                      GdkDevice                  *device,
-                                      GdkDevice                  *source_device,
-				      GdkCrossingMode             mode,
+void _cdk_synthesize_crossing_events (CdkDisplay                 *display,
+                                      CdkWindow                  *src,
+                                      CdkWindow                  *dest,
+                                      CdkDevice                  *device,
+                                      CdkDevice                  *source_device,
+				      CdkCrossingMode             mode,
 				      gdouble                     toplevel_x,
 				      gdouble                     toplevel_y,
-				      GdkModifierType             mask,
+				      CdkModifierType             mask,
 				      guint32                     time_,
-				      GdkEvent                   *event_in_queue,
+				      CdkEvent                   *event_in_queue,
 				      gulong                      serial,
 				      gboolean                    non_linear);
-void _cdk_display_set_window_under_pointer (GdkDisplay *display,
-                                            GdkDevice  *device,
-                                            GdkWindow  *window);
+void _cdk_display_set_window_under_pointer (CdkDisplay *display,
+                                            CdkDevice  *device,
+                                            CdkWindow  *window);
 
 
-void _cdk_synthesize_crossing_events_for_geometry_change (GdkWindow *changed_window);
+void _cdk_synthesize_crossing_events_for_geometry_change (CdkWindow *changed_window);
 
-gboolean    _cdk_window_has_impl (GdkWindow *window);
-GdkWindow * _cdk_window_get_impl_window (GdkWindow *window);
+gboolean    _cdk_window_has_impl (CdkWindow *window);
+CdkWindow * _cdk_window_get_impl_window (CdkWindow *window);
 
 /*****************************
  * offscreen window routines *
  *****************************/
 GType cdk_offscreen_window_get_type (void);
-void       _cdk_offscreen_window_new                 (GdkWindow     *window,
-                                                      GdkWindowAttr *attributes,
+void       _cdk_offscreen_window_new                 (CdkWindow     *window,
+                                                      CdkWindowAttr *attributes,
                                                       gint           attributes_mask);
-cairo_surface_t * _cdk_offscreen_window_create_surface (GdkWindow *window,
+cairo_surface_t * _cdk_offscreen_window_create_surface (CdkWindow *window,
                                                         gint       width,
                                                         gint       height);
 

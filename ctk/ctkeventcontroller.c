@@ -25,7 +25,7 @@
  * @See_also: #CtkGesture
  *
  * #CtkEventController is a base, low-level implementation for event
- * controllers. Those react to a series of #GdkEvents, and possibly trigger
+ * controllers. Those react to a series of #CdkEvents, and possibly trigger
  * actions as a consequence of those.
  */
 
@@ -59,7 +59,7 @@ G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (CtkEventController, ctk_event_controller, G
 
 static gboolean
 ctk_event_controller_handle_event_default (CtkEventController *controller,
-                                           const GdkEvent     *event)
+                                           const CdkEvent     *event)
 {
   return FALSE;
 }
@@ -159,7 +159,7 @@ ctk_event_controller_class_init (CtkEventControllerClass *klass)
   /**
    * CtkEventController:widget:
    *
-   * The widget receiving the #GdkEvents that the controller will handle.
+   * The widget receiving the #CdkEvents that the controller will handle.
    *
    * Since: 3.14
    */
@@ -199,7 +199,7 @@ ctk_event_controller_init (CtkEventController *controller)
 /**
  * ctk_event_controller_handle_event:
  * @controller: a #CtkEventController
- * @event: a #GdkEvent
+ * @event: a #CdkEvent
  *
  * Feeds an events into @controller, so it can be interpreted
  * and the controller actions triggered.
@@ -211,7 +211,7 @@ ctk_event_controller_init (CtkEventController *controller)
  **/
 gboolean
 ctk_event_controller_handle_event (CtkEventController *controller,
-                                   const GdkEvent     *event)
+                                   const CdkEvent     *event)
 {
   CtkEventControllerClass *controller_class;
   gboolean retval = FALSE;
@@ -236,7 +236,7 @@ ctk_event_controller_handle_event (CtkEventController *controller,
 
 void
 ctk_event_controller_set_event_mask (CtkEventController *controller,
-                                     GdkEventMask        event_mask)
+                                     CdkEventMask        event_mask)
 {
   CtkEventControllerPrivate *priv;
 
@@ -250,7 +250,7 @@ ctk_event_controller_set_event_mask (CtkEventController *controller,
   priv->evmask = event_mask;
 }
 
-GdkEventMask
+CdkEventMask
 ctk_event_controller_get_event_mask (CtkEventController *controller)
 {
   CtkEventControllerPrivate *priv;

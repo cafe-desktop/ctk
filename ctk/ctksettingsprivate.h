@@ -31,13 +31,13 @@ void                _ctk_settings_set_property_value_from_rc (CtkSettings       
                                                               const CtkSettingsValue *svalue);
 void                _ctk_settings_reset_rc_values            (CtkSettings            *settings);
 
-void                _ctk_settings_handle_event               (GdkEventSetting        *event);
+void                _ctk_settings_handle_event               (CdkEventSetting        *event);
 CtkRcPropertyParser _ctk_rc_property_parser_from_type        (GType                   type);
 gboolean            _ctk_settings_parse_convert              (CtkRcPropertyParser     parser,
                                                               const GValue           *src_value,
                                                               GParamSpec             *pspec,
                                                               GValue                 *dest_value);
-GdkScreen          *_ctk_settings_get_screen                 (CtkSettings            *settings);
+CdkScreen          *_ctk_settings_get_screen                 (CtkSettings            *settings);
 CtkStyleCascade    *_ctk_settings_get_style_cascade          (CtkSettings            *settings,
                                                               gint                    scale);
 

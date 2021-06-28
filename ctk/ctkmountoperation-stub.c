@@ -31,7 +31,7 @@
 #include "ctkmountoperationprivate.h"
 
 CtkMountOperationLookupContext *
-_ctk_mount_operation_lookup_context_get (GdkDisplay *display)
+_ctk_mount_operation_lookup_context_get (CdkDisplay *display)
 {
   return NULL;
 }
@@ -47,7 +47,7 @@ _ctk_mount_operation_lookup_info (CtkMountOperationLookupContext *context,
                                   gint                            size_pixels,
                                   gchar                         **out_name,
                                   gchar                         **out_command_line,
-                                  GdkPixbuf                     **out_pixbuf)
+                                  CdkPixbuf                     **out_pixbuf)
 {
   return FALSE;
 }

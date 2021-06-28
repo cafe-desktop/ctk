@@ -176,8 +176,8 @@ struct _CtkNotebookPrivate
   CtkWidget                 *dnd_window;
   CtkWidget                 *menu;
 
-  GdkWindow               *drag_window;
-  GdkWindow               *event_window;
+  CdkWindow               *drag_window;
+  CdkWindow               *event_window;
 
   CtkCssGadget              *gadget;
   CtkCssGadget              *stack_gadget;
@@ -382,20 +382,20 @@ static void ctk_notebook_size_allocate       (CtkWidget        *widget,
 static gboolean ctk_notebook_draw            (CtkWidget        *widget,
                                               cairo_t          *cr);
 static gboolean ctk_notebook_button_press    (CtkWidget        *widget,
-                                              GdkEventButton   *event);
+                                              CdkEventButton   *event);
 static gboolean ctk_notebook_button_release  (CtkWidget        *widget,
-                                              GdkEventButton   *event);
+                                              CdkEventButton   *event);
 static gboolean ctk_notebook_popup_menu      (CtkWidget        *widget);
 static gboolean ctk_notebook_enter_notify    (CtkWidget        *widget,
-                                              GdkEventCrossing *event);
+                                              CdkEventCrossing *event);
 static gboolean ctk_notebook_leave_notify    (CtkWidget        *widget,
-                                              GdkEventCrossing *event);
+                                              CdkEventCrossing *event);
 static gboolean ctk_notebook_motion_notify   (CtkWidget        *widget,
-                                              GdkEventMotion   *event);
+                                              CdkEventMotion   *event);
 static gboolean ctk_notebook_focus_in        (CtkWidget        *widget,
-                                              GdkEventFocus    *event);
+                                              CdkEventFocus    *event);
 static gboolean ctk_notebook_focus_out       (CtkWidget        *widget,
-                                              GdkEventFocus    *event);
+                                              CdkEventFocus    *event);
 static void ctk_notebook_grab_notify         (CtkWidget          *widget,
                                               gboolean            was_grabbed);
 static void ctk_notebook_state_flags_changed (CtkWidget          *widget,
@@ -406,32 +406,32 @@ static void ctk_notebook_style_updated       (CtkWidget        *widget);
 
 /*** Drag and drop Methods ***/
 static void ctk_notebook_drag_begin          (CtkWidget        *widget,
-                                              GdkDragContext   *context);
+                                              CdkDragContext   *context);
 static void ctk_notebook_drag_end            (CtkWidget        *widget,
-                                              GdkDragContext   *context);
+                                              CdkDragContext   *context);
 static gboolean ctk_notebook_drag_failed     (CtkWidget        *widget,
-                                              GdkDragContext   *context,
+                                              CdkDragContext   *context,
                                               CtkDragResult     result);
 static gboolean ctk_notebook_drag_motion     (CtkWidget        *widget,
-                                              GdkDragContext   *context,
+                                              CdkDragContext   *context,
                                               gint              x,
                                               gint              y,
                                               guint             time);
 static void ctk_notebook_drag_leave          (CtkWidget        *widget,
-                                              GdkDragContext   *context,
+                                              CdkDragContext   *context,
                                               guint             time);
 static gboolean ctk_notebook_drag_drop       (CtkWidget        *widget,
-                                              GdkDragContext   *context,
+                                              CdkDragContext   *context,
                                               gint              x,
                                               gint              y,
                                               guint             time);
 static void ctk_notebook_drag_data_get       (CtkWidget        *widget,
-                                              GdkDragContext   *context,
+                                              CdkDragContext   *context,
                                               CtkSelectionData *data,
                                               guint             info,
                                               guint             time);
 static void ctk_notebook_drag_data_received  (CtkWidget        *widget,
-                                              GdkDragContext   *context,
+                                              CdkDragContext   *context,
                                               gint              x,
                                               gint              y,
                                               CtkSelectionData *data,
@@ -603,7 +603,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkNotebook, ctk_notebook, CTK_TYPE_CONTAINER,
 
 static void
 add_tab_bindings (CtkBindingSet    *binding_set,
-                  GdkModifierType   modifiers,
+                  CdkModifierType   modifiers,
                   CtkDirectionType  direction)
 {
   ctk_binding_entry_add_signal (binding_set, GDK_KEY_Tab, modifiers,
@@ -1910,7 +1910,7 @@ ctk_notebook_direction_changed (CtkWidget        *widget,
 
 static gboolean
 ctk_notebook_get_event_window_position (CtkNotebook  *notebook,
-                                        GdkRectangle *rectangle)
+                                        CdkRectangle *rectangle)
 {
   CtkNotebookPrivate *priv = notebook->priv;
 
@@ -1963,10 +1963,10 @@ ctk_notebook_realize (CtkWidget *widget)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
-  GdkRectangle event_window_pos;
+  CdkRectangle event_window_pos;
 
   ctk_widget_set_realized (widget, TRUE);
 
@@ -2512,7 +2512,7 @@ ctk_notebook_size_allocate (CtkWidget     *widget,
 
   if (ctk_widget_get_realized (widget))
     {
-      GdkRectangle position;
+      CdkRectangle position;
 
       if (ctk_notebook_get_event_window_position (notebook, &position))
         {
@@ -2591,7 +2591,7 @@ ctk_notebook_show_arrows (CtkNotebook *notebook)
 
 static void
 ctk_notebook_get_arrow_rect (CtkNotebook      *notebook,
-                             GdkRectangle     *rectangle,
+                             CdkRectangle     *rectangle,
                              CtkNotebookArrow  arrow)
 {
   CtkNotebookPrivate *priv = notebook->priv;
@@ -2605,7 +2605,7 @@ ctk_notebook_get_arrow (CtkNotebook *notebook,
                         gint         y)
 {
   CtkNotebookPrivate *priv = notebook->priv;
-  GdkRectangle arrow_rect;
+  CdkRectangle arrow_rect;
   gint i;
   gint x0, y0;
 
@@ -2692,11 +2692,11 @@ ctk_notebook_arrow_button_press (CtkNotebook      *notebook,
 
 static gboolean
 get_widget_coordinates (CtkWidget *widget,
-                        GdkEvent  *event,
+                        CdkEvent  *event,
                         gdouble   *x,
                         gdouble   *y)
 {
-  GdkWindow *window = ((GdkEventAny *)event)->window;
+  CdkWindow *window = ((CdkEventAny *)event)->window;
   gdouble tx, ty;
 
   if (!cdk_event_get_coords (event, &tx, &ty))
@@ -2762,7 +2762,7 @@ get_tab_at_pos (CtkNotebook *notebook,
 
 static gboolean
 ctk_notebook_button_press (CtkWidget      *widget,
-                           GdkEventButton *event)
+                           CdkEventButton *event)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
@@ -2774,16 +2774,16 @@ ctk_notebook_button_press (CtkWidget      *widget,
   if (event->type != GDK_BUTTON_PRESS || !priv->children)
     return FALSE;
 
-  if (!get_widget_coordinates (widget, (GdkEvent *)event, &x, &y))
+  if (!get_widget_coordinates (widget, (CdkEvent *)event, &x, &y))
     return FALSE;
 
   arrow = ctk_notebook_get_arrow (notebook, x, y);
   if (arrow != ARROW_NONE)
     return ctk_notebook_arrow_button_press (notebook, arrow, event->button);
 
-  if (priv->menu && cdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (priv->menu && cdk_event_triggers_context_menu ((CdkEvent *) event))
     {
-      ctk_menu_popup_at_pointer (CTK_MENU (priv->menu), (GdkEvent *) event);
+      ctk_menu_popup_at_pointer (CTK_MENU (priv->menu), (CdkEvent *) event);
       return TRUE;
     }
 
@@ -2956,8 +2956,8 @@ get_drop_position (CtkNotebook *notebook)
 }
 
 static void
-prepare_drag_window (GdkSeat   *seat,
-                     GdkWindow *window,
+prepare_drag_window (CdkSeat   *seat,
+                     CdkWindow *window,
                      gpointer   user_data)
 {
   cdk_window_show (window);
@@ -2967,16 +2967,16 @@ static void
 show_drag_window (CtkNotebook        *notebook,
                   CtkNotebookPrivate    *priv,
                   CtkNotebookPage    *page,
-                  GdkDevice          *device)
+                  CdkDevice          *device)
 {
   CtkWidget *widget = CTK_WIDGET (notebook);
 
   if (!priv->drag_window)
     {
-      GdkWindowAttr attributes;
+      CdkWindowAttr attributes;
       CtkAllocation allocation;
       guint attributes_mask;
-      GdkRGBA transparent = {0, 0, 0, 0};
+      CdkRGBA transparent = {0, 0, 0, 0};
 
       ctk_css_gadget_get_margin_allocation (page->gadget, &allocation, NULL);
       attributes.x = priv->drag_window_x;
@@ -3104,7 +3104,7 @@ ctk_notebook_stop_reorder (CtkNotebook *notebook)
 
 static gboolean
 ctk_notebook_button_release (CtkWidget      *widget,
-                             GdkEventButton *event)
+                             CdkEventButton *event)
 {
   CtkNotebook *notebook;
   CtkNotebookPrivate *priv;
@@ -3147,12 +3147,12 @@ update_prelight_tab (CtkNotebook     *notebook,
 
 static void
 tab_prelight (CtkNotebook *notebook,
-              GdkEvent    *event)
+              CdkEvent    *event)
 {
   GList *tab;
   gdouble x, y;
 
-  if (get_widget_coordinates (CTK_WIDGET (notebook), (GdkEvent *)event, &x, &y))
+  if (get_widget_coordinates (CTK_WIDGET (notebook), (CdkEvent *)event, &x, &y))
     {
       tab = get_tab_at_pos (notebook, x, y);
       update_prelight_tab (notebook, tab == NULL ? NULL : tab->data);
@@ -3161,28 +3161,28 @@ tab_prelight (CtkNotebook *notebook,
 
 static gboolean
 ctk_notebook_enter_notify (CtkWidget        *widget,
-                           GdkEventCrossing *event)
+                           CdkEventCrossing *event)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
 
-  tab_prelight (notebook, (GdkEvent *)event);
+  tab_prelight (notebook, (CdkEvent *)event);
 
   return FALSE;
 }
 
 static gboolean
 ctk_notebook_leave_notify (CtkWidget        *widget,
-                           GdkEventCrossing *event)
+                           CdkEventCrossing *event)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
   gdouble x, y;
 
-  if (get_widget_coordinates (widget, (GdkEvent *)event, &x, &y))
+  if (get_widget_coordinates (widget, (CdkEvent *)event, &x, &y))
     {
       if (priv->prelight_tab != NULL)
         {
-          tab_prelight (notebook, (GdkEvent *)event);
+          tab_prelight (notebook, (CdkEvent *)event);
         }
 
       if (priv->in_child != ARROW_NONE)
@@ -3271,7 +3271,7 @@ check_threshold (CtkNotebook *notebook,
 {
   CtkNotebookPrivate *priv = notebook->priv;
   gint dnd_threshold;
-  GdkRectangle rectangle = { 0, }; /* shut up gcc */
+  CdkRectangle rectangle = { 0, }; /* shut up gcc */
   CtkSettings *settings;
 
   settings = ctk_widget_get_settings (CTK_WIDGET (notebook));
@@ -3297,7 +3297,7 @@ check_threshold (CtkNotebook *notebook,
 
 static gboolean
 ctk_notebook_motion_notify (CtkWidget      *widget,
-                            GdkEventMotion *event)
+                            CdkEventMotion *event)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
@@ -3318,7 +3318,7 @@ ctk_notebook_motion_notify (CtkWidget      *widget,
       stop_scrolling (notebook);
     }
 
-  tab_prelight (notebook, (GdkEvent *)event);
+  tab_prelight (notebook, (CdkEvent *)event);
 
   /* While animating the move, event->x is relative to the flying tab
    * (priv->drag_window has a pointer grab), but we need coordinates relative to
@@ -3344,7 +3344,7 @@ ctk_notebook_motion_notify (CtkWidget      *widget,
       priv->detached_tab = priv->cur_page;
 
       ctk_drag_begin_with_coordinates (widget, priv->source_targets, GDK_ACTION_MOVE,
-                                       priv->pressed_button, (GdkEvent*) event,
+                                       priv->pressed_button, (CdkEvent*) event,
                                        priv->drag_begin_x, priv->drag_begin_y);
       return TRUE;
     }
@@ -3493,7 +3493,7 @@ ctk_notebook_state_flags_changed (CtkWidget     *widget,
 
 static gboolean
 ctk_notebook_focus_in (CtkWidget     *widget,
-                       GdkEventFocus *event)
+                       CdkEventFocus *event)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
@@ -3505,7 +3505,7 @@ ctk_notebook_focus_in (CtkWidget     *widget,
 
 static gboolean
 ctk_notebook_focus_out (CtkWidget     *widget,
-                        GdkEventFocus *event)
+                        CdkEventFocus *event)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
@@ -3670,7 +3670,7 @@ on_drag_icon_draw (CtkWidget *widget,
 
 static void
 ctk_notebook_drag_begin (CtkWidget        *widget,
-                         GdkDragContext   *context)
+                         CdkDragContext   *context)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
@@ -3712,7 +3712,7 @@ ctk_notebook_drag_begin (CtkWidget        *widget,
 
 static void
 ctk_notebook_drag_end (CtkWidget      *widget,
-                       GdkDragContext *context)
+                       CdkDragContext *context)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
@@ -3757,7 +3757,7 @@ ctk_notebook_create_window (CtkNotebook *notebook,
 
 static gboolean
 ctk_notebook_drag_failed (CtkWidget      *widget,
-                          GdkDragContext *context,
+                          CdkDragContext *context,
                           CtkDragResult   result)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
@@ -3811,7 +3811,7 @@ ctk_notebook_switch_tab_timeout (gpointer data)
 
 static gboolean
 ctk_notebook_drag_motion (CtkWidget      *widget,
-                          GdkDragContext *context,
+                          CdkDragContext *context,
                           gint            x,
                           gint            y,
                           guint           time)
@@ -3819,9 +3819,9 @@ ctk_notebook_drag_motion (CtkWidget      *widget,
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
   CtkAllocation allocation;
-  GdkRectangle position;
+  CdkRectangle position;
   CtkNotebookArrow arrow;
-  GdkAtom target, tab_target;
+  CdkAtom target, tab_target;
   GList *tab;
   gboolean retval = FALSE;
 
@@ -3911,7 +3911,7 @@ ctk_notebook_drag_motion (CtkWidget      *widget,
 
 static void
 ctk_notebook_drag_leave (CtkWidget      *widget,
-                         GdkDragContext *context,
+                         CdkDragContext *context,
                          guint           time)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
@@ -3922,12 +3922,12 @@ ctk_notebook_drag_leave (CtkWidget      *widget,
 
 static gboolean
 ctk_notebook_drag_drop (CtkWidget        *widget,
-                        GdkDragContext   *context,
+                        CdkDragContext   *context,
                         gint              x,
                         gint              y,
                         guint             time)
 {
-  GdkAtom target, tab_target;
+  CdkAtom target, tab_target;
 
   target = ctk_drag_dest_find_target (widget, context, NULL);
   tab_target = cdk_atom_intern_static_string ("CTK_NOTEBOOK_TAB");
@@ -4028,14 +4028,14 @@ do_detach_tab (CtkNotebook     *from,
 
 static void
 ctk_notebook_drag_data_get (CtkWidget        *widget,
-                            GdkDragContext   *context,
+                            CdkDragContext   *context,
                             CtkSelectionData *data,
                             guint             info,
                             guint             time)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
-  GdkAtom target;
+  CdkAtom target;
 
   target = ctk_selection_data_get_target (data);
   if (target == cdk_atom_intern_static_string ("CTK_NOTEBOOK_TAB"))
@@ -4056,7 +4056,7 @@ ctk_notebook_drag_data_get (CtkWidget        *widget,
 
 static void
 ctk_notebook_drag_data_received (CtkWidget        *widget,
-                                 GdkDragContext   *context,
+                                 CdkDragContext   *context,
                                  gint              x,
                                  gint              y,
                                  CtkSelectionData *data,
@@ -4925,7 +4925,7 @@ ctk_notebook_redraw_arrows (CtkNotebook *notebook)
   if (ctk_widget_get_mapped (CTK_WIDGET (notebook)) &&
       ctk_notebook_show_arrows (notebook))
     {
-      GdkRectangle rect;
+      CdkRectangle rect;
       gint i;
 
       for (i = 0; i < 4; i++)
@@ -5062,9 +5062,9 @@ ctk_notebook_real_remove (CtkNotebook *notebook,
 
       if (priv->operation == DRAG_OPERATION_DETACH && !priv->remove_in_detach)
         {
-          GdkDragContext *context;
+          CdkDragContext *context;
 
-          context = (GdkDragContext *)g_object_get_data (G_OBJECT (priv->dnd_window), "drag-context");
+          context = (CdkDragContext *)g_object_get_data (G_OBJECT (priv->dnd_window), "drag-context");
           ctk_drag_cancel (context);
         }
     }
@@ -7972,7 +7972,7 @@ ctk_notebook_get_tab_detachable (CtkNotebook *notebook,
  * |[<!-- language="C" -->
  *  static void
  *  on_drag_data_received (CtkWidget        *widget,
- *                         GdkDragContext   *context,
+ *                         CdkDragContext   *context,
  *                         gint              x,
  *                         gint              y,
  *                         CtkSelectionData *data,

@@ -33,7 +33,7 @@ test_widget (const gchar *label, const gchar *color)
 static CtkOrientation o;
 
 static gboolean
-toggle_orientation (CtkWidget *window, GdkEventButton *event, CtkGrid *grid)
+toggle_orientation (CtkWidget *window, CdkEventButton *event, CtkGrid *grid)
 {
   o = 1 - o;
 

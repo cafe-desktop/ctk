@@ -34,18 +34,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_WIN32_SCREEN              (cdk_win32_screen_get_type ())
-#define GDK_WIN32_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_SCREEN, GdkWin32Screen))
-#define GDK_WIN32_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_SCREEN, GdkWin32ScreenClass))
+#define GDK_WIN32_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_SCREEN, CdkWin32Screen))
+#define GDK_WIN32_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_SCREEN, CdkWin32ScreenClass))
 #define GDK_IS_WIN32_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_SCREEN))
 #define GDK_IS_WIN32_SCREEN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WIN32_SCREEN))
-#define GDK_WIN32_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_SCREEN, GdkWin32ScreenClass))
+#define GDK_WIN32_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_SCREEN, CdkWin32ScreenClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkWin32Screen GdkWin32Screen;
+typedef struct _CdkWin32Screen CdkWin32Screen;
 #else
-typedef GdkScreen GdkWin32Screen;
+typedef CdkScreen CdkWin32Screen;
 #endif
-typedef struct _GdkWin32ScreenClass GdkWin32ScreenClass;
+typedef struct _CdkWin32ScreenClass CdkWin32ScreenClass;
 
 GDK_AVAILABLE_IN_ALL
 GType    cdk_win32_screen_get_type          (void);

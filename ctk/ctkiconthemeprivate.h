@@ -22,20 +22,20 @@
 #include <ctk/ctkcssstyleprivate.h>
 
 void        ctk_icon_theme_lookup_symbolic_colors       (CtkCssStyle    *style,
-                                                         GdkRGBA        *color_out,
-                                                         GdkRGBA        *success_out,
-                                                         GdkRGBA        *warning_out,
-                                                         GdkRGBA        *error_out);
+                                                         CdkRGBA        *color_out,
+                                                         CdkRGBA        *success_out,
+                                                         CdkRGBA        *warning_out,
+                                                         CdkRGBA        *error_out);
 
 CtkIconInfo *ctk_icon_info_new_for_file (GFile *file,
                                          gint   size,
                                          gint   scale);
 
-GdkPixbuf * ctk_icon_theme_color_symbolic_pixbuf (GdkPixbuf     *symbolic,
-                                                  const GdkRGBA *fg_color,
-                                                  const GdkRGBA *success_color,
-                                                  const GdkRGBA *warning_color,
-                                                  const GdkRGBA *error_color);
+CdkPixbuf * ctk_icon_theme_color_symbolic_pixbuf (CdkPixbuf     *symbolic,
+                                                  const CdkRGBA *fg_color,
+                                                  const CdkRGBA *success_color,
+                                                  const CdkRGBA *warning_color,
+                                                  const CdkRGBA *error_color);
 
 
 #endif /* __CTK_ICON_THEME_PRIVATE_H__ */

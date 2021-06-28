@@ -46,10 +46,10 @@ CtkGesture * ctk_gesture_multi_press_new      (CtkWidget            *widget);
 
 GDK_AVAILABLE_IN_3_14
 void         ctk_gesture_multi_press_set_area (CtkGestureMultiPress *gesture,
-					       const GdkRectangle   *rect);
+					       const CdkRectangle   *rect);
 GDK_AVAILABLE_IN_3_14
 gboolean     ctk_gesture_multi_press_get_area (CtkGestureMultiPress *gesture,
-                                               GdkRectangle         *rect);
+                                               CdkRectangle         *rect);
 
 G_END_DECLS
 

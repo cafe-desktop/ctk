@@ -223,7 +223,7 @@ ctk_tool_item_group_settings_change_notify (CtkSettings      *settings,
 
 static void
 ctk_tool_item_group_screen_changed (CtkWidget *widget,
-                                    GdkScreen *previous_screen)
+                                    CdkScreen *previous_screen)
 {
   CtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (widget);
   CtkToolItemGroupPrivate* priv = group->priv;
@@ -1237,8 +1237,8 @@ ctk_tool_item_group_realize (CtkWidget *widget)
 {
   CtkAllocation allocation;
   CtkWidget *toplevel_window;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
   guint border_width;
 
@@ -1864,7 +1864,7 @@ ctk_tool_item_group_force_expose (CtkToolItemGroup *group)
     {
       CtkAllocation alignment_allocation;
       CtkWidget *alignment = ctk_tool_item_group_get_alignment (group);
-      GdkRectangle area;
+      CdkRectangle area;
 
       /* Find the header button's arrow area... */
       ctk_widget_get_allocation (alignment, &alignment_allocation);

@@ -126,7 +126,7 @@ static void ctk_button_get_property   (GObject            *object,
                                        GValue             *value,
                                        GParamSpec         *pspec);
 static void ctk_button_screen_changed (CtkWidget          *widget,
-				       GdkScreen          *previous_screen);
+				       CdkScreen          *previous_screen);
 static void ctk_button_realize (CtkWidget * widget);
 static void ctk_button_unrealize (CtkWidget * widget);
 static void ctk_button_map (CtkWidget * widget);
@@ -136,12 +136,12 @@ static void ctk_button_size_allocate (CtkWidget * widget,
 				      CtkAllocation * allocation);
 static gint ctk_button_draw (CtkWidget * widget, cairo_t *cr);
 static gint ctk_button_grab_broken (CtkWidget * widget,
-				    GdkEventGrabBroken * event);
-static gint ctk_button_key_release (CtkWidget * widget, GdkEventKey * event);
+				    CdkEventGrabBroken * event);
+static gint ctk_button_key_release (CtkWidget * widget, CdkEventKey * event);
 static gint ctk_button_enter_notify (CtkWidget * widget,
-				     GdkEventCrossing * event);
+				     CdkEventCrossing * event);
 static gint ctk_button_leave_notify (CtkWidget * widget,
-				     GdkEventCrossing * event);
+				     CdkEventCrossing * event);
 static void ctk_real_button_pressed (CtkButton * button);
 static void ctk_real_button_released (CtkButton * button);
 static void ctk_real_button_clicked (CtkButton * button);
@@ -661,7 +661,7 @@ multipress_released_cb (CtkGestureMultiPress *gesture,
 {
   CtkButton *button = CTK_BUTTON (widget);
   CtkButtonPrivate *priv = button->priv;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
 
   g_signal_emit (button, button_signals[RELEASED], 0);
 
@@ -676,7 +676,7 @@ multipress_released_cb (CtkGestureMultiPress *gesture,
 
 static void
 multipress_gesture_update_cb (CtkGesture       *gesture,
-                              GdkEventSequence *sequence,
+                              CdkEventSequence *sequence,
                               CtkButton        *button)
 {
   CtkButtonPrivate *priv = button->priv;
@@ -701,7 +701,7 @@ multipress_gesture_update_cb (CtkGesture       *gesture,
 
 static void
 multipress_gesture_cancel_cb (CtkGesture       *gesture,
-                              GdkEventSequence *sequence,
+                              CdkEventSequence *sequence,
                               CtkButton        *button)
 {
   ctk_button_do_release (button, FALSE);
@@ -1634,8 +1634,8 @@ ctk_button_realize (CtkWidget *widget)
   CtkButton *button = CTK_BUTTON (widget);
   CtkButtonPrivate *priv = button->priv;
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_get_allocation (widget, &allocation);
@@ -1850,7 +1850,7 @@ ctk_button_do_release (CtkButton *button,
 
 static gboolean
 ctk_button_grab_broken (CtkWidget          *widget,
-			GdkEventGrabBroken *event)
+			CdkEventGrabBroken *event)
 {
   CtkButton *button = CTK_BUTTON (widget);
   
@@ -1861,7 +1861,7 @@ ctk_button_grab_broken (CtkWidget          *widget,
 
 static gboolean
 ctk_button_key_release (CtkWidget   *widget,
-			GdkEventKey *event)
+			CdkEventKey *event)
 {
   CtkButton *button = CTK_BUTTON (widget);
   CtkButtonPrivate *priv = button->priv;
@@ -1879,7 +1879,7 @@ ctk_button_key_release (CtkWidget   *widget,
 
 static gboolean
 ctk_button_enter_notify (CtkWidget        *widget,
-			 GdkEventCrossing *event)
+			 CdkEventCrossing *event)
 {
   CtkButton *button = CTK_BUTTON (widget);
   CtkButtonPrivate *priv = button->priv;
@@ -1896,7 +1896,7 @@ ctk_button_enter_notify (CtkWidget        *widget,
 
 static gboolean
 ctk_button_leave_notify (CtkWidget        *widget,
-			 GdkEventCrossing *event)
+			 CdkEventCrossing *event)
 {
   CtkButton *button = CTK_BUTTON (widget);
   CtkButtonPrivate *priv = button->priv;
@@ -1928,7 +1928,7 @@ touch_release_in_button (CtkButton *button)
 {
   CtkButtonPrivate *priv;
   gint width, height;
-  GdkEvent *event;
+  CdkEvent *event;
   gdouble x, y;
 
   priv = button->priv;
@@ -1991,7 +1991,7 @@ ctk_real_button_activate (CtkButton *button)
 {
   CtkWidget *widget = CTK_WIDGET (button);
   CtkButtonPrivate *priv = button->priv;
-  GdkDevice *device;
+  CdkDevice *device;
 
   device = ctk_get_current_event_device ();
 
@@ -2480,7 +2480,7 @@ ctk_button_setting_changed (CtkSettings *settings)
 
 static void
 ctk_button_screen_changed (CtkWidget *widget,
-			   GdkScreen *previous_screen)
+			   CdkScreen *previous_screen)
 {
   CtkButton *button;
   CtkButtonPrivate *priv;
@@ -2721,7 +2721,7 @@ ctk_button_get_always_show_image (CtkButton *button)
  *
  * Since: 2.22
  */
-GdkWindow*
+CdkWindow*
 ctk_button_get_event_window (CtkButton *button)
 {
   g_return_val_if_fail (CTK_IS_BUTTON (button), NULL);

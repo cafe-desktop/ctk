@@ -12,15 +12,15 @@ static void update_store (void);
 static CtkWidget *main_window;
 
 
-GdkWindow *
-create_window (GdkWindow *parent,
+CdkWindow *
+create_window (CdkWindow *parent,
 	       int x, int y, int w, int h,
-	       GdkRGBA *color)
+	       CdkRGBA *color)
 {
-  GdkWindowAttr attributes;
+  CdkWindowAttr attributes;
   gint attributes_mask;
-  GdkWindow *window;
-  GdkRGBA *bg;
+  CdkWindow *window;
+  CdkRGBA *bg;
 
   attributes.x = x;
   attributes.y = y;
@@ -41,7 +41,7 @@ create_window (GdkWindow *parent,
   window = cdk_window_new (parent, &attributes, attributes_mask);
   cdk_window_set_user_data (window, darea);
 
-  bg = g_new (GdkRGBA, 1);
+  bg = g_new (CdkRGBA, 1);
   if (color)
     *bg = *color;
   else
@@ -67,7 +67,7 @@ add_window_cb (CtkTreeModel      *model,
 	       gpointer           data)
 {
   GList **selected = data;
-  GdkWindow *window;
+  CdkWindow *window;
 
   ctk_tree_model_get (CTK_TREE_MODEL (window_store),
 		      iter,
@@ -93,12 +93,12 @@ get_selected_windows (void)
 
 static gboolean
 find_window_helper (CtkTreeModel *model,
-		    GdkWindow *window,
+		    CdkWindow *window,
 		    CtkTreeIter *iter,
 		    CtkTreeIter *selected_iter)
 {
   CtkTreeIter child_iter;
-  GdkWindow *w;
+  CdkWindow *w;
 
   do
     {
@@ -124,7 +124,7 @@ find_window_helper (CtkTreeModel *model,
 }
 
 static gboolean
-find_window (GdkWindow *window,
+find_window (CdkWindow *window,
 	     CtkTreeIter *window_iter)
 {
   CtkTreeIter iter;
@@ -139,7 +139,7 @@ find_window (GdkWindow *window,
 }
 
 static void
-toggle_selection_window (GdkWindow *window)
+toggle_selection_window (CdkWindow *window)
 {
   CtkTreeSelection *selection;
   CtkTreeIter iter;
@@ -168,7 +168,7 @@ unselect_windows (void)
 
 
 static void
-select_window (GdkWindow *window)
+select_window (CdkWindow *window)
 {
   CtkTreeSelection *selection;
   CtkTreeIter iter;
@@ -201,7 +201,7 @@ static void
 add_window_clicked (CtkWidget *button, 
 		    gpointer data)
 {
-  GdkWindow *parent;
+  CdkWindow *parent;
   GList *l;
 
   l = get_selected_windows ();
@@ -232,14 +232,14 @@ remove_window_clicked (CtkWidget *button,
   update_store ();
 }
 
-static void save_children (GString *s, GdkWindow *window);
+static void save_children (GString *s, CdkWindow *window);
 
 static void
 save_window (GString *s,
-	     GdkWindow *window)
+	     CdkWindow *window)
 {
   gint x, y;
-  GdkRGBA *color;
+  CdkRGBA *color;
 
   cdk_window_get_position (window, &x, &y);
   color = g_object_get_data (G_OBJECT (window), "color");
@@ -258,10 +258,10 @@ save_window (GString *s,
 
 static void
 save_children (GString *s,
-	       GdkWindow *window)
+	       CdkWindow *window)
 {
   GList *l;
-  GdkWindow *child;
+  CdkWindow *child;
 
   for (l = g_list_reverse (cdk_window_peek_children (window));
        l != NULL;
@@ -319,10 +319,10 @@ save_clicked (CtkWidget *button,
 }
 
 static void
-destroy_children (GdkWindow *window)
+destroy_children (CdkWindow *window)
 {
   GList *l;
-  GdkWindow *child;
+  CdkWindow *child;
 
   for (l = cdk_window_peek_children (window);
        l != NULL;
@@ -336,12 +336,12 @@ destroy_children (GdkWindow *window)
 }
 
 static char **
-parse_window (GdkWindow *parent, char **lines)
+parse_window (CdkWindow *parent, char **lines)
 {
   int x, y, w, h, native, n_children;
   double r, g, b, a;
-  GdkWindow *window;
-  GdkRGBA color;
+  CdkWindow *window;
+  CdkRGBA color;
   int i;
 
   if (*lines == NULL)
@@ -371,7 +371,7 @@ parse_window (GdkWindow *parent, char **lines)
 static void
 load_file (GFile *file)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   char *data;
   char **lines, **l;
   
@@ -395,7 +395,7 @@ static void
 move_window_clicked (CtkWidget *button, 
 		     gpointer data)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   CtkDirectionType direction;
   GList *selected, *l;
   gint x, y;
@@ -437,7 +437,7 @@ static void
 manual_clicked (CtkWidget *button, 
 		gpointer data)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   GList *selected, *l;
   int x, y, w, h;
   CtkWidget *dialog, *grid, *label, *xspin, *yspin, *wspin, *hspin;
@@ -543,7 +543,7 @@ static void
 scroll_window_clicked (CtkWidget *button, 
 		       gpointer data)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   CtkDirectionType direction;
   GList *selected, *l;
   gint dx, dy;
@@ -586,7 +586,7 @@ raise_window_clicked (CtkWidget *button,
 		      gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
+  CdkWindow *window;
     
   selected = get_selected_windows ();
 
@@ -607,7 +607,7 @@ lower_window_clicked (CtkWidget *button,
 		      gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
+  CdkWindow *window;
     
   selected = get_selected_windows ();
 
@@ -629,7 +629,7 @@ smaller_window_clicked (CtkWidget *button,
 			gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
+  CdkWindow *window;
   int w, h;
 
   selected = get_selected_windows ();
@@ -656,7 +656,7 @@ larger_window_clicked (CtkWidget *button,
 			gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
+  CdkWindow *window;
   int w, h;
 
   selected = get_selected_windows ();
@@ -679,7 +679,7 @@ native_window_clicked (CtkWidget *button,
 			gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
+  CdkWindow *window;
 
   selected = get_selected_windows ();
 
@@ -700,8 +700,8 @@ alpha_clicked (CtkWidget *button,
 	       gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
-  GdkRGBA *color;
+  CdkWindow *window;
+  CdkRGBA *color;
 
   selected = get_selected_windows ();
 
@@ -730,7 +730,7 @@ alpha_clicked (CtkWidget *button,
 
 static gboolean
 darea_button_release_event (CtkWidget *widget,
-			    GdkEventButton *event)
+			    CdkEventButton *event)
 {
   if ((event->state & GDK_CONTROL_MASK) != 0)
     {
@@ -752,7 +752,7 @@ render_window_cell (CtkTreeViewColumn *tree_column,
 		    CtkTreeIter       *iter,
 		    gpointer           data)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   char *name;
 
   ctk_tree_model_get (CTK_TREE_MODEL (window_store),
@@ -772,7 +772,7 @@ render_window_cell (CtkTreeViewColumn *tree_column,
 
 static void
 add_children (CtkTreeStore *store,
-	      GdkWindow *window,
+	      CdkWindow *window,
 	      CtkTreeIter *window_iter)
 {
   GList *l;
@@ -828,7 +828,7 @@ main (int argc, char **argv)
   ctk_container_add (CTK_CONTAINER (window), hbox);
   ctk_widget_show (hbox);
 
-  frame = ctk_frame_new ("GdkWindows");
+  frame = ctk_frame_new ("CdkWindows");
   ctk_box_pack_start (CTK_BOX (hbox),
 		      frame,
 		      FALSE, FALSE,

@@ -36,15 +36,15 @@ void            _ctk_window_group_remove_grab (CtkWindowGroup *window_group,
                                                CtkWidget      *widget);
 void            _ctk_window_group_add_device_grab    (CtkWindowGroup   *window_group,
                                                       CtkWidget        *widget,
-                                                      GdkDevice        *device,
+                                                      CdkDevice        *device,
                                                       gboolean          block_others);
 void            _ctk_window_group_remove_device_grab (CtkWindowGroup   *window_group,
                                                       CtkWidget        *widget,
-                                                      GdkDevice        *device);
+                                                      CdkDevice        *device);
 
 gboolean        _ctk_window_group_widget_is_blocked_for_device (CtkWindowGroup *window_group,
                                                                 CtkWidget      *widget,
-                                                                GdkDevice      *device);
+                                                                CdkDevice      *device);
 
 void            _ctk_window_set_has_toplevel_focus (CtkWindow *window,
                                                     gboolean   has_toplevel_focus);
@@ -67,7 +67,7 @@ void            _ctk_window_set_allocation         (CtkWindow           *window,
 
 typedef void (*CtkWindowKeysForeachFunc) (CtkWindow      *window,
                                           guint           keyval,
-                                          GdkModifierType modifiers,
+                                          CdkModifierType modifiers,
                                           gboolean        is_mnemonic,
                                           gpointer        data);
 
@@ -75,12 +75,12 @@ void _ctk_window_keys_foreach (CtkWindow               *window,
                                CtkWindowKeysForeachFunc func,
                                gpointer                 func_data);
 
-gboolean _ctk_window_check_handle_wm_event (GdkEvent  *event);
+gboolean _ctk_window_check_handle_wm_event (CdkEvent  *event);
 
 /* --- internal (CtkAcceleratable) --- */
 gboolean        _ctk_window_query_nonaccels     (CtkWindow      *window,
                                                  guint           accel_key,
-                                                 GdkModifierType accel_mods);
+                                                 CdkModifierType accel_mods);
 
 void            _ctk_window_schedule_mnemonics_visible (CtkWindow *window);
 
@@ -125,15 +125,15 @@ CtkWidget * _ctk_window_get_popover_parent (CtkWindow *window,
 gboolean    _ctk_window_is_popover_widget  (CtkWindow *window,
                                             CtkWidget *popover);
 
-GdkPixbuf *ctk_window_get_icon_for_size (CtkWindow *window,
+CdkPixbuf *ctk_window_get_icon_for_size (CtkWindow *window,
                                          gint       size);
 
 void       ctk_window_set_use_subsurface (CtkWindow *window,
                                           gboolean   use_subsurface);
 void       ctk_window_set_hardcoded_window (CtkWindow *window,
-                                            GdkWindow *cdk_window);
+                                            CdkWindow *cdk_window);
 
-GdkScreen *_ctk_window_get_screen (CtkWindow *window);
+CdkScreen *_ctk_window_get_screen (CtkWindow *window);
 
 void       ctk_window_set_unlimited_guessed_size (CtkWindow *window,
                                                   gboolean   x,

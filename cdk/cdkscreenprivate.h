@@ -23,13 +23,13 @@
 
 G_BEGIN_DECLS
 
-#define GDK_SCREEN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_SCREEN, GdkScreenClass))
+#define GDK_SCREEN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_SCREEN, CdkScreenClass))
 #define GDK_IS_SCREEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_SCREEN))
-#define GDK_SCREEN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_SCREEN, GdkScreenClass))
+#define GDK_SCREEN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_SCREEN, CdkScreenClass))
 
-typedef struct _GdkScreenClass GdkScreenClass;
+typedef struct _CdkScreenClass CdkScreenClass;
 
-struct _GdkScreen
+struct _CdkScreen
 {
   GObject parent_instance;
 
@@ -39,66 +39,66 @@ struct _GdkScreen
   guint closed : 1;
 };
 
-struct _GdkScreenClass
+struct _CdkScreenClass
 {
   GObjectClass parent_class;
 
-  GdkDisplay * (* get_display)           (GdkScreen *screen);
-  gint         (* get_width)             (GdkScreen *screen);
-  gint         (* get_height)            (GdkScreen *screen);
-  gint         (* get_width_mm)          (GdkScreen *screen);
-  gint         (* get_height_mm)         (GdkScreen *screen);
-  gint         (* get_number)            (GdkScreen *screen);
-  GdkWindow *  (* get_root_window)       (GdkScreen *screen);
-  gint         (* get_n_monitors)        (GdkScreen *screen);
-  gint         (* get_primary_monitor)   (GdkScreen *screen);
-  gint         (* get_monitor_width_mm)  (GdkScreen *screen,
+  CdkDisplay * (* get_display)           (CdkScreen *screen);
+  gint         (* get_width)             (CdkScreen *screen);
+  gint         (* get_height)            (CdkScreen *screen);
+  gint         (* get_width_mm)          (CdkScreen *screen);
+  gint         (* get_height_mm)         (CdkScreen *screen);
+  gint         (* get_number)            (CdkScreen *screen);
+  CdkWindow *  (* get_root_window)       (CdkScreen *screen);
+  gint         (* get_n_monitors)        (CdkScreen *screen);
+  gint         (* get_primary_monitor)   (CdkScreen *screen);
+  gint         (* get_monitor_width_mm)  (CdkScreen *screen,
                                           gint       monitor_num);
-  gint         (* get_monitor_height_mm) (GdkScreen *screen,
+  gint         (* get_monitor_height_mm) (CdkScreen *screen,
                                           gint       monitor_num);
-  gchar *      (* get_monitor_plug_name) (GdkScreen *screen,
+  gchar *      (* get_monitor_plug_name) (CdkScreen *screen,
                                           gint       monitor_num);
-  void         (* get_monitor_geometry)  (GdkScreen    *screen,
+  void         (* get_monitor_geometry)  (CdkScreen    *screen,
                                           gint          monitor_num,
-                                          GdkRectangle *dest);
-  void         (* get_monitor_workarea)  (GdkScreen    *screen,
+                                          CdkRectangle *dest);
+  void         (* get_monitor_workarea)  (CdkScreen    *screen,
                                           gint          monitor_num,
-                                          GdkRectangle *dest);
-  GList *      (* list_visuals)          (GdkScreen *screen);
-  GdkVisual *  (* get_system_visual)     (GdkScreen *screen);
-  GdkVisual *  (* get_rgba_visual)       (GdkScreen *screen);
-  gboolean     (* is_composited)         (GdkScreen *screen);
-  gchar *      (* make_display_name)     (GdkScreen *screen);
-  GdkWindow *  (* get_active_window)     (GdkScreen *screen);
-  GList *      (* get_window_stack)      (GdkScreen *screen);
-  void         (* broadcast_client_message) (GdkScreen *screen,
-                                             GdkEvent  *event);
-  gboolean     (* get_setting)           (GdkScreen   *screen,
+                                          CdkRectangle *dest);
+  GList *      (* list_visuals)          (CdkScreen *screen);
+  CdkVisual *  (* get_system_visual)     (CdkScreen *screen);
+  CdkVisual *  (* get_rgba_visual)       (CdkScreen *screen);
+  gboolean     (* is_composited)         (CdkScreen *screen);
+  gchar *      (* make_display_name)     (CdkScreen *screen);
+  CdkWindow *  (* get_active_window)     (CdkScreen *screen);
+  GList *      (* get_window_stack)      (CdkScreen *screen);
+  void         (* broadcast_client_message) (CdkScreen *screen,
+                                             CdkEvent  *event);
+  gboolean     (* get_setting)           (CdkScreen   *screen,
                                           const gchar *name,
                                           GValue      *value);
-  gint         (* visual_get_best_depth) (GdkScreen   *screen);
-  GdkVisualType (* visual_get_best_type) (GdkScreen   *screen);
-  GdkVisual *  (* visual_get_best)       (GdkScreen   *screen);
-  GdkVisual *  (* visual_get_best_with_depth) (GdkScreen   *screen,
+  gint         (* visual_get_best_depth) (CdkScreen   *screen);
+  CdkVisualType (* visual_get_best_type) (CdkScreen   *screen);
+  CdkVisual *  (* visual_get_best)       (CdkScreen   *screen);
+  CdkVisual *  (* visual_get_best_with_depth) (CdkScreen   *screen,
                                                gint depth);
-  GdkVisual *  (* visual_get_best_with_type) (GdkScreen   *screen,
-                                              GdkVisualType visual_type);
-  GdkVisual *  (* visual_get_best_with_both) (GdkScreen   *screen,
+  CdkVisual *  (* visual_get_best_with_type) (CdkScreen   *screen,
+                                              CdkVisualType visual_type);
+  CdkVisual *  (* visual_get_best_with_both) (CdkScreen   *screen,
                                               gint depth,
-                                              GdkVisualType visual_type);
-  void         (* query_depths)          (GdkScreen   *screen,
+                                              CdkVisualType visual_type);
+  void         (* query_depths)          (CdkScreen   *screen,
                                           gint **depths,
                                           gint  *count);
-  void         (* query_visual_types)    (GdkScreen   *screen,
-                                          GdkVisualType **visual_types,
+  void         (* query_visual_types)    (CdkScreen   *screen,
+                                          CdkVisualType **visual_types,
                                           gint           *count);
-  gint         (* get_monitor_scale_factor) (GdkScreen *screen,
+  gint         (* get_monitor_scale_factor) (CdkScreen *screen,
                                              gint       monitor_num);
 
   /* Signals: */
-  void (*size_changed) (GdkScreen *screen);
-  void (*composited_changed) (GdkScreen *screen);
-  void (*monitors_changed) (GdkScreen *screen);
+  void (*size_changed) (CdkScreen *screen);
+  void (*composited_changed) (CdkScreen *screen);
+  void (*monitors_changed) (CdkScreen *screen);
 };
 
 G_END_DECLS

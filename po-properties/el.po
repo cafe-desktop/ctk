@@ -852,8 +852,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Ένα GdkPixbuf προς εμφάνιση"
+msgid "A CdkPixbuf to display"
+msgstr "Ένα CdkPixbuf προς εμφάνιση"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2249,16 +2249,16 @@ msgid "Cell background color"
 msgstr "Χρώμα κελιού παρασκηνίου"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Χρώμα κελιού παρασκηνίου ως GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Χρώμα κελιού παρασκηνίου ως CdkColor"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Χρώμα RGBA κελιού παρασκηνίου"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Χρώμα κελιού παρασκηνίου ως GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Χρώμα κελιού παρασκηνίου ως CdkRGBA"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2496,16 +2496,16 @@ msgid "Background color"
 msgstr "Χρώμα παρασκηνίου"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:231
-msgid "Background color as a GdkColor"
-msgstr "Χρώμα παρασκηνίου ως GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Χρώμα παρασκηνίου ως CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Χρώμα παρασκηνίου ως RGBA"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:246
-msgid "Background color as a GdkRGBA"
-msgstr "Χρώμα παρασκηνίου ως GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Χρώμα παρασκηνίου ως CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:261
 msgid "Foreground color name"
@@ -2516,16 +2516,16 @@ msgid "Foreground color as a string"
 msgstr "Χρώμα προσκηνίου ως συμβολοσειρά"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:277
-msgid "Foreground color as a GdkColor"
-msgstr "Χρώμα προσκηνίου ως GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Χρώμα προσκηνίου ως CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Χρώμα προσκηνίου ως RGBA"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:292
-msgid "Foreground color as a GdkRGBA"
-msgstr "Χρώμα προσκηνίου ως GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Χρώμα προσκηνίου ως CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:308
 #: ctk/ctktextview.c:825
@@ -2997,8 +2997,8 @@ msgid "Color"
 msgstr "Χρώμα"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Τωρινό χρώμα ως GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Τωρινό χρώμα ως CdkRGBA"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4279,8 +4279,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Αριθμός σημείων που χρειάζονται για ενεργοποίηση της κίνησης"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "Παράθυρο Gdk για τη λήψη σχετικών γεγονότων"
+msgid "CdkWindow to receive events about"
+msgstr "Παράθυρο Cdk για τη λήψη σχετικών γεγονότων"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4622,8 +4622,8 @@ msgid "Animation"
 msgstr "Κίνηση"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation για εμφάνιση"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation για εμφάνιση"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7942,16 +7942,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Στυλ γωνίας γύρω από το κείμενο της μπάρας κατάστασης"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "Η σχετιζόμενη GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "Η σχετιζόμενη CdkScreen"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "Το σχετιζόμενο GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "Το σχετιζόμενο CdkFrameClock"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:299
 msgid "Text direction"
@@ -8252,16 +8252,16 @@ msgid "Paragraph background color"
 msgstr "Χρώμα παρασκηνίου παραγράφου"
 
 #: ctk/ctktexttag.c:630
-msgid "Paragraph background color as a GdkColor"
-msgstr "Χρώμα παρασκηνίου παραγράφου ως GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Χρώμα παρασκηνίου παραγράφου ως CdkColor"
 
 #: ctk/ctktexttag.c:644
 msgid "Paragraph background RGBA"
 msgstr "Παρασκήνιο παραγράφου, χρώμα RGBA"
 
 #: ctk/ctktexttag.c:645
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Παρασκήνιο παραγράφου, χρώμα RGBA ως GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Παρασκήνιο παραγράφου, χρώμα RGBA ως CdkRGBA"
 
 #: ctk/ctktexttag.c:662
 msgid "Fallback"
@@ -9287,9 +9287,9 @@ msgid "Events"
 msgstr "Γεγονότα"
 
 #: ctk/ctkwidget.c:1253
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Η μάσκα γεγονότων που αποφασίζει ποιο είδος GdkEvents λαμβάνει το γραφικό "
+"Η μάσκα γεγονότων που αποφασίζει ποιο είδος CdkEvents λαμβάνει το γραφικό "
 "στοιχείο."
 
 #: ctk/ctkwidget.c:1260
@@ -9988,14 +9988,14 @@ msgstr "Ο τίτλος προς χρήση για το χρωματικό πρ�
 #~ msgid "Event base for XInput events"
 #~ msgstr "Βάση γεγονότων για γεγονότα XInput"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
-#~ msgstr "Χρώμα παρασκηνίου ως (πιθανόν αδιάθετο) GdkColor"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
+#~ msgstr "Χρώμα παρασκηνίου ως (πιθανόν αδιάθετο) CdkColor"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
-#~ msgstr "Χρώμα προσκηνίου ως GdkColor"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
+#~ msgstr "Χρώμα προσκηνίου ως CdkColor"
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-#~ msgstr "Χρώμα παρασκηνίου παραγράφου ως (πιθανόν αδιάθετο) GdkColor"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+#~ msgstr "Χρώμα παρασκηνίου παραγράφου ως (πιθανόν αδιάθετο) CdkColor"
 
 #~ msgid ""
 #~ "The label for the link to the website of the program. If this is not set, "
@@ -10079,8 +10079,8 @@ msgstr "Ο τίτλος προς χρήση για το χρωματικό πρ�
 #~ "Η μάσκα που αποφασίζει ποιό είδος γεγονότων επέκτασης λαμβάνει το γραφικό "
 #~ "συστατικό."
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "the CdkScreen for the renderer"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "Η ρύθμιση που κρατάει την τιμή του spinbutton"
@@ -10171,17 +10171,17 @@ msgstr "Ο τίτλος προς χρήση για το χρωματικό πρ�
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "Ένα GdkPixmap προς προβολή"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "Ένα CdkPixmap προς προβολή"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "Μια εικόνα Gdk προς προβολή"
+#~ msgid "A CdkImage to display"
+#~ msgstr "Μια εικόνα Cdk προς προβολή"
 
 #~ msgid "Mask"
 #~ msgstr "Mask"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Mask bitmap για χρήση με GdkImage ή GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Mask bitmap για χρήση με CdkImage ή CdkPixmap"
 
 #~ msgid ""
 #~ "Whether to put a separator between the message dialog's text and the "

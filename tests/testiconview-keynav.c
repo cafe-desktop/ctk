@@ -180,7 +180,7 @@ keynav_failed (CtkWidget        *view,
 
 static gboolean
 focus_out (CtkWidget     *view,
-           GdkEventFocus *event,
+           CdkEventFocus *event,
            gpointer       data)
 {
   ctk_icon_view_unselect_all (CTK_ICON_VIEW (view));
@@ -190,7 +190,7 @@ focus_out (CtkWidget     *view,
 
 static gboolean
 focus_in (CtkWidget     *view,
-          GdkEventFocus *event,
+          CdkEventFocus *event,
           gpointer       data)
 {
   CtkTreePath *path;
@@ -216,7 +216,7 @@ static void
 set_styles (void)
 {
   CtkCssProvider *provider;
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   provider = ctk_css_provider_new ();
 

@@ -270,14 +270,14 @@ ctk_accel_group_get_is_locked (CtkAccelGroup *accel_group)
  * ctk_accel_group_get_modifier_mask:
  * @accel_group: a #CtkAccelGroup
  *
- * Gets a #GdkModifierType representing the mask for this
+ * Gets a #CdkModifierType representing the mask for this
  * @accel_group. For example, #GDK_CONTROL_MASK, #GDK_SHIFT_MASK, etc.
  *
  * Returns: the modifier mask for this accel group.
  *
  * Since: 2.14
  */
-GdkModifierType
+CdkModifierType
 ctk_accel_group_get_modifier_mask (CtkAccelGroup *accel_group)
 {
   g_return_val_if_fail (CTK_IS_ACCEL_GROUP (accel_group), 0);
@@ -478,7 +478,7 @@ bsearch_compare_accels (const void *d1,
 static void
 quick_accel_add (CtkAccelGroup   *accel_group,
                  guint            accel_key,
-                 GdkModifierType  accel_mods,
+                 CdkModifierType  accel_mods,
                  CtkAccelFlags    accel_flags,
                  GClosure        *closure,
                  GQuark           path_quark)
@@ -534,7 +534,7 @@ quick_accel_remove (CtkAccelGroup *accel_group,
   GQuark accel_quark = 0;
   CtkAccelGroupEntry *entry = accel_group->priv->priv_accels + pos;
   guint accel_key = entry->key.accel_key;
-  GdkModifierType accel_mods = entry->key.accel_mods;
+  CdkModifierType accel_mods = entry->key.accel_mods;
   GClosure *closure = entry->closure;
 
   /* quark for notification */
@@ -573,7 +573,7 @@ quick_accel_remove (CtkAccelGroup *accel_group,
 static CtkAccelGroupEntry*
 quick_accel_find (CtkAccelGroup   *accel_group,
                   guint            accel_key,
-                  GdkModifierType  accel_mods,
+                  CdkModifierType  accel_mods,
                   guint           *count_p)
 {
   CtkAccelGroupEntry *entry;
@@ -626,7 +626,7 @@ quick_accel_find (CtkAccelGroup   *accel_group,
 void
 ctk_accel_group_connect (CtkAccelGroup   *accel_group,
                          guint            accel_key,
-                         GdkModifierType  accel_mods,
+                         CdkModifierType  accel_mods,
                          CtkAccelFlags    accel_flags,
                          GClosure        *closure)
 {
@@ -668,7 +668,7 @@ ctk_accel_group_connect_by_path (CtkAccelGroup *accel_group,
                                  GClosure      *closure)
 {
   guint accel_key = 0;
-  GdkModifierType accel_mods = 0;
+  CdkModifierType accel_mods = 0;
   CtkAccelKey key;
 
   g_return_if_fail (CTK_IS_ACCEL_GROUP (accel_group));
@@ -739,7 +739,7 @@ ctk_accel_group_disconnect (CtkAccelGroup *accel_group,
 gboolean
 ctk_accel_group_disconnect_key (CtkAccelGroup   *accel_group,
                                 guint            accel_key,
-                                GdkModifierType  accel_mods)
+                                CdkModifierType  accel_mods)
 {
   CtkAccelGroupEntry *entries;
   GSList *slist, *clist = NULL;
@@ -831,7 +831,7 @@ _ctk_accel_group_get_accelerables (CtkAccelGroup *accel_group)
 CtkAccelGroupEntry*
 ctk_accel_group_query (CtkAccelGroup   *accel_group,
                        guint            accel_key,
-                       GdkModifierType  accel_mods,
+                       CdkModifierType  accel_mods,
                        guint           *n_entries)
 {
   CtkAccelGroupEntry *entries;
@@ -899,7 +899,7 @@ ctk_accel_group_activate (CtkAccelGroup   *accel_group,
                           GQuark           accel_quark,
                           GObject         *acceleratable,
                           guint            accel_key,
-                          GdkModifierType  accel_mods)
+                          CdkModifierType  accel_mods)
 {
   gboolean was_handled;
 
@@ -930,7 +930,7 @@ ctk_accel_group_activate (CtkAccelGroup   *accel_group,
 gboolean
 ctk_accel_groups_activate (GObject         *object,
                            guint            accel_key,
-                           GdkModifierType  accel_mods)
+                           CdkModifierType  accel_mods)
 {
   g_return_val_if_fail (G_IS_OBJECT (object), FALSE);
 
@@ -967,7 +967,7 @@ ctk_accel_groups_activate (GObject         *object,
  */
 gboolean
 ctk_accelerator_valid (guint           keyval,
-                       GdkModifierType modifiers)
+                       CdkModifierType modifiers)
 {
   static const guint invalid_accelerator_vals[] = {
     GDK_KEY_Shift_L, GDK_KEY_Shift_R, GDK_KEY_Shift_Lock,
@@ -1198,10 +1198,10 @@ void
 ctk_accelerator_parse_with_keycode (const gchar     *accelerator,
                                     guint           *accelerator_key,
                                     guint          **accelerator_codes,
-                                    GdkModifierType *accelerator_mods)
+                                    CdkModifierType *accelerator_mods)
 {
   guint keyval;
-  GdkModifierType mods;
+  CdkModifierType mods;
   gint len;
   gboolean error;
 
@@ -1364,8 +1364,8 @@ ctk_accelerator_parse_with_keycode (const gchar     *accelerator,
 
           if (keyval && accelerator_codes != NULL)
             {
-              GdkKeymap *keymap;
-              GdkKeymapKey *keys;
+              CdkKeymap *keymap;
+              CdkKeymapKey *keys;
               gint n_keys, i, j;
 
               keymap = cdk_keymap_get_for_display (cdk_display_get_default ());
@@ -1455,14 +1455,14 @@ out:
 void
 ctk_accelerator_parse (const gchar     *accelerator,
                        guint           *accelerator_key,
-                       GdkModifierType *accelerator_mods)
+                       CdkModifierType *accelerator_mods)
 {
   ctk_accelerator_parse_with_keycode (accelerator, accelerator_key, NULL, accelerator_mods);
 }
 
 /**
  * ctk_accelerator_name_with_keycode:
- * @display: (allow-none): a #GdkDisplay or %NULL to use the default display
+ * @display: (allow-none): a #CdkDisplay or %NULL to use the default display
  * @accelerator_key: accelerator keyval
  * @keycode: accelerator keycode
  * @accelerator_mods: accelerator modifier mask
@@ -1478,10 +1478,10 @@ ctk_accelerator_parse (const gchar     *accelerator,
  * Since: 3.4
  */
 gchar *
-ctk_accelerator_name_with_keycode (GdkDisplay      *display,
+ctk_accelerator_name_with_keycode (CdkDisplay      *display,
                                    guint            accelerator_key,
                                    guint            keycode,
-                                   GdkModifierType  accelerator_mods)
+                                   CdkModifierType  accelerator_mods)
 {
   gchar *ctk_name;
 
@@ -1518,7 +1518,7 @@ ctk_accelerator_name_with_keycode (GdkDisplay      *display,
  */
 gchar*
 ctk_accelerator_name (guint           accelerator_key,
-                      GdkModifierType accelerator_mods)
+                      CdkModifierType accelerator_mods)
 {
   static const gchar text_release[] = "<Release>";
   static const gchar text_primary[] = "<Primary>";
@@ -1532,7 +1532,7 @@ ctk_accelerator_name (guint           accelerator_key,
   static const gchar text_meta[] = "<Meta>";
   static const gchar text_super[] = "<Super>";
   static const gchar text_hyper[] = "<Hyper>";
-  GdkModifierType saved_mods;
+  CdkModifierType saved_mods;
   guint l;
   gchar *keyval_name;
   gchar *accelerator;
@@ -1647,7 +1647,7 @@ ctk_accelerator_name (guint           accelerator_key,
 
 /**
  * ctk_accelerator_get_label_with_keycode:
- * @display: (allow-none): a #GdkDisplay or %NULL to use the default display
+ * @display: (allow-none): a #CdkDisplay or %NULL to use the default display
  * @accelerator_key: accelerator keyval
  * @keycode: accelerator keycode
  * @accelerator_mods: accelerator modifier mask
@@ -1665,10 +1665,10 @@ ctk_accelerator_name (guint           accelerator_key,
  * Since: 3.4
  */
 gchar *
-ctk_accelerator_get_label_with_keycode (GdkDisplay      *display,
+ctk_accelerator_get_label_with_keycode (CdkDisplay      *display,
                                         guint            accelerator_key,
                                         guint            keycode,
-                                        GdkModifierType  accelerator_mods)
+                                        CdkModifierType  accelerator_mods)
 {
   gchar *ctk_label;
 
@@ -1703,7 +1703,7 @@ ctk_accelerator_get_label_with_keycode (GdkDisplay      *display,
  */
 gchar*
 ctk_accelerator_get_label (guint           accelerator_key,
-                           GdkModifierType accelerator_mods)
+                           CdkModifierType accelerator_mods)
 {
   CtkAccelLabelClass *klass;
   gchar *label;
@@ -1735,7 +1735,7 @@ ctk_accelerator_get_label (guint           accelerator_key,
  * before using any accelerator groups.
  */
 void
-ctk_accelerator_set_default_mod_mask (GdkModifierType default_mod_mask)
+ctk_accelerator_set_default_mod_mask (CdkModifierType default_mod_mask)
 {
   default_accel_mod_mask = (default_mod_mask & GDK_MODIFIER_MASK) |
     (GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK);
@@ -1751,12 +1751,12 @@ ctk_accelerator_set_default_mod_mask (GdkModifierType default_mod_mask)
  *
  * Returns: the default accelerator modifier mask
  */
-GdkModifierType
+CdkModifierType
 ctk_accelerator_get_default_mod_mask (void)
 {
   if (!default_accel_mod_mask)
     {
-      GdkDisplay *display;
+      CdkDisplay *display;
 
       display = cdk_display_get_default ();
 

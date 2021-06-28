@@ -252,15 +252,15 @@ void             ctk_icon_view_scroll_to_path     (CtkIconView            *icon_
 /* Drag-and-Drop support */
 GDK_AVAILABLE_IN_ALL
 void                   ctk_icon_view_enable_model_drag_source (CtkIconView              *icon_view,
-							       GdkModifierType           start_button_mask,
+							       CdkModifierType           start_button_mask,
 							       const CtkTargetEntry     *targets,
 							       gint                      n_targets,
-							       GdkDragAction             actions);
+							       CdkDragAction             actions);
 GDK_AVAILABLE_IN_ALL
 void                   ctk_icon_view_enable_model_drag_dest   (CtkIconView              *icon_view,
 							       const CtkTargetEntry     *targets,
 							       gint                      n_targets,
-							       GdkDragAction             actions);
+							       CdkDragAction             actions);
 GDK_AVAILABLE_IN_ALL
 void                   ctk_icon_view_unset_model_drag_source  (CtkIconView              *icon_view);
 GDK_AVAILABLE_IN_ALL
@@ -301,7 +301,7 @@ GDK_AVAILABLE_IN_3_6
 gboolean ctk_icon_view_get_cell_rect                          (CtkIconView     *icon_view,
 							       CtkTreePath     *path,
 							       CtkCellRenderer *cell,
-							       GdkRectangle    *rect);
+							       CdkRectangle    *rect);
 
 
 GDK_AVAILABLE_IN_ALL

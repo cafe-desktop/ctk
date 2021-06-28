@@ -505,7 +505,7 @@ ctk_css_node_real_get_style_provider (CtkCssNode *cssnode)
   return NULL;
 }
 
-static GdkFrameClock *
+static CdkFrameClock *
 ctk_css_node_real_get_frame_clock (CtkCssNode *cssnode)
 {
   return NULL;
@@ -682,7 +682,7 @@ ctk_css_node_new (void)
   return g_object_new (CTK_TYPE_CSS_NODE, NULL);
 }
 
-static GdkFrameClock *
+static CdkFrameClock *
 ctk_css_node_get_frame_clock_or_null (CtkCssNode *cssnode)
 {
   while (cssnode->parent)
@@ -694,7 +694,7 @@ ctk_css_node_get_frame_clock_or_null (CtkCssNode *cssnode)
 static gint64
 ctk_css_node_get_timestamp (CtkCssNode *cssnode)
 {
-  GdkFrameClock *frameclock;
+  CdkFrameClock *frameclock;
 
   frameclock = ctk_css_node_get_frame_clock_or_null (cssnode);
   if (frameclock == NULL)

@@ -43,7 +43,7 @@ void ctk_tooltip_set_text                (CtkTooltip         *tooltip,
                                           const gchar        *text);
 GDK_AVAILABLE_IN_ALL
 void ctk_tooltip_set_icon                (CtkTooltip         *tooltip,
-                                          GdkPixbuf          *pixbuf);
+                                          CdkPixbuf          *pixbuf);
 GDK_DEPRECATED_IN_3_10_FOR(ctk_tooltip_set_icon_from_icon_name)
 void ctk_tooltip_set_icon_from_stock     (CtkTooltip         *tooltip,
                                           const gchar        *stock_id,
@@ -62,10 +62,10 @@ void ctk_tooltip_set_custom	         (CtkTooltip         *tooltip,
 
 GDK_AVAILABLE_IN_ALL
 void ctk_tooltip_set_tip_area            (CtkTooltip         *tooltip,
-                                          const GdkRectangle *rect);
+                                          const CdkRectangle *rect);
 
 GDK_AVAILABLE_IN_ALL
-void ctk_tooltip_trigger_tooltip_query   (GdkDisplay         *display);
+void ctk_tooltip_trigger_tooltip_query   (CdkDisplay         *display);
 
 
 G_END_DECLS

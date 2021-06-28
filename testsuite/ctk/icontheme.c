@@ -81,7 +81,7 @@ assert_icon_lookup_size (const char         *icon_name,
 
   if (pixbuf_size > 0)
     {
-      GdkPixbuf *pixbuf;
+      CdkPixbuf *pixbuf;
       GError *error = NULL;
 
       pixbuf = ctk_icon_info_load_icon (info, &error);
@@ -622,7 +622,7 @@ load_icon (GObject      *source,
 {
   CtkIconInfo *info = (CtkIconInfo *)source;
   GError *error = NULL;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   pixbuf = ctk_icon_info_load_icon_finish (info, res, &error);
   g_assert (pixbuf != NULL);
@@ -640,7 +640,7 @@ load_symbolic (GObject      *source,
   CtkIconInfo *info = (CtkIconInfo *)source;
   GError *error = NULL;
   gboolean symbolic;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   pixbuf = ctk_icon_info_load_symbolic_finish (info, res, &symbolic, &error);
   g_assert (pixbuf != NULL);
@@ -669,7 +669,7 @@ test_async (void)
   CtkIconInfo *info1, *info2;
   CtkIconTheme *theme;
   GMainLoop *loop;
-  GdkRGBA fg, red, green, blue;
+  CdkRGBA fg, red, green, blue;
 
   cdk_rgba_parse (&fg, "white");
   cdk_rgba_parse (&red, "red");
@@ -732,7 +732,7 @@ test_nonsquare_symbolic (void)
   CtkIconInfo *info;
   GFile *file;
   GIcon *icon;
-  GdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
+  CdkRGBA black = { 0.0, 0.0, 0.0, 1.0 };
   gboolean was_symbolic = FALSE;
   GError *error = NULL;
   gchar *path = g_build_filename (g_test_get_dir (G_TEST_DIST),
@@ -742,7 +742,7 @@ test_nonsquare_symbolic (void)
 				  NULL);
 
   /* load the original image for reference */
-  GdkPixbuf *pixbuf = cdk_pixbuf_new_from_file (path, &error);
+  CdkPixbuf *pixbuf = cdk_pixbuf_new_from_file (path, &error);
   g_assert_no_error (error);
   g_assert_nonnull (pixbuf);
 

@@ -197,7 +197,7 @@ static void      ctk_dialog_add_buttons_valist   (CtkDialog    *dialog,
                                                   va_list       args);
 
 static gboolean  ctk_dialog_delete_event_handler (CtkWidget    *widget,
-                                                  GdkEventAny  *event,
+                                                  CdkEventAny  *event,
                                                   gpointer      user_data);
 static void      ctk_dialog_style_updated        (CtkWidget    *widget);
 static void      ctk_dialog_map                  (CtkWidget    *widget);
@@ -736,7 +736,7 @@ ctk_dialog_buildable_interface_init (CtkBuildableIface *iface)
 
 static gboolean
 ctk_dialog_delete_event_handler (CtkWidget   *widget,
-                                 GdkEventAny *event,
+                                 CdkEventAny *event,
                                  gpointer     user_data)
 {
   /* emit response signal */
@@ -1275,7 +1275,7 @@ run_response_handler (CtkDialog *dialog,
 
 static gint
 run_delete_handler (CtkDialog *dialog,
-                    GdkEventAny *event,
+                    CdkEventAny *event,
                     gpointer data)
 {
   RunInfo *ri = data;
@@ -1499,7 +1499,7 @@ ctk_alt_dialog_button_order (void)
 
 /**
  * ctk_alternative_dialog_button_order:
- * @screen: (allow-none): a #GdkScreen, or %NULL to use the default screen
+ * @screen: (allow-none): a #CdkScreen, or %NULL to use the default screen
  *
  * Returns %TRUE if dialogs are expected to use an alternative
  * button order on the screen @screen. See
@@ -1517,7 +1517,7 @@ ctk_alt_dialog_button_order (void)
  * Deprecated: 3.10: Deprecated
  */
 gboolean
-ctk_alternative_dialog_button_order (GdkScreen *screen)
+ctk_alternative_dialog_button_order (CdkScreen *screen)
 {
   return ctk_alt_dialog_button_order ();
 }

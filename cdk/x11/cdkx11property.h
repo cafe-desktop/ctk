@@ -36,23 +36,23 @@
 
 G_BEGIN_DECLS
 
-/* Functions to get the X Atom equivalent to the GdkAtom */
+/* Functions to get the X Atom equivalent to the CdkAtom */
 GDK_AVAILABLE_IN_ALL
-Atom                  cdk_x11_atom_to_xatom_for_display (GdkDisplay  *display,
-                                                         GdkAtom      atom);
+Atom                  cdk_x11_atom_to_xatom_for_display (CdkDisplay  *display,
+                                                         CdkAtom      atom);
 GDK_AVAILABLE_IN_ALL
-GdkAtom               cdk_x11_xatom_to_atom_for_display (GdkDisplay  *display,
+CdkAtom               cdk_x11_xatom_to_atom_for_display (CdkDisplay  *display,
                                                          Atom         xatom);
 GDK_AVAILABLE_IN_ALL
-Atom                  cdk_x11_get_xatom_by_name_for_display (GdkDisplay  *display,
+Atom                  cdk_x11_get_xatom_by_name_for_display (CdkDisplay  *display,
                                                              const gchar *atom_name);
 GDK_AVAILABLE_IN_ALL
-const gchar *         cdk_x11_get_xatom_name_for_display (GdkDisplay  *display,
+const gchar *         cdk_x11_get_xatom_name_for_display (CdkDisplay  *display,
                                                           Atom         xatom);
 GDK_AVAILABLE_IN_ALL
-Atom                  cdk_x11_atom_to_xatom     (GdkAtom      atom);
+Atom                  cdk_x11_atom_to_xatom     (CdkAtom      atom);
 GDK_AVAILABLE_IN_ALL
-GdkAtom               cdk_x11_xatom_to_atom     (Atom         xatom);
+CdkAtom               cdk_x11_xatom_to_atom     (Atom         xatom);
 GDK_AVAILABLE_IN_ALL
 Atom                  cdk_x11_get_xatom_by_name (const gchar *atom_name);
 GDK_AVAILABLE_IN_ALL

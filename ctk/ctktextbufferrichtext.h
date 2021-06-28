@@ -76,58 +76,58 @@ typedef gboolean (* CtkTextBufferDeserializeFunc) (CtkTextBuffer     *register_b
                                                    GError           **error);
 
 GDK_AVAILABLE_IN_ALL
-GdkAtom   ctk_text_buffer_register_serialize_format   (CtkTextBuffer                *buffer,
+CdkAtom   ctk_text_buffer_register_serialize_format   (CtkTextBuffer                *buffer,
                                                        const gchar                  *mime_type,
                                                        CtkTextBufferSerializeFunc    function,
                                                        gpointer                      user_data,
                                                        GDestroyNotify                user_data_destroy);
 GDK_AVAILABLE_IN_ALL
-GdkAtom   ctk_text_buffer_register_serialize_tagset   (CtkTextBuffer                *buffer,
+CdkAtom   ctk_text_buffer_register_serialize_tagset   (CtkTextBuffer                *buffer,
                                                        const gchar                  *tagset_name);
 
 GDK_AVAILABLE_IN_ALL
-GdkAtom   ctk_text_buffer_register_deserialize_format (CtkTextBuffer                *buffer,
+CdkAtom   ctk_text_buffer_register_deserialize_format (CtkTextBuffer                *buffer,
                                                        const gchar                  *mime_type,
                                                        CtkTextBufferDeserializeFunc  function,
                                                        gpointer                      user_data,
                                                        GDestroyNotify                user_data_destroy);
 GDK_AVAILABLE_IN_ALL
-GdkAtom   ctk_text_buffer_register_deserialize_tagset (CtkTextBuffer                *buffer,
+CdkAtom   ctk_text_buffer_register_deserialize_tagset (CtkTextBuffer                *buffer,
                                                        const gchar                  *tagset_name);
 
 GDK_AVAILABLE_IN_ALL
 void    ctk_text_buffer_unregister_serialize_format   (CtkTextBuffer                *buffer,
-                                                       GdkAtom                       format);
+                                                       CdkAtom                       format);
 GDK_AVAILABLE_IN_ALL
 void    ctk_text_buffer_unregister_deserialize_format (CtkTextBuffer                *buffer,
-                                                       GdkAtom                       format);
+                                                       CdkAtom                       format);
 
 GDK_AVAILABLE_IN_ALL
 void     ctk_text_buffer_deserialize_set_can_create_tags (CtkTextBuffer             *buffer,
-                                                          GdkAtom                    format,
+                                                          CdkAtom                    format,
                                                           gboolean                   can_create_tags);
 GDK_AVAILABLE_IN_ALL
 gboolean ctk_text_buffer_deserialize_get_can_create_tags (CtkTextBuffer             *buffer,
-                                                          GdkAtom                    format);
+                                                          CdkAtom                    format);
 
 GDK_AVAILABLE_IN_ALL
-GdkAtom * ctk_text_buffer_get_serialize_formats       (CtkTextBuffer                *buffer,
+CdkAtom * ctk_text_buffer_get_serialize_formats       (CtkTextBuffer                *buffer,
                                                        gint                         *n_formats);
 GDK_AVAILABLE_IN_ALL
-GdkAtom * ctk_text_buffer_get_deserialize_formats     (CtkTextBuffer                *buffer,
+CdkAtom * ctk_text_buffer_get_deserialize_formats     (CtkTextBuffer                *buffer,
                                                        gint                         *n_formats);
 
 GDK_AVAILABLE_IN_ALL
 guint8  * ctk_text_buffer_serialize                   (CtkTextBuffer                *register_buffer,
                                                        CtkTextBuffer                *content_buffer,
-                                                       GdkAtom                       format,
+                                                       CdkAtom                       format,
                                                        const CtkTextIter            *start,
                                                        const CtkTextIter            *end,
                                                        gsize                        *length);
 GDK_AVAILABLE_IN_ALL
 gboolean  ctk_text_buffer_deserialize                 (CtkTextBuffer                *register_buffer,
                                                        CtkTextBuffer                *content_buffer,
-                                                       GdkAtom                       format,
+                                                       CdkAtom                       format,
                                                        CtkTextIter                  *iter,
                                                        const guint8                 *data,
                                                        gsize                         length,

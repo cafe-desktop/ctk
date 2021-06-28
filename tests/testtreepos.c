@@ -54,7 +54,7 @@ clicked_icon (CtkTreeView  *tv,
 
 static gboolean
 release_event (CtkTreeView    *tv,
-               GdkEventButton *event)
+               CdkEventButton *event)
 {
   CtkTreePath *path;
 

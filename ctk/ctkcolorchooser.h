@@ -41,19 +41,19 @@ struct _CtkColorChooserInterface
 
   /* Methods */
   void (* get_rgba)    (CtkColorChooser *chooser,
-                        GdkRGBA         *color);
+                        CdkRGBA         *color);
   void (* set_rgba)    (CtkColorChooser *chooser,
-                        const GdkRGBA   *color);
+                        const CdkRGBA   *color);
 
   void (* add_palette) (CtkColorChooser *chooser,
                         CtkOrientation   orientation,
                         gint             colors_per_line,
                         gint             n_colors,
-                        GdkRGBA         *colors);
+                        CdkRGBA         *colors);
 
   /* Signals */
   void (* color_activated) (CtkColorChooser *chooser,
-                            const GdkRGBA   *color);
+                            const CdkRGBA   *color);
 
   /* Padding */
   gpointer padding[12];
@@ -64,10 +64,10 @@ GType    ctk_color_chooser_get_type        (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_4
 void     ctk_color_chooser_get_rgba       (CtkColorChooser *chooser,
-                                           GdkRGBA         *color);
+                                           CdkRGBA         *color);
 GDK_AVAILABLE_IN_3_4
 void     ctk_color_chooser_set_rgba       (CtkColorChooser *chooser,
-                                           const GdkRGBA   *color);
+                                           const CdkRGBA   *color);
 GDK_AVAILABLE_IN_3_4
 gboolean ctk_color_chooser_get_use_alpha  (CtkColorChooser *chooser);
 
@@ -80,7 +80,7 @@ void     ctk_color_chooser_add_palette    (CtkColorChooser *chooser,
                                            CtkOrientation   orientation,
                                            gint             colors_per_line,
                                            gint             n_colors,
-                                           GdkRGBA         *colors);
+                                           CdkRGBA         *colors);
 
 G_END_DECLS
 

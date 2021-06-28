@@ -30,14 +30,14 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_DEVICE_PAD         (cdk_device_pad_get_type ())
-#define GDK_DEVICE_PAD(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_PAD, GdkDevicePad))
+#define GDK_DEVICE_PAD(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_PAD, CdkDevicePad))
 #define GDK_IS_DEVICE_PAD(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_PAD))
 
-typedef struct _GdkDevicePad GdkDevicePad;
-typedef struct _GdkDevicePadInterface GdkDevicePadInterface;
+typedef struct _CdkDevicePad CdkDevicePad;
+typedef struct _CdkDevicePadInterface CdkDevicePadInterface;
 
 /**
- * GdkDevicePadFeature:
+ * CdkDevicePadFeature:
  * @GDK_DEVICE_PAD_FEATURE_BUTTON: a button
  * @GDK_DEVICE_PAD_FEATURE_RING: a ring-shaped interactive area
  * @GDK_DEVICE_PAD_FEATURE_STRIP: a straight interactive area
@@ -48,25 +48,25 @@ typedef enum {
   GDK_DEVICE_PAD_FEATURE_BUTTON,
   GDK_DEVICE_PAD_FEATURE_RING,
   GDK_DEVICE_PAD_FEATURE_STRIP
-} GdkDevicePadFeature;
+} CdkDevicePadFeature;
 
 GDK_AVAILABLE_IN_3_22
 GType cdk_device_pad_get_type          (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_22
-gint  cdk_device_pad_get_n_groups      (GdkDevicePad *pad);
+gint  cdk_device_pad_get_n_groups      (CdkDevicePad *pad);
 
 GDK_AVAILABLE_IN_3_22
-gint  cdk_device_pad_get_group_n_modes (GdkDevicePad *pad,
+gint  cdk_device_pad_get_group_n_modes (CdkDevicePad *pad,
                                         gint          group_idx);
 
 GDK_AVAILABLE_IN_3_22
-gint  cdk_device_pad_get_n_features    (GdkDevicePad        *pad,
-                                        GdkDevicePadFeature  feature);
+gint  cdk_device_pad_get_n_features    (CdkDevicePad        *pad,
+                                        CdkDevicePadFeature  feature);
 
 GDK_AVAILABLE_IN_3_22
-gint  cdk_device_pad_get_feature_group (GdkDevicePad        *pad,
-                                        GdkDevicePadFeature  feature,
+gint  cdk_device_pad_get_feature_group (CdkDevicePad        *pad,
+                                        CdkDevicePadFeature  feature,
                                         gint                 feature_idx);
 
 G_END_DECLS

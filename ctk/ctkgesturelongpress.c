@@ -97,7 +97,7 @@ _ctk_gesture_long_press_timeout (gpointer user_data)
 {
   CtkGestureLongPress *gesture = user_data;
   CtkGestureLongPressPrivate *priv;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   gdouble x, y;
 
   priv = ctk_gesture_long_press_get_instance_private (gesture);
@@ -113,10 +113,10 @@ _ctk_gesture_long_press_timeout (gpointer user_data)
 
 static void
 ctk_gesture_long_press_begin (CtkGesture       *gesture,
-                              GdkEventSequence *sequence)
+                              CdkEventSequence *sequence)
 {
   CtkGestureLongPressPrivate *priv;
-  const GdkEvent *event;
+  const CdkEvent *event;
   CtkWidget *widget;
   gint delay;
 
@@ -146,7 +146,7 @@ ctk_gesture_long_press_begin (CtkGesture       *gesture,
 
 static void
 ctk_gesture_long_press_update (CtkGesture       *gesture,
-                               GdkEventSequence *sequence)
+                               CdkEventSequence *sequence)
 {
   CtkGestureLongPressPrivate *priv;
   CtkWidget *widget;
@@ -172,7 +172,7 @@ ctk_gesture_long_press_update (CtkGesture       *gesture,
 
 static void
 ctk_gesture_long_press_end (CtkGesture       *gesture,
-                            GdkEventSequence *sequence)
+                            CdkEventSequence *sequence)
 {
   CtkGestureLongPressPrivate *priv;
 
@@ -190,7 +190,7 @@ ctk_gesture_long_press_end (CtkGesture       *gesture,
 
 static void
 ctk_gesture_long_press_cancel (CtkGesture       *gesture,
-                               GdkEventSequence *sequence)
+                               CdkEventSequence *sequence)
 {
   ctk_gesture_long_press_end (gesture, sequence);
   CTK_GESTURE_CLASS (ctk_gesture_long_press_parent_class)->cancel (gesture, sequence);
@@ -198,7 +198,7 @@ ctk_gesture_long_press_cancel (CtkGesture       *gesture,
 
 static void
 ctk_gesture_long_press_sequence_state_changed (CtkGesture            *gesture,
-                                               GdkEventSequence      *sequence,
+                                               CdkEventSequence      *sequence,
                                                CtkEventSequenceState  state)
 {
   if (state == CTK_EVENT_SEQUENCE_DENIED)

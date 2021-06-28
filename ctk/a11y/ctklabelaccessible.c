@@ -995,7 +995,7 @@ ctk_label_accessible_get_character_extents (AtkText      *text,
   PangoRectangle char_rect;
   const gchar *label_text;
   gint index, x_layout, y_layout;
-  GdkWindow *window;
+  CdkWindow *window;
   gint x_window, y_window;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (text));
@@ -1040,7 +1040,7 @@ ctk_label_accessible_get_offset_at_point (AtkText      *atk_text,
   gint index, x_layout, y_layout;
   gint x_window, y_window;
   gint x_local, y_local;
-  GdkWindow *window;
+  CdkWindow *window;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (atk_text));
   if (widget == NULL)

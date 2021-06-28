@@ -849,7 +849,7 @@ ctk_shortcuts_window_class_init (CtkShortcutsWindowClass *klass)
 
 static gboolean
 window_key_press_event_cb (CtkWidget *window,
-                           GdkEvent  *event,
+                           CdkEvent  *event,
                            gpointer   data)
 {
   CtkShortcutsWindow *self = CTK_SHORTCUTS_WINDOW (window);

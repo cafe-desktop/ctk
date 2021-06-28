@@ -94,7 +94,7 @@
         of a keyboard, a pointing device and one or more 
         <glossterm linkend="screen">screens</glossterm>. 
         Applications open a display to show windows and interact with the user.
-        In GDK, a display is represented by a #GdkDisplay.
+        In GDK, a display is represented by a #CdkDisplay.
       </para>
     </glossdef>
   </glossentry>
@@ -137,7 +137,7 @@
       <para>
 	This is the step in a <glossterm
 	linkend="widget">widget's</glossterm> life cycle where it
-	actually shows the GdkWindows it created when it was
+	actually shows the CdkWindows it created when it was
 	<glossterm linkend="realization">realized</glossterm>.  When a
 	widget is mapped, it must turn on its
 	%CTK_MAPPED <link linkend="CtkWidgetFlags">flag</link>.
@@ -193,7 +193,7 @@
     <glossterm>no-window widget</glossterm>
     <glossdef>
       <para>
-	A widget that does not have a GdkWindow of its own on which to
+	A widget that does not have a CdkWindow of its own on which to
 	draw its contents, but rather shares its <glossterm
 	linkend="parent">parent's</glossterm>.  This can be tested with
 	the ctk_widget_get_has_window() function.
@@ -218,20 +218,20 @@
       <para>
 	This is the step in a <glossterm
 	linkend="widget">widget's</glossterm> life cycle where it
-	creates its own GdkWindow, or otherwise associates itself with
+	creates its own CdkWindow, or otherwise associates itself with
 	its <glossterm linkend="parent">parent's</glossterm>
-	GdkWindow.  If the widget has its own window, then it must
+	CdkWindow.  If the widget has its own window, then it must
 	also attach a <glossterm linkend="style">style</glossterm> to
 	it.  A widget becomes unrealized by destroying its associated
-	GdkWindow.  When a widget is realized, it must turn on its
+	CdkWindow.  When a widget is realized, it must turn on its
 	%CTK_REALIZED <link linkend="CtkWidgetFlags">flag</link>.
       </para>
 
       <para>
-	Widgets that don't own the GdkWindow on which they draw are
+	Widgets that don't own the CdkWindow on which they draw are
 	called <glossterm linkend="no-window">no-window widgets</glossterm>.  
         This can be tested with the ctk_widget_get_has_window() function.  Normally,
-        these widgets draw on their parent's GdkWindow.
+        these widgets draw on their parent's CdkWindow.
       </para>
 
       <para>
@@ -272,7 +272,7 @@
         Each screen can stretch across multiple physical monitors.
       </para>
       <para>
-        In GDK, screens are represented by #GdkScreen objects.
+        In GDK, screens are represented by #CdkScreen objects.
       </para>
     </glossdef>
   </glossentry>

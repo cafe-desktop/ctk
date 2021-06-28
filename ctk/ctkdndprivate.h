@@ -31,9 +31,9 @@ struct _CtkDragDestSite
 {
   CtkDestDefaults    flags;
   CtkTargetList     *target_list;
-  GdkDragAction      actions;
-  GdkWindow         *proxy_window;
-  GdkDragProtocol    proxy_protocol;
+  CdkDragAction      actions;
+  CdkWindow         *proxy_window;
+  CdkDragProtocol    proxy_protocol;
   guint              do_proxy     : 1;
   guint              proxy_coords : 1;
   guint              have_drag    : 1;
@@ -42,22 +42,22 @@ struct _CtkDragDestSite
 
 G_BEGIN_DECLS
 
-GdkDragContext *        ctk_drag_begin_internal         (CtkWidget              *widget,
+CdkDragContext *        ctk_drag_begin_internal         (CtkWidget              *widget,
                                                          gboolean               *out_needs_icon,
                                                          CtkTargetList          *target_list,
-                                                         GdkDragAction           actions,
+                                                         CdkDragAction           actions,
                                                          gint                    button,
-                                                         const GdkEvent         *event,
+                                                         const CdkEvent         *event,
                                                          int                     x,
                                                          int                     y);
-void                    ctk_drag_set_icon_definition    (GdkDragContext         *context,
+void                    ctk_drag_set_icon_definition    (CdkDragContext         *context,
                                                          CtkImageDefinition     *def,
                                                          gint                    hot_x,
                                                          gint                    hot_y);
 void                    _ctk_drag_source_handle_event   (CtkWidget              *widget,
-                                                         GdkEvent               *event);
+                                                         CdkEvent               *event);
 void                    _ctk_drag_dest_handle_event     (CtkWidget              *toplevel,
-				                         GdkEvent               *event);
+				                         CdkEvent               *event);
 
 G_END_DECLS
 

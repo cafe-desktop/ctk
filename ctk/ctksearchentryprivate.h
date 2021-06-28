@@ -29,7 +29,7 @@
 
 G_BEGIN_DECLS
 
-gboolean ctk_search_entry_is_keynav_event (GdkEvent *event);
+gboolean ctk_search_entry_is_keynav_event (CdkEvent *event);
 
 G_END_DECLS
 

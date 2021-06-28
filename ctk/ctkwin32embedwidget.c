@@ -140,7 +140,7 @@ ctk_win32_embed_widget_unrealize (CtkWidget *widget)
 static LRESULT CALLBACK
 ctk_win32_embed_widget_window_process (HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
-  GdkWindow *window;
+  CdkWindow *window;
   CtkWin32EmbedWidget *embed_widget;
   gpointer user_data;
 
@@ -169,8 +169,8 @@ ctk_win32_embed_widget_realize (CtkWidget *widget)
   CtkWindow *window = CTK_WINDOW (widget);
   CtkWin32EmbedWidget *embed_widget = CTK_WIN32_EMBED_WIDGET (widget);
   CtkAllocation allocation;
-  GdkWindow *cdk_window;
-  GdkWindowAttr attributes;
+  CdkWindow *cdk_window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
   LONG_PTR styles;
 

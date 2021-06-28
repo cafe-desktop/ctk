@@ -27,7 +27,7 @@
 
 /* Cannot use TrackMouseEvent, as the stupid WM_MOUSELEAVE message
  * doesn’t tell us where the mouse has gone. Thus we cannot use it to
- * generate a correct GdkNotifyType. Pity, as using TrackMouseEvent
+ * generate a correct CdkNotifyType. Pity, as using TrackMouseEvent
  * otherwise would make it possible to reliably generate
  * GDK_LEAVE_NOTIFY events, which would help get rid of those pesky
  * tooltips sometimes popping up in the wrong place.
@@ -111,15 +111,15 @@ static gboolean cdk_event_dispatch (GSource     *source,
 static GList *client_filters;	/* Filters for client messages */
 extern gint       _cdk_input_ignore_core;
 
-GdkCursor *_cdk_win32_grab_cursor;
+CdkCursor *_cdk_win32_grab_cursor;
 
 typedef struct
 {
   GSource source;
 
-  GdkDisplay *display;
+  CdkDisplay *display;
   GPollFD event_poll_fd;
-} GdkWin32EventSource;
+} CdkWin32EventSource;
 
 static GSourceFuncs event_funcs = {
   cdk_event_prepare,
@@ -128,8 +128,8 @@ static GSourceFuncs event_funcs = {
   NULL
 };
 
-static GdkWindow *mouse_window = NULL;
-static GdkWindow *mouse_window_ignored_leave = NULL;
+static CdkWindow *mouse_window = NULL;
+static CdkWindow *mouse_window_ignored_leave = NULL;
 static gint current_x, current_y;
 static gint current_root_x, current_root_y;
 static UINT client_message;
@@ -188,13 +188,13 @@ _cdk_win32_get_next_tick (gulong suggested_tick)
 }
 
 static void
-generate_focus_event (GdkDeviceManager *device_manager,
-                      GdkWindow        *window,
+generate_focus_event (CdkDeviceManager *device_manager,
+                      CdkWindow        *window,
                       gboolean          in)
 {
-  GdkDevice *device;
-  GdkDevice *source_device;
-  GdkEvent *event;
+  CdkDevice *device;
+  CdkDevice *source_device;
+  CdkEvent *event;
 
   device = GDK_DEVICE_MANAGER_WIN32 (device_manager)->core_keyboard;
   source_device = GDK_DEVICE_MANAGER_WIN32 (device_manager)->system_keyboard;
@@ -210,14 +210,14 @@ generate_focus_event (GdkDeviceManager *device_manager,
 }
 
 static void
-generate_grab_broken_event (GdkDeviceManager *device_manager,
-                            GdkWindow        *window,
+generate_grab_broken_event (CdkDeviceManager *device_manager,
+                            CdkWindow        *window,
                             gboolean          keyboard,
-                            GdkWindow        *grab_window)
+                            CdkWindow        *grab_window)
 {
-  GdkEvent *event = cdk_event_new (GDK_GRAB_BROKEN);
-  GdkDevice *device;
-  GdkDevice *source_device;
+  CdkEvent *event = cdk_event_new (GDK_GRAB_BROKEN);
+  CdkDevice *device;
+  CdkDevice *source_device;
 
   if (keyboard)
     {
@@ -304,9 +304,9 @@ _cdk_win32_window_procedure (HWND   hwnd,
 static LRESULT
 low_level_keystroke_handler (WPARAM message,
                                        KBDLLHOOKSTRUCT *kbdhook,
-                                       GdkWindow *window)
+                                       CdkWindow *window)
 {
-  GdkWindow *toplevel = cdk_window_get_toplevel (window);
+  CdkWindow *toplevel = cdk_window_get_toplevel (window);
   static DWORD last_keydown = 0;
 
   if (message == WM_KEYDOWN &&
@@ -316,7 +316,7 @@ low_level_keystroke_handler (WPARAM message,
       ((GetKeyState (VK_LWIN) & 0x8000) ||
       (GetKeyState (VK_RWIN) & 0x8000)))
 	{
-	  GdkWin32AeroSnapCombo combo = GDK_WIN32_AEROSNAP_COMBO_NOTHING;
+	  CdkWin32AeroSnapCombo combo = GDK_WIN32_AEROSNAP_COMBO_NOTHING;
 	  gboolean lshiftdown = GetKeyState (VK_LSHIFT) & 0x8000;
           gboolean rshiftdown = GetKeyState (VK_RSHIFT) & 0x8000;
           gboolean oneshiftdown = (lshiftdown || rshiftdown) && !(lshiftdown && rshiftdown);
@@ -370,7 +370,7 @@ low_level_keyboard_proc (int    code,
 {
   KBDLLHOOKSTRUCT *kbdhook;
   HWND kbd_focus_owner;
-  GdkWindow *cdk_kbd_focus_owner;
+  CdkWindow *cdk_kbd_focus_owner;
   LRESULT chain;
 
   do
@@ -420,10 +420,10 @@ set_up_low_level_keyboard_hook (void)
 }
 
 void
-_cdk_events_init (GdkDisplay *display)
+_cdk_events_init (CdkDisplay *display)
 {
   GSource *source;
-  GdkWin32EventSource *event_source;
+  CdkWin32EventSource *event_source;
 
 #if 0
   int i, j, n;
@@ -511,11 +511,11 @@ _cdk_events_init (GdkDisplay *display)
   GDK_NOTE (EVENTS, g_print ("latin_locale = %08x\n", (guint) latin_locale));
 #endif
 
-  source = g_source_new (&event_funcs, sizeof (GdkWin32EventSource));
+  source = g_source_new (&event_funcs, sizeof (CdkWin32EventSource));
   g_source_set_name (source, "GDK Win32 event source");
   g_source_set_priority (source, GDK_PRIORITY_EVENTS);
 
-  event_source = (GdkWin32EventSource *)source;
+  event_source = (CdkWin32EventSource *)source;
   event_source->display = display;
 #ifdef G_WITH_CYGWIN
   event_source->event_poll_fd.fd = open ("/dev/windows", O_RDONLY);
@@ -534,7 +534,7 @@ _cdk_events_init (GdkDisplay *display)
 }
 
 gboolean
-_cdk_win32_display_has_pending (GdkDisplay *display)
+_cdk_win32_display_has_pending (CdkDisplay *display)
 {
   return (_cdk_event_queue_find_first (display) ||
 	  (modal_win32_dialog == NULL &&
@@ -544,7 +544,7 @@ _cdk_win32_display_has_pending (GdkDisplay *display)
 #if 0 /* Unused, but might be useful to re-introduce in some debugging output? */
 
 static char *
-event_mask_string (GdkEventMask mask)
+event_mask_string (CdkEventMask mask)
 {
   static char bfr[500];
   char *p = bfr;
@@ -581,17 +581,17 @@ event_mask_string (GdkEventMask mask)
 
 #endif
 
-static GdkWindow *
-find_window_for_mouse_event (GdkWindow* reported_window,
+static CdkWindow *
+find_window_for_mouse_event (CdkWindow* reported_window,
 			     MSG*       msg)
 {
   POINT pt;
-  GdkDisplay *display;
-  GdkDeviceManagerWin32 *device_manager;
-  GdkWindow *event_window;
+  CdkDisplay *display;
+  CdkDeviceManagerWin32 *device_manager;
+  CdkWindow *event_window;
   HWND hwnd;
   RECT rect;
-  GdkDeviceGrabInfo *grab;
+  CdkDeviceGrabInfo *grab;
 
   display = cdk_display_get_default ();
   device_manager = GDK_DEVICE_MANAGER_WIN32 (cdk_display_get_device_manager (display));
@@ -631,10 +631,10 @@ find_window_for_mouse_event (GdkWindow* reported_window,
 }
 
 static void
-build_key_event_state (GdkEvent *event,
+build_key_event_state (CdkEvent *event,
 		       BYTE     *key_state)
 {
-  GdkWin32Keymap *keymap;
+  CdkWin32Keymap *keymap;
 
   event->key.state = 0;
 
@@ -725,7 +725,7 @@ build_pointer_event_state (MSG *msg)
 }
 
 static void
-build_wm_ime_composition_event (GdkEvent *event,
+build_wm_ime_composition_event (CdkEvent *event,
 				MSG      *msg,
 				wchar_t   wc,
 				BYTE     *key_state)
@@ -763,7 +763,7 @@ print_event_state (guint state)
 }
 
 void
-_cdk_win32_print_event (const GdkEvent *event)
+_cdk_win32_print_event (const CdkEvent *event)
 {
   gchar *escaped, *kvname;
   gchar *selection_name, *target_name, *property_name;
@@ -910,7 +910,7 @@ _cdk_win32_print_event (const GdkEvent *event)
 		 event->dnd.context->dest_window == NULL ? NULL : GDK_WINDOW_HWND (event->dnd.context->dest_window));
       break;
     case GDK_CLIENT_EVENT:
-      /* no more GdkEventClient */
+      /* no more CdkEventClient */
       break;
     case GDK_SCROLL:
       g_print ("(%.4g,%.4g) (%.4g,%.4g) %s ",
@@ -968,7 +968,7 @@ decode_key_lparam (LPARAM lParam)
 #endif
 
 static void
-fixup_event (GdkEvent *event)
+fixup_event (CdkEvent *event)
 {
   if (event->any.window)
     g_object_ref (event->any.window);
@@ -988,9 +988,9 @@ fixup_event (GdkEvent *event)
 }
 
 void
-_cdk_win32_append_event (GdkEvent *event)
+_cdk_win32_append_event (CdkEvent *event)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   GList *link;
 
   display = cdk_display_get_default ();
@@ -1008,7 +1008,7 @@ _cdk_win32_append_event (GdkEvent *event)
 }
 
 static void
-fill_key_event_string (GdkEvent *event)
+fill_key_event_string (CdkEvent *event)
 {
   gunichar c;
   gchar buf[256];
@@ -1074,24 +1074,24 @@ fill_key_event_string (GdkEvent *event)
     }
 }
 
-static GdkFilterReturn
-apply_event_filters (GdkWindow  *window,
+static CdkFilterReturn
+apply_event_filters (CdkWindow  *window,
 		     MSG        *msg,
 		     GList     **filters)
 {
-  GdkFilterReturn result = GDK_FILTER_CONTINUE;
-  GdkEvent *event;
-  GdkDisplay *display;
+  CdkFilterReturn result = GDK_FILTER_CONTINUE;
+  CdkEvent *event;
+  CdkDisplay *display;
   GList *node;
   GList *tmp_list;
 
   event = cdk_event_new (GDK_NOTHING);
   event->any.window = g_object_ref (window);
-  ((GdkEventPrivate *)event)->flags |= GDK_EVENT_PENDING;
+  ((CdkEventPrivate *)event)->flags |= GDK_EVENT_PENDING;
 
   display = cdk_display_get_default ();
 
-  /* I think GdkFilterFunc semantics require the passed-in event
+  /* I think CdkFilterFunc semantics require the passed-in event
    * to already be in the queue. The filter func can generate
    * more events and append them after it if it likes.
    */
@@ -1100,7 +1100,7 @@ apply_event_filters (GdkWindow  *window,
   tmp_list = *filters;
   while (tmp_list)
     {
-      GdkEventFilter *filter = (GdkEventFilter *) tmp_list->data;
+      CdkEventFilter *filter = (CdkEventFilter *) tmp_list->data;
       GList *node;
 
       if ((filter->flags & GDK_EVENT_FILTER_REMOVED) != 0)
@@ -1137,7 +1137,7 @@ apply_event_filters (GdkWindow  *window,
     }
   else /* GDK_FILTER_TRANSLATE */
     {
-      ((GdkEventPrivate *)event)->flags &= ~GDK_EVENT_PENDING;
+      ((CdkEventPrivate *)event)->flags &= ~GDK_EVENT_PENDING;
       fixup_event (event);
       GDK_NOTE (EVENTS, _cdk_win32_print_event (event));
     }
@@ -1159,11 +1159,11 @@ apply_event_filters (GdkWindow  *window,
  * from.
  */
 static void
-show_window_recurse (GdkWindow *window, gboolean hide_window)
+show_window_recurse (CdkWindow *window, gboolean hide_window)
 {
-  GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  CdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
   GSList *children = impl->transient_children;
-  GdkWindow *child = NULL;
+  CdkWindow *child = NULL;
 
   if (!impl->changing_state)
     {
@@ -1207,10 +1207,10 @@ show_window_recurse (GdkWindow *window, gboolean hide_window)
 }
 
 static void
-do_show_window (GdkWindow *window, gboolean hide_window)
+do_show_window (CdkWindow *window, gboolean hide_window)
 {
-  GdkWindow *tmp_window = NULL;
-  GdkWindowImplWin32 *tmp_impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  CdkWindow *tmp_window = NULL;
+  CdkWindowImplWin32 *tmp_impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
   if (!tmp_impl->changing_state)
     {
@@ -1236,21 +1236,21 @@ do_show_window (GdkWindow *window, gboolean hide_window)
 }
 
 static void
-send_crossing_event (GdkDisplay                 *display,
-		     GdkWindow                  *window,
-		     GdkEventType                type,
-		     GdkCrossingMode             mode,
-		     GdkNotifyType               notify_type,
-		     GdkWindow                  *subwindow,
+send_crossing_event (CdkDisplay                 *display,
+		     CdkWindow                  *window,
+		     CdkEventType                type,
+		     CdkCrossingMode             mode,
+		     CdkNotifyType               notify_type,
+		     CdkWindow                  *subwindow,
 		     POINT                      *screen_pt,
-		     GdkModifierType             mask,
+		     CdkModifierType             mask,
 		     guint32                     time_)
 {
-  GdkEvent *event;
-  GdkDeviceGrabInfo *grab;
-  GdkDeviceManagerWin32 *device_manager;
+  CdkEvent *event;
+  CdkDeviceGrabInfo *grab;
+  CdkDeviceManagerWin32 *device_manager;
   POINT pt;
-  GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  CdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
   device_manager = GDK_DEVICE_MANAGER_WIN32 (cdk_display_get_device_manager (display));
 
@@ -1261,7 +1261,7 @@ send_crossing_event (GdkDisplay                 *display,
       mode != GDK_CROSSING_UNGRAB)
     {
       /* !owner_event => only report events wrt grab window, ignore rest */
-      if ((GdkWindow *)window != grab->native_window)
+      if ((CdkWindow *)window != grab->native_window)
 	return;
     }
 
@@ -1289,19 +1289,19 @@ send_crossing_event (GdkDisplay                 *display,
   _cdk_win32_append_event (event);
 }
 
-static GdkWindow *
-get_native_parent (GdkWindow *window)
+static CdkWindow *
+get_native_parent (CdkWindow *window)
 {
   if (window->parent != NULL)
     return window->parent->impl_window;
   return NULL;
 }
 
-static GdkWindow *
-find_common_ancestor (GdkWindow *win1,
-		      GdkWindow *win2)
+static CdkWindow *
+find_common_ancestor (CdkWindow *win1,
+		      CdkWindow *win2)
 {
-  GdkWindow *tmp;
+  CdkWindow *tmp;
   GList *path1 = NULL, *path2 = NULL;
   GList *list1, *list2;
 
@@ -1324,7 +1324,7 @@ find_common_ancestor (GdkWindow *win1,
   tmp = NULL;
   while (list1 && list2 && (list1->data == list2->data))
     {
-      tmp = (GdkWindow *)list1->data;
+      tmp = (CdkWindow *)list1->data;
       list1 = list1->next;
       list2 = list2->next;
     }
@@ -1335,21 +1335,21 @@ find_common_ancestor (GdkWindow *win1,
 }
 
 void
-synthesize_crossing_events (GdkDisplay                 *display,
-			    GdkWindow                  *src,
-			    GdkWindow                  *dest,
-			    GdkCrossingMode             mode,
+synthesize_crossing_events (CdkDisplay                 *display,
+			    CdkWindow                  *src,
+			    CdkWindow                  *dest,
+			    CdkCrossingMode             mode,
 			    POINT                      *screen_pt,
-			    GdkModifierType             mask,
+			    CdkModifierType             mask,
 			    guint32                     time_,
 			    gboolean                    non_linear)
 {
-  GdkWindow *c;
-  GdkWindow *win, *last, *next;
+  CdkWindow *c;
+  CdkWindow *win, *last, *next;
   GList *path, *list;
-  GdkWindow *a;
-  GdkWindow *b;
-  GdkNotifyType notify_type;
+  CdkWindow *a;
+  CdkWindow *b;
+  CdkNotifyType notify_type;
 
   a = src;
   b = dest;
@@ -1392,7 +1392,7 @@ synthesize_crossing_events (GdkDisplay                 *display,
 				   win, GDK_LEAVE_NOTIFY,
 				   mode,
 				   notify_type,
-				   (GdkWindow *)last,
+				   (CdkWindow *)last,
 				   screen_pt,
 				   mask, time_);
 
@@ -1423,10 +1423,10 @@ synthesize_crossing_events (GdkDisplay                 *display,
 	  list = path;
 	  while (list)
 	    {
-	      win = (GdkWindow *)list->data;
+	      win = (CdkWindow *)list->data;
 	      list = list->next;
 	      if (list)
-		next = (GdkWindow *)list->data;
+		next = (CdkWindow *)list->data;
 	      else
 		next = b;
 
@@ -1464,9 +1464,9 @@ synthesize_crossing_events (GdkDisplay                 *display,
  * because an extended input device is active
  */
 static gboolean
-propagate (GdkWindow  **window,
+propagate (CdkWindow  **window,
 	   MSG         *msg,
-	   GdkWindow   *grab_window,
+	   CdkWindow   *grab_window,
 	   gboolean     grab_owner_events,
 	   gint	        grab_mask,
 	   gboolean   (*doesnt_want_it) (gint mask,
@@ -1497,7 +1497,7 @@ propagate (GdkWindow  **window,
       if ((*doesnt_want_it) ((*window)->event_mask, msg))
 	{
 	  /* Owner doesn't want it, propagate to parent. */
-	  GdkWindow *parent = cdk_window_get_parent (*window);
+	  CdkWindow *parent = cdk_window_get_parent (*window);
 	  if (parent == cdk_get_default_root_window () || parent == NULL)
 	    {
 	      /* No parent; check if grabbed */
@@ -1559,10 +1559,10 @@ doesnt_want_char (gint mask,
  * TRUE otherwise.
  */
 gboolean
-_cdk_win32_get_window_rect (GdkWindow *window,
+_cdk_win32_get_window_rect (CdkWindow *window,
                             RECT      *rect)
 {
-  GdkWindowImplWin32 *window_impl;
+  CdkWindowImplWin32 *window_impl;
   RECT client_rect;
   POINT point;
   HWND hwnd;
@@ -1592,10 +1592,10 @@ _cdk_win32_get_window_rect (GdkWindow *window,
 }
 
 void
-_cdk_win32_do_emit_configure_event (GdkWindow *window,
+_cdk_win32_do_emit_configure_event (CdkWindow *window,
                                     RECT       rect)
 {
-  GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  CdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
   impl->unscaled_width = rect.right - rect.left;
   impl->unscaled_height = rect.bottom - rect.top;
@@ -1608,7 +1608,7 @@ _cdk_win32_do_emit_configure_event (GdkWindow *window,
 
   if (window->event_mask & GDK_STRUCTURE_MASK)
     {
-      GdkEvent *event = cdk_event_new (GDK_CONFIGURE);
+      CdkEvent *event = cdk_event_new (GDK_CONFIGURE);
 
       event->configure.window = window;
 
@@ -1623,7 +1623,7 @@ _cdk_win32_do_emit_configure_event (GdkWindow *window,
 }
 
 void
-_cdk_win32_emit_configure_event (GdkWindow *window)
+_cdk_win32_emit_configure_event (CdkWindow *window)
 {
   RECT rect;
 
@@ -1662,7 +1662,7 @@ _cdk_win32_hrgn_to_region (HRGN  hrgn,
   rects = (RECT *) rgndata->Buffer;
   for (i = 0; i < rgndata->rdh.nCount; i++)
     {
-      GdkRectangle r;
+      CdkRectangle r;
 
       r.x = rects[i].left;
       r.y = rects[i].top;
@@ -1690,13 +1690,13 @@ adjust_drag (LONG *drag,
 
 static void
 handle_wm_paint (MSG        *msg,
-		 GdkWindow  *window)
+		 CdkWindow  *window)
 {
   HRGN hrgn = CreateRectRgn (0, 0, 0, 0);
   HDC hdc;
   PAINTSTRUCT paintstruct;
   cairo_region_t *update_region;
-  GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  CdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
   if (GetUpdateRgn (msg->hwnd, hrgn, FALSE) == ERROR)
     {
@@ -1745,9 +1745,9 @@ modal_timer_proc (HWND     hwnd,
 }
 
 void
-_cdk_win32_begin_modal_call (GdkWin32ModalOpKind kind)
+_cdk_win32_begin_modal_call (CdkWin32ModalOpKind kind)
 {
-  GdkWin32ModalOpKind was = _modal_operation_in_progress;
+  CdkWin32ModalOpKind was = _modal_operation_in_progress;
   g_assert (!(_modal_operation_in_progress & kind));
 
   _modal_operation_in_progress |= kind;
@@ -1762,7 +1762,7 @@ _cdk_win32_begin_modal_call (GdkWin32ModalOpKind kind)
 }
 
 void
-_cdk_win32_end_modal_call (GdkWin32ModalOpKind kind)
+_cdk_win32_end_modal_call (CdkWin32ModalOpKind kind)
 {
   g_assert (_modal_operation_in_progress & kind);
 
@@ -1795,13 +1795,13 @@ sync_timer_proc (HWND     hwnd,
 
 static gboolean
 handle_nchittest (HWND hwnd,
-                  GdkWindow *window,
+                  CdkWindow *window,
                   gint16 screen_x,
                   gint16 screen_y,
                   gint *ret_valp)
 {
   RECT rect;
-  GdkWindowImplWin32 *impl;
+  CdkWindowImplWin32 *impl;
 
   if (window == NULL || window->input_shape == NULL)
     return FALSE;
@@ -1833,14 +1833,14 @@ handle_nchittest (HWND hwnd,
 }
 
 static void
-generate_button_event (GdkEventType      type,
+generate_button_event (CdkEventType      type,
                        gint              button,
-                       GdkWindow        *window,
+                       CdkWindow        *window,
                        MSG              *msg)
 {
-  GdkEvent *event = cdk_event_new (type);
-  GdkDeviceManagerWin32 *device_manager;
-  GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  CdkEvent *event = cdk_event_new (type);
+  CdkDeviceManagerWin32 *device_manager;
+  CdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
   if (_cdk_input_ignore_core > 0)
     return;
@@ -1864,9 +1864,9 @@ generate_button_event (GdkEventType      type,
 }
 
 static gboolean
-handle_wm_sysmenu (GdkWindow *window, MSG *msg, gint *ret_valp)
+handle_wm_sysmenu (CdkWindow *window, MSG *msg, gint *ret_valp)
 {
-  GdkWindowImplWin32 *impl;
+  CdkWindowImplWin32 *impl;
   LONG_PTR style, tmp_style;
   gboolean maximized, minimized;
   LONG_PTR additional_styles;
@@ -1941,10 +1941,10 @@ handle_wm_sysmenu (GdkWindow *window, MSG *msg, gint *ret_valp)
 }
 
 gboolean
-_cdk_win32_window_fill_min_max_info (GdkWindow  *window,
+_cdk_win32_window_fill_min_max_info (CdkWindow  *window,
                                      MINMAXINFO *mmi)
 {
-  GdkWindowImplWin32 *impl;
+  CdkWindowImplWin32 *impl;
   RECT rect;
 
   if (GDK_WINDOW_DESTROYED (window))
@@ -2047,11 +2047,11 @@ _cdk_win32_window_fill_min_max_info (GdkWindow  *window,
 }
 
 static void
-cdk_settings_notify (GdkWindow        *window,
+cdk_settings_notify (CdkWindow        *window,
                      const char       *name,
-                     GdkSettingAction  action)
+                     CdkSettingAction  action)
 {
-  GdkEvent *new_event;
+  CdkEvent *new_event;
 
   if (!g_str_has_prefix (name, "ctk-"))
     return;
@@ -2079,39 +2079,39 @@ cdk_event_translate (MSG  *msg,
   POINT point;
   MINMAXINFO *mmi;
   HWND hwnd;
-  GdkCursor *cursor;
+  CdkCursor *cursor;
   BYTE key_state[256];
   HIMC himc;
   WINDOWPOS *windowpos;
   gboolean ignore_leave;
 
-  GdkEvent *event;
+  CdkEvent *event;
 
   wchar_t wbuf[100];
   gint ccount;
 
-  GdkDisplay *display;
-  GdkWindow *window = NULL;
-  GdkWindowImplWin32 *impl;
+  CdkDisplay *display;
+  CdkWindow *window = NULL;
+  CdkWindowImplWin32 *impl;
 
-  GdkWindow *new_window = NULL;
+  CdkWindow *new_window = NULL;
 
-  GdkDeviceManager *device_manager = NULL;
-  GdkDeviceManagerWin32 *device_manager_win32 = NULL;
+  CdkDeviceManager *device_manager = NULL;
+  CdkDeviceManagerWin32 *device_manager_win32 = NULL;
 
-  GdkDeviceGrabInfo *keyboard_grab = NULL;
-  GdkDeviceGrabInfo *pointer_grab = NULL;
-  GdkWindow *grab_window = NULL;
+  CdkDeviceGrabInfo *keyboard_grab = NULL;
+  CdkDeviceGrabInfo *pointer_grab = NULL;
+  CdkWindow *grab_window = NULL;
 
   gint button;
-  GdkAtom target;
+  CdkAtom target;
 
   gchar buf[256];
   gboolean return_val = FALSE;
 
   int i;
 
-  GdkWin32Selection *win32_sel = NULL;
+  CdkWin32Selection *win32_sel = NULL;
 
   STGMEDIUM *property_change_data;
 
@@ -2122,7 +2122,7 @@ cdk_event_translate (MSG  *msg,
     {
       /* Apply global filters */
 
-      GdkFilterReturn result = apply_event_filters (window ? window : cdk_screen_get_root_window (cdk_display_get_default_screen (display)),
+      CdkFilterReturn result = apply_event_filters (window ? window : cdk_screen_get_root_window (cdk_display_get_default_screen (display)),
                                                     msg,
                                                     &_cdk_default_filters);
 
@@ -2144,12 +2144,12 @@ cdk_event_translate (MSG  *msg,
 	}
       else if (msg->message == WM_CREATE)
 	{
-	  window = (UNALIGNED GdkWindow*) (((LPCREATESTRUCTW) msg->lParam)->lpCreateParams);
+	  window = (UNALIGNED CdkWindow*) (((LPCREATESTRUCTW) msg->lParam)->lpCreateParams);
 	  GDK_WINDOW_HWND (window) = msg->hwnd;
 	}
       else
 	{
-	  GDK_NOTE (EVENTS, g_print (" (no GdkWindow)"));
+	  GDK_NOTE (EVENTS, g_print (" (no CdkWindow)"));
 	}
       return FALSE;
     }
@@ -2165,7 +2165,7 @@ cdk_event_translate (MSG  *msg,
     }
   else
     {
-      GDK_NOTE (EVENTS, g_print (" (no GdkDisplay)"));
+      GDK_NOTE (EVENTS, g_print (" (no CdkDisplay)"));
     }
 
   if (device_manager != NULL)
@@ -2174,7 +2174,7 @@ cdk_event_translate (MSG  *msg,
     }
   else
     {
-      GDK_NOTE (EVENTS, g_print (" (no GdkDeviceManager)"));
+      GDK_NOTE (EVENTS, g_print (" (no CdkDeviceManager)"));
     }
 
   if (device_manager_win32 != NULL)
@@ -2196,7 +2196,7 @@ cdk_event_translate (MSG  *msg,
     {
       /* Apply per-window filters */
 
-      GdkFilterReturn result = apply_event_filters (window, msg, &window->filters);
+      CdkFilterReturn result = apply_event_filters (window, msg, &window->filters);
 
       if (result == GDK_FILTER_REMOVE || result == GDK_FILTER_TRANSLATE)
 	{
@@ -2208,20 +2208,20 @@ cdk_event_translate (MSG  *msg,
   if (msg->message == client_message)
     {
       GList *tmp_list;
-      GdkFilterReturn result = GDK_FILTER_CONTINUE;
+      CdkFilterReturn result = GDK_FILTER_CONTINUE;
       GList *node;
 
       GDK_NOTE (EVENTS, g_print (" client_message"));
 
       event = cdk_event_new (GDK_NOTHING);
-      ((GdkEventPrivate *)event)->flags |= GDK_EVENT_PENDING;
+      ((CdkEventPrivate *)event)->flags |= GDK_EVENT_PENDING;
 
       node = _cdk_event_queue_append (display, event);
 
       tmp_list = client_filters;
       while (tmp_list)
 	{
-	  GdkClientFilter *filter = tmp_list->data;
+	  CdkClientFilter *filter = tmp_list->data;
 
 	  tmp_list = tmp_list->next;
 
@@ -2246,7 +2246,7 @@ cdk_event_translate (MSG  *msg,
 	  goto done;
 
 	case GDK_FILTER_TRANSLATE:
-	  ((GdkEventPrivate *)event)->flags &= ~GDK_EVENT_PENDING;
+	  ((CdkEventPrivate *)event)->flags &= ~GDK_EVENT_PENDING;
 	  GDK_NOTE (EVENTS, _cdk_win32_print_event (event));
 	  return_val = TRUE;
 	  goto done;
@@ -2261,7 +2261,7 @@ cdk_event_translate (MSG  *msg,
 
   if (msg->message == aerosnap_message)
     _cdk_win32_window_handle_aerosnap (cdk_window_get_toplevel (window),
-                                       (GdkWin32AeroSnapCombo) msg->wParam);
+                                       (CdkWin32AeroSnapCombo) msg->wParam);
 
   switch (msg->message)
     {
@@ -2385,7 +2385,7 @@ cdk_event_translate (MSG  *msg,
 
       if (cdk_event_is_allocated (event)) /* Should always be true */
 	{
-	  GdkEventPrivate *event_priv = (GdkEventPrivate*) event;
+	  CdkEventPrivate *event_priv = (CdkEventPrivate*) event;
 
 	  MSG msg2;
 	  while (PeekMessageW (&msg2, msg->hwnd, 0, 0, 0) && (msg2.message == WM_CHAR || msg2.message == WM_SYSCHAR))
@@ -2647,7 +2647,7 @@ cdk_event_translate (MSG  *msg,
 	  /* We keep the implicit grab until no buttons at all are held down */
 	  if ((state & GDK_ANY_BUTTON_MASK & ~(GDK_BUTTON1_MASK << (button - 1))) == 0)
 	    {
-	      GdkWindow *native_window = pointer_grab->native_window;
+	      CdkWindow *native_window = pointer_grab->native_window;
 
 	      ReleaseCapture ();
 
@@ -3208,7 +3208,7 @@ cdk_event_translate (MSG  *msg,
       if (windowpos->flags & SWP_HIDEWINDOW ||
 	  ((windowpos->flags & SWP_STATECHANGED) && IsIconic (msg->hwnd)))
       {
-        GdkDevice *device = cdk_device_manager_get_client_pointer (device_manager);
+        CdkDevice *device = cdk_device_manager_get_client_pointer (device_manager);
 
         if ((pointer_grab != NULL && pointer_grab->window == window) ||
             (keyboard_grab != NULL && keyboard_grab->window == window))
@@ -3227,7 +3227,7 @@ cdk_event_translate (MSG  *msg,
       /* Update window state */
       if (windowpos->flags & (SWP_STATECHANGED | SWP_SHOWWINDOW | SWP_HIDEWINDOW))
 	{
-	  GdkWindowState set_bits, unset_bits, old_state, new_state;
+	  CdkWindowState set_bits, unset_bits, old_state, new_state;
 
 	  old_state = window->state;
 
@@ -3569,7 +3569,7 @@ cdk_event_translate (MSG  *msg,
       if ((pointer_grab != NULL && pointer_grab -> window == window) ||
           (keyboard_grab && keyboard_grab -> window == window))
       {
-        GdkDevice *device = cdk_device_manager_get_client_pointer (device_manager);
+        CdkDevice *device = cdk_device_manager_get_client_pointer (device_manager);
         cdk_device_ungrab (device, msg -> time);
       }
 
@@ -3621,7 +3621,7 @@ cdk_event_translate (MSG  *msg,
            i < win32_sel->clipboard_selection_targets->len;
            i++)
         {
-          GdkSelTargetFormat target_format = g_array_index (win32_sel->clipboard_selection_targets, GdkSelTargetFormat, i);
+          CdkSelTargetFormat target_format = g_array_index (win32_sel->clipboard_selection_targets, CdkSelTargetFormat, i);
 
           if (target_format.format == msg->wParam)
             {
@@ -3694,7 +3694,7 @@ cdk_event_translate (MSG  *msg,
                i < win32_sel->clipboard_selection_targets->len;
                i++)
             {
-              GdkSelTargetFormat target_format = g_array_index (win32_sel->clipboard_selection_targets, GdkSelTargetFormat, i);
+              CdkSelTargetFormat target_format = g_array_index (win32_sel->clipboard_selection_targets, CdkSelTargetFormat, i);
               if (target_format.format != 0)
                 SendMessage (msg->hwnd, WM_RENDERFORMAT, target_format.format, 0);
             }
@@ -3716,7 +3716,7 @@ cdk_event_translate (MSG  *msg,
        */
       if (_cdk_modal_blocked (window) && LOWORD (msg->wParam) == WA_ACTIVE)
 	{
-	  GdkWindow *modal_current = _cdk_modal_current ();
+	  CdkWindow *modal_current = _cdk_modal_current ();
 	  SetActiveWindow (GDK_WINDOW_HWND (modal_current));
 	  *ret_valp = 0;
 	  return_val = TRUE;
@@ -3793,7 +3793,7 @@ done:
 }
 
 void
-_cdk_win32_display_queue_events (GdkDisplay *display)
+_cdk_win32_display_queue_events (CdkDisplay *display)
 {
   MSG msg;
 
@@ -3811,7 +3811,7 @@ static gboolean
 cdk_event_prepare (GSource *source,
 		   gint    *timeout)
 {
-  GdkWin32EventSource *event_source = (GdkWin32EventSource *)source;
+  CdkWin32EventSource *event_source = (CdkWin32EventSource *)source;
   gboolean retval;
 
   cdk_threads_enter ();
@@ -3833,7 +3833,7 @@ cdk_event_prepare (GSource *source,
 static gboolean
 cdk_event_check (GSource *source)
 {
-  GdkWin32EventSource *event_source = (GdkWin32EventSource *)source;
+  CdkWin32EventSource *event_source = (CdkWin32EventSource *)source;
   gboolean retval;
 
   cdk_threads_enter ();
@@ -3857,8 +3857,8 @@ cdk_event_dispatch (GSource     *source,
                     GSourceFunc  callback,
                     gpointer     user_data)
 {
-  GdkWin32EventSource *event_source = (GdkWin32EventSource *)source;
-  GdkEvent *event;
+  CdkWin32EventSource *event_source = (CdkWin32EventSource *)source;
+  CdkEvent *event;
 
   cdk_threads_enter ();
 
@@ -3867,7 +3867,7 @@ cdk_event_dispatch (GSource     *source,
 
   if (event)
     {
-      GdkWin32Selection *sel_win32 = _cdk_win32_selection_get ();
+      CdkWin32Selection *sel_win32 = _cdk_win32_selection_get ();
 
       _cdk_event_emit (event);
 

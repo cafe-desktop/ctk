@@ -474,7 +474,7 @@ ctk_fishbowl_get_animating (CtkFishbowl *fishbowl)
 }
 
 static gint64
-guess_refresh_interval (GdkFrameClock *frame_clock)
+guess_refresh_interval (CdkFrameClock *frame_clock)
 {
   gint64 interval;
   gint64 i;
@@ -485,7 +485,7 @@ guess_refresh_interval (GdkFrameClock *frame_clock)
        i < cdk_frame_clock_get_frame_counter (frame_clock);
        i++)
     {
-      GdkFrameTimings *t, *before;
+      CdkFrameTimings *t, *before;
       gint64 ts, before_ts;
 
       t = cdk_frame_clock_get_timings (frame_clock, i);
@@ -511,8 +511,8 @@ static void
 ctk_fishbowl_do_update (CtkFishbowl *fishbowl)
 {
   CtkFishbowlPrivate *priv = ctk_fishbowl_get_instance_private (fishbowl);
-  GdkFrameClock *frame_clock;
-  GdkFrameTimings *start, *end;
+  CdkFrameClock *frame_clock;
+  CdkFrameTimings *start, *end;
   gint64 start_counter, end_counter;
   gint64 n_frames, expected_frames;
   gint64 start_timestamp, end_timestamp;
@@ -580,7 +580,7 @@ ctk_fishbowl_do_update (CtkFishbowl *fishbowl)
 
 static gboolean
 ctk_fishbowl_tick (CtkWidget     *widget,
-                   GdkFrameClock *frame_clock,
+                   CdkFrameClock *frame_clock,
                    gpointer       unused)
 {
   CtkFishbowl *fishbowl = CTK_FISHBOWL (widget);

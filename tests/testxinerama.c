@@ -28,7 +28,7 @@ request (CtkWidget      *widget,
 	 gpointer        user_data)
 {
   gchar *str;
-  GdkScreen *screen = ctk_widget_get_screen (widget);
+  CdkScreen *screen = ctk_widget_get_screen (widget);
   gint i = cdk_screen_get_monitor_at_window (screen,
                                              ctk_widget_get_window (widget));
 
@@ -36,7 +36,7 @@ request (CtkWidget      *widget,
     str = g_strdup ("<big><span foreground='white' background='black'>Not on a monitor </span></big>");
   else
     {
-      GdkRectangle monitor;
+      CdkRectangle monitor;
 
       cdk_screen_get_monitor_geometry (screen,
                                        i, &monitor);
@@ -58,7 +58,7 @@ request (CtkWidget      *widget,
 }
 
 static void
-monitors_changed_cb (GdkScreen *screen,
+monitors_changed_cb (CdkScreen *screen,
                      gpointer   data)
 {
   CtkWidget *label = (CtkWidget *)data;
@@ -70,7 +70,7 @@ int
 main (int argc, char *argv[])
 {
   CtkWidget *window, *label, *vbox, *button;
-  GdkScreen *screen;
+  CdkScreen *screen;
   gint i;
 
   ctk_init (&argc, &argv);
@@ -85,7 +85,7 @@ main (int argc, char *argv[])
 
   for (i = 0; i < num_monitors; i++)
     {
-      GdkRectangle monitor; 
+      CdkRectangle monitor; 
       gchar *str;
       
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);

@@ -816,8 +816,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Rodomas GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "Rodomas CdkPixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2192,16 +2192,16 @@ msgid "Cell background color"
 msgstr "Langelio fono spalva"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Langelio fono spalva kaip GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Langelio fono spalva kaip CdkColor"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Ląstelės fono RGBA spalva"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Ląstelės fono spalva kaip GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Ląstelės fono spalva kaip CdkRGBA"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2437,16 +2437,16 @@ msgid "Background color"
 msgstr "Fono spalva"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
-msgstr "Fono spalva kaip GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Fono spalva kaip CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Fono spalva kaip RGBA"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
-msgstr "Fono spalva kaip GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Fono spalva kaip CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
@@ -2457,16 +2457,16 @@ msgid "Foreground color as a string"
 msgstr "Priekinio plano spalva kaip eilutė"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
-msgstr "Priekinio plano spalva kaip GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Priekinio plano spalva kaip CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Priekinio plano spalva kaip RGBA"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
-msgstr "Priekinio plano spalva kaip GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Priekinio plano spalva kaip CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
@@ -2935,8 +2935,8 @@ msgid "Color"
 msgstr "Spalva"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Dabartinė spalva kaip GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Dabartinė spalva kaip CdkRGBA"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4164,8 +4164,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Reikalingas taškų skaičius gestui sukelti"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "GdkWindow, apie kūrį gauti įvykius"
+msgid "CdkWindow to receive events about"
+msgstr "CdkWindow, apie kūrį gauti įvykius"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4502,8 +4502,8 @@ msgid "Animation"
 msgstr "Animacija"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "Rodoma GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "Rodoma CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7727,16 +7727,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Rėmelio, aplink būklės juostos tekstą, stilius"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "Susietas GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "Susietas CdkScreen"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "Susietas GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "Susietas CdkFrameClock"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
 msgid "Text direction"
@@ -8029,16 +8029,16 @@ msgid "Paragraph background color"
 msgstr "Pastraipos fono spalva"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
-msgstr "Pastraipos fono spalva kaip GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Pastraipos fono spalva kaip CdkColor"
 
 #: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "Pastraipos fono RGBA"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Pastraipos fono RGBA kaip GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Pastraipos fono RGBA kaip CdkRGBA"
 
 #: ctk/ctktexttag.c:663
 msgid "Fallback"
@@ -9022,8 +9022,8 @@ msgid "Events"
 msgstr "Įvykiai"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "Įvykių kaukė, kuri lemia kokio tipo GdkEvents šis objektas apdoros"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "Įvykių kaukė, kuri lemia kokio tipo CdkEvents šis objektas apdoros"
 
 #: ctk/ctkwidget.c:1263
 msgid "No show all"

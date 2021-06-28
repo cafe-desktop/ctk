@@ -22,10 +22,10 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GdkEventSource GdkEventSource;
+typedef struct _CdkEventSource CdkEventSource;
 
 G_GNUC_INTERNAL
-GSource * _cdk_broadway_event_source_new            (GdkDisplay *display);
+GSource * _cdk_broadway_event_source_new            (CdkDisplay *display);
 
 G_END_DECLS
 

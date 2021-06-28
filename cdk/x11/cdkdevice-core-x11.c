@@ -31,66 +31,66 @@
 /* for the use of round() */
 #include "fallback-c89.c"
 
-struct _GdkX11DeviceCore
+struct _CdkX11DeviceCore
 {
-  GdkDevice parent_instance;
+  CdkDevice parent_instance;
 };
 
-struct _GdkX11DeviceCoreClass
+struct _CdkX11DeviceCoreClass
 {
-  GdkDeviceClass parent_class;
+  CdkDeviceClass parent_class;
 };
 
-static gboolean cdk_x11_device_core_get_history (GdkDevice       *device,
-                                                 GdkWindow       *window,
+static gboolean cdk_x11_device_core_get_history (CdkDevice       *device,
+                                                 CdkWindow       *window,
                                                  guint32          start,
                                                  guint32          stop,
-                                                 GdkTimeCoord  ***events,
+                                                 CdkTimeCoord  ***events,
                                                  gint            *n_events);
-static void     cdk_x11_device_core_get_state   (GdkDevice       *device,
-                                                 GdkWindow       *window,
+static void     cdk_x11_device_core_get_state   (CdkDevice       *device,
+                                                 CdkWindow       *window,
                                                  gdouble         *axes,
-                                                 GdkModifierType *mask);
-static void     cdk_x11_device_core_set_window_cursor (GdkDevice *device,
-                                                       GdkWindow *window,
-                                                       GdkCursor *cursor);
-static void     cdk_x11_device_core_warp (GdkDevice *device,
-                                          GdkScreen *screen,
+                                                 CdkModifierType *mask);
+static void     cdk_x11_device_core_set_window_cursor (CdkDevice *device,
+                                                       CdkWindow *window,
+                                                       CdkCursor *cursor);
+static void     cdk_x11_device_core_warp (CdkDevice *device,
+                                          CdkScreen *screen,
                                           gdouble    x,
                                           gdouble    y);
-static void cdk_x11_device_core_query_state (GdkDevice        *device,
-                                             GdkWindow        *window,
-                                             GdkWindow       **root_window,
-                                             GdkWindow       **child_window,
+static void cdk_x11_device_core_query_state (CdkDevice        *device,
+                                             CdkWindow        *window,
+                                             CdkWindow       **root_window,
+                                             CdkWindow       **child_window,
                                              gdouble          *root_x,
                                              gdouble          *root_y,
                                              gdouble          *win_x,
                                              gdouble          *win_y,
-                                             GdkModifierType  *mask);
-static GdkGrabStatus cdk_x11_device_core_grab   (GdkDevice     *device,
-                                                 GdkWindow     *window,
+                                             CdkModifierType  *mask);
+static CdkGrabStatus cdk_x11_device_core_grab   (CdkDevice     *device,
+                                                 CdkWindow     *window,
                                                  gboolean       owner_events,
-                                                 GdkEventMask   event_mask,
-                                                 GdkWindow     *confine_to,
-                                                 GdkCursor     *cursor,
+                                                 CdkEventMask   event_mask,
+                                                 CdkWindow     *confine_to,
+                                                 CdkCursor     *cursor,
                                                  guint32        time_);
-static void          cdk_x11_device_core_ungrab (GdkDevice     *device,
+static void          cdk_x11_device_core_ungrab (CdkDevice     *device,
                                                  guint32        time_);
-static GdkWindow * cdk_x11_device_core_window_at_position (GdkDevice       *device,
+static CdkWindow * cdk_x11_device_core_window_at_position (CdkDevice       *device,
                                                            gdouble         *win_x,
                                                            gdouble         *win_y,
-                                                           GdkModifierType *mask,
+                                                           CdkModifierType *mask,
                                                            gboolean         get_toplevel);
-static void      cdk_x11_device_core_select_window_events (GdkDevice       *device,
-                                                           GdkWindow       *window,
-                                                           GdkEventMask     event_mask);
+static void      cdk_x11_device_core_select_window_events (CdkDevice       *device,
+                                                           CdkWindow       *window,
+                                                           CdkEventMask     event_mask);
 
-G_DEFINE_TYPE (GdkX11DeviceCore, cdk_x11_device_core, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkX11DeviceCore, cdk_x11_device_core, GDK_TYPE_DEVICE)
 
 static void
-cdk_x11_device_core_class_init (GdkX11DeviceCoreClass *klass)
+cdk_x11_device_core_class_init (CdkX11DeviceCoreClass *klass)
 {
-  GdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_x11_device_core_get_history;
   device_class->get_state = cdk_x11_device_core_get_state;
@@ -104,9 +104,9 @@ cdk_x11_device_core_class_init (GdkX11DeviceCoreClass *klass)
 }
 
 static void
-cdk_x11_device_core_init (GdkX11DeviceCore *device_core)
+cdk_x11_device_core_init (CdkX11DeviceCore *device_core)
 {
-  GdkDevice *device;
+  CdkDevice *device;
 
   device = GDK_DEVICE (device_core);
 
@@ -115,7 +115,7 @@ cdk_x11_device_core_init (GdkX11DeviceCore *device_core)
 }
 
 static gboolean
-impl_coord_in_window (GdkWindow *window,
+impl_coord_in_window (CdkWindow *window,
 		      int        impl_x,
 		      int        impl_y)
 {
@@ -131,17 +131,17 @@ impl_coord_in_window (GdkWindow *window,
 }
 
 static gboolean
-cdk_x11_device_core_get_history (GdkDevice      *device,
-                                 GdkWindow      *window,
+cdk_x11_device_core_get_history (CdkDevice      *device,
+                                 CdkWindow      *window,
                                  guint32         start,
                                  guint32         stop,
-                                 GdkTimeCoord ***events,
+                                 CdkTimeCoord ***events,
                                  gint           *n_events)
 {
   XTimeCoord *xcoords;
-  GdkTimeCoord **coords;
-  GdkWindow *impl_window;
-  GdkWindowImplX11 *impl;
+  CdkTimeCoord **coords;
+  CdkWindow *impl_window;
+  CdkWindowImplX11 *impl;
   int tmp_n_events;
   int i, j;
 
@@ -197,10 +197,10 @@ cdk_x11_device_core_get_history (GdkDevice      *device,
 }
 
 static void
-cdk_x11_device_core_get_state (GdkDevice       *device,
-                               GdkWindow       *window,
+cdk_x11_device_core_get_state (CdkDevice       *device,
+                               CdkWindow       *window,
                                gdouble         *axes,
-                               GdkModifierType *mask)
+                               CdkModifierType *mask)
 {
   gdouble x, y;
 
@@ -214,9 +214,9 @@ cdk_x11_device_core_get_state (GdkDevice       *device,
 }
 
 static void
-cdk_x11_device_core_set_window_cursor (GdkDevice *device,
-                                       GdkWindow *window,
-                                       GdkCursor *cursor)
+cdk_x11_device_core_set_window_cursor (CdkDevice *device,
+                                       CdkWindow *window,
+                                       CdkCursor *cursor)
 {
   Cursor xcursor;
 
@@ -231,8 +231,8 @@ cdk_x11_device_core_set_window_cursor (GdkDevice *device,
 }
 
 static void
-cdk_x11_device_core_warp (GdkDevice *device,
-                          GdkScreen *screen,
+cdk_x11_device_core_warp (CdkDevice *device,
+                          CdkScreen *screen,
                           gdouble    x,
                           gdouble    y)
 {
@@ -248,19 +248,19 @@ cdk_x11_device_core_warp (GdkDevice *device,
 }
 
 static void
-cdk_x11_device_core_query_state (GdkDevice        *device,
-                                 GdkWindow        *window,
-                                 GdkWindow       **root_window,
-                                 GdkWindow       **child_window,
+cdk_x11_device_core_query_state (CdkDevice        *device,
+                                 CdkWindow        *window,
+                                 CdkWindow       **root_window,
+                                 CdkWindow       **child_window,
                                  gdouble          *root_x,
                                  gdouble          *root_y,
                                  gdouble          *win_x,
                                  gdouble          *win_y,
-                                 GdkModifierType  *mask)
+                                 CdkModifierType  *mask)
 {
-  GdkWindowImplX11 *impl = GDK_WINDOW_IMPL_X11 (window->impl);
-  GdkDisplay *display;
-  GdkScreen *default_screen;
+  CdkWindowImplX11 *impl = GDK_WINDOW_IMPL_X11 (window->impl);
+  CdkDisplay *display;
+  CdkScreen *default_screen;
   Window xroot_window, xchild_window;
   int xroot_x, xroot_y, xwin_x, xwin_y;
   unsigned int xmask;
@@ -319,16 +319,16 @@ cdk_x11_device_core_query_state (GdkDevice        *device,
     *mask = xmask;
 }
 
-static GdkGrabStatus
-cdk_x11_device_core_grab (GdkDevice    *device,
-                          GdkWindow    *window,
+static CdkGrabStatus
+cdk_x11_device_core_grab (CdkDevice    *device,
+                          CdkWindow    *window,
                           gboolean      owner_events,
-                          GdkEventMask  event_mask,
-                          GdkWindow    *confine_to,
-                          GdkCursor    *cursor,
+                          CdkEventMask  event_mask,
+                          CdkWindow    *confine_to,
+                          CdkCursor    *cursor,
                           guint32       time_)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   Window xwindow, xconfine_to;
   gint status;
 
@@ -402,10 +402,10 @@ cdk_x11_device_core_grab (GdkDevice    *device,
 }
 
 static void
-cdk_x11_device_core_ungrab (GdkDevice *device,
+cdk_x11_device_core_ungrab (CdkDevice *device,
                             guint32    time_)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   gulong serial;
 
   display = cdk_device_get_display (device);
@@ -419,18 +419,18 @@ cdk_x11_device_core_ungrab (GdkDevice *device,
   _cdk_x11_display_update_grab_info_ungrab (display, device, time_, serial);
 }
 
-static GdkWindow *
-cdk_x11_device_core_window_at_position (GdkDevice       *device,
+static CdkWindow *
+cdk_x11_device_core_window_at_position (CdkDevice       *device,
                                         gdouble         *win_x,
                                         gdouble         *win_y,
-                                        GdkModifierType *mask,
+                                        CdkModifierType *mask,
                                         gboolean         get_toplevel)
 {
-  GdkWindowImplX11 *impl;
-  GdkDisplay *display;
-  GdkScreen *screen;
+  CdkWindowImplX11 *impl;
+  CdkDisplay *display;
+  CdkScreen *screen;
   Display *xdisplay;
-  GdkWindow *window;
+  CdkWindow *window;
   Window xwindow, root, child, last;
   int xroot_x, xroot_y, xwin_x, xwin_y;
   unsigned int xmask;
@@ -563,11 +563,11 @@ cdk_x11_device_core_window_at_position (GdkDevice       *device,
 }
 
 static void
-cdk_x11_device_core_select_window_events (GdkDevice    *device,
-                                          GdkWindow    *window,
-                                          GdkEventMask  event_mask)
+cdk_x11_device_core_select_window_events (CdkDevice    *device,
+                                          CdkWindow    *window,
+                                          CdkEventMask  event_mask)
 {
-  GdkEventMask filter_mask, window_mask;
+  CdkEventMask filter_mask, window_mask;
   guint xmask = 0;
   gint i;
 

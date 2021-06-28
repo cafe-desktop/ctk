@@ -820,8 +820,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf yang hendak ditampilkan"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf yang hendak ditampilkan"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2197,16 +2197,16 @@ msgid "Cell background color"
 msgstr "Warna latar sel"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Warna latar sel dalam GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Warna latar sel dalam CdkColor"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Warna RGBA latar sel"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Warna latar sel dalam GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Warna latar sel dalam CdkRGBA"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2446,16 +2446,16 @@ msgid "Background color"
 msgstr "Warna latar belakang"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
-msgstr "Warna latar belakang dalam format GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Warna latar belakang dalam format CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Warna latar belakang dalam RGBA"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
-msgstr "Warna latar belakang dalam GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Warna latar belakang dalam CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
@@ -2466,16 +2466,16 @@ msgid "Foreground color as a string"
 msgstr "Warna latar depan dalam string"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
-msgstr "Warna latar depan dalam GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Warna latar depan dalam CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Warna latar depan dalam RGBA"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
-msgstr "Warna latar depan dalam GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Warna latar depan dalam CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
@@ -2945,8 +2945,8 @@ msgid "Color"
 msgstr "Warna"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Warna kini, sebagai suatu GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Warna kini, sebagai suatu CdkRGBA"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4193,8 +4193,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Banyaknya titik yang diperlukan untuk memicu gestur"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "GdkWindow yang akan menerima peristiwa"
+msgid "CdkWindow to receive events about"
+msgstr "CdkWindow yang akan menerima peristiwa"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4530,8 +4530,8 @@ msgid "Animation"
 msgstr "Animasi"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation yang hendak ditampilkan"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation yang hendak ditampilkan"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7780,16 +7780,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Gaya bevel di sekeliling teks statusbar"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "GdkScreen terkait"
+msgid "The associated CdkScreen"
+msgstr "CdkScreen terkait"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "GdkFrameClock terkait"
+msgid "The associated CdkFrameClock"
+msgstr "CdkFrameClock terkait"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
 msgid "Text direction"
@@ -8089,16 +8089,16 @@ msgid "Paragraph background color"
 msgstr "Warna latar belakang paragraf"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
-msgstr "Warna latar belakang paragraf sebagai GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Warna latar belakang paragraf sebagai CdkColor"
 
 #: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "RGBA latar belakang paragraf"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "RGBA latar belakang paragraf sebagai GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "RGBA latar belakang paragraf sebagai CdkRGBA"
 
 #: ctk/ctktexttag.c:663
 msgid "Fallback"
@@ -9105,9 +9105,9 @@ msgid "Events"
 msgstr "Kejadian"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Tipe kejadian yang menentukan jenis GdkEvents yang akan diterima widget"
+"Tipe kejadian yang menentukan jenis CdkEvents yang akan diterima widget"
 
 #: ctk/ctkwidget.c:1263
 msgid "No show all"

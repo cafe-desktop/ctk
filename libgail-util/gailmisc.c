@@ -375,7 +375,7 @@ gail_misc_get_default_attributes (AtkAttributeSet *attrib_set,
   CtkStyleContext *style_context;
   gint int_value;
   PangoWrapMode mode;
-  GdkRGBA color;
+  CdkRGBA color;
   gchar *value;
 
   attrib_set = gail_misc_add_attribute (attrib_set, 
@@ -548,7 +548,7 @@ gail_misc_get_origins (CtkWidget *widget,
                        gint      *x_toplevel,
                        gint      *y_toplevel)
 {
-  GdkWindow *window;
+  CdkWindow *window;
 
   if (CTK_IS_TREE_VIEW (widget))
     window = ctk_tree_view_get_bin_window (CTK_TREE_VIEW (widget));
@@ -720,7 +720,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
       g_object_get (tag, "foreground-set", &val_set, NULL);
       if (val_set)
         {
-          GdkRGBA *rgba;
+          CdkRGBA *rgba;
           gchar *value;
 
           g_object_get (tag, "foreground-rgba", &rgba, NULL);
@@ -743,7 +743,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
       g_object_get (tag, "background-set", &val_set, NULL);
       if (val_set)
         {
-          GdkRGBA *rgba;
+          CdkRGBA *rgba;
           gchar *value;
 
           g_object_get (tag, "background-rgba", &rgba, NULL);

@@ -30,7 +30,7 @@ quick_rand32 (void)
 
 static gboolean
 delete_event (CtkWidget   *widget,
-              GdkEventAny *event,
+              CdkEventAny *event,
               gpointer     user_data)
 {
   ctk_main_quit ();
@@ -57,7 +57,7 @@ static const gchar *example_text =
 "2h34 sdaf ukklj kjl32l jkkjl 23j jkl ljk23 jkl\n"
 "hjhjhj2hj23jh jh jk jk2h3 hj kjj jk jh21 jhhj32.";
 
-static GdkAtom
+static CdkAtom
 setup_buffer (CtkTextBuffer *buffer)
 {
   const guint tlen = strlen (example_text);
@@ -65,7 +65,7 @@ setup_buffer (CtkTextBuffer *buffer)
   CtkTextTag **tags;
   CtkTextTagTable *ttable = ctk_text_buffer_get_tag_table (buffer);
   GSList *node, *slist = NULL;
-  GdkAtom atom;
+  CdkAtom atom;
   guint i;
 
   tags = g_malloc (sizeof (CtkTextTag *) * tcount);
@@ -111,7 +111,7 @@ setup_buffer (CtkTextBuffer *buffer)
 
 static gboolean
 test_serialize_deserialize (CtkTextBuffer *buffer,
-                            GdkAtom        atom,
+                            CdkAtom        atom,
                             GError       **error)
 {
   CtkTextIter  start, end;
@@ -140,7 +140,7 @@ main (gint   argc,
   CtkWidget     *sw;
   CtkWidget     *view;
   CtkTextBuffer *buffer;
-  GdkAtom        atom;
+  CdkAtom        atom;
   guint          i, broken = 0;
 
   ctk_init (&argc, &argv);

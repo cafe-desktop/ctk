@@ -411,7 +411,7 @@ ctk_action_group_buildable_get_name (CtkBuildable *buildable)
 typedef struct {
   GObject         *child;
   guint            key;
-  GdkModifierType  modifiers;
+  CdkModifierType  modifiers;
 } AcceleratorParserData;
 
 static void
@@ -424,7 +424,7 @@ accelerator_start_element (GMarkupParseContext *context,
 {
   gint i;
   guint key = 0;
-  GdkModifierType modifiers = 0;
+  CdkModifierType modifiers = 0;
   AcceleratorParserData *parser_data = (AcceleratorParserData*)user_data;
 
   if (strcmp (element_name, "accelerator") != 0)
@@ -978,7 +978,7 @@ ctk_action_group_add_action_with_accel (CtkActionGroup *action_group,
   CtkActionGroupPrivate *private;
   gchar *accel_path;
   guint  accel_key = 0;
-  GdkModifierType accel_mods;
+  CdkModifierType accel_mods;
   const gchar *name;
 
   name = ctk_action_get_name (action);

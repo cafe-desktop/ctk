@@ -37,18 +37,18 @@
 #include <wayland-cursor.h>
 
 #define GDK_TYPE_WAYLAND_CURSOR              (_cdk_wayland_cursor_get_type ())
-#define GDK_WAYLAND_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_CURSOR, GdkWaylandCursor))
-#define GDK_WAYLAND_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WAYLAND_CURSOR, GdkWaylandCursorClass))
+#define GDK_WAYLAND_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_CURSOR, CdkWaylandCursor))
+#define GDK_WAYLAND_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WAYLAND_CURSOR, CdkWaylandCursorClass))
 #define GDK_IS_WAYLAND_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WAYLAND_CURSOR))
 #define GDK_IS_WAYLAND_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WAYLAND_CURSOR))
-#define GDK_WAYLAND_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WAYLAND_CURSOR, GdkWaylandCursorClass))
+#define GDK_WAYLAND_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WAYLAND_CURSOR, CdkWaylandCursorClass))
 
-typedef struct _GdkWaylandCursor GdkWaylandCursor;
-typedef struct _GdkWaylandCursorClass GdkWaylandCursorClass;
+typedef struct _CdkWaylandCursor CdkWaylandCursor;
+typedef struct _CdkWaylandCursorClass CdkWaylandCursorClass;
 
-struct _GdkWaylandCursor
+struct _CdkWaylandCursor
 {
-  GdkCursor cursor;
+  CdkCursor cursor;
   gchar *name;
 
   struct
@@ -62,23 +62,23 @@ struct _GdkWaylandCursor
   int scale;
 };
 
-struct _GdkWaylandCursorClass
+struct _CdkWaylandCursorClass
 {
-  GdkCursorClass cursor_class;
+  CdkCursorClass cursor_class;
 };
 
 GType _cdk_wayland_cursor_get_type (void);
 
-G_DEFINE_TYPE (GdkWaylandCursor, _cdk_wayland_cursor, GDK_TYPE_CURSOR)
+G_DEFINE_TYPE (CdkWaylandCursor, _cdk_wayland_cursor, GDK_TYPE_CURSOR)
 
 void
-_cdk_wayland_display_init_cursors (GdkWaylandDisplay *display)
+_cdk_wayland_display_init_cursors (CdkWaylandDisplay *display)
 {
   display->cursor_cache = g_hash_table_new_full (g_str_hash, g_str_equal, NULL, g_object_unref);
 }
 
 void
-_cdk_wayland_display_finalize_cursors (GdkWaylandDisplay *display)
+_cdk_wayland_display_finalize_cursors (CdkWaylandDisplay *display)
 {
   g_hash_table_destroy (display->cursor_cache);
 }
@@ -139,8 +139,8 @@ name_fallback (const gchar *name)
 }
 
 static gboolean
-_cdk_wayland_cursor_update (GdkWaylandDisplay *display_wayland,
-                            GdkWaylandCursor  *cursor)
+_cdk_wayland_cursor_update (CdkWaylandDisplay *display_wayland,
+                            CdkWaylandCursor  *cursor)
 {
   struct wl_cursor *c;
   struct wl_cursor_theme *theme;
@@ -177,11 +177,11 @@ _cdk_wayland_cursor_update (GdkWaylandDisplay *display_wayland,
 }
 
 void
-_cdk_wayland_display_update_cursors (GdkWaylandDisplay *display)
+_cdk_wayland_display_update_cursors (CdkWaylandDisplay *display)
 {
   GHashTableIter iter;
   const char *name;
-  GdkWaylandCursor *cursor;
+  CdkWaylandCursor *cursor;
 
   g_hash_table_iter_init (&iter, display->cursor_cache);
 
@@ -192,7 +192,7 @@ _cdk_wayland_display_update_cursors (GdkWaylandDisplay *display)
 static void
 cdk_wayland_cursor_finalize (GObject *object)
 {
-  GdkWaylandCursor *cursor = GDK_WAYLAND_CURSOR (object);
+  CdkWaylandCursor *cursor = GDK_WAYLAND_CURSOR (object);
 
   g_free (cursor->name);
   if (cursor->surface.cairo_surface)
@@ -202,7 +202,7 @@ cdk_wayland_cursor_finalize (GObject *object)
 }
 
 static cairo_surface_t *
-cdk_wayland_cursor_get_surface (GdkCursor *cursor,
+cdk_wayland_cursor_get_surface (CdkCursor *cursor,
 				gdouble *x_hot,
 				gdouble *y_hot)
 {
@@ -210,7 +210,7 @@ cdk_wayland_cursor_get_surface (GdkCursor *cursor,
 }
 
 struct wl_buffer *
-_cdk_wayland_cursor_get_buffer (GdkCursor *cursor,
+_cdk_wayland_cursor_get_buffer (CdkCursor *cursor,
                                 guint      image_index,
                                 int       *hotspot_x,
                                 int       *hotspot_y,
@@ -218,7 +218,7 @@ _cdk_wayland_cursor_get_buffer (GdkCursor *cursor,
                                 int       *h,
                                 int       *scale)
 {
-  GdkWaylandCursor *wayland_cursor = GDK_WAYLAND_CURSOR (cursor);
+  CdkWaylandCursor *wayland_cursor = GDK_WAYLAND_CURSOR (cursor);
 
   if (wayland_cursor->wl_cursor)
     {
@@ -272,7 +272,7 @@ _cdk_wayland_cursor_get_buffer (GdkCursor *cursor,
 }
 
 guint
-_cdk_wayland_cursor_get_next_image_index (GdkCursor *cursor,
+_cdk_wayland_cursor_get_next_image_index (CdkCursor *cursor,
                                           guint      current_image_index,
                                           guint     *next_image_delay)
 {
@@ -298,12 +298,12 @@ _cdk_wayland_cursor_get_next_image_index (GdkCursor *cursor,
 }
 
 void
-_cdk_wayland_cursor_set_scale (GdkCursor *cursor,
+_cdk_wayland_cursor_set_scale (CdkCursor *cursor,
                                guint      scale)
 {
-  GdkWaylandDisplay *display_wayland =
+  CdkWaylandDisplay *display_wayland =
     GDK_WAYLAND_DISPLAY (cdk_cursor_get_display (cursor));
-  GdkWaylandCursor *wayland_cursor = GDK_WAYLAND_CURSOR (cursor);
+  CdkWaylandCursor *wayland_cursor = GDK_WAYLAND_CURSOR (cursor);
 
   if (scale > GDK_WAYLAND_MAX_THEME_SCALE)
     {
@@ -324,9 +324,9 @@ _cdk_wayland_cursor_set_scale (GdkCursor *cursor,
 }
 
 static void
-_cdk_wayland_cursor_class_init (GdkWaylandCursorClass *wayland_cursor_class)
+_cdk_wayland_cursor_class_init (CdkWaylandCursorClass *wayland_cursor_class)
 {
-  GdkCursorClass *cursor_class = GDK_CURSOR_CLASS (wayland_cursor_class);
+  CdkCursorClass *cursor_class = GDK_CURSOR_CLASS (wayland_cursor_class);
   GObjectClass *object_class = G_OBJECT_CLASS (wayland_cursor_class);
 
   object_class->finalize = cdk_wayland_cursor_finalize;
@@ -335,17 +335,17 @@ _cdk_wayland_cursor_class_init (GdkWaylandCursorClass *wayland_cursor_class)
 }
 
 static void
-_cdk_wayland_cursor_init (GdkWaylandCursor *cursor)
+_cdk_wayland_cursor_init (CdkWaylandCursor *cursor)
 {
 }
 
-static GdkCursor *
-_cdk_wayland_display_get_cursor_for_name_with_scale (GdkDisplay  *display,
+static CdkCursor *
+_cdk_wayland_display_get_cursor_for_name_with_scale (CdkDisplay  *display,
                                                      const gchar *name,
                                                      guint        scale)
 {
-  GdkWaylandCursor *wayland_cursor;
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandCursor *wayland_cursor;
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
 
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
 
@@ -383,22 +383,22 @@ _cdk_wayland_display_get_cursor_for_name_with_scale (GdkDisplay  *display,
   return GDK_CURSOR (wayland_cursor);
 }
 
-GdkCursor *
-_cdk_wayland_display_get_cursor_for_name (GdkDisplay  *display,
+CdkCursor *
+_cdk_wayland_display_get_cursor_for_name (CdkDisplay  *display,
                                           const gchar *name)
 {
   return _cdk_wayland_display_get_cursor_for_name_with_scale (display, name, 1);
 }
 
-GdkCursor *
-_cdk_wayland_display_get_cursor_for_type_with_scale (GdkDisplay    *display,
-                                                     GdkCursorType  cursor_type,
+CdkCursor *
+_cdk_wayland_display_get_cursor_for_type_with_scale (CdkDisplay    *display,
+                                                     CdkCursorType  cursor_type,
                                                      guint          scale)
 {
   GEnumClass *enum_class;
   GEnumValue *enum_value;
   gchar *cursor_name;
-  GdkCursor *result;
+  CdkCursor *result;
 
   enum_class = g_type_class_ref (GDK_TYPE_CURSOR_TYPE);
   enum_value = g_enum_get_value (enum_class, cursor_type);
@@ -415,9 +415,9 @@ _cdk_wayland_display_get_cursor_for_type_with_scale (GdkDisplay    *display,
   return result;
 }
 
-GdkCursor *
-_cdk_wayland_display_get_cursor_for_type (GdkDisplay    *display,
-                                          GdkCursorType  cursor_type)
+CdkCursor *
+_cdk_wayland_display_get_cursor_for_type (CdkDisplay    *display,
+                                          CdkCursorType  cursor_type)
 {
   return _cdk_wayland_display_get_cursor_for_type_with_scale (display,
                                                               cursor_type,
@@ -437,14 +437,14 @@ static const struct wl_buffer_listener buffer_listener = {
   buffer_release_callback
 };
 
-GdkCursor *
-_cdk_wayland_display_get_cursor_for_surface (GdkDisplay *display,
+CdkCursor *
+_cdk_wayland_display_get_cursor_for_surface (CdkDisplay *display,
 					     cairo_surface_t *surface,
 					     gdouble     x,
 					     gdouble     y)
 {
-  GdkWaylandCursor *cursor;
-  GdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandCursor *cursor;
+  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
   struct wl_buffer *buffer;
   cairo_t *cr;
 
@@ -493,7 +493,7 @@ _cdk_wayland_display_get_cursor_for_surface (GdkDisplay *display,
 }
 
 void
-_cdk_wayland_display_get_default_cursor_size (GdkDisplay *display,
+_cdk_wayland_display_get_default_cursor_size (CdkDisplay *display,
 					      guint       *width,
 					      guint       *height)
 {
@@ -502,7 +502,7 @@ _cdk_wayland_display_get_default_cursor_size (GdkDisplay *display,
 }
 
 void
-_cdk_wayland_display_get_maximal_cursor_size (GdkDisplay *display,
+_cdk_wayland_display_get_maximal_cursor_size (CdkDisplay *display,
 					      guint       *width,
 					      guint       *height)
 {
@@ -511,13 +511,13 @@ _cdk_wayland_display_get_maximal_cursor_size (GdkDisplay *display,
 }
 
 gboolean
-_cdk_wayland_display_supports_cursor_alpha (GdkDisplay *display)
+_cdk_wayland_display_supports_cursor_alpha (CdkDisplay *display)
 {
   return TRUE;
 }
 
 gboolean
-_cdk_wayland_display_supports_cursor_color (GdkDisplay *display)
+_cdk_wayland_display_supports_cursor_color (CdkDisplay *display)
 {
   return TRUE;
 }

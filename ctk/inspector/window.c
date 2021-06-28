@@ -282,10 +282,10 @@ ctk_inspector_window_class_init (CtkInspectorWindowClass *klass)
   ctk_widget_class_bind_template_callback (widget_class, object_details_changed);
 }
 
-static GdkScreen *
+static CdkScreen *
 get_inspector_screen (void)
 {
-  static GdkDisplay *display = NULL;
+  static CdkDisplay *display = NULL;
 
   if (display == NULL)
     {

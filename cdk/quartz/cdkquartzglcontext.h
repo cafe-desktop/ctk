@@ -31,11 +31,11 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_QUARTZ_GL_CONTEXT   (cdk_quartz_gl_context_get_type ())
-#define GDK_QUARTZ_GL_CONTEXT(obj)   (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_QUARTZ_GL_CONTEXT, GdkQuartzGLContext))
+#define GDK_QUARTZ_GL_CONTEXT(obj)   (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_QUARTZ_GL_CONTEXT, CdkQuartzGLContext))
 #define GDK_QUARTZ_IS_GL_CONTEXT(obj)  (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_QUARTZ_GL_CONTEXT))
 
-typedef struct _GdkQuartzGLContext   GdkQuartzGLContext;
-typedef struct _GdkQuartzGLContextClass  GdkQuartzGLContextClass;
+typedef struct _CdkQuartzGLContext   CdkQuartzGLContext;
+typedef struct _CdkQuartzGLContextClass  CdkQuartzGLContextClass;
 
 GDK_AVAILABLE_IN_3_24
 GType cdk_quartz_gl_context_get_type (void) G_GNUC_CONST;

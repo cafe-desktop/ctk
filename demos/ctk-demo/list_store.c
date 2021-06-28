@@ -231,7 +231,7 @@ add_columns (CtkTreeView *treeview)
 
 static gboolean
 window_closed (CtkWidget *widget,
-               GdkEvent  *event,
+               CdkEvent  *event,
                gpointer   user_data)
 {
   model = NULL;

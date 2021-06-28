@@ -27,7 +27,7 @@
 G_BEGIN_DECLS
 
 GDK_AVAILABLE_IN_3_2
-gint  cdk_x11_device_get_id  (GdkDevice *device);
+gint  cdk_x11_device_get_id  (CdkDevice *device);
 
 G_END_DECLS
 

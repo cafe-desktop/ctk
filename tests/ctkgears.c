@@ -125,14 +125,14 @@ typedef struct {
 G_DEFINE_TYPE_WITH_PRIVATE (CtkGears, ctk_gears, CTK_TYPE_GL_AREA)
 
 static gboolean ctk_gears_render        (CtkGLArea     *area,
-                                         GdkGLContext  *context);
+                                         CdkGLContext  *context);
 static void     ctk_gears_reshape       (CtkGLArea     *area,
                                          int            width,
                                          int            height);
 static void     ctk_gears_realize       (CtkWidget     *widget);
 static void     ctk_gears_unrealize     (CtkWidget     *widget);
 static gboolean ctk_gears_tick          (CtkWidget     *widget,
-                                         GdkFrameClock *frame_clock,
+                                         CdkFrameClock *frame_clock,
                                          gpointer       user_data);
 
 static void destroy_gear (struct gear *g);
@@ -622,7 +622,7 @@ ctk_gears_reshape (CtkGLArea *area, int width, int height)
 
 static gboolean
 ctk_gears_render (CtkGLArea    *area,
-                  GdkGLContext *context)
+                  CdkGLContext *context)
 {
   static const GLfloat red[4]   = { 0.8, 0.1, 0.0, 1.0 };
   static const GLfloat green[4] = { 0.0, 0.8, 0.2, 1.0 };
@@ -736,7 +736,7 @@ ctk_gears_realize (CtkWidget *widget)
   CtkGLArea *glarea = CTK_GL_AREA (widget);
   CtkGears *gears = CTK_GEARS (widget);
   CtkGearsPrivate *priv = ctk_gears_get_instance_private (gears);
-  GdkGLContext *context;
+  CdkGLContext *context;
   GLuint vao, v, f, program;
   const char *p;
   char msg[512];
@@ -869,12 +869,12 @@ ctk_gears_unrealize (CtkWidget *widget)
 
 static gboolean
 ctk_gears_tick (CtkWidget     *widget,
-                GdkFrameClock *frame_clock,
+                CdkFrameClock *frame_clock,
                 gpointer       user_data)
 {
   CtkGears *gears = CTK_GEARS (widget);
   CtkGearsPrivate *priv = ctk_gears_get_instance_private (gears);
-  GdkFrameTimings *timings, *previous_timings;
+  CdkFrameTimings *timings, *previous_timings;
   gint64 previous_frame_time = 0;
   gint64 frame_time;
   gint64 history_start, history_len;

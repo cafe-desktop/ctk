@@ -27,14 +27,14 @@
 #include "cdkprivate-quartz.h"
 #include "cdkinternal-quartz.h"
 
-struct _GdkQuartzMonitor
+struct _CdkQuartzMonitor
 {
-  GdkMonitor parent;
+  CdkMonitor parent;
   CGDirectDisplayID id;
 };
 
-struct _GdkQuartzMonitorClass {
-  GdkMonitorClass parent_class;
+struct _CdkQuartzMonitorClass {
+  CdkMonitorClass parent_class;
 };
 
 #endif

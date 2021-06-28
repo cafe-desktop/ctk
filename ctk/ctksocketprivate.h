@@ -37,7 +37,7 @@ struct _CtkSocketPrivate
   guint16 current_width;
   guint16 current_height;
 
-  GdkWindow *plug_window;
+  CdkWindow *plug_window;
   CtkWidget *plug_widget;
 
   gshort xembed_version; /* -1 == not xembed */

@@ -52,7 +52,7 @@ typedef struct _CtkAccelMapClass CtkAccelMapClass;
 typedef void (*CtkAccelMapForeach)		(gpointer	 data,
 						 const gchar	*accel_path,
 						 guint           accel_key,
-						 GdkModifierType accel_mods,
+						 CdkModifierType accel_mods,
 						 gboolean	 changed);
 
 
@@ -61,14 +61,14 @@ typedef void (*CtkAccelMapForeach)		(gpointer	 data,
 GDK_AVAILABLE_IN_ALL
 void	   ctk_accel_map_add_entry	(const gchar		*accel_path,
 					 guint			 accel_key,
-					 GdkModifierType         accel_mods);
+					 CdkModifierType         accel_mods);
 GDK_AVAILABLE_IN_ALL
 gboolean   ctk_accel_map_lookup_entry	(const gchar		*accel_path,
 					 CtkAccelKey		*key);
 GDK_AVAILABLE_IN_ALL
 gboolean   ctk_accel_map_change_entry	(const gchar		*accel_path,
 					 guint			 accel_key,
-					 GdkModifierType	 accel_mods,
+					 CdkModifierType	 accel_mods,
 					 gboolean		 replace);
 GDK_AVAILABLE_IN_ALL
 void	   ctk_accel_map_load		(const gchar		*file_name);

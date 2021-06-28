@@ -35,4 +35,4 @@ gchar              *_cdk_display_name = NULL;
 gchar              *_cdk_display_arg_name = NULL;
 gboolean            _cdk_disable_multidevice = FALSE;
 guint               _cdk_gl_flags = 0;
-GdkRenderingMode    _cdk_rendering_mode = GDK_RENDERING_MODE_SIMILAR;
+CdkRenderingMode    _cdk_rendering_mode = GDK_RENDERING_MODE_SIMILAR;

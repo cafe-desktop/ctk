@@ -29,18 +29,18 @@
 /**
  * SECTION:cdkseat
  * @Short_description: Object representing an user seat
- * @Title: GdkSeat
- * @See_also: #GdkDisplay, #GdkDevice
+ * @Title: CdkSeat
+ * @See_also: #CdkDisplay, #CdkDevice
  *
- * The #GdkSeat object represents a collection of input devices
+ * The #CdkSeat object represents a collection of input devices
  * that belong to a user.
  */
 
-typedef struct _GdkSeatPrivate GdkSeatPrivate;
+typedef struct _CdkSeatPrivate CdkSeatPrivate;
 
-struct _GdkSeatPrivate
+struct _CdkSeatPrivate
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 };
 
 enum {
@@ -60,7 +60,7 @@ enum {
 static guint signals[N_SIGNALS] = { 0 };
 static GParamSpec *props[N_PROPS] = { NULL };
 
-G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GdkSeat, cdk_seat, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (CdkSeat, cdk_seat, G_TYPE_OBJECT)
 
 static void
 cdk_seat_set_property (GObject      *object,
@@ -68,7 +68,7 @@ cdk_seat_set_property (GObject      *object,
                        const GValue *value,
                        GParamSpec   *pspec)
 {
-  GdkSeatPrivate *priv = cdk_seat_get_instance_private (GDK_SEAT (object));
+  CdkSeatPrivate *priv = cdk_seat_get_instance_private (GDK_SEAT (object));
 
   switch (prop_id)
     {
@@ -87,7 +87,7 @@ cdk_seat_get_property (GObject    *object,
                        GValue     *value,
                        GParamSpec *pspec)
 {
-  GdkSeatPrivate *priv = cdk_seat_get_instance_private (GDK_SEAT (object));
+  CdkSeatPrivate *priv = cdk_seat_get_instance_private (GDK_SEAT (object));
 
   switch (prop_id)
     {
@@ -101,7 +101,7 @@ cdk_seat_get_property (GObject    *object,
 }
 
 static void
-cdk_seat_class_init (GdkSeatClass *klass)
+cdk_seat_class_init (CdkSeatClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -109,9 +109,9 @@ cdk_seat_class_init (GdkSeatClass *klass)
   object_class->get_property = cdk_seat_get_property;
 
   /**
-   * GdkSeat::device-added:
+   * CdkSeat::device-added:
    * @seat: the object on which the signal is emitted
-   * @device: the newly added #GdkDevice.
+   * @device: the newly added #CdkDevice.
    *
    * The ::device-added signal is emitted when a new input
    * device is related to this seat.
@@ -122,16 +122,16 @@ cdk_seat_class_init (GdkSeatClass *klass)
     g_signal_new (g_intern_static_string ("device-added"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GdkSeatClass, device_added),
+                  G_STRUCT_OFFSET (CdkSeatClass, device_added),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
                   GDK_TYPE_DEVICE);
 
   /**
-   * GdkSeat::device-removed:
+   * CdkSeat::device-removed:
    * @seat: the object on which the signal is emitted
-   * @device: the just removed #GdkDevice.
+   * @device: the just removed #CdkDevice.
    *
    * The ::device-removed signal is emitted when an
    * input device is removed (e.g. unplugged).
@@ -142,21 +142,21 @@ cdk_seat_class_init (GdkSeatClass *klass)
     g_signal_new (g_intern_static_string ("device-removed"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GdkSeatClass, device_removed),
+                  G_STRUCT_OFFSET (CdkSeatClass, device_removed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
                   GDK_TYPE_DEVICE);
 
   /**
-   * GdkSeat::tool-added:
+   * CdkSeat::tool-added:
    * @seat: the object on which the signal is emitted
-   * @tool: the new #GdkDeviceTool known to the seat
+   * @tool: the new #CdkDeviceTool known to the seat
    *
    * The ::tool-added signal is emitted whenever a new tool
    * is made known to the seat. The tool may later be assigned
    * to a device (i.e. on proximity with a tablet). The device
-   * will emit the #GdkDevice::tool-changed signal accordingly.
+   * will emit the #CdkDevice::tool-changed signal accordingly.
    *
    * A same tool may be used by several devices.
    *
@@ -172,9 +172,9 @@ cdk_seat_class_init (GdkSeatClass *klass)
                   GDK_TYPE_DEVICE_TOOL);
 
   /**
-   * GdkSeat::tool-removed:
+   * CdkSeat::tool-removed:
    * @seat: the object on which the signal is emitted
-   * @tool: the just removed #GdkDeviceTool
+   * @tool: the just removed #CdkDeviceTool
    *
    * This signal is emitted whenever a tool is no longer known
    * to this @seat.
@@ -191,9 +191,9 @@ cdk_seat_class_init (GdkSeatClass *klass)
                   GDK_TYPE_DEVICE_TOOL);
 
   /**
-   * GdkSeat:display:
+   * CdkSeat:display:
    *
-   * #GdkDisplay of this seat.
+   * #CdkDisplay of this seat.
    *
    * Since: 3.20
    */
@@ -210,24 +210,24 @@ cdk_seat_class_init (GdkSeatClass *klass)
 }
 
 static void
-cdk_seat_init (GdkSeat *seat)
+cdk_seat_init (CdkSeat *seat)
 {
 }
 
 /**
  * cdk_seat_get_capabilities:
- * @seat: a #GdkSeat
+ * @seat: a #CdkSeat
  *
- * Returns the capabilities this #GdkSeat currently has.
+ * Returns the capabilities this #CdkSeat currently has.
  *
  * Returns: the seat capabilities
  *
  * Since: 3.20
  **/
-GdkSeatCapabilities
-cdk_seat_get_capabilities (GdkSeat *seat)
+CdkSeatCapabilities
+cdk_seat_get_capabilities (CdkSeat *seat)
 {
-  GdkSeatClass *seat_class;
+  CdkSeatClass *seat_class;
 
   g_return_val_if_fail (GDK_IS_SEAT (seat), GDK_SEAT_CAPABILITY_NONE);
 
@@ -237,8 +237,8 @@ cdk_seat_get_capabilities (GdkSeat *seat)
 
 /**
  * cdk_seat_grab:
- * @seat: a #GdkSeat
- * @window: the #GdkWindow which will own the grab
+ * @seat: a #CdkSeat
+ * @window: the #CdkWindow which will own the grab
  * @capabilities: capabilities that will be grabbed
  * @owner_events: if %FALSE then all device events are reported with respect to
  *                @window and are only reported if selected by @event_mask. If
@@ -272,31 +272,31 @@ cdk_seat_get_capabilities (GdkSeat *seat)
  * events corresponding to the given capabilities. For example in CTK+ this
  * is used for Drag and Drop operations, popup menus and such.
  *
- * Note that if the event mask of a #GdkWindow has selected both button press
+ * Note that if the event mask of a #CdkWindow has selected both button press
  * and button release events, or touch begin and touch end, then a press event
  * will cause an automatic grab until the button is released, equivalent to a
  * grab on the window with @owner_events set to %TRUE. This is done because most
  * applications expect to receive paired press and release events.
  *
  * If you set up anything at the time you take the grab that needs to be
- * cleaned up when the grab ends, you should handle the #GdkEventGrabBroken
+ * cleaned up when the grab ends, you should handle the #CdkEventGrabBroken
  * events that are emitted when the grab ends unvoluntarily.
  *
  * Returns: %GDK_GRAB_SUCCESS if the grab was successful.
  *
  * Since: 3.20
  **/
-GdkGrabStatus
-cdk_seat_grab (GdkSeat                *seat,
-               GdkWindow              *window,
-               GdkSeatCapabilities     capabilities,
+CdkGrabStatus
+cdk_seat_grab (CdkSeat                *seat,
+               CdkWindow              *window,
+               CdkSeatCapabilities     capabilities,
                gboolean                owner_events,
-               GdkCursor              *cursor,
-               const GdkEvent         *event,
-               GdkSeatGrabPrepareFunc  prepare_func,
+               CdkCursor              *cursor,
+               const CdkEvent         *event,
+               CdkSeatGrabPrepareFunc  prepare_func,
                gpointer                prepare_func_data)
 {
-  GdkSeatClass *seat_class;
+  CdkSeatClass *seat_class;
 
   g_return_val_if_fail (GDK_IS_SEAT (seat), GDK_GRAB_FAILED);
   g_return_val_if_fail (GDK_IS_WINDOW (window), GDK_GRAB_FAILED);
@@ -312,16 +312,16 @@ cdk_seat_grab (GdkSeat                *seat,
 
 /**
  * cdk_seat_ungrab:
- * @seat: a #GdkSeat
+ * @seat: a #CdkSeat
  *
  * Releases a grab added through cdk_seat_grab().
  *
  * Since: 3.20
  **/
 void
-cdk_seat_ungrab (GdkSeat *seat)
+cdk_seat_ungrab (CdkSeat *seat)
 {
-  GdkSeatClass *seat_class;
+  CdkSeatClass *seat_class;
 
   g_return_if_fail (GDK_IS_SEAT (seat));
 
@@ -331,22 +331,22 @@ cdk_seat_ungrab (GdkSeat *seat)
 
 /**
  * cdk_seat_get_slaves:
- * @seat: a #GdkSeat
+ * @seat: a #CdkSeat
  * @capabilities: capabilities to get devices for
  *
  * Returns the slave devices that match the given capabilities.
  *
- * Returns: (transfer container) (element-type GdkDevice): A list of #GdkDevices.
+ * Returns: (transfer container) (element-type CdkDevice): A list of #CdkDevices.
  *          The list must be freed with g_list_free(), the elements are owned
  *          by GDK and must not be freed.
  *
  * Since: 3.20
  **/
 GList *
-cdk_seat_get_slaves (GdkSeat             *seat,
-                     GdkSeatCapabilities  capabilities)
+cdk_seat_get_slaves (CdkSeat             *seat,
+                     CdkSeatCapabilities  capabilities)
 {
-  GdkSeatClass *seat_class;
+  CdkSeatClass *seat_class;
 
   g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
 
@@ -356,19 +356,19 @@ cdk_seat_get_slaves (GdkSeat             *seat,
 
 /**
  * cdk_seat_get_pointer:
- * @seat: a #GdkSeat
+ * @seat: a #CdkSeat
  *
  * Returns the master device that routes pointer events.
  *
- * Returns: (transfer none) (nullable): a master #GdkDevice with pointer
+ * Returns: (transfer none) (nullable): a master #CdkDevice with pointer
  *          capabilities. This object is owned by CTK+ and must not be freed.
  *
  * Since: 3.20
  **/
-GdkDevice *
-cdk_seat_get_pointer (GdkSeat *seat)
+CdkDevice *
+cdk_seat_get_pointer (CdkSeat *seat)
 {
-  GdkSeatClass *seat_class;
+  CdkSeatClass *seat_class;
 
   g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
 
@@ -378,19 +378,19 @@ cdk_seat_get_pointer (GdkSeat *seat)
 
 /**
  * cdk_seat_get_keyboard:
- * @seat: a #GdkSeat
+ * @seat: a #CdkSeat
  *
  * Returns the master device that routes keyboard events.
  *
- * Returns: (transfer none) (nullable): a master #GdkDevice with keyboard
+ * Returns: (transfer none) (nullable): a master #CdkDevice with keyboard
  *          capabilities. This object is owned by CTK+ and must not be freed.
  *
  * Since: 3.20
  **/
-GdkDevice *
-cdk_seat_get_keyboard (GdkSeat *seat)
+CdkDevice *
+cdk_seat_get_keyboard (CdkSeat *seat)
 {
-  GdkSeatClass *seat_class;
+  CdkSeatClass *seat_class;
 
   g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
 
@@ -399,16 +399,16 @@ cdk_seat_get_keyboard (GdkSeat *seat)
 }
 
 void
-cdk_seat_device_added (GdkSeat   *seat,
-                       GdkDevice *device)
+cdk_seat_device_added (CdkSeat   *seat,
+                       CdkDevice *device)
 {
   cdk_device_set_seat (device, seat);
   g_signal_emit (seat, signals[DEVICE_ADDED], 0, device);
 }
 
 void
-cdk_seat_device_removed (GdkSeat   *seat,
-                         GdkDevice *device)
+cdk_seat_device_removed (CdkSeat   *seat,
+                         CdkDevice *device)
 {
   cdk_device_set_seat (device, NULL);
   g_signal_emit (seat, signals[DEVICE_REMOVED], 0, device);
@@ -416,17 +416,17 @@ cdk_seat_device_removed (GdkSeat   *seat,
 
 /**
  * cdk_seat_get_display:
- * @seat: a #GdkSeat
+ * @seat: a #CdkSeat
  *
- * Returns the #GdkDisplay this seat belongs to.
+ * Returns the #CdkDisplay this seat belongs to.
  *
- * Returns: (transfer none): a #GdkDisplay. This object is owned by CTK+
+ * Returns: (transfer none): a #CdkDisplay. This object is owned by CTK+
  *          and must not be freed.
  **/
-GdkDisplay *
-cdk_seat_get_display (GdkSeat *seat)
+CdkDisplay *
+cdk_seat_get_display (CdkSeat *seat)
 {
-  GdkSeatPrivate *priv = cdk_seat_get_instance_private (seat);
+  CdkSeatPrivate *priv = cdk_seat_get_instance_private (seat);
 
   g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
 
@@ -434,25 +434,25 @@ cdk_seat_get_display (GdkSeat *seat)
 }
 
 void
-cdk_seat_tool_added (GdkSeat       *seat,
-                     GdkDeviceTool *tool)
+cdk_seat_tool_added (CdkSeat       *seat,
+                     CdkDeviceTool *tool)
 {
   g_signal_emit (seat, signals[TOOL_ADDED], 0, tool);
 }
 
 void
-cdk_seat_tool_removed (GdkSeat       *seat,
-                       GdkDeviceTool *tool)
+cdk_seat_tool_removed (CdkSeat       *seat,
+                       CdkDeviceTool *tool)
 {
   g_signal_emit (seat, signals[TOOL_REMOVED], 0, tool);
 }
 
-GdkDeviceTool *
-cdk_seat_get_tool (GdkSeat *seat,
+CdkDeviceTool *
+cdk_seat_get_tool (CdkSeat *seat,
                    guint64  serial,
                    guint64  hw_id)
 {
-  GdkSeatClass *seat_class;
+  CdkSeatClass *seat_class;
 
   g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
 

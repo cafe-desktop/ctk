@@ -27,26 +27,26 @@
 G_BEGIN_DECLS
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkBroadwayDisplay GdkBroadwayDisplay;
+typedef struct _CdkBroadwayDisplay CdkBroadwayDisplay;
 #else
-typedef GdkDisplay GdkBroadwayDisplay;
+typedef CdkDisplay CdkBroadwayDisplay;
 #endif
-typedef struct _GdkBroadwayDisplayClass GdkBroadwayDisplayClass;
+typedef struct _CdkBroadwayDisplayClass CdkBroadwayDisplayClass;
 
 #define GDK_TYPE_BROADWAY_DISPLAY              (cdk_broadway_display_get_type())
-#define GDK_BROADWAY_DISPLAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_DISPLAY, GdkBroadwayDisplay))
-#define GDK_BROADWAY_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_DISPLAY, GdkBroadwayDisplayClass))
+#define GDK_BROADWAY_DISPLAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_DISPLAY, CdkBroadwayDisplay))
+#define GDK_BROADWAY_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_DISPLAY, CdkBroadwayDisplayClass))
 #define GDK_IS_BROADWAY_DISPLAY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_DISPLAY))
 #define GDK_IS_BROADWAY_DISPLAY_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_BROADWAY_DISPLAY))
-#define GDK_BROADWAY_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_DISPLAY, GdkBroadwayDisplayClass))
+#define GDK_BROADWAY_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_DISPLAY, CdkBroadwayDisplayClass))
 
 GDK_AVAILABLE_IN_ALL
 GType                   cdk_broadway_display_get_type            (void);
 
 GDK_AVAILABLE_IN_3_12
-void                    cdk_broadway_display_show_keyboard       (GdkBroadwayDisplay *display);
+void                    cdk_broadway_display_show_keyboard       (CdkBroadwayDisplay *display);
 GDK_AVAILABLE_IN_3_12
-void                    cdk_broadway_display_hide_keyboard       (GdkBroadwayDisplay *display);
+void                    cdk_broadway_display_hide_keyboard       (CdkBroadwayDisplay *display);
 
 G_END_DECLS
 

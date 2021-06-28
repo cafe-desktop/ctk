@@ -45,7 +45,7 @@ enum {
 struct _HandleWindow
 {
   CtkWidget *widget;
-  GdkRectangle pointing_to;
+  CdkRectangle pointing_to;
   CtkBorder border;
   gint dx;
   gint dy;
@@ -186,7 +186,7 @@ ctk_text_handle_unset_state (CtkTextHandle *handle,
 
 static gboolean
 ctk_text_handle_widget_event (CtkWidget     *widget,
-                              GdkEvent      *event,
+                              CdkEvent      *event,
                               CtkTextHandle *handle)
 {
   CtkTextHandlePrivate *priv;
@@ -806,7 +806,7 @@ _ctk_text_handle_get_mode (CtkTextHandle *handle)
 void
 _ctk_text_handle_set_position (CtkTextHandle         *handle,
                                CtkTextHandlePosition  pos,
-                               GdkRectangle          *rect)
+                               CdkRectangle          *rect)
 {
   CtkTextHandlePrivate *priv;
   HandleWindow *handle_window;

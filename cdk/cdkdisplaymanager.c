@@ -56,20 +56,20 @@
 
 /**
  * SECTION:cdkdisplaymanager
- * @Short_description: Maintains a list of all open GdkDisplays
- * @Title: GdkDisplayManager
+ * @Short_description: Maintains a list of all open CdkDisplays
+ * @Title: CdkDisplayManager
  *
- * The purpose of the #GdkDisplayManager singleton object is to offer
+ * The purpose of the #CdkDisplayManager singleton object is to offer
  * notification when displays appear or disappear or the default display
  * changes.
  *
- * You can use cdk_display_manager_get() to obtain the #GdkDisplayManager
+ * You can use cdk_display_manager_get() to obtain the #CdkDisplayManager
  * singleton, but that should be rarely necessary. Typically, initializing
  * CTK+ opens a display that you can work with without ever accessing the
- * #GdkDisplayManager.
+ * #CdkDisplayManager.
  *
  * The GDK library can be built with support for multiple backends.
- * The #GdkDisplayManager object determines which backend is used
+ * The #CdkDisplayManager object determines which backend is used
  * at runtime.
  *
  * When writing backend-specific code that is supposed to work with
@@ -111,7 +111,7 @@ enum {
   LAST_SIGNAL
 };
 
-static void cdk_display_manager_class_init   (GdkDisplayManagerClass *klass);
+static void cdk_display_manager_class_init   (CdkDisplayManagerClass *klass);
 static void cdk_display_manager_set_property (GObject                *object,
                                               guint                   prop_id,
                                               const GValue           *value,
@@ -123,10 +123,10 @@ static void cdk_display_manager_get_property (GObject                *object,
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GdkDisplayManager, cdk_display_manager, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CdkDisplayManager, cdk_display_manager, G_TYPE_OBJECT)
 
 static void
-cdk_display_manager_class_init (GdkDisplayManagerClass *klass)
+cdk_display_manager_class_init (CdkDisplayManagerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -134,7 +134,7 @@ cdk_display_manager_class_init (GdkDisplayManagerClass *klass)
   object_class->get_property = cdk_display_manager_get_property;
 
   /**
-   * GdkDisplayManager::display-opened:
+   * CdkDisplayManager::display-opened:
    * @manager: the object on which the signal is emitted
    * @display: the opened display
    *
@@ -146,7 +146,7 @@ cdk_display_manager_class_init (GdkDisplayManagerClass *klass)
     g_signal_new (g_intern_static_string ("display-opened"),
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GdkDisplayManagerClass, display_opened),
+                  G_STRUCT_OFFSET (CdkDisplayManagerClass, display_opened),
                   NULL, NULL,
                   _cdk_marshal_VOID__OBJECT,
                   G_TYPE_NONE,
@@ -167,7 +167,7 @@ cdk_display_manager_class_init (GdkDisplayManagerClass *klass)
 }
 
 static void
-cdk_display_manager_init (GdkDisplayManager *manager)
+cdk_display_manager_init (CdkDisplayManager *manager)
 {
 }
 
@@ -249,14 +249,14 @@ cdk_set_allowed_backends (const gchar *backends)
   allowed_backends = g_strdup (backends);
 }
 
-typedef struct _GdkBackend GdkBackend;
+typedef struct _CdkBackend CdkBackend;
 
-struct _GdkBackend {
+struct _CdkBackend {
   const char *name;
-  GdkDisplay * (* open_display) (const char *name);
+  CdkDisplay * (* open_display) (const char *name);
 };
 
-static GdkBackend cdk_backends[] = {
+static CdkBackend cdk_backends[] = {
 #ifdef GDK_WINDOWING_QUARTZ
   { "quartz",   _cdk_quartz_display_open },
 #endif
@@ -279,7 +279,7 @@ static GdkBackend cdk_backends[] = {
 /**
  * cdk_display_manager_get:
  *
- * Gets the singleton #GdkDisplayManager object.
+ * Gets the singleton #CdkDisplayManager object.
  *
  * When called for the first time, this function consults the
  * `GDK_BACKEND` environment variable to find out which
@@ -287,16 +287,16 @@ static GdkBackend cdk_backends[] = {
  * with multiple backends). Applications can use cdk_set_allowed_backends()
  * to limit what backends can be used.
  *
- * Returns: (transfer none): The global #GdkDisplayManager singleton;
+ * Returns: (transfer none): The global #CdkDisplayManager singleton;
  *     cdk_parse_args(), cdk_init(), or cdk_init_check() must have
  *     been called first.
  *
  * Since: 2.2
  **/
-GdkDisplayManager*
+CdkDisplayManager*
 cdk_display_manager_get (void)
 {
-  static GdkDisplayManager *manager = NULL;
+  static CdkDisplayManager *manager = NULL;
 
   if (manager == NULL)
     manager = g_object_new (GDK_TYPE_DISPLAY_MANAGER, NULL);
@@ -306,17 +306,17 @@ cdk_display_manager_get (void)
 
 /**
  * cdk_display_manager_get_default_display:
- * @manager: a #GdkDisplayManager
+ * @manager: a #CdkDisplayManager
  *
- * Gets the default #GdkDisplay.
+ * Gets the default #CdkDisplay.
  *
- * Returns: (nullable) (transfer none): a #GdkDisplay, or %NULL if
+ * Returns: (nullable) (transfer none): a #CdkDisplay, or %NULL if
  *     there is no default display.
  *
  * Since: 2.2
  */
-GdkDisplay *
-cdk_display_manager_get_default_display (GdkDisplayManager *manager)
+CdkDisplay *
+cdk_display_manager_get_default_display (CdkDisplayManager *manager)
 {
   return manager->default_display;
 }
@@ -324,16 +324,16 @@ cdk_display_manager_get_default_display (GdkDisplayManager *manager)
 /**
  * cdk_display_get_default:
  *
- * Gets the default #GdkDisplay. This is a convenience
+ * Gets the default #CdkDisplay. This is a convenience
  * function for:
  * `cdk_display_manager_get_default_display (cdk_display_manager_get ())`.
  *
- * Returns: (nullable) (transfer none): a #GdkDisplay, or %NULL if
+ * Returns: (nullable) (transfer none): a #CdkDisplay, or %NULL if
  *   there is no default display.
  *
  * Since: 2.2
  */
-GdkDisplay *
+CdkDisplay *
 cdk_display_get_default (void)
 {
   return cdk_display_manager_get_default_display (cdk_display_manager_get ());
@@ -345,15 +345,15 @@ cdk_display_get_default (void)
  * Gets the default screen for the default display. (See
  * cdk_display_get_default ()).
  *
- * Returns: (nullable) (transfer none): a #GdkScreen, or %NULL if
+ * Returns: (nullable) (transfer none): a #CdkScreen, or %NULL if
  *     there is no default display.
  *
  * Since: 2.2
  */
-GdkScreen *
+CdkScreen *
 cdk_screen_get_default (void)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   display = cdk_display_get_default ();
 
@@ -365,16 +365,16 @@ cdk_screen_get_default (void)
 
 /**
  * cdk_display_manager_set_default_display:
- * @manager: a #GdkDisplayManager
- * @display: a #GdkDisplay
+ * @manager: a #CdkDisplayManager
+ * @display: a #CdkDisplay
  * 
  * Sets @display as the default display.
  *
  * Since: 2.2
  **/
 void
-cdk_display_manager_set_default_display (GdkDisplayManager *manager,
-                                         GdkDisplay        *display)
+cdk_display_manager_set_default_display (CdkDisplayManager *manager,
+                                         CdkDisplay        *display)
 {
   manager->default_display = display;
 
@@ -386,40 +386,40 @@ cdk_display_manager_set_default_display (GdkDisplayManager *manager,
 
 /**
  * cdk_display_manager_list_displays:
- * @manager: a #GdkDisplayManager
+ * @manager: a #CdkDisplayManager
  *
  * List all currently open displays.
  *
- * Returns: (transfer container) (element-type GdkDisplay): a newly
- *     allocated #GSList of #GdkDisplay objects. Free with g_slist_free()
+ * Returns: (transfer container) (element-type CdkDisplay): a newly
+ *     allocated #GSList of #CdkDisplay objects. Free with g_slist_free()
  *     when you are done with it.
  *
  * Since: 2.2
  **/
 GSList *
-cdk_display_manager_list_displays (GdkDisplayManager *manager)
+cdk_display_manager_list_displays (CdkDisplayManager *manager)
 {
   return g_slist_copy (manager->displays);
 }
 
 /**
  * cdk_display_manager_open_display:
- * @manager: a #GdkDisplayManager
+ * @manager: a #CdkDisplayManager
  * @name: the name of the display to open
  *
  * Opens a display.
  *
- * Returns: (nullable) (transfer none): a #GdkDisplay, or %NULL if the
+ * Returns: (nullable) (transfer none): a #CdkDisplay, or %NULL if the
  *     display could not be opened
  *
  * Since: 3.0
  */
-GdkDisplay *
-cdk_display_manager_open_display (GdkDisplayManager *manager,
+CdkDisplay *
+cdk_display_manager_open_display (CdkDisplayManager *manager,
                                   const gchar       *name)
 {
   const gchar *backend_list;
-  GdkDisplay *display;
+  CdkDisplay *display;
   gchar **backends;
   gint i, j;
   gboolean allow_any;
@@ -472,8 +472,8 @@ cdk_display_manager_open_display (GdkDisplayManager *manager,
 }
 
 void
-_cdk_display_manager_add_display (GdkDisplayManager *manager,
-                                  GdkDisplay        *display)
+_cdk_display_manager_add_display (CdkDisplayManager *manager,
+                                  CdkDisplay        *display)
 {
   if (manager->displays == NULL)
     cdk_display_manager_set_default_display (manager, display);
@@ -485,8 +485,8 @@ _cdk_display_manager_add_display (GdkDisplayManager *manager,
 
 /* NB: This function can be called multiple times per display. */
 void
-_cdk_display_manager_remove_display (GdkDisplayManager *manager,
-                                     GdkDisplay        *display)
+_cdk_display_manager_remove_display (CdkDisplayManager *manager,
+                                     CdkDisplay        *display)
 {
   manager->displays = g_slist_remove (manager->displays, display);
 

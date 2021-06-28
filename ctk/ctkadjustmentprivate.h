@@ -25,7 +25,7 @@
 G_BEGIN_DECLS
 
 void ctk_adjustment_enable_animation (CtkAdjustment *adjustment,
-                                      GdkFrameClock *clock,
+                                      CdkFrameClock *clock,
                                       guint          duration);
 guint ctk_adjustment_get_animation_duration (CtkAdjustment *adjustment);
 void ctk_adjustment_animate_to_value (CtkAdjustment *adjustment,

@@ -115,7 +115,7 @@ main (int argc, char *argv[])
   ctk_init (&argc, &argv);
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
-  ctk_window_set_titlebar (CTK_WINDOW (window), g_object_new (CTK_TYPE_HEADER_BAR, "visible", TRUE, "title", "GdkGears", NULL));
+  ctk_window_set_titlebar (CTK_WINDOW (window), g_object_new (CTK_TYPE_HEADER_BAR, "visible", TRUE, "title", "CdkGears", NULL));
   ctk_window_set_default_size (CTK_WINDOW (window), 640, 640);
   ctk_container_set_border_width (CTK_CONTAINER (window), 12);
   g_signal_connect (window, "destroy", G_CALLBACK (ctk_main_quit), NULL);

@@ -67,7 +67,7 @@ find_widget (CtkWidget      *widget,
 
   if (ctk_widget_get_parent (widget) && !data->first)
     {
-      GdkWindow *window;
+      CdkWindow *window;
 
       window = ctk_widget_get_window (widget);
       while (window != ctk_widget_get_window (ctk_widget_get_parent (widget)))
@@ -143,10 +143,10 @@ find_widget (CtkWidget      *widget,
 }
 
 static CtkWidget *
-find_widget_at_pointer (GdkDevice *device)
+find_widget_at_pointer (CdkDevice *device)
 {
   CtkWidget *widget = NULL;
-  GdkWindow *pointer_window;
+  CdkWindow *pointer_window;
   gint x, y;
   FindWidgetData data;
 
@@ -226,7 +226,7 @@ select_widget (CtkInspectorWindow *iw,
 
 static void
 on_inspect_widget (CtkWidget          *button,
-                   GdkEvent           *event,
+                   CdkEvent           *event,
                    CtkInspectorWindow *iw)
 {
   CtkWidget *widget;
@@ -243,7 +243,7 @@ on_inspect_widget (CtkWidget          *button,
 
 static void
 on_highlight_widget (CtkWidget          *button,
-                     GdkEvent           *event,
+                     CdkEvent           *event,
                      CtkInspectorWindow *iw)
 {
   CtkWidget *widget;
@@ -275,7 +275,7 @@ on_highlight_widget (CtkWidget          *button,
 static void
 deemphasize_window (CtkWidget *window)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   screen = ctk_widget_get_screen (window);
   if (cdk_screen_is_composited (screen) &&
@@ -297,7 +297,7 @@ deemphasize_window (CtkWidget *window)
 static void
 reemphasize_window (CtkWidget *window)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   screen = ctk_widget_get_screen (window);
   if (cdk_screen_is_composited (screen) &&
@@ -312,7 +312,7 @@ reemphasize_window (CtkWidget *window)
 
 static gboolean
 property_query_event (CtkWidget *widget,
-                      GdkEvent  *event,
+                      CdkEvent  *event,
                       gpointer   data)
 {
   CtkInspectorWindow *iw = (CtkInspectorWindow *)data;
@@ -333,7 +333,7 @@ property_query_event (CtkWidget *widget,
     }
   else if (event->type == GDK_KEY_PRESS)
     {
-      GdkEventKey *ke = (GdkEventKey*)event;
+      CdkEventKey *ke = (CdkEventKey*)event;
 
       if (ke->keyval == GDK_KEY_Escape)
         {
@@ -354,9 +354,9 @@ void
 ctk_inspector_on_inspect (CtkWidget          *button,
                           CtkInspectorWindow *iw)
 {
-  GdkDisplay *display;
-  GdkCursor *cursor;
-  GdkGrabStatus status;
+  CdkDisplay *display;
+  CdkCursor *cursor;
+  CdkGrabStatus status;
 
   if (!iw->invisible)
     {
@@ -479,8 +479,8 @@ ctk_inspector_stop_highlight (CtkWidget *widget)
 void
 ctk_inspector_window_select_widget_under_pointer (CtkInspectorWindow *iw)
 {
-  GdkDisplay *display;
-  GdkDevice *device;
+  CdkDisplay *display;
+  CdkDevice *device;
   CtkWidget *widget;
 
   display = cdk_display_get_default ();

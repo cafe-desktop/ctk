@@ -823,8 +823,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Zobrazovaný GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "Zobrazovaný CdkPixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2198,16 +2198,16 @@ msgid "Cell background color"
 msgstr "Farba pozadia bunky"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Farba pozadia bunky ako GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Farba pozadia bunky ako CdkColor"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Farba RGBA pozadia bunky"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Farba pozadia bunky ako GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Farba pozadia bunky ako CdkRGBA"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2445,16 +2445,16 @@ msgid "Background color"
 msgstr "Farba pozadia"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
-msgstr "Farba pozadia ako GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Farba pozadia ako CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Farba pozadia ako RGBA"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
-msgstr "Farba pozadia ako GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Farba pozadia ako CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
@@ -2465,16 +2465,16 @@ msgid "Foreground color as a string"
 msgstr "Názov farby popredia ako reťazec"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
-msgstr "Farba popredia ako GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Farba popredia ako CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Farba popredia ako RGBA"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
-msgstr "Farba popredia ako GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Farba popredia ako CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
@@ -2942,8 +2942,8 @@ msgid "Color"
 msgstr "Farba"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Aktuálna farba, ako GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Aktuálna farba, ako CdkRGBA"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4187,7 +4187,7 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Počet bodov, potrebných na spustenie gesta"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
+msgid "CdkWindow to receive events about"
 msgstr "Okno GDK, ktoré bude dostávať udalosti o"
 
 #: ctk/ctkgesturelongpress.c:285
@@ -4528,8 +4528,8 @@ msgid "Animation"
 msgstr "Animácia"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "Zobrazená GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "Zobrazená CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -7794,16 +7794,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Štýl skosenia okolo textu v stavovom paneli"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "Priradený GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "Priradený CdkScreen"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
-msgstr "Priradený GdkFrameClock"
+msgid "The associated CdkFrameClock"
+msgstr "Priradený CdkFrameClock"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
 msgid "Text direction"
@@ -8099,16 +8099,16 @@ msgid "Paragraph background color"
 msgstr "Farba pozadia odstavca"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
-msgstr "Farba pozadia odstavca ako GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Farba pozadia odstavca ako CdkColor"
 
 #: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "Pozadie odstavca RGBA"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Pozadie odstavca RGBA ako GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Pozadie odstavca RGBA ako CdkRGBA"
 
 #: ctk/ctktexttag.c:663
 msgid "Fallback"
@@ -9103,9 +9103,9 @@ msgid "Events"
 msgstr "Udalosti"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Maska udalostí, ktorá určuje, aký typ udalostí GdkEvents bude tento ovládací "
+"Maska udalostí, ktorá určuje, aký typ udalostí CdkEvents bude tento ovládací "
 "prvok dostávať"
 
 #: ctk/ctkwidget.c:1263

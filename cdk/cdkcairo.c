@@ -33,9 +33,9 @@
  * can be used with GDK. CTK+ does all of its drawing using cairo.
  *
  * GDK does not wrap the cairo API, instead it allows to create cairo
- * contexts which can be used to draw on #GdkWindows. Additional
- * functions allow use #GdkRectangles with cairo and to use #GdkColors,
- * #GdkRGBAs, #GdkPixbufs and #GdkWindows as sources for drawing
+ * contexts which can be used to draw on #CdkWindows. Additional
+ * functions allow use #CdkRectangles with cairo and to use #CdkColors,
+ * #CdkRGBAs, #CdkPixbufs and #CdkWindows as sources for drawing
  * operations.
  */
 
@@ -54,7 +54,7 @@
  */
 gboolean
 cdk_cairo_get_clip_rectangle (cairo_t      *cr,
-                              GdkRectangle *rect)
+                              CdkRectangle *rect)
 {
   double x1, y1, x2, y2;
   gboolean clip_exists;
@@ -82,9 +82,9 @@ cdk_cairo_get_clip_rectangle (cairo_t      *cr,
 /**
  * cdk_cairo_set_source_color:
  * @cr: a cairo context
- * @color: a #GdkColor
+ * @color: a #CdkColor
  *
- * Sets the specified #GdkColor as the source color of @cr.
+ * Sets the specified #CdkColor as the source color of @cr.
  *
  * Since: 2.8
  *
@@ -92,7 +92,7 @@ cdk_cairo_get_clip_rectangle (cairo_t      *cr,
  */
 void
 cdk_cairo_set_source_color (cairo_t        *cr,
-                            const GdkColor *color)
+                            const CdkColor *color)
 {
   g_return_if_fail (cr != NULL);
   g_return_if_fail (color != NULL);
@@ -106,15 +106,15 @@ cdk_cairo_set_source_color (cairo_t        *cr,
 /**
  * cdk_cairo_set_source_rgba:
  * @cr: a cairo context
- * @rgba: a #GdkRGBA
+ * @rgba: a #CdkRGBA
  *
- * Sets the specified #GdkRGBA as the source color of @cr.
+ * Sets the specified #CdkRGBA as the source color of @cr.
  *
  * Since: 3.0
  */
 void
 cdk_cairo_set_source_rgba (cairo_t       *cr,
-                           const GdkRGBA *rgba)
+                           const CdkRGBA *rgba)
 {
   g_return_if_fail (cr != NULL);
   g_return_if_fail (rgba != NULL);
@@ -129,7 +129,7 @@ cdk_cairo_set_source_rgba (cairo_t       *cr,
 /**
  * cdk_cairo_rectangle:
  * @cr: a cairo context
- * @rectangle: a #GdkRectangle
+ * @rectangle: a #CdkRectangle
  *
  * Adds the given rectangle to the current path of @cr.
  *
@@ -137,7 +137,7 @@ cdk_cairo_set_source_rgba (cairo_t       *cr,
  */
 void
 cdk_cairo_rectangle (cairo_t            *cr,
-                     const GdkRectangle *rectangle)
+                     const CdkRectangle *rectangle)
 {
   g_return_if_fail (cr != NULL);
   g_return_if_fail (rectangle != NULL);
@@ -177,7 +177,7 @@ cdk_cairo_region (cairo_t              *cr,
 
 static void
 cdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
-                                const GdkPixbuf *pixbuf)
+                                const CdkPixbuf *pixbuf)
 {
   gint width, height;
   guchar *cdk_pixels, *cairo_pixels;
@@ -268,7 +268,7 @@ cdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
 
 /**
  * cdk_cairo_surface_create_from_pixbuf:
- * @pixbuf: a #GdkPixbuf
+ * @pixbuf: a #CdkPixbuf
  * @scale: the scale of the new surface, or 0 to use same as @window
  * @for_window: (allow-none): The window this will be drawn to, or %NULL
  *
@@ -280,9 +280,9 @@ cdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
  * Since: 3.10
  */
 cairo_surface_t *
-cdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
+cdk_cairo_surface_create_from_pixbuf (const CdkPixbuf *pixbuf,
                                       int              scale,
-                                      GdkWindow       *for_window)
+                                      CdkWindow       *for_window)
 {
   cairo_format_t format;
   cairo_surface_t *surface;
@@ -311,7 +311,7 @@ cdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
 /**
  * cdk_cairo_set_source_pixbuf:
  * @cr: a cairo context
- * @pixbuf: a #GdkPixbuf
+ * @pixbuf: a #CdkPixbuf
  * @pixbuf_x: X coordinate of location to place upper left corner of @pixbuf
  * @pixbuf_y: Y coordinate of location to place upper left corner of @pixbuf
  *
@@ -324,7 +324,7 @@ cdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
  */
 void
 cdk_cairo_set_source_pixbuf (cairo_t         *cr,
-                             const GdkPixbuf *pixbuf,
+                             const CdkPixbuf *pixbuf,
                              gdouble          pixbuf_x,
                              gdouble          pixbuf_y)
 {
@@ -350,7 +350,7 @@ cdk_cairo_set_source_pixbuf (cairo_t         *cr,
 /**
  * cdk_cairo_set_source_window:
  * @cr: a cairo context
- * @window: a #GdkWindow
+ * @window: a #CdkWindow
  * @x: X coordinate of location to place upper left corner of @window
  * @y: Y coordinate of location to place upper left corner of @window
  *
@@ -367,7 +367,7 @@ cdk_cairo_set_source_pixbuf (cairo_t         *cr,
  */
 void
 cdk_cairo_set_source_window (cairo_t   *cr,
-                             GdkWindow *window,
+                             CdkWindow *window,
                              gdouble    x,
                              gdouble    y)
 {
@@ -394,11 +394,11 @@ cdk_cairo_set_source_window (cairo_t   *cr,
  * You must explicitly check the return value of you want to handle
  * that case.
  *
- * Returns: %TRUE if the extents fit in a #GdkRectangle, %FALSE if not
+ * Returns: %TRUE if the extents fit in a #CdkRectangle, %FALSE if not
  */
 gboolean
 _cdk_cairo_surface_extents (cairo_surface_t *surface,
-                            GdkRectangle    *extents)
+                            CdkRectangle    *extents)
 {
   double x1, x2, y1, y2;
   cairo_t *cr;
@@ -455,7 +455,7 @@ cairo_region_t *
 cdk_cairo_region_create_from_surface (cairo_surface_t *surface)
 {
   cairo_region_t *region;
-  GdkRectangle extents, rect;
+  CdkRectangle extents, rect;
   cairo_surface_t *image;
   cairo_t *cr;
   gint x, y, stride;

@@ -111,12 +111,12 @@ struct _CtkTooltip
 
   CtkWidget *tooltip_widget;
 
-  GdkWindow *last_window;
+  CdkWindow *last_window;
 
   guint timeout_id;
   guint browse_mode_timeout_id;
 
-  GdkRectangle tip_area;
+  CdkRectangle tip_area;
 
   guint browse_mode_enabled : 1;
   guint keyboard_mode_enabled : 1;
@@ -138,13 +138,13 @@ static void       ctk_tooltip_dispose              (GObject         *object);
 
 static void       ctk_tooltip_window_hide          (CtkWidget       *widget,
 						    gpointer         user_data);
-static void       ctk_tooltip_display_closed       (GdkDisplay      *display,
+static void       ctk_tooltip_display_closed       (CdkDisplay      *display,
 						    gboolean         was_error,
 						    CtkTooltip      *tooltip);
 static void       ctk_tooltip_set_last_window      (CtkTooltip      *tooltip,
-						    GdkWindow       *window);
+						    CdkWindow       *window);
 
-static void       ctk_tooltip_handle_event_internal (GdkEvent        *event);
+static void       ctk_tooltip_handle_event_internal (CdkEvent        *event);
 
 static inline GQuark tooltip_quark (void)
 {
@@ -213,7 +213,7 @@ ctk_tooltip_dispose (GObject *object)
 
   if (tooltip->window)
     {
-      GdkDisplay *display;
+      CdkDisplay *display;
 
       display = ctk_widget_get_display (tooltip->window);
       g_signal_handlers_disconnect_by_func (display,
@@ -270,7 +270,7 @@ ctk_tooltip_set_text (CtkTooltip  *tooltip,
 /**
  * ctk_tooltip_set_icon:
  * @tooltip: a #CtkTooltip
- * @pixbuf: (allow-none): a #GdkPixbuf, or %NULL
+ * @pixbuf: (allow-none): a #CdkPixbuf, or %NULL
  *
  * Sets the icon of the tooltip (which is in front of the text) to be
  * @pixbuf.  If @pixbuf is %NULL, the image will be hidden.
@@ -279,7 +279,7 @@ ctk_tooltip_set_text (CtkTooltip  *tooltip,
  */
 void
 ctk_tooltip_set_icon (CtkTooltip *tooltip,
-		      GdkPixbuf  *pixbuf)
+		      CdkPixbuf  *pixbuf)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
   g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
@@ -394,7 +394,7 @@ ctk_tooltip_set_custom (CtkTooltip *tooltip,
 /**
  * ctk_tooltip_set_tip_area:
  * @tooltip: a #CtkTooltip
- * @rect: a #GdkRectangle
+ * @rect: a #CdkRectangle
  *
  * Sets the area of the widget, where the contents of this tooltip apply,
  * to be @rect (in widget coordinates).  This is especially useful for
@@ -409,7 +409,7 @@ ctk_tooltip_set_custom (CtkTooltip *tooltip,
  */
 void
 ctk_tooltip_set_tip_area (CtkTooltip         *tooltip,
-			  const GdkRectangle *rect)
+			  const CdkRectangle *rect)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
 
@@ -424,7 +424,7 @@ ctk_tooltip_set_tip_area (CtkTooltip         *tooltip,
 
 /**
  * ctk_tooltip_trigger_tooltip_query:
- * @display: a #GdkDisplay
+ * @display: a #CdkDisplay
  *
  * Triggers a new tooltip query on @display, in order to update the current
  * visible tooltip, or to show/hide the current tooltip.  This function is
@@ -434,12 +434,12 @@ ctk_tooltip_set_tip_area (CtkTooltip         *tooltip,
  * Since: 2.12
  */
 void
-ctk_tooltip_trigger_tooltip_query (GdkDisplay *display)
+ctk_tooltip_trigger_tooltip_query (CdkDisplay *display)
 {
   gint x, y;
-  GdkWindow *window;
-  GdkEvent event;
-  GdkDevice *device;
+  CdkWindow *window;
+  CdkEvent event;
+  CdkDevice *device;
 
   /* Trigger logic as if the mouse moved */
   device = cdk_seat_get_pointer (cdk_display_get_default_seat (display));
@@ -612,7 +612,7 @@ window_to_alloc (CtkWidget *dest_widget,
  * allocation relative (x, y) of the returned widget.
  */
 CtkWidget *
-_ctk_widget_find_at_coords (GdkWindow *window,
+_ctk_widget_find_at_coords (CdkWindow *window,
                             gint       window_x,
                             gint       window_y,
                             gint      *widget_x,
@@ -702,7 +702,7 @@ _ctk_widget_find_at_coords (GdkWindow *window,
  * allocation relative (x, y) of the returned widget.
  */
 static CtkWidget *
-find_topmost_widget_coords_from_event (GdkEvent *event,
+find_topmost_widget_coords_from_event (CdkEvent *event,
 				       gint     *x,
 				       gint     *y)
 {
@@ -749,7 +749,7 @@ static gint
 tooltip_browse_mode_expired (gpointer data)
 {
   CtkTooltip *tooltip;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   tooltip = CTK_TOOLTIP (data);
 
@@ -770,7 +770,7 @@ tooltip_browse_mode_expired (gpointer data)
 }
 
 static void
-ctk_tooltip_display_closed (GdkDisplay *display,
+ctk_tooltip_display_closed (CdkDisplay *display,
 			    gboolean    was_error,
 			    CtkTooltip *tooltip)
 {
@@ -785,7 +785,7 @@ ctk_tooltip_display_closed (GdkDisplay *display,
 
 static void
 ctk_tooltip_set_last_window (CtkTooltip *tooltip,
-			     GdkWindow  *window)
+			     CdkWindow  *window)
 {
   CtkWidget *window_widget = NULL;
 
@@ -861,16 +861,16 @@ ctk_tooltip_run_requery (CtkWidget  **widget,
 
 static void
 ctk_tooltip_position (CtkTooltip *tooltip,
-		      GdkDisplay *display,
+		      CdkDisplay *display,
 		      CtkWidget  *new_tooltip_widget,
-                      GdkDevice  *device)
+                      CdkDevice  *device)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
   CtkSettings *settings;
-  GdkRectangle anchor_rect;
-  GdkWindow *window;
-  GdkWindow *widget_window;
-  GdkWindow *effective_toplevel;
+  CdkRectangle anchor_rect;
+  CdkWindow *window;
+  CdkWindow *widget_window;
+  CdkWindow *effective_toplevel;
   CtkWidget *toplevel;
   int rect_anchor_dx = 0;
   int cursor_size;
@@ -968,12 +968,12 @@ ctk_tooltip_position (CtkTooltip *tooltip,
 }
 
 static void
-ctk_tooltip_show_tooltip (GdkDisplay *display)
+ctk_tooltip_show_tooltip (CdkDisplay *display)
 {
   gint x, y;
-  GdkScreen *screen;
-  GdkDevice *device;
-  GdkWindow *window;
+  CdkScreen *screen;
+  CdkDevice *device;
+  CdkWindow *window;
   CtkWidget *tooltip_widget;
   CtkTooltip *tooltip;
   gboolean return_value = FALSE;
@@ -1100,7 +1100,7 @@ ctk_tooltip_hide_tooltip (CtkTooltip *tooltip)
 static gint
 tooltip_popup_timeout (gpointer data)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkTooltip *tooltip;
 
   display = GDK_DISPLAY (data);
@@ -1120,7 +1120,7 @@ tooltip_popup_timeout (gpointer data)
 }
 
 static void
-ctk_tooltip_start_delay (GdkDisplay *display)
+ctk_tooltip_start_delay (CdkDisplay *display)
 {
   guint timeout;
   CtkTooltip *tooltip;
@@ -1150,9 +1150,9 @@ _ctk_tooltip_focus_in (CtkWidget *widget)
 {
   gint x, y;
   gboolean return_value = FALSE;
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkTooltip *tooltip;
-  GdkDevice *device;
+  CdkDevice *device;
 
   /* Get current tooltip for this display */
   display = ctk_widget_get_display (widget);
@@ -1202,7 +1202,7 @@ _ctk_tooltip_focus_in (CtkWidget *widget)
 void
 _ctk_tooltip_focus_out (CtkWidget *widget)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkTooltip *tooltip;
 
   /* Get current tooltip for this display */
@@ -1224,7 +1224,7 @@ _ctk_tooltip_focus_out (CtkWidget *widget)
 void
 _ctk_tooltip_toggle_keyboard_mode (CtkWidget *widget)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkTooltip *tooltip;
 
   display = ctk_widget_get_display (widget);
@@ -1264,7 +1264,7 @@ _ctk_tooltip_toggle_keyboard_mode (CtkWidget *widget)
 void
 _ctk_tooltip_hide (CtkWidget *widget)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkTooltip *tooltip;
 
   display = ctk_widget_get_display (widget);
@@ -1278,7 +1278,7 @@ _ctk_tooltip_hide (CtkWidget *widget)
 }
 
 void
-_ctk_tooltip_hide_in_display (GdkDisplay *display)
+_ctk_tooltip_hide_in_display (CdkDisplay *display)
 {
   CtkTooltip *tooltip;
 
@@ -1294,10 +1294,10 @@ _ctk_tooltip_hide_in_display (GdkDisplay *display)
 }
 
 static gboolean
-tooltips_enabled (GdkEvent *event)
+tooltips_enabled (CdkEvent *event)
 {
-  GdkDevice *source_device;
-  GdkInputSource source;
+  CdkDevice *source_device;
+  CdkInputSource source;
 
   source_device = cdk_event_get_source_device (event);
 
@@ -1313,7 +1313,7 @@ tooltips_enabled (GdkEvent *event)
 }
 
 void
-_ctk_tooltip_handle_event (GdkEvent *event)
+_ctk_tooltip_handle_event (CdkEvent *event)
 {
   if (!tooltips_enabled (event))
     return;
@@ -1322,11 +1322,11 @@ _ctk_tooltip_handle_event (GdkEvent *event)
 }
 
 static void
-ctk_tooltip_handle_event_internal (GdkEvent *event)
+ctk_tooltip_handle_event_internal (CdkEvent *event)
 {
   gint x, y;
   CtkWidget *has_tooltip_widget;
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkTooltip *current_tooltip;
 
   /* Returns coordinates relative to has_tooltip_widget's allocation. */
@@ -1389,7 +1389,7 @@ ctk_tooltip_handle_event_internal (GdkEvent *event)
 	if (current_tooltip)
 	  {
 	    gboolean tip_area_set;
-	    GdkRectangle tip_area;
+	    CdkRectangle tip_area;
 	    gboolean hide_tooltip;
 
 	    tip_area_set = current_tooltip->tip_area_set;

@@ -22,7 +22,7 @@
 #include "x11/cdkx.h"
 
 static void
-test_error_trapping (GdkDisplay *cdk_display)
+test_error_trapping (CdkDisplay *cdk_display)
 {
   Display *d;
   int dummy;
@@ -131,7 +131,7 @@ test_error_trapping (GdkDisplay *cdk_display)
 gint
 main (gint argc, gchar *argv[])
 {
-  GdkDisplay *extra_display;
+  CdkDisplay *extra_display;
 
   ctk_init (&argc, &argv);
 

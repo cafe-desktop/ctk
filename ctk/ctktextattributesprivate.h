@@ -25,7 +25,7 @@
 /*
  * The following macros are used to store and extract information about the
  * Pango underline and strikethrough colors in the unused pixel member of
- * the GdkColor members of CtkTextAppearance.
+ * the CdkColor members of CtkTextAppearance.
  *
  * In 4.0, we should revisit this.
  */

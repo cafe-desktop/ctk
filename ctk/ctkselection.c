@@ -151,16 +151,16 @@ typedef struct _CtkRetrievalInfo CtkRetrievalInfo;
 
 struct _CtkSelectionInfo
 {
-  GdkAtom	 selection;
+  CdkAtom	 selection;
   CtkWidget	*widget;	/* widget that owns selection */
   guint32	 time;		/* time used to acquire selection */
-  GdkDisplay	*display;	/* needed in ctk_selection_remove_all */    
+  CdkDisplay	*display;	/* needed in ctk_selection_remove_all */    
 };
 
 struct _CtkIncrConversion 
 {
-  GdkAtom	    target;	/* Requested target */
-  GdkAtom	    property;	/* Property to store in */
+  CdkAtom	    target;	/* Requested target */
+  CdkAtom	    property;	/* Property to store in */
   CtkSelectionData  data;	/* The data being supplied */
   gint		    offset;	/* Current offset in sent selection.
 				 *  -1 => All done
@@ -170,9 +170,9 @@ struct _CtkIncrConversion
 
 struct _CtkIncrInfo
 {
-  GdkWindow *requestor;		/* Requestor window - we create a GdkWindow
+  CdkWindow *requestor;		/* Requestor window - we create a CdkWindow
 				   so we can receive events */
-  GdkAtom    selection;		/* Selection we're sending */
+  CdkAtom    selection;		/* Selection we're sending */
   
   CtkIncrConversion *conversions; /* Information about requested conversions -
 				   * With MULTIPLE requests (benighted 1980's
@@ -187,8 +187,8 @@ struct _CtkIncrInfo
 struct _CtkRetrievalInfo
 {
   CtkWidget *widget;
-  GdkAtom selection;		/* Selection being retrieved. */
-  GdkAtom target;		/* Form of selection that we requested */
+  CdkAtom selection;		/* Selection being retrieved. */
+  CdkAtom target;		/* Form of selection that we requested */
   guint32 idle_time;		/* Number of seconds since we last heard
 				   from selection owner */
   guchar   *buffer;		/* Buffer in which to accumulate results */
@@ -202,7 +202,7 @@ static void ctk_selection_init              (void);
 static gboolean ctk_selection_incr_timeout      (CtkIncrInfo      *info);
 static gboolean ctk_selection_retrieval_timeout (CtkRetrievalInfo *info);
 static void ctk_selection_retrieval_report  (CtkRetrievalInfo *info,
-					     GdkAtom           type,
+					     CdkAtom           type,
 					     gint              format,
 					     guchar           *buffer,
 					     gint              length,
@@ -220,7 +220,7 @@ static GList *current_retrievals = NULL;
 static GList *current_incrs = NULL;
 static GList *current_selections = NULL;
 
-static GdkAtom ctk_selection_atoms[LAST_ATOM];
+static CdkAtom ctk_selection_atoms[LAST_ATOM];
 static const char ctk_selection_handler_key[] = "ctk-selection-handlers";
 
 /****************
@@ -315,7 +315,7 @@ ctk_target_list_unref (CtkTargetList *list)
  **/
 void 
 ctk_target_list_add (CtkTargetList *list,
-		     GdkAtom        target,
+		     CdkAtom        target,
 		     guint          flags,
 		     guint          info)
 {
@@ -331,13 +331,13 @@ ctk_target_list_add (CtkTargetList *list,
   list->list = g_list_append (list->list, pair);
 }
 
-static GdkAtom utf8_atom;
-static GdkAtom text_atom;
-static GdkAtom ctext_atom;
-static GdkAtom text_plain_atom;
-static GdkAtom text_plain_utf8_atom;
-static GdkAtom text_plain_locale_atom;
-static GdkAtom text_uri_list_atom;
+static CdkAtom utf8_atom;
+static CdkAtom text_atom;
+static CdkAtom ctext_atom;
+static CdkAtom text_plain_atom;
+static CdkAtom text_plain_utf8_atom;
+static CdkAtom text_plain_locale_atom;
+static CdkAtom text_uri_list_atom;
 
 static void 
 init_atoms (void)
@@ -412,7 +412,7 @@ ctk_target_list_add_rich_text_targets (CtkTargetList  *list,
                                        gboolean        deserializable,
                                        CtkTextBuffer  *buffer)
 {
-  GdkAtom *atoms;
+  CdkAtom *atoms;
   gint     n_atoms;
   gint     i;
 
@@ -449,7 +449,7 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
 {
   GSList *formats, *f;
   gchar **mimes, **m;
-  GdkAtom atom;
+  CdkAtom atom;
 
   g_return_if_fail (list != NULL);
 
@@ -458,7 +458,7 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
   /* Make sure png comes first */
   for (f = formats; f; f = f->next)
     {
-      GdkPixbufFormat *fmt = f->data;
+      CdkPixbufFormat *fmt = f->data;
       gchar *name; 
  
       name = cdk_pixbuf_format_get_name (fmt);
@@ -477,7 +477,7 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
 
   for (f = formats; f; f = f->next)
     {
-      GdkPixbufFormat *fmt = f->data;
+      CdkPixbufFormat *fmt = f->data;
 
       if (writable && !cdk_pixbuf_format_is_writable (fmt))
 	continue;
@@ -550,7 +550,7 @@ ctk_target_list_add_table (CtkTargetList        *list,
  **/
 void 
 ctk_target_list_remove (CtkTargetList *list,
-			GdkAtom            target)
+			CdkAtom            target)
 {
   GList *tmp_list;
 
@@ -588,7 +588,7 @@ ctk_target_list_remove (CtkTargetList *list,
  **/
 gboolean
 ctk_target_list_find (CtkTargetList *list,
-		      GdkAtom        target,
+		      CdkAtom        target,
 		      guint         *info)
 {
   GList *tmp_list;
@@ -680,7 +680,7 @@ ctk_target_table_free (CtkTargetEntry *targets,
 
 /**
  * ctk_selection_owner_set_for_display:
- * @display: the #GdkDisplay where the selection is set
+ * @display: the #CdkDisplay where the selection is set
  * @widget: (allow-none): new selection owner (a #CtkWidget), or %NULL.
  * @selection: an interned atom representing the selection to claim.
  * @time_: timestamp with which to claim the selection
@@ -693,15 +693,15 @@ ctk_target_table_free (CtkTargetEntry *targets,
  * Since: 2.2
  */
 gboolean
-ctk_selection_owner_set_for_display (GdkDisplay   *display,
+ctk_selection_owner_set_for_display (CdkDisplay   *display,
 				     CtkWidget    *widget,
-				     GdkAtom       selection,
+				     CdkAtom       selection,
 				     guint32       time)
 {
   GList *tmp_list;
   CtkWidget *old_owner;
   CtkSelectionInfo *selection_info = NULL;
-  GdkWindow *window;
+  CdkWindow *window;
 
   g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
   g_return_val_if_fail (selection != GDK_NONE, FALSE);
@@ -765,7 +765,7 @@ ctk_selection_owner_set_for_display (GdkDisplay   *display,
        */
       if (old_owner && old_owner != widget)
 	{
-	  GdkEvent *event = cdk_event_new (GDK_SELECTION_CLEAR);
+	  CdkEvent *event = cdk_event_new (GDK_SELECTION_CLEAR);
 
           event->selection.window = g_object_ref (ctk_widget_get_window (old_owner));
 	  event->selection.selection = selection;
@@ -794,10 +794,10 @@ ctk_selection_owner_set_for_display (GdkDisplay   *display,
  **/
 gboolean
 ctk_selection_owner_set (CtkWidget *widget,
-			 GdkAtom    selection,
+			 CdkAtom    selection,
 			 guint32    time)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   
   g_return_val_if_fail (widget == NULL || ctk_widget_get_realized (widget), FALSE);
   g_return_val_if_fail (selection != GDK_NONE, FALSE);
@@ -819,13 +819,13 @@ ctk_selection_owner_set (CtkWidget *widget,
 typedef struct _CtkSelectionTargetList CtkSelectionTargetList;
 
 struct _CtkSelectionTargetList {
-  GdkAtom selection;
+  CdkAtom selection;
   CtkTargetList *list;
 };
 
 static CtkTargetList *
 ctk_selection_target_list_get (CtkWidget    *widget,
-			       GdkAtom       selection)
+			       CdkAtom       selection)
 {
   CtkSelectionTargetList *sellist;
   GList *tmp_list;
@@ -886,7 +886,7 @@ ctk_selection_target_list_remove (CtkWidget    *widget)
  **/
 void 
 ctk_selection_clear_targets (CtkWidget *widget,
-			     GdkAtom    selection)
+			     CdkAtom    selection)
 {
   CtkSelectionTargetList *sellist;
   GList *tmp_list;
@@ -937,8 +937,8 @@ ctk_selection_clear_targets (CtkWidget *widget,
  **/
 void 
 ctk_selection_add_target (CtkWidget	    *widget, 
-			  GdkAtom	     selection,
-			  GdkAtom	     target,
+			  CdkAtom	     selection,
+			  CdkAtom	     target,
 			  guint              info)
 {
   CtkTargetList *list;
@@ -970,7 +970,7 @@ ctk_selection_add_target (CtkWidget	    *widget,
  **/
 void 
 ctk_selection_add_targets (CtkWidget            *widget, 
-			   GdkAtom               selection,
+			   CdkAtom               selection,
 			   const CtkTargetEntry *targets,
 			   guint                 ntargets)
 {
@@ -986,7 +986,7 @@ ctk_selection_add_targets (CtkWidget            *widget,
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
     {
-      GdkAtom *atoms = g_new (GdkAtom, ntargets);
+      CdkAtom *atoms = g_new (CdkAtom, ntargets);
       guint i;
 
       for (i = 0; i < ntargets; i++)
@@ -1001,7 +1001,7 @@ ctk_selection_add_targets (CtkWidget            *widget,
   if (GDK_IS_WIN32_DISPLAY (ctk_widget_get_display (widget)))
     {
       int i;
-      GdkAtom *atoms = g_new (GdkAtom, ntargets);
+      CdkAtom *atoms = g_new (CdkAtom, ntargets);
 
       for (i = 0; i < ntargets; ++i)
         atoms[i] = cdk_atom_intern (targets[i].target, FALSE);
@@ -1091,14 +1091,14 @@ ctk_selection_remove_all (CtkWidget *widget)
  **/
 gboolean
 ctk_selection_convert (CtkWidget *widget, 
-		       GdkAtom	  selection, 
-		       GdkAtom	  target,
+		       CdkAtom	  selection, 
+		       CdkAtom	  target,
 		       guint32	  time_)
 {
   CtkRetrievalInfo *info;
   GList *tmp_list;
-  GdkWindow *owner_window;
-  GdkDisplay *display;
+  CdkWindow *owner_window;
+  CdkDisplay *display;
   guint id;
   
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
@@ -1219,13 +1219,13 @@ ctk_selection_convert (CtkWidget *widget,
  * ctk_selection_data_get_selection:
  * @selection_data: a pointer to a #CtkSelectionData-struct.
  *
- * Retrieves the selection #GdkAtom of the selection data.
+ * Retrieves the selection #CdkAtom of the selection data.
  *
- * Returns: (transfer none): the selection #GdkAtom of the selection data.
+ * Returns: (transfer none): the selection #CdkAtom of the selection data.
  *
  * Since: 2.16
  **/
-GdkAtom
+CdkAtom
 ctk_selection_data_get_selection (const CtkSelectionData *selection_data)
 {
   g_return_val_if_fail (selection_data != NULL, 0);
@@ -1243,7 +1243,7 @@ ctk_selection_data_get_selection (const CtkSelectionData *selection_data)
  *
  * Since: 2.14
  **/
-GdkAtom
+CdkAtom
 ctk_selection_data_get_target (const CtkSelectionData *selection_data)
 {
   g_return_val_if_fail (selection_data != NULL, 0);
@@ -1261,7 +1261,7 @@ ctk_selection_data_get_target (const CtkSelectionData *selection_data)
  *
  * Since: 2.14
  **/
-GdkAtom
+CdkAtom
 ctk_selection_data_get_data_type (const CtkSelectionData *selection_data)
 {
   g_return_val_if_fail (selection_data != NULL, 0);
@@ -1356,7 +1356,7 @@ ctk_selection_data_get_data_with_length (const CtkSelectionData *selection_data,
  *
  * Since: 2.14
  **/
-GdkDisplay *
+CdkDisplay *
 ctk_selection_data_get_display (const CtkSelectionData *selection_data)
 {
   g_return_val_if_fail (selection_data != NULL, NULL);
@@ -1378,7 +1378,7 @@ ctk_selection_data_get_display (const CtkSelectionData *selection_data)
  **/
 void 
 ctk_selection_data_set (CtkSelectionData *selection_data,
-			GdkAtom		  type,
+			CdkAtom		  type,
 			gint		  format,
 			const guchar	 *data,
 			gint		  length)
@@ -1441,7 +1441,7 @@ selection_set_compound_text (CtkSelectionData *selection_data,
 #ifdef GDK_WINDOWING_X11
   gchar *tmp;
   guchar *text;
-  GdkAtom encoding;
+  CdkAtom encoding;
   gint format;
   gint new_length;
 
@@ -1720,9 +1720,9 @@ ctk_selection_data_get_text (const CtkSelectionData *selection_data)
 /**
  * ctk_selection_data_set_pixbuf:
  * @selection_data: a #CtkSelectionData
- * @pixbuf: a #GdkPixbuf
+ * @pixbuf: a #CdkPixbuf
  * 
- * Sets the contents of the selection from a #GdkPixbuf
+ * Sets the contents of the selection from a #CdkPixbuf
  * The pixbuf is converted to the form determined by
  * @selection_data->target.
  * 
@@ -1733,11 +1733,11 @@ ctk_selection_data_get_text (const CtkSelectionData *selection_data)
  **/
 gboolean
 ctk_selection_data_set_pixbuf (CtkSelectionData *selection_data,
-			       GdkPixbuf        *pixbuf)
+			       CdkPixbuf        *pixbuf)
 {
   GSList *formats, *f;
   gchar **mimes, **m;
-  GdkAtom atom;
+  CdkAtom atom;
   gboolean result;
   gchar *str, *type;
   gsize len;
@@ -1749,7 +1749,7 @@ ctk_selection_data_set_pixbuf (CtkSelectionData *selection_data,
 
   for (f = formats; f; f = f->next)
     {
-      GdkPixbufFormat *fmt = f->data;
+      CdkPixbufFormat *fmt = f->data;
 
       mimes = cdk_pixbuf_format_get_mime_types (fmt);
       for (m = mimes; *m; m++)
@@ -1788,21 +1788,21 @@ ctk_selection_data_set_pixbuf (CtkSelectionData *selection_data,
  * ctk_selection_data_get_pixbuf:
  * @selection_data: a #CtkSelectionData
  * 
- * Gets the contents of the selection data as a #GdkPixbuf.
+ * Gets the contents of the selection data as a #CdkPixbuf.
  * 
  * Returns: (nullable) (transfer full): if the selection data
  *   contained a recognized image type and it could be converted to a
- *   #GdkPixbuf, a newly allocated pixbuf is returned, otherwise
+ *   #CdkPixbuf, a newly allocated pixbuf is returned, otherwise
  *   %NULL.  If the result is non-%NULL it must be freed with
  *   g_object_unref().
  *
  * Since: 2.6
  **/
-GdkPixbuf *
+CdkPixbuf *
 ctk_selection_data_get_pixbuf (const CtkSelectionData *selection_data)
 {
-  GdkPixbufLoader *loader;
-  GdkPixbuf *result = NULL;
+  CdkPixbufLoader *loader;
+  CdkPixbuf *result = NULL;
 
   g_return_val_if_fail (selection_data != NULL, NULL);
 
@@ -1945,7 +1945,7 @@ ctk_selection_data_get_uris (const CtkSelectionData *selection_data)
  **/
 gboolean
 ctk_selection_data_get_targets (const CtkSelectionData  *selection_data,
-				GdkAtom                **targets,
+				CdkAtom                **targets,
 				gint                    *n_atoms)
 {
   g_return_val_if_fail (selection_data != NULL, FALSE);
@@ -1957,7 +1957,7 @@ ctk_selection_data_get_targets (const CtkSelectionData  *selection_data,
       if (targets)
 	*targets = g_memdup (selection_data->data, selection_data->length);
       if (n_atoms)
-	*n_atoms = selection_data->length / sizeof (GdkAtom);
+	*n_atoms = selection_data->length / sizeof (CdkAtom);
 
       return TRUE;
     }
@@ -1974,7 +1974,7 @@ ctk_selection_data_get_targets (const CtkSelectionData  *selection_data,
 
 /**
  * ctk_targets_include_text:
- * @targets: (array length=n_targets): an array of #GdkAtoms
+ * @targets: (array length=n_targets): an array of #CdkAtoms
  * @n_targets: the length of @targets
  * 
  * Determines if any of the targets in @targets can be used to
@@ -1986,7 +1986,7 @@ ctk_selection_data_get_targets (const CtkSelectionData  *selection_data,
  * Since: 2.10
  **/
 gboolean 
-ctk_targets_include_text (GdkAtom *targets,
+ctk_targets_include_text (CdkAtom *targets,
                           gint     n_targets)
 {
   gint i;
@@ -2019,7 +2019,7 @@ ctk_targets_include_text (GdkAtom *targets,
 
 /**
  * ctk_targets_include_rich_text:
- * @targets: (array length=n_targets): an array of #GdkAtoms
+ * @targets: (array length=n_targets): an array of #CdkAtoms
  * @n_targets: the length of @targets
  * @buffer: a #CtkTextBuffer
  *
@@ -2032,11 +2032,11 @@ ctk_targets_include_text (GdkAtom *targets,
  * Since: 2.10
  **/
 gboolean
-ctk_targets_include_rich_text (GdkAtom       *targets,
+ctk_targets_include_rich_text (CdkAtom       *targets,
                                gint           n_targets,
                                CtkTextBuffer *buffer)
 {
-  GdkAtom *rich_targets;
+  CdkAtom *rich_targets;
   gint n_rich_targets;
   gint i, j;
   gboolean result = FALSE;
@@ -2081,7 +2081,7 @@ ctk_targets_include_rich_text (GdkAtom       *targets,
 gboolean
 ctk_selection_data_targets_include_text (const CtkSelectionData *selection_data)
 {
-  GdkAtom *targets;
+  CdkAtom *targets;
   gint n_targets;
   gboolean result = FALSE;
 
@@ -2117,7 +2117,7 @@ gboolean
 ctk_selection_data_targets_include_rich_text (const CtkSelectionData *selection_data,
                                               CtkTextBuffer          *buffer)
 {
-  GdkAtom *targets;
+  CdkAtom *targets;
   gint n_targets;
   gboolean result = FALSE;
 
@@ -2137,13 +2137,13 @@ ctk_selection_data_targets_include_rich_text (const CtkSelectionData *selection_
 
 /**
  * ctk_targets_include_image:
- * @targets: (array length=n_targets): an array of #GdkAtoms
+ * @targets: (array length=n_targets): an array of #CdkAtoms
  * @n_targets: the length of @targets
  * @writable: whether to accept only targets for which CTK+ knows
  *   how to convert a pixbuf into the format
  * 
  * Determines if any of the targets in @targets can be used to
- * provide a #GdkPixbuf.
+ * provide a #CdkPixbuf.
  * 
  * Returns: %TRUE if @targets include a suitable target for images,
  *   otherwise %FALSE.
@@ -2151,7 +2151,7 @@ ctk_selection_data_targets_include_rich_text (const CtkSelectionData *selection_
  * Since: 2.10
  **/
 gboolean 
-ctk_targets_include_image (GdkAtom *targets,
+ctk_targets_include_image (CdkAtom *targets,
 			   gint     n_targets,
 			   gboolean writable)
 {
@@ -2189,7 +2189,7 @@ ctk_targets_include_image (GdkAtom *targets,
  * 
  * Given a #CtkSelectionData object holding a list of targets,
  * determines if any of the targets in @targets can be used to
- * provide a #GdkPixbuf.
+ * provide a #CdkPixbuf.
  * 
  * Returns: %TRUE if @selection_data holds a list of targets,
  *   and a suitable target for images is included, otherwise %FALSE.
@@ -2200,7 +2200,7 @@ gboolean
 ctk_selection_data_targets_include_image (const CtkSelectionData *selection_data,
 					  gboolean                writable)
 {
-  GdkAtom *targets;
+  CdkAtom *targets;
   gint n_targets;
   gboolean result = FALSE;
 
@@ -2219,7 +2219,7 @@ ctk_selection_data_targets_include_image (const CtkSelectionData *selection_data
 
 /**
  * ctk_targets_include_uri:
- * @targets: (array length=n_targets): an array of #GdkAtoms
+ * @targets: (array length=n_targets): an array of #CdkAtoms
  * @n_targets: the length of @targets
  * 
  * Determines if any of the targets in @targets can be used to
@@ -2231,7 +2231,7 @@ ctk_selection_data_targets_include_image (const CtkSelectionData *selection_data
  * Since: 2.10
  **/
 gboolean 
-ctk_targets_include_uri (GdkAtom *targets,
+ctk_targets_include_uri (CdkAtom *targets,
 			 gint     n_targets)
 {
   gint i;
@@ -2272,7 +2272,7 @@ ctk_targets_include_uri (GdkAtom *targets,
 gboolean
 ctk_selection_data_targets_include_uri (const CtkSelectionData *selection_data)
 {
-  GdkAtom *targets;
+  CdkAtom *targets;
   gint n_targets;
   gboolean result = FALSE;
 
@@ -2322,7 +2322,7 @@ ctk_selection_init (void)
  **/
 gboolean
 _ctk_selection_clear (CtkWidget         *widget,
-		     GdkEventSelection *event)
+		     CdkEventSelection *event)
 {
   /* Note that we filter clear events in cdkselection-x11.c, so
    * that we only will get here if the clear event actually
@@ -2365,9 +2365,9 @@ _ctk_selection_clear (CtkWidget         *widget,
 
 gboolean
 _ctk_selection_request (CtkWidget *widget,
-			GdkEventSelection *event)
+			CdkEventSelection *event)
 {
-  GdkDisplay *display = ctk_widget_get_display (widget);
+  CdkDisplay *display = ctk_widget_get_display (widget);
   CtkIncrInfo *info;
   GList *tmp_list;
   int i;
@@ -2409,7 +2409,7 @@ _ctk_selection_request (CtkWidget *widget,
   /* Determine conversions we need to perform */
   if (event->target == ctk_selection_atoms[MULTIPLE])
     {
-      GdkAtom  type;
+      CdkAtom  type;
       guchar  *mult_atoms;
       gint     format;
       gint     length;
@@ -2458,13 +2458,13 @@ _ctk_selection_request (CtkWidget *widget,
       else
 #endif
 	{
-	  info->num_conversions = length / (2*sizeof (GdkAtom));
+	  info->num_conversions = length / (2*sizeof (CdkAtom));
 	  info->conversions = g_new (CtkIncrConversion, info->num_conversions);
 	  
 	  for (i=0; i<info->num_conversions; i++)
 	    {
-	      info->conversions[i].target = ((GdkAtom *)mult_atoms)[2*i];
-	      info->conversions[i].property = ((GdkAtom *)mult_atoms)[2*i+1];
+	      info->conversions[i].target = ((CdkAtom *)mult_atoms)[2*i];
+	      info->conversions[i].property = ((CdkAtom *)mult_atoms)[2*i+1];
 	    }
 
 	  g_free (mult_atoms);
@@ -2576,7 +2576,7 @@ _ctk_selection_request (CtkWidget *widget,
      conversions succeeded */
   if (event->target == ctk_selection_atoms[MULTIPLE])
     {
-      GdkAtom *mult_atoms = g_new (GdkAtom, 2 * info->num_conversions);
+      CdkAtom *mult_atoms = g_new (CdkAtom, 2 * info->num_conversions);
       for (i = 0; i < info->num_conversions; i++)
 	{
 	  mult_atoms[2*i] = info->conversions[i].target;
@@ -2627,7 +2627,7 @@ _ctk_selection_request (CtkWidget *widget,
 /*************************************************************
  * _ctk_selection_incr_event:
  *     Called whenever an PropertyNotify event occurs for an 
- *     GdkWindow with user_data == NULL. These will be notifications
+ *     CdkWindow with user_data == NULL. These will be notifications
  *     that a window we are sending the selection to via the
  *     INCR protocol has deleted a property and is ready for
  *     more data.
@@ -2640,8 +2640,8 @@ _ctk_selection_request (CtkWidget *widget,
  *************************************************************/
 
 gboolean
-_ctk_selection_incr_event (GdkWindow	   *window,
-			   GdkEventProperty *event)
+_ctk_selection_incr_event (CdkWindow	   *window,
+			   CdkEventProperty *event)
 {
   GList *tmp_list;
   CtkIncrInfo *info = NULL;
@@ -2815,14 +2815,14 @@ ctk_selection_incr_timeout (CtkIncrInfo *info)
 
 gboolean
 _ctk_selection_notify (CtkWidget	 *widget,
-		       GdkEventSelection *event)
+		       CdkEventSelection *event)
 {
   GList *tmp_list;
   CtkRetrievalInfo *info = NULL;
-  GdkWindow *window;
+  CdkWindow *window;
   guchar  *buffer = NULL;
   gint length;
-  GdkAtom type;
+  CdkAtom type;
   gint	  format;
 
 #ifdef DEBUG_SELECTION
@@ -2907,14 +2907,14 @@ _ctk_selection_notify (CtkWidget	 *widget,
 
 gboolean
 _ctk_selection_property_notify (CtkWidget	*widget,
-				GdkEventProperty *event)
+				CdkEventProperty *event)
 {
   GList *tmp_list;
   CtkRetrievalInfo *info = NULL;
-  GdkWindow *window;
+  CdkWindow *window;
   guchar *new_buffer;
   int length;
-  GdkAtom type;
+  CdkAtom type;
   gint	  format;
   
   g_return_val_if_fail (widget != NULL, FALSE);
@@ -3061,7 +3061,7 @@ ctk_selection_retrieval_timeout (CtkRetrievalInfo *info)
 
 static void
 ctk_selection_retrieval_report (CtkRetrievalInfo *info,
-				GdkAtom type, gint format, 
+				CdkAtom type, gint format, 
 				guchar *buffer, gint length,
 				guint32 time)
 {
@@ -3169,7 +3169,7 @@ ctk_selection_default_handler (CtkWidget	*widget,
   else if (data->target == ctk_selection_atoms[TARGETS])
     {
       /* List of all targets supported for this widget/selection pair */
-      GdkAtom *p;
+      CdkAtom *p;
       guint count;
       GList *tmp_list;
       CtkTargetList *target_list;
@@ -3181,7 +3181,7 @@ ctk_selection_default_handler (CtkWidget	*widget,
       
       data->type = GDK_SELECTION_TYPE_ATOM;
       data->format = 32;
-      data->length = count * sizeof (GdkAtom);
+      data->length = count * sizeof (CdkAtom);
 
       /* selection data is always terminated by a trailing \0
        */

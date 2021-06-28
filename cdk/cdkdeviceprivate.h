@@ -26,170 +26,170 @@
 
 G_BEGIN_DECLS
 
-#define GDK_DEVICE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE, GdkDeviceClass))
+#define GDK_DEVICE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE, CdkDeviceClass))
 #define GDK_IS_DEVICE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE))
-#define GDK_DEVICE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE, GdkDeviceClass))
+#define GDK_DEVICE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE, CdkDeviceClass))
 
-typedef struct _GdkDeviceClass GdkDeviceClass;
-typedef struct _GdkDeviceKey GdkDeviceKey;
+typedef struct _CdkDeviceClass CdkDeviceClass;
+typedef struct _CdkDeviceKey CdkDeviceKey;
 
-struct _GdkDeviceKey
+struct _CdkDeviceKey
 {
   guint keyval;
-  GdkModifierType modifiers;
+  CdkModifierType modifiers;
 };
 
-struct _GdkDevice
+struct _CdkDevice
 {
   GObject parent_instance;
 
   gchar *name;
-  GdkInputSource source;
-  GdkInputMode mode;
+  CdkInputSource source;
+  CdkInputMode mode;
   gboolean has_cursor;
   gint num_keys;
-  GdkAxisFlags axis_flags;
-  GdkDeviceKey *keys;
-  GdkDeviceManager *manager;
-  GdkDisplay *display;
+  CdkAxisFlags axis_flags;
+  CdkDeviceKey *keys;
+  CdkDeviceManager *manager;
+  CdkDisplay *display;
   /* Paired master for master,
    * associated master for slaves
    */
-  GdkDevice *associated;
+  CdkDevice *associated;
   GList *slaves;
-  GdkDeviceType type;
+  CdkDeviceType type;
   GArray *axes;
   guint num_touches;
 
   gchar *vendor_id;
   gchar *product_id;
 
-  GdkSeat *seat;
-  GdkDeviceTool *last_tool;
+  CdkSeat *seat;
+  CdkDeviceTool *last_tool;
 };
 
-struct _GdkDeviceClass
+struct _CdkDeviceClass
 {
   GObjectClass parent_class;
 
-  gboolean (* get_history)   (GdkDevice      *device,
-                              GdkWindow      *window,
+  gboolean (* get_history)   (CdkDevice      *device,
+                              CdkWindow      *window,
                               guint32         start,
                               guint32         stop,
-                              GdkTimeCoord ***events,
+                              CdkTimeCoord ***events,
                               gint           *n_events);
 
-  void (* get_state)         (GdkDevice       *device,
-                              GdkWindow       *window,
+  void (* get_state)         (CdkDevice       *device,
+                              CdkWindow       *window,
                               gdouble         *axes,
-                              GdkModifierType *mask);
+                              CdkModifierType *mask);
 
-  void (* set_window_cursor) (GdkDevice *device,
-                              GdkWindow *window,
-                              GdkCursor *cursor);
+  void (* set_window_cursor) (CdkDevice *device,
+                              CdkWindow *window,
+                              CdkCursor *cursor);
 
-  void (* warp)              (GdkDevice  *device,
-                              GdkScreen  *screen,
+  void (* warp)              (CdkDevice  *device,
+                              CdkScreen  *screen,
                               gdouble     x,
                               gdouble     y);
-  void (* query_state)       (GdkDevice       *device,
-                              GdkWindow       *window,
-                              GdkWindow      **root_window,
-                              GdkWindow      **child_window,
+  void (* query_state)       (CdkDevice       *device,
+                              CdkWindow       *window,
+                              CdkWindow      **root_window,
+                              CdkWindow      **child_window,
                               gdouble          *root_x,
                               gdouble          *root_y,
                               gdouble          *win_x,
                               gdouble          *win_y,
-                              GdkModifierType  *mask);
-  GdkGrabStatus (* grab)     (GdkDevice        *device,
-                              GdkWindow        *window,
+                              CdkModifierType  *mask);
+  CdkGrabStatus (* grab)     (CdkDevice        *device,
+                              CdkWindow        *window,
                               gboolean          owner_events,
-                              GdkEventMask      event_mask,
-                              GdkWindow        *confine_to,
-                              GdkCursor        *cursor,
+                              CdkEventMask      event_mask,
+                              CdkWindow        *confine_to,
+                              CdkCursor        *cursor,
                               guint32           time_);
-  void          (*ungrab)    (GdkDevice        *device,
+  void          (*ungrab)    (CdkDevice        *device,
                               guint32           time_);
 
-  GdkWindow * (* window_at_position) (GdkDevice       *device,
+  CdkWindow * (* window_at_position) (CdkDevice       *device,
                                       double          *win_x,
                                       double          *win_y,
-                                      GdkModifierType *mask,
+                                      CdkModifierType *mask,
                                       gboolean         get_toplevel);
-  void (* select_window_events)      (GdkDevice       *device,
-                                      GdkWindow       *window,
-                                      GdkEventMask     event_mask);
+  void (* select_window_events)      (CdkDevice       *device,
+                                      CdkWindow       *window,
+                                      CdkEventMask     event_mask);
 };
 
-void  _cdk_device_set_associated_device (GdkDevice *device,
-                                         GdkDevice *relative);
+void  _cdk_device_set_associated_device (CdkDevice *device,
+                                         CdkDevice *relative);
 
-void  _cdk_device_reset_axes (GdkDevice   *device);
-guint _cdk_device_add_axis   (GdkDevice   *device,
-                              GdkAtom      label_atom,
-                              GdkAxisUse   use,
+void  _cdk_device_reset_axes (CdkDevice   *device);
+guint _cdk_device_add_axis   (CdkDevice   *device,
+                              CdkAtom      label_atom,
+                              CdkAxisUse   use,
                               gdouble      min_value,
                               gdouble      max_value,
                               gdouble      resolution);
-void _cdk_device_get_axis_info (GdkDevice  *device,
+void _cdk_device_get_axis_info (CdkDevice  *device,
 				guint       index,
-				GdkAtom    *label_atom,
-				GdkAxisUse *use,
+				CdkAtom    *label_atom,
+				CdkAxisUse *use,
 				gdouble    *min_value,
 				gdouble    *max_value,
 				gdouble    *resolution);
 
-void _cdk_device_set_keys    (GdkDevice   *device,
+void _cdk_device_set_keys    (CdkDevice   *device,
                               guint        num_keys);
 
-gboolean   _cdk_device_translate_window_coord (GdkDevice *device,
-                                               GdkWindow *window,
+gboolean   _cdk_device_translate_window_coord (CdkDevice *device,
+                                               CdkWindow *window,
                                                guint      index,
                                                gdouble    value,
                                                gdouble   *axis_value);
 
-gboolean   _cdk_device_translate_screen_coord (GdkDevice *device,
-                                               GdkWindow *window,
+gboolean   _cdk_device_translate_screen_coord (CdkDevice *device,
+                                               CdkWindow *window,
                                                gdouble    window_root_x,
                                                gdouble    window_root_y,
                                                guint      index,
                                                gdouble    value,
                                                gdouble   *axis_value);
 
-gboolean   _cdk_device_translate_axis         (GdkDevice *device,
+gboolean   _cdk_device_translate_axis         (CdkDevice *device,
                                                guint      index,
                                                gdouble    value,
                                                gdouble   *axis_value);
 
-GdkTimeCoord ** _cdk_device_allocate_history  (GdkDevice *device,
+CdkTimeCoord ** _cdk_device_allocate_history  (CdkDevice *device,
                                                gint       n_events);
 
-void _cdk_device_add_slave (GdkDevice *device,
-                            GdkDevice *slave);
-void _cdk_device_remove_slave (GdkDevice *device,
-                               GdkDevice *slave);
-void _cdk_device_query_state                  (GdkDevice        *device,
-                                               GdkWindow        *window,
-                                               GdkWindow       **root_window,
-                                               GdkWindow       **child_window,
+void _cdk_device_add_slave (CdkDevice *device,
+                            CdkDevice *slave);
+void _cdk_device_remove_slave (CdkDevice *device,
+                               CdkDevice *slave);
+void _cdk_device_query_state                  (CdkDevice        *device,
+                                               CdkWindow        *window,
+                                               CdkWindow       **root_window,
+                                               CdkWindow       **child_window,
                                                gdouble          *root_x,
                                                gdouble          *root_y,
                                                gdouble          *win_x,
                                                gdouble          *win_y,
-                                               GdkModifierType  *mask);
-GdkWindow * _cdk_device_window_at_position    (GdkDevice        *device,
+                                               CdkModifierType  *mask);
+CdkWindow * _cdk_device_window_at_position    (CdkDevice        *device,
                                                gdouble          *win_x,
                                                gdouble          *win_y,
-                                               GdkModifierType  *mask,
+                                               CdkModifierType  *mask,
                                                gboolean          get_toplevel);
 
-void  cdk_device_set_seat  (GdkDevice *device,
-                            GdkSeat   *seat);
+void  cdk_device_set_seat  (CdkDevice *device,
+                            CdkSeat   *seat);
 
-void           cdk_device_update_tool (GdkDevice     *device,
-                                       GdkDeviceTool *tool);
+void           cdk_device_update_tool (CdkDevice     *device,
+                                       CdkDeviceTool *tool);
 
-GdkInputMode cdk_device_get_input_mode (GdkDevice *device);
+CdkInputMode cdk_device_get_input_mode (CdkDevice *device);
 
 G_END_DECLS
 

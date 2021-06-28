@@ -85,10 +85,10 @@ struct _CtkHandleBoxPrivate
   CtkAllocation   attach_allocation;
   CtkAllocation   float_allocation;
 
-  GdkDevice      *grab_device;
+  CdkDevice      *grab_device;
 
-  GdkWindow      *bin_window;     /* parent window for children */
-  GdkWindow      *float_window;
+  CdkWindow      *bin_window;     /* parent window for children */
+  CdkWindow      *float_window;
 
   /* Variables used during a drag
    */
@@ -190,11 +190,11 @@ static void     ctk_handle_box_remove        (CtkContainer   *container,
 static gboolean ctk_handle_box_draw          (CtkWidget      *widget,
                                               cairo_t        *cr);
 static gboolean ctk_handle_box_button_press  (CtkWidget      *widget,
-                                              GdkEventButton *event);
+                                              CdkEventButton *event);
 static gboolean ctk_handle_box_motion        (CtkWidget      *widget,
-                                              GdkEventMotion *event);
+                                              CdkEventMotion *event);
 static gboolean ctk_handle_box_delete_event  (CtkWidget      *widget,
-                                              GdkEventAny    *event);
+                                              CdkEventAny    *event);
 static void     ctk_handle_box_reattach      (CtkHandleBox   *hb);
 static void     ctk_handle_box_end_drag      (CtkHandleBox   *hb,
                                               guint32         time);
@@ -479,8 +479,8 @@ ctk_handle_box_realize (CtkWidget *widget)
   CtkRequisition requisition;
   CtkStyleContext *context;
   CtkWidget *child;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_set_realized (widget, TRUE);
@@ -1083,7 +1083,7 @@ ctk_handle_box_paint (CtkWidget *widget,
   CtkStateFlags state;
   CtkWidget *child;
   gint width, height;
-  GdkRectangle rect;
+  CdkRectangle rect;
   gint handle_position;
 
   handle_position = effective_handle_position (hb);
@@ -1175,7 +1175,7 @@ ctk_handle_box_get_invisible (void)
 
 static gboolean
 ctk_handle_box_grab_event (CtkWidget    *widget,
-			   GdkEvent     *event,
+			   CdkEvent     *event,
 			   CtkHandleBox *hb)
 {
   CtkHandleBoxPrivate *priv = hb->priv;
@@ -1191,7 +1191,7 @@ ctk_handle_box_grab_event (CtkWidget    *widget,
       break;
 
     case GDK_MOTION_NOTIFY:
-      return ctk_handle_box_motion (CTK_WIDGET (hb), (GdkEventMotion *)event);
+      return ctk_handle_box_motion (CTK_WIDGET (hb), (CdkEventMotion *)event);
       break;
 
     default:
@@ -1203,12 +1203,12 @@ ctk_handle_box_grab_event (CtkWidget    *widget,
 
 static gboolean
 ctk_handle_box_button_press (CtkWidget      *widget,
-                             GdkEventButton *event)
+                             CdkEventButton *event)
 {
   CtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   CtkHandleBoxPrivate *priv = hb->priv;
   gboolean event_handled;
-  GdkCursor *fleur;
+  CdkCursor *fleur;
   gint handle_position;
 
   handle_position = effective_handle_position (hb);
@@ -1263,7 +1263,7 @@ ctk_handle_box_button_press (CtkWidget      *widget,
 	  if (event->type == GDK_BUTTON_PRESS) /* Start a drag */
 	    {
 	      CtkWidget *invisible = ctk_handle_box_get_invisible ();
-              GdkWindow *window;
+              CdkWindow *window;
 	      gint root_x, root_y;
 
               ctk_invisible_set_screen (CTK_INVISIBLE (invisible),
@@ -1334,7 +1334,7 @@ ctk_handle_box_button_press (CtkWidget      *widget,
 
 static gboolean
 ctk_handle_box_motion (CtkWidget      *widget,
-		       GdkEventMotion *event)
+		       CdkEventMotion *event)
 {
   CtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   CtkHandleBoxPrivate *priv = hb->priv;
@@ -1343,8 +1343,8 @@ ctk_handle_box_motion (CtkWidget      *widget,
   gint snap_edge;
   gboolean is_snapped = FALSE;
   gint handle_position;
-  GdkGeometry geometry;
-  GdkScreen *screen, *pointer_screen;
+  CdkGeometry geometry;
+  CdkScreen *screen, *pointer_screen;
 
   if (!priv->in_drag)
     return FALSE;
@@ -1561,7 +1561,7 @@ ctk_handle_box_remove (CtkContainer *container,
 
 static gint
 ctk_handle_box_delete_event (CtkWidget *widget,
-			     GdkEventAny  *event)
+			     CdkEventAny  *event)
 {
   CtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   CtkHandleBoxPrivate *priv = hb->priv;

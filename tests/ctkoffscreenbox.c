@@ -20,7 +20,7 @@ static void        ctk_offscreen_box_get_preferred_height (CtkWidget *widget,
 static void        ctk_offscreen_box_size_allocate (CtkWidget       *widget,
                                                     CtkAllocation   *allocation);
 static gboolean    ctk_offscreen_box_damage        (CtkWidget       *widget,
-                                                    GdkEventExpose  *event);
+                                                    CdkEventExpose  *event);
 static gboolean    ctk_offscreen_box_draw          (CtkWidget       *widget,
                                                     cairo_t         *cr);
 
@@ -151,8 +151,8 @@ ctk_offscreen_box_new (void)
   return g_object_new (CTK_TYPE_OFFSCREEN_BOX, NULL);
 }
 
-static GdkWindow *
-pick_offscreen_child (GdkWindow *offscreen_window,
+static CdkWindow *
+pick_offscreen_child (CdkWindow *offscreen_window,
 		      double widget_x, double widget_y,
 		      CtkOffscreenBox *offscreen_box)
 {
@@ -190,7 +190,7 @@ pick_offscreen_child (GdkWindow *offscreen_window,
 }
 
 static void
-offscreen_window_to_parent1 (GdkWindow       *offscreen_window,
+offscreen_window_to_parent1 (CdkWindow       *offscreen_window,
 			     double           offscreen_x,
 			     double           offscreen_y,
 			     double          *parent_x,
@@ -202,7 +202,7 @@ offscreen_window_to_parent1 (GdkWindow       *offscreen_window,
 }
 
 static void
-offscreen_window_from_parent1 (GdkWindow       *window,
+offscreen_window_from_parent1 (CdkWindow       *window,
 			       double           parent_x,
 			       double           parent_y,
 			       double          *offscreen_x,
@@ -214,7 +214,7 @@ offscreen_window_from_parent1 (GdkWindow       *window,
 }
 
 static void
-offscreen_window_to_parent2 (GdkWindow       *offscreen_window,
+offscreen_window_to_parent2 (CdkWindow       *offscreen_window,
 			     double           offscreen_x,
 			     double           offscreen_y,
 			     double          *parent_x,
@@ -227,7 +227,7 @@ offscreen_window_to_parent2 (GdkWindow       *offscreen_window,
 }
 
 static void
-offscreen_window_from_parent2 (GdkWindow       *window,
+offscreen_window_from_parent2 (CdkWindow       *window,
 			       double           parent_x,
 			       double           parent_y,
 			       double          *offscreen_x,
@@ -240,7 +240,7 @@ offscreen_window_from_parent2 (GdkWindow       *window,
 }
 
 static cairo_surface_t *
-cdk_offscreen_box_create_alpha_image_surface (GdkWindow *offscreen,
+cdk_offscreen_box_create_alpha_image_surface (CdkWindow *offscreen,
                                               gint       width,
                                               gint       height)
 {
@@ -252,8 +252,8 @@ ctk_offscreen_box_realize (CtkWidget *widget)
 {
   CtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (widget);
   CtkAllocation allocation, child_area;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
   guint border_width;
   CtkRequisition child_requisition;
@@ -615,7 +615,7 @@ ctk_offscreen_box_size_allocate (CtkWidget     *widget,
 
 static gboolean
 ctk_offscreen_box_damage (CtkWidget      *widget,
-                          GdkEventExpose *event)
+                          CdkEventExpose *event)
 {
   cdk_window_invalidate_rect (ctk_widget_get_window (widget),
                               NULL, FALSE);
@@ -628,7 +628,7 @@ ctk_offscreen_box_draw (CtkWidget *widget,
                         cairo_t   *cr)
 {
   CtkOffscreenBox *offscreen_box = CTK_OFFSCREEN_BOX (widget);
-  GdkWindow *window;
+  CdkWindow *window;
 
   window = ctk_widget_get_window (widget);
   if (ctk_cairo_should_draw_window (cr, window))

@@ -10,7 +10,7 @@
 		Value="cd ..&#x0D;&#x0A;set VCInstallDir=$(VCInstallDir)&#x0D;&#x0A;nmake -f generate-msvc.mak PREFIX=$(GlibEtcInstallRoot)"
 	/>
 	<UserMacro
-		Name="GeneratedGdkSources"
+		Name="GeneratedCdkSources"
 		Value="..\config.h;..\cdk\cdkconfig.h;..\cdk\cdkversionmacros.h;..\cdk\cdkmarshalers.h;..\cdk\cdkmarshalers.c;..\cdk\cdkresources.h;..\cdk\cdkresources.c"
 	/>
 	<UserMacro

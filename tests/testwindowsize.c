@@ -9,7 +9,7 @@ static CtkWidget *default_height_spin;
 static CtkWidget *resizable_check;
 
 static gboolean
-configure_event_cb (CtkWidget *window, GdkEventConfigure *event, CtkLabel *label)
+configure_event_cb (CtkWidget *window, CdkEventConfigure *event, CtkLabel *label)
 {
   gchar *str;
   gint width, height;

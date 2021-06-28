@@ -37,9 +37,9 @@ typedef struct _CtkDragSourceSite CtkDragSourceSite;
 
 struct _CtkDragSourceSite 
 {
-  GdkModifierType    start_button_mask;
+  CdkModifierType    start_button_mask;
   CtkTargetList     *target_list;        /* Targets for drag data */
-  GdkDragAction      actions;            /* Possible actions */
+  CdkDragAction      actions;            /* Possible actions */
 
   CtkImageDefinition *image_def;
   CtkGesture        *drag_gesture;
@@ -47,7 +47,7 @@ struct _CtkDragSourceSite
   
 static void
 ctk_drag_source_gesture_begin (CtkGesture       *gesture,
-                               GdkEventSequence *sequence,
+                               CdkEventSequence *sequence,
                                gpointer          data)
 {
   CtkDragSourceSite *site = data;
@@ -67,7 +67,7 @@ ctk_drag_source_gesture_begin (CtkGesture       *gesture,
 
 static gboolean
 ctk_drag_source_event_cb (CtkWidget *widget,
-                          GdkEvent  *event,
+                          CdkEvent  *event,
                           gpointer   data)
 {
   gdouble start_x, start_y, offset_x, offset_y;
@@ -85,11 +85,11 @@ ctk_drag_source_event_cb (CtkWidget *widget,
       if (ctk_drag_check_threshold (widget, start_x, start_y,
                                     start_x + offset_x, start_y + offset_y))
         {
-          GdkEventSequence *sequence;
-          GdkEvent *last_event;
+          CdkEventSequence *sequence;
+          CdkEvent *last_event;
           guint button;
           gboolean needs_icon;
-          GdkDragContext *context;
+          CdkDragContext *context;
 
           sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (site->drag_gesture));
           last_event = cdk_event_copy (ctk_gesture_get_last_event (site->drag_gesture, sequence));
@@ -140,10 +140,10 @@ ctk_drag_source_site_destroy (gpointer data)
  */
 void
 ctk_drag_source_set (CtkWidget            *widget,
-                     GdkModifierType       start_button_mask,
+                     CdkModifierType       start_button_mask,
                      const CtkTargetEntry *targets,
                      gint                  n_targets,
-                     GdkDragAction         actions)
+                     CdkDragAction         actions)
 {
   CtkDragSourceSite *site;
 
@@ -361,15 +361,15 @@ ctk_drag_source_add_uri_targets (CtkWidget *widget)
 /**
  * ctk_drag_source_set_icon_pixbuf: (method)
  * @widget: a #CtkWidget
- * @pixbuf: the #GdkPixbuf for the drag icon
+ * @pixbuf: the #CdkPixbuf for the drag icon
  * 
  * Sets the icon that will be used for drags from a particular widget
- * from a #GdkPixbuf. CTK+ retains a reference for @pixbuf and will 
+ * from a #CdkPixbuf. CTK+ retains a reference for @pixbuf and will 
  * release it when it is no longer needed.
  */
 void 
 ctk_drag_source_set_icon_pixbuf (CtkWidget *widget,
-                                 GdkPixbuf *pixbuf)
+                                 CdkPixbuf *pixbuf)
 {
   CtkDragSourceSite *site;
 

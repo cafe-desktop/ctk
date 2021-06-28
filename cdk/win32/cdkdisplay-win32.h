@@ -27,51 +27,51 @@
 #define __GDK_DISPLAY__WIN32_H__
 
 /* Define values used to set DPI-awareness */
-typedef enum _GdkWin32ProcessDpiAwareness {
+typedef enum _CdkWin32ProcessDpiAwareness {
   PROCESS_DPI_UNAWARE = 0,
   PROCESS_SYSTEM_DPI_AWARE = 1,
   PROCESS_PER_MONITOR_DPI_AWARE = 2
-} GdkWin32ProcessDpiAwareness;
+} CdkWin32ProcessDpiAwareness;
 
 /* APIs from shcore.dll */
-typedef HRESULT (WINAPI *funcSetProcessDpiAwareness) (GdkWin32ProcessDpiAwareness value);
+typedef HRESULT (WINAPI *funcSetProcessDpiAwareness) (CdkWin32ProcessDpiAwareness value);
 typedef HRESULT (WINAPI *funcGetProcessDpiAwareness) (HANDLE                       handle,
-                                                      GdkWin32ProcessDpiAwareness *awareness);
+                                                      CdkWin32ProcessDpiAwareness *awareness);
 typedef HRESULT (WINAPI *funcGetDpiForMonitor)       (HMONITOR                monitor,
-                                                      GdkWin32MonitorDpiType  dpi_type,
+                                                      CdkWin32MonitorDpiType  dpi_type,
                                                       UINT                   *dpi_x,
                                                       UINT                   *dpi_y);
 
-typedef struct _GdkWin32ShcoreFuncs
+typedef struct _CdkWin32ShcoreFuncs
 {
   HMODULE hshcore;
   funcSetProcessDpiAwareness setDpiAwareFunc;
   funcGetProcessDpiAwareness getDpiAwareFunc;
   funcGetDpiForMonitor getDpiForMonitorFunc;
-} GdkWin32ShcoreFuncs;
+} CdkWin32ShcoreFuncs;
 
 /* DPI awareness APIs from user32.dll */
 typedef BOOL (WINAPI *funcSetProcessDPIAware) (void);
 typedef BOOL (WINAPI *funcIsProcessDPIAware)  (void);
 
-typedef struct _GdkWin32User32DPIFuncs
+typedef struct _CdkWin32User32DPIFuncs
 {
   funcSetProcessDPIAware setDpiAwareFunc;
   funcIsProcessDPIAware isDpiAwareFunc;
-} GdkWin32User32DPIFuncs;
+} CdkWin32User32DPIFuncs;
 
 /* Detect running architecture */
 typedef BOOL (WINAPI *funcIsWow64Process2) (HANDLE, USHORT *, USHORT *);
-typedef struct _GdkWin32KernelCPUFuncs
+typedef struct _CdkWin32KernelCPUFuncs
 {
   funcIsWow64Process2 isWow64Process2;
-} GdkWin32KernelCPUFuncs;
+} CdkWin32KernelCPUFuncs;
 
-struct _GdkWin32Display
+struct _CdkWin32Display
 {
-  GdkDisplay display;
+  CdkDisplay display;
 
-  GdkScreen *screen;
+  CdkScreen *screen;
 
   Win32CursorTheme *cursor_theme;
   gchar *cursor_theme_name;
@@ -110,28 +110,28 @@ struct _GdkWin32Display
 
   /* HiDPI Items */
   guint have_at_least_win81 : 1;
-  GdkWin32ProcessDpiAwareness dpi_aware_type;
+  CdkWin32ProcessDpiAwareness dpi_aware_type;
   guint has_fixed_scale : 1;
   guint window_scale;
 
-  GdkWin32ShcoreFuncs shcore_funcs;
-  GdkWin32User32DPIFuncs user32_dpi_funcs;
+  CdkWin32ShcoreFuncs shcore_funcs;
+  CdkWin32User32DPIFuncs user32_dpi_funcs;
 
   /* Running CPU items */
   guint running_on_arm64 : 1;
-  GdkWin32KernelCPUFuncs cpu_funcs;
+  CdkWin32KernelCPUFuncs cpu_funcs;
 };
 
-struct _GdkWin32DisplayClass
+struct _CdkWin32DisplayClass
 {
-  GdkDisplayClass display_class;
+  CdkDisplayClass display_class;
 };
 
-gboolean   _cdk_win32_display_init_monitors    (GdkWin32Display *display);
+gboolean   _cdk_win32_display_init_monitors    (CdkWin32Display *display);
 
-GPtrArray *_cdk_win32_display_get_monitor_list (GdkWin32Display *display);
+GPtrArray *_cdk_win32_display_get_monitor_list (CdkWin32Display *display);
 
-guint      _cdk_win32_display_get_monitor_scale_factor (GdkWin32Display *win32_display,
+guint      _cdk_win32_display_get_monitor_scale_factor (CdkWin32Display *win32_display,
                                                         HMONITOR         hmonitor,
                                                         HWND             hwnd,
                                                         gint             *dpi);

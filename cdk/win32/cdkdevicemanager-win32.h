@@ -23,24 +23,24 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_DEVICE_MANAGER_WIN32         (cdk_device_manager_win32_get_type ())
-#define GDK_DEVICE_MANAGER_WIN32(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_MANAGER_WIN32, GdkDeviceManagerWin32))
-#define GDK_DEVICE_MANAGER_WIN32_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_MANAGER_WIN32, GdkDeviceManagerWin32Class))
+#define GDK_DEVICE_MANAGER_WIN32(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_MANAGER_WIN32, CdkDeviceManagerWin32))
+#define GDK_DEVICE_MANAGER_WIN32_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_MANAGER_WIN32, CdkDeviceManagerWin32Class))
 #define GDK_IS_DEVICE_MANAGER_WIN32(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_MANAGER_WIN32))
 #define GDK_IS_DEVICE_MANAGER_WIN32_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE_MANAGER_WIN32))
-#define GDK_DEVICE_MANAGER_WIN32_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_MANAGER_WIN32, GdkDeviceManagerWin32Class))
+#define GDK_DEVICE_MANAGER_WIN32_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_MANAGER_WIN32, CdkDeviceManagerWin32Class))
 
-typedef struct _GdkDeviceManagerWin32 GdkDeviceManagerWin32;
-typedef struct _GdkDeviceManagerWin32Class GdkDeviceManagerWin32Class;
+typedef struct _CdkDeviceManagerWin32 CdkDeviceManagerWin32;
+typedef struct _CdkDeviceManagerWin32Class CdkDeviceManagerWin32Class;
 
-struct _GdkDeviceManagerWin32
+struct _CdkDeviceManagerWin32
 {
-  GdkDeviceManager parent_object;
+  CdkDeviceManager parent_object;
   /* Master Devices */
-  GdkDevice *core_pointer;
-  GdkDevice *core_keyboard;
+  CdkDevice *core_pointer;
+  CdkDevice *core_keyboard;
   /* Fake slave devices */
-  GdkDevice *system_pointer;
-  GdkDevice *system_keyboard;
+  CdkDevice *system_pointer;
+  CdkDevice *system_keyboard;
   GList *wintab_devices;
 
   /* Bumped up every time a wintab device enters the proximity
@@ -50,18 +50,18 @@ struct _GdkDeviceManagerWin32
   gint dev_entered_proximity;
 };
 
-struct _GdkDeviceManagerWin32Class
+struct _CdkDeviceManagerWin32Class
 {
-  GdkDeviceManagerClass parent_class;
+  CdkDeviceManagerClass parent_class;
 };
 
 GType cdk_device_manager_win32_get_type (void) G_GNUC_CONST;
 
 void     _cdk_input_set_tablet_active (void);
-gboolean cdk_input_other_event        (GdkDisplay *display,
-                                       GdkEvent   *event,
+gboolean cdk_input_other_event        (CdkDisplay *display,
+                                       CdkEvent   *event,
                                        MSG        *msg,
-                                       GdkWindow  *window);
+                                       CdkWindow  *window);
 
 G_END_DECLS
 

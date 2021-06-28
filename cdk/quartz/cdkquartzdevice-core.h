@@ -27,14 +27,14 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_QUARTZ_DEVICE_CORE         (cdk_quartz_device_core_get_type ())
-#define GDK_QUARTZ_DEVICE_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_QUARTZ_DEVICE_CORE, GdkQuartzDeviceCore))
-#define GDK_QUARTZ_DEVICE_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_QUARTZ_DEVICE_CORE, GdkQuartzDeviceCoreClass))
+#define GDK_QUARTZ_DEVICE_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_QUARTZ_DEVICE_CORE, CdkQuartzDeviceCore))
+#define GDK_QUARTZ_DEVICE_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_QUARTZ_DEVICE_CORE, CdkQuartzDeviceCoreClass))
 #define GDK_IS_QUARTZ_DEVICE_CORE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_QUARTZ_DEVICE_CORE))
 #define GDK_IS_QUARTZ_DEVICE_CORE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_QUARTZ_DEVICE_CORE))
-#define GDK_QUARTZ_DEVICE_CORE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_QUARTZ_DEVICE_CORE, GdkQuartzDeviceCoreClass))
+#define GDK_QUARTZ_DEVICE_CORE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_QUARTZ_DEVICE_CORE, CdkQuartzDeviceCoreClass))
 
-typedef struct _GdkQuartzDeviceCore GdkQuartzDeviceCore;
-typedef struct _GdkQuartzDeviceCoreClass GdkQuartzDeviceCoreClass;
+typedef struct _CdkQuartzDeviceCore CdkQuartzDeviceCore;
+typedef struct _CdkQuartzDeviceCoreClass CdkQuartzDeviceCoreClass;
 
 GDK_AVAILABLE_IN_ALL
 GType cdk_quartz_device_core_get_type (void) G_GNUC_CONST;

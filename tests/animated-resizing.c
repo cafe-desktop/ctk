@@ -134,7 +134,7 @@ on_frame (double progress)
 
 static gboolean
 tick_callback (CtkWidget     *widget,
-               GdkFrameClock *frame_clock,
+               CdkFrameClock *frame_clock,
                gpointer       user_data)
 {
   gint64 frame_time = cdk_frame_clock_get_frame_time (frame_clock);
@@ -151,7 +151,7 @@ tick_callback (CtkWidget     *widget,
 
 static gboolean
 on_map_event (CtkWidget	  *widget,
-              GdkEventAny *event)
+              CdkEventAny *event)
 {
   ctk_widget_add_tick_callback (window, tick_callback, NULL, NULL);
 
@@ -168,8 +168,8 @@ int
 main(int argc, char **argv)
 {
   GError *error = NULL;
-  GdkMonitor *monitor;
-  GdkRectangle monitor_bounds;
+  CdkMonitor *monitor;
+  CdkRectangle monitor_bounds;
 
   GOptionContext *context = g_option_context_new (NULL);
   g_option_context_add_main_entries (context, options, NULL);

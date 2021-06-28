@@ -27,7 +27,7 @@ get_surface_size (cairo_surface_t *surface,
                   int             *width,
                   int             *height)
 {
-  GdkRectangle area;
+  CdkRectangle area;
   cairo_t *cr;
 
   cr = cairo_create (surface);

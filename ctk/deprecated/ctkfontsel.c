@@ -171,7 +171,7 @@ static void    ctk_font_selection_get_property       (GObject         *object,
 						      GParamSpec      *pspec);
 static void    ctk_font_selection_finalize	     (GObject         *object);
 static void    ctk_font_selection_screen_changed     (CtkWidget	      *widget,
-						      GdkScreen       *previous_screen);
+						      CdkScreen       *previous_screen);
 static void    ctk_font_selection_style_updated      (CtkWidget      *widget);
 
 /* These are the callbacks & related functions. */
@@ -191,7 +191,7 @@ static void     ctk_font_selection_show_available_sizes  (CtkFontSelection *fs,
 static void     ctk_font_selection_size_activate         (CtkWidget        *w,
 							  gpointer          data);
 static gboolean ctk_font_selection_size_focus_out        (CtkWidget        *w,
-							  GdkEventFocus    *event,
+							  CdkEventFocus    *event,
 							  gpointer          data);
 static void     ctk_font_selection_select_size           (CtkTreeSelection *selection,
 							  gpointer          data);
@@ -674,7 +674,7 @@ ctk_font_selection_reload_fonts (CtkFontSelection *fontsel)
 
 static void
 ctk_font_selection_screen_changed (CtkWidget *widget,
-				   GdkScreen *previous_screen)
+				   CdkScreen *previous_screen)
 {
   ctk_font_selection_reload_fonts (CTK_FONT_SELECTION (widget));
 }
@@ -1121,7 +1121,7 @@ ctk_font_selection_size_activate (CtkWidget   *w,
 
 static gboolean
 ctk_font_selection_size_focus_out (CtkWidget     *w,
-				   GdkEventFocus *event,
+				   CdkEventFocus *event,
 				   gpointer       data)
 {
   CtkFontSelection *fontsel = CTK_FONT_SELECTION (data);

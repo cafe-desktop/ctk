@@ -4223,11 +4223,11 @@ msgstr ""
 "Falló al cargar la imaxe '%s': nun se sabe la razón, pue que'l ficheru de la "
 "imaxe tea frayáu"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Etiquetes de depuración Gdk habilitaes"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Etiquetes de depuración Cdk habilitaes"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Etiquetes de depuración Gdk deshabilitaes"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Etiquetes de depuración Cdk deshabilitaes"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "El ficheru d'imaxe '%s' nun tien datos"
@@ -4679,7 +4679,7 @@ msgstr ""
 #~ msgstr "Nun pudo acutase memoria pa la estructura de contestu TGA"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Nun se pudo escribir l'índiz de la carpeta\n"
 
 #, fuzzy

@@ -69,15 +69,15 @@ struct _CtkMenuShellPrivate
   CtkMnemonicHash *mnemonic_hash;
   CtkKeyHash *key_hash;
 
-  GdkDevice *grab_pointer;
+  CdkDevice *grab_pointer;
 };
 
 void        _ctk_menu_shell_select_last      (CtkMenuShell *menu_shell,
                                               gboolean      search_sensitive);
 gint        _ctk_menu_shell_get_popup_delay  (CtkMenuShell *menu_shell);
 void        _ctk_menu_shell_set_grab_device  (CtkMenuShell *menu_shell,
-                                              GdkDevice    *device);
-GdkDevice *_ctk_menu_shell_get_grab_device   (CtkMenuShell *menu_shell);
+                                              CdkDevice    *device);
+CdkDevice *_ctk_menu_shell_get_grab_device   (CtkMenuShell *menu_shell);
 
 void       _ctk_menu_shell_add_mnemonic      (CtkMenuShell *menu_shell,
                                               guint         keyval,

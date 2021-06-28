@@ -23,11 +23,11 @@
 
 G_BEGIN_DECLS
 
-struct _GdkQuartzScreen
+struct _CdkQuartzScreen
 {
-  GdkScreen parent_instance;
+  CdkScreen parent_instance;
 
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   /* Origin of "root window" in AppKit coordinates */
   gint orig_x;
@@ -43,9 +43,9 @@ struct _GdkQuartzScreen
   guint emit_monitors_changed : 1;
 };
 
-struct _GdkQuartzScreenClass
+struct _CdkQuartzScreenClass
 {
-  GdkScreenClass parent_class;
+  CdkScreenClass parent_class;
 };
 
 G_END_DECLS

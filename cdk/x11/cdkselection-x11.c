@@ -39,8 +39,8 @@ typedef struct _OwnerInfo OwnerInfo;
 
 struct _OwnerInfo
 {
-  GdkAtom    selection;
-  GdkWindow *owner;
+  CdkAtom    selection;
+  CdkWindow *owner;
   gulong     serial;
 };
 
@@ -52,7 +52,7 @@ static GSList *owner_list;
  * low code solution
  */
 void
-_cdk_x11_selection_window_destroyed (GdkWindow *window)
+_cdk_x11_selection_window_destroyed (CdkWindow *window)
 {
   GSList *tmp_list = owner_list;
   while (tmp_list)
@@ -75,7 +75,7 @@ gboolean
 _cdk_x11_selection_filter_clear_event (XSelectionClearEvent *event)
 {
   GSList *tmp_list = owner_list;
-  GdkDisplay *display = cdk_x11_lookup_xdisplay (event->display);
+  CdkDisplay *display = cdk_x11_lookup_xdisplay (event->display);
 
   while (tmp_list)
     {
@@ -101,9 +101,9 @@ _cdk_x11_selection_filter_clear_event (XSelectionClearEvent *event)
 }
 
 gboolean
-_cdk_x11_display_set_selection_owner (GdkDisplay *display,
-                                      GdkWindow  *owner,
-                                      GdkAtom     selection,
+_cdk_x11_display_set_selection_owner (CdkDisplay *display,
+                                      CdkWindow  *owner,
+                                      CdkAtom     selection,
                                       guint32     time,
                                       gboolean    send_event)
 {
@@ -161,9 +161,9 @@ _cdk_x11_display_set_selection_owner (GdkDisplay *display,
   return (XGetSelectionOwner (xdisplay, xselection) == xwindow);
 }
 
-GdkWindow *
-_cdk_x11_display_get_selection_owner (GdkDisplay *display,
-                                      GdkAtom     selection)
+CdkWindow *
+_cdk_x11_display_get_selection_owner (CdkDisplay *display,
+                                      CdkAtom     selection)
 {
   Window xwindow;
 
@@ -180,10 +180,10 @@ _cdk_x11_display_get_selection_owner (GdkDisplay *display,
 }
 
 void
-_cdk_x11_display_convert_selection (GdkDisplay *display,
-                                    GdkWindow  *requestor,
-                                    GdkAtom     selection,
-                                    GdkAtom     target,
+_cdk_x11_display_convert_selection (CdkDisplay *display,
+                                    CdkWindow  *requestor,
+                                    CdkAtom     selection,
+                                    CdkAtom     target,
                                     guint32     time)
 {
   g_return_if_fail (selection != GDK_NONE);
@@ -201,10 +201,10 @@ _cdk_x11_display_convert_selection (GdkDisplay *display,
 }
 
 gint
-_cdk_x11_display_get_selection_property (GdkDisplay  *display,
-                                         GdkWindow   *requestor,
+_cdk_x11_display_get_selection_property (CdkDisplay  *display,
+                                         CdkWindow   *requestor,
                                          guchar     **data,
-                                         GdkAtom     *ret_type,
+                                         CdkAtom     *ret_type,
                                          gint        *ret_format)
 {
   gulong nitems;
@@ -242,20 +242,20 @@ _cdk_x11_display_get_selection_property (GdkDisplay  *display,
           prop_type == cdk_x11_get_xatom_by_name_for_display (display, "ATOM_PAIR"))
         {
           Atom* atoms = (Atom*) t;
-          GdkAtom* atoms_dest;
+          CdkAtom* atoms_dest;
           gint num_atom, i;
 
           if (prop_format != 32)
             goto err;
 
           num_atom = nitems;
-          length = sizeof (GdkAtom) * num_atom + 1;
+          length = sizeof (CdkAtom) * num_atom + 1;
 
           if (data)
             {
               *data = g_malloc (length);
               (*data)[length - 1] = '\0';
-              atoms_dest = (GdkAtom *)(*data);
+              atoms_dest = (CdkAtom *)(*data);
 
               for (i=0; i < num_atom; i++)
                 atoms_dest[i] = cdk_x11_xatom_to_atom_for_display (display, atoms[i]);
@@ -305,11 +305,11 @@ _cdk_x11_display_get_selection_property (GdkDisplay  *display,
 }
 
 void
-_cdk_x11_display_send_selection_notify (GdkDisplay       *display,
-                                        GdkWindow        *requestor,
-                                        GdkAtom          selection,
-                                        GdkAtom          target,
-                                        GdkAtom          property,
+_cdk_x11_display_send_selection_notify (CdkDisplay       *display,
+                                        CdkWindow        *requestor,
+                                        CdkAtom          selection,
+                                        CdkAtom          target,
+                                        CdkAtom          property,
                                         guint32          time)
 {
   XSelectionEvent xevent;
@@ -331,7 +331,7 @@ _cdk_x11_display_send_selection_notify (GdkDisplay       *display,
 
 /**
  * cdk_x11_display_text_property_to_text_list:
- * @display: (type GdkX11Display): The #GdkDisplay where the encoding is defined
+ * @display: (type CdkX11Display): The #CdkDisplay where the encoding is defined
  * @encoding: an atom representing the encoding. The most
  *    common values for this are STRING, or COMPOUND_TEXT.
  *    This is value used as the type for the property
@@ -353,8 +353,8 @@ _cdk_x11_display_send_selection_notify (GdkDisplay       *display,
  * Since: 2.24
  */
 gint
-cdk_x11_display_text_property_to_text_list (GdkDisplay   *display,
-                                            GdkAtom       encoding,
+cdk_x11_display_text_property_to_text_list (CdkDisplay   *display,
+                                            CdkAtom       encoding,
                                             gint          format,
                                             const guchar *text,
                                             gint          length,
@@ -488,8 +488,8 @@ make_list (const gchar  *text,
 }
 
 gint
-_cdk_x11_display_text_property_to_utf8_list (GdkDisplay    *display,
-                                             GdkAtom        encoding,
+_cdk_x11_display_text_property_to_utf8_list (CdkDisplay    *display,
+                                             CdkAtom        encoding,
                                              gint           format,
                                              const guchar  *text,
                                              gint           length,
@@ -572,7 +572,7 @@ _cdk_x11_display_text_property_to_utf8_list (GdkDisplay    *display,
 
 /**
  * cdk_x11_display_string_to_compound_text:
- * @display: (type GdkX11Display): the #GdkDisplay where the encoding is defined
+ * @display: (type CdkX11Display): the #CdkDisplay where the encoding is defined
  * @str: a nul-terminated string
  * @encoding: (out) (transfer none): location to store the encoding atom
  *     (to be used as the type for the property)
@@ -589,9 +589,9 @@ _cdk_x11_display_text_property_to_utf8_list (GdkDisplay    *display,
  * Since: 2.24
  */
 gint
-cdk_x11_display_string_to_compound_text (GdkDisplay  *display,
+cdk_x11_display_string_to_compound_text (CdkDisplay  *display,
                                          const gchar *str,
-                                         GdkAtom     *encoding,
+                                         CdkAtom     *encoding,
                                          gint        *format,
                                          guchar     **ctext,
                                          gint        *length)
@@ -685,7 +685,7 @@ sanitize_utf8 (const gchar *src,
 }
 
 gchar *
-_cdk_x11_display_utf8_to_string_target (GdkDisplay  *display,
+_cdk_x11_display_utf8_to_string_target (CdkDisplay  *display,
                                         const gchar *str)
 {
   return sanitize_utf8 (str, TRUE);
@@ -693,7 +693,7 @@ _cdk_x11_display_utf8_to_string_target (GdkDisplay  *display,
 
 /**
  * cdk_x11_display_utf8_to_compound_text:
- * @display: (type GdkX11Display): a #GdkDisplay
+ * @display: (type CdkX11Display): a #CdkDisplay
  * @str: a UTF-8 string
  * @encoding: (out): location to store resulting encoding
  * @format: (out): location to store format of the result
@@ -709,9 +709,9 @@ _cdk_x11_display_utf8_to_string_target (GdkDisplay  *display,
  * Since: 2.24
  */
 gboolean
-cdk_x11_display_utf8_to_compound_text (GdkDisplay  *display,
+cdk_x11_display_utf8_to_compound_text (CdkDisplay  *display,
                                        const gchar *str,
-                                       GdkAtom     *encoding,
+                                       CdkAtom     *encoding,
                                        gint        *format,
                                        guchar     **ctext,
                                        gint        *length)

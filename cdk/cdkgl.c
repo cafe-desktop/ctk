@@ -34,7 +34,7 @@ static cairo_user_data_key_t direct_key;
 
 void
 cdk_cairo_surface_mark_as_direct (cairo_surface_t *surface,
-                                  GdkWindow *window)
+                                  CdkWindow *window)
 {
   cairo_surface_set_user_data (surface, &direct_key,
                                g_object_ref (window),  g_object_unref);
@@ -89,7 +89,7 @@ create_shader (int         type,
 }
 
 static void
-make_program (GdkGLContextProgram *program,
+make_program (CdkGLContextProgram *program,
               const char          *vertex_shader_path,
               const char          *fragment_shader_path)
 {
@@ -146,7 +146,7 @@ make_program (GdkGLContextProgram *program,
 }
 
 static void
-bind_vao (GdkGLContextPaintData *paint_data)
+bind_vao (CdkGLContextPaintData *paint_data)
 {
   if (paint_data->vertex_array_object == 0)
     {
@@ -157,7 +157,7 @@ bind_vao (GdkGLContextPaintData *paint_data)
 }
 
 static void
-use_texture_gles_program (GdkGLContextPaintData *paint_data)
+use_texture_gles_program (CdkGLContextPaintData *paint_data)
 {
   if (paint_data->texture_2d_quad_program.program == 0)
     make_program (&paint_data->texture_2d_quad_program,
@@ -172,7 +172,7 @@ use_texture_gles_program (GdkGLContextPaintData *paint_data)
 }
 
 static void
-use_texture_2d_program (GdkGLContextPaintData *paint_data)
+use_texture_2d_program (CdkGLContextPaintData *paint_data)
 {
   const char *vertex_shader_path = paint_data->is_legacy
     ? "/org/ctk/libcdk/glsl/gl2-texture-2d.vs.glsl"
@@ -193,7 +193,7 @@ use_texture_2d_program (GdkGLContextPaintData *paint_data)
 }
 
 static void
-use_texture_rect_program (GdkGLContextPaintData *paint_data)
+use_texture_rect_program (CdkGLContextPaintData *paint_data)
 {
   const char *vertex_shader_path = paint_data->is_legacy
     ? "/org/ctk/libcdk/glsl/gl2-texture-rect.vs.glsl"
@@ -214,15 +214,15 @@ use_texture_rect_program (GdkGLContextPaintData *paint_data)
 }
 
 void
-cdk_gl_texture_quads (GdkGLContext *paint_context,
+cdk_gl_texture_quads (CdkGLContext *paint_context,
                       guint texture_target,
                       int n_quads,
-                      GdkTexturedQuad *quads,
+                      CdkTexturedQuad *quads,
                       gboolean flip_colors)
 {
-  GdkGLContextPaintData *paint_data  = cdk_gl_context_get_paint_data (paint_context);
-  GdkGLContextProgram *program;
-  GdkWindow *window = cdk_gl_context_get_window (paint_context);
+  CdkGLContextPaintData *paint_data  = cdk_gl_context_get_paint_data (paint_context);
+  CdkGLContextProgram *program;
+  CdkWindow *window = cdk_gl_context_get_window (paint_context);
   int window_scale = cdk_window_get_scale_factor (window);
   float w = cdk_window_get_width (window) * window_scale;
   float h = cdk_window_get_height (window) * window_scale;
@@ -271,7 +271,7 @@ cdk_gl_texture_quads (GdkGLContext *paint_context,
 
   for (i = 0; i < n_quads; i++)
     {
-      GdkTexturedQuad *quad = &quads[i];
+      CdkTexturedQuad *quad = &quads[i];
       float vertex_data[] = {
         (quad->x1 * 2) / w - 1, (quad->y1 * 2) / h - 1, quad->u1, quad->v1,
         (quad->x1 * 2) / w - 1, (quad->y2 * 2) / h - 1, quad->u1, quad->v2,
@@ -332,7 +332,7 @@ cdk_gl_texture_quads (GdkGLContext *paint_context,
  */
 void
 cdk_cairo_draw_from_gl (cairo_t              *cr,
-                        GdkWindow            *window,
+                        CdkWindow            *window,
                         int                   source,
                         int                   source_type,
                         int                   buffer_scale,
@@ -341,17 +341,17 @@ cdk_cairo_draw_from_gl (cairo_t              *cr,
                         int                   width,
                         int                   height)
 {
-  GdkGLContext *paint_context;
+  CdkGLContext *paint_context;
   cairo_surface_t *image;
   cairo_matrix_t matrix;
   int dx, dy, window_scale;
   gboolean trivial_transform;
   cairo_surface_t *group_target;
-  GdkWindow *direct_window, *impl_window;
+  CdkWindow *direct_window, *impl_window;
   guint framebuffer;
   int alpha_size = 0;
   cairo_region_t *clip_region;
-  GdkGLContextPaintData *paint_data;
+  CdkGLContextPaintData *paint_data;
 
   impl_window = window->impl_window;
 
@@ -522,7 +522,7 @@ cdk_cairo_draw_from_gl (cairo_t              *cr,
       GLint texture_width;
       GLint texture_height;
       int i, n_rects, n_quads;
-      GdkTexturedQuad *quads;
+      CdkTexturedQuad *quads;
       cairo_rectangle_int_t clip_rect;
 
       /* Translate to impl coords */
@@ -583,7 +583,7 @@ cdk_cairo_draw_from_gl (cairo_t              *cr,
 
       n_quads = 0;
       n_rects = cairo_region_num_rectangles (clip_region);
-      quads = g_new (GdkTexturedQuad, n_rects);
+      quads = g_new (CdkTexturedQuad, n_rects);
       for (i = 0; i < n_rects; i++)
         {
           cairo_rectangle_int_t dest;
@@ -604,7 +604,7 @@ cdk_cairo_draw_from_gl (cairo_t              *cr,
             {
               int clipped_src_x = x + (dest.x - dx * window_scale);
               int clipped_src_y = y + (height - dest.height - (dest.y - dy * window_scale));
-              GdkTexturedQuad quad = {
+              CdkTexturedQuad quad = {
                 dest.x, FLIP_Y(dest.y),
                 dest.x + dest.width, FLIP_Y(dest.y + dest.height),
                 clipped_src_x / (float)texture_width, (clipped_src_y + dest.height) / (float)texture_height,
@@ -725,12 +725,12 @@ void
 cdk_gl_texture_from_surface (cairo_surface_t *surface,
 			     cairo_region_t  *region)
 {
-  GdkGLContext *paint_context;
+  CdkGLContext *paint_context;
   cairo_surface_t *image;
   double device_x_offset, device_y_offset;
   cairo_rectangle_int_t rect, e;
   int n_rects, i;
-  GdkWindow *window;
+  CdkWindow *window;
   int unscaled_window_height;
   unsigned int texture_id;
   int window_scale;
@@ -808,7 +808,7 @@ cdk_gl_texture_from_surface (cairo_surface_t *surface,
         }
 
       {
-        GdkTexturedQuad quad = {
+        CdkTexturedQuad quad = {
           rect.x * window_scale, FLIP_Y(rect.y * window_scale),
           (rect.x + rect.width) * window_scale, FLIP_Y((rect.y + rect.height) * window_scale),
           0, 0,

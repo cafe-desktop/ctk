@@ -1766,7 +1766,7 @@ msgid "Cell background color"
 msgstr "सैल पृष्ठ भूमि रंग"
 
 #: ../ctk/ctkcellrenderer.c:397
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr "जीडीके-रंग जैसा विषय पृष्ठभूमि रंग"
 
 #: ../ctk/ctkcellrenderer.c:410
@@ -1774,8 +1774,8 @@ msgid "Cell background RGBA color"
 msgstr "सैल पृष्ठ भूमि RGBA रंग"
 
 #: ../ctk/ctkcellrenderer.c:411
-msgid "Cell background color as a GdkRGBA"
-msgstr "GdkRGBA के रूप में सैल पृष्ठ भूमि रंग"
+msgid "Cell background color as a CdkRGBA"
+msgstr "CdkRGBA के रूप में सैल पृष्ठ भूमि रंग"
 
 #: ../ctk/ctkcellrenderer.c:418
 msgid "Editing"
@@ -2028,8 +2028,8 @@ msgstr "पृष्ठ भूमि रंग"
 
 #: ../ctk/ctkcellrenderertext.c:304 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:219
-msgid "Background color as a GdkColor"
-msgstr "Gdk रंग की तरह पृष्ठ भूमि रंग"
+msgid "Background color as a CdkColor"
+msgstr "Cdk रंग की तरह पृष्ठ भूमि रंग"
 
 #: ../ctk/ctkcellrenderertext.c:318
 msgid "Background color as RGBA"
@@ -2037,8 +2037,8 @@ msgstr "पृष्ठ भूमि रंग RGBA की तरह"
 
 #: ../ctk/ctkcellrenderertext.c:319 ../ctk/ctkcellview.c:219
 #: ../ctk/ctktexttag.c:234
-msgid "Background color as a GdkRGBA"
-msgstr "GdkRGBA के रूप में पृष्ठ भूमि रंग"
+msgid "Background color as a CdkRGBA"
+msgstr "CdkRGBA के रूप में पृष्ठ भूमि रंग"
 
 #: ../ctk/ctkcellrenderertext.c:325 ../ctk/ctktexttag.c:249
 msgid "Foreground color name"
@@ -2054,16 +2054,16 @@ msgid "Foreground color"
 msgstr "अग्र रंग"
 
 #: ../ctk/ctkcellrenderertext.c:341 ../ctk/ctktexttag.c:265
-msgid "Foreground color as a GdkColor"
-msgstr "Gdk रंग की तरह पृष्ठ भूमि रंग"
+msgid "Foreground color as a CdkColor"
+msgstr "Cdk रंग की तरह पृष्ठ भूमि रंग"
 
 #: ../ctk/ctkcellrenderertext.c:355
 msgid "Foreground color as RGBA"
 msgstr "RGBA की तरह अग्र रंग"
 
 #: ../ctk/ctkcellrenderertext.c:356 ../ctk/ctktexttag.c:280
-msgid "Foreground color as a GdkRGBA"
-msgstr "GdkRGBA की तरह अग्र रंग"
+msgid "Foreground color as a CdkRGBA"
+msgstr "CdkRGBA की तरह अग्र रंग"
 
 #: ../ctk/ctkcellrenderertext.c:364 ../ctk/ctkentry.c:755
 #: ../ctk/ctktexttag.c:296 ../ctk/ctktextview.c:702
@@ -2542,8 +2542,8 @@ msgid "Color"
 msgstr "रंग"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "GdkRGBA के रूप में वर्तमान रंग"
+msgid "Current color, as a CdkRGBA"
+msgstr "CdkRGBA के रूप में वर्तमान रंग"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -3758,8 +3758,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:217 ../ctk/ctkstatusicon.c:224
-msgid "A GdkPixbuf to display"
-msgstr "प्रदर्शित किए जाने वाला GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "प्रदर्शित किए जाने वाला CdkPixbuf"
 
 #: ../ctk/ctkimage.c:224 ../ctk/ctkrecentmanager.c:293
 #: ../ctk/ctkstatusicon.c:231
@@ -3804,8 +3804,8 @@ msgid "Animation"
 msgstr "एनीमेशन"
 
 #: ../ctk/ctkimage.c:276
-msgid "GdkPixbufAnimation to display"
-msgstr "प्रदर्शित किए जाने वाला Gdk Pixbuf Animation"
+msgid "CdkPixbufAnimation to display"
+msgstr "प्रदर्शित किए जाने वाला Cdk Pixbuf Animation"
 
 #: ../ctk/ctkimage.c:316 ../ctk/ctkstatusicon.c:271
 msgid "Storage type"
@@ -6483,8 +6483,8 @@ msgid "The title of this tray icon"
 msgstr "इस ट्रे प्रतीक का शीर्षक"
 
 #: ../ctk/ctkstylecontext.c:443
-msgid "The associated GdkScreen"
-msgstr "सम्बंधित GdkScreen"
+msgid "The associated CdkScreen"
+msgstr "सम्बंधित CdkScreen"
 
 #: ../ctk/ctkstylecontext.c:449
 msgid "Direction"
@@ -6777,16 +6777,16 @@ msgid "Paragraph background color"
 msgstr "अनुच्छेद पृष्ठ भूमि रंग"
 
 #: ../ctk/ctktexttag.c:582
-msgid "Paragraph background color as a GdkColor"
-msgstr "अनुच्छेद पृष्ठ भूमि रंग GdkColor की तरह"
+msgid "Paragraph background color as a CdkColor"
+msgstr "अनुच्छेद पृष्ठ भूमि रंग CdkColor की तरह"
 
 #: ../ctk/ctktexttag.c:596
 msgid "Paragraph background RGBA"
 msgstr "पैराग्राफ पृष्ठभूमि RGBA"
 
 #: ../ctk/ctktexttag.c:597
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "अनुच्छेद पृष्ठ भूमि RGBA GdkRGBA की तरह"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "अनुच्छेद पृष्ठ भूमि RGBA CdkRGBA की तरह"
 
 #: ../ctk/ctktexttag.c:615
 msgid "Margin Accumulates"
@@ -7734,9 +7734,9 @@ msgid "Events"
 msgstr "घटनाएँ"
 
 #: ../ctk/ctkwidget.c:1096
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"मुखौटा जो निर्धारित करता है कि किस प्रकार का GdkEvents यह विजेट पाता है"
+"मुखौटा जो निर्धारित करता है कि किस प्रकार का CdkEvents यह विजेट पाता है"
 
 #: ../ctk/ctkwidget.c:1103
 msgid "No show all"
@@ -8292,11 +8292,11 @@ msgstr "रंग प्रोफ़ाइल का उपयोग करन�
 #~ msgid "Event base"
 #~ msgstr "घटना बेस"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
 #~ msgstr "जीडीके-रंग की तरह पृष्ठभूमि रंग (संभवतः अनएलोकेटेड)"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
 #~ msgstr "जीडीके-रंग की तरह अग्रभूमि रंग (संभवतः अनएलोकेटेड)"
 
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 #~ msgstr "जीडीके-रंग की तरह पृष्ठभूमि रंग (संभवतः असंभाजित)"

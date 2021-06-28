@@ -67,7 +67,7 @@ guint       ctk_gesture_single_get_current_button
                                               (CtkGestureSingle *gesture);
 
 GDK_AVAILABLE_IN_3_14
-GdkEventSequence * ctk_gesture_single_get_current_sequence
+CdkEventSequence * ctk_gesture_single_get_current_sequence
                                               (CtkGestureSingle *gesture);
 
 G_END_DECLS

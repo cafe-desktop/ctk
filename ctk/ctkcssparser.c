@@ -797,7 +797,7 @@ _ctk_css_parser_try_enum (CtkCssParser *parser,
 
 gboolean
 _ctk_css_parser_try_hash_color (CtkCssParser *parser,
-                                GdkRGBA      *rgba)
+                                CdkRGBA      *rgba)
 {
   if (parser->data[0] == '#' &&
       g_ascii_isxdigit (parser->data[1]) &&

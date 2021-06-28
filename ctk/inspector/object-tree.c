@@ -723,12 +723,12 @@ move_search_to_row (CtkInspectorObjectTree *wt,
 
 static gboolean
 key_press_event (CtkWidget              *window,
-                 GdkEvent               *event,
+                 CdkEvent               *event,
                  CtkInspectorObjectTree *wt)
 {
   if (ctk_widget_get_mapped (CTK_WIDGET (wt)))
     {
-      GdkModifierType default_accel;
+      CdkModifierType default_accel;
       gboolean search_started;
 
       search_started = ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (wt->priv->search_bar));
@@ -1200,7 +1200,7 @@ ctk_inspector_object_tree_scan (CtkInspectorObjectTree *wt,
 {
   CtkWidget *inspector_win;
   GList *toplevels, *l;
-  GdkScreen *screen;
+  CdkScreen *screen;
   GObject *selected;
 
   block_selection_changed (wt);

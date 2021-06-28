@@ -1104,7 +1104,7 @@ typedef enum
  * @CTK_EVENT_SEQUENCE_CLAIMED: The sequence is handled and grabbed.
  * @CTK_EVENT_SEQUENCE_DENIED: The sequence is denied.
  *
- * Describes the state of a #GdkEventSequence in a #CtkGesture.
+ * Describes the state of a #CdkEventSequence in a #CtkGesture.
  *
  * Since: 3.14
  */

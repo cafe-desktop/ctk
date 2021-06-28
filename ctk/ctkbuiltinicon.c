@@ -131,7 +131,7 @@ ctk_builtin_icon_allocate (CtkCssGadget        *gadget,
                            int                  baseline,
                            CtkAllocation       *out_clip)
 {
-  GdkRectangle icon_clip;
+  CdkRectangle icon_clip;
 
   CTK_CSS_GADGET_CLASS (ctk_builtin_icon_parent_class)->allocate (gadget, allocation, baseline, out_clip);
 

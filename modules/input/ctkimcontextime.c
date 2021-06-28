@@ -100,9 +100,9 @@ static void ctk_im_context_ime_get_property (GObject      *object,
 
 /* CtkIMContext's virtual functions */
 static void ctk_im_context_ime_set_client_window   (CtkIMContext *context,
-                                                    GdkWindow    *client_window);
+                                                    CdkWindow    *client_window);
 static gboolean ctk_im_context_ime_filter_keypress (CtkIMContext   *context,
-                                                    GdkEventKey    *event);
+                                                    CdkEventKey    *event);
 static void ctk_im_context_ime_reset               (CtkIMContext   *context);
 static void ctk_im_context_ime_get_preedit_string  (CtkIMContext   *context,
                                                     gchar         **str,
@@ -111,18 +111,18 @@ static void ctk_im_context_ime_get_preedit_string  (CtkIMContext   *context,
 static void ctk_im_context_ime_focus_in            (CtkIMContext   *context);
 static void ctk_im_context_ime_focus_out           (CtkIMContext   *context);
 static void ctk_im_context_ime_set_cursor_location (CtkIMContext   *context,
-                                                    GdkRectangle   *area);
+                                                    CdkRectangle   *area);
 static void ctk_im_context_ime_set_use_preedit     (CtkIMContext   *context,
                                                     gboolean        use_preedit);
 
 /* CtkIMContextIME's private functions */
 static void ctk_im_context_ime_set_preedit_font (CtkIMContext    *context);
 
-static GdkFilterReturn
-ctk_im_context_ime_message_filter               (GdkXEvent       *xevent,
-                                                 GdkEvent        *event,
+static CdkFilterReturn
+ctk_im_context_ime_message_filter               (CdkXEvent       *xevent,
+                                                 CdkEvent        *event,
                                                  gpointer         data);
-static void get_window_position                 (GdkWindow       *win,
+static void get_window_position                 (CdkWindow       *win,
                                                  gint            *x,
                                                  gint            *y);
 static void cb_client_widget_hierarchy_changed  (CtkWidget       *widget,
@@ -267,17 +267,17 @@ ctk_im_context_ime_new (void)
 
 static void
 ctk_im_context_ime_set_client_window (CtkIMContext *context,
-                                      GdkWindow    *client_window)
+                                      CdkWindow    *client_window)
 {
   CtkIMContextIME *context_ime;
-  GdkWindow *toplevel = NULL;
+  CdkWindow *toplevel = NULL;
 
   g_return_if_fail (CTK_IS_IM_CONTEXT_IME (context));
   context_ime = CTK_IM_CONTEXT_IME (context);
 
   if (client_window != NULL && !GDK_IS_WINDOW (client_window))
     {
-      g_warning ("client_window is not a GdkWindow!");
+      g_warning ("client_window is not a CdkWindow!");
       client_window = NULL;
     }
 
@@ -318,10 +318,10 @@ ctk_im_context_ime_set_client_window (CtkIMContext *context,
 
 static gboolean
 ctk_im_context_ime_filter_keypress (CtkIMContext *context,
-                                    GdkEventKey  *event)
+                                    CdkEventKey  *event)
 {
   CtkIMContextIME *context_ime;
-  GdkEventPrivate *event_priv;
+  CdkEventPrivate *event_priv;
   gchar *utf8;
 
   g_return_val_if_fail (CTK_IS_IM_CONTEXT_IME (context), FALSE);
@@ -329,9 +329,9 @@ ctk_im_context_ime_filter_keypress (CtkIMContext *context,
 
   context_ime = CTK_IM_CONTEXT_IME (context);
 
-  g_return_val_if_fail (cdk_event_is_allocated ((GdkEvent*)event), FALSE);
+  g_return_val_if_fail (cdk_event_is_allocated ((CdkEvent*)event), FALSE);
 
-  event_priv = (GdkEventPrivate*) event;
+  event_priv = (CdkEventPrivate*) event;
   if (event_priv->translation_len == 0)
     return FALSE;
 
@@ -576,7 +576,7 @@ static void
 ctk_im_context_ime_focus_in (CtkIMContext *context)
 {
   CtkIMContextIME *context_ime = CTK_IM_CONTEXT_IME (context);
-  GdkWindow *toplevel = NULL;
+  CdkWindow *toplevel = NULL;
   CtkWidget *widget = NULL;
   HWND hwnd;
   HIMC himc;
@@ -725,7 +725,7 @@ ctk_im_context_ime_focus_out (CtkIMContext *context)
 
 static void
 ctk_im_context_ime_set_cursor_location (CtkIMContext *context,
-                                        GdkRectangle *area)
+                                        CdkRectangle *area)
 {
   gint wx = 0, wy = 0;
   CtkIMContextIME *context_ime;
@@ -909,9 +909,9 @@ ERROR_OUT:
   ImmReleaseContext (hwnd, himc);
 }
 
-static GdkFilterReturn
-ctk_im_context_ime_message_filter (GdkXEvent *xevent,
-                                   GdkEvent  *event,
+static CdkFilterReturn
+ctk_im_context_ime_message_filter (CdkXEvent *xevent,
+                                   CdkEvent  *event,
                                    gpointer   data)
 {
   CtkIMContext *context;
@@ -919,7 +919,7 @@ ctk_im_context_ime_message_filter (GdkXEvent *xevent,
   HWND hwnd;
   HIMC himc;
   MSG *msg = (MSG *) xevent;
-  GdkFilterReturn retval = GDK_FILTER_CONTINUE;
+  CdkFilterReturn retval = GDK_FILTER_CONTINUE;
 
   g_return_val_if_fail (CTK_IS_IM_CONTEXT_IME (data), retval);
 
@@ -1035,9 +1035,9 @@ ctk_im_context_ime_message_filter (GdkXEvent *xevent,
  * x and y must be initialized to 0.
  */
 static void
-get_window_position (GdkWindow *win, gint *x, gint *y)
+get_window_position (CdkWindow *win, gint *x, gint *y)
 {
-  GdkWindow *parent, *toplevel;
+  CdkWindow *parent, *toplevel;
   gint wx, wy;
 
   g_return_if_fail (GDK_IS_WINDOW (win));
@@ -1062,7 +1062,7 @@ cb_client_widget_hierarchy_changed (CtkWidget       *widget,
                                     CtkWidget       *widget2,
                                     CtkIMContextIME *context_ime)
 {
-  GdkWindow *new_toplevel;
+  CdkWindow *new_toplevel;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (CTK_IS_IM_CONTEXT_IME (context_ime));

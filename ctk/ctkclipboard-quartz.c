@@ -56,7 +56,7 @@ struct _CtkClipboard
   CtkClipboardOwner *owner;
   NSInteger change_count;
 
-  GdkAtom selection;
+  CdkAtom selection;
 
   CtkClipboardGetFunc get_func;
   CtkClipboardClearFunc clear_func;
@@ -65,9 +65,9 @@ struct _CtkClipboard
   CtkTargetList *target_list;
 
   gboolean have_selection;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
-  GdkAtom *cached_targets;
+  CdkAtom *cached_targets;
   gint     n_cached_targets;
 
   guint      notify_signal_id;
@@ -75,7 +75,7 @@ struct _CtkClipboard
   GMainLoop *store_loop;
   guint      store_timeout;
   gint       n_storable_targets;
-  GdkAtom   *storable_targets;
+  CdkAtom   *storable_targets;
 };
 
 struct _CtkClipboardClass
@@ -83,17 +83,17 @@ struct _CtkClipboardClass
   GObjectClass parent_class;
 
   void (*owner_change) (CtkClipboard        *clipboard,
-			GdkEventOwnerChange *event);
+			CdkEventOwnerChange *event);
 };
 
 static void ctk_clipboard_class_init   (CtkClipboardClass   *class);
 static void ctk_clipboard_finalize     (GObject             *object);
 static void ctk_clipboard_owner_change (CtkClipboard        *clipboard,
-					GdkEventOwnerChange *event);
+					CdkEventOwnerChange *event);
 
 static void          clipboard_unset      (CtkClipboard     *clipboard);
-static CtkClipboard *clipboard_peek       (GdkDisplay       *display,
-					   GdkAtom           selection,
+static CtkClipboard *clipboard_peek       (CdkDisplay       *display,
+					   CdkAtom           selection,
 					   gboolean          only_if_exists);
 
 @implementation CtkClipboardOwner
@@ -201,7 +201,7 @@ ctk_clipboard_class_init (CtkClipboardClass *class)
   /**
    * CtkClipboard::owner-change:
    * @clipboard:
-   * @event: (type GdkEventOwnerChange):
+   * @event: (type CdkEventOwnerChange):
    */
   clipboard_signals[OWNER_CHANGE] =
     g_signal_new (I_("owner-change"),
@@ -244,7 +244,7 @@ ctk_clipboard_finalize (GObject *object)
 }
 
 static void
-clipboard_display_closed (GdkDisplay   *display,
+clipboard_display_closed (CdkDisplay   *display,
 			  gboolean      is_error,
 			  CtkClipboard *clipboard)
 {
@@ -265,8 +265,8 @@ clipboard_display_closed (GdkDisplay   *display,
  * Returns: (transfer none):
  */
 CtkClipboard *
-ctk_clipboard_get_for_display (GdkDisplay *display,
-			       GdkAtom     selection)
+ctk_clipboard_get_for_display (CdkDisplay *display,
+			       CdkAtom     selection)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
   g_return_val_if_fail (!cdk_display_is_closed (display), NULL);
@@ -281,14 +281,14 @@ ctk_clipboard_get_for_display (GdkDisplay *display,
  * Returns: (transfer none):
  */
 CtkClipboard *
-ctk_clipboard_get (GdkAtom selection)
+ctk_clipboard_get (CdkAtom selection)
 {
   return ctk_clipboard_get_for_display (cdk_display_get_default (), selection);
 }
 
 /**
  * ctk_clipboard_get_default:
- * @display: the #GdkDisplay for which the clipboard is to be retrieved.
+ * @display: the #CdkDisplay for which the clipboard is to be retrieved.
  *
  * Returns the default clipboard object for use with cut/copy/paste menu items
  * and keyboard shortcuts.
@@ -298,7 +298,7 @@ ctk_clipboard_get (GdkAtom selection)
  * Since: 3.16
  **/
 CtkClipboard *
-ctk_clipboard_get_default (GdkDisplay *display)
+ctk_clipboard_get_default (CdkDisplay *display)
 {
   g_return_val_if_fail (display != NULL, NULL);
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
@@ -641,7 +641,7 @@ pixbuf_clear_func (CtkClipboard *clipboard,
 
 void
 ctk_clipboard_set_image (CtkClipboard *clipboard,
-			 GdkPixbuf    *pixbuf)
+			 CdkPixbuf    *pixbuf)
 {
   CtkTargetList *list;
   GList *l;
@@ -683,7 +683,7 @@ ctk_clipboard_set_image (CtkClipboard *clipboard,
  */
 void
 ctk_clipboard_request_contents (CtkClipboard            *clipboard,
-				GdkAtom                  target,
+				CdkAtom                  target,
 				CtkClipboardReceivedFunc callback,
 				gpointer                 user_data)
 {
@@ -743,7 +743,7 @@ ctk_clipboard_request_rich_text (CtkClipboard                    *clipboard,
 guint8 *
 ctk_clipboard_wait_for_rich_text (CtkClipboard  *clipboard,
                                   CtkTextBuffer *buffer,
-                                  GdkAtom       *format,
+                                  CdkAtom       *format,
                                   gsize         *length)
 {
   /* FIXME: Implement */
@@ -761,7 +761,7 @@ ctk_clipboard_request_image (CtkClipboard                  *clipboard,
 			     CtkClipboardImageReceivedFunc  callback,
 			     gpointer                       user_data)
 {
-  GdkPixbuf *pixbuf = ctk_clipboard_wait_for_image (clipboard);
+  CdkPixbuf *pixbuf = ctk_clipboard_wait_for_image (clipboard);
 
   callback (clipboard, pixbuf, user_data);
 
@@ -798,7 +798,7 @@ ctk_clipboard_request_targets (CtkClipboard                *clipboard,
 			       CtkClipboardTargetsReceivedFunc callback,
 			       gpointer                     user_data)
 {
-  GdkAtom *targets;
+  CdkAtom *targets;
   gint n_targets;
 
   ctk_clipboard_wait_for_targets (clipboard, &targets, &n_targets);
@@ -815,7 +815,7 @@ ctk_clipboard_request_targets (CtkClipboard                *clipboard,
  */
 CtkSelectionData *
 ctk_clipboard_wait_for_contents (CtkClipboard *clipboard,
-				 GdkAtom       target)
+				 CdkAtom       target)
 {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   CtkSelectionData *selection_data = NULL;
@@ -831,9 +831,9 @@ ctk_clipboard_wait_for_contents (CtkClipboard *clipboard,
       NSArray *types = [clipboard->pasteboard types];
       int i, length;
       GList *atom_list, *l;
-      GdkAtom *atoms;
+      CdkAtom *atoms;
 
-      length = [types count] * sizeof (GdkAtom);
+      length = [types count] * sizeof (CdkAtom);
 
       selection_data = g_slice_new0 (CtkSelectionData);
       selection_data->selection = clipboard->selection;
@@ -894,17 +894,17 @@ ctk_clipboard_wait_for_text (CtkClipboard *clipboard)
  *
  * Returns: (nullable) (transfer full):
  */
-GdkPixbuf *
+CdkPixbuf *
 ctk_clipboard_wait_for_image (CtkClipboard *clipboard)
 {
-  GdkAtom target = cdk_atom_intern_static_string("image/tiff");
+  CdkAtom target = cdk_atom_intern_static_string("image/tiff");
   CtkSelectionData *data;
 
   data = ctk_clipboard_wait_for_contents (clipboard, target);
 
   if (data && data->data)
     {
-      GdkPixbuf *pixbuf = ctk_selection_data_get_pixbuf (data);
+      CdkPixbuf *pixbuf = ctk_selection_data_get_pixbuf (data);
       ctk_selection_data_free (data);
       return pixbuf;
     }
@@ -943,7 +943,7 @@ ctk_clipboard_wait_for_uris (CtkClipboard *clipboard)
  *
  * Returns: (transfer none):
  */
-GdkDisplay *
+CdkDisplay *
 ctk_clipboard_get_display (CtkClipboard *clipboard)
 {
   g_return_val_if_fail (clipboard != NULL, NULL);
@@ -1042,7 +1042,7 @@ ctk_clipboard_wait_is_uris_available (CtkClipboard *clipboard)
  */
 gboolean
 ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
-				GdkAtom      **targets,
+				CdkAtom      **targets,
 				gint          *n_targets)
 {
   CtkSelectionData *data;
@@ -1059,7 +1059,7 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
 
       if (targets)
  	*targets = g_memdup (clipboard->cached_targets,
- 			     clipboard->n_cached_targets * sizeof (GdkAtom));
+ 			     clipboard->n_cached_targets * sizeof (CdkAtom));
 
        return TRUE;
     }
@@ -1074,7 +1074,7 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
 
   if (data)
     {
-      GdkAtom *tmp_targets;
+      CdkAtom *tmp_targets;
       gint tmp_n_targets;
 
       result = ctk_selection_data_get_targets (data, &tmp_targets, &tmp_n_targets);
@@ -1083,7 +1083,7 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
  	{
  	  clipboard->n_cached_targets = tmp_n_targets;
  	  clipboard->cached_targets = g_memdup (tmp_targets,
- 						tmp_n_targets * sizeof (GdkAtom));
+ 						tmp_n_targets * sizeof (CdkAtom));
  	}
 
       if (n_targets)
@@ -1101,8 +1101,8 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
 }
 
 static CtkClipboard *
-clipboard_peek (GdkDisplay *display,
-		GdkAtom     selection,
+clipboard_peek (CdkDisplay *display,
+		CdkAtom     selection,
 		gboolean    only_if_exists)
 {
   CtkClipboard *clipboard = NULL;
@@ -1161,7 +1161,7 @@ clipboard_peek (GdkDisplay *display,
 
 static void
 ctk_clipboard_owner_change (CtkClipboard        *clipboard,
-			    GdkEventOwnerChange *event)
+			    CdkEventOwnerChange *event)
 {
   if (clipboard->n_cached_targets != -1)
     {
@@ -1172,9 +1172,9 @@ ctk_clipboard_owner_change (CtkClipboard        *clipboard,
 
 gboolean
 ctk_clipboard_wait_is_target_available (CtkClipboard *clipboard,
-					GdkAtom       target)
+					CdkAtom       target)
 {
-  GdkAtom *targets;
+  CdkAtom *targets;
   gint i, n_targets;
   gboolean retval = FALSE;
 
@@ -1196,7 +1196,7 @@ ctk_clipboard_wait_is_target_available (CtkClipboard *clipboard,
 }
 
 void
-_ctk_clipboard_handle_event (GdkEventOwnerChange *event)
+_ctk_clipboard_handle_event (CdkEventOwnerChange *event)
 {
 }
 
@@ -1229,7 +1229,7 @@ ctk_clipboard_store (CtkClipboard *clipboard)
   /* We simply store all targets into the OS X clipboard. We should be
    * using the functions cdk_display_supports_clipboard_persistence() and
    * cdk_display_store_clipboard(), but since for OS X the clipboard support
-   * was implemented in CTK+ and not through GdkSelections, we do it this
+   * was implemented in CTK+ and not through CdkSelections, we do it this
    * way. Doing this properly could be worthwhile to implement in the future.
    */
 
@@ -1278,7 +1278,7 @@ _ctk_clipboard_store_all (void)
   list = displays;
   while (list)
     {
-      GdkDisplay *display = list->data;
+      CdkDisplay *display = list->data;
 
       clipboard = clipboard_peek (display, GDK_SELECTION_CLIPBOARD, TRUE);
 
@@ -1297,7 +1297,7 @@ _ctk_clipboard_store_all (void)
  *
  * Since: 3.22
  */
-GdkAtom
+CdkAtom
 ctk_clipboard_get_selection (CtkClipboard *clipboard)
 {
   g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), GDK_NONE);

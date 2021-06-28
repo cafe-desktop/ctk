@@ -22,26 +22,26 @@
 
 G_BEGIN_DECLS
 
-typedef struct _GdkDeviceToolClass GdkDeviceToolClass;
+typedef struct _CdkDeviceToolClass CdkDeviceToolClass;
 
-struct _GdkDeviceTool
+struct _CdkDeviceTool
 {
   GObject parent_instance;
   guint64 serial;
   guint64 hw_id;
-  GdkDeviceToolType type;
-  GdkAxisFlags tool_axes;
+  CdkDeviceToolType type;
+  CdkAxisFlags tool_axes;
 };
 
-struct _GdkDeviceToolClass
+struct _CdkDeviceToolClass
 {
   GObjectClass parent_class;
 };
 
-GdkDeviceTool *cdk_device_tool_new    (guint64            serial,
+CdkDeviceTool *cdk_device_tool_new    (guint64            serial,
                                        guint64            hw_id,
-                                       GdkDeviceToolType  type,
-                                       GdkAxisFlags       tool_axes);
+                                       CdkDeviceToolType  type,
+                                       CdkAxisFlags       tool_axes);
 
 G_END_DECLS
 

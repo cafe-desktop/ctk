@@ -51,7 +51,7 @@ typedef struct _EventData EventData;
 struct _EventData
 {
   guint32 evtime;
-  GdkPoint point;
+  CdkPoint point;
 };
 
 struct _CtkGestureSwipePrivate
@@ -81,7 +81,7 @@ ctk_gesture_swipe_finalize (GObject *object)
 
 static gboolean
 ctk_gesture_swipe_filter_event (CtkEventController *controller,
-                                const GdkEvent     *event)
+                                const CdkEvent     *event)
 {
   /* Let touchpad swipe events go through, only if they match n-points  */
   if (event->type == GDK_TOUCHPAD_SWIPE)
@@ -127,7 +127,7 @@ _ctk_gesture_swipe_clear_backlog (CtkGestureSwipe *gesture,
 
 static void
 ctk_gesture_swipe_append_event (CtkGestureSwipe  *swipe,
-                                GdkEventSequence *sequence)
+                                CdkEventSequence *sequence)
 {
   CtkGestureSwipePrivate *priv;
   EventData new;
@@ -146,7 +146,7 @@ ctk_gesture_swipe_append_event (CtkGestureSwipe  *swipe,
 
 static void
 ctk_gesture_swipe_update (CtkGesture       *gesture,
-                          GdkEventSequence *sequence)
+                          CdkEventSequence *sequence)
 {
   CtkGestureSwipe *swipe = CTK_GESTURE_SWIPE (gesture);
 
@@ -159,7 +159,7 @@ _ctk_gesture_swipe_calculate_velocity (CtkGestureSwipe *gesture,
                                        gdouble         *velocity_y)
 {
   CtkGestureSwipePrivate *priv;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   guint32 evtime, diff_time;
   EventData *start, *end;
   gdouble diff_x, diff_y;
@@ -191,12 +191,12 @@ _ctk_gesture_swipe_calculate_velocity (CtkGestureSwipe *gesture,
 
 static void
 ctk_gesture_swipe_end (CtkGesture       *gesture,
-                       GdkEventSequence *sequence)
+                       CdkEventSequence *sequence)
 {
   CtkGestureSwipe *swipe = CTK_GESTURE_SWIPE (gesture);
   CtkGestureSwipePrivate *priv;
   gdouble velocity_x, velocity_y;
-  GdkEventSequence *seq;
+  CdkEventSequence *seq;
 
   seq = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
 

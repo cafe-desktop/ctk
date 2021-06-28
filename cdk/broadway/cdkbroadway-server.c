@@ -32,7 +32,7 @@
 
 typedef struct BroadwayInput BroadwayInput;
 
-struct _GdkBroadwayServer {
+struct _CdkBroadwayServer {
   GObject parent_instance;
 
   guint32 next_serial;
@@ -46,7 +46,7 @@ struct _GdkBroadwayServer {
   
 };
 
-struct _GdkBroadwayServerClass
+struct _CdkBroadwayServerClass
 {
   GObjectClass parent_class;
 };
@@ -55,10 +55,10 @@ static gboolean input_available_cb (gpointer stream, gpointer user_data);
 
 static GType cdk_broadway_server_get_type (void);
 
-G_DEFINE_TYPE (GdkBroadwayServer, cdk_broadway_server, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CdkBroadwayServer, cdk_broadway_server, G_TYPE_OBJECT)
 
 static void
-cdk_broadway_server_init (GdkBroadwayServer *server)
+cdk_broadway_server_init (CdkBroadwayServer *server)
 {
   server->next_serial = 1;
 }
@@ -70,7 +70,7 @@ cdk_broadway_server_finalize (GObject *object)
 }
 
 static void
-cdk_broadway_server_class_init (GdkBroadwayServerClass * class)
+cdk_broadway_server_class_init (CdkBroadwayServerClass * class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
@@ -78,7 +78,7 @@ cdk_broadway_server_class_init (GdkBroadwayServerClass * class)
 }
 
 gboolean
-_cdk_broadway_server_lookahead_event (GdkBroadwayServer  *server,
+_cdk_broadway_server_lookahead_event (CdkBroadwayServer  *server,
 				      const char         *types)
 {
 
@@ -86,15 +86,15 @@ _cdk_broadway_server_lookahead_event (GdkBroadwayServer  *server,
 }
 
 gulong
-_cdk_broadway_server_get_next_serial (GdkBroadwayServer *server)
+_cdk_broadway_server_get_next_serial (CdkBroadwayServer *server)
 {
   return (gulong)server->next_serial;
 }
 
-GdkBroadwayServer *
+CdkBroadwayServer *
 _cdk_broadway_server_new (const char *display, GError **error)
 {
-  GdkBroadwayServer *server;
+  CdkBroadwayServer *server;
   GSocketClient *client;
   GSocketConnection *connection;
   GInetAddress *inet;
@@ -171,13 +171,13 @@ _cdk_broadway_server_new (const char *display, GError **error)
 }
 
 guint32
-_cdk_broadway_server_get_last_seen_time (GdkBroadwayServer *server)
+_cdk_broadway_server_get_last_seen_time (CdkBroadwayServer *server)
 {
   return 0;
 }
 
 static guint32
-cdk_broadway_server_send_message_with_size (GdkBroadwayServer *server, BroadwayRequestBase *base,
+cdk_broadway_server_send_message_with_size (CdkBroadwayServer *server, BroadwayRequestBase *base,
 					    gsize size, guint32 type)
 {
   GOutputStream *out;
@@ -204,7 +204,7 @@ cdk_broadway_server_send_message_with_size (GdkBroadwayServer *server, BroadwayR
   cdk_broadway_server_send_message_with_size(_server, (BroadwayRequestBase *)&_msg, sizeof (_msg), _type)
 
 static void
-parse_all_input (GdkBroadwayServer *server)
+parse_all_input (CdkBroadwayServer *server)
 {
   guint8 *p, *end;
   guint32 size;
@@ -231,7 +231,7 @@ parse_all_input (GdkBroadwayServer *server)
 }
 
 static void
-read_some_input_blocking (GdkBroadwayServer *server)
+read_some_input_blocking (CdkBroadwayServer *server)
 {
   GInputStream *in;
   gssize res;
@@ -253,7 +253,7 @@ read_some_input_blocking (GdkBroadwayServer *server)
 }
 
 static void
-read_some_input_nonblocking (GdkBroadwayServer *server)
+read_some_input_nonblocking (CdkBroadwayServer *server)
 {
   GInputStream *in;
   GPollableInputStream *pollable;
@@ -284,7 +284,7 @@ read_some_input_nonblocking (GdkBroadwayServer *server)
 }
 
 static BroadwayReply *
-find_response_by_serial (GdkBroadwayServer *server, guint32 serial)
+find_response_by_serial (CdkBroadwayServer *server, guint32 serial)
 {
   GList *l;
 
@@ -300,7 +300,7 @@ find_response_by_serial (GdkBroadwayServer *server, guint32 serial)
 }
 
 static void
-process_input_messages (GdkBroadwayServer *server)
+process_input_messages (CdkBroadwayServer *server)
 {
   BroadwayReply *reply;
 
@@ -326,7 +326,7 @@ process_input_messages (GdkBroadwayServer *server)
 }
 
 static gboolean
-process_input_idle_cb (GdkBroadwayServer *server)
+process_input_idle_cb (CdkBroadwayServer *server)
 {
   server->process_input_idle = 0;
   process_input_messages (server);
@@ -334,7 +334,7 @@ process_input_idle_cb (GdkBroadwayServer *server)
 }
 
 static void
-queue_process_input_at_idle (GdkBroadwayServer *server)
+queue_process_input_at_idle (CdkBroadwayServer *server)
 {
   if (server->process_input_idle == 0)
     server->process_input_idle =
@@ -344,7 +344,7 @@ queue_process_input_at_idle (GdkBroadwayServer *server)
 static gboolean
 input_available_cb (gpointer stream, gpointer user_data)
 {
-  GdkBroadwayServer *server = user_data;
+  CdkBroadwayServer *server = user_data;
 
   read_some_input_nonblocking (server);
   parse_all_input (server);
@@ -355,7 +355,7 @@ input_available_cb (gpointer stream, gpointer user_data)
 }
 
 static BroadwayReply *
-cdk_broadway_server_wait_for_reply (GdkBroadwayServer *server,
+cdk_broadway_server_wait_for_reply (CdkBroadwayServer *server,
 				    guint32 serial)
 {
   BroadwayReply *reply;
@@ -378,7 +378,7 @@ cdk_broadway_server_wait_for_reply (GdkBroadwayServer *server,
 }
 
 void
-_cdk_broadway_server_flush (GdkBroadwayServer *server)
+_cdk_broadway_server_flush (CdkBroadwayServer *server)
 {
   BroadwayRequestFlush msg;
 
@@ -386,7 +386,7 @@ _cdk_broadway_server_flush (GdkBroadwayServer *server)
 }
 
 void
-_cdk_broadway_server_sync (GdkBroadwayServer *server)
+_cdk_broadway_server_sync (CdkBroadwayServer *server)
 {
   BroadwayRequestSync msg;
   guint32 serial;
@@ -404,7 +404,7 @@ _cdk_broadway_server_sync (GdkBroadwayServer *server)
 }
 
 void
-_cdk_broadway_server_query_mouse (GdkBroadwayServer *server,
+_cdk_broadway_server_query_mouse (CdkBroadwayServer *server,
 				  guint32            *toplevel,
 				  gint32             *root_x,
 				  gint32             *root_y,
@@ -433,7 +433,7 @@ _cdk_broadway_server_query_mouse (GdkBroadwayServer *server,
 }
 
 guint32
-_cdk_broadway_server_new_window (GdkBroadwayServer *server,
+_cdk_broadway_server_new_window (CdkBroadwayServer *server,
 				 int x,
 				 int y,
 				 int width,
@@ -464,7 +464,7 @@ _cdk_broadway_server_new_window (GdkBroadwayServer *server,
 }
 
 void
-_cdk_broadway_server_destroy_window (GdkBroadwayServer *server,
+_cdk_broadway_server_destroy_window (CdkBroadwayServer *server,
 				     gint id)
 {
   BroadwayRequestDestroyWindow msg;
@@ -475,7 +475,7 @@ _cdk_broadway_server_destroy_window (GdkBroadwayServer *server,
 }
 
 gboolean
-_cdk_broadway_server_window_show (GdkBroadwayServer *server,
+_cdk_broadway_server_window_show (CdkBroadwayServer *server,
 				  gint id)
 {
   BroadwayRequestShowWindow msg;
@@ -488,7 +488,7 @@ _cdk_broadway_server_window_show (GdkBroadwayServer *server,
 }
 
 gboolean
-_cdk_broadway_server_window_hide (GdkBroadwayServer *server,
+_cdk_broadway_server_window_hide (CdkBroadwayServer *server,
 				  gint id)
 {
   BroadwayRequestHideWindow msg;
@@ -501,7 +501,7 @@ _cdk_broadway_server_window_hide (GdkBroadwayServer *server,
 }
 
 void
-_cdk_broadway_server_window_focus (GdkBroadwayServer *server,
+_cdk_broadway_server_window_focus (CdkBroadwayServer *server,
 				   gint id)
 {
   BroadwayRequestFocusWindow msg;
@@ -512,7 +512,7 @@ _cdk_broadway_server_window_focus (GdkBroadwayServer *server,
 }
 
 void
-_cdk_broadway_server_window_set_transient_for (GdkBroadwayServer *server,
+_cdk_broadway_server_window_set_transient_for (CdkBroadwayServer *server,
 					       gint id, gint parent)
 {
   BroadwayRequestSetTransientFor msg;
@@ -729,7 +729,7 @@ _cdk_broadway_server_create_surface (int                 width,
 }
 
 void
-_cdk_broadway_server_window_update (GdkBroadwayServer *server,
+_cdk_broadway_server_window_update (CdkBroadwayServer *server,
 				    gint id,
 				    cairo_surface_t *surface)
 {
@@ -752,7 +752,7 @@ _cdk_broadway_server_window_update (GdkBroadwayServer *server,
 }
 
 gboolean
-_cdk_broadway_server_window_move_resize (GdkBroadwayServer *server,
+_cdk_broadway_server_window_move_resize (CdkBroadwayServer *server,
 					 gint id,
 					 gboolean with_move,
 					 int x,
@@ -775,8 +775,8 @@ _cdk_broadway_server_window_move_resize (GdkBroadwayServer *server,
   return TRUE;
 }
 
-GdkGrabStatus
-_cdk_broadway_server_grab_pointer (GdkBroadwayServer *server,
+CdkGrabStatus
+_cdk_broadway_server_grab_pointer (CdkBroadwayServer *server,
 				   gint id,
 				   gboolean owner_events,
 				   guint32 event_mask,
@@ -805,7 +805,7 @@ _cdk_broadway_server_grab_pointer (GdkBroadwayServer *server,
 }
 
 guint32
-_cdk_broadway_server_ungrab_pointer (GdkBroadwayServer *server,
+_cdk_broadway_server_ungrab_pointer (CdkBroadwayServer *server,
 				     guint32    time_)
 {
   BroadwayRequestUngrabPointer msg;
@@ -828,7 +828,7 @@ _cdk_broadway_server_ungrab_pointer (GdkBroadwayServer *server,
 }
 
 void
-_cdk_broadway_server_set_show_keyboard (GdkBroadwayServer *server,
+_cdk_broadway_server_set_show_keyboard (CdkBroadwayServer *server,
                                         gboolean show)
 {
   BroadwayRequestSetShowKeyboard msg;

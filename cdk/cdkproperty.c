@@ -159,7 +159,7 @@ ensure_atom_tables (void)
     }
 }
 
-static GdkAtom
+static CdkAtom
 intern_atom_internal (const gchar *atom_name,
                       gboolean     allocate)
 {
@@ -191,7 +191,7 @@ intern_atom_internal (const gchar *atom_name,
  *
  * Returns: (transfer none): the atom corresponding to @atom_name.
  */
-GdkAtom
+CdkAtom
 cdk_atom_intern (const gchar *atom_name,
                  gboolean     only_if_exists)
 {
@@ -207,7 +207,7 @@ cdk_atom_intern (const gchar *atom_name,
  * Finds or creates an atom corresponding to a given string.
  *
  * Note that this function is identical to cdk_atom_intern() except
- * that if a new #GdkAtom is created the string itself is used rather
+ * that if a new #CdkAtom is created the string itself is used rather
  * than a copy. This saves memory, but can only be used if the string
  * will always exist. It can be used with statically
  * allocated strings in the main program, but not with statically
@@ -219,7 +219,7 @@ cdk_atom_intern (const gchar *atom_name,
  *
  * Since: 2.10
  */
-GdkAtom
+CdkAtom
 cdk_atom_intern_static_string (const gchar *atom_name)
 {
   g_return_val_if_fail (atom_name != NULL, GDK_NONE);
@@ -229,7 +229,7 @@ cdk_atom_intern_static_string (const gchar *atom_name)
 
 /**
  * cdk_atom_name:
- * @atom: a #GdkAtom.
+ * @atom: a #CdkAtom.
  *
  * Determines the string corresponding to an atom.
  *
@@ -238,13 +238,13 @@ cdk_atom_intern_static_string (const gchar *atom_name)
  *   return value, you should free it using g_free().
  */
 gchar *
-cdk_atom_name (GdkAtom atom)
+cdk_atom_name (CdkAtom atom)
 {
   return g_strdup (_cdk_atom_name_const (atom));
 }
 
 const gchar *
-_cdk_atom_name_const (GdkAtom atom)
+_cdk_atom_name_const (CdkAtom atom)
 {
   ensure_atom_tables ();
 

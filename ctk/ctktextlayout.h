@@ -249,15 +249,15 @@ struct _CtkTextLineDisplay
 
   CtkTextLine *line;
   
-  GdkColor *pg_bg_color;
+  CdkColor *pg_bg_color;
 
-  GdkRectangle block_cursor;
+  CdkRectangle block_cursor;
   guint cursors_invalid : 1;
   guint has_block_cursor : 1;
   guint cursor_at_line_end : 1;
   guint size_only : 1;
 
-  GdkRGBA *pg_bg_rgba;
+  CdkRGBA *pg_bg_rgba;
 };
 
 #ifdef CTK_COMPILATION
@@ -403,7 +403,7 @@ void     ctk_text_layout_cursors_changed      (CtkTextLayout     *layout,
 GDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_get_iter_location    (CtkTextLayout     *layout,
                                                const CtkTextIter *iter,
-                                               GdkRectangle      *rect);
+                                               CdkRectangle      *rect);
 GDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_get_line_yrange      (CtkTextLayout     *layout,
                                                const CtkTextIter *iter,
@@ -412,10 +412,10 @@ void     ctk_text_layout_get_line_yrange      (CtkTextLayout     *layout,
 GDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_get_cursor_locations (CtkTextLayout     *layout,
                                                CtkTextIter       *iter,
-                                               GdkRectangle      *strong_pos,
-                                               GdkRectangle      *weak_pos);
+                                               CdkRectangle      *strong_pos,
+                                               CdkRectangle      *weak_pos);
 gboolean _ctk_text_layout_get_block_cursor    (CtkTextLayout     *layout,
-					       GdkRectangle      *pos);
+					       CdkRectangle      *pos);
 GDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_clamp_iter_to_vrange (CtkTextLayout     *layout,
                                                CtkTextIter       *iter,

@@ -6,7 +6,7 @@ static CtkTargetEntry entries[] = {
 
 static void
 drag_begin (CtkWidget      *widget,
-            GdkDragContext *context,
+            CdkDragContext *context,
             gpointer        data)
 {
   CtkWidget *row;
@@ -39,7 +39,7 @@ drag_begin (CtkWidget      *widget,
 
 static void
 drag_end (CtkWidget      *widget,
-          GdkDragContext *context,
+          CdkDragContext *context,
           gpointer        data)
 {
   CtkWidget *row;
@@ -52,7 +52,7 @@ drag_end (CtkWidget      *widget,
 
 void
 drag_data_get (CtkWidget        *widget,
-               GdkDragContext   *context,
+               CdkDragContext   *context,
                CtkSelectionData *selection_data,
                guint             info,
                guint             time,
@@ -101,7 +101,7 @@ get_row_after (CtkListBox    *list,
 
 static void
 drag_data_received (CtkWidget        *widget,
-                    GdkDragContext   *context,
+                    CdkDragContext   *context,
                     gint              x,
                     gint              y,
                     CtkSelectionData *selection_data,
@@ -146,7 +146,7 @@ drag_data_received (CtkWidget        *widget,
 
 static gboolean
 drag_motion (CtkWidget      *widget,
-             GdkDragContext *context,
+             CdkDragContext *context,
              int             x,
              int             y,
              guint           time)
@@ -213,7 +213,7 @@ drag_motion (CtkWidget      *widget,
 
 static void
 drag_leave (CtkWidget      *widget,
-            GdkDragContext *context,
+            CdkDragContext *context,
             guint           time)
 {
   CtkWidget *drag_row;

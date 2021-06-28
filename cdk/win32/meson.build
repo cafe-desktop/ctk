@@ -36,7 +36,7 @@ cdk_win32_public_headers = files(
   'cdkwin32window.h',
 )
 
-GDK_WIN32_CFLAGS = ['-DGDK_COMPILATION', '-DG_LOG_DOMAIN="Gdk"', '-DINSIDE_GDK_WIN32']
+GDK_WIN32_CFLAGS = ['-DGDK_COMPILATION', '-DG_LOG_DOMAIN="Cdk"', '-DINSIDE_GDK_WIN32']
 
 if win32_has_egl
   GDK_WIN32_CFLAGS += '-DGDK_WIN32_ENABLE_EGL'

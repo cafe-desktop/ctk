@@ -230,8 +230,8 @@ void            ctk_spin_button_update             (CtkSpinButton  *spin_button)
 
 /* private */
 void            _ctk_spin_button_get_panels        (CtkSpinButton  *spin_button,
-                                                    GdkWindow     **down_panel,
-                                                    GdkWindow     **up_panel);
+                                                    CdkWindow     **down_panel,
+                                                    CdkWindow     **up_panel);
 
 G_END_DECLS
 

@@ -1901,16 +1901,16 @@ msgid "Cell background color"
 msgstr "Ранги пасзаминаи катак"
 
 #: ../ctk/ctkcellrenderer.c:402
-msgid "Cell background color as a GdkColor"
-msgstr "Ранги пасзаминаи катак ҳамчун GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Ранги пасзаминаи катак ҳамчун CdkColor"
 
 #: ../ctk/ctkcellrenderer.c:415
 msgid "Cell background RGBA color"
 msgstr "Ранги RGBA пасзаминаи катак"
 
 #: ../ctk/ctkcellrenderer.c:416
-msgid "Cell background color as a GdkRGBA"
-msgstr "Ранги пасзаминаи катак ҳамчун GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Ранги пасзаминаи катак ҳамчун CdkRGBA"
 
 #: ../ctk/ctkcellrenderer.c:423
 msgid "Editing"
@@ -2165,8 +2165,8 @@ msgstr "Ранги пасзамина"
 
 #: ../ctk/ctkcellrenderertext.c:302 ../ctk/ctkcellview.c:206
 #: ../ctk/ctktexttag.c:220
-msgid "Background color as a GdkColor"
-msgstr "Ранги пасзамина ҳамчун GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Ранги пасзамина ҳамчун CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:316
 msgid "Background color as RGBA"
@@ -2174,8 +2174,8 @@ msgstr "Ранги пасзамина ҳамчун RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:317 ../ctk/ctkcellview.c:220
 #: ../ctk/ctktexttag.c:235
-msgid "Background color as a GdkRGBA"
-msgstr "Ранги пасзамина ҳамчун GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Ранги пасзамина ҳамчун CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:323 ../ctk/ctktexttag.c:250
 msgid "Foreground color name"
@@ -2191,16 +2191,16 @@ msgid "Foreground color"
 msgstr "Ранги пешзамина"
 
 #: ../ctk/ctkcellrenderertext.c:339 ../ctk/ctktexttag.c:266
-msgid "Foreground color as a GdkColor"
-msgstr "Ранги пешзамина ҳамчун GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Ранги пешзамина ҳамчун CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:353
 msgid "Foreground color as RGBA"
 msgstr "Ранги пешзамина ҳамчун RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:354 ../ctk/ctktexttag.c:281
-msgid "Foreground color as a GdkRGBA"
-msgstr "Ранги пешзамина ҳамчун GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Ранги пешзамина ҳамчун CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:362 ../ctk/ctkentry.c:778
 #: ../ctk/ctktexttag.c:297 ../ctk/ctktextview.c:737
@@ -2674,8 +2674,8 @@ msgid "Color"
 msgstr "Ранг"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Ранги ҷорӣ, мисли GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Ранги ҷорӣ, мисли CdkRGBA"
 
 #: ../ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4027,8 +4027,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:231 ../ctk/ctkstatusicon.c:223
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf барои намоиш"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf барои намоиш"
 
 #: ../ctk/ctkimage.c:238
 msgid "Surface"
@@ -4083,8 +4083,8 @@ msgid "Animation"
 msgstr "Аниматсия"
 
 #: ../ctk/ctkimage.c:310
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation барои намоиш"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation барои намоиш"
 
 #: ../ctk/ctkimage.c:357
 msgid "Resource"
@@ -6988,16 +6988,16 @@ msgid "The title of this tray icon"
 msgstr "Унвони ин нишонаи синӣ"
 
 #: ../ctk/ctkstylecontext.c:355
-msgid "The associated GdkScreen"
-msgstr "GdkScreen-и муттаҳид"
+msgid "The associated CdkScreen"
+msgstr "CdkScreen-и муттаҳид"
 
 #: ../ctk/ctkstylecontext.c:361
 msgid "FrameClock"
 msgstr "Чорчӯбаи соат"
 
 #: ../ctk/ctkstylecontext.c:362
-msgid "The associated GdkFrameClock"
-msgstr "GdkFrameClock-и муттаҳид"
+msgid "The associated CdkFrameClock"
+msgstr "CdkFrameClock-и муттаҳид"
 
 #: ../ctk/ctkstylecontext.c:369 ../ctk/ctktexttag.c:288
 msgid "Text direction"
@@ -7266,16 +7266,16 @@ msgid "Paragraph background color"
 msgstr "Ранги пасзаминаи банд"
 
 #: ../ctk/ctktexttag.c:583
-msgid "Paragraph background color as a GdkColor"
-msgstr "Ранги пасзаминаи банд ҳамчун GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Ранги пасзаминаи банд ҳамчун CdkColor"
 
 #: ../ctk/ctktexttag.c:597
 msgid "Paragraph background RGBA"
 msgstr "Пасзаминаи банди RGBA"
 
 #: ../ctk/ctktexttag.c:598
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Пасзаминаи банди RGBA ҳамчун GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Пасзаминаи банди RGBA ҳамчун CdkRGBA"
 
 #: ../ctk/ctktexttag.c:616
 msgid "Margin Accumulates"
@@ -8207,9 +8207,9 @@ msgid "Events"
 msgstr "Рӯйдодҳо"
 
 #: ../ctk/ctkwidget.c:1240
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Ниқоби ҳодиса, ки оиди дарёфти кадом намуди GdkEvents тавассути ин виҷет "
+"Ниқоби ҳодиса, ки оиди дарёфти кадом намуди CdkEvents тавассути ин виҷет "
 "тасмим мегирад"
 
 #: ../ctk/ctkwidget.c:1247

@@ -92,7 +92,7 @@ struct _CtkBindingEntry
 {
   /* key portion */
   guint             keyval;
-  GdkModifierType   modifiers;
+  CdkModifierType   modifiers;
 
   CtkBindingSet    *binding_set;
   guint             destroyed     : 1;
@@ -150,31 +150,31 @@ CtkBindingSet *ctk_binding_set_find          (const gchar         *set_name);
 GDK_AVAILABLE_IN_ALL
 gboolean       ctk_bindings_activate         (GObject             *object,
                                               guint                keyval,
-                                              GdkModifierType      modifiers);
+                                              CdkModifierType      modifiers);
 GDK_AVAILABLE_IN_ALL
 gboolean       ctk_bindings_activate_event   (GObject             *object,
-                                              GdkEventKey         *event);
+                                              CdkEventKey         *event);
 GDK_AVAILABLE_IN_ALL
 gboolean       ctk_binding_set_activate      (CtkBindingSet       *binding_set,
                                               guint                keyval,
-                                              GdkModifierType      modifiers,
+                                              CdkModifierType      modifiers,
                                               GObject             *object);
 
 GDK_AVAILABLE_IN_ALL
 void           ctk_binding_entry_skip        (CtkBindingSet       *binding_set,
                                               guint                keyval,
-                                              GdkModifierType      modifiers);
+                                              CdkModifierType      modifiers);
 GDK_AVAILABLE_IN_ALL
 void           ctk_binding_entry_add_signal  (CtkBindingSet       *binding_set,
                                               guint                keyval,
-                                              GdkModifierType      modifiers,
+                                              CdkModifierType      modifiers,
                                               const gchar         *signal_name,
                                               guint                n_args,
                                               ...);
 GDK_AVAILABLE_IN_ALL
 void           ctk_binding_entry_add_signall (CtkBindingSet       *binding_set,
                                               guint                keyval,
-                                              GdkModifierType      modifiers,
+                                              CdkModifierType      modifiers,
                                               const gchar         *signal_name,
                                               GSList              *binding_args);
 
@@ -186,7 +186,7 @@ GTokenType     ctk_binding_entry_add_signal_from_string
 GDK_AVAILABLE_IN_ALL
 void           ctk_binding_entry_remove      (CtkBindingSet       *binding_set,
                                               guint                keyval,
-                                              GdkModifierType      modifiers);
+                                              CdkModifierType      modifiers);
 
 G_END_DECLS
 

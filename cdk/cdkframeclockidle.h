@@ -32,35 +32,35 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_FRAME_CLOCK_IDLE            (cdk_frame_clock_idle_get_type ())
-#define GDK_FRAME_CLOCK_IDLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_FRAME_CLOCK_IDLE, GdkFrameClockIdle))
-#define GDK_FRAME_CLOCK_IDLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_FRAME_CLOCK_IDLE, GdkFrameClockIdleClass))
+#define GDK_FRAME_CLOCK_IDLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_FRAME_CLOCK_IDLE, CdkFrameClockIdle))
+#define GDK_FRAME_CLOCK_IDLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_FRAME_CLOCK_IDLE, CdkFrameClockIdleClass))
 #define GDK_IS_FRAME_CLOCK_IDLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_FRAME_CLOCK_IDLE))
 #define GDK_IS_FRAME_CLOCK_IDLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_FRAME_CLOCK_IDLE))
-#define GDK_FRAME_CLOCK_IDLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_FRAME_CLOCK_IDLE, GdkFrameClockIdleClass))
+#define GDK_FRAME_CLOCK_IDLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_FRAME_CLOCK_IDLE, CdkFrameClockIdleClass))
 
 
-typedef struct _GdkFrameClockIdle              GdkFrameClockIdle;
-typedef struct _GdkFrameClockIdlePrivate       GdkFrameClockIdlePrivate;
-typedef struct _GdkFrameClockIdleClass         GdkFrameClockIdleClass;
+typedef struct _CdkFrameClockIdle              CdkFrameClockIdle;
+typedef struct _CdkFrameClockIdlePrivate       CdkFrameClockIdlePrivate;
+typedef struct _CdkFrameClockIdleClass         CdkFrameClockIdleClass;
 
-struct _GdkFrameClockIdle
+struct _CdkFrameClockIdle
 {
-  GdkFrameClock parent_instance;
+  CdkFrameClock parent_instance;
 
   /*< private >*/
-  GdkFrameClockIdlePrivate *priv;
+  CdkFrameClockIdlePrivate *priv;
 };
 
-struct _GdkFrameClockIdleClass
+struct _CdkFrameClockIdleClass
 {
-  GdkFrameClockClass parent_class;
+  CdkFrameClockClass parent_class;
 };
 
 GType           cdk_frame_clock_idle_get_type       (void) G_GNUC_CONST;
 
-GdkFrameClock *_cdk_frame_clock_idle_new            (void);
-void           _cdk_frame_clock_idle_freeze_updates (GdkFrameClockIdle *clock_idle);
-void           _cdk_frame_clock_idle_thaw_updates   (GdkFrameClockIdle *clock_idle);
+CdkFrameClock *_cdk_frame_clock_idle_new            (void);
+void           _cdk_frame_clock_idle_freeze_updates (CdkFrameClockIdle *clock_idle);
+void           _cdk_frame_clock_idle_thaw_updates   (CdkFrameClockIdle *clock_idle);
 
 G_END_DECLS
 

@@ -24,7 +24,7 @@
 
 struct _CtkCssValue {
   CTK_CSS_VALUE_BASE
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 };
 
 static void
@@ -64,7 +64,7 @@ ctk_css_value_rgba_transition (CtkCssValue *start,
                                guint        property_id,
                                double       progress)
 {
-  GdkRGBA result;
+  CdkRGBA result;
 
   progress = CLAMP (progress, 0, 1);
   result.alpha = transition (start->rgba.alpha, end->rgba.alpha, progress);
@@ -106,7 +106,7 @@ static const CtkCssValueClass CTK_CSS_VALUE_RGBA = {
 };
 
 CtkCssValue *
-_ctk_css_rgba_value_new_from_rgba (const GdkRGBA *rgba)
+_ctk_css_rgba_value_new_from_rgba (const CdkRGBA *rgba)
 {
   CtkCssValue *value;
 
@@ -118,7 +118,7 @@ _ctk_css_rgba_value_new_from_rgba (const GdkRGBA *rgba)
   return value;
 }
 
-const GdkRGBA *
+const CdkRGBA *
 _ctk_css_rgba_value_get_rgba (const CtkCssValue *rgba)
 {
   g_return_val_if_fail (rgba->class == &CTK_CSS_VALUE_RGBA, NULL);

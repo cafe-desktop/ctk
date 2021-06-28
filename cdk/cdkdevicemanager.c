@@ -25,8 +25,8 @@
 /**
  * SECTION:cdkdevicemanager
  * @Short_description: Functions for handling input devices
- * @Title: GdkDeviceManager
- * @See_also: #GdkDevice, #GdkEvent
+ * @Title: CdkDeviceManager
+ * @See_also: #CdkDevice, #CdkEvent
  *
  * In addition to a single pointer and keyboard for user interface input,
  * GDK contains support for a variety of input devices, including graphics
@@ -38,7 +38,7 @@
  * In order to query the device hierarchy and be aware of changes in the
  * device hierarchy (such as virtual devices being created or removed, or
  * physical devices being plugged or unplugged), GDK provides
- * #GdkDeviceManager.
+ * #CdkDeviceManager.
  *
  * By default, and if the platform supports it, GDK is aware of multiple
  * keyboard/pointer pairs and multitouch devices. This behavior can be
@@ -48,13 +48,13 @@
  * event pair for all devices on a window. To enable per-device
  * enter/leave events and other multi-pointer interaction features,
  * cdk_window_set_support_multidevice() must be called on
- * #GdkWindows (or ctk_widget_set_support_multidevice() on widgets).
+ * #CdkWindows (or ctk_widget_set_support_multidevice() on widgets).
  * window. See the cdk_window_set_support_multidevice() documentation
  * for more information.
  *
  * On X11, multi-device support is implemented through XInput 2.
  * Unless cdk_disable_multidevice() is called, the XInput 2
- * #GdkDeviceManager implementation will be used as the input source.
+ * #CdkDeviceManager implementation will be used as the input source.
  * Otherwise either the core or XInput 1 implementations will be used.
  *
  * For simple applications that don’t have any special interest in
@@ -99,7 +99,7 @@
  * ]|
  *
  * By default, GDK will automatically listen for events coming from all
- * master devices, setting the #GdkDevice for all events coming from input
+ * master devices, setting the #CdkDevice for all events coming from input
  * devices. Events containing device information are #GDK_MOTION_NOTIFY,
  * #GDK_BUTTON_PRESS, #GDK_2BUTTON_PRESS, #GDK_3BUTTON_PRESS,
  * #GDK_BUTTON_RELEASE, #GDK_SCROLL, #GDK_KEY_PRESS, #GDK_KEY_RELEASE,
@@ -132,15 +132,15 @@
  * queried through cdk_device_get_axis(). In multidevice mode, virtual
  * devices will change axes in order to always represent the physical
  * device that is routing events through it. Whenever the physical device
- * changes, the #GdkDevice:n-axes property will be notified, and
+ * changes, the #CdkDevice:n-axes property will be notified, and
  * cdk_device_list_axes() will return the new device axes.
  *
  * Devices may also have associated “keys” or
  * macro buttons. Such keys can be globally set to map into normal X
  * keyboard events. The mapping is set using cdk_device_set_key().
  *
- * In CTK+ 3.20, a new #GdkSeat object has been introduced that
- * supersedes #GdkDeviceManager and should be preferred in newly
+ * In CTK+ 3.20, a new #CdkSeat object has been introduced that
+ * supersedes #CdkDeviceManager and should be preferred in newly
  * written code.
  */
 
@@ -154,7 +154,7 @@ static void cdk_device_manager_get_property (GObject      *object,
                                              GParamSpec   *pspec);
 
 
-G_DEFINE_ABSTRACT_TYPE (GdkDeviceManager, cdk_device_manager, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (CdkDeviceManager, cdk_device_manager, G_TYPE_OBJECT)
 
 enum {
   PROP_0,
@@ -172,7 +172,7 @@ static guint signals [LAST_SIGNAL] = { 0 };
 
 
 static void
-cdk_device_manager_class_init (GdkDeviceManagerClass *klass)
+cdk_device_manager_class_init (CdkDeviceManagerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -189,9 +189,9 @@ cdk_device_manager_class_init (GdkDeviceManagerClass *klass)
                                                         G_PARAM_STATIC_STRINGS));
 
   /**
-   * GdkDeviceManager::device-added:
+   * CdkDeviceManager::device-added:
    * @device_manager: the object on which the signal is emitted
-   * @device: the newly added #GdkDevice.
+   * @device: the newly added #CdkDevice.
    *
    * The ::device-added signal is emitted either when a new master
    * pointer is created, or when a slave (Hardware) input device
@@ -201,16 +201,16 @@ cdk_device_manager_class_init (GdkDeviceManagerClass *klass)
     g_signal_new (g_intern_static_string ("device-added"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GdkDeviceManagerClass, device_added),
+                  G_STRUCT_OFFSET (CdkDeviceManagerClass, device_added),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
                   GDK_TYPE_DEVICE);
 
   /**
-   * GdkDeviceManager::device-removed:
+   * CdkDeviceManager::device-removed:
    * @device_manager: the object on which the signal is emitted
-   * @device: the just removed #GdkDevice.
+   * @device: the just removed #CdkDevice.
    *
    * The ::device-removed signal is emitted either when a master
    * pointer is removed, or when a slave (Hardware) input device
@@ -220,16 +220,16 @@ cdk_device_manager_class_init (GdkDeviceManagerClass *klass)
     g_signal_new (g_intern_static_string ("device-removed"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GdkDeviceManagerClass, device_removed),
+                  G_STRUCT_OFFSET (CdkDeviceManagerClass, device_removed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
                   GDK_TYPE_DEVICE);
 
   /**
-   * GdkDeviceManager::device-changed:
+   * CdkDeviceManager::device-changed:
    * @device_manager: the object on which the signal is emitted
-   * @device: the #GdkDevice that changed.
+   * @device: the #CdkDevice that changed.
    *
    * The ::device-changed signal is emitted whenever a device
    * has changed in the hierarchy, either slave devices being
@@ -239,14 +239,14 @@ cdk_device_manager_class_init (GdkDeviceManagerClass *klass)
    *
    * If a slave device is detached from all master devices
    * (cdk_device_get_associated_device() returns %NULL), its
-   * #GdkDeviceType will change to %GDK_DEVICE_TYPE_FLOATING,
+   * #CdkDeviceType will change to %GDK_DEVICE_TYPE_FLOATING,
    * if it's attached, it will change to %GDK_DEVICE_TYPE_SLAVE.
    */
   signals [DEVICE_CHANGED] =
     g_signal_new (g_intern_static_string ("device-changed"),
                   G_TYPE_FROM_CLASS (klass),
                   G_SIGNAL_RUN_LAST,
-                  G_STRUCT_OFFSET (GdkDeviceManagerClass, device_changed),
+                  G_STRUCT_OFFSET (CdkDeviceManagerClass, device_changed),
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
@@ -254,7 +254,7 @@ cdk_device_manager_class_init (GdkDeviceManagerClass *klass)
 }
 
 static void
-cdk_device_manager_init (GdkDeviceManager *device_manager)
+cdk_device_manager_init (CdkDeviceManager *device_manager)
 {
 }
 
@@ -295,18 +295,18 @@ cdk_device_manager_get_property (GObject      *object,
 
 /**
  * cdk_device_manager_get_display:
- * @device_manager: a #GdkDeviceManager
+ * @device_manager: a #CdkDeviceManager
  *
- * Gets the #GdkDisplay associated to @device_manager.
+ * Gets the #CdkDisplay associated to @device_manager.
  *
- * Returns: (nullable) (transfer none): the #GdkDisplay to which
+ * Returns: (nullable) (transfer none): the #CdkDisplay to which
  *          @device_manager is associated to, or %NULL. This memory is
  *          owned by GDK and must not be freed or unreferenced.
  *
  * Since: 3.0
  **/
-GdkDisplay *
-cdk_device_manager_get_display (GdkDeviceManager *device_manager)
+CdkDisplay *
+cdk_device_manager_get_display (CdkDeviceManager *device_manager)
 {
   g_return_val_if_fail (GDK_IS_DEVICE_MANAGER (device_manager), NULL);
 
@@ -315,14 +315,14 @@ cdk_device_manager_get_display (GdkDeviceManager *device_manager)
 
 /**
  * cdk_device_manager_list_devices:
- * @device_manager: a #GdkDeviceManager
+ * @device_manager: a #CdkDeviceManager
  * @type: device type to get.
  *
  * Returns the list of devices of type @type currently attached to
  * @device_manager.
  *
- * Returns: (transfer container) (element-type Gdk.Device): a list of 
- *          #GdkDevices. The returned list must be
+ * Returns: (transfer container) (element-type Cdk.Device): a list of 
+ *          #CdkDevices. The returned list must be
  *          freed with g_list_free (). The list elements are owned by
  *          CTK+ and must not be freed or unreffed.
  *
@@ -332,8 +332,8 @@ cdk_device_manager_get_display (GdkDeviceManager *device_manager)
  *             and cdk_seat_get_slaves() instead.
  **/
 GList *
-cdk_device_manager_list_devices (GdkDeviceManager *device_manager,
-                                 GdkDeviceType     type)
+cdk_device_manager_list_devices (CdkDeviceManager *device_manager,
+                                 CdkDeviceType     type)
 {
   g_return_val_if_fail (GDK_IS_DEVICE_MANAGER (device_manager), NULL);
 
@@ -342,14 +342,14 @@ cdk_device_manager_list_devices (GdkDeviceManager *device_manager,
 
 /**
  * cdk_device_manager_get_client_pointer:
- * @device_manager: a #GdkDeviceManager
+ * @device_manager: a #CdkDeviceManager
  *
  * Returns the client pointer, that is, the master pointer that acts as the core pointer
  * for this application. In X11, window managers may change this depending on the interaction
  * pattern under the presence of several pointers.
  *
- * You should use this function seldomly, only in code that isn’t triggered by a #GdkEvent
- * and there aren’t other means to get a meaningful #GdkDevice to operate on.
+ * You should use this function seldomly, only in code that isn’t triggered by a #CdkEvent
+ * and there aren’t other means to get a meaningful #CdkDevice to operate on.
  *
  * Returns: (transfer none): The client pointer. This memory is
  *          owned by GDK and must not be freed or unreferenced.
@@ -358,8 +358,8 @@ cdk_device_manager_list_devices (GdkDeviceManager *device_manager,
  *
  * Deprecated: 3.20: Use cdk_seat_get_pointer() instead.
  **/
-GdkDevice *
-cdk_device_manager_get_client_pointer (GdkDeviceManager *device_manager)
+CdkDevice *
+cdk_device_manager_get_client_pointer (CdkDeviceManager *device_manager)
 {
   g_return_val_if_fail (GDK_IS_DEVICE_MANAGER (device_manager), NULL);
 

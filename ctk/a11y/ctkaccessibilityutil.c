@@ -112,7 +112,7 @@ _ctk_accessibility_override_atk_util (void)
 }
 
 static void
-atk_key_event_from_cdk_event_key (GdkEventKey       *key,
+atk_key_event_from_cdk_event_key (CdkEventKey       *key,
                                   AtkKeyEventStruct *event)
 {
   if (key->type == GDK_KEY_PRESS)
@@ -137,7 +137,7 @@ atk_key_event_from_cdk_event_key (GdkEventKey       *key,
 
 gboolean
 _ctk_accessibility_key_snooper (CtkWidget   *widget,
-                                GdkEventKey *event)
+                                CdkEventKey *event)
 {
   GSList *l;
   AtkKeyEventStruct atk_event;

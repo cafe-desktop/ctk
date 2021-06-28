@@ -81,7 +81,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorCssNodeTree, ctk_inspector_css_node_tree
 typedef struct {
   CtkCssNode *node;
   const gchar *prop_name;
-  GdkRectangle rect;
+  CdkRectangle rect;
   CtkInspectorCssNodeTree *cnt;
 } NodePropEditor;
 

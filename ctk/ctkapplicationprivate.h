@@ -60,7 +60,7 @@ typedef struct
 {
   GObject parent_instance;
   CtkApplication *application;
-  GdkDisplay *display;
+  CdkDisplay *display;
 } CtkApplicationImpl;
 
 typedef struct
@@ -158,7 +158,7 @@ GType                   ctk_application_impl_wayland_get_type           (void);
 GType                   ctk_application_impl_quartz_get_type            (void);
 
 CtkApplicationImpl *    ctk_application_impl_new                        (CtkApplication              *application,
-                                                                         GdkDisplay                  *display);
+                                                                         CdkDisplay                  *display);
 void                    ctk_application_impl_startup                    (CtkApplicationImpl          *impl,
                                                                          gboolean                     register_sesion);
 void                    ctk_application_impl_shutdown                   (CtkApplicationImpl          *impl);

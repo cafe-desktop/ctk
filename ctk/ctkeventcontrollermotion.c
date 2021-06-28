@@ -61,11 +61,11 @@ G_DEFINE_TYPE (CtkEventControllerMotion, ctk_event_controller_motion, CTK_TYPE_E
 
 static void
 get_coords (CtkWidget      *widget,
-            const GdkEvent *event,
+            const CdkEvent *event,
             double         *x,
             double         *y)
 {
-  GdkWindow *window, *ancestor;
+  CdkWindow *window, *ancestor;
   CtkAllocation alloc;
 
   ctk_widget_get_allocation (widget, &alloc);
@@ -89,11 +89,11 @@ get_coords (CtkWidget      *widget,
 
 static gboolean
 ctk_event_controller_motion_handle_event (CtkEventController *controller,
-                                          const GdkEvent     *event)
+                                          const CdkEvent     *event)
 {
   CtkEventControllerClass *parent_class;
   CtkWidget *widget;
-  GdkEventType type;
+  CdkEventType type;
 
   widget = ctk_event_controller_get_widget (controller);
 

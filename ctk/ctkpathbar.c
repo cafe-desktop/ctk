@@ -74,7 +74,7 @@ struct _CtkPathBarPrivate
   GIcon *home_icon;
   GIcon *desktop_icon;
 
-  GdkWindow *event_window;
+  CdkWindow *event_window;
 
   GList *button_list;
   GList *first_scrolled_button;
@@ -160,21 +160,21 @@ static void ctk_path_bar_forall                   (CtkContainer     *container,
 						   CtkCallback       callback,
 						   gpointer          callback_data);
 static gboolean ctk_path_bar_scroll               (CtkWidget        *widget,
-						   GdkEventScroll   *event);
+						   CdkEventScroll   *event);
 static void ctk_path_bar_scroll_up                (CtkPathBar       *path_bar);
 static void ctk_path_bar_scroll_down              (CtkPathBar       *path_bar);
 static void ctk_path_bar_stop_scrolling           (CtkPathBar       *path_bar);
 static gboolean ctk_path_bar_slider_up_defocus    (CtkWidget        *widget,
-						   GdkEventButton   *event,
+						   CdkEventButton   *event,
 						   CtkPathBar       *path_bar);
 static gboolean ctk_path_bar_slider_down_defocus  (CtkWidget        *widget,
-						   GdkEventButton   *event,
+						   CdkEventButton   *event,
 						   CtkPathBar       *path_bar);
 static gboolean ctk_path_bar_slider_button_press  (CtkWidget        *widget,
-						   GdkEventButton   *event,
+						   CdkEventButton   *event,
 						   CtkPathBar       *path_bar);
 static gboolean ctk_path_bar_slider_button_release(CtkWidget        *widget,
-						   GdkEventButton   *event,
+						   CdkEventButton   *event,
 						   CtkPathBar       *path_bar);
 static void ctk_path_bar_grab_notify              (CtkWidget        *widget,
 						   gboolean          was_grabbed);
@@ -182,7 +182,7 @@ static void ctk_path_bar_state_changed            (CtkWidget        *widget,
 						   CtkStateType      previous_state);
 static void ctk_path_bar_style_updated            (CtkWidget        *widget);
 static void ctk_path_bar_screen_changed           (CtkWidget        *widget,
-						   GdkScreen        *previous_screen);
+						   CdkScreen        *previous_screen);
 static void ctk_path_bar_check_icon_theme         (CtkPathBar       *path_bar);
 static void ctk_path_bar_update_button_appearance (CtkPathBar       *path_bar,
 						   ButtonData       *button_data,
@@ -368,7 +368,7 @@ ctk_path_bar_finalize (GObject *object)
 /* Removes the settings signal handler.  It's safe to call multiple times */
 static void
 remove_settings_signal (CtkPathBar *path_bar,
-			GdkScreen  *screen)
+			CdkScreen  *screen)
 {
   if (path_bar->priv->settings_signal_id)
     {
@@ -538,8 +538,8 @@ ctk_path_bar_realize (CtkWidget *widget)
 {
   CtkPathBar *path_bar;
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_set_realized (widget, TRUE);
@@ -833,7 +833,7 @@ ctk_path_bar_style_updated (CtkWidget *widget)
 
 static void
 ctk_path_bar_screen_changed (CtkWidget *widget,
-			     GdkScreen *previous_screen)
+			     CdkScreen *previous_screen)
 {
   if (CTK_WIDGET_CLASS (ctk_path_bar_parent_class)->screen_changed)
     CTK_WIDGET_CLASS (ctk_path_bar_parent_class)->screen_changed (widget, previous_screen);
@@ -847,7 +847,7 @@ ctk_path_bar_screen_changed (CtkWidget *widget,
 
 static gboolean
 ctk_path_bar_scroll (CtkWidget      *widget,
-		     GdkEventScroll *event)
+		     CdkEventScroll *event)
 {
   switch (event->direction)
     {
@@ -1079,7 +1079,7 @@ ctk_path_bar_stop_scrolling (CtkPathBar *path_bar)
 
 static gboolean
 ctk_path_bar_slider_up_defocus (CtkWidget      *widget,
-                                    GdkEventButton *event,
+                                    CdkEventButton *event,
                                     CtkPathBar     *path_bar)
 {
   GList *list;
@@ -1107,7 +1107,7 @@ ctk_path_bar_slider_up_defocus (CtkWidget      *widget,
 
 static gboolean
 ctk_path_bar_slider_down_defocus (CtkWidget      *widget,
-                                    GdkEventButton *event,
+                                    CdkEventButton *event,
                                     CtkPathBar     *path_bar)
 {
   GList *list;
@@ -1135,7 +1135,7 @@ ctk_path_bar_slider_down_defocus (CtkWidget      *widget,
 
 static gboolean
 ctk_path_bar_slider_button_press (CtkWidget      *widget, 
-				  GdkEventButton *event,
+				  CdkEventButton *event,
 				  CtkPathBar     *path_bar)
 {
   if (event->type != GDK_BUTTON_PRESS || event->button != GDK_BUTTON_PRIMARY)
@@ -1170,7 +1170,7 @@ ctk_path_bar_slider_button_press (CtkWidget      *widget,
 
 static gboolean
 ctk_path_bar_slider_button_release (CtkWidget      *widget, 
-				    GdkEventButton *event,
+				    CdkEventButton *event,
 				    CtkPathBar     *path_bar)
 {
   if (event->type != GDK_BUTTON_RELEASE)
@@ -1523,7 +1523,7 @@ find_button_type (CtkPathBar  *path_bar,
 
 static void
 button_drag_data_get_cb (CtkWidget        *widget,
-                         GdkDragContext   *context,
+                         CdkDragContext   *context,
                          CtkSelectionData *selection_data,
                          guint             info,
                          guint             time_,

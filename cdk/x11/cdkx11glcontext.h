@@ -30,17 +30,17 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_X11_GL_CONTEXT		(cdk_x11_gl_context_get_type ())
-#define GDK_X11_GL_CONTEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_X11_GL_CONTEXT, GdkX11GLContext))
+#define GDK_X11_GL_CONTEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_X11_GL_CONTEXT, CdkX11GLContext))
 #define GDK_X11_IS_GL_CONTEXT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_X11_GL_CONTEXT))
 
-typedef struct _GdkX11GLContext		GdkX11GLContext;
-typedef struct _GdkX11GLContextClass	GdkX11GLContextClass;
+typedef struct _CdkX11GLContext		CdkX11GLContext;
+typedef struct _CdkX11GLContextClass	CdkX11GLContextClass;
 
 GDK_AVAILABLE_IN_3_16
 GType cdk_x11_gl_context_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_16
-gboolean        cdk_x11_display_get_glx_version (GdkDisplay *display,
+gboolean        cdk_x11_display_get_glx_version (CdkDisplay *display,
                                                  gint       *major,
                                                  gint       *minor);
 

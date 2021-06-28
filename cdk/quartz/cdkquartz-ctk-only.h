@@ -29,22 +29,22 @@
 
 /* Drag and Drop/Clipboard */
 GDK_AVAILABLE_IN_ALL
-GdkAtom   cdk_quartz_pasteboard_type_to_atom_libctk_only        (NSString       *type);
+CdkAtom   cdk_quartz_pasteboard_type_to_atom_libctk_only        (NSString       *type);
 GDK_AVAILABLE_IN_ALL
 NSString *cdk_quartz_target_to_pasteboard_type_libctk_only      (const gchar    *target);
 GDK_AVAILABLE_IN_ALL
-NSString *cdk_quartz_atom_to_pasteboard_type_libctk_only        (GdkAtom         atom);
+NSString *cdk_quartz_atom_to_pasteboard_type_libctk_only        (CdkAtom         atom);
 
 /* Utilities */
 GDK_AVAILABLE_IN_ALL
-NSImage  *cdk_quartz_pixbuf_to_ns_image_libctk_only (GdkPixbuf *pixbuf);
+NSImage  *cdk_quartz_pixbuf_to_ns_image_libctk_only (CdkPixbuf *pixbuf);
 GDK_AVAILABLE_IN_ALL
-NSEvent  *cdk_quartz_event_get_nsevent              (GdkEvent  *event);
+NSEvent  *cdk_quartz_event_get_nsevent              (CdkEvent  *event);
 
 /* Window */
 GDK_AVAILABLE_IN_ALL
-NSWindow *cdk_quartz_window_get_nswindow            (GdkWindow *window);
+NSWindow *cdk_quartz_window_get_nswindow            (CdkWindow *window);
 GDK_AVAILABLE_IN_ALL
-NSView   *cdk_quartz_window_get_nsview              (GdkWindow *window);
+NSView   *cdk_quartz_window_get_nsview              (CdkWindow *window);
 
 #endif

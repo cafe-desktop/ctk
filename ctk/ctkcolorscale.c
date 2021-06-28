@@ -34,7 +34,7 @@
 
 struct _CtkColorScalePrivate
 {
-  GdkRGBA color;
+  CdkRGBA color;
   CtkColorScaleType type;
 
   CtkGesture *long_press_gesture;
@@ -123,7 +123,7 @@ ctk_color_scale_draw_trough (CtkColorScale  *scale,
     {
       cairo_pattern_t *pattern;
       cairo_matrix_t matrix;
-      GdkRGBA *color;
+      CdkRGBA *color;
 
       cairo_set_source_rgb (cr, 0.33, 0.33, 0.33);
       cairo_paint (cr);
@@ -262,7 +262,7 @@ ctk_color_scale_class_init (CtkColorScaleClass *class)
 
 void
 ctk_color_scale_set_rgba (CtkColorScale *scale,
-                          const GdkRGBA *color)
+                          const CdkRGBA *color)
 {
   scale->priv->color = *color;
   ctk_widget_queue_draw (CTK_WIDGET (scale));

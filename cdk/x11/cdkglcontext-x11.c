@@ -41,10 +41,10 @@
 
 #include <epoxy/glx.h>
 
-G_DEFINE_TYPE (GdkX11GLContext, cdk_x11_gl_context, GDK_TYPE_GL_CONTEXT)
+G_DEFINE_TYPE (CdkX11GLContext, cdk_x11_gl_context, GDK_TYPE_GL_CONTEXT)
 
 typedef struct {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   GLXDrawable glx_drawable;
 
@@ -79,13 +79,13 @@ drawable_info_free (gpointer data_)
 }
 
 static DrawableInfo *
-get_glx_drawable_info (GdkWindow *window)
+get_glx_drawable_info (CdkWindow *window)
 {
   return g_object_get_data (G_OBJECT (window), "-cdk-x11-window-glx-info");
 }
 
 static void
-set_glx_drawable_info (GdkWindow    *window,
+set_glx_drawable_info (CdkWindow    *window,
                        DrawableInfo *info)
 {
   g_object_set_data_full (G_OBJECT (window), "-cdk-x11-window-glx-info",
@@ -94,10 +94,10 @@ set_glx_drawable_info (GdkWindow    *window,
 }
 
 static void
-maybe_wait_for_vblank (GdkDisplay  *display,
+maybe_wait_for_vblank (CdkDisplay  *display,
                        GLXDrawable  drawable)
 {
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
   Display *dpy = cdk_x11_display_get_xdisplay (display);
 
   if (display_x11->has_glx_sync_control)
@@ -119,14 +119,14 @@ maybe_wait_for_vblank (GdkDisplay  *display,
 }
 
 void
-cdk_x11_window_invalidate_for_new_frame (GdkWindow      *window,
+cdk_x11_window_invalidate_for_new_frame (CdkWindow      *window,
                                          cairo_region_t *update_area)
 {
   cairo_rectangle_int_t window_rect;
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
   Display *dpy = cdk_x11_display_get_xdisplay (display);
-  GdkX11GLContext *context_x11;
+  CdkX11GLContext *context_x11;
   unsigned int buffer_age;
   gboolean invalidate_all;
 
@@ -198,7 +198,7 @@ cdk_x11_window_invalidate_for_new_frame (GdkWindow      *window,
 }
 
 static void
-cdk_gl_blit_region (GdkWindow *window, cairo_region_t *region)
+cdk_gl_blit_region (CdkWindow *window, cairo_region_t *region)
 {
   int n_rects, i;
   int scale = cdk_window_get_scale_factor (window);
@@ -217,15 +217,15 @@ cdk_gl_blit_region (GdkWindow *window, cairo_region_t *region)
 }
 
 static void
-cdk_x11_gl_context_end_frame (GdkGLContext *context,
+cdk_x11_gl_context_end_frame (CdkGLContext *context,
                               cairo_region_t *painted,
                               cairo_region_t *damage)
 {
-  GdkX11GLContext *context_x11 = GDK_X11_GL_CONTEXT (context);
-  GdkWindow *window = cdk_gl_context_get_window (context);
-  GdkDisplay *display = cdk_gl_context_get_display (context);
+  CdkX11GLContext *context_x11 = GDK_X11_GL_CONTEXT (context);
+  CdkWindow *window = cdk_gl_context_get_window (context);
+  CdkDisplay *display = cdk_gl_context_get_display (context);
   Display *dpy = cdk_x11_display_get_xdisplay (display);
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
   DrawableInfo *info;
   GLXDrawable drawable;
 
@@ -296,25 +296,25 @@ typedef struct {
   Display *display;
   GLXDrawable drawable;
   gboolean y_inverted;
-} GdkGLXPixmap;
+} CdkGLXPixmap;
 
 static void
 glx_pixmap_destroy (void *data)
 {
-  GdkGLXPixmap *glx_pixmap = data;
+  CdkGLXPixmap *glx_pixmap = data;
 
   glXDestroyPixmap (glx_pixmap->display, glx_pixmap->drawable);
 
-  g_slice_free (GdkGLXPixmap, glx_pixmap);
+  g_slice_free (CdkGLXPixmap, glx_pixmap);
 }
 
-static GdkGLXPixmap *
+static CdkGLXPixmap *
 glx_pixmap_get (cairo_surface_t *surface, guint texture_target)
 {
   Display *display = cairo_xlib_surface_get_display (surface);
   Screen *screen = cairo_xlib_surface_get_screen (surface);
   Visual *visual = cairo_xlib_surface_get_visual (surface);
-  GdkGLXPixmap *glx_pixmap;
+  CdkGLXPixmap *glx_pixmap;
   GLXFBConfig *fbconfigs, config;
   int nfbconfigs;
   XVisualInfo *visinfo;
@@ -412,7 +412,7 @@ glx_pixmap_get (cairo_surface_t *surface, guint texture_target)
   pixmap_attributes[1] = target;
   pixmap_attributes[3] = format;
 
-  glx_pixmap = g_slice_new0 (GdkGLXPixmap);
+  glx_pixmap = g_slice_new0 (CdkGLXPixmap);
   glx_pixmap->y_inverted = y_inverted;
   glx_pixmap->display = display;
   glx_pixmap->drawable = glXCreatePixmap (display, config,
@@ -423,15 +423,15 @@ glx_pixmap_get (cairo_surface_t *surface, guint texture_target)
 }
 
 static gboolean
-cdk_x11_gl_context_texture_from_surface (GdkGLContext *paint_context,
+cdk_x11_gl_context_texture_from_surface (CdkGLContext *paint_context,
 					 cairo_surface_t *surface,
 					 cairo_region_t *region)
 {
-  GdkGLXPixmap *glx_pixmap;
+  CdkGLXPixmap *glx_pixmap;
   double device_x_offset, device_y_offset;
   cairo_rectangle_int_t rect;
   int n_rects, i;
-  GdkWindow *window;
+  CdkWindow *window;
   int unscaled_window_height;
   int window_scale;
   unsigned int texture_id;
@@ -439,8 +439,8 @@ cdk_x11_gl_context_texture_from_surface (GdkGLContext *paint_context,
   guint target;
   double sx, sy;
   float uscale, vscale;
-  GdkTexturedQuad *quads;
-  GdkX11Display *display_x11;
+  CdkTexturedQuad *quads;
+  CdkX11Display *display_x11;
 
   display_x11 = GDK_X11_DISPLAY (cdk_gl_context_get_display (paint_context));
   if (!display_x11->has_glx_texture_from_pixmap)
@@ -486,7 +486,7 @@ cdk_x11_gl_context_texture_from_surface (GdkGLContext *paint_context,
   glEnable (GL_SCISSOR_TEST);
 
   n_rects = cairo_region_num_rectangles (region);
-  quads = g_new (GdkTexturedQuad, n_rects);
+  quads = g_new (CdkTexturedQuad, n_rects);
 
 #define FLIP_Y(_y) (unscaled_window_height - (_y))
 
@@ -517,7 +517,7 @@ cdk_x11_gl_context_texture_from_surface (GdkGLContext *paint_context,
         }
 
       {
-        GdkTexturedQuad quad = {
+        CdkTexturedQuad quad = {
           rect.x * window_scale, FLIP_Y(rect.y * window_scale),
           (rect.x + rect.width) * window_scale, FLIP_Y((rect.y + rect.height) * window_scale),
           uscale * src_x, vscale * src_y,
@@ -546,7 +546,7 @@ cdk_x11_gl_context_texture_from_surface (GdkGLContext *paint_context,
 }
 
 static XVisualInfo *
-find_xvisinfo_for_fbconfig (GdkDisplay  *display,
+find_xvisinfo_for_fbconfig (CdkDisplay  *display,
                             GLXFBConfig  config)
 {
   Display *dpy = cdk_x11_display_get_xdisplay (display);
@@ -555,9 +555,9 @@ find_xvisinfo_for_fbconfig (GdkDisplay  *display,
 }
 
 static GLXContext
-create_gl3_context (GdkDisplay   *display,
+create_gl3_context (CdkDisplay   *display,
                     GLXFBConfig   config,
-                    GdkGLContext *share,
+                    CdkGLContext *share,
                     int           profile,
                     int           flags,
                     int           major,
@@ -572,7 +572,7 @@ create_gl3_context (GdkDisplay   *display,
   };
   GLXContext res;
 
-  GdkX11GLContext *share_x11 = NULL;
+  CdkX11GLContext *share_x11 = NULL;
 
   if (share != NULL)
     share_x11 = GDK_X11_GL_CONTEXT (share);
@@ -592,11 +592,11 @@ create_gl3_context (GdkDisplay   *display,
 }
 
 static GLXContext
-create_legacy_context (GdkDisplay   *display,
+create_legacy_context (CdkDisplay   *display,
                        GLXFBConfig   config,
-                       GdkGLContext *share)
+                       CdkGLContext *share)
 {
-  GdkX11GLContext *share_x11 = NULL;
+  CdkX11GLContext *share_x11 = NULL;
   GLXContext res;
 
   if (share != NULL)
@@ -617,18 +617,18 @@ create_legacy_context (GdkDisplay   *display,
 }
 
 static gboolean
-cdk_x11_gl_context_realize (GdkGLContext  *context,
+cdk_x11_gl_context_realize (CdkGLContext  *context,
                             GError       **error)
 {
-  GdkX11Display *display_x11;
-  GdkDisplay *display;
-  GdkX11GLContext *context_x11;
+  CdkX11Display *display_x11;
+  CdkDisplay *display;
+  CdkX11GLContext *context_x11;
   GLXWindow drawable;
   XVisualInfo *xvisinfo;
   Display *dpy;
   DrawableInfo *info;
-  GdkGLContext *share;
-  GdkWindow *window;
+  CdkGLContext *share;
+  CdkWindow *window;
   gboolean debug_bit, compat_bit, legacy_bit, es_bit;
   int major, minor, flags;
 
@@ -805,12 +805,12 @@ cdk_x11_gl_context_realize (GdkGLContext  *context,
 static void
 cdk_x11_gl_context_dispose (GObject *gobject)
 {
-  GdkX11GLContext *context_x11 = GDK_X11_GL_CONTEXT (gobject);
+  CdkX11GLContext *context_x11 = GDK_X11_GL_CONTEXT (gobject);
 
   if (context_x11->glx_context != NULL)
     {
-      GdkGLContext *context = GDK_GL_CONTEXT (gobject);
-      GdkDisplay *display = cdk_gl_context_get_display (context);
+      CdkGLContext *context = GDK_GL_CONTEXT (gobject);
+      CdkDisplay *display = cdk_gl_context_get_display (context);
       Display *dpy = cdk_x11_display_get_xdisplay (display);
 
       if (glXGetCurrentContext () == context_x11->glx_context)
@@ -825,9 +825,9 @@ cdk_x11_gl_context_dispose (GObject *gobject)
 }
 
 static void
-cdk_x11_gl_context_class_init (GdkX11GLContextClass *klass)
+cdk_x11_gl_context_class_init (CdkX11GLContextClass *klass)
 {
-  GdkGLContextClass *context_class = GDK_GL_CONTEXT_CLASS (klass);
+  CdkGLContextClass *context_class = GDK_GL_CONTEXT_CLASS (klass);
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
   context_class->realize = cdk_x11_gl_context_realize;
@@ -838,16 +838,16 @@ cdk_x11_gl_context_class_init (GdkX11GLContextClass *klass)
 }
 
 static void
-cdk_x11_gl_context_init (GdkX11GLContext *self)
+cdk_x11_gl_context_init (CdkX11GLContext *self)
 {
   self->do_frame_sync = TRUE;
 }
 
 gboolean
-cdk_x11_screen_init_gl (GdkScreen *screen)
+cdk_x11_screen_init_gl (CdkScreen *screen)
 {
-  GdkDisplay *display = cdk_screen_get_display (screen);
-  GdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkDisplay *display = cdk_screen_get_display (screen);
+  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
   Display *dpy;
   int error_base, event_base;
   int screen_num;
@@ -921,8 +921,8 @@ cdk_x11_screen_init_gl (GdkScreen *screen)
 #define MAX_GLX_ATTRS   30
 
 static gboolean
-find_fbconfig_for_visual (GdkDisplay   *display,
-			  GdkVisual    *visual,
+find_fbconfig_for_visual (CdkDisplay   *display,
+			  CdkVisual    *visual,
                           GLXFBConfig  *fb_config_out,
                           GError      **error)
 {
@@ -1020,7 +1020,7 @@ struct glvisualinfo {
 };
 
 static gboolean
-visual_compatible (const GdkVisual *a, const GdkVisual *b)
+visual_compatible (const CdkVisual *a, const CdkVisual *b)
 {
   return a->type == b->type &&
     a->depth == b->depth &&
@@ -1032,7 +1032,7 @@ visual_compatible (const GdkVisual *a, const GdkVisual *b)
 }
 
 static gboolean
-visual_is_rgba (const GdkVisual *visual)
+visual_is_rgba (const CdkVisual *visual)
 {
   return
     visual->depth == 32 &&
@@ -1043,12 +1043,12 @@ visual_is_rgba (const GdkVisual *visual)
 
 /* This picks a compatible (as in has the same X visual details) visual
    that has "better" characteristics on the GL side */
-static GdkVisual *
-pick_better_visual_for_gl (GdkX11Screen *x11_screen,
+static CdkVisual *
+pick_better_visual_for_gl (CdkX11Screen *x11_screen,
                            struct glvisualinfo *gl_info,
-                           GdkVisual *compatible)
+                           CdkVisual *compatible)
 {
-  GdkVisual *visual;
+  CdkVisual *visual;
   int i;
   gboolean want_alpha = visual_is_rgba (compatible);
 
@@ -1120,7 +1120,7 @@ pick_better_visual_for_gl (GdkX11Screen *x11_screen,
 }
 
 static gboolean
-get_cached_gl_visuals (GdkDisplay *display, int *system, int *rgba)
+get_cached_gl_visuals (CdkDisplay *display, int *system, int *rgba)
 {
   gboolean found;
   Atom type_return;
@@ -1162,7 +1162,7 @@ get_cached_gl_visuals (GdkDisplay *display, int *system, int *rgba)
 }
 
 static void
-save_cached_gl_visuals (GdkDisplay *display, int system, int rgba)
+save_cached_gl_visuals (CdkDisplay *display, int system, int rgba)
 {
   long visualdata[2];
   Display *dpy;
@@ -1181,11 +1181,11 @@ save_cached_gl_visuals (GdkDisplay *display, int system, int rgba)
 }
 
 void
-_cdk_x11_screen_update_visuals_for_gl (GdkScreen *screen)
+_cdk_x11_screen_update_visuals_for_gl (CdkScreen *screen)
 {
-  GdkX11Screen *x11_screen;
-  GdkDisplay *display;
-  GdkX11Display *display_x11;
+  CdkX11Screen *x11_screen;
+  CdkDisplay *display;
+  CdkX11Display *display_x11;
   Display *dpy;
   struct glvisualinfo *gl_info;
   int i;
@@ -1202,7 +1202,7 @@ _cdk_x11_screen_update_visuals_for_gl (GdkScreen *screen)
     {
       for (i = 0; i < x11_screen->nvisuals; i++)
         {
-          GdkVisual *visual = x11_screen->visuals[i];
+          CdkVisual *visual = x11_screen->visuals[i];
           int visual_id = cdk_x11_visual_get_xvisual (visual)->visualid;
 
           if (visual_id == system_visual_id)
@@ -1261,15 +1261,15 @@ _cdk_x11_screen_update_visuals_for_gl (GdkScreen *screen)
                           x11_screen->rgba_visual ? cdk_x11_visual_get_xvisual (x11_screen->rgba_visual)->visualid : 0);
 }
 
-GdkGLContext *
-cdk_x11_window_create_gl_context (GdkWindow    *window,
+CdkGLContext *
+cdk_x11_window_create_gl_context (CdkWindow    *window,
                                   gboolean      attached,
-                                  GdkGLContext *share,
+                                  CdkGLContext *share,
                                   GError      **error)
 {
-  GdkDisplay *display;
-  GdkX11GLContext *context;
-  GdkVisual *visual;
+  CdkDisplay *display;
+  CdkX11GLContext *context;
+  CdkVisual *visual;
   GLXFBConfig config;
 
   display = cdk_window_get_display (window);
@@ -1299,13 +1299,13 @@ cdk_x11_window_create_gl_context (GdkWindow    *window,
 }
 
 gboolean
-cdk_x11_display_make_gl_context_current (GdkDisplay   *display,
-                                         GdkGLContext *context)
+cdk_x11_display_make_gl_context_current (CdkDisplay   *display,
+                                         CdkGLContext *context)
 {
-  GdkX11GLContext *context_x11;
+  CdkX11GLContext *context_x11;
   Display *dpy = cdk_x11_display_get_xdisplay (display);
-  GdkWindow *window;
-  GdkScreen *screen;
+  CdkWindow *window;
+  CdkScreen *screen;
   gboolean do_frame_sync = FALSE;
 
   if (context == NULL)
@@ -1317,7 +1317,7 @@ cdk_x11_display_make_gl_context_current (GdkDisplay   *display,
   context_x11 = GDK_X11_GL_CONTEXT (context);
   if (context_x11->glx_context == NULL)
     {
-      g_critical ("No GLX context associated to the GdkGLContext; you must "
+      g_critical ("No GLX context associated to the CdkGLContext; you must "
                   "call cdk_gl_context_realize() first.");
       return FALSE;
     }
@@ -1361,7 +1361,7 @@ cdk_x11_display_make_gl_context_current (GdkDisplay   *display,
 
 /**
  * cdk_x11_display_get_glx_version:
- * @display: a #GdkDisplay
+ * @display: a #CdkDisplay
  * @major: (out): return location for the GLX major version
  * @minor: (out): return location for the GLX minor version
  *
@@ -1372,7 +1372,7 @@ cdk_x11_display_make_gl_context_current (GdkDisplay   *display,
  * Since: 3.16
  */
 gboolean
-cdk_x11_display_get_glx_version (GdkDisplay *display,
+cdk_x11_display_get_glx_version (CdkDisplay *display,
                                  gint       *major,
                                  gint       *minor)
 {

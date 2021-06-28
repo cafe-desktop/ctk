@@ -4338,12 +4338,12 @@ msgstr ""
 "Hapja e figurës '%s' dështoi: shkaku nuk njihet, ndoshta file është i dëmtuar"
 
 # (pofilter) simplecaps: checks the capitalisation of two strings isn't wildly different
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Flag e debug të Gdk për tu caktuar"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Flag e debug të Cdk për tu caktuar"
 
 # (pofilter) simplecaps: checks the capitalisation of two strings isn't wildly different
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Flag të debug të Gdk që duhen anulluar"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Flag të debug të Cdk që duhen anulluar"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "File '%s' nuk përmban të dhëna"
@@ -4798,7 +4798,7 @@ msgstr ""
 #~ msgstr "I pamundur sigurimi i kujtesës për strukturën kontekste TGA"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Shkrimi i treguesit të kartelës dështoi\n"
 
 #, fuzzy

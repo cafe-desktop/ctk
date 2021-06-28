@@ -1,8 +1,8 @@
 
-# GdkAtom is an opaque typedef
+# CdkAtom is an opaque typedef
 <TYPEDEF>
-<NAME>GdkAtom</NAME>
-typedef struct _GdkAtom *GdkAtom;
+<NAME>CdkAtom</NAME>
+typedef struct _CdkAtom *CdkAtom;
 </TYPEDEF>
 
 <MACRO>

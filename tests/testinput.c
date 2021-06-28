@@ -38,7 +38,7 @@ static gdouble cursor_x;
 static gdouble cursor_y;
 
 /* Unique ID of current device */
-static GdkDevice *current_device;
+static CdkDevice *current_device;
 
 /* Erase the old cursor, and/or draw a new one, if necessary */
 static void
@@ -83,7 +83,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 /* Create a new backing surface of the appropriate size */
 static gint
-configure_event (CtkWidget *widget, GdkEventConfigure *event)
+configure_event (CtkWidget *widget, CdkEventConfigure *event)
 {
   CtkAllocation allocation;
   cairo_t *cr;
@@ -120,11 +120,11 @@ draw (CtkWidget *widget, cairo_t *cr)
 /* Draw a rectangle on the screen, size depending on pressure,
    and color on the type of device */
 static void
-draw_brush (CtkWidget *widget, GdkInputSource source,
+draw_brush (CtkWidget *widget, CdkInputSource source,
 	    gdouble x, gdouble y, gdouble pressure)
 {
-  GdkRGBA color;
-  GdkRectangle update_rect;
+  CdkRGBA color;
+  CdkRectangle update_rect;
   cairo_t *cr;
 
   color.alpha = 1.0;
@@ -166,7 +166,7 @@ draw_brush (CtkWidget *widget, GdkInputSource source,
 static guint32 motion_time;
 
 static void
-print_axes (GdkDevice *device, gdouble *axes)
+print_axes (CdkDevice *device, gdouble *axes)
 {
   int i;
   
@@ -182,7 +182,7 @@ print_axes (GdkDevice *device, gdouble *axes)
 }
 
 static gint
-button_press_event (CtkWidget *widget, GdkEventButton *event)
+button_press_event (CtkWidget *widget, CdkEventButton *event)
 {
   current_device = event->device;
   cursor_proximity = TRUE;
@@ -193,7 +193,7 @@ button_press_event (CtkWidget *widget, GdkEventButton *event)
       gdouble pressure = 0.5;
 
       print_axes (event->device, event->axes);
-      cdk_event_get_axis ((GdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
+      cdk_event_get_axis ((CdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
       draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
                   event->x, event->y, pressure);
 
@@ -206,7 +206,7 @@ button_press_event (CtkWidget *widget, GdkEventButton *event)
 }
 
 static gint
-key_press_event (CtkWidget *widget, GdkEventKey *event)
+key_press_event (CtkWidget *widget, CdkEventKey *event)
 {
   if ((event->keyval >= 0x20) && (event->keyval <= 0xFF))
     printf("I got a %c\n", event->keyval);
@@ -217,9 +217,9 @@ key_press_event (CtkWidget *widget, GdkEventKey *event)
 }
 
 static gint
-motion_notify_event (CtkWidget *widget, GdkEventMotion *event)
+motion_notify_event (CtkWidget *widget, CdkEventMotion *event)
 {
-  GdkTimeCoord **events;
+  CdkTimeCoord **events;
   gint n_events;
   int i;
 
@@ -250,7 +250,7 @@ motion_notify_event (CtkWidget *widget, GdkEventMotion *event)
 	{
 	  double pressure = 0.5;
 
-	  cdk_event_get_axis ((GdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
+	  cdk_event_get_axis ((CdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
 
 	  draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
                       event->x, event->y, pressure);
@@ -269,7 +269,7 @@ motion_notify_event (CtkWidget *widget, GdkEventMotion *event)
    cursor */
 
 static gint
-proximity_out_event (CtkWidget *widget, GdkEventProximity *event)
+proximity_out_event (CtkWidget *widget, CdkEventProximity *event)
 {
   cursor_proximity = FALSE;
   update_cursor (widget, cursor_x, cursor_y);
@@ -277,7 +277,7 @@ proximity_out_event (CtkWidget *widget, GdkEventProximity *event)
 }
 
 static gint
-leave_notify_event (CtkWidget *widget, GdkEventCrossing *event)
+leave_notify_event (CtkWidget *widget, CdkEventCrossing *event)
 {
   cursor_proximity = FALSE;
   update_cursor (widget, cursor_x, cursor_y);
@@ -294,13 +294,13 @@ int
 main (int argc, char *argv[])
 {
   GList *devices, *d;
-  GdkEventMask event_mask;
+  CdkEventMask event_mask;
   CtkWidget *window;
   CtkWidget *drawing_area;
   CtkWidget *vbox;
   CtkWidget *button;
-  GdkWindow *cdk_win;
-  GdkSeat *seat;
+  CdkWindow *cdk_win;
+  CdkSeat *seat;
 
   ctk_init (&argc, &argv);
 
@@ -359,7 +359,7 @@ main (int argc, char *argv[])
 
   for (d = devices; d; d = d->next)
     {
-      GdkDevice *device;
+      CdkDevice *device;
 
       device = d->data;
       ctk_widget_set_device_events (drawing_area, device, event_mask);

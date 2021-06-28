@@ -321,7 +321,7 @@ update_state (CtkWidget *widget,
 
 static gboolean
 ctk_info_bar_enter_notify (CtkWidget        *widget,
-                           GdkEventCrossing *event)
+                           CdkEventCrossing *event)
 {
   if (event->detail != GDK_NOTIFY_INFERIOR)
     update_state (widget, TRUE);
@@ -331,7 +331,7 @@ ctk_info_bar_enter_notify (CtkWidget        *widget,
 
 static gboolean
 ctk_info_bar_leave_notify (CtkWidget        *widget,
-                           GdkEventCrossing *event)
+                           CdkEventCrossing *event)
 {
   if (event->detail != GDK_NOTIFY_INFERIOR)
     update_state (widget, FALSE);
@@ -343,8 +343,8 @@ static void
 ctk_info_bar_realize (CtkWidget *widget)
 {
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_get_allocation (widget, &allocation);
@@ -376,7 +376,7 @@ ctk_info_bar_size_allocate (CtkWidget     *widget,
                             CtkAllocation *allocation)
 {
   CtkAllocation tmp_allocation;
-  GdkWindow *window;
+  CdkWindow *window;
 
   tmp_allocation = *allocation;
   tmp_allocation.x = 0;

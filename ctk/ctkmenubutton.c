@@ -241,11 +241,11 @@ ctk_menu_button_state_flags_changed (CtkWidget    *widget,
 
 static void
 popup_menu (CtkMenuButton *menu_button,
-            GdkEvent      *event)
+            CdkEvent      *event)
 {
   CtkMenuButtonPrivate *priv = menu_button->priv;
-  GdkGravity widget_anchor = GDK_GRAVITY_SOUTH_WEST;
-  GdkGravity menu_anchor = GDK_GRAVITY_NORTH_WEST;
+  CdkGravity widget_anchor = GDK_GRAVITY_SOUTH_WEST;
+  CdkGravity menu_anchor = GDK_GRAVITY_NORTH_WEST;
 
   if (priv->func)
     priv->func (priv->user_data);
@@ -404,7 +404,7 @@ ctk_menu_button_toggled (CtkToggleButton *button)
     {
       if (active && !ctk_widget_get_visible (priv->menu))
         {
-          GdkEvent *event;
+          CdkEvent *event;
 
           event = ctk_get_current_event ();
 

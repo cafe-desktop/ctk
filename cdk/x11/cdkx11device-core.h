@@ -23,14 +23,14 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_X11_DEVICE_CORE         (cdk_x11_device_core_get_type ())
-#define GDK_X11_DEVICE_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_X11_DEVICE_CORE, GdkX11DeviceCore))
-#define GDK_X11_DEVICE_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_X11_DEVICE_CORE, GdkX11DeviceCoreClass))
+#define GDK_X11_DEVICE_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_X11_DEVICE_CORE, CdkX11DeviceCore))
+#define GDK_X11_DEVICE_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_X11_DEVICE_CORE, CdkX11DeviceCoreClass))
 #define GDK_IS_X11_DEVICE_CORE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_X11_DEVICE_CORE))
 #define GDK_IS_X11_DEVICE_CORE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_X11_DEVICE_CORE))
-#define GDK_X11_DEVICE_CORE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_X11_DEVICE_CORE, GdkX11DeviceCoreClass))
+#define GDK_X11_DEVICE_CORE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_X11_DEVICE_CORE, CdkX11DeviceCoreClass))
 
-typedef struct _GdkX11DeviceCore GdkX11DeviceCore;
-typedef struct _GdkX11DeviceCoreClass GdkX11DeviceCoreClass;
+typedef struct _CdkX11DeviceCore CdkX11DeviceCore;
+typedef struct _CdkX11DeviceCoreClass CdkX11DeviceCoreClass;
 
 
 GDK_AVAILABLE_IN_ALL

@@ -56,13 +56,13 @@ static void     ctk_drag_find_widget            (CtkWidget        *widget,
 						 CtkDragFindData  *data);
 static void     ctk_drag_dest_site_destroy      (gpointer          data);
 static void     ctk_drag_dest_leave             (CtkWidget        *widget,
-						 GdkDragContext   *context,
+						 CdkDragContext   *context,
 						 guint             time);
-static CtkDragDestInfo *ctk_drag_get_dest_info  (GdkDragContext   *context,
+static CtkDragDestInfo *ctk_drag_get_dest_info  (CdkDragContext   *context,
 						 gboolean          create);
 static void ctk_drag_source_site_destroy        (gpointer           data);
 
-static CtkDragSourceInfo *ctk_drag_get_source_info (GdkDragContext *context,
+static CtkDragSourceInfo *ctk_drag_get_source_info (CdkDragContext *context,
 						    gboolean        create);
 
 static void ctk_drag_drop_finished (CtkDragSourceInfo *info,
@@ -73,8 +73,8 @@ struct _CtkDragSourceInfo
   CtkWidget         *source_widget;
   CtkWidget         *widget;
   CtkTargetList     *target_list; /* Targets for drag data */
-  GdkDragAction      possible_actions; /* Actions allowed by source */
-  GdkDragContext    *context;	  /* drag context */
+  CdkDragAction      possible_actions; /* Actions allowed by source */
+  CdkDragContext    *context;	  /* drag context */
   NSEvent           *nsevent;     /* what started it */
   gint hot_x, hot_y;		  /* Hot spot for drag */
   cairo_surface_t   *icon_surface;
@@ -85,7 +85,7 @@ struct _CtkDragSourceInfo
 struct _CtkDragDestInfo 
 {
   CtkWidget         *widget;	   /* Widget in which drag is in */
-  GdkDragContext    *context;	   /* Drag context */
+  CdkDragContext    *context;	   /* Drag context */
   guint              dropped : 1;     /* Set after we receive a drop */
   gint               drop_x, drop_y; /* Position of drop */
 };
@@ -94,11 +94,11 @@ struct _CtkDragFindData
 {
   gint x;
   gint y;
-  GdkDragContext *context;
+  CdkDragContext *context;
   CtkDragDestInfo *info;
   gboolean found;
   gboolean toplevel;
-  gboolean (*callback) (CtkWidget *widget, GdkDragContext *context,
+  gboolean (*callback) (CtkWidget *widget, CdkDragContext *context,
 			gint x, gint y, guint32 time);
   guint32 time;
 };
@@ -165,8 +165,8 @@ struct _CtkDragFindData
  */
 void 
 ctk_drag_get_data (CtkWidget      *widget,
-		   GdkDragContext *context,
-		   GdkAtom         target,
+		   CdkDragContext *context,
+		   CdkAtom         target,
 		   guint32         time)
 {
   id <NSDraggingInfo> dragging_info;
@@ -228,13 +228,13 @@ ctk_drag_get_data (CtkWidget      *widget,
  * @time_: the timestamp from the #CtkWidget::drag-drop signal.
  */
 void 
-ctk_drag_finish (GdkDragContext *context,
+ctk_drag_finish (CdkDragContext *context,
 		 gboolean        success,
 		 gboolean        del,
 		 guint32         time)
 {
   CtkDragSourceInfo *info;
-  GdkDragContext* source_context = cdk_quartz_drag_source_context_libctk_only ();
+  CdkDragContext* source_context = cdk_quartz_drag_source_context_libctk_only ();
 
   if (source_context)
     {
@@ -256,7 +256,7 @@ ctk_drag_dest_info_destroy (gpointer data)
 }
 
 static CtkDragDestInfo *
-ctk_drag_get_dest_info (GdkDragContext *context,
+ctk_drag_get_dest_info (CdkDragContext *context,
 			gboolean        create)
 {
   CtkDragDestInfo *info;
@@ -281,7 +281,7 @@ ctk_drag_get_dest_info (GdkDragContext *context,
 static GQuark dest_info_quark = 0;
 
 static CtkDragSourceInfo *
-ctk_drag_get_source_info (GdkDragContext *context,
+ctk_drag_get_source_info (CdkDragContext *context,
 			  gboolean        create)
 {
   CtkDragSourceInfo *info;
@@ -301,7 +301,7 @@ ctk_drag_get_source_info (GdkDragContext *context,
 }
 
 static void
-ctk_drag_clear_source_info (GdkDragContext *context)
+ctk_drag_clear_source_info (CdkDragContext *context)
 {
   g_object_set_qdata (G_OBJECT (context), dest_info_quark, NULL);
 }
@@ -313,10 +313,10 @@ ctk_drag_clear_source_info (GdkDragContext *context)
  * Returns: (transfer none):
  */
 CtkWidget *
-ctk_drag_get_source_widget (GdkDragContext *context)
+ctk_drag_get_source_widget (CdkDragContext *context)
 {
   CtkDragSourceInfo *info;
-  GdkDragContext* real_source_context = cdk_quartz_drag_source_context_libctk_only ();
+  CdkDragContext* real_source_context = cdk_quartz_drag_source_context_libctk_only ();
 
   if (!real_source_context)
     return NULL;
@@ -356,7 +356,7 @@ static NSWindow *
 get_toplevel_nswindow (CtkWidget *widget)
 {
   CtkWidget *toplevel = ctk_widget_get_toplevel (widget);
-  GdkWindow *window = ctk_widget_get_window (toplevel);
+  CdkWindow *window = ctk_widget_get_window (toplevel);
 
   /* Offscreen windows don't support drag and drop */
   if (CTK_IS_OFFSCREEN_WINDOW (toplevel))
@@ -436,7 +436,7 @@ ctk_drag_dest_set (CtkWidget            *widget,
 		   CtkDestDefaults       flags,
 		   const CtkTargetEntry *targets,
 		   gint                  n_targets,
-		   GdkDragAction         actions)
+		   CdkDragAction         actions)
 {
   CtkDragDestSite *old_site, *site;
 
@@ -484,8 +484,8 @@ ctk_drag_dest_set (CtkWidget            *widget,
  */
 void 
 ctk_drag_dest_set_proxy (CtkWidget      *widget,
-			 GdkWindow      *proxy_window,
-			 GdkDragProtocol protocol,
+			 CdkWindow      *proxy_window,
+			 CdkDragProtocol protocol,
 			 gboolean        use_coordinates)
 {
   g_warning ("ctk_drag_dest_set_proxy is not supported on Mac OS X.");
@@ -665,8 +665,8 @@ ctk_drag_find_widget (CtkWidget       *widget,
   if (ctk_widget_get_parent (widget))
     {
       gint tx, ty;
-      GdkWindow *window = ctk_widget_get_window (widget);
-      GdkWindow *parent_window;
+      CdkWindow *window = ctk_widget_get_window (widget);
+      CdkWindow *parent_window;
       CtkAllocation allocation;
 
       parent_window = ctk_widget_get_window (ctk_widget_get_parent (widget));
@@ -694,7 +694,7 @@ ctk_drag_find_widget (CtkWidget       *widget,
       
       while (window && window != parent_window)
 	{
-	  GdkRectangle window_rect = { 0, 0, 0, 0 };
+	  CdkRectangle window_rect = { 0, 0, 0, 0 };
 	  
           window_rect.width = cdk_window_get_width (window);
           window_rect.height = cdk_window_get_height (window);
@@ -775,7 +775,7 @@ ctk_drag_find_widget (CtkWidget       *widget,
 
 static void  
 ctk_drag_dest_leave (CtkWidget      *widget,
-		     GdkDragContext *context,
+		     CdkDragContext *context,
 		     guint           time)
 {
   CtkDragDestSite *site;
@@ -795,13 +795,13 @@ ctk_drag_dest_leave (CtkWidget      *widget,
 
 static gboolean
 ctk_drag_dest_motion (CtkWidget	     *widget,
-		      GdkDragContext *context,
+		      CdkDragContext *context,
 		      gint            x,
 		      gint            y,
 		      guint           time)
 {
   CtkDragDestSite *site;
-  GdkDragAction action = 0;
+  CdkDragAction action = 0;
   gboolean retval;
 
   site = g_object_get_data (G_OBJECT (widget), "ctk-drag-dest");
@@ -839,7 +839,7 @@ ctk_drag_dest_motion (CtkWidget	     *widget,
 
 static gboolean
 ctk_drag_dest_drop (CtkWidget	     *widget,
-		    GdkDragContext   *context,
+		    CdkDragContext   *context,
 		    gint              x,
 		    gint              y,
 		    guint             time)
@@ -859,7 +859,7 @@ ctk_drag_dest_drop (CtkWidget	     *widget,
 
   if (site->flags & CTK_DEST_DEFAULT_DROP)
     {
-      GdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
+      CdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
 
       if (target == GDK_NONE)
 	{
@@ -917,10 +917,10 @@ ctk_drag_dest_get_track_motion (CtkWidget *widget)
 
 void
 _ctk_drag_dest_handle_event (CtkWidget *toplevel,
-			     GdkEvent  *event)
+			     CdkEvent  *event)
 {
   CtkDragDestInfo *info;
-  GdkDragContext *context;
+  CdkDragContext *context;
 
   g_return_if_fail (toplevel != NULL);
   g_return_if_fail (event != NULL);
@@ -1007,9 +1007,9 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
  *
  * Returns: (transfer none):
  */
-GdkAtom
+CdkAtom
 ctk_drag_dest_find_target (CtkWidget      *widget,
-                           GdkDragContext *context,
+                           CdkDragContext *context,
                            CtkTargetList  *target_list)
 {
   id <NSDraggingInfo> dragging_info;
@@ -1065,7 +1065,7 @@ static gboolean
 ctk_drag_begin_idle (gpointer arg)
 {
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-  GdkDragContext* context = (GdkDragContext*) arg;
+  CdkDragContext* context = (CdkDragContext*) arg;
   CtkDragSourceInfo* info = ctk_drag_get_source_info (context, FALSE);
   NSWindow *nswindow;
   NSPasteboard *pasteboard;
@@ -1121,28 +1121,28 @@ ctk_drag_begin_idle (gpointer arg)
 
   return G_SOURCE_REMOVE;
 }
-/* Fake protocol to let us call GdkNSView cdkWindow without including
- * cdk/GdkNSView.h (which we can’t because it pulls in the internal-only
+/* Fake protocol to let us call CdkNSView cdkWindow without including
+ * cdk/CdkNSView.h (which we can’t because it pulls in the internal-only
  * cdkwindow.h).
  */
-@protocol GdkNSView
-- (GdkWindow *)cdkWindow;
+@protocol CdkNSView
+- (CdkWindow *)cdkWindow;
 @end
 
-GdkDragContext *
+CdkDragContext *
 ctk_drag_begin_internal (CtkWidget         *widget,
 			 gboolean          *out_needs_icon,
 			 CtkTargetList     *target_list,
-			 GdkDragAction      actions,
+			 CdkDragAction      actions,
 			 gint               button,
-			 const GdkEvent    *event,
+			 const CdkEvent    *event,
 			 int               x,
 			 int               y)
 {
   CtkDragSourceInfo *info;
-  GdkDevice *pointer;
-  GdkWindow *window;
-  GdkDragContext *context;
+  CdkDevice *pointer;
+  CdkWindow *window;
+  CdkDragContext *context;
   NSWindow *nswindow = get_toplevel_nswindow (widget);
   NSPoint point = {0, 0};
   double time = (double)g_get_real_time ();
@@ -1151,7 +1151,7 @@ ctk_drag_begin_internal (CtkWidget         *widget,
 
   if ((x != -1 && y != -1) || event)
     {
-      GdkWindow *window;
+      CdkWindow *window;
       gdouble dx, dy;
       if (x != -1 && y != -1)
 	{
@@ -1168,11 +1168,11 @@ ctk_drag_begin_internal (CtkWidget         *widget,
 	  if (cdk_event_get_coords (event, &dx, &dy))
 	    {
 	      /* We need to translate (x, y) to coordinates relative to the
-	       * toplevel GdkWindow, which should be the GdkWindow backing
+	       * toplevel CdkWindow, which should be the CdkWindow backing
 	       * nswindow. Then, we convert to the NSWindow coordinate system.
 	       */
 	      window = event->any.window;
-	      GdkWindow *toplevel = cdk_window_get_effective_toplevel (window);
+	      CdkWindow *toplevel = cdk_window_get_effective_toplevel (window);
 
 	      while (window != toplevel)
 		{
@@ -1201,7 +1201,7 @@ ctk_drag_begin_internal (CtkWidget         *widget,
                       clickCount: 1
                       pressure: 0.0 ];
 
-  window = [(id<GdkNSView>)[nswindow contentView] cdkWindow];
+  window = [(id<CdkNSView>)[nswindow contentView] cdkWindow];
   g_return_val_if_fail (nsevent != NULL, NULL);
   g_return_val_if_fail (target_list != NULL, NULL);
   
@@ -1257,12 +1257,12 @@ ctk_drag_begin_internal (CtkWidget         *widget,
  *
  * Returns: (transfer none):
  */
-GdkDragContext *
+CdkDragContext *
 ctk_drag_begin_with_coordinates (CtkWidget         *widget,
 				 CtkTargetList     *targets,
-				 GdkDragAction      actions,
+				 CdkDragAction      actions,
 				 gint               button,
-				 GdkEvent          *event,
+				 CdkEvent          *event,
 				 gint               x,
 				 gint               y)
 {
@@ -1284,12 +1284,12 @@ ctk_drag_begin_with_coordinates (CtkWidget         *widget,
  *
  * Returns: (transfer none):
  */
-GdkDragContext *
+CdkDragContext *
 ctk_drag_begin (CtkWidget         *widget,
 		CtkTargetList     *targets,
-		GdkDragAction      actions,
+		CdkDragAction      actions,
 		gint               button,
-		GdkEvent          *event)
+		CdkEvent          *event)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
   g_return_val_if_fail (ctk_widget_get_realized (widget), NULL);
@@ -1302,11 +1302,11 @@ ctk_drag_begin (CtkWidget         *widget,
 
 /**
  * ctk_drag_cancel:
- * @context: a #GdkDragContext, as e.g. returned by ctk_drag_begin_with_coordinates()
+ * @context: a #CdkDragContext, as e.g. returned by ctk_drag_begin_with_coordinates()
  *
  */
 void
-ctk_drag_cancel (GdkDragContext *context)
+ctk_drag_cancel (CdkDragContext *context)
 {
   CtkDragSourceInfo *info;
 
@@ -1332,7 +1332,7 @@ ctk_drag_cancel (GdkDragContext *context)
  * signal and destroy it yourself.
  **/
 void 
-ctk_drag_set_icon_widget (GdkDragContext    *context,
+ctk_drag_set_icon_widget (CdkDragContext    *context,
 			  CtkWidget         *widget,
 			  gint               hot_x,
 			  gint               hot_y)
@@ -1344,9 +1344,9 @@ ctk_drag_set_icon_widget (GdkDragContext    *context,
 }
 
 static void
-set_icon_stock_pixbuf (GdkDragContext    *context,
+set_icon_stock_pixbuf (CdkDragContext    *context,
 		       const gchar       *stock_id,
-		       GdkPixbuf         *pixbuf,
+		       CdkPixbuf         *pixbuf,
 		       gint               hot_x,
 		       gint               hot_y)
 {
@@ -1386,7 +1386,7 @@ set_icon_stock_pixbuf (GdkDragContext    *context,
 }
 
 void
-ctk_drag_set_icon_definition (GdkDragContext     *context,
+ctk_drag_set_icon_definition (CdkDragContext     *context,
                               CtkImageDefinition *def,
                               gint                hot_x,
                               gint                hot_y)
@@ -1426,15 +1426,15 @@ ctk_drag_set_icon_definition (GdkDragContext     *context,
  * ctk_drag_set_icon_pixbuf:
  * @context: the context for a drag. (This must be called 
  *            with a  context for the source side of a drag)
- * @pixbuf: the #GdkPixbuf to use as the drag icon.
+ * @pixbuf: the #CdkPixbuf to use as the drag icon.
  * @hot_x: the X offset within @widget of the hotspot.
  * @hot_y: the Y offset within @widget of the hotspot.
  * 
  * Sets @pixbuf as the icon for a given drag.
  **/
 void 
-ctk_drag_set_icon_pixbuf  (GdkDragContext *context,
-			   GdkPixbuf      *pixbuf,
+ctk_drag_set_icon_pixbuf  (CdkDragContext *context,
+			   CdkPixbuf      *pixbuf,
 			   gint            hot_x,
 			   gint            hot_y)
 {
@@ -1455,7 +1455,7 @@ ctk_drag_set_icon_pixbuf  (GdkDragContext *context,
  * Sets the icon for a given drag from a stock ID.
  **/
 void 
-ctk_drag_set_icon_stock  (GdkDragContext *context,
+ctk_drag_set_icon_stock  (CdkDragContext *context,
 			  const gchar    *stock_id,
 			  gint            hot_x,
 			  gint            hot_y)
@@ -1483,7 +1483,7 @@ ctk_drag_set_icon_stock  (GdkDragContext *context,
  * surface.
  **/
 void
-ctk_drag_set_icon_surface (GdkDragContext  *context,
+ctk_drag_set_icon_surface (CdkDragContext  *context,
                            cairo_surface_t *surface)
 {
   double x_offset, y_offset;
@@ -1521,14 +1521,14 @@ ctk_drag_set_icon_surface (GdkDragContext  *context,
  * Since: 2.8
  **/
 void 
-ctk_drag_set_icon_name (GdkDragContext *context,
+ctk_drag_set_icon_name (CdkDragContext *context,
 			const gchar    *icon_name,
 			gint            hot_x,
 			gint            hot_y)
 {
-  GdkScreen *screen;
+  CdkScreen *screen;
   CtkIconTheme *icon_theme;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gint width, height, icon_size;
 
   g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
@@ -1559,7 +1559,7 @@ ctk_drag_set_icon_name (GdkDragContext *context,
  * icon.
  **/
 void 
-ctk_drag_set_icon_default (GdkDragContext    *context)
+ctk_drag_set_icon_default (CdkDragContext    *context)
 {
   g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
 
@@ -1646,10 +1646,10 @@ ctk_drag_drop_finished (CtkDragSourceInfo *info,
 
 void
 _ctk_drag_source_handle_event (CtkWidget *widget,
-			       GdkEvent  *event)
+			       CdkEvent  *event)
 {
   CtkDragSourceInfo *info;
-  GdkDragContext *context;
+  CdkDragContext *context;
   CtkDragResult result;
 
   g_return_if_fail (widget != NULL);

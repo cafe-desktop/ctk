@@ -7106,10 +7106,10 @@ msgstr "พิมพ์ออกยังเครื่องพิมพ์ท
 #~ "Failed to load image '%s': reason not known, probably a corrupt image file"
 #~ msgstr "เปิดแฟ้มรูปภาพ '%s' ไม่สำเร็จ: ไม่แน่ใจว่าเพราะอะไร แต่อาจเป็นเพราะแฟ้มเสียหาย"
 
-#~ msgid "Gdk debugging flags to set"
+#~ msgid "Cdk debugging flags to set"
 #~ msgstr "แฟล็กการดีบั๊กของ GDK ที่จะเปิดใช้"
 
-#~ msgid "Gdk debugging flags to unset"
+#~ msgid "Cdk debugging flags to unset"
 #~ msgstr "แฟล็กการดีบั๊กของ GDK ที่จะปิด"
 
 #~ msgid "Image file '%s' contains no data"

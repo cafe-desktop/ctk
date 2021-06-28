@@ -331,7 +331,7 @@ icon_size_history_changed (CtkComboBox *menu, CtkToolbar *toolbar)
 }
 
 static gboolean
-toolbar_drag_drop (CtkWidget *widget, GdkDragContext *context,
+toolbar_drag_drop (CtkWidget *widget, CdkDragContext *context,
 		   gint x, gint y, guint time, CtkWidget *label)
 {
   gchar buf[32];
@@ -414,7 +414,7 @@ static CtkToolItem *drag_item = NULL;
 
 static gboolean
 toolbar_drag_motion (CtkToolbar     *toolbar,
-		     GdkDragContext *context,
+		     CdkDragContext *context,
 		     gint            x,
 		     gint            y,
 		     guint           time,
@@ -439,7 +439,7 @@ toolbar_drag_motion (CtkToolbar     *toolbar,
 
 static void
 toolbar_drag_leave (CtkToolbar     *toolbar,
-		    GdkDragContext *context,
+		    CdkDragContext *context,
 		    guint           time,
 		    gpointer	    null)
 {

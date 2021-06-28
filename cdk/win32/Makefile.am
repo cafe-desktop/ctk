@@ -5,7 +5,7 @@ libcdkincludedir = $(includedir)/ctk-3.0/cdk
 libcdkwin32includedir = $(includedir)/ctk-3.0/cdk/win32
 
 AM_CPPFLAGS = \
-	-DG_LOG_DOMAIN=\"Gdk\"		\
+	-DG_LOG_DOMAIN=\"Cdk\"		\
 	-DG_LOG_USE_STRUCTURED=1	\
 	-DINSIDE_GDK_WIN32		\
 	-I$(top_srcdir)			\

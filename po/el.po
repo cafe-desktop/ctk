@@ -9317,11 +9317,11 @@ msgstr "Ακαθόριστο προφίλ"
 #~ msgid "--- No Tip ---"
 #~ msgstr "--- Δεν υπάρχει συμβουλή ---"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Σημαίες αποσφαλμάτωσης του Gdk που θα επιλεχθούν"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Σημαίες αποσφαλμάτωσης του Cdk που θα επιλεχθούν"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Σημαίες αποσφαλμάτωσης του Gdk που θα αποεπιλεχθούν"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Σημαίες αποσφαλμάτωσης του Cdk που θα αποεπιλεχθούν"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "Το αρχείο εικόνας '%s' δεν περιέχει δεδομένα"
@@ -9774,8 +9774,8 @@ msgstr "Ακαθόριστο προφίλ"
 #~ msgid "Failed to allocate QTIF context structure."
 #~ msgstr "Αδυναμία διάθεσης μνήμης για τη δομή περιεχομένων του QTIF."
 
-#~ msgid "Failed to create GdkPixbufLoader object."
-#~ msgstr "Αποτυχία δημιουργίας αντικειμένου GdkPixbufLoader."
+#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgstr "Αποτυχία δημιουργίας αντικειμένου CdkPixbufLoader."
 
 #~ msgid "Failed to find an image data atom."
 #~ msgstr "Αποτυχία εύρεσης ατόμου δεδομένων εικόνας."

@@ -72,7 +72,7 @@ propagate_notify (GObject               *o,
 static void
 save_color (CtkColorChooserDialog *dialog)
 {
-  GdkRGBA color;
+  CdkRGBA color;
 
   /* This causes the color chooser widget to save the
    * selected and custom colors to GSettings.
@@ -83,7 +83,7 @@ save_color (CtkColorChooserDialog *dialog)
 
 static void
 color_activated_cb (CtkColorChooser *chooser,
-                    GdkRGBA         *color,
+                    CdkRGBA         *color,
                     CtkDialog       *dialog)
 {
   save_color (CTK_COLOR_CHOOSER_DIALOG (dialog));
@@ -142,7 +142,7 @@ ctk_color_chooser_dialog_get_property (GObject    *object,
     {
     case PROP_RGBA:
       {
-        GdkRGBA color;
+        CdkRGBA color;
 
         ctk_color_chooser_get_rgba (cc, &color);
         g_value_set_boxed (value, &color);
@@ -224,7 +224,7 @@ ctk_color_chooser_dialog_class_init (CtkColorChooserDialogClass *class)
 
 static void
 ctk_color_chooser_dialog_get_rgba (CtkColorChooser *chooser,
-                                   GdkRGBA         *color)
+                                   CdkRGBA         *color)
 {
   CtkColorChooserDialog *cc = CTK_COLOR_CHOOSER_DIALOG (chooser);
 
@@ -233,7 +233,7 @@ ctk_color_chooser_dialog_get_rgba (CtkColorChooser *chooser,
 
 static void
 ctk_color_chooser_dialog_set_rgba (CtkColorChooser *chooser,
-                                   const GdkRGBA   *color)
+                                   const CdkRGBA   *color)
 {
   CtkColorChooserDialog *cc = CTK_COLOR_CHOOSER_DIALOG (chooser);
 
@@ -245,7 +245,7 @@ ctk_color_chooser_dialog_add_palette (CtkColorChooser *chooser,
                                       CtkOrientation   orientation,
                                       gint             colors_per_line,
                                       gint             n_colors,
-                                      GdkRGBA         *colors)
+                                      CdkRGBA         *colors)
 {
   CtkColorChooserDialog *cc = CTK_COLOR_CHOOSER_DIALOG (chooser);
 

@@ -24,7 +24,7 @@
 #include "cdkintl.h"
 
 
-G_DEFINE_TYPE (GdkDeviceTool, cdk_device_tool, G_TYPE_OBJECT)
+G_DEFINE_TYPE (CdkDeviceTool, cdk_device_tool, G_TYPE_OBJECT)
 
 enum {
   TOOL_PROP_0,
@@ -43,7 +43,7 @@ cdk_device_tool_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  GdkDeviceTool *tool = GDK_DEVICE_TOOL (object);
+  CdkDeviceTool *tool = GDK_DEVICE_TOOL (object);
 
   switch (prop_id)
     {
@@ -71,7 +71,7 @@ cdk_device_tool_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  GdkDeviceTool *tool = GDK_DEVICE_TOOL (object);
+  CdkDeviceTool *tool = GDK_DEVICE_TOOL (object);
 
   switch (prop_id)
     {
@@ -94,7 +94,7 @@ cdk_device_tool_get_property (GObject    *object,
 }
 
 static void
-cdk_device_tool_class_init (GdkDeviceToolClass *klass)
+cdk_device_tool_class_init (CdkDeviceToolClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -131,15 +131,15 @@ cdk_device_tool_class_init (GdkDeviceToolClass *klass)
 }
 
 static void
-cdk_device_tool_init (GdkDeviceTool *tool)
+cdk_device_tool_init (CdkDeviceTool *tool)
 {
 }
 
-GdkDeviceTool *
+CdkDeviceTool *
 cdk_device_tool_new (guint64           serial,
                      guint64           hw_id,
-                     GdkDeviceToolType type,
-                     GdkAxisFlags      tool_axes)
+                     CdkDeviceToolType type,
+                     CdkAxisFlags      tool_axes)
 {
   return g_object_new (GDK_TYPE_DEVICE_TOOL,
                        "serial", serial,
@@ -151,7 +151,7 @@ cdk_device_tool_new (guint64           serial,
 
 /**
  * cdk_device_tool_get_serial:
- * @tool: a #GdkDeviceTool
+ * @tool: a #CdkDeviceTool
  *
  * Gets the serial of this tool, this value can be used to identify a
  * physical tool (eg. a tablet pen) across program executions.
@@ -161,7 +161,7 @@ cdk_device_tool_new (guint64           serial,
  * Since: 3.22
  **/
 guint64
-cdk_device_tool_get_serial (GdkDeviceTool *tool)
+cdk_device_tool_get_serial (CdkDeviceTool *tool)
 {
   g_return_val_if_fail (tool != NULL, 0);
 
@@ -170,7 +170,7 @@ cdk_device_tool_get_serial (GdkDeviceTool *tool)
 
 /**
  * cdk_device_tool_get_hardware_id:
- * @tool: a #GdkDeviceTool
+ * @tool: a #CdkDeviceTool
  *
  * Gets the hardware ID of this tool, or 0 if it's not known. When
  * non-zero, the identificator is unique for the given tool model,
@@ -178,8 +178,8 @@ cdk_device_tool_get_serial (GdkDeviceTool *tool)
  * but will have different serial numbers (see cdk_device_tool_get_serial()).
  *
  * This is a more concrete (and device specific) method to identify
- * a #GdkDeviceTool than cdk_device_tool_get_tool_type(), as a tablet
- * may support multiple devices with the same #GdkDeviceToolType,
+ * a #CdkDeviceTool than cdk_device_tool_get_tool_type(), as a tablet
+ * may support multiple devices with the same #CdkDeviceToolType,
  * but having different hardware identificators.
  *
  * Returns: The hardware identificator of this tool.
@@ -187,7 +187,7 @@ cdk_device_tool_get_serial (GdkDeviceTool *tool)
  * Since: 3.22
  **/
 guint64
-cdk_device_tool_get_hardware_id (GdkDeviceTool *tool)
+cdk_device_tool_get_hardware_id (CdkDeviceTool *tool)
 {
   g_return_val_if_fail (tool != NULL, 0);
 
@@ -196,17 +196,17 @@ cdk_device_tool_get_hardware_id (GdkDeviceTool *tool)
 
 /**
  * cdk_device_tool_get_tool_type:
- * @tool: a #GdkDeviceTool
+ * @tool: a #CdkDeviceTool
  *
- * Gets the #GdkDeviceToolType of the tool.
+ * Gets the #CdkDeviceToolType of the tool.
  *
  * Returns: The physical type for this tool. This can be used to figure out what
  * sort of pen is being used, such as an airbrush or a pencil.
  *
  * Since: 3.22
  **/
-GdkDeviceToolType
-cdk_device_tool_get_tool_type (GdkDeviceTool *tool)
+CdkDeviceToolType
+cdk_device_tool_get_tool_type (CdkDeviceTool *tool)
 {
   g_return_val_if_fail (tool != NULL, GDK_DEVICE_TOOL_TYPE_UNKNOWN);
 

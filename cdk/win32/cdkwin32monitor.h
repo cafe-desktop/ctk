@@ -32,15 +32,15 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_WIN32_MONITOR           (cdk_win32_monitor_get_type ())
-#define GDK_WIN32_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_MONITOR, GdkWin32Monitor))
+#define GDK_WIN32_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_MONITOR, CdkWin32Monitor))
 #define GDK_IS_WIN32_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_MONITOR))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkWin32Monitor      GdkWin32Monitor;
+typedef struct _CdkWin32Monitor      CdkWin32Monitor;
 #else
-typedef GdkMonitor GdkWin32Monitor;
+typedef CdkMonitor CdkWin32Monitor;
 #endif
-typedef struct _GdkWin32MonitorClass GdkWin32MonitorClass;
+typedef struct _CdkWin32MonitorClass CdkWin32MonitorClass;
 
 GDK_AVAILABLE_IN_3_22
 GType             cdk_win32_monitor_get_type            (void) G_GNUC_CONST;

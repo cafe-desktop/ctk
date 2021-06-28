@@ -21,78 +21,78 @@
 #include <cdk/cdkdeviceprivate.h>
 #include <cdk/cdkdisplayprivate.h>
 
-#import "GdkQuartzView.h"
+#import "CdkQuartzView.h"
 #include "cdkquartzwindow.h"
 #include "cdkquartzcursor.h"
 #include "cdkprivate-quartz.h"
 #include "cdkquartzdevice-core.h"
 #include "cdkinternal-quartz.h"
 
-struct _GdkQuartzDeviceCore
+struct _CdkQuartzDeviceCore
 {
-  GdkDevice parent_instance;
+  CdkDevice parent_instance;
 
   gboolean active;
   NSUInteger device_id;
   unsigned long long unique_id;
 };
 
-struct _GdkQuartzDeviceCoreClass
+struct _CdkQuartzDeviceCoreClass
 {
-  GdkDeviceClass parent_class;
+  CdkDeviceClass parent_class;
 };
 
-static gboolean cdk_quartz_device_core_get_history (GdkDevice      *device,
-                                                    GdkWindow      *window,
+static gboolean cdk_quartz_device_core_get_history (CdkDevice      *device,
+                                                    CdkWindow      *window,
                                                     guint32         start,
                                                     guint32         stop,
-                                                    GdkTimeCoord ***events,
+                                                    CdkTimeCoord ***events,
                                                     gint           *n_events);
-static void cdk_quartz_device_core_get_state (GdkDevice       *device,
-                                              GdkWindow       *window,
+static void cdk_quartz_device_core_get_state (CdkDevice       *device,
+                                              CdkWindow       *window,
                                               gdouble         *axes,
-                                              GdkModifierType *mask);
-static void cdk_quartz_device_core_set_window_cursor (GdkDevice *device,
-                                                      GdkWindow *window,
-                                                      GdkCursor *cursor);
-static void cdk_quartz_device_core_warp (GdkDevice *device,
-                                         GdkScreen *screen,
+                                              CdkModifierType *mask);
+static void cdk_quartz_device_core_set_window_cursor (CdkDevice *device,
+                                                      CdkWindow *window,
+                                                      CdkCursor *cursor);
+static void cdk_quartz_device_core_warp (CdkDevice *device,
+                                         CdkScreen *screen,
                                          gdouble    x,
                                          gdouble    y);
-static void cdk_quartz_device_core_query_state (GdkDevice        *device,
-                                                GdkWindow        *window,
-                                                GdkWindow       **root_window,
-                                                GdkWindow       **child_window,
+static void cdk_quartz_device_core_query_state (CdkDevice        *device,
+                                                CdkWindow        *window,
+                                                CdkWindow       **root_window,
+                                                CdkWindow       **child_window,
                                                 gdouble          *root_x,
                                                 gdouble          *root_y,
                                                 gdouble          *win_x,
                                                 gdouble          *win_y,
-                                                GdkModifierType  *mask);
-static GdkGrabStatus cdk_quartz_device_core_grab   (GdkDevice     *device,
-                                                    GdkWindow     *window,
+                                                CdkModifierType  *mask);
+static CdkGrabStatus cdk_quartz_device_core_grab   (CdkDevice     *device,
+                                                    CdkWindow     *window,
                                                     gboolean       owner_events,
-                                                    GdkEventMask   event_mask,
-                                                    GdkWindow     *confine_to,
-                                                    GdkCursor     *cursor,
+                                                    CdkEventMask   event_mask,
+                                                    CdkWindow     *confine_to,
+                                                    CdkCursor     *cursor,
                                                     guint32        time_);
-static void          cdk_quartz_device_core_ungrab (GdkDevice     *device,
+static void          cdk_quartz_device_core_ungrab (CdkDevice     *device,
                                                     guint32        time_);
-static GdkWindow * cdk_quartz_device_core_window_at_position (GdkDevice       *device,
+static CdkWindow * cdk_quartz_device_core_window_at_position (CdkDevice       *device,
                                                               gdouble         *win_x,
                                                               gdouble         *win_y,
-                                                              GdkModifierType *mask,
+                                                              CdkModifierType *mask,
                                                               gboolean         get_toplevel);
-static void      cdk_quartz_device_core_select_window_events (GdkDevice       *device,
-                                                              GdkWindow       *window,
-                                                              GdkEventMask     event_mask);
+static void      cdk_quartz_device_core_select_window_events (CdkDevice       *device,
+                                                              CdkWindow       *window,
+                                                              CdkEventMask     event_mask);
 
 
-G_DEFINE_TYPE (GdkQuartzDeviceCore, cdk_quartz_device_core, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkQuartzDeviceCore, cdk_quartz_device_core, GDK_TYPE_DEVICE)
 
 static void
-cdk_quartz_device_core_class_init (GdkQuartzDeviceCoreClass *klass)
+cdk_quartz_device_core_class_init (CdkQuartzDeviceCoreClass *klass)
 {
-  GdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_quartz_device_core_get_history;
   device_class->get_state = cdk_quartz_device_core_get_state;
@@ -106,9 +106,9 @@ cdk_quartz_device_core_class_init (GdkQuartzDeviceCoreClass *klass)
 }
 
 static void
-cdk_quartz_device_core_init (GdkQuartzDeviceCore *quartz_device_core)
+cdk_quartz_device_core_init (CdkQuartzDeviceCore *quartz_device_core)
 {
-  GdkDevice *device;
+  CdkDevice *device;
 
   device = GDK_DEVICE (quartz_device_core);
 
@@ -117,21 +117,21 @@ cdk_quartz_device_core_init (GdkQuartzDeviceCore *quartz_device_core)
 }
 
 static gboolean
-cdk_quartz_device_core_get_history (GdkDevice      *device,
-                                    GdkWindow      *window,
+cdk_quartz_device_core_get_history (CdkDevice      *device,
+                                    CdkWindow      *window,
                                     guint32         start,
                                     guint32         stop,
-                                    GdkTimeCoord ***events,
+                                    CdkTimeCoord ***events,
                                     gint           *n_events)
 {
   return FALSE;
 }
 
 static void
-cdk_quartz_device_core_get_state (GdkDevice       *device,
-                                  GdkWindow       *window,
+cdk_quartz_device_core_get_state (CdkDevice       *device,
+                                  CdkWindow       *window,
                                   gdouble         *axes,
-                                  GdkModifierType *mask)
+                                  CdkModifierType *mask)
 {
   gint x_int, y_int;
 
@@ -145,12 +145,12 @@ cdk_quartz_device_core_get_state (GdkDevice       *device,
 }
 
 static void
-translate_coords_to_child_coords (GdkWindow *parent,
-                                  GdkWindow *child,
+translate_coords_to_child_coords (CdkWindow *parent,
+                                  CdkWindow *child,
                                   gint      *x,
                                   gint      *y)
 {
-  GdkWindow *current = child;
+  CdkWindow *current = child;
 
   if (child == parent)
     return;
@@ -169,9 +169,9 @@ translate_coords_to_child_coords (GdkWindow *parent,
 }
 
 static void
-cdk_quartz_device_core_set_window_cursor (GdkDevice *device,
-                                          GdkWindow *window,
-                                          GdkCursor *cursor)
+cdk_quartz_device_core_set_window_cursor (CdkDevice *device,
+                                          CdkWindow *window,
+                                          CdkCursor *cursor)
 {
   NSCursor *nscursor;
 
@@ -184,25 +184,25 @@ cdk_quartz_device_core_set_window_cursor (GdkDevice *device,
 }
 
 static void
-cdk_quartz_device_core_warp (GdkDevice *device,
-                             GdkScreen *screen,
+cdk_quartz_device_core_warp (CdkDevice *device,
+                             CdkScreen *screen,
                              gdouble    x,
                              gdouble    y)
 {
   CGDisplayMoveCursorToPoint (CGMainDisplayID (), CGPointMake (x, y));
 }
 
-static GdkWindow *
-cdk_quartz_device_core_query_state_helper (GdkWindow       *window,
-                                           GdkDevice       *device,
+static CdkWindow *
+cdk_quartz_device_core_query_state_helper (CdkWindow       *window,
+                                           CdkDevice       *device,
                                            gdouble         *x,
                                            gdouble         *y,
-                                           GdkModifierType *mask)
+                                           CdkModifierType *mask)
 {
-  GdkWindow *toplevel;
+  CdkWindow *toplevel;
   NSPoint point;
   gint x_tmp, y_tmp;
-  GdkWindow *found_window;
+  CdkWindow *found_window;
 
   g_return_val_if_fail (window == NULL || GDK_IS_WINDOW (window), NULL);
 
@@ -228,7 +228,7 @@ cdk_quartz_device_core_query_state_helper (GdkWindow       *window,
     }
   else
     {
-      GdkWindowImplQuartz *impl;
+      CdkWindowImplQuartz *impl;
       NSWindow *nswindow;
 
       impl = GDK_WINDOW_IMPL_QUARTZ (toplevel->impl);
@@ -261,17 +261,17 @@ cdk_quartz_device_core_query_state_helper (GdkWindow       *window,
 }
 
 static void
-cdk_quartz_device_core_query_state (GdkDevice        *device,
-                                    GdkWindow        *window,
-                                    GdkWindow       **root_window,
-                                    GdkWindow       **child_window,
+cdk_quartz_device_core_query_state (CdkDevice        *device,
+                                    CdkWindow        *window,
+                                    CdkWindow       **root_window,
+                                    CdkWindow       **child_window,
                                     gdouble          *root_x,
                                     gdouble          *root_y,
                                     gdouble          *win_x,
                                     gdouble          *win_y,
-                                    GdkModifierType  *mask)
+                                    CdkModifierType  *mask)
 {
-  GdkWindow *found_window;
+  CdkWindow *found_window;
   NSPoint point;
   gint x_tmp, y_tmp;
 
@@ -295,13 +295,13 @@ cdk_quartz_device_core_query_state (GdkDevice        *device,
     *root_y = y_tmp;
 }
 
-static GdkGrabStatus
-cdk_quartz_device_core_grab (GdkDevice    *device,
-                             GdkWindow    *window,
+static CdkGrabStatus
+cdk_quartz_device_core_grab (CdkDevice    *device,
+                             CdkWindow    *window,
                              gboolean      owner_events,
-                             GdkEventMask  event_mask,
-                             GdkWindow    *confine_to,
-                             GdkCursor    *cursor,
+                             CdkEventMask  event_mask,
+                             CdkWindow    *confine_to,
+                             CdkCursor    *cursor,
                              guint32       time_)
 {
   /* Should remain empty */
@@ -309,10 +309,10 @@ cdk_quartz_device_core_grab (GdkDevice    *device,
 }
 
 static void
-cdk_quartz_device_core_ungrab (GdkDevice *device,
+cdk_quartz_device_core_ungrab (CdkDevice *device,
                                guint32    time_)
 {
-  GdkDeviceGrabInfo *grab;
+  CdkDeviceGrabInfo *grab;
 
   grab = _cdk_display_get_last_device_grab (_cdk_display, device);
   if (grab)
@@ -321,16 +321,16 @@ cdk_quartz_device_core_ungrab (GdkDevice *device,
   _cdk_display_device_grab_update (_cdk_display, device, NULL, 0);
 }
 
-static GdkWindow *
-cdk_quartz_device_core_window_at_position (GdkDevice       *device,
+static CdkWindow *
+cdk_quartz_device_core_window_at_position (CdkDevice       *device,
                                            gdouble         *win_x,
                                            gdouble         *win_y,
-                                           GdkModifierType *mask,
+                                           CdkModifierType *mask,
                                            gboolean         get_toplevel)
 {
-  GdkDisplay *display;
-  GdkScreen *screen;
-  GdkWindow *found_window;
+  CdkDisplay *display;
+  CdkScreen *screen;
+  CdkWindow *found_window;
   NSPoint point;
   gint x_tmp, y_tmp;
 
@@ -362,42 +362,42 @@ cdk_quartz_device_core_window_at_position (GdkDevice       *device,
 }
 
 static void
-cdk_quartz_device_core_select_window_events (GdkDevice    *device,
-                                             GdkWindow    *window,
-                                             GdkEventMask  event_mask)
+cdk_quartz_device_core_select_window_events (CdkDevice    *device,
+                                             CdkWindow    *window,
+                                             CdkEventMask  event_mask)
 {
   /* The mask is set in the common code. */
 }
 
 void
-_cdk_quartz_device_core_set_active (GdkDevice  *device,
+_cdk_quartz_device_core_set_active (CdkDevice  *device,
                                     gboolean    active,
                                     NSUInteger  device_id)
 {
-  GdkQuartzDeviceCore *self = GDK_QUARTZ_DEVICE_CORE (device);
+  CdkQuartzDeviceCore *self = GDK_QUARTZ_DEVICE_CORE (device);
 
   self->active = active;
   self->device_id = device_id;
 }
 
 gboolean
-_cdk_quartz_device_core_is_active (GdkDevice  *device,
+_cdk_quartz_device_core_is_active (CdkDevice  *device,
                                    NSUInteger  device_id)
 {
-  GdkQuartzDeviceCore *self = GDK_QUARTZ_DEVICE_CORE (device);
+  CdkQuartzDeviceCore *self = GDK_QUARTZ_DEVICE_CORE (device);
 
   return (self->active && self->device_id == device_id);
 }
 
 void
-_cdk_quartz_device_core_set_unique (GdkDevice          *device,
+_cdk_quartz_device_core_set_unique (CdkDevice          *device,
                                     unsigned long long  unique_id)
 {
   GDK_QUARTZ_DEVICE_CORE (device)->unique_id = unique_id;
 }
 
 unsigned long long
-_cdk_quartz_device_core_get_unique (GdkDevice *device)
+_cdk_quartz_device_core_get_unique (CdkDevice *device)
 {
   return GDK_QUARTZ_DEVICE_CORE (device)->unique_id;
 }

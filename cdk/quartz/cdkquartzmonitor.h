@@ -29,11 +29,11 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_QUARTZ_MONITOR           (cdk_quartz_monitor_get_type ())
-#define GDK_QUARTZ_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_MONITOR, GdkQuartzMonitor))
+#define GDK_QUARTZ_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_MONITOR, CdkQuartzMonitor))
 #define GDK_IS_QUARTZ_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_MONITOR))
 
-typedef struct _GdkQuartzMonitor      GdkQuartzMonitor;
-typedef struct _GdkQuartzMonitorClass GdkQuartzMonitorClass;
+typedef struct _CdkQuartzMonitor      CdkQuartzMonitor;
+typedef struct _CdkQuartzMonitorClass CdkQuartzMonitorClass;
 
 GDK_AVAILABLE_IN_3_22
 GType             cdk_quartz_monitor_get_type            (void) G_GNUC_CONST;

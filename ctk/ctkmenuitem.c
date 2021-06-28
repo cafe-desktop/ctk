@@ -151,9 +151,9 @@ static void ctk_menu_item_unrealize      (CtkWidget        *widget);
 static void ctk_menu_item_map            (CtkWidget        *widget);
 static void ctk_menu_item_unmap          (CtkWidget        *widget);
 static gboolean ctk_menu_item_enter      (CtkWidget        *widget,
-                                          GdkEventCrossing *event);
+                                          CdkEventCrossing *event);
 static gboolean ctk_menu_item_leave      (CtkWidget        *widget,
-                                          GdkEventCrossing *event);
+                                          CdkEventCrossing *event);
 static void ctk_menu_item_parent_set     (CtkWidget        *widget,
                                           CtkWidget        *previous_parent);
 static void ctk_menu_item_direction_changed (CtkWidget        *widget,
@@ -1656,8 +1656,8 @@ ctk_menu_item_realize (CtkWidget *widget)
   CtkMenuItem *menu_item = CTK_MENU_ITEM (widget);
   CtkMenuItemPrivate *priv = menu_item->priv;
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   ctk_widget_set_realized (widget, TRUE);
@@ -1725,28 +1725,28 @@ ctk_menu_item_unmap (CtkWidget *widget)
 
 static gboolean
 ctk_menu_item_enter (CtkWidget        *widget,
-                     GdkEventCrossing *event)
+                     CdkEventCrossing *event)
 {
   g_return_val_if_fail (event != NULL, FALSE);
 
-  return ctk_widget_event (ctk_widget_get_parent (widget), (GdkEvent *) event);
+  return ctk_widget_event (ctk_widget_get_parent (widget), (CdkEvent *) event);
 }
 
 static gboolean
 ctk_menu_item_leave (CtkWidget        *widget,
-                     GdkEventCrossing *event)
+                     CdkEventCrossing *event)
 {
   g_return_val_if_fail (event != NULL, FALSE);
 
-  return ctk_widget_event (ctk_widget_get_parent (widget), (GdkEvent*) event);
+  return ctk_widget_event (ctk_widget_get_parent (widget), (CdkEvent*) event);
 }
 
 static void
 ctk_real_menu_item_select (CtkMenuItem *menu_item)
 {
   CtkMenuItemPrivate *priv = menu_item->priv;
-  GdkDevice *source_device = NULL;
-  GdkEvent *current_event;
+  CdkDevice *source_device = NULL;
+  CdkEvent *current_event;
 
   current_event = ctk_get_current_event ();
 
@@ -1907,8 +1907,8 @@ free_timeval (GTimeVal *val)
 
 static void
 popped_up_cb (CtkMenu            *menu,
-              const GdkRectangle *flipped_rect,
-              const GdkRectangle *final_rect,
+              const CdkRectangle *flipped_rect,
+              const CdkRectangle *final_rect,
               gboolean            flipped_x,
               gboolean            flipped_y,
               CtkMenuItem        *menu_item)
@@ -1941,7 +1941,7 @@ popped_up_cb (CtkMenu            *menu,
 
 static void
 ctk_menu_item_real_popup_submenu (CtkWidget      *widget,
-                                  const GdkEvent *trigger_event,
+                                  const CdkEvent *trigger_event,
                                   gboolean        remember_exact_time)
 {
   CtkMenuItem *menu_item = CTK_MENU_ITEM (widget);
@@ -2077,7 +2077,7 @@ ctk_menu_item_real_popup_submenu (CtkWidget      *widget,
 typedef struct
 {
   CtkMenuItem *menu_item;
-  GdkEvent    *trigger_event;
+  CdkEvent    *trigger_event;
 } PopupInfo;
 
 static gint

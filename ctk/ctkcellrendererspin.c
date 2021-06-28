@@ -69,11 +69,11 @@ static void ctk_cell_renderer_spin_set_property (GObject      *object,
 						 GParamSpec   *spec);
 
 static CtkCellEditable * ctk_cell_renderer_spin_start_editing (CtkCellRenderer     *cell,
-							       GdkEvent            *event,
+							       CdkEvent            *event,
 							       CtkWidget           *widget,
 							       const gchar         *path,
-							       const GdkRectangle  *background_area,
-							       const GdkRectangle  *cell_area,
+							       const CdkRectangle  *background_area,
+							       const CdkRectangle  *cell_area,
 							       CtkCellRendererState flags);
 enum {
   PROP_0,
@@ -246,7 +246,7 @@ ctk_cell_renderer_spin_set_property (GObject      *object,
 
 static gboolean
 ctk_cell_renderer_spin_focus_out_event (CtkWidget *widget,
-					GdkEvent  *event,
+					CdkEvent  *event,
 					gpointer   data)
 {
   const gchar *path;
@@ -276,7 +276,7 @@ ctk_cell_renderer_spin_focus_out_event (CtkWidget *widget,
 
 static gboolean
 ctk_cell_renderer_spin_key_press_event (CtkWidget   *widget,
-					GdkEventKey *event,
+					CdkEventKey *event,
 					gpointer     data)
 {
   if (event->state == 0)
@@ -298,7 +298,7 @@ ctk_cell_renderer_spin_key_press_event (CtkWidget   *widget,
 
 static gboolean
 ctk_cell_renderer_spin_button_press_event (CtkWidget      *widget,
-                                           GdkEventButton *event,
+                                           CdkEventButton *event,
                                            gpointer        user_data)
 {
   /* Block 2BUTTON and 3BUTTON here, so that they won't be eaten
@@ -313,11 +313,11 @@ ctk_cell_renderer_spin_button_press_event (CtkWidget      *widget,
 
 static CtkCellEditable *
 ctk_cell_renderer_spin_start_editing (CtkCellRenderer      *cell,
-				      GdkEvent             *event,
+				      CdkEvent             *event,
 				      CtkWidget            *widget,
 				      const gchar          *path,
-				      const GdkRectangle   *background_area,
-				      const GdkRectangle   *cell_area,
+				      const CdkRectangle   *background_area,
+				      const CdkRectangle   *cell_area,
 				      CtkCellRendererState  flags)
 {
   CtkCellRendererSpinPrivate *priv;

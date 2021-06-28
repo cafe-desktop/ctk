@@ -47,7 +47,7 @@ static void im_context_multipress_finalize (GObject *obj);
 static void load_config (CtkImContextMultipress *self);
 
 static gboolean vfunc_filter_keypress (CtkIMContext *context,
-                                       GdkEventKey  *event);
+                                       CdkEventKey  *event);
 static void vfunc_reset (CtkIMContext *context);
 static void vfunc_get_preedit_string (CtkIMContext   *context,
                                       gchar         **str,
@@ -217,7 +217,7 @@ on_timeout (gpointer data)
 }
 
 static gboolean
-vfunc_filter_keypress (CtkIMContext *context, GdkEventKey *event)
+vfunc_filter_keypress (CtkIMContext *context, CdkEventKey *event)
 {
   CtkIMContextClass      *parent;
   CtkImContextMultipress *multipress_context;

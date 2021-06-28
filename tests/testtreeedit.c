@@ -134,7 +134,7 @@ edited (CtkCellRendererText *cell,
 }
 
 static gboolean
-button_press_event (CtkWidget *widget, GdkEventButton *event, gpointer callback_data)
+button_press_event (CtkWidget *widget, CdkEventButton *event, gpointer callback_data)
 {
 	/* Deselect if people click outside any row. */
 	if (event->window == ctk_tree_view_get_bin_window (CTK_TREE_VIEW (widget))

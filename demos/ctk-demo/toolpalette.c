@@ -17,7 +17,7 @@ typedef struct _CanvasItem CanvasItem;
 
 struct _CanvasItem
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gdouble x, y;
 };
 
@@ -37,7 +37,7 @@ canvas_item_new (CtkWidget     *widget,
 {
   CanvasItem *item = NULL;
   const gchar *icon_name;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   CtkIconTheme *icon_theme;
   int width;
 
@@ -164,7 +164,7 @@ palette_drop_group (CtkToolPalette   *palette,
 
 static void
 palette_drag_data_received (CtkWidget        *widget,
-                            GdkDragContext   *context,
+                            CdkDragContext   *context,
                             gint              x,
                             gint              y,
                             CtkSelectionData *selection,
@@ -208,7 +208,7 @@ palette_drag_data_received (CtkWidget        *widget,
 
 static void
 passive_canvas_drag_data_received (CtkWidget        *widget,
-                                   GdkDragContext   *context,
+                                   CdkDragContext   *context,
                                    gint              x,
                                    gint              y,
                                    CtkSelectionData *selection,
@@ -249,7 +249,7 @@ passive_canvas_drag_data_received (CtkWidget        *widget,
 
 static gboolean
 interactive_canvas_drag_motion (CtkWidget      *widget,
-                                GdkDragContext *context,
+                                CdkDragContext *context,
                                 gint            x,
                                 gint            y,
                                 guint           time,
@@ -269,7 +269,7 @@ interactive_canvas_drag_motion (CtkWidget      *widget,
     {
       /* request DnD data for creating a drop indicator */
 
-      GdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
+      CdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
 
       if (!target)
         return FALSE;
@@ -283,7 +283,7 @@ interactive_canvas_drag_motion (CtkWidget      *widget,
 
 static void
 interactive_canvas_drag_data_received (CtkWidget        *widget,
-                                       GdkDragContext   *context,
+                                       CdkDragContext   *context,
                                        gint              x,
                                        gint              y,
                                        CtkSelectionData *selection,
@@ -339,13 +339,13 @@ interactive_canvas_drag_data_received (CtkWidget        *widget,
 
 static gboolean
 interactive_canvas_drag_drop (CtkWidget      *widget,
-                              GdkDragContext *context,
+                              CdkDragContext *context,
                               gint            x,
                               gint            y,
                               guint           time,
                               gpointer        data)
 {
-  GdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
+  CdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
 
   if (!target)
     return FALSE;

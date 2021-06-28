@@ -24,18 +24,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_BROADWAY_VISUAL              (cdk_broadway_visual_get_type ())
-#define GDK_BROADWAY_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_VISUAL, GdkBroadwayVisual))
-#define GDK_BROADWAY_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_VISUAL, GdkBroadwayVisualClass))
+#define GDK_BROADWAY_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_VISUAL, CdkBroadwayVisual))
+#define GDK_BROADWAY_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_VISUAL, CdkBroadwayVisualClass))
 #define GDK_IS_BROADWAY_VISUAL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_VISUAL))
 #define GDK_IS_BROADWAY_VISUAL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_BROADWAY_VISUAL))
-#define GDK_BROADWAY_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_VISUAL, GdkBroadwayVisualClass))
+#define GDK_BROADWAY_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_VISUAL, CdkBroadwayVisualClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkBroadwayVisual GdkBroadwayVisual;
+typedef struct _CdkBroadwayVisual CdkBroadwayVisual;
 #else
-typedef GdkVisual GdkBroadwayVisual;
+typedef CdkVisual CdkBroadwayVisual;
 #endif
-typedef struct _GdkBroadwayVisualClass GdkBroadwayVisualClass;
+typedef struct _CdkBroadwayVisualClass CdkBroadwayVisualClass;
 
 
 GDK_AVAILABLE_IN_ALL

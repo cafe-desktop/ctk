@@ -34,8 +34,8 @@ struct _CtkButtonPrivate
   CtkActionHelper       *action_helper;
   CtkCssGadget          *gadget;
 
-  GdkDevice             *grab_keyboard;
-  GdkWindow             *event_window;
+  CdkDevice             *grab_keyboard;
+  CdkWindow             *event_window;
 
   gchar                 *label_text;
 

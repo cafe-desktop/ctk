@@ -168,7 +168,7 @@ get_checkered (void)
 static void
 draw_background (CtkWidget *widget, cairo_t *cr)
 {
-  GdkRectangle visible_rect;
+  CdkRectangle visible_rect;
   cairo_pattern_t *pat;
 
   cairo_save (cr);

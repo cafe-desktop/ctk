@@ -20,15 +20,15 @@
 #include "cdkseatdefaultprivate.h"
 #include "cdkdevicetoolprivate.h"
 
-typedef struct _GdkSeatDefaultPrivate GdkSeatDefaultPrivate;
+typedef struct _CdkSeatDefaultPrivate CdkSeatDefaultPrivate;
 
-struct _GdkSeatDefaultPrivate
+struct _CdkSeatDefaultPrivate
 {
-  GdkDevice *master_pointer;
-  GdkDevice *master_keyboard;
+  CdkDevice *master_pointer;
+  CdkDevice *master_keyboard;
   GList *slave_pointers;
   GList *slave_keyboards;
-  GdkSeatCapabilities capabilities;
+  CdkSeatCapabilities capabilities;
 
   GPtrArray *tools;
 };
@@ -45,13 +45,13 @@ struct _GdkSeatDefaultPrivate
                          GDK_PROXIMITY_IN_MASK |                        \
                          GDK_PROXIMITY_OUT_MASK)
 
-G_DEFINE_TYPE_WITH_PRIVATE (GdkSeatDefault, cdk_seat_default, GDK_TYPE_SEAT)
+G_DEFINE_TYPE_WITH_PRIVATE (CdkSeatDefault, cdk_seat_default, GDK_TYPE_SEAT)
 
 static void
 cdk_seat_dispose (GObject *object)
 {
-  GdkSeatDefault *seat = GDK_SEAT_DEFAULT (object);
-  GdkSeatDefaultPrivate *priv = cdk_seat_default_get_instance_private (seat);
+  CdkSeatDefault *seat = GDK_SEAT_DEFAULT (object);
+  CdkSeatDefaultPrivate *priv = cdk_seat_default_get_instance_private (seat);
   GList *l;
 
   if (priv->master_pointer)
@@ -92,29 +92,29 @@ cdk_seat_dispose (GObject *object)
   G_OBJECT_CLASS (cdk_seat_default_parent_class)->dispose (object);
 }
 
-static GdkSeatCapabilities
-cdk_seat_default_get_capabilities (GdkSeat *seat)
+static CdkSeatCapabilities
+cdk_seat_default_get_capabilities (CdkSeat *seat)
 {
-  GdkSeatDefaultPrivate *priv;
+  CdkSeatDefaultPrivate *priv;
 
   priv = cdk_seat_default_get_instance_private (GDK_SEAT_DEFAULT (seat));
 
   return priv->capabilities;
 }
 
-static GdkGrabStatus
-cdk_seat_default_grab (GdkSeat                *seat,
-                       GdkWindow              *window,
-                       GdkSeatCapabilities     capabilities,
+static CdkGrabStatus
+cdk_seat_default_grab (CdkSeat                *seat,
+                       CdkWindow              *window,
+                       CdkSeatCapabilities     capabilities,
                        gboolean                owner_events,
-                       GdkCursor              *cursor,
-                       const GdkEvent         *event,
-                       GdkSeatGrabPrepareFunc  prepare_func,
+                       CdkCursor              *cursor,
+                       const CdkEvent         *event,
+                       CdkSeatGrabPrepareFunc  prepare_func,
                        gpointer                prepare_func_data)
 {
-  GdkSeatDefaultPrivate *priv;
+  CdkSeatDefaultPrivate *priv;
   guint32 evtime = event ? cdk_event_get_time (event) : GDK_CURRENT_TIME;
-  GdkGrabStatus status = GDK_GRAB_SUCCESS;
+  CdkGrabStatus status = GDK_GRAB_SUCCESS;
   gboolean was_visible;
 
   priv = cdk_seat_default_get_instance_private (GDK_SEAT_DEFAULT (seat));
@@ -125,7 +125,7 @@ cdk_seat_default_grab (GdkSeat                *seat,
 
   if (!cdk_window_is_visible (window))
     {
-      g_critical ("Window %p has not been made visible in GdkSeatGrabPrepareFunc",
+      g_critical ("Window %p has not been made visible in CdkSeatGrabPrepareFunc",
                   window);
       return GDK_GRAB_NOT_VIEWABLE;
     }
@@ -135,7 +135,7 @@ cdk_seat_default_grab (GdkSeat                *seat,
   if (capabilities & GDK_SEAT_CAPABILITY_ALL_POINTING)
     {
       /* ALL_POINTING spans 3 capabilities; get the mask for the ones we have */
-      GdkEventMask pointer_evmask = 0;
+      CdkEventMask pointer_evmask = 0;
 
       /* We let tablet styli take over the pointer cursor */
       if (capabilities & (GDK_SEAT_CAPABILITY_POINTER |
@@ -177,9 +177,9 @@ cdk_seat_default_grab (GdkSeat                *seat,
 }
 
 static void
-cdk_seat_default_ungrab (GdkSeat *seat)
+cdk_seat_default_ungrab (CdkSeat *seat)
 {
-  GdkSeatDefaultPrivate *priv;
+  CdkSeatDefaultPrivate *priv;
 
   priv = cdk_seat_default_get_instance_private (GDK_SEAT_DEFAULT (seat));
 
@@ -189,11 +189,11 @@ cdk_seat_default_ungrab (GdkSeat *seat)
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
-static GdkDevice *
-cdk_seat_default_get_master (GdkSeat             *seat,
-                             GdkSeatCapabilities  capability)
+static CdkDevice *
+cdk_seat_default_get_master (CdkSeat             *seat,
+                             CdkSeatCapabilities  capability)
 {
-  GdkSeatDefaultPrivate *priv;
+  CdkSeatDefaultPrivate *priv;
 
   priv = cdk_seat_default_get_instance_private (GDK_SEAT_DEFAULT (seat));
 
@@ -213,10 +213,10 @@ cdk_seat_default_get_master (GdkSeat             *seat,
   return NULL;
 }
 
-static GdkSeatCapabilities
-device_get_capability (GdkDevice *device)
+static CdkSeatCapabilities
+device_get_capability (CdkDevice *device)
 {
-  GdkInputSource source;
+  CdkInputSource source;
 
   source = cdk_device_get_source (device);
 
@@ -238,13 +238,13 @@ device_get_capability (GdkDevice *device)
 static GList *
 append_filtered (GList               *list,
                  GList               *devices,
-                 GdkSeatCapabilities  capabilities)
+                 CdkSeatCapabilities  capabilities)
 {
   GList *l;
 
   for (l = devices; l; l = l->next)
     {
-      GdkSeatCapabilities device_cap;
+      CdkSeatCapabilities device_cap;
 
       device_cap = device_get_capability (l->data);
 
@@ -256,10 +256,10 @@ append_filtered (GList               *list,
 }
 
 static GList *
-cdk_seat_default_get_slaves (GdkSeat             *seat,
-                             GdkSeatCapabilities  capabilities)
+cdk_seat_default_get_slaves (CdkSeat             *seat,
+                             CdkSeatCapabilities  capabilities)
 {
-  GdkSeatDefaultPrivate *priv;
+  CdkSeatDefaultPrivate *priv;
   GList *devices = NULL;
 
   priv = cdk_seat_default_get_instance_private (GDK_SEAT_DEFAULT (seat));
@@ -273,13 +273,13 @@ cdk_seat_default_get_slaves (GdkSeat             *seat,
   return devices;
 }
 
-static GdkDeviceTool *
-cdk_seat_default_get_tool (GdkSeat *seat,
+static CdkDeviceTool *
+cdk_seat_default_get_tool (CdkSeat *seat,
                            guint64  serial,
                            guint64  hw_id)
 {
-  GdkSeatDefaultPrivate *priv;
-  GdkDeviceTool *tool;
+  CdkSeatDefaultPrivate *priv;
+  CdkDeviceTool *tool;
   guint i;
 
   priv = cdk_seat_default_get_instance_private (GDK_SEAT_DEFAULT (seat));
@@ -299,10 +299,10 @@ cdk_seat_default_get_tool (GdkSeat *seat,
 }
 
 static void
-cdk_seat_default_class_init (GdkSeatDefaultClass *klass)
+cdk_seat_default_class_init (CdkSeatDefaultClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GdkSeatClass *seat_class = GDK_SEAT_CLASS (klass);
+  CdkSeatClass *seat_class = GDK_SEAT_CLASS (klass);
 
   object_class->dispose = cdk_seat_dispose;
 
@@ -318,17 +318,17 @@ cdk_seat_default_class_init (GdkSeatDefaultClass *klass)
 }
 
 static void
-cdk_seat_default_init (GdkSeatDefault *seat)
+cdk_seat_default_init (CdkSeatDefault *seat)
 {
 }
 
-GdkSeat *
-cdk_seat_default_new_for_master_pair (GdkDevice *pointer,
-                                      GdkDevice *keyboard)
+CdkSeat *
+cdk_seat_default_new_for_master_pair (CdkDevice *pointer,
+                                      CdkDevice *keyboard)
 {
-  GdkSeatDefaultPrivate *priv;
-  GdkDisplay *display;
-  GdkSeat *seat;
+  CdkSeatDefaultPrivate *priv;
+  CdkDisplay *display;
+  CdkSeat *seat;
 
   display = cdk_device_get_display (pointer);
 
@@ -347,11 +347,11 @@ cdk_seat_default_new_for_master_pair (GdkDevice *pointer,
 }
 
 void
-cdk_seat_default_add_slave (GdkSeatDefault *seat,
-                            GdkDevice      *device)
+cdk_seat_default_add_slave (CdkSeatDefault *seat,
+                            CdkDevice      *device)
 {
-  GdkSeatDefaultPrivate *priv;
-  GdkSeatCapabilities capability;
+  CdkSeatDefaultPrivate *priv;
+  CdkSeatCapabilities capability;
 
   g_return_if_fail (GDK_IS_SEAT_DEFAULT (seat));
   g_return_if_fail (GDK_IS_DEVICE (device));
@@ -376,10 +376,10 @@ cdk_seat_default_add_slave (GdkSeatDefault *seat,
 }
 
 void
-cdk_seat_default_remove_slave (GdkSeatDefault *seat,
-                               GdkDevice      *device)
+cdk_seat_default_remove_slave (CdkSeatDefault *seat,
+                               CdkDevice      *device)
 {
-  GdkSeatDefaultPrivate *priv;
+  CdkSeatDefaultPrivate *priv;
   GList *l;
 
   g_return_if_fail (GDK_IS_SEAT_DEFAULT (seat));
@@ -411,10 +411,10 @@ cdk_seat_default_remove_slave (GdkSeatDefault *seat,
 }
 
 void
-cdk_seat_default_add_tool (GdkSeatDefault *seat,
-                           GdkDeviceTool  *tool)
+cdk_seat_default_add_tool (CdkSeatDefault *seat,
+                           CdkDeviceTool  *tool)
 {
-  GdkSeatDefaultPrivate *priv;
+  CdkSeatDefaultPrivate *priv;
 
   g_return_if_fail (GDK_IS_SEAT_DEFAULT (seat));
   g_return_if_fail (tool != NULL);
@@ -429,10 +429,10 @@ cdk_seat_default_add_tool (GdkSeatDefault *seat,
 }
 
 void
-cdk_seat_default_remove_tool (GdkSeatDefault *seat,
-                              GdkDeviceTool  *tool)
+cdk_seat_default_remove_tool (CdkSeatDefault *seat,
+                              CdkDeviceTool  *tool)
 {
-  GdkSeatDefaultPrivate *priv;
+  CdkSeatDefaultPrivate *priv;
 
   g_return_if_fail (GDK_IS_SEAT_DEFAULT (seat));
   g_return_if_fail (tool != NULL);

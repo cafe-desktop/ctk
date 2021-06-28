@@ -68,7 +68,7 @@
  * draw_callback (CtkWidget *widget, cairo_t *cr, gpointer data)
  * {
  *   guint width, height;
- *   GdkRGBA color;
+ *   CdkRGBA color;
  *   CtkStyleContext *context;
  *
  *   context = ctk_widget_get_style_context (widget);
@@ -188,8 +188,8 @@ static void
 ctk_drawing_area_realize (CtkWidget *widget)
 {
   CtkAllocation allocation;
-  GdkWindow *window;
-  GdkWindowAttr attributes;
+  CdkWindow *window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
 
   if (!ctk_widget_get_has_window (widget))
@@ -249,7 +249,7 @@ ctk_drawing_area_send_configure (CtkDrawingArea *darea)
 {
   CtkAllocation allocation;
   CtkWidget *widget;
-  GdkEvent *event = cdk_event_new (GDK_CONFIGURE);
+  CdkEvent *event = cdk_event_new (GDK_CONFIGURE);
 
   widget = CTK_WIDGET (darea);
   ctk_widget_get_allocation (widget, &allocation);

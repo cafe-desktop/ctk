@@ -41,7 +41,7 @@
  * be resolved with ctk_symbolic_color_resolve(), which replaces all
  * symbolic color references by the colors they refer to (in a given
  * context) and evaluates mix, shade and other expressions, resulting
- * in a #GdkRGBA value.
+ * in a #CdkRGBA value.
  *
  * It is not normally necessary to deal directly with #CtkSymbolicColors,
  * since they are mostly used behind the scenes by #CtkStyleContext and
@@ -74,7 +74,7 @@ ctk_symbolic_color_new (CtkCssValue *value)
 
 /**
  * ctk_symbolic_color_new_literal:
- * @color: a #GdkRGBA
+ * @color: a #CdkRGBA
  *
  * Creates a symbolic color pointing to a literal color.
  *
@@ -85,7 +85,7 @@ ctk_symbolic_color_new (CtkCssValue *value)
  * Deprecated: 3.8: #CtkSymbolicColor is deprecated.
  **/
 CtkSymbolicColor *
-ctk_symbolic_color_new_literal (const GdkRGBA *color)
+ctk_symbolic_color_new_literal (const CdkRGBA *color)
 {
   g_return_val_if_fail (color != NULL, NULL);
 
@@ -293,9 +293,9 @@ ctk_symbolic_color_unref (CtkSymbolicColor *color)
 gboolean
 ctk_symbolic_color_resolve (CtkSymbolicColor   *color,
 			    CtkStyleProperties *props,
-			    GdkRGBA            *resolved_color)
+			    CdkRGBA            *resolved_color)
 {
-  GdkRGBA pink = { 1.0, 0.5, 0.5, 1.0 };
+  CdkRGBA pink = { 1.0, 0.5, 0.5, 1.0 };
   CtkCssValue *v, *current;
 
   g_return_val_if_fail (color != NULL, FALSE);

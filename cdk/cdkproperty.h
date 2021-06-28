@@ -36,7 +36,7 @@ G_BEGIN_DECLS
 
 
 /**
- * GdkPropMode:
+ * CdkPropMode:
  * @GDK_PROP_MODE_REPLACE: the new data replaces the existing data.
  * @GDK_PROP_MODE_PREPEND: the new data is prepended to the existing data.
  * @GDK_PROP_MODE_APPEND: the new data is appended to the existing data.
@@ -49,44 +49,44 @@ typedef enum
   GDK_PROP_MODE_REPLACE,
   GDK_PROP_MODE_PREPEND,
   GDK_PROP_MODE_APPEND
-} GdkPropMode;
+} CdkPropMode;
 
 
 GDK_AVAILABLE_IN_ALL
-GdkAtom cdk_atom_intern (const gchar *atom_name,
+CdkAtom cdk_atom_intern (const gchar *atom_name,
                          gboolean     only_if_exists);
 GDK_AVAILABLE_IN_ALL
-GdkAtom cdk_atom_intern_static_string (const gchar *atom_name);
+CdkAtom cdk_atom_intern_static_string (const gchar *atom_name);
 GDK_AVAILABLE_IN_ALL
-gchar*  cdk_atom_name   (GdkAtom      atom);
+gchar*  cdk_atom_name   (CdkAtom      atom);
 
 
 GDK_AVAILABLE_IN_ALL
-gboolean cdk_property_get    (GdkWindow     *window,
-                              GdkAtom        property,
-                              GdkAtom        type,
+gboolean cdk_property_get    (CdkWindow     *window,
+                              CdkAtom        property,
+                              CdkAtom        type,
                               gulong         offset,
                               gulong         length,
                               gint           pdelete,
-                              GdkAtom       *actual_property_type,
+                              CdkAtom       *actual_property_type,
                               gint          *actual_format,
                               gint          *actual_length,
                               guchar       **data);
 GDK_AVAILABLE_IN_ALL
-void     cdk_property_change (GdkWindow     *window,
-                              GdkAtom        property,
-                              GdkAtom        type,
+void     cdk_property_change (CdkWindow     *window,
+                              CdkAtom        property,
+                              CdkAtom        type,
                               gint           format,
-                              GdkPropMode    mode,
+                              CdkPropMode    mode,
                               const guchar  *data,
                               gint           nelements);
 GDK_AVAILABLE_IN_ALL
-void     cdk_property_delete (GdkWindow     *window,
-                              GdkAtom        property);
+void     cdk_property_delete (CdkWindow     *window,
+                              CdkAtom        property);
 
 GDK_AVAILABLE_IN_ALL
-gint   cdk_text_property_to_utf8_list_for_display (GdkDisplay     *display,
-                                                   GdkAtom         encoding,
+gint   cdk_text_property_to_utf8_list_for_display (CdkDisplay     *display,
+                                                   CdkAtom         encoding,
                                                    gint            format,
                                                    const guchar   *text,
                                                    gint            length,

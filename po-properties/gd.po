@@ -839,8 +839,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:256
-msgid "A GdkPixbuf to display"
-msgstr "An GdkPixbuf a thèid a thaisbeanadh"
+msgid "A CdkPixbuf to display"
+msgstr "An CdkPixbuf a thèid a thaisbeanadh"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:269
 #: ctk/ctkrecentmanager.c:289
@@ -2232,16 +2232,16 @@ msgid "Cell background color"
 msgstr "Dath cùlaibh a’ chealla"
 
 #: ctk/ctkcellrenderer.c:403
-msgid "Cell background color as a GdkColor"
-msgstr "Dath cùlaibh a’ chealla mar GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Dath cùlaibh a’ chealla mar CdkColor"
 
 #: ctk/ctkcellrenderer.c:417
 msgid "Cell background RGBA color"
 msgstr "Dath RGBA cùlaibh a’ chealla"
 
 #: ctk/ctkcellrenderer.c:418
-msgid "Cell background color as a GdkRGBA"
-msgstr "Dath cùlaibh a’ chealla mar GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Dath cùlaibh a’ chealla mar CdkRGBA"
 
 #: ctk/ctkcellrenderer.c:425
 msgid "Editing"
@@ -2488,16 +2488,16 @@ msgid "Background color"
 msgstr "Dath a’ chùlaibh"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:231
-msgid "Background color as a GdkColor"
-msgstr "Dath a’ chùlaibh mar GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Dath a’ chùlaibh mar CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Dath a’ chùlaibh mar RGBA"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:246
-msgid "Background color as a GdkRGBA"
-msgstr "Dath a’ chùlaibh mar GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Dath a’ chùlaibh mar CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:261
 msgid "Foreground color name"
@@ -2508,16 +2508,16 @@ msgid "Foreground color as a string"
 msgstr "Dath a’ bheulaibh mar shreang"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:277
-msgid "Foreground color as a GdkColor"
-msgstr "Dath a’ bheulaibh mar GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Dath a’ bheulaibh mar CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Dath a’ bheulaibh mar RGBA"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:292
-msgid "Foreground color as a GdkRGBA"
-msgstr "Dath a’ bheulaibh mar GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Dath a’ bheulaibh mar CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:858 ctk/ctktexttag.c:308
 #: ctk/ctktextview.c:824
@@ -2993,8 +2993,8 @@ msgid "Color"
 msgstr "Dath"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "An dath làithreach mar GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "An dath làithreach mar CdkRGBA"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4240,8 +4240,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "An àireamh de phuingean air a bheil feum gus an gluasad aithneachadh"
 
 #: ctk/ctkgesture.c:886 ctk/ctkgesture.c:887
-msgid "GdkWindow to receive events about"
-msgstr "GdkWindow a thèid tachartasan fhaighinn mu dhèidhinn"
+msgid "CdkWindow to receive events about"
+msgstr "CdkWindow a thèid tachartasan fhaighinn mu dhèidhinn"
 
 #: ctk/ctkgesturelongpress.c:284
 msgid "Delay factor"
@@ -4587,8 +4587,8 @@ msgid "Animation"
 msgstr "Beòthachadh"
 
 #: ctk/ctkimage.c:328
-msgid "GdkPixbufAnimation to display"
-msgstr "An GdkPixbufAnimation a thèid a thaisbeanadh"
+msgid "CdkPixbufAnimation to display"
+msgstr "An CdkPixbufAnimation a thèid a thaisbeanadh"
 
 #: ctk/ctkimage.c:372
 msgid "Resource"
@@ -7933,16 +7933,16 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Stoidhle a’ bheibheil timcheall air teacsa bàr na staide"
 
 #: ctk/ctkstylecontext.c:229
-msgid "The associated GdkScreen"
-msgstr "An GdkScreen co-cheangailte"
+msgid "The associated CdkScreen"
+msgstr "An CdkScreen co-cheangailte"
 
 #: ctk/ctkstylecontext.c:235
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:236
-msgid "The associated GdkFrameClock"
-msgstr "An GdkFrameClock co-cheangailte"
+msgid "The associated CdkFrameClock"
+msgstr "An CdkFrameClock co-cheangailte"
 
 #: ctk/ctkstylecontext.c:243 ctk/ctktexttag.c:299
 msgid "Text direction"
@@ -8243,16 +8243,16 @@ msgid "Paragraph background color"
 msgstr "Dath cùlaibh a’ pharagraif"
 
 #: ctk/ctktexttag.c:630
-msgid "Paragraph background color as a GdkColor"
-msgstr "Dath cùlaibh a’ pharagraif mar GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Dath cùlaibh a’ pharagraif mar CdkColor"
 
 #: ctk/ctktexttag.c:644
 msgid "Paragraph background RGBA"
 msgstr "RGBA cùlaibh a’ pharagraif"
 
 #: ctk/ctktexttag.c:645
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "RGBA cùlaibh a’ pharagraif mar GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "RGBA cùlaibh a’ pharagraif mar CdkRGBA"
 
 #: ctk/ctktexttag.c:662
 msgid "Fallback"
@@ -9292,9 +9292,9 @@ msgid "Events"
 msgstr "Tachartasan"
 
 #: ctk/ctkwidget.c:1253
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Am masg tachartais a a cho-dhùineas dè seòrsa de GdkEvents a gheibh a’ "
+"Am masg tachartais a a cho-dhùineas dè seòrsa de CdkEvents a gheibh a’ "
 "widget"
 
 #: ctk/ctkwidget.c:1260

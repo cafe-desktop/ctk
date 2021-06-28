@@ -138,9 +138,9 @@ msgstr "Nutswenk"
 
 #: cdk/cdkdevice.c:329
 #, fuzzy
-#| msgid "The GdkFont that is currently selected"
+#| msgid "The CdkFont that is currently selected"
 msgid "The tool that is currently used with this device"
-msgstr "Die GdkFont wat tans geselekteer is"
+msgstr "Die CdkFont wat tans geselekteer is"
 
 #: cdk/cdkdevicemanager.c:186
 #, fuzzy
@@ -877,8 +877,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:256
-msgid "A GdkPixbuf to display"
-msgstr "'n GdkPixbuf om te vertoon"
+msgid "A CdkPixbuf to display"
+msgstr "'n CdkPixbuf om te vertoon"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:269
 #: ctk/ctkrecentmanager.c:289
@@ -2401,8 +2401,8 @@ msgid "Cell background color"
 msgstr "Selagtergrondkleur"
 
 #: ctk/ctkcellrenderer.c:407
-msgid "Cell background color as a GdkColor"
-msgstr "Selagtergrondkleur as 'n GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Selagtergrondkleur as 'n CdkColor"
 
 #: ctk/ctkcellrenderer.c:421
 #, fuzzy
@@ -2412,9 +2412,9 @@ msgstr "Selagtergrondkleur"
 
 #: ctk/ctkcellrenderer.c:422
 #, fuzzy
-#| msgid "Cell background color as a GdkColor"
-msgid "Cell background color as a GdkRGBA"
-msgstr "Selagtergrondkleur as 'n GdkColor"
+#| msgid "Cell background color as a CdkColor"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Selagtergrondkleur as 'n CdkColor"
 
 #: ctk/ctkcellrenderer.c:429
 #, fuzzy
@@ -2667,8 +2667,8 @@ msgid "Background color"
 msgstr "Agtergrondkleur"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:231
-msgid "Background color as a GdkColor"
-msgstr "Agtergrondkleur as 'n GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Agtergrondkleur as 'n CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 #, fuzzy
@@ -2678,9 +2678,9 @@ msgstr "Agtergrondkleur-naam"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:246
 #, fuzzy
-#| msgid "Background color as a GdkColor"
-msgid "Background color as a GdkRGBA"
-msgstr "Agtergrondkleur as 'n GdkColor"
+#| msgid "Background color as a CdkColor"
+msgid "Background color as a CdkRGBA"
+msgstr "Agtergrondkleur as 'n CdkColor"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:261
 msgid "Foreground color name"
@@ -2691,8 +2691,8 @@ msgid "Foreground color as a string"
 msgstr "Voorgrondkleur as 'n string"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:277
-msgid "Foreground color as a GdkColor"
-msgstr "Voorgrondkleur as 'n GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Voorgrondkleur as 'n CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 #, fuzzy
@@ -2702,9 +2702,9 @@ msgstr "Voorgrondkleur-naam"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:292
 #, fuzzy
-#| msgid "Foreground color as a GdkColor"
-msgid "Foreground color as a GdkRGBA"
-msgstr "Voorgrondkleur as 'n GdkColor"
+#| msgid "Foreground color as a CdkColor"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Voorgrondkleur as 'n CdkColor"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:858 ctk/ctktexttag.c:308
 #: ctk/ctktextview.c:824
@@ -3199,9 +3199,9 @@ msgstr "Kleurruimte"
 
 #: ctk/ctkcolorchooser.c:68
 #, fuzzy
-#| msgid "Foreground color as a GdkColor"
-msgid "Current color, as a GdkRGBA"
-msgstr "Voorgrondkleur as 'n GdkColor"
+#| msgid "Foreground color as a CdkColor"
+msgid "Current color, as a CdkRGBA"
+msgstr "Voorgrondkleur as 'n CdkColor"
 
 #: ctk/ctkcolorchooser.c:88
 #, fuzzy
@@ -4538,7 +4538,7 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Die getal rye in die tabel"
 
 #: ctk/ctkgesture.c:886 ctk/ctkgesture.c:887
-msgid "GdkWindow to receive events about"
+msgid "CdkWindow to receive events about"
 msgstr ""
 
 #: ctk/ctkgesturelongpress.c:284
@@ -4940,8 +4940,8 @@ msgid "Animation"
 msgstr "Animasie"
 
 #: ctk/ctkimage.c:328
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation om te vertoon"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation om te vertoon"
 
 #: ctk/ctkimage.c:372
 msgid "Resource"
@@ -8551,7 +8551,7 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Styl van skuinskant rondom die statusstaafteks"
 
 #: ctk/ctkstylecontext.c:233
-msgid "The associated GdkScreen"
+msgid "The associated CdkScreen"
 msgstr ""
 
 #: ctk/ctkstylecontext.c:239
@@ -8559,7 +8559,7 @@ msgid "FrameClock"
 msgstr ""
 
 #: ctk/ctkstylecontext.c:240
-msgid "The associated GdkFrameClock"
+msgid "The associated CdkFrameClock"
 msgstr ""
 
 #: ctk/ctkstylecontext.c:247 ctk/ctktexttag.c:299
@@ -8640,7 +8640,7 @@ msgstr "Die geselekteerde jaar"
 #: ctk/ctktextbuffer.c:233
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "Die GdkFont wat tans geselekteer is"
+msgstr "Die CdkFont wat tans geselekteer is"
 
 #: ctk/ctktextbuffer.c:248
 #, fuzzy
@@ -8892,7 +8892,7 @@ msgstr "Selagtergrondkleur"
 
 #: ctk/ctktexttag.c:630
 #, fuzzy
-msgid "Paragraph background color as a GdkColor"
+msgid "Paragraph background color as a CdkColor"
 msgstr "Agtergrondkleur as 'n string"
 
 #: ctk/ctktexttag.c:644
@@ -8902,7 +8902,7 @@ msgstr "Selagtergrondstel"
 
 #: ctk/ctktexttag.c:645
 #, fuzzy
-msgid "Paragraph background RGBA as a GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
 msgstr "Agtergrondkleur as 'n string"
 
 #: ctk/ctktexttag.c:662
@@ -9998,9 +9998,9 @@ msgid "Events"
 msgstr "Gebeure"
 
 #: ctk/ctkwidget.c:1253
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Die gebeuremasker wat besluit watter soort GdkEvents hierdie dingesie kry"
+"Die gebeuremasker wat besluit watter soort CdkEvents hierdie dingesie kry"
 
 #: ctk/ctkwidget.c:1260
 msgid "No show all"
@@ -10698,15 +10698,15 @@ msgstr "Die titel van die kleurkies-dialoog"
 #~ msgid "Whether the statusbar has a grip for resizing the toplevel"
 #~ msgstr "Of die statusstaaf 'n greep bevat om die bokant te herskaleer"
 
-#~ msgid "Background color as a (possibly unallocated) GdkColor"
-#~ msgstr "Agtergrondkleur as 'n (moontlik ontoegewyste) GdkColor"
+#~ msgid "Background color as a (possibly unallocated) CdkColor"
+#~ msgstr "Agtergrondkleur as 'n (moontlik ontoegewyste) CdkColor"
 
-#~ msgid "Foreground color as a (possibly unallocated) GdkColor"
-#~ msgstr "Voorgrondkleur as 'n (moontlik ontoegewyste) GdkColor"
+#~ msgid "Foreground color as a (possibly unallocated) CdkColor"
+#~ msgstr "Voorgrondkleur as 'n (moontlik ontoegewyste) CdkColor"
 
 #, fuzzy
-#~ msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-#~ msgstr "Agtergrondkleur as 'n (moontlik ontoegewyste) GdkColor"
+#~ msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+#~ msgstr "Agtergrondkleur as 'n (moontlik ontoegewyste) CdkColor"
 
 #~ msgid "Horizontal Adjustment for the widget"
 #~ msgstr "Horisontale verstelling vir die dingesie"
@@ -10781,7 +10781,7 @@ msgstr "Die titel van die kleurkies-dialoog"
 #~ msgstr "n Aanwyser na die pixeldata van die pixbuf"
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "Die model vir die boomaansig"
 
 #, fuzzy
@@ -10809,17 +10809,17 @@ msgstr "Die titel van die kleurkies-dialoog"
 #~ msgid "Pixmap"
 #~ msgstr "Pixmap"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "'n GdkPixmap om te vertoon"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "'n CdkPixmap om te vertoon"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "'n GdkImage om te vertoon"
+#~ msgid "A CdkImage to display"
+#~ msgstr "'n CdkImage om te vertoon"
 
 #~ msgid "Mask"
 #~ msgstr "Masker"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Maskerbismatriks om met GdkImage of GdkPixmap te gebruik"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Maskerbismatriks om met CdkImage of CdkPixmap te gebruik"
 
 #~ msgid ""
 #~ "Whether to put a separator between the message dialog's text and the "

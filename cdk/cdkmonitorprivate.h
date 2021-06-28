@@ -26,57 +26,57 @@
 
 G_BEGIN_DECLS
 
-#define GDK_MONITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_MONITOR, GdkMonitorClass))
+#define GDK_MONITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_MONITOR, CdkMonitorClass))
 #define GDK_IS_MONITOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_MONITOR))
-#define GDK_MONITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_MONITOR, GdkMonitorClass))
+#define GDK_MONITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_MONITOR, CdkMonitorClass))
 
-struct _GdkMonitor {
+struct _CdkMonitor {
   GObject parent;
 
-  GdkDisplay *display;
+  CdkDisplay *display;
   char *manufacturer;
   char *model;
   char *connector;
-  GdkRectangle geometry;
+  CdkRectangle geometry;
   int width_mm;
   int height_mm;
   int scale_factor;
   int refresh_rate;
-  GdkSubpixelLayout subpixel_layout;
+  CdkSubpixelLayout subpixel_layout;
 };
 
-struct _GdkMonitorClass {
+struct _CdkMonitorClass {
   GObjectClass parent_class;
 
-  void (* get_workarea) (GdkMonitor   *monitor,
-                         GdkRectangle *geometry);
+  void (* get_workarea) (CdkMonitor   *monitor,
+                         CdkRectangle *geometry);
 };
 
-GdkMonitor *    cdk_monitor_new                 (GdkDisplay *display);
+CdkMonitor *    cdk_monitor_new                 (CdkDisplay *display);
 
-void            cdk_monitor_set_manufacturer    (GdkMonitor *monitor,
+void            cdk_monitor_set_manufacturer    (CdkMonitor *monitor,
                                                  const char *manufacturer);
-void            cdk_monitor_set_model           (GdkMonitor *monitor,
+void            cdk_monitor_set_model           (CdkMonitor *monitor,
                                                  const char *model);
-void            cdk_monitor_set_connector       (GdkMonitor *monitor,
+void            cdk_monitor_set_connector       (CdkMonitor *monitor,
                                                  const char *connector);
-const char *    cdk_monitor_get_connector       (GdkMonitor *monitor);
-void            cdk_monitor_set_position        (GdkMonitor *monitor,
+const char *    cdk_monitor_get_connector       (CdkMonitor *monitor);
+void            cdk_monitor_set_position        (CdkMonitor *monitor,
                                                  int         x,
                                                  int         y);
-void            cdk_monitor_set_size            (GdkMonitor *monitor,
+void            cdk_monitor_set_size            (CdkMonitor *monitor,
                                                  int         width,
                                                  int         height);
-void            cdk_monitor_set_physical_size   (GdkMonitor *monitor,
+void            cdk_monitor_set_physical_size   (CdkMonitor *monitor,
                                                  int         width_mm,
                                                  int         height_mm);
-void            cdk_monitor_set_scale_factor    (GdkMonitor *monitor,
+void            cdk_monitor_set_scale_factor    (CdkMonitor *monitor,
                                                  int         scale);
-void            cdk_monitor_set_refresh_rate    (GdkMonitor *monitor,
+void            cdk_monitor_set_refresh_rate    (CdkMonitor *monitor,
                                                  int         refresh_rate);
-void            cdk_monitor_set_subpixel_layout (GdkMonitor        *monitor,
-                                                 GdkSubpixelLayout  subpixel);
-void            cdk_monitor_invalidate          (GdkMonitor *monitor);
+void            cdk_monitor_set_subpixel_layout (CdkMonitor        *monitor,
+                                                 CdkSubpixelLayout  subpixel);
+void            cdk_monitor_invalidate          (CdkMonitor *monitor);
 
 G_END_DECLS
 

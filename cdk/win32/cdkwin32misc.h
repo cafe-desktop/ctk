@@ -68,48 +68,48 @@ G_BEGIN_DECLS
 #define XBUTTON2 2
 #endif
 
-/* Return true if the GdkWindow is a win32 implemented window */
+/* Return true if the CdkWindow is a win32 implemented window */
 GDK_AVAILABLE_IN_ALL
-gboolean      cdk_win32_window_is_win32 (GdkWindow *window);
+gboolean      cdk_win32_window_is_win32 (CdkWindow *window);
 GDK_AVAILABLE_IN_ALL
-HWND          cdk_win32_window_get_impl_hwnd (GdkWindow *window);
+HWND          cdk_win32_window_get_impl_hwnd (CdkWindow *window);
 
-/* Return the Gdk* for a particular HANDLE */
+/* Return the Cdk* for a particular HANDLE */
 GDK_AVAILABLE_IN_ALL
 gpointer      cdk_win32_handle_table_lookup (HWND handle);
 /* Translate from window to Windows handle */
 GDK_AVAILABLE_IN_ALL
-HGDIOBJ       cdk_win32_window_get_handle (GdkWindow *window);
+HGDIOBJ       cdk_win32_window_get_handle (CdkWindow *window);
 
 GDK_AVAILABLE_IN_ALL
-void          cdk_win32_selection_add_targets (GdkWindow  *owner,
-					       GdkAtom     selection,
+void          cdk_win32_selection_add_targets (CdkWindow  *owner,
+					       CdkAtom     selection,
 					       gint	   n_targets,
-					       GdkAtom    *targets);
+					       CdkAtom    *targets);
 
 #if defined (CTK_COMPILATION) || defined (GDK_COMPILATION)
 #define cdk_win32_selection_clear_targets cdk_win32_selection_clear_targets_libctk_only
 GDK_AVAILABLE_IN_ALL
-void          cdk_win32_selection_clear_targets (GdkDisplay *display,
-                                                 GdkAtom     selection);
+void          cdk_win32_selection_clear_targets (CdkDisplay *display,
+                                                 CdkAtom     selection);
 #endif
 
 GDK_AVAILABLE_IN_ALL
-GdkWindow *   cdk_win32_window_foreign_new_for_display (GdkDisplay *display,
+CdkWindow *   cdk_win32_window_foreign_new_for_display (CdkDisplay *display,
                                                         HWND        anid);
 GDK_AVAILABLE_IN_ALL
-GdkWindow *   cdk_win32_window_lookup_for_display (GdkDisplay *display,
+CdkWindow *   cdk_win32_window_lookup_for_display (CdkDisplay *display,
                                                    HWND        anid);
 
 #if defined (INSIDE_GDK_WIN32) || defined (GDK_COMPILATION) || defined (CTK_COMPILATION)
 
 /* For internal CTK use only */
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf    *cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
+CdkPixbuf    *cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
                                                     gdouble *x_hot,
                                                     gdouble *y_hot);
 GDK_AVAILABLE_IN_ALL
-HICON         cdk_win32_pixbuf_to_hicon_libctk_only (GdkPixbuf *pixbuf);
+HICON         cdk_win32_pixbuf_to_hicon_libctk_only (CdkPixbuf *pixbuf);
 GDK_AVAILABLE_IN_ALL
 void          cdk_win32_set_modal_dialog_libctk_only (HWND window);
 

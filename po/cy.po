@@ -4274,11 +4274,11 @@ msgid ""
 msgstr ""
 "Methu llwytho delwedd '%s': rheswm anhysbys, ffeil llygredig mwy na thebyg"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Pa opsiynau datnamu Gdk i'w gosod"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Pa opsiynau datnamu Cdk i'w gosod"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Pa opsiynau datnamu Gdk i'w dadosod"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Pa opsiynau datnamu Cdk i'w dadosod"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "Ffeil ddelwedd '%s' heb gynnwys data"
@@ -4734,7 +4734,7 @@ msgstr ""
 #~ msgstr "Methu dyrannu cof ar gyfer strwythur cyd-destun delwedd TGA"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Methu ysgrifennu mynegai ffolder\n"
 
 #, fuzzy
@@ -6588,8 +6588,8 @@ msgstr ""
 #~ msgid "Cell background color"
 #~ msgstr "Lliw cefndir y gell"
 
-#~ msgid "Cell background color as a GdkColor"
-#~ msgstr "Lliw cefndir y gell fel GdkColor"
+#~ msgid "Cell background color as a CdkColor"
+#~ msgstr "Lliw cefndir y gell fel CdkColor"
 
 #~ msgid "Cell background set"
 #~ msgstr "Gosodir cefndir y cell"

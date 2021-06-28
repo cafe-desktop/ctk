@@ -23,30 +23,30 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_DEVICE_VIRTUAL         (cdk_device_virtual_get_type ())
-#define GDK_DEVICE_VIRTUAL(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_VIRTUAL, GdkDeviceVirtual))
-#define GDK_DEVICE_VIRTUAL_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_VIRTUAL, GdkDeviceVirtualClass))
+#define GDK_DEVICE_VIRTUAL(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_VIRTUAL, CdkDeviceVirtual))
+#define GDK_DEVICE_VIRTUAL_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_VIRTUAL, CdkDeviceVirtualClass))
 #define GDK_IS_DEVICE_VIRTUAL(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_VIRTUAL))
 #define GDK_IS_DEVICE_VIRTUAL_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE_VIRTUAL))
-#define GDK_DEVICE_VIRTUAL_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_VIRTUAL, GdkDeviceVirtualClass))
+#define GDK_DEVICE_VIRTUAL_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_VIRTUAL, CdkDeviceVirtualClass))
 
-typedef struct _GdkDeviceVirtual GdkDeviceVirtual;
-typedef struct _GdkDeviceVirtualClass GdkDeviceVirtualClass;
+typedef struct _CdkDeviceVirtual CdkDeviceVirtual;
+typedef struct _CdkDeviceVirtualClass CdkDeviceVirtualClass;
 
-struct _GdkDeviceVirtual
+struct _CdkDeviceVirtual
 {
-  GdkDevice parent_instance;
-  GdkDevice *active_device;
+  CdkDevice parent_instance;
+  CdkDevice *active_device;
 };
 
-struct _GdkDeviceVirtualClass
+struct _CdkDeviceVirtualClass
 {
-  GdkDeviceClass parent_class;
+  CdkDeviceClass parent_class;
 };
 
 GType cdk_device_virtual_get_type (void) G_GNUC_CONST;
 
-void _cdk_device_virtual_set_active (GdkDevice *device,
-				     GdkDevice *new_active);
+void _cdk_device_virtual_set_active (CdkDevice *device,
+				     CdkDevice *new_active);
 
 
 G_END_DECLS

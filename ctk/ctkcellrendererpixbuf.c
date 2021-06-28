@@ -34,7 +34,7 @@
  * @Title: CtkCellRendererPixbuf
  *
  * A #CtkCellRendererPixbuf can be used to render an image in a cell. It allows
- * to render either a given #GdkPixbuf (set via the
+ * to render either a given #CdkPixbuf (set via the
  * #CtkCellRendererPixbuf:pixbuf property) or a named icon (set via the
  * #CtkCellRendererPixbuf:icon-name property).
  *
@@ -58,7 +58,7 @@ static void ctk_cell_renderer_pixbuf_set_property  (GObject                    *
 						    GParamSpec                 *pspec);
 static void ctk_cell_renderer_pixbuf_get_size   (CtkCellRenderer            *cell,
 						 CtkWidget                  *widget,
-						 const GdkRectangle         *rectangle,
+						 const CdkRectangle         *rectangle,
 						 gint                       *x_offset,
 						 gint                       *y_offset,
 						 gint                       *width,
@@ -66,8 +66,8 @@ static void ctk_cell_renderer_pixbuf_get_size   (CtkCellRenderer            *cel
 static void ctk_cell_renderer_pixbuf_render     (CtkCellRenderer            *cell,
 						 cairo_t                    *cr,
 						 CtkWidget                  *widget,
-						 const GdkRectangle         *background_area,
-						 const GdkRectangle         *cell_area,
+						 const CdkRectangle         *background_area,
+						 const CdkRectangle         *cell_area,
 						 CtkCellRendererState        flags);
 
 
@@ -91,8 +91,8 @@ struct _CtkCellRendererPixbufPrivate
   CtkImageDefinition *image_def;
   CtkIconSize         icon_size;
 
-  GdkPixbuf *pixbuf_expander_open;
-  GdkPixbuf *pixbuf_expander_closed;
+  CdkPixbuf *pixbuf_expander_open;
+  CdkPixbuf *pixbuf_expander_closed;
 
   gboolean follow_state;
 
@@ -402,12 +402,12 @@ ctk_cell_renderer_pixbuf_set_property (GObject      *object,
     case PROP_PIXBUF_EXPANDER_OPEN:
       if (priv->pixbuf_expander_open)
         g_object_unref (priv->pixbuf_expander_open);
-      priv->pixbuf_expander_open = (GdkPixbuf*) g_value_dup_object (value);
+      priv->pixbuf_expander_open = (CdkPixbuf*) g_value_dup_object (value);
       break;
     case PROP_PIXBUF_EXPANDER_CLOSED:
       if (priv->pixbuf_expander_closed)
         g_object_unref (priv->pixbuf_expander_closed);
-      priv->pixbuf_expander_closed = (GdkPixbuf*) g_value_dup_object (value);
+      priv->pixbuf_expander_closed = (CdkPixbuf*) g_value_dup_object (value);
       break;
     case PROP_SURFACE:
       take_image_definition (cellpixbuf, ctk_image_definition_new_surface (g_value_get_boxed (value)));
@@ -476,7 +476,7 @@ create_icon_helper (CtkCellRendererPixbuf *cellpixbuf,
 static void
 ctk_cell_renderer_pixbuf_get_size (CtkCellRenderer    *cell,
 				   CtkWidget          *widget,
-				   const GdkRectangle *cell_area,
+				   const CdkRectangle *cell_area,
 				   gint               *x_offset,
 				   gint               *y_offset,
 				   gint               *width,
@@ -555,21 +555,21 @@ static void
 ctk_cell_renderer_pixbuf_render (CtkCellRenderer      *cell,
                                  cairo_t              *cr,
 				 CtkWidget            *widget,
-				 const GdkRectangle   *background_area,
-				 const GdkRectangle   *cell_area,
+				 const CdkRectangle   *background_area,
+				 const CdkRectangle   *cell_area,
 				 CtkCellRendererState  flags)
 
 {
   CtkCellRendererPixbuf *cellpixbuf = (CtkCellRendererPixbuf *) cell;
   CtkCellRendererPixbufPrivate *priv = cellpixbuf->priv;
   CtkStyleContext *context;
-  GdkRectangle pix_rect;
-  GdkRectangle draw_rect;
+  CdkRectangle pix_rect;
+  CdkRectangle draw_rect;
   gboolean is_expander;
   gint xpad, ypad;
   CtkIconHelper *icon_helper = NULL;
 
-  ctk_cell_renderer_pixbuf_get_size (cell, widget, (GdkRectangle *) cell_area,
+  ctk_cell_renderer_pixbuf_get_size (cell, widget, (CdkRectangle *) cell_area,
 				     &pix_rect.x, 
                                      &pix_rect.y,
                                      &pix_rect.width,

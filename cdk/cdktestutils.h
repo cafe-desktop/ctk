@@ -1,4 +1,4 @@
-/* Gdk testing utilities
+/* Cdk testing utilities
  * Copyright (C) 2007 Imendio AB
  * Authors: Tim Janik
  *
@@ -38,23 +38,23 @@ G_BEGIN_DECLS
  */
 
 
-/* --- Gdk Test Utility API --- */
+/* --- Cdk Test Utility API --- */
 GDK_AVAILABLE_IN_ALL
-void            cdk_test_render_sync            (GdkWindow      *window);
+void            cdk_test_render_sync            (CdkWindow      *window);
 GDK_AVAILABLE_IN_ALL
-gboolean        cdk_test_simulate_key           (GdkWindow      *window,
+gboolean        cdk_test_simulate_key           (CdkWindow      *window,
                                                  gint            x,
                                                  gint            y,
                                                  guint           keyval,
-                                                 GdkModifierType modifiers,
-                                                 GdkEventType    key_pressrelease);
+                                                 CdkModifierType modifiers,
+                                                 CdkEventType    key_pressrelease);
 GDK_AVAILABLE_IN_ALL
-gboolean        cdk_test_simulate_button        (GdkWindow      *window,
+gboolean        cdk_test_simulate_button        (CdkWindow      *window,
                                                  gint            x,
                                                  gint            y,
                                                  guint           button, /*1..3*/
-                                                 GdkModifierType modifiers,
-                                                 GdkEventType    button_pressrelease);
+                                                 CdkModifierType modifiers,
+                                                 CdkEventType    button_pressrelease);
 
 G_END_DECLS
 

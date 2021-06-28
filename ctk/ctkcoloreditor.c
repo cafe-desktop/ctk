@@ -97,7 +97,7 @@ scale_round (gdouble value, gdouble scale)
 
 static void
 entry_set_rgba (CtkColorEditor *editor,
-                const GdkRGBA  *color)
+                const CdkRGBA  *color)
 {
   gchar *text;
 
@@ -114,7 +114,7 @@ static void
 entry_apply (CtkWidget      *entry,
              CtkColorEditor *editor)
 {
-  GdkRGBA color;
+  CdkRGBA color;
   gchar *text;
 
   if (!editor->priv->text_changed)
@@ -134,7 +134,7 @@ entry_apply (CtkWidget      *entry,
 
 static gboolean
 entry_focus_out (CtkWidget      *entry,
-                 GdkEventFocus  *event,
+                 CdkEventFocus  *event,
                  CtkColorEditor *editor)
 {
   entry_apply (entry, editor);
@@ -152,7 +152,7 @@ entry_text_changed (CtkWidget      *entry,
 static void
 hsv_changed (CtkColorEditor *editor)
 {
-  GdkRGBA color;
+  CdkRGBA color;
   gdouble h, s, v, a;
 
   h = ctk_adjustment_get_value (editor->priv->h_adj);
@@ -234,7 +234,7 @@ popup_edit (CtkWidget      *widget,
 
 static gboolean
 popup_key_press (CtkWidget      *popup,
-                 GdkEventKey    *event,
+                 CdkEventKey    *event,
                  CtkColorEditor *editor)
 {
   if (event->keyval == GDK_KEY_Escape)
@@ -366,7 +366,7 @@ color_picked (GObject      *source,
   CtkColorPicker *picker = CTK_COLOR_PICKER (source);
   CtkColorEditor *editor = data;
   GError *error = NULL;
-  GdkRGBA *color;
+  CdkRGBA *color;
 
   color = ctk_color_picker_pick_finish (picker, res, &error);
   if (color == NULL)
@@ -458,7 +458,7 @@ ctk_color_editor_get_property (GObject    *object,
     {
     case PROP_RGBA:
       {
-        GdkRGBA color;
+        CdkRGBA color;
         ctk_color_chooser_get_rgba (cc, &color);
         g_value_set_boxed (value, &color);
       }
@@ -559,7 +559,7 @@ ctk_color_editor_class_init (CtkColorEditorClass *class)
 
 static void
 ctk_color_editor_get_rgba (CtkColorChooser *chooser,
-                           GdkRGBA         *color)
+                           CdkRGBA         *color)
 {
   CtkColorEditor *editor = CTK_COLOR_EDITOR (chooser);
   gdouble h, s, v;
@@ -573,7 +573,7 @@ ctk_color_editor_get_rgba (CtkColorChooser *chooser,
 
 static void
 ctk_color_editor_set_rgba (CtkColorChooser *chooser,
-                           const GdkRGBA   *color)
+                           const CdkRGBA   *color)
 {
   CtkColorEditor *editor = CTK_COLOR_EDITOR (chooser);
   gdouble h, s, v;

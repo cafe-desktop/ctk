@@ -29,18 +29,18 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_QUARTZ_KEYMAP              (cdk_quartz_keymap_get_type ())
-#define GDK_QUARTZ_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_KEYMAP, GdkQuartzKeymap))
-#define GDK_QUARTZ_KEYMAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_KEYMAP, GdkQuartzKeymapClass))
+#define GDK_QUARTZ_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_KEYMAP, CdkQuartzKeymap))
+#define GDK_QUARTZ_KEYMAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_KEYMAP, CdkQuartzKeymapClass))
 #define GDK_IS_QUARTZ_KEYMAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_KEYMAP))
 #define GDK_IS_QUARTZ_KEYMAP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_QUARTZ_KEYMAP))
-#define GDK_QUARTZ_KEYMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_KEYMAP, GdkQuartzKeymapClass))
+#define GDK_QUARTZ_KEYMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_KEYMAP, CdkQuartzKeymapClass))
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkQuartzKeymap GdkQuartzKeymap;
+typedef struct _CdkQuartzKeymap CdkQuartzKeymap;
 #else
-typedef GdkKeymap GdkQuartzKeymap;
+typedef CdkKeymap CdkQuartzKeymap;
 #endif
-typedef struct _GdkQuartzKeymapClass GdkQuartzKeymapClass;
+typedef struct _CdkQuartzKeymapClass CdkQuartzKeymapClass;
 
 GDK_AVAILABLE_IN_ALL
 GType cdk_quartz_keymap_get_type (void);

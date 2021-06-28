@@ -800,8 +800,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/deprecated/ctkstatusicon.c:227 ../ctk/ctkimage.c:238
-msgid "A GdkPixbuf to display"
-msgstr "En GdkPixuf som skal vises"
+msgid "A CdkPixbuf to display"
+msgstr "En CdkPixuf som skal vises"
 
 #: ../ctk/deprecated/ctkstatusicon.c:234 ../ctk/ctkimage.c:253
 #: ../ctk/ctkrecentmanager.c:293
@@ -2184,16 +2184,16 @@ msgid "Cell background color"
 msgstr "Bakgrunnsfarge for celle"
 
 #: ../ctk/ctkcellrenderer.c:403
-msgid "Cell background color as a GdkColor"
-msgstr "Bakgrunnsfarge for celle som en GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Bakgrunnsfarge for celle som en CdkColor"
 
 #: ../ctk/ctkcellrenderer.c:417
 msgid "Cell background RGBA color"
 msgstr "RGBA-bakgrunnsfarge for celle"
 
 #: ../ctk/ctkcellrenderer.c:418
-msgid "Cell background color as a GdkRGBA"
-msgstr "Bakgrunnsfarge for celle som GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Bakgrunnsfarge for celle som CdkRGBA"
 
 #: ../ctk/ctkcellrenderer.c:425
 msgid "Editing"
@@ -2442,8 +2442,8 @@ msgstr "Bakgrunnsfarge"
 
 #: ../ctk/ctkcellrenderertext.c:303 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:224
-msgid "Background color as a GdkColor"
-msgstr "Bakgrunnsfarge som en GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Bakgrunnsfarge som en CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:318
 msgid "Background color as RGBA"
@@ -2451,8 +2451,8 @@ msgstr "Bakgrunnsfarge som RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:319 ../ctk/ctkcellview.c:220
 #: ../ctk/ctktexttag.c:239
-msgid "Background color as a GdkRGBA"
-msgstr "Bakgrunnsfarge som en GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Bakgrunnsfarge som en CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:325 ../ctk/ctktexttag.c:254
 msgid "Foreground color name"
@@ -2463,16 +2463,16 @@ msgid "Foreground color as a string"
 msgstr "Forgrunnsfarge som en streng"
 
 #: ../ctk/ctkcellrenderertext.c:342 ../ctk/ctktexttag.c:270
-msgid "Foreground color as a GdkColor"
-msgstr "Forgrunnsfarge som en GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Forgrunnsfarge som en CdkColor"
 
 #: ../ctk/ctkcellrenderertext.c:357
 msgid "Foreground color as RGBA"
 msgstr "Forgrunnsfarge som RGBA"
 
 #: ../ctk/ctkcellrenderertext.c:358 ../ctk/ctktexttag.c:285
-msgid "Foreground color as a GdkRGBA"
-msgstr "Forgrunnsfarge som en GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Forgrunnsfarge som en CdkRGBA"
 
 #: ../ctk/ctkcellrenderertext.c:366 ../ctk/ctkentry.c:794
 #: ../ctk/ctktexttag.c:301 ../ctk/ctktextview.c:757
@@ -2943,8 +2943,8 @@ msgid "Color"
 msgstr "Farge"
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Aktiv farge som en GdkRGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Aktiv farge som en CdkRGBA"
 
 #: ../ctk/ctkcolorchooser.c:88
 #, fuzzy
@@ -4092,7 +4092,7 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Antall jobber som er kølagt for denne skriveren"
 
 #: ../ctk/ctkgesture.c:712 ../ctk/ctkgesture.c:713
-msgid "GdkWindow to receive events about"
+msgid "CdkWindow to receive events about"
 msgstr ""
 
 #: ../ctk/ctkgesturepan.c:238
@@ -4439,8 +4439,8 @@ msgid "Animation"
 msgstr "Animasjon"
 
 #: ../ctk/ctkimage.c:317
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation som skal vises"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation som skal vises"
 
 #: ../ctk/ctkimage.c:364
 msgid "Resource"
@@ -7352,7 +7352,7 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Stil for kant rundt statuslinjetekst"
 
 #: ../ctk/ctkstylecontext.c:244
-msgid "The associated GdkScreen"
+msgid "The associated CdkScreen"
 msgstr ""
 
 #: ../ctk/ctkstylecontext.c:250
@@ -7360,7 +7360,7 @@ msgid "FrameClock"
 msgstr ""
 
 #: ../ctk/ctkstylecontext.c:251
-msgid "The associated GdkFrameClock"
+msgid "The associated CdkFrameClock"
 msgstr ""
 
 #: ../ctk/ctkstylecontext.c:258 ../ctk/ctktexttag.c:292
@@ -7423,7 +7423,7 @@ msgstr "Har utvalg"
 #: ../ctk/ctktextbuffer.c:233
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "GdkFont som er valgt nå"
+msgstr "CdkFont som er valgt nå"
 
 #: ../ctk/ctktextbuffer.c:249
 msgid "Cursor position"
@@ -7640,7 +7640,7 @@ msgstr "Bakgrunnsfarge for avsnitt"
 
 #: ../ctk/ctktexttag.c:587
 #, fuzzy
-msgid "Paragraph background color as a GdkColor"
+msgid "Paragraph background color as a CdkColor"
 msgstr "Bakgrunnsfarge for avsnitt som en streng"
 
 #: ../ctk/ctktexttag.c:601
@@ -7650,7 +7650,7 @@ msgstr "Bakgrunn for avsnitt satt"
 
 #: ../ctk/ctktexttag.c:602
 #, fuzzy
-msgid "Paragraph background RGBA as a GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
 msgstr "Bakgrunnsfarge for avsnitt som en streng"
 
 #: ../ctk/ctktexttag.c:619
@@ -8609,9 +8609,9 @@ msgid "Events"
 msgstr "Hendelser"
 
 #: ../ctk/ctkwidget.c:1355
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Hendelsesmasken som bestemmer hvilke typer GdkEvents dette widgetet mottar"
+"Hendelsesmasken som bestemmer hvilke typer CdkEvents dette widgetet mottar"
 
 #: ../ctk/ctkwidget.c:1362
 msgid "No show all"

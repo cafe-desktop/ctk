@@ -6,7 +6,7 @@ static CtkTargetEntry entries[] = {
 
 static void
 drag_begin (CtkWidget      *widget,
-            GdkDragContext *context,
+            CdkDragContext *context,
             gpointer        data)
 {
   CtkWidget *row;
@@ -36,7 +36,7 @@ drag_begin (CtkWidget      *widget,
 
 void
 drag_data_get (CtkWidget        *widget,
-               GdkDragContext   *context,
+               CdkDragContext   *context,
                CtkSelectionData *selection_data,
                guint             info,
                guint             time,
@@ -51,7 +51,7 @@ drag_data_get (CtkWidget        *widget,
 
 static void
 drag_data_received (CtkWidget        *widget,
-                    GdkDragContext   *context,
+                    CdkDragContext   *context,
                     gint              x,
                     gint              y,
                     CtkSelectionData *selection_data,

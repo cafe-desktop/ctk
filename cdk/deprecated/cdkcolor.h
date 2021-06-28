@@ -37,7 +37,7 @@ G_BEGIN_DECLS
 
 
 /**
- * GdkColor:
+ * CdkColor:
  * @pixel: For allocated colors, the pixel value used to
  *     draw this color on the screen. Not used anymore.
  * @red: The red component of the color. This is
@@ -46,12 +46,12 @@ G_BEGIN_DECLS
  * @green: The green component of the color
  * @blue: The blue component of the color
  *
- * A #GdkColor is used to describe a color,
+ * A #CdkColor is used to describe a color,
  * similar to the XColor struct used in the X11 drawing API.
  *
- * Deprecated: 3.14: Use #GdkRGBA
+ * Deprecated: 3.14: Use #CdkRGBA
  */
-struct _GdkColor
+struct _CdkColor
 {
   guint32 pixel;
   guint16 red;
@@ -65,21 +65,21 @@ GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_get_type)
 GType     cdk_color_get_type (void) G_GNUC_CONST;
 
 GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_copy)
-GdkColor *cdk_color_copy      (const GdkColor *color);
+CdkColor *cdk_color_copy      (const CdkColor *color);
 GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_free)
-void      cdk_color_free      (GdkColor       *color);
+void      cdk_color_free      (CdkColor       *color);
 
 GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_hash)
-guint     cdk_color_hash      (const GdkColor *color);
+guint     cdk_color_hash      (const CdkColor *color);
 GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_equal)
-gboolean  cdk_color_equal     (const GdkColor *colora,
-                               const GdkColor *colorb);
+gboolean  cdk_color_equal     (const CdkColor *colora,
+                               const CdkColor *colorb);
 
 GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_parse)
 gboolean  cdk_color_parse     (const gchar    *spec,
-                               GdkColor       *color);
+                               CdkColor       *color);
 GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_to_string)
-gchar *   cdk_color_to_string (const GdkColor *color);
+gchar *   cdk_color_to_string (const CdkColor *color);
 
 
 G_END_DECLS

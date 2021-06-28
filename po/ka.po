@@ -4418,11 +4418,11 @@ msgstr ""
 "გამოსახულება \"%s\" ვერ ჩამოიტვირთა: მიზეზი უცნობია, შესაძლოა გამოსახულების "
 "ფაილია დაზიანებული"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Gdk გამართვის ალმების მითითება"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Cdk გამართვის ალმების მითითება"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Gdk გამართვის ალმების ამორთვა"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Cdk გამართვის ალმების ამორთვა"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "გამოსახულების ფაილი \"%s\" არ შეიცავს მონაცემებს"
@@ -4862,7 +4862,7 @@ msgstr ""
 #~ msgstr "ვერ ვიყენებ მეხსიერებას TGA შიგთავსის სტრუქტურისთვის"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "ვერ განხორციელდა დასტის ინდექსის ჩაწერა\n"
 
 #, fuzzy

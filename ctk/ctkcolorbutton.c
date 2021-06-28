@@ -67,7 +67,7 @@ struct _CtkColorButtonPrivate
   CtkWidget *cs_dialog; /* Color selection dialog */
 
   gchar *title;         /* Title for the color selection window */
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 
   guint use_alpha : 1;  /* Use alpha or not */
   guint show_editor : 1;
@@ -108,10 +108,10 @@ static void ctk_color_button_clicked       (CtkButton        *button);
 
 /* source side drag signals */
 static void ctk_color_button_drag_begin    (CtkWidget        *widget,
-                                            GdkDragContext   *context,
+                                            CdkDragContext   *context,
                                             gpointer          data);
 static void ctk_color_button_drag_data_get (CtkWidget        *widget,
-                                            GdkDragContext   *context,
+                                            CdkDragContext   *context,
                                             CtkSelectionData *selection_data,
                                             guint             info,
                                             guint             time,
@@ -119,7 +119,7 @@ static void ctk_color_button_drag_data_get (CtkWidget        *widget,
 
 /* target side drag signals */
 static void ctk_color_button_drag_data_received (CtkWidget        *widget,
-                                                 GdkDragContext   *context,
+                                                 CdkDragContext   *context,
                                                  gint              x,
                                                  gint              y,
                                                  CtkSelectionData *selection_data,
@@ -279,7 +279,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
 ctk_color_button_drag_data_received (CtkWidget        *widget,
-                                     GdkDragContext   *context,
+                                     CdkDragContext   *context,
                                      gint              x,
                                      gint              y,
                                      CtkSelectionData *selection_data,
@@ -325,8 +325,8 @@ ctk_color_button_drag_data_received (CtkWidget        *widget,
 }
 
 static void
-set_color_icon (GdkDragContext *context,
-                GdkRGBA        *rgba)
+set_color_icon (CdkDragContext *context,
+                CdkRGBA        *rgba)
 {
   cairo_surface_t *surface;
   cairo_t *cr;
@@ -345,7 +345,7 @@ set_color_icon (GdkDragContext *context,
 
 static void
 ctk_color_button_drag_begin (CtkWidget      *widget,
-                             GdkDragContext *context,
+                             CdkDragContext *context,
                              gpointer        data)
 {
   CtkColorButton *button = data;
@@ -355,7 +355,7 @@ ctk_color_button_drag_begin (CtkWidget      *widget,
 
 static void
 ctk_color_button_drag_data_get (CtkWidget        *widget,
-                                GdkDragContext   *context,
+                                CdkDragContext   *context,
                                 CtkSelectionData *selection_data,
                                 guint             info,
                                 guint             time,
@@ -462,7 +462,7 @@ ctk_color_button_new (void)
 
 /**
  * ctk_color_button_new_with_color:
- * @color: A #GdkColor to set the current color with
+ * @color: A #CdkColor to set the current color with
  *
  * Creates a new color button.
  *
@@ -473,14 +473,14 @@ ctk_color_button_new (void)
  * Deprecated: 3.4: Use ctk_color_button_new_with_rgba() instead.
  */
 CtkWidget *
-ctk_color_button_new_with_color (const GdkColor *color)
+ctk_color_button_new_with_color (const CdkColor *color)
 {
   return g_object_new (CTK_TYPE_COLOR_BUTTON, "color", color, NULL);
 }
 
 /**
  * ctk_color_button_new_with_rgba:
- * @rgba: A #GdkRGBA to set the current color with
+ * @rgba: A #CdkRGBA to set the current color with
  *
  * Creates a new color button.
  *
@@ -489,14 +489,14 @@ ctk_color_button_new_with_color (const GdkColor *color)
  * Since: 3.0
  */
 CtkWidget *
-ctk_color_button_new_with_rgba (const GdkRGBA *rgba)
+ctk_color_button_new_with_rgba (const CdkRGBA *rgba)
 {
   return g_object_new (CTK_TYPE_COLOR_BUTTON, "rgba", rgba, NULL);
 }
 
 static gboolean
 dialog_delete_event (CtkWidget *dialog,
-                     GdkEvent  *event,
+                     CdkEvent  *event,
                      gpointer   user_data)
 {
   g_signal_emit_by_name (dialog, "response", CTK_RESPONSE_CANCEL);
@@ -599,7 +599,7 @@ ctk_color_button_clicked (CtkButton *b)
 /**
  * ctk_color_button_set_color:
  * @button: a #CtkColorButton
- * @color: A #GdkColor to set the current color with
+ * @color: A #CdkColor to set the current color with
  *
  * Sets the current color to be @color.
  *
@@ -609,7 +609,7 @@ ctk_color_button_clicked (CtkButton *b)
  */
 void
 ctk_color_button_set_color (CtkColorButton *button,
-                            const GdkColor *color)
+                            const CdkColor *color)
 {
   CtkColorButtonPrivate *priv = button->priv;
 
@@ -657,7 +657,7 @@ ctk_color_button_set_alpha (CtkColorButton *button,
 /**
  * ctk_color_button_get_color:
  * @button: a #CtkColorButton
- * @color: (out): a #GdkColor to fill in with the current color
+ * @color: (out): a #CdkColor to fill in with the current color
  *
  * Sets @color to be the current color in the #CtkColorButton widget.
  *
@@ -667,7 +667,7 @@ ctk_color_button_set_alpha (CtkColorButton *button,
  */
 void
 ctk_color_button_get_color (CtkColorButton *button,
-                            GdkColor       *color)
+                            CdkColor       *color)
 {
   CtkColorButtonPrivate *priv = button->priv;
 
@@ -701,7 +701,7 @@ ctk_color_button_get_alpha (CtkColorButton *button)
 /**
  * ctk_color_button_set_rgba: (skip)
  * @button: a #CtkColorButton
- * @rgba: a #GdkRGBA to set the current color with
+ * @rgba: a #CdkRGBA to set the current color with
  *
  * Sets the current color to be @rgba.
  *
@@ -711,7 +711,7 @@ ctk_color_button_get_alpha (CtkColorButton *button)
  */
 void
 ctk_color_button_set_rgba (CtkColorButton *button,
-                           const GdkRGBA  *rgba)
+                           const CdkRGBA  *rgba)
 {
   CtkColorButtonPrivate *priv = button->priv;
 
@@ -729,7 +729,7 @@ ctk_color_button_set_rgba (CtkColorButton *button,
 /**
  * ctk_color_button_get_rgba: (skip)
  * @button: a #CtkColorButton
- * @rgba: (out): a #GdkRGBA to fill in with the current color
+ * @rgba: (out): a #CdkRGBA to fill in with the current color
  *
  * Sets @rgba to be the current color in the #CtkColorButton widget.
  *
@@ -739,7 +739,7 @@ ctk_color_button_set_rgba (CtkColorButton *button,
  */
 void
 ctk_color_button_get_rgba (CtkColorButton *button,
-                           GdkRGBA        *rgba)
+                           CdkRGBA        *rgba)
 {
   g_return_if_fail (CTK_IS_COLOR_BUTTON (button));
   g_return_if_fail (rgba != NULL);
@@ -869,8 +869,8 @@ ctk_color_button_set_property (GObject      *object,
       break;
     case PROP_COLOR:
       {
-        GdkColor *color;
-        GdkRGBA rgba;
+        CdkColor *color;
+        CdkRGBA rgba;
 
         color = g_value_get_boxed (value);
 
@@ -924,8 +924,8 @@ ctk_color_button_get_property (GObject    *object,
       break;
     case PROP_COLOR:
       {
-        GdkColor color;
-        GdkRGBA rgba;
+        CdkColor color;
+        CdkRGBA rgba;
 
         ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (button), &rgba);
 
@@ -947,7 +947,7 @@ ctk_color_button_get_property (GObject    *object,
       break;
     case PROP_RGBA:
       {
-        GdkRGBA rgba;
+        CdkRGBA rgba;
 
         ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (button), &rgba);
         g_value_set_boxed (value, &rgba);
@@ -967,7 +967,7 @@ ctk_color_button_add_palette (CtkColorChooser *chooser,
                               CtkOrientation   orientation,
                               gint             colors_per_line,
                               gint             n_colors,
-                              GdkRGBA         *colors)
+                              CdkRGBA         *colors)
 {
   CtkColorButton *button = CTK_COLOR_BUTTON (chooser);
 
@@ -977,8 +977,8 @@ ctk_color_button_add_palette (CtkColorChooser *chooser,
                                  orientation, colors_per_line, n_colors, colors);
 }
 
-typedef void (* get_rgba) (CtkColorChooser *, GdkRGBA *);
-typedef void (* set_rgba) (CtkColorChooser *, const GdkRGBA *);
+typedef void (* get_rgba) (CtkColorChooser *, CdkRGBA *);
+typedef void (* set_rgba) (CtkColorChooser *, const CdkRGBA *);
 
 static void
 ctk_color_button_iface_init (CtkColorChooserInterface *iface)

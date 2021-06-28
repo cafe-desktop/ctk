@@ -83,7 +83,7 @@ search_close_clicked (CtkWidget            *button,
 
 static gboolean
 key_press_event (CtkWidget            *window,
-                 GdkEvent             *event,
+                 CdkEvent             *event,
                  CtkInspectorPropList *pl)
 {
   if (!ctk_widget_get_mapped (CTK_WIDGET (pl)))
@@ -213,7 +213,7 @@ row_activated (CtkTreeView *tv,
                CtkInspectorPropList *pl)
 {
   CtkTreeIter iter;
-  GdkRectangle rect;
+  CdkRectangle rect;
   gchar *name;
   CtkWidget *editor;
   CtkWidget *popover;

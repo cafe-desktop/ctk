@@ -280,8 +280,8 @@ static void
 grab_window_toggled (CtkToggleButton *button,
 		     CtkWidget       *widget)
 {
-  GdkDevice *device = ctk_get_current_event_device ();
-  GdkSeat *seat = cdk_device_get_seat (device);
+  CdkDevice *device = ctk_get_current_event_device ();
+  CdkSeat *seat = cdk_device_get_seat (device);
 
   if (ctk_toggle_button_get_active (button))
     {

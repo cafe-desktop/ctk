@@ -290,7 +290,7 @@ ctk_stack_switcher_switch_timeout (gpointer data)
 
 static gboolean
 ctk_stack_switcher_drag_motion (CtkWidget      *widget,
-                                GdkDragContext *context,
+                                CdkDragContext *context,
                                 gint            x,
                                 gint            y,
                                 guint           time)
@@ -342,7 +342,7 @@ ctk_stack_switcher_drag_motion (CtkWidget      *widget,
 
 static void
 ctk_stack_switcher_drag_leave (CtkWidget      *widget,
-                               GdkDragContext *context,
+                               CdkDragContext *context,
                                guint           time)
 {
   CtkStackSwitcher *self = CTK_STACK_SWITCHER (widget);

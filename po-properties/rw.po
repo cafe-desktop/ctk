@@ -1385,7 +1385,7 @@ msgstr "Ibara y'Imbuganyuma y'akadirishya"
 
 #: ctk/ctkcellrenderer.c:336
 #, fuzzy
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr "Mbuganyuma Ibara Nka a"
 
 #: ctk/ctkcellrenderer.c:343
@@ -1662,7 +1662,7 @@ msgstr "ibara ry'imbuganyuma"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
 #, fuzzy
-msgid "Background color as a GdkColor"
+msgid "Background color as a CdkColor"
 msgstr "Ibara Nka a"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
@@ -1684,7 +1684,7 @@ msgstr "Ibara rya mbugambanza"
 
 #: ctk/ctkcellrenderertext.c:289
 #, fuzzy
-msgid "Foreground color as a GdkColor"
+msgid "Foreground color as a CdkColor"
 msgstr "Ibara Nka a"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
@@ -3505,7 +3505,7 @@ msgstr ""
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
 #, fuzzy
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr "A Kuri Kugaragaza"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
@@ -3563,7 +3563,7 @@ msgstr "kuyeza"
 
 #: ctk/ctkimage.c:287
 #, fuzzy
-msgid "GdkPixbufAnimation to display"
+msgid "CdkPixbufAnimation to display"
 msgstr "Kuri Kugaragaza"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
@@ -6410,7 +6410,7 @@ msgstr "Kuri Kuri i Umwandiko Itagi: kugirango"
 
 #: ctk/ctktexttag.c:187
 #, fuzzy
-msgid "Background color as a (possibly unallocated) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
 msgstr "Ibara Nka a"
 
 #: ctk/ctktexttag.c:194
@@ -6429,7 +6429,7 @@ msgstr ""
 
 #: ctk/ctktexttag.c:211
 #, fuzzy
-msgid "Foreground color as a (possibly unallocated) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
 msgstr "Ibara Nka a"
 
 #: ctk/ctktexttag.c:218
@@ -6597,7 +6597,7 @@ msgstr "Ibara y'Imbuganyuma y'akadirishya"
 
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
 msgstr "Ibara Nka a"
 
 #: ctk/ctktexttag.c:530
@@ -7679,7 +7679,7 @@ msgstr "ibyabaye"
 
 #: ctk/ctkwidget.c:825
 #, fuzzy
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr "Icyabaye Bya iyi"
 
 #: ctk/ctkwidget.c:832
@@ -8229,7 +8229,7 @@ msgstr "Kuri Gushushanya i Iyinjiza Uburyo"
 #~ msgstr "A Mweretsi Kuri i Ibyatanzwe Bya i"
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "i kugirango i"
 
 #, fuzzy
@@ -8253,7 +8253,7 @@ msgstr "Kuri Gushushanya i Iyinjiza Uburyo"
 #~ msgstr "Kuri Gukoresha Nka a Ryari: Igishushanyo i Umwandiko Mbuganyuma"
 
 #, fuzzy
-#~ msgid "The GdkFont that is currently selected"
+#~ msgid "The CdkFont that is currently selected"
 #~ msgstr "ni Byahiswemo"
 
 #, fuzzy
@@ -8261,15 +8261,15 @@ msgstr "Kuri Gushushanya i Iyinjiza Uburyo"
 #~ msgstr "indangakintu Gukoresha"
 
 #, fuzzy
-#~ msgid "A GdkPixmap to display"
+#~ msgid "A CdkPixmap to display"
 #~ msgstr "A Kuri Kugaragaza"
 
 #, fuzzy
-#~ msgid "A GdkImage to display"
+#~ msgid "A CdkImage to display"
 #~ msgstr "A Kuri Kugaragaza"
 
 #, fuzzy
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
 #~ msgstr "Bitimapu Kuri Gukoresha Na: Cyangwa"
 
 #, fuzzy

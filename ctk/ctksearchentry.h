@@ -69,7 +69,7 @@ CtkWidget*      ctk_search_entry_new            (void);
 
 GDK_AVAILABLE_IN_3_16
 gboolean        ctk_search_entry_handle_event   (CtkSearchEntry *entry,
-                                                 GdkEvent       *event);
+                                                 CdkEvent       *event);
 
 G_END_DECLS
 

@@ -581,8 +581,8 @@ set_busy_cursor (CtkPrintUnixDialog *dialog,
 {
   CtkWidget *widget;
   CtkWindow *toplevel;
-  GdkDisplay *display;
-  GdkCursor *cursor;
+  CdkDisplay *display;
+  CdkCursor *cursor;
 
   toplevel = get_toplevel (CTK_WIDGET (dialog));
   widget = CTK_WIDGET (toplevel);
@@ -2691,7 +2691,7 @@ draw_page_cb (CtkWidget          *widget,
   PangoLayout *layout;
   PangoFontDescription *font;
   gchar *text;
-  GdkRGBA color;
+  CdkRGBA color;
   CtkNumberUpLayout number_up_layout;
   gint start_x, end_x, start_y, end_y;
   gint dx, dy;

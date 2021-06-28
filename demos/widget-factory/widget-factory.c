@@ -76,7 +76,7 @@ get_busy (GSimpleAction *action,
           gpointer       user_data)
 {
   CtkWidget *window = user_data;
-  GdkCursor *cursor;
+  CdkCursor *cursor;
   CtkApplication *app = ctk_window_get_application (CTK_WINDOW (window));
 
   g_application_mark_busy (G_APPLICATION (app));
@@ -345,7 +345,7 @@ update_pulse_time (CtkAdjustment *adjustment, CtkWidget *widget)
 static void
 on_entry_icon_release (CtkEntry            *entry,
                        CtkEntryIconPosition icon_pos,
-                       GdkEvent            *event,
+                       CdkEvent            *event,
                        gpointer             user_data)
 {
   if (icon_pos != CTK_ENTRY_ICON_SECONDARY)
@@ -751,7 +751,7 @@ static void
 overshot (CtkScrolledWindow *sw, CtkPositionType pos, CtkWidget *widget)
 {
   CtkWidget *box, *row, *label, *swatch;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
   const gchar *color;
   gchar *text;
   CtkWidget *silver;
@@ -826,7 +826,7 @@ static void
 set_color (CtkListBox *box, CtkListBoxRow *row, CtkColorChooser *chooser)
 {
   const char *color;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 
   if (!row)
     return;
@@ -892,7 +892,7 @@ populate_colors (CtkWidget *widget, CtkWidget *chooser)
   gint i;
   CtkWidget *row, *box, *label, *swatch;
   CtkWidget *sw;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 
   ctk_list_box_set_header_func (CTK_LIST_BOX (widget), update_title_header, NULL, NULL);
 
@@ -948,7 +948,7 @@ background_loaded_cb (GObject      *source,
 {
   BackgroundData *bd = data;
   CtkWidget *child;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   GError *error = NULL;
 
   pixbuf = cdk_pixbuf_new_from_stream_finish (res, &error);
@@ -978,7 +978,7 @@ populate_flowbox (CtkWidget *flowbox)
   GFile *file;
   GInputStream *stream;
   BackgroundData *bd;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   CtkWidget *child;
 
   if (GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (flowbox), "populated")))
@@ -1057,7 +1057,7 @@ set_accel (CtkApplication *app, CtkWidget *widget)
   const gchar *action;
   gchar **accels;
   guint key;
-  GdkModifierType mods;
+  CdkModifierType mods;
 
   accel_label = ctk_bin_get_child (CTK_BIN (widget));
   g_assert (CTK_IS_ACCEL_LABEL (accel_label));
@@ -1126,7 +1126,7 @@ my_text_view_class_init (MyTextViewClass *class)
 static void
 my_text_view_set_background (MyTextView *tv, const gchar *filename)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   GError *error = NULL;
 
   if (tv->surface)
@@ -1242,7 +1242,7 @@ handle_cutcopypaste (CtkWidget *button, CtkWidget *textview)
 }
 
 static void
-clipboard_owner_change (CtkClipboard *clipboard, GdkEvent *event, CtkWidget *button)
+clipboard_owner_change (CtkClipboard *clipboard, CdkEvent *event, CtkWidget *button)
 {
   const gchar *id;
   gboolean has_text;
@@ -1270,7 +1270,7 @@ textbuffer_notify_selection (GObject *object, GParamSpec *pspec, CtkWidget *butt
 }
 
 static gboolean
-osd_frame_button_press (CtkWidget *frame, GdkEventButton *event, gpointer data)
+osd_frame_button_press (CtkWidget *frame, CdkEventButton *event, gpointer data)
 {
   CtkWidget *osd;
   gboolean visible;

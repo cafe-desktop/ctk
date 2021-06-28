@@ -857,7 +857,7 @@ clone_image_menu_size (CtkImage *image)
       
       if (ctk_icon_size_lookup (CTK_ICON_SIZE_MENU, &width, &height))
 	{
-	  GdkPixbuf *src_pixbuf, *dest_pixbuf;
+	  CdkPixbuf *src_pixbuf, *dest_pixbuf;
 	  CtkWidget *cloned_image;
 
 	  src_pixbuf = ctk_image_get_pixbuf (image);

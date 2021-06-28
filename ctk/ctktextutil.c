@@ -212,7 +212,7 @@ _ctk_text_util_create_drag_icon (CtkWidget *widget,
   cairo_t      *cr;
   gint          pixmap_height, pixmap_width;
   gint          layout_width, layout_height;
-  GdkRGBA       color;
+  CdkRGBA       color;
 
   g_return_val_if_fail (widget != NULL, NULL);
   g_return_val_if_fail (text != NULL, NULL);
@@ -257,7 +257,7 @@ static void
 set_attributes_from_style (CtkStyleContext   *context,
                            CtkTextAttributes *values)
 {
-  GdkRGBA bg_color, fg_color;
+  CdkRGBA bg_color, fg_color;
   CtkStateFlags state;
 
   state = ctk_style_context_get_state (context);

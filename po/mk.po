@@ -4451,11 +4451,11 @@ msgstr ""
 "Не успеав да ја вчитам сликата „%s“: причината не е позната, најверојатно се "
 "работи за расипана слика"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Поставување на Gdk знамиња за дебагирање"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Поставување на Cdk знамиња за дебагирање"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Отстранување на Gdk знамиња за дебагирање"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Отстранување на Cdk знамиња за дебагирање"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "Датотеката слика „%s“ не содржи податоци"
@@ -4912,7 +4912,7 @@ msgstr ""
 #~ msgstr "Не можам да алоцирам меморија во TGA контекстот"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Не успеав да го запишам индексирањето на папката\n"
 
 #, fuzzy

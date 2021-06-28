@@ -87,7 +87,7 @@ get_dragsource (void)
 
 static void
 data_received (CtkWidget *widget,
-               GdkDragContext *context,
+               CdkDragContext *context,
                gint x, gint y,
                CtkSelectionData *selda,
                guint info, guint time,

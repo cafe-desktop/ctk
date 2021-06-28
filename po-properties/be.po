@@ -1314,8 +1314,8 @@ msgid "Cell background color"
 msgstr "Колер тла ячэйкі"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Колер тла ячэйкі як GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Колер тла ячэйкі як CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1571,8 +1571,8 @@ msgid "Background color"
 msgstr "Колер тла"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Колер тла як GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Колер тла як CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1588,8 +1588,8 @@ msgid "Foreground color"
 msgstr "Асноўны колер"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Асноўны колер як GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Асноўны колер як CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -2130,7 +2130,7 @@ msgstr "Актыўны"
 #: ctk/ctkcombobox.c:768
 #, fuzzy
 msgid "The item which is currently active"
-msgstr "GdkFont, што вылучаны ў бягучы момант."
+msgstr "CdkFont, што вылучаны ў бягучы момант."
 
 #: ctk/ctkcombobox.c:787 ctk/ctkuimanager.c:224
 msgid "Add tearoffs to menus"
@@ -3277,8 +3277,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf для адлюстраваньня"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf для адлюстраваньня"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3325,8 +3325,8 @@ msgid "Animation"
 msgstr "Ажыцьцяўленьне"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation для адлюстраваньня"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation для адлюстраваньня"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -4577,7 +4577,7 @@ msgstr "Назоў файла, адзначанага зараз."
 #: ctk/ctkprintunixdialog.c:325
 #, fuzzy
 msgid "The CtkPrinter which is selected"
-msgstr "GdkFont, што вылучаны ў бягучы момант."
+msgstr "CdkFont, што вылучаны ў бягучы момант."
 
 #: ctk/ctkprintunixdialog.c:332
 msgid "Manual Capabilities"
@@ -6021,7 +6021,7 @@ msgstr "Назоў файла, адзначанага зараз."
 #: ctk/ctktextbuffer.c:226
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "GdkFont, што вылучаны ў бягучы момант."
+msgstr "CdkFont, што вылучаны ў бягучы момант."
 
 #: ctk/ctktextbuffer.c:242
 #, fuzzy
@@ -6077,8 +6077,8 @@ msgstr ""
 "Назоў, што выкарыстоўваецца для тэкставага тэгу. NULL для безназоўных тэгаў."
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Колер тла як (магчыма не разьмеркаваны) GdkColor."
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Колер тла як (магчыма не разьмеркаваны) CdkColor."
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -6093,8 +6093,8 @@ msgstr ""
 "абмежаваных тэгамі."
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Асноўны колер як (магчыма не разьмеркаваны) GdkColor."
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Асноўны колер як (магчыма не разьмеркаваны) CdkColor."
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6248,8 +6248,8 @@ msgstr "Колер тла ячэйкі"
 
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Колер тла як (магчыма не разьмеркаваны) GdkColor."
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Колер тла як (магчыма не разьмеркаваны) CdkColor."
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7254,8 +7254,8 @@ msgid "Events"
 msgstr "Здарэньні"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "Маска, якая вырашае, якога роду GdkEvents атрымлівае віджэт."
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "Маска, якая вырашае, якога роду CdkEvents атрымлівае віджэт."
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7768,7 +7768,7 @@ msgstr "Як адлюстроўваць палоску стану мэтада �
 #~ msgstr "Прамежак паміж палоскай пракруткі й акном для пракруткі."
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "Разнавід для адлюстраваньня дрэва"
 
 #, fuzzy
@@ -7793,8 +7793,8 @@ msgstr "Як адлюстроўваць палоску стану мэтада �
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "Бітавы ўзор, які выкарыстоўвываецца пры адлюстраваньні тла тэксту."
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "GdkFont, што вылучаны ў бягучы момант."
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "CdkFont, што вылучаны ў бягучы момант."
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "Асуджаная ўласьцівасьць; замест яе выкарыстўвайце shadow_type."
@@ -7802,17 +7802,17 @@ msgstr "Як адлюстроўваць палоску стану мэтада �
 #~ msgid "Pixmap"
 #~ msgstr "Малюнак"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "GdkPixmap для адлюстраваньня"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "CdkPixmap для адлюстраваньня"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "GdkImage для адлюстраваньня"
+#~ msgid "A CdkImage to display"
+#~ msgstr "CdkImage для адлюстраваньня"
 
 #~ msgid "Mask"
 #~ msgstr "Маска"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Бітавая маска, выкарыстоўвываемая разам з GdkImage ці GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Бітавая маска, выкарыстоўвываемая разам з CdkImage ці CdkPixmap"
 
 #, fuzzy
 #~ msgid "Use separator"

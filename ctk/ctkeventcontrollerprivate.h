@@ -32,7 +32,7 @@ struct _CtkEventControllerClass
   GObjectClass parent_class;
 
   gboolean (* handle_event) (CtkEventController *controller,
-                             const GdkEvent     *event);
+                             const CdkEvent     *event);
   void     (* reset)        (CtkEventController *controller);
 
   /*<private>*/
@@ -41,12 +41,12 @@ struct _CtkEventControllerClass
    * the event unseen by the handle_event vfunc.
    */
   gboolean (* filter_event) (CtkEventController *controller,
-                             const GdkEvent     *event);
+                             const CdkEvent     *event);
   gpointer padding[10];
 };
 
 void         ctk_event_controller_set_event_mask (CtkEventController *controller,
-						  GdkEventMask        event_mask);
-GdkEventMask ctk_event_controller_get_event_mask (CtkEventController *controller);
+						  CdkEventMask        event_mask);
+CdkEventMask ctk_event_controller_get_event_mask (CtkEventController *controller);
 
 #endif /* __CTK_EVENT_CONTROLLER_PRIVATE_H__ */

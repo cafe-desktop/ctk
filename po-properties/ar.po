@@ -1235,8 +1235,8 @@ msgid "Cell background color"
 msgstr "لون خلفية الخلية"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "لون خلفية الخلية كـ GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "لون خلفية الخلية كـ CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 msgid "Editing"
@@ -1480,8 +1480,8 @@ msgid "Background color"
 msgstr "لون الخلفية"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "لون الخلفية كـ GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "لون الخلفية كـ CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1497,8 +1497,8 @@ msgid "Foreground color"
 msgstr "لون الواجهة الأمامية"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "لون الواجهة الأمامية كـ GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "لون الواجهة الأمامية كـ CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3082,8 +3082,8 @@ msgid "Pixbuf"
 msgstr "بكسبف"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf لعرضه"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf لعرضه"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3127,8 +3127,8 @@ msgid "Animation"
 msgstr "رسوم متحركة"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation لعرضها"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation لعرضها"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5658,8 +5658,8 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr "الاسم المستخدم للإشارة لعلامة النص. NULL·لعلامات مجهولة الهويّة"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "لون الخلفية كـ GdkColor (ربما·غير·مخصص)"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "لون الخلفية كـ CdkColor (ربما·غير·مخصص)"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5673,8 +5673,8 @@ msgstr ""
 "فيما إذا سيملأ لون الخلفيّة كامل إرتفاع السطر أو إرتفاع الرموز المعّلمة فقط"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "لون الواجهة الأمامية كـ GdkColor (ربما غير مخصص)"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "لون الواجهة الأمامية كـ CdkColor (ربما غير مخصص)"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -5819,8 +5819,8 @@ msgid "Paragraph background color"
 msgstr "اسم لون خلفية"
 
 #: ctk/ctktexttag.c:512
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "اسم لون خلفية كـ GdkColor (ربما·غير·مخصص)"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "اسم لون خلفية كـ CdkColor (ربما·غير·مخصص)"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -6762,8 +6762,8 @@ msgid "Events"
 msgstr "أحداث"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "غلاف الأحداث الدي يحدّد أي نوع من GdkEvents ستتلقى هذه الودجة"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "غلاف الأحداث الدي يحدّد أي نوع من CdkEvents ستتلقى هذه الودجة"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7256,8 +7256,8 @@ msgstr "كيفية رسم عمود الحالة لطريقة الإدخال"
 #~ msgid "A pointer to the pixel data of the pixbuf"
 #~ msgstr "مؤشر للبيانات البكسلية للبكسبف"
 
-#~ msgid "the GdkScreen for the renderer"
-#~ msgstr "الـ GdkScreen للرّاسم"
+#~ msgid "the CdkScreen for the renderer"
+#~ msgstr "الـ CdkScreen للرّاسم"
 
 #~ msgid "The adjustment that holds the value of the spinbutton."
 #~ msgstr "التسوية الحاملة لقيمة الزر الدائر"
@@ -7280,8 +7280,8 @@ msgstr "كيفية رسم عمود الحالة لطريقة الإدخال"
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "صورة بيتماب المستخدمة كغلاف أثناء رسم الواجهة الخلفية للنص"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "خط Gdk المنتقى حاليًا"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "خط Cdk المنتقى حاليًا"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "خاضية ملغات، إستعمل shadow_type عوضا عنها"
@@ -7289,17 +7289,17 @@ msgstr "كيفية رسم عمود الحالة لطريقة الإدخال"
 #~ msgid "Pixmap"
 #~ msgstr "بكسماب"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "GdkPixmap لعرضها"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "CdkPixmap لعرضها"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "GdkImage لعرضها"
+#~ msgid "A CdkImage to display"
+#~ msgstr "CdkImage لعرضها"
 
 #~ msgid "Mask"
 #~ msgstr "غلاف"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "بيتماب الغلاف لاستخدامه مع GdkImage أو GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "بيتماب الغلاف لاستخدامه مع CdkImage أو CdkPixmap"
 
 #~ msgid "Use separator"
 #~ msgstr "استخدم فاصل"

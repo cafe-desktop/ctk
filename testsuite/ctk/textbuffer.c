@@ -633,11 +633,11 @@ static void
 fill_buffer (CtkTextBuffer *buffer)
 {
   CtkTextTag *tag;
-  GdkRGBA color;
-  GdkRGBA color2;
+  CdkRGBA color;
+  CdkRGBA color2;
   CtkTextIter iter;
   CtkTextIter iter2;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   int i;
 
   color.red = 0.0;

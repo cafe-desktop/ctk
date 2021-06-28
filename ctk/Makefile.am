@@ -1570,7 +1570,7 @@ Ctk_3_0_gir_MSVC_EXPORT_PACKAGES = $(Ctk_3_0_gir_EXPORT_PACKAGES)
 Ctk_3_0_gir_MSVC_INCLUDE_GIRS = Atk-1.0
 Ctk_3_0_gir_MSVC_LIBS = ctk-3.0 cdk-3.0
 Ctk_3_0_gir_MSVC_CFLAGS = $(CTK_MSVC_GIR_CFLAGS)
-Ctk_3_0_gir_MSVC_SCANNERFLAGS = --warn-all --include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Gdk-3.0.gir'
+Ctk_3_0_gir_MSVC_SCANNERFLAGS = --warn-all --include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Cdk-3.0.gir'
 
 include $(top_srcdir)/win32/Makefile.msvc-introspection
 
@@ -1625,11 +1625,11 @@ INTROSPECTION_COMPILER_ARGS = \
 	--includedir=. \
 	--includedir=../cdk
 
-Ctk-3.0.gir: $(INTROSPECTION_SCANNER) libctk-3.la $(top_builddir)/cdk/Gdk-3.0.gir Makefile
+Ctk-3.0.gir: $(INTROSPECTION_SCANNER) libctk-3.la $(top_builddir)/cdk/Cdk-3.0.gir Makefile
 Ctk_3_0_gir_SCANNERFLAGS = 			\
 	--warn-all				\
 	--add-include-path=$(top_builddir)/cdk	\
-	--include-uninstalled=$(top_builddir)/cdk/Gdk-3.0.gir
+	--include-uninstalled=$(top_builddir)/cdk/Cdk-3.0.gir
 Ctk_3_0_gir_INCLUDES = Atk-1.0
 Ctk_3_0_gir_C_INCLUDES = ctk/ctk.h ctk/ctk-a11y.h
 if USE_X11

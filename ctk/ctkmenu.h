@@ -144,7 +144,7 @@ void	   ctk_menu_popup		  (CtkMenu	       *menu,
 					   guint32		activate_time);
 GDK_DEPRECATED_IN_3_22_FOR((ctk_menu_popup_at_widget, ctk_menu_popup_at_pointer, ctk_menu_popup_at_rect))
 void       ctk_menu_popup_for_device      (CtkMenu             *menu,
-                                           GdkDevice           *device,
+                                           CdkDevice           *device,
                                            CtkWidget           *parent_menu_shell,
                                            CtkWidget           *parent_menu_item,
                                            CtkMenuPositionFunc  func,
@@ -154,20 +154,20 @@ void       ctk_menu_popup_for_device      (CtkMenu             *menu,
                                            guint32              activate_time);
 GDK_AVAILABLE_IN_3_22
 void       ctk_menu_popup_at_rect         (CtkMenu             *menu,
-                                           GdkWindow           *rect_window,
-                                           const GdkRectangle  *rect,
-                                           GdkGravity           rect_anchor,
-                                           GdkGravity           menu_anchor,
-                                           const GdkEvent      *trigger_event);
+                                           CdkWindow           *rect_window,
+                                           const CdkRectangle  *rect,
+                                           CdkGravity           rect_anchor,
+                                           CdkGravity           menu_anchor,
+                                           const CdkEvent      *trigger_event);
 GDK_AVAILABLE_IN_3_22
 void       ctk_menu_popup_at_widget       (CtkMenu             *menu,
                                            CtkWidget           *widget,
-                                           GdkGravity           widget_anchor,
-                                           GdkGravity           menu_anchor,
-                                           const GdkEvent      *trigger_event);
+                                           CdkGravity           widget_anchor,
+                                           CdkGravity           menu_anchor,
+                                           const CdkEvent      *trigger_event);
 GDK_AVAILABLE_IN_3_22
 void       ctk_menu_popup_at_pointer      (CtkMenu             *menu,
-                                           const GdkEvent      *trigger_event);
+                                           const CdkEvent      *trigger_event);
 
 /* Position the menu according to its position function. Called
  * from ctkmenuitem.c when a menu-item changes its allocation
@@ -241,7 +241,7 @@ void       ctk_menu_reorder_child         (CtkMenu             *menu,
 
 GDK_AVAILABLE_IN_ALL
 void	   ctk_menu_set_screen		  (CtkMenu	       *menu,
-					   GdkScreen	       *screen);
+					   CdkScreen	       *screen);
 
 GDK_AVAILABLE_IN_ALL
 void       ctk_menu_attach                (CtkMenu             *menu,
@@ -259,7 +259,7 @@ gint       ctk_menu_get_monitor           (CtkMenu             *menu);
 
 GDK_AVAILABLE_IN_3_22
 void       ctk_menu_place_on_monitor      (CtkMenu             *menu,
-                                           GdkMonitor          *monitor);
+                                           CdkMonitor          *monitor);
 
 GDK_AVAILABLE_IN_ALL
 GList*     ctk_menu_get_for_attach_widget (CtkWidget           *widget); 

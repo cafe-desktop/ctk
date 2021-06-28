@@ -100,7 +100,7 @@ static void        mount_volume                                  (CtkPlacesView 
                                                                   GVolume       *volume);
 
 static gboolean    on_button_press_event                         (CtkPlacesViewRow *row,
-                                                                  GdkEventButton   *event);
+                                                                  CdkEventButton   *event);
 
 static void        on_eject_button_clicked                       (CtkWidget        *widget,
                                                                   CtkPlacesViewRow *row);
@@ -325,8 +325,8 @@ set_busy_cursor (CtkPlacesView *view,
 {
   CtkWidget *widget;
   CtkWindow *toplevel;
-  GdkDisplay *display;
-  GdkCursor *cursor;
+  CdkDisplay *display;
+  CdkCursor *cursor;
 
   toplevel = get_toplevel (CTK_WIDGET (view));
   widget = CTK_WIDGET (toplevel);
@@ -1760,7 +1760,7 @@ build_popup_menu (CtkPlacesView    *view,
 
 static void
 popup_menu (CtkPlacesViewRow *row,
-            GdkEventButton   *event)
+            CdkEventButton   *event)
 {
   CtkPlacesViewPrivate *priv;
   CtkWidget *view;
@@ -1772,7 +1772,7 @@ popup_menu (CtkPlacesViewRow *row,
 
   build_popup_menu (CTK_PLACES_VIEW (view), row);
 
-  ctk_menu_popup_at_pointer (CTK_MENU (priv->popup_menu), (GdkEvent *) event);
+  ctk_menu_popup_at_pointer (CTK_MENU (priv->popup_menu), (CdkEvent *) event);
 }
 
 static gboolean
@@ -1784,10 +1784,10 @@ on_row_popup_menu (CtkPlacesViewRow *row)
 
 static gboolean
 on_button_press_event (CtkPlacesViewRow *row,
-                       GdkEventButton   *event)
+                       CdkEventButton   *event)
 {
   if (row &&
-      cdk_event_triggers_context_menu ((GdkEvent*) event) &&
+      cdk_event_triggers_context_menu ((CdkEvent*) event) &&
       event->type == GDK_BUTTON_PRESS)
     {
       popup_menu (row, event);
@@ -1800,7 +1800,7 @@ on_button_press_event (CtkPlacesViewRow *row,
 
 static gboolean
 on_key_press_event (CtkWidget     *widget,
-                    GdkEventKey   *event,
+                    CdkEventKey   *event,
                     CtkPlacesView *view)
 {
   CtkPlacesViewPrivate *priv;
@@ -1932,11 +1932,11 @@ out:
 static void
 on_address_entry_show_help_pressed (CtkPlacesView        *view,
                                     CtkEntryIconPosition  icon_pos,
-                                    GdkEvent             *event,
+                                    CdkEvent             *event,
                                     CtkEntry             *entry)
 {
   CtkPlacesViewPrivate *priv;
-  GdkRectangle rect;
+  CdkRectangle rect;
 
   priv = ctk_places_view_get_instance_private (view);
 
@@ -1971,7 +1971,7 @@ on_listbox_row_activated (CtkPlacesView    *view,
                           CtkWidget        *listbox)
 {
   CtkPlacesViewPrivate *priv;
-  GdkEvent *event;
+  CdkEvent *event;
   guint button;
   CtkPlacesOpenFlags open_flags;
 

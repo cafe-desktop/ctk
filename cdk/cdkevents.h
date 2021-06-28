@@ -121,67 +121,67 @@ G_BEGIN_DECLS
 
 
 
-typedef struct _GdkEventAny	    GdkEventAny;
-typedef struct _GdkEventExpose	    GdkEventExpose;
-typedef struct _GdkEventVisibility  GdkEventVisibility;
-typedef struct _GdkEventMotion	    GdkEventMotion;
-typedef struct _GdkEventButton	    GdkEventButton;
-typedef struct _GdkEventTouch       GdkEventTouch;
-typedef struct _GdkEventScroll      GdkEventScroll;  
-typedef struct _GdkEventKey	    GdkEventKey;
-typedef struct _GdkEventFocus	    GdkEventFocus;
-typedef struct _GdkEventCrossing    GdkEventCrossing;
-typedef struct _GdkEventConfigure   GdkEventConfigure;
-typedef struct _GdkEventProperty    GdkEventProperty;
-typedef struct _GdkEventSelection   GdkEventSelection;
-typedef struct _GdkEventOwnerChange GdkEventOwnerChange;
-typedef struct _GdkEventProximity   GdkEventProximity;
-typedef struct _GdkEventDND         GdkEventDND;
-typedef struct _GdkEventWindowState GdkEventWindowState;
-typedef struct _GdkEventSetting     GdkEventSetting;
-typedef struct _GdkEventGrabBroken  GdkEventGrabBroken;
-typedef struct _GdkEventTouchpadSwipe GdkEventTouchpadSwipe;
-typedef struct _GdkEventTouchpadPinch GdkEventTouchpadPinch;
-typedef struct _GdkEventPadButton   GdkEventPadButton;
-typedef struct _GdkEventPadAxis     GdkEventPadAxis;
-typedef struct _GdkEventPadGroupMode GdkEventPadGroupMode;
+typedef struct _CdkEventAny	    CdkEventAny;
+typedef struct _CdkEventExpose	    CdkEventExpose;
+typedef struct _CdkEventVisibility  CdkEventVisibility;
+typedef struct _CdkEventMotion	    CdkEventMotion;
+typedef struct _CdkEventButton	    CdkEventButton;
+typedef struct _CdkEventTouch       CdkEventTouch;
+typedef struct _CdkEventScroll      CdkEventScroll;  
+typedef struct _CdkEventKey	    CdkEventKey;
+typedef struct _CdkEventFocus	    CdkEventFocus;
+typedef struct _CdkEventCrossing    CdkEventCrossing;
+typedef struct _CdkEventConfigure   CdkEventConfigure;
+typedef struct _CdkEventProperty    CdkEventProperty;
+typedef struct _CdkEventSelection   CdkEventSelection;
+typedef struct _CdkEventOwnerChange CdkEventOwnerChange;
+typedef struct _CdkEventProximity   CdkEventProximity;
+typedef struct _CdkEventDND         CdkEventDND;
+typedef struct _CdkEventWindowState CdkEventWindowState;
+typedef struct _CdkEventSetting     CdkEventSetting;
+typedef struct _CdkEventGrabBroken  CdkEventGrabBroken;
+typedef struct _CdkEventTouchpadSwipe CdkEventTouchpadSwipe;
+typedef struct _CdkEventTouchpadPinch CdkEventTouchpadPinch;
+typedef struct _CdkEventPadButton   CdkEventPadButton;
+typedef struct _CdkEventPadAxis     CdkEventPadAxis;
+typedef struct _CdkEventPadGroupMode CdkEventPadGroupMode;
 
-typedef struct _GdkEventSequence    GdkEventSequence;
+typedef struct _CdkEventSequence    CdkEventSequence;
 
-typedef union  _GdkEvent	    GdkEvent;
+typedef union  _CdkEvent	    CdkEvent;
 
 /**
- * GdkEventFunc:
- * @event: the #GdkEvent to process.
+ * CdkEventFunc:
+ * @event: the #CdkEvent to process.
  * @data: (closure): user data set when the event handler was installed with
  *   cdk_event_handler_set().
  *
  * Specifies the type of function passed to cdk_event_handler_set() to
  * handle all GDK events.
  */
-typedef void (*GdkEventFunc) (GdkEvent *event,
+typedef void (*CdkEventFunc) (CdkEvent *event,
 			      gpointer	data);
 
 /* Event filtering */
 
 /**
- * GdkXEvent:
+ * CdkXEvent:
  *
  * Used to represent native events (XEvents for the X11
  * backend, MSGs for Win32).
  */
-typedef void GdkXEvent;	  /* Can be cast to window system specific
+typedef void CdkXEvent;	  /* Can be cast to window system specific
 			   * even type, XEvent on X11, MSG on Win32.
 			   */
 
 /**
- * GdkFilterReturn:
+ * CdkFilterReturn:
  * @GDK_FILTER_CONTINUE: event not handled, continue processing.
  * @GDK_FILTER_TRANSLATE: native event translated into a GDK event and stored
  *  in the `event` structure that was passed in.
  * @GDK_FILTER_REMOVE: event handled, terminate processing.
  *
- * Specifies the result of applying a #GdkFilterFunc to a native event.
+ * Specifies the result of applying a #CdkFilterFunc to a native event.
  */
 typedef enum {
   GDK_FILTER_CONTINUE,	  /* Event not handled, continue processesing */
@@ -189,10 +189,10 @@ typedef enum {
                              stored in the "event" structure that was
                              passed in */
   GDK_FILTER_REMOVE	  /* Terminate processing, removing event */
-} GdkFilterReturn;
+} CdkFilterReturn;
 
 /**
- * GdkFilterFunc:
+ * CdkFilterFunc:
  * @xevent: the native event to filter.
  * @event: the GDK event to which the X event will be translated.
  * @data: (closure): user data set when the filter was installed.
@@ -206,15 +206,15 @@ typedef enum {
  * translation. If the filter translates the event and processing should
  * continue, it should return %GDK_FILTER_TRANSLATE.
  *
- * Returns: a #GdkFilterReturn value.
+ * Returns: a #CdkFilterReturn value.
  */
-typedef GdkFilterReturn (*GdkFilterFunc) (GdkXEvent *xevent,
-					  GdkEvent *event,
+typedef CdkFilterReturn (*CdkFilterFunc) (CdkXEvent *xevent,
+					  CdkEvent *event,
 					  gpointer  data);
 
 
 /**
- * GdkEventType:
+ * CdkEventType:
  * @GDK_NOTHING: a special code to indicate a null event.
  * @GDK_DELETE: the window manager has requested that the toplevel window be
  *   hidden or destroyed, usually when the user clicks on a special icon in the
@@ -260,7 +260,7 @@ typedef GdkFilterReturn (*GdkFilterFunc) (GdkXEvent *xevent,
  * @GDK_CLIENT_EVENT: a message has been received from another application.
  * @GDK_VISIBILITY_NOTIFY: the window visibility status has changed.
  * @GDK_SCROLL: the scroll wheel was turned
- * @GDK_WINDOW_STATE: the state of a window has changed. See #GdkWindowState
+ * @GDK_WINDOW_STATE: the state of a window has changed. See #CdkWindowState
  *   for the possible window states
  * @GDK_SETTING: a setting has been modified.
  * @GDK_OWNER_CHANGE: the owner of a selection has changed. This event type
@@ -291,7 +291,7 @@ typedef GdkFilterReturn (*GdkFilterFunc) (GdkXEvent *xevent,
  *   added in 3.22.
  * @GDK_PAD_GROUP_MODE: A tablet pad group mode change. This event type was
  *   added in 3.22.
- * @GDK_EVENT_LAST: marks the end of the GdkEventType enumeration. Added in 2.18
+ * @GDK_EVENT_LAST: marks the end of the CdkEventType enumeration. Added in 2.18
  *
  * Specifies the type of the event.
  *
@@ -301,7 +301,7 @@ typedef GdkFilterReturn (*GdkFilterFunc) (GdkXEvent *xevent,
  *
  * In some language bindings, the values %GDK_2BUTTON_PRESS and
  * %GDK_3BUTTON_PRESS would translate into something syntactically
- * invalid (eg `Gdk.EventType.2ButtonPress`, where a
+ * invalid (eg `Cdk.EventType.2ButtonPress`, where a
  * symbol is not allowed to start with a number). In that case, the
  * aliases %GDK_DOUBLE_BUTTON_PRESS and %GDK_TRIPLE_BUTTON_PRESS can
  * be used instead.
@@ -359,25 +359,25 @@ typedef enum
   GDK_PAD_STRIP         = 46,
   GDK_PAD_GROUP_MODE    = 47,
   GDK_EVENT_LAST        /* helper variable for decls */
-} GdkEventType;
+} CdkEventType;
 
 /**
- * GdkVisibilityState:
+ * CdkVisibilityState:
  * @GDK_VISIBILITY_UNOBSCURED: the window is completely visible.
  * @GDK_VISIBILITY_PARTIAL: the window is partially visible.
  * @GDK_VISIBILITY_FULLY_OBSCURED: the window is not visible at all.
  *
- * Specifies the visiblity status of a window for a #GdkEventVisibility.
+ * Specifies the visiblity status of a window for a #CdkEventVisibility.
  */
 typedef enum
 {
   GDK_VISIBILITY_UNOBSCURED,
   GDK_VISIBILITY_PARTIAL,
   GDK_VISIBILITY_FULLY_OBSCURED
-} GdkVisibilityState;
+} CdkVisibilityState;
 
 /**
- * GdkTouchpadGesturePhase:
+ * CdkTouchpadGesturePhase:
  * @GDK_TOUCHPAD_GESTURE_PHASE_BEGIN: The gesture has begun.
  * @GDK_TOUCHPAD_GESTURE_PHASE_UPDATE: The gesture has been updated.
  * @GDK_TOUCHPAD_GESTURE_PHASE_END: The gesture was finished, changes
@@ -402,7 +402,7 @@ typedef enum
  * to undo any visible/permanent changes that were done throughout the
  * progress of the gesture.
  *
- * See also #GdkEventTouchpadSwipe and #GdkEventTouchpadPinch.
+ * See also #CdkEventTouchpadSwipe and #CdkEventTouchpadPinch.
  *
  */
 typedef enum
@@ -411,18 +411,18 @@ typedef enum
   GDK_TOUCHPAD_GESTURE_PHASE_UPDATE,
   GDK_TOUCHPAD_GESTURE_PHASE_END,
   GDK_TOUCHPAD_GESTURE_PHASE_CANCEL
-} GdkTouchpadGesturePhase;
+} CdkTouchpadGesturePhase;
 
 /**
- * GdkScrollDirection:
+ * CdkScrollDirection:
  * @GDK_SCROLL_UP: the window is scrolled up.
  * @GDK_SCROLL_DOWN: the window is scrolled down.
  * @GDK_SCROLL_LEFT: the window is scrolled to the left.
  * @GDK_SCROLL_RIGHT: the window is scrolled to the right.
  * @GDK_SCROLL_SMOOTH: the scrolling is determined by the delta values
- *   in #GdkEventScroll. See cdk_event_get_scroll_deltas(). Since: 3.4
+ *   in #CdkEventScroll. See cdk_event_get_scroll_deltas(). Since: 3.4
  *
- * Specifies the direction for #GdkEventScroll.
+ * Specifies the direction for #CdkEventScroll.
  */
 typedef enum
 {
@@ -431,10 +431,10 @@ typedef enum
   GDK_SCROLL_LEFT,
   GDK_SCROLL_RIGHT,
   GDK_SCROLL_SMOOTH
-} GdkScrollDirection;
+} CdkScrollDirection;
 
 /**
- * GdkNotifyType:
+ * CdkNotifyType:
  * @GDK_NOTIFY_ANCESTOR: the window is entered from an ancestor or
  *   left towards an ancestor.
  * @GDK_NOTIFY_VIRTUAL: the pointer moves between an ancestor and an
@@ -449,7 +449,7 @@ typedef enum
  *   common ancestor.
  * @GDK_NOTIFY_UNKNOWN: an unknown type of enter/leave event occurred.
  *
- * Specifies the kind of crossing for #GdkEventCrossing.
+ * Specifies the kind of crossing for #CdkEventCrossing.
  *
  * See the X11 protocol specification of LeaveNotify for
  * full details of crossing event generation.
@@ -462,10 +462,10 @@ typedef enum
   GDK_NOTIFY_NONLINEAR		= 3,
   GDK_NOTIFY_NONLINEAR_VIRTUAL	= 4,
   GDK_NOTIFY_UNKNOWN		= 5
-} GdkNotifyType;
+} CdkNotifyType;
 
 /**
- * GdkCrossingMode:
+ * CdkCrossingMode:
  * @GDK_CROSSING_NORMAL: crossing because of pointer motion.
  * @GDK_CROSSING_GRAB: crossing because a grab is activated.
  * @GDK_CROSSING_UNGRAB: crossing because a grab is deactivated.
@@ -481,7 +481,7 @@ typedef enum
  *   a mouse taking control of the pointer after a touch device), this event
  *   is synthetic as the pointer didn’t leave the window.
  *
- * Specifies the crossing mode for #GdkEventCrossing.
+ * Specifies the crossing mode for #CdkEventCrossing.
  */
 typedef enum
 {
@@ -494,23 +494,23 @@ typedef enum
   GDK_CROSSING_TOUCH_BEGIN,
   GDK_CROSSING_TOUCH_END,
   GDK_CROSSING_DEVICE_SWITCH
-} GdkCrossingMode;
+} CdkCrossingMode;
 
 /**
- * GdkPropertyState:
+ * CdkPropertyState:
  * @GDK_PROPERTY_NEW_VALUE: the property value was changed.
  * @GDK_PROPERTY_DELETE: the property was deleted.
  *
- * Specifies the type of a property change for a #GdkEventProperty.
+ * Specifies the type of a property change for a #CdkEventProperty.
  */
 typedef enum
 {
   GDK_PROPERTY_NEW_VALUE,
   GDK_PROPERTY_DELETE
-} GdkPropertyState;
+} CdkPropertyState;
 
 /**
- * GdkWindowState:
+ * CdkWindowState:
  * @GDK_WINDOW_STATE_WITHDRAWN: the window is not shown.
  * @GDK_WINDOW_STATE_ICONIFIED: the window is minimized.
  * @GDK_WINDOW_STATE_MAXIMIZED: the window is maximized.
@@ -552,26 +552,26 @@ typedef enum
   GDK_WINDOW_STATE_BOTTOM_RESIZABLE = 1 << 14,
   GDK_WINDOW_STATE_LEFT_TILED       = 1 << 15,
   GDK_WINDOW_STATE_LEFT_RESIZABLE   = 1 << 16
-} GdkWindowState;
+} CdkWindowState;
 
 /**
- * GdkSettingAction:
+ * CdkSettingAction:
  * @GDK_SETTING_ACTION_NEW: a setting was added.
  * @GDK_SETTING_ACTION_CHANGED: a setting was changed.
  * @GDK_SETTING_ACTION_DELETED: a setting was deleted.
  *
  * Specifies the kind of modification applied to a setting in a
- * #GdkEventSetting.
+ * #CdkEventSetting.
  */
 typedef enum
 {
   GDK_SETTING_ACTION_NEW,
   GDK_SETTING_ACTION_CHANGED,
   GDK_SETTING_ACTION_DELETED
-} GdkSettingAction;
+} CdkSettingAction;
 
 /**
- * GdkOwnerChange:
+ * CdkOwnerChange:
  * @GDK_OWNER_CHANGE_NEW_OWNER: some other app claimed the ownership
  * @GDK_OWNER_CHANGE_DESTROY: the window was destroyed
  * @GDK_OWNER_CHANGE_CLOSE: the client was closed
@@ -583,27 +583,27 @@ typedef enum
   GDK_OWNER_CHANGE_NEW_OWNER,
   GDK_OWNER_CHANGE_DESTROY,
   GDK_OWNER_CHANGE_CLOSE
-} GdkOwnerChange;
+} CdkOwnerChange;
 
 /**
- * GdkEventAny:
+ * CdkEventAny:
  * @type: the type of the event.
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
  *
  * Contains the fields which are common to all event structs.
- * Any event pointer can safely be cast to a pointer to a #GdkEventAny to
+ * Any event pointer can safely be cast to a pointer to a #CdkEventAny to
  * access these fields.
  */
-struct _GdkEventAny
+struct _CdkEventAny
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
 };
 
 /**
- * GdkEventExpose:
+ * CdkEventExpose:
  * @type: the type of the event (%GDK_EXPOSE or %GDK_DAMAGE).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -617,18 +617,18 @@ struct _GdkEventAny
  * Generated when all or part of a window becomes visible and needs to be
  * redrawn.
  */
-struct _GdkEventExpose
+struct _CdkEventExpose
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
-  GdkRectangle area;
+  CdkRectangle area;
   cairo_region_t *region;
   gint count; /* If non-zero, how many more events follow. */
 };
 
 /**
- * GdkEventVisibility:
+ * CdkEventVisibility:
  * @type: the type of the event (%GDK_VISIBILITY_NOTIFY).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -642,16 +642,16 @@ struct _GdkEventExpose
  *     reliably, so this event can not be guaranteed to provide useful
  *     information.
  */
-struct _GdkEventVisibility
+struct _CdkEventVisibility
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
-  GdkVisibilityState state;
+  CdkVisibilityState state;
 };
 
 /**
- * GdkEventMotion:
+ * CdkEventMotion:
  * @type: the type of the event.
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -660,11 +660,11 @@ struct _GdkEventVisibility
  * @y: the y coordinate of the pointer relative to the window.
  * @axes: @x, @y translated to the axes of @device, or %NULL if @device is
  *   the mouse.
- * @state: (type GdkModifierType): a bit-mask representing the state of
+ * @state: (type CdkModifierType): a bit-mask representing the state of
  *   the modifier keys (e.g. Control, Shift and Alt) and the pointer
- *   buttons. See #GdkModifierType.
+ *   buttons. See #CdkModifierType.
  * @is_hint: set to 1 if this event is just a hint, see the
- *   %GDK_POINTER_MOTION_HINT_MASK value of #GdkEventMask.
+ *   %GDK_POINTER_MOTION_HINT_MASK value of #CdkEventMask.
  * @device: the master device that the event originated from. Use
  * cdk_event_get_source_device() to get the slave device.
  * @x_root: the x coordinate of the pointer relative to the root of the
@@ -674,10 +674,10 @@ struct _GdkEventVisibility
  *
  * Generated when the pointer moves.
  */
-struct _GdkEventMotion
+struct _CdkEventMotion
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   guint32 time;
   gdouble x;
@@ -685,12 +685,12 @@ struct _GdkEventMotion
   gdouble *axes;
   guint state;
   gint16 is_hint;
-  GdkDevice *device;
+  CdkDevice *device;
   gdouble x_root, y_root;
 };
 
 /**
- * GdkEventButton:
+ * CdkEventButton:
  * @type: the type of the event (%GDK_BUTTON_PRESS, %GDK_2BUTTON_PRESS,
  *   %GDK_3BUTTON_PRESS or %GDK_BUTTON_RELEASE).
  * @window: the window which received the event.
@@ -700,9 +700,9 @@ struct _GdkEventMotion
  * @y: the y coordinate of the pointer relative to the window.
  * @axes: @x, @y translated to the axes of @device, or %NULL if @device is
  *   the mouse.
- * @state: (type GdkModifierType): a bit-mask representing the state of
+ * @state: (type CdkModifierType): a bit-mask representing the state of
  *   the modifier keys (e.g. Control, Shift and Alt) and the pointer
- *   buttons. See #GdkModifierType.
+ *   buttons. See #CdkModifierType.
  * @button: the button which was pressed or released, numbered from 1 to 5.
  *   Normally button 1 is the left mouse button, 2 is the middle button,
  *   and 3 is the right button. On 2-button mice, the middle button can
@@ -748,10 +748,10 @@ struct _GdkEventMotion
  * 1/4 of a second of the first. For a triple click to occur, the third
  * button press must also occur within 1/2 second of the first button press.
  */
-struct _GdkEventButton
+struct _CdkEventButton
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   guint32 time;
   gdouble x;
@@ -759,12 +759,12 @@ struct _GdkEventButton
   gdouble *axes;
   guint state;
   guint button;
-  GdkDevice *device;
+  CdkDevice *device;
   gdouble x_root, y_root;
 };
 
 /**
- * GdkEventTouch:
+ * CdkEventTouch:
  * @type: the type of the event (%GDK_TOUCH_BEGIN, %GDK_TOUCH_UPDATE,
  *   %GDK_TOUCH_END, %GDK_TOUCH_CANCEL)
  * @window: the window which received the event
@@ -774,9 +774,9 @@ struct _GdkEventButton
  * @y: the y coordinate of the pointer relative to the window
  * @axes: @x, @y translated to the axes of @device, or %NULL if @device is
  *   the mouse
- * @state: (type GdkModifierType): a bit-mask representing the state of
+ * @state: (type CdkModifierType): a bit-mask representing the state of
  *   the modifier keys (e.g. Control, Shift and Alt) and the pointer
- *   buttons. See #GdkModifierType
+ *   buttons. See #CdkModifierType
  * @sequence: the event sequence that the event belongs to
  * @emulating_pointer: whether the event should be used for emulating
  *   pointer event
@@ -798,33 +798,33 @@ struct _GdkEventButton
  * (or %GDK_TOUCH_CANCEL) event. With multitouch devices, there may be
  * several active sequences at the same time.
  */
-struct _GdkEventTouch
+struct _CdkEventTouch
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   guint32 time;
   gdouble x;
   gdouble y;
   gdouble *axes;
   guint state;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   gboolean emulating_pointer;
-  GdkDevice *device;
+  CdkDevice *device;
   gdouble x_root, y_root;
 };
 
 /**
- * GdkEventScroll:
+ * CdkEventScroll:
  * @type: the type of the event (%GDK_SCROLL).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
  * @time: the time of the event in milliseconds.
  * @x: the x coordinate of the pointer relative to the window.
  * @y: the y coordinate of the pointer relative to the window.
- * @state: (type GdkModifierType): a bit-mask representing the state of
+ * @state: (type CdkModifierType): a bit-mask representing the state of
  *   the modifier keys (e.g. Control, Shift and Alt) and the pointer
- *   buttons. See #GdkModifierType.
+ *   buttons. See #CdkModifierType.
  * @direction: the direction to scroll to (one of %GDK_SCROLL_UP,
  *   %GDK_SCROLL_DOWN, %GDK_SCROLL_LEFT, %GDK_SCROLL_RIGHT or
  *   %GDK_SCROLL_SMOOTH).
@@ -846,17 +846,17 @@ struct _GdkEventTouch
  * these, the scroll deltas can be obtained with
  * cdk_event_get_scroll_deltas().
  */
-struct _GdkEventScroll
+struct _CdkEventScroll
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   guint32 time;
   gdouble x;
   gdouble y;
   guint state;
-  GdkScrollDirection direction;
-  GdkDevice *device;
+  CdkScrollDirection direction;
+  CdkDevice *device;
   gdouble x_root, y_root;
   gdouble delta_x;
   gdouble delta_y;
@@ -864,14 +864,14 @@ struct _GdkEventScroll
 };
 
 /**
- * GdkEventKey:
+ * CdkEventKey:
  * @type: the type of the event (%GDK_KEY_PRESS or %GDK_KEY_RELEASE).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
  * @time: the time of the event in milliseconds.
- * @state: (type GdkModifierType): a bit-mask representing the state of
+ * @state: (type CdkModifierType): a bit-mask representing the state of
  *   the modifier keys (e.g. Control, Shift and Alt) and the pointer
- *   buttons. See #GdkModifierType.
+ *   buttons. See #CdkModifierType.
  * @keyval: the key that was pressed or released. See the
  *   `cdk/cdkkeysyms.h` header file for a
  *   complete list of GDK key codes.
@@ -894,10 +894,10 @@ struct _GdkEventScroll
  *
  * Describes a key press or key release event.
  */
-struct _GdkEventKey
+struct _CdkEventKey
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   guint32 time;
   guint state;
@@ -910,7 +910,7 @@ struct _GdkEventKey
 };
 
 /**
- * GdkEventCrossing:
+ * CdkEventCrossing:
  * @type: the type of the event (%GDK_ENTER_NOTIFY or %GDK_LEAVE_NOTIFY).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -929,31 +929,31 @@ struct _GdkEventKey
  *  %GDK_NOTIFY_ANCESTOR, %GDK_NOTIFY_VIRTUAL, %GDK_NOTIFY_NONLINEAR or
  *  %GDK_NOTIFY_NONLINEAR_VIRTUAL).
  * @focus: %TRUE if @window is the focus window or an inferior.
- * @state: (type GdkModifierType): a bit-mask representing the state of
+ * @state: (type CdkModifierType): a bit-mask representing the state of
  *   the modifier keys (e.g. Control, Shift and Alt) and the pointer
- *   buttons. See #GdkModifierType.
+ *   buttons. See #CdkModifierType.
  *
  * Generated when the pointer enters or leaves a window.
  */
-struct _GdkEventCrossing
+struct _CdkEventCrossing
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
-  GdkWindow *subwindow;
+  CdkWindow *subwindow;
   guint32 time;
   gdouble x;
   gdouble y;
   gdouble x_root;
   gdouble y_root;
-  GdkCrossingMode mode;
-  GdkNotifyType detail;
+  CdkCrossingMode mode;
+  CdkNotifyType detail;
   gboolean focus;
   guint state;
 };
 
 /**
- * GdkEventFocus:
+ * CdkEventFocus:
  * @type: the type of the event (%GDK_FOCUS_CHANGE).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -962,16 +962,16 @@ struct _GdkEventCrossing
  *
  * Describes a change of keyboard focus.
  */
-struct _GdkEventFocus
+struct _CdkEventFocus
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   gint16 in;
 };
 
 /**
- * GdkEventConfigure:
+ * CdkEventConfigure:
  * @type: the type of the event (%GDK_CONFIGURE).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -982,10 +982,10 @@ struct _GdkEventFocus
  *
  * Generated when a window size or position has changed.
  */
-struct _GdkEventConfigure
+struct _CdkEventConfigure
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   gint x, y;
   gint width;
@@ -993,29 +993,29 @@ struct _GdkEventConfigure
 };
 
 /**
- * GdkEventProperty:
+ * CdkEventProperty:
  * @type: the type of the event (%GDK_PROPERTY_NOTIFY).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
  * @atom: the property that was changed.
  * @time: the time of the event in milliseconds.
- * @state: (type GdkPropertyState): whether the property was changed
+ * @state: (type CdkPropertyState): whether the property was changed
  *   (%GDK_PROPERTY_NEW_VALUE) or deleted (%GDK_PROPERTY_DELETE).
  *
  * Describes a property change on a window.
  */
-struct _GdkEventProperty
+struct _CdkEventProperty
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
-  GdkAtom atom;
+  CdkAtom atom;
   guint32 time;
   guint state;
 };
 
 /**
- * GdkEventSelection:
+ * CdkEventSelection:
  * @type: the type of the event (%GDK_SELECTION_CLEAR,
  *   %GDK_SELECTION_NOTIFY or %GDK_SELECTION_REQUEST).
  * @window: the window which received the event.
@@ -1029,25 +1029,25 @@ struct _GdkEventProperty
  * Generated when a selection is requested or ownership of a selection
  * is taken over by another client application.
  */
-struct _GdkEventSelection
+struct _CdkEventSelection
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
-  GdkAtom selection;
-  GdkAtom target;
-  GdkAtom property;
+  CdkAtom selection;
+  CdkAtom target;
+  CdkAtom property;
   guint32 time;
-  GdkWindow *requestor;
+  CdkWindow *requestor;
 };
 
 /**
- * GdkEventOwnerChange:
+ * CdkEventOwnerChange:
  * @type: the type of the event (%GDK_OWNER_CHANGE).
  * @window: the window which received the event
  * @send_event: %TRUE if the event was sent explicitly.
  * @owner: the new owner of the selection, or %NULL if there is none
- * @reason: the reason for the ownership change as a #GdkOwnerChange value
+ * @reason: the reason for the ownership change as a #CdkOwnerChange value
  * @selection: the atom identifying the selection
  * @time: the timestamp of the event
  * @selection_time: the time at which the selection ownership was taken
@@ -1059,20 +1059,20 @@ struct _GdkEventSelection
  *
  * Since: 2.6
  */
-struct _GdkEventOwnerChange
+struct _CdkEventOwnerChange
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
-  GdkWindow *owner;
-  GdkOwnerChange reason;
-  GdkAtom selection;
+  CdkWindow *owner;
+  CdkOwnerChange reason;
+  CdkAtom selection;
   guint32 time;
   guint32 selection_time;
 };
 
 /**
- * GdkEventProximity:
+ * CdkEventProximity:
  * @type: the type of the event (%GDK_PROXIMITY_IN or %GDK_PROXIMITY_OUT).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -1090,17 +1090,17 @@ struct _GdkEventOwnerChange
  * This event type will be used pretty rarely. It only is important for
  * XInput aware programs that are drawing their own cursor.
  */
-struct _GdkEventProximity
+struct _CdkEventProximity
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   guint32 time;
-  GdkDevice *device;
+  CdkDevice *device;
 };
 
 /**
- * GdkEventSetting:
+ * CdkEventSetting:
  * @type: the type of the event (%GDK_SETTING).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -1110,37 +1110,37 @@ struct _GdkEventProximity
  *
  * Generated when a setting is modified.
  */
-struct _GdkEventSetting
+struct _CdkEventSetting
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
-  GdkSettingAction action;
+  CdkSettingAction action;
   char *name;
 };
 
 /**
- * GdkEventWindowState:
+ * CdkEventWindowState:
  * @type: the type of the event (%GDK_WINDOW_STATE).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
  * @changed_mask: mask specifying what flags have changed.
  * @new_window_state: the new window state, a combination of
- *   #GdkWindowState bits.
+ *   #CdkWindowState bits.
  *
  * Generated when the state of a toplevel window changes.
  */
-struct _GdkEventWindowState
+struct _CdkEventWindowState
 {
-  GdkEventType type;
-  GdkWindow *window;
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
-  GdkWindowState changed_mask;
-  GdkWindowState new_window_state;
+  CdkWindowState changed_mask;
+  CdkWindowState new_window_state;
 };
 
 /**
- * GdkEventGrabBroken:
+ * CdkEventGrabBroken:
  * @type: the type of the event (%GDK_GRAB_BROKEN)
  * @window: the window which received the event, i.e. the window
  *   that previously owned the grab
@@ -1156,27 +1156,27 @@ struct _GdkEventWindowState
  * when the grab window becomes unviewable (i.e. it or one of its ancestors
  * is unmapped), or if the same application grabs the pointer or keyboard
  * again. Note that implicit grabs (which are initiated by button presses)
- * can also cause #GdkEventGrabBroken events.
+ * can also cause #CdkEventGrabBroken events.
  *
  * Since: 2.8
  */
-struct _GdkEventGrabBroken {
-  GdkEventType type;
-  GdkWindow *window;
+struct _CdkEventGrabBroken {
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   gboolean keyboard;
   gboolean implicit;
-  GdkWindow *grab_window;
+  CdkWindow *grab_window;
 };
 
 /**
- * GdkEventDND:
+ * CdkEventDND:
  * @type: the type of the event (%GDK_DRAG_ENTER, %GDK_DRAG_LEAVE,
  *   %GDK_DRAG_MOTION, %GDK_DRAG_STATUS, %GDK_DROP_START or
  *   %GDK_DROP_FINISHED).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
- * @context: the #GdkDragContext for the current DND operation.
+ * @context: the #CdkDragContext for the current DND operation.
  * @time: the time of the event in milliseconds.
  * @x_root: the x coordinate of the pointer relative to the root of the
  *   screen, only set for %GDK_DRAG_MOTION and %GDK_DROP_START.
@@ -1185,18 +1185,18 @@ struct _GdkEventGrabBroken {
  *
  * Generated during DND operations.
  */
-struct _GdkEventDND {
-  GdkEventType type;
-  GdkWindow *window;
+struct _CdkEventDND {
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
-  GdkDragContext *context;
+  CdkDragContext *context;
 
   guint32 time;
   gshort x_root, y_root;
 };
 
 /**
- * GdkEventTouchpadSwipe:
+ * CdkEventTouchpadSwipe:
  * @type: the type of the event (%GDK_TOUCHPAD_SWIPE)
  * @window: the window which received the event
  * @send_event: %TRUE if the event was sent explicitly
@@ -1211,15 +1211,15 @@ struct _GdkEventDND {
  *   root of the screen.
  * @y_root: The Y coordinate of the pointer, relative to the
  *   root of the screen.
- * @state: (type GdkModifierType): a bit-mask representing the state of
+ * @state: (type CdkModifierType): a bit-mask representing the state of
  *   the modifier keys (e.g. Control, Shift and Alt) and the pointer
- *   buttons. See #GdkModifierType.
+ *   buttons. See #CdkModifierType.
  *
  * Generated during touchpad swipe gestures.
  */
-struct _GdkEventTouchpadSwipe {
-  GdkEventType type;
-  GdkWindow *window;
+struct _CdkEventTouchpadSwipe {
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   gint8 phase;
   gint8 n_fingers;
@@ -1233,7 +1233,7 @@ struct _GdkEventTouchpadSwipe {
 };
 
 /**
- * GdkEventTouchpadPinch:
+ * CdkEventTouchpadPinch:
  * @type: the type of the event (%GDK_TOUCHPAD_PINCH)
  * @window: the window which received the event
  * @send_event: %TRUE if the event was sent explicitly
@@ -1252,15 +1252,15 @@ struct _GdkEventTouchpadSwipe {
  *   root of the screen.
  * @y_root: The Y coordinate of the pointer, relative to the
  *   root of the screen.
- * @state: (type GdkModifierType): a bit-mask representing the state of
+ * @state: (type CdkModifierType): a bit-mask representing the state of
  *   the modifier keys (e.g. Control, Shift and Alt) and the pointer
- *   buttons. See #GdkModifierType.
+ *   buttons. See #CdkModifierType.
  *
  * Generated during touchpad swipe gestures.
  */
-struct _GdkEventTouchpadPinch {
-  GdkEventType type;
-  GdkWindow *window;
+struct _CdkEventTouchpadPinch {
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   gint8 phase;
   gint8 n_fingers;
@@ -1276,7 +1276,7 @@ struct _GdkEventTouchpadPinch {
 };
 
 /**
- * GdkEventPadButton:
+ * CdkEventPadButton:
  * @type: the type of the event (%GDK_PAD_BUTTON_PRESS or %GDK_PAD_BUTTON_RELEASE).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -1291,9 +1291,9 @@ struct _GdkEventTouchpadPinch {
  *
  * Since: 3.22
  */
-struct _GdkEventPadButton {
-  GdkEventType type;
-  GdkWindow *window;
+struct _CdkEventPadButton {
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   guint32 time;
   guint group;
@@ -1302,7 +1302,7 @@ struct _GdkEventPadButton {
 };
 
 /**
- * GdkEventPadAxis:
+ * CdkEventPadAxis:
  * @type: the type of the event (%GDK_PAD_RING or %GDK_PAD_STRIP).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -1319,9 +1319,9 @@ struct _GdkEventPadButton {
  *
  * Since: 3.22
  */
-struct _GdkEventPadAxis {
-  GdkEventType type;
-  GdkWindow *window;
+struct _CdkEventPadAxis {
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   guint32 time;
   guint group;
@@ -1331,7 +1331,7 @@ struct _GdkEventPadAxis {
 };
 
 /**
- * GdkEventPadGroupMode:
+ * CdkEventPadGroupMode:
  * @type: the type of the event (%GDK_PAD_GROUP_MODE).
  * @window: the window which received the event.
  * @send_event: %TRUE if the event was sent explicitly.
@@ -1346,9 +1346,9 @@ struct _GdkEventPadAxis {
  *
  * Since: 3.22
  */
-struct _GdkEventPadGroupMode {
-  GdkEventType type;
-  GdkWindow *window;
+struct _CdkEventPadGroupMode {
+  CdkEventType type;
+  CdkWindow *window;
   gint8 send_event;
   guint32 time;
   guint group;
@@ -1356,42 +1356,42 @@ struct _GdkEventPadGroupMode {
 };
 
 /**
- * GdkEvent:
- * @type: the #GdkEventType
- * @any: a #GdkEventAny
- * @expose: a #GdkEventExpose
- * @visibility: a #GdkEventVisibility
- * @motion: a #GdkEventMotion
- * @button: a #GdkEventButton
- * @touch: a #GdkEventTouch
- * @scroll: a #GdkEventScroll
- * @key: a #GdkEventKey
- * @crossing: a #GdkEventCrossing
- * @focus_change: a #GdkEventFocus
- * @configure: a #GdkEventConfigure
- * @property: a #GdkEventProperty
- * @selection: a #GdkEventSelection
- * @owner_change: a #GdkEventOwnerChange
- * @proximity: a #GdkEventProximity
- * @dnd: a #GdkEventDND
- * @window_state: a #GdkEventWindowState
- * @setting: a #GdkEventSetting
- * @grab_broken: a #GdkEventGrabBroken
- * @touchpad_swipe: a #GdkEventTouchpadSwipe
- * @touchpad_pinch: a #GdkEventTouchpadPinch
- * @pad_button: a #GdkEventPadButton
- * @pad_axis: a #GdkEventPadAxis
- * @pad_group_mode: a #GdkEventPadGroupMode
+ * CdkEvent:
+ * @type: the #CdkEventType
+ * @any: a #CdkEventAny
+ * @expose: a #CdkEventExpose
+ * @visibility: a #CdkEventVisibility
+ * @motion: a #CdkEventMotion
+ * @button: a #CdkEventButton
+ * @touch: a #CdkEventTouch
+ * @scroll: a #CdkEventScroll
+ * @key: a #CdkEventKey
+ * @crossing: a #CdkEventCrossing
+ * @focus_change: a #CdkEventFocus
+ * @configure: a #CdkEventConfigure
+ * @property: a #CdkEventProperty
+ * @selection: a #CdkEventSelection
+ * @owner_change: a #CdkEventOwnerChange
+ * @proximity: a #CdkEventProximity
+ * @dnd: a #CdkEventDND
+ * @window_state: a #CdkEventWindowState
+ * @setting: a #CdkEventSetting
+ * @grab_broken: a #CdkEventGrabBroken
+ * @touchpad_swipe: a #CdkEventTouchpadSwipe
+ * @touchpad_pinch: a #CdkEventTouchpadPinch
+ * @pad_button: a #CdkEventPadButton
+ * @pad_axis: a #CdkEventPadAxis
+ * @pad_group_mode: a #CdkEventPadGroupMode
  *
- * A #GdkEvent contains a union of all of the event types,
+ * A #CdkEvent contains a union of all of the event types,
  * and allows access to the data fields in a number of ways.
  *
  * The event type is always the first field in all of the event types, and
  * can always be accessed with the following code, no matter what type of
  * event it is:
  * |[<!-- language="C" -->
- *   GdkEvent *event;
- *   GdkEventType type;
+ *   CdkEvent *event;
+ *   CdkEventType type;
  *
  *   type = event->type;
  * ]|
@@ -1401,46 +1401,46 @@ struct _GdkEventPadGroupMode {
  * name can be used. For example if the event type is %GDK_BUTTON_PRESS
  * then the x coordinate of the button press can be accessed with:
  * |[<!-- language="C" -->
- *   GdkEvent *event;
+ *   CdkEvent *event;
  *   gdouble x;
  *
- *   x = ((GdkEventButton*)event)->x;
+ *   x = ((CdkEventButton*)event)->x;
  * ]|
  * or:
  * |[<!-- language="C" -->
- *   GdkEvent *event;
+ *   CdkEvent *event;
  *   gdouble x;
  *
  *   x = event->button.x;
  * ]|
  */
-union _GdkEvent
+union _CdkEvent
 {
-  GdkEventType		    type;
-  GdkEventAny		    any;
-  GdkEventExpose	    expose;
-  GdkEventVisibility	    visibility;
-  GdkEventMotion	    motion;
-  GdkEventButton	    button;
-  GdkEventTouch             touch;
-  GdkEventScroll            scroll;
-  GdkEventKey		    key;
-  GdkEventCrossing	    crossing;
-  GdkEventFocus		    focus_change;
-  GdkEventConfigure	    configure;
-  GdkEventProperty	    property;
-  GdkEventSelection	    selection;
-  GdkEventOwnerChange  	    owner_change;
-  GdkEventProximity	    proximity;
-  GdkEventDND               dnd;
-  GdkEventWindowState       window_state;
-  GdkEventSetting           setting;
-  GdkEventGrabBroken        grab_broken;
-  GdkEventTouchpadSwipe     touchpad_swipe;
-  GdkEventTouchpadPinch     touchpad_pinch;
-  GdkEventPadButton         pad_button;
-  GdkEventPadAxis           pad_axis;
-  GdkEventPadGroupMode      pad_group_mode;
+  CdkEventType		    type;
+  CdkEventAny		    any;
+  CdkEventExpose	    expose;
+  CdkEventVisibility	    visibility;
+  CdkEventMotion	    motion;
+  CdkEventButton	    button;
+  CdkEventTouch             touch;
+  CdkEventScroll            scroll;
+  CdkEventKey		    key;
+  CdkEventCrossing	    crossing;
+  CdkEventFocus		    focus_change;
+  CdkEventConfigure	    configure;
+  CdkEventProperty	    property;
+  CdkEventSelection	    selection;
+  CdkEventOwnerChange  	    owner_change;
+  CdkEventProximity	    proximity;
+  CdkEventDND               dnd;
+  CdkEventWindowState       window_state;
+  CdkEventSetting           setting;
+  CdkEventGrabBroken        grab_broken;
+  CdkEventTouchpadSwipe     touchpad_swipe;
+  CdkEventTouchpadPinch     touchpad_pinch;
+  CdkEventPadButton         pad_button;
+  CdkEventPadAxis           pad_axis;
+  CdkEventPadGroupMode      pad_group_mode;
 };
 
 GDK_AVAILABLE_IN_ALL
@@ -1452,111 +1452,111 @@ GType     cdk_event_sequence_get_type   (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
 gboolean  cdk_events_pending	 	(void);
 GDK_AVAILABLE_IN_ALL
-GdkEvent* cdk_event_get			(void);
+CdkEvent* cdk_event_get			(void);
 
 GDK_AVAILABLE_IN_ALL
-GdkEvent* cdk_event_peek                (void);
+CdkEvent* cdk_event_peek                (void);
 GDK_AVAILABLE_IN_ALL
-void      cdk_event_put	 		(const GdkEvent *event);
+void      cdk_event_put	 		(const CdkEvent *event);
 
 GDK_AVAILABLE_IN_ALL
-GdkEvent* cdk_event_new                 (GdkEventType    type);
+CdkEvent* cdk_event_new                 (CdkEventType    type);
 GDK_AVAILABLE_IN_ALL
-GdkEvent* cdk_event_copy     		(const GdkEvent *event);
+CdkEvent* cdk_event_copy     		(const CdkEvent *event);
 GDK_AVAILABLE_IN_ALL
-void	  cdk_event_free     		(GdkEvent 	*event);
+void	  cdk_event_free     		(CdkEvent 	*event);
 
 GDK_AVAILABLE_IN_3_10
-GdkWindow *cdk_event_get_window         (const GdkEvent *event);
+CdkWindow *cdk_event_get_window         (const CdkEvent *event);
 
 GDK_AVAILABLE_IN_ALL
-guint32   cdk_event_get_time            (const GdkEvent  *event);
+guint32   cdk_event_get_time            (const CdkEvent  *event);
 GDK_AVAILABLE_IN_ALL
-gboolean  cdk_event_get_state           (const GdkEvent  *event,
-                                         GdkModifierType *state);
+gboolean  cdk_event_get_state           (const CdkEvent  *event,
+                                         CdkModifierType *state);
 GDK_AVAILABLE_IN_ALL
-gboolean  cdk_event_get_coords		(const GdkEvent  *event,
+gboolean  cdk_event_get_coords		(const CdkEvent  *event,
 					 gdouble	 *x_win,
 					 gdouble	 *y_win);
 GDK_AVAILABLE_IN_ALL
-gboolean  cdk_event_get_root_coords	(const GdkEvent *event,
+gboolean  cdk_event_get_root_coords	(const CdkEvent *event,
 					 gdouble	*x_root,
 					 gdouble	*y_root);
 GDK_AVAILABLE_IN_3_2
-gboolean  cdk_event_get_button          (const GdkEvent *event,
+gboolean  cdk_event_get_button          (const CdkEvent *event,
                                          guint          *button);
 GDK_AVAILABLE_IN_3_2
-gboolean  cdk_event_get_click_count     (const GdkEvent *event,
+gboolean  cdk_event_get_click_count     (const CdkEvent *event,
                                          guint          *click_count);
 GDK_AVAILABLE_IN_3_2
-gboolean  cdk_event_get_keyval          (const GdkEvent *event,
+gboolean  cdk_event_get_keyval          (const CdkEvent *event,
                                          guint          *keyval);
 GDK_AVAILABLE_IN_3_2
-gboolean  cdk_event_get_keycode         (const GdkEvent *event,
+gboolean  cdk_event_get_keycode         (const CdkEvent *event,
                                          guint16        *keycode);
 GDK_AVAILABLE_IN_3_2
-gboolean cdk_event_get_scroll_direction (const GdkEvent *event,
-                                         GdkScrollDirection *direction);
+gboolean cdk_event_get_scroll_direction (const CdkEvent *event,
+                                         CdkScrollDirection *direction);
 GDK_AVAILABLE_IN_3_4
-gboolean  cdk_event_get_scroll_deltas   (const GdkEvent *event,
+gboolean  cdk_event_get_scroll_deltas   (const CdkEvent *event,
                                          gdouble         *delta_x,
                                          gdouble         *delta_y);
 
 GDK_AVAILABLE_IN_3_20
-gboolean  cdk_event_is_scroll_stop_event (const GdkEvent *event);
+gboolean  cdk_event_is_scroll_stop_event (const CdkEvent *event);
 
 GDK_AVAILABLE_IN_ALL
-gboolean  cdk_event_get_axis            (const GdkEvent  *event,
-                                         GdkAxisUse       axis_use,
+gboolean  cdk_event_get_axis            (const CdkEvent  *event,
+                                         CdkAxisUse       axis_use,
                                          gdouble         *value);
 GDK_AVAILABLE_IN_ALL
-void       cdk_event_set_device         (GdkEvent        *event,
-                                         GdkDevice       *device);
+void       cdk_event_set_device         (CdkEvent        *event,
+                                         CdkDevice       *device);
 GDK_AVAILABLE_IN_ALL
-GdkDevice* cdk_event_get_device         (const GdkEvent  *event);
+CdkDevice* cdk_event_get_device         (const CdkEvent  *event);
 GDK_AVAILABLE_IN_ALL
-void       cdk_event_set_source_device  (GdkEvent        *event,
-                                         GdkDevice       *device);
+void       cdk_event_set_source_device  (CdkEvent        *event,
+                                         CdkDevice       *device);
 GDK_AVAILABLE_IN_ALL
-GdkDevice* cdk_event_get_source_device  (const GdkEvent  *event);
+CdkDevice* cdk_event_get_source_device  (const CdkEvent  *event);
 GDK_AVAILABLE_IN_ALL
-void       cdk_event_request_motions    (const GdkEventMotion *event);
+void       cdk_event_request_motions    (const CdkEventMotion *event);
 GDK_AVAILABLE_IN_3_4
-gboolean   cdk_event_triggers_context_menu (const GdkEvent *event);
+gboolean   cdk_event_triggers_context_menu (const CdkEvent *event);
 
 GDK_AVAILABLE_IN_ALL
-gboolean  cdk_events_get_distance       (GdkEvent        *event1,
-                                         GdkEvent        *event2,
+gboolean  cdk_events_get_distance       (CdkEvent        *event1,
+                                         CdkEvent        *event2,
                                          gdouble         *distance);
 GDK_AVAILABLE_IN_ALL
-gboolean  cdk_events_get_angle          (GdkEvent        *event1,
-                                         GdkEvent        *event2,
+gboolean  cdk_events_get_angle          (CdkEvent        *event1,
+                                         CdkEvent        *event2,
                                          gdouble         *angle);
 GDK_AVAILABLE_IN_ALL
-gboolean  cdk_events_get_center         (GdkEvent        *event1,
-                                         GdkEvent        *event2,
+gboolean  cdk_events_get_center         (CdkEvent        *event1,
+                                         CdkEvent        *event2,
                                          gdouble         *x,
                                          gdouble         *y);
 
 GDK_AVAILABLE_IN_ALL
-void	  cdk_event_handler_set 	(GdkEventFunc    func,
+void	  cdk_event_handler_set 	(CdkEventFunc    func,
 					 gpointer        data,
 					 GDestroyNotify  notify);
 
 GDK_AVAILABLE_IN_ALL
-void       cdk_event_set_screen         (GdkEvent        *event,
-                                         GdkScreen       *screen);
+void       cdk_event_set_screen         (CdkEvent        *event,
+                                         CdkScreen       *screen);
 GDK_AVAILABLE_IN_ALL
-GdkScreen *cdk_event_get_screen         (const GdkEvent  *event);
+CdkScreen *cdk_event_get_screen         (const CdkEvent  *event);
 
 GDK_AVAILABLE_IN_3_4
-GdkEventSequence *cdk_event_get_event_sequence (const GdkEvent *event);
+CdkEventSequence *cdk_event_get_event_sequence (const CdkEvent *event);
 
 GDK_AVAILABLE_IN_3_10
-GdkEventType cdk_event_get_event_type   (const GdkEvent *event);
+CdkEventType cdk_event_get_event_type   (const CdkEvent *event);
 
 GDK_AVAILABLE_IN_3_20
-GdkSeat  *cdk_event_get_seat            (const GdkEvent *event);
+CdkSeat  *cdk_event_get_seat            (const CdkEvent *event);
 
 GDK_AVAILABLE_IN_ALL
 void	  cdk_set_show_events		(gboolean	 show_events);
@@ -1568,17 +1568,17 @@ gboolean cdk_setting_get                (const gchar    *name,
                                          GValue         *value);
 
 GDK_AVAILABLE_IN_3_22
-GdkDeviceTool *cdk_event_get_device_tool (const GdkEvent *event);
+CdkDeviceTool *cdk_event_get_device_tool (const CdkEvent *event);
 
 GDK_AVAILABLE_IN_3_22
-void           cdk_event_set_device_tool (GdkEvent       *event,
-                                          GdkDeviceTool  *tool);
+void           cdk_event_set_device_tool (CdkEvent       *event,
+                                          CdkDeviceTool  *tool);
 
 GDK_AVAILABLE_IN_3_22
-int            cdk_event_get_scancode    (GdkEvent *event);
+int            cdk_event_get_scancode    (CdkEvent *event);
 
 GDK_AVAILABLE_IN_3_22
-gboolean       cdk_event_get_pointer_emulated (GdkEvent *event);
+gboolean       cdk_event_get_pointer_emulated (CdkEvent *event);
 
 G_END_DECLS
 

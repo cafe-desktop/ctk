@@ -128,7 +128,7 @@ static void
 ctk_cairo_set_source_sys_color (cairo_t *cr,
                                 gint     id)
 {
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 
   ctk_win32_get_sys_color (id, &rgba);
   cdk_cairo_set_source_rgba (cr, &rgba);
@@ -726,7 +726,7 @@ ctk_win32_get_sys_metric (gint id)
 
 static struct {
   const char *name;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
 } win32_default_colors[] = {
 #define RGB(r, g, b) { (r)/255.0, (g)/255.0, (b)/255., 1.0 }
   { "scrollbar", RGB(212, 208, 200) },
@@ -790,7 +790,7 @@ ctk_win32_get_sys_color_id_for_name (const char *name)
 
 void
 ctk_win32_get_sys_color (gint     id,
-                         GdkRGBA *color)
+                         CdkRGBA *color)
 {
   if (id < 0 || id >= G_N_ELEMENTS (win32_default_colors))
     {

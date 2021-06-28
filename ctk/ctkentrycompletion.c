@@ -139,24 +139,24 @@ static gboolean ctk_entry_completion_visible_func        (CtkTreeModel       *mo
                                                           CtkTreeIter        *iter,
                                                           gpointer            data);
 static gboolean ctk_entry_completion_popup_key_event     (CtkWidget          *widget,
-                                                          GdkEventKey        *event,
+                                                          CdkEventKey        *event,
                                                           gpointer            user_data);
 static gboolean ctk_entry_completion_popup_button_press  (CtkWidget          *widget,
-                                                          GdkEventButton     *event,
+                                                          CdkEventButton     *event,
                                                           gpointer            user_data);
 static gboolean ctk_entry_completion_list_button_press   (CtkWidget          *widget,
-                                                          GdkEventButton     *event,
+                                                          CdkEventButton     *event,
                                                           gpointer            user_data);
 static gboolean ctk_entry_completion_action_button_press (CtkWidget          *widget,
-                                                          GdkEventButton     *event,
+                                                          CdkEventButton     *event,
                                                           gpointer            user_data);
 static void     ctk_entry_completion_selection_changed   (CtkTreeSelection   *selection,
                                                           gpointer            data);
 static gboolean ctk_entry_completion_list_enter_notify   (CtkWidget          *widget,
-                                                          GdkEventCrossing   *event,
+                                                          CdkEventCrossing   *event,
                                                           gpointer            data);
 static gboolean ctk_entry_completion_list_motion_notify  (CtkWidget          *widget,
-                                                          GdkEventMotion     *event,
+                                                          CdkEventMotion     *event,
                                                           gpointer            data);
 static void     ctk_entry_completion_insert_action       (CtkEntryCompletion *completion,
                                                           gint                index,
@@ -912,7 +912,7 @@ ctk_entry_completion_visible_func (CtkTreeModel *model,
 
 static gboolean
 ctk_entry_completion_popup_key_event (CtkWidget   *widget,
-                                      GdkEventKey *event,
+                                      CdkEventKey *event,
                                       gpointer     user_data)
 {
   CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
@@ -921,14 +921,14 @@ ctk_entry_completion_popup_key_event (CtkWidget   *widget,
     return FALSE;
 
   /* propagate event to the entry */
-  ctk_widget_event (completion->priv->entry, (GdkEvent *)event);
+  ctk_widget_event (completion->priv->entry, (CdkEvent *)event);
 
   return TRUE;
 }
 
 static gboolean
 ctk_entry_completion_popup_button_press (CtkWidget      *widget,
-                                         GdkEventButton *event,
+                                         CdkEventButton *event,
                                          gpointer        user_data)
 {
   CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
@@ -944,7 +944,7 @@ ctk_entry_completion_popup_button_press (CtkWidget      *widget,
 
 static gboolean
 ctk_entry_completion_list_button_press (CtkWidget      *widget,
-                                        GdkEventButton *event,
+                                        CdkEventButton *event,
                                         gpointer        user_data)
 {
   CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
@@ -987,7 +987,7 @@ ctk_entry_completion_list_button_press (CtkWidget      *widget,
 
 static gboolean
 ctk_entry_completion_action_button_press (CtkWidget      *widget,
-                                          GdkEventButton *event,
+                                          CdkEventButton *event,
                                           gpointer        user_data)
 {
   CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
@@ -1060,8 +1060,8 @@ ctk_entry_completion_selection_changed (CtkTreeSelection *selection,
 }
 
 static void
-prepare_popup_func (GdkSeat   *seat,
-                    GdkWindow *window,
+prepare_popup_func (CdkSeat   *seat,
+                    CdkWindow *window,
                     gpointer   user_data)
 {
   CtkEntryCompletion *completion = user_data;
@@ -1572,7 +1572,7 @@ ctk_entry_completion_get_text_column (CtkEntryCompletion *completion)
 
 static gboolean
 ctk_entry_completion_list_enter_notify (CtkWidget        *widget,
-                                        GdkEventCrossing *event,
+                                        CdkEventCrossing *event,
                                         gpointer          data)
 {
   CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
@@ -1582,7 +1582,7 @@ ctk_entry_completion_list_enter_notify (CtkWidget        *widget,
 
 static gboolean
 ctk_entry_completion_list_motion_notify (CtkWidget      *widget,
-                                         GdkEventMotion *event,
+                                         CdkEventMotion *event,
                                          gpointer        data)
 {
   CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
@@ -1600,11 +1600,11 @@ _ctk_entry_completion_resize_popup (CtkEntryCompletion *completion)
   CtkAllocation allocation;
   gint x, y;
   gint matches, actions, items, height;
-  GdkDisplay *display;
-  GdkMonitor *monitor;
+  CdkDisplay *display;
+  CdkMonitor *monitor;
   gint vertical_separator;
-  GdkRectangle area;
-  GdkWindow *window;
+  CdkRectangle area;
+  CdkWindow *window;
   CtkRequisition popup_req;
   CtkRequisition entry_req;
   CtkRequisition tree_req;
@@ -2220,7 +2220,7 @@ keyval_is_cursor_move (guint keyval)
 
 static gboolean
 ctk_entry_completion_key_press (CtkWidget   *widget,
-                                GdkEventKey *event,
+                                CdkEventKey *event,
                                 gpointer     user_data)
 {
   gint matches, actions = 0;
@@ -2509,7 +2509,7 @@ ctk_entry_completion_changed (CtkWidget *widget,
 {
   CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
   CtkEntry *entry = CTK_ENTRY (widget);
-  GdkDevice *device;
+  CdkDevice *device;
 
   if (!completion->priv->popup_completion)
     return;

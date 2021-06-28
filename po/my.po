@@ -4216,11 +4216,11 @@ msgid ""
 "Failed to load image '%s': reason not known, probably a corrupt image file"
 msgstr "ရုပ်ပုံ %s': ဖွင့်လို့ မရတဲ့ အကြောင်းရင်းကို မသိရဘူး၊ ပျက်စီးတဲ့ ဖိုင်တခု ဖြစ်နိုင်တယ်"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Gdk ချမှတ်ရန် ပြဿနာရှင်းတဲ့ အလံများ"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Cdk ချမှတ်ရန် ပြဿနာရှင်းတဲ့ အလံများ"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Gdk မချမှတ်ရန် ပြဿနာရှင်းတဲ့ အလံများ"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Cdk မချမှတ်ရန် ပြဿနာရှင်းတဲ့ အလံများ"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "ရုပ်ပုံဖိုင် '%s' မှာ အချက်အလက်ကြမ်း မရှိဘူး"
@@ -4646,7 +4646,7 @@ msgstr "ရုပ်ပုံ %s': ဖွင့်လို့ မရတဲ့ �
 #~ msgstr "TGA အကြောင်းအချက် တည်ဆောက်မှု အတွက် မှတ်ဉာဏ်ကို မခွဲဝေနိုင်ဘူး"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "ဖိုင်တွဲ အညွှန်းကို ရေးဖို့ မအောင်မြင်ဘူး\n"
 
 #, fuzzy

@@ -70,12 +70,12 @@ GType ctk_invisible_get_type (void) G_GNUC_CONST;
 GDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_invisible_new            (void);
 GDK_AVAILABLE_IN_ALL
-CtkWidget* ctk_invisible_new_for_screen (GdkScreen    *screen);
+CtkWidget* ctk_invisible_new_for_screen (CdkScreen    *screen);
 GDK_AVAILABLE_IN_ALL
 void	   ctk_invisible_set_screen	(CtkInvisible *invisible,
-					 GdkScreen    *screen);
+					 CdkScreen    *screen);
 GDK_AVAILABLE_IN_ALL
-GdkScreen* ctk_invisible_get_screen	(CtkInvisible *invisible);
+CdkScreen* ctk_invisible_get_screen	(CtkInvisible *invisible);
 
 G_END_DECLS
 

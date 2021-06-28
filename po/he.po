@@ -9075,11 +9075,11 @@ msgstr "הדפסה למדפסת בדיקה"
 #~ msgid "Error creating folder '%s': %s"
 #~ msgstr "שגיאה ביצירת התיקייה '%s': %s"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Gdk debugging flags to set"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Cdk debugging flags to set"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Gdk debugging flags to unset"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Cdk debugging flags to unset"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "התמונה '%s' לא מכילה מידע"
@@ -9516,8 +9516,8 @@ msgstr "הדפסה למדפסת בדיקה"
 #~ msgid "Failed to allocate QTIF context structure."
 #~ msgstr "לא ניתן להקצות מבנה הקשר ל־QTIF."
 
-#~ msgid "Failed to create GdkPixbufLoader object."
-#~ msgstr "ארע כשל ביצירת פריט מסוג GdkPixbufLoader."
+#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgstr "ארע כשל ביצירת פריט מסוג CdkPixbufLoader."
 
 #~ msgid "Failed to find an image data atom."
 #~ msgstr "ארע כשל במציאת נתוני אטום לתמונה."

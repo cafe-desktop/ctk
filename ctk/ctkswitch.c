@@ -78,7 +78,7 @@
 
 struct _CtkSwitchPrivate
 {
-  GdkWindow *event_window;
+  CdkWindow *event_window;
   CtkAction *action;
   CtkActionHelper *action_helper;
 
@@ -149,7 +149,7 @@ ctk_switch_end_toggle_animation (CtkSwitch *sw)
 
 static gboolean
 ctk_switch_on_frame_clock_update (CtkWidget     *widget,
-                                  GdkFrameClock *clock,
+                                  CdkFrameClock *clock,
                                   gpointer       user_data)
 {
   CtkSwitch *sw = CTK_SWITCH (widget);
@@ -226,7 +226,7 @@ ctk_switch_multipress_gesture_released (CtkGestureMultiPress *gesture,
                                         CtkSwitch            *sw)
 {
   CtkSwitchPrivate *priv = sw->priv;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
 
@@ -272,7 +272,7 @@ ctk_switch_pan_gesture_drag_end (CtkGestureDrag *gesture,
                                  CtkSwitch      *sw)
 {
   CtkSwitchPrivate *priv = sw->priv;
-  GdkEventSequence *sequence;
+  CdkEventSequence *sequence;
   CtkAllocation allocation;
   gboolean active;
 
@@ -299,7 +299,7 @@ ctk_switch_pan_gesture_drag_end (CtkGestureDrag *gesture,
 
 static gboolean
 ctk_switch_enter (CtkWidget        *widget,
-                  GdkEventCrossing *event)
+                  CdkEventCrossing *event)
 {
   CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
 
@@ -314,7 +314,7 @@ ctk_switch_enter (CtkWidget        *widget,
 
 static gboolean
 ctk_switch_leave (CtkWidget        *widget,
-                  GdkEventCrossing *event)
+                  CdkEventCrossing *event)
 {
   CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
 
@@ -513,8 +513,8 @@ static void
 ctk_switch_realize (CtkWidget *widget)
 {
   CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
-  GdkWindow *parent_window;
-  GdkWindowAttr attributes;
+  CdkWindow *parent_window;
+  CdkWindowAttr attributes;
   gint attributes_mask;
   CtkAllocation allocation;
 

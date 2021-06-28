@@ -836,8 +836,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Näkyvä GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "Näkyvä CdkPixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2255,16 +2255,16 @@ msgid "Cell background color"
 msgstr "Solun taustaväri"
 
 #: ctk/ctkcellrenderer.c:407
-msgid "Cell background color as a GdkColor"
-msgstr "Solun taustaväri GdkColor:na"
+msgid "Cell background color as a CdkColor"
+msgstr "Solun taustaväri CdkColor:na"
 
 #: ctk/ctkcellrenderer.c:421
 msgid "Cell background RGBA color"
 msgstr "Solun taustan RGBA-väri"
 
 #: ctk/ctkcellrenderer.c:422
-msgid "Cell background color as a GdkRGBA"
-msgstr "Solun taustaväri GdkRGBA-muodossa"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Solun taustaväri CdkRGBA-muodossa"
 
 #: ctk/ctkcellrenderer.c:429
 msgid "Editing"
@@ -2507,8 +2507,8 @@ msgid "Background color"
 msgstr "Taustaväri"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:231
-msgid "Background color as a GdkColor"
-msgstr "Taustaväri GdkColor:na"
+msgid "Background color as a CdkColor"
+msgstr "Taustaväri CdkColor:na"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
@@ -2516,8 +2516,8 @@ msgstr "Taustan väri RGBA:na"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:246
 #, fuzzy
-msgid "Background color as a GdkRGBA"
-msgstr "Taustaväri GdkColor:na"
+msgid "Background color as a CdkRGBA"
+msgstr "Taustaväri CdkColor:na"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:261
 msgid "Foreground color name"
@@ -2528,8 +2528,8 @@ msgid "Foreground color as a string"
 msgstr "Edustaväri merkkijonona"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:277
-msgid "Foreground color as a GdkColor"
-msgstr "Edustaväri GdkColor:na"
+msgid "Foreground color as a CdkColor"
+msgstr "Edustaväri CdkColor:na"
 
 #: ctk/ctkcellrenderertext.c:349
 #, fuzzy
@@ -2538,8 +2538,8 @@ msgstr "Edustavärin nimi"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:292
 #, fuzzy
-msgid "Foreground color as a GdkRGBA"
-msgstr "Edustaväri GdkColor:na"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Edustaväri CdkColor:na"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:308
 #: ctk/ctktextview.c:824
@@ -3013,8 +3013,8 @@ msgid "Color"
 msgstr "Väri"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Nykyinen väri GdkRGBA:na"
+msgid "Current color, as a CdkRGBA"
+msgstr "Nykyinen väri CdkRGBA:na"
 
 #: ctk/ctkcolorchooser.c:88
 #, fuzzy
@@ -4328,8 +4328,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Tulostustöiden lukumäärä tulostimella"
 
 #: ctk/ctkgesture.c:886 ctk/ctkgesture.c:887
-msgid "GdkWindow to receive events about"
-msgstr "GdkWindow josta tapahtumat vastaanotetaan"
+msgid "CdkWindow to receive events about"
+msgstr "CdkWindow josta tapahtumat vastaanotetaan"
 
 #: ctk/ctkgesturelongpress.c:284
 #, fuzzy
@@ -4713,8 +4713,8 @@ msgid "Animation"
 msgstr "Animaatio"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "Näkyvä GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "Näkyvä CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -6142,7 +6142,7 @@ msgstr ""
 #, fuzzy
 #| msgid "The CtkAdjustment for the vertical position"
 msgid "Constraint for the popover position"
-msgstr "Pystysijainnin GdkAdjustment"
+msgstr "Pystysijainnin CdkAdjustment"
 
 #: ctk/ctkpopovermenu.c:359
 msgid "Visible submenu"
@@ -6964,7 +6964,7 @@ msgstr "Pystykoonmuutos"
 
 #: ctk/ctkscrolledwindow.c:577
 msgid "The CtkAdjustment for the vertical position"
-msgstr "Pystysijainnin GdkAdjustment"
+msgstr "Pystysijainnin CdkAdjustment"
 
 #: ctk/ctkscrolledwindow.c:583
 msgid "Horizontal Scrollbar Policy"
@@ -8179,7 +8179,7 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Tilarivin tekstiä ympäröivän reunuksen tyyli"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
+msgid "The associated CdkScreen"
 msgstr ""
 
 #: ctk/ctkstylecontext.c:236
@@ -8187,7 +8187,7 @@ msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
+msgid "The associated CdkFrameClock"
 msgstr ""
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:299
@@ -8502,7 +8502,7 @@ msgstr "Kappaleen taustaväri"
 
 #: ctk/ctktexttag.c:630
 #, fuzzy
-msgid "Paragraph background color as a GdkColor"
+msgid "Paragraph background color as a CdkColor"
 msgstr "Kappaleen taustaväri merkkijonona"
 
 #: ctk/ctktexttag.c:644
@@ -8512,7 +8512,7 @@ msgstr "Kappaleen taustaväri asetettu"
 
 #: ctk/ctktexttag.c:645
 #, fuzzy
-msgid "Paragraph background RGBA as a GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
 msgstr "Kappaleen taustaväri merkkijonona"
 
 #: ctk/ctktexttag.c:662
@@ -9551,9 +9551,9 @@ msgid "Events"
 msgstr "Tapahtumat"
 
 #: ctk/ctkwidget.c:1253
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Tapahtumapeite, joka määrittää, mitä GdkEventtejä tämä säädin vastaanottaa"
+"Tapahtumapeite, joka määrittää, mitä CdkEventtejä tämä säädin vastaanottaa"
 
 #: ctk/ctkwidget.c:1260
 msgid "No show all"

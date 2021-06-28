@@ -64,8 +64,8 @@ struct _CtkNumerableIconPrivate {
   GIcon *background_icon;
   gchar *background_icon_name;
 
-  GdkRGBA *background;
-  GdkRGBA *foreground;
+  CdkRGBA *background;
+  CdkRGBA *foreground;
 
   PangoFontDescription *font;
   cairo_pattern_t *background_image;
@@ -195,7 +195,7 @@ draw_from_gicon (CtkNumerableIcon *self)
 {
   CtkIconTheme *theme;
   CtkIconInfo *info;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   cairo_surface_t *surface;
 
   if (self->priv->style != NULL)
@@ -259,7 +259,7 @@ static PangoLayout *
 get_pango_layout (CtkNumerableIcon *self)
 {
   PangoContext *context;
-  GdkScreen *screen;
+  CdkScreen *screen;
   PangoLayout *layout;
 
   if (self->priv->style != NULL)
@@ -299,7 +299,7 @@ ctk_numerable_icon_ensure_emblem (CtkNumerableIcon *self)
   gdouble scale;
   PangoAttrList *attr_list;
   PangoAttribute *attr;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   /* don't draw anything if the count is zero */
   if (self->priv->rendered_string == NULL)
@@ -361,7 +361,7 @@ ctk_numerable_icon_update_properties_from_style (CtkNumerableIcon *self)
   CtkStyleContext *style = self->priv->style;
   CtkWidgetPath *path, *saved;
   cairo_pattern_t *pattern = NULL;
-  GdkRGBA background, foreground;
+  CdkRGBA background, foreground;
   PangoFontDescription *font = NULL;
 
   /* save an unmodified copy of the original widget path, in order
@@ -678,8 +678,8 @@ ctk_numerable_icon_class_init (CtkNumerableIconClass *klass)
 static void
 ctk_numerable_icon_init (CtkNumerableIcon *self)
 {
-  GdkRGBA bg;
-  GdkRGBA fg;
+  CdkRGBA bg;
+  CdkRGBA fg;
 
   self->priv = ctk_numerable_icon_get_instance_private (self);
 

@@ -42,11 +42,11 @@ cdk_xid_equal (XID *a, XID *b)
 }
 
 void
-_cdk_x11_display_add_window (GdkDisplay *display,
+_cdk_x11_display_add_window (CdkDisplay *display,
                              XID        *xid,
-                             GdkWindow  *data)
+                             CdkWindow  *data)
 {
-  GdkX11Display *display_x11;
+  CdkX11Display *display_x11;
 
   g_return_if_fail (xid != NULL);
   g_return_if_fail (GDK_IS_DISPLAY (display));
@@ -64,10 +64,10 @@ _cdk_x11_display_add_window (GdkDisplay *display,
 }
 
 void
-_cdk_x11_display_remove_window (GdkDisplay *display,
+_cdk_x11_display_remove_window (CdkDisplay *display,
                                 XID         xid)
 {
-  GdkX11Display *display_x11;
+  CdkX11Display *display_x11;
 
   g_return_if_fail (GDK_IS_DISPLAY (display));
 
@@ -79,23 +79,23 @@ _cdk_x11_display_remove_window (GdkDisplay *display,
 
 /**
  * cdk_x11_window_lookup_for_display:
- * @display: (type GdkX11Display): the #GdkDisplay corresponding to the
+ * @display: (type CdkX11Display): the #CdkDisplay corresponding to the
  *           window handle
  * @window: an Xlib Window
  *
- * Looks up the #GdkWindow that wraps the given native window handle.
+ * Looks up the #CdkWindow that wraps the given native window handle.
  *
- * Returns: (transfer none) (type GdkX11Window): the #GdkWindow wrapper for the native
+ * Returns: (transfer none) (type CdkX11Window): the #CdkWindow wrapper for the native
  *    window, or %NULL if there is none.
  *
  * Since: 2.24
  */
-GdkWindow *
-cdk_x11_window_lookup_for_display (GdkDisplay *display,
+CdkWindow *
+cdk_x11_window_lookup_for_display (CdkDisplay *display,
                                    Window      window)
 {
-  GdkX11Display *display_x11;
-  GdkWindow *data = NULL;
+  CdkX11Display *display_x11;
+  CdkWindow *data = NULL;
 
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
 

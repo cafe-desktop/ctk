@@ -1285,8 +1285,8 @@ msgid "Cell background color"
 msgstr "Hüceyrə arxa plan rəngi"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Hüceyrə arxa plan rəngi GdkColor olaraq"
+msgid "Cell background color as a CdkColor"
+msgstr "Hüceyrə arxa plan rəngi CdkColor olaraq"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1542,8 +1542,8 @@ msgid "Background color"
 msgstr "Arxa plan rəngi"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Arxa plan rəngi GdkColor olaraq"
+msgid "Background color as a CdkColor"
+msgstr "Arxa plan rəngi CdkColor olaraq"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1559,8 +1559,8 @@ msgid "Foreground color"
 msgstr "Ön plan rəngi"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Ön plan rəng GdkColor olaraq"
+msgid "Foreground color as a CdkColor"
+msgstr "Ön plan rəng CdkColor olaraq"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3203,8 +3203,8 @@ msgid "Pixbuf"
 msgstr "\"Pixbuf\" cismi"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "Göstəriləcək GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "Göstəriləcək CdkPixbuf"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3251,8 +3251,8 @@ msgid "Animation"
 msgstr "Animasiya"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "Göstəriləcək GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "Göstəriləcək CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5908,7 +5908,7 @@ msgstr "Seçili il"
 #: ctk/ctktextbuffer.c:226
 #, fuzzy
 msgid "Whether the buffer has some text currently selected"
-msgstr "Hazırda seçili olan GdkFont"
+msgstr "Hazırda seçili olan CdkFont"
 
 #: ctk/ctktextbuffer.c:242
 #, fuzzy
@@ -5963,8 +5963,8 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr "Mətn təqinə rəftar ediləcək ad. Anonim təqlər üçün NULL"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Arxa plan rəngi GdkColor olaraq"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Arxa plan rəngi CdkColor olaraq"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -5979,8 +5979,8 @@ msgstr ""
 "xarakterlərini mi dolduracaq"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Ön plan rəng GdkColor olaraq"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Ön plan rəng CdkColor olaraq"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6133,8 +6133,8 @@ msgstr "Hüceyrə arxa plan rəngi"
 
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Arxa plan rəngi GdkColor olaraq"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Arxa plan rəngi CdkColor olaraq"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7112,9 +7112,9 @@ msgid "Events"
 msgstr "Hadisələr"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Bu pəncərəciyin nə cür genişləmə GdkHadisələrini alacağına qərar verən "
+"Bu pəncərəciyin nə cür genişləmə CdkHadisələrini alacağına qərar verən "
 "hadisə maskası"
 
 #: ctk/ctkwidget.c:832
@@ -7632,7 +7632,7 @@ msgstr "Vasitə çubuğunun göstərilmə şəkli"
 #~ msgstr "Piksbufun piksel mə'lumatına pointer"
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "Ağac görünüşü modeli"
 
 #, fuzzy
@@ -7657,8 +7657,8 @@ msgstr "Vasitə çubuğunun göstərilmə şəkli"
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "Arxa plan döşənərkən maskalama olaraq işlədiləcək bitməp"
 
-#~ msgid "The GdkFont that is currently selected"
-#~ msgstr "Hazırda seçili olan GdkFont"
+#~ msgid "The CdkFont that is currently selected"
+#~ msgstr "Hazırda seçili olan CdkFont"
 
 #~ msgid "Deprecated property, use shadow_type instead"
 #~ msgstr "Artıq istifadə edilməyən giriş, onun yerinə shadow_type işlədin"
@@ -7666,17 +7666,17 @@ msgstr "Vasitə çubuğunun göstərilmə şəkli"
 #~ msgid "Pixmap"
 #~ msgstr "Piksməp"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "Göstəriləcək GdkPixmap"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "Göstəriləcək CdkPixmap"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "Göstəriləcək GdkImage"
+#~ msgid "A CdkImage to display"
+#~ msgstr "Göstəriləcək CdkImage"
 
 #~ msgid "Mask"
 #~ msgstr "Maska"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "GdkImage ya da GdkPixmap ilə istifadə ediləcək maska rəsmi"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "CdkImage ya da CdkPixmap ilə istifadə ediləcək maska rəsmi"
 
 #~ msgid "Use separator"
 #~ msgstr "Ayırıcısı işlət"

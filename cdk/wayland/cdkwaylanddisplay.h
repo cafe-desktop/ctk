@@ -29,39 +29,39 @@
 G_BEGIN_DECLS
 
 #ifdef GDK_COMPILATION
-typedef struct _GdkWaylandDisplay GdkWaylandDisplay;
+typedef struct _CdkWaylandDisplay CdkWaylandDisplay;
 #else
-typedef GdkDisplay GdkWaylandDisplay;
+typedef CdkDisplay CdkWaylandDisplay;
 #endif
-typedef struct _GdkWaylandDisplayClass GdkWaylandDisplayClass;
+typedef struct _CdkWaylandDisplayClass CdkWaylandDisplayClass;
 
 #define GDK_TYPE_WAYLAND_DISPLAY              (cdk_wayland_display_get_type())
-#define GDK_WAYLAND_DISPLAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_DISPLAY, GdkWaylandDisplay))
-#define GDK_WAYLAND_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WAYLAND_DISPLAY, GdkWaylandDisplayClass))
+#define GDK_WAYLAND_DISPLAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_DISPLAY, CdkWaylandDisplay))
+#define GDK_WAYLAND_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WAYLAND_DISPLAY, CdkWaylandDisplayClass))
 #define GDK_IS_WAYLAND_DISPLAY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WAYLAND_DISPLAY))
 #define GDK_IS_WAYLAND_DISPLAY_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WAYLAND_DISPLAY))
-#define GDK_WAYLAND_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WAYLAND_DISPLAY, GdkWaylandDisplayClass))
+#define GDK_WAYLAND_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WAYLAND_DISPLAY, CdkWaylandDisplayClass))
 
 GDK_AVAILABLE_IN_ALL
 GType                   cdk_wayland_display_get_type            (void);
 
 GDK_AVAILABLE_IN_ALL
-struct wl_display      *cdk_wayland_display_get_wl_display      (GdkDisplay *display);
+struct wl_display      *cdk_wayland_display_get_wl_display      (CdkDisplay *display);
 GDK_AVAILABLE_IN_ALL
-struct wl_compositor   *cdk_wayland_display_get_wl_compositor   (GdkDisplay *display);
+struct wl_compositor   *cdk_wayland_display_get_wl_compositor   (CdkDisplay *display);
 GDK_AVAILABLE_IN_3_10
-void                    cdk_wayland_display_set_cursor_theme    (GdkDisplay  *display,
+void                    cdk_wayland_display_set_cursor_theme    (CdkDisplay  *display,
                                                                  const gchar *theme,
                                                                  gint         size);
 GDK_AVAILABLE_IN_3_22
-void                    cdk_wayland_display_set_startup_notification_id (GdkDisplay *display,
+void                    cdk_wayland_display_set_startup_notification_id (CdkDisplay *display,
                                                                          const char *startup_id);
 
 GDK_AVAILABLE_IN_3_22
-gboolean                cdk_wayland_display_prefers_ssd         (GdkDisplay *display);
+gboolean                cdk_wayland_display_prefers_ssd         (CdkDisplay *display);
 
 GDK_AVAILABLE_IN_3_22
-gboolean                cdk_wayland_display_query_registry      (GdkDisplay  *display,
+gboolean                cdk_wayland_display_query_registry      (CdkDisplay  *display,
 								 const gchar *global);
 
 G_END_DECLS

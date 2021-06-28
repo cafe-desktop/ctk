@@ -247,7 +247,7 @@ GDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_has_group            (CtkRecentInfo  *info,
 							    const gchar    *group_name);
 GDK_AVAILABLE_IN_ALL
-GdkPixbuf *           ctk_recent_info_get_icon             (CtkRecentInfo  *info,
+CdkPixbuf *           ctk_recent_info_get_icon             (CtkRecentInfo  *info,
 							    gint            size);
 GDK_AVAILABLE_IN_ALL
 GIcon *               ctk_recent_info_get_gicon            (CtkRecentInfo  *info);

@@ -62,7 +62,7 @@
  * in the #CtkCssProvider documentation. Inside the binding set
  * definition, key combinations are bound to one or more specific
  * signal emissions on the target widget. Key combinations are strings
- * consisting of an optional #GdkModifierType name and
+ * consisting of an optional #CdkModifierType name and
  * [key names][cdk3-Keyboard-Handling]
  * such as those defined in `cdk/cdkkeysyms.h`
  * or returned from cdk_keyval_name(), they have to be parsable by
@@ -272,7 +272,7 @@ insert_entries_into_key_hash (gpointer key,
 }
 
 static CtkKeyHash *
-binding_key_hash_for_keymap (GdkKeymap *keymap)
+binding_key_hash_for_keymap (CdkKeymap *keymap)
 {
   static GQuark key_hash_quark = 0;
   CtkKeyHash *key_hash;
@@ -302,7 +302,7 @@ binding_key_hash_for_keymap (GdkKeymap *keymap)
 static CtkBindingEntry*
 binding_entry_new (CtkBindingSet  *binding_set,
                    guint           keyval,
-                   GdkModifierType modifiers)
+                   CdkModifierType modifiers)
 {
   GSList *tmp_list;
   CtkBindingEntry *entry;
@@ -430,7 +430,7 @@ binding_entry_destroy (CtkBindingEntry *entry)
 static CtkBindingEntry*
 binding_ht_lookup_entry (CtkBindingSet  *set,
                          guint           keyval,
-                         GdkModifierType modifiers)
+                         CdkModifierType modifiers)
 {
   CtkBindingEntry lookup_entry = { 0 };
   CtkBindingEntry *entry;
@@ -789,7 +789,7 @@ ctk_binding_set_find (const gchar *set_name)
 gboolean
 ctk_binding_set_activate (CtkBindingSet  *binding_set,
                           guint           keyval,
-                          GdkModifierType modifiers,
+                          CdkModifierType modifiers,
                           GObject        *object)
 {
   CtkBindingEntry *entry;
@@ -810,7 +810,7 @@ ctk_binding_set_activate (CtkBindingSet  *binding_set,
 static void
 ctk_binding_entry_clear_internal (CtkBindingSet  *binding_set,
                                   guint           keyval,
-                                  GdkModifierType modifiers)
+                                  CdkModifierType modifiers)
 {
   CtkBindingEntry *entry;
 
@@ -839,7 +839,7 @@ ctk_binding_entry_clear_internal (CtkBindingSet  *binding_set,
 void
 ctk_binding_entry_skip (CtkBindingSet  *binding_set,
                         guint           keyval,
-                        GdkModifierType modifiers)
+                        CdkModifierType modifiers)
 {
   CtkBindingEntry *entry;
 
@@ -868,7 +868,7 @@ ctk_binding_entry_skip (CtkBindingSet  *binding_set,
 void
 ctk_binding_entry_remove (CtkBindingSet  *binding_set,
                           guint           keyval,
-                          GdkModifierType modifiers)
+                          CdkModifierType modifiers)
 {
   CtkBindingEntry *entry;
 
@@ -897,7 +897,7 @@ ctk_binding_entry_remove (CtkBindingSet  *binding_set,
 void
 ctk_binding_entry_add_signall (CtkBindingSet  *binding_set,
                                guint           keyval,
-                               GdkModifierType modifiers,
+                               CdkModifierType modifiers,
                                const gchar    *signal_name,
                                GSList         *binding_args)
 {
@@ -909,7 +909,7 @@ ctk_binding_entry_add_signall (CtkBindingSet  *binding_set,
 void
 _ctk_binding_entry_add_signall (CtkBindingSet  *binding_set,
                                 guint          keyval,
-                                GdkModifierType modifiers,
+                                CdkModifierType modifiers,
                                 const gchar    *signal_name,
                                 GSList        *binding_args)
 {
@@ -1006,7 +1006,7 @@ _ctk_binding_entry_add_signall (CtkBindingSet  *binding_set,
  *
  * |[<!-- language="C" -->
  * CtkBindingSet *binding_set;
- * GdkModifierType modmask = GDK_CONTROL_MASK;
+ * CdkModifierType modmask = GDK_CONTROL_MASK;
  * int count = 1;
  * ctk_binding_entry_add_signal (binding_set,
  *                               GDK_KEY_space,
@@ -1020,7 +1020,7 @@ _ctk_binding_entry_add_signall (CtkBindingSet  *binding_set,
 void
 ctk_binding_entry_add_signal (CtkBindingSet  *binding_set,
                               guint           keyval,
-                              GdkModifierType modifiers,
+                              CdkModifierType modifiers,
                               const gchar    *signal_name,
                               guint           n_args,
                               ...)
@@ -1104,7 +1104,7 @@ static guint
 ctk_binding_parse_signal (GScanner       *scanner,
                           CtkBindingSet  *binding_set,
                           guint           keyval,
-                          GdkModifierType modifiers)
+                          CdkModifierType modifiers)
 {
   gchar *signal;
   guint expected_token = 0;
@@ -1281,7 +1281,7 @@ ctk_binding_parse_bind (GScanner       *scanner,
                         CtkBindingSet  *binding_set)
 {
   guint keyval = 0;
-  GdkModifierType modifiers = 0;
+  CdkModifierType modifiers = 0;
   gboolean unbind = FALSE;
 
   g_return_val_if_fail (scanner != NULL, G_TOKEN_ERROR);
@@ -1539,10 +1539,10 @@ ctk_bindings_activate_list (GObject  *object,
 gboolean
 ctk_bindings_activate (GObject         *object,
                        guint            keyval,
-                       GdkModifierType  modifiers)
+                       CdkModifierType  modifiers)
 {
   GSList *entries = NULL;
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkKeyHash *key_hash;
   gboolean handled = FALSE;
   gboolean is_release;
@@ -1568,7 +1568,7 @@ ctk_bindings_activate (GObject         *object,
 /**
  * ctk_bindings_activate_event:
  * @object: a #GObject (generally must be a widget)
- * @event: a #GdkEventKey
+ * @event: a #CdkEventKey
  *
  * Looks up key bindings for @object to find one matching
  * @event, and if one was found, activate it.
@@ -1579,10 +1579,10 @@ ctk_bindings_activate (GObject         *object,
  */
 gboolean
 ctk_bindings_activate_event (GObject     *object,
-                             GdkEventKey *event)
+                             CdkEventKey *event)
 {
   GSList *entries = NULL;
-  GdkDisplay *display;
+  CdkDisplay *display;
   CtkKeyHash *key_hash;
   gboolean handled = FALSE;
 

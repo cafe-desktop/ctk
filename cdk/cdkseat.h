@@ -32,11 +32,11 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_SEAT  (cdk_seat_get_type ())
-#define GDK_SEAT(o)    (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_SEAT, GdkSeat))
+#define GDK_SEAT(o)    (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_SEAT, CdkSeat))
 #define GDK_IS_SEAT(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_SEAT))
 
 /**
- * GdkSeatCapabilities:
+ * CdkSeatCapabilities:
  * @GDK_SEAT_CAPABILITY_NONE: No input capabilities
  * @GDK_SEAT_CAPABILITY_POINTER: The seat has a pointer (e.g. mouse)
  * @GDK_SEAT_CAPABILITY_TOUCH: The seat has touchscreen(s) attached
@@ -57,12 +57,12 @@ typedef enum {
   GDK_SEAT_CAPABILITY_KEYBOARD      = 1 << 3,
   GDK_SEAT_CAPABILITY_ALL_POINTING  = (GDK_SEAT_CAPABILITY_POINTER | GDK_SEAT_CAPABILITY_TOUCH | GDK_SEAT_CAPABILITY_TABLET_STYLUS),
   GDK_SEAT_CAPABILITY_ALL           = (GDK_SEAT_CAPABILITY_ALL_POINTING | GDK_SEAT_CAPABILITY_KEYBOARD)
-} GdkSeatCapabilities;
+} CdkSeatCapabilities;
 
 /**
- * GdkSeatGrabPrepareFunc:
- * @seat: the #GdkSeat being grabbed
- * @window: the #GdkWindow being grabbed
+ * CdkSeatGrabPrepareFunc:
+ * @seat: the #CdkSeat being grabbed
+ * @window: the #CdkWindow being grabbed
  * @user_data: user data passed in cdk_seat_grab()
  *
  * Type of the callback used to set up @window so it can be
@@ -72,11 +72,11 @@ typedef enum {
  *
  * Since: 3.20
  */
-typedef void (* GdkSeatGrabPrepareFunc) (GdkSeat   *seat,
-                                         GdkWindow *window,
+typedef void (* CdkSeatGrabPrepareFunc) (CdkSeat   *seat,
+                                         CdkWindow *window,
                                          gpointer   user_data);
 
-struct _GdkSeat
+struct _CdkSeat
 {
   GObject parent_instance;
 };
@@ -85,32 +85,32 @@ GDK_AVAILABLE_IN_3_20
 GType          cdk_seat_get_type         (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_20
-GdkGrabStatus  cdk_seat_grab             (GdkSeat                *seat,
-                                          GdkWindow              *window,
-                                          GdkSeatCapabilities     capabilities,
+CdkGrabStatus  cdk_seat_grab             (CdkSeat                *seat,
+                                          CdkWindow              *window,
+                                          CdkSeatCapabilities     capabilities,
                                           gboolean                owner_events,
-                                          GdkCursor              *cursor,
-                                          const GdkEvent         *event,
-                                          GdkSeatGrabPrepareFunc  prepare_func,
+                                          CdkCursor              *cursor,
+                                          const CdkEvent         *event,
+                                          CdkSeatGrabPrepareFunc  prepare_func,
                                           gpointer                prepare_func_data);
 GDK_AVAILABLE_IN_3_20
-void           cdk_seat_ungrab           (GdkSeat                *seat);
+void           cdk_seat_ungrab           (CdkSeat                *seat);
 
 GDK_AVAILABLE_IN_3_20
-GdkDisplay *   cdk_seat_get_display      (GdkSeat             *seat);
+CdkDisplay *   cdk_seat_get_display      (CdkSeat             *seat);
 
 GDK_AVAILABLE_IN_3_20
-GdkSeatCapabilities
-               cdk_seat_get_capabilities (GdkSeat             *seat);
+CdkSeatCapabilities
+               cdk_seat_get_capabilities (CdkSeat             *seat);
 
 GDK_AVAILABLE_IN_3_20
-GList *        cdk_seat_get_slaves       (GdkSeat             *seat,
-                                          GdkSeatCapabilities  capabilities);
+GList *        cdk_seat_get_slaves       (CdkSeat             *seat,
+                                          CdkSeatCapabilities  capabilities);
 
 GDK_AVAILABLE_IN_3_20
-GdkDevice *    cdk_seat_get_pointer      (GdkSeat             *seat);
+CdkDevice *    cdk_seat_get_pointer      (CdkSeat             *seat);
 GDK_AVAILABLE_IN_3_20
-GdkDevice *    cdk_seat_get_keyboard     (GdkSeat             *seat);
+CdkDevice *    cdk_seat_get_keyboard     (CdkSeat             *seat);
 
 G_END_DECLS
 

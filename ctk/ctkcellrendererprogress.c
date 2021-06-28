@@ -94,7 +94,7 @@ static void compute_dimensions                      (CtkCellRenderer         *ce
 						     gint                    *height);
 static void ctk_cell_renderer_progress_get_size     (CtkCellRenderer         *cell,
 						     CtkWidget               *widget,
-						     const GdkRectangle      *cell_area,
+						     const CdkRectangle      *cell_area,
 						     gint                    *x_offset,
 						     gint                    *y_offset,
 						     gint                    *width,
@@ -102,8 +102,8 @@ static void ctk_cell_renderer_progress_get_size     (CtkCellRenderer         *ce
 static void ctk_cell_renderer_progress_render       (CtkCellRenderer         *cell,
 						     cairo_t                 *cr,
 						     CtkWidget               *widget,
-						     const GdkRectangle      *background_area,
-						     const GdkRectangle      *cell_area,
+						     const CdkRectangle      *background_area,
+						     const CdkRectangle      *cell_area,
 				                     CtkCellRendererState    flags);
 
      
@@ -454,7 +454,7 @@ compute_dimensions (CtkCellRenderer *cell,
 static void
 ctk_cell_renderer_progress_get_size (CtkCellRenderer    *cell,
 				     CtkWidget          *widget,
-				     const GdkRectangle *cell_area,
+				     const CdkRectangle *cell_area,
 				     gint               *x_offset,
 				     gint               *y_offset,
 				     gint               *width,
@@ -547,8 +547,8 @@ static void
 ctk_cell_renderer_progress_render (CtkCellRenderer      *cell,
                                    cairo_t              *cr,
 				   CtkWidget            *widget,
-				   const GdkRectangle   *background_area,
-				   const GdkRectangle   *cell_area,
+				   const CdkRectangle   *background_area,
+				   const CdkRectangle   *cell_area,
 				   CtkCellRendererState  flags)
 {
   CtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (cell);
@@ -559,7 +559,7 @@ ctk_cell_renderer_progress_render (CtkCellRenderer      *cell,
   PangoRectangle logical_rect;
   gint x, y, w, h, x_pos, y_pos, bar_position, bar_size, start, full_size;
   gint xpad, ypad;
-  GdkRectangle clip;
+  CdkRectangle clip;
   gboolean is_rtl;
 
   context = ctk_widget_get_style_context (widget);

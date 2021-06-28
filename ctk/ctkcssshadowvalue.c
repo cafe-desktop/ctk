@@ -188,7 +188,7 @@ ctk_css_shadow_value_new (CtkCssValue *hoffset,
 CtkCssValue *
 _ctk_css_shadow_value_new_for_transition (CtkCssValue *target)
 {
-  GdkRGBA transparent = { 0, 0, 0, 0 };
+  CdkRGBA transparent = { 0, 0, 0, 0 };
 
   g_return_val_if_fail (target->class == &CTK_CSS_VALUE_SHADOW, NULL);
 

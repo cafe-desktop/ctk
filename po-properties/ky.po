@@ -1716,7 +1716,7 @@ msgid "Cell background color"
 msgstr ""
 
 #: ../ctk/ctkcellrenderer.c:397
-msgid "Cell background color as a GdkColor"
+msgid "Cell background color as a CdkColor"
 msgstr ""
 
 #: ../ctk/ctkcellrenderer.c:410
@@ -1724,7 +1724,7 @@ msgid "Cell background RGBA color"
 msgstr ""
 
 #: ../ctk/ctkcellrenderer.c:411
-msgid "Cell background color as a GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
 msgstr ""
 
 #: ../ctk/ctkcellrenderer.c:418
@@ -1973,7 +1973,7 @@ msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:304 ../ctk/ctkcellview.c:205
 #: ../ctk/ctktexttag.c:219
-msgid "Background color as a GdkColor"
+msgid "Background color as a CdkColor"
 msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:318
@@ -1982,7 +1982,7 @@ msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:319 ../ctk/ctkcellview.c:219
 #: ../ctk/ctktexttag.c:234
-msgid "Background color as a GdkRGBA"
+msgid "Background color as a CdkRGBA"
 msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:325 ../ctk/ctktexttag.c:249
@@ -1999,7 +1999,7 @@ msgid "Foreground color"
 msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:341 ../ctk/ctktexttag.c:265
-msgid "Foreground color as a GdkColor"
+msgid "Foreground color as a CdkColor"
 msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:355
@@ -2007,7 +2007,7 @@ msgid "Foreground color as RGBA"
 msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:356 ../ctk/ctktexttag.c:280
-msgid "Foreground color as a GdkRGBA"
+msgid "Foreground color as a CdkRGBA"
 msgstr ""
 
 #: ../ctk/ctkcellrenderertext.c:364 ../ctk/ctkentry.c:755
@@ -2472,7 +2472,7 @@ msgid "Color"
 msgstr ""
 
 #: ../ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
+msgid "Current color, as a CdkRGBA"
 msgstr ""
 
 #: ../ctk/ctkcolorchooser.c:88
@@ -3650,7 +3650,7 @@ msgid "Pixbuf"
 msgstr ""
 
 #: ../ctk/ctkimage.c:217 ../ctk/ctkstatusicon.c:224
-msgid "A GdkPixbuf to display"
+msgid "A CdkPixbuf to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:224 ../ctk/ctkrecentmanager.c:293
@@ -3696,7 +3696,7 @@ msgid "Animation"
 msgstr ""
 
 #: ../ctk/ctkimage.c:276
-msgid "GdkPixbufAnimation to display"
+msgid "CdkPixbufAnimation to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:316 ../ctk/ctkstatusicon.c:271
@@ -6255,7 +6255,7 @@ msgid "The title of this tray icon"
 msgstr ""
 
 #: ../ctk/ctkstylecontext.c:443
-msgid "The associated GdkScreen"
+msgid "The associated CdkScreen"
 msgstr ""
 
 #: ../ctk/ctkstylecontext.c:449
@@ -6524,7 +6524,7 @@ msgid "Paragraph background color"
 msgstr ""
 
 #: ../ctk/ctktexttag.c:582
-msgid "Paragraph background color as a GdkColor"
+msgid "Paragraph background color as a CdkColor"
 msgstr ""
 
 #: ../ctk/ctktexttag.c:596
@@ -6532,7 +6532,7 @@ msgid "Paragraph background RGBA"
 msgstr ""
 
 #: ../ctk/ctktexttag.c:597
-msgid "Paragraph background RGBA as a GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
 msgstr ""
 
 #: ../ctk/ctktexttag.c:615
@@ -7465,7 +7465,7 @@ msgid "Events"
 msgstr ""
 
 #: ../ctk/ctkwidget.c:1096
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
 
 #: ../ctk/ctkwidget.c:1103

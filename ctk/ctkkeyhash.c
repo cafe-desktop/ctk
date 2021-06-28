@@ -28,18 +28,18 @@ typedef struct _CtkKeyHashEntry CtkKeyHashEntry;
 struct _CtkKeyHashEntry
 {
   guint keyval;
-  GdkModifierType modifiers;
+  CdkModifierType modifiers;
   gpointer value;
 
   /* Set as a side effect of generating key_hash->keycode_hash
    */
-  GdkKeymapKey *keys;		
+  CdkKeymapKey *keys;		
   gint n_keys;
 };
 
 struct _CtkKeyHash
 {
-  GdkKeymap *keymap;
+  CdkKeymap *keymap;
   GHashTable *keycode_hash;
   GHashTable *reverse_hash;
   GList *entries_list;
@@ -98,7 +98,7 @@ key_hash_get_keycode_hash (CtkKeyHash *key_hash)
 }
 
 static void
-key_hash_keys_changed (GdkKeymap  *keymap,
+key_hash_keys_changed (CdkKeymap  *keymap,
 		       CtkKeyHash *key_hash)
 {
   /* The keymap changed, so we have to regenerate the keycode hash
@@ -113,7 +113,7 @@ key_hash_keys_changed (GdkKeymap  *keymap,
 
 /**
  * _ctk_key_hash_new:
- * @keymap: a #GdkKeymap
+ * @keymap: a #CdkKeymap
  * @item_destroy_notify: function to be called when items are removed
  *   from the hash or %NULL.
  * 
@@ -122,7 +122,7 @@ key_hash_keys_changed (GdkKeymap  *keymap,
  * Returns: the newly created object. Free with _ctk_key_hash_free().
  **/
 CtkKeyHash *
-_ctk_key_hash_new (GdkKeymap      *keymap,
+_ctk_key_hash_new (CdkKeymap      *keymap,
 		   GDestroyNotify  item_destroy_notify)
 {
   CtkKeyHash *key_hash = g_new (CtkKeyHash, 1);
@@ -199,7 +199,7 @@ _ctk_key_hash_free (CtkKeyHash *key_hash)
 void
 _ctk_key_hash_add_entry (CtkKeyHash      *key_hash,
 			 guint            keyval,
-			 GdkModifierType  modifiers,
+			 CdkModifierType  modifiers,
 			 gpointer         value)
 {
   CtkKeyHashEntry *entry = g_slice_new (CtkKeyHashEntry);
@@ -328,7 +328,7 @@ sort_lookup_results_by_keyval (GSList *slist)
 /* Return true if keyval is defined in keyboard group
  */
 static gboolean 
-keyval_in_group (GdkKeymap  *keymap,
+keyval_in_group (CdkKeymap  *keymap,
                  guint      keyval,
                  gint       group)
 {                 
@@ -355,11 +355,11 @@ keyval_in_group (GdkKeymap  *keymap,
 /**
  * _ctk_key_hash_lookup:
  * @key_hash: a #CtkKeyHash
- * @hardware_keycode: hardware keycode field from a #GdkEventKey
- * @state: state field from a #GdkEventKey
+ * @hardware_keycode: hardware keycode field from a #CdkEventKey
+ * @state: state field from a #CdkEventKey
  * @mask: mask of modifiers to consider when matching against the
  *        modifiers in entries.
- * @group: group field from a #GdkEventKey
+ * @group: group field from a #CdkEventKey
  * 
  * Looks up the best matching entry or entries in the hash table for
  * a given event. The results are sorted so that entries with less
@@ -379,8 +379,8 @@ keyval_in_group (GdkKeymap  *keymap,
 GSList *
 _ctk_key_hash_lookup (CtkKeyHash      *key_hash,
 		      guint16          hardware_keycode,
-		      GdkModifierType  state,
-		      GdkModifierType  mask,
+		      CdkModifierType  state,
+		      CdkModifierType  mask,
 		      gint             group)
 {
   GHashTable *keycode_hash = key_hash_get_keycode_hash (key_hash);
@@ -391,12 +391,12 @@ _ctk_key_hash_lookup (CtkKeyHash      *key_hash,
   guint keyval;
   gint effective_group;
   gint level;
-  GdkModifierType modifiers;
-  GdkModifierType consumed_modifiers;
-  GdkModifierType shift_group_mask;
+  CdkModifierType modifiers;
+  CdkModifierType consumed_modifiers;
+  CdkModifierType shift_group_mask;
   gboolean group_mod_is_accel_mod = FALSE;
-  const GdkModifierType xmods = GDK_MOD2_MASK|GDK_MOD3_MASK|GDK_MOD4_MASK|GDK_MOD5_MASK;
-  const GdkModifierType vmods = GDK_SUPER_MASK|GDK_HYPER_MASK|GDK_META_MASK;
+  const CdkModifierType xmods = GDK_MOD2_MASK|GDK_MOD3_MASK|GDK_MOD4_MASK|GDK_MOD5_MASK;
+  const CdkModifierType vmods = GDK_SUPER_MASK|GDK_HYPER_MASK|GDK_META_MASK;
 
   /* We don't want Caps_Lock to affect keybinding lookups.
    */
@@ -530,7 +530,7 @@ _ctk_key_hash_lookup (CtkKeyHash      *key_hash,
  * 
  * Looks up the best matching entry or entries in the hash table for a
  * given keyval/modifiers pair. It’s better to use
- * _ctk_key_hash_lookup() if you have the original #GdkEventKey
+ * _ctk_key_hash_lookup() if you have the original #CdkEventKey
  * available.  The results are sorted so that entries with less
  * modifiers come before entries with more modifiers.
  * 
@@ -539,9 +539,9 @@ _ctk_key_hash_lookup (CtkKeyHash      *key_hash,
 GSList *
 _ctk_key_hash_lookup_keyval (CtkKeyHash     *key_hash,
 			     guint           keyval,
-			     GdkModifierType modifiers)
+			     CdkModifierType modifiers)
 {
-  GdkKeymapKey *keys;
+  CdkKeymapKey *keys;
   gint n_keys;
   GSList *results = NULL;
   GSList *l;

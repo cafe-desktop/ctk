@@ -30,7 +30,7 @@
 G_BEGIN_DECLS
 
 GDK_DEPRECATED_IN_3_22_FOR(ctk_show_uri_on_window)
-gboolean ctk_show_uri  (GdkScreen   *screen,
+gboolean ctk_show_uri  (CdkScreen   *screen,
                         const gchar *uri,
                         guint32      timestamp,
                         GError     **error);

@@ -34,11 +34,11 @@
 
 G_BEGIN_DECLS
 
-struct _GdkBroadwayDisplay
+struct _CdkBroadwayDisplay
 {
-  GdkDisplay parent_instance;
-  GdkScreen *default_screen;
-  GdkScreen **screens;
+  CdkDisplay parent_instance;
+  CdkScreen *default_screen;
+  CdkScreen **screens;
 
   GHashTable *id_ht;
   GList *toplevels;
@@ -46,24 +46,24 @@ struct _GdkBroadwayDisplay
   GSource *event_source;
 
   /* Keyboard related information */
-  GdkKeymap *keymap;
+  CdkKeymap *keymap;
 
   /* drag and drop information */
-  GdkDragContext *current_dest_drag;
+  CdkDragContext *current_dest_drag;
 
   /* The offscreen window that has the pointer in it (if any) */
-  GdkWindow *active_offscreen_window;
+  CdkWindow *active_offscreen_window;
 
-  GdkBroadwayServer *server;
+  CdkBroadwayServer *server;
 
   gpointer move_resize_data;
 
-  GdkMonitor *monitor;
+  CdkMonitor *monitor;
 };
 
-struct _GdkBroadwayDisplayClass
+struct _CdkBroadwayDisplayClass
 {
-  GdkDisplayClass parent_class;
+  CdkDisplayClass parent_class;
 };
 
 G_END_DECLS

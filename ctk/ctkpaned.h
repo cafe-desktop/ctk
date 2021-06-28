@@ -108,7 +108,7 @@ GDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_paned_get_child2   (CtkPaned       *paned);
 
 GDK_AVAILABLE_IN_ALL
-GdkWindow * ctk_paned_get_handle_window (CtkPaned  *paned);
+CdkWindow * ctk_paned_get_handle_window (CtkPaned  *paned);
 
 GDK_AVAILABLE_IN_3_16
 void        ctk_paned_set_wide_handle (CtkPaned    *paned,

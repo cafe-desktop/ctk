@@ -25,8 +25,8 @@ layout_draw_handler (CtkWidget *widget,
                      cairo_t   *cr)
 {
   CtkLayout *layout = CTK_LAYOUT (widget);
-  GdkWindow *bin_window = ctk_layout_get_bin_window (layout);
-  GdkRectangle clip;
+  CdkWindow *bin_window = ctk_layout_get_bin_window (layout);
+  CdkRectangle clip;
 
   gint i, j, x, y;
   gint imin, imax, jmin, jmax;

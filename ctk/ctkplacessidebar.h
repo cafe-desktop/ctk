@@ -137,7 +137,7 @@ GFile *            ctk_places_sidebar_get_nth_bookmark           (CtkPlacesSideb
 GDK_AVAILABLE_IN_3_18
 void               ctk_places_sidebar_set_drop_targets_visible   (CtkPlacesSidebar   *sidebar,
                                                                   gboolean            visible,
-                                                                  GdkDragContext     *context);
+                                                                  CdkDragContext     *context);
 GDK_AVAILABLE_IN_3_18
 gboolean           ctk_places_sidebar_get_show_trash             (CtkPlacesSidebar   *sidebar);
 GDK_AVAILABLE_IN_3_18

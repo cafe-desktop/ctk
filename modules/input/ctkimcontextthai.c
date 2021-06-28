@@ -26,7 +26,7 @@
 static void     ctk_im_context_thai_class_init          (CtkIMContextThaiClass *class);
 static void     ctk_im_context_thai_init                (CtkIMContextThai      *im_context_thai);
 static gboolean ctk_im_context_thai_filter_keypress     (CtkIMContext          *context,
-						         GdkEventKey           *key);
+						         CdkEventKey           *key);
 
 #ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK
 static void     forget_previous_chars (CtkIMContextThai *context_thai);
@@ -275,7 +275,7 @@ replace_input (CtkIMContextThai *context_thai, gunichar new_char)
 
 static gboolean
 ctk_im_context_thai_filter_keypress (CtkIMContext *context,
-                                     GdkEventKey  *event)
+                                     CdkEventKey  *event)
 {
   CtkIMContextThai *context_thai = CTK_IM_CONTEXT_THAI (context);
   gunichar prev_char, new_char;
@@ -336,7 +336,7 @@ ctk_im_context_thai_filter_keypress (CtkIMContext *context,
   if (is_reject)
     {
       /* reject character */
-      GdkDisplay *display = cdk_display_get_default ();
+      CdkDisplay *display = cdk_display_get_default ();
       cdk_display_beep (display);
     }
   return TRUE;

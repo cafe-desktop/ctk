@@ -12,12 +12,12 @@
  * can see the device axes through xinput list <device>. Each time
  * a different hardware device is used to move the pointer, the
  * master device will be updated to match the axes it provides,
- * these changes can be tracked through GdkDevice::changed, or
+ * these changes can be tracked through CdkDevice::changed, or
  * checking cdk_event_get_source_device().
  *
  * On the other hand, this demo handles basic multitouch events,
  * each event coming from an specific touchpoint will contain a
- * GdkEventSequence that's unique for its lifetime, so multiple
+ * CdkEventSequence that's unique for its lifetime, so multiple
  * touchpoints can be tracked.
  */
 
@@ -25,17 +25,17 @@
 #include <ctk/ctk.h>
 
 typedef struct {
-  GdkDevice *last_source;
-  GdkDeviceTool *last_tool;
+  CdkDevice *last_source;
+  CdkDeviceTool *last_tool;
   gdouble *axes;
-  GdkRGBA color;
+  CdkRGBA color;
   gdouble x;
   gdouble y;
 } AxesInfo;
 
 typedef struct {
-  GHashTable *pointer_info; /* GdkDevice -> AxesInfo */
-  GHashTable *touch_info; /* GdkEventSequence -> AxesInfo */
+  GHashTable *pointer_info; /* CdkDevice -> AxesInfo */
+  GHashTable *touch_info; /* CdkEventSequence -> AxesInfo */
 } EventData;
 
 const gchar *colors[] = {
@@ -114,12 +114,12 @@ event_data_free (EventData *data)
 }
 
 static void
-update_axes_from_event (GdkEvent  *event,
+update_axes_from_event (CdkEvent  *event,
                         EventData *data)
 {
-  GdkDevice *device, *source_device;
-  GdkEventSequence *sequence;
-  GdkDeviceTool *tool;
+  CdkDevice *device, *source_device;
+  CdkEventSequence *sequence;
+  CdkDeviceTool *tool;
   gdouble x, y;
   AxesInfo *info;
 
@@ -198,7 +198,7 @@ update_axes_from_event (GdkEvent  *event,
 
 static gboolean
 event_cb (CtkWidget *widget,
-          GdkEvent  *event,
+          CdkEvent  *event,
           gpointer   user_data)
 {
   update_axes_from_event (event, user_data);
@@ -232,7 +232,7 @@ draw_axes_info (cairo_t       *cr,
                 CtkAllocation *allocation)
 {
   gdouble pressure, tilt_x, tilt_y, distance, wheel, rotation, slider;
-  GdkAxisFlags axes = cdk_device_get_axes (info->last_source);
+  CdkAxisFlags axes = cdk_device_get_axes (info->last_source);
 
   cairo_save (cr);
 
@@ -383,7 +383,7 @@ draw_axes_info (cairo_t       *cr,
 }
 
 static const gchar *
-tool_type_to_string (GdkDeviceToolType tool_type)
+tool_type_to_string (CdkDeviceToolType tool_type)
 {
   switch (tool_type)
     {
@@ -410,7 +410,7 @@ tool_type_to_string (GdkDeviceToolType tool_type)
 static void
 draw_device_info (CtkWidget        *widget,
                   cairo_t          *cr,
-                  GdkEventSequence *sequence,
+                  CdkEventSequence *sequence,
                   gint             *y,
                   AxesInfo         *info)
 {

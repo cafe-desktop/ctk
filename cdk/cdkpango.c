@@ -165,7 +165,7 @@ layout_iter_get_line_clip_region (PangoLayoutIter *iter,
   
       for (j = 0; j < n_pixel_ranges; j++)
         {
-          GdkRectangle rect;
+          CdkRectangle rect;
 	  int x_off, y_off;
           
           x_off = PANGO_PIXELS (pixel_ranges[2*j] - logical_rect.x);
@@ -325,7 +325,7 @@ cdk_pango_context_get (void)
 
 /**
  * cdk_pango_context_get_for_screen:
- * @screen: the #GdkScreen for which the context is to be created.
+ * @screen: the #CdkScreen for which the context is to be created.
  * 
  * Creates a #PangoContext for @screen.
  *
@@ -346,7 +346,7 @@ cdk_pango_context_get (void)
  * Since: 2.2
  **/
 PangoContext *
-cdk_pango_context_get_for_screen (GdkScreen *screen)
+cdk_pango_context_get_for_screen (CdkScreen *screen)
 {
   PangoFontMap *fontmap;
   PangoContext *context;
@@ -369,7 +369,7 @@ cdk_pango_context_get_for_screen (GdkScreen *screen)
 
 /**
  * cdk_pango_context_get_for_display:
- * @display: the #GdkDisplay for which the context is to be created
+ * @display: the #CdkDisplay for which the context is to be created
  *
  * Creates a #PangoContext for @display.
  *
@@ -390,7 +390,7 @@ cdk_pango_context_get_for_screen (GdkScreen *screen)
  * Since: 3.22
  */
 PangoContext *
-cdk_pango_context_get_for_display (GdkDisplay *display)
+cdk_pango_context_get_for_display (CdkDisplay *display)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
 

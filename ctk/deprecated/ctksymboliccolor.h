@@ -33,7 +33,7 @@ GDK_DEPRECATED_IN_3_8
 GType              ctk_symbolic_color_get_type    (void) G_GNUC_CONST;
 
 GDK_DEPRECATED_IN_3_8
-CtkSymbolicColor * ctk_symbolic_color_new_literal (const GdkRGBA      *color);
+CtkSymbolicColor * ctk_symbolic_color_new_literal (const CdkRGBA      *color);
 GDK_DEPRECATED_IN_3_8
 CtkSymbolicColor * ctk_symbolic_color_new_name    (const gchar        *name);
 GDK_DEPRECATED_IN_3_8
@@ -61,7 +61,7 @@ char *             ctk_symbolic_color_to_string   (CtkSymbolicColor   *color);
 GDK_DEPRECATED_IN_3_8
 gboolean           ctk_symbolic_color_resolve     (CtkSymbolicColor   *color,
                                                    CtkStyleProperties *props,
-                                                   GdkRGBA            *resolved_color);
+                                                   CdkRGBA            *resolved_color);
 
 G_END_DECLS
 

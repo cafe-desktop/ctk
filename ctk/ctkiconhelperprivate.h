@@ -83,11 +83,11 @@ void _ctk_icon_helper_set_gicon (CtkIconHelper *self,
                                  GIcon *gicon,
                                  CtkIconSize icon_size);
 void _ctk_icon_helper_set_pixbuf (CtkIconHelper *self,
-				  GdkPixbuf *pixbuf);
+				  CdkPixbuf *pixbuf);
 void _ctk_icon_helper_set_pixbuf_scale (CtkIconHelper *self,
 					int scale);
 void _ctk_icon_helper_set_animation (CtkIconHelper *self,
-                                     GdkPixbufAnimation *animation);
+                                     CdkPixbufAnimation *animation);
 void _ctk_icon_helper_set_icon_set (CtkIconHelper *self,
                                     CtkIconSet *icon_set,
                                     CtkIconSize icon_size);
@@ -113,10 +113,10 @@ CtkIconSize _ctk_icon_helper_get_icon_size (CtkIconHelper *self);
 gint _ctk_icon_helper_get_pixel_size (CtkIconHelper *self);
 gboolean _ctk_icon_helper_get_use_fallback (CtkIconHelper *self);
 
-GdkPixbuf *_ctk_icon_helper_peek_pixbuf (CtkIconHelper *self);
+CdkPixbuf *_ctk_icon_helper_peek_pixbuf (CtkIconHelper *self);
 GIcon *_ctk_icon_helper_peek_gicon (CtkIconHelper *self);
 CtkIconSet *_ctk_icon_helper_peek_icon_set (CtkIconHelper *self);
-GdkPixbufAnimation *_ctk_icon_helper_peek_animation (CtkIconHelper *self);
+CdkPixbufAnimation *_ctk_icon_helper_peek_animation (CtkIconHelper *self);
 cairo_surface_t *_ctk_icon_helper_peek_surface (CtkIconHelper *self);
 
 CtkImageDefinition *ctk_icon_helper_get_definition (CtkIconHelper *self);

@@ -68,13 +68,13 @@ ctk_css_image_recolor_dispose (GObject *object)
 static void
 lookup_symbolic_colors (CtkCssStyle *style,
                         CtkCssValue *palette,
-                        GdkRGBA     *color_out,
-                        GdkRGBA     *success_out,
-                        GdkRGBA     *warning_out,
-                        GdkRGBA     *error_out)
+                        CdkRGBA     *color_out,
+                        CdkRGBA     *success_out,
+                        CdkRGBA     *warning_out,
+                        CdkRGBA     *error_out)
 {
   CtkCssValue *color;
-  const GdkRGBA *lookup;
+  const CdkRGBA *lookup;
 
   color = ctk_css_style_get_value (style, CTK_CSS_PROPERTY_COLOR);
   *color_out = *_ctk_css_rgba_value_get_rgba (color);
@@ -107,8 +107,8 @@ ctk_css_image_recolor_load (CtkCssImageRecolor  *recolor,
 {
   CtkCssImageUrl *url = CTK_CSS_IMAGE_URL (recolor);
   CtkIconInfo *info;
-  GdkRGBA fg, success, warning, error;
-  GdkPixbuf *pixbuf;
+  CdkRGBA fg, success, warning, error;
+  CdkPixbuf *pixbuf;
   CtkCssImage *image;
   GError *local_error = NULL;
 

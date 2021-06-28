@@ -37,8 +37,8 @@
 G_BEGIN_DECLS
 
 GDK_AVAILABLE_IN_ALL
-gint     cdk_x11_display_text_property_to_text_list (GdkDisplay   *display,
-                                                     GdkAtom       encoding,
+gint     cdk_x11_display_text_property_to_text_list (CdkDisplay   *display,
+                                                     CdkAtom       encoding,
                                                      gint          format,
                                                      const guchar *text,
                                                      gint          length,
@@ -46,16 +46,16 @@ gint     cdk_x11_display_text_property_to_text_list (GdkDisplay   *display,
 GDK_AVAILABLE_IN_ALL
 void     cdk_x11_free_text_list                     (gchar       **list);
 GDK_AVAILABLE_IN_ALL
-gint     cdk_x11_display_string_to_compound_text    (GdkDisplay   *display,
+gint     cdk_x11_display_string_to_compound_text    (CdkDisplay   *display,
                                                      const gchar  *str,
-                                                     GdkAtom      *encoding,
+                                                     CdkAtom      *encoding,
                                                      gint         *format,
                                                      guchar      **ctext,
                                                      gint         *length);
 GDK_AVAILABLE_IN_ALL
-gboolean cdk_x11_display_utf8_to_compound_text      (GdkDisplay   *display,
+gboolean cdk_x11_display_utf8_to_compound_text      (CdkDisplay   *display,
                                                      const gchar  *str,
-                                                     GdkAtom      *encoding,
+                                                     CdkAtom      *encoding,
                                                      gint         *format,
                                                      guchar      **ctext,
                                                      gint         *length);

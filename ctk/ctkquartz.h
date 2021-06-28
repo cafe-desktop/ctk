@@ -31,8 +31,8 @@ NSSet   *_ctk_quartz_target_entries_to_pasteboard_types (const CtkTargetEntry *t
 GList   *_ctk_quartz_pasteboard_types_to_atom_list (NSArray  *array);
 
 CtkSelectionData *_ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
-								  GdkAtom       target,
-								  GdkAtom       selection);
+								  CdkAtom       target,
+								  CdkAtom       selection);
 
 void _ctk_quartz_set_selection_data_for_pasteboard (NSPasteboard *pasteboard,
 						    CtkSelectionData *selection_data);

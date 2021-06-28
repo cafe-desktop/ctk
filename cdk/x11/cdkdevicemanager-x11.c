@@ -31,8 +31,8 @@
 #define VIRTUAL_CORE_POINTER_ID 2
 #define VIRTUAL_CORE_KEYBOARD_ID 3
 
-GdkDeviceManager *
-_cdk_x11_device_manager_new (GdkDisplay *display)
+CdkDeviceManager *
+_cdk_x11_device_manager_new (CdkDisplay *display)
 {
   if (!g_getenv ("GDK_CORE_DEVICE_EVENTS"))
     {
@@ -53,7 +53,7 @@ _cdk_x11_device_manager_new (GdkDisplay *display)
           if (!_cdk_disable_multidevice &&
               XIQueryVersion (xdisplay, &major, &minor) != BadRequest)
             {
-              GdkX11DeviceManagerXI2 *device_manager_xi2;
+              CdkX11DeviceManagerXI2 *device_manager_xi2;
 
               GDK_NOTE (INPUT, g_message ("Creating XI2 device manager"));
 
@@ -79,21 +79,21 @@ _cdk_x11_device_manager_new (GdkDisplay *display)
 
 /**
  * cdk_x11_device_manager_lookup:
- * @device_manager: (type GdkX11DeviceManagerCore): a #GdkDeviceManager
+ * @device_manager: (type CdkX11DeviceManagerCore): a #CdkDeviceManager
  * @device_id: a device ID, as understood by the XInput2 protocol
  *
- * Returns the #GdkDevice that wraps the given device ID.
+ * Returns the #CdkDevice that wraps the given device ID.
  *
- * Returns: (transfer none) (allow-none) (type GdkX11DeviceCore): The #GdkDevice wrapping the device ID,
+ * Returns: (transfer none) (allow-none) (type CdkX11DeviceCore): The #CdkDevice wrapping the device ID,
  *          or %NULL if the given ID doesn’t currently represent a device.
  *
  * Since: 3.2
  **/
-GdkDevice *
-cdk_x11_device_manager_lookup (GdkDeviceManager *device_manager,
+CdkDevice *
+cdk_x11_device_manager_lookup (CdkDeviceManager *device_manager,
 			       gint              device_id)
 {
-  GdkDevice *device = NULL;
+  CdkDevice *device = NULL;
 
   g_return_val_if_fail (GDK_IS_DEVICE_MANAGER (device_manager), NULL);
 
@@ -120,7 +120,7 @@ cdk_x11_device_manager_lookup (GdkDeviceManager *device_manager,
 
 /**
  * cdk_x11_device_get_id:
- * @device: (type GdkX11DeviceCore): a #GdkDevice
+ * @device: (type CdkX11DeviceCore): a #CdkDevice
  *
  * Returns the device ID as seen by XInput2.
  *
@@ -135,7 +135,7 @@ cdk_x11_device_manager_lookup (GdkDeviceManager *device_manager,
  * Since: 3.2
  **/
 gint
-cdk_x11_device_get_id (GdkDevice *device)
+cdk_x11_device_get_id (CdkDevice *device)
 {
   gint device_id = 0;
 

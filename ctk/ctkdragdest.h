@@ -71,20 +71,20 @@ void ctk_drag_dest_set   (CtkWidget            *widget,
                           CtkDestDefaults       flags,
                           const CtkTargetEntry *targets,
                           gint                  n_targets,
-                          GdkDragAction         actions);
+                          CdkDragAction         actions);
 
 GDK_DEPRECATED_IN_3_22
 void ctk_drag_dest_set_proxy (CtkWidget      *widget,
-                              GdkWindow      *proxy_window,
-                              GdkDragProtocol protocol,
+                              CdkWindow      *proxy_window,
+                              CdkDragProtocol protocol,
                               gboolean        use_coordinates);
 
 GDK_AVAILABLE_IN_ALL
 void ctk_drag_dest_unset (CtkWidget          *widget);
 
 GDK_AVAILABLE_IN_ALL
-GdkAtom        ctk_drag_dest_find_target     (CtkWidget      *widget,
-                                              GdkDragContext *context,
+CdkAtom        ctk_drag_dest_find_target     (CtkWidget      *widget,
+                                              CdkDragContext *context,
                                               CtkTargetList  *target_list);
 GDK_AVAILABLE_IN_ALL
 CtkTargetList* ctk_drag_dest_get_target_list (CtkWidget      *widget);

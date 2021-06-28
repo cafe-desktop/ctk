@@ -43,7 +43,7 @@ on_drawing_area_draw (CtkWidget *drawing_area,
   int height = ctk_widget_get_allocated_height (drawing_area);
   int x, y;
   int border = 0;
-  GdkWindowHints mask = GPOINTER_TO_UINT(data);
+  CdkWindowHints mask = GPOINTER_TO_UINT(data);
 
   cairo_set_source_rgb (cr, 1, 1, 1);
   cairo_paint (cr);
@@ -78,7 +78,7 @@ on_resize_clicked (CtkWidget *button,
 		   gpointer   data)
 {
   CtkWidget *window = ctk_widget_get_toplevel (button);
-  GdkWindowHints mask = GPOINTER_TO_UINT(data);
+  CdkWindowHints mask = GPOINTER_TO_UINT(data);
 
   if ((mask & GDK_HINT_RESIZE_INC) != 0)
     ctk_window_resize_to_geometry (CTK_WINDOW (window), 8, 8);
@@ -87,14 +87,14 @@ on_resize_clicked (CtkWidget *button,
 }
 
 static void
-create_window (GdkWindowHints  mask)
+create_window (CdkWindowHints  mask)
 {
   CtkWidget *window;
   CtkWidget *drawing_area;
   CtkWidget *grid;
   CtkWidget *label;
   CtkWidget *button;
-  GdkGeometry geometry;
+  CdkGeometry geometry;
   GString *label_text = g_string_new (NULL);
   int border = 0;
 

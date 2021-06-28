@@ -238,7 +238,7 @@ gboolean       ctk_text_view_place_cursor_onscreen (CtkTextView   *text_view);
 
 GDK_AVAILABLE_IN_ALL
 void           ctk_text_view_get_visible_rect      (CtkTextView   *text_view,
-                                                    GdkRectangle  *visible_rect);
+                                                    CdkRectangle  *visible_rect);
 GDK_AVAILABLE_IN_ALL
 void           ctk_text_view_set_cursor_visible    (CtkTextView   *text_view,
                                                     gboolean       setting);
@@ -251,12 +251,12 @@ void           ctk_text_view_reset_cursor_blink    (CtkTextView   *text_view);
 GDK_AVAILABLE_IN_ALL
 void           ctk_text_view_get_cursor_locations  (CtkTextView       *text_view,
                                                     const CtkTextIter *iter,
-                                                    GdkRectangle      *strong,
-                                                    GdkRectangle      *weak);
+                                                    CdkRectangle      *strong,
+                                                    CdkRectangle      *weak);
 GDK_AVAILABLE_IN_ALL
 void           ctk_text_view_get_iter_location     (CtkTextView   *text_view,
                                                     const CtkTextIter *iter,
-                                                    GdkRectangle  *location);
+                                                    CdkRectangle  *location);
 GDK_AVAILABLE_IN_ALL
 gboolean       ctk_text_view_get_iter_at_location  (CtkTextView   *text_view,
                                                     CtkTextIter   *iter,
@@ -301,11 +301,11 @@ GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
 CtkAdjustment*   ctk_text_view_get_vadjustment (CtkTextView   *text_view);
 
 GDK_AVAILABLE_IN_ALL
-GdkWindow*        ctk_text_view_get_window      (CtkTextView       *text_view,
+CdkWindow*        ctk_text_view_get_window      (CtkTextView       *text_view,
                                                  CtkTextWindowType  win);
 GDK_AVAILABLE_IN_ALL
 CtkTextWindowType ctk_text_view_get_window_type (CtkTextView       *text_view,
-                                                 GdkWindow         *window);
+                                                 CdkWindow         *window);
 
 GDK_AVAILABLE_IN_ALL
 void ctk_text_view_set_border_window_size (CtkTextView       *text_view,
@@ -337,7 +337,7 @@ gboolean ctk_text_view_move_visually                  (CtkTextView       *text_v
 
 GDK_AVAILABLE_IN_ALL
 gboolean        ctk_text_view_im_context_filter_keypress        (CtkTextView       *text_view,
-                                                                 GdkEventKey       *event);
+                                                                 CdkEventKey       *event);
 GDK_AVAILABLE_IN_ALL
 void            ctk_text_view_reset_im_context                  (CtkTextView       *text_view);
 

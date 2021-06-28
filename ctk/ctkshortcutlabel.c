@@ -124,7 +124,7 @@ get_modifier_label (guint key)
 }
 
 static gchar **
-get_labels (guint key, GdkModifierType modifier, guint *n_mods)
+get_labels (guint key, CdkModifierType modifier, guint *n_mods)
 {
   const gchar *labels[16];
   GList *freeme = NULL;
@@ -266,7 +266,7 @@ dim_label (const gchar *text)
 static void
 display_shortcut (CtkContainer    *self,
                   guint            key,
-                  GdkModifierType  modifier)
+                  CdkModifierType  modifier)
 {
   gchar **keys = NULL;
   gint i;
@@ -299,7 +299,7 @@ parse_combination (CtkShortcutLabel *self,
 {
   gchar **accels;
   gint k;
-  GdkModifierType modifier = 0;
+  CdkModifierType modifier = 0;
   guint key = 0;
   gboolean retval = TRUE;
 

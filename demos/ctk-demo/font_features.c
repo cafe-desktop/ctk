@@ -454,7 +454,7 @@ switch_to_label (void)
 }
 
 static gboolean
-entry_key_press (CtkEntry *entry, GdkEventKey *event)
+entry_key_press (CtkEntry *entry, CdkEventKey *event)
 {
   if (event->keyval == GDK_KEY_Escape)
     {

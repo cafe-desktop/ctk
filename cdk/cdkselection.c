@@ -39,7 +39,7 @@
  * https://www.x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html),
  * provide a way to transfer arbitrary chunks of
  * data between programs. A “selection” is a essentially
- * a named clipboard, identified by a string interned as a #GdkAtom. By
+ * a named clipboard, identified by a string interned as a #CdkAtom. By
  * claiming ownership of a selection, an application indicates that it will
  * be responsible for supplying its contents. The most common selections are
  * `PRIMARY` and `CLIPBOARD`.
@@ -68,7 +68,7 @@
 
 /**
  * cdk_selection_owner_set:
- * @owner: (allow-none): a #GdkWindow or %NULL to indicate that the
+ * @owner: (allow-none): a #CdkWindow or %NULL to indicate that the
  *   the owner for the given should be unset.
  * @selection: an atom identifying a selection.
  * @time_: timestamp to use when setting the selection.
@@ -85,8 +85,8 @@
  *   changed to @owner, otherwise %FALSE.
  */
 gboolean
-cdk_selection_owner_set (GdkWindow *owner,
-			 GdkAtom    selection,
+cdk_selection_owner_set (CdkWindow *owner,
+			 CdkAtom    selection,
 			 guint32    time,
 			 gboolean   send_event)
 {
@@ -103,13 +103,13 @@ cdk_selection_owner_set (GdkWindow *owner,
  *
  * Returns: (nullable) (transfer none): if there is a selection owner
  *   for this window, and it is a window known to the current process,
- *   the #GdkWindow that owns the selection, otherwise %NULL. Note
+ *   the #CdkWindow that owns the selection, otherwise %NULL. Note
  *   that the return value may be owned by a different process if a
  *   foreign window was previously created for that window, but a new
  *   foreign window will never be created by this call.
  */
-GdkWindow*
-cdk_selection_owner_get (GdkAtom selection)
+CdkWindow*
+cdk_selection_owner_get (CdkAtom selection)
 {
   return cdk_selection_owner_get_for_display (cdk_display_get_default (), 
 					      selection);
@@ -128,10 +128,10 @@ cdk_selection_owner_get (GdkAtom selection)
  * Sends a response to SelectionRequest event.
  */
 void
-cdk_selection_send_notify (GdkWindow      *requestor,
-			   GdkAtom         selection,
-			   GdkAtom         target,
-			   GdkAtom         property,
+cdk_selection_send_notify (CdkWindow      *requestor,
+			   CdkAtom         selection,
+			   CdkAtom         target,
+			   CdkAtom         property,
 			   guint32         time)
 {
   cdk_selection_send_notify_for_display (cdk_window_get_display (requestor),
@@ -141,8 +141,8 @@ cdk_selection_send_notify (GdkWindow      *requestor,
 
 /**
  * cdk_selection_owner_set_for_display:
- * @display: the #GdkDisplay
- * @owner: (nullable): a #GdkWindow or %NULL to indicate that the owner for
+ * @display: the #CdkDisplay
+ * @owner: (nullable): a #CdkWindow or %NULL to indicate that the owner for
  *         the given should be unset
  * @selection: an atom identifying a selection
  * @time_: timestamp to use when setting the selection
@@ -151,7 +151,7 @@ cdk_selection_send_notify (GdkWindow      *requestor,
  * @send_event: if %TRUE, and the new owner is different from the current
  *              owner, the current owner will be sent a SelectionClear event
  *
- * Sets the #GdkWindow @owner as the current owner of the selection @selection.
+ * Sets the #CdkWindow @owner as the current owner of the selection @selection.
  *
  * Returns: %TRUE if the selection owner was successfully changed to owner,
  *    otherwise %FALSE.
@@ -159,9 +159,9 @@ cdk_selection_send_notify (GdkWindow      *requestor,
  * Since: 2.2
  */
 gboolean
-cdk_selection_owner_set_for_display (GdkDisplay *display,
-                                     GdkWindow  *owner,
-                                     GdkAtom     selection,
+cdk_selection_owner_set_for_display (CdkDisplay *display,
+                                     CdkWindow  *owner,
+                                     CdkAtom     selection,
                                      guint32     time,
                                      gboolean    send_event)
 {
@@ -174,7 +174,7 @@ cdk_selection_owner_set_for_display (GdkDisplay *display,
 
 /**
  * cdk_selection_owner_get_for_display:
- * @display: a #GdkDisplay
+ * @display: a #CdkDisplay
  * @selection: an atom indentifying a selection
  *
  * Determine the owner of the given selection.
@@ -185,14 +185,14 @@ cdk_selection_owner_set_for_display (GdkDisplay *display,
  *
  * Returns: (nullable) (transfer none): if there is a selection owner
  *    for this window, and it is a window known to the current
- *    process, the #GdkWindow that owns the selection, otherwise
+ *    process, the #CdkWindow that owns the selection, otherwise
  *    %NULL.
  *
  * Since: 2.2
  */
-GdkWindow *
-cdk_selection_owner_get_for_display (GdkDisplay *display,
-                                     GdkAtom     selection)
+CdkWindow *
+cdk_selection_owner_get_for_display (CdkDisplay *display,
+                                     CdkAtom     selection)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
   g_return_val_if_fail (selection != GDK_NONE, NULL);
@@ -202,7 +202,7 @@ cdk_selection_owner_get_for_display (GdkDisplay *display,
 
 /**
  * cdk_selection_send_notify_for_display:
- * @display: the #GdkDisplay where @requestor is realized
+ * @display: the #CdkDisplay where @requestor is realized
  * @requestor: window to which to deliver response
  * @selection: selection that was requested
  * @target: target that was selected
@@ -215,11 +215,11 @@ cdk_selection_owner_get_for_display (GdkDisplay *display,
  * Since: 2.2
  */
 void
-cdk_selection_send_notify_for_display (GdkDisplay       *display,
-                                       GdkWindow        *requestor,
-                                       GdkAtom          selection,
-                                       GdkAtom          target,
-                                       GdkAtom          property,
+cdk_selection_send_notify_for_display (CdkDisplay       *display,
+                                       CdkWindow        *requestor,
+                                       CdkAtom          selection,
+                                       CdkAtom          target,
+                                       CdkAtom          property,
                                        guint32          time_)
 {
   g_return_if_fail (GDK_IS_DISPLAY (display));
@@ -249,12 +249,12 @@ cdk_selection_send_notify_for_display (GdkDisplay       *display,
  * Returns: the length of the retrieved data.
  */
 gint
-cdk_selection_property_get (GdkWindow  *requestor,
+cdk_selection_property_get (CdkWindow  *requestor,
                             guchar    **data,
-                            GdkAtom    *ret_type,
+                            CdkAtom    *ret_type,
                             gint       *ret_format)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   g_return_val_if_fail (GDK_IS_WINDOW (requestor), 0);
 
@@ -265,12 +265,12 @@ cdk_selection_property_get (GdkWindow  *requestor,
 }
 
 void
-cdk_selection_convert (GdkWindow *requestor,
-                       GdkAtom    selection,
-                       GdkAtom    target,
+cdk_selection_convert (CdkWindow *requestor,
+                       CdkAtom    selection,
+                       CdkAtom    target,
                        guint32    time)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   g_return_if_fail (selection != GDK_NONE);
 
@@ -282,7 +282,7 @@ cdk_selection_convert (GdkWindow *requestor,
 
 /**
  * cdk_text_property_to_utf8_list_for_display:
- * @display:  a #GdkDisplay
+ * @display:  a #CdkDisplay
  * @encoding: an atom representing the encoding of the text
  * @format:   the format of the property
  * @text:     (array length=length): the text to convert
@@ -299,8 +299,8 @@ cdk_selection_convert (GdkWindow *requestor,
  * Since: 2.2
  */
 gint
-cdk_text_property_to_utf8_list_for_display (GdkDisplay     *display,
-                                            GdkAtom         encoding,
+cdk_text_property_to_utf8_list_for_display (CdkDisplay     *display,
+                                            CdkAtom         encoding,
                                             gint            format,
                                             const guchar   *text,
                                             gint            length,
@@ -331,7 +331,7 @@ cdk_text_property_to_utf8_list_for_display (GdkDisplay     *display,
 gchar *
 cdk_utf8_to_string_target (const gchar *str)
 {
-  GdkDisplay *display = cdk_display_get_default ();
+  CdkDisplay *display = cdk_display_get_default ();
 
   return GDK_DISPLAY_GET_CLASS (display)->utf8_to_string_target (display, str);
 }

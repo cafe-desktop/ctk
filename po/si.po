@@ -72,7 +72,7 @@ msgstr "SCREEN"
 #: cdk/cdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
-msgstr "Gdk දෝෂහරණ සංකේතය සැකසීමට"
+msgstr "Cdk දෝෂහරණ සංකේතය සැකසීමට"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -86,7 +86,7 @@ msgstr "FLAGS"
 #: cdk/cdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
-msgstr "Gdk දෝෂහැරීමේ සංකේතය සකසා නැත"
+msgstr "Cdk දෝෂහැරීමේ සංකේතය සකසා නැත"
 
 #: cdk/keyname-table.h:3940
 #, fuzzy
@@ -4823,7 +4823,7 @@ msgstr "'%s'පිළිඹිබුව පූරණය දෝෂසහිතය
 #~ msgstr "PNM සන්ධර්භ ව්‍යුහය සඳහා මතකය ප්‍රමාණවත් නැත"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "බහලුම් පටුන වෙත ලිවීම අසමත් විය\n"
 
 #, fuzzy

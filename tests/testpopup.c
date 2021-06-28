@@ -13,10 +13,10 @@ draw_popup (CtkWidget *widget,
 
 static gboolean
 place_popup (CtkWidget *parent,
-             GdkEvent  *event,
+             CdkEvent  *event,
              CtkWidget *popup)
 {
-  GdkEventMotion *ev_motion = (GdkEventMotion *) event;
+  CdkEventMotion *ev_motion = (CdkEventMotion *) event;
   gint width, height;
 
   ctk_window_get_size (CTK_WINDOW (popup), &width, &height);
@@ -29,7 +29,7 @@ place_popup (CtkWidget *parent,
 
 static gboolean
 on_map_event (CtkWidget *parent,
-              GdkEvent  *event,
+              CdkEvent  *event,
               gpointer   data)
 {
   CtkWidget *popup;

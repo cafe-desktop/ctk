@@ -129,7 +129,7 @@ color_picked (GObject      *source,
     }
   else
     {
-      GdkRGBA c;
+      CdkRGBA c;
       guint32 color;
 
       g_variant_get (ret, "(u)", &color);
@@ -169,7 +169,7 @@ ctk_color_picker_kwin_pick (CtkColorPicker      *cp,
                      picker);
 }
 
-static GdkRGBA *
+static CdkRGBA *
 ctk_color_picker_kwin_pick_finish (CtkColorPicker  *cp,
                                    GAsyncResult    *res,
                                    GError         **error)

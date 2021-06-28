@@ -36,28 +36,28 @@
 
 G_BEGIN_DECLS
 
-struct _GdkQuartzGLContext
+struct _CdkQuartzGLContext
 {
-  GdkGLContext parent_instance;
+  CdkGLContext parent_instance;
 
   NSOpenGLContext *gl_context;
   gboolean is_attached;
 };
 
-struct _GdkQuartzGLContextClass
+struct _CdkQuartzGLContextClass
 {
-  GdkGLContextClass parent_class;
+  CdkGLContextClass parent_class;
 };
 
-gboolean        cdk_quartz_display_init_gl                         (GdkDisplay        *display);
-GdkGLContext *  cdk_quartz_window_create_gl_context                (GdkWindow         *window,
+gboolean        cdk_quartz_display_init_gl                         (CdkDisplay        *display);
+CdkGLContext *  cdk_quartz_window_create_gl_context                (CdkWindow         *window,
                                                                     gboolean           attach,
-                                                                    GdkGLContext      *share,
+                                                                    CdkGLContext      *share,
                                                                     GError           **error);
-void            cdk_quartz_window_invalidate_for_new_frame         (GdkWindow         *window,
+void            cdk_quartz_window_invalidate_for_new_frame         (CdkWindow         *window,
                                                                     cairo_region_t    *update_area);
-gboolean        cdk_quartz_display_make_gl_context_current         (GdkDisplay        *display,
-                                                                    GdkGLContext      *context);
+gboolean        cdk_quartz_display_make_gl_context_current         (CdkDisplay        *display,
+                                                                    CdkGLContext      *context);
 
 G_END_DECLS
 

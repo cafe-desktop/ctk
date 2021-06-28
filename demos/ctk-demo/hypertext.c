@@ -106,7 +106,7 @@ follow_if_link (CtkWidget   *text_view,
  */
 static gboolean
 key_press_event (CtkWidget *text_view,
-                 GdkEventKey *event)
+                 CdkEventKey *event)
 {
   CtkTextIter iter;
   CtkTextBuffer *buffer;
@@ -132,7 +132,7 @@ key_press_event (CtkWidget *text_view,
  */
 static gboolean
 event_after (CtkWidget *text_view,
-             GdkEvent  *ev)
+             CdkEvent  *ev)
 {
   CtkTextIter start, end, iter;
   CtkTextBuffer *buffer;
@@ -141,9 +141,9 @@ event_after (CtkWidget *text_view,
 
   if (ev->type == GDK_BUTTON_RELEASE)
     {
-      GdkEventButton *event;
+      CdkEventButton *event;
 
-      event = (GdkEventButton *)ev;
+      event = (CdkEventButton *)ev;
       if (event->button != GDK_BUTTON_PRIMARY)
         return FALSE;
 
@@ -152,9 +152,9 @@ event_after (CtkWidget *text_view,
     }
   else if (ev->type == GDK_TOUCH_END)
     {
-      GdkEventTouch *event;
+      CdkEventTouch *event;
 
-      event = (GdkEventTouch *)ev;
+      event = (CdkEventTouch *)ev;
 
       ex = event->x;
       ey = event->y;
@@ -180,8 +180,8 @@ event_after (CtkWidget *text_view,
 }
 
 static gboolean hovering_over_link = FALSE;
-static GdkCursor *hand_cursor = NULL;
-static GdkCursor *regular_cursor = NULL;
+static CdkCursor *hand_cursor = NULL;
+static CdkCursor *regular_cursor = NULL;
 
 /* Looks at all tags covering the position (x, y) in the text view,
  * and if one of them is a link, change the cursor to the "hands" cursor
@@ -230,7 +230,7 @@ set_cursor_if_appropriate (CtkTextView    *text_view,
  */
 static gboolean
 motion_notify_event (CtkWidget      *text_view,
-                     GdkEventMotion *event)
+                     CdkEventMotion *event)
 {
   gint x, y;
 
@@ -253,7 +253,7 @@ do_hypertext (CtkWidget *do_widget)
       CtkWidget *view;
       CtkWidget *sw;
       CtkTextBuffer *buffer;
-      GdkDisplay *display;
+      CdkDisplay *display;
 
       display = ctk_widget_get_display (do_widget);
       hand_cursor = cdk_cursor_new_from_name (display, "pointer");

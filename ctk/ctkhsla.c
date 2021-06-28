@@ -41,7 +41,7 @@ _ctk_hsla_init (CtkHSLA *hsla,
 
 void
 _ctk_hsla_init_from_rgba (CtkHSLA       *hsla,
-                          const GdkRGBA *rgba)
+                          const CdkRGBA *rgba)
 {
   gdouble min;
   gdouble max;
@@ -109,7 +109,7 @@ _ctk_hsla_init_from_rgba (CtkHSLA       *hsla,
 }
 
 void
-_cdk_rgba_init_from_hsla (GdkRGBA       *rgba,
+_cdk_rgba_init_from_hsla (CdkRGBA       *rgba,
                           const CtkHSLA *hsla)
 {
   gdouble hue;

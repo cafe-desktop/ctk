@@ -31,23 +31,23 @@
 /**
  * SECTION:cdkdevice
  * @Short_description: Object representing an input device
- * @Title: GdkDevice
- * @See_also: #GdkDeviceManager
+ * @Title: CdkDevice
+ * @See_also: #CdkDeviceManager
  *
- * The #GdkDevice object represents a single input device, such
+ * The #CdkDevice object represents a single input device, such
  * as a keyboard, a mouse, a touchpad, etc.
  *
- * See the #GdkDeviceManager documentation for more information
+ * See the #CdkDeviceManager documentation for more information
  * about the various kinds of master and slave devices, and their
  * relationships.
  */
 
-typedef struct _GdkAxisInfo GdkAxisInfo;
+typedef struct _CdkAxisInfo CdkAxisInfo;
 
-struct _GdkAxisInfo
+struct _CdkAxisInfo
 {
-  GdkAtom label;
-  GdkAxisUse use;
+  CdkAtom label;
+  CdkAxisUse use;
 
   gdouble min_axis;
   gdouble max_axis;
@@ -77,7 +77,7 @@ static void cdk_device_get_property (GObject      *object,
                                      GParamSpec   *pspec);
 
 
-G_DEFINE_ABSTRACT_TYPE (GdkDevice, cdk_device, G_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE (CdkDevice, cdk_device, G_TYPE_OBJECT)
 
 enum {
   PROP_0,
@@ -102,7 +102,7 @@ enum {
 static GParamSpec *device_props[LAST_PROP] = { NULL, };
 
 static void
-cdk_device_class_init (GdkDeviceClass *klass)
+cdk_device_class_init (CdkDeviceClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
@@ -112,9 +112,9 @@ cdk_device_class_init (GdkDeviceClass *klass)
   object_class->get_property = cdk_device_get_property;
 
   /**
-   * GdkDevice:display:
+   * CdkDevice:display:
    *
-   * The #GdkDisplay the #GdkDevice pertains to.
+   * The #CdkDisplay the #CdkDevice pertains to.
    *
    * Since: 3.0
    */
@@ -127,9 +127,9 @@ cdk_device_class_init (GdkDeviceClass *klass)
                            G_PARAM_STATIC_STRINGS);
 
   /**
-   * GdkDevice:device-manager:
+   * CdkDevice:device-manager:
    *
-   * The #GdkDeviceManager the #GdkDevice pertains to.
+   * The #CdkDeviceManager the #CdkDevice pertains to.
    *
    * Since: 3.0
    */
@@ -141,7 +141,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                            G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
                            G_PARAM_STATIC_STRINGS);
   /**
-   * GdkDevice:name:
+   * CdkDevice:name:
    *
    * The device name.
    *
@@ -155,7 +155,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                            G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
                            G_PARAM_STATIC_STRINGS);
   /**
-   * GdkDevice:type:
+   * CdkDevice:type:
    *
    * Device role in the device manager.
    *
@@ -171,7 +171,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                          G_PARAM_STATIC_STRINGS);
 
   /**
-   * GdkDevice:associated-device:
+   * CdkDevice:associated-device:
    *
    * Associated pointer or keyboard with this device, if any. Devices of type #GDK_DEVICE_TYPE_MASTER
    * always come in keyboard/pointer pairs. Other device types will have a %NULL associated device.
@@ -186,7 +186,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                            G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GdkDevice:input-source:
+   * CdkDevice:input-source:
    *
    * Source type for the device.
    *
@@ -202,7 +202,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                          G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
 
   /*
-   * GdkDevice:input-mode:
+   * CdkDevice:input-mode:
    *
    * Input mode for the device.
    *
@@ -217,7 +217,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS | G_PARAM_EXPLICIT_NOTIFY);
 
   /**
-   * GdkDevice:has-cursor:
+   * CdkDevice:has-cursor:
    *
    * Whether the device is represented by a cursor on the screen. Devices of type
    * %GDK_DEVICE_TYPE_MASTER will have %TRUE here.
@@ -233,7 +233,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                             G_PARAM_STATIC_STRINGS);
 
   /**
-   * GdkDevice:n-axes:
+   * CdkDevice:n-axes:
    *
    * Number of axes in the device.
    *
@@ -248,7 +248,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                          G_PARAM_READABLE | G_PARAM_STATIC_STRINGS);
 
   /**
-   * GdkDevice:vendor-id:
+   * CdkDevice:vendor-id:
    *
    * Vendor ID of this device, see cdk_device_get_vendor_id().
    *
@@ -263,7 +263,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                            G_PARAM_STATIC_STRINGS);
 
   /**
-   * GdkDevice:product-id:
+   * CdkDevice:product-id:
    *
    * Product ID of this device, see cdk_device_get_product_id().
    *
@@ -278,9 +278,9 @@ cdk_device_class_init (GdkDeviceClass *klass)
                            G_PARAM_STATIC_STRINGS);
 
   /**
-   * GdkDevice:seat:
+   * CdkDevice:seat:
    *
-   * #GdkSeat of this device.
+   * #CdkSeat of this device.
    *
    * Since: 3.20
    */
@@ -293,7 +293,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                            G_PARAM_STATIC_STRINGS);
 
   /**
-   * GdkDevice:num-touches:
+   * CdkDevice:num-touches:
    *
    * The maximal number of concurrent touches on a touch device.
    * Will be 0 if the device is not a touch device or if the number
@@ -310,7 +310,7 @@ cdk_device_class_init (GdkDeviceClass *klass)
                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
                          G_PARAM_STATIC_STRINGS);
   /**
-   * GdkDevice:axes:
+   * CdkDevice:axes:
    *
    * The axes currently available for this device.
    *
@@ -333,10 +333,10 @@ cdk_device_class_init (GdkDeviceClass *klass)
   g_object_class_install_properties (object_class, LAST_PROP, device_props);
 
   /**
-   * GdkDevice::changed:
-   * @device: the #GdkDevice that changed.
+   * CdkDevice::changed:
+   * @device: the #CdkDevice that changed.
    *
-   * The ::changed signal is emitted either when the #GdkDevice
+   * The ::changed signal is emitted either when the #CdkDevice
    * has changed the number of either axes or keys. For example
    * In X this will normally happen when the slave device routing
    * events through the master device changes (for example, user
@@ -353,12 +353,12 @@ cdk_device_class_init (GdkDeviceClass *klass)
                   G_TYPE_NONE, 0);
 
   /**
-   * GdkDevice::tool-changed:
-   * @device: the #GdkDevice that changed.
+   * CdkDevice::tool-changed:
+   * @device: the #CdkDevice that changed.
    * @tool: The new current tool
    *
    * The ::tool-changed signal is emitted on pen/eraser
-   * #GdkDevices whenever tools enter or leave proximity.
+   * #CdkDevices whenever tools enter or leave proximity.
    *
    * Since: 3.22
    */
@@ -372,15 +372,15 @@ cdk_device_class_init (GdkDeviceClass *klass)
 }
 
 static void
-cdk_device_init (GdkDevice *device)
+cdk_device_init (CdkDevice *device)
 {
-  device->axes = g_array_new (FALSE, TRUE, sizeof (GdkAxisInfo));
+  device->axes = g_array_new (FALSE, TRUE, sizeof (CdkAxisInfo));
 }
 
 static void
 cdk_device_finalize (GObject *object)
 {
-  GdkDevice *device = GDK_DEVICE (object);
+  CdkDevice *device = GDK_DEVICE (object);
 
   if (device->axes)
     {
@@ -399,8 +399,8 @@ cdk_device_finalize (GObject *object)
 static void
 cdk_device_dispose (GObject *object)
 {
-  GdkDevice *device = GDK_DEVICE (object);
-  GdkDevice *associated = device->associated;
+  CdkDevice *device = GDK_DEVICE (object);
+  CdkDevice *associated = device->associated;
 
   if (associated && device->type == GDK_DEVICE_TYPE_SLAVE)
     _cdk_device_remove_slave (associated, device);
@@ -427,7 +427,7 @@ cdk_device_set_property (GObject      *object,
                          const GValue *value,
                          GParamSpec   *pspec)
 {
-  GdkDevice *device = GDK_DEVICE (object);
+  CdkDevice *device = GDK_DEVICE (object);
 
   switch (prop_id)
     {
@@ -478,7 +478,7 @@ cdk_device_get_property (GObject    *object,
                          GValue     *value,
                          GParamSpec *pspec)
 {
-  GdkDevice *device = GDK_DEVICE (object);
+  CdkDevice *device = GDK_DEVICE (object);
 
   switch (prop_id)
     {
@@ -535,8 +535,8 @@ cdk_device_get_property (GObject    *object,
 
 /**
  * cdk_device_get_state: (skip)
- * @device: a #GdkDevice.
- * @window: a #GdkWindow.
+ * @device: a #CdkDevice.
+ * @window: a #CdkWindow.
  * @axes: (nullable) (array): an array of doubles to store the values of
  * the axes of @device in, or %NULL.
  * @mask: (optional) (out): location to store the modifiers, or %NULL.
@@ -547,10 +547,10 @@ cdk_device_get_property (GObject    *object,
  * unless there is an ongoing grab on them. See cdk_device_grab().
  */
 void
-cdk_device_get_state (GdkDevice       *device,
-                      GdkWindow       *window,
+cdk_device_get_state (CdkDevice       *device,
+                      CdkWindow       *window,
                       gdouble         *axes,
-                      GdkModifierType *mask)
+                      CdkModifierType *mask)
 {
   g_return_if_fail (GDK_IS_DEVICE (device));
   g_return_if_fail (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD);
@@ -565,7 +565,7 @@ cdk_device_get_state (GdkDevice       *device,
 /**
  * cdk_device_get_position_double:
  * @device: pointer device to query status about.
- * @screen: (out) (transfer none) (allow-none): location to store the #GdkScreen
+ * @screen: (out) (transfer none) (allow-none): location to store the #CdkScreen
  *          the @device is on, or %NULL.
  * @x: (out) (allow-none): location to store root window X coordinate of @device, or %NULL.
  * @y: (out) (allow-none): location to store root window Y coordinate of @device, or %NULL.
@@ -578,15 +578,15 @@ cdk_device_get_state (GdkDevice       *device,
  * Since: 3.10
  **/
 void
-cdk_device_get_position_double (GdkDevice        *device,
-                                GdkScreen       **screen,
+cdk_device_get_position_double (CdkDevice        *device,
+                                CdkScreen       **screen,
                                 gdouble          *x,
                                 gdouble          *y)
 {
-  GdkDisplay *display;
+  CdkDisplay *display;
   gdouble tmp_x, tmp_y;
-  GdkScreen *default_screen;
-  GdkWindow *root;
+  CdkScreen *default_screen;
+  CdkWindow *root;
 
   g_return_if_fail (GDK_IS_DEVICE (device));
   g_return_if_fail (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD);
@@ -615,7 +615,7 @@ cdk_device_get_position_double (GdkDevice        *device,
 /**
  * cdk_device_get_position:
  * @device: pointer device to query status about.
- * @screen: (out) (transfer none) (allow-none): location to store the #GdkScreen
+ * @screen: (out) (transfer none) (allow-none): location to store the #CdkScreen
  *          the @device is on, or %NULL.
  * @x: (out) (allow-none): location to store root window X coordinate of @device, or %NULL.
  * @y: (out) (allow-none): location to store root window Y coordinate of @device, or %NULL.
@@ -628,8 +628,8 @@ cdk_device_get_position_double (GdkDevice        *device,
  * Since: 3.0
  **/
 void
-cdk_device_get_position (GdkDevice        *device,
-                         GdkScreen       **screen,
+cdk_device_get_position (CdkDevice        *device,
+                         CdkScreen       **screen,
                          gint             *x,
                          gint             *y)
 {
@@ -645,7 +645,7 @@ cdk_device_get_position (GdkDevice        *device,
 
 /**
  * cdk_device_get_window_at_position_double:
- * @device: pointer #GdkDevice to query info to.
+ * @device: pointer #CdkDevice to query info to.
  * @win_x: (out) (allow-none): return location for the X coordinate of the device location,
  *         relative to the window origin, or %NULL.
  * @win_y: (out) (allow-none): return location for the Y coordinate of the device location,
@@ -659,18 +659,18 @@ cdk_device_get_position (GdkDevice        *device,
  * function may not be called on devices of type %GDK_DEVICE_TYPE_SLAVE,
  * unless there is an ongoing grab on them, see cdk_device_grab().
  *
- * Returns: (nullable) (transfer none): the #GdkWindow under the
+ * Returns: (nullable) (transfer none): the #CdkWindow under the
  *   device position, or %NULL.
  *
  * Since: 3.0
  **/
-GdkWindow *
-cdk_device_get_window_at_position_double (GdkDevice  *device,
+CdkWindow *
+cdk_device_get_window_at_position_double (CdkDevice  *device,
                                           gdouble    *win_x,
                                           gdouble    *win_y)
 {
   gdouble tmp_x, tmp_y;
-  GdkWindow *window;
+  CdkWindow *window;
 
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
   g_return_val_if_fail (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD, NULL);
@@ -696,7 +696,7 @@ cdk_device_get_window_at_position_double (GdkDevice  *device,
 
 /**
  * cdk_device_get_window_at_position:
- * @device: pointer #GdkDevice to query info to.
+ * @device: pointer #CdkDevice to query info to.
  * @win_x: (out) (allow-none): return location for the X coordinate of the device location,
  *         relative to the window origin, or %NULL.
  * @win_y: (out) (allow-none): return location for the Y coordinate of the device location,
@@ -709,18 +709,18 @@ cdk_device_get_window_at_position_double (GdkDevice  *device,
  * function may not be called on devices of type %GDK_DEVICE_TYPE_SLAVE,
  * unless there is an ongoing grab on them, see cdk_device_grab().
  *
- * Returns: (nullable) (transfer none): the #GdkWindow under the
+ * Returns: (nullable) (transfer none): the #CdkWindow under the
  * device position, or %NULL.
  *
  * Since: 3.0
  **/
-GdkWindow *
-cdk_device_get_window_at_position (GdkDevice  *device,
+CdkWindow *
+cdk_device_get_window_at_position (CdkDevice  *device,
                                    gint       *win_x,
                                    gint       *win_y)
 {
   gdouble tmp_x, tmp_y;
-  GdkWindow *window;
+  CdkWindow *window;
 
   window =
     cdk_device_get_window_at_position_double (device, &tmp_x, &tmp_y);
@@ -735,12 +735,12 @@ cdk_device_get_window_at_position (GdkDevice  *device,
 
 /**
  * cdk_device_get_history: (skip)
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  * @window: the window with respect to which which the event coordinates will be reported
  * @start: starting timestamp for range of events to return
  * @stop: ending timestamp for the range of events to return
  * @events: (array length=n_events) (out) (transfer full) (optional):
- *   location to store a newly-allocated array of #GdkTimeCoord, or
+ *   location to store a newly-allocated array of #CdkTimeCoord, or
  *   %NULL
  * @n_events: (out) (optional): location to store the length of
  *   @events, or %NULL
@@ -760,11 +760,11 @@ cdk_device_get_window_at_position (GdkDevice  *device,
  *  at least one event was found.
  **/
 gboolean
-cdk_device_get_history (GdkDevice      *device,
-                        GdkWindow      *window,
+cdk_device_get_history (CdkDevice      *device,
+                        CdkWindow      *window,
                         guint32         start,
                         guint32         stop,
-                        GdkTimeCoord ***events,
+                        CdkTimeCoord ***events,
                         gint           *n_events)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), FALSE);
@@ -788,28 +788,28 @@ cdk_device_get_history (GdkDevice      *device,
                                                      events, n_events);
 }
 
-GdkTimeCoord **
-_cdk_device_allocate_history (GdkDevice *device,
+CdkTimeCoord **
+_cdk_device_allocate_history (CdkDevice *device,
                               gint       n_events)
 {
-  GdkTimeCoord **result = g_new (GdkTimeCoord *, n_events);
+  CdkTimeCoord **result = g_new (CdkTimeCoord *, n_events);
   gint i;
 
   for (i = 0; i < n_events; i++)
-    result[i] = g_malloc (sizeof (GdkTimeCoord) -
+    result[i] = g_malloc (sizeof (CdkTimeCoord) -
                           sizeof (double) * (GDK_MAX_TIMECOORD_AXES - device->axes->len));
   return result;
 }
 
 /**
  * cdk_device_free_history: (skip)
- * @events: (array length=n_events): an array of #GdkTimeCoord.
+ * @events: (array length=n_events): an array of #CdkTimeCoord.
  * @n_events: the length of the array.
  *
- * Frees an array of #GdkTimeCoord that was returned by cdk_device_get_history().
+ * Frees an array of #CdkTimeCoord that was returned by cdk_device_get_history().
  */
 void
-cdk_device_free_history (GdkTimeCoord **events,
+cdk_device_free_history (CdkTimeCoord **events,
                          gint           n_events)
 {
   gint i;
@@ -822,7 +822,7 @@ cdk_device_free_history (GdkTimeCoord **events,
 
 /**
  * cdk_device_get_name:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Determines the name of the device.
  *
@@ -831,7 +831,7 @@ cdk_device_free_history (GdkTimeCoord **events,
  * Since: 2.20
  **/
 const gchar *
-cdk_device_get_name (GdkDevice *device)
+cdk_device_get_name (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
 
@@ -840,7 +840,7 @@ cdk_device_get_name (GdkDevice *device)
 
 /**
  * cdk_device_get_has_cursor:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Determines whether the pointer follows device motion.
  * This is not meaningful for keyboard devices, which don't have a pointer.
@@ -850,7 +850,7 @@ cdk_device_get_name (GdkDevice *device)
  * Since: 2.20
  **/
 gboolean
-cdk_device_get_has_cursor (GdkDevice *device)
+cdk_device_get_has_cursor (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), FALSE);
 
@@ -859,16 +859,16 @@ cdk_device_get_has_cursor (GdkDevice *device)
 
 /**
  * cdk_device_get_source:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Determines the type of the device.
  *
- * Returns: a #GdkInputSource
+ * Returns: a #CdkInputSource
  *
  * Since: 2.20
  **/
-GdkInputSource
-cdk_device_get_source (GdkDevice *device)
+CdkInputSource
+cdk_device_get_source (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), 0);
 
@@ -877,16 +877,16 @@ cdk_device_get_source (GdkDevice *device)
 
 /**
  * cdk_device_get_mode:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Determines the mode of the device.
  *
- * Returns: a #GdkInputSource
+ * Returns: a #CdkInputSource
  *
  * Since: 2.20
  **/
-GdkInputMode
-cdk_device_get_mode (GdkDevice *device)
+CdkInputMode
+cdk_device_get_mode (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), 0);
 
@@ -895,7 +895,7 @@ cdk_device_get_mode (GdkDevice *device)
 
 /**
  * cdk_device_set_mode:
- * @device: a #GdkDevice.
+ * @device: a #CdkDevice.
  * @mode: the input mode.
  *
  * Sets a the mode of an input device. The mode controls if the
@@ -909,8 +909,8 @@ cdk_device_get_mode (GdkDevice *device)
  * Returns: %TRUE if the mode was successfully changed.
  **/
 gboolean
-cdk_device_set_mode (GdkDevice    *device,
-                     GdkInputMode  mode)
+cdk_device_set_mode (CdkDevice    *device,
+                     CdkInputMode  mode)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), FALSE);
 
@@ -929,7 +929,7 @@ cdk_device_set_mode (GdkDevice    *device,
 
 /**
  * cdk_device_get_n_keys:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Returns the number of keys the device currently has.
  *
@@ -938,7 +938,7 @@ cdk_device_set_mode (GdkDevice    *device,
  * Since: 2.24
  **/
 gint
-cdk_device_get_n_keys (GdkDevice *device)
+cdk_device_get_n_keys (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), 0);
 
@@ -947,7 +947,7 @@ cdk_device_get_n_keys (GdkDevice *device)
 
 /**
  * cdk_device_get_key:
- * @device: a #GdkDevice.
+ * @device: a #CdkDevice.
  * @index_: the index of the macro button to get.
  * @keyval: (out): return value for the keyval.
  * @modifiers: (out): return value for modifiers.
@@ -960,10 +960,10 @@ cdk_device_get_n_keys (GdkDevice *device)
  * Since: 2.20
  **/
 gboolean
-cdk_device_get_key (GdkDevice       *device,
+cdk_device_get_key (CdkDevice       *device,
                     guint            index_,
                     guint           *keyval,
-                    GdkModifierType *modifiers)
+                    CdkModifierType *modifiers)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), FALSE);
   g_return_val_if_fail (index_ < device->num_keys, FALSE);
@@ -983,7 +983,7 @@ cdk_device_get_key (GdkDevice       *device,
 
 /**
  * cdk_device_set_key:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  * @index_: the index of the macro button to set
  * @keyval: the keyval to generate
  * @modifiers: the modifiers to set
@@ -992,10 +992,10 @@ cdk_device_get_key (GdkDevice       *device,
  * is pressed.
  **/
 void
-cdk_device_set_key (GdkDevice      *device,
+cdk_device_set_key (CdkDevice      *device,
                     guint           index_,
                     guint           keyval,
-                    GdkModifierType modifiers)
+                    CdkModifierType modifiers)
 {
   g_return_if_fail (GDK_IS_DEVICE (device));
   g_return_if_fail (index_ < device->num_keys);
@@ -1006,50 +1006,50 @@ cdk_device_set_key (GdkDevice      *device,
 
 /**
  * cdk_device_get_axis_use:
- * @device: a pointer #GdkDevice.
+ * @device: a pointer #CdkDevice.
  * @index_: the index of the axis.
  *
  * Returns the axis use for @index_.
  *
- * Returns: a #GdkAxisUse specifying how the axis is used.
+ * Returns: a #CdkAxisUse specifying how the axis is used.
  *
  * Since: 2.20
  **/
-GdkAxisUse
-cdk_device_get_axis_use (GdkDevice *device,
+CdkAxisUse
+cdk_device_get_axis_use (CdkDevice *device,
                          guint      index_)
 {
-  GdkAxisInfo *info;
+  CdkAxisInfo *info;
 
   g_return_val_if_fail (GDK_IS_DEVICE (device), GDK_AXIS_IGNORE);
   g_return_val_if_fail (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD, GDK_AXIS_IGNORE);
   g_return_val_if_fail (index_ < device->axes->len, GDK_AXIS_IGNORE);
 
-  info = &g_array_index (device->axes, GdkAxisInfo, index_);
+  info = &g_array_index (device->axes, CdkAxisInfo, index_);
 
   return info->use;
 }
 
 /**
  * cdk_device_set_axis_use:
- * @device: a pointer #GdkDevice
+ * @device: a pointer #CdkDevice
  * @index_: the index of the axis
  * @use: specifies how the axis is used
  *
  * Specifies how an axis of a device is used.
  **/
 void
-cdk_device_set_axis_use (GdkDevice   *device,
+cdk_device_set_axis_use (CdkDevice   *device,
                          guint        index_,
-                         GdkAxisUse   use)
+                         CdkAxisUse   use)
 {
-  GdkAxisInfo *info;
+  CdkAxisInfo *info;
 
   g_return_if_fail (GDK_IS_DEVICE (device));
   g_return_if_fail (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD);
   g_return_if_fail (index_ < device->axes->len);
 
-  info = &g_array_index (device->axes, GdkAxisInfo, index_);
+  info = &g_array_index (device->axes, CdkAxisInfo, index_);
   info->use = use;
 
   switch (use)
@@ -1073,17 +1073,17 @@ cdk_device_set_axis_use (GdkDevice   *device,
 
 /**
  * cdk_device_get_display:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
- * Returns the #GdkDisplay to which @device pertains.
+ * Returns the #CdkDisplay to which @device pertains.
  *
- * Returns: (transfer none): a #GdkDisplay. This memory is owned
+ * Returns: (transfer none): a #CdkDisplay. This memory is owned
  *          by CTK+, and must not be freed or unreffed.
  *
  * Since: 3.0
  **/
-GdkDisplay *
-cdk_device_get_display (GdkDevice *device)
+CdkDisplay *
+cdk_device_get_display (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
 
@@ -1092,7 +1092,7 @@ cdk_device_get_display (GdkDevice *device)
 
 /**
  * cdk_device_get_associated_device:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Returns the associated device to @device, if @device is of type
  * %GDK_DEVICE_TYPE_MASTER, it will return the paired pointer or
@@ -1109,8 +1109,8 @@ cdk_device_get_display (GdkDevice *device)
  *
  * Since: 3.0
  **/
-GdkDevice *
-cdk_device_get_associated_device (GdkDevice *device)
+CdkDevice *
+cdk_device_get_associated_device (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
 
@@ -1118,8 +1118,8 @@ cdk_device_get_associated_device (GdkDevice *device)
 }
 
 static void
-_cdk_device_set_device_type (GdkDevice     *device,
-                             GdkDeviceType  type)
+_cdk_device_set_device_type (CdkDevice     *device,
+                             CdkDeviceType  type)
 {
   if (device->type != type)
     {
@@ -1130,8 +1130,8 @@ _cdk_device_set_device_type (GdkDevice     *device,
 }
 
 void
-_cdk_device_set_associated_device (GdkDevice *device,
-                                   GdkDevice *associated)
+_cdk_device_set_associated_device (CdkDevice *device,
+                                   CdkDevice *associated)
 {
   g_return_if_fail (GDK_IS_DEVICE (device));
   g_return_if_fail (associated == NULL || GDK_IS_DEVICE (associated));
@@ -1159,19 +1159,19 @@ _cdk_device_set_associated_device (GdkDevice *device,
 
 /**
  * cdk_device_list_slave_devices:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * If the device if of type %GDK_DEVICE_TYPE_MASTER, it will return
  * the list of slave devices attached to it, otherwise it will return
  * %NULL
  *
- * Returns: (nullable) (transfer container) (element-type GdkDevice):
+ * Returns: (nullable) (transfer container) (element-type CdkDevice):
  *          the list of slave devices, or %NULL. The list must be
  *          freed with g_list_free(), the contents of the list are
  *          owned by CTK+ and should not be freed.
  **/
 GList *
-cdk_device_list_slave_devices (GdkDevice *device)
+cdk_device_list_slave_devices (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
   g_return_val_if_fail (cdk_device_get_device_type (device) == GDK_DEVICE_TYPE_MASTER, NULL);
@@ -1180,8 +1180,8 @@ cdk_device_list_slave_devices (GdkDevice *device)
 }
 
 void
-_cdk_device_add_slave (GdkDevice *device,
-                       GdkDevice *slave)
+_cdk_device_add_slave (CdkDevice *device,
+                       CdkDevice *slave)
 {
   g_return_if_fail (cdk_device_get_device_type (device) == GDK_DEVICE_TYPE_MASTER);
   g_return_if_fail (cdk_device_get_device_type (slave) != GDK_DEVICE_TYPE_MASTER);
@@ -1191,8 +1191,8 @@ _cdk_device_add_slave (GdkDevice *device,
 }
 
 void
-_cdk_device_remove_slave (GdkDevice *device,
-                          GdkDevice *slave)
+_cdk_device_remove_slave (CdkDevice *device,
+                          CdkDevice *slave)
 {
   GList *elem;
 
@@ -1209,16 +1209,16 @@ _cdk_device_remove_slave (GdkDevice *device,
 
 /**
  * cdk_device_get_device_type:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Returns the device type for @device.
  *
- * Returns: the #GdkDeviceType for @device.
+ * Returns: the #CdkDeviceType for @device.
  *
  * Since: 3.0
  **/
-GdkDeviceType
-cdk_device_get_device_type (GdkDevice *device)
+CdkDeviceType
+cdk_device_get_device_type (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), GDK_DEVICE_TYPE_MASTER);
 
@@ -1227,7 +1227,7 @@ cdk_device_get_device_type (GdkDevice *device)
 
 /**
  * cdk_device_get_n_axes:
- * @device: a pointer #GdkDevice
+ * @device: a pointer #CdkDevice
  *
  * Returns the number of axes the device currently has.
  *
@@ -1236,7 +1236,7 @@ cdk_device_get_device_type (GdkDevice *device)
  * Since: 3.0
  **/
 gint
-cdk_device_get_n_axes (GdkDevice *device)
+cdk_device_get_n_axes (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), 0);
   g_return_val_if_fail (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD, 0);
@@ -1246,18 +1246,18 @@ cdk_device_get_n_axes (GdkDevice *device)
 
 /**
  * cdk_device_list_axes:
- * @device: a pointer #GdkDevice
+ * @device: a pointer #CdkDevice
  *
- * Returns a #GList of #GdkAtoms, containing the labels for
+ * Returns a #GList of #CdkAtoms, containing the labels for
  * the axes that @device currently has.
  *
- * Returns: (transfer container) (element-type GdkAtom):
- *     A #GList of #GdkAtoms, free with g_list_free().
+ * Returns: (transfer container) (element-type CdkAtom):
+ *     A #GList of #CdkAtoms, free with g_list_free().
  *
  * Since: 3.0
  **/
 GList *
-cdk_device_list_axes (GdkDevice *device)
+cdk_device_list_axes (CdkDevice *device)
 {
   GList *axes = NULL;
   gint i;
@@ -1267,9 +1267,9 @@ cdk_device_list_axes (GdkDevice *device)
 
   for (i = 0; i < device->axes->len; i++)
     {
-      GdkAxisInfo axis_info;
+      CdkAxisInfo axis_info;
 
-      axis_info = g_array_index (device->axes, GdkAxisInfo, i);
+      axis_info = g_array_index (device->axes, CdkAxisInfo, i);
       axes = g_list_prepend (axes, GDK_ATOM_TO_POINTER (axis_info.label));
     }
 
@@ -1278,9 +1278,9 @@ cdk_device_list_axes (GdkDevice *device)
 
 /**
  * cdk_device_get_axis_value: (skip)
- * @device: a pointer #GdkDevice.
+ * @device: a pointer #CdkDevice.
  * @axes: (array): pointer to an array of axes
- * @axis_label: #GdkAtom with the axis label.
+ * @axis_label: #CdkAtom with the axis label.
  * @value: (out): location to store the found value.
  *
  * Interprets an array of double as axis values for a given device,
@@ -1292,9 +1292,9 @@ cdk_device_list_axes (GdkDevice *device)
  * Since: 3.0
  **/
 gboolean
-cdk_device_get_axis_value (GdkDevice *device,
+cdk_device_get_axis_value (CdkDevice *device,
                            gdouble   *axes,
-                           GdkAtom    axis_label,
+                           CdkAtom    axis_label,
                            gdouble   *value)
 {
   gint i;
@@ -1307,9 +1307,9 @@ cdk_device_get_axis_value (GdkDevice *device,
 
   for (i = 0; i < device->axes->len; i++)
     {
-      GdkAxisInfo axis_info;
+      CdkAxisInfo axis_info;
 
-      axis_info = g_array_index (device->axes, GdkAxisInfo, i);
+      axis_info = g_array_index (device->axes, CdkAxisInfo, i);
 
       if (axis_info.label != axis_label)
         continue;
@@ -1325,7 +1325,7 @@ cdk_device_get_axis_value (GdkDevice *device,
 
 /**
  * cdk_device_get_axis: (skip)
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  * @axes: (array): pointer to an array of axes
  * @use: the use to look for
  * @value: (out): location to store the found value.
@@ -1336,9 +1336,9 @@ cdk_device_get_axis_value (GdkDevice *device,
  * Returns: %TRUE if the given axis use was found, otherwise %FALSE
  **/
 gboolean
-cdk_device_get_axis (GdkDevice  *device,
+cdk_device_get_axis (CdkDevice  *device,
                      gdouble    *axes,
-                     GdkAxisUse  use,
+                     CdkAxisUse  use,
                      gdouble    *value)
 {
   gint i;
@@ -1353,9 +1353,9 @@ cdk_device_get_axis (GdkDevice  *device,
 
   for (i = 0; i < device->axes->len; i++)
     {
-      GdkAxisInfo axis_info;
+      CdkAxisInfo axis_info;
 
-      axis_info = g_array_index (device->axes, GdkAxisInfo, i);
+      axis_info = g_array_index (device->axes, CdkAxisInfo, i);
 
       if (axis_info.use != use)
         continue;
@@ -1369,8 +1369,8 @@ cdk_device_get_axis (GdkDevice  *device,
   return FALSE;
 }
 
-static GdkEventMask
-get_native_grab_event_mask (GdkEventMask grab_mask)
+static CdkEventMask
+get_native_grab_event_mask (CdkEventMask grab_mask)
 {
   /* Similar to the above but for pointer events only */
   return
@@ -1388,11 +1388,11 @@ get_native_grab_event_mask (GdkEventMask grab_mask)
 
 /**
  * cdk_device_grab:
- * @device: a #GdkDevice. To get the device you can use ctk_get_current_event_device()
+ * @device: a #CdkDevice. To get the device you can use ctk_get_current_event_device()
  *   or cdk_event_get_device() if the grab is in reaction to an event. Also, you can use
  *   cdk_device_manager_get_client_pointer() but only in code that isn’t triggered by a
- *   #GdkEvent and there aren’t other means to get a meaningful #GdkDevice to operate on.
- * @window: the #GdkWindow which will own the grab (the grab window)
+ *   #CdkEvent and there aren’t other means to get a meaningful #CdkDevice to operate on.
+ * @window: the #CdkWindow which will own the grab (the grab window)
  * @grab_ownership: specifies the grab ownership.
  * @owner_events: if %FALSE then all device events are reported with respect to
  *                @window and are only reported if selected by @event_mask. If
@@ -1407,7 +1407,7 @@ get_native_grab_event_mask (GdkEventMask grab_mask)
  *          @window and its descendants, and the cursor for @window is used
  *          elsewhere.
  * @time_: the timestamp of the event which led to this pointer grab. This
- *         usually comes from the #GdkEvent struct, though %GDK_CURRENT_TIME
+ *         usually comes from the #CdkEvent struct, though %GDK_CURRENT_TIME
  *         can be used if the time isn’t known.
  *
  * Grabs the device so that all events coming from this device are passed to
@@ -1429,7 +1429,7 @@ get_native_grab_event_mask (GdkEventMask grab_mask)
  * %TRUE.
  *
  * If you set up anything at the time you take the grab that needs to be
- * cleaned up when the grab ends, you should handle the #GdkEventGrabBroken
+ * cleaned up when the grab ends, you should handle the #CdkEventGrabBroken
  * events that are emitted when the grab ends unvoluntarily.
  *
  * Returns: %GDK_GRAB_SUCCESS if the grab was successful.
@@ -1438,17 +1438,17 @@ get_native_grab_event_mask (GdkEventMask grab_mask)
  *
  * Deprecated: 3.20. Use cdk_seat_grab() instead.
  **/
-GdkGrabStatus
-cdk_device_grab (GdkDevice        *device,
-                 GdkWindow        *window,
-                 GdkGrabOwnership  grab_ownership,
+CdkGrabStatus
+cdk_device_grab (CdkDevice        *device,
+                 CdkWindow        *window,
+                 CdkGrabOwnership  grab_ownership,
                  gboolean          owner_events,
-                 GdkEventMask      event_mask,
-                 GdkCursor        *cursor,
+                 CdkEventMask      event_mask,
+                 CdkCursor        *cursor,
                  guint32           time_)
 {
-  GdkGrabStatus res;
-  GdkWindow *native;
+  CdkGrabStatus res;
+  CdkWindow *native;
 
   g_return_val_if_fail (GDK_IS_DEVICE (device), GDK_GRAB_FAILED);
   g_return_val_if_fail (GDK_IS_WINDOW (window), GDK_GRAB_FAILED);
@@ -1481,7 +1481,7 @@ cdk_device_grab (GdkDevice        *device,
 
   if (res == GDK_GRAB_SUCCESS)
     {
-      GdkDisplay *display;
+      CdkDisplay *display;
       gulong serial;
 
       display = cdk_window_get_display (window);
@@ -1504,7 +1504,7 @@ cdk_device_grab (GdkDevice        *device,
 
 /**
  * cdk_device_ungrab:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  * @time_: a timestap (e.g. %GDK_CURRENT_TIME).
  *
  * Release any grab on @device.
@@ -1514,7 +1514,7 @@ cdk_device_grab (GdkDevice        *device,
  * Deprecated: 3.20. Use cdk_seat_ungrab() instead.
  */
 void
-cdk_device_ungrab (GdkDevice  *device,
+cdk_device_ungrab (CdkDevice  *device,
                    guint32     time_)
 {
   g_return_if_fail (GDK_IS_DEVICE (device));
@@ -1544,8 +1544,8 @@ cdk_device_ungrab (GdkDevice  *device,
  * Since: 3.0
  **/
 void
-cdk_device_warp (GdkDevice  *device,
-                 GdkScreen  *screen,
+cdk_device_warp (CdkDevice  *device,
+                 CdkScreen  *screen,
                  gint        x,
                  gint        y)
 {
@@ -1558,7 +1558,7 @@ cdk_device_warp (GdkDevice  *device,
 
 /* Private API */
 void
-_cdk_device_reset_axes (GdkDevice *device)
+_cdk_device_reset_axes (CdkDevice *device)
 {
   gint i;
 
@@ -1572,14 +1572,14 @@ _cdk_device_reset_axes (GdkDevice *device)
 }
 
 guint
-_cdk_device_add_axis (GdkDevice   *device,
-                      GdkAtom      label_atom,
-                      GdkAxisUse   use,
+_cdk_device_add_axis (CdkDevice   *device,
+                      CdkAtom      label_atom,
+                      CdkAxisUse   use,
                       gdouble      min_value,
                       gdouble      max_value,
                       gdouble      resolution)
 {
-  GdkAxisInfo axis_info;
+  CdkAxisInfo axis_info;
   guint pos;
 
   axis_info.use = use;
@@ -1618,20 +1618,20 @@ _cdk_device_add_axis (GdkDevice   *device,
 }
 
 void
-_cdk_device_get_axis_info (GdkDevice   *device,
+_cdk_device_get_axis_info (CdkDevice   *device,
 			   guint        index_,
-			   GdkAtom      *label_atom,
-			   GdkAxisUse   *use,
+			   CdkAtom      *label_atom,
+			   CdkAxisUse   *use,
 			   gdouble      *min_value,
 			   gdouble      *max_value,
 			   gdouble      *resolution)
 {
-  GdkAxisInfo *info;
+  CdkAxisInfo *info;
 
   g_return_if_fail (GDK_IS_DEVICE (device));
   g_return_if_fail (index_ < device->axes->len);
 
-  info = &g_array_index (device->axes, GdkAxisInfo, index_);
+  info = &g_array_index (device->axes, CdkAxisInfo, index_);
 
   *label_atom = info->label;
   *use = info->use;
@@ -1641,25 +1641,25 @@ _cdk_device_get_axis_info (GdkDevice   *device,
 }
 
 void
-_cdk_device_set_keys (GdkDevice *device,
+_cdk_device_set_keys (CdkDevice *device,
                       guint      num_keys)
 {
   g_free (device->keys);
 
   device->num_keys = num_keys;
-  device->keys = g_new0 (GdkDeviceKey, num_keys);
+  device->keys = g_new0 (CdkDeviceKey, num_keys);
 }
 
-static GdkAxisInfo *
+static CdkAxisInfo *
 find_axis_info (GArray     *array,
-                GdkAxisUse  use)
+                CdkAxisUse  use)
 {
-  GdkAxisInfo *info;
+  CdkAxisInfo *info;
   gint i;
 
   for (i = 0; i < GDK_AXIS_LAST; i++)
     {
-      info = &g_array_index (array, GdkAxisInfo, i);
+      info = &g_array_index (array, CdkAxisInfo, i);
 
       if (info->use == use)
         return info;
@@ -1669,14 +1669,14 @@ find_axis_info (GArray     *array,
 }
 
 gboolean
-_cdk_device_translate_window_coord (GdkDevice *device,
-                                    GdkWindow *window,
+_cdk_device_translate_window_coord (CdkDevice *device,
+                                    CdkWindow *window,
                                     guint      index_,
                                     gdouble    value,
                                     gdouble   *axis_value)
 {
-  GdkAxisInfo axis_info;
-  GdkAxisInfo *axis_info_x, *axis_info_y;
+  CdkAxisInfo axis_info;
+  CdkAxisInfo *axis_info_x, *axis_info_y;
   gdouble device_width, device_height;
   gdouble x_offset, y_offset;
   gdouble x_scale, y_scale;
@@ -1688,7 +1688,7 @@ _cdk_device_translate_window_coord (GdkDevice *device,
   if (index_ >= device->axes->len)
     return FALSE;
 
-  axis_info = g_array_index (device->axes, GdkAxisInfo, index_);
+  axis_info = g_array_index (device->axes, CdkAxisInfo, index_);
 
   if (axis_info.use != GDK_AXIS_X &&
       axis_info.use != GDK_AXIS_Y)
@@ -1782,15 +1782,15 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 gboolean
-_cdk_device_translate_screen_coord (GdkDevice *device,
-                                    GdkWindow *window,
+_cdk_device_translate_screen_coord (CdkDevice *device,
+                                    CdkWindow *window,
                                     gdouble    window_root_x,
                                     gdouble    window_root_y,
                                     guint      index_,
                                     gdouble    value,
                                     gdouble   *axis_value)
 {
-  GdkAxisInfo axis_info;
+  CdkAxisInfo axis_info;
   gdouble axis_width, scale, offset;
 
   if (device->mode != GDK_MODE_SCREEN)
@@ -1799,7 +1799,7 @@ _cdk_device_translate_screen_coord (GdkDevice *device,
   if (index_ >= device->axes->len)
     return FALSE;
 
-  axis_info = g_array_index (device->axes, GdkAxisInfo, index_);
+  axis_info = g_array_index (device->axes, CdkAxisInfo, index_);
 
   if (axis_info.use != GDK_AXIS_X &&
       axis_info.use != GDK_AXIS_Y)
@@ -1835,18 +1835,18 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 gboolean
-_cdk_device_translate_axis (GdkDevice *device,
+_cdk_device_translate_axis (CdkDevice *device,
                             guint      index_,
                             gdouble    value,
                             gdouble   *axis_value)
 {
-  GdkAxisInfo axis_info;
+  CdkAxisInfo axis_info;
   gdouble axis_width, out;
 
   if (index_ >= device->axes->len)
     return FALSE;
 
-  axis_info = g_array_index (device->axes, GdkAxisInfo, index_);
+  axis_info = g_array_index (device->axes, CdkAxisInfo, index_);
 
   if (axis_info.use == GDK_AXIS_X ||
       axis_info.use == GDK_AXIS_Y)
@@ -1863,15 +1863,15 @@ _cdk_device_translate_axis (GdkDevice *device,
 }
 
 void
-_cdk_device_query_state (GdkDevice        *device,
-                         GdkWindow        *window,
-                         GdkWindow       **root_window,
-                         GdkWindow       **child_window,
+_cdk_device_query_state (CdkDevice        *device,
+                         CdkWindow        *window,
+                         CdkWindow       **root_window,
+                         CdkWindow       **child_window,
                          gdouble          *root_x,
                          gdouble          *root_y,
                          gdouble          *win_x,
                          gdouble          *win_y,
-                         GdkModifierType  *mask)
+                         CdkModifierType  *mask)
 {
   GDK_DEVICE_GET_CLASS (device)->query_state (device,
                                               window,
@@ -1884,11 +1884,11 @@ _cdk_device_query_state (GdkDevice        *device,
                                               mask);
 }
 
-GdkWindow *
-_cdk_device_window_at_position (GdkDevice        *device,
+CdkWindow *
+_cdk_device_window_at_position (CdkDevice        *device,
                                 gdouble          *win_x,
                                 gdouble          *win_y,
-                                GdkModifierType  *mask,
+                                CdkModifierType  *mask,
                                 gboolean          get_toplevel)
 {
   return GDK_DEVICE_GET_CLASS (device)->window_at_position (device,
@@ -1900,7 +1900,7 @@ _cdk_device_window_at_position (GdkDevice        *device,
 
 /**
  * cdk_device_get_last_event_window:
- * @device: a #GdkDevice, with a source other than %GDK_SOURCE_KEYBOARD
+ * @device: a #CdkDevice, with a source other than %GDK_SOURCE_KEYBOARD
  *
  * Gets information about which window the given pointer device is in, based on events
  * that have been received so far from the display server. If another application
@@ -1912,11 +1912,11 @@ _cdk_device_window_at_position (GdkDevice        *device,
  *
  * Since: 3.12
  */
-GdkWindow *
-cdk_device_get_last_event_window (GdkDevice *device)
+CdkWindow *
+cdk_device_get_last_event_window (CdkDevice *device)
 {
-  GdkDisplay *display;
-  GdkPointerWindowInfo *info;
+  CdkDisplay *display;
+  CdkPointerWindowInfo *info;
 
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
   g_return_val_if_fail (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD, NULL);
@@ -1929,7 +1929,7 @@ cdk_device_get_last_event_window (GdkDevice *device)
 
 /**
  * cdk_device_get_vendor_id:
- * @device: a slave #GdkDevice
+ * @device: a slave #CdkDevice
  *
  * Returns the vendor ID of this device, or %NULL if this information couldn't
  * be obtained. This ID is retrieved from the device, and is thus constant for
@@ -1940,11 +1940,11 @@ cdk_device_get_last_event_window (GdkDevice *device)
  *
  * |[<!-- language="C" -->
  *  static GSettings *
- *  get_device_settings (GdkDevice *device)
+ *  get_device_settings (CdkDevice *device)
  *  {
  *    const gchar *vendor, *product;
  *    GSettings *settings;
- *    GdkDevice *device;
+ *    CdkDevice *device;
  *    gchar *path;
  *
  *    vendor = cdk_device_get_vendor_id (device);
@@ -1963,7 +1963,7 @@ cdk_device_get_last_event_window (GdkDevice *device)
  * Since: 3.16
  */
 const gchar *
-cdk_device_get_vendor_id (GdkDevice *device)
+cdk_device_get_vendor_id (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
   g_return_val_if_fail (cdk_device_get_device_type (device) != GDK_DEVICE_TYPE_MASTER, NULL);
@@ -1973,7 +1973,7 @@ cdk_device_get_vendor_id (GdkDevice *device)
 
 /**
  * cdk_device_get_product_id:
- * @device: a slave #GdkDevice
+ * @device: a slave #CdkDevice
  *
  * Returns the product ID of this device, or %NULL if this information couldn't
  * be obtained. This ID is retrieved from the device, and is thus constant for
@@ -1984,7 +1984,7 @@ cdk_device_get_vendor_id (GdkDevice *device)
  * Since: 3.16
  */
 const gchar *
-cdk_device_get_product_id (GdkDevice *device)
+cdk_device_get_product_id (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
   g_return_val_if_fail (cdk_device_get_device_type (device) != GDK_DEVICE_TYPE_MASTER, NULL);
@@ -1993,8 +1993,8 @@ cdk_device_get_product_id (GdkDevice *device)
 }
 
 void
-cdk_device_set_seat (GdkDevice *device,
-                     GdkSeat   *seat)
+cdk_device_set_seat (CdkDevice *device,
+                     CdkSeat   *seat)
 {
   g_return_if_fail (GDK_IS_DEVICE (device));
   g_return_if_fail (!seat || GDK_IS_SEAT (seat));
@@ -2008,17 +2008,17 @@ cdk_device_set_seat (GdkDevice *device,
 
 /**
  * cdk_device_get_seat:
- * @device: A #GdkDevice
+ * @device: A #CdkDevice
  *
- * Returns the #GdkSeat the device belongs to.
+ * Returns the #CdkSeat the device belongs to.
  *
- * Returns: (transfer none): A #GdkSeat. This memory is owned by CTK+ and
+ * Returns: (transfer none): A #CdkSeat. This memory is owned by CTK+ and
  *          must not be freed.
  *
  * Since: 3.20
  **/
-GdkSeat *
-cdk_device_get_seat (GdkDevice *device)
+CdkSeat *
+cdk_device_get_seat (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
 
@@ -2027,14 +2027,14 @@ cdk_device_get_seat (GdkDevice *device)
 
 /**
  * cdk_device_get_axes:
- * @device: a #GdkDevice
+ * @device: a #CdkDevice
  *
  * Returns the axes currently available on the device.
  *
  * Since: 3.22
  **/
-GdkAxisFlags
-cdk_device_get_axes (GdkDevice *device)
+CdkAxisFlags
+cdk_device_get_axes (CdkDevice *device)
 {
   g_return_val_if_fail (GDK_IS_DEVICE (device), 0);
 
@@ -2042,8 +2042,8 @@ cdk_device_get_axes (GdkDevice *device)
 }
 
 void
-cdk_device_update_tool (GdkDevice     *device,
-                        GdkDeviceTool *tool)
+cdk_device_update_tool (CdkDevice     *device,
+                        CdkDeviceTool *tool)
 {
   g_return_if_fail (GDK_IS_DEVICE (device));
   g_return_if_fail (cdk_device_get_device_type (device) != GDK_DEVICE_TYPE_MASTER);
@@ -2055,8 +2055,8 @@ cdk_device_update_tool (GdkDevice     *device,
     }
 }
 
-GdkInputMode
-cdk_device_get_input_mode (GdkDevice *device)
+CdkInputMode
+cdk_device_get_input_mode (CdkDevice *device)
 {
   return device->mode;
 }

@@ -30,7 +30,7 @@
  * @Short_description: Startup notification for applications
  * @Title: Application launching
  *
- * GdkAppLaunchContext is an implementation of #GAppLaunchContext that
+ * CdkAppLaunchContext is an implementation of #GAppLaunchContext that
  * handles launching an application in a graphical context. It provides
  * startup notification and allows to launch applications on a specific
  * screen or workspace.
@@ -38,7 +38,7 @@
  * ## Launching an application
  *
  * |[<!-- language="C" -->
- * GdkAppLaunchContext *context;
+ * CdkAppLaunchContext *context;
  *
  * context = cdk_display_get_app_launch_context (display);
  *
@@ -70,7 +70,7 @@ enum
   PROP_DISPLAY
 };
 
-G_DEFINE_TYPE (GdkAppLaunchContext, cdk_app_launch_context, G_TYPE_APP_LAUNCH_CONTEXT)
+G_DEFINE_TYPE (CdkAppLaunchContext, cdk_app_launch_context, G_TYPE_APP_LAUNCH_CONTEXT)
 
 static void
 cdk_app_launch_context_get_property (GObject    *object,
@@ -78,7 +78,7 @@ cdk_app_launch_context_get_property (GObject    *object,
                                      GValue     *value,
                                      GParamSpec *pspec)
 {
-  GdkAppLaunchContext *context = GDK_APP_LAUNCH_CONTEXT (object);
+  CdkAppLaunchContext *context = GDK_APP_LAUNCH_CONTEXT (object);
 
   switch (prop_id)
     {
@@ -96,7 +96,7 @@ cdk_app_launch_context_set_property (GObject      *object,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
-  GdkAppLaunchContext *context = GDK_APP_LAUNCH_CONTEXT (object);
+  CdkAppLaunchContext *context = GDK_APP_LAUNCH_CONTEXT (object);
 
   switch (prop_id)
     {
@@ -109,7 +109,7 @@ cdk_app_launch_context_set_property (GObject      *object,
 }
 
 static void
-cdk_app_launch_context_class_init (GdkAppLaunchContextClass *klass)
+cdk_app_launch_context_class_init (CdkAppLaunchContextClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   GAppLaunchContextClass *context_class = G_APP_LAUNCH_CONTEXT_CLASS (klass);
@@ -130,7 +130,7 @@ cdk_app_launch_context_class_init (GdkAppLaunchContextClass *klass)
 }
 
 static void
-cdk_app_launch_context_init (GdkAppLaunchContext *context)
+cdk_app_launch_context_init (CdkAppLaunchContext *context)
 {
   context->workspace = -1;
 }
@@ -138,7 +138,7 @@ cdk_app_launch_context_init (GdkAppLaunchContext *context)
 static void
 cdk_app_launch_context_finalize (GObject *object)
 {
-  GdkAppLaunchContext *context = GDK_APP_LAUNCH_CONTEXT (object);
+  CdkAppLaunchContext *context = GDK_APP_LAUNCH_CONTEXT (object);
 
   if (context->display)
     g_object_unref (context->display);
@@ -159,8 +159,8 @@ cdk_app_launch_context_get_display (GAppLaunchContext *context,
                                     GAppInfo          *info,
                                     GList             *files)
 {
-  GdkAppLaunchContext *ctx = GDK_APP_LAUNCH_CONTEXT (context);
-  GdkDisplay *display;
+  CdkAppLaunchContext *ctx = GDK_APP_LAUNCH_CONTEXT (context);
+  CdkDisplay *display;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (ctx->screen)
@@ -177,8 +177,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 /**
  * cdk_app_launch_context_set_display:
- * @context: a #GdkAppLaunchContext
- * @display: a #GdkDisplay
+ * @context: a #CdkAppLaunchContext
+ * @display: a #CdkDisplay
  *
  * Sets the display on which applications will be launched when
  * using this context. See also cdk_app_launch_context_set_screen().
@@ -188,8 +188,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * Deprecated: 3.0: Use cdk_display_get_app_launch_context() instead
  */
 void
-cdk_app_launch_context_set_display (GdkAppLaunchContext *context,
-                                    GdkDisplay          *display)
+cdk_app_launch_context_set_display (CdkAppLaunchContext *context,
+                                    CdkDisplay          *display)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
   g_return_if_fail (display == NULL || GDK_IS_DISPLAY (display));
@@ -199,8 +199,8 @@ cdk_app_launch_context_set_display (GdkAppLaunchContext *context,
 
 /**
  * cdk_app_launch_context_set_screen:
- * @context: a #GdkAppLaunchContext
- * @screen: a #GdkScreen
+ * @context: a #CdkAppLaunchContext
+ * @screen: a #CdkScreen
  *
  * Sets the screen on which applications will be launched when
  * using this context. See also cdk_app_launch_context_set_display().
@@ -212,8 +212,8 @@ cdk_app_launch_context_set_display (GdkAppLaunchContext *context,
  * Since: 2.14
  */
 void
-cdk_app_launch_context_set_screen (GdkAppLaunchContext *context,
-                                   GdkScreen           *screen)
+cdk_app_launch_context_set_screen (CdkAppLaunchContext *context,
+                                   CdkScreen           *screen)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
   g_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
@@ -232,7 +232,7 @@ cdk_app_launch_context_set_screen (GdkAppLaunchContext *context,
 
 /**
  * cdk_app_launch_context_set_desktop:
- * @context: a #GdkAppLaunchContext
+ * @context: a #CdkAppLaunchContext
  * @desktop: the number of a workspace, or -1
  *
  * Sets the workspace on which applications will be launched when
@@ -247,7 +247,7 @@ cdk_app_launch_context_set_screen (GdkAppLaunchContext *context,
  * Since: 2.14
  */
 void
-cdk_app_launch_context_set_desktop (GdkAppLaunchContext *context,
+cdk_app_launch_context_set_desktop (CdkAppLaunchContext *context,
                                     gint                 desktop)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
@@ -257,7 +257,7 @@ cdk_app_launch_context_set_desktop (GdkAppLaunchContext *context,
 
 /**
  * cdk_app_launch_context_set_timestamp:
- * @context: a #GdkAppLaunchContext
+ * @context: a #CdkAppLaunchContext
  * @timestamp: a timestamp
  *
  * Sets the timestamp of @context. The timestamp should ideally
@@ -271,7 +271,7 @@ cdk_app_launch_context_set_desktop (GdkAppLaunchContext *context,
  * Since: 2.14
  */
 void
-cdk_app_launch_context_set_timestamp (GdkAppLaunchContext *context,
+cdk_app_launch_context_set_timestamp (CdkAppLaunchContext *context,
                                       guint32              timestamp)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
@@ -281,7 +281,7 @@ cdk_app_launch_context_set_timestamp (GdkAppLaunchContext *context,
 
 /**
  * cdk_app_launch_context_set_icon:
- * @context: a #GdkAppLaunchContext
+ * @context: a #CdkAppLaunchContext
  * @icon: (allow-none): a #GIcon, or %NULL
  *
  * Sets the icon for applications that are launched with this
@@ -295,7 +295,7 @@ cdk_app_launch_context_set_timestamp (GdkAppLaunchContext *context,
  * Since: 2.14
  */
 void
-cdk_app_launch_context_set_icon (GdkAppLaunchContext *context,
+cdk_app_launch_context_set_icon (CdkAppLaunchContext *context,
                                  GIcon               *icon)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
@@ -313,7 +313,7 @@ cdk_app_launch_context_set_icon (GdkAppLaunchContext *context,
 
 /**
  * cdk_app_launch_context_set_icon_name:
- * @context: a #GdkAppLaunchContext
+ * @context: a #CdkAppLaunchContext
  * @icon_name: (allow-none): an icon name, or %NULL
  *
  * Sets the icon for applications that are launched with this context.
@@ -328,7 +328,7 @@ cdk_app_launch_context_set_icon (GdkAppLaunchContext *context,
  * Since: 2.14
  */
 void
-cdk_app_launch_context_set_icon_name (GdkAppLaunchContext *context,
+cdk_app_launch_context_set_icon_name (CdkAppLaunchContext *context,
                                       const char          *icon_name)
 {
   g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
@@ -340,15 +340,15 @@ cdk_app_launch_context_set_icon_name (GdkAppLaunchContext *context,
 /**
  * cdk_app_launch_context_new:
  *
- * Creates a new #GdkAppLaunchContext.
+ * Creates a new #CdkAppLaunchContext.
  *
- * Returns: a new #GdkAppLaunchContext
+ * Returns: a new #CdkAppLaunchContext
  *
  * Since: 2.14
  *
  * Deprecated: 3.0: Use cdk_display_get_app_launch_context() instead
  */
-GdkAppLaunchContext *
+CdkAppLaunchContext *
 cdk_app_launch_context_new (void)
 {
   return cdk_display_get_app_launch_context (cdk_display_get_default ());

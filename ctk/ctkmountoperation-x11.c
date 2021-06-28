@@ -49,22 +49,22 @@
 /* ---------------------------------------------------------------------------------------------------- */
 /* these functions are based on code from libwnck (LGPLv2) */
 
-static gboolean get_window_list   (GdkDisplay *display,
+static gboolean get_window_list   (CdkDisplay *display,
                                    Window      xwindow,
                                    Atom        atom,
                                    Window    **windows,
                                    int        *len);
 
-static char*    get_utf8_property (GdkDisplay *display,
+static char*    get_utf8_property (CdkDisplay *display,
                                    Window      xwindow,
                                    Atom        atom);
 
-static gboolean get_cardinal      (GdkDisplay *display,
+static gboolean get_cardinal      (CdkDisplay *display,
                                    Window      xwindow,
                                    Atom        atom,
                                    int        *val);
 
-static gboolean read_rgb_icon     (GdkDisplay *display,
+static gboolean read_rgb_icon     (CdkDisplay *display,
                                    Window      xwindow,
                                    int         ideal_width,
                                    int         ideal_height,
@@ -74,7 +74,7 @@ static gboolean read_rgb_icon     (GdkDisplay *display,
 
 
 static gboolean
-get_cardinal (GdkDisplay *display,
+get_cardinal (CdkDisplay *display,
               Window      xwindow,
               Atom        atom,
               int        *val)
@@ -117,7 +117,7 @@ get_cardinal (GdkDisplay *display,
 }
 
 static char*
-get_utf8_property (GdkDisplay *display,
+get_utf8_property (CdkDisplay *display,
                    Window      xwindow,
                    Atom        atom)
 {
@@ -336,7 +336,7 @@ argbdata_to_pixdata (gulong  *argb_data,
 }
 
 static gboolean
-read_rgb_icon (GdkDisplay *display,
+read_rgb_icon (CdkDisplay *display,
                Window      xwindow,
                int         ideal_width,
                int         ideal_height,
@@ -399,15 +399,15 @@ free_pixels (guchar *pixels, gpointer data)
   g_free (pixels);
 }
 
-static GdkPixbuf*
+static CdkPixbuf*
 scaled_from_pixdata (guchar *pixdata,
                      int     w,
                      int     h,
                      int     new_w,
                      int     new_h)
 {
-  GdkPixbuf *src;
-  GdkPixbuf *dest;
+  CdkPixbuf *src;
+  CdkPixbuf *dest;
 
   src = cdk_pixbuf_new_from_data (pixdata,
                                   GDK_COLORSPACE_RGB,
@@ -422,7 +422,7 @@ scaled_from_pixdata (guchar *pixdata,
 
   if (w != h)
     {
-      GdkPixbuf *tmp;
+      CdkPixbuf *tmp;
       int size;
 
       size = MAX (w, h);
@@ -456,7 +456,7 @@ scaled_from_pixdata (guchar *pixdata,
 }
 
 static gboolean
-get_window_list (GdkDisplay *display,
+get_window_list (CdkDisplay *display,
                  Window      xwindow,
                  Atom        atom,
                  Window    **windows,
@@ -513,11 +513,11 @@ struct _CtkMountOperationLookupContext
    * x86_64 - that's just xlib brokenness. So it's safe to stuff the XID into a pointer.
    */
   GHashTable *pid_to_window;
-  GdkDisplay *display;
+  CdkDisplay *display;
 };
 
 CtkMountOperationLookupContext *
-_ctk_mount_operation_lookup_context_get (GdkDisplay *display)
+_ctk_mount_operation_lookup_context_get (CdkDisplay *display)
 {
   CtkMountOperationLookupContext *context;
   Window *mapping;
@@ -897,13 +897,13 @@ get_name_for_window_with_pid (CtkMountOperationLookupContext *context,
 
 /* ---------------------------------------------------------------------------------------------------- */
 
-static GdkPixbuf *
+static CdkPixbuf *
 get_pixbuf_for_window_with_pid (CtkMountOperationLookupContext *context,
                                 GPid                            pid,
                                 gint                            size_pixels)
 {
   Window window;
-  GdkPixbuf *ret;
+  CdkPixbuf *ret;
 
   ret = NULL;
 
@@ -965,7 +965,7 @@ _ctk_mount_operation_lookup_info (CtkMountOperationLookupContext *context,
                                   gint                            size_pixels,
                                   gchar                         **out_name,
                                   gchar                         **out_command_line,
-                                  GdkPixbuf                     **out_pixbuf)
+                                  CdkPixbuf                     **out_pixbuf)
 {
   g_return_val_if_fail (out_name != NULL && *out_name == NULL, FALSE);
   g_return_val_if_fail (out_command_line != NULL && *out_command_line == NULL, FALSE);

@@ -858,8 +858,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Un GdkPixbuf da visualizzare"
+msgid "A CdkPixbuf to display"
+msgstr "Un CdkPixbuf da visualizzare"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -2261,16 +2261,16 @@ msgid "Cell background color"
 msgstr "Colore sfondo cella"
 
 #: ctk/ctkcellrenderer.c:410
-msgid "Cell background color as a GdkColor"
-msgstr "Colore di sfondo della cella come GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Colore di sfondo della cella come CdkColor"
 
 #: ctk/ctkcellrenderer.c:424
 msgid "Cell background RGBA color"
 msgstr "Colore RGBA sfondo cella"
 
 #: ctk/ctkcellrenderer.c:425
-msgid "Cell background color as a GdkRGBA"
-msgstr "Colore di sfondo della cella come GdkRGBA"
+msgid "Cell background color as a CdkRGBA"
+msgstr "Colore di sfondo della cella come CdkRGBA"
 
 #: ctk/ctkcellrenderer.c:432
 msgid "Editing"
@@ -2517,16 +2517,16 @@ msgid "Background color"
 msgstr "Colore di sfondo"
 
 #: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
-msgid "Background color as a GdkColor"
-msgstr "Colore di sfondo come GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Colore di sfondo come CdkColor"
 
 #: ctk/ctkcellrenderertext.c:313
 msgid "Background color as RGBA"
 msgstr "Colore sfondo come RGBA"
 
 #: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
-msgid "Background color as a GdkRGBA"
-msgstr "Il colore di sfondo come un GdkRGBA"
+msgid "Background color as a CdkRGBA"
+msgstr "Il colore di sfondo come un CdkRGBA"
 
 #: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
@@ -2537,16 +2537,16 @@ msgid "Foreground color as a string"
 msgstr "Colore di primo piano come stringa"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
-msgid "Foreground color as a GdkColor"
-msgstr "Colore di primo piano come GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Colore di primo piano come CdkColor"
 
 #: ctk/ctkcellrenderertext.c:349
 msgid "Foreground color as RGBA"
 msgstr "Colore primo piano come RBGA"
 
 #: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
-msgid "Foreground color as a GdkRGBA"
-msgstr "Il colore di primo piano come un GdkBGBA"
+msgid "Foreground color as a CdkRGBA"
+msgstr "Il colore di primo piano come un CdkBGBA"
 
 #: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
@@ -3024,8 +3024,8 @@ msgid "Color"
 msgstr "Colore"
 
 #: ctk/ctkcolorchooser.c:68
-msgid "Current color, as a GdkRGBA"
-msgstr "Il colore attuale come un GdkBGBA"
+msgid "Current color, as a CdkRGBA"
+msgstr "Il colore attuale come un CdkBGBA"
 
 #: ctk/ctkcolorchooser.c:88
 msgid "Whether alpha should be shown"
@@ -4315,8 +4315,8 @@ msgid "Number of points needed to trigger the gesture"
 msgstr "Il numero di punti necessari per attivare il gesto"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
-msgid "GdkWindow to receive events about"
-msgstr "GdkWindow di cui ricevere gli eventi"
+msgid "CdkWindow to receive events about"
+msgstr "CdkWindow di cui ricevere gli eventi"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -4658,8 +4658,8 @@ msgid "Animation"
 msgstr "Animazione"
 
 #: ctk/ctkimage.c:329
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation da visualizzare"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation da visualizzare"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"
@@ -8091,15 +8091,15 @@ msgid "Style of bevel around the statusbar text"
 msgstr "Stile del rilievo intorno al testo della barra di stato"
 
 #: ctk/ctkstylecontext.c:230
-msgid "The associated GdkScreen"
-msgstr "Lo GdkScreen associato"
+msgid "The associated CdkScreen"
+msgstr "Lo CdkScreen associato"
 
 #: ctk/ctkstylecontext.c:236
 msgid "FrameClock"
 msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:237
-msgid "The associated GdkFrameClock"
+msgid "The associated CdkFrameClock"
 msgstr "Il GDKFrameClock associato"
 
 #: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
@@ -8404,16 +8404,16 @@ msgid "Paragraph background color"
 msgstr "Colore di sfondo paragrafo"
 
 #: ctk/ctktexttag.c:631
-msgid "Paragraph background color as a GdkColor"
-msgstr "Il colore di sfondo del paragrafo come GdkColor"
+msgid "Paragraph background color as a CdkColor"
+msgstr "Il colore di sfondo del paragrafo come CdkColor"
 
 #: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "Colore di sfondo RGBA del paragrafo"
 
 #: ctk/ctktexttag.c:646
-msgid "Paragraph background RGBA as a GdkRGBA"
-msgstr "Il colore di sfondo RGBA del paragrafo come GdkRGBA"
+msgid "Paragraph background RGBA as a CdkRGBA"
+msgstr "Il colore di sfondo RGBA del paragrafo come CdkRGBA"
 
 #: ctk/ctktexttag.c:663
 msgid "Fallback"
@@ -9446,8 +9446,8 @@ msgid "Events"
 msgstr "Eventi"
 
 #: ctk/ctkwidget.c:1256
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
-msgstr "La maschera che decide quale tipo di GdkEvents ha ricevuto il widget"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
+msgstr "La maschera che decide quale tipo di CdkEvents ha ricevuto il widget"
 
 #: ctk/ctkwidget.c:1263
 msgid "No show all"

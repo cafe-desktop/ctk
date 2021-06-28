@@ -86,7 +86,7 @@ Overview of Changes in CTK+ 0.99.4:
   clipboard handling. (CtkEntry and CtkText use this)
 * Text widget more complete.
 * Additions to CtkStatusBar to make it complete.
-* Gdk now supports regions.
+* Cdk now supports regions.
 * Access masks for widget arguments (CTK_ARG_READABLE/CTK_ARG_WRITABLE).
 * Function replacements:
   g_string_hash() -> g_str_hash()

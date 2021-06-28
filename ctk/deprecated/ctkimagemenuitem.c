@@ -167,7 +167,7 @@ static void ctk_image_menu_item_get_property         (GObject         *object,
                                                       GValue          *value,
                                                       GParamSpec      *pspec);
 static void ctk_image_menu_item_screen_changed       (CtkWidget       *widget,
-                                                      GdkScreen       *previous_screen);
+                                                      CdkScreen       *previous_screen);
 
 static void ctk_image_menu_item_recalculate          (CtkImageMenuItem *image_menu_item);
 
@@ -1245,7 +1245,7 @@ ctk_image_menu_item_setting_changed (CtkSettings *settings)
 
 static void
 ctk_image_menu_item_screen_changed (CtkWidget *widget,
-                                    GdkScreen *previous_screen)
+                                    CdkScreen *previous_screen)
 {
   CtkSettings *settings;
   gulong show_image_connection;

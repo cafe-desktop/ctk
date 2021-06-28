@@ -48,14 +48,14 @@
  * Deprecated: 3.22: Use ctk_show_uri_on_window() instead.
  */
 gboolean
-ctk_show_uri (GdkScreen    *screen,
+ctk_show_uri (CdkScreen    *screen,
               const gchar  *uri,
               guint32       timestamp,
               GError      **error)
 {
-  GdkAppLaunchContext *context;
+  CdkAppLaunchContext *context;
   gboolean ret;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   g_return_val_if_fail (uri != NULL, FALSE);
 
@@ -137,9 +137,9 @@ ctk_show_uri_on_window (CtkWindow   *parent,
                         guint32      timestamp,
                         GError     **error)
 {
-  GdkAppLaunchContext *context;
+  CdkAppLaunchContext *context;
   gboolean ret;
-  GdkDisplay *display;
+  CdkDisplay *display;
 
   g_return_val_if_fail (uri != NULL, FALSE);
 

@@ -203,7 +203,7 @@ static void                 ctk_list_box_apply_filter                 (CtkListBo
                                                                        CtkListBoxRow       *row);
 static void                 ctk_list_box_add_move_binding             (CtkBindingSet       *binding_set,
                                                                        guint                keyval,
-                                                                       GdkModifierType      modmask,
+                                                                       CdkModifierType      modmask,
                                                                        CtkMovementStep      step,
                                                                        gint                 count);
 static void                 ctk_list_box_update_cursor                (CtkListBox          *box,
@@ -214,11 +214,11 @@ static void                 ctk_list_box_update_prelight              (CtkListBo
 static void                 ctk_list_box_update_active                (CtkListBox          *box,
                                                                        CtkListBoxRow       *row);
 static gboolean             ctk_list_box_enter_notify_event           (CtkWidget           *widget,
-                                                                       GdkEventCrossing    *event);
+                                                                       CdkEventCrossing    *event);
 static gboolean             ctk_list_box_leave_notify_event           (CtkWidget           *widget,
-                                                                       GdkEventCrossing    *event);
+                                                                       CdkEventCrossing    *event);
 static gboolean             ctk_list_box_motion_notify_event          (CtkWidget           *widget,
-                                                                       GdkEventMotion      *event);
+                                                                       CdkEventMotion      *event);
 static void                 ctk_list_box_show                         (CtkWidget           *widget);
 static gboolean             ctk_list_box_focus                        (CtkWidget           *widget,
                                                                        CtkDirectionType     direction);
@@ -245,7 +245,7 @@ static CtkSizeRequestMode   ctk_list_box_get_request_mode             (CtkWidget
 static void                 ctk_list_box_size_allocate                (CtkWidget           *widget,
                                                                        CtkAllocation       *allocation);
 static void                 ctk_list_box_drag_leave                   (CtkWidget           *widget,
-                                                                       GdkDragContext      *context,
+                                                                       CdkDragContext      *context,
                                                                        guint                time_);
 static void                 ctk_list_box_activate_cursor_row          (CtkListBox          *box);
 static void                 ctk_list_box_toggle_cursor_row            (CtkListBox          *box);
@@ -1482,13 +1482,13 @@ ctk_list_box_get_activate_on_single_click (CtkListBox *box)
 static void
 ctk_list_box_add_move_binding (CtkBindingSet   *binding_set,
                                guint            keyval,
-                               GdkModifierType  modmask,
+                               CdkModifierType  modmask,
                                CtkMovementStep  step,
                                gint             count)
 {
-  GdkDisplay *display;
-  GdkModifierType extend_mod_mask = GDK_SHIFT_MASK;
-  GdkModifierType modify_mod_mask = GDK_CONTROL_MASK;
+  CdkDisplay *display;
+  CdkModifierType extend_mod_mask = GDK_SHIFT_MASK;
+  CdkModifierType modify_mod_mask = GDK_CONTROL_MASK;
 
   display = cdk_display_get_default ();
   if (display)
@@ -1868,7 +1868,7 @@ ctk_list_box_update_active (CtkListBox    *box,
 
 static gboolean
 ctk_list_box_enter_notify_event (CtkWidget        *widget,
-                                 GdkEventCrossing *event)
+                                 CdkEventCrossing *event)
 {
   CtkListBox *box = CTK_LIST_BOX (widget);
   CtkListBoxRow *row;
@@ -1887,7 +1887,7 @@ ctk_list_box_enter_notify_event (CtkWidget        *widget,
 
 static gboolean
 ctk_list_box_leave_notify_event (CtkWidget        *widget,
-                                 GdkEventCrossing *event)
+                                 CdkEventCrossing *event)
 {
   CtkListBox *box = CTK_LIST_BOX (widget);
   CtkListBoxRow *row = NULL;
@@ -1911,11 +1911,11 @@ ctk_list_box_leave_notify_event (CtkWidget        *widget,
 
 static gboolean
 ctk_list_box_motion_notify_event (CtkWidget      *widget,
-                                  GdkEventMotion *event)
+                                  CdkEventMotion *event)
 {
   CtkListBox *box = CTK_LIST_BOX (widget);
   CtkListBoxRow *row;
-  GdkWindow *window, *event_window;
+  CdkWindow *window, *event_window;
   gint relative_y;
   gdouble parent_y;
 
@@ -1971,8 +1971,8 @@ get_current_selection_modifiers (CtkWidget *widget,
                                  gboolean  *modify,
                                  gboolean  *extend)
 {
-  GdkModifierType state = 0;
-  GdkModifierType mask;
+  CdkModifierType state = 0;
+  CdkModifierType mask;
 
   *modify = FALSE;
   *extend = FALSE;
@@ -2013,9 +2013,9 @@ ctk_list_box_multipress_gesture_released (CtkGestureMultiPress *gesture,
         ctk_list_box_select_and_activate_full (box, priv->active_row, focus_on_click);
       else
         {
-          GdkEventSequence *sequence;
-          GdkInputSource source;
-          const GdkEvent *event;
+          CdkEventSequence *sequence;
+          CdkInputSource source;
+          const CdkEvent *event;
           gboolean modify;
           gboolean extend;
 
@@ -2197,8 +2197,8 @@ static void
 ctk_list_box_realize (CtkWidget *widget)
 {
   CtkAllocation allocation;
-  GdkWindowAttr attributes = { 0, };
-  GdkWindow *window;
+  CdkWindowAttr attributes = { 0, };
+  CdkWindow *window;
 
   ctk_widget_get_allocation (widget, &allocation);
   ctk_widget_set_realized (widget, TRUE);
@@ -2767,7 +2767,7 @@ ctk_list_box_size_allocate (CtkWidget     *widget,
                             CtkAllocation *allocation)
 {
   CtkAllocation clip;
-  GdkWindow *window;
+  CdkWindow *window;
   CtkAllocation child_allocation;
 
   ctk_widget_set_allocation (widget, allocation);
@@ -3026,7 +3026,7 @@ ctk_list_box_drag_highlight_row (CtkListBox    *box,
 
 static void
 ctk_list_box_drag_leave (CtkWidget      *widget,
-                         GdkDragContext *context,
+                         CdkDragContext *context,
                          guint           time_)
 {
   ctk_list_box_drag_unhighlight_row (CTK_LIST_BOX (widget));

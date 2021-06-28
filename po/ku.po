@@ -4247,11 +4247,11 @@ msgstr ""
 #~ msgid "Unable to find include file: \"%s\""
 #~ msgstr "Nikare pelê hundirandinê bibîne: \"%s\""
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Nîşanên Gdk bo çespandinê"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Nîşanên Cdk bo çespandinê"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Nîşanekên neqandina çewtiyan yên Gdk yên divê were rakirin"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Nîşanekên neqandina çewtiyan yên Cdk yên divê were rakirin"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "Di pelê wêne '%s' de qet agahî nîn e"
@@ -4697,7 +4697,7 @@ msgstr ""
 #~ msgstr "Nikare bîrekê ji TGA re veqetîne"
 
 #, fuzzy
-#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgid "Failed to create CdkPixbufLoader object."
 #~ msgstr "Nivisîna pêrista peldankê biserneket\n"
 
 #, fuzzy

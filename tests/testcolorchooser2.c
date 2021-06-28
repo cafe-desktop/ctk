@@ -6,7 +6,7 @@ static void
 text_activated (CtkEntry *entry, gpointer data)
 {
   CtkColorChooser *chooser = data;
-  GdkRGBA rgba;
+  CdkRGBA rgba;
   const char *text;
 
   text = ctk_entry_get_text (entry);
@@ -21,7 +21,7 @@ static void
 rgba_changed (CtkColorChooser *chooser, GParamSpec *pspec, gpointer data)
 {
   CtkWidget *entry = data;
-  GdkRGBA color;
+  CdkRGBA color;
   char *s;
 
   ctk_color_chooser_get_rgba (chooser, &color);

@@ -137,7 +137,7 @@ GType       ctk_icon_set_get_type        (void) G_GNUC_CONST;
 GDK_DEPRECATED_IN_3_10
 CtkIconSet* ctk_icon_set_new             (void);
 GDK_DEPRECATED_IN_3_10
-CtkIconSet* ctk_icon_set_new_from_pixbuf (GdkPixbuf       *pixbuf);
+CtkIconSet* ctk_icon_set_new_from_pixbuf (CdkPixbuf       *pixbuf);
 
 GDK_DEPRECATED_IN_3_10
 CtkIconSet* ctk_icon_set_ref             (CtkIconSet      *icon_set);
@@ -147,7 +147,7 @@ GDK_DEPRECATED_IN_3_10
 CtkIconSet* ctk_icon_set_copy            (CtkIconSet      *icon_set);
 
 GDK_DEPRECATED_IN_3_0_FOR(ctk_icon_set_render_icon_pixbuf)
-GdkPixbuf*  ctk_icon_set_render_icon     (CtkIconSet      *icon_set,
+CdkPixbuf*  ctk_icon_set_render_icon     (CtkIconSet      *icon_set,
                                           CtkStyle        *style,
                                           CtkTextDirection direction,
                                           CtkStateType     state,
@@ -181,14 +181,14 @@ void           ctk_icon_source_set_icon_name            (CtkIconSource       *so
                                                          const gchar         *icon_name);
 GDK_DEPRECATED_IN_3_10
 void           ctk_icon_source_set_pixbuf               (CtkIconSource       *source,
-                                                         GdkPixbuf           *pixbuf);
+                                                         CdkPixbuf           *pixbuf);
 
 GDK_DEPRECATED_IN_3_10
 const gchar *    ctk_icon_source_get_filename             (const CtkIconSource *source);
 GDK_DEPRECATED_IN_3_10
 const gchar *    ctk_icon_source_get_icon_name            (const CtkIconSource *source);
 GDK_DEPRECATED_IN_3_10
-GdkPixbuf*       ctk_icon_source_get_pixbuf               (const CtkIconSource *source);
+CdkPixbuf*       ctk_icon_source_get_pixbuf               (const CtkIconSource *source);
 
 GDK_DEPRECATED_IN_3_10
 void             ctk_icon_source_set_direction_wildcarded (CtkIconSource       *source,

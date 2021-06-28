@@ -78,7 +78,7 @@ static DefaultCursor default_cursors[] = {
 
 static HCURSOR
 hcursor_from_x_cursor (gint          i,
-                       GdkCursorType cursor_type)
+                       CdkCursorType cursor_type)
 {
   gint j, x, y, ofs;
   HCURSOR rv;
@@ -184,13 +184,13 @@ win32_cursor_create_hcursor (Win32Cursor *cursor)
 }
 
 static Win32Cursor *
-win32_cursor_new (GdkWin32CursorLoadType load_type,
+win32_cursor_new (CdkWin32CursorLoadType load_type,
                   gpointer               resource_name,
                   gint                   width,
                   gint                   height,
                   guint                  load_flags,
                   gint                   xcursor_number,
-                  GdkCursorType          cursor_type)
+                  CdkCursorType          cursor_type)
 {
   Win32Cursor *result;
 
@@ -410,7 +410,7 @@ win32_cursor_theme_get_cursor (Win32CursorTheme *theme,
 }
 
 static HCURSOR
-hcursor_from_type (GdkCursorType cursor_type)
+hcursor_from_type (CdkCursorType cursor_type)
 {
   gint i = 0;
 
@@ -432,17 +432,17 @@ hcursor_from_type (GdkCursorType cursor_type)
   return hcursor_from_x_cursor (i, cursor_type);
 }
 
-struct _GdkWin32CursorClass
+struct _CdkWin32CursorClass
 {
-  GdkCursorClass cursor_class;
+  CdkCursorClass cursor_class;
 };
 
-G_DEFINE_TYPE (GdkWin32Cursor, cdk_win32_cursor, GDK_TYPE_CURSOR)
+G_DEFINE_TYPE (CdkWin32Cursor, cdk_win32_cursor, GDK_TYPE_CURSOR)
 
 static void
 _cdk_win32_cursor_finalize (GObject *object)
 {
-  GdkWin32Cursor *private = GDK_WIN32_CURSOR (object);
+  CdkWin32Cursor *private = GDK_WIN32_CURSOR (object);
 
   if (GetCursor () == private->hcursor)
     SetCursor (NULL);
@@ -485,12 +485,12 @@ hcursor_x_from_name (const gchar *name)
 }
 
 static HCURSOR
-hcursor_from_theme (GdkDisplay  *display,
+hcursor_from_theme (CdkDisplay  *display,
                     const gchar *name)
 {
   Win32CursorTheme *theme;
   Win32Cursor *theme_cursor;
-  GdkWin32Display *win32_display = GDK_WIN32_DISPLAY (display);
+  CdkWin32Display *win32_display = GDK_WIN32_DISPLAY (display);
 
   if (name == NULL)
     return NULL;
@@ -505,7 +505,7 @@ hcursor_from_theme (GdkDisplay  *display,
 }
 
 static HCURSOR
-hcursor_from_name (GdkDisplay  *display,
+hcursor_from_name (CdkDisplay  *display,
                    const gchar *name)
 {
   HCURSOR hcursor;
@@ -529,14 +529,14 @@ hcursor_from_name (GdkDisplay  *display,
   return hcursor;
 }
 
-static GdkCursor*
-cursor_new_from_hcursor (GdkDisplay    *display,
+static CdkCursor*
+cursor_new_from_hcursor (CdkDisplay    *display,
                          HCURSOR        hcursor,
 			 const gchar   *name,
-			 GdkCursorType  cursor_type)
+			 CdkCursorType  cursor_type)
 {
-  GdkWin32Cursor *private;
-  GdkCursor *cursor;
+  CdkWin32Cursor *private;
+  CdkCursor *cursor;
 
   private = g_object_new (GDK_TYPE_WIN32_CURSOR,
                           "cursor-type", cursor_type,
@@ -546,14 +546,14 @@ cursor_new_from_hcursor (GdkDisplay    *display,
   private->name = g_strdup (name);
 
   private->hcursor = hcursor;
-  cursor = (GdkCursor*) private;
+  cursor = (CdkCursor*) private;
 
   return cursor;
 }
 
 static gboolean
-_cdk_win32_cursor_update (GdkWin32Display *win32_display,
-                          GdkWin32Cursor  *cursor)
+_cdk_win32_cursor_update (CdkWin32Display *win32_display,
+                          CdkWin32Cursor  *cursor)
 {
   HCURSOR hcursor = NULL;
   Win32CursorTheme *theme;
@@ -594,11 +594,11 @@ _cdk_win32_cursor_update (GdkWin32Display *win32_display,
 }
 
 void
-_cdk_win32_display_update_cursors (GdkWin32Display *display)
+_cdk_win32_display_update_cursors (CdkWin32Display *display)
 {
   GHashTableIter iter;
   const char *name;
-  GdkWin32Cursor *cursor;
+  CdkWin32Cursor *cursor;
 
   g_hash_table_iter_init (&iter, display->cursor_cache);
 
@@ -607,7 +607,7 @@ _cdk_win32_display_update_cursors (GdkWin32Display *display)
 }
 
 void
-_cdk_win32_display_init_cursors (GdkWin32Display *display)
+_cdk_win32_display_init_cursors (CdkWin32Display *display)
 {
   display->cursor_cache = g_hash_table_new_full (g_str_hash,
                                                  g_str_equal,
@@ -617,7 +617,7 @@ _cdk_win32_display_init_cursors (GdkWin32Display *display)
 }
 
 void
-_cdk_win32_display_finalize_cursors (GdkWin32Display *display)
+_cdk_win32_display_finalize_cursors (CdkWin32Display *display)
 {
   g_free (display->cursor_theme_name);
 
@@ -628,16 +628,16 @@ _cdk_win32_display_finalize_cursors (GdkWin32Display *display)
 }
 
 
-GdkCursor*
-_cdk_win32_display_get_cursor_for_type (GdkDisplay   *display,
-					GdkCursorType cursor_type)
+CdkCursor*
+_cdk_win32_display_get_cursor_for_type (CdkDisplay   *display,
+					CdkCursorType cursor_type)
 {
   GEnumClass *enum_class;
   GEnumValue *enum_value;
   gchar *cursor_name;
   HCURSOR hcursor;
-  GdkCursor *result;
-  GdkWin32Display *win32_display = GDK_WIN32_DISPLAY (display);
+  CdkCursor *result;
+  CdkWin32Display *win32_display = GDK_WIN32_DISPLAY (display);
 
   enum_class = g_type_class_ref (GDK_TYPE_CURSOR_TYPE);
   enum_value = g_enum_get_value (enum_class, cursor_type);
@@ -685,13 +685,13 @@ _cdk_win32_display_get_cursor_for_type (GdkDisplay   *display,
   return result;
 }
 
-GdkCursor*
-_cdk_win32_display_get_cursor_for_name (GdkDisplay  *display,
+CdkCursor*
+_cdk_win32_display_get_cursor_for_name (CdkDisplay  *display,
 				        const gchar *name)
 {
   HCURSOR hcursor = NULL;
-  GdkCursor *result;
-  GdkWin32Display *win32_display = GDK_WIN32_DISPLAY (display);
+  CdkCursor *result;
+  CdkWin32Display *win32_display = GDK_WIN32_DISPLAY (display);
 
   result = g_hash_table_lookup (win32_display->cursor_cache, name);
   if (result)
@@ -721,12 +721,12 @@ _cdk_win32_display_get_cursor_for_name (GdkDisplay  *display,
   return result;
 }
 
-GdkPixbuf *
+CdkPixbuf *
 cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
                                       gdouble *x_hot,
                                       gdouble *y_hot)
 {
-  GdkPixbuf *pixbuf = NULL;
+  CdkPixbuf *pixbuf = NULL;
   ICONINFO ii;
   struct
   {
@@ -898,16 +898,16 @@ cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
 }
 
 static cairo_surface_t *
-_cdk_win32_cursor_get_surface (GdkCursor *cursor,
+_cdk_win32_cursor_get_surface (CdkCursor *cursor,
 			       gdouble *x_hot,
 			       gdouble *y_hot)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   cairo_surface_t *surface;
 
   g_return_val_if_fail (cursor != NULL, NULL);
 
-  pixbuf = cdk_win32_icon_to_pixbuf_libctk_only (((GdkWin32Cursor *) cursor)->hcursor, x_hot, y_hot);
+  pixbuf = cdk_win32_icon_to_pixbuf_libctk_only (((CdkWin32Cursor *) cursor)->hcursor, x_hot, y_hot);
 
   if (pixbuf == NULL)
     return NULL;
@@ -918,14 +918,14 @@ _cdk_win32_cursor_get_surface (GdkCursor *cursor,
   return surface;
 }
 
-GdkCursor *
-_cdk_win32_display_get_cursor_for_surface (GdkDisplay      *display,
+CdkCursor *
+_cdk_win32_display_get_cursor_for_surface (CdkDisplay      *display,
 					   cairo_surface_t *surface,
 					   gdouble          x,
 					   gdouble          y)
 {
   HCURSOR hcursor;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gint width, height;
 
   g_return_val_if_fail (surface != NULL, NULL);
@@ -951,19 +951,19 @@ _cdk_win32_display_get_cursor_for_surface (GdkDisplay      *display,
 }
 
 gboolean
-_cdk_win32_display_supports_cursor_alpha (GdkDisplay    *display)
+_cdk_win32_display_supports_cursor_alpha (CdkDisplay    *display)
 {
   return TRUE;
 }
 
 gboolean
-_cdk_win32_display_supports_cursor_color (GdkDisplay    *display)
+_cdk_win32_display_supports_cursor_color (CdkDisplay    *display)
 {
   return TRUE;
 }
 
 void
-_cdk_win32_display_get_default_cursor_size (GdkDisplay *display,
+_cdk_win32_display_get_default_cursor_size (CdkDisplay *display,
 					    guint      *width,
 					    guint      *height)
 {
@@ -980,7 +980,7 @@ _cdk_win32_display_get_default_cursor_size (GdkDisplay *display,
 }
 
 void
-_cdk_win32_display_get_maximal_cursor_size (GdkDisplay *display,
+_cdk_win32_display_get_maximal_cursor_size (CdkDisplay *display,
 					    guint       *width,
 					    guint       *height)
 {
@@ -1076,7 +1076,7 @@ create_color_bitmap (gint     size,
 }
 
 static gboolean
-pixbuf_to_hbitmaps_alpha_winxp (GdkPixbuf *pixbuf,
+pixbuf_to_hbitmaps_alpha_winxp (CdkPixbuf *pixbuf,
 				HBITMAP   *color,
 				HBITMAP   *mask)
 {
@@ -1154,7 +1154,7 @@ pixbuf_to_hbitmaps_alpha_winxp (GdkPixbuf *pixbuf,
 }
 
 static gboolean
-pixbuf_to_hbitmaps_normal (GdkPixbuf *pixbuf,
+pixbuf_to_hbitmaps_normal (CdkPixbuf *pixbuf,
 			   HBITMAP   *color,
 			   HBITMAP   *mask)
 {
@@ -1244,7 +1244,7 @@ pixbuf_to_hbitmaps_normal (GdkPixbuf *pixbuf,
 }
 
 static HICON
-pixbuf_to_hicon (GdkPixbuf *pixbuf,
+pixbuf_to_hicon (CdkPixbuf *pixbuf,
 		 gboolean   is_icon,
 		 gint       x,
 		 gint       y)
@@ -1274,13 +1274,13 @@ pixbuf_to_hicon (GdkPixbuf *pixbuf,
 }
 
 HICON
-_cdk_win32_pixbuf_to_hicon (GdkPixbuf *pixbuf)
+_cdk_win32_pixbuf_to_hicon (CdkPixbuf *pixbuf)
 {
   return pixbuf_to_hicon (pixbuf, TRUE, 0, 0);
 }
 
 HICON
-_cdk_win32_pixbuf_to_hcursor (GdkPixbuf *pixbuf,
+_cdk_win32_pixbuf_to_hcursor (CdkPixbuf *pixbuf,
 			      gint       x_hotspot,
 			      gint       y_hotspot)
 {
@@ -1288,20 +1288,20 @@ _cdk_win32_pixbuf_to_hcursor (GdkPixbuf *pixbuf,
 }
 
 HICON
-cdk_win32_pixbuf_to_hicon_libctk_only (GdkPixbuf *pixbuf)
+cdk_win32_pixbuf_to_hicon_libctk_only (CdkPixbuf *pixbuf)
 {
   return _cdk_win32_pixbuf_to_hicon (pixbuf);
 }
 
 static void
-cdk_win32_cursor_init (GdkWin32Cursor *cursor)
+cdk_win32_cursor_init (CdkWin32Cursor *cursor)
 {
 }
 static void
-cdk_win32_cursor_class_init(GdkWin32CursorClass *klass)
+cdk_win32_cursor_class_init(CdkWin32CursorClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GdkCursorClass *cursor_class = GDK_CURSOR_CLASS (klass);
+  CdkCursorClass *cursor_class = GDK_CURSOR_CLASS (klass);
 
   object_class->finalize = _cdk_win32_cursor_finalize;
 

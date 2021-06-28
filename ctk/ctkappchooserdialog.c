@@ -334,7 +334,7 @@ widget_populate_popup_cb (CtkAppChooserWidget *widget,
 
 static gboolean
 key_press_event_cb (CtkWidget    *widget,
-                    GdkEvent     *event,
+                    CdkEvent     *event,
                     CtkSearchBar *bar)
 {
   return ctk_search_bar_handle_event (bar, event);

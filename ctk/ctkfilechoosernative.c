@@ -529,7 +529,7 @@ ctk_file_chooser_native_finalize (GObject *object)
 
 static gint
 override_delete_handler (CtkDialog *dialog,
-                         GdkEventAny *event,
+                         CdkEventAny *event,
                          gpointer data)
 {
   return TRUE; /* Do not destroy */

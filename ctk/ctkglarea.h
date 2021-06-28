@@ -69,11 +69,11 @@ struct _CtkGLAreaClass
 
   /*< public >*/
   gboolean       (* render)         (CtkGLArea        *area,
-                                     GdkGLContext     *context);
+                                     CdkGLContext     *context);
   void           (* resize)         (CtkGLArea        *area,
                                      int               width,
                                      int               height);
-  GdkGLContext * (* create_context) (CtkGLArea        *area);
+  CdkGLContext * (* create_context) (CtkGLArea        *area);
 
   /*< private >*/
   gpointer _padding[6];
@@ -123,7 +123,7 @@ void           ctk_gl_area_queue_render                 (CtkGLArea    *area);
 
 
 GDK_AVAILABLE_IN_3_16
-GdkGLContext *  ctk_gl_area_get_context                 (CtkGLArea    *area);
+CdkGLContext *  ctk_gl_area_get_context                 (CtkGLArea    *area);
 
 GDK_AVAILABLE_IN_3_16
 void            ctk_gl_area_make_current                (CtkGLArea    *area);

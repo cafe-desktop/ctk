@@ -93,7 +93,7 @@ void        ctk_search_bar_set_show_close_button (CtkSearchBar *bar,
 
 GDK_AVAILABLE_IN_3_10
 gboolean    ctk_search_bar_handle_event    (CtkSearchBar *bar,
-                                            GdkEvent     *event);
+                                            CdkEvent     *event);
 
 G_END_DECLS
 

@@ -21,19 +21,19 @@
 
 #ifndef __GI_SCANNER__
 
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11AppLaunchContext, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11Cursor, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11DeviceCore, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11DeviceManagerCore, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11DeviceManagerXI2, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11DeviceXI2, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11Display, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11DisplayManager, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11DragContext, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11GLContext, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11Keymap, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11Screen, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11Visual, g_object_unref)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC(GdkX11Window, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11AppLaunchContext, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11Cursor, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11DeviceCore, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11DeviceManagerCore, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11DeviceManagerXI2, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11DeviceXI2, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11Display, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11DisplayManager, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11DragContext, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11GLContext, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11Keymap, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11Screen, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11Visual, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC(CdkX11Window, g_object_unref)
 
 #endif

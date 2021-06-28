@@ -23,57 +23,57 @@
 #include "cdkwindow.h"
 #include "cdkprivate-broadway.h"
 
-static gboolean cdk_broadway_device_get_history (GdkDevice      *device,
-						 GdkWindow      *window,
+static gboolean cdk_broadway_device_get_history (CdkDevice      *device,
+						 CdkWindow      *window,
 						 guint32         start,
 						 guint32         stop,
-						 GdkTimeCoord ***events,
+						 CdkTimeCoord ***events,
 						 gint           *n_events);
-static void cdk_broadway_device_get_state (GdkDevice       *device,
-					   GdkWindow       *window,
+static void cdk_broadway_device_get_state (CdkDevice       *device,
+					   CdkWindow       *window,
 					   gdouble         *axes,
-					   GdkModifierType *mask);
-static void cdk_broadway_device_set_window_cursor (GdkDevice *device,
-						   GdkWindow *window,
-						   GdkCursor *cursor);
-static void cdk_broadway_device_warp (GdkDevice *device,
-				      GdkScreen *screen,
+					   CdkModifierType *mask);
+static void cdk_broadway_device_set_window_cursor (CdkDevice *device,
+						   CdkWindow *window,
+						   CdkCursor *cursor);
+static void cdk_broadway_device_warp (CdkDevice *device,
+				      CdkScreen *screen,
 				      gdouble    x,
 				      gdouble    y);
-static void cdk_broadway_device_query_state (GdkDevice        *device,
-                                             GdkWindow        *window,
-                                             GdkWindow       **root_window,
-                                             GdkWindow       **child_window,
+static void cdk_broadway_device_query_state (CdkDevice        *device,
+                                             CdkWindow        *window,
+                                             CdkWindow       **root_window,
+                                             CdkWindow       **child_window,
                                              gdouble          *root_x,
                                              gdouble          *root_y,
                                              gdouble          *win_x,
                                              gdouble          *win_y,
-                                             GdkModifierType  *mask);
-static GdkGrabStatus cdk_broadway_device_grab   (GdkDevice     *device,
-						 GdkWindow     *window,
+                                             CdkModifierType  *mask);
+static CdkGrabStatus cdk_broadway_device_grab   (CdkDevice     *device,
+						 CdkWindow     *window,
 						 gboolean       owner_events,
-						 GdkEventMask   event_mask,
-						 GdkWindow     *confine_to,
-						 GdkCursor     *cursor,
+						 CdkEventMask   event_mask,
+						 CdkWindow     *confine_to,
+						 CdkCursor     *cursor,
 						 guint32        time_);
-static void          cdk_broadway_device_ungrab (GdkDevice     *device,
+static void          cdk_broadway_device_ungrab (CdkDevice     *device,
 						 guint32        time_);
-static GdkWindow * cdk_broadway_device_window_at_position (GdkDevice       *device,
+static CdkWindow * cdk_broadway_device_window_at_position (CdkDevice       *device,
 							   gdouble         *win_x,
 							   gdouble         *win_y,
-							   GdkModifierType *mask,
+							   CdkModifierType *mask,
 							   gboolean         get_toplevel);
-static void      cdk_broadway_device_select_window_events (GdkDevice       *device,
-							   GdkWindow       *window,
-							   GdkEventMask     event_mask);
+static void      cdk_broadway_device_select_window_events (CdkDevice       *device,
+							   CdkWindow       *window,
+							   CdkEventMask     event_mask);
 
 
-G_DEFINE_TYPE (GdkBroadwayDevice, cdk_broadway_device, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkBroadwayDevice, cdk_broadway_device, GDK_TYPE_DEVICE)
 
 static void
-cdk_broadway_device_class_init (GdkBroadwayDeviceClass *klass)
+cdk_broadway_device_class_init (CdkBroadwayDeviceClass *klass)
 {
-  GdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_broadway_device_get_history;
   device_class->get_state = cdk_broadway_device_get_state;
@@ -87,9 +87,9 @@ cdk_broadway_device_class_init (GdkBroadwayDeviceClass *klass)
 }
 
 static void
-cdk_broadway_device_init (GdkBroadwayDevice *device_core)
+cdk_broadway_device_init (CdkBroadwayDevice *device_core)
 {
-  GdkDevice *device;
+  CdkDevice *device;
 
   device = GDK_DEVICE (device_core);
 
@@ -98,21 +98,21 @@ cdk_broadway_device_init (GdkBroadwayDevice *device_core)
 }
 
 static gboolean
-cdk_broadway_device_get_history (GdkDevice      *device,
-				 GdkWindow      *window,
+cdk_broadway_device_get_history (CdkDevice      *device,
+				 CdkWindow      *window,
 				 guint32         start,
 				 guint32         stop,
-				 GdkTimeCoord ***events,
+				 CdkTimeCoord ***events,
 				 gint           *n_events)
 {
   return FALSE;
 }
 
 static void
-cdk_broadway_device_get_state (GdkDevice       *device,
-			       GdkWindow       *window,
+cdk_broadway_device_get_state (CdkDevice       *device,
+			       CdkWindow       *window,
 			       gdouble         *axes,
-			       GdkModifierType *mask)
+			       CdkModifierType *mask)
 {
   gdouble x, y;
 
@@ -126,39 +126,39 @@ cdk_broadway_device_get_state (GdkDevice       *device,
 }
 
 static void
-cdk_broadway_device_set_window_cursor (GdkDevice *device,
-				       GdkWindow *window,
-				       GdkCursor *cursor)
+cdk_broadway_device_set_window_cursor (CdkDevice *device,
+				       CdkWindow *window,
+				       CdkCursor *cursor)
 {
 }
 
 static void
-cdk_broadway_device_warp (GdkDevice *device,
-			  GdkScreen *screen,
+cdk_broadway_device_warp (CdkDevice *device,
+			  CdkScreen *screen,
 			  gdouble    x,
 			  gdouble    y)
 {
 }
 
 static void
-cdk_broadway_device_query_state (GdkDevice        *device,
-				 GdkWindow        *window,
-				 GdkWindow       **root_window,
-				 GdkWindow       **child_window,
+cdk_broadway_device_query_state (CdkDevice        *device,
+				 CdkWindow        *window,
+				 CdkWindow       **root_window,
+				 CdkWindow       **child_window,
 				 gdouble          *root_x,
 				 gdouble          *root_y,
 				 gdouble          *win_x,
 				 gdouble          *win_y,
-				 GdkModifierType  *mask)
+				 CdkModifierType  *mask)
 {
-  GdkWindow *toplevel;
-  GdkWindowImplBroadway *impl;
-  GdkDisplay *display;
-  GdkBroadwayDisplay *broadway_display;
-  GdkScreen *screen;
+  CdkWindow *toplevel;
+  CdkWindowImplBroadway *impl;
+  CdkDisplay *display;
+  CdkBroadwayDisplay *broadway_display;
+  CdkScreen *screen;
   gint32 device_root_x, device_root_y;
   guint32 mouse_toplevel_id;
-  GdkWindow *mouse_toplevel;
+  CdkWindow *mouse_toplevel;
   guint32 mask32;
 
   if (cdk_device_get_source (device) != GDK_SOURCE_MOUSE)
@@ -212,11 +212,11 @@ cdk_broadway_device_query_state (GdkDevice        *device,
 }
 
 void
-_cdk_broadway_window_grab_check_unmap (GdkWindow *window,
+_cdk_broadway_window_grab_check_unmap (CdkWindow *window,
 				       gulong     serial)
 {
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkDeviceManager *device_manager;
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkDeviceManager *device_manager;
   GList *devices, *d;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -237,11 +237,11 @@ _cdk_broadway_window_grab_check_unmap (GdkWindow *window,
 
 
 void
-_cdk_broadway_window_grab_check_destroy (GdkWindow *window)
+_cdk_broadway_window_grab_check_destroy (CdkWindow *window)
 {
-  GdkDisplay *display = cdk_window_get_display (window);
-  GdkDeviceManager *device_manager;
-  GdkDeviceGrabInfo *grab;
+  CdkDisplay *display = cdk_window_get_display (window);
+  CdkDeviceManager *device_manager;
+  CdkDeviceGrabInfo *grab;
   GList *devices, *d;
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -268,17 +268,17 @@ _cdk_broadway_window_grab_check_destroy (GdkWindow *window)
 }
 
 
-static GdkGrabStatus
-cdk_broadway_device_grab (GdkDevice    *device,
-			  GdkWindow    *window,
+static CdkGrabStatus
+cdk_broadway_device_grab (CdkDevice    *device,
+			  CdkWindow    *window,
 			  gboolean      owner_events,
-			  GdkEventMask  event_mask,
-			  GdkWindow    *confine_to,
-			  GdkCursor    *cursor,
+			  CdkEventMask  event_mask,
+			  CdkWindow    *confine_to,
+			  CdkCursor    *cursor,
 			  guint32       time_)
 {
-  GdkDisplay *display;
-  GdkBroadwayDisplay *broadway_display;
+  CdkDisplay *display;
+  CdkBroadwayDisplay *broadway_display;
 
   display = cdk_device_get_display (device);
   broadway_display = GDK_BROADWAY_DISPLAY (display);
@@ -305,12 +305,12 @@ cdk_broadway_device_grab (GdkDevice    *device,
   )
 
 static void
-cdk_broadway_device_ungrab (GdkDevice *device,
+cdk_broadway_device_ungrab (CdkDevice *device,
 			    guint32    time_)
 {
-  GdkDisplay *display;
-  GdkBroadwayDisplay *broadway_display;
-  GdkDeviceGrabInfo *grab;
+  CdkDisplay *display;
+  CdkBroadwayDisplay *broadway_display;
+  CdkDeviceGrabInfo *grab;
   guint32 serial;
 
   display = cdk_device_get_display (device);
@@ -337,16 +337,16 @@ cdk_broadway_device_ungrab (GdkDevice *device,
     }
 }
 
-static GdkWindow *
-cdk_broadway_device_window_at_position (GdkDevice       *device,
+static CdkWindow *
+cdk_broadway_device_window_at_position (CdkDevice       *device,
 					gdouble         *win_x,
 					gdouble         *win_y,
-					GdkModifierType *mask,
+					CdkModifierType *mask,
 					gboolean         get_toplevel)
 {
-  GdkScreen *screen;
-  GdkWindow *root_window;
-  GdkWindow *window;
+  CdkScreen *screen;
+  CdkWindow *root_window;
+  CdkWindow *window;
 
   screen = cdk_display_get_default_screen (cdk_device_get_display (device));
   root_window = cdk_screen_get_root_window (screen);
@@ -357,8 +357,8 @@ cdk_broadway_device_window_at_position (GdkDevice       *device,
 }
 
 static void
-cdk_broadway_device_select_window_events (GdkDevice    *device,
-					  GdkWindow    *window,
-					  GdkEventMask  event_mask)
+cdk_broadway_device_select_window_events (CdkDevice    *device,
+					  CdkWindow    *window,
+					  CdkEventMask  event_mask)
 {
 }

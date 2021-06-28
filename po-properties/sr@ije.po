@@ -1294,8 +1294,8 @@ msgid "Cell background color"
 msgstr "Боја позадине ћелије"
 
 #: ctk/ctkcellrenderer.c:336
-msgid "Cell background color as a GdkColor"
-msgstr "Боја позадине ћелије као GdkColor"
+msgid "Cell background color as a CdkColor"
+msgstr "Боја позадине ћелије као CdkColor"
 
 #: ctk/ctkcellrenderer.c:343
 #, fuzzy
@@ -1552,8 +1552,8 @@ msgid "Background color"
 msgstr "Боја позадине"
 
 #: ctk/ctkcellrenderertext.c:273 ctk/ctkcellview.c:186
-msgid "Background color as a GdkColor"
-msgstr "Боја позадине као GdkColor"
+msgid "Background color as a CdkColor"
+msgstr "Боја позадине као CdkColor"
 
 #: ctk/ctkcellrenderertext.c:280 ctk/ctktexttag.c:202
 msgid "Foreground color name"
@@ -1569,8 +1569,8 @@ msgid "Foreground color"
 msgstr "Боја исцртавања"
 
 #: ctk/ctkcellrenderertext.c:289
-msgid "Foreground color as a GdkColor"
-msgstr "Боја исцртавања као GdkColor"
+msgid "Foreground color as a CdkColor"
+msgstr "Боја исцртавања као CdkColor"
 
 #: ctk/ctkcellrenderertext.c:297 ctk/ctkentry.c:663 ctk/ctktexttag.c:227
 #: ctk/ctktextview.c:668
@@ -3226,8 +3226,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf за приказ"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf за приказ"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3274,8 +3274,8 @@ msgid "Animation"
 msgstr "Анимација"
 
 #: ctk/ctkimage.c:287
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation за приказ"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation за приказ"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"
@@ -5984,8 +5984,8 @@ msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr "Име коришћено за текстуалне ознаке. NULL за неименоване ознаке"
 
 #: ctk/ctktexttag.c:187
-msgid "Background color as a (possibly unallocated) GdkColor"
-msgstr "Боја позадине као (можда и недодјељен) GdkColor"
+msgid "Background color as a (possibly unallocated) CdkColor"
+msgstr "Боја позадине као (можда и недодјељен) CdkColor"
 
 #: ctk/ctktexttag.c:194
 msgid "Background full height"
@@ -6000,8 +6000,8 @@ msgstr ""
 "означених знакова"
 
 #: ctk/ctktexttag.c:211
-msgid "Foreground color as a (possibly unallocated) GdkColor"
-msgstr "Боја исцртавања као (можда и недодјељен) GdkColor"
+msgid "Foreground color as a (possibly unallocated) CdkColor"
+msgstr "Боја исцртавања као (можда и недодјељен) CdkColor"
 
 #: ctk/ctktexttag.c:218
 msgid "Text direction"
@@ -6153,8 +6153,8 @@ msgstr "Боја позадине ћелије"
 
 #: ctk/ctktexttag.c:512
 #, fuzzy
-msgid "Paragraph background color as a (possibly unallocated) GdkColor"
-msgstr "Боја позадине као (можда и недодјељен) GdkColor"
+msgid "Paragraph background color as a (possibly unallocated) CdkColor"
+msgstr "Боја позадине као (можда и недодјељен) CdkColor"
 
 #: ctk/ctktexttag.c:530
 msgid "Margin Accumulates"
@@ -7140,9 +7140,9 @@ msgid "Events"
 msgstr "Догађаји"
 
 #: ctk/ctkwidget.c:825
-msgid "The event mask that decides what kind of GdkEvents this widget gets"
+msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
-"Маска за догађаје која одређује које врсте GdkEvents-а овај елемент прима"
+"Маска за догађаје која одређује које врсте CdkEvents-а овај елемент прима"
 
 #: ctk/ctkwidget.c:832
 msgid "Extension events"
@@ -7662,7 +7662,7 @@ msgstr "Како исцртати линију стања начина унос�
 #~ msgstr "Показивач на садржај тачака pixbuf-а"
 
 #, fuzzy
-#~ msgid "the GdkScreen for the renderer"
+#~ msgid "the CdkScreen for the renderer"
 #~ msgstr "Модел за разгранати преглед"
 
 #, fuzzy
@@ -7687,7 +7687,7 @@ msgstr "Како исцртати линију стања начина унос�
 #~ msgid "Whether to pass a proper state when drawing shadow or background"
 #~ msgstr "Битмапа која се користи као маска при исцртавању позадине текста"
 
-#~ msgid "The GdkFont that is currently selected"
+#~ msgid "The CdkFont that is currently selected"
 #~ msgstr "Тренутно изабрано писмо"
 
 #~ msgid "Deprecated property, use shadow_type instead"
@@ -7696,17 +7696,17 @@ msgstr "Како исцртати линију стања начина унос�
 #~ msgid "Pixmap"
 #~ msgstr "Пиксмапа"
 
-#~ msgid "A GdkPixmap to display"
-#~ msgstr "GdkPixmap за приказ"
+#~ msgid "A CdkPixmap to display"
+#~ msgstr "CdkPixmap за приказ"
 
-#~ msgid "A GdkImage to display"
-#~ msgstr "GdkImage за приказ"
+#~ msgid "A CdkImage to display"
+#~ msgstr "CdkImage за приказ"
 
 #~ msgid "Mask"
 #~ msgstr "Маска"
 
-#~ msgid "Mask bitmap to use with GdkImage or GdkPixmap"
-#~ msgstr "Битмапа маске која се користи уз GdkImage или GdkPixmap"
+#~ msgid "Mask bitmap to use with CdkImage or CdkPixmap"
+#~ msgstr "Битмапа маске која се користи уз CdkImage или CdkPixmap"
 
 #~ msgid "Use separator"
 #~ msgstr "Користи раздвојник"

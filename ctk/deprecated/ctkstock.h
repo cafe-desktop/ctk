@@ -67,7 +67,7 @@ struct _CtkStockItem
 {
   gchar *stock_id;
   gchar *label;
-  GdkModifierType modifier;
+  CdkModifierType modifier;
   guint keyval;
   gchar *translation_domain;
 };

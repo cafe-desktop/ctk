@@ -24,19 +24,19 @@
 
 G_BEGIN_DECLS
 
-#define GDK_DEVICE_PAD_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GDK_TYPE_DEVICE_PAD, GdkDevicePadInterface))
+#define GDK_DEVICE_PAD_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GDK_TYPE_DEVICE_PAD, CdkDevicePadInterface))
 
-struct _GdkDevicePadInterface {
+struct _CdkDevicePadInterface {
   GTypeInterface parent_interface;
 
-  gint (* get_n_groups)      (GdkDevicePad        *pad);
+  gint (* get_n_groups)      (CdkDevicePad        *pad);
 
-  gint (* get_group_n_modes) (GdkDevicePad        *pad,
+  gint (* get_group_n_modes) (CdkDevicePad        *pad,
                               gint                 group);
-  gint (* get_n_features)    (GdkDevicePad        *pad,
-                              GdkDevicePadFeature  feature);
-  gint (* get_feature_group) (GdkDevicePad        *pad,
-                              GdkDevicePadFeature  feature,
+  gint (* get_n_features)    (CdkDevicePad        *pad,
+                              CdkDevicePadFeature  feature);
+  gint (* get_feature_group) (CdkDevicePad        *pad,
+                              CdkDevicePadFeature  feature,
                               gint                 idx);
 };
 

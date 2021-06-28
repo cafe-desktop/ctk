@@ -148,7 +148,7 @@ gail_focus_watcher (GSignalInvocationHint *ihint,
 {
   GObject *object;
   CtkWidget *widget;
-  GdkEvent *event;
+  CdkEvent *event;
 
   object = g_value_get_object (param_values + 0);
   g_return_val_if_fail (CTK_IS_WIDGET(object), FALSE);
@@ -813,7 +813,7 @@ state_event_watcher (GSignalInvocationHint *hint,
   CtkWidget *widget;
   AtkObject *atk_obj;
   AtkObject *parent;
-  GdkEventWindowState *event;
+  CdkEventWindowState *event;
   gchar *signal_name;
 
   object = g_value_get_object (param_values + 0);
@@ -858,7 +858,7 @@ configure_event_watcher (GSignalInvocationHint *hint,
   CtkWidget *widget;
   AtkObject *atk_obj;
   AtkObject *parent;
-  GdkEvent *event;
+  CdkEvent *event;
   gchar *signal_name;
 
   object = g_value_get_object (param_values + 0);
@@ -870,14 +870,14 @@ configure_event_watcher (GSignalInvocationHint *hint,
     return FALSE;
   widget = CTK_WIDGET (object);
   ctk_widget_get_allocation (widget, &allocation);
-  if (allocation.x == ((GdkEventConfigure *)event)->x &&
-      allocation.y == ((GdkEventConfigure *)event)->y &&
-      allocation.width == ((GdkEventConfigure *)event)->width &&
-      allocation.height == ((GdkEventConfigure *)event)->height)
+  if (allocation.x == ((CdkEventConfigure *)event)->x &&
+      allocation.y == ((CdkEventConfigure *)event)->y &&
+      allocation.width == ((CdkEventConfigure *)event)->width &&
+      allocation.height == ((CdkEventConfigure *)event)->height)
     return TRUE;
 
-  if (allocation.width != ((GdkEventConfigure *)event)->width ||
-      allocation.height != ((GdkEventConfigure *)event)->height)
+  if (allocation.width != ((CdkEventConfigure *)event)->width ||
+      allocation.height != ((CdkEventConfigure *)event)->height)
     signal_name = "resize";
   else
     signal_name = "move";
@@ -897,7 +897,7 @@ configure_event_watcher (GSignalInvocationHint *hint,
 
 static gboolean
 window_focus (CtkWidget     *widget,
-              GdkEventFocus *event)
+              CdkEventFocus *event)
 {
   AtkObject *atk_obj;
 

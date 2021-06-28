@@ -5029,11 +5029,11 @@ msgstr "Bastırıcını Sınamaq içün Bastır"
 #~ msgid "SCREEN"
 #~ msgstr "EKRAN"
 
-#~ msgid "Gdk debugging flags to set"
-#~ msgstr "Tesbit etilecek Gdk arızasızlandıruv bayraqları"
+#~ msgid "Cdk debugging flags to set"
+#~ msgstr "Tesbit etilecek Cdk arızasızlandıruv bayraqları"
 
-#~ msgid "Gdk debugging flags to unset"
-#~ msgstr "Ğayrı tesbit etilecek Gdk arızasızlandıruv bayraqları"
+#~ msgid "Cdk debugging flags to unset"
+#~ msgstr "Ğayrı tesbit etilecek Cdk arızasızlandıruv bayraqları"
 
 # cdk-pixbuf/cdk-pixbuf-animation.c:144 cdk-pixbuf/cdk-pixbuf-io.c:516
 #~ msgid "Failed to open file '%s': %s"
@@ -5591,8 +5591,8 @@ msgstr "Bastırıcını Sınamaq içün Bastır"
 #~ msgstr "TGA kontekst yapısı içün hafiza tahsis etilamay"
 
 # cdk-pixbuf/io-xbm.c:429
-#~ msgid "Failed to create GdkPixbufLoader object."
-#~ msgstr "GdkPixbufLoader nesnesi icat etilamadı."
+#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgstr "CdkPixbufLoader nesnesi icat etilamadı."
 
 # cdk-pixbuf/io-tiff.c:264
 #, fuzzy

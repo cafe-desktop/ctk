@@ -31,7 +31,7 @@
 G_BEGIN_DECLS
 
 #define GDK_TYPE_GL_CONTEXT             (cdk_gl_context_get_type ())
-#define GDK_GL_CONTEXT(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_GL_CONTEXT, GdkGLContext))
+#define GDK_GL_CONTEXT(obj)             (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_GL_CONTEXT, CdkGLContext))
 #define GDK_IS_GL_CONTEXT(obj)          (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_GL_CONTEXT))
 
 #define GDK_GL_ERROR       (cdk_gl_error_quark ())
@@ -43,49 +43,49 @@ GDK_AVAILABLE_IN_3_16
 GType cdk_gl_context_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_16
-GdkDisplay *            cdk_gl_context_get_display              (GdkGLContext  *context);
+CdkDisplay *            cdk_gl_context_get_display              (CdkGLContext  *context);
 GDK_AVAILABLE_IN_3_16
-GdkWindow *             cdk_gl_context_get_window               (GdkGLContext  *context);
+CdkWindow *             cdk_gl_context_get_window               (CdkGLContext  *context);
 GDK_AVAILABLE_IN_3_16
-GdkGLContext *          cdk_gl_context_get_shared_context       (GdkGLContext  *context);
+CdkGLContext *          cdk_gl_context_get_shared_context       (CdkGLContext  *context);
 GDK_AVAILABLE_IN_3_16
-void                    cdk_gl_context_get_version              (GdkGLContext  *context,
+void                    cdk_gl_context_get_version              (CdkGLContext  *context,
                                                                  int           *major,
                                                                  int           *minor);
 GDK_AVAILABLE_IN_3_20
-gboolean                cdk_gl_context_is_legacy                (GdkGLContext  *context);
+gboolean                cdk_gl_context_is_legacy                (CdkGLContext  *context);
 
 GDK_AVAILABLE_IN_3_16
-void                    cdk_gl_context_set_required_version     (GdkGLContext  *context,
+void                    cdk_gl_context_set_required_version     (CdkGLContext  *context,
                                                                  int            major,
                                                                  int            minor);
 GDK_AVAILABLE_IN_3_16
-void                    cdk_gl_context_get_required_version     (GdkGLContext  *context,
+void                    cdk_gl_context_get_required_version     (CdkGLContext  *context,
                                                                  int           *major,
                                                                  int           *minor);
 GDK_AVAILABLE_IN_3_16
-void                    cdk_gl_context_set_debug_enabled        (GdkGLContext  *context,
+void                    cdk_gl_context_set_debug_enabled        (CdkGLContext  *context,
                                                                  gboolean       enabled);
 GDK_AVAILABLE_IN_3_16
-gboolean                cdk_gl_context_get_debug_enabled        (GdkGLContext  *context);
+gboolean                cdk_gl_context_get_debug_enabled        (CdkGLContext  *context);
 GDK_AVAILABLE_IN_3_16
-void                    cdk_gl_context_set_forward_compatible   (GdkGLContext  *context,
+void                    cdk_gl_context_set_forward_compatible   (CdkGLContext  *context,
                                                                  gboolean       compatible);
 GDK_AVAILABLE_IN_3_16
-gboolean                cdk_gl_context_get_forward_compatible   (GdkGLContext  *context);
+gboolean                cdk_gl_context_get_forward_compatible   (CdkGLContext  *context);
 GDK_AVAILABLE_IN_3_22
-void                    cdk_gl_context_set_use_es               (GdkGLContext  *context,
+void                    cdk_gl_context_set_use_es               (CdkGLContext  *context,
                                                                  int            use_es);
 GDK_AVAILABLE_IN_3_22
-gboolean                cdk_gl_context_get_use_es               (GdkGLContext  *context);
+gboolean                cdk_gl_context_get_use_es               (CdkGLContext  *context);
 
 GDK_AVAILABLE_IN_3_16
-gboolean                cdk_gl_context_realize                  (GdkGLContext  *context,
+gboolean                cdk_gl_context_realize                  (CdkGLContext  *context,
                                                                  GError       **error);
 GDK_AVAILABLE_IN_3_16
-void                    cdk_gl_context_make_current             (GdkGLContext  *context);
+void                    cdk_gl_context_make_current             (CdkGLContext  *context);
 GDK_AVAILABLE_IN_3_16
-GdkGLContext *          cdk_gl_context_get_current              (void);
+CdkGLContext *          cdk_gl_context_get_current              (void);
 GDK_AVAILABLE_IN_3_16
 void                    cdk_gl_context_clear_current            (void);
 

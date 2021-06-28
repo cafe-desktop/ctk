@@ -30,9 +30,9 @@ G_BEGIN_DECLS
 /************************************************************************/
 
 GDK_AVAILABLE_IN_ALL
-PangoContext *cdk_pango_context_get_for_screen (GdkScreen    *screen);
+PangoContext *cdk_pango_context_get_for_screen (CdkScreen    *screen);
 GDK_AVAILABLE_IN_3_22
-PangoContext *cdk_pango_context_get_for_display (GdkDisplay *display);
+PangoContext *cdk_pango_context_get_for_display (CdkDisplay *display);
 GDK_AVAILABLE_IN_ALL
 PangoContext *cdk_pango_context_get            (void);
 

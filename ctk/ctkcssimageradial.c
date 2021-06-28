@@ -200,7 +200,7 @@ ctk_css_image_radial_draw (CtkCssImage *image,
       step = pos / (i - last);
       for (last = last + 1; last <= i; last++)
         {
-          const GdkRGBA *rgba;
+          const CdkRGBA *rgba;
 
           stop = &g_array_index (radial->stops, CtkCssImageRadialColorStop, last);
 

@@ -37,15 +37,15 @@ G_BEGIN_DECLS
 #define cdk_wayland_selection_add_targets cdk_wayland_selection_add_targets_libctk_only
 GDK_AVAILABLE_IN_ALL
 void
-cdk_wayland_selection_add_targets (GdkWindow *window,
-                                   GdkAtom    selection,
+cdk_wayland_selection_add_targets (CdkWindow *window,
+                                   CdkAtom    selection,
                                    guint      ntargets,
-                                   GdkAtom   *targets);
+                                   CdkAtom   *targets);
 
 #define cdk_wayland_selection_clear_targets cdk_wayland_selection_clear_targets_libctk_only
 GDK_AVAILABLE_IN_ALL
 void
-cdk_wayland_selection_clear_targets (GdkDisplay *display, GdkAtom selection);
+cdk_wayland_selection_clear_targets (CdkDisplay *display, CdkAtom selection);
 
 #endif
 
