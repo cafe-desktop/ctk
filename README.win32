@@ -7,11 +7,11 @@ Building CTK+ on Win32
 ======================
 
 First you obviously need developer packages for the compile-time
-dependencies: CDK-Pixbuf, Pango, atk, glib, gettext-runtime, libiconv at least.
+dependencies: GDK-Pixbuf, Pango, atk, glib, gettext-runtime, libiconv at least.
 See http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies .
 
 For people compiling CTK+ with Visual C++ or later, it is recommended that
-the same compiler is used for at least CDK-Pixbuf, Pango, atk and glib
+the same compiler is used for at least GDK-Pixbuf, Pango, atk and glib
 so that crashes and errors caused by different CRTs can be avoided. Currently
 building with Visual Studio 2008 or later is supported, either via Visual Studio
 project files or via the Meson build system, as described in the below sections.

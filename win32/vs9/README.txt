@@ -13,7 +13,7 @@ first need to use some Unix-like environment or manual work to expand
 the files needed, like config.h.win32.in into config.h.win32 and the
 .vcprojin files here into corresponding actual .vcproj files.
 
-You will need the parts from below in the CTK+ stack: CDK-Pixbuf, Pango,
+You will need the parts from below in the CTK+ stack: GDK-Pixbuf, Pango,
 ATK and GLib.  External dependencies are at least Cairo
 (with Cairo-GObject support, meaning Cairo 1.10.x or later), zlib, libpng,
 gettext-runtime, fontconfig*, freetype*, expat*.  See the 
@@ -30,14 +30,14 @@ delete all the *.ncb, *.suo and *.user files before re-attempting the build.
 
 It is recommended that one builds the dependencies with VS9 as far as
 possible, especially those from and using the CTK+ stack (i.e. GLib,
-Cairo, ATK, Pango, CDK-Pixbuf), so that crashes caused by mixing calls
+Cairo, ATK, Pango, GDK-Pixbuf), so that crashes caused by mixing calls
 to different CRTs can be kept at a minimum.  
 
 zlib, libpng, and Cairo do contain support for compiling under VS9
 using VS project files and/or makefiles at this time of writing, For the
 CTK+ stack, VS9 project files are either available under
 $(srcroot)/build/vs9 in the case of GLib (stable/unstable), ATK
-(stable/unstable) and CDK-Pixbuf (unstable), and should be in the next
+(stable/unstable) and GDK-Pixbuf (unstable), and should be in the next
 unstable version of Pango.  There is no known official VS9 build
 support for fontconfig (along with freetype and expat) and
 gettext-runtime, so please use the binaries from: 
@@ -58,17 +58,17 @@ The recommended build order for these dependencies:
  as described in the README.txt file in the build/win32/vs9 folder)
 -zlib
 -libpng
--(for CDK-Pixbuf, if not using GDI+) IJG JPEG or libjpeg-turbo
--(for CDK-Pixbuf, if not using GDI+) libtiff
+-(for GDK-Pixbuf, if not using GDI+) IJG JPEG or libjpeg-turbo
+-(for GDK-Pixbuf, if not using GDI+) libtiff
  [libtiff requires zlib and IJG JPEG or libjpeg-turbo]
--(for CDK-Pixbuf, if not using GDI+) jasper [jpeg-2000 library])
+-(for GDK-Pixbuf, if not using GDI+) jasper [jpeg-2000 library])
 -(optional for GLib) PCRE (version 8.12 or later, use of CMake to
   build PCRE is recommended-see build/win32/vs9/README.txt of GLib)
 -GLib **
 -Cairo (inclusive of Cairo-GObject)
 -ATK**
 -Pango**
--CDK-Pixbuf**
+-GDK-Pixbuf**
 (note the last 3 dependencies are not interdependent, so the last 3
  dependencies can be built in any order)
 
@@ -86,7 +86,7 @@ PythonDir (32-bit builds) and PythonDirX64 (x64 builds) are correct for your
 system.  Note that it must be the same Python installation that was used to
 build GObject-Introspection (G-I), and a complete G-I build/installation
 needs to be found in <root>\vs9\<PlatformName>\, with the introspection files
-for ATK, Pango and CDK-Pixbuf.  Note also that this is not built by default,
+for ATK, Pango and GDK-Pixbuf.  Note also that this is not built by default,
 so you will need to right-click on the project to build it, which will build
 and "install" the other projects that are normally built, if those were not yet
 built.  The introspection files that are built will be "installed" to
