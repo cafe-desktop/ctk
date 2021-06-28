@@ -445,7 +445,7 @@ endif
 pangocairo_dep = dependency('pangocairo', version: cairo_req,
                             fallback : ['pango', 'libpangocairo_dep'])
 pixbuf_dep     = dependency('cdk-pixbuf-2.0', version: gdk_pixbuf_req,
-                            fallback : ['cdk-pixbuf', 'cdkpixbuf_dep'])
+                            fallback : ['cdk-pixbuf', 'gdkpixbuf_dep'])
 epoxy_dep      = dependency('epoxy', version: epoxy_req,
                             fallback: ['libepoxy', 'libepoxy_dep'])
 atk_dep        = dependency('atk', version: atk_req,

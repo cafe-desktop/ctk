@@ -50,7 +50,7 @@
 #include "ctksettingsprivate.h"
 #include "ctkstylecontextprivate.h"
 #include "ctkprivate.h"
-#include "cdkpixbufutilsprivate.h"
+#include "gdkpixbufutilsprivate.h"
 
 #undef CDK_DEPRECATED
 #undef CDK_DEPRECATED_FOR

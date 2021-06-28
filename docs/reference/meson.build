@@ -5,8 +5,8 @@ if get_option('gtk_doc')
     cairo_prefix = dependency('cairo-gobject').get_pkgconfig_variable('prefix')
     cairo_docpath = join_paths(cairo_prefix, 'share', 'gtk-doc', 'html', 'cairo')
 
-    cdkpixbuf_prefix = dependency('cdk-pixbuf-2.0').get_pkgconfig_variable('prefix')
-    cdkpixbuf_docpath = join_paths(cdkpixbuf_prefix, 'share', 'gtk-doc', 'html', 'cdk-pixbuf')
+    gdkpixbuf_prefix = dependency('cdk-pixbuf-2.0').get_pkgconfig_variable('prefix')
+    gdkpixbuf_docpath = join_paths(gdkpixbuf_prefix, 'share', 'gtk-doc', 'html', 'cdk-pixbuf')
 
     docpath = join_paths(ctk_datadir, 'gtk-doc', 'html')
 

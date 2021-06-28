@@ -16,7 +16,7 @@
 
 #include "config.h"
 
-#include "cdkpixbufutilsprivate.h"
+#include "gdkpixbufutilsprivate.h"
 
 static GdkPixbuf *
 load_from_stream (GdkPixbufLoader  *loader,

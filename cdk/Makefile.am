@@ -91,7 +91,7 @@ cdk_public_h_sources = 				\
 	cdkmonitor.h				\
 	cdkpango.h				\
 	cdkframeclock.h				\
-	cdkpixbuf.h				\
+	gdkpixbuf.h				\
 	cdkprivate.h				\
 	cdkproperty.h				\
 	cdkrectangle.h				\
@@ -170,7 +170,7 @@ cdk_c_sources = 				\
 	cdkframeclock.c				\
 	cdkframeclockidle.c			\
 	cdkpango.c				\
-	cdkpixbuf-drawable.c			\
+	gdkpixbuf-drawable.c			\
 	cdkprofiler.c				\
 	cdkproperty.c				\
 	cdkrectangle.c				\
