@@ -30,7 +30,7 @@ main (int argc,
 
   ctk_init (&argc, &argv);
 
-  pixbuf = gdk_pixbuf_new_from_file ("apple-red.png", NULL);
+  pixbuf = cdk_pixbuf_new_from_file ("apple-red.png", NULL);
   toplevel = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 12);
   ctk_container_add (CTK_CONTAINER (toplevel), hbox);
@@ -46,7 +46,7 @@ main (int argc,
   ctk_label_set_label (CTK_LABEL (label), str);
   ctk_box_pack_start (CTK_BOX (vbox), label, FALSE, FALSE, 0);
 
-  otherpix = gdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
+  otherpix = cdk_pixbuf_new_from_file ("gnome-textfile.png", NULL);
   emblem = g_emblem_new (G_ICON (otherpix));
   emblemed = g_emblemed_icon_new (G_ICON (pixbuf), emblem);
 

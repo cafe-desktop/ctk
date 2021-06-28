@@ -26,7 +26,7 @@
 #include "ctktoolbarprivate.h"
 #include "ctkquartz.h"
 
-#include <gdk/quartz/gdkquartz.h>
+#include <cdk/quartz/cdkquartz.h>
 
 #import <Cocoa/Cocoa.h>
 
@@ -126,12 +126,12 @@ icon_loaded (GObject      *object,
       NSImage *image;
 
       surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
-                                            gdk_pixbuf_get_width (pixbuf),
-                                            gdk_pixbuf_get_height (pixbuf));
+                                            cdk_pixbuf_get_width (pixbuf),
+                                            cdk_pixbuf_get_height (pixbuf));
 
       cr = cairo_create (surface);
       cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
-      gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+      cdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
       cairo_paint (cr);
       cairo_destroy (cr);
       g_object_unref (pixbuf);
@@ -283,10 +283,10 @@ icon_loaded (GObject      *object,
 
       if (!parsed)
         {
-          gdk_rgba_parse (&foreground, BLACK);
-          gdk_rgba_parse (&success, TANGO_CHAMELEON_3);
-          gdk_rgba_parse (&warning, TANGO_ORANGE_2);
-          gdk_rgba_parse (&error, TANGO_SCARLET_RED_2);
+          cdk_rgba_parse (&foreground, BLACK);
+          cdk_rgba_parse (&success, TANGO_CHAMELEON_3);
+          cdk_rgba_parse (&warning, TANGO_ORANGE_2);
+          cdk_rgba_parse (&error, TANGO_SCARLET_RED_2);
 
           parsed = TRUE;
         }
@@ -338,7 +338,7 @@ icon_loaded (GObject      *object,
 
       ctk_accelerator_parse (accel, &key, &mask);
 
-      character = gdk_quartz_get_key_equivalent (key);
+      character = cdk_quartz_get_key_equivalent (key);
       [self setKeyEquivalent:[NSString stringWithCharacters:&character length:1]];
 
       modifiers = 0;

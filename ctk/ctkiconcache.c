@@ -22,7 +22,7 @@
 #include "ctkiconcachevalidator.h"
 
 #include <glib/gstdio.h>
-#include <gdk-pixbuf/gdk-pixdata.h>
+#include <cdk-pixbuf/cdk-pixdata.h>
 
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
@@ -510,7 +510,7 @@ _ctk_icon_cache_get_icon (CtkIconCache *cache,
   length = GET_UINT32 (cache->buffer, pixel_data_offset + 4);
   
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (!gdk_pixdata_deserialize (&pixdata, length, 
+  if (!cdk_pixdata_deserialize (&pixdata, length, 
 				(guchar *)(cache->buffer + pixel_data_offset + 8),
 				&error))
     {
@@ -521,7 +521,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     }
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  pixbuf = gdk_pixbuf_new_from_data (pixdata.pixel_data, GDK_COLORSPACE_RGB,
+  pixbuf = cdk_pixbuf_new_from_data (pixdata.pixel_data, GDK_COLORSPACE_RGB,
 				     (pixdata.pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGBA,
 				     8, pixdata.width, pixdata.height, pixdata.rowstride,
 				     (GdkPixbufDestroyNotify)pixbuf_destroy_cb, 

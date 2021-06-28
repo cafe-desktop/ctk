@@ -16,18 +16,18 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 #include "config.h"
-#include <gdk/gdktestutils.h>
-#include <gdk/gdkkeysyms.h>
-#include <gdk/gdkinternals.h>
+#include <cdk/cdktestutils.h>
+#include <cdk/cdkkeysyms.h>
+#include <cdk/cdkinternals.h>
 
 void
-_gdk_quartz_window_sync_rendering (GdkWindow *window)
+_cdk_quartz_window_sync_rendering (GdkWindow *window)
 {
   /* FIXME: Find out if there is a way to implement this on quartz. */
 }
 
 gboolean
-_gdk_quartz_window_simulate_key (GdkWindow      *window,
+_cdk_quartz_window_simulate_key (GdkWindow      *window,
                                  gint            x,
                                  gint            y,
                                  guint           keyval,
@@ -46,7 +46,7 @@ _gdk_quartz_window_simulate_key (GdkWindow      *window,
 }
 
 gboolean
-_gdk_quartz_window_simulate_button (GdkWindow      *window,
+_cdk_quartz_window_simulate_button (GdkWindow      *window,
                                     gint            x,
                                     gint            y,
                                     guint           button, /*1..3*/

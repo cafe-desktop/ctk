@@ -202,9 +202,9 @@ bookmarks_file_changed (GFileMonitor      *monitor,
       g_slist_free_full (manager->bookmarks, _ctk_bookmark_free);
       manager->bookmarks = read_bookmarks (file);
 
-      gdk_threads_enter ();
+      cdk_threads_enter ();
       notify_changed (manager);
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       break;
 
     default:

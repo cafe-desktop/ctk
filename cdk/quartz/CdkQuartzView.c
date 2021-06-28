@@ -20,10 +20,10 @@
 #include <AvailabilityMacros.h>
 #include "config.h"
 #import "GdkQuartzView.h"
-#include "gdkquartzwindow.h"
-#include "gdkprivate-quartz.h"
-#include "gdkquartz.h"
-#include "gdkinternal-quartz.h"
+#include "cdkquartzwindow.h"
+#include "cdkprivate-quartz.h"
+#include "cdkquartz.h"
+#include "cdkinternal-quartz.h"
 
 @implementation GdkQuartzView
 
@@ -66,7 +66,7 @@
      down event is filtered by interpretKeyEvents.
   */
 
-  g_object_set_data (G_OBJECT (gdk_window), GIC_FILTER_KEY,
+  g_object_set_data (G_OBJECT (cdk_window), GIC_FILTER_KEY,
                      GUINT_TO_POINTER (GIC_FILTER_FILTERED));
 
   GDK_NOTE (EVENTS, g_message ("keyDown"));
@@ -89,10 +89,10 @@
   gint ns_x, ns_y;
   GdkRectangle *rect;
 
-  rect = g_object_get_data (G_OBJECT (gdk_window), GIC_CURSOR_RECT);
+  rect = g_object_get_data (G_OBJECT (cdk_window), GIC_CURSOR_RECT);
   if (rect)
     {
-      _gdk_quartz_window_gdk_xy_to_xy (rect->x, rect->y + rect->height,
+      _cdk_quartz_window_cdk_xy_to_xy (rect->x, rect->y + rect->height,
 				       &ns_x, &ns_y);
 
       return NSMakeRect (ns_x, ns_y, rect->width, rect->height);
@@ -139,7 +139,7 @@
   selectedRange = NSMakeRange (0, 0);
   markedRange = NSMakeRange (NSNotFound, 0);
 
-  g_object_set_data_full (G_OBJECT (gdk_window), TIC_MARKED_TEXT, NULL, g_free);
+  g_object_set_data_full (G_OBJECT (cdk_window), TIC_MARKED_TEXT, NULL, g_free);
 }
 
 -(void)setMarkedText: (id)aString selectedRange: (NSRange)newSelection replacementRange: (NSRange)replacementRange
@@ -165,28 +165,28 @@
       str = [aString UTF8String];
     }
 
-  g_object_set_data_full (G_OBJECT (gdk_window), TIC_MARKED_TEXT, g_strdup (str), g_free);
-  g_object_set_data (G_OBJECT (gdk_window), TIC_SELECTED_POS,
+  g_object_set_data_full (G_OBJECT (cdk_window), TIC_MARKED_TEXT, g_strdup (str), g_free);
+  g_object_set_data (G_OBJECT (cdk_window), TIC_SELECTED_POS,
 		     GUINT_TO_POINTER (selectedRange.location));
-  g_object_set_data (G_OBJECT (gdk_window), TIC_SELECTED_LEN,
+  g_object_set_data (G_OBJECT (cdk_window), TIC_SELECTED_LEN,
 		     GUINT_TO_POINTER (selectedRange.length));
 
   GDK_NOTE (EVENTS, g_message ("setMarkedText: set %s (%p, nsview %p): %s",
-			       TIC_MARKED_TEXT, gdk_window, self,
+			       TIC_MARKED_TEXT, cdk_window, self,
 			       str ? str : "(empty)"));
 
   /* handle text input changes by mouse events */
-  if (!GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (gdk_window),
+  if (!GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (cdk_window),
                                             TIC_IN_KEY_DOWN)))
     {
-      _gdk_quartz_synthesize_null_key_event(gdk_window);
+      _cdk_quartz_synthesize_null_key_event(cdk_window);
     }
 }
 
 -(void)doCommandBySelector: (SEL)aSelector
 {
   GDK_NOTE (EVENTS, g_message ("doCommandBySelector %s", aSelector));
-  g_object_set_data (G_OBJECT (gdk_window), GIC_FILTER_KEY,
+  g_object_set_data (G_OBJECT (cdk_window), GIC_FILTER_KEY,
                      GUINT_TO_POINTER (GIC_FILTER_PASSTHRU));
 }
 
@@ -227,23 +227,23 @@
 
   if (replacementRange.length > 0)
     {
-      g_object_set_data (G_OBJECT (gdk_window), TIC_INSERT_TEXT_REPLACE_LEN,
+      g_object_set_data (G_OBJECT (cdk_window), TIC_INSERT_TEXT_REPLACE_LEN,
                          GINT_TO_POINTER (replacementRange.length));
     }
 
-  g_object_set_data_full (G_OBJECT (gdk_window), TIC_INSERT_TEXT, g_strdup (str), g_free);
+  g_object_set_data_full (G_OBJECT (cdk_window), TIC_INSERT_TEXT, g_strdup (str), g_free);
   GDK_NOTE (EVENTS, g_message ("insertText: set %s (%p, nsview %p): %s",
-			     TIC_INSERT_TEXT, gdk_window, self,
+			     TIC_INSERT_TEXT, cdk_window, self,
 			     str ? str : "(empty)"));
 
-  g_object_set_data (G_OBJECT (gdk_window), GIC_FILTER_KEY,
+  g_object_set_data (G_OBJECT (cdk_window), GIC_FILTER_KEY,
 		     GUINT_TO_POINTER (GIC_FILTER_FILTERED));
 
   /* handle text input changes by mouse events */
-  if (!GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (gdk_window),
+  if (!GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (cdk_window),
                                             TIC_IN_KEY_DOWN)))
     {
-      _gdk_quartz_synthesize_null_key_event(gdk_window);
+      _cdk_quartz_synthesize_null_key_event(cdk_window);
     }
 }
 /* --------------------------------------------------------------- */
@@ -261,12 +261,12 @@
 
 -(void)setGdkWindow: (GdkWindow *)window
 {
-  gdk_window = window;
+  cdk_window = window;
 }
 
--(GdkWindow *)gdkWindow
+-(GdkWindow *)cdkWindow
 {
-  return gdk_window;
+  return cdk_window;
 }
 
 -(NSTrackingRectTag)trackingRect
@@ -281,33 +281,33 @@
 
 -(BOOL)isOpaque
 {
-  if (GDK_WINDOW_DESTROYED (gdk_window))
+  if (GDK_WINDOW_DESTROYED (cdk_window))
     return YES;
 
   /* A view is opaque if its GdkWindow doesn't have the RGBA visual */
-  return gdk_window_get_visual (gdk_window) !=
-    gdk_screen_get_rgba_visual (_gdk_screen);
+  return cdk_window_get_visual (cdk_window) !=
+    cdk_screen_get_rgba_visual (_cdk_screen);
 }
 
 -(void)drawRect: (NSRect)rect
 {
-  GdkRectangle gdk_rect;
-  GdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (gdk_window->impl);
+  GdkRectangle cdk_rect;
+  GdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (cdk_window->impl);
   const NSRect *drawn_rects;
   NSInteger count;
   int i;
   cairo_region_t *region;
 
-  if (GDK_WINDOW_DESTROYED (gdk_window))
+  if (GDK_WINDOW_DESTROYED (cdk_window))
     return;
 
-  if (! (gdk_window->event_mask & GDK_EXPOSURE_MASK))
+  if (! (cdk_window->event_mask & GDK_EXPOSURE_MASK))
     return;
 
   if (NSEqualRects (rect, NSZeroRect))
     return;
 
-  if (!GDK_WINDOW_IS_MAPPED (gdk_window))
+  if (!GDK_WINDOW_IS_MAPPED (cdk_window))
     {
       /* If the window is not yet mapped, clip_region_with_children
        * will be empty causing the usual code below to draw nothing.
@@ -338,16 +338,16 @@
 
   for (i = 0; i < count; i++)
     {
-      gdk_rect.x = drawn_rects[i].origin.x;
-      gdk_rect.y = drawn_rects[i].origin.y;
-      gdk_rect.width = drawn_rects[i].size.width;
-      gdk_rect.height = drawn_rects[i].size.height;
+      cdk_rect.x = drawn_rects[i].origin.x;
+      cdk_rect.y = drawn_rects[i].origin.y;
+      cdk_rect.width = drawn_rects[i].size.width;
+      cdk_rect.height = drawn_rects[i].size.height;
 
-      cairo_region_union_rectangle (region, &gdk_rect);
+      cairo_region_union_rectangle (region, &cdk_rect);
     }
 
   impl->in_paint_rect_count++;
-  _gdk_window_process_updates_recurse (gdk_window, region);
+  _cdk_window_process_updates_recurse (cdk_window, region);
   impl->in_paint_rect_count--;
 
   cairo_region_destroy (region);
@@ -369,7 +369,7 @@
  */
 -(void)updateTrackingRect
 {
-  GdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (gdk_window->impl);
+  GdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (cdk_window->impl);
   NSRect rect;
 
   if (!impl || !impl->toplevel)
@@ -414,7 +414,7 @@
 
 -(void)setFrame: (NSRect)frame
 {
-  if (GDK_WINDOW_DESTROYED (gdk_window))
+  if (GDK_WINDOW_DESTROYED (cdk_window))
     return;
   
   [super setFrame: frame];

@@ -21,9 +21,9 @@
 #include <glib.h>
 #include <gio/gio.h>
 
-#include "gdkmonitorprivate.h"
+#include "cdkmonitorprivate.h"
 
-#include "gdkbroadwaymonitor.h"
+#include "cdkbroadwaymonitor.h"
 
 
 struct _GdkBroadwayMonitor

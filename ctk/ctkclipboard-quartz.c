@@ -31,7 +31,7 @@
 #include "ctktextbuffer.h"
 #include "ctkselectionprivate.h"
 #include "ctkquartz.h"
-#include "quartz/gdkquartz-ctk-only.h"
+#include "quartz/cdkquartz-ctk-only.h"
 
 enum {
   OWNER_CHANGE,
@@ -108,8 +108,8 @@ static CtkClipboard *clipboard_peek       (GdkDisplay       *display,
   memset (&selection_data, 0, sizeof (CtkSelectionData));
 
   selection_data.selection = clipboard->selection;
-  selection_data.target = gdk_quartz_pasteboard_type_to_atom_libctk_only (type);
-  selection_data.display = gdk_display_get_default ();
+  selection_data.target = cdk_quartz_pasteboard_type_to_atom_libctk_only (type);
+  selection_data.display = cdk_display_get_default ();
   selection_data.length = -1;
 
   if (ctk_target_list_find (clipboard->target_list, selection_data.target, &info))
@@ -269,7 +269,7 @@ ctk_clipboard_get_for_display (GdkDisplay *display,
 			       GdkAtom     selection)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
-  g_return_val_if_fail (!gdk_display_is_closed (display), NULL);
+  g_return_val_if_fail (!cdk_display_is_closed (display), NULL);
 
   return clipboard_peek (display, selection, FALSE);
 }
@@ -283,7 +283,7 @@ ctk_clipboard_get_for_display (GdkDisplay *display,
 CtkClipboard *
 ctk_clipboard_get (GdkAtom selection)
 {
-  return ctk_clipboard_get_for_display (gdk_display_get_default (), selection);
+  return ctk_clipboard_get_for_display (cdk_display_get_default (), selection);
 }
 
 /**
@@ -575,7 +575,7 @@ ctk_clipboard_clear (CtkClipboard *clipboard)
 {
   clipboard_unset (clipboard);
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
-  if (gdk_quartz_osx_version() >= GDK_OSX_SNOW_LEOPARD)
+  if (cdk_quartz_osx_version() >= GDK_OSX_SNOW_LEOPARD)
     [clipboard->pasteboard clearContents];
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 1060
   else
@@ -659,7 +659,7 @@ ctk_clipboard_set_image (CtkClipboard *clipboard,
   for (l = list->list, i = 0; l; l = l->next, i++)
     {
       CtkTargetPair *pair = (CtkTargetPair *)l->data;
-      targets[i].target = gdk_atom_name (pair->target);
+      targets[i].target = cdk_atom_name (pair->target);
     }
 
   ctk_clipboard_set_with_data (clipboard,
@@ -826,7 +826,7 @@ ctk_clipboard_wait_for_contents (CtkClipboard *clipboard,
       clipboard->change_count = [clipboard->pasteboard changeCount];
     }
 
-  if (target == gdk_atom_intern_static_string ("TARGETS"))
+  if (target == cdk_atom_intern_static_string ("TARGETS"))
     {
       NSArray *types = [clipboard->pasteboard types];
       int i, length;
@@ -839,7 +839,7 @@ ctk_clipboard_wait_for_contents (CtkClipboard *clipboard,
       selection_data->selection = clipboard->selection;
       selection_data->target = target;
       if (!selection_data->display)
-	selection_data->display = gdk_display_get_default ();
+	selection_data->display = cdk_display_get_default ();
 
       atoms = g_malloc (length);
 
@@ -879,7 +879,7 @@ ctk_clipboard_wait_for_text (CtkClipboard *clipboard)
   gchar *result;
 
   data = ctk_clipboard_wait_for_contents (clipboard,
-					  gdk_atom_intern_static_string ("UTF8_STRING"));
+					  cdk_atom_intern_static_string ("UTF8_STRING"));
 
   result = (gchar *)ctk_selection_data_get_text (data);
 
@@ -897,7 +897,7 @@ ctk_clipboard_wait_for_text (CtkClipboard *clipboard)
 GdkPixbuf *
 ctk_clipboard_wait_for_image (CtkClipboard *clipboard)
 {
-  GdkAtom target = gdk_atom_intern_static_string("image/tiff");
+  GdkAtom target = cdk_atom_intern_static_string("image/tiff");
   CtkSelectionData *data;
 
   data = ctk_clipboard_wait_for_contents (clipboard, target);
@@ -923,7 +923,7 @@ ctk_clipboard_wait_for_uris (CtkClipboard *clipboard)
 {
   CtkSelectionData *data;
 
-  data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("text/uri-list"));
+  data = ctk_clipboard_wait_for_contents (clipboard, cdk_atom_intern_static_string ("text/uri-list"));
   if (data)
     {
       gchar **uris;
@@ -957,7 +957,7 @@ ctk_clipboard_wait_is_text_available (CtkClipboard *clipboard)
   CtkSelectionData *data;
   gboolean result = FALSE;
 
-  data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("TARGETS"));
+  data = ctk_clipboard_wait_for_contents (clipboard, cdk_atom_intern_static_string ("TARGETS"));
   if (data)
     {
       result = ctk_selection_data_targets_include_text (data);
@@ -977,7 +977,7 @@ ctk_clipboard_wait_is_rich_text_available (CtkClipboard  *clipboard,
   g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), FALSE);
   g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
 
-  data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("TARGETS"));
+  data = ctk_clipboard_wait_for_contents (clipboard, cdk_atom_intern_static_string ("TARGETS"));
   if (data)
     {
       result = ctk_selection_data_targets_include_rich_text (data, buffer);
@@ -994,7 +994,7 @@ ctk_clipboard_wait_is_image_available (CtkClipboard *clipboard)
   gboolean result = FALSE;
 
   data = ctk_clipboard_wait_for_contents (clipboard,
-					  gdk_atom_intern_static_string ("TARGETS"));
+					  cdk_atom_intern_static_string ("TARGETS"));
   if (data)
     {
       result = ctk_selection_data_targets_include_image (data, FALSE);
@@ -1011,7 +1011,7 @@ ctk_clipboard_wait_is_uris_available (CtkClipboard *clipboard)
   gboolean result = FALSE;
 
   data = ctk_clipboard_wait_for_contents (clipboard,
-					  gdk_atom_intern_static_string ("TARGETS"));
+					  cdk_atom_intern_static_string ("TARGETS"));
   if (data)
     {
       result = ctk_selection_data_targets_include_uri (data);
@@ -1051,7 +1051,7 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
   g_return_val_if_fail (clipboard != NULL, FALSE);
 
   /* If the display supports change notification we cache targets */
-  if (gdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)) &&
+  if (cdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)) &&
       clipboard->n_cached_targets != -1)
     {
       if (n_targets)
@@ -1070,7 +1070,7 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
   if (targets)
     *targets = NULL;
 
-  data = ctk_clipboard_wait_for_contents (clipboard, gdk_atom_intern_static_string ("TARGETS"));
+  data = ctk_clipboard_wait_for_contents (clipboard, cdk_atom_intern_static_string ("TARGETS"));
 
   if (data)
     {
@@ -1079,7 +1079,7 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
 
       result = ctk_selection_data_get_targets (data, &tmp_targets, &tmp_n_targets);
 
-      if (gdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)))
+      if (cdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)))
  	{
  	  clipboard->n_cached_targets = tmp_n_targets;
  	  clipboard->cached_targets = g_memdup (tmp_targets,
@@ -1134,7 +1134,7 @@ clipboard_peek (GdkDisplay *display,
 	pasteboard_name = NSGeneralPboard;
       else
 	{
-	  char *atom_string = gdk_atom_name (selection);
+	  char *atom_string = cdk_atom_name (selection);
 
 	  pasteboard_name = [NSString stringWithFormat:@"_CTK_%@",
 			     [NSString stringWithUTF8String:atom_string]];
@@ -1153,7 +1153,7 @@ clipboard_peek (GdkDisplay *display,
       g_object_set_data (G_OBJECT (display), I_("ctk-clipboard-list"), clipboards);
       g_signal_connect (display, "closed",
 			G_CALLBACK (clipboard_display_closed), clipboard);
-      gdk_display_request_selection_notification (display, selection);
+      cdk_display_request_selection_notification (display, selection);
     }
 
   return clipboard;
@@ -1227,8 +1227,8 @@ ctk_clipboard_store (CtkClipboard *clipboard)
     return;
 
   /* We simply store all targets into the OS X clipboard. We should be
-   * using the functions gdk_display_supports_clipboard_persistence() and
-   * gdk_display_store_clipboard(), but since for OS X the clipboard support
+   * using the functions cdk_display_supports_clipboard_persistence() and
+   * cdk_display_store_clipboard(), but since for OS X the clipboard support
    * was implemented in CTK+ and not through GdkSelections, we do it this
    * way. Doing this properly could be worthwhile to implement in the future.
    */
@@ -1249,8 +1249,8 @@ ctk_clipboard_store (CtkClipboard *clipboard)
       memset (&selection_data, 0, sizeof (CtkSelectionData));
 
       selection_data.selection = clipboard->selection;
-      selection_data.target = gdk_atom_intern_static_string (targets[i].target);
-      selection_data.display = gdk_display_get_default ();
+      selection_data.target = cdk_atom_intern_static_string (targets[i].target);
+      selection_data.display = cdk_display_get_default ();
       selection_data.length = -1;
 
       clipboard->get_func (clipboard, &selection_data,
@@ -1273,7 +1273,7 @@ _ctk_clipboard_store_all (void)
   CtkClipboard *clipboard;
   GSList *displays, *list;
 
-  displays = gdk_display_manager_list_displays (gdk_display_manager_get ());
+  displays = cdk_display_manager_list_displays (cdk_display_manager_get ());
 
   list = displays;
   while (list)

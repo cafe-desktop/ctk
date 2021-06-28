@@ -62,7 +62,7 @@ key_hash_insert_entry (CtkKeyHash      *key_hash,
   gint i;
 
   g_free (entry->keys);
-  gdk_keymap_get_entries_for_keyval (key_hash->keymap,
+  cdk_keymap_get_entries_for_keyval (key_hash->keymap,
 				     entry->keyval,
 				     &entry->keys, &entry->n_keys);
   
@@ -335,7 +335,7 @@ keyval_in_group (GdkKeymap  *keymap,
   CtkKeyHashEntry entry;
   gint i;
 
-  gdk_keymap_get_entries_for_keyval (keymap,
+  cdk_keymap_get_entries_for_keyval (keymap,
 				     keyval,
 				     &entry.keys, &entry.n_keys);
 
@@ -410,13 +410,13 @@ _ctk_key_hash_lookup (CtkKeyHash      *key_hash,
   /* if the group-toggling modifier is part of the default accel mod
    * mask, and it is active, disable it for matching
    */
-  shift_group_mask = gdk_keymap_get_modifier_mask (key_hash->keymap,
+  shift_group_mask = cdk_keymap_get_modifier_mask (key_hash->keymap,
                                                    GDK_MODIFIER_INTENT_SHIFT_GROUP);
   if (mask & shift_group_mask)
     group_mod_is_accel_mod = TRUE;
 
-  gdk_keymap_map_virtual_modifiers (key_hash->keymap, &mask);
-  gdk_keymap_add_virtual_modifiers (key_hash->keymap, &state);
+  cdk_keymap_map_virtual_modifiers (key_hash->keymap, &mask);
+  cdk_keymap_add_virtual_modifiers (key_hash->keymap, &state);
 
   CTK_NOTE (KEYBINDINGS,
 	    g_message ("Looking up keycode = %u, modifiers = 0x%04x,\n"
@@ -439,7 +439,7 @@ _ctk_key_hash_lookup (CtkKeyHash      *key_hash,
 	   * will not match a Super+Hyper entry.
 	   */
           modifiers = entry->modifiers;
-          if (gdk_keymap_map_virtual_modifiers (key_hash->keymap, &modifiers) &&
+          if (cdk_keymap_map_virtual_modifiers (key_hash->keymap, &modifiers) &&
 	      ((modifiers & ~consumed_modifiers & mask & ~vmods) == (state & ~consumed_modifiers & mask & ~vmods) ||
 	       (modifiers & ~consumed_modifiers & mask & ~xmods) == (state & ~consumed_modifiers & mask & ~xmods)))
 	    {
@@ -551,7 +551,7 @@ _ctk_key_hash_lookup_keyval (CtkKeyHash     *key_hash,
 
   /* Find some random keycode for this keyval
    */
-  gdk_keymap_get_entries_for_keyval (key_hash->keymap, keyval,
+  cdk_keymap_get_entries_for_keyval (key_hash->keymap, keyval,
 				     &keys, &n_keys);
 
   if (n_keys)

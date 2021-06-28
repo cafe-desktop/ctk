@@ -1,5 +1,5 @@
 /*
- * gdkscreen-x11.h
+ * cdkscreen-x11.h
  *
  * Copyright 2001 Sun Microsystems Inc.
  *
@@ -22,9 +22,9 @@
 #ifndef __GDK_X11_SCREEN__
 #define __GDK_X11_SCREEN__
 
-#include "gdkscreenprivate.h"
-#include "gdkx11screen.h"
-#include "gdkvisual.h"
+#include "cdkscreenprivate.h"
+#include "cdkx11screen.h"
+#include "cdkvisual.h"
 #include <X11/X.h>
 #include <X11/Xlib.h>
 
@@ -101,32 +101,32 @@ struct _GdkX11ScreenClass
   void (* window_manager_changed) (GdkX11Screen *x11_screen);
 };
 
-GType       _gdk_x11_screen_get_type (void);
-GdkScreen * _gdk_x11_screen_new      (GdkDisplay *display,
+GType       _cdk_x11_screen_get_type (void);
+GdkScreen * _cdk_x11_screen_new      (GdkDisplay *display,
 				      gint	  screen_number);
 
-void _gdk_x11_screen_setup                  (GdkScreen *screen);
-void _gdk_x11_screen_update_visuals_for_gl  (GdkScreen *screen);
-void _gdk_x11_screen_window_manager_changed (GdkScreen *screen);
-void _gdk_x11_screen_size_changed           (GdkScreen *screen,
+void _cdk_x11_screen_setup                  (GdkScreen *screen);
+void _cdk_x11_screen_update_visuals_for_gl  (GdkScreen *screen);
+void _cdk_x11_screen_window_manager_changed (GdkScreen *screen);
+void _cdk_x11_screen_size_changed           (GdkScreen *screen,
 					     XEvent    *event);
-void _gdk_x11_screen_process_owner_change   (GdkScreen *screen,
+void _cdk_x11_screen_process_owner_change   (GdkScreen *screen,
 					     XEvent    *event);
-void _gdk_x11_screen_get_edge_monitors      (GdkScreen *screen,
+void _cdk_x11_screen_get_edge_monitors      (GdkScreen *screen,
 					     gint      *top,
 					     gint      *bottom,
 					     gint      *left,
 					     gint      *right);
-void _gdk_x11_screen_set_window_scale       (GdkX11Screen *x11_screen,
+void _cdk_x11_screen_set_window_scale       (GdkX11Screen *x11_screen,
 					     int        scale);
-gboolean _gdk_x11_screen_get_monitor_work_area (GdkScreen    *screen,
+gboolean _cdk_x11_screen_get_monitor_work_area (GdkScreen    *screen,
                                                 GdkMonitor   *monitor,
                                                 GdkRectangle *area);
-void gdk_x11_screen_get_work_area           (GdkScreen    *screen,
+void cdk_x11_screen_get_work_area           (GdkScreen    *screen,
                                              GdkRectangle *area);
-gint gdk_x11_screen_get_width               (GdkScreen *screen);
-gint gdk_x11_screen_get_height              (GdkScreen *screen);
-gint gdk_x11_screen_get_number              (GdkScreen *screen);
+gint cdk_x11_screen_get_width               (GdkScreen *screen);
+gint cdk_x11_screen_get_height              (GdkScreen *screen);
+gint cdk_x11_screen_get_number              (GdkScreen *screen);
 
 G_END_DECLS
 

@@ -1,4 +1,4 @@
-/* gdkquartzdisplaymanager.h
+/* cdkquartzdisplaymanager.h
  *
  * Copyright (C) 2005-2007  Imendio AB
  * Copyright 2010 Red Hat, Inc.
@@ -21,14 +21,14 @@
 #define __GDK_QUARTZ_DISPLAY_MANAGER_H__
 
 #if !defined(__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkquartz.h> can be included directly."
+#error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_QUARTZ_DISPLAY_MANAGER    (gdk_quartz_display_manager_get_type ())
+#define GDK_TYPE_QUARTZ_DISPLAY_MANAGER    (cdk_quartz_display_manager_get_type ())
 #define GDK_QUARTZ_DISPLAY_MANAGER(object) (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_DISPLAY_MANAGER, GdkQuartzDisplayManager))
 
 #ifdef GDK_COMPILATION
@@ -40,7 +40,7 @@ typedef struct _GdkDisplayManagerClass GdkQuartzDisplayManagerClass;
 
 
 GDK_AVAILABLE_IN_ALL
-GType gdk_quartz_display_manager_get_type (void);
+GType cdk_quartz_display_manager_get_type (void);
 
 G_END_DECLS
 

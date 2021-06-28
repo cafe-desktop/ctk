@@ -20,13 +20,13 @@
 #include <glib.h>
 #include <gio/gio.h>
 
-#include "gdkmonitor-quartz.h"
-#include "gdkdisplay-quartz.h"
+#include "cdkmonitor-quartz.h"
+#include "cdkdisplay-quartz.h"
 
-G_DEFINE_TYPE (GdkQuartzMonitor, gdk_quartz_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (GdkQuartzMonitor, cdk_quartz_monitor, GDK_TYPE_MONITOR)
 
 static void
-gdk_quartz_monitor_get_workarea (GdkMonitor   *monitor,
+cdk_quartz_monitor_get_workarea (GdkMonitor   *monitor,
                                  GdkRectangle *dest)
 {
   GDK_QUARTZ_ALLOC_POOL;
@@ -48,7 +48,7 @@ gdk_quartz_monitor_get_workarea (GdkMonitor   *monitor,
   if (screen)
     {
       GdkQuartzDisplay *display =
-        GDK_QUARTZ_DISPLAY (gdk_monitor_get_display (monitor));
+        GDK_QUARTZ_DISPLAY (cdk_monitor_get_display (monitor));
       NSRect rect = [screen visibleFrame];
       dest->x = (int)trunc (display->geometry.origin.x + rect.origin.x);
       dest->y = (int)trunc (display->geometry.origin.y -
@@ -63,13 +63,13 @@ gdk_quartz_monitor_get_workarea (GdkMonitor   *monitor,
 }
 
 static void
-gdk_quartz_monitor_init (GdkQuartzMonitor *monitor)
+cdk_quartz_monitor_init (GdkQuartzMonitor *monitor)
 {
 }
 
 static void
-gdk_quartz_monitor_class_init (GdkQuartzMonitorClass *class)
+cdk_quartz_monitor_class_init (GdkQuartzMonitorClass *class)
 {
-  GDK_MONITOR_CLASS (class)->get_workarea = gdk_quartz_monitor_get_workarea;
+  GDK_MONITOR_CLASS (class)->get_workarea = cdk_quartz_monitor_get_workarea;
 }
 

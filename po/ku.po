@@ -22,293 +22,293 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural= n != 1\n"
 "X-Generator: Virtaal 0.6.1\n"
 
-#: ../gdk/gdk.c:155
+#: ../cdk/cdk.c:155
 #, fuzzy, c-format
-msgid "Error parsing option --gdk-debug"
+msgid "Error parsing option --cdk-debug"
 msgstr "Çewtiya çapkirinê"
 
-#: ../gdk/gdk.c:175
+#: ../cdk/cdk.c:175
 #, c-format
-msgid "Error parsing option --gdk-no-debug"
+msgid "Error parsing option --cdk-no-debug"
 msgstr ""
 
 #. Description of --class=CLASS in --help output
-#: ../gdk/gdk.c:203
+#: ../cdk/cdk.c:203
 msgid "Program class as used by the window manager"
 msgstr ""
 "Dabeşkirina bernameyê weke ku ji alî gerînendeyê paceyan ve tê bikaranîn"
 
 #. Placeholder in --class=CLASS in --help output
-#: ../gdk/gdk.c:204
+#: ../cdk/cdk.c:204
 msgid "CLASS"
 msgstr "POL"
 
 #. Description of --name=NAME in --help output
-#: ../gdk/gdk.c:206
+#: ../cdk/cdk.c:206
 msgid "Program name as used by the window manager"
 msgstr "Navê bernameyê wekî ku ji alî gerînendeyê paceyan ve tê bikaranîn"
 
 #. Placeholder in --name=NAME in --help output
-#: ../gdk/gdk.c:207
+#: ../cdk/cdk.c:207
 msgid "NAME"
 msgstr "NAV"
 
 #. Description of --display=DISPLAY in --help output
-#: ../gdk/gdk.c:209
+#: ../cdk/cdk.c:209
 msgid "X display to use"
 msgstr "Dîmendêra X ya ku dê were bikaranîn"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: ../gdk/gdk.c:210
+#: ../cdk/cdk.c:210
 msgid "DISPLAY"
 msgstr "DÎMEN"
 
-#. Description of --gdk-debug=FLAGS in --help output
-#: ../gdk/gdk.c:213
+#. Description of --cdk-debug=FLAGS in --help output
+#: ../cdk/cdk.c:213
 #, fuzzy
 msgid "GDK debugging flags to set"
 msgstr "Nîşenekên neqandina çewtiyên CTK+ yên wê werine tayînkirin"
 
-#. Placeholder in --gdk-debug=FLAGS in --help output
-#. Placeholder in --gdk-no-debug=FLAGS in --help output
+#. Placeholder in --cdk-debug=FLAGS in --help output
+#. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: ../gdk/gdk.c:214 ../gdk/gdk.c:217 ../ctk/ctkmain.c:522 ../ctk/ctkmain.c:525
+#: ../cdk/cdk.c:214 ../cdk/cdk.c:217 ../ctk/ctkmain.c:522 ../ctk/ctkmain.c:525
 msgid "FLAGS"
 msgstr "Al"
 
-#. Description of --gdk-no-debug=FLAGS in --help output
-#: ../gdk/gdk.c:216
+#. Description of --cdk-no-debug=FLAGS in --help output
+#: ../cdk/cdk.c:216
 #, fuzzy
 msgid "GDK debugging flags to unset"
 msgstr "Nîşenekên neqandina çewtiyên CTK+ yên wê werine rakirin"
 
-#: ../gdk/keyname-table.h:3940
+#: ../cdk/keyname-table.h:3940
 msgctxt "keyboard label"
 msgid "BackSpace"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3941
+#: ../cdk/keyname-table.h:3941
 msgctxt "keyboard label"
 msgid "Tab"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3942
+#: ../cdk/keyname-table.h:3942
 msgctxt "keyboard label"
 msgid "Return"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3943
+#: ../cdk/keyname-table.h:3943
 msgctxt "keyboard label"
 msgid "Pause"
 msgstr "Rawestandin"
 
-#: ../gdk/keyname-table.h:3944
+#: ../cdk/keyname-table.h:3944
 msgctxt "keyboard label"
 msgid "Scroll_Lock"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3945
+#: ../cdk/keyname-table.h:3945
 msgctxt "keyboard label"
 msgid "Sys_Req"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3946
+#: ../cdk/keyname-table.h:3946
 msgctxt "keyboard label"
 msgid "Escape"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3947
+#: ../cdk/keyname-table.h:3947
 msgctxt "keyboard label"
 msgid "Multi_key"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3948
+#: ../cdk/keyname-table.h:3948
 msgctxt "keyboard label"
 msgid "Home"
 msgstr "Mal"
 
-#: ../gdk/keyname-table.h:3949
+#: ../cdk/keyname-table.h:3949
 msgctxt "keyboard label"
 msgid "Left"
 msgstr "Çep"
 
-#: ../gdk/keyname-table.h:3950
+#: ../cdk/keyname-table.h:3950
 msgctxt "keyboard label"
 msgid "Up"
 msgstr "Berjor"
 
-#: ../gdk/keyname-table.h:3951
+#: ../cdk/keyname-table.h:3951
 msgctxt "keyboard label"
 msgid "Right"
 msgstr "Rast"
 
-#: ../gdk/keyname-table.h:3952
+#: ../cdk/keyname-table.h:3952
 msgctxt "keyboard label"
 msgid "Down"
 msgstr "Berjêr"
 
-#: ../gdk/keyname-table.h:3953
+#: ../cdk/keyname-table.h:3953
 msgctxt "keyboard label"
 msgid "Page_Up"
 msgstr "Rûpel berj_or"
 
-#: ../gdk/keyname-table.h:3954
+#: ../cdk/keyname-table.h:3954
 msgctxt "keyboard label"
 msgid "Page_Down"
 msgstr "Rûpel ber_jêr"
 
-#: ../gdk/keyname-table.h:3955
+#: ../cdk/keyname-table.h:3955
 msgctxt "keyboard label"
 msgid "End"
 msgstr "Dawî"
 
-#: ../gdk/keyname-table.h:3956
+#: ../cdk/keyname-table.h:3956
 msgctxt "keyboard label"
 msgid "Begin"
 msgstr "Destpêk"
 
-#: ../gdk/keyname-table.h:3957
+#: ../cdk/keyname-table.h:3957
 msgctxt "keyboard label"
 msgid "Print"
 msgstr "Çapkirin"
 
-#: ../gdk/keyname-table.h:3958
+#: ../cdk/keyname-table.h:3958
 msgctxt "keyboard label"
 msgid "Insert"
 msgstr "Texistin"
 
-#: ../gdk/keyname-table.h:3959
+#: ../cdk/keyname-table.h:3959
 msgctxt "keyboard label"
 msgid "Num_Lock"
 msgstr "Num _lock"
 
-#: ../gdk/keyname-table.h:3960
+#: ../cdk/keyname-table.h:3960
 msgctxt "keyboard label"
 msgid "KP_Space"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3961
+#: ../cdk/keyname-table.h:3961
 msgctxt "keyboard label"
 msgid "KP_Tab"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3962
+#: ../cdk/keyname-table.h:3962
 msgctxt "keyboard label"
 msgid "KP_Enter"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3963
+#: ../cdk/keyname-table.h:3963
 msgctxt "keyboard label"
 msgid "KP_Home"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3964
+#: ../cdk/keyname-table.h:3964
 msgctxt "keyboard label"
 msgid "KP_Left"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3965
+#: ../cdk/keyname-table.h:3965
 msgctxt "keyboard label"
 msgid "KP_Up"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3966
+#: ../cdk/keyname-table.h:3966
 msgctxt "keyboard label"
 msgid "KP_Right"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3967
+#: ../cdk/keyname-table.h:3967
 msgctxt "keyboard label"
 msgid "KP_Down"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3968
+#: ../cdk/keyname-table.h:3968
 msgctxt "keyboard label"
 msgid "KP_Page_Up"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3969
+#: ../cdk/keyname-table.h:3969
 msgctxt "keyboard label"
 msgid "KP_Prior"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3970
+#: ../cdk/keyname-table.h:3970
 msgctxt "keyboard label"
 msgid "KP_Page_Down"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3971
+#: ../cdk/keyname-table.h:3971
 msgctxt "keyboard label"
 msgid "KP_Next"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3972
+#: ../cdk/keyname-table.h:3972
 msgctxt "keyboard label"
 msgid "KP_End"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3973
+#: ../cdk/keyname-table.h:3973
 msgctxt "keyboard label"
 msgid "KP_Begin"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3974
+#: ../cdk/keyname-table.h:3974
 msgctxt "keyboard label"
 msgid "KP_Insert"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3975
+#: ../cdk/keyname-table.h:3975
 msgctxt "keyboard label"
 msgid "KP_Delete"
 msgstr ""
 
-#: ../gdk/keyname-table.h:3976
+#: ../cdk/keyname-table.h:3976
 msgctxt "keyboard label"
 msgid "Delete"
 msgstr "Jêbirin"
 
 #. Description of --sync in --help output
-#: ../gdk/win32/gdkmain-win32.c:54
+#: ../cdk/win32/cdkmain-win32.c:54
 msgid "Don't batch GDI requests"
 msgstr "Koma GDI ne pêwiste"
 
 #. Description of --no-wintab in --help output
-#: ../gdk/win32/gdkmain-win32.c:56
+#: ../cdk/win32/cdkmain-win32.c:56
 msgid "Don't use the Wintab API for tablet support"
 msgstr "Wintab API ji bo li hevhatinê nede bikaranîn"
 
 #. Description of --ignore-wintab in --help output
-#: ../gdk/win32/gdkmain-win32.c:58
+#: ../cdk/win32/cdkmain-win32.c:58
 msgid "Same as --no-wintab"
 msgstr "wekî --no-wintab"
 
 #. Description of --use-wintab in --help output
-#: ../gdk/win32/gdkmain-win32.c:60
+#: ../cdk/win32/cdkmain-win32.c:60
 msgid "Do use the Wintab API [default]"
 msgstr "Wintab APIyê bikar bîne [pêşravekî]"
 
 #. Description of --max-colors=COLORS in --help output
-#: ../gdk/win32/gdkmain-win32.c:62
+#: ../cdk/win32/cdkmain-win32.c:62
 msgid "Size of the palette in 8 bit mode"
 msgstr "Mezinahiya paletê ya di moda 8 bîtan de"
 
 #. Placeholder in --max-colors=COLORS in --help output
-#: ../gdk/win32/gdkmain-win32.c:63
+#: ../cdk/win32/cdkmain-win32.c:63
 msgid "COLORS"
 msgstr "RENG"
 
-#: ../gdk/x11/gdkapplaunchcontext-x11.c:294
+#: ../cdk/x11/cdkapplaunchcontext-x11.c:294
 #, c-format
 msgid "Starting %s"
 msgstr "%s tê dest pê kirin"
 
-#: ../gdk/x11/gdkapplaunchcontext-x11.c:307
+#: ../cdk/x11/cdkapplaunchcontext-x11.c:307
 #, c-format
 msgid "Opening %s"
 msgstr "%s tê vekirin"
 
-#: ../gdk/x11/gdkapplaunchcontext-x11.c:312
+#: ../cdk/x11/cdkapplaunchcontext-x11.c:312
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
@@ -4289,8 +4289,8 @@ msgstr ""
 #~ msgstr "Çewtiya nivisandinê ya pelê wêne : %s"
 
 #~ msgid ""
-#~ "This build of gdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "Ev avakirina gdk-pixbuf destekê nade tomarkirina formata wêne: %s"
+#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "Ev avakirina cdk-pixbuf destekê nade tomarkirina formata wêne: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Ji bo paş de vegerandinê dema wêne dihate tomarkirin bîr têrê nake"

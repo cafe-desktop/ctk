@@ -27,47 +27,47 @@
 
 #define __GDK_H_INSIDE__
 
-#include <gdk/gdkconfig.h>
-#include <gdk/gdkversionmacros.h>
-#include <gdk/gdkapplaunchcontext.h>
-#include <gdk/gdkcairo.h>
-#include <gdk/gdkcursor.h>
-#include <gdk/gdkdevice.h>
-#include <gdk/gdkdevicepad.h>
-#include <gdk/gdkdevicetool.h>
-#include <gdk/gdkdevicemanager.h>
-#include <gdk/gdkdisplay.h>
-#include <gdk/gdkdisplaymanager.h>
-#include <gdk/gdkdnd.h>
-#include <gdk/gdkdrawingcontext.h>
-#include <gdk/gdkenumtypes.h>
-#include <gdk/gdkevents.h>
-#include <gdk/gdkframeclock.h>
-#include <gdk/gdkframetimings.h>
-#include <gdk/gdkglcontext.h>
-#include <gdk/gdkkeys.h>
-#include <gdk/gdkkeysyms.h>
-#include <gdk/gdkmain.h>
-#include <gdk/gdkmonitor.h>
-#include <gdk/gdkpango.h>
-#include <gdk/gdkpixbuf.h>
-#include <gdk/gdkproperty.h>
-#include <gdk/gdkrectangle.h>
-#include <gdk/gdkrgba.h>
-#include <gdk/gdkscreen.h>
-#include <gdk/gdkseat.h>
-#include <gdk/gdkselection.h>
-#include <gdk/gdktestutils.h>
-#include <gdk/gdkthreads.h>
-#include <gdk/gdktypes.h>
-#include <gdk/gdkvisual.h>
-#include <gdk/gdkwindow.h>
+#include <cdk/cdkconfig.h>
+#include <cdk/cdkversionmacros.h>
+#include <cdk/cdkapplaunchcontext.h>
+#include <cdk/cdkcairo.h>
+#include <cdk/cdkcursor.h>
+#include <cdk/cdkdevice.h>
+#include <cdk/cdkdevicepad.h>
+#include <cdk/cdkdevicetool.h>
+#include <cdk/cdkdevicemanager.h>
+#include <cdk/cdkdisplay.h>
+#include <cdk/cdkdisplaymanager.h>
+#include <cdk/cdkdnd.h>
+#include <cdk/cdkdrawingcontext.h>
+#include <cdk/cdkenumtypes.h>
+#include <cdk/cdkevents.h>
+#include <cdk/cdkframeclock.h>
+#include <cdk/cdkframetimings.h>
+#include <cdk/cdkglcontext.h>
+#include <cdk/cdkkeys.h>
+#include <cdk/cdkkeysyms.h>
+#include <cdk/cdkmain.h>
+#include <cdk/cdkmonitor.h>
+#include <cdk/cdkpango.h>
+#include <cdk/cdkpixbuf.h>
+#include <cdk/cdkproperty.h>
+#include <cdk/cdkrectangle.h>
+#include <cdk/cdkrgba.h>
+#include <cdk/cdkscreen.h>
+#include <cdk/cdkseat.h>
+#include <cdk/cdkselection.h>
+#include <cdk/cdktestutils.h>
+#include <cdk/cdkthreads.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkvisual.h>
+#include <cdk/cdkwindow.h>
 
 #ifndef GDK_DISABLE_DEPRECATED
-#include <gdk/deprecated/gdkcolor.h>
+#include <cdk/deprecated/cdkcolor.h>
 #endif
 
-#include <gdk/gdk-autocleanup.h>
+#include <cdk/cdk-autocleanup.h>
 
 #undef __GDK_H_INSIDE__
 

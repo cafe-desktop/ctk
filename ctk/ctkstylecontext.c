@@ -19,7 +19,7 @@
 
 #include "ctkstylecontextprivate.h"
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <math.h>
 #include <stdlib.h>
 #include <gobject/gvaluecollector.h>
@@ -342,7 +342,7 @@ ctk_style_context_init (CtkStyleContext *context)
 
   priv = context->priv = ctk_style_context_get_instance_private (context);
 
-  priv->screen = gdk_screen_get_default ();
+  priv->screen = cdk_screen_get_default ();
 
   if (priv->screen == NULL)
     g_error ("Can't create a CtkStyleContext without a display connection");
@@ -2337,7 +2337,7 @@ ctk_style_context_cancel_animations (CtkStyleContext *context,
  * @dx: Amount to scroll in the X axis
  * @dy: Amount to scroll in the Y axis
  *
- * This function is analogous to gdk_window_scroll(), and
+ * This function is analogous to cdk_window_scroll(), and
  * should be called together with it so the invalidation
  * areas for any ongoing animation are scrolled together
  * with it.
@@ -2486,12 +2486,12 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
       color = _ctk_css_rgba_value_get_rgba (_ctk_style_context_peek_property (context, CTK_CSS_PROPERTY_BACKGROUND_COLOR));
 
-      gdk_window_set_background_rgba (window, color);
+      cdk_window_set_background_rgba (window, color);
     }
   else
     {
       GdkRGBA transparent = { 0.0, 0.0, 0.0, 0.0 };
-      gdk_window_set_background_rgba (window, &transparent);
+      cdk_window_set_background_rgba (window, &transparent);
     }
 G_GNUC_END_IGNORE_DEPRECATIONS
 }
@@ -2525,7 +2525,7 @@ ctk_style_context_get_color (CtkStyleContext *context,
                          NULL);
 
   *color = *c;
-  gdk_rgba_free (c);
+  cdk_rgba_free (c);
 }
 
 /**
@@ -2565,7 +2565,7 @@ ctk_style_context_get_background_color (CtkStyleContext *context,
                          NULL);
 
   *color = *c;
-  gdk_rgba_free (c);
+  cdk_rgba_free (c);
 }
 
 /**
@@ -2596,7 +2596,7 @@ ctk_style_context_get_border_color (CtkStyleContext *context,
                          NULL);
 
   *color = *c;
-  gdk_rgba_free (c);
+  cdk_rgba_free (c);
 }
 
 /**
@@ -2797,8 +2797,8 @@ _ctk_style_context_get_cursor_color (CtkStyleContext *context,
   if (secondary_color)
     *secondary_color = *sc;
 
-  gdk_rgba_free (pc);
-  gdk_rgba_free (sc);
+  cdk_rgba_free (pc);
+  cdk_rgba_free (sc);
 }
 
 static void
@@ -2822,7 +2822,7 @@ draw_insertion_cursor (CtkStyleContext *context,
   cairo_new_path (cr);
 
   _ctk_style_context_get_cursor_color (context, &primary_color, &secondary_color);
-  gdk_cairo_set_source_rgba (cr, is_primary ? &primary_color : &secondary_color);
+  cdk_cairo_set_source_rgba (cr, is_primary ? &primary_color : &secondary_color);
 
   /* When changing the shape or size of the cursor here,
    * propagate the changes to ctktextview.c:text_window_invalidate_cursors().
@@ -2916,7 +2916,7 @@ ctk_render_insertion_cursor (CtkStyleContext *context,
                 "ctk-cursor-aspect-ratio", &aspect_ratio,
                 NULL);
 
-  keymap_direction = gdk_keymap_get_direction (gdk_keymap_get_for_display (gdk_screen_get_display (priv->screen)));
+  keymap_direction = cdk_keymap_get_direction (cdk_keymap_get_for_display (cdk_screen_get_display (priv->screen)));
 
   pango_layout_get_cursor_pos (layout, index, &strong_pos, &weak_pos);
 

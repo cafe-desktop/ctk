@@ -47,12 +47,12 @@
 #include "ctktypebuiltins.h"
 
 #ifdef GDK_WINDOWING_X11
-#include "gdk/x11/gdkx.h"
+#include "cdk/x11/cdkx.h"
 #include "ctktrayicon.h"
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
-#include "gdk/win32/gdkwin32.h"
+#include "cdk/win32/cdkwin32.h"
 #define WM_CTK_TRAY_NOTIFICATION (WM_USER+1)
 #endif
 
@@ -661,9 +661,9 @@ build_button_event (CtkStatusIconPrivate *priv,
   POINT pos;
   GdkRectangle monitor0;
 
-  /* We know that gdk/win32 puts the primary monitor at index 0 */
-  gdk_screen_get_monitor_geometry (gdk_screen_get_default (), 0, &monitor0);
-  e->window = g_object_ref (gdk_get_default_root_window ());
+  /* We know that cdk/win32 puts the primary monitor at index 0 */
+  cdk_screen_get_monitor_geometry (cdk_screen_get_default (), 0, &monitor0);
+  e->window = g_object_ref (cdk_get_default_root_window ());
   e->send_event = TRUE;
   e->time = GetTickCount ();
   GetCursorPos (&pos);
@@ -672,7 +672,7 @@ build_button_event (CtkStatusIconPrivate *priv,
   e->axes = NULL;
   e->state = 0;
   e->button = button;
-  //FIXME: e->device = gdk_display_get_default ()->core_pointer;
+  //FIXME: e->device = cdk_display_get_default ()->core_pointer;
   e->x_root = e->x;
   e->y_root = e->y;
 }
@@ -693,7 +693,7 @@ button_callback (gpointer data)
   else
     ctk_status_icon_button_release (bc->status_icon, bc->event);
 
-  gdk_event_free ((GdkEvent *) bc->event);
+  cdk_event_free ((GdkEvent *) bc->event);
   g_free (data);
 
   return G_SOURCE_REMOVE;
@@ -785,7 +785,7 @@ wndproc (HWND   hwnd,
 
 	buttondown0:
 	  bc = g_new (ButtonCallbackData, 1);
-	  bc->event = (GdkEventButton *) gdk_event_new (GDK_BUTTON_PRESS);
+	  bc->event = (GdkEventButton *) cdk_event_new (GDK_BUTTON_PRESS);
 	  bc->status_icon = find_status_icon (wparam);
 	  build_button_event (bc->status_icon->priv, bc->event, button);
 	  g_idle_add (button_callback, bc);
@@ -811,7 +811,7 @@ wndproc (HWND   hwnd,
 
 	buttonup0:
 	  bc = g_new (ButtonCallbackData, 1);
-	  bc->event = (GdkEventButton *) gdk_event_new (GDK_BUTTON_RELEASE);
+	  bc->event = (GdkEventButton *) cdk_event_new (GDK_BUTTON_RELEASE);
 	  bc->status_icon = find_status_icon (wparam);
 	  build_button_event (bc->status_icon->priv, bc->event, button);
 	  g_idle_add (button_callback, bc);
@@ -877,7 +877,7 @@ ctk_status_icon_init (CtkStatusIcon *status_icon)
   priv->visible = TRUE;
 
 #ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+  if (GDK_IS_X11_DISPLAY (cdk_display_get_default ()))
     {
       priv->size         = 0;
       priv->tray_icon = CTK_WIDGET (_ctk_tray_icon_new (NULL));
@@ -1441,7 +1441,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
 #ifdef GDK_WINDOWING_WIN32
   if (surface)
     {
-      pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0,
+      pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0,
                                             cairo_image_surface_get_width (surface),
                                             cairo_image_surface_get_height (surface));
       cairo_surface_destroy (surface);
@@ -1450,7 +1450,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
   if (pixbuf != NULL)
     {
       prev_hicon = priv->nid.hIcon;
-      priv->nid.hIcon = gdk_win32_pixbuf_to_hicon_libctk_only (pixbuf);
+      priv->nid.hIcon = cdk_win32_pixbuf_to_hicon_libctk_only (pixbuf);
       priv->nid.uFlags |= NIF_ICON;
       if (priv->nid.hWnd != NULL && priv->visible)
         if (!Shell_NotifyIconW (NIM_MODIFY, &priv->nid))
@@ -1472,7 +1472,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
 #ifdef GDK_WINDOWING_QUARTZ
   if (surface)
     {
-      pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0,
+      pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0,
                                             cairo_image_surface_get_width (surface),
                                             cairo_image_surface_get_height (surface));
       cairo_surface_destroy (surface);
@@ -1594,7 +1594,7 @@ ctk_status_icon_fg_changed (CtkStatusIcon *status_icon)
 
   ctk_widget_override_color (priv->image, CTK_STATE_FLAG_NORMAL, rgba);
 
-  gdk_rgba_free (rgba);
+  cdk_rgba_free (rgba);
 }
 
 static void
@@ -1675,7 +1675,7 @@ ctk_status_icon_button_press (CtkStatusIcon  *status_icon,
   if (handled)
     return TRUE;
 
-  if (gdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (cdk_event_triggers_context_menu ((GdkEvent *) event))
     {
       emit_popup_menu_signal (status_icon, event->button, event->time);
       return TRUE;
@@ -1853,7 +1853,7 @@ ctk_status_icon_set_from_file (CtkStatusIcon *status_icon,
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (filename != NULL);
   
-  pixbuf = gdk_pixbuf_new_from_file (filename, NULL);
+  pixbuf = cdk_pixbuf_new_from_file (filename, NULL);
  
   ctk_status_icon_set_from_pixbuf (status_icon, pixbuf);
   
@@ -2163,7 +2163,7 @@ ctk_status_icon_get_screen (CtkStatusIcon *status_icon)
     return ctk_window_get_screen (CTK_WINDOW (status_icon->priv->tray_icon));
   else
 #endif
-  return gdk_screen_get_default ();
+  return cdk_screen_get_default ();
 }
 
 /**
@@ -2337,14 +2337,14 @@ ctk_status_icon_position_menu (CtkMenu  *menu,
   ctk_menu_set_screen (menu, screen);
 
   window = ctk_widget_get_window (widget);
-  monitor_num = gdk_screen_get_monitor_at_window (screen, window);
+  monitor_num = cdk_screen_get_monitor_at_window (screen, window);
   if (monitor_num < 0)
     monitor_num = 0;
   ctk_menu_set_monitor (menu, monitor_num);
 
-  gdk_screen_get_monitor_workarea (screen, monitor_num, &monitor);
+  cdk_screen_get_monitor_workarea (screen, monitor_num, &monitor);
 
-  gdk_window_get_origin (window, x, y);
+  cdk_window_get_origin (window, x, y);
 
   menu_req.width = ctk_widget_get_allocated_width (CTK_WIDGET (menu));
   menu_req.height = ctk_widget_get_allocated_height (CTK_WIDGET (menu));
@@ -2479,7 +2479,7 @@ ctk_status_icon_get_geometry (CtkStatusIcon    *status_icon,
 
   if (area)
     {
-      gdk_window_get_origin (ctk_widget_get_window (widget),
+      cdk_window_get_origin (ctk_widget_get_window (widget),
                              &x, &y);
 
       ctk_widget_get_allocation (widget, &allocation);

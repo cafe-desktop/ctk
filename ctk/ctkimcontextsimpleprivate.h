@@ -20,7 +20,7 @@
 
 #include <glib.h>
 
-#include "gdk/gdkkeysyms.h"
+#include "cdk/cdkkeysyms.h"
 
 G_BEGIN_DECLS
 

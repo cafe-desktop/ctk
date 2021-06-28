@@ -17,7 +17,7 @@
  */
 
 #import <AppKit/AppKit.h>
-#include "gdk/gdk.h"
+#include "cdk/cdk.h"
 
 /* Text Input Client */
 #define TIC_MARKED_TEXT "tic-marked-text"
@@ -35,7 +35,7 @@
 
 @interface GdkQuartzView : NSView <NSTextInputClient>
 {
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   NSTrackingRectTag trackingRect;
   BOOL needsInvalidateShadow;
   NSRange markedRange;
@@ -43,7 +43,7 @@
 }
 
 - (void)setGdkWindow: (GdkWindow *)window;
-- (GdkWindow *)gdkWindow;
+- (GdkWindow *)cdkWindow;
 - (NSTrackingRectTag)trackingRect;
 - (void)setNeedsInvalidateShadow: (BOOL)invalidate;
 

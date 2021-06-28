@@ -446,7 +446,7 @@ ctk_scale_allocate_mark (CtkCssGadget        *gadget,
       ctk_css_gadget_allocate (mark->label_gadget,
                                &label_alloc, baseline,
                                &label_clip);
-      gdk_rectangle_union (out_clip, &label_clip, out_clip);
+      cdk_rectangle_union (out_clip, &label_clip, out_clip);
     }
 }
 
@@ -585,7 +585,7 @@ ctk_scale_allocate_marks (CtkCssGadget        *gadget,
         }
 
       ctk_css_gadget_allocate (mark->gadget, &mark_alloc, baseline, &mark_clip);
-      gdk_rectangle_union (out_clip, &mark_clip, out_clip);
+      cdk_rectangle_union (out_clip, &mark_clip, out_clip);
     }
 
   g_free (marks);
@@ -626,7 +626,7 @@ ctk_scale_size_allocate (CtkWidget     *widget,
                                    &marks_rect,
                                    -1,
                                    &marks_clip);
-          gdk_rectangle_union (&clip, &marks_clip, &clip);
+          cdk_rectangle_union (&clip, &marks_clip, &clip);
         }
 
       if (priv->bottom_marks_gadget)
@@ -642,7 +642,7 @@ ctk_scale_size_allocate (CtkWidget     *widget,
                                    &marks_rect,
                                    -1,
                                    &marks_clip);
-          gdk_rectangle_union (&clip, &marks_clip, &clip);
+          cdk_rectangle_union (&clip, &marks_clip, &clip);
         }
     }
   else
@@ -662,7 +662,7 @@ ctk_scale_size_allocate (CtkWidget     *widget,
                                    &marks_rect,
                                    -1,
                                    &marks_clip);
-          gdk_rectangle_union (&clip, &marks_clip, &clip);
+          cdk_rectangle_union (&clip, &marks_clip, &clip);
         }
 
       if (priv->bottom_marks_gadget)
@@ -678,7 +678,7 @@ ctk_scale_size_allocate (CtkWidget     *widget,
                                    &marks_rect,
                                    -1,
                                    &marks_clip);
-          gdk_rectangle_union (&clip, &marks_clip, &clip);
+          cdk_rectangle_union (&clip, &marks_clip, &clip);
         }
     }
 
@@ -687,7 +687,7 @@ ctk_scale_size_allocate (CtkWidget     *widget,
       CtkAllocation value_clip;
 
       ctk_scale_allocate_value (scale, &value_clip);
-      gdk_rectangle_union (&clip, &value_clip, &clip);
+      cdk_rectangle_union (&clip, &value_clip, &clip);
     }
 
   ctk_widget_set_clip (widget, &clip);

@@ -3,11 +3,11 @@
 #define __GDK_ENUM_TYPES_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
 #include <glib-object.h>
-#include <gdk/gdkversionmacros.h>
+#include <cdk/cdkversionmacros.h>
 
 G_BEGIN_DECLS
 /*** END file-header ***/

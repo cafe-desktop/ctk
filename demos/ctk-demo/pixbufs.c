@@ -56,16 +56,16 @@ load_pixbufs (GError **error)
   if (background)
     return TRUE; /* already loaded earlier */
 
-  background = gdk_pixbuf_new_from_resource (BACKGROUND_NAME, error);
+  background = cdk_pixbuf_new_from_resource (BACKGROUND_NAME, error);
   if (!background)
     return FALSE; /* Note that "error" was filled with a GError */
 
-  back_width = gdk_pixbuf_get_width (background);
-  back_height = gdk_pixbuf_get_height (background);
+  back_width = cdk_pixbuf_get_width (background);
+  back_height = cdk_pixbuf_get_height (background);
 
   for (i = 0; i < N_IMAGES; i++)
     {
-      images[i] = gdk_pixbuf_new_from_resource (image_names[i], error);
+      images[i] = cdk_pixbuf_new_from_resource (image_names[i], error);
 
       if (!images[i])
         return FALSE; /* Note that "error" was filled with a GError */
@@ -80,7 +80,7 @@ draw_cb (CtkWidget *widget,
          cairo_t   *cr,
          gpointer   data)
 {
-  gdk_cairo_set_source_pixbuf (cr, frame, 0, 0);
+  cdk_cairo_set_source_pixbuf (cr, frame, 0, 0);
   cairo_paint (cr);
 
   return TRUE;
@@ -102,13 +102,13 @@ on_tick (CtkWidget     *widget,
   double xmid, ymid;
   double radius;
 
-  gdk_pixbuf_copy_area (background, 0, 0, back_width, back_height,
+  cdk_pixbuf_copy_area (background, 0, 0, back_width, back_height,
                         frame, 0, 0);
 
   if (start_time == 0)
-    start_time = gdk_frame_clock_get_frame_time (frame_clock);
+    start_time = cdk_frame_clock_get_frame_time (frame_clock);
 
-  current_time = gdk_frame_clock_get_frame_time (frame_clock);
+  current_time = cdk_frame_clock_get_frame_time (frame_clock);
   f = ((current_time - start_time) % CYCLE_TIME) / (double)CYCLE_TIME;
 
   xmid = back_width / 2.0;
@@ -127,8 +127,8 @@ on_tick (CtkWidget     *widget,
 
       ang = 2.0 * G_PI * (double) i / N_IMAGES - f * 2.0 * G_PI;
 
-      iw = gdk_pixbuf_get_width (images[i]);
-      ih = gdk_pixbuf_get_height (images[i]);
+      iw = cdk_pixbuf_get_width (images[i]);
+      ih = cdk_pixbuf_get_height (images[i]);
 
       r = radius + (radius / 3.0) * sin (f * 2.0 * G_PI);
 
@@ -149,8 +149,8 @@ on_tick (CtkWidget     *widget,
       r2.width = back_width;
       r2.height = back_height;
 
-      if (gdk_rectangle_intersect (&r1, &r2, &dest))
-        gdk_pixbuf_composite (images[i],
+      if (cdk_rectangle_intersect (&r1, &r2, &dest))
+        cdk_pixbuf_composite (images[i],
                               frame,
                               dest.x, dest.y,
                               dest.width, dest.height,
@@ -206,7 +206,7 @@ do_pixbufs (CtkWidget *do_widget)
         {
           ctk_widget_set_size_request (window, back_width, back_height);
 
-          frame = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, back_width, back_height);
+          frame = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, back_width, back_height);
 
           da = ctk_drawing_area_new ();
 

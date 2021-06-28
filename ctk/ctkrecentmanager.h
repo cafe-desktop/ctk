@@ -24,8 +24,8 @@
 #error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gdk-pixbuf/gdk-pixbuf.h>
-#include <gdk/gdk.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <cdk/cdk.h>
 #include <time.h>
 
 G_BEGIN_DECLS

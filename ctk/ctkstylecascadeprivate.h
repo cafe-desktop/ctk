@@ -18,7 +18,7 @@
 #ifndef __CTK_STYLECASCADE_PRIVATE_H__
 #define __CTK_STYLECASCADE_PRIVATE_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctkstyleproviderprivate.h>
 
 G_BEGIN_DECLS

@@ -221,7 +221,7 @@ on_window_draw (CtkWidget *widget,
       if (displayed_frame->frame_counter == 0)
         {
           GdkFrameClock *frame_clock = ctk_widget_get_frame_clock (window);
-          displayed_frame->frame_counter = gdk_frame_clock_get_frame_counter (frame_clock);
+          displayed_frame->frame_counter = cdk_frame_clock_get_frame_counter (frame_clock);
         }
     }
 
@@ -241,16 +241,16 @@ collect_old_frames (void)
       gboolean remove = FALSE;
       l_next = l->next;
 
-      timings = gdk_frame_clock_get_timings (frame_clock,
+      timings = cdk_frame_clock_get_timings (frame_clock,
                                              frame_data->frame_counter);
       if (timings == NULL)
         {
           remove = TRUE;
         }
-      else if (gdk_frame_timings_get_complete (timings))
+      else if (cdk_frame_timings_get_complete (timings))
         {
-          gint64 presentation_time = gdk_frame_timings_get_predicted_presentation_time (timings);
-          gint64 refresh_interval = gdk_frame_timings_get_refresh_interval (timings);
+          gint64 presentation_time = cdk_frame_timings_get_predicted_presentation_time (timings);
+          gint64 refresh_interval = cdk_frame_timings_get_refresh_interval (timings);
 
           if (pll &&
               presentation_time && refresh_interval &&
@@ -306,16 +306,16 @@ static void
 on_update (GdkFrameClock *frame_clock,
            gpointer       data)
 {
-  GdkFrameTimings *timings = gdk_frame_clock_get_current_timings (frame_clock);
-  gint64 frame_time = gdk_frame_timings_get_frame_time (timings);
-  gint64 predicted_presentation_time = gdk_frame_timings_get_predicted_presentation_time (timings);
+  GdkFrameTimings *timings = cdk_frame_clock_get_current_timings (frame_clock);
+  gint64 frame_time = cdk_frame_timings_get_frame_time (timings);
+  gint64 predicted_presentation_time = cdk_frame_timings_get_predicted_presentation_time (timings);
   gint64 refresh_interval;
   FrameData *pending_frame;
 
   if (clock_time_base == 0)
     clock_time_base = frame_time + PRE_BUFFER_TIME;
 
-  gdk_frame_clock_get_refresh_info (frame_clock, frame_time,
+  cdk_frame_clock_get_refresh_info (frame_clock, frame_time,
                                     &refresh_interval, NULL);
 
   pending_frame = peek_pending_frame ();
@@ -345,7 +345,7 @@ on_update (GdkFrameClock *frame_clock,
       displayed_frame = unqueue_frame ();
       displayed_frame->clock_time = stream_time_to_clock_time (displayed_frame->stream_time);
 
-      displayed_frame->frame_counter = gdk_frame_timings_get_frame_counter (timings);
+      displayed_frame->frame_counter = cdk_frame_timings_get_frame_counter (timings);
       variable_add (&time_factor_stats, time_factor);
 
       collect_old_frames ();
@@ -394,7 +394,7 @@ main(int argc, char **argv)
   frame_clock = ctk_widget_get_frame_clock (window);
   g_signal_connect (frame_clock, "update",
                     G_CALLBACK (on_update), NULL);
-  gdk_frame_clock_begin_updating (frame_clock);
+  cdk_frame_clock_begin_updating (frame_clock);
 
   ctk_main ();
 

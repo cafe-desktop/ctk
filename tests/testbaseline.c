@@ -83,7 +83,7 @@ main (int    argc,
     ".small-font { font-size: 5px; }"
     ".medium-font { font-size: 10px; }"
     ".large-font { font-size: 15px; }", -1, NULL);
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
   g_object_unref (provider);

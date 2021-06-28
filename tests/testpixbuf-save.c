@@ -8,16 +8,16 @@
 static void
 compare_pixbufs (GdkPixbuf *pixbuf, GdkPixbuf *compare, const gchar *file_type)
 {
-        if ((gdk_pixbuf_get_width (pixbuf) !=
-             gdk_pixbuf_get_width (compare)) ||
-            (gdk_pixbuf_get_height (pixbuf) !=
-             gdk_pixbuf_get_height (compare)) ||
-            (gdk_pixbuf_get_n_channels (pixbuf) !=
-             gdk_pixbuf_get_n_channels (compare)) ||
-            (gdk_pixbuf_get_has_alpha (pixbuf) !=
-             gdk_pixbuf_get_has_alpha (compare)) ||
-            (gdk_pixbuf_get_bits_per_sample (pixbuf) !=
-             gdk_pixbuf_get_bits_per_sample (compare))) {
+        if ((cdk_pixbuf_get_width (pixbuf) !=
+             cdk_pixbuf_get_width (compare)) ||
+            (cdk_pixbuf_get_height (pixbuf) !=
+             cdk_pixbuf_get_height (compare)) ||
+            (cdk_pixbuf_get_n_channels (pixbuf) !=
+             cdk_pixbuf_get_n_channels (compare)) ||
+            (cdk_pixbuf_get_has_alpha (pixbuf) !=
+             cdk_pixbuf_get_has_alpha (compare)) ||
+            (cdk_pixbuf_get_bits_per_sample (pixbuf) !=
+             cdk_pixbuf_get_bits_per_sample (compare))) {
                 fprintf (stderr,
                          "saved %s file differs from copy in memory\n",
                          file_type);
@@ -33,17 +33,17 @@ compare_pixbufs (GdkPixbuf *pixbuf, GdkPixbuf *compare, const gchar *file_type)
                 guchar *p1, *p2;
                 gint    count = 0;
 
-                orig_pixels = gdk_pixbuf_get_pixels (pixbuf);
-                compare_pixels = gdk_pixbuf_get_pixels (compare);
+                orig_pixels = cdk_pixbuf_get_pixels (pixbuf);
+                compare_pixels = cdk_pixbuf_get_pixels (compare);
 
-                orig_rowstride = gdk_pixbuf_get_rowstride (pixbuf);
-                compare_rowstride = gdk_pixbuf_get_rowstride (compare);
+                orig_rowstride = cdk_pixbuf_get_rowstride (pixbuf);
+                compare_rowstride = cdk_pixbuf_get_rowstride (compare);
 
-                width = gdk_pixbuf_get_width (pixbuf);
-                height = gdk_pixbuf_get_height (pixbuf);
+                width = cdk_pixbuf_get_width (pixbuf);
+                height = cdk_pixbuf_get_height (pixbuf);
 
                 /*  well...  */
-                bytes_per_pixel = gdk_pixbuf_get_n_channels (pixbuf);
+                bytes_per_pixel = cdk_pixbuf_get_n_channels (pixbuf);
 
                 p1 = orig_pixels;
                 p2 = compare_pixels;
@@ -72,7 +72,7 @@ save_to_loader (const gchar *buf, gsize count, GError **err, gpointer data)
 {
         GdkPixbufLoader *loader = data;
 
-        return gdk_pixbuf_loader_write (loader, (const guchar *)buf, count, err);
+        return cdk_pixbuf_loader_write (loader, (const guchar *)buf, count, err);
 }
 
 static GdkPixbuf *
@@ -81,10 +81,10 @@ buffer_to_pixbuf (const gchar *buf, gsize count, GError **err)
         GdkPixbufLoader *loader;
         GdkPixbuf *pixbuf;
 
-        loader = gdk_pixbuf_loader_new ();
-        if (gdk_pixbuf_loader_write (loader, (const guchar *)buf, count, err) &&
-            gdk_pixbuf_loader_close (loader, err)) {
-                pixbuf = g_object_ref (gdk_pixbuf_loader_get_pixbuf (loader));
+        loader = cdk_pixbuf_loader_new ();
+        if (cdk_pixbuf_loader_write (loader, (const guchar *)buf, count, err) &&
+            cdk_pixbuf_loader_close (loader, err)) {
+                pixbuf = g_object_ref (cdk_pixbuf_loader_get_pixbuf (loader));
                 g_object_unref (loader);
                 return pixbuf;
         } else {
@@ -126,24 +126,24 @@ keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
                         return;
                 }	
 
-                loader = gdk_pixbuf_loader_new ();
-                if (!gdk_pixbuf_save_to_callback (pixbuf, save_to_loader, loader, "jpeg",
+                loader = cdk_pixbuf_loader_new ();
+                if (!cdk_pixbuf_save_to_callback (pixbuf, save_to_loader, loader, "jpeg",
                                                   &err,
                                                   "quality", "100",
                                                   NULL) ||
-                    !gdk_pixbuf_loader_close (loader, &err)) {
+                    !cdk_pixbuf_loader_close (loader, &err)) {
                         fprintf (stderr, "%s", err->message);
                         g_error_free (err);
                 } else {
                         do_compare (pixbuf,
-                                    g_object_ref (gdk_pixbuf_loader_get_pixbuf (loader)),
+                                    g_object_ref (cdk_pixbuf_loader_get_pixbuf (loader)),
                                     err);
                         g_object_unref (loader);
                 }
         }
         else if (evt->keyval == 'S') {
                 /* save to buffer */
-                if (!gdk_pixbuf_save_to_buffer (pixbuf, &buffer, &count, "jpeg",
+                if (!cdk_pixbuf_save_to_buffer (pixbuf, &buffer, &count, "jpeg",
                                                 &err,
                                                 "quality", "100",
                                                 NULL)) {
@@ -162,7 +162,7 @@ keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
                         return;
                 }	
 
-                if (!gdk_pixbuf_save (pixbuf, "foo.jpg", "jpeg",
+                if (!cdk_pixbuf_save (pixbuf, "foo.jpg", "jpeg",
                                       &err,
                                       "quality", "100",
                                       NULL)) {
@@ -170,7 +170,7 @@ keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
                         g_error_free (err);
                 } else {
                         do_compare (pixbuf,
-                                    gdk_pixbuf_new_from_file ("foo.jpg", &err),
+                                    cdk_pixbuf_new_from_file ("foo.jpg", &err),
                                     err);
                 }
         }
@@ -182,24 +182,24 @@ keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
                         return;
                 }
 
-                loader = gdk_pixbuf_loader_new ();
-                if (!gdk_pixbuf_save_to_callback (pixbuf, save_to_loader, loader, "png",
+                loader = cdk_pixbuf_loader_new ();
+                if (!cdk_pixbuf_save_to_callback (pixbuf, save_to_loader, loader, "png",
                                                   &err,
                                                   "tEXt::Software", "testpixbuf-save",
                                                   NULL)
-                    || !gdk_pixbuf_loader_close (loader, &err)) {
+                    || !cdk_pixbuf_loader_close (loader, &err)) {
                         fprintf (stderr, "%s", err->message);
                         g_error_free (err);
                 } else {
                         do_compare (pixbuf,
-                                    g_object_ref (gdk_pixbuf_loader_get_pixbuf (loader)),
+                                    g_object_ref (cdk_pixbuf_loader_get_pixbuf (loader)),
                                     err);
                         g_object_unref (loader);
                 }
         }
         else if (evt->keyval == 'P') {
                 /* save to buffer */
-                if (!gdk_pixbuf_save_to_buffer (pixbuf, &buffer, &count, "png",
+                if (!cdk_pixbuf_save_to_buffer (pixbuf, &buffer, &count, "png",
                                                 &err,
                                                 "tEXt::Software", "testpixbuf-save",
                                                 NULL)) {
@@ -217,7 +217,7 @@ keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
                         return;
                 }
 
-                if (!gdk_pixbuf_save (pixbuf, "foo.png", "png", 
+                if (!cdk_pixbuf_save (pixbuf, "foo.png", "png", 
                                       &err,
                                       "tEXt::Software", "testpixbuf-save",
                                       NULL)) {
@@ -225,7 +225,7 @@ keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
                         g_error_free (err);
                 } else {
                         do_compare(pixbuf,
-                                   gdk_pixbuf_new_from_file ("foo.png", &err),
+                                   cdk_pixbuf_new_from_file ("foo.png", &err),
                                    err);
                 }
         }
@@ -237,23 +237,23 @@ keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
                         return;
                 }
 
-                loader = gdk_pixbuf_loader_new ();
-                if (!gdk_pixbuf_save_to_callback (pixbuf, save_to_loader, loader, "ico",
+                loader = cdk_pixbuf_loader_new ();
+                if (!cdk_pixbuf_save_to_callback (pixbuf, save_to_loader, loader, "ico",
                                                   &err,
                                                   NULL)
-                    || !gdk_pixbuf_loader_close (loader, &err)) {
+                    || !cdk_pixbuf_loader_close (loader, &err)) {
                         fprintf (stderr, "%s", err->message);
                         g_error_free (err);
                 } else {
                         do_compare (pixbuf,
-                                    g_object_ref (gdk_pixbuf_loader_get_pixbuf (loader)),
+                                    g_object_ref (cdk_pixbuf_loader_get_pixbuf (loader)),
                                     err);
                         g_object_unref (loader);
                 }
         }
         else if (evt->keyval == 'I') {
                 /* save to buffer */
-                if (!gdk_pixbuf_save_to_buffer (pixbuf, &buffer, &count, "ico",
+                if (!cdk_pixbuf_save_to_buffer (pixbuf, &buffer, &count, "ico",
                                                 &err,
                                                 NULL)) {
                         fprintf (stderr, "%s", err->message);
@@ -270,14 +270,14 @@ keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
                         return;
                 }
 
-                if (!gdk_pixbuf_save (pixbuf, "foo.ico", "ico", 
+                if (!cdk_pixbuf_save (pixbuf, "foo.ico", "ico", 
                                       &err,
                                       NULL)) {
                         fprintf (stderr, "%s", err->message);
                         g_error_free (err);
                 } else {
                         do_compare(pixbuf,
-                                   gdk_pixbuf_new_from_file ("foo.ico", &err),
+                                   cdk_pixbuf_new_from_file ("foo.ico", &err),
                                    err);
                 }
         }
@@ -289,7 +289,7 @@ keypress_check (CtkWidget *widget, GdkEventKey *evt, gpointer data)
                 } else {
                         GdkPixbuf *alpha_buf;
 
-                        alpha_buf = gdk_pixbuf_add_alpha (pixbuf,
+                        alpha_buf = cdk_pixbuf_add_alpha (pixbuf,
                                                           FALSE, 0, 0, 0);
 
                         g_object_set_data_full (G_OBJECT (da),
@@ -315,7 +315,7 @@ draw_cb (CtkWidget *drawing_area, cairo_t *cr, gpointer data)
         pixbuf = (GdkPixbuf *) g_object_get_data (G_OBJECT (drawing_area),
 						  "pixbuf");
 
-        gdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
+        cdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
         cairo_paint (cr);
 
         return FALSE;
@@ -330,12 +330,12 @@ configure_cb (CtkWidget *drawing_area, GdkEventConfigure *evt, gpointer data)
 						  "pixbuf");
     
         g_print ("X:%d Y:%d\n", evt->width, evt->height);
-        if (evt->width != gdk_pixbuf_get_width (pixbuf) || evt->height != gdk_pixbuf_get_height (pixbuf)) {
+        if (evt->width != cdk_pixbuf_get_width (pixbuf) || evt->height != cdk_pixbuf_get_height (pixbuf)) {
                 GdkWindow *root;
                 GdkPixbuf *new_pixbuf;
 
-                root = gdk_get_default_root_window ();
-                new_pixbuf = gdk_pixbuf_get_from_window (root,
+                root = cdk_get_default_root_window ();
+                new_pixbuf = cdk_pixbuf_get_from_window (root,
                                                          0, 0, evt->width, evt->height);
                 g_object_set_data_full (G_OBJECT (drawing_area), "pixbuf", new_pixbuf,
                                         (GDestroyNotify) g_object_unref);
@@ -355,8 +355,8 @@ main (int argc, char **argv)
    
         ctk_init (&argc, &argv);   
 
-        root = gdk_get_default_root_window ();
-        pixbuf = gdk_pixbuf_get_from_window (root,
+        root = cdk_get_default_root_window ();
+        pixbuf = cdk_pixbuf_get_from_window (root,
                                              0, 0, 150, 160);
    
         window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -370,8 +370,8 @@ main (int argc, char **argv)
    
         drawing_area = ctk_drawing_area_new ();
         ctk_widget_set_size_request (CTK_WIDGET (drawing_area),
-                                     gdk_pixbuf_get_width (pixbuf),
-                                     gdk_pixbuf_get_height (pixbuf));
+                                     cdk_pixbuf_get_width (pixbuf),
+                                     cdk_pixbuf_get_height (pixbuf));
         g_signal_connect (drawing_area, "draw",
 			  G_CALLBACK (draw_cb), NULL);
 

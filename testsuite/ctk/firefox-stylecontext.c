@@ -45,7 +45,7 @@ test_init_of_theme (void)
 
   /* Because the style we added does not influence the color,
    * the before and after colors should be identical. */
-  g_assert (gdk_rgba_equal (&before, &after));
+  g_assert (cdk_rgba_equal (&before, &after));
 
   g_object_unref (context);
 }
@@ -53,10 +53,10 @@ test_init_of_theme (void)
 int
 main (int argc, char *argv[])
 {
-  /* If gdk_init() is called before ctk_init() the CTK code takes
+  /* If cdk_init() is called before ctk_init() the CTK code takes
    * a different path (why?)
    */
-  gdk_init (NULL, NULL);
+  cdk_init (NULL, NULL);
   ctk_init (NULL, NULL);
   g_test_init (&argc, &argv, NULL);
 

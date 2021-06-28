@@ -34,7 +34,7 @@
 #define HAVE_TRACKER 1
 #endif
 
-#include <gdk/gdk.h> /* for GDK_WINDOWING_QUARTZ */
+#include <cdk/cdk.h> /* for GDK_WINDOWING_QUARTZ */
 
 struct _CtkSearchEnginePrivate {
   CtkSearchEngine *native;

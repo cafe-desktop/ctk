@@ -1,6 +1,6 @@
 /* GDK - The GIMP Drawing Kit
  *
- * gdkglcontext-wayland.h: Private Wayland specific OpenGL wrappers
+ * cdkglcontext-wayland.h: Private Wayland specific OpenGL wrappers
  *
  * Copyright © 2014  Emmanuele Bassi
  * Copyright © 2014  Red Hat, Int
@@ -22,12 +22,12 @@
 #ifndef __GDK_WAYLAND_GL_CONTEXT__
 #define __GDK_WAYLAND_GL_CONTEXT__
 
-#include "gdkglcontextprivate.h"
-#include "gdkdisplayprivate.h"
-#include "gdkvisual.h"
-#include "gdkwindow.h"
-#include "gdkinternals.h"
-#include "gdkmain.h"
+#include "cdkglcontextprivate.h"
+#include "cdkdisplayprivate.h"
+#include "cdkvisual.h"
+#include "cdkwindow.h"
+#include "cdkinternals.h"
+#include "cdkmain.h"
 
 #include <epoxy/egl.h>
 
@@ -47,14 +47,14 @@ struct _GdkWaylandGLContextClass
   GdkGLContextClass parent_class;
 };
 
-gboolean        gdk_wayland_display_init_gl                         (GdkDisplay        *display);
-GdkGLContext *  gdk_wayland_window_create_gl_context                (GdkWindow         *window,
+gboolean        cdk_wayland_display_init_gl                         (GdkDisplay        *display);
+GdkGLContext *  cdk_wayland_window_create_gl_context                (GdkWindow         *window,
 								     gboolean           attach,
                                                                      GdkGLContext      *share,
                                                                      GError           **error);
-void            gdk_wayland_window_invalidate_for_new_frame         (GdkWindow         *window,
+void            cdk_wayland_window_invalidate_for_new_frame         (GdkWindow         *window,
                                                                      cairo_region_t    *update_area);
-gboolean        gdk_wayland_display_make_gl_context_current         (GdkDisplay        *display,
+gboolean        cdk_wayland_display_make_gl_context_current         (GdkDisplay        *display,
                                                                      GdkGLContext      *context);
 
 G_END_DECLS

@@ -13,7 +13,7 @@ set_cursor (CtkWidget *button, gpointer data)
 
   toplevel = ctk_widget_get_toplevel (button);
   window = ctk_widget_get_window (toplevel);
-  gdk_window_set_cursor (window, cursor);
+  cdk_window_set_cursor (window, cursor);
 }
 
 static CtkWidget *
@@ -47,7 +47,7 @@ add_button (CtkWidget   *section,
   GdkCursor *cursor;
 
   display = ctk_widget_get_display (section);
-  cursor = gdk_cursor_new_from_name (display, css_name);
+  cursor = cdk_cursor_new_from_name (display, css_name);
   if (cursor == NULL)
     image = ctk_image_new_from_icon_name ("image-missing", CTK_ICON_SIZE_MENU);
   else

@@ -17,18 +17,18 @@ create_color_pixbuf (const char *color)
   int rowstride;
   guchar *pixels, *p;
   
-  if (!gdk_rgba_parse (color, &col))
+  if (!cdk_rgba_parse (color, &col))
     return NULL;
   
-  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
+  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB,
 			   FALSE, 8,
 			   16, 16);
   
-  rowstride = gdk_pixbuf_get_rowstride (pixbuf);
-  p = pixels = gdk_pixbuf_get_pixels (pixbuf);
+  rowstride = cdk_pixbuf_get_rowstride (pixbuf);
+  p = pixels = cdk_pixbuf_get_pixels (pixbuf);
   
-  num = gdk_pixbuf_get_width (pixbuf) *
-    gdk_pixbuf_get_height (pixbuf);
+  num = cdk_pixbuf_get_width (pixbuf) *
+    cdk_pixbuf_get_height (pixbuf);
   
   for (x = 0; x < num; x++) {
     p[0] = col.red * 255;

@@ -25,15 +25,15 @@
 #ifndef __GDK_BROADWAY_H__
 #define __GDK_BROADWAY_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #define __GDKBROADWAY_H_INSIDE__
 
-#include <gdk/broadway/gdkbroadwaydisplay.h>
-#include <gdk/broadway/gdkbroadwaywindow.h>
-#include <gdk/broadway/gdkbroadwaycursor.h>
-#include <gdk/broadway/gdkbroadwaymonitor.h>
-#include <gdk/broadway/gdkbroadwayvisual.h>
+#include <cdk/broadway/cdkbroadwaydisplay.h>
+#include <cdk/broadway/cdkbroadwaywindow.h>
+#include <cdk/broadway/cdkbroadwaycursor.h>
+#include <cdk/broadway/cdkbroadwaymonitor.h>
+#include <cdk/broadway/cdkbroadwayvisual.h>
 
 #undef __GDKBROADWAY_H_INSIDE__
 

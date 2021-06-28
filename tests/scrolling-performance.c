@@ -70,7 +70,7 @@ scroll_viewport (CtkWidget     *viewport,
                  gpointer       user_data)
 {
   static gint64 start_time;
-  gint64 now = gdk_frame_clock_get_frame_time (frame_clock);
+  gint64 now = cdk_frame_clock_get_frame_time (frame_clock);
   gdouble elapsed;
   CtkAdjustment *hadjustment, *vadjustment;
 

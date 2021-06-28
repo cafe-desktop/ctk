@@ -89,18 +89,18 @@ DECLARE_INTERFACE_ (IPrintDialogCallback, IUnknown)
 }; 
 #endif
 
-static UINT got_gdk_events_message;
+static UINT got_cdk_events_message;
 
 UINT_PTR CALLBACK
 run_mainloop_hook (HWND hdlg, UINT uiMsg, WPARAM wParam, LPARAM lParam)
 {
   if (uiMsg == WM_INITDIALOG)
     {
-      gdk_win32_set_modal_dialog_libctk_only (hdlg);
+      cdk_win32_set_modal_dialog_libctk_only (hdlg);
       while (ctk_events_pending ())
 	ctk_main_iteration ();
     }
-  else if (uiMsg == got_gdk_events_message)
+  else if (uiMsg == got_cdk_events_message)
     {
       while (ctk_events_pending ())
 	ctk_main_iteration ();
@@ -533,7 +533,7 @@ win32_poll_status_timeout (CtkPrintOperation *op)
   win32_poll_status (op);
 
   if (!ctk_print_operation_is_finished (op)) {
-    op_win32->timeout_id = gdk_threads_add_timeout (STATUS_POLLING_TIME,
+    op_win32->timeout_id = cdk_threads_add_timeout (STATUS_POLLING_TIME,
 					  (GSourceFunc)win32_poll_status_timeout,
 					  op);
     g_source_set_name_by_id (op_win32->timeout_id, "[ctk+] win32_poll_status_timeout");
@@ -577,7 +577,7 @@ win32_end_run (CtkPrintOperation *op,
     {
       op_win32->printerHandle = printerHandle;
       win32_poll_status (op);
-      op_win32->timeout_id = gdk_threads_add_timeout (STATUS_POLLING_TIME,
+      op_win32->timeout_id = cdk_threads_add_timeout (STATUS_POLLING_TIME,
 					    (GSourceFunc)win32_poll_status_timeout,
 					    op);
       g_source_set_name_by_id (op_win32->timeout_id, "[ctk+] win32_poll_status_timeout");
@@ -675,7 +675,7 @@ static HWND
 get_parent_hwnd (CtkWidget *widget)
 {
   ctk_widget_realize (widget);
-  return gdk_win32_window_get_handle (ctk_widget_get_window (widget));
+  return cdk_win32_window_get_handle (ctk_widget_get_window (widget));
 }
 
 static void
@@ -1369,12 +1369,12 @@ iprintdialogcallback_handlemessage (IPrintDialogCallback *This,
 
   if (!callback->set_hwnd)
     {
-      gdk_win32_set_modal_dialog_libctk_only (hDlg);
+      cdk_win32_set_modal_dialog_libctk_only (hDlg);
       callback->set_hwnd = TRUE;
       while (ctk_events_pending ())
 	ctk_main_iteration ();
     }
-  else if (uMsg == got_gdk_events_message)
+  else if (uMsg == got_cdk_events_message)
     {
       while (ctk_events_pending ())
 	ctk_main_iteration ();
@@ -1440,7 +1440,7 @@ pageDlgProc (HWND wnd, UINT message, WPARAM wparam, LPARAM lparam)
       ctk_container_add (CTK_CONTAINER (plug), op->priv->custom_widget);
       ctk_widget_show (op->priv->custom_widget);
       ctk_widget_show (plug);
-      gdk_window_focus (ctk_widget_get_window (plug), GDK_CURRENT_TIME);
+      cdk_window_focus (ctk_widget_get_window (plug), GDK_CURRENT_TIME);
 
       /* This dialog is modal, so we grab the embed widget */
       ctk_grab_add (plug);
@@ -1832,11 +1832,11 @@ ctk_print_operation_run_with_dialog (CtkPrintOperation *op,
 
   callback = print_callback_new ();
   printdlgex->lpCallback = (IUnknown *)callback;
-  got_gdk_events_message = RegisterWindowMessage ("GDK_WIN32_GOT_EVENTS");
+  got_cdk_events_message = RegisterWindowMessage ("GDK_WIN32_GOT_EVENTS");
 
   hResult = PrintDlgExW (printdlgex);
   IUnknown_Release ((IUnknown *)callback);
-  gdk_win32_set_modal_dialog_libctk_only (NULL);
+  cdk_win32_set_modal_dialog_libctk_only (NULL);
 
   if (hResult != S_OK) 
     {
@@ -2158,10 +2158,10 @@ ctk_print_run_page_setup_dialog (CtkWindow        *parent,
 
   pagesetupdlg->Flags |= PSD_ENABLEPAGESETUPHOOK;
   pagesetupdlg->lpfnPageSetupHook = run_mainloop_hook;
-  got_gdk_events_message = RegisterWindowMessage ("GDK_WIN32_GOT_EVENTS");
+  got_cdk_events_message = RegisterWindowMessage ("GDK_WIN32_GOT_EVENTS");
   
   res = PageSetupDlgW (pagesetupdlg);
-  gdk_win32_set_modal_dialog_libctk_only (NULL);
+  cdk_win32_set_modal_dialog_libctk_only (NULL);
 
   if (res)
     {  

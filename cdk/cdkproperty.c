@@ -18,9 +18,9 @@
 
 #include "config.h"
 
-#include "gdkproperty.h"
+#include "cdkproperty.h"
 
-#include "gdkprivate.h"
+#include "cdkprivate.h"
 
 /**
  * SECTION:properties
@@ -180,7 +180,7 @@ intern_atom_internal (const gchar *atom_name,
 }
 
 /**
- * gdk_atom_intern:
+ * cdk_atom_intern:
  * @atom_name: a string.
  * @only_if_exists: if %TRUE, GDK is allowed to not create a new atom, but
  *   just return %GDK_NONE if the requested atom doesn’t already
@@ -192,7 +192,7 @@ intern_atom_internal (const gchar *atom_name,
  * Returns: (transfer none): the atom corresponding to @atom_name.
  */
 GdkAtom
-gdk_atom_intern (const gchar *atom_name,
+cdk_atom_intern (const gchar *atom_name,
                  gboolean     only_if_exists)
 {
   g_return_val_if_fail (atom_name != NULL, GDK_NONE);
@@ -201,12 +201,12 @@ gdk_atom_intern (const gchar *atom_name,
 }
 
 /**
- * gdk_atom_intern_static_string:
+ * cdk_atom_intern_static_string:
  * @atom_name: a static string
  *
  * Finds or creates an atom corresponding to a given string.
  *
- * Note that this function is identical to gdk_atom_intern() except
+ * Note that this function is identical to cdk_atom_intern() except
  * that if a new #GdkAtom is created the string itself is used rather
  * than a copy. This saves memory, but can only be used if the string
  * will always exist. It can be used with statically
@@ -220,7 +220,7 @@ gdk_atom_intern (const gchar *atom_name,
  * Since: 2.10
  */
 GdkAtom
-gdk_atom_intern_static_string (const gchar *atom_name)
+cdk_atom_intern_static_string (const gchar *atom_name)
 {
   g_return_val_if_fail (atom_name != NULL, GDK_NONE);
 
@@ -228,7 +228,7 @@ gdk_atom_intern_static_string (const gchar *atom_name)
 }
 
 /**
- * gdk_atom_name:
+ * cdk_atom_name:
  * @atom: a #GdkAtom.
  *
  * Determines the string corresponding to an atom.
@@ -238,13 +238,13 @@ gdk_atom_intern_static_string (const gchar *atom_name)
  *   return value, you should free it using g_free().
  */
 gchar *
-gdk_atom_name (GdkAtom atom)
+cdk_atom_name (GdkAtom atom)
 {
-  return g_strdup (_gdk_atom_name_const (atom));
+  return g_strdup (_cdk_atom_name_const (atom));
 }
 
 const gchar *
-_gdk_atom_name_const (GdkAtom atom)
+_cdk_atom_name_const (GdkAtom atom)
 {
   ensure_atom_tables ();
 

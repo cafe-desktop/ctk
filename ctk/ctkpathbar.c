@@ -519,7 +519,7 @@ ctk_path_bar_update_slider_buttons (CtkPathBar *path_bar)
 static void
 ctk_path_bar_map (CtkWidget *widget)
 {
-  gdk_window_show (CTK_PATH_BAR (widget)->priv->event_window);
+  cdk_window_show (CTK_PATH_BAR (widget)->priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_path_bar_parent_class)->map (widget);
 }
@@ -528,7 +528,7 @@ static void
 ctk_path_bar_unmap (CtkWidget *widget)
 {
   ctk_path_bar_stop_scrolling (CTK_PATH_BAR (widget));
-  gdk_window_hide (CTK_PATH_BAR (widget)->priv->event_window);
+  cdk_window_hide (CTK_PATH_BAR (widget)->priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_path_bar_parent_class)->unmap (widget);
 }
@@ -561,7 +561,7 @@ ctk_path_bar_realize (CtkWidget *widget)
   attributes.event_mask |= GDK_SCROLL_MASK;
   attributes_mask = GDK_WA_X | GDK_WA_Y;
 
-  path_bar->priv->event_window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  path_bar->priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                            &attributes, attributes_mask);
   ctk_widget_register_window (widget, path_bar->priv->event_window);
 }
@@ -574,7 +574,7 @@ ctk_path_bar_unrealize (CtkWidget *widget)
   path_bar = CTK_PATH_BAR (widget);
 
   ctk_widget_unregister_window (widget, path_bar->priv->event_window);
-  gdk_window_destroy (path_bar->priv->event_window);
+  cdk_window_destroy (path_bar->priv->event_window);
   path_bar->priv->event_window = NULL;
 
   CTK_WIDGET_CLASS (ctk_path_bar_parent_class)->unrealize (widget);
@@ -601,7 +601,7 @@ ctk_path_bar_size_allocate (CtkWidget     *widget,
   ctk_widget_set_allocation (widget, allocation);
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (path_bar->priv->event_window,
+    cdk_window_move_resize (path_bar->priv->event_window,
 			    allocation->x, allocation->y,
 			    allocation->width, allocation->height);
 
@@ -1054,7 +1054,7 @@ ctk_path_bar_scroll_timeout (CtkPathBar *path_bar)
 	{
 	  path_bar->priv->need_timer = FALSE;
 
-	  path_bar->priv->timer = gdk_threads_add_timeout (TIMEOUT_REPEAT * SCROLL_DELAY_FACTOR,
+	  path_bar->priv->timer = cdk_threads_add_timeout (TIMEOUT_REPEAT * SCROLL_DELAY_FACTOR,
 					   (GSourceFunc)ctk_path_bar_scroll_timeout,
 					   path_bar);
           g_source_set_name_by_id (path_bar->priv->timer, "[ctk+] ctk_path_bar_scroll_timeout");
@@ -1159,7 +1159,7 @@ ctk_path_bar_slider_button_press (CtkWidget      *widget,
   if (!path_bar->priv->timer)
     {
       path_bar->priv->need_timer = TRUE;
-      path_bar->priv->timer = gdk_threads_add_timeout (TIMEOUT_INITIAL,
+      path_bar->priv->timer = cdk_threads_add_timeout (TIMEOUT_INITIAL,
 				       (GSourceFunc)ctk_path_bar_scroll_timeout,
 				       path_bar);
       g_source_set_name_by_id (path_bar->priv->timer, "[ctk+] ctk_path_bar_scroll_timeout");

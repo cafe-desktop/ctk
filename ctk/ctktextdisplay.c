@@ -253,15 +253,15 @@ ctk_text_renderer_prepare_run (PangoRenderer  *renderer,
 	      rgba.blue = color->blue / 65535.;
 	      rgba.alpha = 1;
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-	      gdk_color_free (color);
+	      cdk_color_free (color);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-	      text_renderer->error_color = gdk_rgba_copy (&rgba);
+	      text_renderer->error_color = cdk_rgba_copy (&rgba);
 	    }
 	  else
 	    {
 	      static const GdkRGBA red = { 1, 0, 0, 1 };
-	      text_renderer->error_color = gdk_rgba_copy (&red);
+	      text_renderer->error_color = cdk_rgba_copy (&red);
 	    }
         }
 
@@ -271,7 +271,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     text_renderer_set_rgba (text_renderer, PANGO_RENDER_PART_UNDERLINE, fg_rgba);
 
   if (fg_rgba != appearance->rgba[1])
-    gdk_rgba_free (fg_rgba);
+    cdk_rgba_free (fg_rgba);
 }
 
 static void
@@ -292,7 +292,7 @@ set_color (CtkTextRenderer *text_renderer,
       rgba.green = color->green / 65535.;
       rgba.blue = color->blue / 65535.;
       rgba.alpha = alpha / 65535.;
-      gdk_cairo_set_source_rgba (text_renderer->cr, &rgba);
+      cdk_cairo_set_source_rgba (text_renderer->cr, &rgba);
     }
 }
 
@@ -458,9 +458,9 @@ ctk_text_renderer_draw_shape (PangoRenderer   *renderer,
       
       cairo_save (cr);
 
-      gdk_cairo_set_source_pixbuf (cr, pixbuf,
+      cdk_cairo_set_source_pixbuf (cr, pixbuf,
                                    PANGO_PIXELS (x),
-                                   PANGO_PIXELS (y) -  gdk_pixbuf_get_height (pixbuf));
+                                   PANGO_PIXELS (y) -  cdk_pixbuf_get_height (pixbuf));
       cairo_paint (cr);
 
       cairo_restore (cr);
@@ -537,7 +537,7 @@ text_renderer_begin (CtkTextRenderer *text_renderer,
 
   cairo_save (cr);
 
-  gdk_cairo_set_source_rgba (cr, &color);
+  cdk_cairo_set_source_rgba (cr, &color);
 }
 
 /* Returns a GSList of (referenced) widgets encountered while drawing.
@@ -561,7 +561,7 @@ text_renderer_end (CtkTextRenderer *text_renderer)
 
   if (text_renderer->error_color)
     {
-      gdk_rgba_free (text_renderer->error_color);
+      cdk_rgba_free (text_renderer->error_color);
       text_renderer->error_color = NULL;
     }
 
@@ -671,7 +671,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
           cairo_t *cr = text_renderer->cr;
 
           cairo_save (cr);
-          gdk_cairo_set_source_rgba (cr, &selection);
+          cdk_cairo_set_source_rgba (cr, &selection);
           cairo_rectangle (cr, 
                            line_display->left_margin, selection_y,
                            screen_width, selection_height);
@@ -692,7 +692,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
               cairo_save (cr);
  
-	      gdk_cairo_set_source_rgba (text_renderer->cr, line_display->pg_bg_rgba);
+	      cdk_cairo_set_source_rgba (text_renderer->cr, line_display->pg_bg_rgba);
               cairo_rectangle (cr, 
                                line_display->left_margin, selection_y,
                                screen_width, selection_height);
@@ -723,11 +723,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                           selection_start_index, selection_end_index);
 
               cairo_save (cr);
-              gdk_cairo_region (cr, clip_region);
+              cdk_cairo_region (cr, clip_region);
               cairo_clip (cr);
               cairo_region_destroy (clip_region);
 
-              gdk_cairo_set_source_rgba (cr, &selection);
+              cdk_cairo_set_source_rgba (cr, &selection);
               cairo_rectangle (cr,
                                PANGO_PIXELS (line_rect.x),
                                selection_y,
@@ -750,7 +750,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                 {
                   cairo_save (cr);
 
-                  gdk_cairo_set_source_rgba (cr, &selection);
+                  cdk_cairo_set_source_rgba (cr, &selection);
                   cairo_rectangle (cr,
                                    line_display->left_margin,
                                    selection_y,
@@ -774,7 +774,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
                   cairo_save (cr);
 
-                  gdk_cairo_set_source_rgba (cr, &selection);
+                  cdk_cairo_set_source_rgba (cr, &selection);
                   cairo_rectangle (cr,
                                    PANGO_PIXELS (line_rect.x) + PANGO_PIXELS (line_rect.width),
                                    selection_y,
@@ -806,10 +806,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
               cairo_save (cr);
 
-              gdk_cairo_rectangle (cr, &cursor_rect);
+              cdk_cairo_rectangle (cr, &cursor_rect);
               cairo_clip (cr);
 
-              gdk_cairo_set_source_rgba (cr, &cursor_color);
+              cdk_cairo_set_source_rgba (cr, &cursor_color);
               cairo_paint (cr);
 
               /* draw text under the cursor if any */
@@ -821,7 +821,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                   ctk_style_context_get_background_color (context, ctk_style_context_get_state (context), &color);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-                  gdk_cairo_set_source_rgba (cr, &color);
+                  cdk_cairo_set_source_rgba (cr, &color);
 
 		  text_renderer_set_state (text_renderer, CURSOR);
 
@@ -874,7 +874,7 @@ ctk_text_layout_draw (CtkTextLayout *layout,
   g_return_if_fail (layout->buffer != NULL);
   g_return_if_fail (cr != NULL);
 
-  if (!gdk_cairo_get_clip_rectangle (cr, &clip))
+  if (!cdk_cairo_get_clip_rectangle (cr, &clip))
     return;
 
   context = ctk_widget_get_style_context (widget);

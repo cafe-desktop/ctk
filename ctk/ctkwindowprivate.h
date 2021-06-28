@@ -19,7 +19,7 @@
 #ifndef __CTK_WINDOW_PRIVATE_H__
 #define __CTK_WINDOW_PRIVATE_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include "ctkwindow.h"
 
@@ -131,7 +131,7 @@ GdkPixbuf *ctk_window_get_icon_for_size (CtkWindow *window,
 void       ctk_window_set_use_subsurface (CtkWindow *window,
                                           gboolean   use_subsurface);
 void       ctk_window_set_hardcoded_window (CtkWindow *window,
-                                            GdkWindow *gdk_window);
+                                            GdkWindow *cdk_window);
 
 GdkScreen *_ctk_window_get_screen (CtkWindow *window);
 

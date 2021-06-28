@@ -162,11 +162,11 @@ ctk_overlay_create_child_window (CtkOverlay *overlay,
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
   attributes.event_mask = ctk_widget_get_events (widget);
 
-  window = gdk_window_new (ctk_widget_get_window (widget),
+  window = cdk_window_new (ctk_widget_get_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_register_window (widget, window);
 
-  gdk_window_set_pass_through (window, child->pass_through);
+  cdk_window_set_pass_through (window, child->pass_through);
 
   ctk_widget_set_parent_window (child->widget, window);
   
@@ -305,12 +305,12 @@ ctk_overlay_child_allocate (CtkOverlay      *overlay,
   if (ctk_widget_get_mapped (CTK_WIDGET (overlay)))
     {
       /* Note: This calls show every size allocation, which makes
-       * us keep the z-order of the chilren, as gdk_window_show()
+       * us keep the z-order of the chilren, as cdk_window_show()
        * does an implicit raise. */
       if (ctk_widget_get_visible (child->widget))
-        gdk_window_show (child->window);
-      else if (gdk_window_is_visible (child->window))
-        gdk_window_hide (child->window);
+        cdk_window_show (child->window);
+      else if (cdk_window_is_visible (child->window))
+        cdk_window_hide (child->window);
     }
 
   if (!ctk_widget_get_visible (child->widget))
@@ -319,7 +319,7 @@ ctk_overlay_child_allocate (CtkOverlay      *overlay,
   ctk_overlay_compute_child_allocation (overlay, child, &window_allocation, &child_allocation);
 
   if (child->window)
-    gdk_window_move_resize (child->window,
+    cdk_window_move_resize (child->window,
                             window_allocation.x, window_allocation.y,
                             window_allocation.width, window_allocation.height);
 
@@ -444,7 +444,7 @@ ctk_overlay_unrealize (CtkWidget *widget)
 
       ctk_widget_set_parent_window (child->widget, NULL);
       ctk_widget_unregister_window (widget, child->window);
-      gdk_window_destroy (child->window);
+      cdk_window_destroy (child->window);
       child->window = NULL;
     }
 
@@ -468,7 +468,7 @@ ctk_overlay_map (CtkWidget *widget)
       if (child->window != NULL &&
           ctk_widget_get_visible (child->widget) &&
           ctk_widget_get_child_visible (child->widget))
-        gdk_window_show (child->window);
+        cdk_window_show (child->window);
     }
 }
 
@@ -485,8 +485,8 @@ ctk_overlay_unmap (CtkWidget *widget)
       child = children->data;
 
       if (child->window != NULL &&
-          gdk_window_is_visible (child->window))
-        gdk_window_hide (child->window);
+          cdk_window_is_visible (child->window))
+        cdk_window_hide (child->window);
     }
 
   CTK_WIDGET_CLASS (ctk_overlay_parent_class)->unmap (widget);
@@ -512,7 +512,7 @@ ctk_overlay_remove (CtkContainer *container,
           if (child->window != NULL)
             {
               ctk_widget_unregister_window (CTK_WIDGET (container), child->window);
-              gdk_window_destroy (child->window);
+              cdk_window_destroy (child->window);
             }
 
           ctk_widget_unparent (widget);
@@ -690,7 +690,7 @@ ctk_overlay_set_child_property (CtkContainer *container,
 	    {
 	      child_info->pass_through = g_value_get_boolean (value);
 	      if (child_info->window)
-		gdk_window_set_pass_through (child_info->window, child_info->pass_through);
+		cdk_window_set_pass_through (child_info->window, child_info->pass_through);
 	      ctk_container_child_notify (container, child, "pass-through");
 	    }
 	}

@@ -2006,7 +2006,7 @@ ctk_range_allocate_trough (CtkCssGadget        *gadget,
                                &fill_alloc,
                                baseline,
                                &fill_clip);
-      gdk_rectangle_union (out_clip, &fill_clip, out_clip);
+      cdk_rectangle_union (out_clip, &fill_clip, out_clip);
     }
 
   if (priv->has_origin)
@@ -2056,7 +2056,7 @@ ctk_range_allocate_trough (CtkCssGadget        *gadget,
                                &highlight_alloc,
                                baseline,
                                &highlight_clip);
-      gdk_rectangle_union (out_clip, &highlight_clip, out_clip);
+      cdk_rectangle_union (out_clip, &highlight_clip, out_clip);
     }
 }
 
@@ -2184,7 +2184,7 @@ ctk_range_allocate (CtkCssGadget        *gadget,
   /* TODO: we should compute a proper clip from get_range_border(),
    * but this will at least give us outset shadows.
    */
-  gdk_rectangle_union (out_clip, allocation, out_clip);
+  cdk_rectangle_union (out_clip, allocation, out_clip);
 }
 
 static void
@@ -2198,7 +2198,7 @@ ctk_range_size_allocate (CtkWidget     *widget,
   ctk_widget_set_allocation (widget, allocation);
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (priv->event_window,
+    cdk_window_move_resize (priv->event_window,
                             allocation->x, allocation->y,
                             allocation->width, allocation->height);
 
@@ -2244,7 +2244,7 @@ ctk_range_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y;
 
-  priv->event_window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
 					&attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->event_window);
 }
@@ -2258,7 +2258,7 @@ ctk_range_unrealize (CtkWidget *widget)
   ctk_range_remove_step_timer (range);
 
   ctk_widget_unregister_window (widget, priv->event_window);
-  gdk_window_destroy (priv->event_window);
+  cdk_window_destroy (priv->event_window);
   priv->event_window = NULL;
 
   CTK_WIDGET_CLASS (ctk_range_parent_class)->unrealize (widget);
@@ -2270,7 +2270,7 @@ ctk_range_map (CtkWidget *widget)
   CtkRange *range = CTK_RANGE (widget);
   CtkRangePrivate *priv = range->priv;
 
-  gdk_window_show (priv->event_window);
+  cdk_window_show (priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_range_parent_class)->map (widget);
 }
@@ -2283,7 +2283,7 @@ ctk_range_unmap (CtkWidget *widget)
 
   stop_scrolling (range);
 
-  gdk_window_hide (priv->event_window);
+  cdk_window_hide (priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_range_parent_class)->unmap (widget);
 }
@@ -2604,8 +2604,8 @@ ctk_range_key_press (CtkWidget   *widget,
   CtkRange *range = CTK_RANGE (widget);
   CtkRangePrivate *priv = range->priv;
 
-  device = gdk_event_get_device ((GdkEvent *) event);
-  device = gdk_device_get_associated_device (device);
+  device = cdk_event_get_device ((GdkEvent *) event);
+  device = cdk_device_get_associated_device (device);
 
   if (ctk_gesture_is_active (priv->drag_gesture) &&
       device == ctk_gesture_get_device (priv->drag_gesture) &&
@@ -2701,11 +2701,11 @@ ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (gesture));
   event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
-  gdk_event_get_state (event, &state_mask);
+  cdk_event_get_state (event, &state_mask);
   shift_pressed = (state_mask & GDK_SHIFT_MASK) != 0;
 
-  source_device = gdk_event_get_source_device ((GdkEvent *) event);
-  source = gdk_device_get_source (source_device);
+  source_device = cdk_event_get_source_device ((GdkEvent *) event);
+  source = cdk_device_get_source (source_device);
 
   priv->mouse_x = x;
   priv->mouse_y = y;
@@ -2718,7 +2718,7 @@ ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
                 NULL);
 
   if (priv->mouse_location == priv->slider_gadget &&
-      gdk_event_triggers_context_menu (event))
+      cdk_event_triggers_context_menu (event))
     {
       gboolean handled;
 
@@ -3075,7 +3075,7 @@ _ctk_range_get_wheel_delta (CtkRange       *range,
   else
     scroll_unit = page_increment;
 
-  if (gdk_event_get_scroll_deltas ((GdkEvent *) event, &dx, &dy))
+  if (cdk_event_get_scroll_deltas ((GdkEvent *) event, &dx, &dy))
     {
 #ifdef GDK_WINDOWING_QUARTZ
       scroll_unit = 1;
@@ -3092,7 +3092,7 @@ _ctk_range_get_wheel_delta (CtkRange       *range,
           delta = dy * scroll_unit;
         }
     }
-  else if (gdk_event_get_scroll_direction ((GdkEvent *) event, &direction))
+  else if (cdk_event_get_scroll_direction ((GdkEvent *) event, &direction))
     {
       if (direction == GDK_SCROLL_LEFT || direction == GDK_SCROLL_RIGHT)
         move_orientation = CTK_ORIENTATION_HORIZONTAL;
@@ -3211,7 +3211,7 @@ ctk_range_event (CtkWidget *widget,
       priv->mouse_x = G_MININT;
       priv->mouse_y = G_MININT;
     }
-  else if (gdk_event_get_coords (event, &x, &y))
+  else if (cdk_event_get_coords (event, &x, &y))
     {
       priv->mouse_x = x;
       priv->mouse_y = y;
@@ -3497,7 +3497,7 @@ ctk_range_update_mouse_location (CtkRange *range)
 
   ctk_css_gadget_get_border_box (priv->trough_gadget, &trough_alloc);
   ctk_css_gadget_get_border_box (priv->slider_gadget, &slider_alloc);
-  gdk_rectangle_union (&slider_alloc, &trough_alloc, &slider_trace);
+  cdk_rectangle_union (&slider_alloc, &trough_alloc, &slider_trace);
 
   if (priv->grab_location != NULL)
     priv->mouse_location = priv->grab_location;
@@ -3828,7 +3828,7 @@ initial_timeout (gpointer data)
   CtkRange *range = CTK_RANGE (data);
   CtkRangePrivate *priv = range->priv;
 
-  priv->timer->timeout_id = gdk_threads_add_timeout (TIMEOUT_REPEAT,
+  priv->timer->timeout_id = cdk_threads_add_timeout (TIMEOUT_REPEAT,
                                                      second_timeout,
                                                      range);
   g_source_set_name_by_id (priv->timer->timeout_id, "[ctk+] second_timeout");
@@ -3846,7 +3846,7 @@ ctk_range_add_step_timer (CtkRange      *range,
 
   priv->timer = g_new (CtkRangeStepTimer, 1);
 
-  priv->timer->timeout_id = gdk_threads_add_timeout (TIMEOUT_INITIAL,
+  priv->timer->timeout_id = cdk_threads_add_timeout (TIMEOUT_INITIAL,
                                                      initial_timeout,
                                                      range);
   g_source_set_name_by_id (priv->timer->timeout_id, "[ctk+] initial_timeout");

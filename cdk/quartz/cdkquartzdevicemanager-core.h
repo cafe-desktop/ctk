@@ -19,14 +19,14 @@
 #define __GDK_QUARTZ_DEVICE_MANAGER_CORE_H__
 
 #if !defined(__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkquartz.h> can be included directly."
+#error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_QUARTZ_DEVICE_MANAGER_CORE         (gdk_quartz_device_manager_core_get_type ())
+#define GDK_TYPE_QUARTZ_DEVICE_MANAGER_CORE         (cdk_quartz_device_manager_core_get_type ())
 #define GDK_QUARTZ_DEVICE_MANAGER_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_QUARTZ_DEVICE_MANAGER_CORE, GdkQuartzDeviceManagerCore))
 #define GDK_QUARTZ_DEVICE_MANAGER_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_QUARTZ_DEVICE_MANAGER_CORE, GdkQuartzDeviceManagerCoreClass))
 #define GDK_IS_QUARTZ_DEVICE_MANAGER_CORE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_QUARTZ_DEVICE_MANAGER_CORE))
@@ -38,7 +38,7 @@ typedef struct _GdkQuartzDeviceManagerCoreClass GdkQuartzDeviceManagerCoreClass;
 
 
 GDK_AVAILABLE_IN_ALL
-GType gdk_quartz_device_manager_core_get_type (void) G_GNUC_CONST;
+GType cdk_quartz_device_manager_core_get_type (void) G_GNUC_CONST;
 
 
 G_END_DECLS

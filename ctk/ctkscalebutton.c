@@ -939,7 +939,7 @@ cb_button_press (CtkWidget      *widget,
   g_object_get (ctk_widget_get_settings (widget),
                 "ctk-double-click-time", &double_click_time,
                 NULL);
-  priv->click_id = gdk_threads_add_timeout (double_click_time,
+  priv->click_id = cdk_threads_add_timeout (double_click_time,
                                             cb_button_timeout,
                                             button);
   g_source_set_name_by_id (priv->click_id, "[ctk+] cb_button_timeout");

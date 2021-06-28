@@ -17,7 +17,7 @@
  */
 
 /*
- * Compatibility version of gdkkeysyms.h.
+ * Compatibility version of cdkkeysyms.h.
  *
  * In CTK3, keysyms changed to have a KEY_ prefix.  This is a compatibility header
  * your application can include to gain access to the old names as well.  Consider

@@ -31,7 +31,7 @@
 
 #ifdef GDK_WINDOWING_X11
 
-#include <gdk/gdkx.h>
+#include <cdk/cdkx.h>
 
 #include <ctk/ctkcontainer.h>
 

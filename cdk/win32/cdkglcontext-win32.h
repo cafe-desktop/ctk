@@ -1,6 +1,6 @@
 /* GDK - The GIMP Drawing Kit
  *
- * gdkglcontext-win32.h: Private Win32 specific OpenGL wrappers
+ * cdkglcontext-win32.h: Private Win32 specific OpenGL wrappers
  *
  * Copyright © 2014 Chun-wei Fan
  *
@@ -28,12 +28,12 @@
 # include <epoxy/egl.h>
 #endif
 
-#include "gdkglcontextprivate.h"
-#include "gdkdisplayprivate.h"
-#include "gdkvisual.h"
-#include "gdkwindow.h"
-#include "gdkinternals.h"
-#include "gdkmain.h"
+#include "cdkglcontextprivate.h"
+#include "cdkdisplayprivate.h"
+#include "cdkvisual.h"
+#include "cdkwindow.h"
+#include "cdkinternals.h"
+#include "cdkmain.h"
 
 G_BEGIN_DECLS
 
@@ -64,30 +64,30 @@ struct _GdkWin32GLContextClass
 };
 
 GdkGLContext *
-_gdk_win32_window_create_gl_context (GdkWindow *window,
+_cdk_win32_window_create_gl_context (GdkWindow *window,
                                      gboolean attached,
                                      GdkGLContext *share,
                                      GError **error);
 
 void
-_gdk_win32_window_invalidate_for_new_frame (GdkWindow *window,
+_cdk_win32_window_invalidate_for_new_frame (GdkWindow *window,
                                             cairo_region_t *update_area);
 
 void
-_gdk_win32_gl_context_end_frame (GdkGLContext *context,
+_cdk_win32_gl_context_end_frame (GdkGLContext *context,
                                  cairo_region_t *painted,
                                  cairo_region_t *damage);
 
 gboolean
-_gdk_win32_display_make_gl_context_current (GdkDisplay *display,
+_cdk_win32_display_make_gl_context_current (GdkDisplay *display,
                                             GdkGLContext *context);
 
 gboolean
-_gdk_win32_gl_context_realize (GdkGLContext *context,
+_cdk_win32_gl_context_realize (GdkGLContext *context,
                                GError **error);
 
 void
-_gdk_win32_window_invalidate_egl_framebuffer (GdkWindow *window);
+_cdk_win32_window_invalidate_egl_framebuffer (GdkWindow *window);
 
 G_END_DECLS
 

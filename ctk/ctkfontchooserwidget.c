@@ -1090,7 +1090,7 @@ ctk_font_chooser_widget_get_preview_text_height (CtkFontChooserWidget *fontchoos
   CtkWidget *treeview = fontchooser->priv->family_face_list;
   double dpi, font_size;
 
-  dpi = gdk_screen_get_resolution (ctk_widget_get_screen (treeview));
+  dpi = cdk_screen_get_resolution (ctk_widget_get_screen (treeview));
   ctk_style_context_get (ctk_widget_get_style_context (treeview),
                          ctk_widget_get_state_flags (treeview),
                          "font-size", &font_size,
@@ -1292,7 +1292,7 @@ ctk_font_chooser_widget_screen_changed (CtkWidget *widget,
                            G_CALLBACK (fontconfig_changed), widget, G_CONNECT_SWAPPED);
 
   if (previous_screen == NULL)
-    previous_screen = gdk_screen_get_default ();
+    previous_screen = cdk_screen_get_default ();
 
   if (previous_screen == ctk_widget_get_screen (widget))
     return;

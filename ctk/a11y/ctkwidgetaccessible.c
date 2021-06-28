@@ -19,7 +19,7 @@
 
 #include <ctk/ctk.h>
 #ifdef GDK_WINDOWING_X11
-#include <gdk/x11/gdkx.h>
+#include <cdk/x11/cdkx.h>
 #endif
 #include "ctkwidgetaccessibleprivate.h"
 #include "ctknotebookpageaccessible.h"
@@ -602,14 +602,14 @@ ctk_widget_accessible_get_extents (AtkComponent   *component,
       *y = 0;
       window = ctk_widget_get_window (widget);
     }
-  gdk_window_get_origin (window, &x_window, &y_window);
+  cdk_window_get_origin (window, &x_window, &y_window);
   *x += x_window;
   *y += y_window;
 
   if (coord_type == ATK_XY_WINDOW)
     {
-      window = gdk_window_get_toplevel (ctk_widget_get_window (widget));
-      gdk_window_get_origin (window, &x_toplevel, &y_toplevel);
+      window = cdk_window_get_toplevel (ctk_widget_get_window (widget));
+      cdk_window_get_origin (window, &x_toplevel, &y_toplevel);
 
       *x -= x_toplevel;
       *y -= y_toplevel;
@@ -644,7 +644,7 @@ ctk_widget_accessible_grab_focus (AtkComponent *component)
 #ifdef GDK_WINDOWING_X11
       if (GDK_IS_X11_DISPLAY (ctk_widget_get_display (toplevel)))
         ctk_window_present_with_time (CTK_WINDOW (toplevel),
-                                      gdk_x11_get_server_time (ctk_widget_get_window (widget)));
+                                      cdk_x11_get_server_time (ctk_widget_get_window (widget)));
       else
 #endif
         {
@@ -679,7 +679,7 @@ ctk_widget_accessible_set_extents (AtkComponent *component,
       gint x_current, y_current;
       GdkWindow *window = ctk_widget_get_window (widget);
 
-      gdk_window_get_origin (window, &x_current, &y_current);
+      cdk_window_get_origin (window, &x_current, &y_current);
       x_current += x;
       y_current += y;
       if (x_current < 0 || y_current < 0)
@@ -719,7 +719,7 @@ ctk_widget_accessible_set_position (AtkComponent *component,
           gint x_current, y_current;
           GdkWindow *window = ctk_widget_get_window (widget);
 
-          gdk_window_get_origin (window, &x_current, &y_current);
+          cdk_window_get_origin (window, &x_current, &y_current);
           x_current += x;
           y_current += y;
           if (x_current < 0 || y_current < 0)

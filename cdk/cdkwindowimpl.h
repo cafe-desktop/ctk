@@ -25,12 +25,12 @@
 #ifndef __GDK_WINDOW_IMPL_H__
 #define __GDK_WINDOW_IMPL_H__
 
-#include <gdk/gdkwindow.h>
-#include <gdk/gdkproperty.h>
+#include <cdk/cdkwindow.h>
+#include <cdk/cdkproperty.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_WINDOW_IMPL           (gdk_window_impl_get_type ())
+#define GDK_TYPE_WINDOW_IMPL           (cdk_window_impl_get_type ())
 #define GDK_WINDOW_IMPL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL, GdkWindowImpl))
 #define GDK_WINDOW_IMPL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL, GdkWindowImplClass))
 #define GDK_IS_WINDOW_IMPL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL))
@@ -134,7 +134,7 @@ struct _GdkWindowImplClass
   void     (* queue_antiexpose)     (GdkWindow       *window,
                                      cairo_region_t  *update_area);
 
-/* Called to do the windowing system specific part of gdk_window_destroy(),
+/* Called to do the windowing system specific part of cdk_window_destroy(),
  *
  * window: The window being destroyed
  * recursing: If TRUE, then this is being called because a parent
@@ -152,7 +152,7 @@ struct _GdkWindowImplClass
 					 gboolean         foreign_destroy);
 
 
- /* Called when gdk_window_destroy() is called on a foreign window
+ /* Called when cdk_window_destroy() is called on a foreign window
   * or an ancestor of the foreign window. It should generally reparent
   * the window out of it's current heirarchy, hide it, and then
   * send a message to the owner requesting that the window be destroyed.
@@ -318,7 +318,7 @@ struct _GdkWindowImplClass
 };
 
 /* Interface Functions */
-GType gdk_window_impl_get_type (void) G_GNUC_CONST;
+GType cdk_window_impl_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 

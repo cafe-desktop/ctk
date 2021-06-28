@@ -137,7 +137,7 @@ prepare_callback (CtkWidget *widget, CtkWidget *page)
     {
       ctk_assistant_set_page_complete (CTK_ASSISTANT (widget), page, FALSE);
       ctk_progress_bar_set_fraction (CTK_PROGRESS_BAR (page), 0.0);
-      gdk_threads_add_timeout (300, (GSourceFunc) progress_timeout, widget);
+      cdk_threads_add_timeout (300, (GSourceFunc) progress_timeout, widget);
     }
   else
     g_print ("prepare: %d\n", ctk_assistant_get_current_page (CTK_ASSISTANT (widget)));

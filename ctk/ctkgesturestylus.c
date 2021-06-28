@@ -57,12 +57,12 @@ ctk_gesture_stylus_handle_event (CtkEventController *controller,
 
   CTK_EVENT_CONTROLLER_CLASS (ctk_gesture_stylus_parent_class)->handle_event (controller, event);
 
-  if (!gdk_event_get_device_tool (event))
+  if (!cdk_event_get_device_tool (event))
     return FALSE;
-  if (!gdk_event_get_coords (event, &x, &y))
+  if (!cdk_event_get_coords (event, &x, &y))
     return FALSE;
 
-  switch ((guint) gdk_event_get_event_type (event))
+  switch ((guint) cdk_event_get_event_type (event))
     {
     case GDK_BUTTON_PRESS:
       n_signal = DOWN;
@@ -71,7 +71,7 @@ ctk_gesture_stylus_handle_event (CtkEventController *controller,
       n_signal = UP;
       break;
     case GDK_MOTION_NOTIFY:
-      gdk_event_get_state (event, &modifiers);
+      cdk_event_get_state (event, &modifiers);
 
       if (modifiers & GDK_BUTTON1_MASK)
         n_signal = MOTION;
@@ -207,7 +207,7 @@ ctk_gesture_stylus_get_axis (CtkGestureStylus *gesture,
   if (!event)
     return FALSE;
 
-  return gdk_event_get_axis (event, axis, value);
+  return cdk_event_get_axis (event, axis, value);
 }
 
 /**
@@ -256,7 +256,7 @@ ctk_gesture_stylus_get_axes (CtkGestureStylus  *gesture,
           return FALSE;
         }
 
-      gdk_event_get_axis (event, axes[i], &value);
+      cdk_event_get_axis (event, axes[i], &value);
       g_array_append_val (array, value);
       i++;
     }
@@ -289,5 +289,5 @@ ctk_gesture_stylus_get_device_tool (CtkGestureStylus *gesture)
   if (!event)
     return NULL;
 
-  return gdk_event_get_device_tool (event);
+  return cdk_event_get_device_tool (event);
 }

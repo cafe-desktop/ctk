@@ -18,7 +18,7 @@
 #ifndef __CTK_PRINT_UTILS_H__
 #define __CTK_PRINT_UTILS_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include "ctkenums.h"
 
 

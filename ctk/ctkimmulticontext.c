@@ -312,7 +312,7 @@ ctk_im_multicontext_set_client_window (CtkIMContext *context,
 
   if (window)
     {
-      screen = gdk_window_get_screen (window);
+      screen = cdk_window_get_screen (window);
       settings = ctk_settings_get_for_screen (screen);
 
       connected = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (settings),
@@ -369,10 +369,10 @@ ctk_im_multicontext_filter_keypress (CtkIMContext *context,
       GdkDisplay *display;
       GdkModifierType no_text_input_mask;
 
-      display = gdk_window_get_display (event->window);
+      display = cdk_window_get_display (event->window);
 
       no_text_input_mask =
-        gdk_keymap_get_modifier_mask (gdk_keymap_get_for_display (display),
+        cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
                                       GDK_MODIFIER_INTENT_NO_TEXT_INPUT);
 
       if (event->type == GDK_KEY_PRESS &&
@@ -380,7 +380,7 @@ ctk_im_multicontext_filter_keypress (CtkIMContext *context,
         {
           gunichar ch;
 
-          ch = gdk_keyval_to_unicode (event->keyval);
+          ch = cdk_keyval_to_unicode (event->keyval);
           if (ch != 0 && !g_unichar_iscntrl (ch))
             {
               gint len;

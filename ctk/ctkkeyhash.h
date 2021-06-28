@@ -20,7 +20,7 @@
 #ifndef __CTK_KEY_HASH_H__
 #define __CTK_KEY_HASH_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 

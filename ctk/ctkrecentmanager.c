@@ -551,9 +551,9 @@ ctk_recent_manager_monitor_changed (GFileMonitor      *monitor,
     case G_FILE_MONITOR_EVENT_CHANGED:
     case G_FILE_MONITOR_EVENT_CREATED:
     case G_FILE_MONITOR_EVENT_DELETED:
-      gdk_threads_enter ();
+      cdk_threads_enter ();
       ctk_recent_manager_changed (manager);
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       break;
 
     default:
@@ -810,7 +810,7 @@ ctk_recent_manager_add_item_query_info (GObject      *source_object,
   recent_data.groups = NULL;
   recent_data.is_private = FALSE;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   /* Ignore return value, this can't fail anyway since all required
    * fields are set
@@ -820,7 +820,7 @@ ctk_recent_manager_add_item_query_info (GObject      *source_object,
   manager->priv->is_dirty = TRUE;
   ctk_recent_manager_changed (manager);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   g_free (recent_data.mime_type);
   g_free (recent_data.app_name);
@@ -1418,7 +1418,7 @@ ctk_recent_manager_changed (CtkRecentManager *manager)
    */
   if (manager->priv->changed_timeout == 0)
     {
-      manager->priv->changed_timeout = gdk_threads_add_timeout (250, emit_manager_changed, manager);
+      manager->priv->changed_timeout = cdk_threads_add_timeout (250, emit_manager_changed, manager);
       g_source_set_name_by_id (manager->priv->changed_timeout, "[ctk+] emit_manager_changed");
     }
   else

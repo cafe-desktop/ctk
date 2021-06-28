@@ -27,16 +27,16 @@
 
 #define __GDKWIN32_H_INSIDE__
 
-#include <gdk/win32/gdkwin32cursor.h>
-#include <gdk/win32/gdkwin32display.h>
-#include <gdk/win32/gdkwin32displaymanager.h>
-#include <gdk/win32/gdkwin32dnd.h>
-#include <gdk/win32/gdkwin32keys.h>
-#include <gdk/win32/gdkwin32screen.h>
-#include <gdk/win32/gdkwin32window.h>
-#include <gdk/win32/gdkwin32misc.h>
-#include <gdk/win32/gdkwin32monitor.h>
-#include <gdk/win32/gdkwin32glcontext.h>
+#include <cdk/win32/cdkwin32cursor.h>
+#include <cdk/win32/cdkwin32display.h>
+#include <cdk/win32/cdkwin32displaymanager.h>
+#include <cdk/win32/cdkwin32dnd.h>
+#include <cdk/win32/cdkwin32keys.h>
+#include <cdk/win32/cdkwin32screen.h>
+#include <cdk/win32/cdkwin32window.h>
+#include <cdk/win32/cdkwin32misc.h>
+#include <cdk/win32/cdkwin32monitor.h>
+#include <cdk/win32/cdkwin32glcontext.h>
 
 #undef __GDKWIN32_H_INSIDE__
 

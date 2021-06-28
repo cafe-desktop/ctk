@@ -978,7 +978,7 @@ ctk_entry_accessible_get_character_extents (AtkText      *text,
   _ctk_widget_get_allocation (widget, &allocation);
 
   window = ctk_widget_get_window (widget);
-  gdk_window_get_origin (window, &x_window, &y_window);
+  cdk_window_get_origin (window, &x_window, &y_window);
 
   *x = x_window + allocation.x + x_layout + char_rect.x;
   *y = y_window + allocation.y + y_layout + char_rect.y;
@@ -987,8 +987,8 @@ ctk_entry_accessible_get_character_extents (AtkText      *text,
 
   if (coords == ATK_XY_WINDOW)
     {
-      window = gdk_window_get_toplevel (window);
-      gdk_window_get_origin (window, &x_window, &y_window);
+      window = cdk_window_get_toplevel (window);
+      cdk_window_get_origin (window, &x_window, &y_window);
 
       *x -= x_window;
       *y -= y_window;
@@ -1019,15 +1019,15 @@ ctk_entry_accessible_get_offset_at_point (AtkText      *atk_text,
   ctk_entry_get_layout_offsets (entry, &x_layout, &y_layout);
 
   window = ctk_widget_get_window (widget);
-  gdk_window_get_origin (window, &x_window, &y_window);
+  cdk_window_get_origin (window, &x_window, &y_window);
 
   x_local = x - x_layout - x_window;
   y_local = y - y_layout - y_window;
 
   if (coords == ATK_XY_WINDOW)
     {
-      window = gdk_window_get_toplevel (window);
-      gdk_window_get_origin (window, &x_window, &y_window);
+      window = cdk_window_get_toplevel (window);
+      cdk_window_get_origin (window, &x_window, &y_window);
 
       x_local += x_window;
       y_local += y_window;

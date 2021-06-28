@@ -1,7 +1,7 @@
 #ifndef __GDK_DRAWING_CONTEXT_PRIVATE_H__
 #define __GDK_DRAWING_CONTEXT_PRIVATE_H__
 
-#include "gdkdrawingcontext.h"
+#include "cdkdrawingcontext.h"
 
 G_BEGIN_DECLS
 

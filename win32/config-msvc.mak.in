@@ -45,15 +45,15 @@ GDK_PREPROCESSOR_FLAGS =	\
 	/DG_LOG_USE_STRUCTURED=1	\
 	/DGDK_COMPILATION	\
 	/I..	\
-	/I..\gdk	\
-	/I..\gdk\win32
+	/I..\cdk	\
+	/I..\cdk\win32
 
 CTK_PREPROCESSOR_FLAGS =	\
 	 /I..\ctk	\
-	 /I..\gdk	\
-	 /I..\gdk\win32	\
+	 /I..\cdk	\
+	 /I..\cdk\win32	\
 	 /I..	\
-	 /I$(PREFIX)\include\gdk-pixbuf-2.0	\
+	 /I$(PREFIX)\include\cdk-pixbuf-2.0	\
 	 /I$(PREFIX)\include\pango-1.0	\
 	 /I$(PREFIX)\include\atk-1.0	\
 	 /I$(PREFIX)\include\cairo	\

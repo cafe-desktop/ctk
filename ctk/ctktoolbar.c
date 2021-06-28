@@ -852,7 +852,7 @@ ctk_toolbar_map (CtkWidget *widget)
   CTK_WIDGET_CLASS (ctk_toolbar_parent_class)->map (widget);
 
   if (priv->event_window)
-    gdk_window_show_unraised (priv->event_window);
+    cdk_window_show_unraised (priv->event_window);
 }
 
 static void
@@ -862,7 +862,7 @@ ctk_toolbar_unmap (CtkWidget *widget)
   CtkToolbarPrivate *priv = toolbar->priv;
 
   if (priv->event_window)
-    gdk_window_hide (priv->event_window);
+    cdk_window_hide (priv->event_window);
   
   CTK_WIDGET_CLASS (ctk_toolbar_parent_class)->unmap (widget);
 }
@@ -900,7 +900,7 @@ ctk_toolbar_realize (CtkWidget *widget)
   ctk_widget_set_window (widget, window);
   g_object_ref (window);
 
-  priv->event_window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
 				       &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->event_window);
 }
@@ -914,7 +914,7 @@ ctk_toolbar_unrealize (CtkWidget *widget)
   if (priv->event_window)
     {
       ctk_widget_unregister_window (widget, priv->event_window);
-      gdk_window_destroy (priv->event_window);
+      cdk_window_destroy (priv->event_window);
       priv->event_window = NULL;
     }
 
@@ -1216,7 +1216,7 @@ slide_idle_handler (gpointer data)
 
   if (priv->need_sync)
     {
-      gdk_display_flush (ctk_widget_get_display (data));
+      cdk_display_flush (ctk_widget_get_display (data));
       priv->need_sync = FALSE;
     }
   
@@ -1325,7 +1325,7 @@ ctk_toolbar_begin_sliding (CtkToolbar *toolbar)
   
   if (!priv->idle_id)
     {
-      priv->idle_id = gdk_threads_add_idle (slide_idle_handler, toolbar);
+      priv->idle_id = cdk_threads_add_idle (slide_idle_handler, toolbar);
       g_source_set_name_by_id (priv->idle_id, "[ctk+] slide_idle_handler");
     }
 
@@ -1872,7 +1872,7 @@ ctk_toolbar_size_allocate (CtkWidget     *widget,
   ctk_widget_set_allocation (widget, allocation);
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (priv->event_window,
+    cdk_window_move_resize (priv->event_window,
                             allocation->x,
                             allocation->y,
                             allocation->width,
@@ -2704,7 +2704,7 @@ static gboolean
 ctk_toolbar_button_press (CtkWidget      *toolbar,
     			  GdkEventButton *event)
 {
-  if (gdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (cdk_event_triggers_context_menu ((GdkEvent *) event))
     {
       gboolean return_value;
 

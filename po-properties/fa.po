@@ -21,153 +21,153 @@ msgstr ""
 "X-Poedit-Country: IRAN, ISLAMIC REPUBLIC OF\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../gdk/gdkapplaunchcontext.c:129
-#: ../gdk/gdkcursor.c:136
-#: ../gdk/gdkdevicemanager.c:146
+#: ../cdk/cdkapplaunchcontext.c:129
+#: ../cdk/cdkcursor.c:136
+#: ../cdk/cdkdevicemanager.c:146
 msgid "Display"
 msgstr "صفحه‌نمایش"
 
-#: ../gdk/gdkcursor.c:128
+#: ../cdk/cdkcursor.c:128
 msgid "Cursor type"
 msgstr "نوع مکان‌نما"
 
-#: ../gdk/gdkcursor.c:129
+#: ../cdk/cdkcursor.c:129
 msgid "Standard cursor type"
 msgstr "نوع مکان‌نما استاندارد"
 
-#: ../gdk/gdkcursor.c:137
+#: ../cdk/cdkcursor.c:137
 #, fuzzy
 #| msgid "Display the cell"
 msgid "Display of this cursor"
 msgstr "نمایش سلول"
 
-#: ../gdk/gdkdevice.c:111
+#: ../cdk/cdkdevice.c:111
 msgid "Device Display"
 msgstr "صفحه‌نمایش دستگاه"
 
-#: ../gdk/gdkdevice.c:112
+#: ../cdk/cdkdevice.c:112
 #, fuzzy
 msgid "Display which the device belongs to"
 msgstr "نمایش سلول"
 
-#: ../gdk/gdkdevice.c:126
+#: ../cdk/cdkdevice.c:126
 msgid "Device manager"
 msgstr "مدیریت دستگاه"
 
-#: ../gdk/gdkdevice.c:127
+#: ../cdk/cdkdevice.c:127
 msgid "Device manager which the device belongs to"
 msgstr ""
 
-#: ../gdk/gdkdevice.c:141
-#: ../gdk/gdkdevice.c:142
+#: ../cdk/cdkdevice.c:141
+#: ../cdk/cdkdevice.c:142
 msgid "Device name"
 msgstr "نام دستگاه"
 
-#: ../gdk/gdkdevice.c:156
+#: ../cdk/cdkdevice.c:156
 msgid "Device type"
 msgstr "نوع دستگاه"
 
-#: ../gdk/gdkdevice.c:157
+#: ../cdk/cdkdevice.c:157
 msgid "Device role in the device manager"
 msgstr "نقش دستگاه در «مدیریت دستگاه»"
 
-#: ../gdk/gdkdevice.c:173
+#: ../cdk/cdkdevice.c:173
 msgid "Associated device"
 msgstr "دستگاه همراه"
 
-#: ../gdk/gdkdevice.c:174
+#: ../cdk/cdkdevice.c:174
 msgid "Associated pointer or keyboard with this device"
 msgstr "صفحه‌کلید یا موشی همراه با این دستگاه"
 
-#: ../gdk/gdkdevice.c:187
+#: ../cdk/cdkdevice.c:187
 msgid "Input source"
 msgstr "منبع ورودی"
 
-#: ../gdk/gdkdevice.c:188
+#: ../cdk/cdkdevice.c:188
 msgid "Source type for the device"
 msgstr "منبع برای دستگاه"
 
-#: ../gdk/gdkdevice.c:203
-#: ../gdk/gdkdevice.c:204
+#: ../cdk/cdkdevice.c:203
+#: ../cdk/cdkdevice.c:204
 msgid "Input mode for the device"
 msgstr "حالت ورودی برای دستگاه"
 
-#: ../gdk/gdkdevice.c:219
+#: ../cdk/cdkdevice.c:219
 #, fuzzy
 msgid "Whether the device has a cursor"
 msgstr "آیا این برچسب بر رنگ پس‌زمینه‌ی خانه تأثیر می‌گذارد یا نه"
 
-#: ../gdk/gdkdevice.c:220
+#: ../cdk/cdkdevice.c:220
 #, fuzzy
 msgid "Whether there is a visible cursor following device motion"
 msgstr "آیا این برچسب بر رنگ پس‌زمینه‌ی خانه تأثیر می‌گذارد یا نه"
 
-#: ../gdk/gdkdevice.c:234
-#: ../gdk/gdkdevice.c:235
+#: ../cdk/cdkdevice.c:234
+#: ../cdk/cdkdevice.c:235
 #, fuzzy
 msgid "Number of axes in the device"
 msgstr "تعداد سطرهای جدول"
 
-#: ../gdk/gdkdevicemanager.c:147
+#: ../cdk/cdkdevicemanager.c:147
 #, fuzzy
 msgid "Display for the device manager"
 msgstr "نمایش سلول"
 
-#: ../gdk/gdkdisplaymanager.c:162
+#: ../cdk/cdkdisplaymanager.c:162
 msgid "Default Display"
 msgstr "صفحه‌نمایش پیش‌فرض"
 
-#: ../gdk/gdkdisplaymanager.c:163
+#: ../cdk/cdkdisplaymanager.c:163
 msgid "The default display for GDK"
 msgstr "صفحه‌نمایش پیش‌فرض GDK"
 
-#: ../gdk/gdkscreen.c:92
+#: ../cdk/cdkscreen.c:92
 msgid "Font options"
 msgstr "گزینه‌های قلم"
 
-#: ../gdk/gdkscreen.c:93
+#: ../cdk/cdkscreen.c:93
 #, fuzzy
 msgid "The default font options for the screen"
 msgstr "نام قلم پیش‌فرض برای استفاده"
 
-#: ../gdk/gdkscreen.c:100
+#: ../cdk/cdkscreen.c:100
 msgid "Font resolution"
 msgstr "تفکیک‌پذیری قلم"
 
-#: ../gdk/gdkscreen.c:101
+#: ../cdk/cdkscreen.c:101
 msgid "The resolution for fonts on the screen"
 msgstr "تفکیک‌پذیری قلم‌ها بر روی صفحه"
 
-#: ../gdk/gdkwindow.c:376
-#: ../gdk/gdkwindow.c:377
+#: ../cdk/cdkwindow.c:376
+#: ../cdk/cdkwindow.c:377
 msgid "Cursor"
 msgstr "مکان‌نما"
 
-#: ../gdk/x11/gdkdevice-xi.c:140
-#: ../gdk/x11/gdkdevice-xi.c:141
-#: ../gdk/x11/gdkdevice-xi2.c:130
+#: ../cdk/x11/cdkdevice-xi.c:140
+#: ../cdk/x11/cdkdevice-xi.c:141
+#: ../cdk/x11/cdkdevice-xi2.c:130
 msgid "Device ID"
 msgstr "شناسه دستگاه"
 
-#: ../gdk/x11/gdkdevice-xi2.c:131
+#: ../cdk/x11/cdkdevice-xi2.c:131
 msgid "Device identifier"
 msgstr "شناساگر دستگاه"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:119
+#: ../cdk/x11/cdkdevicemanager-xi2.c:119
 #, fuzzy
 #| msgid "mode"
 msgid "Opcode"
 msgstr "حالت"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:120
+#: ../cdk/x11/cdkdevicemanager-xi2.c:120
 msgid "Opcode for XInput2 requests"
 msgstr ""
 
-#: ../gdk/x11/gdkdevicemanager-xi.c:100
+#: ../cdk/x11/cdkdevicemanager-xi.c:100
 msgid "Event base"
 msgstr "بر پایه رویداد"
 
-#: ../gdk/x11/gdkdevicemanager-xi.c:101
+#: ../cdk/x11/cdkdevicemanager-xi.c:101
 msgid "Event base for XInput events"
 msgstr ""
 

@@ -54,8 +54,8 @@ libgailutilinclude_HEADERS =	\
 
 libgailutil_3_la_CPPFLAGS = \
 	-I$(top_srcdir)		\
-	-I$(top_srcdir)/gdk	\
-	-I$(top_builddir)/gdk	\
+	-I$(top_srcdir)/cdk	\
+	-I$(top_builddir)/cdk	\
 	-I$(top_srcdir)/ctk	\
 	-I$(top_builddir)/ctk	\
 	$(AM_CPPFLAGS) 		\
@@ -69,7 +69,7 @@ libgailutil_3_la_CFLAGS = \
 
 libgailutil_3_la_LIBADD = \
 	$(top_builddir)/ctk/libctk-3.la	\
-	$(top_builddir)/gdk/libgdk-3.la	\
+	$(top_builddir)/cdk/libcdk-3.la	\
 	$(CTK_DEP_LIBS)
 
 libgailutil_3_la_LDFLAGS = \

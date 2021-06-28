@@ -20,7 +20,7 @@
 
 #include "ctkquartz.h"
 #include "ctkselectionprivate.h"
-#include <gdk/quartz/gdkquartz-ctk-only.h>
+#include <cdk/quartz/cdkquartz-ctk-only.h>
 
 
 static gboolean
@@ -132,7 +132,7 @@ _ctk_quartz_target_list_to_pasteboard_types (CtkTargetList *target_list)
     {
       CtkTargetPair *pair = list->data;
       g_return_val_if_fail (pair->flags < 16, NULL);
-      [set addObject:gdk_quartz_atom_to_pasteboard_type_libctk_only (pair->target)];
+      [set addObject:cdk_quartz_atom_to_pasteboard_type_libctk_only (pair->target)];
     }
 
   return set;
@@ -147,7 +147,7 @@ _ctk_quartz_target_entries_to_pasteboard_types (const CtkTargetEntry *targets,
 
   for (i = 0; i < n_targets; i++)
     {
-      [set addObject:gdk_quartz_target_to_pasteboard_type_libctk_only (targets[i].target)];
+      [set addObject:cdk_quartz_target_to_pasteboard_type_libctk_only (targets[i].target)];
     }
 
   return set;
@@ -164,7 +164,7 @@ _ctk_quartz_pasteboard_types_to_atom_list (NSArray *array)
 
   for (i = 0; i < count; i++) 
     {
-      GdkAtom atom = gdk_quartz_pasteboard_type_to_atom_libctk_only ([array objectAtIndex:i]);
+      GdkAtom atom = cdk_quartz_pasteboard_type_to_atom_libctk_only ([array objectAtIndex:i]);
 
       result = g_list_prepend (result, GDK_ATOM_TO_POINTER (atom));
     }
@@ -183,8 +183,8 @@ _ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
   selection_data->selection = selection;
   selection_data->target = target;
   if (!selection_data->display)
-    selection_data->display = gdk_display_get_default ();
-  if (target == gdk_atom_intern_static_string ("UTF8_STRING"))
+    selection_data->display = cdk_display_get_default ();
+  if (target == cdk_atom_intern_static_string ("UTF8_STRING"))
     {
       NSString *s = [pasteboard stringForType:NSStringPboardType];
 
@@ -197,7 +197,7 @@ _ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
                                   (guchar *)utf8_string, strlen (utf8_string));
 	}
     }
-  else if (target == gdk_atom_intern_static_string ("application/x-color"))
+  else if (target == cdk_atom_intern_static_string ("application/x-color"))
     {
       NSColor *nscolor = [[NSColor colorFromPasteboard:pasteboard]
                           colorUsingColorSpaceName:NSDeviceRGBColorSpace];
@@ -213,7 +213,7 @@ _ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
 
       ctk_selection_data_set (selection_data, target, 16, (guchar *)color, 8);
     }
-  else if (target == gdk_atom_intern_static_string ("text/uri-list"))
+  else if (target == cdk_atom_intern_static_string ("text/uri-list"))
     {
       if ([[pasteboard types] containsObject:NSFilenamesPboardType])
         {
@@ -222,7 +222,7 @@ _ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
            int n_files = [files count];
            int i;
 
-           selection_data->target = gdk_atom_intern_static_string ("text/uri-list");
+           selection_data->target = cdk_atom_intern_static_string ("text/uri-list");
 
            uris = (gchar **) g_malloc (sizeof (gchar*) * (n_files + 1));
            for (i = 0; i < n_files; ++i)
@@ -242,7 +242,7 @@ _ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
           gchar *uris[2];
           NSURL *url = [NSURL URLFromPasteboard:pasteboard];
 
-          selection_data->target = gdk_atom_intern_static_string ("text/uri-list");
+          selection_data->target = cdk_atom_intern_static_string ("text/uri-list");
 
           uris[0] = (gchar *) [[url description] UTF8String];
 
@@ -255,7 +255,7 @@ _ctk_quartz_get_selection_data_from_pasteboard (NSPasteboard *pasteboard,
       NSData *data;
       gchar *name;
 
-      name = gdk_atom_name (target);
+      name = cdk_atom_name (target);
 
       if (strcmp (name, "image/tiff") == 0)
 	data = [pasteboard dataForType:NSTIFFPboardType];
@@ -290,7 +290,7 @@ _ctk_quartz_set_selection_data_for_pasteboard (NSPasteboard     *pasteboard,
   data = ctk_selection_data_get_data (selection_data);
   length = ctk_selection_data_get_length (selection_data);
 
-  type = gdk_quartz_atom_to_pasteboard_type_libctk_only (ctk_selection_data_get_target (selection_data));
+  type = cdk_quartz_atom_to_pasteboard_type_libctk_only (ctk_selection_data_get_target (selection_data));
 
   if ([type isEqualTo:NSStringPboardType]) 
     [pasteboard setString:[NSString stringWithUTF8String:(const char *)data]

@@ -120,7 +120,7 @@
  * as %FALSE), enumerations (can be specified by their name, nick or
  * integer value), flags (can be specified by their name, nick, integer
  * value, optionally combined with “|”, e.g. “CTK_VISIBLE|CTK_REALIZED”)
- * and colors (in a format understood by gdk_rgba_parse()).
+ * and colors (in a format understood by cdk_rgba_parse()).
  *
  * GVariants can be specified in the format understood by g_variant_parse(),
  * and pixbufs can be specified as a filename of an image file to load.
@@ -2040,7 +2040,7 @@ ctk_builder_value_from_string_type (CtkBuilder   *builder,
           GdkColor color = { 0, };
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-          if (gdk_color_parse (string, &color))
+          if (cdk_color_parse (string, &color))
             g_value_set_boxed (value, &color);
           else
             {
@@ -2057,7 +2057,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
         {
           GdkRGBA rgba = { 0 };
 
-          if (gdk_rgba_parse (&rgba, string))
+          if (cdk_rgba_parse (&rgba, string))
             g_value_set_boxed (value, &rgba);
           else
             {
@@ -2109,14 +2109,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
               GInputStream *stream = g_resources_open_stream (filename, 0, &tmp_error);
               if (stream != NULL)
                 {
-                  pixbuf = gdk_pixbuf_new_from_stream (stream, NULL, &tmp_error);
+                  pixbuf = cdk_pixbuf_new_from_stream (stream, NULL, &tmp_error);
                   g_object_unref (stream);
                 }
             }
           else
             {
               filename = _ctk_builder_get_absolute_filename (builder, string);
-              pixbuf = gdk_pixbuf_new_from_file (filename, &tmp_error);
+              pixbuf = cdk_pixbuf_new_from_file (filename, &tmp_error);
             }
 
           if (pixbuf == NULL)

@@ -38,7 +38,7 @@ ctk_drag_dest_realized (CtkWidget *widget)
   CtkWidget *toplevel = ctk_widget_get_toplevel (widget);
 
   if (ctk_widget_is_toplevel (toplevel))
-    gdk_window_register_dnd (ctk_widget_get_window (toplevel));
+    cdk_window_register_dnd (ctk_widget_get_window (toplevel));
 }
 
 static void
@@ -48,7 +48,7 @@ ctk_drag_dest_hierarchy_changed (CtkWidget *widget,
   CtkWidget *toplevel = ctk_widget_get_toplevel (widget);
 
   if (ctk_widget_is_toplevel (toplevel) && ctk_widget_get_realized (toplevel))
-    gdk_window_register_dnd (ctk_widget_get_window (toplevel));
+    cdk_window_register_dnd (ctk_widget_get_window (toplevel));
 }
 
 static void
@@ -120,7 +120,7 @@ ctk_drag_dest_set_internal (CtkWidget       *widget,
  * as described in the documentation for #CtkWidget::drag-motion. The default
  * behaviors described by @flags make some assumptions, that can conflict
  * with your own signal handlers. For instance #CTK_DEST_DEFAULT_DROP causes
- * invokations of gdk_drag_status() in the context of #CtkWidget::drag-motion,
+ * invokations of cdk_drag_status() in the context of #CtkWidget::drag-motion,
  * and invokations of ctk_drag_finish() in #CtkWidget::drag-data-received.
  * Especially the later is dramatic, when your own #CtkWidget::drag-motion
  * handler calls ctk_drag_get_data() to inspect the dragged data.
@@ -138,12 +138,12 @@ ctk_drag_dest_set_internal (CtkWidget       *widget,
  * {
 *   GdkModifierType mask;
  *
- *   gdk_window_get_pointer (ctk_widget_get_window (widget),
+ *   cdk_window_get_pointer (ctk_widget_get_window (widget),
  *                           NULL, NULL, &mask);
  *   if (mask & GDK_CONTROL_MASK)
- *     gdk_drag_status (context, GDK_ACTION_COPY, time);
+ *     cdk_drag_status (context, GDK_ACTION_COPY, time);
  *   else
- *     gdk_drag_status (context, GDK_ACTION_MOVE, time);
+ *     cdk_drag_status (context, GDK_ACTION_MOVE, time);
  * }
  * ]|
  */
@@ -179,7 +179,7 @@ ctk_drag_dest_set (CtkWidget            *widget,
  * @widget: a #CtkWidget
  * @proxy_window: the window to which to forward drag events
  * @protocol: the drag protocol which the @proxy_window accepts
- *   (You can use gdk_drag_get_protocol() to determine this)
+ *   (You can use cdk_drag_get_protocol() to determine this)
  * @use_coordinates: If %TRUE, send the same coordinates to the
  *   destination, because it is an embedded
  *   subwindow.
@@ -479,7 +479,7 @@ ctk_drag_dest_find_target (CtkWidget      *widget,
   while (tmp_target)
     {
       CtkTargetPair *pair = tmp_target->data;
-      tmp_source = gdk_drag_context_list_targets (context);
+      tmp_source = cdk_drag_context_list_targets (context);
       while (tmp_source)
         {
           if (tmp_source->data == GUINT_TO_POINTER (pair->target))

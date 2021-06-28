@@ -30,7 +30,7 @@
 #endif
 
 #include <glib.h>
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 

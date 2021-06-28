@@ -23,7 +23,7 @@
 #include "ctkprivate.h"
 #include "ctkwidget.h"
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include <string.h>
 

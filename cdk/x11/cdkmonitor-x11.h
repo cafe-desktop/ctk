@@ -22,9 +22,9 @@
 #include <gio/gio.h>
 #include <X11/Xlib.h>
 
-#include "gdkmonitorprivate.h"
+#include "cdkmonitorprivate.h"
 
-#include "gdkx11monitor.h"
+#include "cdkx11monitor.h"
 
 
 struct _GdkX11Monitor

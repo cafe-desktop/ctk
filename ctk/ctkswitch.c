@@ -156,7 +156,7 @@ ctk_switch_on_frame_clock_update (CtkWidget     *widget,
   CtkSwitchPrivate *priv = sw->priv;
 
   ctk_progress_tracker_advance_frame (&priv->tracker,
-                                      gdk_frame_clock_get_frame_time (clock));
+                                      cdk_frame_clock_get_frame_time (clock));
 
   if (ctk_progress_tracker_get_state (&priv->tracker) != CTK_PROGRESS_STATE_AFTER)
     {
@@ -471,7 +471,7 @@ ctk_switch_allocate_contents (CtkCssGadget        *gadget,
                            baseline,
                            &on_clip);
 
-  gdk_rectangle_union (out_clip, &on_clip, out_clip);
+  cdk_rectangle_union (out_clip, &on_clip, out_clip);
 
   child_alloc.x = allocation->x + allocation->width - child_alloc.width;
   ctk_css_gadget_allocate (priv->off_gadget,
@@ -479,13 +479,13 @@ ctk_switch_allocate_contents (CtkCssGadget        *gadget,
                            baseline,
                            &off_clip);
 
-  gdk_rectangle_union (out_clip, &off_clip, out_clip);
+  cdk_rectangle_union (out_clip, &off_clip, out_clip);
 
   if (ctk_widget_get_realized (CTK_WIDGET (self)))
     {
       CtkAllocation border_allocation;
       ctk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
-      gdk_window_move_resize (priv->event_window,
+      cdk_window_move_resize (priv->event_window,
                               border_allocation.x,
                               border_allocation.y,
                               border_allocation.width,
@@ -540,7 +540,7 @@ ctk_switch_realize (CtkWidget *widget)
                             GDK_LEAVE_NOTIFY_MASK);
   attributes_mask = GDK_WA_X | GDK_WA_Y;
 
-  priv->event_window = gdk_window_new (parent_window,
+  priv->event_window = cdk_window_new (parent_window,
                                        &attributes,
                                        attributes_mask);
   ctk_widget_register_window (widget, priv->event_window);
@@ -554,7 +554,7 @@ ctk_switch_unrealize (CtkWidget *widget)
   if (priv->event_window != NULL)
     {
       ctk_widget_unregister_window (widget, priv->event_window);
-      gdk_window_destroy (priv->event_window);
+      cdk_window_destroy (priv->event_window);
       priv->event_window = NULL;
     }
 
@@ -569,7 +569,7 @@ ctk_switch_map (CtkWidget *widget)
   CTK_WIDGET_CLASS (ctk_switch_parent_class)->map (widget);
 
   if (priv->event_window)
-    gdk_window_show (priv->event_window);
+    cdk_window_show (priv->event_window);
 }
 
 static void
@@ -578,7 +578,7 @@ ctk_switch_unmap (CtkWidget *widget)
   CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
 
   if (priv->event_window)
-    gdk_window_hide (priv->event_window);
+    cdk_window_hide (priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_switch_parent_class)->unmap (widget);
 }

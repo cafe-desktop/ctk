@@ -47,7 +47,7 @@ static gboolean
 ctk_css_value_rgba_equal (const CtkCssValue *rgba1,
                           const CtkCssValue *rgba2)
 {
-  return gdk_rgba_equal (&rgba1->rgba, &rgba2->rgba);
+  return cdk_rgba_equal (&rgba1->rgba, &rgba2->rgba);
 }
 
 static inline double
@@ -92,7 +92,7 @@ static void
 ctk_css_value_rgba_print (const CtkCssValue *rgba,
                           GString           *string)
 {
-  char *s = gdk_rgba_to_string (&rgba->rgba);
+  char *s = cdk_rgba_to_string (&rgba->rgba);
   g_string_append (string, s);
   g_free (s);
 }

@@ -26,7 +26,7 @@
 #define __CTK_TOOLTIP_WINDOW_PRIVATE_H__
 
 #include <gio/gio.h>
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 #include <ctk/ctkwindow.h>
 
 G_BEGIN_DECLS

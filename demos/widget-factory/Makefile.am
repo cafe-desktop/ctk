@@ -22,7 +22,7 @@ ctk3_widget_factory_CPPFLAGS = 		\
 	$(NULL)
 
 ctk3_widget_factory_LDADD = 		\
-	$(top_builddir)/gdk/libgdk-3.la \
+	$(top_builddir)/cdk/libcdk-3.la \
 	$(top_builddir)/ctk/libctk-3.la \
 	$(CTK_DEP_LIBS)			\
 	$(NULL)

@@ -657,7 +657,7 @@ ctk_cell_renderer_progress_render (CtkCellRenderer      *cell,
 	(h - padding.top - padding.bottom - logical_rect.height);
 
       cairo_save (cr);
-      gdk_cairo_rectangle (cr, &clip);
+      cdk_cairo_rectangle (cr, &clip);
       cairo_clip (cr);
 
       ctk_style_context_save (context);
@@ -687,7 +687,7 @@ ctk_cell_renderer_progress_render (CtkCellRenderer      *cell,
 	    }
 
           cairo_save (cr);
-          gdk_cairo_rectangle (cr, &clip);
+          cdk_cairo_rectangle (cr, &clip);
           cairo_clip (cr);
 
           ctk_render_layout (context, cr,
@@ -711,7 +711,7 @@ ctk_cell_renderer_progress_render (CtkCellRenderer      *cell,
 	    }
 
           cairo_save (cr);
-          gdk_cairo_rectangle (cr, &clip);
+          cdk_cairo_rectangle (cr, &clip);
           cairo_clip (cr);
 
           ctk_render_layout (context, cr,

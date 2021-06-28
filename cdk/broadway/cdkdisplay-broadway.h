@@ -1,5 +1,5 @@
 /*
- * gdkdisplay-broadway.h
+ * cdkdisplay-broadway.h
  * 
  * Copyright 2001 Sun Microsystems Inc. 
  *
@@ -22,15 +22,15 @@
 #ifndef __GDK_BROADWAY_DISPLAY__
 #define __GDK_BROADWAY_DISPLAY__
 
-#include "gdkbroadwaydisplay.h"
+#include "cdkbroadwaydisplay.h"
 
-#include "gdkdisplayprivate.h"
-#include "gdkkeys.h"
-#include "gdkwindow.h"
-#include "gdkinternals.h"
-#include "gdkmain.h"
-#include "gdkbroadway-server.h"
-#include "gdkmonitorprivate.h"
+#include "cdkdisplayprivate.h"
+#include "cdkkeys.h"
+#include "cdkwindow.h"
+#include "cdkinternals.h"
+#include "cdkmain.h"
+#include "cdkbroadway-server.h"
+#include "cdkmonitorprivate.h"
 
 G_BEGIN_DECLS
 

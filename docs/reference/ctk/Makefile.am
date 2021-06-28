@@ -260,7 +260,7 @@ IGNORE_HFILES = \
 AM_CPPFLAGS = \
 	-I$(top_srcdir) 	\
 	-I$(top_builddir) 	\
-	-I$(top_builddir)/gdk	\
+	-I$(top_builddir)/cdk	\
 	-DCTK_ENABLE_BROKEN	\
 	-Wno-deprecated-declarations \
 	$(CTK_DEBUG_FLAGS)	\
@@ -270,7 +270,7 @@ CPPFLAGS += \
 	-UCTK_DISABLE_SINGLE_INCLUDES
 
 GTKDOC_LIBS = \
-	$(top_builddir)/gdk/libgdk-3.la \
+	$(top_builddir)/cdk/libcdk-3.la \
 	$(top_builddir)/ctk/libctk-3.la	\
 	$(CTK_DEP_LIBS)
 
@@ -484,7 +484,7 @@ HTML_IMAGES = \
 
 if ENABLE_DOC_CROSS_REFERENCES
 # Extra options to supply to gtkdoc-fixref
-FIXXREF_OPTIONS=--extra-dir=../gdk/html \
+FIXXREF_OPTIONS=--extra-dir=../cdk/html \
 	--extra-dir=$(GLIB_PREFIX)/share/gtk-doc/html/gobject \
 	--extra-dir=$(GLIB_PREFIX)/share/gtk-doc/html/glib \
 	--extra-dir=$(GLIB_PREFIX)/share/gtk-doc/html/gio \

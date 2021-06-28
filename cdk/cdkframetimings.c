@@ -19,27 +19,27 @@
 
 #include <string.h>
 
-#include "gdkframeclockprivate.h"
+#include "cdkframeclockprivate.h"
 
 /**
- * SECTION:gdkframetimings
+ * SECTION:cdkframetimings
  * @Short_description: Object holding timing information for a single frame
  * @Title: Frame timings
  *
  * A #GdkFrameTimings object holds timing information for a single frame
  * of the application’s displays. To retrieve #GdkFrameTimings objects,
- * use gdk_frame_clock_get_timings() or gdk_frame_clock_get_current_timings().
+ * use cdk_frame_clock_get_timings() or cdk_frame_clock_get_current_timings().
  * The information in #GdkFrameTimings is useful for precise synchronization
  * of video with the event or audio streams, and for measuring
  * quality metrics for the application’s display, such as latency and jitter.
  */
 
-G_DEFINE_BOXED_TYPE (GdkFrameTimings, gdk_frame_timings,
-                     gdk_frame_timings_ref,
-                     gdk_frame_timings_unref)
+G_DEFINE_BOXED_TYPE (GdkFrameTimings, cdk_frame_timings,
+                     cdk_frame_timings_ref,
+                     cdk_frame_timings_unref)
 
 GdkFrameTimings *
-_gdk_frame_timings_new (gint64 frame_counter)
+_cdk_frame_timings_new (gint64 frame_counter)
 {
   GdkFrameTimings *timings;
 
@@ -51,7 +51,7 @@ _gdk_frame_timings_new (gint64 frame_counter)
 }
 
 gboolean
-_gdk_frame_timings_steal (GdkFrameTimings *timings,
+_cdk_frame_timings_steal (GdkFrameTimings *timings,
                           gint64           frame_counter)
 {
   if (timings->ref_count == 1)
@@ -66,7 +66,7 @@ _gdk_frame_timings_steal (GdkFrameTimings *timings,
 }
 
 /**
- * gdk_frame_timings_ref:
+ * cdk_frame_timings_ref:
  * @timings: a #GdkFrameTimings
  *
  * Increases the reference count of @timings.
@@ -75,7 +75,7 @@ _gdk_frame_timings_steal (GdkFrameTimings *timings,
  * Since: 3.8
  */
 GdkFrameTimings *
-gdk_frame_timings_ref (GdkFrameTimings *timings)
+cdk_frame_timings_ref (GdkFrameTimings *timings)
 {
   g_return_val_if_fail (timings != NULL, NULL);
 
@@ -85,7 +85,7 @@ gdk_frame_timings_ref (GdkFrameTimings *timings)
 }
 
 /**
- * gdk_frame_timings_unref:
+ * cdk_frame_timings_unref:
  * @timings: a #GdkFrameTimings
  *
  * Decreases the reference count of @timings. If @timings
@@ -94,7 +94,7 @@ gdk_frame_timings_ref (GdkFrameTimings *timings)
  * Since: 3.8
  */
 void
-gdk_frame_timings_unref (GdkFrameTimings *timings)
+cdk_frame_timings_unref (GdkFrameTimings *timings)
 {
   g_return_if_fail (timings != NULL);
   g_return_if_fail (timings->ref_count > 0);
@@ -107,7 +107,7 @@ gdk_frame_timings_unref (GdkFrameTimings *timings)
 }
 
 /**
- * gdk_frame_timings_get_frame_counter:
+ * cdk_frame_timings_get_frame_counter:
  * @timings: a #GdkFrameTimings
  *
  * Gets the frame counter value of the #GdkFrameClock when this
@@ -117,13 +117,13 @@ gdk_frame_timings_unref (GdkFrameTimings *timings)
  * Since: 3.8
  */
 gint64
-gdk_frame_timings_get_frame_counter (GdkFrameTimings *timings)
+cdk_frame_timings_get_frame_counter (GdkFrameTimings *timings)
 {
   return timings->frame_counter;
 }
 
 /**
- * gdk_frame_timings_get_complete:
+ * cdk_frame_timings_get_complete:
  * @timings: a #GdkFrameTimings
  *
  * The timing information in a #GdkFrameTimings is filled in
@@ -132,7 +132,7 @@ gdk_frame_timings_get_frame_counter (GdkFrameTimings *timings)
  * accessor functions for #GdkFrameTimings can return 0 to
  * indicate an unavailable value for two reasons: either because
  * the information is not yet available, or because it isn't
- * available at all. Once gdk_frame_timings_get_complete() returns
+ * available at all. Once cdk_frame_timings_get_complete() returns
  * %TRUE for a frame, you can be certain that no further values
  * will become available and be stored in the #GdkFrameTimings.
  *
@@ -141,7 +141,7 @@ gdk_frame_timings_get_frame_counter (GdkFrameTimings *timings)
  * Since: 3.8
  */
 gboolean
-gdk_frame_timings_get_complete (GdkFrameTimings *timings)
+cdk_frame_timings_get_complete (GdkFrameTimings *timings)
 {
   g_return_val_if_fail (timings != NULL, FALSE);
 
@@ -149,18 +149,18 @@ gdk_frame_timings_get_complete (GdkFrameTimings *timings)
 }
 
 /**
- * gdk_frame_timings_get_frame_time:
+ * cdk_frame_timings_get_frame_time:
  * @timings: A #GdkFrameTimings
  *
  * Returns the frame time for the frame. This is the time value
  * that is typically used to time animations for the frame. See
- * gdk_frame_clock_get_frame_time().
+ * cdk_frame_clock_get_frame_time().
  *
  * Returns: the frame time for the frame, in the timescale
  *  of g_get_monotonic_time()
  */
 gint64
-gdk_frame_timings_get_frame_time (GdkFrameTimings *timings)
+cdk_frame_timings_get_frame_time (GdkFrameTimings *timings)
 {
   g_return_val_if_fail (timings != NULL, 0);
 
@@ -168,7 +168,7 @@ gdk_frame_timings_get_frame_time (GdkFrameTimings *timings)
 }
 
 /**
- * gdk_frame_timings_get_presentation_time:
+ * cdk_frame_timings_get_presentation_time:
  * @timings: a #GdkFrameTimings
  *
  * Reurns the presentation time. This is the time at which the frame
@@ -176,11 +176,11 @@ gdk_frame_timings_get_frame_time (GdkFrameTimings *timings)
  *
  * Returns: the time the frame was displayed to the user, in the
  *  timescale of g_get_monotonic_time(), or 0 if no presentation
- *  time is available. See gdk_frame_timings_get_complete()
+ *  time is available. See cdk_frame_timings_get_complete()
  * Since: 3.8
  */
 gint64
-gdk_frame_timings_get_presentation_time (GdkFrameTimings *timings)
+cdk_frame_timings_get_presentation_time (GdkFrameTimings *timings)
 {
   g_return_val_if_fail (timings != NULL, 0);
 
@@ -188,15 +188,15 @@ gdk_frame_timings_get_presentation_time (GdkFrameTimings *timings)
 }
 
 /**
- * gdk_frame_timings_get_predicted_presentation_time:
+ * cdk_frame_timings_get_predicted_presentation_time:
  * @timings: a #GdkFrameTimings
  *
  * Gets the predicted time at which this frame will be displayed. Although
  * no predicted time may be available, if one is available, it will
  * be available while the frame is being generated, in contrast to
- * gdk_frame_timings_get_presentation_time(), which is only available
+ * cdk_frame_timings_get_presentation_time(), which is only available
  * after the frame has been presented. In general, if you are simply
- * animating, you should use gdk_frame_clock_get_frame_time() rather
+ * animating, you should use cdk_frame_clock_get_frame_time() rather
  * than this function, but this function is useful for applications
  * that want exact control over latency. For example, a movie player
  * may want this information for Audio/Video synchronization.
@@ -207,7 +207,7 @@ gdk_frame_timings_get_presentation_time (GdkFrameTimings *timings)
  * Since: 3.8
  */
 gint64
-gdk_frame_timings_get_predicted_presentation_time (GdkFrameTimings *timings)
+cdk_frame_timings_get_predicted_presentation_time (GdkFrameTimings *timings)
 {
   g_return_val_if_fail (timings != NULL, 0);
 
@@ -215,7 +215,7 @@ gdk_frame_timings_get_predicted_presentation_time (GdkFrameTimings *timings)
 }
 
 /**
- * gdk_frame_timings_get_refresh_interval:
+ * cdk_frame_timings_get_refresh_interval:
  * @timings: a #GdkFrameTimings
  *
  * Gets the natural interval between presentation times for
@@ -224,11 +224,11 @@ gdk_frame_timings_get_predicted_presentation_time (GdkFrameTimings *timings)
  *
  * Returns: the refresh interval of the display, in microseconds,
  *  or 0 if the refresh interval is not available.
- *  See gdk_frame_timings_get_complete().
+ *  See cdk_frame_timings_get_complete().
  * Since: 3.8
  */
 gint64
-gdk_frame_timings_get_refresh_interval (GdkFrameTimings *timings)
+cdk_frame_timings_get_refresh_interval (GdkFrameTimings *timings)
 {
   g_return_val_if_fail (timings != NULL, 0);
 

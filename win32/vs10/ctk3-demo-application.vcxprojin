@@ -158,7 +158,7 @@
 #include "ctk3-demo-application.vs10.sourcefiles"
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="gdk-3.vcxproj">
+    <ProjectReference Include="cdk-3.vcxproj">
       <Project>{5ae8f5ce-9103-4951-aede-ea2f3b573be8}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

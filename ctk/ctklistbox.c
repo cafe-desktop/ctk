@@ -1490,12 +1490,12 @@ ctk_list_box_add_move_binding (CtkBindingSet   *binding_set,
   GdkModifierType extend_mod_mask = GDK_SHIFT_MASK;
   GdkModifierType modify_mod_mask = GDK_CONTROL_MASK;
 
-  display = gdk_display_get_default ();
+  display = cdk_display_get_default ();
   if (display)
     {
-      extend_mod_mask = gdk_keymap_get_modifier_mask (gdk_keymap_get_for_display (display),
+      extend_mod_mask = cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
                                                       GDK_MODIFIER_INTENT_EXTEND_SELECTION);
-      modify_mod_mask = gdk_keymap_get_modifier_mask (gdk_keymap_get_for_display (display),
+      modify_mod_mask = cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
                                                       GDK_MODIFIER_INTENT_MODIFY_SELECTION);
     }
 
@@ -1928,9 +1928,9 @@ ctk_list_box_motion_notify_event (CtkWidget      *widget,
 
   while ((event_window != NULL) && (event_window != window))
     {
-      gdk_window_coords_to_parent (event_window, 0, relative_y, NULL, &parent_y);
+      cdk_window_coords_to_parent (event_window, 0, relative_y, NULL, &parent_y);
       relative_y = parent_y;
-      event_window = gdk_window_get_effective_parent (event_window);
+      event_window = cdk_window_get_effective_parent (event_window);
     }
 
   row = ctk_list_box_get_row_at_y (box, relative_y);
@@ -2026,7 +2026,7 @@ ctk_list_box_multipress_gesture_released (CtkGestureMultiPress *gesture,
            */
           sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
           event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
-          source = gdk_device_get_source (gdk_event_get_source_device (event));
+          source = cdk_device_get_source (cdk_event_get_source_device (event));
 
           if (source == GDK_SOURCE_TOUCHSCREEN)
             modify = !modify;
@@ -2213,9 +2213,9 @@ ctk_list_box_realize (CtkWidget *widget)
     GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK;
   attributes.wclass = GDK_INPUT_OUTPUT;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, GDK_WA_X | GDK_WA_Y);
-  gdk_window_set_user_data (window, (GObject*) widget);
+  cdk_window_set_user_data (window, (GObject*) widget);
   ctk_widget_set_window (widget, window); /* Passes ownership */
 }
 
@@ -2774,7 +2774,7 @@ ctk_list_box_size_allocate (CtkWidget     *widget,
 
   window = ctk_widget_get_window (widget);
   if (window != NULL)
-    gdk_window_move_resize (window,
+    cdk_window_move_resize (window,
                             allocation->x, allocation->y,
                             allocation->width, allocation->height);
 

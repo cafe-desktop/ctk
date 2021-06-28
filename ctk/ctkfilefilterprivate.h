@@ -20,7 +20,7 @@
 #define __CTK_FILE_FILTER_PRIVATE_H__
 
 #include <ctk/ctkfilefilter.h>
-#include <gdk/gdkconfig.h>
+#include <cdk/cdkconfig.h>
 
 #ifdef GDK_WINDOWING_QUARTZ
 #import <Foundation/Foundation.h>

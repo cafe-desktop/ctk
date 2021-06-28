@@ -334,7 +334,7 @@ set_color_icon (GdkDragContext *context,
   surface = cairo_image_surface_create (CAIRO_FORMAT_RGB24, 48, 32);
   cr = cairo_create (surface);
 
-  gdk_cairo_set_source_rgba (cr, rgba);
+  cdk_cairo_set_source_rgba (cr, rgba);
   cairo_paint (cr);
 
   ctk_drag_set_icon_surface (context, surface);

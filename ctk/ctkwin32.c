@@ -24,7 +24,7 @@
 
 #include "config.h"
 
-#include "gdk/gdk.h"
+#include "cdk/cdk.h"
 
 #include "ctkprivate.h"
 

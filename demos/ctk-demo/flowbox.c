@@ -17,9 +17,9 @@ draw_color (CtkWidget  *drawingarea,
 {
   GdkRGBA rgba;
 
-  if (gdk_rgba_parse (&rgba, color_name))
+  if (cdk_rgba_parse (&rgba, color_name))
     {
-      gdk_cairo_set_source_rgba (cr, &rgba);
+      cdk_cairo_set_source_rgba (cr, &rgba);
       cairo_paint (cr);
     }
 

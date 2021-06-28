@@ -25,7 +25,7 @@ configure_event_cb (CtkWidget         *widget,
   if (surface)
     cairo_surface_destroy (surface);
 
-  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
+  surface = cdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR,
                                                ctk_widget_get_allocated_width (widget),
                                                ctk_widget_get_allocated_height (widget));

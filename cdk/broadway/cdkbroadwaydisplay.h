@@ -19,10 +19,10 @@
 #define __GDK_BROADWAY_DISPLAY_H__
 
 #if !defined (__GDKBROADWAY_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkbroadway.h> can be included directly."
+#error "Only <cdk/cdkbroadway.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
@@ -33,7 +33,7 @@ typedef GdkDisplay GdkBroadwayDisplay;
 #endif
 typedef struct _GdkBroadwayDisplayClass GdkBroadwayDisplayClass;
 
-#define GDK_TYPE_BROADWAY_DISPLAY              (gdk_broadway_display_get_type())
+#define GDK_TYPE_BROADWAY_DISPLAY              (cdk_broadway_display_get_type())
 #define GDK_BROADWAY_DISPLAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_DISPLAY, GdkBroadwayDisplay))
 #define GDK_BROADWAY_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_DISPLAY, GdkBroadwayDisplayClass))
 #define GDK_IS_BROADWAY_DISPLAY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_DISPLAY))
@@ -41,12 +41,12 @@ typedef struct _GdkBroadwayDisplayClass GdkBroadwayDisplayClass;
 #define GDK_BROADWAY_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_DISPLAY, GdkBroadwayDisplayClass))
 
 GDK_AVAILABLE_IN_ALL
-GType                   gdk_broadway_display_get_type            (void);
+GType                   cdk_broadway_display_get_type            (void);
 
 GDK_AVAILABLE_IN_3_12
-void                    gdk_broadway_display_show_keyboard       (GdkBroadwayDisplay *display);
+void                    cdk_broadway_display_show_keyboard       (GdkBroadwayDisplay *display);
 GDK_AVAILABLE_IN_3_12
-void                    gdk_broadway_display_hide_keyboard       (GdkBroadwayDisplay *display);
+void                    cdk_broadway_display_hide_keyboard       (GdkBroadwayDisplay *display);
 
 G_END_DECLS
 

@@ -42,7 +42,7 @@ G_BEGIN_DECLS
  * @CTK_DEST_DEFAULT_MOTION: If set for a widget, CTK+, during a drag over this
  *   widget will check if the drag matches this widget’s list of possible targets
  *   and actions.
- *   CTK+ will then call gdk_drag_status() as appropriate.
+ *   CTK+ will then call cdk_drag_status() as appropriate.
  * @CTK_DEST_DEFAULT_HIGHLIGHT: If set for a widget, CTK+ will draw a highlight on
  *   this widget as long as a drag is over this widget and the widget drag format
  *   and action are acceptable.

@@ -87,7 +87,7 @@ check_for_draw (GdkEvent *event, gpointer data)
   if (event->type == GDK_EXPOSE)
     {
       reftest_uninhibit_snapshot ();
-      gdk_event_handler_set ((GdkEventFunc) ctk_main_do_event, NULL, NULL);
+      cdk_event_handler_set ((GdkEventFunc) ctk_main_do_event, NULL, NULL);
     }
 
   ctk_main_do_event (event);
@@ -114,10 +114,10 @@ snapshot_widget (CtkWidget *widget, SnapshotMode mode)
    * to delay the snapshot.
    */
   reftest_inhibit_snapshot ();
-  gdk_event_handler_set (check_for_draw, NULL, NULL);
+  cdk_event_handler_set (check_for_draw, NULL, NULL);
   g_main_loop_run (loop);
 
-  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
+  surface = cdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR,
                                                ctk_widget_get_allocated_width (widget),
                                                ctk_widget_get_allocated_height (widget));
@@ -129,23 +129,23 @@ snapshot_widget (CtkWidget *widget, SnapshotMode mode)
     case SNAPSHOT_WINDOW:
       {
         GdkWindow *window = ctk_widget_get_window (widget);
-        if (gdk_window_get_window_type (window) == GDK_WINDOW_TOPLEVEL ||
-            gdk_window_get_window_type (window) == GDK_WINDOW_FOREIGN)
+        if (cdk_window_get_window_type (window) == GDK_WINDOW_TOPLEVEL ||
+            cdk_window_get_window_type (window) == GDK_WINDOW_FOREIGN)
           {
             /* give the WM/server some time to sync. They need it.
              * Also, do use popups instead of toplevels in your tests
              * whenever you can.
              */
-            gdk_display_sync (gdk_window_get_display (window));
+            cdk_display_sync (cdk_window_get_display (window));
             g_timeout_add (500, quit_when_idle, loop);
             g_main_loop_run (loop);
           }
-        gdk_cairo_set_source_window (cr, window, 0, 0);
+        cdk_cairo_set_source_window (cr, window, 0, 0);
         cairo_paint (cr);
       }
       break;
     case SNAPSHOT_DRAW:
-      bg = gdk_window_get_background_pattern (ctk_widget_get_window (widget));
+      bg = cdk_window_get_background_pattern (ctk_widget_get_window (widget));
       if (bg)
         {
           cairo_set_source (cr, bg);

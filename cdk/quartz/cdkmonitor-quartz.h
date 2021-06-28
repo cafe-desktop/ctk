@@ -21,11 +21,11 @@
 #include <glib.h>
 #include <gio/gio.h>
 
-#include "gdkmonitorprivate.h"
+#include "cdkmonitorprivate.h"
 
-#include "gdkquartzmonitor.h"
-#include "gdkprivate-quartz.h"
-#include "gdkinternal-quartz.h"
+#include "cdkquartzmonitor.h"
+#include "cdkprivate-quartz.h"
+#include "cdkinternal-quartz.h"
 
 struct _GdkQuartzMonitor
 {

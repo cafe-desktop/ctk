@@ -170,7 +170,7 @@ ctk_check_menu_item_size_allocate (CtkWidget     *widget,
                            &clip);
 
   ctk_widget_get_clip (widget, &widget_clip);
-  gdk_rectangle_union (&widget_clip, &clip, &widget_clip);
+  cdk_rectangle_union (&widget_clip, &clip, &widget_clip);
   ctk_widget_set_clip (widget, &widget_clip);
 }
 

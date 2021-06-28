@@ -396,7 +396,7 @@ ctk_cell_renderer_class_init (CtkCellRendererClass *class)
 							CTK_PARAM_WRITABLE));
 
   /**
-   * CtkCellRenderer:cell-background-gdk:
+   * CtkCellRenderer:cell-background-cdk:
    *
    * Cell background as a #GdkColor
    *
@@ -405,7 +405,7 @@ ctk_cell_renderer_class_init (CtkCellRendererClass *class)
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   g_object_class_install_property (object_class,
 				   PROP_CELL_BACKGROUND_GDK,
-				   g_param_spec_boxed ("cell-background-gdk",
+				   g_param_spec_boxed ("cell-background-cdk",
 						       P_("Cell background color"),
 						       P_("Cell background color as a GdkColor"),
 						       GDK_TYPE_COLOR,
@@ -652,7 +652,7 @@ ctk_cell_renderer_set_property (GObject      *object,
 
         if (!g_value_get_string (value))
           set_cell_bg_color (cell, NULL);
-        else if (gdk_rgba_parse (&rgba, g_value_get_string (value)))
+        else if (cdk_rgba_parse (&rgba, g_value_get_string (value)))
           set_cell_bg_color (cell, &rgba);
         else
           g_warning ("Don't know color '%s'", g_value_get_string (value));
@@ -680,7 +680,7 @@ ctk_cell_renderer_set_property (GObject      *object,
           {
             set_cell_bg_color (cell, NULL);
           }
-        g_object_notify (object, "cell-background-gdk");
+        g_object_notify (object, "cell-background-cdk");
       }
       break;
     case PROP_CELL_BACKGROUND_RGBA:
@@ -814,12 +814,12 @@ ctk_cell_renderer_render (CtkCellRenderer      *cell,
 
   if (priv->cell_background_set && !selected)
     {
-      gdk_cairo_rectangle (cr, background_area);
-      gdk_cairo_set_source_rgba (cr, &priv->cell_background);
+      cdk_cairo_rectangle (cr, background_area);
+      cdk_cairo_set_source_rgba (cr, &priv->cell_background);
       cairo_fill (cr);
     }
 
-  gdk_cairo_rectangle (cr, background_area);
+  cdk_cairo_rectangle (cr, background_area);
   cairo_clip (cr);
 
   context = ctk_widget_get_style_context (widget);

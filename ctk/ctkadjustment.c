@@ -99,7 +99,7 @@ static guint adjustment_signals[LAST_SIGNAL] = { 0 };
 
 static GParamSpec *adjustment_props[NUM_PROPERTIES] = { NULL, };
 
-static guint64 adjustment_changed_stamp = 0; /* protected by global gdk lock */
+static guint64 adjustment_changed_stamp = 0; /* protected by global cdk lock */
 
 G_DEFINE_TYPE_WITH_PRIVATE (CtkAdjustment, ctk_adjustment, G_TYPE_INITIALLY_UNOWNED)
 
@@ -463,7 +463,7 @@ ctk_adjustment_begin_updating (CtkAdjustment *adjustment)
     {
       priv->tick_id = g_signal_connect (priv->clock, "update",
                                         G_CALLBACK (ctk_adjustment_on_frame_clock_update), adjustment);
-      gdk_frame_clock_begin_updating (priv->clock);
+      cdk_frame_clock_begin_updating (priv->clock);
     }
 }
 
@@ -476,7 +476,7 @@ ctk_adjustment_end_updating (CtkAdjustment *adjustment)
     {
       g_signal_handler_disconnect (priv->clock, priv->tick_id);
       priv->tick_id = 0;
-      gdk_frame_clock_end_updating (priv->clock);
+      cdk_frame_clock_end_updating (priv->clock);
     }
 }
 
@@ -498,7 +498,7 @@ ctk_adjustment_on_frame_clock_update (GdkFrameClock *clock,
   CtkAdjustmentPrivate *priv = adjustment->priv;
   gint64 now;
 
-  now = gdk_frame_clock_get_frame_time (clock);
+  now = cdk_frame_clock_get_frame_time (clock);
 
   if (now < priv->end_time)
     {
@@ -535,7 +535,7 @@ ctk_adjustment_set_value_internal (CtkAdjustment *adjustment,
 
       priv->source = priv->value;
       priv->target = value;
-      priv->start_time = gdk_frame_clock_get_frame_time (priv->clock);
+      priv->start_time = cdk_frame_clock_get_frame_time (priv->clock);
       priv->end_time = priv->start_time + 1000 * priv->duration;
       ctk_adjustment_begin_updating (adjustment);
     }
@@ -1002,7 +1002,7 @@ ctk_adjustment_enable_animation (CtkAdjustment *adjustment,
 
           g_signal_handler_disconnect (priv->clock, priv->tick_id);
           priv->tick_id = 0;
-          gdk_frame_clock_end_updating (priv->clock);
+          cdk_frame_clock_end_updating (priv->clock);
         }
 
       if (priv->clock)

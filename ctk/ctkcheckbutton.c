@@ -520,7 +520,7 @@ ctk_check_button_size_allocate (CtkWidget     *widget,
     {
       CtkAllocation border_allocation;
       ctk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
-      gdk_window_move_resize (CTK_BUTTON (widget)->priv->event_window,
+      cdk_window_move_resize (CTK_BUTTON (widget)->priv->event_window,
                               border_allocation.x,
                               border_allocation.y,
                               border_allocation.width,

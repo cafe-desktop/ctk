@@ -26,42 +26,42 @@ INCLUDES = -FImsvc_recommended_pragmas.h \
 
 all: \
 	..\..\config.h	\
-	..\gdkconfig.h \
-	gdk-win32.lib \
-	gdk.res
+	..\cdkconfig.h \
+	cdk-win32.lib \
+	cdk.res
 
-gdk_win32_OBJECTS = \
-	gdkcursor-win32.obj \
-	gdkdevice-win32.obj \
-	gdkdevice-wintab.obj \
-	gdkdevicemanager-win32.obj \
-	gdkdnd-win32.obj \
-	gdkdisplay-win32.obj \
-	gdkdisplaymanager-win32.obj \
-	gdkevents-win32.obj \
-	gdkgeometry-win32.obj \
-	gdkglobals-win32.obj \
-	gdkinput.obj \
-	gdkkeys-win32.obj \
-	gdkmain-win32.obj \
-	gdkproperty-win32.obj \
-	gdkscreen-win32.obj \
-	gdkselection-win32.obj \
-	gdktestutils-win32.obj \
-	gdkwin32id.obj \
-	gdkwindow-win32.obj
+cdk_win32_OBJECTS = \
+	cdkcursor-win32.obj \
+	cdkdevice-win32.obj \
+	cdkdevice-wintab.obj \
+	cdkdevicemanager-win32.obj \
+	cdkdnd-win32.obj \
+	cdkdisplay-win32.obj \
+	cdkdisplaymanager-win32.obj \
+	cdkevents-win32.obj \
+	cdkgeometry-win32.obj \
+	cdkglobals-win32.obj \
+	cdkinput.obj \
+	cdkkeys-win32.obj \
+	cdkmain-win32.obj \
+	cdkproperty-win32.obj \
+	cdkscreen-win32.obj \
+	cdkselection-win32.obj \
+	cdktestutils-win32.obj \
+	cdkwin32id.obj \
+	cdkwindow-win32.obj
 
 ..\..\config.h : ..\..\config.h.win32
 	copy ..\..\config.h.win32 ..\..\config.h
 
-..\gdkconfig.h : ..\gdkconfig.h.win32
-	copy ..\gdkconfig.h.win32 ..\gdkconfig.h
+..\cdkconfig.h : ..\cdkconfig.h.win32
+	copy ..\cdkconfig.h.win32 ..\cdkconfig.h
 
-gdk.res : rc\gdk.rc
-	rc -DBUILDNUMBER=0 -r -fo gdk.res rc\gdk.rc
+cdk.res : rc\cdk.rc
+	rc -DBUILDNUMBER=0 -r -fo cdk.res rc\cdk.rc
 
-gdk-win32.lib : $(gdk_win32_OBJECTS)
-	lib -out:gdk-win32.lib $(gdk_win32_OBJECTS)
+cdk-win32.lib : $(cdk_win32_OBJECTS)
+	lib -out:cdk-win32.lib $(cdk_win32_OBJECTS)
 
 clean::
 	del *.obj

@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include "win32/gdkwin32.h"
+#include "win32/cdkwin32.h"
 
 #include "ctkwin32embed.h"
 

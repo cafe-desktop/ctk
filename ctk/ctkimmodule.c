@@ -39,19 +39,19 @@
 #include "ctkintl.h"
 
 #ifdef GDK_WINDOWING_X11
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 #endif
 
 #ifdef GDK_WINDOWING_WAYLAND
-#include "wayland/gdkwayland.h"
+#include "wayland/cdkwayland.h"
 #endif
 
 #ifdef GDK_WINDOWING_BROADWAY
-#include "broadway/gdkbroadway.h"
+#include "broadway/cdkbroadway.h"
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
-#include "win32/gdkwin32.h"
+#include "win32/cdkwin32.h"
 #endif
 
 #ifdef G_OS_WIN32
@@ -698,35 +698,35 @@ match_backend (CtkIMContextInfo *context)
 #ifdef GDK_WINDOWING_WAYLAND
   if (g_strcmp0 (context->context_id, "wayland") == 0)
     {
-      GdkDisplay *display = gdk_display_get_default ();
+      GdkDisplay *display = cdk_display_get_default ();
 
       return GDK_IS_WAYLAND_DISPLAY (display) &&
-             gdk_wayland_display_query_registry (display,
+             cdk_wayland_display_query_registry (display,
                                                  "zwp_text_input_manager_v3");
     }
   if (g_strcmp0 (context->context_id, "waylandctk") == 0)
     {
-      GdkDisplay *display = gdk_display_get_default ();
+      GdkDisplay *display = cdk_display_get_default ();
 
       return GDK_IS_WAYLAND_DISPLAY (display) &&
-             gdk_wayland_display_query_registry (display,
+             cdk_wayland_display_query_registry (display,
                                                  "ctk_text_input_manager");
     }
 #endif
 
 #ifdef GDK_WINDOWING_BROADWAY
   if (g_strcmp0 (context->context_id, "broadway") == 0)
-    return GDK_IS_BROADWAY_DISPLAY (gdk_display_get_default ());
+    return GDK_IS_BROADWAY_DISPLAY (cdk_display_get_default ());
 #endif
 
 #ifdef GDK_WINDOWING_X11
   if (g_strcmp0 (context->context_id, "xim") == 0)
-    return GDK_IS_X11_DISPLAY (gdk_display_get_default ());
+    return GDK_IS_X11_DISPLAY (cdk_display_get_default ());
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
   if (g_strcmp0 (context->context_id, "ime") == 0)
-    return GDK_IS_WIN32_DISPLAY (gdk_display_get_default ());
+    return GDK_IS_WIN32_DISPLAY (cdk_display_get_default ());
 #endif
 
   return TRUE;
@@ -853,7 +853,7 @@ _ctk_im_module_get_default_context_id (void)
 
   /* Check if the certain immodule is set in XSETTINGS.
    */
-  screen = gdk_screen_get_default ();
+  screen = cdk_screen_get_default ();
   settings = ctk_settings_get_for_screen (screen);
   g_object_get (G_OBJECT (settings), "ctk-im-module", &tmp, NULL);
   if (tmp)

@@ -18,14 +18,14 @@
 #ifndef __GDK_DEVICE_WINTAB_H__
 #define __GDK_DEVICE_WINTAB_H__
 
-#include <gdk/gdkdeviceprivate.h>
+#include <cdk/cdkdeviceprivate.h>
 
 #include <windows.h>
 #include <wintab.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DEVICE_WINTAB         (gdk_device_wintab_get_type ())
+#define GDK_TYPE_DEVICE_WINTAB         (cdk_device_wintab_get_type ())
 #define GDK_DEVICE_WINTAB(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_WINTAB, GdkDeviceWintab))
 #define GDK_DEVICE_WINTAB_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_WINTAB, GdkDeviceWintabClass))
 #define GDK_IS_DEVICE_WINTAB(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_WINTAB))
@@ -58,9 +58,9 @@ struct _GdkDeviceWintabClass
   GdkDeviceClass parent_class;
 };
 
-GType gdk_device_wintab_get_type (void) G_GNUC_CONST;
+GType cdk_device_wintab_get_type (void) G_GNUC_CONST;
 
-void         _gdk_device_wintab_translate_axes (GdkDeviceWintab *device,
+void         _cdk_device_wintab_translate_axes (GdkDeviceWintab *device,
                                                 GdkWindow       *window,
                                                 gdouble         *axes,
                                                 gdouble         *x,

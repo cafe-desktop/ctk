@@ -20,8 +20,8 @@
 
 #include <X11/Xlib.h>
 
-#include "gdkx11devicemanager-core.h"
-#include "gdkdevicemanagerprivate.h"
+#include "cdkx11devicemanager-core.h"
+#include "cdkdevicemanagerprivate.h"
 
 G_BEGIN_DECLS
 
@@ -37,7 +37,7 @@ struct _GdkX11DeviceManagerCoreClass
   GdkDeviceManagerClass parent_class;
 };
 
-void            _gdk_device_manager_core_handle_focus           (GdkWindow   *window,
+void            _cdk_device_manager_core_handle_focus           (GdkWindow   *window,
                                                                  Window       original,
                                                                  GdkDevice   *device,
                                                                  GdkDevice   *source_device,

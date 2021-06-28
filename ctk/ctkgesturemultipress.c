@@ -152,7 +152,7 @@ _ctk_gesture_multi_press_update_timeout (CtkGestureMultiPress *gesture)
   g_object_get (settings, "ctk-double-click-time", &double_click_time, NULL);
 
   priv->double_click_timeout_id =
-    gdk_threads_add_timeout (double_click_time,
+    cdk_threads_add_timeout (double_click_time,
                              _double_click_timeout_cb,
                              gesture);
 }
@@ -209,7 +209,7 @@ ctk_gesture_multi_press_begin (CtkGesture       *gesture,
   priv = ctk_gesture_multi_press_get_instance_private (multi_press);
   event = ctk_gesture_get_last_event (gesture, sequence);
   current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
-  device = gdk_event_get_source_device (event);
+  device = cdk_event_get_source_device (event);
 
   if (event->type == GDK_BUTTON_PRESS)
     button = event->button.button;

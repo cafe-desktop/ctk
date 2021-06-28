@@ -18,11 +18,11 @@
 #ifndef __GDK_DEVICE_VIRTUAL_H__
 #define __GDK_DEVICE_VIRTUAL_H__
 
-#include <gdk/gdkdeviceprivate.h>
+#include <cdk/cdkdeviceprivate.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DEVICE_VIRTUAL         (gdk_device_virtual_get_type ())
+#define GDK_TYPE_DEVICE_VIRTUAL         (cdk_device_virtual_get_type ())
 #define GDK_DEVICE_VIRTUAL(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_VIRTUAL, GdkDeviceVirtual))
 #define GDK_DEVICE_VIRTUAL_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_VIRTUAL, GdkDeviceVirtualClass))
 #define GDK_IS_DEVICE_VIRTUAL(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_VIRTUAL))
@@ -43,9 +43,9 @@ struct _GdkDeviceVirtualClass
   GdkDeviceClass parent_class;
 };
 
-GType gdk_device_virtual_get_type (void) G_GNUC_CONST;
+GType cdk_device_virtual_get_type (void) G_GNUC_CONST;
 
-void _gdk_device_virtual_set_active (GdkDevice *device,
+void _cdk_device_virtual_set_active (GdkDevice *device,
 				     GdkDevice *new_active);
 
 

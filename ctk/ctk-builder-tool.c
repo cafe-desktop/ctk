@@ -919,7 +919,7 @@ preview_file (const char *filename,
           exit (1);
         }
 
-      ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+      ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                                  CTK_STYLE_PROVIDER (provider),
                                                  CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
     }

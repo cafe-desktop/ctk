@@ -19,7 +19,7 @@
 
 #include <ctk/ctk.h>
 #ifdef GDK_WINDOWING_X11
-#include <gdk/x11/gdkx.h>
+#include <cdk/x11/cdkx.h>
 #endif
 
 #include "ctktreeprivate.h"
@@ -1092,15 +1092,15 @@ ctk_tree_view_accessible_get_cell_extents (CtkCellAccessibleParent *parent,
   tree_view = CTK_TREE_VIEW (widget);
   ctk_tree_view_accessible_get_cell_area (parent, cell, &cell_rect);
   bin_window = ctk_tree_view_get_bin_window (tree_view);
-  gdk_window_get_origin (bin_window, &w_x, &w_y);
+  cdk_window_get_origin (bin_window, &w_x, &w_y);
 
   if (coord_type == ATK_XY_WINDOW)
     {
       GdkWindow *window;
       gint x_toplevel, y_toplevel;
 
-      window = gdk_window_get_toplevel (bin_window);
-      gdk_window_get_origin (window, &x_toplevel, &y_toplevel);
+      window = cdk_window_get_toplevel (bin_window);
+      cdk_window_get_origin (window, &x_toplevel, &y_toplevel);
 
       w_x -= x_toplevel;
       w_y -= y_toplevel;
@@ -1176,7 +1176,7 @@ ctk_tree_view_accessible_grab_cell_focus (CtkCellAccessibleParent *parent,
 #ifdef GDK_WINDOWING_X11
           if (GDK_IS_X11_DISPLAY (ctk_widget_get_display (toplevel)))
             ctk_window_present_with_time (CTK_WINDOW (toplevel),
-                                          gdk_x11_get_server_time (ctk_widget_get_window (widget)));
+                                          cdk_x11_get_server_time (ctk_widget_get_window (widget)));
           else
 #endif
             {

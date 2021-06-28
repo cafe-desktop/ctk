@@ -22,7 +22,7 @@
 
 #include "config.h"
 #include "ctkrevealer.h"
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include "ctktypebuiltins.h"
 #include "ctkprivate.h"
 #include "ctksettingsprivate.h"
@@ -370,7 +370,7 @@ ctk_revealer_real_realize (CtkWidget *widget)
   attributes_mask = (GDK_WA_X | GDK_WA_Y) | GDK_WA_VISUAL;
 
   priv->view_window =
-    gdk_window_new (ctk_widget_get_parent_window ((CtkWidget*) revealer),
+    cdk_window_new (ctk_widget_get_parent_window ((CtkWidget*) revealer),
                     &attributes, attributes_mask);
   ctk_widget_set_window (widget, priv->view_window);
   ctk_widget_register_window (widget, priv->view_window);
@@ -402,14 +402,14 @@ ctk_revealer_real_realize (CtkWidget *widget)
    }
 
   priv->bin_window =
-    gdk_window_new (priv->view_window, &attributes, attributes_mask);
+    cdk_window_new (priv->view_window, &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->bin_window);
 
   child = ctk_bin_get_child (CTK_BIN (revealer));
   if (child != NULL)
     ctk_widget_set_parent_window (child, priv->bin_window);
 
-  gdk_window_show (priv->bin_window);
+  cdk_window_show (priv->bin_window);
 }
 
 static void
@@ -419,7 +419,7 @@ ctk_revealer_real_unrealize (CtkWidget *widget)
   CtkRevealerPrivate *priv = ctk_revealer_get_instance_private (revealer);
 
   ctk_widget_unregister_window (widget, priv->bin_window);
-  gdk_window_destroy (priv->bin_window);
+  cdk_window_destroy (priv->bin_window);
   priv->view_window = NULL;
 
   CTK_WIDGET_CLASS (ctk_revealer_parent_class)->unrealize (widget);
@@ -468,16 +468,16 @@ ctk_revealer_real_size_allocate (CtkWidget     *widget,
         {
           window_visible = allocation->width > 0 && allocation->height > 0;
 
-          if (!window_visible && gdk_window_is_visible (priv->view_window))
-            gdk_window_hide (priv->view_window);
+          if (!window_visible && cdk_window_is_visible (priv->view_window))
+            cdk_window_hide (priv->view_window);
 
-          if (window_visible && !gdk_window_is_visible (priv->view_window))
-            gdk_window_show (priv->view_window);
+          if (window_visible && !cdk_window_is_visible (priv->view_window))
+            cdk_window_show (priv->view_window);
         }
 
       /* The view window will follow the revealer allocation, which is modified
        * along the animation */
-      gdk_window_move_resize (priv->view_window,
+      cdk_window_move_resize (priv->view_window,
                               allocation->x, allocation->y,
                               allocation->width, allocation->height);
 
@@ -524,7 +524,7 @@ ctk_revealer_real_size_allocate (CtkWidget     *widget,
          bin_y = padding.top;
        }
 
-      gdk_window_move_resize (priv->bin_window,
+      cdk_window_move_resize (priv->bin_window,
                               bin_x, bin_y,
                               child_allocation.width, child_allocation.height);
     }
@@ -578,7 +578,7 @@ ctk_revealer_animate_cb (CtkWidget     *widget,
   gdouble ease;
 
   ctk_progress_tracker_advance_frame (&priv->tracker,
-                                      gdk_frame_clock_get_frame_time (frame_clock));
+                                      cdk_frame_clock_get_frame_time (frame_clock));
   ease = ctk_progress_tracker_get_ease_out_cubic (&priv->tracker, FALSE);
   ctk_revealer_set_position (revealer,
                              priv->source_pos + (ease * (priv->target_pos - priv->source_pos)));
@@ -652,7 +652,7 @@ ctk_revealer_real_map (CtkWidget *widget)
       ctk_widget_get_allocation (widget, &allocation);
 
       if (allocation.width > 0 && allocation.height > 0)
-        gdk_window_show (priv->view_window);
+        cdk_window_show (priv->view_window);
     }
 
   CTK_WIDGET_CLASS (ctk_revealer_parent_class)->map (widget);

@@ -24,130 +24,130 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: gdk/gdkdevice.c:97
+#: cdk/cdkdevice.c:97
 #, fuzzy
 msgid "Device Display"
 msgstr "الشاشة الافتراضية"
 
-#: gdk/gdkdevice.c:98
+#: cdk/cdkdevice.c:98
 #, fuzzy
 msgid "Display which the device belongs to"
 msgstr "عرض حساسية الخلية"
 
-#: gdk/gdkdevice.c:112
+#: cdk/cdkdevice.c:112
 #, fuzzy
 msgid "Device manager"
 msgstr "المدير الأخير"
 
-#: gdk/gdkdevice.c:113
+#: cdk/cdkdevice.c:113
 msgid "Device manager which the device belongs to"
 msgstr ""
 
-#: gdk/gdkdevice.c:127 gdk/gdkdevice.c:128
+#: cdk/cdkdevice.c:127 cdk/cdkdevice.c:128
 #, fuzzy
 msgid "Device name"
 msgstr "اسم الودجة"
 
-#: gdk/gdkdevice.c:142
+#: cdk/cdkdevice.c:142
 #, fuzzy
 msgid "Device type"
 msgstr "نوع المنحنى"
 
-#: gdk/gdkdevice.c:143
+#: cdk/cdkdevice.c:143
 msgid "Device role in the device manager"
 msgstr ""
 
-#: gdk/gdkdevice.c:159
+#: cdk/cdkdevice.c:159
 msgid "Associated device"
 msgstr ""
 
-#: gdk/gdkdevice.c:160
+#: cdk/cdkdevice.c:160
 msgid "Associated pointer or keyboard with this device"
 msgstr ""
 
-#: gdk/gdkdevice.c:173
+#: cdk/cdkdevice.c:173
 msgid "Input source"
 msgstr ""
 
-#: gdk/gdkdevice.c:174
+#: cdk/cdkdevice.c:174
 #, fuzzy
 msgid "Source type for the device"
 msgstr "نمط عرض الشجرة"
 
-#: gdk/gdkdevice.c:189 gdk/gdkdevice.c:190
+#: cdk/cdkdevice.c:189 cdk/cdkdevice.c:190
 #, fuzzy
 msgid "Input mode for the device"
 msgstr "نمط عرض الشجرة"
 
-#: gdk/gdkdevice.c:205
+#: cdk/cdkdevice.c:205
 #, fuzzy
 msgid "Whether the device has a cursor"
 msgstr "ما إذا كان الكائن له بؤرة الإدخال"
 
-#: gdk/gdkdevice.c:206
+#: cdk/cdkdevice.c:206
 #, fuzzy
 msgid "Whether there is a visible cursor following device motion"
 msgstr "فيما إذا كتم تحديد  icon-size"
 
-#: gdk/gdkdevice.c:220 gdk/gdkdevice.c:221
+#: cdk/cdkdevice.c:220 cdk/cdkdevice.c:221
 #, fuzzy
 msgid "Number of axes in the device"
 msgstr "عدد الصفحات في المستند"
 
-#: gdk/gdkdevicemanager.c:134
+#: cdk/cdkdevicemanager.c:134
 #, fuzzy
 msgid "Display"
 msgstr "الشاشة الافتراضية"
 
-#: gdk/gdkdevicemanager.c:135
+#: cdk/cdkdevicemanager.c:135
 #, fuzzy
 msgid "Display for the device manager"
 msgstr "عرض الخلية"
 
-#: gdk/gdkdisplaymanager.c:102
+#: cdk/cdkdisplaymanager.c:102
 msgid "Default Display"
 msgstr "الشاشة الافتراضية"
 
-#: gdk/gdkdisplaymanager.c:103
+#: cdk/cdkdisplaymanager.c:103
 msgid "The default display for GDK"
 msgstr "شاشة GDK الافتراضية"
 
-#: gdk/gdkscreen.c:72
+#: cdk/cdkscreen.c:72
 msgid "Font options"
 msgstr "خيارات الخط"
 
-#: gdk/gdkscreen.c:73
+#: cdk/cdkscreen.c:73
 msgid "The default font options for the screen"
 msgstr "خيارات الخط الافتراضية للشاشة"
 
-#: gdk/gdkscreen.c:80
+#: cdk/cdkscreen.c:80
 msgid "Font resolution"
 msgstr "ميز الخط"
 
-#: gdk/gdkscreen.c:81
+#: cdk/cdkscreen.c:81
 msgid "The resolution for fonts on the screen"
 msgstr "ميز الخطوط على الشاشة"
 
-#: gdk/gdkwindow.c:392 gdk/gdkwindow.c:393
+#: cdk/cdkwindow.c:392 cdk/cdkwindow.c:393
 #, fuzzy
 msgid "Cursor"
 msgstr "وميض المؤشر"
 
-#: gdk/x11/gdkdevice-xi.c:132 gdk/x11/gdkdevice-xi.c:133
-#: gdk/x11/gdkdevice-xi2.c:111
+#: cdk/x11/cdkdevice-xi.c:132 cdk/x11/cdkdevice-xi.c:133
+#: cdk/x11/cdkdevice-xi2.c:111
 msgid "Device ID"
 msgstr ""
 
-#: gdk/x11/gdkdevice-xi2.c:112
+#: cdk/x11/cdkdevice-xi2.c:112
 msgid "Device identifier"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi.c:84
+#: cdk/x11/cdkdevicemanager-xi.c:84
 #, fuzzy
 msgid "Event base"
 msgstr "أحداث"
 
-#: gdk/x11/gdkdevicemanager-xi.c:85
+#: cdk/x11/cdkdevicemanager-xi.c:85
 msgid "Event base for XInput events"
 msgstr ""
 

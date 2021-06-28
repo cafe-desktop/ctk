@@ -25,7 +25,7 @@
 static void
 test_text (void)
 {
-  CtkClipboard *clipboard = ctk_clipboard_get_for_display (gdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
+  CtkClipboard *clipboard = ctk_clipboard_get_for_display (cdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
   char *text;
 
   ctk_clipboard_set_text (clipboard, SOME_TEXT, -1);
@@ -68,11 +68,11 @@ test_with_data_got (CtkClipboard *clipboard,
 static void
 test_with_data (void)
 {
-    CtkClipboard *clipboard = ctk_clipboard_get_for_display (gdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
+    CtkClipboard *clipboard = ctk_clipboard_get_for_display (cdk_display_get_default (), GDK_SELECTION_CLIPBOARD);
     CtkTargetEntry entries[] = { { .target = TARGET_TEXT, .info = 42 } };
 
     ctk_clipboard_set_with_data (clipboard, entries, G_N_ELEMENTS(entries), test_with_data_get, NULL, NULL);
-    ctk_clipboard_request_contents (clipboard, gdk_atom_intern (TARGET_TEXT, FALSE), test_with_data_got, NULL);
+    ctk_clipboard_request_contents (clipboard, cdk_atom_intern (TARGET_TEXT, FALSE), test_with_data_got, NULL);
 }
 
 int

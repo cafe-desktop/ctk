@@ -17,41 +17,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../gdk/gdkdisplaymanager.c:103
+#: ../cdk/cdkdisplaymanager.c:103
 msgid "Default Display"
 msgstr ""
 
-#: ../gdk/gdkdisplaymanager.c:104
+#: ../cdk/cdkdisplaymanager.c:104
 msgid "The default display for GDK"
 msgstr ""
 
-#: ../gdk/gdkpango.c:538 ../ctk/ctkinvisible.c:86
+#: ../cdk/cdkpango.c:538 ../ctk/ctkinvisible.c:86
 #: ../ctk/ctkmountoperation.c:176 ../ctk/ctkstatusicon.c:280
 #: ../ctk/ctkwindow.c:641
 msgid "Screen"
 msgstr ""
 
-#: ../gdk/gdkpango.c:539
+#: ../cdk/cdkpango.c:539
 msgid "the GdkScreen for the renderer"
 msgstr ""
 
-#: ../gdk/gdkscreen.c:75
+#: ../cdk/cdkscreen.c:75
 msgid "Font options"
 msgstr ""
 
-#: ../gdk/gdkscreen.c:76
+#: ../cdk/cdkscreen.c:76
 msgid "The default font options for the screen"
 msgstr ""
 
-#: ../gdk/gdkscreen.c:83
+#: ../cdk/cdkscreen.c:83
 msgid "Font resolution"
 msgstr ""
 
-#: ../gdk/gdkscreen.c:84
+#: ../cdk/cdkscreen.c:84
 msgid "The resolution for fonts on the screen"
 msgstr ""
 
-#: ../gdk/gdkwindow.c:496 ../gdk/gdkwindow.c:497
+#: ../cdk/cdkwindow.c:496 ../cdk/cdkwindow.c:497
 msgid "Cursor"
 msgstr ""
 

@@ -115,24 +115,24 @@ init_atoms (void)
   int i;
 
   seltypes[SEL_TYPE_NONE] = GDK_NONE;
-  seltypes[APPLE_PICT] = gdk_atom_intern ("APPLE_PICT",FALSE);
-  seltypes[ATOM]       = gdk_atom_intern ("ATOM",FALSE);
-  seltypes[ATOM_PAIR]  = gdk_atom_intern ("ATOM_PAIR",FALSE);
-  seltypes[BITMAP]     = gdk_atom_intern ("BITMAP",FALSE);
-  seltypes[C_STRING]   = gdk_atom_intern ("C_STRING",FALSE);
-  seltypes[COLORMAP]   = gdk_atom_intern ("COLORMAP",FALSE);
-  seltypes[COMPOUND_TEXT] = gdk_atom_intern ("COMPOUND_TEXT",FALSE);
-  seltypes[DRAWABLE]   = gdk_atom_intern ("DRAWABLE",FALSE);
-  seltypes[INTEGER]    = gdk_atom_intern ("INTEGER",FALSE);
-  seltypes[PIXEL]      = gdk_atom_intern ("PIXEL",FALSE);
-  seltypes[PIXMAP]     = gdk_atom_intern ("PIXMAP",FALSE);
-  seltypes[SPAN]       = gdk_atom_intern ("SPAN",FALSE);
-  seltypes[STRING]     = gdk_atom_intern ("STRING",FALSE);
-  seltypes[TEXT]       = gdk_atom_intern ("TEXT",FALSE);
-  seltypes[WINDOW]     = gdk_atom_intern ("WINDOW",FALSE);
+  seltypes[APPLE_PICT] = cdk_atom_intern ("APPLE_PICT",FALSE);
+  seltypes[ATOM]       = cdk_atom_intern ("ATOM",FALSE);
+  seltypes[ATOM_PAIR]  = cdk_atom_intern ("ATOM_PAIR",FALSE);
+  seltypes[BITMAP]     = cdk_atom_intern ("BITMAP",FALSE);
+  seltypes[C_STRING]   = cdk_atom_intern ("C_STRING",FALSE);
+  seltypes[COLORMAP]   = cdk_atom_intern ("COLORMAP",FALSE);
+  seltypes[COMPOUND_TEXT] = cdk_atom_intern ("COMPOUND_TEXT",FALSE);
+  seltypes[DRAWABLE]   = cdk_atom_intern ("DRAWABLE",FALSE);
+  seltypes[INTEGER]    = cdk_atom_intern ("INTEGER",FALSE);
+  seltypes[PIXEL]      = cdk_atom_intern ("PIXEL",FALSE);
+  seltypes[PIXMAP]     = cdk_atom_intern ("PIXMAP",FALSE);
+  seltypes[SPAN]       = cdk_atom_intern ("SPAN",FALSE);
+  seltypes[STRING]     = cdk_atom_intern ("STRING",FALSE);
+  seltypes[TEXT]       = cdk_atom_intern ("TEXT",FALSE);
+  seltypes[WINDOW]     = cdk_atom_intern ("WINDOW",FALSE);
 
   for (i=0; i<num_targets; i++)
-    targets[i].target = gdk_atom_intern (targets[i].target_name, FALSE);
+    targets[i].target = cdk_atom_intern (targets[i].target_name, FALSE);
 }
 
 void
@@ -150,7 +150,7 @@ selection_toggled (CtkWidget *widget)
     {
       if (have_selection)
 	{
-          if (gdk_selection_owner_get (GDK_SELECTION_PRIMARY) == ctk_widget_get_window (widget))
+          if (cdk_selection_owner_get (GDK_SELECTION_PRIMARY) == ctk_widget_get_window (widget))
 	    ctk_selection_owner_set (NULL, GDK_SELECTION_PRIMARY,
 				     GDK_CURRENT_TIME);
 	  have_selection = FALSE;
@@ -206,7 +206,7 @@ selection_clear (CtkWidget *widget, GdkEventSelection *event)
 gchar *
 stringify_atom (guchar *data, gint *position)
 {
-  gchar *str = gdk_atom_name (*(GdkAtom *)(data+*position));
+  gchar *str = cdk_atom_name (*(GdkAtom *)(data+*position));
   *position += sizeof(GdkAtom);
     
   return str;
@@ -295,7 +295,7 @@ selection_received (CtkWidget *widget, CtkSelectionData *selection_data)
 
   if (seltype == SEL_TYPE_NONE)
     {
-      char *name = gdk_atom_name (type);
+      char *name = cdk_atom_name (type);
       g_print("Don't know how to handle type: %s\n",
 	      name?name:"<unknown>");
       return;
@@ -339,7 +339,7 @@ selection_received (CtkWidget *widget, CtkSelectionData *selection_data)
 	  break;
 	default:
 	  {
-	    char *name = gdk_atom_name (ctk_selection_data_get_data_type (selection_data));
+	    char *name = cdk_atom_name (ctk_selection_data_get_data_type (selection_data));
 	    g_print("Can't convert type %s to string\n",
 		    name?name:"<unknown>");
 	    position = ctk_selection_data_get_length (selection_data);
@@ -366,7 +366,7 @@ paste (CtkWidget *dialog, gint response, CtkWidget *entry)
     }
 
   name = ctk_entry_get_text (CTK_ENTRY(entry));
-  atom = gdk_atom_intern (name, FALSE);
+  atom = cdk_atom_intern (name, FALSE);
 
   if (atom == GDK_NONE)
     {

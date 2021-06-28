@@ -1,4 +1,4 @@
-/* gdkproperty-quartz.c
+/* cdkproperty-quartz.c
  *
  * Copyright (C) 2005 Imendio AB
  *
@@ -18,7 +18,7 @@
 
 #include "config.h"
 
-#include "gdkproperty.h"
+#include "cdkproperty.h"
 
 static GHashTable *names_to_atoms;
 static GPtrArray *atoms_to_names;
@@ -129,14 +129,14 @@ ensure_atom_tables (void)
 }
 
 void
-_gdk_quartz_window_delete_property (GdkWindow *window,
+_cdk_quartz_window_delete_property (GdkWindow *window,
                                     GdkAtom    property)
 {
   /* FIXME: Implement */
 }
 
 gint
-_gdk_quartz_window_get_property (GdkWindow   *window,
+_cdk_quartz_window_get_property (GdkWindow   *window,
                                  GdkAtom      property,
                                  GdkAtom      type,
                                  gulong       offset,
@@ -152,7 +152,7 @@ _gdk_quartz_window_get_property (GdkWindow   *window,
 }
 
 void
-_gdk_quartz_window_change_property (GdkWindow   *window,
+_cdk_quartz_window_change_property (GdkWindow   *window,
                                     GdkAtom      property,
                                     GdkAtom      type,
                                     gint         format,

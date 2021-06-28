@@ -92,28 +92,28 @@
 
 #include <stdarg.h>
 #include <string.h>
-#include "gdk.h"
+#include "cdk.h"
 
 #include "ctkmain.h"
 #include "ctkdebug.h"
 #include "ctktextbufferrichtext.h"
 #include "ctkintl.h"
-#include "gdk-pixbuf/gdk-pixbuf.h"
+#include "cdk-pixbuf/cdk-pixbuf.h"
 
 #ifdef GDK_WINDOWING_X11
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
-#include "win32/gdkwin32.h"
+#include "win32/cdkwin32.h"
 #endif
 
 #ifdef GDK_WINDOWING_WAYLAND
-#include <gdk/wayland/gdkwayland.h>
+#include <cdk/wayland/cdkwayland.h>
 #endif
 
 #ifdef GDK_WINDOWING_BROADWAY
-#include "broadway/gdkbroadway.h"
+#include "broadway/cdkbroadway.h"
 #endif
 
 #undef DEBUG_SELECTION
@@ -347,17 +347,17 @@ init_atoms (void)
 
   if (!utf8_atom)
     {
-      utf8_atom = gdk_atom_intern_static_string ("UTF8_STRING");
-      text_atom = gdk_atom_intern_static_string ("TEXT");
-      ctext_atom = gdk_atom_intern_static_string ("COMPOUND_TEXT");
-      text_plain_atom = gdk_atom_intern_static_string ("text/plain");
-      text_plain_utf8_atom = gdk_atom_intern_static_string ("text/plain;charset=utf-8");
+      utf8_atom = cdk_atom_intern_static_string ("UTF8_STRING");
+      text_atom = cdk_atom_intern_static_string ("TEXT");
+      ctext_atom = cdk_atom_intern_static_string ("COMPOUND_TEXT");
+      text_plain_atom = cdk_atom_intern_static_string ("text/plain");
+      text_plain_utf8_atom = cdk_atom_intern_static_string ("text/plain;charset=utf-8");
       g_get_charset (&charset);
       tmp = g_strdup_printf ("text/plain;charset=%s", charset);
-      text_plain_locale_atom = gdk_atom_intern (tmp, FALSE);
+      text_plain_locale_atom = cdk_atom_intern (tmp, FALSE);
       g_free (tmp);
 
-      text_uri_list_atom = gdk_atom_intern_static_string ("text/uri-list");
+      text_uri_list_atom = cdk_atom_intern_static_string ("text/uri-list");
     }
 }
 
@@ -453,7 +453,7 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
 
   g_return_if_fail (list != NULL);
 
-  formats = gdk_pixbuf_get_formats ();
+  formats = cdk_pixbuf_get_formats ();
 
   /* Make sure png comes first */
   for (f = formats; f; f = f->next)
@@ -461,7 +461,7 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
       GdkPixbufFormat *fmt = f->data;
       gchar *name; 
  
-      name = gdk_pixbuf_format_get_name (fmt);
+      name = cdk_pixbuf_format_get_name (fmt);
       if (strcmp (name, "png") == 0)
 	{
 	  formats = g_slist_delete_link (formats, f);
@@ -479,13 +479,13 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
     {
       GdkPixbufFormat *fmt = f->data;
 
-      if (writable && !gdk_pixbuf_format_is_writable (fmt))
+      if (writable && !cdk_pixbuf_format_is_writable (fmt))
 	continue;
       
-      mimes = gdk_pixbuf_format_get_mime_types (fmt);
+      mimes = cdk_pixbuf_format_get_mime_types (fmt);
       for (m = mimes; *m; m++)
 	{
-	  atom = gdk_atom_intern (*m, FALSE);
+	  atom = cdk_atom_intern (*m, FALSE);
 	  ctk_target_list_add (list, atom, 0, info);  
 	}
       g_strfreev (mimes);
@@ -533,7 +533,7 @@ ctk_target_list_add_table (CtkTargetList        *list,
   for (i=ntargets-1; i >= 0; i--)
     {
       CtkTargetPair *pair = g_slice_new (CtkTargetPair);
-      pair->target = gdk_atom_intern (targets[i].target, FALSE);
+      pair->target = cdk_atom_intern (targets[i].target, FALSE);
       pair->flags = targets[i].flags;
       pair->info = targets[i].info;
       
@@ -646,7 +646,7 @@ ctk_target_table_new_from_list (CtkTargetList *list,
     {
       CtkTargetPair *pair = tmp_list->data;
 
-      targets[i].target = gdk_atom_name (pair->target);
+      targets[i].target = cdk_atom_name (pair->target);
       targets[i].flags  = pair->flags;
       targets[i].info   = pair->info;
     }
@@ -725,7 +725,7 @@ ctk_selection_owner_set_for_display (GdkDisplay   *display,
       tmp_list = tmp_list->next;
     }
   
-  if (gdk_selection_owner_set_for_display (display, window, selection, time, TRUE))
+  if (cdk_selection_owner_set_for_display (display, window, selection, time, TRUE))
     {
       old_owner = NULL;
       
@@ -765,7 +765,7 @@ ctk_selection_owner_set_for_display (GdkDisplay   *display,
        */
       if (old_owner && old_owner != widget)
 	{
-	  GdkEvent *event = gdk_event_new (GDK_SELECTION_CLEAR);
+	  GdkEvent *event = cdk_event_new (GDK_SELECTION_CLEAR);
 
           event->selection.window = g_object_ref (ctk_widget_get_window (old_owner));
 	  event->selection.selection = selection;
@@ -773,7 +773,7 @@ ctk_selection_owner_set_for_display (GdkDisplay   *display,
 	  
 	  ctk_widget_event (old_owner, event);
 
-	  gdk_event_free (event);
+	  cdk_event_free (event);
 	}
       return TRUE;
     }
@@ -809,7 +809,7 @@ ctk_selection_owner_set (CtkWidget *widget,
       CTK_NOTE (MULTIHEAD,
 		g_warning ("ctk_selection_owner_set (NULL,...) is not multihead safe"));
 		 
-      display = gdk_display_get_default ();
+      display = cdk_display_get_default ();
     }
   
   return ctk_selection_owner_set_for_display (display, widget,
@@ -897,11 +897,11 @@ ctk_selection_clear_targets (CtkWidget *widget,
 
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
-    gdk_wayland_selection_clear_targets (ctk_widget_get_display (widget), selection);
+    cdk_wayland_selection_clear_targets (ctk_widget_get_display (widget), selection);
 #endif
 #ifdef GDK_WINDOWING_WIN32
   if (GDK_IS_WIN32_DISPLAY (ctk_widget_get_display (widget)))
-    gdk_win32_selection_clear_targets (ctk_widget_get_display (widget), selection);
+    cdk_win32_selection_clear_targets (ctk_widget_get_display (widget), selection);
 #endif
 
   lists = g_object_get_data (G_OBJECT (widget), ctk_selection_handler_key);
@@ -950,11 +950,11 @@ ctk_selection_add_target (CtkWidget	    *widget,
   ctk_target_list_add (list, target, 0, info);
 #ifdef GDK_WINDOWING_WAYLAND
   if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
-    gdk_wayland_selection_add_targets (ctk_widget_get_window (widget), selection, 1, &target);
+    cdk_wayland_selection_add_targets (ctk_widget_get_window (widget), selection, 1, &target);
 #endif
 #ifdef GDK_WINDOWING_WIN32
   if (GDK_IS_WIN32_DISPLAY (ctk_widget_get_display (widget)))
-    gdk_win32_selection_add_targets (ctk_widget_get_window (widget), selection, 1, &target);
+    cdk_win32_selection_add_targets (ctk_widget_get_window (widget), selection, 1, &target);
 #endif
 }
 
@@ -990,9 +990,9 @@ ctk_selection_add_targets (CtkWidget            *widget,
       guint i;
 
       for (i = 0; i < ntargets; i++)
-        atoms[i] = gdk_atom_intern (targets[i].target, FALSE);
+        atoms[i] = cdk_atom_intern (targets[i].target, FALSE);
 
-      gdk_wayland_selection_add_targets (ctk_widget_get_window (widget), selection, ntargets, atoms);
+      cdk_wayland_selection_add_targets (ctk_widget_get_window (widget), selection, ntargets, atoms);
       g_free (atoms);
     }
 #endif
@@ -1004,8 +1004,8 @@ ctk_selection_add_targets (CtkWidget            *widget,
       GdkAtom *atoms = g_new (GdkAtom, ntargets);
 
       for (i = 0; i < ntargets; ++i)
-        atoms[i] = gdk_atom_intern (targets[i].target, FALSE);
-      gdk_win32_selection_add_targets (ctk_widget_get_window (widget), selection, ntargets, atoms);
+        atoms[i] = cdk_atom_intern (targets[i].target, FALSE);
+      cdk_win32_selection_add_targets (ctk_widget_get_window (widget), selection, ntargets, atoms);
       g_free (atoms);
     }
 #endif
@@ -1056,7 +1056,7 @@ ctk_selection_remove_all (CtkWidget *widget)
       
       if (selection_info->widget == widget)
 	{	
-	  gdk_selection_owner_set_for_display (selection_info->display,
+	  cdk_selection_owner_set_for_display (selection_info->display,
 					       NULL, 
 					       selection_info->selection,
 				               GDK_CURRENT_TIME, FALSE);
@@ -1138,14 +1138,14 @@ ctk_selection_convert (CtkWidget *widget,
      procedure directly to avoid deadlocks with INCR. */
 
   display = ctk_widget_get_display (widget);
-  owner_window = gdk_selection_owner_get_for_display (display, selection);
+  owner_window = cdk_selection_owner_get_for_display (display, selection);
   
 #ifdef GDK_WINDOWING_WIN32
   /* Special handling for DELETE requests,
    * make sure this goes down into GDK layer.
    */
   if (GDK_IS_WIN32_DISPLAY (display) &&
-      target == gdk_atom_intern_static_string ("DELETE"))
+      target == cdk_atom_intern_static_string ("DELETE"))
     owner_window = NULL;
 #endif
 
@@ -1160,7 +1160,7 @@ ctk_selection_convert (CtkWidget *widget,
       selection_data.length = -1;
       selection_data.display = display;
       
-      gdk_window_get_user_data (owner_window, &owner_widget_ptr);
+      cdk_window_get_user_data (owner_window, &owner_widget_ptr);
       owner_widget = owner_widget_ptr;
       
       if (owner_widget != NULL)
@@ -1207,8 +1207,8 @@ ctk_selection_convert (CtkWidget *widget,
   /* Otherwise, we need to go through X */
   
   current_retrievals = g_list_append (current_retrievals, info);
-  gdk_selection_convert (ctk_widget_get_window (widget), selection, target, time_);
-  id = gdk_threads_add_timeout (1000,
+  cdk_selection_convert (ctk_widget_get_window (widget), selection, target, time_);
+  id = cdk_threads_add_timeout (1000,
       (GSourceFunc) ctk_selection_retrieval_timeout, info);
   g_source_set_name_by_id (id, "[ctk+] ctk_selection_retrieval_timeout");
   
@@ -1415,7 +1415,7 @@ selection_set_string (CtkSelectionData *selection_data,
 		      gint              len)
 {
   gchar *tmp = g_strndup (str, len);
-  gchar *latin1 = gdk_utf8_to_string_target (tmp);
+  gchar *latin1 = cdk_utf8_to_string_target (tmp);
   g_free (tmp);
   
   if (latin1)
@@ -1448,11 +1448,11 @@ selection_set_compound_text (CtkSelectionData *selection_data,
   if (GDK_IS_X11_DISPLAY (selection_data->display))
     {
       tmp = g_strndup (str, len);
-      if (gdk_x11_display_utf8_to_compound_text (selection_data->display, tmp,
+      if (cdk_x11_display_utf8_to_compound_text (selection_data->display, tmp,
                                                  &encoding, &format, &text, &new_length))
         {
           ctk_selection_data_set (selection_data, encoding, format, text, new_length);
-          gdk_x11_free_compound_text (text);
+          cdk_x11_free_compound_text (text);
 
           result = TRUE;
         }
@@ -1693,7 +1693,7 @@ ctk_selection_data_get_text (const CtkSelectionData *selection_data)
     {
       gchar **list;
       gint i;
-      gint count = gdk_text_property_to_utf8_list_for_display (selection_data->display,
+      gint count = cdk_text_property_to_utf8_list_for_display (selection_data->display,
       							       selection_data->type,
 						   	       selection_data->format, 
 						               selection_data->data,
@@ -1745,21 +1745,21 @@ ctk_selection_data_set_pixbuf (CtkSelectionData *selection_data,
   g_return_val_if_fail (selection_data != NULL, FALSE);
   g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), FALSE);
 
-  formats = gdk_pixbuf_get_formats ();
+  formats = cdk_pixbuf_get_formats ();
 
   for (f = formats; f; f = f->next)
     {
       GdkPixbufFormat *fmt = f->data;
 
-      mimes = gdk_pixbuf_format_get_mime_types (fmt);
+      mimes = cdk_pixbuf_format_get_mime_types (fmt);
       for (m = mimes; *m; m++)
 	{
-	  atom = gdk_atom_intern (*m, FALSE);
+	  atom = cdk_atom_intern (*m, FALSE);
 	  if (selection_data->target == atom)
 	    {
 	      str = NULL;
-	      type = gdk_pixbuf_format_get_name (fmt);
-	      result = gdk_pixbuf_save_to_buffer (pixbuf, &str, &len,
+	      type = cdk_pixbuf_format_get_name (fmt);
+	      result = cdk_pixbuf_save_to_buffer (pixbuf, &str, &len,
 						  type, NULL,
                                                   ((strcmp (type, "png") == 0) ?
                                                    "compression" : NULL), "2",
@@ -1808,14 +1808,14 @@ ctk_selection_data_get_pixbuf (const CtkSelectionData *selection_data)
 
   if (selection_data->length > 0)
     {
-      loader = gdk_pixbuf_loader_new ();
+      loader = cdk_pixbuf_loader_new ();
       
-      gdk_pixbuf_loader_write (loader, 
+      cdk_pixbuf_loader_write (loader, 
 			       selection_data->data,
 			       selection_data->length,
 			       NULL);
-      gdk_pixbuf_loader_close (loader, NULL);
-      result = gdk_pixbuf_loader_get_pixbuf (loader);
+      cdk_pixbuf_loader_close (loader, NULL);
+      result = cdk_pixbuf_loader_get_pixbuf (loader);
       
       if (result)
 	g_object_ref (result);
@@ -1911,7 +1911,7 @@ ctk_selection_data_get_uris (const CtkSelectionData *selection_data)
       selection_data->type == text_uri_list_atom)
     {
       gchar **list;
-      gint count = gdk_text_property_to_utf8_list_for_display (selection_data->display,
+      gint count = cdk_text_property_to_utf8_list_for_display (selection_data->display,
       							       utf8_atom,
 						   	       selection_data->format, 
 						               selection_data->data,
@@ -2301,11 +2301,11 @@ ctk_selection_data_targets_include_uri (const CtkSelectionData *selection_data)
 static void
 ctk_selection_init (void)
 {
-  ctk_selection_atoms[INCR] = gdk_atom_intern_static_string ("INCR");
-  ctk_selection_atoms[MULTIPLE] = gdk_atom_intern_static_string ("MULTIPLE");
-  ctk_selection_atoms[TIMESTAMP] = gdk_atom_intern_static_string ("TIMESTAMP");
-  ctk_selection_atoms[TARGETS] = gdk_atom_intern_static_string ("TARGETS");
-  ctk_selection_atoms[SAVE_TARGETS] = gdk_atom_intern_static_string ("SAVE_TARGETS");
+  ctk_selection_atoms[INCR] = cdk_atom_intern_static_string ("INCR");
+  ctk_selection_atoms[MULTIPLE] = cdk_atom_intern_static_string ("MULTIPLE");
+  ctk_selection_atoms[TIMESTAMP] = cdk_atom_intern_static_string ("TIMESTAMP");
+  ctk_selection_atoms[TARGETS] = cdk_atom_intern_static_string ("TARGETS");
+  ctk_selection_atoms[SAVE_TARGETS] = cdk_atom_intern_static_string ("SAVE_TARGETS");
 
   initialize = FALSE;
 }
@@ -2324,7 +2324,7 @@ gboolean
 _ctk_selection_clear (CtkWidget         *widget,
 		     GdkEventSelection *event)
 {
-  /* Note that we filter clear events in gdkselection-x11.c, so
+  /* Note that we filter clear events in cdkselection-x11.c, so
    * that we only will get here if the clear event actually
    * represents a change that we didn't do ourself.
    */
@@ -2416,12 +2416,12 @@ _ctk_selection_request (CtkWidget *widget,
       
       mult_atoms = NULL;
       
-      gdk_error_trap_push ();
-      if (!gdk_property_get (info->requestor, event->property, GDK_NONE, /* AnyPropertyType */
+      cdk_error_trap_push ();
+      if (!cdk_property_get (info->requestor, event->property, GDK_NONE, /* AnyPropertyType */
 			     0, selection_max_size, FALSE,
 			     &type, &format, &length, &mult_atoms))
 	{
-	  gdk_selection_send_notify_for_display (display,
+	  cdk_selection_send_notify_for_display (display,
 						 event->requestor, 
 						 event->selection,
 						 event->target, 
@@ -2429,10 +2429,10 @@ _ctk_selection_request (CtkWidget *widget,
 						 event->time);
 	  g_free (mult_atoms);
 	  g_slice_free (CtkIncrInfo, info);
-          gdk_error_trap_pop_ignored ();
+          cdk_error_trap_pop_ignored ();
 	  return TRUE;
 	}
-      gdk_error_trap_pop_ignored ();
+      cdk_error_trap_pop_ignored ();
 
       /* This is annoying; the ICCCM doesn't specify the property type
        * used for the property contents, so the autoconversion for
@@ -2440,16 +2440,16 @@ _ctk_selection_request (CtkWidget *widget,
        */
 #ifdef GDK_WINDOWING_X11
       if (type != GDK_SELECTION_TYPE_ATOM &&
-	  type != gdk_atom_intern_static_string ("ATOM_PAIR"))
+	  type != cdk_atom_intern_static_string ("ATOM_PAIR"))
 	{
 	  info->num_conversions = length / (2*sizeof (glong));
 	  info->conversions = g_new (CtkIncrConversion, info->num_conversions);
 	  
 	  for (i=0; i<info->num_conversions; i++)
 	    {
-	      info->conversions[i].target = gdk_x11_xatom_to_atom_for_display (display,
+	      info->conversions[i].target = cdk_x11_xatom_to_atom_for_display (display,
 									       ((glong *)mult_atoms)[2*i]);
-	      info->conversions[i].property = gdk_x11_xatom_to_atom_for_display (display,
+	      info->conversions[i].property = cdk_x11_xatom_to_atom_for_display (display,
 										 ((glong *)mult_atoms)[2*i + 1]);
 	    }
 
@@ -2495,7 +2495,7 @@ _ctk_selection_request (CtkWidget *widget,
       g_message ("Selection %ld, target %ld (%s) requested by 0x%x (property = %ld)",
 		 event->selection, 
 		 info->conversions[i].target,
-		 gdk_atom_name (info->conversions[i].target),
+		 cdk_atom_name (info->conversions[i].target),
 		 event->requestor, info->conversions[i].property);
 #endif
       
@@ -2522,27 +2522,27 @@ _ctk_selection_request (CtkWidget *widget,
 	  info->conversions[i].data = data;
 	  info->num_incrs++;
 	  
-	  gdk_error_trap_push ();
-	  gdk_property_change (info->requestor, 
+	  cdk_error_trap_push ();
+	  cdk_property_change (info->requestor, 
 			       info->conversions[i].property,
 			       ctk_selection_atoms[INCR],
 			       32,
 			       GDK_PROP_MODE_REPLACE,
 			       (guchar *)&items, 1);
-	  gdk_error_trap_pop_ignored ();
+	  cdk_error_trap_pop_ignored ();
 	}
       else
 	{
 	  info->conversions[i].offset = -1;
 	  
-	  gdk_error_trap_push ();
-	  gdk_property_change (info->requestor, 
+	  cdk_error_trap_push ();
+	  cdk_property_change (info->requestor, 
 			       info->conversions[i].property,
 			       data.type,
 			       data.format,
 			       GDK_PROP_MODE_REPLACE,
 			       data.data, items);
-	  gdk_error_trap_pop_ignored ();
+	  cdk_error_trap_pop_ignored ();
 	  
 	  g_free (data.data);
 	}
@@ -2562,13 +2562,13 @@ _ctk_selection_request (CtkWidget *widget,
       g_message ("Starting INCR...");
 #endif
       
-      gdk_error_trap_push ();
-      gdk_window_set_events (info->requestor,
-			     gdk_window_get_events (info->requestor) |
+      cdk_error_trap_push ();
+      cdk_window_set_events (info->requestor,
+			     cdk_window_get_events (info->requestor) |
 			     GDK_PROPERTY_CHANGE_MASK);
-      gdk_error_trap_pop_ignored ();
+      cdk_error_trap_pop_ignored ();
       current_incrs = g_list_append (current_incrs, info);
-      id = gdk_threads_add_timeout (1000, (GSourceFunc) ctk_selection_incr_timeout, info);
+      id = cdk_threads_add_timeout (1000, (GSourceFunc) ctk_selection_incr_timeout, info);
       g_source_set_name_by_id (id, "[ctk+] ctk_selection_incr_timeout");
     }
   
@@ -2583,12 +2583,12 @@ _ctk_selection_request (CtkWidget *widget,
 	  mult_atoms[2*i+1] = info->conversions[i].property;
 	}
 
-      gdk_error_trap_push ();
-      gdk_property_change (info->requestor, event->property,
-			   gdk_atom_intern_static_string ("ATOM_PAIR"), 32, 
+      cdk_error_trap_push ();
+      cdk_property_change (info->requestor, event->property,
+			   cdk_atom_intern_static_string ("ATOM_PAIR"), 32, 
 			   GDK_PROP_MODE_REPLACE,
 			   (guchar *)mult_atoms, 2*info->num_conversions);
-      gdk_error_trap_pop_ignored ();
+      cdk_error_trap_pop_ignored ();
       g_free (mult_atoms);
     }
 
@@ -2596,7 +2596,7 @@ _ctk_selection_request (CtkWidget *widget,
       info->conversions[0].property == GDK_NONE)
     {
       /* Reject the entire conversion */
-      gdk_selection_send_notify_for_display (ctk_widget_get_display (widget),
+      cdk_selection_send_notify_for_display (ctk_widget_get_display (widget),
 					     event->requestor, 
 					     event->selection, 
 					     event->target, 
@@ -2605,7 +2605,7 @@ _ctk_selection_request (CtkWidget *widget,
     }
   else
     {
-      gdk_selection_send_notify_for_display (ctk_widget_get_display (widget),
+      cdk_selection_send_notify_for_display (ctk_widget_get_display (widget),
 					     event->requestor, 
 					     event->selection,
 					     event->target,
@@ -2658,7 +2658,7 @@ _ctk_selection_incr_event (GdkWindow	   *window,
   g_message ("PropertyDelete, property %ld", event->atom);
 #endif
 
-  selection_max_size = CTK_SELECTION_MAX_SIZE (gdk_window_get_display (window));  
+  selection_max_size = CTK_SELECTION_MAX_SIZE (cdk_window_get_display (window));  
 
   /* Now find the appropriate ongoing INCR */
   tmp_list = current_incrs;
@@ -2712,14 +2712,14 @@ _ctk_selection_incr_event (GdkWindow	   *window,
 #endif
 
 	  bytes_per_item = ctk_selection_bytes_per_item (info->conversions[i].data.format);
-	  gdk_error_trap_push ();
-	  gdk_property_change (info->requestor, event->atom,
+	  cdk_error_trap_push ();
+	  cdk_property_change (info->requestor, event->atom,
 			       info->conversions[i].data.type,
 			       info->conversions[i].data.format,
 			       GDK_PROP_MODE_REPLACE,
 			       buffer,
 			       num_bytes / bytes_per_item);
-	  gdk_error_trap_pop_ignored ();
+	  cdk_error_trap_pop_ignored ();
 	  
 	  if (info->conversions[i].offset == -2)
 	    {
@@ -2845,7 +2845,7 @@ _ctk_selection_notify (CtkWidget	 *widget,
     return FALSE;
 
   if (event->property != GDK_NONE)
-    length = gdk_selection_property_get (window, &buffer,
+    length = cdk_selection_property_get (window, &buffer,
 					 &type, &format);
   else
     length = 0; /* silence gcc */
@@ -2869,8 +2869,8 @@ _ctk_selection_notify (CtkWidget	 *widget,
       info->notify_time = event->time;
       info->idle_time = 0;
       info->offset = 0;		/* Mark as OK to proceed */
-      gdk_window_set_events (window,
-                             gdk_window_get_events (window)
+      cdk_window_set_events (window,
+                             cdk_window_get_events (window)
 			     | GDK_PROPERTY_CHANGE_MASK);
     }
   else
@@ -2885,7 +2885,7 @@ _ctk_selection_notify (CtkWidget	 *widget,
 				      buffer, length, event->time);
     }
 
-  gdk_property_delete (window, event->property);
+  cdk_property_delete (window, event->property);
 
   g_free (buffer);
   
@@ -2922,7 +2922,7 @@ _ctk_selection_property_notify (CtkWidget	*widget,
 
 #if defined(GDK_WINDOWING_WIN32) || defined(GDK_WINDOWING_X11)
   if ((event->state != GDK_PROPERTY_NEW_VALUE) ||  /* property was deleted */
-      (event->atom != gdk_atom_intern_static_string ("GDK_SELECTION"))) /* not the right property */
+      (event->atom != cdk_atom_intern_static_string ("GDK_SELECTION"))) /* not the right property */
 #endif
     return FALSE;
   
@@ -2950,9 +2950,9 @@ _ctk_selection_property_notify (CtkWidget	*widget,
   info->idle_time = 0;
 
   window = ctk_widget_get_window (widget);
-  length = gdk_selection_property_get (window, &new_buffer,
+  length = cdk_selection_property_get (window, &new_buffer,
 				       &type, &format);
-  gdk_property_delete (window, event->atom);
+  cdk_property_delete (window, event->atom);
 
   /* We could do a lot better efficiency-wise by paying attention to
      what length was sent in the initial INCR transaction, instead of
@@ -3205,7 +3205,7 @@ ctk_selection_default_handler (CtkWidget	*widget,
   else if (data->target == ctk_selection_atoms[SAVE_TARGETS])
     {
       ctk_selection_data_set (data,
-			      gdk_atom_intern_static_string ("NULL"),
+			      cdk_atom_intern_static_string ("NULL"),
 			      32, NULL, 0);
     }
   else

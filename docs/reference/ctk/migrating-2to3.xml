@@ -50,15 +50,15 @@
         <listitem>for low-level, UNIX-specific printing functions</listitem>
       </varlistentry>
       <varlistentry>
-        <term><filename>gdk/gdk.h</filename></term>
+        <term><filename>cdk/cdk.h</filename></term>
         <listitem>for GDK</listitem>
       </varlistentry>
       <varlistentry>
-        <term><filename>gdk/gdkx.h</filename></term>
+        <term><filename>cdk/cdkx.h</filename></term>
         <listitem>for GDK functions that are X11-specific</listitem>
       </varlistentry>
       <varlistentry>
-        <term><filename>gdk/gdkwin32.h</filename></term>
+        <term><filename>cdk/cdkwin32.h</filename></term>
         <listitem>for GDK functions that are Windows-specific</listitem>
       </varlistentry>
     </variablelist>
@@ -169,7 +169,7 @@
       For example, <literal>GDK_a</literal> is now
       <literal>GDK_KEY_a</literal>.  In CTK+ 2, the old names continue
       to be available.  In CTK+ 3 however, the old names will require
-      an explicit include of the <literal>gdkkeysyms-compat.h</literal> header.
+      an explicit include of the <literal>cdkkeysyms-compat.h</literal> header.
     </para>
 
   </section>
@@ -177,7 +177,7 @@
   <section>
     <title>Use GIO for launching applications</title>
     <para>
-      The <literal>gdk_spawn</literal> family of functions has been
+      The <literal>cdk_spawn</literal> family of functions has been
       deprecated in GDK 2.24 and removed from GDK 3. Various replacements
       exist; the best replacement depends on the circumstances:
       <itemizedlist>
@@ -196,7 +196,7 @@
         GError *error = NULL;
 
         info = (GAppInfo*) g_desktop_app_info_new ("epiphany.desktop");
-        context = (GAppLaunchContext*) gdk_display_get_app_launch_context (display);
+        context = (GAppLaunchContext*) cdk_display_get_app_launch_context (display);
         g_app_info_launch (info, NULL, context, &amp;error);
 
         if (error)
@@ -218,7 +218,7 @@
         with g_app_info_create_from_commandline(), or you can use the
         more lowlevel <literal>g_spawn</literal> family of functions
         (e.g. g_spawn_command_line_async()), and pass <envar>DISPLAY</envar>
-        in the environment. gdk_screen_make_display_name() can be
+        in the environment. cdk_screen_make_display_name() can be
         used to find the right value for the <envar>DISPLAY</envar>
         environment variable.
         </listitem>
@@ -235,8 +235,8 @@
     </para>
     <para>
       The #GdkGC and #GdkImage objects, as well as all the functions using
-      them, are gone. This includes the <literal>gdk_draw</literal> family
-      of functions like gdk_draw_rectangle() and gdk_draw_drawable(). As
+      them, are gone. This includes the <literal>cdk_draw</literal> family
+      of functions like cdk_draw_rectangle() and cdk_draw_drawable(). As
       #GdkGC is roughly equivalent to #cairo_t and #GdkImage was used for
       drawing images to GdkWindows, which cairo supports automatically,
       a transition is usually straightforward.
@@ -251,27 +251,27 @@
          <para>
            Drawing a pixbuf onto a drawable used to be done like this:
            <informalexample><programlisting>
-gdk_draw_pixbuf (window,
+cdk_draw_pixbuf (window,
                  ctk_widget_get_style (widget)->black_gc,
                  pixbuf,
                  0, 0
                  x, y,
-                 gdk_pixbuf_get_width (pixbuf),
-                 gdk_pixbuf_get_height (pixbuf),
+                 cdk_pixbuf_get_width (pixbuf),
+                 cdk_pixbuf_get_height (pixbuf),
                  GDK_RGB_DITHER_NORMAL,
                  0, 0);
            </programlisting></informalexample>
            Doing the same thing with cairo:
            <informalexample><programlisting>
-cairo_t *cr = gdk_cairo_create (window);
-gdk_cairo_set_source_pixbuf (cr, pixbuf, x, y);
+cairo_t *cr = cdk_cairo_create (window);
+cdk_cairo_set_source_pixbuf (cr, pixbuf, x, y);
 cairo_paint (cr);
 cairo_destroy (cr);
            </programlisting></informalexample>
            Note that very similar code can be used when porting code
            using GdkPixmap to #cairo_surface_t by calling
            cairo_set_source_surface() instead of
-           gdk_cairo_set_source_pixbuf().
+           cdk_cairo_set_source_pixbuf().
          </para>
       </example>
       <example>
@@ -285,15 +285,15 @@ GdkGC *gc;
 
 /* setup */
 gc = ctk_widget_get_style (widget)->black_gc;
-gdk_gc_set_tile (gc, pixmap);
-gdk_gc_set_fill (gc, GDK_TILED);
-gdk_gc_set_ts_origin (gc, x_origin, y_origin);
+cdk_gc_set_tile (gc, pixmap);
+cdk_gc_set_fill (gc, GDK_TILED);
+cdk_gc_set_ts_origin (gc, x_origin, y_origin);
 /* use */
-gdk_draw_rectangle (window, gc, TRUE, 0, 0, width, height);
+cdk_draw_rectangle (window, gc, TRUE, 0, 0, width, height);
 /* restore */
-gdk_gc_set_tile (gc, NULL);
-gdk_gc_set_fill (gc, GDK_SOLID);
-gdk_gc_set_ts_origin (gc, 0, 0);
+cdk_gc_set_tile (gc, NULL);
+cdk_gc_set_fill (gc, GDK_SOLID);
+cdk_gc_set_ts_origin (gc, 0, 0);
           </programlisting></informalexample>
           The equivalent cairo code to draw a tiled surface looks
           like this:
@@ -302,7 +302,7 @@ cairo_t *cr;
 cairo_surface_t *surface;
 
 surface = ...
-cr = gdk_cairo_create (window);
+cr = cdk_cairo_create (window);
 cairo_set_source_surface (cr, surface, x_origin, y_origin);
 cairo_pattern_set_extend (cairo_get_source (cr), CAIRO_EXTEND_REPEAT);
 cairo_rectangle (cr, 0, 0, width, height);
@@ -312,7 +312,7 @@ cairo_destroy (cr);
 The surface here can be either an image surface or a X surface,
 and can either be created on the spot or kept around for caching purposes.
 Another alternative is to use pixbufs instead of surfaces with
-gdk_cairo_set_source_pixbuf() instead of cairo_set_source_surface().
+cdk_cairo_set_source_pixbuf() instead of cairo_set_source_surface().
         </para>
       </example>
       <example>
@@ -325,11 +325,11 @@ GdkGC *gc;
 
 /* setup */
 gc = ctk_widget_get_style (widget)->text_gc[state];
-gdk_gc_set_clip_rectangle (gc, &amp;area);
+cdk_gc_set_clip_rectangle (gc, &amp;area);
 /* use */
-gdk_draw_layout (drawable, gc, x, y, layout);
+cdk_draw_layout (drawable, gc, x, y, layout);
 /* restore */
-gdk_gc_set_clip_rectangle (gc, NULL);
+cdk_gc_set_clip_rectangle (gc, NULL);
           </programlisting></informalexample>
           With cairo, the same effect can be achieved using:
           <informalexample><programlisting>
@@ -338,15 +338,15 @@ CtkStateFlags flags;
 GdkRGBA rgba;
 cairo_t *cr;
 
-cr = gdk_cairo_create (drawable);
+cr = cdk_cairo_create (drawable);
 /* clip */
-gdk_cairo_rectangle (cr, &amp;area);
+cdk_cairo_rectangle (cr, &amp;area);
 cairo_clip (cr);
 /* set the correct source color */
 context = ctk_widget_get_style_context (widget));
 state = ctk_widget_get_state_flags (widget);
 ctk_style_context_get_color (context, state, &amp;rgba);
-gdk_cairo_set_source_rgba (cr, &amp;rgba);
+cdk_cairo_set_source_rgba (cr, &amp;rgba);
 /* draw the text */
 cairo_move_to (cr, x, y);
 pango_cairo_show_layout (cr, layout);
@@ -354,7 +354,7 @@ cairo_destroy (cr);
           </programlisting></informalexample>
           Clipping using cairo_clip() is of course not restricted to text
           rendering and can be used everywhere where GC clips were used.
-          And using gdk_cairo_set_source_color() with style colors should
+          And using cdk_cairo_set_source_color() with style colors should
           be used in all the places where a style’s GC was used to achieve
           a particular color.
         </para>
@@ -397,13 +397,13 @@ ctk_color_button_get_checkered (void)
       </formalpara>
       <formalpara><title>Using the target also as source or mask</title>
         <para>
-          The gdk_draw_drawable() function allowed using the same drawable
+          The cdk_draw_drawable() function allowed using the same drawable
           as source and target. This was often used to achieve a scrolling
           effect. Cairo does not allow this yet. You can however use
           cairo_push_group() to get a different intermediate target that
           you can copy to. So you can replace this code:
           <informalexample><programlisting>
-gdk_draw_drawable (pixmap,
+cdk_draw_drawable (pixmap,
                    gc,
                    pixmap,
                    area.x + dx, area.y + dy,
@@ -415,7 +415,7 @@ gdk_draw_drawable (pixmap,
 cairo_t *cr = cairo_create (surface);
 /* clipping restricts the intermediate surface's size, so it's a good idea
  * to use it. */
-gdk_cairo_rectangle (cr, &amp;area);
+cdk_cairo_rectangle (cr, &amp;area);
 cairo_clip (cr);
 /* Now push a group to change the target */
 cairo_push_group (cr);
@@ -429,7 +429,7 @@ cairo_destroy (cr);
 The surface here can be either an image surface or a X surface,
 and can either be created on the spot or kept around for caching purposes.
 Another alternative is to use pixbufs instead of surfaces with
-gdk_cairo_set_source_pixbuf() instead of cairo_set_source_surface().
+cdk_cairo_set_source_pixbuf() instead of cairo_set_source_surface().
         </para>
         <para>
           The cairo developers plan to add self-copies in the future to allow
@@ -437,15 +437,15 @@ gdk_cairo_set_source_pixbuf() instead of cairo_set_source_surface().
           development to be able to change your code.
         </para>
       </formalpara>
-      <formalpara><title>Using pango_cairo_show_layout(<!-- -->) instead of gdk_draw_layout_with_colors(<!-- -->)</title>
+      <formalpara><title>Using pango_cairo_show_layout(<!-- -->) instead of cdk_draw_layout_with_colors(<!-- -->)</title>
         <para>
           GDK provided a way to ignore the color attributes of text and use
-          a hardcoded text color with the gdk_draw_layout_with_colors()
+          a hardcoded text color with the cdk_draw_layout_with_colors()
           function. This is often used to draw text shadows or selections.
           Pango’s cairo support does not yet provide this functionality. If
           you use Pango layouts that change colors, the easiest way to achieve
           a similar effect is using pango_cairo_layout_path() and cairo_fill()
-          instead of gdk_draw_layout_with_colors(). Note that this results in
+          instead of cdk_draw_layout_with_colors(). Note that this results in
           a slightly uglier-looking text, as subpixel anti-aliasing is not
           supported.
         </para>
@@ -685,27 +685,27 @@ ctk_fixed_get_preferred_height (CtkWidget *widget,
           <tbody>
             <row><entry>#GdkRegion</entry><entry>#cairo_region_t</entry></row>
             <row><entry>#GdkRectangle</entry><entry>#cairo_rectangle_int_t</entry></row>
-            <row><entry>gdk_rectangle_intersect()</entry><entry>this function is still there</entry></row>
-            <row><entry>gdk_rectangle_union()</entry><entry>this function is still there</entry></row>
-            <row><entry>gdk_region_new()</entry><entry>cairo_region_create()</entry></row>
-            <row><entry>gdk_region_copy()</entry><entry>cairo_region_copy()</entry></row>
-            <row><entry>gdk_region_destroy()</entry><entry>cairo_region_destroy()</entry></row>
-            <row><entry>gdk_region_rectangle()</entry><entry>cairo_region_create_rectangle()</entry></row>
-            <row><entry>gdk_region_get_clipbox()</entry><entry>cairo_region_get_extents()</entry></row>
-            <row><entry>gdk_region_get_rectangles()</entry><entry>cairo_region_num_rectangles() and
+            <row><entry>cdk_rectangle_intersect()</entry><entry>this function is still there</entry></row>
+            <row><entry>cdk_rectangle_union()</entry><entry>this function is still there</entry></row>
+            <row><entry>cdk_region_new()</entry><entry>cairo_region_create()</entry></row>
+            <row><entry>cdk_region_copy()</entry><entry>cairo_region_copy()</entry></row>
+            <row><entry>cdk_region_destroy()</entry><entry>cairo_region_destroy()</entry></row>
+            <row><entry>cdk_region_rectangle()</entry><entry>cairo_region_create_rectangle()</entry></row>
+            <row><entry>cdk_region_get_clipbox()</entry><entry>cairo_region_get_extents()</entry></row>
+            <row><entry>cdk_region_get_rectangles()</entry><entry>cairo_region_num_rectangles() and
                                 cairo_region_get_rectangle()</entry></row>
-            <row><entry>gdk_region_empty()</entry><entry>cairo_region_is_empty()</entry></row>
-            <row><entry>gdk_region_equal()</entry><entry>cairo_region_equal()</entry></row>
-            <row><entry>gdk_region_point_in()</entry><entry>cairo_region_contains_point()</entry></row>
-            <row><entry>gdk_region_rect_in()</entry><entry>cairo_region_contains_rectangle()</entry></row>
-            <row><entry>gdk_region_offset()</entry><entry>cairo_region_translate()</entry></row>
-            <row><entry>gdk_region_union_with_rect()</entry><entry>cairo_region_union_rectangle()</entry></row>
-            <row><entry>gdk_region_intersect()</entry><entry>cairo_region_intersect()</entry></row>
-            <row><entry>gdk_region_union()</entry><entry>cairo_region_union()</entry></row>
-            <row><entry>gdk_region_subtract()</entry><entry>cairo_region_subtract()</entry></row>
-            <row><entry>gdk_region_xor()</entry><entry>cairo_region_xor()</entry></row>
-            <row><entry>gdk_region_shrink()</entry><entry>no replacement</entry></row>
-            <row><entry>gdk_region_polygon()</entry><entry>no replacement, use cairo paths instead</entry></row>
+            <row><entry>cdk_region_empty()</entry><entry>cairo_region_is_empty()</entry></row>
+            <row><entry>cdk_region_equal()</entry><entry>cairo_region_equal()</entry></row>
+            <row><entry>cdk_region_point_in()</entry><entry>cairo_region_contains_point()</entry></row>
+            <row><entry>cdk_region_rect_in()</entry><entry>cairo_region_contains_rectangle()</entry></row>
+            <row><entry>cdk_region_offset()</entry><entry>cairo_region_translate()</entry></row>
+            <row><entry>cdk_region_union_with_rect()</entry><entry>cairo_region_union_rectangle()</entry></row>
+            <row><entry>cdk_region_intersect()</entry><entry>cairo_region_intersect()</entry></row>
+            <row><entry>cdk_region_union()</entry><entry>cairo_region_union()</entry></row>
+            <row><entry>cdk_region_subtract()</entry><entry>cairo_region_subtract()</entry></row>
+            <row><entry>cdk_region_xor()</entry><entry>cairo_region_xor()</entry></row>
+            <row><entry>cdk_region_shrink()</entry><entry>no replacement</entry></row>
+            <row><entry>cdk_region_polygon()</entry><entry>no replacement, use cairo paths instead</entry></row>
           </tbody>
         </tgroup>
       </table>
@@ -730,14 +730,14 @@ GdkPixmap *pixmap;
 cairo_t *cr;
 GdkColor fg = { 0, 0, 0, 0 };
 
-pixmap = gdk_pixmap_new (NULL, 1, 1, 1);
+pixmap = cdk_pixmap_new (NULL, 1, 1, 1);
 
-cr = gdk_cairo_create (pixmap);
+cr = cdk_cairo_create (pixmap);
 cairo_rectangle (cr, 0, 0, 1, 1);
 cairo_fill (cr);
 cairo_destroy (cr);
 
-cursor = gdk_cursor_new_from_pixmap (pixmap, pixmap, &amp;fg, &amp;fg, 0, 0);
+cursor = cdk_cursor_new_from_pixmap (pixmap, pixmap, &amp;fg, &amp;fg, 0, 0);
 
 g_object_unref (pixmap);
       </programlisting></informalexample>
@@ -755,13 +755,13 @@ cairo_arc (cr, 1.5, 1.5, 1.5, 0, 2 * M_PI);
 cairo_fill (cr);
 cairo_destroy (cr);
 
-pixbuf = gdk_pixbuf_get_from_surface (s,
+pixbuf = cdk_pixbuf_get_from_surface (s,
                                       0, 0,
                                       3, 3);
 
 cairo_surface_destroy (s);
 
-cursor = gdk_cursor_new_from_pixbuf (display, pixbuf, 0, 0);
+cursor = cdk_cursor_new_from_pixbuf (display, pixbuf, 0, 0);
 
 g_object_unref (pixbuf);
       </programlisting></informalexample>
@@ -790,10 +790,10 @@ on_alpha_screen_changed (CtkWidget *widget,
                          CtkWidget *label)
 {
   GdkScreen *screen = ctk_widget_get_screen (widget);
-  GdkColormap *colormap = gdk_screen_get_rgba_colormap (screen);
+  GdkColormap *colormap = cdk_screen_get_rgba_colormap (screen);
 
   if (colormap == NULL)
-    colormap = gdk_screen_get_default_colormap (screen);
+    colormap = cdk_screen_get_default_colormap (screen);
 
   ctk_widget_set_colormap (widget, colormap);
 }
@@ -808,10 +808,10 @@ on_alpha_screen_changed (CtkWindow *window,
                          CtkWidget *label)
 {
   GdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
-  GdkVisual *visual = gdk_screen_get_rgba_visual (screen);
+  GdkVisual *visual = cdk_screen_get_rgba_visual (screen);
 
   if (visual == NULL)
-    visual = gdk_screen_get_system_visual (screen);
+    visual = cdk_screen_get_system_visual (screen);
 
   ctk_widget_set_visual (window, visual);
 }
@@ -839,12 +839,12 @@ on_alpha_screen_changed (CtkWindow *window,
             <row><entry>GDK 2.x</entry><entry>GDK 3</entry></row>
           </thead>
           <tbody>
-            <row><entry>gdk_drawable_get_visual()</entry><entry>gdk_window_get_visual()</entry></row>
-            <row><entry>gdk_drawable_get_size()</entry><entry>gdk_window_get_width()
-                                                              gdk_window_get_height()</entry></row>
-            <row><entry>gdk_pixbuf_get_from_drawable()</entry><entry>gdk_pixbuf_get_from_window()</entry></row>
-            <row><entry>gdk_drawable_get_clip_region()</entry><entry>gdk_window_get_clip_region()</entry></row>
-            <row><entry>gdk_drawable_get_visible_region()</entry><entry>gdk_window_get_visible_region()</entry></row>
+            <row><entry>cdk_drawable_get_visual()</entry><entry>cdk_window_get_visual()</entry></row>
+            <row><entry>cdk_drawable_get_size()</entry><entry>cdk_window_get_width()
+                                                              cdk_window_get_height()</entry></row>
+            <row><entry>cdk_pixbuf_get_from_drawable()</entry><entry>cdk_pixbuf_get_from_window()</entry></row>
+            <row><entry>cdk_drawable_get_clip_region()</entry><entry>cdk_window_get_clip_region()</entry></row>
+            <row><entry>cdk_drawable_get_visible_region()</entry><entry>cdk_window_get_visible_region()</entry></row>
           </tbody>
         </tgroup>
       </table>
@@ -860,9 +860,9 @@ on_alpha_screen_changed (CtkWindow *window,
     </para>
 
     <para>
-      The special-purpose GdkEventClient events and the gdk_add_client_message_filter() and gdk_display_add_client_message_filter() functions have been
+      The special-purpose GdkEventClient events and the cdk_add_client_message_filter() and cdk_display_add_client_message_filter() functions have been
       removed. Receiving X11 ClientMessage events is still possible, using
-      the general gdk_window_add_filter() API. A client message filter like
+      the general cdk_window_add_filter() API. A client message filter like
 <informalexample><programlisting>
 static GdkFilterReturn
 message_filter (GdkXEvent *xevent, GdkEvent *event, gpointer data)
@@ -874,8 +874,8 @@ message_filter (GdkXEvent *xevent, GdkEvent *event, gpointer data)
 
  ...
 
-message_type = gdk_atom_intern ("MANAGER", FALSE);
-gdk_display_add_client_message_filter (display, message_type, message_filter, NULL);
+message_type = cdk_atom_intern ("MANAGER", FALSE);
+cdk_display_add_client_message_filter (display, message_type, message_filter, NULL);
 </programlisting></informalexample>
     then looks like this:
     <informalexample><programlisting>
@@ -899,11 +899,11 @@ event_filter (GdkXEvent *xevent, GdkEvent *event, gpointer data)
 
  ...
 
-gdk_window_add_filter (NULL, message_filter, NULL);
+cdk_window_add_filter (NULL, message_filter, NULL);
 </programlisting></informalexample>
       One advantage of using an event filter is that you can actually
       remove the filter when you don't need it anymore, using
-      gdk_window_remove_filter().
+      cdk_window_remove_filter().
     </para>
 
     <para>
@@ -912,7 +912,7 @@ gdk_window_add_filter (NULL, message_filter, NULL);
       means that your application does not receive core X11 key or button
       events. Instead, all input events are delivered as XIDeviceEvents.
       As a short-term workaround for this, you can force your application
-      to not use XI2, with gdk_disable_multidevice(). In the long term,
+      to not use XI2, with cdk_disable_multidevice(). In the long term,
       you probably want to rewrite your event filter to deal with
       XIDeviceEvents.
     </para>
@@ -927,7 +927,7 @@ gdk_window_add_filter (NULL, message_filter, NULL);
       <informalexample><programlisting>
 #ifdef GDK_WINDOWING_X11
       if (timestamp != GDK_CURRENT_TIME)
-        gdk_x11_window_set_user_time (gdk_window, timestamp);
+        cdk_x11_window_set_user_time (cdk_window, timestamp);
 #endif
 #ifdef GDK_WINDOWING_WIN32
         /* ... win32 specific code ... */
@@ -943,7 +943,7 @@ gdk_window_add_filter (NULL, message_filter, NULL);
       if (GDK_IS_X11_DISPLAY (display))
         {
           if (timestamp != GDK_CURRENT_TIME)
-            gdk_x11_window_set_user_time (gdk_window, timestamp);
+            cdk_x11_window_set_user_time (cdk_window, timestamp);
         }
       else
 #endif
@@ -1242,7 +1242,7 @@ ctk_arrow_draw (CtkWidget *widget,
   <title>Install CTK+ modules in the right place</title>
   <para>
     Some software packages install loadable CTK+ modules such as theme engines,
-    gdk-pixbuf loaders or input methods. Since CTK+ 3 is parallel-installable
+    cdk-pixbuf loaders or input methods. Since CTK+ 3 is parallel-installable
     with CTK+ 2.x, the two CTK+ versions have separate locations for their
     loadable modules. The location for CTK+ 2.x is
     <filename><replaceable>libdir</replaceable>/ctk-2.0</filename>
@@ -1261,7 +1261,7 @@ ctk_arrow_draw (CtkWidget *widget,
     suffix to make them parallel-installable.
   </para>
   <para>
-    Note that CTK+ modules often link against libctk, libgdk-pixbuf, etc.
+    Note that CTK+ modules often link against libctk, libcdk-pixbuf, etc.
     If that is the case for your module, you have to be careful to link the
     CTK+ 2.x version of your module against the 2.x version of the libraries,
     and the CTK+ 3 version against hte 3.x versions. Loading a module linked

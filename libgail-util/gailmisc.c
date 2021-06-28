@@ -555,9 +555,9 @@ gail_misc_get_origins (CtkWidget *widget,
   else
     window = ctk_widget_get_window (widget);
 
-  gdk_window_get_origin (window, x_window, y_window);
-  window = gdk_window_get_toplevel (ctk_widget_get_window (widget));
-  gdk_window_get_origin (window, x_toplevel, y_toplevel);
+  cdk_window_get_origin (window, x_window, y_window);
+  window = cdk_window_get_toplevel (ctk_widget_get_window (widget));
+  cdk_window_get_origin (window, x_toplevel, y_toplevel);
 }
 
 /**
@@ -728,7 +728,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
                                    (guint) rgba->red * 65535,
                                    (guint) rgba->green * 65535,
                                    (guint) rgba->blue * 65535);
-          gdk_rgba_free (rgba);
+          cdk_rgba_free (rgba);
           attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_FG_COLOR, value);
         }
       temp_tags = temp_tags->next;
@@ -751,7 +751,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
                                    (guint) rgba->red * 65535,
                                    (guint) rgba->green * 65535,
                                    (guint) rgba->blue * 65535);
-          gdk_rgba_free (rgba);
+          cdk_rgba_free (rgba);
           attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_BG_COLOR, value);
         }
       temp_tags = temp_tags->next;

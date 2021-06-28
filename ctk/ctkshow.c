@@ -20,7 +20,7 @@
 
 #include "config.h"
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include "ctkshow.h"
 #include "ctkwindowprivate.h"
@@ -60,13 +60,13 @@ ctk_show_uri (GdkScreen    *screen,
   g_return_val_if_fail (uri != NULL, FALSE);
 
   if (screen != NULL)
-    display = gdk_screen_get_display (screen);
+    display = cdk_screen_get_display (screen);
   else
-    display = gdk_display_get_default ();
+    display = cdk_display_get_default ();
 
-  context = gdk_display_get_app_launch_context (display);
-  gdk_app_launch_context_set_screen (context, screen);
-  gdk_app_launch_context_set_timestamp (context, timestamp);
+  context = cdk_display_get_app_launch_context (display);
+  cdk_app_launch_context_set_screen (context, screen);
+  cdk_app_launch_context_set_timestamp (context, timestamp);
 
   ret = g_app_info_launch_default_for_uri (uri, G_APP_LAUNCH_CONTEXT (context), error);
   g_object_unref (context);
@@ -146,10 +146,10 @@ ctk_show_uri_on_window (CtkWindow   *parent,
   if (parent)
     display = ctk_widget_get_display (CTK_WIDGET (parent));
   else
-    display = gdk_display_get_default ();
+    display = cdk_display_get_default ();
 
-  context = gdk_display_get_app_launch_context (display);
-  gdk_app_launch_context_set_timestamp (context, timestamp);
+  context = cdk_display_get_app_launch_context (display);
+  cdk_app_launch_context_set_timestamp (context, timestamp);
 
   g_object_set_data_full (G_OBJECT (context), "uri", g_strdup (uri), g_free);
 

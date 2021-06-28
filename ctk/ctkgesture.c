@@ -401,15 +401,15 @@ _find_widget_window (CtkGesture *gesture,
 
   widget = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));
 
-  while (window && !gdk_window_is_destroyed (window))
+  while (window && !cdk_window_is_destroyed (window))
     {
-      gdk_window_get_user_data (window, (gpointer*) &window_widget);
+      cdk_window_get_user_data (window, (gpointer*) &window_widget);
 
       if (window_widget == widget ||
           ctk_widget_get_window (widget) == window)
         return window;
 
-      window = gdk_window_get_effective_parent (window);
+      window = cdk_window_get_effective_parent (window);
     }
 
   return NULL;
@@ -454,7 +454,7 @@ _get_event_coordinates (PointData *data,
 
   g_assert (data->event != NULL);
 
-  gdk_event_get_coords (data->event, &event_x, &event_y);
+  cdk_event_get_coords (data->event, &event_x, &event_y);
   event_x += data->accum_dx;
   event_y += data->accum_dy;
 
@@ -486,10 +486,10 @@ _update_widget_coordinates (CtkGesture *gesture,
 
   while (window && window != event_widget_window)
     {
-      gdk_window_get_position (window, &wx, &wy);
+      cdk_window_get_position (window, &wx, &wy);
       event_x += wx;
       event_y += wy;
-      window = gdk_window_get_effective_parent (window);
+      window = cdk_window_get_effective_parent (window);
     }
 
   if (!window)
@@ -543,10 +543,10 @@ _ctk_gesture_update_point (CtkGesture     *gesture,
   gboolean existed, touchpad;
   PointData *data;
 
-  if (!gdk_event_get_coords (event, NULL, NULL))
+  if (!cdk_event_get_coords (event, NULL, NULL))
     return FALSE;
 
-  device = gdk_event_get_device (event);
+  device = cdk_event_get_device (event);
 
   if (!device)
     return FALSE;
@@ -580,7 +580,7 @@ _ctk_gesture_update_point (CtkGesture     *gesture,
   else if (!priv->device || !priv->window)
     return FALSE;
 
-  sequence = gdk_event_get_event_sequence (event);
+  sequence = cdk_event_get_event_sequence (event);
   existed = g_hash_table_lookup_extended (priv->points, sequence,
                                           NULL, (gpointer *) &data);
   if (!existed)
@@ -605,9 +605,9 @@ _ctk_gesture_update_point (CtkGesture     *gesture,
     }
 
   if (data->event)
-    gdk_event_free (data->event);
+    cdk_event_free (data->event);
 
-  data->event = gdk_event_copy (event);
+  data->event = cdk_event_copy (event);
   _update_touchpad_deltas (data);
   _update_widget_coordinates (gesture, data);
 
@@ -645,8 +645,8 @@ _ctk_gesture_remove_point (CtkGesture     *gesture,
   CtkGesturePrivate *priv;
   GdkDevice *device;
 
-  sequence = gdk_event_get_event_sequence (event);
-  device = gdk_event_get_device (event);
+  sequence = cdk_event_get_event_sequence (event);
+  device = cdk_event_get_device (event);
   priv = ctk_gesture_get_instance_private (gesture);
 
   if (priv->device != device)
@@ -691,7 +691,7 @@ gesture_within_window (CtkGesture *gesture,
       if (window == parent)
         return TRUE;
 
-      window = gdk_window_get_effective_parent (window);
+      window = cdk_window_get_effective_parent (window);
     }
 
   return FALSE;
@@ -719,13 +719,13 @@ ctk_gesture_handle_event (CtkEventController *controller,
   GdkDevice *source_device;
   gboolean was_recognized;
 
-  source_device = gdk_event_get_source_device (event);
+  source_device = cdk_event_get_source_device (event);
 
   if (!source_device)
     return FALSE;
 
   priv = ctk_gesture_get_instance_private (gesture);
-  sequence = gdk_event_get_event_sequence (event);
+  sequence = cdk_event_get_event_sequence (event);
   was_recognized = ctk_gesture_is_recognized (gesture);
 
   if (ctk_gesture_get_sequence_state (gesture, sequence) != CTK_EVENT_SEQUENCE_DENIED)
@@ -794,7 +794,7 @@ ctk_gesture_handle_event (CtkEventController *controller,
             return FALSE;
 
           if (event->motion.is_hint)
-            gdk_event_request_motions (&event->motion);
+            cdk_event_request_motions (&event->motion);
         }
 
       if (_ctk_gesture_update_point (gesture, event, FALSE) &&
@@ -1004,7 +1004,7 @@ free_point_data (gpointer data)
   PointData *point = data;
 
   if (point->event)
-    gdk_event_free (point->event);
+    cdk_event_free (point->event);
 
   g_free (point);
 }
@@ -1361,7 +1361,7 @@ _ctk_gesture_get_last_update_time (CtkGesture       *gesture,
     return FALSE;
 
   if (evtime)
-    *evtime = gdk_event_get_time (data->event);
+    *evtime = cdk_event_get_time (data->event);
 
   return TRUE;
 };
@@ -1415,7 +1415,7 @@ ctk_gesture_get_bounding_box (CtkGesture   *gesture,
           data->event->type == GDK_BUTTON_RELEASE)
         continue;
 
-      gdk_event_get_coords (data->event, &x, &y);
+      cdk_event_get_coords (data->event, &x, &y);
       n_points++;
       x1 = MIN (x1, x);
       y1 = MIN (y1, y);
@@ -1637,7 +1637,7 @@ ctk_gesture_set_window (CtkGesture *gesture,
     {
       CtkWidget *window_widget;
 
-      gdk_window_get_user_data (window, (gpointer*) &window_widget);
+      cdk_window_get_user_data (window, (gpointer*) &window_widget);
       g_return_if_fail (window_widget ==
                         ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture)));
     }

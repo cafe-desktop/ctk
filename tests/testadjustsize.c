@@ -431,7 +431,7 @@ main (int argc, char *argv[])
     ".black-bg { background-color: black; }"
     ".red-bg { background-color: red; }"
     ".blue-bg { background-color: blue; }", -1, NULL);
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
   g_object_unref (provider);

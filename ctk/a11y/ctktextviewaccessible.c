@@ -461,7 +461,7 @@ ctk_text_view_accessible_get_offset_at_point (AtkText      *text,
 
   view = CTK_TEXT_VIEW (widget);
   window = ctk_text_view_get_window (view, CTK_TEXT_WINDOW_WIDGET);
-  gdk_window_get_origin (window, &x_widget, &y_widget);
+  cdk_window_get_origin (window, &x_widget, &y_widget);
 
   if (coords == ATK_XY_SCREEN)
     {
@@ -470,8 +470,8 @@ ctk_text_view_accessible_get_offset_at_point (AtkText      *text,
     }
   else if (coords == ATK_XY_WINDOW)
     {
-      window = gdk_window_get_toplevel (window);
-      gdk_window_get_origin (window, &x_window, &y_window);
+      window = cdk_window_get_toplevel (window);
+      cdk_window_get_origin (window, &x_window, &y_window);
 
       x = x - x_widget + x_window;
       y = y - y_widget + y_window;
@@ -533,7 +533,7 @@ ctk_text_view_accessible_get_character_extents (AtkText      *text,
   if (window == NULL)
     return;
 
-  gdk_window_get_origin (window, &x_widget, &y_widget);
+  cdk_window_get_origin (window, &x_widget, &y_widget);
 
   *height = rectangle.height;
   *width = rectangle.width;
@@ -542,8 +542,8 @@ ctk_text_view_accessible_get_character_extents (AtkText      *text,
     rectangle.x, rectangle.y, x, y);
   if (coords == ATK_XY_WINDOW)
     {
-      window = gdk_window_get_toplevel (window);
-      gdk_window_get_origin (window, &x_window, &y_window);
+      window = cdk_window_get_toplevel (window);
+      cdk_window_get_origin (window, &x_window, &y_window);
       *x += x_widget - x_window;
       *y += y_widget - y_window;
     }
@@ -736,7 +736,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
                                    (guint) rgba->red * 65535,
                                    (guint) rgba->green * 65535,
                                    (guint) rgba->blue * 65535);
-          gdk_rgba_free (rgba);
+          cdk_rgba_free (rgba);
           attrib_set = add_text_attribute (attrib_set, ATK_TEXT_ATTR_FG_COLOR, value);
         }
       temp_tags = temp_tags->next;
@@ -759,7 +759,7 @@ ctk_text_view_accessible_get_run_attributes (AtkText *text,
                                    (guint) rgba->red * 65535,
                                    (guint) rgba->green * 65535,
                                    (guint) rgba->blue * 65535);
-          gdk_rgba_free (rgba);
+          cdk_rgba_free (rgba);
           attrib_set = add_text_attribute (attrib_set, ATK_TEXT_ATTR_BG_COLOR, value);
         }
       temp_tags = temp_tags->next;
@@ -1553,7 +1553,7 @@ ctk_text_view_accessible_set_run_attributes (AtkEditableText *text,
           color->red = atoi (RGB_vals[0]);
           color->green = atoi (RGB_vals[1]);
           color->blue = atoi (RGB_vals[2]);
-          g_object_set (G_OBJECT (tag), "background-gdk", color, NULL);
+          g_object_set (G_OBJECT (tag), "background-cdk", color, NULL);
         }
  
       else if (!strcmp (name, atk_text_attribute_get_name (ATK_TEXT_ATTR_FG_COLOR)))
@@ -1563,7 +1563,7 @@ ctk_text_view_accessible_set_run_attributes (AtkEditableText *text,
           color->red = atoi (RGB_vals[0]);
           color->green = atoi (RGB_vals[1]);
           color->blue = atoi (RGB_vals[2]);
-          g_object_set (G_OBJECT (tag), "foreground-gdk", color, NULL);
+          g_object_set (G_OBJECT (tag), "foreground-cdk", color, NULL);
         }
 
       else if (!strcmp (name, atk_text_attribute_get_name (ATK_TEXT_ATTR_STRETCH)))
@@ -1953,7 +1953,7 @@ gail_streamable_content_get_n_mime_types (AtkStreamableContent *streamable)
 
       atoms = ctk_text_buffer_get_serialize_formats (buffer, &n_mime_types);
       for (i = 0; i < n_mime_types-1; ++i)
-        if (!strcmp ("text/plain", gdk_atom_name (atoms[i])))
+        if (!strcmp ("text/plain", cdk_atom_name (atoms[i])))
             advertises_plaintext = TRUE;
       if (!advertises_plaintext)
         n_mime_types++;
@@ -1981,7 +1981,7 @@ gail_streamable_content_get_mime_type (AtkStreamableContent *streamable,
 
       atoms = ctk_text_buffer_get_serialize_formats (buffer, &n_mime_types);
       if (i < n_mime_types)
-        return gdk_atom_name (atoms [i]);
+        return cdk_atom_name (atoms [i]);
       else if (i == n_mime_types)
         return "text/plain";
     }
@@ -2011,7 +2011,7 @@ gail_streamable_content_get_stream (AtkStreamableContent *streamable,
   for (i = 0; i < n_mime_types; ++i)
     {
       if (!strcmp ("text/plain", mime_type) ||
-          !strcmp (gdk_atom_name (atoms[i]), mime_type))
+          !strcmp (cdk_atom_name (atoms[i]), mime_type))
         {
           guint8 *cbuf;
           GError *err = NULL;

@@ -24,7 +24,7 @@
  */
 
 #include <glib/gstdio.h>
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #ifdef CAIRO_HAS_QUARTZ_SURFACE
 #include <cairo-quartz.h>
 #endif
@@ -61,7 +61,7 @@ test_surface_orientation (void)
 	guint i;
 
 	/* create "platform.png" via native cairo surface */
-	surface = gdk_window_create_similar_surface (gdk_get_default_root_window (),
+	surface = cdk_window_create_similar_surface (cdk_get_default_root_window (),
                                                      CAIRO_CONTENT_COLOR,
                                                      100,
                                                      80);
@@ -69,13 +69,13 @@ test_surface_orientation (void)
 	test (cr);
 	cairo_destroy (cr);
 
-	pixbuf = gdk_pixbuf_get_from_surface (NULL,
+	pixbuf = cdk_pixbuf_get_from_surface (NULL,
 					      surface,
 					      0, 0,
 					      0, 0,
 					      100, 80);
-	if (!gdk_pixbuf_save (pixbuf, "gdksurface.png", "png", NULL, NULL)) {
-		g_error ("Eeek! Couldn't save the file \"gdksurface.png\"");
+	if (!cdk_pixbuf_save (pixbuf, "cdksurface.png", "png", NULL, NULL)) {
+		g_error ("Eeek! Couldn't save the file \"cdksurface.png\"");
 	}
 	g_object_unref (pixbuf);
 
@@ -96,29 +96,29 @@ test_surface_orientation (void)
 	cairo_surface_destroy (surface);
 
 	/* compare the images */
-	pbuf_platform = gdk_pixbuf_new_from_file ("gdksurface.png", &error);
+	pbuf_platform = cdk_pixbuf_new_from_file ("cdksurface.png", &error);
 	if (!pbuf_platform || error) {
-		g_error ("Eeek! Error loading \"gdksurface.png\"");
+		g_error ("Eeek! Error loading \"cdksurface.png\"");
 	}
-	pbuf_imagesrf = gdk_pixbuf_new_from_file ("cairosurface.png", &error);
+	pbuf_imagesrf = cdk_pixbuf_new_from_file ("cairosurface.png", &error);
 	if (!pbuf_imagesrf || error) {
 		g_object_unref (pbuf_platform);
 		g_error ("Eeek! Error loading \"cairosurface.png\"");
 	}
 
-	g_assert (gdk_pixbuf_get_width (pbuf_platform) ==
-		  gdk_pixbuf_get_width (pbuf_imagesrf));
-	g_assert (gdk_pixbuf_get_height (pbuf_platform) ==
-		  gdk_pixbuf_get_height (pbuf_imagesrf));
-	g_assert (gdk_pixbuf_get_rowstride (pbuf_platform) ==
-		  gdk_pixbuf_get_rowstride (pbuf_imagesrf));
-	g_assert (gdk_pixbuf_get_n_channels (pbuf_platform) ==
-		  gdk_pixbuf_get_n_channels (pbuf_imagesrf));
+	g_assert (cdk_pixbuf_get_width (pbuf_platform) ==
+		  cdk_pixbuf_get_width (pbuf_imagesrf));
+	g_assert (cdk_pixbuf_get_height (pbuf_platform) ==
+		  cdk_pixbuf_get_height (pbuf_imagesrf));
+	g_assert (cdk_pixbuf_get_rowstride (pbuf_platform) ==
+		  cdk_pixbuf_get_rowstride (pbuf_imagesrf));
+	g_assert (cdk_pixbuf_get_n_channels (pbuf_platform) ==
+		  cdk_pixbuf_get_n_channels (pbuf_imagesrf));
 
-	data_platform = gdk_pixbuf_get_pixels (pbuf_platform);
-	data_imagesrf = gdk_pixbuf_get_pixels (pbuf_imagesrf);
+	data_platform = cdk_pixbuf_get_pixels (pbuf_platform);
+	data_imagesrf = cdk_pixbuf_get_pixels (pbuf_imagesrf);
 
-	for (i = 0; i < gdk_pixbuf_get_height (pbuf_platform) * gdk_pixbuf_get_rowstride (pbuf_platform); i++) {
+	for (i = 0; i < cdk_pixbuf_get_height (pbuf_platform) * cdk_pixbuf_get_rowstride (pbuf_platform); i++) {
 		if (data_platform[i] != data_imagesrf[i]) {
 			g_warning ("Eeek! Images are differing at byte %d", i);
 			g_object_unref (pbuf_platform);
@@ -130,7 +130,7 @@ test_surface_orientation (void)
 	g_object_unref (pbuf_platform);
 	g_object_unref (pbuf_imagesrf);
 
-	g_unlink ("gdksurface.png");
+	g_unlink ("cdksurface.png");
 	g_unlink ("cairosurface.png");
 }
 
@@ -139,9 +139,9 @@ main (int   argc,
       char**argv)
 {
 	g_test_init (&argc, &argv, NULL);
-	gdk_init (&argc, &argv);
+	cdk_init (&argc, &argv);
 
-	g_test_add_func ("/gdk/surface/orientation",
+	g_test_add_func ("/cdk/surface/orientation",
 			 test_surface_orientation);
 
 	return g_test_run ();

@@ -230,7 +230,7 @@ realize (CtkWidget *widget)
 
   context = ctk_gl_area_get_context (CTK_GL_AREA (widget));
 
-  if (gdk_gl_context_get_use_es (context))
+  if (cdk_gl_context_get_use_es (context))
     {
       vertex_path = "/glarea/glarea-gles.vs.glsl";
       fragment_path = "/glarea/glarea-gles.fs.glsl";

@@ -1,5 +1,5 @@
 /*
- * gdkdisplay-wayland.h
+ * cdkdisplay-wayland.h
  *
  * Copyright 2001 Sun Microsystems Inc.
  *
@@ -27,23 +27,23 @@
 #include <wayland-client.h>
 #include <wayland-cursor.h>
 #include <wayland-egl.h>
-#include <gdk/wayland/tablet-unstable-v2-client-protocol.h>
-#include <gdk/wayland/ctk-shell-client-protocol.h>
-#include <gdk/wayland/xdg-shell-client-protocol.h>
-#include <gdk/wayland/xdg-shell-unstable-v6-client-protocol.h>
-#include <gdk/wayland/xdg-foreign-unstable-v1-client-protocol.h>
-#include <gdk/wayland/keyboard-shortcuts-inhibit-unstable-v1-client-protocol.h>
-#include <gdk/wayland/server-decoration-client-protocol.h>
-#include <gdk/wayland/xdg-output-unstable-v1-client-protocol.h>
-#include <gdk/wayland/primary-selection-unstable-v1-client-protocol.h>
+#include <cdk/wayland/tablet-unstable-v2-client-protocol.h>
+#include <cdk/wayland/ctk-shell-client-protocol.h>
+#include <cdk/wayland/xdg-shell-client-protocol.h>
+#include <cdk/wayland/xdg-shell-unstable-v6-client-protocol.h>
+#include <cdk/wayland/xdg-foreign-unstable-v1-client-protocol.h>
+#include <cdk/wayland/keyboard-shortcuts-inhibit-unstable-v1-client-protocol.h>
+#include <cdk/wayland/server-decoration-client-protocol.h>
+#include <cdk/wayland/xdg-output-unstable-v1-client-protocol.h>
+#include <cdk/wayland/primary-selection-unstable-v1-client-protocol.h>
 
 #include <glib.h>
-#include <gdk/gdkkeys.h>
-#include <gdk/gdkwindow.h>
-#include <gdk/gdkinternals.h>
-#include <gdk/gdk.h>		/* For gdk_get_program_class() */
+#include <cdk/cdkkeys.h>
+#include <cdk/cdkwindow.h>
+#include <cdk/cdkinternals.h>
+#include <cdk/cdk.h>		/* For cdk_get_program_class() */
 
-#include "gdkdisplayprivate.h"
+#include "cdkdisplayprivate.h"
 
 #include <epoxy/egl.h>
 

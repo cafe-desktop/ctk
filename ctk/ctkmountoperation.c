@@ -1393,7 +1393,7 @@ do_popup_menu_for_process_tree_view (CtkWidget         *widget,
   ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);
   ctk_widget_show_all (menu);
 
-  if (event && gdk_event_triggers_context_menu (event))
+  if (event && cdk_event_triggers_context_menu (event))
     {
       CtkTreePath *path;
       CtkTreeSelection *selection;
@@ -1439,7 +1439,7 @@ on_button_press_event_for_process_tree_view (CtkWidget      *widget,
 
   ret = FALSE;
 
-  if (gdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (cdk_event_triggers_context_menu ((GdkEvent *) event))
     {
       ret = do_popup_menu_for_process_tree_view (widget, (GdkEvent *) event, op);
     }
@@ -1892,5 +1892,5 @@ ctk_mount_operation_get_screen (CtkMountOperation *op)
   else if (priv->screen)
     return priv->screen;
   else
-    return gdk_screen_get_default ();
+    return cdk_screen_get_default ();
 }

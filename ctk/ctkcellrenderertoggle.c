@@ -449,7 +449,7 @@ ctk_cell_renderer_toggle_render (CtkCellRenderer      *cell,
 
   cairo_save (cr);
 
-  gdk_cairo_rectangle (cr, cell_area);
+  cdk_cairo_rectangle (cr, cell_area);
   cairo_clip (cr);
 
   context = ctk_cell_renderer_toggle_save_context (cell, widget);

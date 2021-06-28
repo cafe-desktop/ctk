@@ -1119,7 +1119,7 @@ unpack_font_description (CtkCssShorthandProperty *shorthand,
       size = pango_font_description_get_size (description) / PANGO_SCALE;
       if (!pango_font_description_get_size_is_absolute (description))
         {
-          double dpi = gdk_screen_get_resolution (gdk_screen_get_default ());
+          double dpi = cdk_screen_get_resolution (cdk_screen_get_default ());
           if (dpi <= 0.0)
             dpi = 96.0;
           size = size * dpi / 72.0;

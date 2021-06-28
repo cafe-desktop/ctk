@@ -1,6 +1,6 @@
 /* GDK - The GIMP Drawing Kit
  *
- * gdkglcontext-win32.c: Win32 specific OpenGL wrappers
+ * cdkglcontext-win32.c: Win32 specific OpenGL wrappers
  *
  * Copyright © 2014 Emmanuele Bassi
  * Copyright © 2014 Alexander Larsson
@@ -22,21 +22,21 @@
 
 #include "config.h"
 
-#include "gdkprivate-win32.h"
-#include "gdkwindow-win32.h"
-#include "gdkglcontext-win32.h"
-#include "gdkdisplay-win32.h"
+#include "cdkprivate-win32.h"
+#include "cdkwindow-win32.h"
+#include "cdkglcontext-win32.h"
+#include "cdkdisplay-win32.h"
 
-#include "gdkwin32display.h"
-#include "gdkwin32glcontext.h"
-#include "gdkwin32misc.h"
-#include "gdkwin32screen.h"
-#include "gdkwin32window.h"
+#include "cdkwin32display.h"
+#include "cdkwin32glcontext.h"
+#include "cdkwin32misc.h"
+#include "cdkwin32screen.h"
+#include "cdkwin32window.h"
 
-#include "gdkglcontext.h"
-#include "gdkwindow.h"
-#include "gdkinternals.h"
-#include "gdkintl.h"
+#include "cdkglcontext.h"
+#include "cdkwindow.h"
+#include "cdkinternals.h"
+#include "cdkintl.h"
 
 #include <cairo.h>
 #include <epoxy/wgl.h>
@@ -45,15 +45,15 @@
 # include <epoxy/egl.h>
 #endif
 
-G_DEFINE_TYPE (GdkWin32GLContext, gdk_win32_gl_context, GDK_TYPE_GL_CONTEXT)
+G_DEFINE_TYPE (GdkWin32GLContext, cdk_win32_gl_context, GDK_TYPE_GL_CONTEXT)
 
 static void
-_gdk_win32_gl_context_dispose (GObject *gobject)
+_cdk_win32_gl_context_dispose (GObject *gobject)
 {
   GdkGLContext *context = GDK_GL_CONTEXT (gobject);
   GdkWin32GLContext *context_win32 = GDK_WIN32_GL_CONTEXT (gobject);
-  GdkWin32Display *display_win32 = GDK_WIN32_DISPLAY (gdk_gl_context_get_display (context));
-  GdkWindow *window = gdk_gl_context_get_window (context);
+  GdkWin32Display *display_win32 = GDK_WIN32_DISPLAY (cdk_gl_context_get_display (context));
+  GdkWindow *window = cdk_gl_context_get_window (context);
   GdkWindowImplWin32 *impl = NULL;
 
   if (context_win32->hglrc != NULL)
@@ -99,35 +99,35 @@ _gdk_win32_gl_context_dispose (GObject *gobject)
        * trigger update_style_bits() to enable layered windows again
        */
       if (impl->suppress_layered == 0)
-        _gdk_win32_window_update_style_bits (window);
+        _cdk_win32_window_update_style_bits (window);
     }
 
-  G_OBJECT_CLASS (gdk_win32_gl_context_parent_class)->dispose (gobject);
+  G_OBJECT_CLASS (cdk_win32_gl_context_parent_class)->dispose (gobject);
 }
 
 static void
-gdk_win32_gl_context_class_init (GdkWin32GLContextClass *klass)
+cdk_win32_gl_context_class_init (GdkWin32GLContextClass *klass)
 {
   GdkGLContextClass *context_class = GDK_GL_CONTEXT_CLASS (klass);
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
-  context_class->end_frame = _gdk_win32_gl_context_end_frame;
-  context_class->realize = _gdk_win32_gl_context_realize;
+  context_class->end_frame = _cdk_win32_gl_context_end_frame;
+  context_class->realize = _cdk_win32_gl_context_realize;
 
-  gobject_class->dispose = _gdk_win32_gl_context_dispose;
+  gobject_class->dispose = _cdk_win32_gl_context_dispose;
 }
 
 static void
-gdk_win32_gl_context_init (GdkWin32GLContext *self)
+cdk_win32_gl_context_init (GdkWin32GLContext *self)
 {
 }
 
 static void
-gdk_gl_blit_region (GdkWindow *window, cairo_region_t *region)
+cdk_gl_blit_region (GdkWindow *window, cairo_region_t *region)
 {
   int n_rects, i;
-  int scale = gdk_window_get_scale_factor (window);
-  int wh = gdk_window_get_height (window);
+  int scale = cdk_window_get_scale_factor (window);
+  int wh = cdk_window_get_height (window);
   cairo_rectangle_int_t rect;
 
   n_rects = cairo_region_num_rectangles (region);
@@ -144,9 +144,9 @@ gdk_gl_blit_region (GdkWindow *window, cairo_region_t *region)
 static gboolean
 _get_is_egl_force_redraw (GdkWindow *window)
 {
-  /* We only need to call gdk_window_invalidate_rect () if necessary */
+  /* We only need to call cdk_window_invalidate_rect () if necessary */
 #ifdef GDK_WIN32_ENABLE_EGL
-  if (window->gl_paint_context != NULL && gdk_gl_context_get_use_es (window->gl_paint_context))
+  if (window->gl_paint_context != NULL && cdk_gl_context_get_use_es (window->gl_paint_context))
     {
       GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
@@ -160,7 +160,7 @@ static void
 _reset_egl_force_redraw (GdkWindow *window)
 {
 #ifdef GDK_WIN32_ENABLE_EGL
-  if (window->gl_paint_context != NULL && gdk_gl_context_get_use_es (window->gl_paint_context))
+  if (window->gl_paint_context != NULL && cdk_gl_context_get_use_es (window->gl_paint_context))
     {
       GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 
@@ -171,17 +171,17 @@ _reset_egl_force_redraw (GdkWindow *window)
 }
 
 void
-_gdk_win32_gl_context_end_frame (GdkGLContext *context,
+_cdk_win32_gl_context_end_frame (GdkGLContext *context,
                                  cairo_region_t *painted,
                                  cairo_region_t *damage)
 {
   GdkWin32GLContext *context_win32 = GDK_WIN32_GL_CONTEXT (context);
-  GdkWindow *window = gdk_gl_context_get_window (context);
-  GdkWin32Display *display = (GDK_WIN32_DISPLAY (gdk_gl_context_get_display (context)));
+  GdkWindow *window = cdk_gl_context_get_window (context);
+  GdkWin32Display *display = (GDK_WIN32_DISPLAY (cdk_gl_context_get_display (context)));
 
-  gdk_gl_context_make_current (context);
+  cdk_gl_context_make_current (context);
 
-  if (!gdk_gl_context_get_use_es (context))
+  if (!cdk_gl_context_get_use_es (context))
     {
       gboolean can_wait = display->hasWglOMLSyncControl;
 
@@ -206,11 +206,11 @@ _gdk_win32_gl_context_end_frame (GdkGLContext *context,
         {
           glDrawBuffer(GL_FRONT);
           glReadBuffer(GL_BACK);
-          gdk_gl_blit_region (window, painted);
+          cdk_gl_blit_region (window, painted);
           glDrawBuffer(GL_BACK);
           glFlush();
 
-          if (gdk_gl_context_has_frame_terminator (context))
+          if (cdk_gl_context_has_frame_terminator (context))
             glFrameTerminatorGREMEDY ();
         }
       else
@@ -220,19 +220,19 @@ _gdk_win32_gl_context_end_frame (GdkGLContext *context,
 #ifdef GDK_WIN32_ENABLE_EGL
   else
     {
-      EGLSurface egl_surface = _gdk_win32_window_get_egl_surface (window, context_win32->egl_config, FALSE);
+      EGLSurface egl_surface = _cdk_win32_window_get_egl_surface (window, context_win32->egl_config, FALSE);
       gboolean force_egl_redraw_all = _get_is_egl_force_redraw (window);
 
       if (context_win32->do_blit_swap && !force_egl_redraw_all)
-        gdk_gl_blit_region (window, painted);
+        cdk_gl_blit_region (window, painted);
       else if (force_egl_redraw_all)
         {
-          GdkRectangle rect = {0, 0, gdk_window_get_width (window), gdk_window_get_height (window)};
+          GdkRectangle rect = {0, 0, cdk_window_get_width (window), cdk_window_get_height (window)};
 
-          /* We need to do gdk_window_invalidate_rect() so that we don't get glitches after maximizing or
+          /* We need to do cdk_window_invalidate_rect() so that we don't get glitches after maximizing or
            *  restoring or using aerosnap
            */
-          gdk_window_invalidate_rect (window, &rect, TRUE);
+          cdk_window_invalidate_rect (window, &rect, TRUE);
           _reset_egl_force_redraw (window);
         }
 
@@ -242,13 +242,13 @@ _gdk_win32_gl_context_end_frame (GdkGLContext *context,
 }
 
 void
-_gdk_win32_window_invalidate_for_new_frame (GdkWindow *window,
+_cdk_win32_window_invalidate_for_new_frame (GdkWindow *window,
                                             cairo_region_t *update_area)
 {
   cairo_rectangle_int_t window_rect;
   gboolean invalidate_all = FALSE;
   GdkWin32GLContext *context_win32;
-  cairo_rectangle_int_t whole_window = { 0, 0, gdk_window_get_width (window), gdk_window_get_height (window) };
+  cairo_rectangle_int_t whole_window = { 0, 0, cdk_window_get_width (window), cdk_window_get_height (window) };
 
   /* Minimal update is ok if we're not drawing with gl */
   if (window->gl_paint_context == NULL)
@@ -257,7 +257,7 @@ _gdk_win32_window_invalidate_for_new_frame (GdkWindow *window,
   context_win32 = GDK_WIN32_GL_CONTEXT (window->gl_paint_context);
   context_win32->do_blit_swap = FALSE;
 
-  if (gdk_gl_context_has_framebuffer_blit (window->gl_paint_context) &&
+  if (cdk_gl_context_has_framebuffer_blit (window->gl_paint_context) &&
       cairo_region_contains_rectangle (update_area, &whole_window) != CAIRO_REGION_OVERLAP_IN)
     {
       context_win32->do_blit_swap = TRUE;
@@ -269,8 +269,8 @@ _gdk_win32_window_invalidate_for_new_frame (GdkWindow *window,
     {
       window_rect.x = 0;
       window_rect.y = 0;
-      window_rect.width = gdk_window_get_width (window);
-      window_rect.height = gdk_window_get_height (window);
+      window_rect.width = cdk_window_get_width (window);
+      window_rect.height = cdk_window_get_height (window);
 
       /* If nothing else is known, repaint everything so that the back
          buffer is fully up-to-date for the swapbuffer */
@@ -352,7 +352,7 @@ _get_dummy_window_hwnd (GdkWGLDummy *dummy)
 }
 
 static gint
-_gdk_init_dummy_context (GdkWGLDummy    *dummy,
+_cdk_init_dummy_context (GdkWGLDummy    *dummy,
                          const gboolean  need_alpha_bits);
 
 #define PIXEL_ATTRIBUTES 19
@@ -431,7 +431,7 @@ _get_wgl_pfd (HDC                    hdc,
       /* acquire and cache dummy Window (HWND & HDC) and
        * dummy GL Context, we need it for wglChoosePixelFormatARB()
        */
-      best_pf = _gdk_init_dummy_context (&dummy, need_alpha_bits);
+      best_pf = _cdk_init_dummy_context (&dummy, need_alpha_bits);
 
       if (best_pf == 0 || !wglMakeCurrent (dummy.hdc, dummy.hglrc))
         {
@@ -499,7 +499,7 @@ _get_wgl_pfd (HDC                    hdc,
  * one and cache it for later use
  */
 static gint
-_gdk_init_dummy_context (GdkWGLDummy    *dummy,
+_cdk_init_dummy_context (GdkWGLDummy    *dummy,
                          const gboolean  need_alpha_bits)
 {
   PIXELFORMATDESCRIPTOR pfd;
@@ -545,7 +545,7 @@ _gdk_init_dummy_context (GdkWGLDummy    *dummy,
 #endif
 
 static EGLDisplay
-_gdk_win32_get_egl_display (GdkWin32Display *display)
+_cdk_win32_get_egl_display (GdkWin32Display *display)
 {
   EGLDisplay disp;
   gboolean success = FALSE;
@@ -568,7 +568,7 @@ _gdk_win32_get_egl_display (GdkWin32Display *display)
 #endif
 
 static gboolean
-_gdk_win32_display_init_gl (GdkDisplay *display,
+_cdk_win32_display_init_gl (GdkDisplay *display,
                             const gboolean need_alpha_bits)
 {
   GdkWin32Display *display_win32 = GDK_WIN32_DISPLAY (display);
@@ -578,7 +578,7 @@ _gdk_win32_display_init_gl (GdkDisplay *display,
 #ifdef GDK_WIN32_ENABLE_EGL
   EGLDisplay egl_disp;
 
-  disable_wgl = ((_gdk_gl_flags & GDK_GL_GLES) != 0) ||
+  disable_wgl = ((_cdk_gl_flags & GDK_GL_GLES) != 0) ||
                 display_win32->running_on_arm64;
 #endif
 
@@ -598,7 +598,7 @@ _gdk_win32_display_init_gl (GdkDisplay *display,
       GdkWGLDummy dummy;
       memset (&dummy, 0, sizeof (GdkWGLDummy));
 
-      best_idx = _gdk_init_dummy_context (&dummy, need_alpha_bits);
+      best_idx = _cdk_init_dummy_context (&dummy, need_alpha_bits);
 
       if (best_idx == 0 || !wglMakeCurrent (dummy.hdc, dummy.hglrc))
         return FALSE;
@@ -642,7 +642,7 @@ _gdk_win32_display_init_gl (GdkDisplay *display,
     }
 
 #ifdef GDK_WIN32_ENABLE_EGL
-  egl_disp = _gdk_win32_get_egl_display (display_win32);
+  egl_disp = _cdk_win32_get_egl_display (display_win32);
 
   if (egl_disp == EGL_NO_DISPLAY ||
       !eglInitialize (egl_disp, NULL, NULL))
@@ -982,10 +982,10 @@ _create_egl_context (EGLDisplay    display,
 #endif /* GDK_WIN32_ENABLE_EGL */
 
 gboolean
-_gdk_win32_gl_context_realize (GdkGLContext *context,
+_cdk_win32_gl_context_realize (GdkGLContext *context,
                                GError **error)
 {
-  GdkGLContext *share = gdk_gl_context_get_shared_context (context);
+  GdkGLContext *share = cdk_gl_context_get_shared_context (context);
   GdkWin32GLContext *context_win32 = GDK_WIN32_GL_CONTEXT (context);
 
   /* These are the real WGL/EGL context items that we will want to use later */
@@ -1005,25 +1005,25 @@ _gdk_win32_gl_context_realize (GdkGLContext *context,
   EGLContext egl_context;
 #endif
 
-  GdkWindow *window = gdk_gl_context_get_window (context);
+  GdkWindow *window = cdk_gl_context_get_window (context);
   GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
-  GdkWin32Display *win32_display = GDK_WIN32_DISPLAY (gdk_window_get_display (window));
+  GdkWin32Display *win32_display = GDK_WIN32_DISPLAY (cdk_window_get_display (window));
 
   /*
    * A legacy context cannot be shared with core profile ones, so this means we
    * must stick to a legacy context if the shared context is a legacy context
    */
-  if ((_gdk_gl_flags & GDK_GL_LEGACY) != 0 ||
-       share != NULL && gdk_gl_context_is_legacy (share))
+  if ((_cdk_gl_flags & GDK_GL_LEGACY) != 0 ||
+       share != NULL && cdk_gl_context_is_legacy (share))
     legacy_bit = TRUE;
 
-  if ((_gdk_gl_flags & GDK_GL_GLES) != 0 ||
-      (share != NULL && gdk_gl_context_get_use_es (share)))
+  if ((_cdk_gl_flags & GDK_GL_GLES) != 0 ||
+      (share != NULL && cdk_gl_context_get_use_es (share)))
     use_es = TRUE;
 
-  gdk_gl_context_get_required_version (context, &major, &minor);
-  debug_bit = gdk_gl_context_get_debug_enabled (context);
-  compat_bit = gdk_gl_context_get_forward_compatible (context);
+  cdk_gl_context_get_required_version (context, &major, &minor);
+  debug_bit = cdk_gl_context_get_debug_enabled (context);
+  compat_bit = cdk_gl_context_get_forward_compatible (context);
 
   if (win32_display->have_wgl)
     {
@@ -1124,7 +1124,7 @@ _gdk_win32_gl_context_realize (GdkGLContext *context,
 #endif
 
   /* set whether we are using GLES */
-  gdk_gl_context_set_use_es(context, use_es);
+  cdk_gl_context_set_use_es(context, use_es);
 
   /* OpenGL does not work with WS_EX_LAYERED enabled, so we need to
    * disable WS_EX_LAYERED when we acquire a valid HGLRC
@@ -1135,26 +1135,26 @@ _gdk_win32_gl_context_realize (GdkGLContext *context,
    * disable layered windows by triggering update_style_bits()
    */
   if (impl->suppress_layered == 1)
-    _gdk_win32_window_update_style_bits (window);
+    _cdk_win32_window_update_style_bits (window);
 
   /* Ensure that any other context is created with a legacy bit set */
-  gdk_gl_context_set_is_legacy (context, legacy_bit);
+  cdk_gl_context_set_is_legacy (context, legacy_bit);
 
   return TRUE;
 }
 
 GdkGLContext *
-_gdk_win32_window_create_gl_context (GdkWindow *window,
+_cdk_win32_window_create_gl_context (GdkWindow *window,
                                      gboolean attached,
                                      GdkGLContext *share,
                                      GError **error)
 {
-  GdkDisplay *display = gdk_window_get_display (window);
-  GdkWin32Display *display_win32 = GDK_WIN32_DISPLAY (gdk_window_get_display (window));
+  GdkDisplay *display = cdk_window_get_display (window);
+  GdkWin32Display *display_win32 = GDK_WIN32_DISPLAY (cdk_window_get_display (window));
   GdkWin32GLContext *context = NULL;
-  GdkVisual *visual = gdk_window_get_visual (window);
+  GdkVisual *visual = cdk_window_get_visual (window);
 
-  gboolean need_alpha_bits = (visual == gdk_screen_get_rgba_visual (gdk_display_get_default_screen (display)));
+  gboolean need_alpha_bits = (visual == cdk_screen_get_rgba_visual (cdk_display_get_default_screen (display)));
 
   /* Acquire and store up the Windows-specific HWND and HDC */
   HDC hdc;
@@ -1172,7 +1172,7 @@ _gdk_win32_window_create_gl_context (GdkWindow *window,
   display_win32->hdc_egl_temp = hdc;
 #endif
 
-  if (!_gdk_win32_display_init_gl (display, need_alpha_bits))
+  if (!_cdk_win32_display_init_gl (display, need_alpha_bits))
     {
       g_set_error_literal (error, GDK_GL_ERROR,
                            GDK_GL_ERROR_NOT_AVAILABLE,
@@ -1207,7 +1207,7 @@ _gdk_win32_window_create_gl_context (GdkWindow *window,
 }
 
 gboolean
-_gdk_win32_display_make_gl_context_current (GdkDisplay *display,
+_cdk_win32_display_make_gl_context_current (GdkDisplay *display,
                                             GdkGLContext *context)
 {
   GdkWin32GLContext *context_win32;
@@ -1234,9 +1234,9 @@ _gdk_win32_display_make_gl_context_current (GdkDisplay *display,
     }
 
   context_win32 = GDK_WIN32_GL_CONTEXT (context);
-  window = gdk_gl_context_get_window (context);
+  window = cdk_gl_context_get_window (context);
 
-  if (!gdk_gl_context_get_use_es (context))
+  if (!cdk_gl_context_get_use_es (context))
     {
       if (!wglMakeCurrent (context_win32->gl_hdc, context_win32->hglrc))
         {
@@ -1253,8 +1253,8 @@ _gdk_win32_display_make_gl_context_current (GdkDisplay *display,
                * the swap when drawing on the offscreen, rendering to the screen
                * happens later anyway, and its up to the compositor to sync that
                * to the vblank. */
-              screen = gdk_window_get_screen (window);
-              do_frame_sync = ! gdk_screen_is_composited (screen);
+              screen = cdk_window_get_screen (window);
+              do_frame_sync = ! cdk_screen_is_composited (screen);
 
               if (do_frame_sync != context_win32->do_frame_sync)
                 {
@@ -1273,13 +1273,13 @@ _gdk_win32_display_make_gl_context_current (GdkDisplay *display,
   else
     {
       if (context_win32->is_attached)
-        egl_surface = _gdk_win32_window_get_egl_surface (window, context_win32->egl_config, FALSE);
+        egl_surface = _cdk_win32_window_get_egl_surface (window, context_win32->egl_config, FALSE);
       else
         {
           if (display_win32->hasEglSurfacelessContext)
             egl_surface = EGL_NO_SURFACE;
           else
-            egl_surface = _gdk_win32_window_get_egl_surface (window, context_win32->egl_config, TRUE);
+            egl_surface = _cdk_win32_window_get_egl_surface (window, context_win32->egl_config, TRUE);
         }
 
       if (!eglMakeCurrent (display_win32->egl_disp,
@@ -1302,7 +1302,7 @@ _gdk_win32_display_make_gl_context_current (GdkDisplay *display,
 }
 
 /**
- * gdk_win32_display_get_wgl_version:
+ * cdk_win32_display_get_wgl_version:
  * @display: a #GdkDisplay
  * @major: (out): return location for the WGL major version
  * @minor: (out): return location for the WGL minor version
@@ -1314,7 +1314,7 @@ _gdk_win32_display_make_gl_context_current (GdkDisplay *display,
  * Since: 3.16
  */
 gboolean
-gdk_win32_display_get_wgl_version (GdkDisplay *display,
+cdk_win32_display_get_wgl_version (GdkDisplay *display,
                                    gint *major,
                                    gint *minor)
 {
@@ -1326,7 +1326,7 @@ gdk_win32_display_get_wgl_version (GdkDisplay *display,
 
   display_win32 = GDK_WIN32_DISPLAY (display);
 
-  if (!_gdk_win32_display_init_gl (display, FALSE) || !display_win32->have_wgl
+  if (!_cdk_win32_display_init_gl (display, FALSE) || !display_win32->have_wgl
 #ifdef GDK_WIN32_ENABLE_EGL
       || !display_win32->have_egl
 #endif
@@ -1355,14 +1355,14 @@ gdk_win32_display_get_wgl_version (GdkDisplay *display,
 }
 
 void
-_gdk_win32_window_invalidate_egl_framebuffer (GdkWindow *window)
+_cdk_win32_window_invalidate_egl_framebuffer (GdkWindow *window)
 {
 /* If we are using ANGLE, we need to force redraw of the whole Window and its child windows
  *  as we need to re-acquire the EGL surfaces that we rendered to upload to Cairo explicitly,
- *  using gdk_window_invalidate_rect (), when we maximize or restore or use aerosnap
+ *  using cdk_window_invalidate_rect (), when we maximize or restore or use aerosnap
  */
 #ifdef GDK_WIN32_ENABLE_EGL
-  if (window->gl_paint_context != NULL && gdk_gl_context_get_use_es (window->gl_paint_context))
+  if (window->gl_paint_context != NULL && cdk_gl_context_get_use_es (window->gl_paint_context))
     {
       GdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
 

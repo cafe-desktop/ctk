@@ -86,7 +86,7 @@ assert_icon_lookup_size (const char         *icon_name,
 
       pixbuf = ctk_icon_info_load_icon (info, &error);
       g_assert_no_error (error);
-      g_assert_cmpint (gdk_pixbuf_get_width (pixbuf), ==, pixbuf_size);
+      g_assert_cmpint (cdk_pixbuf_get_width (pixbuf), ==, pixbuf_size);
       g_object_unref (pixbuf);
     }
 
@@ -671,10 +671,10 @@ test_async (void)
   GMainLoop *loop;
   GdkRGBA fg, red, green, blue;
 
-  gdk_rgba_parse (&fg, "white");
-  gdk_rgba_parse (&red, "red");
-  gdk_rgba_parse (&green, "green");
-  gdk_rgba_parse (&blue, "blue");
+  cdk_rgba_parse (&fg, "white");
+  cdk_rgba_parse (&red, "red");
+  cdk_rgba_parse (&green, "green");
+  cdk_rgba_parse (&blue, "blue");
 
   loop = g_main_loop_new (NULL, FALSE);
   g_idle_add_full (G_PRIORITY_LOW, quit_loop, loop, NULL);
@@ -742,12 +742,12 @@ test_nonsquare_symbolic (void)
 				  NULL);
 
   /* load the original image for reference */
-  GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file (path, &error);
+  GdkPixbuf *pixbuf = cdk_pixbuf_new_from_file (path, &error);
   g_assert_no_error (error);
   g_assert_nonnull (pixbuf);
 
-  width = gdk_pixbuf_get_width (pixbuf);
-  height = gdk_pixbuf_get_height (pixbuf);
+  width = cdk_pixbuf_get_width (pixbuf);
+  height = cdk_pixbuf_get_height (pixbuf);
   g_assert_cmpint (width, !=, height);
 
   /* now load it through CtkIconTheme */
@@ -768,8 +768,8 @@ test_nonsquare_symbolic (void)
   g_assert_true (was_symbolic);
 
   /* the original dimensions have been preserved */
-  g_assert_cmpint (gdk_pixbuf_get_width (pixbuf), ==, width);
-  g_assert_cmpint (gdk_pixbuf_get_height (pixbuf), ==, height);
+  g_assert_cmpint (cdk_pixbuf_get_width (pixbuf), ==, width);
+  g_assert_cmpint (cdk_pixbuf_get_height (pixbuf), ==, height);
 
   g_free (path);
   g_object_unref (pixbuf);

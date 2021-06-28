@@ -139,7 +139,7 @@ ctk_gesture_long_press_begin (CtkGesture       *gesture,
   ctk_gesture_get_point (gesture, sequence,
                          &priv->initial_x, &priv->initial_y);
   priv->timeout_id =
-    gdk_threads_add_timeout (delay,
+    cdk_threads_add_timeout (delay,
                              _ctk_gesture_long_press_timeout,
                              gesture);
 }

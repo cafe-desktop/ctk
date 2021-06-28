@@ -34,10 +34,10 @@ layout_draw_handler (CtkWidget *widget,
   if (!ctk_cairo_should_draw_window (cr, bin_window))
     return FALSE;
 
-  gdk_window_get_position (bin_window, &x, &y);
+  cdk_window_get_position (bin_window, &x, &y);
   cairo_translate (cr, x, y);
 
-  gdk_cairo_get_clip_rectangle (cr, &clip);
+  cdk_cairo_get_clip_rectangle (cr, &clip);
 
   imin = (clip.x) / 10;
   imax = (clip.x + clip.width + 9) / 10;

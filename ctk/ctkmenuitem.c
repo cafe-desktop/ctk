@@ -400,7 +400,7 @@ ctk_menu_item_allocate (CtkCssGadget        *gadget,
       ctk_widget_size_allocate (child, &child_allocation);
 
       ctk_container_get_children_clip (CTK_CONTAINER (widget), out_clip);
-      gdk_rectangle_union (out_clip, &arrow_clip, out_clip);
+      cdk_rectangle_union (out_clip, &arrow_clip, out_clip);
     }
 
   if (priv->submenu)
@@ -418,7 +418,7 @@ ctk_menu_item_size_allocate (CtkWidget     *widget,
   ctk_widget_set_allocation (widget, allocation);
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (priv->event_window,
+    cdk_window_move_resize (priv->event_window,
                             allocation->x, allocation->y,
                             allocation->width, allocation->height);
 
@@ -1683,7 +1683,7 @@ ctk_menu_item_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y;
 
-  priv->event_window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                        &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->event_window);
 }
@@ -1695,7 +1695,7 @@ ctk_menu_item_unrealize (CtkWidget *widget)
   CtkMenuItemPrivate *priv = menu_item->priv;
 
   ctk_widget_unregister_window (widget, priv->event_window);
-  gdk_window_destroy (priv->event_window);
+  cdk_window_destroy (priv->event_window);
   priv->event_window = NULL;
 
   CTK_WIDGET_CLASS (ctk_menu_item_parent_class)->unrealize (widget);
@@ -1709,7 +1709,7 @@ ctk_menu_item_map (CtkWidget *widget)
 
   CTK_WIDGET_CLASS (ctk_menu_item_parent_class)->map (widget);
 
-  gdk_window_show (priv->event_window);
+  cdk_window_show (priv->event_window);
 }
 
 static void
@@ -1718,7 +1718,7 @@ ctk_menu_item_unmap (CtkWidget *widget)
   CtkMenuItem *menu_item = CTK_MENU_ITEM (widget);
   CtkMenuItemPrivate *priv = menu_item->priv;
 
-  gdk_window_hide (priv->event_window);
+  cdk_window_hide (priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_menu_item_parent_class)->unmap (widget);
 }
@@ -1752,12 +1752,12 @@ ctk_real_menu_item_select (CtkMenuItem *menu_item)
 
   if (current_event)
     {
-      source_device = gdk_event_get_source_device (current_event);
-      gdk_event_free (current_event);
+      source_device = cdk_event_get_source_device (current_event);
+      cdk_event_free (current_event);
     }
 
   if ((!source_device ||
-       gdk_device_get_source (source_device) != GDK_SOURCE_TOUCHSCREEN) &&
+       cdk_device_get_source (source_device) != GDK_SOURCE_TOUCHSCREEN) &&
       priv->submenu &&
       (!ctk_widget_get_mapped (priv->submenu) ||
        CTK_MENU (priv->submenu)->priv->tearoff_active))
@@ -2103,7 +2103,7 @@ ctk_menu_item_popup_timeout (gpointer data)
 
   priv->timer = 0;
 
-  g_clear_pointer (&info->trigger_event, gdk_event_free);
+  g_clear_pointer (&info->trigger_event, cdk_event_free);
   g_slice_free (PopupInfo, info);
 
   return FALSE;
@@ -2146,7 +2146,7 @@ _ctk_menu_item_popup_submenu (CtkWidget *widget,
           info->menu_item = menu_item;
           info->trigger_event = ctk_get_current_event ();
 
-          priv->timer = gdk_threads_add_timeout (popup_delay,
+          priv->timer = cdk_threads_add_timeout (popup_delay,
                                                  ctk_menu_item_popup_timeout,
                                                  info);
           g_source_set_name_by_id (priv->timer, "[ctk+] ctk_menu_item_popup_timeout");

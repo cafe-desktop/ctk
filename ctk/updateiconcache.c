@@ -37,7 +37,7 @@
 
 #include <glib.h>
 #include <glib/gstdio.h>
-#include <gdk-pixbuf/gdk-pixdata.h>
+#include <cdk-pixbuf/cdk-pixdata.h>
 #include <glib/gi18n.h>
 #include "ctkiconcachevalidator.h"
 
@@ -508,12 +508,12 @@ maybe_cache_image_data (Image       *image,
 
       if (!idata->has_pixdata)
 	{
-	  pixbuf = gdk_pixbuf_new_from_file (path, NULL);
+	  pixbuf = cdk_pixbuf_new_from_file (path, NULL);
 
 	  if (pixbuf)
 	    {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-	      gdk_pixdata_from_pixbuf (&idata->pixdata, pixbuf, FALSE);
+	      cdk_pixdata_from_pixbuf (&idata->pixdata, pixbuf, FALSE);
 G_GNUC_END_IGNORE_DEPRECATIONS;
 	      idata->size = idata->pixdata.length + 8;
 	      idata->has_pixdata = TRUE;
@@ -826,7 +826,7 @@ write_image_data (FILE *cache, ImageData *image_data, int offset)
     return FALSE;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  s = gdk_pixdata_serialize (pixdata, &len);
+  s = cdk_pixdata_serialize (pixdata, &len);
 G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (!write_card32 (cache, len))

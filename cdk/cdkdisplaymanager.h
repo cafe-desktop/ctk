@@ -26,34 +26,34 @@
 #define __GDK_DISPLAY_MANAGER_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdktypes.h>
-#include <gdk/gdkdisplay.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkdisplay.h>
 
 G_BEGIN_DECLS
 
 
-#define GDK_TYPE_DISPLAY_MANAGER              (gdk_display_manager_get_type ())
+#define GDK_TYPE_DISPLAY_MANAGER              (cdk_display_manager_get_type ())
 #define GDK_DISPLAY_MANAGER(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_DISPLAY_MANAGER, GdkDisplayManager))
 #define GDK_IS_DISPLAY_MANAGER(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_DISPLAY_MANAGER))
 
 
 GDK_AVAILABLE_IN_ALL
-GType              gdk_display_manager_get_type            (void) G_GNUC_CONST;
+GType              cdk_display_manager_get_type            (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GdkDisplayManager *gdk_display_manager_get                 (void);
+GdkDisplayManager *cdk_display_manager_get                 (void);
 GDK_AVAILABLE_IN_ALL
-GdkDisplay *       gdk_display_manager_get_default_display (GdkDisplayManager *manager);
+GdkDisplay *       cdk_display_manager_get_default_display (GdkDisplayManager *manager);
 GDK_AVAILABLE_IN_ALL
-void               gdk_display_manager_set_default_display (GdkDisplayManager *manager,
+void               cdk_display_manager_set_default_display (GdkDisplayManager *manager,
                                                             GdkDisplay        *display);
 GDK_AVAILABLE_IN_ALL
-GSList *           gdk_display_manager_list_displays       (GdkDisplayManager *manager);
+GSList *           cdk_display_manager_list_displays       (GdkDisplayManager *manager);
 GDK_AVAILABLE_IN_ALL
-GdkDisplay *       gdk_display_manager_open_display        (GdkDisplayManager *manager,
+GdkDisplay *       cdk_display_manager_open_display        (GdkDisplayManager *manager,
                                                             const gchar       *name);
 
 G_END_DECLS

@@ -1,4 +1,4 @@
-/* gdkquartzscreen.h
+/* cdkquartzscreen.h
  *
  * Copyright (C) 2009, 2010  Kristian Rietveld  <kris@ctk.org>
  *
@@ -20,14 +20,14 @@
 #define __GDK_QUARTZ_SCREEN_H__
 
 #if !defined(__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkquartz.h> can be included directly."
+#error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
 G_BEGIN_DECLS
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
-#define GDK_TYPE_QUARTZ_SCREEN              (gdk_quartz_screen_get_type ())
+#define GDK_TYPE_QUARTZ_SCREEN              (cdk_quartz_screen_get_type ())
 #define GDK_QUARTZ_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_SCREEN, GdkQuartzScreen))
 #define GDK_QUARTZ_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_SCREEN, GdkQuartzScreenClass))
 #define GDK_IS_QUARTZ_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_SCREEN))
@@ -43,7 +43,7 @@ typedef struct _GdkQuartzScreenClass GdkQuartzScreenClass;
 
 
 GDK_AVAILABLE_IN_ALL
-GType      gdk_quartz_screen_get_type (void);
+GType      cdk_quartz_screen_get_type (void);
 
 G_END_DECLS
 

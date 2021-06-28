@@ -6,9 +6,9 @@
 #include <sys/uio.h>
 #include <unistd.h>
 
-#include "gdkprivate-quartz.h"
-#include "gdkinternal-quartz.h"
-#include <gdk/gdkdisplayprivate.h>
+#include "cdkprivate-quartz.h"
+#include "cdkinternal-quartz.h"
+#include <cdk/cdkdisplayprivate.h>
 
 /* 
  * This file implementations integration between the GLib main loop and
@@ -449,7 +449,7 @@ select_thread_start_poll (GPollFD *ufds,
   if (n_ready > 0 || timeout == 0)
     {
 #ifdef G_ENABLE_DEBUG
-      if ((_gdk_debug_flags & GDK_DEBUG_EVENTLOOP) && n_ready > 0)
+      if ((_cdk_debug_flags & GDK_DEBUG_EVENTLOOP) && n_ready > 0)
 	{
 	  g_message ("EventLoop: Found ready file descriptors before waiting");
 	  dump_poll_result (ufds, nfds);
@@ -593,7 +593,7 @@ select_thread_collect_poll (GPollFD *ufds, guint nfds)
 	}
       
 #ifdef G_ENABLE_DEBUG
-      if (_gdk_debug_flags & GDK_DEBUG_EVENTLOOP)
+      if (_cdk_debug_flags & GDK_DEBUG_EVENTLOOP)
 	{
 	  g_message ("EventLoop: Found ready file descriptors after waiting");
 	  dump_poll_result (ufds, nfds);
@@ -611,13 +611,13 @@ select_thread_collect_poll (GPollFD *ufds, guint nfds)
  ************************************************************/
 
 gboolean
-_gdk_quartz_event_loop_check_pending (void)
+_cdk_quartz_event_loop_check_pending (void)
 {
   return current_events && current_events->head;
 }
 
 NSEvent*
-_gdk_quartz_event_loop_get_pending (void)
+_cdk_quartz_event_loop_get_pending (void)
 {
   NSEvent *event = NULL;
 
@@ -628,18 +628,18 @@ _gdk_quartz_event_loop_get_pending (void)
 }
 
 void
-_gdk_quartz_event_loop_release_event (NSEvent *event)
+_cdk_quartz_event_loop_release_event (NSEvent *event)
 {
   [event release];
 }
 
 static gboolean
-gdk_event_prepare (GSource *source,
+cdk_event_prepare (GSource *source,
 		   gint    *timeout)
 {
   gboolean retval;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   /* The prepare stage is the stage before the main loop starts polling
    * and dispatching events. The autorelease poll is drained here for
@@ -668,64 +668,64 @@ gdk_event_prepare (GSource *source,
 
   *timeout = -1;
 
-  if (_gdk_display->event_pause_count > 0)
-    retval = _gdk_event_queue_find_first (_gdk_display) != NULL;
+  if (_cdk_display->event_pause_count > 0)
+    retval = _cdk_event_queue_find_first (_cdk_display) != NULL;
   else
-    retval = (_gdk_event_queue_find_first (_gdk_display) != NULL ||
-              _gdk_quartz_event_loop_check_pending ());
+    retval = (_cdk_event_queue_find_first (_cdk_display) != NULL ||
+              _cdk_quartz_event_loop_check_pending ());
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   return retval;
 }
 
 static gboolean
-gdk_event_check (GSource *source)
+cdk_event_check (GSource *source)
 {
   gboolean retval;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
-  if (_gdk_display->event_pause_count > 0)
-    retval = _gdk_event_queue_find_first (_gdk_display) != NULL;
+  if (_cdk_display->event_pause_count > 0)
+    retval = _cdk_event_queue_find_first (_cdk_display) != NULL;
   else
-    retval = (_gdk_event_queue_find_first (_gdk_display) != NULL ||
-              _gdk_quartz_event_loop_check_pending ());
+    retval = (_cdk_event_queue_find_first (_cdk_display) != NULL ||
+              _cdk_quartz_event_loop_check_pending ());
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   return retval;
 }
 
 static gboolean
-gdk_event_dispatch (GSource     *source,
+cdk_event_dispatch (GSource     *source,
 		    GSourceFunc  callback,
 		    gpointer     user_data)
 {
   GdkEvent *event;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
-  _gdk_quartz_display_queue_events (_gdk_display);
+  _cdk_quartz_display_queue_events (_cdk_display);
 
-  event = _gdk_event_unqueue (_gdk_display);
+  event = _cdk_event_unqueue (_cdk_display);
 
   if (event)
     {
-      _gdk_event_emit (event);
+      _cdk_event_emit (event);
 
-      gdk_event_free (event);
+      cdk_event_free (event);
     }
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   return TRUE;
 }
 
 static GSourceFuncs event_funcs = {
-  gdk_event_prepare,
-  gdk_event_check,
-  gdk_event_dispatch,
+  cdk_event_prepare,
+  cdk_event_check,
+  cdk_event_dispatch,
   NULL
 };
 
@@ -1044,7 +1044,7 @@ run_loop_observer_callback (CFRunLoopObserverRef observer,
 /************************************************************/
 
 void
-_gdk_quartz_event_loop_init (void)
+_cdk_quartz_event_loop_init (void)
 {
   GSource *source;
   CFRunLoopObserverRef observer;

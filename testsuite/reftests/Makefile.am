@@ -13,8 +13,8 @@ check_PROGRAMS = $(TEST_PROGS)
 
 ctk_reftest_CFLAGS = \
 	-I$(top_srcdir)                 \
-	-I$(top_builddir)/gdk           \
-	-I$(top_srcdir)/gdk             \
+	-I$(top_builddir)/cdk           \
+	-I$(top_srcdir)/cdk             \
 	-DGDK_DISABLE_DEPRECATED        \
 	-DCTK_DISABLE_DEPRECATED        \
 	$(CTK_DEBUG_FLAGS)              \
@@ -24,7 +24,7 @@ ctk_reftest_CFLAGS = \
 
 ctk_reftest_LDADD = \
 	libctkreftestprivate.la		\
-	$(top_builddir)/gdk/libgdk-3.la \
+	$(top_builddir)/cdk/libcdk-3.la \
 	$(top_builddir)/ctk/libctk-3.la \
 	$(CTK_DEP_LIBS)			\
 	$(GMODULE_LIBS)			\
@@ -44,7 +44,7 @@ endif
 libctkreftestprivate_la_CFLAGS = $(ctk_reftest_CFLAGS)
 libctkreftestprivate_la_LDFLAGS = $(no_undefined)
 libctkreftestprivate_la_LIBADD =	\
-	$(top_builddir)/gdk/libgdk-3.la \
+	$(top_builddir)/cdk/libcdk-3.la \
 	$(top_builddir)/ctk/libctk-3.la \
 	$(CTK_DEP_LIBS)			\
 	$(GMODULE_LIBS)			\

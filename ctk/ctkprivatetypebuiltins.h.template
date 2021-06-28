@@ -7,7 +7,7 @@
 #define __CTK_PRIVATE_TYPE_BUILTINS_H__
 
 #include <glib-object.h>
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 /*** END file-header ***/

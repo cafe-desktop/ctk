@@ -335,7 +335,7 @@ entry_key_press (CtkEntry           *entry,
   if (!ctk_widget_get_visible (CTK_WIDGET (completion)))
     return FALSE;
 
-  gdk_event_get_keyval ((GdkEvent*)event, &keyval);
+  cdk_event_get_keyval ((GdkEvent*)event, &keyval);
 
   if (keyval == GDK_KEY_Escape)
     {

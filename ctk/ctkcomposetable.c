@@ -15,7 +15,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <glib.h>
 #include <glib/gprintf.h>
 #include <glib/gstdio.h>
@@ -177,7 +177,7 @@ parse_compose_sequence (CtkComposeData *compose_data,
         }
       else
         {
-          codepoint = (gunichar) gdk_keyval_from_name (match);
+          codepoint = (gunichar) cdk_keyval_from_name (match);
           compose_data->sequence[n] = codepoint;
           compose_data->sequence[n + 1] = 0;
         }
@@ -469,7 +469,7 @@ ctk_compose_list_print (GList *compose_list,
               break;
             }
 
-          keyval = gdk_keyval_name (compose_data->sequence[i]);
+          keyval = cdk_keyval_name (compose_data->sequence[i]);
           if (i == max_compose_len - 1)
             g_printf ("%s,\n", keyval ? keyval : "(null)");
           else

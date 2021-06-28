@@ -121,7 +121,7 @@ entry_apply (CtkWidget      *entry,
     return;
 
   text = ctk_editable_get_chars (CTK_EDITABLE (editor->priv->entry), 0, -1);
-  if (gdk_rgba_parse (&color, text))
+  if (cdk_rgba_parse (&color, text))
     {
       color.alpha = ctk_adjustment_get_value (editor->priv->a_adj);
       ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (editor), &color);
@@ -376,7 +376,7 @@ color_picked (GObject      *source,
   else
     {
       ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (editor), color);
-      gdk_rgba_free (color);
+      cdk_rgba_free (color);
     }
 }
 

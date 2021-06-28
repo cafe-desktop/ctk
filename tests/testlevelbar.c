@@ -35,7 +35,7 @@ add_custom_css (void)
 
   provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_data (provider, data, -1, NULL);
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 }

@@ -139,7 +139,7 @@ color_picked (GObject      *source,
       c.red   = ((color >> 16) & 0xff) / 255.0; 
       c.alpha = ((color >> 24) & 0xff) / 255.0; 
 
-      g_task_return_pointer (picker->task, gdk_rgba_copy (&c), (GDestroyNotify)gdk_rgba_free);
+      g_task_return_pointer (picker->task, cdk_rgba_copy (&c), (GDestroyNotify)cdk_rgba_free);
 
       g_variant_unref (ret);
     }

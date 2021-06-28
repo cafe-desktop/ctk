@@ -26,11 +26,11 @@
 #define __GDK_RGBA_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdktypes.h>
-#include <gdk/gdkversionmacros.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkversionmacros.h>
 
 G_BEGIN_DECLS
 
@@ -42,27 +42,27 @@ struct _GdkRGBA
   gdouble alpha;
 };
 
-#define GDK_TYPE_RGBA (gdk_rgba_get_type ())
+#define GDK_TYPE_RGBA (cdk_rgba_get_type ())
 
 GDK_AVAILABLE_IN_ALL
-GType     gdk_rgba_get_type  (void) G_GNUC_CONST;
+GType     cdk_rgba_get_type  (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_ALL
-GdkRGBA * gdk_rgba_copy      (const GdkRGBA *rgba);
+GdkRGBA * cdk_rgba_copy      (const GdkRGBA *rgba);
 GDK_AVAILABLE_IN_ALL
-void      gdk_rgba_free      (GdkRGBA       *rgba);
+void      cdk_rgba_free      (GdkRGBA       *rgba);
 
 GDK_AVAILABLE_IN_ALL
-guint     gdk_rgba_hash      (gconstpointer  p);
+guint     cdk_rgba_hash      (gconstpointer  p);
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_rgba_equal     (gconstpointer  p1,
+gboolean  cdk_rgba_equal     (gconstpointer  p1,
                               gconstpointer  p2);
 
 GDK_AVAILABLE_IN_ALL
-gboolean  gdk_rgba_parse     (GdkRGBA       *rgba,
+gboolean  cdk_rgba_parse     (GdkRGBA       *rgba,
                               const gchar   *spec);
 GDK_AVAILABLE_IN_ALL
-gchar *   gdk_rgba_to_string (const GdkRGBA *rgba);
+gchar *   cdk_rgba_to_string (const GdkRGBA *rgba);
 
 
 G_END_DECLS

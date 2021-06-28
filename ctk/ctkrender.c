@@ -486,7 +486,7 @@ ctk_do_render_layout (CtkStyleContext *context,
   _ctk_css_shadows_value_paint_layout (_ctk_style_context_peek_property (context, CTK_CSS_PROPERTY_TEXT_SHADOW),
                                        cr, layout);
 
-  gdk_cairo_set_source_rgba (cr, fg_color);
+  cdk_cairo_set_source_rgba (cr, fg_color);
   pango_cairo_show_layout (cr, layout);
 
   cairo_restore (cr);
@@ -538,7 +538,7 @@ ctk_do_render_line (CtkStyleContext *context,
   cairo_move_to (cr, x0 + 0.5, y0 + 0.5);
   cairo_line_to (cr, x1 + 0.5, y1 + 0.5);
 
-  gdk_cairo_set_source_rgba (cr, color);
+  cdk_cairo_set_source_rgba (cr, color);
   cairo_stroke (cr);
 
   cairo_restore (cr);
@@ -999,11 +999,11 @@ scale_or_ref (GdkPixbuf *src,
               gint       width,
               gint       height)
 {
-  if (width == gdk_pixbuf_get_width (src) &&
-      height == gdk_pixbuf_get_height (src))
+  if (width == cdk_pixbuf_get_width (src) &&
+      height == cdk_pixbuf_get_height (src))
     return g_object_ref (src);
   else
-    return gdk_pixbuf_scale_simple (src,
+    return cdk_pixbuf_scale_simple (src,
                                     width, height,
                                     GDK_INTERP_BILINEAR);
 }
@@ -1042,9 +1042,9 @@ ctk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
 
   if (icon_effect != CTK_CSS_ICON_EFFECT_NONE)
     {
-      surface = gdk_cairo_surface_create_from_pixbuf (scaled, 1, NULL);
+      surface = cdk_cairo_surface_create_from_pixbuf (scaled, 1, NULL);
       ctk_css_icon_effect_apply (icon_effect, surface);
-      stated = gdk_pixbuf_get_from_surface (surface, 0, 0,
+      stated = cdk_pixbuf_get_from_surface (surface, 0, 0,
 					    cairo_image_surface_get_width (surface),
 					    cairo_image_surface_get_height (surface));
       cairo_surface_destroy (surface);
@@ -1124,7 +1124,7 @@ ctk_render_icon (CtkStyleContext *context,
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (cr != NULL);
 
-  surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
+  surface = cdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
 
   ctk_css_style_render_icon_surface (ctk_style_context_lookup_style (context),
                                      cr,

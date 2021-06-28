@@ -162,7 +162,7 @@ main (int argc, char *argv[])
       l = g_list_append (l, f);
     }
 
-  launch_context = (GAppLaunchContext*) gdk_display_get_app_launch_context (gdk_display_get_default ());
+  launch_context = (GAppLaunchContext*) cdk_display_get_app_launch_context (cdk_display_get_default ());
   if (!g_app_info_launch (info, l, launch_context, &error))
     {
        /* Translators: the first %s is the program name, the second one  */

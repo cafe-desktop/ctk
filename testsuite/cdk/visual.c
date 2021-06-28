@@ -1,7 +1,7 @@
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 /* We don't technically guarantee that the visual returned by
- * gdk_screen_get_rgba_visual is ARGB8888. But if it isn't, lots
+ * cdk_screen_get_rgba_visual is ARGB8888. But if it isn't, lots
  * of code will break, so test this here anyway.
  * The main point of this test is to ensure that the pixel_details
  * functions return meaningful values for TrueColor visuals.
@@ -19,8 +19,8 @@ test_rgba_visual (void)
 
   g_test_bug ("764210");
 
-  screen = gdk_screen_get_default ();
-  visual = gdk_screen_get_rgba_visual (screen);
+  screen = cdk_screen_get_default ();
+  visual = cdk_screen_get_rgba_visual (screen);
 
   if (visual == NULL)
     {
@@ -28,11 +28,11 @@ test_rgba_visual (void)
       return;
     }
 
-  depth = gdk_visual_get_depth (visual);
-  type = gdk_visual_get_visual_type (visual);
-  gdk_visual_get_red_pixel_details (visual, &r_mask, &r_shift, &r_precision);
-  gdk_visual_get_green_pixel_details (visual, &g_mask, &g_shift, &g_precision);
-  gdk_visual_get_blue_pixel_details (visual, &b_mask, &b_shift, &b_precision);
+  depth = cdk_visual_get_depth (visual);
+  type = cdk_visual_get_visual_type (visual);
+  cdk_visual_get_red_pixel_details (visual, &r_mask, &r_shift, &r_precision);
+  cdk_visual_get_green_pixel_details (visual, &g_mask, &g_shift, &g_precision);
+  cdk_visual_get_blue_pixel_details (visual, &b_mask, &b_shift, &b_precision);
 
   g_assert_cmpint (depth, ==, 32);
   g_assert_cmpint (type, ==, GDK_VISUAL_TRUE_COLOR);
@@ -60,14 +60,14 @@ test_list_visuals (void)
   GList *list, *l;
   gboolean found_system, found_rgba;
 
-  screen = gdk_screen_get_default ();
-  system_visual = gdk_screen_get_system_visual (screen);
-  rgba_visual = gdk_screen_get_rgba_visual (screen);
+  screen = cdk_screen_get_default ();
+  system_visual = cdk_screen_get_system_visual (screen);
+  rgba_visual = cdk_screen_get_rgba_visual (screen);
 
   found_system = FALSE;
   found_rgba = FALSE;
 
-  list = gdk_screen_list_visuals (screen);
+  list = cdk_screen_list_visuals (screen);
   for (l = list; l; l = l->next)
     {
       visual = l->data;
@@ -77,7 +77,7 @@ test_list_visuals (void)
         found_rgba = TRUE;
       g_assert_true (GDK_IS_VISUAL (visual));
 
-      g_assert_true (gdk_visual_get_screen (visual) == screen);
+      g_assert_true (cdk_visual_get_screen (visual) == screen);
     }
   g_list_free (list);
 
@@ -94,17 +94,17 @@ test_depth (void)
   gint i, j;
   gboolean is_depth;
 
-  gdk_query_depths (&depths, &n_depths);
+  cdk_query_depths (&depths, &n_depths);
   g_assert_cmpint (n_depths, >, 0);
   for (i = 0; i < n_depths; i++)
     {
       g_assert_cmpint (depths[i], >, 0);
       g_assert_cmpint (depths[i], <=, 32);
 
-      visual = gdk_visual_get_best_with_depth (depths[i]);
+      visual = cdk_visual_get_best_with_depth (depths[i]);
 
       g_assert_nonnull (visual);
-      g_assert_cmpint (gdk_visual_get_depth (visual), ==, depths[i]);
+      g_assert_cmpint (cdk_visual_get_depth (visual), ==, depths[i]);
     }
 
   for (i = 1; i <= 32; i++)
@@ -116,13 +116,13 @@ test_depth (void)
             is_depth = TRUE;
         }
 
-      visual = gdk_visual_get_best_with_depth (i);
+      visual = cdk_visual_get_best_with_depth (i);
       if (!is_depth)
         g_assert_null (visual);
       else
         {
           g_assert_nonnull (visual);
-          g_assert_cmpint (gdk_visual_get_depth (visual), ==, i);
+          g_assert_cmpint (cdk_visual_get_depth (visual), ==, i);
         }
     }
 }
@@ -136,17 +136,17 @@ test_type (void)
   gint i, j;
   gboolean is_type;
 
-  gdk_query_visual_types (&types, &n_types);
+  cdk_query_visual_types (&types, &n_types);
   g_assert_cmpint (n_types, >, 0);
   for (i = 0; i < n_types; i++)
     {
       g_assert_cmpint (types[i], >=, GDK_VISUAL_STATIC_GRAY);
       g_assert_cmpint (types[i], <=, GDK_VISUAL_DIRECT_COLOR);
 
-      visual = gdk_visual_get_best_with_type (types[i]);
+      visual = cdk_visual_get_best_with_type (types[i]);
 
       g_assert_nonnull (visual);
-      g_assert_cmpint (gdk_visual_get_visual_type (visual), ==, types[i]);
+      g_assert_cmpint (cdk_visual_get_visual_type (visual), ==, types[i]);
     }
 
   for (i = GDK_VISUAL_STATIC_GRAY; i <= GDK_VISUAL_DIRECT_COLOR; i++)
@@ -158,13 +158,13 @@ test_type (void)
             is_type = TRUE;
         }
 
-      visual = gdk_visual_get_best_with_type (i);
+      visual = cdk_visual_get_best_with_type (i);
       if (!is_type)
         g_assert_null (visual);
       else
         {
           g_assert_nonnull (visual);
-          g_assert_cmpint (gdk_visual_get_visual_type (visual), ==, i);
+          g_assert_cmpint (cdk_visual_get_visual_type (visual), ==, i);
         }
     }
 }
@@ -175,7 +175,7 @@ main (int argc, char *argv[])
 {
   g_test_init (&argc, &argv, NULL);
 
-  gdk_init (NULL, NULL);
+  cdk_init (NULL, NULL);
 
   g_test_bug_base ("http://bugzilla.gnome.org/");
 

@@ -760,12 +760,12 @@ gesture_drag_begin_cb (CtkGestureDrag *gesture,
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
-  device = gdk_event_get_source_device (event);
+  device = cdk_event_get_source_device (event);
   ctk_css_gadget_get_content_allocation (priv->gadget, &allocation, NULL);
   paned->priv->panning = FALSE;
 
   is_touch = (event->type == GDK_TOUCH_BEGIN ||
-              gdk_device_get_source (device) == GDK_SOURCE_TOUCHSCREEN);
+              cdk_device_get_source (device) == GDK_SOURCE_TOUCHSCREEN);
 
   if ((is_touch && CTK_GESTURE (gesture) == priv->drag_gesture) ||
       (!is_touch && CTK_GESTURE (gesture) == priv->pan_gesture))
@@ -1320,12 +1320,12 @@ ctk_paned_set_child_visible (CtkPaned  *paned,
     {
       GdkWindow *window = id == CHILD1 ? priv->child1_window : priv->child2_window;
 
-      if (visible != gdk_window_is_visible (window))
+      if (visible != cdk_window_is_visible (window))
         {
           if (visible)
-            gdk_window_show (window);
+            cdk_window_show (window);
           else
-            gdk_window_hide (window);
+            cdk_window_hide (window);
         }
     }
 }
@@ -1337,7 +1337,7 @@ ctk_paned_child_allocate (CtkWidget           *child,
                           CtkAllocation       *child_allocation)
 {
   if (child_window)
-    gdk_window_move_resize (child_window,
+    cdk_window_move_resize (child_window,
                             window_allocation->x, window_allocation->y,
                             window_allocation->width, window_allocation->height);
 
@@ -1506,8 +1506,8 @@ ctk_paned_allocate (CtkCssGadget        *gadget,
           GdkWindow *window;
 
           window = ctk_widget_get_window (widget);
-          gdk_window_invalidate_rect (window, &old_handle_pos, FALSE);
-          gdk_window_invalidate_rect (window, &priv->handle_pos, FALSE);
+          cdk_window_invalidate_rect (window, &old_handle_pos, FALSE);
+          cdk_window_invalidate_rect (window, &priv->handle_pos, FALSE);
         }
 
       if (ctk_widget_get_realized (widget))
@@ -1515,10 +1515,10 @@ ctk_paned_allocate (CtkCssGadget        *gadget,
           CtkAllocation border_alloc;
 
 	  if (ctk_widget_get_mapped (widget))
-	    gdk_window_show (priv->handle);
+	    cdk_window_show (priv->handle);
 
           ctk_css_gadget_get_border_allocation (priv->handle_gadget, &border_alloc, NULL);
-          gdk_window_move_resize (priv->handle,
+          cdk_window_move_resize (priv->handle,
                                   border_alloc.x, border_alloc.y,
                                   border_alloc.width, border_alloc.height);
 	}
@@ -1560,7 +1560,7 @@ ctk_paned_allocate (CtkCssGadget        *gadget,
       CtkAllocation window_allocation, child_allocation;
 
       if (ctk_widget_get_realized (widget))
-	gdk_window_hide (priv->handle);
+	cdk_window_hide (priv->handle);
 
       window_allocation.x = allocation->x;
       window_allocation.y = allocation->y;
@@ -1598,7 +1598,7 @@ ctk_paned_allocate (CtkCssGadget        *gadget,
     }
 
   ctk_container_get_children_clip (CTK_CONTAINER (paned), out_clip);
-  gdk_rectangle_union (out_clip, &clip, out_clip);
+  cdk_rectangle_union (out_clip, &clip, out_clip);
 }
 
 static GdkWindow *
@@ -1652,7 +1652,7 @@ ctk_paned_create_child_window (CtkPaned  *paned,
       attributes_mask = GDK_WA_VISUAL;
     }
 
-  window = gdk_window_new (ctk_widget_get_window (widget),
+  window = cdk_window_new (ctk_widget_get_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_register_window (widget, window);
 
@@ -1693,13 +1693,13 @@ ctk_paned_realize (CtkWidget *widget)
   attributes_mask = GDK_WA_X | GDK_WA_Y;
   if (ctk_widget_is_sensitive (widget))
     {
-      attributes.cursor = gdk_cursor_new_from_name (ctk_widget_get_display (widget),
+      attributes.cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget),
 						    priv->orientation == CTK_ORIENTATION_HORIZONTAL
                                                     ? "col-resize" : "row-resize");
       attributes_mask |= GDK_WA_CURSOR;
     }
 
-  priv->handle = gdk_window_new (window,
+  priv->handle = cdk_window_new (window,
                                  &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->handle);
   g_clear_object (&attributes.cursor);
@@ -1717,19 +1717,19 @@ ctk_paned_unrealize (CtkWidget *widget)
   if (priv->child2)
     ctk_widget_set_parent_window (priv->child2, NULL);
   ctk_widget_unregister_window (widget, priv->child2_window);
-  gdk_window_destroy (priv->child2_window);
+  cdk_window_destroy (priv->child2_window);
   priv->child2_window = NULL;
 
   if (priv->child1)
     ctk_widget_set_parent_window (priv->child1, NULL);
   ctk_widget_unregister_window (widget, priv->child1_window);
-  gdk_window_destroy (priv->child1_window);
+  cdk_window_destroy (priv->child1_window);
   priv->child1_window = NULL;
 
   if (priv->handle)
     {
       ctk_widget_unregister_window (widget, priv->handle);
-      gdk_window_destroy (priv->handle);
+      cdk_window_destroy (priv->handle);
       priv->handle = NULL;
     }
 
@@ -1748,13 +1748,13 @@ ctk_paned_map (CtkWidget *widget)
   CtkPanedPrivate *priv = paned->priv;
 
   if (priv->child1 && ctk_widget_get_visible (priv->child1) && ctk_widget_get_child_visible (priv->child1))
-    gdk_window_show (priv->child1_window);
+    cdk_window_show (priv->child1_window);
   if (priv->child2 && ctk_widget_get_visible (priv->child2) && ctk_widget_get_child_visible (priv->child2))
-    gdk_window_show (priv->child2_window);
+    cdk_window_show (priv->child2_window);
 
   if (priv->child1 && ctk_widget_get_visible (priv->child1) &&
       priv->child2 && ctk_widget_get_visible (priv->child2))
-    gdk_window_show (priv->handle);
+    cdk_window_show (priv->handle);
 
   CTK_WIDGET_CLASS (ctk_paned_parent_class)->map (widget);
 }
@@ -1765,12 +1765,12 @@ ctk_paned_unmap (CtkWidget *widget)
   CtkPaned *paned = CTK_PANED (widget);
   CtkPanedPrivate *priv = paned->priv;
 
-  gdk_window_hide (priv->handle);
+  cdk_window_hide (priv->handle);
   
-  if (gdk_window_is_visible (priv->child1_window))
-    gdk_window_hide (priv->child1_window);
-  if (gdk_window_is_visible (priv->child2_window))
-    gdk_window_hide (priv->child2_window);
+  if (cdk_window_is_visible (priv->child1_window))
+    cdk_window_hide (priv->child1_window);
+  if (cdk_window_is_visible (priv->child2_window))
+    cdk_window_hide (priv->child2_window);
 
   CTK_WIDGET_CLASS (ctk_paned_parent_class)->unmap (widget);
 }
@@ -1807,13 +1807,13 @@ ctk_paned_render (CtkCssGadget *gadget,
 
   if (priv->child1 && ctk_widget_get_visible (priv->child1))
     {
-      gdk_window_get_position (priv->child1_window, &window_x, &window_y);
+      cdk_window_get_position (priv->child1_window, &window_x, &window_y);
       cairo_save (cr);
       cairo_rectangle (cr, 
                        window_x - widget_allocation.x,
                        window_y - widget_allocation.y,
-                       gdk_window_get_width (priv->child1_window),
-                       gdk_window_get_height (priv->child1_window));
+                       cdk_window_get_width (priv->child1_window),
+                       cdk_window_get_height (priv->child1_window));
       cairo_clip (cr);
       ctk_container_propagate_draw (CTK_CONTAINER (widget), priv->child1, cr);
       cairo_restore (cr);
@@ -1821,13 +1821,13 @@ ctk_paned_render (CtkCssGadget *gadget,
 
   if (priv->child2 && ctk_widget_get_visible (priv->child2))
     {
-      gdk_window_get_position (priv->child2_window, &window_x, &window_y);
+      cdk_window_get_position (priv->child2_window, &window_x, &window_y);
       cairo_save (cr);
       cairo_rectangle (cr, 
                        window_x - widget_allocation.x,
                        window_y - widget_allocation.y,
-                       gdk_window_get_width (priv->child2_window),
-                       gdk_window_get_height (priv->child2_window));
+                       cdk_window_get_width (priv->child2_window),
+                       cdk_window_get_height (priv->child2_window));
       cairo_clip (cr);
       ctk_container_propagate_draw (CTK_CONTAINER (widget), priv->child2, cr);
       cairo_restore (cr);
@@ -1982,7 +1982,7 @@ update_drag (CtkPaned *paned,
   gint size;
   gint x, y;
 
-  gdk_window_get_position (priv->handle, &x, &y);
+  cdk_window_get_position (priv->handle, &x, &y);
   ctk_css_gadget_get_content_allocation (priv->gadget, &allocation, NULL);
   if (priv->orientation == CTK_ORIENTATION_HORIZONTAL)
     pos = xpos;
@@ -2083,14 +2083,14 @@ ctk_paned_state_flags_changed (CtkWidget     *widget,
   if (ctk_widget_get_realized (widget))
     {
       if (ctk_widget_is_sensitive (widget))
-        cursor = gdk_cursor_new_from_name (ctk_widget_get_display (widget),
+        cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget),
                                            priv->orientation == CTK_ORIENTATION_HORIZONTAL
                                            ? "col-resize" : "row-resize");
       else
         cursor = NULL;
 
       if (priv->handle)
-        gdk_window_set_cursor (priv->handle, cursor);
+        cdk_window_set_cursor (priv->handle, cursor);
 
       if (cursor)
         g_object_unref (cursor);
@@ -2278,8 +2278,8 @@ ctk_paned_remove (CtkContainer *container,
 
   if (priv->child1 == widget)
     {
-      if (priv->child1_window && gdk_window_is_visible (priv->child1_window))
-        gdk_window_hide (priv->child1_window);
+      if (priv->child1_window && cdk_window_is_visible (priv->child1_window))
+        cdk_window_hide (priv->child1_window);
 
       ctk_widget_unparent (widget);
 
@@ -2290,8 +2290,8 @@ ctk_paned_remove (CtkContainer *container,
     }
   else if (priv->child2 == widget)
     {
-      if (priv->child2_window && gdk_window_is_visible (priv->child2_window))
-        gdk_window_hide (priv->child2_window);
+      if (priv->child2_window && cdk_window_is_visible (priv->child2_window))
+        cdk_window_hide (priv->child2_window);
 
       ctk_widget_unparent (widget);
 

@@ -17,13 +17,13 @@
 
 #include "config.h"
 
-#include "gdkx11devicemanager-core.h"
-#include "gdkdevicemanagerprivate-core.h"
+#include "cdkx11devicemanager-core.h"
+#include "cdkdevicemanagerprivate-core.h"
 #ifdef XINPUT_2
-#include "gdkx11devicemanager-xi2.h"
+#include "cdkx11devicemanager-xi2.h"
 #endif
-#include "gdkinternals.h"
-#include "gdkprivate-x11.h"
+#include "cdkinternals.h"
+#include "cdkprivate-x11.h"
 
 /* Defines for VCP/VCK, to be used too
  * for the core protocol device manager
@@ -32,7 +32,7 @@
 #define VIRTUAL_CORE_KEYBOARD_ID 3
 
 GdkDeviceManager *
-_gdk_x11_device_manager_new (GdkDisplay *display)
+_cdk_x11_device_manager_new (GdkDisplay *display)
 {
   if (!g_getenv ("GDK_CORE_DEVICE_EVENTS"))
     {
@@ -50,7 +50,7 @@ _gdk_x11_device_manager_new (GdkDisplay *display)
           major = 2;
 	  minor = 3;
 
-          if (!_gdk_disable_multidevice &&
+          if (!_cdk_disable_multidevice &&
               XIQueryVersion (xdisplay, &major, &minor) != BadRequest)
             {
               GdkX11DeviceManagerXI2 *device_manager_xi2;
@@ -78,7 +78,7 @@ _gdk_x11_device_manager_new (GdkDisplay *display)
 }
 
 /**
- * gdk_x11_device_manager_lookup:
+ * cdk_x11_device_manager_lookup:
  * @device_manager: (type GdkX11DeviceManagerCore): a #GdkDeviceManager
  * @device_id: a device ID, as understood by the XInput2 protocol
  *
@@ -90,7 +90,7 @@ _gdk_x11_device_manager_new (GdkDisplay *display)
  * Since: 3.2
  **/
 GdkDevice *
-gdk_x11_device_manager_lookup (GdkDeviceManager *device_manager,
+cdk_x11_device_manager_lookup (GdkDeviceManager *device_manager,
 			       gint              device_id)
 {
   GdkDevice *device = NULL;
@@ -99,7 +99,7 @@ gdk_x11_device_manager_lookup (GdkDeviceManager *device_manager,
 
 #ifdef XINPUT_2
   if (GDK_IS_X11_DEVICE_MANAGER_XI2 (device_manager))
-    device = _gdk_x11_device_manager_xi2_lookup (GDK_X11_DEVICE_MANAGER_XI2 (device_manager),
+    device = _cdk_x11_device_manager_xi2_lookup (GDK_X11_DEVICE_MANAGER_XI2 (device_manager),
                                                  device_id);
   else
 #endif /* XINPUT_2 */
@@ -119,12 +119,12 @@ gdk_x11_device_manager_lookup (GdkDeviceManager *device_manager,
 }
 
 /**
- * gdk_x11_device_get_id:
+ * cdk_x11_device_get_id:
  * @device: (type GdkX11DeviceCore): a #GdkDevice
  *
  * Returns the device ID as seen by XInput2.
  *
- * > If gdk_disable_multidevice() has been called, this function
+ * > If cdk_disable_multidevice() has been called, this function
  * > will respectively return 2/3 for the core pointer and keyboard,
  * > (matching the IDs for the Virtual Core Pointer and Keyboard in
  * > XInput 2), but calling this function on any slave devices (i.e.
@@ -135,7 +135,7 @@ gdk_x11_device_manager_lookup (GdkDeviceManager *device_manager,
  * Since: 3.2
  **/
 gint
-gdk_x11_device_get_id (GdkDevice *device)
+cdk_x11_device_get_id (GdkDevice *device)
 {
   gint device_id = 0;
 
@@ -143,12 +143,12 @@ gdk_x11_device_get_id (GdkDevice *device)
 
 #ifdef XINPUT_2
   if (GDK_IS_X11_DEVICE_XI2 (device))
-    device_id = _gdk_x11_device_xi2_get_id (GDK_X11_DEVICE_XI2 (device));
+    device_id = _cdk_x11_device_xi2_get_id (GDK_X11_DEVICE_XI2 (device));
   else
 #endif /* XINPUT_2 */
     if (GDK_IS_X11_DEVICE_CORE (device))
       {
-        if (gdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+        if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
           device_id = VIRTUAL_CORE_KEYBOARD_ID;
         else
           device_id = VIRTUAL_CORE_POINTER_ID;

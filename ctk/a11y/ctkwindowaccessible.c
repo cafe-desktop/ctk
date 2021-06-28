@@ -240,7 +240,7 @@ ctk_window_accessible_ref_state_set (AtkObject *accessible)
   AtkStateSet *state_set;
   CtkWidget *widget;
   CtkWindow *window;
-  GdkWindow *gdk_window;
+  GdkWindow *cdk_window;
   GdkWindowState state;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
@@ -254,10 +254,10 @@ ctk_window_accessible_ref_state_set (AtkObject *accessible)
   if (ctk_window_has_toplevel_focus (window) && ctk_window_is_active (window))
     atk_state_set_add_state (state_set, ATK_STATE_ACTIVE);
 
-  gdk_window = ctk_widget_get_window (widget);
-  if (gdk_window)
+  cdk_window = ctk_widget_get_window (widget);
+  if (cdk_window)
     {
-      state = gdk_window_get_state (gdk_window);
+      state = cdk_window_get_state (cdk_window);
       if (state & GDK_WINDOW_STATE_ICONIFIED)
         atk_state_set_add_state (state_set, ATK_STATE_ICONIFIED);
     }
@@ -403,7 +403,7 @@ ctk_window_accessible_get_extents (AtkComponent  *component,
   if (window == NULL)
     return;
 
-  gdk_window_get_frame_extents (window, &rect);
+  cdk_window_get_frame_extents (window, &rect);
 
   *width = rect.width;
   *height = rect.height;
@@ -418,7 +418,7 @@ ctk_window_accessible_get_extents (AtkComponent  *component,
   *y = rect.y;
   if (coord_type == ATK_XY_WINDOW)
     {
-      gdk_window_get_origin (window, &x_toplevel, &y_toplevel);
+      cdk_window_get_origin (window, &x_toplevel, &y_toplevel);
       *x -= x_toplevel;
       *y -= y_toplevel;
     }
@@ -450,7 +450,7 @@ ctk_window_accessible_get_size (AtkComponent *component,
   if (window == NULL)
     return;
 
-  gdk_window_get_frame_extents (window, &rect);
+  cdk_window_get_frame_extents (window, &rect);
 
   *width = rect.width;
   *height = rect.height;

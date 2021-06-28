@@ -152,7 +152,7 @@ ctk_color_swatch_render (CtkCssGadget *gadget,
 
           cairo_restore (cr);
 
-          gdk_cairo_set_source_rgba (cr, &swatch->priv->color);
+          cdk_cairo_set_source_rgba (cr, &swatch->priv->color);
         }
       else
         {
@@ -179,7 +179,7 @@ drag_set_color_icon (GdkDragContext *context,
 
   surface = cairo_image_surface_create (CAIRO_FORMAT_RGB24, 48, 32);
   cr = cairo_create (surface);
-  gdk_cairo_set_source_rgba (cr, color);
+  cdk_cairo_set_source_rgba (cr, color);
   cairo_paint (cr);
 
   cairo_surface_set_device_offset (surface, -4, -4);
@@ -219,7 +219,7 @@ swatch_drag_data_get (CtkWidget        *widget,
   vals[3] = color.alpha * 0xffff;
 
   ctk_selection_data_set (selection_data,
-                          gdk_atom_intern_static_string ("application/x-color"),
+                          cdk_atom_intern_static_string ("application/x-color"),
                           16, (guchar *)vals, 8);
 }
 
@@ -433,7 +433,7 @@ swatch_map (CtkWidget *widget)
   CTK_WIDGET_CLASS (ctk_color_swatch_parent_class)->map (widget);
 
   if (swatch->priv->event_window)
-    gdk_window_show (swatch->priv->event_window);
+    cdk_window_show (swatch->priv->event_window);
 }
 
 static void
@@ -442,7 +442,7 @@ swatch_unmap (CtkWidget *widget)
   CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
 
   if (swatch->priv->event_window)
-    gdk_window_hide (swatch->priv->event_window);
+    cdk_window_hide (swatch->priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_color_swatch_parent_class)->unmap (widget);
 }
@@ -478,7 +478,7 @@ swatch_realize (CtkWidget *widget)
   ctk_widget_set_window (widget, window);
   g_object_ref (window);
 
-  swatch->priv->event_window = gdk_window_new (window, &attributes, attributes_mask);
+  swatch->priv->event_window = cdk_window_new (window, &attributes, attributes_mask);
   ctk_widget_register_window (widget, swatch->priv->event_window);
 }
 
@@ -490,7 +490,7 @@ swatch_unrealize (CtkWidget *widget)
   if (swatch->priv->event_window)
     {
       ctk_widget_unregister_window (widget, swatch->priv->event_window);
-      gdk_window_destroy (swatch->priv->event_window);
+      cdk_window_destroy (swatch->priv->event_window);
       swatch->priv->event_window = NULL;
     }
 
@@ -515,7 +515,7 @@ swatch_size_allocate (CtkWidget     *widget,
                            ctk_widget_get_allocated_baseline (widget),
                            &clip2);
 
-  gdk_rectangle_union (&clip, &clip2, &clip);
+  cdk_rectangle_union (&clip, &clip2, &clip);
 
   ctk_widget_set_clip (widget, &clip);
 
@@ -523,7 +523,7 @@ swatch_size_allocate (CtkWidget     *widget,
     {
       CtkAllocation border_allocation;
       ctk_css_gadget_get_border_allocation(swatch->priv->gadget, &border_allocation, NULL);
-      gdk_window_move_resize (swatch->priv->event_window,
+      cdk_window_move_resize (swatch->priv->event_window,
                               border_allocation.x,
                               border_allocation.y,
                               border_allocation.width,

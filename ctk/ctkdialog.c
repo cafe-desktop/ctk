@@ -1394,9 +1394,9 @@ ctk_dialog_run (CtkDialog *dialog)
 
   ri.loop = g_main_loop_new (NULL, FALSE);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
   g_main_loop_run (ri.loop);
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   g_main_loop_unref (ri.loop);
 

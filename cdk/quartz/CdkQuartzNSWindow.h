@@ -19,7 +19,7 @@
 #import <AppKit/AppKit.h>
 #import <Foundation/Foundation.h>
 #include <glib.h>
-#include <gdk.h>
+#include <cdk.h>
 
 @interface GdkQuartzNSWindow : NSWindow {
   BOOL    inMove;

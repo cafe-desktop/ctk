@@ -494,7 +494,7 @@ add_default_palette (CtkColorChooserWidget *cc)
 
   for (i = 0; i < 9; i++)
     for (j = 0; j < 5; j++)
-      gdk_rgba_parse (&colors[i*5 + j], default_colors[i][j]);
+      cdk_rgba_parse (&colors[i*5 + j], default_colors[i][j]);
 
   add_palette (cc, CTK_ORIENTATION_VERTICAL, 5, 9*5, colors, color_names);
 
@@ -780,7 +780,7 @@ ctk_color_chooser_widget_set_rgba (CtkColorChooser *chooser,
           ctk_color_swatch_get_rgba (swatch, &c);
           if (!cc->priv->use_alpha)
             c.alpha = color->alpha;
-          if (gdk_rgba_equal (color, &c))
+          if (cdk_rgba_equal (color, &c))
             {
               select_swatch (cc, swatch);
               g_list_free (children);

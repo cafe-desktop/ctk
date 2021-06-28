@@ -30,7 +30,7 @@
 
 #include "ctklayout.h"
 
-#include "gdk/gdk.h"
+#include "cdk/cdk.h"
 
 #include "ctkadjustment.h"
 #include "ctkintl.h"
@@ -586,7 +586,7 @@ ctk_layout_set_size (CtkLayout     *layout,
       ctk_widget_get_allocation (widget, &allocation);
       width = MAX (width, allocation.width);
       height = MAX (height, allocation.height);
-      gdk_window_resize (priv->bin_window, width, height);
+      cdk_window_resize (priv->bin_window, width, height);
     }
 
   ctk_layout_set_hadjustment_values (layout);
@@ -905,7 +905,7 @@ ctk_layout_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
@@ -920,7 +920,7 @@ ctk_layout_realize (CtkWidget *widget)
                           GDK_SMOOTH_SCROLL_MASK | 
                           ctk_widget_get_events (widget);
 
-  priv->bin_window = gdk_window_new (window,
+  priv->bin_window = cdk_window_new (window,
                                      &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->bin_window);
   set_background (widget);
@@ -965,8 +965,8 @@ ctk_layout_map (CtkWidget *widget)
 	}
     }
 
-  gdk_window_show (priv->bin_window);
-  gdk_window_show (ctk_widget_get_window (widget));
+  cdk_window_show (priv->bin_window);
+  cdk_window_show (ctk_widget_get_window (widget));
 }
 
 static void 
@@ -976,7 +976,7 @@ ctk_layout_unrealize (CtkWidget *widget)
   CtkLayoutPrivate *priv = layout->priv;
 
   ctk_widget_unregister_window (widget, priv->bin_window);
-  gdk_window_destroy (priv->bin_window);
+  cdk_window_destroy (priv->bin_window);
   priv->bin_window = NULL;
 
   CTK_WIDGET_CLASS (ctk_layout_parent_class)->unrealize (widget);
@@ -1020,11 +1020,11 @@ ctk_layout_size_allocate (CtkWidget     *widget,
 
   if (ctk_widget_get_realized (widget))
     {
-      gdk_window_move_resize (ctk_widget_get_window (widget),
+      cdk_window_move_resize (ctk_widget_get_window (widget),
 			      allocation->x, allocation->y,
 			      allocation->width, allocation->height);
 
-      gdk_window_resize (priv->bin_window,
+      cdk_window_resize (priv->bin_window,
 			 MAX (priv->width, allocation->width),
 			 MAX (priv->height, allocation->height));
     }
@@ -1137,7 +1137,7 @@ ctk_layout_adjustment_changed (CtkAdjustment *adjustment,
 
   if (ctk_widget_get_realized (CTK_WIDGET (layout)))
     {
-      gdk_window_move (priv->bin_window,
+      cdk_window_move (priv->bin_window,
 		       - ctk_adjustment_get_value (priv->hadjustment),
 		       - ctk_adjustment_get_value (priv->vadjustment));
     }

@@ -3137,7 +3137,7 @@ queue_update (CtkUIManager *manager)
   if (manager->private_data->update_tag != 0)
     return;
 
-  manager->private_data->update_tag = gdk_threads_add_idle (
+  manager->private_data->update_tag = cdk_threads_add_idle (
 					       (GSourceFunc)do_updates_idle, 
 					       manager);
   g_source_set_name_by_id (manager->private_data->update_tag, "[ctk+] do_updates_idle");

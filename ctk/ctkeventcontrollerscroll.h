@@ -24,7 +24,7 @@
 #error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctkeventcontroller.h>
 
 G_BEGIN_DECLS

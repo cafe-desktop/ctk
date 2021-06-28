@@ -1,15 +1,15 @@
 include $(top_srcdir)/Makefile.decl
 
-libgdkincludedir = $(includedir)/ctk-3.0/gdk
-libgdkquartzincludedir = $(includedir)/ctk-3.0/gdk/quartz
+libcdkincludedir = $(includedir)/ctk-3.0/cdk
+libcdkquartzincludedir = $(includedir)/ctk-3.0/cdk/quartz
 
 AM_CPPFLAGS = 				\
 	-DG_LOG_DOMAIN=\"Gdk\"		\
 	-DG_LOG_USE_STRUCTURED=1	\
 	-DGDK_COMPILATION		\
 	-I$(top_srcdir)			\
-	-I$(top_srcdir)/gdk		\
-	-I$(top_builddir)/gdk		\
+	-I$(top_srcdir)/cdk		\
+	-I$(top_builddir)/cdk		\
 	$(GDK_HIDDEN_VISIBILITY_CFLAGS) \
 	$(CTK_DEBUG_FLAGS) 		\
 	$(GDK_DEP_CFLAGS)		\
@@ -17,63 +17,63 @@ AM_CPPFLAGS = 				\
 
 LDADDS = $(GDK_DEP_LIBS)
 
-noinst_LTLIBRARIES = libgdk-quartz.la
+noinst_LTLIBRARIES = libcdk-quartz.la
 
-libgdk_quartz_la_SOURCES =    	\
+libcdk_quartz_la_SOURCES =    	\
 	GdkQuartzView.c		\
 	GdkQuartzView.h		\
 	GdkQuartzNSWindow.c	\
 	GdkQuartzNSWindow.h	\
-	gdkcursor-quartz.c	\
-	gdkdevice-core-quartz.c	\
-	gdkdevicemanager-core-quartz.c	\
-	gdkdevicemanager-core-quartz.h	\
-	gdkdisplay-quartz.c	\
-	gdkdisplay-quartz.h	\
-	gdkdisplaymanager-quartz.c	\
-	gdkdnd-quartz.c		\
-	gdkdnd-quartz.h		\
-	gdkevents-quartz.c	\
-	gdkeventloop-quartz.c	\
-	gdkglcontext-quartz.c	\
-	gdkglcontext-quartz.h	\
-	gdkglobals-quartz.c	\
-	gdkinternal-quartz.h	\
-	gdkkeys-quartz.c	\
-	gdkkeys-quartz.h	\
-	gdkmonitor-quartz.c     \
-	gdkmonitor-quartz.h     \
-	gdkprivate-quartz.h	\
-	gdkproperty-quartz.c	\
-	gdkquartz.h		\
-	gdkscreen-quartz.c	\
-	gdkscreen-quartz.h	\
-	gdkselection-quartz.c	\
-	gdktestutils-quartz.c	\
-	gdkutils-quartz.c	\
-	gdkvisual-quartz.c	\
-	gdkwindow-quartz.c	\
-	gdkwindow-quartz.h	\
+	cdkcursor-quartz.c	\
+	cdkdevice-core-quartz.c	\
+	cdkdevicemanager-core-quartz.c	\
+	cdkdevicemanager-core-quartz.h	\
+	cdkdisplay-quartz.c	\
+	cdkdisplay-quartz.h	\
+	cdkdisplaymanager-quartz.c	\
+	cdkdnd-quartz.c		\
+	cdkdnd-quartz.h		\
+	cdkevents-quartz.c	\
+	cdkeventloop-quartz.c	\
+	cdkglcontext-quartz.c	\
+	cdkglcontext-quartz.h	\
+	cdkglobals-quartz.c	\
+	cdkinternal-quartz.h	\
+	cdkkeys-quartz.c	\
+	cdkkeys-quartz.h	\
+	cdkmonitor-quartz.c     \
+	cdkmonitor-quartz.h     \
+	cdkprivate-quartz.h	\
+	cdkproperty-quartz.c	\
+	cdkquartz.h		\
+	cdkscreen-quartz.c	\
+	cdkscreen-quartz.h	\
+	cdkselection-quartz.c	\
+	cdktestutils-quartz.c	\
+	cdkutils-quartz.c	\
+	cdkvisual-quartz.c	\
+	cdkwindow-quartz.c	\
+	cdkwindow-quartz.h	\
 	xcursors.h
 
-libgdkinclude_HEADERS = 	\
-	gdkquartz.h
+libcdkinclude_HEADERS = 	\
+	cdkquartz.h
 
-libgdkquartzinclude_HEADERS =		\
-	gdkquartz-ctk-only.h            \
-	gdkquartzcursor.h		\
-	gdkquartzdevice-core.h		\
-	gdkquartzdevicemanager-core.h	\
-	gdkquartzdisplay.h		\
-	gdkquartzdisplaymanager.h	\
-	gdkquartzdnd.h			\
-	gdkquartzglcontext.h		\
-	gdkquartzkeys.h			\
-	gdkquartzmonitor.h		\
-	gdkquartzscreen.h		\
-	gdkquartzutils.h		\
-	gdkquartzvisual.h		\
-	gdkquartzwindow.h
+libcdkquartzinclude_HEADERS =		\
+	cdkquartz-ctk-only.h            \
+	cdkquartzcursor.h		\
+	cdkquartzdevice-core.h		\
+	cdkquartzdevicemanager-core.h	\
+	cdkquartzdisplay.h		\
+	cdkquartzdisplaymanager.h	\
+	cdkquartzdnd.h			\
+	cdkquartzglcontext.h		\
+	cdkquartzkeys.h			\
+	cdkquartzmonitor.h		\
+	cdkquartzscreen.h		\
+	cdkquartzutils.h		\
+	cdkquartzvisual.h		\
+	cdkquartzwindow.h
 
 EXTRA_DIST += \
 	meson.build

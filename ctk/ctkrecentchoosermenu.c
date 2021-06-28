@@ -1101,7 +1101,7 @@ ctk_recent_chooser_menu_populate (CtkRecentChooserMenu *menu)
   /* remove our menu items first */
   ctk_recent_chooser_menu_dispose_items (menu);
 
-  priv->populate_id = gdk_threads_add_idle_full (G_PRIORITY_HIGH_IDLE + 30,
+  priv->populate_id = cdk_threads_add_idle_full (G_PRIORITY_HIGH_IDLE + 30,
   					         idle_populate_func,
 					         pdata,
                                                  idle_populate_clean_up);

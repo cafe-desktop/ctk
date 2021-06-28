@@ -49,192 +49,192 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Poedit 1.8.11\n"
 
-#: gdk/gdkapplaunchcontext.c:127 gdk/gdkcursor.c:139 gdk/gdkdevicemanager.c:185
-#: gdk/gdkglcontext.c:317 gdk/gdkseat.c:202 gdk/gdkseat.c:203
+#: cdk/cdkapplaunchcontext.c:127 cdk/cdkcursor.c:139 cdk/cdkdevicemanager.c:185
+#: cdk/cdkglcontext.c:317 cdk/cdkseat.c:202 cdk/cdkseat.c:203
 msgid "Display"
 msgstr "Pantalla"
 
-#: gdk/gdkcursor.c:131
+#: cdk/cdkcursor.c:131
 msgid "Cursor type"
 msgstr "Tipus de cursor"
 
-#: gdk/gdkcursor.c:132
+#: cdk/cdkcursor.c:132
 msgid "Standard cursor type"
 msgstr "Tipus de cursor estàndard"
 
-#: gdk/gdkcursor.c:140
+#: cdk/cdkcursor.c:140
 msgid "Display of this cursor"
 msgstr "Pantalla d'este cursor"
 
-#: gdk/gdkdevice.c:123
+#: cdk/cdkdevice.c:123
 msgid "Device Display"
 msgstr "Pantalla del dispositiu"
 
-#: gdk/gdkdevice.c:124
+#: cdk/cdkdevice.c:124
 msgid "Display which the device belongs to"
 msgstr "Pantalla a la qual pertany el dispositiu"
 
-#: gdk/gdkdevice.c:138
+#: cdk/cdkdevice.c:138
 msgid "Device manager"
 msgstr "Gestor de dispositius"
 
-#: gdk/gdkdevice.c:139
+#: cdk/cdkdevice.c:139
 msgid "Device manager which the device belongs to"
 msgstr "Gestor de dispositius al qual pertany el dispositiu"
 
-#: gdk/gdkdevice.c:152 gdk/gdkdevice.c:153
+#: cdk/cdkdevice.c:152 cdk/cdkdevice.c:153
 msgid "Device name"
 msgstr "Nom del dispositiu"
 
-#: gdk/gdkdevice.c:166
+#: cdk/cdkdevice.c:166
 msgid "Device type"
 msgstr "Tipus de dispositiu"
 
-#: gdk/gdkdevice.c:167
+#: cdk/cdkdevice.c:167
 msgid "Device role in the device manager"
 msgstr "Rol del dispositiu en el gestor de dispositius"
 
-#: gdk/gdkdevice.c:183
+#: cdk/cdkdevice.c:183
 msgid "Associated device"
 msgstr "Dispositiu associat"
 
-#: gdk/gdkdevice.c:184
+#: cdk/cdkdevice.c:184
 msgid "Associated pointer or keyboard with this device"
 msgstr "Punter o teclat associat a este dispositiu"
 
-#: gdk/gdkdevice.c:197
+#: cdk/cdkdevice.c:197
 msgid "Input source"
 msgstr "Font d'entrada"
 
-#: gdk/gdkdevice.c:198
+#: cdk/cdkdevice.c:198
 msgid "Source type for the device"
 msgstr "Tipus de font del dispositiu"
 
-#: gdk/gdkdevice.c:213 gdk/gdkdevice.c:214
+#: cdk/cdkdevice.c:213 cdk/cdkdevice.c:214
 msgid "Input mode for the device"
 msgstr "Mètode d'entrada del dispositiu"
 
-#: gdk/gdkdevice.c:229
+#: cdk/cdkdevice.c:229
 msgid "Whether the device has a cursor"
 msgstr "Si el dispositiu té un cursor"
 
-#: gdk/gdkdevice.c:230
+#: cdk/cdkdevice.c:230
 msgid "Whether there is a visible cursor following device motion"
 msgstr "Si hi ha un cursor visible que segueix el moviment del dispositiu"
 
-#: gdk/gdkdevice.c:244 gdk/gdkdevice.c:245
+#: cdk/cdkdevice.c:244 cdk/cdkdevice.c:245
 msgid "Number of axes in the device"
 msgstr "Nombre d'eixos del dispositiu"
 
-#: gdk/gdkdevice.c:259 gdk/gdkdevice.c:260
+#: cdk/cdkdevice.c:259 cdk/cdkdevice.c:260
 msgid "Vendor ID"
 msgstr "ID del fabricant"
 
-#: gdk/gdkdevice.c:274 gdk/gdkdevice.c:275
+#: cdk/cdkdevice.c:274 cdk/cdkdevice.c:275
 msgid "Product ID"
 msgstr "ID del producte"
 
-#: gdk/gdkdevice.c:289 gdk/gdkdevice.c:290
+#: cdk/cdkdevice.c:289 cdk/cdkdevice.c:290
 msgid "Seat"
 msgstr "Seient"
 
-#: gdk/gdkdevice.c:306 gdk/gdkdevice.c:307
+#: cdk/cdkdevice.c:306 cdk/cdkdevice.c:307
 msgid "Number of concurrent touches"
 msgstr "Nombre de tocs concurrents"
 
-#: gdk/gdkdevice.c:321 gdk/gdkdevice.c:322
+#: cdk/cdkdevice.c:321 cdk/cdkdevice.c:322
 msgid "Axes"
 msgstr "Eixos"
 
-#: gdk/gdkdevice.c:328
+#: cdk/cdkdevice.c:328
 msgid "Tool"
 msgstr "Eina"
 
-#: gdk/gdkdevice.c:329
+#: cdk/cdkdevice.c:329
 msgid "The tool that is currently used with this device"
 msgstr "L'eina que usa actualment amb este dispositiu"
 
-#: gdk/gdkdevicemanager.c:186
+#: cdk/cdkdevicemanager.c:186
 msgid "Display for the device manager"
 msgstr "Pantalla del gestor de dispositius"
 
-#: gdk/gdkdisplaymanager.c:169
+#: cdk/cdkdisplaymanager.c:169
 msgid "Default Display"
 msgstr "Pantalla per defecte"
 
-#: gdk/gdkdisplaymanager.c:170
+#: cdk/cdkdisplaymanager.c:170
 msgid "The default display for GDK"
 msgstr "La pantalla per defecte per al GDK"
 
-#: gdk/gdkglcontext.c:318
+#: cdk/cdkglcontext.c:318
 msgid "The GDK display used to create the GL context"
 msgstr "La pantalla GDK utilitzada per crear el context GL"
 
-#: gdk/gdkglcontext.c:333 ctk/ctkwidget.c:1338
+#: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1338
 msgid "Window"
 msgstr "Finestra"
 
-#: gdk/gdkglcontext.c:334
+#: cdk/cdkglcontext.c:334
 msgid "The GDK window bound to the GL context"
 msgstr "La finestra GDK vinculada al context GL"
 
-#: gdk/gdkglcontext.c:349
+#: cdk/cdkglcontext.c:349
 msgid "Shared context"
 msgstr "Context compartit"
 
-#: gdk/gdkglcontext.c:350
+#: cdk/cdkglcontext.c:350
 msgid "The GL context this context shares data with"
 msgstr "El context GL amb què este context comparteix dades"
 
-#: gdk/gdkscreen.c:91
+#: cdk/cdkscreen.c:91
 msgid "Font options"
 msgstr "Opcions del tipus de lletra"
 
-#: gdk/gdkscreen.c:92
+#: cdk/cdkscreen.c:92
 msgid "The default font options for the screen"
 msgstr "Les opcions per defecte del tipus de lletra per a la pantalla"
 
-#: gdk/gdkscreen.c:99
+#: cdk/cdkscreen.c:99
 msgid "Font resolution"
 msgstr "Resolució del tipus de lletra"
 
-#: gdk/gdkscreen.c:100
+#: cdk/cdkscreen.c:100
 msgid "The resolution for fonts on the screen"
 msgstr "La resolució del tipus de lletra a la pantalla"
 
-#: gdk/gdkwindow.c:354 gdk/gdkwindow.c:355
+#: cdk/cdkwindow.c:354 cdk/cdkwindow.c:355
 msgid "Cursor"
 msgstr "Cursor"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:115
+#: cdk/x11/cdkdevicemanager-xi2.c:115
 msgid "Opcode"
 msgstr "Codi d'operació"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:116
+#: cdk/x11/cdkdevicemanager-xi2.c:116
 msgid "Opcode for XInput2 requests"
 msgstr "Codi d'operació per a les sol·licituds d'XInput2"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:122
+#: cdk/x11/cdkdevicemanager-xi2.c:122
 msgid "Major"
 msgstr "Principal"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:123
+#: cdk/x11/cdkdevicemanager-xi2.c:123
 msgid "Major version number"
 msgstr "Número de versió principal"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:129
+#: cdk/x11/cdkdevicemanager-xi2.c:129
 msgid "Minor"
 msgstr "Menor"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:130
+#: cdk/x11/cdkdevicemanager-xi2.c:130
 msgid "Minor version number"
 msgstr "Número de versió menor"
 
-#: gdk/x11/gdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:143
 msgid "Device ID"
 msgstr "Id. del dispositiu"
 
-#: gdk/x11/gdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device identifier"
 msgstr "Identificador del dispositiu"
 

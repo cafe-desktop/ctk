@@ -160,7 +160,7 @@ ctk_menu_section_box_schedule_separator_sync (CtkMenuSectionBox *box)
   box = box->toplevel;
 
   if (!box->separator_sync_idle)
-    box->separator_sync_idle = gdk_threads_add_idle_full (G_PRIORITY_HIGH_IDLE, /* before resize... */
+    box->separator_sync_idle = cdk_threads_add_idle_full (G_PRIORITY_HIGH_IDLE, /* before resize... */
                                                           ctk_menu_section_box_handle_sync_separators,
                                                           box, NULL);
 }

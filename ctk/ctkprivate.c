@@ -27,7 +27,7 @@
 #include <locale.h>
 #include <stdlib.h>
 
-#include "gdk/gdk.h"
+#include "cdk/cdk.h"
 
 #include "ctkprivate.h"
 #include "ctkresources.h"
@@ -175,7 +175,7 @@ _ctk_replace_virtual_modifiers (GdkKeymap       *keymap,
         {
           GdkModifierType virtual = real;
 
-          gdk_keymap_add_virtual_modifiers (keymap, &virtual);
+          cdk_keymap_add_virtual_modifiers (keymap, &virtual);
 
           if (virtual == real)
             result |= virtual;
@@ -194,11 +194,11 @@ _ctk_get_primary_accel_mod (void)
 
   if (! primary)
     {
-      GdkDisplay *display = gdk_display_get_default ();
+      GdkDisplay *display = cdk_display_get_default ();
 
-      primary = gdk_keymap_get_modifier_mask (gdk_keymap_get_for_display (display),
+      primary = cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
                                               GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
-      primary = _ctk_replace_virtual_modifiers (gdk_keymap_get_for_display (display),
+      primary = _ctk_replace_virtual_modifiers (cdk_keymap_get_for_display (display),
                                                 primary);
     }
 
@@ -223,7 +223,7 @@ _ctk_translate_keyboard_accel_state (GdkKeymap       *keymap,
   /* if the group-toggling modifier is part of the accel mod mask, and
    * it is active, disable it for matching
    */
-  shift_group_mask = gdk_keymap_get_modifier_mask (keymap,
+  shift_group_mask = cdk_keymap_get_modifier_mask (keymap,
                                                    GDK_MODIFIER_INTENT_SHIFT_GROUP);
   if (accel_mask & state & shift_group_mask)
     {
@@ -232,7 +232,7 @@ _ctk_translate_keyboard_accel_state (GdkKeymap       *keymap,
       group_mask_disabled = TRUE;
     }
 
-  retval = gdk_keymap_translate_keyboard_state (keymap,
+  retval = cdk_keymap_translate_keyboard_state (keymap,
                                                 hardware_keycode, state, group,
                                                 keyval,
                                                 effective_group, level,

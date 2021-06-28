@@ -611,7 +611,7 @@ ctk_menu_shell_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
@@ -1033,9 +1033,9 @@ ctk_menu_shell_enter_notify (CtkWidget        *widget,
                     {
                       GdkDevice *source_device;
 
-                      source_device = gdk_event_get_source_device ((GdkEvent *) event);
+                      source_device = cdk_event_get_source_device ((GdkEvent *) event);
 
-                      if (gdk_device_get_source (source_device) == GDK_SOURCE_TOUCHSCREEN)
+                      if (cdk_device_get_source (source_device) == GDK_SOURCE_TOUCHSCREEN)
                         _ctk_menu_item_popup_submenu (menu_item, TRUE);
                     }
                 }
@@ -1180,7 +1180,7 @@ ctk_real_menu_shell_deactivate (CtkMenuShell *menu_shell)
         }
       if (priv->have_xgrab)
         {
-          gdk_seat_ungrab (gdk_device_get_seat (priv->grab_pointer));
+          cdk_seat_ungrab (cdk_device_get_seat (priv->grab_pointer));
           priv->have_xgrab = FALSE;
         }
 
@@ -1369,7 +1369,7 @@ ctk_menu_shell_activate_item (CtkMenuShell *menu_shell,
       /* Flush the x-queue, so any grabs are removed and
        * the menu is actually taken down
        */
-      gdk_display_sync (ctk_widget_get_display (menu_item));
+      cdk_display_sync (ctk_widget_get_display (menu_item));
     }
 
   ctk_widget_activate (menu_item);
@@ -1772,7 +1772,7 @@ ctk_menu_shell_get_key_hash (CtkMenuShell *menu_shell,
     {
       CtkMnemonicHash *mnemonic_hash = ctk_menu_shell_get_mnemonic_hash (menu_shell, FALSE);
       GdkScreen *screen = ctk_widget_get_screen (widget);
-      GdkKeymap *keymap = gdk_keymap_get_for_display (gdk_screen_get_display (screen));
+      GdkKeymap *keymap = cdk_keymap_get_for_display (cdk_screen_get_display (screen));
 
       if (!mnemonic_hash)
         return NULL;
@@ -1871,8 +1871,8 @@ _ctk_menu_shell_set_grab_device (CtkMenuShell *menu_shell,
 
   if (!device)
     priv->grab_pointer = NULL;
-  else if (gdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
-    priv->grab_pointer = gdk_device_get_associated_device (device);
+  else if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+    priv->grab_pointer = cdk_device_get_associated_device (device);
   else
     priv->grab_pointer = device;
 }
@@ -1934,7 +1934,7 @@ ctk_menu_shell_get_take_focus (CtkMenuShell *menu_shell)
  * should not display mnemonics or accelerators, since it cannot be
  * guaranteed that they will work.
  *
- * See also gdk_keyboard_grab()
+ * See also cdk_keyboard_grab()
  *
  * Since: 2.8
  */

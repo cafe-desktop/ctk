@@ -1,4 +1,4 @@
-/* gdkapplaunchcontext.h - Ctk+ implementation for GAppLaunchContext
+/* cdkapplaunchcontext.h - Ctk+ implementation for GAppLaunchContext
  *
  * Copyright (C) 2007 Red Hat, Inc.
  *
@@ -22,43 +22,43 @@
 #define __GDK_APP_LAUNCH_CONTEXT_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
 #include <gio/gio.h>
-#include <gdk/gdkversionmacros.h>
-#include <gdk/gdktypes.h>
-#include <gdk/gdkscreen.h>
+#include <cdk/cdkversionmacros.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkscreen.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_APP_LAUNCH_CONTEXT         (gdk_app_launch_context_get_type ())
+#define GDK_TYPE_APP_LAUNCH_CONTEXT         (cdk_app_launch_context_get_type ())
 #define GDK_APP_LAUNCH_CONTEXT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_APP_LAUNCH_CONTEXT, GdkAppLaunchContext))
         #define GDK_IS_APP_LAUNCH_CONTEXT(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_APP_LAUNCH_CONTEXT))
 
 
 GDK_AVAILABLE_IN_ALL
-GType                gdk_app_launch_context_get_type      (void);
+GType                cdk_app_launch_context_get_type      (void);
 
-GDK_DEPRECATED_IN_3_0_FOR(gdk_display_get_app_launch_context)
-GdkAppLaunchContext *gdk_app_launch_context_new           (void);
-GDK_DEPRECATED_IN_3_0_FOR(gdk_display_get_app_launch_context)
-void                 gdk_app_launch_context_set_display   (GdkAppLaunchContext *context,
+GDK_DEPRECATED_IN_3_0_FOR(cdk_display_get_app_launch_context)
+GdkAppLaunchContext *cdk_app_launch_context_new           (void);
+GDK_DEPRECATED_IN_3_0_FOR(cdk_display_get_app_launch_context)
+void                 cdk_app_launch_context_set_display   (GdkAppLaunchContext *context,
                                                            GdkDisplay          *display);
 GDK_AVAILABLE_IN_ALL
-void                 gdk_app_launch_context_set_screen    (GdkAppLaunchContext *context,
+void                 cdk_app_launch_context_set_screen    (GdkAppLaunchContext *context,
                                                            GdkScreen           *screen);
 GDK_AVAILABLE_IN_ALL
-void                 gdk_app_launch_context_set_desktop   (GdkAppLaunchContext *context,
+void                 cdk_app_launch_context_set_desktop   (GdkAppLaunchContext *context,
                                                            gint                 desktop);
 GDK_AVAILABLE_IN_ALL
-void                 gdk_app_launch_context_set_timestamp (GdkAppLaunchContext *context,
+void                 cdk_app_launch_context_set_timestamp (GdkAppLaunchContext *context,
                                                            guint32              timestamp);
 GDK_AVAILABLE_IN_ALL
-void                 gdk_app_launch_context_set_icon      (GdkAppLaunchContext *context,
+void                 cdk_app_launch_context_set_icon      (GdkAppLaunchContext *context,
                                                            GIcon               *icon);
 GDK_AVAILABLE_IN_ALL
-void                 gdk_app_launch_context_set_icon_name (GdkAppLaunchContext *context,
+void                 cdk_app_launch_context_set_icon_name (GdkAppLaunchContext *context,
                                                            const char          *icon_name);
 
 G_END_DECLS

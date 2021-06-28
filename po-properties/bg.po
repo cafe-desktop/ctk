@@ -22,144 +22,144 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../gdk/gdkapplaunchcontext.c:129 ../gdk/gdkcursor.c:134
-#: ../gdk/gdkdevicemanager.c:170
+#: ../cdk/cdkapplaunchcontext.c:129 ../cdk/cdkcursor.c:134
+#: ../cdk/cdkdevicemanager.c:170
 msgid "Display"
 msgstr "Дисплей"
 
-#: ../gdk/gdkcursor.c:126
+#: ../cdk/cdkcursor.c:126
 msgid "Cursor type"
 msgstr "Вид курсор"
 
-#: ../gdk/gdkcursor.c:127
+#: ../cdk/cdkcursor.c:127
 msgid "Standard cursor type"
 msgstr "Стандартен вид курсор"
 
-#: ../gdk/gdkcursor.c:135
+#: ../cdk/cdkcursor.c:135
 msgid "Display of this cursor"
 msgstr "Дисплеят, към който е този курсор"
 
-#: ../gdk/gdkdevice.c:109
+#: ../cdk/cdkdevice.c:109
 msgid "Device Display"
 msgstr "Дисплей"
 
-#: ../gdk/gdkdevice.c:110
+#: ../cdk/cdkdevice.c:110
 msgid "Display which the device belongs to"
 msgstr "Дисплеят, към който е устройството"
 
-#: ../gdk/gdkdevice.c:124
+#: ../cdk/cdkdevice.c:124
 msgid "Device manager"
 msgstr "Управление на устройства"
 
-#: ../gdk/gdkdevice.c:125
+#: ../cdk/cdkdevice.c:125
 msgid "Device manager which the device belongs to"
 msgstr "Управление на устройствата, което включва това устройство"
 
-#: ../gdk/gdkdevice.c:139 ../gdk/gdkdevice.c:140
+#: ../cdk/cdkdevice.c:139 ../cdk/cdkdevice.c:140
 msgid "Device name"
 msgstr "Име на устройство"
 
-#: ../gdk/gdkdevice.c:154
+#: ../cdk/cdkdevice.c:154
 msgid "Device type"
 msgstr "Вид на устройството"
 
-#: ../gdk/gdkdevice.c:155
+#: ../cdk/cdkdevice.c:155
 msgid "Device role in the device manager"
 msgstr "Роля на устройството в управлението на устройствата"
 
-#: ../gdk/gdkdevice.c:171
+#: ../cdk/cdkdevice.c:171
 msgid "Associated device"
 msgstr "Свързано устройство"
 
-#: ../gdk/gdkdevice.c:172
+#: ../cdk/cdkdevice.c:172
 msgid "Associated pointer or keyboard with this device"
 msgstr "Устройства за вход като мишки и клавиатури към това устройство"
 
-#: ../gdk/gdkdevice.c:185
+#: ../cdk/cdkdevice.c:185
 msgid "Input source"
 msgstr "Вход"
 
-#: ../gdk/gdkdevice.c:186
+#: ../cdk/cdkdevice.c:186
 msgid "Source type for the device"
 msgstr "Вид на входа на устройството"
 
-#: ../gdk/gdkdevice.c:201 ../gdk/gdkdevice.c:202
+#: ../cdk/cdkdevice.c:201 ../cdk/cdkdevice.c:202
 msgid "Input mode for the device"
 msgstr "Режим на входа на устройството"
 
-#: ../gdk/gdkdevice.c:217
+#: ../cdk/cdkdevice.c:217
 msgid "Whether the device has a cursor"
 msgstr "Дали устройството има показалец"
 
-#: ../gdk/gdkdevice.c:218
+#: ../cdk/cdkdevice.c:218
 msgid "Whether there is a visible cursor following device motion"
 msgstr "Дали има видим показалец, който следва движението на устройството"
 
-#: ../gdk/gdkdevice.c:232 ../gdk/gdkdevice.c:233
+#: ../cdk/cdkdevice.c:232 ../cdk/cdkdevice.c:233
 msgid "Number of axes in the device"
 msgstr "Брой оси на устройството"
 
-#: ../gdk/gdkdevicemanager.c:171
+#: ../cdk/cdkdevicemanager.c:171
 msgid "Display for the device manager"
 msgstr "Дисплей за управлението на устройства"
 
-#: ../gdk/gdkdisplaymanager.c:163
+#: ../cdk/cdkdisplaymanager.c:163
 msgid "Default Display"
 msgstr "Стандартен дисплей"
 
-#: ../gdk/gdkdisplaymanager.c:164
+#: ../cdk/cdkdisplaymanager.c:164
 msgid "The default display for GDK"
 msgstr "Стандартният за GDK дисплей"
 
-#: ../gdk/gdkscreen.c:91
+#: ../cdk/cdkscreen.c:91
 msgid "Font options"
 msgstr "Настройки на шрифт"
 
-#: ../gdk/gdkscreen.c:92
+#: ../cdk/cdkscreen.c:92
 msgid "The default font options for the screen"
 msgstr "Стандартни настройки на шрифт"
 
-#: ../gdk/gdkscreen.c:99
+#: ../cdk/cdkscreen.c:99
 msgid "Font resolution"
 msgstr "Разделителна способност за шрифт"
 
-#: ../gdk/gdkscreen.c:100
+#: ../cdk/cdkscreen.c:100
 msgid "The resolution for fonts on the screen"
 msgstr "Разделителната способност за шрифтовете на екрана"
 
-#: ../gdk/gdkwindow.c:384 ../gdk/gdkwindow.c:385
+#: ../cdk/cdkwindow.c:384 ../cdk/cdkwindow.c:385
 msgid "Cursor"
 msgstr "Курсор"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:116
+#: ../cdk/x11/cdkdevicemanager-xi2.c:116
 msgid "Opcode"
 msgstr "Код на операция"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:117
+#: ../cdk/x11/cdkdevicemanager-xi2.c:117
 msgid "Opcode for XInput2 requests"
 msgstr "Код на операция за заявки по XInput2"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:123
+#: ../cdk/x11/cdkdevicemanager-xi2.c:123
 msgid "Major"
 msgstr "Основен"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:124
+#: ../cdk/x11/cdkdevicemanager-xi2.c:124
 msgid "Major version number"
 msgstr "Основен номер на версията"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:130
+#: ../cdk/x11/cdkdevicemanager-xi2.c:130
 msgid "Minor"
 msgstr "Допълнителен"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:131
+#: ../cdk/x11/cdkdevicemanager-xi2.c:131
 msgid "Minor version number"
 msgstr "Допълнителен номер на версията"
 
-#: ../gdk/x11/gdkdevice-xi2.c:138
+#: ../cdk/x11/cdkdevice-xi2.c:138
 msgid "Device ID"
 msgstr "Идентификатор на устройство"
 
-#: ../gdk/x11/gdkdevice-xi2.c:139
+#: ../cdk/x11/cdkdevice-xi2.c:139
 msgid "Device identifier"
 msgstr "Идентификатор на устройство"
 

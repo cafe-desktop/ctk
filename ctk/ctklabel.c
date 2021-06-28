@@ -2759,7 +2759,7 @@ ctk_label_set_markup_internal (CtkLabel    *label,
     }
 
   if (accel_char != 0)
-    priv->mnemonic_keyval = gdk_keyval_to_lower (gdk_unicode_to_keyval (accel_char));
+    priv->mnemonic_keyval = cdk_keyval_to_lower (cdk_unicode_to_keyval (accel_char));
   else
     priv->mnemonic_keyval = GDK_KEY_VoidSymbol;
 }
@@ -4117,14 +4117,14 @@ ctk_label_size_allocate (CtkWidget     *widget,
     ctk_label_update_layout_width (label);
 
   if (priv->select_info && priv->select_info->window)
-    gdk_window_move_resize (priv->select_info->window,
+    cdk_window_move_resize (priv->select_info->window,
                             allocation->x,
                             allocation->y,
                             allocation->width,
                             allocation->height);
 
   ctk_label_get_ink_rect (label, &clip_rect);
-  gdk_rectangle_union (&clip_rect, &clip, &clip_rect);
+  cdk_rectangle_union (&clip_rect, &clip, &clip_rect);
   _ctk_widget_set_simple_clip (widget, &clip_rect);
 }
 
@@ -4149,16 +4149,16 @@ ctk_label_update_cursor (CtkLabel *label)
           display = ctk_widget_get_display (widget);
 
           if (priv->select_info->active_link)
-            cursor = gdk_cursor_new_from_name (display, "pointer");
+            cursor = cdk_cursor_new_from_name (display, "pointer");
           else if (priv->select_info->selectable)
-            cursor = gdk_cursor_new_from_name (display, "text");
+            cursor = cdk_cursor_new_from_name (display, "text");
           else
             cursor = NULL;
         }
       else
         cursor = NULL;
 
-      gdk_window_set_cursor (priv->select_info->window, cursor);
+      cdk_window_set_cursor (priv->select_info->window, cursor);
 
       if (cursor)
         g_object_unref (cursor);
@@ -4353,12 +4353,12 @@ ctk_label_render (CtkCssGadget *gadget,
               range[1] = tmp;
             }
 
-          clip = gdk_pango_layout_get_clip_region (priv->layout, lx, ly, range, 1);
+          clip = cdk_pango_layout_get_clip_region (priv->layout, lx, ly, range, 1);
 
           cairo_save (cr);
           ctk_style_context_save_to_node (context, info->selection_node);
 
-          gdk_cairo_region (cr, clip);
+          cdk_cairo_region (cr, clip);
           cairo_clip (cr);
 
           ctk_render_background (context, cr, x, y, width, height);
@@ -4400,9 +4400,9 @@ ctk_label_render (CtkCssGadget *gadget,
               cairo_save (cr);
               ctk_style_context_save_to_node (context, active_link->cssnode);
 
-              clip = gdk_pango_layout_get_clip_region (priv->layout, lx, ly, range, 1);
+              clip = cdk_pango_layout_get_clip_region (priv->layout, lx, ly, range, 1);
 
-              gdk_cairo_region (cr, clip);
+              cdk_cairo_region (cr, clip);
               cairo_clip (cr);
               cairo_region_destroy (clip);
 
@@ -4418,7 +4418,7 @@ ctk_label_render (CtkCssGadget *gadget,
               range[0] = focus_link->start;
               range[1] = focus_link->end;
 
-              clip = gdk_pango_layout_get_clip_region (priv->layout, lx, ly, range, 1);
+              clip = cdk_pango_layout_get_clip_region (priv->layout, lx, ly, range, 1);
               cairo_region_get_extents (clip, &rect);
 
               ctk_render_focus (context, cr, rect.x, rect.y, rect.width, rect.height);
@@ -4476,7 +4476,7 @@ separate_uline_pattern (const gchar  *str,
 	    {
 	      *pattern_dest++ = '_';
 	      if (*accel_key == GDK_KEY_VoidSymbol)
-		*accel_key = gdk_keyval_to_lower (gdk_unicode_to_keyval (c));
+		*accel_key = cdk_keyval_to_lower (cdk_unicode_to_keyval (c));
 	    }
 
 	  while (src < next_src)
@@ -4594,7 +4594,7 @@ ctk_label_map (CtkWidget *widget)
   CTK_WIDGET_CLASS (ctk_label_parent_class)->map (widget);
 
   if (priv->select_info)
-    gdk_window_show (priv->select_info->window);
+    cdk_window_show (priv->select_info->window);
 }
 
 static void
@@ -4605,7 +4605,7 @@ ctk_label_unmap (CtkWidget *widget)
 
   if (priv->select_info)
     {
-      gdk_window_hide (priv->select_info->window);
+      cdk_window_hide (priv->select_info->window);
 
       if (priv->select_info->popup_menu)
         {
@@ -4985,7 +4985,7 @@ ctk_label_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 
   if (info->active_link)
     {
-      if (gdk_event_triggers_context_menu (event))
+      if (cdk_event_triggers_context_menu (event))
         {
           info->link_clicked = 1;
           update_link_state (label);
@@ -5011,7 +5011,7 @@ ctk_label_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
   info->in_drag = FALSE;
   info->select_words = FALSE;
 
-  if (gdk_event_triggers_context_menu (event))
+  if (cdk_event_triggers_context_menu (event))
     ctk_label_do_popup (label, event);
   else if (button == GDK_BUTTON_PRIMARY)
     {
@@ -5181,7 +5181,7 @@ ctk_label_drag_gesture_begin (CtkGestureDrag *gesture,
 
   sequence = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
-  gdk_event_get_state (event, &state_mask);
+  cdk_event_get_state (event, &state_mask);
 
   if ((info->selection_anchor != info->selection_end) &&
       (state_mask & GDK_SHIFT_MASK))
@@ -5387,7 +5387,7 @@ ctk_label_motion (CtkWidget      *widget,
 {
   gdouble x, y;
 
-  gdk_event_get_coords ((GdkEvent *) event, &x, &y);
+  cdk_event_get_coords ((GdkEvent *) event, &x, &y);
   ctk_label_update_active_link (widget, x, y);
 
   return CTK_WIDGET_CLASS (ctk_label_parent_class)->motion_notify_event (widget, event);
@@ -5447,13 +5447,13 @@ ctk_label_create_window (CtkLabel *label)
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_NOREDIR;
   if (ctk_widget_is_sensitive (widget) && priv->select_info->selectable)
     {
-      attributes.cursor = gdk_cursor_new_for_display (ctk_widget_get_display (widget),
+      attributes.cursor = cdk_cursor_new_for_display (ctk_widget_get_display (widget),
 						      GDK_XTERM);
       attributes_mask |= GDK_WA_CURSOR;
     }
 
 
-  priv->select_info->window = gdk_window_new (ctk_widget_get_window (widget),
+  priv->select_info->window = cdk_window_new (ctk_widget_get_window (widget),
                                                &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->select_info->window);
 
@@ -5472,7 +5472,7 @@ ctk_label_destroy_window (CtkLabel *label)
     return;
 
   ctk_widget_unregister_window (CTK_WIDGET (label), priv->select_info->window);
-  gdk_window_destroy (priv->select_info->window);
+  cdk_window_destroy (priv->select_info->window);
   priv->select_info->window = NULL;
 }
 
@@ -5491,7 +5491,7 @@ ctk_label_ensure_select_info (CtkLabel *label)
 	ctk_label_create_window (label);
 
       if (ctk_widget_get_mapped (CTK_WIDGET (label)))
-        gdk_window_show (priv->select_info->window);
+        cdk_window_show (priv->select_info->window);
 
       priv->select_info->drag_gesture = ctk_gesture_drag_new (CTK_WIDGET (label));
       g_signal_connect (priv->select_info->drag_gesture, "drag-begin",
@@ -6179,8 +6179,8 @@ get_better_cursor (CtkLabel *label,
 		   gint      *y)
 {
   CtkLabelPrivate *priv = label->priv;
-  GdkKeymap *keymap = gdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (label)));
-  PangoDirection keymap_direction = gdk_keymap_get_direction (keymap);
+  GdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (label)));
+  PangoDirection keymap_direction = cdk_keymap_get_direction (keymap);
   PangoDirection cursor_direction = get_cursor_direction (label);
   gboolean split_cursor;
   PangoRectangle strong_pos, weak_pos;
@@ -6285,8 +6285,8 @@ ctk_label_move_visually (CtkLabel *label,
 	strong = TRUE;
       else
 	{
-	  GdkKeymap *keymap = gdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (label)));
-	  PangoDirection keymap_direction = gdk_keymap_get_direction (keymap);
+	  GdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (label)));
+	  PangoDirection keymap_direction = cdk_keymap_get_direction (keymap);
 
 	  strong = keymap_direction == get_cursor_direction (label);
 	}
@@ -6699,7 +6699,7 @@ ctk_label_do_popup (CtkLabel       *label,
 
   g_signal_emit (label, signals[POPULATE_POPUP], 0, menu);
 
-  if (event && gdk_event_triggers_context_menu (event))
+  if (event && cdk_event_triggers_context_menu (event))
     ctk_menu_popup_at_pointer (CTK_MENU (menu), event);
   else
     {

@@ -360,9 +360,9 @@ ctk_event_box_set_above_child (CtkEventBox *event_box,
           if (!ctk_widget_get_has_window (widget))
             {
               if (above_child)
-                gdk_window_raise (priv->event_window);
+                cdk_window_raise (priv->event_window);
               else
-                gdk_window_lower (priv->event_window);
+                cdk_window_lower (priv->event_window);
             }
           else
             {
@@ -423,7 +423,7 @@ ctk_event_box_realize (CtkWidget *widget)
 
       attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-      window = gdk_window_new (ctk_widget_get_parent_window (widget),
+      window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                &attributes, attributes_mask);
       ctk_widget_set_window (widget, window);
       ctk_widget_register_window (widget, window);
@@ -443,7 +443,7 @@ ctk_event_box_realize (CtkWidget *widget)
       else
         attributes_mask = 0;
 
-      priv->event_window = gdk_window_new (window,
+      priv->event_window = cdk_window_new (window,
                                            &attributes, attributes_mask);
       ctk_widget_register_window (widget, priv->event_window);
     }
@@ -457,7 +457,7 @@ ctk_event_box_unrealize (CtkWidget *widget)
   if (priv->event_window != NULL)
     {
       ctk_widget_unregister_window (widget, priv->event_window);
-      gdk_window_destroy (priv->event_window);
+      cdk_window_destroy (priv->event_window);
       priv->event_window = NULL;
     }
 
@@ -470,12 +470,12 @@ ctk_event_box_map (CtkWidget *widget)
   CtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
 
   if (priv->event_window != NULL && !priv->above_child)
-    gdk_window_show (priv->event_window);
+    cdk_window_show (priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_event_box_parent_class)->map (widget);
 
   if (priv->event_window != NULL && priv->above_child)
-    gdk_window_show (priv->event_window);
+    cdk_window_show (priv->event_window);
 }
 
 static void
@@ -484,7 +484,7 @@ ctk_event_box_unmap (CtkWidget *widget)
   CtkEventBoxPrivate *priv = CTK_EVENT_BOX (widget)->priv;
 
   if (priv->event_window != NULL)
-    gdk_window_hide (priv->event_window);
+    cdk_window_hide (priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_event_box_parent_class)->unmap (widget);
 }
@@ -577,14 +577,14 @@ ctk_event_box_size_allocate (CtkWidget     *widget,
       priv = CTK_EVENT_BOX (widget)->priv;
 
       if (priv->event_window != NULL)
-        gdk_window_move_resize (priv->event_window,
+        cdk_window_move_resize (priv->event_window,
                                 child_allocation.x,
                                 child_allocation.y,
                                 child_allocation.width,
                                 child_allocation.height);
 
       if (ctk_widget_get_has_window (widget))
-        gdk_window_move_resize (ctk_widget_get_window (widget),
+        cdk_window_move_resize (ctk_widget_get_window (widget),
                                 allocation->x,
                                 allocation->y,
                                 child_allocation.width,

@@ -272,7 +272,7 @@ ctk_tree_set_row_drag_data (CtkSelectionData *selection_data,
   g_return_val_if_fail (CTK_IS_TREE_MODEL (tree_model), FALSE);
   g_return_val_if_fail (path != NULL, FALSE);
 
-  if (ctk_selection_data_get_target (selection_data) != gdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
+  if (ctk_selection_data_get_target (selection_data) != cdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
     return FALSE;
   
   path_str = ctk_tree_path_to_string (path);
@@ -292,7 +292,7 @@ ctk_tree_set_row_drag_data (CtkSelectionData *selection_data,
   trd->model = tree_model;
   
   ctk_selection_data_set (selection_data,
-                          gdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"),
+                          cdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"),
                           8, /* bytes */
                           (void*)trd,
                           struct_size);
@@ -336,7 +336,7 @@ ctk_tree_get_row_drag_data (CtkSelectionData  *selection_data,
   if (path)
     *path = NULL;
 
-  if (ctk_selection_data_get_target (selection_data) != gdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
+  if (ctk_selection_data_get_target (selection_data) != cdk_atom_intern_static_string ("CTK_TREE_MODEL_ROW"))
     return FALSE;
 
   if (ctk_selection_data_get_length (selection_data) < 0)

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 #
-# Generate gdk.gresources.xml
+# Generate cdk.gresources.xml
 #
-# Usage: gen-gdk-gresources-xml SRCDIR_GDK [OUTPUT-FILE]
+# Usage: gen-cdk-gresources-xml SRCDIR_GDK [OUTPUT-FILE]
 
 import os, sys
 
@@ -10,7 +10,7 @@ srcdir = sys.argv[1]
 
 xml = '''<?xml version='1.0' encoding='UTF-8'?>
 <gresources>
-  <gresource prefix='/org/ctk/libgdk'>
+  <gresource prefix='/org/ctk/libcdk'>
 
 '''
 

@@ -303,7 +303,7 @@ _ctk_window_group_remove_device_grab (CtkWindowGroup *window_group,
   GdkDevice *other_device;
 
   priv = window_group->priv;
-  other_device = gdk_device_get_associated_device (device);
+  other_device = cdk_device_get_associated_device (device);
   list = priv->device_grabs;
 
   while (list)
@@ -355,7 +355,7 @@ ctk_window_group_get_current_device_grab (CtkWindowGroup *window_group,
 
   priv = window_group->priv;
   list = priv->device_grabs;
-  other_device = gdk_device_get_associated_device (device);
+  other_device = cdk_device_get_associated_device (device);
 
   while (list)
     {
@@ -381,7 +381,7 @@ _ctk_window_group_widget_is_blocked_for_device (CtkWindowGroup *window_group,
   GSList *list;
 
   priv = window_group->priv;
-  other_device = gdk_device_get_associated_device (device);
+  other_device = cdk_device_get_associated_device (device);
   list = priv->device_grabs;
 
   while (list)

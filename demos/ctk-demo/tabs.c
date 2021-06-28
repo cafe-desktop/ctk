@@ -4,7 +4,7 @@
  */
 
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 
 CtkWidget *
 do_tabs (CtkWidget *do_widget)

@@ -146,14 +146,14 @@ _ctk_xembed_send_message (GdkWindow        *recipient,
 	  
   g_return_if_fail (GDK_IS_WINDOW (recipient));
 
-  display = gdk_window_get_display (recipient);
+  display = cdk_window_get_display (recipient);
   CTK_NOTE (PLUGSOCKET,
 	    g_message ("Sending %s", _ctk_xembed_message_name (message)));
 
   memset (&xclient, 0, sizeof (xclient));
   xclient.window = GDK_WINDOW_XID (recipient);
   xclient.type = ClientMessage;
-  xclient.message_type = gdk_x11_get_xatom_by_name_for_display (display, "_XEMBED");
+  xclient.message_type = cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED");
   xclient.format = 32;
   xclient.data.l[0] = ctk_xembed_get_time ();
   xclient.data.l[1] = message;
@@ -161,11 +161,11 @@ _ctk_xembed_send_message (GdkWindow        *recipient,
   xclient.data.l[3] = data1;
   xclient.data.l[4] = data2;
 
-  gdk_x11_display_error_trap_push (display);
+  cdk_x11_display_error_trap_push (display);
   XSendEvent (GDK_WINDOW_XDISPLAY(recipient),
 	      GDK_WINDOW_XID (recipient),
 	      False, NoEventMask, (XEvent *)&xclient);
-  gdk_x11_display_error_trap_pop_ignored (display);
+  cdk_x11_display_error_trap_pop_ignored (display);
 }
 
 /**

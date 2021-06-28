@@ -2,8 +2,8 @@
 include $(top_srcdir)/Makefile.decl
 NULL =
 
-libgdkincludedir = $(includedir)/ctk-3.0/gdk
-libgdkbroadwayincludedir = $(includedir)/ctk-3.0/gdk/broadway
+libcdkincludedir = $(includedir)/ctk-3.0/cdk
+libcdkbroadwayincludedir = $(includedir)/ctk-3.0/cdk/broadway
 
 AM_CPPFLAGS =				\
 	-DG_LOG_DOMAIN=\"Gdk\"		\
@@ -11,27 +11,27 @@ AM_CPPFLAGS =				\
 	-DGDK_COMPILATION		\
 	-DGDK_DISABLE_DEPRECATION_WARNINGS \
 	-I$(top_srcdir)			\
-	-I$(top_srcdir)/gdk		\
-	-I$(top_builddir)/gdk		\
+	-I$(top_srcdir)/cdk		\
+	-I$(top_builddir)/cdk		\
 	$(GDK_HIDDEN_VISIBILITY_CFLAGS) \
 	$(CTK_DEBUG_FLAGS)		\
 	$(GDK_DEP_CFLAGS)
 
 LDADDS = $(GDK_DEP_LIBS) -lrt
 
-noinst_LTLIBRARIES = libgdk-broadway.la
+noinst_LTLIBRARIES = libcdk-broadway.la
 
 bin_PROGRAMS = broadwayd
 
-libgdkinclude_HEADERS = 	\
-	gdkbroadway.h
+libcdkinclude_HEADERS = 	\
+	cdkbroadway.h
 
-libgdkbroadwayinclude_HEADERS = 	\
-	gdkbroadwaydisplay.h		\
-	gdkbroadwaywindow.h		\
-	gdkbroadwaycursor.h		\
-	gdkbroadwaymonitor.h		\
-	gdkbroadwayvisual.h
+libcdkbroadwayinclude_HEADERS = 	\
+	cdkbroadwaydisplay.h		\
+	cdkbroadwaywindow.h		\
+	cdkbroadwaycursor.h		\
+	cdkbroadwaymonitor.h		\
+	cdkbroadwayvisual.h
 
 EXTRA_DIST += toarray.pl
 
@@ -53,36 +53,36 @@ broadway_built_private_headers =	\
 broadway_built_sources =		\
 	${broadway_built_private_headers}
 
-libgdk_broadway_la_SOURCES =		\
+libcdk_broadway_la_SOURCES =		\
 	${broadway_built_private_headers}\
-	gdkcursor-broadway.c	\
-	gdkdevice-broadway.h	\
-	gdkdevice-broadway.c	\
-	gdkdevicemanager-broadway.h \
-	gdkdevicemanager-broadway.c \
-	gdkdisplay-broadway.c	\
-	gdkdisplay-broadway.h	\
-	gdkdnd-broadway.c	\
-	gdkeventsource.c	\
-	gdkeventsource.h	\
-	gdkglobals-broadway.c	\
-	gdkkeys-broadway.c	\
-	gdkmonitor-broadway.c	\
-	gdkmonitor-broadway.h	\
-	gdkproperty-broadway.c	\
-	gdkscreen-broadway.c	\
-	gdkscreen-broadway.h	\
-	gdkselection-broadway.c	\
-	gdktestutils-broadway.c	\
-	gdkvisual-broadway.c	\
-	gdkwindow-broadway.c	\
-	gdkwindow-broadway.h	\
-	gdkprivate-broadway.h   \
-	gdkbroadway-server.h	\
-	gdkbroadway-server.c
+	cdkcursor-broadway.c	\
+	cdkdevice-broadway.h	\
+	cdkdevice-broadway.c	\
+	cdkdevicemanager-broadway.h \
+	cdkdevicemanager-broadway.c \
+	cdkdisplay-broadway.c	\
+	cdkdisplay-broadway.h	\
+	cdkdnd-broadway.c	\
+	cdkeventsource.c	\
+	cdkeventsource.h	\
+	cdkglobals-broadway.c	\
+	cdkkeys-broadway.c	\
+	cdkmonitor-broadway.c	\
+	cdkmonitor-broadway.h	\
+	cdkproperty-broadway.c	\
+	cdkscreen-broadway.c	\
+	cdkscreen-broadway.h	\
+	cdkselection-broadway.c	\
+	cdktestutils-broadway.c	\
+	cdkvisual-broadway.c	\
+	cdkwindow-broadway.c	\
+	cdkwindow-broadway.h	\
+	cdkprivate-broadway.h   \
+	cdkbroadway-server.h	\
+	cdkbroadway-server.c
 
 if OS_UNIX
-libgdk_broadway_la_LIBADD = \
+libcdk_broadway_la_LIBADD = \
 	$(SHM_LIBS)         \
 	$(NULL)
 endif
@@ -113,15 +113,15 @@ EXTRA_DIST += \
 	gen-c-array.py
 
 # ------------------- MSVC Build Items ----------------
-MSVCPROJS = gdk3-broadway broadwayd
+MSVCPROJS = cdk3-broadway broadwayd
 
-gdk3_broadway_FILES = $(libgdk_broadway_la_SOURCES)
-gdk3_broadway_EXCLUDES = dummy
-gdk3_broadway_HEADERS_DIR = $(libgdkbroadwayincludedir)
+cdk3_broadway_FILES = $(libcdk_broadway_la_SOURCES)
+cdk3_broadway_EXCLUDES = dummy
+cdk3_broadway_HEADERS_DIR = $(libcdkbroadwayincludedir)
 
-gdk3_broadway_HEADERS_INST = $(libgdkbroadwayinclude_HEADERS)
+cdk3_broadway_HEADERS_INST = $(libcdkbroadwayinclude_HEADERS)
 
-gdk3_broadway_HEADERS_EXCLUDES = dummy
+cdk3_broadway_HEADERS_EXCLUDES = dummy
 
 broadwayd_FILES = $(broadwayd_SOURCES)
 broadwayd_EXCLUDES = dummy
@@ -129,8 +129,8 @@ broadwayd_EXCLUDES = dummy
 include $(top_srcdir)/win32/Makefile.msvcproj
 
 dist-hook: \
-	$(top_builddir)/win32/vs9/gdk3-broadway.vcproj		\
+	$(top_builddir)/win32/vs9/cdk3-broadway.vcproj		\
 	$(top_builddir)/win32/vs9/broadwayd.vcproj		\
-	$(top_builddir)/win32/vs9/gdk3-broadway.headers
+	$(top_builddir)/win32/vs9/cdk3-broadway.headers
 
 -include $(top_srcdir)/git.mk

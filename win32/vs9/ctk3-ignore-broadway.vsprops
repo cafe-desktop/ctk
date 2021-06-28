@@ -8,7 +8,7 @@
 	<Tool
 		Name="VCLinkerTool"
 		LinkLibraryDependencies="false"
-		AdditionalDependencies="$(OutDir)\gdk3-win32.lib"
-		AdditionalOptions="/EXPORT:gdk_win32_display_manager_get_type"
+		AdditionalDependencies="$(OutDir)\cdk3-win32.lib"
+		AdditionalOptions="/EXPORT:cdk_win32_display_manager_get_type"
 	/>
 </VisualStudioPropertySheet>

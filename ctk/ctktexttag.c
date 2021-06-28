@@ -219,7 +219,7 @@ ctk_text_tag_class_init (CtkTextTagClass *klass)
                                                         CTK_PARAM_WRITABLE));
 
   /**
-   * CtkTextTag:background-gdk:
+   * CtkTextTag:background-cdk:
    *
    * Background color as a #GdkColor.
    *
@@ -227,7 +227,7 @@ ctk_text_tag_class_init (CtkTextTagClass *klass)
    */
   g_object_class_install_property (object_class,
                                    PROP_BACKGROUND_GDK,
-                                   g_param_spec_boxed ("background-gdk",
+                                   g_param_spec_boxed ("background-cdk",
                                                        P_("Background color"),
                                                        P_("Background color as a GdkColor"),
                                                        g_type_from_name ("GdkColor"),
@@ -265,7 +265,7 @@ ctk_text_tag_class_init (CtkTextTagClass *klass)
                                                         CTK_PARAM_WRITABLE));
 
   /**
-   * CtkTextTag:foreground-gdk:
+   * CtkTextTag:foreground-cdk:
    *
    * Foreground color as a #GdkColor.
    *
@@ -273,7 +273,7 @@ ctk_text_tag_class_init (CtkTextTagClass *klass)
    */
   g_object_class_install_property (object_class,
                                    PROP_FOREGROUND_GDK,
-                                   g_param_spec_boxed ("foreground-gdk",
+                                   g_param_spec_boxed ("foreground-cdk",
                                                        P_("Foreground color"),
                                                        P_("Foreground color as a GdkColor"),
                                                        g_type_from_name ("GdkColor"),
@@ -616,7 +616,7 @@ ctk_text_tag_class_init (CtkTextTagClass *klass)
                                                         CTK_PARAM_WRITABLE));
 
   /**
-   * CtkTextTag:paragraph-background-gdk:
+   * CtkTextTag:paragraph-background-cdk:
    *
    * The paragraph background color as a #GdkColor.
    *
@@ -626,7 +626,7 @@ ctk_text_tag_class_init (CtkTextTagClass *klass)
    */
   g_object_class_install_property (object_class,
                                    PROP_PARAGRAPH_BACKGROUND_GDK,
-                                   g_param_spec_boxed ("paragraph-background-gdk",
+                                   g_param_spec_boxed ("paragraph-background-cdk",
                                                        P_("Paragraph background color"),
                                                        P_("Paragraph background color as a GdkColor"),
                                                        g_type_from_name ("GdkColor"),
@@ -933,7 +933,7 @@ ctk_text_tag_finalize (GObject *object)
 }
 
 static void
-copy_rgba_to_gdk_color (GdkRGBA  *src,
+copy_rgba_to_cdk_color (GdkRGBA  *src,
 			GdkColor *dest)
 {
   dest->red   = CLAMP (src->red,   0.0, 1.0) * 65535.0;
@@ -942,7 +942,7 @@ copy_rgba_to_gdk_color (GdkRGBA  *src,
 }
 
 static void
-copy_gdk_color_to_rgba (GdkColor *src,
+copy_cdk_color_to_rgba (GdkColor *src,
 			GdkRGBA  *dest)
 {
   dest->red   = src->red / 65535.;
@@ -1017,7 +1017,7 @@ set_bg_rgba (CtkTextTag *tag, GdkRGBA *rgba)
   CtkTextTagPrivate *priv = tag->priv;
 
   if (priv->values->appearance.rgba[0])
-    gdk_rgba_free (priv->values->appearance.rgba[0]);
+    cdk_rgba_free (priv->values->appearance.rgba[0]);
 
   priv->values->appearance.rgba[0] = NULL;
 
@@ -1029,9 +1029,9 @@ set_bg_rgba (CtkTextTag *tag, GdkRGBA *rgba)
           g_object_notify (G_OBJECT (tag), "background-set");
         }
 
-      priv->values->appearance.rgba[0] = gdk_rgba_copy (rgba);
+      priv->values->appearance.rgba[0] = cdk_rgba_copy (rgba);
 
-      copy_rgba_to_gdk_color (rgba, &priv->values->appearance.bg_color);
+      copy_rgba_to_cdk_color (rgba, &priv->values->appearance.bg_color);
     }
   else
     {
@@ -1049,7 +1049,7 @@ set_fg_rgba (CtkTextTag *tag, GdkRGBA *rgba)
   CtkTextTagPrivate *priv = tag->priv;
 
   if (priv->values->appearance.rgba[1])
-    gdk_rgba_free (priv->values->appearance.rgba[1]);
+    cdk_rgba_free (priv->values->appearance.rgba[1]);
 
   priv->values->appearance.rgba[1] = NULL;
 
@@ -1061,9 +1061,9 @@ set_fg_rgba (CtkTextTag *tag, GdkRGBA *rgba)
           g_object_notify (G_OBJECT (tag), "foreground-set");
         }
 
-      priv->values->appearance.rgba[1] = gdk_rgba_copy (rgba);
+      priv->values->appearance.rgba[1] = cdk_rgba_copy (rgba);
 
-      copy_rgba_to_gdk_color (rgba, &priv->values->appearance.fg_color);
+      copy_rgba_to_cdk_color (rgba, &priv->values->appearance.fg_color);
     }
   else
     {
@@ -1081,11 +1081,11 @@ set_pg_bg_rgba (CtkTextTag *tag, GdkRGBA *rgba)
   CtkTextTagPrivate *priv = tag->priv;
 
   if (priv->values->pg_bg_rgba)
-    gdk_rgba_free (priv->values->pg_bg_rgba);
+    cdk_rgba_free (priv->values->pg_bg_rgba);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (priv->values->pg_bg_color)
-    gdk_color_free (priv->values->pg_bg_color);
+    cdk_color_free (priv->values->pg_bg_color);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   priv->values->pg_bg_rgba = NULL;
@@ -1101,11 +1101,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
           g_object_notify (G_OBJECT (tag), "paragraph-background-set");
         }
 
-      priv->values->pg_bg_rgba = gdk_rgba_copy (rgba);
+      priv->values->pg_bg_rgba = cdk_rgba_copy (rgba);
 
-      copy_rgba_to_gdk_color (rgba, &color);
+      copy_rgba_to_cdk_color (rgba, &color);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      priv->values->pg_bg_color = gdk_color_copy (&color);
+      priv->values->pg_bg_color = cdk_color_copy (&color);
 G_GNUC_END_IGNORE_DEPRECATIONS
     }
   else
@@ -1126,7 +1126,7 @@ set_bg_color (CtkTextTag *tag, GdkColor *color)
     {
       GdkRGBA rgba;
 
-      copy_gdk_color_to_rgba (color, &rgba);
+      copy_cdk_color_to_rgba (color, &rgba);
       set_bg_rgba (tag, &rgba);
     }
   else
@@ -1140,7 +1140,7 @@ set_fg_color (CtkTextTag *tag, GdkColor *color)
     {
       GdkRGBA rgba;
 
-      copy_gdk_color_to_rgba (color, &rgba);
+      copy_cdk_color_to_rgba (color, &rgba);
       set_fg_rgba (tag, &rgba);
     }
   else
@@ -1154,7 +1154,7 @@ set_pg_bg_color (CtkTextTag *tag, GdkColor *color)
     {
       GdkRGBA rgba;
 
-      copy_gdk_color_to_rgba (color, &rgba);
+      copy_cdk_color_to_rgba (color, &rgba);
       set_pg_bg_rgba (tag, &rgba);
     }
   else
@@ -1345,12 +1345,12 @@ ctk_text_tag_set_property (GObject      *object,
 
         if (!g_value_get_string (value))
           set_bg_rgba (text_tag, NULL);       /* reset background_set to FALSE */
-        else if (gdk_rgba_parse (&rgba, g_value_get_string (value)))
+        else if (cdk_rgba_parse (&rgba, g_value_get_string (value)))
           set_bg_rgba (text_tag, &rgba);
         else
           g_warning ("Don't know color '%s'", g_value_get_string (value));
 
-        g_object_notify (object, "background-gdk");
+        g_object_notify (object, "background-cdk");
       }
       break;
 
@@ -1360,12 +1360,12 @@ ctk_text_tag_set_property (GObject      *object,
 
         if (!g_value_get_string (value))
           set_fg_rgba (text_tag, NULL);       /* reset to foreground_set to FALSE */
-        else if (gdk_rgba_parse (&rgba, g_value_get_string (value)))
+        else if (cdk_rgba_parse (&rgba, g_value_get_string (value)))
           set_fg_rgba (text_tag, &rgba);
         else
           g_warning ("Don't know color '%s'", g_value_get_string (value));
 
-        g_object_notify (object, "foreground-gdk");
+        g_object_notify (object, "foreground-cdk");
       }
       break;
 
@@ -1632,12 +1632,12 @@ ctk_text_tag_set_property (GObject      *object,
 
         if (!g_value_get_string (value))
           set_pg_bg_rgba (text_tag, NULL);       /* reset paragraph_background_set to FALSE */
-        else if (gdk_rgba_parse (&rgba, g_value_get_string (value)))
+        else if (cdk_rgba_parse (&rgba, g_value_get_string (value)))
           set_pg_bg_rgba (text_tag, &rgba);
         else
           g_warning ("Don't know color '%s'", g_value_get_string (value));
 
-        g_object_notify (object, "paragraph-background-gdk");
+        g_object_notify (object, "paragraph-background-cdk");
       }
       break;
 
@@ -2157,7 +2157,7 @@ ctk_text_tag_get_property (GObject      *object,
     case PROP_BACKGROUND:
     case PROP_FOREGROUND:
     case PROP_PARAGRAPH_BACKGROUND:
-      g_warning ("'foreground', 'background' and 'paragraph_background' properties are not readable, use 'foreground_gdk', 'background_gdk' and 'paragraph_background_gdk'");
+      g_warning ("'foreground', 'background' and 'paragraph_background' properties are not readable, use 'foreground_cdk', 'background_cdk' and 'paragraph_background_cdk'");
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);

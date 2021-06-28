@@ -19,7 +19,7 @@
 
 #include <string.h>
 
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 #include "ctkimcontextthai.h"
 #include "thai-charprop.h"
 
@@ -302,7 +302,7 @@ ctk_im_context_thai_filter_keypress (CtkIMContext *context,
   prev_char = get_previous_char (context_thai, -1);
   if (!prev_char)
     prev_char = ' ';
-  new_char = gdk_keyval_to_unicode (event->keyval);
+  new_char = cdk_keyval_to_unicode (event->keyval);
   is_reject = TRUE;
   isc_mode = ctk_im_context_thai_get_isc_mode (context_thai);
   if (thai_is_accept (new_char, prev_char, isc_mode))
@@ -336,8 +336,8 @@ ctk_im_context_thai_filter_keypress (CtkIMContext *context,
   if (is_reject)
     {
       /* reject character */
-      GdkDisplay *display = gdk_display_get_default ();
-      gdk_display_beep (display);
+      GdkDisplay *display = cdk_display_get_default ();
+      cdk_display_beep (display);
     }
   return TRUE;
 }

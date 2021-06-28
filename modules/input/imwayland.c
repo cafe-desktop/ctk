@@ -25,7 +25,7 @@
 #include "ctk/ctkintl.h"
 #include "ctk/ctkimmodule.h"
 
-#include "gdk/wayland/gdkwayland.h"
+#include "cdk/wayland/cdkwayland.h"
 #include "text-input-unstable-v3-client-protocol.h"
 
 typedef struct _CtkIMContextWaylandGlobal CtkIMContextWaylandGlobal;
@@ -363,7 +363,7 @@ notify_cursor_location (CtkIMContextWayland *context)
     return;
 
   rect = context->cursor_rect;
-  gdk_window_get_root_coords (context->window, rect.x, rect.y,
+  cdk_window_get_root_coords (context->window, rect.x, rect.y,
                               &rect.x, &rect.y);
 
   zwp_text_input_v3_set_cursor_rectangle (global->text_input,
@@ -623,7 +623,7 @@ ctk_im_context_wayland_set_client_window (CtkIMContext *context,
     return;
 
   if (window)
-    gdk_window_get_user_data (window, (gpointer*) &widget);
+    cdk_window_get_user_data (window, (gpointer*) &widget);
 
   if (context_wayland->widget && context_wayland->widget != widget)
     g_clear_object (&context_wayland->gesture);
@@ -692,7 +692,7 @@ registry_handle_global (void               *data,
                         uint32_t            version)
 {
   CtkIMContextWaylandGlobal *global = data;
-  GdkSeat *seat = gdk_display_get_default_seat (gdk_display_get_default ());
+  GdkSeat *seat = cdk_display_get_default_seat (cdk_display_get_default ());
 
   if (strcmp (interface, "zwp_text_input_manager_v3") == 0)
     {
@@ -702,7 +702,7 @@ registry_handle_global (void               *data,
                           &zwp_text_input_manager_v3_interface, 1);
       global->text_input =
         zwp_text_input_manager_v3_get_text_input (global->text_input_manager,
-                                                  gdk_wayland_seat_get_wl_seat (seat));
+                                                  cdk_wayland_seat_get_wl_seat (seat));
       global->serial = 0;
       zwp_text_input_v3_add_listener (global->text_input,
                                       &text_input_listener, global);
@@ -734,7 +734,7 @@ ctk_im_context_wayland_global_init (GdkDisplay *display)
   g_return_if_fail (global == NULL);
 
   global = g_new0 (CtkIMContextWaylandGlobal, 1);
-  global->display = gdk_wayland_display_get_wl_display (display);
+  global->display = cdk_wayland_display_get_wl_display (display);
   global->registry = wl_display_get_registry (global->display);
 
   wl_registry_add_listener (global->registry, &registry_listener, global);
@@ -925,7 +925,7 @@ ctk_im_context_wayland_register_type (GTypeModule *module)
 MODULE_ENTRY (void, init) (GTypeModule * module)
 {
   ctk_im_context_wayland_register_type (module);
-  ctk_im_context_wayland_global_init (gdk_display_get_default ());
+  ctk_im_context_wayland_global_init (cdk_display_get_default ());
 }
 
 MODULE_ENTRY (void, exit) (void)

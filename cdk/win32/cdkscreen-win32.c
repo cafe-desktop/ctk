@@ -19,14 +19,14 @@
 
 #define _WIN32_WINNT 0x0600
 
-#include "gdk.h"
-#include "gdkprivate-win32.h"
-#include "gdkscreenprivate.h"
-#include "gdkwin32screen.h"
-#include "gdkdisplayprivate.h"
-#include "gdkvisualprivate.h"
-#include "gdkdisplay-win32.h"
-#include "gdkmonitor-win32.h"
+#include "cdk.h"
+#include "cdkprivate-win32.h"
+#include "cdkscreenprivate.h"
+#include "cdkwin32screen.h"
+#include "cdkdisplayprivate.h"
+#include "cdkvisualprivate.h"
+#include "cdkdisplay-win32.h"
+#include "cdkmonitor-win32.h"
 
 #include <dwmapi.h>
 
@@ -49,7 +49,7 @@ struct _GdkWin32ScreenClass
   GdkScreenClass parent_class;
 };
 
-G_DEFINE_TYPE (GdkWin32Screen, gdk_win32_screen, GDK_TYPE_SCREEN)
+G_DEFINE_TYPE (GdkWin32Screen, cdk_win32_screen, GDK_TYPE_SCREEN)
 
 static gint
 get_color_precision (gulong mask)
@@ -81,9 +81,9 @@ init_visual (GdkScreen *screen,
   } bmi;
   HBITMAP hbm;
 
-  const gint rastercaps = GetDeviceCaps (_gdk_display_hdc, RASTERCAPS);
-  const int numcolors = GetDeviceCaps (_gdk_display_hdc, NUMCOLORS);
-  gint bitspixel = GetDeviceCaps (_gdk_display_hdc, BITSPIXEL);
+  const gint rastercaps = GetDeviceCaps (_cdk_display_hdc, RASTERCAPS);
+  const int numcolors = GetDeviceCaps (_cdk_display_hdc, NUMCOLORS);
+  gint bitspixel = GetDeviceCaps (_cdk_display_hdc, BITSPIXEL);
   gint map_entries = 0;
 
   visual = g_object_new (GDK_TYPE_VISUAL, NULL);
@@ -91,16 +91,16 @@ init_visual (GdkScreen *screen,
 
   if (rastercaps & RC_PALETTE)
     {
-      const int sizepalette = GetDeviceCaps (_gdk_display_hdc, SIZEPALETTE);
+      const int sizepalette = GetDeviceCaps (_cdk_display_hdc, SIZEPALETTE);
       gchar *max_colors = getenv ("GDK_WIN32_MAX_COLORS");
       visual->type = GDK_VISUAL_PSEUDO_COLOR;
 
       g_assert (sizepalette == 256);
 
       if (max_colors != NULL)
-        _gdk_max_colors = atoi (max_colors);
+        _cdk_max_colors = atoi (max_colors);
 
-      map_entries = _gdk_max_colors;
+      map_entries = _cdk_max_colors;
 
       if (map_entries >= 16 && map_entries < sizepalette)
         {
@@ -162,10 +162,10 @@ init_visual (GdkScreen *screen,
       memset (&bmi, 0, sizeof (bmi));
       bmi.bi.biSize = sizeof (bmi.bi);
 
-      hbm = CreateCompatibleBitmap (_gdk_display_hdc, 1, 1);
-      GetDIBits (_gdk_display_hdc, hbm, 0, 1, NULL,
+      hbm = CreateCompatibleBitmap (_cdk_display_hdc, 1, 1);
+      GetDIBits (_cdk_display_hdc, hbm, 0, 1, NULL,
                  (BITMAPINFO *) &bmi, DIB_RGB_COLORS);
-      GetDIBits (_gdk_display_hdc, hbm, 0, 1, NULL,
+      GetDIBits (_cdk_display_hdc, hbm, 0, 1, NULL,
                  (BITMAPINFO *) &bmi, DIB_RGB_COLORS);
       DeleteObject (hbm);
 
@@ -228,7 +228,7 @@ init_visual (GdkScreen *screen,
       visual->blue_mask  = 0x000000FF;
     }
   else
-    g_error ("_gdk_visual_init: unsupported BITSPIXEL: %d\n", bitspixel);
+    g_error ("_cdk_visual_init: unsupported BITSPIXEL: %d\n", bitspixel);
 
   visual->depth = bitspixel;
   visual->byte_order = GDK_LSB_FIRST;
@@ -256,23 +256,23 @@ init_root_window_size (GdkWin32Screen *screen)
 {
   GdkRectangle result;
   int i;
-  GdkDisplay *display = _gdk_display;
+  GdkDisplay *display = _cdk_display;
   int monitor_count;
   GdkMonitor *monitor;
   gboolean changed;
   GdkWindowImplWin32 *root_impl;
 
-  monitor_count = gdk_display_get_n_monitors (display);
-  monitor = gdk_display_get_monitor (display, 0);
-  gdk_monitor_get_geometry (monitor, &result);
+  monitor_count = cdk_display_get_n_monitors (display);
+  monitor = cdk_display_get_monitor (display, 0);
+  cdk_monitor_get_geometry (monitor, &result);
 
   for (i = 1; i < monitor_count; i++)
   {
     GdkRectangle rect;
 
-    monitor = gdk_display_get_monitor (display, i);
-    gdk_monitor_get_geometry (monitor, &rect);
-    gdk_rectangle_union (&result, &rect, &result);
+    monitor = cdk_display_get_monitor (display, i);
+    cdk_monitor_get_geometry (monitor, &rect);
+    cdk_rectangle_union (&result, &rect, &result);
   }
 
   changed = screen->root_window->width != result.width ||
@@ -300,13 +300,13 @@ init_root_window (GdkWin32Screen *screen_win32)
 
   g_assert (screen_win32->root_window == NULL);
 
-  window = _gdk_display_create_window (_gdk_display);
+  window = _cdk_display_create_window (_cdk_display);
   window->impl = g_object_new (GDK_TYPE_WINDOW_IMPL_WIN32, NULL);
   impl_win32 = GDK_WINDOW_IMPL_WIN32 (window->impl);
   impl_win32->wrapper = window;
 
   window->impl_window = window;
-  window->visual = gdk_screen_get_system_visual (screen);
+  window->visual = cdk_screen_get_system_visual (screen);
 
   window->window_type = GDK_WINDOW_ROOT;
   window->depth = window->visual->depth;
@@ -321,10 +321,10 @@ init_root_window (GdkWin32Screen *screen_win32)
   window->abs_y = 0;
   /* width and height already initialised in init_root_window_size() */
   window->viewable = TRUE;
-  win32_display = GDK_WIN32_DISPLAY (_gdk_display);
+  win32_display = GDK_WIN32_DISPLAY (_cdk_display);
 
   if (win32_display->dpi_aware_type != PROCESS_DPI_UNAWARE)
-    impl_win32->window_scale = _gdk_win32_display_get_monitor_scale_factor (win32_display,
+    impl_win32->window_scale = _cdk_win32_display_get_monitor_scale_factor (win32_display,
                                                                             NULL,
                                                                             impl_win32->handle,
                                                                             NULL);
@@ -334,7 +334,7 @@ init_root_window (GdkWin32Screen *screen_win32)
   impl_win32->unscaled_width = window->width * impl_win32->window_scale;
   impl_win32->unscaled_height = window->height * impl_win32->window_scale;
 
-  gdk_win32_handle_table_insert ((HANDLE *) &impl_win32->handle, window);
+  cdk_win32_handle_table_insert ((HANDLE *) &impl_win32->handle, window);
 
   GDK_NOTE (MISC, g_print ("screen->root_window=%p\n", window));
 
@@ -342,10 +342,10 @@ init_root_window (GdkWin32Screen *screen_win32)
 }
 
 static void
-gdk_win32_screen_init (GdkWin32Screen *win32_screen)
+cdk_win32_screen_init (GdkWin32Screen *win32_screen)
 {
   GdkScreen *screen = GDK_SCREEN (win32_screen);
-  _gdk_win32_screen_set_font_resolution (win32_screen);
+  _cdk_win32_screen_set_font_resolution (win32_screen);
 
   win32_screen->system_visual = init_visual (screen, FALSE);
   win32_screen->rgba_visual = init_visual (screen, TRUE);
@@ -353,7 +353,7 @@ gdk_win32_screen_init (GdkWin32Screen *win32_screen)
   win32_screen->available_visual_depths[0] = win32_screen->rgba_visual->depth;
   win32_screen->available_visual_types[0] = win32_screen->rgba_visual->type;
 
-  _gdk_win32_display_init_monitors (GDK_WIN32_DISPLAY (_gdk_display));
+  _cdk_win32_display_init_monitors (GDK_WIN32_DISPLAY (_cdk_display));
   init_root_window (win32_screen);
 
   /* On Windows 8 and later, DWM (composition) is always enabled */
@@ -361,11 +361,11 @@ gdk_win32_screen_init (GdkWin32Screen *win32_screen)
 }
 
 void
-_gdk_win32_screen_on_displaychange_event (GdkWin32Screen *screen)
+_cdk_win32_screen_on_displaychange_event (GdkWin32Screen *screen)
 {
   gboolean monitors_changed;
 
-  monitors_changed = _gdk_win32_display_init_monitors (GDK_WIN32_DISPLAY (_gdk_display));
+  monitors_changed = _cdk_win32_display_init_monitors (GDK_WIN32_DISPLAY (_cdk_display));
 
   if (init_root_window_size (screen))
     g_signal_emit_by_name (screen, "size-changed");
@@ -375,7 +375,7 @@ _gdk_win32_screen_on_displaychange_event (GdkWin32Screen *screen)
 }
 
 void
-_gdk_win32_screen_set_font_resolution (GdkWin32Screen *win32_screen)
+_cdk_win32_screen_set_font_resolution (GdkWin32Screen *win32_screen)
 {
   GdkScreen *screen = GDK_SCREEN (win32_screen);
   int logpixelsx = -1;
@@ -391,8 +391,8 @@ _gdk_win32_screen_set_font_resolution (GdkWin32Screen *win32_screen)
   else
     {
       gint dpi = -1;
-      GdkWin32Display *win32_display = GDK_WIN32_DISPLAY (gdk_screen_get_display (screen));
-      guint scale = _gdk_win32_display_get_monitor_scale_factor (win32_display, NULL, NULL, &dpi);
+      GdkWin32Display *win32_display = GDK_WIN32_DISPLAY (cdk_screen_get_display (screen));
+      guint scale = _cdk_win32_display_get_monitor_scale_factor (win32_display, NULL, NULL, &dpi);
 
       /* If we have a scale that is at least 2, don't scale up the fonts */
       if (scale >= 2)
@@ -402,61 +402,61 @@ _gdk_win32_screen_set_font_resolution (GdkWin32Screen *win32_screen)
     }
 
   if (logpixelsx > 0)
-    _gdk_screen_set_resolution (screen, logpixelsx);
+    _cdk_screen_set_resolution (screen, logpixelsx);
 }
 
 static GdkDisplay *
-gdk_win32_screen_get_display (GdkScreen *screen)
+cdk_win32_screen_get_display (GdkScreen *screen)
 {
-  return _gdk_display;
+  return _cdk_display;
 }
 
 static gint
-gdk_win32_screen_get_width (GdkScreen *screen)
+cdk_win32_screen_get_width (GdkScreen *screen)
 {
   return GDK_WIN32_SCREEN (screen)->root_window->width;
 }
 
 static gint
-gdk_win32_screen_get_height (GdkScreen *screen)
+cdk_win32_screen_get_height (GdkScreen *screen)
 {
   return GDK_WIN32_SCREEN (screen)->root_window->height;
 }
 
 static gint
-gdk_win32_screen_get_width_mm (GdkScreen *screen)
+cdk_win32_screen_get_width_mm (GdkScreen *screen)
 {
-  return (double) gdk_screen_get_width (screen) / GetDeviceCaps (_gdk_display_hdc, LOGPIXELSX) * 25.4;
+  return (double) cdk_screen_get_width (screen) / GetDeviceCaps (_cdk_display_hdc, LOGPIXELSX) * 25.4;
 }
 
 static gint
-gdk_win32_screen_get_height_mm (GdkScreen *screen)
+cdk_win32_screen_get_height_mm (GdkScreen *screen)
 {
-  return (double) gdk_screen_get_height (screen) / GetDeviceCaps (_gdk_display_hdc, LOGPIXELSY) * 25.4;
+  return (double) cdk_screen_get_height (screen) / GetDeviceCaps (_cdk_display_hdc, LOGPIXELSY) * 25.4;
 }
 
 static GdkWindow *
-gdk_win32_screen_get_root_window (GdkScreen *screen)
+cdk_win32_screen_get_root_window (GdkScreen *screen)
 {
   return GDK_WIN32_SCREEN (screen)->root_window;
 }
 
 static gint
-gdk_win32_screen_get_number (GdkScreen *screen)
+cdk_win32_screen_get_number (GdkScreen *screen)
 {
-  g_return_val_if_fail (screen == gdk_display_get_default_screen (gdk_display_get_default ()), 0);
+  g_return_val_if_fail (screen == cdk_display_get_default_screen (cdk_display_get_default ()), 0);
 
   return 0;
 }
 
 static gchar *
-gdk_win32_screen_make_display_name (GdkScreen *screen)
+cdk_win32_screen_make_display_name (GdkScreen *screen)
 {
-  return g_strdup (gdk_display_get_name (_gdk_display));
+  return g_strdup (cdk_display_get_name (_cdk_display));
 }
 
 static GdkWindow *
-gdk_win32_screen_get_active_window (GdkScreen *screen)
+cdk_win32_screen_get_active_window (GdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -464,7 +464,7 @@ gdk_win32_screen_get_active_window (GdkScreen *screen)
 }
 
 static GList *
-gdk_win32_screen_get_window_stack (GdkScreen *screen)
+cdk_win32_screen_get_window_stack (GdkScreen *screen)
 {
   g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
 
@@ -472,7 +472,7 @@ gdk_win32_screen_get_window_stack (GdkScreen *screen)
 }
 
 static gboolean
-gdk_win32_screen_is_composited (GdkScreen *screen)
+cdk_win32_screen_is_composited (GdkScreen *screen)
 {
   if (GDK_WIN32_SCREEN (screen)->always_composited)
     return TRUE;
@@ -487,37 +487,37 @@ gdk_win32_screen_is_composited (GdkScreen *screen)
 }
 
 static gint
-gdk_win32_screen_visual_get_best_depth (GdkScreen *screen)
+cdk_win32_screen_visual_get_best_depth (GdkScreen *screen)
 {
   return GDK_WIN32_SCREEN (screen)->available_visual_depths[0];
 }
 
 static GdkVisualType
-gdk_win32_screen_visual_get_best_type (GdkScreen *screen)
+cdk_win32_screen_visual_get_best_type (GdkScreen *screen)
 {
   return GDK_WIN32_SCREEN (screen)->available_visual_types[0];
 }
 
 static GdkVisual *
-gdk_win32_screen_get_system_visual (GdkScreen *screen)
+cdk_win32_screen_get_system_visual (GdkScreen *screen)
 {
   return GDK_WIN32_SCREEN (screen)->system_visual;
 }
 
 static GdkVisual *
-gdk_win32_screen_get_rgba_visual (GdkScreen *screen)
+cdk_win32_screen_get_rgba_visual (GdkScreen *screen)
 {
   return GDK_WIN32_SCREEN (screen)->rgba_visual;
 }
 
 static GdkVisual*
-gdk_win32_screen_visual_get_best (GdkScreen *screen)
+cdk_win32_screen_visual_get_best (GdkScreen *screen)
 {
   return GDK_WIN32_SCREEN (screen)->rgba_visual;
 }
 
 static GdkVisual *
-gdk_win32_screen_visual_get_best_with_depth (GdkScreen *screen,
+cdk_win32_screen_visual_get_best_with_depth (GdkScreen *screen,
                                              gint       depth)
 {
   GdkWin32Screen *win32_screen = GDK_WIN32_SCREEN (screen);
@@ -531,7 +531,7 @@ gdk_win32_screen_visual_get_best_with_depth (GdkScreen *screen,
 }
 
 static GdkVisual *
-gdk_win32_screen_visual_get_best_with_type (GdkScreen     *screen,
+cdk_win32_screen_visual_get_best_with_type (GdkScreen     *screen,
                                             GdkVisualType  visual_type)
 {
   GdkWin32Screen *win32_screen = GDK_WIN32_SCREEN (screen);
@@ -545,7 +545,7 @@ gdk_win32_screen_visual_get_best_with_type (GdkScreen     *screen,
 }
 
 static GdkVisual *
-gdk_win32_screen_visual_get_best_with_both (GdkScreen     *screen,
+cdk_win32_screen_visual_get_best_with_both (GdkScreen     *screen,
                                             gint           depth,
                                             GdkVisualType  visual_type)
 {
@@ -560,7 +560,7 @@ gdk_win32_screen_visual_get_best_with_both (GdkScreen     *screen,
 }
 
 static void
-gdk_win32_screen_query_depths (GdkScreen  *screen,
+cdk_win32_screen_query_depths (GdkScreen  *screen,
                                gint      **depths,
                                gint       *count)
 {
@@ -569,7 +569,7 @@ gdk_win32_screen_query_depths (GdkScreen  *screen,
 }
 
 static void
-gdk_win32_screen_query_visual_types (GdkScreen      *screen,
+cdk_win32_screen_query_visual_types (GdkScreen      *screen,
                                      GdkVisualType **visual_types,
                                      gint           *count)
 {
@@ -578,7 +578,7 @@ gdk_win32_screen_query_visual_types (GdkScreen      *screen,
 }
 
 static GList *
-gdk_win32_screen_list_visuals (GdkScreen *screen)
+cdk_win32_screen_list_visuals (GdkScreen *screen)
 {
   GdkWin32Screen *win32_screen = GDK_WIN32_SCREEN (screen);
   GList *result = NULL;
@@ -590,40 +590,40 @@ gdk_win32_screen_list_visuals (GdkScreen *screen)
 }
 
 static void
-gdk_win32_screen_finalize (GObject *object)
+cdk_win32_screen_finalize (GObject *object)
 {
-  G_OBJECT_CLASS (gdk_win32_screen_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_win32_screen_parent_class)->finalize (object);
 }
 
 static void
-gdk_win32_screen_class_init (GdkWin32ScreenClass *klass)
+cdk_win32_screen_class_init (GdkWin32ScreenClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GdkScreenClass *screen_class = GDK_SCREEN_CLASS (klass);
 
-  object_class->finalize = gdk_win32_screen_finalize;
+  object_class->finalize = cdk_win32_screen_finalize;
 
-  screen_class->get_display = gdk_win32_screen_get_display;
-  screen_class->get_width = gdk_win32_screen_get_width;
-  screen_class->get_height = gdk_win32_screen_get_height;
-  screen_class->get_width_mm = gdk_win32_screen_get_width_mm;
-  screen_class->get_height_mm = gdk_win32_screen_get_height_mm;
-  screen_class->get_number = gdk_win32_screen_get_number;
-  screen_class->get_root_window = gdk_win32_screen_get_root_window;
-  screen_class->is_composited = gdk_win32_screen_is_composited;
-  screen_class->make_display_name = gdk_win32_screen_make_display_name;
-  screen_class->get_active_window = gdk_win32_screen_get_active_window;
-  screen_class->get_window_stack = gdk_win32_screen_get_window_stack;
-  screen_class->get_setting = _gdk_win32_screen_get_setting;
-  screen_class->get_system_visual = gdk_win32_screen_get_system_visual;
-  screen_class->get_rgba_visual = gdk_win32_screen_get_rgba_visual;
-  screen_class->visual_get_best_depth = gdk_win32_screen_visual_get_best_depth;
-  screen_class->visual_get_best_type = gdk_win32_screen_visual_get_best_type;
-  screen_class->visual_get_best = gdk_win32_screen_visual_get_best;
-  screen_class->visual_get_best_with_depth = gdk_win32_screen_visual_get_best_with_depth;
-  screen_class->visual_get_best_with_type = gdk_win32_screen_visual_get_best_with_type;
-  screen_class->visual_get_best_with_both = gdk_win32_screen_visual_get_best_with_both;
-  screen_class->query_depths = gdk_win32_screen_query_depths;
-  screen_class->query_visual_types = gdk_win32_screen_query_visual_types;
-  screen_class->list_visuals = gdk_win32_screen_list_visuals;
+  screen_class->get_display = cdk_win32_screen_get_display;
+  screen_class->get_width = cdk_win32_screen_get_width;
+  screen_class->get_height = cdk_win32_screen_get_height;
+  screen_class->get_width_mm = cdk_win32_screen_get_width_mm;
+  screen_class->get_height_mm = cdk_win32_screen_get_height_mm;
+  screen_class->get_number = cdk_win32_screen_get_number;
+  screen_class->get_root_window = cdk_win32_screen_get_root_window;
+  screen_class->is_composited = cdk_win32_screen_is_composited;
+  screen_class->make_display_name = cdk_win32_screen_make_display_name;
+  screen_class->get_active_window = cdk_win32_screen_get_active_window;
+  screen_class->get_window_stack = cdk_win32_screen_get_window_stack;
+  screen_class->get_setting = _cdk_win32_screen_get_setting;
+  screen_class->get_system_visual = cdk_win32_screen_get_system_visual;
+  screen_class->get_rgba_visual = cdk_win32_screen_get_rgba_visual;
+  screen_class->visual_get_best_depth = cdk_win32_screen_visual_get_best_depth;
+  screen_class->visual_get_best_type = cdk_win32_screen_visual_get_best_type;
+  screen_class->visual_get_best = cdk_win32_screen_visual_get_best;
+  screen_class->visual_get_best_with_depth = cdk_win32_screen_visual_get_best_with_depth;
+  screen_class->visual_get_best_with_type = cdk_win32_screen_visual_get_best_with_type;
+  screen_class->visual_get_best_with_both = cdk_win32_screen_visual_get_best_with_both;
+  screen_class->query_depths = cdk_win32_screen_query_depths;
+  screen_class->query_visual_types = cdk_win32_screen_query_visual_types;
+  screen_class->list_visuals = cdk_win32_screen_list_visuals;
 }

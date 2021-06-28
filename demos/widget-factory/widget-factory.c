@@ -64,7 +64,7 @@ get_idle (gpointer data)
   CtkApplication *app = ctk_window_get_application (CTK_WINDOW (window));
 
   ctk_widget_set_sensitive (window, TRUE);
-  gdk_window_set_cursor (ctk_widget_get_window (window), NULL);
+  cdk_window_set_cursor (ctk_widget_get_window (window), NULL);
   g_application_unmark_busy (G_APPLICATION (app));
 
   return G_SOURCE_REMOVE;
@@ -80,8 +80,8 @@ get_busy (GSimpleAction *action,
   CtkApplication *app = ctk_window_get_application (CTK_WINDOW (window));
 
   g_application_mark_busy (G_APPLICATION (app));
-  cursor = gdk_cursor_new_from_name (ctk_widget_get_display (window), "wait");
-  gdk_window_set_cursor (ctk_widget_get_window (window), cursor);
+  cursor = cdk_cursor_new_from_name (ctk_widget_get_display (window), "wait");
+  cdk_window_set_cursor (ctk_widget_get_window (window), cursor);
   g_object_unref (cursor);
   g_timeout_add (5000, get_idle, window);
 
@@ -796,7 +796,7 @@ overshot (CtkScrolledWindow *sw, CtkPositionType pos, CtkWidget *widget)
                 "xalign", 0.0,
                 NULL);
   ctk_box_pack_start (CTK_BOX (row), label, TRUE, TRUE, 0);
-  gdk_rgba_parse (&rgba, color);
+  cdk_rgba_parse (&rgba, color);
   swatch = g_object_new (g_type_from_name ("CtkColorSwatch"),
                          "rgba", &rgba,
                          "selectable", FALSE,
@@ -836,7 +836,7 @@ set_color (CtkListBox *box, CtkListBoxRow *row, CtkColorChooser *chooser)
   if (!color)
     return;
 
-  if (gdk_rgba_parse (&rgba, color))
+  if (cdk_rgba_parse (&rgba, color))
     {
       g_signal_handlers_block_by_func (chooser, rgba_changed, box);
       ctk_color_chooser_set_rgba (chooser, &rgba);
@@ -907,7 +907,7 @@ populate_colors (CtkWidget *widget, CtkWidget *chooser)
                     "xalign", 0.0,
                     NULL);
       ctk_box_pack_start (CTK_BOX (row), label, TRUE, TRUE, 0);
-      gdk_rgba_parse (&rgba, colors[i].color);
+      cdk_rgba_parse (&rgba, colors[i].color);
       swatch = g_object_new (g_type_from_name ("CtkColorSwatch"),
                              "rgba", &rgba,
                              "selectable", FALSE,
@@ -951,7 +951,7 @@ background_loaded_cb (GObject      *source,
   GdkPixbuf *pixbuf;
   GError *error = NULL;
 
-  pixbuf = gdk_pixbuf_new_from_stream_finish (res, &error);
+  pixbuf = cdk_pixbuf_new_from_stream_finish (res, &error);
   if (error)
     {
       g_warning ("Error loading '%s': %s", bd->filename, error->message);
@@ -986,8 +986,8 @@ populate_flowbox (CtkWidget *flowbox)
 
   g_object_set_data (G_OBJECT (flowbox), "populated", GUINT_TO_POINTER (1));
 
-  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 110, 70);
-  gdk_pixbuf_fill (pixbuf, 0xffffffff);
+  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 110, 70);
+  cdk_pixbuf_fill (pixbuf, 0xffffffff);
   child = ctk_image_new_from_pixbuf (pixbuf);
   ctk_widget_show (child);
   ctk_flow_box_insert (CTK_FLOW_BOX (flowbox), child, -1);
@@ -1017,7 +1017,7 @@ populate_flowbox (CtkWidget *flowbox)
           bd = g_new (BackgroundData, 1);
           bd->flowbox = flowbox;
           bd->filename = filename;
-          gdk_pixbuf_new_from_stream_at_scale_async (stream, 110, 110, TRUE, NULL, 
+          cdk_pixbuf_new_from_stream_at_scale_async (stream, 110, 110, TRUE, NULL, 
                                                      background_loaded_cb, bd);
         }
 
@@ -1137,7 +1137,7 @@ my_text_view_set_background (MyTextView *tv, const gchar *filename)
   if (filename == NULL)
     return;
 
-  pixbuf = gdk_pixbuf_new_from_file (filename, &error);
+  pixbuf = cdk_pixbuf_new_from_file (filename, &error);
   if (error)
     {
       g_warning ("%s", error->message);
@@ -1145,7 +1145,7 @@ my_text_view_set_background (MyTextView *tv, const gchar *filename)
       return;
     }
 
-  tv->surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
+  tv->surface = cdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
 
   g_object_unref (pixbuf);
 
@@ -1762,7 +1762,7 @@ activate (GApplication *app)
 
   provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_resource (provider, "/org/ctk/WidgetFactory/widget-factory.css");
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
   g_object_unref (provider);

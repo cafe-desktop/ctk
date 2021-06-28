@@ -346,7 +346,7 @@ ctk_text_buffer_deserialize_set_can_create_tags (CtkTextBuffer *buffer,
         }
     }
 
-  format_name = gdk_atom_name (format);
+  format_name = cdk_atom_name (format);
   g_warning ("%s: \"%s\" is not registered as deserializable format "
              "with text buffer %p",
              G_STRFUNC, format_name ? format_name : "not a GdkAtom", buffer);
@@ -388,7 +388,7 @@ ctk_text_buffer_deserialize_get_can_create_tags (CtkTextBuffer *buffer,
         }
     }
 
-  format_name = gdk_atom_name (format);
+  format_name = cdk_atom_name (format);
   g_warning ("%s: \"%s\" is not registered as deserializable format "
              "with text buffer %p",
              G_STRFUNC, format_name ? format_name : "not a GdkAtom", buffer);
@@ -646,7 +646,7 @@ ctk_text_buffer_deserialize (CtkTextBuffer  *register_buffer,
           if (!success && error != NULL && *error == NULL)
             g_set_error (error, 0, 0,
                          _("Unknown error when trying to deserialize %s"),
-                         gdk_atom_name (format));
+                         cdk_atom_name (format));
 
           if (split_tags)
             {
@@ -705,7 +705,7 @@ ctk_text_buffer_deserialize (CtkTextBuffer  *register_buffer,
 
   g_set_error (error, 0, 0,
                _("No deserialize function found for format %s"),
-               gdk_atom_name (format));
+               cdk_atom_name (format));
 
   return FALSE;
 }
@@ -723,7 +723,7 @@ register_format (GList          *formats,
 {
   CtkRichTextFormat *format;
 
-  *atom = gdk_atom_intern (mime_type, FALSE);
+  *atom = cdk_atom_intern (mime_type, FALSE);
 
   formats = unregister_format (formats, *atom);
 

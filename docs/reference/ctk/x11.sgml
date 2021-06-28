@@ -27,7 +27,7 @@ and everything should "just work."
 
 <para>
 To mix low-level Xlib routines into a CTK program,
-see <link linkend="gdk-X-Window-System-Interaction">GDK X Window
+see <link linkend="cdk-X-Window-System-Interaction">GDK X Window
 System interaction</link> in the GDK manual.
 </para>
 
@@ -130,7 +130,7 @@ has links to many relevant specifications.
 </para>
 <para>
 The GDK manual covers <link
-linkend="gdk-X-Window-System-Interaction">using Xlib in a CTK
+linkend="cdk-X-Window-System-Interaction">using Xlib in a CTK
 program</link>.
 </para>
 

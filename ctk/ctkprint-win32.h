@@ -19,7 +19,7 @@
 #ifndef __CTK_PRINT_WIN32_H__
 #define __CTK_PRINT_WIN32_H__
 
-#include "win32/gdkwin32.h"
+#include "win32/cdkwin32.h"
 
 G_BEGIN_DECLS
 

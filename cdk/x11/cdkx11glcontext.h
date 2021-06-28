@@ -1,6 +1,6 @@
 /* GDK - The GIMP Drawing Kit
  *
- * gdkglcontext-x11.c: X11 specific OpenGL wrappers
+ * cdkglcontext-x11.c: X11 specific OpenGL wrappers
  * 
  * Copyright © 2014  Emmanuele Bassi
  *
@@ -22,14 +22,14 @@
 #define __GDK_X11_GL_CONTEXT_H__
 
 #if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkx.h> can be included directly."
+#error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_GL_CONTEXT		(gdk_x11_gl_context_get_type ())
+#define GDK_TYPE_X11_GL_CONTEXT		(cdk_x11_gl_context_get_type ())
 #define GDK_X11_GL_CONTEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_X11_GL_CONTEXT, GdkX11GLContext))
 #define GDK_X11_IS_GL_CONTEXT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_X11_GL_CONTEXT))
 
@@ -37,10 +37,10 @@ typedef struct _GdkX11GLContext		GdkX11GLContext;
 typedef struct _GdkX11GLContextClass	GdkX11GLContextClass;
 
 GDK_AVAILABLE_IN_3_16
-GType gdk_x11_gl_context_get_type (void) G_GNUC_CONST;
+GType cdk_x11_gl_context_get_type (void) G_GNUC_CONST;
 
 GDK_AVAILABLE_IN_3_16
-gboolean        gdk_x11_display_get_glx_version (GdkDisplay *display,
+gboolean        cdk_x11_display_get_glx_version (GdkDisplay *display,
                                                  gint       *major,
                                                  gint       *minor);
 

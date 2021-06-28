@@ -1661,7 +1661,7 @@ ctk_button_realize (CtkWidget *widget)
   ctk_widget_set_window (widget, window);
   g_object_ref (window);
 
-  priv->event_window = gdk_window_new (window,
+  priv->event_window = cdk_window_new (window,
                                        &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->event_window);
 }
@@ -1678,7 +1678,7 @@ ctk_button_unrealize (CtkWidget *widget)
   if (priv->event_window)
     {
       ctk_widget_unregister_window (widget, priv->event_window);
-      gdk_window_destroy (priv->event_window);
+      cdk_window_destroy (priv->event_window);
       priv->event_window = NULL;
     }
 
@@ -1694,7 +1694,7 @@ ctk_button_map (CtkWidget *widget)
   CTK_WIDGET_CLASS (ctk_button_parent_class)->map (widget);
 
   if (priv->event_window)
-    gdk_window_show (priv->event_window);
+    cdk_window_show (priv->event_window);
 }
 
 static void
@@ -1705,7 +1705,7 @@ ctk_button_unmap (CtkWidget *widget)
 
   if (priv->event_window)
     {
-      gdk_window_hide (priv->event_window);
+      cdk_window_hide (priv->event_window);
       priv->in_button = FALSE;
     }
 
@@ -1791,7 +1791,7 @@ ctk_button_allocate (CtkCssGadget        *gadget,
     {
       CtkAllocation border_allocation;
       ctk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
-      gdk_window_move_resize (CTK_BUTTON (widget)->priv->event_window,
+      cdk_window_move_resize (CTK_BUTTON (widget)->priv->event_window,
                               border_allocation.x,
                               border_allocation.y,
                               border_allocation.width,
@@ -1940,15 +1940,15 @@ touch_release_in_button (CtkButton *button)
   if (event->type != GDK_TOUCH_END ||
       event->touch.window != priv->event_window)
     {
-      gdk_event_free (event);
+      cdk_event_free (event);
       return FALSE;
     }
 
-  gdk_event_get_coords (event, &x, &y);
-  width = gdk_window_get_width (priv->event_window);
-  height = gdk_window_get_height (priv->event_window);
+  cdk_event_get_coords (event, &x, &y);
+  width = cdk_window_get_width (priv->event_window);
+  height = cdk_window_get_height (priv->event_window);
 
-  gdk_event_free (event);
+  cdk_event_free (event);
 
   if (x >= 0 && x <= width &&
       y >= 0 && y <= height)
@@ -1995,21 +1995,21 @@ ctk_real_button_activate (CtkButton *button)
 
   device = ctk_get_current_event_device ();
 
-  if (device && gdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
-    device = gdk_device_get_associated_device (device);
+  if (device && cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
+    device = cdk_device_get_associated_device (device);
 
   if (ctk_widget_get_realized (widget) && !priv->activate_timeout)
     {
       /* bgo#626336 - Only grab if we have a device (from an event), not if we
        * were activated programmatically when no event is available.
        */
-      if (device && gdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+      if (device && cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
 	{
           ctk_device_grab_add (widget, device, TRUE);
           priv->grab_keyboard = device;
 	}
 
-      priv->activate_timeout = gdk_threads_add_timeout (ACTIVATE_TIMEOUT,
+      priv->activate_timeout = cdk_threads_add_timeout (ACTIVATE_TIMEOUT,
 						button_activate_timeout,
 						button);
       g_source_set_name_by_id (priv->activate_timeout, "[ctk+] button_activate_timeout");

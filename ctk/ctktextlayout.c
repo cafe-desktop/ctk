@@ -1428,13 +1428,13 @@ set_para_values (CtkTextLayout      *layout,
   
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (style->pg_bg_color)
-    display->pg_bg_color = gdk_color_copy (style->pg_bg_color);
+    display->pg_bg_color = cdk_color_copy (style->pg_bg_color);
   else
     display->pg_bg_color = NULL;
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (style->pg_bg_rgba)
-    display->pg_bg_rgba = gdk_rgba_copy (style->pg_bg_rgba);
+    display->pg_bg_rgba = cdk_rgba_copy (style->pg_bg_rgba);
   else
     display->pg_bg_rgba = NULL;
 }
@@ -1453,10 +1453,10 @@ ctk_text_attr_appearance_destroy (PangoAttribute *attr)
   CtkTextAttrAppearance *appearance_attr = (CtkTextAttrAppearance *)attr;
 
   if (appearance_attr->appearance.rgba[0])
-    gdk_rgba_free (appearance_attr->appearance.rgba[0]);
+    cdk_rgba_free (appearance_attr->appearance.rgba[0]);
 
   if (appearance_attr->appearance.rgba[1])
-    gdk_rgba_free (appearance_attr->appearance.rgba[1]);
+    cdk_rgba_free (appearance_attr->appearance.rgba[1]);
 
   g_slice_free (CtkTextAttrAppearance, appearance_attr);
 }
@@ -1465,7 +1465,7 @@ static gboolean
 rgba_equal (const GdkRGBA *rgba1, const GdkRGBA *rgba2)
 {
   if (rgba1 && rgba2)
-    return gdk_rgba_equal (rgba1, rgba2);
+    return cdk_rgba_equal (rgba1, rgba2);
   
   if (rgba1 || rgba2)
     return FALSE;
@@ -1486,7 +1486,7 @@ underline_equal (const CtkTextAppearance *appearance1,
   return ((appearance1->underline == appearance2->underline) &&
           (CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (appearance1) ==
            CTK_TEXT_APPEARANCE_GET_UNDERLINE_RGBA_SET (appearance2)) &&
-          gdk_rgba_equal (&c1, &c2));
+          cdk_rgba_equal (&c1, &c2));
 }
 
 static gboolean
@@ -1502,7 +1502,7 @@ strikethrough_equal (const CtkTextAppearance *appearance1,
   return ((appearance1->strikethrough == appearance2->strikethrough) &&
           (CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (appearance1) ==
            CTK_TEXT_APPEARANCE_GET_STRIKETHROUGH_RGBA_SET (appearance2)) &&
-          gdk_rgba_equal (&c1, &c2));
+          cdk_rgba_equal (&c1, &c2));
 }
 
 static gboolean
@@ -1551,10 +1551,10 @@ ctk_text_attr_appearance_new (const CtkTextAppearance *appearance)
   result->appearance = *appearance;
 
   if (appearance->rgba[0])
-    result->appearance.rgba[0] = gdk_rgba_copy (appearance->rgba[0]);
+    result->appearance.rgba[0] = cdk_rgba_copy (appearance->rgba[0]);
 
   if (appearance->rgba[1])
-    result->appearance.rgba[1] = gdk_rgba_copy (appearance->rgba[1]);
+    result->appearance.rgba[1] = cdk_rgba_copy (appearance->rgba[1]);
 
   return (PangoAttribute *)result;
 }
@@ -1711,8 +1711,8 @@ add_pixbuf_attrs (CtkTextLayout      *layout,
   CtkTextPixbuf *pixbuf = &seg->body.pixbuf;
   gint width, height;
 
-  width = gdk_pixbuf_get_width (pixbuf->pixbuf);
-  height = gdk_pixbuf_get_height (pixbuf->pixbuf);
+  width = cdk_pixbuf_get_width (pixbuf->pixbuf);
+  height = cdk_pixbuf_get_height (pixbuf->pixbuf);
 
   logical_rect.x = 0;
   logical_rect.y = -height * PANGO_SCALE;
@@ -2005,9 +2005,9 @@ add_preedit_attrs (CtkTextLayout     *layout,
       pango_attr_iterator_get_font (iter, font_desc, &language, &extra_attrs);
 
       if (appearance.rgba[0])
-	appearance.rgba[0] = gdk_rgba_copy (appearance.rgba[0]);
+	appearance.rgba[0] = cdk_rgba_copy (appearance.rgba[0]);
       if (appearance.rgba[1])
-	appearance.rgba[1] = gdk_rgba_copy (appearance.rgba[1]);
+	appearance.rgba[1] = cdk_rgba_copy (appearance.rgba[1]);
       
       tmp_list = extra_attrs;
       while (tmp_list)
@@ -2020,14 +2020,14 @@ add_preedit_attrs (CtkTextLayout     *layout,
 	    case PANGO_ATTR_FOREGROUND:
 	      convert_color (&rgba, (PangoAttrColor *)attr);
 	      if (appearance.rgba[1])
-		gdk_rgba_free (appearance.rgba[1]);
-	      appearance.rgba[1] = gdk_rgba_copy (&rgba);
+		cdk_rgba_free (appearance.rgba[1]);
+	      appearance.rgba[1] = cdk_rgba_copy (&rgba);
 	      break;
 	    case PANGO_ATTR_BACKGROUND:
 	      convert_color (&rgba, (PangoAttrColor *)attr);
 	      if (appearance.rgba[0])
-		gdk_rgba_free (appearance.rgba[0]);
-	      appearance.rgba[0] = gdk_rgba_copy (&rgba);
+		cdk_rgba_free (appearance.rgba[0]);
+	      appearance.rgba[0] = cdk_rgba_copy (&rgba);
 	      appearance.draw_bg = TRUE;
 	      break;
 	    case PANGO_ATTR_UNDERLINE:
@@ -2078,9 +2078,9 @@ add_preedit_attrs (CtkTextLayout     *layout,
                          size_only, TRUE);
       
       if (appearance.rgba[0])
-	gdk_rgba_free (appearance.rgba[0]);
+	cdk_rgba_free (appearance.rgba[0]);
       if (appearance.rgba[1])
-	gdk_rgba_free (appearance.rgba[1]);
+	cdk_rgba_free (appearance.rgba[1]);
 
       pango_font_description_free (font_desc);
     }
@@ -2635,11 +2635,11 @@ ctk_text_layout_free_line_display (CtkTextLayout      *layout,
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       if (display->pg_bg_color)
-        gdk_color_free (display->pg_bg_color);
+        cdk_color_free (display->pg_bg_color);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (display->pg_bg_rgba)
-        gdk_rgba_free (display->pg_bg_rgba);
+        cdk_rgba_free (display->pg_bg_rgba);
 
       g_slice_free (CtkTextLineDisplay, display);
     }

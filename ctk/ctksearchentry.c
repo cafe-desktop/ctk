@@ -395,10 +395,10 @@ ctk_search_entry_is_keynav_event (GdkEvent *event)
   GdkModifierType state = 0;
   guint keyval;
 
-  if (!gdk_event_get_keyval (event, &keyval))
+  if (!cdk_event_get_keyval (event, &keyval))
     return FALSE;
 
-  gdk_event_get_state (event, &state);
+  cdk_event_get_state (event, &state);
 
   if (keyval == GDK_KEY_Tab       || keyval == GDK_KEY_KP_Tab ||
       keyval == GDK_KEY_Up        || keyval == GDK_KEY_KP_Up ||

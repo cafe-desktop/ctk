@@ -18,7 +18,7 @@
 #ifndef __GDK_DEVICE_TOOL_PRIVATE_H__
 #define __GDK_DEVICE_TOOL_PRIVATE_H__
 
-#include "gdkdevicetool.h"
+#include "cdkdevicetool.h"
 
 G_BEGIN_DECLS
 
@@ -38,7 +38,7 @@ struct _GdkDeviceToolClass
   GObjectClass parent_class;
 };
 
-GdkDeviceTool *gdk_device_tool_new    (guint64            serial,
+GdkDeviceTool *cdk_device_tool_new    (guint64            serial,
                                        guint64            hw_id,
                                        GdkDeviceToolType  type,
                                        GdkAxisFlags       tool_axes);

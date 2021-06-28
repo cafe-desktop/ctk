@@ -226,7 +226,7 @@ _ctk_header_bar_update_window_icon (CtkHeaderBar *bar,
     {
       cairo_surface_t *surface;
 
-      surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, scale, ctk_widget_get_window (priv->titlebar_icon));
+      surface = cdk_cairo_surface_create_from_pixbuf (pixbuf, scale, ctk_widget_get_window (priv->titlebar_icon));
 
       ctk_image_set_from_surface (CTK_IMAGE (priv->titlebar_icon), surface);
       cairo_surface_destroy (surface);

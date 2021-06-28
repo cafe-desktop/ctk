@@ -38,7 +38,7 @@
 
 #include <math.h>
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 /* this is in case round() is not provided by the compiler, 
  * such as in the case of C89 compilers, like MSVC
@@ -68,7 +68,7 @@ _ctk_theming_background_paint_color (CtkThemingBackground *bg,
       n_values - 1));
 
   _ctk_rounded_box_path (&bg->boxes[clip], cr);
-  gdk_cairo_set_source_rgba (cr, bg_color);
+  cdk_cairo_set_source_rgba (cr, bg_color);
   cairo_fill (cr);
 }
 

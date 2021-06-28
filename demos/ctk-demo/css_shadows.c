@@ -46,7 +46,7 @@ css_text_changed (CtkTextBuffer  *buffer,
   ctk_css_provider_load_from_data (provider, text, -1, NULL);
   g_free (text);
 
-  ctk_style_context_reset_widgets (gdk_screen_get_default ());
+  ctk_style_context_reset_widgets (cdk_screen_get_default ());
 }
 
 static void

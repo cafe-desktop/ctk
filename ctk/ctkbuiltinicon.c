@@ -139,7 +139,7 @@ ctk_builtin_icon_allocate (CtkCssGadget        *gadget,
                                          &icon_clip,
                                          allocation->x, allocation->y,
                                          allocation->width, allocation->height);
-  gdk_rectangle_union (out_clip, &icon_clip, out_clip);
+  cdk_rectangle_union (out_clip, &icon_clip, out_clip);
 }
 
 static gboolean

@@ -41,7 +41,7 @@
 
 #include <glib.h>
 #include <glib/gstdio.h>
-#include "gdk/gdk.h"
+#include "cdk/cdk.h"
 
 #include "ctkversion.h"
 #include "ctkrc.h"
@@ -1730,7 +1730,7 @@ ctk_rc_parse_color_full (GScanner   *scanner,
       return G_TOKEN_NONE;
       
     case G_TOKEN_STRING:
-      if (!gdk_color_parse (scanner->value.v_string, color))
+      if (!cdk_color_parse (scanner->value.v_string, color))
 	{
           g_scanner_warn (scanner, "Invalid color constant '%s'",
                           scanner->value.v_string);

@@ -1,5 +1,5 @@
 /*
- * gdkmonitorprivate.h
+ * cdkmonitorprivate.h
  *
  * Copyright 2016 Red Hat, Inc.
  *
@@ -22,7 +22,7 @@
 #ifndef __GDK_MONITOR_PRIVATE_H__
 #define __GDK_MONITOR_PRIVATE_H__
 
-#include "gdkmonitor.h"
+#include "cdkmonitor.h"
 
 G_BEGIN_DECLS
 
@@ -52,31 +52,31 @@ struct _GdkMonitorClass {
                          GdkRectangle *geometry);
 };
 
-GdkMonitor *    gdk_monitor_new                 (GdkDisplay *display);
+GdkMonitor *    cdk_monitor_new                 (GdkDisplay *display);
 
-void            gdk_monitor_set_manufacturer    (GdkMonitor *monitor,
+void            cdk_monitor_set_manufacturer    (GdkMonitor *monitor,
                                                  const char *manufacturer);
-void            gdk_monitor_set_model           (GdkMonitor *monitor,
+void            cdk_monitor_set_model           (GdkMonitor *monitor,
                                                  const char *model);
-void            gdk_monitor_set_connector       (GdkMonitor *monitor,
+void            cdk_monitor_set_connector       (GdkMonitor *monitor,
                                                  const char *connector);
-const char *    gdk_monitor_get_connector       (GdkMonitor *monitor);
-void            gdk_monitor_set_position        (GdkMonitor *monitor,
+const char *    cdk_monitor_get_connector       (GdkMonitor *monitor);
+void            cdk_monitor_set_position        (GdkMonitor *monitor,
                                                  int         x,
                                                  int         y);
-void            gdk_monitor_set_size            (GdkMonitor *monitor,
+void            cdk_monitor_set_size            (GdkMonitor *monitor,
                                                  int         width,
                                                  int         height);
-void            gdk_monitor_set_physical_size   (GdkMonitor *monitor,
+void            cdk_monitor_set_physical_size   (GdkMonitor *monitor,
                                                  int         width_mm,
                                                  int         height_mm);
-void            gdk_monitor_set_scale_factor    (GdkMonitor *monitor,
+void            cdk_monitor_set_scale_factor    (GdkMonitor *monitor,
                                                  int         scale);
-void            gdk_monitor_set_refresh_rate    (GdkMonitor *monitor,
+void            cdk_monitor_set_refresh_rate    (GdkMonitor *monitor,
                                                  int         refresh_rate);
-void            gdk_monitor_set_subpixel_layout (GdkMonitor        *monitor,
+void            cdk_monitor_set_subpixel_layout (GdkMonitor        *monitor,
                                                  GdkSubpixelLayout  subpixel);
-void            gdk_monitor_invalidate          (GdkMonitor *monitor);
+void            cdk_monitor_invalidate          (GdkMonitor *monitor);
 
 G_END_DECLS
 

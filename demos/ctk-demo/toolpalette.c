@@ -73,10 +73,10 @@ canvas_item_draw (const CanvasItem *item,
                   cairo_t          *cr,
                   gboolean          preview)
 {
-  gdouble cx = gdk_pixbuf_get_width (item->pixbuf);
-  gdouble cy = gdk_pixbuf_get_height (item->pixbuf);
+  gdouble cx = cdk_pixbuf_get_width (item->pixbuf);
+  gdouble cy = cdk_pixbuf_get_height (item->pixbuf);
 
-  gdk_cairo_set_source_pixbuf (cr,
+  cdk_cairo_set_source_pixbuf (cr,
                                item->pixbuf,
                                item->x - cx * 0.5,
                                item->y - cy * 0.5);
@@ -263,7 +263,7 @@ interactive_canvas_drag_motion (CtkWidget      *widget,
       drop_item->y = y;
 
       ctk_widget_queue_draw (widget);
-      gdk_drag_status (context, GDK_ACTION_COPY, time);
+      cdk_drag_status (context, GDK_ACTION_COPY, time);
     }
   else
     {
@@ -331,7 +331,7 @@ interactive_canvas_drag_data_received (CtkWidget        *widget,
     } else
     {
       drop_item = item;
-      gdk_drag_status (context, GDK_ACTION_COPY, time);
+      cdk_drag_status (context, GDK_ACTION_COPY, time);
     }
 
   ctk_widget_queue_draw (widget);

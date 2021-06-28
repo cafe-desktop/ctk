@@ -29,7 +29,7 @@
 #error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctkaccelgroup.h>
 #include <ctk/ctkborder.h>
 #include <ctk/ctktypes.h>
@@ -313,7 +313,7 @@ struct _CtkWidget
  *   to override the default CtkWidget handling for determining whether
  *   an accelerator can be activated.
  * @composited_changed: Signal emitted when the composited status of
- *   widgets screen changes. See gdk_screen_is_composited().
+ *   widgets screen changes. See cdk_screen_is_composited().
  * @query_tooltip: Signal emitted when “has-tooltip” is %TRUE and the
  *   hover timeout has expired with the cursor hovering “above”
  *   widget; or emitted when widget got focus in keyboard mode.
@@ -356,7 +356,7 @@ struct _CtkWidget
  * @adjust_baseline_request:
  * @adjust_baseline_allocation:
  * @queue_draw_region: Invalidates the area of widget defined by
- *   region by calling gdk_window_invalidate_region() on the widget's
+ *   region by calling cdk_window_invalidate_region() on the widget's
  *   window and all its child windows.
  */
 struct _CtkWidgetClass
@@ -1117,7 +1117,7 @@ gint	     ctk_widget_get_events	(CtkWidget	*widget);
 GDK_AVAILABLE_IN_ALL
 GdkEventMask ctk_widget_get_device_events (CtkWidget	*widget,
                                            GdkDevice    *device);
-GDK_DEPRECATED_IN_3_4_FOR(gdk_window_get_device_position)
+GDK_DEPRECATED_IN_3_4_FOR(cdk_window_get_device_position)
 void	     ctk_widget_get_pointer	(CtkWidget	*widget,
 					 gint		*x,
 					 gint		*y);
@@ -1243,10 +1243,10 @@ GDK_AVAILABLE_IN_ALL
 CtkTextDirection ctk_widget_get_default_direction (void);
 
 /* Compositing manager functionality */
-GDK_DEPRECATED_IN_3_22_FOR(gdk_screen_is_composited)
+GDK_DEPRECATED_IN_3_22_FOR(cdk_screen_is_composited)
 gboolean ctk_widget_is_composited (CtkWidget *widget);
 
-/* Counterpart to gdk_window_shape_combine_region.
+/* Counterpart to cdk_window_shape_combine_region.
  */
 GDK_AVAILABLE_IN_ALL
 void	     ctk_widget_shape_combine_region (CtkWidget *widget,

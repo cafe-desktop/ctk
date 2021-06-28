@@ -18,8 +18,8 @@
 #ifndef __GDK_SCREEN_PRIVATE_H__
 #define __GDK_SCREEN_PRIVATE_H__
 
-#include "gdkscreen.h"
-#include "gdkvisual.h"
+#include "cdkscreen.h"
+#include "cdkvisual.h"
 
 G_BEGIN_DECLS
 

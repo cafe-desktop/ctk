@@ -157,7 +157,7 @@ portal_response_received (GDBusConnection *connection,
 
       c.alpha = 1.0;
       if (g_variant_lookup (ret, "color", "(ddd)", &c.red, &c.green, &c.blue))
-        g_task_return_pointer (picker->task, gdk_rgba_copy (&c), (GDestroyNotify)gdk_rgba_free);
+        g_task_return_pointer (picker->task, cdk_rgba_copy (&c), (GDestroyNotify)cdk_rgba_free);
       else
         g_task_return_new_error (picker->task,
                                  G_IO_ERROR,

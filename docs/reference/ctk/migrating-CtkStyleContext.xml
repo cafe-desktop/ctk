@@ -405,7 +405,7 @@
 
       ...
 
-      gdk_rgba_free (color1);
+      cdk_rgba_free (color1);
       </programlisting></informalexample>
       Note that the memory handling here is different: ctk_style_context_get()
       expects the address of a GdkRGBA* and returns a newly allocated struct,

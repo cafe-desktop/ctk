@@ -1,6 +1,6 @@
 /* GDK - The GIMP Drawing Kit
  *
- * gdkglcontext-quartz.h: Private Quartz specific OpenGL wrappers
+ * cdkglcontext-quartz.h: Private Quartz specific OpenGL wrappers
  *
  * Copyright © 2014  Emmanuele Bassi
  * Copyright © 2014  Red Hat, Int
@@ -23,12 +23,12 @@
 #ifndef __GDK_QUARTZ_GL_CONTEXT__
 #define __GDK_QUARTZ_GL_CONTEXT__
 
-#include "gdkglcontextprivate.h"
-#include "gdkdisplayprivate.h"
-#include "gdkvisual.h"
-#include "gdkwindow.h"
-#include "gdkinternals.h"
-#include "gdkmain.h"
+#include "cdkglcontextprivate.h"
+#include "cdkdisplayprivate.h"
+#include "cdkvisual.h"
+#include "cdkwindow.h"
+#include "cdkinternals.h"
+#include "cdkmain.h"
 
 #import <OpenGL/OpenGL.h>
 #import <OpenGL/gl.h>
@@ -49,14 +49,14 @@ struct _GdkQuartzGLContextClass
   GdkGLContextClass parent_class;
 };
 
-gboolean        gdk_quartz_display_init_gl                         (GdkDisplay        *display);
-GdkGLContext *  gdk_quartz_window_create_gl_context                (GdkWindow         *window,
+gboolean        cdk_quartz_display_init_gl                         (GdkDisplay        *display);
+GdkGLContext *  cdk_quartz_window_create_gl_context                (GdkWindow         *window,
                                                                     gboolean           attach,
                                                                     GdkGLContext      *share,
                                                                     GError           **error);
-void            gdk_quartz_window_invalidate_for_new_frame         (GdkWindow         *window,
+void            cdk_quartz_window_invalidate_for_new_frame         (GdkWindow         *window,
                                                                     cairo_region_t    *update_area);
-gboolean        gdk_quartz_display_make_gl_context_current         (GdkDisplay        *display,
+gboolean        cdk_quartz_display_make_gl_context_current         (GdkDisplay        *display,
                                                                     GdkGLContext      *context);
 
 G_END_DECLS

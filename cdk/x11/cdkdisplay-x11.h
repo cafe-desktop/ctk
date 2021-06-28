@@ -1,5 +1,5 @@
 /*
- * gdkdisplay-x11.h
+ * cdkdisplay-x11.h
  *
  * Copyright 2001 Sun Microsystems Inc.
  *
@@ -22,11 +22,11 @@
 #ifndef __GDK_X11_DISPLAY__
 #define __GDK_X11_DISPLAY__
 
-#include "gdkdisplayprivate.h"
-#include "gdkkeys.h"
-#include "gdkwindow.h"
-#include "gdkinternals.h"
-#include "gdkmain.h"
+#include "cdkdisplayprivate.h"
+#include "cdkkeys.h"
+#include "cdkwindow.h"
+#include "cdkinternals.h"
+#include "cdkmain.h"
 
 #include <X11/X.h>
 #include <X11/Xlib.h>
@@ -85,7 +85,7 @@ struct _GdkX11Display
 
   /* Session Management leader window see ICCCM */
   Window leader_window;
-  GdkWindow *leader_gdk_window;
+  GdkWindow *leader_cdk_window;
   gboolean leader_window_title_set;
 
   /* List of functions to go from extension event => X window */
@@ -156,12 +156,12 @@ struct _GdkX11DisplayClass
   GdkDisplayClass parent_class;
 };
 
-GdkScreen *_gdk_x11_display_screen_for_xrootwin (GdkDisplay  *display,
+GdkScreen *_cdk_x11_display_screen_for_xrootwin (GdkDisplay  *display,
                                                  Window       xrootwin);
-void       _gdk_x11_display_error_event         (GdkDisplay  *display,
+void       _cdk_x11_display_error_event         (GdkDisplay  *display,
                                                  XErrorEvent *error);
 
-GdkFilterReturn _gdk_wm_protocols_filter        (GdkXEvent   *xev,
+GdkFilterReturn _cdk_wm_protocols_filter        (GdkXEvent   *xev,
                                                  GdkEvent    *event,
                                                  gpointer     data);
 

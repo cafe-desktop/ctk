@@ -1,5 +1,5 @@
 /* GDK - The GIMP Drawing Kit
- * gdkdeprecated.c
+ * cdkdeprecated.c
  * 
  * Copyright 1995-2011 Red Hat Inc.
  *
@@ -23,29 +23,29 @@
 
 #include "config.h"
 
-#include "gdkdisplay.h"
-#include "gdkmain.h"
-#include "gdkwindow.h"
+#include "cdkdisplay.h"
+#include "cdkmain.h"
+#include "cdkwindow.h"
 
 /**
- * gdk_pointer_ungrab:
+ * cdk_pointer_ungrab:
  * @time_: a timestamp from a #GdkEvent, or %GDK_CURRENT_TIME if no 
  *  timestamp is available.
  *
  * Ungrabs the pointer on the default display, if it is grabbed by this 
  * application.
  *
- * Deprecated: 3.0: Use gdk_device_ungrab(), together with gdk_device_grab()
+ * Deprecated: 3.0: Use cdk_device_ungrab(), together with cdk_device_grab()
  *             instead.
  **/
 void
-gdk_pointer_ungrab (guint32 time)
+cdk_pointer_ungrab (guint32 time)
 {
-  gdk_display_pointer_ungrab (gdk_display_get_default (), time);
+  cdk_display_pointer_ungrab (cdk_display_get_default (), time);
 }
 
 /**
- * gdk_pointer_is_grabbed:
+ * cdk_pointer_is_grabbed:
  * 
  * Returns %TRUE if the pointer on the default display is currently 
  * grabbed by this application.
@@ -55,33 +55,33 @@ gdk_pointer_ungrab (guint32 time)
  *
  * Returns: %TRUE if the pointer is currently grabbed by this application.
  *
- * Deprecated: 3.0: Use gdk_display_device_is_grabbed() instead.
+ * Deprecated: 3.0: Use cdk_display_device_is_grabbed() instead.
  **/
 gboolean
-gdk_pointer_is_grabbed (void)
+cdk_pointer_is_grabbed (void)
 {
-  return gdk_display_pointer_is_grabbed (gdk_display_get_default ());
+  return cdk_display_pointer_is_grabbed (cdk_display_get_default ());
 }
 
 /**
- * gdk_keyboard_ungrab:
+ * cdk_keyboard_ungrab:
  * @time_: a timestamp from a #GdkEvent, or %GDK_CURRENT_TIME if no
  *        timestamp is available.
  * 
  * Ungrabs the keyboard on the default display, if it is grabbed by this 
  * application.
  *
- * Deprecated: 3.0: Use gdk_device_ungrab(), together with gdk_device_grab()
+ * Deprecated: 3.0: Use cdk_device_ungrab(), together with cdk_device_grab()
  *             instead.
  **/
 void
-gdk_keyboard_ungrab (guint32 time)
+cdk_keyboard_ungrab (guint32 time)
 {
-  gdk_display_keyboard_ungrab (gdk_display_get_default (), time);
+  cdk_display_keyboard_ungrab (cdk_display_get_default (), time);
 }
 
 /**
- * gdk_window_at_pointer:
+ * cdk_window_at_pointer:
  * @win_x: (out) (allow-none): return location for origin of the window under the pointer
  * @win_y: (out) (allow-none): return location for origin of the window under the pointer
  *
@@ -89,19 +89,19 @@ gdk_keyboard_ungrab (guint32 time)
  * location of that window in @win_x, @win_y. Returns %NULL if the
  * window under the mouse pointer is not known to GDK (if the window
  * belongs to another application and a #GdkWindow hasn’t been created
- * for it with gdk_window_foreign_new())
+ * for it with cdk_window_foreign_new())
  *
  * NOTE: For multihead-aware widgets or applications use
- * gdk_display_get_window_at_pointer() instead.
+ * cdk_display_get_window_at_pointer() instead.
  *
  * Returns: (transfer none): window under the mouse pointer
  *
- * Deprecated: 3.0: Use gdk_device_get_window_at_position() instead.
+ * Deprecated: 3.0: Use cdk_device_get_window_at_position() instead.
  **/
 GdkWindow*
-gdk_window_at_pointer (gint *win_x,
+cdk_window_at_pointer (gint *win_x,
 		       gint *win_y)
 {
-  return gdk_display_get_window_at_pointer (gdk_display_get_default (), win_x, win_y);
+  return cdk_display_get_window_at_pointer (cdk_display_get_default (), win_x, win_y);
 }
 

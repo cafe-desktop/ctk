@@ -19,193 +19,193 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Lokalize 1.5\n"
 
-#: gdk/gdkapplaunchcontext.c:127 gdk/gdkcursor.c:139 gdk/gdkdevicemanager.c:185
-#: gdk/gdkglcontext.c:317 gdk/gdkseat.c:202 gdk/gdkseat.c:203
+#: cdk/cdkapplaunchcontext.c:127 cdk/cdkcursor.c:139 cdk/cdkdevicemanager.c:185
+#: cdk/cdkglcontext.c:317 cdk/cdkseat.c:202 cdk/cdkseat.c:203
 msgid "Display"
 msgstr "Skjár"
 
-#: gdk/gdkcursor.c:131
+#: cdk/cdkcursor.c:131
 msgid "Cursor type"
 msgstr "Tegund músarbendils"
 
-#: gdk/gdkcursor.c:132
+#: cdk/cdkcursor.c:132
 msgid "Standard cursor type"
 msgstr "Hefðbundin tegund músarbendils"
 
-#: gdk/gdkcursor.c:140
+#: cdk/cdkcursor.c:140
 msgid "Display of this cursor"
 msgstr "Birting þessa bendils"
 
-#: gdk/gdkdevice.c:123
+#: cdk/cdkdevice.c:123
 msgid "Device Display"
 msgstr "Skjár tækis"
 
-#: gdk/gdkdevice.c:124
+#: cdk/cdkdevice.c:124
 msgid "Display which the device belongs to"
 msgstr ""
 
-#: gdk/gdkdevice.c:138
+#: cdk/cdkdevice.c:138
 msgid "Device manager"
 msgstr "Tækjastjóri"
 
-#: gdk/gdkdevice.c:139
+#: cdk/cdkdevice.c:139
 msgid "Device manager which the device belongs to"
 msgstr ""
 
-#: gdk/gdkdevice.c:152 gdk/gdkdevice.c:153
+#: cdk/cdkdevice.c:152 cdk/cdkdevice.c:153
 msgid "Device name"
 msgstr "Heiti tækis"
 
-#: gdk/gdkdevice.c:166
+#: cdk/cdkdevice.c:166
 msgid "Device type"
 msgstr "Tegund tækis"
 
-#: gdk/gdkdevice.c:167
+#: cdk/cdkdevice.c:167
 msgid "Device role in the device manager"
 msgstr ""
 
-#: gdk/gdkdevice.c:183
+#: cdk/cdkdevice.c:183
 msgid "Associated device"
 msgstr ""
 
-#: gdk/gdkdevice.c:184
+#: cdk/cdkdevice.c:184
 msgid "Associated pointer or keyboard with this device"
 msgstr ""
 
-#: gdk/gdkdevice.c:197
+#: cdk/cdkdevice.c:197
 msgid "Input source"
 msgstr "Inntaksgjafi"
 
-#: gdk/gdkdevice.c:198
+#: cdk/cdkdevice.c:198
 msgid "Source type for the device"
 msgstr ""
 
-#: gdk/gdkdevice.c:213 gdk/gdkdevice.c:214
+#: cdk/cdkdevice.c:213 cdk/cdkdevice.c:214
 msgid "Input mode for the device"
 msgstr ""
 
-#: gdk/gdkdevice.c:229
+#: cdk/cdkdevice.c:229
 msgid "Whether the device has a cursor"
 msgstr ""
 
-#: gdk/gdkdevice.c:230
+#: cdk/cdkdevice.c:230
 msgid "Whether there is a visible cursor following device motion"
 msgstr ""
 
-#: gdk/gdkdevice.c:244 gdk/gdkdevice.c:245
+#: cdk/cdkdevice.c:244 cdk/cdkdevice.c:245
 msgid "Number of axes in the device"
 msgstr ""
 
-#: gdk/gdkdevice.c:259 gdk/gdkdevice.c:260
+#: cdk/cdkdevice.c:259 cdk/cdkdevice.c:260
 msgid "Vendor ID"
 msgstr "Auðkenni framleiðanda"
 
-#: gdk/gdkdevice.c:274 gdk/gdkdevice.c:275
+#: cdk/cdkdevice.c:274 cdk/cdkdevice.c:275
 msgid "Product ID"
 msgstr "Vörunúmer"
 
-#: gdk/gdkdevice.c:289 gdk/gdkdevice.c:290
+#: cdk/cdkdevice.c:289 cdk/cdkdevice.c:290
 msgid "Seat"
 msgstr "Sæti"
 
-#: gdk/gdkdevice.c:306 gdk/gdkdevice.c:307
+#: cdk/cdkdevice.c:306 cdk/cdkdevice.c:307
 #| msgid "Number of columns"
 msgid "Number of concurrent touches"
 msgstr "Fjöldi samhliða snertinga"
 
-#: gdk/gdkdevice.c:321 gdk/gdkdevice.c:322
+#: cdk/cdkdevice.c:321 cdk/cdkdevice.c:322
 msgid "Axes"
 msgstr "Ásar"
 
-#: gdk/gdkdevice.c:328
+#: cdk/cdkdevice.c:328
 msgid "Tool"
 msgstr "Verkfæri"
 
-#: gdk/gdkdevice.c:329
+#: cdk/cdkdevice.c:329
 msgid "The tool that is currently used with this device"
 msgstr ""
 
-#: gdk/gdkdevicemanager.c:186
+#: cdk/cdkdevicemanager.c:186
 msgid "Display for the device manager"
 msgstr ""
 
-#: gdk/gdkdisplaymanager.c:169
+#: cdk/cdkdisplaymanager.c:169
 msgid "Default Display"
 msgstr "Sjálfgefinn skjár"
 
-#: gdk/gdkdisplaymanager.c:170
+#: cdk/cdkdisplaymanager.c:170
 msgid "The default display for GDK"
 msgstr "Sjálfgefinn skjár fyrir GDK"
 
-#: gdk/gdkglcontext.c:318
+#: cdk/cdkglcontext.c:318
 msgid "The GDK display used to create the GL context"
 msgstr ""
 
-#: gdk/gdkglcontext.c:333 ctk/ctkwidget.c:1338
+#: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1338
 msgid "Window"
 msgstr "Gluggi"
 
-#: gdk/gdkglcontext.c:334
+#: cdk/cdkglcontext.c:334
 msgid "The GDK window bound to the GL context"
 msgstr ""
 
-#: gdk/gdkglcontext.c:349
+#: cdk/cdkglcontext.c:349
 msgid "Shared context"
 msgstr ""
 
-#: gdk/gdkglcontext.c:350
+#: cdk/cdkglcontext.c:350
 msgid "The GL context this context shares data with"
 msgstr ""
 
-#: gdk/gdkscreen.c:91
+#: cdk/cdkscreen.c:91
 msgid "Font options"
 msgstr "Valkostir leturs"
 
-#: gdk/gdkscreen.c:92
+#: cdk/cdkscreen.c:92
 msgid "The default font options for the screen"
 msgstr ""
 
-#: gdk/gdkscreen.c:99
+#: cdk/cdkscreen.c:99
 msgid "Font resolution"
 msgstr "Upplausn leturs"
 
-#: gdk/gdkscreen.c:100
+#: cdk/cdkscreen.c:100
 msgid "The resolution for fonts on the screen"
 msgstr ""
 
-#: gdk/gdkwindow.c:354 gdk/gdkwindow.c:355
+#: cdk/cdkwindow.c:354 cdk/cdkwindow.c:355
 msgid "Cursor"
 msgstr "Bendill"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:115
+#: cdk/x11/cdkdevicemanager-xi2.c:115
 msgid "Opcode"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi2.c:116
+#: cdk/x11/cdkdevicemanager-xi2.c:116
 msgid "Opcode for XInput2 requests"
 msgstr ""
 
-#: gdk/x11/gdkdevicemanager-xi2.c:122
+#: cdk/x11/cdkdevicemanager-xi2.c:122
 msgid "Major"
 msgstr "Aðal"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:123
+#: cdk/x11/cdkdevicemanager-xi2.c:123
 msgid "Major version number"
 msgstr "Aðalútgáfunúmer"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:129
+#: cdk/x11/cdkdevicemanager-xi2.c:129
 msgid "Minor"
 msgstr "Undir"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:130
+#: cdk/x11/cdkdevicemanager-xi2.c:130
 msgid "Minor version number"
 msgstr "Undirútgáfunúmer"
 
-#: gdk/x11/gdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:143
 msgid "Device ID"
 msgstr "Auðkenni tækis"
 
-#: gdk/x11/gdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device identifier"
 msgstr "Auðkenni fyrir tæki"
 
@@ -9399,9 +9399,9 @@ msgstr ""
 #~ msgstr "Gat ekki lesið myndina '%s': %s"
 
 #~ msgid ""
-#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ "This build of cdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Þessi útgáfa af gdk-pixbuf styður ekki að vista myndum á sniðinu: %s"
+#~ "Þessi útgáfa af cdk-pixbuf styður ekki að vista myndum á sniðinu: %s"
 
 #~ msgid "Failed to open '%s' for writing: %s"
 #~ msgstr "Gat ekki opnað '%s' til skriftar: %s"

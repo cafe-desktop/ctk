@@ -1,4 +1,4 @@
-/* gdkscreen-quartz.h
+/* cdkscreen-quartz.h
  *
  * Copyright (C) 2009,2010  Kristian Rietveld  <kris@ctk.org>
  *
@@ -19,7 +19,7 @@
 #ifndef __GDK_QUARTZ_SCREEN__
 #define __GDK_QUARTZ_SCREEN__
 
-#include <gdkscreenprivate.h>
+#include <cdkscreenprivate.h>
 
 G_BEGIN_DECLS
 

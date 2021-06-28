@@ -1,4 +1,4 @@
-/* gdkquartz-ctk-only.h
+/* cdkquartz-ctk-only.h
  *
  * Copyright (C) 2005-2007 Imendio AB
  *
@@ -24,27 +24,27 @@
 #endif
 
 #include <AppKit/AppKit.h>
-#include <gdk/gdk.h>
-#include <gdk/quartz/gdkquartz.h>
+#include <cdk/cdk.h>
+#include <cdk/quartz/cdkquartz.h>
 
 /* Drag and Drop/Clipboard */
 GDK_AVAILABLE_IN_ALL
-GdkAtom   gdk_quartz_pasteboard_type_to_atom_libctk_only        (NSString       *type);
+GdkAtom   cdk_quartz_pasteboard_type_to_atom_libctk_only        (NSString       *type);
 GDK_AVAILABLE_IN_ALL
-NSString *gdk_quartz_target_to_pasteboard_type_libctk_only      (const gchar    *target);
+NSString *cdk_quartz_target_to_pasteboard_type_libctk_only      (const gchar    *target);
 GDK_AVAILABLE_IN_ALL
-NSString *gdk_quartz_atom_to_pasteboard_type_libctk_only        (GdkAtom         atom);
+NSString *cdk_quartz_atom_to_pasteboard_type_libctk_only        (GdkAtom         atom);
 
 /* Utilities */
 GDK_AVAILABLE_IN_ALL
-NSImage  *gdk_quartz_pixbuf_to_ns_image_libctk_only (GdkPixbuf *pixbuf);
+NSImage  *cdk_quartz_pixbuf_to_ns_image_libctk_only (GdkPixbuf *pixbuf);
 GDK_AVAILABLE_IN_ALL
-NSEvent  *gdk_quartz_event_get_nsevent              (GdkEvent  *event);
+NSEvent  *cdk_quartz_event_get_nsevent              (GdkEvent  *event);
 
 /* Window */
 GDK_AVAILABLE_IN_ALL
-NSWindow *gdk_quartz_window_get_nswindow            (GdkWindow *window);
+NSWindow *cdk_quartz_window_get_nswindow            (GdkWindow *window);
 GDK_AVAILABLE_IN_ALL
-NSView   *gdk_quartz_window_get_nsview              (GdkWindow *window);
+NSView   *cdk_quartz_window_get_nsview              (GdkWindow *window);
 
 #endif

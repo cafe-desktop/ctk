@@ -18,7 +18,7 @@
 #ifndef __CTK_IM_MODULE_PRIVATE_H__
 #define __CTK_IM_MODULE_PRIVATE_H__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctkimcontext.h>
 #include <ctk/ctkimcontextinfo.h>
 

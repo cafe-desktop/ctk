@@ -428,7 +428,7 @@ toolbar_drag_motion (CtkToolbar     *toolbar,
       g_object_ref_sink (g_object_ref (drag_item));
     }
   
-  gdk_drag_status (context, GDK_ACTION_MOVE, time);
+  cdk_drag_status (context, GDK_ACTION_MOVE, time);
 
   index = ctk_toolbar_get_drop_index (toolbar, x, y);
   
@@ -566,7 +566,7 @@ main (gint argc, gchar **argv)
   ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), "Custom label");
   add_item_to_list (store, item, "New");
   ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
-  gdk_threads_add_timeout (3000, (GSourceFunc) timeout_cb, item);
+  cdk_threads_add_timeout (3000, (GSourceFunc) timeout_cb, item);
   ctk_tool_item_set_expand (item, TRUE);
 
   menu = ctk_menu_new ();
@@ -586,7 +586,7 @@ main (gint argc, gchar **argv)
   ctk_menu_tool_button_set_menu (CTK_MENU_TOOL_BUTTON (item), menu);
   add_item_to_list (store, item, "Open");
   ctk_toolbar_insert (CTK_TOOLBAR (toolbar), item, -1);
-  gdk_threads_add_timeout (3000, (GSourceFunc) timeout_cb1, item);
+  cdk_threads_add_timeout (3000, (GSourceFunc) timeout_cb1, item);
  
   menu = ctk_menu_new ();
   for (i = 0; i < 20; i++)

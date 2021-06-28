@@ -23,10 +23,10 @@
 #ifndef XSETTINGS_CLIENT_H
 #define XSETTINGS_CLIENT_H
 
-#include <gdk/x11/gdkx11screen.h>
+#include <cdk/x11/cdkx11screen.h>
 
-void _gdk_x11_xsettings_init            (GdkX11Screen        *x11_screen);
-void _gdk_x11_xsettings_finish          (GdkX11Screen        *x11_screen);
-void _gdk_x11_settings_force_reread     (GdkX11Screen        *x11_screen);
+void _cdk_x11_xsettings_init            (GdkX11Screen        *x11_screen);
+void _cdk_x11_xsettings_finish          (GdkX11Screen        *x11_screen);
+void _cdk_x11_settings_force_reread     (GdkX11Screen        *x11_screen);
 
 #endif /* XSETTINGS_CLIENT_H */

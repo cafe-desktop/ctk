@@ -86,7 +86,7 @@
  *   ctk_style_context_get_color (context,
  *                                ctk_style_context_get_state (context),
  *                                &color);
- *   gdk_cairo_set_source_rgba (cr, &color);
+ *   cdk_cairo_set_source_rgba (cr, &color);
  *
  *   cairo_fill (cr);
  *
@@ -103,11 +103,11 @@
  * onscreen, or when it’s covered by another window and then uncovered.
  * You can also force an expose event by adding to the “damage region”
  * of the drawing area’s window; ctk_widget_queue_draw_area() and
- * gdk_window_invalidate_rect() are equally good ways to do this.
+ * cdk_window_invalidate_rect() are equally good ways to do this.
  * You’ll then get a draw signal for the invalid region.
  *
  * The available routines for drawing are documented on the
- * [GDK Drawing Primitives][gdk3-Cairo-Interaction] page
+ * [GDK Drawing Primitives][cdk3-Cairo-Interaction] page
  * and the cairo documentation.
  *
  * To receive mouse events on a drawing area, you will need to enable
@@ -213,7 +213,7 @@ ctk_drawing_area_realize (CtkWidget *widget)
 
       attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-      window = gdk_window_new (ctk_widget_get_parent_window (widget),
+      window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                &attributes, attributes_mask);
       ctk_widget_register_window (widget, window);
       ctk_widget_set_window (widget, window);
@@ -236,7 +236,7 @@ ctk_drawing_area_size_allocate (CtkWidget     *widget,
   if (ctk_widget_get_realized (widget))
     {
       if (ctk_widget_get_has_window (widget))
-        gdk_window_move_resize (ctk_widget_get_window (widget),
+        cdk_window_move_resize (ctk_widget_get_window (widget),
                                 allocation->x, allocation->y,
                                 allocation->width, allocation->height);
 
@@ -249,7 +249,7 @@ ctk_drawing_area_send_configure (CtkDrawingArea *darea)
 {
   CtkAllocation allocation;
   CtkWidget *widget;
-  GdkEvent *event = gdk_event_new (GDK_CONFIGURE);
+  GdkEvent *event = cdk_event_new (GDK_CONFIGURE);
 
   widget = CTK_WIDGET (darea);
   ctk_widget_get_allocation (widget, &allocation);
@@ -262,5 +262,5 @@ ctk_drawing_area_send_configure (CtkDrawingArea *darea)
   event->configure.height = allocation.height;
 
   ctk_widget_event (widget, event);
-  gdk_event_free (event);
+  cdk_event_free (event);
 }

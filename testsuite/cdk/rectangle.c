@@ -1,4 +1,4 @@
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 static void
 test_rectangle_equal (void)
@@ -10,11 +10,11 @@ test_rectangle_equal (void)
   GdkRectangle e = { 0, 0, 0, 0 };
   GdkRectangle f = { 1, 1, 0, 0 };
 
-  g_assert_true (!gdk_rectangle_equal (&a, &b));
-  g_assert_true (!gdk_rectangle_equal (&a, &c));
-  g_assert_true (!gdk_rectangle_equal (&b, &c));
-  g_assert_true ( gdk_rectangle_equal (&a, &d));
-  g_assert_true (!gdk_rectangle_equal (&e, &f));
+  g_assert_true (!cdk_rectangle_equal (&a, &b));
+  g_assert_true (!cdk_rectangle_equal (&a, &c));
+  g_assert_true (!cdk_rectangle_equal (&b, &c));
+  g_assert_true ( cdk_rectangle_equal (&a, &d));
+  g_assert_true (!cdk_rectangle_equal (&e, &f));
 }
 
 static void
@@ -30,17 +30,17 @@ test_rectangle_intersect (void)
   GdkRectangle h = { 10, 10, 0, 0 };
   gboolean res;
 
-  res = gdk_rectangle_intersect (&a, &b, &c);
+  res = cdk_rectangle_intersect (&a, &b, &c);
   g_assert_true (res);
-  g_assert_true (gdk_rectangle_equal (&c, &d));
+  g_assert_true (cdk_rectangle_equal (&c, &d));
 
   /* non-empty, non-intersecting rectangles */
-  res = gdk_rectangle_intersect (&e, &f, &f);
+  res = cdk_rectangle_intersect (&e, &f, &f);
   g_assert_cmpint (f.width, ==, 0);
   g_assert_cmpint (f.height, ==, 0);
 
   /* empty rectangles */
-  res = gdk_rectangle_intersect (&g, &h, NULL);
+  res = cdk_rectangle_intersect (&g, &h, NULL);
   g_assert_true (!res);
 }
 
@@ -55,14 +55,14 @@ test_rectangle_union (void)
   GdkRectangle f = { 50, 50, 0, 0 };
   GdkRectangle g = { 0, 0, 50, 50 };
 
-  gdk_rectangle_union (&a, &b, &c);
-  g_assert_true (gdk_rectangle_equal (&c, &d));
+  cdk_rectangle_union (&a, &b, &c);
+  g_assert_true (cdk_rectangle_equal (&c, &d));
 
-  gdk_rectangle_union (&a, &b, &b);
-  g_assert_true (gdk_rectangle_equal (&b, &d));
+  cdk_rectangle_union (&a, &b, &b);
+  g_assert_true (cdk_rectangle_equal (&b, &d));
 
-  gdk_rectangle_union (&e, &f, &f);
-  g_assert_true (gdk_rectangle_equal (&f, &g));
+  cdk_rectangle_union (&e, &f, &f);
+  g_assert_true (cdk_rectangle_equal (&f, &g));
 }
 
 int
@@ -70,7 +70,7 @@ main (int argc, char *argv[])
 {
   g_test_init (&argc, &argv, NULL);
 
-  gdk_init (NULL, NULL);
+  cdk_init (NULL, NULL);
 
   g_test_bug_base ("http://bugzilla.gnome.org/");
 

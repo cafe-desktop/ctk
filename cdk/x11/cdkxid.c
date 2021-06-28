@@ -24,25 +24,25 @@
 
 #include "config.h"
 
-#include "gdkprivate-x11.h"
-#include "gdkdisplay-x11.h"
+#include "cdkprivate-x11.h"
+#include "cdkdisplay-x11.h"
 
 #include <stdio.h>
 
 static guint
-gdk_xid_hash (XID *xid)
+cdk_xid_hash (XID *xid)
 {
   return *xid;
 }
 
 static gboolean
-gdk_xid_equal (XID *a, XID *b)
+cdk_xid_equal (XID *a, XID *b)
 {
   return (*a == *b);
 }
 
 void
-_gdk_x11_display_add_window (GdkDisplay *display,
+_cdk_x11_display_add_window (GdkDisplay *display,
                              XID        *xid,
                              GdkWindow  *data)
 {
@@ -54,8 +54,8 @@ _gdk_x11_display_add_window (GdkDisplay *display,
   display_x11 = GDK_X11_DISPLAY (display);
 
   if (!display_x11->xid_ht)
-    display_x11->xid_ht = g_hash_table_new ((GHashFunc) gdk_xid_hash,
-                                            (GEqualFunc) gdk_xid_equal);
+    display_x11->xid_ht = g_hash_table_new ((GHashFunc) cdk_xid_hash,
+                                            (GEqualFunc) cdk_xid_equal);
 
   if (g_hash_table_lookup (display_x11->xid_ht, xid))
     g_warning ("XID collision, trouble ahead");
@@ -64,7 +64,7 @@ _gdk_x11_display_add_window (GdkDisplay *display,
 }
 
 void
-_gdk_x11_display_remove_window (GdkDisplay *display,
+_cdk_x11_display_remove_window (GdkDisplay *display,
                                 XID         xid)
 {
   GdkX11Display *display_x11;
@@ -78,7 +78,7 @@ _gdk_x11_display_remove_window (GdkDisplay *display,
 }
 
 /**
- * gdk_x11_window_lookup_for_display:
+ * cdk_x11_window_lookup_for_display:
  * @display: (type GdkX11Display): the #GdkDisplay corresponding to the
  *           window handle
  * @window: an Xlib Window
@@ -91,7 +91,7 @@ _gdk_x11_display_remove_window (GdkDisplay *display,
  * Since: 2.24
  */
 GdkWindow *
-gdk_x11_window_lookup_for_display (GdkDisplay *display,
+cdk_x11_window_lookup_for_display (GdkDisplay *display,
                                    Window      window)
 {
   GdkX11Display *display_x11;

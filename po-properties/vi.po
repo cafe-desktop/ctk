@@ -20,172 +20,172 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gtranslator 2.91.7\n"
 
-#: gdk/gdkapplaunchcontext.c:127 gdk/gdkcursor.c:139 gdk/gdkdevicemanager.c:181
-#: gdk/gdkglcontext.c:264
+#: cdk/cdkapplaunchcontext.c:127 cdk/cdkcursor.c:139 cdk/cdkdevicemanager.c:181
+#: cdk/cdkglcontext.c:264
 msgid "Display"
 msgstr "Hiển thị"
 
-#: gdk/gdkcursor.c:131
+#: cdk/cdkcursor.c:131
 msgid "Cursor type"
 msgstr "Kiểu con trỏ"
 
-#: gdk/gdkcursor.c:132
+#: cdk/cdkcursor.c:132
 msgid "Standard cursor type"
 msgstr "Kiểu con trỏ chuẩn"
 
-#: gdk/gdkcursor.c:140
+#: cdk/cdkcursor.c:140
 msgid "Display of this cursor"
 msgstr "Hiển thị của con trỏ này"
 
-#: gdk/gdkdevice.c:115
+#: cdk/cdkdevice.c:115
 msgid "Device Display"
 msgstr "Thiết bị hiển thị"
 
-#: gdk/gdkdevice.c:116
+#: cdk/cdkdevice.c:116
 msgid "Display which the device belongs to"
 msgstr "Bộ hiển thị mà thiết bị đi kèm"
 
-#: gdk/gdkdevice.c:130
+#: cdk/cdkdevice.c:130
 msgid "Device manager"
 msgstr "Quản lý thiết bị"
 
-#: gdk/gdkdevice.c:131
+#: cdk/cdkdevice.c:131
 msgid "Device manager which the device belongs to"
 msgstr "Bộ quản lý thiết bị mà thiết bị liên quan đến nó"
 
-#: gdk/gdkdevice.c:144 gdk/gdkdevice.c:145
+#: cdk/cdkdevice.c:144 cdk/cdkdevice.c:145
 msgid "Device name"
 msgstr "Tên thiết bị"
 
-#: gdk/gdkdevice.c:158
+#: cdk/cdkdevice.c:158
 msgid "Device type"
 msgstr "Kiểu thiết bị"
 
-#: gdk/gdkdevice.c:159
+#: cdk/cdkdevice.c:159
 msgid "Device role in the device manager"
 msgstr "Vai trò thiết bị trong bộ quản lý thiết bị"
 
-#: gdk/gdkdevice.c:175
+#: cdk/cdkdevice.c:175
 msgid "Associated device"
 msgstr "Thiết bị kết hợp"
 
-#: gdk/gdkdevice.c:176
+#: cdk/cdkdevice.c:176
 msgid "Associated pointer or keyboard with this device"
 msgstr "Con trỏ hay bàn phím gắn với thiết bị này"
 
-#: gdk/gdkdevice.c:189
+#: cdk/cdkdevice.c:189
 msgid "Input source"
 msgstr "Nguồn vào"
 
-#: gdk/gdkdevice.c:190
+#: cdk/cdkdevice.c:190
 msgid "Source type for the device"
 msgstr "Kiểu nguồn cho thiết bị"
 
-#: gdk/gdkdevice.c:205 gdk/gdkdevice.c:206
+#: cdk/cdkdevice.c:205 cdk/cdkdevice.c:206
 msgid "Input mode for the device"
 msgstr "Chế độ vào cho thiết bị"
 
-#: gdk/gdkdevice.c:221
+#: cdk/cdkdevice.c:221
 msgid "Whether the device has a cursor"
 msgstr "Thiết bị có con trỏ hay không"
 
-#: gdk/gdkdevice.c:222
+#: cdk/cdkdevice.c:222
 msgid "Whether there is a visible cursor following device motion"
 msgstr "Có cho con trỏ hiện hình cùng với di chuyển thiết bị"
 
-#: gdk/gdkdevice.c:236 gdk/gdkdevice.c:237
+#: cdk/cdkdevice.c:236 cdk/cdkdevice.c:237
 msgid "Number of axes in the device"
 msgstr "Số lượng trục trong thiết bị"
 
-#: gdk/gdkdevice.c:251 gdk/gdkdevice.c:252
+#: cdk/cdkdevice.c:251 cdk/cdkdevice.c:252
 msgid "Vendor ID"
 msgstr "Mã nhà cung cấp"
 
-#: gdk/gdkdevice.c:266 gdk/gdkdevice.c:267
+#: cdk/cdkdevice.c:266 cdk/cdkdevice.c:267
 msgid "Product ID"
 msgstr "Mã sản phẩm"
 
-#: gdk/gdkdevicemanager.c:182
+#: cdk/cdkdevicemanager.c:182
 msgid "Display for the device manager"
 msgstr "Hiển thị bộ quản lý thiết bị"
 
-#: gdk/gdkdisplaymanager.c:169
+#: cdk/cdkdisplaymanager.c:169
 msgid "Default Display"
 msgstr "Bộ trình bày mặc định"
 
-#: gdk/gdkdisplaymanager.c:170
+#: cdk/cdkdisplaymanager.c:170
 msgid "The default display for GDK"
 msgstr "Bộ trình bày mặc định cho GDK"
 
-#: gdk/gdkglcontext.c:265
+#: cdk/cdkglcontext.c:265
 msgid "The GDK display used to create the GL context"
 msgstr "Bộ trình bày GDK để tạo ngữ cảnh GL"
 
-#: gdk/gdkglcontext.c:280 ctk/ctkwidget.c:1332
+#: cdk/cdkglcontext.c:280 ctk/ctkwidget.c:1332
 msgid "Window"
 msgstr "Cửa sổ"
 
-#: gdk/gdkglcontext.c:281
+#: cdk/cdkglcontext.c:281
 msgid "The GDK window bound to the GL context"
 msgstr "Cửa sổ GDK gắn với ngữ cảnh GL"
 
-#: gdk/gdkglcontext.c:296
+#: cdk/cdkglcontext.c:296
 msgid "Shared context"
 msgstr "Ngữ cảnh chia sẻ"
 
-#: gdk/gdkglcontext.c:297
+#: cdk/cdkglcontext.c:297
 msgid "The GL context this context shares data with"
 msgstr "Ngữ cảnh GL mà ngữ cảnh này chia sẻ dữ liệu với"
 
-#: gdk/gdkscreen.c:91
+#: cdk/cdkscreen.c:91
 msgid "Font options"
 msgstr "Tùy chọn phông chữ"
 
-#: gdk/gdkscreen.c:92
+#: cdk/cdkscreen.c:92
 msgid "The default font options for the screen"
 msgstr "Các tùy chọn phông chữ mặc định cho màn hình"
 
-#: gdk/gdkscreen.c:99
+#: cdk/cdkscreen.c:99
 msgid "Font resolution"
 msgstr "Độ phân giải phông chữ"
 
-#: gdk/gdkscreen.c:100
+#: cdk/cdkscreen.c:100
 msgid "The resolution for fonts on the screen"
 msgstr "Độ phân giải của phông chữ trên màn hình"
 
-#: gdk/gdkwindow.c:352 gdk/gdkwindow.c:353
+#: cdk/cdkwindow.c:352 cdk/cdkwindow.c:353
 msgid "Cursor"
 msgstr "Con trỏ"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:113
+#: cdk/x11/cdkdevicemanager-xi2.c:113
 msgid "Opcode"
 msgstr "Mã lệnh"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:114
+#: cdk/x11/cdkdevicemanager-xi2.c:114
 msgid "Opcode for XInput2 requests"
 msgstr "Mã lệnh cho các yêu cầu XInput2"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:120
+#: cdk/x11/cdkdevicemanager-xi2.c:120
 msgid "Major"
 msgstr "Số lớn"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:121
+#: cdk/x11/cdkdevicemanager-xi2.c:121
 msgid "Major version number"
 msgstr "Số lớn của phiên bản"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:127
+#: cdk/x11/cdkdevicemanager-xi2.c:127
 msgid "Minor"
 msgstr "Số nhỏ"
 
-#: gdk/x11/gdkdevicemanager-xi2.c:128
+#: cdk/x11/cdkdevicemanager-xi2.c:128
 msgid "Minor version number"
 msgstr "Số nhỏ của phiên bản"
 
-#: gdk/x11/gdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:143
 msgid "Device ID"
 msgstr "ID thiết bị"
 
-#: gdk/x11/gdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device identifier"
 msgstr "Định danh thiết bị"
 

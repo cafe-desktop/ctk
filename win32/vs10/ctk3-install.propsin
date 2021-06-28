@@ -11,9 +11,9 @@ mkdir $(CopyDir)\share\gir-1.0
 mkdir $(CopyDir)\lib\pkgconfig
 mkdir $(CopyDir)\lib\girepository-1.0
 
-copy "$(BinDir)\$(CtkDllPrefix)gdk-3$(CtkDllSuffix).dll" $(CopyDir)\bin
-copy "$(BinDir)\$(CtkDllPrefix)gdk-3$(CtkDllSuffix).pdb" $(CopyDir)\bin
-copy "$(BinDir)\gdk-$(ApiVersion).lib" $(CopyDir)\lib
+copy "$(BinDir)\$(CtkDllPrefix)cdk-3$(CtkDllSuffix).dll" $(CopyDir)\bin
+copy "$(BinDir)\$(CtkDllPrefix)cdk-3$(CtkDllSuffix).pdb" $(CopyDir)\bin
+copy "$(BinDir)\cdk-$(ApiVersion).lib" $(CopyDir)\lib
 
 if "$(Configuration)" == "Release_Broadway" goto DO_BROADWAY_BIN
 if "$(Configuration)" == "Debug_Broadway" goto DO_BROADWAY_BIN
@@ -111,19 +111,19 @@ if exist .\Debug\$(Platform)\bin\Ctk-3.0.typelib copy .\Debug\$(Platform)\bin\Ct
 
 :DONE_BIN
 
-copy ..\gdk-3.0.pc $(CopyDir)\lib\pkgconfig
-copy ..\gdk-3.0.pc $(CopyDir)\lib\pkgconfig\gdk-win32-3.0.pc
+copy ..\cdk-3.0.pc $(CopyDir)\lib\pkgconfig
+copy ..\cdk-3.0.pc $(CopyDir)\lib\pkgconfig\cdk-win32-3.0.pc
 copy "..\ctk+-3.0.pc" $(CopyDir)\lib\pkgconfig
 copy "..\ctk+-3.0.pc" "$(CopyDir)\lib\pkgconfig\ctk+-3.0.pc"
 copy ..\gail-3.0.pc $(CopyDir)\lib\pkgconfig
     </CtkDoInstallBin>
     <CtkDoInstall>
 echo off
-mkdir $(CopyDir)\include\ctk-$(ApiVersion)\gdk\win32
-mkdir $(CopyDir)\include\ctk-$(ApiVersion)\gdk\deprecated
-copy ..\..\gdk\win32\gdkwin32.h $(CopyDir)\include\ctk-$(ApiVersion)\gdk
-#include "gdk-3.vs10.headers"
-#include "gdk3-win32.vs10.headers"
+mkdir $(CopyDir)\include\ctk-$(ApiVersion)\cdk\win32
+mkdir $(CopyDir)\include\ctk-$(ApiVersion)\cdk\deprecated
+copy ..\..\cdk\win32\cdkwin32.h $(CopyDir)\include\ctk-$(ApiVersion)\cdk
+#include "cdk-3.vs10.headers"
+#include "cdk3-win32.vs10.headers"
 
 mkdir $(CopyDir)\include\ctk-$(ApiVersion)\ctk\a11y
 mkdir $(CopyDir)\include\ctk-$(ApiVersion)\ctk\deprecated
@@ -143,9 +143,9 @@ copy ..\..\ctk\org.ctk.Settings.FileChooser.gschema.xml $(CopyDir)\share\glib-2.
 copy ..\..\demos\ctk-demo\org.ctk.Demo.gschema.xml $(CopyDir)\share\glib-2.0\schemas
     </CtkDoInstall>
     <CtkDoInstallBroadwayHeaders>
-copy ..\..\gdk\broadway\gdkbroadway.h $(CopyDir)\include\ctk-$(ApiVersion)\gdk
-mkdir $(CopyDir)\include\ctk-$(ApiVersion)\gdk\broadway
-#include "gdk3-broadway.vs10.headers"
+copy ..\..\cdk\broadway\cdkbroadway.h $(CopyDir)\include\ctk-$(ApiVersion)\cdk
+mkdir $(CopyDir)\include\ctk-$(ApiVersion)\cdk\broadway
+#include "cdk3-broadway.vs10.headers"
     </CtkDoInstallBroadwayHeaders>
     <CtkPostInstall>
 echo "Compiling gsettings XML Files..."
@@ -156,7 +156,7 @@ $(CopyDir)\bin\ctk-update-icon-cache.exe --ignore-theme-index --force "$(CopyDir
     </CtkPostInstall>
     <GenerateCtkPC>$(PythonDir)\python ..\ctkpc.py --prefix=$(CopyDir) --version=$(CtkVersion) --host=i686-pc-vs$(VSVer)</GenerateCtkPC>
     <GenerateCtkPCX64>$(PythonDir)\python ..\ctkpc.py --prefix=$(CopyDir) --version=$(CtkVersion) --host=x86_64-pc-vs$(VSVer)</GenerateCtkPCX64>
-    <CtkPCFiles>..\gdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc</CtkPCFiles>
+    <CtkPCFiles>..\cdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc</CtkPCFiles>
   </PropertyGroup>
   <PropertyGroup>
     <_PropertySheetDisplayName>ctk3installsprops</_PropertySheetDisplayName>

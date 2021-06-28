@@ -91,8 +91,8 @@
 
 #include "config.h"
 
-#include "gdk/gdk.h"
-#include "gdk/gdk-private.h"
+#include "cdk/cdk.h"
+#include "cdk/cdk-private.h"
 
 #include <locale.h>
 
@@ -654,8 +654,8 @@ do_pre_parse_initialization (int    *argc,
   if (_ctk_module_has_mixed_deps (NULL))
     g_error ("CTK+ 2.x symbols detected. Using CTK+ 2.x and CTK+ 3 in the same process is not supported");
 
-  GDK_PRIVATE_CALL (gdk_pre_parse) ();
-  gdk_event_handler_set ((GdkEventFunc)ctk_main_do_event, NULL, NULL);
+  GDK_PRIVATE_CALL (cdk_pre_parse) ();
+  cdk_event_handler_set ((GdkEventFunc)ctk_main_do_event, NULL, NULL);
 
   env_string = g_getenv ("CTK_DEBUG");
   if (env_string != NULL)
@@ -712,7 +712,7 @@ static void
 default_display_notify_cb (GdkDisplayManager *dm)
 {
   _ctk_accessibility_init ();
-  debug_flags[0].display = gdk_display_get_default ();
+  debug_flags[0].display = cdk_display_get_default ();
 }
 
 static void
@@ -741,7 +741,7 @@ do_post_parse_initialization (int    *argc,
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (debug_flags[0].flags & CTK_DEBUG_UPDATES)
-    gdk_window_set_debug_updates (TRUE);
+    cdk_window_set_debug_updates (TRUE);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   ctk_widget_set_default_direction (ctk_get_locale_direction ());
@@ -762,8 +762,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       _ctk_modules_init (argc, argv, NULL);
     }
 
-  display_manager = gdk_display_manager_get ();
-  if (gdk_display_manager_get_default_display (display_manager) != NULL)
+  display_manager = cdk_display_manager_get ();
+  if (cdk_display_manager_get_default_display (display_manager) != NULL)
     default_display_notify_cb (display_manager);
 
   g_signal_connect (display_manager, "notify::default-display",
@@ -801,9 +801,9 @@ post_parse_hook (GOptionContext *context,
   
   if (info->open_default_display)
     {
-      if (GDK_PRIVATE_CALL (gdk_display_open_default) () == NULL)
+      if (GDK_PRIVATE_CALL (cdk_display_open_default) () == NULL)
         {
-          const char *display_name = gdk_get_display_arg_name ();
+          const char *display_name = cdk_get_display_arg_name ();
           g_set_error (error,
                        G_OPTION_ERROR,
                        G_OPTION_ERROR_FAILED,
@@ -866,7 +866,7 @@ ctk_set_display_debug_flags (GdkDisplay *display,
 guint
 ctk_get_debug_flags (void)
 {
-  return ctk_get_display_debug_flags (gdk_display_get_default ());
+  return ctk_get_display_debug_flags (cdk_display_get_default ());
 }
 
 /**
@@ -877,7 +877,7 @@ ctk_get_debug_flags (void)
 void
 ctk_set_debug_flags (guint flags)
 {
-  ctk_set_display_debug_flags (gdk_display_get_default (), flags);
+  ctk_set_display_debug_flags (cdk_display_get_default (), flags);
 }
 
 gboolean
@@ -922,7 +922,7 @@ ctk_get_option_group (gboolean open_default_display)
   group = g_option_group_new ("ctk", _("CTK+ Options"), _("Show CTK+ Options"), info, g_free);
   g_option_group_set_parse_hooks (group, pre_parse_hook, post_parse_hook);
 
-  GDK_PRIVATE_CALL (gdk_add_option_entries) (group);
+  GDK_PRIVATE_CALL (cdk_add_option_entries) (group);
   g_option_group_add_entries (group, ctk_args);
   g_option_group_set_translation_domain (group, GETTEXT_PACKAGE);
   
@@ -995,9 +995,9 @@ ctk_init_with_args (gint                 *argc,
     return FALSE;
 
 done:
-  if (GDK_PRIVATE_CALL (gdk_display_open_default) () == NULL)
+  if (GDK_PRIVATE_CALL (cdk_display_open_default) () == NULL)
     {
-      const char *display_name = gdk_get_display_arg_name ();
+      const char *display_name = cdk_get_display_arg_name ();
       g_set_error (error,
                    G_OPTION_ERROR,
                    G_OPTION_ERROR_FAILED,
@@ -1022,7 +1022,7 @@ done:
  *
  * Parses command line arguments, and initializes global
  * attributes of CTK+, but does not actually open a connection
- * to a display. (See gdk_display_open(), gdk_get_display_arg_name())
+ * to a display. (See cdk_display_open(), cdk_get_display_arg_name())
  *
  * Any arguments used by CTK+ or GDK are removed from the array and
  * @argc and @argv are updated accordingly.
@@ -1106,7 +1106,7 @@ ctk_init_check (int    *argc,
   if (!ctk_parse_args (argc, argv))
     return FALSE;
 
-  ret = GDK_PRIVATE_CALL (gdk_display_open_default) () != NULL;
+  ret = GDK_PRIVATE_CALL (cdk_display_open_default) () != NULL;
 
   if (ctk_get_debug_flags () & CTK_DEBUG_INTERACTIVE)
     ctk_window_set_interactive_debugging (TRUE);
@@ -1165,7 +1165,7 @@ ctk_init (int *argc, char ***argv)
 {
   if (!ctk_init_check (argc, argv))
     {
-      const char *display_name_arg = gdk_get_display_arg_name ();
+      const char *display_name_arg = cdk_get_display_arg_name ();
       if (display_name_arg == NULL)
         display_name_arg = getenv("DISPLAY");
       g_warning ("cannot open display: %s", display_name_arg ? display_name_arg : "");
@@ -1324,12 +1324,12 @@ ctk_main (void)
 
   if (g_main_loop_is_running (main_loops->data))
     {
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       g_main_loop_run (loop);
-      gdk_threads_enter ();
+      cdk_threads_enter ();
 
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      gdk_flush ();
+      cdk_flush ();
       G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
@@ -1405,9 +1405,9 @@ ctk_events_pending (void)
 {
   gboolean result;
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
   result = g_main_context_pending (NULL);
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   return result;
 }
@@ -1428,9 +1428,9 @@ ctk_events_pending (void)
 gboolean
 ctk_main_iteration (void)
 {
-  gdk_threads_leave ();
+  cdk_threads_leave ();
   g_main_context_iteration (NULL, TRUE);
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   if (main_loops)
     return !g_main_loop_is_running (main_loops->data);
@@ -1452,9 +1452,9 @@ ctk_main_iteration (void)
 gboolean
 ctk_main_iteration_do (gboolean blocking)
 {
-  gdk_threads_leave ();
+  cdk_threads_leave ();
   g_main_context_iteration (NULL, blocking);
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   if (main_loops)
     return !g_main_loop_is_running (main_loops->data);
@@ -1471,8 +1471,8 @@ rewrite_events_translate (GdkWindow *old_window,
   gint old_origin_x, old_origin_y;
   gint new_origin_x, new_origin_y;
 
-  gdk_window_get_origin (old_window, &old_origin_x, &old_origin_y);
-  gdk_window_get_origin (new_window, &new_origin_x, &new_origin_y);
+  cdk_window_get_origin (old_window, &old_origin_x, &old_origin_y);
+  cdk_window_get_origin (new_window, &new_origin_x, &new_origin_y);
 
   *x += old_origin_x - new_origin_x;
   *y += old_origin_y - new_origin_y;
@@ -1482,7 +1482,7 @@ static GdkEvent *
 rewrite_event_for_window (GdkEvent  *event,
                           GdkWindow *new_window)
 {
-  event = gdk_event_copy (event);
+  event = cdk_event_copy (event);
 
   switch (event->type)
     {
@@ -1575,10 +1575,10 @@ rewrite_event_for_grabs (GdkEvent *event)
     case GDK_TOUCH_CANCEL:
     case GDK_TOUCHPAD_SWIPE:
     case GDK_TOUCHPAD_PINCH:
-      display = gdk_window_get_display (event->any.window);
-      device = gdk_event_get_device (event);
+      display = cdk_window_get_display (event->any.window);
+      device = cdk_event_get_device (event);
 
-      if (!GDK_PRIVATE_CALL (gdk_device_grab_info) (display, device, &grab_window, &owner_events) ||
+      if (!GDK_PRIVATE_CALL (cdk_device_grab_info) (display, device, &grab_window, &owner_events) ||
           !owner_events)
         return NULL;
       break;
@@ -1587,7 +1587,7 @@ rewrite_event_for_grabs (GdkEvent *event)
     }
 
   event_widget = ctk_get_event_widget (event);
-  gdk_window_get_user_data (grab_window, &grab_widget_ptr);
+  cdk_window_get_user_data (grab_window, &grab_widget_ptr);
   grab_widget = grab_widget_ptr;
 
   if (grab_widget &&
@@ -1747,7 +1747,7 @@ ctk_main_do_event (GdkEvent *event)
   current_events = g_list_prepend (current_events, event);
 
   window_group = ctk_main_get_window_group (event_widget);
-  device = gdk_event_get_device (event);
+  device = cdk_event_get_device (event);
 
   /* check whether there is a (device) grab in effect... */
   if (device)
@@ -1963,7 +1963,7 @@ ctk_main_do_event (GdkEvent *event)
   g_list_free_1 (tmp_list);
 
   if (rewritten_event)
-    gdk_event_free (rewritten_event);
+    cdk_event_free (rewritten_event);
 }
 
 /**
@@ -2080,7 +2080,7 @@ synth_crossing_for_grab_notify (CtkWidget       *from,
           from_window = _ctk_widget_get_device_window (from, device);
 
           if (from_window &&
-              !gdk_window_get_support_multidevice (from_window) &&
+              !cdk_window_get_support_multidevice (from_window) &&
               g_list_find (info->notified_windows, from_window))
             from_window = NULL;
         }
@@ -2092,7 +2092,7 @@ synth_crossing_for_grab_notify (CtkWidget       *from,
           to_window = _ctk_widget_get_device_window (to, device);
 
           if (to_window &&
-              !gdk_window_get_support_multidevice (to_window) &&
+              !cdk_window_get_support_multidevice (to_window) &&
               g_list_find (info->notified_windows, to_window))
             to_window = NULL;
         }
@@ -2460,13 +2460,13 @@ ctk_invoke_key_snoopers (CtkWidget *grab_widget,
  *
  * Returns: (transfer full) (nullable): a copy of the current event, or
  *     %NULL if there is no current event. The returned event must be
- *     freed with gdk_event_free().
+ *     freed with cdk_event_free().
  */
 GdkEvent*
 ctk_get_current_event (void)
 {
   if (current_events)
-    return gdk_event_copy (current_events->data);
+    return cdk_event_copy (current_events->data);
   else
     return NULL;
 }
@@ -2484,7 +2484,7 @@ guint32
 ctk_get_current_event_time (void)
 {
   if (current_events)
-    return gdk_event_get_time (current_events->data);
+    return cdk_event_get_time (current_events->data);
   else
     return GDK_CURRENT_TIME;
 }
@@ -2506,7 +2506,7 @@ ctk_get_current_event_state (GdkModifierType *state)
   g_return_val_if_fail (state != NULL, FALSE);
 
   if (current_events)
-    return gdk_event_get_state (current_events->data, state);
+    return cdk_event_get_state (current_events->data, state);
   else
     {
       *state = 0;
@@ -2526,7 +2526,7 @@ GdkDevice *
 ctk_get_current_event_device (void)
 {
   if (current_events)
-    return gdk_event_get_device (current_events->data);
+    return cdk_event_get_device (current_events->data);
   else
     return NULL;
 }
@@ -2550,9 +2550,9 @@ ctk_get_event_widget (GdkEvent *event)
 
   widget = NULL;
   if (event && event->any.window &&
-      (event->type == GDK_DESTROY || !gdk_window_is_destroyed (event->any.window)))
+      (event->type == GDK_DESTROY || !cdk_window_is_destroyed (event->any.window)))
     {
-      gdk_window_get_user_data (event->any.window, &widget_ptr);
+      cdk_window_get_user_data (event->any.window, &widget_ptr);
       widget = widget_ptr;
     }
 
@@ -2711,7 +2711,7 @@ propagate_event (CtkWidget *widget,
  * All that said, you most likely don’t want to use any of these
  * functions; synthesizing events is rarely needed. There are almost
  * certainly better ways to achieve your goals. For example, use
- * gdk_window_invalidate_rect() or ctk_widget_queue_draw() instead
+ * cdk_window_invalidate_rect() or ctk_widget_queue_draw() instead
  * of making up expose events.
  */
 void

@@ -156,7 +156,7 @@
       <para>
         There are multiple ways to drive the clock, at the lowest level
         you can request a particular phase with
-        gdk_frame_clock_request_phase() which will schedule a clock beat
+        cdk_frame_clock_request_phase() which will schedule a clock beat
         as needed so that it eventually reaches the requested phase.
         However, in practice most things happen at higher levels:
         <itemizedlist>
@@ -253,7 +253,7 @@
         better, as well as allowing efficient transparent backgrounds.
         In order for this to work such containers need to detect when child
         widgets are redrawn so that it can update the offscreen. This can be
-        done with the new gdk_window_set_invalidate_handler() function.
+        done with the new cdk_window_set_invalidate_handler() function.
       </para>
     </refsect2>
 
@@ -277,9 +277,9 @@
     <para>
       Two basic functions in GDK form the core of the double-buffering
       mechanism:  <link
-      linkend="gdk_window_begin_paint_region"><function>gdk_window_begin_paint_region()</function></link>
+      linkend="cdk_window_begin_paint_region"><function>cdk_window_begin_paint_region()</function></link>
       and <link
-      linkend="gdk_window_end_paint"><function>gdk_window_end_paint()</function></link>.
+      linkend="cdk_window_end_paint"><function>cdk_window_end_paint()</function></link>.
       The first function tells a <classname>GdkWindow</classname> to
       create a temporary off-screen buffer for drawing.  All
       subsequent drawing operations to this window get automatically
@@ -292,16 +292,16 @@
 
       <para>
 	It would be inconvenient for all widgets to call
-	<function>gdk_window_begin_paint_region()</function> and
-	<function>gdk_window_end_paint()</function> at the beginning
+	<function>cdk_window_begin_paint_region()</function> and
+	<function>cdk_window_end_paint()</function> at the beginning
 	and end of their draw handlers.
       </para>
 
       <para>
 	To make this easier, CTK+ normally calls
-        <function>gdk_window_begin_paint_region()</function>
+        <function>cdk_window_begin_paint_region()</function>
         before emitting the #CtkWidget::draw signal, and
-	then it calls <function>gdk_window_end_paint()</function>
+	then it calls <function>cdk_window_end_paint()</function>
 	after the signal has been emitted. This is convenient for
 	most widgets, as they do not need to worry about creating
 	their own temporary drawing buffers or about calling those
@@ -349,8 +349,8 @@ my_widget_init (MyWidget *widget)
       <para>
 	Even if you turn off double buffering on a widget, you
 	can still call
-	<function>gdk_window_begin_paint_region()</function> and
-	<function>gdk_window_end_paint()</function> by hand to use
+	<function>cdk_window_begin_paint_region()</function> and
+	<function>cdk_window_end_paint()</function> by hand to use
 	temporary drawing buffers.
       </para>
     </refsect2>

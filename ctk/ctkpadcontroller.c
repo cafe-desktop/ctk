@@ -37,8 +37,8 @@
  * elements have one current mode, which may determine the final action
  * being triggered. Pad devices often divide buttons and sensors into groups,
  * all elements in a group share the same current mode, but different groups
- * may have different modes. See gdk_device_pad_get_n_groups() and
- * gdk_device_pad_get_group_n_modes().
+ * may have different modes. See cdk_device_pad_get_n_groups() and
+ * cdk_device_pad_get_group_n_modes().
  *
  * Each of the actions that a given button/strip/ring performs for a given
  * mode is defined by #CtkPadActionEntry, it contains an action name that
@@ -76,7 +76,7 @@
 #include "ctkintl.h"
 
 #ifdef GDK_WINDOWING_WAYLAND
-#include <gdk/wayland/gdkwayland.h>
+#include <cdk/wayland/cdkwayland.h>
 #endif
 
 struct _CtkPadController {
@@ -175,19 +175,19 @@ ctk_pad_controller_handle_mode_switch (CtkPadController *controller,
                                        guint             mode)
 {
 #ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (gdk_device_get_display (pad)))
+  if (GDK_IS_WAYLAND_DISPLAY (cdk_device_get_display (pad)))
     {
       const CtkPadActionEntry *entry;
       gint elem, idx, n_features;
 
       for (elem = CTK_PAD_ACTION_BUTTON; elem <= CTK_PAD_ACTION_STRIP; elem++)
         {
-          n_features = gdk_device_pad_get_n_features (GDK_DEVICE_PAD (pad),
+          n_features = cdk_device_pad_get_n_features (GDK_DEVICE_PAD (pad),
                                                       elem);
 
           for (idx = 0; idx < n_features; idx++)
             {
-              if (gdk_device_pad_get_feature_group (GDK_DEVICE_PAD (pad),
+              if (cdk_device_pad_get_feature_group (GDK_DEVICE_PAD (pad),
                                                     elem, idx) != group)
                 continue;
 
@@ -198,7 +198,7 @@ ctk_pad_controller_handle_mode_switch (CtkPadController *controller,
                                               entry->action_name))
                 continue;
 
-              gdk_wayland_device_pad_set_feedback (pad, elem, idx,
+              cdk_wayland_device_pad_set_feedback (pad, elem, idx,
                                                    g_dgettext (NULL, entry->label));
             }
         }
@@ -220,7 +220,7 @@ ctk_pad_controller_filter_event (CtkEventController *controller,
     return TRUE;
 
   if (pad_controller->pad &&
-      gdk_event_get_source_device (event) != pad_controller->pad)
+      cdk_event_get_source_device (event) != pad_controller->pad)
     return TRUE;
 
   return FALSE;
@@ -238,7 +238,7 @@ ctk_pad_controller_handle_event (CtkEventController *controller,
   if (event->type == GDK_PAD_GROUP_MODE)
     {
       ctk_pad_controller_handle_mode_switch (pad_controller,
-                                             gdk_event_get_source_device (event),
+                                             cdk_event_get_source_device (event),
                                              event->pad_group_mode.group,
                                              event->pad_group_mode.mode);
       return GDK_EVENT_PROPAGATE;
@@ -286,7 +286,7 @@ ctk_pad_controller_set_pad (CtkPadController *controller,
                             GdkDevice        *pad)
 {
   g_return_if_fail (!pad || GDK_IS_DEVICE (pad));
-  g_return_if_fail (!pad || gdk_device_get_source (pad) == GDK_SOURCE_TABLET_PAD);
+  g_return_if_fail (!pad || cdk_device_get_source (pad) == GDK_SOURCE_TABLET_PAD);
 
   g_set_object (&controller->pad, pad);
 }
@@ -417,7 +417,7 @@ ctk_pad_controller_new (CtkWindow    *window,
   g_return_val_if_fail (CTK_IS_WINDOW (window), NULL);
   g_return_val_if_fail (G_IS_ACTION_GROUP (group), NULL);
   g_return_val_if_fail (!pad || GDK_IS_DEVICE (pad), NULL);
-  g_return_val_if_fail (!pad || gdk_device_get_source (pad) == GDK_SOURCE_TABLET_PAD, NULL);
+  g_return_val_if_fail (!pad || cdk_device_get_source (pad) == GDK_SOURCE_TABLET_PAD, NULL);
 
   return g_object_new (CTK_TYPE_PAD_CONTROLLER,
                        "propagation-phase", CTK_PHASE_CAPTURE,

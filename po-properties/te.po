@@ -27,144 +27,144 @@ msgstr ""
 "X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: ../gdk/gdkapplaunchcontext.c:129 ../gdk/gdkcursor.c:134
-#: ../gdk/gdkdevicemanager.c:170
+#: ../cdk/cdkapplaunchcontext.c:129 ../cdk/cdkcursor.c:134
+#: ../cdk/cdkdevicemanager.c:170
 msgid "Display"
 msgstr "ప్రదర్శన"
 
-#: ../gdk/gdkcursor.c:126
+#: ../cdk/cdkcursor.c:126
 msgid "Cursor type"
 msgstr "కర్సర్ రకం"
 
-#: ../gdk/gdkcursor.c:127
+#: ../cdk/cdkcursor.c:127
 msgid "Standard cursor type"
 msgstr "ప్రామాణిక కర్సర్ రకం"
 
-#: ../gdk/gdkcursor.c:135
+#: ../cdk/cdkcursor.c:135
 msgid "Display of this cursor"
 msgstr "ఈ కర్సర్ ప్రదర్శన"
 
-#: ../gdk/gdkdevice.c:109
+#: ../cdk/cdkdevice.c:109
 msgid "Device Display"
 msgstr "పరికర ప్రదర్శన"
 
-#: ../gdk/gdkdevice.c:110
+#: ../cdk/cdkdevice.c:110
 msgid "Display which the device belongs to"
 msgstr "పరికర చెందినది ఈ ప్రదర్శన"
 
-#: ../gdk/gdkdevice.c:124
+#: ../cdk/cdkdevice.c:124
 msgid "Device manager"
 msgstr "పరికర నిర్వాహిక"
 
-#: ../gdk/gdkdevice.c:125
+#: ../cdk/cdkdevice.c:125
 msgid "Device manager which the device belongs to"
 msgstr "పరికర చెందినది ఈ పరికరం మేనేజర్"
 
-#: ../gdk/gdkdevice.c:139 ../gdk/gdkdevice.c:140
+#: ../cdk/cdkdevice.c:139 ../cdk/cdkdevice.c:140
 msgid "Device name"
 msgstr "పరికర నామము"
 
-#: ../gdk/gdkdevice.c:154
+#: ../cdk/cdkdevice.c:154
 msgid "Device type"
 msgstr "పరికర రకము"
 
-#: ../gdk/gdkdevice.c:155
+#: ../cdk/cdkdevice.c:155
 msgid "Device role in the device manager"
 msgstr "పరికర నిర్వాహికి లో పరికరం పాత్ర"
 
-#: ../gdk/gdkdevice.c:171
+#: ../cdk/cdkdevice.c:171
 msgid "Associated device"
 msgstr "అసోసియేటెడ్ పరికరం"
 
-#: ../gdk/gdkdevice.c:172
+#: ../cdk/cdkdevice.c:172
 msgid "Associated pointer or keyboard with this device"
 msgstr "ఈ పరికరం సంబంధం పాయింటర్ లేదా కీబోర్డ్"
 
-#: ../gdk/gdkdevice.c:185
+#: ../cdk/cdkdevice.c:185
 msgid "Input source"
 msgstr "ఇన్పుట్ మూలం"
 
-#: ../gdk/gdkdevice.c:186
+#: ../cdk/cdkdevice.c:186
 msgid "Source type for the device"
 msgstr "పరికరము కొరకు మూలక రకం"
 
-#: ../gdk/gdkdevice.c:201 ../gdk/gdkdevice.c:202
+#: ../cdk/cdkdevice.c:201 ../cdk/cdkdevice.c:202
 msgid "Input mode for the device"
 msgstr "పరికరము కొరకు ఇన్పుట్ రీతి"
 
-#: ../gdk/gdkdevice.c:217
+#: ../cdk/cdkdevice.c:217
 msgid "Whether the device has a cursor"
 msgstr "పరికరం లో ఒక కర్సర్ లేదు"
 
-#: ../gdk/gdkdevice.c:218
+#: ../cdk/cdkdevice.c:218
 msgid "Whether there is a visible cursor following device motion"
 msgstr "ఒక కనిపించే కర్సర్ కింది పరికరం  నిర్వాహికి ఉంది"
 
-#: ../gdk/gdkdevice.c:232 ../gdk/gdkdevice.c:233
+#: ../cdk/cdkdevice.c:232 ../cdk/cdkdevice.c:233
 msgid "Number of axes in the device"
 msgstr "పరికర లో పేజీల సంఖ్య"
 
-#: ../gdk/gdkdevicemanager.c:171
+#: ../cdk/cdkdevicemanager.c:171
 msgid "Display for the device manager"
 msgstr "పరికర నిర్వాహికి  పాటు  ప్రదర్శిస్తుంది"
 
-#: ../gdk/gdkdisplaymanager.c:163
+#: ../cdk/cdkdisplaymanager.c:163
 msgid "Default Display"
 msgstr "అప్రమేయ ప్రదర్శన"
 
-#: ../gdk/gdkdisplaymanager.c:164
+#: ../cdk/cdkdisplaymanager.c:164
 msgid "The default display for GDK"
 msgstr "GDK కొరకు అప్రమేయ ప్రదర్శన"
 
-#: ../gdk/gdkscreen.c:90
+#: ../cdk/cdkscreen.c:90
 msgid "Font options"
 msgstr "ఫాంటు ఐచ్చికాలు"
 
-#: ../gdk/gdkscreen.c:91
+#: ../cdk/cdkscreen.c:91
 msgid "The default font options for the screen"
 msgstr "తెర కొరకు అప్రమేయ ఫాంటు ఐచ్చికాలు"
 
-#: ../gdk/gdkscreen.c:98
+#: ../cdk/cdkscreen.c:98
 msgid "Font resolution"
 msgstr "ఫాంటు విభాజకత"
 
-#: ../gdk/gdkscreen.c:99
+#: ../cdk/cdkscreen.c:99
 msgid "The resolution for fonts on the screen"
 msgstr "తెరపైని ఫాంటుకు తీవ్రత"
 
-#: ../gdk/gdkwindow.c:403 ../gdk/gdkwindow.c:404
+#: ../cdk/cdkwindow.c:403 ../cdk/cdkwindow.c:404
 msgid "Cursor"
 msgstr "కర్సర్"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:116
+#: ../cdk/x11/cdkdevicemanager-xi2.c:116
 msgid "Opcode"
 msgstr "ఒప్ కోడు"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:117
+#: ../cdk/x11/cdkdevicemanager-xi2.c:117
 msgid "Opcode for XInput2 requests"
 msgstr "Xఇన్ పుట్2 అభ్యర్థనలు కొరకు ఒప్ కోడు"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:123
+#: ../cdk/x11/cdkdevicemanager-xi2.c:123
 msgid "Major"
 msgstr "ముఖ్య"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:124
+#: ../cdk/x11/cdkdevicemanager-xi2.c:124
 msgid "Major version number"
 msgstr "ముఖ్య వర్షన్ సంఖ్య"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:130
+#: ../cdk/x11/cdkdevicemanager-xi2.c:130
 msgid "Minor"
 msgstr "చిన్న"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:131
+#: ../cdk/x11/cdkdevicemanager-xi2.c:131
 msgid "Minor version number"
 msgstr "చిన్న వర్షన్ సంఖ్య"
 
-#: ../gdk/x11/gdkdevice-xi2.c:138
+#: ../cdk/x11/cdkdevice-xi2.c:138
 msgid "Device ID"
 msgstr "పరికర ID"
 
-#: ../gdk/x11/gdkdevice-xi2.c:139
+#: ../cdk/x11/cdkdevice-xi2.c:139
 msgid "Device identifier"
 msgstr "పరికర గుర్తించేది"
 
@@ -6521,7 +6521,7 @@ msgstr "ఈ ట్రే ప్రతిమయొక్క శీర్షిక
 
 #: ../ctk/ctkstylecontext.c:443
 msgid "The associated GdkScreen"
-msgstr "gdkతెర అనుబంధం "
+msgstr "cdkతెర అనుబంధం "
 
 #: ../ctk/ctkstylecontext.c:449
 msgid "Direction"

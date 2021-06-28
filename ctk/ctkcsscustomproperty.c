@@ -107,13 +107,13 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   else if (pspec->value_type == GDK_TYPE_RGBA)
     {
       GdkRGBA color;
-      gdk_rgba_parse (&color, "pink");
+      cdk_rgba_parse (&color, "pink");
       g_value_set_boxed (&value, &color);
     }
   else if (pspec->value_type == g_type_from_name ("GdkColor"))
     {
       GdkColor color;
-      gdk_color_parse ("pink", &color);
+      cdk_color_parse ("pink", &color);
       g_value_set_boxed (&value, &color);
     }
   else if (pspec->value_type == CTK_TYPE_BORDER)

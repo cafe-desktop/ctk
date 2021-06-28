@@ -146,7 +146,7 @@
       <para>
 	Note that due to the asynchronous nature of the X window
 	system, a widget's window may not appear on the screen
-	immediatly after one calls gdk_window_show():
+	immediatly after one calls cdk_window_show():
 	you must wait for the corresponding map <glossterm
 	linkend="event">event</glossterm> to be received.  You can do
 	this with the <link

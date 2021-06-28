@@ -281,13 +281,13 @@ grab_window_toggled (CtkToggleButton *button,
 		     CtkWidget       *widget)
 {
   GdkDevice *device = ctk_get_current_event_device ();
-  GdkSeat *seat = gdk_device_get_seat (device);
+  GdkSeat *seat = cdk_device_get_seat (device);
 
   if (ctk_toggle_button_get_active (button))
     {
       int status;
 
-      status = gdk_seat_grab (seat, ctk_widget_get_window (widget),
+      status = cdk_seat_grab (seat, ctk_widget_get_window (widget),
                               GDK_SEAT_CAPABILITY_KEYBOARD,
                               FALSE, NULL, NULL, NULL, NULL);
 
@@ -297,7 +297,7 @@ grab_window_toggled (CtkToggleButton *button,
     }
   else
     {
-      gdk_seat_ungrab (seat);
+      cdk_seat_ungrab (seat);
     }
 }
 

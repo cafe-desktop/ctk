@@ -23,7 +23,7 @@
 #include <ctk/ctkx.h>
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
-#include "gdk/wayland/gdkwayland.h"
+#include "cdk/wayland/cdkwayland.h"
 #endif
 
 typedef struct
@@ -347,7 +347,7 @@ test_type (gconstpointer data)
 
   type = * (GType *) data;
 
-  display = gdk_display_get_default ();
+  display = cdk_display_get_default ();
 
   if (!G_TYPE_IS_CLASSED (type))
     return;
@@ -392,7 +392,7 @@ test_type (gconstpointer data)
 #ifdef G_OS_UNIX
       g_type_is_a (type, CTK_TYPE_PRINT_JOB) ||
 #endif
-      g_type_is_a (type, gdk_pixbuf_simple_anim_iter_get_type ()) ||
+      g_type_is_a (type, cdk_pixbuf_simple_anim_iter_get_type ()) ||
       g_str_equal (g_type_name (type), "GdkX11DeviceManagerXI2") ||
       g_str_equal (g_type_name (type), "GdkX11DeviceManagerCore") ||
       g_str_equal (g_type_name (type), "GdkX11Display") ||
@@ -419,7 +419,7 @@ test_type (gconstpointer data)
 
   /* Backend-specific */
 #ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ())) ;
+  if (GDK_IS_X11_DISPLAY (cdk_display_get_default ())) ;
   else if (g_type_is_a (type, CTK_TYPE_PLUG) ||
            g_type_is_a (type, CTK_TYPE_SOCKET))
     return;
@@ -440,7 +440,7 @@ test_type (gconstpointer data)
       attributes.event_mask = 0;
       attributes.width = 100;
       attributes.height = 100;
-      instance = G_OBJECT (g_object_ref (gdk_window_new (NULL, &attributes, 0)));
+      instance = G_OBJECT (g_object_ref (cdk_window_new (NULL, &attributes, 0)));
     }
   else if (g_str_equal (g_type_name (type), "GdkX11Cursor"))
     instance = g_object_new (type, "display", display, NULL);
@@ -693,7 +693,7 @@ test_type (gconstpointer data)
   g_free (pspecs);
 
   if (g_type_is_a (type, GDK_TYPE_WINDOW))
-    gdk_window_destroy (GDK_WINDOW (instance));
+    cdk_window_destroy (GDK_WINDOW (instance));
   else
     g_object_unref (instance);
 

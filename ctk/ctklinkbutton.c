@@ -305,10 +305,10 @@ set_hand_cursor (CtkWidget *widget,
 
   cursor = NULL;
   if (show_hand)
-    cursor = gdk_cursor_new_from_name (display, "pointer");
+    cursor = cdk_cursor_new_from_name (display, "pointer");
 
-  gdk_window_set_cursor (ctk_button_get_event_window (CTK_BUTTON (widget)), cursor);
-  gdk_display_flush (display);
+  cdk_window_set_cursor (ctk_button_get_event_window (CTK_BUTTON (widget)), cursor);
+  cdk_display_flush (display);
 
   if (cursor)
     g_object_unref (cursor);
@@ -377,7 +377,7 @@ ctk_link_button_do_popup (CtkLinkButton  *link_button,
       ctk_widget_show (menu_item);
       ctk_menu_shell_append (CTK_MENU_SHELL (priv->popup_menu), menu_item);
 
-      if (event && gdk_event_triggers_context_menu (event))
+      if (event && cdk_event_triggers_context_menu (event))
         ctk_menu_popup_at_pointer (CTK_MENU (priv->popup_menu), event);
       else
         {
@@ -401,7 +401,7 @@ ctk_link_button_button_press (CtkWidget      *widget,
 
   /* Don't popup the menu if there's no URI set,
    * otherwise the menu item will trigger a warning */
-  if (gdk_event_triggers_context_menu ((GdkEvent *) event) &&
+  if (cdk_event_triggers_context_menu ((GdkEvent *) event) &&
       CTK_LINK_BUTTON (widget)->priv->uri != NULL)
     {
       ctk_link_button_do_popup (CTK_LINK_BUTTON (widget), (GdkEvent *) event);

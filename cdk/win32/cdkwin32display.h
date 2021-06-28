@@ -26,10 +26,10 @@
 #define __GDK_WIN32_DISPLAY_H__
 
 #if !defined (__GDKWIN32_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkwin32.h> can be included directly."
+#error "Only <cdk/cdkwin32.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
@@ -40,7 +40,7 @@ typedef GdkDisplay GdkWin32Display;
 #endif
 typedef struct _GdkWin32DisplayClass GdkWin32DisplayClass;
 
-#define GDK_TYPE_WIN32_DISPLAY              (gdk_win32_display_get_type())
+#define GDK_TYPE_WIN32_DISPLAY              (cdk_win32_display_get_type())
 #define GDK_WIN32_DISPLAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_DISPLAY, GdkWin32Display))
 #define GDK_WIN32_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_DISPLAY, GdkWin32DisplayClass))
 #define GDK_IS_WIN32_DISPLAY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_DISPLAY))
@@ -48,10 +48,10 @@ typedef struct _GdkWin32DisplayClass GdkWin32DisplayClass;
 #define GDK_WIN32_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_DISPLAY, GdkWin32DisplayClass))
 
 GDK_AVAILABLE_IN_ALL
-GType      gdk_win32_display_get_type            (void);
+GType      cdk_win32_display_get_type            (void);
 
 GDK_AVAILABLE_IN_3_18
-void       gdk_win32_display_set_cursor_theme    (GdkDisplay  *display,
+void       cdk_win32_display_set_cursor_theme    (GdkDisplay  *display,
                                                   const gchar *name,
                                                   gint         size);
 

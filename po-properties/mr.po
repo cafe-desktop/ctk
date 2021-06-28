@@ -20,144 +20,144 @@ msgstr ""
 "X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 
-#: ../gdk/gdkapplaunchcontext.c:127 ../gdk/gdkcursor.c:139
-#: ../gdk/gdkdevicemanager.c:181
+#: ../cdk/cdkapplaunchcontext.c:127 ../cdk/cdkcursor.c:139
+#: ../cdk/cdkdevicemanager.c:181
 msgid "Display"
 msgstr "डिस्पले"
 
-#: ../gdk/gdkcursor.c:131
+#: ../cdk/cdkcursor.c:131
 msgid "Cursor type"
 msgstr "कर्सर प्रकार"
 
-#: ../gdk/gdkcursor.c:132
+#: ../cdk/cdkcursor.c:132
 msgid "Standard cursor type"
 msgstr "मानक कर्सर प्रकार"
 
-#: ../gdk/gdkcursor.c:140
+#: ../cdk/cdkcursor.c:140
 msgid "Display of this cursor"
 msgstr "या कर्सरचे दृष्य"
 
-#: ../gdk/gdkdevice.c:112
+#: ../cdk/cdkdevice.c:112
 msgid "Device Display"
 msgstr "डिव्हाइस डिस्पले"
 
-#: ../gdk/gdkdevice.c:113
+#: ../cdk/cdkdevice.c:113
 msgid "Display which the device belongs to"
 msgstr "साधनाच्या मालकिचे डिस्पले"
 
-#: ../gdk/gdkdevice.c:127
+#: ../cdk/cdkdevice.c:127
 msgid "Device manager"
 msgstr "साधन व्यवस्थापक"
 
-#: ../gdk/gdkdevice.c:128
+#: ../cdk/cdkdevice.c:128
 msgid "Device manager which the device belongs to"
 msgstr "साधनाच्या मालकीचे डिव्हाइस व्यवस्थापक"
 
-#: ../gdk/gdkdevice.c:142 ../gdk/gdkdevice.c:143
+#: ../cdk/cdkdevice.c:142 ../cdk/cdkdevice.c:143
 msgid "Device name"
 msgstr "डिव्हाइसचे नाव"
 
-#: ../gdk/gdkdevice.c:157
+#: ../cdk/cdkdevice.c:157
 msgid "Device type"
 msgstr "डिव्हाइसचे प्रकार"
 
-#: ../gdk/gdkdevice.c:158
+#: ../cdk/cdkdevice.c:158
 msgid "Device role in the device manager"
 msgstr "साधन व्यवस्थापकात साधनाची भूमिका"
 
-#: ../gdk/gdkdevice.c:174
+#: ../cdk/cdkdevice.c:174
 msgid "Associated device"
 msgstr "संबंधित साधन"
 
-#: ../gdk/gdkdevice.c:175
+#: ../cdk/cdkdevice.c:175
 msgid "Associated pointer or keyboard with this device"
 msgstr "या साधनसह संबंधित पॉईंटर किंवा कळफलक"
 
-#: ../gdk/gdkdevice.c:188
+#: ../cdk/cdkdevice.c:188
 msgid "Input source"
 msgstr "इंपुट स्रोत"
 
-#: ../gdk/gdkdevice.c:189
+#: ../cdk/cdkdevice.c:189
 msgid "Source type for the device"
 msgstr "साधनकरीता सोअर्स् प्रकार"
 
-#: ../gdk/gdkdevice.c:204 ../gdk/gdkdevice.c:205
+#: ../cdk/cdkdevice.c:204 ../cdk/cdkdevice.c:205
 msgid "Input mode for the device"
 msgstr "साधनकरीता इंपुट मोड"
 
-#: ../gdk/gdkdevice.c:220
+#: ../cdk/cdkdevice.c:220
 msgid "Whether the device has a cursor"
 msgstr "डिव्हाइसकडे कर्सर आहे"
 
-#: ../gdk/gdkdevice.c:221
+#: ../cdk/cdkdevice.c:221
 msgid "Whether there is a visible cursor following device motion"
 msgstr "डिव्हाइस मोशननंतर दृष्यास्पद कर्सर आढळले"
 
-#: ../gdk/gdkdevice.c:235 ../gdk/gdkdevice.c:236
+#: ../cdk/cdkdevice.c:235 ../cdk/cdkdevice.c:236
 msgid "Number of axes in the device"
 msgstr "डिव्हाइस अंतर्गत ॲक्सेस्ची संख्या"
 
-#: ../gdk/gdkdevicemanager.c:182
+#: ../cdk/cdkdevicemanager.c:182
 msgid "Display for the device manager"
 msgstr "डिव्हाइस व्यवस्थापककरीता डिस्पले"
 
-#: ../gdk/gdkdisplaymanager.c:165
+#: ../cdk/cdkdisplaymanager.c:165
 msgid "Default Display"
 msgstr "सर्वसाधारण मोकळी  जागा "
 
-#: ../gdk/gdkdisplaymanager.c:166
+#: ../cdk/cdkdisplaymanager.c:166
 msgid "The default display for GDK"
 msgstr "GDKसाठी साधारण प्रदर्शक"
 
-#: ../gdk/gdkscreen.c:91
+#: ../cdk/cdkscreen.c:91
 msgid "Font options"
 msgstr "फोन्ट(अक्षर रचना)"
 
-#: ../gdk/gdkscreen.c:92
+#: ../cdk/cdkscreen.c:92
 msgid "The default font options for the screen"
 msgstr "वापर होणाऱ्या सर्वसाधारण फॉन्टचे नाव"
 
-#: ../gdk/gdkscreen.c:99
+#: ../cdk/cdkscreen.c:99
 msgid "Font resolution"
 msgstr "फोन्ट(अक्षर रचना)"
 
-#: ../gdk/gdkscreen.c:100
+#: ../cdk/cdkscreen.c:100
 msgid "The resolution for fonts on the screen"
 msgstr "पडद्यावरील क्षेत्राचे समशोधन कसे करावे"
 
-#: ../gdk/gdkwindow.c:311 ../gdk/gdkwindow.c:312
+#: ../cdk/cdkwindow.c:311 ../cdk/cdkwindow.c:312
 msgid "Cursor"
 msgstr "कर्सर"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:112
+#: ../cdk/x11/cdkdevicemanager-xi2.c:112
 msgid "Opcode"
 msgstr "ऑपकोड"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:113
+#: ../cdk/x11/cdkdevicemanager-xi2.c:113
 msgid "Opcode for XInput2 requests"
 msgstr "XInput2 विनंतीकरीता ऑपकोड"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:119
+#: ../cdk/x11/cdkdevicemanager-xi2.c:119
 msgid "Major"
 msgstr "मुख्य"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:120
+#: ../cdk/x11/cdkdevicemanager-xi2.c:120
 msgid "Major version number"
 msgstr "मुख्य आवृत्ती क्रमांक"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:126
+#: ../cdk/x11/cdkdevicemanager-xi2.c:126
 msgid "Minor"
 msgstr "किर्कोळ"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:127
+#: ../cdk/x11/cdkdevicemanager-xi2.c:127
 msgid "Minor version number"
 msgstr "किर्कोळ आवृत्ती क्रमांक"
 
-#: ../gdk/x11/gdkdevice-xi2.c:142
+#: ../cdk/x11/cdkdevice-xi2.c:142
 msgid "Device ID"
 msgstr "साधन ID"
 
-#: ../gdk/x11/gdkdevice-xi2.c:143
+#: ../cdk/x11/cdkdevice-xi2.c:143
 msgid "Device identifier"
 msgstr "डिव्हाइस आइडेंटिफायर"
 

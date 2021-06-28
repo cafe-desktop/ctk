@@ -5,8 +5,8 @@ if get_option('gtk_doc')
     cairo_prefix = dependency('cairo-gobject').get_pkgconfig_variable('prefix')
     cairo_docpath = join_paths(cairo_prefix, 'share', 'gtk-doc', 'html', 'cairo')
 
-    gdkpixbuf_prefix = dependency('gdk-pixbuf-2.0').get_pkgconfig_variable('prefix')
-    gdkpixbuf_docpath = join_paths(gdkpixbuf_prefix, 'share', 'gtk-doc', 'html', 'gdk-pixbuf')
+    cdkpixbuf_prefix = dependency('cdk-pixbuf-2.0').get_pkgconfig_variable('prefix')
+    cdkpixbuf_docpath = join_paths(cdkpixbuf_prefix, 'share', 'gtk-doc', 'html', 'cdk-pixbuf')
 
     docpath = join_paths(ctk_datadir, 'gtk-doc', 'html')
 
@@ -17,6 +17,6 @@ if get_option('gtk_doc')
     src_dir_conf.set('abs_top_srcdir', meson.source_root())
 endif
 
-subdir('gdk')
+subdir('cdk')
 subdir('ctk')
 subdir('libgail-util')

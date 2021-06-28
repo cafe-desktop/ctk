@@ -1,5 +1,5 @@
 /*
- * gdkdisplay-win32.h
+ * cdkdisplay-win32.h
  *
  * Copyright 2014 Chun-wei Fan <fanc999@yahoo.com.tw>
  *
@@ -17,7 +17,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gdkdisplayprivate.h"
+#include "cdkdisplayprivate.h"
 
 #ifdef GDK_WIN32_ENABLE_EGL
 # include <epoxy/egl.h>
@@ -127,11 +127,11 @@ struct _GdkWin32DisplayClass
   GdkDisplayClass display_class;
 };
 
-gboolean   _gdk_win32_display_init_monitors    (GdkWin32Display *display);
+gboolean   _cdk_win32_display_init_monitors    (GdkWin32Display *display);
 
-GPtrArray *_gdk_win32_display_get_monitor_list (GdkWin32Display *display);
+GPtrArray *_cdk_win32_display_get_monitor_list (GdkWin32Display *display);
 
-guint      _gdk_win32_display_get_monitor_scale_factor (GdkWin32Display *win32_display,
+guint      _cdk_win32_display_get_monitor_scale_factor (GdkWin32Display *win32_display,
                                                         HMONITOR         hmonitor,
                                                         HWND             hwnd,
                                                         gint             *dpi);

@@ -32,25 +32,25 @@
 #include "ctkbox.h"
 
 #ifdef GDK_WINDOWING_X11
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 #include <epoxy/glx.h>
 #endif
 
 #ifdef GDK_WINDOWING_WIN32
-#include "win32/gdkwin32.h"
+#include "win32/cdkwin32.h"
 #endif
 
 #ifdef GDK_WINDOWING_QUARTZ
-#include "quartz/gdkquartz.h"
+#include "quartz/cdkquartz.h"
 #endif
 
 #ifdef GDK_WINDOWING_WAYLAND
-#include "wayland/gdkwayland.h"
+#include "wayland/cdkwayland.h"
 #include <epoxy/egl.h>
 #endif
 
 #ifdef GDK_WINDOWING_BROADWAY
-#include "broadway/gdkbroadway.h"
+#include "broadway/cdkbroadway.h"
 #endif
 
 struct _CtkInspectorGeneralPrivate
@@ -61,7 +61,7 @@ struct _CtkInspectorGeneralPrivate
   CtkWidget *gl_box;
   CtkWidget *device_box;
   CtkWidget *ctk_version;
-  CtkWidget *gdk_backend;
+  CtkWidget *cdk_backend;
   CtkWidget *gl_version;
   CtkWidget *gl_vendor;
   CtkWidget *prefix;
@@ -86,7 +86,7 @@ init_version (CtkInspectorGeneral *gen)
   const gchar *backend;
   GdkDisplay *display;
 
-  display = gdk_display_get_default ();
+  display = cdk_display_get_default ();
 
 #ifdef GDK_WINDOWING_X11
   if (GDK_IS_X11_DISPLAY (display))
@@ -116,7 +116,7 @@ init_version (CtkInspectorGeneral *gen)
     backend = "Unknown";
 
   ctk_label_set_text (CTK_LABEL (gen->priv->ctk_version), CTK_VERSION);
-  ctk_label_set_text (CTK_LABEL (gen->priv->gdk_backend), backend);
+  ctk_label_set_text (CTK_LABEL (gen->priv->cdk_backend), backend);
 }
 
 static G_GNUC_UNUSED void
@@ -255,9 +255,9 @@ static void
 init_gl (CtkInspectorGeneral *gen)
 {
 #ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+  if (GDK_IS_X11_DISPLAY (cdk_display_get_default ()))
     {
-      GdkDisplay *display = gdk_display_get_default ();
+      GdkDisplay *display = cdk_display_get_default ();
       Display *dpy = GDK_DISPLAY_XDISPLAY (display);
       int error_base, event_base;
       gchar *version;
@@ -281,14 +281,14 @@ init_gl (CtkInspectorGeneral *gen)
   else
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (gdk_display_get_default ()))
+  if (GDK_IS_WAYLAND_DISPLAY (cdk_display_get_default ()))
     {
-      GdkDisplay *display = gdk_display_get_default ();
+      GdkDisplay *display = cdk_display_get_default ();
       EGLDisplay dpy;
       EGLint major, minor;
       gchar *version;
 
-      dpy = wayland_get_display (gdk_wayland_display_get_wl_display (display));
+      dpy = wayland_get_display (cdk_wayland_display_get_wl_display (display));
 
       if (!eglInitialize (dpy, &major, &minor))
         return;
@@ -397,19 +397,19 @@ populate_display (GdkScreen *screen, CtkInspectorGeneral *gen)
   g_list_free (children);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  name = gdk_screen_make_display_name (screen);
+  name = cdk_screen_make_display_name (screen);
 G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_label_set_label (CTK_LABEL (gen->priv->display_name), name);
   g_free (name);
 
-  if (gdk_screen_get_rgba_visual (screen) != NULL)
+  if (cdk_screen_get_rgba_visual (screen) != NULL)
     ctk_widget_show (gen->priv->display_rgba);
 
-  if (gdk_screen_is_composited (screen))
+  if (cdk_screen_is_composited (screen))
     ctk_widget_show (gen->priv->display_composited);
 
-  display = gdk_screen_get_display (screen);
-  n_monitors = gdk_display_get_n_monitors (display);
+  display = cdk_screen_get_display (screen);
+  n_monitors = cdk_display_get_n_monitors (display);
   for (i = 0; i < n_monitors; i++)
     {
       gchar *name;
@@ -420,11 +420,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       const char *model;
       GdkMonitor *monitor;
 
-      monitor = gdk_display_get_monitor (display, i);
+      monitor = cdk_display_get_monitor (display, i);
 
       name = g_strdup_printf ("Monitor %d", i);
-      manufacturer = gdk_monitor_get_manufacturer (monitor);
-      model = gdk_monitor_get_model (monitor);
+      manufacturer = cdk_monitor_get_manufacturer (monitor);
+      model = cdk_monitor_get_model (monitor);
       value = g_strdup_printf ("%s%s%s",
                                manufacturer ? manufacturer : "",
                                manufacturer || model ? " " : "",
@@ -433,8 +433,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       g_free (name);
       g_free (value);
 
-      gdk_monitor_get_geometry (monitor, &rect);
-      scale = gdk_monitor_get_scale_factor (monitor);
+      cdk_monitor_get_geometry (monitor, &rect);
+      scale = cdk_monitor_get_scale_factor (monitor);
 
       value = g_strdup_printf ("%d × %d%s at %d, %d",
                                rect.width, rect.height,
@@ -444,22 +444,22 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       g_free (value);
 
       value = g_strdup_printf ("%d × %d mm²",
-                               gdk_monitor_get_width_mm (monitor),
-                               gdk_monitor_get_height_mm (monitor));
+                               cdk_monitor_get_width_mm (monitor),
+                               cdk_monitor_get_height_mm (monitor));
       add_label_row (gen, list, "Size", value, 10);
       g_free (value);
 
-      add_check_row (gen, list, "Primary", gdk_monitor_is_primary (monitor), 10);
+      add_check_row (gen, list, "Primary", cdk_monitor_is_primary (monitor), 10);
 
-      if (gdk_monitor_get_refresh_rate (monitor) != 0)
+      if (cdk_monitor_get_refresh_rate (monitor) != 0)
         value = g_strdup_printf ("%.2f Hz",
-                                 0.001 * gdk_monitor_get_refresh_rate (monitor));
+                                 0.001 * cdk_monitor_get_refresh_rate (monitor));
       else
         value = g_strdup ("unknown");
       add_label_row (gen, list, "Refresh rate", value, 10);
       g_free (value);
 
-      value = g_strdup (translate_subpixel_layout (gdk_monitor_get_subpixel_layout (monitor)));
+      value = g_strdup (translate_subpixel_layout (cdk_monitor_get_subpixel_layout (monitor)));
       add_label_row (gen, list, "Subpixel layout", value, 10);
       g_free (value);
     }
@@ -470,7 +470,7 @@ init_display (CtkInspectorGeneral *gen)
 {
   GdkScreen *screen;
 
-  screen = gdk_screen_get_default ();
+  screen = cdk_screen_get_default ();
 
   g_signal_connect (screen, "size-changed", G_CALLBACK (populate_display), gen);
   g_signal_connect (screen, "composited-changed", G_CALLBACK (populate_display), gen);
@@ -515,13 +515,13 @@ add_device (CtkInspectorGeneral *gen,
     "Pad"
   };
 
-  name = gdk_device_get_name (device);
-  value = source_name[gdk_device_get_source (device)];
+  name = cdk_device_get_name (device);
+  value = source_name[cdk_device_get_source (device)];
   add_label_row (gen, CTK_LIST_BOX (gen->priv->device_box), name, value, 10);
 
   str = g_string_new ("");
 
-  axes = gdk_device_get_axes (device);
+  axes = cdk_device_get_axes (device);
   for (i = GDK_AXIS_X; i < GDK_AXIS_LAST; i++)
     {
       if ((axes & (1 << i)) != 0)
@@ -564,7 +564,7 @@ get_seat_capabilities (GdkSeat *seat)
   int i;
 
   str = g_string_new ("");
-  capabilities = gdk_seat_get_capabilities (seat);
+  capabilities = cdk_seat_get_capabilities (seat);
   for (i = 0; caps[i].cap != 0; i++)
     {
       if (capabilities & caps[i].cap)
@@ -601,7 +601,7 @@ add_seat (CtkInspectorGeneral *gen,
   g_free (text);
   g_free (caps);
 
-  list = gdk_seat_get_slaves (seat, GDK_SEAT_CAPABILITY_ALL);
+  list = cdk_seat_get_slaves (seat, GDK_SEAT_CAPABILITY_ALL);
 
   for (l = list; l; l = l->next)
     add_device (gen, GDK_DEVICE (l->data));
@@ -612,7 +612,7 @@ add_seat (CtkInspectorGeneral *gen,
 static void
 populate_seats (CtkInspectorGeneral *gen)
 {
-  GdkDisplay *display = gdk_display_get_default ();
+  GdkDisplay *display = cdk_display_get_default ();
   GList *list, *l;
   int i;
 
@@ -621,7 +621,7 @@ populate_seats (CtkInspectorGeneral *gen)
     ctk_widget_destroy (CTK_WIDGET (l->data));
   g_list_free (list);
 
-  list = gdk_display_list_seats (display);
+  list = cdk_display_list_seats (display);
 
   for (l = list, i = 0; l; l = l->next, i++)
     add_seat (gen, GDK_SEAT (l->data), i);
@@ -632,7 +632,7 @@ populate_seats (CtkInspectorGeneral *gen)
 static void
 init_device (CtkInspectorGeneral *gen)
 {
-  GdkDisplay *display = gdk_display_get_default ();
+  GdkDisplay *display = cdk_display_get_default ();
 
   g_signal_connect_swapped (display, "seat-added", G_CALLBACK (populate_seats), gen);
   g_signal_connect_swapped (display, "seat-removed", G_CALLBACK (populate_seats), gen);
@@ -734,7 +734,7 @@ ctk_inspector_general_class_init (CtkInspectorGeneralClass *klass)
   ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, display_box);
   ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, gl_box);
   ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, ctk_version);
-  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, gdk_backend);
+  ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, cdk_backend);
   ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, gl_version);
   ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, gl_vendor);
   ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorGeneral, prefix);

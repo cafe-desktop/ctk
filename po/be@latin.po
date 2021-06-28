@@ -19,302 +19,302 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: gdk/gdk.c:103
+#: cdk/cdk.c:103
 #, c-format
-msgid "Error parsing option --gdk-debug"
-msgstr "Pamyłka razboru opcyi --gdk-debug"
+msgid "Error parsing option --cdk-debug"
+msgstr "Pamyłka razboru opcyi --cdk-debug"
 
-#: gdk/gdk.c:123
+#: cdk/cdk.c:123
 #, c-format
-msgid "Error parsing option --gdk-no-debug"
-msgstr "Pamyłka razboru opcyi --gdk-no-debug"
+msgid "Error parsing option --cdk-no-debug"
+msgstr "Pamyłka razboru opcyi --cdk-no-debug"
 
 #. Description of --class=CLASS in --help output
-#: gdk/gdk.c:151
+#: cdk/cdk.c:151
 msgid "Program class as used by the window manager"
 msgstr "Klasa prahramy ŭžyvanaja kiraŭnikom voknaŭ"
 
 #. Placeholder in --class=CLASS in --help output
-#: gdk/gdk.c:152
+#: cdk/cdk.c:152
 msgid "CLASS"
 msgstr "KLASA"
 
 #. Description of --name=NAME in --help output
-#: gdk/gdk.c:154
+#: cdk/cdk.c:154
 msgid "Program name as used by the window manager"
 msgstr "Nazva prahramy ŭžyvanaja kiraŭnikom voknaŭ"
 
 #. Placeholder in --name=NAME in --help output
-#: gdk/gdk.c:155
+#: cdk/cdk.c:155
 msgid "NAME"
 msgstr "NAZVA"
 
 #. Description of --display=DISPLAY in --help output
-#: gdk/gdk.c:157
+#: cdk/cdk.c:157
 msgid "X display to use"
 msgstr "Vykarystoŭvajecca ekran X"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: gdk/gdk.c:158
+#: cdk/cdk.c:158
 msgid "DISPLAY"
 msgstr "EKRAN"
 
 #. Description of --screen=SCREEN in --help output
-#: gdk/gdk.c:160
+#: cdk/cdk.c:160
 msgid "X screen to use"
 msgstr "Vykarystoŭvajecca padekran X"
 
 #. Placeholder in --screen=SCREEN in --help output
-#: gdk/gdk.c:161
+#: cdk/cdk.c:161
 msgid "SCREEN"
 msgstr "PADEKRAN"
 
-#. Description of --gdk-debug=FLAGS in --help output
-#: gdk/gdk.c:164
+#. Description of --cdk-debug=FLAGS in --help output
+#: cdk/cdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
 msgstr "Ustalavanyja ściažki adsočki CTK+"
 
-#. Placeholder in --gdk-debug=FLAGS in --help output
-#. Placeholder in --gdk-no-debug=FLAGS in --help output
+#. Placeholder in --cdk-debug=FLAGS in --help output
+#. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:165 gdk/gdk.c:168 ctk/ctkmain.c:533 ctk/ctkmain.c:536
+#: cdk/cdk.c:165 cdk/cdk.c:168 ctk/ctkmain.c:533 ctk/ctkmain.c:536
 msgid "FLAGS"
 msgstr "ŚCIAŽKI"
 
-#. Description of --gdk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:167
+#. Description of --cdk-no-debug=FLAGS in --help output
+#: cdk/cdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
 msgstr "Vyčyščanyja ściažki adsočki CTK+"
 
-#: gdk/keyname-table.h:3940
+#: cdk/keyname-table.h:3940
 msgctxt "keyboard label"
 msgid "BackSpace"
 msgstr "BackSpace"
 
-#: gdk/keyname-table.h:3941
+#: cdk/keyname-table.h:3941
 msgctxt "keyboard label"
 msgid "Tab"
 msgstr "Tab"
 
-#: gdk/keyname-table.h:3942
+#: cdk/keyname-table.h:3942
 msgctxt "keyboard label"
 msgid "Return"
 msgstr "Return"
 
-#: gdk/keyname-table.h:3943
+#: cdk/keyname-table.h:3943
 msgctxt "keyboard label"
 msgid "Pause"
 msgstr "Pause"
 
-#: gdk/keyname-table.h:3944
+#: cdk/keyname-table.h:3944
 msgctxt "keyboard label"
 msgid "Scroll_Lock"
 msgstr "Scroll Lock"
 
-#: gdk/keyname-table.h:3945
+#: cdk/keyname-table.h:3945
 msgctxt "keyboard label"
 msgid "Sys_Req"
 msgstr "Sys Req"
 
-#: gdk/keyname-table.h:3946
+#: cdk/keyname-table.h:3946
 msgctxt "keyboard label"
 msgid "Escape"
 msgstr "Escape"
 
-#: gdk/keyname-table.h:3947
+#: cdk/keyname-table.h:3947
 msgctxt "keyboard label"
 msgid "Multi_key"
 msgstr "Multi key"
 
-#: gdk/keyname-table.h:3948
+#: cdk/keyname-table.h:3948
 msgctxt "keyboard label"
 msgid "Home"
 msgstr "Home"
 
-#: gdk/keyname-table.h:3949
+#: cdk/keyname-table.h:3949
 msgctxt "keyboard label"
 msgid "Left"
 msgstr "Uleva"
 
-#: gdk/keyname-table.h:3950
+#: cdk/keyname-table.h:3950
 msgctxt "keyboard label"
 msgid "Up"
 msgstr "Uvierch"
 
-#: gdk/keyname-table.h:3951
+#: cdk/keyname-table.h:3951
 msgctxt "keyboard label"
 msgid "Right"
 msgstr "Uprava"
 
-#: gdk/keyname-table.h:3952
+#: cdk/keyname-table.h:3952
 msgctxt "keyboard label"
 msgid "Down"
 msgstr "Uniz"
 
-#: gdk/keyname-table.h:3953
+#: cdk/keyname-table.h:3953
 msgctxt "keyboard label"
 msgid "Page_Up"
 msgstr "Page Up"
 
-#: gdk/keyname-table.h:3954
+#: cdk/keyname-table.h:3954
 msgctxt "keyboard label"
 msgid "Page_Down"
 msgstr "Page Down"
 
-#: gdk/keyname-table.h:3955
+#: cdk/keyname-table.h:3955
 msgctxt "keyboard label"
 msgid "End"
 msgstr "End"
 
-#: gdk/keyname-table.h:3956
+#: cdk/keyname-table.h:3956
 msgctxt "keyboard label"
 msgid "Begin"
 msgstr "Begin"
 
-#: gdk/keyname-table.h:3957
+#: cdk/keyname-table.h:3957
 msgctxt "keyboard label"
 msgid "Print"
 msgstr "Print"
 
-#: gdk/keyname-table.h:3958
+#: cdk/keyname-table.h:3958
 msgctxt "keyboard label"
 msgid "Insert"
 msgstr "Insert"
 
-#: gdk/keyname-table.h:3959
+#: cdk/keyname-table.h:3959
 msgctxt "keyboard label"
 msgid "Num_Lock"
 msgstr "Num Lock"
 
-#: gdk/keyname-table.h:3960
+#: cdk/keyname-table.h:3960
 msgctxt "keyboard label"
 msgid "KP_Space"
 msgstr "KP Prabieł"
 
-#: gdk/keyname-table.h:3961
+#: cdk/keyname-table.h:3961
 msgctxt "keyboard label"
 msgid "KP_Tab"
 msgstr "KP Tab"
 
-#: gdk/keyname-table.h:3962
+#: cdk/keyname-table.h:3962
 msgctxt "keyboard label"
 msgid "KP_Enter"
 msgstr "KP Enter"
 
-#: gdk/keyname-table.h:3963
+#: cdk/keyname-table.h:3963
 msgctxt "keyboard label"
 msgid "KP_Home"
 msgstr "KP Home"
 
-#: gdk/keyname-table.h:3964
+#: cdk/keyname-table.h:3964
 msgctxt "keyboard label"
 msgid "KP_Left"
 msgstr "KP Uleva"
 
-#: gdk/keyname-table.h:3965
+#: cdk/keyname-table.h:3965
 msgctxt "keyboard label"
 msgid "KP_Up"
 msgstr "KP Uvierch"
 
-#: gdk/keyname-table.h:3966
+#: cdk/keyname-table.h:3966
 msgctxt "keyboard label"
 msgid "KP_Right"
 msgstr "KP Uprava"
 
-#: gdk/keyname-table.h:3967
+#: cdk/keyname-table.h:3967
 msgctxt "keyboard label"
 msgid "KP_Down"
 msgstr "KP Uniz"
 
-#: gdk/keyname-table.h:3968
+#: cdk/keyname-table.h:3968
 msgctxt "keyboard label"
 msgid "KP_Page_Up"
 msgstr "KP Page Up"
 
-#: gdk/keyname-table.h:3969
+#: cdk/keyname-table.h:3969
 msgctxt "keyboard label"
 msgid "KP_Prior"
 msgstr "KP Prior"
 
-#: gdk/keyname-table.h:3970
+#: cdk/keyname-table.h:3970
 msgctxt "keyboard label"
 msgid "KP_Page_Down"
 msgstr "KP Page Down"
 
-#: gdk/keyname-table.h:3971
+#: cdk/keyname-table.h:3971
 msgctxt "keyboard label"
 msgid "KP_Next"
 msgstr "KP Next"
 
-#: gdk/keyname-table.h:3972
+#: cdk/keyname-table.h:3972
 msgctxt "keyboard label"
 msgid "KP_End"
 msgstr "KP End"
 
-#: gdk/keyname-table.h:3973
+#: cdk/keyname-table.h:3973
 msgctxt "keyboard label"
 msgid "KP_Begin"
 msgstr "KP Begin"
 
-#: gdk/keyname-table.h:3974
+#: cdk/keyname-table.h:3974
 msgctxt "keyboard label"
 msgid "KP_Insert"
 msgstr "KP Insert"
 
-#: gdk/keyname-table.h:3975
+#: cdk/keyname-table.h:3975
 msgctxt "keyboard label"
 msgid "KP_Delete"
 msgstr "KP Delete"
 
-#: gdk/keyname-table.h:3976
+#: cdk/keyname-table.h:3976
 msgctxt "keyboard label"
 msgid "Delete"
 msgstr "Delete"
 
 #. Description of --sync in --help output
-#: gdk/win32/gdkmain-win32.c:54
+#: cdk/win32/cdkmain-win32.c:54
 msgid "Don't batch GDI requests"
 msgstr "Biez hrupavańnia patrabavańniaŭ GDI"
 
 #. Description of --no-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:56
+#: cdk/win32/cdkmain-win32.c:56
 msgid "Don't use the Wintab API for tablet support"
 msgstr "Biez užyvańnia API Wintab pry absłuhoŭvańni tabletaŭ"
 
 #. Description of --ignore-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:58
+#: cdk/win32/cdkmain-win32.c:58
 msgid "Same as --no-wintab"
 msgstr "Hetak ža jak --no-wintab"
 
 #. Description of --use-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:60
+#: cdk/win32/cdkmain-win32.c:60
 msgid "Do use the Wintab API [default]"
 msgstr "Biez užyvańnia API Wintab [zmoŭčana]"
 
 #. Description of --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:62
+#: cdk/win32/cdkmain-win32.c:62
 msgid "Size of the palette in 8 bit mode"
 msgstr "Pamier palitry ŭ 8-bitnym režymie"
 
 #. Placeholder in --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:63
+#: cdk/win32/cdkmain-win32.c:63
 msgid "COLORS"
 msgstr "KOLERY"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:312
+#: cdk/x11/cdkapplaunchcontext-x11.c:312
 #, c-format
 msgid "Starting %s"
 msgstr "Pačynańnie %s"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:316
+#: cdk/x11/cdkapplaunchcontext-x11.c:316
 #, c-format
 msgid "Opening %s"
 msgstr "Adčynieńnie %s"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:321
+#: cdk/x11/cdkapplaunchcontext-x11.c:321
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
@@ -323,7 +323,7 @@ msgstr[1] "Adčynieńnie %d elementaŭ"
 msgstr[2] "Adčynieńnie %d elementaŭ"
 
 #. Description of --sync in --help output
-#: gdk/x11/gdkmain-x11.c:96
+#: cdk/x11/cdkmain-x11.c:96
 msgid "Make X calls synchronous"
 msgstr "Sinchronnaja łučnaść z serveram X"
 
@@ -4288,9 +4288,9 @@ msgstr ""
 #~ msgstr "Pamyłka pry zapisie ŭ fajł vyjavy: %s"
 
 #~ msgid ""
-#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ "This build of cdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Hetaja kopija gdk-pixbuf nie dazvalaje zapisvać vyjavu ŭ farmacie: %s"
+#~ "Hetaja kopija cdk-pixbuf nie dazvalaje zapisvać vyjavu ŭ farmacie: %s"
 
 # Pravieryć u kiryličnych
 #~ msgid "Insufficient memory to save image to callback"

@@ -19,8 +19,8 @@
 #define __GDK_APP_LAUNCH_CONTEXT_PRIVATE_H__
 
 #include <gio/gio.h>
-#include "gdkapplaunchcontext.h"
-#include "gdktypes.h"
+#include "cdkapplaunchcontext.h"
+#include "cdktypes.h"
 
 G_BEGIN_DECLS
 

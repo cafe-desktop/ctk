@@ -4,11 +4,11 @@
     <Import Project="ctk3-build-defines.props" />
   </ImportGroup>
   <PropertyGroup>
-    <_PropertySheetDisplayName>ctk3copygdkbroadwayprops</_PropertySheetDisplayName>
+    <_PropertySheetDisplayName>ctk3copycdkbroadwayprops</_PropertySheetDisplayName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalOptions>/EXPORT:gdk_win32_display_manager_get_type</AdditionalOptions>
+      <AdditionalOptions>/EXPORT:cdk_win32_display_manager_get_type</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -25,9 +25,9 @@ if "$(Configuration)" == "Debug_Broadway" goto DoDebug
 
 mkdir .\Release\$(Platform)\bin
 
-copy /b $(Configuration)\$(Platform)\bin\$(CtkDllPrefix)gdk-3$(CtkDllSuffix).dll .\Release\$(Platform)\bin\
+copy /b $(Configuration)\$(Platform)\bin\$(CtkDllPrefix)cdk-3$(CtkDllSuffix).dll .\Release\$(Platform)\bin\
 
-copy /b $(Configuration)\$(Platform)\bin\gdk-$(ApiVersion).lib .\Release\$(Platform)\bin\
+copy /b $(Configuration)\$(Platform)\bin\cdk-$(ApiVersion).lib .\Release\$(Platform)\bin\
 
 goto END
 
@@ -36,9 +36,9 @@ goto END
 
 mkdir .\Debug\$(Platform)\bin
 
-copy /b $(Configuration)\$(Platform)\bin\$(CtkDllPrefix)gdk$(CtkDllSuffix).dll .\Debug\$(Platform)\bin\
+copy /b $(Configuration)\$(Platform)\bin\$(CtkDllPrefix)cdk$(CtkDllSuffix).dll .\Debug\$(Platform)\bin\
 
-copy /b $(Configuration)\$(Platform)\bin\gdk-$(ApiVersion).lib .\Debug\$(Platform)\bin\
+copy /b $(Configuration)\$(Platform)\bin\cdk-$(ApiVersion).lib .\Debug\$(Platform)\bin\
 
 goto END
 

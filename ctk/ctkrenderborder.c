@@ -367,11 +367,11 @@ render_frame_fill (cairo_t       *cr,
                            border_width[CTK_CSS_LEFT]);
 
   if (hidden_side == 0 &&
-      gdk_rgba_equal (&colors[0], &colors[1]) &&
-      gdk_rgba_equal (&colors[0], &colors[2]) &&
-      gdk_rgba_equal (&colors[0], &colors[3]))
+      cdk_rgba_equal (&colors[0], &colors[1]) &&
+      cdk_rgba_equal (&colors[0], &colors[2]) &&
+      cdk_rgba_equal (&colors[0], &colors[3]))
     {
-      gdk_cairo_set_source_rgba (cr, &colors[0]);
+      cdk_cairo_set_source_rgba (cr, &colors[0]);
 
       _ctk_rounded_box_path (border_box, cr);
       _ctk_rounded_box_path (&padding_box, cr);
@@ -390,7 +390,7 @@ render_frame_fill (cairo_t       *cr,
                 continue;
 
               if (i == j || 
-                  (gdk_rgba_equal (&colors[i], &colors[j])))
+                  (cdk_rgba_equal (&colors[i], &colors[j])))
                 {
                   /* We were already painted when i == j */
                   if (i > j)
@@ -410,7 +410,7 @@ render_frame_fill (cairo_t       *cr,
           if (i > j)
             continue;
 
-          gdk_cairo_set_source_rgba (cr, &colors[i]);
+          cdk_cairo_set_source_rgba (cr, &colors[i]);
 
           cairo_fill (cr);
         }
@@ -476,9 +476,9 @@ render_frame_stroke (cairo_t       *cr,
   CtkRoundedBox stroke_box;
   guint i;
 
-  different_colors = !gdk_rgba_equal (&colors[0], &colors[1]) ||
-                     !gdk_rgba_equal (&colors[0], &colors[2]) ||
-                     !gdk_rgba_equal (&colors[0], &colors[3]);
+  different_colors = !cdk_rgba_equal (&colors[0], &colors[1]) ||
+                     !cdk_rgba_equal (&colors[0], &colors[2]) ||
+                     !cdk_rgba_equal (&colors[0], &colors[3]);
   different_borders = border_width[0] != border_width[1] ||
                       border_width[0] != border_width[2] ||
                       border_width[0] != border_width[3] ;
@@ -502,7 +502,7 @@ render_frame_stroke (cairo_t       *cr,
         }
 
       _ctk_rounded_box_path (&stroke_box, cr);
-      gdk_cairo_set_source_rgba (cr, &colors[0]);
+      cdk_cairo_set_source_rgba (cr, &colors[0]);
       set_stroke_style (cr, border_width[0], stroke_style, length);
       cairo_stroke (cr);
     }
@@ -539,7 +539,7 @@ render_frame_stroke (cairo_t       *cr,
 
           _ctk_rounded_box_path_side (&stroke_box, cr, i);
 
-          gdk_cairo_set_source_rgba (cr, &colors[i]);
+          cdk_cairo_set_source_rgba (cr, &colors[i]);
           set_stroke_style (cr,
                             border_width[i],
                             stroke_style,
@@ -560,7 +560,7 @@ color_shade (const GdkRGBA *color,
 
   _ctk_hsla_init_from_rgba (&hsla, color);
   _ctk_hsla_shade (&hsla, &hsla, factor);
-  _gdk_rgba_init_from_hsla (color_return, &hsla);
+  _cdk_rgba_init_from_hsla (color_return, &hsla);
 }
 
 static void

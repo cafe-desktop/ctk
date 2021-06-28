@@ -512,7 +512,7 @@ cups_print_cb (CtkPrintBackendCups *print_backend,
   GError *error = NULL;
   CupsPrintStreamData *ps = user_data;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   CTK_NOTE (PRINTING,
             g_print ("CUPS Backend: %s\n", G_STRFUNC));
@@ -549,7 +549,7 @@ cups_print_cb (CtkPrintBackendCups *print_backend,
   if (error)
     g_error_free (error);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 typedef struct {
@@ -1732,7 +1732,7 @@ cups_request_job_info_cb (CtkPrintBackendCups *print_backend,
   int state;
   gboolean done;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   if (data->job == NULL)
     {
@@ -1796,7 +1796,7 @@ cups_request_job_info_cb (CtkPrintBackendCups *print_backend,
     cups_job_poll_data_free (data);
 
 done:
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static void
@@ -2725,7 +2725,7 @@ cups_request_printer_info_cb (CtkPrintBackendCups *cups_backend,
   gboolean                status_changed = FALSE;
   ipp_t                  *response;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   CTK_NOTE (PRINTING,
             g_print ("CUPS Backend: %s\n", G_STRFUNC));
@@ -2820,7 +2820,7 @@ done:
 
   printer_setup_info_free (info);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static void
@@ -3524,7 +3524,7 @@ cups_request_printer_list_cb (CtkPrintBackendCups *cups_backend,
   gchar *remote_default_printer = NULL;
   GList *iter;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   list_has_changed = FALSE;
 
@@ -3712,7 +3712,7 @@ done:
   if (!cups_backend->got_default_printer && cups_backend->avahi_default_printer != NULL)
     set_default_printer (cups_backend, cups_backend->avahi_default_printer);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static void
@@ -3748,7 +3748,7 @@ cups_request_printer_list (CtkPrintBackendCups *cups_backend)
       cups_backend->list_printers_attempts = -1;
       if (cups_backend->list_printers_poll > 0)
         g_source_remove (cups_backend->list_printers_poll);
-      cups_backend->list_printers_poll = gdk_threads_add_timeout (200,
+      cups_backend->list_printers_poll = cdk_threads_add_timeout (200,
                                            (GSourceFunc) cups_request_printer_list,
                                            cups_backend);
       g_source_set_name_by_id (cups_backend->list_printers_poll, "[ctk+] cups_request_printer_list");
@@ -3799,7 +3799,7 @@ cups_get_printer_list (CtkPrintBackend *backend)
     {
       if (cups_request_printer_list (cups_backend))
         {
-          cups_backend->list_printers_poll = gdk_threads_add_timeout (50,
+          cups_backend->list_printers_poll = cdk_threads_add_timeout (50,
                                                (GSourceFunc) cups_request_printer_list,
                                                backend);
           g_source_set_name_by_id (cups_backend->list_printers_poll, "[ctk+] cups_request_printer_list");
@@ -3834,7 +3834,7 @@ cups_request_ppd_cb (CtkPrintBackendCups *print_backend,
   CtkPrinter *printer;
   struct stat data_info;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   CTK_NOTE (PRINTING,
             g_print ("CUPS Backend: %s\n", G_STRFUNC));
@@ -3910,7 +3910,7 @@ cups_request_ppd_cb (CtkPrintBackendCups *print_backend,
   g_signal_emit_by_name (printer, "details-acquired", TRUE);
 
 done:
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static gboolean
@@ -3948,7 +3948,7 @@ cups_request_ppd (CtkPrinter *printer)
               cups_printer->get_remote_ppd_attempts = -1;
               if (cups_printer->get_remote_ppd_poll > 0)
                 g_source_remove (cups_printer->get_remote_ppd_poll);
-              cups_printer->get_remote_ppd_poll = gdk_threads_add_timeout (200,
+              cups_printer->get_remote_ppd_poll = cdk_threads_add_timeout (200,
                                                     (GSourceFunc) cups_request_ppd,
                                                     printer);
               g_source_set_name_by_id (cups_printer->get_remote_ppd_poll, "[ctk+] cups_request_ppd");
@@ -4226,7 +4226,7 @@ cups_get_default_printer (CtkPrintBackendCups *backend)
     {
       if (cups_request_default_printer (cups_backend))
         {
-          cups_backend->default_printer_poll = gdk_threads_add_timeout (200,
+          cups_backend->default_printer_poll = cdk_threads_add_timeout (200,
                                                  (GSourceFunc) cups_request_default_printer,
                                                  backend);
           g_source_set_name_by_id (cups_backend->default_printer_poll, "[ctk+] cups_request_default_printer");
@@ -4274,7 +4274,7 @@ cups_request_default_printer_cb (CtkPrintBackendCups *print_backend,
   ipp_attribute_t *attr;
   CtkPrinter *printer;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   if (ctk_cups_result_is_error (result))
     {
@@ -4314,7 +4314,7 @@ cups_request_default_printer_cb (CtkPrintBackendCups *print_backend,
   if (print_backend->list_printers_poll != 0)
     cups_request_printer_list (print_backend);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 static gboolean
@@ -4365,7 +4365,7 @@ cups_printer_request_details (CtkPrinter *printer)
 
               if (cups_request_ppd (printer))
                 {
-                  cups_printer->get_remote_ppd_poll = gdk_threads_add_timeout (50,
+                  cups_printer->get_remote_ppd_poll = cdk_threads_add_timeout (50,
                                                       (GSourceFunc) cups_request_ppd,
                                                       printer);
                   g_source_set_name_by_id (cups_printer->get_remote_ppd_poll, "[ctk+] cups_request_ppd");

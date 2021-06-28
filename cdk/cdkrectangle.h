@@ -26,33 +26,33 @@
 #define __GDK_RECTANGLE_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
-#include <gdk/gdktypes.h>
-#include <gdk/gdkversionmacros.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkversionmacros.h>
 
 G_BEGIN_DECLS
 
 /* Rectangle utilities
  */
 GDK_AVAILABLE_IN_ALL
-gboolean gdk_rectangle_intersect (const GdkRectangle *src1,
+gboolean cdk_rectangle_intersect (const GdkRectangle *src1,
                                   const GdkRectangle *src2,
                                   GdkRectangle       *dest);
 GDK_AVAILABLE_IN_ALL
-void     gdk_rectangle_union     (const GdkRectangle *src1,
+void     cdk_rectangle_union     (const GdkRectangle *src1,
                                   const GdkRectangle *src2,
                                   GdkRectangle       *dest);
 
 GDK_AVAILABLE_IN_3_20
-gboolean gdk_rectangle_equal     (const GdkRectangle *rect1,
+gboolean cdk_rectangle_equal     (const GdkRectangle *rect1,
                                   const GdkRectangle *rect2);
 
 GDK_AVAILABLE_IN_ALL
-GType gdk_rectangle_get_type (void) G_GNUC_CONST;
+GType cdk_rectangle_get_type (void) G_GNUC_CONST;
 
-#define GDK_TYPE_RECTANGLE (gdk_rectangle_get_type ())
+#define GDK_TYPE_RECTANGLE (cdk_rectangle_get_type ())
 
 G_END_DECLS
 

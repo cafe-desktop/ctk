@@ -23,151 +23,151 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "X-Generator: KBabel 1.9.1\n"
 
-#: gdk/gdk.c:103
+#: cdk/cdk.c:103
 #, c-format
-msgid "Error parsing option --gdk-debug"
+msgid "Error parsing option --cdk-debug"
 msgstr ""
 
-#: gdk/gdk.c:123
+#: cdk/cdk.c:123
 #, c-format
-msgid "Error parsing option --gdk-no-debug"
+msgid "Error parsing option --cdk-no-debug"
 msgstr ""
 
 #. Description of --class=CLASS in --help output
-#: gdk/gdk.c:151
+#: cdk/cdk.c:151
 #, fuzzy
 msgid "Program class as used by the window manager"
 msgstr "ishuri Nka ku Idirishya Muyobozi"
 
 #. Placeholder in --class=CLASS in --help output
-#: gdk/gdk.c:152
+#: cdk/cdk.c:152
 msgid "CLASS"
 msgstr "ishuri,urwego"
 
 #. Description of --name=NAME in --help output
-#: gdk/gdk.c:154
+#: cdk/cdk.c:154
 #, fuzzy
 msgid "Program name as used by the window manager"
 msgstr "Izina: Nka ku Idirishya Muyobozi"
 
 #. Placeholder in --name=NAME in --help output
-#: gdk/gdk.c:155
+#: cdk/cdk.c:155
 msgid "NAME"
 msgstr "Izina"
 
 #. Description of --display=DISPLAY in --help output
-#: gdk/gdk.c:157
+#: cdk/cdk.c:157
 #, fuzzy
 msgid "X display to use"
 msgstr "Kugaragaza Kuri Gukoresha"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: gdk/gdk.c:158
+#: cdk/cdk.c:158
 msgid "DISPLAY"
 msgstr "Kwerekana"
 
 #. Description of --screen=SCREEN in --help output
-#: gdk/gdk.c:160
+#: cdk/cdk.c:160
 #, fuzzy
 msgid "X screen to use"
 msgstr "Mugaragaza Kuri Gukoresha"
 
 #. Placeholder in --screen=SCREEN in --help output
-#: gdk/gdk.c:161
+#: cdk/cdk.c:161
 msgid "SCREEN"
 msgstr "Ikirahuri"
 
-#. Description of --gdk-debug=FLAGS in --help output
-#: gdk/gdk.c:164
+#. Description of --cdk-debug=FLAGS in --help output
+#: cdk/cdk.c:164
 #, fuzzy
 msgid "GDK debugging flags to set"
 msgstr "Amabendera Kuri Gushyiraho"
 
 # svx/source\gallery2\galtheme.src:RID_GALLERYSTR_THEME_FLAGS.text
-#. Placeholder in --gdk-debug=FLAGS in --help output
-#. Placeholder in --gdk-no-debug=FLAGS in --help output
+#. Placeholder in --cdk-debug=FLAGS in --help output
+#. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:165 gdk/gdk.c:168 ctk/ctkmain.c:533 ctk/ctkmain.c:536
+#: cdk/cdk.c:165 cdk/cdk.c:168 ctk/ctkmain.c:533 ctk/ctkmain.c:536
 #, fuzzy
 msgid "FLAGS"
 msgstr "Amabendera"
 
-#. Description of --gdk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:167
+#. Description of --cdk-no-debug=FLAGS in --help output
+#: cdk/cdk.c:167
 #, fuzzy
 msgid "GDK debugging flags to unset"
 msgstr "Amabendera Kuri"
 
 # basctl/source\basicide\basidesh.src:RID_POPUP_TABBAR.SID_BASICIDE_RENAMECURRENT.text
-#: gdk/keyname-table.h:3940
+#: cdk/keyname-table.h:3940
 #, fuzzy
 msgctxt "keyboard label"
 msgid "BackSpace"
 msgstr "Guhindura izina"
 
-#: gdk/keyname-table.h:3941
+#: cdk/keyname-table.h:3941
 msgctxt "keyboard label"
 msgid "Tab"
 msgstr ""
 
-#: gdk/keyname-table.h:3942
+#: cdk/keyname-table.h:3942
 msgctxt "keyboard label"
 msgid "Return"
 msgstr ""
 
 # dbaccess/source/ui/inc/toolbox.hrc:MID_SBA_QRY_PASTE.text
-#: gdk/keyname-table.h:3943
+#: cdk/keyname-table.h:3943
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Pause"
 msgstr "Komeka"
 
-#: gdk/keyname-table.h:3944
+#: cdk/keyname-table.h:3944
 msgctxt "keyboard label"
 msgid "Scroll_Lock"
 msgstr ""
 
-#: gdk/keyname-table.h:3945
+#: cdk/keyname-table.h:3945
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Sys_Req"
 msgstr "imiterere ya dosiye"
 
-#: gdk/keyname-table.h:3946
+#: cdk/keyname-table.h:3946
 msgctxt "keyboard label"
 msgid "Escape"
 msgstr ""
 
-#: gdk/keyname-table.h:3947
+#: cdk/keyname-table.h:3947
 msgctxt "keyboard label"
 msgid "Multi_key"
 msgstr ""
 
-#: gdk/keyname-table.h:3948
+#: cdk/keyname-table.h:3948
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Home"
 msgstr "home"
 
-#: gdk/keyname-table.h:3949
+#: cdk/keyname-table.h:3949
 msgctxt "keyboard label"
 msgid "Left"
 msgstr ""
 
-#: gdk/keyname-table.h:3950
+#: cdk/keyname-table.h:3950
 msgctxt "keyboard label"
 msgid "Up"
 msgstr ""
 
 # svtools/source\dialogs\colrdlg.src:DLG_COLOR.FT_HUE.text
-#: gdk/keyname-table.h:3951
+#: cdk/keyname-table.h:3951
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Right"
 msgstr "Ibara"
 
-#: gdk/keyname-table.h:3952
+#: cdk/keyname-table.h:3952
 msgctxt "keyboard label"
 msgid "Down"
 msgstr ""
@@ -176,124 +176,124 @@ msgstr ""
 # sc/source\ui\src\menue.src:RID_OBJECTMENU_CELLS.SID_FORMATPAGE.text
 # #-#-#-#-#  sc.pot (Gnome 2.12)  #-#-#-#-#
 # sc/source\ui\src\menue.src:RID_OBJECTMENU_EDIT.SID_FORMATPAGE.text
-#: gdk/keyname-table.h:3953
+#: cdk/keyname-table.h:3953
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Page_Up"
 msgstr "Ipaji..."
 
-#: gdk/keyname-table.h:3954
+#: cdk/keyname-table.h:3954
 msgctxt "keyboard label"
 msgid "Page_Down"
 msgstr ""
 
-#: gdk/keyname-table.h:3955
+#: cdk/keyname-table.h:3955
 msgctxt "keyboard label"
 msgid "End"
 msgstr ""
 
-#: gdk/keyname-table.h:3956
+#: cdk/keyname-table.h:3956
 msgctxt "keyboard label"
 msgid "Begin"
 msgstr ""
 
 # #-#-#-#-#  dbaccess.pot (Gnome 2.12)  #-#-#-#-#
 # #-#-#-#-#  dbaccess.pot (Gnome 2.12)  #-#-#-#-#
-#: gdk/keyname-table.h:3957
+#: cdk/keyname-table.h:3957
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Print"
 msgstr "Gucapa"
 
-#: gdk/keyname-table.h:3958
+#: cdk/keyname-table.h:3958
 msgctxt "keyboard label"
 msgid "Insert"
 msgstr ""
 
-#: gdk/keyname-table.h:3959
+#: cdk/keyname-table.h:3959
 msgctxt "keyboard label"
 msgid "Num_Lock"
 msgstr ""
 
 # basctl/source\basicide\basidesh.src:RID_POPUP_TABBAR.SID_BASICIDE_RENAMECURRENT.text
-#: gdk/keyname-table.h:3960
+#: cdk/keyname-table.h:3960
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Space"
 msgstr "Guhindura izina"
 
-#: gdk/keyname-table.h:3961
+#: cdk/keyname-table.h:3961
 msgctxt "keyboard label"
 msgid "KP_Tab"
 msgstr ""
 
 # #-#-#-#-#  dbaccess.pot (Gnome 2.12)  #-#-#-#-#
 # #-#-#-#-#  dbaccess.pot (Gnome 2.12)  #-#-#-#-#
-#: gdk/keyname-table.h:3962
+#: cdk/keyname-table.h:3962
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Enter"
 msgstr "Gucapa"
 
-#: gdk/keyname-table.h:3963
+#: cdk/keyname-table.h:3963
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Home"
 msgstr "Home"
 
-#: gdk/keyname-table.h:3964
+#: cdk/keyname-table.h:3964
 msgctxt "keyboard label"
 msgid "KP_Left"
 msgstr ""
 
-#: gdk/keyname-table.h:3965
+#: cdk/keyname-table.h:3965
 msgctxt "keyboard label"
 msgid "KP_Up"
 msgstr ""
 
 # svtools/source\dialogs\colrdlg.src:DLG_COLOR.FT_HUE.text
-#: gdk/keyname-table.h:3966
+#: cdk/keyname-table.h:3966
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Right"
 msgstr "Ibara"
 
-#: gdk/keyname-table.h:3967
+#: cdk/keyname-table.h:3967
 msgctxt "keyboard label"
 msgid "KP_Down"
 msgstr ""
 
-#: gdk/keyname-table.h:3968
+#: cdk/keyname-table.h:3968
 msgctxt "keyboard label"
 msgid "KP_Page_Up"
 msgstr ""
 
-#: gdk/keyname-table.h:3969
+#: cdk/keyname-table.h:3969
 msgctxt "keyboard label"
 msgid "KP_Prior"
 msgstr ""
 
-#: gdk/keyname-table.h:3970
+#: cdk/keyname-table.h:3970
 msgctxt "keyboard label"
 msgid "KP_Page_Down"
 msgstr ""
 
-#: gdk/keyname-table.h:3971
+#: cdk/keyname-table.h:3971
 msgctxt "keyboard label"
 msgid "KP_Next"
 msgstr ""
 
-#: gdk/keyname-table.h:3972
+#: cdk/keyname-table.h:3972
 msgctxt "keyboard label"
 msgid "KP_End"
 msgstr ""
 
-#: gdk/keyname-table.h:3973
+#: cdk/keyname-table.h:3973
 msgctxt "keyboard label"
 msgid "KP_Begin"
 msgstr ""
 
-#: gdk/keyname-table.h:3974
+#: cdk/keyname-table.h:3974
 msgctxt "keyboard label"
 msgid "KP_Insert"
 msgstr ""
@@ -302,7 +302,7 @@ msgstr ""
 # basctl/source\basicide\basidesh.src:RID_POPUP_TABBAR.SID_BASICIDE_DELETECURRENT.text
 # #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
 # basctl/source\basicide\brkdlg.src:RID_BASICIDE_BREAKPOINTDLG.RID_PB_DEL.text
-#: gdk/keyname-table.h:3975
+#: cdk/keyname-table.h:3975
 #, fuzzy
 msgctxt "keyboard label"
 msgid "KP_Delete"
@@ -312,59 +312,59 @@ msgstr "Gusiba"
 # basctl/source\basicide\basidesh.src:RID_POPUP_TABBAR.SID_BASICIDE_DELETECURRENT.text
 # #-#-#-#-#  basctl.pot (Gnome 2.12)  #-#-#-#-#
 # basctl/source\basicide\brkdlg.src:RID_BASICIDE_BREAKPOINTDLG.RID_PB_DEL.text
-#: gdk/keyname-table.h:3976
+#: cdk/keyname-table.h:3976
 #, fuzzy
 msgctxt "keyboard label"
 msgid "Delete"
 msgstr "Gusiba"
 
 #. Description of --sync in --help output
-#: gdk/win32/gdkmain-win32.c:54
+#: cdk/win32/cdkmain-win32.c:54
 msgid "Don't batch GDI requests"
 msgstr ""
 
 #. Description of --no-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:56
+#: cdk/win32/cdkmain-win32.c:56
 #, fuzzy
 msgid "Don't use the Wintab API for tablet support"
 msgstr "Gukoresha kugirango Gushigikira"
 
 #. Description of --ignore-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:58
+#: cdk/win32/cdkmain-win32.c:58
 #, fuzzy
 msgid "Same as --no-wintab"
 msgstr "Nka Oya"
 
 #. Description of --use-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:60
+#: cdk/win32/cdkmain-win32.c:60
 #, fuzzy
 msgid "Do use the Wintab API [default]"
 msgstr "Gukoresha Mburabuzi"
 
 #. Description of --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:62
+#: cdk/win32/cdkmain-win32.c:62
 #, fuzzy
 msgid "Size of the palette in 8 bit mode"
 msgstr "Bya Urwunge rw'ibara: in 8 Ubwoko"
 
 #. Placeholder in --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:63
+#: cdk/win32/cdkmain-win32.c:63
 msgid "COLORS"
 msgstr "amabara"
 
 # #-#-#-#-#  dbaccess.pot (Gnome 2.12)  #-#-#-#-#
 # #-#-#-#-#  dbaccess.pot (Gnome 2.12)  #-#-#-#-#
-#: gdk/x11/gdkapplaunchcontext-x11.c:312
+#: cdk/x11/cdkapplaunchcontext-x11.c:312
 #, fuzzy, c-format
 msgid "Starting %s"
 msgstr "Gucapa"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:316
+#: cdk/x11/cdkapplaunchcontext-x11.c:316
 #, c-format
 msgid "Opening %s"
 msgstr ""
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:321
+#: cdk/x11/cdkapplaunchcontext-x11.c:321
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
@@ -372,7 +372,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. Description of --sync in --help output
-#: gdk/x11/gdkmain-x11.c:96
+#: cdk/x11/cdkmain-x11.c:96
 #, fuzzy
 msgid "Make X calls synchronous"
 msgstr "Amahamagara:"
@@ -4802,7 +4802,7 @@ msgstr "Kuri Ibirimo Ishusho OYA a Ishusho IDOSIYE"
 
 #, fuzzy
 #~ msgid ""
-#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ "This build of cdk-pixbuf does not support saving the image format: %s"
 #~ msgstr "Bya OYA Gushigikira Mu kubika Ishusho Imiterere"
 
 #, fuzzy

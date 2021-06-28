@@ -17,13 +17,13 @@
  */
 #include "config.h"
 
-#include <gdk/gdktestutils.h>
-#include <gdk/gdkkeysyms.h>
-#include <win32/gdkwin32.h>
+#include <cdk/cdktestutils.h>
+#include <cdk/cdkkeysyms.h>
+#include <win32/cdkwin32.h>
 
 
 gboolean
-_gdk_win32_window_simulate_key (GdkWindow      *window,
+_cdk_win32_window_simulate_key (GdkWindow      *window,
                        gint            x,
                        gint            y,
                        guint           keyval,
@@ -56,7 +56,7 @@ _gdk_win32_window_simulate_key (GdkWindow      *window,
       /* Not a key event. */
       return FALSE;
     }
-  if (gdk_keymap_get_entries_for_keyval (gdk_keymap_get_default (), keyval, &keys, &n_keys))
+  if (cdk_keymap_get_entries_for_keyval (cdk_keymap_get_default (), keyval, &keys, &n_keys))
     {
       for (i = 0; i < n_keys; i++)
         {
@@ -113,7 +113,7 @@ _gdk_win32_window_simulate_key (GdkWindow      *window,
 }
 
 gboolean
-_gdk_win32_window_simulate_button (GdkWindow      *window,
+_cdk_win32_window_simulate_button (GdkWindow      *window,
                           gint            x,
                           gint            y,
                           guint           button, /*1..3*/

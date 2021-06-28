@@ -29,15 +29,15 @@
 #include <glib/gprintf.h>
 #include <pango/pangowin32.h>
 
-#include "gdkscreen.h"
-#include "gdkproperty.h"
-#include "gdkselection.h"
-#include "gdkprivate-win32.h"
-#include "gdkmonitor-win32.h"
-#include "gdkwin32.h"
+#include "cdkscreen.h"
+#include "cdkproperty.h"
+#include "cdkselection.h"
+#include "cdkprivate-win32.h"
+#include "cdkmonitor-win32.h"
+#include "cdkwin32.h"
 
 GdkAtom
-_gdk_win32_display_manager_atom_intern (GdkDisplayManager *manager,
+_cdk_win32_display_manager_atom_intern (GdkDisplayManager *manager,
 					const gchar *atom_name,
 					gint         only_if_exists)
 {
@@ -87,7 +87,7 @@ _gdk_win32_display_manager_atom_intern (GdkDisplayManager *manager,
 }
 
 gchar *
-_gdk_win32_display_manager_get_atom_name (GdkDisplayManager *manager,
+_cdk_win32_display_manager_get_atom_name (GdkDisplayManager *manager,
 					  GdkAtom            atom)
 {
   ATOM win32_atom;
@@ -116,7 +116,7 @@ _gdk_win32_display_manager_get_atom_name (GdkDisplayManager *manager,
 }
 
 gint
-_gdk_win32_window_get_property (GdkWindow   *window,
+_cdk_win32_window_get_property (GdkWindow   *window,
 		  GdkAtom      property,
 		  GdkAtom      type,
 		  gulong       offset,
@@ -133,13 +133,13 @@ _gdk_win32_window_get_property (GdkWindow   *window,
   if (GDK_WINDOW_DESTROYED (window))
     return FALSE;
 
-  g_warning ("gdk_property_get: Not implemented");
+  g_warning ("cdk_property_get: Not implemented");
 
   return FALSE;
 }
 
 void
-_gdk_win32_window_change_property (GdkWindow         *window,
+_cdk_win32_window_change_property (GdkWindow         *window,
                                    GdkAtom            property,
                                    GdkAtom            type,
                                    gint               format,
@@ -147,7 +147,7 @@ _gdk_win32_window_change_property (GdkWindow         *window,
                                    const guchar      *data,
                                    gint               nelements)
 {
-  GdkWin32Selection *win32_sel = _gdk_win32_selection_get ();
+  GdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
 
   g_return_if_fail (window != NULL);
   g_return_if_fail (GDK_IS_WINDOW (window));
@@ -156,11 +156,11 @@ _gdk_win32_window_change_property (GdkWindow         *window,
     return;
 
   GDK_NOTE (DND, {
-      gchar *prop_name = gdk_atom_name (property);
-      gchar *type_name = gdk_atom_name (type);
-      gchar *datastring = _gdk_win32_data_to_string (data, MIN (10, format*nelements/8));
+      gchar *prop_name = cdk_atom_name (property);
+      gchar *type_name = cdk_atom_name (type);
+      gchar *datastring = _cdk_win32_data_to_string (data, MIN (10, format*nelements/8));
 
-      g_print ("gdk_property_change: %p %s %s %s %d*%d bits: %s\n",
+      g_print ("cdk_property_change: %p %s %s %s %d*%d bits: %s\n",
 	       GDK_WINDOW_HWND (window),
 	       prop_name,
 	       type_name,
@@ -177,8 +177,8 @@ _gdk_win32_window_change_property (GdkWindow         *window,
 
 #ifndef G_DISABLE_CHECKS
   /* We should never come here for these types */
-  if (G_UNLIKELY (type == _gdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_COMPOUND_TEXT) ||
-                  type == _gdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_SAVE_TARGETS)))
+  if (G_UNLIKELY (type == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_COMPOUND_TEXT) ||
+                  type == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_SAVE_TARGETS)))
     {
       g_return_if_fail_warning (G_LOG_DOMAIN,
                                 G_STRFUNC,
@@ -187,11 +187,11 @@ _gdk_win32_window_change_property (GdkWindow         *window,
     }
 #endif
 
-  if (property == _gdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION) ||
-      property == _gdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND) ||
-      property == _gdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION))
+  if (property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION) ||
+      property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND) ||
+      property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION))
     {
-      _gdk_win32_selection_property_change (win32_sel,
+      _cdk_win32_selection_property_change (win32_sel,
                                             window,
                                             property,
                                             type,
@@ -201,11 +201,11 @@ _gdk_win32_window_change_property (GdkWindow         *window,
                                             nelements);
     }
   else
-    g_warning ("gdk_property_change: General case not implemented");
+    g_warning ("cdk_property_change: General case not implemented");
 }
 
 void
-_gdk_win32_window_delete_property (GdkWindow *window,
+_cdk_win32_window_delete_property (GdkWindow *window,
 				   GdkAtom    property)
 {
   gchar *prop_name;
@@ -214,28 +214,28 @@ _gdk_win32_window_delete_property (GdkWindow *window,
   g_return_if_fail (GDK_IS_WINDOW (window));
 
   GDK_NOTE (DND, {
-      prop_name = gdk_atom_name (property);
+      prop_name = cdk_atom_name (property);
 
-      g_print ("gdk_property_delete: %p %s\n",
+      g_print ("cdk_property_delete: %p %s\n",
 	       GDK_WINDOW_HWND (window),
 	       prop_name);
       g_free (prop_name);
     });
 
-  if (property == _gdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION) ||
-      property == _gdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND))
-    _gdk_selection_property_delete (window);
-  else if (property == _gdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_WM_TRANSIENT_FOR))
+  if (property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION) ||
+      property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND))
+    _cdk_selection_property_delete (window);
+  else if (property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_WM_TRANSIENT_FOR))
     {
       GdkScreen *screen;
 
-      screen = gdk_window_get_screen (window);
-      gdk_window_set_transient_for (window, gdk_screen_get_root_window (screen));
+      screen = cdk_window_get_screen (window);
+      cdk_window_set_transient_for (window, cdk_screen_get_root_window (screen));
     }
   else
     {
-      prop_name = gdk_atom_name (property);
-      g_warning ("gdk_property_delete: General case (%s) not implemented",
+      prop_name = cdk_atom_name (property);
+      g_warning ("cdk_property_delete: General case (%s) not implemented",
 		 prop_name);
       g_free (prop_name);
     }
@@ -268,7 +268,7 @@ _get_system_font_name (HDC hdc)
 }
 
 /*
-  For reference, from gdk/x11/gdksettings.c:
+  For reference, from cdk/x11/cdksettings.c:
 
   "Net/DoubleClickTime\0"     "ctk-double-click-time\0"
   "Net/DoubleClickDistance\0" "ctk-double-click-distance\0"
@@ -306,7 +306,7 @@ _get_system_font_name (HDC hdc)
 
 */
 gboolean
-_gdk_win32_screen_get_setting (GdkScreen   *screen,
+_cdk_win32_screen_get_setting (GdkScreen   *screen,
                         const gchar *name,
                         GValue      *value)
 {
@@ -314,56 +314,56 @@ _gdk_win32_screen_get_setting (GdkScreen   *screen,
 
   /*
    * XXX : if these values get changed through the Windoze UI the
-   *       respective gdk_events are not generated yet.
+   *       respective cdk_events are not generated yet.
    */
   if (strcmp ("ctk-double-click-time", name) == 0)
     {
       gint i = GetDoubleClickTime ();
-      GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : %d\n", name, i));
+      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %d\n", name, i));
       g_value_set_int (value, i);
       return TRUE;
     }
   else if (strcmp ("ctk-double-click-distance", name) == 0)
     {
       gint i = MAX(GetSystemMetrics (SM_CXDOUBLECLK), GetSystemMetrics (SM_CYDOUBLECLK));
-      GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : %d\n", name, i));
+      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %d\n", name, i));
       g_value_set_int (value, i);
       return TRUE;
     }
   else if (strcmp ("ctk-dnd-drag-threshold", name) == 0)
     {
       gint i = MAX(GetSystemMetrics (SM_CXDRAG), GetSystemMetrics (SM_CYDRAG));
-      GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : %d\n", name, i));
+      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %d\n", name, i));
       g_value_set_int (value, i);
       return TRUE;
     }
   else if (strcmp ("ctk-split-cursor", name) == 0)
     {
-      GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : FALSE\n", name));
+      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : FALSE\n", name));
       g_value_set_boolean (value, FALSE);
       return TRUE;
     }
   else if (strcmp ("ctk-alternative-button-order", name) == 0)
     {
-      GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : TRUE\n", name));
+      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : TRUE\n", name));
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
   else if (strcmp ("ctk-alternative-sort-arrows", name) == 0)
     {
-      GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : TRUE\n", name));
+      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : TRUE\n", name));
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
   else if (strcmp ("ctk-shell-shows-desktop", name) == 0)
     {
-      GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : TRUE\n", name));
+      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : TRUE\n", name));
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
   else if (strcmp ("ctk-xft-hinting", name) == 0)
     {
-      GDK_NOTE(MISC, g_print ("gdk_screen_get_setting(\"%s\") : 1\n", name));
+      GDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : 1\n", name));
       g_value_set_int (value, 1);
       return TRUE;
     }
@@ -373,29 +373,29 @@ _gdk_win32_screen_get_setting (GdkScreen   *screen,
       SystemParametersInfoW (SPI_GETFONTSMOOTHING, 0, &val, 0);
       g_value_set_int (value, val ? 1 : 0);
 
-      GDK_NOTE(MISC, g_print ("gdk_screen_get_setting(\"%s\") : %u\n", name, val));
+      GDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : %u\n", name, val));
       return TRUE;
     }
   else if (strcmp ("ctk-xft-hintstyle", name) == 0)
     {
       g_value_set_static_string (value, "hintfull");
-      GDK_NOTE(MISC, g_print ("gdk_screen_get_setting(\"%s\") : %s\n", name, g_value_get_string (value)));
+      GDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : %s\n", name, g_value_get_string (value)));
       return TRUE;
     }
   else if (strcmp ("ctk-xft-rgba", name) == 0)
     {
       const gchar *rgb_value;
       GdkMonitor *monitor;
-      monitor = gdk_display_get_monitor (gdk_display_get_default (), 0);
-      rgb_value = _gdk_win32_monitor_get_pixel_structure (monitor);
+      monitor = cdk_display_get_monitor (cdk_display_get_default (), 0);
+      rgb_value = _cdk_win32_monitor_get_pixel_structure (monitor);
       g_value_set_static_string (value, rgb_value);
 
-      GDK_NOTE(MISC, g_print ("gdk_screen_get_setting(\"%s\") : %s\n", name, g_value_get_string (value)));
+      GDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : %s\n", name, g_value_get_string (value)));
       return TRUE;
     }
   else if (strcmp ("ctk-font-name", name) == 0)
     {
-      gchar *font_name = _get_system_font_name (_gdk_display_hdc);
+      gchar *font_name = _get_system_font_name (_cdk_display_hdc);
 
       if (font_name)
         {
@@ -408,19 +408,19 @@ _gdk_win32_screen_get_setting (GdkScreen   *screen,
               return FALSE;
             }
 
-          GDK_NOTE(MISC, g_print("gdk_screen_get_setting(\"%s\") : %s\n", name, font_name));
+          GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %s\n", name, font_name));
           g_value_take_string (value, font_name);
           return TRUE;
         }
       else
         {
-          g_warning ("gdk_screen_get_setting: Detecting the system font failed");
+          g_warning ("cdk_screen_get_setting: Detecting the system font failed");
           return FALSE;
         }
     }
   else if (strcmp ("ctk-im-module", name) == 0)
     {
-      if (_gdk_input_locale_is_ime)
+      if (_cdk_input_locale_is_ime)
         g_value_set_static_string (value, "ime");
       else
         g_value_set_static_string (value, "");

@@ -3000,7 +3000,7 @@ ctk_entry_dispose (GObject *object)
       priv->buffer = NULL;
     }
 
-  keymap = gdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (object)));
+  keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (object)));
   g_signal_handlers_disconnect_by_func (keymap, keymap_state_changed, entry);
   g_signal_handlers_disconnect_by_func (keymap, keymap_direction_changed, entry);
   G_OBJECT_CLASS (ctk_entry_parent_class)->dispose (object);
@@ -3164,7 +3164,7 @@ update_cursors (CtkWidget *widget)
         {
           if (!_ctk_icon_helper_get_is_empty (CTK_ICON_HELPER (icon_info->gadget)) && 
               icon_info->window != NULL)
-            gdk_window_show_unraised (icon_info->window);
+            cdk_window_show_unraised (icon_info->window);
 
           /* The icon windows are not children of the visible entry window,
            * thus we can't just inherit the xterm cursor. Slight complication 
@@ -3176,13 +3176,13 @@ update_cursors (CtkWidget *widget)
                (icon_info->nonactivatable && icon_info->target_list == NULL)))
             {
               display = ctk_widget_get_display (widget);
-              cursor = gdk_cursor_new_from_name (display, "text");
-              gdk_window_set_cursor (icon_info->window, cursor);
+              cursor = cdk_cursor_new_from_name (display, "text");
+              cdk_window_set_cursor (icon_info->window, cursor);
               g_clear_object (&cursor);
             }
           else
             {
-              gdk_window_set_cursor (icon_info->window, NULL);
+              cdk_window_set_cursor (icon_info->window, NULL);
             }
         }
     }
@@ -3216,7 +3216,7 @@ realize_icon_info (CtkWidget            *widget,
                             GDK_LEAVE_NOTIFY_MASK);
   attributes_mask = GDK_WA_X | GDK_WA_Y;
 
-  icon_info->window = gdk_window_new (ctk_widget_get_window (widget),
+  icon_info->window = cdk_window_new (ctk_widget_get_window (widget),
                                       &attributes,
                                       attributes_mask);
   ctk_widget_register_window (widget, icon_info->window);
@@ -3356,7 +3356,7 @@ ctk_entry_map (CtkWidget *widget)
 
   CTK_WIDGET_CLASS (ctk_entry_parent_class)->map (widget);
 
-  gdk_window_show (priv->text_area);
+  cdk_window_show (priv->text_area);
 
   for (i = 0; i < MAX_ICONS; i++)
     {
@@ -3364,7 +3364,7 @@ ctk_entry_map (CtkWidget *widget)
         {
           if (!_ctk_icon_helper_get_is_empty (CTK_ICON_HELPER (icon_info->gadget)) &&
               icon_info->window != NULL)
-            gdk_window_show (icon_info->window);
+            cdk_window_show (icon_info->window);
         }
     }
 
@@ -3389,11 +3389,11 @@ ctk_entry_unmap (CtkWidget *widget)
         {
           if (!_ctk_icon_helper_get_is_empty (CTK_ICON_HELPER (icon_info->gadget)) && 
               icon_info->window != NULL)
-            gdk_window_hide (icon_info->window);
+            cdk_window_hide (icon_info->window);
         }
     }
 
-  gdk_window_hide (priv->text_area);
+  cdk_window_hide (priv->text_area);
 
   CTK_WIDGET_CLASS (ctk_entry_parent_class)->unmap (widget);
 }
@@ -3432,11 +3432,11 @@ ctk_entry_realize (CtkWidget *widget)
 
   if (ctk_widget_is_sensitive (widget))
     {
-      attributes.cursor = gdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
+      attributes.cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
       attributes_mask |= GDK_WA_CURSOR;
     }
 
-  priv->text_area = gdk_window_new (ctk_widget_get_window (widget),
+  priv->text_area = cdk_window_new (ctk_widget_get_window (widget),
                                     &attributes,
                                     attributes_mask);
 
@@ -3484,7 +3484,7 @@ ctk_entry_unrealize (CtkWidget *widget)
   if (priv->text_area)
     {
       ctk_widget_unregister_window (widget, priv->text_area);
-      gdk_window_destroy (priv->text_area);
+      cdk_window_destroy (priv->text_area);
       priv->text_area = NULL;
     }
 
@@ -3503,7 +3503,7 @@ ctk_entry_unrealize (CtkWidget *widget)
           if (icon_info->window != NULL)
             {
               ctk_widget_unregister_window (widget, icon_info->window);
-              gdk_window_destroy (icon_info->window);
+              cdk_window_destroy (icon_info->window);
               icon_info->window = NULL;
             }
         }
@@ -3688,7 +3688,7 @@ place_windows (CtkEntry *entry)
       CtkAllocation primary;
 
       ctk_css_gadget_get_border_allocation (icon_info->gadget, &primary, NULL);
-      gdk_window_move_resize (icon_info->window,
+      cdk_window_move_resize (icon_info->window,
                               primary.x, primary.y,
                               primary.width, primary.height);
     }
@@ -3699,12 +3699,12 @@ place_windows (CtkEntry *entry)
       CtkAllocation secondary;
 
       ctk_css_gadget_get_border_allocation (icon_info->gadget, &secondary, NULL);
-      gdk_window_move_resize (icon_info->window,
+      cdk_window_move_resize (icon_info->window,
                               secondary.x, secondary.y,
                               secondary.width, secondary.height);
     }
 
-  gdk_window_move_resize (priv->text_area,
+  cdk_window_move_resize (priv->text_area,
                           priv->text_allocation.x, priv->text_allocation.y,
                           priv->text_allocation.width, priv->text_allocation.height);
 }
@@ -3877,7 +3877,7 @@ ctk_entry_allocate (CtkCssGadget        *gadget,
                                baseline,
                                &clip);
 
-      gdk_rectangle_union (out_clip, &clip, out_clip);
+      cdk_rectangle_union (out_clip, &clip, out_clip);
     }
 
   if (priv->progress_gadget && ctk_css_gadget_get_visible (priv->progress_gadget))
@@ -3913,7 +3913,7 @@ ctk_entry_allocate (CtkCssGadget        *gadget,
 
       ctk_css_gadget_allocate (priv->progress_gadget, &progress_alloc, baseline, &clip);
 
-      gdk_rectangle_union (out_clip, &clip, out_clip);
+      cdk_rectangle_union (out_clip, &clip, out_clip);
     }
 
   /* Do this here instead of ctk_entry_size_allocate() so it works
@@ -4264,7 +4264,7 @@ ctk_entry_update_handles (CtkEntry          *entry,
 
   _ctk_text_handle_set_mode (priv->text_handle, mode);
 
-  height = gdk_window_get_height (priv->text_area);
+  height = cdk_window_get_height (priv->text_area);
 
   ctk_entry_get_cursor_locations (entry, CURSOR_STANDARD, &strong_x, NULL);
   cursor = strong_x - priv->scroll_offset;
@@ -4314,8 +4314,8 @@ ctk_entry_event (CtkWidget *widget,
     {
       GdkCursor *cursor;
 
-      cursor = gdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
-      gdk_window_set_cursor (priv->text_area, cursor);
+      cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
+      cdk_window_set_cursor (priv->text_area, cursor);
       g_object_unref (cursor);
       priv->mouse_cursor_obscured = FALSE;
       return GDK_EVENT_PROPAGATE;
@@ -4338,9 +4338,9 @@ ctk_entry_event (CtkWidget *widget,
   if (icon_info->insensitive)
     return GDK_EVENT_STOP;
 
-  sequence = gdk_event_get_event_sequence (event);
-  device = gdk_event_get_device (event);
-  gdk_event_get_coords (event, &x, &y);
+  sequence = cdk_event_get_event_sequence (event);
+  device = cdk_event_get_device (event);
+  cdk_event_get_coords (event, &x, &y);
 
   switch (event->type)
     {
@@ -4406,8 +4406,8 @@ ctk_entry_event (CtkWidget *widget,
 
       if (should_prelight (CTK_ENTRY (widget), i) &&
           x >= 0 && y >= 0 &&
-          x < gdk_window_get_width (icon_info->window) &&
-          y < gdk_window_get_height (icon_info->window))
+          x < cdk_window_get_width (icon_info->window) &&
+          y < cdk_window_get_height (icon_info->window))
         {
           icon_info->prelight = TRUE;
           update_icon_state (widget, i);
@@ -4479,7 +4479,7 @@ ctk_entry_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 
   tmp_pos = ctk_entry_find_position (entry, x);
 
-  if (gdk_event_triggers_context_menu (event))
+  if (cdk_event_triggers_context_menu (event))
     {
       ctk_entry_do_popup (entry, event);
     }
@@ -4503,9 +4503,9 @@ ctk_entry_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
       gboolean is_touchscreen, extend_selection;
       GdkDevice *source;
 
-      source = gdk_event_get_source_device (event);
+      source = cdk_event_get_source_device (event);
       is_touchscreen = ctk_simulate_touchscreen () ||
-                       gdk_device_get_source (source) == GDK_SOURCE_TOUCHSCREEN;
+                       cdk_device_get_source (source) == GDK_SOURCE_TOUCHSCREEN;
 
       if (!is_touchscreen)
         mode = CTK_TEXT_HANDLE_MODE_NONE;
@@ -4695,8 +4695,8 @@ ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
     {
       GdkCursor *cursor;
 
-      cursor = gdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
-      gdk_window_set_cursor (priv->text_area, cursor);
+      cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
+      cdk_window_set_cursor (priv->text_area, cursor);
       g_object_unref (cursor);
       priv->mouse_cursor_obscured = FALSE;
     }
@@ -4744,13 +4744,13 @@ ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
 
       if (y < 0)
 	tmp_pos = 0;
-      else if (y >= gdk_window_get_height (priv->text_area))
+      else if (y >= cdk_window_get_height (priv->text_area))
 	tmp_pos = length;
       else
 	tmp_pos = ctk_entry_find_position (entry, x);
 
-      source = gdk_event_get_source_device (event);
-      input_source = gdk_device_get_source (source);
+      source = cdk_event_get_source_device (event);
+      input_source = cdk_device_get_source (source);
 
       if (priv->select_words)
 	{
@@ -4831,9 +4831,9 @@ ctk_entry_drag_gesture_end (CtkGestureDrag *gesture,
     return;
 
   event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
-  source = gdk_event_get_source_device (event);
+  source = cdk_event_get_source_device (event);
   is_touchscreen = ctk_simulate_touchscreen () ||
-                   gdk_device_get_source (source) == GDK_SOURCE_TOUCHSCREEN;
+                   cdk_device_get_source (source) == GDK_SOURCE_TOUCHSCREEN;
 
   if (in_drag)
     {
@@ -4854,8 +4854,8 @@ set_invisible_cursor (GdkWindow *window)
 {
   GdkCursor *cursor;
 
-  cursor = gdk_cursor_new_from_name (gdk_window_get_display (window), "none");
-  gdk_window_set_cursor (window, cursor);
+  cursor = cdk_cursor_new_from_name (cdk_window_get_display (window), "none");
+  cdk_window_set_cursor (window, cursor);
   g_object_unref (cursor);
 }
 
@@ -4962,7 +4962,7 @@ ctk_entry_focus_in (CtkWidget     *widget,
 
   ctk_widget_queue_draw (widget);
 
-  keymap = gdk_keymap_get_for_display (ctk_widget_get_display (widget));
+  keymap = cdk_keymap_get_for_display (ctk_widget_get_display (widget));
 
   if (priv->editable)
     {
@@ -5007,7 +5007,7 @@ ctk_entry_focus_out (CtkWidget     *widget,
 
   ctk_widget_queue_draw (widget);
 
-  keymap = gdk_keymap_get_for_display (ctk_widget_get_display (widget));
+  keymap = cdk_keymap_get_for_display (ctk_widget_get_display (widget));
 
   if (priv->editable)
     {
@@ -5123,11 +5123,11 @@ ctk_entry_state_flags_changed (CtkWidget     *widget,
   if (ctk_widget_get_realized (widget))
     {
       if (ctk_widget_is_sensitive (widget))
-        cursor = gdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
+        cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
       else
         cursor = NULL;
 
-      gdk_window_set_cursor (priv->text_area, cursor);
+      cdk_window_set_cursor (priv->text_area, cursor);
 
       if (cursor)
         g_object_unref (cursor);
@@ -5470,7 +5470,7 @@ buffer_inserted_text (CtkEntryBuffer *buffer,
           password_hint->position = position;
           if (password_hint->source_id)
             g_source_remove (password_hint->source_id);
-          password_hint->source_id = gdk_threads_add_timeout (password_hint_timeout,
+          password_hint->source_id = cdk_threads_add_timeout (password_hint_timeout,
                                                               (GSourceFunc)ctk_entry_remove_password_hint, entry);
           g_source_set_name_by_id (password_hint->source_id, "[ctk+] ctk_entry_remove_password_hint");
         }
@@ -5575,8 +5575,8 @@ get_better_cursor_x (CtkEntry *entry,
 		     gint      offset)
 {
   CtkEntryPrivate *priv = entry->priv;
-  GdkKeymap *keymap = gdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (entry)));
-  PangoDirection keymap_direction = gdk_keymap_get_direction (keymap);
+  GdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (entry)));
+  PangoDirection keymap_direction = cdk_keymap_get_direction (keymap);
   gboolean split_cursor;
   
   PangoLayout *layout = ctk_entry_ensure_layout (entry, TRUE);
@@ -6405,8 +6405,8 @@ ctk_entry_create_layout (CtkEntry *entry,
           if (ctk_widget_has_focus (widget))
 	    {
 	      GdkDisplay *display = ctk_widget_get_display (widget);
-	      GdkKeymap *keymap = gdk_keymap_get_for_display (display);
-	      if (gdk_keymap_get_direction (keymap) == PANGO_DIRECTION_RTL)
+	      GdkKeymap *keymap = cdk_keymap_get_for_display (display);
+	      if (cdk_keymap_get_direction (keymap) == PANGO_DIRECTION_RTL)
 		pango_dir = PANGO_DIRECTION_RTL;
 	      else
 		pango_dir = PANGO_DIRECTION_LTR;
@@ -6553,8 +6553,8 @@ ctk_entry_draw_text (CtkEntry *entry,
 
       ctk_style_context_save_to_node (context, priv->selection_node);
 
-      clip = gdk_pango_layout_get_clip_region (layout, x, y, range, 1);
-      gdk_cairo_region (cr, clip);
+      clip = cdk_pango_layout_get_clip_region (layout, x, y, range, 1);
+      cdk_cairo_region (cr, clip);
       cairo_clip (cr);
       cairo_region_destroy (clip);
 
@@ -6622,8 +6622,8 @@ ctk_entry_draw_cursor (CtkEntry  *entry,
       rect.height = PANGO_PIXELS (cursor_rect.height);
 
       _ctk_style_context_get_cursor_color (context, &cursor_color, NULL);
-      gdk_cairo_set_source_rgba (cr, &cursor_color);
-      gdk_cairo_rectangle (cr, &rect);
+      cdk_cairo_set_source_rgba (cr, &cursor_color);
+      cdk_cairo_rectangle (cr, &rect);
       cairo_fill (cr);
 
       if (!block_at_line_end)
@@ -6636,10 +6636,10 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                                                   &color);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-          gdk_cairo_rectangle (cr, &rect);
+          cdk_cairo_rectangle (cr, &rect);
           cairo_clip (cr);
           cairo_move_to (cr, x, y);
-          gdk_cairo_set_source_rgba (cr, &color);
+          cdk_cairo_set_source_rgba (cr, &color);
           pango_cairo_show_layout (cr, layout);
         }
 
@@ -7122,8 +7122,8 @@ ctk_entry_move_visually (CtkEntry *entry,
 	strong = TRUE;
       else
 	{
-	  GdkKeymap *keymap = gdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (entry)));
-	  PangoDirection keymap_direction = gdk_keymap_get_direction (keymap);
+	  GdkKeymap *keymap = cdk_keymap_get_for_display (ctk_widget_get_display (CTK_WIDGET (entry)));
+	  PangoDirection keymap_direction = cdk_keymap_get_direction (keymap);
 
 	  strong = keymap_direction == priv->resolved_dir;
 	}
@@ -7475,7 +7475,7 @@ ctk_entry_clear_icon (CtkEntry             *entry,
    * during destruction.
    */
   if (GDK_IS_WINDOW (icon_info->window))
-    gdk_window_hide (icon_info->window);
+    cdk_window_hide (icon_info->window);
 
   storage_type = _ctk_icon_helper_get_storage_type (icon_helper);
 
@@ -8518,7 +8518,7 @@ ctk_entry_set_icon_from_pixbuf (CtkEntry             *entry,
         }
 
       if (ctk_widget_get_mapped (CTK_WIDGET (entry)))
-          gdk_window_show_unraised (icon_info->window);
+          cdk_window_show_unraised (icon_info->window);
 
       g_object_unref (pixbuf);
     }
@@ -8580,7 +8580,7 @@ ctk_entry_set_icon_from_stock (CtkEntry             *entry,
         }
 
       if (ctk_widget_get_mapped (CTK_WIDGET (entry)))
-          gdk_window_show_unraised (icon_info->window);
+          cdk_window_show_unraised (icon_info->window);
     }
   else
     ctk_entry_clear_icon (entry, icon_pos);
@@ -8642,7 +8642,7 @@ ctk_entry_set_icon_from_icon_name (CtkEntry             *entry,
         }
 
       if (ctk_widget_get_mapped (CTK_WIDGET (entry)))
-          gdk_window_show_unraised (icon_info->window);
+          cdk_window_show_unraised (icon_info->window);
     }
   else
     ctk_entry_clear_icon (entry, icon_pos);
@@ -8702,7 +8702,7 @@ ctk_entry_set_icon_from_gicon (CtkEntry             *entry,
         }
 
       if (ctk_widget_get_mapped (CTK_WIDGET (entry)))
-          gdk_window_show_unraised (icon_info->window);
+          cdk_window_show_unraised (icon_info->window);
     }
   else
     ctk_entry_clear_icon (entry, icon_pos);
@@ -8821,7 +8821,7 @@ ctk_entry_get_icon_pixbuf (CtkEntry             *entry,
   _ctk_icon_helper_get_size (CTK_ICON_HELPER (icon_info->gadget), &width, &height);
   surface = ctk_icon_helper_load_surface (CTK_ICON_HELPER (icon_info->gadget), 1);
 
-  pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
+  pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
 
   cairo_surface_destroy (surface);
 
@@ -9632,13 +9632,13 @@ popup_targets_received (CtkClipboard     *clipboard,
 
       g_signal_emit (entry, signals[POPULATE_POPUP], 0, menu);
 
-      if (info->trigger_event && gdk_event_triggers_context_menu (info->trigger_event))
+      if (info->trigger_event && cdk_event_triggers_context_menu (info->trigger_event))
         ctk_menu_popup_at_pointer (CTK_MENU (menu), info->trigger_event);
       else
         {
           ctk_entry_get_cursor_locations (entry, CURSOR_STANDARD, &rect.x, NULL);
           rect.x -= info_entry_priv->scroll_offset;
-          rect.height = gdk_window_get_height (info_entry_priv->text_area);
+          rect.height = cdk_window_get_height (info_entry_priv->text_area);
 
           ctk_menu_popup_at_rect (CTK_MENU (menu),
                                   info_entry_priv->text_area,
@@ -9651,7 +9651,7 @@ popup_targets_received (CtkClipboard     *clipboard,
         }
     }
 
-  g_clear_pointer (&info->trigger_event, gdk_event_free);
+  g_clear_pointer (&info->trigger_event, cdk_event_free);
   g_object_unref (entry);
   g_slice_free (PopupInfo, info);
 }
@@ -9667,10 +9667,10 @@ ctk_entry_do_popup (CtkEntry       *entry,
    * we get them, then we actually pop up the menu.
    */
   info->entry = g_object_ref (entry);
-  info->trigger_event = event ? gdk_event_copy (event) : ctk_get_current_event ();
+  info->trigger_event = event ? cdk_event_copy (event) : ctk_get_current_event ();
 
   ctk_clipboard_request_contents (ctk_widget_get_clipboard (CTK_WIDGET (entry), GDK_SELECTION_CLIPBOARD),
-				  gdk_atom_intern_static_string ("TARGETS"),
+				  cdk_atom_intern_static_string ("TARGETS"),
 				  popup_targets_received,
 				  info);
 }
@@ -9850,7 +9850,7 @@ ctk_entry_selection_bubble_popup_show (gpointer user_data)
   CtkEntry *entry = user_data;
 
   ctk_clipboard_request_contents (ctk_widget_get_clipboard (CTK_WIDGET (entry), GDK_SELECTION_CLIPBOARD),
-                                  gdk_atom_intern_static_string ("TARGETS"),
+                                  cdk_atom_intern_static_string ("TARGETS"),
                                   bubble_targets_received,
                                   entry);
   return G_SOURCE_REMOVE;
@@ -9884,7 +9884,7 @@ ctk_entry_selection_bubble_popup_set (CtkEntry *entry)
     g_source_remove (priv->selection_bubble_timeout_id);
 
   priv->selection_bubble_timeout_id =
-    gdk_threads_add_timeout (50, ctk_entry_selection_bubble_popup_show, entry);
+    cdk_threads_add_timeout (50, ctk_entry_selection_bubble_popup_show, entry);
   g_source_set_name_by_id (priv->selection_bubble_timeout_id, "[ctk+] ctk_entry_selection_bubble_popup_cb");
 }
 
@@ -10009,7 +10009,7 @@ ctk_entry_drag_motion (CtkWidget        *widget,
       ctk_drag_dest_find_target (widget, context, NULL) != GDK_NONE)
     {
       source_widget = ctk_drag_get_source_widget (context);
-      suggested_action = gdk_drag_context_get_suggested_action (context);
+      suggested_action = cdk_drag_context_get_suggested_action (context);
 
       if (!ctk_editable_get_selection_bounds (CTK_EDITABLE (entry), &sel1, &sel2) ||
           new_position < sel1 || new_position > sel2)
@@ -10019,7 +10019,7 @@ ctk_entry_drag_motion (CtkWidget        *widget,
 	      /* Default to MOVE, unless the user has
 	       * pressed ctrl or alt to affect available actions
 	       */
-	      if ((gdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
+	      if ((cdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
 	        suggested_action = GDK_ACTION_MOVE;
 	    }
 
@@ -10043,7 +10043,7 @@ ctk_entry_drag_motion (CtkWidget        *widget,
   if (show_placeholder_text (entry))
     priv->dnd_position = -1;
 
-  gdk_drag_status (context, suggested_action, time);
+  cdk_drag_status (context, suggested_action, time);
   if (suggested_action == 0)
     ctk_drag_unhighlight (widget);
   else
@@ -10096,7 +10096,7 @@ ctk_entry_drag_data_received (CtkWidget        *widget,
           end_change (entry);
 	}
       
-      ctk_drag_finish (context, TRUE, gdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE, time);
+      ctk_drag_finish (context, TRUE, cdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE, time);
     }
   else
     {
@@ -10305,7 +10305,7 @@ blink_cb (gpointer data)
   else if (priv->cursor_visible)
     {
       hide_cursor (entry);
-      priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_OFF_MULTIPLIER / CURSOR_DIVIDER,
+      priv->blink_timeout = cdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_OFF_MULTIPLIER / CURSOR_DIVIDER,
 					    blink_cb,
 					    entry);
       g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
@@ -10314,7 +10314,7 @@ blink_cb (gpointer data)
     {
       show_cursor (entry);
       priv->blink_time += get_cursor_time (entry);
-      priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_ON_MULTIPLIER / CURSOR_DIVIDER,
+      priv->blink_timeout = cdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_ON_MULTIPLIER / CURSOR_DIVIDER,
 					    blink_cb,
 					    entry);
       g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
@@ -10333,7 +10333,7 @@ ctk_entry_check_cursor_blink (CtkEntry *entry)
       if (!priv->blink_timeout)
 	{
 	  show_cursor (entry);
-	  priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_ON_MULTIPLIER / CURSOR_DIVIDER,
+	  priv->blink_timeout = cdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_ON_MULTIPLIER / CURSOR_DIVIDER,
 						blink_cb,
 						entry);
 	  g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
@@ -10361,7 +10361,7 @@ ctk_entry_pend_cursor_blink (CtkEntry *entry)
       if (priv->blink_timeout != 0)
 	g_source_remove (priv->blink_timeout);
 
-      priv->blink_timeout = gdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_PEND_MULTIPLIER / CURSOR_DIVIDER,
+      priv->blink_timeout = cdk_threads_add_timeout (get_cursor_time (entry) * CURSOR_PEND_MULTIPLIER / CURSOR_DIVIDER,
                                                      blink_cb,
                                                      entry);
       g_source_set_name_by_id (priv->blink_timeout, "[ctk+] blink_cb");
@@ -10514,7 +10514,7 @@ tick_cb (CtkWidget     *widget,
   if (priv->pulse2 == 0 && priv->pulse1 == 0)
     return G_SOURCE_CONTINUE;
 
-  frame_time = gdk_frame_clock_get_frame_time (frame_clock);
+  frame_time = cdk_frame_clock_get_frame_time (frame_clock);
   ctk_progress_tracker_advance_frame (&priv->tracker, frame_time);
 
   g_assert (priv->pulse2 > priv->pulse1);
@@ -10876,7 +10876,7 @@ keymap_state_changed (GdkKeymap *keymap,
 
   if (ctk_entry_get_display_mode (entry) != DISPLAY_NORMAL && priv->caps_lock_warning)
     { 
-      if (gdk_keymap_get_caps_lock_state (keymap))
+      if (cdk_keymap_get_caps_lock_state (keymap))
         text = _("Caps Lock is on");
     }
 

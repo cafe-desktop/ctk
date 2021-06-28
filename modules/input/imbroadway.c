@@ -25,7 +25,7 @@
 #include "ctk/ctkintl.h"
 #include "ctk/ctkimmodule.h"
 
-#include "gdk/broadway/gdkbroadway.h"
+#include "cdk/broadway/cdkbroadway.h"
 
 #define CTK_IM_CONTEXT_TYPE_BROADWAY (type_broadway)
 #define CTK_IM_CONTEXT_BROADWAY(obj) (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_IM_CONTEXT_TYPE_BROADWAY, CtkIMContextBroadway))
@@ -81,8 +81,8 @@ broadway_focus_in (CtkIMContext *context)
 
   if (bw->client_window)
     {
-      display = gdk_window_get_display (bw->client_window);
-      gdk_broadway_display_show_keyboard (GDK_BROADWAY_DISPLAY (display));
+      display = cdk_window_get_display (bw->client_window);
+      cdk_broadway_display_show_keyboard (GDK_BROADWAY_DISPLAY (display));
     }
 }
 
@@ -94,8 +94,8 @@ broadway_focus_out (CtkIMContext *context)
 
   if (bw->client_window)
     {
-      display = gdk_window_get_display (bw->client_window);
-      gdk_broadway_display_hide_keyboard (GDK_BROADWAY_DISPLAY (display));
+      display = cdk_window_get_display (bw->client_window);
+      cdk_broadway_display_hide_keyboard (GDK_BROADWAY_DISPLAY (display));
     }
 }
 

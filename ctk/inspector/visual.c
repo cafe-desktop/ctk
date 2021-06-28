@@ -35,13 +35,13 @@
 #include "fallback-c89.c"
 
 #ifdef GDK_WINDOWING_X11
-#include "x11/gdkx.h"
+#include "x11/cdkx.h"
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
-#include "wayland/gdkwayland.h"
+#include "wayland/cdkwayland.h"
 #endif
 
-#include "gdk/gdk-private.h"
+#include "cdk/cdk-private.h"
 
 #define EPSILON               1e-10
 
@@ -147,7 +147,7 @@ static double
 get_font_scale (CtkInspectorVisual *vis)
 {
 #ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (gdk_display_get_default ()))
+  if (GDK_IS_X11_DISPLAY (cdk_display_get_default ()))
     {
       int dpi_int;
 
@@ -159,7 +159,7 @@ get_font_scale (CtkInspectorVisual *vis)
     }
 #endif
 #ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (gdk_display_get_default ()))
+  if (GDK_IS_WAYLAND_DISPLAY (cdk_display_get_default ()))
     {
       int dpi_int;
 
@@ -224,7 +224,7 @@ updates_activate (CtkSwitch *sw)
   gboolean updates;
 
   updates = ctk_switch_get_active (sw);
-  GDK_PRIVATE_CALL (gdk_display_set_debug_updates) (gdk_display_get_default (), updates);
+  GDK_PRIVATE_CALL (cdk_display_set_debug_updates) (cdk_display_get_default (), updates);
   redraw_everything ();
 }
 
@@ -233,7 +233,7 @@ init_updates (CtkInspectorVisual *vis)
 {
   gboolean updates;
 
-  updates = GDK_PRIVATE_CALL (gdk_display_get_debug_updates) (gdk_display_get_default ());
+  updates = GDK_PRIVATE_CALL (cdk_display_get_debug_updates) (cdk_display_get_default ());
   ctk_switch_set_active (CTK_SWITCH (vis->priv->updates_switch), updates);
 }
 
@@ -589,7 +589,7 @@ init_cursor_size (CtkInspectorVisual *vis)
 
   g_object_get (ctk_settings_get_default (), "ctk-cursor-theme-size", &size, NULL);
   if (size == 0)
-    size = gdk_display_get_default_cursor_size (gdk_display_get_default ());
+    size = cdk_display_get_default_cursor_size (cdk_display_get_default ());
 
   ctk_adjustment_set_value (vis->priv->scale_adjustment, (gdouble)size);
   g_signal_connect (vis->priv->cursor_size_adjustment, "value-changed",
@@ -625,8 +625,8 @@ scale_changed (CtkAdjustment *adjustment, CtkInspectorVisual *vis)
   gint scale;
 
   scale = ctk_adjustment_get_value (adjustment);
-  display = gdk_display_get_default ();
-  gdk_x11_display_set_window_scale (display, scale);
+  display = cdk_display_get_default ();
+  cdk_x11_display_set_window_scale (display, scale);
 }
 #endif
 
@@ -636,13 +636,13 @@ init_scale (CtkInspectorVisual *vis)
 #if defined (GDK_WINDOWING_X11)
   GdkScreen *screen;
 
-  screen = gdk_screen_get_default ();
+  screen = cdk_screen_get_default ();
   if (GDK_IS_X11_SCREEN (screen))
     {
       gdouble scale;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-      scale = gdk_screen_get_monitor_scale_factor (screen, 0);
+      scale = cdk_screen_get_monitor_scale_factor (screen, 0);
 G_GNUC_END_IGNORE_DEPRECATIONS
       ctk_adjustment_set_value (vis->priv->scale_adjustment, scale);
       g_signal_connect (vis->priv->scale_adjustment, "value-changed",
@@ -804,7 +804,7 @@ init_gl (CtkInspectorVisual *vis)
 {
   GdkGLFlags flags;
 
-  flags = GDK_PRIVATE_CALL (gdk_gl_get_flags) ();
+  flags = GDK_PRIVATE_CALL (cdk_gl_get_flags) ();
 
   if (flags & GDK_GL_ALWAYS)
     ctk_combo_box_set_active_id (CTK_COMBO_BOX (vis->priv->gl_combo), "always");
@@ -839,7 +839,7 @@ init_rendering_mode (CtkInspectorVisual *vis)
 {
   GdkRenderingMode mode;
 
-  mode = GDK_PRIVATE_CALL (gdk_display_get_rendering_mode) (gdk_display_get_default ());
+  mode = GDK_PRIVATE_CALL (cdk_display_get_rendering_mode) (cdk_display_get_default ());
   ctk_combo_box_set_active (CTK_COMBO_BOX (vis->priv->rendering_mode_combo), mode);
 }
 
@@ -850,7 +850,7 @@ rendering_mode_changed (CtkComboBox        *c,
   GdkRenderingMode mode;
 
   mode = ctk_combo_box_get_active (c);
-  GDK_PRIVATE_CALL (gdk_display_set_rendering_mode) (gdk_display_get_default (), mode);
+  GDK_PRIVATE_CALL (cdk_display_set_rendering_mode) (cdk_display_get_default (), mode);
 }
 
 static void
@@ -859,14 +859,14 @@ update_gl_flag (CtkSwitch  *sw,
 {
   GdkGLFlags flags;
 
-  flags = GDK_PRIVATE_CALL (gdk_gl_get_flags) ();
+  flags = GDK_PRIVATE_CALL (cdk_gl_get_flags) ();
 
   if (ctk_switch_get_active (sw))
     flags |= flag;
   else
     flags &= ~flag;
 
-  GDK_PRIVATE_CALL (gdk_gl_set_flags) (flags);
+  GDK_PRIVATE_CALL (cdk_gl_set_flags) (flags);
 }
 
 static void

@@ -1002,7 +1002,7 @@ ctk_model_button_allocate (CtkCssGadget        *gadget,
       CtkAllocation border_allocation;
       ctk_css_gadget_get_border_allocation (gadget, &border_allocation, NULL);
 
-      gdk_window_move_resize (ctk_button_get_event_window (CTK_BUTTON (widget)),
+      cdk_window_move_resize (ctk_button_get_event_window (CTK_BUTTON (widget)),
                               border_allocation.x,
                               border_allocation.y,
                               border_allocation.width,
@@ -1010,7 +1010,7 @@ ctk_model_button_allocate (CtkCssGadget        *gadget,
     }
 
   ctk_container_get_children_clip (CTK_CONTAINER (widget), out_clip);
-  gdk_rectangle_union (out_clip, &check_clip, out_clip);
+  cdk_rectangle_union (out_clip, &check_clip, out_clip);
 }
 
 static gint

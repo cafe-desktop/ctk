@@ -261,7 +261,7 @@ ctk_separator_tool_item_size_allocate (CtkWidget     *widget,
   ctk_widget_set_allocation (widget, allocation);
 
   if (ctk_widget_get_realized (widget))
-    gdk_window_move_resize (priv->event_window,
+    cdk_window_move_resize (priv->event_window,
                             allocation->x,
                             allocation->y,
                             allocation->width,
@@ -306,7 +306,7 @@ ctk_separator_tool_item_realize (CtkWidget *widget)
   ctk_widget_set_window (widget, window);
   g_object_ref (window);
 
-  priv->event_window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                        &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->event_window);
 }
@@ -320,7 +320,7 @@ ctk_separator_tool_item_unrealize (CtkWidget *widget)
   if (priv->event_window)
     {
       ctk_widget_unregister_window (widget, priv->event_window);
-      gdk_window_destroy (priv->event_window);
+      cdk_window_destroy (priv->event_window);
       priv->event_window = NULL;
     }
 
@@ -336,7 +336,7 @@ ctk_separator_tool_item_map (CtkWidget *widget)
   CTK_WIDGET_CLASS (ctk_separator_tool_item_parent_class)->map (widget);
 
   if (priv->event_window)
-    gdk_window_show (priv->event_window);
+    cdk_window_show (priv->event_window);
 }
 
 static void
@@ -346,7 +346,7 @@ ctk_separator_tool_item_unmap (CtkWidget *widget)
   CtkSeparatorToolItemPrivate *priv = separator->priv;
 
   if (priv->event_window)
-    gdk_window_hide (priv->event_window);
+    cdk_window_hide (priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_separator_tool_item_parent_class)->unmap (widget);
 }

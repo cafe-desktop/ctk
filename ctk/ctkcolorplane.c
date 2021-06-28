@@ -127,7 +127,7 @@ create_surface (CtkColorPlane *plane)
   width = ctk_widget_get_allocated_width (widget);
   height = ctk_widget_get_allocated_height (widget);
 
-  surface = gdk_window_create_similar_surface (ctk_widget_get_window (widget),
+  surface = cdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                CAIRO_CONTENT_COLOR,
                                                width, height);
 
@@ -204,9 +204,9 @@ set_cross_cursor (CtkWidget *widget,
     return;
 
   if (enabled)
-    cursor = gdk_cursor_new_from_name (ctk_widget_get_display (CTK_WIDGET (widget)), "crosshair");
+    cursor = cdk_cursor_new_from_name (ctk_widget_get_display (CTK_WIDGET (widget)), "crosshair");
 
-  gdk_window_set_device_cursor (window, device, cursor);
+  cdk_window_set_device_cursor (window, device, cursor);
 
   if (cursor)
     g_object_unref (cursor);

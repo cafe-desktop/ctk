@@ -425,7 +425,7 @@ preview_got_page_size (CtkPrintOperationPreview *preview,
   h = ctk_paper_size_get_height (paper_size, CTK_UNIT_INCH);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  cr = gdk_cairo_create (ctk_widget_get_window (pop->area));
+  cr = cdk_cairo_create (ctk_widget_get_window (pop->area));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   ctk_widget_get_allocation (pop->area, &allocation);
@@ -504,7 +504,7 @@ preview_cb (CtkPrintOperation        *op,
   ctk_widget_realize (da);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  cr = gdk_cairo_create (ctk_widget_get_window (da));
+  cr = cdk_cairo_create (ctk_widget_get_window (da));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* TODO: What dpi to use here? This will be used for pagination.. */

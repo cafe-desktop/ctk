@@ -1,4 +1,4 @@
-/* gdkglobals-quartz.c
+/* cdkglobals-quartz.c
  *
  * Copyright (C) 2005 Imendio AB
  *
@@ -17,17 +17,17 @@
  */
 
 #include "config.h"
-#include "gdktypes.h"
-#include "gdkprivate.h"
-#include "gdkquartz.h"
-#include "gdkinternal-quartz.h"
+#include "cdktypes.h"
+#include "cdkprivate.h"
+#include "cdkquartz.h"
+#include "cdkinternal-quartz.h"
 
-GdkDisplay *_gdk_display = NULL;
-GdkScreen *_gdk_screen = NULL;
-GdkWindow *_gdk_root = NULL;
+GdkDisplay *_cdk_display = NULL;
+GdkScreen *_cdk_screen = NULL;
+GdkWindow *_cdk_root = NULL;
 
 GdkOSXVersion
-gdk_quartz_osx_version (void)
+cdk_quartz_osx_version (void)
 {
   static gint32 minor = GDK_OSX_UNSUPPORTED;
 

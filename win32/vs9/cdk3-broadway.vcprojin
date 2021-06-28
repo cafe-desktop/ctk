@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="gdk3-broadway"
+	Name="cdk3-broadway"
 	ProjectGUID="{1DF4C475-4472-4EE4-AC2B-3AB5A4C1A453}"
-	RootNamespace="gdk3broadway"
+	RootNamespace="cdk3broadway"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="0"
 	>
@@ -31,7 +31,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\broadway"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\broadway"
 				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GdkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -53,7 +53,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\broadway"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\broadway"
 				PreprocessorDefinitions="$(GdkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -73,7 +73,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\broadway"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\broadway"
 				PreprocessorDefinitions="_DEBUG;G_ENABLE_DEBUG;$(GdkDefines)"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -95,7 +95,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\..\gdk;..\..\gdk\broadway"
+				AdditionalIncludeDirectories="..\..\cdk;..\..\cdk\broadway"
 				PreprocessorDefinitions="$(GdkDefines)"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -124,7 +124,7 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
-#include "gdk3-broadway.sourcefiles"
+#include "cdk3-broadway.sourcefiles"
 		</Filter>
 	</Files>
 </VisualStudioProject>

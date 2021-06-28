@@ -218,10 +218,10 @@ ctk_css_image_gradient_draw_circle (CtkCssImageGradient *image,
   cairo_rectangle (cr, 0, 0, 1, 1);
   cairo_clip (cr);
 
-  gdk_cairo_set_source_rgba (cr, &color1);
+  cdk_cairo_set_source_rgba (cr, &color1);
   cairo_paint (cr);
 
-  gdk_cairo_set_source_rgba (cr, &color0);
+  cdk_cairo_set_source_rgba (cr, &color0);
   cairo_arc (cr, x1, y1, r1 * offset1, 0, 2 * G_PI);
   cairo_fill (cr);
 

@@ -49,7 +49,7 @@
 #include "ctkwidgetpath.h"
 #include "ctkwindow.h"
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <pango/pango.h>
 #include <math.h>
 
@@ -123,17 +123,17 @@ draw_default_surface (CtkNumerableIcon *self)
   cairo_arc (cr, DEFAULT_SURFACE_SIZE / 2., DEFAULT_SURFACE_SIZE / 2.,
              DEFAULT_RADIUS, 0., 2 * G_PI);
 
-  gdk_cairo_set_source_rgba (cr, self->priv->background);
+  cdk_cairo_set_source_rgba (cr, self->priv->background);
   cairo_fill (cr);
 
   cairo_arc (cr, DEFAULT_SURFACE_SIZE / 2., DEFAULT_SURFACE_SIZE / 2.,
              DEFAULT_RADIUS - DEFAULT_BORDER_SIZE, 0., 2 * G_PI);
-  gdk_cairo_set_source_rgba  (cr, self->priv->foreground);
+  cdk_cairo_set_source_rgba  (cr, self->priv->foreground);
   cairo_fill (cr);
 
   cairo_arc (cr, DEFAULT_SURFACE_SIZE / 2., DEFAULT_SURFACE_SIZE / 2.,
              DEFAULT_RADIUS - 2 * DEFAULT_BORDER_SIZE, 0., 2 * G_PI);
-  gdk_cairo_set_source_rgba  (cr, self->priv->background);
+  cdk_cairo_set_source_rgba  (cr, self->priv->background);
   cairo_fill (cr);
 
   cairo_destroy (cr);
@@ -220,7 +220,7 @@ draw_from_gicon (CtkNumerableIcon *self)
   if (pixbuf == NULL)
     return NULL;
 
-  surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
+  surface = cdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
   g_object_unref (pixbuf);
 
   return surface;
@@ -265,7 +265,7 @@ get_pango_layout (CtkNumerableIcon *self)
   if (self->priv->style != NULL)
     {
       screen = ctk_style_context_get_screen (self->priv->style);
-      context = gdk_pango_context_get_for_screen (screen);
+      context = cdk_pango_context_get_for_screen (screen);
       layout = pango_layout_new (context);
 
       if (self->priv->font != NULL)
@@ -334,13 +334,13 @@ ctk_numerable_icon_ensure_emblem (CtkNumerableIcon *self)
                  get_surface_size (surface) / 2. - (gdouble) width / 2.,
                  get_surface_size (surface) / 2. - (gdouble) height / 2.);
 
-  gdk_cairo_set_source_rgba (cr, self->priv->foreground);
+  cdk_cairo_set_source_rgba (cr, self->priv->foreground);
   pango_cairo_show_layout (cr, layout);
 
   cairo_destroy (cr);
 
   pixbuf =
-    gdk_pixbuf_get_from_surface (surface, 0, 0,
+    cdk_pixbuf_get_from_surface (surface, 0, 0,
                                  get_surface_size (surface), get_surface_size (surface));
 
   emblem = g_emblem_new (G_ICON (pixbuf));
@@ -382,14 +382,14 @@ ctk_numerable_icon_update_properties_from_style (CtkNumerableIcon *self)
                                &foreground);
 
   if (self->priv->background != NULL)
-    gdk_rgba_free (self->priv->background);
+    cdk_rgba_free (self->priv->background);
 
-  self->priv->background = gdk_rgba_copy (&background);
+  self->priv->background = cdk_rgba_copy (&background);
 
   if (self->priv->foreground != NULL)
-    gdk_rgba_free (self->priv->foreground);
+    cdk_rgba_free (self->priv->foreground);
 
-  self->priv->foreground = gdk_rgba_copy (&foreground);
+  self->priv->foreground = cdk_rgba_copy (&foreground);
 
   ctk_style_context_get (style, ctk_style_context_get_state (style),
                          CTK_STYLE_PROPERTY_BACKGROUND_IMAGE, &pattern,
@@ -535,8 +535,8 @@ ctk_numerable_icon_finalize (GObject *object)
   g_free (self->priv->label);
   g_free (self->priv->rendered_string);
 
-  gdk_rgba_free (self->priv->background);
-  gdk_rgba_free (self->priv->foreground);
+  cdk_rgba_free (self->priv->background);
+  cdk_rgba_free (self->priv->foreground);
 
   pango_font_description_free (self->priv->font);
 
@@ -683,11 +683,11 @@ ctk_numerable_icon_init (CtkNumerableIcon *self)
 
   self->priv = ctk_numerable_icon_get_instance_private (self);
 
-  gdk_rgba_parse (&bg, DEFAULT_BACKGROUND);
-  gdk_rgba_parse (&fg, DEFAULT_FOREGROUND);
+  cdk_rgba_parse (&bg, DEFAULT_BACKGROUND);
+  cdk_rgba_parse (&fg, DEFAULT_FOREGROUND);
 
-  self->priv->background = gdk_rgba_copy (&bg);
-  self->priv->foreground = gdk_rgba_copy (&fg);
+  self->priv->background = cdk_rgba_copy (&bg);
+  self->priv->foreground = cdk_rgba_copy (&fg);
 
   self->priv->icon_size = 48;
 }

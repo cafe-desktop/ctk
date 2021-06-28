@@ -156,7 +156,7 @@ toggle_record (CtkToggleButton        *button,
 
   if (ctk_toggle_button_get_active (button))
     {
-      sl->priv->update_source_id = gdk_threads_add_timeout_seconds (1,
+      sl->priv->update_source_id = cdk_threads_add_timeout_seconds (1,
                                                                     update_type_counts,
                                                                     sl);
       update_type_counts (sl);

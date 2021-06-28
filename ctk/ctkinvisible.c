@@ -23,7 +23,7 @@
  */
 
 #include "config.h"
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include "ctkinvisible.h"
 #include "ctkwidgetprivate.h"
 #include "ctkprivate.h"
@@ -115,7 +115,7 @@ ctk_invisible_init (CtkInvisible *invisible)
   g_object_ref_sink (invisible);
 
   priv->has_user_ref_count = TRUE;
-  priv->screen = gdk_screen_get_default ();
+  priv->screen = cdk_screen_get_default ();
 }
 
 static void
@@ -238,7 +238,7 @@ ctk_invisible_realize (CtkWidget *widget)
 
   parent = ctk_widget_get_parent_window (widget);
   if (parent == NULL)
-    parent = gdk_screen_get_root_window (ctk_widget_get_screen (widget));
+    parent = cdk_screen_get_root_window (ctk_widget_get_screen (widget));
 
   attributes.x = -100;
   attributes.y = -100;
@@ -251,7 +251,7 @@ ctk_invisible_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_NOREDIR;
 
-  window = gdk_window_new (parent, &attributes, attributes_mask);
+  window = cdk_window_new (parent, &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
 }

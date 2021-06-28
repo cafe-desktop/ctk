@@ -117,7 +117,7 @@ load_ui_file (GFile *file, gboolean generate)
   provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_path (provider, css_file, &error);
   g_assert_no_error (error);
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_FORCE);
 
@@ -151,7 +151,7 @@ load_ui_file (GFile *file, gboolean generate)
   g_free (diff);
 
 out:
-  ctk_style_context_remove_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_remove_provider_for_screen (cdk_screen_get_default (),
                                                 CTK_STYLE_PROVIDER (provider));
   g_object_unref (provider);
 

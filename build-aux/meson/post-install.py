@@ -19,7 +19,7 @@ if 'DESTDIR' not in os.environ:
     ctk_printmodule_dir = os.path.join(ctk_moduledir, 'printbackends')
 
     if os.name == 'nt':
-        for lib in ['gdk', 'ctk', 'gailutil']:
+        for lib in ['cdk', 'ctk', 'gailutil']:
             # Make copy for MSVC-built .lib files, e.g. xxx-3.lib->xxx-3.0.lib
             installed_lib = os.path.join(ctk_libdir, lib + '-' + ctk_api_version.split('.')[0] + '.lib')
             installed_lib_dst = os.path.join(ctk_libdir, lib + '-' + ctk_api_version + '.lib')

@@ -22,144 +22,144 @@ msgstr ""
 "X-Generator: WordForge 0.8 RC1\n"
 "X-Language: km-KH\n"
 
-#: ../gdk/gdkapplaunchcontext.c:129 ../gdk/gdkcursor.c:134
-#: ../gdk/gdkdevicemanager.c:170
+#: ../cdk/cdkapplaunchcontext.c:129 ../cdk/cdkcursor.c:134
+#: ../cdk/cdkdevicemanager.c:170
 msgid "Display"
 msgstr "បង្ហាញ"
 
-#: ../gdk/gdkcursor.c:126
+#: ../cdk/cdkcursor.c:126
 msgid "Cursor type"
 msgstr "ប្រភេទ​ទស្សន៍ទ្រនិច"
 
-#: ../gdk/gdkcursor.c:127
+#: ../cdk/cdkcursor.c:127
 msgid "Standard cursor type"
 msgstr "ប្រភេទ​ទស្សន៍ទ្រនិច​ស្ដង់ដារ"
 
-#: ../gdk/gdkcursor.c:135
+#: ../cdk/cdkcursor.c:135
 msgid "Display of this cursor"
 msgstr "បង្ហាញ​ទស្សន៍ទ្រនិច​នេះ"
 
-#: ../gdk/gdkdevice.c:109
+#: ../cdk/cdkdevice.c:109
 msgid "Device Display"
 msgstr "បង្ហាញ​ឧបករណ៍"
 
-#: ../gdk/gdkdevice.c:110
+#: ../cdk/cdkdevice.c:110
 msgid "Display which the device belongs to"
 msgstr "បង្ហាញ​ឧបករណ៍ដែល​ជា​របស់"
 
-#: ../gdk/gdkdevice.c:124
+#: ../cdk/cdkdevice.c:124
 msgid "Device manager"
 msgstr "កម្មវិធី​គ្រប់គ្រង​ឧបករណ៍"
 
-#: ../gdk/gdkdevice.c:125
+#: ../cdk/cdkdevice.c:125
 msgid "Device manager which the device belongs to"
 msgstr "កម្មវិធី​គ្រប់គ្រង​ឧបករណ៍​ដែល​ជា​របស់"
 
-#: ../gdk/gdkdevice.c:139 ../gdk/gdkdevice.c:140
+#: ../cdk/cdkdevice.c:139 ../cdk/cdkdevice.c:140
 msgid "Device name"
 msgstr "ឈ្មោះ​ឧបករណ៍"
 
-#: ../gdk/gdkdevice.c:154
+#: ../cdk/cdkdevice.c:154
 msgid "Device type"
 msgstr "ប្រភេទ​ឧបករណ៍"
 
-#: ../gdk/gdkdevice.c:155
+#: ../cdk/cdkdevice.c:155
 msgid "Device role in the device manager"
 msgstr "តួនាទី​ឧបករណ៍​នៅ​ក្នុង​កម្មវិធី​គ្រប់គ្រង​ឧបករណ៍"
 
-#: ../gdk/gdkdevice.c:171
+#: ../cdk/cdkdevice.c:171
 msgid "Associated device"
 msgstr "ឧបករណ៍​ដែល​ទាក់ទង"
 
-#: ../gdk/gdkdevice.c:172
+#: ../cdk/cdkdevice.c:172
 msgid "Associated pointer or keyboard with this device"
 msgstr "ទ្រនិច​បង្ហាញ ឬ​ក្ដារ​ចុច​ដែល​ទាក់ទង​ជាមួយ​ឧបករណ៍​នេះ"
 
-#: ../gdk/gdkdevice.c:185
+#: ../cdk/cdkdevice.c:185
 msgid "Input source"
 msgstr "ប្រភព​បញ្ចូល"
 
-#: ../gdk/gdkdevice.c:186
+#: ../cdk/cdkdevice.c:186
 msgid "Source type for the device"
 msgstr "ប្រភេទ​ប្រភព​សម្រាប់​ឧបករណ៍"
 
-#: ../gdk/gdkdevice.c:201 ../gdk/gdkdevice.c:202
+#: ../cdk/cdkdevice.c:201 ../cdk/cdkdevice.c:202
 msgid "Input mode for the device"
 msgstr "របៀប​បញ្ចូល​សម្រាប់​ឧបករណ៍"
 
-#: ../gdk/gdkdevice.c:217
+#: ../cdk/cdkdevice.c:217
 msgid "Whether the device has a cursor"
 msgstr "ថា​តើ​ឧបករណ៍​មាន​ទស្សន៍ទ្រនិច​ដែរ​ឬ​ទេ"
 
-#: ../gdk/gdkdevice.c:218
+#: ../cdk/cdkdevice.c:218
 msgid "Whether there is a visible cursor following device motion"
 msgstr "ថាតើ​ទស្សន៍ទ្រនិច​ដែល​មើល​ឃើញ​អនុវត្ត​តាម​ចលនា​​របស់​ឧបករណ៍​ដែរ​ឬ​ទេ"
 
-#: ../gdk/gdkdevice.c:232 ../gdk/gdkdevice.c:233
+#: ../cdk/cdkdevice.c:232 ../cdk/cdkdevice.c:233
 msgid "Number of axes in the device"
 msgstr "ចំនួន​អ័ក្ស​នៅ​ក្នុង​ឧបករណ៍"
 
-#: ../gdk/gdkdevicemanager.c:171
+#: ../cdk/cdkdevicemanager.c:171
 msgid "Display for the device manager"
 msgstr "បង្ហាញ​សម្រាប់​កម្មវិធី​គ្រប់គ្រង​ឧបករណ៍"
 
-#: ../gdk/gdkdisplaymanager.c:163
+#: ../cdk/cdkdisplaymanager.c:163
 msgid "Default Display"
 msgstr "ការ​បង្ហាញ​លំនាំដើម"
 
-#: ../gdk/gdkdisplaymanager.c:164
+#: ../cdk/cdkdisplaymanager.c:164
 msgid "The default display for GDK"
 msgstr "ការ​បង្ហាញ​លំនាំ​ដើម​សម្រាប់ GDK"
 
-#: ../gdk/gdkscreen.c:90
+#: ../cdk/cdkscreen.c:90
 msgid "Font options"
 msgstr "ជម្រើស​ពុម្ពអក្សរ"
 
-#: ../gdk/gdkscreen.c:91
+#: ../cdk/cdkscreen.c:91
 msgid "The default font options for the screen"
 msgstr "ជម្រើស​ពុម្ពអក្សរ​លំនាំដើម​សម្រាប់​អេក្រង់"
 
-#: ../gdk/gdkscreen.c:98
+#: ../cdk/cdkscreen.c:98
 msgid "Font resolution"
 msgstr "គុណភាព​បង្ហាញ​ពុម្ពអក្សរ"
 
-#: ../gdk/gdkscreen.c:99
+#: ../cdk/cdkscreen.c:99
 msgid "The resolution for fonts on the screen"
 msgstr "គុណភាព​បង្ហាញ​សម្រាប់​ពុម្ពអក្សរ​នៅ​លើ​អេក្រង់"
 
-#: ../gdk/gdkwindow.c:384 ../gdk/gdkwindow.c:385
+#: ../cdk/cdkwindow.c:384 ../cdk/cdkwindow.c:385
 msgid "Cursor"
 msgstr "ទស្សន៍ទ្រនិច"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:116
+#: ../cdk/x11/cdkdevicemanager-xi2.c:116
 msgid "Opcode"
 msgstr "Opcode"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:117
+#: ../cdk/x11/cdkdevicemanager-xi2.c:117
 msgid "Opcode for XInput2 requests"
 msgstr "Opcode សម្រាប់​សំណើ XInput2"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:123
+#: ../cdk/x11/cdkdevicemanager-xi2.c:123
 msgid "Major"
 msgstr "ចម្បង"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:124
+#: ../cdk/x11/cdkdevicemanager-xi2.c:124
 msgid "Major version number"
 msgstr "លេខ​កំណែ​ចម្បង"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:130
+#: ../cdk/x11/cdkdevicemanager-xi2.c:130
 msgid "Minor"
 msgstr "រង"
 
-#: ../gdk/x11/gdkdevicemanager-xi2.c:131
+#: ../cdk/x11/cdkdevicemanager-xi2.c:131
 msgid "Minor version number"
 msgstr "លេខ​កំណែ​រង"
 
-#: ../gdk/x11/gdkdevice-xi2.c:138
+#: ../cdk/x11/cdkdevice-xi2.c:138
 msgid "Device ID"
 msgstr "លេខ​សម្គាល់​ឧបករណ៍"
 
-#: ../gdk/x11/gdkdevice-xi2.c:139
+#: ../cdk/x11/cdkdevice-xi2.c:139
 msgid "Device identifier"
 msgstr "គ្រឿង​សម្គាល់​ឧបករណ៍"
 

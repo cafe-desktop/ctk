@@ -1,5 +1,5 @@
 /*
- * gdkmonitor.c
+ * cdkmonitor.c
  *
  * Copyright 2016 Red Hat, Inc.
  *
@@ -21,20 +21,20 @@
 
 #include "config.h"
 
-#include "gdkmonitorprivate.h"
-#include "gdkdisplay.h"
-#include "gdkenumtypes.h"
+#include "cdkmonitorprivate.h"
+#include "cdkdisplay.h"
+#include "cdkenumtypes.h"
 
 /**
- * SECTION:gdkmonitor
+ * SECTION:cdkmonitor
  * @Title: GdkMonitor
  * @Short_description: Object representing an output
  *
  * GdkMonitor objects represent the individual outputs that are
  * associated with a #GdkDisplay. GdkDisplay has APIs to enumerate
- * monitors with gdk_display_get_n_monitors() and gdk_display_get_monitor(), and
- * to find particular monitors with gdk_display_get_primary_monitor() or
- * gdk_display_get_monitor_at_window().
+ * monitors with cdk_display_get_n_monitors() and cdk_display_get_monitor(), and
+ * to find particular monitors with cdk_display_get_primary_monitor() or
+ * cdk_display_get_monitor_at_window().
  *
  * GdkMonitor was introduced in CTK+ 3.22 and supersedes earlier
  * APIs in GdkScreen to obtain monitor-related information.
@@ -64,16 +64,16 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GdkMonitor, gdk_monitor, G_TYPE_OBJECT)
+G_DEFINE_TYPE (GdkMonitor, cdk_monitor, G_TYPE_OBJECT)
 
 static void
-gdk_monitor_init (GdkMonitor *monitor)
+cdk_monitor_init (GdkMonitor *monitor)
 {
   monitor->scale_factor = 1;
 }
 
 static void
-gdk_monitor_get_property (GObject    *object,
+cdk_monitor_get_property (GObject    *object,
                           guint       prop_id,
                           GValue     *value,
                           GParamSpec *pspec)
@@ -105,7 +105,7 @@ gdk_monitor_get_property (GObject    *object,
     case PROP_WORKAREA:
       {
         GdkRectangle workarea;
-        gdk_monitor_get_workarea (monitor, &workarea);
+        cdk_monitor_get_workarea (monitor, &workarea);
         g_value_set_boxed (value, &workarea);
       }
       break;
@@ -132,7 +132,7 @@ gdk_monitor_get_property (GObject    *object,
 }
 
 static void
-gdk_monitor_set_property (GObject      *object,
+cdk_monitor_set_property (GObject      *object,
                           guint         prop_id,
                           const GValue *value,
                           GParamSpec   *pspec)
@@ -151,7 +151,7 @@ gdk_monitor_set_property (GObject      *object,
 }
 
 static void
-gdk_monitor_finalize (GObject *object)
+cdk_monitor_finalize (GObject *object)
 {
   GdkMonitor *monitor = GDK_MONITOR (object);
 
@@ -159,17 +159,17 @@ gdk_monitor_finalize (GObject *object)
   g_free (monitor->manufacturer);
   g_free (monitor->model);
 
-  G_OBJECT_CLASS (gdk_monitor_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_monitor_parent_class)->finalize (object);
 }
 
 static void
-gdk_monitor_class_init (GdkMonitorClass *class)
+cdk_monitor_class_init (GdkMonitorClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
 
-  object_class->finalize = gdk_monitor_finalize;
-  object_class->get_property = gdk_monitor_get_property;
-  object_class->set_property = gdk_monitor_set_property;
+  object_class->finalize = cdk_monitor_finalize;
+  object_class->get_property = cdk_monitor_get_property;
+  object_class->set_property = cdk_monitor_set_property;
 
   props[PROP_DISPLAY] =
     g_param_spec_object ("display",
@@ -249,7 +249,7 @@ gdk_monitor_class_init (GdkMonitorClass *class)
 }
 
 /**
- * gdk_monitor_get_display:
+ * cdk_monitor_get_display:
  * @monitor: a #GdkMonitor
  *
  * Gets the display that this monitor belongs to.
@@ -258,7 +258,7 @@ gdk_monitor_class_init (GdkMonitorClass *class)
  * Since: 3.22
  */
 GdkDisplay *
-gdk_monitor_get_display (GdkMonitor *monitor)
+cdk_monitor_get_display (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_MONITOR (monitor), NULL);
 
@@ -266,18 +266,18 @@ gdk_monitor_get_display (GdkMonitor *monitor)
 }
 
 /**
- * gdk_monitor_get_geometry:
+ * cdk_monitor_get_geometry:
  * @monitor: a #GdkMonitor
  * @geometry: (out): a #GdkRectangle to be filled with the monitor geometry
  *
  * Retrieves the size and position of an individual monitor within the
  * display coordinate space. The returned geometry is in  ”application pixels”,
- * not in ”device pixels” (see gdk_monitor_get_scale_factor()).
+ * not in ”device pixels” (see cdk_monitor_get_scale_factor()).
  *
  * Since: 3.22
  */
 void
-gdk_monitor_get_geometry (GdkMonitor   *monitor,
+cdk_monitor_get_geometry (GdkMonitor   *monitor,
                           GdkRectangle *geometry)
 {
   g_return_if_fail (GDK_IS_MONITOR (monitor));
@@ -287,7 +287,7 @@ gdk_monitor_get_geometry (GdkMonitor   *monitor,
 }
 
 /**
- * gdk_monitor_get_workarea:
+ * cdk_monitor_get_workarea:
  * @monitor: a #GdkMonitor
  * @workarea: (out): a #GdkRectangle to be filled with
  *     the monitor workarea
@@ -295,7 +295,7 @@ gdk_monitor_get_geometry (GdkMonitor   *monitor,
  * Retrieves the size and position of the “work area” on a monitor
  * within the display coordinate space. The returned geometry is in
  * ”application pixels”, not in ”device pixels” (see
- * gdk_monitor_get_scale_factor()).
+ * cdk_monitor_get_scale_factor()).
  *
  * The work area should be considered when positioning menus and
  * similar popups, to avoid placing them below panels, docks or other
@@ -308,7 +308,7 @@ gdk_monitor_get_geometry (GdkMonitor   *monitor,
  * Since: 3.22
  */
 void
-gdk_monitor_get_workarea (GdkMonitor   *monitor,
+cdk_monitor_get_workarea (GdkMonitor   *monitor,
                           GdkRectangle *workarea)
 {
   g_return_if_fail (GDK_IS_MONITOR (monitor));
@@ -321,7 +321,7 @@ gdk_monitor_get_workarea (GdkMonitor   *monitor,
 }
 
 /**
- * gdk_monitor_get_width_mm:
+ * cdk_monitor_get_width_mm:
  * @monitor: a #GdkMonitor
  *
  * Gets the width in millimeters of the monitor.
@@ -331,7 +331,7 @@ gdk_monitor_get_workarea (GdkMonitor   *monitor,
  * Since: 3.22
  */
 int
-gdk_monitor_get_width_mm (GdkMonitor *monitor)
+cdk_monitor_get_width_mm (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_MONITOR (monitor), 0);
 
@@ -339,7 +339,7 @@ gdk_monitor_get_width_mm (GdkMonitor *monitor)
 }
 
 /**
- * gdk_monitor_get_height_mm:
+ * cdk_monitor_get_height_mm:
  * @monitor: a #GdkMonitor
  *
  * Gets the height in millimeters of the monitor.
@@ -348,7 +348,7 @@ gdk_monitor_get_width_mm (GdkMonitor *monitor)
  * Since: 3.22
  */
 int
-gdk_monitor_get_height_mm (GdkMonitor *monitor)
+cdk_monitor_get_height_mm (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_MONITOR (monitor), 0);
 
@@ -356,7 +356,7 @@ gdk_monitor_get_height_mm (GdkMonitor *monitor)
 }
 
 /*< private >
- * gdk_monitor_get_connector:
+ * cdk_monitor_get_connector:
  * @monitor: a #GdkMonitor
  *
  * Gets the name of the monitor's connector, if available.
@@ -364,7 +364,7 @@ gdk_monitor_get_height_mm (GdkMonitor *monitor)
  * Returns: (transfer none) (nullable): the name of the connector
  */
 const char *
-gdk_monitor_get_connector (GdkMonitor *monitor)
+cdk_monitor_get_connector (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_MONITOR (monitor), NULL);
 
@@ -372,7 +372,7 @@ gdk_monitor_get_connector (GdkMonitor *monitor)
 }
 
 /**
- * gdk_monitor_get_manufacturer:
+ * cdk_monitor_get_manufacturer:
  * @monitor: a #GdkMonitor
  *
  * Gets the name or PNP ID of the monitor's manufacturer, if available.
@@ -385,7 +385,7 @@ gdk_monitor_get_connector (GdkMonitor *monitor)
  * Returns: (transfer none) (nullable): the name of the manufacturer, or %NULL
  */
 const char *
-gdk_monitor_get_manufacturer (GdkMonitor *monitor)
+cdk_monitor_get_manufacturer (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_MONITOR (monitor), NULL);
 
@@ -393,7 +393,7 @@ gdk_monitor_get_manufacturer (GdkMonitor *monitor)
 }
 
 /**
- * gdk_monitor_get_model:
+ * cdk_monitor_get_model:
  * @monitor: a #GdkMonitor
  *
  * Gets the a string identifying the monitor model, if available.
@@ -401,7 +401,7 @@ gdk_monitor_get_manufacturer (GdkMonitor *monitor)
  * Returns: (transfer none) (nullable): the monitor model, or %NULL
  */
 const char *
-gdk_monitor_get_model (GdkMonitor *monitor)
+cdk_monitor_get_model (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_MONITOR (monitor), NULL);
 
@@ -409,7 +409,7 @@ gdk_monitor_get_model (GdkMonitor *monitor)
 }
 
 /**
- * gdk_monitor_get_scale_factor:
+ * cdk_monitor_get_scale_factor:
  * @monitor: a #GdkMonitor
  *
  * Gets the internal scale factor that maps from monitor coordinates
@@ -418,13 +418,13 @@ gdk_monitor_get_model (GdkMonitor *monitor)
  *
  * This can be used if you want to create pixel based data for a
  * particular monitor, but most of the time you’re drawing to a window
- * where it is better to use gdk_window_get_scale_factor() instead.
+ * where it is better to use cdk_window_get_scale_factor() instead.
  *
  * Returns: the scale factor
  * Since: 3.22
  */
 int
-gdk_monitor_get_scale_factor (GdkMonitor *monitor)
+cdk_monitor_get_scale_factor (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_MONITOR (monitor), 1);
 
@@ -432,7 +432,7 @@ gdk_monitor_get_scale_factor (GdkMonitor *monitor)
 }
 
 /**
- * gdk_monitor_get_refresh_rate:
+ * cdk_monitor_get_refresh_rate:
  * @monitor: a #GdkMonitor
  *
  * Gets the refresh rate of the monitor, if available.
@@ -444,7 +444,7 @@ gdk_monitor_get_scale_factor (GdkMonitor *monitor)
  * Since: 3.22
  */
 int
-gdk_monitor_get_refresh_rate (GdkMonitor *monitor)
+cdk_monitor_get_refresh_rate (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_MONITOR (monitor), 0);
 
@@ -452,7 +452,7 @@ gdk_monitor_get_refresh_rate (GdkMonitor *monitor)
 }
 
 /**
- * gdk_monitor_get_subpixel_layout:
+ * cdk_monitor_get_subpixel_layout:
  * @monitor: a #GdkMonitor
  *
  * Gets information about the layout of red, green and blue
@@ -462,7 +462,7 @@ gdk_monitor_get_refresh_rate (GdkMonitor *monitor)
  * Since: 3.22
  */
 GdkSubpixelLayout
-gdk_monitor_get_subpixel_layout (GdkMonitor *monitor)
+cdk_monitor_get_subpixel_layout (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_MONITOR (monitor), GDK_SUBPIXEL_LAYOUT_UNKNOWN);
 
@@ -470,25 +470,25 @@ gdk_monitor_get_subpixel_layout (GdkMonitor *monitor)
 }
 
 /**
- * gdk_monitor_is_primary:
+ * cdk_monitor_is_primary:
  * @monitor: a #GdkMonitor
  *
  * Gets whether this monitor should be considered primary
- * (see gdk_display_get_primary_monitor()).
+ * (see cdk_display_get_primary_monitor()).
  *
  * Returns: %TRUE if @monitor is primary
  * Since: 3.22
  */
 gboolean
-gdk_monitor_is_primary (GdkMonitor *monitor)
+cdk_monitor_is_primary (GdkMonitor *monitor)
 {
   g_return_val_if_fail (GDK_IS_MONITOR (monitor), FALSE);
 
-  return monitor == gdk_display_get_primary_monitor (monitor->display);
+  return monitor == cdk_display_get_primary_monitor (monitor->display);
 }
 
 GdkMonitor *
-gdk_monitor_new (GdkDisplay *display)
+cdk_monitor_new (GdkDisplay *display)
 {
   return GDK_MONITOR (g_object_new (GDK_TYPE_MONITOR,
                                     "display", display,
@@ -496,7 +496,7 @@ gdk_monitor_new (GdkDisplay *display)
 }
 
 void
-gdk_monitor_set_manufacturer (GdkMonitor *monitor,
+cdk_monitor_set_manufacturer (GdkMonitor *monitor,
                               const char *manufacturer)
 {
   g_free (monitor->manufacturer);
@@ -506,7 +506,7 @@ gdk_monitor_set_manufacturer (GdkMonitor *monitor,
 }
 
 void
-gdk_monitor_set_model (GdkMonitor *monitor,
+cdk_monitor_set_model (GdkMonitor *monitor,
                        const char *model)
 {
   g_free (monitor->model);
@@ -516,7 +516,7 @@ gdk_monitor_set_model (GdkMonitor *monitor,
 }
 
 void
-gdk_monitor_set_connector (GdkMonitor *monitor,
+cdk_monitor_set_connector (GdkMonitor *monitor,
                            const char *connector)
 {
   g_free (monitor->connector);
@@ -526,7 +526,7 @@ gdk_monitor_set_connector (GdkMonitor *monitor,
 }
 
 void
-gdk_monitor_set_position (GdkMonitor *monitor,
+cdk_monitor_set_position (GdkMonitor *monitor,
                           int         x,
                           int         y)
 {
@@ -548,7 +548,7 @@ gdk_monitor_set_position (GdkMonitor *monitor,
 }
 
 void
-gdk_monitor_set_size (GdkMonitor *monitor,
+cdk_monitor_set_size (GdkMonitor *monitor,
                       int         width,
                       int         height)
 {
@@ -570,7 +570,7 @@ gdk_monitor_set_size (GdkMonitor *monitor,
 }
 
 void
-gdk_monitor_set_physical_size (GdkMonitor *monitor,
+cdk_monitor_set_physical_size (GdkMonitor *monitor,
                                int         width_mm,
                                int         height_mm)
 {
@@ -592,7 +592,7 @@ gdk_monitor_set_physical_size (GdkMonitor *monitor,
 }
 
 void
-gdk_monitor_set_scale_factor (GdkMonitor *monitor,
+cdk_monitor_set_scale_factor (GdkMonitor *monitor,
                               int         scale_factor)
 {
   if (monitor->scale_factor == scale_factor)
@@ -604,7 +604,7 @@ gdk_monitor_set_scale_factor (GdkMonitor *monitor,
 }
 
 void
-gdk_monitor_set_refresh_rate (GdkMonitor *monitor,
+cdk_monitor_set_refresh_rate (GdkMonitor *monitor,
                               int         refresh_rate)
 {
   if (monitor->refresh_rate == refresh_rate)
@@ -616,7 +616,7 @@ gdk_monitor_set_refresh_rate (GdkMonitor *monitor,
 }
 
 void
-gdk_monitor_set_subpixel_layout (GdkMonitor        *monitor,
+cdk_monitor_set_subpixel_layout (GdkMonitor        *monitor,
                                  GdkSubpixelLayout  subpixel_layout)
 {
   if (monitor->subpixel_layout == subpixel_layout)
@@ -628,7 +628,7 @@ gdk_monitor_set_subpixel_layout (GdkMonitor        *monitor,
 }
 
 void
-gdk_monitor_invalidate (GdkMonitor *monitor)
+cdk_monitor_invalidate (GdkMonitor *monitor)
 {
   g_signal_emit (monitor, signals[INVALIDATE], 0);
 }

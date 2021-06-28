@@ -23,74 +23,74 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Virtaal 0.7.1\n"
 
-#: gdk/broadway/gdkbroadway-server.c:144
+#: cdk/broadway/cdkbroadway-server.c:144
 #, c-format
 msgid "Broadway display type not supported: %s"
 msgstr "Ekrantipo Broadway ne estas subtenata: %s"
 
-#: gdk/gdk.c:182
+#: cdk/cdk.c:182
 #, c-format
-msgid "Error parsing option --gdk-debug"
-msgstr "Eraro dum analizo de elekteblo --gdk-debug"
+msgid "Error parsing option --cdk-debug"
+msgstr "Eraro dum analizo de elekteblo --cdk-debug"
 
-#: gdk/gdk.c:202
+#: cdk/cdk.c:202
 #, c-format
-msgid "Error parsing option --gdk-no-debug"
-msgstr "Eraro dum analizo de elekteblo --gdk-no-debug"
+msgid "Error parsing option --cdk-no-debug"
+msgstr "Eraro dum analizo de elekteblo --cdk-no-debug"
 
 #. Description of --class=CLASS in --help output
-#: gdk/gdk.c:231
+#: cdk/cdk.c:231
 msgid "Program class as used by the window manager"
 msgstr "Programa klaso kiel uzata de la fenestra administrilo"
 
 #. Placeholder in --class=CLASS in --help output
-#: gdk/gdk.c:232
+#: cdk/cdk.c:232
 msgid "CLASS"
 msgstr "KLASO"
 
 #. Description of --name=NAME in --help output
-#: gdk/gdk.c:234
+#: cdk/cdk.c:234
 msgid "Program name as used by the window manager"
 msgstr "Programa nomo kiel uzata de la fenestra administrilo"
 
 #. Placeholder in --name=NAME in --help output
-#: gdk/gdk.c:235
+#: cdk/cdk.c:235
 msgid "NAME"
 msgstr "NOMO"
 
 #. Description of --display=DISPLAY in --help output
-#: gdk/gdk.c:238
+#: cdk/cdk.c:238
 msgid "X display to use"
 msgstr "X-ekrano uzota"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: gdk/gdk.c:239
+#: cdk/cdk.c:239
 msgid "DISPLAY"
 msgstr "EKRANO"
 
-#. Description of --gdk-debug=FLAGS in --help output
-#: gdk/gdk.c:243
+#. Description of --cdk-debug=FLAGS in --help output
+#: cdk/cdk.c:243
 msgid "GDK debugging flags to set"
 msgstr "Ŝaltendaj GDK-sencimigmarkoj"
 
-#. Placeholder in --gdk-debug=FLAGS in --help output
-#. Placeholder in --gdk-no-debug=FLAGS in --help output
+#. Placeholder in --cdk-debug=FLAGS in --help output
+#. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:244 gdk/gdk.c:247 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:244 cdk/cdk.c:247 ctk/ctkmain.c:471 ctk/ctkmain.c:474
 msgid "FLAGS"
 msgstr "FLAGOJ"
 
-#. Description of --gdk-no-debug=FLAGS in --help output
-#: gdk/gdk.c:246
+#. Description of --cdk-no-debug=FLAGS in --help output
+#: cdk/cdk.c:246
 msgid "GDK debugging flags to unset"
 msgstr "Malŝaltendaj GDK-sencimigmarkoj"
 
-#: gdk/gdkwindow.c:2829
+#: cdk/cdkwindow.c:2829
 msgid "GL support disabled via GDK_DEBUG"
 msgstr "Subteno de GL malŝaltita per GDK_DEBUG"
 
-#: gdk/gdkwindow.c:2840
+#: cdk/cdkwindow.c:2840
 msgid "The current backend does not support OpenGL"
 msgstr "OpenGL ne subteniĝas de la nuna interno"
 
@@ -105,452 +105,452 @@ msgstr "OpenGL ne subteniĝas de la nuna interno"
 #. * Scroll_lock   - Scroll lock
 #. * KP_Space      - Space (keypad)
 #.
-#: gdk/keyname-table.h:6843
+#: cdk/keyname-table.h:6843
 msgctxt "keyboard label"
 msgid "BackSpace"
 msgstr "Retropaŝa klavo"
 
-#: gdk/keyname-table.h:6844
+#: cdk/keyname-table.h:6844
 msgctxt "keyboard label"
 msgid "Tab"
 msgstr "Taba klavo"
 
-#: gdk/keyname-table.h:6845
+#: cdk/keyname-table.h:6845
 msgctxt "keyboard label"
 msgid "Return"
 msgstr "Eniga klavo"
 
-#: gdk/keyname-table.h:6846
+#: cdk/keyname-table.h:6846
 msgctxt "keyboard label"
 msgid "Pause"
 msgstr "Paŭzo-klavo"
 
-#: gdk/keyname-table.h:6847
+#: cdk/keyname-table.h:6847
 msgctxt "keyboard label"
 msgid "Scroll_Lock"
 msgstr "Ruluma _baskulo"
 
-#: gdk/keyname-table.h:6848
+#: cdk/keyname-table.h:6848
 msgctxt "keyboard label"
 msgid "Sys_Req"
 msgstr "Sistem-_postuloj"
 
-#: gdk/keyname-table.h:6849
+#: cdk/keyname-table.h:6849
 msgctxt "keyboard label"
 msgid "Escape"
 msgstr "Eskapa klavo"
 
-#: gdk/keyname-table.h:6850
+#: cdk/keyname-table.h:6850
 msgctxt "keyboard label"
 msgid "Multi_key"
 msgstr "Plur-_klavo"
 
-#: gdk/keyname-table.h:6851
+#: cdk/keyname-table.h:6851
 msgctxt "keyboard label"
 msgid "Home"
 msgstr "Hejmen"
 
-#: gdk/keyname-table.h:6852
+#: cdk/keyname-table.h:6852
 msgctxt "keyboard label"
 msgid "Left"
 msgstr "Maldekstren"
 
-#: gdk/keyname-table.h:6853
+#: cdk/keyname-table.h:6853
 msgctxt "keyboard label"
 msgid "Up"
 msgstr "Supren"
 
-#: gdk/keyname-table.h:6854
+#: cdk/keyname-table.h:6854
 msgctxt "keyboard label"
 msgid "Right"
 msgstr "Dekstren"
 
-#: gdk/keyname-table.h:6855
+#: cdk/keyname-table.h:6855
 msgctxt "keyboard label"
 msgid "Down"
 msgstr "Suben"
 
-#: gdk/keyname-table.h:6856 ctk/ctkshortcutlabel.c:222
+#: cdk/keyname-table.h:6856 ctk/ctkshortcutlabel.c:222
 msgctxt "keyboard label"
 msgid "Page_Up"
 msgstr "Paĝo_supren"
 
-#: gdk/keyname-table.h:6857 ctk/ctkshortcutlabel.c:225
+#: cdk/keyname-table.h:6857 ctk/ctkshortcutlabel.c:225
 msgctxt "keyboard label"
 msgid "Page_Down"
 msgstr "Paĝo_suben"
 
-#: gdk/keyname-table.h:6858
+#: cdk/keyname-table.h:6858
 msgctxt "keyboard label"
 msgid "End"
 msgstr "Fino-klavo"
 
-#: gdk/keyname-table.h:6859
+#: cdk/keyname-table.h:6859
 msgctxt "keyboard label"
 msgid "Begin"
 msgstr "Komenco-klavo"
 
-#: gdk/keyname-table.h:6860
+#: cdk/keyname-table.h:6860
 msgctxt "keyboard label"
 msgid "Print"
 msgstr "Presi-klavo"
 
-#: gdk/keyname-table.h:6861
+#: cdk/keyname-table.h:6861
 msgctxt "keyboard label"
 msgid "Insert"
 msgstr "Enmeti-klavo"
 
-#: gdk/keyname-table.h:6862
+#: cdk/keyname-table.h:6862
 msgctxt "keyboard label"
 msgid "Num_Lock"
 msgstr "Nombra _baskulo"
 
 #. Translators: KP_ means “key pad” here
-#: gdk/keyname-table.h:6864
+#: cdk/keyname-table.h:6864
 msgctxt "keyboard label"
 msgid "KP_Space"
 msgstr "KP-spaco"
 
-#: gdk/keyname-table.h:6865
+#: cdk/keyname-table.h:6865
 msgctxt "keyboard label"
 msgid "KP_Tab"
 msgstr "KP-taba klavo"
 
-#: gdk/keyname-table.h:6866
+#: cdk/keyname-table.h:6866
 msgctxt "keyboard label"
 msgid "KP_Enter"
 msgstr "KP-revenklavo"
 
-#: gdk/keyname-table.h:6867
+#: cdk/keyname-table.h:6867
 msgctxt "keyboard label"
 msgid "KP_Home"
 msgstr "KP-hejmen"
 
-#: gdk/keyname-table.h:6868
+#: cdk/keyname-table.h:6868
 msgctxt "keyboard label"
 msgid "KP_Left"
 msgstr "KP-maldekstren"
 
-#: gdk/keyname-table.h:6869
+#: cdk/keyname-table.h:6869
 msgctxt "keyboard label"
 msgid "KP_Up"
 msgstr "KP-supren"
 
-#: gdk/keyname-table.h:6870
+#: cdk/keyname-table.h:6870
 msgctxt "keyboard label"
 msgid "KP_Right"
 msgstr "KP-dekstren"
 
-#: gdk/keyname-table.h:6871
+#: cdk/keyname-table.h:6871
 msgctxt "keyboard label"
 msgid "KP_Down"
 msgstr "KP-suben"
 
-#: gdk/keyname-table.h:6872
+#: cdk/keyname-table.h:6872
 msgctxt "keyboard label"
 msgid "KP_Page_Up"
 msgstr "KP-paĝo-supren"
 
-#: gdk/keyname-table.h:6873
+#: cdk/keyname-table.h:6873
 msgctxt "keyboard label"
 msgid "KP_Prior"
 msgstr "KP-prioritata"
 
-#: gdk/keyname-table.h:6874
+#: cdk/keyname-table.h:6874
 msgctxt "keyboard label"
 msgid "KP_Page_Down"
 msgstr "KP-paĝo-suben"
 
-#: gdk/keyname-table.h:6875
+#: cdk/keyname-table.h:6875
 msgctxt "keyboard label"
 msgid "KP_Next"
 msgstr "KP-sekva"
 
-#: gdk/keyname-table.h:6876
+#: cdk/keyname-table.h:6876
 msgctxt "keyboard label"
 msgid "KP_End"
 msgstr "KP-fino-klavo"
 
-#: gdk/keyname-table.h:6877
+#: cdk/keyname-table.h:6877
 msgctxt "keyboard label"
 msgid "KP_Begin"
 msgstr "KP-komenco-klavo"
 
-#: gdk/keyname-table.h:6878
+#: cdk/keyname-table.h:6878
 msgctxt "keyboard label"
 msgid "KP_Insert"
 msgstr "KP-enmeta klavo"
 
-#: gdk/keyname-table.h:6879
+#: cdk/keyname-table.h:6879
 msgctxt "keyboard label"
 msgid "KP_Delete"
 msgstr "KP-foriga klavo"
 
-#: gdk/keyname-table.h:6880
+#: cdk/keyname-table.h:6880
 msgctxt "keyboard label"
 msgid "Delete"
 msgstr "Foriga klavo"
 
-#: gdk/keyname-table.h:6881
+#: cdk/keyname-table.h:6881
 msgctxt "keyboard label"
 msgid "MonBrightnessUp"
 msgstr "Plialtigi ekran-helecon"
 
-#: gdk/keyname-table.h:6882
+#: cdk/keyname-table.h:6882
 msgctxt "keyboard label"
 msgid "MonBrightnessDown"
 msgstr "Malplialtigi ekran-helecon"
 
-#: gdk/keyname-table.h:6883
+#: cdk/keyname-table.h:6883
 msgctxt "keyboard label"
 msgid "KbdBrightnessUp"
 msgstr "Plialtigi klavar-helecon"
 
-#: gdk/keyname-table.h:6884
+#: cdk/keyname-table.h:6884
 msgctxt "keyboard label"
 msgid "KbdBrightnessDown"
 msgstr "Malplialtigi klavar-helecon"
 
-#: gdk/keyname-table.h:6885
+#: cdk/keyname-table.h:6885
 msgctxt "keyboard label"
 msgid "AudioMute"
 msgstr "Silentigi sonon"
 
-#: gdk/keyname-table.h:6886
+#: cdk/keyname-table.h:6886
 msgctxt "keyboard label"
 msgid "AudioMicMute"
 msgstr "Silentigi mikrofonon"
 
-#: gdk/keyname-table.h:6887
+#: cdk/keyname-table.h:6887
 msgctxt "keyboard label"
 msgid "AudioLowerVolume"
 msgstr "Malplialtigi sonforton"
 
-#: gdk/keyname-table.h:6888
+#: cdk/keyname-table.h:6888
 msgctxt "keyboard label"
 msgid "AudioRaiseVolume"
 msgstr "Plialtigi sonforton"
 
-#: gdk/keyname-table.h:6889
+#: cdk/keyname-table.h:6889
 msgctxt "keyboard label"
 msgid "AudioPlay"
 msgstr "Ludi sonon"
 
-#: gdk/keyname-table.h:6890
+#: cdk/keyname-table.h:6890
 msgctxt "keyboard label"
 msgid "AudioStop"
 msgstr "Haltigi sonludon"
 
-#: gdk/keyname-table.h:6891
+#: cdk/keyname-table.h:6891
 msgctxt "keyboard label"
 msgid "AudioNext"
 msgstr "Sekva sono"
 
-#: gdk/keyname-table.h:6892
+#: cdk/keyname-table.h:6892
 msgctxt "keyboard label"
 msgid "AudioPrev"
 msgstr "Antaŭa sono"
 
-#: gdk/keyname-table.h:6893
+#: cdk/keyname-table.h:6893
 msgctxt "keyboard label"
 msgid "AudioRecord"
 msgstr "Registri sonon"
 
-#: gdk/keyname-table.h:6894
+#: cdk/keyname-table.h:6894
 msgctxt "keyboard label"
 msgid "AudioPause"
 msgstr "Paŭzigi sonon"
 
-#: gdk/keyname-table.h:6895
+#: cdk/keyname-table.h:6895
 msgctxt "keyboard label"
 msgid "AudioRewind"
 msgstr "Revolvi sonon"
 
-#: gdk/keyname-table.h:6896
+#: cdk/keyname-table.h:6896
 msgctxt "keyboard label"
 msgid "AudioMedia"
 msgstr "Aŭdvidea sono"
 
-#: gdk/keyname-table.h:6897
+#: cdk/keyname-table.h:6897
 msgctxt "keyboard label"
 msgid "Eject"
 msgstr "_Eligi"
 
-#: gdk/keyname-table.h:6898
+#: cdk/keyname-table.h:6898
 msgctxt "keyboard label"
 msgid "Explorer"
 msgstr "Esplorilo"
 
-#: gdk/keyname-table.h:6899
+#: cdk/keyname-table.h:6899
 msgctxt "keyboard label"
 msgid "Calculator"
 msgstr "Kalkulilo"
 
-#: gdk/keyname-table.h:6900
+#: cdk/keyname-table.h:6900
 msgctxt "keyboard label"
 msgid "Mail"
 msgstr "Poŝto"
 
-#: gdk/keyname-table.h:6901
+#: cdk/keyname-table.h:6901
 msgctxt "keyboard label"
 msgid "WWW"
 msgstr "TTT"
 
-#: gdk/keyname-table.h:6902
+#: cdk/keyname-table.h:6902
 msgctxt "keyboard label"
 msgid "Search"
 msgstr "Serĉo"
 
-#: gdk/keyname-table.h:6903
+#: cdk/keyname-table.h:6903
 msgctxt "keyboard label"
 msgid "Tools"
 msgstr "Iloj"
 
-#: gdk/keyname-table.h:6904
+#: cdk/keyname-table.h:6904
 msgctxt "keyboard label"
 msgid "ScreenSaver"
 msgstr "Ekrankurteno"
 
-#: gdk/keyname-table.h:6905
+#: cdk/keyname-table.h:6905
 msgctxt "keyboard label"
 msgid "Battery"
 msgstr "Akumulatoro"
 
-#: gdk/keyname-table.h:6906
+#: cdk/keyname-table.h:6906
 msgctxt "keyboard label"
 msgid "Launch1"
 msgstr "Lanĉi1"
 
-#: gdk/keyname-table.h:6907
+#: cdk/keyname-table.h:6907
 msgctxt "keyboard label"
 msgid "Forward"
 msgstr "Antaŭen"
 
-#: gdk/keyname-table.h:6908
+#: cdk/keyname-table.h:6908
 msgctxt "keyboard label"
 msgid "Back"
 msgstr "Malantaŭen"
 
-#: gdk/keyname-table.h:6909
+#: cdk/keyname-table.h:6909
 msgctxt "keyboard label"
 msgid "Sleep"
 msgstr "Dormeti"
 
-#: gdk/keyname-table.h:6910
+#: cdk/keyname-table.h:6910
 msgctxt "keyboard label"
 msgid "Hibernate"
 msgstr "Pasivumigi"
 
-#: gdk/keyname-table.h:6911
+#: cdk/keyname-table.h:6911
 msgctxt "keyboard label"
 msgid "WLAN"
 msgstr "WLAN"
 
-#: gdk/keyname-table.h:6912
+#: cdk/keyname-table.h:6912
 msgctxt "keyboard label"
 msgid "WebCam"
 msgstr "Retkamerao"
 
-#: gdk/keyname-table.h:6913
+#: cdk/keyname-table.h:6913
 msgctxt "keyboard label"
 msgid "Display"
 msgstr "Ekrano"
 
-#: gdk/keyname-table.h:6914
+#: cdk/keyname-table.h:6914
 msgctxt "keyboard label"
 msgid "TouchpadToggle"
 msgstr "Tuŝplata baskulo"
 
-#: gdk/keyname-table.h:6915
+#: cdk/keyname-table.h:6915
 msgctxt "keyboard label"
 msgid "WakeUp"
 msgstr "Veki"
 
-#: gdk/keyname-table.h:6916
+#: cdk/keyname-table.h:6916
 msgctxt "keyboard label"
 msgid "Suspend"
 msgstr "Interrompi"
 
-#: gdk/mir/gdkmirglcontext.c:48 gdk/mir/gdkmirwindowimpl.c:2226
-#: gdk/wayland/gdkglcontext-wayland.c:468 gdk/win32/gdkglcontext-win32.c:1177
-#: gdk/x11/gdkglcontext-x11.c:1277
+#: cdk/mir/cdkmirglcontext.c:48 cdk/mir/cdkmirwindowimpl.c:2226
+#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1177
+#: cdk/x11/cdkglcontext-x11.c:1277
 msgid "No GL implementation is available"
 msgstr "Neniu GL-realigo haveblas"
 
-#: gdk/mir/gdkmirglcontext.c:89 gdk/wayland/gdkglcontext-wayland.c:208
-#: gdk/win32/gdkglcontext-win32.c:1070 gdk/win32/gdkglcontext-win32.c:1110
-#: gdk/x11/gdkglcontext-x11.c:720 gdk/x11/gdkglcontext-x11.c:770
+#: cdk/mir/cdkmirglcontext.c:89 cdk/wayland/cdkglcontext-wayland.c:208
+#: cdk/win32/cdkglcontext-win32.c:1070 cdk/win32/cdkglcontext-win32.c:1110
+#: cdk/x11/cdkglcontext-x11.c:720 cdk/x11/cdkglcontext-x11.c:770
 msgid "Unable to create a GL context"
 msgstr "Ne povas krei GL-kuntekston"
 
-#: gdk/mir/gdkmirwindowimpl.c:2188 gdk/mir/gdkmirwindowimpl.c:2198
-#: gdk/wayland/gdkglcontext-wayland.c:418
-#: gdk/wayland/gdkglcontext-wayland.c:428 gdk/win32/gdkglcontext-win32.c:908
-#: gdk/win32/gdkglcontext-win32.c:918 gdk/win32/gdkglcontext-win32.c:1035
-#: gdk/x11/gdkglcontext-x11.c:971
+#: cdk/mir/cdkmirwindowimpl.c:2188 cdk/mir/cdkmirwindowimpl.c:2198
+#: cdk/wayland/cdkglcontext-wayland.c:418
+#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:908
+#: cdk/win32/cdkglcontext-win32.c:918 cdk/win32/cdkglcontext-win32.c:1035
+#: cdk/x11/cdkglcontext-x11.c:971
 msgid "No available configurations for the given pixel format"
 msgstr "Neniu disponebla agordaro por la specifita bildera formo"
 
-#: gdk/mir/gdkmirwindowimpl.c:2234
+#: cdk/mir/cdkmirwindowimpl.c:2234
 msgid "3.2 core GL profile is not available on EGL implementation"
 msgstr "3.2 kerna GL-profilo ne disponeblas per realigo de EGL"
 
-#: gdk/quartz/gdkglcontext-quartz.c:37
+#: cdk/quartz/cdkglcontext-quartz.c:37
 msgid "Not implemented on OS X"
 msgstr "Nerealigita por OS X"
 
-#: gdk/wayland/gdkglcontext-wayland.c:476
+#: cdk/wayland/cdkglcontext-wayland.c:476
 msgid "Core GL is not available on EGL implementation"
 msgstr "Kerna GL ne disponeblas per realigo de EGL"
 
 #. Description of --sync in --help output
-#: gdk/win32/gdkmain-win32.c:56
+#: cdk/win32/cdkmain-win32.c:56
 msgid "Don't batch GDI requests"
 msgstr "Ne trakti amase GDI-petojn"
 
 #. Description of --no-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:58
+#: cdk/win32/cdkmain-win32.c:58
 msgid "Don't use the Wintab API for tablet support"
 msgstr "Ne uzi la API-on Wintab por subteno de tabulkomputiloj"
 
 #. Description of --ignore-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:60
+#: cdk/win32/cdkmain-win32.c:60
 msgid "Same as --no-wintab"
 msgstr "Same kiel --no-wintab"
 
 #. Description of --use-wintab in --help output
-#: gdk/win32/gdkmain-win32.c:62
+#: cdk/win32/cdkmain-win32.c:62
 msgid "Do use the Wintab API [default]"
 msgstr "Uzi la API-on Wintab [implicita]"
 
 #. Description of --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:64
+#: cdk/win32/cdkmain-win32.c:64
 msgid "Size of the palette in 8 bit mode"
 msgstr "Grando de la paletro en 8-bita reĝimo"
 
 #. Placeholder in --max-colors=COLORS in --help output
-#: gdk/win32/gdkmain-win32.c:65
+#: cdk/win32/cdkmain-win32.c:65
 msgid "COLORS"
 msgstr "KOLOROJ"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:295
+#: cdk/x11/cdkapplaunchcontext-x11.c:295
 #, c-format
 msgid "Starting %s"
 msgstr "Komencante %s"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:308
+#: cdk/x11/cdkapplaunchcontext-x11.c:308
 #, c-format
 msgid "Opening %s"
 msgstr "Malfermante %s"
 
-#: gdk/x11/gdkapplaunchcontext-x11.c:313
+#: cdk/x11/cdkapplaunchcontext-x11.c:313
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
 msgstr[0] "Malfermante %d eron"
 msgstr[1] "Malfermante %d erojn"
 
-#: gdk/x11/gdkglcontext-x11.c:999
+#: cdk/x11/cdkglcontext-x11.c:999
 #, c-format
 msgid "No available configurations for the given RGBA pixel format"
 msgstr "Neniu disponebla agordaro por la specifita RVBA-bildera formo"
@@ -8730,9 +8730,9 @@ msgstr "Presi en prova presilo"
 #~ msgstr "Eraro dum skribado de la bilda dosiero: %s"
 
 #~ msgid ""
-#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ "This build of cdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Ĉi tiu konstruo de gdk-pixbuf ne subtenas konservadon de la bildformato: "
+#~ "Ĉi tiu konstruo de cdk-pixbuf ne subtenas konservadon de la bildformato: "
 #~ "%s"
 
 #~ msgid "Insufficient memory to save image to callback"

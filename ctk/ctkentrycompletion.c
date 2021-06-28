@@ -1116,7 +1116,7 @@ ctk_entry_completion_popup (CtkEntryCompletion *completion)
   if (completion->priv->device)
     {
       ctk_grab_add (completion->priv->popup_window);
-      gdk_seat_grab (gdk_device_get_seat (completion->priv->device),
+      cdk_seat_grab (cdk_device_get_seat (completion->priv->device),
                      ctk_widget_get_window (completion->priv->popup_window),
                      GDK_SEAT_CAPABILITY_POINTER | GDK_SEAT_CAPABILITY_TOUCH,
                      TRUE, NULL, NULL,
@@ -1136,7 +1136,7 @@ _ctk_entry_completion_popdown (CtkEntryCompletion *completion)
 
   if (completion->priv->has_grab)
     {
-      gdk_seat_ungrab (gdk_device_get_seat (completion->priv->device));
+      cdk_seat_ungrab (cdk_device_get_seat (completion->priv->device));
       ctk_grab_remove (completion->priv->popup_window);
       completion->priv->has_grab = FALSE;
     }
@@ -1626,7 +1626,7 @@ _ctk_entry_completion_resize_popup (CtkEntryCompletion *completion)
   ctk_widget_get_preferred_size (completion->priv->entry,
                                  &entry_req, NULL);
 
-  gdk_window_get_origin (window, &x, &y);
+  cdk_window_get_origin (window, &x, &y);
   x += allocation.x;
   y += allocation.y + (allocation.height - entry_req.height) / 2;
 
@@ -1653,8 +1653,8 @@ _ctk_entry_completion_resize_popup (CtkEntryCompletion *completion)
   ctk_widget_realize (completion->priv->tree_view);
 
   display = ctk_widget_get_display (CTK_WIDGET (completion->priv->entry));
-  monitor = gdk_display_get_monitor_at_window (display, window);
-  gdk_monitor_get_workarea (monitor, &area);
+  monitor = cdk_display_get_monitor_at_window (display, window);
+  cdk_monitor_get_workarea (monitor, &area);
 
   if (height == 0)
     items = 0;
@@ -2535,14 +2535,14 @@ ctk_entry_completion_changed (CtkWidget *widget,
 
   device = ctk_get_current_event_device ();
 
-  if (device && gdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
-    device = gdk_device_get_associated_device (device);
+  if (device && cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+    device = cdk_device_get_associated_device (device);
 
   if (device)
     completion->priv->device = device;
 
   completion->priv->completion_timeout =
-    gdk_threads_add_timeout (COMPLETION_TIMEOUT,
+    cdk_threads_add_timeout (COMPLETION_TIMEOUT,
                    ctk_entry_completion_timeout,
                    completion);
   g_source_set_name_by_id (completion->priv->completion_timeout, "[ctk+] ctk_entry_completion_timeout");

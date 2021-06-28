@@ -130,7 +130,7 @@ do_css_blendmodes (CtkWidget *do_widget)
       /* Setup the CSS provider for window */
       provider = CTK_STYLE_PROVIDER (ctk_css_provider_new ());
 
-      ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+      ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                                  provider,
                                                  CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 

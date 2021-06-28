@@ -90,7 +90,7 @@
  * set the title property explicitly when constructing a CtkAboutDialog,
  * as shown in the following example:
  * |[<!-- language="C" -->
- * GdkPixbuf *example_logo = gdk_pixbuf_new_from_file ("./logo.png", NULL);
+ * GdkPixbuf *example_logo = cdk_pixbuf_new_from_file ("./logo.png", NULL);
  * ctk_show_about_dialog (NULL,
  *                        "program-name", "ExampleCode",
  *                        "logo", example_logo,
@@ -806,8 +806,8 @@ ctk_about_dialog_realize (CtkWidget *widget)
   CTK_WIDGET_CLASS (ctk_about_dialog_parent_class)->realize (widget);
 
   display = ctk_widget_get_display (widget);
-  priv->hand_cursor = gdk_cursor_new_from_name (display, "pointer");
-  priv->regular_cursor = gdk_cursor_new_from_name (display, "text");
+  priv->hand_cursor = cdk_cursor_new_from_name (display, "pointer");
+  priv->regular_cursor = cdk_cursor_new_from_name (display, "text");
 }
 
 static void
@@ -2034,9 +2034,9 @@ set_cursor_if_appropriate (CtkAboutDialog *about,
       priv->hovering_over_link = hovering_over_link;
 
       if (hovering_over_link)
-        gdk_window_set_device_cursor (ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT), device, priv->hand_cursor);
+        cdk_window_set_device_cursor (ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT), device, priv->hand_cursor);
       else
-        gdk_window_set_device_cursor (ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT), device, priv->regular_cursor);
+        cdk_window_set_device_cursor (ctk_text_view_get_window (text_view, CTK_TEXT_WINDOW_TEXT), device, priv->regular_cursor);
     }
 
   g_slist_free (tags);
@@ -2055,7 +2055,7 @@ text_view_motion_notify_event (CtkWidget      *text_view,
 
   set_cursor_if_appropriate (about, CTK_TEXT_VIEW (text_view), event->device, x, y);
 
-  gdk_event_request_motions (event);
+  cdk_event_request_motions (event);
 
   return FALSE;
 }

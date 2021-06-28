@@ -26,12 +26,12 @@
 #define __GDK_COLOR_H__
 
 #if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdk.h> can be included directly."
+#error "Only <cdk/cdk.h> can be included directly."
 #endif
 
 #include <cairo.h>
-#include <gdk/gdktypes.h>
-#include <gdk/gdkversionmacros.h>
+#include <cdk/cdktypes.h>
+#include <cdk/cdkversionmacros.h>
 
 G_BEGIN_DECLS
 
@@ -59,27 +59,27 @@ struct _GdkColor
   guint16 blue;
 };
 
-#define GDK_TYPE_COLOR (gdk_color_get_type ())
+#define GDK_TYPE_COLOR (cdk_color_get_type ())
 
-GDK_DEPRECATED_IN_3_14_FOR(gdk_rgba_get_type)
-GType     gdk_color_get_type (void) G_GNUC_CONST;
+GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_get_type)
+GType     cdk_color_get_type (void) G_GNUC_CONST;
 
-GDK_DEPRECATED_IN_3_14_FOR(gdk_rgba_copy)
-GdkColor *gdk_color_copy      (const GdkColor *color);
-GDK_DEPRECATED_IN_3_14_FOR(gdk_rgba_free)
-void      gdk_color_free      (GdkColor       *color);
+GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_copy)
+GdkColor *cdk_color_copy      (const GdkColor *color);
+GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_free)
+void      cdk_color_free      (GdkColor       *color);
 
-GDK_DEPRECATED_IN_3_14_FOR(gdk_rgba_hash)
-guint     gdk_color_hash      (const GdkColor *color);
-GDK_DEPRECATED_IN_3_14_FOR(gdk_rgba_equal)
-gboolean  gdk_color_equal     (const GdkColor *colora,
+GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_hash)
+guint     cdk_color_hash      (const GdkColor *color);
+GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_equal)
+gboolean  cdk_color_equal     (const GdkColor *colora,
                                const GdkColor *colorb);
 
-GDK_DEPRECATED_IN_3_14_FOR(gdk_rgba_parse)
-gboolean  gdk_color_parse     (const gchar    *spec,
+GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_parse)
+gboolean  cdk_color_parse     (const gchar    *spec,
                                GdkColor       *color);
-GDK_DEPRECATED_IN_3_14_FOR(gdk_rgba_to_string)
-gchar *   gdk_color_to_string (const GdkColor *color);
+GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_to_string)
+gchar *   cdk_color_to_string (const GdkColor *color);
 
 
 G_END_DECLS

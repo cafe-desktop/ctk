@@ -357,7 +357,7 @@ ctk_stack_realize (CtkWidget *widget)
   attributes_mask = (GDK_WA_X | GDK_WA_Y) | GDK_WA_VISUAL;
 
   priv->view_window =
-    gdk_window_new (ctk_widget_get_window (CTK_WIDGET (stack)),
+    cdk_window_new (ctk_widget_get_window (CTK_WIDGET (stack)),
                     &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->view_window);
 
@@ -373,7 +373,7 @@ ctk_stack_realize (CtkWidget *widget)
     }
 
   priv->bin_window =
-    gdk_window_new (priv->view_window, &attributes, attributes_mask);
+    cdk_window_new (priv->view_window, &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->bin_window);
 
   for (l = priv->children; l != NULL; l = l->next)
@@ -383,7 +383,7 @@ ctk_stack_realize (CtkWidget *widget)
       ctk_widget_set_parent_window (info->widget, priv->bin_window);
     }
 
-  gdk_window_show (priv->bin_window);
+  cdk_window_show (priv->bin_window);
 }
 
 static void
@@ -393,10 +393,10 @@ ctk_stack_unrealize (CtkWidget *widget)
   CtkStackPrivate *priv = ctk_stack_get_instance_private (stack);
 
   ctk_widget_unregister_window (widget, priv->bin_window);
-  gdk_window_destroy (priv->bin_window);
+  cdk_window_destroy (priv->bin_window);
   priv->bin_window = NULL;
   ctk_widget_unregister_window (widget, priv->view_window);
-  gdk_window_destroy (priv->view_window);
+  cdk_window_destroy (priv->view_window);
   priv->view_window = NULL;
 
   CTK_WIDGET_CLASS (ctk_stack_parent_class)->unrealize (widget);
@@ -410,7 +410,7 @@ ctk_stack_map (CtkWidget *widget)
 
   CTK_WIDGET_CLASS (ctk_stack_parent_class)->map (widget);
 
-  gdk_window_show (priv->view_window);
+  cdk_window_show (priv->view_window);
 }
 
 static void
@@ -419,7 +419,7 @@ ctk_stack_unmap (CtkWidget *widget)
   CtkStack *stack = CTK_STACK (widget);
   CtkStackPrivate *priv = ctk_stack_get_instance_private (stack);
 
-  gdk_window_hide (priv->view_window);
+  cdk_window_hide (priv->view_window);
 
   CTK_WIDGET_CLASS (ctk_stack_parent_class)->unmap (widget);
 }
@@ -901,7 +901,7 @@ ctk_stack_progress_updated (CtkStack *stack)
     {
       CtkAllocation allocation;
       ctk_widget_get_allocation (CTK_WIDGET (stack), &allocation);
-      gdk_window_move (priv->bin_window,
+      cdk_window_move (priv->bin_window,
                        get_bin_window_x (stack, &allocation), get_bin_window_y (stack, &allocation));
     }
 
@@ -931,7 +931,7 @@ ctk_stack_transition_cb (CtkWidget     *widget,
 
   if (priv->first_frame_skipped)
     ctk_progress_tracker_advance_frame (&priv->tracker,
-                                        gdk_frame_clock_get_frame_time (frame_clock));
+                                        cdk_frame_clock_get_frame_time (frame_clock));
   else
     priv->first_frame_skipped = TRUE;
 
@@ -1278,8 +1278,8 @@ ctk_stack_add (CtkContainer *container,
   ctk_widget_set_parent (child, CTK_WIDGET (stack));
 
   if (priv->bin_window)
-    gdk_window_set_events (priv->bin_window,
-                           gdk_window_get_events (priv->bin_window) |
+    cdk_window_set_events (priv->bin_window,
+                           cdk_window_get_events (priv->bin_window) |
                            ctk_widget_get_events (child));
 
   g_signal_connect (child, "notify::visible",
@@ -2157,7 +2157,7 @@ ctk_stack_render (CtkCssGadget *gadget,
               ctk_widget_get_allocation (priv->last_visible_child->widget,
                                          &priv->last_visible_surface_allocation);
               priv->last_visible_surface =
-                gdk_window_create_similar_surface (ctk_widget_get_window (widget),
+                cdk_window_create_similar_surface (ctk_widget_get_window (widget),
                                                    CAIRO_CONTENT_COLOR_ALPHA,
                                                    priv->last_visible_surface_allocation.width,
                                                    priv->last_visible_surface_allocation.height);
@@ -2251,10 +2251,10 @@ ctk_stack_allocate (CtkCssGadget        *gadget,
 
   if (ctk_widget_get_realized (widget))
     {
-      gdk_window_move_resize (priv->view_window,
+      cdk_window_move_resize (priv->view_window,
                               allocation->x, allocation->y,
                               allocation->width, allocation->height);
-      gdk_window_move_resize (priv->bin_window,
+      cdk_window_move_resize (priv->bin_window,
                               get_bin_window_x (stack, allocation), get_bin_window_y (stack, allocation),
                               allocation->width, allocation->height);
     }

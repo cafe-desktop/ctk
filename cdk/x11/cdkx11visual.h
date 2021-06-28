@@ -26,17 +26,17 @@
 #define __GDK_X11_VISUAL_H__
 
 #if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkx.h> can be included directly."
+#error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_VISUAL              (gdk_x11_visual_get_type ())
+#define GDK_TYPE_X11_VISUAL              (cdk_x11_visual_get_type ())
 #define GDK_X11_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_VISUAL, GdkX11Visual))
 #define GDK_X11_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_VISUAL, GdkX11VisualClass))
 #define GDK_IS_X11_VISUAL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_VISUAL))
@@ -51,15 +51,15 @@ typedef GdkVisual GdkX11Visual;
 typedef struct _GdkX11VisualClass GdkX11VisualClass;
 
 GDK_AVAILABLE_IN_ALL
-GType    gdk_x11_visual_get_type          (void);
+GType    cdk_x11_visual_get_type          (void);
 
 GDK_AVAILABLE_IN_ALL
-Visual * gdk_x11_visual_get_xvisual       (GdkVisual   *visual);
+Visual * cdk_x11_visual_get_xvisual       (GdkVisual   *visual);
 
-#define GDK_VISUAL_XVISUAL(visual)    (gdk_x11_visual_get_xvisual (visual))
+#define GDK_VISUAL_XVISUAL(visual)    (cdk_x11_visual_get_xvisual (visual))
 
 GDK_AVAILABLE_IN_ALL
-GdkVisual* gdk_x11_screen_lookup_visual (GdkScreen *screen,
+GdkVisual* cdk_x11_screen_lookup_visual (GdkScreen *screen,
                                          VisualID   xvisualid);
 
 G_END_DECLS

@@ -299,7 +299,7 @@ ctk_gl_area_realize (CtkWidget *widget)
 
   attributes_mask = GDK_WA_X | GDK_WA_Y;
 
-  priv->event_window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                        &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->event_window);
 
@@ -340,7 +340,7 @@ ctk_gl_area_real_create_context (CtkGLArea *area)
   GError *error = NULL;
   GdkGLContext *context;
 
-  context = gdk_window_create_gl_context (ctk_widget_get_window (widget), &error);
+  context = cdk_window_create_gl_context (ctk_widget_get_window (widget), &error);
   if (error != NULL)
     {
       ctk_gl_area_set_error (area, error);
@@ -349,12 +349,12 @@ ctk_gl_area_real_create_context (CtkGLArea *area)
       return NULL;
     }
 
-  gdk_gl_context_set_use_es (context, priv->use_es);
-  gdk_gl_context_set_required_version (context,
+  cdk_gl_context_set_use_es (context, priv->use_es);
+  cdk_gl_context_set_required_version (context,
                                        priv->required_gl_version / 10,
                                        priv->required_gl_version % 10);
 
-  gdk_gl_context_realize (context, &error);
+  cdk_gl_context_realize (context, &error);
   if (error != NULL)
     {
       ctk_gl_area_set_error (area, error);
@@ -460,7 +460,7 @@ ctk_gl_area_allocate_buffers (CtkGLArea *area)
       glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
       glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-      if (gdk_gl_context_get_use_es (priv->context))
+      if (cdk_gl_context_get_use_es (priv->context))
         glTexImage2D (GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
       else
         glTexImage2D (GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_BGRA, GL_UNSIGNED_BYTE, NULL);
@@ -586,8 +586,8 @@ ctk_gl_area_unrealize (CtkWidget *widget)
         }
 
       /* Make sure to unset the context if current */
-      if (priv->context == gdk_gl_context_get_current ())
-        gdk_gl_context_clear_current ();
+      if (priv->context == cdk_gl_context_get_current ())
+        cdk_gl_context_clear_current ();
     }
 
   g_clear_object (&priv->context);
@@ -596,7 +596,7 @@ ctk_gl_area_unrealize (CtkWidget *widget)
   if (priv->event_window != NULL)
     {
       ctk_widget_unregister_window (widget, priv->event_window);
-      gdk_window_destroy (priv->event_window);
+      cdk_window_destroy (priv->event_window);
       priv->event_window = NULL;
     }
 
@@ -610,7 +610,7 @@ ctk_gl_area_map (CtkWidget *widget)
   CtkGLAreaPrivate *priv = ctk_gl_area_get_instance_private (area);
 
   if (priv->event_window != NULL)
-    gdk_window_show (priv->event_window);
+    cdk_window_show (priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_gl_area_parent_class)->map (widget);
 }
@@ -622,7 +622,7 @@ ctk_gl_area_unmap (CtkWidget *widget)
   CtkGLAreaPrivate *priv = ctk_gl_area_get_instance_private (area);
 
   if (priv->event_window != NULL)
-    gdk_window_hide (priv->event_window);
+    cdk_window_hide (priv->event_window);
 
   CTK_WIDGET_CLASS (ctk_gl_area_parent_class)->unmap (widget);
 }
@@ -639,7 +639,7 @@ ctk_gl_area_size_allocate (CtkWidget     *widget,
   if (ctk_widget_get_realized (widget))
     {
       if (priv->event_window != NULL)
-        gdk_window_move_resize (priv->event_window,
+        cdk_window_move_resize (priv->event_window,
                                 allocation->x,
                                 allocation->y,
                                 allocation->width,
@@ -723,7 +723,7 @@ ctk_gl_area_draw (CtkWidget *widget,
 
       priv->needs_render = FALSE;
 
-      gdk_cairo_draw_from_gl (cr,
+      cdk_cairo_draw_from_gl (cr,
                               ctk_widget_get_window (widget),
                               priv->texture ? priv->texture : priv->render_buffer,
                               priv->texture ? GL_TEXTURE : GL_RENDERBUFFER,
@@ -872,7 +872,7 @@ ctk_gl_area_class_init (CtkGLAreaClass *klass)
    * If set to %TRUE the widget will try to create a #GdkGLContext using
    * OpenGL ES instead of OpenGL.
    *
-   * See also: gdk_gl_context_set_use_es()
+   * See also: cdk_gl_context_set_use_es()
    *
    * Since: 3.22
    */
@@ -1447,5 +1447,5 @@ ctk_gl_area_make_current (CtkGLArea *area)
   g_return_if_fail (ctk_widget_get_realized (widget));
 
   if (priv->context != NULL)
-    gdk_gl_context_make_current (priv->context);
+    cdk_gl_context_make_current (priv->context);
 }

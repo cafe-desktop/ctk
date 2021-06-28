@@ -2305,7 +2305,7 @@ function getKeysym(ev) {
     keysym = getEventKeySym(ev);
 
     if ((keysym > 255) && (keysym < 0xFF00)) {
-	// Map Unicode outside Latin 1 to gdk keysyms
+	// Map Unicode outside Latin 1 to cdk keysyms
 	keysym = unicodeTable[keysym];
 	if (typeof keysym === 'undefined')
 	    keysym = 0;

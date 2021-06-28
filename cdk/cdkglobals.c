@@ -24,15 +24,15 @@
 
 #include "config.h"
 
-#include "gdktypes.h"
-#include "gdkinternals.h"
+#include "cdktypes.h"
+#include "cdkinternals.h"
 
 #include <stdio.h>
 
-guint               _gdk_debug_flags = 0;
-GList              *_gdk_default_filters = NULL;
-gchar              *_gdk_display_name = NULL;
-gchar              *_gdk_display_arg_name = NULL;
-gboolean            _gdk_disable_multidevice = FALSE;
-guint               _gdk_gl_flags = 0;
-GdkRenderingMode    _gdk_rendering_mode = GDK_RENDERING_MODE_SIMILAR;
+guint               _cdk_debug_flags = 0;
+GList              *_cdk_default_filters = NULL;
+gchar              *_cdk_display_name = NULL;
+gchar              *_cdk_display_arg_name = NULL;
+gboolean            _cdk_disable_multidevice = FALSE;
+guint               _cdk_gl_flags = 0;
+GdkRenderingMode    _cdk_rendering_mode = GDK_RENDERING_MODE_SIMILAR;

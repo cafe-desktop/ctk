@@ -27,7 +27,7 @@
 
 #define __CTK_H_INSIDE__
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctkaboutdialog.h>
 #include <ctk/ctkaccelgroup.h>
 #include <ctk/ctkaccellabel.h>

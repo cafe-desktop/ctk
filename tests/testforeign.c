@@ -1,5 +1,5 @@
 #include <ctk/ctk.h>
-#include <gdk/wayland/gdkwayland.h>
+#include <cdk/wayland/cdkwayland.h>
 
 static CtkWidget *window;
 static CtkWidget *label;
@@ -43,7 +43,7 @@ static void
 export_callback (CtkWidget *widget,
                  gpointer   data)
 {
-  if (!gdk_wayland_window_export_handle (ctk_widget_get_window (window),
+  if (!cdk_wayland_window_export_handle (ctk_widget_get_window (window),
                                          exported_callback,
                                          g_strdup ("user_data"), g_free))
     g_error ("Failed to export window");
@@ -55,7 +55,7 @@ static void
 unexport_callback (CtkWidget *widget,
                    gpointer   data)
 {
-  gdk_wayland_window_unexport_handle (ctk_widget_get_window (window));
+  cdk_wayland_window_unexport_handle (ctk_widget_get_window (window));
 
   export_count--;
   if (export_count == 0)

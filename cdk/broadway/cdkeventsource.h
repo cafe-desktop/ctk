@@ -18,14 +18,14 @@
 #ifndef __GDK_BROADWAY_EVENT_SOURCE_H__
 #define __GDK_BROADWAY_EVENT_SOURCE_H__
 
-#include "gdkprivate-broadway.h"
+#include "cdkprivate-broadway.h"
 
 G_BEGIN_DECLS
 
 typedef struct _GdkEventSource GdkEventSource;
 
 G_GNUC_INTERNAL
-GSource * _gdk_broadway_event_source_new            (GdkDisplay *display);
+GSource * _cdk_broadway_event_source_new            (GdkDisplay *display);
 
 G_END_DECLS
 

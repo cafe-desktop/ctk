@@ -1,5 +1,5 @@
 
-/* gdkquartz.h
+/* cdkquartz.h
  *
  * Copyright (C) 2005-2007 Imendio AB
  *
@@ -20,8 +20,8 @@
 #ifndef __GDK_QUARTZ_H__
 #define __GDK_QUARTZ_H__
 
-#include <gdk/gdk.h>
-#include <gdk/gdkprivate.h>
+#include <cdk/cdk.h>
+#include <cdk/cdkprivate.h>
 
 G_BEGIN_DECLS
 
@@ -47,23 +47,23 @@ typedef enum
 } GdkOSXVersion;
 
 GDK_AVAILABLE_IN_ALL
-GdkOSXVersion gdk_quartz_osx_version (void);
+GdkOSXVersion cdk_quartz_osx_version (void);
 
 G_END_DECLS
 
 #define __GDKQUARTZ_H_INSIDE__
 
-#include <gdk/quartz/gdkquartzcursor.h>
-#include <gdk/quartz/gdkquartzdevice-core.h>
-#include <gdk/quartz/gdkquartzdevicemanager-core.h>
-#include <gdk/quartz/gdkquartzdisplay.h>
-#include <gdk/quartz/gdkquartzdisplaymanager.h>
-#include <gdk/quartz/gdkquartzkeys.h>
-#include <gdk/quartz/gdkquartzmonitor.h>
-#include <gdk/quartz/gdkquartzscreen.h>
-#include <gdk/quartz/gdkquartzutils.h>
-#include <gdk/quartz/gdkquartzvisual.h>
-#include <gdk/quartz/gdkquartzwindow.h>
+#include <cdk/quartz/cdkquartzcursor.h>
+#include <cdk/quartz/cdkquartzdevice-core.h>
+#include <cdk/quartz/cdkquartzdevicemanager-core.h>
+#include <cdk/quartz/cdkquartzdisplay.h>
+#include <cdk/quartz/cdkquartzdisplaymanager.h>
+#include <cdk/quartz/cdkquartzkeys.h>
+#include <cdk/quartz/cdkquartzmonitor.h>
+#include <cdk/quartz/cdkquartzscreen.h>
+#include <cdk/quartz/cdkquartzutils.h>
+#include <cdk/quartz/cdkquartzvisual.h>
+#include <cdk/quartz/cdkquartzwindow.h>
 
 #undef __GDKQUARTZ_H_INSIDE__
 

@@ -25,8 +25,8 @@
 #ifndef __GDK_WINDOW_X11_H__
 #define __GDK_WINDOW_X11_H__
 
-#include "gdk/x11/gdkprivate-x11.h"
-#include "gdk/gdkwindowimpl.h"
+#include "cdk/x11/cdkprivate-x11.h"
+#include "cdk/cdkwindowimpl.h"
 
 #include <X11/Xlib.h>
 
@@ -49,7 +49,7 @@ typedef struct _GdkXPositionInfo GdkXPositionInfo;
 /* Window implementation for X11
  */
 
-#define GDK_TYPE_WINDOW_IMPL_X11              (gdk_window_impl_x11_get_type ())
+#define GDK_TYPE_WINDOW_IMPL_X11              (cdk_window_impl_x11_get_type ())
 #define GDK_WINDOW_IMPL_X11(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL_X11, GdkWindowImplX11))
 #define GDK_WINDOW_IMPL_X11_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL_X11, GdkWindowImplX11Class))
 #define GDK_IS_WINDOW_IMPL_X11(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL_X11))
@@ -185,25 +185,25 @@ struct _GdkToplevelX11
 #endif
 };
 
-GType gdk_window_impl_x11_get_type (void);
+GType cdk_window_impl_x11_get_type (void);
 
-void            gdk_x11_window_set_user_time        (GdkWindow *window,
+void            cdk_x11_window_set_user_time        (GdkWindow *window,
 						     guint32    timestamp);
-void            gdk_x11_window_set_frame_sync_enabled (GdkWindow *window,
+void            cdk_x11_window_set_frame_sync_enabled (GdkWindow *window,
                                                        gboolean   frame_sync_enabled);
 
-GdkToplevelX11 *_gdk_x11_window_get_toplevel        (GdkWindow *window);
-void            _gdk_x11_window_tmp_unset_bg        (GdkWindow *window,
+GdkToplevelX11 *_cdk_x11_window_get_toplevel        (GdkWindow *window);
+void            _cdk_x11_window_tmp_unset_bg        (GdkWindow *window,
 						     gboolean   recurse);
-void            _gdk_x11_window_tmp_reset_bg        (GdkWindow *window,
+void            _cdk_x11_window_tmp_reset_bg        (GdkWindow *window,
 						     gboolean   recurse);
-void            _gdk_x11_window_tmp_unset_parent_bg (GdkWindow *window);
-void            _gdk_x11_window_tmp_reset_parent_bg (GdkWindow *window);
+void            _cdk_x11_window_tmp_unset_parent_bg (GdkWindow *window);
+void            _cdk_x11_window_tmp_reset_parent_bg (GdkWindow *window);
 
-GdkCursor      *_gdk_x11_window_get_cursor          (GdkWindow *window);
+GdkCursor      *_cdk_x11_window_get_cursor          (GdkWindow *window);
 
-void            _gdk_x11_window_update_size         (GdkWindowImplX11 *impl);
-void            _gdk_x11_window_set_window_scale    (GdkWindow *window,
+void            _cdk_x11_window_update_size         (GdkWindowImplX11 *impl);
+void            _cdk_x11_window_set_window_scale    (GdkWindow *window,
 						     int        scale);
 
 G_END_DECLS

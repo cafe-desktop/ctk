@@ -1,4 +1,4 @@
-/* gdkbroadwaydisplaymanager.h
+/* cdkbroadwaydisplaymanager.h
  *
  * Copyright (C) 2005-2007  Imendio AB
  * Copyright 2010 Red Hat, Inc.
@@ -21,14 +21,14 @@
 #define __GDK_BROADWAY_DISPLAY_MANAGER_H__
 
 #if !defined(__GDKBROADWAY_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkbroadway.h> can be included directly."
+#error "Only <cdk/cdkbroadway.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_BROADWAY_DISPLAY_MANAGER    (gdk_broadway_display_manager_get_type ())
+#define GDK_TYPE_BROADWAY_DISPLAY_MANAGER    (cdk_broadway_display_manager_get_type ())
 #define GDK_BROADWAY_DISPLAY_MANAGER(object) (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_DISPLAY_MANAGER, GdkBroadwayDisplayManager))
 
 #ifdef GDK_COMPILATION
@@ -39,7 +39,7 @@ typedef GdkDisplayManager _GdkBroadwayDisplayManager;
 typedef struct _GdkDisplayManagerClass GdkBroadwayDisplayManagerClass;
 
 GDK_AVAILABLE_IN_ALL
-GType gdk_broadway_display_manager_get_type (void);
+GType cdk_broadway_display_manager_get_type (void);
 
 G_END_DECLS
 

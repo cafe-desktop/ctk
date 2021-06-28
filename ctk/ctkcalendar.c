@@ -1571,7 +1571,7 @@ calendar_realize_arrows (CtkCalendar *calendar)
           attributes.y = allocation.y + rect.y;
           attributes.width = rect.width;
           attributes.height = rect.height;
-          priv->arrow_win[i] = gdk_window_new (ctk_widget_get_window (widget),
+          priv->arrow_win[i] = cdk_window_new (ctk_widget_get_window (widget),
                                                &attributes,
                                                attributes_mask);
 
@@ -1597,7 +1597,7 @@ calendar_unrealize_arrows (CtkCalendar *calendar)
       if (priv->arrow_win[i])
         {
           ctk_widget_unregister_window (CTK_WIDGET (calendar), priv->arrow_win[i]);
-          gdk_window_destroy (priv->arrow_win[i]);
+          cdk_window_destroy (priv->arrow_win[i]);
           priv->arrow_win[i] = NULL;
         }
     }
@@ -1681,7 +1681,7 @@ ctk_calendar_realize (CtkWidget *widget)
   attributes.x += allocation.x;
   attributes.y += allocation.y;
 
-  priv->main_win = gdk_window_new (ctk_widget_get_window (widget),
+  priv->main_win = cdk_window_new (ctk_widget_get_window (widget),
                                    &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->main_win);
 
@@ -1698,7 +1698,7 @@ ctk_calendar_unrealize (CtkWidget *widget)
   if (priv->main_win)
     {
       ctk_widget_unregister_window (widget, priv->main_win);
-      gdk_window_destroy (priv->main_win);
+      cdk_window_destroy (priv->main_win);
       priv->main_win = NULL;
     }
 
@@ -1714,7 +1714,7 @@ calendar_map_arrows (CtkCalendar *calendar)
   for (i = 0; i < 4; i++)
     {
       if (priv->arrow_win[i])
-        gdk_window_show (priv->arrow_win[i]);
+        cdk_window_show (priv->arrow_win[i]);
     }
 }
 
@@ -1727,7 +1727,7 @@ calendar_unmap_arrows (CtkCalendar *calendar)
   for (i = 0; i < 4; i++)
     {
       if (priv->arrow_win[i])
-        gdk_window_hide (priv->arrow_win[i]);
+        cdk_window_hide (priv->arrow_win[i]);
     }
 }
 
@@ -1738,7 +1738,7 @@ ctk_calendar_map (CtkWidget *widget)
 
   CTK_WIDGET_CLASS (ctk_calendar_parent_class)->map (widget);
 
-  gdk_window_show (priv->main_win);
+  cdk_window_show (priv->main_win);
 
   calendar_map_arrows (CTK_CALENDAR (widget));
 }
@@ -1750,7 +1750,7 @@ ctk_calendar_unmap (CtkWidget *widget)
 
   calendar_unmap_arrows (CTK_CALENDAR (widget));
 
-  gdk_window_hide (priv->main_win);
+  cdk_window_hide (priv->main_win);
 
   CTK_WIDGET_CLASS (ctk_calendar_parent_class)->unmap (widget);
 }
@@ -2133,7 +2133,7 @@ ctk_calendar_size_allocate (CtkWidget     *widget,
   if (ctk_widget_get_realized (widget))
     {
       if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_LTR)
-        gdk_window_move_resize (priv->main_win,
+        cdk_window_move_resize (priv->main_win,
                                 allocation->x
                                  + priv->week_width + padding.left + inner_border,
                                 allocation->y
@@ -2143,7 +2143,7 @@ ctk_calendar_size_allocate (CtkWidget     *widget,
                                 - (inner_border * 2) - padding.left - padding.right,
                                 priv->main_h);
       else
-        gdk_window_move_resize (priv->main_win,
+        cdk_window_move_resize (priv->main_win,
                                 allocation->x
                                  + padding.left + inner_border,
                                 allocation->y
@@ -2160,7 +2160,7 @@ ctk_calendar_size_allocate (CtkWidget     *widget,
               GdkRectangle rect;
               calendar_arrow_rectangle (calendar, i, &rect);
 
-              gdk_window_move_resize (priv->arrow_win[i],
+              cdk_window_move_resize (priv->arrow_win[i],
                                       allocation->x + rect.x,
                                       allocation->y + rect.y,
                                       rect.width, rect.height);
@@ -2633,7 +2633,7 @@ calendar_paint_day (CtkCalendar *calendar,
       cairo_save (cr);
 
       ctk_style_context_get_color (context, state, &color);
-      gdk_cairo_set_source_rgba (cr, &color);
+      cdk_cairo_set_source_rgba (cr, &color);
 
       cairo_set_line_width (cr, 1);
       cairo_move_to (cr, day_rect.x + 2, y_loc + 0.5);
@@ -2866,7 +2866,7 @@ calendar_timer (gpointer data)
       if (priv->need_timer)
         {
           priv->need_timer = FALSE;
-          priv->timer = gdk_threads_add_timeout_full (G_PRIORITY_DEFAULT_IDLE,
+          priv->timer = cdk_threads_add_timeout_full (G_PRIORITY_DEFAULT_IDLE,
                                             TIMEOUT_REPEAT * SCROLL_DELAY_FACTOR,
                                             (GSourceFunc) calendar_timer,
                                             (gpointer) calendar, NULL);
@@ -2890,7 +2890,7 @@ calendar_start_spinning (CtkCalendar *calendar,
   if (!priv->timer)
     {
       priv->need_timer = TRUE;
-      priv->timer = gdk_threads_add_timeout_full (G_PRIORITY_DEFAULT_IDLE,
+      priv->timer = cdk_threads_add_timeout_full (G_PRIORITY_DEFAULT_IDLE,
                                         TIMEOUT_INITIAL,
                                         (GSourceFunc) calendar_timer,
                                         (gpointer) calendar, NULL);
@@ -2927,7 +2927,7 @@ calendar_main_button_press (CtkCalendar    *calendar,
   x = (gint) (event->x);
   y = (gint) (event->y);
 
-  gdk_window_get_position (priv->main_win, &win_x, &win_y);
+  cdk_window_get_position (priv->main_win, &win_x, &win_y);
   ctk_widget_get_allocation (widget, &allocation);
 
   row = calendar_row_from_y (calendar, y + win_y - allocation.y);
@@ -3403,11 +3403,11 @@ ctk_calendar_drag_motion (CtkWidget      *widget,
     }
 
   target = ctk_drag_dest_find_target (widget, context, NULL);
-  if (target == GDK_NONE || gdk_drag_context_get_suggested_action (context) == 0)
-    gdk_drag_status (context, 0, time);
+  if (target == GDK_NONE || cdk_drag_context_get_suggested_action (context) == 0)
+    cdk_drag_status (context, 0, time);
   else
     {
-      set_status_pending (context, gdk_drag_context_get_suggested_action (context));
+      set_status_pending (context, cdk_drag_context_get_suggested_action (context));
       ctk_drag_get_data (widget, context, target, time);
     }
 
@@ -3476,7 +3476,7 @@ ctk_calendar_drag_data_received (CtkWidget        *widget,
       else
         suggested_action = 0;
 
-      gdk_drag_status (context, suggested_action, time);
+      cdk_drag_status (context, suggested_action, time);
 
       return;
     }

@@ -1,14 +1,14 @@
 include $(top_srcdir)/Makefile.decl
 
 GENERATED_ITEMS = \
-	gdk3-win32.vcxproj			\
-	gdk3-win32.vcxproj.filters		\
-	gdk3-broadway.vcxproj			\
-	gdk3-broadway.vcxproj.filters		\
+	cdk3-win32.vcxproj			\
+	cdk3-win32.vcxproj.filters		\
+	cdk3-broadway.vcxproj			\
+	cdk3-broadway.vcxproj.filters		\
 	broadwayd.vcxproj			\
 	broadwayd.vcxproj.filters		\
-	gdk-3.vcxproj				\
-	gdk-3.vcxproj.filters			\
+	cdk-3.vcxproj				\
+	cdk-3.vcxproj.filters			\
 	ctk-3.vcxproj				\
 	ctk-3.vcxproj.filters			\
 	ctk3-demo.vcxproj			\
@@ -23,9 +23,9 @@ GENERATED_ITEMS = \
 	ctk3-version-paths.props
 
 MSVC10_HEADERS_LISTS =	\
-	gdk3-win32.vs10.headers		\
-	gdk3-broadway.vs10.headers	\
-	gdk-3.vs10.headers		\
+	cdk3-win32.vs10.headers		\
+	cdk3-broadway.vs10.headers	\
+	cdk-3.vs10.headers		\
 	ctk-3.vs10.headers		\
 	gailutil-3.vs10.headers
 
@@ -33,14 +33,14 @@ EXTRA_DIST += \
 	README.txt				\
 	ctk+.sln				\
 	ctk3-prebuild.vcxproj			\
-	gdk3-win32.vcxprojin			\
-	gdk3-win32.vcxproj.filtersin		\
-	gdk3-broadway.vcxprojin			\
-	gdk3-broadway.vcxproj.filtersin		\
+	cdk3-win32.vcxprojin			\
+	cdk3-win32.vcxproj.filtersin		\
+	cdk3-broadway.vcxprojin			\
+	cdk3-broadway.vcxproj.filtersin		\
 	broadwayd.vcxprojin			\
 	broadwayd.vcxproj.filtersin		\
-	gdk-3.vcxprojin				\
-	gdk-3.vcxproj.filtersin			\
+	cdk-3.vcxprojin				\
+	cdk-3.vcxproj.filtersin			\
 	ctk-3.vcxprojin				\
 	ctk-3.vcxproj.filtersin			\
 	ctk-builder-tool.vcxproj		\
@@ -63,7 +63,7 @@ EXTRA_DIST += \
 	ctk3-install.vcxproj.filters		\
 	ctk3-introspect.vcxproj			\
 	ctk3-build-defines.props		\
-	ctk3-copy-gdk-broadway.props		\
+	ctk3-copy-cdk-broadway.props		\
 	ctk3-gen-srcs.props			\
 	ctk3-ignore-broadway.props		\
 	ctk3-install.propsin			\

@@ -1,4 +1,4 @@
-/* gdkkeys-quartz.h
+/* cdkkeys-quartz.h
  *
  * Copyright (C) 2005-2007 Imendio AB
  *

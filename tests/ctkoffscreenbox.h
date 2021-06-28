@@ -2,7 +2,7 @@
 #define __CTK_OFFSCREEN_BOX_H__
 
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 #include <ctk/ctk.h>
 
 

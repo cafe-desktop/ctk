@@ -861,7 +861,7 @@ clone_image_menu_size (CtkImage *image)
 	  CtkWidget *cloned_image;
 
 	  src_pixbuf = ctk_image_get_pixbuf (image);
-	  dest_pixbuf = gdk_pixbuf_scale_simple (src_pixbuf, width, height,
+	  dest_pixbuf = cdk_pixbuf_scale_simple (src_pixbuf, width, height,
 						 GDK_INTERP_BILINEAR);
 
 	  cloned_image = ctk_image_new_from_pixbuf (dest_pixbuf);

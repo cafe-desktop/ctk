@@ -219,8 +219,8 @@ ctk_tool_palette_init (CtkToolPalette *palette)
 
   if (dnd_target_atom_item == GDK_NONE)
     {
-      dnd_target_atom_item = gdk_atom_intern_static_string (dnd_targets[0].target);
-      dnd_target_atom_group = gdk_atom_intern_static_string (dnd_targets[1].target);
+      dnd_target_atom_item = cdk_atom_intern_static_string (dnd_targets[0].target);
+      dnd_target_atom_group = cdk_atom_intern_static_string (dnd_targets[1].target);
     }
 }
 
@@ -739,7 +739,7 @@ ctk_tool_palette_realize (CtkWidget *widget)
                          | GDK_TOUCH_MASK;
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);

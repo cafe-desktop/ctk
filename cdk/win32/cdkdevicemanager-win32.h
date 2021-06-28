@@ -18,11 +18,11 @@
 #ifndef __GDK_DEVICE_MANAGER_WIN32_H__
 #define __GDK_DEVICE_MANAGER_WIN32_H__
 
-#include <gdk/gdkdevicemanagerprivate.h>
+#include <cdk/cdkdevicemanagerprivate.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DEVICE_MANAGER_WIN32         (gdk_device_manager_win32_get_type ())
+#define GDK_TYPE_DEVICE_MANAGER_WIN32         (cdk_device_manager_win32_get_type ())
 #define GDK_DEVICE_MANAGER_WIN32(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_MANAGER_WIN32, GdkDeviceManagerWin32))
 #define GDK_DEVICE_MANAGER_WIN32_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_MANAGER_WIN32, GdkDeviceManagerWin32Class))
 #define GDK_IS_DEVICE_MANAGER_WIN32(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_MANAGER_WIN32))
@@ -55,10 +55,10 @@ struct _GdkDeviceManagerWin32Class
   GdkDeviceManagerClass parent_class;
 };
 
-GType gdk_device_manager_win32_get_type (void) G_GNUC_CONST;
+GType cdk_device_manager_win32_get_type (void) G_GNUC_CONST;
 
-void     _gdk_input_set_tablet_active (void);
-gboolean gdk_input_other_event        (GdkDisplay *display,
+void     _cdk_input_set_tablet_active (void);
+gboolean cdk_input_other_event        (GdkDisplay *display,
                                        GdkEvent   *event,
                                        MSG        *msg,
                                        GdkWindow  *window);

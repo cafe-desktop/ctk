@@ -1,6 +1,6 @@
 /* GDK - The GIMP Drawing Kit
  *
- * gdkglcontext-x11.h: Private X11 specific OpenGL wrappers
+ * cdkglcontext-x11.h: Private X11 specific OpenGL wrappers
  * 
  * Copyright © 2014  Emmanuele Bassi
  *
@@ -27,12 +27,12 @@
 #include <epoxy/gl.h>
 #include <epoxy/glx.h>
 
-#include "gdkglcontextprivate.h"
-#include "gdkdisplayprivate.h"
-#include "gdkvisual.h"
-#include "gdkwindow.h"
-#include "gdkinternals.h"
-#include "gdkmain.h"
+#include "cdkglcontextprivate.h"
+#include "cdkdisplayprivate.h"
+#include "cdkvisual.h"
+#include "cdkwindow.h"
+#include "cdkinternals.h"
+#include "cdkmain.h"
 
 G_BEGIN_DECLS
 
@@ -56,14 +56,14 @@ struct _GdkX11GLContextClass
   GdkGLContextClass parent_class;
 };
 
-gboolean        gdk_x11_screen_init_gl                          (GdkScreen         *screen);
-GdkGLContext *  gdk_x11_window_create_gl_context                (GdkWindow         *window,
+gboolean        cdk_x11_screen_init_gl                          (GdkScreen         *screen);
+GdkGLContext *  cdk_x11_window_create_gl_context                (GdkWindow         *window,
 								 gboolean           attached,
                                                                  GdkGLContext      *share,
                                                                  GError           **error);
-void            gdk_x11_window_invalidate_for_new_frame         (GdkWindow         *window,
+void            cdk_x11_window_invalidate_for_new_frame         (GdkWindow         *window,
                                                                  cairo_region_t    *update_area);
-gboolean        gdk_x11_display_make_gl_context_current         (GdkDisplay        *display,
+gboolean        cdk_x11_display_make_gl_context_current         (GdkDisplay        *display,
                                                                  GdkGLContext      *context);
 
 G_END_DECLS

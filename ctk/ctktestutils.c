@@ -90,11 +90,11 @@ ctk_test_init (int    *argcp,
   g_test_bug_base ("http://bugzilla.gnome.org/show_bug.cgi?id=%s");
 
   /* XSendEvent() doesn't work yet on XI2 events.
-   * So at the moment gdk_test_simulate_* can only
+   * So at the moment cdk_test_simulate_* can only
    * send events that CTK+ understands if XI2 is
    * disabled, bummer.
    */
-  gdk_disable_multidevice ();
+  cdk_disable_multidevice ();
 
   ctk_init (argcp, argvp);
 }
@@ -110,14 +110,14 @@ test_find_widget_input_windows (CtkWidget *widget,
 
   window = ctk_widget_get_window (widget);
 
-  gdk_window_get_user_data (window, &udata);
-  if (udata == widget && (!input_only || (GDK_IS_WINDOW (window) && gdk_window_is_input_only (GDK_WINDOW (window)))))
+  cdk_window_get_user_data (window, &udata);
+  if (udata == widget && (!input_only || (GDK_IS_WINDOW (window) && cdk_window_is_input_only (GDK_WINDOW (window)))))
     matches = g_slist_prepend (matches, window);
-  children = gdk_window_get_children (ctk_widget_get_parent_window (widget));
+  children = cdk_window_get_children (ctk_widget_get_parent_window (widget));
   for (node = children; node; node = node->next)
     {
-      gdk_window_get_user_data (node->data, &udata);
-      if (udata == widget && (!input_only || (GDK_IS_WINDOW (node->data) && gdk_window_is_input_only (GDK_WINDOW (node->data)))))
+      cdk_window_get_user_data (node->data, &udata);
+      if (udata == widget && (!input_only || (GDK_IS_WINDOW (node->data) && cdk_window_is_input_only (GDK_WINDOW (node->data)))))
         matches = g_slist_prepend (matches, node->data);
     }
   return g_slist_reverse (matches);
@@ -177,7 +177,7 @@ ctk_test_widget_wait_for_draw (CtkWidget *widget)
  * input-only event window. For other widgets, this is usually widget->window.
  * Certain caveats should be considered when using this function, in
  * particular because the mouse pointer is warped to the key press
- * location, see gdk_test_simulate_key() for details.
+ * location, see cdk_test_simulate_key() for details.
  *
  * Returns: whether all actions neccessary for the key event simulation were carried out successfully.
  *
@@ -194,8 +194,8 @@ ctk_test_widget_send_key (CtkWidget      *widget,
     iwindows = test_find_widget_input_windows (widget, TRUE);
   if (!iwindows)
     return FALSE;
-  k1res = gdk_test_simulate_key (iwindows->data, -1, -1, keyval, modifiers, GDK_KEY_PRESS);
-  k2res = gdk_test_simulate_key (iwindows->data, -1, -1, keyval, modifiers, GDK_KEY_RELEASE);
+  k1res = cdk_test_simulate_key (iwindows->data, -1, -1, keyval, modifiers, GDK_KEY_PRESS);
+  k2res = cdk_test_simulate_key (iwindows->data, -1, -1, keyval, modifiers, GDK_KEY_RELEASE);
   g_slist_free (iwindows);
   return k1res && k2res;
 }
@@ -214,7 +214,7 @@ ctk_test_widget_send_key (CtkWidget      *widget,
  * input-only event window. For other widgets, this is usually widget->window.
  * Certain caveats should be considered when using this function, in
  * particular because the mouse pointer is warped to the button click
- * location, see gdk_test_simulate_button() for details.
+ * location, see cdk_test_simulate_button() for details.
  *
  * Returns: whether all actions neccessary for the button click simulation were carried out successfully.
  *
@@ -233,8 +233,8 @@ ctk_test_widget_click (CtkWidget      *widget,
     iwindows = test_find_widget_input_windows (widget, TRUE);
   if (!iwindows)
     return FALSE;
-  b1res = gdk_test_simulate_button (iwindows->data, -1, -1, button, modifiers, GDK_BUTTON_PRESS);
-  b2res = gdk_test_simulate_button (iwindows->data, -1, -1, button, modifiers, GDK_BUTTON_RELEASE);
+  b1res = cdk_test_simulate_button (iwindows->data, -1, -1, button, modifiers, GDK_BUTTON_PRESS);
+  b2res = cdk_test_simulate_button (iwindows->data, -1, -1, button, modifiers, GDK_BUTTON_RELEASE);
   g_slist_free (iwindows);
   return b1res && b2res;
 }
@@ -269,9 +269,9 @@ ctk_test_spin_button_click (CtkSpinButton  *spinner,
 
   if (panel)
     {
-      gint width = gdk_window_get_width (panel);
-      b1res = gdk_test_simulate_button (panel, width - 1, 1, button, 0, GDK_BUTTON_PRESS);
-      b2res = gdk_test_simulate_button (panel, width - 1, 1, button, 0, GDK_BUTTON_RELEASE);
+      gint width = cdk_window_get_width (panel);
+      b1res = cdk_test_simulate_button (panel, width - 1, 1, button, 0, GDK_BUTTON_PRESS);
+      b2res = cdk_test_simulate_button (panel, width - 1, 1, button, 0, GDK_BUTTON_RELEASE);
     }
   return b1res && b2res;
 }

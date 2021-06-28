@@ -26,10 +26,10 @@
 #define __GDK_X11_PROPERTY_H__
 
 #if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkx.h> can be included directly."
+#error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -38,25 +38,25 @@ G_BEGIN_DECLS
 
 /* Functions to get the X Atom equivalent to the GdkAtom */
 GDK_AVAILABLE_IN_ALL
-Atom                  gdk_x11_atom_to_xatom_for_display (GdkDisplay  *display,
+Atom                  cdk_x11_atom_to_xatom_for_display (GdkDisplay  *display,
                                                          GdkAtom      atom);
 GDK_AVAILABLE_IN_ALL
-GdkAtom               gdk_x11_xatom_to_atom_for_display (GdkDisplay  *display,
+GdkAtom               cdk_x11_xatom_to_atom_for_display (GdkDisplay  *display,
                                                          Atom         xatom);
 GDK_AVAILABLE_IN_ALL
-Atom                  gdk_x11_get_xatom_by_name_for_display (GdkDisplay  *display,
+Atom                  cdk_x11_get_xatom_by_name_for_display (GdkDisplay  *display,
                                                              const gchar *atom_name);
 GDK_AVAILABLE_IN_ALL
-const gchar *         gdk_x11_get_xatom_name_for_display (GdkDisplay  *display,
+const gchar *         cdk_x11_get_xatom_name_for_display (GdkDisplay  *display,
                                                           Atom         xatom);
 GDK_AVAILABLE_IN_ALL
-Atom                  gdk_x11_atom_to_xatom     (GdkAtom      atom);
+Atom                  cdk_x11_atom_to_xatom     (GdkAtom      atom);
 GDK_AVAILABLE_IN_ALL
-GdkAtom               gdk_x11_xatom_to_atom     (Atom         xatom);
+GdkAtom               cdk_x11_xatom_to_atom     (Atom         xatom);
 GDK_AVAILABLE_IN_ALL
-Atom                  gdk_x11_get_xatom_by_name (const gchar *atom_name);
+Atom                  cdk_x11_get_xatom_by_name (const gchar *atom_name);
 GDK_AVAILABLE_IN_ALL
-const gchar *         gdk_x11_get_xatom_name    (Atom         xatom);
+const gchar *         cdk_x11_get_xatom_name    (Atom         xatom);
 
 G_END_DECLS
 

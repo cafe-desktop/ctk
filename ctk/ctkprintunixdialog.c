@@ -593,12 +593,12 @@ set_busy_cursor (CtkPrintUnixDialog *dialog,
   display = ctk_widget_get_display (widget);
 
   if (busy)
-    cursor = gdk_cursor_new_from_name (display, "progress");
+    cursor = cdk_cursor_new_from_name (display, "progress");
   else
     cursor = NULL;
 
-  gdk_window_set_cursor (ctk_widget_get_window (widget), cursor);
-  gdk_display_flush (display);
+  cdk_window_set_cursor (ctk_widget_get_window (widget), cursor);
+  cdk_display_flush (display);
 
   if (cursor)
     g_object_unref (cursor);
@@ -1945,7 +1945,7 @@ schedule_idle_mark_conflicts (CtkPrintUnixDialog *dialog)
   if (priv->mark_conflicts_id != 0)
     return;
 
-  priv->mark_conflicts_id = gdk_threads_add_idle (mark_conflicts_callback,
+  priv->mark_conflicts_id = cdk_threads_add_idle (mark_conflicts_callback,
                                         dialog);
   g_source_set_name_by_id (priv->mark_conflicts_id, "[ctk+] mark_conflicts_callback");
 }
@@ -2807,7 +2807,7 @@ draw_page_cb (CtkWidget          *widget,
 
   cairo_set_line_width (cr, 1.0);
   cairo_rectangle (cr, 0.5, 0.5, w + 1, h + 1);
-  gdk_cairo_set_source_rgba (cr, &color);
+  cdk_cairo_set_source_rgba (cr, &color);
   cairo_stroke (cr);
 
   i = 1;
@@ -3008,7 +3008,7 @@ draw_page_cb (CtkWidget          *widget,
         cairo_translate (cr, pos_x + w + shadow_offset + 2 * RULER_DISTANCE,
                              (height - layout_h / PANGO_SCALE) / 2);
 
-      gdk_cairo_set_source_rgba (cr, &color);
+      cdk_cairo_set_source_rgba (cr, &color);
       pango_cairo_show_layout (cr, layout);
 
       cairo_restore (cr);
@@ -3026,7 +3026,7 @@ draw_page_cb (CtkWidget          *widget,
       cairo_translate (cr, (width - layout_w / PANGO_SCALE) / 2,
                            pos_y + h + shadow_offset + 2 * RULER_DISTANCE);
 
-      gdk_cairo_set_source_rgba (cr, &color);
+      cdk_cairo_set_source_rgba (cr, &color);
       pango_cairo_show_layout (cr, layout);
 
       g_object_unref (layout);
@@ -3035,7 +3035,7 @@ draw_page_cb (CtkWidget          *widget,
 
       cairo_set_line_width (cr, 1);
 
-      gdk_cairo_set_source_rgba (cr, &color);
+      cdk_cairo_set_source_rgba (cr, &color);
 
       if (ltr)
         {

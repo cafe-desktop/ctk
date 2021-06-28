@@ -17,56 +17,56 @@
 
 #include "config.h"
 
-#include "gdkx11devicemanager-core.h"
-#include "gdkdevicemanagerprivate-core.h"
-#include "gdkx11device-core.h"
+#include "cdkx11devicemanager-core.h"
+#include "cdkdevicemanagerprivate-core.h"
+#include "cdkx11device-core.h"
 
-#include "gdkdeviceprivate.h"
-#include "gdkseatdefaultprivate.h"
-#include "gdkdisplayprivate.h"
-#include "gdkeventtranslator.h"
-#include "gdkprivate-x11.h"
-#include "gdkkeysyms.h"
+#include "cdkdeviceprivate.h"
+#include "cdkseatdefaultprivate.h"
+#include "cdkdisplayprivate.h"
+#include "cdkeventtranslator.h"
+#include "cdkprivate-x11.h"
+#include "cdkkeysyms.h"
 
 
 #define HAS_FOCUS(toplevel)                           \
   ((toplevel)->has_focus || (toplevel)->has_pointer_focus)
 
-static void    gdk_x11_device_manager_core_finalize    (GObject *object);
-static void    gdk_x11_device_manager_core_constructed (GObject *object);
+static void    cdk_x11_device_manager_core_finalize    (GObject *object);
+static void    cdk_x11_device_manager_core_constructed (GObject *object);
 
-static GList * gdk_x11_device_manager_core_list_devices (GdkDeviceManager *device_manager,
+static GList * cdk_x11_device_manager_core_list_devices (GdkDeviceManager *device_manager,
                                                          GdkDeviceType     type);
-static GdkDevice * gdk_x11_device_manager_core_get_client_pointer (GdkDeviceManager *device_manager);
+static GdkDevice * cdk_x11_device_manager_core_get_client_pointer (GdkDeviceManager *device_manager);
 
-static void     gdk_x11_device_manager_event_translator_init (GdkEventTranslatorIface *iface);
+static void     cdk_x11_device_manager_event_translator_init (GdkEventTranslatorIface *iface);
 
-static gboolean gdk_x11_device_manager_core_translate_event  (GdkEventTranslator *translator,
+static gboolean cdk_x11_device_manager_core_translate_event  (GdkEventTranslator *translator,
                                                               GdkDisplay         *display,
                                                               GdkEvent           *event,
                                                               XEvent             *xevent);
 
 
-G_DEFINE_TYPE_WITH_CODE (GdkX11DeviceManagerCore, gdk_x11_device_manager_core, GDK_TYPE_DEVICE_MANAGER,
+G_DEFINE_TYPE_WITH_CODE (GdkX11DeviceManagerCore, cdk_x11_device_manager_core, GDK_TYPE_DEVICE_MANAGER,
                          G_IMPLEMENT_INTERFACE (GDK_TYPE_EVENT_TRANSLATOR,
-                                                gdk_x11_device_manager_event_translator_init))
+                                                cdk_x11_device_manager_event_translator_init))
 
 static void
-gdk_x11_device_manager_core_class_init (GdkX11DeviceManagerCoreClass *klass)
+cdk_x11_device_manager_core_class_init (GdkX11DeviceManagerCoreClass *klass)
 {
   GdkDeviceManagerClass *device_manager_class = GDK_DEVICE_MANAGER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  object_class->finalize = gdk_x11_device_manager_core_finalize;
-  object_class->constructed = gdk_x11_device_manager_core_constructed;
-  device_manager_class->list_devices = gdk_x11_device_manager_core_list_devices;
-  device_manager_class->get_client_pointer = gdk_x11_device_manager_core_get_client_pointer;
+  object_class->finalize = cdk_x11_device_manager_core_finalize;
+  object_class->constructed = cdk_x11_device_manager_core_constructed;
+  device_manager_class->list_devices = cdk_x11_device_manager_core_list_devices;
+  device_manager_class->get_client_pointer = cdk_x11_device_manager_core_get_client_pointer;
 }
 
 static void
-gdk_x11_device_manager_event_translator_init (GdkEventTranslatorIface *iface)
+cdk_x11_device_manager_event_translator_init (GdkEventTranslatorIface *iface)
 {
-  iface->translate_event = gdk_x11_device_manager_core_translate_event;
+  iface->translate_event = cdk_x11_device_manager_core_translate_event;
 }
 
 static GdkDevice *
@@ -100,12 +100,12 @@ create_core_keyboard (GdkDeviceManager *device_manager,
 }
 
 static void
-gdk_x11_device_manager_core_init (GdkX11DeviceManagerCore *device_manager)
+cdk_x11_device_manager_core_init (GdkX11DeviceManagerCore *device_manager)
 {
 }
 
 static void
-gdk_x11_device_manager_core_finalize (GObject *object)
+cdk_x11_device_manager_core_finalize (GObject *object)
 {
   GdkX11DeviceManagerCore *device_manager_core;
 
@@ -114,32 +114,32 @@ gdk_x11_device_manager_core_finalize (GObject *object)
   g_object_unref (device_manager_core->core_pointer);
   g_object_unref (device_manager_core->core_keyboard);
 
-  G_OBJECT_CLASS (gdk_x11_device_manager_core_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_x11_device_manager_core_parent_class)->finalize (object);
 }
 
 static void
-gdk_x11_device_manager_core_constructed (GObject *object)
+cdk_x11_device_manager_core_constructed (GObject *object)
 {
   GdkX11DeviceManagerCore *device_manager;
   GdkDisplay *display;
 
   device_manager = GDK_X11_DEVICE_MANAGER_CORE (object);
-  display = gdk_device_manager_get_display (GDK_DEVICE_MANAGER (object));
+  display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (object));
   device_manager->core_pointer = create_core_pointer (GDK_DEVICE_MANAGER (device_manager), display);
   device_manager->core_keyboard = create_core_keyboard (GDK_DEVICE_MANAGER (device_manager), display);
 
-  _gdk_device_set_associated_device (device_manager->core_pointer, device_manager->core_keyboard);
-  _gdk_device_set_associated_device (device_manager->core_keyboard, device_manager->core_pointer);
+  _cdk_device_set_associated_device (device_manager->core_pointer, device_manager->core_keyboard);
+  _cdk_device_set_associated_device (device_manager->core_keyboard, device_manager->core_pointer);
 
   /* We expect subclasses to handle their own seats */
   if (G_OBJECT_TYPE (object) == GDK_TYPE_X11_DEVICE_MANAGER_CORE)
     {
       GdkSeat *seat;
 
-      seat = gdk_seat_default_new_for_master_pair (device_manager->core_pointer,
+      seat = cdk_seat_default_new_for_master_pair (device_manager->core_pointer,
                                                    device_manager->core_keyboard);
 
-      gdk_display_add_seat (display, seat);
+      cdk_display_add_seat (display, seat);
       g_object_unref (seat);
   }
 }
@@ -150,21 +150,21 @@ translate_key_event (GdkDisplay              *display,
                      GdkEvent                *event,
                      XEvent                  *xevent)
 {
-  GdkKeymap *keymap = gdk_keymap_get_for_display (display);
+  GdkKeymap *keymap = cdk_keymap_get_for_display (display);
   GdkModifierType consumed, state;
 
   event->key.type = xevent->xany.type == KeyPress ? GDK_KEY_PRESS : GDK_KEY_RELEASE;
   event->key.time = xevent->xkey.time;
-  gdk_event_set_device (event, device_manager->core_keyboard);
+  cdk_event_set_device (event, device_manager->core_keyboard);
 
   event->key.state = (GdkModifierType) xevent->xkey.state;
-  event->key.group = gdk_x11_keymap_get_group_for_state (keymap, xevent->xkey.state);
+  event->key.group = cdk_x11_keymap_get_group_for_state (keymap, xevent->xkey.state);
   event->key.hardware_keycode = xevent->xkey.keycode;
-  gdk_event_set_scancode (event, xevent->xkey.keycode);
+  cdk_event_set_scancode (event, xevent->xkey.keycode);
 
   event->key.keyval = GDK_KEY_VoidSymbol;
 
-  gdk_keymap_translate_keyboard_state (keymap,
+  cdk_keymap_translate_keyboard_state (keymap,
                                        event->key.hardware_keycode,
                                        event->key.state,
                                        event->key.group,
@@ -172,12 +172,12 @@ translate_key_event (GdkDisplay              *display,
                                        NULL, NULL, &consumed);
 
   state = event->key.state & ~consumed;
-  _gdk_x11_keymap_add_virt_mods (keymap, &state);
+  _cdk_x11_keymap_add_virt_mods (keymap, &state);
   event->key.state |= state;
 
-  event->key.is_modifier = gdk_x11_keymap_key_is_modifier (keymap, event->key.hardware_keycode);
+  event->key.is_modifier = cdk_x11_keymap_key_is_modifier (keymap, event->key.hardware_keycode);
 
-  _gdk_x11_event_translate_keyboard_string (&event->key);
+  _cdk_x11_event_translate_keyboard_string (&event->key);
 
 #ifdef G_ENABLE_DEBUG
   if (GDK_DEBUG_CHECK (EVENTS))
@@ -185,7 +185,7 @@ translate_key_event (GdkDisplay              *display,
       g_message ("%s:\t\twindow: %ld     key: %12s  %d",
                  event->type == GDK_KEY_PRESS ? "key press  " : "key release",
                  xevent->xkey.window,
-                 event->key.keyval ? gdk_keyval_name (event->key.keyval) : "(none)",
+                 event->key.keyval ? cdk_keyval_name (event->key.keyval) : "(none)",
                  event->key.keyval);
 
       if (event->key.length > 0)
@@ -222,15 +222,15 @@ set_user_time (GdkWindow *window,
 {
   g_return_if_fail (event != NULL);
 
-  window = gdk_window_get_toplevel (event->any.window);
+  window = cdk_window_get_toplevel (event->any.window);
   g_return_if_fail (GDK_IS_WINDOW (window));
 
   /* If an event doesn't have a valid timestamp, we shouldn't use it
    * to update the latest user interaction time.
    */
-  if (gdk_event_get_time (event) != GDK_CURRENT_TIME)
-    gdk_x11_window_set_user_time (gdk_window_get_toplevel (window),
-                                  gdk_event_get_time (event));
+  if (cdk_event_get_time (event) != GDK_CURRENT_TIME)
+    cdk_x11_window_set_user_time (cdk_window_get_toplevel (window),
+                                  cdk_event_get_time (event));
 }
 
 static gboolean
@@ -240,11 +240,11 @@ set_screen_from_root (GdkDisplay *display,
 {
   GdkScreen *screen;
 
-  screen = _gdk_x11_display_screen_for_xrootwin (display, xrootwin);
+  screen = _cdk_x11_display_screen_for_xrootwin (display, xrootwin);
 
   if (screen)
     {
-      gdk_event_set_screen (event, screen);
+      cdk_event_set_screen (event, screen);
 
       return TRUE;
     }
@@ -300,7 +300,7 @@ is_parent_of (GdkWindow *parent,
       if (w == parent)
         return TRUE;
 
-      w = gdk_window_get_parent (w);
+      w = cdk_window_get_parent (w);
     }
 
   return FALSE;
@@ -315,8 +315,8 @@ get_event_window (GdkEventTranslator *translator,
   GdkWindow *window;
 
   device_manager = GDK_DEVICE_MANAGER (translator);
-  display = gdk_device_manager_get_display (device_manager);
-  window = gdk_x11_window_lookup_for_display (display, xevent->xany.window);
+  display = cdk_device_manager_get_display (device_manager);
+  window = cdk_x11_window_lookup_for_display (display, xevent->xany.window);
 
   /* Apply keyboard grabs to non-native windows */
   if (xevent->type == KeyPress || xevent->type == KeyRelease)
@@ -324,8 +324,8 @@ get_event_window (GdkEventTranslator *translator,
       GdkDeviceGrabInfo *info;
       gulong serial;
 
-      serial = _gdk_display_get_next_serial (display);
-      info = _gdk_display_has_device_grab (display,
+      serial = _cdk_display_get_next_serial (display);
+      info = _cdk_display_has_device_grab (display,
                                            GDK_X11_DEVICE_MANAGER_CORE (device_manager)->core_keyboard,
                                            serial);
       if (info &&
@@ -341,7 +341,7 @@ get_event_window (GdkEventTranslator *translator,
 }
 
 static gboolean
-gdk_x11_device_manager_core_translate_event (GdkEventTranslator *translator,
+cdk_x11_device_manager_core_translate_event (GdkEventTranslator *translator,
                                              GdkDisplay         *display,
                                              GdkEvent           *event,
                                              XEvent             *xevent)
@@ -384,7 +384,7 @@ gdk_x11_device_manager_core_translate_event (GdkEventTranslator *translator,
       (xevent->type == MotionNotify ||
        xevent->type == ButtonRelease))
     {
-      if (_gdk_x11_moveresize_handle_event (xevent))
+      if (_cdk_x11_moveresize_handle_event (xevent))
         {
           return_val = FALSE;
           goto done;
@@ -609,13 +609,13 @@ gdk_x11_device_manager_core_translate_event (GdkEventTranslator *translator,
 
       event->crossing.type = GDK_ENTER_NOTIFY;
       event->crossing.window = window;
-      gdk_event_set_device (event, device_manager->core_pointer);
+      cdk_event_set_device (event, device_manager->core_pointer);
 
       /* If the subwindow field of the XEvent is non-NULL, then
        *  lookup the corresponding GdkWindow.
        */
       if (xevent->xcrossing.subwindow != None)
-        event->crossing.subwindow = gdk_x11_window_lookup_for_display (display, xevent->xcrossing.subwindow);
+        event->crossing.subwindow = cdk_x11_window_lookup_for_display (display, xevent->xcrossing.subwindow);
       else
         event->crossing.subwindow = NULL;
 
@@ -653,13 +653,13 @@ gdk_x11_device_manager_core_translate_event (GdkEventTranslator *translator,
 
       event->crossing.type = GDK_LEAVE_NOTIFY;
       event->crossing.window = window;
-      gdk_event_set_device (event, device_manager->core_pointer);
+      cdk_event_set_device (event, device_manager->core_pointer);
 
       /* If the subwindow field of the XEvent is non-NULL, then
        *  lookup the corresponding GdkWindow.
        */
       if (xevent->xcrossing.subwindow != None)
-        event->crossing.subwindow = gdk_x11_window_lookup_for_display (display, xevent->xcrossing.subwindow);
+        event->crossing.subwindow = cdk_x11_window_lookup_for_display (display, xevent->xcrossing.subwindow);
       else
         event->crossing.subwindow = NULL;
 
@@ -680,7 +680,7 @@ gdk_x11_device_manager_core_translate_event (GdkEventTranslator *translator,
     case FocusIn:
     case FocusOut:
       if (window)
-        _gdk_device_manager_core_handle_focus (window,
+        _cdk_device_manager_core_handle_focus (window,
                                                xevent->xfocus.window,
                                                device_manager->core_keyboard,
                                                NULL,
@@ -719,7 +719,7 @@ gdk_x11_device_manager_core_translate_event (GdkEventTranslator *translator,
 }
 
 static GList *
-gdk_x11_device_manager_core_list_devices (GdkDeviceManager *device_manager,
+cdk_x11_device_manager_core_list_devices (GdkDeviceManager *device_manager,
                                           GdkDeviceType     type)
 {
   GdkX11DeviceManagerCore *device_manager_core;
@@ -736,7 +736,7 @@ gdk_x11_device_manager_core_list_devices (GdkDeviceManager *device_manager,
 }
 
 static GdkDevice *
-gdk_x11_device_manager_core_get_client_pointer (GdkDeviceManager *device_manager)
+cdk_x11_device_manager_core_get_client_pointer (GdkDeviceManager *device_manager)
 {
   GdkX11DeviceManagerCore *device_manager_core;
 
@@ -745,7 +745,7 @@ gdk_x11_device_manager_core_get_client_pointer (GdkDeviceManager *device_manager
 }
 
 void
-_gdk_x11_event_translate_keyboard_string (GdkEventKey *event)
+_cdk_x11_event_translate_keyboard_string (GdkEventKey *event)
 {
   gunichar c = 0;
   gchar buf[7];
@@ -756,7 +756,7 @@ _gdk_x11_event_translate_keyboard_string (GdkEventKey *event)
   event->string = NULL;
 
   if (event->keyval != GDK_KEY_VoidSymbol)
-    c = gdk_keyval_to_unicode (event->keyval);
+    c = cdk_keyval_to_unicode (event->keyval);
 
   if (c)
     {
@@ -812,7 +812,7 @@ _gdk_x11_event_translate_keyboard_string (GdkEventKey *event)
  * window (not a ancestor or child) got or lost the focus
  */
 void
-_gdk_device_manager_core_handle_focus (GdkWindow *window,
+_cdk_device_manager_core_handle_focus (GdkWindow *window,
                                        Window     original,
                                        GdkDevice *device,
                                        GdkDevice *source_device,
@@ -834,7 +834,7 @@ _gdk_device_manager_core_handle_focus (GdkWindow *window,
                        notify_details[detail],
                        notify_modes[mode]));
 
-  toplevel = _gdk_x11_window_get_toplevel (window);
+  toplevel = _cdk_x11_window_get_toplevel (window);
 
   if (!toplevel)
     return;
@@ -843,7 +843,7 @@ _gdk_device_manager_core_handle_focus (GdkWindow *window,
     return;
 
   had_focus = HAS_FOCUS (toplevel);
-  x11_screen = GDK_X11_SCREEN (gdk_window_get_screen (window));
+  x11_screen = GDK_X11_SCREEN (cdk_window_get_screen (window));
 
   switch (detail)
     {
@@ -908,16 +908,16 @@ _gdk_device_manager_core_handle_focus (GdkWindow *window,
     {
       GdkEvent *event;
 
-      event = gdk_event_new (GDK_FOCUS_CHANGE);
+      event = cdk_event_new (GDK_FOCUS_CHANGE);
       event->focus_change.window = g_object_ref (window);
       event->focus_change.send_event = FALSE;
       event->focus_change.in = focus_in;
-      gdk_event_set_device (event, device);
+      cdk_event_set_device (event, device);
       if (source_device)
-        gdk_event_set_source_device (event, source_device);
+        cdk_event_set_source_device (event, source_device);
 
-      gdk_event_put (event);
-      gdk_event_free (event);
+      cdk_event_put (event);
+      cdk_event_free (event);
     }
 }
 

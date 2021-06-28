@@ -382,7 +382,7 @@ ctk_sources = files(
   'ctkwindowgroup.c',
   'ctkwin32draw.c',
   'ctkwin32theme.c',
-  'gdkpixbufutils.c',
+  'cdkpixbufutils.c',
   'language-names.c',
   'script-names.c',
 )
@@ -778,12 +778,12 @@ ctkprivatetypebuiltins_h = ctkprivatetypebuiltins[1]
 
 # Generate ctktypefuncs.inc
 typefuncs = custom_target('ctktypefuncs.inc',
-                          depends: [ gdkenum_h ],
+                          depends: [ cdkenum_h ],
                           output: 'ctktypefuncs.inc',
-                          input: gdk_public_headers +
+                          input: cdk_public_headers +
                             ctk_public_headers +
                             ctk_deprecated_headers +
-                            [ ctktypebuiltins_h, gdkenum_h ],
+                            [ ctktypebuiltins_h, cdkenum_h ],
                           command: [
                             find_program('gentypefuncs.py'),
                             '@OUTPUT@',
@@ -963,9 +963,9 @@ foreach l: immodules
     ctk_cargs += ['-DINCLUDE_IM_@0@'.format(name.underscorify())]
     mod = static_library('staticimmodule-@0@'.format(name),
                          sources + ctk_dep_sources,
-                         dependencies: ctk_deps + [libgdk_dep] ,
+                         dependencies: ctk_deps + [libcdk_dep] ,
                          c_args: ctk_cargs + common_cflags + cflags,
-                         include_directories: [confinc, gdkinc, ctkinc])
+                         include_directories: [confinc, cdkinc, ctkinc])
 
     ctk_included_im_deps += declare_dependency(link_with: mod)
   endif
@@ -977,9 +977,9 @@ libctk = library('ctk-3',
                  version: ctk_library_version,
                  sources: [typefuncs, ctk_sources, ctkmarshal_h, ctkprivatetypebuiltins_h],
                  c_args: ctk_cargs + common_cflags,
-                 include_directories: [confinc, gdkinc, ctkinc],
-                 dependencies: ctk_deps + [libgdk_dep] + ctk_included_im_deps,
-                 link_with: libgdk,
+                 include_directories: [confinc, cdkinc, ctkinc],
+                 dependencies: ctk_deps + [libcdk_dep] + ctk_included_im_deps,
+                 link_with: libcdk,
                  link_args: common_ldflags,
                  darwin_versions : ctk_osxversions,
                  install: true)
@@ -998,7 +998,7 @@ if build_gir
     ctkversion,
   ]
 
-  ctk_gir_includes = [gdk_gir[0], 'Atk-1.0']
+  ctk_gir_includes = [cdk_gir[0], 'Atk-1.0']
   ctk_gir_extra_args = gir_args + ['-DCTK_COMPILATION',
                                    '--c-include=ctk/ctk-a11y.h']
   if x11_enabled
@@ -1016,14 +1016,14 @@ if build_gir
                                includes: ctk_gir_includes,
                                header: 'ctk/ctk.h',
                                install: true,
-                               dependencies: gdk_gir_dep,
+                               dependencies: cdk_gir_dep,
                                extra_args: ctk_gir_extra_args)
   ctk_dep_sources += ctk_gir
 endif
 
 libctk_dep = declare_dependency(sources: ctk_dep_sources,
                                 include_directories: [confinc, ctkinc],
-                                dependencies: ctk_deps + [libgdk_dep],
+                                dependencies: ctk_deps + [libcdk_dep],
                                 link_with: libctk,
                                 link_args: common_ldflags)
 

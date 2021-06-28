@@ -17,10 +17,10 @@
 
 #include "config.h"
 
-#include "gdkpango.h"
+#include "cdkpango.h"
 
-#include "gdkscreen.h"
-#include "gdkintl.h"
+#include "cdkscreen.h"
+#include "cdkintl.h"
 
 #include <math.h>
 #include <pango/pangocairo.h>
@@ -40,7 +40,7 @@
  * and requires getting a handle to a #PangoContext. For CTK+ programs,
  * you’ll usually want to use ctk_widget_get_pango_context(), or
  * ctk_widget_create_pango_layout(), rather than using the lowlevel
- * gdk_pango_context_get_for_screen(). Once you have a #PangoLayout, you
+ * cdk_pango_context_get_for_screen(). Once you have a #PangoLayout, you
  * can set the text and attributes of it with Pango functions like
  * pango_layout_set_text() and get its size with pango_layout_get_size().
  * (Note that Pango uses a fixed point system internally, so converting
@@ -69,8 +69,8 @@
  * // where we are drawing are [-RADIUS, RADIUS], [-RADIUS, RADIUS]
  * // We first center, then change the scale
  *
- * width = gdk_window_get_width (window);
- * height = gdk_window_get_height (window);
+ * width = cdk_window_get_width (window);
+ * height = cdk_window_get_height (window);
  * radius = MIN (width, height) / 2.;
  *
  * cairo_translate (cr,
@@ -79,7 +79,7 @@
  *                  cairo_scale (cr, radius / RADIUS, radius / RADIUS);
  *
  * // Create a PangoLayout, set the font and text
- * context = gdk_pango_context_get_for_screen (screen);
+ * context = cdk_pango_context_get_for_screen (screen);
  * layout = pango_layout_new (context);
  * pango_layout_set_text (layout, "Text", -1);
  * desc = pango_font_description_from_string (FONT);
@@ -186,7 +186,7 @@ layout_iter_get_line_clip_region (PangoLayoutIter *iter,
 }
 
 /**
- * gdk_pango_layout_line_get_clip_region: (skip)
+ * cdk_pango_layout_line_get_clip_region: (skip)
  * @line: a #PangoLayoutLine 
  * @x_origin: X pixel where you intend to draw the layout line with this clip
  * @y_origin: baseline pixel where you intend to draw the layout line with this clip
@@ -213,7 +213,7 @@ layout_iter_get_line_clip_region (PangoLayoutIter *iter,
  * Returns: a clip region containing the given ranges
  **/
 cairo_region_t*
-gdk_pango_layout_line_get_clip_region (PangoLayoutLine *line,
+cdk_pango_layout_line_get_clip_region (PangoLayoutLine *line,
                                        gint             x_origin,
                                        gint             y_origin,
                                        const gint      *index_ranges,
@@ -237,7 +237,7 @@ gdk_pango_layout_line_get_clip_region (PangoLayoutLine *line,
 }
 
 /**
- * gdk_pango_layout_get_clip_region: (skip)
+ * cdk_pango_layout_get_clip_region: (skip)
  * @layout: a #PangoLayout 
  * @x_origin: X pixel where you intend to draw the layout with this clip
  * @y_origin: Y pixel where you intend to draw the layout with this clip
@@ -257,7 +257,7 @@ gdk_pango_layout_line_get_clip_region (PangoLayoutLine *line,
  * Returns: a clip region containing the given ranges
  **/
 cairo_region_t*
-gdk_pango_layout_get_clip_region (PangoLayout *layout,
+cdk_pango_layout_get_clip_region (PangoLayout *layout,
                                   gint         x_origin,
                                   gint         y_origin,
                                   const gint  *index_ranges,
@@ -299,7 +299,7 @@ gdk_pango_layout_get_clip_region (PangoLayout *layout,
 }
 
 /**
- * gdk_pango_context_get:
+ * cdk_pango_context_get:
  * 
  * Creates a #PangoContext for the default GDK screen.
  *
@@ -318,13 +318,13 @@ gdk_pango_layout_get_clip_region (PangoLayout *layout,
  * Returns: (transfer full): a new #PangoContext for the default display
  **/
 PangoContext *
-gdk_pango_context_get (void)
+cdk_pango_context_get (void)
 {
-  return gdk_pango_context_get_for_display (gdk_display_get_default ());
+  return cdk_pango_context_get_for_display (cdk_display_get_default ());
 }
 
 /**
- * gdk_pango_context_get_for_screen:
+ * cdk_pango_context_get_for_screen:
  * @screen: the #GdkScreen for which the context is to be created.
  * 
  * Creates a #PangoContext for @screen.
@@ -346,7 +346,7 @@ gdk_pango_context_get (void)
  * Since: 2.2
  **/
 PangoContext *
-gdk_pango_context_get_for_screen (GdkScreen *screen)
+cdk_pango_context_get_for_screen (GdkScreen *screen)
 {
   PangoFontMap *fontmap;
   PangoContext *context;
@@ -358,17 +358,17 @@ gdk_pango_context_get_for_screen (GdkScreen *screen)
   fontmap = pango_cairo_font_map_get_default ();
   context = pango_font_map_create_context (fontmap);
 
-  options = gdk_screen_get_font_options (screen);
+  options = cdk_screen_get_font_options (screen);
   pango_cairo_context_set_font_options (context, options);
 
-  dpi = gdk_screen_get_resolution (screen);
+  dpi = cdk_screen_get_resolution (screen);
   pango_cairo_context_set_resolution (context, dpi);
 
   return context;
 }
 
 /**
- * gdk_pango_context_get_for_display:
+ * cdk_pango_context_get_for_display:
  * @display: the #GdkDisplay for which the context is to be created
  *
  * Creates a #PangoContext for @display.
@@ -390,9 +390,9 @@ gdk_pango_context_get_for_screen (GdkScreen *screen)
  * Since: 3.22
  */
 PangoContext *
-gdk_pango_context_get_for_display (GdkDisplay *display)
+cdk_pango_context_get_for_display (GdkDisplay *display)
 {
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
 
-  return gdk_pango_context_get_for_screen (gdk_display_get_default_screen (display));
+  return cdk_pango_context_get_for_screen (cdk_display_get_default_screen (display));
 }

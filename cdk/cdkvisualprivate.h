@@ -18,7 +18,7 @@
 #ifndef __GDK_VISUAL_PRIVATE_H__
 #define __GDK_VISUAL_PRIVATE_H__
 
-#include "gdkvisual.h"
+#include "cdkvisual.h"
 
 G_BEGIN_DECLS
 

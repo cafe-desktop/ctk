@@ -25,9 +25,9 @@
 #ifndef __GDK_WINDOW_WIN32_H__
 #define __GDK_WINDOW_WIN32_H__
 
-#include "gdk/win32/gdkprivate-win32.h"
-#include "gdk/gdkwindowimpl.h"
-#include "gdk/gdkcursor.h"
+#include "cdk/win32/cdkprivate-win32.h"
+#include "cdk/cdkwindowimpl.h"
+#include "cdk/cdkcursor.h"
 
 #include <windows.h>
 
@@ -43,7 +43,7 @@ G_BEGIN_DECLS
 typedef struct _GdkWindowImplWin32 GdkWindowImplWin32;
 typedef struct _GdkWindowImplWin32Class GdkWindowImplWin32Class;
 
-#define GDK_TYPE_WINDOW_IMPL_WIN32              (_gdk_window_impl_win32_get_type ())
+#define GDK_TYPE_WINDOW_IMPL_WIN32              (_cdk_window_impl_win32_get_type ())
 #define GDK_WINDOW_IMPL_WIN32(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL_WIN32, GdkWindowImplWin32))
 #define GDK_WINDOW_IMPL_WIN32_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL_WIN32, GdkWindowImplWin32Class))
 #define GDK_IS_WINDOW_IMPL_WIN32(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL_WIN32))
@@ -284,7 +284,7 @@ struct _GdkWindowImplWin32
   guint have_temp_styles : 1;
 
   /* If TRUE, the window is in the process of being maximized.
-   * This is set by WM_SYSCOMMAND and by gdk_win32_window_maximize (),
+   * This is set by WM_SYSCOMMAND and by cdk_win32_window_maximize (),
    * and is unset when WM_WINDOWPOSCHANGING is handled.
    */
   guint maximizing : 1;
@@ -332,7 +332,7 @@ struct _GdkWindowImplWin32
   /* Also remember the same position, but in absolute form. */
   GdkRectangle *snap_stash_int;
 
-  /* Decorations set by gdk_window_set_decorations() or NULL if unset */
+  /* Decorations set by cdk_window_set_decorations() or NULL if unset */
   GdkWMDecoration* decorations;
 
   /* No. of windows to force layered windows off */
@@ -361,22 +361,22 @@ struct _GdkWindowImplWin32Class
   GdkWindowImplClass parent_class;
 };
 
-GType _gdk_window_impl_win32_get_type (void);
+GType _cdk_window_impl_win32_get_type (void);
 
-void  _gdk_win32_window_tmp_unset_bg  (GdkWindow *window,
+void  _cdk_win32_window_tmp_unset_bg  (GdkWindow *window,
 				       gboolean   recurse);
-void  _gdk_win32_window_tmp_reset_bg  (GdkWindow *window,
+void  _cdk_win32_window_tmp_reset_bg  (GdkWindow *window,
 				       gboolean   recurse);
 
-void  _gdk_win32_window_tmp_unset_parent_bg (GdkWindow *window);
-void  _gdk_win32_window_tmp_reset_parent_bg (GdkWindow *window);
+void  _cdk_win32_window_tmp_unset_parent_bg (GdkWindow *window);
+void  _cdk_win32_window_tmp_reset_parent_bg (GdkWindow *window);
 
-void  _gdk_win32_window_update_style_bits   (GdkWindow *window);
+void  _cdk_win32_window_update_style_bits   (GdkWindow *window);
 
-gint  _gdk_win32_window_get_scale_factor    (GdkWindow *window);
+gint  _cdk_win32_window_get_scale_factor    (GdkWindow *window);
 
 #ifdef GDK_WIN32_ENABLE_EGL
-EGLSurface _gdk_win32_window_get_egl_surface (GdkWindow *window,
+EGLSurface _cdk_win32_window_get_egl_surface (GdkWindow *window,
                                               EGLConfig  config,
                                               gboolean   is_dummy);
 #endif

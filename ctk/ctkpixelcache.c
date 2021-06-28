@@ -182,7 +182,7 @@ _ctk_pixel_cache_create_surface_if_needed (CtkPixelCache         *cache,
   cairo_content_t content;
 
 #ifdef G_ENABLE_DEBUG
-  if (CTK_DISPLAY_DEBUG_CHECK (gdk_window_get_display (window), NO_PIXEL_CACHE))
+  if (CTK_DISPLAY_DEBUG_CHECK (cdk_window_get_display (window), NO_PIXEL_CACHE))
     return;
 #endif
 
@@ -210,7 +210,7 @@ _ctk_pixel_cache_create_surface_if_needed (CtkPixelCache         *cache,
        cache->surface_w > surface_w * ALLOW_LARGER_SIZE_FACTOR ||
        cache->surface_h < MAX(view_rect->height, surface_h * ALLOW_SMALLER_SIZE_FACTOR) ||
        cache->surface_h > surface_h * ALLOW_LARGER_SIZE_FACTOR ||
-       cache->surface_scale != gdk_window_get_scale_factor (window)))
+       cache->surface_scale != cdk_window_get_scale_factor (window)))
     {
       cairo_surface_destroy (cache->surface);
       cache->surface = NULL;
@@ -231,10 +231,10 @@ _ctk_pixel_cache_create_surface_if_needed (CtkPixelCache         *cache,
       cache->surface_y = -canvas_rect->y;
       cache->surface_w = MAX (surface_w, 1);
       cache->surface_h = MAX (surface_h, 1);
-      cache->surface_scale = gdk_window_get_scale_factor (window);
+      cache->surface_scale = cdk_window_get_scale_factor (window);
 
       cache->surface =
-        gdk_window_create_similar_surface (window, content,
+        cdk_window_create_similar_surface (window, content,
                                            cache->surface_w,
                                            cache->surface_h);
       rect.x = 0;
@@ -304,7 +304,7 @@ _ctk_pixel_cache_set_position (CtkPixelCache         *cache,
       cairo_region_intersect_rectangle (copy_region, &r);
 
       backing_cr = cairo_create (cache->surface);
-      gdk_cairo_region (backing_cr, copy_region);
+      cdk_cairo_region (backing_cr, copy_region);
       cairo_set_operator (backing_cr, CAIRO_OPERATOR_SOURCE);
       cairo_clip (backing_cr);
       cairo_push_group (backing_cr);
@@ -341,7 +341,7 @@ _ctk_pixel_cache_repaint (CtkPixelCache         *cache,
       !cairo_region_is_empty (region_dirty))
     {
       backing_cr = cairo_create (cache->surface);
-      gdk_cairo_region (backing_cr, region_dirty);
+      cdk_cairo_region (backing_cr, region_dirty);
       cairo_clip (backing_cr);
       cairo_translate (backing_cr,
                        -cache->surface_x - canvas_rect->x - view_rect->x,
@@ -359,7 +359,7 @@ _ctk_pixel_cache_repaint (CtkPixelCache         *cache,
       cairo_restore (backing_cr);
 
 #ifdef G_ENABLE_DEBUG
-      if (CTK_DISPLAY_DEBUG_CHECK (gdk_window_get_display (window), PIXEL_CACHE))
+      if (CTK_DISPLAY_DEBUG_CHECK (cdk_window_get_display (window), PIXEL_CACHE))
         {
           GdkRGBA colors[] = {
             { 1, 0, 0, 0.08},
@@ -371,7 +371,7 @@ _ctk_pixel_cache_repaint (CtkPixelCache         *cache,
           };
           static int current_color = 0;
 
-          gdk_cairo_set_source_rgba (backing_cr, &colors[(current_color++) % G_N_ELEMENTS (colors)]);
+          cdk_cairo_set_source_rgba (backing_cr, &colors[(current_color++) % G_N_ELEMENTS (colors)]);
           cairo_paint (backing_cr);
         }
 #endif

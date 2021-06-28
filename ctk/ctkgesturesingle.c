@@ -140,13 +140,13 @@ ctk_gesture_single_handle_event (CtkEventController *controller,
   guint button = 0, i;
   gboolean retval, test_touchscreen = FALSE;
 
-  source_device = gdk_event_get_source_device (event);
+  source_device = cdk_event_get_source_device (event);
 
   if (!source_device)
     return FALSE;
 
   priv = ctk_gesture_single_get_instance_private (CTK_GESTURE_SINGLE (controller));
-  source = gdk_device_get_source (source_device);
+  source = cdk_device_get_source (source_device);
 
   if (source != GDK_SOURCE_TOUCHSCREEN)
     test_touchscreen = ctk_simulate_touchscreen ();

@@ -2457,7 +2457,7 @@ list_button_press_event_cb (CtkWidget            *widget,
   if (in_press)
     return FALSE;
 
-  if (!gdk_event_triggers_context_menu ((GdkEvent *) event))
+  if (!cdk_event_triggers_context_menu ((GdkEvent *) event))
     return FALSE;
 
   in_press = TRUE;
@@ -4394,12 +4394,12 @@ set_busy_cursor (CtkFileChooserWidget *impl,
   display = ctk_widget_get_display (widget);
 
   if (busy)
-    cursor = gdk_cursor_new_from_name (display, "progress");
+    cursor = cdk_cursor_new_from_name (display, "progress");
   else
     cursor = NULL;
 
-  gdk_window_set_cursor (ctk_widget_get_window (widget), cursor);
-  gdk_display_flush (display);
+  cdk_window_set_cursor (ctk_widget_get_window (widget), cursor);
+  cdk_display_flush (display);
 
   if (cursor)
     g_object_unref (cursor);
@@ -4490,7 +4490,7 @@ load_setup_timer (CtkFileChooserWidget *impl)
   g_assert (priv->load_timeout_id == 0);
   g_assert (priv->load_state != LOAD_PRELOAD);
 
-  priv->load_timeout_id = gdk_threads_add_timeout (MAX_LOADING_TIME, load_timeout_cb, impl);
+  priv->load_timeout_id = cdk_threads_add_timeout (MAX_LOADING_TIME, load_timeout_cb, impl);
   g_source_set_name_by_id (priv->load_timeout_id, "[ctk+] load_timeout_cb");
   priv->load_state = LOAD_PRELOAD;
 }
@@ -4975,7 +4975,7 @@ file_system_model_got_thumbnail (GObject      *object,
   if (queried == NULL)
     return;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   /* now we know model is valid */
 
@@ -4983,7 +4983,7 @@ file_system_model_got_thumbnail (GObject      *object,
   if (!_ctk_file_system_model_get_iter_for_file (model, &iter, file))
     {
       g_object_unref (queried);
-      gdk_threads_leave ();
+      cdk_threads_leave ();
       return;
     }
 
@@ -4998,7 +4998,7 @@ file_system_model_got_thumbnail (GObject      *object,
   g_object_unref (info);
   g_object_unref (queried);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 }
 
 /* Copied from src/nautilus_file.c:get_description() */
@@ -6382,7 +6382,7 @@ find_good_size_from_style (CtkWidget *widget,
   screen = ctk_widget_get_screen (widget);
   if (screen)
     {
-      resolution = gdk_screen_get_resolution (screen);
+      resolution = cdk_screen_get_resolution (screen);
       if (resolution < 0.0) /* will be -1 if the resolution is not defined in the GdkScreen */
         resolution = 96.0;
     }
@@ -7825,7 +7825,7 @@ recent_start_loading (CtkFileChooserWidget *impl)
   load_data->items = NULL;
 
   /* begin lazy loading the recent files into the model */
-  priv->load_recent_id = gdk_threads_add_idle_full (G_PRIORITY_DEFAULT,
+  priv->load_recent_id = cdk_threads_add_idle_full (G_PRIORITY_DEFAULT,
                                                     recent_idle_load,
                                                     load_data,
                                                     recent_idle_cleanup);

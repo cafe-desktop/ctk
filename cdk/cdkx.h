@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-/* This is a kludge to be able to include gdk/gdkx.h from inside the
+/* This is a kludge to be able to include cdk/cdkx.h from inside the
  * CTK source tree.
  * Also, this hopefully serves as a warning to new backends to put
  * their header into the backend dir from the start.
  */
 
-#include <gdk/x11/gdkx.h>
+#include <cdk/x11/cdkx.h>

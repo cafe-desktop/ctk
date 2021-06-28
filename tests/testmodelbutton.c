@@ -5,9 +5,9 @@ on_action_beep (GSimpleAction *action,
                 GVariant      *parameter,
                 void          *user_data)
 {
-  GdkDisplay *display = gdk_display_get_default ();
+  GdkDisplay *display = cdk_display_get_default ();
   g_assert (GDK_IS_DISPLAY (display));
-  gdk_display_beep (display);
+  cdk_display_beep (display);
 }
 
 static void
@@ -16,7 +16,7 @@ on_application_activate (GApplication *gapplication,
 {
   CtkApplication *application = CTK_APPLICATION (gapplication);
   CtkCssProvider *css_provider = ctk_css_provider_new ();
-  GdkScreen *screen = gdk_screen_get_default ();
+  GdkScreen *screen = cdk_screen_get_default ();
 
   GSimpleAction *action;
   CtkWidget *box;

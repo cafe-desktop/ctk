@@ -481,20 +481,20 @@ guess_refresh_interval (GdkFrameClock *frame_clock)
 
   interval = G_MAXINT64;
 
-  for (i = gdk_frame_clock_get_history_start (frame_clock);
-       i < gdk_frame_clock_get_frame_counter (frame_clock);
+  for (i = cdk_frame_clock_get_history_start (frame_clock);
+       i < cdk_frame_clock_get_frame_counter (frame_clock);
        i++)
     {
       GdkFrameTimings *t, *before;
       gint64 ts, before_ts;
 
-      t = gdk_frame_clock_get_timings (frame_clock, i);
-      before = gdk_frame_clock_get_timings (frame_clock, i - 1);
+      t = cdk_frame_clock_get_timings (frame_clock, i);
+      before = cdk_frame_clock_get_timings (frame_clock, i - 1);
       if (t == NULL || before == NULL)
         continue;
 
-      ts = gdk_frame_timings_get_frame_time (t);
-      before_ts = gdk_frame_timings_get_frame_time (before);
+      ts = cdk_frame_timings_get_frame_time (t);
+      before_ts = cdk_frame_timings_get_frame_time (before);
       if (ts == 0 || before_ts == 0)
         continue;
 
@@ -522,22 +522,22 @@ ctk_fishbowl_do_update (CtkFishbowl *fishbowl)
   if (frame_clock == NULL)
     return;
 
-  start_counter = gdk_frame_clock_get_history_start (frame_clock);
-  end_counter = gdk_frame_clock_get_frame_counter (frame_clock);
-  start = gdk_frame_clock_get_timings (frame_clock, start_counter);
-  for (end = gdk_frame_clock_get_timings (frame_clock, end_counter);
-       end_counter > start_counter && end != NULL && !gdk_frame_timings_get_complete (end);
-       end = gdk_frame_clock_get_timings (frame_clock, end_counter))
+  start_counter = cdk_frame_clock_get_history_start (frame_clock);
+  end_counter = cdk_frame_clock_get_frame_counter (frame_clock);
+  start = cdk_frame_clock_get_timings (frame_clock, start_counter);
+  for (end = cdk_frame_clock_get_timings (frame_clock, end_counter);
+       end_counter > start_counter && end != NULL && !cdk_frame_timings_get_complete (end);
+       end = cdk_frame_clock_get_timings (frame_clock, end_counter))
     end_counter--;
   if (end_counter - start_counter < 4)
     return;
 
-  start_timestamp = gdk_frame_timings_get_presentation_time (start);
-  end_timestamp = gdk_frame_timings_get_presentation_time (end);
+  start_timestamp = cdk_frame_timings_get_presentation_time (start);
+  end_timestamp = cdk_frame_timings_get_presentation_time (end);
   if (start_timestamp == 0 || end_timestamp == 0)
     {
-      start_timestamp = gdk_frame_timings_get_frame_time (start);
-      end_timestamp = gdk_frame_timings_get_frame_time (end);
+      start_timestamp = cdk_frame_timings_get_frame_time (start);
+      end_timestamp = cdk_frame_timings_get_frame_time (end);
     }
 
   n_frames = end_counter - start_counter;
@@ -547,7 +547,7 @@ ctk_fishbowl_do_update (CtkFishbowl *fishbowl)
   if (!priv->benchmark)
     return;
 
-  interval = gdk_frame_timings_get_refresh_interval (end);
+  interval = cdk_frame_timings_get_refresh_interval (end);
   if (interval == 0)
     {
       interval = guess_refresh_interval (frame_clock);
@@ -590,7 +590,7 @@ ctk_fishbowl_tick (CtkWidget     *widget,
   gint64 frame_time, elapsed;
   gboolean do_update;
 
-  frame_time = gdk_frame_clock_get_frame_time (ctk_widget_get_frame_clock (widget));
+  frame_time = cdk_frame_clock_get_frame_time (ctk_widget_get_frame_clock (widget));
   elapsed = frame_time - priv->last_frame_time;
   do_update = frame_time / priv->update_delay != priv->last_frame_time / priv->update_delay;
   priv->last_frame_time = frame_time;

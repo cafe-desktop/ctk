@@ -20,7 +20,7 @@
 #include "ctkimcontextmultipress.h"
 #include <string.h>
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 #include <ctk/ctkimmodule.h>
 
 #define AUTOMATIC_COMPOSE_TIMEOUT 1 /* seconds */
@@ -201,7 +201,7 @@ on_timeout (gpointer data)
 {
   CtkImContextMultipress *multipress_context;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   multipress_context = CTK_IM_CONTEXT_MULTIPRESS (data);
 
@@ -211,7 +211,7 @@ on_timeout (gpointer data)
 
   multipress_context->timeout_id = 0;
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   return G_SOURCE_REMOVE; /* don't call me again */
 }
@@ -291,7 +291,7 @@ vfunc_filter_keypress (CtkIMContext *context, GdkEventKey *event)
               accept_character (multipress_context,
                                 multipress_context->tentative_match);
             }
-          keyval_uchar = gdk_keyval_to_unicode (event->keyval);
+          keyval_uchar = cdk_keyval_to_unicode (event->keyval);
 
           /* Convert to a string for accept_character(). */
           if (keyval_uchar != 0)
@@ -411,7 +411,7 @@ load_config (CtkImContextMultipress *self)
       KeySequence *seq;
       guint        keyval;
 
-      keyval = gdk_keyval_from_name (keys[i]);
+      keyval = cdk_keyval_from_name (keys[i]);
 
       if (keyval == GDK_KEY_VoidSymbol)
         {

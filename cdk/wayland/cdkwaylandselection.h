@@ -26,26 +26,26 @@
 #define __GDK_WAYLAND_SELECTION_H__
 
 #if !defined (__GDKWAYLAND_H_INSIDE__) && !defined (GDK_COMPILATION)
-#error "Only <gdk/gdkwayland.h> can be included directly."
+#error "Only <cdk/cdkwayland.h> can be included directly."
 #endif
 
-#include <gdk/gdk.h>
+#include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
 #if defined (CTK_COMPILATION) || defined (GDK_COMPILATION)
-#define gdk_wayland_selection_add_targets gdk_wayland_selection_add_targets_libctk_only
+#define cdk_wayland_selection_add_targets cdk_wayland_selection_add_targets_libctk_only
 GDK_AVAILABLE_IN_ALL
 void
-gdk_wayland_selection_add_targets (GdkWindow *window,
+cdk_wayland_selection_add_targets (GdkWindow *window,
                                    GdkAtom    selection,
                                    guint      ntargets,
                                    GdkAtom   *targets);
 
-#define gdk_wayland_selection_clear_targets gdk_wayland_selection_clear_targets_libctk_only
+#define cdk_wayland_selection_clear_targets cdk_wayland_selection_clear_targets_libctk_only
 GDK_AVAILABLE_IN_ALL
 void
-gdk_wayland_selection_clear_targets (GdkDisplay *display, GdkAtom selection);
+cdk_wayland_selection_clear_targets (GdkDisplay *display, GdkAtom selection);
 
 #endif
 

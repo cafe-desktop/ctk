@@ -1116,7 +1116,7 @@ ctk_tool_item_group_size_allocate (CtkWidget     *widget,
   ctk_tool_item_group_real_size_allocate (widget, allocation);
 
   if (ctk_widget_get_mapped (widget))
-    gdk_window_invalidate_rect (ctk_widget_get_window (widget), NULL, FALSE);
+    cdk_window_invalidate_rect (ctk_widget_get_window (widget), NULL, FALSE);
 }
 
 static void
@@ -1260,7 +1260,7 @@ ctk_tool_item_group_realize (CtkWidget *widget)
                          | GDK_BUTTON_MOTION_MASK;
   attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
-  window = gdk_window_new (ctk_widget_get_parent_window (widget),
+  window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
 
@@ -1874,7 +1874,7 @@ ctk_tool_item_group_force_expose (CtkToolItemGroup *group)
       area.width = priv->expander_size;
 
       /* ... and invalidated it to get it animated. */
-      gdk_window_invalidate_rect (ctk_widget_get_window (priv->header), &area, TRUE);
+      cdk_window_invalidate_rect (ctk_widget_get_window (priv->header), &area, TRUE);
     }
 
   if (ctk_widget_get_realized (widget))
@@ -1912,7 +1912,7 @@ ctk_tool_item_group_animation_cb (gpointer data)
   gint64 timestamp = ctk_tool_item_group_get_animation_timestamp (group);
   gboolean retval;
 
-  gdk_threads_enter ();
+  cdk_threads_enter ();
 
   /* Enque this early to reduce number of expose events. */
   ctk_widget_queue_resize_no_redraw (CTK_WIDGET (group));
@@ -1925,7 +1925,7 @@ ctk_tool_item_group_animation_cb (gpointer data)
 
   retval = (priv->animation_timeout != NULL);
 
-  gdk_threads_leave ();
+  cdk_threads_leave ();
 
   return retval;
 }

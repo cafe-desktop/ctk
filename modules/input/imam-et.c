@@ -28,7 +28,7 @@
 #include <string.h>
 
 #include <ctk/ctk.h>
-#include <gdk/gdkkeysyms.h>
+#include <cdk/cdkkeysyms.h>
 
 #include "ctk/ctkimmodule.h"
 #include "ctk/ctkintl.h"

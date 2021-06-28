@@ -43,7 +43,7 @@ drag_data_get (CtkWidget        *widget,
                gpointer          data)
 {
   ctk_selection_data_set (selection_data,
-                          gdk_atom_intern_static_string ("CTK_LIST_BOX_ROW"),
+                          cdk_atom_intern_static_string ("CTK_LIST_BOX_ROW"),
                           32,
                           (const guchar *)&widget,
                           sizeof (gpointer));
@@ -126,7 +126,7 @@ main (int argc, char *argv[])
 
   provider = ctk_css_provider_new ();
   ctk_css_provider_load_from_data (provider, css, -1, NULL);
-  ctk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+  ctk_style_context_add_provider_for_screen (cdk_screen_get_default (),
                                              CTK_STYLE_PROVIDER (provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
 

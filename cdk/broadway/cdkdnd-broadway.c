@@ -24,18 +24,18 @@
 
 #include "config.h"
 
-#include "gdkdndprivate.h"
+#include "cdkdndprivate.h"
 
-#include "gdkinternals.h"
-#include "gdkproperty.h"
-#include "gdkprivate-broadway.h"
-#include "gdkinternals.h"
-#include "gdkscreen-broadway.h"
-#include "gdkdisplay-broadway.h"
+#include "cdkinternals.h"
+#include "cdkproperty.h"
+#include "cdkprivate-broadway.h"
+#include "cdkinternals.h"
+#include "cdkscreen-broadway.h"
+#include "cdkdisplay-broadway.h"
 
 #include <string.h>
 
-#define GDK_TYPE_BROADWAY_DRAG_CONTEXT              (gdk_broadway_drag_context_get_type ())
+#define GDK_TYPE_BROADWAY_DRAG_CONTEXT              (cdk_broadway_drag_context_get_type ())
 #define GDK_BROADWAY_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_DRAG_CONTEXT, GdkBroadwayDragContext))
 #define GDK_BROADWAY_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_DRAG_CONTEXT, GdkBroadwayDragContextClass))
 #define GDK_IS_BROADWAY_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_DRAG_CONTEXT))
@@ -49,7 +49,7 @@ typedef GdkDragContext GdkBroadwayDragContext;
 #endif
 typedef struct _GdkBroadwayDragContextClass GdkBroadwayDragContextClass;
 
-GType     gdk_broadway_drag_context_get_type (void);
+GType     cdk_broadway_drag_context_get_type (void);
 
 struct _GdkBroadwayDragContext {
   GdkDragContext context;
@@ -60,32 +60,32 @@ struct _GdkBroadwayDragContextClass
   GdkDragContextClass parent_class;
 };
 
-static void gdk_broadway_drag_context_finalize (GObject *object);
+static void cdk_broadway_drag_context_finalize (GObject *object);
 
 static GList *contexts;
 
-G_DEFINE_TYPE (GdkBroadwayDragContext, gdk_broadway_drag_context, GDK_TYPE_DRAG_CONTEXT)
+G_DEFINE_TYPE (GdkBroadwayDragContext, cdk_broadway_drag_context, GDK_TYPE_DRAG_CONTEXT)
 
 static void
-gdk_broadway_drag_context_init (GdkBroadwayDragContext *dragcontext)
+cdk_broadway_drag_context_init (GdkBroadwayDragContext *dragcontext)
 {
   contexts = g_list_prepend (contexts, dragcontext);
 }
 
 static void
-gdk_broadway_drag_context_finalize (GObject *object)
+cdk_broadway_drag_context_finalize (GObject *object)
 {
   GdkDragContext *context = GDK_DRAG_CONTEXT (object);
 
   contexts = g_list_remove (contexts, context);
 
-  G_OBJECT_CLASS (gdk_broadway_drag_context_parent_class)->finalize (object);
+  G_OBJECT_CLASS (cdk_broadway_drag_context_parent_class)->finalize (object);
 }
 
 /* Drag Contexts */
 
 GdkDragContext *
-_gdk_broadway_window_drag_begin (GdkWindow *window,
+_cdk_broadway_window_drag_begin (GdkWindow *window,
 				 GdkDevice *device,
 				 GList     *targets,
                                  gint       x_root,
@@ -98,20 +98,20 @@ _gdk_broadway_window_drag_begin (GdkWindow *window,
 
   new_context = g_object_new (GDK_TYPE_BROADWAY_DRAG_CONTEXT,
 			      NULL);
-  new_context->display = gdk_window_get_display (window);
+  new_context->display = cdk_window_get_display (window);
 
   return new_context;
 }
 
 GdkDragProtocol
-_gdk_broadway_window_get_drag_protocol (GdkWindow *window,
+_cdk_broadway_window_get_drag_protocol (GdkWindow *window,
 					GdkWindow **target)
 {
   return GDK_DRAG_PROTO_NONE;
 }
 
 static GdkWindow *
-gdk_broadway_drag_context_find_window (GdkDragContext  *context,
+cdk_broadway_drag_context_find_window (GdkDragContext  *context,
 				       GdkWindow       *drag_window,
 				       GdkScreen       *screen,
 				       gint             x_root,
@@ -123,7 +123,7 @@ gdk_broadway_drag_context_find_window (GdkDragContext  *context,
 }
 
 static gboolean
-gdk_broadway_drag_context_drag_motion (GdkDragContext *context,
+cdk_broadway_drag_context_drag_motion (GdkDragContext *context,
 				       GdkWindow      *dest_window,
 				       GdkDragProtocol protocol,
 				       gint            x_root,
@@ -139,14 +139,14 @@ gdk_broadway_drag_context_drag_motion (GdkDragContext *context,
 }
 
 static void
-gdk_broadway_drag_context_drag_drop (GdkDragContext *context,
+cdk_broadway_drag_context_drag_drop (GdkDragContext *context,
 				     guint32         time)
 {
   g_return_if_fail (context != NULL);
 }
 
 static void
-gdk_broadway_drag_context_drag_abort (GdkDragContext *context,
+cdk_broadway_drag_context_drag_abort (GdkDragContext *context,
 				      guint32         time)
 {
   g_return_if_fail (context != NULL);
@@ -155,7 +155,7 @@ gdk_broadway_drag_context_drag_abort (GdkDragContext *context,
 /* Destination side */
 
 static void
-gdk_broadway_drag_context_drag_status (GdkDragContext   *context,
+cdk_broadway_drag_context_drag_status (GdkDragContext   *context,
 				       GdkDragAction     action,
 				       guint32           time)
 {
@@ -163,7 +163,7 @@ gdk_broadway_drag_context_drag_status (GdkDragContext   *context,
 }
 
 static void
-gdk_broadway_drag_context_drop_reply (GdkDragContext   *context,
+cdk_broadway_drag_context_drop_reply (GdkDragContext   *context,
 				      gboolean          ok,
 				      guint32           time)
 {
@@ -171,7 +171,7 @@ gdk_broadway_drag_context_drop_reply (GdkDragContext   *context,
 }
 
 static void
-gdk_broadway_drag_context_drop_finish (GdkDragContext   *context,
+cdk_broadway_drag_context_drop_finish (GdkDragContext   *context,
 				       gboolean          success,
 				       guint32           time)
 {
@@ -179,12 +179,12 @@ gdk_broadway_drag_context_drop_finish (GdkDragContext   *context,
 }
 
 void
-_gdk_broadway_window_register_dnd (GdkWindow      *window)
+_cdk_broadway_window_register_dnd (GdkWindow      *window)
 {
 }
 
 static GdkAtom
-gdk_broadway_drag_context_get_selection (GdkDragContext *context)
+cdk_broadway_drag_context_get_selection (GdkDragContext *context)
 {
   g_return_val_if_fail (context != NULL, GDK_NONE);
 
@@ -192,7 +192,7 @@ gdk_broadway_drag_context_get_selection (GdkDragContext *context)
 }
 
 static gboolean
-gdk_broadway_drag_context_drop_status (GdkDragContext *context)
+cdk_broadway_drag_context_drop_status (GdkDragContext *context)
 {
   g_return_val_if_fail (context != NULL, FALSE);
 
@@ -200,25 +200,25 @@ gdk_broadway_drag_context_drop_status (GdkDragContext *context)
 }
 
 void
-_gdk_broadway_display_init_dnd (GdkDisplay *display)
+_cdk_broadway_display_init_dnd (GdkDisplay *display)
 {
 }
 
 static void
-gdk_broadway_drag_context_class_init (GdkBroadwayDragContextClass *klass)
+cdk_broadway_drag_context_class_init (GdkBroadwayDragContextClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GdkDragContextClass *context_class = GDK_DRAG_CONTEXT_CLASS (klass);
 
-  object_class->finalize = gdk_broadway_drag_context_finalize;
+  object_class->finalize = cdk_broadway_drag_context_finalize;
 
-  context_class->find_window = gdk_broadway_drag_context_find_window;
-  context_class->drag_status = gdk_broadway_drag_context_drag_status;
-  context_class->drag_motion = gdk_broadway_drag_context_drag_motion;
-  context_class->drag_abort = gdk_broadway_drag_context_drag_abort;
-  context_class->drag_drop = gdk_broadway_drag_context_drag_drop;
-  context_class->drop_reply = gdk_broadway_drag_context_drop_reply;
-  context_class->drop_finish = gdk_broadway_drag_context_drop_finish;
-  context_class->drop_status = gdk_broadway_drag_context_drop_status;
-  context_class->get_selection = gdk_broadway_drag_context_get_selection;
+  context_class->find_window = cdk_broadway_drag_context_find_window;
+  context_class->drag_status = cdk_broadway_drag_context_drag_status;
+  context_class->drag_motion = cdk_broadway_drag_context_drag_motion;
+  context_class->drag_abort = cdk_broadway_drag_context_drag_abort;
+  context_class->drag_drop = cdk_broadway_drag_context_drag_drop;
+  context_class->drop_reply = cdk_broadway_drag_context_drop_reply;
+  context_class->drop_finish = cdk_broadway_drag_context_drop_finish;
+  context_class->drop_status = cdk_broadway_drag_context_drop_status;
+  context_class->get_selection = cdk_broadway_drag_context_get_selection;
 }

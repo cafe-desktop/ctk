@@ -12,7 +12,7 @@ text_activated (CtkEntry *entry, gpointer data)
   text = ctk_entry_get_text (entry);
 
   g_signal_handlers_block_by_func (entry, rgba_changed, entry);
-  if (gdk_rgba_parse (&rgba, text))
+  if (cdk_rgba_parse (&rgba, text))
     ctk_color_chooser_set_rgba (chooser, &rgba);
   g_signal_handlers_unblock_by_func (entry, rgba_changed, entry);
 }
@@ -25,7 +25,7 @@ rgba_changed (CtkColorChooser *chooser, GParamSpec *pspec, gpointer data)
   char *s;
 
   ctk_color_chooser_get_rgba (chooser, &color);
-  s = gdk_rgba_to_string (&color);
+  s = cdk_rgba_to_string (&color);
 
   g_signal_handlers_block_by_func (entry, text_activated, chooser);
   ctk_entry_set_text (CTK_ENTRY (entry), s);

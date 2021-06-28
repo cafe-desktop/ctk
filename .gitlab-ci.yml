@@ -56,12 +56,12 @@ reference:
     EXTRA_MESON_FLAGS: "--buildtype=release -Dgtk_doc=true -Dman=true"
   script:
     - bash -x ./.gitlab-ci/test-docker-meson.sh
-    - ninja -C _build gdk3-doc ctk3-doc
-    - tar -c -J -f gdk3-docs.tar.xz _build/docs/reference/gdk
+    - ninja -C _build cdk3-doc ctk3-doc
+    - tar -c -J -f cdk3-docs.tar.xz _build/docs/reference/cdk
     - tar -c -J -f ctk3-docs.tar.xz _build/docs/reference/ctk
   artifacts:
     paths:
-      - gdk3-docs.tar.xz
+      - cdk3-docs.tar.xz
       - ctk3-docs.tar.xz
 
 msys2-mingw64-meson:

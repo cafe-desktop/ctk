@@ -230,7 +230,7 @@ create_tree (gboolean rtl)
 
   /* Empty column */
 
-  pixbuf = gdk_pixbuf_new_from_file ("apple-red.png", NULL);
+  pixbuf = cdk_pixbuf_new_from_file ("apple-red.png", NULL);
 
   renderer = ctk_cell_renderer_pixbuf_new ();
   g_object_set (renderer,
