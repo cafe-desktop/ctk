@@ -4596,7 +4596,7 @@ icon_from_list (GList *list,
     }
 
   if (best == NULL)
-    best = gdk_pixbuf_scale_simple (CDK_PIXBUF (list->data), size, size, CDK_INTERP_BILINEAR);
+    best = gdk_pixbuf_scale_simple (GDK_PIXBUF (list->data), size, size, CDK_INTERP_BILINEAR);
 
   return best;
 }
@@ -4888,7 +4888,7 @@ ctk_window_get_icon (CtkWindow  *window)
 
   info = get_icon_info (window);
   if (info && info->icon_list)
-    return CDK_PIXBUF (info->icon_list->data);
+    return GDK_PIXBUF (info->icon_list->data);
   else
     return NULL;
 }

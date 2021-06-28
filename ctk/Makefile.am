@@ -1673,11 +1673,11 @@ ctk_query_immodules_3_0_LDADD = 		\
 	$(CTK_DEP_LIBS)
 
 ctk_update_icon_cache_SOURCES = updateiconcache.c
-ctk_update_icon_cache_LDADD = $(CDK_PIXBUF_LIBS)
+ctk_update_icon_cache_LDADD = $(GDK_PIXBUF_LIBS)
 
 ctk_encode_symbolic_svg_SOURCES = encodesymbolic.c
 ctk_encode_symbolic_svg_LDADD =			\
-	$(CDK_PIXBUF_LIBS)			\
+	$(GDK_PIXBUF_LIBS)			\
 	$(top_builddir)/cdk/libcdk-3.la		\
 	$(CTK_DEP_LIBS)
 

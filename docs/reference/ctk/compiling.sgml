@@ -86,7 +86,7 @@ CTK_DISABLE_DEPRECATED is still used for deprecated macros,
 enumeration values, etc. To detect uses of these in your code,
 use the commandline option <literal>-DCTK_DISABLE_DEPRECATED</literal>.
 There are similar symbols CDK_DISABLE_DEPRECATED,
-CDK_PIXBUF_DISABLE_DEPRECATED and G_DISABLE_DEPRECATED for CDK, GdkPixbuf and
+GDK_PIXBUF_DISABLE_DEPRECATED and G_DISABLE_DEPRECATED for CDK, GdkPixbuf and
 GLib.
 </para>
 

@@ -97,14 +97,14 @@ all:	\
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
-	@if not "$(CDK_PIXBUF_PIXDATA)" == "" set CDK_PIXBUF_PIXDATA=$(CDK_PIXBUF_PIXDATA)
+	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
 	@start /min $(GLIB_COMPILE_RESOURCES) $(CDK_RESOURCES_ARGS) --generate-header
 
 ..\cdk\cdkresources.c: ..\cdk\cdk.gresource.xml $(CDK_RESOURCES)
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
-	@if not "$(CDK_PIXBUF_PIXDATA)" == "" set CDK_PIXBUF_PIXDATA=$(CDK_PIXBUF_PIXDATA)
+	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
 	@start /min $(GLIB_COMPILE_RESOURCES) $(CDK_RESOURCES_ARGS) --generate-source
 
 ..\ctk\libctk3.manifest: ..\ctk\libctk3.manifest.in
@@ -164,14 +164,14 @@ all:	\
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
-	@if not "$(CDK_PIXBUF_PIXDATA)" == "" set CDK_PIXBUF_PIXDATA=$(CDK_PIXBUF_PIXDATA)
+	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
 	@start /min $(GLIB_COMPILE_RESOURCES) $(CTK_RESOURCES_ARGS) --generate-header
 
 ..\ctk\ctkresources.c: ..\ctk\ctk.gresource.xml $(CTK_RESOURCES)
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
-	@if not "$(CDK_PIXBUF_PIXDATA)" == "" set CDK_PIXBUF_PIXDATA=$(CDK_PIXBUF_PIXDATA)
+	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
 	@start /min $(GLIB_COMPILE_RESOURCES) $(CTK_RESOURCES_ARGS) --generate-source
 
 ..\ctk\ctkmarshalers.h: ..\ctk\ctkmarshalers.list

@@ -373,7 +373,7 @@ nevertheless.
 </para>
 
 <formalpara>
-  <title><envar>CDK_PIXBUF_MODULE_FILE</envar></title>
+  <title><envar>GDK_PIXBUF_MODULE_FILE</envar></title>
 
   <para>
     Specifies the file listing the GdkPixbuf loader modules to load.

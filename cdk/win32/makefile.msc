@@ -22,7 +22,7 @@ DEFINES = \
 
 INCLUDES = -FImsvc_recommended_pragmas.h \
 	-I. -I.. -I..\.. $(GLIB_CFLAGS) $(PANGO_CFLAGS) $(CAIRO_CFLAGS) \
-	$(CDK_PIXBUF_CFLAGS) -I$(WTKIT)\include -I$(GLIB) \
+	$(GDK_PIXBUF_CFLAGS) -I$(WTKIT)\include -I$(GLIB) \
 
 all: \
 	..\..\config.h	\
