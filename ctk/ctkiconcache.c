@@ -510,7 +510,7 @@ _ctk_icon_cache_get_icon (CtkIconCache *cache,
   length = GET_UINT32 (cache->buffer, pixel_data_offset + 4);
   
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (!cdk_pixdata_deserialize (&pixdata, length, 
+  if (!gdk_pixdata_deserialize (&pixdata, length, 
 				(guchar *)(cache->buffer + pixel_data_offset + 8),
 				&error))
     {
