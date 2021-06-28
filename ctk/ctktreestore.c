@@ -309,7 +309,7 @@ ctk_tree_store_init (CtkTreeStore *tree_store)
  * are supported.
  *
  * As an example, `ctk_tree_store_new (3, G_TYPE_INT, G_TYPE_STRING,
- * CDK_TYPE_PIXBUF);` will create a new #CtkTreeStore with three columns, of type
+ * GDK_TYPE_PIXBUF);` will create a new #CtkTreeStore with three columns, of type
  * #gint, #gchararray, and #GdkPixbuf respectively.
  *
  * Returns: a new #CtkTreeStore
@@ -444,7 +444,7 @@ ctk_tree_store_set_n_columns (CtkTreeStore *tree_store,
  * Supported types include: %G_TYPE_UINT, %G_TYPE_INT, %G_TYPE_UCHAR,
  * %G_TYPE_CHAR, %G_TYPE_BOOLEAN, %G_TYPE_POINTER, %G_TYPE_FLOAT,
  * %G_TYPE_DOUBLE, %G_TYPE_STRING, %G_TYPE_OBJECT, and %G_TYPE_BOXED, along with
- * subclasses of those types such as %CDK_TYPE_PIXBUF.
+ * subclasses of those types such as %GDK_TYPE_PIXBUF.
  *
  **/
 static void

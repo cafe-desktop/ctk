@@ -1122,7 +1122,7 @@ ctk_entry_class_init (CtkEntryClass *class)
       g_param_spec_object ("primary-icon-pixbuf",
                            P_("Primary pixbuf"),
                            P_("Primary pixbuf for the entry"),
-                           CDK_TYPE_PIXBUF,
+                           GDK_TYPE_PIXBUF,
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
@@ -1136,7 +1136,7 @@ ctk_entry_class_init (CtkEntryClass *class)
       g_param_spec_object ("secondary-icon-pixbuf",
                            P_("Secondary pixbuf"),
                            P_("Secondary pixbuf for the entry"),
-                           CDK_TYPE_PIXBUF,
+                           GDK_TYPE_PIXBUF,
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**

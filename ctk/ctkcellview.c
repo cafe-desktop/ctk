@@ -1188,7 +1188,7 @@ ctk_cell_view_new_with_pixbuf (GdkPixbuf *pixbuf)
   ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (cellview),
 			      renderer, TRUE);
 
-  g_value_init (&value, CDK_TYPE_PIXBUF);
+  g_value_init (&value, GDK_TYPE_PIXBUF);
   g_value_set_object (&value, pixbuf);
   ctk_cell_view_set_value (cellview, renderer, "pixbuf", &value);
   g_value_unset (&value);

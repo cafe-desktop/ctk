@@ -840,7 +840,7 @@ ctk_window_class_init (CtkWindowClass *klass)
       g_param_spec_object ("icon",
                            P_("Icon"),
                            P_("Icon for this window"),
-                           CDK_TYPE_PIXBUF,
+                           GDK_TYPE_PIXBUF,
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**

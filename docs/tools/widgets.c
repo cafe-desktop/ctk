@@ -555,7 +555,7 @@ create_icon_view (void)
 
   widget = ctk_frame_new (NULL);
   ctk_frame_set_shadow_type (CTK_FRAME (widget), CTK_SHADOW_IN);
-  list_store = ctk_list_store_new (2, G_TYPE_STRING, CDK_TYPE_PIXBUF);
+  list_store = ctk_list_store_new (2, G_TYPE_STRING, GDK_TYPE_PIXBUF);
   ctk_list_store_append (list_store, &iter);
   pixbuf = gdk_pixbuf_new_from_file ("folder.png", NULL);
   ctk_list_store_set (list_store, &iter, 0, "One", 1, pixbuf, -1);

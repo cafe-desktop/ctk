@@ -119,7 +119,7 @@ main (int argc, char **argv)
 	  all_types[i] != CDK_TYPE_X11_GL_CONTEXT &&
 #endif
 	  /* Not allowed to finalize a GdkPixbufLoader without calling gdk_pixbuf_loader_close() */
-	  all_types[i] != CDK_TYPE_PIXBUF_LOADER &&
+	  all_types[i] != GDK_TYPE_PIXBUF_LOADER &&
 	  all_types[i] != CDK_TYPE_DRAWING_CONTEXT &&
 	  all_types[i] != gdk_pixbuf_simple_anim_iter_get_type())
 	{

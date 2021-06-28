@@ -129,7 +129,7 @@ create_completion_model (void)
 
   pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **)book_closed_xpm);
 
-  store = ctk_list_store_new (2, CDK_TYPE_PIXBUF, G_TYPE_STRING);
+  store = ctk_list_store_new (2, GDK_TYPE_PIXBUF, G_TYPE_STRING);
 
   ctk_list_store_append (store, &iter);
   ctk_list_store_set (store, &iter, 0, pixbuf, 1, "ambient", -1);

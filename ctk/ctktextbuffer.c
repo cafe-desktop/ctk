@@ -344,7 +344,7 @@ ctk_text_buffer_class_init (CtkTextBufferClass *klass)
                   G_TYPE_NONE,
                   2,
                   CTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
-                  CDK_TYPE_PIXBUF);
+                  GDK_TYPE_PIXBUF);
   g_signal_set_va_marshaller (signals[INSERT_PIXBUF],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__BOXED_OBJECTv);

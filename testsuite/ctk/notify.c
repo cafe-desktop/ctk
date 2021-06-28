@@ -387,7 +387,7 @@ test_type (gconstpointer data)
 
   /* These can't be freely constructed/destroyed */
   if (g_type_is_a (type, CTK_TYPE_APPLICATION) ||
-      g_type_is_a (type, CDK_TYPE_PIXBUF_LOADER) ||
+      g_type_is_a (type, GDK_TYPE_PIXBUF_LOADER) ||
       g_type_is_a (type, CDK_TYPE_DRAWING_CONTEXT) ||
 #ifdef G_OS_UNIX
       g_type_is_a (type, CTK_TYPE_PRINT_JOB) ||
