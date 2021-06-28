@@ -1824,7 +1824,7 @@ ctk_status_icon_set_from_pixbuf (CtkStatusIcon *status_icon,
 				 GdkPixbuf     *pixbuf)
 {
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
-  g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
 
   ctk_status_icon_take_image (status_icon,
       			      ctk_image_definition_new_pixbuf (pixbuf, 1));

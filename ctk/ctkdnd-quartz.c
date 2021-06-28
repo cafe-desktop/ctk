@@ -1439,7 +1439,7 @@ ctk_drag_set_icon_pixbuf  (CdkDragContext *context,
 			   gint            hot_y)
 {
   g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
-  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
 
   set_icon_stock_pixbuf (context, NULL, pixbuf, hot_x, hot_y);
 }

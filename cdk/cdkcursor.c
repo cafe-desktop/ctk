@@ -343,7 +343,7 @@ cdk_cursor_new_from_pixbuf (CdkDisplay *display,
   CdkCursor *cursor;
  
   g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
-  g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
+  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
 
   if (x == -1 && (option = gdk_pixbuf_get_option (pixbuf, "x_hot")))
     {

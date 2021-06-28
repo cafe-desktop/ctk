@@ -4782,7 +4782,7 @@ ctk_window_set_icon (CtkWindow  *window,
   GList *list;
   
   g_return_if_fail (CTK_IS_WINDOW (window));
-  g_return_if_fail (icon == NULL || CDK_IS_PIXBUF (icon));
+  g_return_if_fail (icon == NULL || GDK_IS_PIXBUF (icon));
 
   list = NULL;
 
@@ -5019,7 +5019,7 @@ ctk_window_set_default_icon (GdkPixbuf *icon)
 {
   GList *list;
   
-  g_return_if_fail (CDK_IS_PIXBUF (icon));
+  g_return_if_fail (GDK_IS_PIXBUF (icon));
 
   list = g_list_prepend (NULL, icon);
   ctk_window_set_default_icon_list (list);
