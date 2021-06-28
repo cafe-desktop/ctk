@@ -672,12 +672,12 @@ pixbuf_supports_svg (void)
   if (found_svg != -1)
     return found_svg;
 
-  formats = cdk_pixbuf_get_formats ();
+  formats = gdk_pixbuf_get_formats ();
 
   found_svg = FALSE; 
   for (tmp_list = formats; tmp_list && !found_svg; tmp_list = tmp_list->next)
     {
-      gchar **mime_types = cdk_pixbuf_format_get_mime_types (tmp_list->data);
+      gchar **mime_types = gdk_pixbuf_format_get_mime_types (tmp_list->data);
       gchar **mime_type;
       
       for (mime_type = mime_types; *mime_type && !found_svg; mime_type++)
@@ -2272,7 +2272,7 @@ ctk_icon_theme_error_quark (void)
  * update the icon. This is usually done by connecting to the
  * CtkWidget::style-set signal. If for some reason you do not want to
  * update the icon when the icon theme changes, you should consider
- * using cdk_pixbuf_copy() to make a private copy of the pixbuf
+ * using gdk_pixbuf_copy() to make a private copy of the pixbuf
  * returned by this function. Otherwise CTK+ may need to keep the old
  * icon theme loaded, which would be a waste of memory.
  *
@@ -2321,7 +2321,7 @@ ctk_icon_theme_load_icon (CtkIconTheme         *icon_theme,
  * update the icon. This is usually done by connecting to the
  * CtkWidget::style-set signal. If for some reason you do not want to
  * update the icon when the icon theme changes, you should consider
- * using cdk_pixbuf_copy() to make a private copy of the pixbuf
+ * using gdk_pixbuf_copy() to make a private copy of the pixbuf
  * returned by this function. Otherwise CTK+ may need to keep the old
  * icon theme loaded, which would be a waste of memory.
  *
@@ -3748,8 +3748,8 @@ apply_emblems_to_pixbuf (GdkPixbuf   *pixbuf,
   if (info->emblem_infos == NULL)
     return NULL;
 
-  w = cdk_pixbuf_get_width (pixbuf);
-  h = cdk_pixbuf_get_height (pixbuf);
+  w = gdk_pixbuf_get_width (pixbuf);
+  h = gdk_pixbuf_get_height (pixbuf);
 
   for (l = info->emblem_infos, pos = 0; l; l = l->next, pos++)
     {
@@ -3762,8 +3762,8 @@ apply_emblems_to_pixbuf (GdkPixbuf   *pixbuf,
           gint x = 0, y = 0; /* silence compiler */
           gdouble scale;
 
-          ew = cdk_pixbuf_get_width (emblem);
-          eh = cdk_pixbuf_get_height (emblem);
+          ew = gdk_pixbuf_get_width (emblem);
+          eh = gdk_pixbuf_get_height (emblem);
           if (ew >= w)
             {
               scale = 0.75;
@@ -3795,12 +3795,12 @@ apply_emblems_to_pixbuf (GdkPixbuf   *pixbuf,
 
           if (icon == NULL)
             {
-              icon = cdk_pixbuf_copy (pixbuf);
+              icon = gdk_pixbuf_copy (pixbuf);
               if (icon == NULL)
                 break;
             }
 
-          cdk_pixbuf_composite (emblem, icon, x, y, ew, eh, x, y,
+          gdk_pixbuf_composite (emblem, icon, x, y, ew, eh, x, y,
                                 scale, scale, CDK_INTERP_BILINEAR, 255);
        }
    }
@@ -3921,16 +3921,16 @@ icon_info_ensure_scale_and_pixbuf (CtkIconInfo *icon_info)
             size = icon_info->dir_size * dir_scale * icon_info->scale;
 
           if (size == 0)
-            source_pixbuf = _cdk_pixbuf_new_from_resource_scaled (icon_info->filename,
+            source_pixbuf = _gdk_pixbuf_new_from_resource_scaled (icon_info->filename,
                                                                   icon_info->desired_scale,
                                                                   &icon_info->load_error);
           else
-            source_pixbuf = cdk_pixbuf_new_from_resource_at_scale (icon_info->filename,
+            source_pixbuf = gdk_pixbuf_new_from_resource_at_scale (icon_info->filename,
                                                                    size, size, TRUE,
                                                                    &icon_info->load_error);
         }
       else
-        source_pixbuf = cdk_pixbuf_new_from_resource (icon_info->filename,
+        source_pixbuf = gdk_pixbuf_new_from_resource (icon_info->filename,
                                                       &icon_info->load_error);
     }
   else
@@ -3956,18 +3956,18 @@ icon_info_ensure_scale_and_pixbuf (CtkIconInfo *icon_info)
               else
                 size = icon_info->dir_size * dir_scale * icon_info->scale;
               if (size == 0)
-                source_pixbuf = _cdk_pixbuf_new_from_stream_scaled (stream,
+                source_pixbuf = _gdk_pixbuf_new_from_stream_scaled (stream,
                                                                     icon_info->desired_scale,
                                                                     NULL,
                                                                     &icon_info->load_error);
               else
-                source_pixbuf = cdk_pixbuf_new_from_stream_at_scale (stream,
+                source_pixbuf = gdk_pixbuf_new_from_stream_at_scale (stream,
                                                                      size, size,
                                                                      TRUE, NULL,
                                                                      &icon_info->load_error);
             }
           else
-            source_pixbuf = cdk_pixbuf_new_from_stream (stream,
+            source_pixbuf = gdk_pixbuf_new_from_stream (stream,
                                                         NULL,
                                                         &icon_info->load_error);
           g_object_unref (stream);
@@ -4002,8 +4002,8 @@ icon_info_ensure_scale_and_pixbuf (CtkIconInfo *icon_info)
 
   /* Do scale calculations that depend on the image size
    */
-  image_width = cdk_pixbuf_get_width (source_pixbuf);
-  image_height = cdk_pixbuf_get_height (source_pixbuf);
+  image_width = gdk_pixbuf_get_width (source_pixbuf);
+  image_height = gdk_pixbuf_get_height (source_pixbuf);
   image_size = MAX (image_width, image_height);
 
   if (icon_info->is_svg)
@@ -4026,7 +4026,7 @@ icon_info_ensure_scale_and_pixbuf (CtkIconInfo *icon_info)
     icon_info->pixbuf = source_pixbuf;
   else
     {
-      icon_info->pixbuf = cdk_pixbuf_scale_simple (source_pixbuf,
+      icon_info->pixbuf = gdk_pixbuf_scale_simple (source_pixbuf,
                                                    MAX (1, 0.5 + image_width * icon_info->scale),
                                                    MAX (1, 0.5 + image_height * icon_info->scale),
                                                    CDK_INTERP_BILINEAR);
@@ -4114,13 +4114,13 @@ ctk_icon_info_load_icon (CtkIconInfo *icon_info,
     return g_object_ref (icon_info->proxy_pixbuf);
 
   icon_info->proxy_pixbuf =
-    cdk_pixbuf_new_from_data (cdk_pixbuf_get_pixels (icon_info->pixbuf),
-                              cdk_pixbuf_get_colorspace (icon_info->pixbuf),
-                              cdk_pixbuf_get_has_alpha (icon_info->pixbuf),
-                              cdk_pixbuf_get_bits_per_sample (icon_info->pixbuf),
-                              cdk_pixbuf_get_width (icon_info->pixbuf),
-                              cdk_pixbuf_get_height (icon_info->pixbuf),
-                              cdk_pixbuf_get_rowstride (icon_info->pixbuf),
+    gdk_pixbuf_new_from_data (gdk_pixbuf_get_pixels (icon_info->pixbuf),
+                              gdk_pixbuf_get_colorspace (icon_info->pixbuf),
+                              gdk_pixbuf_get_has_alpha (icon_info->pixbuf),
+                              gdk_pixbuf_get_bits_per_sample (icon_info->pixbuf),
+                              gdk_pixbuf_get_width (icon_info->pixbuf),
+                              gdk_pixbuf_get_height (icon_info->pixbuf),
+                              gdk_pixbuf_get_rowstride (icon_info->pixbuf),
                               proxy_pixbuf_destroy,
                               g_object_ref (icon_info));
 
@@ -4298,7 +4298,7 @@ proxy_symbolic_pixbuf_destroy (guchar   *pixels,
        symbolic_cache = symbolic_cache->next)
     {
       if (symbolic_cache->proxy_pixbuf != NULL &&
-          cdk_pixbuf_get_pixels (symbolic_cache->proxy_pixbuf) == pixels)
+          gdk_pixbuf_get_pixels (symbolic_cache->proxy_pixbuf) == pixels)
         break;
     }
 
@@ -4322,13 +4322,13 @@ symbolic_cache_get_proxy (SymbolicPixbufCache *symbolic_cache,
     return g_object_ref (symbolic_cache->proxy_pixbuf);
 
   symbolic_cache->proxy_pixbuf =
-    cdk_pixbuf_new_from_data (cdk_pixbuf_get_pixels (symbolic_cache->pixbuf),
-                              cdk_pixbuf_get_colorspace (symbolic_cache->pixbuf),
-                              cdk_pixbuf_get_has_alpha (symbolic_cache->pixbuf),
-                              cdk_pixbuf_get_bits_per_sample (symbolic_cache->pixbuf),
-                              cdk_pixbuf_get_width (symbolic_cache->pixbuf),
-                              cdk_pixbuf_get_height (symbolic_cache->pixbuf),
-                              cdk_pixbuf_get_rowstride (symbolic_cache->pixbuf),
+    gdk_pixbuf_new_from_data (gdk_pixbuf_get_pixels (symbolic_cache->pixbuf),
+                              gdk_pixbuf_get_colorspace (symbolic_cache->pixbuf),
+                              gdk_pixbuf_get_has_alpha (symbolic_cache->pixbuf),
+                              gdk_pixbuf_get_bits_per_sample (symbolic_cache->pixbuf),
+                              gdk_pixbuf_get_width (symbolic_cache->pixbuf),
+                              gdk_pixbuf_get_height (symbolic_cache->pixbuf),
+                              gdk_pixbuf_get_rowstride (symbolic_cache->pixbuf),
                               proxy_symbolic_pixbuf_destroy,
                               g_object_ref (icon_info));
 
@@ -4377,16 +4377,16 @@ ctk_icon_theme_color_symbolic_pixbuf (GdkPixbuf     *symbolic,
   rgba_to_pixel (warning_color, warning_pixel);
   rgba_to_pixel (error_color, error_pixel);
 
-  width = cdk_pixbuf_get_width (symbolic);
-  height = cdk_pixbuf_get_height (symbolic);
+  width = gdk_pixbuf_get_width (symbolic);
+  height = gdk_pixbuf_get_height (symbolic);
 
-  colored = cdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, width, height);
+  colored = gdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, width, height);
 
-  src_stride = cdk_pixbuf_get_rowstride (symbolic);
-  src_data = cdk_pixbuf_get_pixels (symbolic);
+  src_stride = gdk_pixbuf_get_rowstride (symbolic);
+  src_data = gdk_pixbuf_get_pixels (symbolic);
 
-  dst_data = cdk_pixbuf_get_pixels (colored);
-  dst_stride = cdk_pixbuf_get_rowstride (colored);
+  dst_data = gdk_pixbuf_get_pixels (colored);
+  dst_stride = gdk_pixbuf_get_rowstride (colored);
 
   for (y = 0; y < height; y++)
     {
@@ -4542,7 +4542,7 @@ ctk_icon_info_load_symbolic_svg (CtkIconInfo    *icon_info,
     {
       /* Fetch size from the original icon */
       stream = g_memory_input_stream_new_from_data (file_data, file_len, NULL);
-      pixbuf = cdk_pixbuf_new_from_stream (stream, NULL, error);
+      pixbuf = gdk_pixbuf_new_from_stream (stream, NULL, error);
       g_object_unref (stream);
 
       if (!pixbuf)
@@ -4555,8 +4555,8 @@ ctk_icon_info_load_symbolic_svg (CtkIconInfo    *icon_info,
           return NULL;
         }
 
-      icon_info->symbolic_width = cdk_pixbuf_get_width (pixbuf);
-      icon_info->symbolic_height = cdk_pixbuf_get_height (pixbuf);
+      icon_info->symbolic_width = gdk_pixbuf_get_width (pixbuf);
+      icon_info->symbolic_height = gdk_pixbuf_get_height (pixbuf);
       g_object_unref (pixbuf);
     }
 
@@ -4613,9 +4613,9 @@ ctk_icon_info_load_symbolic_svg (CtkIconInfo    *icon_info,
   g_free (height);
 
   stream = g_memory_input_stream_new_from_data (data, -1, g_free);
-  pixbuf = cdk_pixbuf_new_from_stream_at_scale (stream,
-                                                cdk_pixbuf_get_width (icon_info->pixbuf),
-                                                cdk_pixbuf_get_height (icon_info->pixbuf),
+  pixbuf = gdk_pixbuf_new_from_stream_at_scale (stream,
+                                                gdk_pixbuf_get_width (icon_info->pixbuf),
+                                                gdk_pixbuf_get_height (icon_info->pixbuf),
                                                 TRUE,
                                                 NULL,
                                                 error);
@@ -5340,7 +5340,7 @@ ctk_icon_info_get_display_name (CtkIconInfo *icon_info)
  * that the icon is generally available.
  *
  * This function will generally be used with pixbufs loaded
- * via cdk_pixbuf_new_from_inline().
+ * via gdk_pixbuf_new_from_inline().
  *
  * Since: 2.4
  *
@@ -5529,12 +5529,12 @@ ctk_icon_theme_lookup_by_gicon_for_scale (CtkIconTheme       *icon_theme,
           gdouble pixbuf_scale;
           GdkPixbuf *scaled;
 
-          width = cdk_pixbuf_get_width (pixbuf);
-          height = cdk_pixbuf_get_height (pixbuf);
+          width = gdk_pixbuf_get_width (pixbuf);
+          height = gdk_pixbuf_get_height (pixbuf);
           max = MAX (width, height);
           pixbuf_scale = (gdouble) size * scale / (gdouble) max;
 
-          scaled = cdk_pixbuf_scale_simple (pixbuf,
+          scaled = gdk_pixbuf_scale_simple (pixbuf,
                                             0.5 + width * pixbuf_scale,
                                             0.5 + height * pixbuf_scale,
                                             CDK_INTERP_BILINEAR);

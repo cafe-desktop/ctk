@@ -771,9 +771,9 @@ cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
       if (!GDI_CALL (GetDIBits, (hdc, ii.hbmColor, 0, h, bits, (BITMAPINFO *)&bmi, DIB_RGB_COLORS)))
 	goto out2;
 
-      pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, w, h);
-      pixels = cdk_pixbuf_get_pixels (pixbuf);
-      rowstride = cdk_pixbuf_get_rowstride (pixbuf);
+      pixbuf = gdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, w, h);
+      pixels = gdk_pixbuf_get_pixels (pixbuf);
+      rowstride = gdk_pixbuf_get_rowstride (pixbuf);
       no_alpha = TRUE;
       for (y = 0; y < h; y++)
 	{
@@ -794,7 +794,7 @@ cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
       if (no_alpha &&
 	  GDI_CALL (GetDIBits, (hdc, ii.hbmMask, 0, h, bits, (BITMAPINFO *)&bmi, DIB_RGB_COLORS)))
 	{
-	  pixels = cdk_pixbuf_get_pixels (pixbuf);
+	  pixels = gdk_pixbuf_get_pixels (pixbuf);
 	  for (y = 0; y < h; y++)
 	    {
 	      for (x = 0; x < w; x++)
@@ -824,9 +824,9 @@ cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
       if (!GDI_CALL (GetDIBits, (hdc, ii.hbmMask, 0, h*2, bits, (BITMAPINFO *)&bmi, DIB_RGB_COLORS)))
 	goto out2;
 
-      pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, w, h);
-      pixels = cdk_pixbuf_get_pixels (pixbuf);
-      rowstride = cdk_pixbuf_get_rowstride (pixbuf);
+      pixbuf = gdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, w, h);
+      pixels = gdk_pixbuf_get_pixels (pixbuf);
+      rowstride = gdk_pixbuf_get_rowstride (pixbuf);
       bpl = ((w-1)/32 + 1)*4;
 #if 0
       for (y = 0; y < h*2; y++)
@@ -932,15 +932,15 @@ _cdk_win32_display_get_cursor_for_surface (CdkDisplay      *display,
 
   width = cairo_image_surface_get_width (surface);
   height = cairo_image_surface_get_height (surface);
-  pixbuf = cdk_pixbuf_get_from_surface (surface,
+  pixbuf = gdk_pixbuf_get_from_surface (surface,
                                         0,
                                         0,
                                         width,
                                         height);
 
   g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
-  g_return_val_if_fail (0 <= x && x < cdk_pixbuf_get_width (pixbuf), NULL);
-  g_return_val_if_fail (0 <= y && y < cdk_pixbuf_get_height (pixbuf), NULL);
+  g_return_val_if_fail (0 <= x && x < gdk_pixbuf_get_width (pixbuf), NULL);
+  g_return_val_if_fail (0 <= y && y < gdk_pixbuf_get_height (pixbuf), NULL);
 
   hcursor = _cdk_win32_pixbuf_to_hcursor (pixbuf, x, y);
 
@@ -1089,8 +1089,8 @@ pixbuf_to_hbitmaps_alpha_winxp (GdkPixbuf *pixbuf,
   gint width, height, size, i, i_offset, j, j_offset, rowstride;
   guint maskstride, mask_bit;
 
-  width = cdk_pixbuf_get_width (pixbuf); /* width of icon */
-  height = cdk_pixbuf_get_height (pixbuf); /* height of icon */
+  width = gdk_pixbuf_get_width (pixbuf); /* width of icon */
+  height = gdk_pixbuf_get_height (pixbuf); /* height of icon */
 
   /* The bitmaps are created square */
   size = MAX (width, height);
@@ -1108,8 +1108,8 @@ pixbuf_to_hbitmaps_alpha_winxp (GdkPixbuf *pixbuf,
   /* MSDN says mask rows are aligned to "LONG" boundaries */
   maskstride = (((size + 31) & ~31) >> 3);
 
-  indata = cdk_pixbuf_get_pixels (pixbuf);
-  rowstride = cdk_pixbuf_get_rowstride (pixbuf);
+  indata = gdk_pixbuf_get_pixels (pixbuf);
+  rowstride = gdk_pixbuf_get_rowstride (pixbuf);
 
   if (width > height)
     {
@@ -1168,8 +1168,8 @@ pixbuf_to_hbitmaps_normal (GdkPixbuf *pixbuf,
   gboolean has_alpha;
   guint maskstride, mask_bit;
 
-  width = cdk_pixbuf_get_width (pixbuf); /* width of icon */
-  height = cdk_pixbuf_get_height (pixbuf); /* height of icon */
+  width = gdk_pixbuf_get_width (pixbuf); /* width of icon */
+  height = gdk_pixbuf_get_height (pixbuf); /* height of icon */
 
   /* The bitmaps are created square */
   size = MAX (width, height);
@@ -1192,10 +1192,10 @@ pixbuf_to_hbitmaps_normal (GdkPixbuf *pixbuf,
   /* MSDN says mask rows are aligned to "LONG" boundaries */
   maskstride = (((size + 31) & ~31) >> 3);
 
-  indata = cdk_pixbuf_get_pixels (pixbuf);
-  rowstride = cdk_pixbuf_get_rowstride (pixbuf);
-  nc = cdk_pixbuf_get_n_channels (pixbuf);
-  has_alpha = cdk_pixbuf_get_has_alpha (pixbuf);
+  indata = gdk_pixbuf_get_pixels (pixbuf);
+  rowstride = gdk_pixbuf_get_rowstride (pixbuf);
+  nc = gdk_pixbuf_get_n_channels (pixbuf);
+  has_alpha = gdk_pixbuf_get_has_alpha (pixbuf);
 
   if (width > height)
     {
@@ -1256,7 +1256,7 @@ pixbuf_to_hicon (GdkPixbuf *pixbuf,
   if (pixbuf == NULL)
     return NULL;
 
-  if (cdk_pixbuf_get_has_alpha (pixbuf))
+  if (gdk_pixbuf_get_has_alpha (pixbuf))
     success = pixbuf_to_hbitmaps_alpha_winxp (pixbuf, &ii.hbmColor, &ii.hbmMask);
   else
     success = pixbuf_to_hbitmaps_normal (pixbuf, &ii.hbmColor, &ii.hbmMask);

@@ -58,7 +58,7 @@ m4_define([pango_required_version], [1.41.0])
 m4_define([fribidi_required_version], [0.19.7])
 m4_define([atk_required_version], [2.32.0])
 m4_define([cairo_required_version], [1.14.0])
-m4_define([cdk_pixbuf_required_version], [2.30.0])
+m4_define([gdk_pixbuf_required_version], [2.30.0])
 m4_define([introspection_required_version], [1.39.0])
 m4_define([wayland_required_version], [1.14.91])
 m4_define([wayland_protocols_required_version], [1.17])
@@ -69,7 +69,7 @@ GLIB_REQUIRED_VERSION=glib_required_version
 PANGO_REQUIRED_VERSION=pango_required_version
 ATK_REQUIRED_VERSION=atk_required_version
 CAIRO_REQUIRED_VERSION=cairo_required_version
-CDK_PIXBUF_REQUIRED_VERSION=cdk_pixbuf_required_version
+CDK_PIXBUF_REQUIRED_VERSION=gdk_pixbuf_required_version
 INTROSPECTION_REQUIRED_VERSION=introspection_required_version
 
 AC_SUBST(GLIB_REQUIRED_VERSION)
@@ -564,7 +564,7 @@ PKG_CHECK_MODULES(BASE_DEPENDENCIES,
    fribidi >= fribidi_required_version dnl
    cairo >= cairo_required_version dnl
    cairo-gobject >= cairo_required_version dnl
-   cdk-pixbuf-2.0 >= cdk_pixbuf_required_version])
+   cdk-pixbuf-2.0 >= gdk_pixbuf_required_version])
 
 PKG_CHECK_MODULES(CAIRO_BACKEND, [$cairo_backends])
 
@@ -1338,7 +1338,7 @@ fi
 CFLAGS="$saved_cflags"
 LDFLAGS="$saved_ldflags"
 
-CDK_PACKAGES="$PANGO_PACKAGES cdk-pixbuf-2.0 >= cdk_pixbuf_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version"
+CDK_PACKAGES="$PANGO_PACKAGES cdk-pixbuf-2.0 >= gdk_pixbuf_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version"
 CDK_PRIVATE_PACKAGES="$CDK_GIO_PACKAGE $X_PACKAGES $WAYLAND_PACKAGES $cairo_backends epoxy >= epoxy_required_version $CLOUDPROVIDER_PACKAGES $PROFILER_PACKAGES fribidi >= fribidi_required_version"
 
 PKG_CHECK_MODULES(CDK_DEP, $CDK_PACKAGES $CDK_PRIVATE_PACKAGES)
@@ -1372,7 +1372,7 @@ fi
 
 PKG_CHECK_MODULES(ATK, $ATK_PACKAGES)
 
-CTK_PACKAGES="atk >= atk_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version cdk-pixbuf-2.0 >= cdk_pixbuf_required_version gio-2.0 >= glib_required_version"
+CTK_PACKAGES="atk >= atk_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version cdk-pixbuf-2.0 >= gdk_pixbuf_required_version gio-2.0 >= glib_required_version"
 CTK_PRIVATE_PACKAGES="$ATK_PACKAGES $WAYLAND_PACKAGES epoxy >= epoxy_required_version fribidi >= fribidi_required_version"
 if test "x$enable_x11_backend" = xyes -o "x$enable_wayland_backend" = xyes; then
   CTK_PRIVATE_PACKAGES="$CTK_PRIVATE_PACKAGES pangoft2"

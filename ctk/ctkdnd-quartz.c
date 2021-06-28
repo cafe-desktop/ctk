@@ -1371,8 +1371,8 @@ set_icon_stock_pixbuf (CdkDragContext    *context,
     g_object_ref (pixbuf);
 
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
-                                        cdk_pixbuf_get_width (pixbuf),
-                                        cdk_pixbuf_get_height (pixbuf));
+                                        gdk_pixbuf_get_width (pixbuf),
+                                        gdk_pixbuf_get_height (pixbuf));
 
   cr = cairo_create (surface);
   cdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);

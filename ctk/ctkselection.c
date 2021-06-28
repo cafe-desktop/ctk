@@ -453,7 +453,7 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
 
   g_return_if_fail (list != NULL);
 
-  formats = cdk_pixbuf_get_formats ();
+  formats = gdk_pixbuf_get_formats ();
 
   /* Make sure png comes first */
   for (f = formats; f; f = f->next)
@@ -461,7 +461,7 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
       GdkPixbufFormat *fmt = f->data;
       gchar *name; 
  
-      name = cdk_pixbuf_format_get_name (fmt);
+      name = gdk_pixbuf_format_get_name (fmt);
       if (strcmp (name, "png") == 0)
 	{
 	  formats = g_slist_delete_link (formats, f);
@@ -479,10 +479,10 @@ ctk_target_list_add_image_targets (CtkTargetList *list,
     {
       GdkPixbufFormat *fmt = f->data;
 
-      if (writable && !cdk_pixbuf_format_is_writable (fmt))
+      if (writable && !gdk_pixbuf_format_is_writable (fmt))
 	continue;
       
-      mimes = cdk_pixbuf_format_get_mime_types (fmt);
+      mimes = gdk_pixbuf_format_get_mime_types (fmt);
       for (m = mimes; *m; m++)
 	{
 	  atom = cdk_atom_intern (*m, FALSE);
@@ -1745,21 +1745,21 @@ ctk_selection_data_set_pixbuf (CtkSelectionData *selection_data,
   g_return_val_if_fail (selection_data != NULL, FALSE);
   g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), FALSE);
 
-  formats = cdk_pixbuf_get_formats ();
+  formats = gdk_pixbuf_get_formats ();
 
   for (f = formats; f; f = f->next)
     {
       GdkPixbufFormat *fmt = f->data;
 
-      mimes = cdk_pixbuf_format_get_mime_types (fmt);
+      mimes = gdk_pixbuf_format_get_mime_types (fmt);
       for (m = mimes; *m; m++)
 	{
 	  atom = cdk_atom_intern (*m, FALSE);
 	  if (selection_data->target == atom)
 	    {
 	      str = NULL;
-	      type = cdk_pixbuf_format_get_name (fmt);
-	      result = cdk_pixbuf_save_to_buffer (pixbuf, &str, &len,
+	      type = gdk_pixbuf_format_get_name (fmt);
+	      result = gdk_pixbuf_save_to_buffer (pixbuf, &str, &len,
 						  type, NULL,
                                                   ((strcmp (type, "png") == 0) ?
                                                    "compression" : NULL), "2",
@@ -1808,14 +1808,14 @@ ctk_selection_data_get_pixbuf (const CtkSelectionData *selection_data)
 
   if (selection_data->length > 0)
     {
-      loader = cdk_pixbuf_loader_new ();
+      loader = gdk_pixbuf_loader_new ();
       
-      cdk_pixbuf_loader_write (loader, 
+      gdk_pixbuf_loader_write (loader, 
 			       selection_data->data,
 			       selection_data->length,
 			       NULL);
-      cdk_pixbuf_loader_close (loader, NULL);
-      result = cdk_pixbuf_loader_get_pixbuf (loader);
+      gdk_pixbuf_loader_close (loader, NULL);
+      result = gdk_pixbuf_loader_get_pixbuf (loader);
       
       if (result)
 	g_object_ref (result);

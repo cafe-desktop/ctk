@@ -460,7 +460,7 @@ ctk_text_renderer_draw_shape (PangoRenderer   *renderer,
 
       cdk_cairo_set_source_pixbuf (cr, pixbuf,
                                    PANGO_PIXELS (x),
-                                   PANGO_PIXELS (y) -  cdk_pixbuf_get_height (pixbuf));
+                                   PANGO_PIXELS (y) -  gdk_pixbuf_get_height (pixbuf));
       cairo_paint (cr);
 
       cairo_restore (cr);

@@ -600,9 +600,9 @@ main (int argc, char **argv)
   grid = ctk_grid_new ();
   ctk_container_add (CTK_CONTAINER (window), grid);
 
-  drag_icon = cdk_pixbuf_new_from_xpm_data (drag_icon_xpm);
-  trashcan_open = cdk_pixbuf_new_from_xpm_data (trashcan_open_xpm);
-  trashcan_closed = cdk_pixbuf_new_from_xpm_data (trashcan_closed_xpm);
+  drag_icon = gdk_pixbuf_new_from_xpm_data (drag_icon_xpm);
+  trashcan_open = gdk_pixbuf_new_from_xpm_data (trashcan_open_xpm);
+  trashcan_closed = gdk_pixbuf_new_from_xpm_data (trashcan_closed_xpm);
   
   label = ctk_label_new ("Drop Here\n");
 

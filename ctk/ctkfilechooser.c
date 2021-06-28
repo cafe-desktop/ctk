@@ -117,7 +117,7 @@
  *   preview = CTK_WIDGET (data);
  *   filename = ctk_file_chooser_get_preview_filename (file_chooser);
  *
- *   pixbuf = cdk_pixbuf_new_from_file_at_size (filename, 128, 128, NULL);
+ *   pixbuf = gdk_pixbuf_new_from_file_at_size (filename, 128, 128, NULL);
  *   have_preview = (pixbuf != NULL);
  *   g_free (filename);
  *

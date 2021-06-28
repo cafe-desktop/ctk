@@ -32,12 +32,12 @@ image_recording_surface_set (CtkWidget *widget,
   cairo_t *cr;
   cairo_rectangle_t rect;
 
-  pixbuf = cdk_pixbuf_new_from_resource ("/org/ctk/libctk/inspector/logo.png", &error);
+  pixbuf = gdk_pixbuf_new_from_resource ("/org/ctk/libctk/inspector/logo.png", &error);
   g_assert_no_error (error);
   rect.x = 0;
   rect.y = 0;
-  rect.width = cdk_pixbuf_get_width (pixbuf);
-  rect.height = cdk_pixbuf_get_height (pixbuf);
+  rect.width = gdk_pixbuf_get_width (pixbuf);
+  rect.height = gdk_pixbuf_get_height (pixbuf);
   surface = cairo_recording_surface_create (CAIRO_CONTENT_COLOR_ALPHA, &rect);
 
   cr = cairo_create (surface);

@@ -222,7 +222,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
           pixbuf = ctk_icon_info_load_icon (icon_info, NULL);
           if (pixbuf != NULL)
             {
-              g_print ("Pixbuf size: %dx%d\n", cdk_pixbuf_get_width (pixbuf), cdk_pixbuf_get_height (pixbuf));
+              g_print ("Pixbuf size: %dx%d\n", gdk_pixbuf_get_width (pixbuf), gdk_pixbuf_get_height (pixbuf));
               g_object_unref (pixbuf);
             }
 

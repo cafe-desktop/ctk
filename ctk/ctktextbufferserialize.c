@@ -1076,7 +1076,7 @@ get_pixbuf_from_headers (GList   *headers,
                                 (const guint8 *) header->start, error))
     return NULL;
 
-  pixbuf = cdk_pixbuf_from_pixdata (&pixdata, TRUE, error);
+  pixbuf = gdk_pixbuf_from_pixdata (&pixdata, TRUE, error);
 
   return pixbuf;
 }

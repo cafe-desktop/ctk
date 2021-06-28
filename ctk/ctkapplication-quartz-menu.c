@@ -126,8 +126,8 @@ icon_loaded (GObject      *object,
       NSImage *image;
 
       surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
-                                            cdk_pixbuf_get_width (pixbuf),
-                                            cdk_pixbuf_get_height (pixbuf));
+                                            gdk_pixbuf_get_width (pixbuf),
+                                            gdk_pixbuf_get_height (pixbuf));
 
       cr = cairo_create (surface);
       cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);

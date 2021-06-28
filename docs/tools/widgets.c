@@ -557,10 +557,10 @@ create_icon_view (void)
   ctk_frame_set_shadow_type (CTK_FRAME (widget), CTK_SHADOW_IN);
   list_store = ctk_list_store_new (2, G_TYPE_STRING, CDK_TYPE_PIXBUF);
   ctk_list_store_append (list_store, &iter);
-  pixbuf = cdk_pixbuf_new_from_file ("folder.png", NULL);
+  pixbuf = gdk_pixbuf_new_from_file ("folder.png", NULL);
   ctk_list_store_set (list_store, &iter, 0, "One", 1, pixbuf, -1);
   ctk_list_store_append (list_store, &iter);
-  pixbuf = cdk_pixbuf_new_from_file ("gnome.png", NULL);
+  pixbuf = gdk_pixbuf_new_from_file ("gnome.png", NULL);
   ctk_list_store_set (list_store, &iter, 0, "Two", 1, pixbuf, -1);
 
   icon_view = ctk_icon_view_new();

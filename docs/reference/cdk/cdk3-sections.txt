@@ -251,8 +251,8 @@ cdk_screen_get_type
 <SECTION>
 <TITLE>Pixbufs</TITLE>
 <FILE>pixbufs</FILE>
-cdk_pixbuf_get_from_window
-cdk_pixbuf_get_from_surface
+gdk_pixbuf_get_from_window
+gdk_pixbuf_get_from_surface
 </SECTION>
 
 <SECTION>

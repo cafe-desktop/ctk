@@ -4587,8 +4587,8 @@ icon_from_list (GList *list,
   for (l = list; l; l = l->next)
     {
       pixbuf = list->data;
-      if (cdk_pixbuf_get_width (pixbuf) <= size &&
-          cdk_pixbuf_get_height (pixbuf) <= size)
+      if (gdk_pixbuf_get_width (pixbuf) <= size &&
+          gdk_pixbuf_get_height (pixbuf) <= size)
         {
           best = g_object_ref (pixbuf);
           break;
@@ -4596,7 +4596,7 @@ icon_from_list (GList *list,
     }
 
   if (best == NULL)
-    best = cdk_pixbuf_scale_simple (CDK_PIXBUF (list->data), size, size, CDK_INTERP_BILINEAR);
+    best = gdk_pixbuf_scale_simple (CDK_PIXBUF (list->data), size, size, CDK_INTERP_BILINEAR);
 
   return best;
 }
@@ -4902,7 +4902,7 @@ load_pixbuf_verbosely (const char *filename,
   GError *local_err = NULL;
   GdkPixbuf *pixbuf;
 
-  pixbuf = cdk_pixbuf_new_from_file (filename, &local_err);
+  pixbuf = gdk_pixbuf_new_from_file (filename, &local_err);
 
   if (!pixbuf)
     {

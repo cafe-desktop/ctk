@@ -337,7 +337,7 @@ ctk_offscreen_window_get_pixbuf (CtkOffscreenWindow *offscreen)
 
   if (surface != NULL)
     {
-      pixbuf = cdk_pixbuf_get_from_surface (surface,
+      pixbuf = gdk_pixbuf_get_from_surface (surface,
                                             0, 0,
                                             cdk_window_get_width (window),
                                             cdk_window_get_height (window));

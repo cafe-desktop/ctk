@@ -999,11 +999,11 @@ scale_or_ref (GdkPixbuf *src,
               gint       width,
               gint       height)
 {
-  if (width == cdk_pixbuf_get_width (src) &&
-      height == cdk_pixbuf_get_height (src))
+  if (width == gdk_pixbuf_get_width (src) &&
+      height == gdk_pixbuf_get_height (src))
     return g_object_ref (src);
   else
-    return cdk_pixbuf_scale_simple (src,
+    return gdk_pixbuf_scale_simple (src,
                                     width, height,
                                     CDK_INTERP_BILINEAR);
 }
@@ -1044,7 +1044,7 @@ ctk_render_icon_pixbuf_unpacked (GdkPixbuf           *base_pixbuf,
     {
       surface = cdk_cairo_surface_create_from_pixbuf (scaled, 1, NULL);
       ctk_css_icon_effect_apply (icon_effect, surface);
-      stated = cdk_pixbuf_get_from_surface (surface, 0, 0,
+      stated = gdk_pixbuf_get_from_surface (surface, 0, 0,
 					    cairo_image_surface_get_width (surface),
 					    cairo_image_surface_get_height (surface));
       cairo_surface_destroy (surface);

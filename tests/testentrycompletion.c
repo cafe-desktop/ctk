@@ -127,7 +127,7 @@ create_completion_model (void)
   CtkTreeIter iter;
   GdkPixbuf *pixbuf;
 
-  pixbuf = cdk_pixbuf_new_from_xpm_data ((const char **)book_closed_xpm);
+  pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **)book_closed_xpm);
 
   store = ctk_list_store_new (2, CDK_TYPE_PIXBUF, G_TYPE_STRING);
 

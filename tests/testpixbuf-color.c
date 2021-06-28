@@ -23,7 +23,7 @@ save_image_png (const gchar *filename, GdkPixbuf *pixbuf, GError **error)
 	if (!ret)
 		goto out;
 	contents_encode = g_base64_encode ((const guchar *) contents, length);
-	ret = cdk_pixbuf_save (pixbuf, filename, "png", error,
+	ret = gdk_pixbuf_save (pixbuf, filename, "png", error,
 			       "tEXt::Software", "Hello my name is dave",
 			       "icc-profile", contents_encode,
 			       NULL);
@@ -49,7 +49,7 @@ save_image_tiff (const gchar *filename, GdkPixbuf *pixbuf, GError **error)
 	if (!ret)
 		goto out;
 	contents_encode = g_base64_encode ((const guchar *) contents, length);
-	ret = cdk_pixbuf_save (pixbuf, filename, "tiff", error,
+	ret = gdk_pixbuf_save (pixbuf, filename, "tiff", error,
 			       "icc-profile", contents_encode,
 			       NULL);
 	len = strlen (contents_encode);
@@ -70,12 +70,12 @@ save_image_verify (const gchar *filename, GError **error)
 	gsize len = 0;
 
 	/* load */
-	pixbuf = cdk_pixbuf_new_from_file (filename, error);
+	pixbuf = gdk_pixbuf_new_from_file (filename, error);
 	if (pixbuf == NULL)
 		goto out;
 
 	/* check values */
-	option = cdk_pixbuf_get_option (pixbuf, "icc-profile");
+	option = gdk_pixbuf_get_option (pixbuf, "icc-profile");
 	if (option == NULL) {
 		*error = g_error_new (1, 0, "no profile set");
 		goto out;
@@ -112,7 +112,7 @@ main (int argc, char **argv)
 	ctk_init (&argc, &argv);
 
 	root = cdk_get_default_root_window ();
-	pixbuf = cdk_pixbuf_get_from_window (root,
+	pixbuf = gdk_pixbuf_get_from_window (root,
 					     0, 0, 150, 160);
 
 	/* PASS */

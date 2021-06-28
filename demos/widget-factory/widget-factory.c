@@ -951,7 +951,7 @@ background_loaded_cb (GObject      *source,
   GdkPixbuf *pixbuf;
   GError *error = NULL;
 
-  pixbuf = cdk_pixbuf_new_from_stream_finish (res, &error);
+  pixbuf = gdk_pixbuf_new_from_stream_finish (res, &error);
   if (error)
     {
       g_warning ("Error loading '%s': %s", bd->filename, error->message);
@@ -986,8 +986,8 @@ populate_flowbox (CtkWidget *flowbox)
 
   g_object_set_data (G_OBJECT (flowbox), "populated", GUINT_TO_POINTER (1));
 
-  pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, 110, 70);
-  cdk_pixbuf_fill (pixbuf, 0xffffffff);
+  pixbuf = gdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, 110, 70);
+  gdk_pixbuf_fill (pixbuf, 0xffffffff);
   child = ctk_image_new_from_pixbuf (pixbuf);
   ctk_widget_show (child);
   ctk_flow_box_insert (CTK_FLOW_BOX (flowbox), child, -1);
@@ -1017,7 +1017,7 @@ populate_flowbox (CtkWidget *flowbox)
           bd = g_new (BackgroundData, 1);
           bd->flowbox = flowbox;
           bd->filename = filename;
-          cdk_pixbuf_new_from_stream_at_scale_async (stream, 110, 110, TRUE, NULL, 
+          gdk_pixbuf_new_from_stream_at_scale_async (stream, 110, 110, TRUE, NULL, 
                                                      background_loaded_cb, bd);
         }
 
@@ -1137,7 +1137,7 @@ my_text_view_set_background (MyTextView *tv, const gchar *filename)
   if (filename == NULL)
     return;
 
-  pixbuf = cdk_pixbuf_new_from_file (filename, &error);
+  pixbuf = gdk_pixbuf_new_from_file (filename, &error);
   if (error)
     {
       g_warning ("%s", error->message);

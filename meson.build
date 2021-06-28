@@ -29,7 +29,7 @@ fribidi_req        = '>= 0.19.7'
 atk_req            = '>= 2.35.1'
 at_spi2_atk_req    = '>= 2.15.1'
 cairo_req          = '>= 1.14.0'
-cdk_pixbuf_req     = '>= 2.30.0'
+gdk_pixbuf_req     = '>= 2.30.0'
 introspection_req  = '>= 1.39.0'
 wayland_proto_req  = '>= 1.17'
 wayland_req        = '>= 1.14.91'
@@ -444,7 +444,7 @@ endif
 
 pangocairo_dep = dependency('pangocairo', version: cairo_req,
                             fallback : ['pango', 'libpangocairo_dep'])
-pixbuf_dep     = dependency('cdk-pixbuf-2.0', version: cdk_pixbuf_req,
+pixbuf_dep     = dependency('cdk-pixbuf-2.0', version: gdk_pixbuf_req,
                             fallback : ['cdk-pixbuf', 'cdkpixbuf_dep'])
 epoxy_dep      = dependency('epoxy', version: epoxy_req,
                             fallback: ['libepoxy', 'libepoxy_dep'])
@@ -872,7 +872,7 @@ pkgconf.set('host', '@0@-@1@'.format(host_machine.cpu_family(), host_machine.sys
 pango_pkgname = win32_enabled ? 'pangowin32' : 'pango'
 cdk_packages = ' '.join([ pango_pkgname, pango_req,
                        'pangocairo', pango_req,
-                       'cdk-pixbuf-2.0', cdk_pixbuf_req ])
+                       'cdk-pixbuf-2.0', gdk_pixbuf_req ])
 
 cairo_packages = ''
 
@@ -904,7 +904,7 @@ pkgconf.set('CDK_PRIVATE_PACKAGES',
 ctk_packages = ' '.join([
     atk_dep.name(), atk_req,
     cairo_packages,
-    pixbuf_dep.name(), cdk_pixbuf_req,
+    pixbuf_dep.name(), gdk_pixbuf_req,
     'gio-2.0', glib_req,
 ])
 pkgconf.set('CTK_PACKAGES', ctk_packages)
