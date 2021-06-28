@@ -161,7 +161,7 @@ check_pixel_data (CacheInfo *info,
 
   if (info->flags & CHECK_PIXBUFS)
     {
-      CdkPixdata data;
+      GdkPixdata data;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       check ("pixel data", cdk_pixdata_deserialize (&data, length,

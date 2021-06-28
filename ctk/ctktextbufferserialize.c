@@ -578,7 +578,7 @@ serialize_pixbufs (SerializationContext *context,
   for (list = context->pixbufs; list != NULL; list = list->next)
     {
       GdkPixbuf *pixbuf = list->data;
-      CdkPixdata pixdata;
+      GdkPixdata pixdata;
       guint8 *tmp;
       guint len;
 
@@ -1064,7 +1064,7 @@ get_pixbuf_from_headers (GList   *headers,
                          GError **error)
 {
   Header *header;
-  CdkPixdata pixdata;
+  GdkPixdata pixdata;
   GdkPixbuf *pixbuf;
 
   header = g_list_nth_data (headers, id);

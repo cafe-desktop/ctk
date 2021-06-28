@@ -163,7 +163,7 @@ has_theme_index (const gchar *path)
 
 typedef struct
 {
-  CdkPixdata pixdata;
+  GdkPixdata pixdata;
   gboolean has_pixdata;
   guint32 offset;
   guint size;
@@ -819,9 +819,9 @@ write_image_data (FILE *cache, ImageData *image_data, int offset)
   guint8 *s;
   guint len;
   gint i;
-  CdkPixdata *pixdata = &image_data->pixdata;
+  GdkPixdata *pixdata = &image_data->pixdata;
 
-  /* Type 0 is CdkPixdata */
+  /* Type 0 is GdkPixdata */
   if (!write_card32 (cache, 0))
     return FALSE;
 
