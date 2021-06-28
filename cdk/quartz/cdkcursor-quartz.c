@@ -264,7 +264,7 @@ _cdk_quartz_display_get_cursor_for_surface (CdkDisplay      *display,
 
   CDK_QUARTZ_ALLOC_POOL;
 
-  pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0,
+  pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0,
 					cairo_image_surface_get_width (surface),
 					cairo_image_surface_get_height (surface));
   image = cdk_quartz_pixbuf_to_ns_image_libctk_only (pixbuf);

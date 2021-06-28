@@ -107,8 +107,8 @@ ctk_image_cell_accessible_get_image_size (AtkImage *image,
 
   if (pixbuf)
     {
-      *width = cdk_pixbuf_get_width (pixbuf);
-      *height = cdk_pixbuf_get_height (pixbuf);
+      *width = gdk_pixbuf_get_width (pixbuf);
+      *height = gdk_pixbuf_get_height (pixbuf);
       g_object_unref (pixbuf);
     }
 }

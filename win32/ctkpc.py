@@ -29,7 +29,7 @@ def main(argv):
 
     atk_min_ver = '2.15.1'
     cairo_min_ver = '1.14.0'
-    cdk_pixbuf_min_ver = '2.30.0'
+    gdk_pixbuf_min_ver = '2.30.0'
     cdk_win32_sys_libs = '-lgdi32 -limm32 -lshell32 -lole32 -lwinmm -ldwmapi'
     cairo_libs = '-lcairo-gobject -lcairo '
     glib_min_ver = '2.45.8'
@@ -47,7 +47,7 @@ def main(argv):
     pkg_replace_items = {'@CTK_API_VERSION@': '3.0',
                          '@CDK_BACKENDS@': cdk_backends}
 
-    pkg_required_packages = 'cdk-pixbuf-2.0 >= ' + cdk_pixbuf_min_ver
+    pkg_required_packages = 'cdk-pixbuf-2.0 >= ' + gdk_pixbuf_min_ver
 
     cdk_pc_replace_items = {'@CDK_PACKAGES@': gio_package + ' ' + \
                                               'pangowin32 pangocairo' + ' ' + \

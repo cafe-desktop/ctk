@@ -58,12 +58,12 @@ image_drag_begin (CtkWidget      *widget,
       hot_y = 0;
       break;
     case CENTER:
-      hot_x = cdk_pixbuf_get_width (pixbuf) / 2;
-      hot_y = cdk_pixbuf_get_height (pixbuf) / 2;
+      hot_x = gdk_pixbuf_get_width (pixbuf) / 2;
+      hot_y = gdk_pixbuf_get_height (pixbuf) / 2;
       break;
     case BOTTOM_RIGHT:
-      hot_x = cdk_pixbuf_get_width (pixbuf);
-      hot_y = cdk_pixbuf_get_height (pixbuf);
+      hot_x = gdk_pixbuf_get_width (pixbuf);
+      hot_y = gdk_pixbuf_get_height (pixbuf);
       break;
     }
   ctk_drag_set_icon_pixbuf (context, pixbuf, hot_x, hot_y);

@@ -506,13 +506,13 @@ ctk_cell_renderer_pixbuf_get_size (CtkCellRenderer    *cell,
 
   if (priv->pixbuf_expander_open)
     {
-      pixbuf_width  = MAX (pixbuf_width, cdk_pixbuf_get_width (priv->pixbuf_expander_open));
-      pixbuf_height = MAX (pixbuf_height, cdk_pixbuf_get_height (priv->pixbuf_expander_open));
+      pixbuf_width  = MAX (pixbuf_width, gdk_pixbuf_get_width (priv->pixbuf_expander_open));
+      pixbuf_height = MAX (pixbuf_height, gdk_pixbuf_get_height (priv->pixbuf_expander_open));
     }
   if (priv->pixbuf_expander_closed)
     {
-      pixbuf_width  = MAX (pixbuf_width, cdk_pixbuf_get_width (priv->pixbuf_expander_closed));
-      pixbuf_height = MAX (pixbuf_height, cdk_pixbuf_get_height (priv->pixbuf_expander_closed));
+      pixbuf_width  = MAX (pixbuf_width, gdk_pixbuf_get_width (priv->pixbuf_expander_closed));
+      pixbuf_height = MAX (pixbuf_height, gdk_pixbuf_get_height (priv->pixbuf_expander_closed));
     }
 
   ctk_cell_renderer_get_padding (cell, &xpad, &ypad);

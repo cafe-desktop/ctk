@@ -90,7 +90,7 @@
  * set the title property explicitly when constructing a CtkAboutDialog,
  * as shown in the following example:
  * |[<!-- language="C" -->
- * GdkPixbuf *example_logo = cdk_pixbuf_new_from_file ("./logo.png", NULL);
+ * GdkPixbuf *example_logo = gdk_pixbuf_new_from_file ("./logo.png", NULL);
  * ctk_show_about_dialog (NULL,
  *                        "program-name", "ExampleCode",
  *                        "logo", example_logo,

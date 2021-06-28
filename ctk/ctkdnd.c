@@ -771,7 +771,7 @@ ensure_drag_cursor_pixbuf (int i)
       GInputStream *stream = g_resources_open_stream (path, 0, NULL);
       if (stream != NULL)
         {
-          drag_cursors[i].pixbuf = cdk_pixbuf_new_from_stream (stream, NULL, NULL);
+          drag_cursors[i].pixbuf = gdk_pixbuf_new_from_stream (stream, NULL, NULL);
           g_object_unref (stream);
         }
       g_free (path);

@@ -424,13 +424,13 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
   win32_selection->sel_prop_table = g_hash_table_new (NULL, NULL);
   win32_selection->sel_owner_table = g_hash_table_new (NULL, NULL);
 
-  pixbuf_formats = cdk_pixbuf_get_formats ();
+  pixbuf_formats = gdk_pixbuf_get_formats ();
 
   win32_selection->n_known_pixbuf_formats = 0;
   for (rover = pixbuf_formats; rover != NULL; rover = rover->next)
     {
       gchar **mime_types =
-	cdk_pixbuf_format_get_mime_types ((GdkPixbufFormat *) rover->data);
+	gdk_pixbuf_format_get_mime_types ((GdkPixbufFormat *) rover->data);
 
       gchar **mime_type;
 
@@ -444,7 +444,7 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
   for (rover = pixbuf_formats; rover != NULL; rover = rover->next)
     {
       gchar **mime_types =
-	cdk_pixbuf_format_get_mime_types ((GdkPixbufFormat *) rover->data);
+	gdk_pixbuf_format_get_mime_types ((GdkPixbufFormat *) rover->data);
 
       gchar **mime_type;
 

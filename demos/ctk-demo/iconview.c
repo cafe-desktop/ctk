@@ -35,11 +35,11 @@ load_pixbufs (void)
   if (file_pixbuf)
     return; /* already loaded earlier */
 
-  file_pixbuf = cdk_pixbuf_new_from_resource (FILE_NAME, NULL);
+  file_pixbuf = gdk_pixbuf_new_from_resource (FILE_NAME, NULL);
   /* resources must load successfully */
   g_assert (file_pixbuf);
 
-  folder_pixbuf = cdk_pixbuf_new_from_resource (FOLDER_NAME, NULL);
+  folder_pixbuf = gdk_pixbuf_new_from_resource (FOLDER_NAME, NULL);
   g_assert (folder_pixbuf);
 }
 

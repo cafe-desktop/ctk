@@ -357,7 +357,7 @@ set_columns_type (CtkTreeView *tree_view, ColumnsType type)
 
       ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), col);
 
-      pixbuf = cdk_pixbuf_new_from_xpm_data ((const char **)book_closed_xpm);
+      pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **)book_closed_xpm);
 
       image = ctk_image_new_from_pixbuf (pixbuf);
 
@@ -668,7 +668,7 @@ main (int    argc,
   if (g_getenv ("RTL"))
     ctk_widget_set_default_direction (CTK_TEXT_DIR_RTL);
 
-  our_pixbuf = cdk_pixbuf_new_from_xpm_data ((const char **) book_closed_xpm);  
+  our_pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) book_closed_xpm);  
   
 #if 0
   models[MODEL_TYPES] = CTK_TREE_MODEL (ctk_tree_model_types_new ());

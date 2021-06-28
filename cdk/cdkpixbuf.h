@@ -37,14 +37,14 @@
 G_BEGIN_DECLS
 
 CDK_AVAILABLE_IN_ALL
-GdkPixbuf *cdk_pixbuf_get_from_window  (CdkWindow       *window,
+GdkPixbuf *gdk_pixbuf_get_from_window  (CdkWindow       *window,
                                         gint             src_x,
                                         gint             src_y,
                                         gint             width,
                                         gint             height);
 
 CDK_AVAILABLE_IN_ALL
-GdkPixbuf *cdk_pixbuf_get_from_surface (cairo_surface_t *surface,
+GdkPixbuf *gdk_pixbuf_get_from_surface (cairo_surface_t *surface,
                                         gint             src_x,
                                         gint             src_y,
                                         gint             width,

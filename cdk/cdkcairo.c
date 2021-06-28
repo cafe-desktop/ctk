@@ -194,16 +194,16 @@ cdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
   g_assert (cairo_surface_get_type (surface) == CAIRO_SURFACE_TYPE_IMAGE);
   g_assert (cairo_image_surface_get_format (surface) == CAIRO_FORMAT_RGB24 ||
             cairo_image_surface_get_format (surface) == CAIRO_FORMAT_ARGB32);
-  g_assert (cairo_image_surface_get_width (surface) == cdk_pixbuf_get_width (pixbuf));
-  g_assert (cairo_image_surface_get_height (surface) == cdk_pixbuf_get_height (pixbuf));
+  g_assert (cairo_image_surface_get_width (surface) == gdk_pixbuf_get_width (pixbuf));
+  g_assert (cairo_image_surface_get_height (surface) == gdk_pixbuf_get_height (pixbuf));
 
   cairo_surface_flush (surface);
 
-  width = cdk_pixbuf_get_width (pixbuf);
-  height = cdk_pixbuf_get_height (pixbuf);
-  cdk_pixels = cdk_pixbuf_get_pixels (pixbuf);
-  cdk_rowstride = cdk_pixbuf_get_rowstride (pixbuf);
-  n_channels = cdk_pixbuf_get_n_channels (pixbuf);
+  width = gdk_pixbuf_get_width (pixbuf);
+  height = gdk_pixbuf_get_height (pixbuf);
+  cdk_pixels = gdk_pixbuf_get_pixels (pixbuf);
+  cdk_rowstride = gdk_pixbuf_get_rowstride (pixbuf);
+  n_channels = gdk_pixbuf_get_n_channels (pixbuf);
   cairo_stride = cairo_image_surface_get_stride (surface);
   cairo_pixels = cairo_image_surface_get_data (surface);
 
@@ -291,7 +291,7 @@ cdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
   g_return_val_if_fail (scale >= 0, NULL);
   g_return_val_if_fail (for_window == NULL || CDK_IS_WINDOW (for_window), NULL);
 
-  if (cdk_pixbuf_get_n_channels (pixbuf) == 3)
+  if (gdk_pixbuf_get_n_channels (pixbuf) == 3)
     format = CAIRO_FORMAT_RGB24;
   else
     format = CAIRO_FORMAT_ARGB32;
@@ -299,8 +299,8 @@ cdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
   surface =
      cdk_window_create_similar_image_surface (for_window,
 					      format,
-                                              cdk_pixbuf_get_width (pixbuf),
-                                              cdk_pixbuf_get_height (pixbuf),
+                                              gdk_pixbuf_get_width (pixbuf),
+                                              gdk_pixbuf_get_height (pixbuf),
 					      scale);
 
   cdk_cairo_surface_paint_pixbuf (surface, pixbuf);
@@ -331,15 +331,15 @@ cdk_cairo_set_source_pixbuf (cairo_t         *cr,
   cairo_format_t format;
   cairo_surface_t *surface;
 
-  if (cdk_pixbuf_get_n_channels (pixbuf) == 3)
+  if (gdk_pixbuf_get_n_channels (pixbuf) == 3)
     format = CAIRO_FORMAT_RGB24;
   else
     format = CAIRO_FORMAT_ARGB32;
 
   surface = cairo_surface_create_similar_image (cairo_get_target (cr),
                                                 format,
-                                                cdk_pixbuf_get_width (pixbuf),
-                                                cdk_pixbuf_get_height (pixbuf));
+                                                gdk_pixbuf_get_width (pixbuf),
+                                                gdk_pixbuf_get_height (pixbuf));
 
   cdk_cairo_surface_paint_pixbuf (surface, pixbuf);
 

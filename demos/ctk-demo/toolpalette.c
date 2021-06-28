@@ -73,8 +73,8 @@ canvas_item_draw (const CanvasItem *item,
                   cairo_t          *cr,
                   gboolean          preview)
 {
-  gdouble cx = cdk_pixbuf_get_width (item->pixbuf);
-  gdouble cy = cdk_pixbuf_get_height (item->pixbuf);
+  gdouble cx = gdk_pixbuf_get_width (item->pixbuf);
+  gdouble cy = gdk_pixbuf_get_height (item->pixbuf);
 
   cdk_cairo_set_source_pixbuf (cr,
                                item->pixbuf,

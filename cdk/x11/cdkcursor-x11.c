@@ -812,11 +812,11 @@ _cdk_x11_display_get_cursor_for_surface (CdkDisplay *display,
 
   /* Note: This does not support scaled surfaced, if you need that you
      want XCursor anyway */
-  pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
+  pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
   
-  n_channels = cdk_pixbuf_get_n_channels (pixbuf);
-  rowstride = cdk_pixbuf_get_rowstride (pixbuf);
-  pixels = cdk_pixbuf_get_pixels (pixbuf);
+  n_channels = gdk_pixbuf_get_n_channels (pixbuf);
+  rowstride = gdk_pixbuf_get_rowstride (pixbuf);
+  pixels = gdk_pixbuf_get_pixels (pixbuf);
 
   data_stride = 4 * ((width + 31) / 32);
   data = g_new0 (guint8, data_stride * height);

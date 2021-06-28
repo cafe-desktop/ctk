@@ -69,12 +69,12 @@ test_surface_orientation (void)
 	test (cr);
 	cairo_destroy (cr);
 
-	pixbuf = cdk_pixbuf_get_from_surface (NULL,
+	pixbuf = gdk_pixbuf_get_from_surface (NULL,
 					      surface,
 					      0, 0,
 					      0, 0,
 					      100, 80);
-	if (!cdk_pixbuf_save (pixbuf, "cdksurface.png", "png", NULL, NULL)) {
+	if (!gdk_pixbuf_save (pixbuf, "cdksurface.png", "png", NULL, NULL)) {
 		g_error ("Eeek! Couldn't save the file \"cdksurface.png\"");
 	}
 	g_object_unref (pixbuf);
@@ -96,29 +96,29 @@ test_surface_orientation (void)
 	cairo_surface_destroy (surface);
 
 	/* compare the images */
-	pbuf_platform = cdk_pixbuf_new_from_file ("cdksurface.png", &error);
+	pbuf_platform = gdk_pixbuf_new_from_file ("cdksurface.png", &error);
 	if (!pbuf_platform || error) {
 		g_error ("Eeek! Error loading \"cdksurface.png\"");
 	}
-	pbuf_imagesrf = cdk_pixbuf_new_from_file ("cairosurface.png", &error);
+	pbuf_imagesrf = gdk_pixbuf_new_from_file ("cairosurface.png", &error);
 	if (!pbuf_imagesrf || error) {
 		g_object_unref (pbuf_platform);
 		g_error ("Eeek! Error loading \"cairosurface.png\"");
 	}
 
-	g_assert (cdk_pixbuf_get_width (pbuf_platform) ==
-		  cdk_pixbuf_get_width (pbuf_imagesrf));
-	g_assert (cdk_pixbuf_get_height (pbuf_platform) ==
-		  cdk_pixbuf_get_height (pbuf_imagesrf));
-	g_assert (cdk_pixbuf_get_rowstride (pbuf_platform) ==
-		  cdk_pixbuf_get_rowstride (pbuf_imagesrf));
-	g_assert (cdk_pixbuf_get_n_channels (pbuf_platform) ==
-		  cdk_pixbuf_get_n_channels (pbuf_imagesrf));
+	g_assert (gdk_pixbuf_get_width (pbuf_platform) ==
+		  gdk_pixbuf_get_width (pbuf_imagesrf));
+	g_assert (gdk_pixbuf_get_height (pbuf_platform) ==
+		  gdk_pixbuf_get_height (pbuf_imagesrf));
+	g_assert (gdk_pixbuf_get_rowstride (pbuf_platform) ==
+		  gdk_pixbuf_get_rowstride (pbuf_imagesrf));
+	g_assert (gdk_pixbuf_get_n_channels (pbuf_platform) ==
+		  gdk_pixbuf_get_n_channels (pbuf_imagesrf));
 
-	data_platform = cdk_pixbuf_get_pixels (pbuf_platform);
-	data_imagesrf = cdk_pixbuf_get_pixels (pbuf_imagesrf);
+	data_platform = gdk_pixbuf_get_pixels (pbuf_platform);
+	data_imagesrf = gdk_pixbuf_get_pixels (pbuf_imagesrf);
 
-	for (i = 0; i < cdk_pixbuf_get_height (pbuf_platform) * cdk_pixbuf_get_rowstride (pbuf_platform); i++) {
+	for (i = 0; i < gdk_pixbuf_get_height (pbuf_platform) * gdk_pixbuf_get_rowstride (pbuf_platform); i++) {
 		if (data_platform[i] != data_imagesrf[i]) {
 			g_warning ("Eeek! Images are differing at byte %d", i);
 			g_object_unref (pbuf_platform);

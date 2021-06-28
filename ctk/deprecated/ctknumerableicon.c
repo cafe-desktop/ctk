@@ -340,7 +340,7 @@ ctk_numerable_icon_ensure_emblem (CtkNumerableIcon *self)
   cairo_destroy (cr);
 
   pixbuf =
-    cdk_pixbuf_get_from_surface (surface, 0, 0,
+    gdk_pixbuf_get_from_surface (surface, 0, 0,
                                  get_surface_size (surface), get_surface_size (surface));
 
   emblem = g_emblem_new (G_ICON (pixbuf));

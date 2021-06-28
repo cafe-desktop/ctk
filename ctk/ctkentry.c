@@ -8821,7 +8821,7 @@ ctk_entry_get_icon_pixbuf (CtkEntry             *entry,
   _ctk_icon_helper_get_size (CTK_ICON_HELPER (icon_info->gadget), &width, &height);
   surface = ctk_icon_helper_load_surface (CTK_ICON_HELPER (icon_info->gadget), 1);
 
-  pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
+  pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0, width, height);
 
   cairo_surface_destroy (surface);
 

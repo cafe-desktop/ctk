@@ -674,7 +674,7 @@ fill_buffer (CtkTextBuffer *buffer)
                               "font", "-*-courier-bold-r-*-*-10-*-*-*-*-*-*-*",
                               NULL);
 
-  pixbuf = cdk_pixbuf_new_from_xpm_data (book_closed_xpm);
+  pixbuf = gdk_pixbuf_new_from_xpm_data (book_closed_xpm);
 
   g_assert (pixbuf != NULL);
 

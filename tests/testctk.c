@@ -1146,10 +1146,10 @@ new_pixbuf (char      *filename,
   if (strcmp (filename, "test.xpm") == 0)
     pixbuf = NULL;
   else
-    pixbuf = cdk_pixbuf_new_from_file (filename, NULL);
+    pixbuf = gdk_pixbuf_new_from_file (filename, NULL);
 
   if (pixbuf == NULL)
-    pixbuf = cdk_pixbuf_new_from_xpm_data ((const char **) openfile);
+    pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) openfile);
   
   widget = ctk_image_new_from_pixbuf (pixbuf);
 
@@ -2076,7 +2076,7 @@ create_rotated_text (CtkWidget *widget)
       drawing_area = ctk_drawing_area_new ();
       ctk_box_pack_start (CTK_BOX (content_area), drawing_area, TRUE, TRUE, 0);
 
-      tile_pixbuf = cdk_pixbuf_new_from_file ("marble.xpm", NULL);
+      tile_pixbuf = gdk_pixbuf_new_from_file ("marble.xpm", NULL);
       
       g_signal_connect (drawing_area, "draw",
 			G_CALLBACK (on_rotated_text_draw), tile_pixbuf);
@@ -2793,7 +2793,7 @@ create_image (CtkWidget *widget)
                   ctk_image_new_from_icon_name ("dialog-warning",
                                                 CTK_ICON_SIZE_DIALOG));
 
-      pixbuf = cdk_pixbuf_new_from_xpm_data ((const char **) openfile);
+      pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) openfile);
       
       pack_image (vbox, "Pixbuf",
                   ctk_image_new_from_pixbuf (pixbuf));
@@ -6215,10 +6215,10 @@ create_notebook (CtkWidget *widget)
       ctk_widget_realize (sample_notebook);
 
       if (!book_open)
-	book_open = cdk_pixbuf_new_from_xpm_data (book_open_xpm);
+	book_open = gdk_pixbuf_new_from_xpm_data (book_open_xpm);
 						  
       if (!book_closed)
-	book_closed = cdk_pixbuf_new_from_xpm_data (book_closed_xpm);
+	book_closed = gdk_pixbuf_new_from_xpm_data (book_closed_xpm);
 
       create_pages (CTK_NOTEBOOK (sample_notebook), 1, 5);
 
@@ -6923,12 +6923,12 @@ shape_create_icon (CdkScreen *screen,
 
   ctk_widget_realize (window);
 
-  pixbuf = cdk_pixbuf_new_from_file (xpm_file, NULL);
+  pixbuf = gdk_pixbuf_new_from_file (xpm_file, NULL);
   g_assert (pixbuf); /* FIXME: error handling */
 
   mask = cairo_image_surface_create (CAIRO_FORMAT_A1,
-                                     cdk_pixbuf_get_width (pixbuf),
-                                     cdk_pixbuf_get_height (pixbuf));
+                                     gdk_pixbuf_get_width (pixbuf),
+                                     gdk_pixbuf_get_height (pixbuf));
   cr = cairo_create (mask);
   cdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
   cairo_paint (cr);
@@ -7097,7 +7097,7 @@ create_wmhints (CtkWidget *widget)
 
       cdk_window = ctk_widget_get_window (window);
 
-      pixbuf = cdk_pixbuf_new_from_xpm_data ((const char **) openfile);
+      pixbuf = gdk_pixbuf_new_from_xpm_data ((const char **) openfile);
       list = g_list_prepend (NULL, pixbuf);
 
       cdk_window_set_icon_list (cdk_window, list);
@@ -8602,7 +8602,7 @@ snapshot_widget_event (CtkWidget	       *widget,
           ctk_widget_draw (res_widget, cr);
           cairo_destroy (cr);
 
-          pixbuf = cdk_pixbuf_get_from_surface (surface,
+          pixbuf = gdk_pixbuf_get_from_surface (surface,
                                                 0, 0,
                                                 width, height);
           cairo_surface_destroy (surface);

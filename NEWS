@@ -2865,7 +2865,7 @@ Overview of Changes in CTK+ 3.19.6
  728344 Collate setting in Print Dialog does not override PPD setting...
  753520 Ctk potentially misses nullable in 166 functions
  756618 CtkWindow CSD: ctk_window_resize() also includes client side ...
- 757147 cdk_pixbuf_get_from_window() doesn't honor device scale
+ 757147 gdk_pixbuf_get_from_window() doesn't honor device scale
  757411 Reference CtkIconSize in argument/return documentation
  759161 wayland: dialog stacking without parents (RFC)
  759299 wayland: possible infinite loop in cdkwindow-wayland
@@ -2996,7 +2996,7 @@ Overview of Changes in CTK+ 3.19.4
  735847 move animatable cursors' current frame info into CdkCursor
  747295 shared memory leak when creating/destroying widgets
  756618 CtkWindow CSD: ctk_window_resize() also includes client side deco...
- 757147 cdk_pixbuf_get_from_window() doesn't honor device scale
+ 757147 gdk_pixbuf_get_from_window() doesn't honor device scale
  757282 "window: Ignore geometry widget" commit breaks gnome-terminal win...
  757474 Add option for automatic CtkPopover placement
  758483 CDK W32: Incorrectly uses SetWindowLong() to set/unset WS_EX_TOPM...
@@ -3188,7 +3188,7 @@ Overview of Changes in CTK+ 3.19.1
  756881 Guard against selection requestor disappearing
  756886 The CtkWindow patch here is necessary to make transparent terminals...
  756780 wayland: Fix CtkTreeView's search window
- 757147 cdk_pixbuf_get_from_window: honor device scale
+ 757147 gdk_pixbuf_get_from_window: honor device scale
 
 * Translation updates:
  Basque
@@ -3258,7 +3258,7 @@ Overview of Changes in CTK+ 3.18.0
  754098 Cannot resize window with destroyed EventBox
  754629 ctk-demo: $(EXEEXT) is missing
  754745 overlay scrollbar shouldn't hide when the slider is being grabbed
- 754952 cdk_pixbuf_get_from_window: always returns same image
+ 754952 gdk_pixbuf_get_from_window: always returns same image
  755021 context menu in empty file folder -> crash
  755274 test-simplify uses bashism in /bin/sh script
  755352 Crash on widget destruction during event handling
@@ -6630,7 +6630,7 @@ Overview of Changes in CTK+ 3.7 to 3.9
  694339 Fix build of CTK+ on Windows
  694465 Allow backends to fail during initialisation
  695200 Switching apps while a combobox open makes the parent wi...
- 695228 GdkPixbuf:ERROR:cdk-pixbuf-animation.c:242:cdk_pixbuf_an...
+ 695228 GdkPixbuf:ERROR:cdk-pixbuf-animation.c:242:gdk_pixbuf_an...
  695278 Avoid passing a NULL title to setTitle
  695304 CtkTextView: don't popdown a bubble if we don't have one
  695312 Initial 'text' set in the non-numeric-only CtkSpinButton...
@@ -9023,7 +9023,7 @@ Overview of Changes in CTK+ 2.99.3
  640011 Selects application on cancel
  640105 Crash showing a offscreen window with a textview inside
  640161 CtkFileChooserWidget 0xbbf6c0 is mapped but visible=1...
- 640188 cdk_pixbuf_get_from_drawable missing from migration guide
+ 640188 gdk_pixbuf_get_from_drawable missing from migration guide
  640195 cdk_cairo_create gets cairo context with badly clipped...
  640282 insensitive, active check button becomes sensitive
  640313 BadDevice X error when ungrabbing a SLAVE device
@@ -10372,7 +10372,7 @@ Overview of Changes from CTK+ 2.19.3 to 2.19.4
 * Bugs fixed:
  607082 Add accessors for sealed CtkRange members
  567729 Add CtkToolPalette
- 591102 cdk_pixbuf_save() creates a zero-size file...
+ 591102 gdk_pixbuf_save() creates a zero-size file...
  600865 gnome-panel crashed with "BadPixmap...
  601412 action area presence makes gnome-terminal window grow...
  603144 Suspected wrong builtin page size: Chinese PRC6 and...
@@ -10569,7 +10569,7 @@ Overview of Changes from CTK+ 2.19.0 to 2.19.1
  602724 gailimage doesn't handle CTK_IMAGE_{GICON,ICON_NAME}...
  561130 get_monitor_geometry segfaults if called with non-existant...
  597026 Missing include for memset()
- 585383 Segfault in cdk_pixbuf__ico_image_save
+ 585383 Segfault in gdk_pixbuf__ico_image_save
  597865 Move documentation from templates to inline comments
  123569 Catch contents being reparented out of socket
  561334 Incorrect named constant in documentation of two CtkButton...
@@ -11116,7 +11116,7 @@ Overview of Changes from CTK+ 2.17.3 to 2.17.4
 * Support for clipmasks in cdk_draw_pixbuf now works, this will
   introduce visual changes in code that uses clipmasks when drawing
   pixbufs. However, since this never worked that is unlikely to happen.
-  Old code using cdk_pixbuf_render_threshold_alpha masks when rendering
+  Old code using gdk_pixbuf_render_threshold_alpha masks when rendering
   pixbufs will now produce truncated results at the edges.
 
 * A number of regressions from the client-side window merge have
@@ -11497,7 +11497,7 @@ Overview of Changes from CTK+ 2.15.4 to 2.15.5
  573087 cdkwindow.c: {x,y}_offset used uninitialized
  573688 Don't steal update region in ctk_text_view_paint
  546285 Allow CtkEntry to draw progress
- 569671 cdk_pixbuf_new_from_file() can't open image/x-portable-pixmap
+ 569671 gdk_pixbuf_new_from_file() can't open image/x-portable-pixmap
  573393 Deprecated functions in cdk-Threads example code snippet
  571001 STATE_SHOWING missing on table items
  520395 event.any_data incorrect with spin buttons and combo boxes...
@@ -11542,7 +11542,7 @@ Overview of Changes from CTK+ 2.15.3 to 2.15.4
  508545 No way to identify terminal classes from documentation
  570824 TreeView is not keyboard (re)focusable after selecting a cell...
  568571 Asian am/pm format on cups print backend's time parsing
- 571576 cdk_pixbuf_save_to_stream() broken
+ 571576 gdk_pixbuf_save_to_stream() broken
  571873 Compile error with cdk/win32/cdkselection-win32.c
  572041 Focus should change when advancing forward in CtkAssistant
  572040 CtkAssistant does not expose page titles
@@ -12020,7 +12020,7 @@ Overview of Changes from CTK+ 2.14.1 to 2.14.2
  552668 format not a string literal and no format arguments...
  346903 ctk_enumerate_printers needs events to complete
  550969 fix a typo which breaks the static build
- 517233 Calling cdk_pixbuf_loader_close causes "GError set over...
+ 517233 Calling gdk_pixbuf_loader_close causes "GError set over...
  551063 deprecated marking without a link to what new code should use
  540967 docs build slowly because of entities
 
@@ -12079,7 +12079,7 @@ Overview of Changes from CTK+ 2.13.7 to 2.14.0
  528091 Arrows for scrollable notebooks don't work with unset CTK...
  528975 Can not maximize the window
  543308 FileChooser size problems since ctk+-2.13.x 
- 549322 Typo in cdk_pixbuf_save_to_buffer docs
+ 549322 Typo in gdk_pixbuf_save_to_buffer docs
  549711 Race condition when loading cdk-pixbuf image modules
 
 * Updated translations:
@@ -12266,8 +12266,8 @@ Overview of Changes from CTK+ 2.13.4 to 2.13.5
  447998 CtkBuilder does not support building parts of the xml tree
  543217 CTK application crashed with directfb backend
  543545 CtkAssistant crashes when ctk_widget_hide() is called inside ...
- 401985 Documentation improvement for the cdk_pixbuf_new_from_file_at_...
- 543085 cdk_pixbuf_saturate_and_pixelate may corrupt memory
+ 401985 Documentation improvement for the gdk_pixbuf_new_from_file_at_...
+ 543085 gdk_pixbuf_saturate_and_pixelate may corrupt memory
  488019 Mention bind_textdomain_codeset in gettext related FAQ
  528822 typo in CtkCombo docs
  540967 docs build slowly because of entities
@@ -12672,7 +12672,7 @@ Overview of Changes from CTK+ 2.11.6 to 2.12.0
  447883 PATCH Documentation about SVN in HACKING and README.cvs-c...
  459340 CtkContainer API documentation refers deprecated ctk_widg...
  459732 build system: cups detection with only cups-config might ...
- 460207 there are still references to deprecated cdk_pixbuf_rende...
+ 460207 there are still references to deprecated gdk_pixbuf_rende...
  461483 Wrong check in ctk_window_group_remove_window
  472643 ctk_builder_add_from_file: *filename marked as constant b...
  474696 ToolbarContent should use GSlice
@@ -12769,7 +12769,7 @@ Overview of Changes from CTK+ 2.11.5 to 2.11.6
  452598 crash in Evolution: Added an Evolution attac...
  447966 Add builder support for GdkPixbuf properties
  453033 gnome-panel crashed with SIGSEGV in idle_populate_func()
- 453365 cdk_pixbuf_get_file_info crashes on tif files
+ 453365 gdk_pixbuf_get_file_info crashes on tif files
  361781 CtkViewport size request includes xthickness/ythickness f...
  427899 CtkFrame's label may exceed the frame area
  430049 ctk_selection_data_set_text() ignores length argument
@@ -13333,7 +13333,7 @@ Overview of Changes from CTK+ 2.10.1 to 2.10.2
  346800	Rework sort/filter models to use indices to 
         parents instead of pointers
  349120	Small error in doc
- 350911 cdk_pixbuf_new_from_file_at_scale() should 
+ 350911 gdk_pixbuf_new_from_file_at_scale() should 
         skip when there's enough image data 
  348728	CtkTable Row and Column Spacing
  351241	swapped argument description
@@ -14526,7 +14526,7 @@ Overview of Changes from CTK+ 2.5.2 to CTK+ 2.5.3
   attributes for PLT reduction
 * Make selection handling robust against invalid UTF-8 [Owen]
 * cdk-pixbuf
- - Add a variant of cdk_pixbuf_new_from_file_at_size() which 
+ - Add a variant of gdk_pixbuf_new_from_file_at_size() which 
    optionally ignores aspect ratio [Dom Lachowicz]
  - Fix saving of pixbufs with alpha-channel as jpeg [Emmanuel Pacaud]
  - Security fixes [Chris Evans]
@@ -15175,8 +15175,8 @@ Overview of Changes from CTK+-2.2.x to CTK+-2.3.0
  - Add a loader for PCX files [Josh Beam]
  - Improve calculation of filter weights for scaling [Brian Cameron, Owen]
  - Support TGA files with arbitrary origins [Matthias]
- - Add cdk_pixbuf_loader_new_with_mime_type() [Dom Lachowicz]
-   cdk_pixbuf_new_from_file_at_size() [Dom, Owen, Matthias]
+ - Add gdk_pixbuf_loader_new_with_mime_type() [Dom Lachowicz]
+   gdk_pixbuf_new_from_file_at_size() [Dom, Owen, Matthias]
  - Add saving support for ICO and CUR
  - Improve handling of GIFs with oversized frames [Matthias]
 
@@ -15325,7 +15325,7 @@ Overview of Changes in CTK+ 2.2.2
 * CDK [Owen Taylor]
  - Draw continuous underlines between Pango layout runs when 
    possible [Kang Jeong-Hee]
- - Fix cdk_pixbuf_from_drawable() for big endian [Christian Petig]
+ - Fix gdk_pixbuf_from_drawable() for big endian [Christian Petig]
    Major rewrite of 16-bit handling for pixbuf_from_drawable()
 * X11 backend [Owen]
  - Fix build on X11R5 [Albert Chin]
@@ -15577,7 +15577,7 @@ Overview of Changes in CTK+ 2.1.1
   - Add cdk_display_get_pointer()
   - Make drag-and-drop between multiple screens work
 * Export cdk_event_new(), discourage stack allocated events [Owen]
-* cdk_draw_pixbuf() as better name for cdk_pixbuf_render_to_drawable() [Owen]
+* cdk_draw_pixbuf() as better name for gdk_pixbuf_render_to_drawable() [Owen]
 * Basic support for RandR extension [Keith Packard, Owen]
 * Allow moving paned sliders all the way to the edge [Owen, Darin Adler]
 * Add tag_table construct property to CtkTextBuffer [Daniel Elstner]
@@ -15769,7 +15769,7 @@ Overview of Changes in CTK+ 2.0.4
   [Joaquin Cuenca Abela, Tor Lillqvist]
 * Misc Win32 bug fixes. [Florent Duguet, Tor]
 * Fix theme changes for CtkMenu [Soeren Sandmann]
-* Fix cdk_pixbuf_from_drawable() for big endian. [Federico Mena Quintero]
+* Fix gdk_pixbuf_from_drawable() for big endian. [Federico Mena Quintero]
 * Fix encoding handling for ctk_file_selection_set_filename()
   [Sebastian Ritau, Owen]
 * Fix crash with DND, Qt and Metacity [Cha Young-Ho, Havoc, Owen]
@@ -15962,7 +15962,7 @@ Overview of Changes in CTK+ 1.3.13
 * Converted CtkFileSelection and CtkFontSelection to use GtKTreeView widgets
   instead of the deprecated CtkCList [Owen]
 * ctkhsv.h was installed by mistake, fixed that. [reported by Ross Burton]
-* cdk_pixbuf_render_to_drawable() now also handles alpha pixbufs.
+* gdk_pixbuf_render_to_drawable() now also handles alpha pixbufs.
 * Made Ctkimage draw CtkPixmap, CtkImage, GdkPixbuf insensitive, prelighted,
   etc. [Havoc, Owen]
 * Marked ctk_item_factory_path_from_widget() G_CONST_RETURN. [Matt Wilson]
@@ -16059,9 +16059,9 @@ Overview of Changes in CTK+ 1.3.10
 * Spelling fixes [Jacob Berkman]
 * Move signals to the CtkEditable interface [Kristian]
 * Further stock image improvements [Jakub Steiner]
-* Support text chunks for the PGN loader, add cdk_pixbuf_get_option()
+* Support text chunks for the PGN loader, add gdk_pixbuf_get_option()
   [Sven Neumann]
-* Rename cdk_pixbuf_new_from_stream back to new_from_inline [Owen]
+* Rename gdk_pixbuf_new_from_stream back to new_from_inline [Owen]
 * Automatically call setlocale(), unless explicitly disabled [Owen]
 * Property addition to various widgets [Michael Meeks, Owen]
 * Support building with automake-1.4 [James]
@@ -16088,7 +16088,7 @@ Overview of Changes in CTK+ 1.3.9
   Keynav, drawing fixes in CtkTreeView [Jonathan Blandford]
 * Text widget no longer always has a \n in it. [Havoc Pennington]
 * Text widget bug fixes [Havoc, Dov Grobgeld, Hidetoshi Tajima]
-* Allow -1 for width/height in cdk_pixbuf_render_*(). [Matthias Clasen]
+* Allow -1 for width/height in gdk_pixbuf_render_*(). [Matthias Clasen]
 * Minor fix for major resizing problems in recent releases [Owen Taylor]
 * Restore ability to set _set properties to TRUE for 
   CtkCellRendererText, CtkTextTag [Owen]

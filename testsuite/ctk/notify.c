@@ -392,7 +392,7 @@ test_type (gconstpointer data)
 #ifdef G_OS_UNIX
       g_type_is_a (type, CTK_TYPE_PRINT_JOB) ||
 #endif
-      g_type_is_a (type, cdk_pixbuf_simple_anim_iter_get_type ()) ||
+      g_type_is_a (type, gdk_pixbuf_simple_anim_iter_get_type ()) ||
       g_str_equal (g_type_name (type), "CdkX11DeviceManagerXI2") ||
       g_str_equal (g_type_name (type), "CdkX11DeviceManagerCore") ||
       g_str_equal (g_type_name (type), "CdkX11Display") ||

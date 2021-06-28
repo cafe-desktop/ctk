@@ -345,7 +345,7 @@ cdk_cursor_new_from_pixbuf (CdkDisplay *display,
   g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
   g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
 
-  if (x == -1 && (option = cdk_pixbuf_get_option (pixbuf, "x_hot")))
+  if (x == -1 && (option = gdk_pixbuf_get_option (pixbuf, "x_hot")))
     {
       errno = 0;
       end = NULL;
@@ -356,7 +356,7 @@ cdk_cursor_new_from_pixbuf (CdkDisplay *display,
         x = (gint) value;
     }
   
-  if (y == -1 && (option = cdk_pixbuf_get_option (pixbuf, "y_hot")))
+  if (y == -1 && (option = gdk_pixbuf_get_option (pixbuf, "y_hot")))
     {
       errno = 0;
       end = NULL;
@@ -472,7 +472,7 @@ cdk_cursor_get_image (CdkCursor *cursor)
   x_scale = y_scale = 1;
   cairo_surface_get_device_scale (surface, &x_scale, &y_scale);
 
-  pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0, w, h);
+  pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0, w, h);
   cairo_surface_destroy (surface);
 
   if (x_scale != 1)
@@ -480,7 +480,7 @@ cdk_cursor_get_image (CdkCursor *cursor)
       GdkPixbuf *old;
 
       old = pixbuf;
-      pixbuf = cdk_pixbuf_scale_simple (old,
+      pixbuf = gdk_pixbuf_scale_simple (old,
 					w / x_scale, h / y_scale,
 					CDK_INTERP_HYPER);
       g_object_unref (old);
@@ -488,10 +488,10 @@ cdk_cursor_get_image (CdkCursor *cursor)
 
   
   g_snprintf (buf, 32, "%d", (int)x_hot);
-  cdk_pixbuf_set_option (pixbuf, "x_hot", buf);
+  gdk_pixbuf_set_option (pixbuf, "x_hot", buf);
 
   g_snprintf (buf, 32, "%d", (int)y_hot);
-  cdk_pixbuf_set_option (pixbuf, "y_hot", buf);
+  gdk_pixbuf_set_option (pixbuf, "y_hot", buf);
 
   return pixbuf;
 }

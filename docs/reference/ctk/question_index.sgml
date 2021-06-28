@@ -435,12 +435,12 @@ How do I load an image or animation from a file?
 To load an image file straight into a display widget, use
 ctk_image_new_from_file() <footnote><para> If the file load fails,
 ctk_image_new_from_file() will display no image graphic &mdash; to detect
-a failed load yourself, use cdk_pixbuf_new_from_file() directly, then
+a failed load yourself, use gdk_pixbuf_new_from_file() directly, then
 ctk_image_new_from_pixbuf().</para></footnote>.
-To load an image for another purpose, use cdk_pixbuf_new_from_file(). To
-load an animation, use cdk_pixbuf_animation_new_from_file().
-cdk_pixbuf_animation_new_from_file() can also load non-animated images, so
-use it in combination with cdk_pixbuf_animation_is_static_image() to load a
+To load an image for another purpose, use gdk_pixbuf_new_from_file(). To
+load an animation, use gdk_pixbuf_animation_new_from_file().
+gdk_pixbuf_animation_new_from_file() can also load non-animated images, so
+use it in combination with gdk_pixbuf_animation_is_static_image() to load a
 file of unknown type.
 </para>
 <para>

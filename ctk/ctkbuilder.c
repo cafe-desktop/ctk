@@ -2109,14 +2109,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
               GInputStream *stream = g_resources_open_stream (filename, 0, &tmp_error);
               if (stream != NULL)
                 {
-                  pixbuf = cdk_pixbuf_new_from_stream (stream, NULL, &tmp_error);
+                  pixbuf = gdk_pixbuf_new_from_stream (stream, NULL, &tmp_error);
                   g_object_unref (stream);
                 }
             }
           else
             {
               filename = _ctk_builder_get_absolute_filename (builder, string);
-              pixbuf = cdk_pixbuf_new_from_file (filename, &tmp_error);
+              pixbuf = gdk_pixbuf_new_from_file (filename, &tmp_error);
             }
 
           if (pixbuf == NULL)

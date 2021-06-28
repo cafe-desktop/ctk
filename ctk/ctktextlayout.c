@@ -1711,8 +1711,8 @@ add_pixbuf_attrs (CtkTextLayout      *layout,
   CtkTextPixbuf *pixbuf = &seg->body.pixbuf;
   gint width, height;
 
-  width = cdk_pixbuf_get_width (pixbuf->pixbuf);
-  height = cdk_pixbuf_get_height (pixbuf->pixbuf);
+  width = gdk_pixbuf_get_width (pixbuf->pixbuf);
+  height = gdk_pixbuf_get_height (pixbuf->pixbuf);
 
   logical_rect.x = 0;
   logical_rect.y = -height * PANGO_SCALE;

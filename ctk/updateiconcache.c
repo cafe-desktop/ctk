@@ -508,7 +508,7 @@ maybe_cache_image_data (Image       *image,
 
       if (!idata->has_pixdata)
 	{
-	  pixbuf = cdk_pixbuf_new_from_file (path, NULL);
+	  pixbuf = gdk_pixbuf_new_from_file (path, NULL);
 
 	  if (pixbuf)
 	    {

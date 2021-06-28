@@ -2615,8 +2615,8 @@ cdk_win32_window_set_icon_list (CdkWindow *window,
   while (pixbufs)
     {
       pixbuf = (GdkPixbuf*) pixbufs->data;
-      w = cdk_pixbuf_get_width (pixbuf);
-      h = cdk_pixbuf_get_height (pixbuf);
+      w = gdk_pixbuf_get_width (pixbuf);
+      h = gdk_pixbuf_get_height (pixbuf);
 
       dw = ABS (w - big_w);
       dh = ABS (h - big_h);

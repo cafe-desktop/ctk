@@ -69,14 +69,14 @@ load_symbolic_svg (char *file_data, gsize file_len,
 
   /* Fetch size from the original icon */
   stream = g_memory_input_stream_new_from_data (file_data, file_len, NULL);
-  pixbuf = cdk_pixbuf_new_from_stream (stream, NULL, error);
+  pixbuf = gdk_pixbuf_new_from_stream (stream, NULL, error);
   g_object_unref (stream);
 
   if (!pixbuf)
     return NULL;
 
-  svg_width = g_strdup_printf ("%d", cdk_pixbuf_get_width (pixbuf));
-  svg_height = g_strdup_printf ("%d",cdk_pixbuf_get_height (pixbuf));
+  svg_width = g_strdup_printf ("%d", gdk_pixbuf_get_width (pixbuf));
+  svg_height = g_strdup_printf ("%d",gdk_pixbuf_get_height (pixbuf));
   g_object_unref (pixbuf);
 
   escaped_file_data = g_base64_encode ((guchar *) file_data, file_len);
@@ -113,7 +113,7 @@ load_symbolic_svg (char *file_data, gsize file_len,
   g_free (svg_height);
 
   stream = g_memory_input_stream_new_from_data (data, -1, g_free);
-  pixbuf = cdk_pixbuf_new_from_stream_at_scale (stream,
+  pixbuf = gdk_pixbuf_new_from_stream_at_scale (stream,
                                                 width,
                                                 height,
                                                 TRUE,
@@ -135,17 +135,17 @@ extract_plane (GdkPixbuf *src,
   guchar *src_row, *dst_row;
   int x, y;
 
-  width = cdk_pixbuf_get_width (src);
-  height = cdk_pixbuf_get_height (src);
+  width = gdk_pixbuf_get_width (src);
+  height = gdk_pixbuf_get_height (src);
 
-  g_assert (width <= cdk_pixbuf_get_width (dst));
-  g_assert (height <= cdk_pixbuf_get_height (dst));
+  g_assert (width <= gdk_pixbuf_get_width (dst));
+  g_assert (height <= gdk_pixbuf_get_height (dst));
 
-  src_stride = cdk_pixbuf_get_rowstride (src);
-  src_data = cdk_pixbuf_get_pixels (src);
+  src_stride = gdk_pixbuf_get_rowstride (src);
+  src_data = gdk_pixbuf_get_pixels (src);
 
-  dst_data = cdk_pixbuf_get_pixels (dst);
-  dst_stride = cdk_pixbuf_get_rowstride (dst);
+  dst_data = gdk_pixbuf_get_pixels (dst);
+  dst_stride = gdk_pixbuf_get_rowstride (dst);
 
   for (y = 0; y < height; y++)
     {
@@ -177,9 +177,9 @@ make_symbolic_pixbuf (char *file,
   if (!g_file_get_contents (file, &file_data, &file_len, error))
     return NULL;
 
-  pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, width, height);
+  pixbuf = gdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, width, height);
 
-  cdk_pixbuf_fill (pixbuf, 0);
+  gdk_pixbuf_fill (pixbuf, 0);
 
   for (plane = 0; plane < 3; plane++)
     {
@@ -308,7 +308,7 @@ main (int argc, char **argv)
       return 1;
     }
 
-  if (!cdk_pixbuf_save_to_stream (symbolic, G_OUTPUT_STREAM (out), "png", NULL, &error, NULL))
+  if (!gdk_pixbuf_save_to_stream (symbolic, G_OUTPUT_STREAM (out), "png", NULL, &error, NULL))
     {
       g_printerr (_("Can't save file %s: %s\n"), pngpath, error->message);
       return 1;

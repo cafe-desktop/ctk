@@ -40,13 +40,13 @@ draw_cb (CtkWidget *widget, cairo_t *cr, gpointer data)
   width = ctk_widget_get_allocated_width (widget);
   height = ctk_widget_get_allocated_height (widget);
 
-  dest = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, width, height);
+  dest = gdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, width, height);
 
-  cdk_pixbuf_composite_color (pixbuf, dest,
+  gdk_pixbuf_composite_color (pixbuf, dest,
 			      0, 0, width, height,
 			      0, 0,
-                              (double) width / cdk_pixbuf_get_width (pixbuf),
-                              (double) height / cdk_pixbuf_get_height (pixbuf),
+                              (double) width / gdk_pixbuf_get_width (pixbuf),
+                              (double) height / gdk_pixbuf_get_height (pixbuf),
 			      interp_type, overall_alpha,
 			      0, 0, 16, 0xaaaaaa, 0x555555);
 
@@ -77,7 +77,7 @@ main(int argc, char **argv)
 	}
 
         error = NULL;
-	pixbuf = cdk_pixbuf_new_from_file (argv[1], &error);
+	pixbuf = gdk_pixbuf_new_from_file (argv[1], &error);
 	if (!pixbuf) {
 		fprintf (stderr, "Cannot load image: %s\n",
                          error->message);
@@ -85,7 +85,7 @@ main(int argc, char **argv)
 		exit(1);
 	}
 
-        creator = cdk_pixbuf_get_option (pixbuf, "tEXt::Software");
+        creator = gdk_pixbuf_get_option (pixbuf, "tEXt::Software");
         if (creator)
                 g_print ("%s was created by '%s'\n", argv[1], creator);
 
@@ -139,8 +139,8 @@ main(int argc, char **argv)
 			  G_CALLBACK (draw_cb), NULL);
 
 	ctk_window_set_default_size (CTK_WINDOW (window),
-				     cdk_pixbuf_get_width (pixbuf),
-				     scratch_requisition.height + cdk_pixbuf_get_height (pixbuf));
+				     gdk_pixbuf_get_width (pixbuf),
+				     scratch_requisition.height + gdk_pixbuf_get_height (pixbuf));
 	
 	ctk_widget_show_all (window);
 

@@ -1441,7 +1441,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
 #ifdef CDK_WINDOWING_WIN32
   if (surface)
     {
-      pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0,
+      pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0,
                                             cairo_image_surface_get_width (surface),
                                             cairo_image_surface_get_height (surface));
       cairo_surface_destroy (surface);
@@ -1472,7 +1472,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
 #ifdef CDK_WINDOWING_QUARTZ
   if (surface)
     {
-      pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0,
+      pixbuf = gdk_pixbuf_get_from_surface (surface, 0, 0,
                                             cairo_image_surface_get_width (surface),
                                             cairo_image_surface_get_height (surface));
       cairo_surface_destroy (surface);
@@ -1853,7 +1853,7 @@ ctk_status_icon_set_from_file (CtkStatusIcon *status_icon,
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
   g_return_if_fail (filename != NULL);
   
-  pixbuf = cdk_pixbuf_new_from_file (filename, NULL);
+  pixbuf = gdk_pixbuf_new_from_file (filename, NULL);
  
   ctk_status_icon_set_from_pixbuf (status_icon, pixbuf);
   

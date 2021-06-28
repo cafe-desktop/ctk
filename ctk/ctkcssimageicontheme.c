@@ -83,8 +83,8 @@ ctk_css_image_icon_theme_draw (CtkCssImage        *image,
   cairo_scale (cr, 1.0 / icon_theme->scale, 1.0 / icon_theme->scale);
   cdk_cairo_set_source_pixbuf (cr,
                                pixbuf,
-                               - cdk_pixbuf_get_width (pixbuf) / 2.0,
-                               - cdk_pixbuf_get_height (pixbuf) / 2.0);
+                               - gdk_pixbuf_get_width (pixbuf) / 2.0,
+                               - gdk_pixbuf_get_height (pixbuf) / 2.0);
   cairo_paint (cr);
 
   g_object_unref (pixbuf);

@@ -3849,7 +3849,7 @@ cdk_window_update_icon (CdkWindow *window,
       /* average width and height - if someone passes in a rectangular
        * icon they deserve what they get.
        */
-      this = cdk_pixbuf_get_width (pixbuf) + cdk_pixbuf_get_height (pixbuf);
+      this = gdk_pixbuf_get_width (pixbuf) + gdk_pixbuf_get_height (pixbuf);
       this /= 2;
   
       if (best_icon == NULL)
@@ -3874,8 +3874,8 @@ cdk_window_update_icon (CdkWindow *window,
 
   if (best_icon)
     {
-      int width = cdk_pixbuf_get_width (best_icon);
-      int height = cdk_pixbuf_get_height (best_icon);
+      int width = gdk_pixbuf_get_width (best_icon);
+      int height = gdk_pixbuf_get_height (best_icon);
       cairo_t *cr;
 
       toplevel->icon_pixmap = cdk_x11_window_create_pixmap_surface (window,
@@ -3885,7 +3885,7 @@ cdk_window_update_icon (CdkWindow *window,
       cr = cairo_create (toplevel->icon_pixmap);
       cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
       cdk_cairo_set_source_pixbuf (cr, best_icon, 0, 0);
-      if (cdk_pixbuf_get_has_alpha (best_icon))
+      if (gdk_pixbuf_get_has_alpha (best_icon))
         {
           /* Saturate the image, so it has bilevel alpha */
           cairo_push_group_with_content (cr, CAIRO_CONTENT_COLOR_ALPHA);
@@ -3897,7 +3897,7 @@ cdk_window_update_icon (CdkWindow *window,
       cairo_paint (cr);
       cairo_destroy (cr);
 
-      if (cdk_pixbuf_get_has_alpha (best_icon))
+      if (gdk_pixbuf_get_has_alpha (best_icon))
         {
           toplevel->icon_mask = _cdk_x11_window_create_bitmap_surface (window,
                                                                        width,
@@ -3944,8 +3944,8 @@ cdk_x11_window_set_icon_list (CdkWindow *window,
       pixbuf = l->data;
       g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
 
-      width = cdk_pixbuf_get_width (pixbuf);
-      height = cdk_pixbuf_get_height (pixbuf);
+      width = gdk_pixbuf_get_width (pixbuf);
+      height = gdk_pixbuf_get_height (pixbuf);
       
       /* silently ignore overlarge icons */
       if (size + 2 + width * height > CDK_SELECTION_MAX_SIZE(display))
@@ -3965,15 +3965,15 @@ cdk_x11_window_set_icon_list (CdkWindow *window,
     {
       pixbuf = l->data;
       
-      width = cdk_pixbuf_get_width (pixbuf);
-      height = cdk_pixbuf_get_height (pixbuf);
-      stride = cdk_pixbuf_get_rowstride (pixbuf);
-      n_channels = cdk_pixbuf_get_n_channels (pixbuf);
+      width = gdk_pixbuf_get_width (pixbuf);
+      height = gdk_pixbuf_get_height (pixbuf);
+      stride = gdk_pixbuf_get_rowstride (pixbuf);
+      n_channels = gdk_pixbuf_get_n_channels (pixbuf);
       
       *p++ = width;
       *p++ = height;
 
-      pixels = cdk_pixbuf_get_pixels (pixbuf);
+      pixels = gdk_pixbuf_get_pixels (pixbuf);
 
       for (y = 0; y < height; y++)
 	{

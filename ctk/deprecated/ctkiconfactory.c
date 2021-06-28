@@ -1201,7 +1201,7 @@ ensure_filename_pixbuf (CtkIconSet    *icon_set,
     {
       GError *error = NULL;
 
-      source->filename_pixbuf = cdk_pixbuf_new_from_file (source->source.filename, &error);
+      source->filename_pixbuf = gdk_pixbuf_new_from_file (source->source.filename, &error);
 
       if (source->filename_pixbuf == NULL)
 	{
@@ -1388,9 +1388,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 	  if (scale != 1)
 	    {
 	      GdkPixbuf *tmp = pixbuf;
-	      pixbuf = cdk_pixbuf_scale_simple (pixbuf,
-						cdk_pixbuf_get_width (pixbuf) * scale,
-						cdk_pixbuf_get_height (pixbuf) * scale,
+	      pixbuf = gdk_pixbuf_scale_simple (pixbuf,
+						gdk_pixbuf_get_width (pixbuf) * scale,
+						gdk_pixbuf_get_height (pixbuf) * scale,
 						CDK_INTERP_BILINEAR);
 	      g_object_unref (tmp);
 	    }

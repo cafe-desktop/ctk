@@ -833,7 +833,7 @@ _ctk_file_info_render_icon_internal (GFileInfo *info,
   if (thumbnail_path)
     {
       scale = ctk_widget_get_scale_factor (widget);
-      pixbuf = cdk_pixbuf_new_from_file_at_size (thumbnail_path,
+      pixbuf = gdk_pixbuf_new_from_file_at_size (thumbnail_path,
 						 icon_size*scale, icon_size*scale,
 						 NULL);
 

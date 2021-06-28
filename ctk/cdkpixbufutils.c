@@ -43,7 +43,7 @@ load_from_stream (GdkPixbufLoader  *loader,
       if (n_read == 0)
         break;
 
-      if (!cdk_pixbuf_loader_write (loader, buffer, n_read, error))
+      if (!gdk_pixbuf_loader_write (loader, buffer, n_read, error))
         {
           res = FALSE;
           error = NULL;
@@ -51,7 +51,7 @@ load_from_stream (GdkPixbufLoader  *loader,
         }
     }
 
-  if (!cdk_pixbuf_loader_close (loader, error))
+  if (!gdk_pixbuf_loader_close (loader, error))
     {
       res = FALSE;
       error = NULL;
@@ -61,7 +61,7 @@ load_from_stream (GdkPixbufLoader  *loader,
 
   if (res)
     {
-      pixbuf = cdk_pixbuf_loader_get_pixbuf (loader);
+      pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
       if (pixbuf)
         g_object_ref (pixbuf);
     }
@@ -80,15 +80,15 @@ size_prepared_cb (GdkPixbufLoader *loader,
   width = MAX (*scale * width, 1);
   height = MAX (*scale * height, 1);
 
-  cdk_pixbuf_loader_set_size (loader, width, height);
+  gdk_pixbuf_loader_set_size (loader, width, height);
 }
 
-/* Like cdk_pixbuf_new_from_stream_at_scale, but
+/* Like gdk_pixbuf_new_from_stream_at_scale, but
  * load the image at its original size times the
  * given scale.
  */
 GdkPixbuf *
-_cdk_pixbuf_new_from_stream_scaled (GInputStream  *stream,
+_gdk_pixbuf_new_from_stream_scaled (GInputStream  *stream,
                                     gdouble        scale,
                                     GCancellable  *cancellable,
                                     GError       **error)
@@ -96,7 +96,7 @@ _cdk_pixbuf_new_from_stream_scaled (GInputStream  *stream,
   GdkPixbufLoader *loader;
   GdkPixbuf *pixbuf;
 
-  loader = cdk_pixbuf_loader_new ();
+  loader = gdk_pixbuf_loader_new ();
 
   g_signal_connect (loader, "size-prepared",
                     G_CALLBACK (size_prepared_cb), &scale);
@@ -108,12 +108,12 @@ _cdk_pixbuf_new_from_stream_scaled (GInputStream  *stream,
   return pixbuf;
 }
 
-/* Like cdk_pixbuf_new_from_resource_at_scale, but
+/* Like gdk_pixbuf_new_from_resource_at_scale, but
  * load the image at its original size times the
  * given scale.
  */
 GdkPixbuf *
-_cdk_pixbuf_new_from_resource_scaled (const gchar  *resource_path,
+_gdk_pixbuf_new_from_resource_scaled (const gchar  *resource_path,
                                       gdouble       scale,
                                       GError      **error)
 {
@@ -124,7 +124,7 @@ _cdk_pixbuf_new_from_resource_scaled (const gchar  *resource_path,
   if (stream == NULL)
     return NULL;
 
-  pixbuf = _cdk_pixbuf_new_from_stream_scaled (stream, scale, NULL, error);
+  pixbuf = _gdk_pixbuf_new_from_stream_scaled (stream, scale, NULL, error);
   g_object_unref (stream);
 
   return pixbuf;
