@@ -40,7 +40,7 @@ ctk_css_image_url_load_image (CtkCssImageUrl  *url,
 
   /* We special case resources here so we can use
      gdk_pixbuf_new_from_resource, which in turn has some special casing
-     for CdkPixdata files to avoid duplicating the memory for the pixbufs */
+     for GdkPixdata files to avoid duplicating the memory for the pixbufs */
   if (g_file_has_uri_scheme (url->file, "resource"))
     {
       char *uri = g_file_get_uri (url->file);

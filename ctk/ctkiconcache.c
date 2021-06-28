@@ -484,7 +484,7 @@ _ctk_icon_cache_get_icon (CtkIconCache *cache,
   guint32 offset, image_data_offset, pixel_data_offset;
   guint32 length, type;
   GdkPixbuf *pixbuf;
-  CdkPixdata pixdata;
+  GdkPixdata pixdata;
   GError *error = NULL;
 
   offset = find_image_offset (cache, icon_name, directory_index);
