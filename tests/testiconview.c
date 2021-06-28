@@ -76,7 +76,7 @@ create_model (void)
 {
   CtkListStore *store;
   
-  store = ctk_list_store_new (5, CDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_BOOLEAN);
+  store = ctk_list_store_new (5, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_BOOLEAN);
 
   return CTK_TREE_MODEL (store);
 }

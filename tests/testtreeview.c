@@ -149,7 +149,7 @@ get_model_types (void)
     {
       column_types[0] = G_TYPE_STRING;
       column_types[1] = G_TYPE_STRING;
-      column_types[2] = CDK_TYPE_PIXBUF;
+      column_types[2] = GDK_TYPE_PIXBUF;
       column_types[3] = G_TYPE_FLOAT;
       column_types[4] = G_TYPE_UINT;
       column_types[5] = G_TYPE_UCHAR;

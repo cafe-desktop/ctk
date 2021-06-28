@@ -416,7 +416,7 @@ ctk_icon_view_class_init (CtkIconViewClass *klass)
    *
    * The ::pixbuf-column property contains the number of the model column
    * containing the pixbufs which are displayed. The pixbuf column must be 
-   * of type #CDK_TYPE_PIXBUF. Setting this property to -1 turns off the
+   * of type #GDK_TYPE_PIXBUF. Setting this property to -1 turns off the
    * display of pixbufs.
    *
    * Since: 2.6
@@ -5006,7 +5006,7 @@ ctk_icon_view_set_model (CtkIconView *icon_view,
 	  column_type = ctk_tree_model_get_column_type (model,
 							icon_view->priv->pixbuf_column);	  
 
-	  g_return_if_fail (column_type == CDK_TYPE_PIXBUF);
+	  g_return_if_fail (column_type == GDK_TYPE_PIXBUF);
 	}
 
       if (icon_view->priv->text_column != -1)
@@ -5333,7 +5333,7 @@ ctk_icon_view_get_markup_column (CtkIconView  *icon_view)
  * @column: A column in the currently used model, or -1 to disable
  * 
  * Sets the column with pixbufs for @icon_view to be @column. The pixbuf
- * column must be of type #CDK_TYPE_PIXBUF
+ * column must be of type #GDK_TYPE_PIXBUF
  *
  * Since: 2.6 
  **/
@@ -5354,7 +5354,7 @@ ctk_icon_view_set_pixbuf_column (CtkIconView *icon_view,
 	  
 	  column_type = ctk_tree_model_get_column_type (icon_view->priv->model, column);
 
-	  g_return_if_fail (column_type == CDK_TYPE_PIXBUF);
+	  g_return_if_fail (column_type == GDK_TYPE_PIXBUF);
 	}
       
       icon_view->priv->pixbuf_column = column;

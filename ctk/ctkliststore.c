@@ -406,7 +406,7 @@ iter_is_valid (CtkTreeIter  *iter,
  * are supported.
  *
  * As an example, `ctk_list_store_new (3, G_TYPE_INT, G_TYPE_STRING,
- * CDK_TYPE_PIXBUF);` will create a new #CtkListStore with three columns, of type
+ * GDK_TYPE_PIXBUF);` will create a new #CtkListStore with three columns, of type
  * int, string and #GdkPixbuf respectively.
  *
  * Returns: a new #CtkListStore

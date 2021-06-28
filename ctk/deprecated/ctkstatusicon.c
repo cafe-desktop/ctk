@@ -233,7 +233,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 				   g_param_spec_object ("pixbuf",
 							P_("Pixbuf"),
 							P_("A GdkPixbuf to display"),
-							CDK_TYPE_PIXBUF,
+							GDK_TYPE_PIXBUF,
 							CTK_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,

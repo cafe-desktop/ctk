@@ -606,7 +606,7 @@ ctk_assistant_class_init (CtkAssistantClass *class)
                                               g_param_spec_object ("header-image",
                                                                    P_("Header image"),
                                                                    P_("Header image for the assistant page"),
-                                                                   CDK_TYPE_PIXBUF,
+                                                                   GDK_TYPE_PIXBUF,
                                                                    CTK_PARAM_READWRITE));
 
   /**
@@ -623,7 +623,7 @@ ctk_assistant_class_init (CtkAssistantClass *class)
                                               g_param_spec_object ("sidebar-image",
                                                                    P_("Sidebar image"),
                                                                    P_("Sidebar image for the assistant page"),
-                                                                   CDK_TYPE_PIXBUF,
+                                                                   GDK_TYPE_PIXBUF,
                                                                    CTK_PARAM_READWRITE));
 
   /**

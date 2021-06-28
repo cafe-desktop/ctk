@@ -255,7 +255,7 @@ ctk_image_class_init (CtkImageClass *class)
       g_param_spec_object ("pixbuf",
                            P_("Pixbuf"),
                            P_("A GdkPixbuf to display"),
-                           CDK_TYPE_PIXBUF,
+                           GDK_TYPE_PIXBUF,
                            CTK_PARAM_READWRITE);
 
   image_props[PROP_SURFACE] =
@@ -327,7 +327,7 @@ ctk_image_class_init (CtkImageClass *class)
       g_param_spec_object ("pixbuf-animation",
                            P_("Animation"),
                            P_("GdkPixbufAnimation to display"),
-                           CDK_TYPE_PIXBUF_ANIMATION,
+                           GDK_TYPE_PIXBUF_ANIMATION,
                            CTK_PARAM_READWRITE);
 
   /**
