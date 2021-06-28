@@ -1,0 +1,691 @@
+<?xml version="1.0"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+               "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
+]>
+<chapter id="ctk-migrating-CtkStyleContext">
+  <title>Theming changes</title>
+
+  <para>
+    In CTK+ 3.0, #CtkStyleContext was added to replace #CtkStyle and
+    the theming infrastructure available in 2.x. CtkStyleContext is an
+    object similar in spirit to CtkStyle, as it contains theming information,
+    although in a more complete and tokenized fashion. There are two aspects
+    to switching to CtkStyleContext: porting themes and theme engines, and
+    porting applications, libraries and widgets.
+  </para>
+
+  <section id="ctk-migrating-CtkStyleContext-themes">
+    <title>Migrating themes</title>
+
+    <para>
+      From CTK+ 3.0 on, theme engines must implement #CtkThemingEngine and be
+      installed in <filename>$libdir/ctk+-3.0/$CTK_VERSION/theming-engines</filename>,
+      and the files containing style information must be written in the CSS-like
+      format that is understood by #CtkCssProvider. For a theme named
+      "Clearlooks", the CSS file parsed by default is
+      <filename>$datadir/themes/Clearlooks/ctk-3.0/ctk.css</filename>,
+      with possible variants such as the dark theme being named
+      <filename>ctk-dark.css</filename> in the same directory.
+    </para>
+
+    <para>
+      If your theme RC file was providing values for #CtkSettings, you
+      can install a <filename>settings.ini</filename> keyfile along with
+      the <filename>ctk.css</filename> to provide theme-specific defaults
+      for settings.
+    </para>
+
+    <para>
+      Key themes have been converted to CSS syntax too. See the
+      <link linkend="css-binding-set">CtkCssProvider</link> documentation
+      information about the syntax. CTK+ looks for key themes in the file
+      <filename>$datadir/themes/<replaceable>theme</replaceable>/ctk-3.0/ctk-keys.css</filename>, where <replaceable>theme</replaceable> is the current
+      key theme name.
+    </para>
+  </section>
+
+  <section id="ctk-migrating-theme-CtkStyleContext-engines">
+    <title>Migrating theme engines</title>
+
+    <para>
+      Migrating a #CtkStyle based engine to a #CtkThemingEngine based one
+      should be straightforward for most of the vfuncs. Besides a cleanup
+      in the available paint methods and a simplification in the passed
+      arguments (in favor of #CtkStyleContext containing all the information),
+      the available render methods resemble those of #CtkStyle quite
+      evidently. Notable differences include:
+    </para>
+
+    <orderedlist>
+      <listitem>
+        All variations of ctk_paint_box(), ctk_paint_flat_box(),
+        ctk_paint_shadow(), ctk_paint_box_gap() and ctk_paint_shadow_gap()
+        are replaced by ctk_render_background(), ctk_render_frame() and
+        ctk_render_frame_gap(). The first function renders frameless
+        backgrounds and the last two render frames in various forms.
+      </listitem>
+      <listitem>
+        ctk_paint_resize_grip() has been subsumed by ctk_render_handle()
+        with a #CTK_STYLE_CLASS_GRIP class set in the style context.
+      </listitem>
+      <listitem>
+        ctk_paint_spinner() disappears in favor of ctk_render_activity()
+        with a #CTK_STYLE_CLASS_SPINNER class set in the style context.
+      </listitem>
+    </orderedlist>
+
+    <para>
+      The list of available render methods is:
+    </para>
+
+    <simplelist>
+      <member>
+        ctk_render_background(): Renders a widget/area background.
+      </member>
+      <member>
+        ctk_render_frame(): Renders a frame border around the given rectangle.
+        Usually the detail of the border depends on the theme information,
+        plus the current widget state.
+      </member>
+      <member>
+        ctk_render_frame_gap(): Renders a frame border with a gap on one side.
+      </member>
+      <member>
+        ctk_render_layout(): Renders a #PangoLayout.
+      </member>
+      <member>
+        ctk_render_handle(): Renders all kind of handles and resize grips,
+        depending on the style class.
+      </member>
+      <member>
+        ctk_render_check(): Render checkboxes.
+      </member>
+      <member>
+        ctk_render_option(): Render radiobuttons.
+      </member>
+      <member>
+        ctk_render_arrow(): Renders an arrow pointing to a direction.
+      </member>
+      <member>
+        ctk_render_expander(): Renders an expander indicator, such as in
+        #CtkExpander.
+      </member>
+      <member>
+        ctk_render_focus(): Renders the indication that a widget has the
+        keyboard focus.
+      </member>
+      <member>
+        ctk_render_line(): Renders a line from one coordinate to another.
+      </member>
+      <member>
+        ctk_render_slider(): Renders a slider, such as in #CtkScale.
+      </member>
+      <member>
+        ctk_render_extension(): Renders an extension that protrudes from
+        a UI element, such as a notebook tab.
+      </member>
+      <member>
+        ctk_render_activity(): Renders an area displaying activity, be it
+        a progressbar or a spinner.
+      </member>
+      <member>
+        ctk_render_icon_pixbuf(): Renders an icon into a #GdkPixbuf.
+      </member>
+    </simplelist>
+
+    <para>
+      One of the main differences to #CtkStyle<!-- -->-based engines is that the
+      rendered widget is totally isolated from the theme engine, all style
+      information is meant to be retrieved from the #CtkThemingEngine API,
+      or from the #CtkWidgetPath obtained from ctk_theming_engine_get_path(),
+      which fully represents the rendered widget's hierarchy from a styling
+      point of view.
+    </para>
+
+    <para>
+      The detail string available in #CtkStyle<!-- -->-based engines has been
+      replaced by widget regions and style classes. Regions are a way for
+      complex widgets to associate different styles with different areas,
+      such as even and odd rows in a treeview. Style classes allow sharing
+      of style information between widgets, regardless of their type.
+      Regions and style classes can be used in style sheets to associate
+      styles, and them engines can also access them. There are several
+      predefined classes and regions such as %CTK_STYLE_CLASS_BUTTON or
+      %CTK_STYLE_REGION_TAB in <filename>ctkstylecontext.h</filename>,
+      although custom widgets may define their own, which themes may
+      attempt to handle.
+    </para>
+
+  </section>
+
+  <section id="ctk-migrating-CtkStyleContext-parser-extensions">
+    <title>Extending the CSS parser</title>
+
+    <para>
+      In #CtkStyle<!-- -->-based engines, CtkRCStyle provided ways to extend the
+      ctkrc parser with engine-specific extensions. This has been replaced
+      by ctk_theming_engine_register_property(), which lets a theme engine
+      register new properties with an arbitrary type. While there is built-in
+      support for most basic types, it is possible to use a custom parser
+      for the property.
+    </para>
+
+    <para>
+      The installed properties depend on the #CtkThemingEngine:name property,
+      so they should be added in the <literal>constructed()</literal> vfunc.
+      For example, if an engine with the name "Clearlooks" installs a
+      "focus-color" property with the type #GdkRGBA, the property
+      <literal>-Clearlooks-focus-color</literal> will be registered and
+      accepted in CSS like this:
+      <informalexample><programlisting>
+      CtkEntry {
+        -Clearlooks-focus-color: rgba(255, 0, 0, 1.0);
+      }
+      </programlisting></informalexample>
+    </para>
+
+    <para>
+      Widget style properties also follow a similar syntax, with the widget
+      type name used as a prefix. For example, the #CtkWidget focus-line-width
+      style property can be modified in CSS as
+      <literal>-CtkWidget-focus-line-width</literal>.
+    </para>
+  </section>
+
+  <section id="ctk-migrating-CtkStyleContext-css">
+    <title>Using the CSS file format</title>
+
+    <para>
+      The syntax of RC and CSS files formats is obviously different.
+      The CSS-like syntax will hopefully be much more familiar to many
+      people, lowering the barrier for custom theming.
+    </para>
+    <para>
+      Instead of going through the syntax differences one-by-one, we
+      will present a more or less comprehensive example and discuss
+      how it can be translated into CSS:
+    </para>
+
+    <example>
+      <title>Sample RC code</title>
+      <programlisting>
+        style "default" {
+                xthickness = 1
+                ythickness = 1
+
+                CtkButton::child-displacement-x = 1
+                CtkButton::child-displacement-y = 1
+                CtkCheckButton::indicator-size = 14
+
+                bg[NORMAL]        = @bg_color
+                bg[PRELIGHT]      = shade (1.02, @bg_color)
+                bg[SELECTED]      = @selected_bg_color
+                bg[INSENSITIVE]   = @bg_color
+                bg[ACTIVE]        = shade (0.9, @bg_color)
+
+                fg[NORMAL]        = @fg_color
+                fg[PRELIGHT]      = @fg_color
+                fg[SELECTED]      = @selected_fg_color
+                fg[INSENSITIVE]   = darker (@bg_color)
+                fg[ACTIVE]        = @fg_color
+
+                text[NORMAL]      = @text_color
+                text[PRELIGHT]    = @text_color
+                text[SELECTED]    = @selected_fg_color
+                text[INSENSITIVE] = darker (@bg_color)
+                text[ACTIVE]      = @selected_fg_color
+
+                base[NORMAL]      = @base_color
+                base[PRELIGHT]    = shade (0.95, @bg_color)
+                base[SELECTED]    = @selected_bg_color
+                base[INSENSITIVE] = @bg_color
+                base[ACTIVE]      = shade (0.9, @selected_bg_color)
+
+                engine "clearlooks" {
+                        colorize_scrollbar = TRUE
+                        style = CLASSIC
+                }
+        }
+
+        style "tooltips" {
+                xthickness = 4
+                ythickness = 4
+
+                bg[NORMAL]        = @tooltip_bg_color
+                fg[NORMAL]        = @tooltip_fg_color
+        }
+
+        style "button" {
+                xthickness = 3
+                ythickness = 3
+
+                bg[NORMAL]        = shade (1.04, @bg_color)
+                bg[PRELIGHT]      = shade (1.06, @bg_color)
+                bg[ACTIVE]        = shade (0.85, @bg_color)
+        }
+
+        style "entry" {
+                xthickness = 3
+                ythickness = 3
+
+                bg[SELECTED] = mix (0.4, @selected_bg_color, @base_color)
+                fg[SELECTED] = @text_color
+
+                engine "clearlooks" {
+                        focus_color = shade (0.65, @selected_bg_color)
+                }
+        }
+
+        style "other" {
+                bg[NORMAL] = &num;fff;
+        }
+
+        class "CtkWidget" style "default"
+        class "CtkEntry" style "entry"
+        widget_class "*&lt;CtkButton&gt;" style "button"
+        widget "ctk-tooltip*" style "tooltips"
+        widget_class "window-name.*.CtkButton" style "other"
+      </programlisting>
+    </example>
+
+    <para>
+      would roughly translate to this CSS:
+    </para>
+
+    <example>
+      <title>CSS translation</title>
+      <programlisting>
+        * {
+          padding: 1;
+          -CtkButton-child-displacement-x: 1;
+          -CtkButton-child-displacement-y: 1;
+          -CtkCheckButton-indicator-size: 14;
+
+          background-color: @bg_color;
+          color: @fg_color;
+
+          -Clearlooks-colorize-scrollbar: true;
+          -Clearlooks-style: classic;
+        }
+
+        *:hover {
+          background-color: shade (@bg_color, 1.02);
+        }
+
+        *:selected {
+          background-color: @selected_bg_color;
+          color: @selected_fg_color;
+        }
+
+        *:insensitive {
+          color: shade (@bg_color, 0.7);
+        }
+
+        *:active {
+          background-color: shade (@bg_color, 0.9);
+        }
+
+        .tooltip {
+          padding: 4;
+
+          background-color: @tooltip_bg_color;
+          color: @tooltip_fg_color;
+        }
+
+        .button {
+          padding: 3;
+          background-color: shade (@bg_color, 1.04);
+        }
+
+        .button:hover {
+          background-color: shade (@bg_color, 1.06);
+        }
+
+        .button:active {
+          background-color: shade (@bg_color, 0.85);
+        }
+
+        .entry {
+          padding: 3;
+
+          background-color: @base_color;
+          color: @text_color;
+        }
+
+        .entry:selected {
+          background-color: mix (@selected_bg_color, @base_color, 0.4);
+          -Clearlooks-focus-color: shade (0.65, @selected_bg_color)
+        }
+
+        /* The latter selector is an specification of the first,
+           since any widget may use the same classes or names */
+        &num;window-name .button,
+        CtkWindow&num;window-name CtkButton.button {
+          background-color: &num;fff;
+        }
+      </programlisting>
+    </example>
+
+    <para>
+      One notable difference is the reduction from fg/bg/text/base colors
+      to only foreground/background, in exchange the widget is able to render
+      its various elements with different CSS classes, which can be themed
+      independently.
+    </para>
+
+    <para>
+      In the same vein, the light, dark and mid color variants that
+      were available in CtkStyle should be replaced by a combination of
+      symbolic colors and custom CSS, where necessary. text_aa should
+      really not be used anywhere, anyway, and the white and black colors
+      that were available in CtkStyle can just be replaced by literal
+      GdkRGBA structs.
+    </para>
+
+    <para>
+      Access to colors has also changed a bit. With #CtkStyle, the common
+      way to access colors is:
+      <informalexample><programlisting>
+      GdkColor *color1;
+      GdkColor color2;
+
+      color1 = &amp;style->bg[CTK_STATE_PRELIGHT];
+      ctk_style_lookup_color (style, "focus_color", &amp;color2);
+      </programlisting></informalexample>
+      With #CtkStyleContext, you generally use #GdkRGBA instead of #GdkColor
+      and the code looks like this:
+      <informalexample><programlisting>
+      GdkRGBA *color1;
+      GdkRGBA  color2;
+
+      ctk_style_context_get (context, CTK_STATE_FLAG_PRELIGHT,
+                             "background-color", &amp;color1,
+                             NULL);
+      ctk_style_context_lookup_color (context, "focus_color", &amp;color2);
+
+      ...
+
+      gdk_rgba_free (color1);
+      </programlisting></informalexample>
+      Note that the memory handling here is different: ctk_style_context_get()
+      expects the address of a GdkRGBA* and returns a newly allocated struct,
+      ctk_style_context_lookup_color() expects the address of an existing
+      struct, and fills it.
+    </para>
+
+    <para>
+      It is worth mentioning that the new file format does not support
+      stock icon mappings as the RC format did.
+    </para>
+  </section>
+
+  <section id="ctk-migrating-CtkStyleContext-checklist">
+    <title>A checklist for widgets</title>
+
+    <para>
+      When porting your widgets to use #CtkStyleContext, this checklist
+      might be useful.
+    </para>
+
+    <orderedlist>
+      <listitem>
+        Replace #CtkWidget::style-set handlers with
+        #CtkWidget::style-updated handlers.
+      </listitem>
+
+      <listitem>
+        <para>
+          Try to identify the role of what you're rendering with any number
+          of classes. This will replace the detail string. There is a predefined
+          set of CSS classes which you can reuse where appropriate. Doing so
+          will give you theming 'for free', whereas custom classes will require
+          extra work in the theme. Note that complex widgets are likely to
+          need different styles when rendering different parts, and style
+          classes are one way to achieve this. This could result in code like
+          the following (simplified) examples:
+        </para>
+
+        <example>
+          <title>Setting a permanent CSS class</title>
+          <programlisting>
+            static void
+            ctk_button_init (CtkButton *button)
+            {
+              CtkStyleContext *context;
+
+              ...
+
+              context = ctk_widget_get_style_context (CTK_WIDGET (button));
+
+              /* Set the "button" class */
+              ctk_style_context_add_class (context, CTK_STYLE_CLASS_BUTTON);
+            }
+          </programlisting>
+        </example>
+
+        <para>
+          Or
+        </para>
+
+        <example>
+          <title>Using dynamic CSS classes for different elements</title>
+          <programlisting>
+            static gboolean
+            ctk_spin_button_draw (CtkSpinButton *spin,
+                                  cairo_t       *cr)
+            {
+              CtkStyleContext *context;
+
+              ...
+
+              context = ctk_widget_get_style_context (CTK_WIDGET (spin));
+
+              ctk_style_context_save (context);
+              ctk_style_context_add_class (context, CTK_STYLE_CLASS_ENTRY);
+
+              /* Call to entry draw impl with "entry" class */
+              parent_class->draw (spin, cr);
+
+              ctk_style_context_restore (context);
+              ctk_style_context_save (context);
+
+              /* Render up/down buttons with the "button" class */
+              ctk_style_context_add_class (context, CTK_STYLE_CLASS_BUTTON);
+              draw_up_button (spin, cr);
+              draw_down_button (spin, cr);
+
+              ctk_style_context_restore (context);
+
+              ...
+            }
+          </programlisting>
+        </example>
+
+        <para>
+          Note that #CtkStyleContext only provides fg/bg colors, so text/base
+          is done through distinctive theming of the different classes. For
+          example, an entry would usually be black on white while a button
+          would usually be black on light grey.
+        </para>
+      </listitem>
+
+      <listitem>
+        <para>
+          Replace all <literal>ctk_paint_*()</literal> calls with corresponding
+          <literal>ctk_render_*()</literal> calls.
+        </para>
+        <para>
+          The most distinctive changes are the use of #CtkStateFlags to
+          represent the widget state and the lack of #CtkShadowType. Note
+          that widget state is now passed implicitly via the context, so
+          to render in a certain state, you have to temporarily set the
+          state on the context, as in the following example:
+        </para>
+        <example>
+          <title>Rendering with a specific state</title>
+          <programlisting>
+            ctk_style_context_save (context);
+            ctk_style_context_set_state (context, CTK_STATE_FLAG_ACTIVE);
+            ctk_render_check (context, cr, x, y, width, height);
+            ctk_style_context_restore (context);
+          </programlisting>
+        </example>
+        <para>
+          For ctk_render_check() and ctk_render_option(), the @shadow_type
+          parameter is replaced by the #CTK_STATE_FLAG_ACTIVE and
+          #CTK_STATE_FLAG_INCONSISTENT state flags. For things such as
+          pressed/unpressed button states, #CTK_STATE_FLAG_ACTIVE is used,
+          and the CSS may style normal/active states differently to render
+          outset/inset borders, respectively.
+        </para>
+      </listitem>
+
+      <listitem>
+        The various <literal>ctk_widget_modify_*()</literal> functions to
+        override colors or fonts for individual widgets have been replaced
+        by similar <literal>ctk_widget_override_*()</literal> functions.
+      </listitem>
+
+      <listitem>
+        It is no longer necessary to call ctk_widget_style_attach(),
+        ctk_style_attach(), ctk_style_detach() or ctk_widget_ensure_style().
+      </listitem>
+
+      <listitem>
+        Replace all uses of xthickness/ythickness. #CtkStyleContext uses the
+        CSS box model, and there are border-width/padding/margin properties to
+        replace the different applications of X and Y thickness. Note that all
+        of this is merely a guideline. Widgets may choose to follow it or not.
+      </listitem>
+    </orderedlist>
+  </section>
+
+  <section id="ctk-migrating-CtkStyleContext-parsing">
+    <title>Parsing of custom resources</title>
+    <para>
+      As a consequence of the RC format going away, calling ctk_rc_parse() or
+      ctk_rc_parse_string() won't have any effect on a widgets appearance.
+      The way to replace these calls is using a custom #CtkStyleProvider,
+      either for an individual widget through ctk_style_context_add_provider()
+      or for all widgets on a screen through ctk_style_context_add_provider_for_screen().
+      Typically, the provider will be a #CtkCssProvider, which parse CSS
+      information from a file or from a string.
+    </para>
+    <example>
+      <title>Using a custom CtkStyleProvider</title>
+      <programlisting>
+        CtkStyleContext *context;
+        CtkCssProvider *provider;
+
+        context = ctk_widget_get_style_context (widget);
+        provider = ctk_css_provider_new ();
+        ctk_css_provider_load_from_data (CTK_CSS_PROVIDER (provider),
+                                         ".frame1 {\n"
+                                         "   border-image: url('gradient1.png') 10 10 10 10 stretch;\n"
+                                         "}\n", -1, NULL);
+        ctk_style_context_add_provider (context,
+                                        CTK_STYLE_PROVIDER (provider),
+                                        CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+        g_object_unref (provider);
+      </programlisting>
+    </example>
+    <para>
+      Notice that you can also get style information from custom resources
+      by implementing the #CtkStyleProvider interface yourself. This is
+      an advanced feature that should be rarely used.
+    </para>
+  </section>
+
+  <section id="ctk-migrating-CtkStyleContext-bonus-points">
+    <title>Bonus points</title>
+
+    <para>
+      There are some features in #CtkStyleContext that were not available in
+      #CtkStyle, or were made available over time for certain widgets through
+      extending the detail string in obscure ways. There is a lot more
+      information available when rendering UI elements, and it is accessible
+      in more uniform, less hacky ways. By going through this list you'll
+      ensure your widget is a good citizen in a fully themable user interface.
+    </para>
+
+    <orderedlist>
+      <listitem>
+        If your widget renders a series of similar elements, such as tabs
+        in a #CtkNotebook or rows/column in a #CtkTreeView, consider adding
+        regions through ctk_style_context_add_region(). These regions can be
+        referenced in CSS and the :nth-child pseudo-class may be used to match
+        the elements depending on the flags passed.
+
+        <example>
+          <title>Theming widget regions</title>
+          <programlisting>
+            CtkNotebook tab {
+              background-color: &num;f3329d;
+            }
+
+            CtkTreeView row::nth-child (even) {
+              background-color: &num;dddddd;
+            }
+          </programlisting>
+        </example>
+      </listitem>
+
+      <listitem>
+        <para>
+          If your container renders child widgets within different regions,
+          make it implement #CtkContainer get_path_for_child(<!-- -->). This function
+          lets containers assign a special #CtkWidgetPath to child widgets
+          depending on their role/region. This is necessary to extend the
+          concept above throughout the widget hierarchy.
+        </para>
+
+        <para>
+          For example, a #CtkNotebook modifies the tab labels' #CtkWidgetPath
+          so the "tab" region is added. This makes it possible to theme tab
+          labels through:
+        </para>
+
+        <example>
+          <title>Theming a widget within a parent container region</title>
+          <programlisting>
+            CtkNotebook tab CtkLabel {
+              font: Sans 8;
+            }
+          </programlisting>
+        </example>
+
+      </listitem>
+
+      <listitem>
+        If you intend several visual elements to look interconnected,
+        make sure you specify rendered elements' connection areas with
+        ctk_style_context_set_junction_sides(). It is of course up to the
+        theme to make use of this information or not.
+      </listitem>
+
+      <listitem>
+        <para>
+          #CtkStyleContext supports implicit animations on state changes for
+          the most simple case out-of-the-box: widgets with a single animatable
+          area, whose state is changed with ctk_widget_set_state_flags() or
+          ctk_widget_unset_state_flags(). These functions trigger animated
+          transitions for the affected state flags. Examples of widgets for
+          which this kind of animation may be sufficient are #CtkButton or
+          #CtkEntry.
+        </para>
+        <para>
+          If your widget consists of more than a simple area, and these areas
+          may be rendered with different states, make sure to mark the rendered
+          areas with ctk_style_context_push_animatable_region() and
+          ctk_style_context_pop_animatable_region().
+        </para>
+
+        <para>
+          ctk_style_context_notify_state_change() may be used to trigger a
+          transition for a given state. The region ID will determine the
+          animatable region that is affected by this transition.
+        </para>
+      </listitem>
+    </orderedlist>
+  </section>
+</chapter>

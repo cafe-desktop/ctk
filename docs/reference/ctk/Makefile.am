@@ -303,6 +303,10 @@ content_files =					\
 	migrating-2to3.xml			\
 	migrating-3xtoy.xml			\
 	migrating-checklist.sgml		\
+	migrating-CtkGrid.xml			\
+	migrating-CtkStyleContext.xml		\
+	migrating-smclient-CtkApplication.xml	\
+	migrating-unique-CtkApplication.xml	\
 	osx.sgml				\
 	overview.xml 				\
 	question_index.sgml			\
@@ -325,6 +329,10 @@ expand_content_files = 				\
 	migrating-2to3.xml			\
 	migrating-3xtoy.xml			\
 	migrating-checklist.sgml		\
+	migrating-CtkGrid.xml			\
+	migrating-CtkStyleContext.xml		\
+	migrating-smclient-CtkApplication.xml	\
+	migrating-unique-CtkApplication.xml	\
 	question_index.sgml			\
 	text_widget.sgml			\
 	tree_widget.sgml
